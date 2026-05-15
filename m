@@ -4,92 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A43FACD343F
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 14:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E76ECD343F
+	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 14:25:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNtSz-0004aO-Le; Fri, 15 May 2026 10:24:46 -0400
+	id 1wNtTk-0005Fc-CK; Fri, 15 May 2026 10:25:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wNtSe-0004OZ-Dp
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:24:23 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1wNtTU-0005Bv-Rs
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:25:16 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wNtSa-0008WK-Lf
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:24:19 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-488a9033b2cso80848375e9.2
- for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:24:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1778855054; cv=none;
+ id 1wNtTO-0000Sv-Ik
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:25:10 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-44a5174670eso5215569f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:25:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1778855104; cv=none;
  d=google.com; s=arc-20240605;
- b=Gl2ak/mHUQczpndyuo2VFeoFHEWqkH3aQiTsWGE/TjlnHYk15e9ULVG1yPj/1VZ9Vk
- ecMiN4nuZJlezOfjOh8AHlP490PhKX6DXLQZpQOk8zlJ4Kk8CjGhpOQhkG+Y5MTKV6eP
- AzPVsphsqY4OW1jdZlI2VjGZ8OzIXILJTkGFLqLZzMiNFHVEmVxQTJE2yb2UsJaZYu/p
- He1kdHoqsrVC91MDfhDoQrtkS2okIDFy6wVsMhiKA384Rwq6uSwa3mz6t1vT2tA+LA/f
- c60eKtVx/AQ3P5jKCXdkoFHOpU3lJZikQIFtLu377qVohh4F5a6gyIoinpQ536683U2n
- PEBw==
+ b=DEvtEzeHFVk5iu0uEzJ6idhlx1a+ovSq2Ut6yDzdCxYs/h3VxtoQ125h156z/DiTDu
+ smrRujTK2sw/yhXDpUM23VsvbmPxTa/mrGZr0WRDpfvRd/RwMDzY8KNa+t3mYc1Q24Zu
+ OAxYQMBjcSZRKzh+gwSvxejjfaAzqoEaTH1VPPlaOlT1Tv3nXgkyarx7P4Da5KZ41un8
+ 9Y3Q3pfsczc8c8PZX6rMj4CZ/XlS9gHIeSWDEQreiy2H0QPUe82Lb5NeRCb4WDuunAoR
+ NuxuK/ZgGTx2OBSjH8tXCQ2DfdHz2MWcFBNdMPLHZhl4bI41ss2AOe6Up82/nUD6KMXY
+ pGmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=NBvzPX5JQzQqn/Diim4ka1qTU1UwKGkci3Lx7p+HPtw=;
- fh=cNo61cPP8TH8U37SBFZRyWOQ35efn+NF1BKJ9aJS58I=;
- b=FdCmbkOnRTTYW9bnSuTDham3hZfsrCPJZN6uHg7iveuQ0XB2P1fieHzWveFOmQcxL0
- YR2NTTPAsoX/NaEd5eDAMIWEIHnBJ7t95QccjBPkuh55+H158bfK4LWdbVhLa1tLRzw4
- 8TBF/cELDFUuLjqgikiHe7rO9+gHTjs9IeX7ZBO6YZfOAjFfC9R6w02KY2TCp8dqtaFM
- y1lz7IWYBjClj61yq7tPYjMJsEb6OG9Zv/HxBTyHWyQiWDGwpZ4tXT849jWOfJ9VW9j7
- OUbAobgFuYEy1/QnXVpGa9r/5mijqJrlNrkPTFIcu+W2pEH+Lu4k9Lta/k7Rbt6zMWCk
- mwkQ==; darn=nongnu.org
+ bh=cMrrWnS4VHNLuFxZ4GMd9qwHwtWG4YitXnV/ZBRiLSg=;
+ fh=SOyyhcyBMtJxqnEaoAh069BBiDj8ft9+i0GONCfo9Og=;
+ b=NSfuNO4yYgrm2pt8aKR9CDF7TC7nNnqYA40+eoFia/OB40atHdjaLR2kHDVSWSsTTf
+ mioxmMitzQFySKBbSSCWzBvAzbpPAbarJo6xqvAi/z4PM9oTdrHGDVRWa2+lch7iv++a
+ snKMPbHYRDLWsvoxXybd0P9yRXyZH2avEAEhRm9wuXsaGqGtrfuaxB683uXCKjrKNPIF
+ aobh2owoql57mx3EpCPRyOfWVAgS8OcdbAIEVZqLh8kYY5iq4QhlN27P1sj+tabtrh1r
+ w3IZgcF3dNRyvUcvTwRFb8MtyyuzhotAOmhKA2gjaHvok/vZf4/PTQuy+tv+qny6vQVY
+ V2Pg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778855054; x=1779459854; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778855104; x=1779459904; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=NBvzPX5JQzQqn/Diim4ka1qTU1UwKGkci3Lx7p+HPtw=;
- b=Tmxjh8649qz+3BpBnSB8Jb/A60pRCvlByDncCdqWQbY4hZb2TGxI0zh0WR0rJ+A4QP
- Ka0vU823VB1qW7LVbcrH3YIcMhUmLr0orIJi19MBPogJEuV282nuO0AoklfmTAB9Hylr
- ZVDNFNZM6pGo4bBO2wbnpr+tFyPmcnC8CwCvbotnBTH8HIAsUy8bQAllE01F3SPIsByK
- sCE6x3IEBxviFVaZNEtnDYlj5+TIiiQJy5OhxHjwL3cGLSPyeaggmLTb8v8rG8oJ/YXq
- OeXyN8s/SRHu/nvDTCWY+bMdDnQZBjGXBrmdVOotPwbRYGsOMoGOdos0WFky271o19MI
- 8j/w==
+ bh=cMrrWnS4VHNLuFxZ4GMd9qwHwtWG4YitXnV/ZBRiLSg=;
+ b=iti7DUww6ROTAPfElNcfMDAljPL6qbwqbf6doykUmIQUnPT/MlZo1Ca+goFmm11p2J
+ 9yDkQVYWrOYL2UltuY04dSNICDnMOTrKGGxx4/ph538C7WmSSWmrbpuY99Pv06HmiPyb
+ /tDTHjyGe7CcyrFVTDKhDbwb+46rL/F793mhk0KEQGIRHMcwD4uttX3+ec8oGRFOjs77
+ 1yJ8XxR10TZ5nlwqPVi8VFlGTkpNPdZzLEg3PhL0VUg1/YvArRfTxKqPGdnEFgtwZae/
+ VO7bylnO6iFTX8hejS7rLQ6nUbjwMGG7rIIJ3p+YtakfgIln4JBeYKxWvVld0/oYjdSn
+ mH7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778855054; x=1779459854;
+ d=1e100.net; s=20251104; t=1778855104; x=1779459904;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=NBvzPX5JQzQqn/Diim4ka1qTU1UwKGkci3Lx7p+HPtw=;
- b=dQALSOKXzpLOFcmAXmjd3kzngrEMoKW83WTSrmWcPi15z0leg/wB3ip9AxiOLuONwe
- kl6l4pMJUbUE1z2Tm902BPWgb/cPRRZLyLJ5krmNBeH/xcg7W+MPUc6FCpmHglt9Nlrc
- Gt4FISvxGufqm61JoKfpC8IfC38uJuMckbNN35GI6L1GKQl9KXn9hYSNj/diVdelgaQ2
- J0fFGjwH4w+b73cOKNPXCGPkLZIPgN1cFnFfVbWo/uaEAmYQjXLcLuNewFax5mn3usIN
- K6vBgy75QLrq3znpsWqE90vu9tM77bwx6o9595kw2qOZGlDEwCnQl8EJ8kIpvRFZxhwl
- vXxQ==
+ bh=cMrrWnS4VHNLuFxZ4GMd9qwHwtWG4YitXnV/ZBRiLSg=;
+ b=DiSYmc8qg85Zi6v1oQrzaTftoowMxgcnKOy7/o2tzVwTZTs1s6pozHkcF6VdW17Ikn
+ J6VaZeFhKwYpw9Y+/ZlMYbCeLRdA/ecvM3gTZSboGvDUzPZExKcUyK8fchcCOpuzn0Z/
+ gzWoiqzowo12szNQqyGLJ1sRNTnXqEY0g/Rv5eUb6LO7po3+NxO6oWjiDzEljHTgTxsp
+ LUPiwI89/JY4RB+lRvag+UQIJ3oNJgoJsO9zxIqFgBVEtx2V8dThb5ccZi63XpJW5+iC
+ 6Z//Rrn/T31qn5/TmidnIBqrgF6M98mcSHCh8GsaKLFvs9/qc+C0oCTV4prha1HxCCqm
+ JhZg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ//VbQtLjjJaRJ0iP7EziHyRHEqF4vjQAyAa93+XTh11xt+CZotjyiE8kjgqIF9bADnYVYuxb/WmA==@nongnu.org
-X-Gm-Message-State: AOJu0YyXVuinQiJzIAZSB8Vw7q7GR1aj5ueTkINYsWpCYz3CXewOLVds
- XCyBW0jjYx3po0jMwWiZ2THjibIlsemi975usjiwABBI+TuUkSk6VcmWjAc5dMfDPXtBPPdaGYs
- 7wI/5x+qz+9208zYacvtNLeoxCzL5asi1352OJDacwg==
-X-Gm-Gg: Acq92OGYIphV95QuutTbZRTNwHnLo9f7DjWBeaECzLwpM3uq/S2d09feBtE0vznq8wV
- jSEgHYSLwQitolkoH/PqH2dpbExnQcFqDvTD5UEYSFUQmiDPCtp4+WFvpMTYxwcfZOEu57KDGGH
- ZNYoG7U90MFNho5aB8UO0BGi64V9CG4Oo/+YItmXp+RUjXeE3pNpfSRi+6G5yE5n0tDXgkgnP10
- sKe/6rscqDx5sDL6d+lZCZOnYoSxpG9W8mzWy7EHYPr7IJee+NyV/fiYYu0pOlOCve7nV3B0rgM
- hjG6m1PPZx658WiOgs0qLnCdG66aHMJG30mO6a+8WQEjeVbmen7oer8y8uEg
-X-Received: by 2002:a05:600c:1505:b0:48f:ed68:6760 with SMTP id
- 5b1f17b1804b1-48fed6867famr18430725e9.29.1778855053728; Fri, 15 May 2026
- 07:24:13 -0700 (PDT)
+ AFNElJ/APCMAec1ScqLHx5DqsChOe1MIHCJYEWKf9cHg5fzhyR5DBs0/B182Luiv6GqE7AsNo3/enfZ7fA==@nongnu.org
+X-Gm-Message-State: AOJu0YyVqqPqf7iUFeU5oBuBK7q4voXOjeH5aMH/r723mY60tgC4S3Pi
+ 0P03Ti9VKIBI3VsM9e3rrwkT6ZmZd0e0pOqO9JJ25I2IZ3Xe8AsFlrE/1jQPn+0UbJFW6jbsqSm
+ 48YVXOGHBW8XzTvo5klx4IXH68sVX46FRAXw4q7deeQ==
+X-Gm-Gg: Acq92OEvPparKv4mpmiDJC7HGX0Vtsx2lom9km1yU3F55LO/ZRlyopVl/FylZ4Usivs
+ tPdyXao9nhyvTYTvqhCBEbMRI5gMnl/BsjkN4awLoBn+1fa9kp0i33iLxaEFwPd01TfhkXlb3xg
+ /cC3S1Dc7QqZZ0QSifTcX0by3jc53lKKXb4ibpEoW24ciAenKfGekLRUPXFW8q22NrAfhHs6W3S
+ sCUaOj+Ej5vVzpCXTgaxbOI7LqfxiGwBU07Hs/Lb4xC6zPCYwhV5IBCxAZ+zNXvXTQ9N9eaaKgI
+ JpAIuq4XD9ShvPDWY2UqiB8Z0MzilGHpHf5wQRqTlbAYIbNWMw==
+X-Received: by 2002:a05:6000:2405:b0:43d:e31:68d1 with SMTP id
+ ffacd0b85a97d-45e5c5cf18bmr5707638f8f.21.1778855103515; Fri, 15 May 2026
+ 07:25:03 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260515141032.3271-1-philmd@linaro.org>
- <20260515141032.3271-12-philmd@linaro.org>
-In-Reply-To: <20260515141032.3271-12-philmd@linaro.org>
+ <20260515141032.3271-13-philmd@linaro.org>
+In-Reply-To: <20260515141032.3271-13-philmd@linaro.org>
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Fri, 15 May 2026 17:23:46 +0300
-X-Gm-Features: AVHnY4KXrEtl6HQ-aLWpONcnBxT2pz0ORYtoERYZlCH_Z422Q5gCY26vKEdIJ1g
-Message-ID: <CAAjaMXY0Fa-POojxwcBjWjJwOL1NeTOHo+L+OjJN1UJUnFFU=Q@mail.gmail.com>
-Subject: Re: [PATCH v6 11/20] target/arm: Rename Aarch64-specific methods
+Date: Fri, 15 May 2026 17:24:36 +0300
+X-Gm-Features: AVHnY4KXZnxKzNZT2_vQEw9bNh7WkMPAnCaws3la6sKR99IK-LFqVextnMc71TM
+Message-ID: <CAAjaMXaaUuJ-Nb9TysOLPM93vKFDobxCGb9ijXO4ycPcf4qLcQ@mail.gmail.com>
+Subject: Re: [PATCH v6 12/20] target/arm: Extract common code related to 'max'
+ CPU
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
@@ -102,15 +103,15 @@ Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@codeconstruct.com.au>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,168 +127,253 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, May 15, 2026 at 5:11=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
+On Fri, May 15, 2026 at 5:12=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
 <philmd@linaro.org> wrote:
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 > ---
 
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
->  target/arm/internals.h   |  8 ++++----
->  target/arm/cpu.c         |  8 ++++----
->  target/arm/cpu32-stubs.c |  8 ++++----
->  target/arm/cpu64.c       | 12 ++++++------
->  4 files changed, 18 insertions(+), 18 deletions(-)
+>  target/arm/cpu-max.c   | 106 +++++++++++++++++++++++++++++++++++++++++
+>  target/arm/tcg/cpu32.c |  96 -------------------------------------
+>  target/arm/meson.build |   1 +
+>  3 files changed, 107 insertions(+), 96 deletions(-)
+>  create mode 100644 target/arm/cpu-max.c
 >
-> diff --git a/target/arm/internals.h b/target/arm/internals.h
-> index 3edc15c7b4a..00830b17248 100644
-> --- a/target/arm/internals.h
-> +++ b/target/arm/internals.h
-> @@ -1750,10 +1750,10 @@ int aarch64_gdb_get_tag_ctl_reg(CPUState *cs, GBy=
-teArray *buf, int reg);
->  int aarch64_gdb_set_tag_ctl_reg(CPUState *cs, uint8_t *buf, int reg);
->  int aarch64_gdb_get_tls_reg(CPUState *cs, GByteArray *buf, int reg);
->  int aarch64_gdb_set_tls_reg(CPUState *cs, uint8_t *buf, int reg);
-> -void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
-> -void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp);
-> -void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
-> -void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp);
-> +void aarch64_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
-> +void aarch64_cpu_sme_finalize(ARMCPU *cpu, Error **errp);
-> +void aarch64_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
-> +void aarch64_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp);
->  void aarch64_max_tcg_initfn(Object *obj);
->  void aarch64_add_pauth_properties(Object *obj);
->  void aarch64_add_sve_properties(Object *obj);
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 76f5909e902..31e1fd6cd51 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1707,25 +1707,25 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error=
- **errp)
->      Error *local_err =3D NULL;
+> diff --git a/target/arm/cpu-max.c b/target/arm/cpu-max.c
+> new file mode 100644
+> index 00000000000..9fd48ce46e2
+> --- /dev/null
+> +++ b/target/arm/cpu-max.c
+> @@ -0,0 +1,106 @@
+> +/*
+> + * QEMU ARM 'max' CPU
+> + *
+> + * Copyright (c) 2018 Linaro Ltd
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "target/arm/internals.h"
+> +
+> +/* Share AArch32 -cpu max features with AArch64. */
+> +void aa32_max_features(ARMCPU *cpu)
+> +{
+> +    uint32_t t;
+> +    ARMISARegisters *isar =3D &cpu->isar;
+> +
+> +    /* Add additional features supported by QEMU */
+> +    t =3D GET_IDREG(isar, ID_ISAR5);
+> +    t =3D FIELD_DP32(t, ID_ISAR5, AES, 2);          /* FEAT_PMULL */
+> +    t =3D FIELD_DP32(t, ID_ISAR5, SHA1, 1);         /* FEAT_SHA1 */
+> +    t =3D FIELD_DP32(t, ID_ISAR5, SHA2, 1);         /* FEAT_SHA256 */
+> +    t =3D FIELD_DP32(t, ID_ISAR5, CRC32, 1);
+> +    t =3D FIELD_DP32(t, ID_ISAR5, RDM, 1);          /* FEAT_RDM */
+> +    t =3D FIELD_DP32(t, ID_ISAR5, VCMA, 1);         /* FEAT_FCMA */
+> +    SET_IDREG(isar, ID_ISAR5, t);
+> +
+> +    t =3D GET_IDREG(isar, ID_ISAR6);
+> +    t =3D FIELD_DP32(t, ID_ISAR6, JSCVT, 1);        /* FEAT_JSCVT */
+> +    t =3D FIELD_DP32(t, ID_ISAR6, DP, 1);           /* Feat_DotProd */
+> +    t =3D FIELD_DP32(t, ID_ISAR6, FHM, 1);          /* FEAT_FHM */
+> +    t =3D FIELD_DP32(t, ID_ISAR6, SB, 1);           /* FEAT_SB */
+> +    t =3D FIELD_DP32(t, ID_ISAR6, SPECRES, 1);      /* FEAT_SPECRES */
+> +    t =3D FIELD_DP32(t, ID_ISAR6, BF16, 1);         /* FEAT_AA32BF16 */
+> +    t =3D FIELD_DP32(t, ID_ISAR6, I8MM, 1);         /* FEAT_AA32I8MM */
+> +    SET_IDREG(isar, ID_ISAR6, t);
+> +
+> +    t =3D cpu->isar.mvfr1;
+> +    t =3D FIELD_DP32(t, MVFR1, FPHP, 3);            /* FEAT_FP16 */
+> +    t =3D FIELD_DP32(t, MVFR1, SIMDHP, 2);          /* FEAT_FP16 */
+> +    cpu->isar.mvfr1 =3D t;
+> +
+> +    t =3D cpu->isar.mvfr2;
+> +    t =3D FIELD_DP32(t, MVFR2, SIMDMISC, 3);        /* SIMD MaxNum */
+> +    t =3D FIELD_DP32(t, MVFR2, FPMISC, 4);          /* FP MaxNum */
+> +    cpu->isar.mvfr2 =3D t;
+> +
+> +    FIELD_DP32_IDREG(isar, ID_MMFR3, PAN, 2);          /* FEAT_PAN2 */
+> +
+> +    t =3D GET_IDREG(isar, ID_MMFR4);
+> +    t =3D FIELD_DP32(t, ID_MMFR4, HPDS, 2);         /* FEAT_HPDS2 */
+> +    t =3D FIELD_DP32(t, ID_MMFR4, AC2, 1);          /* ACTLR2, HACTLR2 *=
+/
+> +    t =3D FIELD_DP32(t, ID_MMFR4, CNP, 1);          /* FEAT_TTCNP */
+> +    t =3D FIELD_DP32(t, ID_MMFR4, XNX, 1);          /* FEAT_XNX */
+> +    t =3D FIELD_DP32(t, ID_MMFR4, EVT, 2);          /* FEAT_EVT */
+> +    SET_IDREG(isar, ID_MMFR4, t);
+> +
+> +    FIELD_DP32_IDREG(isar, ID_MMFR5, ETS, 2);          /* FEAT_ETS2 */
+> +
+> +    t =3D GET_IDREG(isar, ID_PFR0);
+> +    t =3D FIELD_DP32(t, ID_PFR0, CSV2, 2);          /* FEAT_CSV2 */
+> +    t =3D FIELD_DP32(t, ID_PFR0, DIT, 1);           /* FEAT_DIT */
+> +    t =3D FIELD_DP32(t, ID_PFR0, RAS, 1);           /* FEAT_RAS */
+> +    SET_IDREG(isar, ID_PFR0, t);
+> +
+> +    t =3D GET_IDREG(isar, ID_PFR2);
+> +    t =3D FIELD_DP32(t, ID_PFR2, CSV3, 1);          /* FEAT_CSV3 */
+> +    t =3D FIELD_DP32(t, ID_PFR2, SSBS, 1);          /* FEAT_SSBS */
+> +    SET_IDREG(isar, ID_PFR2, t);
+> +
+> +    t =3D GET_IDREG(isar, ID_DFR0);
+> +    t =3D FIELD_DP32(t, ID_DFR0, COPDBG, 10);       /* FEAT_Debugv8p8 */
+> +    t =3D FIELD_DP32(t, ID_DFR0, COPSDBG, 10);      /* FEAT_Debugv8p8 */
+> +    t =3D FIELD_DP32(t, ID_DFR0, PERFMON, 6);       /* FEAT_PMUv3p5 */
+> +    SET_IDREG(isar, ID_DFR0, t);
+> +
+> +    /* Debug ID registers. */
+> +
+> +    /* Bit[15] is RES1, Bit[13] and Bits[11:0] are RES0. */
+> +    t =3D 0x00008000;
+> +    t =3D FIELD_DP32(t, DBGDIDR, SE_IMP, 1);
+> +    t =3D FIELD_DP32(t, DBGDIDR, NSUHD_IMP, 1);
+> +    t =3D FIELD_DP32(t, DBGDIDR, VERSION, 10);      /* FEAT_Debugv8p8 */
+> +    t =3D FIELD_DP32(t, DBGDIDR, CTX_CMPS, 1);
+> +    t =3D FIELD_DP32(t, DBGDIDR, BRPS, 5);
+> +    t =3D FIELD_DP32(t, DBGDIDR, WRPS, 3);
+> +    cpu->isar.dbgdidr =3D t;
+> +
+> +    t =3D 0;
+> +    t =3D FIELD_DP32(t, DBGDEVID, PCSAMPLE, 3);
+> +    t =3D FIELD_DP32(t, DBGDEVID, WPADDRMASK, 1);
+> +    t =3D FIELD_DP32(t, DBGDEVID, BPADDRMASK, 15);
+> +    t =3D FIELD_DP32(t, DBGDEVID, VECTORCATCH, 0);
+> +    t =3D FIELD_DP32(t, DBGDEVID, VIRTEXTNS, 1);
+> +    t =3D FIELD_DP32(t, DBGDEVID, DOUBLELOCK, 1);
+> +    t =3D FIELD_DP32(t, DBGDEVID, AUXREGS, 0);
+> +    t =3D FIELD_DP32(t, DBGDEVID, CIDMASK, 0);
+> +    cpu->isar.dbgdevid =3D t;
+> +
+> +    /* Bits[31:4] are RES0. */
+> +    t =3D 0;
+> +    t =3D FIELD_DP32(t, DBGDEVID1, PCSROFFSET, 2);
+> +    cpu->isar.dbgdevid1 =3D t;
+> +
+> +    FIELD_DP32_IDREG(isar, ID_DFR1, HPMN0, 1);         /* FEAT_HPMN0 */
+> +}
+> diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
+> index 73d21c6cf7d..919ed8a6cf8 100644
+> --- a/target/arm/tcg/cpu32.c
+> +++ b/target/arm/tcg/cpu32.c
+> @@ -18,102 +18,6 @@
+>  #include "cpregs.h"
 >
->      if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-> -        arm_cpu_sve_finalize(cpu, &local_err);
-> +        aarch64_cpu_sve_finalize(cpu, &local_err);
->          if (local_err !=3D NULL) {
->              error_propagate(errp, local_err);
->              return;
->          }
 >
-> -        arm_cpu_sme_finalize(cpu, &local_err);
-> +        aarch64_cpu_sme_finalize(cpu, &local_err);
->          if (local_err !=3D NULL) {
->              error_propagate(errp, local_err);
->              return;
->          }
+> -/* Share AArch32 -cpu max features with AArch64. */
+> -void aa32_max_features(ARMCPU *cpu)
+> -{
+> -    uint32_t t;
+> -    ARMISARegisters *isar =3D &cpu->isar;
+> -
+> -    /* Add additional features supported by QEMU */
+> -    t =3D GET_IDREG(isar, ID_ISAR5);
+> -    t =3D FIELD_DP32(t, ID_ISAR5, AES, 2);          /* FEAT_PMULL */
+> -    t =3D FIELD_DP32(t, ID_ISAR5, SHA1, 1);         /* FEAT_SHA1 */
+> -    t =3D FIELD_DP32(t, ID_ISAR5, SHA2, 1);         /* FEAT_SHA256 */
+> -    t =3D FIELD_DP32(t, ID_ISAR5, CRC32, 1);
+> -    t =3D FIELD_DP32(t, ID_ISAR5, RDM, 1);          /* FEAT_RDM */
+> -    t =3D FIELD_DP32(t, ID_ISAR5, VCMA, 1);         /* FEAT_FCMA */
+> -    SET_IDREG(isar, ID_ISAR5, t);
+> -
+> -    t =3D GET_IDREG(isar, ID_ISAR6);
+> -    t =3D FIELD_DP32(t, ID_ISAR6, JSCVT, 1);        /* FEAT_JSCVT */
+> -    t =3D FIELD_DP32(t, ID_ISAR6, DP, 1);           /* Feat_DotProd */
+> -    t =3D FIELD_DP32(t, ID_ISAR6, FHM, 1);          /* FEAT_FHM */
+> -    t =3D FIELD_DP32(t, ID_ISAR6, SB, 1);           /* FEAT_SB */
+> -    t =3D FIELD_DP32(t, ID_ISAR6, SPECRES, 1);      /* FEAT_SPECRES */
+> -    t =3D FIELD_DP32(t, ID_ISAR6, BF16, 1);         /* FEAT_AA32BF16 */
+> -    t =3D FIELD_DP32(t, ID_ISAR6, I8MM, 1);         /* FEAT_AA32I8MM */
+> -    SET_IDREG(isar, ID_ISAR6, t);
+> -
+> -    t =3D cpu->isar.mvfr1;
+> -    t =3D FIELD_DP32(t, MVFR1, FPHP, 3);            /* FEAT_FP16 */
+> -    t =3D FIELD_DP32(t, MVFR1, SIMDHP, 2);          /* FEAT_FP16 */
+> -    cpu->isar.mvfr1 =3D t;
+> -
+> -    t =3D cpu->isar.mvfr2;
+> -    t =3D FIELD_DP32(t, MVFR2, SIMDMISC, 3);        /* SIMD MaxNum */
+> -    t =3D FIELD_DP32(t, MVFR2, FPMISC, 4);          /* FP MaxNum */
+> -    cpu->isar.mvfr2 =3D t;
+> -
+> -    FIELD_DP32_IDREG(isar, ID_MMFR3, PAN, 2);          /* FEAT_PAN2 */
+> -
+> -    t =3D GET_IDREG(isar, ID_MMFR4);
+> -    t =3D FIELD_DP32(t, ID_MMFR4, HPDS, 2);         /* FEAT_HPDS2 */
+> -    t =3D FIELD_DP32(t, ID_MMFR4, AC2, 1);          /* ACTLR2, HACTLR2 *=
+/
+> -    t =3D FIELD_DP32(t, ID_MMFR4, CNP, 1);          /* FEAT_TTCNP */
+> -    t =3D FIELD_DP32(t, ID_MMFR4, XNX, 1);          /* FEAT_XNX */
+> -    t =3D FIELD_DP32(t, ID_MMFR4, EVT, 2);          /* FEAT_EVT */
+> -    SET_IDREG(isar, ID_MMFR4, t);
+> -
+> -    FIELD_DP32_IDREG(isar, ID_MMFR5, ETS, 2);          /* FEAT_ETS2 */
+> -
+> -    t =3D GET_IDREG(isar, ID_PFR0);
+> -    t =3D FIELD_DP32(t, ID_PFR0, CSV2, 2);          /* FEAT_CSV2 */
+> -    t =3D FIELD_DP32(t, ID_PFR0, DIT, 1);           /* FEAT_DIT */
+> -    t =3D FIELD_DP32(t, ID_PFR0, RAS, 1);           /* FEAT_RAS */
+> -    SET_IDREG(isar, ID_PFR0, t);
+> -
+> -    t =3D GET_IDREG(isar, ID_PFR2);
+> -    t =3D FIELD_DP32(t, ID_PFR2, CSV3, 1);          /* FEAT_CSV3 */
+> -    t =3D FIELD_DP32(t, ID_PFR2, SSBS, 1);          /* FEAT_SSBS */
+> -    SET_IDREG(isar, ID_PFR2, t);
+> -
+> -    t =3D GET_IDREG(isar, ID_DFR0);
+> -    t =3D FIELD_DP32(t, ID_DFR0, COPDBG, 10);       /* FEAT_Debugv8p8 */
+> -    t =3D FIELD_DP32(t, ID_DFR0, COPSDBG, 10);      /* FEAT_Debugv8p8 */
+> -    t =3D FIELD_DP32(t, ID_DFR0, PERFMON, 6);       /* FEAT_PMUv3p5 */
+> -    SET_IDREG(isar, ID_DFR0, t);
+> -
+> -    /* Debug ID registers. */
+> -
+> -    /* Bit[15] is RES1, Bit[13] and Bits[11:0] are RES0. */
+> -    t =3D 0x00008000;
+> -    t =3D FIELD_DP32(t, DBGDIDR, SE_IMP, 1);
+> -    t =3D FIELD_DP32(t, DBGDIDR, NSUHD_IMP, 1);
+> -    t =3D FIELD_DP32(t, DBGDIDR, VERSION, 10);      /* FEAT_Debugv8p8 */
+> -    t =3D FIELD_DP32(t, DBGDIDR, CTX_CMPS, 1);
+> -    t =3D FIELD_DP32(t, DBGDIDR, BRPS, 5);
+> -    t =3D FIELD_DP32(t, DBGDIDR, WRPS, 3);
+> -    cpu->isar.dbgdidr =3D t;
+> -
+> -    t =3D 0;
+> -    t =3D FIELD_DP32(t, DBGDEVID, PCSAMPLE, 3);
+> -    t =3D FIELD_DP32(t, DBGDEVID, WPADDRMASK, 1);
+> -    t =3D FIELD_DP32(t, DBGDEVID, BPADDRMASK, 15);
+> -    t =3D FIELD_DP32(t, DBGDEVID, VECTORCATCH, 0);
+> -    t =3D FIELD_DP32(t, DBGDEVID, VIRTEXTNS, 1);
+> -    t =3D FIELD_DP32(t, DBGDEVID, DOUBLELOCK, 1);
+> -    t =3D FIELD_DP32(t, DBGDEVID, AUXREGS, 0);
+> -    t =3D FIELD_DP32(t, DBGDEVID, CIDMASK, 0);
+> -    cpu->isar.dbgdevid =3D t;
+> -
+> -    /* Bits[31:4] are RES0. */
+> -    t =3D 0;
+> -    t =3D FIELD_DP32(t, DBGDEVID1, PCSROFFSET, 2);
+> -    cpu->isar.dbgdevid1 =3D t;
+> -
+> -    FIELD_DP32_IDREG(isar, ID_DFR1, HPMN0, 1);         /* FEAT_HPMN0 */
+> -}
+> -
+>  /* CPU models. These are not needed for the AArch64 linux-user build. */
+>  #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
 >
-> -        arm_cpu_pauth_finalize(cpu, &local_err);
-> +        aarch64_cpu_pauth_finalize(cpu, &local_err);
->          if (local_err !=3D NULL) {
->              error_propagate(errp, local_err);
->              return;
->          }
+> diff --git a/target/arm/meson.build b/target/arm/meson.build
+> index 5376be2e3bc..3e02941d0d5 100644
+> --- a/target/arm/meson.build
+> +++ b/target/arm/meson.build
+> @@ -9,6 +9,7 @@ arm_user_ss =3D ss.source_set()
+>  arm_common_system_ss.add(files('gdbstub.c'))
+>  arm_user_ss.add(files('gdbstub.c'))
 >
-> -        arm_cpu_lpa2_finalize(cpu, &local_err);
-> +        aarch64_cpu_lpa2_finalize(cpu, &local_err);
->          if (local_err !=3D NULL) {
->              error_propagate(errp, local_err);
->              return;
-> diff --git a/target/arm/cpu32-stubs.c b/target/arm/cpu32-stubs.c
-> index 9e50bb1b0b5..d42b1a5d6a6 100644
-> --- a/target/arm/cpu32-stubs.c
-> +++ b/target/arm/cpu32-stubs.c
-> @@ -4,22 +4,22 @@
->  #include "target/arm/cpu.h"
->  #include "target/arm/internals.h"
->
-> -void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
-> +void aarch64_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
->  {
->      g_assert_not_reached();
->  }
->
-> -void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
-> +void aarch64_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
->  {
->      g_assert_not_reached();
->  }
->
-> -void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
-> +void aarch64_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
->  {
->      g_assert_not_reached();
->  }
->
-> -void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
-> +void aarch64_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
->  {
->      g_assert_not_reached();
->  }
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index a93ad2da5ad..b38a78aac3f 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -60,7 +60,7 @@ int get_sysreg_idx(ARMSysRegs sysreg)
->
->  #undef DEF
->
-> -void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
-> +void aarch64_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
->  {
->      /*
->       * If any vector lengths are explicitly enabled with sve<N> properti=
-es,
-> @@ -121,7 +121,7 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
->               * Disable all SVE extensions as well. Note that some ZFR0
->               * fields are used also by SME so must not be wiped in
->               * an SME-no-SVE config. We will clear the rest in
-> -             * arm_cpu_sme_finalize() if necessary.
-> +             * aarch_cpu_sme_finalize() if necessary.
->               */
->              FIELD_DP64_IDREG(&cpu->isar, ID_AA64ZFR0, F64MM, 0);
->              FIELD_DP64_IDREG(&cpu->isar, ID_AA64ZFR0, F32MM, 0);
-> @@ -336,7 +336,7 @@ static void cpu_arm_set_sve(Object *obj, bool value, =
-Error **errp)
->      FIELD_DP64_IDREG(&cpu->isar, ID_AA64PFR0, SVE, value);
->  }
->
-> -void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
-> +void aarch64_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
->  {
->      uint32_t vq_map =3D cpu->sme_vq.map;
->      uint32_t vq_init =3D cpu->sme_vq.init;
-> @@ -408,7 +408,7 @@ static void cpu_arm_set_sme(Object *obj, bool value, =
-Error **errp)
->      /*
->       * For now, write 0 for "off" and 1 for "on" into the PFR1 field.
->       * We will correct this value to report the right SME
-> -     * level (SME vs SME2) in arm_cpu_sme_finalize() later.
-> +     * level (SME vs SME2) in aarch_cpu_sme_finalize() later.
->       */
->      FIELD_DP64_IDREG(&cpu->isar, ID_AA64PFR1, SME, value);
->  }
-> @@ -548,7 +548,7 @@ void aarch64_add_sme_properties(Object *obj)
->  #endif
->  }
->
-> -void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
-> +void aarch64_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
->  {
->      ARMPauthFeature features =3D cpu_isar_feature(pauth_feature, cpu);
->      ARMISARegisters *isar =3D &cpu->isar;
-> @@ -666,7 +666,7 @@ void aarch64_add_pauth_properties(Object *obj)
->      }
->  }
->
-> -void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
-> +void aarch64_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
->  {
->      uint64_t t;
->
+> +arm_ss.add(files('cpu-max.c'))
+>  arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+>    'cpu64.c',
+>  ))
 > --
 > 2.53.0
 >

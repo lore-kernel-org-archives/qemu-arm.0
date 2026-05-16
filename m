@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81465CD4F3C
-	for <qemu-arm@archiver.kernel.org>; Sat, 16 May 2026 17:18:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1968ECD4F3C
+	for <qemu-arm@archiver.kernel.org>; Sat, 16 May 2026 17:19:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOIeQ-0008GG-3j; Sat, 16 May 2026 13:18:10 -0400
+	id 1wOIdv-0005za-5D; Sat, 16 May 2026 13:17:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wOIeK-000875-05
- for qemu-arm@nongnu.org; Sat, 16 May 2026 13:18:04 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wOIdj-0005Ur-8w
+ for qemu-arm@nongnu.org; Sat, 16 May 2026 13:17:27 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wOIeI-0008W8-8D
- for qemu-arm@nongnu.org; Sat, 16 May 2026 13:18:03 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-488b150559bso6540355e9.1
- for <qemu-arm@nongnu.org>; Sat, 16 May 2026 10:18:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wOIdh-0008O6-It
+ for qemu-arm@nongnu.org; Sat, 16 May 2026 13:17:26 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-48d102471a4so6026435e9.2
+ for <qemu-arm@nongnu.org>; Sat, 16 May 2026 10:17:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778951881; x=1779556681; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778951844; x=1779556644; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=hrqG8E5vo4+DPxnoXgzD37IiU6lxoPHb9HCDmG94Di4=;
- b=A4rZQ0YuJlf5RIRB2Gk6ovsDdGBDzJcV4OVVZkHitGSxDUt54SuDR27ueWulnB6uoY
- DOfcmH2s0RC7b7wYvdVD3vTczaQYBiJ6dgwhyuzjIdvWQY7ioaNDnI1LgWr0IMYvYFa1
- 1HxnpfNw/lEcgLZUTjuSf1I3ge+7vMIabcq329vvFu8DGk38kfFKNu5sq3/eJ0QoJW58
- t1nErDi2wdGdGDLik5pWuzfV+N2hJVIn5ZU9I/bIr8xu5UEASpDq8xQPetoaYnqxtWNP
- s/2/talisK7Dpvtubi9JkuhjEnW7ktI/xZyHVv75PQPTKCw3iEg/L/KD/c7M2BM+M24O
- lh4A==
+ bh=1RNRxHUIKIoHhD2L2k2Kf0WRpvOKC9u30TJYtxRtPNw=;
+ b=rchOoRpqownsSUKCcJdNMdYCZCXr/lr06dkqtXPjY8ULjouxGfjiJYo89cULPe5I5l
+ 34Zv7ogfijOd7zvBg0LLCiDS6NnlOsvIKbVtfXW7lWMcfjbmB5aOUc4cVnuCG13keOld
+ +XVoZRN3aQZE/ivu0gDyE3mdsYATXv8SLV6ZEElEcmxf2Ym36N/E+Tr4ezH658t+Pi42
+ rpcghLVzOWVZMVVr/7D/6y7Rdhnb88LWdIbbCM+O1UhkQIFz32s9CjqHzPfaAbR0ZB+U
+ uh3k6fuE8rkImyt81sI6j5mJnd/TWIRyn+zpRTFvNGoaIsF/JsCvtWcTlGWG2sxnSJLt
+ I1qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778951881; x=1779556681;
+ d=1e100.net; s=20251104; t=1778951844; x=1779556644;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=hrqG8E5vo4+DPxnoXgzD37IiU6lxoPHb9HCDmG94Di4=;
- b=rGY7dCKp7/fvRvOiF+FcUKy4vf1vMi8Xy+gJfzo6dsSEYq+TmyOtzFkGHA6Ayf9bTT
- reGBuTgnjxBnpQvQyzuWU6VX/ChHayfWNS8qAqV/6HnW0p7VHFaL5yEUojXYPP13pB+A
- DPzMA/KF0D5eZs6Bg/8cdm8p1QONGKaSLWzRE+2JC4sa03qx/Xu0DuanfyOCpL4yb312
- UW+mhlNWrKi15gF2Ex+NuoyH9laRA0puNHfsceB3thx7TYe5YJCY+lprTGbq4jUuyvVm
- UlFnVz0mNaLwPI4dIPP0p5lxuN5k3wwrhh6HK2a9adtgBJaUcFAKn+NsE+lK9obrEl1W
- 0UgA==
+ bh=1RNRxHUIKIoHhD2L2k2Kf0WRpvOKC9u30TJYtxRtPNw=;
+ b=jNPvqex2nU8nOoEAzCj+mbl24v06vNoCYjOi6fMyyXBhIkYbibPRBKGTbFjVoFzfcY
+ xvZWjqJm823VtqIs+vAI/1G19X3ejd/lTe0VfMcl6iY7bXXaqnsBrgNjdpyWl5bqLybj
+ 9lutTt+HMntCBAWeIpmCW7MvnscgQKABqRgvEk69A0HBdCkyaCH71sZIZJNMUWB0BA+c
+ 0jsOfSbiri4HpQM52/b5xEmgQ2oeEVCsUx7p2KuythLUwxCkrzgQaMxkE7EFWcImCiYq
+ Z9fek/THvY1RX5smjlX4C7aN3ju/JJ+7BVVeQIQLN1Yjyd0RGb7Lw92TxNimZ/SXxMDF
+ mJlg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+pxnLYyevndXU9egGh9TWLumAI9F96CuhypiSeKV5SmGPtfAYhAVN4zCjHGED5SrRg7KvZjkUnpw==@nongnu.org
-X-Gm-Message-State: AOJu0YwkiTbbplfQwK6m+dJpNUtFUOrS2J3GzEEXHUaE1cKEbuSCjW/I
- QKbB9TQeLrh5qiYhxbzOSh5dci4CQuk1tQIquhfQAIjxBBrxdW8kS86pKpeUAG6bQrc=
-X-Gm-Gg: Acq92OHcc8D5J1qVTm7WnV7R8oEnYgk/Ut750BEs7ZSUt12VaUUOTkvmtMdTI0sZA3g
- NsHKsvqhdbpqlu4EB0AiQ+F3EYjV26XO6w50YE11lc7HoeO0//iFEaI9dU8ydhe4BRx94jgQoCo
- 1ebRuzoDbqGNUI8EP/AeRAU8S5p8ABzksHNIFJtjKCO1yGz6baaZMZSgOfEZIn7MGgiVOSNrbKB
- WHRSPxvgU3v96OVwGxFbDxsJhLUpsvFd8EKCa5NrmKrIv+NzOng+KN43Rtyaq3UlwkQcDo5Zgub
- Gdm46NE0bybR+QosHly5wVoDDPutXV3JxyKp8DCi7mrV2yBFDw7q4lkMQzUqXSQdE/H+wOg5ckj
- Y2PxA19aTA1giO1rNFrIRFCHBaCT0d1Ya09CKJBjvyxML47B133wla11EkYUu6W2LGWq7GD8DUb
- QWuS4PYKSsZP7v/pOteB+2RmgUftzeaRDnPwC27h/pN1hCdHx8sUaJYrJickclEk+ztNxt9XJL
-X-Received: by 2002:a05:600c:46cf:b0:48e:8974:c377 with SMTP id
- 5b1f17b1804b1-48fe6626ba1mr119634925e9.29.1778951880657; 
- Sat, 16 May 2026 10:18:00 -0700 (PDT)
+ AFNElJ9pMn0LmPnUIkGq/NnPxFv/cWBcZr94abMO95jybd3vc323WskmD0lKLZdTtadoIGwUj+KMmPZ/Xg==@nongnu.org
+X-Gm-Message-State: AOJu0Yxn/3oivkMnCkDCX5GIw9KRDfc7xiT+wCsSfdbDuOXWi1B2d2DL
+ xYmRGRuY8U4+glHmkbDe8Mnkw9L8xmbj78Z3xM89jCS28N15TH3eNfg84rwlw7S13cA=
+X-Gm-Gg: Acq92OHRvY7zYEkKkCzIj0NtZvrjW3CaoS0CdqL0W3qBP48XEFVAh5AGUqKXROYiumt
+ 6OIyFZdK35aszWb1JiZen5M1k1DoKW554pTzzWZ/2h7xgzh1fRzoXCCka+OtJR+8FvxZHOyUblV
+ vjNUhhfxE1Bdmcdp2QWYl120JXWUsOiZnbY3KQBE45XBmWkLlgtFbBFEC05f+pVJ8Mph7f678Dj
+ NvuboSjz63GJNdHFmnBug9s6PT2brGUvAH0rfgXGYkaXhnRrNTxeys95SG3BKDdwofg6wnOXAJK
+ 839HkvJNk/P1ahrqUfb9nOEoYLaoxCbGkoeNBDfsoUzuo7oZH8stZ1JvRT1fOsNbuvOrxM9UH8G
+ r9669LPbMjgMPxM6GIfF/Lb+X54YqhxmQNd/jnVZn5J1jezAKswaKZ7q/th1jywmC9uvtYirg8d
+ LKoXQUp+yjrirHqTKhIDY/uKrICrG2Lkleha0QD59v0XEJZETH+XT4D+Fh6sBRWf7h3i/SFsVbv
+ y8OHaRLT50=
+X-Received: by 2002:a05:600c:a405:b0:48a:52ce:a4b1 with SMTP id
+ 5b1f17b1804b1-48fe60dd5e8mr123054445e9.15.1778951844160; 
+ Sat, 16 May 2026 10:17:24 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45da0fe13a7sm24578791f8f.29.2026.05.16.10.17.59
+ 5b1f17b1804b1-48fe53804aesm133414005e9.15.2026.05.16.10.17.22
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 16 May 2026 10:18:00 -0700 (PDT)
+ Sat, 16 May 2026 10:17:23 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Steven Lee <steven_lee@aspeedtech.com>,
@@ -79,17 +80,17 @@ Cc: Steven Lee <steven_lee@aspeedtech.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Fabiano Rosas <farosas@suse.de>
-Subject: [PATCH v7 21/21] target/arm: Build cpu-max.c once
-Date: Sat, 16 May 2026 19:15:23 +0200
-Message-ID: <20260516171524.19184-22-philmd@linaro.org>
+Subject: [PATCH v7 16/21] target/arm: Only set %kvm_target when KVM is enabled
+Date: Sat, 16 May 2026 19:15:18 +0200
+Message-ID: <20260516171524.19184-17-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260516171524.19184-1-philmd@linaro.org>
 References: <20260516171524.19184-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,64 +113,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Call TargetInfo::target_aarch64() at runtime, allowing to
-remove the target-specific TARGET_AARCH64 definition and
-build cpu-max.c once as common object.
-
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 ---
- target/arm/cpu-max.c   | 8 ++------
- target/arm/meson.build | 2 +-
- 2 files changed, 3 insertions(+), 7 deletions(-)
+ target/arm/cpu64.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu-max.c b/target/arm/cpu-max.c
-index 8cf8edc6535..d38bdfcf811 100644
---- a/target/arm/cpu-max.c
-+++ b/target/arm/cpu-max.c
-@@ -8,6 +8,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/units.h"
-+#include "qemu/target-info.h"
- #include "system/hw_accel.h"
- #include "system/kvm.h"
- #include "system/qtest.h"
-@@ -190,12 +191,7 @@ void aa32_max_features(ARMCPU *cpu)
- static void cpu_max_initfn(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
--
--#ifdef TARGET_AARCH64
--    const bool aarch64_enabled = true;
--#else
--    const bool aarch64_enabled = false;
--#endif /* !TARGET_AARCH64 */
-+    const bool aarch64_enabled = target_aarch64();
- 
-     if (hwaccel_enabled()) {
-         assert(aarch64_enabled);
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 3e02941d0d5..9408131d178 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -9,7 +9,6 @@ arm_user_ss = ss.source_set()
- arm_common_system_ss.add(files('gdbstub.c'))
- arm_user_ss.add(files('gdbstub.c'))
- 
--arm_ss.add(files('cpu-max.c'))
- arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-   'cpu64.c',
- ))
-@@ -20,6 +19,7 @@ arm_common_ss.add(files(
- arm_common_user_system_ss.add(files(
-   'cpregs-gcs.c',
-   'cpregs-pmu.c',
-+  'cpu-max.c',
-   'debug_helper.c',
-   'helper.c',
-   'vfp_fpscr.c',
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index b38a78aac3f..7b2f09cf8ec 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -701,7 +701,9 @@ static void aarch64_a57_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_EL2);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
+     set_feature(&cpu->env, ARM_FEATURE_PMU);
+-    cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
++    if (kvm_enabled()) {
++        cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
++    }
+     cpu->midr = 0x411fd070;
+     cpu->revidr = 0x00000000;
+     cpu->reset_fpsid = 0x41034070;
 -- 
 2.53.0
 

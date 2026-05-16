@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B9E6CD4F46
-	for <qemu-arm@archiver.kernel.org>; Sat, 16 May 2026 17:17:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B62B1CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Sat, 16 May 2026 17:17:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOIc2-0002JL-Gx; Sat, 16 May 2026 13:15:48 -0400
+	id 1wOIdS-00043I-PA; Sat, 16 May 2026 13:17:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wOIbz-0002Ia-1l
- for qemu-arm@nongnu.org; Sat, 16 May 2026 13:15:40 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wOIdA-0003bp-3h
+ for qemu-arm@nongnu.org; Sat, 16 May 2026 13:16:58 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wOIbw-0007wh-5A
- for qemu-arm@nongnu.org; Sat, 16 May 2026 13:15:38 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-488e1a8ac40so8360105e9.2
- for <qemu-arm@nongnu.org>; Sat, 16 May 2026 10:15:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wOId7-0008BY-Ar
+ for qemu-arm@nongnu.org; Sat, 16 May 2026 13:16:51 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4891d7164ddso4366785e9.3
+ for <qemu-arm@nongnu.org>; Sat, 16 May 2026 10:16:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778951734; x=1779556534; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778951808; x=1779556608; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=K1V+GWtucxSZl1YZ8nu1MtklisKojriGnpVCnzAvOg4=;
- b=ol34DBFuewsCoFEFKHoTuleOmV4Xf2WKIQ7SH83VGFW1BtwfdPRHz4CDMGMq0ot3XK
- 2eNQn4giSLbkUw0dMOYixjX1p/VbGGHGC60Aq4PrnhlOG1k7U9yHplq8DENBc3C0RNrO
- foDKjp2v0wiPWoMLz6+LS4HPfErh0PesdZweFqMlej9FeH/dZ++PBTuYWJkJwuhVEBiZ
- XsFDv8+TNPhXku9xVWv+O/IvhaLwXwRNv/2GGHGNTpfnbckI6pq1ZgQIYnzMlQTEhtya
- 9tzFOi4gbETOZtun1jSSnObnaFYqr1/raKwiVyZDjRBcQvRmCUWIjy0+GYLjHRk1j1j4
- ZN2w==
+ bh=hV4e73UNbUO8rrTdoZ6Judcl7l+pcK6HO82RHoEBX8M=;
+ b=xLVQZ1DU+4QQo02BqSLq7k1GWXdU1fll4Z7KmrtKsvkdhPOrUn0NMbKUN5lwzgvHhq
+ C3frGrnLwH7/oRrQgXgKv4kMzr7IvcSLZUUGCnGhSpYG8d0VN4y6EDT7eIUNdBodRem0
+ liC6unFlcRq6ZCLm6ESnCCXd2U1orrgro1j4bfGKSjrw7oSBnb2GpddGF/lYJ4YE9w8l
+ io3iU84cVsinmVmWHkE7EqjY/syYdkVcC1RtY1O4Dsl2X7rV9SjZsDHQsAh8q2Ici+Ll
+ 9ttJh0flEbhOUPAUfAD4s0tQlkhPEJHNVY0vR7Os+CIZL+iEZOYIHZbq8qoKihSQ/nLq
+ 9h8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778951734; x=1779556534;
+ d=1e100.net; s=20251104; t=1778951808; x=1779556608;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=K1V+GWtucxSZl1YZ8nu1MtklisKojriGnpVCnzAvOg4=;
- b=g0jzrq2HHQWAin/spZTVbjB+AExdox2LYjcceEmPQ8SY410iANeRMygu0fULa397bC
- 5YGxONONI6hDZnrDlCdOw2mqtHG+fKT01dYn9mwde1RW5+OOz1I36uZgkpKr7vF8LnHa
- JyDcL0tPx5MoMXxjkxhKIhc37UvL9A9szIiDXRxVfiSMjJX6TwoUP/oYdWTqd2sZuoBi
- BZHhSLgYT5LT5FfYBZK+5YVvrjxcE+s32Qk9aslhDlAsrmkMG6NMHJeelKg5gVIDhMnj
- gWWsVXxgBZ8cnWo3pC1n+b4ugKrOfCmsZKZDgLGq2KZFkgTv57JPaarRXRxebR6Z5XCh
- DF5A==
+ bh=hV4e73UNbUO8rrTdoZ6Judcl7l+pcK6HO82RHoEBX8M=;
+ b=MIPo6BGD8uIQ/aI497Xgrn2J5aj8mUMXiwDF0xQv7XnZcjjrzMnc8BEjnJYkCwRzmC
+ vcTq8p24+A78b0b66XInxU42cCHyD+JrM+O5t0FtgelW/72fZFQ12d+/+5cx2XflpplJ
+ IqzseGRkxaKxTuOid8b5rR7HAld0yL8QFtlvvmYQ9K4AZcn7gRdoMGz/Y7QFMaNX4Vtv
+ mVr/0IPYURkXGm376AKMJJqz9JFOVcpKrsvOkVpV4fTFJRxsnZIYqwM7EsH7xdx4V00z
+ m2bYvjJu+WrLaahi1vaSp9QhgNwTaa8iWSzQx48MHvljsxKd4xJhoDO/nklsP0zRxTWg
+ sB1A==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8uvsm/Ylql5slzDHCaMqV4IkGtDDPMOEyzVB3Ny6WZQe1sT9Es6u9mpAtbRrWBY0cq8U6hPBlpcg==@nongnu.org
-X-Gm-Message-State: AOJu0Yzf3Wj0+ifK+GCB+ztjNMdvn+3hlMN9xFngEOddB1qvMkLktfNc
- PrVH8a36gMpcwlr7R+uAH0OFLr8s2hV2DZ0fVhWy61DYJsRWo7LyxrlQLJOTSetspJQ=
-X-Gm-Gg: Acq92OF+cdqXkcVTKK52mRzm6GC8i9Y1wD1EhRksi1Z0m7M39btHEBrWbKp2nDElPgO
- UY0cLBqYnrxGCLuVwCFBA32QyHB3vdKXHcgHTLsQrjAnujqD7JAbz4eZe55aT+14b/6Zzm7rel5
- 6ez4AMBbLZX36jLkaEYhRr4M+6LBlpjZkIotTqF1jztsCrKkRF9Bl0nJ2+SbMJJr3Egu9ypoTqE
- WywNlCfJs65CILrnTmzhdvSH97wnZ2c5an1MHmD3tiZIH3FjIAr7MNXjE+2FCi0B8fyGiUn70XO
- xffX0ULGCETwtHUQHCt8e4yux/4pHg3CuA949PuPi2nwGnbQHOPUckAWLdtWhVtycHU+btNtfM7
- 1v1bnGxlTthxiXRuKyGrgv/UnwLGyK0fjbX2HZVirw4vYfR2hNnZIBuhwhfMQ7QBkTsvnm11qvE
- mkonjWnnD3+Rg/Itf+XBNR7pPRjdVPYwkKTonRUKJG0eNLlHaBMuV3k8wKJ0UdNIQxGDBX9D+b
-X-Received: by 2002:a05:600d:b:b0:48e:8741:fd42 with SMTP id
- 5b1f17b1804b1-48fe60ee64amr95588555e9.12.1778951734492; 
- Sat, 16 May 2026 10:15:34 -0700 (PDT)
+ AFNElJ9UJ30+fEXbH574N/iK+sgEmOVosecnYeLteHtIudwmgrIhfIhb7lNFrkKaH2GJxq2GyJzGeQu8SQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwjISFC93bW/cMk84Kp28A858ZxIBMBT3NCHpAlFnEBP53/aVXo
+ x2FU8lUhbziLo+vXOCGV/BsZsMyimp+pfTqlfh2eqKXri1SGGTnvepLjQIuH5WWFT1Y=
+X-Gm-Gg: Acq92OHbm6+9YuxaqgJSiLDbORyPZsaclLBhIJCxN0sabGsCsSi39vTYmGEu75Bty+K
+ rgxKqjhTSem15fv0m9llJrixVGb5bIUSH2w2BubKzBsQeJC6/um6DREaKIxQxbPjpEfRC/anndS
+ QREQ9552x18z2BEJVQPJ2H1HXWWFIyZ2PazRb4J+B97ILKVw/YR2oOapY8iZO+WEoBiOpxrrmVP
+ XGon23TxlKM9K8ybMFYpBAxOT2gAenrfpFw4pHU9xPtfiYqeOSC2q7vEAPYghCWcnJS+8rsUzq7
+ svOefa12LQI8L1ACwE3V5EVwmsRrv+yTzttHANCm6Lk1k0pfwJzTErsy4EC/WyKF1gIJRTBDLCO
+ IcFHkuntO5k6P7R6tv1MQppWXd7bxPQMJX+MFoNUWvhSyAyp/PFChktzvxIoj2FZuHoUXEaALlR
+ bxfWebDGc9C2Za18fb8hTk/fV0uKL5jLASof6O4//CQUaBkv/NSaRUxlGI2hGjtM5OjrFd8jYo
+X-Received: by 2002:a05:600c:8b45:b0:489:1ba8:5bf0 with SMTP id
+ 5b1f17b1804b1-48fe63253f3mr116708325e9.21.1778951807634; 
+ Sat, 16 May 2026 10:16:47 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48fe53ab773sm146381125e9.3.2026.05.16.10.15.33
+ 5b1f17b1804b1-48fe5cab818sm143121975e9.14.2026.05.16.10.16.46
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 16 May 2026 10:15:33 -0700 (PDT)
+ Sat, 16 May 2026 10:16:47 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Steven Lee <steven_lee@aspeedtech.com>,
@@ -78,27 +78,25 @@ Cc: Steven Lee <steven_lee@aspeedtech.com>,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Fabiano Rosas <farosas@suse.de>, Matthew Penney <matt@matthewpenney.net>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v7 01/21] tests/qtest: fix discarded const qualifier warning
-Date: Sat, 16 May 2026 19:15:03 +0200
-Message-ID: <20260516171524.19184-2-philmd@linaro.org>
+ Fabiano Rosas <farosas@suse.de>
+Subject: [PATCH v7 11/21] target/arm: Restrict IDAU interface to TCG namespace
+Date: Sat, 16 May 2026 19:15:13 +0200
+Message-ID: <20260516171524.19184-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260516171524.19184-1-philmd@linaro.org>
 References: <20260516171524.19184-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,38 +112,168 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Matthew Penney <matt@matthewpenney.net>
+Emphasize the IDAU interface is restricted to TCG by moving the
+header under target/arm/tcg/. Move the definition to cpu-v7m.c
+which also contains v7/v8 hardware (NVIC), keeping only CPU types
+in cpu32.c.
 
-Modern compilers warn that the result of strstr() may discard
-const qualifiers when assigned to a non-const pointer.
-
-Make 'found' a const char * to fix the warning.
-
-Signed-off-by: Matthew Penney <matt@matthewpenney.net>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20260514191844.105888-1-matt@matthewpenney.net>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/qtest/libqtest.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/hw/arm/armv7m.h     |  2 +-
+ include/hw/misc/tz-msc.h    |  2 +-
+ target/arm/{ => tcg}/idau.h |  4 ++--
+ hw/arm/armv7m.c             |  2 +-
+ target/arm/cpu.c            |  2 +-
+ target/arm/ptw.c            |  2 +-
+ target/arm/tcg/cpu-v7m.c    | 11 +++++++++++
+ target/arm/tcg/cpu32.c      |  8 --------
+ 8 files changed, 18 insertions(+), 15 deletions(-)
+ rename target/arm/{ => tcg}/idau.h (97%)
 
-diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-index bf9284b9a13..b1e06ea364e 100644
---- a/tests/qtest/libqtest.c
-+++ b/tests/qtest/libqtest.c
-@@ -2146,7 +2146,7 @@ bool mkimg(const char *file, const char *fmt, unsigned size_mb)
- bool qtest_verbose(const char *domain)
+diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
+index 98ad08db036..70555962bb9 100644
+--- a/include/hw/arm/armv7m.h
++++ b/include/hw/arm/armv7m.h
+@@ -13,7 +13,7 @@
+ #include "hw/core/sysbus.h"
+ #include "hw/intc/armv7m_nvic.h"
+ #include "hw/misc/armv7m_ras.h"
+-#include "target/arm/idau.h"
++#include "target/arm/tcg/idau.h"
+ #include "qom/object.h"
+ #include "hw/core/clock.h"
+ 
+diff --git a/include/hw/misc/tz-msc.h b/include/hw/misc/tz-msc.h
+index 07112d8caa3..6cf4c6b09eb 100644
+--- a/include/hw/misc/tz-msc.h
++++ b/include/hw/misc/tz-msc.h
+@@ -51,7 +51,7 @@
+ #define TZ_MSC_H
+ 
+ #include "hw/core/sysbus.h"
+-#include "target/arm/idau.h"
++#include "target/arm/tcg/idau.h"
+ #include "qom/object.h"
+ 
+ #define TYPE_TZ_MSC "tz-msc"
+diff --git a/target/arm/idau.h b/target/arm/tcg/idau.h
+similarity index 97%
+rename from target/arm/idau.h
+rename to target/arm/tcg/idau.h
+index 0ef5251971d..e5736ad848d 100644
+--- a/target/arm/idau.h
++++ b/target/arm/tcg/idau.h
+@@ -25,8 +25,8 @@
+  * connected to the CPU using a link property.
+  */
+ 
+-#ifndef TARGET_ARM_IDAU_H
+-#define TARGET_ARM_IDAU_H
++#ifndef TARGET_ARM_TCG_IDAU_H
++#define TARGET_ARM_TCG_IDAU_H
+ 
+ #include "qom/object.h"
+ 
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index a29eab6c915..68a1cbd6316 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -20,7 +20,7 @@
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+ #include "qemu/log.h"
+-#include "target/arm/idau.h"
++#include "target/arm/tcg/idau.h"
+ #include "target/arm/cpu.h"
+ #include "target/arm/cpu-features.h"
+ #include "target/arm/cpu-qom.h"
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 31e0a12a986..a4eb6a2de5e 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -24,7 +24,7 @@
+ #include "qemu/log.h"
+ #include "exec/page-vary.h"
+ #include "system/whpx.h"
+-#include "target/arm/idau.h"
++#include "target/arm/tcg/idau.h"
+ #include "qemu/module.h"
+ #include "qapi/error.h"
+ #include "cpu.h"
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 8706dd59dd6..a4842a4b62b 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -17,7 +17,7 @@
+ #include "cpu.h"
+ #include "internals.h"
+ #include "cpu-features.h"
+-#include "idau.h"
++#include "target/arm/tcg/idau.h"
+ 
+ typedef struct S1Translate {
+     /*
+diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
+index dc249ce1f14..02abd831e6a 100644
+--- a/target/arm/tcg/cpu-v7m.c
++++ b/target/arm/tcg/cpu-v7m.c
+@@ -11,6 +11,7 @@
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+ #include "accel/tcg/cpu-ops.h"
++#include "target/arm/tcg/idau.h"
+ #include "internals.h"
+ 
+ #if !defined(CONFIG_USER_ONLY)
+@@ -40,6 +41,16 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+     return ret;
+ }
+ 
++static const TypeInfo arm_v8m_types[] = {
++    {
++        .name = TYPE_IDAU_INTERFACE,
++        .parent = TYPE_INTERFACE,
++        .class_size = sizeof(IDAUInterfaceClass),
++    }
++};
++
++DEFINE_TYPES(arm_v8m_types)
++
+ #endif /* !CONFIG_USER_ONLY */
+ 
+ static void cortex_m0_initfn(Object *obj)
+diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
+index 2127d456ad6..73d21c6cf7d 100644
+--- a/target/arm/tcg/cpu32.c
++++ b/target/arm/tcg/cpu32.c
+@@ -12,7 +12,6 @@
+ #include "cpu.h"
+ #include "accel/tcg/cpu-ops.h"
+ #include "internals.h"
+-#include "target/arm/idau.h"
+ #if !defined(CONFIG_USER_ONLY)
+ #include "hw/core/boards.h"
+ #endif
+@@ -899,17 +898,10 @@ static const ARMCPUInfo arm_tcg_cpus[] = {
+ #endif
+ };
+ 
+-static const TypeInfo idau_interface_type_info = {
+-    .name = TYPE_IDAU_INTERFACE,
+-    .parent = TYPE_INTERFACE,
+-    .class_size = sizeof(IDAUInterfaceClass),
+-};
+-
+ static void arm_tcg_cpu_register_types(void)
  {
-     const char *log = getenv("QTEST_LOG");
--    char *found;
-+    const char *found;
+     size_t i;
  
-     assert(domain);
- 
+-    type_register_static(&idau_interface_type_info);
+     for (i = 0; i < ARRAY_SIZE(arm_tcg_cpus); ++i) {
+         arm_cpu_register(&arm_tcg_cpus[i]);
+     }
 -- 
 2.53.0
 

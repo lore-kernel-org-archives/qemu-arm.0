@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35BAACD4F3C
-	for <qemu-arm@archiver.kernel.org>; Sun, 17 May 2026 00:36:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1E12CD4F3D
+	for <qemu-arm@archiver.kernel.org>; Sun, 17 May 2026 00:36:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOPPg-00084H-M0; Sat, 16 May 2026 20:31:24 -0400
+	id 1wOPT7-0002od-4j; Sat, 16 May 2026 20:34:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wOPOl-0007Ds-Jk
- for qemu-arm@nongnu.org; Sat, 16 May 2026 20:30:31 -0400
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+ id 1wOPSJ-0007B9-To
+ for qemu-arm@nongnu.org; Sat, 16 May 2026 20:34:12 -0400
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wOPOf-000514-Gb
- for qemu-arm@nongnu.org; Sat, 16 May 2026 20:30:26 -0400
-Received: by mail-pg1-x531.google.com with SMTP id
- 41be03b00d2f7-c80227b1f6cso340781a12.1
- for <qemu-arm@nongnu.org>; Sat, 16 May 2026 17:30:18 -0700 (PDT)
+ id 1wOPSD-0006sW-SY
+ for qemu-arm@nongnu.org; Sat, 16 May 2026 20:34:05 -0400
+Received: by mail-pj1-x1031.google.com with SMTP id
+ 98e67ed59e1d1-3660daea6a5so473875a91.1
+ for <qemu-arm@nongnu.org>; Sat, 16 May 2026 17:34:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778977817; x=1779582617; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778978040; x=1779582840; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZVsvcQjrwAu/Fw5QeICNMsfPv4wnEzD0NNefmVwM0W0=;
- b=pBjTfX4Z5hdj3cIYMVVeIFr52mkMeBhMim/nQr5UXl+3gxOEhgxNKSJjWCZSGil+Wv
- SXSyzaTCzmfRcotl4GA3yzKuUrsRlTe1jbCemUHx9wOY9sOv2c1VW5A1HnRDrJ6YMhug
- Nd8aEuPyq9qkz97ZEA2wcJNXJ+w5I4Oa4I7A1ThXzcn+msVebH4B6KC00rL9Hvom5tNm
- V2rB6G2QC9u3CXHoS4mWYXIFEfLPWH+L3kdN4HAfClGF4yJxftcMzzL5R+JtCEHXST5Y
- aUkMmcfYeAQDo9nI13c5/RFCYVDFiAyYj3WTakT2Fosf9UCf3UU38TMI2vXraNUHsNY/
- MCiA==
+ bh=W2+saFtU6sDCDywdiaR0c/2CKQQH+n8UBNRc/yHjQxk=;
+ b=IWxDM+xo4QFzN4L2Dj6ARYXzei3ACqnT8YzQel1jtecOuFmEnrG7TiRQSIO+1lV08Q
+ N1b8DrovYPDh79oIErRwF6rvLuOTWXNN9heZQbn3JThFVe472TKAIoecxUoBJ8sE04/L
+ Emyl9ij7OYR5drKhapUA/7SRdatC7WaVZUYBJ7Gcwj+jk7Q3gWPRRBmUr3UcoZAMueco
+ INL4zNK4b5t+OjmtBtc5Jbeh9wyMVh/yaUHIdzdYWtalAXbkI2QEvbXqAqohAwJpYk0q
+ g9VW3BbjaWwtj9uVGq2KjvU/adzOGlvQzrATGu9sLNF5hSZgBN3c8eeOumdgeCqcz9IZ
+ Q7FQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778977817; x=1779582617;
+ d=1e100.net; s=20251104; t=1778978040; x=1779582840;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ZVsvcQjrwAu/Fw5QeICNMsfPv4wnEzD0NNefmVwM0W0=;
- b=epFT4tPSkbYZ8++9OwimRWDNwQB1x3+vFypyXxU4X2tfsTO8BovjRlG5b+ZEeXM5qB
- vy6VVeWkxDvTo3pyW5gz9xduop62vn9thyJnVH+PgpFYFxwzUlMkSB3qt3I3xC/R46mH
- Cn2Xab8fS18A1suzuxcBBpfva+2XYnhjGr1Bq1ZsS2OUQSXLP+ng1lWXkqwGLEzBP2R9
- gUlzjbLvwkWb4noGcMMyuRRIW7JfP1Pln+XHiGxJohvHYkNkCDW9D1yqH1gcPO6yaU4l
- On2MiSwvi9Z+oo7OR2VIyADaqdyphFy0LSGUys8jOMggkLnFEltITPEwXT3fUDrsFgL4
- mcxA==
-X-Gm-Message-State: AOJu0Yy99P7HRyQozViyfI/uiw6QGeqYQ5x+7p3wGKMKoHLoQKxmd74c
- Mhd/SV/loj249Fsh/8ltEgGC9R9zeLTfAJYM21sgCUKmAiq7a6/tGmoUUsYVfNFwPVM=
-X-Gm-Gg: Acq92OFsaOPStyZK82XNbj80fJiN1nHUdO3Fjj9iGMGdZr7VbvFo3roCUT1bKN0Fea9
- qYw4FiM8dXJLXnIRIMEuDhGxU+3QuFIwWeGYogOzfBn+PR7ihlLkoJfV3OmsXsvUvfm/mSqNFzX
- EXRWy59ZrIyXiH43hdiB5WgruJV5gWT95uCBnXWbSSf7OXxvNbNuw3N5upv65342S6G64ZNi0UG
- Vk7MYwy7mstjttMySYecS2x+McZELPUDwdTzHj/4OkCpJxI5SM/zOsufSEwxikRwrbvqy41g88U
- q9Hl3iJtgxmkGcVxqbEG03IQjoxUgOAR6wcsYweF2yC3/4O0G9JDERFHsFOTP5nE8BLKhAkA8o3
- KtxHsj8VX829ozvDvXnhaEqpWprbJTaJjciGTv55e0uakoithDE2XAk7aSt1MZLF5b90hCCOwwB
- Q6rbMCe+/f9Qxmiqnm/i69aKJ2B2ZM
-X-Received: by 2002:a05:6a00:2793:b0:836:3f6a:3e7a with SMTP id
- d2e1a72fcca58-83f33d2774dmr9458967b3a.26.1778977817266; 
- Sat, 16 May 2026 17:30:17 -0700 (PDT)
+ bh=W2+saFtU6sDCDywdiaR0c/2CKQQH+n8UBNRc/yHjQxk=;
+ b=RAgZtOrRODrixkDEI0Sj6Bfiqiyag7Qiz86WWztlk0KAt+lAhiqgmuOIPz67Kd8C6I
+ owXkUOLJRJhqywe1OMa+I6WPK1GEYvghCdE8/7VwodwIhRdbZCPQViJfDMAz9l/WRWtW
+ yfflNJLCLgUlUkWHa8k6GCAMEdSk0wYod6hvcWoPCoPBD6+aE42H4qd7sjz5DcraYYTj
+ qBwJF9mDpQeWVPUWmEQs8KEIc2z7Sp9oWptRhD9sHUafnsQzWHLb5z+B1e9xVET3/S2l
+ FXAozBEN4Mk8RQOhhrlKC+a2zlio9ahuuV5jUQVhmbCxjBYFEEQOm4ZjU3O/34wg6Oqg
+ Dgpg==
+X-Gm-Message-State: AOJu0YwbGhxB+n3/tGKXAGOq+fglLC/Pl/Ay/uqe4OtMwxX2p5gT+wKj
+ JWr5NrNUkfWvTHWmPfL5vDuFDp4YNoGfcHQwZ9Z6PNPOf6m7CuggaA/rqBbM1kcQvU4=
+X-Gm-Gg: Acq92OHlb6oVzUEwBH4maB5804+4V3DhViIi8gLPZqB5XZIYf6UVnE5G5zab+OmAUn3
+ nKe8RzFIWT2qDaFYjx7v6luucq1QKrhhqGttciunMxuHVsnU+LOus+iakQBVj7FaUY+N0V86eP8
+ bUxEJUwefuzZs5MVjemWbgz+ajDxu4SjiORp+8oDCnax2irmsoSO/z6oikqgu0ugbtD9AuUOpVF
+ Tv+VPWY/yn6+Hir8jX5pwyeQx7YleN5y4N1ddhnSLDJpUA7GG+IQi6/ZGInaaFBBAuf9S9P98E7
+ Md2T15WC/MvK2Icu2dyiK7PJNs3ao2uz7XIwjdf7bOwBQNR9PLEojGukbEho1FokHt3cVKD7sgl
+ 2FFQcPcz+YLWGTobcSUK21XPeH0LTyOtbGWKJSpeRRMUxrDQfgZNEmWWCaBNdWOpT0OID7pT+al
+ iBYtkYLRVAycHIHUg4p4D46spE7GBX
+X-Received: by 2002:a17:90b:35c8:b0:356:22ef:57ba with SMTP id
+ 98e67ed59e1d1-369518b669amr9859171a91.7.1778978040474; 
+ Sat, 16 May 2026 17:34:00 -0700 (PDT)
 Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-83f19663cfdsm12272745b3a.9.2026.05.16.17.30.16
+ 41be03b00d2f7-c82da93df0dsm3010559a12.19.2026.05.16.17.33.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 16 May 2026 17:30:16 -0700 (PDT)
+ Sat, 16 May 2026 17:34:00 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH v5 15/63] tests/functional/aarch64/rme: update images to
- support FEAT_FP8
-Date: Sat, 16 May 2026 17:29:14 -0700
-Message-ID: <20260517003002.321430-16-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v5 60/63] target/arm: Implement FMMLA (FP8 to FP16) for SVE
+Date: Sat, 16 May 2026 17:29:59 -0700
+Message-ID: <20260517003002.321430-61-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260517003002.321430-1-richard.henderson@linaro.org>
 References: <20260517003002.321430-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x531.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,75 +98,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-
-As well, use -smp 1 since there is no visible speedup running with -smp 2.
-
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/functional/aarch64/test_rme_sbsaref.py | 7 ++++---
- tests/functional/aarch64/test_rme_virt.py    | 7 ++++---
- 2 files changed, 8 insertions(+), 6 deletions(-)
+ target/arm/cpu-features.h      | 5 +++++
+ target/arm/tcg/translate-sve.c | 2 ++
+ target/arm/tcg/sve.decode      | 1 +
+ 3 files changed, 8 insertions(+)
 
-diff --git a/tests/functional/aarch64/test_rme_sbsaref.py b/tests/functional/aarch64/test_rme_sbsaref.py
-index efea80c578..d252101ac6 100755
---- a/tests/functional/aarch64/test_rme_sbsaref.py
-+++ b/tests/functional/aarch64/test_rme_sbsaref.py
-@@ -20,12 +20,13 @@ class Aarch64RMESbsaRefMachine(QemuSystemTest):
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index fce38dfbb0..3eb08da6df 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -1703,6 +1703,11 @@ static inline bool isar_feature_aa64_sve2_f8mm8(const ARMISARegisters *id)
+     return isar_feature_aa64_sve2(id) && isar_feature_aa64_f8mm8(id);
+ }
  
-     # Stack is inspired from:
-     # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-+    # Built from:
-     # https://github.com/p-b-o/qemu-linux-stack/tree/rme_sbsa_release
-     # ./build.sh && ./archive_artifacts.sh out.tar.xz
-     ASSET_RME_STACK_SBSA = Asset(
-         ('https://github.com/p-b-o/qemu-linux-stack/'
--         'releases/download/build/rme_sbsa_release-6a2dfc5.tar.xz'),
--         '5adba482aa069912292a8da746c6b21268224d9d81c97fe7c0bed690579ebdcb')
-+         'releases/download/build/rme_sbsa_release-74b7fab.tar.xz'),
-+         '82a754bacea04e709cb1cf2759d1d12d09fabd612e014961eb32368723c7920a')
++static inline bool isar_feature_aa64_sve2_f8mm4(const ARMISARegisters *id)
++{
++    return isar_feature_aa64_sve2(id) && isar_feature_aa64_f8mm4(id);
++}
++
+ static inline bool
+ isar_feature_aa64_sme2_or_sve2_faminmax(const ARMISARegisters *id)
+ {
+diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+index 5bda5f6c01..2bce6a38a2 100644
+--- a/target/arm/tcg/translate-sve.c
++++ b/target/arm/tcg/translate-sve.c
+@@ -8458,3 +8458,5 @@ static bool do_fmmla_fp8(DisasContext *s, arg_rrrr_esz *a,
  
-     # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-     # and launching a nested VM using it.
-@@ -57,7 +58,7 @@ def test_aarch64_rme_sbsaref(self):
-                           ' --params "root=/dev/vda rw init=/init"')
+ TRANS_FEAT_NONSTREAMING(FMMLA_sb, aa64_sve2_f8mm8, do_fmmla_fp8, a,
+                         gen_helper_gvec_fmmla_sb)
++TRANS_FEAT_NONSTREAMING(FMMLA_hb, aa64_sve2_f8mm4, do_fmmla_fp8, a,
++                        gen_helper_gvec_fmmla_hb)
+diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
+index 6610432528..b53fe6a58f 100644
+--- a/target/arm/tcg/sve.decode
++++ b/target/arm/tcg/sve.decode
+@@ -1809,6 +1809,7 @@ FMMLA_s         01100100 10 1 ..... 111 001 ..... .....  @rda_rn_rm_ex esz=2
+ FMMLA_d         01100100 11 1 ..... 111 001 ..... .....  @rda_rn_rm_ex esz=3
  
-         self.vm.add_args('-cpu', 'max,x-rme=on')
--        self.vm.add_args('-smp', '2')
-+        self.vm.add_args('-smp', '1')
-         self.vm.add_args('-m', '2G')
-         self.vm.add_args('-M', 'sbsa-ref')
-         self.vm.add_args('-drive', f'file={pflash0},format=raw,if=pflash')
-diff --git a/tests/functional/aarch64/test_rme_virt.py b/tests/functional/aarch64/test_rme_virt.py
-index dcb18678bf..2afcdc6b07 100755
---- a/tests/functional/aarch64/test_rme_virt.py
-+++ b/tests/functional/aarch64/test_rme_virt.py
-@@ -19,12 +19,13 @@ class Aarch64RMEVirtMachine(QemuSystemTest):
+ FMMLA_sb        01100100 00 1 ..... 111 000 ..... .....  @rda_rn_rm_ex esz=2
++FMMLA_hb        01100100 01 1 ..... 111 000 ..... .....  @rda_rn_rm_ex esz=1
  
-     # Stack is inspired from:
-     # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-+    # Built from:
-     # https://github.com/p-b-o/qemu-linux-stack/tree/rme_release
-     # ./build.sh && ./archive_artifacts.sh out.tar.xz
-     ASSET_RME_STACK_VIRT = Asset(
-         ('https://github.com/p-b-o/qemu-linux-stack/'
--         'releases/download/build/rme_release-56bc99e.tar.xz'),
--         '0e3dc6b8a4b828dbae09c951a40dcb710eded084b32432b50c69cf4173ffa4be')
-+         'releases/download/build/rme_release-2701e89.tar.xz'),
-+         '8c40af440f5bd1518f7add7d0a43b39289865ee48430979db8024cb897a74790')
+ ### SVE2 Memory Gather Load Group
  
-     # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-     # and launching a nested VM using it.
-@@ -44,7 +45,7 @@ def test_aarch64_rme_virt(self):
-         rootfs = join(rme_stack, 'out', 'host.ext4')
- 
-         self.vm.add_args('-cpu', 'max,x-rme=on')
--        self.vm.add_args('-smp', '2')
-+        self.vm.add_args('-smp', '1')
-         self.vm.add_args('-m', '2G')
-         self.vm.add_args('-M', 'virt,acpi=off,'
-                          'virtualization=on,'
 -- 
 2.43.0
 

@@ -4,153 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 402CCCD4851
-	for <qemu-arm@archiver.kernel.org>; Sat, 16 May 2026 21:37:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41A99CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Sun, 17 May 2026 00:30:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOMhM-00077O-Au; Sat, 16 May 2026 17:37:28 -0400
+	id 1wOPOg-0007Cj-FZ; Sat, 16 May 2026 20:30:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wOMhK-000773-Cv
- for qemu-arm@nongnu.org; Sat, 16 May 2026 17:37:26 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wOMhI-0000Wg-1Z
- for qemu-arm@nongnu.org; Sat, 16 May 2026 17:37:26 -0400
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 64GELulW381503
- for <qemu-arm@nongnu.org>; Sat, 16 May 2026 21:37:19 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- KI4v4q7laIlDS7q5LjsUhVF3mJ3/tKJ89aJJwYZvF6c=; b=NxgjZ5fythDuKM+/
- XoGZ5rDU5ZeOXxODFkMdEJxWGSZ4XP7z5AkJcclEDAtMridQacz10k5x8dHjCzOz
- WWTi+4eK3seCiCjJ+I4aGYz5DfUAO4D+1iLSOWxmV5SwmoXk8HiLfPFw7pt+1I1e
- lvyLfSRlaAILstBuszsdHs3FRGdeVSHc2VWmAAGl5Qf0UBbCYbAOgbdPxcDHNZgl
- hBVhUoK2wj4d5WzofHeCHHzyH+r8BTW1W6evB+6MTvXlOtxiKr2ah26rW300DAXL
- RB/xZMHsrBS4sMXo3WLlqOFkEFDNiJYcz32eIWWZWhzNViwbQlON7DBMClvjqbN4
- FMRq1Q==
-Received: from mail-dy1-f198.google.com (mail-dy1-f198.google.com
- [74.125.82.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4e6gyw1qbw-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Sat, 16 May 2026 21:37:19 +0000 (GMT)
-Received: by mail-dy1-f198.google.com with SMTP id
- 5a478bee46e88-2bda35eab74so691641eec.0
- for <qemu-arm@nongnu.org>; Sat, 16 May 2026 14:37:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wOPOT-00073D-Jj
+ for qemu-arm@nongnu.org; Sat, 16 May 2026 20:30:13 -0400
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wOPOP-0004lv-Bu
+ for qemu-arm@nongnu.org; Sat, 16 May 2026 20:30:07 -0400
+Received: by mail-pf1-x434.google.com with SMTP id
+ d2e1a72fcca58-82fbdd60b64so876495b3a.3
+ for <qemu-arm@nongnu.org>; Sat, 16 May 2026 17:30:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1778967439; x=1779572239; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=KI4v4q7laIlDS7q5LjsUhVF3mJ3/tKJ89aJJwYZvF6c=;
- b=gkmF2DP8JQgW0AoxY7GURaQ5BO20sQXxqEvF0x8Zu7PfxwGxaWZbmJLEjX1NbA20QE
- MTTn7qmCG3bI5WYhKhMn54yiczUKCsWpWrKRkuq7Lx6DUKV2PTnIQxaxamk3pEPIOc3D
- t5whqbp9KHn7F8T1beDPXpI5PQmLu553C6+5LCaBIH/Fj85X4zIrrx6zU4mE+JobI3kw
- KkwHxD+TQnLM8v3Ctmx5c1PPQ1CrUdVoHmtFFjy5aBizlvTbxyIDex+jBQFOvanmH8Ol
- p9G5a7sUWCALEdpK4DdAFTSb6MuVqP0C2Bm5wNfaFIfrdx/pHNQ8THhjeW6uEd8Lv7zx
- MGGA==
+ d=linaro.org; s=google; t=1778977803; x=1779582603; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=G4118SVqI4u6LKMHVp6Cyf85SwC6FwO7230ZJv9vMGY=;
+ b=rG4hDeB6ObdHx+nDFRePtVB3mZIPuHQRb59XriOQYBD7B/KRVSiFQBFzs/lIana64m
+ 9r5eCoiNug0spJ4pTPxq0NA9ae+kcIBd61K80rySl2Ku3d/e7dKnPLPfePXUDNCyLeEf
+ K/6gGNTAFL/8GHmIOsXnbdl1FxG+XdOqPM+DjPZTslyyM8CirMTVaBq0pa1sGx/xrZPg
+ PHe5caEPFcNlEIr4WvCauzsTka4S4YQLO6V4UX0unnwak2IRYrau36lOPFVywfMEi2vu
+ og2rcoD+AinZMXfN3unykSaZILAEKQcdReswcHMrymXuNvfFA74A4+5Zicc1bfeUrasJ
+ eWaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778967439; x=1779572239;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=KI4v4q7laIlDS7q5LjsUhVF3mJ3/tKJ89aJJwYZvF6c=;
- b=SLoOXvjikePKUOdQ1XTlFtHi/pi0WwwqJgz4mnWGEpSL5KncTdXE+YApShp5iY1P03
- 4q7h6bWUAZEj3SCT63gcgp4YCXKT9giYnYC0r1rsu+gtydelb2TBiIP4JjBW83FgM0pr
- nRKIszyK2/V9P1lERIfSrqIa7pc9F/KwuprmZtFLvooD6nVjy4VxYSmjiJd97bxPgc4y
- SMTS2ob97cTX/2eoD217W6Hm062hCXsOX12bpK1g3ARrmlmhed5toAR3XQ4+9RDRHVWn
- zV7Kog2Q+nwRGw9K0Ca/2i/2XXbZH3I+LkvF8WMgikfOUeoaJ6ZbSEvlz6JK21Th0rtv
- dqhQ==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9MBy4yRLzDY+kXMxmHjZHNiFUdlmX2s2lD8G7ql3yuYxvgOzcwtp35d84c7M8kKGnpUjI48Gxyqg==@nongnu.org
-X-Gm-Message-State: AOJu0YzU8yqD4F9cRg4ufgEwNicAq4IFprnIjyz5twle3ED/0/4RklJq
- HaevcNVPcyomUgbiwpryOXwXqEBASK9EifMzWb4vYYzSMYAvMqkdRTQdeK1CLyg5EREtHHOUrwe
- y1Dwgj4N4+0ha5BBszNIo9soBtgXeoH4rTsIm4waS48aEoaO+39HFJfk=
-X-Gm-Gg: Acq92OEzd7oCikm3cYaOIV60RcEwlEEsvZD9UYlrgYekYXGa1/r/MMMYz33H+H88Dqa
- Dws2um5V0XNsa4TKFm6m4sSVP7Qbr9oUDIR2kQqwhNIcLfn/WQL9iVVICB8Ulzu6777+x7Ee0ob
- EUrzTCNA4vGGe6M3l57Y886wud3VXFhBQ0I2b3tiHoeXbKhXx2wXeyDotsW717vllpWRH5ITfoj
- ejUH8EjaGCcIIncJw4LA9hR8psTgYgxgDcHJ47fuUBWY5BRdUOYDZ9bX40Hk5KmpWcSya7UN+W2
- pVcSFvAUy9c50tjAj4UORXOWQ18CdfO97lsNkwLVyh6eTYcTDQIbsIu6WPnbcE0yTibiCPUBngV
- ZdVG3mzuM7Ds9ZwTD5BPgkTHnnBiO7/NBLvdcccKl6Z4kkTPJen76HcpMVyl2HbZ0g8QlNE3gNM
- eNe3kfpq7z8uWkvA==
-X-Received: by 2002:a05:7301:1984:b0:2be:9c19:b34b with SMTP id
- 5a478bee46e88-3039785c745mr3778733eec.4.1778967438706; 
- Sat, 16 May 2026 14:37:18 -0700 (PDT)
-X-Received: by 2002:a05:7301:1984:b0:2be:9c19:b34b with SMTP id
- 5a478bee46e88-3039785c745mr3778723eec.4.1778967438174; 
- Sat, 16 May 2026 14:37:18 -0700 (PDT)
-Received: from [192.168.1.170] (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-30293e2e6a9sm10286993eec.2.2026.05.16.14.37.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 16 May 2026 14:37:17 -0700 (PDT)
-Message-ID: <4fe8e2cb-8a5a-45ee-822d-2488dbec845e@oss.qualcomm.com>
-Date: Sat, 16 May 2026 14:37:16 -0700
+ d=1e100.net; s=20251104; t=1778977803; x=1779582603;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=G4118SVqI4u6LKMHVp6Cyf85SwC6FwO7230ZJv9vMGY=;
+ b=RtbDjCPpSOgVYMiRKQp9vQHy76aOIPd4I0TCSPuzHqKcq+VPYyHeRZMyHHFDkLIxer
+ wcL558diV9UokIxmXGj9U+AhdShkLVfx4lSD50Jg9cH7/WBb4XS3ShTXDPwlqhw1ydbK
+ /Iw8dSczz3E5PUpcel3lABkfAWspXr2a8SxXwVmm8WB4CMgU3CzK6qbXNL31IhQl/z13
+ Jib2WPC42Rdw1iisPDWVAAJdIws1s19/HLWi84MyWTj0lKZXzf11/gwRZjCbetgUIprb
+ G5P35v+j4h0afge2mcv+w/RQNblvjKXj1P658DxrfzhuL5uxGVblT6MA/2PGBPLYlZbb
+ 4qOw==
+X-Gm-Message-State: AOJu0YxHe2S0HEKiyCVxOdnRrG1qL7CLsSkHDGkbWruZJdSpCON6mzKD
+ NuEPuv76MDzLDEREawUglX2AbkyBpj180YijYfq0FyAPHD4y/YQJ9PRvuMotWHpWlxL4IQcAnkl
+ H0mcI
+X-Gm-Gg: Acq92OHL4sbb67SCl+pdTHpq8RjbR4a/muHN3a2WAjdZxXrSTnYtQRn5xaiq3do6m6r
+ W7iyA9kxqvPZsozounj1kBDw85yQnQCx0QqHMuupNA0Wjecud+FBg/ryHK/eE6bbGqqgkBuwpN3
+ tYfg0AFiFWy4gTDk+VN6eLid5HDGQI0zplujW5dbN6GeA5UEnrefR7nvY9leMwvuJFxkJ+pwqM9
+ uDx0eEEEwNRY85MnvnYcBdHh8ligG99iavaikaRw46/rv9mw4D3Ehg/8u/LgOrlwNICJsDyy7IY
+ dCvPOU5u8zw5OW+SQsKMkBQLxqlfpDQjMoPCJnOMcCM6/zrIc5w/9qWFM7SiJJCma/lnmFOELeC
+ gtTuyTXrJNz0v/e//MNV+APvamlKcBEL+0nZ2Up20S2AagQriuB6otn7WjSQkNCu9OxAS+dfLHo
+ gtnc18hy+yp8rX3rHTRraBBXR/GgoK
+X-Received: by 2002:a05:6a00:4b0b:b0:82f:390a:69c7 with SMTP id
+ d2e1a72fcca58-83f33dd0695mr10497555b3a.33.1778977803252; 
+ Sat, 16 May 2026 17:30:03 -0700 (PDT)
+Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-83f19663cfdsm12272745b3a.9.2026.05.16.17.30.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 16 May 2026 17:30:02 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v5 00/63] target/arm: Implement FEAT_FP8
+Date: Sat, 16 May 2026 17:28:59 -0700
+Message-ID: <20260517003002.321430-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 05/21] hw/arm/aspeed: Do not realize 64-bit CPU types
- under QTest
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Laurent Vivier <lvivier@redhat.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, Troy Lee <leetroy@gmail.com>,
- qemu-arm@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Fabiano Rosas <farosas@suse.de>
-References: <20260516171524.19184-1-philmd@linaro.org>
- <20260516171524.19184-6-philmd@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20260516171524.19184-6-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTE2MDIxOCBTYWx0ZWRfXwpdYm6uf97aE
- yqJx4aCZiDZCASLFRofWo7g1zqhc+1yFwkHExInUoANnAHfpx928jVgb4mmfhni+tZqsrCe5hU/
- GO6nmbyQpxeUCVME/H2bLZMYUo13v+CQQfts9zkbNu++Y9yeLs0druIEc1Juy/8g7UTBTaTfQeS
- +L/9NwnWUkw30VOe65xh9kG+YFGxzpkFFn4xAbrgoOJ6YNFlMpXV2g/dIfN6dyhDUWqHSTuCJ2J
- U9efn8T8bTpWLF5x53sbre1XRfL3XvEr80ju7b8eNcV06GDQ0lzy70mT5lC6A14UcrkmUUQDfOa
- 5fhXEYXAqHCPWNWhbvI3tmlKyhHePVNu3jc5A1JfHlHl2lieBU3RlrQeYDNURSgZtaP0M8PMjmn
- viZ3zRyeRxbQ6+2jbxQXrxxBQw9BgpfxYGr1boJEQZ/40/EHAqmFbI3M6kbuNogOQ7ZHLPFY+im
- tZ0CwVvL2klyyRX+ZKg==
-X-Proofpoint-GUID: RaMmlPwWVfAI0-OOJPgN5drkX1oLrOG-
-X-Proofpoint-ORIG-GUID: RaMmlPwWVfAI0-OOJPgN5drkX1oLrOG-
-X-Authority-Analysis: v=2.4 cv=E5v9Y6dl c=1 sm=1 tr=0 ts=6a08e38f cx=c_pps
- a=wEP8DlPgTf/vqF+yE6f9lg==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
- a=IkcTkHD0fZMA:10 a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=aow-egSQAAAA:8 a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=RhXjfXvIr8CSHO81VaMA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=bBxd6f-gb0O0v-kibOvt:22
- a=gFNbaldVC-z-bsjSTzMo:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-05-16_03,2026-05-15_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 malwarescore=0 bulkscore=0 adultscore=0 spamscore=0
- priorityscore=1501 lowpriorityscore=0 suspectscore=0 phishscore=0
- impostorscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2605130000
- definitions=main-2605160218
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -166,24 +97,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/16/2026 10:15 AM, Philippe Mathieu-Daudé wrote:
-> aspeed_ast27x0.c models 2 similar SoC based on a 64-bit only
-> CPU (Cortex-A35), only available in the 64-bit binary.
-> 
-> If we build this file as common object, these SoCs become
-> available in both 32 and 64-bit binaries; however when running
-> the introspection test on the 32-bit binary, the init() method
-> tries to init the Cortex-A35 type -- although not realizing it
-> -- which is not available. Simply skip CPU initialization when
-> running QTests on a 32-bit binary, asserting the realization
-> step is not reached.
-> 
-> Suggested-by: Cédric Le Goater <clg@kaod.org>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  hw/arm/aspeed_ast27x0.c | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
+Based-on: 20260517002550.321291-1-richard.henderson@linaro.org
+("[PATCH v4 00/12] fpu: Export some internals for targets")
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Changes for v5:
+  - Fix faminmax vs nans
+  - Fix fpmr.nscale vs fp16
+  - Fix float exception writeback for multiplies.
+  - Implement linux-user hwcap and signals per linux 7.1.
+
+
+r~
+
+
+Pierrick Bouvier (1):
+  tests/functional/aarch64/rme: update images to support FEAT_FP8
+
+Richard Henderson (62):
+  target/arm: Implement ID_AA64ISAR3
+  fpu: Export floatN_minmax
+  target/arm: Implement FEAT_FAMINMAX for AdvSIMD
+  target/arm: Implement FEAT_FAMINMAX for SME
+  target/arm: Implement FEAT_FAMINMAX for SVE
+  target/arm: Enable FEAT_FAMINMAX for -cpu max
+  target/arm: Update SCR bits for Arm ARM M.a.a
+  target/arm: Update HCRX bits for Arm ARM M.a.a
+  target/arm: Introduce FPMR
+  target/arm: Update SCTLR bits for FEAT_FPMR
+  target/arm: Enable EnFPM bits for FEAT_FPMR
+  target/arm: Clear FPMR on ResetSVEState
+  target/arm: Add FPMR_EL to TBFLAGS
+  target/arm: Trap direct acceses to FPMR
+  target/arm: Enable FEAT_FPMR for -cpu max
+  target/arm: Implement ID_AA64FPFR0
+  target/arm: Add isar_feature_aa64_f8cvt
+  target/arm: Implement FSCALE for AdvSIMD
+  target/arm: Implement FSCALE for SME
+  target/arm: Split vector-type.h from cpu.h
+  target/arm: Move vectors_overlap to vec_internal.h
+  target/arm: Implement BF1CVTL, BF1CVTL2, BF2CVTL, BF2CVTL2 for AdvSIMD
+  target/arm: Implement BF1CVT, BF1CVTLT, BF2CVT, BF2CVTLT for SVE
+  target/arm: Rename SME BFCVT patterns to BFCVT_hs
+  target/arm: Implement BF1CVT, BF1CVTL, BF2CVT, BF2CVTL for SME
+  target/arm: Implement F1CVTL, F1CVTL2, F2CVTL, F2CVTL2 for AdvSIMD
+  target/arm: Implement F1CVT, F1CVTLT, F2CVT, F2CVTLT for SVE
+  target/arm: Implement F1CVT, F1CVTL, F2CVT, F2CVTL for SME
+  target/arm: Implement BFCVTN for SVE
+  target/arm: Implement FCVTN (16- to 8-bit fp) for AdvSIMD
+  target/arm: Implement FCVTN, FCVTN2 (32- to 8-bit fp) for AdvSIMD
+  target/arm: Implement FCVTN (16- to 8-bit fp) for SVE
+  target/arm: Implement FCVTNB, FCVTNT for SVE
+  target/arm: Implement FCVT (FP16 to FP8) for SME
+  target/arm: Implement FCVT, FCVTN (FP32 to FP8) for SME
+  target/arm: Implement LUTI2, LUTI4 for AdvSIMD
+  target/arm: Implement LUTI2, LUTI4 for SVE
+  target/arm: Enable FEAT_LUT for -cpu max
+  target/arm: Enable FEAT_FP8 for -cpu max
+  target/arm: Update ID_AA64SMFR0_EL1 fields to ARM M.b
+  target/arm: Implement MOVT (vector to table)
+  target/arm: Implement LUTI4 (four registers, 8-bit)
+  target/arm: Enable FEAT_SME_LUTv2 for -cpu max
+  target/arm: Implement FMLALB, FMLALT for AdvSIMD
+  target/arm: Implement FMLALB, FMLALT (FP8 to FP16) for SVE
+  target/arm: Implement FMLALL{BB,BT,TB,TT} for AdvSIMD
+  target/arm: Implement FMLALL{BB,BT,TB,TT} for SVE
+  target/arm: Enable FEAT_FP8FMA, FEAT_SSVE_FP8FMA for -cpu max
+  target/arm: Implement FDOT (FP8 to FP32) for AdvSIMD
+  target/arm: Implement FDOT (FP8 to FP32) for SVE
+  target/arm: Enable FEAT_FP8DOT4, FEAT_SSVE_FP8DOT4 for -cpu max
+  target/arm: Implement FDOT (FP8 to FP16) for AdvSIMD
+  target/arm: Implement FDOT (FP8 to FP16) for SVE
+  target/arm: Enable FEAT_FP8DOT2, FEAT_SSVE_FP8DOT2 for -cpu max
+  target/arm: Implement FMMLA (FP8 to FP32) for AdvSIMD
+  target/arm: Implement FMMLA (FP8 to FP32) for SVE
+  target/arm: Enable FEAT_F8F32MM for -cpu max
+  target/arm: Implement FMMLA (FP8 to FP16) for AdvSIMD
+  target/arm: Implement FMMLA (FP8 to FP16) for SVE
+  target/arm: Enable FEAT_F8F16MM for -cpu max
+  linux-user/aarch64: Implement hwcap bits for fp8 features
+  linux-user/aarch64: Implement FPMR signal frames
+
+ include/fpu/softfloat.h                      |  93 +-
+ target/arm/cpregs.h                          |   5 +
+ target/arm/cpu-features.h                    | 137 +++
+ target/arm/cpu.h                             |  52 +-
+ target/arm/helper-fp8.h                      |  14 +
+ target/arm/internals.h                       |  14 +-
+ target/arm/tcg/helper-a64-defs.h             |  11 +
+ target/arm/tcg/helper-defs.h                 |   6 +
+ target/arm/tcg/helper-fp8-defs.h             |  40 +
+ target/arm/tcg/helper-sme-defs.h             |   2 +-
+ target/arm/tcg/helper-sve-defs.h             |  14 +
+ target/arm/tcg/translate-a64.h               |   1 +
+ target/arm/tcg/translate.h                   |  10 +
+ target/arm/tcg/vec_internal.h                |  19 +
+ target/arm/vector-type.h                     |  44 +
+ fpu/softfloat.c                              |  50 +-
+ linux-user/aarch64/elfload.c                 |  14 +
+ linux-user/aarch64/signal.c                  |  44 +-
+ target/arm/helper.c                          |  43 +-
+ target/arm/machine.c                         |  20 +
+ target/arm/tcg/cpu64.c                       |  24 +
+ target/arm/tcg/fp8_helper.c                  | 877 +++++++++++++++++++
+ target/arm/tcg/hflags.c                      |  41 +
+ target/arm/tcg/sme_helper.c                  |   8 +-
+ target/arm/tcg/sve_helper.c                  |   8 +
+ target/arm/tcg/translate-a64.c               | 186 ++++
+ target/arm/tcg/translate-sme.c               | 109 ++-
+ target/arm/tcg/translate-sve.c               | 235 +++++
+ target/arm/tcg/vec_helper.c                  |  66 ++
+ target/arm/tcg/vec_helper64.c                |  50 ++
+ docs/system/arm/emulation.rst                |  13 +
+ fpu/softfloat-parts.c.inc                    |   8 +-
+ target/arm/cpu-sysregs.h.inc                 |   2 +
+ target/arm/tcg/a64.decode                    |  47 +
+ target/arm/tcg/meson.build                   |   1 +
+ target/arm/tcg/sme.decode                    |  36 +-
+ target/arm/tcg/sve.decode                    |  50 +-
+ tests/functional/aarch64/test_rme_sbsaref.py |   7 +-
+ tests/functional/aarch64/test_rme_virt.py    |   7 +-
+ 39 files changed, 2253 insertions(+), 155 deletions(-)
+ create mode 100644 target/arm/helper-fp8.h
+ create mode 100644 target/arm/tcg/helper-fp8-defs.h
+ create mode 100644 target/arm/vector-type.h
+ create mode 100644 target/arm/tcg/fp8_helper.c
+
+-- 
+2.43.0
+
 

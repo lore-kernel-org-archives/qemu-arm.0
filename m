@@ -4,79 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09A17CD4851
-	for <qemu-arm@archiver.kernel.org>; Sun, 17 May 2026 00:40:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83E36CD4F4A
+	for <qemu-arm@archiver.kernel.org>; Sun, 17 May 2026 16:13:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOPSx-0001QP-5U; Sat, 16 May 2026 20:34:47 -0400
+	id 1wOe7C-0008AR-Qh; Sun, 17 May 2026 12:13:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wOPSD-00077T-J7
- for qemu-arm@nongnu.org; Sat, 16 May 2026 20:34:10 -0400
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wOe7A-00089s-Tk
+ for qemu-arm@nongnu.org; Sun, 17 May 2026 12:13:16 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wOPS5-0006qR-QY
- for qemu-arm@nongnu.org; Sat, 16 May 2026 20:33:58 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id
- 41be03b00d2f7-c801d732058so346487a12.1
- for <qemu-arm@nongnu.org>; Sat, 16 May 2026 17:33:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wOe77-0004Mq-Ll
+ for qemu-arm@nongnu.org; Sun, 17 May 2026 12:13:16 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-48d102471a4so10081295e9.2
+ for <qemu-arm@nongnu.org>; Sun, 17 May 2026 09:13:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778978032; x=1779582832; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7JulMb7JBgH2EgAoTHRzYHxSimKKsWGbaNst37ZkVAE=;
- b=MBveLbrIbXv50/ykQz0TdiuxzpO7NxPh3jOYbN2SGmRKJGJgV3OPu6z5KrtcB+OZxT
- qg3sJN8kOgkxbk0fU+MKYIgaxQjKyBTS3xHxZnI6kLrxf5jUO0prRaVyrYwXHCwFGWnj
- MEXVcvxTMTX8xjBjoKJfK2wSWrSO6RZzI4EGsQxVTQvTraVUoHkDuNZ8vRk8thKzRKVR
- O8IAYR/ZHOTksH1aPbJtdq765mn8DF2aftwAc488YfTyEzLWP8nB9Mj53zNBWUG8DQD1
- ydJFtK8ZBysCKFTPeDhc3/6k3bZA3sKd33KbZJT/bt80qPvp6ZZ6A/AD77R7nEi+Crnb
- s13w==
+ d=linaro.org; s=google; t=1779034391; x=1779639191; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=J4KmTFDxjt9peL1fIkMDgewvYMtRoTZEayRboPQgiV0=;
+ b=huFx4EzgCrzZu1P1FaCq1FXyRfh8EzXXFONRvFlFOza7iTDbilsihhupTif9kGslgQ
+ MbS3vW25KjXu17sRmGcuIRQiBc+JfYQp9z8JkuUWpxssXrQqHlwONZVaLQT+p9huKbw5
+ Oo2i0qKjfa/tSkrqREMlx1JHB0vwwCbYnprnO2sDatBESQ80mfdqRP4p/yS0CUhn76Xa
+ GiA9Aw3sQPB6fVnmBRqAtDd0Mzpu+g/kk0i1b7XdQ4/A7HBQBhnoVjbbDyv9spTq8bfw
+ 6NmPZ0ZHCdXYdcdgiDqeYs3yGCd4JoT4LCVwEsjzvGtPLpr0iKS2IfrFD12UFZ7xkdMk
+ RWlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778978032; x=1779582832;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=7JulMb7JBgH2EgAoTHRzYHxSimKKsWGbaNst37ZkVAE=;
- b=QF+w680qbHLHqWIj4iK+MVZAexhGZfhW7h7C5hl2Z1WUvWmtqGJDospNiDovvRJA65
- CnNXL1uEqqK8VU94TFgKn4hvKOaxj9V1mQnqtcQZTOYCBdAfd5t42SlnWV54B8EQuOKN
- 0MoUYYfNskA8n8aiGN8SkcysxvA6q9+rAV25P0dG3KBjmVrCcWOxbf3GFbiENW9cX2iD
- 6TcbfWVaLVNLY/Frilh3H0s1Supn8bQ4WYTNmJ3YxwmIjBnv7CVuziA8iUBMU2BacGvs
- ku+SHYHVQogZ0U9aAVTCjmdIo2Jk20m+EWgTlviNWHaQhBwOMPdENCK0L7zmWeqcH2aQ
- MRiw==
-X-Gm-Message-State: AOJu0Yx5LuVI1xETJmOQt+eVgjZPrvq7PI3wGICX4bGQht6auRXc2DXu
- xgEenRiO3It/WA5XERZ24/ySMvjb7o6SJ5IiP/FSzqMoru5u+G14oGADLYWJ20hfDAZ7YpKm/5t
- /5jfv
-X-Gm-Gg: Acq92OGsdbXf3ckEfWIgBtejsejhYiO8rtqlgwXiR2qYToFP9c10uqW91K6K6cd+HMm
- 55NF7M9kl7P3K/vfT4VKxhiqbPO8Cfx4I2BSTaKX6aI7X9+Y05edrRr7fba0z7fSZuFTO5ozw12
- z+bMsdQswjtqzp2gs4vJGF+q/wav5CmYsaJe2AVYUs7Sci98e+agGNpgFRf+B9vDfspwCoYvLjd
- 0GL/f7aIIbV4d6oyGqHVO8lDGTBmC274GdZhynfwEuDC1T+RWl+qVx5lUUDzss1jFgJ/hjqg42G
- Kdrmxm8+tISz763Wf+HGaCwmuQ9gsPMF5TzLkV98RfMudb3XlmyXrRAcJek3px/dEhACd3FCkFI
- HVG9mQpWiJzG/b9EWfyoEF8jT+2VHSlDFcE2q4qJc1colppsNXiKqoe02xYJ8MZRya4QvlNy8xe
- UTAvZ8udQWfzKg/dcC3/7CoZDaKkCO
-X-Received: by 2002:a05:6a20:7f92:b0:3a2:ce0a:a629 with SMTP id
- adf61e73a8af0-3b0be709b97mr13918809637.12.1778978032066; 
- Sat, 16 May 2026 17:33:52 -0700 (PDT)
-Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c82da93df0dsm3010559a12.19.2026.05.16.17.33.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 16 May 2026 17:33:51 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v5 51/63] target/arm: Implement FDOT (FP8 to FP32) for SVE
-Date: Sat, 16 May 2026 17:29:50 -0700
-Message-ID: <20260517003002.321430-52-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260517003002.321430-1-richard.henderson@linaro.org>
-References: <20260517003002.321430-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20251104; t=1779034391; x=1779639191;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=J4KmTFDxjt9peL1fIkMDgewvYMtRoTZEayRboPQgiV0=;
+ b=TlhipoK8pTl3k8ansmT19jStHTRzXqkkK4LqAKym8LVFppWY6pXZf30p1qtc7xqWz9
+ CnBtdJUKfcUmy2Rl/0KPhUa5nQ0imXpAUYc1YOs95uo9hNCbJhPk0eyGTf3SADS5UPWQ
+ M0pTo1pPXknwRbO2CHjT4s3X/YsVCLJTJPFP20K/AfsJMe5OtzSr5zTQlMFKOrd39+WV
+ 1XA5xVEWpfOmoJUVGnUydW4nSTesNSJMJgMu7e2xTIsrQnw6E/M2bcjwicXqkCvHYxlt
+ lpGrf6Ti2pprCEMnZWhffqTN2j05Nu+7Jsxp6iyPjO7XekSoVPTTK0lZJSsdC/x7VEWt
+ kQkg==
+X-Gm-Message-State: AOJu0YySk1rsvwQD/ADk34pVp55BlV/rQmrtjGAUL2+j/DtLDzTEoGLT
+ Key/4HQ5+McDDksMoGn63E3769kE12xfJbsEFn98TrHyuolLGJUCoGIw6QUlzsUY5PfcWgwejvf
+ Iyw1aw+Q=
+X-Gm-Gg: Acq92OE1MFMwbeIr9phuvulR7MXz/1QKwtI664n3MbKIDlWavR9lm+4OcpSDHQitk5i
+ n8iSwU4Ss6KfCC2fwcEB2bL406jrG413qJwwF9LHb3+uoJVabdfzHcWPJqwGyhYFyVaIK2vKa+D
+ K9yvhlwe/93HWTw/2Z8kfC0BFOlVw5n1JHgh33kpqubvquvzMYZKyEpvmSFwVQbp01Z04n83sP1
+ gWVe7P9u0AZX9hggeSfIeyHioHQY2C/KmDB2Fq6CmkitjW8zl8hgT54daJ7uxlMrWMXsjINO+EI
+ rfXoTmK1W4830KYhIw5QkvfnCd5RByLoGEPU2PDL+NM6Mljb+r4p34cQW8NHy67rYZJr+1Ga027
+ cK3GAA1tAAeEf09pyEirSuiV712bCT5t2Sq7SKjfODs+uuHJz2CAOJ/bxfLSw1xFX4r5Rmo/kse
+ wMWY78vgmCqmHLb1bq5LXJeM1Jopo/7SSYP2sgIGZfvYYJOYcMIPYLO10TLAkNwx6+vQ==
+X-Received: by 2002:a05:600c:c096:b0:48a:563c:c8d6 with SMTP id
+ 5b1f17b1804b1-48fe5fd4b51mr129127675e9.7.1779034391275; 
+ Sun, 17 May 2026 09:13:11 -0700 (PDT)
+Received: from [192.168.69.200] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48feaa2949asm88144885e9.1.2026.05.17.09.13.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 17 May 2026 09:13:10 -0700 (PDT)
+Message-ID: <9acb9e94-27f3-44a4-a8ab-f2cb67c75328@linaro.org>
+Date: Sun, 17 May 2026 18:13:08 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 02/63] fpu: Export floatN_minmax
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20260517003002.321430-1-richard.henderson@linaro.org>
+ <20260517003002.321430-3-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260517003002.321430-3-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,95 +102,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu-features.h      |  5 +++++
- target/arm/tcg/translate-sve.c | 35 ++++++++++++++++++++++++++++++++++
- target/arm/tcg/sve.decode      |  4 ++++
- 3 files changed, 44 insertions(+)
+On 17/5/26 02:29, Richard Henderson wrote:
+> Allow target access to routines using the minmax flags.
+> Make the existing min/max wrappers inline.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   include/fpu/softfloat.h   | 93 ++++++++++++++++++++++-----------------
+>   fpu/softfloat.c           | 50 +++------------------
+>   fpu/softfloat-parts.c.inc |  8 ++--
+>   3 files changed, 62 insertions(+), 89 deletions(-)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index fbce0386ef..17d6acc14d 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1550,6 +1550,11 @@ static inline bool isar_feature_aa64_ssve_f8fma(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64SMFR0, SF8FMA);
- }
- 
-+static inline bool isar_feature_aa64_ssve_f8dp4(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64SMFR0, SF8DP4);
-+}
-+
- static inline bool isar_feature_aa64_sme_b16b16(const ARMISARegisters *id)
- {
-     return FIELD_EX64_IDREG(id, ID_AA64SMFR0, B16B16);
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index e23ca43f55..88e6148b83 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -8372,3 +8372,38 @@ TRANS(FMLAL_idx_hb, do_fmla_fp8, a, gen_helper_gvec_fmla_idx_hb)
- 
- TRANS(FMLALL_sb, do_fmla_fp8, a, gen_helper_gvec_fmla_sb)
- TRANS(FMLALL_idx_sb, do_fmla_fp8, a, gen_helper_gvec_fmla_idx_sb)
-+
-+static bool do_f8dp4(DisasContext *s, gen_helper_gvec_3_ptr *fn,
-+                     int rd, int rn, int rm, int index)
-+{
-+    bool fp8dp4 = dc_isar_feature(aa64_f8dp4, s);
-+    bool ssve_fp8dp4 = dc_isar_feature(aa64_ssve_f8dp4, s);
-+    bool ok = false;
-+
-+    /* Feature detection and enabling are complex here. */
-+    if (!(ssve_fp8dp4 || (fp8dp4 && dc_isar_feature(aa64_sve2, s)))) {
-+        return false;
-+    }
-+    if (fpmr_access_check(s)) {
-+        if (fp8dp4) {
-+            s->is_nonstreaming = !ssve_fp8dp4;
-+            ok = sve_access_check(s);
-+        } else {
-+            ok = sme_sm_enabled_check(s);
-+        }
-+    }
-+
-+    if (ok) {
-+        unsigned vsz = vec_full_reg_size(s);
-+        tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, rd),
-+                           vec_full_reg_offset(s, rn),
-+                           vec_full_reg_offset(s, rm),
-+                           tcg_env, vsz, vsz,
-+                           index, fn);
-+    }
-+    return true;
-+}
-+
-+TRANS(FDOT_sb, do_f8dp4, gen_helper_gvec_fdot_sb, a->rd, a->rn, a->rm, 0)
-+TRANS(FDOT_idx_sb, do_f8dp4, gen_helper_gvec_fdot_idx_sb,
-+      a->rd, a->rn, a->rm, a->index)
-diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
-index 06bbd7fa63..c49e992f10 100644
---- a/target/arm/tcg/sve.decode
-+++ b/target/arm/tcg/sve.decode
-@@ -1874,6 +1874,8 @@ FMLALL_sb       01100100 00 1 rm:5 10 idxn:2  10 rn:5 rd:5 &rxx idxm=0
- FDOT_zzzz       01100100 00 1 ..... 10 0 00 0 ..... .....  @rda_rn_rm_ex esz=2
- BFDOT_zzzz      01100100 01 1 ..... 10 0 00 0 ..... .....  @rda_rn_rm_ex esz=2
- 
-+FDOT_sb         01100100 01 1 ..... 10 0 00 1 ..... .....  @rda_rn_rm_ex esz=2
-+
- ### SVE2 floating-point multiply-add long (indexed)
- 
- FMLALB_zzxw     01100100 10 1 ..... 0100.0 ..... .....     @rrxr_3a esz=2
-@@ -1897,6 +1899,8 @@ FMLALL_idx_sb   01100100 idxn:2  1 .. rm:3 1100 .. rn:5 rd:5 \
- FDOT_zzxz       01100100 00 1 ..... 010000 ..... .....     @rrxr_2 esz=2
- BFDOT_zzxz      01100100 01 1 ..... 010000 ..... .....     @rrxr_2 esz=2
- 
-+FDOT_idx_sb     01100100 01 1 ..... 010001 ..... .....     @rrxr_2 esz=2
-+
- ### SVE broadcast predicate element
- 
- &psel           esz pd pn pm rv imm
--- 
-2.43.0
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF4CBCD4F3D
-	for <qemu-arm@archiver.kernel.org>; Sun, 17 May 2026 00:31:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C62CACD4F49
+	for <qemu-arm@archiver.kernel.org>; Sun, 17 May 2026 00:31:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOPPO-0007cH-1t; Sat, 16 May 2026 20:31:09 -0400
+	id 1wOPPF-0007TP-RW; Sat, 16 May 2026 20:30:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wOPOc-0007Ab-KU
- for qemu-arm@nongnu.org; Sat, 16 May 2026 20:30:21 -0400
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+ id 1wOPOX-00077y-Q6
+ for qemu-arm@nongnu.org; Sat, 16 May 2026 20:30:15 -0400
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wOPOX-0004r6-C7
- for qemu-arm@nongnu.org; Sat, 16 May 2026 20:30:18 -0400
-Received: by mail-pf1-x430.google.com with SMTP id
- d2e1a72fcca58-82fbdd60b64so876557b3a.3
- for <qemu-arm@nongnu.org>; Sat, 16 May 2026 17:30:11 -0700 (PDT)
+ id 1wOPOT-0004mc-AT
+ for qemu-arm@nongnu.org; Sat, 16 May 2026 20:30:12 -0400
+Received: by mail-pg1-x52d.google.com with SMTP id
+ 41be03b00d2f7-c8021c8c42fso341194a12.3
+ for <qemu-arm@nongnu.org>; Sat, 16 May 2026 17:30:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778977811; x=1779582611; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778977805; x=1779582605; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HTm+tJ9AXbaN4UCtQXozdvXW5oj4hpGtuMfl8xxCE7w=;
- b=ikix6iJFvuacZ8TXpQRF5hB4y/ysxl79LLFSAf5kbePiNcUflZakBfAnMZ8CFMHAKM
- 2nnET4e9FZfG6hmZzC0x8gwGFi6b68x8Wz/wTzfWbX0CIVhcpE0T541db5VLd8VnFxGK
- oLm9oVdd1Yz+Fyi+DnE5mhF0+LVmEA+YBCI86a5cBV8f7imjbE83dJOPoxiFQF9rQa8+
- pPmG4L/lemeUXKl3wqgOzSrOO9KB47s1jdyKazqgQgBLatGZqtH3MzeYVOdsZ9K1H9kz
- +P5JupKta+4AsJosMCUOKeWIgY1DtXnjBa78ZNjAGFCAeIc3EHpr35F5AEYesXX8CA1I
- jkHA==
+ bh=igH1Orszu/DZI1tTbnaIoUTxsqOZEnj+4FQPvhRK6EI=;
+ b=yu/RZ2QT7Jl8vc4Eo6tYUh7OJjxrmo01OkB7MpAODaC2rohP5IpktGbqwIcK3rVbyq
+ 1spslMNedQ5htQV6304rOlitFhIVXOvw2nC6RWaEnOBUA0ZJvbhOfCvLoCW7yI0H9QTA
+ fjgL6ftz28afGGz4YVgGUsf1QMA1ZZ/CJkbIg6jR47iJd8SF0NJgLEpwWoOy1lOC+3SP
+ NJDbLNmbw/kmeWVpZqv6DKgR+CuKVwqv19Zfuy5919TU5JkgArfVgXbYWRSzuErS9lHk
+ XGwXBxcndtK4WYpqmoA+Dzhr48PamiGOZo+bvakvoH3GAF49pEjiVIspYhCnqdxFcxtQ
+ tMng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778977811; x=1779582611;
+ d=1e100.net; s=20251104; t=1778977805; x=1779582605;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=HTm+tJ9AXbaN4UCtQXozdvXW5oj4hpGtuMfl8xxCE7w=;
- b=V0uI1IxVKEQj57GGk+LIB2v+MRHLUT3yvfjTLUK55TjawH/kzEE+9/58D6IBX8FnEF
- j+PJtFy6dwkQqO8kt40NKykFyodaeCj+boi/pe6YgQU2kVxyw8J5mWlCHbP/cqBzhS86
- ySZ4tI1jX91e+tErMo5nnwxL6bXV31kJaukCP/ztGDoBmIkM2zC6Fc+TS1T9UcY7Gj4f
- Y1ilNA6wiCiWxeA+/l9ZTjRf16HdGulfp0C5b9WnrM2aQ5DlIgzYLF+Xdiuo49CKm30m
- wbrKoRqXIn0n3TPZHpJNEoSZHHYLNsusDQvLgvwJJTYUpzcKgzWodxVDnY7iLsz6eydz
- ow+Q==
-X-Gm-Message-State: AOJu0Yz33Bnm/3LUyEAfwwtogYTUPEfW2n4+DgisbCvlt33wTbprdEQ0
- yDJj9Q1/8Ml3IZSNLacpEUYkgkS9Nk4YyR2M414mIrWPnJmqYQcC0Ch0zUS0JHiWb8vtI6HUrZt
- HCPfi
-X-Gm-Gg: Acq92OGKP62EIVW1nZLkKYtvpsmIAnPqSdjero0e6Ies4pz83XSryFzKhgo/+IwGsGy
- emncs58nQ8dihpg1R5FnD5QRwhdFg3VmtB0VGdBYJo9bw6BJRgtSv0jyYJl6cYso1DwGrZUJD8t
- j16H/EgXKdRUYWR4yqXNSB8m0lRRjOEE5J5kE78UzLYrX5ndY6JiiWCDWfO4QRtTCxkK38C5sB2
- Mmm94adkvsKbM9VEtPv2ZriH6R9rponH+7e6DINBx873oHdlTy/gveTRD4LPPHl+qnB/kLIgkcm
- r6NzIHNFtDXWQ9ivMikMyVLTeR7uZSHUzFMnmJ0/BXre6rVrD78benBN1wT/vad2Wea5/WRfss5
- xmsJtfS9cWXiWCEmeQN+GAbrO1f6oThzLE7/mgRqrhkkUmlguRUE5MFQdElsssoX1zCCHm9Xsey
- xVTnnRz/A01Jdli3lElCDBkRpYyQdH
-X-Received: by 2002:a05:6a00:1404:b0:829:9a7b:db84 with SMTP id
- d2e1a72fcca58-83f33f30bf8mr9765756b3a.49.1778977810719; 
- Sat, 16 May 2026 17:30:10 -0700 (PDT)
+ bh=igH1Orszu/DZI1tTbnaIoUTxsqOZEnj+4FQPvhRK6EI=;
+ b=F7pIqRR5qGJPoZjRJEzE32NZf27WGa5sbyEfgk3I2HuxcyvuRgpYmV4uMGovsGiCz1
+ Nf5M/EPHU/8Gc06l4BXNyuGEVhgrQu6y//RDJJsY6rYdeFcDs3DA+rTZP4rXTA1qsh8u
+ CmNDQUOFc2L75Z6l3G+0wtI3Qa+qohABY+4mC1d6ZOgmOAR3cJl81UCRT0GaYjjBkiW1
+ NJ8HhRZTWRmIr9ZXUF/EKrh2BzVeYl61fRwh3iMWnKWjKH0MrMz78LJFy8QZGELG3U1I
+ TDydEiKWG9MTAVK1MSwWZSKfzX4d/Um22wXAyX3KunLXNnmz52nYbE03hNCdJ9twm9h4
+ MgYQ==
+X-Gm-Message-State: AOJu0Yx0fr4GDG9+Qe6NRADtmNN848J/xL8shstszD3BrmbGTmwFATCx
+ Dj7SZTDdbNgReiPj0uwf9D7jNfJ6hqvbiIkbxePqfX1u+SVS/WLRhMp7MqYcPv/Oqq0=
+X-Gm-Gg: Acq92OG6TBAFuAFF4oF9Gc03N8H4TfyriRdNhn8oABxO4XkNkxBpV/+AYSnhCF2t9uA
+ er5Y8/00vFPHTxdhTOImhX7tUGNsr9EnVvqU+3QtBKI0eJrdC9j+rhmL9CfIyYoJ2vUANAMDU3E
+ a0B397QzpGz9eIWh54Jys22e+oX/EdFiT2Kp0kb3Uk1kDhcZby3lBeFrxpWh8FUdNuh2/HcoAQy
+ AvEKfUeISF0yxi4UHSrrXc8yaAbo+lbZuXaP4vpgqv6r5UVTxCblZtiq3Y0rQ37PVpQD8n7PNLs
+ 8W+SDQTkh/GZBSPt2zziYnJRNue0YVzCM428+Nwcu17HhGxQAzv4i0mEnDPuv08W2kvjRLr1A2f
+ mFY4x+58h70qLxFnl9XfjCRO/MrhbsiIjoQlUbaU6vdtCQnJsuoA835eg7jVkunVM09B71exTra
+ gwbL8l6ZmVZsIZJnepGi3f1iTC0c+a
+X-Received: by 2002:a05:6a00:3005:b0:837:db9d:9606 with SMTP id
+ d2e1a72fcca58-83f33d26f5cmr10487952b3a.23.1778977805244; 
+ Sat, 16 May 2026 17:30:05 -0700 (PDT)
 Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-83f19663cfdsm12272745b3a.9.2026.05.16.17.30.10
+ d2e1a72fcca58-83f19663cfdsm12272745b3a.9.2026.05.16.17.30.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 16 May 2026 17:30:10 -0700 (PDT)
+ Sat, 16 May 2026 17:30:04 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v5 08/63] target/arm: Update HCRX bits for Arm ARM M.a.a
-Date: Sat, 16 May 2026 17:29:07 -0700
-Message-ID: <20260517003002.321430-9-richard.henderson@linaro.org>
+Subject: [PATCH v5 03/63] target/arm: Implement FEAT_FAMINMAX for AdvSIMD
+Date: Sat, 16 May 2026 17:29:02 -0700
+Message-ID: <20260517003002.321430-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260517003002.321430-1-richard.henderson@linaro.org>
 References: <20260517003002.321430-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,24 +100,149 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ target/arm/cpu-features.h        |  5 +++++
+ target/arm/tcg/helper-a64-defs.h |  7 +++++++
+ target/arm/tcg/vec_internal.h    |  7 +++++++
+ target/arm/tcg/translate-a64.c   | 14 +++++++++++++
+ target/arm/tcg/vec_helper64.c    | 34 ++++++++++++++++++++++++++++++++
+ target/arm/tcg/a64.decode        |  5 +++++
+ 6 files changed, 72 insertions(+)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 3edc15c7b4..4414be85d9 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -258,7 +258,9 @@ FIELD(VSTCR, SA, 30, 1)
- #define HCRX_TCR2EN   (1ULL << 14)
- #define HCRX_SCTLR2EN (1ULL << 15)
- #define HCRX_GCSEN    (1ULL << 22)
--
-+#define HCRX_ENFPM    (1ULL << 23)
-+#define HCRX_PACMEN   (1ULL << 24)
-+#define HCRX_SRMASKEN (1ULL << 26)
- #define HPFAR_NS      (1ULL << 63)
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index 50776347a5..21a1f941dd 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -1062,6 +1062,11 @@ static inline bool isar_feature_aa64_ats1a(const ARMISARegisters *id)
+     return FIELD_EX64_IDREG(id, ID_AA64ISAR2, ATS1A);
+ }
  
- #define HSTR_TTEE (1 << 16)
++static inline bool isar_feature_aa64_faminmax(const ARMISARegisters *id)
++{
++    return FIELD_EX64_IDREG(id, ID_AA64ISAR3, FAMINMAX) != 0;
++}
++
+ static inline bool isar_feature_aa64_fp_simd(const ARMISARegisters *id)
+ {
+     /* We always set the AdvSIMD and FP fields identically.  */
+diff --git a/target/arm/tcg/helper-a64-defs.h b/target/arm/tcg/helper-a64-defs.h
+index 3c3c5dddb7..215df1201b 100644
+--- a/target/arm/tcg/helper-a64-defs.h
++++ b/target/arm/tcg/helper-a64-defs.h
+@@ -145,6 +145,13 @@ DEF_HELPER_FLAGS_5(gvec_fmulx_idx_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst,
+ DEF_HELPER_FLAGS_5(gvec_fmulx_idx_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+ DEF_HELPER_FLAGS_5(gvec_fmulx_idx_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+ 
++DEF_HELPER_FLAGS_5(gvec_famax_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_famin_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_famax_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_famin_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_famax_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++DEF_HELPER_FLAGS_5(gvec_famin_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++
+ #ifndef CONFIG_USER_ONLY
+ DEF_HELPER_2(exception_return, void, env, i64)
+ #endif
+diff --git a/target/arm/tcg/vec_internal.h b/target/arm/tcg/vec_internal.h
+index c7ccb28b18..cc2691b2f6 100644
+--- a/target/arm/tcg/vec_internal.h
++++ b/target/arm/tcg/vec_internal.h
+@@ -338,6 +338,13 @@ bfloat16 helper_sme2_ah_fmin_b16(bfloat16 a, bfloat16 b, float_status *fpst);
+ float32 sve_f16_to_f32(float16 f, float_status *fpst);
+ float16 sve_f32_to_f16(float32 f, float_status *fpst);
+ 
++float16 float16_famax(float16, float16, float_status *);
++float16 float16_famin(float16, float16, float_status *);
++float32 float32_famax(float32, float32, float_status *);
++float32 float32_famin(float32, float32, float_status *);
++float64 float64_famax(float64, float64, float_status *);
++float64 float64_famin(float64, float64, float_status *);
++
+ /*
+  * Decode helper functions for predicate as counter.
+  */
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 9a27c4c6ec..3c6559964b 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -6478,6 +6478,20 @@ static gen_helper_gvec_3_ptr * const f_vector_fminnmp[3] = {
+ };
+ TRANS(FMINNMP_v, do_fp3_vector, a, 0, f_vector_fminnmp)
+ 
++static gen_helper_gvec_3_ptr * const f_vector_famax[3] = {
++    gen_helper_gvec_famax_h,
++    gen_helper_gvec_famax_s,
++    gen_helper_gvec_famax_d,
++};
++TRANS_FEAT(FAMAX, aa64_faminmax, do_fp3_vector, a, 0, f_vector_famax)
++
++static gen_helper_gvec_3_ptr * const f_vector_famin[3] = {
++    gen_helper_gvec_famin_h,
++    gen_helper_gvec_famin_s,
++    gen_helper_gvec_famin_d,
++};
++TRANS_FEAT(FAMIN, aa64_faminmax, do_fp3_vector, a, 0, f_vector_famin)
++
+ static bool do_fmlal(DisasContext *s, arg_qrrr_e *a, bool is_s, bool is_2)
+ {
+     if (fp_access_check(s)) {
+diff --git a/target/arm/tcg/vec_helper64.c b/target/arm/tcg/vec_helper64.c
+index 249a257177..4a5b0782d1 100644
+--- a/target/arm/tcg/vec_helper64.c
++++ b/target/arm/tcg/vec_helper64.c
+@@ -140,3 +140,37 @@ void HELPER(simd_tblx)(void *vd, void *vm, CPUARMState *env, uint32_t desc)
+     memcpy(vd, &result, 16);
+     clear_tail(vd, oprsz, simd_maxsz(desc));
+ }
++
++/*
++ * Use float_minmax_ismag to get the absolute value min/max.
++ * Avoid float_minmax_is{num,number} so that we get normal NaN processing.
++ * If the result is not a nan, take the absolute value.
++ */
++#define DO_FAMINMAX(NAME, TYPE, MIN)                                    \
++TYPE TYPE##_##NAME(TYPE a, TYPE b, float_status *s)                     \
++{                                                                       \
++    float_status local = *s;                                            \
++    set_flush_to_zero(0, &local);                                       \
++    set_flush_inputs_to_zero(0, &local);                                \
++    TYPE r = TYPE##_minmax(a, b, &local, MIN | float_minmax_ismag);     \
++    if (!TYPE##_is_any_nan(r)) {                                        \
++        r = TYPE##_abs(r);                                              \
++    }                                                                   \
++    float_raise(get_float_exception_flags(&local)                       \
++                & ~float_flag_input_denormal_used, s);                  \
++    return r;                                                           \
++}
++
++DO_FAMINMAX(famax, float16, 0)
++DO_FAMINMAX(famin, float16, float_minmax_ismin)
++DO_FAMINMAX(famax, float32, 0)
++DO_FAMINMAX(famin, float32, float_minmax_ismin)
++DO_FAMINMAX(famax, float64, 0)
++DO_FAMINMAX(famin, float64, float_minmax_ismin)
++
++DO_3OP(gvec_famax_h, float16_famax, float16)
++DO_3OP(gvec_famin_h, float16_famin, float16)
++DO_3OP(gvec_famax_s, float32_famax, float32)
++DO_3OP(gvec_famin_s, float32_famin, float32)
++DO_3OP(gvec_famax_d, float64_famax, float64)
++DO_3OP(gvec_famin_d, float64_famin, float64)
+diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
+index 01b1b3e38b..666a293540 100644
+--- a/target/arm/tcg/a64.decode
++++ b/target/arm/tcg/a64.decode
+@@ -1193,6 +1193,11 @@ RSUBHN          0.10 1110 ..1 ..... 01100 0 ..... ..... @qrrr_e
+ PMULL_p8        0.00 1110 001 ..... 11100 0 ..... ..... @qrrr_b
+ PMULL_p64       0.00 1110 111 ..... 11100 0 ..... ..... @qrrr_b
+ 
++FAMAX           0.00 1110 110 ..... 00011 1 ..... ..... @qrrr_h
++FAMAX           0.00 1110 1.1 ..... 11011 1 ..... ..... @qrrr_sd
++FAMIN           0.10 1110 110 ..... 00011 1 ..... ..... @qrrr_h
++FAMIN           0.10 1110 1.1 ..... 11011 1 ..... ..... @qrrr_sd
++
+ ### Advanced SIMD scalar x indexed element
+ 
+ FMUL_si         0101 1111 00 .. .... 1001 . 0 ..... .....   @rrx_h
 -- 
 2.43.0
 

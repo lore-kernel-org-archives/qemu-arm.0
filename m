@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D5A9CD4F3C
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:34:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C19CD4F48
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:35:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOsUW-0000gd-2d; Mon, 18 May 2026 03:34:26 -0400
+	id 1wOsUj-0000oJ-7C; Mon, 18 May 2026 03:34:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUJ-0000fV-EY
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:07 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ id 1wOsUM-0000ft-3G
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:17 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUH-0000Br-Hx
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:07 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-488ab2db91aso19817245e9.3
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:04 -0700 (PDT)
+ id 1wOsUJ-0000CT-6m
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:09 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-488a9033b2cso13465675e9.2
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779089643; x=1779694443; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=kAgSRBIgRfg5Ci/kYkem6tx0tKkzNP30+dM14vaMmgA=;
- b=ck1PzqB7kbNuRecxQXdSM/gsXKjXYkXS3j9kaZDieB0+PG5TFp6CugRAJEe9pYB5pJ
- lAQ1UdAaZbEJQZOh2iUqn1xxgm3yABiKIXkqx9f35M6LSEJaaer9ZOf9tRobloRgPxe8
- tQLAgOm7AytrT35rKm0ALw//XTRu+t1AjtZsKMnHKwEwqBpvacOlKqSqBoP+NA6WQSzP
- ncXpaZpV9Y1/efMIutZdIe6RVEBlgQP1WCWvNYn/rwQevYW88Q6bR1goBTO5BiXPccAd
- 8d18lu19GwkhhGaQTmo1+zsH8boRvPr8RcgdAYSvq4OZMwx/bg7pE2hazvATWIY4tGa9
- dyhQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779089643; x=1779694443;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20251104; t=1779089645; x=1779694445; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kAgSRBIgRfg5Ci/kYkem6tx0tKkzNP30+dM14vaMmgA=;
- b=Qlwt4agVrpP8AlgGCP4x/+dZTZ2F6im8cwY43FRtkyro5VivDCKOMp2KGSFMnFXNkT
- 9cRmEh1YkeRywqtSlHKDznhRup3B0oHmzSQbkkQUbnyaSbekWGn5cpisbIxkbu9IJvKq
- uBnJMqHY07IC98Zvre0Xk71nmNIWgLn/CAWcQVhbFFM3Lv3T92kO/q82Rk+mJoFpv2yu
- WQ2RdAYcUP+ywbssOns/vc2OkHQmGapVltO4vmA4qeD4IJxkKLOzFvTNvG7pTZDTgiwi
- PeQbHLjRanEABczfKh38aeJgUQmrN1kjL2moKBT6XAfIPX7nCmtS0egsJF41IXs+kv6E
- oiNQ==
+ bh=QGkrVLFS7cW0IKrQNJ4/JeWHeoQPDU3gaIf/fmkwr+c=;
+ b=ic1SyuqnBrio7UGvpl71sZFAq23RzQmssi3R6i0DDVS/gJVg4y5y1opi1Z4L2LO66q
+ wxo6BehCFQ3RsGAqfTyUAuhu5L65juGNJZ0p3BhyHMzaKFsohyISZJjqnXLdX7tsvIy0
+ ajGIkOulf73hkJNCgMqoaljBc9UGkItCJWUgUkH7iP++OvvKRq/ChhR3r1RoO0SdhKfh
+ K3aIM1VUryps4g0v/j7/CjR3mc8l0DDhKGdIXTH2D/+lptRaWDxfUgG/zZVhIA7NKsfQ
+ DckMH0HaVAi26dsuB1n29ORbyTaXIPOb3KiIyX9rbHBZiq0pWBS4+/2BOhrkLda0/xrE
+ cN+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779089645; x=1779694445;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=QGkrVLFS7cW0IKrQNJ4/JeWHeoQPDU3gaIf/fmkwr+c=;
+ b=n11VsY81EHG0Mh41hvP2N62PrKJvkkl1EbTC7W1Sf49sT0b3tKmt2CKlhQmKERRznE
+ yDO7rC6tg1Z1zJWBWF8ZWCV9J8AQM4S86DPx4s02PlYBESkegcTzPIJncHFDfgYF7PEm
+ AYmTazWTA1aM5mmfXQ7TA6JN+CUH4kMMxGxC3uybuByGNr5+LcphQiAlIQG2qW8bNotz
+ RJlbpzzyZo1Q2J5JtSKu+nxSBXUr/Zv8gWz4Anm8kf9n8jXX8D6+IS1AvZoLpkAEGC8k
+ 6xaoFccoiKCRPctBuQkkVawITIKYCzr8rGvCa19zerXp5L8NkZHlEzIEYEnSdb5QrTaI
+ /thg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8fUwCev1MiohK08qPmh+7umllB6yBbULhqiogjHIetgAK8EE/0zFayD9zA6JuxK756A0HpgMSOwQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwNX371J4DEtKhao9WLtMfbQx7dZ+Mcf6ARxn/URZxjIOvUfEWQ
- GyFJ/Ns8us443DuAM6jDesy0CdeaapRiFgJvXNoreuT0/RtvbRWAKCLl
-X-Gm-Gg: Acq92OEcp3PJk6c89UP02RrI5BZnHTf0F8HpQWR1Ir5TgRTNC+XH/pnpzHDbeMgN8H+
- s0/BM215KEw1ZCzgy5dkPoDmMn50ynmZg8jcNujBr196D8bfUmryQ2VyPzb0UtAhJL/yjl8K29q
- iNA5wcfAPHIwl0fE2GYFwNIWKlDUyz6ae4LEP+vCYLk1n/7ZJX3Qil8rXQ7xxGes95/Cc955OO6
- 9gwHjv2O4i/zm31cm8QCuQ7D5IUk+iZOlwSzD9lFVNdtn4fWOEsZ8OmFGOuGsxWpi4+Qngki8A/
- NUMriJh9ZfoQ4quAK1E0GTfnPaOGpeDa7zBnVTivb2t6JgrJQ0oV9zC1aFgJdkAVEsfEAJY/nku
- FK7aYWE/I4opeMbPhChAcySxxI1H9XzpuHYLiB4kCjsRMS5eyZgYSyUF5pqWCoXXJtkHCbRdtz2
- HlTqVQxHcwXwkm0hLWXqc8+R/oX/smWfPh8T9RR7HLAQGILA==
-X-Received: by 2002:a05:6000:2c07:b0:45e:75c5:1a6a with SMTP id
- ffacd0b85a97d-45e75c51b5emr7245024f8f.33.1779089643289; 
- Mon, 18 May 2026 00:34:03 -0700 (PDT)
+ AFNElJ+LQaw94hi7BBqaC3hnuOT/Is6SSaJpKXZ3vaegzWaSD8VV0aDHwnzepBPQPT2g8v8hqMir63hoDw==@nongnu.org
+X-Gm-Message-State: AOJu0YzsRmZ4IBiT0gDYwB5X1GY7LadcZizPPRrub8XFFuCRI4Danpqt
+ hdhN0ntyz+/g5JzOWTL9f+z32otvXMuc5zYeht0Iu9JB3w25BQjKKp4Y
+X-Gm-Gg: Acq92OF3X2MV3sCPyJ/tsh5k/j+oYUENVVmvJ3e8CEvSR9vFDmTkCC3KCsfRROZipsX
+ f3dDUWB8+ZMJlD7/vTMACtGVeJcmdLy8HF76D3L1rxvX2c1M7+7XL+tzlBsT5gki62XoOGeq/fE
+ iqYGYmfNewz8UJnd40151pev6nUHejWDOpDVSOleHdfo3vZ5Cx1ZVnMmSWXb4O5YtZlVcDAhP72
+ o6id2gbr76n2aoSDhJAW5350S0+Me02DvAKFaJ77ju6RPWTwSyeX5MjJhAPX40DkAj+BCyjHdH3
+ fgqR1lWnQZz1+sxUS4PY1u6D/qVjkVOhRjUjvGfeA8/MrmdgDa4EyE/xZlWHtELLBLvTBooplcD
+ VoCNEnAriD2R1LbRoBewFIqyN8wU1B400SCiqk54+TFwqRZ2BFr8H8Vwmg7f2bp8MBXkxxYCxkT
+ aT+dlLA++r16ioERORWSclNb1PJZ7JGtuFX/IvlgwOhavG4w==
+X-Received: by 2002:a05:600c:4f8a:b0:489:ad:7b5b with SMTP id
+ 5b1f17b1804b1-48fe62f8c6bmr209575215e9.24.1779089645310; 
+ Mon, 18 May 2026 00:34:05 -0700 (PDT)
 Received: from PC-DA2D10.beckhoff.com
  ([2001:9e8:dc08:b284:85e6:f7f4:1a4a:4dfe])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.02
+ ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 May 2026 00:34:02 -0700 (PDT)
+ Mon, 18 May 2026 00:34:04 -0700 (PDT)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -77,16 +78,19 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Yannick Vossen <Y.Vossen@beckhoff.com>, qemu-arm@nongnu.org,
  Kevin Wolf <kwolf@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org
-Subject: [PATCH v7 00/16] hw/arm: add Beckhoff CX7200 board
-Date: Mon, 18 May 2026 09:33:45 +0200
-Message-ID: <20260518073401.11279-1-corvin.koehne@gmail.com>
+ Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+Subject: [PATCH v7 02/16] hw/arm/zynq-devcfg: Prevent unintended unlock during
+ initialization
+Date: Mon, 18 May 2026 09:33:47 +0200
+Message-ID: <20260518073401.11279-3-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260518073401.11279-1-corvin.koehne@gmail.com>
+References: <20260518073401.11279-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,76 +113,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Corvin Köhne <c.koehne@beckhoff.com>
+From: YannickV <Y.Vossen@beckhoff.com>
 
-Hi,
+During the emulation startup, all registers are reset, which triggers the
+`r_unlock_post_write` function with a value of 0. This led to an
+unintended memory access disable, making the devcfg unusable.
 
-Beckhoff has build a board, called CX7200, based on the Xilinx Zynq A9
-platform. This commit series adds the Beckhoff CX7200 as new board variant to
-QEMU.
+During startup, the memory space no longer gets locked.
 
-The emulation is able to successfully boot an CX7200 image. The image includes
-some self tests executed on every boot. Only the cache self test fails due to
-QEMU emulating the cache as always being coherent. The self tests include f.e.:
+Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+---
+ hw/dma/xlnx-zynq-devcfg.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-* Network
-* Flash
-* CCAT DMA + EEPROM [1]
-* TwinCAT (Beckhoff's automation control software [2])
-
-[1] https://github.com/beckhoff/ccat
-[2] https://www.beckhoff.com/en-us/products/automation/
-
-YannickV (16):
-  hw/dma/zynq-devcfg: Handle bitstream loading via DMA to 0xffffffff
-  hw/arm/zynq-devcfg: Prevent unintended unlock during initialization
-  hw/dma/zynq: Ensure PCFG_DONE bit remains set to indicate PL is in
-    user mode
-  hw/dma/zynq-devcfg: Simulate dummy PL reset
-  hw/dma/zynq-devcfg: Indicate power-up status of PL
-  hw/misc: Add dummy ZYNQ DDR controller
-  hw/misc/zynq_slcr: Add logic for DCI configuration
-  hw/misc: Add Beckhoff CCAT device
-  hw/block/m25p80: Add HAS_SR_TB flag for is25lp016d
-  hw/arm/xilinx_zynq: Split xilinx_zynq into header and implementation
-    files
-  hw/arm/xilinx_zynq: Add flash type as machine class property
-  hw/misc/zynq_slcr: Add CPU clock outputs and ratios
-  hw/timer,cpu: Add Clock API support to A9MPCore timers
-  hw/arm/xilinx_zynq: Make PS frequency configurable
-  hw/arm: Add new machine based on xilinx-zynq-a9 for Beckhoff CX7200
-  docs/system/arm: Add support for Beckhoff CX7200
-
- MAINTAINERS                         |  11 +
- docs/system/arm/beckhoff-cx7200.rst |  62 ++++
- docs/system/target-arm.rst          |   1 +
- hw/arm/Kconfig                      |   8 +
- hw/arm/beckhoff_CX7200.c            |  80 ++++++
- hw/arm/meson.build                  |   1 +
- hw/arm/xilinx_zynq.c                |  54 ++--
- hw/block/m25p80.c                   |   3 +-
- hw/cpu/a9mpcore.c                   |  12 +
- hw/dma/xlnx-zynq-devcfg.c           |  27 +-
- hw/misc/Kconfig                     |   6 +
- hw/misc/beckhoff_ccat.c             | 339 ++++++++++++++++++++++
- hw/misc/meson.build                 |   2 +
- hw/misc/xlnx-zynq-ddrc.c            | 421 ++++++++++++++++++++++++++++
- hw/misc/zynq_slcr.c                 |  71 +++++
- hw/timer/a9gtimer.c                 |  18 +-
- hw/timer/arm_mptimer.c              |  20 +-
- include/hw/arm/xilinx_zynq.h        |  38 +++
- include/hw/cpu/a9mpcore.h           |   1 +
- include/hw/misc/xlnx-zynq-ddrc.h    | 147 ++++++++++
- include/hw/timer/a9gtimer.h         |   1 +
- include/hw/timer/arm_mptimer.h      |   2 +
- 22 files changed, 1292 insertions(+), 33 deletions(-)
- create mode 100644 docs/system/arm/beckhoff-cx7200.rst
- create mode 100644 hw/arm/beckhoff_CX7200.c
- create mode 100644 hw/misc/beckhoff_ccat.c
- create mode 100644 hw/misc/xlnx-zynq-ddrc.c
- create mode 100644 include/hw/arm/xilinx_zynq.h
- create mode 100644 include/hw/misc/xlnx-zynq-ddrc.h
-
+diff --git a/hw/dma/xlnx-zynq-devcfg.c b/hw/dma/xlnx-zynq-devcfg.c
+index 9708200760..afe6ffd326 100644
+--- a/hw/dma/xlnx-zynq-devcfg.c
++++ b/hw/dma/xlnx-zynq-devcfg.c
+@@ -221,7 +221,9 @@ static void r_unlock_post_write(RegisterInfo *reg, uint64_t val)
+ {
+     XlnxZynqDevcfg *s = XLNX_ZYNQ_DEVCFG(reg->opaque);
+     const char *device_prefix = object_get_typename(OBJECT(s));
+-
++    if (device_is_in_reset(DEVICE(s))) {
++        return;
++    }
+     if (val == R_UNLOCK_MAGIC) {
+         DB_PRINT("successful unlock\n");
+         s->regs[R_CTRL] |= R_CTRL_PCAP_PR_MASK;
 -- 
 2.47.3
 

@@ -4,99 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DE43CD4F3C
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:39:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F06A2CD4F48
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:40:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOsV5-0000xB-VF; Mon, 18 May 2026 03:34:56 -0400
+	id 1wOsa0-00017G-GF; Mon, 18 May 2026 03:40:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUL-0000fq-Db
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:15 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUI-0000C3-2T
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:08 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-459bf19e87bso1009017f8f.1
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779089644; x=1779694444; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=bGVucTk00lHJOoHDxhxqBmDjYYXRIxmmMPGfNidYBio=;
- b=OGp15DdJIajhT17FkUUlRwq90s2TT+g3whcpl+RXB7+Z5Gq8EeIC6Es5bJKgXGzRLO
- yUZuFEpG+U7ruuUaYS7dYcTrzYymuABxbzBy6P6+GWNDjQp+GPx/rT9JhCV5q8gnDjoi
- QTTIaA5+GDque0Y8G+24dTvr7LFjsUKx/17U6MIP2Grp1l7Bv3CBksRWwEM/ryuZlioD
- iWTzM2QVHmyi5ywyG8Mp6PpPwt63aVFCQRBHLRwqBgh6E3fgNtQXeFtO8ijC9Dgi3b/L
- 0tRa+6aYwDVPPs6NTIPTh0kWANRrCJujy8hpxp7XHC0lPJQ/ZUf4yAHFYhF8mG63kG54
- 7JJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779089644; x=1779694444;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=bGVucTk00lHJOoHDxhxqBmDjYYXRIxmmMPGfNidYBio=;
- b=qoYhD6PdTKQ7Koh6oKbnReXXP0gsqr5DXrYvYs6QkqdxR75flt2crb9RiLuEJ5dEwk
- quI5uYAwl897QUKuGoIBGQayhuCtCN+TkLCeRrr4VYha8XY70sHHa0KNwoyV3k3VaC0z
- +Esq6j1dDjim8v+X/pEEpG3MEX7z5fQs+68kBw7zIkNvgd0LFYOGfELGRfyMlZrJRyGu
- 6kAw64hgZZzxQ/rKYtT7ps7YyfL4biprgW+YLESdACEWUIWuPqqk58kly5M4UA7AGtHd
- JRwxSmw6fYiT8N8BhJS0xO0wQpH7jWvH6wP4L5ao31ts1xZTT+lVnWqRDAf0hSH3uhG6
- Xbcw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/d/EtjmADZLRuB2EWorSf8q5Dw6kG8E+S855fSg/OBi4D9nrIkjvSiwfng42gSx4dGZGhBwD+p5A==@nongnu.org
-X-Gm-Message-State: AOJu0Yy+3ntyff4X479/k8OgxvxKCooekPHrNjuJwyum6AoR2k1v/Yk6
- 2K+uetWnOYAZzajbRrLIYInb9il/RvERCc6hG2cu8XWROxxiz48+Bfth
-X-Gm-Gg: Acq92OF2K38i5taT2aypqc1cAPVLV71ORdZDW3xRvieizCsgXNNJFVNIXJ35xfzllDB
- v77HP9mUV09YCz5hs9c7ei4SnApakW+jGBO+N9/v2CJen7FzpayUq0AaWIOhE0/tFtnvM6DZdbB
- z+LN7WHnEVTkK1ONYQ5JghGPWaGucRmtVS4hFkPCug7tHCPBpp6I+7IFBZePb6eu8bBfiRgfmKE
- KS+Vi4P3MNLRVY3dYcWrWH5svF7RG5BraztE51DlNe6OrkBEYYrC0j+LMFDYuCWjDHWbxp2g4mS
- cYes5HfMqpCafcnNEe5s9MoyQp7RKUjJBOPX56xGLrg4o98lbJ2FgBQZW3c3SB8KDqmv5ZbxC0q
- KP14modKQRZ6spzFAtMtYP+r0kvuz9qNUkTZI+I9k8cXL2E5GZ5rF9qQs7U4t0ngN3DhfLuuGNe
- 2QNCeboFqEcfJcAgiTgY6eqq6nLy7JUI2h2fI+5TE6gd5wlQ==
-X-Received: by 2002:a05:6000:4205:b0:455:7c9f:a49e with SMTP id
- ffacd0b85a97d-45e5c5bfbc8mr21150969f8f.25.1779089644346; 
- Mon, 18 May 2026 00:34:04 -0700 (PDT)
-Received: from PC-DA2D10.beckhoff.com
- ([2001:9e8:dc08:b284:85e6:f7f4:1a4a:4dfe])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 May 2026 00:34:03 -0700 (PDT)
-From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Yannick=20Vo=C3=9Fen?= <y.vossen@beckhoff.com>,
- Hanna Reitz <hreitz@redhat.com>,
- =?UTF-8?q?Corvin=20K=C3=B6hne?= <c.koehne@beckhoff.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Yannick Vossen <Y.Vossen@beckhoff.com>, qemu-arm@nongnu.org,
- Kevin Wolf <kwolf@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH v7 01/16] hw/dma/zynq-devcfg: Handle bitstream loading via DMA
- to 0xffffffff
-Date: Mon, 18 May 2026 09:33:46 +0200
-Message-ID: <20260518073401.11279-2-corvin.koehne@gmail.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260518073401.11279-1-corvin.koehne@gmail.com>
-References: <20260518073401.11279-1-corvin.koehne@gmail.com>
+ (Exim 4.90_1) (envelope-from <C.Koehne@beckhoff.com>)
+ id 1wOsZY-0000Yp-I4; Mon, 18 May 2026 03:39:35 -0400
+Received: from mx08-0090a401.pphosted.com ([66.159.246.175])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <C.Koehne@beckhoff.com>)
+ id 1wOsZW-0002gG-FZ; Mon, 18 May 2026 03:39:32 -0400
+Received: from pps.filterd (m0463075.ppops.net [127.0.0.1])
+ by mx08-0090a401.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 64I5CPdu1805690; Mon, 18 May 2026 07:39:24 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=beckhoff.com; h=
+ cc:content-type:date:from:in-reply-to:message-id:mime-version
+ :references:subject:to; s=mail2022r; bh=UqGcXjgm7gqHXEvVsAKh1+Qf
+ 8IQAGN/OVMKgOjxRie0=; b=H9VwExOYEwXmGpKZ9DgDxCN4Y+BsqcwxiDD8HSzV
+ 4zSZ/80Nva7xARi1QP0uTpmiySCOZWBdtum/tft8Or49nYa8BHWbD/dRUnwi4YQx
+ Jw0MlYgEvA7RiusGqZGKkrXP/L3jEu1SBt6HtIyNHj+KiqVnSW81V793uLn+ooqg
+ g5snE0OxhZKmngen6CGFFixf5A6NsOaYf3uqWEnMmQ6Ys11OhNFdbOBDRAA6/51h
+ P3uDVZjXZZlnKa6YPGEAAzR4HotXzdEqin1Q+MuHQ5/aFfuV/Nr3kEij3P7O3mko
+ wmh+qLvEwZXL5WVYlHhETD/+JnV7MdY6EFaPG8MXkZ6zDg==
+Received: from ex14.beckhoff.com ([62.159.14.12])
+ by mx08-0090a401.pphosted.com (PPS) with ESMTPS id 4e743thmrd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 18 May 2026 07:39:24 +0000 (GMT)
+Received: from ex10.beckhoff.com (172.17.2.111) by ex14.beckhoff.com
+ (172.17.3.7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Mon, 18 May
+ 2026 09:39:23 +0200
+Received: from ex10.beckhoff.com ([fe80::ab7f:9a91:d220:441b]) by
+ ex10.beckhoff.com ([fe80::ab7f:9a91:d220:441b%12]) with mapi id
+ 15.02.2562.035; Mon, 18 May 2026 09:39:23 +0200
+From: =?utf-8?B?Q29ydmluIEvDtmhuZQ==?= <C.Koehne@beckhoff.com>
+To: "alex.bennee@linaro.org" <alex.bennee@linaro.org>
+CC: "hreitz@redhat.com" <hreitz@redhat.com>, "alistair@alistair23.me"
+ <alistair@alistair23.me>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-block@nongnu.org" <qemu-block@nongnu.org>, "edgar.iglesias@gmail.com"
+ <edgar.iglesias@gmail.com>, "kwolf@redhat.com" <kwolf@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ =?utf-8?B?WWFubmljayBWb8OfZW4=?= <Y.Vossen@beckhoff.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v5 00/15] hw/arm: add Beckhoff CX7200 board
+Thread-Topic: [PATCH v5 00/15] hw/arm: add Beckhoff CX7200 board
+Thread-Index: AQHcZQFHPSNPcPq7EEaJLYF/Bl03xLVTXiHygMDpOAA=
+Date: Mon, 18 May 2026 07:39:23 +0000
+Message-ID: <421fc251f1f167cf095b7683ea41ccfe48474c20.camel@beckhoff.com>
+References: <20251204093502.50582-1-corvin.koehne@gmail.com>
+ <87wm1jhzkb.fsf@draig.linaro.org>
+In-Reply-To: <87wm1jhzkb.fsf@draig.linaro.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator: 
+x-originating-ip: [172.17.129.38]
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="=-vEKY4l0sik4wNDkY8j84"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=corvin.koehne@gmail.com; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTE4MDA3MiBTYWx0ZWRfX0aycHlKEeCLp
+ 3p6O9NC470u7IkcVOf6nuqeXJby2sXDHfwoLmWHxR8HncaKJ/Dr0pDBLLt0IOu/9AVV3jZD2nsr
+ HfMu1VoM2lT+kqKs2NufvzMxdOFwIjFMcQPo9JgPotSn42gBjIo2uWzYw0dAmRSyxtR2lqKHcbJ
+ WnbYdmZ/5wkg68GpSqfGc1NzT36OeocrE7oPgFdzREk3OErRav3pnULB5NxPp9pU37GAZUQlwbd
+ 6eeA/RVK+FYrYTZ4DtR2RSaO68uM27kjuRoXe4GlN4+60nWez5399xYTKk31e47ut/7fi6m4KWO
+ Bn3lmfztgD9Ofe1ZFybBkTcD7d7tQ2XF6NfoZspZp4tsCWSIxhxfQUFjTKdOo17+pg/TiARv+Lf
+ d4b4w7TlVH2c1JSp1MU0vg5AqIqTlJ1M9tESO3BgDQwCiKbUoqTdekeZrSSf1x9Vt8mEpUR1d/l
+ 5JP8f9S0gNFU8+M4Dkw==
+X-Proofpoint-GUID: AvO3ZgUCG7fSp_ReVsdX_8WMlzHSPLlC
+X-Proofpoint-ORIG-GUID: AvO3ZgUCG7fSp_ReVsdX_8WMlzHSPLlC
+X-Authority-Analysis: v=2.4 cv=CaU4Irrl c=1 sm=1 tr=0 ts=6a0ac22c cx=c_pps
+ a=ZkhbYXbYXnnsONUOWLo3Bg==:117 a=ZkhbYXbYXnnsONUOWLo3Bg==:17
+ a=xqWC_Br6kY4A:10 a=zoJHxBl5aBcA:10 a=NGcC8JguVDcA:10 a=M51BFTxLslgA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=a9bgyBvlNMQzFU9Z5g25:22 a=pEnWR6l_7HET9bmtpPat:22
+ a=NEAV23lmAAAA:8 a=Cmw_MBCVAAAA:8 a=pGLkceISAAAA:8 a=uWXjGa5q-P-bnwGHkEMA:9
+ a=QEXdDO2ut3YA:10 a=xEm3df6wRxaQY7_TQgUA:9 a=FfaGCDsud1wA:10
+ a=ZJSrCmYe3mwGoKZA4Vko:22
+Received-SPF: pass client-ip=66.159.246.175;
+ envelope-from=C.Koehne@beckhoff.com; helo=mx08-0090a401.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -113,50 +108,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: YannickV <Y.Vossen@beckhoff.com>
+--=-vEKY4l0sik4wNDkY8j84
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
 
-A DMA transfer to destination address `0xffffffff` should trigger a
-bitstream load via the PCAP interface. Currently, this case is not
-intercepted, causing loaders to enter an infinite loop when polling
-the status register.
+On Thu, 2026-01-15 at 11:42 +0000, Alex Benn=C3=A9e wrote:
+> Corvin K=C3=B6hne <corvin.=E2=80=8Akoehne@=E2=80=8Agmail.=E2=80=8Acom> wr=
+ites: > From: Corvin K=C3=B6hne
+> <c.=E2=80=8Akoehne@=E2=80=8Abeckhoff.=E2=80=8Acom> > > Hi, > > Beckhoff h=
+as build a board, called
+> CX7200, based on the Xilinx Zynq A9 > platform. This commit series adds
+> =C2=A0
+> Corvin K=C3=B6hne <corvin.koehne@gmail.com> writes:
+>=20
+> > From: Corvin K=C3=B6hne <c.koehne@beckhoff.com>
+> >=20
+> > Hi,
+> >=20
+> > Beckhoff has build a board, called CX7200, based on the Xilinx Zynq A9
+> > platform. This commit series adds the Beckhoff CX7200 as new board vari=
+ant
+> > to
+> > QEMU.
+> >=20
+> > The emulation is able to successfully boot an CX7200 image. The image
+> > includes
+> > some self tests executed on every boot. Only the cache self test fails =
+due
+> > to
+> > QEMU emulating the cache as always being coherent. The self tests inclu=
+de
+> > f.e.:
+> >=20
+> > * Network
+> > * Flash
+> > * CCAT DMA + EEPROM [1]
+> > * TwinCAT (Beckhoff's automation control software [2])
+> >=20
+> > [1] https://github.com/beckhoff/ccat=20
+> > [2] https://www.beckhoff.com/en-us/products/automation/=20
+>=20
+> Is it possible to host a binary build somewhere so there can be a
+> functional test?
+>=20
+>=20
 
-This commit adds a check for `0xffffffff` as the destination address.
-If detected, the relevant status register bits (`DMA_DONE`,
-`DMA_P_DONE`, and `PCFG_DONE`) are set to indicate a successful
-bitstream load. If the address is different, the DMA transfer proceeds
-as usual. A successful load is indicated but nothing is actually
-done. Guests relying on FPGA functions are still known to fail.
+Sry for the quite late response. There's currently no binary build publicly
+available. We're planning to release one but things are moving (very) slowl=
+y.
 
-This feature is required for the integration of the Beckhoff
-CX7200 model.
 
-Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
----
- hw/dma/xlnx-zynq-devcfg.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+--=20
+Best regards,
+Corvin
 
-diff --git a/hw/dma/xlnx-zynq-devcfg.c b/hw/dma/xlnx-zynq-devcfg.c
-index cf00aa863d..9708200760 100644
---- a/hw/dma/xlnx-zynq-devcfg.c
-+++ b/hw/dma/xlnx-zynq-devcfg.c
-@@ -247,7 +247,14 @@ static uint64_t r_lock_pre_write(RegisterInfo *reg, uint64_t val)
- static void r_dma_dst_len_post_write(RegisterInfo *reg, uint64_t val)
- {
-     XlnxZynqDevcfg *s = XLNX_ZYNQ_DEVCFG(reg->opaque);
--
-+    if ((s->regs[R_DMA_DST_ADDR]) == 0xffffffff) {
-+        DB_PRINT("bitstream loading detected\n");
-+        s->regs[R_INT_STS] |= R_INT_STS_DMA_DONE_MASK |
-+                                R_INT_STS_DMA_P_DONE_MASK |
-+                                R_INT_STS_PCFG_DONE_MASK;
-+        xlnx_zynq_devcfg_update_ixr(s);
-+        return;
-+    }
-     s->dma_cmd_fifo[s->dma_cmd_fifo_num] = (XlnxZynqDevcfgDMACmd) {
-             .src_addr = s->regs[R_DMA_SRC_ADDR] & ~0x3UL,
-             .dest_addr = s->regs[R_DMA_DST_ADDR] & ~0x3UL,
--- 
-2.47.3
 
+
+This email contains confidential information. If you have received it in er=
+ror, you must not read, use, copy or pass on this e-mail or its attachments.
+If you have received the e-mail in error, please inform me immediately by r=
+eply e-mail and then delete this e-mail from your system. Thank you
+
+Diese E-Mail enth=C3=A4lt vertrauliche Informationen. Sollten Sie sie irrt=
+=C3=BCmlich erhalten haben, d=C3=BCrfen Sie diese E-Mail oder ihre Anh=C3=
+=A4nge nicht lesen, verwenden, kopieren oder weitergeben.
+Sollten Sie die Mail versehentlich erhalten haben, teilen Sie mir dies bitt=
+e umgehend per Antwort-E-Mail mit und l=C3=B6schen Sie diese E-Mail dann au=
+s Ihrem System. Vielen Dank
+
+Beckhoff Automation GmbH & Co. KG=20
+Managing Director: Dipl. Phys. Hans Beckhoff
+Registered office: Verl, Germany=20
+Register court: Guetersloh HRA 7075
+
+DisclaimerID:x9d5u140
+
+
+--=-vEKY4l0sik4wNDkY8j84
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEgvRSla3m2t/H2U9G2FTaVjFeAmoFAmoKwioACgkQ2FTaVjFe
+AmrYpw//UFGiZduvi+ZpxOwZiudToe8hWMB1wZY3lg1z73aUqpTM1cCOcctl76De
+eQJXYYiTs9eiokjjZ8p81aoOQun3hfgadmHTjVMTB4I0fG79Wv1PtlHJSNyFK39i
+dOyM4Fu3PNputJgtdEY6RLBUBnhDW+PAUcacw+/RpdVzdBvtpRhN+E0e9MoEj8Os
+glrsmF1gqCBskq0hifleK80ebgT0mYy2m6PIeAw7DSNWuKxXPkkF5MqE8AAl7Rqj
+K6qlg9I8lsic8S7hPsrFqfgqxbVyjLh61oygpJG29Y5bIhKheHRLKEUUx7FUP4re
+adzCsvmJY6ck8JuOO0+IoFY7NLC7wA0kNhgP8wrok0xwO9qEy6uqDKEFdBXfj2+W
+7D5mVl6rnVO/JI5TS+RBt7172myPEm3HVXk7gwSevgL3HyB8KTFx1HP8aPzyYXEh
+mo3yJI7ipY9bFQiV6qe1aMCYjA4tcE9jENWjuZmqvinPU2TvaldtbA8cmhnftqYB
+CHDi4K3b2lTaj9tpdabW3jrS5yJW/wb7QN5NX3PbXiqYYBZ3/JE8YM2TSQ3FEoSD
+J3yxFzEFeiU7PysOcD8dKgTTJP4Fk0irSnsJB7f+cZQ3ydHUzJy/hTsy99FAVInG
+VWLdg8vnCPmjIxhbXHUzUd0uhbtamxHrnLRdD3HO1in0GUnzAIQ=
+=HOzq
+-----END PGP SIGNATURE-----
+
+--=-vEKY4l0sik4wNDkY8j84--
 

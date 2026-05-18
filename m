@@ -4,74 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18601CD4F4A
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 13:56:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B99DFCD4F49
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 14:35:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOyST-00023V-Qh; Mon, 18 May 2026 09:56:38 -0400
+	id 1wOz49-0001dq-Qy; Mon, 18 May 2026 10:35:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <BATV+b63a902a6511c8cff3bf+8303+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1wOySR-00022m-Tj; Mon, 18 May 2026 09:56:35 -0400
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wOz45-0001WG-Bw
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 10:35:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <BATV+b63a902a6511c8cff3bf+8303+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1wOySO-0000bD-89; Mon, 18 May 2026 09:56:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
- In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=M1hJb0hoxcKkSmY+3IhEMGFrd0EBvNP2uyHwSKG6WPk=; b=ILPUfjCQYenNwqo9nmnty8T+JP
- XFB7C9Z5Coj5DPZYvFaC+rllHVtl3AuXYRXqyFZQ+I729tIs90HEIOsjikVAFwvYpInrbCge/7hNl
- 1zqL/+TJf/x76qZa9Uy7BoU7UDnC2/XvSM4NXMlYt99WuREVcWuLpvqE7dH+OLybrplAqVo/YD0We
- J/RWNAMzuy0zf+s4ravtJ8WR2G9y75DNhF/4flqSFZyHsd/fKXl0dPj3acJ5cHjagKoEY8v1JhjPL
- 8W5ImBd2mTNyvAfxrbok5D9kX5u8AI1XXrPT4wLn08Pqg4Ookg7BDMOWoft10Aj3vUOVdOR0bNjo8
- V1FtNFoQ==;
-Received: from 54-240-197-225.amazon.com ([54.240.197.225]
- helo=u09cd745991455d.ant.amazon.com)
- by casper.infradead.org with esmtpsa (Exim 4.99.1 #2 (Red Hat Linux))
- id 1wOyS7-00000004pP2-1g7Z; Mon, 18 May 2026 13:56:15 +0000
-Message-ID: <7be2151d420954e02577312f6985018fc848ee4c.camel@infradead.org>
-Subject: Re: [PATCH v3 0/4] KVM: arm64: vgic: Fix IGROUPR writability and
- IIDR revision control
-From: David Woodhouse <dwmw2@infradead.org>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Jonathan Corbet <corbet@lwn.net>, Shuah Khan
- <skhan@linuxfoundation.org>,  Marc Zyngier <maz@kernel.org>, Oliver Upton
- <oupton@kernel.org>, Joey Gouly <joey.gouly@arm.com>, Suzuki K Poulose
- <suzuki.poulose@arm.com>, Zenghui Yu <yuzenghui@huawei.com>, Catalin
- Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Jonathan
- Cameron <jic23@kernel.org>, Sascha Bischoff <Sascha.Bischoff@arm.com>, Eric
- Auger <eric.auger@redhat.com>, Raghavendra Rao Ananta <rananta@google.com>,
- Maxim Levitsky <mlevitsk@redhat.com>, Kees Cook <kees@kernel.org>, Timothy
- Hayes <timothy.hayes@arm.com>,  Arnd Bergmann <arnd@arndb.de>,
- kvm@vger.kernel.org, linux-doc@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- kvmarm@lists.linux.dev, linux-kselftest@vger.kernel.org, Peter Maydell
- <peter.maydell@linaro.org>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Mon, 18 May 2026 14:56:13 +0100
-In-Reply-To: <20260511113558.3325004-1-dwmw2@infradead.org>
-References: <20260511113558.3325004-1-dwmw2@infradead.org>
-Content-Type: multipart/signed; micalg="sha-256";
- protocol="application/pkcs7-signature"; 
- boundary="=-Hkc7djUBzr1SPdOeRBFL"
-User-Agent: Evolution 3.52.3-0ubuntu1.1 
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wOz43-000850-0J
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 10:35:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779114923;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7MgIlykHkGNF8bfeDDgS7KR+swoaarGo4n37t1LGEOU=;
+ b=crjliGtwAFMRNWMxvVZupKoWtIQkwWWJlXXXVVdrrehrXCNZA6POw1TiJkxLACPu0GtEJE
+ 0ZjnAr3pFTCWdgAKwrNkwqNxf9NA8TjW+7m1PlltN/Y+8GQziafgKqA608zIh8Y/93QrsW
+ ZChOKtCLhY4oxv1P8/gJtv9hTQBlWAA=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-654-NprJAQWfMhaJi1lK0-p44w-1; Mon, 18 May 2026 10:35:17 -0400
+X-MC-Unique: NprJAQWfMhaJi1lK0-p44w-1
+X-Mimecast-MFC-AGG-ID: NprJAQWfMhaJi1lK0-p44w_1779114910
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-48fdb2b0cb8so16222535e9.0
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 07:35:10 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779114909; x=1779719709;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=7MgIlykHkGNF8bfeDDgS7KR+swoaarGo4n37t1LGEOU=;
+ b=kP402M231HBlaf4ZatFgwqRAtidimBOQsiRWuWpyWHuJNtx/Ze4a4ZoH997rbPDr7f
+ WOoUePoCEBAanNXZU3nc0lLvb1lEGZ8fK+gRGEVs9FBaPcewIPpbKbi2xrbp1lcenUvS
+ fCuaMxbPovO5FjDpY1mXy6A6kvr35fCSlECk66CaOAVLDrejKBgcuWXcjAsArnupn8V8
+ NlyLPMjykMAgJjLcoEFSyJ01P/yK9D0pqbz3wLQPxJN6fHP9nZWL8+6K8KxS6fK2hT92
+ HjUlgbdwcd7qYNQte6s2SPG+FV8PNUMrZVMJQc1GgX0Mna1eXJOzeDoKa7n4PCCEzH2l
+ bb+g==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8jNiNZsvMR2+j7INgp41eNyaKZcjUA4K3ZLeUdE80PtuVgy6ynpa0hEE7maCClZOBBgSnBuu5TjA==@nongnu.org
+X-Gm-Message-State: AOJu0YxFDxxplOHGz7awFbBkTB/9+JCFwrMwUoFKJBMU/he/zkTzWNoO
+ PraKmUOQ6qtfkIYH3uiFwzXXVXDGmejM7jv2xDoIQI40PEdyD+VSjrkNkcrTz0yUyQsaHRtefQl
+ N7d8ZBcVQspaWKjl8hOpz6WsyBCy30VrlqHoDkdXO6Qz827trCkPY5g==
+X-Gm-Gg: Acq92OFIdNhPWTtY5vRHfDiXDLKMMVtvaxtBoY2di41jkBmRh8/y63YNH+unMQIzBem
+ EGOLlvKRUq/TZG+uuG86U8wV3CD2Fm1kOYPTHYsb6rqTGcrrXIiHdn3YctYUYyrAZW1+3MbMIpl
+ xHOFGf0GvIMTdzUHoHLNbDnthm+rxL3gS43gNmRr4oNszGArUFojvBCyImceRqhFNrOzzDQ9F6j
+ 15rhi+sSuew62ZC//yzL/PtVl/E4fsy8rfCQGlosGUqPSeboCmy6BZXcHSIiOnEwKKoPIJP6yCL
+ enFE4xanRRyiGf4skeIhlyguLYy89eieYGPIXlTAOybGsByIdBwiUTbWQlHNMxbXjlBvOXd1EDL
+ 03mCF7w==
+X-Received: by 2002:a05:600c:a406:b0:48f:e230:1d12 with SMTP id
+ 5b1f17b1804b1-48fe6329913mr188799525e9.31.1779114909616; 
+ Mon, 18 May 2026 07:35:09 -0700 (PDT)
+X-Received: by 2002:a05:600c:a406:b0:48f:e230:1d12 with SMTP id
+ 5b1f17b1804b1-48fe6329913mr188798985e9.31.1779114909192; 
+ Mon, 18 May 2026 07:35:09 -0700 (PDT)
+Received: from imammedo ([213.175.37.14]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45da0fe248dsm37143726f8f.30.2026.05.18.07.35.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 May 2026 07:35:08 -0700 (PDT)
+Date: Mon, 18 May 2026 16:35:07 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org, mst@redhat.com, anisinha@redhat.com,
+ pbonzini@redhat.com, shannon.zhaosl@gmail.com, philmd@linaro.org,
+ zhao1.liu@intel.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com,
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 00/21] Introduce ACPI watchdog for Q35 and arm/virt
+ boards
+Message-ID: <20260518163507.7b794600@imammedo>
+In-Reply-To: <20260512153057.1a353c3e@imammedo>
+References: <20260303092532.2410177-1-imammedo@redhat.com>
+ <20260428161215.49cc1c0f@imammedo>
+ <20260512153057.1a353c3e@imammedo>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1236::1;
- envelope-from=BATV+b63a902a6511c8cff3bf+8303+infradead.org+dwmw2@casper.srs.infradead.org;
- helo=casper.infradead.org
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: fbVPipaTa0Ch27hREM-OO3PkTfkyizPUUsr01XG9rZY_1779114910
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,127 +117,151 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
---=-Hkc7djUBzr1SPdOeRBFL
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, 2026-05-11 at 12:30 +0100, David Woodhouse wrote:
-> Maintaining precise guest compatibility across host kernel upgrades =E2=
-=80=94
-> and even downgrades, since rollback is sometimes necessary =E2=80=94 is n=
-ot=20
-> optional. That *shouldn't* need saying, but maybe it does:
-> https://lore.kernel.org/all/6856b269d2af706eae397e0cf9c1231f89d9a932.came=
-l@infradead.org/
->=20
-> This series fixes the GICv2/v3 IGROUPR writability model to be
-> consistently controlled by the GICD_IIDR implementation revision,
-> replacing the ad-hoc v2_groups_user_writable flag.
-
-The more generic question of whether KVM should actually maintain guest
-compatibility from one version of the host kernel to another is being
-discussed in that other thread.
-
-Setting that aside, is there any *technical* feedback on this series? I
-believe I've dealt with all of Marc's feedback on v1 (thanks).
+On Tue, 12 May 2026 15:30:57 +0200
+Igor Mammedov <imammedo@redhat.com> wrote:
 
 
---=-Hkc7djUBzr1SPdOeRBFL
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Transfer-Encoding: base64
+Peter,
 
-MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCD9Aw
-ggSOMIIDdqADAgECAhAOmiw0ECVD4cWj5DqVrT9PMA0GCSqGSIb3DQEBCwUAMGUxCzAJBgNVBAYT
-AlVTMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xJDAi
-BgNVBAMTG0RpZ2lDZXJ0IEFzc3VyZWQgSUQgUm9vdCBDQTAeFw0yNDAxMzAwMDAwMDBaFw0zMTEx
-MDkyMzU5NTlaMEExCzAJBgNVBAYTAkFVMRAwDgYDVQQKEwdWZXJva2V5MSAwHgYDVQQDExdWZXJv
-a2V5IFNlY3VyZSBFbWFpbCBHMjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMjvgLKj
-jfhCFqxYyRiW8g3cNFAvltDbK5AzcOaR7yVzVGadr4YcCVxjKrEJOgi7WEOH8rUgCNB5cTD8N/Et
-GfZI+LGqSv0YtNa54T9D1AWJy08ZKkWvfGGIXN9UFAPMJ6OLLH/UUEgFa+7KlrEvMUupDFGnnR06
-aDJAwtycb8yXtILj+TvfhLFhafxroXrflspavejQkEiHjNjtHnwbZ+o43g0/yxjwnarGI3kgcak7
-nnI9/8Lqpq79tLHYwLajotwLiGTB71AGN5xK+tzB+D4eN9lXayrjcszgbOv2ZCgzExQUAIt98mre
-8EggKs9mwtEuKAhYBIP/0K6WsoMnQCcCAwEAAaOCAVwwggFYMBIGA1UdEwEB/wQIMAYBAf8CAQAw
-HQYDVR0OBBYEFIlICOogTndrhuWByNfhjWSEf/xwMB8GA1UdIwQYMBaAFEXroq/0ksuCMS1Ri6en
-IZ3zbcgPMA4GA1UdDwEB/wQEAwIBhjAdBgNVHSUEFjAUBggrBgEFBQcDBAYIKwYBBQUHAwIweQYI
-KwYBBQUHAQEEbTBrMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5kaWdpY2VydC5jb20wQwYIKwYB
-BQUHMAKGN2h0dHA6Ly9jYWNlcnRzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2VydEFzc3VyZWRJRFJvb3RD
-QS5jcnQwRQYDVR0fBD4wPDA6oDigNoY0aHR0cDovL2NybDMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0
-QXNzdXJlZElEUm9vdENBLmNybDARBgNVHSAECjAIMAYGBFUdIAAwDQYJKoZIhvcNAQELBQADggEB
-ACiagCqvNVxOfSd0uYfJMiZsOEBXAKIR/kpqRp2YCfrP4Tz7fJogYN4fxNAw7iy/bPZcvpVCfe/H
-/CCcp3alXL0I8M/rnEnRlv8ItY4MEF+2T/MkdXI3u1vHy3ua8SxBM8eT9LBQokHZxGUX51cE0kwa
-uEOZ+PonVIOnMjuLp29kcNOVnzf8DGKiek+cT51FvGRjV6LbaxXOm2P47/aiaXrDD5O0RF5SiPo6
-xD1/ClkCETyyEAE5LRJlXtx288R598koyFcwCSXijeVcRvBB1cNOLEbg7RMSw1AGq14fNe2cH1HG
-W7xyduY/ydQt6gv5r21mDOQ5SaZSWC/ZRfLDuEYwggWbMIIEg6ADAgECAhAH5JEPagNRXYDiRPdl
-c1vgMA0GCSqGSIb3DQEBCwUAMEExCzAJBgNVBAYTAkFVMRAwDgYDVQQKEwdWZXJva2V5MSAwHgYD
-VQQDExdWZXJva2V5IFNlY3VyZSBFbWFpbCBHMjAeFw0yNDEyMzAwMDAwMDBaFw0yODAxMDQyMzU5
-NTlaMB4xHDAaBgNVBAMME2R3bXcyQGluZnJhZGVhZC5vcmcwggIiMA0GCSqGSIb3DQEBAQUAA4IC
-DwAwggIKAoICAQDali7HveR1thexYXx/W7oMk/3Wpyppl62zJ8+RmTQH4yZeYAS/SRV6zmfXlXaZ
-sNOE6emg8WXLRS6BA70liot+u0O0oPnIvnx+CsMH0PD4tCKSCsdp+XphIJ2zkC9S7/yHDYnqegqt
-w4smkqUqf0WX/ggH1Dckh0vHlpoS1OoxqUg+ocU6WCsnuz5q5rzFsHxhD1qGpgFdZEk2/c//ZvUN
-i12vPWipk8TcJwHw9zoZ/ZrVNybpMCC0THsJ/UEVyuyszPtNYeYZAhOJ41vav1RhZJzYan4a1gU0
-kKBPQklcpQEhq48woEu15isvwWh9/+5jjh0L+YNaN0I//nHSp6U9COUG9Z0cvnO8FM6PTqsnSbcc
-0j+GchwOHRC7aP2t5v2stVx3KbptaYEzi4MQHxm/0+HQpMEVLLUiizJqS4PWPU6zfQTOMZ9uLQRR
-ci+c5xhtMEBszlQDOvEQcyEG+hc++fH47K+MmZz21bFNfoBxLP6bjR6xtPXtREF5lLXxp+CJ6KKS
-blPKeVRg/UtyJHeFKAZXO8Zeco7TZUMVHmK0ZZ1EpnZbnAhKE19Z+FJrQPQrlR0gO3lBzuyPPArV
-hvWxjlO7S4DmaEhLzarWi/ze7EGwWSuI2eEa/8zU0INUsGI4ywe7vepQz7IqaAovAX0d+f1YjbmC
-VsAwjhLmveFjNwIDAQABo4IBsDCCAawwHwYDVR0jBBgwFoAUiUgI6iBOd2uG5YHI1+GNZIR//HAw
-HQYDVR0OBBYEFFxiGptwbOfWOtMk5loHw7uqWUOnMDAGA1UdEQQpMCeBE2R3bXcyQGluZnJhZGVh
-ZC5vcmeBEGRhdmlkQHdvb2Rob3Uuc2UwFAYDVR0gBA0wCzAJBgdngQwBBQEBMA4GA1UdDwEB/wQE
-AwIF4DAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwewYDVR0fBHQwcjA3oDWgM4YxaHR0
-cDovL2NybDMuZGlnaWNlcnQuY29tL1Zlcm9rZXlTZWN1cmVFbWFpbEcyLmNybDA3oDWgM4YxaHR0
-cDovL2NybDQuZGlnaWNlcnQuY29tL1Zlcm9rZXlTZWN1cmVFbWFpbEcyLmNybDB2BggrBgEFBQcB
-AQRqMGgwJAYIKwYBBQUHMAGGGGh0dHA6Ly9vY3NwLmRpZ2ljZXJ0LmNvbTBABggrBgEFBQcwAoY0
-aHR0cDovL2NhY2VydHMuZGlnaWNlcnQuY29tL1Zlcm9rZXlTZWN1cmVFbWFpbEcyLmNydDANBgkq
-hkiG9w0BAQsFAAOCAQEAQXc4FPiPLRnTDvmOABEzkIumojfZAe5SlnuQoeFUfi+LsWCKiB8Uextv
-iBAvboKhLuN6eG/NC6WOzOCppn4mkQxRkOdLNThwMHW0d19jrZFEKtEG/epZ/hw/DdScTuZ2m7im
-8ppItAT6GXD3aPhXkXnJpC/zTs85uNSQR64cEcBFjjoQDuSsTeJ5DAWf8EMyhMuD8pcbqx5kRvyt
-JPsWBQzv1Dsdv2LDPLNd/JUKhHSgr7nbUr4+aAP2PHTXGcEBh8lTeYea9p4d5k969pe0OHYMV5aL
-xERqTagmSetuIwolkAuBCzA9vulg8Y49Nz2zrpUGfKGOD0FMqenYxdJHgDCCBZswggSDoAMCAQIC
-EAfkkQ9qA1FdgOJE92VzW+AwDQYJKoZIhvcNAQELBQAwQTELMAkGA1UEBhMCQVUxEDAOBgNVBAoT
-B1Zlcm9rZXkxIDAeBgNVBAMTF1Zlcm9rZXkgU2VjdXJlIEVtYWlsIEcyMB4XDTI0MTIzMDAwMDAw
-MFoXDTI4MDEwNDIzNTk1OVowHjEcMBoGA1UEAwwTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJ
-KoZIhvcNAQEBBQADggIPADCCAgoCggIBANqWLse95HW2F7FhfH9bugyT/danKmmXrbMnz5GZNAfj
-Jl5gBL9JFXrOZ9eVdpmw04Tp6aDxZctFLoEDvSWKi367Q7Sg+ci+fH4KwwfQ8Pi0IpIKx2n5emEg
-nbOQL1Lv/IcNiep6Cq3DiyaSpSp/RZf+CAfUNySHS8eWmhLU6jGpSD6hxTpYKye7PmrmvMWwfGEP
-WoamAV1kSTb9z/9m9Q2LXa89aKmTxNwnAfD3Ohn9mtU3JukwILRMewn9QRXK7KzM+01h5hkCE4nj
-W9q/VGFknNhqfhrWBTSQoE9CSVylASGrjzCgS7XmKy/BaH3/7mOOHQv5g1o3Qj/+cdKnpT0I5Qb1
-nRy+c7wUzo9OqydJtxzSP4ZyHA4dELto/a3m/ay1XHcpum1pgTOLgxAfGb/T4dCkwRUstSKLMmpL
-g9Y9TrN9BM4xn24tBFFyL5znGG0wQGzOVAM68RBzIQb6Fz758fjsr4yZnPbVsU1+gHEs/puNHrG0
-9e1EQXmUtfGn4InoopJuU8p5VGD9S3Ikd4UoBlc7xl5yjtNlQxUeYrRlnUSmdlucCEoTX1n4UmtA
-9CuVHSA7eUHO7I88CtWG9bGOU7tLgOZoSEvNqtaL/N7sQbBZK4jZ4Rr/zNTQg1SwYjjLB7u96lDP
-sipoCi8BfR35/ViNuYJWwDCOEua94WM3AgMBAAGjggGwMIIBrDAfBgNVHSMEGDAWgBSJSAjqIE53
-a4blgcjX4Y1khH/8cDAdBgNVHQ4EFgQUXGIam3Bs59Y60yTmWgfDu6pZQ6cwMAYDVR0RBCkwJ4ET
-ZHdtdzJAaW5mcmFkZWFkLm9yZ4EQZGF2aWRAd29vZGhvdS5zZTAUBgNVHSAEDTALMAkGB2eBDAEF
-AQEwDgYDVR0PAQH/BAQDAgXgMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDBDB7BgNVHR8E
-dDByMDegNaAzhjFodHRwOi8vY3JsMy5kaWdpY2VydC5jb20vVmVyb2tleVNlY3VyZUVtYWlsRzIu
-Y3JsMDegNaAzhjFodHRwOi8vY3JsNC5kaWdpY2VydC5jb20vVmVyb2tleVNlY3VyZUVtYWlsRzIu
-Y3JsMHYGCCsGAQUFBwEBBGowaDAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuZGlnaWNlcnQuY29t
-MEAGCCsGAQUFBzAChjRodHRwOi8vY2FjZXJ0cy5kaWdpY2VydC5jb20vVmVyb2tleVNlY3VyZUVt
-YWlsRzIuY3J0MA0GCSqGSIb3DQEBCwUAA4IBAQBBdzgU+I8tGdMO+Y4AETOQi6aiN9kB7lKWe5Ch
-4VR+L4uxYIqIHxR7G2+IEC9ugqEu43p4b80LpY7M4KmmfiaRDFGQ50s1OHAwdbR3X2OtkUQq0Qb9
-6ln+HD8N1JxO5nabuKbymki0BPoZcPdo+FeRecmkL/NOzzm41JBHrhwRwEWOOhAO5KxN4nkMBZ/w
-QzKEy4PylxurHmRG/K0k+xYFDO/UOx2/YsM8s138lQqEdKCvudtSvj5oA/Y8dNcZwQGHyVN5h5r2
-nh3mT3r2l7Q4dgxXlovERGpNqCZJ624jCiWQC4ELMD2+6WDxjj03PbOulQZ8oY4PQUyp6djF0keA
-MYIDuzCCA7cCAQEwVTBBMQswCQYDVQQGEwJBVTEQMA4GA1UEChMHVmVyb2tleTEgMB4GA1UEAxMX
-VmVyb2tleSBTZWN1cmUgRW1haWwgRzICEAfkkQ9qA1FdgOJE92VzW+AwDQYJYIZIAWUDBAIBBQCg
-ggE3MBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI2MDUxODEzNTYx
-M1owLwYJKoZIhvcNAQkEMSIEICqt//RAX/pWu9cXB++MsOe2WMY0oz8fhUmPi6jxt8lSMGQGCSsG
-AQQBgjcQBDFXMFUwQTELMAkGA1UEBhMCQVUxEDAOBgNVBAoTB1Zlcm9rZXkxIDAeBgNVBAMTF1Zl
-cm9rZXkgU2VjdXJlIEVtYWlsIEcyAhAH5JEPagNRXYDiRPdlc1vgMGYGCyqGSIb3DQEJEAILMVeg
-VTBBMQswCQYDVQQGEwJBVTEQMA4GA1UEChMHVmVyb2tleTEgMB4GA1UEAxMXVmVyb2tleSBTZWN1
-cmUgRW1haWwgRzICEAfkkQ9qA1FdgOJE92VzW+AwDQYJKoZIhvcNAQEBBQAEggIAJdF11gRQu5b0
-WHvhiZWx/Uhmg3FKvzegxqEDSGe3fRVfyKIbNr5nYVSTqp8iRbyR3GK+lD2pE9mUhJmxvl2mwf6I
-09XZCAQL75U6KoyeND4KtQfLHuyRA5JUTLDR/ZtGXqdIBMGSsuVHKjtEjEW0Ko2wytJFwHpDSUF5
-kAbY9ZeLcCkb5xpGm9GAEOhKWpKqYjcIP4hXtvQeUxa92yXdwWjaQyLaWztqDc645+ggkNEMQO+K
-ozdUDKBV0okeI+CBrySgMZRbr7DuqTxxgzB3jVosOCyla8ke4LAwkBBjjrm+uH3VHDz6n25SXsrq
-JFc6zCnHyNqN0AWL/ocbJZvL9PpHuEslDvQOj6u9AvAcsNd/5MzPD5k7XxWj0PZgiA9+O94ZM2Fe
-n15VBs1ZD3K2Bs92l8/s0fjjZo31m3jqHkTcQCURcfTWWOffCKmq15f7j3J7719dqkdLqM9MuFxd
-hfBg9XxHs4WVwg7714ACs/4CPNZnzfxtI4s7B43fPhj1tbUb30ZQDNCTzwXeJoTmlXt3/q3HfKKG
-olegD9kqVgQa9H4L43BsRK+3UqCfRr6oK42wgMAB/7yRwsllAxBSgkFiZ8NWb2WUYPf3KqAe+d2Q
-E4IuZ49d7l0190FczUqMzxjnk+E4gOlt3vVS/Ql2b1Y+Pic5GrMDu0OxcVHHQzMAAAAAAAA=
+could you take a look at ARM related patches,
+I hope that I have addressed you concerns from v1.
 
+> On Tue, 28 Apr 2026 16:12:15 +0200
+> Igor Mammedov <imammedo@redhat.com> wrote:
+> 
+> > On Tue,  3 Mar 2026 10:25:11 +0100
+> > Igor Mammedov <imammedo@redhat.com> wrote:
+> >   
+> > > Changelog:
+> > >   v2:
+> > >      * ditch generic '-machine acpi-watchdog' option in favor of
+> > >        board specific variants:
+> > >            x86/q35:  -machine wdat={on|off}
+> > >            arm/virt: -device sbsa_gwdt,wdat={on|off}
+> > >      * arm/virt: add FDT and GTDT ACPI entries for GWDT when it's present
+> > >        and hide GDTD one when WDAT is enabled.
+> > >      * arm/virt: add test case for GTDT 
+> > >      * [18-21] optional GWDT cleanup/fixes in handling WCV register update,
+> > >        make QEMU behave according to spec (at least the way I read it and
+> > >        it appears MS also read it that way). It fixes Windows 11 reboots when
+> > >        GWDT is present (without WDAT). With that fixed it's up to MS to fix
+> > >        their driver to set sane timeout as with the current one wdatchdog
+> > >        will never trigger.    
+> > 
+> > given merge window should be open by now,
+> > gentle ping  
+> 
+> 2 weeks later,
+> yet another ping
+> 
+> >   
+> > > Windows doesn't ship built-in TCO watchdog driver, and users are
+> > > forced to install vendor specific driver(s) if such exists.
+> > > However the OS provides a generic watchdog driver that uses
+> > > ACPI WDAT table [1] to abstract actual hardware behind it.
+> > > The same applies to ARM version of Windows.
+> > > 
+> > > This series adds
+> > >  *  WDAT table tailored for TCO watchdog that Q35 already
+> > >     has as part of ICH9 chipset and a knob to enable it.
+> > >  *  SBSA GWDT to arm/virt machine with WDAT table tailored
+> > >     for it and necessary tweaks to GWDT to make usable
+> > >     with WDAT driver.
+> > >     * in addition to WDAT, it also adds native variant
+> > >       with GWDT described in FDT and DTDT
+> > >       (broken on Windows/works on linux).
+> > > 
+> > > Guest OS WDAT support is present since Windows Vista and Linux since 2016[2].
+> > > 
+> > > One can test it launching VM with following options:
+> > >   * x86:
+> > >        -machine q35,wdat=on
+> > >   * arm/virt:
+> > >        -device sbsa_gwdt,wdat=on
+> > > 
+> > > to trace access to TCO registers one can add to CLI:
+> > >     -trace "tco_*"
+> > > to trace access to GWDT registers one can add to CLI:
+> > >     -trace "sbsa_gwdt*"
+> > > 
+> > > To verify that guest uses WDAT (both Windows and Linux would use it if present),
+> > >   * on linux make sure that watchdog service is configured/enabled
+> > >     (use wdctl to check what watchdog device is in use) and then
+> > >     trigger kernel panic with command:
+> > >       echo c > /proc/sysrq-trigger
+> > >   * on Windows kill svchost process, running cmd in admin mode:
+> > >       taskkill /f /im svchost.exe
+> > > 
+> > > Tested with WS2025 & RHEL9.6 & Fedora 43 (aarch64)
+> > > 
+> > > git tree at: https://gitlab.com/imammedo/qemu/-/commits/gwdt_v2
+> > > 
+> > > 1) http://msdn.microsoft.com/en-us/windows/hardware/gg463320.aspx
+> > > 2) https://lwn.net/Articles/700524/
+> > > 
+> > > PS:
+> > >  previous revision:
+> > >   https://patchew.org/QEMU/20260206131438.1857182-1-imammedo@redhat.com/
+> > > 
+> > > Igor Mammedov (21):
+> > >   acpi: add API to build WDAT instructions
+> > >   x86: q35: add 'wdat' property
+> > >   x86: q35: generate WDAT ACPI table
+> > >   tests: acpi: x86/q35: whitelist new WDAT table
+> > >   tests: acpi: x86/q35: add WDAT table test case
+> > >   tests: acpi: x86/q35: update expected WDAT blob
+> > >   arm: sbsa_gwdt: fixup default "clock-frequency"
+> > >   arm: add tracing events to sbsa_gwdt
+> > >   arm: virt: create sbsa_gwdt watchdog
+> > >   arm: sbsa_gwdt: add 'wdat' option
+> > >   arm: virt: add support for WDAT based watchdog
+> > >   tests: acpi: arm/virt: whitelist new WDAT table
+> > >   tests: acpi: arm/virt: add WDAT table test case
+> > >   tests: acpi: arm/virt: update expected WDAT blob
+> > >   tests: acpi: arm/virt: whitelist GTDT table
+> > >   tests: acpi: arm/virt: add GTDT watchdog table test case
+> > >   tests: acpi: arm/virt: update expected GTDT blob
+> > >   sbsa_gwdt: reduce code ident
+> > >   sbsa_gwdt: move all foo_REFRESH logic under REFRESH condition
+> > >   sbsa_gwdt: reschedule timer on direct WCV load
+> > >   sbsa_gwdt: limit compare_value to INT64_MAX
+> > > 
+> > >  include/hw/acpi/wdat-gwdt.h            |  19 ++++
+> > >  include/hw/acpi/wdat-ich9.h            |  15 ++++
+> > >  include/hw/acpi/wdat.h                 | 118 +++++++++++++++++++++++++
+> > >  include/hw/i386/pc.h                   |   1 +
+> > >  include/hw/watchdog/sbsa_gwdt.h        |   1 +
+> > >  hw/acpi/aml-build.c                    |  14 +++
+> > >  hw/acpi/meson.build                    |   5 +-
+> > >  hw/acpi/wdat-gwdt-stub.c               |  16 ++++
+> > >  hw/acpi/wdat-gwdt.c                    |  92 +++++++++++++++++++
+> > >  hw/acpi/wdat-ich9-stub.c               |  15 ++++
+> > >  hw/acpi/wdat-ich9.c                    |  90 +++++++++++++++++++
+> > >  hw/arm/Kconfig                         |   1 +
+> > >  hw/arm/virt-acpi-build.c               |  65 +++++++++++++-
+> > >  hw/arm/virt.c                          |   2 +
+> > >  hw/core/sysbus-fdt.c                   |  32 +++++++
+> > >  hw/i386/acpi-build.c                   |  12 +++
+> > >  hw/i386/pc_q35.c                       |  18 ++++
+> > >  hw/watchdog/sbsa_gwdt.c                |  65 +++++++++-----
+> > >  hw/watchdog/trace-events               |   9 ++
+> > >  tests/data/acpi/aarch64/virt/GTDT.gwdt | Bin 0 -> 132 bytes
+> > >  tests/data/acpi/aarch64/virt/WDAT.wdat | Bin 0 -> 260 bytes
+> > >  tests/data/acpi/x86/q35/WDAT.wdat      | Bin 0 -> 308 bytes
+> > >  tests/qtest/bios-tables-test.c         |  54 +++++++++++
+> > >  23 files changed, 618 insertions(+), 26 deletions(-)
+> > >  create mode 100644 include/hw/acpi/wdat-gwdt.h
+> > >  create mode 100644 include/hw/acpi/wdat-ich9.h
+> > >  create mode 100644 include/hw/acpi/wdat.h
+> > >  create mode 100644 hw/acpi/wdat-gwdt-stub.c
+> > >  create mode 100644 hw/acpi/wdat-gwdt.c
+> > >  create mode 100644 hw/acpi/wdat-ich9-stub.c
+> > >  create mode 100644 hw/acpi/wdat-ich9.c
+> > >  create mode 100644 tests/data/acpi/aarch64/virt/GTDT.gwdt
+> > >  create mode 100644 tests/data/acpi/aarch64/virt/WDAT.wdat
+> > >  create mode 100644 tests/data/acpi/x86/q35/WDAT.wdat
+> > >     
+> >   
+> 
 
---=-Hkc7djUBzr1SPdOeRBFL--
 

@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2596BCD4F48
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:39:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F490CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:39:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOsV7-0000zD-F7; Mon, 18 May 2026 03:34:57 -0400
+	id 1wOsV7-0000yf-4l; Mon, 18 May 2026 03:34:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUb-0000j0-Bu
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:28 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ id 1wOsUX-0000hM-MK
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:26 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUX-0000Yv-H1
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:24 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-4896c22fcbaso15377435e9.0
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:20 -0700 (PDT)
+ id 1wOsUT-0000XM-93
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:21 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-48d146705b4so20438135e9.3
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779089660; x=1779694460; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1779089656; x=1779694456; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PAEBPFqVQi36NfFP7Jq0Ftsf5CsUo7EyAsxwaDAqaz0=;
- b=qzWtVG6FyoWNlmJs0jXDijNEGDYmz3lhOgHBdv2agDhKM761UdoJzx3yw735/z9cdw
- 0/SyKaSiFFQg/4lsilFxdndMuSBtNTaVsvn9ZEo96Y9WDm6atsB//649C29CwrfKgQSj
- 7y0V5wB/ATO7GMzuNuBnD3jkuqWUwXY/Vfxh3LmrVLWXWaYYeqy/IS1G1IJN/ZUauDkD
- bbP0ijLVQj2C4+TC3/OMsIo7fwQDgp+NRAwSQSTNp4PqA0DB2jsuu6VBvqnlRkpM6+CY
- hJ5bOaFhC6Lk8aQIoPdJqM+Kwa3M48IaALGdyfEyBx5ir6XQk17vFVXL+ZTDtNrDSYVf
- fVWw==
+ bh=6CJZtjp2PDz3MfIqh4LsQdUXR0a9IzqUvFl4W/HGC4w=;
+ b=kzTLXweZHW81m9m54imarqwt3NWtHZY9udl4LUgeuYrR2BPiA2WmsWK8Jvd0ngkYvs
+ tcuLab0eeyjlTw6SxDOmPVj8mFUUqMvqE7PDxImf9+RRhNKyVu37Jirm8uzlGklUPW9h
+ 6AeH7wiUOPytBFneGBp0atWfAhiBF4pWdUaL/Sasoo0rplCANcanaFpr7xo8iEnNXpl5
+ 7AKG9kUExE9oL0O6PvfcjTMz/o2s/4BqX0/c+hriE5n0U8cJcwXKRTuWr62D2TkFIz/V
+ azM1ssuQIV+xRAV4xHJpj7mqTdVzer2Zh8tk4xwm0joquQLC13Pp7zRVJD6sDeqV79c3
+ hXkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779089660; x=1779694460;
+ d=1e100.net; s=20251104; t=1779089656; x=1779694456;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=PAEBPFqVQi36NfFP7Jq0Ftsf5CsUo7EyAsxwaDAqaz0=;
- b=Rl2TjCsuUfuuD3zanKNH+voSu8tgMEQ5693gMyfqZT6tdFQIX3IDgY4wLPsKkKIF4T
- QbffA5wo6JVJ33/LVwRxCdxHKBnhpxt2sC7MPKHynnyHegyq1pQ4V8tENH9kbuvoQxMG
- VQs4AQe95zri3YmsIa+D+hE5ykOXZsMGdOsiGlSyhD4aPMVIpoYjOFuTpRIEi7gihJOD
- F6dMgnM22p90483sq2c3eyru+X+IoHFnklCBToPBorKnEmHQLqCCIHN4KoDJuuIGUivF
- LG55VndGGxn2CjfI18b0r+hW3HPdptR+hQUBKWTQC6eKi+vx2QcxWDvBbixfKWxlfXsy
- 9n8g==
+ bh=6CJZtjp2PDz3MfIqh4LsQdUXR0a9IzqUvFl4W/HGC4w=;
+ b=ir9SX02yjDuyT5V9dPf7QO++pudnplmrGv96EqeBAAiaWwsztiDm7op6KtNaSNYkT6
+ 40BE8416YXHjx1pm//4i+gmMu+FvI/wUGu0PLfG6iJyNDP/xnWb9SpkgFDseElTC31S3
+ lnzFDnAEwhOwG13DG+c+1/trjkgSz5QyT4Gbz1e2q1dPyjSK1+EoWAL1MMLGd/HN3MGC
+ 7lQlliP0lBbuCXY4VAN20a3snyrIbqGf08nl21Lyf1OAS8Q6V+p3xlbNfO6zgNuy3xdY
+ xAXCv+swcfZb2g603yoJPOS81Y12zUBGVr3fgASfB0DRetgfQ7LB3fdJ0DGRV+Mdc94O
+ Od7A==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8IDIqP6fh8w6FTTXMxV+t0iA7t+xbPNAcVzKDQTAQ9BVMgqPneZvY2XG+Yrq09l1Pft4UWZbLqVQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy4h9hFprtMdexDpBaAiaQlF3ptekGKHDS4zU/V/UJbRJLUcQSu
- MEaGE+KYjkwo3A6D8B8vJQPlgOBP7ystipZtYDyUaQs0zMIU2K/wUXqs
-X-Gm-Gg: Acq92OFK8xFhHUdojopFFQBmaf5YnvcosRH+CP1DZYQ1KkQLdtcufNbuC0A5oKqxiB6
- agHJAonnFy7PnDVBdonId/Z/fEuDtJEhoNr6cAf65ABVuDtU/LolFzf6ZnbbleViSwr5tL6aURk
- ZW0a9RVfTIAETdKaWwfbK2x8HJA4lE2Rg2mRzuT8972TRWgMt7hiUQZeZSmK77JpiSz+lsFbPEJ
- 7+TCUrJOuFeA5ndiP/KuZqcQGR0T+nVE1xDUlx8qwUrvJUGM9tqHtHtjvFSUioLWNOML3Fn2WTx
- CCY8NzUp5YcsiYYHvr80KUgTG0nuAgyJYHXEiZn2LxgSey2EThYJqons3LrqihTwwa1BtMCPTd9
- X7CXj76TArHrBJH3fmqHsNaysIFTqaEmU80KfF+kP/sQXgor4f0bdH0PlXDPwbUC8eOw7F87jVP
- 5SpXxW68JXe/RaanPFHHW5pgZcgPYnNz7j8EyiZvMRMIjll9iOSBYbHXp3
-X-Received: by 2002:a05:600c:a102:b0:489:a4:e578 with SMTP id
- 5b1f17b1804b1-48fe60da919mr153278085e9.14.1779089659718; 
- Mon, 18 May 2026 00:34:19 -0700 (PDT)
+ AFNElJ8xEt4o07i0ATbJqG3ZJ3r23XnI4vW9HxSrHA78JUJRhonpa7MetRgD9KaJvmu8wUfX1VrSoNE0zg==@nongnu.org
+X-Gm-Message-State: AOJu0YwgokMbjo2g9eQrHQqKwOmGdp9pMdNFfpz49MYSvviVUy0R81ld
+ KFKt1M25NdjCmS4FDtAR3F8zca1AE4Xnrt9abW3QwrG6xGcLDm9pfzhW
+X-Gm-Gg: Acq92OEL0yR3K5XyAzesu9qA8gSzy60DuxmIsoj5aoB0NiOazusj6VXXl/cX7RSKLCp
+ 7OG4F35myb+6Xb6zOa3iK6K9K9aMnZAEK01gF2iFMhXkG3DEg2XskjKiE9YNdRquKmYEdCZDyuq
+ If38km09H2X289LTZuj/DeR71yz+7e4a+/JX2JRUdhYt4cFErdhbpVLssS57zITh7zCVIDen6Jp
+ zHe4ETQiy94qnK/h18ONLfmnjp0mdFrSJohqvRAWHOqm629LzOv1lu0ijk9qcSfMUZtsa8gx8O3
+ aTUYNmL3/b4DlF4e+81Q4e+pFmRO8uKObK1hR2lszv93/bJUTP/eyl1PsZ6qyN7aLqcz7Lomn0q
+ aau6YeTLvnwZi33M5VR3BfAxXf8pb8k6PwHuzCzlhcSCRD6X2PxfOdgtWlJaYbtLo1ZIc1mOsMv
+ qpFxCtKKR6+88VoAXvkVBD/Ubc2Z2QT+17MG2J8OT1Fl1jbA==
+X-Received: by 2002:a05:600c:848c:b0:488:b749:8482 with SMTP id
+ 5b1f17b1804b1-48fe60e52c1mr222469055e9.4.1779089655676; 
+ Mon, 18 May 2026 00:34:15 -0700 (PDT)
 Received: from PC-DA2D10.beckhoff.com
  ([2001:9e8:dc08:b284:85e6:f7f4:1a4a:4dfe])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.18
+ ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 May 2026 00:34:19 -0700 (PDT)
+ Mon, 18 May 2026 00:34:15 -0700 (PDT)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -78,26 +78,24 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Yannick Vossen <Y.Vossen@beckhoff.com>, qemu-arm@nongnu.org,
  Kevin Wolf <kwolf@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v7 16/16] docs/system/arm: Add support for Beckhoff CX7200
-Date: Mon, 18 May 2026 09:34:01 +0200
-Message-ID: <20260518073401.11279-17-corvin.koehne@gmail.com>
+ Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org
+Subject: [PATCH v7 12/16] hw/misc/zynq_slcr: Add CPU clock outputs and ratios
+Date: Mon, 18 May 2026 09:33:57 +0200
+Message-ID: <20260518073401.11279-13-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260518073401.11279-1-corvin.koehne@gmail.com>
 References: <20260518073401.11279-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,97 +113,122 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-This commit offers some documentation on the Beckhoff CX7200
-qemu emulation.
+Add CPU clock outs und derive the related domains from the
+base CPU clock ration. This makes the CPU clock domains
+visible and keeps their ratios consistent with the hardware
+clock tree.
+
+We also need to set the reset values during realization to
+ensure CPU clocks are properly enabled at startup. Without
+this, CPU clocks would have a frequency of 0 Hz, which
+causes problems in the a9mpcore timer implementations.
 
 Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- docs/system/arm/beckhoff-cx7200.rst | 62 +++++++++++++++++++++++++++++
- docs/system/target-arm.rst          |  1 +
- 2 files changed, 63 insertions(+)
- create mode 100644 docs/system/arm/beckhoff-cx7200.rst
+ hw/misc/zynq_slcr.c | 40 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
 
-diff --git a/docs/system/arm/beckhoff-cx7200.rst b/docs/system/arm/beckhoff-cx7200.rst
-new file mode 100644
-index 0000000000..6163a0cfa5
---- /dev/null
-+++ b/docs/system/arm/beckhoff-cx7200.rst
-@@ -0,0 +1,62 @@
-+Beckhoff CX7200 (``beckhoff-cx7200``)
-+======================================
-+The Beckhoff CX7200 is based on the same architecture as the Xilinx Zynq A9.
-+The Zynq 7000 family is based on the AMD SoC architecture. These products
-+integrate a feature-rich dual or single-core Arm Cortex-A9 MPCore based
-+processing system (PS) and AMD programmable logic (PL) in a single device.
-+The Beckhoff Communication Controller (CCAT) can be found in the PL of Zynq.
+diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+index 0ae5d607be..43e4cc74fe 100644
+--- a/hw/misc/zynq_slcr.c
++++ b/hw/misc/zynq_slcr.c
+@@ -61,6 +61,13 @@ REG32(DDR_PLL_CFG, 0x114)
+ REG32(IO_PLL_CFG, 0x118)
+ 
+ REG32(ARM_CLK_CTRL, 0x120)
++    FIELD(ARM_CLK_CTRL, CPU_PERI_CLKACT, 28, 1);
++    FIELD(ARM_CLK_CTRL, CPU_1XCLKACT, 27, 1);
++    FIELD(ARM_CLK_CTRL, CPU_2XCLKACT, 26, 1);
++    FIELD(ARM_CLK_CTRL, CPU_3OR2XCLKACT, 25, 1);
++    FIELD(ARM_CLK_CTRL, CPU_6OR4XCLKACT, 24, 1);
++    FIELD(ARM_CLK_CTRL, DIVISOR, 8, 6);
++    FIELD(ARM_CLK_CTRL, SRCSEL, 4, 2);
+ REG32(DDR_CLK_CTRL, 0x124)
+ REG32(DCI_CLK_CTRL, 0x128)
+ REG32(APER_CLK_CTRL, 0x12c)
+@@ -98,6 +105,7 @@ FPGA_CTRL_REGS(3, 0x1a0)
+ REG32(BANDGAP_TRIP, 0x1b8)
+ REG32(PLL_PREDIVISOR, 0x1c0)
+ REG32(CLK_621_TRUE, 0x1c4)
++    FIELD(CLK_621_TRUE, CLK_621_TRUE, 0, 1)
+ 
+ REG32(PSS_RST_CTRL, 0x200)
+     FIELD(PSS_RST_CTRL, SOFT_RST, 0, 1)
+@@ -206,6 +214,10 @@ struct ZynqSLCRState {
+     Clock *ps_clk;
+     Clock *uart0_ref_clk;
+     Clock *uart1_ref_clk;
++    Clock *cpu_1x;
++    Clock *cpu_2x;
++    Clock *cpu_3x2x;
++    Clock *cpu_6x4x;
+     uint8_t boot_mode;
+ };
+ 
+@@ -286,14 +298,31 @@ static void zynq_slcr_compute_clocks_internal(ZynqSLCRState *s, uint64_t ps_clk)
+     uint64_t io_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_IO_PLL_CTRL]);
+     uint64_t arm_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_ARM_PLL_CTRL]);
+     uint64_t ddr_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_DDR_PLL_CTRL]);
++    uint64_t cpu_base;
+ 
+     uint64_t uart_mux[4] = {io_pll, io_pll, arm_pll, ddr_pll};
++    uint64_t cpu_mux[4] = {arm_pll, arm_pll, ddr_pll, io_pll};
 +
-+You can find more detail about this board on
-+`the manufacturer's product page <https://www.beckhoff.com/en-en/products/ipc/embedded-pcs/cx7000-arm-r-cortex-r/cx7293.html?>`__.
-+The SoC is documented in the
-+`Zynq 7000 Technical Reference manual <https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM>`__.
++    bool use_621 = FIELD_EX32(s->regs[R_CLK_621_TRUE], CLK_621_TRUE,
++                              CLK_621_TRUE);
++    /* Select 6:2:1 (true) or 4:2:1 (false) CPU clock ratios. */
++    uint32_t ratio_6x4x = use_621 ? 6 : 4;
++    uint32_t ratio_3x2x = use_621 ? 3 : 2;
 +
-+The CX7200 supports the following:
+ 
+     /* compute uartX reference clocks */
+     clock_set(s->uart0_ref_clk,
+               ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT0));
+     clock_set(s->uart1_ref_clk,
+               ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT1));
 +
-+- Arm Cortex-A9 MPCore CPU
++    /* Base is CPU clock (6x/4x domain). Derive other CPU domains via ratios. */
++    cpu_base = ZYNQ_COMPUTE_CLK(s, cpu_mux, R_ARM_CLK_CTRL, CPU_6OR4XCLKACT);
 +
-+  - Cortex-A9 CPUs
-+  - GIC v1 interrupt controller
-+  - Generic timer
-+  - Watchdog timer
++    clock_set(s->cpu_6x4x, cpu_base);
++    clock_set(s->cpu_3x2x, cpu_base * ratio_6x4x / ratio_3x2x);
++    clock_set(s->cpu_2x,   cpu_base * ratio_6x4x / 2);
++    clock_set(s->cpu_1x,   cpu_base * ratio_6x4x);
+ }
+ 
+ /**
+@@ -322,6 +351,10 @@ static void zynq_slcr_propagate_clocks(ZynqSLCRState *s)
+ {
+     clock_propagate(s->uart0_ref_clk);
+     clock_propagate(s->uart1_ref_clk);
++    clock_propagate(s->cpu_1x);
++    clock_propagate(s->cpu_2x);
++    clock_propagate(s->cpu_3x2x);
++    clock_propagate(s->cpu_6x4x);
+ }
+ 
+ static void zynq_slcr_ps_clk_callback(void *opaque, ClockEvent event)
+@@ -620,6 +653,10 @@ static const ClockPortInitArray zynq_slcr_clocks = {
+     QDEV_CLOCK_IN(ZynqSLCRState, ps_clk, zynq_slcr_ps_clk_callback, ClockUpdate),
+     QDEV_CLOCK_OUT(ZynqSLCRState, uart0_ref_clk),
+     QDEV_CLOCK_OUT(ZynqSLCRState, uart1_ref_clk),
++    QDEV_CLOCK_OUT(ZynqSLCRState, cpu_1x),
++    QDEV_CLOCK_OUT(ZynqSLCRState, cpu_2x),
++    QDEV_CLOCK_OUT(ZynqSLCRState, cpu_3x2x),
++    QDEV_CLOCK_OUT(ZynqSLCRState, cpu_6x4x),
+     QDEV_CLOCK_END
+ };
+ 
+@@ -630,6 +667,9 @@ static void zynq_slcr_realize(DeviceState *dev, Error **errp)
+     if (s->boot_mode > 0xF) {
+         error_setg(errp, "Invalid boot mode %d specified", s->boot_mode);
+     }
 +
-+- OCM 256KB
-+- SMC SRAM 64MB
-+- Zynq SLCR
-+- SPI x2
-+- QSPI
-+- UART
-+- TTC x2
-+- Gigabit Ethernet Controller x2
-+- SD Controller x2
-+- XADC
-+- Arm PrimeCell DMA Controller
-+- DDR Memory
-+- USB 2.0 x2
-+- DDR Controller
-+- Beckhoff Communication Controller (CCAT)
-+
-+  - EEPROM Interface
-+  - DMA Controller
-+
-+The following is not supported:
-+    - I2C
-+
-+Running
-+"""""""
-+Directly loading an ELF file to the CPU of the CX7200 to run f.e. TC/RTOS (based on FreeRTOS):
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-arm -M beckhoff-cx7200 \
-+        -device loader,file=CX7200_Zynq_Fsbl.elf \
-+        -display none
-+
-+
-+For setting the EEPROM content of the CCAT provide the following on the command line:
-+
-+.. code-block:: bash
-+
-+        -drive file=eeprom.bin,format=raw,id=ccat-eeprom
-+
-+The size of eeprom.bin must be aligned to a power of 2 and bigger than 256 bytes.
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index e34492402f..e6fbdb663c 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -82,6 +82,7 @@ Board-specific documentation
-    arm/aspeed
-    arm/bananapi_m2u.rst
-    arm/b-l475e-iot01a.rst
-+   arm/beckhoff-cx7200
-    arm/sabrelite
-    arm/digic
-    arm/cubieboard
++    zynq_slcr_reset_init(OBJECT(s), 0);
++    zynq_slcr_compute_clocks_internal(s, clock_get(s->ps_clk));
+ }
+ 
+ static void zynq_slcr_init(Object *obj)
 -- 
 2.47.3
 

@@ -4,88 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD226CD4F4A
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 19:40:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0C42CD343F
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 19:49:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wP3ou-0006g8-M3; Mon, 18 May 2026 15:40:08 -0400
+	id 1wP3xz-0008V7-Cm; Mon, 18 May 2026 15:49:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wP3or-0006dC-Rn
- for qemu-arm@nongnu.org; Mon, 18 May 2026 15:40:05 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1wP3xr-0008TH-RE
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 15:49:26 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wP3oq-0003Tu-24
- for qemu-arm@nongnu.org; Mon, 18 May 2026 15:40:05 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4891c0620bcso16539765e9.1
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 12:40:03 -0700 (PDT)
+ id 1wP3xq-0006b4-9W
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 15:49:23 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-44b330c5cc6so1965815f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 12:49:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779133202; x=1779738002; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779133760; x=1779738560; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=nZYoXjmmAV8cuGf7V32Wc+33KaO56HAAVaQ0Csg7u70=;
- b=LRJhb1D89tr75PzuPgun4jTnhYV4MmvRj1dQCtUlhhGCjC1vEjE2Ur/if2rwmprla9
- Xp2YaEJDqbyPkpkC5nf4yqoR4VzPjqfi00s8zTU/a1SsjdS4pC5qIM0SQxysf5HWcZuT
- wvNnDbTMAiqPl0M1Fx/UYchQP1R2ALNmSTbfX8Vfk6a8xLdoODm5zcv5C4o7+/yrSUxQ
- Cte5K/cTLnWKRr8J6JVCDAAzEVWEk6IlXfd3NYER5qpNjljMfLeRD1EcsacPfPCLw4qO
- TASuiY4w9j5B/ou9R7ub51NiJlWGM6ulYISZ3f1s67bVvogWwkFeWqpQGn0/yj5GK9Mu
- QBEg==
+ bh=hgH/EpClVj36vD0mFCHEvS+oT8byVUNIwK3om4YJTWU=;
+ b=fXRM5Q8h0VSXjOIsevPGTfzZ+BJuBqKeCwcK698hbkvH50Cd86htTJ6cct+ibsFU3x
+ E0KyHMNp7j+IsMCytBc9GTPXa/87eAAhCdKAMR6exYjt9FwW7esQt+KLEaTQWzDJUKFs
+ JC4IprjBSMc5JEk3cqg5wfL01jv9yvVWoYWDmsFjAJsUGiywGw1vyyXAv0ANT4iCLULG
+ Yye/tBHyZPkson3zcl0TKBTcRwye3gc3NUAT1TaxonKP+eOUxnC+WcaCw5vWxejYYMv3
+ 1Decz7a2v1r9ioRKL9AtmLgTkYUjbW3mFQhv4lZIPHQHpYJDfpem0TrUOMK9e6grqefk
+ y/sQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779133202; x=1779738002;
+ d=1e100.net; s=20251104; t=1779133760; x=1779738560;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=nZYoXjmmAV8cuGf7V32Wc+33KaO56HAAVaQ0Csg7u70=;
- b=bT7aeSFtlPtCT2ZsdwcrLfepCLaX5v9AtXNqyplkFIiQidVpumWiMqErkKHeiBOD9x
- qbVCx5cQf/vPk+lNQM8t4R00Ayur9aHmlXOZAcTrMK/BlzOi9VmacdptT0H8w41QUt02
- dKZMpZy3+t4ht0Q1/Pqbk+Xgn9ria2wUPemMXh0IYGZb1amnzAcoFMlZka4IHXWe3gn+
- uEd2Shuf1jYm9SsZZh2hV6B4QNqFBOntpuQgYCQ7GdsbqIuCOnLyLVNSJHeRCo7sFPav
- v4QWpeuMHZ7VQOUcHRHnidjzEriKWOZVvxibkHbvlvG3SAUx3PN38SLZs4V5Lf48JUnM
- 8t3g==
+ bh=hgH/EpClVj36vD0mFCHEvS+oT8byVUNIwK3om4YJTWU=;
+ b=tZYHvtF78iF/Zh1OtbHqiXQnqVyDn1hsisWt3BFNOKmHTx3Ni6RtvAv+2h1v5/XjsD
+ +HGSJj2UoGX0R/eRnTnHA2dpRjtZe77QxzYZbYEa8Zt3FnHfOdYWfL5WepWQweMazgD5
+ nMnHCX3mHS2ZYGH0jiAdQFLyNPUyDG2GHCGY0SActe7wftXrJceiiiVa8hZLWQnP/lsb
+ 4iMvVcVWtDOR9w8Rtxh0V7U4I96OpzrRdnEXOuF2iuqhQ0JbnszQajpO6Q2HFMEc6/zP
+ VLnlkmCFELdldlNr5j7UhqhReA9dLw/hsfHBdIlZugUgQfI6AZYkJ5Cpjcqsfbs5/FuD
+ zmZg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/CFJaT+4y6gbUNZB8lWOeEj+5LXagfYd9465tN0IiRfQCx3qz+BomW2dQ9B6hB6wonN5dmZ1+/nw==@nongnu.org
-X-Gm-Message-State: AOJu0Yz2h2I6oDuRbg/2aoyw22GPmN5gSsgywDmzj6QP1A1NfxoWlagk
- gGewklo3793JRcYDL+ADRaRYjzBTpN3vbtg/QeWG4Et8CoIsCT7TU12Px4IttgSDxw4=
-X-Gm-Gg: Acq92OHvyXiEB3u0d3rDNVkkm6taXU2gR5M5MCGwd2FbC9WImn1eorIpb5FX3cmG1kW
- RCn2aD7fc76YJUGngNKu35LcJqbc7ogOcMbcMdXU5mCM4JMPU3A/BKnf57qIq/t53xxatvqx4L6
- eJo/cGhDzVpI2/7UFuax8g2PJdsIx3DoZbyFkh7xYbPeNG0WsLYH7ViSflUv1GzHT5RexrhSFY1
- LU+c2h1r/oCpRGW7EyTDuQak9GXHGEq7wnkbuAHp6+v5hgBI+BDQ70uKpSHYVcEE2jZR9jcdkFC
- hAsGJTtRPLQS3YGPv2Tn8t6jjsxphvWEx0ZblsvouvLu/X0N7fcBYZLYDizptw7iBQ5hbKN5PMN
- YLs6/v211SXn+LlewmcJU2Xtu2qQZrsK4alUpYEdl7mGhmAGAtFw6rZaWiuVb349Lk1x8C7NLIo
- 8iu3juMn1coWr1cdq0aN2VMj8=
-X-Received: by 2002:a05:600c:a406:b0:48a:6798:52e9 with SMTP id
- 5b1f17b1804b1-48fe59b06acmr220496215e9.0.1779133202215; 
- Mon, 18 May 2026 12:40:02 -0700 (PDT)
+ AFNElJ+b2akqY8/YT6Qjyms19uZrWZC8Aet9WoMURX/EKtKZydnU7oq5vZomJEQi12gr7SHI8cAnIgFmiQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxKgvjGL7e6YxhQB/v+O5leyhr38MkmFKUbgWF1Hvvp/OfJJOK1
+ gbDus/+4M1pQjlTLGgSEIPWG4gdkAtHjslWAUFnTQgmUbpr0+DLBGxoyhsJP2xhIhx4=
+X-Gm-Gg: Acq92OGOnc7Y9Rhr15SVmzDEXFWjd8esSKhSTi1AdvZYchSZR4trStgjc2W+Y9TAqyF
+ sw3R7dTOH81TZsSA+hYgEoPJJr6xy5i/j7B+zmJTvz16VNiLy30/XGk61aEKO5w4GxZC+UAymfi
+ 23H+M7iqNQgHlx/YGZ+bWU3hzxHXS41yoUJVe2dppe6NeFHnJ2uWH5KDX0fCBa6OdCPMgG3fob5
+ ZykBTni7Ui8p8gP5AcXvdb93wfui/kVnhBRvUrU2LA8nWErYkn3ZWqyw2fUlG2awZouDeiYU1Z1
+ bQSR4T1IBB1kNWjHbogVLxjiivMim05dlmDGK+sKoAahMxPRnr5bmDDBxM0TBGH2gsMB/hs6r0f
+ ZNEgxwbM9xVosTYpgUDWupo7PN6iYG0a+PFiYt+pGx1KsNmzRaT+pRw0pjQe7rbPI4QXEW7qZVr
+ eP+j/P1tfE2f4ZYwggPEJT9Cg=
+X-Received: by 2002:a05:6000:2f87:b0:43b:5672:efe with SMTP id
+ ffacd0b85a97d-45e5c5bbef7mr27222780f8f.9.1779133760448; 
+ Mon, 18 May 2026 12:49:20 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48fe537c788sm261560975e9.12.2026.05.18.12.40.01
+ ffacd0b85a97d-45d9e768c4fsm39693646f8f.8.2026.05.18.12.49.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 May 2026 12:40:01 -0700 (PDT)
+ Mon, 18 May 2026 12:49:19 -0700 (PDT)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id A7B765F7B1;
- Mon, 18 May 2026 20:40:00 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id D81045F7B1;
+ Mon, 18 May 2026 20:49:18 +0100 (BST)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Lucas Amaral <lucaaamaral@gmail.com>
 Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,
  dmitry.osipenko@collabora.com,  marcandre.lureau@redhat.com,
  visitorckw@gmail.com
-Subject: Re: [PATCH v5 1/4] ui: introduce GRAPHIC_FLAGS_VK for Vulkan scanout
-In-Reply-To: <20260317182049.33848-2-lucaaamaral@gmail.com> (Lucas Amaral's
- message of "Tue, 17 Mar 2026 15:20:46 -0300")
+Subject: Re: [PATCH v5 2/4] virtio-gpu: add VIRTIO_GPU_F_BLOB_ALIGNMENT
+ header definitions
+In-Reply-To: <20260317182049.33848-3-lucaaamaral@gmail.com> (Lucas Amaral's
+ message of "Tue, 17 Mar 2026 15:20:47 -0300")
 References: <20260317182049.33848-1-lucaaamaral@gmail.com>
- <20260317182049.33848-2-lucaaamaral@gmail.com>
+ <20260317182049.33848-3-lucaaamaral@gmail.com>
 User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Mon, 18 May 2026 20:40:00 +0100
-Message-ID: <87h5o4cxrj.fsf@draig.linaro.org>
+Date: Mon, 18 May 2026 20:49:18 +0100
+Message-ID: <87bjeccxc1.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,53 +111,47 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Lucas Amaral <lucaaamaral@gmail.com> writes:
 
-> Define GRAPHIC_FLAGS_VK (bit 2) in the console flags for future
-> Vulkan scanout support.  The compatibility check currently returns
-> an error indicating the feature is not yet implemented.
->
-> This prepares the display framework for direct Vulkan scanout
-> alongside the existing GL and DMABUF paths.
+> Define VIRTIO_GPU_F_BLOB_ALIGNMENT (feature bit 5) and the
+> blob_alignment field in virtio_gpu_config per the OASIS virtio
+> specification.
 >
 > Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
 > ---
->  include/ui/console.h | 2 ++
->  ui/console.c         | 7 +++++++
->  2 files changed, 9 insertions(+)
+>  include/standard-headers/linux/virtio_gpu.h | 6 ++++++
+>  1 file changed, 6 insertions(+)
 >
-> diff --git a/include/ui/console.h b/include/ui/console.h
-> index 3677a9d3..19ac06e0 100644
-> --- a/include/ui/console.h
-> +++ b/include/ui/console.h
-> @@ -361,6 +361,8 @@ enum {
->      GRAPHIC_FLAGS_GL       =3D 1 << 0,
->      /* require a console/display with DMABUF import */
->      GRAPHIC_FLAGS_DMABUF   =3D 1 << 1,
-> +    /* TODO: require a console/display with Vulkan scanout */
+> diff --git a/include/standard-headers/linux/virtio_gpu.h b/include/standa=
+rd-headers/linux/virtio_gpu.h
+> index 00cd3f04..252704e7 100644
+> --- a/include/standard-headers/linux/virtio_gpu.h
+> +++ b/include/standard-headers/linux/virtio_gpu.h
+> @@ -64,6 +64,11 @@
+>   * context_init and multiple timelines
+>   */
+>  #define VIRTIO_GPU_F_CONTEXT_INIT        4
+> +/*
+> + * VIRTIO_GPU_F_BLOB_ALIGNMENT: device advertises blob_alignment
+> + * in virtio_gpu_config (OASIS virtio-spec feature bit 5)
+> + */
+> +#define VIRTIO_GPU_F_BLOB_ALIGNMENT      5
 
-You can drop the TODO: here
+What kernel version does this symbol get added in? I can't see it in 7.0
 
-> +    GRAPHIC_FLAGS_VK       =3D 1 << 2,
+Headers should be imported with the scripts/update-linux-headers.sh
+script, see 49f6b93d075 (linux-headers: Update to Linux v6.19-rc1) for
+an example.
+
+>=20=20
+>  enum virtio_gpu_ctrl_type {
+>  	VIRTIO_GPU_UNDEFINED =3D 0,
+> @@ -365,6 +370,7 @@ struct virtio_gpu_config {
+>  	uint32_t events_clear;
+>  	uint32_t num_scanouts;
+>  	uint32_t num_capsets;
+> +	uint32_t blob_alignment;
 >  };
 >=20=20
->  typedef struct GraphicHwOps {
-> diff --git a/ui/console.c b/ui/console.c
-> index f445db11..424ee195 100644
-> --- a/ui/console.c
-> +++ b/ui/console.c
-> @@ -594,6 +594,13 @@ static bool console_compatible_with(QemuConsole *con,
->          return false;
->      }
->=20=20
-> +    if (flags & GRAPHIC_FLAGS_VK) {
-> +        /* TODO: check for Vulkan scanout support in display backend
-> */
-> +        error_setg(errp,
-> +                   "Vulkan scanout not yet implemented");
-> +        return false;
-> +    }
-> +
->      return true;
->  }
+>  /* simple formats for fbcon/X use */
 
 --=20
 Alex Benn=C3=A9e

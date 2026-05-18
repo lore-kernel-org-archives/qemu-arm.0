@@ -4,95 +4,151 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F06A2CD4F48
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:40:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41742CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:48:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOsa0-00017G-GF; Mon, 18 May 2026 03:40:05 -0400
+	id 1wOsiK-0003GO-LI; Mon, 18 May 2026 03:48:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <C.Koehne@beckhoff.com>)
- id 1wOsZY-0000Yp-I4; Mon, 18 May 2026 03:39:35 -0400
-Received: from mx08-0090a401.pphosted.com ([66.159.246.175])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wOsiH-0003Ei-EW
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:48:34 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <C.Koehne@beckhoff.com>)
- id 1wOsZW-0002gG-FZ; Mon, 18 May 2026 03:39:32 -0400
-Received: from pps.filterd (m0463075.ppops.net [127.0.0.1])
- by mx08-0090a401.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 64I5CPdu1805690; Mon, 18 May 2026 07:39:24 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=beckhoff.com; h=
- cc:content-type:date:from:in-reply-to:message-id:mime-version
- :references:subject:to; s=mail2022r; bh=UqGcXjgm7gqHXEvVsAKh1+Qf
- 8IQAGN/OVMKgOjxRie0=; b=H9VwExOYEwXmGpKZ9DgDxCN4Y+BsqcwxiDD8HSzV
- 4zSZ/80Nva7xARi1QP0uTpmiySCOZWBdtum/tft8Or49nYa8BHWbD/dRUnwi4YQx
- Jw0MlYgEvA7RiusGqZGKkrXP/L3jEu1SBt6HtIyNHj+KiqVnSW81V793uLn+ooqg
- g5snE0OxhZKmngen6CGFFixf5A6NsOaYf3uqWEnMmQ6Ys11OhNFdbOBDRAA6/51h
- P3uDVZjXZZlnKa6YPGEAAzR4HotXzdEqin1Q+MuHQ5/aFfuV/Nr3kEij3P7O3mko
- wmh+qLvEwZXL5WVYlHhETD/+JnV7MdY6EFaPG8MXkZ6zDg==
-Received: from ex14.beckhoff.com ([62.159.14.12])
- by mx08-0090a401.pphosted.com (PPS) with ESMTPS id 4e743thmrd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 18 May 2026 07:39:24 +0000 (GMT)
-Received: from ex10.beckhoff.com (172.17.2.111) by ex14.beckhoff.com
- (172.17.3.7) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Mon, 18 May
- 2026 09:39:23 +0200
-Received: from ex10.beckhoff.com ([fe80::ab7f:9a91:d220:441b]) by
- ex10.beckhoff.com ([fe80::ab7f:9a91:d220:441b%12]) with mapi id
- 15.02.2562.035; Mon, 18 May 2026 09:39:23 +0200
-From: =?utf-8?B?Q29ydmluIEvDtmhuZQ==?= <C.Koehne@beckhoff.com>
-To: "alex.bennee@linaro.org" <alex.bennee@linaro.org>
-CC: "hreitz@redhat.com" <hreitz@redhat.com>, "alistair@alistair23.me"
- <alistair@alistair23.me>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>, "edgar.iglesias@gmail.com"
- <edgar.iglesias@gmail.com>, "kwolf@redhat.com" <kwolf@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- =?utf-8?B?WWFubmljayBWb8OfZW4=?= <Y.Vossen@beckhoff.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v5 00/15] hw/arm: add Beckhoff CX7200 board
-Thread-Topic: [PATCH v5 00/15] hw/arm: add Beckhoff CX7200 board
-Thread-Index: AQHcZQFHPSNPcPq7EEaJLYF/Bl03xLVTXiHygMDpOAA=
-Date: Mon, 18 May 2026 07:39:23 +0000
-Message-ID: <421fc251f1f167cf095b7683ea41ccfe48474c20.camel@beckhoff.com>
-References: <20251204093502.50582-1-corvin.koehne@gmail.com>
- <87wm1jhzkb.fsf@draig.linaro.org>
-In-Reply-To: <87wm1jhzkb.fsf@draig.linaro.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: yes
-X-MS-TNEF-Correlator: 
-x-originating-ip: [172.17.129.38]
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="=-vEKY4l0sik4wNDkY8j84"
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wOsiD-0006e1-Ba
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:48:32 -0400
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 64I7V9MI1898341
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 07:48:20 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ TAlBJlB+HRzVkumPBWr+YGfxiq+qAumbFMSLdPDTjZM=; b=CqR2ABtYC/+o9B6c
+ 5XH8X6dpvVZ0KnbIh+naN8KLDZw3NS8tE1SGAcq3ZUL7XFz/dO5bdA0dBuTLXPOB
+ nromFXkBU9vWLzZMkUsJ14XB6+Nusvi5X0Au9eAkbcqi2eTOdawfhFK+ClbACcB2
+ CIQYJfQNJz77iUFAa9SaNF04bseNAlephDWsjLJBjq2s+9G8R+LXIiC+q0aBC8Ic
+ iNnqSBuKqapGJV27PvC1zxVb27VVByMYzTFZolgPSHRISMrWUB4IC4sgmRmFlida
+ KAiuxSxuDsGeHmlqHBV8X/Cyk906EkVmhn2HPopb8benhvBsqZg7Nn8TxXe2DC3x
+ LvGFQw==
+Received: from mail-dy1-f199.google.com (mail-dy1-f199.google.com
+ [74.125.82.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4e6gyw59y6-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 07:48:20 +0000 (GMT)
+Received: by mail-dy1-f199.google.com with SMTP id
+ 5a478bee46e88-2ef37c3f773so1984505eec.1
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:48:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1779090499; x=1779695299; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=TAlBJlB+HRzVkumPBWr+YGfxiq+qAumbFMSLdPDTjZM=;
+ b=H2oKQ9Z8I4b00ewkjm42f7AZnI196TAAA/z1szDg+DP0RHyDbwOYKPA2H5KF3n8rPV
+ q0vcTlyBfHNAFiMFpsgxqYf0z6ZQtCHAj32o9vLfsNKUSUWIdxyXj8ZqZpeLVV7c691F
+ VGB2R4QtbJbvr9ULv+kIJ6LjBHCzWfxV3+EcxNVMINa9LjomnLk/V7KPWiDGKLnlztGj
+ ZmnBxckGhHvdP2Kmjf+jqmBs5Xb3g53EceQpVusMnkcn9F2oY6U+R+XSjyMu+ll7vTDM
+ 45sFm4og/oXkzjOC5XYu5OcjLOiytP/+m5fjijQYTpnoeIcn0oBk20MaKsK3h2DdZo2p
+ b1JA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779090499; x=1779695299;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=TAlBJlB+HRzVkumPBWr+YGfxiq+qAumbFMSLdPDTjZM=;
+ b=F2xb21AWf7zI7HFXV05MIEW5w6GRqFaCtdgoL/ASygMCwAsomge64jsQXI3mNbABdn
+ CnDSZ45bhDscYPBEsXdB9LueAU8f2cx4XeZhl5ZvwEwM9let4FxJiMHRqo3Nx+IcQlTy
+ Hh+lzSCMA+xM/17XGRqsGu9wOu5RFPK1vxBVdfAxuid3pCWVtCk5sGPrQNDrn9TnQmUN
+ 7cqKvdj84ueihDm1i3EkJXFTX8Ewn0TQl49/bdlPixxH9dDHa/SHVJIpQMkFyTiYLdhv
+ XDycBeLHDF1bGwrmzGYGACSTq8DcnENjLpryPMcuH5P7iFCq3hi6E5sVszD9SCKd8H+/
+ XI+w==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+l4F3eCs65HSROaiCplhnztPqU6zDBKjIvNMti5weJ8/lgfsI7CdeSqVi7aY3HCL9NTr+6oijFXA==@nongnu.org
+X-Gm-Message-State: AOJu0YwTrzpYXPfCDvx5vFLbB5XC53zdoXvBWI6LKnVydK09ZAuEt2Ui
+ WbGuEF/9+grYTOUJRwA3ewebjhmplj223IIUL8Fki5dwkX1H/rhjhnp3Z51ERiP/Y45OC2vfyx5
+ KpNtCwFV1yAx7aZYLD6WB09biE8bXMBq4krTEVRgeja15VFUrtqiNvPo=
+X-Gm-Gg: Acq92OFXbYQsguWXuoeId2wYJh5EtC7VyqQVhbIKgdHFqOapCZCWHSojQObkwDaeO6I
+ F/f6wXHsu3+lK97+X0ZX63XAd/456mLmOdVosCcIEWJjWL+I7SOdIvxVePty7ooqVXqqKB0mjYb
+ vGoggHGW0jLu098oXKoXzqUHzbgVXZwR9Y4BKRpafK8dUStJJjy8+oRUlE+3CSYglnNn2KJylYa
+ j/7TUhIVxX/Hi5iHyQTf8AGehTm8QV45ymM62zyNTTHlXP8MOCwL9xNRKvv4oiYl6b0HBX86Tr/
+ 5e2+1WB2fmNKEOaqpc2b9CYrvOoaK+UNZraD2v0CPTu1WDPbXsgFpir7xnTfiOILJT2oPWP9HMp
+ qOoZuGdZFBkLROS03posE23MbCZbadmisjjlMmVFOwhffQhdxdRl0+VoJ6MWB61eI5A==
+X-Received: by 2002:a05:7301:1004:b0:2e6:e916:70ff with SMTP id
+ 5a478bee46e88-303986a0ebemr4839344eec.28.1779090499476; 
+ Mon, 18 May 2026 00:48:19 -0700 (PDT)
+X-Received: by 2002:a05:7301:1004:b0:2e6:e916:70ff with SMTP id
+ 5a478bee46e88-303986a0ebemr4839324eec.28.1779090498905; 
+ Mon, 18 May 2026 00:48:18 -0700 (PDT)
+Received: from [10.11.7.97] ([50.238.185.218])
+ by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-30293e2ea6dsm13451082eec.4.2026.05.18.00.48.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 18 May 2026 00:48:18 -0700 (PDT)
+Message-ID: <5053ba4c-01eb-443d-b364-50a32be41e26@oss.qualcomm.com>
+Date: Mon, 18 May 2026 02:48:15 -0500
 MIME-Version: 1.0
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTE4MDA3MiBTYWx0ZWRfX0aycHlKEeCLp
- 3p6O9NC470u7IkcVOf6nuqeXJby2sXDHfwoLmWHxR8HncaKJ/Dr0pDBLLt0IOu/9AVV3jZD2nsr
- HfMu1VoM2lT+kqKs2NufvzMxdOFwIjFMcQPo9JgPotSn42gBjIo2uWzYw0dAmRSyxtR2lqKHcbJ
- WnbYdmZ/5wkg68GpSqfGc1NzT36OeocrE7oPgFdzREk3OErRav3pnULB5NxPp9pU37GAZUQlwbd
- 6eeA/RVK+FYrYTZ4DtR2RSaO68uM27kjuRoXe4GlN4+60nWez5399xYTKk31e47ut/7fi6m4KWO
- Bn3lmfztgD9Ofe1ZFybBkTcD7d7tQ2XF6NfoZspZp4tsCWSIxhxfQUFjTKdOo17+pg/TiARv+Lf
- d4b4w7TlVH2c1JSp1MU0vg5AqIqTlJ1M9tESO3BgDQwCiKbUoqTdekeZrSSf1x9Vt8mEpUR1d/l
- 5JP8f9S0gNFU8+M4Dkw==
-X-Proofpoint-GUID: AvO3ZgUCG7fSp_ReVsdX_8WMlzHSPLlC
-X-Proofpoint-ORIG-GUID: AvO3ZgUCG7fSp_ReVsdX_8WMlzHSPLlC
-X-Authority-Analysis: v=2.4 cv=CaU4Irrl c=1 sm=1 tr=0 ts=6a0ac22c cx=c_pps
- a=ZkhbYXbYXnnsONUOWLo3Bg==:117 a=ZkhbYXbYXnnsONUOWLo3Bg==:17
- a=xqWC_Br6kY4A:10 a=zoJHxBl5aBcA:10 a=NGcC8JguVDcA:10 a=M51BFTxLslgA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=a9bgyBvlNMQzFU9Z5g25:22 a=pEnWR6l_7HET9bmtpPat:22
- a=NEAV23lmAAAA:8 a=Cmw_MBCVAAAA:8 a=pGLkceISAAAA:8 a=uWXjGa5q-P-bnwGHkEMA:9
- a=QEXdDO2ut3YA:10 a=xEm3df6wRxaQY7_TQgUA:9 a=FfaGCDsud1wA:10
- a=ZJSrCmYe3mwGoKZA4Vko:22
-Received-SPF: pass client-ip=66.159.246.175;
- envelope-from=C.Koehne@beckhoff.com; helo=mx08-0090a401.pphosted.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 11/21] target/arm: Restrict IDAU interface to TCG
+ namespace
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Laurent Vivier <lvivier@redhat.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, Troy Lee <leetroy@gmail.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Fabiano Rosas <farosas@suse.de>
+References: <20260516171524.19184-1-philmd@linaro.org>
+ <20260516171524.19184-12-philmd@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <20260516171524.19184-12-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTE4MDA3MyBTYWx0ZWRfX7aDuVR/bEAPH
+ On1eFKJjS/Peje+8RVrNTbpj2a4Btgyz4/NybO/WksD+dBNgksajvOQYXLtraGETmOp8WZSlZUd
+ c3UKUhdtGM6qzvyFHb0wKSR8qbtimUBOS8lYU0kkOKxQ2h+UimPyQKjhCpfieXo4ZqScn8ANzgC
+ XmWvapzPpRAAsOzBPKcXMCtnPQBtL65lJ3X61pULk6LztVFeY3+iCUqPzuJCqThJraFCjEM1EqU
+ LSWdmMD0rGRTsKgZMx6zBcbjZqpJpbqOsVw5KJLqPsY9ukup6/mTIKLzchxsoiVQN9Eg3T/aI5s
+ zkEe1HgQ2bU7lot0A0NZL3Q9VzsMyn5QeOvlgA8G6Pr92Eu1r9zNLoYVrEmnMFXO/WtzDfsxZnV
+ VPcqtQ9KOR91tfdEJm0DmPzexxn+9erFG7vx9zZSjVWAgO3QPKnuWE5y74NTcWcOZzzMF2SSDAS
+ 0nNA+90KZIeO0avEDvw==
+X-Proofpoint-GUID: 5GQxgr0jvG7AP_bEsQGlA5bSLMSHSXe6
+X-Proofpoint-ORIG-GUID: 5GQxgr0jvG7AP_bEsQGlA5bSLMSHSXe6
+X-Authority-Analysis: v=2.4 cv=E5v9Y6dl c=1 sm=1 tr=0 ts=6a0ac444 cx=c_pps
+ a=cFYjgdjTJScbgFmBucgdfQ==:117 a=+WjNtiTvTqxFfZe9JAS8OQ==:17
+ a=IkcTkHD0fZMA:10 a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
+ a=EUspDBNiAAAA:8 a=KKAkSRfTAAAA:8 a=lYet2qYnc6s8ltbzrrIA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=scEy_gLbYbu1JhEsrz4S:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-05-18_01,2026-05-15_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 malwarescore=0 bulkscore=0 adultscore=0 spamscore=0
+ priorityscore=1501 lowpriorityscore=0 suspectscore=0 phishscore=0
+ impostorscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2605130000
+ definitions=main-2605180073
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,102 +164,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---=-vEKY4l0sik4wNDkY8j84
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="UTF-8"
+On 5/16/2026 12:15 PM, Philippe Mathieu-Daudé wrote:
+> Emphasize the IDAU interface is restricted to TCG by moving the
+> header under target/arm/tcg/. Move the definition to cpu-v7m.c
+> which also contains v7/v8 hardware (NVIC), keeping only CPU types
+> in cpu32.c.
+> 
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+> Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>  include/hw/arm/armv7m.h     |  2 +-
+>  include/hw/misc/tz-msc.h    |  2 +-
+>  target/arm/{ => tcg}/idau.h |  4 ++--
+>  hw/arm/armv7m.c             |  2 +-
+>  target/arm/cpu.c            |  2 +-
+>  target/arm/ptw.c            |  2 +-
+>  target/arm/tcg/cpu-v7m.c    | 11 +++++++++++
+>  target/arm/tcg/cpu32.c      |  8 --------
+>  8 files changed, 18 insertions(+), 15 deletions(-)
+>  rename target/arm/{ => tcg}/idau.h (97%)
+> 
 
-On Thu, 2026-01-15 at 11:42 +0000, Alex Benn=C3=A9e wrote:
-> Corvin K=C3=B6hne <corvin.=E2=80=8Akoehne@=E2=80=8Agmail.=E2=80=8Acom> wr=
-ites: > From: Corvin K=C3=B6hne
-> <c.=E2=80=8Akoehne@=E2=80=8Abeckhoff.=E2=80=8Acom> > > Hi, > > Beckhoff h=
-as build a board, called
-> CX7200, based on the Xilinx Zynq A9 > platform. This commit series adds
-> =C2=A0
-> Corvin K=C3=B6hne <corvin.koehne@gmail.com> writes:
->=20
-> > From: Corvin K=C3=B6hne <c.koehne@beckhoff.com>
-> >=20
-> > Hi,
-> >=20
-> > Beckhoff has build a board, called CX7200, based on the Xilinx Zynq A9
-> > platform. This commit series adds the Beckhoff CX7200 as new board vari=
-ant
-> > to
-> > QEMU.
-> >=20
-> > The emulation is able to successfully boot an CX7200 image. The image
-> > includes
-> > some self tests executed on every boot. Only the cache self test fails =
-due
-> > to
-> > QEMU emulating the cache as always being coherent. The self tests inclu=
-de
-> > f.e.:
-> >=20
-> > * Network
-> > * Flash
-> > * CCAT DMA + EEPROM [1]
-> > * TwinCAT (Beckhoff's automation control software [2])
-> >=20
-> > [1] https://github.com/beckhoff/ccat=20
-> > [2] https://www.beckhoff.com/en-us/products/automation/=20
->=20
-> Is it possible to host a binary build somewhere so there can be a
-> functional test?
->=20
->=20
+This patch creates a problem with the (now merged) commit:
+8d3e31c0d575b3265ae5cacfba10680718ba5a22
+"target/arm: Extract IDAU interface to its own unit"
 
-Sry for the quite late response. There's currently no binary build publicly
-available. We're planning to release one but things are moving (very) slowl=
-y.
+Indeed, it results with TYPE_IDAU_INTERFACE being register twice which
+fails at startup.
 
+Maybe simply drop current commit?
 
---=20
-Best regards,
-Corvin
-
-
-
-This email contains confidential information. If you have received it in er=
-ror, you must not read, use, copy or pass on this e-mail or its attachments.
-If you have received the e-mail in error, please inform me immediately by r=
-eply e-mail and then delete this e-mail from your system. Thank you
-
-Diese E-Mail enth=C3=A4lt vertrauliche Informationen. Sollten Sie sie irrt=
-=C3=BCmlich erhalten haben, d=C3=BCrfen Sie diese E-Mail oder ihre Anh=C3=
-=A4nge nicht lesen, verwenden, kopieren oder weitergeben.
-Sollten Sie die Mail versehentlich erhalten haben, teilen Sie mir dies bitt=
-e umgehend per Antwort-E-Mail mit und l=C3=B6schen Sie diese E-Mail dann au=
-s Ihrem System. Vielen Dank
-
-Beckhoff Automation GmbH & Co. KG=20
-Managing Director: Dipl. Phys. Hans Beckhoff
-Registered office: Verl, Germany=20
-Register court: Guetersloh HRA 7075
-
-DisclaimerID:x9d5u140
-
-
---=-vEKY4l0sik4wNDkY8j84
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEgvRSla3m2t/H2U9G2FTaVjFeAmoFAmoKwioACgkQ2FTaVjFe
-AmrYpw//UFGiZduvi+ZpxOwZiudToe8hWMB1wZY3lg1z73aUqpTM1cCOcctl76De
-eQJXYYiTs9eiokjjZ8p81aoOQun3hfgadmHTjVMTB4I0fG79Wv1PtlHJSNyFK39i
-dOyM4Fu3PNputJgtdEY6RLBUBnhDW+PAUcacw+/RpdVzdBvtpRhN+E0e9MoEj8Os
-glrsmF1gqCBskq0hifleK80ebgT0mYy2m6PIeAw7DSNWuKxXPkkF5MqE8AAl7Rqj
-K6qlg9I8lsic8S7hPsrFqfgqxbVyjLh61oygpJG29Y5bIhKheHRLKEUUx7FUP4re
-adzCsvmJY6ck8JuOO0+IoFY7NLC7wA0kNhgP8wrok0xwO9qEy6uqDKEFdBXfj2+W
-7D5mVl6rnVO/JI5TS+RBt7172myPEm3HVXk7gwSevgL3HyB8KTFx1HP8aPzyYXEh
-mo3yJI7ipY9bFQiV6qe1aMCYjA4tcE9jENWjuZmqvinPU2TvaldtbA8cmhnftqYB
-CHDi4K3b2lTaj9tpdabW3jrS5yJW/wb7QN5NX3PbXiqYYBZ3/JE8YM2TSQ3FEoSD
-J3yxFzEFeiU7PysOcD8dKgTTJP4Fk0irSnsJB7f+cZQ3ydHUzJy/hTsy99FAVInG
-VWLdg8vnCPmjIxhbXHUzUd0uhbtamxHrnLRdD3HO1in0GUnzAIQ=
-=HOzq
------END PGP SIGNATURE-----
-
---=-vEKY4l0sik4wNDkY8j84--
+Regards,
+Pierrick
 

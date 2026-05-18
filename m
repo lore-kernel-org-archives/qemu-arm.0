@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2452ECD4F3C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E3C1CD4F4A
 	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:37:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOsV9-00011Z-Jq; Mon, 18 May 2026 03:34:59 -0400
+	id 1wOsUl-0000ob-OM; Mon, 18 May 2026 03:34:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUb-0000j8-VA
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:28 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1wOsUO-0000g9-TX
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:17 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUY-0000YT-KZ
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:25 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-45d96d21e82so994036f8f.0
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:18 -0700 (PDT)
+ id 1wOsUM-0000Ia-1e
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:11 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-48984d29fe3so21019935e9.0
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779089658; x=1779694458; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1779089648; x=1779694448; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5+iu7qI/bfTfc7zE92mQyqfTKFdbM6w/27VtcRMqn6Y=;
- b=jyOcQ2fkEDEFk+hwXuQXTDEW9VsQRI4zfGBnCYoXOgCyQrXyhjMeyCFymsc9owkC32
- 1Sz7H71aGGXEKdfiLUPFiPc0kovNOLsDWxLhT13D2QXU4RleWG85Oi8hyvytJF2xw35K
- +eyDh0zXKXdQ8VBuliIqd4/RPSeX0+bal5ThFZTbd/8UwXPkO6kwSSh/VOeHYm9wn4MT
- cig3zYgnkjKJDgapIOa2mQJ/Kojyb/NrS5gApvz0Y3tO3x9Tp1Hz+E3qzAgV6FyscoEh
- PL+8SF8z3RGUOCL4ET2j6tl++HsM/njeB4jX+zM/cIsMXrnhDizv6txKw8UB/qOjvKWA
- SyGA==
+ bh=1JNG0WpLJF3nkTQNm/OVMSOxMuYSpcxBZJPbT2YaBCM=;
+ b=VQIaSU8DQ9EPNuTg9FBpR3c71Zml22mVrrRk/mB74W7wreio2esRZc+09Hu7nlQu9l
+ +8UaB/Of5Elf5/p6UqFBF19L9ja73XofyQELu4l+qyblP3+bTgN9pLURbXdeDzAqrEYA
+ bOuOJLsOxRaHhEs9Qi4ep6iVNfbjnfA3qdXCw/D83t/s0QgftP1TINqmDFFoYHDkNyGg
+ 9y74nP52qyfd5R+ma6Am25GV8Vi1A0BZ7Qm9//htZzs5A7EpSZt4jbsZ6Sva2I6cf0Cb
+ DZeztHEWcbVoS1FKrtR0dFBZ1/rYtayk5ch789uoMuXOadWfgGoWlykySOUcr+WSq57e
+ trMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779089658; x=1779694458;
+ d=1e100.net; s=20251104; t=1779089648; x=1779694448;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=5+iu7qI/bfTfc7zE92mQyqfTKFdbM6w/27VtcRMqn6Y=;
- b=lqXpmeqg+BmrXTiB7zxCBxfGKiM4QLLWv1UGnMoa39DiijfM9RJShNeoWGv4f7ZXj9
- eDh3uIPH3eM16/V1mB15TBJxxCTiok0henmHxSNF9YJ/Qcdr11tJoJGypk0nNx1zUm3C
- hW/XTnAPcsmX+/XQRGzXUnNw0/WNUmNGn9x1on28khD2SvO2v80LJ1w9+pN9QBZ+S0F6
- TW/+cWOeFhVB2qehvdsPWtYYrCsp0EZHP4WknExTXkmemXdqRQn54nXOcDYR2Pgihh/s
- 6ebeRMFxzLv6LjviR4F+zMTqHlrU1SGcdDmngNXfEz06bj7v2g+c8aNRUILlrgL2Ygvy
- ypXw==
+ bh=1JNG0WpLJF3nkTQNm/OVMSOxMuYSpcxBZJPbT2YaBCM=;
+ b=XLb0g1GF2S76/d16g7siV0msxqg3bfKr7zYW/BUjodHoxiX92ePwA2CVCt15hUYnKB
+ Zh433mzVNob5GXeLIEMtMy1+mkKmr1u3aVjr8znm0gig3keWSVm/XOclA4is4n1DOWnZ
+ GGaeC9isivv5iaoz1ubxYgvscDz9DOu2L1LTWPFXJ6YZqQG2XUHYAD6mCEjOnQ1l9ex3
+ 1uCnPPZ/o5ccYZVKQrve8WELRcD9EnSlFPFntd+bWq/OzbMwhzWnwv5jHU27lM7ZsqgN
+ 98SI9wDsH69f5HCLWMHVWdtNk9S4Ve1nTJ08J7NYE2BPhubokWBEcKsapQuj/rB88kiI
+ wurQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8Z6rA7eAdVci0EGoD9VySQoTpHbjMGmzkR47CE0mPnuP5RB+3yyFasBp7xYY4vJ/p1ia2k4tbnxw==@nongnu.org
-X-Gm-Message-State: AOJu0Yyd5P1yaDTXlwqp/P5MHO8UgpP0ws1dpXYVhSJn+yeke7yE+MSq
- uq3+jlB53ei+lsY+7HOruR2r+14k9y0cDIvZtTcvdNCFYfmcfHbgxWN+
-X-Gm-Gg: Acq92OH70PA8XjXu3xCPNVKbC5KWPp1uR1AuiX41tnhTJfy439ywnzrJ3rsfVw5w9/2
- NWB0Lz/m0PRcNZcTjioMh0fdWhoDFDBI+N0j+GaYkulz3M3lHmcQ/+P7ozZHG3w6ufBXBmojQ0a
- +8dXfOSk2N0qiCO1J3t1ctaVYZrF7N/RLvBS1DgM6ki3yRzQXdS86WPd3jw5onzrTFpmx20e0wK
- VsiUYKALSlhLKGMFgERSw5x0dYRKgJF/SFNr/Pn95HrqAVbWKamH5f+ioYrimG9W5/ISsLoU/VN
- JlwsgTFHOfLeEVx68x58Z1MfCFzyKsBO19cHYAoUJfULX5/DAJ2H6cL0LqU8HcMKMUAZ80135Nq
- guliuSrV+XhHqPA85Xp2+QJswIpP4hWw7MyTBqv9rQuA76PPka0N5tJHmE95xOUy9iDS17jxGZl
- NB5OgjByGscq21G8sx3/CkypLUGYv76X1r8uGJWaUoYDsR/w==
-X-Received: by 2002:a05:6000:230b:b0:452:8772:b36a with SMTP id
- ffacd0b85a97d-45e5c58fd1cmr20290131f8f.2.1779089657733; 
- Mon, 18 May 2026 00:34:17 -0700 (PDT)
+ AFNElJ+nADaf/PDi/dpJh4yJBALkZGRhPUXJMy1USwM4IP8/N+jxFqEi3P//7QvDBRT5Ov7z/Aj57BaZog==@nongnu.org
+X-Gm-Message-State: AOJu0YyjNinMFOJRFx7CkX0LmfzeBV3PsZlwIGWIdiGyXwGLJwN/vsm1
+ 03BwAnWksSZMiK6/mlTJ/HuXkKNtV4FcFzZUv8hFqi0lyLVlJiE2Nw4O
+X-Gm-Gg: Acq92OGlWaetsnh5nllgC8vOiTG4uy6crH55CQyXsJEWds7UvihBsM1J3M1UYzjwqyv
+ fRx791y+cuBpurJrZWeNBS0Os19J1vARf9amBZ1seudZilsVMIMbeJrIszrc5GApTSP+fSAw84z
+ O6hODmgLvZSCiVLMs9xYHhF1L/GQnUri4A77A9pjwkg+TZRmqqsgKSNkB/e6jIURfjqFjTMWYNl
+ 5E0+HnFPyFYcrRDS69yhJvk6HwDkH+ZXJ8Z3mvx6YXsacp49z+8e+ezSR176SLxnMXxu1CC70zs
+ B6f1DLQ4QL7MNv2FIg6f3Vf8i5Zinhdq+NUTQ9+EEcXI0GRnTBcm7hSWo39Dlk1DT42CTwnRiB1
+ fvJs1ajpmW59NMUnIYCwIprMhRQJ/1YpL1oX/Nm+Dyuh1naSFPjSWX1mSwEbA6b3jAhaQot2FwD
+ 2k0d3zPYoPQszRGiSdCLsdyvm+60BU7dNVrrPSVn21w+dpcw==
+X-Received: by 2002:a05:600c:4f13:b0:485:30d4:6b9e with SMTP id
+ 5b1f17b1804b1-48fe6328bb7mr233326225e9.21.1779089648389; 
+ Mon, 18 May 2026 00:34:08 -0700 (PDT)
 Received: from PC-DA2D10.beckhoff.com
  ([2001:9e8:dc08:b284:85e6:f7f4:1a4a:4dfe])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.16
+ ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 May 2026 00:34:17 -0700 (PDT)
+ Mon, 18 May 2026 00:34:07 -0700 (PDT)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -78,17 +78,18 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Yannick Vossen <Y.Vossen@beckhoff.com>, qemu-arm@nongnu.org,
  Kevin Wolf <kwolf@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org
-Subject: [PATCH v7 14/16] hw/arm/xilinx_zynq: Make PS frequency configurable
-Date: Mon, 18 May 2026 09:33:59 +0200
-Message-ID: <20260518073401.11279-15-corvin.koehne@gmail.com>
+ Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+Subject: [PATCH v7 05/16] hw/dma/zynq-devcfg: Indicate power-up status of PL
+Date: Mon, 18 May 2026 09:33:50 +0200
+Message-ID: <20260518073401.11279-6-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260518073401.11279-1-corvin.koehne@gmail.com>
 References: <20260518073401.11279-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=corvin.koehne@gmail.com; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,56 +114,30 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-Add ps_clk_freq to ZynqMachineClass so derived machine types can set
-their own PS clock frequency instead of using the hardcoded default.
+It is assumed, that the programmable logic (PL) is always powered
+during emulation. Therefor the PCFG_POR_B bit in the MCTRL register
+is set.
 
 Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 ---
- hw/arm/xilinx_zynq.c         | 3 ++-
- include/hw/arm/xilinx_zynq.h | 2 ++
- 2 files changed, 4 insertions(+), 1 deletion(-)
+ hw/dma/xlnx-zynq-devcfg.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 5aac215c27..a464189542 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -259,7 +259,7 @@ static void zynq_init(MachineState *machine)
-     object_property_add_child(OBJECT(zynq_machine), "ps_clk",
-                               OBJECT(zynq_machine->ps_clk));
-     object_unref(OBJECT(zynq_machine->ps_clk));
--    clock_set_hz(zynq_machine->ps_clk, PS_CLK_FREQUENCY);
-+    clock_set_hz(zynq_machine->ps_clk, zmc->ps_clk_freq);
- 
-     /* Create slcr, keep a pointer to connect clocks */
-     slcr = qdev_new("xilinx-zynq_slcr");
-@@ -485,6 +485,7 @@ static void zynq_machine_class_init(ObjectClass *oc, const void *data)
-                                           " jtag qspi sd nor");
-     object_property_set_default_str(prop, "qspi");
-     zmc->qspi_flash_type = "n25q128";
-+    zmc->ps_clk_freq = PS_CLK_FREQUENCY;
- }
- 
- static const TypeInfo zynq_machine_type = {
-diff --git a/include/hw/arm/xilinx_zynq.h b/include/hw/arm/xilinx_zynq.h
-index 662b390431..bf411f1cc2 100644
---- a/include/hw/arm/xilinx_zynq.h
-+++ b/include/hw/arm/xilinx_zynq.h
-@@ -24,6 +24,7 @@ OBJECT_DECLARE_TYPE(ZynqMachineState, ZynqMachineClass, ZYNQ_MACHINE)
- struct ZynqMachineState {
-     MachineState parent;
-     Clock *ps_clk;
-+    Clock *mpcore_clk;
-     ARMCPU *cpu[ZYNQ_MAX_CPUS];
-     uint8_t boot_mode;
- };
-@@ -31,6 +32,7 @@ struct ZynqMachineState {
- struct ZynqMachineClass {
-     MachineClass parent_class;
-     const char *qspi_flash_type;
-+    uint64_t ps_clk_freq;
- };
- 
- #endif /* QEMU_ARM_ZYNQ_H */
+diff --git a/hw/dma/xlnx-zynq-devcfg.c b/hw/dma/xlnx-zynq-devcfg.c
+index 6b1d96ff80..5608460dc7 100644
+--- a/hw/dma/xlnx-zynq-devcfg.c
++++ b/hw/dma/xlnx-zynq-devcfg.c
+@@ -333,7 +333,8 @@ static const RegisterAccessInfo xlnx_zynq_devcfg_regs_info[] = {
+        /* Silicon 3.0 for version field, the mysterious reserved bit 23
+         * and QEMU platform identifier.
+         */
+-       .reset = 0x2 << R_MCTRL_PS_VERSION_SHIFT | 1 << 23 | R_MCTRL_QEMU_MASK,
++       .reset = 0x2 << R_MCTRL_PS_VERSION_SHIFT | 1 << 23 |
++                R_MCTRL_PCFG_POR_B_MASK | R_MCTRL_QEMU_MASK,
+        .ro = ~R_MCTRL_INT_PCAP_LPBK_MASK,
+        .rsvd = 0x00f00303,
+     },
 -- 
 2.47.3
 

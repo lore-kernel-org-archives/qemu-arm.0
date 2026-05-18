@@ -4,120 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 430A3CD4F49
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 15:27:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D4E3CD4F50
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 16:04:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOzsW-00075P-TM; Mon, 18 May 2026 11:27:36 -0400
+	id 1wP0SV-0007Dd-5f; Mon, 18 May 2026 12:04:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wOzsV-0006zR-Dk
- for qemu-arm@nongnu.org; Mon, 18 May 2026 11:27:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wOzsS-0001V1-2A
- for qemu-arm@nongnu.org; Mon, 18 May 2026 11:27:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779118049;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fYsVpoOBf6XXsam9os2Tz9GCvPuyl3QZW1VNuAFzwuM=;
- b=VruGaGZuTIP7Zxlvczoa5ml6uSc6RQmfRk0kCeMIZazdyikAPJHJ6UEr2RKBh/wq6ibMl0
- pNWtYKOieVN1SQeVbMs0CHjd5Z5tuLt64zWyEpR0IEwkIvhuNSt1oKIiNDr8pkD36s2cXh
- HfpWGGf8J6NLkUlO/Q4W4MFVt2kVE2o=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-221-YMTNXklAP3KYnnGCg9-rPg-1; Mon, 18 May 2026 11:27:26 -0400
-X-MC-Unique: YMTNXklAP3KYnnGCg9-rPg-1
-X-Mimecast-MFC-AGG-ID: YMTNXklAP3KYnnGCg9-rPg_1779118045
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-48fdacff6d2so20399455e9.2
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 08:27:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wP0ST-00076U-Mr
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 12:04:46 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wP0SR-0007dr-Dx
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 12:04:44 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-48fe26a177cso17667575e9.1
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 09:04:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1779120282; x=1779725082; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ufefbwsKMhzpZARdFsQrTqHVtQOsOsH0aXUUe4C0qkg=;
+ b=RenoWLfHyBKwIEoQIfqyEexuep41v11BbB4VQv7x37IQsGqv/9lvp6NuD5zO4aKcle
+ s6qc0IIHyqz9GR4Nsltcofpd9SXX4XuYRCh0gxCDpVUmZ+vnfOv0vJ8wKUBjhS1GPFFb
+ rFwXaGj4b68U/+iFFfaYFlGAgylOl5nKDy70KV+7j79DdPSYwRBiwyt1DXK8ga+c/92A
+ VIxq8e6csUKFvICj056aPd0de/B0D5Bz/100p4i3qPK1zcn1iHj2v2FGO28a+Sgtagc8
+ c6tZrNDlCR8EgFTLjU2B2IHHcFRq3pklDQr9QJcDTQMUwvWDlN9ChKpqNNsPiMMbnOK4
+ of4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779118045; x=1779722845;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1779120282; x=1779725082;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=fYsVpoOBf6XXsam9os2Tz9GCvPuyl3QZW1VNuAFzwuM=;
- b=YY4fU8rSLN/sGwjfd2xKye+SijnTG6Aen6LvTJG0eZ/PPJ2XJK9yLR5e2+BjgPEKk8
- avb+3yxmvXUVmnvrt+QspO0uwl7Qk8bFa9x+MrG9WBTGfDq2+9uoTNKbyCoj88tHJt8Q
- ya4E/JDYkVUj+q8HRB9J9vTJZ2k3nLFSi0fwmtzKoHhYuqaby4NYcimteVvwznf0dz8j
- PJnyM6tzxMx2/a24mKhzvLfbubngXfSFwhF8fciE0nAWMmHThV9GXPCvYihSLpFgsmx0
- Ilxf70+z1YC2Z8Tf2LWme3fRWtNyb2XOrKrlAsGoN5XhGhXTRQ28wmT3Xz3vgzMrJF/G
- aU9g==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/fd0zXY4enfrESLJe69goDx2re2/9zXrQscLAJAqdtVTdNP0Lgd6C7Tykhkx9y1qJHA4+PWuOy1Q==@nongnu.org
-X-Gm-Message-State: AOJu0YwwKxIx6UUwfspSLPH1zk7ykjRA5QmTTYyKBQT4OOMqGQn9mC1S
- w+8ACdWvpEmB6bRgKNz+u7dXrWMFftnC2xS7V2aRLHOCed/H4O0O4tGHVPg9kbXf8NAYe3DCP3P
- 1VnjZPW1xNSz2nugfqWNyahyIF3C2hvTiphu1qgz4XbcOSv6s3WpADA==
-X-Gm-Gg: Acq92OF2iv1oYw5EfmVKVxw0XMoCCq7XJs1ywzVon9FZxXn1B4AE+NWIkDrFPg1Vjnl
- DRP69BVqYr7eqsM/Issfkhp+k3d4BEK3K8OxtjuD1O+F2OsdpldDBfMTpVTQ/alD7RCpM7C7mqO
- P8MR6wn3aA8TyoeNoPblWnqou2DzvIGKdLwsYciwObxocCHqN9vhWMpS8VCcZp+DlZiRBdX0xkj
- 5Svy75F350zwhVmQ6k7Q1FTLEKRe+idgFKcnD998lo8bgWAJ8WZ+SFrMkQnFqJNIjCpvPw67i3w
- U1FZQjEuKlX+53mK/goVBcSY/kE8IaZPlTQcOY8v8UXTpZ3nr2adh0rvW/a6NGSqP9qkPA8n8wT
- lGy8qbuyefv2I3A8Hk+HJFVd8hKxvS5qsxfDxrjf9iyW5+uMj7OFGJOwoiSzCaJs8EqpyIA==
-X-Received: by 2002:a05:600c:8b0d:b0:48f:e230:2a26 with SMTP id
- 5b1f17b1804b1-48fe6631679mr249341205e9.33.1779118044783; 
- Mon, 18 May 2026 08:27:24 -0700 (PDT)
-X-Received: by 2002:a05:600c:8b0d:b0:48f:e230:2a26 with SMTP id
- 5b1f17b1804b1-48fe6631679mr249340395e9.33.1779118044244; 
- Mon, 18 May 2026 08:27:24 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ bh=ufefbwsKMhzpZARdFsQrTqHVtQOsOsH0aXUUe4C0qkg=;
+ b=P9ljPwUO83rZuxf8RiNGlQa+ZH6oKKlXsKAhXAXYkeqXw3/sz/hSEaM7JQLH/WwelK
+ OGkfmfgtPdf32tqU0BvOjseaFzlwUkd3scH/AFjxzTit+Nw89QApbMVaITSZ6loWvCGF
+ g+cLdIIPqUQFKBeB8Kc10eyTtYfJ/H6g2pmAPN+5yEfV5d0jPvFev0xlMLvi/EG1a0Wy
+ diGmfhW1wa0Iohr+AN9+EMSsGOs7tX/SG9rX1BvOZ181Xd4oMTw0mEYVhmGAMmv2PNRP
+ AHvoR3fmVMjgpTuDLTIxpzn+AY5OjHAbuKv5MPsuc/thFp2qRlxbgyf5IMLRsV7WtJMt
+ 87LQ==
+X-Gm-Message-State: AOJu0YwI/4f65LBKSrUsxIfglapSqDf4j/YNPTniqBhDqEHr3l+lQhUD
+ 6znoiS1pEsJnyqETRBKtxNBvzN2iZtwy+m9l5H+gCSZaAwI/5RIwKBymrrOg31nSDcy3fF9Aygf
+ ztzZU
+X-Gm-Gg: Acq92OE6P7dHTHXXtV4ThcTGqXh3g7mZbLCjlWkF5Hcxy75mx6t9Dw+sFoG2+0Ygu7y
+ Bd8XB5N1uYIdlJRllNBLfaemDR0DG7Vo/6ZyzoWYOO8Ms5w/68sOqondad0g33PsV769UqT+n4o
+ oMCseybjloNhLVMsmV8IB2l2UzFwMMFVZShSOAiLH516bxKm5Y1GhCwav2+Fi+jVqhvzi4u5Zql
+ lqqjKYVsSvViu3/9Y0+X2ZaxSNcHa5QwMmkO5WdGuO474HTpkmRyqPA515YAlsjlmroYDW91rSW
+ GAdNPgEklj4DVfdJlNv0hwRwPDqd78ulmM+ByTUUHpYcbUS99M4n5MDP5tLbefduF3kEEUVRAt1
+ c72KFNm0dcN0RdnVwB/K/qKkAfYegVevsjZHqlDjWNgjCLwGWd/oWte/m5mF+lSYkwbrJFYgnp1
+ DxSe2zE2F4m5Nzm7LQX5K0Hxcgg219SIsUGtAVOUbOL4kPCOMHdcVgkHqj/hX4QB6liGnZq8R3p
+ cZIPiyE6ngmXQRzi4KRGWS3GCiwgExRioHJgJ/0rw==
+X-Received: by 2002:a05:600c:8599:b0:490:778:4fe8 with SMTP id
+ 5b1f17b1804b1-4900778509emr84516355e9.25.1779120281864; 
+ Mon, 18 May 2026 09:04:41 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48feab2a23dsm84335135e9.5.2026.05.18.08.27.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 May 2026 08:27:23 -0700 (PDT)
-Message-ID: <07bc244b-3bf3-4e30-b603-ecf6d3a83b67@redhat.com>
-Date: Mon, 18 May 2026 17:27:21 +0200
+ ffacd0b85a97d-45d9e767cb9sm37060577f8f.2.2026.05.18.09.04.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 May 2026 09:04:41 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH] tests/functional/aarch64: Bump up timeout on vbsa
+Date: Mon, 18 May 2026 17:04:40 +0100
+Message-ID: <20260518160440.1037245-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 17/17] arm/cpu-features: document ID reg properties
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "philmd@linaro.org" <philmd@linaro.org>
-Cc: "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-References: <20260503073541.790215-1-eric.auger@redhat.com>
- <20260503073541.790215-18-eric.auger@redhat.com>
- <CH3PR12MB7548322D7A29C8EC3EA0E49BAB3C2@CH3PR12MB7548.namprd12.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB7548322D7A29C8EC3EA0E49BAB3C2@CH3PR12MB7548.namprd12.prod.outlook.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: c6lrSD-pwdiupC7ZZe4ZBvUYpGJyC4ggjrjf4YpQtc4_1779118045
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,218 +96,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On a debug build, the virt_vbsa functional test takes about 2 minutes to
+run on my machine, so it tends to time out. Bump the timeout to 4 mins.
 
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ tests/functional/aarch64/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
 
-On 5/7/26 9:44 PM, Shameer Kolothum Thodi wrote:
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 03 May 2026 08:34
->> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
->> devel@nongnu.org; qemu-arm@nongnu.org; kvmarm@lists.linux.dev;
->> peter.maydell@linaro.org; richard.henderson@linaro.org;
->> cohuck@redhat.com; sebott@redhat.com; Shameer Kolothum Thodi
->> <skolothumtho@nvidia.com>; philmd@linaro.org
->> Cc: maz@kernel.org; oliver.upton@linux.dev; pbonzini@redhat.com;
->> armbru@redhat.com; berrange@redhat.com; abologna@redhat.com;
->> jdenemar@redhat.com
->> Subject: [PATCH v4 17/17] arm/cpu-features: document ID reg properties
->>
->> External email: Use caution opening links or attachments
->>
->>
->> From: Cornelia Huck <cohuck@redhat.com>
->>
->> Add some documentation for how individual ID registers can be
->> configured with the host cpu model.
->>
->> [CH: adapt to removal of the 'custom' model, added some more
->>  explanations about using the ID register props]
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->> ---
->>  docs/system/arm/cpu-features.rst | 104
->> ++++++++++++++++++++++++++++---
->>  1 file changed, 96 insertions(+), 8 deletions(-)
->>
->> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-
->> features.rst
->> index 10b0eff27e..22f671b15d 100644
->> --- a/docs/system/arm/cpu-features.rst
->> +++ b/docs/system/arm/cpu-features.rst
->> @@ -2,7 +2,10 @@ Arm CPU Features
->>  ================
->>
->>  CPU features are optional features that a CPU of supporting type may
->> -choose to implement or not.  In QEMU, optional CPU features have
->> +choose to implement or not.  QEMU provides two different mechanisms
->> +to configure those features:
->> +
->> +1. For most CPU models, optional CPU features may have
->>  corresponding boolean CPU proprieties that, when enabled, indicate
->>  that the feature is implemented, and, conversely, when disabled,
->>  indicate that it is not implemented. An example of an Arm CPU feature
->> @@ -31,6 +34,16 @@ running guests in AArch32.
->>  CPU features that are inherently specific to KVM are
->>  prefixed with "kvm-" and are described in "KVM VCPU Features".
->>
->> +2. Additionally, the ``host`` CPU model on KVM allows to configure optional
->> +CPU features via the corresponding ID registers. The host kernel allows
->> +to write a subset of ID register fields. The host model exposes
->> +properties for each writable ID register field. Those options are named
->> +SYSREG_<IDREG>_<FIELD>. IDREG and FIELD names are those used in the
->> +ARM ARM Reference Manual. They can also be found in the Linux
->> +arch/arm64/tool/sysreg file which is used to automatically generate the
-> arch/arm64/tools/sysreg
->
-> Anyway, I think this needs update as the scripts now uses Registers.json
-> from AARCHMRS, right?
-that's correct.
->
->> +description for those registers and fields. This currently only has been
->> +implemented for KVM.
->> +
->>  CPU Feature Probing
->>  ===================
->>
->> @@ -126,13 +139,20 @@ A note about CPU models and KVM
->>
->>  Named CPU models generally do not work with KVM.  There are a few cases
->>  that do work, e.g. using the named CPU model ``cortex-a57`` with KVM on a
->> -seattle host, but mostly if KVM is enabled the ``host`` CPU type must be
->> -used.  This means the guest is provided all the same CPU features as the
->> -host CPU type has.  And, for this reason, the ``host`` CPU type should
->> -enable all CPU features that the host has by default.  Indeed it's even
->> -a bit strange to allow disabling CPU features that the host has when using
->> -the ``host`` CPU type, but in the absence of CPU models it's the best we can
->> -do if we want to launch guests without all the host's CPU features enabled.
->> +seattle host, but mostly if KVM is enabled, the ``host`` CPU model must be
->> +used.
->> +
->> +Using the ``host`` type means the guest is provided all the same CPU
->> +features as the host CPU type has.  And, for this reason, the ``host``
->> +CPU type should enable all CPU features that the host has by default.
->> +
->> +In case some features need to be hidden to the guest, and the host kernel
-> s/hidden to the guest/hidden from the guest/
-
-yup
->
->> +supports it, the ``host`` model can be instructed to disable individual
->> +ID register values. This is especially useful for migration purposes.
->> +However, this interface will not allow configuring an arbitrary set of
->> +features; the ID registers must describe a subset of the host's features,
->> +and all differences to the host's configuration must actually be supported
->> +by the kernel to be deconfigured.
->>
->>  Enabling KVM also affects the ``query-cpu-model-expansion`` QMP
->> command.  The
->>  affect is not only limited to specific features, as pointed out in example
->> @@ -169,6 +189,13 @@ disabling many SVE vector lengths would be quite
->> verbose, the ``sve<N>`` CPU
->>  properties have special semantics (see "SVE CPU Property Parsing
->>  Semantics").
->>
->> +Additionally, if supported by KVM on the host kernel, the ``host`` CPU model
->> +may be configured via individual ID register field properties, for example::
->> +
->> +  $ qemu-system-aarch64 -M virt -cpu
->> host,SYSREG_ID_AA64ISAR0_EL1_DP=0x0
->> +
->> +This forces ID_AA64ISAR0_EL1 DP field to 0.
->> +
->>  KVM VCPU Features
->>  =================
->>
->> @@ -495,3 +522,64 @@ Legal values for ``S`` are 30, 34, 36, and 39; the
->> default is 30.
->>
->>  As with ``x-rme``, the ``x-l0gptsz`` property may be renamed or
->>  removed in some future QEMU release.
->> +
->> +Configuring CPU features via ID register fields
->> +===============================================
->> +
->> +Note that this is currently only supported under KVM, and with the
->> +``host`` CPU model.
->> +
->> +Querying available ID register fields
->> +-------------------------------------
->> +
->> +QEMU will create properties for all ID register fields that are
->> +reported as being writable by the kernel, and that are known to the
->> +QEMU instance. Therefore, the same QEMU binary may expose different
->> +properties when run under a different kernel.
->> +
->> +To find out all available writable ID register fields, use the
->> +``query-cpu-model-expansion`` QMP command::
->> +
->> +  (QEMU) query-cpu-model-expansion type=full model={"name":"host"}
->> +  {"return": {
->> +   "model": {"name": "host", "props": {
->> +   "SYSREG_ID_AA64PFR0_EL1_EL3": 1,
->> "SYSREG_ID_AA64ISAR2_EL1_CLRBHB": 0,
->> +   "SYSREG_CTR_EL0_L1Ip": 3, "SYSREG_CTR_EL0_DminLine": 4,
->> +   "SYSREG_ID_AA64MMFR0_EL1_BIGEND": 1,
->> "SYSREG_ID_AA64MMFR1_EL1_ECBHB": 0,
->> +   "SYSREG_ID_AA64MMFR2_EL1_CnP": 1,
->> "SYSREG_ID_DFR0_EL1_PerfMon": 4,
->> +   "SYSREG_ID_AA64PFR0_EL1_DIT": 0,
->> "SYSREG_ID_AA64MMFR1_EL1_HAFDBS": 2,
->> +   "SYSREG_ID_AA64ISAR0_EL1_FHM": 0,
->> "SYSREG_ID_AA64ISAR2_EL1_CSSC": 0,
->> +   "SYSREG_ID_AA64ISAR0_EL1_DP": 1, (...)
->> +   }}}}
->> +
->> +If a certain field in an ID register does not show up in this list, it
->> +is not writable with the specific host kernel.
->> +
->> +A note on compatibility
->> +-----------------------
->> +
->> +A common use case for providing a defined set of ID register values is
->> +to be able to present a fixed set of features to a guest, often referred
->> +to as "stable guest ABI". This may take the form of ironing out differences
->> +between two similar CPUs with the intention of being able to migrate
->> +between machines with those CPUs, or providing the same CPU across Linux
->> +kernel updates on the host.
->> +
->> +Over the course of time, the Linux kernel is changing the set of ID register
->> +fields that are writable by userspace. Newly introduced writable ID
->> +registers should be initialized to 0 to ensure compatibility. However, ID
->> +registers that have already been introduced that undergo a change as to
->> +which fields are writable may introduce incompatibities that need to be
-> s/incompatibities/incompatibilities/
-
-noted.
-
-Thanks
-
-Eric
->
-> Thanks,
-> Shameer
->
->> +addressed on a case-by-case basis for the systems that you wish to migrate
->> +inbetween.
->> +
->> +A note on Arm CPU features (FEAT_xxx)
->> +-------------------------------------
->> +
->> +Configuring CPUs is done on a feature level on other architectures, and this
->> +would imply configuring FEAT_xxx values on Arm. However, differences
->> between
->> +CPUs may not map to FEAT_xxx, but to differences in other registers in the
->> +ID register range; for example, differences in the cache architecture exposed
->> +via ``CTR_EL0``. We therefore cannot rely on configuration via FEAT_xxx. A
->> +feature-based interface more similar to other architectures may be
->> implemented
->> +on top of the ID register interface in the future.
->> --
->> 2.53.0
+diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aarch64/meson.build
+index 9803f66299..e81afd6c39 100644
+--- a/tests/functional/aarch64/meson.build
++++ b/tests/functional/aarch64/meson.build
+@@ -17,6 +17,7 @@ test_aarch64_timeouts = {
+   'tuxrun' : 240,
+   'virt' : 360,
+   'virt_gpu' : 480,
++  'virt_vbsa' : 240,
+ }
+ 
+ tests_aarch64_system_quick = [
+-- 
+2.43.0
 
 

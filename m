@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E810CD4F48
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:38:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2596BCD4F48
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:39:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOsV8-00010L-7A; Mon, 18 May 2026 03:34:58 -0400
+	id 1wOsV7-0000zD-F7; Mon, 18 May 2026 03:34:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUX-0000hK-L8
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:26 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ id 1wOsUb-0000j0-Bu
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:28 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUS-0000Wv-Lg
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:19 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-43d7645adbdso1160189f8f.1
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:15 -0700 (PDT)
+ id 1wOsUX-0000Yv-H1
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:24 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4896c22fcbaso15377435e9.0
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779089655; x=1779694455; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1779089660; x=1779694460; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=gzWzoTmlyJ+ulEDvy/SGgv3VFS2OT2P9OMuzim+8Q8o=;
- b=JtHVOjMV+HWLf5jJhVlazatsNoi0r6LtMK7M7M/MBDcJ6t31KAf4sEoBr/GXk0VDkl
- Ko7FEYO5GepS0GYmdPSwZrCOU8HYKa1hcmBeyvOp4HJD9AVUsCyheTQSPHNUtOfme4XP
- jr7rmTgYQUQ2+uUXr86Eo5bdG7WztLioaUsa5dXv4KOTmoXhJqo3PlkrxWJT0B+dbsS3
- o80h4N80ZIIt9e24lOXvHBwxFMYUwQKcmd5abjnqIMoBQBC4Knb3Bmhaaf/sC+2fCuRW
- AgZKihQUxDqU1+b9D2QpK54qWJpl8VlFnM6dVWQO46JTGR13nAVjf+NviGtLjKdmLIzE
- qSkQ==
+ bh=PAEBPFqVQi36NfFP7Jq0Ftsf5CsUo7EyAsxwaDAqaz0=;
+ b=qzWtVG6FyoWNlmJs0jXDijNEGDYmz3lhOgHBdv2agDhKM761UdoJzx3yw735/z9cdw
+ 0/SyKaSiFFQg/4lsilFxdndMuSBtNTaVsvn9ZEo96Y9WDm6atsB//649C29CwrfKgQSj
+ 7y0V5wB/ATO7GMzuNuBnD3jkuqWUwXY/Vfxh3LmrVLWXWaYYeqy/IS1G1IJN/ZUauDkD
+ bbP0ijLVQj2C4+TC3/OMsIo7fwQDgp+NRAwSQSTNp4PqA0DB2jsuu6VBvqnlRkpM6+CY
+ hJ5bOaFhC6Lk8aQIoPdJqM+Kwa3M48IaALGdyfEyBx5ir6XQk17vFVXL+ZTDtNrDSYVf
+ fVWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779089655; x=1779694455;
+ d=1e100.net; s=20251104; t=1779089660; x=1779694460;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=gzWzoTmlyJ+ulEDvy/SGgv3VFS2OT2P9OMuzim+8Q8o=;
- b=JHSsTetT7km3CrPt7IVd8o+VatrphpnlIKR5z4PrRGnfb5i0o0hqYwCK4BICIJH0h5
- 0ZpgihZ2Hg5lnby/33hdTL7BJTNQfiJDgcZKhXHx3AUd0gEbEwZGzoGfCvKvBQDnjbpN
- CmCs2g1aMEb7y5AZQKNqUeV2bOYFd5LNSF6dGCBRUm2+JgVGzRbCTnmrRLK5fcIIJC/t
- isIvfaNeTzb/S/ad/WypZkBUYx81HCzd+kKk1IC7mk8I8pEAdi5utxQnY4nGwkIqNa9+
- GJhVi6uE9UyPnBzIL7CJTJNJCHFvgejCBmv9dUX7LJO86o65mrGKc9G/7Do90AhBYUiA
- CcHw==
+ bh=PAEBPFqVQi36NfFP7Jq0Ftsf5CsUo7EyAsxwaDAqaz0=;
+ b=Rl2TjCsuUfuuD3zanKNH+voSu8tgMEQ5693gMyfqZT6tdFQIX3IDgY4wLPsKkKIF4T
+ QbffA5wo6JVJ33/LVwRxCdxHKBnhpxt2sC7MPKHynnyHegyq1pQ4V8tENH9kbuvoQxMG
+ VQs4AQe95zri3YmsIa+D+hE5ykOXZsMGdOsiGlSyhD4aPMVIpoYjOFuTpRIEi7gihJOD
+ F6dMgnM22p90483sq2c3eyru+X+IoHFnklCBToPBorKnEmHQLqCCIHN4KoDJuuIGUivF
+ LG55VndGGxn2CjfI18b0r+hW3HPdptR+hQUBKWTQC6eKi+vx2QcxWDvBbixfKWxlfXsy
+ 9n8g==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+fo5C7EGngiynGL4tj3mwKuF+SE3y7kaDzBXEAZgSfYnTy2wyqLXBpjfyk4Qhymv+ZynXHmLNfFQ==@nongnu.org
-X-Gm-Message-State: AOJu0Ywq/qRjHl8pK41uzW7gdMvatQP8oFeHzgfzfsySo9r94lCXEDDu
- gwC2dWC7wcDBh3LmsJbz4lwwOAJ2fCWW0zu54TKtzLHG/Z0U2YMx1zp+
-X-Gm-Gg: Acq92OEQ0FnH4fvte7445/4TWstmg/qLSB2ghVZmQYE59iNEVVZmm/Szk3yd2wz2DCA
- toPNG2nY9jw3rhERsvbBkKjbic/y0YOMDdGhFi0h8QyZQsb9UC6Yqftpc3QB2rydAColVjowUZ7
- bolWFsIStMy/ZQBJLY7TJwa54HJRay2LzSHEOOcb9vfihPmPU5oyEPzqLak+9WtBQaVTGLcej9g
- 6ko87xqAFvYl48hmWwt3dpiGRwyUvryZ3F+y+1fc9z38iArWhVxzgI4Zp/oxGqWnvoD5px7cMJF
- VudwGxgeu9BpsP1J6rmNzv5Tim17/WY/Hp4R6Pe+cT5je8L94bkxy99P4W3CGZnCbYsz0HpnKke
- rOM2POXD8FoPZ7nn7Tj4IgdjdAXezAg45TeVCbLePKDfyD1flsripsxLkArZ3pDYG8+F/FtbM1U
- TLc04vNeqQsdRktjhv2LVrXOWjulq9Lno4Bs9jIAbJQy1F1nCuPo/rgcGC
-X-Received: by 2002:a5d:584c:0:b0:45d:4020:8b59 with SMTP id
- ffacd0b85a97d-45e5c5877admr21798375f8f.24.1779089654737; 
- Mon, 18 May 2026 00:34:14 -0700 (PDT)
+ AFNElJ8IDIqP6fh8w6FTTXMxV+t0iA7t+xbPNAcVzKDQTAQ9BVMgqPneZvY2XG+Yrq09l1Pft4UWZbLqVQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy4h9hFprtMdexDpBaAiaQlF3ptekGKHDS4zU/V/UJbRJLUcQSu
+ MEaGE+KYjkwo3A6D8B8vJQPlgOBP7ystipZtYDyUaQs0zMIU2K/wUXqs
+X-Gm-Gg: Acq92OFK8xFhHUdojopFFQBmaf5YnvcosRH+CP1DZYQ1KkQLdtcufNbuC0A5oKqxiB6
+ agHJAonnFy7PnDVBdonId/Z/fEuDtJEhoNr6cAf65ABVuDtU/LolFzf6ZnbbleViSwr5tL6aURk
+ ZW0a9RVfTIAETdKaWwfbK2x8HJA4lE2Rg2mRzuT8972TRWgMt7hiUQZeZSmK77JpiSz+lsFbPEJ
+ 7+TCUrJOuFeA5ndiP/KuZqcQGR0T+nVE1xDUlx8qwUrvJUGM9tqHtHtjvFSUioLWNOML3Fn2WTx
+ CCY8NzUp5YcsiYYHvr80KUgTG0nuAgyJYHXEiZn2LxgSey2EThYJqons3LrqihTwwa1BtMCPTd9
+ X7CXj76TArHrBJH3fmqHsNaysIFTqaEmU80KfF+kP/sQXgor4f0bdH0PlXDPwbUC8eOw7F87jVP
+ 5SpXxW68JXe/RaanPFHHW5pgZcgPYnNz7j8EyiZvMRMIjll9iOSBYbHXp3
+X-Received: by 2002:a05:600c:a102:b0:489:a4:e578 with SMTP id
+ 5b1f17b1804b1-48fe60da919mr153278085e9.14.1779089659718; 
+ Mon, 18 May 2026 00:34:19 -0700 (PDT)
 Received: from PC-DA2D10.beckhoff.com
  ([2001:9e8:dc08:b284:85e6:f7f4:1a4a:4dfe])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.13
+ ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 May 2026 00:34:14 -0700 (PDT)
+ Mon, 18 May 2026 00:34:19 -0700 (PDT)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -78,25 +78,26 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Yannick Vossen <Y.Vossen@beckhoff.com>, qemu-arm@nongnu.org,
  Kevin Wolf <kwolf@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org
-Subject: [PATCH v7 11/16] hw/arm/xilinx_zynq: Add flash type as machine class
- property
-Date: Mon, 18 May 2026 09:33:56 +0200
-Message-ID: <20260518073401.11279-12-corvin.koehne@gmail.com>
+ Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v7 16/16] docs/system/arm: Add support for Beckhoff CX7200
+Date: Mon, 18 May 2026 09:34:01 +0200
+Message-ID: <20260518073401.11279-17-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260518073401.11279-1-corvin.koehne@gmail.com>
 References: <20260518073401.11279-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=corvin.koehne@gmail.com; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
- FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,111 +115,97 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-Introduce ZynqMachineClass with qspi_flash_type field to allow
-different Zynq-based machines to specify their flash device
-type. The base Zynq machine defaults to n25q128.
+This commit offers some documentation on the Beckhoff CX7200
+qemu emulation.
 
 Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/arm/xilinx_zynq.c         | 21 ++++++++++++++++-----
- include/hw/arm/xilinx_zynq.h |  8 +++++++-
- 2 files changed, 23 insertions(+), 6 deletions(-)
+ docs/system/arm/beckhoff-cx7200.rst | 62 +++++++++++++++++++++++++++++
+ docs/system/target-arm.rst          |  1 +
+ 2 files changed, 63 insertions(+)
+ create mode 100644 docs/system/arm/beckhoff-cx7200.rst
 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 6c83439017..52c9e41a76 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -120,7 +120,8 @@ static void gem_init(uint32_t base, qemu_irq irq)
- }
- 
- static inline int zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
--                                        bool is_qspi, int unit0)
-+                                        bool is_qspi, int unit0,
-+                                        const char *flash_type)
- {
-     int unit = unit0;
-     DeviceState *dev;
-@@ -152,7 +153,11 @@ static inline int zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
- 
-         for (j = 0; j < num_ss; ++j) {
-             DriveInfo *dinfo = drive_get(IF_MTD, 0, unit++);
--            flash_dev = qdev_new("n25q128");
+diff --git a/docs/system/arm/beckhoff-cx7200.rst b/docs/system/arm/beckhoff-cx7200.rst
+new file mode 100644
+index 0000000000..6163a0cfa5
+--- /dev/null
++++ b/docs/system/arm/beckhoff-cx7200.rst
+@@ -0,0 +1,62 @@
++Beckhoff CX7200 (``beckhoff-cx7200``)
++======================================
++The Beckhoff CX7200 is based on the same architecture as the Xilinx Zynq A9.
++The Zynq 7000 family is based on the AMD SoC architecture. These products
++integrate a feature-rich dual or single-core Arm Cortex-A9 MPCore based
++processing system (PS) and AMD programmable logic (PL) in a single device.
++The Beckhoff Communication Controller (CCAT) can be found in the PL of Zynq.
 +
-+            if (!flash_type || !flash_type[0]) {
-+                flash_type = "n25q128";
-+            }
-+            flash_dev = qdev_new(flash_type);
-             if (dinfo) {
-                 qdev_prop_set_drive_err(flash_dev, "drive",
-                                         blk_by_legacy_dinfo(dinfo),
-@@ -204,6 +209,7 @@ static void ddr_ctrl_init(uint32_t base)
- static void zynq_init(MachineState *machine)
- {
-     ZynqMachineState *zynq_machine = ZYNQ_MACHINE(machine);
-+    ZynqMachineClass *zmc = ZYNQ_MACHINE_GET_CLASS(machine);
-     MemoryRegion *address_space_mem = get_system_memory();
-     MemoryRegion *ocm_ram = g_new(MemoryRegion, 1);
-     DeviceState *dev, *slcr;
-@@ -283,9 +289,12 @@ static void zynq_init(MachineState *machine)
-         pic[n] = qdev_get_gpio_in(dev, n);
-     }
- 
--    n = zynq_init_spi_flashes(0xE0006000, pic[58 - GIC_INTERNAL], false, 0);
--    n = zynq_init_spi_flashes(0xE0007000, pic[81 - GIC_INTERNAL], false, n);
--    n = zynq_init_spi_flashes(0xE000D000, pic[51 - GIC_INTERNAL], true, n);
-+    n = zynq_init_spi_flashes(0xE0006000, pic[58 - GIC_INTERNAL], false, 0,
-+                              zmc->qspi_flash_type);
-+    n = zynq_init_spi_flashes(0xE0007000, pic[81 - GIC_INTERNAL], false, n,
-+                              zmc->qspi_flash_type);
-+    n = zynq_init_spi_flashes(0xE000D000, pic[51 - GIC_INTERNAL], true, n,
-+                              zmc->qspi_flash_type);
- 
-     sysbus_create_simple(TYPE_CHIPIDEA, 0xE0002000, pic[53 - GIC_INTERNAL]);
-     sysbus_create_simple(TYPE_CHIPIDEA, 0xE0003000, pic[76 - GIC_INTERNAL]);
-@@ -460,6 +469,7 @@ static void zynq_machine_class_init(ObjectClass *oc, const void *data)
-         NULL
-     };
-     MachineClass *mc = MACHINE_CLASS(oc);
-+    ZynqMachineClass *zmc = ZYNQ_MACHINE_CLASS(oc);
-     ObjectProperty *prop;
-     mc->desc = "Xilinx Zynq 7000 Platform Baseboard for Cortex-A9";
-     mc->init = zynq_init;
-@@ -473,6 +483,7 @@ static void zynq_machine_class_init(ObjectClass *oc, const void *data)
-                                           "Supported boot modes:"
-                                           " jtag qspi sd nor");
-     object_property_set_default_str(prop, "qspi");
-+    zmc->qspi_flash_type = "n25q128";
- }
- 
- static const TypeInfo zynq_machine_type = {
-diff --git a/include/hw/arm/xilinx_zynq.h b/include/hw/arm/xilinx_zynq.h
-index cefb7789ff..662b390431 100644
---- a/include/hw/arm/xilinx_zynq.h
-+++ b/include/hw/arm/xilinx_zynq.h
-@@ -12,11 +12,12 @@
- #ifndef QEMU_ARM_ZYNQ_H
- #define QEMU_ARM_ZYNQ_H
- 
-+#include "hw/core/boards.h"
- #include "target/arm/cpu-qom.h"
- #include "hw/core/qdev-clock.h"
- 
- #define TYPE_ZYNQ_MACHINE MACHINE_TYPE_NAME("xilinx-zynq-a9")
--OBJECT_DECLARE_SIMPLE_TYPE(ZynqMachineState, ZYNQ_MACHINE)
-+OBJECT_DECLARE_TYPE(ZynqMachineState, ZynqMachineClass, ZYNQ_MACHINE)
- 
- #define ZYNQ_MAX_CPUS 2
- 
-@@ -27,4 +28,9 @@ struct ZynqMachineState {
-     uint8_t boot_mode;
- };
- 
-+struct ZynqMachineClass {
-+    MachineClass parent_class;
-+    const char *qspi_flash_type;
-+};
++You can find more detail about this board on
++`the manufacturer's product page <https://www.beckhoff.com/en-en/products/ipc/embedded-pcs/cx7000-arm-r-cortex-r/cx7293.html?>`__.
++The SoC is documented in the
++`Zynq 7000 Technical Reference manual <https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM>`__.
 +
- #endif /* QEMU_ARM_ZYNQ_H */
++The CX7200 supports the following:
++
++- Arm Cortex-A9 MPCore CPU
++
++  - Cortex-A9 CPUs
++  - GIC v1 interrupt controller
++  - Generic timer
++  - Watchdog timer
++
++- OCM 256KB
++- SMC SRAM 64MB
++- Zynq SLCR
++- SPI x2
++- QSPI
++- UART
++- TTC x2
++- Gigabit Ethernet Controller x2
++- SD Controller x2
++- XADC
++- Arm PrimeCell DMA Controller
++- DDR Memory
++- USB 2.0 x2
++- DDR Controller
++- Beckhoff Communication Controller (CCAT)
++
++  - EEPROM Interface
++  - DMA Controller
++
++The following is not supported:
++    - I2C
++
++Running
++"""""""
++Directly loading an ELF file to the CPU of the CX7200 to run f.e. TC/RTOS (based on FreeRTOS):
++
++.. code-block:: bash
++
++  $ qemu-system-arm -M beckhoff-cx7200 \
++        -device loader,file=CX7200_Zynq_Fsbl.elf \
++        -display none
++
++
++For setting the EEPROM content of the CCAT provide the following on the command line:
++
++.. code-block:: bash
++
++        -drive file=eeprom.bin,format=raw,id=ccat-eeprom
++
++The size of eeprom.bin must be aligned to a power of 2 and bigger than 256 bytes.
+diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+index e34492402f..e6fbdb663c 100644
+--- a/docs/system/target-arm.rst
++++ b/docs/system/target-arm.rst
+@@ -82,6 +82,7 @@ Board-specific documentation
+    arm/aspeed
+    arm/bananapi_m2u.rst
+    arm/b-l475e-iot01a.rst
++   arm/beckhoff-cx7200
+    arm/sabrelite
+    arm/digic
+    arm/cubieboard
 -- 
 2.47.3
 

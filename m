@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD4DCD4F51
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:39:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DE43CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:39:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOsVA-00012b-13; Mon, 18 May 2026 03:35:00 -0400
+	id 1wOsV5-0000xB-VF; Mon, 18 May 2026 03:34:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUd-0000jo-AL
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:28 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1wOsUL-0000fq-Db
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:15 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUY-0000Y5-Lp
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:26 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-488a88aeec9so22741565e9.2
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:18 -0700 (PDT)
+ id 1wOsUI-0000C3-2T
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:08 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-459bf19e87bso1009017f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779089657; x=1779694457; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1779089644; x=1779694444; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XS1TMnSMRJpnFpD1jJViJlPRsbWAM8DwAhvXkzKtqqo=;
- b=hTF66AYeDIs7Uk1ldslMFCYZGNA39cJuM9tQI8v5jW8ON3XDYn0eWp8cVjAHV5WnI6
- 2+2zAqPDFP1RGQSzABHovgRv1TWhrcc7MN/9sCpTZWmmu2k4D8+/EH7stp8IZl8OF34r
- SMNfX/lVbCZnXSpYOy4kAJF/rYk7XTitkzJuD2TGNXSFUNoMqUGCRw9g85VIdSJIkWcE
- y3et0AtaVXKD99J12Pt/a6K24xfljhA7OAlqG9PQrZpB9jeVr/C+raKHOY23FRvw7loE
- Ic1+N9tKxHIaj2loXGkHu/rTJr0bpm+hyLP8Xe1GUU9aWDJz9EwfYHqWpWF5jqNR2JQs
- zwZg==
+ bh=bGVucTk00lHJOoHDxhxqBmDjYYXRIxmmMPGfNidYBio=;
+ b=OGp15DdJIajhT17FkUUlRwq90s2TT+g3whcpl+RXB7+Z5Gq8EeIC6Es5bJKgXGzRLO
+ yUZuFEpG+U7ruuUaYS7dYcTrzYymuABxbzBy6P6+GWNDjQp+GPx/rT9JhCV5q8gnDjoi
+ QTTIaA5+GDque0Y8G+24dTvr7LFjsUKx/17U6MIP2Grp1l7Bv3CBksRWwEM/ryuZlioD
+ iWTzM2QVHmyi5ywyG8Mp6PpPwt63aVFCQRBHLRwqBgh6E3fgNtQXeFtO8ijC9Dgi3b/L
+ 0tRa+6aYwDVPPs6NTIPTh0kWANRrCJujy8hpxp7XHC0lPJQ/ZUf4yAHFYhF8mG63kG54
+ 7JJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779089657; x=1779694457;
+ d=1e100.net; s=20251104; t=1779089644; x=1779694444;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=XS1TMnSMRJpnFpD1jJViJlPRsbWAM8DwAhvXkzKtqqo=;
- b=UOdd8nzkF7oTlVx4y5Wr6XoPt50UnJ1JGfbqeL+1qTrKoq9pgcrtIATMuy3mvNcJOo
- TDfrnQYeJiHSgM7ibhWzCjE8k8kRpCk7awyv/KEZgRe8GuNbVZZ6e/fsvTAQ22eYYSTs
- mfI07DVlDgEjWLdxzyYSGWTwYhrXMNUwGqXZ5dGDdYZ2+8QxOTjp/18sEw6d/pTpLNyM
- 0cYdR3/xsY4nuf2+dPFPthKk3zdfFqKGq8reBbwhoGoJtK1wWySiBKfgO1nHTE1JRVbT
- HkSUhoPLq3lMDSc9OM0snXP6hWcIavsRtv5x/4qdoPKMWhO3NRAF+4ICX2pd9v820NMN
- EM3g==
+ bh=bGVucTk00lHJOoHDxhxqBmDjYYXRIxmmMPGfNidYBio=;
+ b=qoYhD6PdTKQ7Koh6oKbnReXXP0gsqr5DXrYvYs6QkqdxR75flt2crb9RiLuEJ5dEwk
+ quI5uYAwl897QUKuGoIBGQayhuCtCN+TkLCeRrr4VYha8XY70sHHa0KNwoyV3k3VaC0z
+ +Esq6j1dDjim8v+X/pEEpG3MEX7z5fQs+68kBw7zIkNvgd0LFYOGfELGRfyMlZrJRyGu
+ 6kAw64hgZZzxQ/rKYtT7ps7YyfL4biprgW+YLESdACEWUIWuPqqk58kly5M4UA7AGtHd
+ JRwxSmw6fYiT8N8BhJS0xO0wQpH7jWvH6wP4L5ao31ts1xZTT+lVnWqRDAf0hSH3uhG6
+ Xbcw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8mf0kBSKgtoJIIsMbHOhnz11rsImosrLv48jkouun3p0T9QDjhlQXH8x0L6hJDejd5qyVQ4R8gkQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwUzIm0HNQ583xVMorTi4FWlVCTEztTYs6mTyfP2y4TU7rryo5M
- g0f9nnL3I35zFjT4g3whIrh0CgZqZU9xoKQwWal8VwEN92Wk8SR1HBpe
-X-Gm-Gg: Acq92OEvNui5mWOEEsuyMjCQn4pfLgZ4VwDWRH1mohBV0XrNEnRTmV9hY5fvtzzvovn
- XsSoUCzBKK+6QuO3VpqgbM7bFACDusYUdSSaWrV3QgYXGa5INXY7PHqXH29gjaqy2aQH6QB19eE
- W1RA97O3dFKXYiYY6GOutevGzn3ypy6/Ecf1s1YvCQXRCbRO9ur0NHiadIqqFGJNoS5oMRHCXjC
- E0fC4+rRUi/JSobMZu4gUiCdRecy+hcMwLKJkDFvU5SK9P00EAQ9+IMsWOvUO0ps3cAv01UToYz
- yxwFuKAhv5s6+MoRfOGkKvJEch5L7IMi2ShDQElvE23gIokz/TdfzhZbXH0GLhyphQqPCwimo7g
- h5Xjrkdjxpm49FptzZwrl+Mqy28WAqzrW5ke78vI4RiQ8DVPbl8giI3Y1Uw+Xu6217hahxjcPph
- PIWbuSdrwBN9oOdJcR6FZ86nqpjAAZ7Hv9jYn/epYtlXSOMg==
-X-Received: by 2002:a05:600c:a010:b0:48f:e230:2a1e with SMTP id
- 5b1f17b1804b1-48fe66316cfmr200677175e9.33.1779089656634; 
- Mon, 18 May 2026 00:34:16 -0700 (PDT)
+ AFNElJ/d/EtjmADZLRuB2EWorSf8q5Dw6kG8E+S855fSg/OBi4D9nrIkjvSiwfng42gSx4dGZGhBwD+p5A==@nongnu.org
+X-Gm-Message-State: AOJu0Yy+3ntyff4X479/k8OgxvxKCooekPHrNjuJwyum6AoR2k1v/Yk6
+ 2K+uetWnOYAZzajbRrLIYInb9il/RvERCc6hG2cu8XWROxxiz48+Bfth
+X-Gm-Gg: Acq92OF2K38i5taT2aypqc1cAPVLV71ORdZDW3xRvieizCsgXNNJFVNIXJ35xfzllDB
+ v77HP9mUV09YCz5hs9c7ei4SnApakW+jGBO+N9/v2CJen7FzpayUq0AaWIOhE0/tFtnvM6DZdbB
+ z+LN7WHnEVTkK1ONYQ5JghGPWaGucRmtVS4hFkPCug7tHCPBpp6I+7IFBZePb6eu8bBfiRgfmKE
+ KS+Vi4P3MNLRVY3dYcWrWH5svF7RG5BraztE51DlNe6OrkBEYYrC0j+LMFDYuCWjDHWbxp2g4mS
+ cYes5HfMqpCafcnNEe5s9MoyQp7RKUjJBOPX56xGLrg4o98lbJ2FgBQZW3c3SB8KDqmv5ZbxC0q
+ KP14modKQRZ6spzFAtMtYP+r0kvuz9qNUkTZI+I9k8cXL2E5GZ5rF9qQs7U4t0ngN3DhfLuuGNe
+ 2QNCeboFqEcfJcAgiTgY6eqq6nLy7JUI2h2fI+5TE6gd5wlQ==
+X-Received: by 2002:a05:6000:4205:b0:455:7c9f:a49e with SMTP id
+ ffacd0b85a97d-45e5c5bfbc8mr21150969f8f.25.1779089644346; 
+ Mon, 18 May 2026 00:34:04 -0700 (PDT)
 Received: from PC-DA2D10.beckhoff.com
  ([2001:9e8:dc08:b284:85e6:f7f4:1a4a:4dfe])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.15
+ ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 May 2026 00:34:16 -0700 (PDT)
+ Mon, 18 May 2026 00:34:03 -0700 (PDT)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -78,25 +78,26 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Yannick Vossen <Y.Vossen@beckhoff.com>, qemu-arm@nongnu.org,
  Kevin Wolf <kwolf@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org
-Subject: [PATCH v7 13/16] hw/timer,
- cpu: Add Clock API support to A9MPCore timers
-Date: Mon, 18 May 2026 09:33:58 +0200
-Message-ID: <20260518073401.11279-14-corvin.koehne@gmail.com>
+ Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+Subject: [PATCH v7 01/16] hw/dma/zynq-devcfg: Handle bitstream loading via DMA
+ to 0xffffffff
+Date: Mon, 18 May 2026 09:33:46 +0200
+Message-ID: <20260518073401.11279-2-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260518073401.11279-1-corvin.koehne@gmail.com>
 References: <20260518073401.11279-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,255 +115,47 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-Add a clock input to a9gtimer, arm_mptimer and a9mpcore. a9mpcore
-distributes the clock to the other timers. If no clock is
-connected, falls back to 100 MHz for backward compatibility with
-existing machine types.
+A DMA transfer to destination address `0xffffffff` should trigger a
+bitstream load via the PCAP interface. Currently, this case is not
+intercepted, causing loaders to enter an infinite loop when polling
+the status register.
 
-Frequency calculation now uses the input clock and prescaler
-values according to ARM Cortex-A9 MPCore Technical Reference Manual.
+This commit adds a check for `0xffffffff` as the destination address.
+If detected, the relevant status register bits (`DMA_DONE`,
+`DMA_P_DONE`, and `PCFG_DONE`) are set to indicate a successful
+bitstream load. If the address is different, the DMA transfer proceeds
+as usual. A successful load is indicated but nothing is actually
+done. Guests relying on FPGA functions are still known to fail.
 
-More information about the A9MPCore timers can be found here:
-https://developer.arm.com/documentation/ddi0407/c/timers-and-watchdog-registers?lang=en
+This feature is required for the integration of the Beckhoff
+CX7200 model.
 
 Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 ---
- hw/arm/xilinx_zynq.c           |  1 +
- hw/cpu/a9mpcore.c              | 12 ++++++++++++
- hw/timer/a9gtimer.c            | 18 +++++++++++++++---
- hw/timer/arm_mptimer.c         | 20 +++++++++++++++-----
- include/hw/cpu/a9mpcore.h      |  1 +
- include/hw/timer/a9gtimer.h    |  1 +
- include/hw/timer/arm_mptimer.h |  2 ++
- 7 files changed, 47 insertions(+), 8 deletions(-)
+ hw/dma/xlnx-zynq-devcfg.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 52c9e41a76..5aac215c27 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -271,6 +271,7 @@ static void zynq_init(MachineState *machine)
-     dev = qdev_new(TYPE_A9MPCORE_PRIV);
-     qdev_prop_set_uint32(dev, "num-cpu", smp_cpus);
-     qdev_prop_set_uint32(dev, "num-irq", GIC_EXT_IRQS + GIC_INTERNAL);
-+    qdev_connect_clock_in(dev, "clk", qdev_get_clock_out(slcr, "cpu_3x2x"));
-     busdev = SYS_BUS_DEVICE(dev);
-     sysbus_realize_and_unref(busdev, &error_fatal);
-     sysbus_mmio_map(busdev, 0, MPCORE_PERIPHBASE);
-diff --git a/hw/cpu/a9mpcore.c b/hw/cpu/a9mpcore.c
-index 2127f95578..5ffdc9277b 100644
---- a/hw/cpu/a9mpcore.c
-+++ b/hw/cpu/a9mpcore.c
-@@ -14,6 +14,8 @@
- #include "hw/cpu/a9mpcore.h"
- #include "hw/core/irq.h"
- #include "hw/core/qdev-properties.h"
-+#include "hw/core/qdev-clock.h"
-+#include "hw/core/clock.h"
- #include "hw/core/cpu.h"
- #include "target/arm/cpu-qom.h"
- 
-@@ -42,6 +44,13 @@ static void a9mp_priv_initfn(Object *obj)
-     object_initialize_child(obj, "mptimer", &s->mptimer, TYPE_ARM_MPTIMER);
- 
-     object_initialize_child(obj, "wdt", &s->wdt, TYPE_ARM_MPTIMER);
-+
-+    /*
-+     * Register a clock input. If no clock is connected the
-+     * frequency falls back to 100 MHz for backward compatibility.
-+     */
-+    s->clk = qdev_init_clock_in(DEVICE(obj), "clk", NULL, NULL, 0);
-+    clock_set_ns(s->clk, 10);
- }
- 
- static void a9mp_priv_realize(DeviceState *dev, Error **errp)
-@@ -103,6 +112,7 @@ static void a9mp_priv_realize(DeviceState *dev, Error **errp)
- 
-     gtimerdev = DEVICE(&s->gtimer);
-     qdev_prop_set_uint32(gtimerdev, "num-cpu", s->num_cpu);
-+    qdev_connect_clock_in(gtimerdev, "clk", s->clk);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gtimer), errp)) {
-         return;
-     }
-@@ -110,6 +120,7 @@ static void a9mp_priv_realize(DeviceState *dev, Error **errp)
- 
-     mptimerdev = DEVICE(&s->mptimer);
-     qdev_prop_set_uint32(mptimerdev, "num-cpu", s->num_cpu);
-+    qdev_connect_clock_in(mptimerdev, "clk", s->clk);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->mptimer), errp)) {
-         return;
-     }
-@@ -117,6 +128,7 @@ static void a9mp_priv_realize(DeviceState *dev, Error **errp)
- 
-     wdtdev = DEVICE(&s->wdt);
-     qdev_prop_set_uint32(wdtdev, "num-cpu", s->num_cpu);
-+    qdev_connect_clock_in(wdtdev, "clk", s->clk);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt), errp)) {
-         return;
-     }
-diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-index 3a086915c8..c9ffb4e2c1 100644
---- a/hw/timer/a9gtimer.c
-+++ b/hw/timer/a9gtimer.c
-@@ -24,6 +24,9 @@
- #include "hw/core/hw-error.h"
- #include "hw/core/irq.h"
- #include "hw/core/qdev-properties.h"
-+#include "hw/core/qdev-properties-system.h"
-+#include "hw/core/qdev-clock.h"
-+#include "hw/core/clock.h"
- #include "hw/timer/a9gtimer.h"
- #include "migration/vmstate.h"
- #include "qapi/error.h"
-@@ -63,9 +66,10 @@ static inline int a9_gtimer_get_current_cpu(A9GTimerState *s)
- static inline uint64_t a9_gtimer_get_conv(A9GTimerState *s)
+diff --git a/hw/dma/xlnx-zynq-devcfg.c b/hw/dma/xlnx-zynq-devcfg.c
+index cf00aa863d..9708200760 100644
+--- a/hw/dma/xlnx-zynq-devcfg.c
++++ b/hw/dma/xlnx-zynq-devcfg.c
+@@ -247,7 +247,14 @@ static uint64_t r_lock_pre_write(RegisterInfo *reg, uint64_t val)
+ static void r_dma_dst_len_post_write(RegisterInfo *reg, uint64_t val)
  {
-     uint64_t prescale = extract32(s->control, R_CONTROL_PRESCALER_SHIFT,
--                                  R_CONTROL_PRESCALER_LEN);
+     XlnxZynqDevcfg *s = XLNX_ZYNQ_DEVCFG(reg->opaque);
 -
--    return (prescale + 1) * 10;
-+                                  R_CONTROL_PRESCALER_LEN) + 1;
-+    uint64_t clk_hz = clock_get_hz(s->clk);
-+    assert(clk_hz != 0);
-+    return muldiv64(prescale, NANOSECONDS_PER_SECOND, clk_hz);
- }
- 
- static A9GTimerUpdate a9_gtimer_get_update(A9GTimerState *s)
-@@ -295,6 +299,13 @@ static void a9_gtimer_reset(DeviceState *dev)
-     a9_gtimer_update(s, false);
- }
- 
-+static void a9_gtimer_init(Object *obj)
-+{
-+    A9GTimerState *s = A9_GTIMER(obj);
-+
-+    s->clk = qdev_init_clock_in(DEVICE(obj), "clk", NULL, NULL, 0);
-+}
-+
- static void a9_gtimer_realize(DeviceState *dev, Error **errp)
- {
-     A9GTimerState *s = A9_GTIMER(dev);
-@@ -391,6 +402,7 @@ static const TypeInfo a9_gtimer_info = {
-     .name          = TYPE_A9_GTIMER,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(A9GTimerState),
-+    .instance_init = a9_gtimer_init,
-     .class_init    = a9_gtimer_class_init,
- };
- 
-diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
-index 88158144b2..eb40241ef6 100644
---- a/hw/timer/arm_mptimer.c
-+++ b/hw/timer/arm_mptimer.c
-@@ -24,9 +24,13 @@
- #include "hw/core/irq.h"
- #include "hw/core/ptimer.h"
- #include "hw/core/qdev-properties.h"
-+#include "hw/core/qdev-properties-system.h"
-+#include "hw/core/qdev-clock.h"
-+#include "hw/core/clock.h"
- #include "hw/timer/arm_mptimer.h"
- #include "migration/vmstate.h"
- #include "qapi/error.h"
-+#include "qemu/error-report.h"
- #include "qemu/module.h"
- #include "hw/core/cpu.h"
- 
-@@ -58,10 +62,12 @@ static inline void timerblock_update_irq(TimerBlock *tb)
-     qemu_set_irq(tb->irq, tb->status && (tb->control & 4));
- }
- 
--/* Return conversion factor from mpcore timer ticks to qemu timer ticks.  */
--static inline uint32_t timerblock_scale(uint32_t control)
-+static inline uint32_t timerblock_scale(TimerBlock *tb, uint32_t control)
- {
--    return (((control >> 8) & 0xff) + 1) * 10;
-+    uint64_t prescale = (((control >> 8) & 0xff) + 1);
-+    uint64_t clk_hz = clock_get_hz(tb->clk);
-+    assert(clk_hz != 0);
-+    return muldiv64(prescale, NANOSECONDS_PER_SECOND, clk_hz);
- }
- 
- /* Must be called within a ptimer transaction block */
-@@ -155,7 +161,7 @@ static void timerblock_write(void *opaque, hwaddr addr,
-             ptimer_stop(tb->timer);
-         }
-         if ((control & 0xff00) != (value & 0xff00)) {
--            ptimer_set_period(tb->timer, timerblock_scale(value));
-+            ptimer_set_period(tb->timer, timerblock_scale(tb, value));
-         }
-         if (value & 1) {
-             uint64_t count = ptimer_get_count(tb->timer);
-@@ -222,7 +228,8 @@ static void timerblock_reset(TimerBlock *tb)
-         ptimer_transaction_begin(tb->timer);
-         ptimer_stop(tb->timer);
-         ptimer_set_limit(tb->timer, 0, 1);
--        ptimer_set_period(tb->timer, timerblock_scale(0));
-+        ptimer_set_period(tb->timer,
-+            timerblock_scale(tb, 0));
-         ptimer_transaction_commit(tb->timer);
-     }
- }
-@@ -244,6 +251,8 @@ static void arm_mptimer_init(Object *obj)
-     memory_region_init_io(&s->iomem, obj, &arm_thistimer_ops, s,
-                           "arm_mptimer_timer", 0x20);
-     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-+
-+    s->clk = qdev_init_clock_in(DEVICE(obj), "clk", NULL, NULL, 0);
- }
- 
- static void arm_mptimer_realize(DeviceState *dev, Error **errp)
-@@ -269,6 +278,7 @@ static void arm_mptimer_realize(DeviceState *dev, Error **errp)
-      */
-     for (i = 0; i < s->num_cpu; i++) {
-         TimerBlock *tb = &s->timerblock[i];
-+        tb->clk = s->clk;
-         tb->timer = ptimer_init(timerblock_tick, tb, PTIMER_POLICY);
-         sysbus_init_irq(sbd, &tb->irq);
-         memory_region_init_io(&tb->iomem, OBJECT(s), &timerblock_ops, tb,
-diff --git a/include/hw/cpu/a9mpcore.h b/include/hw/cpu/a9mpcore.h
-index 6076599024..11b4b7cfe9 100644
---- a/include/hw/cpu/a9mpcore.h
-+++ b/include/hw/cpu/a9mpcore.h
-@@ -34,6 +34,7 @@ struct A9MPPrivState {
-     A9GTimerState gtimer;
-     ARMMPTimerState mptimer;
-     ARMMPTimerState wdt;
-+    Clock *clk;
- };
- 
- #endif
-diff --git a/include/hw/timer/a9gtimer.h b/include/hw/timer/a9gtimer.h
-index 5c9b048b95..ef198a969e 100644
---- a/include/hw/timer/a9gtimer.h
-+++ b/include/hw/timer/a9gtimer.h
-@@ -87,6 +87,7 @@ struct A9GTimerState {
-     uint32_t control; /* only non per cpu banked bits valid */
- 
-     A9GTimerPerCPU per_cpu[A9_GTIMER_MAX_CPUS];
-+    Clock *clk;
- };
- 
- typedef struct A9GTimerUpdate {
-diff --git a/include/hw/timer/arm_mptimer.h b/include/hw/timer/arm_mptimer.h
-index 4c6f569631..723f9b9319 100644
---- a/include/hw/timer/arm_mptimer.h
-+++ b/include/hw/timer/arm_mptimer.h
-@@ -33,6 +33,7 @@ typedef struct {
-     struct ptimer_state *timer;
-     qemu_irq irq;
-     MemoryRegion iomem;
-+    Clock *clk;
- } TimerBlock;
- 
- #define TYPE_ARM_MPTIMER "arm_mptimer"
-@@ -44,6 +45,7 @@ struct ARMMPTimerState {
-     /*< public >*/
- 
-     uint32_t num_cpu;
-+    Clock *clk;
-     TimerBlock timerblock[ARM_MPTIMER_MAX_CPUS];
-     MemoryRegion iomem;
- };
++    if ((s->regs[R_DMA_DST_ADDR]) == 0xffffffff) {
++        DB_PRINT("bitstream loading detected\n");
++        s->regs[R_INT_STS] |= R_INT_STS_DMA_DONE_MASK |
++                                R_INT_STS_DMA_P_DONE_MASK |
++                                R_INT_STS_PCFG_DONE_MASK;
++        xlnx_zynq_devcfg_update_ixr(s);
++        return;
++    }
+     s->dma_cmd_fifo[s->dma_cmd_fifo_num] = (XlnxZynqDevcfgDMACmd) {
+             .src_addr = s->regs[R_DMA_SRC_ADDR] & ~0x3UL,
+             .dest_addr = s->regs[R_DMA_DST_ADDR] & ~0x3UL,
 -- 
 2.47.3
 

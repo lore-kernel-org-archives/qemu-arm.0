@@ -4,107 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17CA2CD4F3C
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 10:28:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DF38CD4F50
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 13:29:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOvCI-0007PB-OD; Mon, 18 May 2026 06:27:42 -0400
+	id 1wOy1p-0000VH-UH; Mon, 18 May 2026 09:29:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wOvC5-0007Mq-6Z
- for qemu-arm@nongnu.org; Mon, 18 May 2026 06:27:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wOvC1-0006lO-OW
- for qemu-arm@nongnu.org; Mon, 18 May 2026 06:27:28 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779100044;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oVSCeAhOwn5hkTv4cFbfZT6+KgO3cID0Tows3sPcKao=;
- b=LWRa5ieR2aAC2/JR3bs+2hOWE4TJW5M4o63x8tnS2ybICw+pwBbM7v1YW4FYuqK/o3TRGL
- a5dl8xnwSRlJKYQ0F9OlI/HMKusf1/9Z1MvMKScOLxtveWalHqR6oDg/GOREAyJpzv4fz/
- B/PB1xwUs6vVoM5p8fzqu4ufo6lzFTk=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-677-Wp0URlp3PAixQlEv2u802g-1; Mon, 18 May 2026 06:27:23 -0400
-X-MC-Unique: Wp0URlp3PAixQlEv2u802g-1
-X-Mimecast-MFC-AGG-ID: Wp0URlp3PAixQlEv2u802g_1779100042
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-48fd2b502e2so15919655e9.2
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 03:27:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <elbeheri95@gmail.com>)
+ id 1wOukF-0005oT-Hm
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 05:58:43 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <elbeheri95@gmail.com>)
+ id 1wOukD-0007nU-0N
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 05:58:43 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-4585a116a4aso1632386f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 02:58:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1779098318; x=1779703118; darn=nongnu.org;
+ h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+ :date:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=lWnpI8K2Mvl9ynhlYEigGDky9pIVwx8nFFsIb5PVaXo=;
+ b=aiIWOZ7zuRwXe22gm9oSz9pjQtGeu2h5bFStrp8hbqKIQ7l79UA+vI7xlbLdc6aK6A
+ RFSjRP1iOwnkme1ywLdNm8CA50eWysdstozprgRndCZ9jtFtuTLns8vxUt7vVe5l8a54
+ nUlwcs5pLtM304rlN/qcDRmGseLqVsBKx6khXZPDLVn0MZaC0O79sr4EmA1h6YAjeO36
+ wlY8rdvoY9plltxoKGyKDEBVf6N0Vrqgbdu4/rS+mqqjDhoGWf5vRT3NWA98zXWap82b
+ rXpNS2gN255oa8KFjYFwhfNZhk4hKrAWCIqYbsUlXz0QjnDaVwj/F7d+t9ypwn97uQNi
+ 943A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779100042; x=1779704842;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1779098318; x=1779703118;
+ h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+ :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=oVSCeAhOwn5hkTv4cFbfZT6+KgO3cID0Tows3sPcKao=;
- b=bfnGo4UxXwApo8/+D26f7zhXnzKXzH9xSXZlzqs4zlQvK4f4peQ1onn1ZvgPc3qbnF
- l93ifMU5sisO7MDZvAikB9gr9X5Qzibz62P2e8UDb+DDOih6EJ6t6QCaiUBtOgRdWOT0
- FKUvMkSk/KqoOVpPPlyQn9Fs9POtbQojlHm55eCa2OQEDbtaDetZ0R/iHuwuqikuSzJf
- nCS+I5SEQcaygm9YMZNksuIDvbfP5wd+tCZ7XRVXYdW/hWnFqYweiTfDNZd+dOyIIupN
- qu3lsRDcx67l47KSlSQPolBAW8vIwIjdmcIZZn4AtQlelQlfWKdqbi67LPy2eEeiDZVo
- 18AA==
+ bh=lWnpI8K2Mvl9ynhlYEigGDky9pIVwx8nFFsIb5PVaXo=;
+ b=qXC7qFialXFcmUQg7qU9ynRKexAr0eg5qaFWphG3+Pns833vOy3FH3DRoIcNjn1BV+
+ /05r+T9QSEor+tLw1T+iXIbnV+Q0aV5QLxcxTyyfdbvfiDFFSYEJ8xL7I1SvsCTveMq6
+ KgZuYTYGVmHoEHuRfmnYkd4TWN+RSQTWw2WQYZc6Bt2x4NLGseuK1dB+lFxdQ0samoHj
+ etg941h0l/7JA2oZsrdYCSTyleMR83WUmzo76d8KAdqamc2v6dI2HSXzUS4AyTfi0iJv
+ 4qsYskAatqghgL4kEZnr3kowSCLbAwdy2OYSS+gVR3OZkyDWBLkmQOCExOJSJ2xT1tHN
+ /Jww==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/2bp7MWixXfd5YGJgh76C8JBM9vJKRJcg9pOcKwqNH5YpGivhPRwgKn60So+KxSZgZYMzh+C9rsg==@nongnu.org
-X-Gm-Message-State: AOJu0YxLgH4AUChZ6vPRPHe1FWySh/EgFBPStgVWvw4t+ww1SHrGAQGN
- p67XMeuG6u4fH581Fw5nrAt/4iOnGWD5E+PzuC9/A4Jczq8zSUOCazxGeRfkeu0TGP0zzs2PNC8
- ZzNlU6YfD7OpllrJZc2jehSkz2kjT27WHsriC7uygzFQg73MPhnKaEA==
-X-Gm-Gg: Acq92OHrMMdz9WWpBTdJOK12Fv8vngATmat+jF5HCtgAF8vjfurd1mW1vGjmDlS08B/
- Zs5iH9F8ULnqW9SQUE2frwxCfb9DbUAu8J25y2UouJ/7z437iHZmMb81ODe/ZQJNpfgQk7AVj8c
- LAyQ0e1qdCX6BN1apmDHX/nV1i+WsYmNFOZChxB69HFmML9oiJQduaxDuCx4Pr3I1YT+rzbv9J4
- a+sVwb2byt2VGbfFKyu1j09psUECyXsTBkEEZ6xniJl2sP72QjLJOZ0xUcEPGP1DKJRp9jUeqyS
- LIm/I9Jigu1N1TxcSoqS6+ywi9TlvO8Gkm9HM/6TrN644a+gjJJp0Jyyrm8IVhxUB/5iTsmoVYS
- CQVkRcquU0TBkwx/KpCK1+HUg4uZ7P5MBaYQsqHVDkfBby+7EAA6TNcd+LP5IYdcBWmtsaw==
-X-Received: by 2002:a05:600c:1f89:b0:48e:526e:101a with SMTP id
- 5b1f17b1804b1-48fe60e7a13mr207226255e9.12.1779100041520; 
- Mon, 18 May 2026 03:27:21 -0700 (PDT)
-X-Received: by 2002:a05:600c:1f89:b0:48e:526e:101a with SMTP id
- 5b1f17b1804b1-48fe60e7a13mr207225815e9.12.1779100040928; 
- Mon, 18 May 2026 03:27:20 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4900c16c744sm60785255e9.3.2026.05.18.03.27.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 May 2026 03:27:20 -0700 (PDT)
-Message-ID: <dd4744c5-6f89-4377-b28a-24b2ebc23412@redhat.com>
-Date: Mon, 18 May 2026 12:27:18 +0200
+ AFNElJ9FVfgCYpAmVcTCbnDed4zAo3a9uNPOyryBMHgNuMJqxluf8muRshUz/FtxQw/PVIolp0T/38gHzQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzepm8Y+Kwwk35rhgakdLaxqCm8kIrLu9Lj2NuOQFg5U0dDuBpk
+ mt/8/QcJ1sgizgCEFqLIUnC8wHIAgpS48CTUZJm5YD5dJIgGRKWBbacT
+X-Gm-Gg: Acq92OHpocmuZ47KpaaJqRVAUID5lopivikk87+tE7ImnVxr13Cft3UgixFWdal9Css
+ pwBV2/R61H/0Urjk7l9cDzT41k4ZdOb901lv4uAlMUzyF6tcFzkU0wu9JIU9ekI+zIaYeGBthOR
+ PN2xenUeg4Nu4wGNt3lRHzejFGl/ES3yqQVywYyX2J/NSN6uKxB1gtvP51OG5ZSIl/Sh2MoQS1F
+ 38R9dS4P+WFJInrr64y9nwFkgjRzKuE/uN0c8kAf4osNitFwd+UF2TxK1ziGVhpNpAca2JuG5R7
+ oT81/vsYV4snWaGwwFMp/kinNL3K1rXw8SQDHVVrHdQ5/DY+ZQPJ1W73+SBnPVeFRmEaRMhPSPe
+ eqw9dCWYpYugr/6zhjrojAgsprM6901ww0njxfc1ikYaXEpxZHE8tWaouKxX3VHJbT8qAL1+vAe
+ 3UzqwPWfmw8Xm0VBTSpWAsNhfYQzLW1Kcy5v62YYW8ORDWt8sX8Mk3rt5hypYySnaq0w==
+X-Received: by 2002:a05:6000:4011:b0:45d:41e0:467b with SMTP id
+ ffacd0b85a97d-45e5c57d3b5mr21828633f8f.3.1779098317938; 
+ Mon, 18 May 2026 02:58:37 -0700 (PDT)
+Received: from [127.0.1.1] ([105.32.253.93]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45da0fe2464sm37566374f8f.32.2026.05.18.02.58.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 May 2026 02:58:37 -0700 (PDT)
+From: Abdelrahman Elbehery <elbeheri95@gmail.com>
+Date: Mon, 18 May 2026 12:58:15 +0300
+Subject: [PATCH] target/arm: replace cp_regs hashtable lookup with direct
+ array index
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v1 00/13] named CPU models for ARM64 on KVM
-To: Shaju Abraham <shaju.abraham@nutanix.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
- richard.henderson@linaro.org, cohuck@redhat.com, sebott@redhat.com,
- skolothumtho@nvidia.com, philmd@linaro.org,
- Andrea Bolognani <abologna@redhat.com>
-References: <20260513163356.3033159-1-shaju.abraham@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260513163356.3033159-1-shaju.abraham@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Fb0IvE2wntHE_YXcLxbuxRJW5jOE3FU-OsrASRpEjv4_1779100042
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260518-enhance_arm_gdb_get_sysreg_performance-v1-1-f0a5b22003c0@gmail.com>
+X-B4-Tracking: v=1; b=H4sIALbiCmoC/x2N0QrCMBAEf6Xcs4EkxBr8FZGjNtuYh6blrohS+
+ u9GH2cHdnZSSIHStdtJ8CpaltrAnToan0PNMCU1Jm99b88uGtQ2j+BBZs7pwRkb60cFmVfItMj
+ 80yb4GMMlBOtST+1sFUzl/Q/d7sfxBVbyI9J4AAAA
+X-Change-ID: 20260518-enhance_arm_gdb_get_sysreg_performance-4288474401d6
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Abdelrahman Elbehery <elbeheri95@gmail.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6908; i=elbeheri95@gmail.com; 
+ h=from:subject:message-id;
+ bh=/wdbX57nyxVVoTtoLAbDqlJxwAOjWI4ITu9yT4WRpso=; 
+ b=owGbwMvMwCUm/fee8JG43+sYT6slMWRxPTqTGmzxk3Od2P7QjfaeBWFRfMLrhLpWnF3i/Ov/b
+ 8akSW/rO0pZGMS4GGTFFFm+Jauyejmo7bE4dm8nzBxWJpAhDFycAjCR9tOMDOfE6hIMeAyM7x6S
+ ar267GadN99lvqWCblt27mD4vff4z3JGhn2Cm7wXymsoXOR3uLQsa0l/UveKG2f8Poh+0+y0DDq
+ /hR0A
+X-Developer-Key: i=elbeheri95@gmail.com; a=openpgp;
+ fpr=F66325054A4026BC38C6DEB91BFDDE13C45EFBAE
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=elbeheri95@gmail.com; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 18 May 2026 09:29:02 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,460 +112,158 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shaju,
+Profiling showed g_hash_table_lookup as a hot spot when running TCG
+plugins that log all CPU registers (e.g. execlog with reg=*).
+Replace it with a direct array index to avoid lookup overhead.
 
-On 5/13/26 6:33 PM, Shaju Abraham wrote:
-> Hi All,
->
-> This RFC introduces "named" CPU models for ARM64 KVM guests. This
-> is foundational for cross-host live migration and management-stack
-> control over individual CPU features exposed to the guest.
->
-> TL;DR Examples:
->   # Boot with Grace CPU model
->   qemu-system-aarch64 -cpu grace-v1 -machine virt,accel=kvm ...
->
->   # Grace with a feature disabled
->   qemu-system-aarch64 -cpu grace-v1,feat_SHA1=off ...
->
->   # Host passthrough with individual feature control
->   qemu-system-aarch64 -cpu host,feat_AES=aes ...
->
->   # Neoverse v2 on Grace.
->   qemu-system-aarch64 -cpu neoverse-v2-v1
->
->   # Migration from Grace to Graviton3 (TBD)
->   qemu-system-aarch64 -cpu neoverse-v1-v1 ...
->
-> Relationship with Auger/Huck's customizable host model [1]:
-> We have been working on this series in parallel with [1]. Eric Auger and
-> Cornelia Huck's series [1] exposes raw SYSREG_<REG>_<FIELD> uint64
-> properties on -cpu host, providing the essential low-level knobs for ID
-> register customization. This RFC builds on the same KVM capability
+Signed-off-by: Abdelrahman Elbehery <elbeheri95@gmail.com>
+---
+While profiling (via callgrind) a TCG plugin that logs all the CPU registers
+(very identical to execlog with reg=*) i noticed that arm_gdb_get_sysreg is a hot spot,
+mostly while calling g_hash_table_lookup. Probably this is due to some hashtable collision
+that is handleded by glib internally.
 
-Please find some comments/questions below.
-> and can be layered on top of [1]:
->   - Human-readable property names: feat_AES=pmull instead of
->     SYSREG_ID_AA64ISAR0_EL1_AES=2, with arch-defined named values
->     validated at set time.
-From what I understand what you call feature here refers to an
-ARM64_FTR_BITS definition in kernel arch/arm64/kernel/cpufeatures.c.
-Named string values, safe policy and safe value are all extracted from
-the kernel implementation and do not stem from the ARM ARM itself.
+Currently each DynamicGDBFeatureInfo item holds keys for cp_regs, and the keys are always
+used to retrieve the ARMCPRegInfo pointer.
 
-If the named vcpu models anyway use hardcoded values I wonder if it is
-so important to have named string values whereas a comment would do the
-job in the named vcpu model definition?
+By replacing the keys array with a GPtrArray, we now just access reg info directly from
+the given index.
 
-From a spec pov I had in mind that a defintion of a FEAT could be much
-more complex that just 1 field (for instance could be a combination of
-several of them).
+The benchmarking was done on c2d-highcpu-16 (16 vCPUs, 32 GB memory) GCP
 
-It is not clear to be if you allow the end-user to overwrite a property
-on top of a named model setting.
+Setup was to run qemu-system-aarch64 against a buildroot kernel and rootfs
+with and without the patch mostly using:
+    --plugin contrib/plugins/libstoptrigger.so,icount=2000000
+    --plugin contrib/plugins/libexeclog.so,reg=*
+    -M virt -cpu cortex-a710 -smp 1
 
->   - Default values and forward compatibility: CPU models start from a
->     known-zero baseline rather than the host view, so new fields/registers
-[1]
->     introduced in future kernels do not silently leak into existing models.
->   - Named CPU models with hierarchical inheritance: grace-v1,
->     neoverse-v2-v1, etc.
->
-> The two series can coexist; this series can be rebased on top of [1].
->
-> [1] https://lore.kernel.org/qemu-devel/20260503073541.790215-1-eric.auger@redhat.com/
->
-> Problems with defining "named" CPU models for ARM64 KVM guests:
->   * Features are not single CPUID bits. They are mostly multi-bit fields
->     encoding version/level instead of just presence. A single field encodes
-> 	multiple ARM ARM defined features (FEAT_s) at different thresholds.
-would be good to provide an example for each challenge. I remember
-Connie provided some in the past though her KVM forum presentations.
->   * KVM does not allow all registers and fields to be modified for a guest.
->     Some fields KVM does not virtualise at all (SME) or only support host
-> 	values (BRPs, CWG, etc.). This is evolving and differs between kernel
-> 	versions.
-this seems to be contradictory to [1]. Do you have a mix of host
-inherited values and hardcoded value or do you only have hardcoded values?
->   * ARM does not have a single natural granularity for CPU models unlike
->     x86. ARM has architecture, reference core and SoC levels each becoming
-> 	more granular.
->   * ARM has dozens of vendors and it will be tricky to maintain models for
->     all of them.
->   * Previous designs started from the host values and then subtracted
->     undesirable features. This is not forward-compatible; the design
->     should work when a new ID register or field is introduced.
->
-> With the above problems in mind, the design has 3 layers:
->
-> 1. ARM ID Register Field Table:
->    - This layer maintains all architecturally defined ID registers and
->      ID register fields. It includes:
-> 		* Field name
-> 		* Field shift
-> 		* Field length
-> 		* Safe-value tag: LOWER, HIGHER, HIGHER_OR_ZERO, SIGNED_LOWER,
-> 						  EXACT, ANY
-> 			This will be used to validate user-provided values during
-> 			CPU realization time against the host's value. I.e., if the
-> 			host only supports "aes", a CPU model that sets "pmull"
-> 			should be rejected.
-why isn't the kernel doing that job already. Setting a value not
-compatible with the host shall be rejected by the kernel, no?
-> 		* Default value: The value to which the field is reset. This gives
-> 			CPU models a clean cpu.isar.idregs[] baseline instead of the
-> 			host view provided by the kernel, as in previous designs.
-> 			This also complements the forward-compatibility story. Given
-> 			the "default" values, higher levels need not worry about new
-> 			fields/registers being introduced.
-> 		* Architecturally defined named values like "off", "aes", "pmull",
-> 			etc.
-> 		* These values are derived from the kernel's ftr_bits array and
-> 		  tools/sysreg file.
->     E.g:
->
->      IDREG_START(ID_AA64ISAR0)
->      IDREG_FIELD_START(ID_AA64ISAR0, AES, 4, 4, LOWER, 0)
->      IDREG_FIELD_ARCH_VAL(0b0000, "off")
->      IDREG_FIELD_ARCH_VAL(0b0001, "aes")
->      IDREG_FIELD_ARCH_VAL(0b0010, "pmull")
->      IDREG_FIELD_END(ID_AA64ISAR0, AES)
-> 	 ....
-> 	 IDREG_END(ID_AA64ISAR0)
->
->    - This layer is the single source of truth for ARM64 ID registers.
-single source of truth extracted from the kernel and not from the spec.
-What if we discover a bug in ARM64_FTR_BITS chang default or safe value
-for instance. How does the change propagate to qemu and existing models?
->      The default values and safe-value tags are manually derived from the
-default value, if equal to reset value could be extracted from the spec
-directly.
-> 	 kernel's ftr_bits array. Other boilerplate and arch-defined values are
-> 	 script-generated.
->
->    - AArch32 ID registers are added with a single field so they can be
->      zeroed out on hosts that support AArch32.
->
->    - This layer also defines helpers for higher layers to extract and
->      manipulate ID register fields.
->        * arm_idregs_reset_to_defaults(): Reset all ID registers to their
-> 	     default values.
-> 	   * arm_idreg_field_read/write(): Read the value of an ID register
-> 	     field.
-> 	   * arm_arch_val_name/from_name(): Look up the arch-defined name for
-> 	     a numeric field value.
-> 	   * ...
-this is a pity we have not exchanged on this earlier because that code
-could have been shared instead of rewriting things and resetting all
-credits.
->
-> 	- This layer creates the following tables using X-macro expansion:
-> 	   * arm_idregs[]: Array of ID register descriptors.
-> 	   * arm_field_locs[]: Array of field location descriptors.
-> 	        (fieldIDx -> registerIndex, fieldIndex)
-> 	   * ...
->
->     - The ArmIdReg struct also includes a writable_mask to track which
->       bits are writable by KVM. This is populated at runtime during
->       scratch VM creation, and is further used to validate that only
->       the writable bits are modified by the CPU model.
-this is an interesting idea that could have been also used in previous
-contributions.
->
-> 2. ARM Properties Layer:
->    A small property layer on top of the ID Register Field table is defined.
->    This series defines two types of properties with plans for one more
->    in the future:
->       - Single field properties: These represent ARM FEAT_X features
-> 	    that correspond to a single ID register field. Example: feat_AES,
-> 	    feat_SHA2, etc.
->
-> 		The property name is set as "feat_<FieldName>" and possible values
-> 		are the arch-defined named values. This can be further categorized
-> 		into:
-> 			* STRING: multi-bit fields (>=2 bits) with arch-defined named
-> 			          values, example: feat_AES, feat_SHA2, etc.
-> 			* BOOLEAN: 1-bit fields only (true/false)
-> 			          example: hw_prop_IDC, hw_prop_DIC, etc.
-> 			* NUMERIC: IDREG_ANY fields with no named values (raw integer)
-> 			          example: hw_prop_BS, hw_prop_DZP, etc.
-I just wonder if we need all that complexity if eventually we hardcode
-values in named vcpu models
->
-> 		String property values are validated against the arch-defined named
-> 		values.
->
-> 		ID register fields that are not covered by single field properties
-> 		are also exposed as a property named hw_prop_FieldName. These are
-> 		usually implementation-defined values like cache geometry, debug
-> 		counter widths, etc. (CTR_EL0.*, DCZID_EL0.*, etc.)
-> 		Example: hw_prop_BS, hw_prop_DZP, etc.
-how do you discriminate between those and field_ props? Again do we need
-that complexity?
->
-> 		Single field properties are defined as:
->
-> 		ARM_PROP("prop_name", type, reg, field)
-> 		Example:
-> 		ARM_PROP("feat_AES", STRING, ID_AA64ISAR0, AES)
->
-> 		* Validation based on safe-value tags is yet to be implemented.
->
->      - Fractional properties: These represent ARM FEAT_X features that
-> 	    use two fields (base + frac) across registers. Example: feat_CSV2,
-> 	    feat_MPAM, etc.
->
-> 		The property name is set as "feat_<BaseFieldName>" and possible
-> 		values are the arch-defined string values like "0.0", "1.0", "1.1",
-> 		etc.
->
-> 		Fractional properties are defined as:
-> 		ARM_FRACTIONAL_PROP("prop_name", base_reg, base_field, frac_reg, frac_field)
-> 		Example:
-> 		ARM_FRACTIONAL_PROP("feat_CSV2", ID_AA64PFR0, CSV2, ID_AA64PFR1, CSV2_FRAC)
->
->
-> 		When a fractional property is set, both the base field and frac
-> 		field values are set to the corresponding values.
-> 		E.g: feat_CSV2=1.1 will set ID_AA64PFR0.CSV2=1 and ID_AA64PFR1.CSV2_FRAC=1.
->
-> 	- Composite properties (planned for v2):
-> 	   These will act as master boolean switches that control a list of
-> 	   fields. Example: pauth, sve, etc. Setting sve=on with a named model
-> 	   will set all the SVE-related fields (ID_AA64ZFR0_EL1.*) along with
-> 	   sveNNN vector-length. Similarly, setting pauth=on will set APA, GPA,
-> 	   API, GPA3, GPI, GPA3 fields based on the named model.
->
-> 	- cpu_revision, cpu_partnum, etc. properties are introduced to expose
-> 	  MIDR, REVIDR, AIDR fields.
->
-> 	Exceptions to the property naming are made for ID_AA64PFR0_EL1.ELx
-> 	fields, which are named elx_mode.
-yet another naming exception. 
->
-> 	This series defines over 130 single field properties plus 4
-> 	fractional properties. All properties work with -cpu host also.
-Similary as with the host "custom" series, one needs to address
-collision between legacy cpu properties and low level ones too.
->
-> 	All properties change the cpu.isar.idregs[] values which are later
-> 	written back to KVM at the end of kvm_arch_init_vcpu().
->
-> 	* The arch-defined named values and property names can be iterated
-> 	  until they make sense.
->
-> 3. ARM CPU Model Hierarchy:
->
-> A small named model layer is defined on top of the properties. An ARM named
-> CPU model defines a list of property values and a parent model. A child
-> model naturally inherits all the properties from its parent and can
-> override them when needed.
->
-> The initial model hierarchy shipped here is:
->     kvm-base-v1                  KVM-imposed quirks
->       arm-v8_4-a-v1              ARMv8.4-A architectural mandate
->           neoverse-v1-v1         Neoverse V1
-> 		    graviton3-v1         AWS Graviton3
-> 		arm-v9_0-a-v1            ARMv9.0-A architectural deltas on top of ARM-v8_4-a-v1
->           neoverse-v2-v1         Neoverse V2
->             grace-v1             NVIDIA Grace
-Do you have a strategy for named model validation, besides code review.
-At least each vcpu named model shall be introduced in separate patch,
-overrides clearly explained and links to the reference spec shall be
-precisely given for review.
->
-> (kvm-base-v1 and arm-vX are not meant to be realizable unless the
->  user provides values for implementation-defined fields)
->
-> So for example, grace-v1 defines Crypto fields and CTR_EL0.IDC/DIC on top
-> of neoverse-v2-v1, which leaves those fields vendor-configurable.
->
-> The hierarchy reflects a deliberate trade-off:
->   - Architecture-level models (arm-v8_4-a-v1) maximize migration
->     compatibility but lack implementation-defined values.
->   - Reference-core models (neoverse-v2-v1) enable migration across
->     SoCs sharing the same core design.
->   - SoC models (grace-v1) expose the full hardware feature set but
->     limit migration to hosts with the same SoC.
+Benchmark showed ~15% performance gain when hashtable is not used.
+For benchmarking, i used hyperfine with 3 warmup rounds and 10 iterations each.
+---
+ target/arm/cpu.h     |  6 +++---
+ target/arm/gdbstub.c | 28 ++++++++++++++++------------
+ 2 files changed, 19 insertions(+), 15 deletions(-)
 
-What kind of migration did you exercise up to now?
->
-> At model realization time,
->     1. a clean slate of cpu.isar.idregs[] is created using
-> 	   arm_idregs_reset_to_defaults().
-> 	2. Then, a model's full parent-chain is walked and all properties are
-> 	   applied in order from parent to child.
-> 	3. Finally, kvm_arm_writeback_idregs() compares the model's desired
-> 	   ID-register values against the host-provided cpreg snapshot and
-> 	   writes back the writable bits, warning on any non-writable difference.
->
-> Models will follow a monotonic versioning convention (grace-v1, grace-v2,
-> ...) mirroring x86's scheme.
->
-> * Please take the CPU model property values with a grain of salt.
->   They are added based on what the guest-visible values are with "host"
->   model on available hardware.
-I don't catch the above statement.
->
-> Benefits of this design:
-> 	- General benefits that come with properties and named CPU models,
-> 	  like cross-host live migration, management-stack control over
-> 	  feature exposure, etc.
-> 	- Forward compatibility: when a new ID register or field is
-> 	  introduced, CPU models need not change; during realization they
-> 	  will be populated with the default values. Only ID register/field
-> 	  information needs to be added to the field table.
-> 	- As CPU models are hierarchical, defining a new model is much easier.
-I like the hierarchical approach but to be honest, at the moment, I miss
-knowledge on whether it safely applies. I agree that named vcpu models
-are the end target goal while [1] is rather an intermediate step that
-was paving the way for it. I rather saw [1] as a tool box for enhaving
-the host model and understanding issues when migrating. I wish we could
-share the foundations instead of having totally separate contributions. 
-> 	- The property names and values are self-documenting.
-not really sorry (because it does not match the spec). I don't think we
-can ask the end-user to read the kernel code.
->
-> NOTE: ~2200 of the ~3300 added lines are declarative (field table,
-> model definitions, properties, etc.)
->
-> Tested with KVM on an NVIDIA Grace host.
->
-> Relationship with existing code base:
->  - It does not change any TCG-based code paths.
->  - For KVM host passthrough it just adds property support.
-with hardcoded reset values, correct? Instead of host retrived values?
->  - Does not change any existing properties or other code paths.
-yes but if it words along with legacy options, you share our concern to
-coexist with them
->  - Can layer on top of the SYSREG_ property series [1].
-but in that case why don't you simply reuse it to build the named vcpu
-model. I don't say the previous properties are the ideal solution but I
-am not sure the mix or heterogenously named ones introduced here + value
-strings retrieved from the kernel are better. At least the SYSREG ones
-matched the spec with raw values, which bring simplicity in the code.
-And since the end user shall be so much involved in provided extra
-SYSREG values himself on top of named vcpu models, ...
->
-> Planned Follow-ups:
->     - Composite properties with handling of sve, pauth for named models.
-yes this is needed and I am currently working on this on [1]
->     - CLIDR_EL1 and CCSIDR_EL1 handling.
-> 	- Safe-value based validation logic.
-> 	- QMP commands like query-cpu-model-expansion are not hooked yet.
-> 	  Blockers and supported values (calculated using safe-value tags
-> 	  and runtime KVM writable masks) will be reported through them.
-> 	  E.g. libvirt could report:
-> 	    <property name='feat_AES' type='string' value='pmull'
-> 	              supports='off,aes,pmull'/>
-> 	  and:
-> 	    <cpu type='kvm' name='nvidia-grace-v1'
-> 			typename='arm-nvidia-grace-v1-arm-cpu' usable='no'>
-> 	      <blocker name='feat_AES'/>
-> 	    </cpu>
-adding Andrea for libvirt inputs
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 15a13b929276dad161032b61ba51ebbce7eeebc6..8816e94e3f8271ad403e77f6182fdb8cee31c527 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -121,15 +121,15 @@
+  * DynamicGDBFeatureInfo:
+  * @desc: Contains the feature descriptions.
+  * @data: A union with data specific to the set of registers
+- *    @cpregs_keys: Array that contains the corresponding Key of
+- *                  a given cpreg with the same order of the cpreg
++ *    @cpregs_regs: Array that contains the corresponding Register info pointer
++ *                  of a given cpreg with the same order of the cpreg
+  *                  in the XML description.
+  */
+ typedef struct DynamicGDBFeatureInfo {
+     GDBFeature desc;
+     union {
+         struct {
+-            uint32_t *keys;
++            GPtrArray *regs;
+         } cpregs;
+     } data;
+ } DynamicGDBFeatureInfo;
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index d6e29c4cf46745dc7851bc5f8339c8d7c6857b8c..e66af8207b436fe8f1dd27441a587b1eb52ff928 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -238,19 +238,23 @@ static int arm_gdb_get_sysreg(CPUState *cs, GByteArray *buf, int reg)
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+     const ARMCPRegInfo *ri;
+-    uint32_t key;
+ 
+-    key = cpu->dyn_sysreg_feature.data.cpregs.keys[reg];
+-    ri = get_arm_cp_reginfo(cpu->cp_regs, key);
++    ri = g_ptr_array_index(cpu->dyn_sysreg_feature.data.cpregs.regs, reg);
+     if (ri) {
+         switch (cpreg_field_type(ri)) {
+         case MO_64:
+             if (ri->vhe_redir_to_el2 &&
+                 (arm_hcr_el2_eff(env) & HCR_E2H) &&
+                 arm_current_el(env) == 2) {
+-                ri = get_arm_cp_reginfo(cpu->cp_regs, ri->vhe_redir_to_el2);
++                ri = g_ptr_array_index(
++                    cpu->dyn_sysreg_feature.data.cpregs.regs,
++                    ri->vhe_redir_to_el2
++                );
+             } else if (ri->vhe_redir_to_el01) {
+-                ri = get_arm_cp_reginfo(cpu->cp_regs, ri->vhe_redir_to_el01);
++                ri = g_ptr_array_index(
++                    cpu->dyn_sysreg_feature.data.cpregs.regs,
++                    ri->vhe_redir_to_el01
++                );
+             }
+             return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri));
+         case MO_32:
+@@ -269,19 +273,18 @@ static int arm_gdb_set_sysreg(CPUState *cs, uint8_t *buf, int reg)
+ 
+ static void arm_gen_one_feature_sysreg(GDBFeatureBuilder *builder,
+                                        DynamicGDBFeatureInfo *dyn_feature,
+-                                       ARMCPRegInfo *ri, uint32_t ri_key,
++                                       ARMCPRegInfo *ri,
+                                        int bitsize, int n)
+ {
+     gdb_feature_builder_append_reg(builder, ri->name, bitsize, n,
+                                    "int", "cp_regs");
+ 
+-    dyn_feature->data.cpregs.keys[n] = ri_key;
++    g_ptr_array_index(dyn_feature->data.cpregs.regs, n) = ri;
+ }
+ 
+ static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
+                                             gpointer p)
+ {
+-    uint32_t ri_key = (uintptr_t)key;
+     ARMCPRegInfo *ri = value;
+     RegisterSysregFeatureParam *param = p;
+     ARMCPU *cpu = ARM_CPU(param->cs);
+@@ -292,7 +295,7 @@ static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
+         if (arm_feature(env, ARM_FEATURE_AARCH64)) {
+             if (ri->state == ARM_CP_STATE_AA64) {
+                 arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
+-                                           ri, ri_key, 64, param->n++);
++                                           ri, 64, param->n++);
+             }
+         } else {
+             if (ri->state == ARM_CP_STATE_AA32) {
+@@ -302,10 +305,10 @@ static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
+                 }
+                 if (ri->type & ARM_CP_64BIT) {
+                     arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
+-                                               ri, ri_key, 64, param->n++);
++                                               ri, 64, param->n++);
+                 } else {
+                     arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
+-                                               ri, ri_key, 32, param->n++);
++                                               ri, 32, param->n++);
+                 }
+             }
+         }
+@@ -323,7 +326,8 @@ static GDBFeature *arm_gen_dynamic_sysreg_feature(CPUState *cs, int base_reg)
+                              "org.qemu.gdb.arm.sys.regs",
+                              "system-registers.xml",
+                              base_reg);
+-    cpu->dyn_sysreg_feature.data.cpregs.keys = g_new(uint32_t, num_regs);
++    cpu->dyn_sysreg_feature.data.cpregs.regs = g_ptr_array_new();
++    g_ptr_array_set_size(cpu->dyn_sysreg_feature.data.cpregs.regs, num_regs);
+     g_hash_table_foreach(cpu->cp_regs, arm_register_sysreg_for_feature, &param);
+     gdb_feature_builder_end(&param.builder);
+     return &cpu->dyn_sysreg_feature.desc;
 
-Thanks
+---
+base-commit: ac6721b88df944ade0048822b2b74210f543d656
+change-id: 20260518-enhance_arm_gdb_get_sysreg_performance-4288474401d6
 
-Eric
->
-> 	- DCZID_EL0 handling.
->
-> Out of Scope:
-> 	- Inter-feature dependencies like FP <--> AdvSIMD, SM3 <--> SM4, etc.
->
-> Appendix: KVM Non-writable fields (kernel 6.18):
->
-> These fields pass the host value through to the guest unmodified on
-> 6.18; trying to override them get a warning from kvm_arm_writeback_idregs()
-> and the slot retains the host value:
->
->    #   Field                       #   Field
->   ---  -----------------------    ---  -----------------------
->    1   ID_AA64PFR0.FP              10  ID_AA64MMFR2.NV
->    2   ID_AA64PFR0.AdvSIMD         11  ID_AA64MMFR2.CCIDX
->    3   ID_AA64MMFR0.ASIDBITS       12  ID_AA64MMFR4.E2H0
->    4   ID_AA64MMFR1.XNX            13  ID_AA64DFR0.CTX_CMPs
->    5   ID_AA64MMFR1.VH             14  ID_AA64DFR0.BRPs
->    6   ID_AA64MMFR1.VMIDBits       15  CTR_EL0.CWG
->    7   ID_AA64MMFR2.EVT            16  CTR_EL0.ERG
->    8   ID_AA64MMFR2.FWB            17  DCZID_EL0.*
->    9   ID_AA64MMFR2.IDS
->
-> This list shifts with the kernel version. The runtime probe via
-> KVM_ARM_GET_REG_WRITABLE_MASKS is authoritative.
->
-> Warm Regards,
->  Shaju, Khushit
->
-> Khushit Shah (1):
->   target/arm/kvm: enable writable implementation ID registers
->
-> Shaju Abraham (12):
->   target/arm: named_cpu_model: define containers for ID registers and
->     fields
->   target/arm: named_cpu_model: Add ID Register Fields
->   target/arm: named_cpu_model: initialise additional sysregs
->   target/arm: named_cpu_model: generate tables for Arm64 ID registers
->     and fields
->   target/arm: named_cpu_model: replace FIELD macro with IDREG_FIELD
->   target/arm: named_cpu_model: data-structures required for the ARM
->     property layer.
->   target/arm: named_cpu_model: define ARM properties
->   target/arm: named_cpu_model: generate arm_cpu_props[] table
->   target/arm: named_cpu_model: Add ID register field helper functions
->   target/arm: named_cpu_model: Register Arm64 properties for host model
->   target/arm: named_cpu_model: introduce named CPU models for selected
->     CPUs
->   target/arm: named_cpu_model: writeback modified ID registers to KVM
->
->  hw/arm/virt.c                   |    8 +
->  target/arm/arm-cpu-frac.inc.h   |   34 +
->  target/arm/arm-cpu-models.c     |  214 ++++
->  target/arm/arm-cpu-models.h     |   43 +
->  target/arm/arm-cpu-props.c      |  259 +++++
->  target/arm/arm-cpu-props.h      |   36 +
->  target/arm/arm-cpu-props.inc.h  |  180 ++++
->  target/arm/arm-v8_4-a-v1.inc.h  |   22 +
->  target/arm/arm-v9_0-a-v1.inc.h  |   28 +
->  target/arm/cpu-features.h       |  232 +----
->  target/arm/cpu-idregs.c         |  232 +++++
->  target/arm/cpu-idregs.h         |  132 +++
->  target/arm/cpu-idregs.h.inc     | 1724 +++++++++++++++++++++++++++++++
->  target/arm/cpu-sysregs.h.inc    |    5 +
->  target/arm/cpu64.c              |    3 +-
->  target/arm/grace-v1.inc.h       |   17 +
->  target/arm/graviton3-v1.inc.h   |   16 +
->  target/arm/kvm-base-v1.inc.h    |   13 +
->  target/arm/kvm.c                |  167 ++-
->  target/arm/meson.build          |    7 +-
->  target/arm/neoverse-v1-v1.inc.h |   64 ++
->  target/arm/neoverse-v2-v1.inc.h |   64 ++
->  target/arm/trace-events         |    1 +
->  23 files changed, 3284 insertions(+), 217 deletions(-)
->  create mode 100644 target/arm/arm-cpu-frac.inc.h
->  create mode 100644 target/arm/arm-cpu-models.c
->  create mode 100644 target/arm/arm-cpu-models.h
->  create mode 100644 target/arm/arm-cpu-props.c
->  create mode 100644 target/arm/arm-cpu-props.h
->  create mode 100644 target/arm/arm-cpu-props.inc.h
->  create mode 100644 target/arm/arm-v8_4-a-v1.inc.h
->  create mode 100644 target/arm/arm-v9_0-a-v1.inc.h
->  create mode 100644 target/arm/cpu-idregs.c
->  create mode 100644 target/arm/cpu-idregs.h
->  create mode 100644 target/arm/cpu-idregs.h.inc
->  create mode 100644 target/arm/grace-v1.inc.h
->  create mode 100644 target/arm/graviton3-v1.inc.h
->  create mode 100644 target/arm/kvm-base-v1.inc.h
->  create mode 100644 target/arm/neoverse-v1-v1.inc.h
->  create mode 100644 target/arm/neoverse-v2-v1.inc.h
->
-> --
-> 2.52.0
->
+Best regards,
+-- 
+Abdelrahman Elbehery <elbeheri95@gmail.com>
 
 

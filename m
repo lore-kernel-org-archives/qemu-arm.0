@@ -4,87 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83E36CD4F4A
-	for <qemu-arm@archiver.kernel.org>; Sun, 17 May 2026 16:13:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D5A9CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:34:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOe7C-0008AR-Qh; Sun, 17 May 2026 12:13:18 -0400
+	id 1wOsUW-0000gd-2d; Mon, 18 May 2026 03:34:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wOe7A-00089s-Tk
- for qemu-arm@nongnu.org; Sun, 17 May 2026 12:13:16 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
+ id 1wOsUJ-0000fV-EY
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:07 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wOe77-0004Mq-Ll
- for qemu-arm@nongnu.org; Sun, 17 May 2026 12:13:16 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-48d102471a4so10081295e9.2
- for <qemu-arm@nongnu.org>; Sun, 17 May 2026 09:13:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
+ id 1wOsUH-0000Br-Hx
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:07 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-488ab2db91aso19817245e9.3
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779034391; x=1779639191; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=J4KmTFDxjt9peL1fIkMDgewvYMtRoTZEayRboPQgiV0=;
- b=huFx4EzgCrzZu1P1FaCq1FXyRfh8EzXXFONRvFlFOza7iTDbilsihhupTif9kGslgQ
- MbS3vW25KjXu17sRmGcuIRQiBc+JfYQp9z8JkuUWpxssXrQqHlwONZVaLQT+p9huKbw5
- Oo2i0qKjfa/tSkrqREMlx1JHB0vwwCbYnprnO2sDatBESQ80mfdqRP4p/yS0CUhn76Xa
- GiA9Aw3sQPB6fVnmBRqAtDd0Mzpu+g/kk0i1b7XdQ4/A7HBQBhnoVjbbDyv9spTq8bfw
- 6NmPZ0ZHCdXYdcdgiDqeYs3yGCd4JoT4LCVwEsjzvGtPLpr0iKS2IfrFD12UFZ7xkdMk
- RWlA==
+ d=gmail.com; s=20251104; t=1779089643; x=1779694443; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=kAgSRBIgRfg5Ci/kYkem6tx0tKkzNP30+dM14vaMmgA=;
+ b=ck1PzqB7kbNuRecxQXdSM/gsXKjXYkXS3j9kaZDieB0+PG5TFp6CugRAJEe9pYB5pJ
+ lAQ1UdAaZbEJQZOh2iUqn1xxgm3yABiKIXkqx9f35M6LSEJaaer9ZOf9tRobloRgPxe8
+ tQLAgOm7AytrT35rKm0ALw//XTRu+t1AjtZsKMnHKwEwqBpvacOlKqSqBoP+NA6WQSzP
+ ncXpaZpV9Y1/efMIutZdIe6RVEBlgQP1WCWvNYn/rwQevYW88Q6bR1goBTO5BiXPccAd
+ 8d18lu19GwkhhGaQTmo1+zsH8boRvPr8RcgdAYSvq4OZMwx/bg7pE2hazvATWIY4tGa9
+ dyhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779034391; x=1779639191;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=J4KmTFDxjt9peL1fIkMDgewvYMtRoTZEayRboPQgiV0=;
- b=TlhipoK8pTl3k8ansmT19jStHTRzXqkkK4LqAKym8LVFppWY6pXZf30p1qtc7xqWz9
- CnBtdJUKfcUmy2Rl/0KPhUa5nQ0imXpAUYc1YOs95uo9hNCbJhPk0eyGTf3SADS5UPWQ
- M0pTo1pPXknwRbO2CHjT4s3X/YsVCLJTJPFP20K/AfsJMe5OtzSr5zTQlMFKOrd39+WV
- 1XA5xVEWpfOmoJUVGnUydW4nSTesNSJMJgMu7e2xTIsrQnw6E/M2bcjwicXqkCvHYxlt
- lpGrf6Ti2pprCEMnZWhffqTN2j05Nu+7Jsxp6iyPjO7XekSoVPTTK0lZJSsdC/x7VEWt
- kQkg==
-X-Gm-Message-State: AOJu0YySk1rsvwQD/ADk34pVp55BlV/rQmrtjGAUL2+j/DtLDzTEoGLT
- Key/4HQ5+McDDksMoGn63E3769kE12xfJbsEFn98TrHyuolLGJUCoGIw6QUlzsUY5PfcWgwejvf
- Iyw1aw+Q=
-X-Gm-Gg: Acq92OE1MFMwbeIr9phuvulR7MXz/1QKwtI664n3MbKIDlWavR9lm+4OcpSDHQitk5i
- n8iSwU4Ss6KfCC2fwcEB2bL406jrG413qJwwF9LHb3+uoJVabdfzHcWPJqwGyhYFyVaIK2vKa+D
- K9yvhlwe/93HWTw/2Z8kfC0BFOlVw5n1JHgh33kpqubvquvzMYZKyEpvmSFwVQbp01Z04n83sP1
- gWVe7P9u0AZX9hggeSfIeyHioHQY2C/KmDB2Fq6CmkitjW8zl8hgT54daJ7uxlMrWMXsjINO+EI
- rfXoTmK1W4830KYhIw5QkvfnCd5RByLoGEPU2PDL+NM6Mljb+r4p34cQW8NHy67rYZJr+1Ga027
- cK3GAA1tAAeEf09pyEirSuiV712bCT5t2Sq7SKjfODs+uuHJz2CAOJ/bxfLSw1xFX4r5Rmo/kse
- wMWY78vgmCqmHLb1bq5LXJeM1Jopo/7SSYP2sgIGZfvYYJOYcMIPYLO10TLAkNwx6+vQ==
-X-Received: by 2002:a05:600c:c096:b0:48a:563c:c8d6 with SMTP id
- 5b1f17b1804b1-48fe5fd4b51mr129127675e9.7.1779034391275; 
- Sun, 17 May 2026 09:13:11 -0700 (PDT)
-Received: from [192.168.69.200] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48feaa2949asm88144885e9.1.2026.05.17.09.13.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 17 May 2026 09:13:10 -0700 (PDT)
-Message-ID: <9acb9e94-27f3-44a4-a8ab-f2cb67c75328@linaro.org>
-Date: Sun, 17 May 2026 18:13:08 +0200
+ d=1e100.net; s=20251104; t=1779089643; x=1779694443;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=kAgSRBIgRfg5Ci/kYkem6tx0tKkzNP30+dM14vaMmgA=;
+ b=Qlwt4agVrpP8AlgGCP4x/+dZTZ2F6im8cwY43FRtkyro5VivDCKOMp2KGSFMnFXNkT
+ 9cRmEh1YkeRywqtSlHKDznhRup3B0oHmzSQbkkQUbnyaSbekWGn5cpisbIxkbu9IJvKq
+ uBnJMqHY07IC98Zvre0Xk71nmNIWgLn/CAWcQVhbFFM3Lv3T92kO/q82Rk+mJoFpv2yu
+ WQ2RdAYcUP+ywbssOns/vc2OkHQmGapVltO4vmA4qeD4IJxkKLOzFvTNvG7pTZDTgiwi
+ PeQbHLjRanEABczfKh38aeJgUQmrN1kjL2moKBT6XAfIPX7nCmtS0egsJF41IXs+kv6E
+ oiNQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8fUwCev1MiohK08qPmh+7umllB6yBbULhqiogjHIetgAK8EE/0zFayD9zA6JuxK756A0HpgMSOwQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwNX371J4DEtKhao9WLtMfbQx7dZ+Mcf6ARxn/URZxjIOvUfEWQ
+ GyFJ/Ns8us443DuAM6jDesy0CdeaapRiFgJvXNoreuT0/RtvbRWAKCLl
+X-Gm-Gg: Acq92OEcp3PJk6c89UP02RrI5BZnHTf0F8HpQWR1Ir5TgRTNC+XH/pnpzHDbeMgN8H+
+ s0/BM215KEw1ZCzgy5dkPoDmMn50ynmZg8jcNujBr196D8bfUmryQ2VyPzb0UtAhJL/yjl8K29q
+ iNA5wcfAPHIwl0fE2GYFwNIWKlDUyz6ae4LEP+vCYLk1n/7ZJX3Qil8rXQ7xxGes95/Cc955OO6
+ 9gwHjv2O4i/zm31cm8QCuQ7D5IUk+iZOlwSzD9lFVNdtn4fWOEsZ8OmFGOuGsxWpi4+Qngki8A/
+ NUMriJh9ZfoQ4quAK1E0GTfnPaOGpeDa7zBnVTivb2t6JgrJQ0oV9zC1aFgJdkAVEsfEAJY/nku
+ FK7aYWE/I4opeMbPhChAcySxxI1H9XzpuHYLiB4kCjsRMS5eyZgYSyUF5pqWCoXXJtkHCbRdtz2
+ HlTqVQxHcwXwkm0hLWXqc8+R/oX/smWfPh8T9RR7HLAQGILA==
+X-Received: by 2002:a05:6000:2c07:b0:45e:75c5:1a6a with SMTP id
+ ffacd0b85a97d-45e75c51b5emr7245024f8f.33.1779089643289; 
+ Mon, 18 May 2026 00:34:03 -0700 (PDT)
+Received: from PC-DA2D10.beckhoff.com
+ ([2001:9e8:dc08:b284:85e6:f7f4:1a4a:4dfe])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 May 2026 00:34:02 -0700 (PDT)
+From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Yannick=20Vo=C3=9Fen?= <y.vossen@beckhoff.com>,
+ Hanna Reitz <hreitz@redhat.com>,
+ =?UTF-8?q?Corvin=20K=C3=B6hne?= <c.koehne@beckhoff.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Yannick Vossen <Y.Vossen@beckhoff.com>, qemu-arm@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org
+Subject: [PATCH v7 00/16] hw/arm: add Beckhoff CX7200 board
+Date: Mon, 18 May 2026 09:33:45 +0200
+Message-ID: <20260518073401.11279-1-corvin.koehne@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 02/63] fpu: Export floatN_minmax
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20260517003002.321430-1-richard.henderson@linaro.org>
- <20260517003002.321430-3-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260517003002.321430-3-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -102,16 +109,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 17/5/26 02:29, Richard Henderson wrote:
-> Allow target access to routines using the minmax flags.
-> Make the existing min/max wrappers inline.
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   include/fpu/softfloat.h   | 93 ++++++++++++++++++++++-----------------
->   fpu/softfloat.c           | 50 +++------------------
->   fpu/softfloat-parts.c.inc |  8 ++--
->   3 files changed, 62 insertions(+), 89 deletions(-)
+From: Corvin Köhne <c.koehne@beckhoff.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Hi,
+
+Beckhoff has build a board, called CX7200, based on the Xilinx Zynq A9
+platform. This commit series adds the Beckhoff CX7200 as new board variant to
+QEMU.
+
+The emulation is able to successfully boot an CX7200 image. The image includes
+some self tests executed on every boot. Only the cache self test fails due to
+QEMU emulating the cache as always being coherent. The self tests include f.e.:
+
+* Network
+* Flash
+* CCAT DMA + EEPROM [1]
+* TwinCAT (Beckhoff's automation control software [2])
+
+[1] https://github.com/beckhoff/ccat
+[2] https://www.beckhoff.com/en-us/products/automation/
+
+YannickV (16):
+  hw/dma/zynq-devcfg: Handle bitstream loading via DMA to 0xffffffff
+  hw/arm/zynq-devcfg: Prevent unintended unlock during initialization
+  hw/dma/zynq: Ensure PCFG_DONE bit remains set to indicate PL is in
+    user mode
+  hw/dma/zynq-devcfg: Simulate dummy PL reset
+  hw/dma/zynq-devcfg: Indicate power-up status of PL
+  hw/misc: Add dummy ZYNQ DDR controller
+  hw/misc/zynq_slcr: Add logic for DCI configuration
+  hw/misc: Add Beckhoff CCAT device
+  hw/block/m25p80: Add HAS_SR_TB flag for is25lp016d
+  hw/arm/xilinx_zynq: Split xilinx_zynq into header and implementation
+    files
+  hw/arm/xilinx_zynq: Add flash type as machine class property
+  hw/misc/zynq_slcr: Add CPU clock outputs and ratios
+  hw/timer,cpu: Add Clock API support to A9MPCore timers
+  hw/arm/xilinx_zynq: Make PS frequency configurable
+  hw/arm: Add new machine based on xilinx-zynq-a9 for Beckhoff CX7200
+  docs/system/arm: Add support for Beckhoff CX7200
+
+ MAINTAINERS                         |  11 +
+ docs/system/arm/beckhoff-cx7200.rst |  62 ++++
+ docs/system/target-arm.rst          |   1 +
+ hw/arm/Kconfig                      |   8 +
+ hw/arm/beckhoff_CX7200.c            |  80 ++++++
+ hw/arm/meson.build                  |   1 +
+ hw/arm/xilinx_zynq.c                |  54 ++--
+ hw/block/m25p80.c                   |   3 +-
+ hw/cpu/a9mpcore.c                   |  12 +
+ hw/dma/xlnx-zynq-devcfg.c           |  27 +-
+ hw/misc/Kconfig                     |   6 +
+ hw/misc/beckhoff_ccat.c             | 339 ++++++++++++++++++++++
+ hw/misc/meson.build                 |   2 +
+ hw/misc/xlnx-zynq-ddrc.c            | 421 ++++++++++++++++++++++++++++
+ hw/misc/zynq_slcr.c                 |  71 +++++
+ hw/timer/a9gtimer.c                 |  18 +-
+ hw/timer/arm_mptimer.c              |  20 +-
+ include/hw/arm/xilinx_zynq.h        |  38 +++
+ include/hw/cpu/a9mpcore.h           |   1 +
+ include/hw/misc/xlnx-zynq-ddrc.h    | 147 ++++++++++
+ include/hw/timer/a9gtimer.h         |   1 +
+ include/hw/timer/arm_mptimer.h      |   2 +
+ 22 files changed, 1292 insertions(+), 33 deletions(-)
+ create mode 100644 docs/system/arm/beckhoff-cx7200.rst
+ create mode 100644 hw/arm/beckhoff_CX7200.c
+ create mode 100644 hw/misc/beckhoff_ccat.c
+ create mode 100644 hw/misc/xlnx-zynq-ddrc.c
+ create mode 100644 include/hw/arm/xilinx_zynq.h
+ create mode 100644 include/hw/misc/xlnx-zynq-ddrc.h
+
+-- 
+2.47.3
+
 

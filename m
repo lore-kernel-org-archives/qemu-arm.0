@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E3C1CD4F4A
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:37:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE528CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 07:38:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOsUl-0000ob-OM; Mon, 18 May 2026 03:34:35 -0400
+	id 1wOsV6-0000xP-2N; Mon, 18 May 2026 03:34:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUO-0000g9-TX
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:17 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1wOsUS-0000gR-5N
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:19 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wOsUM-0000Ia-1e
- for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:11 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-48984d29fe3so21019935e9.0
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:09 -0700 (PDT)
+ id 1wOsUO-0000Oo-Lx
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 03:34:15 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-43d77f6092eso915136f8f.2
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 00:34:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779089648; x=1779694448; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1779089651; x=1779694451; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1JNG0WpLJF3nkTQNm/OVMSOxMuYSpcxBZJPbT2YaBCM=;
- b=VQIaSU8DQ9EPNuTg9FBpR3c71Zml22mVrrRk/mB74W7wreio2esRZc+09Hu7nlQu9l
- +8UaB/Of5Elf5/p6UqFBF19L9ja73XofyQELu4l+qyblP3+bTgN9pLURbXdeDzAqrEYA
- bOuOJLsOxRaHhEs9Qi4ep6iVNfbjnfA3qdXCw/D83t/s0QgftP1TINqmDFFoYHDkNyGg
- 9y74nP52qyfd5R+ma6Am25GV8Vi1A0BZ7Qm9//htZzs5A7EpSZt4jbsZ6Sva2I6cf0Cb
- DZeztHEWcbVoS1FKrtR0dFBZ1/rYtayk5ch789uoMuXOadWfgGoWlykySOUcr+WSq57e
- trMQ==
+ bh=k6VI4nokCfZ+LKIGnO4eT2U19gP+31CsGFQKC59urGA=;
+ b=r6TrSA8c61wddicWqBExcNKQvVwiudMKMIm4ebFTOO99pLgvwFFaPERlHXdBB95iKJ
+ pcHGzMyuivOpKEPjQEaom3+0kXo+68sp8Fx1Gh9xo0vbiWEweH+ixe+oBP7mkskifORI
+ uXJ33Qty4wo/sBO3a9iAkX5smqkYgMEJLcuVoxwCitXZZ8+SU+MDcTOl4S6PMgGULOCo
+ mDj3Tfkmq0Yghcg2Pt6ORa1lKBRNSRounaRFnVbyMijXWyTrQh1TeWbewPjFJpY9NtTX
+ oTwIOPR+jHOmilS3DtM2Cvd/VaamaTIu40/9dqMhiaU4fizdHPGd+fZvGepHGMeq2qAD
+ E3Fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779089648; x=1779694448;
+ d=1e100.net; s=20251104; t=1779089651; x=1779694451;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=1JNG0WpLJF3nkTQNm/OVMSOxMuYSpcxBZJPbT2YaBCM=;
- b=XLb0g1GF2S76/d16g7siV0msxqg3bfKr7zYW/BUjodHoxiX92ePwA2CVCt15hUYnKB
- Zh433mzVNob5GXeLIEMtMy1+mkKmr1u3aVjr8znm0gig3keWSVm/XOclA4is4n1DOWnZ
- GGaeC9isivv5iaoz1ubxYgvscDz9DOu2L1LTWPFXJ6YZqQG2XUHYAD6mCEjOnQ1l9ex3
- 1uCnPPZ/o5ccYZVKQrve8WELRcD9EnSlFPFntd+bWq/OzbMwhzWnwv5jHU27lM7ZsqgN
- 98SI9wDsH69f5HCLWMHVWdtNk9S4Ve1nTJ08J7NYE2BPhubokWBEcKsapQuj/rB88kiI
- wurQ==
+ bh=k6VI4nokCfZ+LKIGnO4eT2U19gP+31CsGFQKC59urGA=;
+ b=oEDQa4390ekYwktHaEsiYz4ZEo+FXm+l5DqMnKzeZrpmaldwvU76hhrPsGVINW3UtJ
+ YltHhafhm3agzqO+xL3D8gnyLZf7PEFxpIGVApBEMiF+aGS2qKpZbBdVSdTUUQyPObg0
+ whU47LOwUHWgiVXLiAvFFHuhZmVdwIiX8Soe1gZffoD9aVrTj+SL3QHSV7h/09G7UQvu
+ y2NaSVN/p6NFoaCQ5LdltkzXbVQWQkGanFUh2Iho8HU17JZ1Roi70uGoz0icegZONka1
+ 6t9p1XleFzDOlyoNPKbNInO+YK+WucYMAfOpX4pg0X0HOIAWOdLaKxNTSVY5KpU6zAm1
+ fqMA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+nADaf/PDi/dpJh4yJBALkZGRhPUXJMy1USwM4IP8/N+jxFqEi3P//7QvDBRT5Ov7z/Aj57BaZog==@nongnu.org
-X-Gm-Message-State: AOJu0YyjNinMFOJRFx7CkX0LmfzeBV3PsZlwIGWIdiGyXwGLJwN/vsm1
- 03BwAnWksSZMiK6/mlTJ/HuXkKNtV4FcFzZUv8hFqi0lyLVlJiE2Nw4O
-X-Gm-Gg: Acq92OGlWaetsnh5nllgC8vOiTG4uy6crH55CQyXsJEWds7UvihBsM1J3M1UYzjwqyv
- fRx791y+cuBpurJrZWeNBS0Os19J1vARf9amBZ1seudZilsVMIMbeJrIszrc5GApTSP+fSAw84z
- O6hODmgLvZSCiVLMs9xYHhF1L/GQnUri4A77A9pjwkg+TZRmqqsgKSNkB/e6jIURfjqFjTMWYNl
- 5E0+HnFPyFYcrRDS69yhJvk6HwDkH+ZXJ8Z3mvx6YXsacp49z+8e+ezSR176SLxnMXxu1CC70zs
- B6f1DLQ4QL7MNv2FIg6f3Vf8i5Zinhdq+NUTQ9+EEcXI0GRnTBcm7hSWo39Dlk1DT42CTwnRiB1
- fvJs1ajpmW59NMUnIYCwIprMhRQJ/1YpL1oX/Nm+Dyuh1naSFPjSWX1mSwEbA6b3jAhaQot2FwD
- 2k0d3zPYoPQszRGiSdCLsdyvm+60BU7dNVrrPSVn21w+dpcw==
-X-Received: by 2002:a05:600c:4f13:b0:485:30d4:6b9e with SMTP id
- 5b1f17b1804b1-48fe6328bb7mr233326225e9.21.1779089648389; 
- Mon, 18 May 2026 00:34:08 -0700 (PDT)
+ AFNElJ8DpLBAJyQhEzKrf4bOaAeRkhX8V7Sdo40BgCBOne/neKG+MPB6wwuAQ7/SR5mL0qTPVxcPjyKyiw==@nongnu.org
+X-Gm-Message-State: AOJu0YxHCoSL3wu4nRLrYZRCGcEiOOwp4R1fiLvE0ipczULOzKAmbEp9
+ s0Nq3c0ExIBShdLb7wjySn9vzqsOX3aLwanWIP1nIeMnDAycAHxdeO4g
+X-Gm-Gg: Acq92OHrp8eyHOcPROURteP4Ksoghf5LKuL6hRnhl8yx+7nAFyU1UWjP/pC0NrZIO5l
+ R9pHlk48rH0XIt0X7TvidKzS9EAKALpSjynv1okGElEwzOfVLfLiCCq5BxU54PLRNKTwRMgxjiL
+ d2J9F1gtOHI4PnasbhBRSfgjO4dN9g7T1+lT0uMlk5CJWLoAOYgrYnyK3/yCmfHD8ESds/aPf+G
+ 2xPQCokTO+aUFxJl48pQ7U5Vb5R8Pv877m8JI118hWUJG88YeOuGjb0biaI6VL+sfg0b6DaJGEq
+ WAgGIO2uK8/0Ln0GL/oqyNbYXZXriCcuVSMtNZvi0/M7GxyBWLUcHQikZryIA5gnLSy2EsFyQjC
+ sS3lDekfOOls70DvSndr0NKcNHENn7vdzOkBHp9gfI9j54ZH0kXzLw53oyadnbJSA7Nfttha96T
+ L4T9e4II+Lb1PvdRk9+G9kVJqxcyQvG3fFGiJDEwFHceLyuQ==
+X-Received: by 2002:a05:6000:603:b0:45d:3aa3:7f76 with SMTP id
+ ffacd0b85a97d-45e5c5ebd5amr22226900f8f.33.1779089650726; 
+ Mon, 18 May 2026 00:34:10 -0700 (PDT)
 Received: from PC-DA2D10.beckhoff.com
  ([2001:9e8:dc08:b284:85e6:f7f4:1a4a:4dfe])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.07
+ ffacd0b85a97d-45d9ec3b18fsm32590222f8f.11.2026.05.18.00.34.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 May 2026 00:34:07 -0700 (PDT)
+ Mon, 18 May 2026 00:34:10 -0700 (PDT)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -80,16 +80,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Kevin Wolf <kwolf@redhat.com>, Alistair Francis <alistair@alistair23.me>,
  Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org,
  "Edgar E. Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH v7 05/16] hw/dma/zynq-devcfg: Indicate power-up status of PL
-Date: Mon, 18 May 2026 09:33:50 +0200
-Message-ID: <20260518073401.11279-6-corvin.koehne@gmail.com>
+Subject: [PATCH v7 07/16] hw/misc/zynq_slcr: Add logic for DCI configuration
+Date: Mon, 18 May 2026 09:33:52 +0200
+Message-ID: <20260518073401.11279-8-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260518073401.11279-1-corvin.koehne@gmail.com>
 References: <20260518073401.11279-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,30 +114,94 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-It is assumed, that the programmable logic (PL) is always powered
-during emulation. Therefor the PCFG_POR_B bit in the MCTRL register
-is set.
+The registers for the digitally controlled impedance (DCI) clock are
+part of the system level control registers (SLCR). The DONE bit in
+the status register indicates a successfull DCI calibration. An
+description of the calibration process can be found here:
+https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/DDR-IOB-Impedance-Calibration
+
+The DCI control register and status register have been added. As soon
+as the ENABLE and RESET bit are set, the RESET bit has also been toggled
+to 0 before and the UPDATE_CONTROL is not set, the DONE bit in the status
+register is set. If these bits change the DONE bit is reset. Note that the
+option bits are not taken into consideration.
 
 Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 ---
- hw/dma/xlnx-zynq-devcfg.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/misc/zynq_slcr.c | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
 
-diff --git a/hw/dma/xlnx-zynq-devcfg.c b/hw/dma/xlnx-zynq-devcfg.c
-index 6b1d96ff80..5608460dc7 100644
---- a/hw/dma/xlnx-zynq-devcfg.c
-+++ b/hw/dma/xlnx-zynq-devcfg.c
-@@ -333,7 +333,8 @@ static const RegisterAccessInfo xlnx_zynq_devcfg_regs_info[] = {
-        /* Silicon 3.0 for version field, the mysterious reserved bit 23
-         * and QEMU platform identifier.
-         */
--       .reset = 0x2 << R_MCTRL_PS_VERSION_SHIFT | 1 << 23 | R_MCTRL_QEMU_MASK,
-+       .reset = 0x2 << R_MCTRL_PS_VERSION_SHIFT | 1 << 23 |
-+                R_MCTRL_PCFG_POR_B_MASK | R_MCTRL_QEMU_MASK,
-        .ro = ~R_MCTRL_INT_PCAP_LPBK_MASK,
-        .rsvd = 0x00f00303,
-     },
+diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+index faae98fa02..0ae5d607be 100644
+--- a/hw/misc/zynq_slcr.c
++++ b/hw/misc/zynq_slcr.c
+@@ -180,6 +180,12 @@ REG32(GPIOB_CFG_HSTL, 0xb14)
+ REG32(GPIOB_DRVR_BIAS_CTRL, 0xb18)
+ 
+ REG32(DDRIOB, 0xb40)
++REG32(DDRIOB_DCI_CTRL, 0xb70)
++    FIELD(DDRIOB_DCI_CTRL, RESET, 0, 1)
++    FIELD(DDRIOB_DCI_CTRL, ENABLE, 1, 1)
++    FIELD(DDRIOB_DCI_CTRL, UPDATE_CONTROL, 20, 1)
++REG32(DDRIOB_DCI_STATUS, 0xb74)
++    FIELD(DDRIOB_DCI_STATUS, DONE, 13, 1)
+ #define DDRIOB_LENGTH 14
+ 
+ #define ZYNQ_SLCR_MMIO_SIZE     0x1000
+@@ -193,6 +199,8 @@ struct ZynqSLCRState {
+ 
+     MemoryRegion iomem;
+ 
++    bool ddriob_dci_ctrl_reset_toggled;
++
+     uint32_t regs[ZYNQ_SLCR_NUM_REGS];
+ 
+     Clock *ps_clk;
+@@ -331,6 +339,8 @@ static void zynq_slcr_reset_init(Object *obj, ResetType type)
+ 
+     DB_PRINT("RESET\n");
+ 
++    s->ddriob_dci_ctrl_reset_toggled = false;
++
+     s->regs[R_LOCKSTA] = 1;
+     /* 0x100 - 0x11C */
+     s->regs[R_ARM_PLL_CTRL]   = 0x0001A008;
+@@ -418,6 +428,8 @@ static void zynq_slcr_reset_init(Object *obj, ResetType type)
+     s->regs[R_DDRIOB + 4] = s->regs[R_DDRIOB + 5] = s->regs[R_DDRIOB + 6]
+                           = 0x00000e00;
+     s->regs[R_DDRIOB + 12] = 0x00000021;
++
++    s->regs[R_DDRIOB_DCI_CTRL] = 0x00000020;
+ }
+ 
+ static void zynq_slcr_reset_hold(Object *obj, ResetType type)
+@@ -554,6 +566,25 @@ static void zynq_slcr_write(void *opaque, hwaddr offset,
+                 (int)offset, (unsigned)val & 0xFFFF);
+         }
+         return;
++
++    case R_DDRIOB_DCI_CTRL:
++        if (!FIELD_EX32(val, DDRIOB_DCI_CTRL, RESET) &&
++            FIELD_EX32(s->regs[R_DDRIOB_DCI_CTRL], DDRIOB_DCI_CTRL, RESET)) {
++
++            s->ddriob_dci_ctrl_reset_toggled = true;
++            DB_PRINT("DDRIOB DCI CTRL RESET was toggled\n");
++        }
++
++        if (FIELD_EX32(val, DDRIOB_DCI_CTRL, ENABLE) &&
++            FIELD_EX32(val, DDRIOB_DCI_CTRL, RESET) &&
++            !FIELD_EX32(val, DDRIOB_DCI_CTRL, UPDATE_CONTROL) &&
++            s->ddriob_dci_ctrl_reset_toggled) {
++
++            s->regs[R_DDRIOB_DCI_STATUS] |= R_DDRIOB_DCI_STATUS_DONE_MASK;
++        } else {
++            s->regs[R_DDRIOB_DCI_STATUS] &= ~R_DDRIOB_DCI_STATUS_DONE_MASK;
++        }
++        break;
+     }
+ 
+     if (s->regs[R_LOCKSTA]) {
 -- 
 2.47.3
 

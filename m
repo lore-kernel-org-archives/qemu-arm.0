@@ -4,141 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80C19CD4F50
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 16:47:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9AE9CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 17:48:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wP17u-0005yM-QW; Mon, 18 May 2026 12:47:36 -0400
+	id 1wP24g-0005UL-O4; Mon, 18 May 2026 13:48:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wP17C-0005lX-CO
- for qemu-arm@nongnu.org; Mon, 18 May 2026 12:46:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wP17A-0007Sn-No
- for qemu-arm@nongnu.org; Mon, 18 May 2026 12:46:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779122807;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=yUROuqmfqDJ1TjIlpPHC8LVoh6TGZtVCmx8V474eWHs=;
- b=huz/CfH0VfVypqyOZSLqh/xNmY/b8giucj+0ce0X4IJjVc5fxyhzYmx6u2hpvdmjhBdOi/
- 0LGFwoxN5TAXSqeNVGockuVZy3FlJBpOVLK29QWhlZ7L65OeAOTbdV75hQvgSBFhzU4zhi
- 5ZV+j2fQnJ1pI4lJYC9aowUVf+rodkE=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-79-ZqYhSVoPOL-YgJGtb3oN3Q-1; Mon, 18 May 2026 12:46:45 -0400
-X-MC-Unique: ZqYhSVoPOL-YgJGtb3oN3Q-1
-X-Mimecast-MFC-AGG-ID: ZqYhSVoPOL-YgJGtb3oN3Q_1779122805
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-44f56d5523eso2711136f8f.1
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 09:46:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779122805; x=1779727605;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wP24Y-0005Sq-NU
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 13:48:12 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wP24X-0003mQ-0P
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 13:48:10 -0400
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-2babfd18435so10564115ad.1
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 10:47:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1779126474; x=1779731274; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=yUROuqmfqDJ1TjIlpPHC8LVoh6TGZtVCmx8V474eWHs=;
- b=hr9DORywxWIbtT4zUfiJ+sAKu/8yTq60CaCT5EjSnhZ3yiae6tRTe4XHCiFMgSVcQ2
- AKSKvLpsx1GaY4OP9Q3A0JUaqYGoqchsNGydAI35iCuEBRLcvPSdbZR+07l2efweU0DW
- Gn8cOSLhmvt1dBPYNuyvTwh0l/+OiogugxjPmlRFFpIqaVTIK/wiCSiB1W0zbXNtBs2w
- f3y6g6JhGSDNOIOFw013arunPqBlpYWXDugYLrMK2eJpcKtJKYSelE76sVjHsXsFJ4Re
- 4c4aASYlR3Djp+NVnPHhOXFPQgK35inbbxuKGrseyElQ8QOFR4DjxHN60heSBe/RLOBx
- w2DQ==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+zAQFR0FOh5L42bNlz/DfUxz/q9u9oamA56pygr69y1kG6/Ux4KAi+99/RIJaH0d6L8Ds68EV/2g==@nongnu.org
-X-Gm-Message-State: AOJu0YzaNkv6LpafCuHTcY6HiCCBuyJjjxQwLVlSseMvXTOLWQWLQF8k
- 3/llm3DhYiFyN7QleVRhS7eT8vpQ1ocvpu0Z54gvcbzdq4xNAVDnhRkItnGiGpKYMncrm+IOxMd
- 75CMCeMUODOss8U2ODlk4ltZ81aRsd9z5HDVAmhSo3ckV1zIleegJTQ==
-X-Gm-Gg: Acq92OF2HkkJbzgP9Jcx+MSZyP3je0cLUSFIE1Yj6KVBoIAvcOvQZWogRkdiavDECAH
- TUbC7La7F2vXsQUmvBaOFCo79DaMdx3DEUVfzB0E9eQ+F5U7kplAchW+Okc4gtTCl62l8FyIi2N
- Bysg1Ma9VWklymLP0HsQvPFwrs7wf0Fjd2k3Hd6ohrsbt7SZcLNHJPtbN+3bR5SG4eLPwai86r9
- lytCyiMPHBZjujdNNv5mKnphkfT4+ZIUCFMa3yLYHX+4xOIicCrL5wpFCV7olrU8ZKhEG+xn+St
- 0+2KK5CjDCzkQtURMlgN4zYfxZ8RdbYimBo599TCgI+kax++g+uA8LYgi2twtqww1mWFu+r8mzM
- iQPvv+ape11MDlbJRsw==
-X-Received: by 2002:a05:6000:230d:b0:45d:b14b:2412 with SMTP id
- ffacd0b85a97d-45e5c362c56mr25416250f8f.6.1779122804707; 
- Mon, 18 May 2026 09:46:44 -0700 (PDT)
-X-Received: by 2002:a05:6000:230d:b0:45d:b14b:2412 with SMTP id
- ffacd0b85a97d-45e5c362c56mr25416211f8f.6.1779122804332; 
- Mon, 18 May 2026 09:46:44 -0700 (PDT)
-Received: from [192.168.0.9] ([47.64.114.83]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45e7c22d8b7sm9558470f8f.6.2026.05.18.09.46.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 May 2026 09:46:43 -0700 (PDT)
-Message-ID: <0d152a0a-a387-445f-b359-19d23504083f@redhat.com>
-Date: Mon, 18 May 2026 18:46:42 +0200
+ bh=3naiOUzSW9k2jlFfjxq9fMkZ6HgTIWq3KlJZR85M7GY=;
+ b=gZzTOvRNi5RROhTmsP+ZvKHfCE1CD+8mlws0IgQ4jtJFasg5qqU2PFz+/epeT05dv0
+ Y5D+XypN9kRvlwXIEv9WnKGHRQ5pqSmp1Cn7FGGOFvAXA+1mM4ziiIhydAsI7x6OE1qp
+ tuFXg6uqtuX4xb+80kfyWBhlfQ2d8V7MYGLJ2GeTY5x/dD4BTESzYzsDbUivBgRVqiue
+ Mx04zdxdka4IclMTbnCZ9lUTSuAkDQeaUnbW1PzCmcD00lMRPQbq5JtO3jwTrHVtv1jB
+ 1XtEDi2nOHj5mV/LRK2hAbsPOBvOgMCJF8pLKzpl0t5CiFY3IFAZPybKZN/fXZ4tajTT
+ 0gJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779126474; x=1779731274;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=3naiOUzSW9k2jlFfjxq9fMkZ6HgTIWq3KlJZR85M7GY=;
+ b=Bzw67ErTU0T4bwnfoIlZxnAAWSxexrrAe0F4qe0fyKFnQofHICYd1tFKGe1VAy7UJ+
+ vfAors77B7jx/tIbivvJPq1lJg72Uw8knU6kjCFVHS2Q+i29WsZpe862Taj9P0tgYhge
+ biF+GTvSKBZWSK1eITrARZLqp5nGZVBGihD5y2BJa3RRWL0hWsrIs/fGqmbSrcrVOd+W
+ ubQOpTqnnWnrKeS7MHNf3Of0uM0NMyeTKz2vxZKhR55jP3MDUwTLIdZujjxRy7yBd2eC
+ zPEh6e0VJ3GYDjxtGZmfWBupsnOn/NizSgUwZw2OR+lsFma7WSe9Wevn19YHco/Tlatf
+ KZLA==
+X-Gm-Message-State: AOJu0YzurfFnmIOEd8GolmtQy3utxZV6vIXeH7nW733adz2ZLqYk74fB
+ 1TnvKAn/r8keuVVNU8sKgmAjGK8xaWGWvuLZiS51iPmdGVdUn6k4to4MqQjDar9xNQI=
+X-Gm-Gg: Acq92OGtJI6X7yZbCcwn4mN5RfCBG3jJevZKpj2oMksfXAMMZS4riARKyl3EMy2w5T6
+ 2TqE4AEhWnhPkEqrPK7hiBZC2cZHb7DVOo2xo3VHsLC9uq2rawADzbJyscWkexPxPOVeBbv8cFh
+ YQDUTtVEDzTNLI46j0tHIM6OenBtX8o2FAMZLFfi20nlxcRheParTspSQjeLCK1gC3I8A/DvLq3
+ be5uCzKAlNF/zbxS1jcBR5gb5IozTucKL8IprBI2zUSKBRaUHWUzjK8AiY7CUucSnhZjag1WB3V
+ 0pzSaFVho8R82pW50DHS53vqmOiz4Zb5JzWLCzuBuVLU3w9vPWE48IsUMh8cjHR/4cNa4J0hDX+
+ CraQ+M4TU9WL5sYWotMt7A/ghPTl83PKxI4AgLRtqI8SLJxrre4UTGs7deSy1PCCFTmrQsG2oyL
+ bodrKa1FxR8siipSSqAWFTqRjiBgCp
+X-Received: by 2002:a17:902:ca8d:b0:2b9:ff02:a159 with SMTP id
+ d9443c01a7336-2bd7e83177emr122483715ad.18.1779126474400; 
+ Mon, 18 May 2026 10:47:54 -0700 (PDT)
+Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2bd5d12e38dsm157334905ad.77.2026.05.18.10.47.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 May 2026 10:47:54 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v2 4/4] target/arm: Enable FEAT_CMPBR for -cpu max
+Date: Mon, 18 May 2026 10:47:50 -0700
+Message-ID: <20260518174750.660258-5-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260518174750.660258-1-richard.henderson@linaro.org>
+References: <20260518174750.660258-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] tests/functional/aarch64: Bump up timeout on vbsa
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-References: <20260518160440.1037245-1-peter.maydell@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20260518160440.1037245-1-peter.maydell@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: APtHtx56B-bQTiHII-Is_JftJ9uPdeJUqGiHKbxFqkY_1779122805
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -154,26 +98,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 18/05/2026 18.04, Peter Maydell wrote:
-> On a debug build, the virt_vbsa functional test takes about 2 minutes to
-> run on my machine, so it tends to time out. Bump the timeout to 4 mins.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   tests/functional/aarch64/meson.build | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aarch64/meson.build
-> index 9803f66299..e81afd6c39 100644
-> --- a/tests/functional/aarch64/meson.build
-> +++ b/tests/functional/aarch64/meson.build
-> @@ -17,6 +17,7 @@ test_aarch64_timeouts = {
->     'tuxrun' : 240,
->     'virt' : 360,
->     'virt_gpu' : 480,
-> +  'virt_vbsa' : 240,
->   }
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ linux-user/aarch64/elfload.c  | 1 +
+ target/arm/tcg/cpu64.c        | 2 +-
+ docs/system/arm/emulation.rst | 1 +
+ 3 files changed, 3 insertions(+), 1 deletion(-)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+diff --git a/linux-user/aarch64/elfload.c b/linux-user/aarch64/elfload.c
+index 3af5a37776..cebcf7cea4 100644
+--- a/linux-user/aarch64/elfload.c
++++ b/linux-user/aarch64/elfload.c
+@@ -170,6 +170,7 @@ abi_ulong get_elf_hwcap(CPUState *cs)
+     GET_FEATURE_ID(aa64_rcpc_8_3, ARM_HWCAP_A64_LRCPC);
+     GET_FEATURE_ID(aa64_rcpc_8_4, ARM_HWCAP_A64_ILRCPC);
+     GET_FEATURE_ID(aa64_gcs, ARM_HWCAP_A64_GCS);
++    GET_FEATURE_ID(aa64_cmpbr, ARM_HWCAP_A64_CMPBR);
+ 
+     return hwcaps;
+ }
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index 649d854a65..0c00074c4f 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -1262,7 +1262,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+     t = FIELD_DP64(t, ID_AA64ISAR2, MOPS, 1);     /* FEAT_MOPS */
+     t = FIELD_DP64(t, ID_AA64ISAR2, BC, 1);       /* FEAT_HBC */
+     t = FIELD_DP64(t, ID_AA64ISAR2, WFXT, 2);     /* FEAT_WFxT */
+-    t = FIELD_DP64(t, ID_AA64ISAR2, CSSC, 1);     /* FEAT_CSSC */
++    t = FIELD_DP64(t, ID_AA64ISAR2, CSSC, 2);     /* FEAT_CSSC, FEAT_CMPBR */
+     t = FIELD_DP64(t, ID_AA64ISAR2, ATS1A, 1);    /* FEAT_ATS1A */
+     SET_IDREG(isar, ID_AA64ISAR2, t);
+ 
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index 8cd7fe7b00..300ccec7ea 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -35,6 +35,7 @@ the following architecture extensions:
+ - FEAT_CCIDX (Extended cache index)
+ - FEAT_CHK (Check Feature Status)
+ - FEAT_CMOW (Control for cache maintenance permission)
++- FEAT_CMPBR (Compare and Branch instructions)
+ - FEAT_CRC32 (CRC32 instructions)
+ - FEAT_Crypto (Cryptographic Extension)
+ - FEAT_CSSC (Common Short Sequence Compression instructions)
+-- 
+2.43.0
 
 

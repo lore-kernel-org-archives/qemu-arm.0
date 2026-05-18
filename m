@@ -4,103 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DF38CD4F50
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 13:29:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18601CD4F4A
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 13:56:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wOy1p-0000VH-UH; Mon, 18 May 2026 09:29:07 -0400
+	id 1wOyST-00023V-Qh; Mon, 18 May 2026 09:56:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <elbeheri95@gmail.com>)
- id 1wOukF-0005oT-Hm
- for qemu-arm@nongnu.org; Mon, 18 May 2026 05:58:43 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <elbeheri95@gmail.com>)
- id 1wOukD-0007nU-0N
- for qemu-arm@nongnu.org; Mon, 18 May 2026 05:58:43 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-4585a116a4aso1632386f8f.3
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 02:58:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779098318; x=1779703118; darn=nongnu.org;
- h=cc:to:message-id:content-transfer-encoding:mime-version:subject
- :date:from:from:to:cc:subject:date:message-id:reply-to;
- bh=lWnpI8K2Mvl9ynhlYEigGDky9pIVwx8nFFsIb5PVaXo=;
- b=aiIWOZ7zuRwXe22gm9oSz9pjQtGeu2h5bFStrp8hbqKIQ7l79UA+vI7xlbLdc6aK6A
- RFSjRP1iOwnkme1ywLdNm8CA50eWysdstozprgRndCZ9jtFtuTLns8vxUt7vVe5l8a54
- nUlwcs5pLtM304rlN/qcDRmGseLqVsBKx6khXZPDLVn0MZaC0O79sr4EmA1h6YAjeO36
- wlY8rdvoY9plltxoKGyKDEBVf6N0Vrqgbdu4/rS+mqqjDhoGWf5vRT3NWA98zXWap82b
- rXpNS2gN255oa8KFjYFwhfNZhk4hKrAWCIqYbsUlXz0QjnDaVwj/F7d+t9ypwn97uQNi
- 943A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779098318; x=1779703118;
- h=cc:to:message-id:content-transfer-encoding:mime-version:subject
- :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=lWnpI8K2Mvl9ynhlYEigGDky9pIVwx8nFFsIb5PVaXo=;
- b=qXC7qFialXFcmUQg7qU9ynRKexAr0eg5qaFWphG3+Pns833vOy3FH3DRoIcNjn1BV+
- /05r+T9QSEor+tLw1T+iXIbnV+Q0aV5QLxcxTyyfdbvfiDFFSYEJ8xL7I1SvsCTveMq6
- KgZuYTYGVmHoEHuRfmnYkd4TWN+RSQTWw2WQYZc6Bt2x4NLGseuK1dB+lFxdQ0samoHj
- etg941h0l/7JA2oZsrdYCSTyleMR83WUmzo76d8KAdqamc2v6dI2HSXzUS4AyTfi0iJv
- 4qsYskAatqghgL4kEZnr3kowSCLbAwdy2OYSS+gVR3OZkyDWBLkmQOCExOJSJ2xT1tHN
- /Jww==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9FVfgCYpAmVcTCbnDed4zAo3a9uNPOyryBMHgNuMJqxluf8muRshUz/FtxQw/PVIolp0T/38gHzQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yzepm8Y+Kwwk35rhgakdLaxqCm8kIrLu9Lj2NuOQFg5U0dDuBpk
- mt/8/QcJ1sgizgCEFqLIUnC8wHIAgpS48CTUZJm5YD5dJIgGRKWBbacT
-X-Gm-Gg: Acq92OHpocmuZ47KpaaJqRVAUID5lopivikk87+tE7ImnVxr13Cft3UgixFWdal9Css
- pwBV2/R61H/0Urjk7l9cDzT41k4ZdOb901lv4uAlMUzyF6tcFzkU0wu9JIU9ekI+zIaYeGBthOR
- PN2xenUeg4Nu4wGNt3lRHzejFGl/ES3yqQVywYyX2J/NSN6uKxB1gtvP51OG5ZSIl/Sh2MoQS1F
- 38R9dS4P+WFJInrr64y9nwFkgjRzKuE/uN0c8kAf4osNitFwd+UF2TxK1ziGVhpNpAca2JuG5R7
- oT81/vsYV4snWaGwwFMp/kinNL3K1rXw8SQDHVVrHdQ5/DY+ZQPJ1W73+SBnPVeFRmEaRMhPSPe
- eqw9dCWYpYugr/6zhjrojAgsprM6901ww0njxfc1ikYaXEpxZHE8tWaouKxX3VHJbT8qAL1+vAe
- 3UzqwPWfmw8Xm0VBTSpWAsNhfYQzLW1Kcy5v62YYW8ORDWt8sX8Mk3rt5hypYySnaq0w==
-X-Received: by 2002:a05:6000:4011:b0:45d:41e0:467b with SMTP id
- ffacd0b85a97d-45e5c57d3b5mr21828633f8f.3.1779098317938; 
- Mon, 18 May 2026 02:58:37 -0700 (PDT)
-Received: from [127.0.1.1] ([105.32.253.93]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45da0fe2464sm37566374f8f.32.2026.05.18.02.58.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 May 2026 02:58:37 -0700 (PDT)
-From: Abdelrahman Elbehery <elbeheri95@gmail.com>
-Date: Mon, 18 May 2026 12:58:15 +0300
-Subject: [PATCH] target/arm: replace cp_regs hashtable lookup with direct
- array index
+ (Exim 4.90_1) (envelope-from
+ <BATV+b63a902a6511c8cff3bf+8303+infradead.org+dwmw2@casper.srs.infradead.org>)
+ id 1wOySR-00022m-Tj; Mon, 18 May 2026 09:56:35 -0400
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <BATV+b63a902a6511c8cff3bf+8303+infradead.org+dwmw2@casper.srs.infradead.org>)
+ id 1wOySO-0000bD-89; Mon, 18 May 2026 09:56:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
+ In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=M1hJb0hoxcKkSmY+3IhEMGFrd0EBvNP2uyHwSKG6WPk=; b=ILPUfjCQYenNwqo9nmnty8T+JP
+ XFB7C9Z5Coj5DPZYvFaC+rllHVtl3AuXYRXqyFZQ+I729tIs90HEIOsjikVAFwvYpInrbCge/7hNl
+ 1zqL/+TJf/x76qZa9Uy7BoU7UDnC2/XvSM4NXMlYt99WuREVcWuLpvqE7dH+OLybrplAqVo/YD0We
+ J/RWNAMzuy0zf+s4ravtJ8WR2G9y75DNhF/4flqSFZyHsd/fKXl0dPj3acJ5cHjagKoEY8v1JhjPL
+ 8W5ImBd2mTNyvAfxrbok5D9kX5u8AI1XXrPT4wLn08Pqg4Ookg7BDMOWoft10Aj3vUOVdOR0bNjo8
+ V1FtNFoQ==;
+Received: from 54-240-197-225.amazon.com ([54.240.197.225]
+ helo=u09cd745991455d.ant.amazon.com)
+ by casper.infradead.org with esmtpsa (Exim 4.99.1 #2 (Red Hat Linux))
+ id 1wOyS7-00000004pP2-1g7Z; Mon, 18 May 2026 13:56:15 +0000
+Message-ID: <7be2151d420954e02577312f6985018fc848ee4c.camel@infradead.org>
+Subject: Re: [PATCH v3 0/4] KVM: arm64: vgic: Fix IGROUPR writability and
+ IIDR revision control
+From: David Woodhouse <dwmw2@infradead.org>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Jonathan Corbet <corbet@lwn.net>, Shuah Khan
+ <skhan@linuxfoundation.org>,  Marc Zyngier <maz@kernel.org>, Oliver Upton
+ <oupton@kernel.org>, Joey Gouly <joey.gouly@arm.com>, Suzuki K Poulose
+ <suzuki.poulose@arm.com>, Zenghui Yu <yuzenghui@huawei.com>, Catalin
+ Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Jonathan
+ Cameron <jic23@kernel.org>, Sascha Bischoff <Sascha.Bischoff@arm.com>, Eric
+ Auger <eric.auger@redhat.com>, Raghavendra Rao Ananta <rananta@google.com>,
+ Maxim Levitsky <mlevitsk@redhat.com>, Kees Cook <kees@kernel.org>, Timothy
+ Hayes <timothy.hayes@arm.com>,  Arnd Bergmann <arnd@arndb.de>,
+ kvm@vger.kernel.org, linux-doc@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ kvmarm@lists.linux.dev, linux-kselftest@vger.kernel.org, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Mon, 18 May 2026 14:56:13 +0100
+In-Reply-To: <20260511113558.3325004-1-dwmw2@infradead.org>
+References: <20260511113558.3325004-1-dwmw2@infradead.org>
+Content-Type: multipart/signed; micalg="sha-256";
+ protocol="application/pkcs7-signature"; 
+ boundary="=-Hkc7djUBzr1SPdOeRBFL"
+User-Agent: Evolution 3.52.3-0ubuntu1.1 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260518-enhance_arm_gdb_get_sysreg_performance-v1-1-f0a5b22003c0@gmail.com>
-X-B4-Tracking: v=1; b=H4sIALbiCmoC/x2N0QrCMBAEf6Xcs4EkxBr8FZGjNtuYh6blrohS+
- u9GH2cHdnZSSIHStdtJ8CpaltrAnToan0PNMCU1Jm99b88uGtQ2j+BBZs7pwRkb60cFmVfItMj
- 80yb4GMMlBOtST+1sFUzl/Q/d7sfxBVbyI9J4AAAA
-X-Change-ID: 20260518-enhance_arm_gdb_get_sysreg_performance-4288474401d6
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Abdelrahman Elbehery <elbeheri95@gmail.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6908; i=elbeheri95@gmail.com; 
- h=from:subject:message-id;
- bh=/wdbX57nyxVVoTtoLAbDqlJxwAOjWI4ITu9yT4WRpso=; 
- b=owGbwMvMwCUm/fee8JG43+sYT6slMWRxPTqTGmzxk3Od2P7QjfaeBWFRfMLrhLpWnF3i/Ov/b
- 8akSW/rO0pZGMS4GGTFFFm+Jauyejmo7bE4dm8nzBxWJpAhDFycAjCR9tOMDOfE6hIMeAyM7x6S
- ar267GadN99lvqWCblt27mD4vff4z3JGhn2Cm7wXymsoXOR3uLQsa0l/UveKG2f8Poh+0+y0DDq
- /hR0A
-X-Developer-Key: i=elbeheri95@gmail.com; a=openpgp;
- fpr=F66325054A4026BC38C6DEB91BFDDE13C45EFBAE
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=elbeheri95@gmail.com; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
+ casper.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1236::1;
+ envelope-from=BATV+b63a902a6511c8cff3bf+8303+infradead.org+dwmw2@casper.srs.infradead.org;
+ helo=casper.infradead.org
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 18 May 2026 09:29:02 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,155 +87,127 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Profiling showed g_hash_table_lookup as a hot spot when running TCG
-plugins that log all CPU registers (e.g. execlog with reg=*).
-Replace it with a direct array index to avoid lookup overhead.
 
-Signed-off-by: Abdelrahman Elbehery <elbeheri95@gmail.com>
----
-While profiling (via callgrind) a TCG plugin that logs all the CPU registers
-(very identical to execlog with reg=*) i noticed that arm_gdb_get_sysreg is a hot spot,
-mostly while calling g_hash_table_lookup. Probably this is due to some hashtable collision
-that is handleded by glib internally.
+--=-Hkc7djUBzr1SPdOeRBFL
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Currently each DynamicGDBFeatureInfo item holds keys for cp_regs, and the keys are always
-used to retrieve the ARMCPRegInfo pointer.
+On Mon, 2026-05-11 at 12:30 +0100, David Woodhouse wrote:
+> Maintaining precise guest compatibility across host kernel upgrades =E2=
+=80=94
+> and even downgrades, since rollback is sometimes necessary =E2=80=94 is n=
+ot=20
+> optional. That *shouldn't* need saying, but maybe it does:
+> https://lore.kernel.org/all/6856b269d2af706eae397e0cf9c1231f89d9a932.came=
+l@infradead.org/
+>=20
+> This series fixes the GICv2/v3 IGROUPR writability model to be
+> consistently controlled by the GICD_IIDR implementation revision,
+> replacing the ad-hoc v2_groups_user_writable flag.
 
-By replacing the keys array with a GPtrArray, we now just access reg info directly from
-the given index.
+The more generic question of whether KVM should actually maintain guest
+compatibility from one version of the host kernel to another is being
+discussed in that other thread.
 
-The benchmarking was done on c2d-highcpu-16 (16 vCPUs, 32 GB memory) GCP
+Setting that aside, is there any *technical* feedback on this series? I
+believe I've dealt with all of Marc's feedback on v1 (thanks).
 
-Setup was to run qemu-system-aarch64 against a buildroot kernel and rootfs
-with and without the patch mostly using:
-    --plugin contrib/plugins/libstoptrigger.so,icount=2000000
-    --plugin contrib/plugins/libexeclog.so,reg=*
-    -M virt -cpu cortex-a710 -smp 1
 
-Benchmark showed ~15% performance gain when hashtable is not used.
-For benchmarking, i used hyperfine with 3 warmup rounds and 10 iterations each.
----
- target/arm/cpu.h     |  6 +++---
- target/arm/gdbstub.c | 28 ++++++++++++++++------------
- 2 files changed, 19 insertions(+), 15 deletions(-)
+--=-Hkc7djUBzr1SPdOeRBFL
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 15a13b929276dad161032b61ba51ebbce7eeebc6..8816e94e3f8271ad403e77f6182fdb8cee31c527 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -121,15 +121,15 @@
-  * DynamicGDBFeatureInfo:
-  * @desc: Contains the feature descriptions.
-  * @data: A union with data specific to the set of registers
-- *    @cpregs_keys: Array that contains the corresponding Key of
-- *                  a given cpreg with the same order of the cpreg
-+ *    @cpregs_regs: Array that contains the corresponding Register info pointer
-+ *                  of a given cpreg with the same order of the cpreg
-  *                  in the XML description.
-  */
- typedef struct DynamicGDBFeatureInfo {
-     GDBFeature desc;
-     union {
-         struct {
--            uint32_t *keys;
-+            GPtrArray *regs;
-         } cpregs;
-     } data;
- } DynamicGDBFeatureInfo;
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index d6e29c4cf46745dc7851bc5f8339c8d7c6857b8c..e66af8207b436fe8f1dd27441a587b1eb52ff928 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -238,19 +238,23 @@ static int arm_gdb_get_sysreg(CPUState *cs, GByteArray *buf, int reg)
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
-     const ARMCPRegInfo *ri;
--    uint32_t key;
- 
--    key = cpu->dyn_sysreg_feature.data.cpregs.keys[reg];
--    ri = get_arm_cp_reginfo(cpu->cp_regs, key);
-+    ri = g_ptr_array_index(cpu->dyn_sysreg_feature.data.cpregs.regs, reg);
-     if (ri) {
-         switch (cpreg_field_type(ri)) {
-         case MO_64:
-             if (ri->vhe_redir_to_el2 &&
-                 (arm_hcr_el2_eff(env) & HCR_E2H) &&
-                 arm_current_el(env) == 2) {
--                ri = get_arm_cp_reginfo(cpu->cp_regs, ri->vhe_redir_to_el2);
-+                ri = g_ptr_array_index(
-+                    cpu->dyn_sysreg_feature.data.cpregs.regs,
-+                    ri->vhe_redir_to_el2
-+                );
-             } else if (ri->vhe_redir_to_el01) {
--                ri = get_arm_cp_reginfo(cpu->cp_regs, ri->vhe_redir_to_el01);
-+                ri = g_ptr_array_index(
-+                    cpu->dyn_sysreg_feature.data.cpregs.regs,
-+                    ri->vhe_redir_to_el01
-+                );
-             }
-             return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri));
-         case MO_32:
-@@ -269,19 +273,18 @@ static int arm_gdb_set_sysreg(CPUState *cs, uint8_t *buf, int reg)
- 
- static void arm_gen_one_feature_sysreg(GDBFeatureBuilder *builder,
-                                        DynamicGDBFeatureInfo *dyn_feature,
--                                       ARMCPRegInfo *ri, uint32_t ri_key,
-+                                       ARMCPRegInfo *ri,
-                                        int bitsize, int n)
- {
-     gdb_feature_builder_append_reg(builder, ri->name, bitsize, n,
-                                    "int", "cp_regs");
- 
--    dyn_feature->data.cpregs.keys[n] = ri_key;
-+    g_ptr_array_index(dyn_feature->data.cpregs.regs, n) = ri;
- }
- 
- static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
-                                             gpointer p)
- {
--    uint32_t ri_key = (uintptr_t)key;
-     ARMCPRegInfo *ri = value;
-     RegisterSysregFeatureParam *param = p;
-     ARMCPU *cpu = ARM_CPU(param->cs);
-@@ -292,7 +295,7 @@ static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
-         if (arm_feature(env, ARM_FEATURE_AARCH64)) {
-             if (ri->state == ARM_CP_STATE_AA64) {
-                 arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
--                                           ri, ri_key, 64, param->n++);
-+                                           ri, 64, param->n++);
-             }
-         } else {
-             if (ri->state == ARM_CP_STATE_AA32) {
-@@ -302,10 +305,10 @@ static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
-                 }
-                 if (ri->type & ARM_CP_64BIT) {
-                     arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
--                                               ri, ri_key, 64, param->n++);
-+                                               ri, 64, param->n++);
-                 } else {
-                     arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
--                                               ri, ri_key, 32, param->n++);
-+                                               ri, 32, param->n++);
-                 }
-             }
-         }
-@@ -323,7 +326,8 @@ static GDBFeature *arm_gen_dynamic_sysreg_feature(CPUState *cs, int base_reg)
-                              "org.qemu.gdb.arm.sys.regs",
-                              "system-registers.xml",
-                              base_reg);
--    cpu->dyn_sysreg_feature.data.cpregs.keys = g_new(uint32_t, num_regs);
-+    cpu->dyn_sysreg_feature.data.cpregs.regs = g_ptr_array_new();
-+    g_ptr_array_set_size(cpu->dyn_sysreg_feature.data.cpregs.regs, num_regs);
-     g_hash_table_foreach(cpu->cp_regs, arm_register_sysreg_for_feature, &param);
-     gdb_feature_builder_end(&param.builder);
-     return &cpu->dyn_sysreg_feature.desc;
+MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCD9Aw
+ggSOMIIDdqADAgECAhAOmiw0ECVD4cWj5DqVrT9PMA0GCSqGSIb3DQEBCwUAMGUxCzAJBgNVBAYT
+AlVTMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xJDAi
+BgNVBAMTG0RpZ2lDZXJ0IEFzc3VyZWQgSUQgUm9vdCBDQTAeFw0yNDAxMzAwMDAwMDBaFw0zMTEx
+MDkyMzU5NTlaMEExCzAJBgNVBAYTAkFVMRAwDgYDVQQKEwdWZXJva2V5MSAwHgYDVQQDExdWZXJv
+a2V5IFNlY3VyZSBFbWFpbCBHMjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMjvgLKj
+jfhCFqxYyRiW8g3cNFAvltDbK5AzcOaR7yVzVGadr4YcCVxjKrEJOgi7WEOH8rUgCNB5cTD8N/Et
+GfZI+LGqSv0YtNa54T9D1AWJy08ZKkWvfGGIXN9UFAPMJ6OLLH/UUEgFa+7KlrEvMUupDFGnnR06
+aDJAwtycb8yXtILj+TvfhLFhafxroXrflspavejQkEiHjNjtHnwbZ+o43g0/yxjwnarGI3kgcak7
+nnI9/8Lqpq79tLHYwLajotwLiGTB71AGN5xK+tzB+D4eN9lXayrjcszgbOv2ZCgzExQUAIt98mre
+8EggKs9mwtEuKAhYBIP/0K6WsoMnQCcCAwEAAaOCAVwwggFYMBIGA1UdEwEB/wQIMAYBAf8CAQAw
+HQYDVR0OBBYEFIlICOogTndrhuWByNfhjWSEf/xwMB8GA1UdIwQYMBaAFEXroq/0ksuCMS1Ri6en
+IZ3zbcgPMA4GA1UdDwEB/wQEAwIBhjAdBgNVHSUEFjAUBggrBgEFBQcDBAYIKwYBBQUHAwIweQYI
+KwYBBQUHAQEEbTBrMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5kaWdpY2VydC5jb20wQwYIKwYB
+BQUHMAKGN2h0dHA6Ly9jYWNlcnRzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2VydEFzc3VyZWRJRFJvb3RD
+QS5jcnQwRQYDVR0fBD4wPDA6oDigNoY0aHR0cDovL2NybDMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0
+QXNzdXJlZElEUm9vdENBLmNybDARBgNVHSAECjAIMAYGBFUdIAAwDQYJKoZIhvcNAQELBQADggEB
+ACiagCqvNVxOfSd0uYfJMiZsOEBXAKIR/kpqRp2YCfrP4Tz7fJogYN4fxNAw7iy/bPZcvpVCfe/H
+/CCcp3alXL0I8M/rnEnRlv8ItY4MEF+2T/MkdXI3u1vHy3ua8SxBM8eT9LBQokHZxGUX51cE0kwa
+uEOZ+PonVIOnMjuLp29kcNOVnzf8DGKiek+cT51FvGRjV6LbaxXOm2P47/aiaXrDD5O0RF5SiPo6
+xD1/ClkCETyyEAE5LRJlXtx288R598koyFcwCSXijeVcRvBB1cNOLEbg7RMSw1AGq14fNe2cH1HG
+W7xyduY/ydQt6gv5r21mDOQ5SaZSWC/ZRfLDuEYwggWbMIIEg6ADAgECAhAH5JEPagNRXYDiRPdl
+c1vgMA0GCSqGSIb3DQEBCwUAMEExCzAJBgNVBAYTAkFVMRAwDgYDVQQKEwdWZXJva2V5MSAwHgYD
+VQQDExdWZXJva2V5IFNlY3VyZSBFbWFpbCBHMjAeFw0yNDEyMzAwMDAwMDBaFw0yODAxMDQyMzU5
+NTlaMB4xHDAaBgNVBAMME2R3bXcyQGluZnJhZGVhZC5vcmcwggIiMA0GCSqGSIb3DQEBAQUAA4IC
+DwAwggIKAoICAQDali7HveR1thexYXx/W7oMk/3Wpyppl62zJ8+RmTQH4yZeYAS/SRV6zmfXlXaZ
+sNOE6emg8WXLRS6BA70liot+u0O0oPnIvnx+CsMH0PD4tCKSCsdp+XphIJ2zkC9S7/yHDYnqegqt
+w4smkqUqf0WX/ggH1Dckh0vHlpoS1OoxqUg+ocU6WCsnuz5q5rzFsHxhD1qGpgFdZEk2/c//ZvUN
+i12vPWipk8TcJwHw9zoZ/ZrVNybpMCC0THsJ/UEVyuyszPtNYeYZAhOJ41vav1RhZJzYan4a1gU0
+kKBPQklcpQEhq48woEu15isvwWh9/+5jjh0L+YNaN0I//nHSp6U9COUG9Z0cvnO8FM6PTqsnSbcc
+0j+GchwOHRC7aP2t5v2stVx3KbptaYEzi4MQHxm/0+HQpMEVLLUiizJqS4PWPU6zfQTOMZ9uLQRR
+ci+c5xhtMEBszlQDOvEQcyEG+hc++fH47K+MmZz21bFNfoBxLP6bjR6xtPXtREF5lLXxp+CJ6KKS
+blPKeVRg/UtyJHeFKAZXO8Zeco7TZUMVHmK0ZZ1EpnZbnAhKE19Z+FJrQPQrlR0gO3lBzuyPPArV
+hvWxjlO7S4DmaEhLzarWi/ze7EGwWSuI2eEa/8zU0INUsGI4ywe7vepQz7IqaAovAX0d+f1YjbmC
+VsAwjhLmveFjNwIDAQABo4IBsDCCAawwHwYDVR0jBBgwFoAUiUgI6iBOd2uG5YHI1+GNZIR//HAw
+HQYDVR0OBBYEFFxiGptwbOfWOtMk5loHw7uqWUOnMDAGA1UdEQQpMCeBE2R3bXcyQGluZnJhZGVh
+ZC5vcmeBEGRhdmlkQHdvb2Rob3Uuc2UwFAYDVR0gBA0wCzAJBgdngQwBBQEBMA4GA1UdDwEB/wQE
+AwIF4DAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwewYDVR0fBHQwcjA3oDWgM4YxaHR0
+cDovL2NybDMuZGlnaWNlcnQuY29tL1Zlcm9rZXlTZWN1cmVFbWFpbEcyLmNybDA3oDWgM4YxaHR0
+cDovL2NybDQuZGlnaWNlcnQuY29tL1Zlcm9rZXlTZWN1cmVFbWFpbEcyLmNybDB2BggrBgEFBQcB
+AQRqMGgwJAYIKwYBBQUHMAGGGGh0dHA6Ly9vY3NwLmRpZ2ljZXJ0LmNvbTBABggrBgEFBQcwAoY0
+aHR0cDovL2NhY2VydHMuZGlnaWNlcnQuY29tL1Zlcm9rZXlTZWN1cmVFbWFpbEcyLmNydDANBgkq
+hkiG9w0BAQsFAAOCAQEAQXc4FPiPLRnTDvmOABEzkIumojfZAe5SlnuQoeFUfi+LsWCKiB8Uextv
+iBAvboKhLuN6eG/NC6WOzOCppn4mkQxRkOdLNThwMHW0d19jrZFEKtEG/epZ/hw/DdScTuZ2m7im
+8ppItAT6GXD3aPhXkXnJpC/zTs85uNSQR64cEcBFjjoQDuSsTeJ5DAWf8EMyhMuD8pcbqx5kRvyt
+JPsWBQzv1Dsdv2LDPLNd/JUKhHSgr7nbUr4+aAP2PHTXGcEBh8lTeYea9p4d5k969pe0OHYMV5aL
+xERqTagmSetuIwolkAuBCzA9vulg8Y49Nz2zrpUGfKGOD0FMqenYxdJHgDCCBZswggSDoAMCAQIC
+EAfkkQ9qA1FdgOJE92VzW+AwDQYJKoZIhvcNAQELBQAwQTELMAkGA1UEBhMCQVUxEDAOBgNVBAoT
+B1Zlcm9rZXkxIDAeBgNVBAMTF1Zlcm9rZXkgU2VjdXJlIEVtYWlsIEcyMB4XDTI0MTIzMDAwMDAw
+MFoXDTI4MDEwNDIzNTk1OVowHjEcMBoGA1UEAwwTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJ
+KoZIhvcNAQEBBQADggIPADCCAgoCggIBANqWLse95HW2F7FhfH9bugyT/danKmmXrbMnz5GZNAfj
+Jl5gBL9JFXrOZ9eVdpmw04Tp6aDxZctFLoEDvSWKi367Q7Sg+ci+fH4KwwfQ8Pi0IpIKx2n5emEg
+nbOQL1Lv/IcNiep6Cq3DiyaSpSp/RZf+CAfUNySHS8eWmhLU6jGpSD6hxTpYKye7PmrmvMWwfGEP
+WoamAV1kSTb9z/9m9Q2LXa89aKmTxNwnAfD3Ohn9mtU3JukwILRMewn9QRXK7KzM+01h5hkCE4nj
+W9q/VGFknNhqfhrWBTSQoE9CSVylASGrjzCgS7XmKy/BaH3/7mOOHQv5g1o3Qj/+cdKnpT0I5Qb1
+nRy+c7wUzo9OqydJtxzSP4ZyHA4dELto/a3m/ay1XHcpum1pgTOLgxAfGb/T4dCkwRUstSKLMmpL
+g9Y9TrN9BM4xn24tBFFyL5znGG0wQGzOVAM68RBzIQb6Fz758fjsr4yZnPbVsU1+gHEs/puNHrG0
+9e1EQXmUtfGn4InoopJuU8p5VGD9S3Ikd4UoBlc7xl5yjtNlQxUeYrRlnUSmdlucCEoTX1n4UmtA
+9CuVHSA7eUHO7I88CtWG9bGOU7tLgOZoSEvNqtaL/N7sQbBZK4jZ4Rr/zNTQg1SwYjjLB7u96lDP
+sipoCi8BfR35/ViNuYJWwDCOEua94WM3AgMBAAGjggGwMIIBrDAfBgNVHSMEGDAWgBSJSAjqIE53
+a4blgcjX4Y1khH/8cDAdBgNVHQ4EFgQUXGIam3Bs59Y60yTmWgfDu6pZQ6cwMAYDVR0RBCkwJ4ET
+ZHdtdzJAaW5mcmFkZWFkLm9yZ4EQZGF2aWRAd29vZGhvdS5zZTAUBgNVHSAEDTALMAkGB2eBDAEF
+AQEwDgYDVR0PAQH/BAQDAgXgMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDBDB7BgNVHR8E
+dDByMDegNaAzhjFodHRwOi8vY3JsMy5kaWdpY2VydC5jb20vVmVyb2tleVNlY3VyZUVtYWlsRzIu
+Y3JsMDegNaAzhjFodHRwOi8vY3JsNC5kaWdpY2VydC5jb20vVmVyb2tleVNlY3VyZUVtYWlsRzIu
+Y3JsMHYGCCsGAQUFBwEBBGowaDAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuZGlnaWNlcnQuY29t
+MEAGCCsGAQUFBzAChjRodHRwOi8vY2FjZXJ0cy5kaWdpY2VydC5jb20vVmVyb2tleVNlY3VyZUVt
+YWlsRzIuY3J0MA0GCSqGSIb3DQEBCwUAA4IBAQBBdzgU+I8tGdMO+Y4AETOQi6aiN9kB7lKWe5Ch
+4VR+L4uxYIqIHxR7G2+IEC9ugqEu43p4b80LpY7M4KmmfiaRDFGQ50s1OHAwdbR3X2OtkUQq0Qb9
+6ln+HD8N1JxO5nabuKbymki0BPoZcPdo+FeRecmkL/NOzzm41JBHrhwRwEWOOhAO5KxN4nkMBZ/w
+QzKEy4PylxurHmRG/K0k+xYFDO/UOx2/YsM8s138lQqEdKCvudtSvj5oA/Y8dNcZwQGHyVN5h5r2
+nh3mT3r2l7Q4dgxXlovERGpNqCZJ624jCiWQC4ELMD2+6WDxjj03PbOulQZ8oY4PQUyp6djF0keA
+MYIDuzCCA7cCAQEwVTBBMQswCQYDVQQGEwJBVTEQMA4GA1UEChMHVmVyb2tleTEgMB4GA1UEAxMX
+VmVyb2tleSBTZWN1cmUgRW1haWwgRzICEAfkkQ9qA1FdgOJE92VzW+AwDQYJYIZIAWUDBAIBBQCg
+ggE3MBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI2MDUxODEzNTYx
+M1owLwYJKoZIhvcNAQkEMSIEICqt//RAX/pWu9cXB++MsOe2WMY0oz8fhUmPi6jxt8lSMGQGCSsG
+AQQBgjcQBDFXMFUwQTELMAkGA1UEBhMCQVUxEDAOBgNVBAoTB1Zlcm9rZXkxIDAeBgNVBAMTF1Zl
+cm9rZXkgU2VjdXJlIEVtYWlsIEcyAhAH5JEPagNRXYDiRPdlc1vgMGYGCyqGSIb3DQEJEAILMVeg
+VTBBMQswCQYDVQQGEwJBVTEQMA4GA1UEChMHVmVyb2tleTEgMB4GA1UEAxMXVmVyb2tleSBTZWN1
+cmUgRW1haWwgRzICEAfkkQ9qA1FdgOJE92VzW+AwDQYJKoZIhvcNAQEBBQAEggIAJdF11gRQu5b0
+WHvhiZWx/Uhmg3FKvzegxqEDSGe3fRVfyKIbNr5nYVSTqp8iRbyR3GK+lD2pE9mUhJmxvl2mwf6I
+09XZCAQL75U6KoyeND4KtQfLHuyRA5JUTLDR/ZtGXqdIBMGSsuVHKjtEjEW0Ko2wytJFwHpDSUF5
+kAbY9ZeLcCkb5xpGm9GAEOhKWpKqYjcIP4hXtvQeUxa92yXdwWjaQyLaWztqDc645+ggkNEMQO+K
+ozdUDKBV0okeI+CBrySgMZRbr7DuqTxxgzB3jVosOCyla8ke4LAwkBBjjrm+uH3VHDz6n25SXsrq
+JFc6zCnHyNqN0AWL/ocbJZvL9PpHuEslDvQOj6u9AvAcsNd/5MzPD5k7XxWj0PZgiA9+O94ZM2Fe
+n15VBs1ZD3K2Bs92l8/s0fjjZo31m3jqHkTcQCURcfTWWOffCKmq15f7j3J7719dqkdLqM9MuFxd
+hfBg9XxHs4WVwg7714ACs/4CPNZnzfxtI4s7B43fPhj1tbUb30ZQDNCTzwXeJoTmlXt3/q3HfKKG
+olegD9kqVgQa9H4L43BsRK+3UqCfRr6oK42wgMAB/7yRwsllAxBSgkFiZ8NWb2WUYPf3KqAe+d2Q
+E4IuZ49d7l0190FczUqMzxjnk+E4gOlt3vVS/Ql2b1Y+Pic5GrMDu0OxcVHHQzMAAAAAAAA=
 
----
-base-commit: ac6721b88df944ade0048822b2b74210f543d656
-change-id: 20260518-enhance_arm_gdb_get_sysreg_performance-4288474401d6
 
-Best regards,
--- 
-Abdelrahman Elbehery <elbeheri95@gmail.com>
-
+--=-Hkc7djUBzr1SPdOeRBFL--
 

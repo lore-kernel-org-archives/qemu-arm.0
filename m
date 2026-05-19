@@ -4,94 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E024FCD4851
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 10:36:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2706FCD5BA6
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 10:39:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPHoG-0005Gp-DL; Tue, 19 May 2026 06:36:24 -0400
+	id 1wPHqg-0007Tq-LR; Tue, 19 May 2026 06:38:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <williamdapinho@gmail.com>)
- id 1wPHoE-0005Fz-If
- for qemu-arm@nongnu.org; Tue, 19 May 2026 06:36:22 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <williamdapinho@gmail.com>)
- id 1wPHoB-0005um-Nb
- for qemu-arm@nongnu.org; Tue, 19 May 2026 06:36:22 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-7bd4c61765dso28697667b3.3
- for <qemu-arm@nongnu.org>; Tue, 19 May 2026 03:36:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779186978; x=1779791778; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=8tv8sNGOP2+gDDuYmPlVIIy5gfvrfarZbTKlONa7k1M=;
- b=qC5tXBI3WCrrRQRnbe/8JctuFDAh642BRNhSABf2pmaImbJmaVXhChYHQ3I1M0WBIm
- 5Or6O2MyTiNFaJFxpBxYGaxVQtsCgDj8x5jVC6fonTn3MYdKdNaB4bAFAKkTh9tVzRjc
- w4Z6prDkjXhQvwu9RDxy6IT5EPZMnMN09iuOLGjE9z054+KYYOLYzG35LePIiwLmZMC4
- 9DugFfIzu/dRMo0Aqhi1qAsgDtk2nIY2xXHcmWZVTD+3SwhOZM/8rWCC6oaVpxOYUSZV
- 5LbQ1tNO6n/f+0csJllyMb/HX9+l1wQwRpFTzwTDc87pTu2B9YgpyHY0YsdZDxLXVnQi
- 5dYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779186978; x=1779791778;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=8tv8sNGOP2+gDDuYmPlVIIy5gfvrfarZbTKlONa7k1M=;
- b=Vn0+jlunV+A7y6CJ2PVLaXtS2hH1MdmjchidOAdmyeAAwCbaoArU61BMpnya5ePMsY
- pciyuKKrQ58iQbgMzMLASNtV8c8zXjIDs9I+I3WmswIh+JWjDHaC6uOvIy2JTYsJYsLV
- adL2zY+ihVCPT7+f2kN2VYY8r8XZvnqOBrw3e6Zr/wo0kZAl0mOS46K7swArB3oGBLYb
- Z6zWAe4fW6dY9Hk+wcOIfIFOudHlPlGJh5WFucgj4y32S5f/k6zWlz2qO+H08cAROT//
- 4ob2eZFzAM+Zkh304bEm7LFA0zkKxPthft0+/W0uhHJCEbUSFF0JedLsYmiEp85rs9nP
- 1NCg==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9JKoWd9WLhWzOuIsgPEq7NHQrnmsymad++X7ObR461HxE3cZ9RVRL7DRCBJIuk+dPyu4chYuwM6A==@nongnu.org
-X-Gm-Message-State: AOJu0YxSPSs/tUDtpyL02SvHY2rr49Zm51rk+7arjLcLZh/6sMpVVmVS
- mrQ1CQc1IZO3LtkP/Y83VNYBG5d7cQDl5dI9V2p0bIIJ8FKnrAK40oD/
-X-Gm-Gg: Acq92OGTdQlG47ozIX/ql0ooG6ZE7XYWNRkWUpF3tOKdzHRLOqkZbUXnpskzZrAKX9A
- I6J6N+yYHfi/hG5BDzZjfywAVO794Ce2hTzFIDcPeO4UtiK3AdA/zFrEc9W7r+Xfov7IgEE5iIF
- WrpG84gyVEV4+tYglNfmKBoYGqbm/STecAxwXycZVF0P4qzAWlOh7Ku/JvJ9BltIak7UGFyHn9w
- g98bFDAKs/FkW0FZJZMCzPnkDBS2OifkaE1hTvuApHlPoynocNGhS5ndbU07OQlWZgiJ4vCT0Gw
- xy6o9dfSojJvF9xi1rZjuuUXA2S9yXVoGo63iBNB4j/8pIJbP+P+yf/taa9IMs3O2UPSzEO0KvP
- AlUBRueBh/H5owppZjtkZECGysGLJhPRdIH9euQfglcNIhowuVCvCAIN5T6nwFZV3gTEOJhmGaK
- sexx9lSyqBCU1MMdaRnwVTlkQ=
-X-Received: by 2002:a05:690c:c1d5:b0:7bf:9648:8c5c with SMTP id
- 00721157ae682-7c95a666d76mr165214787b3.18.1779186978395; 
- Tue, 19 May 2026 03:36:18 -0700 (PDT)
-Received: from localhost ([2a03:2880:f806:3c::])
- by smtp.gmail.com with ESMTPSA id
- 00721157ae682-7cc9d18dcddsm34260827b3.49.2026.05.19.03.36.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 May 2026 03:36:17 -0700 (PDT)
-From: William de Abreu Pinho <williamdapinho@gmail.com>
-Date: Tue, 19 May 2026 03:36:05 -0700
-Subject: [PATCH v2 3/3] hw/arm/aspeed: anacapa: add FRU EEPROM data
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wPHqf-0007Te-0k; Tue, 19 May 2026 06:38:53 -0400
+Received: from mail-centralusazlp170110009.outbound.protection.outlook.com
+ ([2a01:111:f403:c111::9] helo=DM5PR21CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wPHqd-0006PM-9F; Tue, 19 May 2026 06:38:52 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=VFc3ZCUBmf5mUNUyPuyNxXrye+evBqv53UPphHmBYmwttalmnsIY6Sgc+j3zxutPRledpE326YKhShOnIvF4tybcgHnf8KGBTb07sTMya0AWIIdmFv0rTjAr6UWjBTZLqd+rI+4tAazCjYWZ657WbdPfOKgLRFQI/J2pkARj0Ovi6JaJ4Re4KJ0+n1ETLCa+cQYDXyjtVybv4yKW/PEt41+DIoAiXIf5FCY+snOgp0dgENWc5kxwNms0yGaM87NLX8FwkY5CWxmg0aFZmiyqbBNGqbDydvBZXzA1pUY4lBvttELZbrANWVyQv4Mu3NsHsRyQGEq7CCHW8Cta67vNhA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Uayp8/2xIDziKqIY63vmrqb1h45tpB77/C7GEy1wyoM=;
+ b=Ugn0mNW5KQJBzodf+155nlAgKcP0DeXm3CIJi90vROdtV/TVRL/bVI1kuIhYO5LVuHGJSarf3BS8hwIJefxdUxo+vBwt6f/uWImWNDlCs8VGtTzsNswsPNYztep7sKA3qvALyji6pdZRKEysi/YlFuc8A3fPXrtucW/GOSjeiUtSbw1kFpTSST9U857MxAmt2hrI/SfAKPLSw2DxM4w73CPaMqPlE4TR0ww56eSIw79lDJvjKb+xBjqxIcdiLM6oJppHOxj0XC7h2UDSm8cqCtRNf61G6tpBNOIr+NRXBCAosoLpshlLbTMkRNZ6jNLterhmqJWWetZs3jqCNakExw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Uayp8/2xIDziKqIY63vmrqb1h45tpB77/C7GEy1wyoM=;
+ b=OtZjpe+6mivdPrwXEgeeJbPrVRlw/fvH/+bJfOjMh0aAHRbwHVTQqcR3pwTLbtwIbOc/WwUWltypqG8pJXY3bO8NAvL62vqu2X+mbYG8G34gJ0ZZVy2/6a7rK6eG8HxO4wE6zkX0tDK8r6elYVjUazNLRtugiaxogXqcmUwqUnKH8IF+VADasu0hckptsf5i2LaHlhCxT2e8Ccn9cXt8ZWEJCwBH3u03wPJH9l9Y+jnUwMoNyCxeSghRD0wfMeo0F02RnbsQ2kJLDDvX9YLOdXU9G3csDQzxqwtfGeM/JV2vIDMYFa/8vXB8KmFh3mNCqF+RVJgo2fClpV16IFH83A==
+Received: from BL1PR13CA0226.namprd13.prod.outlook.com (2603:10b6:208:2bf::21)
+ by CYYPR12MB8964.namprd12.prod.outlook.com (2603:10b6:930:bc::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.25.21; Tue, 19 May
+ 2026 10:38:44 +0000
+Received: from BL02EPF0001A107.namprd05.prod.outlook.com
+ (2603:10b6:208:2bf:cafe::6c) by BL1PR13CA0226.outlook.office365.com
+ (2603:10b6:208:2bf::21) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.48.14 via Frontend Transport; Tue, 19
+ May 2026 10:38:43 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ BL02EPF0001A107.mail.protection.outlook.com (10.167.241.136) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.48.11 via Frontend Transport; Tue, 19 May 2026 10:38:43 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 19 May
+ 2026 03:38:26 -0700
+Received: from NV-2Y5XW94.nvidia.com (10.126.231.37) by rnnvmail201.nvidia.com
+ (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 19 May
+ 2026 03:38:23 -0700
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <clg@redhat.com>,
+ <alex@shazbot.org>, <nicolinc@nvidia.com>, <nathanc@nvidia.com>,
+ <mochs@nvidia.com>, <jan@nvidia.com>, <jgg@nvidia.com>,
+ <zhenzhong.duan@intel.com>, <kjaju@nvidia.com>, <phrdina@redhat.com>,
+ <skolothumtho@nvidia.com>
+Subject: [PATCH v5 03/32] backends/iommufd: Introduce
+ iommufd_backend_alloc_hw_queue
+Date: Tue, 19 May 2026 11:36:41 +0100
+Message-ID: <20260519103727.899332-4-skolothumtho@nvidia.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260519103727.899332-1-skolothumtho@nvidia.com>
+References: <20260519103727.899332-1-skolothumtho@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20260519-add-anacapa-machine-v2-3-47027867d76a@gmail.com>
-References: <20260519-add-anacapa-machine-v2-0-47027867d76a@gmail.com>
-In-Reply-To: <20260519-add-anacapa-machine-v2-0-47027867d76a@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
- qemu-arm@nongnu.org, William de Abreu Pinho <williamdapinho@gmail.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-X-Mailer: b4 0.13.0
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=williamdapinho@gmail.com; helo=mail-yw1-x1136.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.126.231.37]
+X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
+ rnnvmail201.nvidia.com (10.129.68.8)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL02EPF0001A107:EE_|CYYPR12MB8964:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9e8153e7-ed52-46dd-76af-08deb592cc7f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|36860700016|82310400026|1800799024|11063799006|18002099003|22082099003|56012099003;
+X-Microsoft-Antispam-Message-Info: Dy8XXmNYcNuLISZ0I6cKBBa6cYw9Ps60PJAdv0tjTLNyyvzUI0NU/RqeNXOieqJK0dmlMtHihdzZiDHMT5JzFWDI0UCJ+reefrzv9qRW0KJLmkZsAkwM139wkXlfJs6IGXl1e0p4yilJ1Up9r0PwIHgEChITrJXMvSLOCC2FKZC6GMX43VIzcu1F1dSX7nFJHu8RVkV417Em73Ncpnop2Ia9988v5Dd97ynYojx5Km5GXCSg1XmUqUt3a/7lLURqsXKKePxBs62EWLFYs4TH1edhjLDw6MHQgv8HN7d5G8sitiAXoYb5nA0JCUu3ZJ3zqGqCIEub+PPObYJceXmThA0fhY4Aa6fvLtUXIgOEfsnnZly0AUH3LsG0UXGqVI99cpOZJSJwqtf/ogllendSrWt0IuXyK/rse5csF2lSgMzcSwrNHu2dUj2gM7pIax36Z0+arHzjSO6zNjywbZvvzq6kuKUVoWk8ItJMP62GDmLQvMUqFS938Cdvn2jfmgkNN1HUQS6EnAU36dWQIrDe+FbY4hN3DD1knSpStzal2I6HuJnu9qbg2zuAcwDzInbBdRIwWH2uni2jP5DhxSw9LSvQYQrhpP1UDpFHD4I68WgR5K+FrdcJfmNyAP2HBQBr9G9qlvHxSdSTkRxE84PbCh9H5SoBlyROp8fiGduNfFf5YPsI7mpfP1DvbHBe5IPeOnIXHHMYTzQYIrTkLKsX2xObqaRUYmSvk499jZ7CEmw=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(376014)(36860700016)(82310400026)(1800799024)(11063799006)(18002099003)(22082099003)(56012099003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: d8NHsJg6mxoW34lgCE0EjJ7oAKzdk6nt2Rj7CPVY1BZhri7T4Ybhzan+Ip+lnu2LEyhl/fdKJ9uuMrWJRPHLQkAVYmUp7cSkRwMZ8fB7rmkOAYi27xtr01768hKaDCNbM2768onXUmtNL2nyGdVT/fHaqOTPD4Y5z0IhWGWz/9ZrGCcBRXK5hEeH/3YP7jG7vEk6aNQMQCs871SNLi+y1W9EfnOil312yXKFwRIZh3vmYuH6dqBbT6CJsQaOwLow8D08X3wpAx6+IiIO1diz93+QAIzql+6zuPshdGbfYsHU3IxepnoGN/u+4M/jqsFmcwxQMsP1IQvxsUjWd1CnF5VtX7JfSgwLmA4VnEhDEGQVzccOePfJVCcfkrGPSBiUHsz+S6HgeK+4VY1r56509lChvvd4VX6b/ceL716RasaKTzKu6XpEhX3fc+cPCE9M
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 May 2026 10:38:43.2062 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9e8153e7-ed52-46dd-76af-08deb592cc7f
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BL02EPF0001A107.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CYYPR12MB8964
+Received-SPF: permerror client-ip=2a01:111:f403:c111::9;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=DM5PR21CU001.outbound.protection.outlook.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,300 +134,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Use frugen to generate FRU data for the following components: HPM MB,
-R-PDB, L-PDB, SCM, BSM, R Bridge Board, L Bridge Board, and HPM board
-ID.
+From: Nicolin Chen <nicolinc@nvidia.com>
 
-Signed-off-by: William de Abreu Pinho <williamdapinho@gmail.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Add a helper to allocate an iommufd backed HW queue for a vIOMMU.
+
+While at it, define a struct IOMMUFDHWqueue for use by vendor
+implementations.
+
+Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 ---
- hw/arm/aspeed_ast2600_anacapa.c | 225 ++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 217 insertions(+), 8 deletions(-)
+ include/system/iommufd.h | 11 +++++++++++
+ backends/iommufd.c       | 31 +++++++++++++++++++++++++++++++
+ backends/trace-events    |  1 +
+ 3 files changed, 43 insertions(+)
 
-diff --git a/hw/arm/aspeed_ast2600_anacapa.c b/hw/arm/aspeed_ast2600_anacapa.c
-index c24f00d44c..a1c8111a93 100644
---- a/hw/arm/aspeed_ast2600_anacapa.c
-+++ b/hw/arm/aspeed_ast2600_anacapa.c
-@@ -20,6 +20,207 @@
- #define ANACAPA_BMC_HW_STRAP2 0x00000000
- #define ANACAPA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+index 1b0266f660..c6f2e87a7e 100644
+--- a/include/system/iommufd.h
++++ b/include/system/iommufd.h
+@@ -65,6 +65,12 @@ typedef struct IOMMUFDVeventq {
+     bool event_start; /* True after first valid event; cleared on overflow */
+ } IOMMUFDVeventq;
  
-+/*
-+ * "Anacapa HPM (MB)" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Inventec", "pname": "Anacapa QEMU MB EVT2",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Inventec", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t hpm_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0xb4,
-+    0xa4, 0xf2, 0xc8, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x65, 0x63, 0xd4,
-+    0x41, 0x6e, 0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x51, 0x45, 0x4d, 0x55,
-+    0x20, 0x4d, 0x42, 0x20, 0x45, 0x56, 0x54, 0x32, 0x47, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0xc0,
-+    0xc1, 0x00, 0x00, 0xb8, 0x01, 0x06, 0x19, 0xc8, 0x49, 0x6e, 0x76, 0x65,
-+    0x6e, 0x74, 0x65, 0x63, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e, 0x61, 0x63,
-+    0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x82, 0x2d,
-+    0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83, 0x71, 0xd9,
-+    0xd6, 0xc0, 0xc1, 0x0e
-+};
-+static const size_t hpm_eeprom_len = sizeof(hpm_eeprom);
++/* HW queue object for a vIOMMU-specific HW-accelerated queue */
++typedef struct IOMMUFDHWqueue {
++    IOMMUFDViommu *viommu;
++    uint32_t hw_queue_id;
++} IOMMUFDHWqueue;
 +
-+/*
-+ * "Anacapa R-PDB" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Inventec", "pname": "Anacapa QEMU RPDB",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Inventec", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t rpdb_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0x41,
-+    0x2d, 0xf2, 0xc8, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x65, 0x63, 0xd1,
-+    0x41, 0x6e, 0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x51, 0x45, 0x4d, 0x55,
-+    0x20, 0x52, 0x50, 0x44, 0x42, 0x47, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0xc0, 0xc1, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x4d, 0x01, 0x06, 0x19, 0xc8, 0x49, 0x6e, 0x76, 0x65,
-+    0x6e, 0x74, 0x65, 0x63, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e, 0x61, 0x63,
-+    0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x82, 0x2d,
-+    0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83, 0x71, 0xd9,
-+    0xd6, 0xc0, 0xc1, 0x0e
-+};
-+static const size_t rpdb_eeprom_len = sizeof(rpdb_eeprom);
+ bool iommufd_backend_connect(IOMMUFDBackend *be, Error **errp);
+ void iommufd_backend_disconnect(IOMMUFDBackend *be);
+ 
+@@ -101,6 +107,11 @@ bool iommufd_backend_alloc_veventq(IOMMUFDBackend *be, uint32_t viommu_id,
+                                    uint32_t *out_veventq_id,
+                                    uint32_t *out_veventq_fd, Error **errp);
+ 
++bool iommufd_backend_alloc_hw_queue(IOMMUFDBackend *be, uint32_t viommu_id,
++                                    uint32_t queue_type, uint32_t index,
++                                    uint64_t addr, uint64_t length,
++                                    uint32_t *out_hw_queue_id, Error **errp);
 +
-+/*
-+ * "Anacapa L-PDB" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Inventec", "pname": "Anacapa QEMU LPDB",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Inventec", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t lpdb_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0x41,
-+    0x2d, 0xf2, 0xc8, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x65, 0x63, 0xd1,
-+    0x41, 0x6e, 0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x51, 0x45, 0x4d, 0x55,
-+    0x20, 0x4c, 0x50, 0x44, 0x42, 0x47, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0xc0, 0xc1, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x53, 0x01, 0x06, 0x19, 0xc8, 0x49, 0x6e, 0x76, 0x65,
-+    0x6e, 0x74, 0x65, 0x63, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e, 0x61, 0x63,
-+    0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x82, 0x2d,
-+    0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83, 0x71, 0xd9,
-+    0xd6, 0xc0, 0xc1, 0x0e
-+};
-+static const size_t lpdb_eeprom_len = sizeof(lpdb_eeprom);
+ bool iommufd_backend_set_dirty_tracking(IOMMUFDBackend *be, uint32_t hwpt_id,
+                                         bool start, Error **errp);
+ bool iommufd_backend_get_dirty_bitmap(IOMMUFDBackend *be, uint32_t hwpt_id,
+diff --git a/backends/iommufd.c b/backends/iommufd.c
+index c745dbd2b1..8eaaf456e8 100644
+--- a/backends/iommufd.c
++++ b/backends/iommufd.c
+@@ -549,6 +549,37 @@ bool iommufd_backend_alloc_veventq(IOMMUFDBackend *be, uint32_t viommu_id,
+     return true;
+ }
+ 
++bool iommufd_backend_alloc_hw_queue(IOMMUFDBackend *be, uint32_t viommu_id,
++                                    uint32_t queue_type, uint32_t index,
++                                    uint64_t addr, uint64_t length,
++                                    uint32_t *out_hw_queue_id, Error **errp)
++{
++    int ret;
++    struct iommu_hw_queue_alloc alloc_hw_queue = {
++        .size = sizeof(alloc_hw_queue),
++        .flags = 0,
++        .viommu_id = viommu_id,
++        .type = queue_type,
++        .index = index,
++        .nesting_parent_iova = addr,
++        .length = length,
++    };
 +
-+/*
-+ * "Anacapa SCM" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Quanta", "pname": "Anacapa SCM",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Quanta", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t scm_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x07, 0x00, 0x00, 0xf7, 0x01, 0x06, 0x19, 0x41,
-+    0x2d, 0xf2, 0xc6, 0x51, 0x75, 0x61, 0x6e, 0x74, 0x61, 0xcb, 0x41, 0x6e,
-+    0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x53, 0x43, 0x4d, 0x47, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a,
-+    0xc0, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc5, 0x01, 0x06, 0x19, 0xc6,
-+    0x51, 0x75, 0x61, 0x6e, 0x74, 0x61, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e,
-+    0x61, 0x63, 0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a,
-+    0x82, 0x2d, 0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83,
-+    0x71, 0xd9, 0xd6, 0xc0, 0xc1, 0x00, 0x00, 0xe2
-+};
-+static const size_t scm_eeprom_len = sizeof(scm_eeprom);
++    ret = ioctl(be->fd, IOMMU_HW_QUEUE_ALLOC, &alloc_hw_queue);
 +
-+/*
-+ * "Anacapa BMC Storage Module" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Quanta", "pname": "Anacapa BMC Storage Module",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Quanta", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t bsm_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x0a, 0x00, 0x00, 0xf4, 0x01, 0x09, 0x00, 0x00,
-+    0x00, 0x00, 0xc6, 0x51, 0x75, 0x61, 0x6e, 0x74, 0x61, 0xda, 0x41, 0x6e,
-+    0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x42, 0x4d, 0x43, 0x20, 0x53, 0x74,
-+    0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65,
-+    0xce, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
-+    0x30, 0x30, 0x30, 0xcb, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
-+    0x30, 0x30, 0x30, 0xc0, 0xc1, 0x00, 0x00, 0x10, 0x01, 0x08, 0x00, 0xc6,
-+    0x51, 0x75, 0x61, 0x6e, 0x74, 0x61, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e,
-+    0x61, 0x63, 0x61, 0x70, 0x61, 0xcb, 0x31, 0x30, 0x30, 0x30, 0x30, 0x30,
-+    0x30, 0x30, 0x30, 0x30, 0x31, 0xc2, 0x4d, 0x50, 0xce, 0x31, 0x30, 0x30,
-+    0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0xc4,
-+    0x51, 0x45, 0x4d, 0x55, 0xc0, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x77,
-+};
-+static const size_t bsm_eeprom_len = sizeof(bsm_eeprom);
++    trace_iommufd_backend_alloc_hw_queue(be->fd, viommu_id, queue_type,
++                                         index, addr, length,
++                                         alloc_hw_queue.out_hw_queue_id, ret);
++    if (ret) {
++        error_setg_errno(errp, errno, "IOMMU_HW_QUEUE_ALLOC failed");
++        return false;
++    }
 +
-+/*
-+ * "Anacapa R Bridge Board" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Inventec", "pname": "Anacapa QEMU RBB EVT2",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Inventec", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t rbb_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0xb4,
-+    0xa4, 0xf2, 0xc8, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x65, 0x63, 0xd5,
-+    0x41, 0x6e, 0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x51, 0x45, 0x4d, 0x55,
-+    0x20, 0x52, 0x42, 0x42, 0x20, 0x45, 0x56, 0x54, 0x32, 0x47, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a,
-+    0xc0, 0xc1, 0x00, 0x70, 0x01, 0x06, 0x19, 0xc8, 0x49, 0x6e, 0x76, 0x65,
-+    0x6e, 0x74, 0x65, 0x63, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e, 0x61, 0x63,
-+    0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x82, 0x2d,
-+    0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83, 0x71, 0xd9,
-+    0xd6, 0xc0, 0xc1, 0x0e
-+};
-+static const size_t rbb_eeprom_len = sizeof(rbb_eeprom);
++    g_assert(out_hw_queue_id);
++    *out_hw_queue_id = alloc_hw_queue.out_hw_queue_id;
++    return true;
++}
 +
-+/*
-+ * "Anacapa L Bridge Board" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Inventec", "pname": "Anacapa QEMU LBB EVT2",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Inventec", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t lbb_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0xb4,
-+    0xa4, 0xf2, 0xc8, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x65, 0x63, 0xd5,
-+    0x41, 0x6e, 0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x51, 0x45, 0x4d, 0x55,
-+    0x20, 0x4c, 0x42, 0x42, 0x20, 0x45, 0x56, 0x54, 0x32, 0x47, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a,
-+    0xc0, 0xc1, 0x00, 0x76, 0x01, 0x06, 0x19, 0xc8, 0x49, 0x6e, 0x76, 0x65,
-+    0x6e, 0x74, 0x65, 0x63, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e, 0x61, 0x63,
-+    0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x82, 0x2d,
-+    0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83, 0x71, 0xd9,
-+    0xd6, 0xc0, 0xc1, 0x0e
-+};
-+static const size_t lbb_eeprom_len = sizeof(lbb_eeprom);
-+
-+/*
-+ * "Anacapa HPM BRD ID" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Inventec", "pname": "Anacapa HPM BRD ID",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Inventec", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t hpm_brd_id_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0x41,
-+    0x2d, 0xf2, 0xc8, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x65, 0x63, 0xd2,
-+    0x41, 0x6e, 0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x48, 0x50, 0x4d, 0x20,
-+    0x42, 0x52, 0x44, 0x20, 0x49, 0x44, 0x47, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0xc0, 0xc1, 0x00,
-+    0x00, 0x00, 0x00, 0x42, 0x01, 0x06, 0x19, 0xc8, 0x49, 0x6e, 0x76, 0x65,
-+    0x6e, 0x74, 0x65, 0x63, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e, 0x61, 0x63,
-+    0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x82, 0x2d,
-+    0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83, 0x71, 0xd9,
-+    0xd6, 0xc0, 0xc1, 0x0e
-+};
-+static const size_t hpm_brd_id_eeprom_len = sizeof(hpm_brd_id_eeprom);
-+
- static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+ bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
+                                            uint32_t hwpt_id, Error **errp)
  {
-     /* Reference: aspeed-bmc-facebook-anacapa.dts */
-@@ -50,7 +251,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+diff --git a/backends/trace-events b/backends/trace-events
+index 3ba0c3503c..c5c1d95aad 100644
+--- a/backends/trace-events
++++ b/backends/trace-events
+@@ -24,6 +24,7 @@ iommufd_backend_invalidate_cache(int iommufd, uint32_t id, uint32_t data_type, u
+ iommufd_backend_alloc_viommu(int iommufd, uint32_t dev_id, uint32_t type, uint32_t hwpt_id, uint64_t data_ptr, uint32_t data_len, uint32_t viommu_id, int ret) " iommufd=%d type=%u dev_id=%u hwpt_id=%u data_ptr=0x%"PRIx64" data_len=0x%x viommu_id=%u (%d)"
+ iommufd_backend_alloc_vdev(int iommufd, uint32_t dev_id, uint32_t viommu_id, uint64_t virt_id, uint32_t vdev_id, int ret) " iommufd=%d dev_id=%u viommu_id=%u virt_id=0x%"PRIx64" vdev_id=%u (%d)"
+ iommufd_viommu_alloc_eventq(int iommufd, uint32_t viommu_id, uint32_t type, uint32_t veventq_id, uint32_t veventq_fd, int ret) " iommufd=%d viommu_id=%u type=%u veventq_id=%u veventq_fd=%u (%d)"
++iommufd_backend_alloc_hw_queue(int iommufd, uint32_t viommu_id, uint32_t queue_type, uint32_t index, uint64_t addr, uint64_t size, uint32_t queue_id, int ret) " iommufd=%d viommu_id=%u queue_type=%u index=%u addr=0x%"PRIx64" size=0x%"PRIx64" queue_id=%u (%d)"
  
-     /* &i2c6 */
-     /* eeprom@50 */
--    at24c_eeprom_init(i2c[6], 0x50, 32 * KiB);
-+    at24c_eeprom_init_rom(i2c[6], 0x50, 32 * KiB,
-+                          hpm_eeprom, hpm_eeprom_len);
- 
-     /* &i2c8 */
-     /* i2c-mux@72 (PCA9546) */
-@@ -65,7 +267,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0),
-                             TYPE_PCA9552, 0x24);
-     /* eeprom@50 */
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 16 * KiB);
-+    at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 16 * KiB,
-+                          rpdb_eeprom, rpdb_eeprom_len);
- 
-     /* i2c8mux ch1 */
-     /* pca9555@22 */
-@@ -75,13 +278,16 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
-                             TYPE_PCA9552, 0x24);
-     /* eeprom@50 */
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 16 * KiB);
-+    at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 16 * KiB,
-+                          lpdb_eeprom, lpdb_eeprom_len);
- 
-     /* &i2c9 */
-     /* eeprom@50 */
--    at24c_eeprom_init(i2c[9], 0x50, 16 * KiB);
-+    at24c_eeprom_init_rom(i2c[9], 0x50, 16 * KiB,
-+                          scm_eeprom, scm_eeprom_len);
-     /* eeprom@56 */
--    at24c_eeprom_init(i2c[9], 0x56, 8 * KiB);
-+    at24c_eeprom_init_rom(i2c[9], 0x56, 8 * KiB,
-+                          bsm_eeprom, bsm_eeprom_len);
- 
-     /* &i2c10 */
-     /* i2c-mux@71 (PCA9548) */
-@@ -92,7 +298,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5),
-                             TYPE_PCA9552, 0x22);
-     /* eeprom@52 */
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 5), 0x52, 32 * KiB);
-+    at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 5), 0x52, 32 * KiB,
-+                          rbb_eeprom, rbb_eeprom_len);
- 
-     /* &i2c11 */
-     /* i2c-mux@71 (PCA9548) */
-@@ -105,7 +312,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5),
-                             TYPE_PCA9552, 0x22);
-     /* eeprom@52 */
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 5), 0x52, 32 * KiB);
-+    at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 5), 0x52, 32 * KiB,
-+                          lbb_eeprom, lbb_eeprom_len);
- 
-     /* &i2c13 */
-     /* i2c-mux@70 (PCA9548) */
-@@ -116,7 +324,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
- 
-     /* i2c13mux ch4 */
-     /* eeprom@51 */
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 4), 0x51, 32 * KiB);
-+    at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 4), 0x51, 32 * KiB,
-+                          hpm_brd_id_eeprom, hpm_brd_id_eeprom_len);
- 
-     /* i2c13mux ch7 */
-     /* nfc@28 — no model */
-
+ # igvm-cfg.c
+ igvm_reset_enter(int type) "type=%u"
 -- 
-2.53.0-Meta
+2.43.0
 
 

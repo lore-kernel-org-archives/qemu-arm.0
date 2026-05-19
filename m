@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ACE4CD4F3C
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 14:47:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C86CCD5BAB
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 14:47:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPLj1-0000dT-Vv; Tue, 19 May 2026 10:47:18 -0400
+	id 1wPLhv-0007ox-BV; Tue, 19 May 2026 10:46:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLj0-0000Rm-0H
- for qemu-arm@nongnu.org; Tue, 19 May 2026 10:47:14 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLht-0007oH-Qm
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 10:46:06 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLiy-0007vA-9Y
- for qemu-arm@nongnu.org; Tue, 19 May 2026 10:47:13 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-44c350a5b87so2216074f8f.3
- for <qemu-arm@nongnu.org>; Tue, 19 May 2026 07:47:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLhr-0007eu-S5
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 10:46:05 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-488ff90d6c7so27745055e9.2
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2026 07:46:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779202031; x=1779806831; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779201962; x=1779806762; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HVBWmui2gRqhhcBVAajrDH3fSaJghOrYunK4qpZkBCg=;
- b=X3GlQ4s3TG0r8N5LeU9FTTl+RzCy2yAseyMlngn+a1faAhn4espCssY/scTNXXbNdg
- VYTuffkcNag93s4jonIp9v86xW9dkRgNJBIPfc1x3E/IgToXLdR5OpbqE5ABtBLX3fE0
- RY0KZPVwfvMst9MdNkkeXgsSO9Lfb2xGC9dGsvgx7mXsytJ4WnTaVY5++BqdBQ0Ge9wn
- JyDe2214UOU70dO6pB7PYA5GRZcWTL+szYvHl/6ydVqhCYW+79CKOJ2iCkCYwtJmNDaa
- LPNU+N1pmtUfmuI7CAZhOcHIfo2fIrw3EzmrTfZEipduWvKN2BykF/QWTe5btr3zzckZ
- v/Ig==
+ bh=K1V+GWtucxSZl1YZ8nu1MtklisKojriGnpVCnzAvOg4=;
+ b=rrLyvnRyLBgL6Xg5TzFdiBDYMlTmdLYi3t1l39I2B+3mpPBC9SqKuqzIkPX06Jo/HB
+ d59F3Mvpoogyl0HtKdu8CEmnpXGkVE+az6lMgTVY0uXeKdaJUGiRcyhOKdgKa6b2TIOF
+ hf+EfET5d6KHNlTictPY2EJSoDOGv+ajQ69s/iI2LfPa9yNU5qKNLQw5rY0ujMQVnoXb
+ XKFITI/79fNNEAVjFGkr6vlKFKN8Jf8z0PJHn3yWfdh+IQzfTW0SCegOONDKs7f4sZji
+ TJ0rLc52Sa8oohGQ5NEv2LdydrY2UH/0yNJwcZwpvD4pIKYKPpWnNFtaKHFEaDt7nSnJ
+ gjjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779202031; x=1779806831;
+ d=1e100.net; s=20251104; t=1779201962; x=1779806762;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=HVBWmui2gRqhhcBVAajrDH3fSaJghOrYunK4qpZkBCg=;
- b=PRd9CaFrmIder0LC3c15kv+CIVCIL08+SoVf7BSu3RSuqoopu1rsHjUYnGoW5r9gyI
- nSl8ySC5oqI286tLT7uwJ7wD3ds4evH9JWzewFUwcVE1Zsqtqk9mwHAD0+hw8gwXKnEd
- Oh93FrH3Kx16fbkRS1mnWltjwrkymI67nhpD4Q5wpYjX+I+xzTH25arHBhVtpm0b3/Nq
- Jz21AiKVdBduqBsFvNzYNC6REy6dHPu5VYp2qXUvWd1Vlh49aeSGr9J3gALQrBpZIMiS
- HdqwP5J43+SxKa6zTfpcSlq1V7z0Qf9sG84mOkfdsZMEuIOEvJ2f6vvCXNcTPC2OjMVp
- 10YA==
-X-Gm-Message-State: AOJu0YyEqUzsEDM+zlBsHHRc5F2VmFwK0TmFG44O1zZyxOLruOrcwZAD
- onY/mUnyDx4RzZQku2xFXiy6sDfSa6ku0OzN/zlF/Mj7zcIEzB4vgsFjiVtW6VQJwshRHgBiLt2
- oyp8TpIE=
-X-Gm-Gg: Acq92OFpnMfNg8F/ATQ2m2P/t1pYIU6PofY6FASSIDaLUgSXz3u2JBQwDRBeHZb6Cat
- Vnca13rrqMltPwfHVNtU+FgIWFAPV89CH857M25laLSwEbPhVoM5NDOKNw9S8OqEEtvOlVa/mvJ
- sREoCeW9H3b6S4jpRvm/BNAz40fYrtXp+WA5zUBa+Mgufu+qfo7a3/fiHyMH5BtGskncICJ50Y6
- O/7AL7ok0AytMsZXZEFiq5I+HXW57U8MEepthoZCQKmGnVR5mhEJtu7tg/18xF0elM3DwAZWl3h
- xjX9NbE2wVR0HfuFCKb1Pl1Kpf9oxZMxC6jNBTHN7hhFRdIhqpPDun/v/qAhT81a6wgifcCpWJL
- zHN9pXZtjfAX3E4qjQULNPLzGPkvg5U8gQ11BIWFyNPYxT/T8WmnM+b43NM5Rk+B82pMHd/DgMW
- wgFqD/bumFGh1Ufepzx/Er7kJpvZWRSHMluKiRfvd5o9O7QCgAl/Yiq0XdD82zDfgjju3E4HuHb
- wGJXbcCxoE=
-X-Received: by 2002:a05:6000:4011:b0:441:1fa5:457c with SMTP id
- ffacd0b85a97d-45e5c5a5d38mr30735216f8f.5.1779202030772; 
- Tue, 19 May 2026 07:47:10 -0700 (PDT)
+ bh=K1V+GWtucxSZl1YZ8nu1MtklisKojriGnpVCnzAvOg4=;
+ b=gep4bYMWt7Lj9PjZ+s/8BNcjMSUaw0dAdaNak9iafy3TIB99KO/rPT5LphEVRwgsPj
+ W3RQXV9uTxrE/FJSp2WwBQdxZzVtFo5D3Yb86ypGPAp3FzZcjUiwyL13AzDUTMCou5mI
+ i80RR88VcvpRnv0fjsRq8mQlN1W3xpOizXHWHh606VZgxgFjJt53K22SsXYhVwk7VuqM
+ ir64w0WBLRLt1YcTwwKMPxW4j2qvI/EXUEtj1dascIZ77MpVWGmt03al6iZSMFu/4rHy
+ PVjXm2RCaOxb5Alc/tS5wwN7h1bL3ds3IaAkM55rQvZQE1r+BhcEtHmid+sXL9hJKJ5b
+ c92A==
+X-Gm-Message-State: AOJu0YyFppr17ZbtAK0dJBTMAkOWSADngIH4zJfSdrZgnl38AO9sUuIX
+ 2Thgp9rg7QOfVr72/dG0tAS6AWMYmzkcGjMK1PYdj0wlcX+cW5urx4JGOLbuJmV8hz71fcxqOJo
+ ggSwOM0o=
+X-Gm-Gg: Acq92OFAlnQUXDAM00MO50S2JEv6zlATsgBpeblyIvGaXasN0Bo04s50jubmNei/gFW
+ AgvQaqGxep4bYSn4zMUoTZboZ8pZtZlBfd3myh2rePRI0oUIAADH+/CBFOAr0b9Y053O7u6FypA
+ 5oPCCQ+XQ07qIvXC1audi7L7lPUFS/P/WJl10L/HGroT6ZuEFUtWUnYYRkTBYcmaQbWthkmhui6
+ 1/Vvt4wRSxPsCfpBD7SEzGFj1YJxjTlAqGhUw+SoXdeP4xPSOJxaZSQapwxnRmoBJfPnHU+xybk
+ 5HSVuxps0OoaEOPWPuOadpBZjegzOPk2xiiZC4oQveZKgAoI43rOnmyRqhdl76ktbCuJapaHyvv
+ a0wVM3bv36y3cyvNlFaHH8cb5oPFY1j5d57OED9draPaBDsjx+CvwQZonorX01SmvwdQ9MoAC7W
+ QrrMcISf/JHgGX0ULgRSnF8ykr3zBUvDvMLCmwRkzzS7N2RESnPv5+NfJoMMf/Efm7MeZiS3nt
+X-Received: by 2002:a05:600c:4fc9:b0:48a:5821:5ffc with SMTP id
+ 5b1f17b1804b1-48fe60e473bmr275437895e9.2.1779201962193; 
+ Tue, 19 May 2026 07:46:02 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45d9e768c4fsm46645952f8f.8.2026.05.19.07.47.09
+ 5b1f17b1804b1-48feae166dasm124982975e9.9.2026.05.19.07.46.01
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 19 May 2026 07:47:10 -0700 (PDT)
+ Tue, 19 May 2026 07:46:01 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v8 11/18] target/arm: Use make_ccsidr(LEGACY) in 32 bit 'max'
- CPU type
-Date: Tue, 19 May 2026 16:45:46 +0200
-Message-ID: <20260519144553.91483-12-philmd@linaro.org>
+Subject: [PATCH v8 01/18] tests/qtest: fix discarded const qualifier warning
+Date: Tue, 19 May 2026 16:45:36 +0200
+Message-ID: <20260519144553.91483-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260519144553.91483-1-philmd@linaro.org>
 References: <20260519144553.91483-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,46 +99,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Commit 676624d757a ("target/arm/tcg: refine cache descriptions
-with a wrapper") added the make_ccsidr() helper. Use it. Besides
-being simpler to review, it also makes arm_max_initfn() more in
-line which aarch64_a57_initfn(), which it almost duplicates.
+From: Matthew Penney <matt@matthewpenney.net>
 
+Modern compilers warn that the result of strstr() may discard
+const qualifiers when assigned to a non-const pointer.
+
+Make 'found' a const char * to fix the warning.
+
+Signed-off-by: Matthew Penney <matt@matthewpenney.net>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Tested-by: Thomas Huth <thuth@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20260514191844.105888-1-matt@matthewpenney.net>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 ---
- target/arm/tcg/cpu32.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ tests/qtest/libqtest.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
-index 919ed8a6cf8..cf643ce43b1 100644
---- a/target/arm/tcg/cpu32.c
-+++ b/target/arm/tcg/cpu32.c
-@@ -9,6 +9,7 @@
-  */
+diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
+index bf9284b9a13..b1e06ea364e 100644
+--- a/tests/qtest/libqtest.c
++++ b/tests/qtest/libqtest.c
+@@ -2146,7 +2146,7 @@ bool mkimg(const char *file, const char *fmt, unsigned size_mb)
+ bool qtest_verbose(const char *domain)
+ {
+     const char *log = getenv("QTEST_LOG");
+-    char *found;
++    const char *found;
  
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "cpu.h"
- #include "accel/tcg/cpu-ops.h"
- #include "internals.h"
-@@ -756,9 +757,12 @@ static void arm_max_initfn(Object *obj)
-     SET_IDREG(isar, ID_ISAR6, 0);
-     cpu->isar.reset_pmcr_el0 = 0x41013000;
-     SET_IDREG(isar, CLIDR, 0x0a200023);
--    cpu->ccsidr[0] = 0x701fe00a; /* 32KB L1 dcache */
--    cpu->ccsidr[1] = 0x201fe012; /* 48KB L1 icache */
--    cpu->ccsidr[2] = 0x70ffe07a; /* 2048KB L2 cache */
-+    /* 32KB L1 dcache */
-+    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 7);
-+    /* 48KB L1 icache */
-+    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 3, 64, 48 * KiB, 2);
-+    /* 2048KB L2 cache */
-+    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 2 * MiB, 7);
-     define_cortex_a72_a57_a53_cp_reginfo(cpu);
+     assert(domain);
  
-     aa32_max_features(cpu);
 -- 
 2.53.0
 

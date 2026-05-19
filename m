@@ -4,104 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33E1DCD5BA4
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 13:27:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAC15CD4F5B
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 13:29:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPKTe-00007o-LM; Tue, 19 May 2026 09:27:18 -0400
+	id 1wPKVn-0000pU-CF; Tue, 19 May 2026 09:29:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wPKTd-000078-OM
- for qemu-arm@nongnu.org; Tue, 19 May 2026 09:27:17 -0400
-Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wPKTb-0007Rq-29
- for qemu-arm@nongnu.org; Tue, 19 May 2026 09:27:17 -0400
-Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-65c396d3b36so3574051d50.0
- for <qemu-arm@nongnu.org>; Tue, 19 May 2026 06:27:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779197233; cv=none;
- d=google.com; s=arc-20240605;
- b=Ugz5ZfX6H3fCdYNGJB4klzMDToptDhOO19k+eyqSoXvtbVS2DqGILoBw6+UBWpAS0z
- de4ISdJZaRNZHanfR1/D5GLpxgFtSZEM3UvhaXPR6XwC+R0bQxKP2Cvy9bc4MjESsmmS
- 7xtPdcg1Jse+eSNkQLV+UOY1uB1egd5Tv9P3BqSyRd7V3bojHYCZQqCNV24EVbGBGWlS
- WJJOw/b4KW9F2bcUuOe+wORoB46bDWjIBFHjfQD5hg3NZiXwMoebyci/wDaU4fKA0eFF
- 5ClmLrbpM/IvP6QOCg7plW9V0jwVa96CtJY19HSrAemZngky0+F+nK6yM7NLbK0ZSAtp
- fEKQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=qSjj0IIDOrr3PY/+TtJBWcm7zY7QcB73XKXiMvE6qAc=;
- fh=vOYLPfRSDyhOJsyag2IUpckDs7/Nzlh6QSJdRFr/0wQ=;
- b=gl8EVbNYV16o9TBI/W3upsvuHRpSNZb6XDjnFZWq+90qJIcKuK9o/cGJYufptIOUTL
- jjvQD4lBWEPJdLHW3vq7X9hNtJDH1o8vUXVjE4EiF1Wu8PbsPQ7m7TBLreonV7sOvx2J
- FQ726HfMWJrwq9RqNyW/AJhrbVhkr4J5pCs5eaZjhyGTzQHStio/J3H9AqRH0cbOO/3b
- SgHnFKqJON3p8uXzKmbTVTEOZZZBuK5G0wzM8sUjZBjxTy9VkZsNU2oCGphYj0aEzHMM
- 2kqjYSjCWTfN0JnCST7cCb/yJud8OC0laDdY4dB++dfAJzAgRKFGj96k540zhOsy/UIT
- NTYQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779197233; x=1779802033; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=qSjj0IIDOrr3PY/+TtJBWcm7zY7QcB73XKXiMvE6qAc=;
- b=JixjJTFJ/iC7QxZiCNNCkjiT2Ig7Qi5OkqVlveLT6VtRO1mjbPkF9sFl/q1sxro6Fg
- 5plYVF9sxB3GBPBI5VZ3p7nRFdcMvFcQuEDGSvdmaItaLfic+UWO0+5Ehf5v2JizcUAW
- d0P9YmPOk0EKr0N0I7vkbkE/p2hpGlwiuxujx55n2Mp30Pa8HruLlHfeAC902yzJlNx9
- kNJsBTWZ+76kae/GWBGG4F30136hKuLJHAg67nPRev9F1gSDdVcPL6z3PYn9ZIffPtmP
- xE7zn6g2r0cleU0V/CIligDZscqDOWDyRZYafQ3+jVXO+M5jGDYzC3TBML2jJwzAwQY7
- iMzA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779197233; x=1779802033;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=qSjj0IIDOrr3PY/+TtJBWcm7zY7QcB73XKXiMvE6qAc=;
- b=RSIzyOxpqA+RPCpjIBuCWtjkXolA/3J2XTPg7HbUfJyUCy4zgxfAP4V6lYaOcFNNMw
- hpsfCmuJTfhahKApjvOSkqh7HqdPrT0SES9K4GyqHPeKpZ4IWLiQYgPH4hDEcOMZZWfP
- o6bp32OnKkfiUF05tOjiEmKWsjXxhdadPPh52V8ULJi55VRL8u6KfnTnfFoiU+harjSk
- on5QzXasOOdKh5k8ctdYNrr/5dOpzlfasmESgvaSAxLQt9ogtgqMg3Nt4YxAJzWTbwpb
- ZMb24Xqu+7hQAeF67NyNDOa2bqYEOJiqF+U5/VgRdPfTbuPif8Ai+jn1m2lnl+ANFlQ8
- Z90Q==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+XPwEI9OXn9I/6dzLptlr2Wsmu/Oy+oiijp85Dp2nYvvvkeCYWVeteOfaIYT32+dMwMGaE2hiiiQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwcsRaV8l36O54pwkLRxD7N8ChlvqskW310MkG/RB3ZuQAn6p68
- hIEF7U0Pvov9M7++rroGXbekRzST/b0TC+7R1wymY4mYS+4T70voE+txjgm3piI2cZTqJDd0I2i
- RUOEHGyQu/viNIejmMvwbXn6w57ruXJIYgDdHd/Is4w==
-X-Gm-Gg: Acq92OGJVgc4A6ktaWnS3RdXmYAc+GmD1m+yA7HBy54CRpz17sgtjuTfPxU/RaB0Nqw
- PF/TtQ7UppMJG5Z+4wer1K4wH3u/6+PZmcRkp+f2DksILpVfHh88XMqh8DuZhHFATbAxtaoLfzC
- fHVfI52qbWCJdMslDT91UlkaEZ1/9REHCjV0t5zKLmyl6V+hm0p+YlD1bIvThbxwKdpGecIOpZ6
- L/9gMxYJ/H8MZMboP6Pwsfg8IR4jGBTEYBw/n4tTV1vWlgNRMt6LBMsXCozjoHy3pFr98RlFxEJ
- rFosLfdLH9ds8veOqPBALGbluIciEATyxO/K4QWOnG3TNmfyCVt82hJNfhZRqdu9Qr4=
-X-Received: by 2002:a05:690e:13cb:b0:65e:3eee:4ad3 with SMTP id
- 956f58d0204a3-65e3eee588cmr12660822d50.49.1779197233283; Tue, 19 May 2026
- 06:27:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wPKVl-0000nb-Hi
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 09:29:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wPKVi-0007yp-Sm
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 09:29:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779197364;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=3fC5NExt4dPUL7IgU7wrj6+Uy2zcCLD4IM4/bVknki4=;
+ b=HPULY/7P8dXOiGVrdjkbdSmbHYVJj4bgvMD5mqgYbln3vXdAWAtB/W/nFr+Sj3/+WOs4hT
+ tY9MIOTFPgzDmBGSkcnWCscMEdJsCcmsHnuYdzZd2ihXNx0Bfs3n5vlJPnqRYzD0aQ8riZ
+ ATqK6EmOr4RLs5H0vTeXFsNLYvt6VB8=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-574-Mb8VD7t7NjiWOv6AxMR54g-1; Tue,
+ 19 May 2026 09:29:20 -0400
+X-MC-Unique: Mb8VD7t7NjiWOv6AxMR54g-1
+X-Mimecast-MFC-AGG-ID: Mb8VD7t7NjiWOv6AxMR54g_1779197357
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E3E881956058; Tue, 19 May 2026 13:29:16 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.44.49.207])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 3AE121800576; Tue, 19 May 2026 13:29:08 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ shaju.abraham@nutanix.com, khushit.shah@nutanix.com,
+ yangjinqian1@huawei.com, cohuck@redhat.com, richard.henderson@linaro.org,
+ sebott@redhat.com, skolothumtho@nvidia.com, philmd@linaro.org
+Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
+ armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
+ jdenemar@redhat.com
+Subject: [PATCH v5 00/18] kvm/arm: Introduce a customizable aarch64 KVM host
+ model
+Date: Tue, 19 May 2026 15:27:14 +0200
+Message-ID: <20260519132905.145643-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20260517003002.321430-1-richard.henderson@linaro.org>
- <20260517003002.321430-31-richard.henderson@linaro.org>
- <CAFEAcA-q4GdT-uawv-hw6j9ixdO=Nw60hkJ=mq61G3CxRE5t0w@mail.gmail.com>
-In-Reply-To: <CAFEAcA-q4GdT-uawv-hw6j9ixdO=Nw60hkJ=mq61G3CxRE5t0w@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 19 May 2026 14:27:00 +0100
-X-Gm-Features: AVHnY4JEaUgCVBpNhRAV4TusRdL5kFvgkkpUvb-HjneZCtt78bBwt4nAvmydgUM
-Message-ID: <CAFEAcA_5nrmafaL8oGr9Oax5BJ=bJUXZ9XjNt0ZL4bcxzcebTQ@mail.gmail.com>
-Subject: Re: [PATCH v5 30/63] target/arm: Implement BFCVTN for SVE
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: adIHLWYb3dq1uMF5sfiuhMWLesX6gYJZgf061GMtrA8_1779197357
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,74 +90,130 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 19 May 2026 at 11:16, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Sun, 17 May 2026 at 01:32, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
-> >
-> > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> > ---
->
->
-> > +static uint8_t fcvt_fp8_e4m3_output(FloatParts64 *p, int scale,
-> > +                                    bool saturate, float_status *s)
-> > +{
-> > +    *p = parts64_scalbn(p, scale, s);
-> > +    /*
-> > +     * Saturating Inf -> Max handled in uncanon_e4m3_overflow
-> > +     * because there is no infinity encoding.
-> > +     */
-> > +    return float8_e4m3_round_pack_canonical(p, s, saturate);
-> > +}
->
-> The E4M3 conversion code doesn't seem to produce the right
-> output for an input NaN. This looks like it's because the
-> fpu/ code isn't special-casing "there's only one NaN value
-> for this format". Here, if we input a QNaN the scalbn operation
-> will ignore the specific input NaN and return the default NaN.
-> There's no special-casing of E4M3 in partsN(default_nan), so
-> you get a frac value that's based on the default_nan_pattern,
-> which for Arm has the MSB frac bit clear. Then in partsN(uncanon)
-> we just move that frac value down into the right place for E4M3,
-> without enforcing that it really is the all-ones NaN.
->
-> I think this should fix this, but maybe there's a better way?
->
-> @@ -519,6 +519,14 @@ static void partsN(uncanon)(FloatPartsN *p,
-> float_status *s,
->          case float_class_snan:
->              assert(fmt->exp_max_kind != float_expmax_normal);
->              p->exp = fmt->exp_max;
-> +            if (fmt->exp_max_kind == float_expmax_e4m3) {
-> +                /*
-> +                 * E4M3 has exactly one NaN, with the frac field all-ones.
-> +                 * Using the frac from the input NaN might result in
-> +                 * a non-NaN value.
-> +                 */
-> +                fracN(allones)(p);
-> +            }
->              fracN(shr)(p, fmt->frac_shift);
->              return;
->          default:
+This series enhances the current host KVM model with capability to
+set writable ID reg fields. 
 
-If we do take this approach we also need something like:
+Since v6.7 kernel, KVM/arm allows the userspace to overwrite the values
+of a subset of ID regs. The list of writable fields continues to grow.
+The feature ID range is defined as the AArch64 System register space
+with op0==3, op1=={0, 1, 3}, CRn==0, CRm=={0-7}, op2=={0-7}.
 
---- a/fpu/softfloat-parts.c.inc
-+++ b/fpu/softfloat-parts.c.inc
-@@ -288,6 +288,7 @@ static void
-partsN(uncanon_e4m3_overflow)(FloatPartsN *p, float_status *s,
-         p->frac_hi = E4M3_NORMAL_FRAC_MAX;
-     } else {
-         *p = partsN(default_nan)(s);
-+        fracN(allones)(p);
-     }
- }
+The end goal is to get more flexibility when migrating guests
+between different host hardware.
 
-because the NaN value from uncanon_e4m3_overflow isn't passed
-through the NaN handling part of uncanon.
+QEMU retrieves the writable ID fields from KVM UAPI [1] and
+match them against a generated description of ID regs and their
+named fields that stem from AARCHMRS Registers.json file.
+Current description is based on latest 2026-03 edition.
+The content of the generated files was compared against kernel
+linux/arch/arm64/tools/sysreg file. It is not straightforward
+to have unit tests for python scripts as there are many cases for
+field extraction.
 
-Though there's an argument for making default_nan() for the
-format return the right thing I guess.
+For each writable named field a uint64 property is created
+following the "SYSREG_<REG>_<FIELD>" naming convention. REG and
+FIELD names are those described in ARM ARM Reference manual.
 
--- PMM
+The list of SYSREG_ID properties can be retrieved through the qmp
+monitor using query-cpu-model-expansion [2].
+
+Connie & Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/arm-cpu-model-v5
+
+History:
+--------
+
+v4 -> v5:
+- generate target/arm/cpu-idregs.h.inc that look similar to
+  the format used in [RFC PATCH v1 02/13] target/arm:
+  named_cpu_model: Add ID Register Fields without the
+  description of the value values nor safe policy/value.
+  I guess valid values could be generated from the Registers.json
+  file too. Safe policy/values cannot.
+  I reused one patch from the above series.
+  Let's see how both series can progress/coexist without any
+  anticipated bias.
+- Addressed all comments from Shameer on v4
+- Addressed 2 comments from v4 that were missed including the
+  issue of IDreg visibility affected by some other settings.
+  Unfortunately I was not able to test it.
+- Further look at overrides between low level id reg field
+  properties versus legacy CPU options. I have the feeling they
+  can coexist as long as we document the hierarchy between them:
+  host kvm default -> ID reg field props -> legacy CPU options
+- Noticed more writable fields that are RES0/RAZ
+- Improved commit messages in general
+
+References:
+-----------
+
+[1]
+KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES
+KVM_ARM_GET_REG_WRITABLE_MASKS
+Documentation/virt/kvm/api.rst
+
+[2]
+qemu-system-aarch64 -qmp unix:/home/augere/TEST/QEMU/qmp-sock,server,nowait -M virt --enable-kvm -cpu custom
+sudo build/run qmp-shell /home/augere/TEST/QEMU/qmp-sock
+Welcome to the QMP low-level shell!
+Connected to QEMU 11.0.50
+(QEMU) query-cpu-model-expansion type=full model={"name":"host"}
+
+
+Cornelia Huck (3):
+  target/arm/kvm: Introduce kvm_get_writable_id_regs
+  arm-qmp-cmds: introspection for ID register props
+  arm/cpu-features: document ID reg properties
+
+Eric Auger (14):
+  scripts: introduce scripts/update-aarch64-cpu-sysregs-header.py
+  target/arm/cpu-sysregs.h.inc: Sort by name alphabetical order
+  target/arm/cpu-sysregs.h.inc: Update with automatic generation
+  arm/cpu: Add infra to handle generated ID register definitions
+  scripts: Introduce scripts/aarch64_sysreg_helpers module
+  scripts: Introduce scripts/update-aarch64-cpu-sysreg-properties.py
+  target/arm/cpu-idregs.h.inc: generate with script
+  target/arm/cpu64: Retrieve writable ID reg map in
+    aarch64_host_initfn()
+  arm/kvm: Initialize all writable ID registers from host
+  arm/kvm: write back modified ID regs to KVM
+  target/arm/kvm: Introduce kvm_arm_expose_idreg_properties
+  target/arm/kvm: Special case REVIDR_EL1 and AIDR_EL1
+  target/arm/kvm: Ignore some writable bits that shouldn't be
+  target/arm/cpu: Expose writable ID reg field properties on the kvm
+    host vcpu model
+
+Shaju Abraham (1):
+  target/arm/cpu_idregs: generate tables for Arm64 ID registers and
+    fields
+
+ docs/system/arm/cpu-features.rst              | 106 ++-
+ scripts/aarch64_sysreg_helpers.py             | 109 ++++
+ .../update-aarch64-cpu-sysreg-properties.py   | 168 +++++
+ scripts/update-aarch64-cpu-sysregs-header.py  |  51 ++
+ target/arm/arm-qmp-cmds.c                     |  19 +
+ target/arm/cpu-idregs.c                       |  50 ++
+ target/arm/cpu-idregs.h                       |  33 +
+ target/arm/cpu-idregs.h.inc                   | 617 ++++++++++++++++++
+ target/arm/cpu-sysregs.h.inc                  |  57 +-
+ target/arm/cpu.h                              |   3 +
+ target/arm/cpu64.c                            |  14 +
+ target/arm/kvm-stub.c                         |   5 +
+ target/arm/kvm.c                              | 320 ++++++++-
+ target/arm/kvm_arm.h                          |  12 +
+ target/arm/meson.build                        |   1 +
+ target/arm/trace-events                       |   6 +
+ 16 files changed, 1539 insertions(+), 32 deletions(-)
+ create mode 100644 scripts/aarch64_sysreg_helpers.py
+ create mode 100644 scripts/update-aarch64-cpu-sysreg-properties.py
+ create mode 100755 scripts/update-aarch64-cpu-sysregs-header.py
+ create mode 100644 target/arm/cpu-idregs.c
+ create mode 100644 target/arm/cpu-idregs.h
+ create mode 100644 target/arm/cpu-idregs.h.inc
+
+-- 
+2.53.0
+
 

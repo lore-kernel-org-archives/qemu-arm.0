@@ -4,53 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67E2BCD4F3C
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 04:43:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3151CD4851
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 04:59:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPCIr-0005Ss-E4; Tue, 19 May 2026 00:43:37 -0400
+	id 1wPCYF-0000V8-W4; Tue, 19 May 2026 00:59:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPCIq-0005SJ-54
- for qemu-arm@nongnu.org; Tue, 19 May 2026 00:43:36 -0400
-Received: from 11.mo534.mail-out.ovh.net ([46.105.33.174])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPCYD-0000UO-E8
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 00:59:29 -0400
+Received: from smtpout9.mo534.mail-out.ovh.net ([178.33.251.187])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPCIn-0005Jn-RJ
- for qemu-arm@nongnu.org; Tue, 19 May 2026 00:43:35 -0400
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPCYA-0007R4-8H
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 00:59:29 -0400
 Received: from director1.derp.mail-out.ovh.net
  (director1.derp.mail-out.ovh.net [51.68.80.175])
- by mo534.mail-out.ovh.net (Postfix) with ESMTPS id 4gKMW52CFfz6LNZ;
- Tue, 19 May 2026 04:43:29 +0000 (UTC)
+ by mo534.mail-out.ovh.net (Postfix) with ESMTPS id 4gKMsL1j9cz6LPD;
+ Tue, 19 May 2026 04:59:18 +0000 (UTC)
 Received: from director1.derp.mail-out.ovh.net
  (director1.derp.mail-out.ovh.net. [127.0.0.1])
  by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Tue, 19 May 2026 04:43:29 +0000 (UTC)
-Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.101.100])
- by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gKMW46ytwz5vd9; Tue, 19 May 2026 04:43:28 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.2])
+ for <jamin_lin@aspeedtech.com>; Tue, 19 May 2026 04:59:18 +0000 (UTC)
+Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.0.36])
+ by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4gKMsK6N2kz5w8j;
+ Tue, 19 May 2026 04:59:17 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.3])
  (Authenticated sender: clg@kaod.org)
- by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id E90FB941730; 
- Tue, 19 May 2026 04:43:26 +0000 (UTC)
+ by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ 25BDC2403B51; Tue, 19 May 2026 04:59:16 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-114S0088dd7906c-4e00-434e-8f19-7242ecb79bd4,
+ (GARM-112S0069ff4c1ba-a214-4529-bd00-f3784e604e38,
  A1C5BDF50025601E7F63D663DE463AD2E6007479) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <cdad7a1a-8032-46f0-bf94-63afd68759aa@kaod.org>
-Date: Tue, 19 May 2026 06:43:26 +0200
+Message-ID: <1e2e06c1-b36e-4c1a-9ff5-8d84ce7e5f47@kaod.org>
+Date: Tue, 19 May 2026 06:59:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] aspeed/hace: Prevent total_req_len overflow
-To: Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+Subject: Re: [PATCH v1 1/1] hw/misc/aspeed_sbc: Add bounds checking for OTP
+ write operations
+To: Michael Tokarev <mjt@tls.msk.ru>, Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Katherine Leaver <katherine.j.leaver@gmail.com>, qemu-stable@nongnu.org
-References: <20260504213421.710035-1-clg@redhat.com>
- <20260504213421.710035-3-clg@redhat.com>
- <1df3c974-0e84-4801-9441-705d4241dfe8@tls.msk.ru>
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>,
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+References: <20260428055254.76581-1-kane_chen@aspeedtech.com>
+ <20260428055254.76581-2-kane_chen@aspeedtech.com>
+ <c2b76041-81d8-43e0-b50b-af88c1c658b5@tls.msk.ru>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -95,30 +100,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <1df3c974-0e84-4801-9441-705d4241dfe8@tls.msk.ru>
+In-Reply-To: <c2b76041-81d8-43e0-b50b-af88c1c658b5@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 16893283677665144060
+x-ovh-tracer-id: 17160403431173106940
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFljm2gbpaQGvVknwi3ISUNu5MXqCdqwbVom+/yZyvFUCcmBsGguQss4j+PxOYhGkptF8o1lo0DKvrVHKqIK06mV0xaFH0XUfqkFPYbRU3uVxubTglXD1pSSccuc4MOK41FK50aDSnILszQ2ahxudUP0et9aupOqymroAEKJrGZmf5ZRqWcXjdgIhOH3IiyWArgIoejpjHsawNnVRekLVs+bBylnXy3Ql9G9nU5N8WhZwgKvu8TbyiaGUK2Kpv67f35J3O9zlUsfW7Y1kTsC8eilwN33Ijh10TD1WU7fHw7Ju39BHgRvnwS8TGeYJcJnds9mejA2HAqNsl1eJ7O07Orr1ITQkDKvn+bTwbspUEYLUp5QC40XfeapriiaOwIvvZ0m0dcOGyZF+BhriNKzbnB1hvPzXPYhC9DDjUzNIdviByJlxKFutCJydFvp43x45XUallqyvKFGoRMCza2KsSJTRd2HT1on0qOwraJbeOnI/KVkdPNU4J8qITjQvptqMWpSkApm2U/iH+JaAjmNt/p1uAR+ZUbRuT+an7bvMcoHzF0iO3itZS/vf2UStFoORBFhMW8m3rS1hQ8AebsRleGBBi3wkuduiBA+i01EBQE6KwJO91GK94LcIp0/E4QSFfdkTs7APZBQg63IHy1F9ZQTxUrgjRjaEY+w8TOofO+lA
-DKIM-Signature: a=rsa-sha256; bh=UNJU6eSuY4VQUKcxVmYKpsiuhM7LLwkejd5LIQO932o=; 
+X-VR-SPAMCAUSE: dmFkZTF0W4Ii1i2FiaAotfmUdvRf+zfk5DPeBbgPCBGA0uz+ROnlrYtnpdn43Hu93eQ92i0YNZTJfyvDTE47Zau2uv5jFuH0INpSGzam+2C8lsfLLJrlyDf6NvllTSNA5nFP1PbfXmCbTJOuFdIZjRXVwCiEbgBWzsRdKOJCDAQEKjq5Kvr77KvTznvt+2duCQLZNbpymQjyzQrlTf9ZGKE6qdDCMQMa8B5LHBdmfZosFdO1msuulXnZDid9HMs2/iAOAkWomjW+xsUJ0666cDyR/uJ/LuSbRnh6Az2faI80X2CQx7Q88eazBcg2ZcDThUvG8ZRz9zsPUzq+Uah1yvR86t1nhsgJeI+yz1C/sr9JzwW7Y7nQpsmdd4LzFdMCYuLnHOD7tOXd3IJz8Rn1RHivakH8pqOi1I5Q1lSFG55t+UdG7zT2fnKEJeKZThes0/XBW5SrdJ7V5owKZq5fUFQq1yy88r/Jbc0xFeDbIgelGIiSOWYSCfMQ0rlQbXnDCmIQQtWwDMl5xfcR3g5/FkP337dKonpc5fEMaOb+SyerUcQbmqGmlavSDM2xceQSKxfmCa5s5ZNk8O3PmU2CBN2UhiBHDoZYJ+ThD9iEUX2uM7EHyZQ9h4n+umm4MYsKrOPBaoSKO/GwejacOIEalLkcnSSSd2XgZFaEbixVLmMZjEESFA
+DKIM-Signature: a=rsa-sha256; bh=fLCjlra5E3ISE7Z2zg1x8CVaCENw+4Xw0TS1P96G7AQ=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1779165810; v=1;
- b=JLcDm32Kf9sQGXFQT6+Ch/dxSgzEeuUmGvP6low9p4FD93/NYHutWkkY5+TGk52MYOmG9lhf
- mLHBCWKhHUHXHfTXyVyBWJDy5Ytnm1bXA6b7jK7xJGq0AupdAnChXGTELawPIEBfXuQTW0YvHV0
- 31sfZRvlUZ1glYQm8mJNYTdQZJMCWQ9X+3R9kzawYEC+Fu6OsfRnsb7YXaUjuEHpIhLS2Af7/tI
- iBmCPeA97AVA+778qOyWGujN1Qv8YNcgoBPXUOigMWAFSO8fdNyZeUVpjIBYrjQjeU7h9+ytiCJ
- 4Eu8SZohOIUgJhV2qKIaIv7U28IJn5IiXyxSKngNKFaEw==
-Received-SPF: pass client-ip=46.105.33.174; envelope-from=clg@kaod.org;
- helo=11.mo534.mail-out.ovh.net
+ t=1779166758; v=1;
+ b=T8xAIX3RXrMTkQo2OWVJlKwAYFu7IQuLMG5Ck1vnNy6rtCo8q2AX/xX7FEFkpqNJgNEtU9Xc
+ 8A10TlnBzmwN0dTK5yYo/8bIdKan8oPKU2FoakZ40k8AeAdjdMsw3CggFUtCMIwynqzQZ0S8I6R
+ pDPp2Bxzxlgpm+3NAS1Cnkf4F7IgRZk/lhAxPJ3EKjs9bObFCEWOgfAF+Tk3rhS7izWfDjkhsW+
+ qFW0Q4+TmPxO9ZA5zqcKQiyNOm2EcRO43CpDn4wP0NBZLEypYExfni8Cq4IMIetzeKIptC2K+7l
+ e0D+QNqrgMwNb/cny7hLKIisb5Gwf1n3tGKpsmSYYt6sA==
+Received-SPF: pass client-ip=178.33.251.187; envelope-from=clg@kaod.org;
+ helo=smtpout9.mo534.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,35 +139,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/14/26 21:13, Michael Tokarev wrote:
-> On 05.05.2026 00:34, Cédric Le Goater wrote:
->> In accumulate mode, total_req_len is incremented with plen (hwaddr)
->> for each hash request. Repeated additions can overflow total_req_len
->> (uint32_t) and potentially bypass validation checks in has_padding().
+On 5/14/26 20:48, Michael Tokarev wrote:
+> On 28.04.2026 08:52, Kane Chen wrote:
+>> There is a mismatch between the Aspeed OTP model and the Aspeed SBC
+>> model in how the guest-provided address is handled.
+>> aspeed_sbc_otp_prog() passes a word-indexed address directly
+>> to address_space_write() without converting it to a byte offset,
+>> whereas aspeed_otp_write() expects a byte offset and applies an
+>> additional shift (otp_addr << 2). This double-shift confusion means
+>> that an out-of-range word address can lead to a write beyond the
+>> allocated storage.
 >>
->> Add a helper function to detect overflow before incrementing
->> total_req_len and reject the request if overflow would occur.
+>> Fix this by adding bounds checking on the word offset before
+>> converting to byte offset and passing to address_space_write().
+>> This matches the existing bounds check in aspeed_sbc_otp_read().
 >>
->> Reported-by: Katherine Leaver <katherine.j.leaver@gmail.com>
+>> Cc: Kane-Chen-AS <kane_chen@aspeedtech.com>
 >> Cc: qemu-stable@nongnu.org
->> Fixes: 5cd7d8564a8b ("aspeed/hace: Support AST2600 HACE")
->> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+>> Fixes: 1a00754ccf15 ("hw/misc: Add Aspeed Secure Boot Controller model")
 > 
-> This change does not apply to 10.0.x qemu-stable series, because,
-> at least, it lacks v10.0.0-1171-g7328c48b57c9 "hw/misc/aspeed_hace:
-> Extract direct mode hash buffer setup into helper function".
-> This code in 10.0.x is slightly different, namely, there's no
-> error return from the function in question.  Please take a look
-> at https://gitlab.com/mjt0k/qemu/-/commits/4a82112f40351e94f1b3af938782298abda1c810
-> which is my attempt to fix this code for 10.0.x (not even compile-
-> tested yet).
+> 
+> FWIW (this change has already landed in the master branch, so it's cast
+> in stone), I can't find this commit in my git clone of qemu repository.
+> Neither hash ID nor the name.
 
-Looks correct.
+My bad :/ I should improve my flow to check for bogus commit ids.
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+> Is it this one maybe? https://marc.info/?l=qemu-arm&m=164500409921734,
+> which is commit e1acf581c9 in qemu?  It has a different commit message
+> though.
+
+It should be  :
+
+Fixes: 9f58dd0a8c30 ("hw/misc/aspeed_sbc: Connect ASPEED OTP memory device to SBC")
+
+
+> And this patch does not apply to 10.0.x, - in there, there's no
+> hw/nvram/aspeed_otp.c (688a3dae78 hw/nvram/aspeed_otp: Add ASPEED OTP
+> memory device model).  I assume it's not needed for 10.0.x, but in
+> that case, the Fixes: tag isn't even commit e1acf581c9.
+
+It should apply on stable-10.2
 
 Thanks,
 
 C.
-
 

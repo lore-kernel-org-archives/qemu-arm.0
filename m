@@ -4,88 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AD7CCD4851
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 10:58:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CC20CD4851
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 11:49:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPI9h-00081p-Vy; Tue, 19 May 2026 06:58:37 -0400
+	id 1wPIwH-0008NV-Ed; Tue, 19 May 2026 07:48:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wPI9T-0007y0-Lh
- for qemu-arm@nongnu.org; Tue, 19 May 2026 06:58:20 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wPIw4-0008LN-DV
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 07:48:34 -0400
+Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wPI9R-00016l-QE
- for qemu-arm@nongnu.org; Tue, 19 May 2026 06:58:19 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-4891e5b9c1fso28785065e9.2
- for <qemu-arm@nongnu.org>; Tue, 19 May 2026 03:58:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wPIw2-0003Il-Qf
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 07:48:32 -0400
+Received: by mail-yx1-xb130.google.com with SMTP id
+ 956f58d0204a3-65e170f1ca5so3485593d50.0
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2026 04:48:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779191307; cv=none;
+ d=google.com; s=arc-20240605;
+ b=X1bJYFHi7nVVxuuH45s9/C6La3aWPfSF6xeEWQ4b4qGZgWAS9vhkofJuev3Eu7W0dX
+ InauzaJUZLrYSvpbMmfC+29PhSw3z9EX7zAlbAMY+RVShT9tdeRNA3r4lDG2SV+YKBu/
+ sz8Yh6J7Y3I1Zef47OLACs/FxxYwJj+s3lFqWWQSHg1dSBC8xQhJhJQGjboKxhcGWiro
+ LbMdh9Cci3a/90sEG+a8eXyT0Afl0d3hfUZIaQw+t161BPRL84SlFC47qjQ3kOmzXdad
+ f2O0t6cg0/Rj07L8mrT08JnXb2KzM7N/hgMXpXpcTdnGoIHEWwUssAd6LVSR8GCitG2R
+ r5Qg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=Ro2CqTwsznCgwhHdriIsTvxbARkqkKEYYmfW8L+elBk=;
+ fh=8K1KyfHzId9ietgZeBPhEFhttopdyZgu3NehuPk53bQ=;
+ b=Ewlz7p9QTtMC0V3sICg1Sd+d0EYZOZGpDIOFLTi0FxVZFa2UTBPK8n2NeBuzK0eosU
+ bBF+om/OBfU+iCStlhMK8VvORP+s06Jo4/Y/m2MqlnpubYDDO7UE8JdVC4LR3eEysxze
+ /HSiZejfvu+20FXz211GhEQ05t/MhikwPRpzoUtY4rpOqL00XpWJqDgv3SmCNlf9O0y3
+ W1Nt1MsJkNKjzn+q5WqHRUbQcTLnnbI7CLXCLo1y849ABudxjksEJdQPHUZIFO1kE7ME
+ LPY12gEkEeLmJCluHWAtzSDJnEZ3cquZstrwg1spyBxbyfCokSEmvS17X/TwADJ5ecJx
+ YpuQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779188295; x=1779793095; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=th+7m4e1V2ZxPwz3Px/qnbJ7ANB0j47Cvdm2V2sKVJ8=;
- b=DOkIzr5QX7JbZFD7ImfIBdowVwEcYpRVzpfxDYp3WRwWTLo5ZdeZlVMTHY2WxmHy/i
- ZfXXxC8jcQ4hE7woiwJrRbJdiNdKIBsHocX+gfIZ0M1LensK4A2S7I461DFdAc5ht3TG
- 1g5MIiXBdYbG5ily1b7+CegHKKn0Yba3uMBjQN+uacVhw1UTVM3iOwLPeN0JOXVostLm
- WGuE64ypImggCyV3MK6D9i1jaWlcFaixDl8DA7NirJvsb/BVknsrdpTVD1GswEi1EiOg
- g8nhQp9rv/6h+auzsiBm+OdfFHMIeQbR9Dmwp/7IK1h9sREwvzL/h7rRsmF38i6Fuxh9
- L25w==
+ d=linaro.org; s=google; t=1779191307; x=1779796107; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Ro2CqTwsznCgwhHdriIsTvxbARkqkKEYYmfW8L+elBk=;
+ b=UjDK3ToAr/4dBpAjCu84tVyjpmL1IZBq+rzbp7rDiE63VhpeLWHLgVMwK2NpkAS2so
+ sMqU4UniSnmvfnNr1xkrBvhkGLjf1lYsF6F370+xXkqvFR9VPUcTzRJtuyp/9lUqBjKd
+ 0HE0zE5AeCoZRHkxNonVSgDktyVfIluK9NQao4f6hyrQB2vVillompRDDy4kWi0Je1gz
+ EE2bGKeZklOAQr5PAIM4EawtEYKrjZNwAV0LTmo3eVriJl6X9s1jqMmrqHB7DD+QPLqA
+ cHWDtj7Hds6rIMDafjJDjUxV0zzouBKH82lAOYntfIUmWZFPoe5o6p/wxUPD0o8qguLW
+ GoeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779188295; x=1779793095;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=th+7m4e1V2ZxPwz3Px/qnbJ7ANB0j47Cvdm2V2sKVJ8=;
- b=ru3JvI4OMFKjbubVMvq7eHjgpDOhezZhgsmmC5d4huOQS9FrjR2EQHur/rO+d2GCBb
- BCZ+QlLW+eLPolJzrIJjUh8wRK4K/PL6PJrGXLHTtz25fmlX0CZULztjJpkiVG6757yo
- NIr0itGkkbYc4IQrK7e18vZYItP9oAoCSqzgOQZZqLtkVHESw10XehUkyAI4IxVcPuLL
- vVfmztb2E1WK3lRIObGPcZPwoX47+wEiukHbiwq7m6lq6AhUkifz2vgabRTo8ZvCeWbU
- JhAcnhzJ0OOj3H8dwJD2Me8SsD4FFJVPRKVHy80OScaBDCY+6x7sGYYsA5OOhMrag1Ew
- 4Dfw==
+ d=1e100.net; s=20251104; t=1779191307; x=1779796107;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Ro2CqTwsznCgwhHdriIsTvxbARkqkKEYYmfW8L+elBk=;
+ b=NEDGIu52ohn6WG9EfkZU0BkZqcAwYdzagc0JgNuU3k2QZ8I+lYBh40yVyAby07uhrs
+ NWYVH/Lqs5TYBpRGTjsp10g+YF40ek8FCPt5Cv3gY8AdXEpWVkZn49UhDQZ0N2dDInrt
+ 6NtLllPgIIfPk3FnU7r9htw/aQ5oeBcmP/zR+hqP2OnZdSHVnkfvRhgfxdCn/DL92UgJ
+ wpMOpghcPUVxq5kI3MLk7XWKiHPErV+bZ/UWN+Pf7YAzcOUR5eVLSSY4ImEK0VaTKoAp
+ a56HaJodBMS3c3G9ziTRrXrknkfTS2BI/V61qT83Mk82j9AUNNN8sn1lgtdOvGm7fz5G
+ AZEA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8BsYuSPD3X+W4GrXTK37QyLRjvzrmwk37mModF4MdgTkpH86hDVq1fq/wjRAc/t6z7AlyVLZvsBw==@nongnu.org
-X-Gm-Message-State: AOJu0YzbdP53jUp1RZfqZxk7z6KGcKn/ZYHH1GQWfNJAC6VamMPkZMdq
- 36VwUllP5fmkdtXpoaeIyjOLZC/6rLHYyTABKTLpiKw1BG1xoZrbrMz5DIF+ZAnWkC8=
-X-Gm-Gg: Acq92OFcCZMlQboZv5Cvxd5UAVj3lVqk5+NmWMivMtDPQpuRgm+f5MHroCFb03Me67b
- 4qKAWZFYw9OOyDzjqaVvPKI/YyRoyh3uNkvX8jzYJuz1QgxLx/rS1CDMpeSLlZwgM/Tg/mI3rHO
- agPbaGiL2H4QEjl2HM9WJhXPm/nxqtxCA2xD0KbZMNO+gQDnrU/4nGbMEsPbP043AP43HOZTRbr
- JAtfpNhjwP/PeUcZHZouSlsod+5/SZ36M88ehOweoNuJCsEcU0XQwk7YhvXJi28xzKARCC0TAnB
- 9yc6ihtxA0lmwEYwR17xdUx+fj9SkCzPZYveAYFwE2LXDvB66bqR8xNVbzYEUQDOXny+dbPnryl
- XWxs5RSnpF8PpOg2AFFgSRycTqs3geXIvFimOAZTmvP9WJBB3vADEUrLd8eZYyfIiaVXhDo04zv
- 3MBqD8KzLTLCWiQctB2h99Lvs=
-X-Received: by 2002:a05:600c:4fd4:b0:48a:581c:ead with SMTP id
- 5b1f17b1804b1-48fe60ed7b7mr265377945e9.10.1779188295032; 
- Tue, 19 May 2026 03:58:15 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48fe537c516sm344405225e9.13.2026.05.19.03.58.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 May 2026 03:58:14 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id A646C5F81D;
- Tue, 19 May 2026 11:58:13 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Lucas Amaral <lucaaamaral@gmail.com>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,
- dmitry.osipenko@collabora.com,  marcandre.lureau@redhat.com,
- visitorckw@gmail.com
-Subject: Re: [PATCH v5 4/4] virtio-gpu: advertise VIRTIO_GPU_F_BLOB_ALIGNMENT
-In-Reply-To: <20260317182049.33848-5-lucaaamaral@gmail.com> (Lucas Amaral's
- message of "Tue, 17 Mar 2026 15:20:49 -0300")
-References: <20260317182049.33848-1-lucaaamaral@gmail.com>
- <20260317182049.33848-5-lucaaamaral@gmail.com>
-User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Tue, 19 May 2026 11:58:13 +0100
-Message-ID: <87se7nbr96.fsf@draig.linaro.org>
+ AFNElJ8UXXvxVQxpJFJ2eRivU+Y5NZRoulYPHvVmyFLs2Yvi88sMV6Ni0TOsiJOnIKqt2wGrTFiwZbqiBA==@nongnu.org
+X-Gm-Message-State: AOJu0YwdzCHc81eZkGlRGbOUiZlkM4UVC44qFJw9oyqL6zXRQ0lvDl83
+ IWf9qeHxF0XYYn/x4uEsMWv+TXHs4CxNYnpY78PncSC4WoBcggJh+Km8lACJrX2jTNnQj+l1eUU
+ yddVkgw7HrdK0w6GHPVSbzSclpmrVP5fwcl3zclxqyw==
+X-Gm-Gg: Acq92OEmV/d2lZdJ6SWhxvNGkFMKSOcAuuXnC7jUPYwSBQ+twfTyHpgbu9uazncSMLF
+ pSSZmoc5MfrrASVKhCNOVcS6Bwv/KyC2QqzJjMCsLejAgGO89sQj07PzVFIsVRiOu4wtMlJAnHj
+ cPmn/ARU1948gWaErcJRJgyYT7enDcyoXvTcq2a6VB1ryni7xhoL9LbN37fmzotwbYCl9TjpllY
+ n3MVgMn9lloukCgSQMz4VQbOnkhA+r6cOUK77X8xLJrnAzVKIf32q0UXEzd0ySIQSgaw5TYPrj+
+ FNrG7i4miFutOMssd32Iwp4JvR3GzK4uWO6a0e1LgZSwU6mD3kuqrI4lMTj6LhZuUn+VbOzNLBR
+ eXg==
+X-Received: by 2002:a05:690e:158b:20b0:65b:123:1b00 with SMTP id
+ 956f58d0204a3-65e2272305emr15774851d50.26.1779191307469; Tue, 19 May 2026
+ 04:48:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32e.google.com
+References: <20260517003002.321430-1-richard.henderson@linaro.org>
+ <20260517003002.321430-10-richard.henderson@linaro.org>
+In-Reply-To: <20260517003002.321430-10-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 19 May 2026 12:48:15 +0100
+X-Gm-Features: AVHnY4LqTiVpC8bZlw9hx-XTLJ_ABMok0OvLfdSmRzO_gS0vMdD95NTStJsS4pA
+Message-ID: <CAFEAcA8C446_o=NnvX874JWKf4XGVdfoEOkhJaz6jgqxxwPDxA@mail.gmail.com>
+Subject: Re: [PATCH v5 09/63] target/arm: Introduce FPMR
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,47 +117,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Lucas Amaral <lucaaamaral@gmail.com> writes:
-
-> Set blob_alignment to the host page size so the guest kernel can
-> align blob BAR offsets accordingly, avoiding alignment mismatches
-> with the VMM's memory mapping API (e.g., hv_vm_map on macOS).
+On Sun, 17 May 2026 at 01:34, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> Guest-side kernel support (drm_mm alignment) is pending upstream
-> Linux merge.
+> Introduce the special register FPMR and its fields.
+> Migrate it when present.
 >
-> Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
-> ---
->  hw/display/virtio-gpu.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
-> index de7a86a7..44ae5034 100644
-> --- a/hw/display/virtio-gpu.c
-> +++ b/hw/display/virtio-gpu.c
-> @@ -1532,6 +1532,14 @@ void virtio_gpu_device_realize(DeviceState *qdev, =
-Error **errp)
->  #endif
->      }
->=20=20
-> +    /*
-> +     * TODO: guest-side F_BLOB_ALIGNMENT support pending upstream Linux =
-merge
-> +     * (Sergio Lopez's patches, Nov 2025). Until merged, the guest won't
-> +     * negotiate this feature. The host advertises it per OASIS virtio s=
-pec.
-> +     */
-> +    g->parent_obj.virtio_config.blob_alignment =3D
-> +        cpu_to_le32(qemu_real_host_page_size());
-> +
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-Is it merged yet?
+Is it worth printing FPMR with FPSR and FPCR in
+aarch64_cpu_dump_state() ? It would have been helpful
+to me for debugging this series but maybe it's a bit niche
+to include in the stock debug output.
 
->      if (!virtio_gpu_base_device_realize(qdev,
->                                          virtio_gpu_handle_ctrl_cb,
->                                          virtio_gpu_handle_cursor_cb,
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+thanks
+-- PMM
 

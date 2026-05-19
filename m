@@ -4,87 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 113F5CD4F3C
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 14:49:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7D81CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 15:03:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPLjW-0001Tr-1h; Tue, 19 May 2026 10:47:46 -0400
+	id 1wPLyb-0005ve-4a; Tue, 19 May 2026 11:03:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLjS-00018C-Ks
- for qemu-arm@nongnu.org; Tue, 19 May 2026 10:47:42 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLjM-0007xZ-FQ
- for qemu-arm@nongnu.org; Tue, 19 May 2026 10:47:41 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-44b330c5cc6so2659767f8f.1
- for <qemu-arm@nongnu.org>; Tue, 19 May 2026 07:47:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779202045; x=1779806845; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1RNRxHUIKIoHhD2L2k2Kf0WRpvOKC9u30TJYtxRtPNw=;
- b=HFU9fuvSYr0yRESLSFAl1u9Ep9gY3+oE/CdqI6cS0L3IX7XJEn14Zq5GbBdnR/jRBd
- d9YPRf98JiVCPmJPCqt7Fyzq6kdHpfSlnlv03XO/nIctb2B/kGB438iqP/Fd2y7d57Fd
- 8d8BFl42rkfiS97NoY40znIku3RpbTR0s47lZGozqVBhUVAISDcZWQdSqW/LU6t5Ns9C
- 8y2NeAj1JTrf0g6d8mKm8cFzz8WcFiCPtvTHCQjSEA98pNoaw4oSQ9TCRlCPbAL3QfnW
- CRZcssEFsIczPEZWCTDYQ3nmL8KdszetLClYFW47EOGh5Rk3LxeLyT85ekB/MR5mYVOb
- 3HTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779202045; x=1779806845;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=1RNRxHUIKIoHhD2L2k2Kf0WRpvOKC9u30TJYtxRtPNw=;
- b=EMhUY0LynkmcT8e9kowD4wtdf2ZujJj0414D+inq0LnBAdvUxBO+dwzWhXESG0jXJM
- W2c5QU/VVKLjCc3cM9uUASqzWRrY1JFq7NH/iE9ucOID2HXkPH0y/J+mg5RZw2+Z43C/
- uS/+yJnMeZIliIvXb68qIa90lQ5Nk6eT0fcp9j48uJWuNfmVH9SoKRn1FBJAcnJQML1Z
- Wtw6QUGsbDOQLxM4vGGYK+8Hpk59pfwfdybuMgXAwLTn6XLs5CNiSwynCj9CtACQ9Dzf
- OwJ71A5GHYEMe37gCrxTuzIQvTQ8qCpFQB5UHXUj+xziSxk8HE0QkdA2llRAK1Nu2/L3
- pd8A==
-X-Gm-Message-State: AOJu0Yy2so5i+e0HfNsR7vCE3EZj6LItyjlM6YATUK1lsBgKNSRlWNo5
- Yn9ocXxO9Bn2H709pZ2ZcoCgCBKTceXZ/7yZ9XRR0wJg5fUXuybcFS/zt7Wb0oUz5e7UccLvutE
- +Ld+eqoM=
-X-Gm-Gg: Acq92OEz1MYksJrNIn3rgR14Qcgf2gcqdBF1BCsc23zhW9aRCMakDlr9ifPSv8j/ooY
- 79trd4yAWi3mOm0fjQ9Wh+1bEZBCeooCE2ve7CB9eiyUmUFZWX6ABwQ6KTXllOBvUGGNS3BHhoe
- YnFMYK/U3ki02IVXjPPsjSQw5CB8oE64qJNEJ4i/9Cftlp64EbmzJHNylyRTn1nKcn+lxcjYlaQ
- S4AXxIvWlbP9X2Y4GJuwJUvF/7Fq1RpJOGeu1TqM6+vzHREopE0o1Rmu5VWi0ugeV8c/fDTdGOj
- Mdt52bMxUhiGaSx6WeA36mbiy9jJcYXwkDcg6r44eybm8lw+a5Xtjm2dkj2h00E/jdmF/HNNTyr
- WhQIEcPYLjJfdC8bsKeNvi0vEiZbjJvqyhUVfgluqjvETVQjLU08UtUJfbINKYVTo3JOQFTtrwq
- 7FuWCVtpQE6/CNSv+LwFpn5Mv8jFp5ct3YJwjV3xUcAA27k0dUXYtkCnCnq6dMvG/uIj7lClPlc
- eobcwjs02M=
-X-Received: by 2002:a05:6000:2304:b0:44b:e349:e6bc with SMTP id
- ffacd0b85a97d-45e5c5bbd76mr30216412f8f.3.1779202044162; 
- Tue, 19 May 2026 07:47:24 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45da0fe0fecsm42595487f8f.26.2026.05.19.07.47.23
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 19 May 2026 07:47:23 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v8 13/18] target/arm: Only set %kvm_target when KVM is enabled
-Date: Tue, 19 May 2026 16:45:48 +0200
-Message-ID: <20260519144553.91483-14-philmd@linaro.org>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260519144553.91483-1-philmd@linaro.org>
-References: <20260519144553.91483-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPLyY-0005uy-GH
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 11:03:18 -0400
+Received: from smtpout8.mo534.mail-out.ovh.net ([54.36.140.179])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPLyU-00036B-Jj
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 11:03:18 -0400
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net [79.137.60.36])
+ by mo534.mail-out.ovh.net (Postfix) with ESMTPS id 4gKdG658RZz6M0b;
+ Tue, 19 May 2026 15:03:10 +0000 (UTC)
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net. [127.0.0.1])
+ by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Tue, 19 May 2026 15:03:10 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.109.249.1])
+ by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4gKdG64SCJz1yFP;
+ Tue, 19 May 2026 15:03:10 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.0])
+ (Authenticated sender: clg@kaod.org)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 3AEF8203B44; 
+ Tue, 19 May 2026 15:03:09 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-99G0034d50ad4d-8ed6-487d-aced-8c1b65432dea,
+ A1C5BDF50025601E7F63D663DE463AD2E6007479) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <8246d187-27d9-449f-817d-1365743925ce@kaod.org>
+Date: Tue, 19 May 2026 17:03:07 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/3] tests/functional/aspeed: introduce
+ FacebookAspeedTest
+To: William de Abreu Pinho <williamdapinho@gmail.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org
+References: <20260519-add-anacapa-machine-v2-0-47027867d76a@gmail.com>
+ <20260519-add-anacapa-machine-v2-1-47027867d76a@gmail.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260519-add-anacapa-machine-v2-1-47027867d76a@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
+x-ovh-tracer-id: 8912060714696158219
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGE7Dc/xxCeLRgHvjiHJ7Ul1qM+FnqkaYMyFUlRguCinYycKaMt8KzWO9bb/ubEWCjHgM+GLiKf40gNMX4Jnv0ru6298x8dxxrhDq7BBvaC8OHBSMb2wbFFnoDDTL2zKJBY9Twluo+cuyOxpZxo4iqZN2/wmxEKp0Ht71GckOkNhieAUNGUwvMNJWFL+3LSmuVQ+GlV4JV9AzjTgnoliIAxu79oREnWK6HXiwkfo0NetobZY3ZZcJTLlzULFe+xl9D2kasAQnPDoA0Pe7OnDHmWfwi0ZPr+QFEVIuuoW31k5kKJxk5hxzSO/on7zc0Z/X5X8DCsJVROq2tYAWLPiuP3nSfpgM5sTmUSAgU7C18nW7Q9UbcDvzI+vYnXtyMTvoYGi94gbkprSvUFWPUVlNYbshqJloujKZVPXjB2LIJDYjEQAY8tGfCk4JbxeU6EbvSM5idrJEjeVxHy4kq6tDdHMrvnNPd0+Yvr6ubuJrm9l/A8FSDuU7ce4aBIqJBvlMyB+BdIR0lZgPHJvF8G1tea7Xp2sQngUJ7MEVmoIhTK+JCyRNSbMHA1LhDLsmm5ai7qxHcPoQ1Om2Rvq0SLSR9/nElHsBX22ybhdn0gyoIfU3HjdIi+f4aZ9lHJklKKULWfNiq7EgmogO3EEfHsZUlgMtMvvtSQlLChbKv5ANUQiQ
+DKIM-Signature: a=rsa-sha256; bh=DVYu9wco5DHDwj6oo2inPT50IFL3QghavNJauFEANvs=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1779202991; v=1;
+ b=SaGIPCKNz66TSLRHkNyfjhBDf4wimVBqz02OXCH2K+cuuW4ImeZpuzpwKBX35TAGVshSOZM4
+ GcUfW5LP2L3dWpdjGa7M517dzv4r30uFMTjptBI8p6ZFAAYwZsM9cIezoEhpEPrfBib7YXzUFL1
+ eh3Aenjgdu2ZY5CNN2iAj7x6fP+kD+iuuBPcj3UDDVjIveGvJAJrjqcMyCHUzlylgZ7EtBktrd3
+ BHodCkZ2rRszU3iDvYUOYOyohrWFrHwbeaw1bY10P+vUHuaKiGNVNzO1eHn/St0MvmAUIH0MwvL
+ HejX68YjzfOtYCIAob5MSHvScEGvpA6x+KE5eU11+J8nA==
+Received-SPF: pass client-ip=54.36.140.179; envelope-from=clg@kaod.org;
+ helo=smtpout8.mo534.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,29 +134,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
----
- target/arm/cpu64.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+On 5/19/26 12:36, William de Abreu Pinho wrote:
+> Facebook OpenBMC Images include an early script [1] that lowers the
+> console log level to warning.  This suppresses the "Hostname set to"
+> message from the serial console.  Introduce FacebookAspeedTest (a
+> subclass of AspeedTest), that waits for login prompt instead.  Update
+> bletchley-bmc and catalina-bmc to use the new class.
+> 
+> This is also used by the anacapa-bmc machine introduced in the following
+> patch.
+> 
+> [1]: https://github.com/openbmc/openbmc/blob/6a56a45931fb7015a3fc18553415909105b484d6/meta-facebook/recipes-phosphor/initrdscripts/phosphor-static-norootfs-init/999-reduce-printk
+> 
+> Signed-off-by: William de Abreu Pinho <williamdapinho@gmail.com>
+> ---
+>   tests/functional/arm/test_aspeed_bletchley.py | 6 +++---
+>   tests/functional/arm/test_aspeed_catalina.py  | 6 +++---
+>   tests/functional/aspeed.py                    | 8 ++++++++
+>   3 files changed, 14 insertions(+), 6 deletions(-)
+> 
+> diff --git a/tests/functional/arm/test_aspeed_bletchley.py b/tests/functional/arm/test_aspeed_bletchley.py
+> index 5a60b24b3d..3000d0c302 100755
+> --- a/tests/functional/arm/test_aspeed_bletchley.py
+> +++ b/tests/functional/arm/test_aspeed_bletchley.py
+> @@ -5,10 +5,10 @@
+>   # SPDX-License-Identifier: GPL-2.0-or-later
+>   
+>   from qemu_test import Asset
+> -from aspeed import AspeedTest
+> +from aspeed import FacebookAspeedTest
+>   
+>   
+> -class BletchleyMachine(AspeedTest):
+> +class BletchleyMachine(FacebookAspeedTest):
+>   
+>       ASSET_BLETCHLEY_FLASH = Asset(
+>           'https://github.com/legoater/qemu-aspeed-boot/raw/master/images/bletchley-bmc/openbmc-20250128071329/obmc-phosphor-image-bletchley-20250128071329.static.mtd.xz',
+> @@ -22,4 +22,4 @@ def test_arm_ast2600_bletchley_openbmc(self):
+>                                           soc='AST2600 rev A3')
+>   
+>   if __name__ == '__main__':
+> -    AspeedTest.main()
+> +    FacebookAspeedTest.main()
+> diff --git a/tests/functional/arm/test_aspeed_catalina.py b/tests/functional/arm/test_aspeed_catalina.py
+> index dc2f24e7b4..2694e4b005 100755
+> --- a/tests/functional/arm/test_aspeed_catalina.py
+> +++ b/tests/functional/arm/test_aspeed_catalina.py
+> @@ -5,10 +5,10 @@
+>   # SPDX-License-Identifier: GPL-2.0-or-later
+>   
+>   from qemu_test import Asset
+> -from aspeed import AspeedTest
+> +from aspeed import FacebookAspeedTest
+>   
+>   
+> -class CatalinaMachine(AspeedTest):
+> +class CatalinaMachine(FacebookAspeedTest):
+>   
+>       ASSET_CATALINA_FLASH = Asset(
+>           'https://github.com/legoater/qemu-aspeed-boot/raw/a866feb5ef81245b4827a214584bf6bcc72939f6/images/catalina-bmc/obmc-phosphor-image-catalina-20250619123021.static.mtd.xz',
+> @@ -22,4 +22,4 @@ def test_arm_ast2600_catalina_openbmc(self):
+>                                           soc='AST2600 rev A3')
+>   
+>   if __name__ == '__main__':
+> -    AspeedTest.main()
+> +    FacebookAspeedTest.main()
+> diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
+> index 47e84e035b..88b6590934 100644
+> --- a/tests/functional/aspeed.py
+> +++ b/tests/functional/aspeed.py
+> @@ -28,6 +28,9 @@ def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
+>           self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
+>           self.wait_for_console_pattern(f'ASPEED {soc}')
+>           self.wait_for_console_pattern('/init as init process')
+> +        self.wait_for_boot_complete(hostname)
+> +
+> +    def wait_for_boot_complete(self, hostname):
+>           self.wait_for_console_pattern(f'systemd[1]: Hostname set to <{hostname}>.')
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index b38a78aac3f..7b2f09cf8ec 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -701,7 +701,9 @@ static void aarch64_a57_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_EL2);
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
--    cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
-+    if (kvm_enabled()) {
-+        cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
-+    }
-     cpu->midr = 0x411fd070;
-     cpu->revidr = 0x00000000;
-     cpu->reset_fpsid = 0x41034070;
--- 
-2.53.0
+
+This will slow down a bit the tests. Anyhow,
+
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
+
+>       def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'):
+> @@ -69,3 +72,8 @@ def generate_otpmem_image(self):
+>               f.write(pattern)
+>           return path
+>   
+> +
+> +class FacebookAspeedTest(AspeedTest):
+> +
+> +    def wait_for_boot_complete(self, hostname):
+> +        self.wait_for_console_pattern(f'{hostname} login:')
+> 
 
 

@@ -4,65 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A898CD5BA4
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 13:14:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33E1DCD5BA4
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 13:27:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPKGT-0005c4-UG; Tue, 19 May 2026 09:13:43 -0400
+	id 1wPKTe-00007o-LM; Tue, 19 May 2026 09:27:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jic23@kernel.org>)
- id 1wPKGO-0005be-DA; Tue, 19 May 2026 09:13:37 -0400
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jic23@kernel.org>)
- id 1wPKGL-00022r-SR; Tue, 19 May 2026 09:13:36 -0400
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 47DAC434BD;
- Tue, 19 May 2026 13:13:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59FA7C2BCB3;
- Tue, 19 May 2026 13:13:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1779196410;
- bh=D8gjAVbdbrG6Z9lKQi7hVCEYxhwYV/YGXCYHSkLsbJE=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=j4yNoEJg7QuAkAvMofwploWnLBYR+j9sHLfufOKZUiFZdPCgi6w2SSjtkQN6DXPUF
- RAxCNsxJZHZiQimb/Fd16SKVR/smqt28jHi8ghhRmKtcIvuMHGtKfnUy2WAaPXWBW2
- IS/tobdOy1jngJhL2YQmQwvhXHbxe+TXFDIMFvaC2+tz8ohfelFdK5j+cgSQ6PVKhZ
- xZ+kl+VH4P39YWYGqnEiclbJ0SNsiwGJnClkkwJ5IxL4SKraTPeJIYt992WSWITNJp
- PyLUjSpD+oGqZpEwfpah08wvpaKgeJTGd08fpOh8Ywua5g7jOM0ICBf9MO6Cf3wviO
- 1eXMtvrh81gcw==
-Date: Tue, 19 May 2026 14:13:14 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: <mhonap@nvidia.com>
-Cc: <alwilliamson@nvidia.com>, <skolothumtho@nvidia.com>,
- <ankita@nvidia.com>, <mst@redhat.com>, <imammedo@redhat.com>,
- <anisinha@redhat.com>, <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
- <shannon.zhaosl@gmail.com>, <jonathan.cameron@huawei.com>,
- <fan.ni@samsung.com>, <pbonzini@redhat.com>,
- <richard.henderson@linaro.org>, <marcel.apfelbaum@gmail.com>,
- <clg@redhat.com>, <cohuck@redhat.com>, <dan.j.williams@intel.com>,
- <dave.jiang@intel.com>, <alejandro.lucero-palau@amd.com>,
- <vsethi@nvidia.com>, <cjia@nvidia.com>, <targupta@nvidia.com>,
- <zhiw@nvidia.com>, <kjaju@nvidia.com>, <linux-cxl@vger.kernel.org>,
- <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: Re: [RFC 0/9] QEMU: CXL Type-2 device passthrough via vfio-pci
-Message-ID: <20260519141314.3eda68bc@jic23-huawei>
-In-Reply-To: <20260427181235.3003865-1-mhonap@nvidia.com>
-References: <20260427181235.3003865-1-mhonap@nvidia.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wPKTd-000078-OM
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 09:27:17 -0400
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wPKTb-0007Rq-29
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 09:27:17 -0400
+Received: by mail-yx1-xb136.google.com with SMTP id
+ 956f58d0204a3-65c396d3b36so3574051d50.0
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2026 06:27:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779197233; cv=none;
+ d=google.com; s=arc-20240605;
+ b=Ugz5ZfX6H3fCdYNGJB4klzMDToptDhOO19k+eyqSoXvtbVS2DqGILoBw6+UBWpAS0z
+ de4ISdJZaRNZHanfR1/D5GLpxgFtSZEM3UvhaXPR6XwC+R0bQxKP2Cvy9bc4MjESsmmS
+ 7xtPdcg1Jse+eSNkQLV+UOY1uB1egd5Tv9P3BqSyRd7V3bojHYCZQqCNV24EVbGBGWlS
+ WJJOw/b4KW9F2bcUuOe+wORoB46bDWjIBFHjfQD5hg3NZiXwMoebyci/wDaU4fKA0eFF
+ 5ClmLrbpM/IvP6QOCg7plW9V0jwVa96CtJY19HSrAemZngky0+F+nK6yM7NLbK0ZSAtp
+ fEKQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=qSjj0IIDOrr3PY/+TtJBWcm7zY7QcB73XKXiMvE6qAc=;
+ fh=vOYLPfRSDyhOJsyag2IUpckDs7/Nzlh6QSJdRFr/0wQ=;
+ b=gl8EVbNYV16o9TBI/W3upsvuHRpSNZb6XDjnFZWq+90qJIcKuK9o/cGJYufptIOUTL
+ jjvQD4lBWEPJdLHW3vq7X9hNtJDH1o8vUXVjE4EiF1Wu8PbsPQ7m7TBLreonV7sOvx2J
+ FQ726HfMWJrwq9RqNyW/AJhrbVhkr4J5pCs5eaZjhyGTzQHStio/J3H9AqRH0cbOO/3b
+ SgHnFKqJON3p8uXzKmbTVTEOZZZBuK5G0wzM8sUjZBjxTy9VkZsNU2oCGphYj0aEzHMM
+ 2kqjYSjCWTfN0JnCST7cCb/yJud8OC0laDdY4dB++dfAJzAgRKFGj96k540zhOsy/UIT
+ NTYQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1779197233; x=1779802033; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=qSjj0IIDOrr3PY/+TtJBWcm7zY7QcB73XKXiMvE6qAc=;
+ b=JixjJTFJ/iC7QxZiCNNCkjiT2Ig7Qi5OkqVlveLT6VtRO1mjbPkF9sFl/q1sxro6Fg
+ 5plYVF9sxB3GBPBI5VZ3p7nRFdcMvFcQuEDGSvdmaItaLfic+UWO0+5Ehf5v2JizcUAW
+ d0P9YmPOk0EKr0N0I7vkbkE/p2hpGlwiuxujx55n2Mp30Pa8HruLlHfeAC902yzJlNx9
+ kNJsBTWZ+76kae/GWBGG4F30136hKuLJHAg67nPRev9F1gSDdVcPL6z3PYn9ZIffPtmP
+ xE7zn6g2r0cleU0V/CIligDZscqDOWDyRZYafQ3+jVXO+M5jGDYzC3TBML2jJwzAwQY7
+ iMzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779197233; x=1779802033;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=qSjj0IIDOrr3PY/+TtJBWcm7zY7QcB73XKXiMvE6qAc=;
+ b=RSIzyOxpqA+RPCpjIBuCWtjkXolA/3J2XTPg7HbUfJyUCy4zgxfAP4V6lYaOcFNNMw
+ hpsfCmuJTfhahKApjvOSkqh7HqdPrT0SES9K4GyqHPeKpZ4IWLiQYgPH4hDEcOMZZWfP
+ o6bp32OnKkfiUF05tOjiEmKWsjXxhdadPPh52V8ULJi55VRL8u6KfnTnfFoiU+harjSk
+ on5QzXasOOdKh5k8ctdYNrr/5dOpzlfasmESgvaSAxLQt9ogtgqMg3Nt4YxAJzWTbwpb
+ ZMb24Xqu+7hQAeF67NyNDOa2bqYEOJiqF+U5/VgRdPfTbuPif8Ai+jn1m2lnl+ANFlQ8
+ Z90Q==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+XPwEI9OXn9I/6dzLptlr2Wsmu/Oy+oiijp85Dp2nYvvvkeCYWVeteOfaIYT32+dMwMGaE2hiiiQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwcsRaV8l36O54pwkLRxD7N8ChlvqskW310MkG/RB3ZuQAn6p68
+ hIEF7U0Pvov9M7++rroGXbekRzST/b0TC+7R1wymY4mYS+4T70voE+txjgm3piI2cZTqJDd0I2i
+ RUOEHGyQu/viNIejmMvwbXn6w57ruXJIYgDdHd/Is4w==
+X-Gm-Gg: Acq92OGJVgc4A6ktaWnS3RdXmYAc+GmD1m+yA7HBy54CRpz17sgtjuTfPxU/RaB0Nqw
+ PF/TtQ7UppMJG5Z+4wer1K4wH3u/6+PZmcRkp+f2DksILpVfHh88XMqh8DuZhHFATbAxtaoLfzC
+ fHVfI52qbWCJdMslDT91UlkaEZ1/9REHCjV0t5zKLmyl6V+hm0p+YlD1bIvThbxwKdpGecIOpZ6
+ L/9gMxYJ/H8MZMboP6Pwsfg8IR4jGBTEYBw/n4tTV1vWlgNRMt6LBMsXCozjoHy3pFr98RlFxEJ
+ rFosLfdLH9ds8veOqPBALGbluIciEATyxO/K4QWOnG3TNmfyCVt82hJNfhZRqdu9Qr4=
+X-Received: by 2002:a05:690e:13cb:b0:65e:3eee:4ad3 with SMTP id
+ 956f58d0204a3-65e3eee588cmr12660822d50.49.1779197233283; Tue, 19 May 2026
+ 06:27:13 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2600:3c0a:e001:78e:0:1991:8:25;
- envelope-from=jic23@kernel.org; helo=sea.source.kernel.org
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+References: <20260517003002.321430-1-richard.henderson@linaro.org>
+ <20260517003002.321430-31-richard.henderson@linaro.org>
+ <CAFEAcA-q4GdT-uawv-hw6j9ixdO=Nw60hkJ=mq61G3CxRE5t0w@mail.gmail.com>
+In-Reply-To: <CAFEAcA-q4GdT-uawv-hw6j9ixdO=Nw60hkJ=mq61G3CxRE5t0w@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 19 May 2026 14:27:00 +0100
+X-Gm-Features: AVHnY4JEaUgCVBpNhRAV4TusRdL5kFvgkkpUvb-HjneZCtt78bBwt4nAvmydgUM
+Message-ID: <CAFEAcA_5nrmafaL8oGr9Oax5BJ=bJUXZ9XjNt0ZL4bcxzcebTQ@mail.gmail.com>
+Subject: Re: [PATCH v5 30/63] target/arm: Implement BFCVTN for SVE
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,215 +117,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 27 Apr 2026 23:42:26 +0530
-<mhonap@nvidia.com> wrote:
+On Tue, 19 May 2026 at 11:16, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Sun, 17 May 2026 at 01:32, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+> >
+> > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> > ---
+>
+>
+> > +static uint8_t fcvt_fp8_e4m3_output(FloatParts64 *p, int scale,
+> > +                                    bool saturate, float_status *s)
+> > +{
+> > +    *p = parts64_scalbn(p, scale, s);
+> > +    /*
+> > +     * Saturating Inf -> Max handled in uncanon_e4m3_overflow
+> > +     * because there is no infinity encoding.
+> > +     */
+> > +    return float8_e4m3_round_pack_canonical(p, s, saturate);
+> > +}
+>
+> The E4M3 conversion code doesn't seem to produce the right
+> output for an input NaN. This looks like it's because the
+> fpu/ code isn't special-casing "there's only one NaN value
+> for this format". Here, if we input a QNaN the scalbn operation
+> will ignore the specific input NaN and return the default NaN.
+> There's no special-casing of E4M3 in partsN(default_nan), so
+> you get a frac value that's based on the default_nan_pattern,
+> which for Arm has the MSB frac bit clear. Then in partsN(uncanon)
+> we just move that frac value down into the right place for E4M3,
+> without enforcing that it really is the all-ones NaN.
+>
+> I think this should fix this, but maybe there's a better way?
+>
+> @@ -519,6 +519,14 @@ static void partsN(uncanon)(FloatPartsN *p,
+> float_status *s,
+>          case float_class_snan:
+>              assert(fmt->exp_max_kind != float_expmax_normal);
+>              p->exp = fmt->exp_max;
+> +            if (fmt->exp_max_kind == float_expmax_e4m3) {
+> +                /*
+> +                 * E4M3 has exactly one NaN, with the frac field all-ones.
+> +                 * Using the frac from the input NaN might result in
+> +                 * a non-NaN value.
+> +                 */
+> +                fracN(allones)(p);
+> +            }
+>              fracN(shr)(p, fmt->frac_shift);
+>              return;
+>          default:
 
-> From: Manish Honap <mhonap@nvidia.com>
-> 
-> This series adds QEMU-side support for passing CXL Type-2 devices
-> (GPUs and accelerators with host-managed device memory) to VMs via
-> vfio-pci.
-Hi Manish,
+If we do take this approach we also need something like:
 
-Having read this description I'm not sure I really understand all the
-constraints this is operating under.
+--- a/fpu/softfloat-parts.c.inc
++++ b/fpu/softfloat-parts.c.inc
+@@ -288,6 +288,7 @@ static void
+partsN(uncanon_e4m3_overflow)(FloatPartsN *p, float_status *s,
+         p->frac_hi = E4M3_NORMAL_FRAC_MAX;
+     } else {
+         *p = partsN(default_nan)(s);
++        fracN(allones)(p);
+     }
+ }
 
-There are two basic paths to getting safe virtualisation of CXL.mem.
-1) Lock down decoders etc against preconfigured mappings.
-2) Constrain the more insane stuff via topology care - basically direct connect
-   only for now and let the guest program stuff appropriately.
+because the NaN value from uncanon_e4m3_overflow isn't passed
+through the NaN handling part of uncanon.
 
-One possible constraint is making it all look like early CXL host stuff
-where the bios does the heavy lifting.  I don't mind if we have to do that
-today but I'd like to understand if it's a long term requirement or not.
+Though there's an argument for making default_nan() for the
+format return the right thing I guess.
 
-I think this is currently doing a mix of 1 and 2.  You lock endpoint
-decoders but ignore host bridge ones.  I think we need to handle those.
-Maybe I'm missing a check that a pass through decoder is in use
-(there is a commandline control to turn that on / off for single RP HB).
-
-
-> 
-> It pairs with the kernel series "vfio/pci: CXL Type-2 passthrough"[1]
-> posted to the vfio mailing list. Patches 3-7 need that kernel series
-> present to do anything useful. I am new to QEMU development, so please
-> forgive and point me in the right direction for correct infrastructure
-> decisions.
-> 
-> Background
-> ----------
-> 
-> CXL Type-2 devices expose device memory (CXL.mem) through HDM decoders.
-> The kernel vfio-pci driver shadows the HDM Decoder Capability registers
-> so userspace can observe and control decoder commits without touching
-> the hardware register page directly.
-> 
-> Without this series, the guest never sees the device memory range and
-> the HDM decoder goes unconfigured. The device shows up but its memory
-> is unreachable.
-> 
-> Design decisions
-> ----------------
-> 
-> CXL.mem is exposed to the guest as a dedicated GPA window declared in ACPI
-> (CEDT/CFMWS) rather than a PCI BAR. The HDM decoder BASE must match the
-> CFMWS base and remain stable; BAR assignment is not stable.
-
-Note a lot of my thinking here is based on the related but not identical
-question of how to do CXL type 3 emulation for virtualization cases.
-
-My thinking for type 2 is we'd do similar tricks to for memory in constraining
-the topology so things like interleave don't cause us problems and CFMWS to
-particular device mappings are fixed (though in theory offsets with in CFMWS could
-change). 
-
-I may be missing the point entirely but why does HDM decoder base (here the
-GPA address where the routing is configured to put the DPA of the EP)
-need to match the CFMWS base or for that matter remain stable (i.e.
-Guest forced to put it in the same place)? Is it just so the type 2
-driver knows where to find it?  (There are easy ways around that - or
-is this something baked into an existing driver?)
-
-There are a few easy ways to constrain things to reduce flexibility (e.g.
-we don't want interleave to be possible etc).  If we absolutely have
-to we can also lock decoders. The only reason I was avoiding that for
-type 3 device was that it isn't needed + can get complex fast!
-
-I think you are constraining the topology for this to work to PXB with
-1 RP with pass through HDM decoders and no switches etc.
-That's fine for now but I didn't immediately spot the checks that enforce that.
-
-Can we have a command line example in this cover letter.
-
-> A separate
-> VIRT_HIGH_CXL_MMIO window in the ARM virt memory map carries this GPA range,
-> independent of the existing PCIe MMIO slots.
-
-I'm not immediately understanding why the CXL.mem path isn't via exiting
-CFMWS support.  Why do we need a new memory window?  Ultimately you
-seem to map to normal CFMWS regions.  Also note you need to be very careful
-adding stuff to the memory map as bunch of other stuff above that will
-move - so it must simply not be there by default to avoid breaking migration
-of existing VMs.  Maybe that is fine, I didn't check carefully
-
-> 
-> The Component Register BAR contains two distinct ranges. Accelerator
-> register windows are passed through as direct hardware mmaps via
-> VFIO_REGION_INFO_CAP_SPARSE_MMAP. The HDM Decoder Capability block is
-> excluded from that sparse list by the kernel and must be intercepted by
-> QEMU to track decoder state. A single priority-1 COMP_REGS overlay
-> placed at hdm_regs_offset inside the BAR container wins over any
-> hardware-backed alias at the same offset, with no per-window aliasing
-> required.
-> 
-> The guest has no mechanism to remap host physical mappings. QEMU programs
-> decoder 0 with the CFMWS base through the kernel's COMP_REGS shadow at
-> machine_done time, after all devices are realized and before the guest starts.
-
-Ah so this is locking down the decoder?  I'm not necessarily against
-that but would like to understand what the constraints are that lead
-to that being necessary as opposed to guest programming them later
-(and late set up of the MemoryRegion like we do for type 3)
-
-> The notifier is registered only for devices the kernel reports as
-> firmware-committed (VFIO_CXL_CAP_FIRMWARE_COMMITTED).
-> 
-> The CXL.mem MemoryRegion is a mmap-backed RAM-device region backed by a
-> VM_IO|VM_PFNMAP VMA. The VFIO MemoryListener would attempt an IOMMU
-> DMA mapping for it when it is added to system_memory, which always
-> fails: pin_user_pages() refuses VM_IO pages. No IOMMU mapping is needed
-> for these regions - CPU access goes via KVM Stage-2 page faults and
-> device DMA to RAM uses separate per-RAM-section IOMMU entries. The
-> listener is extended to skip the mapping attempt for VFIO-owned
-> RAM-device regions.
-> 
-> pxb-cxl bridges had no _DSM method. Without _DSM function 5 the OS
-> defaults to treating PCI configuration as reassignable.
-
-That one is annoyingly controversial. I see you have Shameer's patch
-so he can go into history of why. I tried to land that in the past and
-I was far from the first.
-
-> On machines with firmware-committed HDM decoders that reassignment breaks
-> the CXL.mem mapping, so the _DSM is added with preserve_config=true for ARM and
-> false for x86.
-
-What has that got to do with CXL.mem mapping?  It can move the
-BARs around but those aren't related to the CXL.mem mapping.
-
-Can we break this description up into two separate parts as it feels like
-BAR mappings and CXL.mem mappings are getting confused.
-
-1) Deal with how the configuration stuff works - bars etc.
-2) Deal with the CXL.mem mapping into a CFMWS.
-
-> 
-> Known issues:
-> - The bios-tables test will fail due to the _DSM addition.
->   A fix will be provided in a follow-up round.
-
-Unless I'm missing some checks, a whole load more than that will fail
-as device memory / memory hotplug region + probably the CFMWS regions all
-move.
-
-> - VFIO_CXL_CAP_CACHE_CAPABLE will require additional handling.
-> - Devices with multiple firmware-committed HDM decoders are not fully
->   supported.
-> - Non-firmware-committed devices are not supported.
-> - linux-headers sync is manual and temporary; once the kernel series is
->   merged, this patch will be replaced with script generated update.
-> 
-> [1] https://lore.kernel.org/linux-cxl/20260401143917.108413-1-mhonap@nvidia.com
-> 
-Anyhow, seems like a good starting point for discussion.
-
-As we evolve the CXL support into including real virtualization use cases
-I'm sure we'll also throw up random corners around resetting etc.
-
-Note I mostly skipped the VFIO stuff on basis others know a lot more on that
-side of things than I do!
-
-Thanks,
-
-Jonathan
-
-> Manish Honap (9):
->   hw/arm/virt: Add CXL FMWS PA window for device memory
->   cxl: Add preserve_config to pxb-cxl OSC method
->   linux-headers: Update vfio.h for CXL Type-2 device passthrough
->   hw/vfio/region: Add vfio_region_setup_with_ops() for custom region ops
->   hw/vfio/pci: Add CXL Type-2 device detection and region setup
->   hw/vfio/pci: Wire CXL component-register BAR with COMP_REGS overlay
->   hw/vfio+cxl: Program HDM decoder 0 at machine_done for
->     firmware-committed devices
->   hw/arm/smmu-common: Allow pxb-cxl as SMMUv3 primary bus
->   vfio/listener: Skip DMA mapping for VFIO-owned RAM-device regions
-> 
->  hw/acpi/cxl-stub.c         |   2 +-
->  hw/acpi/cxl.c              |   4 +-
->  hw/arm/smmu-common.c       |  17 +-
->  hw/arm/virt-acpi-build.c   |   5 +
->  hw/arm/virt.c              |   7 +
->  hw/cxl/cxl-host-stubs.c    |   2 +
->  hw/cxl/cxl-host.c          |   8 +
->  hw/i386/acpi-build.c       |   2 +-
->  hw/pci-host/gpex-acpi.c    |  43 +++-
->  hw/vfio/listener.c         |  14 ++
->  hw/vfio/pci.c              | 411 +++++++++++++++++++++++++++++++++++++
->  hw/vfio/pci.h              |  15 ++
->  hw/vfio/region.c           |  15 +-
->  hw/vfio/trace-events       |   6 +
->  hw/vfio/vfio-region.h      |   3 +
->  include/hw/acpi/cxl.h      |   2 +-
->  include/hw/arm/virt.h      |   2 +
->  include/hw/cxl/cxl_host.h  |  10 +
->  include/hw/pci-host/gpex.h |   2 +
->  linux-headers/linux/vfio.h |  18 ++
->  20 files changed, 570 insertions(+), 18 deletions(-)
-> 
-> --
-> 2.25.1
-> 
-> 
-
+-- PMM
 

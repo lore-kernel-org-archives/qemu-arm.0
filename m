@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D894CD4F5E
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 14:47:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D33A6CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 14:47:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPLiE-0007s8-2F; Tue, 19 May 2026 10:46:27 -0400
+	id 1wPLix-0000Bz-Dr; Tue, 19 May 2026 10:47:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLi0-0007ps-Dn
- for qemu-arm@nongnu.org; Tue, 19 May 2026 10:46:20 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLif-0008CC-8X
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 10:46:54 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLhy-0007jG-Oy
- for qemu-arm@nongnu.org; Tue, 19 May 2026 10:46:12 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-4893940bb5eso19980905e9.3
- for <qemu-arm@nongnu.org>; Tue, 19 May 2026 07:46:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLid-0007qm-OK
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 10:46:53 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-45e7c636e74so1639745f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2026 07:46:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779201969; x=1779806769; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779202010; x=1779806810; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9/EN5KK+nl5d6BIRkDfVqDEaOJypmF4gAousWcjTwio=;
- b=FeAd2WIVQ5H52CqnyFMrL05eKQZ/E+BvagZ0qfJgc64BaHA7BVIbb9MkO2qF2lQiSf
- O0DJSUZiKuyn66CtMd2WTjtdW+OXeyn4JlHksbSJ4QDeShf4Kzwt9GDROc0BAUatUYuU
- sJqQXVLwXpHAOpZtUATjNBio2iyUPQb64G+6lCC25NC/1pUPv3DSUdoLpHvXC1wKjnhl
- yyykvO6xMWUbC06D9udpZXnLbqB38ySltX6Ut9GdEWuqDKsPwRRtAnERzy/poIEg1VtG
- n3CQrXItxYG4WOMqpq2/BFm+0rnb/4VQhAPB03XJciHeI/4n5S4SpB48agHXQpEy/fhC
- 4aVg==
+ bh=dUuTbzCBsTPa5fDwZzVMcoJRytIYgj0mVcNOroys3ic=;
+ b=JJ8XKrMdrNT3I3nhJrW7GXQHsf2Wm0WM+SRCXT21TpQ2oMVMA3L3WGLx31kHKPwMLG
+ QRiKnNaxRuuowXcAL91f3L+ofRbGoe0185bKJSKuQbS48Bgou5fffN1Uwp4GV8NZJgwp
+ Ju4Y6r7T85MrUK853NXUA+y5eCmzzm+EUrSn3loLz+Mc1ook4VyVQX8T/q6GU0sFN00i
+ bJQFMkCuFRcCs+PVBr5PpQpq01ZEYRvqVfQn06egxlG0N2ky64VxxrVx2RWP50rE6Iw6
+ 866q7DMklMU5NMPQZ58i5VgizL+4SGHj45nKyHKyMBs8C1ot2jw0iexPBAjpid1nBHZd
+ VDBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779201969; x=1779806769;
+ d=1e100.net; s=20251104; t=1779202010; x=1779806810;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=9/EN5KK+nl5d6BIRkDfVqDEaOJypmF4gAousWcjTwio=;
- b=Id54q/liZf4WGvchKgJZZ7nWmJMEyvwYbijbbX0h4bAZNkA5UntXwYDuMc9i253dWX
- 6ce628IrjIKjNiS5rioiJLLNApAjaQyONziQ57U9wGs09V2UM0+cwg7dks9yp+q2KtPQ
- kxMjVXc88sP6crvWH//HrqCeERWkL8RjcMgf+8Z/EEGetReCoG2Fz8FF2m9+ZJDCaHQd
- FpQMu0DVwaYnU1bvheiSm2haBwdmVgpVmnsP19oMHNz+iMQna7MOc/00zHx4eQB5kYWW
- 7cnT7DXQHq6ta3flEcdHbDcO14XRXeQfgsoY0ZTm323o18ZwvR7zWsxnyeWs0ree/etU
- ZmuA==
-X-Gm-Message-State: AOJu0Yy2jCIboywBU8q9zAtXLufy78UbRr1dXnXwdmkvnGhPt8SPnHAa
- VGffdSKcyGLhrUy6nnD021xnUlHfn53kXLzNK4jDnxVSOdx88YfDLoXOieA1jmmt8VQ=
-X-Gm-Gg: Acq92OEmCLZwo7yI7hBaH/IWSo2gwv7FViCKVjhb46vILlI3Ez1RSuxrPtRPA4w0Lep
- FowU2euckcJkWe9ComaqQjz41mlbbHicmj187f8xbzIjwnekVLKvxrcPww7u/NJKlfrm2NYzlJu
- Mr/aJlZJ1K1EiV8FbsvR6qqXY3PUSblJpwRz+kZb2atDDdMDfOMzZhV9Urv0Ilr2o5xChYe7R5g
- dgtEdFzhpMaHbu1mi5u8RK95mnPlIWOHozzjONQo0PIRA6y79XXfbEZyxURWrkcNsoW2ujr8Zxy
- UN7glAa2E2KWFjjiDDmr5VgokE6uRAB9pcYRqq5Cvt/TpiTxzoGvOmEtuk7wARseReyAuc4+C+M
- 0uiysXctqMuOH4z2/zc8rhZBykxcrOiWCSngcdcS4FJr2PRIy57X5l0eN8lBGJQ8MVkF1ppzSM+
- UtX101gI/2ldINfpYspIkVqdm/dBn9NlERqpakGABZ06B7votDPrph4Dul5zKf4MMB+zJTgbKp
-X-Received: by 2002:a05:600c:858d:b0:48f:e230:80a3 with SMTP id
- 5b1f17b1804b1-48fe6514c31mr243194305e9.33.1779201968986; 
- Tue, 19 May 2026 07:46:08 -0700 (PDT)
+ bh=dUuTbzCBsTPa5fDwZzVMcoJRytIYgj0mVcNOroys3ic=;
+ b=bnJ6L7x8OgGijOgxi8DlJ1EML3hoKMFgR+5faobOqn+Rk9AkP5V2e8BWZWahzNUTLP
+ mVio1ioUge0eyiU2TCfl4fT1yFHisaRN13EnuO/WlyXCi56zPZJRk05h+6j+Wh6vF18z
+ M4bcKoWdH5StPd0KCowtTnn5vpnquPUEVAyh0sCRbYaYOWnI5R/pNEZj8JIHYsnowaYL
+ chUUq28Ji+txTskpxzRLGzcL4krZ3NKd5i6/rY1fA+7+5ZI7OSSK7gszxn3MBS6hS2EU
+ EKxxzWL8c16P6TPDDC5w+598G5oNwDC4g+6I3wZ5pn4JsS47699Ri7nJsoda4EuzJ1Vs
+ mnsA==
+X-Gm-Message-State: AOJu0YzVUuWOsO4b6Gt6fEpTUFhKhBps1BW+YH7wncAuQG5R7Qh3K3pb
+ Y0XxbZn3qOFNPSAWSXBLyr5pH1I+5YPCFLhe3QSJZqoYy9cUnYcGBfOSMSSklDJ9RtP73bpcJX4
+ izwMR4N4=
+X-Gm-Gg: Acq92OHSNwp2i2BrLTy+8R2nM2N365ypyXD67T5HUSZu1HX7KSJkL0SAQQTAs4hr+70
+ tYINjBR51Mgjvoi03GzUedGqPL8rrZKzItNeoakhBDYRexZy9LvdsZNehpe+y0CUeRRAtS7ZgMO
+ PAr+r4ZNkrKXoN6L8iUtGq9ORR/6MBmllwKmIqPIMMuVcv7YjUIm1WciY74weRcZ4y7DgFLN2KN
+ iXyDL27BAsTjTb1OsezyXwJlLSlGpCNMgdnyA6zxVczhKNn/XbH2OfDBj0kOwfET0KoacGcO1cP
+ AzkZILWKuatN9Laiz2gZGcI5XZon8FxJhpFojNqFXyWo72fqW5KH1qE63S+ofkMmMj+LjP7cRgI
+ 0WEScCgth2TadMpuXtwg10jzNJCMJX5E8onGiG3ndoq73zi8YcEJKrZ081wM+pTnLyRWwTXJZBK
+ zW7h4jxuM1a6U7L3X+PMvikTyUvbvE+yfOg5nWtynx2fhC1Vhn5GVwQyF5EZG7TdC74LoY4M8+o
+ b5wpHZsHEQ=
+X-Received: by 2002:a05:600c:3b27:b0:48e:6275:27e1 with SMTP id
+ 5b1f17b1804b1-48fe6516b49mr286700015e9.26.1779202010036; 
+ Tue, 19 May 2026 07:46:50 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48febe81b2dsm109154185e9.34.2026.05.19.07.46.08
+ 5b1f17b1804b1-48fe5e9d5d9sm386449315e9.15.2026.05.19.07.46.49
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 19 May 2026 07:46:08 -0700 (PDT)
+ Tue, 19 May 2026 07:46:49 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v8 02/18] hw/arm/raspi: Initialize 64-bit CPU types during
- DeviceRealize()
-Date: Tue, 19 May 2026 16:45:37 +0200
-Message-ID: <20260519144553.91483-3-philmd@linaro.org>
+Subject: [PATCH v8 08/18] target/arm: Build gdbstub64.o as common object
+Date: Tue, 19 May 2026 16:45:43 +0200
+Message-ID: <20260519144553.91483-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260519144553.91483-1-philmd@linaro.org>
 References: <20260519144553.91483-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,55 +100,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-bcm2836.c models 3 similar SoC: BCM2835, BCM2836 and BCM2837.
-The BCM2837 is a 64-bit only SoC (Cortex-A53), only available
-in the 64-bit binary.
-
-If we build this file as common object, all BCM SoCs become
-available in both 32 and 64-bit binaries; however when running
-the introspection test on the 32-bit binary, the BCM2837 init()
-method tries to init the Cortex-A53 type -- although not
-realizing it -- which is not available. This can be avoided by
-deferring the CPU type initialization to the SoC DeviceRealize
-step (this is safe because nothing uses the CPU type before,
-only the GIC access them, just after their realization).
+While gdbstub64.o is already built once, build it as
+common object, reducing target-specific set in arm_ss[].
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 ---
- hw/arm/bcm2836.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ target/arm/meson.build | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index ee2f44debd1..03825e69d06 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -25,12 +25,7 @@ static void bcm283x_base_init(Object *obj)
- {
-     BCM283XBaseState *s = BCM283X_BASE(obj);
-     BCM283XBaseClass *bc = BCM283X_BASE_GET_CLASS(obj);
--    int n;
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index e56fc943bdf..5376be2e3bc 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -11,7 +11,6 @@ arm_user_ss.add(files('gdbstub.c'))
  
--    for (n = 0; n < bc->core_count; n++) {
--        object_initialize_child(obj, "cpu[*]", &s->cpu[n].core,
--                                bc->cpu_type);
--    }
-     if (bc->core_count > 1) {
-         qdev_property_add_static(DEVICE(obj), &bcm2836_enabled_cores_property);
-         qdev_prop_set_uint32(DEVICE(obj), "enabled-cpus", bc->core_count);
-@@ -65,6 +60,11 @@ bool bcm283x_common_realize(DeviceState *dev, BCMSocPeripheralBaseState *ps,
-     BCM283XBaseClass *bc = BCM283X_BASE_GET_CLASS(dev);
-     Object *obj;
+ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'cpu64.c',
+-  'gdbstub64.c'
+ ))
  
-+    for (int n = 0; n < bc->core_count; n++) {
-+        object_initialize_child(OBJECT(dev), "cpu[*]", &s->cpu[n].core,
-+                                bc->cpu_type);
-+    }
-+
-     /* common peripherals from bcm2835 */
+ arm_common_ss.add(files(
+@@ -24,6 +23,9 @@ arm_common_user_system_ss.add(files(
+   'helper.c',
+   'vfp_fpscr.c',
+ ))
++arm_common_user_system_ss.add(when: 'TARGET_AARCH64', if_true: files(
++  'gdbstub64.c'
++))
  
-     obj = object_property_get_link(OBJECT(dev), "ram", &error_abort);
+ arm_common_system_ss.add(files(
+   'arm-qmp-cmds.c',
 -- 
 2.53.0
 

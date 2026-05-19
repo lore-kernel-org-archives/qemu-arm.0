@@ -4,80 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E68BCD5BAB
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 14:48:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E71ABCD4F5B
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 14:48:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPLid-00088A-FL; Tue, 19 May 2026 10:46:51 -0400
+	id 1wPLjq-0003vm-SA; Tue, 19 May 2026 10:48:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLia-0007zc-F0
- for qemu-arm@nongnu.org; Tue, 19 May 2026 10:46:49 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLjl-0003ZX-JL
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 10:48:01 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLiY-0007oM-K3
- for qemu-arm@nongnu.org; Tue, 19 May 2026 10:46:48 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-48a7fe4f40bso44809905e9.0
- for <qemu-arm@nongnu.org>; Tue, 19 May 2026 07:46:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wPLjj-0008D4-He
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 10:48:01 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-45e7c636e74so1640886f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2026 07:47:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779202003; x=1779806803; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779202078; x=1779806878; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=DIYh6J4qeeRTQHfvKlvZCgBlqlTwiarImjNJm+8cQwY=;
- b=Q+SaUBKnOwInaFvqRq/hnnjrJfPaFI8PMcQgoJpy+xnhWT3AtgtaZ9J8pSp9ba35FR
- nDUkHmARP8u9lFTtAko3TLMPFynXcYATpM/iyqW5cBbEssx7KvIVw/XIm+vqcnZlYxz5
- t7U4qWf3S8GGg6zgiTHYQKV36uGEY0XqZPb2P4vySNjw3T8jE3iX8bLWU8mt6Xok91FV
- qH7E/ZPdxIyCISLCl5BJ8+Z6Qa98Efdw3zjxu5OVgHeYrzZbYuOoG/qZZQ83wkhLwJja
- 7UZGbDZvGAinYsW5aPZt8goxedq021/35IFRv7hX1o9J0tVd8RNyWtcJi4vaf+MZ2knW
- LTsg==
+ bh=hrqG8E5vo4+DPxnoXgzD37IiU6lxoPHb9HCDmG94Di4=;
+ b=OPjVAhs+DpaiFLUkHG7jegJi1YD4CLc17eHeoMtuLS7xi1Fd51Jg4WP+m7YQ+gho3+
+ 0SV28zAGcOoacuZE8uq272a8uJrFuLys71qrGcyGRYnJspuk5oCbbG4II4yKp4QxXRCd
+ f60Udh3N3k6T1kpKfdvvYbbBpuVVj1vtrWBILaNSB/A/+LJPtMKJvvbUGXyj3zH33qOK
+ MlNuwPVxiVawqkytRhHvP2kzza++n7uK/04sMgReuprSnjNqJ0IKXBtlqmaRGX+F06bh
+ eKFwj+mJh2757V7NTJ8HZmKuG7zIDCF1tTMtvkMsUjN4wZFp0/3QUPSgf8vE3RKNkAsM
+ 1FTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779202003; x=1779806803;
+ d=1e100.net; s=20251104; t=1779202078; x=1779806878;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=DIYh6J4qeeRTQHfvKlvZCgBlqlTwiarImjNJm+8cQwY=;
- b=GlbYR2ziTfzjkr5dUu9FD+RK2sXdxefWdZrB7SU1D8rw4NSc4lsKgzMxVv4ewLgLpU
- Qa07HQ7lADKoFYG7nwKgQyJGo0oOsnfHwmKmMQTIxjTnoQX8hyPY1UK1LxZ+0qWn+ntR
- Snrzg9j3xD56ia2brdEc+yereMaj5gSDsyLpSP8HUZ43SVhlLJJ56dfTsclwaFA6DL4e
- 0tRfmnroJjdfjen8nPWGAD3cxLFkoENHqfzfcJFDFEtNEuG/F80jGkGUCwopgVgYdZbe
- cRFHvy93a0ruKgopHrNVmSOHlvjoDlvrWLv4Q9qfGzDwXk9Ppf5wDO4xbFpypZd2UVxb
- sVNA==
-X-Gm-Message-State: AOJu0YzZlI+ANFHXuD9PDYZWjTEfhPsSjSNfbr5wGUAyOe4Uiolrchxp
- 7lKte6wzRuZfWZyDSaSb6hYfmk14ieyBJSQ6CPPKAlSe4Fcft9gN2U9e32kq6ie/dovdzRLfUt6
- ihGjeVHU=
-X-Gm-Gg: Acq92OEfijsbSpY7q7xePQj1mcBcaclJvJVzWj8cGKr1WAkfl5oFRQfQRxFA1RHVqcC
- ipiCp9FnJufzZGhrhb7yAIjKxMmYLQrCMEb7dMMD4dv3bH/Fr1WeKEk8SifjaAcpIHeGCUa2ZV3
- 17FVYQZOwbQtC5CvJHpEBay9wbnCc4Ev0WeMsLrWxCVv6Gvdx64db5t1EqxsJQGngrjPL7clBdC
- 5p44IFJm3PUNBkmHsJLvC9A+mw+TeAMGpO8X+x01bFHac98HEMac4COPQ60fisjkjeZzFV1Ib3F
- tdHiV/7qkm5Gmzr8j2Yql5YWXV7QbR4dNSYPxQ21IOUcQ/KkQp9x8b3+emUTzuOvST2q8GvOrch
- 2LnnfmRCbioowghT9rZL8TAMxqdQBB11dMaMJGGC6lNF8VuWfWikF9LCGphWJYsLYbI84clpkJT
- QMfjIeWCR4PfsGVR7wFabCW6jYnzrFFEBq/MjJl62WnjXZLdnLCuk3n5bwcm03wTqs5wsFDghM
-X-Received: by 2002:a05:600c:48a8:b0:48f:e230:d5ab with SMTP id
- 5b1f17b1804b1-48fe651e11cmr190837715e9.31.1779202003347; 
- Tue, 19 May 2026 07:46:43 -0700 (PDT)
+ bh=hrqG8E5vo4+DPxnoXgzD37IiU6lxoPHb9HCDmG94Di4=;
+ b=AuHjskY4u3lLqcCn5+OW+Uv/KbncuBBTJP8jLZ7U4GbURdVDkuUNMyR9VCtdEXILxx
+ T9Vxwk434dTb1GMF7o6ryii55c/Fb3vUrbZPwO2+nZZ8IEXRWt6y/c8JNqTbcJJzhMa3
+ TTaQktfEIC2DaGriE0hH3zvq1D3YZS+I4rnh3MFkBkioBLyotPHnSB5bi0u/5Wo5WoPU
+ xIXRSJoRNR8sQLkYHfNq3+d4bP8Od/4Q8VGcirc8GOzfi+dj1tQZQbMZ2YvWmCUQB5ST
+ UTrjldb73GIipFreUCMt2twXWV8/u07Bs8HbwaaoPJQgTo6xPQp3g/sJmu1tydpq0QsG
+ wDpw==
+X-Gm-Message-State: AOJu0YwNf8vc6Uf1m41ENh3+tF5VYgdXTB5NT9n1brFn3csi+R2F5M6+
+ eQ7eIgaq8zgMazZ8zINK+yW0u4eRDQuTd4qH1a23uW2o35PINrp409ECqMi+SMH/F6Hw+5kXAsv
+ OvimGHNQ=
+X-Gm-Gg: Acq92OGvKmIy7v5CD97g3Dsc1POtEeCt4yrvgmAPnKUHTUrGaGE6Zn/ahXa8AzKX/ln
+ 7xA/AcJStFIOeIgVrCFYocrlaPgTm1IAkwyipQXfHUR9K/HyvGfcMKKmC7yFRjZ/KN33QlbR9Xe
+ QmAelpxdNayMj03Qy+1g4rz3OR3KB5GANbfE8eSiND4y9lP5ON2bsIGtQZmfkqrXKc8EcKm923W
+ sGazj1NYN1pysSkvLCAu7HzcY1Fn81/enju4ToAzeYExNl/UWk4XT+cEARRgDjkgTW6++y73Yoy
+ e3X2mVVaPkomt2oQDq1qE2STDGwUhIzge21qDMdbFJqfVDgIu/7Gnhd5pUPeDVq/b5zMtZIo1Id
+ RrM6ajzbWcsvRzyoigG4X7FB2CQeldZG1CSi4WfkAcKsr4dEJr5yxBYr3Xyc1bGNi+mRD70g5Hn
+ MXXNSCpUUEJw15n+UwFwniRygCCRJnE52ssrmTWCr0Tp9wYQF0FhGqXsQaJpwjqYE71uP95VRN
+X-Received: by 2002:a05:6000:4305:b0:43c:fe66:43ec with SMTP id
+ ffacd0b85a97d-45e5c5af3e1mr33745917f8f.14.1779202077754; 
+ Tue, 19 May 2026 07:47:57 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48ff2cb4ae0sm157964445e9.0.2026.05.19.07.46.42
+ ffacd0b85a97d-45da0fe13a7sm48215448f8f.29.2026.05.19.07.47.56
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 19 May 2026 07:46:42 -0700 (PDT)
+ Tue, 19 May 2026 07:47:57 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v8 07/18] target/arm: Introduce common system/user meson
- source set
-Date: Tue, 19 May 2026 16:45:42 +0200
-Message-ID: <20260519144553.91483-8-philmd@linaro.org>
+Subject: [PATCH v8 18/18] target/arm: Build cpu-max.c once
+Date: Tue, 19 May 2026 16:45:53 +0200
+Message-ID: <20260519144553.91483-19-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260519144553.91483-1-philmd@linaro.org>
 References: <20260519144553.91483-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,161 +99,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce a source set common to system / user.
-No logical change intended.
+Call TargetInfo::target_aarch64() at runtime, allowing to
+remove the target-specific TARGET_AARCH64 definition and
+build cpu-max.c once as common object.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 ---
- target/arm/meson.build     | 21 +++++++++--------
- target/arm/tcg/meson.build | 48 ++++++++++++--------------------------
- 2 files changed, 26 insertions(+), 43 deletions(-)
+ target/arm/cpu-max.c   | 8 ++------
+ target/arm/meson.build | 2 +-
+ 2 files changed, 3 insertions(+), 7 deletions(-)
 
+diff --git a/target/arm/cpu-max.c b/target/arm/cpu-max.c
+index 8cf8edc6535..d38bdfcf811 100644
+--- a/target/arm/cpu-max.c
++++ b/target/arm/cpu-max.c
+@@ -8,6 +8,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
++#include "qemu/target-info.h"
+ #include "system/hw_accel.h"
+ #include "system/kvm.h"
+ #include "system/qtest.h"
+@@ -190,12 +191,7 @@ void aa32_max_features(ARMCPU *cpu)
+ static void cpu_max_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+-
+-#ifdef TARGET_AARCH64
+-    const bool aarch64_enabled = true;
+-#else
+-    const bool aarch64_enabled = false;
+-#endif /* !TARGET_AARCH64 */
++    const bool aarch64_enabled = target_aarch64();
+ 
+     if (hwaccel_enabled()) {
+         assert(aarch64_enabled);
 diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 4723f9f170a..e56fc943bdf 100644
+index 3e02941d0d5..9408131d178 100644
 --- a/target/arm/meson.build
 +++ b/target/arm/meson.build
-@@ -1,6 +1,7 @@
- arm_ss = ss.source_set()
- arm_common_ss = ss.source_set()
- arm_common_system_ss = ss.source_set()
-+arm_common_user_system_ss = ss.source_set()
- arm_system_ss = ss.source_set()
- arm_stubs_ss = ss.source_set()
- arm_user_ss = ss.source_set()
-@@ -16,6 +17,13 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
- arm_common_ss.add(files(
-   'mmuidx.c',
- ))
-+arm_common_user_system_ss.add(files(
-+  'cpregs-gcs.c',
-+  'cpregs-pmu.c',
-+  'debug_helper.c',
-+  'helper.c',
-+  'vfp_fpscr.c',
-+))
+@@ -9,7 +9,6 @@ arm_user_ss = ss.source_set()
+ arm_common_system_ss.add(files('gdbstub.c'))
+ arm_user_ss.add(files('gdbstub.c'))
  
- arm_common_system_ss.add(files(
-   'arm-qmp-cmds.c',
-@@ -26,11 +34,6 @@ arm_system_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
- arm_user_ss.add(files('cpu.c'))
- arm_stubs_ss.add(files('cpu32-stubs.c'))
- arm_user_ss.add(files(
--  'cpregs-gcs.c',
--  'cpregs-pmu.c',
--  'debug_helper.c',
--  'helper.c',
--  'vfp_fpscr.c',
-   'el2-stubs.c',
-   'cpregs-omap-stub.c',
+-arm_ss.add(files('cpu-max.c'))
+ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'cpu64.c',
  ))
-@@ -45,15 +48,10 @@ arm_common_system_ss.add(files(
-   'arch_dump.c',
-   'arm-powerctl.c',
-   'cortex-regs.c',
--  'cpregs-gcs.c',
-   'cpregs-omap.c',
--  'cpregs-pmu.c',
-   'cpu-irq.c',
--  'debug_helper.c',
--  'helper.c',
-   'machine.c',
-   'ptw.c',
--  'vfp_fpscr.c',
- ))
- 
- subdir('hvf')
-@@ -65,6 +63,9 @@ else
-     arm_common_system_ss.add(files('tcg-stubs.c'))
- endif
- 
-+arm_user_ss.add_all(arm_common_user_system_ss)
-+arm_common_system_ss.add_all(arm_common_user_system_ss)
-+
- target_arch += {'arm': arm_ss}
- target_system_arch += {'arm': arm_system_ss}
- target_user_arch += {'arm': arm_user_ss}
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index 1b751d59183..b0f5342245b 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -52,60 +52,42 @@ arm_common_system_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('cpu-v7m.c'))
- arm_user_ss.add(when: 'TARGET_AARCH64', if_false: files('cpu-v7m.c'))
- 
- arm_common_ss.add(zlib)
--
- arm_common_ss.add(files(
-   'arith_helper.c',
-   'crypto_helper.c',
-   'idau.c',
- ))
- 
--arm_common_system_ss.add(
-+arm_common_user_system_ss.add(
-   m_nocp_d,
-   mve_d,
-   neon_d,
-   translate32_d,
-   vfp_d,
-   files(
--  'cpregs-at.c',
-   'debug.c',
--  'gicv5-cpuif.c',
--  'hflags.c',
-   'gengvec.c',
-+  'hflags.c',
-   'm_helper.c',
-   'mve_helper.c',
-   'neon_helper.c',
-   'op_helper.c',
-+  'translate.c',
-+  'translate-m-nocp.c',
-+  'translate-mve.c',
-+  'translate-neon.c',
-+  'translate-vfp.c',
-+  'vec_helper.c',
-+  'vfp_helper.c',
-+))
-+
-+arm_common_system_ss.add(files(
-+  'cpregs-at.c',
-+  'gicv5-cpuif.c',
-   'psci.c',
-   'tlb_helper.c',
-   'tlb-insns.c',
--  'translate.c',
--  'translate-m-nocp.c',
--  'translate-mve.c',
--  'translate-neon.c',
--  'translate-vfp.c',
--  'vec_helper.c',
--  'vfp_helper.c',
- ))
--arm_user_ss.add(
--  m_nocp_d,
--  mve_d,
--  neon_d,
--  translate32_d,
--  vfp_d,
--  files(
--  'debug.c',
--  'gengvec.c',
--  'hflags.c',
--  'm_helper.c',
--  'mve_helper.c',
--  'neon_helper.c',
--  'op_helper.c',
-+arm_user_ss.add(files(
-   'tlb_helper.c',
--  'translate.c',
--  'translate-m-nocp.c',
--  'translate-mve.c',
--  'translate-neon.c',
--  'translate-vfp.c',
--  'vec_helper.c',
--  'vfp_helper.c',
- ))
+@@ -20,6 +19,7 @@ arm_common_ss.add(files(
+ arm_common_user_system_ss.add(files(
+   'cpregs-gcs.c',
+   'cpregs-pmu.c',
++  'cpu-max.c',
+   'debug_helper.c',
+   'helper.c',
+   'vfp_fpscr.c',
 -- 
 2.53.0
 

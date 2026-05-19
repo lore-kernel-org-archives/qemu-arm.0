@@ -4,120 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6DBDCD4F3C
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 06:45:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9D02CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 07:20:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPECt-0003YP-IS; Tue, 19 May 2026 02:45:35 -0400
+	id 1wPEk2-00021s-IO; Tue, 19 May 2026 03:19:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wPECX-0003RB-IX
- for qemu-arm@nongnu.org; Tue, 19 May 2026 02:45:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1wPEjy-00021D-MH; Tue, 19 May 2026 03:19:47 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wPECV-0005uD-Gr
- for qemu-arm@nongnu.org; Tue, 19 May 2026 02:45:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779173109;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lMy8vCv1+apXPJHbx27hsjeWyMULOd2K4r1D0AR/RlI=;
- b=YKJAE/TbSe43zpVNsIz2QlSNIvaSgCDyn0DmIh5ASSqWnnWjt74Gzp+OJL2hZTOYF075HN
- mlDQhKDk4b6NzDMKGB/97iD/LbiJBrIAp0PTB8my1Ye5FVfMgaOLd0R1/xQlOAZImRLQmC
- rGSqFOsBX7vWBdO/MSHDkeY7lsiDnO0=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-287-RN6dtU5RMsqLAdYW8uLvbA-1; Tue, 19 May 2026 02:45:07 -0400
-X-MC-Unique: RN6dtU5RMsqLAdYW8uLvbA-1
-X-Mimecast-MFC-AGG-ID: RN6dtU5RMsqLAdYW8uLvbA_1779173106
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-44f65835b77so2508713f8f.2
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 23:45:07 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779173106; x=1779777906;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=lMy8vCv1+apXPJHbx27hsjeWyMULOd2K4r1D0AR/RlI=;
- b=N1PfS+rOVY5Iz3xzfwrEWseXfaUxiI+qtiCAAAeoW4z/VxgMCqTv9DizXUM4Rms/Om
- OCj/m1GSuhSeQJwsyfBa2j+qtkCPEV+soMDTKb0dzq1+21wbPt5JZfXkGUjXDrfAdHtJ
- wIZnYAytMyYGjaxPVxBXznaqjs9DFXxZhdPp66sz5dVGQsqZx79dhLYKS/7dNeFFRFu+
- 1siXlwUeTnPDcRi5TQO/WfzS5Xr/l7jq5/GYqWreb6FSoiZtwJ7TzDA3KFvKYqRMk1vK
- eiAtv6np/5jpmFU3cgQaZoeZTalV9fJcSe+f3IdIWbnxTOpVSmAWLbTQ+1qFgUl4p4vb
- Cbfg==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/gKpcgSeISxqV4OQveq52DdrGXmoE5qNEmp1dLietL40jwvdSdTl4B/1kawJAMco48yeodpE7sNg==@nongnu.org
-X-Gm-Message-State: AOJu0Yyq2YaMFi/XYnraLrHJtdRHIBEaoqhI0qH6Q2axAxPEwRLuFNTG
- ELdE9Tlw26i0DRafH06aYP4vEvp1ZprXSot+r7xDIDsGg4NjcGK64L2IuCj2H8suW3f3pv0OFYr
- sjsnTwLiRGGw0f3Pl6G2fLeqVbJdQWsRtgA9B0q5a9hRD8WsIVvvB1w==
-X-Gm-Gg: Acq92OGoYOmsrdyckKb0dM02kQK1TWY3hbq8rkJqSTFy4vtEuNQilDUiEu1j9wHeGNT
- zN04EcJJjBQiA4HGZWcnG5i6/3qk2CuS1I5Q4ZQmX9DyIWcaDKd80RiJsnbOKuDubHTZwQeXVu2
- 7/od8mCwmu9zFVziRl0kvibiQPu7Hd8K6rpfsE95fR0PDeLIaqSsfoDu/ArDlIePbmo7kIRrsdO
- jSI+K6YXLVdv/R2OoyuWg6ebD1Y2V2MlJLFaIXQaIM8XGshUXPMV09wAiW7dbo5C/+GJklEHwCk
- HTm7iaWd17gnZoTg6nhStOmE4HYf71FYv/3N5zgslz14/bcdyda3qtIvGq7LQplsV3uwdY14Ygb
- 0laBihb+UpsgebfPhZ1xYoC7TIgrJRnbNm/12jZ+ffScTEI3O0SRj0raCd/cdXzpfAIreEQ==
-X-Received: by 2002:a05:600c:a4f:b0:48f:e230:2a24 with SMTP id
- 5b1f17b1804b1-48fe66204e8mr260842535e9.31.1779173106398; 
- Mon, 18 May 2026 23:45:06 -0700 (PDT)
-X-Received: by 2002:a05:600c:a4f:b0:48f:e230:2a24 with SMTP id
- 5b1f17b1804b1-48fe66204e8mr260842105e9.31.1779173105959; 
- Mon, 18 May 2026 23:45:05 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48fe4c834besm323327435e9.3.2026.05.18.23.45.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 May 2026 23:45:05 -0700 (PDT)
-Message-ID: <4e056a04-56e2-43ea-ba62-a2953efff080@redhat.com>
-Date: Tue, 19 May 2026 08:45:03 +0200
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1wPEjv-0004PZ-Mj; Tue, 19 May 2026 03:19:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
+ t=1779175169; bh=zDkCbAsCCSV5LBiwFNmimr46+FZz0xu1oWFK4b4u68o=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To;
+ b=pSTAAuZAQcCJBbhQKjFGH+J6fcGHLconExCGvFmzxfeMAut6rUEzjhAtPPK9fPj8a
+ Hu0RvXZAnmJ1yxtUy2bDQ2WNyywulfe7PcyIh1vre1R1dda5C+E0I0ospQLu/4jAdj
+ 23il+Qviz0uO6r7sEPQLho8/LlqnlzM852mFp33zCb2YyyDnzxS0oH5sl+wSRauqY9
+ uggnQ3TneOzTeXJYWc91qQ3jrNuHdiBO/UzOJK8TAA+D9KcZZxpQGCN2csUnhWPDiU
+ aaL+oKAbuI9GgWrL69YJWRGfimsWAdTCsOpjmGv5lGJ6pEhDoYqGZ8xjpHIANEv9pM
+ LDQnK6UuOrpTw==
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by isrv.corpit.ru (Postfix) with ESMTP id CB8CD1AD606;
+ Tue, 19 May 2026 10:19:29 +0300 (MSK)
+Message-ID: <663b0f9c-112e-429d-9277-6233d25488d8@tls.msk.ru>
+Date: Tue, 19 May 2026 10:19:31 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 11/17] arm/kvm: write back modified ID regs to KVM
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "philmd@linaro.org" <philmd@linaro.org>, yangjinqian1@huawei.com
-Cc: "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-References: <20260503073541.790215-1-eric.auger@redhat.com>
- <20260503073541.790215-12-eric.auger@redhat.com>
- <IA0PR12MB75555B2C69AC473011333C72AB3D2@IA0PR12MB7555.namprd12.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <IA0PR12MB75555B2C69AC473011333C72AB3D2@IA0PR12MB7555.namprd12.prod.outlook.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: P8uFb-ZBI9_KHqNjEMuCuv6Q539PUoXmnxnx8smxdvY_1779173106
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Subject: Re: [PATCH v1 1/1] hw/misc/aspeed_sbc: Add bounds checking for OTP
+ write operations
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+References: <20260428055254.76581-1-kane_chen@aspeedtech.com>
+ <20260428055254.76581-2-kane_chen@aspeedtech.com>
+ <c2b76041-81d8-43e0-b50b-af88c1c658b5@tls.msk.ru>
+ <1e2e06c1-b36e-4c1a-9ff5-8d84ce7e5f47@kaod.org>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <1e2e06c1-b36e-4c1a-9ff5-8d84ce7e5f47@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,148 +113,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 19.05.2026 07:59, Cédric Le Goater wrote:
+> On 5/14/26 20:48, Michael Tokarev wrote:
+...
 
+>> Is it this one maybe? https://marc.info/?l=qemu-arm&m=164500409921734,
+>> which is commit e1acf581c9 in qemu?  It has a different commit message
+>> though.
+> 
+> It should be  :
+> 
+> Fixes: 9f58dd0a8c30 ("hw/misc/aspeed_sbc: Connect ASPEED OTP memory 
+> device to SBC")
 
-On 5/8/26 3:03 PM, Shameer Kolothum Thodi wrote:
-> Hi Eric,
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 03 May 2026 08:34
->> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
->> devel@nongnu.org; qemu-arm@nongnu.org; kvmarm@lists.linux.dev;
->> peter.maydell@linaro.org; richard.henderson@linaro.org;
->> cohuck@redhat.com; sebott@redhat.com; Shameer Kolothum Thodi
->> <skolothumtho@nvidia.com>; philmd@linaro.org
->> Cc: maz@kernel.org; oliver.upton@linux.dev; pbonzini@redhat.com;
->> armbru@redhat.com; berrange@redhat.com; abologna@redhat.com;
->> jdenemar@redhat.com
->> Subject: [PATCH v4 11/17] arm/kvm: write back modified ID regs to KVM
->>
->> External email: Use caution opening links or attachments
->>
->>
->> We want to give a chance to override the value of host ID regs.
->> In a previous patch we made sure all their values could be fetched
->> through kvm_get_one_reg() calls before their modification. After
->> their potential modification we need to make sure we write back
->> the values through kvm_set_one_reg() calls.
->>
->> Make sure the cpreg_list is modified with updated values and
->> transfer those values back to kvm.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->> ---
->>  target/arm/kvm.c        | 59
->> ++++++++++++++++++++++++++++++++++++++++-
->>  target/arm/trace-events |  1 +
->>  2 files changed, 59 insertions(+), 1 deletion(-)
->>
->> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->> index 1a9b91bf8a..ca9a7d9439 100644
->> --- a/target/arm/kvm.c
->> +++ b/target/arm/kvm.c
->> @@ -275,6 +275,21 @@ static uint32_t kvm_arm_sve_get_vls(int fd)
->>      return vls[0] & MAKE_64BIT_MASK(0, ARM_MAX_VQ);
->>  }
->>
->> +static int kvm_feature_idx_to_idregs_idx(int kidx)
->> +{
->> +    int op1, crm, op2;
->> +    ARMSysRegs sysreg;
->> +
->> +    op1 = kidx / 64;
->> +    if (op1 == 2) {
->> +        op1 = 3;
->> +    }
->> +    crm = (kidx % 64) / 8;
->> +    op2 = kidx % 8;
->> +    sysreg = ENCODE_ID_REG(3, op1, 0, crm, op2);
->> +    return get_sysreg_idx(sysreg);
->> +}
->> +
->>  static int idregs_idx_to_kvm_feature_idx(ARMIDRegisterIdx idx)
->>  {
->>      ARMSysRegs sysreg = id_register_sysreg[idx];
->> @@ -1197,6 +1212,39 @@ bool kvm_arm_cpu_post_load(ARMCPU *cpu)
->>      return true;
->>  }
->>
->> +static void kvm_arm_writable_idregs_to_cpreg_list(ARMCPU *cpu)
->> +{
->> +    if (!cpu->writable_map) {
->> +        return;
->> +    }
->> +    for (int i = 0; i < NR_ID_REG_MASKS; i++) {
->> +        uint64_t writable_mask = cpu->writable_map->regs[i];
->> +        uint64_t *cpreg;
->> +
->> +        if (writable_mask) {
->> +            uint64_t previous, new;
->> +            int idx = kvm_feature_idx_to_idregs_idx(i);
->> +            ARM64SysReg *sysregdesc;
->> +            uint32_t sysreg;
->> +
->> +            if (idx == -1) {
->> +                /* sysreg writable, but we don't know it */
->> +                continue;
->> +            }
->> +            sysregdesc = &arm64_id_regs[idx];
->> +            sysreg = sysregdesc->sysreg;
->> +            cpreg = kvm_arm_get_cpreg_ptr(cpu,
->> idregs_sysreg_to_kvm_reg(sysreg));
->> +            previous = *cpreg;
->> +            new = cpu->isar.idregs[idx];
->> +            if (previous != new) {
->> +                *cpreg = new;
->> +                trace_kvm_arm_writable_idregs_to_cpreg_list(sysregdesc->name,
->> +                                                            previous, new);
->> +            }
->> +        }
->> +    }
->> +}
->> +
->>  void kvm_arm_reset_vcpu(ARMCPU *cpu)
->>  {
->>      int ret;
->> @@ -2148,7 +2196,16 @@ int kvm_arch_init_vcpu(CPUState *cs)
->>      }
->>      cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
->>
->> -    return kvm_arm_init_cpreg_list(cpu);
->> +    ret = kvm_arm_init_cpreg_list(cpu);
->> +    if (ret) {
->> +        return ret;
->> +    }
->> +    /* overwrite writable ID regs with their updated property values */
->> +    kvm_arm_writable_idregs_to_cpreg_list(cpu);
->> +
->> +    write_list_to_kvmstate(cpu, KVM_PUT_FULL_STATE);
-> KVM may hide registers based on ID register fields when features
-> are disabled. Updating writable ID registers after KVM_GET_REG_LIST
-> can result in a mismatched register list and failures when setting
-> registers.
->
-> This was reported on v3:
-> https://lore.kernel.org/qemu-devel/ae3f4d26-7a1a-418c-b303-2ed1d9ced4ba@huawei.com/
+Aha!
 
-Effectively I failed to address Jinqian's comment. This should be fixed
-in next respin
+>> And this patch does not apply to 10.0.x, - in there, there's no
+>> hw/nvram/aspeed_otp.c (688a3dae78 hw/nvram/aspeed_otp: Add ASPEED OTP
+>> memory device model).  I assume it's not needed for 10.0.x, but in
+>> that case, the Fixes: tag isn't even commit e1acf581c9.
+> 
+> It should apply on stable-10.2
 
-Thanks to both of you!
+Yeah, with this Fixes: tag it becomes obvious.
 
-Eric
->
-> Is this fixed someway in this series? I am not sure. I have faced the
-> same issue on NV platforms as well.
->
-> Thanks,
-> Shameer
->
+Thank you for the update!
 
+/mjt
 

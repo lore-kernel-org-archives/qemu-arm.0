@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8C74CD4F3C
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 13:32:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 921CBCD4F5B
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 13:32:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPKVv-0000rd-TW; Tue, 19 May 2026 09:29:39 -0400
+	id 1wPKXU-0003ht-9y; Tue, 19 May 2026 09:31:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wPKVu-0000r2-Cl
- for qemu-arm@nongnu.org; Tue, 19 May 2026 09:29:38 -0400
+ id 1wPKXS-0003bW-Ae
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 09:31:14 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wPKVs-00086a-Up
- for qemu-arm@nongnu.org; Tue, 19 May 2026 09:29:38 -0400
+ id 1wPKXP-00009N-2y
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 09:31:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779197376;
+ s=mimecast20190719; t=1779197470;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Hf+3kiEe0IH9c2nDgWT2MpE72/lkYGGaXKwgE6gWqfo=;
- b=Hiw80iFrDF8HNfiULImbZWx0wVOSxV5S8LvU5iSxfwzljbfMtM0lfMlxxc8ngOHSWVk+r4
- FkaKatWUTSLKzsQzParEw/ccPNsjG0uE6gvV2QDVpRqMOlzlF9g6kTuWWob3QmfsqwxbHM
- luEtsQRg9VHAQBQQ9wO87E5E6DCDcPs=
+ bh=AqN7LyQkpVzsmK2HDdemrDuDRczsABmmtqsqw6bIJnM=;
+ b=HL6iRVMCP2uf+qDPXaM6Ji9CASlgWMVQfMs8oFt5P32Hj5YQg49qZz7ybj7gk7WA01bj3U
+ ZpNoTfIJKyadMYgLMDFvWS8H6UvuM1Bw2+eeWSnTHkaXt3FsQAnDljmhiR6eEbEo5RUAmF
+ S0bPxQuBUWUP9ucWLzS0pwAPtoRxtFU=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-690-Ob3yOT-zPWyVgpwba_tXdA-1; Tue,
- 19 May 2026 09:29:32 -0400
-X-MC-Unique: Ob3yOT-zPWyVgpwba_tXdA-1
-X-Mimecast-MFC-AGG-ID: Ob3yOT-zPWyVgpwba_tXdA_1779197370
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-96-1otgUIMGMAW_t3_jJjq3pQ-1; Tue,
+ 19 May 2026 09:31:03 -0400
+X-MC-Unique: 1otgUIMGMAW_t3_jJjq3pQ-1
+X-Mimecast-MFC-AGG-ID: 1otgUIMGMAW_t3_jJjq3pQ_1779197460
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5E09E195608B; Tue, 19 May 2026 13:29:30 +0000 (UTC)
+ id BDA3919560B3; Tue, 19 May 2026 13:31:00 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.49.207])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BB5AA1800352; Tue, 19 May 2026 13:29:23 +0000 (UTC)
+ id 12A02180034E; Tue, 19 May 2026 13:30:54 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -56,15 +56,15 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v5 02/18] target/arm/cpu-sysregs.h.inc: Sort by name
- alphabetical order
-Date: Tue, 19 May 2026 15:27:16 +0200
-Message-ID: <20260519132905.145643-3-eric.auger@redhat.com>
+Subject: [PATCH v5 16/18] target/arm/cpu: Expose writable ID reg field
+ properties on the kvm host vcpu model
+Date: Tue, 19 May 2026 15:27:30 +0200
+Message-ID: <20260519132905.145643-17-eric.auger@redhat.com>
 In-Reply-To: <20260519132905.145643-1-eric.auger@redhat.com>
 References: <20260519132905.145643-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: fNxZzBuN5ORmiq3LHZ6jt0n_7BNQsb2y8pKIG8XATQM_1779197370
+X-Mimecast-MFC-PROC-ID: 1LJVpQJWcoU8LO2F03m_aNhefwRM3wvAtO1tN1RorbE_1779197460
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -93,90 +93,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Sort by register name alphabetical order. This will allow to
-easily diff with the future content, automatically generated.
+If the host supports KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES and
+KVM_ARM_GET_REG_WRITABLE_MASKS ioctl successfully retrieved the mask
+of writable fields for all ID regs, expose uint64 SYSREG properties
+for all the writable ID reg fields exposed by the host kernel which
+can be matched in target/arm/cpu-idregs.h.inc.
 
-No functional change intended.
+Properties are named  SYSREG_<REG>_<FIELD> with REG and FIELD
+being those used ARCHMRS Registers.json.
+
+When such properties are set, they override the default field value
+retrieved from the host and reinjected into KVM. Then the actual value
+being applied at KVM depends on the register, ie. it can be sanitized.
+In case the field value is rejected by KVM, the vpcu init fails.
+
+Anyway there is a first attempt to write back this value into KVM.
+
+Then legacy CPU options (virtualization, secure, ...) can still
+override the previous value. So low level IDREG field properties
+apply before the legacy ones.
+
+An example of invocation is:
+-cpu host,SYSREG_ID_AA64MMFR0_EL1_ECV=0x0
+which sets ECV field of ID_AA64MMFR0_EL1 to 0 (enhanced counter
+virtualization).
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 
 ---
-
 v4 -> v5:
-- remove spurious CCSIDR definition
+- get rid of ret local variable, dynamically allocate and free writable_map
+  here
 ---
- target/arm/cpu-sysregs.h.inc | 42 ++++++++++++++++++------------------
- 1 file changed, 21 insertions(+), 21 deletions(-)
+ target/arm/cpu64.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
-index 3d1ed40f04..a044596135 100644
---- a/target/arm/cpu-sysregs.h.inc
-+++ b/target/arm/cpu-sysregs.h.inc
-@@ -1,12 +1,11 @@
- /* SPDX-License-Identifier: GPL-2.0-or-later */
--DEF(ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
--DEF(ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
--DEF(ID_AA64PFR2_EL1, 3, 0, 0, 4, 2)
--DEF(ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
--DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
--DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
-+DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
-+DEF(CTR_EL0, 3, 3, 0, 0, 1)
-+DEF(DCZID_EL0, 3, 3, 0, 0, 7)
- DEF(ID_AA64AFR0_EL1, 3, 0, 0, 5, 4)
- DEF(ID_AA64AFR1_EL1, 3, 0, 0, 5, 5)
-+DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
-+DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
- DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
- DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
- DEF(ID_AA64ISAR2_EL1, 3, 0, 0, 6, 2)
-@@ -15,29 +14,30 @@ DEF(ID_AA64MMFR1_EL1, 3, 0, 0, 7, 1)
- DEF(ID_AA64MMFR2_EL1, 3, 0, 0, 7, 2)
- DEF(ID_AA64MMFR3_EL1, 3, 0, 0, 7, 3)
- DEF(ID_AA64MMFR4_EL1, 3, 0, 0, 7, 4)
--DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
--DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
--DEF(ID_DFR0_EL1, 3, 0, 0, 1, 2)
-+DEF(ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
-+DEF(ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
-+DEF(ID_AA64PFR2_EL1, 3, 0, 0, 4, 2)
-+DEF(ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
-+DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
- DEF(ID_AFR0_EL1, 3, 0, 0, 1, 3)
--DEF(ID_MMFR0_EL1, 3, 0, 0, 1, 4)
--DEF(ID_MMFR1_EL1, 3, 0, 0, 1, 5)
--DEF(ID_MMFR2_EL1, 3, 0, 0, 1, 6)
--DEF(ID_MMFR3_EL1, 3, 0, 0, 1, 7)
-+DEF(ID_DFR0_EL1, 3, 0, 0, 1, 2)
-+DEF(ID_DFR1_EL1, 3, 0, 0, 3, 5)
- DEF(ID_ISAR0_EL1, 3, 0, 0, 2, 0)
- DEF(ID_ISAR1_EL1, 3, 0, 0, 2, 1)
- DEF(ID_ISAR2_EL1, 3, 0, 0, 2, 2)
- DEF(ID_ISAR3_EL1, 3, 0, 0, 2, 3)
- DEF(ID_ISAR4_EL1, 3, 0, 0, 2, 4)
- DEF(ID_ISAR5_EL1, 3, 0, 0, 2, 5)
--DEF(ID_MMFR4_EL1, 3, 0, 0, 2, 6)
- DEF(ID_ISAR6_EL1, 3, 0, 0, 2, 7)
-+DEF(ID_MMFR0_EL1, 3, 0, 0, 1, 4)
-+DEF(ID_MMFR1_EL1, 3, 0, 0, 1, 5)
-+DEF(ID_MMFR2_EL1, 3, 0, 0, 1, 6)
-+DEF(ID_MMFR3_EL1, 3, 0, 0, 1, 7)
-+DEF(ID_MMFR4_EL1, 3, 0, 0, 2, 6)
-+DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
-+DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
-+DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
-+DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
- DEF(MVFR0_EL1, 3, 0, 0, 3, 0)
- DEF(MVFR1_EL1, 3, 0, 0, 3, 1)
- DEF(MVFR2_EL1, 3, 0, 0, 3, 2)
--DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
--DEF(ID_DFR1_EL1, 3, 0, 0, 3, 5)
--DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
--DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
--DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
--DEF(CTR_EL0, 3, 3, 0, 0, 1)
--DEF(DCZID_EL0, 3, 3, 0, 0, 7)
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index f2edbfc437..e0e1ff6cfb 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -37,6 +37,7 @@
+ #include "hw/core/qdev-properties.h"
+ #include "internals.h"
+ #include "cpu-features.h"
++#include "cpu-idregs.h"
+ 
+ /* convert between <register>_IDX and SYS_<register> */
+ #define DEF(NAME, OP0, OP1, CRN, CRM, OP2)      \
+@@ -851,7 +852,6 @@ static void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
+ static void aarch64_host_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+-    int ret;
+ 
+ #if defined(CONFIG_NITRO)
+     if (nitro_enabled()) {
+@@ -865,13 +865,18 @@ static void aarch64_host_initfn(Object *obj)
+ 
+     cpu->writable_map = g_new(uint64_t, KVM_ARM_FEATURE_ID_RANGE_SIZE);
+ 
+-    ret = kvm_arm_get_writable_id_regs(cpu->writable_map);
+-    if (ret) {
++    if (kvm_arm_get_writable_id_regs(cpu->writable_map)) {
+         g_free(cpu->writable_map);
+         cpu->writable_map = NULL;
+     }
+     kvm_arm_set_cpu_features_from_host(cpu);
+     aarch64_add_sve_properties(obj);
++
++    if (cpu->writable_map) {
++        /* generate SYSREG properties according to writable masks */
++        kvm_arm_expose_idreg_properties(cpu, arm64_id_regs);
++    }
++
+ #elif defined(CONFIG_HVF)
+     hvf_arm_set_cpu_features_from_host(cpu);
+ #elif defined(CONFIG_WHPX)
 -- 
 2.53.0
 

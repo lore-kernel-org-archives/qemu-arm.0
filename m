@@ -4,122 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3713ACD4F54
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 06:45:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6DBDCD4F3C
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 06:45:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPECA-0003Gd-43; Tue, 19 May 2026 02:44:51 -0400
+	id 1wPECt-0003YP-IS; Tue, 19 May 2026 02:45:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPEBy-0003FK-Su
- for qemu-arm@nongnu.org; Tue, 19 May 2026 02:44:39 -0400
-Received: from 9.mo533.mail-out.ovh.net ([188.165.47.174])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wPECX-0003RB-IX
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 02:45:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPEBv-0005B2-O9
- for qemu-arm@nongnu.org; Tue, 19 May 2026 02:44:38 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4gKQBl6BjTz5ylZ;
- Tue, 19 May 2026 06:44:31 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alexander.hansen@9elements.com>; Tue, 19 May 2026 06:44:31 +0000 (UTC)
-Received: from mta10.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.118.150])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4gKQBl58Spz1xqB;
- Tue, 19 May 2026 06:44:31 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
- (Authenticated sender: clg@kaod.org)
- by mta10.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- 3184F1923B1E; Tue, 19 May 2026 06:44:29 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-106R0063a995ee6-855d-43aa-a4e7-ca1ea9d6154f,
- A1C5BDF50025601E7F63D663DE463AD2E6007479) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <beb08be1-5806-4132-b8b5-401a671cd6ad@kaod.org>
-Date: Tue, 19 May 2026 08:44:28 +0200
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wPECV-0005uD-Gr
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 02:45:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779173109;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=lMy8vCv1+apXPJHbx27hsjeWyMULOd2K4r1D0AR/RlI=;
+ b=YKJAE/TbSe43zpVNsIz2QlSNIvaSgCDyn0DmIh5ASSqWnnWjt74Gzp+OJL2hZTOYF075HN
+ mlDQhKDk4b6NzDMKGB/97iD/LbiJBrIAp0PTB8my1Ye5FVfMgaOLd0R1/xQlOAZImRLQmC
+ rGSqFOsBX7vWBdO/MSHDkeY7lsiDnO0=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-287-RN6dtU5RMsqLAdYW8uLvbA-1; Tue, 19 May 2026 02:45:07 -0400
+X-MC-Unique: RN6dtU5RMsqLAdYW8uLvbA-1
+X-Mimecast-MFC-AGG-ID: RN6dtU5RMsqLAdYW8uLvbA_1779173106
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-44f65835b77so2508713f8f.2
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2026 23:45:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779173106; x=1779777906;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=lMy8vCv1+apXPJHbx27hsjeWyMULOd2K4r1D0AR/RlI=;
+ b=N1PfS+rOVY5Iz3xzfwrEWseXfaUxiI+qtiCAAAeoW4z/VxgMCqTv9DizXUM4Rms/Om
+ OCj/m1GSuhSeQJwsyfBa2j+qtkCPEV+soMDTKb0dzq1+21wbPt5JZfXkGUjXDrfAdHtJ
+ wIZnYAytMyYGjaxPVxBXznaqjs9DFXxZhdPp66sz5dVGQsqZx79dhLYKS/7dNeFFRFu+
+ 1siXlwUeTnPDcRi5TQO/WfzS5Xr/l7jq5/GYqWreb6FSoiZtwJ7TzDA3KFvKYqRMk1vK
+ eiAtv6np/5jpmFU3cgQaZoeZTalV9fJcSe+f3IdIWbnxTOpVSmAWLbTQ+1qFgUl4p4vb
+ Cbfg==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/gKpcgSeISxqV4OQveq52DdrGXmoE5qNEmp1dLietL40jwvdSdTl4B/1kawJAMco48yeodpE7sNg==@nongnu.org
+X-Gm-Message-State: AOJu0Yyq2YaMFi/XYnraLrHJtdRHIBEaoqhI0qH6Q2axAxPEwRLuFNTG
+ ELdE9Tlw26i0DRafH06aYP4vEvp1ZprXSot+r7xDIDsGg4NjcGK64L2IuCj2H8suW3f3pv0OFYr
+ sjsnTwLiRGGw0f3Pl6G2fLeqVbJdQWsRtgA9B0q5a9hRD8WsIVvvB1w==
+X-Gm-Gg: Acq92OGoYOmsrdyckKb0dM02kQK1TWY3hbq8rkJqSTFy4vtEuNQilDUiEu1j9wHeGNT
+ zN04EcJJjBQiA4HGZWcnG5i6/3qk2CuS1I5Q4ZQmX9DyIWcaDKd80RiJsnbOKuDubHTZwQeXVu2
+ 7/od8mCwmu9zFVziRl0kvibiQPu7Hd8K6rpfsE95fR0PDeLIaqSsfoDu/ArDlIePbmo7kIRrsdO
+ jSI+K6YXLVdv/R2OoyuWg6ebD1Y2V2MlJLFaIXQaIM8XGshUXPMV09wAiW7dbo5C/+GJklEHwCk
+ HTm7iaWd17gnZoTg6nhStOmE4HYf71FYv/3N5zgslz14/bcdyda3qtIvGq7LQplsV3uwdY14Ygb
+ 0laBihb+UpsgebfPhZ1xYoC7TIgrJRnbNm/12jZ+ffScTEI3O0SRj0raCd/cdXzpfAIreEQ==
+X-Received: by 2002:a05:600c:a4f:b0:48f:e230:2a24 with SMTP id
+ 5b1f17b1804b1-48fe66204e8mr260842535e9.31.1779173106398; 
+ Mon, 18 May 2026 23:45:06 -0700 (PDT)
+X-Received: by 2002:a05:600c:a4f:b0:48f:e230:2a24 with SMTP id
+ 5b1f17b1804b1-48fe66204e8mr260842105e9.31.1779173105959; 
+ Mon, 18 May 2026 23:45:05 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48fe4c834besm323327435e9.3.2026.05.18.23.45.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 18 May 2026 23:45:05 -0700 (PDT)
+Message-ID: <4e056a04-56e2-43ea-ba62-a2953efff080@redhat.com>
+Date: Tue, 19 May 2026 08:45:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/5] hw/sensor: MAX31790 support
-To: Alexander Hansen <alexander.hansen@9elements.com>, qemu-devel@nongnu.org
-Cc: Titus Rwantare <titusr@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>,
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
-References: <20260515150610.381066-1-alexander.hansen@9elements.com>
- <20260515150610.381066-4-alexander.hansen@9elements.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260515150610.381066-4-alexander.hansen@9elements.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Subject: Re: [PATCH v4 11/17] arm/kvm: write back modified ID regs to KVM
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "sebott@redhat.com" <sebott@redhat.com>,
+ "philmd@linaro.org" <philmd@linaro.org>, yangjinqian1@huawei.com
+Cc: "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "abologna@redhat.com" <abologna@redhat.com>,
+ "jdenemar@redhat.com" <jdenemar@redhat.com>
+References: <20260503073541.790215-1-eric.auger@redhat.com>
+ <20260503073541.790215-12-eric.auger@redhat.com>
+ <IA0PR12MB75555B2C69AC473011333C72AB3D2@IA0PR12MB7555.namprd12.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <IA0PR12MB75555B2C69AC473011333C72AB3D2@IA0PR12MB7555.namprd12.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: P8uFb-ZBI9_KHqNjEMuCuv6Q539PUoXmnxnx8smxdvY_1779173106
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 490610884993592559
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEuM1MyRbF79z3kqJLBdkiSDPgbyStlJ1DBT84gjFYiGc5l6AMv+C43u06hGjJXH1CO2iIYBkBP1SDHhvRt/CUFabg3oZN0DVkg4XCx7aAYk188nokRGvbK3btRFE7sHz9yrTcBW9cofiQFlfsUuOOcmiAqCB3Hdz6AAXn/Tfs5eRZL20v9Dtwz3XaH+vEFHFOADPJWvqPzAL+baS1Bs7bNj4W1F7dFlOPKbnDyg1r64O4U1czopQCMhMqX2pil5KhSw6YVeBJM4YhEXEhCmS0Xt/MyBesI2lX6G4zfvGK2fK5N2O2P3PW8VPgY3DZf8a+XckNVtE7FkE+vc58gOSxZnxVfd/0UJp4SDGVgah2pV/usw71TcifkIN/K36lyus+StOSzaGDiLqzLgq3w7o/JbSFUNJ9AdXREMtD7uuYavT8TPZduREkzoLzFLveh2Bdwp4zpjZL4N6/GyLsk+rlqEc960JGi7xhvMMVl7ART5+b6HcayMtoxRKm8OAGxzHltYhVCu/hmlaSVvJsd6od+z90WDbxAwcAKNIE8Hp8hV+zIK58FbpHSMR4SIRNDsYwM9n5Wz7f46AUxBUikVR2emiOD1vl01aoEtfth9ZL/RFTilbYlGauwBUwoxL0odxYVk96nO536TBezm7+NAGGBiLTDBmaLCpe5/fxTSrnTbQ
-DKIM-Signature: a=rsa-sha256; bh=oOTYfMjlUidQNlIf+Qoo/nSx4do0Oi2/SPVRYCX5ntc=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1779173072; v=1;
- b=JTr6N/YkuDjQa2xgqhfru0UPSy50ptGfszNC91wMWaO08VNtWtAWnPlftqEX0X6PMwrvBsrL
- mK/7brb1ag9K+i8glEjQ8hzoghBCm9qbelaZWVh/i4hTF+bKOom9UFCnplfO6lspfy3c90th1T8
- kguGAai4KS9fq1UikLy4UU4mDrkFtSpA8heJWDFhdWn8XbW8v7FWej4OX5ufAfs+NCfYeFomYH8
- 9BxhJVe0warY5FPCK7S++ROoSeV5FY9NPsIkBr0MWWwJlMR2Y9Uoc2T6kmTJlwMGV9neXwpeF9U
- U+HGPApAz3IXISTodZhmf7MSOAb5A9itU1wavJtU5nCcw==
-Received-SPF: pass client-ip=188.165.47.174; envelope-from=clg@kaod.org;
- helo=9.mo533.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,50 +130,148 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/15/26 16:58, Alexander Hansen wrote:
-> --- a/tests/functional/arm/test_aspeed_fby4.py
-> +++ b/tests/functional/arm/test_aspeed_fby4.py
-> @@ -7,6 +7,8 @@
->   from qemu_test import Asset
->   from aspeed import AspeedTest
->   
-> +from qemu_test import wait_for_console_pattern, exec_command
-> +from qemu_test import exec_command_and_wait_for_pattern
->   
->   class YosemiteV4Machine(AspeedTest):
->   
-> @@ -33,6 +35,22 @@ def do_test_arm_aspeed_openbmc_no_network(self, machine, image, uboot,
->           # different from the other machines.
->           self.wait_for_console_pattern('yosemite4 login:')
->   
-> +        # perform login
-> +        exec_command_and_wait_for_pattern(self,
-> +                                          "root", "Password:");
-> +
-> +        exec_command_and_wait_for_pattern(self, "0penBmc", "#");
-> +
-> +        # MAX31790 test
-> +        exec_command_and_wait_for_pattern(self,
-> +            "cat /sys/class/hwmon/hwmon2/name", "max31790");
-> +        exec_command_and_wait_for_pattern(self,
-> +            "cat /sys/class/hwmon/hwmon2/fan1_input", "4530");
-
-Fan read is 1132 in the tests I have run.
-
-C.
 
 
-> +        exec_command_and_wait_for_pattern(self,
-> +            "cat /sys/class/hwmon/hwmon2/fan1_enable", "1");
-> +        exec_command_and_wait_for_pattern(self,
-> +            "cat /sys/class/hwmon/hwmon2/fan1_fault", "0");
-> +
->       def test_arm_ast2600_yosemitev4_openbmc(self):
->           image_path = self.uncompress(self.ASSET_YOSEMITE_V4_FLASH)
->   
-> -- 2.54.0
+On 5/8/26 3:03 PM, Shameer Kolothum Thodi wrote:
+> Hi Eric,
+>
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: 03 May 2026 08:34
+>> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
+>> devel@nongnu.org; qemu-arm@nongnu.org; kvmarm@lists.linux.dev;
+>> peter.maydell@linaro.org; richard.henderson@linaro.org;
+>> cohuck@redhat.com; sebott@redhat.com; Shameer Kolothum Thodi
+>> <skolothumtho@nvidia.com>; philmd@linaro.org
+>> Cc: maz@kernel.org; oliver.upton@linux.dev; pbonzini@redhat.com;
+>> armbru@redhat.com; berrange@redhat.com; abologna@redhat.com;
+>> jdenemar@redhat.com
+>> Subject: [PATCH v4 11/17] arm/kvm: write back modified ID regs to KVM
+>>
+>> External email: Use caution opening links or attachments
+>>
+>>
+>> We want to give a chance to override the value of host ID regs.
+>> In a previous patch we made sure all their values could be fetched
+>> through kvm_get_one_reg() calls before their modification. After
+>> their potential modification we need to make sure we write back
+>> the values through kvm_set_one_reg() calls.
+>>
+>> Make sure the cpreg_list is modified with updated values and
+>> transfer those values back to kvm.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> ---
+>>  target/arm/kvm.c        | 59
+>> ++++++++++++++++++++++++++++++++++++++++-
+>>  target/arm/trace-events |  1 +
+>>  2 files changed, 59 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index 1a9b91bf8a..ca9a7d9439 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -275,6 +275,21 @@ static uint32_t kvm_arm_sve_get_vls(int fd)
+>>      return vls[0] & MAKE_64BIT_MASK(0, ARM_MAX_VQ);
+>>  }
+>>
+>> +static int kvm_feature_idx_to_idregs_idx(int kidx)
+>> +{
+>> +    int op1, crm, op2;
+>> +    ARMSysRegs sysreg;
+>> +
+>> +    op1 = kidx / 64;
+>> +    if (op1 == 2) {
+>> +        op1 = 3;
+>> +    }
+>> +    crm = (kidx % 64) / 8;
+>> +    op2 = kidx % 8;
+>> +    sysreg = ENCODE_ID_REG(3, op1, 0, crm, op2);
+>> +    return get_sysreg_idx(sysreg);
+>> +}
+>> +
+>>  static int idregs_idx_to_kvm_feature_idx(ARMIDRegisterIdx idx)
+>>  {
+>>      ARMSysRegs sysreg = id_register_sysreg[idx];
+>> @@ -1197,6 +1212,39 @@ bool kvm_arm_cpu_post_load(ARMCPU *cpu)
+>>      return true;
+>>  }
+>>
+>> +static void kvm_arm_writable_idregs_to_cpreg_list(ARMCPU *cpu)
+>> +{
+>> +    if (!cpu->writable_map) {
+>> +        return;
+>> +    }
+>> +    for (int i = 0; i < NR_ID_REG_MASKS; i++) {
+>> +        uint64_t writable_mask = cpu->writable_map->regs[i];
+>> +        uint64_t *cpreg;
+>> +
+>> +        if (writable_mask) {
+>> +            uint64_t previous, new;
+>> +            int idx = kvm_feature_idx_to_idregs_idx(i);
+>> +            ARM64SysReg *sysregdesc;
+>> +            uint32_t sysreg;
+>> +
+>> +            if (idx == -1) {
+>> +                /* sysreg writable, but we don't know it */
+>> +                continue;
+>> +            }
+>> +            sysregdesc = &arm64_id_regs[idx];
+>> +            sysreg = sysregdesc->sysreg;
+>> +            cpreg = kvm_arm_get_cpreg_ptr(cpu,
+>> idregs_sysreg_to_kvm_reg(sysreg));
+>> +            previous = *cpreg;
+>> +            new = cpu->isar.idregs[idx];
+>> +            if (previous != new) {
+>> +                *cpreg = new;
+>> +                trace_kvm_arm_writable_idregs_to_cpreg_list(sysregdesc->name,
+>> +                                                            previous, new);
+>> +            }
+>> +        }
+>> +    }
+>> +}
+>> +
+>>  void kvm_arm_reset_vcpu(ARMCPU *cpu)
+>>  {
+>>      int ret;
+>> @@ -2148,7 +2196,16 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>>      }
+>>      cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
+>>
+>> -    return kvm_arm_init_cpreg_list(cpu);
+>> +    ret = kvm_arm_init_cpreg_list(cpu);
+>> +    if (ret) {
+>> +        return ret;
+>> +    }
+>> +    /* overwrite writable ID regs with their updated property values */
+>> +    kvm_arm_writable_idregs_to_cpreg_list(cpu);
+>> +
+>> +    write_list_to_kvmstate(cpu, KVM_PUT_FULL_STATE);
+> KVM may hide registers based on ID register fields when features
+> are disabled. Updating writable ID registers after KVM_GET_REG_LIST
+> can result in a mismatched register list and failures when setting
+> registers.
+>
+> This was reported on v3:
+> https://lore.kernel.org/qemu-devel/ae3f4d26-7a1a-418c-b303-2ed1d9ced4ba@huawei.com/
+
+Effectively I failed to address Jinqian's comment. This should be fixed
+in next respin
+
+Thanks to both of you!
+
+Eric
+>
+> Is this fixed someway in this series? I am not sure. I have faced the
+> same issue on NV platforms as well.
+>
+> Thanks,
+> Shameer
+>
 
 

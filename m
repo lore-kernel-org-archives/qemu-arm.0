@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43179CD4F5B
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 13:31:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D7D7CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 13:31:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPKXM-0002yg-Fh; Tue, 19 May 2026 09:31:08 -0400
+	id 1wPKW5-0000zc-MX; Tue, 19 May 2026 09:29:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wPKXI-0002Pu-Jz
- for qemu-arm@nongnu.org; Tue, 19 May 2026 09:31:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1wPKW3-0000w2-VR
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 09:29:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wPKXG-00007m-S3
- for qemu-arm@nongnu.org; Tue, 19 May 2026 09:31:04 -0400
+ id 1wPKW2-0008CH-Ji
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 09:29:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779197462;
+ s=mimecast20190719; t=1779197385;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=16khiiboxEtagPZ7yiPX8BOR+daPNKuEG2RYsB0whyg=;
- b=SsZGzii1M81G9lVc0VHaMFqpgnjmUjZr3gQ5Y/OTT4y/045XlttcveYE6ngDntSeURYb9M
- Uz68T+8u/aDJ8EPm1u+fBWC9xnArVN3kD+1vKzXwPF7aT5rrRY8MK/ZoeNHTiVzJ+SMeOy
- fYi3j1KeBUGAuB3pdHfp6pLh0OzfEuo=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=ZqvUsFvAPzgPcejYvj5MvHW6fgWe11AjRvksKeD8RSQ=;
+ b=K8oHmmSvZnlyAJNT4lyD+OWLYylB4Ee303H2vtJyLC4zdh9T44epfLd9GL90jAkVTrHeBd
+ bzgkRkIZsnyDY4oKY/CrfBRba9Ae69iYpWt18xWXVs7kjtzwIo5sKhUaLfgxHzHmwMx9QQ
+ 7WX++xQdGNVUS8gXlIJ8rH+MNBJZiEc=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-138-pV_ITPC0P8CtW3NVtGMRNA-1; Tue,
- 19 May 2026 09:31:00 -0400
-X-MC-Unique: pV_ITPC0P8CtW3NVtGMRNA-1
-X-Mimecast-MFC-AGG-ID: pV_ITPC0P8CtW3NVtGMRNA_1779197454
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-455-JGdXmrxGN_afjkoIgppp1Q-1; Tue,
+ 19 May 2026 09:29:39 -0400
+X-MC-Unique: JGdXmrxGN_afjkoIgppp1Q-1
+X-Mimecast-MFC-AGG-ID: JGdXmrxGN_afjkoIgppp1Q_1779197377
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8F5411956065; Tue, 19 May 2026 13:30:54 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3C7641800371; Tue, 19 May 2026 13:29:37 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.49.207])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7FE1E180034E; Tue, 19 May 2026 13:30:48 +0000 (UTC)
+ id D3868180034E; Tue, 19 May 2026 13:29:30 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -56,28 +56,27 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v5 15/18] target/arm/kvm: Ignore some writable bits that
- shouldn't be
-Date: Tue, 19 May 2026 15:27:29 +0200
-Message-ID: <20260519132905.145643-16-eric.auger@redhat.com>
+Subject: [PATCH v5 03/18] target/arm/cpu-sysregs.h.inc: Update with automatic
+ generation
+Date: Tue, 19 May 2026 15:27:17 +0200
+Message-ID: <20260519132905.145643-4-eric.auger@redhat.com>
 In-Reply-To: <20260519132905.145643-1-eric.auger@redhat.com>
 References: <20260519132905.145643-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: cQv7afe72D2RUoENWNRVWBZVvDUOS6Ctc7F-wGyVnt4_1779197454
+X-Mimecast-MFC-PROC-ID: _CPfKgW1AEiktQEhg0E0w0p28ebZLKZzlhAqi3pUcas_1779197377
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,61 +92,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-KVM currently reports some bits as writable whereas they are
-RES0 or RAZ. This is detected because the code attempts to
-match those bits against a named field and this later does not
-exist in target/arm/cpu-idregs.h.inc.
-
-Let's silence warnings until those bits get fixed in the kernel.
-
-This was observed with v7.1-rc4 kernel.
+Generated definitions with scripts/update-aarch64-cpu-sysregs-header.py
+based on "AARCHMRS containing the JSON files for Arm A-profile
+architecture (2026-03)" Registers.json file.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 ---
- target/arm/kvm.c | 23 +++++++++++++++++++----
- 1 file changed, 19 insertions(+), 4 deletions(-)
+ target/arm/cpu-sysregs.h.inc | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 6373a66bbd..1688cc2106 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -405,6 +405,19 @@ static void get_sysreg_prop(Object *obj, Visitor *v,
-     trace_get_sysreg_prop(name, value);
- }
- 
-+static bool ignore_unnamed_writable_field(ARM64SysReg *reg, int i)
-+{
-+    if ((!strcmp(reg->name, "ID_ISAR0_EL1") && i >= 28 && i <= 31) || /* RES0 */
-+        (!strcmp(reg->name, "ID_ISAR5_EL1") && i >= 20 && i <= 23) || /* RES0 */
-+        (!strcmp(reg->name, "MVFR2_EL1") && i >= 8 && i <= 31) || /* RES0 */
-+        (!strcmp(reg->name, "ID_PFR2_EL1") && i >= 12 && i <= 31) || /* RES0 */
-+        (!strcmp(reg->name, "ID_MMFR5_EL1") && i >= 8 && i <= 31) || /* RES0 */
-+        (!strcmp(reg->name, "ID_AA64FPFR0_EL1") && i >= 2 && i <= 7)) { /* RAZ */
-+        return true;
-+    }
-+    return false;
-+}
+diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
+index a044596135..2188cd7be0 100644
+--- a/target/arm/cpu-sysregs.h.inc
++++ b/target/arm/cpu-sysregs.h.inc
+@@ -1,14 +1,25 @@
+ /* SPDX-License-Identifier: GPL-2.0-or-later */
 +
- /*
-  * decode_idreg_writemap: Generate props for writable fields
-  *
-@@ -426,10 +439,12 @@ decode_idreg_writemap(Object *obj, int index, uint64_t map, ARM64SysReg *reg)
-         uint64_t mask;
- 
-         if (!field) {
--            warn_report("%s bit %d of %s is writable but no named field "
--                        "in target/arm/cpu-idregs.h.inc",
--                        __func__, i, reg->name);
--            warn_report("%s is target/arm/cpu-idregs.h.inc?", __func__);
-+            if (!ignore_unnamed_writable_field(reg, i)) {
-+                warn_report("%s bit %d of %s is writable but no named field "
-+                            "in target/arm/cpu-idregs.h.inc",
-+                            __func__, i, reg->name);
-+                warn_report("%s is target/arm/cpu-idregs.h.inc?", __func__);
-+            }
-             map =  map & ~BIT_ULL(i);
-             i = ctz64(map);
-             continue;
++/* This file is autogenerated by scripts/update-aarch64-cpu-sysregs-header.py */
++/* DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>) */
++
++DEF(AIDR_EL1, 3, 1, 0, 0, 7)
++DEF(CCSIDR2_EL1, 3, 1, 0, 0, 2)
++DEF(CCSIDR_EL1, 3, 1, 0, 0, 0)
+ DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
+ DEF(CTR_EL0, 3, 3, 0, 0, 1)
+ DEF(DCZID_EL0, 3, 3, 0, 0, 7)
++DEF(GMID_EL1, 3, 1, 0, 0, 4)
+ DEF(ID_AA64AFR0_EL1, 3, 0, 0, 5, 4)
+ DEF(ID_AA64AFR1_EL1, 3, 0, 0, 5, 5)
+ DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
+ DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
++DEF(ID_AA64DFR2_EL1, 3, 0, 0, 5, 2)
++DEF(ID_AA64FPFR0_EL1, 3, 0, 0, 4, 7)
+ DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
+ DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
+ DEF(ID_AA64ISAR2_EL1, 3, 0, 0, 6, 2)
++DEF(ID_AA64ISAR3_EL1, 3, 0, 0, 6, 3)
+ DEF(ID_AA64MMFR0_EL1, 3, 0, 0, 7, 0)
+ DEF(ID_AA64MMFR1_EL1, 3, 0, 0, 7, 1)
+ DEF(ID_AA64MMFR2_EL1, 3, 0, 0, 7, 2)
+@@ -38,6 +49,10 @@ DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
+ DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
+ DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
+ DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
++DEF(MIDR_EL1, 3, 0, 0, 0, 0)
++DEF(MPIDR_EL1, 3, 0, 0, 0, 5)
+ DEF(MVFR0_EL1, 3, 0, 0, 3, 0)
+ DEF(MVFR1_EL1, 3, 0, 0, 3, 1)
+ DEF(MVFR2_EL1, 3, 0, 0, 3, 2)
++DEF(REVIDR_EL1, 3, 0, 0, 0, 6)
++DEF(SMIDR_EL1, 3, 1, 0, 0, 6)
 -- 
 2.53.0
 

@@ -4,105 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEE7FCD4F3C
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 15:28:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C6FBCD4F3C
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 15:31:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPMMV-0006Wb-2J; Tue, 19 May 2026 11:28:03 -0400
+	id 1wPMPO-0007mS-ES; Tue, 19 May 2026 11:31:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wPMMT-0006WK-NZ
- for qemu-arm@nongnu.org; Tue, 19 May 2026 11:28:01 -0400
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wPMMS-0000wL-35
- for qemu-arm@nongnu.org; Tue, 19 May 2026 11:28:01 -0400
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-65dead17c24so3450274d50.2
- for <qemu-arm@nongnu.org>; Tue, 19 May 2026 08:27:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779204479; cv=none;
- d=google.com; s=arc-20240605;
- b=RadRPGbiscyw9L6kmsKNTWDzoADyrXeloTl38jSSB0Nada7JwBP0QILOUnRc1VWV8F
- h8oDlvEIq+Z8r3KCmdEqrEikRCktFZ4HBEkG3mj4cqEGBvRX5tKgWoi03PZG8mL+KrGP
- P3bEyVxIuIbzKWMV5iNHpXv/v9i0AZZKpr5mnmZ2pp8CgFcGP3wBFJy79p/yOHjLMaAv
- YTIGUjKOK1jHXyNJtW1xMrbIiSIG1mxrXshFV4rB0FR/veVUv0tIiGhpgYzuzjJi/e8+
- ytrDFVhXw3FUB56UUUycB48WMYlgA3jBsev94rWtuDrTiZTA6FV+RzqSJAPOrGXPCxS8
- DfCg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=sGrQGLNdI11dxVOlQcjvVQwr8FImet4PCaIQ6Gi2Tq4=;
- fh=pun+LzBOmAQD4zxcL+HYULB0USRea22EJ73JnNiMKyk=;
- b=U/Txfad+fEho2n13gFQGtlp405CUUhRwNune2nPqD21NXmLwpb2syjv365EWoS+CiH
- NzpZ2eZP4asocDHgMjaF/km+w6Rc7N61SFHx1OdR6R4hPfG2Fq1np2XMm2YdKpna8z2B
- sbNL5Eo6UiFu8I+4pYwuBQUTx8nfRckcTpnYdIXbJ5VBqCzwGbyc7zFBdZXSBDVjTNv9
- eBsLLWFOptkHEypUsRki0VDtrnEAxyjJPWTj2l6PT4x/fd5HdzTITIS5wOBV4mjpkfH4
- 5Gw52yMxlNimslPHtHNCzgpEL4wpxCx7fgXyZVn9pbwifad1NqAuS3fjLr5i843ElUN4
- Gazw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779204478; x=1779809278; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=sGrQGLNdI11dxVOlQcjvVQwr8FImet4PCaIQ6Gi2Tq4=;
- b=zzIPLkOXu23TCTjdA9wp25RlYdMmOVzoKSFEHM13nL4wtt7Y2O1Uv/VGXIcYyh/+3W
- nAyswbmi31d8xV5OPZ53cgfjkbJrrFfz0gITxdWE4FdXQngd+VsQjqTL0COSsK7PeSwu
- gNCoz6UgIe2djdZGjaY3bjc3F/AVLtLH8jgYpzMk5tcZ4J7nYW9hQocMEbT3iVvK0a4G
- kMO66wjtOV56O/7YkjpMbrddOCuedHcIn1ogySiv+1HAPylRjcjuDqQiXMxPuZRzeCva
- UR9xIWIG5S+FZjjexKi2PnAiU70U4Ngt710pODfgG99KEWo5rgatQ5NE7ezjKl6P0fQy
- Lxmg==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wPMP3-0007gr-Ig
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 11:30:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wPMOz-00026n-4A
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 11:30:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779204635;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vbFnpEON0Fz2Cokbg36/sVGM6cgSUagu+eJrzPU6cbE=;
+ b=W4HC+md7lhoc6bQQynIqxbvD5b1ph3SwKtu3MB0C+vPhenCbPsu6orC7ZetYKNzdDnfLeX
+ g0ayqaZn0TCXVJ0kZN4Emb6gTYZrR5JLlvx1stQ9X/y9ww73u9bimaPj08b++Z79g5G8cv
+ JLac6NbMz27yMG4/7hxUMPYEUvOPqw4=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-86-Z4fC6kMZPNem2J3H3qCMCw-1; Tue, 19 May 2026 11:30:34 -0400
+X-MC-Unique: Z4fC6kMZPNem2J3H3qCMCw-1
+X-Mimecast-MFC-AGG-ID: Z4fC6kMZPNem2J3H3qCMCw_1779204633
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-45e78dd7baaso2560252f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2026 08:30:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779204479; x=1779809279;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1779204633; x=1779809433;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=sGrQGLNdI11dxVOlQcjvVQwr8FImet4PCaIQ6Gi2Tq4=;
- b=p2Psj4zLrHLuxO40HbzdqcXbJr6H5pGq3BKog0pUAiqYPcG3y3OzssJ0cfgN8ev/h0
- S2gKyrDsFlrgpOU8lX4bPbRxrMhWAIGnmeeHeSxSarQBfIgAH0X3rED2LRqfXoZXxG2I
- YWUEo6sGc/AnoatUx7L24l0mkO3w+XC4wyPDW35BvV+42stIBFjtgAvQqvMJ5b3d0ILJ
- nXb4qIwfGn63RUoLiGjpNaKkiBm/shHAAPkumiOP4d7/PO2wGqgqGvOJcVhrgnsKRRza
- ClX5VkKDeM91fHBw7kUTbdJCa+wzwZvH/4mxGf04V8LlNoedBcJFyypN/wSkSNNsUfm2
- O7Tw==
+ bh=vbFnpEON0Fz2Cokbg36/sVGM6cgSUagu+eJrzPU6cbE=;
+ b=qIXvZhPqH5KkBIUJAwD/Jst1k1zFASLdFQWPVdhPmJs/pjMpbn9tJhK1PHBLVH9T08
+ liZT0jpCLQKluf9azTmnMyioiaXhIr9rVMG82LNIxl79aW2eruE2Qm6QK4Zli1aWV8Du
+ /Ifm/x2j2AEID7y9sOQ5LSj4/ghkR6JimXOL89M8I9E3WZqZ2VCBXIg4UXQGvzC9qZce
+ 2oij0zIhgzeyTndjl6bzTzcnpKUSlp+rCqeWUL60bArhP3ZIYYjsLRjwbmF7fwZg7p8b
+ b/zxRyv4TMXUALtGrFBo/PwGJGCH9eZSWpRHpYsm70DZd4rWSAZluHE7ruV/TcnIh/wz
+ rqKg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+kQE2hOQmIY5DNU+yl3Gi/4a/iFylMWqYM9ATgWSZhjGw+6/geuqhjoTlC3JPCYhn/zfuDsrh0/g==@nongnu.org
-X-Gm-Message-State: AOJu0YxWSb90VQoF1QT27w0CTMXO6I2GKIL8jMYb3UR1tQFxoj2LwJKt
- Yzev6KOzrqvFLC4QILf2/7uM2SZ/F1qItCvc05XOmCBJSI3SqMttQVb/fwWN69rfYg+K5G6Qwin
- sXT2ocxeJ51Us7rKT3Ns0g8I5GcylYktY2vFT6vzCP9Enb9iMHthQPTA=
-X-Gm-Gg: Acq92OHNldpmu0v621FVK34JrEG1GSbcqFOeycUFzIk9kNsGPRmFxKXS3TNz6zGsr6K
- lHrkjz3SLYyT/UEtS+D9L3mDpiruFGLMtZgHq5ssjo02u56jXJ640htI4i+sdn6C1dkRS8y5i8K
- WsCgMtlCkaIUDW83Zrily/7Ihb2hv/js9UaswKTL0yl+Kh5gu++fUjcaxLfXQQUsLaY1zujRBL6
- gegrY3zedjBX0No3pqQYuYuiHQjLxiZiQmo1bY5c8p49xaqNG1+GzlK3HdS1p1KTX9hAQvIYPyJ
- sgS3KMc8H8d79foE4Rm16odZJ32LaEDaOZeaEnCyKZGKRl/bR6oSgG038lE5aNav+DQ=
-X-Received: by 2002:a05:690e:1689:b0:65e:4e7d:9c3e with SMTP id
- 956f58d0204a3-65e57b34374mr9120059d50.61.1779204478368; Tue, 19 May 2026
- 08:27:58 -0700 (PDT)
+ AFNElJ8X5lLS4b9QkawOsQydJVCY0QD1w+NImMZf75yxI4vR/4XyMDcGbGdvB0bdOMGEctu5HvVIheShSA==@nongnu.org
+X-Gm-Message-State: AOJu0YxwzICRL3ViSd3VYhN9XY8v/oIeIM5G9aw2e0lPM1W2qe7voCeT
+ +FSsUhmYshR5RhUhCJG837TJXzNxZMF7WUDMIlq+xNoWRFllw8K9CeTuxWfqKqQAyYyQ1ar9/kD
+ +3vo4UKC8l79ah612B6Z9J6g/dwIEvK6wbHsvZONb4s2zDQ++RntHOw==
+X-Gm-Gg: Acq92OH4MSMVDPRWeOQegJkMO+/sat9wKn1YzEjZlX5fm67/IFu0HeqRr0D8TxcLoKo
+ OHdQrN0U1gC040AhMQx7SK6VGitzx6Uzuyu/hZgsgPVc408jmZh8URxF6Q+dm0S4lc4XCMIr4yg
+ DSQAg9lnkdnFz0sr14Z3Bs+JuqkmAxLoKvXAOt8EY8KJio5zprZCba7AfupC3TfGVZQmG7tn8vL
+ x8iNEwTd/HnD7m8phTjkV+SMrvggMeta6CjgaEWCSdgpAdOFsB0XKmAmCq4jQgOxDi1hTJ1A4m7
+ tO04OaNbd52Cl7S1VOYsuI6V/obQIGiaawSwwOfnhHCZsxhL7T+SwL9Xv5EOr+Ows6Ctv6sC5//
+ dd4SJZRZoVULN7CWYGZcixU9O5oxN/V9poyNto0JZwSMITdrfNYWLVN1KC6cZ0cyosvcGBQ==
+X-Received: by 2002:a05:600c:a102:b0:489:a4:e578 with SMTP id
+ 5b1f17b1804b1-48fe60da919mr234142785e9.14.1779204632961; 
+ Tue, 19 May 2026 08:30:32 -0700 (PDT)
+X-Received: by 2002:a05:600c:a102:b0:489:a4:e578 with SMTP id
+ 5b1f17b1804b1-48fe60da919mr234142345e9.14.1779204632561; 
+ Tue, 19 May 2026 08:30:32 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45d9ec3b18fsm42999648f8f.11.2026.05.19.08.30.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 19 May 2026 08:30:31 -0700 (PDT)
+Message-ID: <13629ab2-f89c-42d9-9be1-8341e8146835@redhat.com>
+Date: Tue, 19 May 2026 17:30:30 +0200
 MIME-Version: 1.0
-References: <20260517003002.321430-1-richard.henderson@linaro.org>
- <20260517003002.321430-31-richard.henderson@linaro.org>
- <CAFEAcA-q4GdT-uawv-hw6j9ixdO=Nw60hkJ=mq61G3CxRE5t0w@mail.gmail.com>
- <CAFEAcA_5nrmafaL8oGr9Oax5BJ=bJUXZ9XjNt0ZL4bcxzcebTQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA_5nrmafaL8oGr9Oax5BJ=bJUXZ9XjNt0ZL4bcxzcebTQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 19 May 2026 16:27:47 +0100
-X-Gm-Features: AVHnY4L7BQirOr6E-xdMbApCddObIHgE08LpGnlK5A5PAKUwv3OdhXrxWcD3exw
-Message-ID: <CAFEAcA_VS4xH09PwdpxuScsCrrkJtePp2x4ioTt1fMMTs5n+=g@mail.gmail.com>
-Subject: Re: [PATCH v5 30/63] target/arm: Implement BFCVTN for SVE
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/7] hw/arm/smmuv3-accel: Implement "auto" value for
+ "ats"
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ Nathan Chen <nathanc@nvidia.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Zhao Liu <zhao1.liu@intel.com>, Matt Ochs <mochs@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>
+References: <20260512193520.3109172-1-nathanc@nvidia.com>
+ <20260512193520.3109172-3-nathanc@nvidia.com>
+ <CH3PR12MB75488C9306659D939ACEE203AB072@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <cb3f2ace-be0d-4b5a-ad3e-9de541a2444a@nvidia.com>
+ <CH3PR12MB75482526F3E2B515168A1E16AB042@CH3PR12MB7548.namprd12.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CH3PR12MB75482526F3E2B515168A1E16AB042@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: bZV4qSFzrrAcSd0qEfsCle4ZGNGiiD63JMhbpg0Eix0_1779204633
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,52 +123,70 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 19 May 2026 at 14:27, Peter Maydell <peter.maydell@linaro.org> wrote:
-> If we do take this approach we also need something like:
+
+
+On 5/15/26 9:55 AM, Shameer Kolothum Thodi wrote:
 >
-> --- a/fpu/softfloat-parts.c.inc
-> +++ b/fpu/softfloat-parts.c.inc
-> @@ -288,6 +288,7 @@ static void
-> partsN(uncanon_e4m3_overflow)(FloatPartsN *p, float_status *s,
->          p->frac_hi = E4M3_NORMAL_FRAC_MAX;
->      } else {
->          *p = partsN(default_nan)(s);
-> +        fracN(allones)(p);
->      }
->  }
+>> -----Original Message-----
+>> From: Nathan Chen <nathanc@nvidia.com>
+>> Sent: 14 May 2026 21:07
+>> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
+>> arm@nongnu.org; qemu-devel@nongnu.org
+>> Cc: Eric Auger <eric.auger@redhat.com>; Peter Maydell
+>> <peter.maydell@linaro.org>; Philippe Mathieu-Daudé <philmd@linaro.org>;
+>> Zhao Liu <zhao1.liu@intel.com>; Matt Ochs <mochs@nvidia.com>; Nicolin
+>> Chen <nicolinc@nvidia.com>
+>> Subject: Re: [PATCH v3 2/7] hw/arm/smmuv3-accel: Implement "auto" value
+>> for "ats"
+> [...]
+>  
+>>>>       object_class_property_set_description(klass, "oas",
+>>>>           "Specify Output Address Size (for accel=on). Supported values "
+>>>>           "are 44 or 48 bits. Defaults to 44 bits. oas=auto is not "
+>>> In smmuv3.c we have;
+>>>
+>>> case SMMU_CMD_ATC_INV:
+>>>          {
+>>>              SMMUDevice *sdev = smmu_find_sdev(bs, CMD_SID(&cmd));
+>>>
+>>>              if (!sdev || !s->ats) {
+>>>                  trace_smmuv3_unhandled_cmd(type);
+>>>                  break;
+>>>              }
+>>>
+>>>              if (!smmuv3_accel_issue_inv_cmd(s, &cmd, sdev, errp)) {
+>>>                  cmd_error = SMMU_CERROR_ILL;
+>>>                  break;
+>>>              }
+>>>              break;
+>>>          }
+>>>
+>>> The above !s->ats will be true for AUTO case, right? I think
+>>> we should change the above check with smmuv3_ats_enabled().
+>>>
+>>> Also, since we modified the ats to OnOffAuto in the previous
+>>> series, I am not sure the above should be a fix patch or not.
+>> I see, I will use smmuv3_ats_enabled() here to account for the AUTO
+>> case. I am not sure if it should have the Fixes tag either but let's see
+>> if we can get any guidance on that point.
+> The default ats with previous series is ON_OFF_AUTO_OFF(=2). So even
+> if ats is not visible to guest, a malicious guest issuing ats may end up
+> getting forwarded to host. So, I think we should fix it.
+
+good catch. Effectively you may add a preamble commit fixing this in
+this series with the corresponding Fixes tag. Even can be Stable to
+apply on previous 11.0. version
+
+Eric
 >
-> because the NaN value from uncanon_e4m3_overflow isn't passed
-> through the NaN handling part of uncanon.
+> Thanks,
+> Shameer
+>
+>
+>
 
-This isn't sufficient for the e4m3_overflow case, because we
-need to return a NaN with the sign of the input. In the
-Arm pseudocode FP8Round() calls FP8Infinity() for the overflow
-case for both E4M3 and E5M2; for E5M2 that function returns the
-format's Infinity representation, but for E4M3 as there is no
-Infinity it returns the NaN with the sign of the input.
-
-diff --git a/fpu/softfloat-parts.c.inc b/fpu/softfloat-parts.c.inc
-index d267bb4bbd..efd130bf16 100644
---- a/fpu/softfloat-parts.c.inc
-+++ b/fpu/softfloat-parts.c.inc
-@@ -287,7 +287,9 @@ static void
-partsN(uncanon_e4m3_overflow)(FloatPartsN *p, float_status *s,
-         p->exp = fmt->exp_max;
-         p->frac_hi = E4M3_NORMAL_FRAC_MAX;
-     } else {
--        *p = partsN(default_nan)(s);
-+        /* SNaN with sign of input */
-+        p->cls = float_class_snan;
-+        p->exp = INT_MAX;
-+        fracN(allones)(p);
-     }
- }
-
-gives the right answers but IDK if riscv wants this behaviour
-or some other one.
-
--- PMM
 

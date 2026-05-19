@@ -4,103 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85958CD4F57
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 10:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F47DCD5BA3
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 10:36:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPHUw-0007j6-SP; Tue, 19 May 2026 06:16:26 -0400
+	id 1wPHoB-0005C5-1F; Tue, 19 May 2026 06:36:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wPHUu-0007iR-3w
- for qemu-arm@nongnu.org; Tue, 19 May 2026 06:16:24 -0400
-Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
+ (Exim 4.90_1) (envelope-from <williamdapinho@gmail.com>)
+ id 1wPHo8-0005B6-VF
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 06:36:17 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wPHUs-0000yG-Aa
- for qemu-arm@nongnu.org; Tue, 19 May 2026 06:16:23 -0400
-Received: by mail-yx1-xb132.google.com with SMTP id
- 956f58d0204a3-65c0bda7f15so3356088d50.0
- for <qemu-arm@nongnu.org>; Tue, 19 May 2026 03:16:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779185781; cv=none;
- d=google.com; s=arc-20240605;
- b=Cx4KPSvwAxlV0VOT/sWlT5XFyjCYQRB1vY8QMt9Qcp1Xgs63SiA4UtcrrTzGjkqIba
- vH6jX42M3rxPwcjw/uG2KWkT1G36poZSHD0FZh9eLpBLB93+VpwlIzTmr+oDTwZo02Lg
- Nk8bYqiAQRmg2F6yIDpK2I8sHCZSsmT0FUYnzlXOvEiPElqdLQI1S9rP+RjUdBBLUXeI
- F96ZdNd3x1eSfZ5LkA0pk9KLZcqHLmHtUsdR3kptLch8pIq7BnA3f1cXPc+Sn6h7Y1NO
- 5gXmbuDxp8h9jGLlp9nlqRbuY2i1Vo+6TLU/KiFsyfsU72yQKqdqBidyx+XCTR6I98b2
- wK2Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=yTyx6icNp+PtefdG2rAba+1ZkoOV/jBRopLskuSBbkQ=;
- fh=w2cJR9Q/xLisi4l+o35FshI2uFZ+2fZ7xUGHdkIth1s=;
- b=JJLQgJPciFLATXyNaBAqGkiP74il+Ni/PvhYeTnxED+Fko4B+DHs3Kj6R/h1DTWXV0
- m1cwWOwJmh5GmWE2gHSpbSv1Q0AeMJ56RbgN0m0EEUR+iRxKqIh+iGQpjgpGJtbX7ywZ
- z9u7146IbW/vSFUlmyfpK4LghMXLVCGayD9U9XCql4HW3mB6hZ5UX61KjYsQGlo6ImxL
- x1/uHxmwEOSPrHtSZE+E770wPPFrSmOlwU8vWgo+AUdOM6KbphMy0BagoHJ5ZiQAfoTO
- RcuU94muq3XHiraqwUwBVfCVTgeVbGNxVmGPhqiYlSGgFwlw6hJKKnVbkniRA6ZwgEOL
- wTrQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <williamdapinho@gmail.com>)
+ id 1wPHo6-0005ss-3r
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 06:36:16 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-44ccbd3290aso3154612f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2026 03:36:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779185781; x=1779790581; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=yTyx6icNp+PtefdG2rAba+1ZkoOV/jBRopLskuSBbkQ=;
- b=jMdsodI4Ahsfs2eLOlIjgneCHQK9/jIjQkBeghbNigNqRykE3699nOKf47w3QqaZE2
- RZsBKizcfo6m9ZdRGsD8w5nPAzaQYVfav06fPNowxGKQGktreI3IeQvrqWRhEI3d95V7
- 3NxZjjwYM81ENEQpQC6MK4VGN61cyUaxD5cWjNGCfm2cuKA/WmFVM3H0yhyp0Zm4NZLc
- yqaVczBnbiunfzR+XtLEsRhDG+/mwSPcMbzNPwgqdjC84Bkzj+MpToxFef1W0FScIGiz
- LIklZkEEf1w8OsxwPpFrvZ8hQ2ekCw+HVN5iw1kdPySOaSqRUiZ+rpSmbeRr2dfVujA4
- g4Fg==
+ d=gmail.com; s=20251104; t=1779186972; x=1779791772; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=DWGCjJIGPHBo+PyVBXamfy8CAVuBZLEWETFeg3nvIOo=;
+ b=gpJJ/B30z30YTjsS+igzg6k/2hwJiRdTzZheXXmp3KrwADUngTveX4pq+CKL+L3q2z
+ MKXIynh3ZRDBkV+2IiF6YLpP1/NNPrEUm/JIXlfFIj+JNdwAhJSmJB1QnxiXqXAqbHOc
+ vrf61E59irhfrXcZ0Nf4GjZWCwMMbypAHi6TcIOm428EDMcJwpg46gOwGIqn5PXz99Zd
+ 9qsSO/FS3DXOXoWSb0TJNQGL6lsXzrbEwvAI9EhqANN0xy9tSCMn8OL43ufHX8iTQART
+ 7A3GdeMJjIOBPOLe81ellFMqNtde8uYZ3w3PmoS7WehkO2nC0av8DIr8mWJgZA2RsuLe
+ Vrzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779185781; x=1779790581;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=yTyx6icNp+PtefdG2rAba+1ZkoOV/jBRopLskuSBbkQ=;
- b=gJFray147wMWgumDUrPjZBPrMJucBuWu83XGXrZmmtFMiZxCRwzN9Z57SXSuFlK1EZ
- e8PgNoT8CdOKKo+4fEWAQgtP8rtto7vctABFmbO8ypoy2WhQog8Yt4Cw6xdKsrAhV2zR
- V6Torfn2XyjwHnlKeelflxGfy4YOSQ7yw0aY4rrWn0K+B346Uz4QUx8VJsxMN/8PaPOg
- HtjSy6WxmjuWq7EtUBOhKzhZh3Ke5NNpelQEwJ+mw+8Z4UctkWB5ILBDfWx0FCrjRVZU
- 370ZOtxCpc0nHwZoFmqFdHTZD1zPDYKceoWHsWAE5KfFhABzDMBQ/u6frcI8dGPayLyJ
- xHtA==
+ d=1e100.net; s=20251104; t=1779186972; x=1779791772;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=DWGCjJIGPHBo+PyVBXamfy8CAVuBZLEWETFeg3nvIOo=;
+ b=bKihfJ8t0aT6Qv2t2x13kI2W6V+gIPBQMY+Yj70rSo4QY9gFxCDjIgEnQid2J7xjLp
+ pjWgPJItHVgHLwrhhLMTHeX63AELKFcelCNHfFvQygIx7jX9VK8Y5abq/7VYafFnNuPA
+ p0ljIPnLMm7sl4Oxes2ZB7L/mcKeOCPq2hEVIz2zg98CMG49kMLIApFO4E59LSffT78V
+ 5xfSyjup+FZkbaDHWZGFCoSXJcy0o4y36+MrI7FSUsNzBt0rtJiMdOz0O0CQPDt6iWeo
+ C13wp/T59KF2RksdcQz6SOdrwOryH01iTDhFKOGLQJNk6fgdalMe3FZ+JPgBrogx7IS3
+ YzHw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/05tsBQ/ux84Iq0rMNF2+bxkehC7zCim+aHCZbQnwmZDo9UPLrCkmOE7nmhmEX5xYxj5gDlUK/Ug==@nongnu.org
-X-Gm-Message-State: AOJu0YzZcwvpeLwjDK3LfIMzIYfyTePAUKQHX510FJZjUAJEi/u4wEKZ
- AldXIRF7Th2cDB+a7ig4iy3oPOqMCdxDu87arkJCo9JbY6x3ZXB0YX3jVfhpY+eCHCS2PIBJlCE
- 03J9wHFssCi4zhhEnOFrmwRMHiNJfE1qFvlvgGsWc3g==
-X-Gm-Gg: Acq92OHACD3SdWk0Rbs4hfnND2nfAqhPCbuxO1X4qvummfUNM5OfpeKy6PubvZJ4kLe
- k7I5qCDXgTINu5vOrBfo87mZHEJFc0CtbBEnLPh1OJ4kJqo/s1YHlSZMncSfvtnoTtdt96OXcbR
- rPHuFjG81yit9+vZCW/APzCefuhS9KCgerj5MbNcGTKARAiRFQ93YAHc91iLHrMpeblfNOSFLY1
- zUJlWPKN2BDiIx2BVa714am2He+zhX2r31pSsedSgAIzUX8J1brmwIvv89J51Ezm8eA4SBQEz7K
- T9DestAvX2q8mb3jH/8cesn8VLsCeSBNy0UeUfOegWSKgaF9lOVs3B5DNZEvZX0PeTc=
-X-Received: by 2002:a05:690e:1501:b0:649:ed08:1a01 with SMTP id
- 956f58d0204a3-65e2284594dmr16999700d50.35.1779185780962; Tue, 19 May 2026
- 03:16:20 -0700 (PDT)
+ AFNElJ+hzOoAPKRt+4u0etkB+grZR/o1/0cBIUFoBi7mnpay/rV3SbViypWa/fdJKq9fAiht43vaNE9e5g==@nongnu.org
+X-Gm-Message-State: AOJu0YxpfhMoGuJbqoogHXJGz/vK9FvqOdWNVnVK7iQhnrGfFQgeIHlU
+ +0G3LcYecfGmT+RAwF+dwpaSiGDDrfX1fW74pfF+759UyO0D6zObsbXy
+X-Gm-Gg: Acq92OGFv/wyNoSgMB9p8CukZMghpC+uOjoIkP7llQJ/ZWZHqh7uQSj/D7wJYhNyPJI
+ jDx9TUsFJ8gZUKilJkC6yJSVperVblRyMooZT2bVuL2VZJzbF7W2Y1+ndDZ6+Xy3U0dhIl+1aQC
+ ACzjhi3KymdpadzCHEcLdaBMea5vpqabcG/4RIaU80oswKQSlfWB/TDjzQaC5sV+XH4EMcguAo5
+ IpDvWUjLPRsj8cqLUCav30BAQb1xi6TMmdL+U0qePLbEJr83H9pG9Bz5o2JhS3MaKwKdXfU4x7H
+ dtyAqMwmC7OH0FB1j3vsdnXnx1ejgvB3TNnveBJAB8f3ZAHkherDGiLpEBTcuUh+kpre6HeI3WD
+ nJnr9JpNCl9N6JgQdvFyTji28fpKY98sW2aNHSd1iqZj0p7mP8MqxWIzro9KQ+Sbt/fPaMzHGEd
+ XAmB9aZymiIZZsDWi19cQ+dQ==
+X-Received: by 2002:a05:600c:848c:b0:488:9ed3:1492 with SMTP id
+ 5b1f17b1804b1-48fe60ecc19mr294591405e9.10.1779186972179; 
+ Tue, 19 May 2026 03:36:12 -0700 (PDT)
+Received: from localhost ([2a03:2880:30ff:8::])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48fe5cab818sm329581015e9.14.2026.05.19.03.36.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 19 May 2026 03:36:11 -0700 (PDT)
+From: William de Abreu Pinho <williamdapinho@gmail.com>
+Date: Tue, 19 May 2026 03:36:03 -0700
+Subject: [PATCH v2 1/3] tests/functional/aspeed: introduce FacebookAspeedTest
 MIME-Version: 1.0
-References: <20260517003002.321430-1-richard.henderson@linaro.org>
- <20260517003002.321430-31-richard.henderson@linaro.org>
-In-Reply-To: <20260517003002.321430-31-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 19 May 2026 11:16:07 +0100
-X-Gm-Features: AVHnY4JDvOXrMutrNiQb5KflYANEe1wst8LCHWwryIQ8TQfuHyaLf78j3ooscGs
-Message-ID: <CAFEAcA-q4GdT-uawv-hw6j9ixdO=Nw60hkJ=mq61G3CxRE5t0w@mail.gmail.com>
-Subject: Re: [PATCH v5 30/63] target/arm: Implement BFCVTN for SVE
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260519-add-anacapa-machine-v2-1-47027867d76a@gmail.com>
+References: <20260519-add-anacapa-machine-v2-0-47027867d76a@gmail.com>
+In-Reply-To: <20260519-add-anacapa-machine-v2-0-47027867d76a@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ qemu-arm@nongnu.org, William de Abreu Pinho <williamdapinho@gmail.com>
+X-Mailer: b4 0.13.0
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=williamdapinho@gmail.com; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,53 +106,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, 17 May 2026 at 01:32, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
+Facebook OpenBMC Images include an early script [1] that lowers the
+console log level to warning.  This suppresses the "Hostname set to"
+message from the serial console.  Introduce FacebookAspeedTest (a
+subclass of AspeedTest), that waits for login prompt instead.  Update
+bletchley-bmc and catalina-bmc to use the new class.
 
+This is also used by the anacapa-bmc machine introduced in the following
+patch.
 
-> +static uint8_t fcvt_fp8_e4m3_output(FloatParts64 *p, int scale,
-> +                                    bool saturate, float_status *s)
-> +{
-> +    *p = parts64_scalbn(p, scale, s);
-> +    /*
-> +     * Saturating Inf -> Max handled in uncanon_e4m3_overflow
-> +     * because there is no infinity encoding.
-> +     */
-> +    return float8_e4m3_round_pack_canonical(p, s, saturate);
-> +}
+[1]: https://github.com/openbmc/openbmc/blob/6a56a45931fb7015a3fc18553415909105b484d6/meta-facebook/recipes-phosphor/initrdscripts/phosphor-static-norootfs-init/999-reduce-printk
 
-The E4M3 conversion code doesn't seem to produce the right
-output for an input NaN. This looks like it's because the
-fpu/ code isn't special-casing "there's only one NaN value
-for this format". Here, if we input a QNaN the scalbn operation
-will ignore the specific input NaN and return the default NaN.
-There's no special-casing of E4M3 in partsN(default_nan), so
-you get a frac value that's based on the default_nan_pattern,
-which for Arm has the MSB frac bit clear. Then in partsN(uncanon)
-we just move that frac value down into the right place for E4M3,
-without enforcing that it really is the all-ones NaN.
+Signed-off-by: William de Abreu Pinho <williamdapinho@gmail.com>
+---
+ tests/functional/arm/test_aspeed_bletchley.py | 6 +++---
+ tests/functional/arm/test_aspeed_catalina.py  | 6 +++---
+ tests/functional/aspeed.py                    | 8 ++++++++
+ 3 files changed, 14 insertions(+), 6 deletions(-)
 
-I think this should fix this, but maybe there's a better way?
+diff --git a/tests/functional/arm/test_aspeed_bletchley.py b/tests/functional/arm/test_aspeed_bletchley.py
+index 5a60b24b3d..3000d0c302 100755
+--- a/tests/functional/arm/test_aspeed_bletchley.py
++++ b/tests/functional/arm/test_aspeed_bletchley.py
+@@ -5,10 +5,10 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ from qemu_test import Asset
+-from aspeed import AspeedTest
++from aspeed import FacebookAspeedTest
+ 
+ 
+-class BletchleyMachine(AspeedTest):
++class BletchleyMachine(FacebookAspeedTest):
+ 
+     ASSET_BLETCHLEY_FLASH = Asset(
+         'https://github.com/legoater/qemu-aspeed-boot/raw/master/images/bletchley-bmc/openbmc-20250128071329/obmc-phosphor-image-bletchley-20250128071329.static.mtd.xz',
+@@ -22,4 +22,4 @@ def test_arm_ast2600_bletchley_openbmc(self):
+                                         soc='AST2600 rev A3')
+ 
+ if __name__ == '__main__':
+-    AspeedTest.main()
++    FacebookAspeedTest.main()
+diff --git a/tests/functional/arm/test_aspeed_catalina.py b/tests/functional/arm/test_aspeed_catalina.py
+index dc2f24e7b4..2694e4b005 100755
+--- a/tests/functional/arm/test_aspeed_catalina.py
++++ b/tests/functional/arm/test_aspeed_catalina.py
+@@ -5,10 +5,10 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ from qemu_test import Asset
+-from aspeed import AspeedTest
++from aspeed import FacebookAspeedTest
+ 
+ 
+-class CatalinaMachine(AspeedTest):
++class CatalinaMachine(FacebookAspeedTest):
+ 
+     ASSET_CATALINA_FLASH = Asset(
+         'https://github.com/legoater/qemu-aspeed-boot/raw/a866feb5ef81245b4827a214584bf6bcc72939f6/images/catalina-bmc/obmc-phosphor-image-catalina-20250619123021.static.mtd.xz',
+@@ -22,4 +22,4 @@ def test_arm_ast2600_catalina_openbmc(self):
+                                         soc='AST2600 rev A3')
+ 
+ if __name__ == '__main__':
+-    AspeedTest.main()
++    FacebookAspeedTest.main()
+diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
+index 47e84e035b..88b6590934 100644
+--- a/tests/functional/aspeed.py
++++ b/tests/functional/aspeed.py
+@@ -28,6 +28,9 @@ def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
+         self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
+         self.wait_for_console_pattern(f'ASPEED {soc}')
+         self.wait_for_console_pattern('/init as init process')
++        self.wait_for_boot_complete(hostname)
++
++    def wait_for_boot_complete(self, hostname):
+         self.wait_for_console_pattern(f'systemd[1]: Hostname set to <{hostname}>.')
+ 
+     def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'):
+@@ -69,3 +72,8 @@ def generate_otpmem_image(self):
+             f.write(pattern)
+         return path
+ 
++
++class FacebookAspeedTest(AspeedTest):
++
++    def wait_for_boot_complete(self, hostname):
++        self.wait_for_console_pattern(f'{hostname} login:')
 
-@@ -519,6 +519,14 @@ static void partsN(uncanon)(FloatPartsN *p,
-float_status *s,
-         case float_class_snan:
-             assert(fmt->exp_max_kind != float_expmax_normal);
-             p->exp = fmt->exp_max;
-+            if (fmt->exp_max_kind == float_expmax_e4m3) {
-+                /*
-+                 * E4M3 has exactly one NaN, with the frac field all-ones.
-+                 * Using the frac from the input NaN might result in
-+                 * a non-NaN value.
-+                 */
-+                fracN(allones)(p);
-+            }
-             fracN(shr)(p, fmt->frac_shift);
-             return;
-         default:
+-- 
+2.53.0-Meta
 
--- PMM
 

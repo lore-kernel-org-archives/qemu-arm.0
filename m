@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF68ECD4F3C
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 17:49:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 381EDCD4F3C
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 17:50:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPOYx-0004mM-7a; Tue, 19 May 2026 13:49:03 -0400
+	id 1wPOYx-0004lp-2b; Tue, 19 May 2026 13:49:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <williamdapinho@gmail.com>)
- id 1wPOYq-0004ge-A3
- for qemu-arm@nongnu.org; Tue, 19 May 2026 13:48:57 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1wPOYo-0004gL-BK
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 13:48:55 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <williamdapinho@gmail.com>)
- id 1wPOYn-0008NW-Dj
- for qemu-arm@nongnu.org; Tue, 19 May 2026 13:48:55 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-4890d945eb4so26448765e9.0
- for <qemu-arm@nongnu.org>; Tue, 19 May 2026 10:48:52 -0700 (PDT)
+ id 1wPOYk-0008N5-31
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 13:48:51 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-44a5174670eso2201289f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2026 10:48:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779212931; x=1779817731; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1779212928; x=1779817728; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=8tv8sNGOP2+gDDuYmPlVIIy5gfvrfarZbTKlONa7k1M=;
- b=H9RfVX5dwOMK6qfM/Cz+GJ7QXybnr8K3CmaUtKuPDH7HJ1n2leFBwo8WyQ6SgiD9Eb
- oazd6uhuUS4w7dqS07EkKTMLlvKg3maV1z3a4nTShlGXi1aXFpmd+clFDybQRdBfwlxM
- 1V1m79Z5Z9EFbXfCiIoCe9q+uAfDA/kvcBKJ+oxYJCNGTPgyJ7G5r+nzDldtMC0WDnGJ
- 61CiQRTfTTgnJ2CR9ub4CtUC1UmKVFVzvGNkPg74IPKILtaIsDdbV2Oy2Rg8nbFfTLyY
- F2jT25+NCfu+xsk5Rb2Ps2aI14y2e8IpHRd/B4A0SiqVrkz1CdrMuYlgftfFITQnEcI5
- d/aQ==
+ :reply-to; bh=a9auS0agNGpEVN2f018I0hCwEtLQPozZwovzvL21kwo=;
+ b=qb/MKKe+5hlbobvrV83JEDXLfndIl7b+G5wHN7t9QNMzxB8ZBWQG2vNox7VjRBfSYt
+ 42dR3GO4jRvibS2MVgiPjw/J9/Ks8nM4kN2qCT7Md/bznkki8h4vmB007aacvL3jx+hK
+ 5kIVr2iFrKnCpb/NAnJPjVUc1F0+ZnazC9f9i/qjIx8kXn2QrcJ+e1udTQqIZd6ovmPK
+ q7Xn/EQYi7msVJMUpiALhCgIakZYvD+Ypa52f9jRKSMjTuKgVhdSCg6DIOSsVG4x3DJe
+ Wmukky6mzUBZHEm0OZyM7tGI6wqoGglLyDR1exw4S63xfYMqVyjF6arGz14Oi5F1pd9g
+ iTew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779212931; x=1779817731;
+ d=1e100.net; s=20251104; t=1779212928; x=1779817728;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=8tv8sNGOP2+gDDuYmPlVIIy5gfvrfarZbTKlONa7k1M=;
- b=FRylWTlWTl+DrtGNbybAs6lokxJl09goRjD0DqFZYAkKExYrzCbXrqChiAtlckAa3G
- 8eHhnq6VXFQgTJ7dHPNid/vqa5Ax9XSmZIYF/TTB6tEGUchG2m+bzwsgNxsrivS12WHT
- ppOjCtYJ8j069qsxDEs47kuGVTjybqB1OrSap11y6jl4zOasBhen24SDqaKEtrqhLMeN
- FJJoKomSyen59FA6R6DqUwnEgR8LZqnqAav0WxK+lmIbJO9r7dClnsYRPnAqdNKrx0PK
- VjBIAe/z9sfH7+jwtBWFcWR2SoEFuWyiKndSoZalZXzphlA5n4mIe1K0+WQsMbj7aJSO
- pRDg==
+ bh=a9auS0agNGpEVN2f018I0hCwEtLQPozZwovzvL21kwo=;
+ b=c+axfS7ZMReRhxMxKuN+5O9Udb/H4lqIvCn9b3FZHxs1Jhd/Gpe3Kx1nd3AqVJLqI2
+ NwnliQi2rLyIpaWs6kQaCls/JAn4uOeyvZiEKhJKDdJhVDnhe+4E0LUr8bmbga2OiZ2A
+ XHsLmzlW3eXw3KqJ/iPcQ7r3cwB5iMSyYB5Nr4WWn5CTNyI/X9Nd4O0HkIw6ibeETmqT
+ O6MQ7l/x1uFhR6gcM+6nSxvBjrZfgE1T56HvT7TBN4d5hijuJgn0RIq3nxUsBKzgaO9v
+ z8qL7pB0Bk449nJoKTr2K2UQwYHK7i9V6HrVgs/ByVjzZOWAZyIdTWBtnzcVFxddHdKJ
+ UDug==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/fcigdF5PETxDbuxUQ7/7Fzo3EjFAr46lcaTS3T5Qt1f0XtK2F1IymdTmQpmI9JENTMDrMT11QPQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxhnRQ/JVY0aMjbxPMKRTi/5i+dcK7PT4atHVyCMU+cpAEAXY2Z
- jWJD7VRUFJcRJTJpqpshJrX7mCQ+hSGuCpn45q6IOj6CZln3gZP1huuMEqAuh7kHEVU=
-X-Gm-Gg: Acq92OGMohQ1Sss/nw0FpO/mg3Cui527gv9fYPsJSYyw7XwCVzG9XeqgE90c+0uo8z8
- yM7BN5CWf58iJUA+glt0HS7/fN43AjCX+fcXUPZppauTBQOrpXuTSN4bHWHr2C/3X7C1f/+cuY0
- 5+HZ1wTNsCgOfCt8zzZ0GGa58Aaxdxy/TsV1DDBZSnvQ/HpHSxY93hcd/hdC0xSxFiabuqNpEwT
- aSLO+XLtIex1yD23K4Adtgf7qQ8m7RNLu8oqGTpfVd4rNWPi2xeHZ2YA3eFtoFfTefCZwjpzYj/
- LZsM2BX844rO6mS9kZY2gdWiHNyanDT4KRNMCP4bEKWxz1Ho6B3wmNgUbBKZPpWjf+/oHH8kBbw
- 6+d+mQNAYQScRaYaYwUAN9gDjZWtCBFiIx5Zz5oqWcf3tme455yzCj4r/yZHvNxe1UUeooB+Mar
- omTc64R6B7lRgw5mOgxNQ0U8oRwxo+I6sv
-X-Received: by 2002:a05:600c:8485:b0:48a:5339:a46 with SMTP id
- 5b1f17b1804b1-48fe537fb70mr34065765e9.9.1779212930592; 
- Tue, 19 May 2026 10:48:50 -0700 (PDT)
-Received: from localhost ([2a03:2880:30ff:7::])
+ AFNElJ9fgLpbo1vKrA0q60zii0ztRnqCLzwZD/HlXlGayKkTGkTzK/r1CrXGAqM8CEeNtxRaA01KHHB73Q==@nongnu.org
+X-Gm-Message-State: AOJu0YziV6BJ5FfQve0h5sUe/hFV4Gn3ZVdsqBbTEz2Y+KkAXutSX3x2
+ 2FHA+a7lX+7K/lNKr3918sf9ovpvvJBCWplpKecQ/VCyBOta+3Q3Onmq
+X-Gm-Gg: Acq92OHxfHQ/xK+WG4DKS6ks4l8oszZLyL2XCp/u6tT+ROdtKyMcRU2eRxTpQwYFV8F
+ lDcIyrHx2ky1n4l5yBg2US5Mzc7R4+9MORhUx9PiTrPfCT1VDq0j3EJTxsbnYs/oqvhy/ULaG8C
+ xkahgn6YY8k3p6ASdIapraT8mBVAjlS2u0iDMg5eQyQiIKa6PZlhWTrOiYiAHVIcLpJgdv0LoqD
+ LChDYoJZA9sTF6MsET2idMnyl9AK+l55yRZOMEWByg7wf74RMFK55gk2JBWbkRZfAyz2laTWQc2
+ 44PWxurR9TRPgwUkvRrR9+rmVXiErKCeufvIeN2tozm1u7Sx20UzZMxx9m7Df+qS5owZaSWTDNi
+ 7xhPcACFVGy2Zvn2gG48d0sw9Rr1nbPj0iEzpYFMD7rmsIf28gOMBNSQfvnfTl5Ga/Xdm3TZpms
+ ihEMCxnyfTiKoznadgAe69VOiQrXa111mj
+X-Received: by 2002:a05:6000:2584:b0:43d:7783:c684 with SMTP id
+ ffacd0b85a97d-45e5c5e6d3dmr33720709f8f.43.1779212927926; 
+ Tue, 19 May 2026 10:48:47 -0700 (PDT)
+Received: from localhost ([2a03:2880:30ff:1::])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48febe6afe7sm107422405e9.24.2026.05.19.10.48.50
+ ffacd0b85a97d-45d9adc2209sm43965414f8f.0.2026.05.19.10.48.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 May 2026 10:48:50 -0700 (PDT)
+ Tue, 19 May 2026 10:48:47 -0700 (PDT)
 From: William de Abreu Pinho <williamdapinho@gmail.com>
-Date: Tue, 19 May 2026 10:48:40 -0700
-Subject: [PATCH v3 3/3] hw/arm/aspeed: anacapa: add FRU EEPROM data
+Date: Tue, 19 May 2026 10:48:38 -0700
+Subject: [PATCH v3 1/3] tests/functional/aspeed: introduce FacebookAspeedTest
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20260519-add-anacapa-machine-v3-3-56c23993a20a@gmail.com>
+Message-Id: <20260519-add-anacapa-machine-v3-1-56c23993a20a@gmail.com>
 References: <20260519-add-anacapa-machine-v3-0-56c23993a20a@gmail.com>
 In-Reply-To: <20260519-add-anacapa-machine-v3-0-56c23993a20a@gmail.com>
 To: qemu-devel@nongnu.org
@@ -84,15 +84,15 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  William de Abreu Pinho <williamdapinho@gmail.com>, 
  =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 X-Mailer: b4 0.13.0
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=williamdapinho@gmail.com; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=williamdapinho@gmail.com; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,298 +108,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Use frugen to generate FRU data for the following components: HPM MB,
-R-PDB, L-PDB, SCM, BSM, R Bridge Board, L Bridge Board, and HPM board
-ID.
+Facebook OpenBMC Images include an early script [1] that lowers the
+console log level to warning.  This suppresses the "Hostname set to"
+message from the serial console.  Introduce FacebookAspeedTest (a
+subclass of AspeedTest), that waits for login prompt instead.  Update
+bletchley-bmc and catalina-bmc to use the new class.
+
+This is also used by the anacapa-bmc machine introduced in the following
+patch.
+
+[1]: https://github.com/openbmc/openbmc/blob/6a56a45931fb7015a3fc18553415909105b484d6/meta-facebook/recipes-phosphor/initrdscripts/phosphor-static-norootfs-init/999-reduce-printk
 
 Signed-off-by: William de Abreu Pinho <williamdapinho@gmail.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast2600_anacapa.c | 225 ++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 217 insertions(+), 8 deletions(-)
+ tests/functional/arm/test_aspeed_bletchley.py | 6 +++---
+ tests/functional/arm/test_aspeed_catalina.py  | 6 +++---
+ tests/functional/aspeed.py                    | 8 ++++++++
+ 3 files changed, 14 insertions(+), 6 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast2600_anacapa.c b/hw/arm/aspeed_ast2600_anacapa.c
-index c24f00d44c..a1c8111a93 100644
---- a/hw/arm/aspeed_ast2600_anacapa.c
-+++ b/hw/arm/aspeed_ast2600_anacapa.c
-@@ -20,6 +20,207 @@
- #define ANACAPA_BMC_HW_STRAP2 0x00000000
- #define ANACAPA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+diff --git a/tests/functional/arm/test_aspeed_bletchley.py b/tests/functional/arm/test_aspeed_bletchley.py
+index 5a60b24b3d..3000d0c302 100755
+--- a/tests/functional/arm/test_aspeed_bletchley.py
++++ b/tests/functional/arm/test_aspeed_bletchley.py
+@@ -5,10 +5,10 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
  
-+/*
-+ * "Anacapa HPM (MB)" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Inventec", "pname": "Anacapa QEMU MB EVT2",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Inventec", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t hpm_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0xb4,
-+    0xa4, 0xf2, 0xc8, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x65, 0x63, 0xd4,
-+    0x41, 0x6e, 0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x51, 0x45, 0x4d, 0x55,
-+    0x20, 0x4d, 0x42, 0x20, 0x45, 0x56, 0x54, 0x32, 0x47, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0xc0,
-+    0xc1, 0x00, 0x00, 0xb8, 0x01, 0x06, 0x19, 0xc8, 0x49, 0x6e, 0x76, 0x65,
-+    0x6e, 0x74, 0x65, 0x63, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e, 0x61, 0x63,
-+    0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x82, 0x2d,
-+    0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83, 0x71, 0xd9,
-+    0xd6, 0xc0, 0xc1, 0x0e
-+};
-+static const size_t hpm_eeprom_len = sizeof(hpm_eeprom);
+ from qemu_test import Asset
+-from aspeed import AspeedTest
++from aspeed import FacebookAspeedTest
+ 
+ 
+-class BletchleyMachine(AspeedTest):
++class BletchleyMachine(FacebookAspeedTest):
+ 
+     ASSET_BLETCHLEY_FLASH = Asset(
+         'https://github.com/legoater/qemu-aspeed-boot/raw/master/images/bletchley-bmc/openbmc-20250128071329/obmc-phosphor-image-bletchley-20250128071329.static.mtd.xz',
+@@ -22,4 +22,4 @@ def test_arm_ast2600_bletchley_openbmc(self):
+                                         soc='AST2600 rev A3')
+ 
+ if __name__ == '__main__':
+-    AspeedTest.main()
++    FacebookAspeedTest.main()
+diff --git a/tests/functional/arm/test_aspeed_catalina.py b/tests/functional/arm/test_aspeed_catalina.py
+index dc2f24e7b4..2694e4b005 100755
+--- a/tests/functional/arm/test_aspeed_catalina.py
++++ b/tests/functional/arm/test_aspeed_catalina.py
+@@ -5,10 +5,10 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ from qemu_test import Asset
+-from aspeed import AspeedTest
++from aspeed import FacebookAspeedTest
+ 
+ 
+-class CatalinaMachine(AspeedTest):
++class CatalinaMachine(FacebookAspeedTest):
+ 
+     ASSET_CATALINA_FLASH = Asset(
+         'https://github.com/legoater/qemu-aspeed-boot/raw/a866feb5ef81245b4827a214584bf6bcc72939f6/images/catalina-bmc/obmc-phosphor-image-catalina-20250619123021.static.mtd.xz',
+@@ -22,4 +22,4 @@ def test_arm_ast2600_catalina_openbmc(self):
+                                         soc='AST2600 rev A3')
+ 
+ if __name__ == '__main__':
+-    AspeedTest.main()
++    FacebookAspeedTest.main()
+diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
+index 47e84e035b..88b6590934 100644
+--- a/tests/functional/aspeed.py
++++ b/tests/functional/aspeed.py
+@@ -28,6 +28,9 @@ def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
+         self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
+         self.wait_for_console_pattern(f'ASPEED {soc}')
+         self.wait_for_console_pattern('/init as init process')
++        self.wait_for_boot_complete(hostname)
 +
-+/*
-+ * "Anacapa R-PDB" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Inventec", "pname": "Anacapa QEMU RPDB",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Inventec", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t rpdb_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0x41,
-+    0x2d, 0xf2, 0xc8, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x65, 0x63, 0xd1,
-+    0x41, 0x6e, 0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x51, 0x45, 0x4d, 0x55,
-+    0x20, 0x52, 0x50, 0x44, 0x42, 0x47, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0xc0, 0xc1, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x4d, 0x01, 0x06, 0x19, 0xc8, 0x49, 0x6e, 0x76, 0x65,
-+    0x6e, 0x74, 0x65, 0x63, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e, 0x61, 0x63,
-+    0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x82, 0x2d,
-+    0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83, 0x71, 0xd9,
-+    0xd6, 0xc0, 0xc1, 0x0e
-+};
-+static const size_t rpdb_eeprom_len = sizeof(rpdb_eeprom);
++    def wait_for_boot_complete(self, hostname):
+         self.wait_for_console_pattern(f'systemd[1]: Hostname set to <{hostname}>.')
+ 
+     def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'):
+@@ -69,3 +72,8 @@ def generate_otpmem_image(self):
+             f.write(pattern)
+         return path
+ 
 +
-+/*
-+ * "Anacapa L-PDB" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Inventec", "pname": "Anacapa QEMU LPDB",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Inventec", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t lpdb_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0x41,
-+    0x2d, 0xf2, 0xc8, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x65, 0x63, 0xd1,
-+    0x41, 0x6e, 0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x51, 0x45, 0x4d, 0x55,
-+    0x20, 0x4c, 0x50, 0x44, 0x42, 0x47, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0xc0, 0xc1, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x53, 0x01, 0x06, 0x19, 0xc8, 0x49, 0x6e, 0x76, 0x65,
-+    0x6e, 0x74, 0x65, 0x63, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e, 0x61, 0x63,
-+    0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x82, 0x2d,
-+    0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83, 0x71, 0xd9,
-+    0xd6, 0xc0, 0xc1, 0x0e
-+};
-+static const size_t lpdb_eeprom_len = sizeof(lpdb_eeprom);
++class FacebookAspeedTest(AspeedTest):
 +
-+/*
-+ * "Anacapa SCM" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Quanta", "pname": "Anacapa SCM",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Quanta", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t scm_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x07, 0x00, 0x00, 0xf7, 0x01, 0x06, 0x19, 0x41,
-+    0x2d, 0xf2, 0xc6, 0x51, 0x75, 0x61, 0x6e, 0x74, 0x61, 0xcb, 0x41, 0x6e,
-+    0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x53, 0x43, 0x4d, 0x47, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a,
-+    0xc0, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc5, 0x01, 0x06, 0x19, 0xc6,
-+    0x51, 0x75, 0x61, 0x6e, 0x74, 0x61, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e,
-+    0x61, 0x63, 0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a,
-+    0x82, 0x2d, 0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83,
-+    0x71, 0xd9, 0xd6, 0xc0, 0xc1, 0x00, 0x00, 0xe2
-+};
-+static const size_t scm_eeprom_len = sizeof(scm_eeprom);
-+
-+/*
-+ * "Anacapa BMC Storage Module" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Quanta", "pname": "Anacapa BMC Storage Module",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Quanta", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t bsm_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x0a, 0x00, 0x00, 0xf4, 0x01, 0x09, 0x00, 0x00,
-+    0x00, 0x00, 0xc6, 0x51, 0x75, 0x61, 0x6e, 0x74, 0x61, 0xda, 0x41, 0x6e,
-+    0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x42, 0x4d, 0x43, 0x20, 0x53, 0x74,
-+    0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65,
-+    0xce, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
-+    0x30, 0x30, 0x30, 0xcb, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
-+    0x30, 0x30, 0x30, 0xc0, 0xc1, 0x00, 0x00, 0x10, 0x01, 0x08, 0x00, 0xc6,
-+    0x51, 0x75, 0x61, 0x6e, 0x74, 0x61, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e,
-+    0x61, 0x63, 0x61, 0x70, 0x61, 0xcb, 0x31, 0x30, 0x30, 0x30, 0x30, 0x30,
-+    0x30, 0x30, 0x30, 0x30, 0x31, 0xc2, 0x4d, 0x50, 0xce, 0x31, 0x30, 0x30,
-+    0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0xc4,
-+    0x51, 0x45, 0x4d, 0x55, 0xc0, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x77,
-+};
-+static const size_t bsm_eeprom_len = sizeof(bsm_eeprom);
-+
-+/*
-+ * "Anacapa R Bridge Board" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Inventec", "pname": "Anacapa QEMU RBB EVT2",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Inventec", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t rbb_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0xb4,
-+    0xa4, 0xf2, 0xc8, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x65, 0x63, 0xd5,
-+    0x41, 0x6e, 0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x51, 0x45, 0x4d, 0x55,
-+    0x20, 0x52, 0x42, 0x42, 0x20, 0x45, 0x56, 0x54, 0x32, 0x47, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a,
-+    0xc0, 0xc1, 0x00, 0x70, 0x01, 0x06, 0x19, 0xc8, 0x49, 0x6e, 0x76, 0x65,
-+    0x6e, 0x74, 0x65, 0x63, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e, 0x61, 0x63,
-+    0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x82, 0x2d,
-+    0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83, 0x71, 0xd9,
-+    0xd6, 0xc0, 0xc1, 0x0e
-+};
-+static const size_t rbb_eeprom_len = sizeof(rbb_eeprom);
-+
-+/*
-+ * "Anacapa L Bridge Board" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Inventec", "pname": "Anacapa QEMU LBB EVT2",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Inventec", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t lbb_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0xb4,
-+    0xa4, 0xf2, 0xc8, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x65, 0x63, 0xd5,
-+    0x41, 0x6e, 0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x51, 0x45, 0x4d, 0x55,
-+    0x20, 0x4c, 0x42, 0x42, 0x20, 0x45, 0x56, 0x54, 0x32, 0x47, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a,
-+    0xc0, 0xc1, 0x00, 0x76, 0x01, 0x06, 0x19, 0xc8, 0x49, 0x6e, 0x76, 0x65,
-+    0x6e, 0x74, 0x65, 0x63, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e, 0x61, 0x63,
-+    0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x82, 0x2d,
-+    0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83, 0x71, 0xd9,
-+    0xd6, 0xc0, 0xc1, 0x0e
-+};
-+static const size_t lbb_eeprom_len = sizeof(lbb_eeprom);
-+
-+/*
-+ * "Anacapa HPM BRD ID" FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *      "board": { "mfg": "Inventec", "pname": "Anacapa HPM BRD ID",
-+ *                 "pn": "00000000000", "serial": "00000000000000" },
-+ *      "product": { "mfg": "Inventec", "pname": "CI-Anacapa",
-+ *                   "pn": "10000000001", "ver": "MP",
-+ *                   "serial": "10000000000000", "atag": "QEMU" }
-+ *    }
-+ */
-+static const uint8_t hpm_brd_id_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0x41,
-+    0x2d, 0xf2, 0xc8, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x65, 0x63, 0xd2,
-+    0x41, 0x6e, 0x61, 0x63, 0x61, 0x70, 0x61, 0x20, 0x48, 0x50, 0x4d, 0x20,
-+    0x42, 0x52, 0x44, 0x20, 0x49, 0x44, 0x47, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0xc0, 0xc1, 0x00,
-+    0x00, 0x00, 0x00, 0x42, 0x01, 0x06, 0x19, 0xc8, 0x49, 0x6e, 0x76, 0x65,
-+    0x6e, 0x74, 0x65, 0x63, 0xca, 0x43, 0x49, 0x2d, 0x41, 0x6e, 0x61, 0x63,
-+    0x61, 0x70, 0x61, 0x46, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x82, 0x2d,
-+    0x0c, 0x47, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83, 0x71, 0xd9,
-+    0xd6, 0xc0, 0xc1, 0x0e
-+};
-+static const size_t hpm_brd_id_eeprom_len = sizeof(hpm_brd_id_eeprom);
-+
- static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     /* Reference: aspeed-bmc-facebook-anacapa.dts */
-@@ -50,7 +251,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
- 
-     /* &i2c6 */
-     /* eeprom@50 */
--    at24c_eeprom_init(i2c[6], 0x50, 32 * KiB);
-+    at24c_eeprom_init_rom(i2c[6], 0x50, 32 * KiB,
-+                          hpm_eeprom, hpm_eeprom_len);
- 
-     /* &i2c8 */
-     /* i2c-mux@72 (PCA9546) */
-@@ -65,7 +267,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0),
-                             TYPE_PCA9552, 0x24);
-     /* eeprom@50 */
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 16 * KiB);
-+    at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 16 * KiB,
-+                          rpdb_eeprom, rpdb_eeprom_len);
- 
-     /* i2c8mux ch1 */
-     /* pca9555@22 */
-@@ -75,13 +278,16 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
-                             TYPE_PCA9552, 0x24);
-     /* eeprom@50 */
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 16 * KiB);
-+    at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 16 * KiB,
-+                          lpdb_eeprom, lpdb_eeprom_len);
- 
-     /* &i2c9 */
-     /* eeprom@50 */
--    at24c_eeprom_init(i2c[9], 0x50, 16 * KiB);
-+    at24c_eeprom_init_rom(i2c[9], 0x50, 16 * KiB,
-+                          scm_eeprom, scm_eeprom_len);
-     /* eeprom@56 */
--    at24c_eeprom_init(i2c[9], 0x56, 8 * KiB);
-+    at24c_eeprom_init_rom(i2c[9], 0x56, 8 * KiB,
-+                          bsm_eeprom, bsm_eeprom_len);
- 
-     /* &i2c10 */
-     /* i2c-mux@71 (PCA9548) */
-@@ -92,7 +298,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5),
-                             TYPE_PCA9552, 0x22);
-     /* eeprom@52 */
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 5), 0x52, 32 * KiB);
-+    at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 5), 0x52, 32 * KiB,
-+                          rbb_eeprom, rbb_eeprom_len);
- 
-     /* &i2c11 */
-     /* i2c-mux@71 (PCA9548) */
-@@ -105,7 +312,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5),
-                             TYPE_PCA9552, 0x22);
-     /* eeprom@52 */
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 5), 0x52, 32 * KiB);
-+    at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 5), 0x52, 32 * KiB,
-+                          lbb_eeprom, lbb_eeprom_len);
- 
-     /* &i2c13 */
-     /* i2c-mux@70 (PCA9548) */
-@@ -116,7 +324,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
- 
-     /* i2c13mux ch4 */
-     /* eeprom@51 */
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 4), 0x51, 32 * KiB);
-+    at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 4), 0x51, 32 * KiB,
-+                          hpm_brd_id_eeprom, hpm_brd_id_eeprom_len);
- 
-     /* i2c13mux ch7 */
-     /* nfc@28 — no model */
++    def wait_for_boot_complete(self, hostname):
++        self.wait_for_console_pattern(f'{hostname} login:')
 
 -- 
 2.53.0-Meta

@@ -4,89 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0C42CD343F
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 May 2026 19:49:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64260CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 03:52:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wP3xz-0008V7-Cm; Mon, 18 May 2026 15:49:33 -0400
+	id 1wPBV4-00048e-6G; Mon, 18 May 2026 23:52:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wP3xr-0008TH-RE
- for qemu-arm@nongnu.org; Mon, 18 May 2026 15:49:26 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wP3xq-0006b4-9W
- for qemu-arm@nongnu.org; Mon, 18 May 2026 15:49:23 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-44b330c5cc6so1965815f8f.1
- for <qemu-arm@nongnu.org>; Mon, 18 May 2026 12:49:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779133760; x=1779738560; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=hgH/EpClVj36vD0mFCHEvS+oT8byVUNIwK3om4YJTWU=;
- b=fXRM5Q8h0VSXjOIsevPGTfzZ+BJuBqKeCwcK698hbkvH50Cd86htTJ6cct+ibsFU3x
- E0KyHMNp7j+IsMCytBc9GTPXa/87eAAhCdKAMR6exYjt9FwW7esQt+KLEaTQWzDJUKFs
- JC4IprjBSMc5JEk3cqg5wfL01jv9yvVWoYWDmsFjAJsUGiywGw1vyyXAv0ANT4iCLULG
- Yye/tBHyZPkson3zcl0TKBTcRwye3gc3NUAT1TaxonKP+eOUxnC+WcaCw5vWxejYYMv3
- 1Decz7a2v1r9ioRKL9AtmLgTkYUjbW3mFQhv4lZIPHQHpYJDfpem0TrUOMK9e6grqefk
- y/sQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779133760; x=1779738560;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=hgH/EpClVj36vD0mFCHEvS+oT8byVUNIwK3om4YJTWU=;
- b=tZYHvtF78iF/Zh1OtbHqiXQnqVyDn1hsisWt3BFNOKmHTx3Ni6RtvAv+2h1v5/XjsD
- +HGSJj2UoGX0R/eRnTnHA2dpRjtZe77QxzYZbYEa8Zt3FnHfOdYWfL5WepWQweMazgD5
- nMnHCX3mHS2ZYGH0jiAdQFLyNPUyDG2GHCGY0SActe7wftXrJceiiiVa8hZLWQnP/lsb
- 4iMvVcVWtDOR9w8Rtxh0V7U4I96OpzrRdnEXOuF2iuqhQ0JbnszQajpO6Q2HFMEc6/zP
- VLnlkmCFELdldlNr5j7UhqhReA9dLw/hsfHBdIlZugUgQfI6AZYkJ5Cpjcqsfbs5/FuD
- zmZg==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+b2akqY8/YT6Qjyms19uZrWZC8Aet9WoMURX/EKtKZydnU7oq5vZomJEQi12gr7SHI8cAnIgFmiQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxKgvjGL7e6YxhQB/v+O5leyhr38MkmFKUbgWF1Hvvp/OfJJOK1
- gbDus/+4M1pQjlTLGgSEIPWG4gdkAtHjslWAUFnTQgmUbpr0+DLBGxoyhsJP2xhIhx4=
-X-Gm-Gg: Acq92OGOnc7Y9Rhr15SVmzDEXFWjd8esSKhSTi1AdvZYchSZR4trStgjc2W+Y9TAqyF
- sw3R7dTOH81TZsSA+hYgEoPJJr6xy5i/j7B+zmJTvz16VNiLy30/XGk61aEKO5w4GxZC+UAymfi
- 23H+M7iqNQgHlx/YGZ+bWU3hzxHXS41yoUJVe2dppe6NeFHnJ2uWH5KDX0fCBa6OdCPMgG3fob5
- ZykBTni7Ui8p8gP5AcXvdb93wfui/kVnhBRvUrU2LA8nWErYkn3ZWqyw2fUlG2awZouDeiYU1Z1
- bQSR4T1IBB1kNWjHbogVLxjiivMim05dlmDGK+sKoAahMxPRnr5bmDDBxM0TBGH2gsMB/hs6r0f
- ZNEgxwbM9xVosTYpgUDWupo7PN6iYG0a+PFiYt+pGx1KsNmzRaT+pRw0pjQe7rbPI4QXEW7qZVr
- eP+j/P1tfE2f4ZYwggPEJT9Cg=
-X-Received: by 2002:a05:6000:2f87:b0:43b:5672:efe with SMTP id
- ffacd0b85a97d-45e5c5bbef7mr27222780f8f.9.1779133760448; 
- Mon, 18 May 2026 12:49:20 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45d9e768c4fsm39693646f8f.8.2026.05.18.12.49.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 May 2026 12:49:19 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id D81045F7B1;
- Mon, 18 May 2026 20:49:18 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Lucas Amaral <lucaaamaral@gmail.com>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,
- dmitry.osipenko@collabora.com,  marcandre.lureau@redhat.com,
- visitorckw@gmail.com
-Subject: Re: [PATCH v5 2/4] virtio-gpu: add VIRTIO_GPU_F_BLOB_ALIGNMENT
- header definitions
-In-Reply-To: <20260317182049.33848-3-lucaaamaral@gmail.com> (Lucas Amaral's
- message of "Tue, 17 Mar 2026 15:20:47 -0300")
-References: <20260317182049.33848-1-lucaaamaral@gmail.com>
- <20260317182049.33848-3-lucaaamaral@gmail.com>
-User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Mon, 18 May 2026 20:49:18 +0100
-Message-ID: <87bjeccxc1.fsf@draig.linaro.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPBV0-00040a-I0
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 23:52:07 -0400
+Received: from 11.mo533.mail-out.ovh.net ([87.98.181.139])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPBUx-0005T8-Cw
+ for qemu-arm@nongnu.org; Mon, 18 May 2026 23:52:06 -0400
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net [51.68.94.138])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4gKLMc5DwBz60c0;
+ Tue, 19 May 2026 03:51:56 +0000 (UTC)
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net. [127.0.0.1])
+ by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <alexander.hansen@9elements.com>; Tue, 19 May 2026 03:51:56 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.43.51])
+ by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4gKLMc2ljJz7tjT;
+ Tue, 19 May 2026 03:51:56 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.6])
+ (Authenticated sender: clg@kaod.org)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id D8FE6203B44; 
+ Tue, 19 May 2026 03:51:54 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R0017604e49d-e319-45cd-9351-eba482171998,
+ A1C5BDF50025601E7F63D663DE463AD2E6007479) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <3365da1a-5f5e-4ed0-9878-5e9bd3ecec27@kaod.org>
+Date: Tue, 19 May 2026 05:51:54 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 2/5] ast2600: yosemite4 functional test
+To: Alexander Hansen <alexander.hansen@9elements.com>, qemu-devel@nongnu.org
+Cc: Titus Rwantare <titusr@google.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org
+References: <20260515150610.381066-1-alexander.hansen@9elements.com>
+ <20260515150610.381066-3-alexander.hansen@9elements.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260515150610.381066-3-alexander.hansen@9elements.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+x-ovh-tracer-id: 16022681576791321611
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEZzbA6+2qsGwubvTnVTLkQvGfQlzy40rhUWE+482bVO5kbqoy9saUjvidmLhMqAbR0trwUh9ip5cI5wFo0f+PvdwwzEvoQ86I7dxRAgofJdWGIm2u79u5eg1yt3DtCMDsh14qTUi6+wjny/T0wE1aG7053a+dopvrkyxiBNijFOAGwfhhrYhg9YBfiQk9apjpwsOwzxCQk62Kb5Dqh2aFVEORCLbdQYl3PuuZDdap+D/N+mZp56ZFtwGuHdYGH6X17ydhzojEOK/BDzm6ehUzwtsD9z3kGpm3w2m8gi4vH0p+cw9/6z6uL3059dFDYZn9liyEPPgjgvz8ba9M42fBHPJU840V2T7Ql8FgRsdM1bP/1mHpNiMAhMRrpzQOK7azsTs4cdpL4l640fssYxnF8utILLCwQHic4mTOx6DoThnKprntRQ48qweujvREykGFMQt3+I0w5xHbYcO5hwJVsKg0cFjdsxU2umkFs/jVfmTaHcjcmZh5ETb1FQYnnoFBEZXn2Sbx0AdhNXUclBmc00WAJTVOHJQmp5pWQweT6JmEQuVjNGpJt1TiUMswtoNjHaLMe8sohJWbfX3Y0YIobrv4yhgZF1iZPNwXFf0+KIust0CwsKeFgfiC8SFpL6JbhuO2EUq2N0ofHjnpijCvUREDS7/DvRNuurZLQzaEsvA
+DKIM-Signature: a=rsa-sha256; bh=VMWc2iG3Ew/VA/bCaJzDVNRKNrzQiWUXaLG13XweOOc=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1779162718; v=1;
+ b=TR1J8hU7C9kxfTtchDr+zSnsEyMDsR4fI8EvBlojdKkvVTcuih2gxsnRmFNA1JF8RCW1SXcJ
+ /gmt0ihuJeVwNm/QcT6kOgDtk1/5CxhmNKuPDKvW7r9kw70CLqP1BRExL7FPyksokIJeBfltUO4
+ hNxFnPyTjz63z/BrDHjw3Sy2IKju68bOYcB6Rz4KPM9EeM7+yhdluU3GLQlQyloEPVFtFBKbsyP
+ awgiYCjuGwI30sx0KjusFQyB+u750uPpwKj/WRCkTI9pySuVwvrTbbFj5A7xd3GJlTukjKiV8tw
+ HYAjoxy20bWDz7qh9nPOve9FUHxbpqFjVcQYucI+2dy3w==
+Received-SPF: pass client-ip=87.98.181.139; envelope-from=clg@kaod.org;
+ helo=11.mo533.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,51 +134,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Lucas Amaral <lucaaamaral@gmail.com> writes:
-
-> Define VIRTIO_GPU_F_BLOB_ALIGNMENT (feature bit 5) and the
-> blob_alignment field in virtio_gpu_config per the OASIS virtio
-> specification.
->
-> Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
+On 5/15/26 16:57, Alexander Hansen wrote:
+> Add a functional test for the Yosemite V4 (fby4-bmc) machine
+> that validates:
+> - U-Boot initialization and kernel boot sequence
+> 
+> The test uses an OpenBMC image built for the yosemite4 board and
+> validates console output through the boot process.
+> 
+> Cc: Titus Rwantare <titusr@google.com>
+> Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
+> Cc: Peter Maydell <peter.maydell@linaro.org> (maintainer:ASPEED BMCs)
+> Cc: Steven Lee <steven_lee@aspeedtech.com> (reviewer:ASPEED BMCs)
+> Cc: Troy Lee <leetroy@gmail.com> (reviewer:ASPEED BMCs)
+> Cc: Jamin Lin <jamin_lin@aspeedtech.com> (reviewer:ASPEED BMCs)
+> Cc: Kane Chen <kane_chen@aspeedtech.com> (reviewer:ASPEED BMCs)
+> Cc: Andrew Jeffery <andrew@codeconstruct.com.au> (reviewer:ASPEED BMCs)
+> Cc: Joel Stanley <joel@jms.id.au> (reviewer:ASPEED BMCs)
+> Cc: qemu-arm@nongnu.org (open list:ASPEED BMCs)
+> Cc: qemu-devel@nongnu.org (open list:All patches CC here)
+> Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
 > ---
->  include/standard-headers/linux/virtio_gpu.h | 6 ++++++
->  1 file changed, 6 insertions(+)
+>   tests/functional/arm/meson.build         |  2 ++
+>   tests/functional/arm/test_aspeed_fby4.py | 44 ++++++++++++++++++++++++
+>   2 files changed, 46 insertions(+)
+>   create mode 100755 tests/functional/arm/test_aspeed_fby4.py
+> 
+> diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
+> index 2f538f29a2..10c0006f22 100644
+> --- a/tests/functional/arm/meson.build
+> +++ b/tests/functional/arm/meson.build
+> @@ -14,6 +14,7 @@ test_arm_timeouts = {
+>     'aspeed_ast2600_sdk_otp' : 720,
+>     'aspeed_bletchley' : 480,
+>     'aspeed_catalina' : 480,
+> +  'aspeed_fby4': 480,
+>     'aspeed_gb200nvl_bmc' : 480,
+>     'aspeed_rainier' : 480,
+>     'bpim2u' : 500,
+> @@ -47,6 +48,7 @@ tests_arm_system_thorough = [
+>     'aspeed_ast2600_sdk_otp',
+>     'aspeed_bletchley',
+>     'aspeed_catalina',
+> +  'aspeed_fby4',
+>     'aspeed_gb200nvl_bmc',
+>     'aspeed_rainier',
+>     'bpim2u',
+> diff --git a/tests/functional/arm/test_aspeed_fby4.py b/tests/functional/arm/test_aspeed_fby4.py
+> new file mode 100755
+> index 0000000000..a3124c240f
+> --- /dev/null
+> +++ b/tests/functional/arm/test_aspeed_fby4.py
+> @@ -0,0 +1,44 @@
+> +#!/usr/bin/env python3
+> +#
+> +# Functional test that boots the ASPEED machines
+> +#
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +
+> +from qemu_test import Asset
+> +from aspeed import AspeedTest
 >
-> diff --git a/include/standard-headers/linux/virtio_gpu.h b/include/standa=
-rd-headers/linux/virtio_gpu.h
-> index 00cd3f04..252704e7 100644
-> --- a/include/standard-headers/linux/virtio_gpu.h
-> +++ b/include/standard-headers/linux/virtio_gpu.h
-> @@ -64,6 +64,11 @@
->   * context_init and multiple timelines
->   */
->  #define VIRTIO_GPU_F_CONTEXT_INIT        4
-> +/*
-> + * VIRTIO_GPU_F_BLOB_ALIGNMENT: device advertises blob_alignment
-> + * in virtio_gpu_config (OASIS virtio-spec feature bit 5)
-> + */
-> +#define VIRTIO_GPU_F_BLOB_ALIGNMENT      5
 
-What kernel version does this symbol get added in? I can't see it in 7.0
+Missing :
 
-Headers should be imported with the scripts/update-linux-headers.sh
-script, see 49f6b93d075 (linux-headers: Update to Linux v6.19-rc1) for
-an example.
+from qemu_test import wait_for_console_pattern
 
->=20=20
->  enum virtio_gpu_ctrl_type {
->  	VIRTIO_GPU_UNDEFINED =3D 0,
-> @@ -365,6 +370,7 @@ struct virtio_gpu_config {
->  	uint32_t events_clear;
->  	uint32_t num_scanouts;
->  	uint32_t num_capsets;
-> +	uint32_t blob_alignment;
->  };
->=20=20
->  /* simple formats for fbcon/X use */
+Thanks,
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+C.
+
+> +
+> +class YosemiteV4Machine(AspeedTest):
+> +
+> +    ASSET_YOSEMITE_V4_FLASH = Asset(
+> +        'https://github.com/legoater/qemu-aspeed-boot/raw/refs/heads/master/images/yosemite4-bmc/openbmc-20260505132843/obmc-phosphor-image-yosemite4-20260505132843.static.mtd.xz',
+> +        'dff6946363b41f952b15cfc3156482b89fcfc1b0ecfc3ec8b3ed496a5f001ef9')
+> +
+> +    def do_test_arm_aspeed_openbmc_no_network(self, machine, image, uboot,
+> +                                   cpu_id, soc):
+> +
+> +        self.set_machine(machine)
+> +        self.vm.set_console()
+> +        self.vm.add_args('-drive', f'file={image},if=mtd,format=raw',
+> +                         '-snapshot')
+> +        self.vm.launch()
+> +
+> +        self.wait_for_console_pattern(f'U-Boot {uboot}')
+> +        self.wait_for_console_pattern('## Loading kernel from FIT Image')
+> +        self.wait_for_console_pattern('Starting kernel ...')
+> +        self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
+> +        self.wait_for_console_pattern(f'ASPEED {soc}')
+> +        self.wait_for_console_pattern('/init as init process')
+> +        # yosemite v4 does not emit the hostname log which is
+> +        # different from the other machines.
+> +        self.wait_for_console_pattern('yosemite4 login:')
+> +
+> +    def test_arm_ast2600_yosemitev4_openbmc(self):
+> +        image_path = self.uncompress(self.ASSET_YOSEMITE_V4_FLASH)
+> +
+> +        self.do_test_arm_aspeed_openbmc_no_network('fby4-bmc', image=image_path,
+> +                                        uboot='2019.04', cpu_id='0xf00',
+> +                                        soc='AST2600 rev A3')
+> +
+> +if __name__ == '__main__':
+> +    AspeedTest.main()
+
 

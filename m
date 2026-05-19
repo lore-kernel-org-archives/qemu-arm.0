@@ -4,56 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACA0DCD4F5E
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 15:53:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64C8ECD4F3C
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 May 2026 16:00:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPMkV-0005iN-Aq; Tue, 19 May 2026 11:52:51 -0400
+	id 1wPMrC-0007pB-Mn; Tue, 19 May 2026 11:59:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wrigjl@proton.me>) id 1wPMRc-0008O8-Gc
- for qemu-arm@nongnu.org; Tue, 19 May 2026 11:33:25 -0400
-Received: from mail-07.mail-europe.com ([188.165.51.139])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wPMrB-0007or-On
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 11:59:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wrigjl@proton.me>) id 1wPMRY-0002eF-Ak
- for qemu-arm@nongnu.org; Tue, 19 May 2026 11:33:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
- s=protonmail; t=1779204788; x=1779463988;
- bh=pYmKjFuS4S1UdxusOVX29Ta5fki6ZMd1A5v9kjl/tsM=;
- h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
- Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
- Message-ID:BIMI-Selector;
- b=Kxn25ESnH4/B+F2PwoK4I/w/C+NPIUnaRZzgqyBfpUcx5wE4p2Y+sPLAXLHovZW8L
- 1GzdFZLFFDNO2L5OYDfPx1naULxivxj9Ie6K58YTLgpaxxtt4QFclZL/1xh8Ckw5QU
- wcsi+5Ui+fVJBWmS9a2/mOwdNr5Z5snSFyw+x6tcxbpHiPlFKIUcDV/RK0NyNtw/OI
- 2xjz6cErbnzvfzzkzZ2ne8j7OfwnJgfIc80SL0q+0Q3CnVaJfXnLrceURcxoyL2GeD
- wYaNp/7ByQXy373vHN9LL5U4Hgr+fYHFVu/L9GUjT1HOu7xep7MvdNH13K0pM9Fqh1
- Wyn1h+RGDE9gA==
-Date: Tue, 19 May 2026 15:33:03 +0000
-To: Peter Maydell <peter.maydell@linaro.org>
-From: Jason Wright <wrigjl@proton.me>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH 1/2] target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS
-Message-ID: <20260519153249.31100-2-wrigjl@proton.me>
-In-Reply-To: <20260519153249.31100-1-wrigjl@proton.me>
-References: <20260519153249.31100-1-wrigjl@proton.me>
-Feedback-ID: 198029889:user:proton
-X-Pm-Message-ID: 9667e4f3dd1008b647acc16e6aa19be4b6ca9db2
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wPMr9-0002Fq-Rn
+ for qemu-arm@nongnu.org; Tue, 19 May 2026 11:59:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779206383;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sX39/IXIiUiLKrBvENj56XGp3PjPuuO4VY7+wn3ATW4=;
+ b=ZvQnOA9agEML0eLhJEgtsfsmHtdWOZDaDN1jgvpjWhT/yLCPna89d6+t7Hq3Wkxvdkqxbp
+ PKUsczpogcKxdaQk+YoIAWOU0GySjimUg6o8M4qOJecqtoUZxSEdbd1/WlQXb7caX9DngI
+ l1VGEObfs1PthPckVt5DaUA8kFES7Bw=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-433-hHoQ-YILM4iUOjqdl82JZQ-1; Tue, 19 May 2026 11:59:41 -0400
+X-MC-Unique: hHoQ-YILM4iUOjqdl82JZQ-1
+X-Mimecast-MFC-AGG-ID: hHoQ-YILM4iUOjqdl82JZQ_1779206380
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-43fe791a398so3019250f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2026 08:59:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779206380; x=1779811180;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=sX39/IXIiUiLKrBvENj56XGp3PjPuuO4VY7+wn3ATW4=;
+ b=elfNHz0vyGUb8QJtl94D5RUdpX4okVl7AYEZIFiJAlthNjxAiKrbyUyU3DA/ggG36j
+ 1SSqzGTv4xsBqmq0Kc+USKK/1/uKoYCdtJh2v79UD8Suqftrgb+rxzQnaxjkCmHEt/Ep
+ ZIjvo7dhlnO+HtfFiMUAKOQGUASeX5HqmUCqLLFCIgcDl2le710GrXiN7Jhzk/FM+Aen
+ nT4M+mO4VQYR4c+9+zX+BGCzC7LbvVECE+1nIwUSDbAsikb0h48/nGmhuqjSio457oMd
+ g8BcLE4g3Ia6UlxxNp/yG6aApAkuapOdYUEimhp+JbgbQxbO5kLuCmFHrfdQrPyK1wFR
+ NbeQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+TO9QkFuClr8thC3c1U+abESFRBPW1yVGRo9vZsTgdXxSjWkVcLTWBT/xf/psyPlGAFffomdm8wg==@nongnu.org
+X-Gm-Message-State: AOJu0YzU3tUwfYxXESWxvxjjD6BOOKMORjoG+KVEnWU9rXCw8yKMM8Af
+ aRys9bFwGcbrIxF+rMwhir3sWDTBaKQhwm1v3homUnMmKkCukt5qfPpaRMiJBrrBKDGeS4YHJq2
+ //3WJvfc0Anlw15cxVohD78JrzQhmbrH4iX2O9nBeuIkOg7VTNyiYcg==
+X-Gm-Gg: Acq92OE1FTnM21bLeRymcAfp54qx8bHVQGTg2VyenPC6740kL8HiI9nRb0QsVW9juhk
+ 2EicHAwZOUvNAUwRwb4MDKnEJk42j2R7VYE1xvBTNFQAjZ6Qf8mdLodc7mogylS1nD4F6sEJO8x
+ f9s9JZJFbby614n0qyB/nUpTxjTi0Cjw3Qr3qHErBuz4Z32K2oaWnxbH7F2iYOstv53i42Kf/rI
+ pBU/WTolZhMKeHAiqa8YK2UFNDOdNPBtJMWBzdhQm5uDt4/hFLEwlzChIZpkZ/DfIMRI1S/ZTjA
+ L3ZqWzx+86LTlEkWtcoVi6kz3gUnpBis4hyitxRfrI/ryYe1Vi1Fdq73VuPyP3duBET5X2IfdZM
+ NJzVtFe6LIlJcF0OurxxIgomVgIsBGrDLQQ0wqyYB8RyVtIQAcT1lXBFEDQ29E9VEdJ8Ryw==
+X-Received: by 2002:a05:600c:4e47:b0:48f:e1ac:c94f with SMTP id
+ 5b1f17b1804b1-48fe60eb0ebmr336969965e9.10.1779206379660; 
+ Tue, 19 May 2026 08:59:39 -0700 (PDT)
+X-Received: by 2002:a05:600c:4e47:b0:48f:e1ac:c94f with SMTP id
+ 5b1f17b1804b1-48fe60eb0ebmr336969145e9.10.1779206378934; 
+ Tue, 19 May 2026 08:59:38 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48febf86db7sm166440045e9.6.2026.05.19.08.59.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 19 May 2026 08:59:38 -0700 (PDT)
+Message-ID: <acd61fd5-a0f8-41f9-9144-d6889d6deaf0@redhat.com>
+Date: Tue, 19 May 2026 17:59:37 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=188.165.51.139; envelope-from=wrigjl@proton.me;
- helo=mail-07.mail-europe.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 6/7] hw/arm/smmuv3: Set default ats, ril, ssidsize, oas
+ to auto
+To: Nathan Chen <nathanc@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Zhao Liu <zhao1.liu@intel.com>, Matt Ochs <mochs@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>
+References: <20260512193520.3109172-1-nathanc@nvidia.com>
+ <20260512193520.3109172-7-nathanc@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260512193520.3109172-7-nathanc@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: q-rHDgTG1vP0R5xXI5inoMvMgTPoT6Mxxjkmr3HVL_A_1779206380
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 19 May 2026 11:52:39 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,89 +120,120 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add an .accessfn to the RNDR and RNDRRS system registers that traps
-reads to EL3 when SCR_EL3.TRNDR is set, as required by FEAT_RNG_TRAP.
-Mark SCR_EL3.TRNDR (bit 40) as a writable field in scr_write() when
-the CPU advertises the feature. The pseudocode in DDI04387 revision M.b
-shows the trap firing from El0, EL1, EL2, and EL3, so there is no
-check of arm_current_el().
 
-Signed-off-by: Jason Wright <wrigjl@proton.me>
----
- target/arm/cpu-features.h |  5 +++++
- target/arm/helper.c       | 16 ++++++++++++++--
- 2 files changed, 19 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 4e44245a8b..a3f1406f69 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -890,6 +890,11 @@ static inline bool isar_feature_aa64_rndr(const ARMISA=
-Registers *id)
-     return FIELD_EX64_IDREG(id, ID_AA64ISAR0, RNDR) !=3D 0;
- }
-=20
-+static inline bool isar_feature_aa64_rng_trap(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64PFR1, RNDR_TRAP) !=3D 0;
-+}
-+
- static inline bool isar_feature_aa64_tlbirange(const ARMISARegisters *id)
- {
-     return FIELD_EX64_IDREG(id, ID_AA64ISAR0, TLB) =3D=3D 2;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 8240f1b384..e293cc3836 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -787,6 +787,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegI=
-nfo *ri, uint64_t value)
-         if (cpu_isar_feature(aa64_mec, cpu)) {
-             valid_mask |=3D SCR_MECEN;
-         }
-+        if (cpu_isar_feature(aa64_rng_trap, cpu)) {
-+            valid_mask |=3D SCR_TRNDR;
-+        }
-     } else {
-         valid_mask &=3D ~(SCR_RW | SCR_ST);
-         if (cpu_isar_feature(aa32_ras, cpu)) {
-@@ -5294,6 +5297,15 @@ static const ARMCPRegInfo pauth_reginfo[] =3D {
-       .fieldoffset =3D offsetof(CPUARMState, keys.apib.hi) },
- };
-=20
-+static CPAccessResult access_rndr(CPUARMState *env, const ARMCPRegInfo *ri=
-,
-+                                  bool isread)
-+{
-+    if (env->cp15.scr_el3 & SCR_TRNDR) {
-+        return CP_ACCESS_TRAP_EL3;
-+    }
-+    return CP_ACCESS_OK;
-+}
-+
- static uint64_t rndr_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     Error *err =3D NULL;
-@@ -5325,11 +5337,11 @@ static const ARMCPRegInfo rndr_reginfo[] =3D {
-     { .name =3D "RNDR", .state =3D ARM_CP_STATE_AA64,
-       .type =3D ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END | ARM_CP_IO,
-       .opc0 =3D 3, .opc1 =3D 3, .crn =3D 2, .crm =3D 4, .opc2 =3D 0,
--      .access =3D PL0_R, .readfn =3D rndr_readfn },
-+      .access =3D PL0_R, .accessfn =3D access_rndr, .readfn =3D rndr_readf=
-n },
-     { .name =3D "RNDRRS", .state =3D ARM_CP_STATE_AA64,
-       .type =3D ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END | ARM_CP_IO,
-       .opc0 =3D 3, .opc1 =3D 3, .crn =3D 2, .crm =3D 4, .opc2 =3D 1,
--      .access =3D PL0_R, .readfn =3D rndr_readfn },
-+      .access =3D PL0_R, .accessfn =3D access_rndr, .readfn =3D rndr_readf=
-n },
- };
-=20
- static void dccvap_writefn(CPUARMState *env, const ARMCPRegInfo *ri,
---=20
-2.50.1 (Apple Git-155)
+On 5/12/26 9:35 PM, Nathan Chen wrote:
+> From: Nathan Chen <nathanc@nvidia.com>
+>
+> Set the default value of ATS, RIL, SSIDSIZE, and OAS to auto, in order
+> to match the host IOMMU properties when accel=on.
+>
+> If accel=off and these property values are set to auto, the default
+> property values defined in smmuv3_init_id_regs() for OAS and RIL will
+> remain unchanged, while SSIDSIZE and ATS values will remain initialized
+> at 0.
+>
+> Introduce a new compat for the changed defaults.
+>
+> Signed-off-by: Nathan Chen <nathanc@nvidia.com>
+> ---
+>  hw/arm/smmuv3.c   | 23 +++++++++++++++--------
+>  hw/core/machine.c |  5 +++++
+>  2 files changed, 20 insertions(+), 8 deletions(-)
+>
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 31c2eec2f4..665e6a2538 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -2129,12 +2129,19 @@ static const Property smmuv3_properties[] = {
+>      DEFINE_PROP_BOOL("accel", SMMUv3State, accel, false),
+>      /* GPA of MSI doorbell, for SMMUv3 accel use. */
+>      DEFINE_PROP_UINT64("msi-gpa", SMMUv3State, msi_gpa, 0),
+> +    /*
+> +     * AUTO values for accel=off will resolve to:
+> +     * ril: on
+> +     * ats: off
+> +     * oas: 44
+> +     * ssidsize: 0
+> +     */
+>      /* RIL can be turned off for accel cases */
+> -    DEFINE_PROP_ON_OFF_AUTO("ril", SMMUv3State, ril, ON_OFF_AUTO_ON),
+> -    DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats, ON_OFF_AUTO_OFF),
+> -    DEFINE_PROP_OAS_MODE("oas", SMMUv3State, oas, OAS_MODE_44),
+> +    DEFINE_PROP_ON_OFF_AUTO("ril", SMMUv3State, ril, ON_OFF_AUTO_AUTO),
+> +    DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats, ON_OFF_AUTO_AUTO),
+> +    DEFINE_PROP_OAS_MODE("oas", SMMUv3State, oas, OAS_MODE_AUTO),
+>      DEFINE_PROP_SSIDSIZE_MODE("ssidsize", SMMUv3State, ssidsize,
+> -                              SSID_SIZE_MODE_0),
+> +                              SSID_SIZE_MODE_AUTO),
+>  };
+>  
+>  static void smmuv3_instance_init(Object *obj)
+> @@ -2162,20 +2169,20 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
+>          "configured in nested mode for vfio-pci dev assignment");
+>      object_class_property_set_description(klass, "ril",
+>          "Enable/disable range invalidation support (for accel=on). "
+> -        "Valid values are on, off, and auto. Defaults to on. "
+> +        "Valid values are on, off, and auto. Defaults to auto. "
+>          "Any attempt to turn it 'on' while the host does not support "
+>          "it would fail.");
+>      object_class_property_set_description(klass, "ats",
+>          "Enable/disable ATS support (for accel=on). "
+> -        "Valid values are on, off, and auto. Defaults to off. "
+> +        "Valid values are on, off, and auto. Defaults to auto. "
+>          "Please ensure host platform supports ATS before setting it "
+>          "to on.");
+>      object_class_property_set_description(klass, "oas",
+>          "Set Output Address Size in bits (for accel=on). "
+> -        "Valid values are 44, 48, and auto. Defaults to 44 bits.");
+> +        "Valid values are 44, 48, and auto. Defaults to auto.");
+not really related to this patch but I notice that we do not have any
+"Please ensure host platform supports..." statement as opposed to
+previous props.
+While some host requirements are needed to be statistied too.
 
+smmuv3-accel.c:    if (FIELD_EX32(info->idr[5], IDR5, OAS) <
+smmuv3-accel.c:                FIELD_EX32(s->idr[5], IDR5, OAS)) {
+
+>      object_class_property_set_description(klass, "ssidsize",
+>          "Set number of bits used to represent SubstreamIDs (SSIDs). "
+> -        "Valid values are 0-20 and auto. Defaults to 0. "
+> +        "Valid values are 0-20 and auto. Defaults to auto. "
+>          "A value of N allows SSIDs in the range [0 .. 2^N - 1]. "
+>          "A value of 0 disables SubstreamID support. A value greater "
+>          "than 0 is required to enable PASID support.");
+same here.
+
+smmuv3-accel.c:        s->idr[1] = FIELD_DP32(s->idr[1], IDR1, SSIDSIZE,
+smmuv3-accel.c:                               FIELD_EX32(info->idr[1],
+IDR1, SSIDSIZE));
+
+Also it is not written (for accel=on)
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 63baff859f..3339da99ee 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -38,9 +38,14 @@
+>  #include "hw/virtio/virtio-iommu.h"
+>  #include "hw/acpi/generic_event_device.h"
+>  #include "qemu/audio.h"
+> +#include "hw/arm/smmuv3.h"
+>  
+>  GlobalProperty hw_compat_11_0[] = {
+>      { "chardev-vc", "encoding", "cp437" },
+> +    { TYPE_ARM_SMMUV3, "ats", "off" },
+> +    { TYPE_ARM_SMMUV3, "ril", "on" },
+> +    { TYPE_ARM_SMMUV3, "ssidsize", "0" },
+> +    { TYPE_ARM_SMMUV3, "oas", "44" },
+>  };
+>  const size_t hw_compat_11_0_len = G_N_ELEMENTS(hw_compat_11_0);
+>  
+Thanks
+
+Eric
 
 

@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8785FCD4F54
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:52:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F5C7CD4F5E
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:52:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPalM-0005gx-VF; Wed, 20 May 2026 02:50:41 -0400
+	id 1wPak0-0003Zp-7U; Wed, 20 May 2026 02:49:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPak8-0003fN-1P; Wed, 20 May 2026 02:49:27 -0400
+ id 1wPajx-0003Xx-T7; Wed, 20 May 2026 02:49:13 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPak1-0001ZE-Rl; Wed, 20 May 2026 02:49:22 -0400
+ id 1wPajv-0001NW-QK; Wed, 20 May 2026 02:49:13 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K6lnbb096590
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K6lnbm096590
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 20 May 2026 15:48:16 +0900 (JST)
+ Wed, 20 May 2026 15:48:19 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=jYzmLTbWax8JogN3WJf0BurekwSvWMhETlPn4yFttW0=; 
+DKIM-Signature: a=rsa-sha256; bh=7AZuQUmohs7ZB6VnyND7lAhsDMjIqEN9r+C6jbcO76g=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1779259696; v=1;
- b=M9HZzA7zC6rc/a51ObLB8phdhhSSwHHiP2JAqaeSwrmPqiGYotn4N0m3IY8N11EQ
- FFTmJSUrkMtMPWcprqRni7Kc5McrH4DkY++adRgs0aDFPzpQzlp0r0jsfDMcY4ts
- DYyXrF8XjjKcxVFN9foUn3JLOu+8bqayYrbTHOhf8k/a/1s/k6gq91z/Pi6UtA2D
- hY30tXhP3tbBROCp1wGalrTxQTXKTrPugXYzxWKDyQRUJrPr7WtaWuATWggpVzMc
- QVFHgBLnrwnSvudfT8HoS8lG6Lr86WSCNJja2T0LtvuvufEXyk4K++eBprSQlTkv
- IpBtPMR73kSce/cK9EQOYw==
+ s=rs20250326; t=1779259699; v=1;
+ b=tLO0T8VqbibU5UCfb1NJaerYItbixFdxSpWIbgbc8iF24RWd/mAD7H/tYTSXz86f
+ Ir5RPPOpleE0Qug3qY92tcc5qJwOFrBHz5ou6dwJe0c4MNhKrNE/jOT0skokUqHZ
+ zYXH+MdWHLHcKmMBnlqm5tSm3k4xPk1U3x9lIpRKoXtozCPcxEb36017ORh7nkfd
+ eeulEjtEQvDrNaMi1G7JCojM0NSFkYztLBmXofLZCkQzHc3rE8bfoR2g8xYKkBCX
+ O0aNXX6bAP+/toJE1yIJh98s+1CABgbYbO7XHZGTGWUVHrorr/tt0QInzzEkWgSm
+ ZtZBmPALGa58B9NBylSKEA==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 20 May 2026 15:47:57 +0900
-Subject: [PATCH v3 14/29] hw/input/virtio-input: Use Linux key codes
+Date: Wed, 20 May 2026 15:48:08 +0900
+Subject: [PATCH v3 25/29] ui/spice: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260520-input-v3-14-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260520-input-v3-25-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -58,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3015;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1084;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=EmtPHZ4VrwnBl0E92Q8PvtguFqdBkezuol02LtNVvV0=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZvpFLYIUZto6zf8qs7F5b8FemyuFskk/m9I/v2b1bL9
- ZPm/1vWUcrCIMbFICumyJJStJtbI7r2U2FCfAvMHFYmkCEMXJwCMJHFygz/PeKLb0dJqTsfDuGU
- jVluY8SlWxX9P3L6k32ae/K0tee9Zvhf7pN20PjeiotaYbX8mQa20/6ucGpYo+SwIJSzZlXqaSU
- GAA==
+ bh=L0N6BRIMKIkMescHTP9EJDsdj8Wd6180kuylCT6g9zw=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZvpFbDovurznAuKDu+w15I5dXvZUKrAy3sL4baZhuc+
+ XOzw3RRRykLgxgXg6yYIktK0W5ujejaT4UJ8S0wc1iZQIYwcHEKwEQq7jD84dV7JPOmq3M700S7
+ vmjlWU9+Os93/LmN+9Gk0JJG5rvLcxn+WZes9r+id1ohyf7jT56oI1s0s0tfHXt+64bT5o+2O95
+ cZgUA
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -96,73 +96,30 @@ representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/input/virtio-input-hid.c | 40 +++++++++++++++++++++++-----------------
- 1 file changed, 23 insertions(+), 17 deletions(-)
+ ui/spice-input.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/input/virtio-input-hid.c b/hw/input/virtio-input-hid.c
-index 1d2e922567ab..75fe45d89a2a 100644
---- a/hw/input/virtio-input-hid.c
-+++ b/hw/input/virtio-input-hid.c
-@@ -83,23 +83,13 @@ static void virtio_input_handle_event(DeviceState *dev, QemuConsole *src,
- {
-     VirtIOInput *vinput = VIRTIO_INPUT(dev);
-     virtio_input_event event;
--    int qcode;
+diff --git a/ui/spice-input.c b/ui/spice-input.c
+index a5c5d78474e7..f0bb915fd77b 100644
+--- a/ui/spice-input.c
++++ b/ui/spice-input.c
+@@ -20,6 +20,7 @@
+ #include <spice.h>
+ #include <spice/enums.h>
  
-     switch (evt->type) {
-     case INPUT_EVENT_KIND_KEY:
--        qcode = qemu_input_linux_to_qcode(evt->key.key);
--        if (qcode < qemu_input_map_qcode_to_linux_len &&
--            qemu_input_map_qcode_to_linux[qcode]) {
--            event.type  = cpu_to_le16(EV_KEY);
--            event.code  = cpu_to_le16(qemu_input_map_qcode_to_linux[qcode]);
--            event.value = cpu_to_le32(evt->key.down ? 1 : 0);
--            virtio_input_send(vinput, &event);
--        } else {
--            if (evt->key.down) {
--                fprintf(stderr, "%s: unmapped key: %d [%s]\n", __func__,
--                        qcode, QKeyCode_str(qcode));
--            }
--        }
-+        event.type  = cpu_to_le16(EV_KEY);
-+        event.code  = cpu_to_le16(evt->key.key);
-+        event.value = cpu_to_le32(evt->key.down ? 1 : 0);
-+        virtio_input_send(vinput, &event);
-         break;
-     case INPUT_EVENT_KIND_BTN:
-         if ((evt->btn.button == INPUT_BUTTON_WHEEL_UP ||
-@@ -293,12 +283,28 @@ static void virtio_keyboard_init(Object *obj)
- {
-     VirtIOInputHID *vhid = VIRTIO_INPUT_HID(obj);
-     VirtIOInput *vinput = VIRTIO_INPUT(obj);
-+    virtio_input_config ext = {
-+        .select = VIRTIO_INPUT_CFG_EV_BITS,
-+        .subsel = EV_KEY,
-+        .size = DIV_ROUND_UP(KEY_REPLY, 8)
-+    };
-+    unsigned int i;
- 
-     vhid->handler = &virtio_keyboard_handler;
-     virtio_input_init_config(vinput, virtio_keyboard_config);
--    virtio_input_extend_config(vinput, qemu_input_map_qcode_to_linux,
--                               qemu_input_map_qcode_to_linux_len,
--                               VIRTIO_INPUT_CFG_EV_BITS, EV_KEY);
-+
-+    /*
-+     * Cover as many keys as possible since we cannot tell what keys the host
-+     * supports. This follows Linux xen-kbdfront's approach:
-+     * https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/diff/drivers/input/xen-kbdfront.c?id=4ee36dc08e5c4d16d078f59acd6d9d536f9718dd
-+     *
-+     * Stop before KEY_REPLY for migration compatibility.
-+     */
-+    for (i = KEY_ESC; i < KEY_REPLY; i++) {
-+        ext.u.bitmap[i / 8] |= (1 << (i % 8));
-+    }
-+
-+    virtio_input_add_config(vinput, &ext);
- }
- 
- static const TypeInfo virtio_keyboard_info = {
++#include "standard-headers/linux/input-event-codes.h"
+ #include "ui/qemu-spice.h"
+ #include "ui/console.h"
+ #include "keymaps.h"
+@@ -61,7 +62,7 @@ static void kbd_push_key(SpiceKbdInstance *sin, uint8_t scancode)
+     if (scancode == pauseseq[kbd->pauseseq]) {
+         kbd->pauseseq++;
+         if (kbd->pauseseq == G_N_ELEMENTS(pauseseq)) {
+-            qemu_input_event_send_key_qcode(NULL, Q_KEY_CODE_PAUSE, true);
++            qemu_input_event_send_key_linux(NULL, KEY_PAUSE, true);
+             kbd->pauseseq = 0;
+         }
+         return;
 
 -- 
 2.54.0

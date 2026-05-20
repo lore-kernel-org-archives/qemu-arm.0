@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8625CCD4F5E
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:52:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F05E7CD4F5E
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:52:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPalH-00058u-Bh; Wed, 20 May 2026 02:50:35 -0400
+	id 1wPalj-0007yv-Gz; Wed, 20 May 2026 02:51:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPajz-0003YS-AK; Wed, 20 May 2026 02:49:15 -0400
+ id 1wPak4-0003em-Jr; Wed, 20 May 2026 02:49:24 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPajv-0001Ol-U0; Wed, 20 May 2026 02:49:15 -0400
+ id 1wPajz-0001Wk-Ae; Wed, 20 May 2026 02:49:19 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K6lnbn096590
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K6lnbX096590
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 20 May 2026 15:48:19 +0900 (JST)
+ Wed, 20 May 2026 15:48:15 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=8soqAAF80Sr/QNu7vy2YY8c+Vx8TG6XRwo59Ykhi4vE=; 
+DKIM-Signature: a=rsa-sha256; bh=w+G4mYrT3E579hEsUmrs6jCM3wwxrAco3XtOrTTZDg4=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1779259699; v=1;
- b=b4mCHa2NETSAchcpT+DDJhOjCkFBZ83DGKCu6RbmtGc2yi7+OXXztCl73NALUYGv
- C+kv+u94m09iOr3PQKQ7BQ8Xv5wg6tnryOc5ewyuBug+Ypf/2qef0YnHXIESMXHr
- tqLV1xtBLEnRsGY5IG+hzw/d/Y1UTYQVSueqLcNtbsJl+lAk+Yab6pxC/lrIn2Ku
- VcwLKL+RK1lax/ZesDslcFiH0337Go7mQqbcvWWxaPz9txvwqxzK+L/Oihujja4b
- nwj65VxxavMPyuwWOtEQmNpSB/y/fJS0v+aU/dWhvyxgu1SJXKLQ2lAM3WYt2VWK
- pbIpJVO95PdqFHKQX6a/pg==
+ s=rs20250326; t=1779259695; v=1;
+ b=jdz5mCI0MrG2asZfbFiSxaKsbryJa5iR7IX79zuLDC7jCMeK42VE38d5e3yCn67n
+ kn1UZvpos6nUThybK6fjTxQaPQwJ7D0f4GjPus9XoTN/ohKc5odYtS+gyyEJWIjT
+ XM6a3E1nK/eQLTsXRH5oUS9sgMgyhhz26V/b5bJMms+aU6Z9i1DaJM3cjYsKnNjb
+ xIs5qnam1mWQuegQbP+j/sutqtTHh5WLl1oCcK5y7F+VtFVbokH8TqZZB4X0obWS
+ zeirKu1TBWh8FzOKUmlefqHNdqJfdS/t1XgUg81tLHdWUb2x0+tnP4D2goXLhzyW
+ LXo7RkIqhJGbXYQBDJrUTA==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 20 May 2026 15:48:09 +0900
-Subject: [PATCH v3 26/29] ui/vnc: Use Linux key codes
+Date: Wed, 20 May 2026 15:47:53 +0900
+Subject: [PATCH v3 10/29] hw/display/xenfb: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260520-input-v3-26-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260520-input-v3-10-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -58,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3926;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1604;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=fVMHTWI13jVtYYp754ee7t/4i7+v9d4aNF/ntnvLwpw=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZvpNabm4H3F214Zqyo1xZaOHltueldu3VfWfpz+g2qd
- 3pJ8d7pKGVhEONikBVTZEkp2s2tEV37qTAhvgVmDisTyBAGLk4BmEjMQ0aGLccWtf44u9UlcblP
- c8WkDXneTL6xb662rT00+0vb//S5dxj+il33qYsQs9EKczzm8GXbBVa+5elvpVkE916JOm9+76Q
- UCwA=
+ bh=XcfBuuudisNZMFU+Lz64jMl2gKGv+YTeVpp7yLYFGCs=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZvpFzlRwV2F8fJPu61R0TEji5z2+R1q2vjO5UVive9d
+ VPYBCI6SlkYxLgYZMUUWVKKdnNrRNd+KkyIb4GZw8oEMoSBi1MAJrJtNSPD1p/LtDourpTetUA1
+ f49D4ATHn9ysf98xHZn/6cr6o57xpxgZ/tjcXdFinzTP/mI8Z6d3+1zd2Ymn2UUn2l0/+NXhC88
+ pZgA=
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -96,95 +96,46 @@ representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- ui/vnc.c | 29 +++++++++++++----------------
- 1 file changed, 13 insertions(+), 16 deletions(-)
+ hw/display/xenfb.c | 21 +++------------------
+ 1 file changed, 3 insertions(+), 18 deletions(-)
 
-diff --git a/ui/vnc.c b/ui/vnc.c
-index 4269b19d1489..e14287ca68af 100644
---- a/ui/vnc.c
-+++ b/ui/vnc.c
-@@ -43,6 +43,7 @@
- #include "qapi/qapi-events-ui.h"
- #include "qapi/error.h"
- #include "qapi/qapi-commands-ui.h"
-+#include "standard-headers/linux/input-event-codes.h"
- #include "ui/console.h"
- #include "ui/input.h"
- #include "crypto/hash.h"
-@@ -1797,13 +1798,10 @@ static void pointer_event(VncState *vs, int button_mask, int x, int y)
-     qemu_input_event_sync();
+diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
+index 218f37f07400..ae302b217fe9 100644
+--- a/hw/display/xenfb.c
++++ b/hw/display/xenfb.c
+@@ -191,29 +191,14 @@ static int xenfb_send_position(struct XenInput *xenfb,
+     return xenfb_kbd_event(xenfb, &event);
  }
  
--static void press_key(VncState *vs, QKeyCode qcode)
-+static void press_key(VncState *vs, unsigned int lnx)
+-/*
+- * Send a key event from the client to the guest OS
+- * QEMU gives us a QCode.
+- * We have to turn this into a Linux Input layer keycode.
+- *
+- * Wish we could just send scancodes straight to the guest which
+- * already has code for dealing with this...
+- */
++/* Send a key event from the client to the guest OS */
+ static void xenfb_key_event(DeviceState *dev, QemuConsole *src,
+                             QemuInputEvent *evt)
  {
--    qkbd_state_key_event(vs->vd->kbd, qemu_input_map_qcode_to_linux[qcode],
--                         true);
+     struct XenInput *xenfb = (struct XenInput *)dev;
+-    int qcode = qemu_input_linux_to_qcode(evt->key.key);
+-    int lnx;
+ 
+-    if (qcode < qemu_input_map_qcode_to_linux_len) {
+-        lnx = qemu_input_map_qcode_to_linux[qcode];
 -
--    qkbd_state_key_event(vs->vd->kbd, qemu_input_map_qcode_to_linux[qcode],
--                         false);
-+    qkbd_state_key_event(vs->vd->kbd, lnx, true);
-+    qkbd_state_key_event(vs->vd->kbd, lnx, false);
+-        if (lnx) {
+-            trace_xenfb_key_event(xenfb, lnx, evt->key.down);
+-            xenfb_send_key(xenfb, evt->key.down, lnx);
+-        }
+-    }
++    trace_xenfb_key_event(xenfb, evt->key.key, evt->key.down);
++    xenfb_send_key(xenfb, evt->key.down, evt->key.key);
  }
  
- static void vnc_led_state_change(VncState *vs)
-@@ -1844,15 +1842,15 @@ static void kbd_leds(void *opaque, int ledstate)
- 
- static void do_key_event(VncState *vs, int down, int keycode, int sym)
- {
--    QKeyCode qcode = qemu_input_key_number_to_qcode(keycode);
-+    unsigned int lnx = qemu_input_key_number_to_linux(keycode);
- 
-     /* QEMU console switch */
--    switch (qcode) {
--    case Q_KEY_CODE_1 ... Q_KEY_CODE_9: /* '1' to '9' keys */
-+    switch (lnx) {
-+    case KEY_1 ... KEY_9: /* '1' to '9' keys */
-         if (down &&
-             qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_CTRL) &&
-             qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_ALT)) {
--            QemuConsole *con = qemu_console_lookup_by_index(qcode - Q_KEY_CODE_1);
-+            QemuConsole *con = qemu_console_lookup_by_index(lnx - KEY_1);
-             if (con) {
-                 qemu_console_unregister_listener(&vs->vd->dcl);
-                 qkbd_state_switch_console(vs->vd->kbd, con);
-@@ -1877,12 +1875,12 @@ static void do_key_event(VncState *vs, int down, int keycode, int sym)
-         if (keysym_is_numlock(vs->vd->kbd_layout, sym & 0xFFFF)) {
-             if (!qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_NUMLOCK)) {
-                 trace_vnc_key_sync_numlock(true);
--                press_key(vs, Q_KEY_CODE_NUM_LOCK);
-+                press_key(vs, KEY_NUMLOCK);
-             }
-         } else {
-             if (qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_NUMLOCK)) {
-                 trace_vnc_key_sync_numlock(false);
--                press_key(vs, Q_KEY_CODE_NUM_LOCK);
-+                press_key(vs, KEY_NUMLOCK);
-             }
-         }
-     }
-@@ -1900,18 +1898,17 @@ static void do_key_event(VncState *vs, int down, int keycode, int sym)
-         if (capslock) {
-             if (uppercase == shift) {
-                 trace_vnc_key_sync_capslock(false);
--                press_key(vs, Q_KEY_CODE_CAPS_LOCK);
-+                press_key(vs, KEY_CAPSLOCK);
-             }
-         } else {
-             if (uppercase != shift) {
-                 trace_vnc_key_sync_capslock(true);
--                press_key(vs, Q_KEY_CODE_CAPS_LOCK);
-+                press_key(vs, KEY_CAPSLOCK);
-             }
-         }
-     }
- 
--    qkbd_state_key_event(vs->vd->kbd, qemu_input_map_qcode_to_linux[qcode],
--                         down);
-+    qkbd_state_key_event(vs->vd->kbd, lnx, down);
-     if (QEMU_IS_TEXT_CONSOLE(vs->vd->dcl.con)) {
-         QemuTextConsole *con = QEMU_TEXT_CONSOLE(vs->vd->dcl.con);
-         bool numlock = qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_NUMLOCK);
+ /*
 
 -- 
 2.54.0

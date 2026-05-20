@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AFC2CD5BAB
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 18:29:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40A7DCD4F3D
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 18:29:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPlcz-0005MI-68; Wed, 20 May 2026 14:26:45 -0400
+	id 1wPleD-0007UU-JT; Wed, 20 May 2026 14:28:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wPlc4-0003xH-Vl
- for qemu-arm@nongnu.org; Wed, 20 May 2026 14:25:49 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ id 1wPlcP-0004LM-Pr
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 14:26:10 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wPlc3-0001zO-18
- for qemu-arm@nongnu.org; Wed, 20 May 2026 14:25:48 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-2ba6485d219so38280555ad.3
- for <qemu-arm@nongnu.org>; Wed, 20 May 2026 11:25:46 -0700 (PDT)
+ id 1wPlcM-0002FU-IR
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 14:26:09 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-2bccb978bd9so37303765ad.0
+ for <qemu-arm@nongnu.org>; Wed, 20 May 2026 11:26:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779301545; x=1779906345; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779301561; x=1779906361; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=xM35gHOjOqj4uCcYch+AkhQTaXi12XhXc0hhEraB8uM=;
- b=d1V8G92j/yFV4C4e6dZmPZYLoRNKePc8Tbp5KTm6KMUVVSYALVyTOt2cbubCrg1cco
- 6Z/jk/SDSIa93x9l6TQf0XQ5oB4UUp6v1MXIDgCVn+r8i8S8rbMIucIcp5eONWFbrhjw
- HK5v8iea+GbtYLoQpt3rsx/7yV8XrAyMDlNiBTr2xmLi1BULfDE1IXMyst65L6HJLZ/m
- 4WITgFmPxF9EU6c/ER14/Jzs2m27NjpVHSFW7j/D0V5LBPNyQI+DorNxnzDO6u3A7EPh
- MjViyN8R3u0mevarWAUo8K9LPcYhQ53JRaf9gi3ZioaThlDDEsPGhH8kTJXAm0lkSRbw
- nn/w==
+ bh=WUXVONoe8IwMkgOU4fg5iX+I5AZGpysKKoOGKzNezec=;
+ b=XUC9F4VVHKuyZ4QDiiHn0+t40PivSDtMLKb9tl6h4//p8HZAkkgqDn9p51kSwyIiAP
+ 3yySbDO2YFnZ7SIoP3HA8EJHDYBelYf25hyFdcTl1WPSpljxLU/sbsRBp6Z2QHMg1ot5
+ Q+YaWJuGe24k0tyN8ExseBBPrKBSUsfWngQRcQAWnzSaj6fhKCnvGJpudUv7k5XZ3DVf
+ 6w156Git7eUqm16MpPs0MwOQyQRBlezpyoOXFT8hzPqu33LvIZH+bjkL5opSVx4AQRHj
+ l9TT1kFL2Atvq7+88LHnzP/tRIGZVXbRW8gxzYwJFw4zu9uhM9a1qw+CSql5OiTzHZ24
+ LzEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779301545; x=1779906345;
+ d=1e100.net; s=20251104; t=1779301561; x=1779906361;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=xM35gHOjOqj4uCcYch+AkhQTaXi12XhXc0hhEraB8uM=;
- b=grhLdkPdJWtUQ9k7aMeaSoq/UhtGy8shQyyyxIdVFzltVjA2BtRChjg1sH9/cAcqLf
- Y4PNym97PQpunjyXzRcaSDd8IE3ILXT+bNi3DmcaUoOGqGg5NZUXxhPoNDaASJDApjAK
- w8VtTQMmpb0sk1XH8IeRcw57yElXxOnDV8dMvdEfGKjzXj1015Cxke6JZk6iJxQ3FkV6
- Zwp4lcv3J8lLSeIeoEyMsS0U82/8kxd85911PNtcE0Oy4b7uzMzeE/bKcEx5ZrLedOm4
- +MxuUlASx7XqQzyd0Cd00sECYrcu2m4Vs6UbcKTujYU4e7eFhDcrunOpeF9ecOn0ZrE/
- Yk2Q==
-X-Gm-Message-State: AOJu0Yw+YAzVyg32MXYWjbJ2GyIFeppGXReL+CqqsBcT4OJDvUm0iaNe
- fWILZa3pNmFd/ToaploR6dreq5IFGxUHPbhe/VtyD/j0CxlrqXmYKcx1m++Ss4ygBMRQYFS1D9v
- zyQ0Co2o=
-X-Gm-Gg: Acq92OG4owhFOeaV4qnOBbftTVvaAOy4CG3VG0nvWcHnqpcVzct5VkImOpNTxA/wpBQ
- NPOuzFqjKU6EwCzFpEhNHell5BY6x02jAynRtBy6pYvNMi9Joxv1vVptDc7Z+UhdKoLOy4/UKaa
- uLpp2cXFSohvDz9LYEPlYDVq56G+2zEbzM5cIOkMnd4tUH+rbIPzHwrTDVAGDsA/5OJzs80/Lx1
- o5zf9cqL/xG+KtwclbeQbDJScx8Aw3UhFMOWI7zKMm+RwZh84IP+YuzvnC/H21bi98h6O+KFTXu
- TMhUjtHZ4vlyeK746x8+kfKPeCxG1Uu9U5HrIVm/qn42yAGdVwVkyx7w6AXCBGLirOqwCc5l1OJ
- AxwWXiYGsFg37vr032QDWwWOJCy/LFVJZwFNbMXghPwsibZ/bqF7MLZSZK7mXPuwpqpfhg1CYgE
- kVPCQcchfA41tooucpczadv/2XblsB
-X-Received: by 2002:a17:903:46c6:b0:2bc:c089:ff10 with SMTP id
- d9443c01a7336-2bd7e9a55e9mr256548265ad.34.1779301545361; 
- Wed, 20 May 2026 11:25:45 -0700 (PDT)
+ bh=WUXVONoe8IwMkgOU4fg5iX+I5AZGpysKKoOGKzNezec=;
+ b=aGDTPfheEFPb+6850SfIunyXa8RRq4fRpIAQqaXpP7io06auGI47xKuKHcHopWtZ9d
+ AZCHjagmiy3O7n+dlB0P1pG7hyV/eTdqeBHF+BjarzTZhY0d9z6m0qwL8TNlgyeVNa7p
+ sazt4gLJQU5v1PzqYoN0LesFNV3vMU21ZS3k8hhqrgu88pOz5A+N9GCTxxjnMvq86yQG
+ m2EfCIFbLhfxtbOItCl+BXkjhoFk0R6jE3Lj9alagT9WOk2Z+x2lvFtfeZSg99E10njH
+ SvQ2tQnOw0n9xvaMzVh3hjpriZB53Z6hjL3LAWiWOpdDjC+Hm9cVuaNDtXrfK8H5y/Md
+ gO1Q==
+X-Gm-Message-State: AOJu0Yxqrq2cEkCPoPLMOOguBr2g9fYJocMl1/DWU/n7zlpLIIpLADEx
+ 47Xl2AyHQV/CuLRYLZkC/+5d6pCVt2exLZu7aw7TxfMiOBV3yLPhkJwZTqyMJ/DXKgA=
+X-Gm-Gg: Acq92OEKVkixAvHsMnjdZzoJCZkOwdveugCUqdTWq/3u+34GFBlBy0q9HNCQMktPEWO
+ YsZtC0STgDO1T+uw1mR7iVDkH9gj1CSuwzu1PukSyjTi5d+swug0U6cZq2zd/tleRI2yR1UsffH
+ 7gGyKSnE/KiTMk8BU8HN5drs1BormVFC5/1QBiqVyuQdoSJ7nBRkw9qYIHc1/00Gcg31wk+0xbQ
+ 2vQknOKzxuSE6b4wnMzGlOQ8NUyH2SrrlVTW1QvLGUxjPL48fxA1kWIjxkDHWaPwtM7ldyBrrgK
+ ipBuVSR6eV/lGhKZsTon2UDYVmlVwVSDxIm4nH9CfSDX9DA7HmLv0x27nB0Lbr9ewP0kmmOo1Fr
+ Xx1c4oeViO5RJoqmgRxCD5Yk7pCqDVc2+8k65HNUjeAiyrWtqpB2NDP1OG2eoQCcNu6OohaRhZV
+ IGeqwUfSMBlwpDBSs3HsQP30gfyB+MuDskKQG72Bg=
+X-Received: by 2002:a17:903:190:b0:2bd:e021:6dbc with SMTP id
+ d9443c01a7336-2be9d404eeemr5357165ad.2.1779301560976; 
+ Wed, 20 May 2026 11:26:00 -0700 (PDT)
 Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2bd5c0605ddsm217413925ad.32.2026.05.20.11.25.44
+ d9443c01a7336-2bd5c0605ddsm217413925ad.32.2026.05.20.11.26.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 May 2026 11:25:45 -0700 (PDT)
+ Wed, 20 May 2026 11:26:00 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v6 42/64] target/arm: Update ID_AA64SMFR0_EL1 fields to ARM M.b
-Date: Wed, 20 May 2026 11:21:51 -0700
-Message-ID: <20260520182213.872945-43-richard.henderson@linaro.org>
+Subject: [PATCH v6 63/64] linux-user/aarch64: Implement hwcap bits for fp8
+ features
+Date: Wed, 20 May 2026 11:22:12 -0700
+Message-ID: <20260520182213.872945-64-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260520182213.872945-1-richard.henderson@linaro.org>
 References: <20260520182213.872945-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,42 +101,34 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu-features.h | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ linux-user/aarch64/elfload.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 6d5994450f..811f2a7291 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -397,17 +397,28 @@ FIELD(ID_AA64ZFR0, F16MM, 48, 4)
- FIELD(ID_AA64ZFR0, F32MM, 52, 4)
- FIELD(ID_AA64ZFR0, F64MM, 56, 4)
+diff --git a/linux-user/aarch64/elfload.c b/linux-user/aarch64/elfload.c
+index 3af5a37776..0934524be2 100644
+--- a/linux-user/aarch64/elfload.c
++++ b/linux-user/aarch64/elfload.c
+@@ -218,6 +218,20 @@ abi_ulong get_elf_hwcap2(CPUState *cs)
+     GET_FEATURE_ID(aa64_sve_b16b16, ARM_HWCAP2_A64_SVE_B16B16);
+     GET_FEATURE_ID(aa64_cssc, ARM_HWCAP2_A64_CSSC);
+     GET_FEATURE_ID(aa64_lse128, ARM_HWCAP2_A64_LSE128);
++    GET_FEATURE_ID(aa64_fpmr, ARM_HWCAP2_A64_FPMR);
++    GET_FEATURE_ID(aa64_lut, ARM_HWCAP2_A64_LUT);
++    GET_FEATURE_ID(aa64_faminmax, ARM_HWCAP2_A64_FAMINMAX);
++    GET_FEATURE_ID(aa64_f8cvt, ARM_HWCAP2_A64_F8CVT |
++                               ARM_HWCAP2_A64_F8E4M3 |
++                               ARM_HWCAP2_A64_F8E5M2);
++    GET_FEATURE_ID(aa64_f8fma, ARM_HWCAP2_A64_F8FMA);
++    GET_FEATURE_ID(aa64_f8dp4, ARM_HWCAP2_A64_F8DP4);
++    GET_FEATURE_ID(aa64_f8dp2, ARM_HWCAP2_A64_F8DP2);
++    GET_FEATURE_ID(aa64_sme2p1_lutv2, ARM_HWCAP2_A64_SME_LUTV2);
++    GET_FEATURE_ID(aa64_sme2p1_lutv2, ARM_HWCAP2_A64_SME_LUTV2);
++    GET_FEATURE_ID(aa64_ssve_f8fma, ARM_HWCAP2_A64_SME_SF8FMA);
++    GET_FEATURE_ID(aa64_ssve_f8dp4, ARM_HWCAP2_A64_SME_SF8DP4);
++    GET_FEATURE_ID(aa64_ssve_f8dp2, ARM_HWCAP2_A64_SME_SF8DP2);
  
-+FIELD(ID_AA64SMFR0, SMOP4, 0, 1)
-+FIELD(ID_AA64SMFR0, STMOP, 16, 1)
-+FIELD(ID_AA64SMFR0, SFEXPA, 23, 1)
-+FIELD(ID_AA64SMFR0, AES, 24, 1)
-+FIELD(ID_AA64SMFR0, SBITPERM, 25, 1)
-+FIELD(ID_AA64SMFR0, SF8DP2, 28, 1)
-+FIELD(ID_AA64SMFR0, SF8DP4, 29, 1)
-+FIELD(ID_AA64SMFR0, SF8FMA, 30, 1)
- FIELD(ID_AA64SMFR0, F32F32, 32, 1)
- FIELD(ID_AA64SMFR0, BI32I32, 33, 1)
- FIELD(ID_AA64SMFR0, B16F32, 34, 1)
- FIELD(ID_AA64SMFR0, F16F32, 35, 1)
- FIELD(ID_AA64SMFR0, I8I32, 36, 4)
-+FIELD(ID_AA64SMFR0, F8F32, 40, 1)
-+FIELD(ID_AA64SMFR0, F8F16, 41, 1)
- FIELD(ID_AA64SMFR0, F16F16, 42, 1)
- FIELD(ID_AA64SMFR0, B16B16, 43, 1)
- FIELD(ID_AA64SMFR0, I16I32, 44, 4)
- FIELD(ID_AA64SMFR0, F64F64, 48, 1)
- FIELD(ID_AA64SMFR0, I16I64, 52, 4)
- FIELD(ID_AA64SMFR0, SMEVER, 56, 4)
-+FIELD(ID_AA64SMFR0, LUTv2, 60, 1)
- FIELD(ID_AA64SMFR0, FA64, 63, 1)
- 
- FIELD(ID_AA64FPFR0, F8E5M2, 0, 1)
+     return hwcaps;
+ }
 -- 
 2.43.0
 

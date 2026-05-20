@@ -4,119 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A222CD4F3D
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 16:45:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88DD5CD5BA4
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 17:03:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPk24-0007sX-Ka; Wed, 20 May 2026 12:44:32 -0400
+	id 1wPkKf-0006Dq-GG; Wed, 20 May 2026 13:03:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPk20-0007rt-Sk
- for qemu-arm@nongnu.org; Wed, 20 May 2026 12:44:29 -0400
-Received: from 10.mo533.mail-out.ovh.net ([46.105.72.194])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPk1w-00078s-Qe
- for qemu-arm@nongnu.org; Wed, 20 May 2026 12:44:27 -0400
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net [51.68.94.138])
- by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4gLHSM5snxz5wCY;
- Wed, 20 May 2026 16:44:19 +0000 (UTC)
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net. [127.0.0.1])
- by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <kane_chen@aspeedtech.com>; Wed, 20 May 2026 16:44:19 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.188.27])
- by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gLHSL72wNz7v3d; Wed, 20 May 2026 16:44:18 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.3])
- (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 31F511B43B5B;
- Wed, 20 May 2026 16:44:18 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-100R003ca008be8-977b-4a52-b35a-ba99d2f8841f,
- 937D01815274B0585A5ECD04E9CA186A43F9D409) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <368273be-1685-40ab-aa91-7fd811c845d4@kaod.org>
-Date: Wed, 20 May 2026 18:44:17 +0200
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wPkKb-0006DM-G2
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 13:03:41 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wPkKZ-0005Pg-Lx
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 13:03:41 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-82faf871346so4028908b3a.0
+ for <qemu-arm@nongnu.org>; Wed, 20 May 2026 10:03:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1779296617; x=1779901417; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=V5OTAMZnH4CljFP2Ceujel7DB1EvDMI7Nk1bLAzzQRU=;
+ b=E+/qeXV1lHmWiFuVxwEu9GbMrpzXPlBqx55D5T2QjOZMKik0FK8aj6+yPso40DL6Q6
+ ccpWieJvA7d/Mc2jXyARlBpPjBz/Fea1Yn7cOqmfn58eX8p+AiqP811L0C6W086yahry
+ P4T98OIESu4oyolAQ1AQVmlYwYuEWZ/jh6LHhf03BPEQQtFJVOYdWS3x5AXpwd5q/Slt
+ y1yJ3LXup1tuvg9Q2DPMcPDG8LYqJtDlz4P2WPsrULHzd2sNOsWAZNpYkmIfzk1NkuKZ
+ mdG/Keb1WaeErCBjA+itECp8MMNwNSPWuiOWGUu9JA2CVJWZp7V0WFCDX22muZKXCA0+
+ WjvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779296617; x=1779901417;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=V5OTAMZnH4CljFP2Ceujel7DB1EvDMI7Nk1bLAzzQRU=;
+ b=WLkcDSvDedGIAIkNvjlwca0HTW1ZB3xW+jxGucR7umnH7E48IbZDMEdZerkk3Uhpxe
+ 4XZForHBWjBaoai5Cuws+e7ltCgXpVACoYFeTSv6nGZjhHww/y/cl4gE63OJ4YstvXv0
+ lsRwQmQZZyBPy9Bof0Cv8llDYBeqdfVxwT12CIHgg8/Qea/2A384xdtHzkbOChVvTzad
+ aBgNgb+2ZPAF/C407NsF7QTmPd3qlReNJecBh95ooxtGAwNfmsV+uXbctfTDpLZMwRSZ
+ rDuEl9Bvgfs/F2lpLNcvetlFcoSUpLGiKDqM7A+MUSslExBEHMqaMx4IbYWWslF95YDB
+ N5yw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8Q4Li78//NvABO9jcJkA+IO/WNa+4q+gjiwtbQ9+Jjixj1ck1Jng4Q7ps3MH0uoI0uxJAOEHqf5w==@nongnu.org
+X-Gm-Message-State: AOJu0YwRap3kPRUI/pAu0vZFrR4ZuFmvmFc9ptWTUZ7EW7xHpe30oPaW
+ Iyq+jOQTo79W/oysM/KPMb9hYt/ILYUTxMwgEzdZOAL9O7LtVw4G0SSJiK49IsiOrAQ=
+X-Gm-Gg: Acq92OGn8f8oJwHa4t7DCtEA72xVZUUXGJnhnfDPkauOXOIB84G6I4BDWUm7EJ77+ji
+ AP7Xg3RkJ5N4UOBcJfhdHrI/UgUVzIxBC3DYSWB7DjJPgR4f1GumZHKauEuHVUkq4Ptko/Bls06
+ GsedV6jL5o0ze9XwYNAIszHkSpjFPM/Kqlkzv0+aMCBPAGQ5lkdpCS9UYErUIxIzAVYYGZz6hvh
+ omyTD1e3MkFsYUOlr+WSeV2GaKDL1wicywxRMrSMArjLZhs6gmIdh2Zho78ELOq0xtqfLG2KZFR
+ jK9NkD6EB7+TjhXCubdrUpEbbU9NuL/oJ2iFJOg+bTk61pu8GqKtVkwx/7rIOPmlCX0gKSTDVAz
+ jNacg3D7XlabMTWKzohwG8MtgCFxaoJE9fKBmQwM98z+eFCHYfXN2oacw2OJ4bSmOF0dXofwkQC
+ 9RR6uuyI+NOBgTosIX1vhsOOm5XiKxVSaJF4wxBFQdSSfxtMM=
+X-Received: by 2002:a05:6a20:9151:b0:39b:c0b5:b0dd with SMTP id
+ adf61e73a8af0-3b22e7ac021mr28016578637.4.1779296617303; 
+ Wed, 20 May 2026 10:03:37 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.142.33])
+ by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-c82bb07b007sm20305825a12.11.2026.05.20.10.03.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 20 May 2026 10:03:36 -0700 (PDT)
+Message-ID: <3e43803f-b34b-424f-a3cd-e54ce6177c9b@linaro.org>
+Date: Wed, 20 May 2026 10:03:35 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 26/45] hw/misc: Add basic Aspeed PWM model
+Subject: Re: [PATCH] tcg: Factor tcg_zero_i128() helper out
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Cc: Kane Chen <kane_chen@aspeedtech.com>
-References: <20260204103136.1795455-1-clg@redhat.com>
- <20260204103136.1795455-27-clg@redhat.com>
- <2c9aa5d8-993f-4636-a07b-0a28dad1703b@linaro.org>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <2c9aa5d8-993f-4636-a07b-0a28dad1703b@linaro.org>
+Cc: James Hilliard <james.hilliard1@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20260520121644.10835-1-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260520121644.10835-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 16493026261902470168
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEy+2KPbCIi9WPBqMb2RujwIWGti2SIjz9uW7K7AJQJoOTIJTFLr0H5xZIiVEhU9jiGz+EOsBVYGTuzmFmPcuG2ddJpl5g26T46om/dn0eo3ApOnRH3gMfJQnKtuovlAaEVrU6nqb7bqOb3V3koGgCa8onhUW7B6OCU/mDEZTLzGZBbzpkoOjHr/1O6W7fjlqgFWt4mkmpDg34d2t/eCk6bMbEirvpMAKE2zhss38upbBau/oxAtXdc49rWzL/x33SvjGtLz+rNcG17Jzpgo4eKqv5F62SgSUp4jK/MvHIQiMnVYsi5+cPscXbGOBIfOCD4WaM0Llzp2dZwkVyjO1m0ls5HqeHBsWroGBSFQuqAuT+ZQLomH/3lQgQb/OD787E5kSm1kpGm6BBVH02ThtILeRpl/7M8uSLBKJKAdNL6mAX8L05NlMiLr+nU8WDJhgPAfbEkaZyJW7eG/0bGG5ZmCIk95Ia9ammDprDu/wbb+comrFchPAXdhwlSDpdsfkn4XNobwap2dokx6B0GkIaiimnswzNHH8PBlUGAshcuXKqyZclFK4iT68RV6EAHMhX9f5kxmQgp9IZGyahazV+/00neqpltMw2uc/Zc1W49A7Ii1Rtbj9qo44ESJxHBOsnBwT5trbKgzFRyDexEodj09NOWgtUHSZjjMOstU0SYuA
-DKIM-Signature: a=rsa-sha256; bh=83MJaZT8Vc4S5a/oYR/SJy3+iwzN8jb9rFDMli3joug=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1779295460; v=1;
- b=uWTZgFV4XjHrmBenw3tBsR20MKMR3iWyb/MBeMPYZMZbvEITRHoTIfiS6ftte0ybx79hZM45
- wXcqNy6sdB4ho1CQDsPCaOCQg73eowN3W8CKQjsEUEbin87n0ny8E2uxXdTOC9n9KwcwZdB8kGe
- T8C0r5s2iO2+irGQL8Rx13j6MiylqBGCvk+jy74LUf+qFmtSYVmFmkvAkppCVEt0RiIhiX9LtxO
- 4Asz512WxFwDo4yiBiNpjEieNoGsaSs5oNV5r07THuGv7pZzKNLGuT5zXDO33xV5LyOgSSjnhLo
- llilGyn3IMWO+Jg2YPyE1cVLTyrukCg/FL5+1wo8eGkoQ==
-Received-SPF: pass client-ip=46.105.72.194; envelope-from=clg@kaod.org;
- helo=10.mo533.mail-out.ovh.net
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,60 +107,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/20/26 18:31, Philippe Mathieu-Daudé wrote:
-> Hi Kane,
+On 5/20/26 05:16, Philippe Mathieu-Daudé wrote:
+> Extract tcg_zero_i128() helper for re-use.
 > 
-> On 4/2/26 11:31, Cédric Le Goater wrote:
->> From: Kane Chen <kane_chen@aspeedtech.com>
->>
->> Add an initial PWM model for Aspeed SoCs, including device state,
->> register definitions, and basic initialization as a sysbus device.
->>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
->> Link: https://lore.kernel.org/qemu-devel/20260204082113.3955407-4-kane_chen@aspeedtech.com
->> Signed-off-by: Cédric Le Goater <clg@redhat.com>
->> ---
->>   include/hw/arm/aspeed_soc.h  |   3 +-
->>   include/hw/misc/aspeed_pwm.h |  30 +++++++++
->>   hw/misc/aspeed_pwm.c         | 120 +++++++++++++++++++++++++++++++++++
->>   hw/misc/meson.build          |   1 +
->>   hw/misc/trace-events         |   4 ++
->>   5 files changed, 157 insertions(+), 1 deletion(-)
->>   create mode 100644 include/hw/misc/aspeed_pwm.h
->>   create mode 100644 hw/misc/aspeed_pwm.c
-> 
-> 
->> diff --git a/hw/misc/aspeed_pwm.c b/hw/misc/aspeed_pwm.c
-> 
-> 
->> +static void aspeed_pwm_class_init(ObjectClass *klass, const void *data)
->> +{
->> +    DeviceClass *dc = DEVICE_CLASS(klass);
->> +
->> +    dc->realize = aspeed_pwm_realize;
->> +    device_class_set_legacy_reset(dc, aspeed_pwm_reset);
-> 
-> Also please do not use the legacy API. See for example this
-> commit to convert to the newer API:
-> https://gitlab.com/qemu-project/qemu/-/commit/ce788d3740f
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/tcg/tcg-op-common.h    |  2 ++
+>   target/arm/tcg/translate-a64.c |  6 +-----
+>   tcg/tcg.c                      | 10 ++++++++++
+>   3 files changed, 13 insertions(+), 5 deletions(-)
 
-Oh ! I think this patch is from 2017 and we didn't refresh it when
-it was sent :/
-
-So, yes, Kane, if you have time for this QEMU cycle, that would be
-nice.
-
-Thanks,
-
-C.
+Thanks, queued.
 
 
-
-> 
->> +    dc->desc = "Aspeed PWM Controller";
->> +    dc->vmsd = &vmstate_aspeed_pwm;
->> +}
-> 
+r~
 
 

@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58E7ECD4F54
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:52:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED76ECD4F5E
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:52:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPalQ-00064u-Jz; Wed, 20 May 2026 02:50:44 -0400
+	id 1wPala-000716-3Q; Wed, 20 May 2026 02:50:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPak0-0003Zr-F8; Wed, 20 May 2026 02:49:21 -0400
+ id 1wPak4-0003ej-Gw; Wed, 20 May 2026 02:49:24 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPajv-0001Np-UO; Wed, 20 May 2026 02:49:16 -0400
+ id 1wPajx-0001Un-K6; Wed, 20 May 2026 02:49:18 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K6lnbp096590
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K6lnbd096590
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 20 May 2026 15:48:20 +0900 (JST)
+ Wed, 20 May 2026 15:48:17 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=mBBHQ1VTf+2PlEkElrcvpPbx3CON12FYfmnvDI9gLjg=; 
+DKIM-Signature: a=rsa-sha256; bh=uJTvyFxVV0KiKR88wATfRrbdCU5rpbZH8pTJ+9EpZgo=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1779259700; v=1;
- b=WgFFOgryWGrtSOCJzq8FaimfoN+x4EwRYfivke1qh7ahwF/AoaH9s3e2amXWfCso
- hS+dCI7pBz6EuawH6d7DX3sSwuD0NhCHLhUl27SQEm7FbIr70mgjwXCFmLlbACB2
- GFrXQUnbNtFPOJK9M+PmxPv3+dlYldihTCn7eQNdn0u6bMdWYruxfBl/YXHlE7vC
- APnsPXumPjhPcnWdZ5hrTChXcp2n7I4XVLXT8IZS9dQyQ3yGZZyZ77aHjtBG0XAG
- ZU3k+MrQ9vZqRbBWQxa5tlwWPOTS62mOKFlsb4ytqvCK5Bi2/46NZEn+cJlLWj8d
- 8aQrrtXBXEHff0ZCrvyKGA==
+ s=rs20250326; t=1779259697; v=1;
+ b=cNG7gl9Q57zcLLdEh/PioLHZkDx5BDraF3InzwJfFvQ2/bJER2S31h3MjRDPr3rV
+ 2mrn4ilzR5oURS99kXKT6PDxGO+xzQzRh/RiwvqS23apFNdSIJILyXH1GtDXtI0I
+ cX/oYITGY+aH+gzFSGB1Yl5i2LlnSHlP1TcLjz7ImrsnRhhXy0Rm3YVSVCsQj/IJ
+ Z0oRB/KGM1qfCjMVhlBfHCZQFE8M/4Z0Acf05smZUqO5w7swsu0zUNFJ/46HN0za
+ 4tftUY0cgbrZUxjMcALte70SdovqS9EnjbRwAa+NRqT1Y91wOch/Sq2VvdzMELun
+ DnRWX4181/sQJzpkRj82jw==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 20 May 2026 15:48:11 +0900
-Subject: [PATCH v3 28/29] ui/console: Remove qemu_text_console_put_qcode()
+Date: Wed, 20 May 2026 15:47:59 +0900
+Subject: [PATCH v3 16/29] replay: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260520-input-v3-28-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260520-input-v3-16-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -58,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1398;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2453;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=C63tP0iZbxdD8kjzxdJMHRp9M2ek6vZNjpjn0lEfMP4=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZvpHbKxTvV3OI13qGPBd7uPXp90Xq7z2L5Fy5btbJoz
- 1mRe92lo5SFQYyLQVZMkSWlaDe3RnTtp8KE+BaYOaxMIEMYuDgF4CJWDH9494dbPQnZ4Hd57Zqq
- MDWRC0+2GNxZ0BkZFcy32ds7as1Zhv8JBwOuevy+fPLs1EfH2v8dqK+csPzrZtWXDPtdpjs8TPb
- jAAA=
+ bh=VN8yQ5lgMxcp3qE4EJjzPaXZLmpoeQItNok0BraEMYc=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZvpLIR5+/dvqJLGjmVX3M/PLtRdolA3A8ph+fLr+8oO
+ ZHzYk9ARykLgxgXg6yYIktK0W5ujejaT4UJ8S0wc1iZQIYwcHEKwERmbGJk2MLbnfRTh9fq3+yd
+ jtMFHnsUC62fnMbzk/GI5GTFC5deqDEyLL3HV+qsqedT/uJKg0Bv+QT58yv7f0Zc1jRMveAV+/g
+ fMwA=
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -90,43 +90,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-It is no longer used.
+QemuInputEvent now stores Linux key codes for key events. Use those
+codes directly instead of translating between internal key code
+representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- include/ui/console.h | 1 -
- ui/console.c         | 6 ------
- 2 files changed, 7 deletions(-)
+ replay/replay-input.c | 20 +++-----------------
+ replay/replay.c       |  2 +-
+ 2 files changed, 4 insertions(+), 18 deletions(-)
 
-diff --git a/include/ui/console.h b/include/ui/console.h
-index 691040f5948d..a31c5a4995c6 100644
---- a/include/ui/console.h
-+++ b/include/ui/console.h
-@@ -108,7 +108,6 @@ bool qemu_mouse_set(int index, Error **errp);
- #define QEMU_KEY_CTRL_PAGEDOWN   0xe407
+diff --git a/replay/replay-input.c b/replay/replay-input.c
+index acf0993c7285..c86e00af0efd 100644
+--- a/replay/replay-input.c
++++ b/replay/replay-input.c
+@@ -23,8 +23,7 @@ void replay_save_input_event(QemuInputEvent *evt)
  
- void qemu_text_console_put_keysym(QemuTextConsole *s, int keysym);
--bool qemu_text_console_put_qcode(QemuTextConsole *s, int qcode, bool ctrl);
- bool qemu_text_console_put_linux(QemuTextConsole *s, unsigned int lnx,
-                                  bool ctrl);
- void qemu_text_console_put_string(QemuTextConsole *s, const char *str, int len);
-diff --git a/ui/console.c b/ui/console.c
-index 2dcb4660fbf8..a7c977d0c448 100644
---- a/ui/console.c
-+++ b/ui/console.c
-@@ -328,12 +328,6 @@ static const int ctrl_linux_to_keysym[] = {
-     [KEY_PAGEDOWN]   = QEMU_KEY_CTRL_PAGEDOWN,
- };
- 
--bool qemu_text_console_put_qcode(QemuTextConsole *s, int qcode, bool ctrl)
--{
--    unsigned int lnx = qemu_input_map_qcode_to_linux[qcode];
--    return qemu_text_console_put_linux(s, lnx, ctrl);
--}
--
- bool qemu_text_console_put_linux(QemuTextConsole *s, unsigned int lnx,
-                                  bool ctrl)
+     switch (evt->type) {
+     case INPUT_EVENT_KIND_KEY:
+-        replay_put_dword(KEY_VALUE_KIND_QCODE);
+-        replay_put_dword(qemu_input_linux_to_qcode(evt->key.key));
++        replay_put_dword(evt->key.key);
+         replay_put_byte(evt->key.down);
+         break;
+     case INPUT_EVENT_KIND_BTN:
+@@ -55,25 +54,12 @@ void replay_save_input_event(QemuInputEvent *evt)
+ QemuInputEvent *replay_read_input_event(void)
  {
+     QemuInputEvent *evt = g_new(QemuInputEvent, 1);
+-    int qcode;
+ 
+     evt->type = replay_get_dword();
+     switch (evt->type) {
+     case INPUT_EVENT_KIND_KEY:
+-        switch (replay_get_dword()) {
+-        case KEY_VALUE_KIND_NUMBER:
+-            qcode = qemu_input_key_number_to_qcode(replay_get_qword());
+-            evt->key.down = replay_get_byte();
+-            break;
+-        case KEY_VALUE_KIND_QCODE:
+-            qcode = (QKeyCode)replay_get_dword();
+-            evt->key.down = replay_get_byte();
+-            break;
+-        default:
+-            g_assert_not_reached();
+-        }
+-        evt->key.key = qcode < qemu_input_map_qcode_to_linux_len ?
+-                       qemu_input_map_qcode_to_linux[qcode] : 0;
++        evt->key.key = replay_get_dword();
++        evt->key.down = replay_get_byte();
+         break;
+     case INPUT_EVENT_KIND_BTN:
+         evt->btn.button = (InputButton)replay_get_dword();
+diff --git a/replay/replay.c b/replay/replay.c
+index 2e5c6fa82eaa..14437b32566b 100644
+--- a/replay/replay.c
++++ b/replay/replay.c
+@@ -22,7 +22,7 @@
+ 
+ /* Current version of the replay mechanism.
+    Increase it when file format changes. */
+-#define REPLAY_VERSION              0xe0200d
++#define REPLAY_VERSION              0xe0200e
+ /* Size of replay log header */
+ #define HEADER_SIZE                 (sizeof(uint32_t) + sizeof(uint64_t))
+ 
 
 -- 
 2.54.0

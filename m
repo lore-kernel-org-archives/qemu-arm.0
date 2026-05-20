@@ -4,104 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4298CD4F3C
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 16:36:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A222CD4F3D
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 16:45:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPjuT-0005zA-CA; Wed, 20 May 2026 12:36:41 -0400
+	id 1wPk24-0007sX-Ka; Wed, 20 May 2026 12:44:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wPjuS-0005yQ-2C
- for qemu-arm@nongnu.org; Wed, 20 May 2026 12:36:40 -0400
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wPjuQ-00058A-Bp
- for qemu-arm@nongnu.org; Wed, 20 May 2026 12:36:39 -0400
-Received: by mail-yx1-xb130.google.com with SMTP id
- 956f58d0204a3-65c5361142fso5066517d50.0
- for <qemu-arm@nongnu.org>; Wed, 20 May 2026 09:36:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779294997; cv=none;
- d=google.com; s=arc-20240605;
- b=RDbX6tSdJa/MfgUGIv3DfgwLhU8xzR7y1YA3dJ0A86L2knfySAwB5uVK1d2QI2JiMD
- /VCfp5q1WPWU5KARTAohJK2i7e0fPrQP81bthfkHECTtpNnDrsrMIFA4kqrz0kNnUTvl
- uH89Zk9Q+QkDgTdgsBvt0gAsbZzxvLo4fO5lUVubfqc3m+ut3PfvwHE1h9yshxDQsu1W
- OiEZnTQ7PXr+rmkS8OKQLoOmR7HU2ZIV37lFiplDfhtvsBErPKd1rGihwVYahY4WJ2Mi
- ZNykvBgrfcTDTL2MMDSSdKK9dSBGEHBcJkWC5FO+UTfpvNAiwu+CQ69xK2DtXz2hqv17
- FsdQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=Da1TtY+MCb2y6fKCYJH5+UfmZOEaNa/rUnc2JG0Qetc=;
- fh=Sd+f37vUJao5n0yQPjAv5D9A0d6o+al1s2dOKcO4lcw=;
- b=RWjfZFwRLnPEUjcl3+MA8CbbX4dd7fitSjPPGPDJ2yOU9Y5dadXDjddJ9Gw8nuuOcw
- 1kqnNdIHWkEDI4uKWGaZsS27IM+pYLciN443mN6RGTbx9HtwATLoYcteB2TiqRr94ElI
- iI/gxVL0le3W3NN42S8NOoQlAnaCq0hDyqD7pHUm+dGmDj+ENtzY+msyaDTBfP/LOtaw
- v0vRt4R1OIe18DqfFP65hmTonpk4NY94WSu3/dklWDXWBT3ctWZy3MZoJ/UeKDJ2bVq9
- +N5/If3O+g/cgGt40vuzkozRv2I/mrzETwk2ea+7icKPjz+Xdqa3MY/ERJGq6GXMpAwR
- JQLQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779294997; x=1779899797; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Da1TtY+MCb2y6fKCYJH5+UfmZOEaNa/rUnc2JG0Qetc=;
- b=X7WQNwGRNVo/3FviGb8uO/7gXCho50xn7qZ6yoZ6IqSWDWlEHxm25+YajcL3Kr1Ai9
- W8cNh9Bn5DGRmI+AfD5wthT/Z89NTj/dQ9KBHizvZx6KJACymeVozrzeNqoCmAbKmqte
- MIRtntCmgNcJgYGlwRGG3Fj4hKTavcEWhVpcRD8Tlc1PTKPqNTh9AUkeLaSmGNIVzW+a
- UatAhQgbOVo0ESBpa8g9s0GkAJU04iVyhbhP6wiC8WZWuWHF4tD9eWucCBltViGorEFo
- Dn2nzSRAvbq16BDd2c+mFzk56mjVvrpYvfBbrouoGxkCbsnQGOkrjlxuWyImasp+OZN+
- 1WhQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779294997; x=1779899797;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Da1TtY+MCb2y6fKCYJH5+UfmZOEaNa/rUnc2JG0Qetc=;
- b=tOIGW+yOsLkeX6miA6fOwcm34rN7pgvrRbFGsiiLmubUgkuWd5CatNrtuTFTA2HrcE
- 9EQjNUY4cA5JYh3R4ryaoeqRUNaRfmbJT2AjzDt7x08X4Zgf2G6S5mL2/zDZQZcQYs+o
- obICORYvp9KKf6XdvncTzJIuDqi9Vi+htKP8TI1nbNZIkPVMgdHYZ/QRrR1ZWf8Bhmd/
- AG+M2gQIuexgHjJtSCyRXRuoO85adwhUp13FNIVn9X2lQXtShF6m2MPhuXzE1zneNVvU
- n748FBQ1IyiU8blPJae3ehiDgSQ6/y90RTW6l9gpfyZCH+94q3/2Pib2VEfqLbzN3eaM
- pPkA==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/MJFpydN0e5Sl2e9z881jgUdM28Y+Nn7K5iJZXF9ZlIWojEq2uz6C+6JhG4AuBIyQqdpxt6s3WYg==@nongnu.org
-X-Gm-Message-State: AOJu0Yykkwyi2fHoZGu7jAA1oXV3+FKMrxR+AwwF/nbz+T24IQfjlaDc
- 437VnPovusYTKkjD+x1C+3WSt3r54sKjmfdyDHix6bRvNOKUDHLznXh2s0nlqmD01x1EdzAWRCQ
- SE5im8e8TAps4OlfjbSTkRkltiHBwHnIqefCauYnjMg==
-X-Gm-Gg: Acq92OH1E1zZNGIwmd1BiF7++sd4ZiC8eDidcw3FPZDhMbJWwlPZv8Xzl3Hv8C0K5aZ
- Lm9cFqP2KBNiXtp001bgl5zFEw3cKjvzrXLvx9gljoAfSXXRp4J0gLuCBKsD0HJRQZVDZZ83As4
- vVqyVPbSUfl0PuGsksRB8iqRNo5CzE1eSroIMbCvU469vVHyJ9eh4dkN70m6TL5+q3Z+CEHEJQ7
- 3hbijReuxfcPEomITRVRYZbWk6wlFLancAOigujx6Fl3CrSXPfo/WErwKdG4mUUuo4w9kQSNV5E
- r1c/EJHG1Q951pXt2U4a2CFXxHoqb6lnVko0nNsnaw2S3Zip6jvvDf/iONrPqncqYBLPgWVXR6a
- Y6g==
-X-Received: by 2002:a05:690e:4409:10b0:650:18fc:f557 with SMTP id
- 956f58d0204a3-65e2285bec6mr21425948d50.56.1779294996907; Wed, 20 May 2026
- 09:36:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPk20-0007rt-Sk
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 12:44:29 -0400
+Received: from 10.mo533.mail-out.ovh.net ([46.105.72.194])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPk1w-00078s-Qe
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 12:44:27 -0400
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net [51.68.94.138])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4gLHSM5snxz5wCY;
+ Wed, 20 May 2026 16:44:19 +0000 (UTC)
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net. [127.0.0.1])
+ by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <kane_chen@aspeedtech.com>; Wed, 20 May 2026 16:44:19 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.188.27])
+ by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gLHSL72wNz7v3d; Wed, 20 May 2026 16:44:18 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.3])
+ (Authenticated sender: clg@kaod.org)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 31F511B43B5B;
+ Wed, 20 May 2026 16:44:18 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-100R003ca008be8-977b-4a52-b35a-ba99d2f8841f,
+ 937D01815274B0585A5ECD04E9CA186A43F9D409) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <368273be-1685-40ab-aa91-7fd811c845d4@kaod.org>
+Date: Wed, 20 May 2026 18:44:17 +0200
 MIME-Version: 1.0
-References: <20260517003002.321430-1-richard.henderson@linaro.org>
- <20260517003002.321430-60-richard.henderson@linaro.org>
-In-Reply-To: <20260517003002.321430-60-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 20 May 2026 17:36:24 +0100
-X-Gm-Features: AVHnY4IXCK4RSvN9X5XqOy5otafM2VpYY22wT_2nQrobFH-jWEoOv2HjD3g8WKw
-Message-ID: <CAFEAcA971nFuXNkQbswiDzRXQ7WsrW9GTVzH5A2rPGym20yMKg@mail.gmail.com>
-Subject: Re: [PATCH v5 59/63] target/arm: Implement FMMLA (FP8 to FP16) for
- AdvSIMD
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PULL 26/45] hw/misc: Add basic Aspeed PWM model
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Kane Chen <kane_chen@aspeedtech.com>
+References: <20260204103136.1795455-1-clg@redhat.com>
+ <20260204103136.1795455-27-clg@redhat.com>
+ <2c9aa5d8-993f-4636-a07b-0a28dad1703b@linaro.org>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <2c9aa5d8-993f-4636-a07b-0a28dad1703b@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+x-ovh-tracer-id: 16493026261902470168
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEy+2KPbCIi9WPBqMb2RujwIWGti2SIjz9uW7K7AJQJoOTIJTFLr0H5xZIiVEhU9jiGz+EOsBVYGTuzmFmPcuG2ddJpl5g26T46om/dn0eo3ApOnRH3gMfJQnKtuovlAaEVrU6nqb7bqOb3V3koGgCa8onhUW7B6OCU/mDEZTLzGZBbzpkoOjHr/1O6W7fjlqgFWt4mkmpDg34d2t/eCk6bMbEirvpMAKE2zhss38upbBau/oxAtXdc49rWzL/x33SvjGtLz+rNcG17Jzpgo4eKqv5F62SgSUp4jK/MvHIQiMnVYsi5+cPscXbGOBIfOCD4WaM0Llzp2dZwkVyjO1m0ls5HqeHBsWroGBSFQuqAuT+ZQLomH/3lQgQb/OD787E5kSm1kpGm6BBVH02ThtILeRpl/7M8uSLBKJKAdNL6mAX8L05NlMiLr+nU8WDJhgPAfbEkaZyJW7eG/0bGG5ZmCIk95Ia9ammDprDu/wbb+comrFchPAXdhwlSDpdsfkn4XNobwap2dokx6B0GkIaiimnswzNHH8PBlUGAshcuXKqyZclFK4iT68RV6EAHMhX9f5kxmQgp9IZGyahazV+/00neqpltMw2uc/Zc1W49A7Ii1Rtbj9qo44ESJxHBOsnBwT5trbKgzFRyDexEodj09NOWgtUHSZjjMOstU0SYuA
+DKIM-Signature: a=rsa-sha256; bh=83MJaZT8Vc4S5a/oYR/SJy3+iwzN8jb9rFDMli3joug=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1779295460; v=1;
+ b=uWTZgFV4XjHrmBenw3tBsR20MKMR3iWyb/MBeMPYZMZbvEITRHoTIfiS6ftte0ybx79hZM45
+ wXcqNy6sdB4ho1CQDsPCaOCQg73eowN3W8CKQjsEUEbin87n0ny8E2uxXdTOC9n9KwcwZdB8kGe
+ T8C0r5s2iO2+irGQL8Rx13j6MiylqBGCvk+jy74LUf+qFmtSYVmFmkvAkppCVEt0RiIhiX9LtxO
+ 4Asz512WxFwDo4yiBiNpjEieNoGsaSs5oNV5r07THuGv7pZzKNLGuT5zXDO33xV5LyOgSSjnhLo
+ llilGyn3IMWO+Jg2YPyE1cVLTyrukCg/FL5+1wo8eGkoQ==
+Received-SPF: pass client-ip=46.105.72.194; envelope-from=clg@kaod.org;
+ helo=10.mo533.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,82 +132,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, 17 May 2026 at 01:35, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/cpu-features.h        |  5 +++++
->  target/arm/tcg/helper-fp8-defs.h |  1 +
->  target/arm/tcg/fp8_helper.c      | 26 ++++++++++++++++++++++++++
->  target/arm/tcg/translate-a64.c   |  1 +
->  target/arm/tcg/a64.decode        |  1 +
->  5 files changed, 34 insertions(+)
->
-> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-> index 8f6cc2974f..fce38dfbb0 100644
-> --- a/target/arm/cpu-features.h
-> +++ b/target/arm/cpu-features.h
-> @@ -1625,6 +1625,11 @@ static inline bool isar_feature_aa64_f8mm8(const ARMISARegisters *id)
->      return FIELD_EX64_IDREG(id, ID_AA64FPFR0, F8MM8);
->  }
->
-> +static inline bool isar_feature_aa64_f8mm4(const ARMISARegisters *id)
-> +{
-> +    return FIELD_EX64_IDREG(id, ID_AA64FPFR0, F8MM4);
-> +}
-> +
->  /*
->   * Combinations of feature tests, for ease of use with TRANS_FEAT.
->   */
-> diff --git a/target/arm/tcg/helper-fp8-defs.h b/target/arm/tcg/helper-fp8-defs.h
-> index 3c74f02022..e942308af4 100644
-> --- a/target/arm/tcg/helper-fp8-defs.h
-> +++ b/target/arm/tcg/helper-fp8-defs.h
-> @@ -37,3 +37,4 @@ DEF_HELPER_FLAGS_5(gvec_fdot_hb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
->  DEF_HELPER_FLAGS_5(gvec_fdot_idx_hb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
->
->  DEF_HELPER_FLAGS_5(gvec_fmmla_sb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
-> +DEF_HELPER_FLAGS_5(gvec_fmmla_hb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
-> diff --git a/target/arm/tcg/fp8_helper.c b/target/arm/tcg/fp8_helper.c
-> index bb1d48c3e0..d5d1fe71c5 100644
-> --- a/target/arm/tcg/fp8_helper.c
-> +++ b/target/arm/tcg/fp8_helper.c
-> @@ -849,3 +849,29 @@ void HELPER(gvec_fmmla_sb)(void *vd, void *vn, void *vm,
->      fp8_mul_finish(env, &ctx);
->      clear_tail(vd, oprsz, simd_maxsz(desc));
->  }
-> +
-> +void HELPER(gvec_fmmla_hb)(void *vd, void *vn, void *vm,
-> +                           CPUARMState *env, uint32_t desc)
-> +{
-> +    FP8MulContext ctx = fp8_mul_start(env, -1);
+On 5/20/26 18:31, Philippe Mathieu-Daudé wrote:
+> Hi Kane,
+> 
+> On 4/2/26 11:31, Cédric Le Goater wrote:
+>> From: Kane Chen <kane_chen@aspeedtech.com>
+>>
+>> Add an initial PWM model for Aspeed SoCs, including device state,
+>> register definitions, and basic initialization as a sysbus device.
+>>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+>> Link: https://lore.kernel.org/qemu-devel/20260204082113.3955407-4-kane_chen@aspeedtech.com
+>> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+>> ---
+>>   include/hw/arm/aspeed_soc.h  |   3 +-
+>>   include/hw/misc/aspeed_pwm.h |  30 +++++++++
+>>   hw/misc/aspeed_pwm.c         | 120 +++++++++++++++++++++++++++++++++++
+>>   hw/misc/meson.build          |   1 +
+>>   hw/misc/trace-events         |   4 ++
+>>   5 files changed, 157 insertions(+), 1 deletion(-)
+>>   create mode 100644 include/hw/misc/aspeed_pwm.h
+>>   create mode 100644 hw/misc/aspeed_pwm.c
+> 
+> 
+>> diff --git a/hw/misc/aspeed_pwm.c b/hw/misc/aspeed_pwm.c
+> 
+> 
+>> +static void aspeed_pwm_class_init(ObjectClass *klass, const void *data)
+>> +{
+>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>> +
+>> +    dc->realize = aspeed_pwm_realize;
+>> +    device_class_set_legacy_reset(dc, aspeed_pwm_reset);
+> 
+> Also please do not use the legacy API. See for example this
+> commit to convert to the newer API:
+> https://gitlab.com/qemu-project/qemu/-/commit/ce788d3740f
 
-The scale_mask here should be 0xf as this is a halfprec
-output, right?
+Oh ! I think this patch is from 2017 and we didn't refresh it when
+it was sent :/
 
-> +    size_t oprsz = simd_oprsz(desc);
-> +    size_t nseg = oprsz / 16;
-> +    uint32_t *n = vn;
-> +    uint32_t *m = vm;
-> +    float16 *d = vd;
-> +
-> +    for (size_t seg = 0; seg < nseg; seg++, d += 4, n += 2, m += 2) {
-> +        float16 d0 = f8dotadd_h(n[0], m[0], 4, d[H4(0)], &ctx);
-> +        float16 d1 = f8dotadd_h(n[0], m[1], 4, d[H4(1)], &ctx);
-> +        float16 d2 = f8dotadd_h(n[1], m[0], 4, d[H4(2)], &ctx);
-> +        float16 d3 = f8dotadd_h(n[1], m[1], 4, d[H4(3)], &ctx);
-> +
-> +        d[H4(0)] = d0;
-> +        d[H4(1)] = d1;
-> +        d[H4(2)] = d2;
-> +        d[H4(3)] = d3;
-> +    }
-> +
-> +    fp8_mul_finish(env, &ctx);
-> +    clear_tail(vd, oprsz, simd_maxsz(desc));
-> +}
+So, yes, Kane, if you have time for this QEMU cycle, that would be
+nice.
 
-thanks
--- PMM
+Thanks,
+
+C.
+
+
+
+> 
+>> +    dc->desc = "Aspeed PWM Controller";
+>> +    dc->vmsd = &vmstate_aspeed_pwm;
+>> +}
+> 
+
 

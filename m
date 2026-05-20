@@ -4,84 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F731CD4F5E
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 04:42:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44DA2CD4F5E
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 04:43:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPYgf-00019v-Ac; Wed, 20 May 2026 00:37:41 -0400
+	id 1wPYhj-0002M8-Mr; Wed, 20 May 2026 00:38:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wPYgd-000192-G7
- for qemu-arm@nongnu.org; Wed, 20 May 2026 00:37:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1wPYhd-0001on-Gx
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 00:38:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wPYgZ-0003nd-3f
- for qemu-arm@nongnu.org; Wed, 20 May 2026 00:37:39 -0400
+ id 1wPYhT-0003xw-1T
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 00:38:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779251851;
+ s=mimecast20190719; t=1779251909;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Gx5elmJ0/YW5NJGNx916OPYDqI0bw0993vlbxSoa/pE=;
- b=Z0QOforH/0McjhUn67/be5qwORcWOWdocbb2K6PFJKcAS6UzWNIrsQ/j86rOEmEcTQqn2G
- I/fxc/cYdEbr94JYgvUT+uqhXVcLfsQX9GChesUv3MYERfKZSgEOhCThfFIhW04hDPGPDA
- zf8JXlzGlX6BDGsdp5qXcnMYndGXxcg=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=+xMby641YOdW9kytrOA6DwX49JRlCDWVNZo+mGZL9sU=;
+ b=MQKr5nckQk1HfpdNWtbdavlZDBL/2lCgO2OBPpp0edsGzFN6yw14zSL4uLgRdSV5tlabB1
+ MKcRQhdK6A6Wk6SrYvuTgWsDCNkEL6vGr4QdDIzXKAnlQLRsTPpP9zzt6q20ovZZEWjSoU
+ XO7hi/zxYowiLERyZ8UfRl7srDB9Z2k=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-88-K_eVC1KDMYy4GpbYOUj3iw-1; Wed, 20 May 2026 00:37:29 -0400
-X-MC-Unique: K_eVC1KDMYy4GpbYOUj3iw-1
-X-Mimecast-MFC-AGG-ID: K_eVC1KDMYy4GpbYOUj3iw_1779251849
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-48a589c7879so34713335e9.1
- for <qemu-arm@nongnu.org>; Tue, 19 May 2026 21:37:29 -0700 (PDT)
+ us-mta-483-Y8e57wQbNQi1Gm2EyWM_bg-1; Wed, 20 May 2026 00:38:28 -0400
+X-MC-Unique: Y8e57wQbNQi1Gm2EyWM_bg-1
+X-Mimecast-MFC-AGG-ID: Y8e57wQbNQi1Gm2EyWM_bg_1779251907
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-44f1b4d0fb0so2556373f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2026 21:38:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779251849; x=1779856649;
+ d=1e100.net; s=20251104; t=1779251907; x=1779856707;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Gx5elmJ0/YW5NJGNx916OPYDqI0bw0993vlbxSoa/pE=;
- b=S6UxujIQdLDfktj0gR95PkEsynh4dEF8zlJuhFuiaJSfgTyr3XXUQTVGMYEaNz9uRG
- sBEOLLTBw8Z2i3yScpp5L2mFruYLHPQD0xrAx9rkHpkbdvr+J+fVVCTv3aj8pRE94o0o
- 2YtERKwBj6PhueCjNgCG6SYLxDtwCymy9xWgvNC+QZQWfPecU0nzSbWICdMU+SzcWjkd
- 6i4BNwM3wnVW86j3wIljr6mpUYNIsfVi0XMl+XCkoqcOiCk8DgTEzjNjMn1j+Fp+odUB
- 7v6HrGY7lfR661bJLxrnJW1DToEaobp6xxY1HpSaMROL5BeOKJ8lImaPCaFqYC7gkYFk
- 8g9A==
+ bh=+xMby641YOdW9kytrOA6DwX49JRlCDWVNZo+mGZL9sU=;
+ b=c+GiRLPVqkOSoDnig+cufmBt8uPkz5dSAmJYBwfwOlT3vBo9GPCkZ6dl+NM9bqm1sd
+ cZOtDd47+dl0wmDZz5UX6bnCi4n7WyLGOKXy/PrXO4b+Vw1UQaIVbIqu1EamNGRLFYn6
+ L1xsbU7Ec08YdVOX5n1jEXY8vW5v3rwOURoRC0OPkIPhv0Mz7j3jZYMydqS0ckARQmyL
+ rOZTaP15vlTm8H2/yiBuG4lUcU5mwH1wDIbeXSAAdmlvdFNDnOHUQaxbfsR95prHOWoV
+ h3roT1chVGdz6XLcrjnlYU1oP2v+QVouBLdqwYaUqKIOy07TBXae6ZGf3wRw1PEPFN4N
+ 3L6g==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8oFgJsGbBjMsE1GtoXPVLK6cgAQ4qLXNWpCAJ7Xm4Lkt10DscfaSHVqYqw2oYfuHx2t8qIKNxlag==@nongnu.org
-X-Gm-Message-State: AOJu0YyCrBc9upHPtDSVE7cpqM+Xe8y1fdFxAptuwSk9QWsS3L6Azg1D
- usw6T0cjxvwPRfLaWCopzkGd+eykb06pF1x9l2JR+STzTND4M+QCr7djr8Ruc+tdR1FnNzhA0kj
- mAhz7KN+ZmtIkiM7+k9Q4cCXyA5XRFRAP9WNe4jg2bd2JKpidOzI3fA==
-X-Gm-Gg: Acq92OGBBwvKDEOCWeuKPzKC1U1mx0W6qvbwmtfjtBmo+o/N7D1u8QD9gac8LGdxqeX
- Dh5QFcgmfsOsdH9CqjvFe2Sxm4KaR/b8bHoa4rn+OEk6h/12Xu0EJ5m9ZpQWiPR0ny+BsosIrYs
- 4I6BAUbJeOqZ2gy+q7MwGejvHHEg+xt8JgrKbfswIexAv26+YpOPgg//BAgo8dO5+/wT2DVXrL7
- NEynPMp5D4k+1ai0SeS1ff7SztcO7qLlkCMDzqPl65eNYW/5OD6PxdZ2qN1mnDBMIbVZJMML3Sg
- 8w43b8NRozKTC00B5GW+8MIjrJTLNNab241BUKb7dlvHmRGFRJujsWewkVCVLVw4F0GO0G3rJKQ
- L2PAjtcHMk4nzpx0FzNfiNsCjpOrcAkp7WNwvy4zO4CIDMJMMq+OgPA532m2QrMYzvJaQ4w==
-X-Received: by 2002:a05:600c:83c7:b0:48f:e230:29f5 with SMTP id
- 5b1f17b1804b1-48fe53a8eccmr336394305e9.16.1779251848675; 
- Tue, 19 May 2026 21:37:28 -0700 (PDT)
-X-Received: by 2002:a05:600c:83c7:b0:48f:e230:29f5 with SMTP id
- 5b1f17b1804b1-48fe53a8eccmr336393875e9.16.1779251848267; 
- Tue, 19 May 2026 21:37:28 -0700 (PDT)
+ AFNElJ/qXT+bX24MVBYDg/3C8+6aVyWmvaCZsSDJwv304nVPP9SBpSlGbQx8JQEbL4EOvO8lXu+q/JkOaw==@nongnu.org
+X-Gm-Message-State: AOJu0Yzp8j80brgyEO6K+Nk+0i7MB5w4+2iUuTh4VtflCcPt+b4NpBQJ
+ Z3xl4K043m5RvBKzM/v9pbMZs5xtTvKpmIwoxqlQlVAninkwRvbh0LIWliQW4i2lTYabWgeES5y
+ dw7r3UgQhk6I54YZ9empOtZ/FvjQKFfjteU6VAdY0UYSTiXg4u3BAk7P2ditzTw==
+X-Gm-Gg: Acq92OHli8db8m+uDZeGMpSnav73QLvIdcOCuXgXIEbiWLCEF90jd5oILHZiKEA1/Ay
+ dsk5WzkDHkk8AiM+7Zvs4ypFpjvdd89YsSj2b7Y7mXRxpFO36puzkvCudHgPI+dvPea/1afW8Bu
+ wtUAd4I5LVIcAzaOcEvLPEXa5tN1R9oX7eIOczQOtytiQHZxfWw4/rwrJKKqQDIWsG3Vgh6luXv
+ vKzI+OxkKokrnkSw7qujDz+vzqYb71KIAkIie2XDXGgNQtlAHU9L92fbyGynlxDSlE4a2fW2cGz
+ SbMBg8Uma3RufO+Ew43syTk9GMfczMdZtCr8mjefueb9LvZ2Cob8u8oqSoCLFsiDcoyGVZx/KP7
+ a29f4ZD8dT4+61FBR6TYXLHEZ3XgyD60kCUeADoMFlXqye9ZIMjKv9QdXEcAqj4LDVM5JKtrmG4
+ B3dVpV
+X-Received: by 2002:a05:600c:8715:b0:490:b07:5f27 with SMTP id
+ 5b1f17b1804b1-4900b07600fmr225077015e9.24.1779251906769; 
+ Tue, 19 May 2026 21:38:26 -0700 (PDT)
+X-Received: by 2002:a05:600c:8715:b0:490:b07:5f27 with SMTP id
+ 5b1f17b1804b1-4900b07600fmr225076805e9.24.1779251906400; 
+ Tue, 19 May 2026 21:38:26 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48fe4c88495sm362214585e9.4.2026.05.19.21.37.27
+ 5b1f17b1804b1-48fe4c834besm399042185e9.3.2026.05.19.21.38.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 May 2026 21:37:27 -0700 (PDT)
-Message-ID: <f74464a4-ca5c-42ae-9dd2-16a24a568b8a@redhat.com>
-Date: Wed, 20 May 2026 06:37:26 +0200
+ Tue, 19 May 2026 21:38:25 -0700 (PDT)
+Message-ID: <f1141630-6f3f-4983-8f8d-9e4f08a15b68@redhat.com>
+Date: Wed, 20 May 2026 06:38:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 6/7] hw/arm/smmuv3: Set default ats, ril, ssidsize, oas
- to auto
+Subject: Re: [PATCH v3 7/7] qemu-options.hx: Support "auto" for accel SMMUv3
+ properties
 To: Nathan Chen <nathanc@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -90,26 +91,26 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Nicolin Chen <nicolinc@nvidia.com>,
  Shameer Kolothum <skolothumtho@nvidia.com>
 References: <20260512193520.3109172-1-nathanc@nvidia.com>
- <20260512193520.3109172-7-nathanc@nvidia.com>
- <acd61fd5-a0f8-41f9-9144-d6889d6deaf0@redhat.com>
- <bdc232c5-4409-4828-826d-988a620a5d21@nvidia.com>
+ <20260512193520.3109172-8-nathanc@nvidia.com>
+ <0e747538-5e87-40ba-ac44-bc7bbe89bc7f@redhat.com>
+ <33370934-a239-4215-87d9-2cc64648a258@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <bdc232c5-4409-4828-826d-988a620a5d21@nvidia.com>
+In-Reply-To: <33370934-a239-4215-87d9-2cc64648a258@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: oc0VihkVxEPzrKqgwgWHvVjXTF_g1EC-UrQytP7ucSE_1779251849
+X-Mimecast-MFC-PROC-ID: d9Mi2qYZBDOy9OmhVt9Y2wBpSuJb0GfC2QPG4tpzqU0_1779251907
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,139 +127,72 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Nathan,
 
-On 5/19/26 11:04 PM, Nathan Chen wrote:
+
+On 5/19/26 10:53 PM, Nathan Chen wrote:
+> Hi Eric,
 >
->
-> On 5/19/2026 8:59 AM, Eric Auger wrote:
+> On 5/19/2026 9:03 AM, Eric Auger wrote:
+>> Hi Nathan,
 >>
 >> On 5/12/26 9:35 PM, Nathan Chen wrote:
 >>> From: Nathan Chen<nathanc@nvidia.com>
 >>>
->>> Set the default value of ATS, RIL, SSIDSIZE, and OAS to auto, in order
->>> to match the host IOMMU properties when accel=on.
->>>
->>> If accel=off and these property values are set to auto, the default
->>> property values defined in smmuv3_init_id_regs() for OAS and RIL will
->>> remain unchanged, while SSIDSIZE and ATS values will remain initialized
->>> at 0.
->>>
->>> Introduce a new compat for the changed defaults.
+>>> Update documentation now that "auto" is supported for accelerated
+>>> SMMUv3
+>>> properties.
 >>>
 >>> Signed-off-by: Nathan Chen<nathanc@nvidia.com>
 >>> ---
->>>   hw/arm/smmuv3.c   | 23 +++++++++++++++--------
->>>   hw/core/machine.c |  5 +++++
->>>   2 files changed, 20 insertions(+), 8 deletions(-)
+>>>   qemu-options.hx | 25 +++++++++++++++++++------
+>>>   1 file changed, 19 insertions(+), 6 deletions(-)
 >>>
->>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->>> index 31c2eec2f4..665e6a2538 100644
->>> --- a/hw/arm/smmuv3.c
->>> +++ b/hw/arm/smmuv3.c
->>> @@ -2129,12 +2129,19 @@ static const Property smmuv3_properties[] = {
->>>       DEFINE_PROP_BOOL("accel", SMMUv3State, accel, false),
->>>       /* GPA of MSI doorbell, for SMMUv3 accel use. */
->>>       DEFINE_PROP_UINT64("msi-gpa", SMMUv3State, msi_gpa, 0),
->>> +    /*
->>> +     * AUTO values for accel=off will resolve to:
->>> +     * ril: on
->>> +     * ats: off
->>> +     * oas: 44
->>> +     * ssidsize: 0
->>> +     */
->>>       /* RIL can be turned off for accel cases */
->>> -    DEFINE_PROP_ON_OFF_AUTO("ril", SMMUv3State, ril, ON_OFF_AUTO_ON),
->>> -    DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats, ON_OFF_AUTO_OFF),
->>> -    DEFINE_PROP_OAS_MODE("oas", SMMUv3State, oas, OAS_MODE_44),
->>> +    DEFINE_PROP_ON_OFF_AUTO("ril", SMMUv3State, ril,
->>> ON_OFF_AUTO_AUTO),
->>> +    DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats,
->>> ON_OFF_AUTO_AUTO),
->>> +    DEFINE_PROP_OAS_MODE("oas", SMMUv3State, oas, OAS_MODE_AUTO),
->>>       DEFINE_PROP_SSIDSIZE_MODE("ssidsize", SMMUv3State, ssidsize,
->>> -                              SSID_SIZE_MODE_0),
->>> +                              SSID_SIZE_MODE_AUTO),
->>>   };
->>>     static void smmuv3_instance_init(Object *obj)
->>> @@ -2162,20 +2169,20 @@ static void smmuv3_class_init(ObjectClass
->>> *klass, const void *data)
->>>           "configured in nested mode for vfio-pci dev assignment");
->>>       object_class_property_set_description(klass, "ril",
->>>           "Enable/disable range invalidation support (for accel=on). "
->>> -        "Valid values are on, off, and auto. Defaults to on. "
->>> +        "Valid values are on, off, and auto. Defaults to auto. "
->>>           "Any attempt to turn it 'on' while the host does not
->>> support "
->>>           "it would fail.");
->>>       object_class_property_set_description(klass, "ats",
->>>           "Enable/disable ATS support (for accel=on). "
->>> -        "Valid values are on, off, and auto. Defaults to off. "
->>> +        "Valid values are on, off, and auto. Defaults to auto. "
->>>           "Please ensure host platform supports ATS before setting it "
->>>           "to on.");
->>>       object_class_property_set_description(klass, "oas",
->>>           "Set Output Address Size in bits (for accel=on). "
->>> -        "Valid values are 44, 48, and auto. Defaults to 44 bits.");
->>> +        "Valid values are 44, 48, and auto. Defaults to auto.");
->> not really related to this patch but I notice that we do not have any
->> "Please ensure host platform supports..." statement as opposed to
->> previous props.
->> While some host requirements are needed to be statistied too.
->>
->> smmuv3-accel.c:    if (FIELD_EX32(info->idr[5], IDR5, OAS) <
->> smmuv3-accel.c:                FIELD_EX32(s->idr[5], IDR5, OAS)) {
->>
->>>       object_class_property_set_description(klass, "ssidsize",
->>>           "Set number of bits used to represent SubstreamIDs (SSIDs). "
->>> -        "Valid values are 0-20 and auto. Defaults to 0. "
->>> +        "Valid values are 0-20 and auto. Defaults to auto. "
->>>           "A value of N allows SSIDs in the range [0 .. 2^N - 1]. "
->>>           "A value of 0 disables SubstreamID support. A value greater "
->>>           "than 0 is required to enable PASID support.");
->> same here.
->>
-> Got it, I will update with host requirement guidance for OAS and
-> SSIDSIZE on the next refresh.
->
->> smmuv3-accel.c:        s->idr[1] = FIELD_DP32(s->idr[1], IDR1, SSIDSIZE,
->> smmuv3-accel.c:                               FIELD_EX32(info->idr[1],
->> IDR1, SSIDSIZE));
->>
->> Also it is not written (for accel=on)
-> I can reword the accel section to something like:
-> "Enable SMMUv3 accelerator support. Allows host SMMUv3 to be
-> configured in nested mode for vfio-pci dev assignment. Please ensure
-> the host SMMUv3 supports hardware-accelerated VFIO-PCI device
-> assignment before enabling."
->
-> Should I create a new patch for this update to the accel guidance or
-> consolidate into the next refresh of this current patch? 
-Yes maybe add another patch that improves the existing doc
+>>> diff --git a/qemu-options.hx b/qemu-options.hx
+>>> index 96ae41f787..46b02a1bb3 100644
+>>> --- a/qemu-options.hx
+>>> +++ b/qemu-options.hx
+>>> @@ -1291,30 +1291,43 @@ SRST
+>>>           Enabling accel configures the host SMMUv3 in nested mode
+>>> to support
+>>>           vfio-pci passthrough.
+>>>   -     The following options are available when accel=on.
+>>> -     Note: 'auto' mode is not currently supported.
+>>> +     The following options will be set to auto by default if not
+>>> manually
+>>> +     set. When accel=on and these properties are set to auto, the
+>>> value is
+>>> +     derived from the host SMMUv3 capabilities via
+>>> IOMMU_GET_HW_INFO. With
+>>> +     accel=on, this requires at least one cold-plugged vfio-pci
+>>> device; if
+>>> +     none is present at machine init, QEMU will abort.
+>>>   -    ``ril=on|off`` (default: on)
+>>> +     If accel=off, auto values resolve to the non-accel defaults
+>>> given below.
+>> [*]
+>>> +
+>>> +    ``ril=on|off|auto`` (default: auto)
+>>>           Support for Range Invalidation, which allows the SMMUv3
+>>> driver to
+>>>           invalidate TLB entries for a range of IOVAs at once
+>>> instead of issuing
+>>>           separate commands to invalidate each page. Must match with
+>>> host SMMUv3
+>>>           Range Invalidation support.
+>>> +        - With accel=on, auto means the value is automatically
+>>> derived from the host SMMU.
+>> instead of repeating that sentence for all props you mean put it in [*]
+> I would like to omit this for all props since it is already mentioned
+> above "When accel=on and these properties are set to auto, the value
+> is derived from the host SMMUv3 capabilities via IOMMU_GET_HW_INFO".
+> Would that be OK? 
+
+Yes then it sounds enough to me
 
 Eric
 >
 > Thanks,
 > Nathan
->
->>> diff --git a/hw/core/machine.c b/hw/core/machine.c
->>> index 63baff859f..3339da99ee 100644
->>> --- a/hw/core/machine.c
->>> +++ b/hw/core/machine.c
->>> @@ -38,9 +38,14 @@
->>>   #include "hw/virtio/virtio-iommu.h"
->>>   #include "hw/acpi/generic_event_device.h"
->>>   #include "qemu/audio.h"
->>> +#include "hw/arm/smmuv3.h"
->>>     GlobalProperty hw_compat_11_0[] = {
->>>       { "chardev-vc", "encoding", "cp437" },
->>> +    { TYPE_ARM_SMMUV3, "ats", "off" },
->>> +    { TYPE_ARM_SMMUV3, "ril", "on" },
->>> +    { TYPE_ARM_SMMUV3, "ssidsize", "0" },
->>> +    { TYPE_ARM_SMMUV3, "oas", "44" },
->>>   };
->>>   const size_t hw_compat_11_0_len = G_N_ELEMENTS(hw_compat_11_0);
->>>   
 >
 
 

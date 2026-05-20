@@ -4,80 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52E83CD5BA4
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 17:28:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D991CD5BAA
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 17:28:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPkZ5-0001PQ-Ed; Wed, 20 May 2026 13:18:39 -0400
+	id 1wPkgk-0007hh-MT; Wed, 20 May 2026 13:26:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wPkYw-0001K1-0G
- for qemu-arm@nongnu.org; Wed, 20 May 2026 13:18:30 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ id 1wPkgS-0007MM-FE
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 13:26:25 -0400
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wPkYs-0001sx-L2
- for qemu-arm@nongnu.org; Wed, 20 May 2026 13:18:29 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id
- 98e67ed59e1d1-366be8040a9so2156345a91.3
- for <qemu-arm@nongnu.org>; Wed, 20 May 2026 10:18:26 -0700 (PDT)
+ id 1wPkgQ-0004OD-3K
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 13:26:16 -0400
+Received: by mail-pf1-x429.google.com with SMTP id
+ d2e1a72fcca58-836ed29d1e5so2269370b3a.2
+ for <qemu-arm@nongnu.org>; Wed, 20 May 2026 10:26:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779297505; x=1779902305; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=LXEFjIA2Rc2Ly2XJsgxo/zPmqwc6w9LU/oPQ8iHupDk=;
- b=y3OT+wBDxDO3LQUQs2I77DI8jbA2HA5hOuMyu5uTFM2yvl5cu1f7AgnvfeCPDP+6GA
- oeXXSp5NjCBErwWYBADbpd/I0RMyCNmU22wkT7G16Zn3+AgIk2Rj4sKLln9OfU+0LuCu
- d6etZeQvbOaz0Mwtt5DuZuj3N6lp9HSKhtXVXLz3NmjB32sS/Un/XJkbv4C/XDihRGCi
- V4CikPWV+YzoPhBYfvCenyTtbiVYg7R/UcS6M4jwj7b9+rsFw1WCCmLKAll7sCgrjWZI
- Bp3yaMNW7pEA05aCbufpJpKWfcJskfz9tIpVEKO1UDB4YKivEDYJGFpyCEtol1//L5U7
- sNIw==
+ d=linaro.org; s=google; t=1779297972; x=1779902772; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=gLuo/t16axaVgNDuvZNn5zkWfPM5x0pxxDbNPCoQofo=;
+ b=EeftiTsGN1hTV8r0iVJiIfFVwNDrUhFz/DaI+BqRt3Zxxf4ALwWPnz+wn0qXnv+917
+ XJIQ52suOmaAfWQH4H2z7oQqGu6+rI/BQkAQ4qB1u7kaBAfZE5OhAg6mCfIdBE6FEa/c
+ Q53SfvW7MrNB/NTDDPZaEdFPtfTu/7fJFRDah76cd8gqX6ufIZaw3gFdHuLVyfPKZKdl
+ HEq9EZMfOIAjzbUxl9XVD9dK2F3lUBdqgywFA302IQYGTHZCo4tOenkV1dHqFxi3YbHZ
+ b9EGuAwZtLCiMxy3hYM5hATGJEfYt6in3T4t/LhPJrvitfgSKMmWBpOX25HDoVMJVk1P
+ HzIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779297505; x=1779902305;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=LXEFjIA2Rc2Ly2XJsgxo/zPmqwc6w9LU/oPQ8iHupDk=;
- b=JoCX0V713G7lywuZLDGEQh5UAA9kpNopL9xlJ40cFVaRjVLX7h7TmFQlpcgHJsFkX0
- 7QAlNtZzkkB1GzRZu0ivNK/tPJIISxxyyJkrrTMMySAteMIVTSvaN6uLLZB4Artqr4Sf
- Fsw3eaV/TNRGyfjPAtxVBc1aYyJA2mD/W2ywtQqQqX4jTKR++3Aiqjdp35nEu1IhVBNU
- 94LoJSkAXpn1+ZloJ/uFxvzN7bb29VUqCZs8H9J+2IxIcvphtCUbc415C54NILIXmeB4
- c4jOzbKJ8wULKKEi/1aR2AESSqFmP5Y8aiLwHoiqxgJnqqBtcPmTTnbJ9zFeRr1Kfd0N
- RaxA==
-X-Gm-Message-State: AOJu0YxohFck94jRj22ymU2vV7M2GHaUv8xId1d1LSrT/Ve9n2eJi1rc
- ElUgW8egmLYyz3vyzpL7LcdSrZJ3QZel9bPSZof7kMPDSriBiBaATHt7tWqLbcZNJJc=
-X-Gm-Gg: Acq92OE+Gomt5UnLJZ+mFfbAHzQE5bAbaNXbbF0V5QKd+/ML9QiMD7LyNtITucSSD/D
- sGES5AUq5Jk5b5PJFnun04ShJfzubPe/7YzIi7rQvex3jWlx9q/XVLVTtGAiCgi/TWETzzhHhPl
- IQKZkTjwrZVsZORQfm9v4rR87eb+sawYnKGtsIBC/zL5X8QsB44a0FZT3GLbyM56CUfV5CFyZRO
- KeN5ex6ckiUuI4O/Url3i+fRoMsym8DKA4dlV8rxfqyM+f7NGgMK6Fu3zUmEhC6NcY/OmPXdOgc
- SjMP9ZszvMONgK+ffz+8CwTn4de4GoQBHjRxdA32SZs3d824flRessSwCM9AzrW3iifwYtXNsWM
- dl5tOs9Zu54hwg257tGg2jUJjLGGVF+We13XKVH4Ly2Eq/nwGTdYVbWVDzQI2qz0qkCO66nu965
- 7U8Fxn00NlBIL9kGm8LZ3nXcmAxgIiv5dMXXZjwChqOVmJPfZlXA==
-X-Received: by 2002:a17:90b:3c10:b0:369:a359:b189 with SMTP id
- 98e67ed59e1d1-369a35a15a7mr16712972a91.19.1779297505085; 
- Wed, 20 May 2026 10:18:25 -0700 (PDT)
-Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-36a3c83f226sm254416a91.0.2026.05.20.10.18.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 May 2026 10:18:24 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v5 04/30] fpu: Hoist nan check in partsN_addsub
-Date: Wed, 20 May 2026 10:17:54 -0700
-Message-ID: <20260520171820.848839-5-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260520171820.848839-1-richard.henderson@linaro.org>
-References: <20260520171820.848839-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20251104; t=1779297972; x=1779902772;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=gLuo/t16axaVgNDuvZNn5zkWfPM5x0pxxDbNPCoQofo=;
+ b=pRRGZ+Qyr6Svw1VsQBrxRAUnGKjfGzu3WjNzHm9ABMQsocgzRzrROthi5kx+PFkkKp
+ A7VAnJKBmqX2AcYU0Tf/jDdRAZulewGuNp6aFeETwV99GU1zYb9KFHGPwDD+kCl70HR3
+ TYSgtAWsf+z0/f0ZHm+0XZBNaDvqwgML0mrc/VWB7M7i2c1feDkUUuA7c4h6nOuEBlCq
+ g/8d+WSiED0MezMSWDLJnrNay9hSYsBmccRLRwbWKuRvTwOaTZZsZEuGs2nwbiQxFRDY
+ JkMAkp7R/G0sQszqWW/7KulvHfIF0ji+2yGjyKbb6Y1kgY7blequRTkGdwIoc6MDLurd
+ eRsQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ84JB6FbppxcfJau0kJmEO/nNDUwSAU24vVzx7RypjjdPIpc4ksoIAjPbEKyKM7Eku8srRA+GTmsQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxPr+v55FWoQP34HGvt9B9tE2mEBNdaz+gskwCxt9+hgSgTxVeP
+ JMMXgYZz41uLIzvwB+eSPcCDiBIOY5PWgdDAKUo1rt/LI6syjKBFd9j5osZF0ggvLg4=
+X-Gm-Gg: Acq92OFDwUFycdrDOHEqQwQJi25um+ztN4u/m5wiBiUXbdNUiyoeQo3vKpYjrpDphVF
+ zq++LwE0JYbCEipl4PnPs5+CdQ/Kt0urBA8ojuwqNmNCCfs9scUho56Mb1gWGFJGGbaeJ+N7Y65
+ 3i+GN/TvT8Fg4cQQ+aWOkPkpgrIw9GdQim6czJYoxGc8+bA659sS1wdbBDAATQszZKGIm6wgqw+
+ 7RAO3JEexjRWJlyOvOOWkg4BznZcu3OqKK/STFnHCfzrahQsNEDiWxzZ89+h2r7rmND7tdvS5aM
+ wQv4SRODZnVUhrx0ZjsiAogqEKDmmNXpvOiApR49lduMpX1E5Sifd/D3gfEa6fbhdO4/Nu7YIBW
+ HTC807nnkHfo84GySeFHfNa8niYNF/9oiBhSJpD6ziG5QywHoFhcZPLxgcEyKJ7AmSWeGz2wA+2
+ L752FJXl4THZXOVdtAuuGb1BMweFqwlqewepIVJhuk1ToRmjc=
+X-Received: by 2002:a05:6a00:908a:b0:838:3404:c2b1 with SMTP id
+ d2e1a72fcca58-83f33c9cf52mr24909168b3a.18.1779297972008; 
+ Wed, 20 May 2026 10:26:12 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.142.33])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-83f196660f9sm27377330b3a.10.2026.05.20.10.26.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 20 May 2026 10:26:11 -0700 (PDT)
+Message-ID: <672cc2e2-93cd-4146-bcf2-cc000695a122@linaro.org>
+Date: Wed, 20 May 2026 10:26:08 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 59/63] target/arm: Implement FMMLA (FP8 to FP16) for
+ AdvSIMD
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20260517003002.321430-1-richard.henderson@linaro.org>
+ <20260517003002.321430-60-richard.henderson@linaro.org>
+ <CAFEAcA971nFuXNkQbswiDzRXQ7WsrW9GTVzH5A2rPGym20yMKg@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <CAFEAcA971nFuXNkQbswiDzRXQ7WsrW9GTVzH5A2rPGym20yMKg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,72 +107,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The nan test had been down below because it was unlikely.
-But if we have to have one anyway because of denormals,
-we might as well take care of them right away.
+On 5/20/26 09:36, Peter Maydell wrote:
+>> +void HELPER(gvec_fmmla_hb)(void *vd, void *vn, void *vm,
+>> +                           CPUARMState *env, uint32_t desc)
+>> +{
+>> +    FP8MulContext ctx = fp8_mul_start(env, -1);
+> 
+> The scale_mask here should be 0xf as this is a halfprec
+> output, right?
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- fpu/softfloat-parts.c.inc | 19 +++++--------------
- 1 file changed, 5 insertions(+), 14 deletions(-)
+Yep, copy-paste error from fmmla_sb.
 
-diff --git a/fpu/softfloat-parts.c.inc b/fpu/softfloat-parts.c.inc
-index 437b333341..3246702289 100644
---- a/fpu/softfloat-parts.c.inc
-+++ b/fpu/softfloat-parts.c.inc
-@@ -530,13 +530,15 @@ FloatPartsN partsN(addsub)(const FloatPartsN *a_orig,
- {
-     int ab_mask = float_cmask(a_orig->cls) | float_cmask(b_orig->cls);
- 
-+    if (unlikely(ab_mask & float_cmask_anynan)) {
-+        return partsN(pick_nan)(a_orig, b_orig, s);
-+    }
-+
-     /*
-      * For addition and subtraction, we will consume an
-      * input denormal unless the other input is a NaN.
-      */
--    if (!(ab_mask & float_cmask_anynan)) {
--        record_denormals_used(ab_mask, s);
--    }
-+    record_denormals_used(ab_mask, s);
- 
-     FloatPartsN a = *a_orig;
-     FloatPartsN b = *b_orig;
-@@ -558,10 +560,6 @@ FloatPartsN partsN(addsub)(const FloatPartsN *a_orig,
-             return a;
-         }
- 
--        if (unlikely(ab_mask & float_cmask_anynan)) {
--            goto p_nan;
--        }
--
-         if (ab_mask & float_cmask_inf) {
-             if (a.cls != float_class_inf) {
-                 /* N - Inf */
-@@ -586,10 +584,6 @@ FloatPartsN partsN(addsub)(const FloatPartsN *a_orig,
-             return a;
-         }
- 
--        if (unlikely(ab_mask & float_cmask_anynan)) {
--            goto p_nan;
--        }
--
-         if (ab_mask & float_cmask_inf) {
-             a.cls = float_class_inf;
-             return a;
-@@ -604,9 +598,6 @@ FloatPartsN partsN(addsub)(const FloatPartsN *a_orig,
-     g_assert(a.cls == float_class_zero);
-     g_assert(is_anynorm(b.cls));
-     return b;
--
-- p_nan:
--    return partsN(pick_nan)(a_orig, b_orig, s);
- }
- 
- /*
--- 
-2.43.0
 
+r~
 

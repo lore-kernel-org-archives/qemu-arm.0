@@ -4,44 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14027CD4F54
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 12:12:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEADFCD4F54
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 12:13:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPfmF-0003OQ-Ij; Wed, 20 May 2026 08:11:55 -0400
+	id 1wPfnV-0004fa-NX; Wed, 20 May 2026 08:13:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPfmE-0003NJ-Se; Wed, 20 May 2026 08:11:54 -0400
+ id 1wPfnU-0004fK-ID; Wed, 20 May 2026 08:13:12 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPfmC-00076Q-N8; Wed, 20 May 2026 08:11:54 -0400
+ id 1wPfnS-00076Q-Nw; Wed, 20 May 2026 08:13:12 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K9utCS091476
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K9utCQ091476
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
  Wed, 20 May 2026 18:57:03 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=D4IYxHy6BWldRtJ5/xQ6YqI+yS6S5W3YifdRJmBXHNA=; 
+DKIM-Signature: a=rsa-sha256; bh=lF474+G4+NG9g1XNzK4NJ+PvOc2o4tFIR7igJ2uelq8=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1779271024; v=1;
- b=ujRDC2CGz/dyadtq83l6DLcjjsut7Lk7+sIFJC30vHoxn9doiZSwBHcIv1N+d9PO
- IWdQmooXYXYN3sYlKe5fVUTZi5lJCJeAoVnmxBldO6uPiIKbDDZ308lG/A3GTsUG
- mRTGCYdNvq5RtktX4k593Ev0kcJHyVZK0I0ZDzSjLH9ZP4Z1SxkRczullMCJ5u9z
- 9WfkBg1l7NLQjXmiz1Bxo51+jT0KszDpRfrLHNAPdYHReYiczl4dz9gaueen8q0G
- A59GcdsHg2lC02DWojew6qPr//J5zNDSZEy4g1HlOAaNsEHRXGY19ZXNui0WJPsa
- W3/c2BPtZuUC/35QZ5OHfQ==
+ s=rs20250326; t=1779271023; v=1;
+ b=SNbkrYqwrBI+QttcwEDp70cErrfT8IU8NeGR73EApBKXUygfFjMMLS6Tp73VkQNr
+ Fo5+Ayjj2KvijSc4PIa6/iUVOC+Yxxb/i+zHqVpWB45nfgzdS4ae/19vUYOZ4oyf
+ CP6fBuzm2V2q2I3sPAS9pv6IVkvbeObJU/Hq0XcEQfJHJHgkyxPyByOc21xoDKfa
+ pBMn8MxmlsgQKqVcu/zXtcHkluOjSma5cLCwfHUoiGb/R5PNePiAbrCYvo/V8H3q
+ qHSLKsiaODFaItSQanKHkEaCQREiVesZMkGRrZTE3bnfFAofgk9SH5nbdJd5koi8
+ qsQ7gWlDIVZo49/l8wRJxw==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 20 May 2026 18:56:32 +0900
-Subject: [PATCH v6 3/4] hw/arm/virt: Remove the lower bound of HighMem IO
- Regions
+Date: Wed, 20 May 2026 18:56:30 +0900
+Subject: [PATCH v6 1/4] test/acpi: aarch64/virt: Test version 11.0
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260520-virt-v6-3-d96180454fdf@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260520-virt-v6-1-d96180454fdf@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260520-virt-v6-0-d96180454fdf@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260520-virt-v6-0-d96180454fdf@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -51,24 +50,26 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
  Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5573;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2050;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=yXpFUD6ylD0q/7Rto6f+wSUqoHHwDf87IN/AFjR1iRc=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZva66WjWnaAtFfJTFX7Tm5Zk0tK/ZZLJc6cbOsS8GMz
- urbjXM7SlkYxLgYZMUUWVKKdnNrRNd+KkyIb4GZw8oEMoSBi1MAJlIUx/A/tIVJMLkrZYadAId0
- gMaN16n6+jyGdt6yZfvPXr6orSTC8E95WvY+6XXGj6uvvfy6hcOFY89sa9P6VRa+rqWxmduFOxg A
+ bh=wupue4NMA2t2JnLHuDV5GkXDvb1UPJD9EvbYWmNflIM=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZva05IyVT7m5rpCba12nyXfbV/bues/Polo6ju2ZNzk
+ gdnTfXtKGVhEONikBVTZEkp2s2tEV37qTAhvgVmDisTyBAGLk4BmMivkwx/xf69uut3sF21zzG1
+ aBZD83QJh5eTKqfy6Pyr4r695lWWM8P/sGS7L9fyVJekTd5WK+t17+67njsP0g3ubl33bGqBm8w
+ ZDgA=
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
  envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- TVD_SUBJ_WIPE_DEBT=1.004 autolearn=no autolearn_force=no
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,127 +85,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Remove the lower bound of the Highmem IO Regions' addresses for the
-latest machine version to increase the chance to fit the regions in the
-PA space.
+A future commit changes the memory map for the latest version of the
+machine. Test that the memory map of the previous version is preserved.
 
-The lower bound was especially problematic when using virt-install on
-Apple M2. virt-install 5.0.0 adds multiple pcie-root-port devices that
-require sufficient space in the ECAM region. However, the Highmem ECAM
-region did not fit in the limited PA space on the hardware, and the ECAM
-region size was limited to 16 MiB. If virt-install had added more than
-16 devices to the root bridge, the region overflowed, which prevented
-edk2-stable202505 from scanning PCI devices, including the boot disk,
-causing boot failures.
-
-Ideally, a virtual machine with more than 16 devices added to the root
-bridge should just work so that users and management layers do not have
-to care whether they use constrained hardware.
-
-The base address of the Highmem IO Regions was fixed when commit
-f90747c4e8fb ("hw/arm/virt: GICv3 DT node with one or two redistributor
-regions") added the first Highmem IO Region. Later, commit 957e32cffa57
-("hw/arm/virt: Dynamic memory map depending on RAM requirements")
-allowed moving the Highmem IO Regions to higher addresses to accommodate
-RAM more than 255 GiB, but the lower bound remained to keep the legacy
-memory map.
-
-Remove the lower bound for the latest machine version to accommodate
-more devices with the root bridge. Keeping the lower bound for the old
-machine versions ensures the compatibility is still maintained.
-
-The hardcoded memory map in tests/qtest/libqos/generic-pcihost.c is also
-updated.
-
+Suggested-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/hw/arm/virt.h                |  1 +
- hw/arm/virt.c                        | 17 +++++++++++------
- tests/qtest/libqos/generic-pcihost.c |  2 +-
- 3 files changed, 13 insertions(+), 7 deletions(-)
+ tests/qtest/bios-tables-test.c | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 3ba33b4bd274..6c8ba8f3185b 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -142,6 +142,7 @@ typedef enum VirtGICType {
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index 510751799e48..00e62699197a 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -2214,6 +2214,28 @@ static void test_acpi_aarch64_virt_tcg(void)
+     free_test_data(&data);
+ }
  
- struct VirtMachineClass {
-     MachineClass parent;
-+    hwaddr min_highmem_base;
-     bool no_tcg_its;
-     bool no_highmem_compact;
-     bool no_kvm_steal_time;
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b090233893c5..78a85a966ad7 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -229,8 +229,7 @@ static const MemMapEntry base_memmap[] = {
-  * Highmem IO Regions: This memory map is floating, located after the RAM.
-  * Each MemMapEntry base (GPA) will be dynamically computed, depending on the
-  * top of the RAM, so that its base get the same alignment as the size,
-- * ie. a 512GiB entry will be aligned on a 512GiB boundary. If there is
-- * less than 256GiB of RAM, the floating area starts at the 256GiB mark.
-+ * ie. a 512GiB entry will be aligned on a 512GiB boundary.
-  * Note the extended_memmap is sized so that it eventually also includes the
-  * base_memmap entries (VIRT_HIGH_GIC_REDIST2 index is greater than the last
-  * index of base_memmap).
-@@ -2479,6 +2478,7 @@ static void virt_set_high_memmap(VirtMachineState *vms,
- static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
- {
-     MachineState *ms = MACHINE(vms);
-+    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-     hwaddr base, device_memory_base, device_memory_size, memtop;
-     int i;
- 
-@@ -2505,8 +2505,7 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
-     /*
-      * We compute the base of the high IO region depending on the
-      * amount of initial and device memory. The device memory start/size
--     * is aligned on 1GiB. We never put the high IO region below 256GiB
--     * so that if maxram_size is < 255GiB we keep the legacy memory map.
-+     * is aligned on 1GiB.
-      * The device region size assumes 1GiB page max alignment per slot.
-      */
-     device_memory_base =
-@@ -2524,8 +2523,8 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
-         error_report("maxmem/slots too huge");
-         exit(EXIT_FAILURE);
-     }
--    if (base < vms->memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES) {
--        base = vms->memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES;
-+    if (base < vmc->min_highmem_base) {
-+        base = vmc->min_highmem_base;
-     }
- 
-     /* We know for sure that at least the memory fits in the PA space */
-@@ -4367,6 +4366,12 @@ static void virt_machine_11_0_options(MachineClass *mc)
-     virt_machine_11_1_options(mc);
-     compat_props_add(mc->compat_props, hw_compat_11_0, hw_compat_11_0_len);
-     vmc->hvf_no_kernel_irqchip_default = true;
++static void test_acpi_aarch64_virt_tcg_11_0(void)
++{
++    test_data data = {
++        .machine = "virt",
++        .machine_param = "-11.0",
++        .arch = "aarch64",
++        .variant = ".11.0",
++        .tcg_only = true,
++        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
++        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
++        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
++        .ram_start = 0x40000000ULL,
++        .scan_len = 128ULL * MiB,
++    };
 +
-+    /*
-+     * Do not put the high IO region below 256GiB so that if maxram_size is
-+     * < 255GiB we keep the legacy memory map.
-+     */
-+    vmc->min_highmem_base = base_memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES;
- }
- DEFINE_VIRT_MACHINE(11, 0)
- 
-diff --git a/tests/qtest/libqos/generic-pcihost.c b/tests/qtest/libqos/generic-pcihost.c
-index b77617524cac..287e8445ec5b 100644
---- a/tests/qtest/libqos/generic-pcihost.c
-+++ b/tests/qtest/libqos/generic-pcihost.c
-@@ -210,7 +210,7 @@ void qpci_init_generic(QGenericPCIBus *qpci, QTestState *qts,
-     qpci->bus.pio_limit = 0x10000;
-     qpci->bus.mmio_alloc_ptr = 0x10000000;
-     qpci->bus.mmio_limit = 0x2eff0000;
--    qpci->ecam_alloc_ptr = 0x4010000000;
-+    qpci->ecam_alloc_ptr = 0x90000000;
- 
-     qpci->obj.get_driver = qpci_generic_get_driver;
- }
++    data.smbios_cpu_max_speed = 2900;
++    data.smbios_cpu_curr_speed = 2700;
++    test_acpi_one("-cpu cortex-a57 -machine ras=on "
++                  "-smbios type=4,max-speed=2900,current-speed=2700", &data);
++    free_test_data(&data);
++}
++
+ static void test_acpi_aarch64_virt_tcg_topology(void)
+ {
+     test_data data = {
+@@ -2851,6 +2873,8 @@ int main(int argc, char *argv[])
+     } else if (strcmp(arch, "aarch64") == 0) {
+         if (has_tcg && qtest_has_device("virtio-blk-pci")) {
+             qtest_add_func("acpi/virt", test_acpi_aarch64_virt_tcg);
++            qtest_add_func("acpi/virt/11.0",
++                           test_acpi_aarch64_virt_tcg_11_0);
+             qtest_add_func("acpi/virt/acpihmatvirt",
+                            test_acpi_aarch64_virt_tcg_acpi_hmat);
+             qtest_add_func("acpi/virt/topology",
 
 -- 
 2.54.0

@@ -4,103 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D67FCD4F3C
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 16:34:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4298CD4F3C
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 16:36:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPjrt-0004mT-Qg; Wed, 20 May 2026 12:34:04 -0400
+	id 1wPjuT-0005zA-CA; Wed, 20 May 2026 12:36:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wPjrj-0004hX-9d
- for qemu-arm@nongnu.org; Wed, 20 May 2026 12:33:51 -0400
-Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
+ id 1wPjuS-0005yQ-2C
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 12:36:40 -0400
+Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wPjrf-0004E7-5k
- for qemu-arm@nongnu.org; Wed, 20 May 2026 12:33:49 -0400
-Received: by mail-yx1-xb129.google.com with SMTP id
- 956f58d0204a3-65c396d3b36so5167642d50.0
- for <qemu-arm@nongnu.org>; Wed, 20 May 2026 09:33:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779294826; cv=none;
+ id 1wPjuQ-00058A-Bp
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 12:36:39 -0400
+Received: by mail-yx1-xb130.google.com with SMTP id
+ 956f58d0204a3-65c5361142fso5066517d50.0
+ for <qemu-arm@nongnu.org>; Wed, 20 May 2026 09:36:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779294997; cv=none;
  d=google.com; s=arc-20240605;
- b=NqK83FVRE4jIqkAvTcLeXWViC49ceswKWy4zJTmtcYfj4JLNt4wunX89sAAkwtRnAE
- 0K/zp52iYXENtC+U7BIkdVNE91PJrVIQlLIqTQCnlQM9suyLiaRP5+XZeLJCLDqv8+pU
- rezmNwQr0QUhqI/+YDmA0u7e03D9w2qZFXE25zv7pz5WHH23CuXORKY6oyBNp6ileN4o
- iH4ipg6Vs5J5f89Y8RBWAmUL7DUIuqDxECP5Kj3EvfdiQt0F/w4nb3PMuaMNMUMhtZ/3
- OFuulH3xFNCGS+jL1AMLLlYYYfuvLlQtlKHlzG1teAtas9q3OEZNuzZfnUX29qYBkcc7
- z2sw==
+ b=RDbX6tSdJa/MfgUGIv3DfgwLhU8xzR7y1YA3dJ0A86L2knfySAwB5uVK1d2QI2JiMD
+ /VCfp5q1WPWU5KARTAohJK2i7e0fPrQP81bthfkHECTtpNnDrsrMIFA4kqrz0kNnUTvl
+ uH89Zk9Q+QkDgTdgsBvt0gAsbZzxvLo4fO5lUVubfqc3m+ut3PfvwHE1h9yshxDQsu1W
+ OiEZnTQ7PXr+rmkS8OKQLoOmR7HU2ZIV37lFiplDfhtvsBErPKd1rGihwVYahY4WJ2Mi
+ ZNykvBgrfcTDTL2MMDSSdKK9dSBGEHBcJkWC5FO+UTfpvNAiwu+CQ69xK2DtXz2hqv17
+ FsdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=ilXmKd4vt5E2uTWQGrfTbvCC8r36p1523wjeuX6smhY=;
- fh=Y6quO8+aeM8NpPpyT7uo7svSkzQaCI+NdHmJoXD9k8k=;
- b=dFh27sH7wvWn2/UnppsId4rSt7UVWd5WqFvAlIFB2eSL53maDNmKVpj9nyLxm8sCMi
- E4a7BWG+IhevQR1fzk/mlly/VUDP9SzjbrDr8HFUwymaCtpEqM24UwaNnepjyDXXFg/S
- iC0NYUXNZhKg9NB14F5T/9pGENb1e26od75jDF+au0lHNCebLyfpzRR5f5MlJzXM4LD4
- kYQp70s6w/Xb3GDXS7yN0FNgMXLQjQ7z92bWFYyl6DfvvXQIEE5uWCDXDXWQjXg72t8v
- Tmh7dM7YowN4PERBZakWJ8udfSDJF88VQJmHvHUwxECN09vQ7qbBvNNTE5Fc+SomTGl9
- CW4g==; darn=nongnu.org
+ bh=Da1TtY+MCb2y6fKCYJH5+UfmZOEaNa/rUnc2JG0Qetc=;
+ fh=Sd+f37vUJao5n0yQPjAv5D9A0d6o+al1s2dOKcO4lcw=;
+ b=RWjfZFwRLnPEUjcl3+MA8CbbX4dd7fitSjPPGPDJ2yOU9Y5dadXDjddJ9Gw8nuuOcw
+ 1kqnNdIHWkEDI4uKWGaZsS27IM+pYLciN443mN6RGTbx9HtwATLoYcteB2TiqRr94ElI
+ iI/gxVL0le3W3NN42S8NOoQlAnaCq0hDyqD7pHUm+dGmDj+ENtzY+msyaDTBfP/LOtaw
+ v0vRt4R1OIe18DqfFP65hmTonpk4NY94WSu3/dklWDXWBT3ctWZy3MZoJ/UeKDJ2bVq9
+ +N5/If3O+g/cgGt40vuzkozRv2I/mrzETwk2ea+7icKPjz+Xdqa3MY/ERJGq6GXMpAwR
+ JQLQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779294826; x=1779899626; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779294997; x=1779899797; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ilXmKd4vt5E2uTWQGrfTbvCC8r36p1523wjeuX6smhY=;
- b=PRBmTucUCapk5yHcD2O4zhRLxZhi0YpmUv743azBZprqXEo3DmdNHr/xyMc6m+eMCV
- hUg6K5qkYHmJKmVPnF27Fl1548IgL9EHiDbArhK0O4HIIO1gyJ1um5tsRP61HWEAIfRh
- L9KBb8I0B4vRT2sXN3jq+5Usx0dWjj5yCXBne867ZDUNaUEwa2FW25d1xg0JTV/d1STO
- R6uuh5ey0+xdLq7wI6jDa45Usp04Kmklzu11RCAHaJP/ipNP4V6VCCufJ3iLQJ3XVTaR
- fFgJc9HR9nnzX8Ib3hIQPiVCo1xu2PtVNhtQw/fkizV2XHHKOFa9C47xV7s0+mOnkcAI
- QUsA==
+ bh=Da1TtY+MCb2y6fKCYJH5+UfmZOEaNa/rUnc2JG0Qetc=;
+ b=X7WQNwGRNVo/3FviGb8uO/7gXCho50xn7qZ6yoZ6IqSWDWlEHxm25+YajcL3Kr1Ai9
+ W8cNh9Bn5DGRmI+AfD5wthT/Z89NTj/dQ9KBHizvZx6KJACymeVozrzeNqoCmAbKmqte
+ MIRtntCmgNcJgYGlwRGG3Fj4hKTavcEWhVpcRD8Tlc1PTKPqNTh9AUkeLaSmGNIVzW+a
+ UatAhQgbOVo0ESBpa8g9s0GkAJU04iVyhbhP6wiC8WZWuWHF4tD9eWucCBltViGorEFo
+ Dn2nzSRAvbq16BDd2c+mFzk56mjVvrpYvfBbrouoGxkCbsnQGOkrjlxuWyImasp+OZN+
+ 1WhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779294826; x=1779899626;
+ d=1e100.net; s=20251104; t=1779294997; x=1779899797;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ilXmKd4vt5E2uTWQGrfTbvCC8r36p1523wjeuX6smhY=;
- b=J8QC/lXXE3cG5i69BJSd3X8mw8tvhy5p9XOZXmyM5EN65YfYkkBTsj+GGp54/6/XKJ
- y6/Y2yGetX+HD4H6IG5gS/50SMkX5rBorY/9s+9dGsml36768p4LtsQEmTzE4wIIy6yV
- yIsw9/Lm1x4l1LzHkNeoSvoJUZ1wAVX5cyIFlV9k2G87k1F0DoKOZS/5WSmD3nor5fIA
- tv+BEdFGsCeRoptnjsDlJPniWNvCfZLct53rDMn9OnJqch3P7tnaZz5I7MIfYHIeq+h9
- OHCIlKeuAVIMNcvbX+Ylw3YG0WgLQSeGLrni2M7HAdZ8R3qtSnjK7hruzRvfURWWS2K5
- bt/w==
+ bh=Da1TtY+MCb2y6fKCYJH5+UfmZOEaNa/rUnc2JG0Qetc=;
+ b=tOIGW+yOsLkeX6miA6fOwcm34rN7pgvrRbFGsiiLmubUgkuWd5CatNrtuTFTA2HrcE
+ 9EQjNUY4cA5JYh3R4ryaoeqRUNaRfmbJT2AjzDt7x08X4Zgf2G6S5mL2/zDZQZcQYs+o
+ obICORYvp9KKf6XdvncTzJIuDqi9Vi+htKP8TI1nbNZIkPVMgdHYZ/QRrR1ZWf8Bhmd/
+ AG+M2gQIuexgHjJtSCyRXRuoO85adwhUp13FNIVn9X2lQXtShF6m2MPhuXzE1zneNVvU
+ n748FBQ1IyiU8blPJae3ehiDgSQ6/y90RTW6l9gpfyZCH+94q3/2Pib2VEfqLbzN3eaM
+ pPkA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/f65ugYtHg664msD6BzVuYVEVyjvJBe0rjz5pm70NgUzLqCLlGJd1wbwd4ijLPKUYWkByCSysOXw==@nongnu.org
-X-Gm-Message-State: AOJu0YxdSSmZJGTJTmsFcx0Lsmo3vrBVQB3xdbceOFoL4hlmjn92/Lhc
- kTY3dOsXJAedw6XEYl5d7XXrDc28HyQErHIaM32N/NW+I1QgS8494jy9tE6h+WXVKOmSDf0P7uD
- 8dW0DupbMmMdoV1zgpZMR0acszC2jouLZ7mzCSJm7/w==
-X-Gm-Gg: Acq92OEoyd1Kaz3/GxBU/FNLAZUIwFB++5Z1D6fvfR9aajCpJJHJgp+QpCKfsuRS3n5
- b6ewHfE5ZzUEuTo+mdEQZjwpLhabcIUi2rvZql5ueKXOSsLXVinoCrC4PZb2xP26K21XDBlHW/j
- 40zf7pK6koJ0GJ90vFzGsEmDOIGdLImrm+sjW+o+HGJ3TYAqw/801haDFiW5trPLZB5Ib27BLjo
- 5JP5UdjzY7HwFd+ijUoqhgOQ82AsEzzhSKamrIedTWYCSTSlYqNNIz1I799bm72Hrz9cqcEt0G2
- fqrC0qhWiJTNRcaCs0BMOn/rNbBGwxmxy5spcXM0eU5obgZErGr758GKh+POp/vqjGM=
-X-Received: by 2002:a05:690e:419b:b0:650:7841:6dd with SMTP id
- 956f58d0204a3-65e2284edfemr21837183d50.31.1779294825598; Wed, 20 May 2026
- 09:33:45 -0700 (PDT)
+ AFNElJ/MJFpydN0e5Sl2e9z881jgUdM28Y+Nn7K5iJZXF9ZlIWojEq2uz6C+6JhG4AuBIyQqdpxt6s3WYg==@nongnu.org
+X-Gm-Message-State: AOJu0Yykkwyi2fHoZGu7jAA1oXV3+FKMrxR+AwwF/nbz+T24IQfjlaDc
+ 437VnPovusYTKkjD+x1C+3WSt3r54sKjmfdyDHix6bRvNOKUDHLznXh2s0nlqmD01x1EdzAWRCQ
+ SE5im8e8TAps4OlfjbSTkRkltiHBwHnIqefCauYnjMg==
+X-Gm-Gg: Acq92OH1E1zZNGIwmd1BiF7++sd4ZiC8eDidcw3FPZDhMbJWwlPZv8Xzl3Hv8C0K5aZ
+ Lm9cFqP2KBNiXtp001bgl5zFEw3cKjvzrXLvx9gljoAfSXXRp4J0gLuCBKsD0HJRQZVDZZ83As4
+ vVqyVPbSUfl0PuGsksRB8iqRNo5CzE1eSroIMbCvU469vVHyJ9eh4dkN70m6TL5+q3Z+CEHEJQ7
+ 3hbijReuxfcPEomITRVRYZbWk6wlFLancAOigujx6Fl3CrSXPfo/WErwKdG4mUUuo4w9kQSNV5E
+ r1c/EJHG1Q951pXt2U4a2CFXxHoqb6lnVko0nNsnaw2S3Zip6jvvDf/iONrPqncqYBLPgWVXR6a
+ Y6g==
+X-Received: by 2002:a05:690e:4409:10b0:650:18fc:f557 with SMTP id
+ 956f58d0204a3-65e2285bec6mr21425948d50.56.1779294996907; Wed, 20 May 2026
+ 09:36:36 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260517003002.321430-1-richard.henderson@linaro.org>
- <20260517003002.321430-46-richard.henderson@linaro.org>
-In-Reply-To: <20260517003002.321430-46-richard.henderson@linaro.org>
+ <20260517003002.321430-60-richard.henderson@linaro.org>
+In-Reply-To: <20260517003002.321430-60-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 20 May 2026 17:33:33 +0100
-X-Gm-Features: AVHnY4K2AklTn3F9OotRAPjhpJILGgV9OVczu7Hx9StKnIOJRaPt27OijCdhr58
-Message-ID: <CAFEAcA_Qr+D+qrTd7q0s8Ka0YF5NVM01dDMHm3irQDxiZW0n6g@mail.gmail.com>
-Subject: Re: [PATCH v5 45/63] target/arm: Implement FMLALB, FMLALT for AdvSIMD
+Date: Wed, 20 May 2026 17:36:24 +0100
+X-Gm-Features: AVHnY4IXCK4RSvN9X5XqOy5otafM2VpYY22wT_2nQrobFH-jWEoOv2HjD3g8WKw
+Message-ID: <CAFEAcA971nFuXNkQbswiDzRXQ7WsrW9GTVzH5A2rPGym20yMKg@mail.gmail.com>
+Subject: Re: [PATCH v5 59/63] target/arm: Implement FMMLA (FP8 to FP16) for
+ AdvSIMD
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb129.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,63 +118,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, 17 May 2026 at 01:36, Richard Henderson
+On Sun, 17 May 2026 at 01:35, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-
-> +static FP8MulContext fp8_mul_start(CPUARMState *env, int scale_mask)
+> ---
+>  target/arm/cpu-features.h        |  5 +++++
+>  target/arm/tcg/helper-fp8-defs.h |  1 +
+>  target/arm/tcg/fp8_helper.c      | 26 ++++++++++++++++++++++++++
+>  target/arm/tcg/translate-a64.c   |  1 +
+>  target/arm/tcg/a64.decode        |  1 +
+>  5 files changed, 34 insertions(+)
+>
+> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+> index 8f6cc2974f..fce38dfbb0 100644
+> --- a/target/arm/cpu-features.h
+> +++ b/target/arm/cpu-features.h
+> @@ -1625,6 +1625,11 @@ static inline bool isar_feature_aa64_f8mm8(const ARMISARegisters *id)
+>      return FIELD_EX64_IDREG(id, ID_AA64FPFR0, F8MM8);
+>  }
+>
+> +static inline bool isar_feature_aa64_f8mm4(const ARMISARegisters *id)
 > +{
-> +    uint64_t fpmr = env->vfp.fpmr;
+> +    return FIELD_EX64_IDREG(id, ID_AA64FPFR0, F8MM4);
+> +}
 > +
-> +    FP8MulContext ret = {
-> +        .stat = env->vfp.fp_status[FPST_A64],
-> +        .fmt1 = fp8_input_fmt[FIELD_EX64(fpmr, FPMR, F8S1)],
-> +        .fmt2 = fp8_input_fmt[FIELD_EX64(fpmr, FPMR, F8S2)],
-> +        .scale = -(FIELD_EX64(fpmr, FPMR, LSCALE) & scale_mask),
-> +    };
+>  /*
+>   * Combinations of feature tests, for ease of use with TRANS_FEAT.
+>   */
+> diff --git a/target/arm/tcg/helper-fp8-defs.h b/target/arm/tcg/helper-fp8-defs.h
+> index 3c74f02022..e942308af4 100644
+> --- a/target/arm/tcg/helper-fp8-defs.h
+> +++ b/target/arm/tcg/helper-fp8-defs.h
+> @@ -37,3 +37,4 @@ DEF_HELPER_FLAGS_5(gvec_fdot_hb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+>  DEF_HELPER_FLAGS_5(gvec_fdot_idx_hb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+>
+>  DEF_HELPER_FLAGS_5(gvec_fmmla_sb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+> +DEF_HELPER_FLAGS_5(gvec_fmmla_hb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+> diff --git a/target/arm/tcg/fp8_helper.c b/target/arm/tcg/fp8_helper.c
+> index bb1d48c3e0..d5d1fe71c5 100644
+> --- a/target/arm/tcg/fp8_helper.c
+> +++ b/target/arm/tcg/fp8_helper.c
+> @@ -849,3 +849,29 @@ void HELPER(gvec_fmmla_sb)(void *vd, void *vn, void *vm,
+>      fp8_mul_finish(env, &ctx);
+>      clear_tail(vd, oprsz, simd_maxsz(desc));
+>  }
 > +
-> +    set_flush_to_zero(0, &ret.stat);
-> +    set_flush_inputs_to_zero(0, &ret.stat);
-> +    set_default_nan_mode(true, &ret.stat);
-> +    set_float_rounding_mode(FIELD_EX64(fpmr, FPMR, OSM)
-> +                            ? float_round_nearest_even_max
-> +                            : float_round_nearest_even, &ret.stat);
+> +void HELPER(gvec_fmmla_hb)(void *vd, void *vn, void *vm,
+> +                           CPUARMState *env, uint32_t desc)
+> +{
+> +    FP8MulContext ctx = fp8_mul_start(env, -1);
+
+The scale_mask here should be 0xf as this is a halfprec
+output, right?
+
+> +    size_t oprsz = simd_oprsz(desc);
+> +    size_t nseg = oprsz / 16;
+> +    uint32_t *n = vn;
+> +    uint32_t *m = vm;
+> +    float16 *d = vd;
 > +
-> +    return ret;
+> +    for (size_t seg = 0; seg < nseg; seg++, d += 4, n += 2, m += 2) {
+> +        float16 d0 = f8dotadd_h(n[0], m[0], 4, d[H4(0)], &ctx);
+> +        float16 d1 = f8dotadd_h(n[0], m[1], 4, d[H4(1)], &ctx);
+> +        float16 d2 = f8dotadd_h(n[1], m[0], 4, d[H4(2)], &ctx);
+> +        float16 d3 = f8dotadd_h(n[1], m[1], 4, d[H4(3)], &ctx);
+> +
+> +        d[H4(0)] = d0;
+> +        d[H4(1)] = d1;
+> +        d[H4(2)] = d2;
+> +        d[H4(3)] = d3;
+> +    }
+> +
+> +    fp8_mul_finish(env, &ctx);
+> +    clear_tail(vd, oprsz, simd_maxsz(desc));
 > +}
 
-This use of float_round_nearest_even_max prompted me to look at
-the uses of it in fpu/, and it looks like the implementation is
-incomplete. Most importantly, although commit 72330260cdb420 added
-it to the first "switch (s->float_rounding_mode)" in uncanon_normal,
-it missed adding it to the one later in the same function, which
-I think means we will generate wrongly-rounded answers for
-denormals. A fix is probably:
-
-diff --git a/fpu/softfloat-parts.c.inc b/fpu/softfloat-parts.c.inc
-index efd130bf16..6cc9429ebe 100644
---- a/fpu/softfloat-parts.c.inc
-+++ b/fpu/softfloat-parts.c.inc
-@@ -450,6 +450,7 @@ static void partsN(uncanon_normal)(FloatPartsN *p,
-float_status *s,
-             /* Need to recompute round-to-even/round-to-odd. */
-             switch (s->float_rounding_mode) {
-             case float_round_nearest_even:
-+            case float_round_nearest_even_max:
-                 if (N > 64 && frac_lsb == 0) {
-                     inc = ((p->frac_hi & 1) ||
-                            (p->frac_lo & round_mask) != frac_lsbm1
-
-There are also other places within fpu/ which switch on the
-rounding mode and have no support for the new even_nearest_max
-enum value. Those ones have a default case that asserts or
-aborts, so at least you'll know it if you run into them.
-They are round_to_int_normal, and roundAndPackFloatx80.
-Is it worth extending the support for this rounding mode to
-either of those?
-
+thanks
 -- PMM
 

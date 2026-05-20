@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72830CD4F54
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 05:49:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 914A2CD4F5E
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 05:55:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPZnw-0000xZ-SG; Wed, 20 May 2026 01:49:26 -0400
+	id 1wPZuB-00045M-2W; Wed, 20 May 2026 01:55:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wPZnX-0000rV-8x
- for qemu-arm@nongnu.org; Wed, 20 May 2026 01:48:59 -0400
+ id 1wPZu9-00044k-Ev
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 01:55:41 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wPZnS-0002Gx-Oc
- for qemu-arm@nongnu.org; Wed, 20 May 2026 01:48:50 -0400
+ id 1wPZu7-00041u-4e
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 01:55:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779256124;
+ s=mimecast20190719; t=1779256538;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=+e5SKjSHGBiM1U69LNpIM80Qvnzy6XUop0ZB66Qkn3Q=;
- b=f0dAa3QZcF0GhZ6gm5vpXsjrp9TNA/7nhg5kcrSC30VFGQtaVdA3djsY/bDlgyOehyVfqn
- cbdgpETlH2oTXzWxAf7Mbi0BIPNGNpgG7IbHgWH/+MeYPwr5Rxa9BzfmnZZINZMirooQXv
- LoABbeM/VF4JSeym7wZGMQd571IUpwA=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=fLot/bcqkYMwj6pg8qvs615Vg4pSNDH+G22x3IOzf+E=;
+ b=gs37beQlNc6yUC95IDM3hzAq51KQVk2D2xDx/M+suNOP8PWRFfpmkat7MSWtjSV1C/pnFF
+ 3zcT1JW2jgu9dFj2gUUvW3J78NlFhYYHoP9cbQ+7+lbGiu+FH6+IXww0mijLiBl0QF+K8Q
+ d2j3cNeqfrCq7JqeEaQInq/Z99W1YCU=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-440-QE031BnVMr-XMaPC2y0bmg-1; Wed, 20 May 2026 01:48:43 -0400
-X-MC-Unique: QE031BnVMr-XMaPC2y0bmg-1
-X-Mimecast-MFC-AGG-ID: QE031BnVMr-XMaPC2y0bmg_1779256122
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-48fde68e420so39816165e9.0
- for <qemu-arm@nongnu.org>; Tue, 19 May 2026 22:48:43 -0700 (PDT)
+ us-mta-362-scEDi965Od-Dvzj14p5HWQ-1; Wed, 20 May 2026 01:55:35 -0400
+X-MC-Unique: scEDi965Od-Dvzj14p5HWQ-1
+X-Mimecast-MFC-AGG-ID: scEDi965Od-Dvzj14p5HWQ_1779256534
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-45e55c44ac1so3567231f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2026 22:55:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779256122; x=1779860922;
+ d=1e100.net; s=20251104; t=1779256534; x=1779861334;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+e5SKjSHGBiM1U69LNpIM80Qvnzy6XUop0ZB66Qkn3Q=;
- b=js0atny7eRFjx8uglxWO4DAi4LtgkCfQlLOjb5VLwPjckU8haml5+IjM+sofrf1eEA
- Nit804fMJUCCx1VKGF7A/6BlE2qH1If/nO8sSh5H8BEdgbU00h1sODqrbYhnbTGn+Mmu
- StbkyeURqAonG0dr3zKiWVAfsvnt5uBWjQ+2yXSlu9BT60n5XwpALG6EpB86fXE3uLOt
- fZd2EwV7Vqf4kjVe9RMXUWpRVg+F7rfcNCaWIDuc+HHIArMQVCT1xvEbzd3ukzGSdv7/
- 3JQx3aIKboLX7FpwMUnuxL88sFOabWdPfuaoxRBk3SeyWVe8D74VUhgQfGyzv5S0CJ+w
- E/0A==
+ bh=fLot/bcqkYMwj6pg8qvs615Vg4pSNDH+G22x3IOzf+E=;
+ b=s9/zYdriDHch9Krr8NTme2CfIkGFm0BkuIPa7Q8q9RGA7t8+H1I4Su3VtZpCd6oPyD
+ 2SvawwEBQMZxZWIT1ITouYNi5JIn8760+GM77MVHWP7k4vJYBSpAYXY3nQj7f2J1ZBHU
+ C4K2/4u7OmMdWjiK3xz6q8RqbzutjEfGHl/N2k/lKWyIW/8fGLwBSw6fApHyeS3Qs4Ip
+ 0H8X4GyWUS0XqIDPEN0g41lfjN5AfOC5GCifWLcMM50EIcJye3oeCofSEG7iBhk0WCbZ
+ HFlMpIfzZa/5smdBfo2dI6aaIsYwKXFGXbFb6C0G0giUvuXWIdk/atqyc9TE8Lt+gRAe
+ 73yA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/bCJtzV8BiyvdfxQMSn4K1Q7KaHJhrz00Gm9TZoVA1M/iKJKZ6akPTXkdvPV0K+LarQq2m6ekw4Q==@nongnu.org
-X-Gm-Message-State: AOJu0Yx8g2gDHb5naJLjN4ASuWoHCo/g5SzjzR/8dxt+ldW0hhA5jm9a
- unkfpJ9xwXlDLz88QJGlrvjL/bcqfmTmh1Q5MXeoh4JHknUgBRVIS/kDMOuafxgNaIPdZSxCS5q
- d5tD8bLK8REDUmwK/xcN7qwYzTDlgA85uiUFHd3NuYo14Un3/OG75Jw==
-X-Gm-Gg: Acq92OGWDsNfwWM+Q9dMA7LuMVHtFvJqy2opfbrFXh9th7dmaUzIoI+ZKX8u/oiSBLO
- Ka+xgQSEkufj+hIuS9DXDl+Oj4QpQNwn8LGPrd41mFsoLIiSVeT56KZhbXBeGEXYzyNvn7MCMF4
- HMSMAdbxhdSc8eMoEIbXZvb+MjRGfRqpKxoP7he6j8oILx+gdUAzYS/W6HIyEJfYy1uBLbZUzLk
- 53nlcXlDCvSY+cCU/qvBioHVMTw+bsJjrMQywxjLrfHOTwOIMtBvWko4cXLf3XJis9i3tTD3CNK
- hZgc1621RxtNOSXZESPfEcpfrM0+Mm0aITR89r5tjO1ewrLEdQ8NmsRYSR35RUCOFqjbFc6XOHP
- iNttBbuyViS4Q7EfX4nzdJpaI2wd/nBjgB5GpZL2KWa3+wci2akjJjfCgy5LkDFCYsBdwvl/cxy
- EqTQsN
-X-Received: by 2002:a05:600c:3e1b:b0:48a:9562:7a30 with SMTP id
- 5b1f17b1804b1-48fe6515f20mr334868365e9.24.1779256122121; 
- Tue, 19 May 2026 22:48:42 -0700 (PDT)
-X-Received: by 2002:a05:600c:3e1b:b0:48a:9562:7a30 with SMTP id
- 5b1f17b1804b1-48fe6515f20mr334868075e9.24.1779256121645; 
- Tue, 19 May 2026 22:48:41 -0700 (PDT)
+ AFNElJ9tZK+e/Sa41NDaASsJssI9QZczUnn577QCUfpA3gKUA+fHCUxegrZL/6MD8wWgVFDthx0gwBJeKQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyOTU0SgiMkoTxHCErtLLeiMFCaIMzbf3lrIwvxcA3m9j29wCco
+ LHyYN3OOp8rEzTNPEb9nga3BDzO7EBWptdy7bFJyRXQFZwwVsjxmquxpD6uzBHR1fcWBZm16xqu
+ XHHaCIZnaPBgyHBceOOJGWHSAV2itQLrPPE+9lY0LSCa8EJKcccAi9g==
+X-Gm-Gg: Acq92OFRaf225LS4cE/dMDU2rh35XpymJ2JvszHqMG5ZWVI2MZEWMX7+SD15oj6bgAt
+ gE79Tr6pe8W2kNc16+Yppegj+4ygCcfhPBWiApgUNku+P9MmzfX2YZzSN3ehwYUBIzVMIv5yWOY
+ 9juErINAsA++7o496rfFPJKEOy1tYn1RihMkRH+6MDAi/VZvKhYnVIVhmu3mbbftAKBnRpsEr7l
+ x6HMQ5ONKquY/DcIycJQOamJbTiDdx0EYSMy/s+r5s+my3Tn3lWHpC7j6YirAOglBQthn+YUS/+
+ 8ZAGwi8zkILW+nScGvUond8+Q6tMG+JywaT91eABdl9m7nVPsFRlfw+uMMH0n7V3O6ax6oDrWaU
+ XT9FljDfQkth0EChp+znD4XuKnyYgmT2IHJ3Msh7z9C6h8+N2mMfdG0m11wLruvOLe2zdfg==
+X-Received: by 2002:a05:600c:5298:b0:48e:635a:18d2 with SMTP id
+ 5b1f17b1804b1-48fe60e51d1mr348955955e9.2.1779256533688; 
+ Tue, 19 May 2026 22:55:33 -0700 (PDT)
+X-Received: by 2002:a05:600c:5298:b0:48e:635a:18d2 with SMTP id
+ 5b1f17b1804b1-48fe60e51d1mr348955665e9.2.1779256533284; 
+ Tue, 19 May 2026 22:55:33 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48fe4c834besm403792765e9.3.2026.05.19.22.48.40
+ 5b1f17b1804b1-48fffb9aac4sm484083875e9.9.2026.05.19.22.55.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 May 2026 22:48:41 -0700 (PDT)
-Message-ID: <7a96fe4f-a42b-44d7-b0e1-d767c42f4eb8@redhat.com>
-Date: Wed, 20 May 2026 07:48:39 +0200
+ Tue, 19 May 2026 22:55:32 -0700 (PDT)
+Message-ID: <79d27d57-ee18-4c2b-a2f2-6d14c593202f@redhat.com>
+Date: Wed, 20 May 2026 07:55:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 15/32] hw/arm/tegra241-cmdqv: Emulate VCMDQ register
- reads
+Subject: Re: [PATCH v5 16/32] hw/arm/tegra241-cmdqv: Emulate VCMDQ register
+ writes
 To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
@@ -90,11 +89,11 @@ Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
  jgg@nvidia.com, zhenzhong.duan@intel.com, kjaju@nvidia.com,
  phrdina@redhat.com
 References: <20260519103727.899332-1-skolothumtho@nvidia.com>
- <20260519103727.899332-16-skolothumtho@nvidia.com>
+ <20260519103727.899332-17-skolothumtho@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260519103727.899332-16-skolothumtho@nvidia.com>
+In-Reply-To: <20260519103727.899332-17-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Wr5-fIhks_4b3IeWbwpTv1YZ88WOmbUNLx8CBGDpPLg_1779256122
+X-Mimecast-MFC-PROC-ID: 3BQ6DLMtAu22ReEddYuatYLnKXHRiC-yugPw79mM4hg_1779256534
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -107,7 +106,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,413 +128,170 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 5/19/26 12:36 PM, Shameer Kolothum wrote:
 > From: Nicolin Chen <nicolinc@nvidia.com>
 >
-> Tegra241 CMDQV exposes per-VCMDQ register windows through two MMIO
-> apertures:
+> This is the write side counterpart of the VCMDQ read emulation. Add
+> write handling for both the direct VCMDQ aperture and the VINTF
+> logical aperture using the same index decoding and VINTF-to-VCMDQ
+> translation logic as the read path.
 >
->   Direct VCMDQ aperture (0x10000/0x20000): VCMDQ Page0/Page1
->   VINTF logical aperture (0x30000/0x40000): VINTF0 LVCMDQ Page0/Page1
+> VINTF aperture writes are translated to their direct-aperture
+> equivalent and update the same cached state. Page 1 registers
+> (BASE, CONS_INDX_BASE) always update the cache. Once
+> IOMMU_HW_QUEUE_ALLOC and viommu_mmap are wired up in a subsequent
+> patch, Page 0 register writes will be forwarded to the hardware-
+> backed mmap'd page.
 >
-> Both apertures are hardware aliases of the same underlying registers:
->
->   Page 0 (control/status): CONS_INDX, PROD_INDX, CONFIG, STATUS,
->                            GERROR, GERRORN
->   Page 1 (base/DRAM):      BASE_L/H, CONS_INDX_BASE_DRAM_L/H
->
-> The direct aperture Page 0 is programmable at any time so long as
-> CMDQV_EN is enabled. The VINTF (logical) aperture Page 0 is
-> programmable only once SW has mapped a VCMDQ to a VINTF; the
-> "logical" view is local to that VINTF.
->
-> Add read emulation for both apertures, backed by a single per-VCMDQ
-> register cache. VINTF aperture reads are translated to their
-> equivalent direct-aperture offset and served from the same cached
-> state.
->
-> Once IOMMU_HW_QUEUE_ALLOC and viommu_mmap are wired up in a
-> subsequent patch, Page 0 reads will be served directly from the
-> hardware-backed mmap'd page instead of the cache. Page 1 is also a
-> hardware alias, but the kernel only exposes mmap for Page 0, so
-> Page 1 reads always trap to QEMU and are served from cache.
+> Ignore VCMDQ BASE writes if the VCMDQ is already enabled.
 >
 > Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 > Co-developed-by: Shameer Kolothum <skolothumtho@nvidia.com>
 > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 > ---
->  hw/arm/tegra241-cmdqv.h | 215 ++++++++++++++++++++++++++++++++++++++++
->  hw/arm/tegra241-cmdqv.c |  95 ++++++++++++++++++
+>  hw/arm/tegra241-cmdqv.c | 164 +++++++++++++++++++++++++++++++++++++++-
 >  hw/arm/trace-events     |   2 +
->  3 files changed, 312 insertions(+)
+>  2 files changed, 164 insertions(+), 2 deletions(-)
 >
-> diff --git a/hw/arm/tegra241-cmdqv.h b/hw/arm/tegra241-cmdqv.h
-> index ace327443a..6b21a407af 100644
-> --- a/hw/arm/tegra241-cmdqv.h
-> +++ b/hw/arm/tegra241-cmdqv.h
-> @@ -30,6 +30,13 @@
->   */
->  #define TEGRA241_CMDQV_IO_LEN 0x50000
->  
-> +/* CMDQV MMIO aperture bases and VCMDQ stride */
-> +#define CMDQV_VCMDQ_PAGE0_BASE  0x10000  /* CMDQV_CMDQ_BASE */
-> +#define CMDQV_VCMDQ_PAGE1_BASE  0x20000
-> +#define CMDQV_VINTF_PAGE0_BASE  0x30000  /* CMDQV_VI_CMDQ_BASE */
-> +#define CMDQV_VINTF_PAGE1_BASE  0x40000
-> +#define CMDQV_VCMDQ_STRIDE      0x80
-> +
->  typedef struct Tegra241CMDQV {
->      struct iommu_viommu_tegra241_cmdqv cmdqv_data;
->      SMMUv3AccelState *s_accel;
-> @@ -52,6 +59,19 @@ typedef struct Tegra241CMDQV {
->      uint32_t vintf_sid_match[TEGRA241_CMDQV_MAX_NUM_SID];
->      uint32_t vintf_sid_replace[TEGRA241_CMDQV_MAX_NUM_SID];
->      uint32_t vintf_cmdq_err_map[4];
-> +    /*
-> +     * VCMDQ register cache. The direct (VCMDQ aperture) and logical
-> +     * (VINTF aperture) views are hardware aliases; both are served from
-> +     * this single cached copy.
-> +     */
-> +    uint32_t vcmdq_cons_indx[TEGRA241_CMDQV_MAX_CMDQ];
-> +    uint32_t vcmdq_prod_indx[TEGRA241_CMDQV_MAX_CMDQ];
-> +    uint32_t vcmdq_config[TEGRA241_CMDQV_MAX_CMDQ];
-> +    uint32_t vcmdq_status[TEGRA241_CMDQV_MAX_CMDQ];
-> +    uint32_t vcmdq_gerror[TEGRA241_CMDQV_MAX_CMDQ];
-> +    uint32_t vcmdq_gerrorn[TEGRA241_CMDQV_MAX_CMDQ];
-> +    uint64_t vcmdq_base[TEGRA241_CMDQV_MAX_CMDQ];
-> +    uint64_t vcmdq_cons_indx_base[TEGRA241_CMDQV_MAX_CMDQ];
->  } Tegra241CMDQV;
->  
->  /* CMDQ-V Config page registers (offset 0x00000) */
-> @@ -143,6 +163,201 @@ REG32(VINTF0_LVCMDQ_ERR_MAP_0, 0x10c0)
->  FIELD(VINTF0_LVCMDQ_ERR_MAP_0, LVCMDQ_ERR_MAP, 0, 32)
->  #define A_VINTF0_LVCMDQ_ERR_MAP_3 (A_VINTF0_LVCMDQ_ERR_MAP_0 + 3 * 4)
->  
-> +/*
-> + * VCMDQ Page 0 register window @ CMDQV_VCMDQ_PAGE0_BASE.
-> + * Direct VCMDQ aperture; control and status registers.
-> + */
-> +#define SMMU_CMDQV_VCMDQi_CONS_INDX_(i)                     \
-> +    REG32(VCMDQ##i##_CONS_INDX,                             \
-> +          CMDQV_VCMDQ_PAGE0_BASE + i * CMDQV_VCMDQ_STRIDE)  \
-> +    FIELD(VCMDQ##i##_CONS_INDX, RD, 0, 20)                  \
-> +    FIELD(VCMDQ##i##_CONS_INDX, ERR, 24, 7)
-> +
-> +SMMU_CMDQV_VCMDQi_CONS_INDX_(0)
-> +SMMU_CMDQV_VCMDQi_CONS_INDX_(1)
-> +
-> +#define V_VCMDQ_CONS_INDX_ERR_CERROR_NONE         0
-> +#define V_VCMDQ_CONS_INDX_ERR_CERROR_ILL_OPCODE   1
-> +#define V_VCMDQ_CONS_INDX_ERR_CERROR_ABT          2
-> +#define V_VCMDQ_CONS_INDX_ERR_CERROR_ATC_INV_SYNC 3
-> +#define V_VCMDQ_CONS_INDX_ERR_CERROR_ILL_ACCESS   4
-> +
-> +#define SMMU_CMDQV_VCMDQi_PROD_INDX_(i)                          \
-> +    REG32(VCMDQ##i##_PROD_INDX,                                  \
-> +          CMDQV_VCMDQ_PAGE0_BASE + 0x4 + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VCMDQ##i##_PROD_INDX, WR, 0, 20)
-> +
-> +SMMU_CMDQV_VCMDQi_PROD_INDX_(0)
-> +SMMU_CMDQV_VCMDQi_PROD_INDX_(1)
-> +
-> +#define SMMU_CMDQV_VCMDQi_CONFIG_(i)                             \
-> +    REG32(VCMDQ##i##_CONFIG,                                     \
-> +          CMDQV_VCMDQ_PAGE0_BASE + 0x8 + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VCMDQ##i##_CONFIG, CMDQ_EN, 0, 1)
-> +
-> +SMMU_CMDQV_VCMDQi_CONFIG_(0)
-> +SMMU_CMDQV_VCMDQi_CONFIG_(1)
-> +
-> +#define SMMU_CMDQV_VCMDQi_STATUS_(i)                             \
-> +    REG32(VCMDQ##i##_STATUS,                                     \
-> +          CMDQV_VCMDQ_PAGE0_BASE + 0xc + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VCMDQ##i##_STATUS, CMDQ_EN_OK, 0, 1)
-> +
-> +SMMU_CMDQV_VCMDQi_STATUS_(0)
-> +SMMU_CMDQV_VCMDQi_STATUS_(1)
-> +
-> +#define SMMU_CMDQV_VCMDQi_GERROR_(i)                              \
-> +    REG32(VCMDQ##i##_GERROR,                                      \
-> +          CMDQV_VCMDQ_PAGE0_BASE + 0x10 + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VCMDQ##i##_GERROR, CMDQ_ERR, 0, 1)                      \
-> +    FIELD(VCMDQ##i##_GERROR, CONS_DRAM_WR_ABT_ERR, 1, 1)          \
-> +    FIELD(VCMDQ##i##_GERROR, CMDQ_INIT_ERR, 2, 1)
-> +
-> +SMMU_CMDQV_VCMDQi_GERROR_(0)
-> +SMMU_CMDQV_VCMDQi_GERROR_(1)
-> +
-> +#define SMMU_CMDQV_VCMDQi_GERRORN_(i)                             \
-> +    REG32(VCMDQ##i##_GERRORN,                                     \
-> +          CMDQV_VCMDQ_PAGE0_BASE + 0x14 + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VCMDQ##i##_GERRORN, CMDQ_ERR, 0, 1)                     \
-> +    FIELD(VCMDQ##i##_GERRORN, CONS_DRAM_WR_ABT_ERR, 1, 1)         \
-> +    FIELD(VCMDQ##i##_GERRORN, CMDQ_INIT_ERR, 2, 1)
-> +
-> +SMMU_CMDQV_VCMDQi_GERRORN_(0)
-> +SMMU_CMDQV_VCMDQi_GERRORN_(1)
-
-
-nit, what I meant in my v4 comments is I would prefer we group the
-eventual register definition to represent the actual layout of each
-page, instead of interleaving them with actual macros:
-This would look like:
-
-/* page 0 */
-
-/* vcmdq0 */
-
-+SMMU_CMDQV_VCMDQi_CONS_INDX_(0)
-+SMMU_CMDQV_VCMDQi_PROD_INDX_(0)
-+SMMU_CMDQV_VCMDQi_CONFIG_(0)
-+SMMU_CMDQV_VCMDQi_STATUS_(0)
-+SMMU_CMDQV_VCMDQi_GERROR_(0)
-+SMMU_CMDQV_VCMDQi_GERRORN_(0)
-
-/* vcmdq1 */
-
-+SMMU_CMDQV_VCMDQi_CONS_INDX_(1)
-+SMMU_CMDQV_VCMDQi_PROD_INDX_(1)
-+SMMU_CMDQV_VCMDQi_CONFIG_(1)
-+SMMU_CMDQV_VCMDQi_STATUS_(1)
-+SMMU_CMDQV_VCMDQi_GERROR_(1)
-+SMMU_CMDQV_VCMDQi_GERRORN_(1)
-
-same for page 1
-
-To me it looks easier to remember the layout without looking at the spec.
-
-
-Taste & colors, what do you prefer? 
-
-
-
-
-
-
-> +
-> +/*
-> + * VCMDQ Page 1 register window @ CMDQV_VCMDQ_PAGE1_BASE.
-> + * Direct VCMDQ aperture; base and DRAM address registers.
-> + */
-> +#define SMMU_CMDQV_VCMDQi_BASE_L_(i)                                          \
-> +    REG32(VCMDQ##i##_BASE_L, CMDQV_VCMDQ_PAGE1_BASE + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VCMDQ##i##_BASE_L, LOG2SIZE, 0, 5)                                  \
-> +    FIELD(VCMDQ##i##_BASE_L, ADDR, 5, 27)
-> +
-> +SMMU_CMDQV_VCMDQi_BASE_L_(0)
-> +SMMU_CMDQV_VCMDQi_BASE_L_(1)
-> +
-> +#define SMMU_CMDQV_VCMDQi_BASE_H_(i)                             \
-> +    REG32(VCMDQ##i##_BASE_H,                                     \
-> +          CMDQV_VCMDQ_PAGE1_BASE + 0x4 + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VCMDQ##i##_BASE_H, ADDR, 0, 16)
-> +
-> +SMMU_CMDQV_VCMDQi_BASE_H_(0)
-> +SMMU_CMDQV_VCMDQi_BASE_H_(1)
-> +
-> +#define SMMU_CMDQV_VCMDQi_CONS_INDX_BASE_DRAM_L_(i)              \
-> +    REG32(VCMDQ##i##_CONS_INDX_BASE_DRAM_L,                      \
-> +          CMDQV_VCMDQ_PAGE1_BASE + 0x8 + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VCMDQ##i##_CONS_INDX_BASE_DRAM_L, ADDR, 0, 32)
-> +
-> +SMMU_CMDQV_VCMDQi_CONS_INDX_BASE_DRAM_L_(0)
-> +SMMU_CMDQV_VCMDQi_CONS_INDX_BASE_DRAM_L_(1)
-> +
-> +#define SMMU_CMDQV_VCMDQi_CONS_INDX_BASE_DRAM_H_(i)              \
-> +    REG32(VCMDQ##i##_CONS_INDX_BASE_DRAM_H,                      \
-> +          CMDQV_VCMDQ_PAGE1_BASE + 0xc + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VCMDQ##i##_CONS_INDX_BASE_DRAM_H, ADDR, 0, 16)
-> +
-> +SMMU_CMDQV_VCMDQi_CONS_INDX_BASE_DRAM_H_(0)
-> +SMMU_CMDQV_VCMDQi_CONS_INDX_BASE_DRAM_H_(1)
-> +
-> +/*
-> + * VINTF0 LVCMDQ Page 0 register window @ CMDQV_VINTF_PAGE0_BASE.
-> + * Logical VCMDQ aperture (VCMDQs mapped via VINTF); control and
-> + * status registers. Hardware alias of VCMDQ Page 0 above.
-> + */
-> +#define SMMU_CMDQV_VI_VCMDQi_CONS_INDX_(i)                  \
-> +    REG32(VI_VCMDQ##i##_CONS_INDX,                          \
-> +          CMDQV_VINTF_PAGE0_BASE + i * CMDQV_VCMDQ_STRIDE)  \
-> +    FIELD(VI_VCMDQ##i##_CONS_INDX, RD, 0, 20)               \
-> +    FIELD(VI_VCMDQ##i##_CONS_INDX, ERR, 24, 7)
-> +
-> +SMMU_CMDQV_VI_VCMDQi_CONS_INDX_(0)
-> +SMMU_CMDQV_VI_VCMDQi_CONS_INDX_(1)
-> +
-> +#define SMMU_CMDQV_VI_VCMDQi_PROD_INDX_(i)                       \
-> +    REG32(VI_VCMDQ##i##_PROD_INDX,                               \
-> +          CMDQV_VINTF_PAGE0_BASE + 0x4 + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VI_VCMDQ##i##_PROD_INDX, WR, 0, 20)
-> +
-> +SMMU_CMDQV_VI_VCMDQi_PROD_INDX_(0)
-> +SMMU_CMDQV_VI_VCMDQi_PROD_INDX_(1)
-> +
-> +#define SMMU_CMDQV_VI_VCMDQi_CONFIG_(i)                          \
-> +    REG32(VI_VCMDQ##i##_CONFIG,                                  \
-> +          CMDQV_VINTF_PAGE0_BASE + 0x8 + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VI_VCMDQ##i##_CONFIG, CMDQ_EN, 0, 1)
-> +
-> +SMMU_CMDQV_VI_VCMDQi_CONFIG_(0)
-> +SMMU_CMDQV_VI_VCMDQi_CONFIG_(1)
-> +
-> +#define SMMU_CMDQV_VI_VCMDQi_STATUS_(i)                          \
-> +    REG32(VI_VCMDQ##i##_STATUS,                                  \
-> +          CMDQV_VINTF_PAGE0_BASE + 0xc + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VI_VCMDQ##i##_STATUS, CMDQ_EN_OK, 0, 1)
-> +
-> +SMMU_CMDQV_VI_VCMDQi_STATUS_(0)
-> +SMMU_CMDQV_VI_VCMDQi_STATUS_(1)
-> +
-> +#define SMMU_CMDQV_VI_VCMDQi_GERROR_(i)                           \
-> +    REG32(VI_VCMDQ##i##_GERROR,                                   \
-> +          CMDQV_VINTF_PAGE0_BASE + 0x10 + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VI_VCMDQ##i##_GERROR, CMDQ_ERR, 0, 1)                   \
-> +    FIELD(VI_VCMDQ##i##_GERROR, CONS_DRAM_WR_ABT_ERR, 1, 1)       \
-> +    FIELD(VI_VCMDQ##i##_GERROR, CMDQ_INIT_ERR, 2, 1)
-> +
-> +SMMU_CMDQV_VI_VCMDQi_GERROR_(0)
-> +SMMU_CMDQV_VI_VCMDQi_GERROR_(1)
-> +
-> +#define SMMU_CMDQV_VI_VCMDQi_GERRORN_(i)                          \
-> +    REG32(VI_VCMDQ##i##_GERRORN,                                  \
-> +          CMDQV_VINTF_PAGE0_BASE + 0x14 + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VI_VCMDQ##i##_GERRORN, CMDQ_ERR, 0, 1)                  \
-> +    FIELD(VI_VCMDQ##i##_GERRORN, CONS_DRAM_WR_ABT_ERR, 1, 1)      \
-> +    FIELD(VI_VCMDQ##i##_GERRORN, CMDQ_INIT_ERR, 2, 1)
-> +
-> +SMMU_CMDQV_VI_VCMDQi_GERRORN_(0)
-> +SMMU_CMDQV_VI_VCMDQi_GERRORN_(1)
-> +
-> +/*
-> + * VINTF0 LVCMDQ Page 1 register window @ CMDQV_VINTF_PAGE1_BASE.
-> + * Logical VCMDQ aperture (VCMDQs mapped via VINTF); base and DRAM
-> + * address registers. Hardware alias of VCMDQ Page 1 above.
-> + */
-> +#define SMMU_CMDQV_VI_VCMDQi_BASE_L_(i)                     \
-> +    REG32(VI_VCMDQ##i##_BASE_L,                             \
-> +          CMDQV_VINTF_PAGE1_BASE + i * CMDQV_VCMDQ_STRIDE)  \
-> +    FIELD(VI_VCMDQ##i##_BASE_L, LOG2SIZE, 0, 5)             \
-> +    FIELD(VI_VCMDQ##i##_BASE_L, ADDR, 5, 27)
-> +
-> +SMMU_CMDQV_VI_VCMDQi_BASE_L_(0)
-> +SMMU_CMDQV_VI_VCMDQi_BASE_L_(1)
-> +
-> +#define SMMU_CMDQV_VI_VCMDQi_BASE_H_(i)                          \
-> +    REG32(VI_VCMDQ##i##_BASE_H,                                  \
-> +          CMDQV_VINTF_PAGE1_BASE + 0x4 + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VI_VCMDQ##i##_BASE_H, ADDR, 0, 16)
-> +
-> +SMMU_CMDQV_VI_VCMDQi_BASE_H_(0)
-> +SMMU_CMDQV_VI_VCMDQi_BASE_H_(1)
-> +
-> +#define SMMU_CMDQV_VI_VCMDQi_CONS_INDX_BASE_DRAM_L_(i)           \
-> +    REG32(VI_VCMDQ##i##_CONS_INDX_BASE_DRAM_L,                   \
-> +          CMDQV_VINTF_PAGE1_BASE + 0x8 + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VI_VCMDQ##i##_CONS_INDX_BASE_DRAM_L, ADDR, 0, 32)
-> +
-> +SMMU_CMDQV_VI_VCMDQi_CONS_INDX_BASE_DRAM_L_(0)
-> +SMMU_CMDQV_VI_VCMDQi_CONS_INDX_BASE_DRAM_L_(1)
-> +
-> +#define SMMU_CMDQV_VI_VCMDQi_CONS_INDX_BASE_DRAM_H_(i)           \
-> +    REG32(VI_VCMDQ##i##_CONS_INDX_BASE_DRAM_H,                   \
-> +          CMDQV_VINTF_PAGE1_BASE + 0xc + i * CMDQV_VCMDQ_STRIDE) \
-> +    FIELD(VI_VCMDQ##i##_CONS_INDX_BASE_DRAM_H, ADDR, 0, 16)
-> +
-> +SMMU_CMDQV_VI_VCMDQi_CONS_INDX_BASE_DRAM_H_(0)
-> +SMMU_CMDQV_VI_VCMDQi_CONS_INDX_BASE_DRAM_H_(1)
-> +
->  const SMMUv3AccelCmdqvOps *tegra241_cmdqv_get_ops(void);
->  
->  #endif /* HW_ARM_TEGRA241_CMDQV_H */
 > diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
-> index 813b9a61ce..f859126ad6 100644
+> index f859126ad6..5d2d9d2e26 100644
 > --- a/hw/arm/tegra241-cmdqv.c
 > +++ b/hw/arm/tegra241-cmdqv.c
-> @@ -16,6 +16,75 @@
+> @@ -16,6 +16,16 @@
 >  #include "tegra241-cmdqv.h"
 >  #include "trace.h"
 >  
 > +/*
-> + * Read a VCMDQ Page 0 register (control/status) using VCMDQ0_* offsets.
+> + * Returns true if the per-VCMDQ CMDQ_EN_OK bit is set.
+> + */
+> +static bool tegra241_vcmdq_enabled(Tegra241CMDQV *cmdqv, int index)
+> +{
+> +    uint32_t status = cmdqv->vcmdq_status[index];
+> +
+> +    return status & R_VCMDQ0_STATUS_CMDQ_EN_OK_MASK;
+> +}
+> +
+>  /*
+>   * Read a VCMDQ Page 0 register (control/status) using VCMDQ0_* offsets.
+>   *
+> @@ -116,6 +126,108 @@ static uint64_t tegra241_cmdqv_config_vintf_read(Tegra241CMDQV *cmdqv,
+>      }
+>  }
+>  
+> +/*
+> + * Write a VCMDQ Page 0 register (control/status) using VCMDQ0_* offsets.
 > + *
 > + * The caller normalizes the MMIO offset such that @offset0 always refers
 > + * to a VCMDQ0_* register, while @index selects the VCMDQ instance.
+> + *
+> + * Page 0 registers are all 32-bit; this helper is only called for 4-byte
+> + * writes.
 > + */
-> +static uint64_t tegra241_cmdqv_read_vcmdq_page0(Tegra241CMDQV *cmdqv,
-> +                                                hwaddr offset0, int index)
+> +static void tegra241_cmdqv_write_vcmdq_page0(Tegra241CMDQV *cmdqv,
+> +                                             hwaddr offset0, int index,
+> +                                             uint32_t value)
 > +{
-> +    uint64_t val = 0;
-> +
 > +    switch (offset0) {
 > +    case A_VCMDQ0_CONS_INDX:
-> +        val = cmdqv->vcmdq_cons_indx[index];
+> +        cmdqv->vcmdq_cons_indx[index] = value;
 > +        break;
 > +    case A_VCMDQ0_PROD_INDX:
-> +        val = cmdqv->vcmdq_prod_indx[index];
+> +        cmdqv->vcmdq_prod_indx[index] = value;
 > +        break;
 > +    case A_VCMDQ0_CONFIG:
-> +        val = cmdqv->vcmdq_config[index];
-> +        break;
-> +    case A_VCMDQ0_STATUS:
-> +        val = cmdqv->vcmdq_status[index];
-> +        break;
-> +    case A_VCMDQ0_GERROR:
-> +        val = cmdqv->vcmdq_gerror[index];
+> +        if (value & R_VCMDQ0_CONFIG_CMDQ_EN_MASK) {
+> +            cmdqv->vcmdq_status[index] |= R_VCMDQ0_STATUS_CMDQ_EN_OK_MASK;
+> +        } else {
+> +            cmdqv->vcmdq_status[index] &= ~R_VCMDQ0_STATUS_CMDQ_EN_OK_MASK;
+> +        }
+> +        cmdqv->vcmdq_config[index] = value;
 > +        break;
 > +    case A_VCMDQ0_GERRORN:
-> +        val = cmdqv->vcmdq_gerrorn[index];
+> +        cmdqv->vcmdq_gerrorn[index] = value;
 > +        break;
 > +    default:
 > +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s unhandled read access at 0x%" PRIx64 "\n",
+> +                      "%s unhandled write access at 0x%" PRIx64 "\n",
 > +                      __func__, offset0);
 > +    }
-> +    trace_tegra241_cmdqv_read_vcmdq_page0(index, offset0, val);
-> +    return val;
+> +    trace_tegra241_cmdqv_write_vcmdq_page0(index, offset0, value);
 > +}
 > +
 > +/*
-> + * Read a VCMDQ Page 1 register (base / DRAM address) using VCMDQ0_* offsets.
+> + * Write a VCMDQ Page 1 register (base / DRAM address) - 4-byte access.
 > + */
-> +static uint64_t tegra241_cmdqv_read_vcmdq_page1(Tegra241CMDQV *cmdqv,
-> +                                                hwaddr offset0, int index)
+> +static void tegra241_cmdqv_write_vcmdq_page1(Tegra241CMDQV *cmdqv,
+> +                                             hwaddr offset0, int index,
+> +                                             uint32_t value)
 > +{
-> +    uint64_t val = 0;
-> +
 > +    switch (offset0) {
 > +    case A_VCMDQ0_BASE_L:
-> +        val = cmdqv->vcmdq_base[index];
+> +        if (tegra241_vcmdq_enabled(cmdqv, index)) {
+> +            return;
+> +        }
+> +        cmdqv->vcmdq_base[index] =
+> +            deposit64(cmdqv->vcmdq_base[index], 0, 32, value);
 > +        break;
 > +    case A_VCMDQ0_BASE_H:
-> +        val = cmdqv->vcmdq_base[index] >> 32;
+> +        if (tegra241_vcmdq_enabled(cmdqv, index)) {
+> +            return;
+> +        }
+> +        cmdqv->vcmdq_base[index] =
+> +            deposit64(cmdqv->vcmdq_base[index], 32, 32, value);
 > +        break;
 > +    case A_VCMDQ0_CONS_INDX_BASE_DRAM_L:
-> +        val = cmdqv->vcmdq_cons_indx_base[index];
+> +        cmdqv->vcmdq_cons_indx_base[index] =
+> +            deposit64(cmdqv->vcmdq_cons_indx_base[index], 0, 32, value);
 > +        break;
 > +    case A_VCMDQ0_CONS_INDX_BASE_DRAM_H:
-> +        val = cmdqv->vcmdq_cons_indx_base[index] >> 32;
+> +        cmdqv->vcmdq_cons_indx_base[index] =
+> +            deposit64(cmdqv->vcmdq_cons_indx_base[index], 32, 32, value);
 > +        break;
 > +    default:
 > +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s unhandled read access at 0x%" PRIx64 "\n",
+> +                      "%s unhandled write access at 0x%" PRIx64 "\n",
 > +                      __func__, offset0);
 > +    }
-> +    trace_tegra241_cmdqv_read_vcmdq_page1(index, offset0, val);
-> +    return val;
+> +    trace_tegra241_cmdqv_write_vcmdq_page1(index, offset0, value);
 > +}
 > +
->  static uint64_t tegra241_cmdqv_config_vintf_read(Tegra241CMDQV *cmdqv,
->                                                   hwaddr offset)
+> +/*
+> + * Write a VCMDQ Page 1 register - 8-byte access at BASE_L or DRAM_L.
+> + */
+> +static void tegra241_cmdqv_write_vcmdq_page1_64(Tegra241CMDQV *cmdqv,
+> +                                                hwaddr offset0, int index,
+> +                                                uint64_t value)
+> +{
+> +    switch (offset0) {
+> +    case A_VCMDQ0_BASE_L:
+> +        if (tegra241_vcmdq_enabled(cmdqv, index)) {
+> +            return;
+> +        }
+> +        cmdqv->vcmdq_base[index] = value;
+> +        break;
+> +    case A_VCMDQ0_CONS_INDX_BASE_DRAM_L:
+> +        cmdqv->vcmdq_cons_indx_base[index] = value;
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s unhandled 64-bit write at 0x%" PRIx64 "\n",
+> +                      __func__, offset0);
+> +    }
+> +    trace_tegra241_cmdqv_write_vcmdq_page1(index, offset0, value);
+> +}
+> +
+>  static void tegra241_cmdqv_config_vintf_write(Tegra241CMDQV *cmdqv,
+>                                                hwaddr offset, uint64_t value)
 >  {
-> @@ -93,6 +162,7 @@ static uint64_t tegra241_cmdqv_read_mmio(void *opaque, hwaddr offset,
+> @@ -235,6 +347,8 @@ out:
+>  static void tegra241_cmdqv_writel_mmio(Tegra241CMDQV *cmdqv, hwaddr offset,
+>                                         uint32_t value)
 >  {
->      Tegra241CMDQV *cmdqv = (Tegra241CMDQV *)opaque;
->      uint64_t val = 0;
 > +    int index;
->  
->      if (offset >= TEGRA241_CMDQV_IO_LEN) {
->          qemu_log_mask(LOG_UNIMP,
-> @@ -126,6 +196,31 @@ static uint64_t tegra241_cmdqv_read_mmio(void *opaque, hwaddr offset,
+> +
+>      switch (offset) {
+>      case A_CONFIG:
+>          cmdqv->config = value;
+> @@ -253,6 +367,33 @@ static void tegra241_cmdqv_writel_mmio(Tegra241CMDQV *cmdqv, hwaddr offset,
 >      case A_VINTF0_CONFIG ... A_VINTF0_LVCMDQ_ERR_MAP_3:
->          val = tegra241_cmdqv_config_vintf_read(cmdqv, offset);
+>          tegra241_cmdqv_config_vintf_write(cmdqv, offset, value);
 >          break;
 > +    case A_VI_VCMDQ0_CONS_INDX ... A_VI_VCMDQ1_GERRORN:
 > +        /*
@@ -552,36 +308,74 @@ Taste & colors, what do you prefer?
 > +         * to the VCMDQ0_* offset before calling the Page 0 helper.
 > +         */
 > +        index = (offset - CMDQV_VCMDQ_PAGE0_BASE) / CMDQV_VCMDQ_STRIDE;
-> +        return tegra241_cmdqv_read_vcmdq_page0(cmdqv,
-> +                offset - index * CMDQV_VCMDQ_STRIDE, index);
+> +        tegra241_cmdqv_write_vcmdq_page0(cmdqv,
+> +                offset - index * CMDQV_VCMDQ_STRIDE, index, value);
+> +        break;
 > +    case A_VI_VCMDQ0_BASE_L ... A_VI_VCMDQ1_CONS_INDX_BASE_DRAM_H:
 > +        /* Same VINTF-to-VCMDQ translation as VINTF Page0 case above. */
 > +        offset -= CMDQV_VINTF_PAGE1_BASE - CMDQV_VCMDQ_PAGE1_BASE;
 > +        QEMU_FALLTHROUGH;
 > +    case A_VCMDQ0_BASE_L ... A_VCMDQ1_CONS_INDX_BASE_DRAM_H:
 > +        index = (offset - CMDQV_VCMDQ_PAGE1_BASE) / CMDQV_VCMDQ_STRIDE;
-> +        return tegra241_cmdqv_read_vcmdq_page1(cmdqv,
-> +                offset - index * CMDQV_VCMDQ_STRIDE, index);
+> +        tegra241_cmdqv_write_vcmdq_page1(cmdqv,
+> +                offset - index * CMDQV_VCMDQ_STRIDE, index, value);
+> +        break;
 >      default:
->          qemu_log_mask(LOG_UNIMP, "%s unhandled read access at 0x%" PRIx64 "\n",
+>          qemu_log_mask(LOG_UNIMP, "%s unhandled write access at 0x%" PRIx64 "\n",
 >                        __func__, offset);
+> @@ -260,14 +401,33 @@ static void tegra241_cmdqv_writel_mmio(Tegra241CMDQV *cmdqv, hwaddr offset,
+>  }
+>  
+>  /*
+> - * 8-byte MMIO write handler.
+> + * 8-byte MMIO write handler. Only Page 1 BASE / CONS_INDX_BASE_DRAM accept
+> + * full 64-bit writes; other offsets are write-ignored.
+>   */
+>  static void tegra241_cmdqv_writell_mmio(Tegra241CMDQV *cmdqv, hwaddr offset,
+>                                          uint64_t value)
+>  {
+> -    qemu_log_mask(LOG_UNIMP,
+> +    int index;
+> +
+> +    switch (offset) {
+> +    case A_VI_VCMDQ0_BASE_L ... A_VI_VCMDQ1_CONS_INDX_BASE_DRAM_H:
+> +        /*
+> +         * VINTF Page1 registers are hardware aliases of VCMDQ Page1 registers.
+> +         * Translate the VINTF aperture offset to its VCMDQ Page1 equivalent
+> +         * and fall through to the Page1 dispatch below.
+> +         */
+> +        offset -= CMDQV_VINTF_PAGE1_BASE - CMDQV_VCMDQ_PAGE1_BASE;
+> +        QEMU_FALLTHROUGH;
+> +    case A_VCMDQ0_BASE_L ... A_VCMDQ1_CONS_INDX_BASE_DRAM_H:
+> +        index = (offset - CMDQV_VCMDQ_PAGE1_BASE) / CMDQV_VCMDQ_STRIDE;
+> +        tegra241_cmdqv_write_vcmdq_page1_64(cmdqv,
+> +                offset - index * CMDQV_VCMDQ_STRIDE, index, value);
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP,
+>                        "%s unhandled 64-bit write at 0x%" PRIx64 " (WI)\n",
+>                        __func__, offset);
+> +    }
+>  }
+>  
+>  static void tegra241_cmdqv_write_mmio(void *opaque, hwaddr offset,
 > diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index 8c61d66a26..8c34a04b24 100644
+> index 8c34a04b24..c4262bb2be 100644
 > --- a/hw/arm/trace-events
 > +++ b/hw/arm/trace-events
-> @@ -75,6 +75,8 @@ smmuv3_accel_install_ste(uint32_t vsid, const char * type, uint32_t hwpt_id) "vS
->  # tegra241-cmdqv
->  tegra241_cmdqv_read_mmio(uint64_t offset, uint64_t val, unsigned size) "offset: 0x%"PRIx64" val: 0x%"PRIx64" size: 0x%x"
+> @@ -77,6 +77,8 @@ tegra241_cmdqv_read_mmio(uint64_t offset, uint64_t val, unsigned size) "offset:
 >  tegra241_cmdqv_write_mmio(uint64_t offset, uint64_t val, unsigned size) "offset: 0x%"PRIx64" val: 0x%"PRIx64" size: 0x%x"
-> +tegra241_cmdqv_read_vcmdq_page0(int index, uint64_t offset0, uint64_t val) "vcmdq[%d] page0 offset0: 0x%"PRIx64" val: 0x%"PRIx64
-> +tegra241_cmdqv_read_vcmdq_page1(int index, uint64_t offset0, uint64_t val) "vcmdq[%d] page1 offset0: 0x%"PRIx64" val: 0x%"PRIx64
+>  tegra241_cmdqv_read_vcmdq_page0(int index, uint64_t offset0, uint64_t val) "vcmdq[%d] page0 offset0: 0x%"PRIx64" val: 0x%"PRIx64
+>  tegra241_cmdqv_read_vcmdq_page1(int index, uint64_t offset0, uint64_t val) "vcmdq[%d] page1 offset0: 0x%"PRIx64" val: 0x%"PRIx64
+> +tegra241_cmdqv_write_vcmdq_page0(int index, uint64_t offset0, uint64_t val) "vcmdq[%d] page0 offset0: 0x%"PRIx64" val: 0x%"PRIx64
+> +tegra241_cmdqv_write_vcmdq_page1(int index, uint64_t offset0, uint64_t val) "vcmdq[%d] page1 offset0: 0x%"PRIx64" val: 0x%"PRIx64
+actually would it be possible to improve the trace points by adding the
+info about whether the VI or the global page is accessed. This would
+allow to discriminate both. Same for read
+
+Eric
 >  
 >  # strongarm.c
 >  strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
-Besides looks good to me
-
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
 
 

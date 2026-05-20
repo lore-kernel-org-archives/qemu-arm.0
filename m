@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED76ECD4F5E
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:52:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D01F2CD4F5E
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:53:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPala-000716-3Q; Wed, 20 May 2026 02:50:54 -0400
+	id 1wPajd-00031K-GT; Wed, 20 May 2026 02:48:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPak4-0003ej-Gw; Wed, 20 May 2026 02:49:24 -0400
+ id 1wPajZ-0002x0-Tg; Wed, 20 May 2026 02:48:49 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPajx-0001Un-K6; Wed, 20 May 2026 02:49:18 -0400
+ id 1wPajU-0001OT-Ki; Wed, 20 May 2026 02:48:49 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K6lnbd096590
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K6lnbo096590
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 20 May 2026 15:48:17 +0900 (JST)
+ Wed, 20 May 2026 15:48:19 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=uJTvyFxVV0KiKR88wATfRrbdCU5rpbZH8pTJ+9EpZgo=; 
+DKIM-Signature: a=rsa-sha256; bh=1HZL/g+SoS2O30ERYe2Yb6nxo7jFOLr4qDArV1Di8vs=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1779259697; v=1;
- b=cNG7gl9Q57zcLLdEh/PioLHZkDx5BDraF3InzwJfFvQ2/bJER2S31h3MjRDPr3rV
- 2mrn4ilzR5oURS99kXKT6PDxGO+xzQzRh/RiwvqS23apFNdSIJILyXH1GtDXtI0I
- cX/oYITGY+aH+gzFSGB1Yl5i2LlnSHlP1TcLjz7ImrsnRhhXy0Rm3YVSVCsQj/IJ
- Z0oRB/KGM1qfCjMVhlBfHCZQFE8M/4Z0Acf05smZUqO5w7swsu0zUNFJ/46HN0za
- 4tftUY0cgbrZUxjMcALte70SdovqS9EnjbRwAa+NRqT1Y91wOch/Sq2VvdzMELun
- DnRWX4181/sQJzpkRj82jw==
+ s=rs20250326; t=1779259700; v=1;
+ b=rvt2CZyr4rUXEAOBQCy2GWIZbr6WSrR2ve+f3gSseaW/FLwn3zN4ynwUqOzHzDaE
+ wSwYd9LKvAziFg9CdRn5zvcYdPv6Gkj6Rptx0eS/+ibYwUrSlCdDOe00ZnOgxpG7
+ fBwHYlywUS6Dejy71Raw3Xgt7i+sEurdyjx3/tSuVdfh8MY3dL/ioA6/C4ictvpG
+ W42YqqZ0r2a5P1v65w4o/WCrL02ENc0L6vCQ8zeia/ydgtSAft8dQwHjGXTe7GSx
+ G9KOcNrvIhmacv98CzLxt7I+Nwi1ul131+FIJ1tnGct+wQnCSPC3JJACqD8AIZhp
+ zJ5khsuM+aR8p4QhWGtBcg==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 20 May 2026 15:47:59 +0900
-Subject: [PATCH v3 16/29] replay: Use Linux key codes
+Date: Wed, 20 May 2026 15:48:10 +0900
+Subject: [PATCH v3 27/29] qemu-keymap: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260520-input-v3-16-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260520-input-v3-27-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -58,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2453;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4832;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=VN8yQ5lgMxcp3qE4EJjzPaXZLmpoeQItNok0BraEMYc=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZvpLIR5+/dvqJLGjmVX3M/PLtRdolA3A8ph+fLr+8oO
- ZHzYk9ARykLgxgXg6yYIktK0W5ujejaT4UJ8S0wc1iZQIYwcHEKwERmbGJk2MLbnfRTh9fq3+yd
- jtMFHnsUC62fnMbzk/GI5GTFC5deqDEyLL3HV+qsqedT/uJKg0Bv+QT58yv7f0Zc1jRMveAV+/g
- fMwA=
+ bh=gcrDwacqS5bkEtnqJY5QTRr0nAfP9KdzJWUdu+r+4i4=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZvpHbhgQItpbMW1+/PYhBVnjN1hmH6ReuKPFeB2V6P/
+ a67ux7uKGVhEONikBVTZEkp2s2tEV37qTAhvgVmDisTyBAGLk4BmIh7DSND67OsTw1hpnl+/6QV
+ 9v+/W+V+rVaQ4XeHru0En9XzPW1MGBnmnnfjkDXYOt3854yNgs86QxR23ssxyGdJEzFusTdPjWA
+ GAA==
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -96,65 +96,123 @@ representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- replay/replay-input.c | 20 +++-----------------
- replay/replay.c       |  2 +-
- 2 files changed, 4 insertions(+), 18 deletions(-)
+ qemu-keymap.c | 41 ++++++++++++++++++++---------------------
+ 1 file changed, 20 insertions(+), 21 deletions(-)
 
-diff --git a/replay/replay-input.c b/replay/replay-input.c
-index acf0993c7285..c86e00af0efd 100644
---- a/replay/replay-input.c
-+++ b/replay/replay-input.c
-@@ -23,8 +23,7 @@ void replay_save_input_event(QemuInputEvent *evt)
+diff --git a/qemu-keymap.c b/qemu-keymap.c
+index d4dccf456ef3..d63b6be8ce32 100644
+--- a/qemu-keymap.c
++++ b/qemu-keymap.c
+@@ -11,6 +11,7 @@
+  */
+ #include "qemu/osdep.h"
+ #include "qemu/notify.h"
++#include "standard-headers/linux/input-event-codes.h"
+ #include "ui/input.h"
  
-     switch (evt->type) {
-     case INPUT_EVENT_KIND_KEY:
--        replay_put_dword(KEY_VALUE_KIND_QCODE);
--        replay_put_dword(qemu_input_linux_to_qcode(evt->key.key));
-+        replay_put_dword(evt->key.key);
-         replay_put_byte(evt->key.down);
-         break;
-     case INPUT_EVENT_KIND_BTN:
-@@ -55,25 +54,12 @@ void replay_save_input_event(QemuInputEvent *evt)
- QemuInputEvent *replay_read_input_event(void)
+ #include <xkbcommon/xkbcommon.h>
+@@ -32,19 +33,17 @@ static FILE *outfile;
+ 
+ /* ------------------------------------------------------------------------ */
+ 
+-static uint32_t qcode_to_number(uint32_t qcode)
++static uint32_t linux_to_number(uint32_t lnx)
  {
-     QemuInputEvent *evt = g_new(QemuInputEvent, 1);
--    int qcode;
+-    KeyValue keyvalue;
+     uint32_t number;
  
-     evt->type = replay_get_dword();
-     switch (evt->type) {
-     case INPUT_EVENT_KIND_KEY:
--        switch (replay_get_dword()) {
--        case KEY_VALUE_KIND_NUMBER:
--            qcode = qemu_input_key_number_to_qcode(replay_get_qword());
--            evt->key.down = replay_get_byte();
--            break;
--        case KEY_VALUE_KIND_QCODE:
--            qcode = (QKeyCode)replay_get_dword();
--            evt->key.down = replay_get_byte();
--            break;
--        default:
--            g_assert_not_reached();
--        }
--        evt->key.key = qcode < qemu_input_map_qcode_to_linux_len ?
--                       qemu_input_map_qcode_to_linux[qcode] : 0;
-+        evt->key.key = replay_get_dword();
-+        evt->key.down = replay_get_byte();
-         break;
-     case INPUT_EVENT_KIND_BTN:
-         evt->btn.button = (InputButton)replay_get_dword();
-diff --git a/replay/replay.c b/replay/replay.c
-index 2e5c6fa82eaa..14437b32566b 100644
---- a/replay/replay.c
-+++ b/replay/replay.c
-@@ -22,7 +22,7 @@
+-    keyvalue.type = KEY_VALUE_KIND_QCODE;
+-    keyvalue.u.qcode.data = qcode;
+-    number = qemu_input_key_value_to_number(&keyvalue);
++    assert(lnx < qemu_input_map_linux_to_qnum_len);
++    number = qemu_input_map_linux_to_qnum[lnx];
+     assert(number != 0);
+     return number;
+ }
  
- /* Current version of the replay mechanism.
-    Increase it when file format changes. */
--#define REPLAY_VERSION              0xe0200d
-+#define REPLAY_VERSION              0xe0200e
- /* Size of replay log header */
- #define HEADER_SIZE                 (sizeof(uint32_t) + sizeof(uint64_t))
+-static void print_sym(xkb_keysym_t sym, uint32_t qcode, const char *mod)
++static void print_sym(xkb_keysym_t sym, uint32_t lnx, const char *mod)
+ {
+     char name[64];
  
+@@ -54,7 +53,7 @@ static void print_sym(xkb_keysym_t sym, uint32_t qcode, const char *mod)
+     xkb_keysym_get_name(sym, name, sizeof(name));
+ 
+     /* TODO: make ui/keymap.c parser accept QKeyCode names */
+-    fprintf(outfile, "%s 0x%02x%s\n", name, qcode_to_number(qcode), mod);
++    fprintf(outfile, "%s 0x%02x%s\n", name, linux_to_number(lnx), mod);
+ }
+ 
+ static void walk_map(struct xkb_keymap *map, xkb_keycode_t code, void *data)
+@@ -84,37 +83,37 @@ static void walk_map(struct xkb_keymap *map, xkb_keycode_t code, void *data)
+     fprintf(outfile, "# evdev %d (0x%x), QKeyCode \"%s\", number 0x%x\n",
+             evdev, evdev,
+             QKeyCode_str(qcode),
+-            qcode_to_number(qcode));
++            linux_to_number(evdev));
+ 
+     /*
+      * check which modifier states generate which keysyms
+      */
+     xkb_state_update_mask(state,  0, 0, 0,  0, 0, 0);
+     kbase = xkb_state_key_get_one_sym(state, code);
+-    print_sym(kbase, qcode, "");
++    print_sym(kbase, evdev, "");
+ 
+     xkb_state_update_mask(state,  0, 0, numlock,  0, 0, 0);
+     knumlock = xkb_state_key_get_one_sym(state, code);
+     if (kbase != knumlock) {
+-        print_sym(knumlock, qcode, " numlock");
++        print_sym(knumlock, evdev, " numlock");
+     }
+ 
+     xkb_state_update_mask(state,  shift, 0, 0,  0, 0, 0);
+     kshift = xkb_state_key_get_one_sym(state, code);
+     if (kbase != kshift && knumlock != kshift) {
+-        print_sym(kshift, qcode, " shift");
++        print_sym(kshift, evdev, " shift");
+     }
+ 
+     xkb_state_update_mask(state,  altgr, 0, 0,  0, 0, 0);
+     kaltgr = xkb_state_key_get_one_sym(state, code);
+     if (kbase != kaltgr) {
+-        print_sym(kaltgr, qcode, " altgr");
++        print_sym(kaltgr, evdev, " altgr");
+     }
+ 
+     xkb_state_update_mask(state,  altgr | shift, 0, 0,  0, 0, 0);
+     kaltgrshift = xkb_state_key_get_one_sym(state, code);
+     if (kshift != kaltgrshift && kaltgr != kaltgrshift) {
+-        print_sym(kaltgrshift, qcode, " shift altgr");
++        print_sym(kaltgrshift, evdev, " shift altgr");
+     }
+ }
+ 
+@@ -251,16 +250,16 @@ int main(int argc, char *argv[])
+             "# keysyms.  So append them here.\n"
+             "#\n"
+             "\n");
+-    print_sym(XKB_KEY_Print,            Q_KEY_CODE_SYSRQ,      "");
+-    print_sym(XKB_KEY_Sys_Req,          Q_KEY_CODE_SYSRQ,      "");
+-    print_sym(XKB_KEY_Execute,          Q_KEY_CODE_SYSRQ,      "");
++    print_sym(XKB_KEY_Print,            KEY_SYSRQ,    "");
++    print_sym(XKB_KEY_Sys_Req,          KEY_SYSRQ,    "");
++    print_sym(XKB_KEY_Execute,          KEY_SYSRQ,    "");
+ 
+-    print_sym(XKB_KEY_KP_Decimal,       Q_KEY_CODE_KP_DECIMAL, " numlock");
+-    print_sym(XKB_KEY_KP_Separator,     Q_KEY_CODE_KP_DECIMAL, " numlock");
++    print_sym(XKB_KEY_KP_Decimal,       KEY_KPDOT,    " numlock");
++    print_sym(XKB_KEY_KP_Separator,     KEY_KPDOT,    " numlock");
+ 
+-    print_sym(XKB_KEY_Alt_R,            Q_KEY_CODE_ALT_R,      "");
+-    print_sym(XKB_KEY_ISO_Level3_Shift, Q_KEY_CODE_ALT_R,      "");
+-    print_sym(XKB_KEY_Mode_switch,      Q_KEY_CODE_ALT_R,      "");
++    print_sym(XKB_KEY_Alt_R,            KEY_RIGHTALT, "");
++    print_sym(XKB_KEY_ISO_Level3_Shift, KEY_RIGHTALT, "");
++    print_sym(XKB_KEY_Mode_switch,      KEY_RIGHTALT, "");
+ 
+     fprintf(outfile,
+             "\n"
 
 -- 
 2.54.0

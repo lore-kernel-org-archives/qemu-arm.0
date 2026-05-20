@@ -4,109 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 914A2CD4F5E
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 05:55:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FC09CD4F5E
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:33:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPZuB-00045M-2W; Wed, 20 May 2026 01:55:43 -0400
+	id 1wPaUZ-0005Wx-IS; Wed, 20 May 2026 02:33:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wPZu9-00044k-Ev
- for qemu-arm@nongnu.org; Wed, 20 May 2026 01:55:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wPaUX-0005Wd-6r; Wed, 20 May 2026 02:33:17 -0400
+Received: from mail-eastus2azlp170110003.outbound.protection.outlook.com
+ ([2a01:111:f403:c110::3] helo=BN8PR05CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wPZu7-00041u-4e
- for qemu-arm@nongnu.org; Wed, 20 May 2026 01:55:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779256538;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fLot/bcqkYMwj6pg8qvs615Vg4pSNDH+G22x3IOzf+E=;
- b=gs37beQlNc6yUC95IDM3hzAq51KQVk2D2xDx/M+suNOP8PWRFfpmkat7MSWtjSV1C/pnFF
- 3zcT1JW2jgu9dFj2gUUvW3J78NlFhYYHoP9cbQ+7+lbGiu+FH6+IXww0mijLiBl0QF+K8Q
- d2j3cNeqfrCq7JqeEaQInq/Z99W1YCU=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-362-scEDi965Od-Dvzj14p5HWQ-1; Wed, 20 May 2026 01:55:35 -0400
-X-MC-Unique: scEDi965Od-Dvzj14p5HWQ-1
-X-Mimecast-MFC-AGG-ID: scEDi965Od-Dvzj14p5HWQ_1779256534
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-45e55c44ac1so3567231f8f.0
- for <qemu-arm@nongnu.org>; Tue, 19 May 2026 22:55:34 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779256534; x=1779861334;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fLot/bcqkYMwj6pg8qvs615Vg4pSNDH+G22x3IOzf+E=;
- b=s9/zYdriDHch9Krr8NTme2CfIkGFm0BkuIPa7Q8q9RGA7t8+H1I4Su3VtZpCd6oPyD
- 2SvawwEBQMZxZWIT1ITouYNi5JIn8760+GM77MVHWP7k4vJYBSpAYXY3nQj7f2J1ZBHU
- C4K2/4u7OmMdWjiK3xz6q8RqbzutjEfGHl/N2k/lKWyIW/8fGLwBSw6fApHyeS3Qs4Ip
- 0H8X4GyWUS0XqIDPEN0g41lfjN5AfOC5GCifWLcMM50EIcJye3oeCofSEG7iBhk0WCbZ
- HFlMpIfzZa/5smdBfo2dI6aaIsYwKXFGXbFb6C0G0giUvuXWIdk/atqyc9TE8Lt+gRAe
- 73yA==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9tZK+e/Sa41NDaASsJssI9QZczUnn577QCUfpA3gKUA+fHCUxegrZL/6MD8wWgVFDthx0gwBJeKQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyOTU0SgiMkoTxHCErtLLeiMFCaIMzbf3lrIwvxcA3m9j29wCco
- LHyYN3OOp8rEzTNPEb9nga3BDzO7EBWptdy7bFJyRXQFZwwVsjxmquxpD6uzBHR1fcWBZm16xqu
- XHHaCIZnaPBgyHBceOOJGWHSAV2itQLrPPE+9lY0LSCa8EJKcccAi9g==
-X-Gm-Gg: Acq92OFRaf225LS4cE/dMDU2rh35XpymJ2JvszHqMG5ZWVI2MZEWMX7+SD15oj6bgAt
- gE79Tr6pe8W2kNc16+Yppegj+4ygCcfhPBWiApgUNku+P9MmzfX2YZzSN3ehwYUBIzVMIv5yWOY
- 9juErINAsA++7o496rfFPJKEOy1tYn1RihMkRH+6MDAi/VZvKhYnVIVhmu3mbbftAKBnRpsEr7l
- x6HMQ5ONKquY/DcIycJQOamJbTiDdx0EYSMy/s+r5s+my3Tn3lWHpC7j6YirAOglBQthn+YUS/+
- 8ZAGwi8zkILW+nScGvUond8+Q6tMG+JywaT91eABdl9m7nVPsFRlfw+uMMH0n7V3O6ax6oDrWaU
- XT9FljDfQkth0EChp+znD4XuKnyYgmT2IHJ3Msh7z9C6h8+N2mMfdG0m11wLruvOLe2zdfg==
-X-Received: by 2002:a05:600c:5298:b0:48e:635a:18d2 with SMTP id
- 5b1f17b1804b1-48fe60e51d1mr348955955e9.2.1779256533688; 
- Tue, 19 May 2026 22:55:33 -0700 (PDT)
-X-Received: by 2002:a05:600c:5298:b0:48e:635a:18d2 with SMTP id
- 5b1f17b1804b1-48fe60e51d1mr348955665e9.2.1779256533284; 
- Tue, 19 May 2026 22:55:33 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48fffb9aac4sm484083875e9.9.2026.05.19.22.55.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 May 2026 22:55:32 -0700 (PDT)
-Message-ID: <79d27d57-ee18-4c2b-a2f2-6d14c593202f@redhat.com>
-Date: Wed, 20 May 2026 07:55:31 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 16/32] hw/arm/tegra241-cmdqv: Emulate VCMDQ register
- writes
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
- nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
- jgg@nvidia.com, zhenzhong.duan@intel.com, kjaju@nvidia.com,
- phrdina@redhat.com
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wPaUV-0005At-Ai; Wed, 20 May 2026 02:33:16 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=chrsAICvJWI9SjvCA/336jiOPDd/PFXkP1nb3lVl8dBoGwLdPqyvsdRfPPeDfxJSa9W0pCbNjjPYfyy+jPaPBHXGGWYXoEhA46y/oAkZM0G2gBAvvLTHRrg72oiRbxPmM2IaiTxQXgLRBDAzKmbQcLUwUjlRb9UgdsEY9dPCERw6pGdiC0hlVg8ZDv78MWvLwDfEp58L0RlY9SBP5iz8XzPf5Ecb6g61Cc40nc4OxUbofNoM3QqYhFTokViPIepTF36rQCizmUzUB2rgj57LP3+liBLJPqvfg9k442U7/k9VVZbRgXNBtaQ0LgrCiRQHQXWMiSMY5CjARjr40qIzFQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3gE43tJMbkgWbIRh+JbObuPV9Mrzb0pmOEz5tBtDCNQ=;
+ b=KbQJQjzuaGqrSMzSu+R4hT2sZy1euTk2Ue5lXXWRunJnTRJT7sBd5+de8NNBw6oiXBmytcoW+ve9S8Dq9dkzbaU6WWFouvn141BD1mdlAKBrAr77UOKn0jMUpsQFx1p46EQNUEGcJHs0e+YNHiwjH6MNFopOBxuwFhpluNDS8UaY1VYohIAXvSzM03+I/8B/imBSaOXoEEisg9FKVsUlo2mQ+kHfZXqVJpuwUaEfzWgFX60lH5ft0/LLnoXKNApWI4Pm+/TpSAK/2Lf/jUuACp69DQSTD2SoR6fedc1bM5l0lFApd7QpAZD/7hkpFtmoeybvcXUKOon/Lnu/NounOA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3gE43tJMbkgWbIRh+JbObuPV9Mrzb0pmOEz5tBtDCNQ=;
+ b=saL/5R2PSx2UBylrZVWisxkyzvLQ5plIPAMNZb90XNUSVuttzrM8BcMIuERdolGEszFgM5VEfBU7vyodVKnQArAVPWzIbnA6KyMbB6EnN8fRIi0yLxa9drZv6LdUnjHzhojPkSmXhRHWPJv0NNUBfb9qwReUIxoqwc1EE9a3eBaX9O4zcs/AjSA4BCx0+MBx1/tUk5YEXnwYKanxyESd6O2aSriy47ImJnTjbLueyOW0IsqPrs6bl/T5rbB+KU0WA94H1hr4NZbI78oF5K6s1GADY91hyik0KPDB3vZ0ApZVkpG+Up2LhEFjcC3CahdKS+APl12Qig3VmIxLApkmug==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by DM3PR12MB9286.namprd12.prod.outlook.com (2603:10b6:8:1ae::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.48.14; Wed, 20 May
+ 2026 06:33:06 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%6]) with mapi id 15.21.0048.013; Wed, 20 May 2026
+ 06:33:06 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "clg@redhat.com"
+ <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>, Nicolin Chen
+ <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
+ <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, Jason Gunthorpe
+ <jgg@nvidia.com>, "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>, "phrdina@redhat.com"
+ <phrdina@redhat.com>
+Subject: RE: [PATCH v5 08/32] hw/arm/smmuv3-accel: Wire CMDQV ops into accel
+ lifecycle
+Thread-Topic: [PATCH v5 08/32] hw/arm/smmuv3-accel: Wire CMDQV ops into accel
+ lifecycle
+Thread-Index: AQHc53u7Mj9vGrqxQUur2T5Sm4ZXibYWY7KAgAAREoA=
+Date: Wed, 20 May 2026 06:33:06 +0000
+Message-ID: <CH3PR12MB7548AF566C668E9622D22029AB012@CH3PR12MB7548.namprd12.prod.outlook.com>
 References: <20260519103727.899332-1-skolothumtho@nvidia.com>
- <20260519103727.899332-17-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260519103727.899332-17-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 3BQ6DLMtAu22ReEddYuatYLnKXHRiC-yugPw79mM4hg_1779256534
-X-Mimecast-Originator: redhat.com
+ <20260519103727.899332-9-skolothumtho@nvidia.com>
+ <b1b5fcf0-bbd9-49dd-87ad-18c106708125@redhat.com>
+In-Reply-To: <b1b5fcf0-bbd9-49dd-87ad-18c106708125@redhat.com>
+Accept-Language: en-US, en-GB
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|DM3PR12MB9286:EE_
+x-ms-office365-filtering-correlation-id: 3b7cf15b-c13a-42b8-8bde-08deb639a6d5
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|1800799024|376014|38070700021|18002099003|56012099003|22082099003|11063799006|4143699003;
+x-microsoft-antispam-message-info: NziJ+abYPL3/D7hTM8RPnvAnzj/2UAYBLEeNXM7dnyaU5dyOVsgmiPCVjiXXNwR0US+ZXQzZKxD/7/peQptre5cZZq8kaW3t57MuFFp3g8KKrxZOdxaOkwvZOrbctyEWGrlhPDDNxg/mQX+yG4hL8sPgFHDwu1Hrq0dnBSE9G3Bq+pKnoeLKxsyKvhIHEvzka95qKbABUq8PjlKREE46mRx1yA7V+xeYtk43hpl5+mjuG9GWoWDObGcfUPYnKGcAd2yL+uLFP5ngcYQhVkm/5sp4C/sZezHXDZFZKcobkXKOwxyTY9MILYlhFI15y3mJdM77W1R8vbrzImWQL0T97htKzQkp37gh4Rk9po2UdAlYbgbo8J/N2tRxK07HfES6yVN7gfrP823JVnpwtDm5S+SQ2Mp6ywLvOq4kR2isnbVbSqG+g+1yS1a4170aukMyxJiFgenNynYvvU98Kj6K5ew5biJ8+R5VHWoU7o5y/gLnieGc9KXTHAmEMHXJB+7QCUmqN6I2KegWovBOxiayADNZYmnzQpC64XLa+rd7M5Unl73iGKatjq+gDQ6Vmm43BcCNIJ5cU1mOXCG1vFGM6UwITm7Bcmp4WrwlTLJmkA2kF8HGYHSzQUeGYi/wIO6A0fp3M0R+4SsjmUyLdOdUusN19evkqmei8U8veGv21kTDF55+BV3dGcQ+tcfCjpN2i87SBu0RXGUodt/Jetk9nh07DnV5gsiDV+vs/jC4Zy0bAFQv46wIimGeQRnDOJjo
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(376014)(38070700021)(18002099003)(56012099003)(22082099003)(11063799006)(4143699003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?MEIvVjRraWwxZXJSOWVMcXhQOE9yblNTWkM4aWVTOEt2eE8rWUFtM2pRNDU2?=
+ =?utf-8?B?cnRKOXlNR0RCVU5sNFpId2QyQ0sxVkhieDZPTmFFTWdQblp6L091a0lPcisr?=
+ =?utf-8?B?MlpSaHQ4ZkZwckR5V3RWVCtZdlMzZ1FqTWxaUmFjLzBJQlNubUI0eis4N00z?=
+ =?utf-8?B?TjRIVTFyTGVERnZ2SE5LVEFmdWpvQ0U1aFQvbXV6TGZzQ29vTGtBQnpNUW1C?=
+ =?utf-8?B?ZVFLeEl3Vmk4VE1SMmxqUXZ1UFZIMW5xWXlZUm9ReFhsUFlYYklrQ2tuOVU0?=
+ =?utf-8?B?NVdGaDF6MlUwZkU3czdWY2tCc1ZJSTU1VVJubVpSQnF6Z2xpR0xHa2xrUTVJ?=
+ =?utf-8?B?Smo4ZmN6Tk1zVHE3QllJN0o4YmJNQmwzbSt4ZEdrcWxBY3lhakhJQy9VNWhM?=
+ =?utf-8?B?SFRHTDlISHl3a3ZZYlBzbnJSTjFiOGpNakYwdEFNbzNESEYza2FjSmJQdCtS?=
+ =?utf-8?B?MERhek1rNlV0TCt4a1Y5NTlZSUc3Q3FsbzN5eDZXMklhT0M5MCs1LzZNbTlK?=
+ =?utf-8?B?aWdIckY2TG5RelhNNVhOUXdDWHZtaXVURHBjc1FMdjJadlh5OTg2eFdQdW5I?=
+ =?utf-8?B?bUtlKzI3UGRQTlZDdW1VQzRBRkcyb2l5dkVpZ0ZjR2N2MGw2VXlnQmZVM0hj?=
+ =?utf-8?B?eFhyeVUrQ0xRK0ZDVjJFSVQrbWtFMWRrOFZmcWxqbFhLNTJLSmkzdUxMK04v?=
+ =?utf-8?B?OGZYMnZFQTR3YW91Q3g5UGRPZmppZjR2YjJsRFRKNk03bzFmYWhYbm1tbWc2?=
+ =?utf-8?B?THF0cUpwSWcrb1dZbTZpcUl3MWZWcmV0dEpyc1QvMTBhYVJibWtINmNuNU4r?=
+ =?utf-8?B?bDlXVlBMVm5YWnltSmVpU25ySHh4WmYwODdTOThEaGhSWVppQlBvMXl4WHh5?=
+ =?utf-8?B?UC9vaTlmeER6UU82d3BRVVFON0kxYndwWjIwdXpta3VweGhjWTMxVzZiQy95?=
+ =?utf-8?B?V0NrZWR0SFYzZzdrU2dqUWYvTmF2L0pRcWxMZzRubDEwVzF5MUJFUk0yVzB4?=
+ =?utf-8?B?ZUo0eEVZQmEwbUR5Wi8vOGY0dm1iWDNaTmVrODAwTVliNTVnRkhORU4xaW41?=
+ =?utf-8?B?OGFkSkh6UmxLekFxTk5yd2txVVRXTmxTRzFOdTJ4TXc0bFp5d3hWSlBhSzdj?=
+ =?utf-8?B?VThWdlRaNUxqejRrSGNpNnJmL01ERS83ZHJjN3Z3S0Q0TGhCc2diOWtIY3dt?=
+ =?utf-8?B?aTV5R2xFT0JldS9oMGdMa1VlMWdFL2tkQndvbHdWTUZSdkFjVUNnTTAwTnQ2?=
+ =?utf-8?B?OXZ0OHVLZUt3N2RsVlJaRXAycTk4WkxUVlVTa3FPMFJFazA5c1pBY2dvVDJY?=
+ =?utf-8?B?cnlDWmE4b1lNOXMwQ01SRVpicVVxUlZ1RlM4SGJJOHJjK2s3QjZiUjIxbzV3?=
+ =?utf-8?B?akY4cHFOMFJnOXdjSHI1NFBOZVRYaG0zTEkvdnViYUE0VW9WdzNtQjg4WW5j?=
+ =?utf-8?B?WUZ4S2FMN25YRzFtNE1IZWhsOGE0NEoyMGVQTzVUNnVmT1liL0pnKzRPUFhK?=
+ =?utf-8?B?bFlqdFkxWXVjZS9PaVpkZHZYWkRWTmZvWTNJQWJBbW8xS0NCYzRlcVJqSXMz?=
+ =?utf-8?B?NG5EQWxqQVFxd1BKLytRaG5vZUs2QUlWQ1V5Wi9kb2JBRXlBU2Q3QlpISFdr?=
+ =?utf-8?B?U3dlM0pYYTZGSkQvWis0OVVndW01bUNwMlh5a3lGTXZqYlo4UUZoV1FJN2wx?=
+ =?utf-8?B?UzVFRDJCeEtKb2V3cStaZmJ6QlJEWkMyWVV1VFNYK1plcWpjSWM1N2luSWNX?=
+ =?utf-8?B?aE1tbm55aW5zNWx6ZWdTZjY1VUVBY3h6NTdXL3Ridm9GQm9hRHlUd29ZMXFX?=
+ =?utf-8?B?eDZKWlB6ZW5ZT1lRL3hFZHlWRjR6QTVQSFY0Q0RoK2tXZ0ExYThMSVZLT0FB?=
+ =?utf-8?B?cHFjb0tOMVFuMFFaOFFESWZxOGxNMEVmWXFLTnY1VCszRWFhMStXeko1Y2pX?=
+ =?utf-8?B?dTgwdjZBWExYYkQ4d25zVWl1NEtTUFFYWCtEdXE4ZS9jUUY0Ymx4UkRMV1hV?=
+ =?utf-8?B?UlQwS0dPdGVPbDdDR00yM2NxUkVFeUEzcTh5cG9xWUs4K1FTNi9NT1Q4VWNp?=
+ =?utf-8?B?UHFOa2cwRkNyOEwvU002KzNmVTltLzZjUkNSbFdoSUFQT3phNGhCVDNCZUJ0?=
+ =?utf-8?B?b3BidXFkYzN5U0hxTjRrLzdKWGx4MGtkVlF2WmJHTGlsK1doSXRvV0ZjQ3U2?=
+ =?utf-8?B?Z3pHY2VnYjlTaWFuZVp5alA4KzB0cmloNmRBQjQ1eWk2SWhoZEVqSU9VR2tr?=
+ =?utf-8?B?QUFoWFU0TS9iblQ3OG5MRmFjaDVnTmkrZWhYbDZKTm1xZGxGUmY4S3JYSEp0?=
+ =?utf-8?B?U0g2azBiQWVlbTc3OVJCRldlU0toNWZTdzlvNkRIblIrTWcvNElGZz09?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3b7cf15b-c13a-42b8-8bde-08deb639a6d5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 May 2026 06:33:06.1493 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: n6vDsIB44JVXqPozqJWlpW8Nsnnaga8JB3qdhn63M+y4pQRPb0wCqAf/RC0NILyR4NzfKMqS1pzj8MaLXJ0yJQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM3PR12MB9286
+Received-SPF: permerror client-ip=2a01:111:f403:c110::3;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=BN8PR05CU002.outbound.protection.outlook.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,263 +157,134 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-On 5/19/26 12:36 PM, Shameer Kolothum wrote:
-> From: Nicolin Chen <nicolinc@nvidia.com>
->
-> This is the write side counterpart of the VCMDQ read emulation. Add
-> write handling for both the direct VCMDQ aperture and the VINTF
-> logical aperture using the same index decoding and VINTF-to-VCMDQ
-> translation logic as the read path.
->
-> VINTF aperture writes are translated to their direct-aperture
-> equivalent and update the same cached state. Page 1 registers
-> (BASE, CONS_INDX_BASE) always update the cache. Once
-> IOMMU_HW_QUEUE_ALLOC and viommu_mmap are wired up in a subsequent
-> patch, Page 0 register writes will be forwarded to the hardware-
-> backed mmap'd page.
->
-> Ignore VCMDQ BASE writes if the VCMDQ is already enabled.
->
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Co-developed-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  hw/arm/tegra241-cmdqv.c | 164 +++++++++++++++++++++++++++++++++++++++-
->  hw/arm/trace-events     |   2 +
->  2 files changed, 164 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
-> index f859126ad6..5d2d9d2e26 100644
-> --- a/hw/arm/tegra241-cmdqv.c
-> +++ b/hw/arm/tegra241-cmdqv.c
-> @@ -16,6 +16,16 @@
->  #include "tegra241-cmdqv.h"
->  #include "trace.h"
->  
-> +/*
-> + * Returns true if the per-VCMDQ CMDQ_EN_OK bit is set.
-> + */
-> +static bool tegra241_vcmdq_enabled(Tegra241CMDQV *cmdqv, int index)
-> +{
-> +    uint32_t status = cmdqv->vcmdq_status[index];
-> +
-> +    return status & R_VCMDQ0_STATUS_CMDQ_EN_OK_MASK;
-> +}
-> +
->  /*
->   * Read a VCMDQ Page 0 register (control/status) using VCMDQ0_* offsets.
->   *
-> @@ -116,6 +126,108 @@ static uint64_t tegra241_cmdqv_config_vintf_read(Tegra241CMDQV *cmdqv,
->      }
->  }
->  
-> +/*
-> + * Write a VCMDQ Page 0 register (control/status) using VCMDQ0_* offsets.
-> + *
-> + * The caller normalizes the MMIO offset such that @offset0 always refers
-> + * to a VCMDQ0_* register, while @index selects the VCMDQ instance.
-> + *
-> + * Page 0 registers are all 32-bit; this helper is only called for 4-byte
-> + * writes.
-> + */
-> +static void tegra241_cmdqv_write_vcmdq_page0(Tegra241CMDQV *cmdqv,
-> +                                             hwaddr offset0, int index,
-> +                                             uint32_t value)
-> +{
-> +    switch (offset0) {
-> +    case A_VCMDQ0_CONS_INDX:
-> +        cmdqv->vcmdq_cons_indx[index] = value;
-> +        break;
-> +    case A_VCMDQ0_PROD_INDX:
-> +        cmdqv->vcmdq_prod_indx[index] = value;
-> +        break;
-> +    case A_VCMDQ0_CONFIG:
-> +        if (value & R_VCMDQ0_CONFIG_CMDQ_EN_MASK) {
-> +            cmdqv->vcmdq_status[index] |= R_VCMDQ0_STATUS_CMDQ_EN_OK_MASK;
-> +        } else {
-> +            cmdqv->vcmdq_status[index] &= ~R_VCMDQ0_STATUS_CMDQ_EN_OK_MASK;
-> +        }
-> +        cmdqv->vcmdq_config[index] = value;
-> +        break;
-> +    case A_VCMDQ0_GERRORN:
-> +        cmdqv->vcmdq_gerrorn[index] = value;
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s unhandled write access at 0x%" PRIx64 "\n",
-> +                      __func__, offset0);
-> +    }
-> +    trace_tegra241_cmdqv_write_vcmdq_page0(index, offset0, value);
-> +}
-> +
-> +/*
-> + * Write a VCMDQ Page 1 register (base / DRAM address) - 4-byte access.
-> + */
-> +static void tegra241_cmdqv_write_vcmdq_page1(Tegra241CMDQV *cmdqv,
-> +                                             hwaddr offset0, int index,
-> +                                             uint32_t value)
-> +{
-> +    switch (offset0) {
-> +    case A_VCMDQ0_BASE_L:
-> +        if (tegra241_vcmdq_enabled(cmdqv, index)) {
-> +            return;
-> +        }
-> +        cmdqv->vcmdq_base[index] =
-> +            deposit64(cmdqv->vcmdq_base[index], 0, 32, value);
-> +        break;
-> +    case A_VCMDQ0_BASE_H:
-> +        if (tegra241_vcmdq_enabled(cmdqv, index)) {
-> +            return;
-> +        }
-> +        cmdqv->vcmdq_base[index] =
-> +            deposit64(cmdqv->vcmdq_base[index], 32, 32, value);
-> +        break;
-> +    case A_VCMDQ0_CONS_INDX_BASE_DRAM_L:
-> +        cmdqv->vcmdq_cons_indx_base[index] =
-> +            deposit64(cmdqv->vcmdq_cons_indx_base[index], 0, 32, value);
-> +        break;
-> +    case A_VCMDQ0_CONS_INDX_BASE_DRAM_H:
-> +        cmdqv->vcmdq_cons_indx_base[index] =
-> +            deposit64(cmdqv->vcmdq_cons_indx_base[index], 32, 32, value);
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s unhandled write access at 0x%" PRIx64 "\n",
-> +                      __func__, offset0);
-> +    }
-> +    trace_tegra241_cmdqv_write_vcmdq_page1(index, offset0, value);
-> +}
-> +
-> +/*
-> + * Write a VCMDQ Page 1 register - 8-byte access at BASE_L or DRAM_L.
-> + */
-> +static void tegra241_cmdqv_write_vcmdq_page1_64(Tegra241CMDQV *cmdqv,
-> +                                                hwaddr offset0, int index,
-> +                                                uint64_t value)
-> +{
-> +    switch (offset0) {
-> +    case A_VCMDQ0_BASE_L:
-> +        if (tegra241_vcmdq_enabled(cmdqv, index)) {
-> +            return;
-> +        }
-> +        cmdqv->vcmdq_base[index] = value;
-> +        break;
-> +    case A_VCMDQ0_CONS_INDX_BASE_DRAM_L:
-> +        cmdqv->vcmdq_cons_indx_base[index] = value;
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s unhandled 64-bit write at 0x%" PRIx64 "\n",
-> +                      __func__, offset0);
-> +    }
-> +    trace_tegra241_cmdqv_write_vcmdq_page1(index, offset0, value);
-> +}
-> +
->  static void tegra241_cmdqv_config_vintf_write(Tegra241CMDQV *cmdqv,
->                                                hwaddr offset, uint64_t value)
->  {
-> @@ -235,6 +347,8 @@ out:
->  static void tegra241_cmdqv_writel_mmio(Tegra241CMDQV *cmdqv, hwaddr offset,
->                                         uint32_t value)
->  {
-> +    int index;
-> +
->      switch (offset) {
->      case A_CONFIG:
->          cmdqv->config = value;
-> @@ -253,6 +367,33 @@ static void tegra241_cmdqv_writel_mmio(Tegra241CMDQV *cmdqv, hwaddr offset,
->      case A_VINTF0_CONFIG ... A_VINTF0_LVCMDQ_ERR_MAP_3:
->          tegra241_cmdqv_config_vintf_write(cmdqv, offset, value);
->          break;
-> +    case A_VI_VCMDQ0_CONS_INDX ... A_VI_VCMDQ1_GERRORN:
-> +        /*
-> +         * VINTF Page0 registers are hardware aliases of VCMDQ Page0 registers.
-> +         * Translate the VINTF aperture offset to its VCMDQ Page0 equivalent
-> +         * and fall through to the Page0 dispatch below.
-> +         */
-> +        offset -= CMDQV_VINTF_PAGE0_BASE - CMDQV_VCMDQ_PAGE0_BASE;
-> +        QEMU_FALLTHROUGH;
-> +    case A_VCMDQ0_CONS_INDX ... A_VCMDQ1_GERRORN:
-> +        /*
-> +         * Decode a per-VCMDQ Page 0 access. Each VCMDQ occupies a
-> +         * CMDQV_VCMDQ_STRIDE-byte window; extract the index and normalize
-> +         * to the VCMDQ0_* offset before calling the Page 0 helper.
-> +         */
-> +        index = (offset - CMDQV_VCMDQ_PAGE0_BASE) / CMDQV_VCMDQ_STRIDE;
-> +        tegra241_cmdqv_write_vcmdq_page0(cmdqv,
-> +                offset - index * CMDQV_VCMDQ_STRIDE, index, value);
-> +        break;
-> +    case A_VI_VCMDQ0_BASE_L ... A_VI_VCMDQ1_CONS_INDX_BASE_DRAM_H:
-> +        /* Same VINTF-to-VCMDQ translation as VINTF Page0 case above. */
-> +        offset -= CMDQV_VINTF_PAGE1_BASE - CMDQV_VCMDQ_PAGE1_BASE;
-> +        QEMU_FALLTHROUGH;
-> +    case A_VCMDQ0_BASE_L ... A_VCMDQ1_CONS_INDX_BASE_DRAM_H:
-> +        index = (offset - CMDQV_VCMDQ_PAGE1_BASE) / CMDQV_VCMDQ_STRIDE;
-> +        tegra241_cmdqv_write_vcmdq_page1(cmdqv,
-> +                offset - index * CMDQV_VCMDQ_STRIDE, index, value);
-> +        break;
->      default:
->          qemu_log_mask(LOG_UNIMP, "%s unhandled write access at 0x%" PRIx64 "\n",
->                        __func__, offset);
-> @@ -260,14 +401,33 @@ static void tegra241_cmdqv_writel_mmio(Tegra241CMDQV *cmdqv, hwaddr offset,
->  }
->  
->  /*
-> - * 8-byte MMIO write handler.
-> + * 8-byte MMIO write handler. Only Page 1 BASE / CONS_INDX_BASE_DRAM accept
-> + * full 64-bit writes; other offsets are write-ignored.
->   */
->  static void tegra241_cmdqv_writell_mmio(Tegra241CMDQV *cmdqv, hwaddr offset,
->                                          uint64_t value)
->  {
-> -    qemu_log_mask(LOG_UNIMP,
-> +    int index;
-> +
-> +    switch (offset) {
-> +    case A_VI_VCMDQ0_BASE_L ... A_VI_VCMDQ1_CONS_INDX_BASE_DRAM_H:
-> +        /*
-> +         * VINTF Page1 registers are hardware aliases of VCMDQ Page1 registers.
-> +         * Translate the VINTF aperture offset to its VCMDQ Page1 equivalent
-> +         * and fall through to the Page1 dispatch below.
-> +         */
-> +        offset -= CMDQV_VINTF_PAGE1_BASE - CMDQV_VCMDQ_PAGE1_BASE;
-> +        QEMU_FALLTHROUGH;
-> +    case A_VCMDQ0_BASE_L ... A_VCMDQ1_CONS_INDX_BASE_DRAM_H:
-> +        index = (offset - CMDQV_VCMDQ_PAGE1_BASE) / CMDQV_VCMDQ_STRIDE;
-> +        tegra241_cmdqv_write_vcmdq_page1_64(cmdqv,
-> +                offset - index * CMDQV_VCMDQ_STRIDE, index, value);
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP,
->                        "%s unhandled 64-bit write at 0x%" PRIx64 " (WI)\n",
->                        __func__, offset);
-> +    }
->  }
->  
->  static void tegra241_cmdqv_write_mmio(void *opaque, hwaddr offset,
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index 8c34a04b24..c4262bb2be 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -77,6 +77,8 @@ tegra241_cmdqv_read_mmio(uint64_t offset, uint64_t val, unsigned size) "offset:
->  tegra241_cmdqv_write_mmio(uint64_t offset, uint64_t val, unsigned size) "offset: 0x%"PRIx64" val: 0x%"PRIx64" size: 0x%x"
->  tegra241_cmdqv_read_vcmdq_page0(int index, uint64_t offset0, uint64_t val) "vcmdq[%d] page0 offset0: 0x%"PRIx64" val: 0x%"PRIx64
->  tegra241_cmdqv_read_vcmdq_page1(int index, uint64_t offset0, uint64_t val) "vcmdq[%d] page1 offset0: 0x%"PRIx64" val: 0x%"PRIx64
-> +tegra241_cmdqv_write_vcmdq_page0(int index, uint64_t offset0, uint64_t val) "vcmdq[%d] page0 offset0: 0x%"PRIx64" val: 0x%"PRIx64
-> +tegra241_cmdqv_write_vcmdq_page1(int index, uint64_t offset0, uint64_t val) "vcmdq[%d] page1 offset0: 0x%"PRIx64" val: 0x%"PRIx64
-actually would it be possible to improve the trace points by adding the
-info about whether the VI or the global page is accessed. This would
-allow to discriminate both. Same for read
-
-Eric
->  
->  # strongarm.c
->  strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
-
+SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBFcmljIEF1
+Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+IFNlbnQ6IDIwIE1heSAyMDI2IDA2OjI3DQo+
+IFRvOiBTaGFtZWVyIEtvbG90aHVtIFRob2RpIDxza29sb3RodW10aG9AbnZpZGlhLmNvbT47IHFl
+bXUtDQo+IGFybUBub25nbnUub3JnOyBxZW11LWRldmVsQG5vbmdudS5vcmcNCj4gQ2M6IHBldGVy
+Lm1heWRlbGxAbGluYXJvLm9yZzsgY2xnQHJlZGhhdC5jb207IGFsZXhAc2hhemJvdC5vcmc7IE5p
+Y29saW4NCj4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNvbT47IE5hdGhhbiBDaGVuIDxuYXRoYW5j
+QG52aWRpYS5jb20+OyBNYXR0DQo+IE9jaHMgPG1vY2hzQG52aWRpYS5jb20+OyBKaWFuZGkgQW4g
+PGphbkBudmlkaWEuY29tPjsgSmFzb24gR3VudGhvcnBlDQo+IDxqZ2dAbnZpZGlhLmNvbT47IHpo
+ZW56aG9uZy5kdWFuQGludGVsLmNvbTsgS3Jpc2huYWthbnQgSmFqdQ0KPiA8a2phanVAbnZpZGlh
+LmNvbT47IHBocmRpbmFAcmVkaGF0LmNvbQ0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHY1IDA4LzMy
+XSBody9hcm0vc21tdXYzLWFjY2VsOiBXaXJlIENNRFFWIG9wcyBpbnRvDQo+IGFjY2VsIGxpZmVj
+eWNsZQ0KPiANCj4gRXh0ZXJuYWwgZW1haWw6IFVzZSBjYXV0aW9uIG9wZW5pbmcgbGlua3Mgb3Ig
+YXR0YWNobWVudHMNCj4gDQo+IA0KPiBIaSBTSGFtZWVyLA0KPiANCj4gT24gNS8xOS8yNiAxMjoz
+NiBQTSwgU2hhbWVlciBLb2xvdGh1bSB3cm90ZToNCj4gPiBBZGQgc3VwcG9ydCBmb3Igc2VsZWN0
+aW5nIGFuZCBpbml0aWFsaXppbmcgYSBDTURRViBiYWNrZW5kIGJhc2VkIG9uIHRoZQ0KPiA+IGNt
+ZHF2IE9uT2ZmQXV0byBwcm9wZXJ0eS4NCj4gPg0KPiA+IElmIHNldCB0byBPRkYsIENNRFFWIGlz
+IG5vdCB1c2VkIGFuZCB0aGUgZGVmYXVsdCBJT01NVUZELWJhY2tlZA0KPiBhbGxvY2F0aW9uDQo+
+ID4gcGF0aCBpcyB0YWtlbi4NCj4gPg0KPiA+IElmIHNldCB0byBBVVRPLCBRRU1VIGF0dGVtcHRz
+IHRvIHByb2JlIGEgQ01EUVYgYmFja2VuZCBkdXJpbmcgZGV2aWNlDQo+IHNldHVwLg0KPiA+IElm
+IHByb2Jpbmcgc3VjY2VlZHMsIHRoZSBzZWxlY3RlZCBvcHMgYXJlIHN0b3JlZCBpbiB0aGUgYWNj
+ZWxlcmF0ZWQgU01NVXYzDQo+ID4gc3RhdGUgYW5kIHVzZWQuIElmIHByb2JpbmcgZmFpbHMsIFFF
+TVUgc2lsZW50bHkgZmFsbHMgYmFjayB0byB0aGUgZGVmYXVsdA0KPiA+IHBhdGguDQo+ID4NCj4g
+PiBJZiBzZXQgdG8gT04sIFFFTVUgcmVxdWlyZXMgQ01EUVYgc3VwcG9ydC4gUHJvYmluZyBpcyBw
+ZXJmb3JtZWQgZHVyaW5nDQo+ID4gc2V0dXAgYW5kIGZhaWx1cmUgcmVzdWx0cyBpbiBhbiBlcnJv
+ci4NCj4gPg0KPiA+IFdoZW4gYSBDTURRViBiYWNrZW5kIGlzIGFjdGl2ZSwgaXRzIGNhbGxiYWNr
+cyBhcmUgdXNlZCBmb3IgdklPTU1VDQo+ID4gYWxsb2NhdGlvbiwgZnJlZSwgYW5kIHJlc2V0IGhh
+bmRsaW5nLiBPdGhlcndpc2UsIHRoZSBiYXNlIGltcGxlbWVudGF0aW9uDQo+ID4gaXMgdXNlZC4N
+Cj4gPg0KPiA+IFRoZSBjdXJyZW50IGltcGxlbWVudGF0aW9uIHdpcmVzIHVwIHRoZSBUZWdyYTI0
+MSBDTURRViBiYWNrZW5kDQo+IHRocm91Z2ggdGhlDQo+ID4gZ2VuZXJpYyBvcHMgaW50ZXJmYWNl
+LiBGdW5jdGlvbmFsIENNRFFWIGJlaGF2aW91ciBpcyBhZGRlZCBpbiBzdWJzZXF1ZW50DQo+ID4g
+cGF0Y2hlcy4NCj4gPg0KPiA+IE5vIGZ1bmN0aW9uYWwgY2hhbmdlLg0KPiA+DQo+ID4gUmV2aWV3
+ZWQtYnk6IEVyaWMgQXVnZXIgPGVyaWMuYXVnZXJAcmVkaGF0LmNvbT4NCj4gPiBSZXZpZXdlZC1i
+eTogTmljb2xpbiBDaGVuIDxuaWNvbGluY0BudmlkaWEuY29tPg0KPiA+IFNpZ25lZC1vZmYtYnk6
+IFNoYW1lZXIgS29sb3RodW0gPHNrb2xvdGh1bXRob0BudmlkaWEuY29tPg0KPiA+IC0tLQ0KPiA+
+ICBpbmNsdWRlL2h3L2FybS9zbW11djMuaCB8ICAyICsNCj4gPiAgaHcvYXJtL3NtbXV2My1hY2Nl
+bC5jICAgfCA5Ng0KPiArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLQ0K
+PiA+ICAyIGZpbGVzIGNoYW5nZWQsIDkxIGluc2VydGlvbnMoKyksIDcgZGVsZXRpb25zKC0pDQo+
+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9ody9hcm0vc21tdXYzLmggYi9pbmNsdWRlL2h3
+L2FybS9zbW11djMuaA0KPiA+IGluZGV4IGZlMDQ5M2MxYWEuLmFhNmE3OTIzN2EgMTAwNjQ0DQo+
+ID4gLS0tIGEvaW5jbHVkZS9ody9hcm0vc21tdXYzLmgNCj4gPiArKysgYi9pbmNsdWRlL2h3L2Fy
+bS9zbW11djMuaA0KPiA+IEBAIC03NCw2ICs3NCw4IEBAIHN0cnVjdCBTTU1VdjNTdGF0ZSB7DQo+
+ID4gICAgICBPbk9mZkF1dG8gYXRzOw0KPiA+ICAgICAgT2FzTW9kZSBvYXM7DQo+ID4gICAgICBT
+c2lkU2l6ZU1vZGUgc3NpZHNpemU7DQo+ID4gKyAgICAvKiBTTU1VIENNRFFWIGV4dGVuc2lvbiAq
+Lw0KPiA+ICsgICAgT25PZmZBdXRvIGNtZHF2Ow0KPiA+DQo+ID4gICAgICBOb3RpZmllciBtYWNo
+aW5lX2RvbmU7DQo+ID4gIH07DQo+ID4gZGlmZiAtLWdpdCBhL2h3L2FybS9zbW11djMtYWNjZWwu
+YyBiL2h3L2FybS9zbW11djMtYWNjZWwuYw0KPiA+IGluZGV4IDMwYzQ5OGZmY2YuLjIwMmIxYWVk
+ZDkgMTAwNjQ0DQo+ID4gLS0tIGEvaHcvYXJtL3NtbXV2My1hY2NlbC5jDQo+ID4gKysrIGIvaHcv
+YXJtL3NtbXV2My1hY2NlbC5jDQo+ID4gQEAgLTE5LDYgKzE5LDcgQEANCj4gPiAgI2luY2x1ZGUg
+InNtbXV2My1pbnRlcm5hbC5oIg0KPiA+ICAjaW5jbHVkZSAic21tdXYzLWFjY2VsLmgiDQo+ID4g
+ICNpbmNsdWRlICJzeXN0ZW0vc3lzdGVtLmgiDQo+ID4gKyNpbmNsdWRlICJ0ZWdyYTI0MS1jbWRx
+di5oIg0KPiA+DQo+ID4gIC8qDQo+ID4gICAqIFRoZSByb290IHJlZ2lvbiBhbGlhc2VzIHRoZSBn
+bG9iYWwgc3lzdGVtIG1lbW9yeSwgYW5kDQo+IHNoYXJlZF9hc19zeXNtZW0NCj4gPiBAQCAtNTcw
+LDYgKzU3MSw3IEBAIHNtbXV2M19hY2NlbF9hbGxvY192aW9tbXUoU01NVXYzU3RhdGUgKnMsDQo+
+IEhvc3RJT01NVURldmljZUlPTU1VRkQgKmhpb2RpLA0KPiA+ICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIEVycm9yICoqZXJycCkNCj4gPiAgew0KPiA+ICAgICAgU01NVXYzQWNjZWxTdGF0ZSAq
+YWNjZWwgPSBzLT5zX2FjY2VsOw0KPiA+ICsgICAgY29uc3QgU01NVXYzQWNjZWxDbWRxdk9wcyAq
+Y21kcXZfb3BzID0gYWNjZWwtPmNtZHF2X29wczsNCj4gPiAgICAgIHN0cnVjdCBpb21tdV9od3B0
+X2FybV9zbW11djMgYnlwYXNzX2RhdGEgPSB7DQo+ID4gICAgICAgICAgLnN0ZSA9IHsgU01NVV9T
+VEVfQ0ZHX0JZUEFTUyB8IFNNTVVfU1RFX1ZBTElELCAweDBVTEwgfSwNCj4gPiAgICAgIH07DQo+
+ID4gQEAgLTU4MCwxMCArNTgyLDE3IEBAIHNtbXV2M19hY2NlbF9hbGxvY192aW9tbXUoU01NVXYz
+U3RhdGUgKnMsDQo+IEhvc3RJT01NVURldmljZUlPTU1VRkQgKmhpb2RpLA0KPiA+ICAgICAgdWlu
+dDMyX3QgdmlvbW11X2lkLCBod3B0X2lkOw0KPiA+ICAgICAgSU9NTVVGRFZpb21tdSAqdmlvbW11
+Ow0KPiA+DQo+ID4gLSAgICBpZiAoIWlvbW11ZmRfYmFja2VuZF9hbGxvY192aW9tbXUoaGlvZGkt
+PmlvbW11ZmQsIGhpb2RpLT5kZXZpZCwNCj4gPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICBJT01NVV9WSU9NTVVfVFlQRV9BUk1fU01NVVYzLA0KPiBzMl9od3B0X2lkLA0K
+PiA+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIE5VTEwsIDAsICZ2aW9t
+bXVfaWQsIGVycnApKSB7DQo+ID4gLSAgICAgICAgcmV0dXJuIGZhbHNlOw0KPiA+ICsgICAgaWYg
+KGNtZHF2X29wcykgew0KPiA+ICsgICAgICAgIGlmICghY21kcXZfb3BzLT5hbGxvY192aW9tbXUo
+cywgaGlvZGksICZ2aW9tbXVfaWQsIGVycnApKSB7DQo+IHRoZSBkb2MgY29tbWVudCBpbiA2LzMy
+IHNheXMgdGhhdCBhbGxvY19pb21tdSBpcyBtYW5kYXRvcnkgaWYgcHJvYmUgaXMNCj4gaW1wbGVt
+ZW50ZWQuIFNvIGl0IGxvb2tzIHRoZXJlIGFyZSBzaXR1YXRpb25zIHdoZXJlIGFsbG9jX2lvbW11
+IG1heSBiZSBudWxsLg0KPiANCj4gQnV0IGFjdHVhbGx5IGdpdmVuIHRoZSBpbXBsZW1lbnRhdGlv
+biBvZiBzbW11djNfYWNjZWxfcHJvYmVfY21kcXYNCj4gYmVsb3csDQo+IHRoZSBvcHMgaXMgb25s
+eSBub24gTlVMTCBpZiBwcm9iZSBoYXMgc3VjY2VlZGVkLiBTbyBzaG91bGRuJ3QgcHJvYmUgYmUN
+Cj4gYWxzbyBtYW5kYXRvcnk/DQoNClllYWguIFlvdSBhcmUgcmlnaHQuIFByb2JlIGlzIG1hbmRh
+dG9yeSBpZiBvcHMgaXMgbm9uIE5VTEwuIEkgd2lsbCByZXZpc2UNCnRoZSBjb21tZW50cy4NCg0K
+PiA+ICsgICAgICAgICAgICByZXR1cm4gZmFsc2U7DQo+ID4gKyAgICAgICAgfQ0KPiA+ICsgICAg
+fSBlbHNlIHsNCj4gPiArICAgICAgICBpZiAoIWlvbW11ZmRfYmFja2VuZF9hbGxvY192aW9tbXUo
+aGlvZGktPmlvbW11ZmQsIGhpb2RpLT5kZXZpZCwNCj4gPiArICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgSU9NTVVfVklPTU1VX1RZUEVfQVJNX1NNTVVWMywNCj4gPiAr
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgczJfaHdwdF9pZCwgTlVM
+TCwgMCwgJnZpb21tdV9pZCwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgZXJycCkpIHsNCj4gPiArICAgICAgICAgICAgcmV0dXJuIGZhbHNlOw0KPiA+ICsg
+ICAgICAgIH0NCj4gPiAgICAgIH0NCj4gPg0KPiA+ICAgICAgdmlvbW11ID0gZ19uZXcwKElPTU1V
+RkRWaW9tbXUsIDEpOw0KPiA+IEBAIC02MjksMTIgKzYzOCw3MiBAQCBmcmVlX2J5cGFzc19od3B0
+Og0KPiA+ICBmcmVlX2Fib3J0X2h3cHQ6DQo+ID4gICAgICBpb21tdWZkX2JhY2tlbmRfZnJlZV9p
+ZChoaW9kaS0+aW9tbXVmZCwgYWNjZWwtPmFib3J0X2h3cHRfaWQpOw0KPiA+ICBmcmVlX3Zpb21t
+dToNCj4gPiAtICAgIGlvbW11ZmRfYmFja2VuZF9mcmVlX2lkKGhpb2RpLT5pb21tdWZkLCB2aW9t
+bXUtPnZpb21tdV9pZCk7DQo+ID4gKyAgICBpZiAoY21kcXZfb3BzICYmIGNtZHF2X29wcy0+ZnJl
+ZV92aW9tbXUpIHsNCj4gPiArICAgICAgICBjbWRxdl9vcHMtPmZyZWVfdmlvbW11KHMpOw0KPiA+
+ICsgICAgfSBlbHNlIHsNCj4gPiArICAgICAgICBpb21tdWZkX2JhY2tlbmRfZnJlZV9pZChoaW9k
+aS0+aW9tbXVmZCwgdmlvbW11LT52aW9tbXVfaWQpOw0KPiA+ICsgICAgfQ0KPiA+ICAgICAgZ19m
+cmVlKHZpb21tdSk7DQo+ID4gICAgICBhY2NlbC0+dmlvbW11ID0gTlVMTDsNCj4gPiAgICAgIHJl
+dHVybiBmYWxzZTsNCj4gPiAgfQ0KPiA+DQo+ID4gK3N0YXRpYyBjb25zdCBTTU1VdjNBY2NlbENt
+ZHF2T3BzICoNCj4gPiArc21tdXYzX2FjY2VsX3Byb2JlX2NtZHF2KFNNTVV2M1N0YXRlICpzLA0K
+PiBIb3N0SU9NTVVEZXZpY2VJT01NVUZEICppZGV2LA0KPiA+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICAgRXJyb3IgKiplcnJwKQ0KPiA+ICt7DQo+ID4gKyAgICBjb25zdCBTTU1VdjNBY2NlbENt
+ZHF2T3BzICpvcHMgPSB0ZWdyYTI0MV9jbWRxdl9nZXRfb3BzKCk7DQo+ID4gKw0KPiA+ICsgICAg
+aWYgKCFvcHMgfHwgIW9wcy0+cHJvYmUpIHsNCj4gPiArICAgICAgICBlcnJvcl9zZXRnKGVycnAs
+ICJObyBDTURRViBvcHMgZm91bmQiKTsNCj4gPiArICAgICAgICByZXR1cm4gTlVMTDsNCj4gPiAr
+ICAgIH0NCj4gPiArDQo+ID4gKyAgICBpZiAoIW9wcy0+cHJvYmUocywgaWRldiwgZXJycCkpIHsN
+Cj4gPiArICAgICAgICByZXR1cm4gTlVMTDsNCj4gPiArICAgIH0NCj4gPiArICAgIHJldHVybiBv
+cHM7DQo+ID4gK30NCj4gPiArDQo+ID4gK3N0YXRpYyBib29sDQo+ID4gK3NtbXV2M19hY2NlbF9z
+ZWxlY3RfY21kcXYoU01NVXYzU3RhdGUgKnMsDQo+IEhvc3RJT01NVURldmljZUlPTU1VRkQgKmlk
+ZXYsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgRXJyb3IgKiplcnJwKQ0KPiA+ICt7
+DQo+ID4gKyAgICBjb25zdCBTTU1VdjNBY2NlbENtZHF2T3BzICpvcHMgPSBOVUxMOw0KPiA+ICsN
+Cj4gPiArICAgIGlmIChzLT5zX2FjY2VsLT5jbWRxdl9vcHMpIHsNCj4gPiArICAgICAgICByZXR1
+cm4gdHJ1ZTsNCj4gPiArICAgIH0NCj4gPiArDQo+ID4gKyAgICBzd2l0Y2ggKHMtPmNtZHF2KSB7
+DQo+ID4gKyAgICBjYXNlIE9OX09GRl9BVVRPX09GRjoNCj4gPiArICAgICAgICBzLT5zX2FjY2Vs
+LT5jbWRxdl9vcHMgPSBOVUxMOw0KPiA+ICsgICAgICAgIHJldHVybiB0cnVlOw0KPiA+ICsgICAg
+Y2FzZSBPTl9PRkZfQVVUT19BVVRPOg0KPiA+ICsgICAgICAgIG9wcyA9IHNtbXV2M19hY2NlbF9w
+cm9iZV9jbWRxdihzLCBpZGV2LCBOVUxMKTsNCj4gPiArICAgICAgICBicmVhazsNCj4gPiArICAg
+IGNhc2UgT05fT0ZGX0FVVE9fT046DQo+ID4gKyAgICAgICAgb3BzID0gc21tdXYzX2FjY2VsX3By
+b2JlX2NtZHF2KHMsIGlkZXYsIGVycnApOw0KPiA+ICsgICAgICAgIGlmICghb3BzKSB7DQo+ID4g
+KyAgICAgICAgICAgIGVycm9yX2FwcGVuZF9oaW50KGVycnAsICJDTURRViByZXF1ZXN0ZWQgYnV0
+IG5vdCBzdXBwb3J0ZWQiKTsNCj4gPiArICAgICAgICAgICAgcmV0dXJuIGZhbHNlOw0KPiA+ICsg
+ICAgICAgIH0NCj4gPiArICAgICAgICBicmVhazsNCj4gPiArICAgIGRlZmF1bHQ6DQo+ID4gKyAg
+ICAgICAgZ19hc3NlcnRfbm90X3JlYWNoZWQoKTsNCj4gPiArICAgIH0NCj4gPiArDQo+ID4gKyAg
+ICBpZiAob3BzKSB7DQo+ID4gKyAgICAgICAgZ19hc3NlcnQob3BzLT5hbGxvY192aW9tbXUpOw0K
+PiBJIHRoaW5rIEkgd291bGQgbW92ZSB0aGUgYXNzZXJ0IGF0IHRoZSBlbmQgb2YNCj4gDQo+IHNt
+bXV2M19hY2NlbF9wcm9iZV9jbWRxdigpDQoNCkFncmVlLiBJIHdpbGwgY2hhbmdlIGl0IGludG86
+DQoNCnNtbXV2M19hY2NlbF9wcm9iZV9jbWRxdigpDQogIHsNCiAgICAgLi4uLg0KICAgICAgaWYg
+KCFvcHMpIHsNCiAgICAgICAgICBlcnJvcl9zZXRnKGVycnAsICJObyBDTURRViBvcHMgZm91bmQi
+KTsNCiAgICAgICAgICByZXR1cm4gTlVMTDsNCiAgICAgIH0NCiAgICAgIGdfYXNzZXJ0KG9wcy0+
+cHJvYmUpOw0KICAgICAgZ19hc3NlcnQob3BzLT5hbGxvY192aW9tbXUpOw0KDQogICAgICBpZiAo
+IW9wcy0+cHJvYmUocywgaWRldiwgZXJycCkpIHsNCiAgICAgICAgICByZXR1cm4gTlVMTDsNCiAg
+ICAgIH0NCiAgICAgIHJldHVybiBvcHM7DQogIH0NCg0KVGhhbmtzLA0KU2hhbWVlcg0K
 

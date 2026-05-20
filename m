@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50C12CD5BAB
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:50:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B75EFCD4F5E
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:51:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPajf-000345-SA; Wed, 20 May 2026 02:48:55 -0400
+	id 1wPajc-000304-0H; Wed, 20 May 2026 02:48:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPaja-0002yE-Hm; Wed, 20 May 2026 02:48:50 -0400
+ id 1wPajY-0002vY-9X; Wed, 20 May 2026 02:48:48 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPajU-0001OE-VO; Wed, 20 May 2026 02:48:50 -0400
+ id 1wPajU-0001O5-FW; Wed, 20 May 2026 02:48:47 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K6lnbW096590
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K6lnbl096590
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 20 May 2026 15:48:15 +0900 (JST)
+ Wed, 20 May 2026 15:48:19 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=rjK8VdqZzGwrfnLNXD1G7rM6q+c/dHmZh6ojIHVBQdw=; 
+DKIM-Signature: a=rsa-sha256; bh=PeAfTggliYM8PbB3aO65nQeIokDaaWH/ijf6urxywEg=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1779259695; v=1;
- b=KJCHsIy6toYNfbj7EaPfVLcLFRdpe6ysUDFu4VCqAiHrpx5OWJgr+aIYl+PoADfQ
- j/x7ZdF3zx5kp77WAPNydG2evA0/SqYXGNMLm2Xj2zHN5cS67bOvPQS3HBKu01ko
- zGC4PwceboLZNP/rv8r3Lmi4zFW1DutSKOsPh6PMCplwx9K+lPXTTjNYwO48sNKC
- 0XIWqWms+KRyI02dcMhwDiw5hhojEPc/+gcjfCTBQ/6mD/85/IQVbgY4Cpj41kZ5
- sNvgu5tbnQhj4dYfHo9kEQIsS/nhUcVhpbkflaSN+CR4dfw0AS0vl04duwxVLJBQ
- lwrycC6+R6d7id97ykArGw==
+ s=rs20250326; t=1779259699; v=1;
+ b=hntnl22h97BWd05XgDOGEJzcQWPwPQog/Ap95rwV23jZ1xjJD5oNbMWSIn+x6bKA
+ t0QYihon0MEbPQ4vcwoDfF1MGZCRYKlPQ43jIjEQ+Nv78RoodUNF9ZdZCMK4m5jC
+ 4lQtNB8ZIExS0wBpUnjlqc3v0a9TiajS4zd99wkvO/C2CQBWhNJuRcNj1HwwFCQC
+ fVkd7rrc4o173cuSzKXoXAF1iy9XHkWEvprWb8NnlxS9tc3gmH5eos2hxaDLHRfN
+ MD/Q7qvMZr+lDXfnS+N6grTtwtK1wlpbRo+WwYKBHB+p1TsWPdV2odYiWh+E1G+F
+ xr3WJjliNdpZwuL7H/9IYw==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 20 May 2026 15:47:52 +0900
-Subject: [PATCH v3 09/29] hw/char/escc: Use Linux key codes
+Date: Wed, 20 May 2026 15:48:07 +0900
+Subject: [PATCH v3 24/29] ui/sdl2: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260520-input-v3-9-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260520-input-v3-24-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -58,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1806;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2925;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=sl/mWODr9o1gArcAX6QS2hK8SRqnl+M7Q2UAxTmMU64=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZvpFyfwxLOo/NPTjDy3Xrde6Eun4xsovlysc0CM+3qn
- EJnFR3sKGVhEONikBVTZEkp2s2tEV37qTAhvgVmDisTyBAGLk4BmEgEPyPDyy3axjKlmn5WTyIN
- Que2/6hbVmhhuu5Ka3vKq+83D684ysjwd9ZVgxilJdmiu7ZMKL6pbpW6VlhDJn1mivOcDr4Nvk8
- YAA==
+ bh=+hpNcU16QOjJ5NtQGTuv6FqGNScqZe3lgtTDdAn3nRw=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZvpOYyxc2L5/Iza195cp6fpU9vlvOuxUn33inrZJ1bq
+ HzxcphwRykLgxgXg6yYIktK0W5ujejaT4UJ8S0wc1iZQIYwcHEKwESMmhn+ijlkNVxh5C66Keso
+ 8X6uZaPX4a//95tWzjsqmqFio8f6gOGfZspkiaAU7wsMotsesop2H+rwvHfsxN+COEu7wIDO5td
+ sAA==
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -96,53 +96,72 @@ representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/char/escc.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ ui/sdl2-input.c | 18 +++++++++---------
+ ui/trace-events |  2 +-
+ 2 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/hw/char/escc.c b/hw/char/escc.c
-index 39483ca03bf2..7aae627fb48f 100644
---- a/hw/char/escc.c
-+++ b/hw/char/escc.c
-@@ -30,6 +30,7 @@
- #include "migration/vmstate.h"
- #include "qemu/module.h"
- #include "hw/char/escc.h"
+diff --git a/ui/sdl2-input.c b/ui/sdl2-input.c
+index fdbdc427dc9e..7bebc3f3e5ce 100644
+--- a/ui/sdl2-input.c
++++ b/ui/sdl2-input.c
+@@ -24,6 +24,7 @@
+ /* Ported SDL 1.2 code to 2.0 by Dave Airlie. */
+ 
+ #include "qemu/osdep.h"
 +#include "standard-headers/linux/input-event-codes.h"
  #include "ui/console.h"
+ #include "ui/input.h"
+ #include "ui/sdl2.h"
+@@ -32,28 +33,27 @@
+ void sdl2_process_key(struct sdl2_console *scon,
+                       SDL_KeyboardEvent *ev)
+ {
+-    int qcode;
++    unsigned int lnx;
+     QemuConsole *con = scon->dcl.con;
  
- #include "qemu/cutils.h"
-@@ -804,7 +805,7 @@ static void sunkbd_handle_event(DeviceState *dev, QemuConsole *src,
-     trace_escc_sunkbd_event_in(qcode, QKeyCode_str(qcode),
-                                evt->key.down);
- 
--    if (qcode == Q_KEY_CODE_CAPS_LOCK) {
-+    if (evt->key.key == KEY_CAPSLOCK) {
-         if (evt->key.down) {
-             s->caps_lock_mode ^= 1;
-             if (s->caps_lock_mode == 2) {
-@@ -818,7 +819,7 @@ static void sunkbd_handle_event(DeviceState *dev, QemuConsole *src,
-         }
-     }
- 
--    if (qcode == Q_KEY_CODE_NUM_LOCK) {
-+    if (evt->key.key == KEY_NUMLOCK) {
-         if (evt->key.down) {
-             s->num_lock_mode ^= 1;
-             if (s->num_lock_mode == 2) {
-@@ -832,11 +833,11 @@ static void sunkbd_handle_event(DeviceState *dev, QemuConsole *src,
-         }
-     }
- 
--    if (qcode >= qemu_input_map_qcode_to_sun_len) {
-+    if (evt->key.key >= qemu_input_map_linux_to_sun_len) {
+-    if (ev->keysym.scancode >= qemu_input_map_usb_to_qcode_len) {
++    if (ev->keysym.scancode >= qemu_input_map_usb_to_linux_len) {
          return;
      }
+-    qcode = qemu_input_map_usb_to_qcode[ev->keysym.scancode];
+-    trace_sdl2_process_key(ev->keysym.scancode, qcode,
++    lnx = qemu_input_map_usb_to_linux[ev->keysym.scancode];
++    trace_sdl2_process_key(ev->keysym.scancode, lnx,
+                            ev->type == SDL_KEYDOWN ? "down" : "up");
+-    qkbd_state_key_event(scon->kbd, qemu_input_map_qcode_to_linux[qcode],
+-                         ev->type == SDL_KEYDOWN);
++    qkbd_state_key_event(scon->kbd, lnx, ev->type == SDL_KEYDOWN);
  
--    keycode = qemu_input_map_qcode_to_sun[qcode];
-+    keycode = qemu_input_map_linux_to_sun[evt->key.key];
-     if (!evt->key.down) {
-         keycode |= 0x80;
-     }
+     if (QEMU_IS_TEXT_CONSOLE(con)) {
+         QemuTextConsole *s = QEMU_TEXT_CONSOLE(con);
+         bool ctrl = qkbd_state_modifier_get(scon->kbd, QKBD_MOD_CTRL);
+         if (ev->type == SDL_KEYDOWN) {
+-            switch (qcode) {
+-            case Q_KEY_CODE_RET:
++            switch (lnx) {
++            case KEY_ENTER:
+                 qemu_text_console_put_keysym(s, '\n');
+                 break;
+             default:
+-                qemu_text_console_put_qcode(s, qcode, ctrl);
++                qemu_text_console_put_linux(s, lnx, ctrl);
+                 break;
+             }
+         }
+diff --git a/ui/trace-events b/ui/trace-events
+index 237f5a65af23..339a61f34153 100644
+--- a/ui/trace-events
++++ b/ui/trace-events
+@@ -135,7 +135,7 @@ input_event_mtt(int conidx, const char *axis, int value) "con %d, axis %s, value
+ input_event_sync(void) ""
+ 
+ # sdl2-input.c
+-sdl2_process_key(int sdl_scancode, int qcode, const char *action) "translated SDL scancode %d to QKeyCode %d (%s)"
++sdl2_process_key(int sdl_scancode, unsigned int lnx, const char *action) "translated SDL scancode %d to Linux scancode %u (%s)"
+ 
+ # spice-display.c
+ qemu_spice_add_memslot(int qid, uint32_t slot_id, unsigned long virt_start, unsigned long virt_end, int async) "%d %u: host virt 0x%lx - 0x%lx async=%d"
 
 -- 
 2.54.0

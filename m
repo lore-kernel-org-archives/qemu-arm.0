@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85BCECD5BAA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C1B5CD4F3D
 	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 18:28:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPlc6-00041B-8m; Wed, 20 May 2026 14:25:50 -0400
+	id 1wPleG-0007kA-9g; Wed, 20 May 2026 14:28:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wPlc2-0003mp-Op
- for qemu-arm@nongnu.org; Wed, 20 May 2026 14:25:46 -0400
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+ id 1wPlcP-0004LI-6j
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 14:26:10 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wPlc0-0001xd-Vm
- for qemu-arm@nongnu.org; Wed, 20 May 2026 14:25:46 -0400
-Received: by mail-pj1-x1036.google.com with SMTP id
- 98e67ed59e1d1-368f25ff4c4so2747785a91.2
- for <qemu-arm@nongnu.org>; Wed, 20 May 2026 11:25:44 -0700 (PDT)
+ id 1wPlcM-0002Ff-HE
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 14:26:08 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-2babfd18435so22350505ad.1
+ for <qemu-arm@nongnu.org>; Wed, 20 May 2026 11:26:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779301543; x=1779906343; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779301562; x=1779906362; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7QG3SAWZXTLSfeqfkLdTcj+WQldu34LGY3+/Bb5YVXA=;
- b=RhopY10aq53B7JpUgCs+vsL1KcFRPFWEoJU5nyN3A69RFIyLreWYREViu4b4V/Mz8e
- YxYg5ouc2m3xN76eHxhEAxHF95yXn42hsVghhLUwVMEHW2RHZN+mRUmTqvtPShfgRomT
- YbOPcmwh5FJVZVxGQY60iSZ9l4yGXKu0Jn63LLIMe+6bSQBAk5KsSeeqbxP8WimTrJke
- P155gUe8FTqFfz9xmgbSdyNs+cC1p/dKronRraW9Jgf8R8prAa6szEpdKIvd2kR4T+6r
- baLXwwcESmxUcB8CExVQHRWPm9sCVfVwkJl9wwvfv5adebzrHU43o2C9ysFF2jTI9g+c
- zjng==
+ bh=Ke6jInMIcSbZvQJLAez0XGyYiEeJ5p5eH1CrpDu09no=;
+ b=VY1i5J61y9btwiSc5jBvBfx7CvjFc1Se1cOvtRBzY0lAuP5/txqfVZK/uA2VkT+YYR
+ O91//TN9AmDknTxXvFWYTCtmfacLlwMrJnPaM+KnVn4oRmOnEVQ3JTAx1xVUvxLXFJvr
+ DxRYCgKtsjUj8HjCm84T+0hj7udxZBJ4OAZcjAWgcaf+wvn/rvFoO32hmOW19TKTCzyO
+ hikDmWArU1dKvCpXpcOqCQUNxFMgtEmibLOhJxBDwGmKame1nPfRJYkhUIbx+ocy1qCh
+ rcJW4GDkCW89ezrKhbdSQ/GP8ET3we8FQzbvfnJHnKFQeeK7dvujC0pkYVVE127VZIT7
+ DtZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779301543; x=1779906343;
+ d=1e100.net; s=20251104; t=1779301562; x=1779906362;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=7QG3SAWZXTLSfeqfkLdTcj+WQldu34LGY3+/Bb5YVXA=;
- b=OS7nJWBwuwGIr5y1J3MxIxTqvxd6BojjdXZoin2NO4pMebxzfh1XoyMGk9jGFAkQb0
- uu///mAC7c3025dr/CuEEERDHShejdAQstBKQ0jwde+YUIpWrnbZM61SceBAQPfk5xZ9
- w5/XFF3eW7deVi3MpPFFDOODQD/ffU1ejkPWGuGkYqlLLp/UD/xeCKi6+zx3uoqasFSF
- /JJ9IdljEdun5Dfco3GCjW0F0U0Hc+r1uMd4Qi30VUQCfWtfRCFle5VyiAQ/1dojNTq/
- ig9glIwUUhOEi6sJ160YtrzmjR6UTa89jQ2XMY21jeiorGzbAYWN3zM9wHY4HNWrEub2
- OONQ==
-X-Gm-Message-State: AOJu0Ywfd8wei+0kohLS/tOhYjwZ8m1jwDNnkC5aPxZ0FS8WoLvplsfs
- 5E+At1gqIHWh4yIb3o1XY/l0DUgU7hgOkygGuOB0J/qjS5J9D73vrekLvBZn4h1x1AW8hXT5ym8
- CoGvhzvk=
-X-Gm-Gg: Acq92OHqIAIF5Pv2S1mDajTVKSxWUP/YM+4lFmjRH6FBSgVWs7Bf+tzqsGsuV0wbzUW
- ZazxiB7KedhnO2u+tphK3g/YEwAh7Q0ZSlroAZbGk+XqtKGnI34QBMOtDisRSNBsCvMGYtKyMXE
- /EjbzN1OT+5k+y3lDIL89TaQsCqChJFBeAvbMBAXbU8B9qb4t+4fJ386AI9weBGzsNnuRzbA2Zi
- ey8RfvtghEpzBbWi3GK2sHmRVxPfvAUtwRB3t5GNemI399pCdSVaFWHnqIolx6wHzhS+u9jhXxz
- /yEER9yFc26nrkR6aEPR3iOVInPgQZTvgQUG/Q1A1inJeK2mdhz/dDa/yDxYrdE2pZe0pXxkbJF
- dSdVzyYZEnJJYa9lUKNET5jdUOSXG73+V+bohWRaPqv08FEdhmJpQ+86jhsKQ6YiiD2A0x41U2V
- RSnh4rPeJMUpN2GlBstTuaZzMDQ/VLeh6T1JRKb6s=
-X-Received: by 2002:a17:90b:3845:b0:366:16d1:6a26 with SMTP id
- 98e67ed59e1d1-369518b00c0mr25198534a91.5.1779301543345; 
- Wed, 20 May 2026 11:25:43 -0700 (PDT)
+ bh=Ke6jInMIcSbZvQJLAez0XGyYiEeJ5p5eH1CrpDu09no=;
+ b=dJibTdRLAe2icFNHXxhE+Z6cHksehwRSTjHsQkEawZaEl/GGCj5+kdbFcqJ5JDxasS
+ JLPbqlQZjomICRbFcAU802NZP3PrJd/3vNEarmyoPWtpAtrV2go793bBFS2WlF9gapqf
+ uX4Qb4YD+lLF5r8dQTKoNK5E78eCKfaC9jimWDDWENpxP245w4lyCzjeDigkoSZpR1tL
+ NYuciB6RNmn7xlIv6WYvfOQ0p1G+h8hu67Ugsi5p1x1e6Shv8fbEmif35zQcTdVd6cmX
+ UFlE6Wf/wV0r1x5OIUmmnSEQIWx+18KUMD1VCfKonXiPlxBnPeHksUQuXLa8tlD6oeCo
+ Uttw==
+X-Gm-Message-State: AOJu0YyVKNpbDz9S7waann3ZoI8EyKIfCHe8K33ztVI41hSZa9KD5HnB
+ HIcLRtL91K5jJ+2wltZ+boNagOCMXx4Sap2Tb00XkVE7QYis6QTAZ1bFVESRxrHMuBhzraMHvuH
+ pBURcdg0=
+X-Gm-Gg: Acq92OFqXO0x9vKLoAFvPz68cmCZroMucFYWSXq6UewKvdriWzZWT8JhwDExXLlalqT
+ kPePQOZ/FdfChjSj6awHUGPZuoLMbC7qatydi3xRZdYQ/7r6tLLrR6qaB4MSgvktAl2CVaOqt7j
+ 8aYqEiP2KfIE1FZofgVOXWMQFtPk0Llv1UEavt/k60+s6JWeH6G808w5N16JM19ICf5YqZ48FXE
+ UQ4TAEdfzw+dsnrOe8+HKp5NP2D/ZEijJiEVd2J34I8KECwQdBxKrPu+a8u120E3Ih2bRTO6ZFH
+ KfKxZQWBSk5nRnBLDyQPVcDQbk9m/TKyf3LfKdOkS7uHVW3FHn4OZBWZFkVLbaTcY3RBvhUYKDa
+ jqFVRloMvsqvjQOFRX1imKsVW0fVa7BP0nkP6wX55/T6HgVm3O+aI5w5LcQOMmgyklb+d5ittdP
+ aUFf7/0kzWYakaPABFfRAty4czDlA+
+X-Received: by 2002:a17:902:f084:b0:2b2:57df:264d with SMTP id
+ d9443c01a7336-2bd7e8cbce3mr173162295ad.33.1779301561774; 
+ Wed, 20 May 2026 11:26:01 -0700 (PDT)
 Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2bd5c0605ddsm217413925ad.32.2026.05.20.11.25.42
+ d9443c01a7336-2bd5c0605ddsm217413925ad.32.2026.05.20.11.26.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 May 2026 11:25:42 -0700 (PDT)
+ Wed, 20 May 2026 11:26:01 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v6 40/64] target/arm: Enable FEAT_LUT for -cpu max
-Date: Wed, 20 May 2026 11:21:49 -0700
-Message-ID: <20260520182213.872945-41-richard.henderson@linaro.org>
+Subject: [PATCH v6 64/64] linux-user/aarch64: Implement FPMR signal frames
+Date: Wed, 20 May 2026 11:22:13 -0700
+Message-ID: <20260520182213.872945-65-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260520182213.872945-1-richard.henderson@linaro.org>
 References: <20260520182213.872945-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,34 +101,120 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/cpu64.c        | 1 +
- docs/system/arm/emulation.rst | 1 +
- 2 files changed, 2 insertions(+)
+ linux-user/aarch64/signal.c | 44 ++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 43 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index a377f67b9c..bc866c5a67 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1263,6 +1263,7 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64ISAR2, BC, 1);       /* FEAT_HBC */
-     t = FIELD_DP64(t, ID_AA64ISAR2, WFXT, 2);     /* FEAT_WFxT */
-     t = FIELD_DP64(t, ID_AA64ISAR2, CSSC, 1);     /* FEAT_CSSC */
-+    t = FIELD_DP64(t, ID_AA64ISAR2, LUT, 1);      /* FEAT_LUT */
-     t = FIELD_DP64(t, ID_AA64ISAR2, ATS1A, 1);    /* FEAT_ATS1A */
-     SET_IDREG(isar, ID_AA64ISAR2, t);
+diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
+index f7edfa249e..899fce7643 100644
+--- a/linux-user/aarch64/signal.c
++++ b/linux-user/aarch64/signal.c
+@@ -73,6 +73,13 @@ struct target_esr_context {
+     uint64_t esr;
+ };
  
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 44c7196d09..cf8771d541 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -101,6 +101,7 @@ the following architecture extensions:
- - FEAT_LSE (Large System Extensions)
- - FEAT_LSE2 (Large System Extensions v2)
- - FEAT_LSE128 (128-bit Atomics)
-+- FEAT_LUT (Lookup table instructions with 2-bit and 4-bit indices)
- - FEAT_LVA (Large Virtual Address space)
- - FEAT_MEC (Memory Encryption Contexts)
++#define TARGET_FPMR_MAGIC   0x46504d52
++
++struct target_fpmr_context {
++    struct target_aarch64_ctx head;
++    uint64_t fpmr;
++};
++
+ #define TARGET_EXTRA_MAGIC  0x45585401
  
+ struct target_extra_context {
+@@ -362,6 +369,14 @@ static bool target_setup_gcs_record(struct target_gcs_context *ctx,
+     return true;
+ }
+ 
++static void target_setup_fpmr_record(struct target_fpmr_context *ctx,
++                                     CPUARMState *env)
++{
++    __put_user(TARGET_FPMR_MAGIC, &ctx->head.magic);
++    __put_user(sizeof(*ctx), &ctx->head.size);
++    __put_user(env->vfp.fpmr, &ctx->fpmr);
++}
++
+ static void target_restore_general_frame(CPUARMState *env,
+                                          struct target_rt_sigframe *sf)
+ {
+@@ -518,6 +533,12 @@ static void target_restore_tpidr2_record(CPUARMState *env,
+     __get_user(env->cp15.tpidr2_el0, &tpidr2->tpidr2);
+ }
+ 
++static void target_restore_fpmr_record(CPUARMState *env,
++                                       struct target_fpmr_context *fpmr)
++{
++    __get_user(env->vfp.fpmr, &fpmr->fpmr);
++}
++
+ static bool target_restore_zt_record(CPUARMState *env,
+                                      struct target_zt_context *zt, int size,
+                                      int svcr)
+@@ -610,6 +631,7 @@ static int target_restore_sigframe(CPUARMState *env,
+     struct target_tpidr2_context *tpidr2 = NULL;
+     struct target_zt_context *zt = NULL;
+     struct target_gcs_context *gcs = NULL;
++    struct target_fpmr_context *fpmr = NULL;
+     uint64_t extra_datap = 0;
+     bool used_extra = false;
+     bool rebuild_hflags = false;
+@@ -691,6 +713,15 @@ static int target_restore_sigframe(CPUARMState *env,
+             gcs = (struct target_gcs_context *)ctx;
+             break;
+ 
++        case TARGET_FPMR_MAGIC:
++            if (fpmr
++                || size != sizeof(struct target_fpmr_context)
++                || !cpu_isar_feature(aa64_fpmr, env_archcpu(env))) {
++                goto err;
++            }
++            fpmr = (struct target_fpmr_context *)ctx;
++            break;
++
+         case TARGET_EXTRA_MAGIC:
+             if (extra || size != sizeof(struct target_extra_context)) {
+                 goto err;
+@@ -735,6 +766,9 @@ static int target_restore_sigframe(CPUARMState *env,
+     if (tpidr2) {
+         target_restore_tpidr2_record(env, tpidr2);
+     }
++    if (fpmr) {
++        target_restore_fpmr_record(env, fpmr);
++    }
+     /*
+      * NB that we must restore ZT after ZA so the check that there's
+      * no ZT record if SVCR.ZA is 0 gets the right value of SVCR.
+@@ -817,7 +851,7 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+                                uc.tuc_mcontext.__reserved),
+     };
+     int fpsimd_ofs, fr_ofs, sve_ofs = 0, za_ofs = 0, tpidr2_ofs = 0;
+-    int zt_ofs = 0, esr_ofs = 0, gcs_ofs = 0;
++    int zt_ofs = 0, esr_ofs = 0, gcs_ofs = 0, fpmr_ofs = 0;
+     int sve_size = 0, za_size = 0, tpidr2_size = 0, zt_size = 0;
+     struct target_rt_sigframe *frame;
+     struct target_rt_frame_record *fr;
+@@ -841,6 +875,11 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+                                        &layout);
+     }
+ 
++    if (cpu_isar_feature(aa64_fpmr, env_archcpu(env))) {
++        fpmr_ofs = alloc_sigframe_space(sizeof(struct target_fpmr_context),
++                                        &layout);
++    }
++
+     /* SVE state needs saving only if it exists.  */
+     if (cpu_isar_feature(aa64_sve, env_archcpu(env)) ||
+         cpu_isar_feature(aa64_sme, env_archcpu(env))) {
+@@ -917,6 +956,9 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+         !target_setup_gcs_record((void *)frame + gcs_ofs, env, return_addr)) {
+         goto give_sigsegv;
+     }
++    if (fpmr_ofs) {
++        target_setup_fpmr_record((void *)frame + fpmr_ofs, env);
++    }
+     target_setup_end_record((void *)frame + layout.std_end_ofs);
+     if (layout.extra_ofs) {
+         target_setup_extra_record((void *)frame + layout.extra_ofs,
 -- 
 2.43.0
 

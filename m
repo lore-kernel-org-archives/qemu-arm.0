@@ -4,48 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67E1FCD4F54
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:50:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28FD1CD4F54
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:50:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPajf-00033h-KV; Wed, 20 May 2026 02:48:55 -0400
+	id 1wPajf-00033M-A0; Wed, 20 May 2026 02:48:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPaja-0002xM-3U; Wed, 20 May 2026 02:48:50 -0400
+ id 1wPajZ-0002xD-Vu; Wed, 20 May 2026 02:48:50 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPajU-0001Ok-CB; Wed, 20 May 2026 02:48:49 -0400
+ id 1wPajU-0001S3-W1; Wed, 20 May 2026 02:48:49 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K6lnbN096590
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K6lnba096590
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 20 May 2026 15:48:13 +0900 (JST)
+ Wed, 20 May 2026 15:48:16 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=t2M2joBceZTT8pJd9+le33C3+fVDM78uHuNhZh58MLU=; 
+DKIM-Signature: a=rsa-sha256; bh=np+DDHtPXccYUqkjVcTnB/XI0jqPO74kxFNXv7P7G5A=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1779259693; v=1;
- b=vUH356JHo8oaVBCQoJA4/L0V283Zrrrf5B7Nb/0YFemUbrcN92F1QELrKuHTp3/c
- EPWmMehnrlbSEQ4ylP65bE7t0iYSV/VWza0t0Qn1jseyKnagyoUF5BVtMh4krrs0
- PbvK8xXECeR82DmIXtcsCMF7FQzLgZzQ2Qx9V6CYCJgWJKykoMgv5gMWY2m66vBu
- enGbFjyC2nU1ixtoBKONP51+3YJSMuJXCAf28u0wNAIJQO8S8XY6LVIH7tu3rRSv
- +cEGJT6fMh86M1He3Yh2R8hW26+Brz5WirFvizNCQTPMHls8RRtnwudZCiA41eWr
- VBg1jMv/uLa/byzeuHYCog==
+ s=rs20250326; t=1779259696; v=1;
+ b=UwG9ilZVjwzm/Sym8PIMQhY9PwMLXiw3iF1kPSw89oKI9/OoDPv41jnYUFS5B7Qf
+ SkTPikqlyG5/k1wwQJhf1Al0iYMWCkjZx0KhsxZ7W11r6OQArSvv5Q3pK3WbK8jL
+ PjvUliZgSZNlka9Z2GO42H2Z9H0tu8thJ7gIY0HpYzb5c8LHQ7XXacUAFhitVW53
+ 45JaOf2uBFsHLAnQJSiHjzBQuOx+MJz39mXW19Zx/jU4+NUI+aB7p2V95SkbjNz6
+ ttDV9IlQNheZWPxlMpZQBt+ukjB+oqfKnmohXhhZYbFQ2QcW25fMZ6OiMugD5qHj
+ Ez8FA6bxjtXbDlxOa1FAtw==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Subject: [PATCH v3 00/29] ui/input: Decouple internal and QAPI input events
-Date: Wed, 20 May 2026 15:47:43 +0900
-Message-Id: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
+Date: Wed, 20 May 2026 15:47:56 +0900
+Subject: [PATCH v3 13/29] hw/input/ps2: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3XNQQ6CMBQE0KuYrm1TWqjgynsYF9B+4GNCSVuIh
- HB3C2jixuUkM28W4sEheHI9LcTBhB5tH4M8n4huy74BiiZmIrhQPBU5xX4YAy2qIq1lXkCZZSR
- 2Bwc1vnbn/jiyH6sOdNjGW6NFH6yb96Mp2XqHmfHiY04J5VSpOsmNAGNA3ZxvmEaGbKTBPmfLS
- s26gWwHk/ghEvklRCQqqTVPL1zyvPxLrOv6BjjvV3T8AAAA
-X-Change-ID: 20260428-input-9b94f389ea55
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260520-input-v3-13-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
+References: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
 Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
@@ -61,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=7080;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=7874;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=aQC4hD5EQpKTPJ8gKPP7ag5YEfTjCtOYeKW73VvXPqg=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZvpFid9exdpdpsObv4Vb++uqS//u8NnR1pR41Eljv8D
- tyr1Hezo5SFQYyLQVZMkSWlaDe3RnTtp8KE+BaYOaxMIEMYuDgFYCLVuQx/Bbu9nstcSCsUMxWZ
- xtf59piP2rxNk8PF9zJtlHN6vVP1LCPDtOzKv+sOfdX5umnp3cKrT34ZB2t9veMnbsTJ+NT0vkM
- QLwA=
+ bh=Ae9vuWLzKV99hiDeipjG2FLc+ZAAXG2DeDzyFVZrokg=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZvpJJDzb/dn6vv8n7ZqPf+gFqyscUTjtMZRwwE9l4RX
+ tb7+1FaRykLgxgXg6yYIktK0W5ujejaT4UJ8S0wc1iZQIYwcHEKwEQunWb4HzfDyu/yikRF+6/7
+ vujE3Zxw5ZhK1puyf38mLluxmvU6/09Ghi03fka8u5z3rmlC9allGT+cg9cVCVVcCn3ZJNyRneJ
+ 3gBMA
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -93,164 +90,190 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The internal input event representation has different requirements from
-the QAPI representation. Using QAPI types directly spreads QAPI-specific
-constraints throughout the internal input code. Keep that impact
-localized by decoupling the two representations with a dedicated
-conversion layer. The decoupled internal representation has the
-following benefits:
-
-- It avoids wrapper structs and pointer indirections required by QAPI.
-  They are useful at the QMP boundary, but unnecessary for internal
-  input events and make handlers more verbose.
-
-- It enforces a single key code set while QAPI input events allow key
-  codes to be stored either as qnum or qcode. Having two code sets is
-  useful for QMP compatibility, but complicates internal input handling.
-  Commit af07e5ff02ae ("ui: convert key events to QKeyCodes
-  immediately") made qcode the only key code set used internally, but
-  the QAPI type does not enforce that and accessing the key code is
-  still tedious.
-
-- It uses Linux key codes. They cover all keys represented by qcodes,
-  include additional keys, and allow QEMU to pass codes through from
-  Linux hosts to Linux guests. This also simplifies the code by avoiding
-  qcode aliases and matches the approach used by virtio and Xen. Since
-  this is an internal representation, QEMU can extend the key code set
-  if a QEMU-specific need arises.
-
-Only the switch to Linux key codes is intended to change functional
-behavior. The interfaces that require QKeyCode are still preserved and
-QKeyCode_str() is still used to query key names. Changing QAPI to accept
-Linux key codes is possible, but out of scope for this series.
-
-This series is organized as follows:
-Patches 1-6 convert the internal interfaces.
-Patches 7-26 convert their users.
-Patches 27-28 remove the old internal interfaces.
+QemuInputEvent now stores Linux key codes for key events. Use those
+codes directly instead of translating between internal key code
+representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-
 ---
-Changes in v3:
-- Fixed qemu_input_event_send_key_number() to send the converted Linux key
-  code directly.
-- Updated tools/qemu-vnc for the input event API changes.
-- Prevented ui/kbd-state from reading or writing past its key bitmap
-  when given a key code outside the defined range.
-- Changed Linux key code variables to use unsigned int.
-- Link to v2: https://lore.kernel.org/qemu-devel/20260513-input-v2-0-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp
+ hw/input/ps2.c        | 51 +++++++++++++++++++++++++--------------------------
+ hw/input/trace-events |  2 +-
+ 2 files changed, 26 insertions(+), 27 deletions(-)
 
-Changes in v2:
-- Fixed an accidental overwrite of the key value in patch
-  "ui/input: Remove QAPI wrappers from QemuInputEvent".
-- Added patch "ui/input: Prohibit sending KEY_RESERVED".
-- Removed remaining unintended QKeyCode occurrences.
-- Link to v1: https://lore.kernel.org/qemu-devel/20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp
+diff --git a/hw/input/ps2.c b/hw/input/ps2.c
+index 93c3c7372054..f2523ff4bc78 100644
+--- a/hw/input/ps2.c
++++ b/hw/input/ps2.c
+@@ -28,6 +28,7 @@
+ #include "hw/core/sysbus.h"
+ #include "hw/input/ps2.h"
+ #include "migration/vmstate.h"
++#include "standard-headers/linux/input-event-codes.h"
+ #include "ui/console.h"
+ #include "ui/input.h"
+ #include "system/reset.h"
+@@ -123,20 +124,20 @@ static uint8_t translate_table[256] = {
+     0xf8, 0xf9, 0xfa, 0xfb, 0xfc, 0xfd, 0xfe, 0xff,
+ };
+ 
+-static unsigned int ps2_modifier_bit(QKeyCode key)
++static unsigned int ps2_modifier_bit(unsigned int key)
+ {
+     switch (key) {
+-    case Q_KEY_CODE_CTRL:
++    case KEY_LEFTCTRL:
+         return MOD_CTRL_L;
+-    case Q_KEY_CODE_CTRL_R:
++    case KEY_RIGHTCTRL:
+         return MOD_CTRL_R;
+-    case Q_KEY_CODE_SHIFT:
++    case KEY_LEFTSHIFT:
+         return MOD_SHIFT_L;
+-    case Q_KEY_CODE_SHIFT_R:
++    case KEY_RIGHTSHIFT:
+         return MOD_SHIFT_R;
+-    case Q_KEY_CODE_ALT:
++    case KEY_LEFTALT:
+         return MOD_ALT_L;
+-    case Q_KEY_CODE_ALT_R:
++    case KEY_RIGHTALT:
+         return MOD_ALT_R;
+     default:
+         return 0;
+@@ -313,7 +314,6 @@ static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
+                                QemuInputEvent *evt)
+ {
+     PS2KbdState *s = (PS2KbdState *)dev;
+-    int qcode;
+     uint16_t keycode = 0;
+     int mod;
+ 
+@@ -324,10 +324,9 @@ static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
+ 
+     qemu_system_wakeup_request(QEMU_WAKEUP_REASON_OTHER, NULL);
+     assert(evt->type == INPUT_EVENT_KIND_KEY);
+-    qcode = qemu_input_linux_to_qcode(evt->key.key);
+ 
+-    mod = ps2_modifier_bit(qcode);
+-    trace_ps2_keyboard_event(s, qcode, evt->key.down, mod,
++    mod = ps2_modifier_bit(evt->key.key);
++    trace_ps2_keyboard_event(s, evt->key.key, evt->key.down, mod,
+                              s->modifiers, s->scancode_set, s->translate);
+     if (evt->key.down) {
+         s->modifiers |= mod;
+@@ -336,7 +335,7 @@ static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
+     }
+ 
+     if (s->scancode_set == 1) {
+-        if (qcode == Q_KEY_CODE_PAUSE) {
++        if (evt->key.key == KEY_PAUSE) {
+             if (s->modifiers & (MOD_CTRL_L | MOD_CTRL_R)) {
+                 if (evt->key.down) {
+                     ps2_put_keycode(s, 0xe0);
+@@ -354,7 +353,7 @@ static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
+                     ps2_put_keycode(s, 0xc5);
+                 }
+             }
+-        } else if (qcode == Q_KEY_CODE_PRINT) {
++        } else if (evt->key.key == KEY_SYSRQ) {
+             if (s->modifiers & MOD_ALT_L) {
+                 if (evt->key.down) {
+                     ps2_put_keycode(s, 0xb8);
+@@ -401,12 +400,12 @@ static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
+                     ps2_put_keycode(s, 0xaa);
+                 }
+             }
+-        } else if ((qcode == Q_KEY_CODE_LANG1 || qcode == Q_KEY_CODE_LANG2)
++        } else if ((evt->key.key == KEY_HANGEUL || evt->key.key == KEY_HANJA)
+                    && !evt->key.down) {
+             /* Ignore release for these keys */
+         } else {
+-            if (qcode < qemu_input_map_qcode_to_atset1_len) {
+-                keycode = qemu_input_map_qcode_to_atset1[qcode];
++            if (evt->key.key < qemu_input_map_linux_to_atset1_len) {
++                keycode = qemu_input_map_linux_to_atset1[evt->key.key];
+             }
+             if (keycode) {
+                 if (keycode & 0xff00) {
+@@ -418,11 +417,11 @@ static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
+                 ps2_put_keycode(s, keycode & 0xff);
+             } else {
+                 qemu_log_mask(LOG_UNIMP,
+-                              "ps2: ignoring key with qcode %d\n", qcode);
++                              "ps2: ignoring key %u\n", evt->key.key);
+             }
+         }
+     } else if (s->scancode_set == 2) {
+-        if (qcode == Q_KEY_CODE_PAUSE) {
++        if (evt->key.key == KEY_PAUSE) {
+             if (s->modifiers & (MOD_CTRL_L | MOD_CTRL_R)) {
+                 if (evt->key.down) {
+                     ps2_put_keycode(s, 0xe0);
+@@ -443,7 +442,7 @@ static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
+                     ps2_put_keycode(s, 0x77);
+                 }
+             }
+-        } else if (qcode == Q_KEY_CODE_PRINT) {
++        } else if (evt->key.key == KEY_SYSRQ) {
+             if (s->modifiers & MOD_ALT_L) {
+                 if (evt->key.down) {
+                     ps2_put_keycode(s, 0xf0);
+@@ -499,12 +498,12 @@ static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
+                     ps2_put_keycode(s, 0x12);
+                 }
+             }
+-        } else if ((qcode == Q_KEY_CODE_LANG1 || qcode == Q_KEY_CODE_LANG2) &&
++        } else if ((evt->key.key == KEY_HANGEUL || evt->key.key == KEY_HANJA) &&
+                    !evt->key.down) {
+             /* Ignore release for these keys */
+         } else {
+-            if (qcode < qemu_input_map_qcode_to_atset2_len) {
+-                keycode = qemu_input_map_qcode_to_atset2[qcode];
++            if (evt->key.key < qemu_input_map_linux_to_atset2_len) {
++                keycode = qemu_input_map_linux_to_atset2[evt->key.key];
+             }
+             if (keycode) {
+                 if (keycode & 0xff00) {
+@@ -516,12 +515,12 @@ static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
+                 ps2_put_keycode(s, keycode & 0xff);
+             } else {
+                 qemu_log_mask(LOG_UNIMP,
+-                              "ps2: ignoring key with qcode %d\n", qcode);
++                              "ps2: ignoring key %u\n", evt->key.key);
+             }
+         }
+     } else if (s->scancode_set == 3) {
+-        if (qcode < qemu_input_map_qcode_to_atset3_len) {
+-            keycode = qemu_input_map_qcode_to_atset3[qcode];
++        if (evt->key.key < qemu_input_map_linux_to_atset3_len) {
++            keycode = qemu_input_map_linux_to_atset3[evt->key.key];
+         }
+         if (keycode) {
+             /* FIXME: break code should be configured on a key by key basis */
+@@ -531,7 +530,7 @@ static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
+             ps2_put_keycode(s, keycode);
+         } else {
+             qemu_log_mask(LOG_UNIMP,
+-                          "ps2: ignoring key with qcode %d\n", qcode);
++                          "ps2: ignoring key %u\n", evt->key.key);
+         }
+     }
+ }
+diff --git a/hw/input/trace-events b/hw/input/trace-events
+index 1484625565b5..43900914be28 100644
+--- a/hw/input/trace-events
++++ b/hw/input/trace-events
+@@ -30,7 +30,7 @@ pckbd_kbd_write_data(uint64_t val) "0x%02"PRIx64
+ 
+ # ps2.c
+ ps2_put_keycode(void *opaque, int keycode) "%p keycode 0x%02x"
+-ps2_keyboard_event(void *opaque, int qcode, int down, unsigned int modifier, unsigned int modifiers, int set, int xlate) "%p qcode %d down %d modifier 0x%x modifiers 0x%x set %d xlate %d"
++ps2_keyboard_event(void *opaque, unsigned int lnx, int down, unsigned int modifier, unsigned int modifiers, int set, int xlate) "%p lnx %u down %d modifier 0x%x modifiers 0x%x set %d xlate %d"
+ ps2_read_data(void *opaque) "%p"
+ ps2_set_ledstate(void *s, int ledstate) "%p ledstate %d"
+ ps2_reset_keyboard(void *s) "%p"
 
-To: qemu-devel@nongnu.org
-Cc: Marc-André Lureau <marcandre.lureau@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Jan Kiszka <jan.kiszka@web.de>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Stefano Stabellini <sstabellini@kernel.org>
-Cc: Anthony PERARD <anthony@xenproject.org>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Gerd Hoffmann <kraxel@redhat.com>
-Cc: Thomas Huth <th.huth+qemu@posteo.eu>
-Cc: Alex Bennée <alex.bennee@linaro.org>
-Cc: qemu-arm@nongnu.org
-Cc: xen-devel@lists.xenproject.org
-Cc: qemu-ppc@nongnu.org
-Cc: Philippe Mathieu-Daudé <philmd@linaro.org>
-Cc: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-
----
-Akihiko Odaki (29):
-      ui/input: Introduce QemuInputEvent typedef
-      ui/input: Remove QAPI wrappers from QemuInputEvent
-      ui/input: Store QKeyCode directly in QemuInputKeyEvent
-      ui/input: Use Linux key codes for internal key events
-      ui/input: Prohibit sending KEY_RESERVED
-      ui/console: Add qemu_text_console_put_linux()
-      ui/kbd-state: Use Linux key codes
-      hw/arm/musicpal: Use Linux key codes
-      hw/char/escc: Use Linux key codes
-      hw/display/xenfb: Use Linux key codes
-      hw/input/adb-kbd: Use Linux key codes
-      hw/input/hid: Use Linux key codes
-      hw/input/ps2: Use Linux key codes
-      hw/input/virtio-input: Use Linux key codes
-      hw/m68k/next-kbd: Use Linux key codes
-      replay: Use Linux key codes
-      ui/cocoa: Use Linux key codes
-      ui/dbus: Use Linux key codes
-      ui/gtk: Use Linux key codes
-      ui/input-barrier: Use Linux key codes
-      ui/input-legacy: Use Linux key codes
-      ui/input-linux: Use Linux key codes
-      ui/keymaps: Use Linux key codes
-      ui/sdl2: Use Linux key codes
-      ui/spice: Use Linux key codes
-      ui/vnc: Use Linux key codes
-      qemu-keymap: Use Linux key codes
-      ui/console: Remove qemu_text_console_put_qcode()
-      ui/input: Remove unused QKeyCode helpers and keymaps
-
- include/qemu/typedefs.h      |   1 +
- include/system/replay.h      |   2 +-
- include/ui/console.h         |   3 +-
- include/ui/input.h           |  92 ++++++++------
- include/ui/kbd-state.h       |  12 +-
- replay/replay-internal.h     |   6 +-
- ui/x_keymap.h                |   3 +-
- chardev/msmouse.c            |  12 +-
- chardev/wctablet.c           |  10 +-
- hw/arm/musicpal.c            |  31 +++--
- hw/char/escc.c               |  45 +++----
- hw/display/xenfb.c           |  51 +++-----
- hw/input/adb-kbd.c           | 246 ++++++++++++++++++------------------
- hw/input/adb-mouse.c         |  22 ++--
- hw/input/hid.c               |  41 +++---
- hw/input/ps2.c               | 118 +++++++++---------
- hw/input/stellaris_gamepad.c |  11 +-
- hw/input/virtio-input-hid.c  |  89 +++++++------
- hw/m68k/next-kbd.c           | 128 +++++++++----------
- qemu-keymap.c                |  41 +++---
- replay/replay-events.c       |   6 +-
- replay/replay-input.c        | 117 ++++++------------
- replay/replay.c              |   2 +-
- replay/stubs-system.c        |   2 +-
- tools/qemu-vnc/input.c       |   9 +-
- ui/console.c                 |  62 ++++++----
- ui/dbus-console.c            |   8 +-
- ui/gtk.c                     |  50 ++++----
- ui/input-barrier.c           |  26 ++--
- ui/input-keymap.c            |  74 +++++------
- ui/input-legacy.c            |  47 +++----
- ui/input-linux.c             |   3 +-
- ui/input.c                   | 214 ++++++++++++++------------------
- ui/kbd-state.c               |  61 +++++----
- ui/keymaps.c                 |   4 +-
- ui/sdl2-input.c              |  17 +--
- ui/spice-input.c             |   3 +-
- ui/vdagent.c                 |  20 ++-
- ui/vnc.c                     |  25 ++--
- ui/x_keymap.c                |  24 ++--
- hw/input/trace-events        |   2 +-
- tools/qemu-vnc/trace-events  |   2 +-
- ui/cocoa.m                   | 289 ++++++++++++++++++++++---------------------
- ui/meson.build               |  29 +++--
- ui/trace-events              |   5 +-
- 45 files changed, 980 insertions(+), 1085 deletions(-)
----
-base-commit: e89049b3ba5f1f0468bc0d294173345597514a1b
-change-id: 20260428-input-9b94f389ea55
-
-Best regards,
---  
-Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+-- 
+2.54.0
 
 

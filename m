@@ -4,105 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B12FDCD4F3D
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 13:52:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69397CD4F3D
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 15:09:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPhL9-000528-3A; Wed, 20 May 2026 09:52:03 -0400
+	id 1wPiYE-0002i8-4V; Wed, 20 May 2026 11:09:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wPhL8-00051m-DA
- for qemu-arm@nongnu.org; Wed, 20 May 2026 09:52:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
+ id 1wPiY8-0002hZ-DH; Wed, 20 May 2026 11:09:33 -0400
+Received: from mail-eastusazlp170120007.outbound.protection.outlook.com
+ ([2a01:111:f403:c101::7] helo=BL0PR03CU003.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wPhL6-0004iN-IK
- for qemu-arm@nongnu.org; Wed, 20 May 2026 09:52:02 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779285119;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2bmWERXMLXC3OvENsaGbZ8IdksW5Rs5cYZtgXlt7EfY=;
- b=CvbxF3t5tpc28CymxB6n17yy738/fIJlLIsGQ1d8V24wA9NKVI3uAqerQ/QjkTVOlNLsOU
- J5JE/RtKPP9mo+kmy1jd75JNJgA6ibjBIqYXudVtrs/rvo45nqPX4FYxiRVOolGJ7ufLh0
- Oj3gXpF4wLqOT3m4jDxoxULpEXEl/WM=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-5-apQAfNM4NSSL3I8lsrkGEQ-1; Wed, 20 May 2026 09:51:56 -0400
-X-MC-Unique: apQAfNM4NSSL3I8lsrkGEQ-1
-X-Mimecast-MFC-AGG-ID: apQAfNM4NSSL3I8lsrkGEQ_1779285115
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-45e736cac42so4391252f8f.2
- for <qemu-arm@nongnu.org>; Wed, 20 May 2026 06:51:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779285115; x=1779889915;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=2bmWERXMLXC3OvENsaGbZ8IdksW5Rs5cYZtgXlt7EfY=;
- b=EndLOfIi8OlxmTxAcp2AWJrzeWebgvtaBj1olqS5tf7r9OnjLjvfLyhlR5Vo9RAkqj
- +AyoaK/28p10NsBrKVY7cokRhPZx2tSSN+/ODllEGeJiKsjGnpvnhL4DSjc9oX1WwDdP
- kODg83fEnh/SZ50MkR3335AGhO80qJj1YhB30eZcDaHljiFDx6yh/8Pgs1wEcQTtIpec
- GvLOhMhZHzNdDLYWMlA6VMq2wWFWYpYjNzlaec0Wn+eveutCEj+1T2efEmPy/TnHg1em
- Oyxr4vAKJve0izlyuWThXSlbfL+HWrz9IlzNH94j84X5DLz31hT3kxQ9tq9acmM0MfMS
- KD3g==
-X-Forwarded-Encrypted: i=1;
- AFNElJ8U5iWUzL8ubCv2BpWDYnmwnaCuYoIUN3Nq85KzoNG7nHcnsuwwnnEKvCUsPtqhur5kbVWUANFCGw==@nongnu.org
-X-Gm-Message-State: AOJu0YzOWvlBOFAeWIBEie2O9AJQ9OpP4pdmZAc7xQO1eVJGaVcX748n
- ZZh6ch4dcQVqhijVFytzog1iB11BBjHgw0k2RJtNWV8ubKVFL95bA3/cdXL7UzjbuJDHLEuJBBS
- D0WVrJ9Pfz13GGko3Vnq2canmxZMF86+BSbMZd7eXcreFyhKVF7g/MA==
-X-Gm-Gg: Acq92OGkXM49RYWYw1A4k+HnJI0yJSfbG9i7hCQO5F/1lTazoSqYJ11QMAIHQZtKNs1
- Fw2zjIOzC7in62iYGRTdTncOyGfd+i9t0rpdQvjMy+5vhekOHJaOJwvW9YqiQ9/JFvWk5N8vM2l
- sKxAG4G/IcoUdTuGhgxUC3zdVMN9ZMFeEpZSpAvTW4ixEVoRa0msWK0MRd34o9iDNws5JT58LLH
- s41/9R8YPG6WDBZ89mXnRyptTZo0ztvdrXVaxvcXJF2kMsr0eMkdccYcwsssZxdYrplpB1Mpqs8
- 3hM/vgSPqdHAyx0JdOyxZIe1YVR/vH+lZ77EZMC3PuKH5cVRShSqjElgPGjSgwx01ayNpW9c+c5
- 1figPhw==
-X-Received: by 2002:a05:6000:603:b0:455:7d77:1d25 with SMTP id
- ffacd0b85a97d-45e5c5fd588mr40938420f8f.27.1779285114594; 
- Wed, 20 May 2026 06:51:54 -0700 (PDT)
-X-Received: by 2002:a05:6000:603:b0:455:7d77:1d25 with SMTP id
- ffacd0b85a97d-45e5c5fd588mr40938340f8f.27.1779285114029; 
- Wed, 20 May 2026 06:51:54 -0700 (PDT)
-Received: from imammedo ([213.175.46.86]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45da0a17a22sm54749476f8f.22.2026.05.20.06.51.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 May 2026 06:51:53 -0700 (PDT)
-Date: Wed, 20 May 2026 15:51:52 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>, Andrew Jones
- <ajones@ventanamicro.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v6 3/4] hw/arm/virt: Remove the lower bound of HighMem
- IO Regions
-Message-ID: <20260520155152.3652a6e9@imammedo>
-In-Reply-To: <20260520-virt-v6-3-d96180454fdf@rsg.ci.i.u-tokyo.ac.jp>
-References: <20260520-virt-v6-0-d96180454fdf@rsg.ci.i.u-tokyo.ac.jp>
- <20260520-virt-v6-3-d96180454fdf@rsg.ci.i.u-tokyo.ac.jp>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: odj2XeCNbkme6M5loKZPTUmYj1bC0_p-aCF2xCrwDog_1779285115
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+ (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
+ id 1wPiXw-0004vg-V5; Wed, 20 May 2026 11:09:22 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=DvD4BCYWNYuDfL2zIpHD3jP5/QR7PX+1x6S5lA/1tDYe3iezRZi9Zim1fWiIN62QJh3bJnkjZU/znpuGsc2FVYW+O9W1g89bFwslypbKZ9rpbd+TkYN3+YnBtrkudrqsgMUhSK+w882Ct8x2gdyb7sqscf8BblOM9bdmNUeDKqJQA12Y34qR3YNiDsuPH+oSzFNH0Obh0OXeOdP+qj9zKBSUDVQQkHsQiyAhgDtjBR1ZmCjde3ihfkDyavFY0IxAf77YqbLNzTVarAPzJ6nCv6aD0jiBvsArVpMHreCjgwHHbscLm9KvmrHZkcD60w7asSv/zcrULnqk1LsCqGNS7Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=driz5QxritCHs8y7fwbaXGfoPZBl1rdqV0nQo3TInOc=;
+ b=QWfaSCn7cF7R61M5zzqDrcKS3erQBzsA0LoaQOzVg4AO+0oM3z9yrofXjlE9+rS1rhU79hTq7qr8iQvKPLvd5YyJiXCIMydTne4KHAeO/lUS0QOsHE7jPGQQRF+RVQ7R0WssRG4XymPndAEHjOElLoE6XgUJhtbwP7wR6UYgHCj0Gn6iLhNSPjCt0vs08foAi7KH6daaFPu+XSEImNKkXfdHXAIPkyMC+OANiLox8gLEwRlARjFXdmH2dFKYxX/Xj8jZkQAk+c+fRIvVbdcv+aKShjihg6QwWdxAahloUxrfWnSNJQiSCI3ROkfJaj2kiWl3Wg64mb9otJaH/kw5TA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=driz5QxritCHs8y7fwbaXGfoPZBl1rdqV0nQo3TInOc=;
+ b=b6t3vbARjEflWDGinDXZu/LppvHy5qHWUXQaSPMtJoY4+bJoo082tvznxTM6Yj2qucCHtbvQYbfYHzp7AwL5mQGH9g0uSs39NCU7ResJ3M0mS+iJA25/Xdaiglhx6MezvOIdh9PkJErDq1bKwb0YGkWm04cBTHY8L49+JbYRsdpY4T6d+NzZ5cd2S4I4vH2nDaqFIwaK7GZtUco4o3gPYhv7UnY8Vz7lIXjaeDnwOQV6EMBli9d9jr5j/Fq48PgrHS2OY75RbHsN4YAA6WaEjMzxTmxaGMNWkXAml3mOFPXAXTIybwGpnav7vDDMfmnILn6gH2n1hml0jzyyJcTz6Q==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from DM6PR12MB4186.namprd12.prod.outlook.com (2603:10b6:5:21b::11)
+ by IA1PR12MB7759.namprd12.prod.outlook.com (2603:10b6:208:420::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.48.14; Wed, 20 May
+ 2026 15:09:06 +0000
+Received: from DM6PR12MB4186.namprd12.prod.outlook.com
+ ([fe80::3885:dd8c:612c:a746]) by DM6PR12MB4186.namprd12.prod.outlook.com
+ ([fe80::3885:dd8c:612c:a746%7]) with mapi id 15.21.0025.020; Wed, 20 May 2026
+ 15:09:06 +0000
+Message-ID: <5dce0686-d0a1-4b25-a17e-dc05e2b0c717@nvidia.com>
+Date: Wed, 20 May 2026 10:09:02 -0500
+User-Agent: Mozilla Thunderbird
+Subject: Re: [edk2-devel] [RFC PATCH 0/8] hw/arm/virt, hw/pci: PCI
+ pre-enumeration and fixed BAR allocation
+To: Ard Biesheuvel <ardb@kernel.org>, Alex Williamson <alex@shazbot.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Alex Williamson <alex.williamson@nvidia.com>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ "devel@edk2.groups.io" <devel@edk2.groups.io>, qemu-devel@nongnu.org,
+ Jason Gunthorpe <jgg@nvidia.com>, Shameer Kolothum
+ <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, marcel.apfelbaum@gmail.com
+References: <20260508183717.193630-1-tdave@nvidia.com>
+ <22cf37c2-b2b1-40db-b8b7-393b6c36a921@app.fastmail.com>
+ <db604efd-9c1f-44e0-9921-71e4d97a81b3@nvidia.com>
+ <20260512170650.4551c9f6@nvidia.com>
+ <20260512191140-mutt-send-email-mst@kernel.org>
+ <382877be-edad-4eca-a646-a75e1654747f@app.fastmail.com>
+ <bd3000d0-add9-4245-bc83-cb7f4886377b@app.fastmail.com>
+From: Tushar Dave <tdave@nvidia.com>
+Content-Language: en-US
+In-Reply-To: <bd3000d0-add9-4245-bc83-cb7f4886377b@app.fastmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-ClientProxiedBy: SJ0PR13CA0122.namprd13.prod.outlook.com
+ (2603:10b6:a03:2c6::7) To DM6PR12MB4186.namprd12.prod.outlook.com
+ (2603:10b6:5:21b::11)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6PR12MB4186:EE_|IA1PR12MB7759:EE_
+X-MS-Office365-Filtering-Correlation-Id: f52926d9-9563-42d2-7df5-08deb681bc32
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|366016|1800799024|11063799006|3023799007|4143699003|22082099003|18002099003|56012099003|6133799003;
+X-Microsoft-Antispam-Message-Info: kIhv9B9mnG7oLLNpoxw8tdC3Ue8/zrFuYpN1CYdPbOCDTMrXHUR22FTnxuhyv3No554ojFKoAYLFA/tQh1+sSypUdDElXunmIo7CyBQ2tOrlfsSCMRrnHzXA/X1yo1tDpaxpQVZxmSw6n8THN1yozE4bHl55OjO0JMdh628AC7Y63Di+NVNXnnJEJLjdr2Srsqa1vTuspMUotKK6DlOMTHGrZLG94MvFpnl4cDsSLQva1qXlstyMos9dUoxpTSOB70/LiTLQt5AbwdHENWtE473V2GDkv3OH8eespXqEkKPcsq0l1el1ktvl4UyJeWgiWnbyr/5Eo8UY7nGg7qh8mgj2PRC8r2TnWPXUQhybVF3h8lQCXglkgc8kFddQYzlRiJ34p9Kwb1EG4CE8D54ItH9JkoSknAMBA4qkfDNOUESheVvXqpCXo6EtWhW/IXoDewCxkrsOD5NWxp9H+Dvi94rSw/eq4cjSs8gJF4FsYZVfGZ908gb0nAJ4TNrGXiEEJey3O35zIDMDGg5WO0SeIwt5aB5hHxU8uOJ15oiKmGNIpwzlze0i1wqfpY4LAaJ49RI8qq0k4+MXFlitX05+jIGvZQejVnskFhUrWodvUMLl5oCBPYqUEE7yuGSeCtSsOHUva1l1K1mvm1H6GQ0SBccJ1KAswADMKqJcZjU1Q/e2PENmIhtUR8uZI6Vpv/0N
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR12MB4186.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(1800799024)(11063799006)(3023799007)(4143699003)(22082099003)(18002099003)(56012099003)(6133799003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZksyVkhSZVJIZU5oSkNwZEtFeUNKT1RwR2dpVU5iVWFGSzZLd2twVnI2K203?=
+ =?utf-8?B?c1k5RzVFcGFUVEJlYWxPRHJ4QWtmdDJPL25OY3R0bnpvdC9hOWJHaS8vUGJH?=
+ =?utf-8?B?UUxyOUoyQXJ1cjBBUkhheGM3V1pSVnZFczFTOFA2N09Lc0ZuTHAwY3FKTEVL?=
+ =?utf-8?B?OG4yM01qM0NvZnZ6ZXVyNnF4K1RMSld0UytNUFp3NTNXd3BmT2JCL1dXRHpx?=
+ =?utf-8?B?OEQ0dzNwbmR0RmlSOXpacElYcmcyQTRwR2pkVWdJU3FaVFN4cWxDeklZM3lj?=
+ =?utf-8?B?c3JXK2JxZE1yVjFDMDdsTC9KblVQeTk0TmZ5L3Rlc3ZhQURrdWpiTUFsVVZa?=
+ =?utf-8?B?TVVPRE9mTHc1NnFNS2JPcmdwZndRb21xdlpKeklUSmJCVTVrb0JqQjllMWlF?=
+ =?utf-8?B?aHNKUWlQbUZlQmFTbENuVWZCUk5BZDlYbndMZmpIVFEzL3ZRa3pXZ1BOeXkz?=
+ =?utf-8?B?QVJJdldDQW1XekRVeEhzaVJVbmk5MGYzOW9FVk5odEp6NEZvQzYwRktPTC9F?=
+ =?utf-8?B?bzM1VCtQK3YyR3Q1NTQwcnN5eGowbzFSenJzeUt3TlV4YllkQnIyMXV2R2dM?=
+ =?utf-8?B?S0d5cXluMzU5d3JWOGNKM3dTM2pHeDlRUDU3OUc3TktSamZBbyt0amc0c1E2?=
+ =?utf-8?B?elIrNDJkM1NEbzJEbUpwNlFRL2l1dDMxTDErZUduUTUvd0huNlFxZ3ZHVm9R?=
+ =?utf-8?B?UlIra0hBRk00RjQ4dnA3OS9OSGY1dlBjM1lCL21pbnU0Vktyc2VrZDhqb0ti?=
+ =?utf-8?B?R1A5NkxBYklDanFiYm1LQjFJbjBtakI5TUtXMFdlK2ptblpPS0FDWnFSeS8v?=
+ =?utf-8?B?VnpoR1FUT1VVbTJ2WnVQd1F1dTFrV3RDR1IzU2tMODRSTU0ySjRlc0NPWmtU?=
+ =?utf-8?B?eFFNcmUrSEJXZ2lYRWlrWC9QOC82WHkreTBCR2tnNnRrY1JEQUM3UFA5RG1I?=
+ =?utf-8?B?QVJZRGZhbE8vcTZBZG43TmorY2hEUDVFbFFsK2Rpc1lrU0pUUThIeDRkTTQ0?=
+ =?utf-8?B?WmJLYXJCNEV1alc5Rlk3aENlK29kdjJ1b1MrNTNtQnJQSHVJODVXWFZRVlNM?=
+ =?utf-8?B?ZHI0ZVBva1owK2ZnUkNBcFdMTW9ZWXZrYnlVbGp0VFFQNDIyL0I1QUxMd1Bx?=
+ =?utf-8?B?MW0zQjRSTk5XSjNTT0JtMzlhRG9CMXU5cXlkZC84Yjl6czYyWnNyUVNBdFVB?=
+ =?utf-8?B?VlhacnNjTzNiWi9KZjdJc3pzUE1Qbzd1V0R3TkRBRkdiZTFiZHZ5blpVT3ZT?=
+ =?utf-8?B?NWVVdGVmS2Y0Zkc5dTdYK0N5V1prRmxFK3BQTlRRa3ZtQU5mRnBGem03aW1S?=
+ =?utf-8?B?SWhMZTlYNU1XaWxMMnJWRW43czFlUExBWVVMYWVJcGdaY21HTzJ4WEYrU3ZH?=
+ =?utf-8?B?TWNhVndoZzllNy9hYngrZE1IS1cveVcrSFY4SGtES3FHZ2xTcnlJZHArRjRo?=
+ =?utf-8?B?TGJnaVE1R0ZqaXRNaTBNLzA0aHVjNGVqaExqNnh4Q0c1Q2dCR0lLaUNzY3hw?=
+ =?utf-8?B?SDJyQzZWaVgweG93em5vM2hEREdDWmlpa0piSnNTdWhDREdQaUs5T281dWRX?=
+ =?utf-8?B?em9ZTzE0c2RzMTR4dlhQTVkwVEhxRTlIQU5YenRmMTd4ZG9ibTduYnpNNngz?=
+ =?utf-8?B?NnRxR2JVVUkvRXQ1c3FHQ1p4Qk9EeVViSE5DK21QL0Rkc1VBWGZublhtUDQ0?=
+ =?utf-8?B?ZHgyV1hVbFdmUnlRQmxIZEVvREpTRm5ROURoZGh6ZGdCa3VCR0hDYzdwZ1h5?=
+ =?utf-8?B?RXZ5eU5yNyt0bkE0akNiOGFYM0dLbzdsMTJpQUQ2RGNZMW5xMXh2aHpheURW?=
+ =?utf-8?B?Rm1GQjltNC9kOTRYcXZPd3E3ZVgzS1R5bUlPbWRoV3IzTjRUd1FjZTVMdC9l?=
+ =?utf-8?B?aG51TTQvMzNWRW9JOC91Y1dHQTMyRXdoSTZCV1VPSXp2Z1R2dTUyL3FZeHdj?=
+ =?utf-8?B?aWg5Vy9abXZjeFk2LzlKMFMxQVQzUkZEN3doOXZvVHc5ZldudVpBeFhMSDZi?=
+ =?utf-8?B?dnhHM1E5aXROeC9BQTM2N01EWnVjVENGSFNCQzFpNkd5V2podjZCQ1g2MmlG?=
+ =?utf-8?B?d0FjOWU3eGFqOWNwMUt6a0hEUWlacm15M2puS3l0dzVIdDF4M0JCODFsRDN2?=
+ =?utf-8?B?S3pjRHBwVU9BUkREZGgzdEl0dXZsaFFEMklFN0ZMaFJwWm1UUGNmUm5VYjR6?=
+ =?utf-8?B?eEtEUGM0L1VPbHlEZFlxWkZ5YlRUdUY2R2lvS1NoOWFwMitWN3A3SlA5SzZ1?=
+ =?utf-8?B?WXJSMlliTWxZaWczR0lkV0Y5ZVp4dUNHRkQ3cHVqVEFBWUlpTTY2TldVREVL?=
+ =?utf-8?B?a2tTWXhLa2FpblFrQS9MQlF5NnJFQUVuM3p3L0NrTVlqc1ROYWJKQT09?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f52926d9-9563-42d2-7df5-08deb681bc32
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR12MB4186.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 May 2026 15:09:05.9497 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: IOE1bLye3U2BnlenRzzZGSj1Jn7lDEePbrqGAhvRgBRRCqppO1SGkyctWUjB/m+05gHFD796a3c/UPCKRO558A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB7759
+Received-SPF: permerror client-ip=2a01:111:f403:c101::7;
+ envelope-from=tdave@nvidia.com;
+ helo=BL0PR03CU003.outbound.protection.outlook.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- TVD_SUBJ_WIPE_DEBT=1.004 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,137 +161,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 20 May 2026 18:56:32 +0900
-Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
-
-> Remove the lower bound of the Highmem IO Regions' addresses for the
-> latest machine version to increase the chance to fit the regions in the
-> PA space.
-> 
-> The lower bound was especially problematic when using virt-install on
-> Apple M2. virt-install 5.0.0 adds multiple pcie-root-port devices that
-
-it looks like with this patch everything would move down,
-with 'small' but, VIRT_HIGH_PCIE_MMIO that still won't fit into M2 PA and
-will get disabled.
-Is it intended (perhaps it should be mentioned in patch)
 
 
-> require sufficient space in the ECAM region. However, the Highmem ECAM
-> region did not fit in the limited PA space on the hardware, and the ECAM
-> region size was limited to 16 MiB. If virt-install had added more than
-> 16 devices to the root bridge, the region overflowed, which prevented
-> edk2-stable202505 from scanning PCI devices, including the boot disk,
-> causing boot failures.
+On 5/13/2026 9:25 AM, Ard Biesheuvel wrote:
 > 
-> Ideally, a virtual machine with more than 16 devices added to the root
-> bridge should just work so that users and management layers do not have
-> to care whether they use constrained hardware.
+> On Wed, 13 May 2026, at 01:57, Alex Williamson wrote:
+>> On Tue, May 12, 2026, at 5:12 PM, Michael S. Tsirkin wrote:
+>>> On Tue, May 12, 2026 at 05:06:50PM -0600, Alex Williamson wrote:
+>>>> If we agree that homogeneous hierarchies (no mixing of EA and
+>>>> programmable BARs) is a reasonable constraint, and possibly extend
+>>>> that to homogeneous per host bridge to simplify the CRS mapping, we
+>>>> have the following work items:
+>>>>
+>>>>  * Extend Linux EA support to program bridge apertures for
+>>>>    subordinate homogeneous EA hierarchies.
+>>>>
+>>>>  * Develop options to virtualize programmable BARs as EA for vfio-
+>>>>    pci devices, if not generically for the benefit of testing.
+>>>>
+>>>>  * Implement a way to poke holes in the VM address space and plumb
+>>>>    through to account for addresses used by EA devices.
+>>>>
+>>>>  * Provide those same ranges to the guest via CRS (but not via DT to
+>>>>    EDK2), or alternatively expose them through additional PXB host
+>>>>    bridges.
+>>>>
+>>>> Does that shape roughly seem accurate?  Are there additional gaps
+>>>> I've missed?  Thanks,
+>>>
+>>> just one question why not do it in firmware so windows is thinkably
+>>> also handled?
+>>
+>> I suppose someone could chime in if they have a similar requirement
+>> for Windows guests.  Otherwise, the incremental effort to extend Linux
+>> EA support seems smaller, though I also don't know what, if any
+>> support Windows has for EA to bother.  Regardless, improving Linux EA
+>> support might help elsewhere and doesn't preclude edk2 support in the
+>> future. Thanks,
+>>
 > 
-> The base address of the Highmem IO Regions was fixed when commit
-> f90747c4e8fb ("hw/arm/virt: GICv3 DT node with one or two redistributor
-> regions") added the first Highmem IO Region. Later, commit 957e32cffa57
-> ("hw/arm/virt: Dynamic memory map depending on RAM requirements")
-> allowed moving the Highmem IO Regions to higher addresses to accommodate
-> RAM more than 255 GiB, but the lower bound remained to keep the legacy
-> memory map.
+> If EA is too much of a hassle to implement, another avenue that you
+> might explore is EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL in edk2,
+> which can be implemented by the platform to inform the PCI core about
+> non-PCI compliant devices that have special requirements.
 > 
-> Remove the lower bound for the latest machine version to accommodate
-> more devices with the root bridge. Keeping the lower bound for the old
-> machine versions ensures the compatibility is still maintained.
-> 
-> The hardcoded memory map in tests/qtest/libqos/generic-pcihost.c is also
-> updated.
-> 
-> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  include/hw/arm/virt.h                |  1 +
->  hw/arm/virt.c                        | 17 +++++++++++------
->  tests/qtest/libqos/generic-pcihost.c |  2 +-
->  3 files changed, 13 insertions(+), 7 deletions(-)
-> 
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 3ba33b4bd274..6c8ba8f3185b 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -142,6 +142,7 @@ typedef enum VirtGICType {
->  
->  struct VirtMachineClass {
->      MachineClass parent;
-> +    hwaddr min_highmem_base;
->      bool no_tcg_its;
->      bool no_highmem_compact;
->      bool no_kvm_steal_time;
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index b090233893c5..78a85a966ad7 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -229,8 +229,7 @@ static const MemMapEntry base_memmap[] = {
->   * Highmem IO Regions: This memory map is floating, located after the RAM.
->   * Each MemMapEntry base (GPA) will be dynamically computed, depending on the
->   * top of the RAM, so that its base get the same alignment as the size,
-> - * ie. a 512GiB entry will be aligned on a 512GiB boundary. If there is
-> - * less than 256GiB of RAM, the floating area starts at the 256GiB mark.
-> + * ie. a 512GiB entry will be aligned on a 512GiB boundary.
->   * Note the extended_memmap is sized so that it eventually also includes the
->   * base_memmap entries (VIRT_HIGH_GIC_REDIST2 index is greater than the last
->   * index of base_memmap).
-> @@ -2479,6 +2478,7 @@ static void virt_set_high_memmap(VirtMachineState *vms,
->  static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->  {
->      MachineState *ms = MACHINE(vms);
-> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->      hwaddr base, device_memory_base, device_memory_size, memtop;
->      int i;
->  
-> @@ -2505,8 +2505,7 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->      /*
->       * We compute the base of the high IO region depending on the
->       * amount of initial and device memory. The device memory start/size
-> -     * is aligned on 1GiB. We never put the high IO region below 256GiB
-> -     * so that if maxram_size is < 255GiB we keep the legacy memory map.
-> +     * is aligned on 1GiB.
->       * The device region size assumes 1GiB page max alignment per slot.
->       */
->      device_memory_base =
-> @@ -2524,8 +2523,8 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->          error_report("maxmem/slots too huge");
->          exit(EXIT_FAILURE);
->      }
-> -    if (base < vms->memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES) {
-> -        base = vms->memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES;
-> +    if (base < vmc->min_highmem_base) {
-> +        base = vmc->min_highmem_base;
->      }
->  
->      /* We know for sure that at least the memory fits in the PA space */
-> @@ -4367,6 +4366,12 @@ static void virt_machine_11_0_options(MachineClass *mc)
->      virt_machine_11_1_options(mc);
->      compat_props_add(mc->compat_props, hw_compat_11_0, hw_compat_11_0_len);
->      vmc->hvf_no_kernel_irqchip_default = true;
-> +
-> +    /*
-> +     * Do not put the high IO region below 256GiB so that if maxram_size is
-> +     * < 255GiB we keep the legacy memory map.
-> +     */
-> +    vmc->min_highmem_base = base_memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES;
->  }
->  DEFINE_VIRT_MACHINE(11, 0)
->  
-> diff --git a/tests/qtest/libqos/generic-pcihost.c b/tests/qtest/libqos/generic-pcihost.c
-> index b77617524cac..287e8445ec5b 100644
-> --- a/tests/qtest/libqos/generic-pcihost.c
-> +++ b/tests/qtest/libqos/generic-pcihost.c
-> @@ -210,7 +210,7 @@ void qpci_init_generic(QGenericPCIBus *qpci, QTestState *qts,
->      qpci->bus.pio_limit = 0x10000;
->      qpci->bus.mmio_alloc_ptr = 0x10000000;
->      qpci->bus.mmio_limit = 0x2eff0000;
-> -    qpci->ecam_alloc_ptr = 0x4010000000;
-> +    qpci->ecam_alloc_ptr = 0x90000000;
->  
->      qpci->obj.get_driver = qpci_generic_get_driver;
->  }
-> 
+> While it is supposed to support this use case too, the PCI resource
+> allocation code in EDK2 currently does not correctly support fixed
+> resources that are reported by this protocol, but getting that fixed
+> (and implementing the protocol in your firmware) might be a shorter
+> path to getting this hardware supported under any OS (assuming EFI
+> boot) than EA.
+
+Thanks for all the input.
+
+It seems that EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL
+is the path forward to explore for this design. At a
+surface level, this looks feasible, and I'll spend some
+time researching it and putting together a PoC before
+coming back with more details.
+
+-Tushar
 
 

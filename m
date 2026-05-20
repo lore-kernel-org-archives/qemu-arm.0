@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADEF1CD5BA4
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 17:21:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 268EFCD4F3D
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 17:22:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPkZ7-0001T4-Vs; Wed, 20 May 2026 13:18:42 -0400
+	id 1wPkZ6-0001R2-JI; Wed, 20 May 2026 13:18:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wPkYy-0001La-EA
- for qemu-arm@nongnu.org; Wed, 20 May 2026 13:18:33 -0400
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+ id 1wPkZ2-0001Oe-QA
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 13:18:38 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wPkYu-0001tT-4e
- for qemu-arm@nongnu.org; Wed, 20 May 2026 13:18:30 -0400
-Received: by mail-pj1-x102f.google.com with SMTP id
- 98e67ed59e1d1-36936dcf19dso2432752a91.0
- for <qemu-arm@nongnu.org>; Wed, 20 May 2026 10:18:27 -0700 (PDT)
+ id 1wPkYz-0001wC-Ur
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 13:18:36 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-365cae89bf5so2172742a91.3
+ for <qemu-arm@nongnu.org>; Wed, 20 May 2026 10:18:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779297506; x=1779902306; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779297512; x=1779902312; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2J8h7EuqX8JGH71JQZgqsud/ulFplvnKZbTkt0er6k4=;
- b=etK+tLZfutA/effxR7MraiXzQF56H+kJb4c+dJgaJmRuLxcU5tefevzAOZGJS7FyKt
- 4daK03f7Egn19iwYEwpb+NzDYCTShN4Xz2uw9NzE5w/Y5HiVMzUypJNmd1AM9dqpbTc1
- wE0Ks0X9KN/ndY9YxVQXAmcpkswvAI9/vbVVEd34mOKLXPeI/Nl71BPXR3//0risAsZi
- DOPcRSR9J13t+tGwO3yYt73jc1RGbCw/hhRkZwG6lVYIKD0Z4Y2fJaTnZj8t/IJzhKuO
- dPd5EL9F7fL7qxll3KZ6G7x86ykAedC3HHVKoODIC2Uad5Mt/psb3p7BACq3OyKnhMRQ
- 7YBQ==
+ bh=cF7LgAgCa0OgQz/V+tfN/kuTyTf193rYcF24jrbF7ms=;
+ b=m4YU7yhyHq0pKidsR4Scn1fcOjIitjq18kjpeLw3Pt4mu174kvvyamd/VQqtm+VLm1
+ nOwUM6AoxGeKsG8D29WMHmK40TJCnD2+0haf8nQ5519Tsrg2bOuLmdBgy3JXZ8fwFU1H
+ 0i2IbtuVFTTe6ZQuCdIVDhyKoeZl+eOtxF6lrml1Pu7q8EHg/e2o02g09sm26qbs8a0K
+ LMRJPOcWLUfw2lI09PLeh1YANO23oq77ZI3S2FiZBMU5hzhC0WF48FRuJpSIuJoSAs5n
+ FJVJaSH/uTOkw9Q08Os+BIIU7oKhFVQIJrEFr6PbTCHntipzK1HvcxldVAdgrumUQKiK
+ kJ5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779297506; x=1779902306;
+ d=1e100.net; s=20251104; t=1779297512; x=1779902312;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=2J8h7EuqX8JGH71JQZgqsud/ulFplvnKZbTkt0er6k4=;
- b=f6Bn+HfKXxRUCL/BjAPKooSJiQjIZbvPRzgEvQsOIdtqGaY+9qm3YwQda61bdlCUk6
- p4srmJyhfy3fFjcPqHfskuQTg+BZ3E29CmU92JqrwkKkFo1rcEtOaB2Dp8wXgKC8Njnh
- wC3IOyk2VTeHn+uT9FlKTlmwt2LBvD7FLA8CE1rFvc+D3C7PzQkv50BsKfdAm6vNlXGc
- XOlHzV4omTJz/lviDJHDqTmJFosLW1Rph5HANFsgNW/lNquCbMQhbYW42AKgWL7g2qWh
- zr+BpMm7TZSeVPR8S6SrnmXpbnHyHOKfSbgM5UAvdebUU1zpUI+sjoZfaHcACXKMGoRr
- wu1A==
-X-Gm-Message-State: AOJu0YzOMd2pDfa2GxH5v9SvvvSyFszR3YQAkHfJ7cToieJI1MhuMStx
- j8czAPcgZafkxxG2vydgmnpcqsX/sMJekwjDz3gxnu1DZzL85a1embrdph+6tML7E9AlN3hVAxX
- bdK1RqC4=
-X-Gm-Gg: Acq92OHG+1zBITc4hyS3QmOelNqciGfuGhdJV8XQi6kdpejBm3SZQPuPJcEOjlDThi5
- pJjpCWhzwJqwqoAO0oMXEETQiAoTxn2qCcJaU2Ocv5yiM4IM4HYNox9DCiAdIE6VPL0E+yJm0Nz
- L8v8mFK/klSuv7gssCtSNjxneevOA9pPZLmS7gifRoJJA0YZI9Az/5sIvsXqpHfYM/2VW8Lmpry
- 2sQxroZ2/W8Z92stgHjtcW3c2dNya0k3X5hzg2IKVSxM7R23OlMA9CzYsPXHWkxcRmujd7sYY6T
- CfyHbR8xaBbOiZzHxryimuxQmXIBikxvwn5sS38iCBUmYdq2dSaR7gReVqFe5neCy4ecXKvGECX
- BZcvhQolgqv1XyfSbnl4rIRXv480gg+wPf2cOFHMgkUiaAqzIrFZqVF7/JQkkNq5lHkVDri4LkU
- oxWsz4M37Zp1vJ1SmrdzRHSKUBhJ4K
-X-Received: by 2002:a17:90b:1d83:b0:367:bb54:8768 with SMTP id
- 98e67ed59e1d1-369518970f7mr22392194a91.4.1779297506307; 
- Wed, 20 May 2026 10:18:26 -0700 (PDT)
+ bh=cF7LgAgCa0OgQz/V+tfN/kuTyTf193rYcF24jrbF7ms=;
+ b=eNTgov36xu8rqrcVzXBPi0SIY/Xok8dPFmG0mw8A81O+R5pCMFgYdvlRGzHaHOGAyg
+ c+d22nY32TI9YeDSFjqOc/c5tt/qVFTRr7qqYq3G2qHfRCJtbTirwc9Xvnx4XUdss6/+
+ fUdcamAGgs8pZJygbiAif2Ox/eyI2QxJfUm6Nt0NgPaXrjYIfU7ysQXv/qhudpHC6p9Y
+ CCd3ntxypwNE5z7sv1axgA3oYc291xrhWodybu3DorgO/mJUqalfy3hk0aahiMSbUbir
+ uZTSzWfsppd0E16hayoyVvygOMPbLH+s8G6rGKQtoweEIoHLVzoJTCNr1d8gF138yzZb
+ Dijw==
+X-Gm-Message-State: AOJu0YyQWbhyyJDqAfsWaCFkYDzIuTvVY9uEQy3q7WuezIVGGyYtn6BL
+ VGXlNmLhPvOrY6GZB2iyuUlGZ3/T65JXK41kaqHQ6ijsaz+C9fIeXMLyZ5kwSL4wHMM=
+X-Gm-Gg: Acq92OEsZUyk94CoL9hkQb8nCKYXxQ9sGH7tXqZJO3NA0mW3YXqZB1Nast2ps1jGGP5
+ T1ZZx7p3p4/dL3mws0Bowzrk7saoJSDAWMZnrXV6JU9K+zjnOv/1JwiFx9b0uLkg+KRtmiJuVTz
+ rAZppwyvgRqARGghgyYWAGz5az1YR1s56hcMXRArQ/qAtrXlBAyg5Hd6dIVJMI1TrToJX3POvLi
+ UdnQ09qKyMmwfpinBC2jDPkjb9JtVGpf9ihWBHB+ZWLCWQam5c4A527rRfElxMWDI7q8JjiAXXO
+ V25weDvbKfsH+jb0IMSS/MjpdwaSma92fA25ELDr8d0AfqY03GFMcx79pdprIzBdaHBV3hYcqQ9
+ z88HFuMoqekice1rr8y4UiqX5qtwhca32XI742Vnovof2tMnog0A+XYvaglP/qWRM0Oqw1ImFpZ
+ C+30jZxvrdqvyp7NoLUNOBUp9fYBaD
+X-Received: by 2002:a17:90b:57ee:b0:368:147b:536a with SMTP id
+ 98e67ed59e1d1-36951b97c8cmr26363833a91.14.1779297511478; 
+ Wed, 20 May 2026 10:18:31 -0700 (PDT)
 Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-36a3c83f226sm254416a91.0.2026.05.20.10.18.25
+ 98e67ed59e1d1-36a3c83f226sm254416a91.0.2026.05.20.10.18.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 May 2026 10:18:26 -0700 (PDT)
+ Wed, 20 May 2026 10:18:31 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v5 06/30] fpu: Use parts64_round_to_int in
- parts_s390_divide_to_integer
-Date: Wed, 20 May 2026 10:17:56 -0700
-Message-ID: <20260520171820.848839-7-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v5 13/30] fpu: Introduce FloatSNaNRule
+Date: Wed, 20 May 2026 10:18:03 -0700
+Message-ID: <20260520171820.848839-14-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260520171820.848839-1-richard.henderson@linaro.org>
 References: <20260520171820.848839-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,35 +100,258 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We will not expose parts_round_to_int_normal.
+Merge snan_bit_is_one and no_signaling_nans into one control.
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- fpu/softfloat.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ include/fpu/softfloat-helpers.h | 14 +++++-----
+ include/fpu/softfloat-types.h   | 25 ++++++++++++-----
+ target/mips/fpu_helper.h        |  3 ++-
+ target/hppa/fpu_helper.c        |  2 +-
+ target/mips/msa.c               |  4 +--
+ target/sh4/cpu.c                |  2 +-
+ target/xtensa/cpu.c             |  3 ++-
+ fpu/softfloat-specialize.c.inc  | 48 +++++++++++++--------------------
+ 8 files changed, 51 insertions(+), 50 deletions(-)
 
-diff --git a/fpu/softfloat.c b/fpu/softfloat.c
-index 905ba6ecf8..08ea56a71d 100644
---- a/fpu/softfloat.c
-+++ b/fpu/softfloat.c
-@@ -5197,12 +5197,11 @@ static void parts_s390_divide_to_integer(FloatParts64 *a, FloatParts64 *b,
-          * Rounding of partial quotient may be inexact. This is the whole point
-          * of distinguishing partial quotients, so ignore the exception.
-          */
--        *n = *q;
--        parts64_round_to_int_normal(n,
--                                    is_q_smallish
--                                    ? final_quotient_rounding_mode
--                                    : float_round_to_zero,
--                                    0, fmt->frac_size);
-+        *n = parts64_round_to_int(q,
-+                                  is_q_smallish
-+                                  ? final_quotient_rounding_mode
-+                                  : float_round_to_zero,
-+                                  0, status, fmt);
+diff --git a/include/fpu/softfloat-helpers.h b/include/fpu/softfloat-helpers.h
+index 745a49f07a..95edd22842 100644
+--- a/include/fpu/softfloat-helpers.h
++++ b/include/fpu/softfloat-helpers.h
+@@ -127,14 +127,9 @@ static inline void set_default_nan_mode(bool val, float_status *status)
+     status->default_nan_mode = val;
+ }
  
-         /* Compute precise remainder */
-         r_precise = parts64_muladd(b, n, a,
+-static inline void set_snan_bit_is_one(bool val, float_status *status)
++static inline void set_snan_rule(FloatSNaNRule val, float_status *status)
+ {
+-    status->snan_bit_is_one = val;
+-}
+-
+-static inline void set_no_signaling_nans(bool val, float_status *status)
+-{
+-    status->no_signaling_nans = val;
++    status->float_snan_rule = val;
+ }
+ 
+ static inline bool get_float_detect_tininess(const float_status *status)
+@@ -203,6 +198,11 @@ static inline bool get_default_nan_mode(const float_status *status)
+     return status->default_nan_mode;
+ }
+ 
++static inline FloatSNaNRule get_snan_rule(float_status *status)
++{
++    return status->float_snan_rule;
++}
++
+ static inline FloatFTZDetection get_float_ftz_detection(const float_status *status)
+ {
+     return status->ftz_detection;
+diff --git a/include/fpu/softfloat-types.h b/include/fpu/softfloat-types.h
+index 5048faa76f..cf7093fa86 100644
+--- a/include/fpu/softfloat-types.h
++++ b/include/fpu/softfloat-types.h
+@@ -192,6 +192,23 @@ typedef enum __attribute__((__packed__)) {
+     floatx80_precision_s,
+ } FloatX80RoundPrec;
+ 
++/*
++ * Define how the architecture discriminates signaling NaNs.
++ * This done with the most significant bit of the fraction.
++ *
++ * In IEEE 754-1985 this was implementation defined, but in IEEE 754-2008
++ * the msb must be 0.  But setting the msb to 1 got baked into HPPA, SH4,
++ * and pre-2008 MIPS.
++ *
++ * Further, some architectures (or modes of architectures) do not detect
++ * signaling NaNs at all.
++ */
++typedef enum __attribute__((__packed__)) {
++    float_snan_bit_is_zero,
++    float_snan_bit_is_one,
++    float_snan_never,
++} FloatSNaNRule;
++
+ /*
+  * 2-input NaN propagation rule. Individual architectures have
+  * different rules for which input NaN is propagated to the output
+@@ -394,6 +411,7 @@ typedef struct float_status {
+     Float2NaNPropRule float_2nan_prop_rule;
+     Float3NaNPropRule float_3nan_prop_rule;
+     FloatInfZeroNaNRule float_infzeronan_rule;
++    FloatSNaNRule float_snan_rule;
+     bool tininess_before_rounding;
+     /* should denormalised results go to zero and set output_denormal_flushed? */
+     bool flush_to_zero;
+@@ -412,13 +430,6 @@ typedef struct float_status {
+      * create a default NaN.
+      */
+     uint8_t default_nan_pattern;
+-    /*
+-     * The flags below are not used on all specializations and may
+-     * constant fold away (see snan_bit_is_one()/no_signalling_nans() in
+-     * softfloat-specialize.inc.c)
+-     */
+-    bool snan_bit_is_one;
+-    bool no_signaling_nans;
+     /* should overflowed results subtract re_bias to its exponent? */
+     bool rebias_overflow;
+     /* should underflowed results add re_bias to its exponent? */
+diff --git a/target/mips/fpu_helper.h b/target/mips/fpu_helper.h
+index 08fb409390..cf667c6637 100644
+--- a/target/mips/fpu_helper.h
++++ b/target/mips/fpu_helper.h
+@@ -35,7 +35,8 @@ static inline void restore_snan_bit_mode(CPUMIPSState *env)
+      * With nan2008, SNaNs are silenced in the usual way.
+      * Before that, SNaNs are not silenced; default nans are produced.
+      */
+-    set_snan_bit_is_one(!nan2008, &env->active_fpu.fp_status);
++    set_snan_rule(nan2008 ? float_snan_bit_is_zero : float_snan_bit_is_one,
++                  &env->active_fpu.fp_status);
+     set_default_nan_mode(!nan2008, &env->active_fpu.fp_status);
+     /*
+      * For MIPS systems that conform to IEEE754-1985, the (inf,zero,nan)
+diff --git a/target/hppa/fpu_helper.c b/target/hppa/fpu_helper.c
+index 2d272730f6..cdbebcfeb3 100644
+--- a/target/hppa/fpu_helper.c
++++ b/target/hppa/fpu_helper.c
+@@ -66,7 +66,7 @@ void HELPER(loaded_fr0)(CPUHPPAState *env)
+     set_float_infzeronan_rule(float_infzeronan_dnan_never, &env->fp_status);
+     /* Default NaN: sign bit clear, msb-1 frac bit set */
+     set_float_default_nan_pattern(0b00100000, &env->fp_status);
+-    set_snan_bit_is_one(true, &env->fp_status);
++    set_snan_rule(float_snan_bit_is_one, &env->fp_status);
+     /*
+      * "PA-RISC 2.0 Architecture" says it is IMPDEF whether the flushing
+      * enabled by FPSR.D happens before or after rounding. We pick "before"
+diff --git a/target/mips/msa.c b/target/mips/msa.c
+index 32c6acbcc5..53fbce10d3 100644
+--- a/target/mips/msa.c
++++ b/target/mips/msa.c
+@@ -84,8 +84,8 @@ void msa_reset(CPUMIPSState *env)
+     /* clear float_status nan mode */
+     set_default_nan_mode(0, &env->active_tc.msa_fp_status);
+ 
+-    /* set proper signanling bit meaning ("1" means "quiet") */
+-    set_snan_bit_is_one(0, &env->active_tc.msa_fp_status);
++    /* set proper signanling bit meaning */
++    set_snan_rule(float_snan_bit_is_zero, &env->active_tc.msa_fp_status);
+ 
+     /* Inf * 0 + NaN returns the input NaN */
+     set_float_infzeronan_rule(float_infzeronan_dnan_never,
+diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+index 40d5fde76d..763424695c 100644
+--- a/target/sh4/cpu.c
++++ b/target/sh4/cpu.c
+@@ -151,7 +151,7 @@ static void superh_cpu_reset_hold(Object *obj, ResetType type)
+     set_flush_to_zero(1, &env->fp_status);
+ #endif
+     set_default_nan_mode(1, &env->fp_status);
+-    set_snan_bit_is_one(true, &env->fp_status);
++    set_snan_rule(float_snan_bit_is_one, &env->fp_status);
+     /* sign bit clear, set all frac bits other than msb */
+     set_float_default_nan_pattern(0b00111111, &env->fp_status);
+     /*
+diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+index d6d42319e5..2015a4e3d0 100644
+--- a/target/xtensa/cpu.c
++++ b/target/xtensa/cpu.c
+@@ -209,7 +209,8 @@ static void xtensa_cpu_reset_hold(Object *obj, ResetType type)
+ #endif
+     /* For inf * 0 + NaN, return the input NaN */
+     set_float_infzeronan_rule(float_infzeronan_dnan_never, &env->fp_status);
+-    set_no_signaling_nans(!dfpu, &env->fp_status);
++    set_snan_rule(dfpu ? float_snan_bit_is_zero : float_snan_never,
++                  &env->fp_status);
+     /* Default NaN value: sign bit clear, set frac msb */
+     set_float_default_nan_pattern(0b01000000, &env->fp_status);
+     xtensa_use_first_nan(env, !dfpu);
+diff --git a/fpu/softfloat-specialize.c.inc b/fpu/softfloat-specialize.c.inc
+index e2e3ec0e81..0b527302a5 100644
+--- a/fpu/softfloat-specialize.c.inc
++++ b/fpu/softfloat-specialize.c.inc
+@@ -79,26 +79,6 @@ this code that are retained.
+  * version 2 or later. See the COPYING file in the top-level directory.
+  */
+ 
+-/*
+- * Define whether architecture deviates from IEEE in not supporting
+- * signaling NaNs (so all NaNs are treated as quiet).
+- */
+-static inline bool no_signaling_nans(float_status *status)
+-{
+-    return status->no_signaling_nans;
+-}
+-
+-/* Define how the architecture discriminates signaling NaNs.
+- * This done with the most significant bit of the fraction.
+- * In IEEE 754-1985 this was implementation defined, but in IEEE 754-2008
+- * the msb must be zero.  MIPS is (so far) unique in supporting both the
+- * 2008 revision and backward compatibility with their original choice.
+- */
+-static inline bool snan_bit_is_one(float_status *status)
+-{
+-    return status->snan_bit_is_one;
+-}
+-
+ /*----------------------------------------------------------------------------
+ | For the deconstructed floating-point with fraction FRAC, return true
+ | if the fraction represents a signalling NaN; otherwise false.
+@@ -106,11 +86,15 @@ static inline bool snan_bit_is_one(float_status *status)
+ 
+ static bool frac_msb_is_snan(bool msb, float_status *status)
+ {
+-    if (no_signaling_nans(status)) {
++    switch (get_snan_rule(status)) {
++    case float_snan_never:
+         return false;
+-    } else {
+-        return msb == snan_bit_is_one(status);
++    case float_snan_bit_is_one:
++        return msb;
++    case float_snan_bit_is_zero:
++        return !msb;
+     }
++    g_assert_not_reached();
+ }
+ 
+ static bool parts_is_snan_frac(uint64_t frac, float_status *status)
+@@ -172,14 +156,18 @@ FloatParts128 parts128_default_nan(float_status *status)
+ 
+ static uint64_t parts_silence_nan_frac(uint64_t frac, float_status *status)
+ {
+-    g_assert(!no_signaling_nans(status));
+-
+-    /* The only snan_bit_is_one target without default_nan_mode is HPPA. */
+-    if (snan_bit_is_one(status)) {
++    switch (get_snan_rule(status)) {
++    case float_snan_bit_is_zero:
++        frac |= 1ULL << (DECOMPOSED_BINARY_POINT - 1);
++        break;
++    case float_snan_bit_is_one:
++        /* The only snan_bit_is_one target without default_nan_mode is HPPA. */
+         frac &= ~(1ULL << (DECOMPOSED_BINARY_POINT - 1));
+         frac |= 1ULL << (DECOMPOSED_BINARY_POINT - 2);
+-    } else {
+-        frac |= 1ULL << (DECOMPOSED_BINARY_POINT - 1);
++        break;
++    case float_snan_never:
++    default:
++        g_assert_not_reached();
+     }
+     return frac;
+ }
+@@ -390,7 +378,7 @@ bool floatx80_is_signaling_nan(floatx80 a, float_status *status)
+ floatx80 floatx80_silence_nan(floatx80 a, float_status *status)
+ {
+     /* None of the targets that have snan_bit_is_one use floatx80.  */
+-    assert(!snan_bit_is_one(status));
++    assert(get_snan_rule(status) == float_snan_bit_is_zero);
+     a.low |= UINT64_C(0xC000000000000000);
+     return a;
+ }
 -- 
 2.43.0
 

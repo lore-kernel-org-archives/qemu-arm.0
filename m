@@ -4,105 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E64DCD4F54
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 11:49:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EF34CD4F54
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 12:08:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPfQV-0002HD-5k; Wed, 20 May 2026 07:49:27 -0400
+	id 1wPfiU-0000ez-L3; Wed, 20 May 2026 08:08:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wPfQC-00029A-Do
- for qemu-arm@nongnu.org; Wed, 20 May 2026 07:49:10 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wPfQA-0000Mz-4V
- for qemu-arm@nongnu.org; Wed, 20 May 2026 07:49:07 -0400
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-82fbf5d4dc2so3301193b3a.1
- for <qemu-arm@nongnu.org>; Wed, 20 May 2026 04:49:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779277745; cv=none;
- d=google.com; s=arc-20240605;
- b=E0aiUhXhYtZLWdOYZR+KJGxm8NqRPGd/Epvfh+EaCne3a4uMOCYe9giIQaoQBjtxPR
- VorYnimCsyeWNTnBuaKDUeVtLmIOHdGSOhAaxabeHhitqdlTUIP7/qF51/KQi4SpgY1x
- nZUnp6lA3QB4noC+qNTQHYCyjBGZFWb8rtCVksrxQNzQahslm6EoRi/FUtceDMiWzQe/
- 6Wvq8L0ZoLZ0ONVcjKC1qmvkGmF71dxyo2JxYz2qzIkATLhYBl8JGOFG+jzTxzAiQnPL
- 6XCHFrUa3AIVYHaQ31jcpGIWczfyr2cjAsy+CPioUxQQfAltdY+JSn9nRq/FiHtciz/8
- Zr6w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=cgQLGJS2bx0nRDlaTWldFNCGHt1mi7S2SfWqqbh07cI=;
- fh=jgiq1Wn/pS+wW8nKsKjJhlf6KqiNY4DPB/CnKIjljLM=;
- b=Z1s92ttQoCRpxW9AtWGfF2tXoZXytWvrkqCJT38atB10QsAmNdXXQuToSy1qmciiFy
- IUHzdJGWUOiInB2Y+8MnymymyfPPQTO+ygLGoInpribLvbLYepKPT4FaCsTmKrBsv2DB
- TstXsMrAQb3kbXWFvsWv9qYL+d2XeO447U5Iuf5PMX+psWjrZY6koBETuORiWsCXbjCy
- UZFnvEBBONpFZKnpeu/93NB/ZBkI+x6vqxkmyuU+c9WHnmITZzqAeJAw3amc2ydKrDbz
- JjBStUyKtH+Bb/1DGxm9x3DIcQAhF9St1oGK23VRDvtJ/TabMKIyKMMP8wnF9pY6ND3N
- CrmQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779277744; x=1779882544; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=cgQLGJS2bx0nRDlaTWldFNCGHt1mi7S2SfWqqbh07cI=;
- b=iJI75QO5cJcQj48Ub949Juj023uZEXz1TupFQMlW2+iBFPupePWl3MEoym6ZXTUQ8P
- xSjtI1IrxNdc0Oqti0cxGYEekHFV0XJpLh3dwvcor9+T3LaNwi63vOhuYLXy+Ol5FdBO
- yECutDjIqQGf3DKnFLu8Y1SIO7auU5Iz6Ib4hfGctWUt4fVcWjQo9t1RciHgipv+fwZ2
- cqnpCzR1O3mcIAj+g8T0gtNLfxrkWiDvMDr5rvO1VjXiYQYyZy9YccCaZMhO0VPygUds
- B9ZGnIwSA8NhCDOcgnN23BKMxznB22LSMz5VKQzbf2ZsTX6J7RvJJ7P2PHNcCoD35Q5k
- YXSA==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wPfiI-0000cV-0F
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 08:07:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wPfiE-0005o8-SH
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 08:07:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779278865;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gN42IBfyXnJUM2cD0Bm5P7r/NowDgDYcr0jUKHtffx8=;
+ b=SPpMwjqXvSeUIkeJp4y53ODJsajjM5LThBBf12ge6cGrXSGLYlS8QaPyx9CXrBnjOUvgqy
+ H/AA2d46hwCzPj+9teULTjwFLiJPedPZdWqqo6kFgcqTYu5jdWy9QA72CpOp1i5GAFysBH
+ EyXg46tATYgakzfTpLCU0Tjw0RwSnFQ=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-645-xqw12BkYO2-iFi_JOZlaTQ-1; Wed, 20 May 2026 08:07:43 -0400
+X-MC-Unique: xqw12BkYO2-iFi_JOZlaTQ-1
+X-Mimecast-MFC-AGG-ID: xqw12BkYO2-iFi_JOZlaTQ_1779278863
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-44ffa15dc8cso2893452f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 20 May 2026 05:07:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779277744; x=1779882544;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1779278863; x=1779883663;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=cgQLGJS2bx0nRDlaTWldFNCGHt1mi7S2SfWqqbh07cI=;
- b=NJ3L1OqNptszn6cH03iYI86dlpnuxvGk4fIZr5xFlBh4LfXUxLEXh7EwOIYDthVmJq
- 2CpHI8ISFkbgJ6k/uIvCYCVv3hknj5ZJSCvfDH9oLokmPS3cZhZYdHe2TrAgcbMiooEy
- +wL/EJXPAmxfiH48hE25KQS9lz+kDJjxESTblTCRaJ1I6zp7DA/knT51iMfkX06nKuub
- BnUapbrEqdHD3/Fc3zF5OokTFDUR5saey2l15gVRW/EwI64PIwDWKYm6N8WQLZ4oqEPL
- uR89knbJcXyBedQLlIFaG2RQN1gKvCdBF15q+ButPFV2qRzV8B9tqrdiLddTyb0NFjO9
- I1EA==
+ bh=gN42IBfyXnJUM2cD0Bm5P7r/NowDgDYcr0jUKHtffx8=;
+ b=MHFYvvY46lyqH1LTDpuNd9XF6gQ9pF/x71S1dXI2GxlsntqpnPyv+TiTbRrrFPyyYY
+ NzZbzHu5LIDsIk6pqmIj0lGczA8+g7Pde1LIgPfEmzLNIwt3j6q9WmNjtaWFgbZosjX6
+ 5A/5mlLVa8g/JChhkuIMjbonhAb/DctdWuuGUBC5nOMmPTdhHjZRSCVb9brCfGNTuwjD
+ WkcDfLBY3k5WzJDsZzaFxNfBknKN/2HZKfYVC6hCbFd5GOVNEUmBTEhU+30ZTavwfoG7
+ N0hIhE00t9WLfGdelx/+DUMmdbN/LRvlQJJvSYKDfYP0PR9v47pzfcuxwYOWk6/XAtv8
+ P3Yg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/EjcqzJ6Bj+kuq4+PXhVmdUvcmy//cU369WLiBtstUoHVM0zo9kPDHBqRaEsotIo+IHXBex4dWbA==@nongnu.org
-X-Gm-Message-State: AOJu0YxIOwRKTFia+QPrw5S51GU8Ybic4Z+FpMGt4ZGj7H8mwwQX0ruo
- CJBGg56Ba1V55UczfGyB+qBZKm71/aW3mTL6j/7LA/IQnJdoTdBBsw9oH8wrqYc+WWlFay4emQZ
- WWFFzfZGj+DmCq0e8BWIhWsLjsq4A96n1YlW6O4EYdiZJPmU0bJcU
-X-Gm-Gg: Acq92OE/TDEaOYt4mMAWv/FWdxzh/cYdAM0eXKjXhtlUhvpF+BoZBKK38J0oUyrcdEw
- p7NrFCK2OiuwFG1M8Wi2MYACtwQYg10rHIPW3SWLI/DcOR9WRBoKXzHUAyrqWJyB1peonZ6T15s
- 2NCrFO8AWsGgTX8ldZtitfrWTGISUN+Or9F1FtDweNXh2JniC3MORYyihiSMIB+qFFmmLUYZJjp
- 9lk7DeT/0BUrXR9SlunFRAZmR9GidkSjobbIuhsVTvME4tCZmhDZTNUVWEi0WJ5OPcR0+sczXh2
- ryIPwQE+BZI8ZZyaeFMj0F/eY6mW1+nQ97GKpSHGDtZKzUlMTxX3Nno1AxVmInBUp80=
-X-Received: by 2002:a05:690e:2501:10b0:654:28b9:e50 with SMTP id
- 956f58d0204a3-65e227f64f0mr18793325d50.40.1779270580592; Wed, 20 May 2026
- 02:49:40 -0700 (PDT)
+ AFNElJ/rPsuCTP/LvCctMu9kKUPZGpBczph8N0R+D9j4udczVLfK7FT45KH9oMg4Xtxl0vV5T3UY0vQUWg==@nongnu.org
+X-Gm-Message-State: AOJu0YxtFZ6Lc3sIy08O7QHB/7WAc1Cu3oW0YLz8hTYBjNPDuhgql8CW
+ OrZTXFPzqh4KcM5r3yoPdGHzCkYPRTvzpJaWXO2wBB6q2QVaLcmy3rLU0FutonaBw/egP0sRADj
+ 1OehNL6KnUdds+9dkFLPznp4e3FevGJ58UKV8ck/+5iiLm6FpwtBy3Q==
+X-Gm-Gg: Acq92OEz0BX6MuIW3T9ejL5JXw85AXFj0aYn5UxcDC3WPng2u2cmqCw1W4Yxyy45zF3
+ TSrwkOiDP+kGWsK5zCeLueDotHtNFkRsYNhO2ZnEj0bwkesiBwNrQDn+W/N9XYdIsQsUFbxWAAC
+ 7CPd2acI5L0lMLvdvwQNQfZeQPzMtnoW42rTqAJKvR6Pr2mOhi4rifPAXrR0yy0QvwO7QWZATZZ
+ CUJA9HYqMNgL0SBO5pwKyogVDkP1aF6nz6Z0hVCybebIgvZIAY0/5I0DydTZEhHz/V/4TaHwq6U
+ YknZ9QXach42HedFLYoTxO88wlY2yGasGMLGdDWMCR/d9oF3FUdiI6xYF/ADd6ReKtcu0Ybi2N6
+ 8zycFkivmauz5Z+sxhXIEVXlrnOAmh5eE7iJKBtEkNQ7wWu/IcwiStidhhsj8ig7PMfhxdw==
+X-Received: by 2002:a5d:588f:0:b0:43d:733f:aee6 with SMTP id
+ ffacd0b85a97d-45e5c5aefe4mr37464345f8f.10.1779278862251; 
+ Wed, 20 May 2026 05:07:42 -0700 (PDT)
+X-Received: by 2002:a5d:588f:0:b0:43d:733f:aee6 with SMTP id
+ ffacd0b85a97d-45e5c5aefe4mr37464156f8f.10.1779278860887; 
+ Wed, 20 May 2026 05:07:40 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45d9adc2209sm50403675f8f.0.2026.05.20.05.07.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 20 May 2026 05:07:40 -0700 (PDT)
+Message-ID: <2d49ceda-4416-4044-8323-18104cc52e1d@redhat.com>
+Date: Wed, 20 May 2026 14:07:38 +0200
 MIME-Version: 1.0
-References: <20260517003002.321430-1-richard.henderson@linaro.org>
- <20260517003002.321430-46-richard.henderson@linaro.org>
- <CAFEAcA_4wU+wndbAqjnObpvnLit11OVDZvTZ1RWy_q0cNfH7uA@mail.gmail.com>
- <90811f89-79a0-4e34-b6a8-d349353620f0@linaro.org>
-In-Reply-To: <90811f89-79a0-4e34-b6a8-d349353620f0@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 20 May 2026 10:49:27 +0100
-X-Gm-Features: AVHnY4K4eDIayRiNmqGf9vHMCbHzDTi64krvFk6dz5Y5kxjDxEJ4Xzt59IRbbfo
-Message-ID: <CAFEAcA8777gA7i_Mywr25QfNVJVFLTDdLMk2en=QPsD8v9NyVg@mail.gmail.com>
-Subject: Re: [PATCH v5 45/63] target/arm: Implement FMLALB, FMLALT for AdvSIMD
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 16/32] hw/arm/tegra241-cmdqv: Emulate VCMDQ register
+ writes
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
+ Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>,
+ Matt Ochs <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>,
+ Jason Gunthorpe <jgg@nvidia.com>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>, "phrdina@redhat.com"
+ <phrdina@redhat.com>
+References: <20260519103727.899332-1-skolothumtho@nvidia.com>
+ <20260519103727.899332-17-skolothumtho@nvidia.com>
+ <73b4f204-41d5-4997-8d02-5fc9ba3d0c67@redhat.com>
+ <CH3PR12MB7548A230C9165D12CDD2EEF2AB012@CH3PR12MB7548.namprd12.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CH3PR12MB7548A230C9165D12CDD2EEF2AB012@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 0kC569Ueios8A4vQgUWdFCcL-aNkJWxqe7pe1cXEQRw_1779278863
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,75 +126,196 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 19 May 2026 at 22:52, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+
+
+On 5/20/26 11:54 AM, Shameer Kolothum Thodi wrote:
 >
-> On 5/19/26 06:41, Peter Maydell wrote:
-> > Also, I realized that this squashing mechanic means we can't do
-> > the handling of invalid input formats the way we do at the moment.
-> > The float_raise() operations done by fp8_invalid_input() will
-> > get squashed for multiplies. I think the fp8_invalid_output() part
-> > is still OK because we only use it in the FP8 convert operations.
-> >
-> > We could perhaps have fp8_mul_start() explicitly check for fmt1
-> > or fmt2 being fp8_invalid_input -- it has access to the real
-> > fp_status so can raise Invalid and InvalidSNaN there.
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: 20 May 2026 08:54
+>> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
+>> arm@nongnu.org; qemu-devel@nongnu.org
+>> Cc: peter.maydell@linaro.org; clg@redhat.com; alex@shazbot.org; Nicolin
+>> Chen <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt
+>> Ochs <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
+>> <jgg@nvidia.com>; zhenzhong.duan@intel.com; Krishnakant Jaju
+>> <kjaju@nvidia.com>; phrdina@redhat.com
+>> Subject: Re: [PATCH v5 16/32] hw/arm/tegra241-cmdqv: Emulate VCMDQ
+>> register writes
+>>
+>> External email: Use caution opening links or attachments
+>>
+>>
+>> Hi Shameer,
+>>
+>> On 5/19/26 12:36 PM, Shameer Kolothum wrote:
+>>> From: Nicolin Chen <nicolinc@nvidia.com>
+>>>
+>>> This is the write side counterpart of the VCMDQ read emulation. Add
+>>> write handling for both the direct VCMDQ aperture and the VINTF
+>>> logical aperture using the same index decoding and VINTF-to-VCMDQ
+>>> translation logic as the read path.
+>>>
+>>> VINTF aperture writes are translated to their direct-aperture
+>>> equivalent and update the same cached state. Page 1 registers
+>>> (BASE, CONS_INDX_BASE) always update the cache. Once
+>>> IOMMU_HW_QUEUE_ALLOC and viommu_mmap are wired up in a
+>> subsequent
+>>> patch, Page 0 register writes will be forwarded to the hardware-
+>>> backed mmap'd page.
+>>>
+>>> Ignore VCMDQ BASE writes if the VCMDQ is already enabled.
+>>>
+>>> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+>>> Co-developed-by: Shameer Kolothum <skolothumtho@nvidia.com>
+>>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+>>> ---
+>>>  hw/arm/tegra241-cmdqv.c | 164
+>> +++++++++++++++++++++++++++++++++++++++-
+>>>  hw/arm/trace-events     |   2 +
+>>>  2 files changed, 164 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
+>>> index f859126ad6..5d2d9d2e26 100644
+>>> --- a/hw/arm/tegra241-cmdqv.c
+>>> +++ b/hw/arm/tegra241-cmdqv.c
+>>> @@ -16,6 +16,16 @@
+>>>  #include "tegra241-cmdqv.h"
+>>>  #include "trace.h"
+>>>
+>>> +/*
+>>> + * Returns true if the per-VCMDQ CMDQ_EN_OK bit is set.
+>>> + */
+>>> +static bool tegra241_vcmdq_enabled(Tegra241CMDQV *cmdqv, int index)
+>>> +{
+>>> +    uint32_t status = cmdqv->vcmdq_status[index];
+>>> +
+>>> +    return status & R_VCMDQ0_STATUS_CMDQ_EN_OK_MASK;
+>>> +}
+>>> +
+>>>  /*
+>>>   * Read a VCMDQ Page 0 register (control/status) using VCMDQ0_* offsets.
+>>>   *
+>>> @@ -116,6 +126,108 @@ static uint64_t
+>> tegra241_cmdqv_config_vintf_read(Tegra241CMDQV *cmdqv,
+>>>      }
+>>>  }
+>>>
+>>> +/*
+>>> + * Write a VCMDQ Page 0 register (control/status) using VCMDQ0_* offsets.
+>>> + *
+>>> + * The caller normalizes the MMIO offset such that @offset0 always refers
+>>> + * to a VCMDQ0_* register, while @index selects the VCMDQ instance.
+>>> + *
+>>> + * Page 0 registers are all 32-bit; this helper is only called for 4-byte
+>>> + * writes.
+>>> + */
+>>> +static void tegra241_cmdqv_write_vcmdq_page0(Tegra241CMDQV
+>> *cmdqv,
+>>> +                                             hwaddr offset0, int index,
+>>> +                                             uint32_t value)
+>>> +{
+>>> +    switch (offset0) {
+>>> +    case A_VCMDQ0_CONS_INDX:
+>>> +        cmdqv->vcmdq_cons_indx[index] = value;
+>>> +        break;
+>>> +    case A_VCMDQ0_PROD_INDX:
+>>> +        cmdqv->vcmdq_prod_indx[index] = value;
+>> so there is no cmd consumption triggered by an increment of the producer
+>> index as opposed to std smmu emulation. This shall at least be explained
+>> in the commit msg and maybe in the code, + the justification. It is a
+>> bit strange to emulate the MMIO accesses while not doing anything
+>> functional out of them.
+> There is indeed a difference here w.r.t. std SMMU emulation. CMDQV
+> is a hardware-accelerated feature, and   there isn't much value in emulating
+> the queue functionality without the HW backing.
 >
-> Here's the thing:
+> From Spec, p.176:
 >
-> FP8Unpack doesn't raise an exception itself, just sets fptype = FPType_SNaN.
+> "While the software can program the Virtual CMDQ(s) directly using the direct
+> VCMDQ aperture  (and not through the Virtual Interface), it is required that the
+> VCMDQ be allocated to a Virtual Interface before it is used to send commands
+> to the SMMU"
 >
-> For FP8ConvertFP, we then explicitly raise invalid and return default nan.
+> So no actual command processing can happen until the VCMDQ is allocated to
+> a Virtual Interface. Until then, reads/writes only update the register cache.
 >
-> For FP8DotAddFP, we notice nans within a loop, setting any_nan; after the loop, if any_nan
-> is set, we return default nan but do not raise invalid.
+> I will make this clear in the commit log.
+
+Yes this helps
 >
-> So I guess we don't need to do anything special during fp8_mul_start.
-
-Yes, you're right. I read the FPMR.F8D text about raising
-Invalid and assumed it applied also to F8S1 and F8S2, but it
-doesn't -- invalid format for source merely means "it's an SNaN",
-and doesn't explicitly raise Invalid at all.
-
-Also, it looks like "treat as SNaN" and "return 0xff, raise Invalid" are
-both merely "implementation is permitted to" choices (that the
-pseudocode takes) added to the usual set of CONSTRAINED
-UNPREDICTABLE appending options for setting fields to reserved
-values. So we don't need to be super picky about what we do.
-
-> One thing I could do that might be slightly clearer is
+>>> +        break;
+>>> +    case A_VCMDQ0_CONFIG:
+>>> +        if (value & R_VCMDQ0_CONFIG_CMDQ_EN_MASK) {
+>>> +            cmdqv->vcmdq_status[index] |=
+>> R_VCMDQ0_STATUS_CMDQ_EN_OK_MASK;
+>>> +        } else {
+>>> +            cmdqv->vcmdq_status[index] &=
+>> ~R_VCMDQ0_STATUS_CMDQ_EN_OK_MASK;
+>>> +        }
+>>> +        cmdqv->vcmdq_config[index] = value;
+>>> +        break;
+>>> +    case A_VCMDQ0_GERRORN:
+>>> +        cmdqv->vcmdq_gerrorn[index] = value;
+>> shouldn't it do something functional besides storing the value
+>> on std SMMU we resume consuming cmds. interaction with interrupts,
+>> CONS_INDX?
+> Same rationale as above. In the pre-allocation state there is no real queue
+> function to drive, so there is nothing functional for QEMU to do on a GERRORN
+> write.
+also I would add a comment in the code
 >
-> static FloatParts64 fp8_invalid_input(uint8_t x, float_status *s)
-> {
->      /*
->       * Invalid input format is treated as snan, then one of the uses
->       * will convert to default nan and raise invalid.
->       */
->      return (FloatParts64){ .cls = float_class_snan };
-> }
+>>> +        break;
+>>> +    default:
+>>> +        qemu_log_mask(LOG_UNIMP,
+>>> +                      "%s unhandled write access at 0x%" PRIx64 "\n",
+>>> +                      __func__, offset0);
+>>> +    }
+>>> +    trace_tegra241_cmdqv_write_vcmdq_page0(index, offset0, value);
+>>> +}
+>>> +
+>>> +/*
+>>> + * Write a VCMDQ Page 1 register (base / DRAM address) - 4-byte access.
+>>> + */
+>>> +static void tegra241_cmdqv_write_vcmdq_page1(Tegra241CMDQV
+>> *cmdqv,
+>>> +                                             hwaddr offset0, int index,
+>>> +                                             uint32_t value)
+>>> +{
+>>> +    switch (offset0) {
+>>> +    case A_VCMDQ0_BASE_L:
+>>> +        if (tegra241_vcmdq_enabled(cmdqv, index)) {
+>>> +            return;
+>>> +        }
+>>> +        cmdqv->vcmdq_base[index] =
+>>> +            deposit64(cmdqv->vcmdq_base[index], 0, 32, value);
+>>> +        break;
+>>> +    case A_VCMDQ0_BASE_H:
+>>> +        if (tegra241_vcmdq_enabled(cmdqv, index)) {
+>> where is it documented in the spec? I don't see this restriction in the
+>> reg doc. Then "Enabling the virtual CMDQ" paragraph describes a std
+>> setup but does not say - afaics- that it should be ignored -
+>> worth commenting
+> Right. I don’t think it is explicitly there in the spec.
 >
-> What do you think?
+> However, Nicolin mentioned about such a restriction during v4 discussion:
+> https://lore.kernel.org/qemu-devel/afuF+sJtEApWisp+@nvidia.com/
+>
+> AFAICS, it looks like an implied assumption based on the "Enabling the virtual
+> CMDQ" sequence or I missed it.
+>
+> I will double check.
+OK
 
-That's probably clearer. I guess.
+Thanks
 
-Maybe have the comment:
+Eric
+>
+> Thanks,
+> Shameer
 
-/*
- * Invalid input format: we could take one of the usual set of
- * CONSTRAINED UNPREDICTABLE options for use of a reserved value,
- * but choose to take the additional option provided by the
- * FPMR register specification, of treating the input as if
- * it were an SNaN.
- */
-
-and similarly for output but
- "...of setting the result to 0xff and signaling Invalid Operation".
-
-?
-
-thanks
--- PMM
 

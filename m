@@ -4,77 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 291A0CD4F5E
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:54:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63E79CD4F5E
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 06:54:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPalX-0006nN-IF; Wed, 20 May 2026 02:50:52 -0400
+	id 1wPaos-0008UL-Js; Wed, 20 May 2026 02:54:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPak4-0003en-Jo; Wed, 20 May 2026 02:49:24 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wPaon-0008E2-KX; Wed, 20 May 2026 02:54:14 -0400
+Received: from mail-westus3azlp170100009.outbound.protection.outlook.com
+ ([2a01:111:f403:c107::9] helo=PH7PR06CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPajy-0001VH-0g; Wed, 20 May 2026 02:49:19 -0400
-Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
- [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64K6lnbO096590
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 20 May 2026 15:48:13 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=3PTtI8wZma/BvQGXxn7cS2TOS6Ro5EjNGD2ikFoIUhU=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1779259693; v=1;
- b=gt05uVr0rt5a9pM9JfvHNRrF3XWWSw2wGGt1OHBd7OV/kTFKU9s+JadrfyXjGyKM
- 5xpEVIUE/Q7afSL4kVdT0r0GrNq4pp3hacLrFnYaIwqD5o8PsO/1LzTAPxSUpmbf
- iuU3TzswhzVJw7j1lEyRa5LJ/nyO4OjkRLAiThJXvre0BnzsRpcEvPSTRh6xiBcC
- FMuaDCpuxZdtTIMyNk5id7cXejI3f64W+YgBJERILbvuKCW0bOM5YaTyP15atW2h
- Vbe57lHCiLtwI2+SB2gTrXYRPFPwEq64F5uYExgprIXUUgHnaZwTDtF10KpdoY6G
- jf159IzxTAjfvLUWWdePGA==
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 20 May 2026 15:47:44 +0900
-Subject: [PATCH v3 01/29] ui/input: Introduce QemuInputEvent typedef
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wPaol-0003Z7-Em; Wed, 20 May 2026 02:54:13 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=iHgl6O9ByNlZ42zs6BNLxa9GKTpjaQKOT4R/W7SXo8CeQRJ8Ea4gHjhl9cw6ritErlZaPvykulNnSoiEKbQa//bzrECkTfu/GX7Mni7laKq886qI++dTmsHSaWXwoHyM8Fe2Hp3yvXgr8sRU3TID6guOuSw3u0gML9eLSJLFf4aQ5ywtgMARjduLlotrYTlwi5AwdA8qF0GPWjULYyxMHeobKplgTG8QAztZqyi95NAeeuvno5s8Q4SWbdVhj7VvXjcPc0J0mvDolQJfi5Msl+WzuWoifcLsIJ1Mg5sUnh27i64heLKA68T4fAorxI9SGM9YiB0BXKspBzBo7wVpsw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UaABLRSFNTURS5XyP2YboLUsMdnEEVfAINxECzbOiyA=;
+ b=SPnpQZS+CNRmNdDv3Tm/+KX1PIinzPIO4IC4/WZLZQq7fhyE21Pcgr7T5+MtTovl7BTWZNLc1H0HPY0u9h7zw9RnQ10ufYSOIpmkrNeJENKpYCx+m+C+cjlAVXW5eBZjNFwbUidpscZQUmtflXDGgcexb5tN75hUYmslJIK+/HrPHaUKkCuqWcTbt1nRzDHLuOcU40epepKt1n0UXB2agk0ciFa2MrgNcyucfeEn/Yhqc1+0uYTZGb9iAPq5C09tm7/ge9LyYj5fqcK0aoMsiF7JB+7UHcTFd9fvef/KxDbrJFmjBKJD5tf5mJj3kzB695WzW0UEHw8lV/IzPMfKyg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UaABLRSFNTURS5XyP2YboLUsMdnEEVfAINxECzbOiyA=;
+ b=KMHrxBin5nRKPIpz8lKU6BDX9gjHh8tDjmMNCbm135i+VYalNiNnP2XedF+GVae+Lkdyl08bmJxgcwOGXIKqrflmRsOToGloOL97eeVrc630NBXGenriRfzsrlDGiMx1QIV1YHbUe0Sk9uVRCg+H0xDxzXAwF4FE4BRZJkEDJsUtEZVfNBTTofxOgSFtVDCMpCNzD5FV7kFfuNy1dG4rzvWjPG5kdksmtwnYcTrB+JotTETWgo+zK3Nhxko10QmLBCDSQd6SkzoC1ohzZG0Q9N3YZcFaPJYm+E03Ako5OrBrNq6vyCF7vvr8Fi8SQOHlTUoJzSz4z9WiaDYcsfbkRQ==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by SJ0PR12MB7068.namprd12.prod.outlook.com (2603:10b6:a03:4ae::7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.48.14; Wed, 20 May
+ 2026 06:53:56 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%6]) with mapi id 15.21.0048.013; Wed, 20 May 2026
+ 06:53:56 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "clg@redhat.com"
+ <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>, Nicolin Chen
+ <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
+ <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, Jason Gunthorpe
+ <jgg@nvidia.com>, "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>, "phrdina@redhat.com"
+ <phrdina@redhat.com>
+Subject: RE: [PATCH v5 15/32] hw/arm/tegra241-cmdqv: Emulate VCMDQ register
+ reads
+Thread-Topic: [PATCH v5 15/32] hw/arm/tegra241-cmdqv: Emulate VCMDQ register
+ reads
+Thread-Index: AQHc53vN+weCT1tSl0yA2GeyFGmDq7YWaaWAgAARXeA=
+Date: Wed, 20 May 2026 06:53:55 +0000
+Message-ID: <CH3PR12MB75480E94D997D5B881979ACFAB012@CH3PR12MB7548.namprd12.prod.outlook.com>
+References: <20260519103727.899332-1-skolothumtho@nvidia.com>
+ <20260519103727.899332-16-skolothumtho@nvidia.com>
+ <7a96fe4f-a42b-44d7-b0e1-d767c42f4eb8@redhat.com>
+In-Reply-To: <7a96fe4f-a42b-44d7-b0e1-d767c42f4eb8@redhat.com>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|SJ0PR12MB7068:EE_
+x-ms-office365-filtering-correlation-id: c7889da8-7f40-4a50-765f-08deb63c8fc1
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|376014|1800799024|56012099003|18002099003|22082099003|4143699003|11063799006|38070700021;
+x-microsoft-antispam-message-info: qYAddqkKhEeq247ymVwaZp5wqOw20zoQERxfGdKiT7BoYVXYZ1s0CKPjHxOALJ8AAeeVWBtsnEpUbUPNx9cZBQHrCVMQLbn8Y16PwrpeD4TRv6efZBupDi8805SOktMGkKTcDlFjvRem8gm9CBqrEQ9z0xC7jCJCfdT3yt3uUD/E6oHlVgT3RYvX9t4CS4Pg1EW2z9mpR5mSfF0Eb0r5ssHjDLB0IHNGUa4s5hL0n1sHl3/yP9wLDqKnZDuAM9nlOESc9d43l95wS/PIsL+OgrjGnVtMyWozbC/bcgXzxxgKBRuaqd6YUZJaXoknffxnC3BfMeAEvZqyiNvYBC6k1/hWGDavtBPcePHBIS5hdNUmbP5TuJqC26bPw8x9+Z80hCtKuiZWvtL62lnamN4ncT/4C0jtcPdL3go/Q95VA/yEBh4mCpI5NsYdjZ+p6GgjKfiKI0GGdYWPSJcxjWYLv8RGiAzY+RSi0YlwzcPLYeJyC0w8zQ9eEoTj1JHitRfeE0FBPKo6yle/IDlEkhxnkOHiLRybF6GGdEjvWgxQkQJ0hvzeZGR4pphzKorvBGty2Mz6PBM23wcj5zR8ZjkrDkwJ3dh94gRKf2qzCCoctUI7sW29JbkBoXSlIkPYVUoxriHwzWvPulnHvHiQ29cshg3so79NWcmxZIOftujICn9CpedtSbJwnxIe8BiXA0NOGpzGPhpnVGHH8nIFkqf9/eHBIia9oiB417Nz/XrJF2thR8MzYweayOXFHcSZHv/H
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(376014)(1800799024)(56012099003)(18002099003)(22082099003)(4143699003)(11063799006)(38070700021);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?amNXdUJTMFhHMGtQdVA3b0hBNnlpdEFFc0xjYnpISU1qMHlYTE1uenZPRjFU?=
+ =?utf-8?B?OEp2aEZaQUpvRFRBVFZlMHFvWFFqVDFMZnpvWWRUZTJSSFo1bS85dWFaWUN3?=
+ =?utf-8?B?YjdxR2hiZUptZVI5YS9CU0NqWGtreStZZStrSG13bU9va0E3M0h1WXBjcURF?=
+ =?utf-8?B?aWRLYXJ6S3E2VHlzbFN3cG40aWxHd1N5ZzQxQVhuZDVtSEZuWC9RbWExVzB5?=
+ =?utf-8?B?VUhsUEhOWVpMcGVUZ2wvOFJBTHQrY2RmQ3FlYlRFUkVpbGlsdTFJbjFZdmV0?=
+ =?utf-8?B?QmR5VGVuZGptZ1RTcEhNbVUwNjF0Y3BmeGJmamsydGhDUUhlNFBXaEdGTjNW?=
+ =?utf-8?B?Z01uNEw4dEg2aVFmRXJJV1FBN21rSG1sRUZ6NGpPZW9rb20wRExwdVJBLzhO?=
+ =?utf-8?B?OGFBZVNudFlwT0JaNXlEc2NSVk1jUHlGbW5hVDRrNEpJZ1dyQy93eHI5RkxE?=
+ =?utf-8?B?N21DQVNvbFh3eE5YS3FxRUNHSG9mOCtPS3VKS0FDeGlPcUlNK1pFdHNHTlp3?=
+ =?utf-8?B?RGo1Um41b2lVMXp2Q3BXbjNQWnJHTFd6V0VPaFYvOStPNCtNZExoTzdueHFx?=
+ =?utf-8?B?ekJlWEpZNjJEU2pocno3NFd5NW9iQTNVVVJPcVU4TnJnbFk3TXoxRnZRRjJG?=
+ =?utf-8?B?dVZneTFWcVlEdHFQK1lmcUx0MWk4Q3JIbllwc2VDWmhVUmhmcWxPMVUyQ2hG?=
+ =?utf-8?B?N2F6bHBOaWV3YjdCUjhYRExDVjByUXFsd1QxZDhvVHVSazFGQTdGZE82MDhp?=
+ =?utf-8?B?eFJmRDJnd1BSYzgrL2M0dVZOSzhNVmVZdUlaTGRaSFVzTDhJUW1qU2N1cVpB?=
+ =?utf-8?B?bjNBQWwvakswcG1tcjQ2TE11MEJ6SFR2M1BVNDIrTWZweWZ3b25nVEh3M0lM?=
+ =?utf-8?B?cGtaejhPVzNrV05GWkZrTSs5RHkrMzIxZ0pFTVpveFI3YStsU21heXY3R0pY?=
+ =?utf-8?B?MWk2aHU4ai8rTERvWHVTVkJlOHpEZy9DNldsMmF2TXFPNmhwbmdCVmtFZHB2?=
+ =?utf-8?B?Y2d6ek0xY3BYczhVRW5BQ21sVlhlSVBscUxkalpqQXlwSUFJa3VLSXFlRGhv?=
+ =?utf-8?B?UmgvVUZ5alU3eWh0UEQzVkhhcmdvZHZuNXNCelFqbHlMTXgyb0ZPMjRiRWZv?=
+ =?utf-8?B?OFgwb3hPQ1Q4SFMwZzJxOGR5WUNLK1hBbDJybVF4Q2xxWG5jR3h2bno2RUJ0?=
+ =?utf-8?B?NVFpZllJUUJEc09lTlBxUGdNTkUxdlhWKzNJdi8xazRmandLdkFRc3l4Zmkv?=
+ =?utf-8?B?UDQ4ZWlPN2pObE9RY3B0YzNhY3BiRVF5OTc3QkxsZU1wUERzbW1KYk1pNWRJ?=
+ =?utf-8?B?THpDdVViRkU4UVZzRmJIRllOemo3Q0JOdW5lVjVPTWxRUXZ2eXJ2T0xDU2Jp?=
+ =?utf-8?B?U2FJZGhrd00vRnp6ejVtVTZUaDZXMVVPbEk5QXU0YVNNcFQ3alA5RzFpSHBV?=
+ =?utf-8?B?UGxrb2FDY3c4YkkwUi96VVpXMWV2TTF2MzNqNjh1V0JtbnlYZ09zekYwZnhJ?=
+ =?utf-8?B?VERVSGFWakpEcEl2WndjdzRRRzJNa1A3VjBKbGdJb2hpL0dqQlZ6UGhNdUkw?=
+ =?utf-8?B?TVplenZ6QXZxYXhjOEp1RS82Zkx2aGs4eUo4NWZXamM2MHl1VFJ6bzJPb1pX?=
+ =?utf-8?B?elUwblJSV2U1OXM0YjFIL0xlRzB1QVN1Y1NsOEJOL1E5WDVIQWYzc0VMczNU?=
+ =?utf-8?B?MmtoL3VNT25JQkdRU0ZSNUE5bjNtR2dTc01QOFFTUFh1NlhsSmRoYzdLMlNm?=
+ =?utf-8?B?bkhyQnpKQXRjaGNoRHkraU84eFE2cmR2OUZWL2E0c3pjazlhdDBTb0xDbzhI?=
+ =?utf-8?B?TGFYOHo2WFFDZDR6Y1RPTUIyK3VIVHYzbmZXLzJWZ3R3THNNamdHN05sNy9n?=
+ =?utf-8?B?MXYyUklDdE5PdVdyUzd4OFpxMXRKL0xXU1lNTzY1WThQYWtFMVB5c1BpT1NI?=
+ =?utf-8?B?dG5FdjRjcWIyc0szaFJNWXBDdUp1NUtZdHBoZTZTU1Q4cUpnb3R1ZncxQm12?=
+ =?utf-8?B?TXdFYlV0RmUrbngrREdEUm1lL0NmSGRNTHJhY2hJTm1KaFpLWTFEQ1ZrZUdZ?=
+ =?utf-8?B?STBVSFd2aklBWWwrTDdtOGdJWnZLVGVQcWxiNmhHY3o5aTVDME95SUp5Uitt?=
+ =?utf-8?B?elBMaEFEN3BJVVdEMU5MdUpieVF2L1BuQVlqb1RwNmRyV0FicUcvbTdiSkU5?=
+ =?utf-8?B?ZXY5SkhNMnYwZnZQZGMzemhBT0hEUnFjMXdxYjdFUjZhZDZsU3pjVytDbWhG?=
+ =?utf-8?B?c3kxQ21EQjhmSWhzZzBPazN3ZldqK3c5TnhTSzlPa1d4ZENSaW5PcUdmNkdH?=
+ =?utf-8?B?V3k5ZE5BWDNrcjdjVmhhMFUycndHOVdGYmRLKzdDV0V4d3FVV0ZDZz09?=
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260520-input-v3-1-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
-References: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20260520-input-v3-0-7c9e4c7abe34@rsg.ci.i.u-tokyo.ac.jp>
-To: qemu-devel@nongnu.org
-Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
- Peter Maydell <peter.maydell@linaro.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony PERARD <anthony@xenproject.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Thomas Huth <th.huth+qemu@posteo.eu>,
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-arm@nongnu.org, xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org,
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=19238;
- i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=3qKuXrISGRWSIYKb75LW7Ng12F0fR/1kkjjhh8+MPFQ=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZvpKRk8kHFnndp7O57vxy0vCjIlDyhZ/dagY9HDefP2
- dRwUe5aRykLgxgXg6yYIktK0W5ujejaT4UJ8S0wc1iZQIYwcHEKwERWqjP84U2d9+Xh9KM7CnY+
- Yz++I3yzlphc095E7QT3V4dt2IMFJjEybE/qZErgOWWbLF4g/ekM7+r4c/eehxtc/KnPt0F8q9B
- yVgA=
-X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
- fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c7889da8-7f40-4a50-765f-08deb63c8fc1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 May 2026 06:53:55.8505 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: /QlZQiUs1c+IrGkGQVLT/0T42wkOCFSwQGhtdCJswvLAOtw4A67UssjhToPaI5sDuGBo/Hkas8QHNxdbOH4whQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB7068
+Received-SPF: permerror client-ip=2a01:111:f403:c107::9;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=PH7PR06CU001.outbound.protection.outlook.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,511 +159,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add QemuInputEvent as the input subsystem's name for InputEvent and use
-it in input handler, queue, and replay interfaces.
-
-This prepares for decoupling QEMU's internal input event representation
-from the QAPI InputEvent type.
-
-Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
----
- include/qemu/typedefs.h      |  1 +
- include/system/replay.h      |  2 +-
- include/ui/input.h           |  6 +++---
- replay/replay-internal.h     |  6 +++---
- chardev/msmouse.c            |  2 +-
- chardev/wctablet.c           |  2 +-
- hw/arm/musicpal.c            |  2 +-
- hw/char/escc.c               |  4 ++--
- hw/display/xenfb.c           |  4 ++--
- hw/input/adb-kbd.c           |  2 +-
- hw/input/adb-mouse.c         |  2 +-
- hw/input/hid.c               |  4 ++--
- hw/input/ps2.c               |  4 ++--
- hw/input/stellaris_gamepad.c |  2 +-
- hw/input/virtio-input-hid.c  |  2 +-
- hw/m68k/next-kbd.c           |  3 ++-
- replay/replay-events.c       |  4 ++--
- replay/replay-input.c        |  8 ++++----
- replay/stubs-system.c        |  2 +-
- ui/input-legacy.c            |  2 +-
- ui/input.c                   | 26 +++++++++++++-------------
- ui/vdagent.c                 |  2 +-
- 22 files changed, 47 insertions(+), 45 deletions(-)
-
-diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-index 07f2ae7c9f1e..da7097c54401 100644
---- a/include/qemu/typedefs.h
-+++ b/include/qemu/typedefs.h
-@@ -94,6 +94,7 @@ typedef struct QBool QBool;
- typedef struct QDict QDict;
- typedef struct QEMUBH QEMUBH;
- typedef struct QemuConsole QemuConsole;
-+typedef struct InputEvent QemuInputEvent;
- typedef struct QEMUCursor QEMUCursor;
- typedef struct QEMUFile QEMUFile;
- typedef struct QemuMutex QemuMutex;
-diff --git a/include/system/replay.h b/include/system/replay.h
-index 19fb6dbb3963..3b00386821b6 100644
---- a/include/system/replay.h
-+++ b/include/system/replay.h
-@@ -126,7 +126,7 @@ void replay_bh_schedule_event(QEMUBH *bh);
- void replay_bh_schedule_oneshot_event(AioContext *ctx,
-     QEMUBHFunc *cb, void *opaque);
- /*! Adds input event to the queue */
--void replay_input_event(QemuConsole *src, InputEvent *evt);
-+void replay_input_event(QemuConsole *src, QemuInputEvent *evt);
- /*! Adds input sync event to the queue */
- void replay_input_sync_event(void);
- /*! Adds block layer event to the queue */
-diff --git a/include/ui/input.h b/include/ui/input.h
-index 52c164bde572..c455abdec6af 100644
---- a/include/ui/input.h
-+++ b/include/ui/input.h
-@@ -19,7 +19,7 @@ typedef struct QemuInputHandler QemuInputHandler;
- typedef struct QemuInputHandlerState QemuInputHandlerState;
- 
- typedef void (*QemuInputHandlerEvent)(DeviceState *dev, QemuConsole *src,
--                                      InputEvent *evt);
-+                                      QemuInputEvent *evt);
- typedef void (*QemuInputHandlerSync)(DeviceState *dev);
- 
- struct QemuInputHandler {
-@@ -37,8 +37,8 @@ void qemu_input_handler_unregister(QemuInputHandlerState *s);
- void qemu_input_handler_bind(QemuInputHandlerState *s,
-                              const char *device_id, int head,
-                              Error **errp);
--void qemu_input_event_send(QemuConsole *src, InputEvent *evt);
--void qemu_input_event_send_impl(QemuConsole *src, InputEvent *evt);
-+void qemu_input_event_send(QemuConsole *src, QemuInputEvent *evt);
-+void qemu_input_event_send_impl(QemuConsole *src, QemuInputEvent *evt);
- void qemu_input_event_sync(void);
- void qemu_input_event_sync_impl(void);
- 
-diff --git a/replay/replay-internal.h b/replay/replay-internal.h
-index 643b357da121..42c393542eb3 100644
---- a/replay/replay-internal.h
-+++ b/replay/replay-internal.h
-@@ -171,11 +171,11 @@ void replay_add_event(ReplayAsyncEventKind event_kind, void *opaque,
- /* Input events */
- 
- /*! Saves input event to the log */
--void replay_save_input_event(InputEvent *evt);
-+void replay_save_input_event(QemuInputEvent *evt);
- /*! Reads input event from the log */
--InputEvent *replay_read_input_event(void);
-+QemuInputEvent *replay_read_input_event(void);
- /*! Adds input event to the queue */
--void replay_add_input_event(struct InputEvent *event);
-+void replay_add_input_event(QemuInputEvent *event);
- /*! Adds input sync event to the queue */
- void replay_add_input_sync_event(void);
- 
-diff --git a/chardev/msmouse.c b/chardev/msmouse.c
-index 365f04546e91..146457661f9e 100644
---- a/chardev/msmouse.c
-+++ b/chardev/msmouse.c
-@@ -122,7 +122,7 @@ static void msmouse_queue_event(MouseChardev *mouse)
- }
- 
- static void msmouse_input_event(DeviceState *dev, QemuConsole *src,
--                                InputEvent *evt)
-+                                QemuInputEvent *evt)
- {
-     MouseChardev *mouse = MOUSE_CHARDEV(dev);
-     InputMoveEvent *move;
-diff --git a/chardev/wctablet.c b/chardev/wctablet.c
-index 214d5ca2e282..05d2333fb0c7 100644
---- a/chardev/wctablet.c
-+++ b/chardev/wctablet.c
-@@ -146,7 +146,7 @@ static void wctablet_queue_event(TabletChardev *tablet)
- }
- 
- static void wctablet_input_event(DeviceState *dev, QemuConsole *src,
--                                InputEvent *evt)
-+                                 QemuInputEvent *evt)
- {
-     TabletChardev *tablet = (TabletChardev *)dev;
-     InputMoveEvent *move;
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index 83676eb7fea5..ae171710e349 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -1066,7 +1066,7 @@ struct musicpal_key_state {
- };
- 
- static void musicpal_key_event(DeviceState *dev, QemuConsole *src,
--                               InputEvent *evt)
-+                               QemuInputEvent *evt)
- {
-     musicpal_key_state *s = MUSICPAL_KEY(dev);
-     InputKeyEvent *key = evt->u.key.data;
-diff --git a/hw/char/escc.c b/hw/char/escc.c
-index 3b46818ecc98..677c3a120e13 100644
---- a/hw/char/escc.c
-+++ b/hw/char/escc.c
-@@ -794,7 +794,7 @@ static const VMStateDescription vmstate_escc = {
- };
- 
- static void sunkbd_handle_event(DeviceState *dev, QemuConsole *src,
--                                InputEvent *evt)
-+                                QemuInputEvent *evt)
- {
-     ESCCChannelState *s = (ESCCChannelState *)dev;
-     int qcode, keycode;
-@@ -954,7 +954,7 @@ static void handle_kbd_command(ESCCChannelState *s, int val)
- }
- 
- static void sunmouse_handle_event(DeviceState *dev, QemuConsole *src,
--                                  InputEvent *evt)
-+                                  QemuInputEvent *evt)
- {
-     ESCCChannelState *s = (ESCCChannelState *)dev;
-     InputMoveEvent *move;
-diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
-index 8e9953bda435..c71174e13762 100644
---- a/hw/display/xenfb.c
-+++ b/hw/display/xenfb.c
-@@ -200,7 +200,7 @@ static int xenfb_send_position(struct XenInput *xenfb,
-  * already has code for dealing with this...
-  */
- static void xenfb_key_event(DeviceState *dev, QemuConsole *src,
--                            InputEvent *evt)
-+                            QemuInputEvent *evt)
- {
-     struct XenInput *xenfb = (struct XenInput *)dev;
-     InputKeyEvent *key = evt->u.key.data;
-@@ -227,7 +227,7 @@ static void xenfb_key_event(DeviceState *dev, QemuConsole *src,
-  * the button state.
-  */
- static void xenfb_mouse_event(DeviceState *dev, QemuConsole *src,
--                              InputEvent *evt)
-+                              QemuInputEvent *evt)
- {
-     struct XenInput *xenfb = (struct XenInput *)dev;
-     InputBtnEvent *btn;
-diff --git a/hw/input/adb-kbd.c b/hw/input/adb-kbd.c
-index 507557deecc1..5ba6c9a7b5df 100644
---- a/hw/input/adb-kbd.c
-+++ b/hw/input/adb-kbd.c
-@@ -306,7 +306,7 @@ static bool adb_kbd_has_data(ADBDevice *d)
- 
- /* This is where keyboard events enter this file */
- static void adb_keyboard_event(DeviceState *dev, QemuConsole *src,
--                               InputEvent *evt)
-+                               QemuInputEvent *evt)
- {
-     KBDState *s = (KBDState *)dev;
-     int qcode, keycode;
-diff --git a/hw/input/adb-mouse.c b/hw/input/adb-mouse.c
-index 373ef3f953ca..c37ccf26c169 100644
---- a/hw/input/adb-mouse.c
-+++ b/hw/input/adb-mouse.c
-@@ -56,7 +56,7 @@ struct ADBMouseClass {
- #define ADB_MOUSE_BUTTON_RIGHT  0x02
- 
- static void adb_mouse_handle_event(DeviceState *dev, QemuConsole *src,
--                                   InputEvent *evt)
-+                                   QemuInputEvent *evt)
- {
-     MouseState *s = (MouseState *)dev;
-     InputMoveEvent *move;
-diff --git a/hw/input/hid.c b/hw/input/hid.c
-index de24cd0ef045..53afb1d43405 100644
---- a/hw/input/hid.c
-+++ b/hw/input/hid.c
-@@ -108,7 +108,7 @@ void hid_set_next_idle(HIDState *hs)
- }
- 
- static void hid_pointer_event(DeviceState *dev, QemuConsole *src,
--                              InputEvent *evt)
-+                              QemuInputEvent *evt)
- {
-     static const int bmap[INPUT_BUTTON__MAX] = {
-         [INPUT_BUTTON_LEFT]   = 0x01,
-@@ -226,7 +226,7 @@ static void hid_pointer_sync(DeviceState *dev)
- }
- 
- static void hid_keyboard_event(DeviceState *dev, QemuConsole *src,
--                               InputEvent *evt)
-+                               QemuInputEvent *evt)
- {
-     HIDState *hs = (HIDState *)dev;
-     int scancodes[3], i, count;
-diff --git a/hw/input/ps2.c b/hw/input/ps2.c
-index 10ac7324030b..90bcbcdff889 100644
---- a/hw/input/ps2.c
-+++ b/hw/input/ps2.c
-@@ -310,7 +310,7 @@ static void ps2_put_keycode(void *opaque, int keycode)
- }
- 
- static void ps2_keyboard_event(DeviceState *dev, QemuConsole *src,
--                               InputEvent *evt)
-+                               QemuInputEvent *evt)
- {
-     PS2KbdState *s = (PS2KbdState *)dev;
-     InputKeyEvent *key = evt->u.key.data;
-@@ -787,7 +787,7 @@ static int ps2_mouse_send_packet(PS2MouseState *s)
- }
- 
- static void ps2_mouse_event(DeviceState *dev, QemuConsole *src,
--                            InputEvent *evt)
-+                            QemuInputEvent *evt)
- {
-     static const int bmap[INPUT_BUTTON__MAX] = {
-         [INPUT_BUTTON_LEFT]   = PS2_MOUSE_BUTTON_LEFT,
-diff --git a/hw/input/stellaris_gamepad.c b/hw/input/stellaris_gamepad.c
-index 42d43f9af51f..db35905554d5 100644
---- a/hw/input/stellaris_gamepad.c
-+++ b/hw/input/stellaris_gamepad.c
-@@ -16,7 +16,7 @@
- #include "ui/console.h"
- 
- static void stellaris_gamepad_event(DeviceState *dev, QemuConsole *src,
--                                    InputEvent *evt)
-+                                    QemuInputEvent *evt)
- {
-     StellarisGamepad *s = STELLARIS_GAMEPAD(dev);
-     InputKeyEvent *key = evt->u.key.data;
-diff --git a/hw/input/virtio-input-hid.c b/hw/input/virtio-input-hid.c
-index 14dde90a48b3..5b9f407c546d 100644
---- a/hw/input/virtio-input-hid.c
-+++ b/hw/input/virtio-input-hid.c
-@@ -79,7 +79,7 @@ static void virtio_input_extend_config(VirtIOInput *vinput,
- }
- 
- static void virtio_input_handle_event(DeviceState *dev, QemuConsole *src,
--                                      InputEvent *evt)
-+                                      QemuInputEvent *evt)
- {
-     VirtIOInput *vinput = VIRTIO_INPUT(dev);
-     virtio_input_event event;
-diff --git a/hw/m68k/next-kbd.c b/hw/m68k/next-kbd.c
-index 571a95550404..9dbedac6479e 100644
---- a/hw/m68k/next-kbd.c
-+++ b/hw/m68k/next-kbd.c
-@@ -242,7 +242,8 @@ static void nextkbd_put_keycode(NextKBDState *s, int keycode)
-     /* s->update_irq(s->update_arg, 1); */
- }
- 
--static void nextkbd_event(DeviceState *dev, QemuConsole *src, InputEvent *evt)
-+static void nextkbd_event(DeviceState *dev, QemuConsole *src,
-+                          QemuInputEvent *evt)
- {
-     NextKBDState *s = NEXTKBD(dev);
-     int qcode, keycode;
-diff --git a/replay/replay-events.c b/replay/replay-events.c
-index 9e5af5e84954..20df810279e2 100644
---- a/replay/replay-events.c
-+++ b/replay/replay-events.c
-@@ -41,7 +41,7 @@ static void replay_run_event(Event *event)
-         ((QEMUBHFunc *)event->opaque)(event->opaque2);
-         break;
-     case REPLAY_ASYNC_EVENT_INPUT:
--        qemu_input_event_send_impl(NULL, (InputEvent *)event->opaque);
-+        qemu_input_event_send_impl(NULL, (QemuInputEvent *)event->opaque);
-         qapi_free_InputEvent((InputEvent *)event->opaque);
-         break;
-     case REPLAY_ASYNC_EVENT_INPUT_SYNC:
-@@ -143,7 +143,7 @@ void replay_bh_schedule_oneshot_event(AioContext *ctx,
-     }
- }
- 
--void replay_add_input_event(struct InputEvent *event)
-+void replay_add_input_event(QemuInputEvent *event)
- {
-     replay_add_event(REPLAY_ASYNC_EVENT_INPUT, event, NULL, 0);
- }
-diff --git a/replay/replay-input.c b/replay/replay-input.c
-index 562bbf371751..3f506f2338a3 100644
---- a/replay/replay-input.c
-+++ b/replay/replay-input.c
-@@ -17,7 +17,7 @@
- #include "qapi/clone-visitor.h"
- #include "qapi/qapi-visit-ui.h"
- 
--void replay_save_input_event(InputEvent *evt)
-+void replay_save_input_event(QemuInputEvent *evt)
- {
-     InputKeyEvent *key;
-     InputBtnEvent *btn;
-@@ -73,9 +73,9 @@ void replay_save_input_event(InputEvent *evt)
-     }
- }
- 
--InputEvent *replay_read_input_event(void)
-+QemuInputEvent *replay_read_input_event(void)
- {
--    InputEvent evt;
-+    QemuInputEvent evt;
-     KeyValue keyValue;
-     InputKeyEvent key;
-     key.key = &keyValue;
-@@ -135,7 +135,7 @@ InputEvent *replay_read_input_event(void)
-     return QAPI_CLONE(InputEvent, &evt);
- }
- 
--void replay_input_event(QemuConsole *src, InputEvent *evt)
-+void replay_input_event(QemuConsole *src, QemuInputEvent *evt)
- {
-     if (replay_mode == REPLAY_MODE_PLAY) {
-         /* Nothing */
-diff --git a/replay/stubs-system.c b/replay/stubs-system.c
-index b2c52bc40436..f8e17dcf1ce9 100644
---- a/replay/stubs-system.c
-+++ b/replay/stubs-system.c
-@@ -2,7 +2,7 @@
- #include "system/replay.h"
- #include "ui/input.h"
- 
--void replay_input_event(QemuConsole *src, InputEvent *evt)
-+void replay_input_event(QemuConsole *src, QemuInputEvent *evt)
- {
-     qemu_input_event_send_impl(src, evt);
- }
-diff --git a/ui/input-legacy.c b/ui/input-legacy.c
-index ca4bccb41134..5467010c3713 100644
---- a/ui/input-legacy.c
-+++ b/ui/input-legacy.c
-@@ -110,7 +110,7 @@ void qmp_send_key(KeyValueList *keys, bool has_hold_time, int64_t hold_time,
- }
- 
- static void legacy_mouse_event(DeviceState *dev, QemuConsole *src,
--                               InputEvent *evt)
-+                               QemuInputEvent *evt)
- {
-     static const int bmap[INPUT_BUTTON__MAX] = {
-         [INPUT_BUTTON_LEFT]   = MOUSE_EVENT_LBUTTON,
-diff --git a/ui/input.c b/ui/input.c
-index 966023d4f4d7..759855c67e8a 100644
---- a/ui/input.c
-+++ b/ui/input.c
-@@ -30,7 +30,7 @@ struct QemuInputEventQueue {
-     QEMUTimer *timer;
-     uint32_t delay_ms;
-     QemuConsole *src;
--    InputEvent *evt;
-+    QemuInputEvent *evt;
-     QTAILQ_ENTRY(QemuInputEventQueue) node;
- };
- 
-@@ -174,7 +174,7 @@ void qmp_input_send_event(const char *device,
-     qemu_input_event_sync();
- }
- 
--static void qemu_input_event_trace(QemuConsole *src, InputEvent *evt)
-+static void qemu_input_event_trace(QemuConsole *src, QemuInputEvent *evt)
- {
-     const char *name;
-     int qcode, idx = -1;
-@@ -283,7 +283,7 @@ static void qemu_input_queue_delay(QemuInputEventQueueHead *queue,
- }
- 
- static void qemu_input_queue_event(QemuInputEventQueueHead *queue,
--                                   QemuConsole *src, InputEvent *evt)
-+                                   QemuConsole *src, QemuInputEvent *evt)
- {
-     QemuInputEventQueue *item = g_new0(QemuInputEventQueue, 1);
- 
-@@ -303,7 +303,7 @@ static void qemu_input_queue_sync(QemuInputEventQueueHead *queue)
-     queue_count++;
- }
- 
--void qemu_input_event_send_impl(QemuConsole *src, InputEvent *evt)
-+void qemu_input_event_send_impl(QemuConsole *src, QemuInputEvent *evt)
- {
-     QemuInputHandlerState *s;
- 
-@@ -318,7 +318,7 @@ void qemu_input_event_send_impl(QemuConsole *src, InputEvent *evt)
-     s->events++;
- }
- 
--void qemu_input_event_send(QemuConsole *src, InputEvent *evt)
-+void qemu_input_event_send(QemuConsole *src, QemuInputEvent *evt)
- {
-     /* Expect all parts of QEMU to send events with QCodes exclusively.
-      * Key numbers are only supported as end-user input via QMP */
-@@ -372,9 +372,9 @@ void qemu_input_event_sync(void)
-     replay_input_sync_event();
- }
- 
--static InputEvent *qemu_input_event_new_key(KeyValue *key, bool down)
-+static QemuInputEvent *qemu_input_event_new_key(KeyValue *key, bool down)
- {
--    InputEvent *evt = g_new0(InputEvent, 1);
-+    QemuInputEvent *evt = g_new0(QemuInputEvent, 1);
-     evt->u.key.data = g_new0(InputKeyEvent, 1);
-     evt->type = INPUT_EVENT_KIND_KEY;
-     evt->u.key.data->key = key;
-@@ -384,7 +384,7 @@ static InputEvent *qemu_input_event_new_key(KeyValue *key, bool down)
- 
- void qemu_input_event_send_key(QemuConsole *src, KeyValue *key, bool down)
- {
--    InputEvent *evt;
-+    QemuInputEvent *evt;
-     evt = qemu_input_event_new_key(key, down);
-     if (QTAILQ_EMPTY(&kbd_queue)) {
-         qemu_input_event_send(src, evt);
-@@ -435,7 +435,7 @@ void qemu_input_queue_btn(QemuConsole *src, InputButton btn, bool down)
-         .button = btn,
-         .down = down,
-     };
--    InputEvent evt = {
-+    QemuInputEvent evt = {
-         .type = INPUT_EVENT_KIND_BTN,
-         .u.btn.data = &bevt,
-     };
-@@ -486,7 +486,7 @@ void qemu_input_queue_rel(QemuConsole *src, InputAxis axis, int value)
-         .axis = axis,
-         .value = value,
-     };
--    InputEvent evt = {
-+    QemuInputEvent evt = {
-         .type = INPUT_EVENT_KIND_REL,
-         .u.rel.data = &move,
-     };
-@@ -503,7 +503,7 @@ void qemu_input_queue_abs(QemuConsole *src, InputAxis axis, int value,
-                                        INPUT_EVENT_ABS_MIN,
-                                        INPUT_EVENT_ABS_MAX),
-     };
--    InputEvent evt = {
-+    QemuInputEvent evt = {
-         .type = INPUT_EVENT_KIND_ABS,
-         .u.abs.data = &move,
-     };
-@@ -519,7 +519,7 @@ void qemu_input_queue_mtt(QemuConsole *src, InputMultiTouchType type,
-         .slot = slot,
-         .tracking_id = tracking_id,
-     };
--    InputEvent evt = {
-+    QemuInputEvent evt = {
-         .type = INPUT_EVENT_KIND_MTT,
-         .u.mtt.data = &mtt,
-     };
-@@ -539,7 +539,7 @@ void qemu_input_queue_mtt_abs(QemuConsole *src, InputAxis axis, int value,
-                                        INPUT_EVENT_ABS_MIN,
-                                        INPUT_EVENT_ABS_MAX),
-     };
--    InputEvent evt = {
-+    QemuInputEvent evt = {
-         .type = INPUT_EVENT_KIND_MTT,
-         .u.mtt.data = &mtt,
-     };
-diff --git a/ui/vdagent.c b/ui/vdagent.c
-index bb55cbefc9c3..28a83c7c389c 100644
---- a/ui/vdagent.c
-+++ b/ui/vdagent.c
-@@ -226,7 +226,7 @@ static void vdagent_send_mouse(VDAgentChardev *vd)
- }
- 
- static void vdagent_pointer_event(DeviceState *dev, QemuConsole *src,
--                                  InputEvent *evt)
-+                                  QemuInputEvent *evt)
- {
-     static const int bmap[INPUT_BUTTON__MAX] = {
-         [INPUT_BUTTON_LEFT]        = VD_AGENT_LBUTTON_MASK,
-
--- 
-2.54.0
-
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRXJpYyBBdWdlciA8ZXJp
+Yy5hdWdlckByZWRoYXQuY29tPg0KPiBTZW50OiAyMCBNYXkgMjAyNiAwNjo0OQ0KPiBUbzogU2hh
+bWVlciBLb2xvdGh1bSBUaG9kaSA8c2tvbG90aHVtdGhvQG52aWRpYS5jb20+OyBxZW11LQ0KPiBh
+cm1Abm9uZ251Lm9yZzsgcWVtdS1kZXZlbEBub25nbnUub3JnDQo+IENjOiBwZXRlci5tYXlkZWxs
+QGxpbmFyby5vcmc7IGNsZ0ByZWRoYXQuY29tOyBhbGV4QHNoYXpib3Qub3JnOyBOaWNvbGluDQo+
+IENoZW4gPG5pY29saW5jQG52aWRpYS5jb20+OyBOYXRoYW4gQ2hlbiA8bmF0aGFuY0BudmlkaWEu
+Y29tPjsgTWF0dA0KPiBPY2hzIDxtb2Noc0BudmlkaWEuY29tPjsgSmlhbmRpIEFuIDxqYW5AbnZp
+ZGlhLmNvbT47IEphc29uIEd1bnRob3JwZQ0KPiA8amdnQG52aWRpYS5jb20+OyB6aGVuemhvbmcu
+ZHVhbkBpbnRlbC5jb207IEtyaXNobmFrYW50IEphanUNCj4gPGtqYWp1QG52aWRpYS5jb20+OyBw
+aHJkaW5hQHJlZGhhdC5jb20NCj4gU3ViamVjdDogUmU6IFtQQVRDSCB2NSAxNS8zMl0gaHcvYXJt
+L3RlZ3JhMjQxLWNtZHF2OiBFbXVsYXRlIFZDTURRDQo+IHJlZ2lzdGVyIHJlYWRzDQo+IA0KDQpb
+Li4uXQ0KDQo+ID4gKyNkZWZpbmUgU01NVV9DTURRVl9WQ01EUWlfR0VSUk9STl8oaSkgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIFwNCj4gPiArICAgIFJFRzMyKFZDTURRIyNpIyNfR0VSUk9S
+TiwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXA0KPiA+ICsgICAgICAgICAg
+Q01EUVZfVkNNRFFfUEFHRTBfQkFTRSArIDB4MTQgKyBpICogQ01EUVZfVkNNRFFfU1RSSURFKQ0K
+PiBcDQo+ID4gKyAgICBGSUVMRChWQ01EUSMjaSMjX0dFUlJPUk4sIENNRFFfRVJSLCAwLCAxKSAg
+ICAgICAgICAgICAgICAgICAgIFwNCj4gPiArICAgIEZJRUxEKFZDTURRIyNpIyNfR0VSUk9STiwg
+Q09OU19EUkFNX1dSX0FCVF9FUlIsIDEsIDEpICAgICAgICAgXA0KPiA+ICsgICAgRklFTEQoVkNN
+RFEjI2kjI19HRVJST1JOLCBDTURRX0lOSVRfRVJSLCAyLCAxKQ0KPiA+ICsNCj4gPiArU01NVV9D
+TURRVl9WQ01EUWlfR0VSUk9STl8oMCkNCj4gPiArU01NVV9DTURRVl9WQ01EUWlfR0VSUk9STl8o
+MSkNCj4gDQo+IA0KPiBuaXQsIHdoYXQgSSBtZWFudCBpbiBteSB2NCBjb21tZW50cyBpcyBJIHdv
+dWxkIHByZWZlciB3ZSBncm91cCB0aGUNCj4gZXZlbnR1YWwgcmVnaXN0ZXIgZGVmaW5pdGlvbiB0
+byByZXByZXNlbnQgdGhlIGFjdHVhbCBsYXlvdXQgb2YgZWFjaA0KPiBwYWdlLCBpbnN0ZWFkIG9m
+IGludGVybGVhdmluZyB0aGVtIHdpdGggYWN0dWFsIG1hY3JvczoNCj4gVGhpcyB3b3VsZCBsb29r
+IGxpa2U6DQo+IA0KPiAvKiBwYWdlIDAgKi8NCj4gDQo+IC8qIHZjbWRxMCAqLw0KPiANCj4gK1NN
+TVVfQ01EUVZfVkNNRFFpX0NPTlNfSU5EWF8oMCkNCj4gK1NNTVVfQ01EUVZfVkNNRFFpX1BST0Rf
+SU5EWF8oMCkNCj4gK1NNTVVfQ01EUVZfVkNNRFFpX0NPTkZJR18oMCkNCj4gK1NNTVVfQ01EUVZf
+VkNNRFFpX1NUQVRVU18oMCkNCj4gK1NNTVVfQ01EUVZfVkNNRFFpX0dFUlJPUl8oMCkNCj4gK1NN
+TVVfQ01EUVZfVkNNRFFpX0dFUlJPUk5fKDApDQo+IA0KPiAvKiB2Y21kcTEgKi8NCj4gDQo+ICtT
+TU1VX0NNRFFWX1ZDTURRaV9DT05TX0lORFhfKDEpDQo+ICtTTU1VX0NNRFFWX1ZDTURRaV9QUk9E
+X0lORFhfKDEpDQo+ICtTTU1VX0NNRFFWX1ZDTURRaV9DT05GSUdfKDEpDQo+ICtTTU1VX0NNRFFW
+X1ZDTURRaV9TVEFUVVNfKDEpDQo+ICtTTU1VX0NNRFFWX1ZDTURRaV9HRVJST1JfKDEpDQo+ICtT
+TU1VX0NNRFFWX1ZDTURRaV9HRVJST1JOXygxKQ0KPiANCj4gc2FtZSBmb3IgcGFnZSAxDQo+IA0K
+PiBUbyBtZSBpdCBsb29rcyBlYXNpZXIgdG8gcmVtZW1iZXIgdGhlIGxheW91dCB3aXRob3V0IGxv
+b2tpbmcgYXQgdGhlIHNwZWMuDQo+IA0KPiANCj4gVGFzdGUgJiBjb2xvcnMsIHdoYXQgZG8geW91
+IHByZWZlcj8NCg0KTG9va3MgbGlrZSBJIG1pc3VuZGVyc3Rvb2QgeW91ciB2NCBjb21tZW50LiBT
+dXJlLCBJIHdpbGwgc3dpdGNoIHRvDQp0aGlzIGxheW91dC4NCg0KVGhhbmtzLA0KU2hhbWVlcg0K
+DQo=
 

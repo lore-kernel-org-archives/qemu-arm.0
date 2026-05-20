@@ -4,87 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82861CD5BA4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF8ECCD5BAA
 	for <qemu-arm@archiver.kernel.org>; Wed, 20 May 2026 18:34:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPlZE-0007b5-Q8; Wed, 20 May 2026 14:22:52 -0400
+	id 1wPlZE-0007aY-F3; Wed, 20 May 2026 14:22:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wPlYr-00077a-PJ
- for qemu-arm@nongnu.org; Wed, 20 May 2026 14:22:31 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+ id 1wPlYq-00073x-Ai
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 14:22:28 -0400
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wPlYo-0000X2-4v
- for qemu-arm@nongnu.org; Wed, 20 May 2026 14:22:29 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id
- 98e67ed59e1d1-36974221f93so2779310a91.2
- for <qemu-arm@nongnu.org>; Wed, 20 May 2026 11:22:25 -0700 (PDT)
+ id 1wPlYm-0000WG-Lh
+ for qemu-arm@nongnu.org; Wed, 20 May 2026 14:22:27 -0400
+Received: by mail-pj1-x1034.google.com with SMTP id
+ 98e67ed59e1d1-365eecc5885so4832115a91.0
+ for <qemu-arm@nongnu.org>; Wed, 20 May 2026 11:22:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779301344; x=1779906144; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779301343; x=1779906143; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZVsvcQjrwAu/Fw5QeICNMsfPv4wnEzD0NNefmVwM0W0=;
- b=MC1Oyccwl5dqZKiVp/qQTHMqSwsjKuJ/K6qwxxiizr4o7PNC+2KroEMOa9yT+GSITH
- pSHCVbi9aGgOTNBMAsopTS1MQYBrGXcmlYVbe7SSeCsKfv78ERyF7E0ycldQER6cNJJB
- 4ME2FU7bwRfyp9SOKCB5jzA3IF25+jPuogQxe0oiRnyekyoaQWOzPJA6UlGIGx7bch7e
- gwxP5Jy9l0YrJcKZMduVtfYa3yh7duWbOS+u/RQVpARoskfH1VYmzYtLeZq6n3yet/au
- EAJTgAAF5MDa6sbrACj20mDhPcatiBrFZc9uCzJpWQWKUI5EypzecpbPQ6O8WdcFM43a
- ot8g==
+ bh=P2YowRxNRLBYS6ametaessFL4W/WU5kteC+kwFAECtE=;
+ b=pCGxw6h12kzG2cz6T9BgpiJOdK+Fvwii5hXO05m+jhYl/GMJxCcKInW6zI349/DRrM
+ b+x9DvTcmtsJYFjAimVyuHC19xpAjssb5bLvx0lsLoI0HhBSzMgvtiXxsXvE7v9OAmy2
+ hezjN0mgyzpWP6lpGiowzgHEGdcCLbCgyQ/4KkJhjF46imCDKgpX45wKTDTwj8n7SCIG
+ W9xW3gPNWUwUuh38AGx9SOl51EwvJi8QMkh8L+xNzDoY02cBHPJLYIa7AR6Iu+LmX96o
+ PbCMC50MC6gYav3k88cfhjzT0uekNViVLIAaxcjbJYQYCj1mQvChPjwDsu9WBdTtTBfb
+ GTlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779301344; x=1779906144;
+ d=1e100.net; s=20251104; t=1779301343; x=1779906143;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ZVsvcQjrwAu/Fw5QeICNMsfPv4wnEzD0NNefmVwM0W0=;
- b=dwlrAMv87exdlxvpXc0Ll6qKPT8kEUFHPYFd+sLZYja4QjhI9Ers5h5EDYnqEqPonD
- NzhYn7qHnVd6MigNCtLjZief40YD6x1r1PaGVWo4mat9FDDhnthnhC0/yk1osUMVoxsk
- TlPmW+gKlkzgjNhhG+ftpbmXhS5ZT7nbA3LgA436xV0ULbx2af9t2fVQtpyfOdzv12Un
- RFlcno0gp4tiRbyEOQ3VHzgBnmJOSvvrcuKTlTV5l9f+YsZ3XCQbOFihBZOFT9JV6t9V
- Xxw/aq7ui/6X+ghDO5ct/n3v1BNFjB3BH41u8eB8mMyquzRBnVG4/dAfrXRahT3G9phQ
- xfQA==
-X-Gm-Message-State: AOJu0YyHTHDNCqNsxIFtLxGfi07qsIwv9fxWv/HvfWse18Nts/tjbXrC
- L7PnXzKphcnCnoft+gK3I4HwuUCb2bMbAFicbDGpAykUr+UBG3VBIgEPp7/jsOo9vAcIookziF4
- jVAsbSgQ=
-X-Gm-Gg: Acq92OEyatEr+tXtA1mlZQc8MaQLWod0VPTtY54vSDM9nlBrq9KA0W3A2eNsLyVTyFw
- 68iGFRVxO1QGmngZpHwbFUCvFtuEtlOOmhvESVLvOqgN52E46+qj1PvrtoS+EJjSWbGFh1wUyjq
- EB96I0LKecvJYcVXwGcjO7nR4pnxLu+OvcEZlRuOcCiQBF1v4N3ULKnGiwJYySPJyvdtab/EohS
- JPsLDxkXIvAmTjSFRqgySFY9zdeREHynU97it3eZchk8nVeffeMCnXIXZe7BLtpV5ovj9ecYbdd
- PaYgMTyySsbCA8wNHWM3FnbWpeIe/ZYcDAUoOqf5ZbZh3F5NKat6U/Yc/JuR0hZ357EZTkS9W2r
- +tVSEjaKokHG5scKC+Ax/88etUjCrNTWg32ZQLsuNvhcvrx7ZgyCHB6d3RtkOOb+5xYH/sagCy4
- HwhQTxsVdMDU4pMAqJ+SUOAXMx/ChR
-X-Received: by 2002:a17:90a:1c89:b0:369:932a:2b8a with SMTP id
- 98e67ed59e1d1-369932a2ffemr11573283a91.1.1779301344203; 
- Wed, 20 May 2026 11:22:24 -0700 (PDT)
-Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-36a3d210b4esm274764a91.17.2026.05.20.11.22.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ bh=P2YowRxNRLBYS6ametaessFL4W/WU5kteC+kwFAECtE=;
+ b=G1bLNUkvj81/F5XW7l+Dsnb9qiqK7foraYKbQfqbEGhkCzA4pXloxKfOX4rqyChwvV
+ pMKCmW0cWbY4vuCV+ZOSa4hndxaGBLYXibNCrRkZu8KIPeirc7xu+l3Wfncvfr2DrYjk
+ A+u3rKojWg2oJqn+wMkZvfhZKxbpN96NBNT+9oc/avsppPYasRux9ADrb/TtYRkMQ1OU
+ bVNjjTEGLhzhc1fKV3vrwykpEi6KUOTLeAI5hBctIw4bJ/ltSDh0idTGBpymYSgJVO9L
+ QSFqmqWiHA2aChH9JZ9H512LT97/INotWWF5yliyYUB48OkHEUr5gjv9DTXZFOpdBfPs
+ iFZQ==
+X-Gm-Message-State: AOJu0Yxy6Sm9YLCiyEJnCWc+t8FvomncjDPRxM6VYF72Pl6XffJHiBFy
+ L0YB+q80KZr0amXbRzSt0fWvfnxq4wK5ofvYqtnEmx6+eblxaHnEgxPjSxIFt3SDbJk=
+X-Gm-Gg: Acq92OEPxdutpKyMdTzued4e2WDpKrn7s3SuFWxLXIWzOZDtW5EZeuNVyH/PiZs99X0
+ YTWo7xs4DVYnLLNVOdwoD3VFIoswLr1A0PatTH1yC/daqn5nbjcDikjWIjG0dlKRXN2kAkjGvKJ
+ Okj/i8FeJoDVnTRSzAglMXx3UER4I+nFOcxadq4pSfb5VK5PYZ5YDVsO5gQvk3C1xI4QJOFe28G
+ uouiFWK1SZMsrdQLJxCY/3+BtSbifymH4GoXNUVkd0SMos39txyRoBEYwCSCR3VO7Z7t83dpmJJ
+ dkQtVExbW/fnR2co+rf5Dzv81HyrZRQVbSS2fJ8Vh4GjbC7nqtFZynfvcyz7pjtBrSWQfbdlOFr
+ n4ogUjDF+jr6Zucv1dBqFhEozfkR4ouitygRqn89dM08Z+R57vx6/5fz/flsdtt1Hy7ZylSpqFm
+ MPyqfzv3ma2vR+82IpD1txDUVaGshs
+X-Received: by 2002:a17:90b:5483:b0:364:78a5:8d40 with SMTP id
+ 98e67ed59e1d1-36951b92cdamr23209080a91.20.1779301343075; 
  Wed, 20 May 2026 11:22:23 -0700 (PDT)
+Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-36a3d210b4esm274764a91.17.2026.05.20.11.22.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 20 May 2026 11:22:22 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH v6 14/64] tests/functional/aarch64/rme: update images to
- support FEAT_FP8
-Date: Wed, 20 May 2026 11:21:23 -0700
-Message-ID: <20260520182213.872945-15-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v6 12/64] target/arm: Add FPMR_EL to TBFLAGS
+Date: Wed, 20 May 2026 11:21:21 -0700
+Message-ID: <20260520182213.872945-13-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260520182213.872945-1-richard.henderson@linaro.org>
 References: <20260520182213.872945-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,75 +98,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Prepare to perform access checks for direct and
+indirect uses of FPMR.
 
-As well, use -smp 1 since there is no visible speedup running with -smp 2.
-
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/functional/aarch64/test_rme_sbsaref.py | 7 ++++---
- tests/functional/aarch64/test_rme_virt.py    | 7 ++++---
- 2 files changed, 8 insertions(+), 6 deletions(-)
+ target/arm/cpu.h               |  1 +
+ target/arm/tcg/translate.h     |  2 ++
+ target/arm/tcg/hflags.c        | 41 ++++++++++++++++++++++++++++++++++
+ target/arm/tcg/translate-a64.c |  1 +
+ 4 files changed, 45 insertions(+)
 
-diff --git a/tests/functional/aarch64/test_rme_sbsaref.py b/tests/functional/aarch64/test_rme_sbsaref.py
-index efea80c578..d252101ac6 100755
---- a/tests/functional/aarch64/test_rme_sbsaref.py
-+++ b/tests/functional/aarch64/test_rme_sbsaref.py
-@@ -20,12 +20,13 @@ class Aarch64RMESbsaRefMachine(QemuSystemTest):
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index c114510446..9e637c1d80 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2567,6 +2567,7 @@ FIELD(TBFLAG_A64, ZT0EXC_EL, 39, 2)
+ FIELD(TBFLAG_A64, GCS_EN, 41, 1)
+ FIELD(TBFLAG_A64, GCS_RVCEN, 42, 1)
+ FIELD(TBFLAG_A64, GCSSTR_EL, 43, 2)
++FIELD(TBFLAG_A64, FPMR_EL, 45, 2)
  
-     # Stack is inspired from:
-     # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-+    # Built from:
-     # https://github.com/p-b-o/qemu-linux-stack/tree/rme_sbsa_release
-     # ./build.sh && ./archive_artifacts.sh out.tar.xz
-     ASSET_RME_STACK_SBSA = Asset(
-         ('https://github.com/p-b-o/qemu-linux-stack/'
--         'releases/download/build/rme_sbsa_release-6a2dfc5.tar.xz'),
--         '5adba482aa069912292a8da746c6b21268224d9d81c97fe7c0bed690579ebdcb')
-+         'releases/download/build/rme_sbsa_release-74b7fab.tar.xz'),
-+         '82a754bacea04e709cb1cf2759d1d12d09fabd612e014961eb32368723c7920a')
+ /*
+  * Helpers for using the above. Note that only the A64 accessors use
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index 77fdc5f3a1..1648c2c96f 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -199,6 +199,8 @@ typedef struct DisasContext {
+     uint8_t gm_blocksize;
+     /* True if the current insn_start has been updated. */
+     bool insn_start_updated;
++    /* FMPR exception EL or 0 if enabled. */
++    uint8_t fpmr_el;
+     /* Offset from VNCR_EL2 when FEAT_NV2 redirects this reg to memory */
+     uint32_t nv2_redirect_offset;
+ } DisasContext;
+diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+index 7e6f8d3647..6759b36f28 100644
+--- a/target/arm/tcg/hflags.c
++++ b/target/arm/tcg/hflags.c
+@@ -237,6 +237,43 @@ static int zt0_exception_el(CPUARMState *env, int el)
+     return 0;
+ }
  
-     # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-     # and launching a nested VM using it.
-@@ -57,7 +58,7 @@ def test_aarch64_rme_sbsaref(self):
-                           ' --params "root=/dev/vda rw init=/init"')
++/*
++ * Return the exception level to which exceptions should be taken for FPMR.
++ * C.f. the ARM pseudocode function CheckFPMREnabled.
++ */
++static int fpmr_exception_el(CPUARMState *env, int el)
++{
++    switch (el) {
++    case 0:
++        if (el_is_in_host(env, el)) {
++            if (!(env->cp15.sctlr_el[2] & SCTLR_EnFPM)) {
++                return 2;
++            }
++            break;
++        }
++        if (!(env->cp15.sctlr_el[1] & SCTLR_EnFPM)) {
++            return 1;
++        }
++        /* fall through */
++    case 1:
++        if (!(arm_hcrx_el2_eff(env) & HCRX_ENFPM)) {
++            return 2;
++        }
++        break;
++    case 2:
++        break;
++    case 3:
++        return 0;
++    default:
++        g_assert_not_reached();
++    }
++    if (arm_feature(env, ARM_FEATURE_EL3)
++        && !(env->cp15.scr_el3 & SCR_ENFPM)) {
++        return 3;
++    }
++    return 0;
++}
++
+ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+                                         ARMMMUIdx mmu_idx)
+ {
+@@ -500,6 +537,10 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+         }
+     }
  
-         self.vm.add_args('-cpu', 'max,x-rme=on')
--        self.vm.add_args('-smp', '2')
-+        self.vm.add_args('-smp', '1')
-         self.vm.add_args('-m', '2G')
-         self.vm.add_args('-M', 'sbsa-ref')
-         self.vm.add_args('-drive', f'file={pflash0},format=raw,if=pflash')
-diff --git a/tests/functional/aarch64/test_rme_virt.py b/tests/functional/aarch64/test_rme_virt.py
-index dcb18678bf..2afcdc6b07 100755
---- a/tests/functional/aarch64/test_rme_virt.py
-+++ b/tests/functional/aarch64/test_rme_virt.py
-@@ -19,12 +19,13 @@ class Aarch64RMEVirtMachine(QemuSystemTest):
++    if (cpu_isar_feature(aa64_fpmr, env_archcpu(env))) {
++        DP_TBFLAG_A64(flags, FPMR_EL, fpmr_exception_el(env, el));
++    }
++
+     return rebuild_hflags_common(env, fp_el, mmu_idx, flags);
+ }
  
-     # Stack is inspired from:
-     # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-+    # Built from:
-     # https://github.com/p-b-o/qemu-linux-stack/tree/rme_release
-     # ./build.sh && ./archive_artifacts.sh out.tar.xz
-     ASSET_RME_STACK_VIRT = Asset(
-         ('https://github.com/p-b-o/qemu-linux-stack/'
--         'releases/download/build/rme_release-56bc99e.tar.xz'),
--         '0e3dc6b8a4b828dbae09c951a40dcb710eded084b32432b50c69cf4173ffa4be')
-+         'releases/download/build/rme_release-2701e89.tar.xz'),
-+         '8c40af440f5bd1518f7add7d0a43b39289865ee48430979db8024cb897a74790')
- 
-     # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-     # and launching a nested VM using it.
-@@ -44,7 +45,7 @@ def test_aarch64_rme_virt(self):
-         rootfs = join(rme_stack, 'out', 'host.ext4')
- 
-         self.vm.add_args('-cpu', 'max,x-rme=on')
--        self.vm.add_args('-smp', '2')
-+        self.vm.add_args('-smp', '1')
-         self.vm.add_args('-m', '2G')
-         self.vm.add_args('-M', 'virt,acpi=off,'
-                          'virtualization=on,'
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 3c6559964b..b013dd51cb 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -10726,6 +10726,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
+     dc->gcs_en = EX_TBFLAG_A64(tb_flags, GCS_EN);
+     dc->gcs_rvcen = EX_TBFLAG_A64(tb_flags, GCS_RVCEN);
+     dc->gcsstr_el = EX_TBFLAG_A64(tb_flags, GCSSTR_EL);
++    dc->fpmr_el = EX_TBFLAG_A64(tb_flags, FPMR_EL);
+     dc->vec_len = 0;
+     dc->vec_stride = 0;
+     dc->cp_regs = arm_cpu->cp_regs;
 -- 
 2.43.0
 

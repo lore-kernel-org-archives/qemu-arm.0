@@ -4,108 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F32ECD4F3D
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 04:07:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31819CD4F3D
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 04:43:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPugC-00047a-RM; Thu, 21 May 2026 00:06:42 -0400
+	id 1wPvFp-00014G-Ix; Thu, 21 May 2026 00:43:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1wPugB-00047A-0h
- for qemu-arm@nongnu.org; Thu, 21 May 2026 00:06:39 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1wPug4-0007o7-3s
- for qemu-arm@nongnu.org; Thu, 21 May 2026 00:06:35 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-835b78c3797so2415372b3a.2
- for <qemu-arm@nongnu.org>; Wed, 20 May 2026 21:06:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779336390; cv=none;
- d=google.com; s=arc-20240605;
- b=L0RdzRH5rbeNW2Ft2HLLJLCGDJdmTtJSB9lYgLt68Li0yvR86GXyy+VhCt8ZNA54kC
- BZ7IZQ2n8Ks0hWf13LbkzW+agbk7GkQm/ttXQuXCxSMyCFuW/C45Ct0oEC2s89Zs50OR
- 73qZKD4Df7YdJnG79yt1EF2gmFqT+qMV1BUEtNFq907NxZI0MKWvBwbrp+qc1GjPpd79
- PseXRe92lFuRLEg3mAcHJnI/YZiEwMXqfCXdeIgJKYCL8U7X5ygCjgH1JA0kbM3hJidF
- HpkKNINyCVzSNbkBvguEnkY/kZPCRC7QHZ2xYZnjXNPVqpL2W6cgAnV93wQHmCQJhTQS
- iIUw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=ejvFriw1FMTOseWxJMjltUsSxWejtkja8ZGck09p6Y0=;
- fh=r0EEz99lCRiGY4ZueN9EZ/V4wEjitAhaBGXaskyYCVM=;
- b=aRSGMiQGVTw8Is2PId8GvFTHaA8hbjaVfftgxeaxGQzGfG/0O7Uw8IAtZ+FTWLURRo
- xBEAVk2Mg9XZ5KMm4/QUiUw1+K1KbosmHRBugBzyWqVm7s7ISYhO3PxmnwvCRzWakTRR
- 7YBdDWlTP1EmGcxzvnVKpM+Ep/sHcS/2xp9eaDc1H4BV8HXlvNaB62KuFQgIxz4N10MI
- omctVcTdqpZOf+IyIymjaQ1l/pIW5FN6VtsbKt0snaUEoT476ayCBtIUyXNcgLxXlsp2
- HRvpmVOnaqXePL6JHSWoLgRxHZQnN6TA52HB/ovqcgdM3VCHLYrf6ufRs4DdrZX/EGQE
- hYbg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779336390; x=1779941190; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ejvFriw1FMTOseWxJMjltUsSxWejtkja8ZGck09p6Y0=;
- b=dCL2aJbPhwG/VrKfTeRrv6/Ym3e5hCFl4sPary/6xgZCQg8NJ5VgQjHLgycurYGDTe
- 32gyQphOx61tfLLezdvZU33I2MweANr7B2/vBpfFEMhRIXPyABggoSKGLeaXYzdIZPJ/
- VaukfoFdjEEsMnpS473CQWs8DvuiS61HGoOf2QOuOx56jL2HihwoO64O0HfVOR+LUgcU
- yh6aB0yZUwnSR/Q3hWN0D6ffJOg7tf3vIdD+tG81osJgWR2vc2rvzIMfheMHGgL3LCBt
- nXFdtOBVDxNjnqu8bkwtOt1thC8vOfPv7Axcrt3zFY9Ej/5m1AiZGtK+0bvYjG6uValR
- uSvA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779336390; x=1779941190;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=ejvFriw1FMTOseWxJMjltUsSxWejtkja8ZGck09p6Y0=;
- b=hlmV1K+Z/nmaNGcep+nYMt7hZOAu4iy/TvyZWoZThkYUikGJ5tX1plj0dmnUuCOJdk
- a/1T1KUPvQYswD6CnxpJp6wlljLEE4bL/HTAYnYADI6BUkmPWrxj02A7HHvNazd1beXP
- GCTD1cHwkLLmI9kv/JWnz1C85owKAwAdDGBF5MlMW69ofxmi+KBsk8W/be99bgsGtd0/
- G04L8x/vESU1kpHkoQk6KVFQEyHH2Yd/6xTr2/cbMjm5/u1GqnG/f7f8JOBT6Wy6h1Ad
- MgR1k498wru5y+vcKrWyJC3N60ugyu3Mvwb7k1jj6B+TTw7v8IT+mbKfX5a2QR60BxXK
- /jLw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ95DlKg5xNEzipJcYWXn0kW+XudxX22PiigE6SKSb/2lZmakCTjNx4YhKQqTvzBEroEQKguR6feBg==@nongnu.org
-X-Gm-Message-State: AOJu0YxVxZ+jW7EApjwKDmLi+mQKtKMHipud9mDK/6VuQ/9LvdHjI8AR
- lcshJw8M3b58RmBMfXHHhJozOdIW/GRAnnzc4TdIXprTGdst7rK3UDS7ANQSx99M4fPyFp+5zsv
- JszPhYJTVvpgbuqONiWjZNEoWL5HH8p0=
-X-Gm-Gg: Acq92OHG6si0LVCt2G487jEaWMU9GsHmmeWOX4f1JXGow+qDWepOSRLoGeZgbHwbifK
- H8dQb2k+nmSGvcW6fPJaN3MsgKdTaS3J6q1RmuN94seHy1dCxPm8FzIrFCe5SgtWD8ITObeR6j4
- Y4gHwiVMhy0xoZ3Z/WqBMJkW3xdlUCPKRaJyQ9ykZCU73LVeNd05+AAjjm0chKJbikp12R5A0hX
- dpM4KT9oZ9ijvz2FeyzqFwTROopEaFurR0Z1DdTA7VRRFtx/fjGeZkuatJaOapbLZCX0JuI42ty
- CNMjpdzp2ovyW8kLTGY=
-X-Received: by 2002:a05:6a20:6a0a:b0:39f:df57:ee7b with SMTP id
- adf61e73a8af0-3b30872e716mr1449138637.21.1779336389952; Wed, 20 May 2026
- 21:06:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1wPvFo-00013l-7s; Thu, 21 May 2026 00:43:28 -0400
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1wPvFl-0003Oq-MO; Thu, 21 May 2026 00:43:27 -0400
+Received: from [133.11.54.183] (h183.csg.ci.i.u-tokyo.ac.jp [133.11.54.183])
+ (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64L4hJmb051138
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Thu, 21 May 2026 13:43:19 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=H4pXrTLxtLklurT0dQMZJFFwX+t+Pw/T6jSaC1qidss=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=From:Message-ID:To:Subject:Date;
+ s=rs20250326; t=1779338599; v=1;
+ b=sfeVbTiYZAtCjIMSDF/2CIoKt1k1v74MErjXZE2pRskLBTXuRY+X+AKYV3DtEil3
+ fKLtsGrfkayRz5zL0ckBYpKdw4M/dQYVcr8d9lQvg4w8oyrov3yn5pIwlBwKArIS
+ lY1STeHHUz1REaLsOuWCrj5VJjxz6BYMep3cBPjnxfJygCMBDgdhc53I9mUazPv9
+ A9ZONrZpFBuQVKWYocae2QhqYK2l6Ve94w85CXenDbcA8OtspEbCDiNJYklXWWTc
+ 0Ds2mlaee7kNnyzvsnWeMZZbOManLtwmZjn7BqGFUWhrsOEzJ+WJ224hukfcB6GN
+ uM0G+s6IrAjrCqP+mOLgcQ==
+Message-ID: <ea0ee6f6-4753-45d4-ac55-a4ccbf6b7cf7@rsg.ci.i.u-tokyo.ac.jp>
+Date: Thu, 21 May 2026 13:43:18 +0900
 MIME-Version: 1.0
-References: <20260511-feat-mte4-v6-0-8557cc1313b9@gmail.com>
-In-Reply-To: <20260511-feat-mte4-v6-0-8557cc1313b9@gmail.com>
-From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Thu, 21 May 2026 00:06:18 -0400
-X-Gm-Features: AVHnY4I_5vg1QUwLw-03cypjxT3bhZ68UlvEGNuaE5d9DoMmkSOODyxiPNQl7zg
-Message-ID: <CA+1f7BCt2-L4PomMK+boHS6Od1odN6SP0rTVJ3Pd10rFhVNP-Q@mail.gmail.com>
-Subject: Re: [PATCH v6 00/15] target/arm: add support for MTE4
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
- Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=brookmangabriel@gmail.com; helo=mail-pf1-x42a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 3/4] hw/arm/virt: Remove the lower bound of HighMem IO
+ Regions
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>,
+ Andrew Jones <ajones@ventanamicro.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20260520-virt-v6-0-d96180454fdf@rsg.ci.i.u-tokyo.ac.jp>
+ <20260520-virt-v6-3-d96180454fdf@rsg.ci.i.u-tokyo.ac.jp>
+ <20260520155152.3652a6e9@imammedo>
+Content-Language: en-US
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <20260520155152.3652a6e9@imammedo>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ TVD_SUBJ_WIPE_DEBT=1.004 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,146 +78,143 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Ping.
+On 2026/05/20 22:51, Igor Mammedov wrote:
+> On Wed, 20 May 2026 18:56:32 +0900
+> Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
+> 
+>> Remove the lower bound of the Highmem IO Regions' addresses for the
+>> latest machine version to increase the chance to fit the regions in the
+>> PA space.
+>>
+>> The lower bound was especially problematic when using virt-install on
+>> Apple M2. virt-install 5.0.0 adds multiple pcie-root-port devices that
+> 
+> it looks like with this patch everything would move down,
+> with 'small' but, VIRT_HIGH_PCIE_MMIO that still won't fit into M2 PA and
+> will get disabled.
+> Is it intended (perhaps it should be mentioned in patch)
 
-https://lore.kernel.org/qemu-devel/20260511-feat-mte4-v6-0-8557cc1313b9@gma=
-il.com/
+Yes. It is another opportunity for improvement, but out of scopoe of 
+this patch.
 
-On Mon, May 11, 2026 at 10:01=E2=80=AFAM Gabriel Brookman
-<brookmangabriel@gmail.com> wrote:
->
-> This series implements ARM's Enhanced Memory Tagging Extension
-> (MTE4). MTE4 implies the presence of several subfeatures:
-> FEAT_MTE_CANONICAL_TAGS, FEAT_MTE_TAGGED_FAR, FEAT_MTE_STORE_ONLY,
-> FEAT_MTE_NO_ADDRESS_TAGS, and FEAT_MTE_PERM, none of which are
-> currently implemented in QEMU. This patch implements all five.
->
-> Testing:
->   - Included for FAR and STORE_ONLY.
->   - The MTE_CANONICAL/NAT test from v2, modified so MTE_CANONICAL is
->     enabled in user mode (removed from tree in v3).
->   - A bare-metal testsuite that sets up page tables for S1 and S2
->     translation, to test the Tagged NoTagAccess fault.
->   - The bare-metal testsuite also was used to test LDGM and similar
->     instructions not permitted in user-mode.
->   - The bare-metal testsuite also was used to test the mtx related
->     patches.
->
-> Thanks,
-> Gabriel Brookman
->
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3116
-> Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
-> ---
-> Changes in v6:
-> - Moved certain functions between patches (Richard)
-> - Added G_NORETURN to canonical_tag_write_fail
-> - Updated ldg and bounds check functions to Richard's versions, tested
->   these
-> - Link to v5: https://lore.kernel.org/qemu-devel/20260504-feat-mte4-v5-0-=
-232a648e63c6@gmail.com
->
-> Changes in v5:
-> - MTX check feature split into three commits as per Richard's suggestion
-> - MTX passed down to instruction helpers in a new argument
-> - allocation_tag_mem_probe checks for probe in MTEPERM case
-> - tbi helper combined into tbi_or_mtx_helper
-> - MTX checks added to sme and sve functions
-> - bug with type conversion in LDGM helper fixed
-> - fixed multi-page tag-check bug and multi-page ST2G bug
-> - removed erroneous changes to _stub functions
-> - reorganized PAuth & MTX interactions to make them more readable
-> - Link to v4: https://lore.kernel.org/qemu-devel/20260309-feat-mte4-v4-0-=
-daaf0375620d@gmail.com
->
-> Changes in v4:
-> - MTX now interacts with PAuth.
-> - Canonical tag checking only takes place in canonically tagged regions
-> - MTX bits enable tag checking
-> - MTX bits are placed in MTEDESC for access in mte_check helper
-> - Separate feature bits are used to delineate each feature
-> - PRCTL functions renamed and refactored as per Richard's suggestion
-> - Link to v3: https://lore.kernel.org/qemu-devel/20260105-feat-mte4-v3-0-=
-86a0d99ef2e4@gmail.com
->
-> Changes in v3:
-> - Added prctl for MTE_STORE_ONLY to linux-user
-> - mte_check is no longer generated on read when STORE_ONLY enabled
-> - Implemented LDGM instruction
-> - Removed "long" datatype as per Richard's suggestion
-> - Implemented masking for VA range checks when MTX bit enabled
-> - Implemented MTE_PERM, with NoTagAccess attribute
-> - Removed user-mode test for MTE_CANONICAL, since can't enable in
->   user-mode.
-> - Removed TBI from mte_check generation logic
-> - Link to v2: https://lore.kernel.org/qemu-devel/20251116-feat-mte4-v2-0-=
-9a7122b7fa76@gmail.com
->
-> Changes in v2:
-> - Added tests for STORE_ONLY.
-> - Refined commit messages.
-> - Added FEAT_MTE_CANONICAL_TAGS and FEAT_MTE_NO_ADDRESS_TAGS + tests.
-> - fixed TCSO bit macro names.
-> - Link to v1: https://lore.kernel.org/qemu-devel/20251111-feat-mte4-v1-0-=
-72ef5cf276f9@gmail.com
->
-> To: qemu-devel@nongnu.org
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> Cc: Laurent Vivier <laurent@vivier.eu>
-> Cc: Helge Deller <deller@gmx.de>
-> Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
->
-> ---
-> Gabriel Brookman (15):
->       target/arm: implement MTE_PERM
->       target/arm: add TCSO bitmasks to SCTLR
->       target/arm: mte_check unemitted on STORE_ONLY load
->       linux-user: add MTE_STORE_ONLY to prctl
->       target/arm: emit tag check when MTX without TBI
->       target/arm: add MTX to MTEDESC and DisasContext
->       target/arm: add canonical tag check helper
->       target/arm: add canonical MTE check logic
->       target/arm: load on canonical tag loads ext bits
->       target/arm: fault on tag store to canonical tag
->       target/arm: skip tag bit bounds check if MTX is on
->       target/arm: tag is not a part of PAuth with MTX
->       docs: add MTE4 features to docs
->       tests/tcg: add test for MTE FAR
->       tests/tcg: add test for MTE_STORE_ONLY
->
->  docs/system/arm/emulation.rst        |   5 ++
->  linux-user/aarch64/mte_user_helper.c |  11 ++-
->  linux-user/aarch64/mte_user_helper.h |  14 ++--
->  linux-user/aarch64/target_prctl.h    |   6 +-
->  target/arm/cpu-features.h            |  15 ++++
->  target/arm/cpu.h                     |   5 ++
->  target/arm/gdbstub64.c               |   2 +-
->  target/arm/helper.c                  |  36 +++++++--
->  target/arm/internals.h               |  40 ++++++++--
->  target/arm/ptw.c                     |  60 ++++++++++++--
->  target/arm/tcg/cpu64.c               |   8 ++
->  target/arm/tcg/helper-a64-defs.h     |  16 ++--
->  target/arm/tcg/helper-a64.c          |   7 +-
->  target/arm/tcg/hflags.c              |  25 +++++-
->  target/arm/tcg/mte_helper.c          | 146 +++++++++++++++++++++++++++++=
-------
->  target/arm/tcg/pauth_helper.c        |  18 ++++-
->  target/arm/tcg/sme_helper.c          |   4 +-
->  target/arm/tcg/sve_helper.c          |   6 +-
->  target/arm/tcg/translate-a64.c       |  45 +++++++----
->  target/arm/tcg/translate.h           |   3 +
->  tests/tcg/aarch64/Makefile.target    |   2 +-
->  tests/tcg/aarch64/mte-10.c           |  49 ++++++++++++
->  tests/tcg/aarch64/mte-9.c            |  48 ++++++++++++
->  tests/tcg/aarch64/mte.h              |   7 +-
->  24 files changed, 487 insertions(+), 91 deletions(-)
-> ---
-> base-commit: ee7eb612be8f8886d48c1d0c1f1c65e495138f83
-> change-id: 20251109-feat-mte4-6740a6202e83
->
-> Best regards,
-> --
-> Gabriel Brookman <brookmangabriel@gmail.com>
->
+> 
+> 
+>> require sufficient space in the ECAM region. However, the Highmem ECAM
+>> region did not fit in the limited PA space on the hardware, and the ECAM
+>> region size was limited to 16 MiB. If virt-install had added more than
+>> 16 devices to the root bridge, the region overflowed, which prevented
+>> edk2-stable202505 from scanning PCI devices, including the boot disk,
+>> causing boot failures.
+>>
+>> Ideally, a virtual machine with more than 16 devices added to the root
+>> bridge should just work so that users and management layers do not have
+>> to care whether they use constrained hardware.
+>>
+>> The base address of the Highmem IO Regions was fixed when commit
+>> f90747c4e8fb ("hw/arm/virt: GICv3 DT node with one or two redistributor
+>> regions") added the first Highmem IO Region. Later, commit 957e32cffa57
+>> ("hw/arm/virt: Dynamic memory map depending on RAM requirements")
+>> allowed moving the Highmem IO Regions to higher addresses to accommodate
+>> RAM more than 255 GiB, but the lower bound remained to keep the legacy
+>> memory map.
+>>
+>> Remove the lower bound for the latest machine version to accommodate
+>> more devices with the root bridge. Keeping the lower bound for the old
+>> machine versions ensures the compatibility is still maintained.
+>>
+>> The hardcoded memory map in tests/qtest/libqos/generic-pcihost.c is also
+>> updated.
+>>
+>> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>>   include/hw/arm/virt.h                |  1 +
+>>   hw/arm/virt.c                        | 17 +++++++++++------
+>>   tests/qtest/libqos/generic-pcihost.c |  2 +-
+>>   3 files changed, 13 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>> index 3ba33b4bd274..6c8ba8f3185b 100644
+>> --- a/include/hw/arm/virt.h
+>> +++ b/include/hw/arm/virt.h
+>> @@ -142,6 +142,7 @@ typedef enum VirtGICType {
+>>   
+>>   struct VirtMachineClass {
+>>       MachineClass parent;
+>> +    hwaddr min_highmem_base;
+>>       bool no_tcg_its;
+>>       bool no_highmem_compact;
+>>       bool no_kvm_steal_time;
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index b090233893c5..78a85a966ad7 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -229,8 +229,7 @@ static const MemMapEntry base_memmap[] = {
+>>    * Highmem IO Regions: This memory map is floating, located after the RAM.
+>>    * Each MemMapEntry base (GPA) will be dynamically computed, depending on the
+>>    * top of the RAM, so that its base get the same alignment as the size,
+>> - * ie. a 512GiB entry will be aligned on a 512GiB boundary. If there is
+>> - * less than 256GiB of RAM, the floating area starts at the 256GiB mark.
+>> + * ie. a 512GiB entry will be aligned on a 512GiB boundary.
+>>    * Note the extended_memmap is sized so that it eventually also includes the
+>>    * base_memmap entries (VIRT_HIGH_GIC_REDIST2 index is greater than the last
+>>    * index of base_memmap).
+>> @@ -2479,6 +2478,7 @@ static void virt_set_high_memmap(VirtMachineState *vms,
+>>   static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+>>   {
+>>       MachineState *ms = MACHINE(vms);
+>> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>>       hwaddr base, device_memory_base, device_memory_size, memtop;
+>>       int i;
+>>   
+>> @@ -2505,8 +2505,7 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+>>       /*
+>>        * We compute the base of the high IO region depending on the
+>>        * amount of initial and device memory. The device memory start/size
+>> -     * is aligned on 1GiB. We never put the high IO region below 256GiB
+>> -     * so that if maxram_size is < 255GiB we keep the legacy memory map.
+>> +     * is aligned on 1GiB.
+>>        * The device region size assumes 1GiB page max alignment per slot.
+>>        */
+>>       device_memory_base =
+>> @@ -2524,8 +2523,8 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+>>           error_report("maxmem/slots too huge");
+>>           exit(EXIT_FAILURE);
+>>       }
+>> -    if (base < vms->memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES) {
+>> -        base = vms->memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES;
+>> +    if (base < vmc->min_highmem_base) {
+>> +        base = vmc->min_highmem_base;
+>>       }
+>>   
+>>       /* We know for sure that at least the memory fits in the PA space */
+>> @@ -4367,6 +4366,12 @@ static void virt_machine_11_0_options(MachineClass *mc)
+>>       virt_machine_11_1_options(mc);
+>>       compat_props_add(mc->compat_props, hw_compat_11_0, hw_compat_11_0_len);
+>>       vmc->hvf_no_kernel_irqchip_default = true;
+>> +
+>> +    /*
+>> +     * Do not put the high IO region below 256GiB so that if maxram_size is
+>> +     * < 255GiB we keep the legacy memory map.
+>> +     */
+>> +    vmc->min_highmem_base = base_memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES;
+>>   }
+>>   DEFINE_VIRT_MACHINE(11, 0)
+>>   
+>> diff --git a/tests/qtest/libqos/generic-pcihost.c b/tests/qtest/libqos/generic-pcihost.c
+>> index b77617524cac..287e8445ec5b 100644
+>> --- a/tests/qtest/libqos/generic-pcihost.c
+>> +++ b/tests/qtest/libqos/generic-pcihost.c
+>> @@ -210,7 +210,7 @@ void qpci_init_generic(QGenericPCIBus *qpci, QTestState *qts,
+>>       qpci->bus.pio_limit = 0x10000;
+>>       qpci->bus.mmio_alloc_ptr = 0x10000000;
+>>       qpci->bus.mmio_limit = 0x2eff0000;
+>> -    qpci->ecam_alloc_ptr = 0x4010000000;
+>> +    qpci->ecam_alloc_ptr = 0x90000000;
+>>   
+>>       qpci->obj.get_driver = qpci_generic_get_driver;
+>>   }
+>>
+> 
+
 

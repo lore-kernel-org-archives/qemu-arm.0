@@ -4,100 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44540CD5BAC
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 13:21:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DC44CD5BAC
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 13:23:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQ3I6-0004R5-8K; Thu, 21 May 2026 09:18:22 -0400
+	id 1wQ3MX-00043u-1p; Thu, 21 May 2026 09:22:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wQ3Hk-00045j-6I
- for qemu-arm@nongnu.org; Thu, 21 May 2026 09:18:00 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wQ3MW-00043d-00
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 09:22:56 -0400
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wQ3Hg-0008WE-Q4
- for qemu-arm@nongnu.org; Thu, 21 May 2026 09:17:59 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-45e6a4d0be0so2665436f8f.1
- for <qemu-arm@nongnu.org>; Thu, 21 May 2026 06:17:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wQ3MU-0002Dn-86
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 09:22:55 -0400
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-7bf0b1a47b1so60834287b3.0
+ for <qemu-arm@nongnu.org>; Thu, 21 May 2026 06:22:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779369773; cv=none;
+ d=google.com; s=arc-20240605;
+ b=k4bn6yVhi14KXBfRQTCaCX1/GqZYmM6hvbxUMM6KorLGnbN+7dYhWJ6WCUHOrhzbCI
+ k0z9p6rVsAQ8wpHF0TC9skjWBK+cfCoCAI3Y8QOJZOSap+H9ih8JVfCC5p/NrBc+E3KW
+ dTx3CtWD5/t30gWXlCI485zJMK/QK0Nly1z1Vi/bwOgnu+KF0V/e1+HA+ZoU8hRyD6db
+ B6xFwDFoi72b3fSyFX/ouUuFcLfjqjybFdACTMtxCrYZPhsfyvbJd0godCh1PPfuWuxq
+ pW7+F6SEMUsQOTKaEHspb/nUJX9o6KXz2wlSoOjMEgGErA6ylJ8nJvXY0uA0cgStf5MG
+ gGHQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=M0NmGdmCuabLXz4JcTf7/j2hDfPUmh7EdopHdn0sNmY=;
+ fh=LL8KmW4ydZnYeXShqVzHnQ5p71mWBWBlGU3ZgkD60zQ=;
+ b=H/MyjfULb79ongWysMh4qB5I2WoP0AZhtT6npliF1Vro5IWN9P/sgHk0Bn6AmWta/w
+ vymLWG9Dg/Cfh+Fre0Ceh36ujMu/fviQqyu2LPiUyM+r61eHJIyz7NJItS2ucivHLDCR
+ U1AFI74vT01Zi6H0T32FkCRKVrTgf4nk+VkofShCkhvLhlPvnZhFy7zQ0KLr4o91WS6V
+ hkJ2jaeJvdQasjIqq7BAvJmf83fBPG6KOoMxvy+9z2aHZIOYMpTu8hkEbA/Xnau53IyG
+ 82BQvIRxszxTMBiAz1HKwPkKKdQ79Ls/81oBZWsbVWA2oOJf/pgyozQrdSy4SO22BrlW
+ lROA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779369471; x=1779974271; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=hda4e9PNEMyhesRE8+tUzLA86UmpB6c7B/SqvsDjFos=;
- b=Iw0OBqbOaQB7gu8p1FvR6Ev/HOcfO5LwT7+isn2mv2mhyqBqJugVeBB97lmj7sXsE0
- g6GeScGGkAiQIvsz2P5x2Az8m6Fjxdg5jK+l6jbm8LPX68lksMivLZ7bo5A6OjNuuVP0
- 5KBjxu0LWVz7AkoxvSbMcs60DldH5XeJHsRXWfTwCl1ChouLHdhpYFrg/XM6AzXSfYIf
- 2XKq0rDQru/Dqj/QKtaEmp/H2gYmgmps2UkSrdrigE0g3ggmJIbRJGUgXRyux4faVTjr
- 7VRQyeV1BgU7TTqdJfuVYIbbO1Zjj7bCcaW6EC6JULAxsdheKig6k1ChtRl1Zs6JBHop
- rTHA==
+ d=linaro.org; s=google; t=1779369773; x=1779974573; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=M0NmGdmCuabLXz4JcTf7/j2hDfPUmh7EdopHdn0sNmY=;
+ b=Cm3T6TOskADmYWQRiiidclMGY393rhoVqgPmIk4DC5FJfpTBf2PFhe2Mu3bAXjEXnD
+ ynVjmVNqmOhiX3tEaK93ZIqw91D1IeIIvMmfEotTtjrml6lHVIFMGtdRVOT+rTf7rygl
+ L9JTDjBOZe5s1BtK4bvRzva0UasIG5ldvz4BcWsrCduA+erunbdkkdSrXgJS8tgJmqQs
+ O8+JcftDQA+QgPZo15klUhPyFekxtN5bGzQo47vXopiHBg5J+OgkhBuF6w4UIHm+JC4B
+ YF14b89d6IipV2ZaerJhRrB4PJ8D3Q7OFOhGE0S/GuAb1Y2J+qG/OyOddYGW39NLyllu
+ qbrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779369471; x=1779974271;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=hda4e9PNEMyhesRE8+tUzLA86UmpB6c7B/SqvsDjFos=;
- b=oxK10CkH+K05ZVATnAcqNEoBM546yFPIOSmoSdppDj9i+wA3h0tZFxNsyxr4gCBenB
- C1PuroBZw8AqYCIIVJ0/OhECbB2rkWUA+tefWsz3Oe0ytejEma8KNloetNppbS8mbU4b
- afU5dtVWIwcS4lGUkltuxdSzlPmKgyVQOLOZ7Mgx9vgERBm5jHLufsDY7/B2cQK8ILYH
- u2kD23Pol/UMz4Sbwr6EK+wWwGz5qGPTOnz/2eziRnxnmdmLSFFLLsYllkaJdS4neVum
- C9F2es822pyayzF5GsyR7lLmg3TjiSEJB4pPGdBDzUlGT14eEAsa4wUcA78SEQAsrlYi
- 4Mhg==
+ d=1e100.net; s=20251104; t=1779369773; x=1779974573;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=M0NmGdmCuabLXz4JcTf7/j2hDfPUmh7EdopHdn0sNmY=;
+ b=V+G5aDHZ9ApOk+CTamT9c3LmfoDf2GNzAHQOqMYIuhbGJm903HwkHu6GicrLXKZaac
+ ef3CGVAkH/r+iIA8MJGlTqGbozG4ojAKB0iAcq81130viKkQQYVUSlN3oMeOa/A2c9le
+ CI+i3pjFEnNhrfcazaTGRN4r9kVewsqzVH6wrul1aMCGSoPU0khqm6SDEBp6VHbCCVep
+ z4NZ2pePgmUDt7hhMMTFPno4jV598b6XX9IAGqinLMLumFFtgZn+sxB7Ih8qqifTEyRI
+ IP8Sv1APcKePrmCCQEBp2bJf2Vb3VLFUie7hI+ncFb9v9yvaizoOfVGNmsOy4phJBdf6
+ Ew6w==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/gTGEANsFs1/UmrBoQ3sMBDnA3Bf/6R/tsC01HKqzpv/oTzVvm6klY+gzWknJmhgntea9BXR9KjQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy1pENzwkCGXKnFKSiTo+yu2hyE4HAJY9NEsN6O1COpIy/C6BWs
- oyG7JE3z0yMmLp6ijXQuNHMScPHw0ByEqgVvO+8uALk+E/Z4OndarZ3p2CWUo1ZD3qA=
-X-Gm-Gg: Acq92OGaL2mQu7XR0iAuYM4ed0yYar3rXSXdWGWJ/mqMGtmZ7hPPEfFUn+9D7NMKF+8
- 9pSHcawmMReYeNNSG/+5AHPeUPB0WWUUpc26kUpCXaRAJ5LAzQFb74f4P9Q8LXE60sopFniXFh/
- 81ZlIGkXiel2GbeAMIlOgqMnH5oryeYeJBYhL2sjWJ9wvgQy+FTzcPIJuFvylrTRDhqzHuWF29T
- Kqmb+4kMJz3VicZVIW2wDPZp8anDL1P0jt+M/1S5g22qKqnZ0QkWgkCSAqzRqnMmZUpEnxMhU7w
- ZDjvEHq3Q8FIWGlSp/beTu2oWKtNli+adoiZns8WxbjLHNqfJobU4CO89x/nxxgLF9pVjm1HjFC
- R2Pw7Af1m1FFDWtNCreZE8ngb98uIIommVkN6uAyHDwnfk6I3P9Lr6BLp8YptCRAS15y5y0XnUi
- BBrDptpYw5S3GqFgsz6bCMYZs=
-X-Received: by 2002:a5d:5f44:0:b0:45e:739e:499 with SMTP id
- ffacd0b85a97d-45ea37be6c5mr5360918f8f.13.1779369471436; 
- Thu, 21 May 2026 06:17:51 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45eaa92dfb1sm2856162f8f.20.2026.05.21.06.17.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 May 2026 06:17:48 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 7A28660E4E;
- Thu, 21 May 2026 14:17:40 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Thomas Huth <th.huth+qemu@posteo.eu>, Song Gao <gaosong@loongson.cn>,
- John Snow <jsnow@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Kyle Evans <kevans@freebsd.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Cleber Rosa <crosa@redhat.com>, Warner Losh <imp@bsdimp.com>,
- Brad Smith <brad@comstyle.com>, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Brian Cain <brian.cain@oss.qualcomm.com>, Fabiano Rosas <farosas@suse.de>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v2 13/16] MAINTAINERS: Cover debian-tricore-cross.docker with
- TriCore section
-Date: Thu, 21 May 2026 14:17:35 +0100
-Message-ID: <20260521131739.540157-14-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260521131739.540157-1-alex.bennee@linaro.org>
-References: <20260521131739.540157-1-alex.bennee@linaro.org>
+ AFNElJ+x3fCFvQdL5LeMouHWKDil2hZTkyhmdTbM8lJ1s8rYphjEvOy3WTO3ud2i5KT/qVeuuiRPXH/QcA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz6C2XPNDPY08R+QigPKILzKpBNYhPfF5etqM142jMs+XtoUFmb
+ N2+pjuvZWSQ1fiPUaonIzJHplhCtGEGO/D67H+ZVGJhPX/m56UY4lEIlig94EO40MHyvOHPD3D7
+ HDFRRkTQ2+2y7nOcWezXXFpXhCrP2VbsMTHXT4W8VZA==
+X-Gm-Gg: Acq92OH7rfTddrUAfJwvd4Od2aOo/52WJsTE8b4QkKz+qqET9jojd4TZRy+LXWQbxZz
+ e07hUn4HYs2kKhL9IzpRD1gHOeJL0v+02GQ29BMUKkNueWgdBZP+m2m0v6zr3oJljiNxuUukvjS
+ RD/+U004mE80SZrgcIVHvVNcG6i75gvSc4OovSUqUVrdQ3DLH0PBj4eBgItwDD+6Lyr6lU9dfjV
+ tpM5DKhBaZhEaiLaY/3cwqej9MgH5ZRYq6C5CdrpHHL8vTxIdJHae6ysFI9Dt+4mr9sqDZXFFJ/
+ Rxaho6bjI824XGKthSr8um0Iqb2VQhFNE0PyiAopfcxnlIutE0/AHFi1qtwoYseX6hg=
+X-Received: by 2002:a05:690e:bca:b0:65c:6220:5fcf with SMTP id
+ 956f58d0204a3-65eae3caf3bmr2370087d50.62.1779369772768; Thu, 21 May 2026
+ 06:22:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42c.google.com
+References: <20260520171820.848839-1-richard.henderson@linaro.org>
+ <20260520171820.848839-30-richard.henderson@linaro.org>
+ <CAFEAcA9tXNossXoMC=LSa7Aw0CZzsmtkppKqEGqcdSgy-X_GOw@mail.gmail.com>
+ <CAFEAcA9X-2+_LgGaT3Jf3tC7p3RSH0qRQ0CK_3BhySzS_cxqWg@mail.gmail.com>
+ <498188db-167b-479f-abec-1e7967f0b967@linaro.org>
+In-Reply-To: <498188db-167b-479f-abec-1e7967f0b967@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 21 May 2026 14:22:41 +0100
+X-Gm-Features: AVHnY4LLIGe_lxxBlkXeoMrU9u45OAVfXdroan_MjIh313jkxPh6E9kp9V2M8L8
+Message-ID: <CAFEAcA_nSN92zazbZ6LT43P=9PNwy=Qtix0n=bJgBxWnidqmzA@mail.gmail.com>
+Subject: Re: [PATCH v5 29/30] fpu: Fix NaN encoding for E4M3 in parts64_uncanon
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,29 +119,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+On Wed, 20 May 2026 at 19:26, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 5/20/26 11:21, Peter Maydell wrote:
+> >>> +                break;
+> >>> +            }
+> >>> +            g_assert_not_reached();
+> >
+> > ...ah, I misread it. I think it would be clearer to
+> > have the float_expmax_normal case be "g_assert_not_reached()"
+> > rather than "break, and rely on the thing immediately next
+> > after the switch to be g_assert_not_reached()", because
+> > it more obviously says "this case can't occur".
+>
+> Mm.  I wrote the switch to let -Wall diagnose a missing enumerator, rather than
+>
+>      case float_expmax_normal:
+>      default:
+>          g_assert_not_reached();
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Message-ID: <20260518102222.80735-5-philmd@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+Since this is the last unreviewed patch in this series,
+you can have my
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c04fc1cd2e8..62754d18341 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -458,6 +458,7 @@ S: Orphan
- F: target/tricore/
- F: hw/tricore/
- F: include/hw/tricore/
-+F: tests/docker/dockerfiles/debian-tricore-cross.docker
- F: tests/tcg/tricore/
- 
- Multiarch Linux User Tests
--- 
-2.47.3
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+thanks
+-- PMM
 

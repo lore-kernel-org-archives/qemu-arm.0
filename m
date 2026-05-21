@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80267CD5BA4
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 08:54:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A94BCD5BB0
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 08:58:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPzAn-0008Ff-7i; Thu, 21 May 2026 04:54:33 -0400
+	id 1wPzDn-00011i-Ry; Thu, 21 May 2026 04:57:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPzAl-0008F5-Qf
- for qemu-arm@nongnu.org; Thu, 21 May 2026 04:54:31 -0400
-Received: from smtpout8.mo534.mail-out.ovh.net ([54.36.140.179])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPzDm-00010B-20
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 04:57:38 -0400
+Received: from 6.mo533.mail-out.ovh.net ([54.36.140.181])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPzAh-0007pE-AD
- for qemu-arm@nongnu.org; Thu, 21 May 2026 04:54:31 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo534.mail-out.ovh.net (Postfix) with ESMTPS id 4gLhzg15lNz6BlW;
- Thu, 21 May 2026 08:54:23 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Thu, 21 May 2026 08:54:23 +0000 (UTC)
-Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.43.59])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4gLhzg0Qbkz1xp5;
- Thu, 21 May 2026 08:54:23 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.0])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wPzDe-0008Sf-3N
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 04:57:37 -0400
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net [152.228.215.222])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4gLj2j23Lgz6Ckw;
+ Thu, 21 May 2026 08:57:01 +0000 (UTC)
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net. [127.0.0.1])
+ by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Thu, 21 May 2026 08:57:01 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.109.249.47])
+ by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gLj2j0GP7z5vfw; Thu, 21 May 2026 08:57:01 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.1])
  (Authenticated sender: clg@kaod.org)
- by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id DCCC0203B6A; 
- Thu, 21 May 2026 08:54:21 +0000 (UTC)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id BA140203B6C; 
+ Thu, 21 May 2026 08:56:59 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R0018d12b7c8-2e5e-496c-8f8c-dd08d6abb7db,
+ (GARM-104R00533b20e0e-82b5-4fb0-8efa-dc9cd43adca3,
  155D954443A34AB19E7EFB78D45315E373F1C727) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <b3a51fa2-9486-4f2f-b952-4dd51e3a7402@kaod.org>
-Date: Thu, 21 May 2026 10:54:21 +0200
+Message-ID: <14262972-3693-4fdb-81cf-695f230d184c@kaod.org>
+Date: Thu, 21 May 2026 10:56:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 3/4] hw/arm/aspeed: Introduce AST1040 A0 SoC model
+Subject: Re: [PATCH v1 4/4] hw/arm/aspeed: Add AST1040 EVB machine model
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -51,7 +51,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20260521065203.3713466-1-jamin_lin@aspeedtech.com>
- <20260521065203.3713466-4-jamin_lin@aspeedtech.com>
+ <20260521065203.3713466-5-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -96,30 +96,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260521065203.3713466-4-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260521065203.3713466-5-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 14429251733575805963
+x-ovh-tracer-id: 14473724778551487499
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGpXznD9slKRIXOZg7Wqf7oh8jfFCxgHm4cnuSK0dnNSuaPCO5yRzhbhzD0Rfo9VOmoJMXNODbfqdDBbGScohG0cnxEyXunktkNY1bOOHVGDJ3tvMyqZYILQyh9LasV42Qo4oFVQgaUyWr8D6Vf0KIpM+r/tAK2jRDyYdbXDKfHooQ3Fpe5l++YS1TcV3ZQP7SZILt8TXha5IQKiYkuZVvXHJeDFRV9B8LxQnV7S63gcdMNXlfROFDoprwZZrTO+vKGyS//un46qRJrPgOQTErhW3LzDfI+ifNIHvuSqXglQ8D/rtKbM/wBwdZSb7enPB4xJz9EC+59Iv3F+VojriMWmqF7fOskJ8C+rJhnb26ZKzYF4ewU+q588iH2bsBMD3qNs4uTG0rDFay6FLEfwyD7DQucfYTlhuy+LBnGbYFRRfcVpcBRyfBiBXWw/ihsZ/Xo+bloqHLfMLMVWd8NnhquaqW4N5e7hjJ9VHavhQuq8emgZ53SeoFfNqG/5B+fV+uJm/j9mjkTkT/WG2VZqhsCcInLouqr5p7TJgozOojtrcFkizYRwn21I4VD6LGPqPt0HLdvuElmbnJc39f0UGS2fs0Z3fukOcMfT6fzoM6mpLqwr2K5NJQX4I7nXU5wp+qB8+a8ssKK09Rlzz8Fu3BHGL7Psv+8Hxv0TC8TlN5oyg
-DKIM-Signature: a=rsa-sha256; bh=OF27dA97UprNPiF+ezzcNE+A46sM7aHcK7wyXllw7fU=; 
+X-VR-SPAMCAUSE: dmFkZTGpXznD9slKRIXOZg7Wqf7oh8jfFCxgHm4cnuSK0dnNSuaPCO5yRzhbhzD0Rfo9VOmoJMXNODbfqdDBbGScohG0cnxEyXunktkNY1bOOHVGDJ3tvMyqZYILQyh9LasV42Qo4oFVQgaUyWr8D6Vf0KIpM+r/tAK2jRDyYdbXDKfHooQ3Fpe5l++YS1TcV3ZQP7SZILt8TXha5IQKiYkuZVvXHJeDFRV9B8LxQnV7S63gcdMNXlfROFDoprwZZrTO+vKGyS//un46qRJrPgOQTErhW3LzDfI+ifNIHvuSqXglQ8D/rtKbM/wBwdZSb7enPB4xJz9EC+59Iv3F+VojriMWK3PnDbNu1iX+hQvdl5UgX/xwKupDIbIrO5x4/BYyhWZUlrKUtmB9D923Vloe+wXVJB1BIuVwNZ2IHMF9FtFoB7QVUS8KMeYPL/PyqExTmMWKprU5xQsICHt9EMu0tA/zAo6qsacmAGeIr7pNkM3nal5YNwA7Lvw6OKpNN2Qv18NjUsbUgztZ+fnGrYBteYYhDoJROpPahgqBeBoyHmNfo11FElFQCMUsCNLZrbyH48NwwXkKva6ytnRWp3QfbEcUbVX75Ra2AvtiLbVFTeA42vZlQMySimrq71pat51/t6/PwdB+wjB683MjXSmmzVXeUlLkN11jkadRgL1xCFtAMg
+DKIM-Signature: a=rsa-sha256; bh=9SD4CbHi8S3NxCsw12TxgaCVJT+ZcJAc883JxG4s7UA=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1779353664; v=1;
- b=M80066DfULveWNZFQ4rCCTre86O04WUZudsIgYbB/i7tIqMUOjVea++d1tbRk/bk66rL3qGz
- 3zjtLUxdTKBwYaL8E0lRWyhrvsrffJESfGcyc6Rlbw/EE6JrGfogf9mIFd/vB8IVZVmvTR+Rnkp
- W8CzYJEXccC7h9F3VdJ/gfIJmBrlF5k3OxU0C1vcID+ucPrKC4Dc3lZ2mygYZobccFxNtxb7nr/
- nFYMjDFdEfQn6wHj5Z+AqE9iqTPnUR0AYGIxdgMzDYIjXXZ/GPrgW6sQWsV+zkgTxaDHT+edq9y
- eHX/m4lGkFkpHGkKCNcn8gnOkozpAjvpDHRFl6fkam5JA==
-Received-SPF: pass client-ip=54.36.140.179; envelope-from=clg@kaod.org;
- helo=smtpout8.mo534.mail-out.ovh.net
+ t=1779353822; v=1;
+ b=K73GpFO14oC+ofRO9G22THLTRT9eztZ9H+/cX3hVOvvBDcoeuY7nB5udce6PWxuU+WMqPMeo
+ U8REQSTIbFoMeqbX29dMN95VGpHaRIsQxcGIvR37BU0AKpg0W+UUIW6eq/HSQ76i4PYFq6cRz3X
+ 1L+0gbF8Pj/KCsZiDF94Ec9bKzMxKV+w+I+mRzz6rY5EoQ1itwBc4zaMaCa9/C92QjAZuAMmmzx
+ Q17YWD0NYFMI/vdTl6YadFQe/VT1ojlGeI1narlZSVW+yG6MpmEk4oyOtzFg5tjoQqkpyF2ZXit
+ 6vcMtphaz4oqWBTAOsYQijz4Ou4JYl1SNxqSqiNfa7Zig==
+Received-SPF: pass client-ip=54.36.140.181; envelope-from=clg@kaod.org;
+ helo=6.mo533.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,303 +136,124 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 5/21/26 08:52, Jamin Lin wrote:
-> The AST1040 is based on an ARM Cortex-M4F CPU core. Since QEMU
-> currently does not provide Cortex-M4F support, use the existing
-> Cortex-M4 CPU model as a temporary replacement.
+> AST1040 is the next-generation device following AST1030 and is
+> primarily designed as a bridge/BIC controller platform. Introduce
+> a dedicated AST1040 EVB machine implementation for firmware
+> development and validation.
 > 
-> This initial implementation provides the basic infrastructure
-> required to boot firmware and run a minimal firmware shell,
-> including:
+> Although the existing ast10x0 EVB machine code already provides
+> a reusable minibmc initialization flow, AST1040 requires
+> different platform settings, including:
 > 
-> - ARM Cortex-M4 CPU integration
-> - NVIC interrupt controller support
-> - Internal SDRAM and SRAM memory regions
-> - SCU integration
-> - UART devices and interrupt wiring
+>    - Different SYSCLK frequency
+>    - Different internal flash size
 > 
-> AST1040 SCU behavior is compatible with the AST2700 SCUIO model,
-> so reuse the existing AST2700 SCUIO implementation directly
-> instead of introducing another identical SCU model. This reduces
-> duplicate code and helps minimize long-term codebase maintenance.
-> 
-> Several peripherals are currently modeled as unimplemented
-> devices and can be added incrementally in future updates.
+> To avoid overloading the existing AST1030-specific helper,
+> introduce a separate aspeed_bic_machine_init() implementation in
+> a dedicated source file.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/arm/aspeed_ast1040.c | 246 ++++++++++++++++++++++++++++++++++++++++
->   hw/arm/meson.build      |   3 +-
->   2 files changed, 248 insertions(+), 1 deletion(-)
->   create mode 100644 hw/arm/aspeed_ast1040.c
-> 
-> diff --git a/hw/arm/aspeed_ast1040.c b/hw/arm/aspeed_ast1040.c
+>   hw/arm/aspeed_ast1040_evb.c | 72 +++++++++++++++++++++++++++++++++++++
+>   hw/arm/meson.build          |  3 +-
+>   2 files changed, 74 insertions(+), 1 deletion(-)
+>   create mode 100644 hw/arm/aspeed_ast1040_evb.c
+
+
+No functional test ?
+
+> diff --git a/hw/arm/aspeed_ast1040_evb.c b/hw/arm/aspeed_ast1040_evb.c
 > new file mode 100644
-> index 0000000000..615f9c4e15
+> index 0000000000..5851cf6967
 > --- /dev/null
-> +++ b/hw/arm/aspeed_ast1040.c
-> @@ -0,0 +1,246 @@
+> +++ b/hw/arm/aspeed_ast1040_evb.c
+> @@ -0,0 +1,72 @@
 > +/*
-> + * ASPEED AST1040 SoC
+> + * ASPEED AST1040 EVB
 > + *
 > + * Copyright (C) 2026 ASPEED Technology Inc.
 > + *
 > + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
 > + */
 > +
 > +#include "qemu/osdep.h"
 > +#include "qapi/error.h"
-> +#include "system/address-spaces.h"
-> +#include "system/system.h"
-> +#include "hw/core/qdev-clock.h"
-> +#include "hw/misc/unimp.h"
+> +#include "hw/arm/boot.h"
+> +#include "hw/arm/machines-qom.h"
+> +#include "hw/arm/aspeed.h"
 > +#include "hw/arm/aspeed_soc.h"
+> +#include "hw/core/qdev-clock.h"
+> +#include "system/system.h"
 > +
-> +static const hwaddr aspeed_soc_ast1040_memmap[] = {
-> +    [ASPEED_DEV_SDRAM]     = 0x00000000,
-> +    [ASPEED_DEV_FMC]       = 0x74000000,
-> +    [ASPEED_DEV_SPI0]      = 0x74010000,
-> +    [ASPEED_DEV_SPI1]      = 0x74020000,
-> +    [ASPEED_DEV_PWM]       = 0x740C0000,
-> +    [ASPEED_DEV_UDC]       = 0x74120000,
-> +    [ASPEED_DEV_SRAM]      = 0x74B80000,
-> +    [ASPEED_DEV_ADC]       = 0x74C00000,
-> +    [ASPEED_DEV_JTAG0]     = 0x74C01000,
-> +    [ASPEED_DEV_SCU]       = 0x74C02000,
-> +    [ASPEED_DEV_ESPI]      = 0x74C05000,
-> +    [ASPEED_DEV_JTAG1]     = 0x74C09000,
-> +    [ASPEED_DEV_GPIO]      = 0x74C0B000,
-> +    [ASPEED_DEV_SGPIOM0]   = 0x74C0C000,
-> +    [ASPEED_DEV_SGPIOM1]   = 0x74C0D000,> +    [ASPEED_DEV_I2C]       = 0x74C0F000,
-> +    [ASPEED_DEV_I3C]       = 0x74C20000,
-> +    [ASPEED_DEV_UART0]     = 0x74C33000,
-> +    [ASPEED_DEV_UART1]     = 0x74C33100,
-> +    [ASPEED_DEV_UART2]     = 0x74C33200,
-> +    [ASPEED_DEV_UART3]     = 0x74C33300,
-> +    [ASPEED_DEV_UART4]     = 0x74C33400,
-> +    [ASPEED_DEV_UART5]     = 0x74C33500,
-> +    [ASPEED_DEV_UART6]     = 0x74C33600,
-> +    [ASPEED_DEV_UART7]     = 0x74C33700,
-> +    [ASPEED_DEV_UART8]     = 0x74C33800,
-> +    [ASPEED_DEV_UART9]     = 0x74C33900,
-> +    [ASPEED_DEV_UART10]    = 0x74C33A00,
-> +    [ASPEED_DEV_UART11]    = 0x74C33B00,
-> +    [ASPEED_DEV_UART12]    = 0x74C33C00,
-> +    [ASPEED_DEV_WDT]       = 0x74C37000,
-> +    [ASPEED_DEV_TIMER1]    = 0x74C3A000,
-> +};
+> +#define AST1040_INTERNAL_FLASH_SIZE (4 * MiB)
+> +/* Main SYSCLK frequency in Hz (400MHz) */
+> +#define SYSCLK_FRQ 400000000ULL
 > +
-> +static const int aspeed_soc_ast1040_irqmap[] = {
-> +    [ASPEED_DEV_ESPI]      = 10,
-> +    [ASPEED_DEV_I2C]       = 64, /* 64 ~ 77 */
-> +    [ASPEED_DEV_ADC]       = 80,
-> +    [ASPEED_DEV_GPIO]      = 82,
-> +    [ASPEED_DEV_SGPIOM0]   = 85,
-> +    [ASPEED_DEV_TIMER1]    = 92,
-> +    [ASPEED_DEV_I3C]       = 96, /* 96 ~ 103 */
-> +    [ASPEED_DEV_WDT]       = 112,
-> +    [ASPEED_DEV_FMC]       = 121,
-> +    [ASPEED_DEV_SPI0]      = 122,
-> +    [ASPEED_DEV_SPI1]      = 123,
-> +    [ASPEED_DEV_PWM]       = 125,
-> +    [ASPEED_DEV_UART0]     = 135,
-> +    [ASPEED_DEV_UART1]     = 136,
-> +    [ASPEED_DEV_UART2]     = 137,
-> +    [ASPEED_DEV_UART3]     = 138,
-> +    [ASPEED_DEV_UART4]     = 139,
-> +    [ASPEED_DEV_UART5]     = 140,
-> +    [ASPEED_DEV_UART6]     = 141,
-> +    [ASPEED_DEV_UART7]     = 142,
-> +    [ASPEED_DEV_UART8]     = 143,
-> +    [ASPEED_DEV_UART9]     = 144,
-> +    [ASPEED_DEV_UART10]    = 145,
-> +    [ASPEED_DEV_UART11]    = 146,
-> +    [ASPEED_DEV_UART12]    = 147,
-> +    [ASPEED_DEV_JTAG0]     = 162,
-> +};
-> +
-> +static qemu_irq aspeed_soc_ast1040_get_irq(AspeedSoCState *s, int dev)
+> +static void aspeed_bic_machine_init(MachineState *machine)
 > +{
-> +    Aspeed10x0SoCState *a = ASPEED10X0_SOC(s);
-> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> +    AspeedMachineState *bmc = ASPEED_MACHINE(machine);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
+> +    Clock *sysclk;
 > +
-> +    return qdev_get_gpio_in(DEVICE(&a->armv7m), sc->irqmap[dev]);
+> +    sysclk = clock_new(OBJECT(machine), "SYSCLK");
+> +    clock_set_hz(sysclk, SYSCLK_FRQ);
+> +
+> +    bmc->soc = ASPEED_SOC(object_new(amc->soc_name));
+> +    object_property_add_child(OBJECT(machine), "soc", OBJECT(bmc->soc));
+> +    object_unref(OBJECT(bmc->soc));
+> +    qdev_connect_clock_in(DEVICE(bmc->soc), "sysclk", sysclk);
+> +
+> +    object_property_set_link(OBJECT(bmc->soc), "memory",
+> +                             OBJECT(get_system_memory()), &error_abort);
+> +    aspeed_connect_serial_hds_to_uarts(bmc);
+> +    qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
+> +
+> +    armv7m_load_kernel(ARM_CPU(first_cpu),
+> +                       machine->kernel_filename,
+> +                       0,
+> +                       AST1040_INTERNAL_FLASH_SIZE);
 > +}
 > +
-> +static void aspeed_soc_ast1040_init(Object *obj)
+> +static void aspeed_machine_ast1040_evb_class_init(ObjectClass *oc,
+> +                                                          const void *data)
 > +{
-> +    Aspeed10x0SoCState *a = ASPEED10X0_SOC(obj);
-> +    AspeedSoCState *s = ASPEED_SOC(obj);
-> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-> +    int i;
-> +    object_initialize_child(obj, "armv7m", &a->armv7m, TYPE_ARMV7M);
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 > +
-> +    s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
-> +
-> +    /* AST1040 uses the AST2700 IO SCU model */
-> +    object_initialize_child(obj, "scu", &s->scu, TYPE_ASPEED_2700_SCUIO);
-> +    qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev", sc->silicon_rev);
-> +
-> +    object_property_add_alias(obj, "hw-strap1", OBJECT(&s->scu), "hw-strap1");
-> +    object_property_add_alias(obj, "hw-strap2", OBJECT(&s->scu), "hw-strap2");
-> +
-> +    for (i = 0; i < sc->uarts_num; i++) {
-> +        object_initialize_child(obj, "uart[*]", &s->uart[i], TYPE_SERIAL_MM);
-> +    }
-> +
-> +    object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE);
-> +    object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVICE);
-> +    object_initialize_child(obj, "udc", &s->udc, TYPE_UNIMPLEMENTED_DEVICE);
-> +    object_initialize_child(obj, "sgpiom", &s->sgpiom[0],
-> +                            TYPE_UNIMPLEMENTED_DEVICE);
-> +    object_initialize_child(obj, "jtag[0]", &s->jtag[0],
-> +                            TYPE_UNIMPLEMENTED_DEVICE);
-> +    object_initialize_child(obj, "jtag[1]", &s->jtag[1],
-> +                            TYPE_UNIMPLEMENTED_DEVICE);
+> +    mc->desc = "Aspeed AST1040 BIC EVB (Cortex-M4F)";
+> +    amc->soc_name  = "ast1040-a0";
+> +    amc->hw_strap1 = 0;
+> +    amc->hw_strap2 = 0;
+> +    mc->init       = aspeed_bic_machine_init;
+
+   mc->default_ram_size = 0; ?
+
+> +    amc->macs_mask = 0;
+> +    amc->uart_default = ASPEED_DEV_UART12;
+> +    aspeed_machine_class_init_cpus_defaults(mc);
 > +}
 > +
-> +static void aspeed_soc_ast1040_realize(DeviceState *dev_soc, Error **errp)
-> +{
-> +    Aspeed10x0SoCState *a = ASPEED10X0_SOC(dev_soc);
-> +    AspeedSoCState *s = ASPEED_SOC(dev_soc);
-> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-> +    DeviceState *armv7m;
-> +    Error *err = NULL;
-> +    char name[64];
-> +    int uart;
-> +    int i;
-> +
-> +    if (!clock_has_source(s->sysclk)) {
-> +        error_setg(errp, "sysclk clock must be wired up by the board code");
-> +        return;
-> +    }
-> +
-> +    /* AST1040 CPU Core */
-> +    armv7m = DEVICE(&a->armv7m);
-> +    qdev_prop_set_uint32(armv7m, "num-irq", 256);
-> +    qdev_prop_set_string(armv7m, "cpu-type",
-> +                         aspeed_soc_cpu_type(sc->valid_cpu_types));
-> +    qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
-> +    object_property_set_link(OBJECT(&a->armv7m), "memory",
-> +                             OBJECT(s->memory), &error_abort);
-> +    sysbus_realize(SYS_BUS_DEVICE(&a->armv7m), &error_abort);
-> +
-> +    /* Internal SDRAM */
-> +    snprintf(name, sizeof(name), "aspeed.sdram.%d",
-> +             CPU(a->armv7m.cpu)->cpu_index);
-
-please use a g_autofree variable.
-
-> +    memory_region_init_ram(&s->sdram, OBJECT(s), name, sc->sdram_size, &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SDRAM],
-> +                                &s->sdram);
-> +
-> +    /* Internal SRAM */
-> +    snprintf(name, sizeof(name), "aspeed.sram.%d",
-> +             CPU(a->armv7m.cpu)->cpu_index);
-> +    memory_region_init_ram(&s->sram, OBJECT(s), name, sc->sram_size, &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SRAM],
-> +                                &s->sram);
-> +
-> +    /* SCU */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
-> +        return;
-> +    }
-> +    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->scu), 0,
-> +                    sc->memmap[ASPEED_DEV_SCU]);
-> +
-> +    /* UART */
-> +    for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
-> +        if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
-> +                                     sc->memmap[uart], errp)) {
-> +            return;
-> +        }
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
-> +                           aspeed_soc_ast1040_get_irq(s, uart));
-> +    }
-> +
-> +    /* Unimplemented peripherals */
-> +    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->pwm),
-> +                                  "aspeed.pwm",
-> +                                  sc->memmap[ASPEED_DEV_PWM], 0x10000);
-> +
-> +    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->espi),
-> +                                  "aspeed.espi",
-> +                                  sc->memmap[ASPEED_DEV_ESPI], 0x1000);
-> +
-> +    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->udc),
-> +                                  "aspeed.udc",
-> +                                  sc->memmap[ASPEED_DEV_UDC], 0x4000);
-> +
-> +    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->sgpiom[0]),
-> +                                  "aspeed.sgpiom",
-> +                                  sc->memmap[ASPEED_DEV_SGPIOM0], 0x1000);
-
-ASPEED_DEV_SGPIOM1 too may be. Or we don't care ?
-
-> +
-> +    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->jtag[0]),
-> +                                  "aspeed.jtag0",
-> +                                  sc->memmap[ASPEED_DEV_JTAG0], 0x100);
-> +
-> +    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->jtag[1]),
-> +                                  "aspeed.jtag1",
-> +                                  sc->memmap[ASPEED_DEV_JTAG1], 0x100);
-> +}
-> +
-> +static void aspeed_soc_ast1040_class_init(ObjectClass *klass, const void *data)
-> +{
-> +    static const char * const valid_cpu_types[] = {
-> +        ARM_CPU_TYPE_NAME("cortex-m4"), /* TODO cortex-m4f */
-> +        NULL
-> +    };
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSoCClass *sc = ASPEED_SOC_CLASS(dc);
-> +
-> +    /* Reason: The Aspeed SoC can only be instantiated from a board */
-> +    dc->user_creatable = false;
-> +    dc->realize = aspeed_soc_ast1040_realize;
-> +
-> +    sc->valid_cpu_types = valid_cpu_types;
-> +    sc->silicon_rev     = AST1040_A0_SILICON_REV;
-> +    sc->sdram_size      = 16 * MiB;
-> +    sc->sram_size       = 512 * KiB;
-> +    sc->uarts_num       = 13;
-> +    sc->uarts_base      = ASPEED_DEV_UART0;
-> +    sc->irqmap          = aspeed_soc_ast1040_irqmap;
-> +    sc->memmap          = aspeed_soc_ast1040_memmap;
-> +    sc->num_cpus        = 1;
-> +}
-> +
-> +static const TypeInfo aspeed_soc_ast1040_types[] = {
+> +static const TypeInfo aspeed_ast1040_evb_types[] = {
 > +    {
-> +        .name           = "ast1040-a0",
-> +        .parent         = TYPE_ASPEED10X0_SOC,
-> +        .instance_init  = aspeed_soc_ast1040_init,
-> +        .class_init     = aspeed_soc_ast1040_class_init,
+> +        .name           = MACHINE_TYPE_NAME("ast1040-evb"),
+> +        .parent         = TYPE_ASPEED_MACHINE,
+> +        .class_init     = aspeed_machine_ast1040_evb_class_init,
+> +        .interfaces     = arm_machine_interfaces,
 > +    }
 > +};
 > +
-> +DEFINE_TYPES(aspeed_soc_ast1040_types)
+> +DEFINE_TYPES(aspeed_ast1040_evb_types)
 > diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-> index 80068f70bb..fa3a848492 100644
+> index fa3a848492..9b75cc7fb1 100644
 > --- a/hw/arm/meson.build
 > +++ b/hw/arm/meson.build
-> @@ -62,7 +62,8 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
->     'aspeed_ast2600_gb200nvl.c',
+> @@ -63,7 +63,8 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
 >     'aspeed_ast2600_rainier.c',
 >     'aspeed_ast10x0.c',
-> -  'aspeed_ast10x0_evb.c'))
-> +  'aspeed_ast10x0_evb.c',
-> +  'aspeed_ast1040.c'))
+>     'aspeed_ast10x0_evb.c',
+> -  'aspeed_ast1040.c'))
+> +  'aspeed_ast1040.c',
+> +  'aspeed_ast1040_evb.c'))
 >   arm_common_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files(
 >     'aspeed_ast1700.c',
 >     'aspeed_ast27x0.c',

@@ -4,65 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31819CD4F3D
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 04:43:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 767C0CD5BA6
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 06:39:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPvFp-00014G-Ix; Thu, 21 May 2026 00:43:29 -0400
+	id 1wPx3X-0007lT-4Q; Thu, 21 May 2026 02:38:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPvFo-00013l-7s; Thu, 21 May 2026 00:43:28 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wPx3U-0007lF-Db; Thu, 21 May 2026 02:38:54 -0400
+Received: from 12.mo533.mail-out.ovh.net ([178.33.248.79])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wPvFl-0003Oq-MO; Thu, 21 May 2026 00:43:27 -0400
-Received: from [133.11.54.183] (h183.csg.ci.i.u-tokyo.ac.jp [133.11.54.183])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64L4hJmb051138
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Thu, 21 May 2026 13:43:19 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=H4pXrTLxtLklurT0dQMZJFFwX+t+Pw/T6jSaC1qidss=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Message-ID:To:Subject:Date;
- s=rs20250326; t=1779338599; v=1;
- b=sfeVbTiYZAtCjIMSDF/2CIoKt1k1v74MErjXZE2pRskLBTXuRY+X+AKYV3DtEil3
- fKLtsGrfkayRz5zL0ckBYpKdw4M/dQYVcr8d9lQvg4w8oyrov3yn5pIwlBwKArIS
- lY1STeHHUz1REaLsOuWCrj5VJjxz6BYMep3cBPjnxfJygCMBDgdhc53I9mUazPv9
- A9ZONrZpFBuQVKWYocae2QhqYK2l6Ve94w85CXenDbcA8OtspEbCDiNJYklXWWTc
- 0Ds2mlaee7kNnyzvsnWeMZZbOManLtwmZjn7BqGFUWhrsOEzJ+WJ224hukfcB6GN
- uM0G+s6IrAjrCqP+mOLgcQ==
-Message-ID: <ea0ee6f6-4753-45d4-ac55-a4ccbf6b7cf7@rsg.ci.i.u-tokyo.ac.jp>
-Date: Thu, 21 May 2026 13:43:18 +0900
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wPx3Q-0004nw-HL; Thu, 21 May 2026 02:38:52 -0400
+Received: from director1.derp.mail-out.ovh.net
+ (director1.derp.mail-out.ovh.net [51.68.80.175])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4gLdz62Zqmz6ChB;
+ Thu, 21 May 2026 06:38:42 +0000 (UTC)
+Received: from director1.derp.mail-out.ovh.net
+ (director1.derp.mail-out.ovh.net. [127.0.0.1])
+ by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Thu, 21 May 2026 06:38:42 +0000 (UTC)
+Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.113.24])
+ by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gLdz56wRgz5vg4; Thu, 21 May 2026 06:38:41 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.1])
+ (Authenticated sender: clg@kaod.org)
+ by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 891E1941743; 
+ Thu, 21 May 2026 06:38:39 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-109S00374be418d-69c8-4817-9f12-51063eac55c6,
+ 155D954443A34AB19E7EFB78D45315E373F1C727) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <ca8e431e-0c57-4b9f-82d3-99713052bbd2@kaod.org>
+Date: Thu, 21 May 2026 08:38:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 3/4] hw/arm/virt: Remove the lower bound of HighMem IO
- Regions
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>,
- Andrew Jones <ajones@ventanamicro.com>, "Michael S. Tsirkin"
- <mst@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20260520-virt-v6-0-d96180454fdf@rsg.ci.i.u-tokyo.ac.jp>
- <20260520-virt-v6-3-d96180454fdf@rsg.ci.i.u-tokyo.ac.jp>
- <20260520155152.3652a6e9@imammedo>
-Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20260520155152.3652a6e9@imammedo>
+Subject: Re: [PATCH v3 0/3] hw/arm/aspeed: add anacapa-bmc machine
+To: William de Abreu Pinho <williamdapinho@gmail.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+References: <20260519-add-anacapa-machine-v3-0-56c23993a20a@gmail.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260519-add-anacapa-machine-v3-0-56c23993a20a@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- TVD_SUBJ_WIPE_DEBT=1.004 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+x-ovh-tracer-id: 12137763946543426584
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEoyrCRwVlFJkeHTbxKuCE2nBZ3VzgVPqMF3BwGxxASkjis7SMU081tfZeqLKQSvHmG/r/QVPxHQzjPLx83g3lGLqxl9SleN/SdvcE3DVlx/3pt9l6u3/pmWV4tJYw/CP+aD5/iSlIJxpXOqwKgPMvEpxN4c1pEJbc0uTywomC7MWtAZqxZ0SL5KmrFKVEbVmixKOpGNFx1NBTdzQJIHG3/6OQu89BvM1AVr9MnASn/gn/vnnmCDSaotAZLUZROE3DKkT7iZLyvLcjpYT1nX2YZ04wNWK46mXoIrRrT0Di8egoq07PIa2gRiz6UJvbUDkMA7HHZvm6BIvuiayYX2clYReqXFg7UhrMR+AzN3scnuAVMQAQrVxPdBnojGJ34C23u84larnXuVyWaE2wXd1hv8h7Fcz03u/80+pDvBKNJQQwg4T7Fx8oM0FNJWb5JBuIPwVOj+7QTBAphwZeHPPyCKP7Uc/b7alQCrZ3MR31Yiq2qnSSiME6O7ZZQD6T6xPDr1Xm3ArmM7t1csDYdGAuIqNbHXBxfEMZpNl69dGE20Jbe9+ShcE/uCGvMxvXYStA5NDnphnRRsfqEmSlAIaHwHjrWEMdSl+/FY2QAW4An03kn3ONHxMmxQpIuHKApegxeNfcNvpMi8rI1vL+5iHl4d2Zgs6JDS86Z7qHJMsSrXg
+DKIM-Signature: a=rsa-sha256; bh=wGhJLtOWfGdJdw6As3Wy7APebRKq/V9nAkpVsY5FCv0=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1779345523; v=1;
+ b=SikVs0b/BBBERSh4LedtAVEF+sLyZQlVrNMRvf7n7NTBN4WEbsLjTmzYp7EfxFF6rRrf9+Eg
+ CuJ5819siHfO9izwBRD7FzW3w1Ln/b+TkQkwDzmnlpTZWZzhtM6miAVxrGdoqp4XwwCRrPSispW
+ jaqMnPN2TLTAo1FIT0sxJ4iwkMty+pnAnmkIr9pgSg8IXGtm0E8pdK3TNPngOqTz+G3HeiP1jMP
+ FOsnt7bEbyQvYzypCZ4qnPumBx322LAehEDrGoqJhmu8tTJFPp00znPivfRlJVMJpS9XdFLjV8F
+ Tm/ICVDEHHwQ708F1hWwGBJRN2vtR07vX2DRrlaK7y0eg==
+Received-SPF: pass client-ip=178.33.248.79; envelope-from=clg@kaod.org;
+ helo=12.mo533.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,143 +133,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2026/05/20 22:51, Igor Mammedov wrote:
-> On Wed, 20 May 2026 18:56:32 +0900
-> Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
+On 5/19/26 19:48, William de Abreu Pinho wrote:
+> This series adds support for the Anacapa machine type.  The first patch
+> introduces FacebookAspeedTest and updates the existing Facebook machine
+> tests.  The second patch adds the machine model and functional tests.
+> The third patch adds the FRU EEPROM contents.
 > 
->> Remove the lower bound of the Highmem IO Regions' addresses for the
->> latest machine version to increase the chance to fit the regions in the
->> PA space.
->>
->> The lower bound was especially problematic when using virt-install on
->> Apple M2. virt-install 5.0.0 adds multiple pcie-root-port devices that
+> To: qemu-devel@nongnu.org
+> Cc: Cédric Le Goater <clg@kaod.org>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Steven Lee <steven_lee@aspeedtech.com>
+> Cc: Troy Lee <leetroy@gmail.com>
+> Cc: Jamin Lin <jamin_lin@aspeedtech.com>
+> Cc: Kane Chen <kane_chen@aspeedtech.com>
+> Cc: Andrew Jeffery <andrew@codeconstruct.com.au>
+> Cc: Joel Stanley <joel@jms.id.au>
+> Cc: qemu-arm@nongnu.org
+> Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 > 
-> it looks like with this patch everything would move down,
-> with 'small' but, VIRT_HIGH_PCIE_MMIO that still won't fit into M2 PA and
-> will get disabled.
-> Is it intended (perhaps it should be mentioned in patch)
+> Changes in v3:
+> - Update docs/system/arm/aspeed.rst to add anacapa-bmc (suggested by
+>    Cédric Le Goater)
+> - Link to v2: https://lore.kernel.org/qemu-devel/20260519-add-anacapa-machine-v2-0-47027867d76a@gmail.com
+> 
+> Changes in v2:
+> - Split the functional test (FacebookAspeedTest) into a separate patch,
+>    also updating bletchley-bmc and catalina-bmc to use it.
+> - Link to v1: https://lore.kernel.org/qemu-devel/20260515-add-anacapa-machine-v1-0-9765ce0b9426@gmail.com
+> 
+> ---
+> William de Abreu Pinho (3):
+>        tests/functional/aspeed: introduce FacebookAspeedTest
+>        hw/arm/aspeed: add anacapa-bmc machine
+>        hw/arm/aspeed: anacapa: add FRU EEPROM data
+> 
+>   docs/system/arm/aspeed.rst                    |   3 +-
+>   hw/arm/aspeed_ast2600_anacapa.c               | 362 ++++++++++++++++++++++++++
+>   hw/arm/meson.build                            |   1 +
+>   tests/functional/arm/meson.build              |   2 +
+>   tests/functional/arm/test_aspeed_anacapa.py   |  25 ++
+>   tests/functional/arm/test_aspeed_bletchley.py |   6 +-
+>   tests/functional/arm/test_aspeed_catalina.py  |   6 +-
+>   tests/functional/aspeed.py                    |   8 +
+>   8 files changed, 406 insertions(+), 7 deletions(-)
+> ---
+> base-commit: ee7eb612be8f8886d48c1d0c1f1c65e495138f83
+> change-id: 20260511-add-anacapa-machine-cf7076ab0afa
+> 
+> Best regards,
 
-Yes. It is another opportunity for improvement, but out of scopoe of 
-this patch.
+Applied to
 
-> 
-> 
->> require sufficient space in the ECAM region. However, the Highmem ECAM
->> region did not fit in the limited PA space on the hardware, and the ECAM
->> region size was limited to 16 MiB. If virt-install had added more than
->> 16 devices to the root bridge, the region overflowed, which prevented
->> edk2-stable202505 from scanning PCI devices, including the boot disk,
->> causing boot failures.
->>
->> Ideally, a virtual machine with more than 16 devices added to the root
->> bridge should just work so that users and management layers do not have
->> to care whether they use constrained hardware.
->>
->> The base address of the Highmem IO Regions was fixed when commit
->> f90747c4e8fb ("hw/arm/virt: GICv3 DT node with one or two redistributor
->> regions") added the first Highmem IO Region. Later, commit 957e32cffa57
->> ("hw/arm/virt: Dynamic memory map depending on RAM requirements")
->> allowed moving the Highmem IO Regions to higher addresses to accommodate
->> RAM more than 255 GiB, but the lower bound remained to keep the legacy
->> memory map.
->>
->> Remove the lower bound for the latest machine version to accommodate
->> more devices with the root bridge. Keeping the lower bound for the old
->> machine versions ensures the compatibility is still maintained.
->>
->> The hardcoded memory map in tests/qtest/libqos/generic-pcihost.c is also
->> updated.
->>
->> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
->> Reviewed-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>   include/hw/arm/virt.h                |  1 +
->>   hw/arm/virt.c                        | 17 +++++++++++------
->>   tests/qtest/libqos/generic-pcihost.c |  2 +-
->>   3 files changed, 13 insertions(+), 7 deletions(-)
->>
->> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
->> index 3ba33b4bd274..6c8ba8f3185b 100644
->> --- a/include/hw/arm/virt.h
->> +++ b/include/hw/arm/virt.h
->> @@ -142,6 +142,7 @@ typedef enum VirtGICType {
->>   
->>   struct VirtMachineClass {
->>       MachineClass parent;
->> +    hwaddr min_highmem_base;
->>       bool no_tcg_its;
->>       bool no_highmem_compact;
->>       bool no_kvm_steal_time;
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index b090233893c5..78a85a966ad7 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -229,8 +229,7 @@ static const MemMapEntry base_memmap[] = {
->>    * Highmem IO Regions: This memory map is floating, located after the RAM.
->>    * Each MemMapEntry base (GPA) will be dynamically computed, depending on the
->>    * top of the RAM, so that its base get the same alignment as the size,
->> - * ie. a 512GiB entry will be aligned on a 512GiB boundary. If there is
->> - * less than 256GiB of RAM, the floating area starts at the 256GiB mark.
->> + * ie. a 512GiB entry will be aligned on a 512GiB boundary.
->>    * Note the extended_memmap is sized so that it eventually also includes the
->>    * base_memmap entries (VIRT_HIGH_GIC_REDIST2 index is greater than the last
->>    * index of base_memmap).
->> @@ -2479,6 +2478,7 @@ static void virt_set_high_memmap(VirtMachineState *vms,
->>   static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->>   {
->>       MachineState *ms = MACHINE(vms);
->> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->>       hwaddr base, device_memory_base, device_memory_size, memtop;
->>       int i;
->>   
->> @@ -2505,8 +2505,7 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->>       /*
->>        * We compute the base of the high IO region depending on the
->>        * amount of initial and device memory. The device memory start/size
->> -     * is aligned on 1GiB. We never put the high IO region below 256GiB
->> -     * so that if maxram_size is < 255GiB we keep the legacy memory map.
->> +     * is aligned on 1GiB.
->>        * The device region size assumes 1GiB page max alignment per slot.
->>        */
->>       device_memory_base =
->> @@ -2524,8 +2523,8 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->>           error_report("maxmem/slots too huge");
->>           exit(EXIT_FAILURE);
->>       }
->> -    if (base < vms->memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES) {
->> -        base = vms->memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES;
->> +    if (base < vmc->min_highmem_base) {
->> +        base = vmc->min_highmem_base;
->>       }
->>   
->>       /* We know for sure that at least the memory fits in the PA space */
->> @@ -4367,6 +4366,12 @@ static void virt_machine_11_0_options(MachineClass *mc)
->>       virt_machine_11_1_options(mc);
->>       compat_props_add(mc->compat_props, hw_compat_11_0, hw_compat_11_0_len);
->>       vmc->hvf_no_kernel_irqchip_default = true;
->> +
->> +    /*
->> +     * Do not put the high IO region below 256GiB so that if maxram_size is
->> +     * < 255GiB we keep the legacy memory map.
->> +     */
->> +    vmc->min_highmem_base = base_memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES;
->>   }
->>   DEFINE_VIRT_MACHINE(11, 0)
->>   
->> diff --git a/tests/qtest/libqos/generic-pcihost.c b/tests/qtest/libqos/generic-pcihost.c
->> index b77617524cac..287e8445ec5b 100644
->> --- a/tests/qtest/libqos/generic-pcihost.c
->> +++ b/tests/qtest/libqos/generic-pcihost.c
->> @@ -210,7 +210,7 @@ void qpci_init_generic(QGenericPCIBus *qpci, QTestState *qts,
->>       qpci->bus.pio_limit = 0x10000;
->>       qpci->bus.mmio_alloc_ptr = 0x10000000;
->>       qpci->bus.mmio_limit = 0x2eff0000;
->> -    qpci->ecam_alloc_ptr = 0x4010000000;
->> +    qpci->ecam_alloc_ptr = 0x90000000;
->>   
->>       qpci->obj.get_driver = qpci_generic_get_driver;
->>   }
->>
-> 
+     https://github.com/legoater/qemu aspeed-next
+
+Thanks,
+
+C.
 
 

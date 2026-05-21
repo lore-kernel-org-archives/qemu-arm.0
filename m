@@ -4,104 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F14CDCD5BA4
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 09:53:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27652CD4F5E
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 09:57:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQ05P-0007mC-An; Thu, 21 May 2026 05:53:03 -0400
+	id 1wQ08x-0000X3-Cz; Thu, 21 May 2026 05:56:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wQ05N-0007ll-N3
- for qemu-arm@nongnu.org; Thu, 21 May 2026 05:53:01 -0400
-Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wQ05M-0004v4-6C
- for qemu-arm@nongnu.org; Thu, 21 May 2026 05:53:01 -0400
-Received: by mail-yx1-xb12b.google.com with SMTP id
- 956f58d0204a3-65dead17c24so5655181d50.2
- for <qemu-arm@nongnu.org>; Thu, 21 May 2026 02:52:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779357178; cv=none;
- d=google.com; s=arc-20240605;
- b=Z1Hs+Ao7dHf7djr7f8aMjdF1TNqC7E0P9xNT2NqThch+hSYMOiPQJaMQFVybQin7M7
- zej5ls5IjlyPHhOCD11v4zV7wThhpaN0fa+C8uUd1qMHRNTOQnscNTzPku1rAW5N3VGj
- i5n2zTbwye5P35tUDI0b+16IUbjqgRsDQSJrv/+QfH8Sr2HOE+Pk/aH2WUiLXqjlKDa1
- PoJlkTV/jSs1dG+1lBivQ0WImTKX0I/bXrCvfTMApfyoTTR6rVbAUC7WrXHP95vFtDVq
- gUt0HoO7jgzUH7dhNEuQIPbgjAIo64UZjMmzNVwdVL7xD6VgVJfBeKfLFsl3ZtXb9g6Y
- AjEw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=nUgeBFh1V4EOv6CYNGi1f0MN9FXnwdnSuM0h+QguS+Q=;
- fh=Zlhs7bGpAd1ohpSlFh6jBqVO6PQQaeD4tvJJhS2Yof8=;
- b=NJIymJwrDtYmcw18H4shD+2mHBf7wCiJ2gPHNvOCRlR5Kamuo1vwkpUQfSV1yhEW+1
- E0LkZ2gixuKVQQMeAh+bCM+AiZsKD3IG4c0oNQsEnYJI/88+EiStD0XvmGlHLeT1Iw2B
- R/E3+XBgxgUu1wyfGkuonrjBaze24y+Qqa5qBpKvvA1cmT7pB7zVi8JpKAa9S3jaZ99b
- 9sjKSvGZLUSFrWc7O83e4GasMk5jLfJkpp/GPgzy1K/dFlK3PiiPQKy6g+ZGMkur3VEH
- x/8QECHb5CY5PpvUxXa3vAuQglqeSeJsoQfokoU6GbVOSWQwQPC9MsDphJO3r+5Pxnd2
- 3U9w==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779357178; x=1779961978; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=nUgeBFh1V4EOv6CYNGi1f0MN9FXnwdnSuM0h+QguS+Q=;
- b=aN0Wc0TNzpmzN95B4bMfvrhcPWUw4ehjIBlMHdjslUgXRcE05oZUENeA1zjkSiD7Nz
- w8KbTQNqYtd9IBUIxtNCe27K5sZFeW3YJLTjkcK8YEya+WlYchzmV5iwzOfIGgBwl/cN
- vp/gG5Vio6DI8oO1QX9bikvo8Rh5NxDskWOoha4tMlkBE7F/hf3uTK1IQDShIjbx7yYt
- tqNxAcFVOefEzq9XA6nMyzynFV+v0WEFx4vX9+LRhHW4GL3brDAhfAhlQRRl9lD364lF
- /T6bgXu21Ub6kXL9ZriqeYrzqna2et3327nT3oK0x6WchA/uUro7QseQp0bT+b0vDqMg
- Fakg==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wQ08n-0000Vy-0p
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 05:56:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wQ08a-0006US-0B
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 05:56:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779357378;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sRxT7chWbosAYpKzgarSrZsFSGPsIH+K1+V4ROAcof8=;
+ b=XLno3joa9GV+xm2r+EQ0+PjtVWgTBB8y6O+ePG2ZghoGUaDN5zb1oHSi8ABR7bCVxf+GXv
+ eMBpipuTzQk4K3SPD4oL039vfJLRJipqoywiIgz0X76SBFgxzpiK+YskIYPbrjwWJAjkUa
+ mAGN08enyBQPbYx4t2ScqMVsI8hiUbg=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-144-hED2UZPNNIu5BjtaQWDPtw-1; Thu, 21 May 2026 05:56:16 -0400
+X-MC-Unique: hED2UZPNNIu5BjtaQWDPtw-1
+X-Mimecast-MFC-AGG-ID: hED2UZPNNIu5BjtaQWDPtw_1779357376
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-45e73a4f1dfso4200711f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 21 May 2026 02:56:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779357178; x=1779961978;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1779357375; x=1779962175;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=nUgeBFh1V4EOv6CYNGi1f0MN9FXnwdnSuM0h+QguS+Q=;
- b=QCKr5NMNVhgbo7ZmeyT3mD0E7zzmSFhbtzHOol1O7Hgqvv5HzrWwkM7tads94sIw2d
- uST4lL9VAfiJ87syyF9wU/Iv1rSxvEDInBWngJRlxLMSn9WZ7j5MvzJN+gMsliOMrRA0
- jqg+0Ra+TOOQsflc2qjkGza8S7QLQ56uT2o2scy+jcvvKqpSocqP3kkO18De/zREGHfZ
- 4uegeSVlE70h60l+iSGcLsjA4fJQ1Gn3rwD2JCO/qXTuFwH2HdsJ1VyRsb5vcrDnKLsj
- yGGQ+tqgFZXAbhfF7RzfQJ1WFw8OClEnD+1OVegqv5lv9jlKq1DIn+9n0YIszWv1wgQt
- sNbw==
+ bh=sRxT7chWbosAYpKzgarSrZsFSGPsIH+K1+V4ROAcof8=;
+ b=k0WWCT8aV15zIcTCpcMdGtykMpMw5EdGuXgjWxBrJ9mqJcEYOWFVbx4NOY1DCSbKfH
+ siLihEqry0oJ5XEtNdvMqRPdQBTwEAhAG5FUsLzhQzYhVNvKCXYsWly2N9bOBAkEnKfS
+ QNrKl9BoWXZPPggZdWaP+43ZtXLmm5uAYzFYdeFJaNPTTlwyU0moV/CN76jFG8Wpz3hu
+ LHtfTBgCSNTACkSq5PfTr3RmfnxaNBHDMmbfMWFXF/twJqoQVP660erm1tA55heC3cWv
+ dyXTJaUNPulaKi9YiSAOU7LopglljlCpRtTwV0IK42eG5/iBcOKq+G/VBxIjRo4HyHkv
+ Xf6Q==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9Tnrrw+L7CdGDQuS64j2Hy5gqok8a1PCSO6aNB+8VYKXxoQBQgZpJgGJNIp9WL2KXdFBNOPI0pUw==@nongnu.org
-X-Gm-Message-State: AOJu0YzDyj+9hhkTqgliCgBun/gcKBhm/8LVy5vPBgzj1LVxshBD9kbp
- cBbO1JAJC82nt/c1tJg8hu459uj/OJjLOUyFLAj8vcJ8iYqbo5JsHCu1Hs9WuS84dnfz0HctaX8
- xzMGQRUkqo6eJf7HfwCtot7dz03lkFZDJ33+QXhnmnA==
-X-Gm-Gg: Acq92OHkGKWiCA3uGGM4wkvlrb6JxeBLsqktF5X5z56aSgPY1qLd6qz+iMf6p4GVvmf
- CanE2IHBn4MW/lL77fx6qeFD2NKuFJ/P98PpFzvPgjoB576yKC5uQ8h8Y8zkyXmIOjbycqPz000
- mnLWkqIdyw8TXrldbSZIitd7AO3DEjUFpD/mKXUxQhIme+KWyjcE341CmksR+14vvFuN4xdMAAD
- tVqFNrmgTaaFCjRXBV+A9lVWGLGiCYzwUGkWo9OcXg0q5TkJUunQiuj5Ty32xG80nIX/1835xYH
- XlP1SDQlfPMtb/1agHajVvy4waOjyA1dFukT25PinalSIkiVFd0FnIWkoGqA+fwESQk=
-X-Received: by 2002:a05:690e:191b:b0:650:1bf0:ca62 with SMTP id
- 956f58d0204a3-65eadfbf3b1mr1632986d50.6.1779357178208; Thu, 21 May 2026
- 02:52:58 -0700 (PDT)
+ AFNElJ/cZgYfciMrzPnzbvQhjMH09pTVa91m+CH4Bl4KDSdCo7C2Vhjq3Kg5pfdCcCGBErCJ5VkWbx6F3Q==@nongnu.org
+X-Gm-Message-State: AOJu0YxSxZtAY3chbBOWsJebQCeUfHxSzaJIVKx7OMfM9emNwDxhECfd
+ 2XfRtS7bGZ0BLPWLeR1HFdzeoeAxf9k1kHYSFYTTLBfoQqGAog72c0vjHUK+dyzE0Ey0URRwIPx
+ UFWV4Zzd6sFeu04Scm6tGQQ+00DEyw+Dj6qcRHdVRSCuDOq1zyRaWrA==
+X-Gm-Gg: Acq92OGhVpqY35Cl1bnncZsRDQeV0bWCc2ew2zk2b3vYzJuNXPYY00cRqBLJJdmQfPS
+ Rj+UV/5yyNhU7d7t6FtPkrq+axfn44+zFH/VNdFTOo/twYWzssXyjmwVw9a7R9o6WSLLgLpd954
+ m7906KuOww5vAPFolRkKcV6rSyqmOykwYUPSOKuXqYJrXa9/VyrDycMgPqmYBlqwYj7FZABT9qV
+ YlE5JKvxjnb4J8fK8eILy3aUERJYQc5Szgkwpk9e3w6kt8YslJa6FrfIQ07DC1fqqSFvM8NcTXK
+ TTJMxHksuhalCUdmyzaHR6Q1w+JgIlXIs1nXri7kYQySzq12DD5iFrfU3w9FRH43iNdtt+RlNKn
+ dJzWHS56BfHXWxv0oxKtQoJ34icJsegdSk/dYqFY9y5vaasb2MkyUs0b1cJm6N4TDlmcvKQ==
+X-Received: by 2002:a05:600c:a112:b0:48f:e230:80a3 with SMTP id
+ 5b1f17b1804b1-490360dc0a4mr22932915e9.33.1779357375586; 
+ Thu, 21 May 2026 02:56:15 -0700 (PDT)
+X-Received: by 2002:a05:600c:a112:b0:48f:e230:80a3 with SMTP id
+ 5b1f17b1804b1-490360dc0a4mr22932675e9.33.1779357375167; 
+ Thu, 21 May 2026 02:56:15 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49033d44d7dsm60750515e9.5.2026.05.21.02.56.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 21 May 2026 02:56:14 -0700 (PDT)
+Message-ID: <2d912f91-4126-41d2-ab63-8ac077cb41da@redhat.com>
+Date: Thu, 21 May 2026 11:56:12 +0200
 MIME-Version: 1.0
-References: <20260520182213.872945-1-richard.henderson@linaro.org>
- <20260520182213.872945-61-richard.henderson@linaro.org>
-In-Reply-To: <20260520182213.872945-61-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 May 2026 10:52:46 +0100
-X-Gm-Features: AVHnY4KzFW7o7duDWfFFBk208fM3EgldrA5vL9H3OhtFIjRKgYUvaYDJcRGYe5E
-Message-ID: <CAFEAcA8+VBdRt3DO9zgwQccbH+O2PMZnK3o81zmX9M1GmgiseA@mail.gmail.com>
-Subject: Re: [PATCH v6 60/64] target/arm: Implement FMMLA (FP8 to FP16) for
- AdvSIMD
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 17/32] hw/arm/tegra241-cmdqv: mmap VINTF Page0 for CMDQV
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
+ Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>,
+ Matt Ochs <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>,
+ Jason Gunthorpe <jgg@nvidia.com>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>, "phrdina@redhat.com"
+ <phrdina@redhat.com>
+References: <20260519103727.899332-1-skolothumtho@nvidia.com>
+ <20260519103727.899332-18-skolothumtho@nvidia.com>
+ <c0dd92b2-4ea9-45a2-afbf-b61910f71fe6@redhat.com>
+ <CH3PR12MB75486D02EEBCE74D47B20834AB012@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <f0909a11-9bc5-47b5-a50e-b3fee4a5bdf8@redhat.com>
+ <CH3PR12MB754835F2AE265DC7ADC32DBCAB0E2@CH3PR12MB7548.namprd12.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CH3PR12MB754835F2AE265DC7ADC32DBCAB0E2@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 56WKs53uM1vIUndnsgG26wOGARTJQdXr5PjRFcHiMDY_1779357376
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,50 +127,123 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 20 May 2026 at 19:29, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+
+
+On 5/21/26 11:44 AM, Shameer Kolothum Thodi wrote:
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: 21 May 2026 09:00
+>> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
+>> arm@nongnu.org; qemu-devel@nongnu.org
+>> Cc: peter.maydell@linaro.org; clg@redhat.com; alex@shazbot.org; Nicolin
+>> Chen <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt
+>> Ochs <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
+>> <jgg@nvidia.com>; zhenzhong.duan@intel.com; Krishnakant Jaju
+>> <kjaju@nvidia.com>; phrdina@redhat.com
+>> Subject: Re: [PATCH v5 17/32] hw/arm/tegra241-cmdqv: mmap VINTF Page0
+>> for CMDQV
+>>
+>> External email: Use caution opening links or attachments
+>>
+>>
+>> Hi Shameer,
+>>
+>> On 5/20/26 5:47 PM, Shameer Kolothum Thodi wrote:
+>>> Hi Eric,
+>>>
+>>>> -----Original Message-----
+>>>> From: Eric Auger <eric.auger@redhat.com>
+>>>> Sent: 20 May 2026 13:54
+>>>> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
+>>>> arm@nongnu.org; qemu-devel@nongnu.org
+>>>> Cc: peter.maydell@linaro.org; clg@redhat.com; alex@shazbot.org;
+>>>> Nicolin Chen <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>;
+>>>> Matt Ochs <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason
+>>>> Gunthorpe <jgg@nvidia.com>; zhenzhong.duan@intel.com; Krishnakant
+>>>> Jaju <kjaju@nvidia.com>; phrdina@redhat.com
+>>>> Subject: Re: [PATCH v5 17/32] hw/arm/tegra241-cmdqv: mmap VINTF
+>> Page0
+>>>> for CMDQV
+>>>>
+>>>> External email: Use caution opening links or attachments
+>>>>
+>>>>
+>>>> Hi Shameer,
+>>>>
+>>>> On 5/19/26 12:36 PM, Shameer Kolothum wrote:
+>>>>> From: Nicolin Chen <nicolinc@nvidia.com>
+>>>>>
+>>>>> The CMDQ-V CMDQ pages provide a VM wide view of all VCMDQs, while
+>>>>> the
+>>>> s/CMDQ pages/VCMDQ pages - yeah that's all very confusing ;-) -
+>>>>> VINTF pages expose a logical view local to a given VINTF. Although
+>>>>> real hardware may support multiple VINTFs, the kernel currently
+>>>>> exposes a single VINTF per VM.
+>>>>>
+>>>>> The kernel provides an mmap offset for the VINTF Page0 region during
+>>>> for the host VINTF page0 allocated for the VM
+>>>>
+>>>> Actually is the whole host passthrough principle is not really
+>>>> explained anywhere. At least that's my feeling. It would be nice to
+>>>> have a summary for it, in the coverletter and in individual patch. Or
+>>>> maybe we can link to another doc. Reading the kernel uapi does not
+>>>> really provide the full picture, at least that's my own feeling.
+>>> Fair point. A summary of operation is useful. I am thinking of adding
+>>> it at the top of hw/arm/tegra241-cmdqv.c:
+>>>
+>>> /*
+>>>    * Tegra241 CMDQV - overview
+>>>    * ---------------------------------------
+>>>    *...
+>>>    */
+>>>
+>>> I will populate the details and share it for review before v6.
+>>>
+>>>> when a VM allocates a VIOMMU for the CMDQV, the kernel allocates this
+>>>> and this resource that is then given for exclusive usage of the VM ...
+>>>> How does it guarantee security between VMs, etc...
+>>> Isolation is enforced by the kernel and the CMDQV hardware.
+>>> I think the key points here are:
+>>>
+>>>   - Each VM has its own iommufd FD. All iommufd objects (VINTF, hw
+>>>     queues, mmap regions) belong to that FD; one VM cannot reach
+>>>     another VM's IDs.
+>>>
+>>>   - Each FD gets its own VINTF, allocated by IOMMU_VIOMMU_ALLOC. The
+>>>     kernel writes the VM's VMID into the VINTF and the host CMDQV
+>> s/writes/configures
+>>>     hardware checks it on every command.
+>>>
+>>>   - The kernel allocates the VINTF with HYP_OWN = 0, which restricts
+>>>     the guest to a safe subset of commands.
+>>>
+>>>   - Per VINTF, the kernel programs SID_MATCH and SID_REPLACE so only
+>>>     the VM's own vfio-pci devices can issue commands; other SIDs are
+>>>     rejected by the hardware.
+>>>
+>>>   - IOMMU_HW_QUEUE_ALLOC binds each VCMDQ to one specific VINTF, so
+>> a
+>>>     guest cannot reach a VCMDQ that belongs to another VM.
+>> at the moment a single VCMDQ is used by VM, is that a correct
+>> understanding?
+> Not quite. QEMU exposes one VINTF (VINTF0) with two VCMDQs to the
+> guest. The guest decides how many of them to enable. A Linux guest
+> enables both:
+> ...
+> arm-smmu-v3 arm-smmu-v3.0.auto: allocated 524288 entries for vcmdq0
+> arm-smmu-v3 arm-smmu-v3.0.auto: allocated 524288 entries for vcmdq1
 
-> +void HELPER(gvec_fmmla_hb)(void *vd, void *vn, void *vm,
-> +                           CPUARMState *env, uint32_t desc)
+understood!
 
-This still has some lurking copy-and-paste issues from the _sb
-version:
+Eric
+> ...
+>
+> Thanks,
+> Shameer
 
-> +{
-> +    FP8MulContext ctx = fp8_mul_start(env, 0xf);
-> +    size_t oprsz = simd_oprsz(desc);
-> +    size_t nseg = oprsz / 16;
-
-Each loop here handles 4 16-bit halfprec outputs == 8 bytes,
-so we want oprsz / 8.
-
-> +    uint32_t *n = vn;
-> +    uint32_t *m = vm;
-> +    float16 *d = vd;
-> +
-> +    for (size_t seg = 0; seg < nseg; seg++, d += 4, n += 2, m += 2) {
-> +        float16 d0 = f8dotadd_h(n[0], m[0], 4, d[H4(0)], &ctx);
-> +        float16 d1 = f8dotadd_h(n[0], m[1], 4, d[H4(1)], &ctx);
-> +        float16 d2 = f8dotadd_h(n[1], m[0], 4, d[H4(2)], &ctx);
-> +        float16 d3 = f8dotadd_h(n[1], m[1], 4, d[H4(3)], &ctx);
-> +
-> +        d[H4(0)] = d0;
-> +        d[H4(1)] = d1;
-> +        d[H4(2)] = d2;
-> +        d[H4(3)] = d3;
-
-The H macros here I think are wrong -- d is a float16 so we
-want H2(), and we need H4() macros for the n and m arrays.
-(I think in fact if you work it through then all the H macros
-cancel out and we could drop the lot, but since they're all
-acting on constant indexes there's no runtime cost and having
-them present is clearer for the reader.)
-
-thanks
--- PMM
 

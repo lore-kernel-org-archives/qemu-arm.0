@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF80ACD5BB5
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 13:20:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80AB8CD5BAC
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 13:20:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQ3I3-0004Fb-Oh; Thu, 21 May 2026 09:18:19 -0400
+	id 1wQ3I5-0004PD-QR; Thu, 21 May 2026 09:18:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wQ3Hh-00041w-35
+ id 1wQ3Hh-000420-57
  for qemu-arm@nongnu.org; Thu, 21 May 2026 09:17:57 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wQ3HZ-0008Qu-9c
- for qemu-arm@nongnu.org; Thu, 21 May 2026 09:17:52 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4903d730b1fso3038605e9.2
- for <qemu-arm@nongnu.org>; Thu, 21 May 2026 06:17:44 -0700 (PDT)
+ id 1wQ3Hb-0008S2-5H
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 09:17:56 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-488b0e1b870so86301295e9.2
+ for <qemu-arm@nongnu.org>; Thu, 21 May 2026 06:17:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779369463; x=1779974263; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779369466; x=1779974266; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=hIvv2yywKmXxgoMC/wymZCVbJXllNhQN0iVhJkfnoVw=;
- b=nGf2DvuPx9GzKKl1HCK+nD6R77lqsL/IJGhTuz2wZ4eql6jhfpTTmaIVe7XMe3FBrk
- 1U9OzVQNVv2jqihrCgjt/JLORGNvIAzQqICP3v4Hv3rqrFfYxvACvmkQ3kK1+a/Xg6jB
- cCMqGBd5ZnBiWJt6ugZeu30yz5c2Vb/EWZOkIXdDtBx8pR+rTBt6tMVvzSQGps4ejfQU
- WIRAixFfOEMHmY07g9RmyqxeYpDHidO2WIfUYvDcY9yiHgtajw73Bt7t+alO41dOlRA4
- sBdvxg0fhJlWbSEeaKhPxhz8uIrDX4wszPeblj20k6xbMDc8RrMRPrEbPq/0NbQKeQkU
- SLWQ==
+ bh=PThoZOxV0LW0fYP1TUUIgrfXheAn9II689EuBa5/Dx4=;
+ b=vysnVXVLgNa15kTPutTvD/X+P2uK2930JW9YEN82XQviX126CDBku8DCX5a9Ff/RdE
+ c4Gf8h234ZPqpwspmEl8M9oDSGYwzHh7+qiJl8ZjGA0o9NmCLPPAUhPvipJ0/g3rdl8A
+ 5gvOu7Q69slmG7vD1oRGjuMuG4FLkBB7kQJv2r2/hmSNp6X+MnpF1a8iKS1I7AjqjFgr
+ R1bTZKFCUxXynTqYeu/zN8cC4Mby1+/fzFvxPeXJDxWS5YNAeXiSuzfRlAigoDXkB9o5
+ WMT6ndoFiHqmUXkh6D3+EgDWoubpwPD4tx+559v0FOR2qWGy9TiyZRwPAsNjUFJh+3d0
+ 5Kng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779369463; x=1779974263;
+ d=1e100.net; s=20251104; t=1779369466; x=1779974266;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=hIvv2yywKmXxgoMC/wymZCVbJXllNhQN0iVhJkfnoVw=;
- b=VkaGJHcVvARiB/apzrFsxE9acFesUZ3lgIwjEUYpfPkCwd6ocK1ark9r6YFPB81rmB
- jXTfCbVQLsrNB1XOU39bGfwPXb+jwZ0OTqTsctcC7CXRntA4bs8lIABz65awdrJoyl29
- ZsyZATmTAxRvHI6Q0nhHZA1LOUnYRLBDQChDKETmpphk0/NQIDN35Wrw2Y6lgvJdeOKJ
- ePRJo+kR5+Q6KZUcfaeQ0H5sGx9DT6589AdfoRSE9Td4bZWqkCKNP59tXtXqhdbVZ5q5
- 1EMBEPF3m2xLqeZ1YePa0VvOZPlkAchENnj+99RHYiUchamtHqfN0F2qou4Jy53qRXhA
- 0ERA==
+ bh=PThoZOxV0LW0fYP1TUUIgrfXheAn9II689EuBa5/Dx4=;
+ b=p+uSVFagDK75sBJX/nsLr6LGSBH7txHfsYXkQPizy2jUAnF5fS1+0UMXv2z0zno5UL
+ LVsiLvUJYVnRMlEbI1uDwiHU72BiHycj7y/0tr6jnCNxvGGsC0ZvipoNfuTxw4IGx4Mf
+ TWvbqMypIg5wRZ3jFP/4SkYmebzrjjm+PSbugUoRS65hy92Qs5nQ297zKMxfZMC7/Ns+
+ GWTuJnri5ir9CRj4UxQ5QiXCoooqiKkXmXUIlJFNUk4tUTBlc/405TtHRbmmX7Qu5gf5
+ JObm1lPQy+0ArFTiWdf8Zl24WmW7YRViUjpLoPUI+sVmzdWPls3C33mrJcLYQ15vqrTV
+ ZxSw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/IzuKMOnXfZkSjOp8Aqo2dLJIZXCqvCWwprIfUbuUatZ61YtBBaDH2D0/Zh3Oa+qBrqXXfw7/cNg==@nongnu.org
-X-Gm-Message-State: AOJu0YzaVkGQ76mc5KzfMjcsjwgbJoooYC+A9ROrFRk+QjIl0mBQlYzs
- uBWlI/1j8lio2ganyu1jxtWbN7IfiDLtFKBErVR5ozGcDZ/QXune8hsyeb0IuFJSNxE=
-X-Gm-Gg: Acq92OGPAv14IjHpr+7GtvTaAuKatNEWisTZ4ceKVkFhOYbE4WMhh0BpkcwtexyPtt9
- 3McmU3Rc4EWKoqooB6PY/CuQxXCV0Yg1Qi60XVPAQ+tOQjqDH8Vuk/UxoC8n3HXp9i/mcLGe5j6
- RW38ZWcjOap+PmvXDzJR8VO/MzIBoWZYNosaQe/DQXrSd1wDHf2lcOmt4y6qyosLSKorHNME86n
- CWiGboFndtx5RrseGVSsFecW0bwFFn7laWGpNgLtyMnFBozlxYFdhxtyem16BoGZzl5OkHuC8Ph
- TnA4koc6FqHhLNfm9Jbsm7KhTRAu8f/xadmJyb1Xp31FQsQI1hTNIrQ791JII0ysONMvGnsahXx
- vw317URRxaSwVIB49FqKxIqJsH86C35y+N540PPp4iF2SxAhEoRAR93m+MUcZF695pCt//cO/d5
- 8miSdNg8qV/j+sy2TDC8MzYto=
-X-Received: by 2002:a05:600c:46d4:b0:490:3c96:892a with SMTP id
- 5b1f17b1804b1-4903c96a2b8mr25019915e9.22.1779369463217; 
- Thu, 21 May 2026 06:17:43 -0700 (PDT)
+ AFNElJ9HdnsrAP7cKszbx916CySNxBpPefR/7ULSLCasI7MbEq82XrdP+DOZXgI8PHUM4sta9R9jddMQMA==@nongnu.org
+X-Gm-Message-State: AOJu0YyQ9MQVL1c2pTjXdNzZp9cvYrzkUc0ZJenT1C3OMusbARM9L4Kh
+ MmfDZl2QBDtjXMrEnivz5hF5CzM/XInOHQm0FezyoDEbBOcUlQQ69OcKGw0LYkeHcn4=
+X-Gm-Gg: Acq92OEg4kQqqkQa8ceDg3Bx9D95DtbXPheZzUvVFfVGWSuvkduMFeyI/ha/OR9bYb5
+ DRRZXfyImTcUV6wkieTcbBIxtmI9nS5BTClNbp926Blu0BsaMYDJwfd0uS8R0Eut65RuPKe9wQ3
+ 0/H0p/3nrlInwJD9yeDVu+jY/kDh88+Nvq42voRlWj+ZrN+3f58EqlkuRow7d17FiH1ZBUOfP0I
+ I9DCDAwvf9BIbWlWFGUWH+baDlvyLjKKw0bij+BSaUXCfCOBfymiAbVrxqqWrJv8Za6SKlV++Ou
+ 49QkHMuBEFVAZqUlldX1M3OwN+m9r0YNYRIFcredFxGPAew/wAztQe0olLlTrWj4f9z7zPe+kC/
+ uc2wLlI/1iAdlhAKdgwrAUBgc1Sq8L759Y829vOf5+RCQMz3DQuDOlnaV8/iiSqE26EfQa1N3iu
+ wMbsIyUVXZ3y9+lhF5XAttZ/U=
+X-Received: by 2002:a05:600c:4f51:b0:48a:9562:7a30 with SMTP id
+ 5b1f17b1804b1-4903607878amr50131935e9.24.1779369466119; 
+ Thu, 21 May 2026 06:17:46 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49033cdcc01sm73201565e9.0.2026.05.21.06.17.40
+ 5b1f17b1804b1-49033d52c8bsm71285645e9.8.2026.05.21.06.17.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 May 2026 06:17:41 -0700 (PDT)
+ Thu, 21 May 2026 06:17:43 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 9A57F5FA6F;
+ by draig.lan (Postfix) with ESMTP id B4D3E5FA8E;
  Thu, 21 May 2026 14:17:39 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -86,25 +86,24 @@ Cc: Peter Xu <peterx@redhat.com>,
  Brian Cain <brian.cain@oss.qualcomm.com>, Fabiano Rosas <farosas@suse.de>,
  Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v2 04/16] accel/tcg: move jit thread manipulation into
- do_tb_phys_invalidate
-Date: Thu, 21 May 2026 14:17:26 +0100
-Message-ID: <20260521131739.540157-5-alex.bennee@linaro.org>
+Subject: [PATCH v2 05/16] ci: drop cirrus MacOS build
+Date: Thu, 21 May 2026 14:17:27 +0100
+Message-ID: <20260521131739.540157-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260521131739.540157-1-alex.bennee@linaro.org>
 References: <20260521131739.540157-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,115 +119,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-To invalidate a TB on MacOS we need to enable write access to the JIT
-buffer. We were doing this for tb_phys_invalidate__locked but that is
-not the only path into do_tb_phys_invalidate. Move the manipulation
-into the shared function that does the work.
+CirrusCI is closing down soon so time to migrate.
 
-As a result we can drop the tb_phys_invalidate__locked function and
-update the calls directly.
-
-This enables watchpoints to work in MacOS TCG guests.
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3444
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - make everyone call do_tb_phys_invalidate
-  - tweak the if statement so we don't miss unlocking on an early return
----
- accel/tcg/tb-maint.c | 43 +++++++++++++++++++------------------------
- 1 file changed, 19 insertions(+), 24 deletions(-)
+ tests/lcitool/refresh             |  1 -
+ .gitlab-ci.d/cirrus.yml           | 14 --------------
+ .gitlab-ci.d/cirrus/macos-14.vars | 16 ----------------
+ 3 files changed, 31 deletions(-)
+ delete mode 100644 .gitlab-ci.d/cirrus/macos-14.vars
 
-diff --git a/accel/tcg/tb-maint.c b/accel/tcg/tb-maint.c
-index cd7c32361bb..0c7ac5a72c0 100644
---- a/accel/tcg/tb-maint.c
-+++ b/accel/tcg/tb-maint.c
-@@ -925,6 +925,7 @@ static void do_tb_phys_invalidate(TranslationBlock *tb, bool rm_from_page_list)
-     uint32_t orig_cflags = tb_cflags(tb);
+diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+index e4d01d792b7..fa4a16e3583 100755
+--- a/tests/lcitool/refresh
++++ b/tests/lcitool/refresh
+@@ -311,7 +311,6 @@ try:
+     # Cirrus packages lists for GitLab
+     #
+     generate_cirrus("freebsd-14")
+-    generate_cirrus("macos-14")
  
-     assert_memory_lock();
-+    qemu_thread_jit_write();
- 
-     /* make sure no further incoming jumps will be chained to this TB */
-     qemu_spin_lock(&tb->jmp_lock);
-@@ -935,33 +936,27 @@ static void do_tb_phys_invalidate(TranslationBlock *tb, bool rm_from_page_list)
-     phys_pc = tb_page_addr0(tb);
-     h = tb_hash_func(phys_pc, (orig_cflags & CF_PCREL ? 0 : tb->pc),
-                      tb->flags, tb->cs_base, orig_cflags);
--    if (!qht_remove(&tb_ctx.htable, tb, h)) {
--        return;
--    }
-+    if (qht_remove(&tb_ctx.htable, tb, h)) {
- 
--    /* remove the TB from the page list */
--    if (rm_from_page_list) {
--        tb_remove(tb);
--    }
-+        /* remove the TB from the page list */
-+        if (rm_from_page_list) {
-+            tb_remove(tb);
-+        }
- 
--    /* remove the TB from the hash list */
--    tb_jmp_cache_inval_tb(tb);
-+        /* remove the TB from the hash list */
-+        tb_jmp_cache_inval_tb(tb);
- 
--    /* suppress this TB from the two jump lists */
--    tb_remove_from_jmp_list(tb, 0);
--    tb_remove_from_jmp_list(tb, 1);
-+        /* suppress this TB from the two jump lists */
-+        tb_remove_from_jmp_list(tb, 0);
-+        tb_remove_from_jmp_list(tb, 1);
- 
--    /* suppress any remaining jumps to this TB */
--    tb_jmp_unlink(tb);
-+        /* suppress any remaining jumps to this TB */
-+        tb_jmp_unlink(tb);
- 
--    qatomic_set(&tb_ctx.tb_phys_invalidate_count,
--                tb_ctx.tb_phys_invalidate_count + 1);
--}
-+        qatomic_set(&tb_ctx.tb_phys_invalidate_count,
-+                    tb_ctx.tb_phys_invalidate_count + 1);
-+    }
- 
--static void tb_phys_invalidate__locked(TranslationBlock *tb)
--{
--    qemu_thread_jit_write();
--    do_tb_phys_invalidate(tb, true);
-     qemu_thread_jit_execute();
- }
- 
-@@ -1030,7 +1025,7 @@ void tb_invalidate_phys_range(CPUState *cpu, tb_page_addr_t start,
-     assert_memory_lock();
- 
-     PAGE_FOR_EACH_TB(start, last, unused, tb, n) {
--        tb_phys_invalidate__locked(tb);
-+        do_tb_phys_invalidate(tb, true);
-     }
- }
- 
-@@ -1091,7 +1086,7 @@ bool tb_invalidate_phys_page_unwind(CPUState *cpu, tb_page_addr_t addr,
-             current_tb_modified = true;
-             cpu_restore_state_from_tb(cpu, current_tb, pc);
-         }
--        tb_phys_invalidate__locked(tb);
-+        do_tb_phys_invalidate(tb, true);
-     }
- 
-     if (current_tb_modified) {
-@@ -1156,7 +1151,7 @@ tb_invalidate_phys_page_range__locked(CPUState *cpu,
-                 current_tb_modified = true;
-                 cpu_restore_state_from_tb(cpu, current_tb, retaddr);
-             }
--            tb_phys_invalidate__locked(tb);
-+            do_tb_phys_invalidate(tb, true);
-         }
-     }
- 
+     #
+     # VM packages lists
+diff --git a/.gitlab-ci.d/cirrus.yml b/.gitlab-ci.d/cirrus.yml
+index f2a9a64b76a..b71ab090b65 100644
+--- a/.gitlab-ci.d/cirrus.yml
++++ b/.gitlab-ci.d/cirrus.yml
+@@ -44,17 +44,3 @@ x64-freebsd-14-build:
+     INSTALL_COMMAND: pkg install -y
+     CONFIGURE_ARGS: --target-list-exclude=arm-softmmu,i386-softmmu,mips64el-softmmu,mipsel-softmmu,mips-softmmu,ppc-softmmu,sh4eb-softmmu,xtensa-softmmu --enable-rust
+     TEST_TARGETS: check
+-
+-aarch64-macos-build:
+-  extends: .cirrus_build_job
+-  variables:
+-    NAME: macos-14
+-    CIRRUS_VM_INSTANCE_TYPE: macos_instance
+-    CIRRUS_VM_IMAGE_SELECTOR: image
+-    CIRRUS_VM_IMAGE_NAME: ghcr.io/cirruslabs/macos-runner:sonoma
+-    UPDATE_COMMAND: brew update
+-    INSTALL_COMMAND: brew install
+-    PATH_EXTRA: /opt/homebrew/ccache/libexec:/opt/homebrew/gettext/bin
+-    PKG_CONFIG_PATH: /opt/homebrew/curl/lib/pkgconfig:/opt/homebrew/ncurses/lib/pkgconfig:/opt/homebrew/readline/lib/pkgconfig
+-    CONFIGURE_ARGS: --target-list-exclude=arm-softmmu,i386-softmmu,mips64-softmmu,mipsel-softmmu,mips-softmmu,ppc-softmmu,sh4-softmmu,xtensaeb-softmmu --enable-rust
+-    TEST_TARGETS: check-unit check-block check-qapi-schema check-softfloat check-qtest-x86_64
+diff --git a/.gitlab-ci.d/cirrus/macos-14.vars b/.gitlab-ci.d/cirrus/macos-14.vars
+deleted file mode 100644
+index def77cfdea5..00000000000
+--- a/.gitlab-ci.d/cirrus/macos-14.vars
++++ /dev/null
+@@ -1,16 +0,0 @@
+-# THIS FILE WAS AUTO-GENERATED
+-#
+-#  $ lcitool variables macos-14 qemu
+-#
+-# https://gitlab.com/libvirt/libvirt-ci
+-
+-CCACHE='/opt/homebrew/bin/ccache'
+-CPAN_PKGS=''
+-CROSS_PKGS=''
+-MAKE='/opt/homebrew/bin/gmake'
+-NINJA='/opt/homebrew/bin/ninja'
+-PACKAGING_COMMAND='brew'
+-PIP3='/opt/homebrew/bin/pip3'
+-PKGS='bash bc bindgen bison bzip2 capstone ccache cmocka coreutils ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed gnutls gtk+3 gtk-vnc jemalloc jpeg-turbo json-c libcbor libepoxy libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1 libusb llvm lzo make meson mtools ncurses nettle ninja pixman pkg-config python-setuptools python3 rpm2cpio rust sdl2 sdl2_image snappy socat sparse spice-protocol swtpm tesseract usbredir vde vte3 vulkan-tools xorriso zlib zstd'
+-PYPI_PKGS='PyYAML numpy pillow sphinx sphinx-rtd-theme tomli'
+-PYTHON='/opt/homebrew/bin/python3'
 -- 
 2.47.3
 

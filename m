@@ -4,96 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CFE9CD4F3D
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 15:32:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCC66CD5BAC
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 15:34:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQ5N5-00028U-JM; Thu, 21 May 2026 11:31:39 -0400
+	id 1wQ5Ph-0004CW-SH; Thu, 21 May 2026 11:34:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wQ5Ml-00024C-Vv
- for qemu-arm@nongnu.org; Thu, 21 May 2026 11:31:20 -0400
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wQ5PY-000439-TA
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 11:34:13 -0400
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wQ5Mh-0000A8-Hp
- for qemu-arm@nongnu.org; Thu, 21 May 2026 11:31:17 -0400
-Received: by mail-yx1-xb135.google.com with SMTP id
- 956f58d0204a3-6530287803cso6429859d50.1
- for <qemu-arm@nongnu.org>; Thu, 21 May 2026 08:31:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779377472; cv=none;
- d=google.com; s=arc-20240605;
- b=WMFrSC7gXGe+zm5pealZjMhhq7IxSBw5TozqUZsh4pNau0uQlnebs9nUJHiLPokOvx
- SyIf3aO8TGlVG0gntmsV/cJ96LOyAa3rWaDeVuDbF2OF3ozOqXnKEaH1bLzSLfvnHKik
- wlld4ibiRBH7aO5ggF6Vnc0lfOYcggx0q0ql1luRPboCDHJOTGv5rCdZBBOEuH0w9Rbf
- q7nYPCYJe3vplsN7r91d8z2osBHRpRdtX+eW2ubHyfcFqqQdYZ17bTa0/TH0x5BYMFCb
- WUEzoppWEv1zukG660Y9OJpBTaXJc3h9hHA6xKVPAwzC7Pt0ckQoVO4sZmbShSLM/fBj
- Kdhg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=OAaWMWJwk63Rg4gmAAVrRYzsSGQ6Cp2o1ToLmKpl1FY=;
- fh=3TKiopGzQOCSIZrERVDTH7RnEBS9tKjvZf+e1IcGzpw=;
- b=IwzXx+kqU2WA7u9JEU3up3SgDM22QF9syvImJFZyLAp/jiqji6jNsjXDm61DMHjAYW
- i1ON3HyxBbBbFJF5AWFiL4T2cw8iD5VnG0OGYzh2p53AAVSqv6uYmlUSGAnH8chUcQxo
- /qYbAw451zdZho86u5MDGxwaZCy4cdtc1pkLuIJEt3tz9nZMzyQFDIW8rRDAyHrw3gul
- m/B8+t6+gnJobkU6SYqhi8PN1O1YY/0C8qKj/dj2a3t7Ooa4Ta3wklDHvc4kZFpT+ZsD
- iRZNQC2ZBuLXW/TRrysR8yDNjt+kW+fgEf3fTcasoEf3AYKBD6HCCTnm6lBLfhYQ8yJx
- mjOg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wQ5PX-0001Tn-6d
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 11:34:12 -0400
+Received: by mail-lj1-x236.google.com with SMTP id
+ 38308e7fff4ca-394095009beso54925931fa.3
+ for <qemu-arm@nongnu.org>; Thu, 21 May 2026 08:34:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779377472; x=1779982272; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=OAaWMWJwk63Rg4gmAAVrRYzsSGQ6Cp2o1ToLmKpl1FY=;
- b=DQnwYLNjdNCxBVKBEwJThRf6ZygmZLIjGHm2tF55kt7Rk68wTd074Zz/iWyVMVYTVO
- HtrXd4GLSVZvh0a/3ZeKnqrHZnjX/EgGmfE7YeMMkG6gUq/MmOvUna+d0nZHAmGxfaZo
- Xr8SvLSMbYoprDzkicb/12l1IvlgsjpaUo6IaNhXChH7YloJb/Jkdpp/UVBg14eKAvwM
- 6GM18aaju4vHjbKD1DfOmWn5I0nP/W0sXYJaFuoy8oz6ntV2x6s36TUUkLq08aU43HjD
- x+Ff9MP54OFueXn59JlGI12V3DzEkHf9n9BjxQHA0sXqRIQ/II5l5BMEucvl34Q3onTC
- Lc+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779377472; x=1779982272;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1779377649; x=1779982449; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=OAaWMWJwk63Rg4gmAAVrRYzsSGQ6Cp2o1ToLmKpl1FY=;
- b=HKn/kecIWw2SSE1j5TZzCUkAZctyCsZCuKVlroCVbi3H7khKx42A9DHubrrbFGsEFU
- h/mpAwCDow0iuCjmLGbiYBXlCZ2RbogGTdhQWItfNcBN9M99SWj13nqxmsjYildH6Tl7
- Wil4NTnv/iJdOQlKFHB1PylMTsEspZvR2yvt2PB7Ax8NF+5UE2Iecd7IVnsiYxRu2ZbL
- NnqfNdXPcjTjs0ZxySEImA84a1vCrKPaQxdjdWVMI/N1v2mRHUIfJinm366yS7vUbTD7
- R0sy1MeCzYy+vmEs3Q0hinzGVYvKnNA3nGvvSMGaEkSzrQhIZiTsiOLh5DRSAKTmiTOr
- Pk6g==
+ bh=KimNAMyXmZNNTWWv9jeYJPSLYiMDb4bG0OyNT/B+qNg=;
+ b=lGn25jI4hjL2oKvTrJEUXYm3KWbACB6NbzYZwqlwgenJt1tsju3G+lUjLlPfsw7tFV
+ 73Js4oGRgxXr/05zxqnfULWExQ008eTjsM9y2Ckokmfm01ldYTB6Nb3puWbhELG8xWRm
+ +eq5KNn30/bLeFjmdepTt/l09yI0gEBFFEE3Pxnmz2cw1Fg+ENmwJU+1+vxdUJNXhUM3
+ JByGT9m9sA1RBEHITrXnIk7v5PgIlblnX2tYoxmCVMl8QwCg+f3qcLPb4UtpYRJgL1xb
+ ddmTiOSz5G/kOOFuuCio9IhJbD1v6zKO8JQvoGa4A3UWhyCtb1bVhQrl77VD0FXqI8o1
+ WQOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779377649; x=1779982449;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=KimNAMyXmZNNTWWv9jeYJPSLYiMDb4bG0OyNT/B+qNg=;
+ b=FaQs99MhynVnNoiZSi4ciMITs412B1ZPoLa+dsK2RhH/GEWZv4yBdYG1hyqQra1l0k
+ gAqec0Lh54lpqNYYorKremUoBlWZI5Fub5MV/WmAgiJRAWSTRh4XHxY6kueguZT2XiLb
+ 5nDOfONd0LI/UMefTB5zCnhugn81mn/r2EOxJvEUJ8jzUrXxaLRaCDgnHR0Gi6wWRTJl
+ WXCUZRxQQd5GHbYod+1kKsY12BZOmDlFc7Ao2bmQYTPDHzOZQVNyy12dZtarBKt2exbV
+ NcseSQ2PAQX6aP/pH+ugntDwRS3h+qF8e80uPFEn9pcu2DBcOH4IBjM1yncpqbdB8zZF
+ luEw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8tw9Hqgd2BdSZvvgRpj+WAVdwZ4LfPSb3fD8WVuhytnLP1Me0wuzYgZzzTBuvbBS+dJszJzwNjNA==@nongnu.org
-X-Gm-Message-State: AOJu0YyXDqRDFvEt4D0scm+vFKHaK0jF+RxTCSRWbiCKIVGmN/+9/HB9
- Oe1zuJ8YJlYtF7I0qMrSq44SGjTS0DeO0rLKUd1tzDNZNwTfNByFRIfMkzyeuwWFOt47lFgmyED
- ApcG/O/MW5unU6mF5VNbSdU7AJl1n0wwHhG6JvDNbmw==
-X-Gm-Gg: Acq92OFEOIV6wxQTgzfkFe9ChK7aiZfuY3CdGds3Rr/60vNarXzi0CdbHQoecjZTEGM
- /zhrv+idlY2rsaAeaJ7HU8jIixtYPHT5DYxyBRkPlrhmG6HrFOcywstawtE11YnN2Sp6lyWX2Yr
- zb+Q4bV51FnXsM/Vk1tK3uhTs9hWlK6BDdDy8gAU0GVtROcfS0JdxzheRQWMuUdKCJFpTKmKs/x
- MznSs7EB8Yes8ix9yL+fCt4o8djY6JHVRs7BD8qVZQ7KuDCb2674omQrw+f6bCgJ9pwlePA0F3w
- iu5Khu/qvb1eDlkRpE505hb6Lz62+LKlc5nqpojoRCy4O2xb/jLKjVokYHr+7uUtBZM=
-X-Received: by 2002:a05:690e:d41:b0:65c:3597:5fd6 with SMTP id
- 956f58d0204a3-65eae27d729mr2552878d50.48.1779377471480; Thu, 21 May 2026
- 08:31:11 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260520182213.872945-1-richard.henderson@linaro.org>
- <20260520182213.872945-20-richard.henderson@linaro.org>
-In-Reply-To: <20260520182213.872945-20-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 May 2026 16:30:59 +0100
-X-Gm-Features: AVHnY4L4xUa5jnTZQ36QnkqVzdnfi2DDBoG6gEl8ncYQi0H1pnECrsVQNgRbyRI
-Message-ID: <CAFEAcA8xoMxi05C+YXqwHudbnBaW1uu44Eqv-JpX02F5qZ-69g@mail.gmail.com>
-Subject: Re: [PATCH v6 19/64] target/arm: Implement FSCALE for AdvSIMD
+ AFNElJ/OQ11PqaZCaFsBSH4xbkNnltKCy6xNBak6yDire/OT0MQxgZwYGbSU3zWmv6RJA9Su5A8i1mgaHw==@nongnu.org
+X-Gm-Message-State: AOJu0YzWnq7VtmrglrOS1V5IWx+aNUrmkPgF90U//QGZaG79uv6zhUjm
+ 6WybWJvAGDMUGVYyY78zcOjgjGbJUOV1YDsmg9ZBdw9g0hOaAumGIB84+CkGNWjWFQto8uT4f+l
+ g+PD1Cqg=
+X-Gm-Gg: Acq92OEkMrW3M07e2a+fWMpfIlXXv6aHk7aKt8KFJbkmWxAXblOD2FpB4bpOdwYrpgR
+ QHDw1OFyJildgKYigZRGlo8/VfGKbubnxSyD8RBIO5RfhS5EuFlSP01+bqUKxsnCMHbKpKXsv6r
+ Ca7RrUlQInT1oCcbWLjA41+gbAapMfPBgfRnDcdacXlGdTM2FEaSBBH0NkZb3IGFovS95wRO2IR
+ I3LfdpDR8SLLkNEZHGREBVoF3Eo48JylGOGUnZMKogmbWTkA+ztQIiytGYry7fr6TgfAXVWAYIS
+ XUSPxyn/nk/2OI1t8pUSd6ByUd1ciQ5c1/R7KiO1xK0Kj/tv3E2VSmB86/xNAtkQRZ9qGovQ3Mw
+ naE0SFDV0Fk7D1q8usCfmiiehYyBuDXE4XHgygN3Z1RzY930uNAinOdC07FfV4WF6hx5IaTjduB
+ PhhP8bbBtbN/NnaNJJNzjGMQ4=
+X-Received: by 2002:a05:600c:8585:b0:490:3890:605b with SMTP id
+ 5b1f17b1804b1-49038906125mr35734655e9.31.1779376943042; 
+ Thu, 21 May 2026 08:22:23 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49035c47b31sm18444115e9.14.2026.05.21.08.22.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 21 May 2026 08:22:22 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 61EFC5F886;
+ Thu, 21 May 2026 16:22:21 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb135.google.com
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org
+Subject: Re: [PATCH v6 01/64] target/arm: Implement ID_AA64ISAR3
+In-Reply-To: <20260520182213.872945-2-richard.henderson@linaro.org> (Richard
+ Henderson's message of "Wed, 20 May 2026 11:21:10 -0700")
+References: <20260520182213.872945-1-richard.henderson@linaro.org>
+ <20260520182213.872945-2-richard.henderson@linaro.org>
+User-Agent: mu4e 1.14.1; emacs 30.1
+Date: Thu, 21 May 2026 16:22:21 +0100
+Message-ID: <874ik0okia.fsf@draig.linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::236;
+ envelope-from=alex.bennee@linaro.org; helo=mail-lj1-x236.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,13 +107,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 20 May 2026 at 19:28, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
+Richard Henderson <richard.henderson@linaro.org> writes:
+
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu-features.h    | 9 +++++++++
+>  target/arm/helper.c          | 8 ++++++--
+>  target/arm/cpu-sysregs.h.inc | 1 +
+>  3 files changed, 16 insertions(+), 2 deletions(-)
+>
+> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+> index 4e44245a8b..50776347a5 100644
+> --- a/target/arm/cpu-features.h
+> +++ b/target/arm/cpu-features.h
+> @@ -244,6 +244,15 @@ FIELD(ID_AA64ISAR2, CSSC, 52, 4)
+>  FIELD(ID_AA64ISAR2, LUT, 56, 4)
+>  FIELD(ID_AA64ISAR2, ATS1A, 60, 4)
+>=20=20
+> +FIELD(ID_AA64ISAR3, CPA, 0, 4)
+> +FIELD(ID_AA64ISAR3, FAMINMAX, 4, 4)
+> +FIELD(ID_AA64ISAR3, TLBIW, 8, 4)
+> +FIELD(ID_AA64ISAR3, PACM, 12, 4)
+> +FIELD(ID_AA64ISAR3, LSFE, 16, 4)
+> +FIELD(ID_AA64ISAR3, OCCMO, 20, 4)
+> +FIELD(ID_AA64ISAR3, LSUI, 24, 4)
+> +FIELD(ID_AA64ISAR3, FPRCVT, 28, 4)
+> +
+>  FIELD(ID_AA64PFR0, EL0, 0, 4)
+>  FIELD(ID_AA64PFR0, EL1, 4, 4)
+>  FIELD(ID_AA64PFR0, EL2, 8, 4)
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 8240f1b384..6ad01b345f 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -6519,11 +6519,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>                .access =3D PL1_R, .type =3D ARM_CP_CONST,
+>                .accessfn =3D access_tid3,
+>                .resetvalue =3D GET_IDREG(isar, ID_AA64ISAR2)},
+> -            { .name =3D "ID_AA64ISAR3_EL1_RESERVED", .state =3D ARM_CP_S=
+TATE_AA64,
+> +            { .name =3D "ID_AA64ISAR3_EL1", .state =3D ARM_CP_STATE_AA64,
+>                .opc0 =3D 3, .opc1 =3D 0, .crn =3D 0, .crm =3D 6, .opc2 =
+=3D 3,
+>                .access =3D PL1_R, .type =3D ARM_CP_CONST,
+>                .accessfn =3D access_tid3,
+> -              .resetvalue =3D 0 },
+> +              .resetvalue =3D GET_IDREG(isar, ID_AA64ISAR3) },
+>              { .name =3D "ID_AA64ISAR4_EL1_RESERVED", .state =3D ARM_CP_S=
+TATE_AA64,
+>                .opc0 =3D 3, .opc1 =3D 0, .crn =3D 0, .crm =3D 6, .opc2 =
+=3D 4,
+>                .access =3D PL1_R, .type =3D ARM_CP_CONST,
+> @@ -6752,6 +6752,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>                                 R_ID_AA64ISAR2_BC_MASK |
+>                                 R_ID_AA64ISAR2_RPRFM_MASK |
+>                                 R_ID_AA64ISAR2_CSSC_MASK },
+> +            { .name =3D "ID_AA64ISAR3_EL1",
+> +              .exported_bits =3D R_ID_AA64ISAR3_FAMINMAX_MASK |
+> +                               R_ID_AA64ISAR3_LSFE_MASK |
+> +                               R_ID_AA64ISAR3_FPRCVT_MASK },
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+With this definition should we also add it to arm_clear_aarch64_idregs()
+which clears the other ISARs with aarch64=3Doff?
 
-thanks
--- PMM
+>              { .name =3D "ID_AA64ISAR*_EL1_RESERVED",
+>                .is_glob =3D true },
+>          };
+> diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
+> index 3d1ed40f04..b99579f773 100644
+> --- a/target/arm/cpu-sysregs.h.inc
+> +++ b/target/arm/cpu-sysregs.h.inc
+> @@ -10,6 +10,7 @@ DEF(ID_AA64AFR1_EL1, 3, 0, 0, 5, 5)
+>  DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
+>  DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
+>  DEF(ID_AA64ISAR2_EL1, 3, 0, 0, 6, 2)
+> +DEF(ID_AA64ISAR3_EL1, 3, 0, 0, 6, 3)
+>  DEF(ID_AA64MMFR0_EL1, 3, 0, 0, 7, 0)
+>  DEF(ID_AA64MMFR1_EL1, 3, 0, 0, 7, 1)
+>  DEF(ID_AA64MMFR2_EL1, 3, 0, 0, 7, 2)
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

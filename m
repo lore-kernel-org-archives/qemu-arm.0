@@ -4,142 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83DA5CD4F54
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 01:26:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F32ECD4F3D
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 04:07:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wPsAg-0006fQ-3S; Wed, 20 May 2026 21:25:58 -0400
+	id 1wPugC-00047a-RM; Thu, 21 May 2026 00:06:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1wPsAe-0006f3-JW; Wed, 20 May 2026 21:25:56 -0400
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1wPsAb-0002Lb-R3; Wed, 20 May 2026 21:25:56 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ugXzGDdl2M+UDSdY7WfrSWyX/1iAwCwl/4/u6yDg5eQKQ+3FRNrDAjErGlBBWuKyldYt2UO0z/uYmYB6CE8WaQXjvLGehXckkL8Wqvv9be9kgsHg0WsKzx5ui5Lmd3ksAf6BqtoWpaCxvrBI3BxcZBd5+x6oBX0Oi6FpKKbv6Yvk4DH3A+7zn3w5J3mD95I9Jsh4+wVpDZ4gO2d3g8HvYa8bvU1YYbMyfJMJZ3T5VaHZFPH0KtPDSLbW0IPxLe05QAfvWQi8pyfB/lNC2FjN4iLJBRF4OVX0wsE06xEaGawoMF9SaghHqUVHCyazaKs4cny0NnDEyszwdu+cLhTKZg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qzoTbiBHPBlfojKn61WVrnasFexi4p3A0ppdiC6wwPg=;
- b=lbrKdCyiu7ghYOgWxWyfiQIp5TU7RhLfFmo75lOjB1L26C3wlFid7vmsOn597PyXnkoMqKfV96y5XrOQadljqxNKayixvPzSuosnhJJftTnp4ZRX6achR1rafevzw7Y1RTbgvkZD+Tzw8q6wYtW2R2yntqeqVf6Ck4SYsrZdNeWXSO3M764IS0CmVFYkNxK4wBWIDmNMNrMK+rZp7bkFxajyRP55FFg3GA7DjEjyA5qnzsPE8qZqdAMR617P3POT+eFUZJAZdL3CTdsd/RM9hYL4hFh5QIqHk/0Q19bCpSmbOdHfPFfhwvN36QB+nLBwLIpUCoausPMEnwX1maDCRA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qzoTbiBHPBlfojKn61WVrnasFexi4p3A0ppdiC6wwPg=;
- b=RcoVqHiJm3qv2gWSDDRsbVXKwFHS8Ti6riyfSPURgeeFKe9HZxyJglZWHEFSKm6ISQd7IvdiHv46Vl18JnI82fGIl11+MpZjyjNvimIy9vRVoFPk0dtQCQAe6TKVZJ7R3dQvGGx+1VQkeJdceGB6ppgIf4PZwxJrU6fSDSnFXvk5JiJ1COWIM7mz90n65yevVDK+wKPiOeXVzJOeZJ91ynqH3PEkMoIW4ohiFYLlXrV2+LbFlNaqaGv7x8wcfJw7W8Qwn9vjugEBtPomwOqJ1jW1h4/0M42yHj8Mb4z2GQQLLReQAG5m6AtY9tK927+B67NMwcHXIxed6WNbdF4xIA==
-Received: from SI6PR06MB7631.apcprd06.prod.outlook.com (2603:1096:4:239::11)
- by OSQPR06MB7182.apcprd06.prod.outlook.com (2603:1096:604:290::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.25.23; Thu, 21 May
- 2026 01:25:43 +0000
-Received: from SI6PR06MB7631.apcprd06.prod.outlook.com
- ([fe80::afe5:a3f1:b435:e43c]) by SI6PR06MB7631.apcprd06.prod.outlook.com
- ([fe80::afe5:a3f1:b435:e43c%5]) with mapi id 15.21.0048.013; Thu, 21 May 2026
- 01:25:43 +0000
-From: Kane Chen <kane_chen@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>,
- =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>,
- =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@redhat.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: RE: [PULL 26/45] hw/misc: Add basic Aspeed PWM model
-Thread-Topic: [PULL 26/45] hw/misc: Add basic Aspeed PWM model
-Thread-Index: AQHclcGY0tgAGm13Q0G0/B/G/KCl17YXwMYAgAADgoCAAJAyEA==
-Date: Thu, 21 May 2026 01:25:43 +0000
-Message-ID: <SI6PR06MB763102E2FB6153F67B84F77DF70E2@SI6PR06MB7631.apcprd06.prod.outlook.com>
-References: <20260204103136.1795455-1-clg@redhat.com>
- <20260204103136.1795455-27-clg@redhat.com>
- <2c9aa5d8-993f-4636-a07b-0a28dad1703b@linaro.org>
- <368273be-1685-40ab-aa91-7fd811c845d4@kaod.org>
-In-Reply-To: <368273be-1685-40ab-aa91-7fd811c845d4@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI6PR06MB7631:EE_|OSQPR06MB7182:EE_
-x-ms-office365-filtering-correlation-id: 4619d916-95ee-4b9e-00d8-08deb6d7e07f
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|1800799024|366016|38070700021|56012099003|22082099003|18002099003|4143699003|6133799003;
-x-microsoft-antispam-message-info: LczZ3L3ZY9IeriDnCZA/+adeIcVkh8eJUUYU+swwlUq1uW/t/Mt/RW2e2EgCcjtV8utKRi6YJjGNVvaC/07RPdS9JLLSbI0fMXkN++qTNKuReHpILCuJxg35st+OHPq4fyeKQa8A3g35sxWyZZO4S17a8qGRVnW/bQ/Szy+kPN9fUY2DhHoP1M1/MlkVmgzKehRtfvJRLQrXhtIIV9t2VU/ZfGadmUXwVIJHzLjeQsyDTN+aZ8O3+ZY6AWHO9I5z+atFyT0/CfZ+QSJX1HkecFeBsCs2yuKUEc1aPN8EPhEYL5uUiqFmTxdHJuZVcGpnxIQxLvut2VjNHc8Mi9KqdvBee1LVhxpMhRRW6u0MnZYhegOg9C+O3fZI3wvmLJoXt0g8NuLw6FbaqLI9UUisuYOV/Sat4SlCVeMZ0FTvc4r1p7wBOX6M9IlWcrV/nBiP3rSmbMB9U0NNXxKMPyN9KVmYsor27bz4KW850W3CPTHaFQFfmSmiN630ju0Aniga2ekm3gEKoK4HMcxIKWUHvL7dPhrJoQ7S/yUYe6Scsgt7j2jWL+qRQqp/PPCT9B0ILEvctZkjPUlX43RU/liwSg8+CT1yTt64HiRnNXOx/R67jv4G8LLLjgqR46NH07LRlGqm09ZXKJcKcu6WFqBoBUoijftyqxVkkz3LE8qOQSg08VhWTqTTfKjpzPteJrrJRFE42dXNh1T6Xid+1c9OFCVKcn5Xfm/iX92RV+n14ev0t9YKNLaUkr+U4Xxg1lw0
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SI6PR06MB7631.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016)(38070700021)(56012099003)(22082099003)(18002099003)(4143699003)(6133799003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SXBrL0pRYWFERTJBQytEck12ZWd3SDdoM0RhSVEvUHdRcTFIS0RDeVNTekNz?=
- =?utf-8?B?ZkQ2SVdEL1BZZkpGVHArNnd2NTUwaHBIQVBtNWFZWHV4ZVdBbGxzY3ZqcFVC?=
- =?utf-8?B?bzUvL1AxKzc4NjFUazUrNnBGdkRnczZuR0hiZnhpMW1KMlVTK0pUOG9aNGNQ?=
- =?utf-8?B?cGVFK2dKOTNaVm1pcDJvamw4ZWhYc2dOQXhUclFUbEtxMlZvUStzdzhYYUlx?=
- =?utf-8?B?OG9ZemxTVFBwMnRsdUVlS1JaRGgwT2hRZWdPMlJGb0xiNWRJa1paM1VHVFdu?=
- =?utf-8?B?WWU0M044SXVqRE5kTzhsN2c4emRNSTRqNVZWeEdDTEl0dDRQK0htYWozUllD?=
- =?utf-8?B?dlNGbEhIdkh6RXNxVFp5Q21KWEp5UEEzWU9TRnN2eXRJR3QwZmlFcU1vdk5k?=
- =?utf-8?B?MlJLdDhvdlUraUhwM2JvcWttT2ljbFdwTnJwSHVmMmZhdWJCdC9CRGFGSVk4?=
- =?utf-8?B?bTBRVlhBZzZjbGxWTFJ5MmVhUWtDeWxNRDBuS1l6YTdNem9WT0RyRlQ5TDBO?=
- =?utf-8?B?ME5MZmhxY1JTRVh4WHhUTzdHaVlmQmJTT1VvOEcyaXFCaHVZU3hhdXZhUit2?=
- =?utf-8?B?NTVraGtBbW1uRSsxd3gxZGFKK2M5b3RlOERoK0lZRXV0WUpLTWtHeDNMUmJI?=
- =?utf-8?B?R1hORDY5SDV0MUQ4eHFocmdOaEdyZjhaQWM0OHRzLzNWZFZtMVVsODg5SjVL?=
- =?utf-8?B?bWVtNVVvaVRKRDNIOXVLSWxqck1hbUJZa3NSU2VITUZGQWhrZGthbHpQTTda?=
- =?utf-8?B?T1NOTFh1Qy9VWXBtMTJqdUo2SWMvOHdvYXVYQkdGa3QySE1ndS9iQzNTS3Ey?=
- =?utf-8?B?YW5Wbi9pWUx3SmZjWWRVUlo2VzRaMlJjOWt2dTJxT0FtNkY5cVRxbDU1UUxs?=
- =?utf-8?B?NTJJQXRodzNtSUFtbWNFcEpQejlac0RWdm1vYVcvb1RzMVNWMWUyMnJkUExS?=
- =?utf-8?B?Z3IvTkJyWVFvbDlCTURmaVRYenZzd2JhMlNTdkhZTkRxOG03Slc2NFBUMThJ?=
- =?utf-8?B?VWdqVS9mRHlJQU51cmFDczExcXdaQ1NwcU1zaTRSZE8vZFpYZDkwZXFEWkhU?=
- =?utf-8?B?YWNmSy9lMGg5b0xhWHB1VGhuU00zVUcrNHM5dzMvWmpBZURiVmxoaWIrUjJ5?=
- =?utf-8?B?Q2V2eU5WcUN0YnRhMlRxTHBreThzaWE3WXVKSVVuRXlVR2twczc1T1FZRUV1?=
- =?utf-8?B?dExnU2VRTWVQU2ZSeGc2bVhzWnNwdG5IVlk0MzdHekFhdHJXQTRiOVEvVlgw?=
- =?utf-8?B?WFpyeUx1RUppblcvY1VQdElScUdQRHRxOUppUnBmMWdCM0FTbFZ0N2dZKzBG?=
- =?utf-8?B?WmFoYkNmMzBFRmxrMzRIL2hFT1ZUVEMyYmsxL0F2UU1CTnJjaFNiclNiMEQ4?=
- =?utf-8?B?WGcrSnQxZlF4UUhyMExVdlEzalF4dmFGMCtyVlJoYWJFbFdKcjAvWEtDQnM3?=
- =?utf-8?B?TXVmVWZaM01VbGdPclpmYXJGM3V5TzNxQ1pQOU9jNDJqN2VhWnpOQ3M3SDdN?=
- =?utf-8?B?U00xbEM2L2k3WXMvNnVZNysyY3czV0sveUpBOUh4N0FMZjRnTW9yam85bVll?=
- =?utf-8?B?SXhITnF4bFpmNlFySS82ZUVpb0FZSGxBNXFFNkpBMEp2RE1PU3duOW9lKzFk?=
- =?utf-8?B?Ni9EQjNlRWMydWNKajN2UHRQQlRDVGFkRW8wWFdyZWFVWU1qbFVjRE5VYUZp?=
- =?utf-8?B?RDI0VDRoZmFub3p6RTQrbnpNZ3l4QW12TXlSQUlySy9PN3BVeUlWWWdpTEVV?=
- =?utf-8?B?YjZpdkloOXQ1RVpYbGp2dElSVWZVdnlSVU1VRldDektNdll3cmd2MUpEU0Jv?=
- =?utf-8?B?OEd2MjVhTU94akVCSHZydFdFZnhOVmxoZzU1aFViQzJJSDF6K09aN1l2WWlR?=
- =?utf-8?B?RGh1Wmo1cjdkQlpSNDhFUDhDSDdkdlFJZGtIb0dRODBqNHdjZW9uaDB2NkF2?=
- =?utf-8?B?eEFhOVlFNGxFRmdQYktDL3VLa21UekoxaEt2eDl0MDNacmRJbHFKWkNhWWVu?=
- =?utf-8?B?anRPUjBGbHNTY0Q0VlVRUzE3TWthdkhjMkRtYUZBNEk4M0lrcGVDT0JXS2Fy?=
- =?utf-8?B?U1JDSlJIQTJ5aDBnMEY5LzdTbFpQYVJOU2hoczkyUFNmczBUclZIMDFibnBF?=
- =?utf-8?B?bDRyTVhOdFZtOFJZcHQvalJVL0twNmxOZ3ZFTG1JY2JBMFVjeW1GNVNVUXF1?=
- =?utf-8?B?bjhxOS9iTTdGbFI3dlRuaEdPdWZVbm56b1dBMUl1b242ZUlOSVV4QTFYQ0xI?=
- =?utf-8?B?RWN4WHFUU0YzcVdEanNwc0xwWjZQTWV3N3NTWEVyaXpsRVRZMGJaTDh5WWNW?=
- =?utf-8?B?dG5HYVcwMUZseEdqRDRwcS93eUxsdWZOWTdXUGcwT29DbWlNQTNRQT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
+ id 1wPugB-00047A-0h
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 00:06:39 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
+ id 1wPug4-0007o7-3s
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 00:06:35 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-835b78c3797so2415372b3a.2
+ for <qemu-arm@nongnu.org>; Wed, 20 May 2026 21:06:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779336390; cv=none;
+ d=google.com; s=arc-20240605;
+ b=L0RdzRH5rbeNW2Ft2HLLJLCGDJdmTtJSB9lYgLt68Li0yvR86GXyy+VhCt8ZNA54kC
+ BZ7IZQ2n8Ks0hWf13LbkzW+agbk7GkQm/ttXQuXCxSMyCFuW/C45Ct0oEC2s89Zs50OR
+ 73qZKD4Df7YdJnG79yt1EF2gmFqT+qMV1BUEtNFq907NxZI0MKWvBwbrp+qc1GjPpd79
+ PseXRe92lFuRLEg3mAcHJnI/YZiEwMXqfCXdeIgJKYCL8U7X5ygCjgH1JA0kbM3hJidF
+ HpkKNINyCVzSNbkBvguEnkY/kZPCRC7QHZ2xYZnjXNPVqpL2W6cgAnV93wQHmCQJhTQS
+ iIUw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=ejvFriw1FMTOseWxJMjltUsSxWejtkja8ZGck09p6Y0=;
+ fh=r0EEz99lCRiGY4ZueN9EZ/V4wEjitAhaBGXaskyYCVM=;
+ b=aRSGMiQGVTw8Is2PId8GvFTHaA8hbjaVfftgxeaxGQzGfG/0O7Uw8IAtZ+FTWLURRo
+ xBEAVk2Mg9XZ5KMm4/QUiUw1+K1KbosmHRBugBzyWqVm7s7ISYhO3PxmnwvCRzWakTRR
+ 7YBdDWlTP1EmGcxzvnVKpM+Ep/sHcS/2xp9eaDc1H4BV8HXlvNaB62KuFQgIxz4N10MI
+ omctVcTdqpZOf+IyIymjaQ1l/pIW5FN6VtsbKt0snaUEoT476ayCBtIUyXNcgLxXlsp2
+ HRvpmVOnaqXePL6JHSWoLgRxHZQnN6TA52HB/ovqcgdM3VCHLYrf6ufRs4DdrZX/EGQE
+ hYbg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1779336390; x=1779941190; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ejvFriw1FMTOseWxJMjltUsSxWejtkja8ZGck09p6Y0=;
+ b=dCL2aJbPhwG/VrKfTeRrv6/Ym3e5hCFl4sPary/6xgZCQg8NJ5VgQjHLgycurYGDTe
+ 32gyQphOx61tfLLezdvZU33I2MweANr7B2/vBpfFEMhRIXPyABggoSKGLeaXYzdIZPJ/
+ VaukfoFdjEEsMnpS473CQWs8DvuiS61HGoOf2QOuOx56jL2HihwoO64O0HfVOR+LUgcU
+ yh6aB0yZUwnSR/Q3hWN0D6ffJOg7tf3vIdD+tG81osJgWR2vc2rvzIMfheMHGgL3LCBt
+ nXFdtOBVDxNjnqu8bkwtOt1thC8vOfPv7Axcrt3zFY9Ej/5m1AiZGtK+0bvYjG6uValR
+ uSvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779336390; x=1779941190;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=ejvFriw1FMTOseWxJMjltUsSxWejtkja8ZGck09p6Y0=;
+ b=hlmV1K+Z/nmaNGcep+nYMt7hZOAu4iy/TvyZWoZThkYUikGJ5tX1plj0dmnUuCOJdk
+ a/1T1KUPvQYswD6CnxpJp6wlljLEE4bL/HTAYnYADI6BUkmPWrxj02A7HHvNazd1beXP
+ GCTD1cHwkLLmI9kv/JWnz1C85owKAwAdDGBF5MlMW69ofxmi+KBsk8W/be99bgsGtd0/
+ G04L8x/vESU1kpHkoQk6KVFQEyHH2Yd/6xTr2/cbMjm5/u1GqnG/f7f8JOBT6Wy6h1Ad
+ MgR1k498wru5y+vcKrWyJC3N60ugyu3Mvwb7k1jj6B+TTw7v8IT+mbKfX5a2QR60BxXK
+ /jLw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ95DlKg5xNEzipJcYWXn0kW+XudxX22PiigE6SKSb/2lZmakCTjNx4YhKQqTvzBEroEQKguR6feBg==@nongnu.org
+X-Gm-Message-State: AOJu0YxVxZ+jW7EApjwKDmLi+mQKtKMHipud9mDK/6VuQ/9LvdHjI8AR
+ lcshJw8M3b58RmBMfXHHhJozOdIW/GRAnnzc4TdIXprTGdst7rK3UDS7ANQSx99M4fPyFp+5zsv
+ JszPhYJTVvpgbuqONiWjZNEoWL5HH8p0=
+X-Gm-Gg: Acq92OHG6si0LVCt2G487jEaWMU9GsHmmeWOX4f1JXGow+qDWepOSRLoGeZgbHwbifK
+ H8dQb2k+nmSGvcW6fPJaN3MsgKdTaS3J6q1RmuN94seHy1dCxPm8FzIrFCe5SgtWD8ITObeR6j4
+ Y4gHwiVMhy0xoZ3Z/WqBMJkW3xdlUCPKRaJyQ9ykZCU73LVeNd05+AAjjm0chKJbikp12R5A0hX
+ dpM4KT9oZ9ijvz2FeyzqFwTROopEaFurR0Z1DdTA7VRRFtx/fjGeZkuatJaOapbLZCX0JuI42ty
+ CNMjpdzp2ovyW8kLTGY=
+X-Received: by 2002:a05:6a20:6a0a:b0:39f:df57:ee7b with SMTP id
+ adf61e73a8af0-3b30872e716mr1449138637.21.1779336389952; Wed, 20 May 2026
+ 21:06:29 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI6PR06MB7631.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4619d916-95ee-4b9e-00d8-08deb6d7e07f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 May 2026 01:25:43.3392 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: BLXEZVlmdYVdHpcB199IJDL5sd3hBgBTHnJ6E2vjqFPKse1UzsQwkcPXDX+ZrB1J6KnYIQFLOdbPxvhN+tyiXuClo//aIdxv6XhnE2sqFbY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSQPR06MB7182
-Received-SPF: pass client-ip=2a01:111:f403:c405::5;
- envelope-from=kane_chen@aspeedtech.com;
- helo=TYPPR03CU001.outbound.protection.outlook.com
+References: <20260511-feat-mte4-v6-0-8557cc1313b9@gmail.com>
+In-Reply-To: <20260511-feat-mte4-v6-0-8557cc1313b9@gmail.com>
+From: Gabriel Brookman <brookmangabriel@gmail.com>
+Date: Thu, 21 May 2026 00:06:18 -0400
+X-Gm-Features: AVHnY4I_5vg1QUwLw-03cypjxT3bhZ68UlvEGNuaE5d9DoMmkSOODyxiPNQl7zg
+Message-ID: <CA+1f7BCt2-L4PomMK+boHS6Od1odN6SP0rTVJ3Pd10rFhVNP-Q@mail.gmail.com>
+Subject: Re: [PATCH v6 00/15] target/arm: add support for MTE4
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Gustavo Romero <gustavo.romero@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
+ Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -156,48 +121,146 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBDw6lkcmljIExlIEdvYXRlciA8
-Y2xnQGthb2Qub3JnPg0KPiBTZW50OiBUaHVyc2RheSwgTWF5IDIxLCAyMDI2IDEyOjQ0IEFNDQo+
-IFRvOiBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSA8cGhpbG1kQGxpbmFyby5vcmc+OyBDw6lkcmlj
-IExlIEdvYXRlcg0KPiA8Y2xnQHJlZGhhdC5jb20+OyBxZW11LWFybUBub25nbnUub3JnOyBxZW11
-LWRldmVsQG5vbmdudS5vcmcNCj4gQ2M6IEthbmUgQ2hlbiA8a2FuZV9jaGVuQGFzcGVlZHRlY2gu
-Y29tPg0KPiBTdWJqZWN0OiBSZTogW1BVTEwgMjYvNDVdIGh3L21pc2M6IEFkZCBiYXNpYyBBc3Bl
-ZWQgUFdNIG1vZGVsDQo+IA0KPiBPbiA1LzIwLzI2IDE4OjMxLCBQaGlsaXBwZSBNYXRoaWV1LURh
-dWTDqSB3cm90ZToNCj4gPiBIaSBLYW5lLA0KPiA+DQo+ID4gT24gNC8yLzI2IDExOjMxLCBDw6lk
-cmljIExlIEdvYXRlciB3cm90ZToNCj4gPj4gRnJvbTogS2FuZSBDaGVuIDxrYW5lX2NoZW5AYXNw
-ZWVkdGVjaC5jb20+DQo+ID4+DQo+ID4+IEFkZCBhbiBpbml0aWFsIFBXTSBtb2RlbCBmb3IgQXNw
-ZWVkIFNvQ3MsIGluY2x1ZGluZyBkZXZpY2Ugc3RhdGUsDQo+ID4+IHJlZ2lzdGVyIGRlZmluaXRp
-b25zLCBhbmQgYmFzaWMgaW5pdGlhbGl6YXRpb24gYXMgYSBzeXNidXMgZGV2aWNlLg0KPiA+Pg0K
-PiA+PiBTaWduZWQtb2ZmLWJ5OiBDw6lkcmljIExlIEdvYXRlciA8Y2xnQGthb2Qub3JnPg0KPiA+
-PiBTaWduZWQtb2ZmLWJ5OiBLYW5lLUNoZW4tQVMgPGthbmVfY2hlbkBhc3BlZWR0ZWNoLmNvbT4N
-Cj4gPj4gTGluazoNCj4gPj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8yMDI2
-MDIwNDA4MjExMy4zOTU1NDA3LTQta2FuZV9jaGVuDQo+ID4+IEBhc3BlZWR0ZWNoLmNvbQ0KPiA+
-PiBTaWduZWQtb2ZmLWJ5OiBDw6lkcmljIExlIEdvYXRlciA8Y2xnQHJlZGhhdC5jb20+DQo+ID4+
-IC0tLQ0KPiA+PiDCoCBpbmNsdWRlL2h3L2FybS9hc3BlZWRfc29jLmjCoCB8wqDCoCAzICstDQo+
-ID4+IMKgIGluY2x1ZGUvaHcvbWlzYy9hc3BlZWRfcHdtLmggfMKgIDMwICsrKysrKysrKw0KPiA+
-PiDCoCBody9taXNjL2FzcGVlZF9wd20uY8KgwqDCoMKgwqDCoMKgwqAgfCAxMjANCj4gPj4gKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysNCj4gPj4gwqAgaHcvbWlzYy9tZXNvbi5i
-dWlsZMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoCAxICsNCj4gPj4gwqAgaHcvbWlzYy90cmFjZS1l
-dmVudHPCoMKgwqDCoMKgwqDCoMKgIHzCoMKgIDQgKysNCj4gPj4gwqAgNSBmaWxlcyBjaGFuZ2Vk
-LCAxNTcgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQ0KPiA+PiDCoCBjcmVhdGUgbW9kZSAx
-MDA2NDQgaW5jbHVkZS9ody9taXNjL2FzcGVlZF9wd20uaA0KPiA+PiDCoCBjcmVhdGUgbW9kZSAx
-MDA2NDQgaHcvbWlzYy9hc3BlZWRfcHdtLmMNCj4gPg0KPiA+DQo+ID4+IGRpZmYgLS1naXQgYS9o
-dy9taXNjL2FzcGVlZF9wd20uYyBiL2h3L21pc2MvYXNwZWVkX3B3bS5jDQo+ID4NCj4gPg0KPiA+
-PiArc3RhdGljIHZvaWQgYXNwZWVkX3B3bV9jbGFzc19pbml0KE9iamVjdENsYXNzICprbGFzcywg
-Y29uc3Qgdm9pZA0KPiA+PiArKmRhdGEpIHsNCj4gPj4gK8KgwqDCoCBEZXZpY2VDbGFzcyAqZGMg
-PSBERVZJQ0VfQ0xBU1Moa2xhc3MpOw0KPiA+PiArDQo+ID4+ICvCoMKgwqAgZGMtPnJlYWxpemUg
-PSBhc3BlZWRfcHdtX3JlYWxpemU7DQo+ID4+ICvCoMKgwqAgZGV2aWNlX2NsYXNzX3NldF9sZWdh
-Y3lfcmVzZXQoZGMsIGFzcGVlZF9wd21fcmVzZXQpOw0KPiA+DQo+ID4gQWxzbyBwbGVhc2UgZG8g
-bm90IHVzZSB0aGUgbGVnYWN5IEFQSS4gU2VlIGZvciBleGFtcGxlIHRoaXMgY29tbWl0IHRvDQo+
-ID4gY29udmVydCB0byB0aGUgbmV3ZXIgQVBJOg0KPiA+IGh0dHBzOi8vZ2l0bGFiLmNvbS9xZW11
-LXByb2plY3QvcWVtdS8tL2NvbW1pdC9jZTc4OGQzNzQwZg0KPiANCj4gT2ggISBJIHRoaW5rIHRo
-aXMgcGF0Y2ggaXMgZnJvbSAyMDE3IGFuZCB3ZSBkaWRuJ3QgcmVmcmVzaCBpdCB3aGVuIGl0IHdh
-cyBzZW50IDovDQo+IA0KPiBTbywgeWVzLCBLYW5lLCBpZiB5b3UgaGF2ZSB0aW1lIGZvciB0aGlz
-IFFFTVUgY3ljbGUsIHRoYXQgd291bGQgYmUgbmljZS4NCj4gDQo+IFRoYW5rcywNCj4gDQo+IEMu
-DQpIaSBQaGlsaXBwZSwNCg0KVGhhbmtzIGZvciBwb2ludGluZyB0aGlzIG91dC4NCg0KSGkgQ8Op
-ZHJpYywNCg0KSSBjdXJyZW50bHkgaGF2ZSBhIGZldyB0YXNrcyBvbiBoYW5kLiBPbmNlIEkgZmlu
-aXNoIHRoZW0sIEkgd2lsbCBzdWJtaXQgYSBjb2RlIGNoYW5nZQ0KdG8gdXNlIHRoZSBuZXcgQVBJ
-Lg0KDQpCZXN0IFJlZ2FyZHMsDQpLYW5lDQo+IA0KPiANCj4gDQo+ID4NCj4gPj4gK8KgwqDCoCBk
-Yy0+ZGVzYyA9ICJBc3BlZWQgUFdNIENvbnRyb2xsZXIiOw0KPiA+PiArwqDCoMKgIGRjLT52bXNk
-ID0gJnZtc3RhdGVfYXNwZWVkX3B3bTsNCj4gPj4gK30NCj4gPg0KDQo=
+Ping.
+
+https://lore.kernel.org/qemu-devel/20260511-feat-mte4-v6-0-8557cc1313b9@gma=
+il.com/
+
+On Mon, May 11, 2026 at 10:01=E2=80=AFAM Gabriel Brookman
+<brookmangabriel@gmail.com> wrote:
+>
+> This series implements ARM's Enhanced Memory Tagging Extension
+> (MTE4). MTE4 implies the presence of several subfeatures:
+> FEAT_MTE_CANONICAL_TAGS, FEAT_MTE_TAGGED_FAR, FEAT_MTE_STORE_ONLY,
+> FEAT_MTE_NO_ADDRESS_TAGS, and FEAT_MTE_PERM, none of which are
+> currently implemented in QEMU. This patch implements all five.
+>
+> Testing:
+>   - Included for FAR and STORE_ONLY.
+>   - The MTE_CANONICAL/NAT test from v2, modified so MTE_CANONICAL is
+>     enabled in user mode (removed from tree in v3).
+>   - A bare-metal testsuite that sets up page tables for S1 and S2
+>     translation, to test the Tagged NoTagAccess fault.
+>   - The bare-metal testsuite also was used to test LDGM and similar
+>     instructions not permitted in user-mode.
+>   - The bare-metal testsuite also was used to test the mtx related
+>     patches.
+>
+> Thanks,
+> Gabriel Brookman
+>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3116
+> Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
+> ---
+> Changes in v6:
+> - Moved certain functions between patches (Richard)
+> - Added G_NORETURN to canonical_tag_write_fail
+> - Updated ldg and bounds check functions to Richard's versions, tested
+>   these
+> - Link to v5: https://lore.kernel.org/qemu-devel/20260504-feat-mte4-v5-0-=
+232a648e63c6@gmail.com
+>
+> Changes in v5:
+> - MTX check feature split into three commits as per Richard's suggestion
+> - MTX passed down to instruction helpers in a new argument
+> - allocation_tag_mem_probe checks for probe in MTEPERM case
+> - tbi helper combined into tbi_or_mtx_helper
+> - MTX checks added to sme and sve functions
+> - bug with type conversion in LDGM helper fixed
+> - fixed multi-page tag-check bug and multi-page ST2G bug
+> - removed erroneous changes to _stub functions
+> - reorganized PAuth & MTX interactions to make them more readable
+> - Link to v4: https://lore.kernel.org/qemu-devel/20260309-feat-mte4-v4-0-=
+daaf0375620d@gmail.com
+>
+> Changes in v4:
+> - MTX now interacts with PAuth.
+> - Canonical tag checking only takes place in canonically tagged regions
+> - MTX bits enable tag checking
+> - MTX bits are placed in MTEDESC for access in mte_check helper
+> - Separate feature bits are used to delineate each feature
+> - PRCTL functions renamed and refactored as per Richard's suggestion
+> - Link to v3: https://lore.kernel.org/qemu-devel/20260105-feat-mte4-v3-0-=
+86a0d99ef2e4@gmail.com
+>
+> Changes in v3:
+> - Added prctl for MTE_STORE_ONLY to linux-user
+> - mte_check is no longer generated on read when STORE_ONLY enabled
+> - Implemented LDGM instruction
+> - Removed "long" datatype as per Richard's suggestion
+> - Implemented masking for VA range checks when MTX bit enabled
+> - Implemented MTE_PERM, with NoTagAccess attribute
+> - Removed user-mode test for MTE_CANONICAL, since can't enable in
+>   user-mode.
+> - Removed TBI from mte_check generation logic
+> - Link to v2: https://lore.kernel.org/qemu-devel/20251116-feat-mte4-v2-0-=
+9a7122b7fa76@gmail.com
+>
+> Changes in v2:
+> - Added tests for STORE_ONLY.
+> - Refined commit messages.
+> - Added FEAT_MTE_CANONICAL_TAGS and FEAT_MTE_NO_ADDRESS_TAGS + tests.
+> - fixed TCSO bit macro names.
+> - Link to v1: https://lore.kernel.org/qemu-devel/20251111-feat-mte4-v1-0-=
+72ef5cf276f9@gmail.com
+>
+> To: qemu-devel@nongnu.org
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Cc: Laurent Vivier <laurent@vivier.eu>
+> Cc: Helge Deller <deller@gmx.de>
+> Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+>
+> ---
+> Gabriel Brookman (15):
+>       target/arm: implement MTE_PERM
+>       target/arm: add TCSO bitmasks to SCTLR
+>       target/arm: mte_check unemitted on STORE_ONLY load
+>       linux-user: add MTE_STORE_ONLY to prctl
+>       target/arm: emit tag check when MTX without TBI
+>       target/arm: add MTX to MTEDESC and DisasContext
+>       target/arm: add canonical tag check helper
+>       target/arm: add canonical MTE check logic
+>       target/arm: load on canonical tag loads ext bits
+>       target/arm: fault on tag store to canonical tag
+>       target/arm: skip tag bit bounds check if MTX is on
+>       target/arm: tag is not a part of PAuth with MTX
+>       docs: add MTE4 features to docs
+>       tests/tcg: add test for MTE FAR
+>       tests/tcg: add test for MTE_STORE_ONLY
+>
+>  docs/system/arm/emulation.rst        |   5 ++
+>  linux-user/aarch64/mte_user_helper.c |  11 ++-
+>  linux-user/aarch64/mte_user_helper.h |  14 ++--
+>  linux-user/aarch64/target_prctl.h    |   6 +-
+>  target/arm/cpu-features.h            |  15 ++++
+>  target/arm/cpu.h                     |   5 ++
+>  target/arm/gdbstub64.c               |   2 +-
+>  target/arm/helper.c                  |  36 +++++++--
+>  target/arm/internals.h               |  40 ++++++++--
+>  target/arm/ptw.c                     |  60 ++++++++++++--
+>  target/arm/tcg/cpu64.c               |   8 ++
+>  target/arm/tcg/helper-a64-defs.h     |  16 ++--
+>  target/arm/tcg/helper-a64.c          |   7 +-
+>  target/arm/tcg/hflags.c              |  25 +++++-
+>  target/arm/tcg/mte_helper.c          | 146 +++++++++++++++++++++++++++++=
+------
+>  target/arm/tcg/pauth_helper.c        |  18 ++++-
+>  target/arm/tcg/sme_helper.c          |   4 +-
+>  target/arm/tcg/sve_helper.c          |   6 +-
+>  target/arm/tcg/translate-a64.c       |  45 +++++++----
+>  target/arm/tcg/translate.h           |   3 +
+>  tests/tcg/aarch64/Makefile.target    |   2 +-
+>  tests/tcg/aarch64/mte-10.c           |  49 ++++++++++++
+>  tests/tcg/aarch64/mte-9.c            |  48 ++++++++++++
+>  tests/tcg/aarch64/mte.h              |   7 +-
+>  24 files changed, 487 insertions(+), 91 deletions(-)
+> ---
+> base-commit: ee7eb612be8f8886d48c1d0c1f1c65e495138f83
+> change-id: 20251109-feat-mte4-6740a6202e83
+>
+> Best regards,
+> --
+> Gabriel Brookman <brookmangabriel@gmail.com>
+>
 

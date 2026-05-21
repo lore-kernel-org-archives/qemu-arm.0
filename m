@@ -4,101 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5C9CCD5BAC
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 13:21:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7234CD5BB3
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 13:21:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQ3IC-0004j9-CA; Thu, 21 May 2026 09:18:28 -0400
+	id 1wQ3Iy-0005w9-LW; Thu, 21 May 2026 09:19:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wQ3Hk-00045t-Li
- for qemu-arm@nongnu.org; Thu, 21 May 2026 09:18:02 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wQ3It-0005l9-JJ
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 09:19:13 -0400
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wQ3Hg-00004s-OJ
- for qemu-arm@nongnu.org; Thu, 21 May 2026 09:18:00 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-48896199cbaso47729575e9.1
- for <qemu-arm@nongnu.org>; Thu, 21 May 2026 06:17:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wQ3Ir-0000jX-5f
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 09:19:10 -0400
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-651c7ddf514so5710204d50.1
+ for <qemu-arm@nongnu.org>; Thu, 21 May 2026 06:19:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779369547; cv=none;
+ d=google.com; s=arc-20240605;
+ b=HS1ABtWcQa/pqdhs/X6KWUReQv/K+qBAwUT62B/bGA1Gjks0BHjLmXxiaJ0M793cdi
+ pBUMpMV4sJgPVpYkS1kGicQOYwNf4A2gALCLcize0iiGUFw3UR8xotkcVzA123SlesDT
+ 8gohLkARTGQ3Un0QkAHUwjWWxoUEg9wVVv8XAkdJDQkJ6BoE1EapNfOw2whGVoVJMYEe
+ /Np+v+d6XFF4emmS0F59ELdqq66FG0YYrnG7q/V5I2E/C3jUtMwpuBrr/AjUs+Zra0NE
+ 8vvsaGlXt0nIS5S0LpWAQNJsMOgpHvWApsgLig/rxnhtPIgEOjOHXp0Y4wYPRsAzsXDN
+ Mbtw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=4ADeTWTbLEZgRpKwc8gUJG1eyXF4WIMUY624CQyg+ZQ=;
+ fh=PWMfhUNF+Vicf+lhVvRf0f/fQaU6ZydFaSw36NeOYM8=;
+ b=INVWfcIzBBjUtID0o7HK4m0IvfCDmZHpJ0GX0NvmuGwxCFF5DUiegTXvrc2LrbNYKb
+ rKg9lGBTDqb/iC1i5dEQ+HAh3PMqDNzG36ivcYo5LxzIc903ee5BxxFyauHlsICO8F3z
+ 9+DyMdQBD6Eyn+ykIFFuZWYW+BJpXW4f9zYlq43fVasrHqPefTjlOf2GVhs0wNd2AK2u
+ os9HVJ0vP/PXtis9fNBhhxvfljxMi18xd1+dGudOFZnNUjhbpqrZjSX9sqwwcq/Xaip4
+ oUZK9eTUCvOOzlaDImPWSesdG4wXAsINlKCkXkqlWxCEjnxWDZF5TIfd6TrK9ttDLqQw
+ +MuA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779369472; x=1779974272; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rlJ4jgLoEetm/zC8YlvKKOv8rd+Yctnv9k5IQArWiHQ=;
- b=tR+3WSL+a4Dk3KMaiFPHqLE7fhpLoma54l+jt2xZTrzrBn3IvrHuFVs/R7F32y/vLq
- m6reed1km+3GxapRigKwhWw6vqY8p6oCpal6J+/ZQf1OeuWHePrg3NZIePqUl23lXkZZ
- OYW3InxaNMdK7zeQ1cy3Fe2AWHGeRahXYrV55t2l7gm4RvwEHESq95BfZg36Q11fBiec
- s+YYiKj2Z/6yEBpkAKYJbMofGPqz9tq96BNg3Y+e1OHiJWoiQLNqqzKCqyrGPRCVvYGT
- Kp2SDK8fgwb6HNkyXDyz7BbbNFF49zuZITQJEm+9h2DtN78hjLmvnWVUafKjiistzJXs
- kYHA==
+ d=linaro.org; s=google; t=1779369547; x=1779974347; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=4ADeTWTbLEZgRpKwc8gUJG1eyXF4WIMUY624CQyg+ZQ=;
+ b=QVhipjxQ0REumMyq0rGFuZWQ7k/KUurfGFxKNH9OVTnmonmXeYwa5dsd+/ffK+cz/N
+ ij3fopIjTTVjY2oOaa991Wx5AN1Zpx0J/0Sk2R0p0cJyGucKJv2fL3M7NsrXSvyJcUVi
+ fyCmlsOZoavvhj/VcQ96iopA4JcnmiRg8kjWjzsFuGRR7cXMyO/FvrIiQ/NzOJPgGXvm
+ k4Gx9VsAqN/ACv9x8D9fPKYy6h7BpIfp8SdaGbgGrCa/qMAfpscapQmEH+aOyM5fbUxt
+ /ZEHXnmKnywB3G/1Rxm/iHHn2vcMFr1aCqvbdqhLo0HM66unURRQuNYgjCdETRWUaWes
+ RLZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779369472; x=1779974272;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=rlJ4jgLoEetm/zC8YlvKKOv8rd+Yctnv9k5IQArWiHQ=;
- b=S3YBlMBeSzQHklUAIlXNNu+bl4bubUy/3eg6R3QeDB+9Odnfogu5B4FfsMG12sh5bx
- MsnUVUZeY9RZEYOSH1VvkOSkECXxRLUiFXt4r2NLi5MaXMVjV8Y325fMCG3ZFcUAzFXA
- Aszca7BBEruk137b0qivI2APMwUcE6eiQGvdMiSMtMECAaIAvbkyqxfkoEUm8d56EBvY
- Tw78fRsgAiMKXwXgyUtx5Q4N78mwanEx3nQiWDJvrsQgeWvhhZxJTbz5ugNvC21O8Iux
- fgFKtMFW06F+PoEeICVrljCm1nE+SLYzNEfQ6iyCpEOkoXKbXeBuxb9QbMxXh7JqXCS2
- 2Ylw==
+ d=1e100.net; s=20251104; t=1779369547; x=1779974347;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=4ADeTWTbLEZgRpKwc8gUJG1eyXF4WIMUY624CQyg+ZQ=;
+ b=avVdGbvh9eyzIdAdM8822JPsGXreAfRCuuxiQEYXz0HPfz8muETmvCWS36XCapBvws
+ J1y/tfM0kIfCwk3+WMaOJ8VmPqawXXcxSOEYHCWipzISq6XqViF1a3Y8u+6wAyPSAffY
+ PI3fONaVTCZYC8tvuYKZAt2Q8uA5IPHtfV7BPd3dlDjQ6oOtths7mJ4wJb51qbigEeYi
+ dWEr1cg6r/WP4mE0xTJQVFW6qXt0sz0ZdFRSk9bcNjQUMuqgwjDNvaLhdoyJat4TJel1
+ MnN4sHrqD7VYsrCweTMhsxji2XJvwCAxqEqEsCyEG9Ow8dA8LWgL+eLvGiGzT+RYv4BR
+ 2IlA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9R/eFfdUUzmMyz41psSldsth2uhUe0Ce1h8X6N6TujvUKu2wq0UnLOzBPcsNbuSCNguK77YgSuBg==@nongnu.org
-X-Gm-Message-State: AOJu0Yxa7dLqvV+xeBGb8D8ZjcpO4j+lllwz53ofmCX9pXkFHo7Buz/1
- YxGDzNlfd3qSXk14tIt+CoMq0FEm7vqh1ljZaumhDJFpvTG+QHlEDC6XXaXy2HtgJH501zB+HHI
- V4XpPUo0=
-X-Gm-Gg: Acq92OGY1g0+a23W3Z9mQpScJVz9Psnk5YHbtjYWUNlLTyh9ICFwUNs6WIjG14cN5Tp
- ehqLmSzUPVbk/9Q0H6897U7gOtFt/lCTcnjRu0qtS46DMEnuKbzFsUlY6xVjRCNpdJ+PCEeji/d
- NWorvFG/3URvM5lAtwIaaFUI8i/o5u2wJ2TcdOp9HSxTvfNuh1/ODVp/FyvVRqmAJbpeo5GeCQn
- ZNW7aACZ4mMrVd3P/38wpDepPdVRzo45JpCwxaT+0ya5ZffRiWUifw9S9dC/m74sH9Qm3LVV2OQ
- xG9yLf4cKOvQyRtbfx+qK6YnGSeeWdc3xrd2q3/NkbGmAs+cG5o8FVeBcMQKnBPXPU+KN0tVBkw
- 5bwMHhgChgdADaVvxxp02Y4USbllfwGd2fSKXY0nCYR1thOtxF0let5yhzMpt4aaw+p3O4ZiQ5f
- Xt3ICCLvzvqHPNTlwNb3wocgI=
-X-Received: by 2002:a05:600c:8585:b0:490:3890:605b with SMTP id
- 5b1f17b1804b1-49038906125mr28888075e9.31.1779369472317; 
- Thu, 21 May 2026 06:17:52 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4903ad2ee77sm23279625e9.0.2026.05.21.06.17.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 May 2026 06:17:48 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id E27905F886;
- Thu, 21 May 2026 14:17:40 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Thomas Huth <th.huth+qemu@posteo.eu>, Song Gao <gaosong@loongson.cn>,
- John Snow <jsnow@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Kyle Evans <kevans@freebsd.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Cleber Rosa <crosa@redhat.com>, Warner Losh <imp@bsdimp.com>,
- Brad Smith <brad@comstyle.com>, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Brian Cain <brian.cain@oss.qualcomm.com>, Fabiano Rosas <farosas@suse.de>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v2 16/16] docker: Remove LegacyKeyValueFormat warnings in
- generated files
-Date: Thu, 21 May 2026 14:17:38 +0100
-Message-ID: <20260521131739.540157-17-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260521131739.540157-1-alex.bennee@linaro.org>
-References: <20260521131739.540157-1-alex.bennee@linaro.org>
+ AFNElJ+cUy3c1jadzuS/RRL1LlSCGL4Yuo4NDBieDe+J7qpzw8BT7u7FTnzPkucKVXjdguh9s2jBEwQf3A==@nongnu.org
+X-Gm-Message-State: AOJu0YxRP5qlM651H5TKhKvFUHV3kDiZg+Tx7uqUJLrQrjLVhZQyjH0N
+ D4gdtVJ685U8cTgECRW4tIbkfMRSAljOZAk2zZlRnuvDJxtz3au1XW1RDSBNceQTI4ZCXcouY9P
+ tt6Ueb1pxdZhcNUUdfPmjFNKmVt3KDPibmzuVmuhw1w==
+X-Gm-Gg: Acq92OFr3SL/xq/pxKFpAQCJM+OQkflQmjQAP+aRBRO/2Sv6DWRMAiWyShHa/yLuzIM
+ DgdPJO15UcxtNY5K003tD1av7g5r5g8p1X54S4497KO6jYh5GaaBWIqsoBk7N+MuqDSw8MPPBKQ
+ yz3Pe6EkHRj+uHn8N80KD1rM/ocldCbAjnOZCX+BzWWe4iSg3jU0W/8JzLIn/rpIiyzzGU9H565
+ v7q23U4P6JrCksg5ZLYXqDf6MrE/3Elddd/vW4xhmvKh02QT/+H2YrEUQDALg/WvKNWawn71LYX
+ kcE/KihLcjy3Zev+LWZDHSxcttpH6H64Ml4ZhvF9rTboijnEyc71ukNwqW1vSxI+PwY=
+X-Received: by 2002:a05:690e:43c1:b0:651:bacc:77c with SMTP id
+ 956f58d0204a3-65eadfd336emr1605137d50.26.1779369547270; Thu, 21 May 2026
+ 06:19:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
+References: <20260520171820.848839-1-richard.henderson@linaro.org>
+ <20260520171820.848839-29-richard.henderson@linaro.org>
+In-Reply-To: <20260520171820.848839-29-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 21 May 2026 14:18:55 +0100
+X-Gm-Features: AVHnY4KagCTHOrZmxJxXHto_JjfpwLFPOmufqrJLgDI0jubjrm-GqO1PStTJduA
+Message-ID: <CAFEAcA-JQxegrEPrhoTNx3Q_1ctiE0EYQCG5Q3t5sVKBvnSLBw@mail.gmail.com>
+Subject: Re: [PATCH v5 28/30] fpu: Introduce float_status.e4m3_nan_is_snan
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,294 +116,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+On Wed, 20 May 2026 at 18:22, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Introduce a separate control from float_snan_rule
+> that applies only to the OCP E4M3 format.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-Display lcitool changes before generated ones.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Update lcitool refresh script to not use legacy 'ENV key value'
-format:
-https://docs.docker.com/reference/build-checks/legacy-key-value-format/
-
-Run "make lcitool-refresh" to update the generated container files.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Message-ID: <20260518102222.80735-8-philmd@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/lcitool/refresh                                | 12 +++++++-----
- tests/docker/dockerfiles/alpine.docker               |  2 +-
- tests/docker/dockerfiles/centos9.docker              |  2 +-
- .../docker/dockerfiles/debian-all-test-cross.docker  | 10 ++++++----
- tests/docker/dockerfiles/debian-amd64-cross.docker   |  2 +-
- tests/docker/dockerfiles/debian-arm64-cross.docker   |  2 +-
- tests/docker/dockerfiles/debian-armhf-cross.docker   |  2 +-
- tests/docker/dockerfiles/debian-i686-cross.docker    |  2 +-
- .../docker/dockerfiles/debian-mips64el-cross.docker  |  2 +-
- tests/docker/dockerfiles/debian-mipsel-cross.docker  |  2 +-
- tests/docker/dockerfiles/debian-ppc64el-cross.docker |  2 +-
- tests/docker/dockerfiles/debian-riscv64-cross.docker |  2 +-
- tests/docker/dockerfiles/debian-s390x-cross.docker   |  2 +-
- tests/docker/dockerfiles/debian.docker               |  2 +-
- tests/docker/dockerfiles/fedora-rust-nightly.docker  |  2 +-
- tests/docker/dockerfiles/fedora-win64-cross.docker   |  2 +-
- tests/docker/dockerfiles/fedora.docker               |  2 +-
- tests/docker/dockerfiles/opensuse-leap.docker        |  2 +-
- scripts/git.orderfile                                |  4 ++++
- 19 files changed, 33 insertions(+), 25 deletions(-)
-
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index 4289cc381a6..d4d19e72ec6 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -77,7 +77,7 @@ def generate_dockerfile(host, target, project="qemu", cross=None, trailer=None,
-         trailer = "\n".join(add_user_mapping)
- 
-     if enable_rust:
--        trailer += "\nENV ENABLE_RUST 1\n"
-+        trailer += "\nENV ENABLE_RUST=1\n"
-     generate(filename, cmd, trailer)
- 
- 
-@@ -175,7 +175,8 @@ debian_all_test_cross_compilers = [
-     "  dpkg-dev\\\n",
-     "  gdb-multiarch\\\n",
-     "  libclang-rt-dev\n",
--    "ENV AVAILABLE_COMPILERS gcc-aarch64-linux-gnu \\\n",
-+    "ENV AVAILABLE_COMPILERS=\"\\\n",
-+    "  gcc-aarch64-linux-gnu \\\n",
-     "  libc6-dev-arm64-cross \\\n",
-     "  gcc-arm-linux-gnueabihf \\\n",
-     "  libc6-dev-armhf-cross \\\n",
-@@ -196,7 +197,8 @@ debian_all_test_cross_compilers = [
-     "  gcc-s390x-linux-gnu \\\n",
-     "  libc6-dev-s390x-cross\\\n",
-     "  gcc-sh4-linux-gnu \\\n",
--    "  libc6-dev-sh4-cross\n",
-+    "  libc6-dev-sh4-cross \\\n",
-+    "  \"\n",
-     "RUN if dpkg-architecture -e amd64; then \\\n",
-     "  export AVAILABLE_COMPILERS=\"${AVAILABLE_COMPILERS} gcc-hppa-linux-gnu libc6-dev-hppa-cross\"; \\\n",
-     "  export AVAILABLE_COMPILERS=\"${AVAILABLE_COMPILERS} gcc-m68k-linux-gnu libc6-dev-m68k-cross\"; \\\n",
-@@ -208,8 +210,8 @@ debian_all_test_cross_compilers = [
-     "apt install -y --no-install-recommends \\\n",
-     "${AVAILABLE_COMPILERS} && \\\n",
-     "dpkg-query --showformat '${Package}_${Version}_${Architecture}' --show > /packages.txt\n",
--    "ENV QEMU_CONFIGURE_OPTS --disable-docs\n",
--    "ENV DEF_TARGET_LIST aarch64-linux-user,alpha-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sh4-linux-user,sparc64-linux-user\n",
-+    "ENV QEMU_CONFIGURE_OPTS=--disable-docs\n",
-+    "ENV DEF_TARGET_LIST=aarch64-linux-user,alpha-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sh4-linux-user,sparc64-linux-user\n",
- ]
- 
- def cross_build(prefix, targets):
-diff --git a/tests/docker/dockerfiles/alpine.docker b/tests/docker/dockerfiles/alpine.docker
-index a7ee85fcda7..118c6e8eeaf 100644
---- a/tests/docker/dockerfiles/alpine.docker
-+++ b/tests/docker/dockerfiles/alpine.docker
-@@ -141,4 +141,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/centos9.docker b/tests/docker/dockerfiles/centos9.docker
-index 41a1225856e..0d5b5fa7f59 100644
---- a/tests/docker/dockerfiles/centos9.docker
-+++ b/tests/docker/dockerfiles/centos9.docker
-@@ -145,4 +145,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/debian-all-test-cross.docker b/tests/docker/dockerfiles/debian-all-test-cross.docker
-index 287770a995a..a10ffc73500 100644
---- a/tests/docker/dockerfiles/debian-all-test-cross.docker
-+++ b/tests/docker/dockerfiles/debian-all-test-cross.docker
-@@ -61,7 +61,8 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
-   dpkg-dev\
-   gdb-multiarch\
-   libclang-rt-dev
--ENV AVAILABLE_COMPILERS gcc-aarch64-linux-gnu \
-+ENV AVAILABLE_COMPILERS="\
-+  gcc-aarch64-linux-gnu \
-   libc6-dev-arm64-cross \
-   gcc-arm-linux-gnueabihf \
-   libc6-dev-armhf-cross \
-@@ -82,7 +83,8 @@ ENV AVAILABLE_COMPILERS gcc-aarch64-linux-gnu \
-   gcc-s390x-linux-gnu \
-   libc6-dev-s390x-cross\
-   gcc-sh4-linux-gnu \
--  libc6-dev-sh4-cross
-+  libc6-dev-sh4-cross \
-+  "
- RUN if dpkg-architecture -e amd64; then \
-   export AVAILABLE_COMPILERS="${AVAILABLE_COMPILERS} gcc-hppa-linux-gnu libc6-dev-hppa-cross"; \
-   export AVAILABLE_COMPILERS="${AVAILABLE_COMPILERS} gcc-m68k-linux-gnu libc6-dev-m68k-cross"; \
-@@ -94,8 +96,8 @@ DEBIAN_FRONTEND=noninteractive eatmydata \
- apt install -y --no-install-recommends \
- ${AVAILABLE_COMPILERS} && \
- dpkg-query --showformat '${Package}_${Version}_${Architecture}' --show > /packages.txt
--ENV QEMU_CONFIGURE_OPTS --disable-docs
--ENV DEF_TARGET_LIST aarch64-linux-user,alpha-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sh4-linux-user,sparc64-linux-user
-+ENV QEMU_CONFIGURE_OPTS=--disable-docs
-+ENV DEF_TARGET_LIST=aarch64-linux-user,alpha-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sh4-linux-user,sparc64-linux-user
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian-amd64-cross.docker b/tests/docker/dockerfiles/debian-amd64-cross.docker
-index 35c593502fc..061cd8e9b82 100644
---- a/tests/docker/dockerfiles/debian-amd64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-amd64-cross.docker
-@@ -188,4 +188,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
-index d188d538365..3dfa60fdfd7 100644
---- a/tests/docker/dockerfiles/debian-arm64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
-@@ -187,4 +187,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
-index 988c87075f6..401c64269c1 100644
---- a/tests/docker/dockerfiles/debian-armhf-cross.docker
-+++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
-@@ -185,4 +185,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/debian-i686-cross.docker b/tests/docker/dockerfiles/debian-i686-cross.docker
-index d720ebb0bca..8b60c7b085f 100644
---- a/tests/docker/dockerfiles/debian-i686-cross.docker
-+++ b/tests/docker/dockerfiles/debian-i686-cross.docker
-@@ -185,4 +185,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/debian-mips64el-cross.docker b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-index d139c10c555..fc83fc0c00b 100644
---- a/tests/docker/dockerfiles/debian-mips64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-@@ -183,4 +183,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/debian-mipsel-cross.docker b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-index 2cfc33e8249..5f105b1d687 100644
---- a/tests/docker/dockerfiles/debian-mipsel-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-@@ -183,4 +183,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/debian-ppc64el-cross.docker b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-index 7198036380b..2a7e8cba056 100644
---- a/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-@@ -186,4 +186,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/debian-riscv64-cross.docker b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-index eb49da9781a..349de3a0bbb 100644
---- a/tests/docker/dockerfiles/debian-riscv64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-@@ -186,4 +186,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/debian-s390x-cross.docker b/tests/docker/dockerfiles/debian-s390x-cross.docker
-index f4c7896a75f..8bc42b1e00b 100644
---- a/tests/docker/dockerfiles/debian-s390x-cross.docker
-+++ b/tests/docker/dockerfiles/debian-s390x-cross.docker
-@@ -185,4 +185,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/debian.docker b/tests/docker/dockerfiles/debian.docker
-index 85b78f7e5f8..ee8b313d654 100644
---- a/tests/docker/dockerfiles/debian.docker
-+++ b/tests/docker/dockerfiles/debian.docker
-@@ -175,4 +175,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/fedora-rust-nightly.docker b/tests/docker/dockerfiles/fedora-rust-nightly.docker
-index 5e88354f133..4f84b803798 100644
---- a/tests/docker/dockerfiles/fedora-rust-nightly.docker
-+++ b/tests/docker/dockerfiles/fedora-rust-nightly.docker
-@@ -185,4 +185,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
-index 751789e849b..c1e63feb46f 100644
---- a/tests/docker/dockerfiles/fedora-win64-cross.docker
-+++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
-@@ -120,4 +120,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/fedora.docker b/tests/docker/dockerfiles/fedora.docker
-index 393ac0cce73..a6996917c4b 100644
---- a/tests/docker/dockerfiles/fedora.docker
-+++ b/tests/docker/dockerfiles/fedora.docker
-@@ -162,4 +162,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/tests/docker/dockerfiles/opensuse-leap.docker b/tests/docker/dockerfiles/opensuse-leap.docker
-index 4b126b7e7de..fc363c647cd 100644
---- a/tests/docker/dockerfiles/opensuse-leap.docker
-+++ b/tests/docker/dockerfiles/opensuse-leap.docker
-@@ -149,4 +149,4 @@ ARG UID
- RUN if [ "${USER}" ]; then \
-   id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
- 
--ENV ENABLE_RUST 1
-+ENV ENABLE_RUST=1
-diff --git a/scripts/git.orderfile b/scripts/git.orderfile
-index 8edac0380ba..4b693c9deec 100644
---- a/scripts/git.orderfile
-+++ b/scripts/git.orderfile
-@@ -39,3 +39,7 @@ qga/*.json
- # code
- *.c
- *.c.inc
-+
-+# Generated Dockerfiles
-+tests/lcitool/refresh
-+tests/docker/dockerfiles/*
--- 
-2.47.3
-
+thanks
+-- PMM
 

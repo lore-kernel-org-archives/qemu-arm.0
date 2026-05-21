@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D31ABCD5BB5
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 13:19:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D9A6CD5BAC
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 13:19:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQ3I9-0004cr-Ld; Thu, 21 May 2026 09:18:25 -0400
+	id 1wQ3I8-0004ac-OZ; Thu, 21 May 2026 09:18:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wQ3Ho-00047R-T6
- for qemu-arm@nongnu.org; Thu, 21 May 2026 09:18:06 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ id 1wQ3Hl-000467-VQ
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 09:18:02 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wQ3Hg-0008PF-U0
- for qemu-arm@nongnu.org; Thu, 21 May 2026 09:18:04 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-48fde648a71so44102155e9.0
- for <qemu-arm@nongnu.org>; Thu, 21 May 2026 06:17:42 -0700 (PDT)
+ id 1wQ3Hg-0008RW-R8
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 09:18:01 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4903f7a90d1so450835e9.2
+ for <qemu-arm@nongnu.org>; Thu, 21 May 2026 06:17:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779369461; x=1779974261; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=5HDNc110nMdpveWnNoW1zm1rNVEYkyn1K2P5WVdIFfU=;
- b=E4tkP4cqPJFD3BraIwp2XNtu2G8+gBPcZ4o6sbEHomm7m8ZcLJHMDlCiR9X9+xzwaU
- Gnfa04Eb7vL7Wd5pwpCPD2oaiz6o8b/1DIsz57xsH7UzeFXFpmjeRaAx4gLVttSik+Mh
- 2s8WtEeBv++5RWv9HUVmEcB3lsTLpMXWP4DEDnMktTRD1/yMadJXy3UjLhEdqKfKJZ7r
- /CHc8pr5KZAQD06TKwdEKysVJKamt0ZnyXYucceNktc32PeCE90ECFi3mRR4EzXDytZs
- Al2N7qqrCrWVD8IuZ/kOsEISxDFGzU2DZVTI/8vFbyb3lsjrxtfzuaZbGqkCn3Warc43
- 0gHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779369461; x=1779974261;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1779369464; x=1779974264; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5HDNc110nMdpveWnNoW1zm1rNVEYkyn1K2P5WVdIFfU=;
- b=gdOGG34zdf1vOHPC3RLh6BWgxKCUKbtqtyIifV0zHhBLO77CEeSkG/93LzuqPO+X3D
- 34FFjU7HIEVcWfZZRuGS4S+KcQ9/mwxqFLq7sZlYQgY83RK7MTSZTIY5EN7ZG3/4VHCf
- OGgYeAkwRgQj9quEqZ2jK8uFN2DejWRzbgCqLvFb5tUIZzsoPzDud9MZtiKKsNRDF7bG
- P883OsWrxFMdjoc7jjowXwUaVOHtkoqpdCwWFxNLjcCboVp/dujRrBEPxunW3KcyJabt
- eDabR3aZKDm2GYLRt+DvRMYZCG7nO6eRmLIRvqkfmOhEYCxKYuraYXFGVTF4HmllQlzN
- JplA==
+ bh=zDXJ8MMK1Q0dgtGgn75QMd7NdERnosrMLf1EdSQs/GE=;
+ b=wTOtj9WCz7hWUSH0ke5xys9KQjDpOKc1kAtCfV+fuXX98hgwlTQJDq+b88Os8o4hJ5
+ jJcFcmi2RErjuFBIr33n1IB9Lv8kyrQHgfw0j40Jjyy7Q1Rx6uEDmCvILBBzraUbGhjF
+ 4w73WkQt7yql14UmJhqNYddlxEB1rzdyYntPxsnQ2amQzKNZ1FFEP03r7c6Dn578e5kh
+ M/htu5PhvD9F3pMvCBow77Lj7DHhsVwo8zakWxNqOP1UTXguW9aBRb65ND34fRzlWKm4
+ xUtXW/QJhjKY+AWgoKLqmEYsZ7Y1mf/rJyn+796Ph/wxMV0JHFI/DfyXlSBnwoxWplIU
+ toiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779369464; x=1779974264;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=zDXJ8MMK1Q0dgtGgn75QMd7NdERnosrMLf1EdSQs/GE=;
+ b=gcwl91cspRnihnfG2bxXJbgzwyiEj0CkkAIBBj4ELhHNyXzQ6HY1bjdNn8983++cR5
+ t5wiLhWwmNfu8/LgCRnbkEJMAq5nY5TMji3riN8oLMaHNbPoa2W6E9oUHYRmVtoTuG8y
+ fgtBrbPUZYxySwykarBUJVBN0fHRmOf+o874ibbNUD34AWuqfG9PLWOmUTs1474WYGow
+ oXqDs+tfRWF9ac1gACMQFNG6XewdA3h96dcDgBdyLfZyxRdt/KeL5wzv+yhtm1vg15VY
+ w6rIiIVdzj2kZ2F4XNWPhKZ9dTHHd+CSMe1dNUS0qzfzEpR9Y1wozHBa5jlBqavfnEYY
+ crww==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+QAk3VgTbRahaPwpfjlTsu0rJWu5P88eWRjWJbVo7sWyssqs8jZR0U8Dh20LqUXxLjuI9mbsd7LQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzlUauHvLHx3I1gEEpxKH67hWN/wTC5CLnwfj5JDOUqq8IR8Ij/
- AzZjK70cUc5EhywfEKPQEDmKaVFY0rqRXLoUwf3N4nu6gqOfWnYT3K3NAOKsHA6lEOY=
-X-Gm-Gg: Acq92OGY7gVEazchnqb+g5LQxr/QKpNA1qsrfenuNISOyNJij2KrqVF4ryveTINrq8x
- sqlNn9GtCOvTL6i0W7yzEN6fSKzK24iiE6idVEF43OW7kxUXr3jr5qEPa4ZWiLv2TPMYl1YTqyL
- 7i+cNoPm4m2MeVH1yK0yraIkZE3x0rA0NiRZvC04mYRx+n23ybqoF89Y5HtrtT0PVysMQ5TAVx4
- qU0GImmoxXprLMisf8O5un3Jh/Bg2CFzDSnJLjpw9bB3VPrL4LV5XvVsrgL30jZXQYE2AcRKlJd
- 9/I9PWYf/sLeOSq2j/x3RTLERSzjVQkjXhzj8K9CRQMhCEhIdwOGmB9NdEBLpwjh6TJuMoss9Ib
- mqIdBFVzi7HZBUYHFc5TCo3UOEUyartcfmANDrnbdRIBj6d9UhDE3QuxGFiQ3gE1m93gXxBylOO
- joeK8VovXqdMIjz076p4NgeFQ6pAylDp7jSw==
-X-Received: by 2002:a05:600c:621a:b0:48d:50a:6ef4 with SMTP id
- 5b1f17b1804b1-490360ae7e3mr31738935e9.11.1779369460791; 
- Thu, 21 May 2026 06:17:40 -0700 (PDT)
+ AFNElJ/14X0904yeFkfDgZ7LNFNr2Uga7VnHqX/Q4pT2keQl7O3J84GCd9J9oOy63pkUO/6dZQFnHLf27Q==@nongnu.org
+X-Gm-Message-State: AOJu0YzAw4HsT3pttyBh2k9TaLSIvdTYK8QV5hLdYug+um9ONTx21Wzy
+ H2lrdWoz3zblp/NbtPOg2iBTRyMikwGSMHDA9MHFWolx4XSgcV1rzv4BQBAzfuGPcUE=
+X-Gm-Gg: Acq92OF4k/qVrJhLurKZU7rFA/cvW3pYidNQqgAsM/k8HJWcqZLmDWBN1EmBCf/BFAQ
+ tjpJQL1xb8NMf4BdpBI1Kkxb4b0ZJ1in4SRtFi/4OU9rzAi8Nbb15S0BxFJTWkJU3AwZ+JY6zkd
+ gElZ3HjwFgtiOBDRyOg5IT3Q+tI++Q63Y13qv4s8SUI4AbQcQafzXl8AFmp6CfSfjtvrrjczGeP
+ Kh0PYlPqJiK4etMt0I7dJ4DF1VKpSjTh7GFXEoWSGnLDTztKf5qAJrbmjaeQCKqtKnGG3lI32Xm
+ BlpUyBzCyuL0tl5U4UeQ8FFnWkGmTq3jYldmsBv8o6JaKOrmFNB9E+D89xFECgEGrVP1LtCRZIu
+ BEsABybqz46FlTvUZsRhksAHwbYeX8cC1t8TgXBHzFJT9ApfbNCWzAxNLT+r8M6/Kf4Ar9X6e+0
+ Gzsoj8uUrgykL58DCjimQ7RQ6O59fn6Dz7Hg==
+X-Received: by 2002:a05:600c:a313:b0:48f:ed68:6760 with SMTP id
+ 5b1f17b1804b1-490360e7949mr32055905e9.29.1779369464199; 
+ Thu, 21 May 2026 06:17:44 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45eaa93d29csm3069201f8f.37.2026.05.21.06.17.39
+ 5b1f17b1804b1-4903c9b004csm16210975e9.6.2026.05.21.06.17.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 May 2026 06:17:40 -0700 (PDT)
+ Thu, 21 May 2026 06:17:43 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 3F12B5F886;
+ by draig.lan (Postfix) with ESMTP id D26275FC94;
  Thu, 21 May 2026 14:17:39 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -85,15 +86,17 @@ Cc: Peter Xu <peterx@redhat.com>,
  Brian Cain <brian.cain@oss.qualcomm.com>, Fabiano Rosas <farosas@suse.de>,
  Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v2 00/16] testing/next: various updates (MacOS, docker, gitlab)
-Date: Thu, 21 May 2026 14:17:22 +0100
-Message-ID: <20260521131739.540157-1-alex.bennee@linaro.org>
+Subject: [PATCH v2 06/16] gitlab: add initial MacOS 15 on gitlab runner
+Date: Thu, 21 May 2026 14:17:28 +0100
+Message-ID: <20260521131739.540157-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260521131739.540157-1-alex.bennee@linaro.org>
+References: <20260521131739.540157-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,88 +119,150 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-These patches are mostly dealing with the loss of the CirrusCI MacOS
-images by porting to gitlab. I've had to fight a bit with the build
-system to deal with the way MacOS has signed and unsigned versions of
-QEMU. In the end I couldn't get the dependencies to work for check-tcg
-so I've just called the check-tcg test runners directly.
+The gitlab runners are currently in beta but available to projects on
+the Premium and Ultimate plans (which QEMU is via the Open Source
+program).
 
-There is also a fix for getting watchpoints working so we can have the
-basic TCG gdb tests.
+We install some compilers via brew so we can run some of the check-tcg
+softmmu test cases.
 
-I've also included Phil's docker series which is already reviewed.
+We disable rust as the version is too old.
 
-The following still need review:
+We disable plugins because we haven't taught the test harness about
+.dynlib vs .so yet.
 
-  gitlab: add MacOS 26 job on gitlab runner
-  gitlab: add initial MacOS 15 on gitlab runner
-  ci: drop cirrus MacOS build
-  accel/tcg: move jit thread manipulation into do_tb_phys_invalidate
-  tests/Makefile.include: add binary dependency to run-tcg-tests-% rules
-  tests/Makefile.include: fix typo in comment
-  Makefile: include tests/Makefile.include before ninja calculation
+There is a discrepancy between the vars and version of MacOS because
+lcitool needs teaching about other versions (although I don't think it
+matters as brew is shared across versions).
 
-Alex.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-Alex Bennée (9):
-  Makefile: include tests/Makefile.include before ninja calculation
-  tests/Makefile.include: fix typo in comment
-  tests/Makefile.include: add binary dependency to run-tcg-tests-% rules
-  accel/tcg: move jit thread manipulation into do_tb_phys_invalidate
-  ci: drop cirrus MacOS build
-  gitlab: add initial MacOS 15 on gitlab runner
-  gitlab: add MacOS 26 job on gitlab runner
-  gitlab: update issue template for binary test cases
-  MAINTAINERS: add a section for AI agents
-
-Philippe Mathieu-Daudé (7):
-  MAINTAINERS: Fix docker/dockerfiles/debian-hexagon-cross.docker path
-  MAINTAINERS: Cover debian-loongarch-cross.docker with LoongArch
-    section
-  MAINTAINERS: Cover debian-xtensa-cross.docker with Xtensa section
-  MAINTAINERS: Cover debian-tricore-cross.docker with TriCore section
-  MAINTAINERS: Cover python.docker with Python library section
-  docker: Remove LegacyKeyValueFormat warnings in non-generated files
-  docker: Remove LegacyKeyValueFormat warnings in generated files
-
- MAINTAINERS                                   | 12 +++-
- Makefile                                      |  4 +-
- accel/tcg/tb-maint.c                          | 43 ++++++-------
- tests/lcitool/refresh                         | 24 +++++--
- tests/docker/dockerfiles/alpine.docker        |  2 +-
- tests/docker/dockerfiles/centos9.docker       |  2 +-
- .../dockerfiles/debian-all-test-cross.docker  | 10 +--
- .../dockerfiles/debian-amd64-cross.docker     |  2 +-
- .../dockerfiles/debian-arm64-cross.docker     |  2 +-
- .../dockerfiles/debian-armhf-cross.docker     |  2 +-
- .../dockerfiles/debian-hexagon-cross.docker   | 14 ++---
- .../dockerfiles/debian-i686-cross.docker      |  2 +-
- .../dockerfiles/debian-loongarch-cross.docker | 10 +--
- .../dockerfiles/debian-mips64el-cross.docker  |  2 +-
- .../dockerfiles/debian-mipsel-cross.docker    |  2 +-
- .../dockerfiles/debian-ppc64el-cross.docker   |  2 +-
- .../dockerfiles/debian-riscv64-cross.docker   |  2 +-
- .../dockerfiles/debian-s390x-cross.docker     |  2 +-
- .../dockerfiles/debian-tricore-cross.docker   |  6 +-
- .../dockerfiles/debian-xtensa-cross.docker    |  8 +--
- tests/docker/dockerfiles/debian.docker        |  2 +-
- .../dockerfiles/fedora-rust-nightly.docker    |  2 +-
- .../dockerfiles/fedora-win64-cross.docker     |  2 +-
- tests/docker/dockerfiles/fedora.docker        |  2 +-
- tests/docker/dockerfiles/opensuse-leap.docker |  2 +-
- tests/docker/dockerfiles/python.docker        |  5 +-
- .gitlab-ci.d/cirrus.yml                       | 14 -----
- .gitlab-ci.d/{cirrus => }/macos-14.vars       |  0
- .gitlab-ci.d/macos.yml                        | 63 +++++++++++++++++++
- .gitlab-ci.d/qemu-project.yml                 |  1 +
- .gitlab/issue_templates/bug.md                |  4 ++
- scripts/coverity-scan/coverity-scan.docker    | 12 ++--
- scripts/git.orderfile                         |  4 ++
- tests/Makefile.include                        |  8 ++-
- 34 files changed, 179 insertions(+), 95 deletions(-)
- rename .gitlab-ci.d/{cirrus => }/macos-14.vars (100%)
+---
+v2
+  - call tcg run directly to work around makefile issues
+  - drop debug lines
+---
+ tests/lcitool/refresh         | 11 ++++++++
+ .gitlab-ci.d/macos-14.vars    | 16 ++++++++++++
+ .gitlab-ci.d/macos.yml        | 47 +++++++++++++++++++++++++++++++++++
+ .gitlab-ci.d/qemu-project.yml |  1 +
+ 4 files changed, 75 insertions(+)
+ create mode 100644 .gitlab-ci.d/macos-14.vars
  create mode 100644 .gitlab-ci.d/macos.yml
 
+diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+index fa4a16e3583..4289cc381a6 100755
+--- a/tests/lcitool/refresh
++++ b/tests/lcitool/refresh
+@@ -87,6 +87,12 @@ def generate_cirrus(target, trailer=None):
+     generate(filename, cmd, trailer)
+ 
+ 
++def generate_vars(target, trailer=None):
++    filename = Path(src_dir, ".gitlab-ci.d", target + ".vars")
++    cmd = lcitool_cmd + ["variables", "--format", "shell", target, "qemu"]
++    generate(filename, cmd, trailer)
++
++
+ def generate_pkglist(vm, target, project="qemu"):
+     filename = Path(src_dir, "tests", "vm", "generated", vm + ".json")
+     cmd = lcitool_cmd + ["variables", "--format", "json", target, project]
+@@ -312,6 +318,11 @@ try:
+     #
+     generate_cirrus("freebsd-14")
+ 
++    #
++    # GitLab packages lists
++    #
++    generate_vars("macos-14")
++
+     #
+     # VM packages lists
+     #
+diff --git a/.gitlab-ci.d/macos-14.vars b/.gitlab-ci.d/macos-14.vars
+new file mode 100644
+index 00000000000..def77cfdea5
+--- /dev/null
++++ b/.gitlab-ci.d/macos-14.vars
+@@ -0,0 +1,16 @@
++# THIS FILE WAS AUTO-GENERATED
++#
++#  $ lcitool variables macos-14 qemu
++#
++# https://gitlab.com/libvirt/libvirt-ci
++
++CCACHE='/opt/homebrew/bin/ccache'
++CPAN_PKGS=''
++CROSS_PKGS=''
++MAKE='/opt/homebrew/bin/gmake'
++NINJA='/opt/homebrew/bin/ninja'
++PACKAGING_COMMAND='brew'
++PIP3='/opt/homebrew/bin/pip3'
++PKGS='bash bc bindgen bison bzip2 capstone ccache cmocka coreutils ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed gnutls gtk+3 gtk-vnc jemalloc jpeg-turbo json-c libcbor libepoxy libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1 libusb llvm lzo make meson mtools ncurses nettle ninja pixman pkg-config python-setuptools python3 rpm2cpio rust sdl2 sdl2_image snappy socat sparse spice-protocol swtpm tesseract usbredir vde vte3 vulkan-tools xorriso zlib zstd'
++PYPI_PKGS='PyYAML numpy pillow sphinx sphinx-rtd-theme tomli'
++PYTHON='/opt/homebrew/bin/python3'
+diff --git a/.gitlab-ci.d/macos.yml b/.gitlab-ci.d/macos.yml
+new file mode 100644
+index 00000000000..c93bf12a294
+--- /dev/null
++++ b/.gitlab-ci.d/macos.yml
+@@ -0,0 +1,47 @@
++.macos_job_template:
++  extends: .base_job_template
++  stage: build
++  tags:
++    - saas-macos-large-m2pro
++  needs: []
++  timeout: 80m
++  artifacts:
++    name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
++    expire_in: 7 days
++    paths:
++      - build/meson-logs/
++      - build/tests/tcg/
++    reports:
++      junit: build/meson-logs/*.junit.xml
++    when: always
++  before_script:
++    - set -o allexport
++    - source .gitlab-ci.d/macos-14.vars
++    - set +o allexport
++    - export PATH="$PATH_EXTRA:$PATH"
++    - export PKG_CONFIG_PATH="$PKG_CONFIG_PATH"
++    - brew update
++    - brew install $PKGS
++    - brew install gdb aarch64-elf-gcc i686-elf-gcc x86_64-elf-gcc
++    - if test -n "$PYPI_PKGS" ; then PYLIB=$($PYTHON -c 'import sysconfig; print(sysconfig.get_path("stdlib"))'); rm -f $PYLIB/EXTERNALLY-MANAGED; $PIP3 install --break-system-packages $PYPI_PKGS ; fi
++  script:
++    - mkdir build
++    - cd build
++    - ../configure --enable-werror $CONFIGURE_ARGS || { cat config.log meson-logs/meson-log.txt; exit 1; }
++    - $MAKE -j$(sysctl -n hw.ncpu)
++    - for TARGET in $TEST_TARGETS ; do $MAKE $TARGET ; done
++
++aarch64-macos-15-build:
++  extends: .macos_job_template
++  image: macos-15-xcode-16
++  variables:
++    NAME: macos-15
++    PATH_EXTRA: /opt/homebrew/gettext/bin
++    PKG_CONFIG_PATH: /opt/homebrew/curl/lib/pkgconfig:/opt/homebrew/ncurses/lib/pkgconfig:/opt/homebrew/readline/lib/pkgconfig
++    CONFIGURE_ARGS:
++        --target-list=aarch64-softmmu,i386-softmmu,x86_64-softmmu
++        --cross-prefix-aarch64=aarch64-elf-
++        --cross-prefix-i386=i686-elf-
++        --cross-prefix-x86_64=x86_64-elf-
++        --disable-plugins
++    TEST_TARGETS: check-unit run-tcg-tests-aarch64-softmmu run-tcg-tests-i386-softmmu run-tcg-tests-x86_64-softmmu
+diff --git a/.gitlab-ci.d/qemu-project.yml b/.gitlab-ci.d/qemu-project.yml
+index 4d914c4897b..9cbb5fe787f 100644
+--- a/.gitlab-ci.d/qemu-project.yml
++++ b/.gitlab-ci.d/qemu-project.yml
+@@ -19,3 +19,4 @@ include:
+   - local: '/.gitlab-ci.d/custom-runners.yml'
+   - local: '/.gitlab-ci.d/cirrus.yml'
+   - local: '/.gitlab-ci.d/windows.yml'
++  - local: '/.gitlab-ci.d/macos.yml'
 -- 
 2.47.3
 

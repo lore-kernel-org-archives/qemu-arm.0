@@ -4,83 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8AD7CD4F5E
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 12:30:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6013BCD5BAC
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 13:14:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQ2X2-00010U-UK; Thu, 21 May 2026 08:29:47 -0400
+	id 1wQ3Dg-0003FZ-6H; Thu, 21 May 2026 09:13:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wQ2Wi-0000y9-5i
- for qemu-arm@nongnu.org; Thu, 21 May 2026 08:29:29 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1wQ3Dd-0003Er-W2
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 09:13:46 -0400
+Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wQ2Wg-0001dJ-F9
- for qemu-arm@nongnu.org; Thu, 21 May 2026 08:29:23 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-490229aa522so26725065e9.3
- for <qemu-arm@nongnu.org>; Thu, 21 May 2026 05:29:21 -0700 (PDT)
+ id 1wQ3Dc-0007NO-Cd
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 09:13:45 -0400
+Received: by mail-yx1-xb132.google.com with SMTP id
+ 956f58d0204a3-65318dafbcbso6071156d50.2
+ for <qemu-arm@nongnu.org>; Thu, 21 May 2026 06:13:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779369223; cv=none;
+ d=google.com; s=arc-20240605;
+ b=iyuTlAFUVVTH1m3k/INAteIQVKvvHj0yuO5RU5iO2J3f4+Z+byVjth+UDdyYRsIppk
+ SqS8Pq78sifRPjdYSUZs1JqfdyieI4ULxue7L1t2BKfJFxnLJaoWEruvCdqOqLq3INec
+ YJ/JH9O7xq8aAYXRI1wvDNgDbTjKMu2PSh7PJ9PaOywF6GgpAuQPWZS4bywU0p0TiQ6E
+ TZCPqFz84qAOUYX+hpx06X3hSiCqkuMpA7G/rSjlQxL7D/AeUtUnYWCRDnqV+8QxAFws
+ at1D3VHk4LTlvN8tLv1v8EDKsWRQG6Owmh3D2zMRAJqYIGJe6rm++yP6OEpmcNgUcHvm
+ HQqQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=A2bf2Qa6b+aZl5QhGuVx9cLh1flJJ6/N83rTs+ubI4Q=;
+ fh=zM469050RSd+cHR4f7VVgp/e/cpHmrC8cCGXSyxqovA=;
+ b=AZNcRqmgTW5LWtXt/ZduJpriihNn6vj9wnzCkevc5SqMgVwgKv8Q7nKGqgEwMQD8eL
+ AQpkr6eLFvR6wiENGZOHTNFA2QPT+tHY7pmmWwa96ViQ98FCvx8TsOTr3X1URUy1ZiTi
+ UmK3monjD8QEG2nOrHBHQMudIs7kfzSzK4gGi3MTAtjQJY0Ejck6oL0kaBNWZYLBwKWy
+ xgAGa9G4D9ZvOU9CFrM3AjLliUxBqpGLa5hZgngBosnt+JqcmghvekgFsgq9OkkmnUPs
+ xcYIDbEtX7twvCAk2So2Yyi1dll5UIh4ONmOqJfSHa/X9stE2vG76nRa9uVlhQI4Rtrc
+ OkWg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779366561; x=1779971361; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Pryi5TKCDpB8CFidgAdyXB10hiTus4CQlxwL4fbFbdo=;
- b=wNBbZy6UK44dmLcQnDZxIHTNJ4Q+eyhVdOLwGiatWNjmijH5MnylNFcJc8g1oa9eR2
- 4+30eg+od6xtCcfY1kMRk0+4AMguvLNM2dV5gg+K9+vTRajCxHa43qoSSa2u7HSaWog/
- Jia1YoXOF7xT8+kCo2dQREI4Cyktg46nscfY519MDuUdXdXErHMGd1f/ZdTVxHzeja9+
- iqbnxgzk3bKCkWZDzAwL1RjI9GZE5FvkEVYzKAsGMT/xL9ZYBbwZpRfRgnSFT7XsTPaV
- ZhJQj7u9HIkSt0CYHZXw+7iN86JpxzLKjEYOafCn4umT2IL5QOAScd4RnzCGmreB4Ihj
- 2oXg==
+ d=linaro.org; s=google; t=1779369223; x=1779974023; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=A2bf2Qa6b+aZl5QhGuVx9cLh1flJJ6/N83rTs+ubI4Q=;
+ b=tw16Lf6lM9iHDBwCtQRp2BAQ4sy2Obx8lpkB4fi0ZuEJtV4ZauOwoTmK+Id2KBqSJh
+ PmNegj7ZSxgRiXqy7zNl/td0QrjI+2J79CJVxZzf3PEneL3lpIPi6KtublMK+5u6fLNk
+ Pexfe4m7hdZIh6yfwrUjwKngOcv0/ATLpC0r8AMdSF5KPZhoyeuXpQSYpkAoOKd3zZ0g
+ BSaihr1rAtCz6fGObHsF+wrk0gHXZzPw5URfGQG5Rhju6G/FzbXaJZUfxp9H7liu1yNJ
+ SZwgs//FtyllWcbaSVv8syZHnCLB/5AmIwEk1yhCHAJccBa9mNI2+zb9Lb8cs9/l+dQn
+ 7RDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779366561; x=1779971361;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=Pryi5TKCDpB8CFidgAdyXB10hiTus4CQlxwL4fbFbdo=;
- b=lLazIAVbmVp58ERPiR0BTeprXvrzkOcdzapg2vmjrf7BpDqXstdV3zV0pXptqnB8Pi
- BW8T0O18DEdcQpj9pY3ZBWi96a02XquO0eJTZZRIa7EzFl4ccsLN+eKhgnhHzmTefJ9M
- kZ9ndnDnPEAHqwcBMpbr0/2wRMGFBMMViPV0d1zNE4UZ3Co0dgcwAUQvwMBMKg4vwUsW
- F3KuXdnVMQjt6HGSBx43E4JyxJOoPa72vdMumLCDT9Trd7kZPUKmTk7j8JkjxDWoM/Vs
- Ij+Qp5L1lSuRmY953YHxn8M8G7Q0eiOtoeU+BeY1BG8YlNahxuThoUEAhmrbInlEWsR/
- sfdw==
-X-Gm-Message-State: AOJu0Yy8izZnPrurskdJAj6nC/aaat5mncH7GCmbddF+yQ0y0leDcnfX
- /PY7UZh/zdPLEfoDFuy2zUAKXaifVD3rBF4TNopyBMH18IFSuBAx3cFONXILzG2OG3l6xzXMFre
- lKqoF
-X-Gm-Gg: Acq92OGIPoiTZwqbVWAbQMHhHYkcCdoBNlXXc/TtN+N/RWjqOoERxfOPfAsnENTsWIH
- eXuwvByV/6hKtfxM3jH78B3TMQ6uEb+5d5w3H86QskUMvRgUsNg5zleMDFWEbagdtm6q9R+O5Np
- 4oy9KD6K8XMhqpS04fOYCftv0sX7+SVgMeg6q9jvF14ib7BUv8I/RwVzxzckQf3p87FCQKL7kIy
- vCFlRCbvn/oq1OExFg9RSCo9heSJAFBgufAhpn5iNrMNvD50ZGY6FVpgm+yjDv9IWrhPOozcAx/
- /D/m8EmqYyFFt/fFhtnYpWP9yEZ2sDBQ4o+dVRXBPLeh15xX2jcI9uz0gCObo4QUcYIimhGg1es
- 8bx3utH5FNqOF3+atgBSawVhBJSuUdaymG6xrztW6imqln20VoiViDZuqgYOTPW0gRlYWvsLcgZ
- 6ao7MjIRSAh4kHEAddPSLloy504BURYm+D8H/9MB5iugZE36F9n+l1U5GSZ3VqQTN2he+kN2LaW
- 5cZ91843lnTpHqdrWqNuejPVXFIjPIzEhN5nsqKng==
-X-Received: by 2002:a05:600c:1f89:b0:48a:8905:a500 with SMTP id
- 5b1f17b1804b1-49036080e18mr36554365e9.12.1779366560954; 
- Thu, 21 May 2026 05:29:20 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49035c72c78sm22054245e9.3.2026.05.21.05.29.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 May 2026 05:29:20 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org
-Subject: [PATCH 3/3] target/arm: Set correct fp flags for FLOGB when FPCR.AH =
- 1
-Date: Thu, 21 May 2026 13:29:13 +0100
-Message-ID: <20260521122913.1565011-4-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260521122913.1565011-1-peter.maydell@linaro.org>
-References: <20260521122913.1565011-1-peter.maydell@linaro.org>
+ d=1e100.net; s=20251104; t=1779369223; x=1779974023;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=A2bf2Qa6b+aZl5QhGuVx9cLh1flJJ6/N83rTs+ubI4Q=;
+ b=YUM0+L18kEJBRNian9axBb5TJ0hLjZbBRpflxIbkQttuG9JaYTVBfjqcR3wXBYRl3E
+ fPO4LTpSEAMrZV/HOXWo7/9rnih9i8V18vG/WJr05YoIXWbu+7vO6UldhXAIKsrRGVzF
+ Udoqhb/I2AdQTsho8XtBDyc1PKj/pkTWVvjelIY1bHjkIIFnpxVSlkK1RTW22zu+n2k/
+ 2v2ZmPt54xJt5JV3+CW1pHacu+GJJkcn7BaRv6OTIGEDjQiVe9p9+M9l2NUTkkgxH+Q6
+ wA09MdUeL/bVPKekP7tNPEzDy8mqnd8FsMKHNY84qCMIPPm12NnQOGDj8gF9D6EsILv+
+ VpqA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8yjtknPDxzTPKmRNeu6rRy+fz/+lCILc0z2IOv10TP3q2lGGe7QPIWhbv9pJdXg4r3gvLt9qnIEg==@nongnu.org
+X-Gm-Message-State: AOJu0YwV+Auknd7G2htnHm6D1M7d+b/PSvKy1V2z7SMulPKiXPOVQRK6
+ oFR6sWKs8WMzYupbRrUrlfYeOjpgvzU7DNelCKAfDeBKkq/GZbS4OZVE97Zt+FCCa1/7vI3wIYI
+ 0QrX1nqdX9fMiJQQ7J9zNPn4GVscNREXr8g4PGmznuA==
+X-Gm-Gg: Acq92OHIcDtYvC04iPKPZ4PfnLki+pBCWC/NCcRbWs/pS1ExXHM4CUKkUxd3/4v6RN2
+ attW4hEZ+jq3fD4qt6yDlkShjrNrN1kIAgYJo+idQ/PG0P5S3NZfjLzH2iUyyK+dApVcWmHC60Z
+ 171EdpNGENgQkAuvHe8SzxLQmwkIIgVTs4Mz2bPSRQgVg0M8/4letJZjN1c0aEKXIqIzQLBYmDT
+ 2rA+157VH46FL6P8xnQnr82VYUdZRROtdkPqPliOwSWqZW+PVGDbNRct9iiYh7I6XKYk4mj2Tdp
+ ZpDSNsZEMMfwjhr3m/zdfu6e0h0sg5EmXeJefyQCc756Puqdo3oZrK1ITQ7Qk/EHGrs=
+X-Received: by 2002:a05:690e:1688:b0:65e:4cea:a088 with SMTP id
+ 956f58d0204a3-65eae0e4aa0mr2250227d50.36.1779369223028; Thu, 21 May 2026
+ 06:13:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+References: <20260520171820.848839-1-richard.henderson@linaro.org>
+ <20260520171820.848839-3-richard.henderson@linaro.org>
+In-Reply-To: <20260520171820.848839-3-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 21 May 2026 14:13:31 +0100
+X-Gm-Features: AVHnY4KeuglWnnjUzg4G8dK-F4re91abCB_kfx9uCAUhabP0IAr2WUP1NTuZZF4
+Message-ID: <CAFEAcA_D8ssZdY-ve7px5hZ0abvivWSGeux9d_nVRn4F3E6m3w@mail.gmail.com>
+Subject: Re: [PATCH v5 02/30] fpu: Reorganize partsN(muladd)
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,53 +116,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Our implementation of the FLOGB insn does the operations entirely
-in the helper function, without needing to use fpu functions.
-This means it needs to handle all the fp status flags itself.
-We aren't setting float_flag_input_denormal_used when we
-use (i.e. do not flush to zero) an input denormal, which means
-that FPCR.IDC isn't set when it should be for FPCR.AH=1.
-We missed this when we added float_flag_input_denormal_used
-and made the fpu/ code set it.
+On Wed, 20 May 2026 at 18:20, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Check the likely case of normal product and normal or
+> zero addend first; shift NaN and infinity detection down;
+> end with zero product + addend.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  fpu/softfloat-parts.c.inc | 156 +++++++++++++++++---------------------
+>  1 file changed, 71 insertions(+), 85 deletions(-)
+>
 
-Add the missing float_raise().
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Cc: qemu-stable@nongnu.org
-Fixes: d38a57a3f ("target/arm: Enable FEAT_AFP for '-cpu max'")
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/tcg/sve_helper.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
-index 179cbd74fb..d884ba474f 100644
---- a/target/arm/tcg/sve_helper.c
-+++ b/target/arm/tcg/sve_helper.c
-@@ -5036,6 +5036,7 @@ static int16_t do_float16_logb_as_int(float16 a, float_status *s)
-         if (frac != 0) {
-             if (!get_flush_inputs_to_zero(s)) {
-                 /* denormal: bias - fractional_zeros */
-+                float_raise(float_flag_input_denormal_used, s);
-                 return -15 - clz32(frac);
-             }
-             /* flush to zero */
-@@ -5064,6 +5065,7 @@ static int32_t do_float32_logb_as_int(float32 a, float_status *s)
-         if (frac != 0) {
-             if (!get_flush_inputs_to_zero(s)) {
-                 /* denormal: bias - fractional_zeros */
-+                float_raise(float_flag_input_denormal_used, s);
-                 return -127 - clz32(frac);
-             }
-             /* flush to zero */
-@@ -5092,6 +5094,7 @@ static int64_t do_float64_logb_as_int(float64 a, float_status *s)
-         if (frac != 0) {
-             if (!get_flush_inputs_to_zero(s)) {
-                 /* denormal: bias - fractional_zeros */
-+                float_raise(float_flag_input_denormal_used, s);
-                 return -1023 - clz64(frac);
-             }
-             /* flush to zero */
--- 
-2.43.0
-
+thanks
+-- PMM
 

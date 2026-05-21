@@ -4,97 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2369ACD5BAC
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 16:41:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAFE4CD5BAC
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 16:43:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQ6Sf-0001oz-P4; Thu, 21 May 2026 12:41:29 -0400
+	id 1wQ6Tz-0002K9-05; Thu, 21 May 2026 12:42:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wQ6Sd-0001nf-Pp
- for qemu-arm@nongnu.org; Thu, 21 May 2026 12:41:27 -0400
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+ id 1wQ6Tx-0002JV-DU
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 12:42:49 -0400
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wQ6Sc-0002ih-AH
- for qemu-arm@nongnu.org; Thu, 21 May 2026 12:41:27 -0400
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-65c21049dafso5726846d50.2
- for <qemu-arm@nongnu.org>; Thu, 21 May 2026 09:41:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779381685; cv=none;
+ id 1wQ6Tv-0003AW-J2
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 12:42:49 -0400
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-65c7efdb7d8so6793949d50.3
+ for <qemu-arm@nongnu.org>; Thu, 21 May 2026 09:42:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779381766; cv=none;
  d=google.com; s=arc-20240605;
- b=fcu9Eus9jtgC4Du34cQ7yX0oTcwaF9f6tMp8/JcNxe6aO+Wfhf+BHC471vVCffLndn
- bJArwId8KjjLFjkHNb0IEAx9mXBcfGoOdxSQUVzgriqZdeXPX1YPBCjp3rtQKQLwGlVG
- sw8SYkjGgh0Ueem7kDC5I9sqG6AFBd7PCDRo5kKXte0tYCatV8dsqwOFQFIz/P4w/E11
- wlrlC8o4gHFyl5tmg+QGP3Rnqg9fHph1MxQMgaDABVwAyNayhSYsZ1sXNlD6U1Qr/o+G
- nFkU5DEpEaC4tWhFn1w1CY0Bm08vVieZbgGQD08gCFbXCI58g/M36laaGFzxtrH07NUN
- RMYg==
+ b=Lsgxza4mCvbz+mQYJCk/8Xeg2WKeQqFOPTvaV6+7uE3dyyON7t1txpPPJv30mzvHe8
+ KNytvJvHu10fOxjYp+OedQpcCmVu3qoFCOqhghTYNlN5WMSuhLL3p4JIVx2FnCzfSqMN
+ rAnZgGtOyuDvUu1F5MMwdBqSZWoJcxbBTcK/PxeomouU4u7EaonnJ+tAnQ7WU2Zcug+e
+ WEb1GbXG54NfpV2WWel46uok9lRja6rIfBNg82NVOwqoPI0Yh2mhk8YZQ5Fej4Jsk1Pk
+ bEGn66L6gP6/U4gZW/FByYe5oj3SrURZC1zqi8cNMrNEJy90IXksWcdkSKlY0XPo36L5
+ vaLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=WZGcVxrAD8TQcq4nZQsOrHA/qVqTF0GTWDQgd61XImY=;
- fh=4nD0EAkKmdq6obF3WZJmNhn++QJ/owmGfM+OsbRdx9Q=;
- b=WxD61LCJeZsJbPfNMN1FZSlPKw36751aRt+oqjgkXiMwCojl4fmJZmOr5Rg67uI/vZ
- DMjCFxB7xgXLcryYeKNVtMxfxHZ5zNCpC0tdaJVMVhX03x6zrcOPiugBjWuuwUohugkb
- f2r/ypdbuiKLdDtqFdbJqm74dwkd6+P3g3ryTTha9mPwWS8zzIVvIZ1tbrQT2c6B5Le4
- u4/4G87Ib+OHQ55+99reot4kgdsNcXV0IVEEAaAGMVhXmZBfejR2+ctdLEcCXLVB6EWx
- fUZnTPT55kIb/ExiE2RGB1mBTgFjXj81Zvofg54PmuCtmyQuGuBo1fc9CT3MtgV0mgGH
- SLcg==; darn=nongnu.org
+ bh=ERQHoPK48RtEl3HMvfGHVAAti7bwRuPobKLgXU+qz28=;
+ fh=wuWR8lxhAt2TcBDoM8v4WMQqc/fiDzaTeaU6kbS1rwc=;
+ b=QjE7Ul0Afn00FgkC7y0oHl7y959iXgAs1bXodeyZje/crzwQaKjak4imPSkN7X+Rjk
+ XIXStV5vRV3V/r1HEF0qRvzNRmcNoZhkw9PMddsgpctucsepjzI2b1c8LCgX//9bHLEp
+ k4lyandl/xS4xLbvfd02yb8js3vQ76UhjVDmXlVIaemJjoH4oGAM4CQ59JrxATBX5zA7
+ ddISwC3Cdz44sDX88dXSLtVHOP3LXUiVNZ+UbWSUaIisJrNkPm+fNGVzj9TZHszmjWZu
+ 5QuI9QmUttcXG+1HovBSJgszV/LtugiqW46HMxbL2JTsVWdql75/V3DtWQ3QGp0h4P3j
+ Sggg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779381685; x=1779986485; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779381766; x=1779986566; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=WZGcVxrAD8TQcq4nZQsOrHA/qVqTF0GTWDQgd61XImY=;
- b=K1ht0MLF1VHOPOG4UHuR+jJ743TI1T7yMJfv6l6tcRF4DavxXa9XVr61V4hrLckwPd
- TeF6AX98ikQnnJNiRWc6YANvl4wk2BELbTRfb5NDff3YnLLsi+57pnvuwXOcQK05EDfl
- JXJJ6N4VT7FSFodkUw7aTXab+XKRzF3g8M4VkzjgQ4dslBE/MixER/jfh2RZjncyOx1C
- 4WycRfQ/jPQny6/3yLhd0EBW8AXbg2Mt5Q/0YnoAEOrCUc/EoUM7qVtuSBqutQCxDR2F
- xnWUtbepgnzxpwWa7BdHI/p17gczS9EVwDzJ6pX/NjCDO2LIZDPA4Ulec110VPbr8mIf
- MJlQ==
+ bh=ERQHoPK48RtEl3HMvfGHVAAti7bwRuPobKLgXU+qz28=;
+ b=Wkyhmb9FGbWiiQrulnjH29QnGlB4r7L52+ht48D3pdDqbpk7C8Fh2yHqOAyZHWhYYF
+ MIV3N5H0DBva3mQsvFFvdRdbdVXEF3UfA5lSmi6EXeVXHtIHGdDMAfY8YGLKEdHTprAw
+ 2MjNB5T0iRWo62a/3hGCd08UWdiOe7jHgp+2NfVoNJGKvUpr3O14fGoPcigC6M7FTptv
+ PlJl0xaw3FpwuRi0w7t+YIgkjdjoxE/zFP1kGV5srUCXVN4aXOMTuF/Kr8AXBYbdebHK
+ 4QW39TybwQscjoUsC8UYzlASnl4pdsT6w2Fvc96KLnhWLk6BYRiqBU16hd4RzdMkUHXW
+ iZxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779381685; x=1779986485;
+ d=1e100.net; s=20251104; t=1779381766; x=1779986566;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WZGcVxrAD8TQcq4nZQsOrHA/qVqTF0GTWDQgd61XImY=;
- b=LWN+NwI60rF+yGXUZgWKLgRRZrgBNXHKUVZeDnLHs/SZIxO+TLeLM/ckSdpLinp/OS
- v+ZblNDUnAHwSKRUH0Jt+UM/mRgMQDXK7PW8o5nhauLMdzjk7I8STvfvdGnJ7T16JU/V
- /xaA6Y9Qjnz92ncFZvBMLQNHF3KO3z3ReFM9yKNRHHLUpwJ+7CFa35LC38VPVfgPpbMq
- MssVsv6Mi1cs/C45srAT/tg+DIGHGErZdk6IuF0p2PjUdNqZI14ddBLddMBys7PNQtKG
- FbNfK4PyHbXSiT8wZCzaFRGI4xavLgBprWRnWgPfmUfTqyFc+qlRJSDCCgsargPBYzu1
- oygQ==
+ bh=ERQHoPK48RtEl3HMvfGHVAAti7bwRuPobKLgXU+qz28=;
+ b=KhcoGmhdnf8muNLZUD7LYDAeX4Ty5Mpw61FPR9heyMZQglKyMbm7ymX0PbfGOt+2uI
+ pg91mmydt9sQqyVEkhgl5I82qlz7RYDVeOzDn2CDxQivEgqFX5uE4zLrfAiP+s17N9E1
+ Fu2TaaNfk32o0r9iml6X/C2n/BJTytYEPRYUSowGNUiGh3Civ1hlmQGmrJMNSUShB/9/
+ iSI5fDlhjXWG27He9gXub+sVxQBzW5ZsUzd8+m2pKbi8Exi0RnkK2BM3X2gl0XGbI7CM
+ nyRjhpYfX4q+pS2Pu/RY2DuJPRqRhVhkRfnlwnPyLu9VM7HdG1dFxKCTa2+WvhdgFz1E
+ vnwg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/dHzQ1LfwwQvb/+1refNrB0guTa1JWw036ExeXIngNWOHOcvh3rX+pTEIfgczQ/CG5o/7Fy9Ha9w==@nongnu.org
-X-Gm-Message-State: AOJu0YyJYSM0IKKc5X8ClXURMz36rIna9hcx2unE33fnYH+HQf0c3FsU
- GknAqIxBIe61p4V821APbR9fQWy4JfNYmYXu4Wk4m8ZuGCnUwMi+INzZhR8u1awFr2c+wBaZmzI
- nDt92EIjoTCpLC5FBpqgExGM4RXsoYLdw9JFo+XAy6g==
-X-Gm-Gg: Acq92OE0/6W6iC5lhrDcRPsXfUeUXSFB/fyi0UZwhkgNnH5JmBi0PldmcbeDDM5tBMt
- idPB3S6kZibtYlt5QIgBUvxIWGc2N3j35nz9+O2QU9P2tWJ4qai/6sfv28097CoNsAprUxUNri0
- T5xHV15Kv58EOXE+ZjGxsbkWFuhExlSOn1PXPZfMgcrhkLWqHP1Q74TOSbP0kBtWsUGeXa4cxvv
- 1zT4O+4a7i6WweLN0GPR4LufVTCa8Zac5ueIMWmgRZf9vOuTsYUxnebkGgBawzv9Y/krK34UL3p
- 2+iftkODKPBMaqloevqHWRCJoafmPdPf64D8GqK4wojy0MeCn5zsxbhVNU9W3Bi7TTo=
-X-Received: by 2002:a05:690e:4196:b0:651:ba22:fcc3 with SMTP id
- 956f58d0204a3-65eae23512dmr2648495d50.61.1779381684792; Thu, 21 May 2026
- 09:41:24 -0700 (PDT)
+ AFNElJ/khfxRoJ67bTUk3A/7frYtzuql4z5MpK7c1Rha9RnyuBmP28EpuLMMsI2e8h+iZ26laDwWRl8Egg==@nongnu.org
+X-Gm-Message-State: AOJu0YxIY1xRm79Mi4Hp1YNZPgZflqZ865JfCwAmyDoarx9SaGR78hor
+ 0LFfP2xCDLakNjwhlefWjOxRcUYq1FETnRFMSvD0CQAucXbi87tChublqW9uNKYUyehbTYZMPoS
+ 031R8NcGpRRH0EKjuwrbc1mXG9OJJya8S4PNRmbEMuA==
+X-Gm-Gg: Acq92OHcnKWAxhjH+LnkNkYnEIRqC/j7wEeDsEK6No4226HzLLLiLUgtCBqR9A0l0eq
+ iEU6oZ1njGIQN6ThUhn9pLfxI7oX91x+V/YOyobPMuKUHOa2iPqMLLNyOIRZsKHQtJU96dgTWYi
+ yHySVWM4FfC33yiQ9D35OvP63At9UKtwh+HNurryRnqoLzBQPswmghpo7W5hGgVT0xNBviobrGG
+ tGLzKYKOoMNfHLLAb4YCOctxDSkZ+bbP63k89N4rCkqAh/bpH5KlVP6dAAGLbAhQQePo9JyDco6
+ lQ2lWRegRQBJmCopsFQEgN3n67fwJmOzEE8oH+zullh7Uxz3uxfggKAwllft9MU22HA=
+X-Received: by 2002:a53:c044:0:20b0:65e:44a3:ac3 with SMTP id
+ 956f58d0204a3-65eae440399mr2459751d50.50.1779381766228; Thu, 21 May 2026
+ 09:42:46 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260520182213.872945-1-richard.henderson@linaro.org>
- <20260520182213.872945-43-richard.henderson@linaro.org>
-In-Reply-To: <20260520182213.872945-43-richard.henderson@linaro.org>
+ <20260520182213.872945-64-richard.henderson@linaro.org>
+In-Reply-To: <20260520182213.872945-64-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 May 2026 17:41:13 +0100
-X-Gm-Features: AVHnY4JDj1mWacxTuxY8UeafFviEqaeZy6qc2oTWTUMM5HRxn9cV_M8LG9BBKus
-Message-ID: <CAFEAcA-fc9uKtfdt_Xq6xfXuxFSRF-Jm4=Rgus4VGiBxJVejdA@mail.gmail.com>
-Subject: Re: [PATCH v6 42/64] target/arm: Update ID_AA64SMFR0_EL1 fields to
- ARM M.b
+Date: Thu, 21 May 2026 17:42:35 +0100
+X-Gm-Features: AVHnY4JBq3C2LiDBD92Bk71FZ76hfB2ehhtSG6ohY_YD7UAiyt_GMFFg5FZ0D-E
+Message-ID: <CAFEAcA90jtHDCXGuTUUu7ErLcH=wMCPmqOEi3X-n2WriLoWEkw@mail.gmail.com>
+Subject: Re: [PATCH v6 63/64] linux-user/aarch64: Implement hwcap bits for fp8
+ features
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,9 +122,38 @@ On Wed, 20 May 2026 at 19:29, Richard Henderson
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/cpu-features.h | 11 +++++++++++
->  1 file changed, 11 insertions(+)
+>  linux-user/aarch64/elfload.c | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+>
+> diff --git a/linux-user/aarch64/elfload.c b/linux-user/aarch64/elfload.c
+> index 3af5a37776..0934524be2 100644
+> --- a/linux-user/aarch64/elfload.c
+> +++ b/linux-user/aarch64/elfload.c
+> @@ -218,6 +218,20 @@ abi_ulong get_elf_hwcap2(CPUState *cs)
+>      GET_FEATURE_ID(aa64_sve_b16b16, ARM_HWCAP2_A64_SVE_B16B16);
+>      GET_FEATURE_ID(aa64_cssc, ARM_HWCAP2_A64_CSSC);
+>      GET_FEATURE_ID(aa64_lse128, ARM_HWCAP2_A64_LSE128);
+> +    GET_FEATURE_ID(aa64_fpmr, ARM_HWCAP2_A64_FPMR);
+> +    GET_FEATURE_ID(aa64_lut, ARM_HWCAP2_A64_LUT);
+> +    GET_FEATURE_ID(aa64_faminmax, ARM_HWCAP2_A64_FAMINMAX);
+> +    GET_FEATURE_ID(aa64_f8cvt, ARM_HWCAP2_A64_F8CVT |
+> +                               ARM_HWCAP2_A64_F8E4M3 |
+> +                               ARM_HWCAP2_A64_F8E5M2);
+> +    GET_FEATURE_ID(aa64_f8fma, ARM_HWCAP2_A64_F8FMA);
+> +    GET_FEATURE_ID(aa64_f8dp4, ARM_HWCAP2_A64_F8DP4);
+> +    GET_FEATURE_ID(aa64_f8dp2, ARM_HWCAP2_A64_F8DP2);
+> +    GET_FEATURE_ID(aa64_sme2p1_lutv2, ARM_HWCAP2_A64_SME_LUTV2);
+> +    GET_FEATURE_ID(aa64_sme2p1_lutv2, ARM_HWCAP2_A64_SME_LUTV2);
 
+Accidental duplicated line?
+
+> +    GET_FEATURE_ID(aa64_ssve_f8fma, ARM_HWCAP2_A64_SME_SF8FMA);
+> +    GET_FEATURE_ID(aa64_ssve_f8dp4, ARM_HWCAP2_A64_SME_SF8DP4);
+> +    GET_FEATURE_ID(aa64_ssve_f8dp2, ARM_HWCAP2_A64_SME_SF8DP2);
+>
+>      return hwcaps;
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

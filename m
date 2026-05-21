@@ -4,97 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7222ECD4F3D
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 15:34:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC9E2CD4F3D
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 15:35:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQ5Pv-0004ye-Do; Thu, 21 May 2026 11:34:35 -0400
+	id 1wQ5R3-00065P-Ee; Thu, 21 May 2026 11:35:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wQ5Pt-0004nW-KA
- for qemu-arm@nongnu.org; Thu, 21 May 2026 11:34:33 -0400
-Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
+ id 1wQ5R2-00064Y-55
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 11:35:44 -0400
+Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wQ5Ps-0001cR-0S
- for qemu-arm@nongnu.org; Thu, 21 May 2026 11:34:33 -0400
-Received: by mail-qk1-x730.google.com with SMTP id
- af79cd13be357-90d1f03238bso687774885a.1
- for <qemu-arm@nongnu.org>; Thu, 21 May 2026 08:34:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779377670; cv=none;
+ id 1wQ5R0-0002Fl-DC
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 11:35:43 -0400
+Received: by mail-yx1-xb130.google.com with SMTP id
+ 956f58d0204a3-651d6347a69so7346999d50.0
+ for <qemu-arm@nongnu.org>; Thu, 21 May 2026 08:35:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779377741; cv=none;
  d=google.com; s=arc-20240605;
- b=TDHXsNIQ3ssAUsr6AVE3aeW06ELRzmlORr/UIabU8gKcpiDGEytA/F3xuRCUwmqkrB
- TWbdHUrQk/fhNDRlSj+KraRyDtihCOrl7lrnMBhlGok3MzQai1msl88JmF40qQE3d0eu
- p82cHFYxojJwY1Z+liucVAgica3OszfNHyFSg8037Bm+RuT6GSPj33uDVl0iYqbkKln4
- FRGJa7iVliW8QwFQ0hnLSylaTBQKsD8/GbJPUuTyx5Tm/hcKh5B+OGoA0V6LVA+mHLdV
- KsQPDfEotkdfbMJCvcRWOxDZWciBGFblpFwZS414eb8pwo8lQgek4/JhRCw/ijTYL/Dr
- QJZA==
+ b=R5AQNYGnczu4lTe9ddb8H5UNO4PgHfi025KArbPkGh9R1aaJoVzKHQEFTkuatXYKPF
+ G2sQvkP2I8pUPe3aIOeyr1Mgve0ngNW9Q7UAymNcEpxsVQCAq5h2tMtXOcYMM0rjnhhw
+ eNUruZw6bjp4Z+GROwHmWum39WcaTqsYYf0PqI0G61/4qprHjKfvStGCDYz1GFN30XIw
+ CXQHwpejWQsguC/jpb+UrJoa7EW48+XnMYST+KBkxP46LILeAaejOyBIKNmG1y/zNbxm
+ ZPzmqTbT0YGX3Y9Ml9n0p6sgXRLvCUR3EU6OeB2xzhA73g1oPKVlwgly+WI0ytuIwbp6
+ jUzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=peDINXBxcKWQYjVspnPJmH/goNDZV4Xd6bFqDbTEs+c=;
- fh=1gFsNVOkCaFtF0s4XFuQFGkH67ymas30vbUqz+gqXv4=;
- b=gRi0c7qxkTCpn7sDJfyhLoYS3dgVDS7ey5QShkdhIsmXVMR8UQ+ImndwgBNdLyx1bj
- biG/yRiNZaWG4zOrZb2XbSjtrgpEV1UIproFrpxUoDiBSteIIgNyuhZ+kJR1tMbsBePa
- 3+fiBiLaPhp8dSw1hg74Aj3rtcugmoBOPtxwArqpxdQJ3Lu4rt8+tPkkSha0tE4CTpkc
- looM5WGPhV9rhvwuskrajP9Uk89tkkgKUdzce1RVLhhbjvkBZ1TyRge02i6W+TtpG1uX
- lp49W0fycerTZwJOR4c1F+oUtgmW8aHiYoaDQd8oE0AoJUBWu2t98M3nS1Cxq14MNRKN
- 1WSw==; darn=nongnu.org
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=5yMOeUX9LXsWWxDnUktmHP86kFYBVWfDYqfkqSHprjo=;
+ fh=KSEf5UbSBQPmS6wJnEMc7jFpV/VPyFCwlOjp/0hJOLc=;
+ b=X8LqxQrI8gUZNwwVadRMDIUs0abbKimvgE8xL6i55RlMFqh+2qxgatQXuEf20WusbY
+ 4uQiWkaIciBlU8MDBrWZNKHGg07LmlfF9mfMfuMC8ZoM2sbi+Qo7h6oR6tEoTjHlXnk7
+ jSMnW8JucTu8nyjMHtlNBsLcrC/nMMBQHq9XAq5OpuT9NS5lpNwbNQ/VXUBG1zuFfKVS
+ X4JrzGZiKdc32QKXwemy7qGomNPDV12F6s+sI8X81FJznKIuopAmqlkOVkcYa98mL8Hd
+ KUhSxCtrKHMAx57GLdTib/nE8pbYqFDwZxbRPNc+mfGO6uOJ5A+W56RyK+ixNvsz5HaU
+ XQ5w==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779377670; x=1779982470; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=peDINXBxcKWQYjVspnPJmH/goNDZV4Xd6bFqDbTEs+c=;
- b=NYUkJ28m2cc2neHa5UhET7LWfBwrKChvVmGTRitqYVhkBbB18brfbn+SgDXOZiv1+l
- yerDQPzfrTrazb+tVmwq6Gw+GraCZnVtJ/OBGrnf1WqWdVzVr0WSCc9+TyUu7Fg1QaSq
- r8NFEpQG3UTjcYs13O/xLNydFdV7HpSDIODkfhgaliIdI6hmTdpGEwqnZQYN39kYiqhi
- 455VJMT6lJqcT6G/16cChYnRtnL6g2/M3ACpyozeBmIBRepf3ecd0U8OAjp3gKkVOWj+
- 47p4tjFmUBVN7QGYw/ucvBa+Z8bUIB46Wi9xe9g2AOxqwAfwvYsK1VNIpgeq9wn401I4
- khXg==
+ d=linaro.org; s=google; t=1779377741; x=1779982541; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=5yMOeUX9LXsWWxDnUktmHP86kFYBVWfDYqfkqSHprjo=;
+ b=LBm2LeRMI/EFdr8BexqTDRN/3jVlFfECI6J1yoOI+MHXirIs8OXSXMX8VHlcQ3FqR0
+ zG/UmR8tndoo4Q1t9OCxDoDrr5tKkx0RrrBbUO1yBg+nu/CpbFCw3dli4NXKTqqklVUI
+ 7ip7qEsJLnEu9jg+OUBB7TmP/SUGIegIaBrvhJNgb4YgRKFw/iwHyWOnfRBWV8FLW9Ej
+ ZkhjGLD1QD++gzsvwY6A/XQBwWTM2n5MzpaFeWhwwFyXBB05dBp2ndhjheJMg3dRuO9L
+ qU2Bv9FitCF22I8ra9d2Y4OhzDDsDWKvZlka+VGvp5nZhBmBvQ5+ECl8D6B4mnOgTsCf
+ dvcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779377670; x=1779982470;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=peDINXBxcKWQYjVspnPJmH/goNDZV4Xd6bFqDbTEs+c=;
- b=qGwk7YRj23o0nfFwK4IE8zp14kRlXU089cN38LqdPkFvc1BZJrFSyD8CCaRjgjyoMo
- ZwoFjBv4TnuBqP4LVaqSzd8ZS7KMhUHPgyT1+NiNwH5uoFFOhh1qK6D9fZJvALpJHLYS
- lgh/vM9Nbqy3z2zvk5ZUZlOTltFtHOxl3ZQ1mMM6IHNVjOyiydaHxF/U8jzxGhrD26Qy
- 4l8T+yVXi2XCYP0baWVOc1AtL4mxYZS6/kDfWQjVYq5xmJYi7UShTH2QZg11FnHi3bhI
- JtvsTjLmQPijv/7tgWDGTtjdhJiook1CqSSF5qVvpBTAFaK9fFMUXHP0af2YEb30TJGG
- NvKw==
-X-Gm-Message-State: AOJu0Yyd7nfQjq0nY0Bpx0MaDx9ush0a2FzJwiFVeeEtJlMz65pmiDn8
- 5UwHP3bcvmBFsVoa6ngAPJJeZlWU1mCqjMtTQUdKSXmKcRjgiZcQxjzjeRpBbTOf+oibpSo17lE
- hjim9vzYqJze5qTa71CWxh0JIdde899cpr7aiZd4r0SYopL9q9khDk6E=
-X-Gm-Gg: Acq92OGl/I35hLzg19qlZm7f+Mw9QGpdLw2ZgVly/vXU1kbZmGMlHVwyT1pls7ZUqq3
- N5GUoSJK15CfXbRkW8VmSz+qhVCLLzK3Sq/fipd17WtHpfpW2WWC1Z3h4/aTg4LyDsdSBgY7bvL
- 4uBa4eqXkwtrIxuCKkF6yzFcZyuuZTe8us5wBoAHKF3V00dnVR/6VMF0pdN9PJ27tobfnpDpLSG
- izaBxFYSOgj4/wrM7uplceAsnzESHDlBS6aMWTV1U075ohJtpqIb2jnKFj7MZ7q1Zt6r7L/0v2h
- hs+vERq7V5/q+Z+xjnrsW3pTrrDRefnMjVJ4B9UcGwHnsi2qBhiP332/HDkaHLepKrA=
-X-Received: by 2002:a05:690e:4106:b0:65e:28f3:4a51 with SMTP id
- 956f58d0204a3-65eacf4c084mr2450181d50.24.1779376891622; Thu, 21 May 2026
- 08:21:31 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1779377741; x=1779982541;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=5yMOeUX9LXsWWxDnUktmHP86kFYBVWfDYqfkqSHprjo=;
+ b=OMH6VSNiYrKKg2lg9khvV6dfXAToED6/36PUxFbu+7OZhFIPizU2gTvcb14vjYSI++
+ YNBnKJqJzBy5lSL5i9WEmg6LmulZOfQ3MyJ7rzostxoe4JSOex3RzEnYIadSccJ+eOFH
+ UGpi5NebVOR5Fbpj5dLma6ChWpkoPzqp36e81Ghi39dUWcSoIbt9WmBtqNFzdAcFbnLm
+ EMgorzED5eh1y54f4EKdsmfQutdtivKTZQxCgFVtm+xqwRWl5f7mTokCHGVEbPpXZMGo
+ z+lMXjiXYNT9q+LTksA5nL6lZNmlLK+Ds6TPyMa/h+gSWlCayvqTvA7epBfZNJLvuYSj
+ r+Eg==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+SzMakaJY41/ZU4YsV/xqCpp8RKcv6n5FKoHTK33Loew5qkzoJDyNDfS2Wc+36wBImdxn8zgiENg==@nongnu.org
+X-Gm-Message-State: AOJu0YzvglKwiA40Czq3lDKSZ2L3UzLXtN6O9kbA3lAopJVQxFm/hAw5
+ zmQLBRDvspwq0L/saWIZyz43rIJ7PBFlFpiZ5LKRHs46A5F8HCHc9y1UtgaLAUq66lCeeNlroky
+ /lvP+fdh5E2paTHSdz6RGBW9+MtkuMWDRaJS4udpjSQ==
+X-Gm-Gg: Acq92OGf6U5yR/RNbhUiKzqBT/vc35i3oMRAVqEcFherWDxpRh9EZDxMJPw2iHcp99E
+ 5b9SuqTd+/5fbEA/i3MvA5kldOoYgOOgDdcJTztKwx/fvO7J0Z3Br3LNTmab3AFWzxZX1UK0XHZ
+ akjhgV7OM6w0jpgNuBGUs5Vn7XgHrKhL5w13qH1tpcGHdk6yJhHHwIaOlEjjKacK+l5lGSS9JCR
+ YP7/39YNbrsd+v/JQpUP7sAl08v9QXyhFJ579ATKRQkzEYg1XzeuTF37hIrW24nlTc63vPwaWUC
+ HOYeoCNrcTezg+VCflfI33OQd0b3YSlDEZ3MvhQm5HEs5BI3f/LvOuCjvEvwnWEoJHeR44B/JqX
+ 1MA==
+X-Received: by 2002:a05:690e:4093:b0:654:fd9:2e8c with SMTP id
+ 956f58d0204a3-65ead51abc1mr2663609d50.15.1779377740816; Thu, 21 May 2026
+ 08:35:40 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260521122913.1565011-1-peter.maydell@linaro.org>
- <20260521122913.1565011-3-peter.maydell@linaro.org>
- <87mrxsolqb.fsf@draig.linaro.org>
-In-Reply-To: <87mrxsolqb.fsf@draig.linaro.org>
+References: <20260520182213.872945-1-richard.henderson@linaro.org>
+ <20260520182213.872945-20-richard.henderson@linaro.org>
+In-Reply-To: <20260520182213.872945-20-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 May 2026 16:21:19 +0100
-X-Gm-Features: AVHnY4Ii6rVxvA1qROzVPUpXFSIwUzts1U0lx8wgf2cfqvUYsOFufjyE9IZvlhs
-Message-ID: <CAFEAcA9JuUY-en-_ZOnO3bjtgqG-MHp2ESGskdm-D0+fqFng_Q@mail.gmail.com>
-Subject: Re: [PATCH 2/3] target/arm: Use FPST_A64_F16 for SVE FCVTLT_hs
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org
+Date: Thu, 21 May 2026 16:35:28 +0100
+X-Gm-Features: AVHnY4LlUYcG28qT8B5Dyf2dOP1Ygpq9c7q0rmLEdUtEErpmcXDRbmiIdLx0BRs
+Message-ID: <CAFEAcA-4yuOQgbP7AcV0_eOXNkh9ZtFjaLOxGZk=re8UvWGtXw@mail.gmail.com>
+Subject: Re: [PATCH v6 19/64] target/arm: Implement FSCALE for AdvSIMD
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::730;
- envelope-from=peter.maydell@linaro.org; helo=mail-qk1-x730.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,46 +117,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 21 May 2026 at 15:55, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
+On Wed, 20 May 2026 at 19:28, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> Peter Maydell <peter.maydell@linaro.org> writes:
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/tcg/helper-a64-defs.h |  4 ++++
+>  target/arm/tcg/vec_internal.h    |  4 ++++
+>  target/arm/tcg/translate-a64.c   |  7 +++++++
+>  target/arm/tcg/vec_helper64.c    | 16 ++++++++++++++++
+>  target/arm/tcg/a64.decode        |  3 +++
+>  5 files changed, 34 insertions(+)
 >
-> > The SVE FCVTLT_hs operation produces a halfprec result, so we should
-> > use the FPST_A64_F16 fpstatus for it.
+> diff --git a/target/arm/tcg/helper-a64-defs.h b/target/arm/tcg/helper-a64-defs.h
+> index 215df1201b..b7880f773e 100644
+> --- a/target/arm/tcg/helper-a64-defs.h
+> +++ b/target/arm/tcg/helper-a64-defs.h
+> @@ -152,6 +152,10 @@ DEF_HELPER_FLAGS_5(gvec_famin_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32
+>  DEF_HELPER_FLAGS_5(gvec_famax_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+>  DEF_HELPER_FLAGS_5(gvec_famin_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
 >
-> Maybe I'm reading the Arm ARM wrong (I can't find FCVTLT_hs but I can
-> see FCVTLT in the SVE encodings). But these are all widening operations
-> so I can see halfprec to single, not the other way around.
+> +DEF_HELPER_FLAGS_5(gvec_fscale_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+> +DEF_HELPER_FLAGS_5(gvec_fscale_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+> +DEF_HELPER_FLAGS_5(gvec_fscale_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
+> +
+>  #ifndef CONFIG_USER_ONLY
+>  DEF_HELPER_2(exception_return, void, env, i64)
+>  #endif
+> diff --git a/target/arm/tcg/vec_internal.h b/target/arm/tcg/vec_internal.h
+> index 5c3f51eed3..b647399b18 100644
+> --- a/target/arm/tcg/vec_internal.h
+> +++ b/target/arm/tcg/vec_internal.h
+> @@ -349,6 +349,10 @@ float32 float32_famin(float32, float32, float_status *);
+>  float64 float64_famax(float64, float64, float_status *);
+>  float64 float64_famin(float64, float64, float_status *);
+>
+> +#define float16_fscale  float16_scalbn
+> +#define float32_fscale  float32_scalbn
+> +float64 float64_fscale(float64, int64_t, float_status *);
+> +
+>  /*
+>   * Decode helper functions for predicate as counter.
+>   */
+> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+> index d2a4b0fadc..ac18ceeeab 100644
+> --- a/target/arm/tcg/translate-a64.c
+> +++ b/target/arm/tcg/translate-a64.c
+> @@ -6496,6 +6496,13 @@ static gen_helper_gvec_3_ptr * const f_vector_famin[3] = {
+>  };
+>  TRANS_FEAT(FAMIN, aa64_faminmax, do_fp3_vector, a, 0, f_vector_famin)
+>
+> +static gen_helper_gvec_3_ptr * const f_vector_fscale[3] = {
+> +    gen_helper_gvec_fscale_h,
+> +    gen_helper_gvec_fscale_s,
+> +    gen_helper_gvec_fscale_d,
+> +};
+> +TRANS_FEAT(FSCALE, aa64_f8cvt, do_fp3_vector, a, 0, f_vector_fscale)
+> +
+>  static bool do_fmlal(DisasContext *s, arg_qrrr_e *a, bool is_s, bool is_2)
+>  {
+>      if (fp_access_check(s)) {
+> diff --git a/target/arm/tcg/vec_helper64.c b/target/arm/tcg/vec_helper64.c
+> index dce5e0505e..7d403adfba 100644
+> --- a/target/arm/tcg/vec_helper64.c
+> +++ b/target/arm/tcg/vec_helper64.c
+> @@ -177,3 +177,19 @@ DO_3OP(gvec_famax_s, float32_famax, float32)
+>  DO_3OP(gvec_famin_s, float32_famin, float32)
+>  DO_3OP(gvec_famax_d, float64_famax, float64)
+>  DO_3OP(gvec_famin_d, float64_famin, float64)
+> +
+> +float64 float64_fscale(float64 n, int64_t m, float_status *s)
+> +{
+> +    /*
+> +     * Given the 'int' parameter of float64_scalbn, we have to saturate
+> +     * the 'int64_t' parameter of the operation to some value.  Since
+> +     * float64 has an 11-bit exponent, saturating to 12 bits is sufficient
+> +     * to ensure that DBL_TRUE_MIN can be made to overflow.
+> +     */
+> +    int sat_m = MIN(MAX(m, -0xfff), 0xfff);
+> +    return float64_scalbn(n, sat_m, s);
+> +}
+> +
 
-Yes, I got the commit message wrong here; this is half to single,
-and we need to use the A64_F16 fpstatus for conversions from
-halfprec, not conversions to it. The e07b48995aaa commit message
-does a better job of explaining this than I did this time around.
+I just noticed that this seems to be reinventing the
+existing scalbn_d() in sve_helper.c. Could we share the code?
 
-The _hs is how the QEMU decode file splits the half to single
-and the single to double encodings, which are the same insn
-mnememonic in the architecture.
-
-Improved commit message:
-
-=3D=3D=3Dbegin=3D=3D=3D
-We should be using the F16-specific float_status for conversions from
-half-precision, because halfprec inputs never set Input Denormal.
-If we use the FPST_A64 fpstatus then we will incorrectly set
-FPCR.IDC for input-denormals when FPCR.AH=3D1.
-
-In commit e07b48995aaa we updated most of the halfprec-to-other
-conversion insns to use FPST_A64_F16 as part of implementing FEAT_AHP.
-However we missed the SVE FCVTLT instruction, which has a
-halfprec-to-single encoding.
-
-Correct the FPST we use for the hs variant of FCVTLT.
-
-[cc, fixes, &c]
-=3D=3D=3Dendit=3D=3D=3D
-
-
-thanks
 -- PMM
 

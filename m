@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABC27CD5BB4
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 13:18:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A717CD5BB4
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 May 2026 13:18:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQ3Hi-00043l-6Z; Thu, 21 May 2026 09:17:58 -0400
+	id 1wQ3I9-0004bo-6O; Thu, 21 May 2026 09:18:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wQ3HZ-00041M-Jq
- for qemu-arm@nongnu.org; Thu, 21 May 2026 09:17:50 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ id 1wQ3Hm-000468-AP
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 09:18:02 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wQ3HU-0008Q9-39
- for qemu-arm@nongnu.org; Thu, 21 May 2026 09:17:48 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-43d75312379so5105892f8f.1
- for <qemu-arm@nongnu.org>; Thu, 21 May 2026 06:17:42 -0700 (PDT)
+ id 1wQ3Hg-0008Vq-RO
+ for qemu-arm@nongnu.org; Thu, 21 May 2026 09:18:02 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-43d75312379so5106067f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 21 May 2026 06:17:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779369462; x=1779974262; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779369470; x=1779974270; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=0Nc2l0giGtf+QZho3vf9MYXoNK00y4me0CSnyD/ZW0g=;
- b=x7/PXaYgfZxOCVQ44BhDT9jG1eVepm68xqVdGaIHhwU4rm+XRMLsSgzwqLPE940cgI
- FqmNzPUqeuprDoB6UmkCdNugqbxtblaGYkdweSZ8LkrxIeGPbR0cPBHC7BvB5oyOBbUa
- wcauAZTBSaL0vWTrG6Yw+7+bPMIkgDVUpv1Zc4DlCtKEmvRbrUGybbd3mJOhgpNiq8Im
- S8NhqmbjEoWbYslO4uOIEKjC/rlrJmWaW9/6FxB2ki01ZfxJpOerNw4+L6IlOJH9kVRk
- v+QIuxjGg9INcRj3g12tWPOwy9B9KQhBneIWMwioGLdWy4rej9EPgavmb5PyBjx6pAwA
- fZpA==
+ bh=gX4uwIwh+gHTvHNlBYIefbjuQa7ojD4zYP/K46jOPG0=;
+ b=x3IikaGdVHn45Z+cf1hRJoI9wswbTq/+HpBTALgLWePEGKKIfBw+PZYk4iO/cNSITZ
+ 7RSPE9Fjd878iIau2w05b932f6eQ83FzC8NUCcovzLbYPyFIqWpfSLJ1Ur8cne98md52
+ Fz2lObOInc/sRIkZT8soBa6+5ezrObRgTXnb7pMfadE3zM6QIZGxlrbPN748upC0a9yB
+ tqZb2iDa6r1wVmde12moOP4K4IAz8Uw2V2jqt9azmApX8MPjltim/w0CIICntTFNfSeZ
+ iNxVbpw6lLPKkizKEm3onAQ0RvEnPmKO6vxiHxyiyka28qennAJCOavASVVahsEXMPgU
+ BkQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779369462; x=1779974262;
+ d=1e100.net; s=20251104; t=1779369470; x=1779974270;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=0Nc2l0giGtf+QZho3vf9MYXoNK00y4me0CSnyD/ZW0g=;
- b=hCHOl8KZBcNO8Bl29wR8ulhHY4jIT/FW8mf44GtXlp4kv44G2jD/2oNQau+MvWMjGk
- 5Cur+xdohrz1pg/FlZb1KJl9pLlSekBKXOiQag2kzzO3287SsPLC79wdY1zG/F5l34g3
- smhaEglo8kJ4iKeXOu1ZQ7Erg8kaAM6oydQfhUmHQSmw54BkEigZ34dagB7chvFjPj5I
- VMcJFRCViimuaUHn2n2AH1QBvHQ5cNyO/o77m5cgMm18kJwUaA4Wu3HOkV/xIipfmxT6
- xoihAPzgP+enrHJmG8DxPZ+MY4BgPnzQJy9xG25tkUcn9sweQi4BKS3RL9nw8sWfMbVU
- WNdA==
+ bh=gX4uwIwh+gHTvHNlBYIefbjuQa7ojD4zYP/K46jOPG0=;
+ b=kqjVqNqfVuAvRl66qLIwsGTWCcivfYzdCDUjcMElXS1p9xn2t/BnZ8DvcYpY+ltuTl
+ LskwOGDF/nIWC+AHh+m0IGXPLLLdAJsi2kz4Eoc7zmiYwRcpze+XK9uu0OySbVLJgu3N
+ CUmR5rxJfu+beir+en6UCT3VPNAVe4W4y4NSVvX4HYWXd8JcAHB8g+QA9Ke/MXYfaRr7
+ dRtkQpmcjKFRftvFY+mgNjRWnrer3dw9hKJKsrZL8h58aHp9NS/uc1B1zt3GPlg4x4M7
+ kfA8xjHtBkKHeMKrYT9LeyAhwh0MJXvdlN5EcNGOsITFhRDfVvcFEylX/lT9jm2tDfkE
+ DBDQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9cWHbu231bU10AiKPWbIPBGe8WfcZCpgi7va1D8sDdAB/J/9hgSssiF07h9K9Pfn43vPsyEvyNlw==@nongnu.org
-X-Gm-Message-State: AOJu0YwhwonJOQNz7vA3XlPOBYEkHk4HyfkRaNnjaD/hyW73F49Ccex5
- uJbELZ2kgLbdI4jvDniukoGABftEcpCyv+Xdo7RP3XfQfacINiqZ7df7NmEpqgdYOpQ=
-X-Gm-Gg: Acq92OFdATfSPLS7TbT/e7MLzjlVOZiQ8lz4b6NCNF4WAZiBNJxN/c44v+PN+dv51D/
- +Z8pR/+sQ5wVbK8+rzi4YBSoT+e+UsI/qSDlpqg99ckwSZ1gsB4IWnG7Gn8zmEr9CqVMPe5b22t
- WxZtQtwWimnOoaS29cFkvUhNT1zJK7ciVImQpZkutN8AkPpCZsJuazSkMKQ8Dutd7yyxpdWyNXB
- N6l/gBzaR+ikmJLI/HOKodZoKicfLyUaimIFHtSJv10yB2yQw91SbH97ux8NtPINy/lVNHSD2N/
- yd78WgHGlJAbXBuWWIGRdafcsz9f/fpqc1UVUttNCWqKdbizJqwD+kpfPOMTjffb9bZv2/g379H
- pYsdq6KvFbIxC4CQBE18Nzrzdvfd+JL4D/9HEIn2DLOJyHU/lv2qgyCfyM60CDXgNHqEZ4y6Fhh
- BYMio+29wwnW4FjVnieOI+tmU=
-X-Received: by 2002:a05:6000:430b:b0:448:908a:398b with SMTP id
- ffacd0b85a97d-45ea319686amr4306945f8f.14.1779369461553; 
- Thu, 21 May 2026 06:17:41 -0700 (PDT)
+ AFNElJ+PTvervrbw/NSRtsdmIjhxhyGef+W9wSgJQTpHcPylyRaGAKfQz7Ux8ysVZNSVCsMMy3vVUCzPqg==@nongnu.org
+X-Gm-Message-State: AOJu0YyqmNrFhh4k7Mv4S36fcA7NGa+Y5S6b4on3/wb6HwA/hRhqrTGr
+ +M/VsbiOW8erEkkHg3EhPauUAxu5AsLKyCURxu4WqMx5V7vHGCgOcOimv9VCDw18oDc=
+X-Gm-Gg: Acq92OHr5nPdwqQQ4GcDKTyDGJHHNChwIxuj9chNdMW6oQKOVjRAKQtTT55aCSHQkvo
+ c9r148Tn6OHTPxYhhsDA9uIa2GPa13JKAhUBGDG74fqlcxNnbqPIXTpXP0p9RIkSQEde///k/C8
+ zzBAXoKf6vE4uTDTAfgT9TMMC7HiYzSXF1d0tljomQ38g/wv8ZlL3WpFv/yWun3mBb7EDI2PxWv
+ xFQWk8ixRWZuVYJGkswwkE18iTkmIBshoBcZ21jaBZFd4G8FBYBhFrwQjR26BuaR5y4GM38YDSC
+ Gy+VPiXKWBDQuDJHUlB/YAycBWt/8iGRqlabs4xCiwErU0znTLCL/pqY9uO0kh4A49+e122ism8
+ xXpZfgBk8t52Ynv8OGdccbkhnnsQdK90TuL5kmG/RVkXXmUcMSBhmgpAwncuw9WkHVO+ONwBq1s
+ ClidBWeZFqrmaIYWc/NH/KwR8=
+X-Received: by 2002:a05:6000:2798:b0:45e:733a:a0ff with SMTP id
+ ffacd0b85a97d-45ea31290bcmr2916217f8f.3.1779369470093; 
+ Thu, 21 May 2026 06:17:50 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45eaa92f622sm3155839f8f.24.2026.05.21.06.17.40
+ ffacd0b85a97d-45eaa92ca4esm2870798f8f.22.2026.05.21.06.17.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 May 2026 06:17:40 -0700 (PDT)
+ Thu, 21 May 2026 06:17:48 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 55CEB5FA07;
- Thu, 21 May 2026 14:17:39 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 92F3861015;
+ Thu, 21 May 2026 14:17:40 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Xu <peterx@redhat.com>,
@@ -86,18 +86,18 @@ Cc: Peter Xu <peterx@redhat.com>,
  Brian Cain <brian.cain@oss.qualcomm.com>, Fabiano Rosas <farosas@suse.de>,
  Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v2 01/16] Makefile: include tests/Makefile.include before
- ninja calculation
-Date: Thu, 21 May 2026 14:17:23 +0100
-Message-ID: <20260521131739.540157-2-alex.bennee@linaro.org>
+Subject: [PATCH v2 14/16] MAINTAINERS: Cover python.docker with Python library
+ section
+Date: Thu, 21 May 2026 14:17:36 +0100
+Message-ID: <20260521131739.540157-15-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260521131739.540157-1-alex.bennee@linaro.org>
 References: <20260521131739.540157-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,36 +120,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-As the tests Makefile sets .ninja-goals we need it to be included
-before we do the calculations in the main Makefile.
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Message-ID: <20260518102222.80735-6-philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- Makefile | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Makefile b/Makefile
-index 54547a37b1a..829c51e364c 100644
---- a/Makefile
-+++ b/Makefile
-@@ -45,6 +45,8 @@ include config-host.mak
- include Makefile.prereqs
- Makefile.prereqs: config-host.mak
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 62754d18341..bc054a6d97b 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3484,6 +3484,7 @@ M: John Snow <jsnow@redhat.com>
+ M: Cleber Rosa <crosa@redhat.com>
+ S: Maintained
+ F: python/
++F: tests/docker/dockerfiles/python.docker
+ T: git https://gitlab.com/jsnow/qemu.git python
  
-+include $(SRC_PATH)/tests/Makefile.include
-+
- # 0. ensure the build tree is okay
- 
- # Check that we're not trying to do an out-of-tree build from
-@@ -180,8 +182,6 @@ endif # config-host.mak does not exist
- 
- SUBDIR_MAKEFLAGS=$(if $(V),,--no-print-directory --quiet)
- 
--include $(SRC_PATH)/tests/Makefile.include
--
- all: recurse-all
- 
- SUBDIR_RULES=$(foreach t, all clean distclean, $(addsuffix /$(t), $(SUBDIRS)))
+ Python scripts
 -- 
 2.47.3
 

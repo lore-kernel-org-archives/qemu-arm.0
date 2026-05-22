@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40711CD4F3D
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 May 2026 22:03:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD82FCD4F3D
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 May 2026 22:03:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQXxg-0007h9-AH; Fri, 22 May 2026 18:03:20 -0400
+	id 1wQXxv-0007l6-3E; Fri, 22 May 2026 18:03:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wQXxe-0007fq-Md
- for qemu-arm@nongnu.org; Fri, 22 May 2026 18:03:18 -0400
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+ id 1wQXxg-0007h5-6w
+ for qemu-arm@nongnu.org; Fri, 22 May 2026 18:03:20 -0400
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wQXxc-0007le-8K
- for qemu-arm@nongnu.org; Fri, 22 May 2026 18:03:18 -0400
-Received: by mail-pj1-x1036.google.com with SMTP id
- 98e67ed59e1d1-3680540a6efso4398955a91.2
- for <qemu-arm@nongnu.org>; Fri, 22 May 2026 15:03:15 -0700 (PDT)
+ id 1wQXxe-0007sW-ID
+ for qemu-arm@nongnu.org; Fri, 22 May 2026 18:03:19 -0400
+Received: by mail-pj1-x102e.google.com with SMTP id
+ 98e67ed59e1d1-36608b2f2dcso5101264a91.2
+ for <qemu-arm@nongnu.org>; Fri, 22 May 2026 15:03:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779487395; x=1780092195; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779487397; x=1780092197; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Vt3sSjY1I9K5JlXMwxo57mQwm/lZo1Hult3fBAaDzUE=;
- b=YyYGq2SkU9u6RbUsvM+ObAWUJWncyqLJME5J484trp1nnc/OTiyQqwv+nPRtd9FcKq
- esUBGuSrs5ccHXh7FtaIoUgqsi+hCpyWdZ56+CJr7SE4F3j8AgvVHKqXQ8Zv+iMiI57N
- Quku55EPQVYJ/j44SoYtr1K8AzPOVku6vZiI2RicCbl1svp1/oPoGjJ3Sau7xs+qmE0Y
- eC1WR/Xvkzzf9GlsA1wifebIGGgOWlby8QDrP9yL90YI2l2cKjD1PVeR7fQUAAX15DyK
- xblzH57RUA6bzlaEmdJPSr7ZjDnSUQIhklIkrDxa/wyE8jiVQ90670MmD1OrZh+xgrJC
- oBtw==
+ bh=mzaEhs95KOVdosdksX5QP/p2B/VwIujPaKiRxVIOAHQ=;
+ b=IcFpxQWiSN+Al6G5YwxfG1WbzrFL3G5KMjYFTY50P1+iVPpV/haCo/zh7SUY6UAc8I
+ swFlYxAhIBzHiz22l9TR3PgK1qlU6FMT0MSOYsfWzu4IL6VpTes+5Iu+MNDjeWev6io9
+ 1b4fp5JQ0ylPnamshINwNbrbgMd/p1LvxDZx/LRdv4+dYGDAMsivmBBjJ3iV4NzOz/Ep
+ cSC8DkxPDOkVDK7WDZQk/uHfmebrBB2YLvWjAN5Ewt9YopXLaOFe2fnEm7MwFCBiDcDj
+ YGyc2KPiO6lsKj9WZ65sZvEBpChl9cXIH2YWpvopVyH62ybDfeSZFfXgBt/seRvV3L6g
+ EpUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779487395; x=1780092195;
+ d=1e100.net; s=20251104; t=1779487397; x=1780092197;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Vt3sSjY1I9K5JlXMwxo57mQwm/lZo1Hult3fBAaDzUE=;
- b=kQxOyoj/hqtzDAWP0Wihrtbs05AoHqm3P8wUGwChmX8Fp580C2o1EWMGzQOLr+YGWr
- Lq3YnEkvToW0x8sc44+aRkkk8YTqwFyPMAPaxFcgr1OohyAipkw0F7Iz4DrICgqj0PZW
- 2N3xGimpfvsTy1ho/0wYwL79Qj460CFWT8N9dnXY7mTgG3n39UuRWNUjzsJV8I4RhTbh
- cF1KGVh3X+RqhkNRjONWe0jidpAJmD9inzNQGmZVnNgUdgyL/kDGthCOwkH7k2rpc/Fx
- 7EGJEZPIUdEtRMu7RFNJuNQO00ItHzEgwRwRFgEq58lpfI3KP0p8W1RGnJ+9lPJFdQjx
- AlRA==
-X-Gm-Message-State: AOJu0YxHXBskV8rExrok7p5uMMNt9qcSNIT49FXKKdROe7sksdaU0DtP
- o0im8axlDW4Ytc3ciY5fY34jS+xyV2ANynGjESDi+aVVTqjNdZHGjbOvblvrxhryZ5dmwOTQUPw
- aUmCS
-X-Gm-Gg: Acq92OHAFN3N9It1lB07d1SoLUiq1MOG1Ffpp+6UKgQijvk72zmB2gJ8ytkgiYfSLNR
- omRsU16ssWn2OLi+MYJTCCPwa9VZfUrLD7qh5O2/EpF/3kmtcg+oK/ffLcScMpXBx6aP34JVWFt
- x9Slk9bMN8yNPi6+a6ooVvxdN+ejJdcPiTG1ii2lZLtdqfftmBypEynwQ4PulMFGFjgJrogiARB
- SSFlGTSt7jRbiLb8YFwmW8hvmkwIm7+495luIoBD2ugn6Gx4yuPaSlrSF3AkoHg0zLa+1JsDo+7
- Bi07R24cmcVJuKlenYuaPQm3g/L7t15pKDZAjiG68frqh24dwgcUGpYtOzKS0MKVA3GPPL/fNOQ
- 3mo23u2hGvMZ1FW5J/vSWty/tUc/MpLJwzVYHL28zKmwFVawQTMyCt/1mLhQQ9HKBvb5bHMG8DN
- sNhKqh+q2jr2nj62x3+qZyjOU/AT+UwhkPWNihON4=
-X-Received: by 2002:a17:90b:5687:b0:36a:31c2:d402 with SMTP id
- 98e67ed59e1d1-36a67471bf6mr5657973a91.10.1779487394750; 
- Fri, 22 May 2026 15:03:14 -0700 (PDT)
+ bh=mzaEhs95KOVdosdksX5QP/p2B/VwIujPaKiRxVIOAHQ=;
+ b=UAzoA1kkYKGXDI5ajKxMT9QBAIPlL/Dm4oSNIZBsMAjerdM0/FSap35W6DZFMrhDHg
+ rYYw2RN0Fm0x7hCnUQ9ScyAz0Yp639gYfG+WSCrXWe/EPsQ+rR6tb7CHc2i0AmIGozw5
+ lQbbNhfAGiXNjwf6tm5vkdQzaIK+CrhpG9t62qvuZoW4H86I0g0xx08DsHhPtL9n5r6U
+ aZw43eGC+vMJH6Nw2p/IuzYiMkpDdtsLs1Jf8jfYnXgJXcnDDytzqsjl8TbHPzmQoYla
+ C1+ngw0u5jJ4Ory3Tl/ChugkM27cZcObmfYGT5pmLyjtNBKVcNWrCIk1l/f72JYYV64C
+ rZBg==
+X-Gm-Message-State: AOJu0Yx2D2frO9RD+w6h1qjy05eyqFHNegve5hpFnvCdfPboXv4O3N7s
+ v79OYi7dHFXBmZnDhmHO73mQgJ8TBAJTLhY5av/uVeOh+RCNp8GeQhQ3j06nd1Hio0Hr367ZF2/
+ yjX5A
+X-Gm-Gg: Acq92OGBz4ZUo3NbIHT216asnvssmiu5oJNpoAp+RGHZ2aVBrHnwwVsfCt+umK/rKwm
+ aVrMSCjJZFAXnVWLsgpe3LGIVd8rZmEiPNOlt58juUqpDw7cVi1KodvIwdjv+naATsJyisELkYm
+ kBXlGMjIPE3yn6y4yOC7bXVg5/U8j2icNID6Z0gI5DVlDVXqxgKbJ1ryzYChwHNz0Uj+KkKewU0
+ ynjMEsOrDcVFWlDUkZ721pYQBXpBn+KHsesxZQqPh+2vkuvuAA06YtYeFcGsIYjYuOnfM9sqcky
+ +qMeX79AAJsH0UWBdlR6NzVw8IwQNYcvnE1vFWhx2KfL5BX+upQajci0ssMvNY6bWbviexS+gtZ
+ LkuF/PE+oRLcbEFmQk+5n/SEkaKJMfuJ4apUfbj6mMPoRXSH8Jx9v0xqRcavwjvhsj7Xdbt/kl0
+ zmi9L+RXr9aN6nOfA/Ey4zaz6kMNOT
+X-Received: by 2002:a17:90b:33c1:b0:368:6998:b49d with SMTP id
+ 98e67ed59e1d1-36a6772d18emr4896766a91.10.1779487397063; 
+ Fri, 22 May 2026 15:03:17 -0700 (PDT)
 Received: from stoup.. ([50.78.183.177]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-36a6772f486sm1726789a91.2.2026.05.22.15.03.14
+ 98e67ed59e1d1-36a6772f486sm1726789a91.2.2026.05.22.15.03.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 May 2026 15:03:14 -0700 (PDT)
+ Fri, 22 May 2026 15:03:16 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v7 07/64] target/arm: Update HCRX bits for Arm ARM M.a.a
-Date: Fri, 22 May 2026 15:02:09 -0700
-Message-ID: <20260522220306.235200-8-richard.henderson@linaro.org>
+Subject: [PATCH v7 09/64] target/arm: Update SCTLR bits for FEAT_FPMR
+Date: Fri, 22 May 2026 15:02:11 -0700
+Message-ID: <20260522220306.235200-10-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260522220306.235200-1-richard.henderson@linaro.org>
 References: <20260522220306.235200-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,23 +103,21 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h | 3 +++
- 1 file changed, 3 insertions(+)
+ target/arm/cpu.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 00830b1724..27ff94565e 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -258,6 +258,9 @@ FIELD(VSTCR, SA, 30, 1)
- #define HCRX_TCR2EN   (1ULL << 14)
- #define HCRX_SCTLR2EN (1ULL << 15)
- #define HCRX_GCSEN    (1ULL << 22)
-+#define HCRX_ENFPM    (1ULL << 23)
-+#define HCRX_PACMEN   (1ULL << 24)
-+#define HCRX_SRMASKEN (1ULL << 26)
- 
- #define HPFAR_NS      (1ULL << 63)
- 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index a549a50b7d..e9e261eb2a 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1485,6 +1485,7 @@ void pmu_init(ARMCPU *cpu);
+ #define SCTLR_DSSBS_32 (1U << 31) /* v8.5, AArch32 only */
+ #define SCTLR_CMOW    (1ULL << 32) /* FEAT_CMOW */
+ #define SCTLR_MSCEN   (1ULL << 33) /* FEAT_MOPS */
++#define SCTLR_EnFPM   (1ULL << 34) /* FEAT_FPMR */
+ #define SCTLR_BT0     (1ULL << 35) /* v8.5-BTI */
+ #define SCTLR_BT1     (1ULL << 36) /* v8.5-BTI */
+ #define SCTLR_ITFSB   (1ULL << 37) /* v8.5-MemTag */
 -- 
 2.43.0
 

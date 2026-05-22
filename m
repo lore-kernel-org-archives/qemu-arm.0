@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6680CD5BB9
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 May 2026 22:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0C03CD5BB3
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 May 2026 22:10:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQY05-0003Sa-8p; Fri, 22 May 2026 18:05:49 -0400
+	id 1wQXz2-0000cN-3M; Fri, 22 May 2026 18:04:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wQXxx-0007ln-CU
- for qemu-arm@nongnu.org; Fri, 22 May 2026 18:03:42 -0400
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+ id 1wQXxq-0007kg-PA
+ for qemu-arm@nongnu.org; Fri, 22 May 2026 18:03:35 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wQXxu-0008Kb-Sa
- for qemu-arm@nongnu.org; Fri, 22 May 2026 18:03:37 -0400
-Received: by mail-pj1-x1029.google.com with SMTP id
- 98e67ed59e1d1-36974217d4eso5051628a91.2
- for <qemu-arm@nongnu.org>; Fri, 22 May 2026 15:03:32 -0700 (PDT)
+ id 1wQXxn-0008F1-9S
+ for qemu-arm@nongnu.org; Fri, 22 May 2026 18:03:29 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-367d88b9940so5145237a91.1
+ for <qemu-arm@nongnu.org>; Fri, 22 May 2026 15:03:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779487412; x=1780092212; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779487405; x=1780092205; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=gaaVtxE8Td6jvB18Vve34OKkbWHvZ7daRwPQB8xezVs=;
- b=B0pDWkxSw+q85S1yFsX6czeqCmSamHxO80zf/EOsYAo26y093zmpvudV3Nel4/HosO
- RVZfv3vYO6EaHEftX3NebC3tyaBqFA3LX3w6zTOuC52/YIdCPyZELOOcsinMdjbtFZPs
- 3S8SbdazRAUdIa5bKzmLnQ/isgNF1NsJHy/oDyhvxwSqFNplLZ5vgC41gWZvbKHGASCo
- NYnO66bFdDFkt5dO8JyCYZa9IZdTXgs9joldqNsMjhlbt4fio3z4UEqUnIrpOXs/A88R
- W4umDmMILiFYpH+bNFJDvoXOD/HOMixLaGPOz8P8CIgbaz2YCdFRHfRZFwfjmdRXlSQO
- b2DQ==
+ bh=Ke6jInMIcSbZvQJLAez0XGyYiEeJ5p5eH1CrpDu09no=;
+ b=iMUQpoYe3ec8rxLPD/aMzzUs7DT9GQeTHcGYAixiSTiefTdkUWEym3MSHpxpQKXcLi
+ jOw9FHc/mtnp5XoE0gpyg0RSNHEa7CLm1Rm/Pk7VoIV+7oe26X5yf1wffJJQExapm65n
+ cqHiAnw5txaznShnxYayc7450avIz+O9Zdst9cj7KJbodiYJegMya9h3WrCCHvJXUPmW
+ ui3WOw2XHNiQOyvpqbv/8mItP42y0xH8HGuFRD98U38mf3sGhOjzn8eI6w3jFWwNJfWP
+ TCIB5LpAy7l6rPCmkEOBXyinjCXzPFu6EaevXJ4OdJ0VfjRY5melU3ZKGUrg270tCCic
+ 1jyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779487412; x=1780092212;
+ d=1e100.net; s=20251104; t=1779487405; x=1780092205;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=gaaVtxE8Td6jvB18Vve34OKkbWHvZ7daRwPQB8xezVs=;
- b=KdAf+QRq6EX4UpS3eeSLWaqpFHfsczvWZiCGXlv24zzYYfagrhuOezQtVgKtU8MGse
- 9QXINXhPSxpOcbTseiHbqggEiN1kbgGNcuXozD4nGb75uazGdOxOsra/qbdsOBFOIXMK
- dUDjLkgUPZqxOxgNgrU8HPLfKW4hbLdkLLCfiWLyuWCH+nbmNQdDXVHHv/LmFdm7Utbz
- QcBV8UyznpltBMz3auguzSZDxzQiynQAK6lEI6bVyizsFpPY+uosrhCODIZ0CqZkFXQz
- kABTK+tCUnqJpx1qh4/ndIERc+zi8RzpEuB6sO8qZnAB7GROL2dAc2Rqky0CwlcPPTTL
- 9nWQ==
-X-Gm-Message-State: AOJu0YwzPQuHGZT4e4KDR1zAivNtEkGxbwrX1yU+QMDruEZKgLqNEiY+
- kximenrxg1TO/EeATnxbJBFNtIDZPLBR0ww5BxOXyEDQthE92bKg/jorZwWE83xCIsE=
-X-Gm-Gg: Acq92OEb/BQ5ygwNPWwudDWn7sFRsqJk2YuSH8rAsPAwMlMDhwA4O8FBPSgdxg7ngRz
- BQ/t0iIrQEVe8rnxbY3nOzffDOTxhNB6ArnK/knEf1l8jainbJsBtwnTbGSNT/OR1j3H1ZmLnxC
- LwQWrNEm4T+2kdkXaQm2iPGS17hcsHcqc2YdUKPB4xEo1AtCS2V+axrLF3Kj+3xVt4nqaSi2GB6
- 1jI/Vs8DIA+NL3BSouzWDXKua16mQsRIcp6qq4WuTBzQCaVIMEWtk8qWu7dQMUR0xDsOwTyciIt
- /zPsWJLSp2wiTCTwLcoXlVQVfIoGxOF+yiMwB566e/M9jphI2ejA6RKsy1E2YB5ThKptTOyG7oA
- /b+9XCJl8nysube+rC6mujG+ZyXQCRje/mJgVEymUhTnPK9cN/ALHeH5Y4elT5EQP86Ar6zm2zS
- SVqeucm3PesEoROme7DHOEhwE69wcj
-X-Received: by 2002:a17:90b:3887:b0:369:a359:b181 with SMTP id
- 98e67ed59e1d1-36a6787b0dcmr5279630a91.23.1779487411892; 
- Fri, 22 May 2026 15:03:31 -0700 (PDT)
+ bh=Ke6jInMIcSbZvQJLAez0XGyYiEeJ5p5eH1CrpDu09no=;
+ b=KLjEpEYmK0Up/XeWJ6DGHJMNRgOw3RCLoHYmEcwi8+alArMBQfU0uWrl/1scGsVCRs
+ QskZy6/FbOHXR6pMB6wCaTBR+Kg9NPG+WJtFijszUjBEfi9qfy8KL14QIkpMq98dlWGf
+ pFCwN30fmm/DxZzio8ZG/7IFyATZInpCSYZr6Ghd7tHl3lDDUINMMHPXoOQZqn0BXEMy
+ g9gOHMJFS7xOT5lSRA1H1JDD1q2ZDjuil2AYPxnp/i1em1x1yZZSlFiVnRidOmflh6lu
+ Bjg+3aKG8H9TzPTongCTa9BqhUZtBX3fpGBcdP7OF0hTD4X9AbDeSec5GtvpUVI6wnaK
+ Ja8w==
+X-Gm-Message-State: AOJu0YwyStsi+Z7BkAZL1/87EnRtVBOjdrjJKqFDvNOg3BjlN74RAWKh
+ BZ7uJmEacita/ZTV/IJR/yXtZPo7IkuI8OaOeG8OUh3KLT8cL7rbLXUZtfP7+sksUo4=
+X-Gm-Gg: Acq92OEDr2O0IItfjsgW3x6HSN+4vPmauEDE0BB+6e/qWVR63nzsq1UCJtBPConMKsg
+ 1tqKyZcQpj1nUedo/pIiKUleqC7iXgOgkQoAvAo1dXS4aq7rAMgIoTtToDmSYg642aaro6mDm+g
+ OwK6MMb+75PvjmDbIAZMA9lWQfhlG56kTO9U7O5yn9MHl4Uf+pyI75M4iFvAY3qrRyaLtPzkkaL
+ LQh7UZanxHoA6SnJQkIXutdIyYeAmyirOxzfOGg+5KbOlwo5u94OBmncdTJQVBi5SnQaaz5owcN
+ gYRim+0NtAiS0B9xsCgF+oOliKMmpn3gOzXZgMddWDVI+kufT+IX33KIFTHaHF20xyvrJhQQVhG
+ tv+8RzNFY9wYZ3Xl3uAGR3GCecb0mWKv0hmJO4TSe5uqEuilMF08NsVnt5qPxhfGWFuocf6tN5M
+ jApbJTTltb0CMnufvxxVQhz9LUTVhv
+X-Received: by 2002:a17:90b:5343:b0:368:b01c:85a0 with SMTP id
+ 98e67ed59e1d1-36a677fd392mr4427319a91.14.1779487404614; 
+ Fri, 22 May 2026 15:03:24 -0700 (PDT)
 Received: from stoup.. ([50.78.183.177]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-36a6772f486sm1726789a91.2.2026.05.22.15.03.30
+ 98e67ed59e1d1-36a6772f486sm1726789a91.2.2026.05.22.15.03.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 May 2026 15:03:31 -0700 (PDT)
+ Fri, 22 May 2026 15:03:24 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v7 24/64] target/arm: Introduce arm_init_fp_status
-Date: Fri, 22 May 2026 15:02:26 -0700
-Message-ID: <20260522220306.235200-25-richard.henderson@linaro.org>
+Subject: [PATCH v7 16/64] linux-user/aarch64: Implement FPMR signal frames
+Date: Fri, 22 May 2026 15:02:18 -0700
+Message-ID: <20260522220306.235200-17-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260522220306.235200-1-richard.henderson@linaro.org>
 References: <20260522220306.235200-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,76 +98,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Initialize all of a float_status settings in one place.
-
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.c | 45 +++++++++++++++++++++++++++------------------
- 1 file changed, 27 insertions(+), 18 deletions(-)
+ linux-user/aarch64/signal.c | 44 ++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 43 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index a13e6dae2a..4ea076fe4b 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -304,6 +304,22 @@ static void cp_reg_check_reset(gpointer key, gpointer value,  gpointer opaque)
-     assert(oldvalue == newvalue);
+diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
+index f7edfa249e..899fce7643 100644
+--- a/linux-user/aarch64/signal.c
++++ b/linux-user/aarch64/signal.c
+@@ -73,6 +73,13 @@ struct target_esr_context {
+     uint64_t esr;
+ };
+ 
++#define TARGET_FPMR_MAGIC   0x46504d52
++
++struct target_fpmr_context {
++    struct target_aarch64_ctx head;
++    uint64_t fpmr;
++};
++
+ #define TARGET_EXTRA_MAGIC  0x45585401
+ 
+ struct target_extra_context {
+@@ -362,6 +369,14 @@ static bool target_setup_gcs_record(struct target_gcs_context *ctx,
+     return true;
  }
  
-+static void arm_init_fp_status(float_status *s, bool ah, bool fz, bool dn)
++static void target_setup_fpmr_record(struct target_fpmr_context *ctx,
++                                     CPUARMState *env)
 +{
-+    memset(s, 0, sizeof(*s));
-+
-+    if (ah) {
-+        arm_set_ah_fp_behaviours(s);
-+    } else {
-+        arm_set_default_fp_behaviours(s);
-+    }
-+    set_flush_to_zero(fz, s);
-+    set_flush_inputs_to_zero(fz, s);
-+    set_default_nan_mode(dn, s);
-+
-+    /* We want 0 for all other settings. */
++    __put_user(TARGET_FPMR_MAGIC, &ctx->head.magic);
++    __put_user(sizeof(*ctx), &ctx->head.size);
++    __put_user(env->vfp.fpmr, &ctx->fpmr);
 +}
 +
- static void arm_cpu_reset_hold(Object *obj, ResetType type)
+ static void target_restore_general_frame(CPUARMState *env,
+                                          struct target_rt_sigframe *sf)
  {
-     CPUState *cs = CPU(obj);
-@@ -626,24 +642,17 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
-         env->sau.ctrl = 0;
+@@ -518,6 +533,12 @@ static void target_restore_tpidr2_record(CPUARMState *env,
+     __get_user(env->cp15.tpidr2_el0, &tpidr2->tpidr2);
+ }
+ 
++static void target_restore_fpmr_record(CPUARMState *env,
++                                       struct target_fpmr_context *fpmr)
++{
++    __get_user(env->vfp.fpmr, &fpmr->fpmr);
++}
++
+ static bool target_restore_zt_record(CPUARMState *env,
+                                      struct target_zt_context *zt, int size,
+                                      int svcr)
+@@ -610,6 +631,7 @@ static int target_restore_sigframe(CPUARMState *env,
+     struct target_tpidr2_context *tpidr2 = NULL;
+     struct target_zt_context *zt = NULL;
+     struct target_gcs_context *gcs = NULL;
++    struct target_fpmr_context *fpmr = NULL;
+     uint64_t extra_datap = 0;
+     bool used_extra = false;
+     bool rebuild_hflags = false;
+@@ -691,6 +713,15 @@ static int target_restore_sigframe(CPUARMState *env,
+             gcs = (struct target_gcs_context *)ctx;
+             break;
+ 
++        case TARGET_FPMR_MAGIC:
++            if (fpmr
++                || size != sizeof(struct target_fpmr_context)
++                || !cpu_isar_feature(aa64_fpmr, env_archcpu(env))) {
++                goto err;
++            }
++            fpmr = (struct target_fpmr_context *)ctx;
++            break;
++
+         case TARGET_EXTRA_MAGIC:
+             if (extra || size != sizeof(struct target_extra_context)) {
+                 goto err;
+@@ -735,6 +766,9 @@ static int target_restore_sigframe(CPUARMState *env,
+     if (tpidr2) {
+         target_restore_tpidr2_record(env, tpidr2);
+     }
++    if (fpmr) {
++        target_restore_fpmr_record(env, fpmr);
++    }
+     /*
+      * NB that we must restore ZT after ZA so the check that there's
+      * no ZT record if SVCR.ZA is 0 gets the right value of SVCR.
+@@ -817,7 +851,7 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+                                uc.tuc_mcontext.__reserved),
+     };
+     int fpsimd_ofs, fr_ofs, sve_ofs = 0, za_ofs = 0, tpidr2_ofs = 0;
+-    int zt_ofs = 0, esr_ofs = 0, gcs_ofs = 0;
++    int zt_ofs = 0, esr_ofs = 0, gcs_ofs = 0, fpmr_ofs = 0;
+     int sve_size = 0, za_size = 0, tpidr2_size = 0, zt_size = 0;
+     struct target_rt_sigframe *frame;
+     struct target_rt_frame_record *fr;
+@@ -841,6 +875,11 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+                                        &layout);
      }
  
--    set_flush_to_zero(1, &env->vfp.fp_status[FPST_STD]);
--    set_flush_inputs_to_zero(1, &env->vfp.fp_status[FPST_STD]);
--    set_default_nan_mode(1, &env->vfp.fp_status[FPST_STD]);
--    set_default_nan_mode(1, &env->vfp.fp_status[FPST_STD_F16]);
--    set_default_nan_mode(1, &env->vfp.fp_status[FPST_ZA]);
--    set_default_nan_mode(1, &env->vfp.fp_status[FPST_ZA_F16]);
--    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_A32]);
--    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_A64]);
--    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_ZA]);
--    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_STD]);
--    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_A32_F16]);
--    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_A64_F16]);
--    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_ZA_F16]);
--    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_STD_F16]);
--    arm_set_ah_fp_behaviours(&env->vfp.fp_status[FPST_AH]);
--    set_flush_to_zero(1, &env->vfp.fp_status[FPST_AH]);
--    set_flush_inputs_to_zero(1, &env->vfp.fp_status[FPST_AH]);
--    arm_set_ah_fp_behaviours(&env->vfp.fp_status[FPST_AH_F16]);
-+    arm_init_fp_status(&env->vfp.fp_status[FPST_A32], false, false, false);
-+    arm_init_fp_status(&env->vfp.fp_status[FPST_A32_F16], false, false, false);
-+    arm_init_fp_status(&env->vfp.fp_status[FPST_STD], false, true, true);
-+    arm_init_fp_status(&env->vfp.fp_status[FPST_STD_F16], false, false, true);
++    if (cpu_isar_feature(aa64_fpmr, env_archcpu(env))) {
++        fpmr_ofs = alloc_sigframe_space(sizeof(struct target_fpmr_context),
++                                        &layout);
++    }
 +
-+    arm_init_fp_status(&env->vfp.fp_status[FPST_A64], false, false, false);
-+    arm_init_fp_status(&env->vfp.fp_status[FPST_A64_F16], false, false, false);
-+    arm_init_fp_status(&env->vfp.fp_status[FPST_ZA], false, false, true);
-+    arm_init_fp_status(&env->vfp.fp_status[FPST_ZA_F16], false, false, true);
-+    arm_init_fp_status(&env->vfp.fp_status[FPST_AH], true, true, false);
-+    arm_init_fp_status(&env->vfp.fp_status[FPST_AH_F16], true, false, false);
- 
- #ifndef CONFIG_USER_ONLY
-     if (kvm_enabled()) {
+     /* SVE state needs saving only if it exists.  */
+     if (cpu_isar_feature(aa64_sve, env_archcpu(env)) ||
+         cpu_isar_feature(aa64_sme, env_archcpu(env))) {
+@@ -917,6 +956,9 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+         !target_setup_gcs_record((void *)frame + gcs_ofs, env, return_addr)) {
+         goto give_sigsegv;
+     }
++    if (fpmr_ofs) {
++        target_setup_fpmr_record((void *)frame + fpmr_ofs, env);
++    }
+     target_setup_end_record((void *)frame + layout.std_end_ofs);
+     if (layout.extra_ofs) {
+         target_setup_extra_record((void *)frame + layout.extra_ofs,
 -- 
 2.43.0
 

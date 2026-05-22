@@ -4,93 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D95F6CD5BB0
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 May 2026 18:35:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4569FCD5BB3
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 May 2026 18:54:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQUhr-0002Yb-Mo; Fri, 22 May 2026 14:34:47 -0400
+	id 1wQV0d-0000wv-JE; Fri, 22 May 2026 14:54:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wQUho-0002Wh-7z
- for qemu-arm@nongnu.org; Fri, 22 May 2026 14:34:44 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ id 1wQV0Z-0000t2-Vn
+ for qemu-arm@nongnu.org; Fri, 22 May 2026 14:54:08 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wQUhl-0001Mz-L8
- for qemu-arm@nongnu.org; Fri, 22 May 2026 14:34:43 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-2bd2051167eso36873045ad.1
- for <qemu-arm@nongnu.org>; Fri, 22 May 2026 11:34:40 -0700 (PDT)
+ id 1wQV0Y-0007JJ-AZ
+ for qemu-arm@nongnu.org; Fri, 22 May 2026 14:54:07 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-2bc763e2ba8so38534775ad.3
+ for <qemu-arm@nongnu.org>; Fri, 22 May 2026 11:54:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779474880; x=1780079680; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779476044; x=1780080844; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=TlF2BebW9lGZY3igTqy4P2tedbTbEGuevX3gYEU6Yq8=;
- b=ZvMcFcTN74ECXFOaKzZCa8NKtTzMg1f6xgUohBqRaFVoaxJSEisNu4ipyImWw/rF1/
- i6cANkxGW7F0HPW9JZNA/qJtWp8Cz5m9Pt0K7hLLoDWxBFfBKFG7mnT9s0AWOa22eEpC
- Wu5TFowU4SciW111lkeLjZQarzInJVHax/VFgzHSJ/If2aenAZpz3Keo2QMvtB4zXcXS
- 15hJCA3wWKtZoJxX5qe1gkjb3aTm6q1a+W50W5LruoICk4Le+AOjSfFyx5DjD6gZkbPZ
- YuhEtoQS6Y9WpKVdPp7HYyxTZxpZ38Cp7QXtJioewDypf8uFOUqEqmZmqmoJX64F6nmM
- ta1g==
+ bh=D5kB6tW1Xz66qPBLDXJwf09zq/Q6zRtszTSv2Ldr8jM=;
+ b=FJ8ywXptz56QeQqqFeRdPwpPmpxXanb54D76YAhe3fyme4O3+pzYR/LJLt0669iNZH
+ uKMRWasTnjSwK2BnoyQoMOolhbsqNgUShdFGRQcKcikqffVa4dRi8TGP6C2skPWqYGam
+ MykRz3oBZDnfTHU4WY7HBSPGvc0tQEjnCgMXjcjos/0IHFWuUJ5wrqwtXkseSLZpCk8o
+ 1iuiPEcNIrHwJkCGXwfWXGlwNHReM5cYuyxz3Kuh+lMcB2qvMTGNkldehjPWhM6oT0nr
+ zn3DRHRLcLyLCdMq38sqnCLHvEjHTg/TSKNMkayXFspAc0gtPZ4xUsmdINkxuXaSp3wn
+ 4MRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779474880; x=1780079680;
+ d=1e100.net; s=20251104; t=1779476044; x=1780080844;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=TlF2BebW9lGZY3igTqy4P2tedbTbEGuevX3gYEU6Yq8=;
- b=GAEM4QtfCsPGV/pqueQrtNpvgsLwXgZWMccRXplgjPz33crWNyARh6TONvZQ9l4Nz7
- xPtbcvuu3swj8b/TJ9cM2xuc/x2X8EzfdmYN/8+p5omfHVxJ5LJd1ofZPEE6z8je5HLM
- Sanfb1N4yr3t8dbM/Fxr6vr0W8M/vZIBZJ69Vf5jGq53mBRnDTcclvcxTCZ8W0YGdBbP
- a5Waxj6VuNCcn2GoXRESrd/XlnGZLdtOPAkdn4lhl6B8abCBZ0e+8E70gCnWHcLgJKht
- iT4zzJUzcwRTYvpRIp8I0oj+0PfL2daaLrUDAFORsb/yJ3WaXieMe7PC2ybrGZlXkj86
- cT6w==
+ bh=D5kB6tW1Xz66qPBLDXJwf09zq/Q6zRtszTSv2Ldr8jM=;
+ b=aF2/d4poigHvam7IdlA7EHV7H22bH5W3T1E7KPgP6NYy88iKt2XFAf9TAa5WXXNdfX
+ cx2n/K0XbYN0sxvnU9CCbZuXFjDUrXHes+1/geyIyHUSjg5EkKvHqTj1fqSL7Cj0kiE1
+ Rkr+IlUXrb7Rd+3CfYtmZm/qvQLkW9IjrELIQ9pNoYoKeCYtfzMv+M3n9UZNHSDaS0z3
+ jGOgkxFuCIVbsTmjhPYvSNbY3G3FYkPWqTf/h8NFrKDPNg/w0heRs5FES3pz63MK1jml
+ oAu4zFly3X17q/XUv4aq6d/yFIxQ9GOjKV8EPubEh7V/gZy34aT9LbfEAsLWXZjYhJ5g
+ rjNw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+mUEAmvkGzhHy2Jel87UqlTEWFpsJ5FRfPwkvhH7MjzNP8ClEOWPXGnkQUpW8Omr+qKMY4IoePSA==@nongnu.org
-X-Gm-Message-State: AOJu0Yx3vgggj4h/9EeqvXDZXrKZT8eAQSP1rtpGJzgGm0dguP+klTX/
- aJCH8zzp7cphnx6iPpYkvXFeAXmXsQN4tl48IXrzNGQ161quSpKCUWF0UWYDTZ4zDG4=
-X-Gm-Gg: Acq92OE2jsq+WyGUZUIJZNbJ1K2xQTkJdHJduw/8Ugt32rqISzvxM6lYyoR/gBJL84Q
- 15LwYTEz8dOVz1puGOq2Z18hzcG/YEBHsCAMOzQiFRDq9Dd6MqF1O5hoAHYC8ZVtE815UCh86T/
- 30M2k9wM6FZiyCFfDANZrqgUpJPK/IHqx+0S7IsoDY9fLBZXU6MPhI3gRaFJBZPO8IJTCTKNtLo
- jJ0FR8+mFgN8chBNXWjPjUroerEGP4GUruPUGFzUZ1NPobbuF6WlL2n3x399fB/MxpxHrle9Ccv
- kaj7kta7qkNyhc/xI+338bRxwNMiUYFYge9xppGytalf2Ae/y0eUpdAdWlMG6xQD/BHXT863KO/
- FMKG7yo6bQiERKZAhfXair1KlOGwJKinYK3+QZkEHxBVvpH+gbRk0FXp4fZs1yB/77jK23ps+yK
- 8qRlsDLv0GMfpNkWVYZQr5zlBAL8xP1p/inFMNBoym
-X-Received: by 2002:a17:903:3c6d:b0:2b7:86be:7673 with SMTP id
- d9443c01a7336-2beb0366450mr51833775ad.6.1779474879582; 
- Fri, 22 May 2026 11:34:39 -0700 (PDT)
+ AFNElJ8EIRCtdRf+Ox22QX4KJVkZI+TmANMA/LnPxOU6N/+d7pa+Av6t20uysYybXaUalxr3YIowevTzVg==@nongnu.org
+X-Gm-Message-State: AOJu0Yw594etRVMI4A4bDEZpOTRQ6dTTnPigbpXBQteElJR66kfhoc45
+ WaAyhpXujbCLlOSYAM5RnDwlKJXCJVh6xzfydhG64W/8GKXmoEgB/uc9GpQBcKzojzM=
+X-Gm-Gg: Acq92OGQXqdUli1vI6PneUr+7pmMEqM0uD9syX0wZNTpU1AE9X09AIpc/bK0QsdXcP6
+ 3ljF4dqeutyierZuDdLPPbOPz0eqjOweeflM0Eke840NMKoSiVQeC+weM1+C+mOTTnGzvV8L8pa
+ 2R22nGNyglCjZwoTe324ATOwUjZNJ/19ae9xNPGCLVBrI4QdkENlQgGp+XbvQ4gs7Kz/HXA+swJ
+ 4YimSf+Z6N3Ezda5yY25bIoKX+n2VnxNVXWLOPcAypH3f3fdDo81O/wLebAu9cmU7rwItaaYCLr
+ WmKbQCvj9N1b4SUaXFrSrHNcd8qdQBgUrCpdIsGvkDven4xv9wMq+C0e7Se94mfFdpoS6FJTMMr
+ zMbzxfHMGpHoFPG8riQ79A6BTvmITFJH9TROllVFHn9n42bgRyaY1NvSgPtyEBJ6mC7kd9Bt5SA
+ /d0dORIMxPoQ81rv90W78o64f+yvFCYR48UZbhpfcg
+X-Received: by 2002:a17:903:41c2:b0:2b4:6d92:b002 with SMTP id
+ d9443c01a7336-2beb07db743mr52261015ad.37.1779476044385; 
+ Fri, 22 May 2026 11:54:04 -0700 (PDT)
 Received: from [192.168.64.111] ([50.78.183.177])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2beb591d102sm23030525ad.81.2026.05.22.11.34.38
+ d9443c01a7336-2beb58c69a0sm22840155ad.59.2026.05.22.11.54.03
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 May 2026 11:34:39 -0700 (PDT)
-Message-ID: <d19f76ef-487c-493c-8276-4526b7f96762@linaro.org>
-Date: Fri, 22 May 2026 11:34:37 -0700
+ Fri, 22 May 2026 11:54:04 -0700 (PDT)
+Message-ID: <0c17542d-d0c2-4630-9911-128915f4102a@linaro.org>
+Date: Fri, 22 May 2026 11:54:02 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 02/64] target/arm: Implement FEAT_FAMINMAX for AdvSIMD
+Subject: Re: [PATCH v6 04/64] target/arm: Implement FEAT_FAMINMAX for SVE
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <20260520182213.872945-1-richard.henderson@linaro.org>
- <20260520182213.872945-3-richard.henderson@linaro.org>
- <CAFEAcA_F72LXF9kWVrU=mSt4=v19jRkDt9XkznpE+7DjVV94kw@mail.gmail.com>
+ <20260520182213.872945-5-richard.henderson@linaro.org>
+ <CAFEAcA_uZsqTZn7uGrkL=o86_kzjO7MXsieYdCsEqALs9ZSQRg@mail.gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <CAFEAcA_F72LXF9kWVrU=mSt4=v19jRkDt9XkznpE+7DjVV94kw@mail.gmail.com>
+In-Reply-To: <CAFEAcA_uZsqTZn7uGrkL=o86_kzjO7MXsieYdCsEqALs9ZSQRg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,46 +106,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/21/26 01:25, Peter Maydell wrote:
-> On Wed, 20 May 2026 at 19:22, Richard Henderson
+On 5/21/26 06:56, Peter Maydell wrote:
+> On Wed, 20 May 2026 at 19:25, Richard Henderson
 > <richard.henderson@linaro.org> wrote:
 >>
 >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > 
->> +/*
->> + * Use float_minmax_ismag to get the absolute value min/max.
->> + * Avoid float_minmax_is{num,number} so that we get normal NaN processing.
->> + * If the result is not a nan, take the absolute value.
->> + *
->> + * Note this operation squashes FZ, FIZ, and AH to 0.
->> + * Create a fresh status with default behaviour and propagate exceptions.
->> + */
->> +#define DO_FAMINMAX(NAME, TYPE, MIN)                                    \
->> +TYPE TYPE##_##NAME(TYPE a, TYPE b, float_status *s)                     \
->> +{                                                                       \
->> +    float_status local = {};                                            \
->> +    arm_set_default_fp_behaviours(&local);                              \
+>> diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+>> index aa7d72a35e..db32230595 100644
+>> --- a/target/arm/tcg/translate-sve.c
+>> +++ b/target/arm/tcg/translate-sve.c
+>> @@ -4253,6 +4253,8 @@ DO_ZPZZ_AH_FP(FABD, aa64_sme_or_sve, sve_fabd, sve_ah_fabd)
+>>   DO_ZPZZ_FP(FSCALE, aa64_sme_or_sve, sve_fscalbn)
+>>   DO_ZPZZ_FP(FDIV, aa64_sme_or_sve, sve_fdiv)
+>>   DO_ZPZZ_FP(FMULX, aa64_sme_or_sve, sve_fmulx)
+>> +DO_ZPZZ_FP(FAMAX, aa64_sme2_or_sve2_faminmax, sve2_famax)
+>> +DO_ZPZZ_FP(FAMIN, aa64_sme2_or_sve2_faminmax, sve2_famin)
 > 
-> This misses that we need to keep the default_nan_mode setting
-> from 's', otherwise we stop honouring FPCR.DN. This will fix it:
-> 
-> --- a/target/arm/tcg/vec_helper64.c
-> +++ b/target/arm/tcg/vec_helper64.c
-> @@ -155,6 +155,7 @@ TYPE TYPE##_##NAME(TYPE a, TYPE b, float_status
-> *s)                     \
->   {                                                                       \
->       float_status local = {};                                            \
->       arm_set_default_fp_behaviours(&local);                              \
-> +    set_default_nan_mode(get_default_nan_mode(s), &local);              \
->       TYPE r = TYPE##_minmax(a, b, &local, MIN | float_minmax_ismag);     \
->       if (!TYPE##_is_any_nan(r)) {                                        \
->           r = TYPE##_abs(r);                                              \
-> 
-> (or we could go back to copying 's' into 'local').
+> Does this get the "OK in streaming-SVE mode only if SME2" check
+>   if IsFeatureImplemented(FEAT_SME2) then CheckSVEEnabled(); else
+> CheckNonStreamingSVEEnabled(); end;
+> right? I have lost track of how we do the streaming checks...
 
-I went back to copying s into local.  I should have known a blank slate was too good to be 
-true.  :-)
-
+I missed that for these.
+I added TRANS_FEAT_STREAMING_SME2() handle it.
 
 r~
 

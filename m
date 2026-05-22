@@ -4,87 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBEDBCD5BB0
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 May 2026 20:05:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD6A4CD4F3D
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 May 2026 21:58:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQW76-00017a-TX; Fri, 22 May 2026 16:04:57 -0400
+	id 1wQXsS-0004Pd-Jb; Fri, 22 May 2026 17:57:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wQW73-00017B-0v
- for qemu-arm@nongnu.org; Fri, 22 May 2026 16:04:54 -0400
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ id 1wQXsO-0004IY-FB
+ for qemu-arm@nongnu.org; Fri, 22 May 2026 17:57:54 -0400
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wQW70-00029m-Pq
- for qemu-arm@nongnu.org; Fri, 22 May 2026 16:04:52 -0400
-Received: by mail-pl1-x629.google.com with SMTP id
- d9443c01a7336-2bc7b311e77so35440705ad.0
- for <qemu-arm@nongnu.org>; Fri, 22 May 2026 13:04:50 -0700 (PDT)
+ id 1wQXsK-00017O-Iy
+ for qemu-arm@nongnu.org; Fri, 22 May 2026 17:57:50 -0400
+Received: by mail-pj1-x1029.google.com with SMTP id
+ 98e67ed59e1d1-36a3aff302aso2204250a91.1
+ for <qemu-arm@nongnu.org>; Fri, 22 May 2026 14:57:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779480289; x=1780085089; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779487067; x=1780091867; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=l4dgXUVC6tuzvLj2cjpvcJR3/0B/Dme0i+5eYta9yto=;
- b=gcwnaX1iIsL0yuHISSscKaJlMroZOxKRo2dtaaTFd/YhMWSxpVvoLoL1TW/bZCIGqM
- V/T80EZYflAauagnQ6snyS1TvlPqZ+7gv/E21fSQLsw02+XlZo88nFssZtqsz9Xe8Uma
- 0j6lWHd/JvyOPOAhTMenlCW19V9xkJfa2hN0v0BWDik0R4YNYOQ/aAOoifzgIpjkwzpp
- swqQioAkupc2Nfwg4oy3E/kKfdc7GytSW9XFhViAr1FgHtP0TxIMzJXVbtNThGFOsxEx
- lKxvJ5XtqSY23CEQxefqQCh6RpWMMRO254kJ8bYTcku5X9Zl1pykEMfD/JvNIJKeThB6
- nkAw==
+ bh=5n8IQx7EY0CJn6G/bV7CipFELrrWflkQjUXgLKBAuYo=;
+ b=Pr51OvTnb/ByMcPVUsvMR5aF9lH6MCCDPjADTDkRzX87//BrlUdixFKt1auNjy0NDN
+ mOaXaWmdrC3clLH32ZKEMsR9T5QXmoil5U0HFjpkv4Sk+j1XuV6c+eECmnJ/qIJ4nTHX
+ GXTV1jmXsokKThqtyiwm/x2g3Ju6rB14XktnMEPm0g8GnHo752N98vllDbQ8cyBDrsgG
+ GywFlx1vklXPu9QR6Azo4TWu7D7CZCV3hDdKwNbjG9yIUY11WWJ4H43GEBwa81ueH6lm
+ OSR4oEMHfh0UBrtXUYsCtqvatXWg9nty1qm6uGVVy11zFNfgHtb/N82aG5SZ0AIl9iJD
+ JnmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779480289; x=1780085089;
+ d=1e100.net; s=20251104; t=1779487067; x=1780091867;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=l4dgXUVC6tuzvLj2cjpvcJR3/0B/Dme0i+5eYta9yto=;
- b=Es6D4A8yjoG01BxFvGelSrIdFc1jb0w5EbNU43lysHz/cRgiEjGWptOa8qoMrvkpJL
- lkhKLnYa+YHsGjhj3aUCS7hz3umxmjCNQekE41xrnb35T5n4OBYtAnlTgLfekHoEP+3t
- j42tR3YR/GX1zi27HrtSXqGhNF1EbjXvRDbrpuHgDz39ovvsK55kn/hFqzbzhu7B6DcK
- E6U9lLlQbayPDMVG4ZDBBIh4DvXW2fgYKnhUfG4AvQ74vR5fiuQY33CCULG8EVi9AZa5
- gq/fp/7uepERAjzTdcEYsf14GahKcO4QfUouxK9ckqtegptx+pNHX61A7kAu+YG/tEqR
- woaw==
+ bh=5n8IQx7EY0CJn6G/bV7CipFELrrWflkQjUXgLKBAuYo=;
+ b=X6A3nNdwUf4tpcSRbAj1a4f1gwe786x4h33fhUsy/LgDzK29nEoPGkSJ27p6I9CiG5
+ kM+N+vOFOIQ6UNf91/jNkO6LJuUye/XlxSTbAYjrEGaTg0v9oBQWTpWdiE05izVKrGcP
+ 9s26/lPCqdhA20t+3nMTtDrS7YLVTWgVzjS8d9diNvMBOwBWBcWlISBfA9C2sfMjF6U5
+ sFff7aVPxDbfBjZi8CqV0VUfOZfNnInbQJ3ZIUzeo6bOIhoXfBKyr397I6YBsIPHeVHS
+ CkLZ7T3G5kTLeibrvGYJhS5RAXCYlF5IB+Bdok8dZoklvqDla5/wuElVmj4If4VCMahQ
+ NiAw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/+z+cQ9WU2WNI2b3nyg3DrTaJFfmwVVG/eaWAscA9PuOw4DciHnu76XLJsqTI9bZ1BPAR8M3oVFg==@nongnu.org
-X-Gm-Message-State: AOJu0YwoOrI8HJVr4utw+wxFb+HhMQ8r6GP2rmVZlQsozsueHMBh2ygz
- ohdmgoM8PW/I8L0Ar8zxukhiXK3BzHZdDi/snfTEK1eKSCjuGx6IutkFQsV9BgGfVok=
-X-Gm-Gg: Acq92OHy9yYcIFj9y7I8DtjTa6XE38SpxRs66DTPnbBuKPmiTKc1z0r2XMvZEsDrZ17
- Sz52R+HW56kjQRnKLIBS/zQxYeLDqe7uzYKvShMTdCtKZ/78MFcfHguqesumVddUMSEjP537g4c
- DgrkUIVxfeQZwd1COFRNOYc1DW6tMSN14dRE2cKucxNWcCTFxfSbXLQrmxRTLaUZT3QyILVY3gZ
- zBy7bSjZwkjZw4hpSoqYxa8Ed+Cjyy9etljHjuHj6+rAc0DfUydZy6RcPdfXGbMOYrhvRmxdztL
- 3U+jBaLK+AXxZCMWgPjK2NdhrHK1StF4JjLPjGUoaCH0EjLc56TCGipJLBq+2UtVz0eeLc3Rkhd
- PGa4RfJemTe33CzyhYF1ThkDzVbHvs/NbUdVR1rB2DRJ9kQkDcukOmE5zmk+ra6jfI3h/GqdCtC
- P5P9Ms3Xy0tp3kZLbDldPFEnv4WIICSEdyQMD7Vhfx
-X-Received: by 2002:a17:903:1a0d:b0:2b0:91e6:bc18 with SMTP id
- d9443c01a7336-2beb0878549mr44836265ad.14.1779480288712; 
- Fri, 22 May 2026 13:04:48 -0700 (PDT)
+ AFNElJ9oc6JBD3dmkQAafvUJMsnd26FL9OQd7HKUrtqrQbQ/KlvFm7S1i8tmQ9SeuGKpqizinzc5P47nzg==@nongnu.org
+X-Gm-Message-State: AOJu0Yxn+u4VfcHrSXsZjcGZqFKsRfX/wOGEBV57VZ4AveWExrbnCRJX
+ CvQH4sySrvOVuJvF6EifWOiad9sHpSksbVx/dcyeLmgOg/4+JJodgj2yf87aGH8A6fI=
+X-Gm-Gg: Acq92OHhVtJqYw4zGXI/mQob7ph52Lx4Bmc9/mW7i3MSAs3YIQlTZJTfUC3EeVqNqo0
+ 7gRxNP8cx6Ccp1Tx3s3oKY4EYcA4EbHlon2SnxYqU/JvU2AjIRQyyxFR/MsWd6JvyHd1KG3CSR0
+ 1SxTkxJfy+Rsk1XQnReIgVIHqDUmfjr1u94TnjD0f5YOK4ex9s3xytp97wnYOfs90E6/76VDWZi
+ 321jMWG2W2lj0D1El7L0jpA/4E2lu5TY4AS+iK99HY9m3yEnvCU9/HxUBbtGsL5zt05s26aetK1
+ SHE83/65vRSNQsKKrCrzHm2h4XUKFLsn+DuIwMlFe6UQOKURcAs4USlnYqvatlGOC/xWPRI8vrQ
+ MlAFs8AuCeblUJ2XJPM/7T9GBNQSw29hZTMvb6FsEopq08SJE2J5XETa2vk0ROBkZx0nTnbPv1u
+ u7wKPrkraMardLZp8lRuyIPd1XHTN+BQkXzVHFqRBP
+X-Received: by 2002:a17:90b:3bcc:b0:368:f179:ba07 with SMTP id
+ 98e67ed59e1d1-36a6746d070mr5128110a91.9.1779487066777; 
+ Fri, 22 May 2026 14:57:46 -0700 (PDT)
 Received: from [192.168.64.111] ([50.78.183.177])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2beb58b2e8csm22804105ad.41.2026.05.22.13.04.48
+ 41be03b00d2f7-c85202901e6sm2259406a12.2.2026.05.22.14.57.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 May 2026 13:04:48 -0700 (PDT)
-Message-ID: <5f707062-fdb9-494d-be0f-bef679c77b8d@linaro.org>
-Date: Fri, 22 May 2026 13:04:46 -0700
+ Fri, 22 May 2026 14:57:46 -0700 (PDT)
+Message-ID: <53e498ea-1110-42f5-aef1-b1233677954b@linaro.org>
+Date: Fri, 22 May 2026 14:57:44 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 60/64] target/arm: Implement FMMLA (FP8 to FP16) for
- AdvSIMD
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20260520182213.872945-1-richard.henderson@linaro.org>
- <20260520182213.872945-61-richard.henderson@linaro.org>
- <CAFEAcA8+VBdRt3DO9zgwQccbH+O2PMZnK3o81zmX9M1GmgiseA@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: SME BFCVT, BFCVTN have "Alternate BFloat16
+ behaviors"
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org
+References: <20260521180854.1744788-1-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <CAFEAcA8+VBdRt3DO9zgwQccbH+O2PMZnK3o81zmX9M1GmgiseA@mail.gmail.com>
+In-Reply-To: <20260521180854.1744788-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,49 +106,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/21/26 02:52, Peter Maydell wrote:
-> On Wed, 20 May 2026 at 19:29, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+On 5/21/26 11:08, Peter Maydell wrote:
+> The Arm ARM A1.5.10 notes that some instructions have "Alternate
+> Bfloat16 behaviors" when FPCR.AH == 1.  We implement these using the
+> FPST_AH and FPST_AH_F16 fp_status words.  The list includes the SME
+> BFVCT (single-precision to BFloat16) and BFCVTN, but we forgot to
+> make those use FPST_AH_F16 when we implemented them. (We get the
+> ASIMD and SVE insns on the list right.)
 > 
->> +void HELPER(gvec_fmmla_hb)(void *vd, void *vn, void *vm,
->> +                           CPUARMState *env, uint32_t desc)
+> Add the missing logic to select the right FPST.
 > 
-> This still has some lurking copy-and-paste issues from the _sb
-> version:
+> Cc: qemu-stable@nongnu.org
+> Fixes: 465d36db0e1 ("target/arm: Implement SME2 BFCVT, BFCVTN, FCVT, FCVTN")
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> (There will be a minor conflict with the rename of BFCVT to
+> BFCVT_hs in RTH's FP8 series.)
+> ---
+>   target/arm/tcg/translate-sme.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
->> +{
->> +    FP8MulContext ctx = fp8_mul_start(env, 0xf);
->> +    size_t oprsz = simd_oprsz(desc);
->> +    size_t nseg = oprsz / 16;
-> 
-> Each loop here handles 4 16-bit halfprec outputs == 8 bytes,
-> so we want oprsz / 8.
-> 
->> +    uint32_t *n = vn;
->> +    uint32_t *m = vm;
->> +    float16 *d = vd;
->> +
->> +    for (size_t seg = 0; seg < nseg; seg++, d += 4, n += 2, m += 2) {
->> +        float16 d0 = f8dotadd_h(n[0], m[0], 4, d[H4(0)], &ctx);
->> +        float16 d1 = f8dotadd_h(n[0], m[1], 4, d[H4(1)], &ctx);
->> +        float16 d2 = f8dotadd_h(n[1], m[0], 4, d[H4(2)], &ctx);
->> +        float16 d3 = f8dotadd_h(n[1], m[1], 4, d[H4(3)], &ctx);
->> +
->> +        d[H4(0)] = d0;
->> +        d[H4(1)] = d1;
->> +        d[H4(2)] = d2;
->> +        d[H4(3)] = d3;
-> 
-> The H macros here I think are wrong -- d is a float16 so we
-> want H2(), and we need H4() macros for the n and m arrays.
-> (I think in fact if you work it through then all the H macros
-> cancel out and we could drop the lot, but since they're all
-> acting on constant indexes there's no runtime cost and having
-> them present is clearer for the reader.)
+> diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
+> index 08254b088e..8e56dedaa3 100644
+> --- a/target/arm/tcg/translate-sme.c
+> +++ b/target/arm/tcg/translate-sme.c
+> @@ -1419,9 +1419,9 @@ static bool do_zz_fpst(DisasContext *s, arg_zz_n *a, int data,
+>   }
+>   
+>   TRANS_FEAT(BFCVT, aa64_sme2, do_zz_fpst, a, 0,
+> -           FPST_A64, gen_helper_sme2_bfcvt)
+> +           s->fpcr_ah ? FPST_AH : FPST_A64, gen_helper_sme2_bfcvt)
+>   TRANS_FEAT(BFCVTN, aa64_sme2, do_zz_fpst, a, 0,
+> -           FPST_A64, gen_helper_sme2_bfcvtn)
+> +           s->fpcr_ah ? FPST_AH : FPST_A64, gen_helper_sme2_bfcvtn)
+>   TRANS_FEAT(FCVT_n, aa64_sme2, do_zz_fpst, a, 0,
+>              FPST_A64, gen_helper_sme2_fcvt_n)
+>   TRANS_FEAT(FCVTN, aa64_sme2, do_zz_fpst, a, 0,
 
-All correct, now fixed, thanks.
+What is the difference between FPST_AH and FPST_A64 when AH is set, given that 
+vfp_set_fpcr_to_host does the arm_set_*_fp_behaviours dance?
 
 
 r~

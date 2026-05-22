@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4569FCD5BB3
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 May 2026 18:54:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 508DDCD5BB0
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 May 2026 19:01:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQV0d-0000wv-JE; Fri, 22 May 2026 14:54:11 -0400
+	id 1wQV7k-0003oX-RS; Fri, 22 May 2026 15:01:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wQV0Z-0000t2-Vn
- for qemu-arm@nongnu.org; Fri, 22 May 2026 14:54:08 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ id 1wQV7j-0003ki-3n
+ for qemu-arm@nongnu.org; Fri, 22 May 2026 15:01:31 -0400
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wQV0Y-0007JJ-AZ
- for qemu-arm@nongnu.org; Fri, 22 May 2026 14:54:07 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-2bc763e2ba8so38534775ad.3
- for <qemu-arm@nongnu.org>; Fri, 22 May 2026 11:54:05 -0700 (PDT)
+ id 1wQV7h-0003fS-Jk
+ for qemu-arm@nongnu.org; Fri, 22 May 2026 15:01:30 -0400
+Received: by mail-pf1-x436.google.com with SMTP id
+ d2e1a72fcca58-83659d38e38so3148258b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 22 May 2026 12:01:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779476044; x=1780080844; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779476488; x=1780081288; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=D5kB6tW1Xz66qPBLDXJwf09zq/Q6zRtszTSv2Ldr8jM=;
- b=FJ8ywXptz56QeQqqFeRdPwpPmpxXanb54D76YAhe3fyme4O3+pzYR/LJLt0669iNZH
- uKMRWasTnjSwK2BnoyQoMOolhbsqNgUShdFGRQcKcikqffVa4dRi8TGP6C2skPWqYGam
- MykRz3oBZDnfTHU4WY7HBSPGvc0tQEjnCgMXjcjos/0IHFWuUJ5wrqwtXkseSLZpCk8o
- 1iuiPEcNIrHwJkCGXwfWXGlwNHReM5cYuyxz3Kuh+lMcB2qvMTGNkldehjPWhM6oT0nr
- zn3DRHRLcLyLCdMq38sqnCLHvEjHTg/TSKNMkayXFspAc0gtPZ4xUsmdINkxuXaSp3wn
- 4MRg==
+ bh=U9tzhWUk1KOVQ6fQ6Hxfk6N0dM12WxUlPD7OOJcV4+k=;
+ b=eKCJv/wHALkRytg9hiLq1UkPoxsamJ1OZ4/zhx0YamRlplY0HMEZ67OoTsoVeYu/7W
+ Tp7dcBoaW28e7tk0c0riQ9HconvNrWruKXgL/sNVO6l+Ex2whmg2h+r6i8NCxTHZdmYl
+ vSmhae064V2+7cwNb4CZnhUSGmEZEGBWazuLq9R+38w8gJwn3cqlsSCIF+4orGgdNLf4
+ xcu4hcf/PRBu2xs1yo+XPZX5fwqJyD5MPS1HYKdmIMm0IwvVoj8inEuSLlG1UIUEhBIf
+ +42Tqt6PQuOfY7dwL8xEJJsuiGpBM+kA91X3+23gdsgTTIDkn4E16Gpr6DlfQ3PfAbDV
+ xLqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779476044; x=1780080844;
+ d=1e100.net; s=20251104; t=1779476488; x=1780081288;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=D5kB6tW1Xz66qPBLDXJwf09zq/Q6zRtszTSv2Ldr8jM=;
- b=aF2/d4poigHvam7IdlA7EHV7H22bH5W3T1E7KPgP6NYy88iKt2XFAf9TAa5WXXNdfX
- cx2n/K0XbYN0sxvnU9CCbZuXFjDUrXHes+1/geyIyHUSjg5EkKvHqTj1fqSL7Cj0kiE1
- Rkr+IlUXrb7Rd+3CfYtmZm/qvQLkW9IjrELIQ9pNoYoKeCYtfzMv+M3n9UZNHSDaS0z3
- jGOgkxFuCIVbsTmjhPYvSNbY3G3FYkPWqTf/h8NFrKDPNg/w0heRs5FES3pz63MK1jml
- oAu4zFly3X17q/XUv4aq6d/yFIxQ9GOjKV8EPubEh7V/gZy34aT9LbfEAsLWXZjYhJ5g
- rjNw==
+ bh=U9tzhWUk1KOVQ6fQ6Hxfk6N0dM12WxUlPD7OOJcV4+k=;
+ b=fG9SQjZzwhJpwZrc6h6nEy3v3mQFXd8NAwJCw7LqNIisYWhpQ0Z2Uuj/urazA8AaP6
+ o1JIzM11BRUcaq0cXJkzCVRCYDVt2mHFryS6DKJRVBpOkwlwRkNpEZ7xe9FoXj9qb3yE
+ EF7GAGOV2t4fuxMq3S2OvyvyQJ+dHt7XkysgLNYs36P7nOm+IZhoRBi+nYjNxqHU+jXK
+ ppyus6YPV9zT0veO6aRz1hVxxA0eIOy0tSJzlOPPzG46bdrUADfJ1w4TLyoQMcbBjfLN
+ vlZGZZxjMFWWo4L1c82YA1M8EaS7OVWEX9ef9lavZaDuQa6QwHNcuZXGqFcNp4UdG7sK
+ H++w==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8EIRCtdRf+Ox22QX4KJVkZI+TmANMA/LnPxOU6N/+d7pa+Av6t20uysYybXaUalxr3YIowevTzVg==@nongnu.org
-X-Gm-Message-State: AOJu0Yw594etRVMI4A4bDEZpOTRQ6dTTnPigbpXBQteElJR66kfhoc45
- WaAyhpXujbCLlOSYAM5RnDwlKJXCJVh6xzfydhG64W/8GKXmoEgB/uc9GpQBcKzojzM=
-X-Gm-Gg: Acq92OGQXqdUli1vI6PneUr+7pmMEqM0uD9syX0wZNTpU1AE9X09AIpc/bK0QsdXcP6
- 3ljF4dqeutyierZuDdLPPbOPz0eqjOweeflM0Eke840NMKoSiVQeC+weM1+C+mOTTnGzvV8L8pa
- 2R22nGNyglCjZwoTe324ATOwUjZNJ/19ae9xNPGCLVBrI4QdkENlQgGp+XbvQ4gs7Kz/HXA+swJ
- 4YimSf+Z6N3Ezda5yY25bIoKX+n2VnxNVXWLOPcAypH3f3fdDo81O/wLebAu9cmU7rwItaaYCLr
- WmKbQCvj9N1b4SUaXFrSrHNcd8qdQBgUrCpdIsGvkDven4xv9wMq+C0e7Se94mfFdpoS6FJTMMr
- zMbzxfHMGpHoFPG8riQ79A6BTvmITFJH9TROllVFHn9n42bgRyaY1NvSgPtyEBJ6mC7kd9Bt5SA
- /d0dORIMxPoQ81rv90W78o64f+yvFCYR48UZbhpfcg
-X-Received: by 2002:a17:903:41c2:b0:2b4:6d92:b002 with SMTP id
- d9443c01a7336-2beb07db743mr52261015ad.37.1779476044385; 
- Fri, 22 May 2026 11:54:04 -0700 (PDT)
+ AFNElJ/2LCIJ3fUt8VcH6Rv8e/9tgUm1XbVr9btUcy0HsNbFLgL6AG0FKs1LQ67Z1SgwZVvlcCLpxwITTg==@nongnu.org
+X-Gm-Message-State: AOJu0Yzl2UQsCgnq9K/7dxCcrTsgc8QCVoDV5eg3/wwge09mxKdQoDe2
+ XT56KRCEAuV0uA2HAMHD/AibsVlwpfFmHHSHHvdXOE22Pg/uuIdeeYX5AzS88QT0Ccw=
+X-Gm-Gg: Acq92OEnEHL3FQHXbO/4CFhlMiRm01+om/xu2NpFI0SDg6pl0M+QMFiJqR+R0dKJ4hJ
+ AHFOY00MCZgBaNMkgirKXoDRCSAZ+2AS//g2uLx8dnQTJ5czRqBKVu7sIp5tdAevFak2xrYUule
+ 26nEuaz9pvMc9eov6mXyP7Z7HdLocbQIFI5V5hxCmVfFy5vP2/xCwicrhmNd9bU+q2SLjLOMziA
+ 9SKykwsgUSFAjhxCJcMiRzGjDuGjbBTnrEgeYctMvA6m3tm0Z8eidKytsd3+97uJa3q3Eaopsi5
+ 5IzQFjCyHYD621mqYHUQGnDFTIfu6YpI0pQcm5rXO/mndVabV4Me2fJD3AoLMds3k8QbbOcJ4mT
+ RD3kkYD6vGSqV+w7pboufpyr0mV41GWPXiCwkqq885hugvJr4nrkx/sVEzjgC1e4zYj7WvWapmd
+ BFyhw9aCeAuMFfFBKLeTu+M4rLjaYjVbuoosWhqmrq
+X-Received: by 2002:a05:6a00:2d8c:b0:82f:29fe:7239 with SMTP id
+ d2e1a72fcca58-8415f5bf78dmr4584630b3a.50.1779476487667; 
+ Fri, 22 May 2026 12:01:27 -0700 (PDT)
 Received: from [192.168.64.111] ([50.78.183.177])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2beb58c69a0sm22840155ad.59.2026.05.22.11.54.03
+ d2e1a72fcca58-84164fb00b6sm3316173b3a.40.2026.05.22.12.01.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 May 2026 11:54:04 -0700 (PDT)
-Message-ID: <0c17542d-d0c2-4630-9911-128915f4102a@linaro.org>
-Date: Fri, 22 May 2026 11:54:02 -0700
+ Fri, 22 May 2026 12:01:27 -0700 (PDT)
+Message-ID: <4cb0aec7-dd0e-4308-9600-b802bd16a74d@linaro.org>
+Date: Fri, 22 May 2026 12:01:25 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 04/64] target/arm: Implement FEAT_FAMINMAX for SVE
+Subject: Re: [PATCH v6 10/64] target/arm: Enable EnFPM bits for FEAT_FPMR
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <20260520182213.872945-1-richard.henderson@linaro.org>
- <20260520182213.872945-5-richard.henderson@linaro.org>
- <CAFEAcA_uZsqTZn7uGrkL=o86_kzjO7MXsieYdCsEqALs9ZSQRg@mail.gmail.com>
+ <20260520182213.872945-11-richard.henderson@linaro.org>
+ <CAFEAcA8ibw4o3R6eJdtupAc8o0Tk2N5iWahDHwbuCdoCLKK5CQ@mail.gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <CAFEAcA_uZsqTZn7uGrkL=o86_kzjO7MXsieYdCsEqALs9ZSQRg@mail.gmail.com>
+In-Reply-To: <CAFEAcA8ibw4o3R6eJdtupAc8o0Tk2N5iWahDHwbuCdoCLKK5CQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,30 +106,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/21/26 06:56, Peter Maydell wrote:
-> On Wed, 20 May 2026 at 19:25, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+On 5/21/26 07:15, Peter Maydell wrote:
+> I think we also need arm_emulate_firmware_reset() to
+> set SCR_ENFPM, so we get the "emulating EL3 but starting
+> guest at EL2" case right.
 > 
->> diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
->> index aa7d72a35e..db32230595 100644
->> --- a/target/arm/tcg/translate-sve.c
->> +++ b/target/arm/tcg/translate-sve.c
->> @@ -4253,6 +4253,8 @@ DO_ZPZZ_AH_FP(FABD, aa64_sme_or_sve, sve_fabd, sve_ah_fabd)
->>   DO_ZPZZ_FP(FSCALE, aa64_sme_or_sve, sve_fscalbn)
->>   DO_ZPZZ_FP(FDIV, aa64_sme_or_sve, sve_fdiv)
->>   DO_ZPZZ_FP(FMULX, aa64_sme_or_sve, sve_fmulx)
->> +DO_ZPZZ_FP(FAMAX, aa64_sme2_or_sve2_faminmax, sve2_famax)
->> +DO_ZPZZ_FP(FAMIN, aa64_sme2_or_sve2_faminmax, sve2_famin)
-> 
-> Does this get the "OK in streaming-SVE mode only if SME2" check
->   if IsFeatureImplemented(FEAT_SME2) then CheckSVEEnabled(); else
-> CheckNonStreamingSVEEnabled(); end;
-> right? I have lost track of how we do the streaming checks...
+> Otherwise
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-I missed that for these.
-I added TRANS_FEAT_STREAMING_SME2() handle it.
+Yep, thanks.
 
 r~
 

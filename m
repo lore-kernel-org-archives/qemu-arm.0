@@ -4,79 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94ADFCD4F3D
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 May 2026 22:12:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 031A6CD4F54
+	for <qemu-arm@archiver.kernel.org>; Sat, 23 May 2026 08:56:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wQY2I-0008Jn-E4; Fri, 22 May 2026 18:08:06 -0400
+	id 1wQi9o-0004Vw-3P; Sat, 23 May 2026 04:56:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wQY1K-0006no-Tf
- for qemu-arm@nongnu.org; Fri, 22 May 2026 18:07:13 -0400
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wQi9m-0004VW-3p
+ for qemu-arm@nongnu.org; Sat, 23 May 2026 04:56:30 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wQY1C-0002fK-V3
- for qemu-arm@nongnu.org; Fri, 22 May 2026 18:07:02 -0400
-Received: by mail-pl1-x62d.google.com with SMTP id
- d9443c01a7336-2bd2c147abaso47543525ad.3
- for <qemu-arm@nongnu.org>; Fri, 22 May 2026 15:06:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wQi9k-0001kU-F8
+ for qemu-arm@nongnu.org; Sat, 23 May 2026 04:56:29 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-490388fd0dbso25364285e9.0
+ for <qemu-arm@nongnu.org>; Sat, 23 May 2026 01:56:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779487617; x=1780092417; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1779526586; x=1780131386; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HSbz0rz1Vzev+MKaGO1lYcCzTIBBWb6RJtlaZ74LNDs=;
- b=Dfeu6lCLMcy9nj9zrOr33IOCMCv6/RVzITnzOvsGNgCkv3pnl4++3tpMLPSfDC8QSs
- TEIIqNMFShtOo1e6RxPOwRry99908FUQBYcbi8OF29G1h9CjXDz4oV2iPGhP+BCCXob4
- zSpJ+nZyI6gdlwqyeNTm+hM5664k10KZcrFSbzhlKA1jUBHhLsK1yZvTreK6y//R02cb
- 3db0em2iPFlUnEF8esg3liVGFS82jjYudQKCxotsxdU1MuDWCmZ76cmEYExCtdkRtWfq
- QxZfDkE0gREURl+981q1HzDOEV9s+FXjnA6zS8d2KaO3m+hGbmPNXyeMBRZxFSZqR6MP
- qFqA==
+ bh=6M/8l05AFbfgOIdA57LoyhfwfiKiF2lNHoBij0kWQYM=;
+ b=Wsj2jo/Ut9IQXGpQxPPlntdcDQXnTleMY7wQ19h4qKxcG/lKeZdNyoXXRvM6xUM1pi
+ iXg6pMzG+Vn3ORddXLt4wvFj0xnQgk21iCrinhuHxIKAog7y4Su9Y8l1AtLEKM4jrocN
+ A2QeGNrSKwaEUGEixK3XeV7yPwcAIGUIpBRSBGy83ac2+WMpzMMyZFzKMTzc9mjKpu1X
+ Av2Shz+ULXec5IVn4v3f/6gLBS4NtQFYKaswz5vIV3LPoMPLPXFw3+z/HaaLiV9FtD+t
+ ntQIA8c4oIx/49E85ui/klL6VPg0M9LdT//TM26tCoOrUs7jKGl9K7U9p8q/dMSFpqRX
+ I2Mw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779487617; x=1780092417;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=HSbz0rz1Vzev+MKaGO1lYcCzTIBBWb6RJtlaZ74LNDs=;
- b=Aia5VB160JauLzU1JIzonVWuSbL8xdaPN+dtYgylwspk2GXk/YeUJMg1piSDKVbM2F
- hMkwv0nxx75HIiZQltEmbnaKqv7hEvz2/agdUtqlE5iuky7g101kKeJjK+0tVTLnULWd
- xxflaSgrn4gnyBKPxuRgupR2qcnk9h5y4uW4f75N+F1ghf272i5PlzCeEltDCQ4t4sEN
- L317NRuPoWfSjxQXQj2It5N0S1WcDQJSYTz5hGybrhZzGAYDMP7vt5Dr2poTd85xJDSJ
- aDFHm0yJXsCx94GJEm7UK+B6GuifW3RELWkM4fSVjoaY/dmqubhzpvcSwpSNVp7ImXuP
- AOQw==
-X-Gm-Message-State: AOJu0YyTx3GDM4CsmKRgR6CU/s8vlc2N5oy53eBc7B84HaG/d1LqsRmo
- q8upOhu4rzCBvciy/hnXflmOuMLl0As42y+Kv2uu1m6wgQ7zfGXDUzCQ5qBmDAbMiKE=
-X-Gm-Gg: Acq92OE3r01GBZqsF9tXS7Z6MDxMT98wkTwFcL1rhsnyD3MIhLaWwltUOKEgy3YJ9IP
- 2eRs+3Mbk923Kg+CRUuylmgEIrmzkCL9VF9u9cOO5G40nkeEQdHRjJS2ylez5ni4vWjpKepYpmN
- PB34G4+cFXyuK+9qBx2QXkr3hSZAZeoW1OoG3VFVtEih0QhDsuOnshlRB1lr1/FhZFyhpMw2AY2
- JksF7S9KqF1/4Ok0sHm5yfuNSyRnDMyx1wPu3blhubDdWbAv8bHI1Q+s4Z8A8xGWwPI6nCyg6IF
- W5XNgZkL7VdNP7LbIMV9LZHeOAf9ZImWbh+53neA5EevuCIVrD++bxyrbHD5QRus5E6k73bVlJZ
- sI/YwhXkrXsXjEDxY/zwolDRmsBnQtQgkGFcu5JY92imK98xpRu/GIv8j1s3vneMAr4SmXXf4ip
- KwV3hM9Cews1zMm2S5wICjOxUL9RKJ
-X-Received: by 2002:a17:902:da88:b0:2b7:ca38:975f with SMTP id
- d9443c01a7336-2beb05b57c8mr59728445ad.23.1779487617396; 
- Fri, 22 May 2026 15:06:57 -0700 (PDT)
-Received: from stoup.. ([50.78.183.177]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2beb56b7920sm27835745ad.21.2026.05.22.15.06.56
+ d=1e100.net; s=20251104; t=1779526586; x=1780131386;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=6M/8l05AFbfgOIdA57LoyhfwfiKiF2lNHoBij0kWQYM=;
+ b=lErfzMz9tLl0jgxwgPhdxkTERKR8ZzQc32niOhVS4E+3w8cKOoKedtyW7oXZu1iHav
+ tkA51ewpJzOgQUHcsDvmfpnOlcYHLU7ceN2qrQVzYTTauoCCDIx0sWpamFQuwlEde0qf
+ zS9MsZT4whCoJji4TyKM+MW7z+e0salz8+/XIaC3xy9jjaLqFS403RvuBa6jMqvIj00H
+ kCfH3qjAXUilQq8Ffv0/aPDVmve6C8TifxfgAPDZuxNGx0Sa5Rq5U4pjJZPnMYu+ne2q
+ dUy3cgkZYssGuiERBfxQylEQ5tXIxKh0K4Zc+tRWs7IbRWK/3NEQcDbJw3gIqt9PKaAz
+ 5JDw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ++CQcs+x96ijVmS01oKCzgxuHz+KnuGxtSLGIfmy+90NeaDhZmLg22ZuJ0W8R96kPqy77EoWEqwA==@nongnu.org
+X-Gm-Message-State: AOJu0YwWpkJP/2xs2wjkjbgp7LzfLPTm+4kn7lqLOuWFWQPjj9bde7s9
+ P6vvvxpweM5drkspjTZyFVlzOTgKTvlbdcxCTou4du6f3z0FQ5JN1jdgLtlNRSZjTVc=
+X-Gm-Gg: Acq92OEjmUwT7QI7Lz/00mTQkK0paiL9/kqSuiOCH4HGGo2K8J04BYlmFyH4Xl5kQy3
+ hFbbiA6N0jbnsbjatBuc2Jk7hCPSxP8DLgWa7CzjGpEem9onWP78zi1Ho1Gt9k1otOFitubLBeK
+ 6hR6mMhoHXPVXp2ao4n4+pigYRmroq2mVl8lN/cuxj+qA7W4+3ATSqZpqs5i64dUlkUJY30K7Hp
+ OnqbeUwpJ6FREF1y9KVUtIwiGu2zy6oUBsyXmbP/3mvUPLkv9DD/LxXUjFce7iooJjhXS6U9Yr+
+ ChZCXVkvnf89kO8kTncojkmyipo3Rkc5+BVdem45UTKT5zEWu+QQjkj3xAeELAcRYTfFj1nrr/n
+ jOvPjRi4hcjgTTBLLsQmQRILRgj1y9XhHlnDcYmkRxqkLql9G421LR1Ddczb5uT9LO1lf5QGgIM
+ 1b2pcNukTDK1n0EmHfB6hZ/j17EOgLoJ/pxg==
+X-Received: by 2002:a05:600c:c059:20b0:490:31e:d6fd with SMTP id
+ 5b1f17b1804b1-490426d3319mr79393095e9.25.1779526586395; 
+ Sat, 23 May 2026 01:56:26 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-490418c4497sm35370155e9.13.2026.05.23.01.56.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 May 2026 15:06:56 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v7 52/64] target/arm: Enable FEAT_FP8FMA,
- FEAT_SSVE_FP8FMA for -cpu max
-Date: Fri, 22 May 2026 15:02:54 -0700
-Message-ID: <20260522220306.235200-53-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260522220306.235200-1-richard.henderson@linaro.org>
-References: <20260522220306.235200-1-richard.henderson@linaro.org>
+ Sat, 23 May 2026 01:56:25 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id BFA645F7F1;
+ Sat, 23 May 2026 09:56:24 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org,  Peter Xu <peterx@redhat.com>,  Daniel P.
+ =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Thomas Huth
+ <th.huth+qemu@posteo.eu>,
+ Song Gao <gaosong@loongson.cn>,  John Snow <jsnow@redhat.com>,  Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Kyle Evans
+ <kevans@freebsd.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Cleber Rosa
+ <crosa@redhat.com>,  Warner Losh <imp@bsdimp.com>,  Brad Smith
+ <brad@comstyle.com>,  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Max Filippov <jcmvbkbc@gmail.com>,  Brian Cain
+ <brian.cain@oss.qualcomm.com>,  Fabiano Rosas <farosas@suse.de>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Richard Henderson
+ <richard.henderson@linaro.org>,  qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 03/16] tests/Makefile.include: add binary dependency
+ to run-tcg-tests-% rules
+In-Reply-To: <093614fb-ced1-4b15-b1e1-5da755f87237@oss.qualcomm.com> (Pierrick
+ Bouvier's message of "Fri, 22 May 2026 12:44:07 -0700")
+References: <20260521131739.540157-1-alex.bennee@linaro.org>
+ <20260521131739.540157-4-alex.bennee@linaro.org>
+ <74e8bc86-cd81-43f9-b5cb-7e3de3bcd3d0@oss.qualcomm.com>
+ <87tsrzl138.fsf@draig.linaro.org>
+ <093614fb-ced1-4b15-b1e1-5da755f87237@oss.qualcomm.com>
+User-Agent: mu4e 1.14.1; emacs 30.1
+Date: Sat, 23 May 2026 09:56:24 +0100
+Message-ID: <87cxymec7b.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,67 +122,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- linux-user/aarch64/elfload.c  | 2 ++
- target/arm/tcg/cpu64.c        | 2 ++
- docs/system/arm/emulation.rst | 2 ++
- 3 files changed, 6 insertions(+)
+Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
 
-diff --git a/linux-user/aarch64/elfload.c b/linux-user/aarch64/elfload.c
-index 08ee5fd192..2fb43d51e1 100644
---- a/linux-user/aarch64/elfload.c
-+++ b/linux-user/aarch64/elfload.c
-@@ -225,6 +225,8 @@ abi_ulong get_elf_hwcap2(CPUState *cs)
-     GET_FEATURE_ID(aa64_f8cvt, ARM_HWCAP2_A64_F8CVT |
-                                ARM_HWCAP2_A64_F8E4M3 |
-                                ARM_HWCAP2_A64_F8E5M2);
-+    GET_FEATURE_ID(aa64_f8fma, ARM_HWCAP2_A64_F8FMA);
-+    GET_FEATURE_ID(aa64_ssve_f8fma, ARM_HWCAP2_A64_SME_SF8FMA);
- 
-     return hwcaps;
- }
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 90214a355a..93cd7ee1a6 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1377,6 +1377,7 @@ void aarch64_max_tcg_initfn(Object *obj)
-     SET_IDREG(isar, ID_AA64DFR0, t);
- 
-     t = GET_IDREG(isar, ID_AA64SMFR0);
-+    t = FIELD_DP64(t, ID_AA64SMFR0, SF8FMA, 1);   /* FEAT_SSVE_FP8FMA */
-     t = FIELD_DP64(t, ID_AA64SMFR0, F32F32, 1);   /* FEAT_SME */
-     t = FIELD_DP64(t, ID_AA64SMFR0, BI32I32, 1);  /* FEAT_SME2 */
-     t = FIELD_DP64(t, ID_AA64SMFR0, B16F32, 1);   /* FEAT_SME */
-@@ -1395,6 +1396,7 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = GET_IDREG(isar, ID_AA64FPFR0);
-     t = FIELD_DP64(t, ID_AA64FPFR0, F8E5M2, 1);   /* FEAT_FP8 */
-     t = FIELD_DP64(t, ID_AA64FPFR0, F8E4M3, 1);   /* FEAT_FP8 */
-+    t = FIELD_DP64(t, ID_AA64FPFR0, F8FMA, 1);    /* FEAT_FP8FMA */
-     t = FIELD_DP64(t, ID_AA64FPFR0, F8CVT, 1);    /* FEAT_FP8 */
-     SET_IDREG(isar, ID_AA64FPFR0, t);
- 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 9c82df136d..c7128f1cec 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -75,6 +75,7 @@ the following architecture extensions:
- - FEAT_FP (Floating Point extensions)
- - FEAT_FP16 (Half-precision floating-point data processing)
- - FEAT_FP8 (FP8 convert instructions)
-+- FEAT_FP8FMA (FP8 multiply-accumulate to half-precision and single-precision instructions)
- - FEAT_FPAC (Faulting on AUT* instructions)
- - FEAT_FPACCOMBINE (Faulting on combined pointer authentication instructions)
- - FEAT_FPACC_SPEC (Speculative behavior of combined pointer authentication instructions)
-@@ -159,6 +160,7 @@ the following architecture extensions:
- - FEAT_SME_F64F64 (Double-precision floating-point outer product instructions)
- - FEAT_SME_I16I64 (16-bit to 64-bit integer widening outer product instructions)
- - FEAT_SME_LUTv2 (Lookup table instructions with 4-bit indices and 8-bit elements)
-+- FEAT_SSVE_FP8FMA (SVE2 FP8 multiply-accumulate to half-precision and single-precision instructions in Streaming SVE mode)
- - FEAT_SVE (Scalable Vector Extension)
- - FEAT_SVE_AES (Scalable Vector AES instructions)
- - FEAT_SVE_B16B16 (Non-widening BFloat16 arithmetic for SVE2)
--- 
-2.43.0
+> On 5/22/2026 12:02 PM, Alex Benn=C3=A9e wrote:
+>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+>>=20
+>>> On 5/21/2026 6:17 AM, Alex Benn=C3=A9e wrote:
+>>>> Explicitly set the appropriate QEMU binary as a dependency so we can
+>>>> ensure they get built. This is especially important for MacOS which
+>>>> otherwise only builds the unsigned binaries on a normal "make all"
+>>>> run.
+>>>>
+>>>
+>>> I'm not sure to see why it matters. tcg-tests don't make use of hvf, so
+>>> unsigned binaries are plenty for it.
+>>>
+>>> Which other binary is this building that is not built by default?
+>>>
+>>> In general, if something is not included in "all" target, let's make
+>>> sure it's included there (meson.build?) instead of adding a workaround
+>>> here. Not only tests benefit this, but anyone doing a build on a
+>>> platform that might have optional binaries not built by default.
+>>=20
+>> If you have a suggestion on how to make that work I'm all ears.
+>>
+>
+> I would be happy to help, but I don't understand what the goal is. I
+> have three questions that should help to provide a suggestion.
+>
+> Which exact test command do you run?
 
+make check-tcg
+
+>
+> ```
+> Explicitly set the appropriate QEMU binary as a dependency so we can
+> ensure they get built.
+> ```
+> Aren't they built by all?
+
+Apparently not.
+
+> It seems to be a dependency, at least for check-tcg:
+> .ninja-goals.check-tcg =3D all test-plugins
+>
+> ```
+> This is especially important for MacOS which otherwise only builds the
+> unsigned binaries on a normal "make all" run.
+> ```
+> Why do you need signed binaries for testing on MacOS (hvf?)?
+
+In a previous iteration I made configure spit out the unsigned binaries
+to config-target.mak but the request was to fix the dependencies
+instead.
+
+It all works on Linux so I'm not sure why MacOS is being so weird
+because the meson emulators target mechanism should be the same.
+
+> Regards,
+> Pierrick
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

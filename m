@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90036CD5BBF
-	for <qemu-arm@archiver.kernel.org>; Mon, 25 May 2026 04:43:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8B98CD5BC0
+	for <qemu-arm@archiver.kernel.org>; Mon, 25 May 2026 04:43:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRN8p-0001lM-0B; Mon, 25 May 2026 00:42:15 -0400
+	id 1wRN94-0001tN-VE; Mon, 25 May 2026 00:42:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1wRN8c-0001hz-6X; Mon, 25 May 2026 00:42:03 -0400
+ id 1wRN8W-0001gD-CX; Mon, 25 May 2026 00:41:57 -0400
 Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
  ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1wRN8Y-0001Gh-W1; Mon, 25 May 2026 00:42:00 -0400
+ id 1wRN8T-0001Fm-P9; Mon, 25 May 2026 00:41:55 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=HW1Oxn1DtJYEL+0N6Am3DlUhTJeTdODQJeS7q/GGbKXTxKw4oPxjU6bFt07xM2ZJsSfVCqJASjleWPXzTpIeiZaIwp+de5YlzVPy8L65siMpwdq3QEYXu0p8001eLu8SjQLFj1CU/FSpqpQPqc31YkAtBClSZ/AjUzBxM0o3H1FtCSCRSUhd/XEqhMFG8yMXBOpIDA1uMTRqHMz4oidhX5S+lRKZu7gDqlc/LnPAjxEHuwQl8Wf5cTNrRcjuoemCc6ZDJREJUMxT98KXvzHXNhxm9lwq76lh27t/XBUp/0QGaMSrucT94/OfaUpRBRiGrtSD3rNEAvt8aRd0UYbBdg==
+ b=hiE+ATeiMlGuhv6inQGe0ZyPqEBGdxIn5biKCzhKtUs8oNvoZSPi5Ao+fzp3vY2QnXRSMLcFhDoSQNEV7oUiqkhR96C5KeCl4K7HUoezFLRZZBF5GkY8uu654bLE9XHVpjjLnHjeKlvq4l0siJ6lBLkOApD076vigNqKfg138FTUHx1IZ5L2098aV5ICl0chtT49CTV/4uVDUxAQ73PRshT+tgIOoRNOYm0e3DXXSSFP7z/F3aubTj9fOiSnL+xjQ47wki+bOIrya6rN3uhX+qSC3O7zVnpkgLVlaLEWF66ipkwkho5O7Oe7XpzeTYuoQhBe3PVn/Nbzg5wlMcYRgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=7f+zvHn//6xapVsLWkkKH2APLh3yMIeCPPr9Aj/WXIQ=;
- b=QyvbXqeT4Lb2YbSafE4MgW8JZOpHm9i/0OaztbEox1zyxekK1DRkFwc3y/EiT4gv/Gnjhs10Z4zbUHLmSTc98l9TlUwIdNypG3grqv8AgNMTFaNvbZPj2ZrC6XOiyFYfSRuclhk+NPtIMqfAA9OUHG2k1h1Jd4wveYfdKtrQ+96TE+XKs1lzIXYA7gr41DSbVJIYFQc3QgST7UNWUJLFFTetwY9aOVOv2zFIVw0Mwj4ZaKGXifGfdG2uEEmJxRL4EKII7RjOySptxLY0TZhjmax9r5jIAUZ4ULdUzr7jDDUrUY5/fBw92ADAyveu76Pm62rWpW1UF8/0kUBzTTlvPA==
+ bh=Cab454BEmaBF41gEsE6WCjH03hL6W0rrAc9izSSgPcI=;
+ b=J9XGTINK4p6XaQRRiAah5Ks7eBDtvDenwjeBfOq0gzKaNrbKlOCp+MsZ6UtD0g4/bfKW9hmBLIzaHxKiHdTgayiwPmmQ0pmZRNZKAreP3vIsJd3JqM0MoWOgb7nxFa1Sr8cNiMLEo3TdvRNECRY90raYSFth78mVpJbiw95d23/sViCaMaSArK/a5fcsJTuAx9kiD8M67It8e9mQy7ayF3W80mpVqrIAkkMqPFRmpxabM3MY0yzQF1DRMm+HBHC6ZNwLJXYl+Wlyb0ojWz9VPFMUG6NX1dv646QgzeGPgMt9mx7zqAPtjsDvUN5jrF2wWdeFou93TOUJHDZjaRHY7A==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7f+zvHn//6xapVsLWkkKH2APLh3yMIeCPPr9Aj/WXIQ=;
- b=da4UYuoDumabGotWWjMGFOITPZkXuWKaS9MOC9efg4F/Hcys6SiK4E2cXmqsgrwGZXpVN+A/aO9uB+hgP2u0YlSGLQc/H75rrFJ0Y9bLSW0QFxUFREaQG5JdS8sfNnuTYNIE4QMGCgmzM7ntTCT4OPxD62eL76NquiBBKCZRs8VpksVr7F75Jd/plB/J9uC/UIWf7FqIHuxhHcxAIiLAxvImo3I8HIKzB6uJpcU1KEX44mOJaXBoFOcrX7n6gBz6b5D1zQv03IsdxNwyOhWzL5JG0nNCBELdb9nDz/Y4a1/MYTyQ2xuSQOCvv8ZH7iKhChSDV3zKDLKWaF+NSzgKFA==
+ bh=Cab454BEmaBF41gEsE6WCjH03hL6W0rrAc9izSSgPcI=;
+ b=bNqzWa1shUB7p+FMOK8Ae9Bh0D+HoSlulgO1xVVon7ydvFQYZRxkeAx0Wph51rZXNA9DhwWJyEKESu+xGwNZtTEDKmdiHCxVp3kz6WfRvkIktHxVQBj1COX583lIpQYSwhuQwvT1QsjVZ6XJgpI/r5JR5QKq2euthoHJR3Mn/nyD/hOeOtC85e/5r99HZq9G++UK//z8gBWuwh8oqlVSITA3k39acjYu3rVUDtjqF1hRQME23bH1S6ZJrP0xDnmQGjuU02N49QHr+GyVATQ2D0AkfaEL2ol1oYuFVQt1DrTvdk67yLatymYpX04lUHhpzHfnMZu2v5KGuPNwMM7qEA==
 Received: from SI6PR06MB7631.apcprd06.prod.outlook.com (2603:1096:4:239::11)
- by TYZPR06MB6593.apcprd06.prod.outlook.com (2603:1096:400:458::14) with
+ by TYQPR06MB8085.apcprd06.prod.outlook.com (2603:1096:405:2f8::7) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.48.19; Mon, 25 May
- 2026 04:41:50 +0000
+ 2026 04:41:42 +0000
 Received: from SI6PR06MB7631.apcprd06.prod.outlook.com
  ([fe80::afe5:a3f1:b435:e43c]) by SI6PR06MB7631.apcprd06.prod.outlook.com
  ([fe80::afe5:a3f1:b435:e43c%5]) with mapi id 15.21.0048.016; Mon, 25 May 2026
- 04:41:50 +0000
+ 04:41:41 +0000
 From: Kane Chen <kane_chen@aspeedtech.com>
 To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
@@ -53,13 +53,13 @@ To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  Wang <jasowang@redhat.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 13/23] hw/sd/aspeed_sdhci: convert to use Resettable
+Subject: [PATCH v1 08/23] hw/misc/aspeed_scu: convert to use Resettable
  interface
-Thread-Topic: [PATCH v1 13/23] hw/sd/aspeed_sdhci: convert to use Resettable
+Thread-Topic: [PATCH v1 08/23] hw/misc/aspeed_scu: convert to use Resettable
  interface
-Thread-Index: AQHc7ADNd+bdxQGN8EKz6rAOtaWauw==
-Date: Mon, 25 May 2026 04:41:50 +0000
-Message-ID: <20260525044129.3133916-14-kane_chen@aspeedtech.com>
+Thread-Index: AQHc7ADIPNoeJn621EqL+DBm4UtWDQ==
+Date: Mon, 25 May 2026 04:41:41 +0000
+Message-ID: <20260525044129.3133916-9-kane_chen@aspeedtech.com>
 References: <20260525044129.3133916-1-kane_chen@aspeedtech.com>
 In-Reply-To: <20260525044129.3133916-1-kane_chen@aspeedtech.com>
 Accept-Language: zh-TW, en-US
@@ -69,63 +69,63 @@ X-MS-TNEF-Correlator:
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI6PR06MB7631:EE_|TYZPR06MB6593:EE_
-x-ms-office365-filtering-correlation-id: 7fdb91fb-bd84-4528-4e66-08deba17efac
+x-ms-traffictypediagnostic: SI6PR06MB7631:EE_|TYQPR06MB8085:EE_
+x-ms-office365-filtering-correlation-id: 1a409a88-a132-42e0-8adb-08deba17eacc
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|1800799024|7416014|376014|22082099003|18002099003|56012099003|38070700021|921020;
-x-microsoft-antispam-message-info: BvTjK7Ey3TklCKnJrAqH78sc5uqeDmB0Rd62X4LlXOtPxSNkx92JzZ6jMSoqOhATQk3szZ6Sq8Wl3oWJ6pg3enDQXa8LmeewwZivZfVi+USQOmxlyut+tDHnY0hvk9XsUM02Q3dgIclxGuaz/jMs5T+E+BJ6sPnZ8eWcLybyP64KLiYCga7ixOfYxEQPDRgmsARkisqrxC0niIhj8bobPLiIIwX1VD8yV431Zyw5qrZLjwBpBtC+vKMh2ruATHgcz2lNdcjSKBUoscYCjbzQfkQFIf//h401IyGDHnWvMZ2zhqmTvVcSDLo0cZVG8KtJxKvKGBZpnJNzaHIJ1RS3f3FMbvrODPSeV4w6QNwyj8fAAsUYf3XcWeGFbVMkfrD0GlH24ZF7mjnBv2kWHWJzJDCGfANd9mnKVXdl40oXqQqhAW3mfrh/RrrgK/w6cZhgkYYN7+rRCINeeookQ7H3CriCDW6gPYHCiFNA7fWO9uxIYGPpy/o2FWiW37oHLLN2sA9Zitu8/U+A8+LZj6GrOdB8Cfh7vzpcCXiWSPcSJg01vH3AVb0f2mCS3XW9iNrN/rvXsaBhfNZbkP6oEVv6iJnUhsp56//4MXFyMIlX/Jt2sMISB7k4a2aOOm6KQlbj8T5TNQNeDinQNGRVjjVyodSRUorpRRUHpyhTYBH37EIDW3gaAZjwWXH2Oyd+l/EzhOtCroL3hWg/E1ImqrXREobH+QrqVEF7rr4CajMCsEnbIh3rIpHpec82drFJ1gEmYnXiJwcYqDG+3D4oJw3TJA==
+ ARA:13230040|1800799024|366016|376014|7416014|18002099003|22082099003|56012099003|38070700021|921020;
+x-microsoft-antispam-message-info: uKjFMjtMKPnIhcbHuDIETPhcLbLc5FT18g+rUDq29u+4Tt+ExpeTxOMK5ShUrJGUuEbh+Jz6QNPTcXCBNJUCwIzZc0jG4MzEjayrz4ICGmzBZf+dKY6zt0sLwMOTLTqCCa7cWtb2Zjj4A1hD1kAFNhAgrXhO8dFgYJwE2kADWqFvmPZOTwt5wu2uGyEERS8YNbTay0SkyQcHJO4wCW/AHBANOOs/Q7UGYG4+OJcsl0Wt6y/JgIutsgnM2RayV5mSYiumivgX8nkIi/NbQVNeg7fNUjIBp+Z+ATd/rj7toKqiHT+Ty4/Suc92UGLL6RVaM5ZR4CiIcrjYPQcZHqRRajFsl+N6M2HUQg5u2RJov87XnDhTQREUrSiUWN9yZt7MiacfcUE8sfrdwQu4nYa3oiwE1SCn5qM5H2eOuj+D/WFfve9Mkahyb2Rx6E8Kdv8cTx4VVBXb2AigTcblDmZA3sDmJ+SG0i55PpoocVd9EDWFJruAEqQRZ74RNr59whqphlf4iEu+YS/Dq4dsicuA9F816haY442Twu97Xdo5my1dWyMjNK0F6ujn+I/4D14LqVDoWm+8h71oauafXasAO/zyo0rN0NpKN+KOyzXUAHRrljEhT2+CEv+ffW4sEOaA1AeupwVyjKwoGMbnbn6g+W/1pQdaKGWukNgeUc4pjB8m3FKYAQQmXmdWRtak68/ndtaMeUkuQ/828rZLbk5Yobx4QsNpB3M+LUwzD/jWa4qh/BxNy57tlXcj9flo0JtnvrNC4MjjtxMp5+82WH9l2g==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SI6PR06MB7631.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(7416014)(376014)(22082099003)(18002099003)(56012099003)(38070700021)(921020);
+ SFS:(13230040)(1800799024)(366016)(376014)(7416014)(18002099003)(22082099003)(56012099003)(38070700021)(921020);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?GWG+RibklNzEzAtFgwu2d4pdcO7/HD5vKf68ma4nDWpYfZve2nfIWdRvom?=
- =?iso-8859-1?Q?DPgjCMCihqmyPO0lRQ4YvLG5siLtoC12SAq9O7Xa8W7lsGMmINXVXm20ig?=
- =?iso-8859-1?Q?hbgErc19AePb8quPvA9FDzvJrzxr3SxZ7h1XRM1kZBhOBbAN5aOnBtwFAv?=
- =?iso-8859-1?Q?pDStSDuv8YHUWmf0eMsNYl3w+VptoA1/CB03+VbyLmTQWR0lPfl73PzaEy?=
- =?iso-8859-1?Q?t4IqeGIiTumYtuo+MAmrqdvzqmwpN87yExjPQtRcpoTy7giPju8KirAp0w?=
- =?iso-8859-1?Q?Xvu2dUKvfuYu2+q2Qfk9hShkElmgiqtaYb27SfkHvFmBwPmp0dm0xoXBeG?=
- =?iso-8859-1?Q?5GCLFJCQkx34Gpdpn7We0InuGLmQQcHH1G9yK1X8bVJJdMf65+eO9yvdFW?=
- =?iso-8859-1?Q?97PwWwep0PI5oEbLHdqGzoVFCFkddRtZBho/oNi4M49EQL2ZRnVxwdbuQu?=
- =?iso-8859-1?Q?damX2lUT70m92rj0Af0micVeyM950vmy9pdq/DMs25sktb9pm4BPHLzuVB?=
- =?iso-8859-1?Q?fFJFzLlCBml2hfLFI50p1JnkCcmcpK0nmPVIqsRz3vW8Q/Ararkn3Z0Uz/?=
- =?iso-8859-1?Q?83fddoI+QFq3vPlJXVXRFzoteOKGG8lJ9zEkW0JJ02OpI8FF0oHWKx1Gsl?=
- =?iso-8859-1?Q?2+AqtejvsU/NkuprY0P2zUu0W+X3RjZNTAwX0hdg/U5PrV8BfWtfXif6Xy?=
- =?iso-8859-1?Q?Px0WVVNrMPxn8aqkVVWQuyj621qa4uaQfMm52TedslVWAjjS93Hgpc788U?=
- =?iso-8859-1?Q?/Zh1KDD6KtkUq7LcaIfdGB7t997slCsYs5qjr6EoobDIESLa660QLaINTV?=
- =?iso-8859-1?Q?2C4uLxivrGDaW5/OELihmhqYxlZzi6ODCXZ3ReauYweOPtCXR/iJzR+eX3?=
- =?iso-8859-1?Q?lXXXdI1IRiRBFBalO12dOp6cuNI8/IxPF/j/gI4tBh2HNWXg4+v2eJnkWU?=
- =?iso-8859-1?Q?IFmRbvdYgbfLiDy/1W4gSbKJy1WCQnpO45LTMjkyL8wIZBgZPKUXbK85T4?=
- =?iso-8859-1?Q?SIv2xLL5JnVgbi3CCYr20HWff7QmRCpxSQ/upPpdAUuXj9iZv5bzMNlyFs?=
- =?iso-8859-1?Q?KUriGU8Je+pn/vsy9bejhjkasJ2N21K+rjmPgpHN0Fga7n0AXfhMk7vpWo?=
- =?iso-8859-1?Q?XQmnvaKhAcY0/uKrd2gqUwV4Tw/v7boD9br8LmSmFgjMin98LqpIvXG5Rv?=
- =?iso-8859-1?Q?ozAoBF1s1bnOuOGDAALfRdgGPWhDI4UO9/uR5lgTCE3tvQijNDjMTS9Rb9?=
- =?iso-8859-1?Q?P+gNnO1f1emUMzS8l/lVU53ht/lRhcdY2+pOQM9RPPVarMNiGY95UnwzZy?=
- =?iso-8859-1?Q?TC1gp+bWXZoM/IQcARgeQ+MbRoCIM6zsTRWRLGLtj4b4wL3CIvWTCA3yrK?=
- =?iso-8859-1?Q?cYdqftgzO5vsgXfcYIq6Itro73XCondhC0KGvlEk8n5Z8EfNn/tH9V9Yql?=
- =?iso-8859-1?Q?cH/T9I/EqpzSeOQxJb4IovQzLnaEMRnC9e2IA/GUJdtPN6yCLKMG6xSZOG?=
- =?iso-8859-1?Q?4Ilnyth5yfzBsb7NFBHS6z9iYDY9Uthb8sqzpTCstBRzjrx24tVfE0p/jz?=
- =?iso-8859-1?Q?OzXdnBk2sIp9Vy+Kc8xuchvd6bFguEqFW5UGNIuvRxQvhjsbDGAoD3YVSD?=
- =?iso-8859-1?Q?oQfGFhiXb5UgE+l8oxKZxWsioFPaUo3aO578mEAYaaK8Wx/1R7K8mGyf7t?=
- =?iso-8859-1?Q?D8ncdzuUIUcElbFHoP3ja9gNnxe1dQtBRFUAmEd2l8eoy1XC0TJKJbKK4V?=
- =?iso-8859-1?Q?+t9utqY/1F/vswEmezGl1FIQRFlgFPoWKG+DPJIovRjFieuV+IEQ4z1vcp?=
- =?iso-8859-1?Q?2gjeFULjBw=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?QsxdVNIhCWJyfyfb48pqCxsg97KeaYztS2YxJ5AO7LDg+tyMdvwd1CmkQr?=
+ =?iso-8859-1?Q?1OwN6qRYeUMUalZhcmQZ7Kv/yN/KGo3PjfoU3HbdCFvWilZ5IdsS8G1+6r?=
+ =?iso-8859-1?Q?KghQ9wAr0sx4HwPtDqS3D9lw+d4WULUYaMoHf8Mh8ukdt81A/4wFBJy3Co?=
+ =?iso-8859-1?Q?EhR8RmqMQd2i721gUeEkfisA7vNZYuJLfm4UsfQW+iRehqVG2BqmJmEmL1?=
+ =?iso-8859-1?Q?JE2EpsTw/1xQCca2osM7gz9KhLUuo5FFm0MWQxDVlPYhV22w21M6PslRZd?=
+ =?iso-8859-1?Q?PrVby0hrIPltdV7xMOU0wDNefQS4221K25h4uqVSL1W9PCbxxOmo7PaHZi?=
+ =?iso-8859-1?Q?UDOmnuzvpLrMKQJO8GoWn/DZuG+Tvv1jLA4BfErIfJXC4sc4vfZNF6M5zp?=
+ =?iso-8859-1?Q?BMMOL9xbA/PFW1V8b4olCyFB81XGtTGpR+VNk26jGndNuFE6q3cyDZKQ7S?=
+ =?iso-8859-1?Q?ZbTwiLD+A0EsYCD6pQEK5SzYmiaEmO9B8JgXol4e/Y7/2V7S6EnBbigfw1?=
+ =?iso-8859-1?Q?87NeSGyf1/Jwx+/gZzMuOWQTO6CAszwnzJe+3XmCMlq5yj9GtvNxvIjzQm?=
+ =?iso-8859-1?Q?A6/pL8i7yJpiVRtX6huTYBFlHM8gCeOoTKHWQzOpydpj1QEwYXQkQX9Vfz?=
+ =?iso-8859-1?Q?Fh20dQfxdY+kY3DFupj3UmhnTv/PT1E6H0v7TnboZQX+zueYNSJ+X62kws?=
+ =?iso-8859-1?Q?8gqgLvnUO1r+K5tjBYFtapyQg1yoIVPtjU6Ox6+kShtz1ghitQlFWWkxnb?=
+ =?iso-8859-1?Q?BfqpJWyoJMOYlCvEedl8w/DCUBMF7FconY77AfAYIvAW7SHXvXHN81IC29?=
+ =?iso-8859-1?Q?xgHqZqDACRS5Q4sQIyqku0U8LO2GXtMJ5WLq/KUH9Syi6xKqvWqK0QTTK6?=
+ =?iso-8859-1?Q?LgFHv++uMSl+iK1rUJB5xNvd/bXWVX4BoBfTj5hV5rOhbGl0gPQZYLviOV?=
+ =?iso-8859-1?Q?m/1k4JGjYYDAW5+1xwIAnGkFJbY26Dqugb733/h8nQtFOxr1Ak5Ms+XbuL?=
+ =?iso-8859-1?Q?7deGf/V+9daLA1Quv4omwasHqRNrilKTD8w6NeHtRi4aFVJqfpMQEt/L39?=
+ =?iso-8859-1?Q?IhfmcsSBJd6iWo1/6FllnMYtP6LmI6uZ+7oKALYLhAmkD7nsuZG/+sUVR6?=
+ =?iso-8859-1?Q?GE8W5BUCipD9uUxjWm0tFSaF+b8IHEyo8UxjC3V6Kr2X1b7kbwAdhUwelu?=
+ =?iso-8859-1?Q?5XvVKHbM1Y3wzVonLP+FdOGXEgXjqFcONVn0p31BaVF2D9kVxhhr6Kmw7Z?=
+ =?iso-8859-1?Q?bujzoVxvpB3NHBl/ZddOS/NZStcV4nbEDr//0LmE4tgGtpWlNwxZuKeXE+?=
+ =?iso-8859-1?Q?O9uzEBORAAffMwLZhiD7PBUF6CBS1VvF+S0FJJEMKPxZmu8b0JwBsWhagq?=
+ =?iso-8859-1?Q?Hhiy3NYUkRvP2cX+9uQMVslqjUrwbv3r6PPvNYOpe18mgnwz5Nh+DOwlHA?=
+ =?iso-8859-1?Q?eZvLnMT2Uym0ElgOMfoSELhg5yu3XLqC+b3/HansYoAv7ZRNLlzumrGxA7?=
+ =?iso-8859-1?Q?NLVdqldv7sNyDH9dNsZqphEGpBXYlmEJqWLhOCeOIsyxLRDNYA6NuWI3LT?=
+ =?iso-8859-1?Q?uDb1+RLxSffTzxhkfsJ2FhBQkEiIQ8Sl3yJ1/BfOyTbMi6x45gygNhEhhj?=
+ =?iso-8859-1?Q?Qgna7KIlKWcFPPeKu62LSh9uTVtvO1v3YcHF1FBm2jKW+JZWzc0XSDM1iP?=
+ =?iso-8859-1?Q?+PmJT+k98n6NM7MkFYKPKe1MMLCtvravAlQBkeR9GihGxe0qBy5fSssX0/?=
+ =?iso-8859-1?Q?kky9q8jzAmePw5KJ2g02r6TiSwJWoKhHqNRudR02lvbhuGyrFLISXH9GQ/?=
+ =?iso-8859-1?Q?ySDKNvC/qQ=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: LTUeuP2s4TgAK6BRlC6g4xuNf8nts3h690erTFrlxA7ZK4oOPrD+3x3EoYae2M2pS+9g1ZmLjUciJUaxMUBX69U4GIrWSzlmoLy1+Vp8giQHszCHAuMbya+k3Xlf9z8g5PoqbrWQGnxbV/oE4nN8Lfsyp2rPfwL78jB19Kx2qMxHZ77hn6WQLULn+pab+nnK2ga/b8N6BTlYYovLCVoYDRihuJ208xkvydgpZiccZ314tDtubN4KwDpSHuQ6hzVI0/sh5+xvo3Upuzhpwe0cBk9TlAJOGojqBf1QgRsfXk6x9qoyeGW0F3Pzq7dLoOTcQak2mB0saYW4YNFiWcXwkQ==
+X-Exchange-RoutingPolicyChecked: QAadENleSU2qwF6ph1WPqCHO1pB/oGkjPWjTyf4KfAolpEwmnmLvIh3xyAM0apPTSebXIy+S7mR2O4MR9V5AYPB5fgw65HjvQH5tWPEgfnWN2SrrzdS9pf22NoBNBfuUbMwzeavwy8LP0jjcCK9fy6Y+qJiWS4joC1L0NeFjc0KRBLJ8T/tspBRO5R0VarBNggcXLGtLHDDH6piHy9Zv4dmncR0iaQt0MPrYkI8oQGHpVFroFEFS1gNG7XYEkMYhmiS/U7D/MgvMLYhkFCmSUYWXM99iboWyuhRErEmnfN5uy7u5qiUmloe2PHQ1KAehTNNOYq+ongSQzDjHnhT0tw==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: SI6PR06MB7631.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7fdb91fb-bd84-4528-4e66-08deba17efac
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 May 2026 04:41:50.1013 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1a409a88-a132-42e0-8adb-08deba17eacc
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 May 2026 04:41:41.9406 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: VtzRLSrFDQ9N2VB1Q1aHS4HaHNFsfoTieGPBI8VFFrqQ6md+wd2dR1kUOe+G5eZKyqoCcQUvXjk3pWmhjRn9zcS4K+ll8eSCBu143Y/V1So=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB6593
+X-MS-Exchange-CrossTenant-userprincipalname: qtIaprzXxKbKvyx13tsjS+pIKI1BfFafAx2kYn47fT/6YlanlYBmgX6+82TObcZ6tIPB1odHoeX+/S8MA1IzBCihqhRb9gw2DHajYuIH8Tw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYQPR06MB8085
 Received-SPF: pass client-ip=2a01:111:f403:c405::7;
  envelope-from=kane_chen@aspeedtech.com;
  helo=TYDPR03CU002.outbound.protection.outlook.com
@@ -156,40 +156,144 @@ device_class_set_legacy_reset() with the Resettable interface.=0A=
 =0A=
 Signed-off-by: Kane Chen <kane_chen@aspeedtech.com>=0A=
 ---=0A=
- hw/sd/aspeed_sdhci.c | 7 ++++---=0A=
- 1 file changed, 4 insertions(+), 3 deletions(-)=0A=
+ hw/misc/aspeed_scu.c | 39 ++++++++++++++++++++++-----------------=0A=
+ 1 file changed, 22 insertions(+), 17 deletions(-)=0A=
 =0A=
-diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c=0A=
-index 6684f8221a..d93093c4df 100644=0A=
---- a/hw/sd/aspeed_sdhci.c=0A=
-+++ b/hw/sd/aspeed_sdhci.c=0A=
-@@ -182,9 +182,9 @@ static void aspeed_sdhci_realize(DeviceState *dev, Erro=
-r **errp)=0A=
-     }=0A=
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c=0A=
+index e4160356e4..d7315bbb9a 100644=0A=
+--- a/hw/misc/aspeed_scu.c=0A=
++++ b/hw/misc/aspeed_scu.c=0A=
+@@ -542,10 +542,10 @@ static uint32_t aspeed_2600_scu_calc_hpll(AspeedSCUSt=
+ate *s, uint32_t hpll_reg)=0A=
+     return clkin * multiplier;=0A=
  }=0A=
  =0A=
--static void aspeed_sdhci_reset(DeviceState *dev)=0A=
-+static void aspeed_sdhci_reset_hold(Object *obj, ResetType type)=0A=
+-static void aspeed_scu_reset(DeviceState *dev)=0A=
++static void aspeed_scu_reset_hold(Object *obj, ResetType type)=0A=
  {=0A=
--    AspeedSDHCIState *sdhci =3D ASPEED_SDHCI(dev);=0A=
-+    AspeedSDHCIState *sdhci =3D ASPEED_SDHCI(obj);=0A=
+-    AspeedSCUState *s =3D ASPEED_SCU(dev);=0A=
+-    AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(dev);=0A=
++    AspeedSCUState *s =3D ASPEED_SCU(obj);=0A=
++    AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(obj);=0A=
  =0A=
-     memset(sdhci->regs, 0, ASPEED_SDHCI_REG_SIZE);=0A=
- =0A=
-@@ -211,9 +211,10 @@ static const Property aspeed_sdhci_properties[] =3D {=
-=0A=
- static void aspeed_sdhci_class_init(ObjectClass *classp, const void *data)=
-=0A=
+     memcpy(s->regs, asc->resets, asc->nr_regs * 4);=0A=
+     s->regs[SILICON_REV] =3D s->silicon_rev;=0A=
+@@ -615,8 +615,9 @@ static const Property aspeed_scu_properties[] =3D {=0A=
+ static void aspeed_scu_class_init(ObjectClass *klass, const void *data)=0A=
  {=0A=
-     DeviceClass *dc =3D DEVICE_CLASS(classp);=0A=
-+    ResettableClass *rc =3D RESETTABLE_CLASS(classp);=0A=
+     DeviceClass *dc =3D DEVICE_CLASS(klass);=0A=
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);=0A=
+     dc->realize =3D aspeed_scu_realize;=0A=
+-    device_class_set_legacy_reset(dc, aspeed_scu_reset);=0A=
++    rc->phases.hold =3D aspeed_scu_reset_hold;=0A=
+     dc->desc =3D "ASPEED System Control Unit";=0A=
+     dc->vmsd =3D &vmstate_aspeed_scu;=0A=
+     device_class_set_props(dc, aspeed_scu_properties);=0A=
+@@ -821,10 +822,10 @@ static const uint32_t ast2600_a3_resets[ASPEED_AST260=
+0_SCU_NR_REGS] =3D {=0A=
+     [AST2600_CHIP_ID1]          =3D 0x88884444,=0A=
+ };=0A=
  =0A=
-     dc->realize =3D aspeed_sdhci_realize;=0A=
--    device_class_set_legacy_reset(dc, aspeed_sdhci_reset);=0A=
-+    rc->phases.hold =3D aspeed_sdhci_reset_hold;=0A=
-     dc->vmsd =3D &vmstate_aspeed_sdhci;=0A=
-     device_class_set_props(dc, aspeed_sdhci_properties);=0A=
- }=0A=
+-static void aspeed_ast2600_scu_reset(DeviceState *dev)=0A=
++static void aspeed_ast2600_scu_reset_hold(Object *obj, ResetType type)=0A=
+ {=0A=
+-    AspeedSCUState *s =3D ASPEED_SCU(dev);=0A=
+-    AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(dev);=0A=
++    AspeedSCUState *s =3D ASPEED_SCU(obj);=0A=
++    AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(obj);=0A=
+ =0A=
+     memcpy(s->regs, asc->resets, asc->nr_regs * 4);=0A=
+ =0A=
+@@ -843,10 +844,11 @@ static void aspeed_ast2600_scu_reset(DeviceState *dev=
+)=0A=
+ static void aspeed_2600_scu_class_init(ObjectClass *klass, const void *dat=
+a)=0A=
+ {=0A=
+     DeviceClass *dc =3D DEVICE_CLASS(klass);=0A=
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);=0A=
+     AspeedSCUClass *asc =3D ASPEED_SCU_CLASS(klass);=0A=
+ =0A=
+     dc->desc =3D "ASPEED 2600 System Control Unit";=0A=
+-    device_class_set_legacy_reset(dc, aspeed_ast2600_scu_reset);=0A=
++    rc->phases.hold =3D aspeed_ast2600_scu_reset_hold;=0A=
+     asc->resets =3D ast2600_a3_resets;=0A=
+     asc->calc_hpll =3D aspeed_2600_scu_calc_hpll;=0A=
+     asc->get_apb =3D aspeed_2600_scu_get_apb_freq;=0A=
+@@ -949,10 +951,10 @@ static const uint32_t ast2700_a0_resets[ASPEED_AST270=
+0_SCU_NR_REGS] =3D {=0A=
+     [AST2700_SCU_VGA_SCRATCH_0]     =3D 0x00000040,=0A=
+ };=0A=
+ =0A=
+-static void aspeed_ast2700_scu_reset(DeviceState *dev)=0A=
++static void aspeed_ast2700_scu_reset_hold(Object *obj, ResetType type)=0A=
+ {=0A=
+-    AspeedSCUState *s =3D ASPEED_SCU(dev);=0A=
+-    AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(dev);=0A=
++    AspeedSCUState *s =3D ASPEED_SCU(obj);=0A=
++    AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(obj);=0A=
+ =0A=
+     memcpy(s->regs, asc->resets, asc->nr_regs * 4);=0A=
+     s->regs[AST2700_SILICON_REV] =3D s->silicon_rev;=0A=
+@@ -962,10 +964,11 @@ static void aspeed_ast2700_scu_reset(DeviceState *dev=
+)=0A=
+ static void aspeed_2700_scu_class_init(ObjectClass *klass, const void *dat=
+a)=0A=
+ {=0A=
+     DeviceClass *dc =3D DEVICE_CLASS(klass);=0A=
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);=0A=
+     AspeedSCUClass *asc =3D ASPEED_SCU_CLASS(klass);=0A=
+ =0A=
+     dc->desc =3D "ASPEED 2700 System Control Unit";=0A=
+-    device_class_set_legacy_reset(dc, aspeed_ast2700_scu_reset);=0A=
++    rc->phases.hold =3D aspeed_ast2700_scu_reset_hold;=0A=
+     asc->resets =3D ast2700_a0_resets;=0A=
+     asc->calc_hpll =3D aspeed_2600_scu_calc_hpll;=0A=
+     asc->get_apb =3D aspeed_2700_scu_get_apb_freq;=0A=
+@@ -1081,10 +1084,11 @@ static const uint32_t ast2700_a0_resets_io[ASPEED_A=
+ST2700_SCU_NR_REGS] =3D {=0A=
+ static void aspeed_2700_scuio_class_init(ObjectClass *klass, const void *d=
+ata)=0A=
+ {=0A=
+     DeviceClass *dc =3D DEVICE_CLASS(klass);=0A=
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);=0A=
+     AspeedSCUClass *asc =3D ASPEED_SCU_CLASS(klass);=0A=
+ =0A=
+     dc->desc =3D "ASPEED 2700 System Control Unit I/O";=0A=
+-    device_class_set_legacy_reset(dc, aspeed_ast2700_scu_reset);=0A=
++    rc->phases.hold =3D aspeed_ast2700_scu_reset_hold;=0A=
+     asc->resets =3D ast2700_a0_resets_io;=0A=
+     asc->calc_hpll =3D aspeed_2600_scu_calc_hpll;=0A=
+     asc->get_apb =3D aspeed_2700_scuio_get_apb_freq;=0A=
+@@ -1122,10 +1126,10 @@ static const uint32_t ast1030_a1_resets[ASPEED_AST2=
+600_SCU_NR_REGS] =3D {=0A=
+     [AST2600_CHIP_ID1]          =3D 0x0BADCAFE,=0A=
+ };=0A=
+ =0A=
+-static void aspeed_ast1030_scu_reset(DeviceState *dev)=0A=
++static void aspeed_ast1030_scu_reset_hold(Object *obj, ResetType type)=0A=
+ {=0A=
+-    AspeedSCUState *s =3D ASPEED_SCU(dev);=0A=
+-    AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(dev);=0A=
++    AspeedSCUState *s =3D ASPEED_SCU(obj);=0A=
++    AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(obj);=0A=
+ =0A=
+     memcpy(s->regs, asc->resets, asc->nr_regs * 4);=0A=
+ =0A=
+@@ -1139,10 +1143,11 @@ static void aspeed_ast1030_scu_reset(DeviceState *d=
+ev)=0A=
+ static void aspeed_1030_scu_class_init(ObjectClass *klass, const void *dat=
+a)=0A=
+ {=0A=
+     DeviceClass *dc =3D DEVICE_CLASS(klass);=0A=
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);=0A=
+     AspeedSCUClass *asc =3D ASPEED_SCU_CLASS(klass);=0A=
+ =0A=
+     dc->desc =3D "ASPEED 1030 System Control Unit";=0A=
+-    device_class_set_legacy_reset(dc, aspeed_ast1030_scu_reset);=0A=
++    rc->phases.hold =3D aspeed_ast1030_scu_reset_hold;=0A=
+     asc->resets =3D ast1030_a1_resets;=0A=
+     asc->calc_hpll =3D aspeed_2600_scu_calc_hpll;=0A=
+     asc->get_apb =3D aspeed_1030_scu_get_apb_freq;=0A=
 -- =0A=
 2.43.0=0A=
 

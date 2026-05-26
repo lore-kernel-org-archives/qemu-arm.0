@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85CA6CD5BB4
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 08:24:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A6F0CD5BB4
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 08:25:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRn1Z-0006bO-Tc; Tue, 26 May 2026 04:20:29 -0400
+	id 1wRn0M-0005G7-8m; Tue, 26 May 2026 04:19:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn1B-0005op-7L
- for qemu-arm@nongnu.org; Tue, 26 May 2026 04:20:06 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0K-0005FQ-OX
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:12 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn18-00087d-Mb
- for qemu-arm@nongnu.org; Tue, 26 May 2026 04:20:04 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0I-0007ZN-Np
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779783602;
+ s=mimecast20190719; t=1779783550;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kZIgNaP/z4JcrQB/kcoUTBVDabVpUlUR46Tv7Yeawvs=;
- b=dalX0sah0KUrJfGm4YZNNyboSUI6X6mG3+eHyJhQXW3Py4yIgeiyavf0lQr4ENKJIv9Glz
- r0Wx7OuIgpq6mfsS+kWxFjL/WX3BzRgS/XktjSaI2iOoE4LAUjxkd530kmyo1P8fIA6IaX
- M3HPw66C+bEXKsJvmF2x+CPYfG0P9QM=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=C3LqYBgUxfiRAj8SWlnUdZvpCGVfqmzKBwcNBEn9UIM=;
+ b=HCgyF7xIElzH8f/xXCfyENlmZKKq3ujAhMc6jA7xMovJSEHLchogPhB+QQrU841Z8fQTdc
+ KjQIhRBHqxmdcdUWxapXHqwsKcq4hdmLaipnYIxVbiLMyToof05U8xz0yR9Y+BMVt9Wu1Q
+ oUBorqielo7D9khlvwwQlt9+gHRI8IM=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-608-ORDEsMSsM-epRHQj92L46Q-1; Tue,
- 26 May 2026 04:20:00 -0400
-X-MC-Unique: ORDEsMSsM-epRHQj92L46Q-1
-X-Mimecast-MFC-AGG-ID: ORDEsMSsM-epRHQj92L46Q_1779783599
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-528-WI_BIR1hOQyO9SnpAblyuQ-1; Tue,
+ 26 May 2026 04:19:08 -0400
+X-MC-Unique: WI_BIR1hOQyO9SnpAblyuQ-1
+X-Mimecast-MFC-AGG-ID: WI_BIR1hOQyO9SnpAblyuQ_1779783547
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EE2DF19560B4; Tue, 26 May 2026 08:19:58 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4AF9F1800611; Tue, 26 May 2026 08:19:07 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.30])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1EC7B1800357; Tue, 26 May 2026 08:19:56 +0000 (UTC)
+ id BB15A180056E; Tue, 26 May 2026 08:19:05 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Kane Chen <kane_chen@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 31/37] hw/i3c/aspeed_i3c: convert to use Resettable interface
-Date: Tue, 26 May 2026 10:18:42 +0200
-Message-ID: <20260526081848.651835-32-clg@redhat.com>
+Subject: [PULL 07/37] hw/arm/aspeed: Convert SRAM size definition to array type
+Date: Tue, 26 May 2026 10:18:18 +0200
+Message-ID: <20260526081848.651835-8-clg@redhat.com>
 In-Reply-To: <20260526081848.651835-1-clg@redhat.com>
 References: <20260526081848.651835-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: gs-bBBftGFWLzxHCp13G9cJ3fOM5fj_g11CSwBQ4Uh8_1779783599
+X-Mimecast-MFC-PROC-ID: 4volKtNx-_Eeg4M3_KpgfVKl5FxJARDYEq9wyETA3u0_1779783547
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,47 +85,166 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Kane Chen <kane_chen@aspeedtech.com>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Replace the legacy reset callback registered via
-device_class_set_legacy_reset() with the Resettable interface.
+Prepare the Aspeed SoC model for future platforms that may contain
+multiple SRAM regions with different sizes and MMIO mappings.
 
-Signed-off-by: Kane Chen <kane_chen@aspeedtech.com>
-Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Link: https://lore.kernel.org/qemu-devel/20260525044129.3133916-18-kane_chen@aspeedtech.com
+The current implementation stores SRAM size information in a single
+sram_size field, which limits extensibility when additional SRAM
+instances are introduced.
+
+Convert sram_size into an array-based definition and update all
+existing users to reference sram_size[0]. This aligns with the
+previous SRAM MemoryRegion array conversion and provides a scalable
+foundation for supporting multiple SRAM regions in future SoCs.
+
+No functional change.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20260525053036.3305181-3-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/i3c/aspeed_i3c.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ include/hw/arm/aspeed_soc.h | 2 +-
+ hw/arm/aspeed_ast10x0.c     | 8 ++++----
+ hw/arm/aspeed_ast2400.c     | 6 +++---
+ hw/arm/aspeed_ast2600.c     | 4 ++--
+ hw/arm/aspeed_ast27x0.c     | 8 ++++----
+ 5 files changed, 14 insertions(+), 14 deletions(-)
 
-diff --git a/hw/i3c/aspeed_i3c.c b/hw/i3c/aspeed_i3c.c
-index bac8c55bb091..de61d67dfdee 100644
---- a/hw/i3c/aspeed_i3c.c
-+++ b/hw/i3c/aspeed_i3c.c
-@@ -162,9 +162,9 @@ I3CBus *aspeed_i3c_get_bus(AspeedI3CState *s, uint8_t bus_num)
-     g_assert_not_reached();
- }
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index e6942b2936ae..3a7db959a9ae 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -172,7 +172,7 @@ struct AspeedSoCClass {
+     /** valid_cpu_types: NULL terminated array of a single CPU type. */
+     const char * const *valid_cpu_types;
+     uint32_t silicon_rev;
+-    uint64_t sram_size;
++    uint64_t sram_size[ASPEED_SRAM_NUM];
+     uint64_t secsram_size;
+     int pcie_num;
+     int spis_num;
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index 3e478f752058..9e597a75ec53 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -240,8 +240,8 @@ static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCState *a, Error **errp)
+     /* Internal SRAM */
+     sram_name = g_strdup_printf("aspeed.sram.%d",
+                                 CPU(a->armv7m.cpu)->cpu_index);
+-    memory_region_init_ram(&s->sram[0], OBJECT(s), sram_name, sc->sram_size,
+-                           &err);
++    memory_region_init_ram(&s->sram[0], OBJECT(s), sram_name,
++                           sc->sram_size[0], &err);
+     if (err != NULL) {
+         error_propagate(errp, err);
+         return false;
+@@ -493,7 +493,7 @@ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, const void *data)
  
--static void aspeed_i3c_reset(DeviceState *dev)
-+static void aspeed_i3c_reset_hold(Object *obj, ResetType type)
- {
--    AspeedI3CState *s = ASPEED_I3C(dev);
-+    AspeedI3CState *s = ASPEED_I3C(obj);
-     memset(s->regs, 0, sizeof(s->regs));
- }
+     sc->valid_cpu_types = valid_cpu_types;
+     sc->silicon_rev = AST1030_A1_SILICON_REV;
+-    sc->sram_size = 0xc0000;
++    sc->sram_size[0] = 0xc0000;
+     sc->secsram_size = 0x40000; /* 256 * KiB */
+     sc->spis_num = 2;
+     sc->ehcis_num = 0;
+@@ -521,7 +521,7 @@ static void aspeed_soc_ast1060_class_init(ObjectClass *klass, const void *data)
  
-@@ -238,9 +238,10 @@ static const VMStateDescription vmstate_aspeed_i3c = {
- static void aspeed_i3c_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
+     sc->valid_cpu_types = valid_cpu_types;
+     sc->silicon_rev = AST1060_A2_SILICON_REV;
+-    sc->sram_size = 0xc0000;
++    sc->sram_size[0] = 0xc0000;
+     sc->secsram_size = 0x40000; /* 256 * KiB */
+     sc->spis_num = 2;
+     sc->wdts_num = 4;
+diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
+index d79aa832f3fa..c4e5388999e6 100644
+--- a/hw/arm/aspeed_ast2400.c
++++ b/hw/arm/aspeed_ast2400.c
+@@ -282,7 +282,7 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
+     /* SRAM */
+     sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
+     if (!memory_region_init_ram(&s->sram[0], OBJECT(s), sram_name,
+-                                sc->sram_size, errp)) {
++                                sc->sram_size[0], errp)) {
+         return;
+     }
+     memory_region_add_subregion(s->memory,
+@@ -533,7 +533,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, const void *data)
  
-     dc->realize = aspeed_i3c_realize;
--    device_class_set_legacy_reset(dc, aspeed_i3c_reset);
-+    rc->phases.hold = aspeed_i3c_reset_hold;
-     dc->desc = "Aspeed I3C Controller";
-     dc->vmsd = &vmstate_aspeed_i3c;
- }
+     sc->valid_cpu_types = valid_cpu_types;
+     sc->silicon_rev  = AST2400_A1_SILICON_REV;
+-    sc->sram_size    = 0x8000;
++    sc->sram_size[0] = 0x8000;
+     sc->spis_num     = 1;
+     sc->ehcis_num    = 1;
+     sc->wdts_num     = 2;
+@@ -560,7 +560,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass *oc, const void *data)
+ 
+     sc->valid_cpu_types = valid_cpu_types;
+     sc->silicon_rev  = AST2500_A1_SILICON_REV;
+-    sc->sram_size    = 0x9000;
++    sc->sram_size[0] = 0x9000;
+     sc->spis_num     = 2;
+     sc->ehcis_num    = 2;
+     sc->wdts_num     = 3;
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index a69103de89ea..2f8f49a37689 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -438,7 +438,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     /* SRAM */
+     sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
+     if (!memory_region_init_ram(&s->sram[0], OBJECT(s), sram_name,
+-                                sc->sram_size, errp)) {
++                                sc->sram_size[0], errp)) {
+         return;
+     }
+     memory_region_add_subregion(s->memory,
+@@ -764,7 +764,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, const void *data)
+ 
+     sc->valid_cpu_types = valid_cpu_types;
+     sc->silicon_rev  = AST2600_A3_SILICON_REV;
+-    sc->sram_size    = 0x16400;
++    sc->sram_size[0] = 0x16400;
+     sc->spis_num     = 2;
+     sc->ehcis_num    = 2;
+     sc->wdts_num     = 4;
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 0fb5e4b24c9d..30883ea7ce40 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -778,8 +778,8 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+ 
+     /* SRAM */
+     name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
+-    if (!memory_region_init_ram(&s->sram[0], OBJECT(s), name, sc->sram_size,
+-                                errp)) {
++    if (!memory_region_init_ram(&s->sram[0], OBJECT(s), name,
++                                sc->sram_size[0], errp)) {
+         return;
+     }
+     memory_region_add_subregion(s->memory,
+@@ -1151,7 +1151,7 @@ static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, const void *data)
+ 
+     sc->valid_cpu_types = valid_cpu_types;
+     sc->silicon_rev  = AST2700_A1_SILICON_REV;
+-    sc->sram_size    = 0x20000;
++    sc->sram_size[0] = 0x20000;
+     sc->pcie_num     = 3;
+     sc->spis_num     = 3;
+     sc->sgpio_num    = 2;
+@@ -1181,7 +1181,7 @@ static void aspeed_soc_ast2700a2_class_init(ObjectClass *oc, const void *data)
+ 
+     sc->valid_cpu_types = valid_cpu_types;
+     sc->silicon_rev  = AST2700_A2_SILICON_REV;
+-    sc->sram_size    = 0x20000;
++    sc->sram_size[0] = 0x20000;
+     sc->pcie_num     = 3;
+     sc->spis_num     = 3;
+     sc->sgpio_num    = 2;
 -- 
 2.54.0
 

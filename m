@@ -4,102 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80697CD5BC8
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 10:43:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA093CD5BB1
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 10:44:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRpFg-00063S-3y; Tue, 26 May 2026 06:43:12 -0400
+	id 1wRpH1-0006Xg-0L; Tue, 26 May 2026 06:44:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wRpFe-00062x-UJ
- for qemu-arm@nongnu.org; Tue, 26 May 2026 06:43:10 -0400
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wRpFa-0003ZU-FE
- for qemu-arm@nongnu.org; Tue, 26 May 2026 06:43:08 -0400
-Received: by mail-yx1-xb12e.google.com with SMTP id
- 956f58d0204a3-65c52bb5dd7so9927185d50.2
- for <qemu-arm@nongnu.org>; Tue, 26 May 2026 03:42:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779792177; cv=none;
- d=google.com; s=arc-20240605;
- b=k9l7NkfY9xzs5Nunsgscqi/HkBsrPYS07FuJI4AlUqHHgvXKjZOCPou650ddPzR7w2
- O6yF1maFkfz7eAwJY5FV/LoMxKvKYyvn6iMM3g1M/jrjFY0qQDqbOJM8SUrZd0n9tJYz
- EHu74K71Qd6DQ5EJQTJC1K9EfzYsZu8uQW+iSALbAAh6IkAmYCPcZRB1IPj+/n8TP9Lq
- FsWu6gZ//B2hU2QEPiyyYNk7RqNUuO2+XRqDLxiNc5/9NSa2McSVW8h4xp0QEDooQMx4
- iSlUp4Mu/U7Md3L2YVqzkYtU2PteE04yKrxVuTnpE7ZrvTBpWGi7ZCBNS1mqJfJYrk0U
- dzEg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=M/UjtwWeJn3BV8j/cB5oDZf5o8Psj2+8LhjOEwpeKPE=;
- fh=nhfmkjb6jgCjUVKWyD+kLli06m3KyF48Y019mCNlvPw=;
- b=CGZrRsxfHHhHGVbxz/SDDYyFEBMRQOXYZgq5uY48tCI+O5ibu/yZoTfHb/yCb8v3ar
- tRzAlYMSUb3z5dlaY1ItBjffsDQpbDFLH6pTAhmWlHf2QBCBMex5vrfJ5FHSLFp7/VUl
- tPdLaWWZKsMGBjpFK1cHe69MfPnn+HThM63k+OnCWzq3F50zTb0Zfs17hzQ5JbDUgzrk
- bzPML6zKXgTJZYuyeKayB2RVwPXcMkBnnSHANLR6Xp0OOqZkbh27+yybe6M8aAFHroBl
- pzgW6aGyx6GkTZ4px0cfzfpnCvr8zh5uZL1HEmbsOlmlN8W3GPhMVf6nopw2rXv8/Ha5
- orpw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779792177; x=1780396977; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=M/UjtwWeJn3BV8j/cB5oDZf5o8Psj2+8LhjOEwpeKPE=;
- b=XsEy1gC26etHDgynCrOotamUoSVKcRoS3qiDQCKF3ypaNfvPOjVGGHAkB7KSDSS8fP
- zcGzAcQMS+s5u+JUYBihsywhXR7jCHzqSQIubZg0mGwXE3114bawo55PuLnXi5YXazHq
- hR4zob2/r0d35Hzh3+z7B5huzN/zK5TnpuVCRiWcbc9xw7hhOI48JGXMQEJgmLQiQC0w
- 3F7seCjg02mvDQowfqnp7/9944DT+0n3sAximjFy/gGl80zEodpZ3U6Gu+WKPaS2RtWp
- BwzXsu0sKrH3wPVD+mW4UMNiKtMS49beCMKvptm346lF15umsX5yI7Y/NzorlxnCnB96
- 9CLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779792177; x=1780396977;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=M/UjtwWeJn3BV8j/cB5oDZf5o8Psj2+8LhjOEwpeKPE=;
- b=FLloCmtTO4JfnHQu/Es9z+MWdBiIUBqeJO9UfpxKTegVrBmwwhrEra24z2YF0ByDkH
- aejfNc8ZfTkzCHJUUuDGIppU3P2nbQuyBUQ1KKk9q7m97Ghw3Qg/DoTs2hrGBV+1mkXV
- d5Mx32yPsm2htFTX7H9zftJVtZ1TCKhzt2OBhafaCYPXjDnQErtC9aVa18H68+axpyht
- +hbrUR5fTO4TzpC69sBc3N+HtQ43iQKj4nflw1MHoQ2rqetg+l6ig6p1/71k2mcyEGM4
- A6YQhYUOUlSHsFnmnGdnB+7cP7+lblvKXbvk0EpZoKE08ieMwAw3TcF34/kIlqeZP5mm
- d5Ng==
-X-Forwarded-Encrypted: i=1;
- AFNElJ8Ox8UHKxGetS7Wp8VF9V2JjvNfQaU0ByVuUK8KOy+m2b89ErMwQYImoPwkbJFsAm8c8JM6MOmsSA==@nongnu.org
-X-Gm-Message-State: AOJu0YzSPhSIR01auGftq9WGU49urBK/Ixv3nFhxQtxF532CCp6o3eKo
- p0cYta6hb3DBZLXrQFk65YO66XdRu4qjmWT+YmXfgvQwG7+8cPoMyRFYeH1Y7A7ltVIeosgegAs
- s930Z4arbo9UGZWVGJO1aytQeLUub6lKN0vzh9B1nuAQdGx2gdmWm
-X-Gm-Gg: Acq92OH22WWkLtpqL9AH0npt9cgcG/29MmClSShIXoaYMx25AA/22RspHdj6+MzOKp2
- Y/L7C9SY1pdcYkJNMBNXNAqV2aFoUnaazpfpckBr+PpgBRlSEMMgA1w8gKwa93tmESNB0Pb0o2E
- q15XV9nKQTBrXhD1yLi7U6XhiXGdSaeFCwndWPlLdoF2frlFo6By+0mhBSnNDQrd1ApJy4nyEVX
- 6z1asgtWfisPw18R459MNnUtSp1X8L7OT3Bvp9MbgTpO2t/RaG9WWpWMvbXYMniSeQ4fLO7NXpi
- LWk8wkquqZzkOanMgw0wz/R6kj+D9EICd0i4Tgebd/YXP9guTCJqSYi8dwKiUYP0HRg=
-X-Received: by 2002:a05:690e:140c:b0:651:daf6:3d82 with SMTP id
- 956f58d0204a3-65ec98bdef0mr16952737d50.42.1779792177020; Tue, 26 May 2026
- 03:42:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <dmitry.osipenko@collabora.com>)
+ id 1wRpGx-0006X2-Ou; Tue, 26 May 2026 06:44:31 -0400
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dmitry.osipenko@collabora.com>)
+ id 1wRpGv-0003zu-Td; Tue, 26 May 2026 06:44:31 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1779792263; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=G9Ln8nSzpsxJY/C9wMJwMWITt32C1+1wtDTSnZRMtWmkZGe09Q/gvgFQ//TPFTrIJudBdGImEc4z3kSnW7JobiKw3Cd6fEETwBT58Y9LPEiFlrtClqtBu9gFHuYFgkQlSlSN4iNVLCl3LqVKavrwqkpluZ1DNM/2YTkNTdWMaEE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1779792263;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
+ bh=HoXrJUu4A2tRq43rSlpoFLt6ugqcuSxbEHX5wYjPohI=; 
+ b=MZSzaP83gR8gdEjjXVA9K1SKi6AeY0patt+WgQ7tRvezOogImur/4FIdm7dZZTx+fOGmcwJKHL69V7Mj4XTHCHZ/I6ol1RjjnKKGAmdg7b7EwJQRjJxRN6HD1kF8q3bQQIIf/g3ErED7e9V3OZjzvGZ8ZdMtKMsV/RsVAoV/RVI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=collabora.com;
+ spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+ dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1779792263; 
+ s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com; 
+ h=Message-ID:Date:Date:MIME-Version:Subject:Subject:From:From:To:To:Cc:Cc:References:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+ bh=HoXrJUu4A2tRq43rSlpoFLt6ugqcuSxbEHX5wYjPohI=;
+ b=jEac+cyWQnFcfPwX4jQRI2orBVIfvwiCD/30eFKGIATmRUyXWg9PM8by638kuCeo
+ FxYTZ+OtNl4AN4IstbJBGkURAV5CzuQiGwKFRbyTxsndeZLqVcz5RkR2NH8/IXxo+Wu
+ QtFjHgliJda/4Om3Reqb6rR/nouiHUBYZTgmr520=
+Received: by mx.zohomail.com with SMTPS id 1779792260513489.0132292696708;
+ Tue, 26 May 2026 03:44:20 -0700 (PDT)
+Message-ID: <89b9b848-5bb1-4f13-884a-975ef3bd06bb@collabora.com>
+Date: Tue, 26 May 2026 13:44:16 +0300
 MIME-Version: 1.0
-References: <20260522220306.235200-1-richard.henderson@linaro.org>
-In-Reply-To: <20260522220306.235200-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 26 May 2026 11:42:45 +0100
-X-Gm-Features: AVHnY4I1L5gT8Sq8fEIo0Ks2_EflK8xAj3C3OWx2scmoctjfNXRsNjoHET3Lx9Y
-Message-ID: <CAFEAcA82v=48FxXuddVi8JHDFK+Z-nM9Z3oAxB0K-xoO=ZNEbA@mail.gmail.com>
-Subject: Re: [PATCH v7 00/64] target/arm: Implement FEAT_FP8
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 4/4] virtio-gpu: advertise VIRTIO_GPU_F_BLOB_ALIGNMENT
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Lucas Amaral <lucaaamaral@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, marcandre.lureau@redhat.com,
+ visitorckw@gmail.com
+References: <20260317182049.33848-1-lucaaamaral@gmail.com>
+ <20260317182049.33848-5-lucaaamaral@gmail.com>
+ <87se7nbr96.fsf@draig.linaro.org>
+ <6d3ab702-a931-4a48-81b4-d774b25095c1@collabora.com>
+Content-Language: en-US
+In-Reply-To: <6d3ab702-a931-4a48-81b4-d774b25095c1@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.112;
+ envelope-from=dmitry.osipenko@collabora.com; helo=sender4-pp-f112.zoho.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,25 +82,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 22 May 2026 at 23:03, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Based-on: 20260522182658.184604-1-richard.henderson@linaro.org
-> ("[PULL 00/30] fpu patch queue")
->
-> Changes for v7:
->   - Lots of patch feedback.
->   - Split "Implement hwcap bits for fp8 features" into the
->     various "Enable FEAT_FOO" patches so that we get 1 or 2
->     at a time; previously missed F8MM8 and F8MM4.
+On 5/19/26 17:30, Dmitry Osipenko wrote:
+> On 5/19/26 13:58, Alex Bennée wrote:
+>> Lucas Amaral <lucaaamaral@gmail.com> writes:
+>>
+>>> Set blob_alignment to the host page size so the guest kernel can
+>>> align blob BAR offsets accordingly, avoiding alignment mismatches
+>>> with the VMM's memory mapping API (e.g., hv_vm_map on macOS).
+>>>
+>>> Guest-side kernel support (drm_mm alignment) is pending upstream
+>>> Linux merge.
+>>>
+>>> Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
+>>> ---
+>>>  hw/display/virtio-gpu.c | 8 ++++++++
+>>>  1 file changed, 8 insertions(+)
+>>>
+>>> diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
+>>> index de7a86a7..44ae5034 100644
+>>> --- a/hw/display/virtio-gpu.c
+>>> +++ b/hw/display/virtio-gpu.c
+>>> @@ -1532,6 +1532,14 @@ void virtio_gpu_device_realize(DeviceState *qdev, Error **errp)
+>>>  #endif
+>>>      }
+>>>  
+>>> +    /*
+>>> +     * TODO: guest-side F_BLOB_ALIGNMENT support pending upstream Linux merge
+>>> +     * (Sergio Lopez's patches, Nov 2025). Until merged, the guest won't
+>>> +     * negotiate this feature. The host advertises it per OASIS virtio spec.
+>>> +     */
+>>> +    g->parent_obj.virtio_config.blob_alignment =
+>>> +        cpu_to_le32(qemu_real_host_page_size());
+>>> +
+>>
+>> Is it merged yet?
+> 
+> Not merged, I actually missed the v2 patches Sergio sent couple weeks
+> ago [1], thanks for bringing it up. In general, it's enough to have the
+> field defined in the virtio spec, there should be no need to wait for
+> the kernel patch to land.
+> 
+> [1]
+> https://lore.kernel.org/dri-devel/20260428194450.518296-1-slp@redhat.com/
 
-I'm going to continue to review the second half of this patchset,
-but for the moment I have taken patches 1-23 into target-arm.next,
-since they have been reviewed and the fpu prereqs are now upstream.
-(I've added the comment I suggested for patch 4.) That gets us
-FEAT_FAMINMAX and FEAT_FPMR enabled, and chops a third off
-the size of the series.
+Kernel patches landed to misc-next tree last week [1].
 
-thanks
--- PMM
+[1] https://gitlab.freedesktop.org/drm/misc/kernel/-/commits/drm-misc-next
+
+-- 
+Best regards,
+Dmitry
 

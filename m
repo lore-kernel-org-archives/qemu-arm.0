@@ -4,109 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB49CD5BD0
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 09:35:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E045ECD5BD2
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 09:51:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRoCG-00039V-FF; Tue, 26 May 2026 05:35:36 -0400
+	id 1wRoRR-00071f-B7; Tue, 26 May 2026 05:51:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wRoCF-00039E-KK
- for qemu-arm@nongnu.org; Tue, 26 May 2026 05:35:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wRoRP-00071R-UP; Tue, 26 May 2026 05:51:15 -0400
+Received: from mail-eastus2azlp170110003.outbound.protection.outlook.com
+ ([2a01:111:f403:c110::3] helo=BN8PR05CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wRoCE-0005ei-17
- for qemu-arm@nongnu.org; Tue, 26 May 2026 05:35:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779788133;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=CX6stQxWTq4DSc9tz0ICUvcs2EXqQQ/sJ+r7aB/Xf1I=;
- b=Dib2DPQjxKzg70vWh7hSlL3LI1RgUY2S8W0p3clNC+mtZA7QNAIivHGLorV8M/MxHh6slr
- OF5tCYlSm9Q9BPRPwIiQKGbfZQZZi/irgpRl+vUL9vQOdfA2At1LOPCWWYSidYuaeaSWDE
- UaW/OI7s0sIMxF+p3Lp8ZdbiwETtPXA=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-146-0M8bIsPWOq2vw1-Gjl_oPA-1; Tue, 26 May 2026 05:35:31 -0400
-X-MC-Unique: 0M8bIsPWOq2vw1-Gjl_oPA-1
-X-Mimecast-MFC-AGG-ID: 0M8bIsPWOq2vw1-Gjl_oPA_1779788131
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-49048bcbeb8so44731955e9.2
- for <qemu-arm@nongnu.org>; Tue, 26 May 2026 02:35:31 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779788130; x=1780392930;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CX6stQxWTq4DSc9tz0ICUvcs2EXqQQ/sJ+r7aB/Xf1I=;
- b=GSyHo5HMd6h4j6JdfXwYozMwsYfh8/MQk9WAhvNW/WnTY3kkCZxSLncJL1JG8ttqXC
- 4j8M3gxHwz4wDCRMLiLvx4OdYbEuUyyn049K3y39fG4yXFjHl/15rQCkcg1ZRQ33mOpz
- LZ/x+n/SfWjU5zFpmL7TMoPib4WtjIvth0edwYw/s970rtqtCulWFUwU5DSk+NnVzJsC
- /6WGclpBMXzq85+RiOYRR0W6Hwz7ERlwkpv/kF0+qVlPTx4Pbu/ayi+zm/OYl7sv6Tm1
- tgmqyXFEvGaSBF9FySbngr2HRF1o4KdHjAGxw0yZtAFDasTOtTJ7Snf+aY5QXEpoLA5W
- vTJw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ8yrGRgiIYv7NSCPgSCeljae4XeurUPA7xAU6QDkFEYbqa7Yry0qIpLuz7t45ukfFOyFkZKnqGjug==@nongnu.org
-X-Gm-Message-State: AOJu0YxQS785qw1ZakwAB2ipy6SiJ8fqWfGP1CsbZO2yYlnLz8ScI4C6
- 2gnJkdNTEDg87F3Np13u3HBPoYzHJ2ZJ2g09J0fuJ95jFHBwOuVRNQ4x3B4Mf8MpyfkQPtRXGsV
- vmWivE2Dkzj6sCjllsGgcoeBRWb7RmaIEI4fEKyTNiZAgt3kWqy5X6w==
-X-Gm-Gg: Acq92OFLUMdefSmpyEXStYu9EL6PXeAXNHekX0kgcmv4oJySnRoxdRMewHRY8571hUf
- lHXFhO6qKcfE9de2XDTzUdEuwp/fikV1SMhKmFQJOYjRqORkXJu1qkGd56OvK20jZKq3IVmdSmM
- E9GBNIypF/awUFsO+7W9N0VfCjpCSe8wmLXsw0bbCgO5AJJn80bXUbTgKjkMrxPvLFJZJPuPwG0
- U9bJQcGLKXOjA4iHdYpXLomIl6/as/bR3hdnHzKVHGEuj0GpNXcK7x+gE5x7xny+eIOiplo08/A
- oFYQJo29iDUDFxeSbtMuMSLOD9g+1P6F06gDg7wdNLJXjZjgwXQ5gk+6InnF0Pv+fabEiQLB01b
- Se67iKDGWPh/oddSVNAtHOIfo0Ej6lnZp8+kg1kFnKl1Cza2yljvpGJSpN9z4uEsvr8rOfQ==
-X-Received: by 2002:a05:600c:314e:b0:490:4ee0:82f9 with SMTP id
- 5b1f17b1804b1-4904ee08766mr249598875e9.7.1779788130456; 
- Tue, 26 May 2026 02:35:30 -0700 (PDT)
-X-Received: by 2002:a05:600c:314e:b0:490:4ee0:82f9 with SMTP id
- 5b1f17b1804b1-4904ee08766mr249598125e9.7.1779788129919; 
- Tue, 26 May 2026 02:35:29 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-490454a0cd5sm380605195e9.10.2026.05.26.02.35.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 May 2026 02:35:29 -0700 (PDT)
-Message-ID: <12bc6dd2-2ef0-453d-bd49-2776dbda63be@redhat.com>
-Date: Tue, 26 May 2026 11:35:27 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 27/32] hw/arm/tegra241-cmdqv: Limit queue size based on
- backend page size
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
- nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
- jgg@nvidia.com, zhenzhong.duan@intel.com, kjaju@nvidia.com,
- phrdina@redhat.com
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wRoRO-0006OU-8P; Tue, 26 May 2026 05:51:15 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ncwbqOyQXNd+50dtfki787p2NuiRjZblO0uq5KGenE+x3XNSjHh+VKCo9YC3f45uQzqrzAB4sckc/TtTSMseJZeoU2yRoWRuL1qgthmcKAUjSQVaxSW5QNO8KGBrPERNCqYJCp/qY2zeziFGFaAy734BvPBuvguAb47fmGQx+liMuKbujJiHQluQ24fT6Mryqoe7JPFIF3h+oguVyuahQIP5Art5HW29wAeSTGGiCAfK2greIiaNhSsGnYBH+8Wa+yvh7bjK0mqr3L5mimgGxd0pwqxMzOjkrsHK0wcNW7PSijqaqAw0C/o6kf+EHEU3hS8m0F3DPqLOxLn0Ne6t9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=kJTSK2QsN9kBAcTFxR1pkjoJzv5hSSFlSky7wO7vVI0=;
+ b=O07EY6Enq9u2oIXfRnjatBlGJJSZeDM4Q7DRV7iKnsY3/TAYBenG9biqgrI3vutZXAMUnA0KHdM0XrgSngKzdhgiCtTnTXyA3R+3ZWTD0FR3+luy5myQab53wVcrVui4O6ddK36oGqT2QfASffL0o20RYPkIQhYKqQdYpscRb9nxFdgHNzTl9LZ1Zb8K2an3JNFOcAVgbiD9EJZZLv5DPk9+q4G1FHcanhl9r0rkTChHjxstMBtUnzjEX6N+1y5Thao8HKctFcLpCBnuZzQhhmQlgB6Eo6HvrdmOLcDL5zfWZwzWhjgOaQ8XvazR4zDu6R9wxIs18YWi0Si1StR9aA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kJTSK2QsN9kBAcTFxR1pkjoJzv5hSSFlSky7wO7vVI0=;
+ b=p3fTDdYdU1KwmmVjghXhf5rejkcVWLhrkKQMY4/G+fKEAa9eVrOA1H8ddvwXE8oFXSMmqaYj+vLil1HtxWfrd3P6A+MHDfiR0e8TaOv6Efy5hSSaX/5EFpW3M0YemJ+Nl+Md5gBZ6/Uq/4fLTPpgGX9jEDLbzQiH7aYGMililkQddfD9EPLNHrJ2krPH7UPnu8csE0Xk6RIdnW8qbTqE8TXNWMoN4+EccHf1DPXDxfmGkQOVkME5TySf3Gz0vzNsM5frfEmpFKgcfMZvzZa9weO6shcyWORODZqH4nH9SVGcYhRp86eyynaM/xGOvzwOHzzn1lEGZWJrYCdHHzuClw==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by SJ2PR12MB8136.namprd12.prod.outlook.com (2603:10b6:a03:4f8::6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.48.20; Tue, 26 May
+ 2026 09:51:08 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%6]) with mapi id 15.21.0048.019; Tue, 26 May 2026
+ 09:51:08 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "clg@redhat.com"
+ <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>, Nicolin Chen
+ <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
+ <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, Jason Gunthorpe
+ <jgg@nvidia.com>, "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>, "phrdina@redhat.com"
+ <phrdina@redhat.com>
+Subject: RE: [PATCH v5 24/32] hw/arm/tegra241-cmdqv: Read and propagate
+ Tegra241 CMDQV errors
+Thread-Topic: [PATCH v5 24/32] hw/arm/tegra241-cmdqv: Read and propagate
+ Tegra241 CMDQV errors
+Thread-Index: AQHc53vh34xtIrfFZkqvqWXDIrWkL7YgA/CAgAAWCuA=
+Date: Tue, 26 May 2026 09:51:08 +0000
+Message-ID: <CH3PR12MB75483B20E508737D529F1214AB0B2@CH3PR12MB7548.namprd12.prod.outlook.com>
 References: <20260519103727.899332-1-skolothumtho@nvidia.com>
- <20260519103727.899332-28-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260519103727.899332-28-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: MT5JiaLmRxMEnqegd4cbfMBF8kzZfhSRZ6Mi_zfvC4c_1779788131
-X-Mimecast-Originator: redhat.com
+ <20260519103727.899332-25-skolothumtho@nvidia.com>
+ <8183d160-d588-4124-886d-a37dc4f92620@redhat.com>
+In-Reply-To: <8183d160-d588-4124-886d-a37dc4f92620@redhat.com>
+Accept-Language: en-US, en-GB
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|SJ2PR12MB8136:EE_
+x-ms-office365-filtering-correlation-id: 9d95d465-83ce-4ab2-d9a0-08debb0c4f7e
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|1800799024|366016|38070700021|6133799003|11063799006|4143699003|18002099003|22082099003|56012099003;
+x-microsoft-antispam-message-info: BDEiuJjagHpSJ0tP00TK7NZCwipFchLh6snNBAciJ2/qK/yRTdfrmQG4raFH5YQ2JZdc2vMrHwzBHOFnp4ia+onAeN/0rbFztklzpfrr43Rk/ASaGo7+D5QjIoniJhdo3l8bIw3aqOaqZthuHdVakmRTyxxlIbwINRfJYLxf2gy5HasLUUDujo7ExZ8OsLIJKjG2+HpuRcotEK/sUJ0gASxXklJTIz6rfpkNmNhzZ8gAlLJQbHa1VssfT4U+FqFsnRBCSl7HCIaYFiSHAnZ8nTpYJnvhoBYkRZzQV+RVOMFdvnt6SHNVqRNdM+szjMwcjEoOcAOGZe/lb5THndma7NWZWMwgnb26J3PgILCTm2H6yaTYlfcWBjzVoVnSjjwwWA4pPcjyQP3YfqTxynhlBirogbV0S9ubFN2YpFCLkjOMf5mILtQSbAfO05WdAg5K+tm5W3OddoAEksM4kXfzFXDgwfkPJ/7deqQonqEIeL9alktgN8CikjYgHEpJTutDPUfKHB4LFinvRFdypuqUMnI8o/ltNjZ2C74+ZmORTpCeT7ovQzokchUrGdAZqgBrHlg7qvL5O3xQf/Tzycj69k3zBbO7VAEAvtSG51kA1XmWlS4eS4tNkzrm8nrbwTWmFmuD1ErV29LWA0gZKQ1+dM/fRAA5x+ybyTJtytL807SioXLQF9YXAvUzpHj0TgCIfuhKSd6u2ALTkT38Wf7nqqGK0zSDMK6eJX+2ND90K4D6kheVqWZOoibZT6AQlHAV
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(366016)(38070700021)(6133799003)(11063799006)(4143699003)(18002099003)(22082099003)(56012099003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dUJmbW96VExTTDdzU1B6cllrdDlMMXBwOWpDNXI2aVpHbXk4Q1J4cTlGRHFI?=
+ =?utf-8?B?RnI4N1VocTAxcFMxRWh6UFM4cStkZFh5MFovTEpqRk5KcFM2SGxtWElwZkxU?=
+ =?utf-8?B?dVo0TndQTitWeEQ2OE9oemszRFdwMTkxd1N1S1lOMldZVk9wM2lYT29ZaWFl?=
+ =?utf-8?B?Q2RSdm5nVVhXWmE0bDIxNTV4b0hiYVJYMXBGeVlJUVdVVTAxb0lwYzFKSVVy?=
+ =?utf-8?B?OFBkNXRiRENnUkIrMXZtQkdVR3pJRUpSOHdjeGF3VC9BTEM1OFJ5dnU1M0RC?=
+ =?utf-8?B?dWg4RGloNjF2dSs5cUEvV3pwdFN2WmdiVEloaXRiMnQ1M2d6b2VsVUVibllS?=
+ =?utf-8?B?ZjMxRHo1MUJOU1J2a082Y3ZyQnhFZkk0SkFINE9BVWRlQUt5NW5XOGlhY1BW?=
+ =?utf-8?B?ekFDaWFyVWUrRVhWQkhPLys3WHhTVkFZcFFrWW9pSnVLbTVWd2I2T3NMcVow?=
+ =?utf-8?B?OGxCNFlSa2VkcytJYlY3OCtOTVliUnlzRzE2N1hVaXRoNFZCaEplQnFYNURN?=
+ =?utf-8?B?eDhjd2VXUFhIY2lXNFByQVVlVFNkekhNRGdWUWlQQjcwSHFRdllmcmd5WTAx?=
+ =?utf-8?B?MTgzeXdJL0hIUEZDUXpib3RYV0xkRklYa25pbUw4S2sxekYrV3BXRVdoR0ZP?=
+ =?utf-8?B?M1kzUnJSeVRxeXQwaWNETHVIVWlJQTFuUUNiZHQ4S1RCTnBCVlBwTDFZeXVr?=
+ =?utf-8?B?UklCNXVwaWZ6OGdRTnZDdDJqcjAyVm9pWXR0eEUwM095Q1FBRkNKZnhZY1N2?=
+ =?utf-8?B?Tnordjkxbkt4dlJiVGlVem5SR2VxbWp5Vlc5Rk9EUXE0dnBFT0dpb3J3MEJK?=
+ =?utf-8?B?bjRST2FUaExWR05ZdVBvWFlwUENMSGY4bDhwMEhhUzZVNHBmNGEvejhsQ1dZ?=
+ =?utf-8?B?YUlhQ1YzNkM0dTBRV0NBUmlrSkxITDJRVkxOL0kxeEZva29iK3psYW5ZSHl6?=
+ =?utf-8?B?TUlKS3RsNmV5bnY2eEZxUmxoa0xQcjZJeGFJSDhxVjUyaFVrWkg0eldRbXdS?=
+ =?utf-8?B?MGtEcHhnUmVXcklOTkNTSmdKcjR5bzhSTXZjZkVNN1FMcXJPMFRzRjc0bXhs?=
+ =?utf-8?B?WWpTRHJkczVnejJ3VTlmZjExNE16cGt4RHU5VzI4MzZIYnlTTG1pQWtySnRU?=
+ =?utf-8?B?bUFBTzA2Si96M3VlYWZqQVRqbkJmMmg0bDRKSTVwTHNxYm9MNjN6K3RpWXFG?=
+ =?utf-8?B?MkRVZFEzTnRlTHUyaVRBZFpBQVh3V1piSFQ2VGszbjQrR3p1UDEzYVU1NUt6?=
+ =?utf-8?B?SVhzL2tTUTQrMXBPVDBBYUVmL3NNemRHK0swYStXSmh1TDBXL3BxY1NlTXdh?=
+ =?utf-8?B?dFgxakFnZ3RHTG9Pb1A0eDdZUHhzM2ZRT1VuaGM5N2NDdVBGNGN3OGllQUhN?=
+ =?utf-8?B?TDlvY2FCNGVCcHRmK2RKVituQmw0VzJYSDdWVDkyUnljQkJDcWZldC9ucjVo?=
+ =?utf-8?B?dEZ4S0JONC9nWTZsMHZ0TGxyalhZOHdyalBldWFJS0NrL2RaaUtNYVJ0Q0U0?=
+ =?utf-8?B?Q1kyWEVFeVJEajJmMVoxTDV1UytrakpaaGpYWVJ3WTM0WFJOaHNmMWxTSEc3?=
+ =?utf-8?B?N3lmRVpDQ29Dd1lnNWRqeUtYb3h6ZVhuTGo0Y2FQUUhHZmxNeGZKMTVJVmdo?=
+ =?utf-8?B?aTFIMkF0TklCS0dpZWVMM0dXQlEyOHMrN0J5NHhtNjg3M0NZQm9HRUV3RmF4?=
+ =?utf-8?B?aWtheVN6bGZMSEFXdldic0JkVEZaR29YVDZrSVc0WEV2b3hTT2JML0ZWeHFQ?=
+ =?utf-8?B?ays4NE4ybG1DeC9jaTUxWVByTnRsbUptL08yT2tIUlJQYWVmd1BlUzhXaWho?=
+ =?utf-8?B?UitzckUxcG00SCs4Q3dLYzRsSWpzSGc2TC9UTFR2Qm5nbEdGRGJCZXNVc1d5?=
+ =?utf-8?B?VEtSZEtVTkdsVy9zdXlNMGNMWllEeFVYbVJrdytGM0VTTzF6bDA3dXhvSXZr?=
+ =?utf-8?B?QnFLd2ZmdzJOOGRXblNWbUdqeE9oV2lQeFM2ck5KOUJRQi9Lb2lQRGUrL3A1?=
+ =?utf-8?B?ak9hMWkrWnhoLzVOdTZoY05zdCs2QXJzb3FmeS80Q2c4RWVBL3JhWHRSSS9q?=
+ =?utf-8?B?SGY2WXpzblk1Rms0aE5PdVQxOGFUTTVtbnZpOTl1OG53NzlvUWdKZzFNMGh4?=
+ =?utf-8?B?d1d0NG04ejZEOWIzODJLa05FYUR3ZzNIeTh5TkVzZ2RZM0VhcXFpY242VlJ4?=
+ =?utf-8?B?SjM1VUFYYkZQSWxmLzlTeXdTQzNuMXprUmhEYWhRZXdkRGcrMkJGUG1Eb1hG?=
+ =?utf-8?B?UEE4VDUzT2VmMm8rOFBGNVA4SmJjOElhcVRZWTZaZVNNZ0dBTHlqT0hWSkN0?=
+ =?utf-8?B?U3YzZDB4U0c5Y1lBMUZPWXp5Z2doNUs4YzdaRGZBV1dtQWsyRG13QT09?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9d95d465-83ce-4ab2-d9a0-08debb0c4f7e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 May 2026 09:51:08.0654 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: yuGE3mDpRIlqu6Pah8BILgqmqyxK+S29Lecg4JI7yTpOyZq0Z+jWGmGY0QVrF9QJGbKCUdr0N5lwsnxIWWyCUw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR12MB8136
+Received-SPF: permerror client-ip=2a01:111:f403:c110::3;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=BN8PR05CU002.outbound.protection.outlook.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,85 +157,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
-
-On 5/19/26 12:37 PM, Shameer Kolothum wrote:
-> From: Nicolin Chen <nicolinc@nvidia.com>
->
-> CMDQV HW reads guest queue memory by its host physical address set
-> up via IOMMUFD. This requires the guest queue to be contiguous in
-> both guest PA and host PA space. With Tegra241 CMDQV enabled, we
-> must only advertise a command queue size (CMDQS) that the host can
-> safely back with physically contiguous memory. Allowing a queue size
-> larger than the host page size could cause the hardware to DMA across
-> page boundaries, leading to faults.
->
-> Use qemu_ram_backend_pagesize_min() to find the smallest memory-
-> backend page size in use, then cap IDR1.CMDQS so the guest cannot
-> configure a command queue that exceeds that contiguous backing.
->
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  hw/arm/tegra241-cmdqv.c | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
->
-> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
-> index ad64f06260..7f617bcc97 100644
-> --- a/hw/arm/tegra241-cmdqv.c
-> +++ b/hw/arm/tegra241-cmdqv.c
-> @@ -16,6 +16,8 @@
->  #include "hw/arm/smmuv3-common.h"
->  #include "hw/core/irq.h"
->  #include "smmuv3-accel.h"
-> +#include "smmuv3-internal.h"
-> +#include "system/ramblock.h"
->  #include "tegra241-cmdqv.h"
->  #include "trace.h"
->  
-> @@ -856,6 +858,8 @@ free_viommu:
->  static void tegra241_cmdqv_init_regs(SMMUv3State *s, Tegra241CMDQV *cmdqv)
->  {
->      int i;
-> +    size_t pgsize;
-> +    uint32_t val;
->  
->      cmdqv->config = V_CONFIG_RESET;
->      cmdqv->param = FIELD_DP32(0, PARAM, CMDQV_VER, CMDQV_VER);
-> @@ -887,6 +891,19 @@ static void tegra241_cmdqv_init_regs(SMMUv3State *s, Tegra241CMDQV *cmdqv)
->          cmdqv->vcmdq_base[i] = 0;
->          cmdqv->vcmdq_cons_indx_base[i] = 0;
->      }
-> +
-> +    /*
-> +     * CMDQ must not cross a physical RAM backend page. Adjust CMDQS so the
-> +     * queue fits entirely within the smallest backend page size, ensuring
-> +     * the command queue is physically contiguous in host memory.
-> +     *
-> +     *   IDR1.CMDQS = log2(max_qsz) - entry_shift
-> +     *
-> +     * where entry_shift = 4 (each CMDQ entry is 16 bytes = 2^4).
-> +     */
-> +    pgsize = qemu_ram_backend_pagesize_min();
-OK I see this is done at init size before we know the GPA. But I meant
-you may end up with a page size that is suboptimal, no?
-
-Could you elaborate on the actual requirements with regards to huge page
-usage in this patch and in the cover letter?
-
-Thanks
-
-Eric
-
-
-> +    val = FIELD_EX32(s->idr[1], IDR1, CMDQS);
-> +    s->idr[1] = FIELD_DP32(s->idr[1], IDR1, CMDQS, MIN(ctz64(pgsize) - 4, val));
->  }
->  
->  static void tegra241_cmdqv_reset(SMMUv3State *s)
-
+SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBFcmljIEF1
+Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+IFNlbnQ6IDI2IE1heSAyMDI2IDA5OjI3DQo+
+IFRvOiBTaGFtZWVyIEtvbG90aHVtIFRob2RpIDxza29sb3RodW10aG9AbnZpZGlhLmNvbT47IHFl
+bXUtDQo+IGFybUBub25nbnUub3JnOyBxZW11LWRldmVsQG5vbmdudS5vcmcNCj4gQ2M6IHBldGVy
+Lm1heWRlbGxAbGluYXJvLm9yZzsgY2xnQHJlZGhhdC5jb207IGFsZXhAc2hhemJvdC5vcmc7IE5p
+Y29saW4NCj4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNvbT47IE5hdGhhbiBDaGVuIDxuYXRoYW5j
+QG52aWRpYS5jb20+OyBNYXR0DQo+IE9jaHMgPG1vY2hzQG52aWRpYS5jb20+OyBKaWFuZGkgQW4g
+PGphbkBudmlkaWEuY29tPjsgSmFzb24gR3VudGhvcnBlDQo+IDxqZ2dAbnZpZGlhLmNvbT47IHpo
+ZW56aG9uZy5kdWFuQGludGVsLmNvbTsgS3Jpc2huYWthbnQgSmFqdQ0KPiA8a2phanVAbnZpZGlh
+LmNvbT47IHBocmRpbmFAcmVkaGF0LmNvbQ0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHY1IDI0LzMy
+XSBody9hcm0vdGVncmEyNDEtY21kcXY6IFJlYWQgYW5kIHByb3BhZ2F0ZQ0KPiBUZWdyYTI0MSBD
+TURRViBlcnJvcnMNCj4gDQo+IEV4dGVybmFsIGVtYWlsOiBVc2UgY2F1dGlvbiBvcGVuaW5nIGxp
+bmtzIG9yIGF0dGFjaG1lbnRzDQo+IA0KPiANCj4gSGkgU2hhbWVlciwNCj4gDQo+IE9uIDUvMTkv
+MjYgMTI6MzcgUE0sIFNoYW1lZXIgS29sb3RodW0gd3JvdGU6DQo+ID4gSW5zdGFsbCBhbiBldmVu
+dCBoYW5kbGVyIG9uIHRoZSBDTURRViB2RVZFTlRRIGZkIHRvIHJlYWQgYW5kIHByb3BhZ2F0ZQ0K
+PiA+IGhvc3QgcmVjZWl2ZWQgQ01EUVYgZXJyb3JzIHRvIHRoZSBndWVzdC4NCj4gPg0KPiA+IFRo
+ZSBoYW5kbGVyIHJ1bnMgaW4gUUVNVSdzIG1haW4gbG9vcCwgdXNpbmcgYSBub24tYmxvY2tpbmcg
+ZmQgcmVnaXN0ZXJlZA0KPiA+IHZpYSBxZW11X3NldF9mZF9oYW5kbGVyKCkuDQo+ID4NCj4gPiBS
+ZXZpZXdlZC1ieTogTmljb2xpbiBDaGVuIDxuaWNvbGluY0BudmlkaWEuY29tPg0KPiA+IFNpZ25l
+ZC1vZmYtYnk6IFNoYW1lZXIgS29sb3RodW0gPHNrb2xvdGh1bXRob0BudmlkaWEuY29tPg0KPiA+
+IC0tLQ0KPiA+ICBody9hcm0vdGVncmEyNDEtY21kcXYuYyB8IDYwDQo+ICsrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrDQo+ID4gIGh3L2FybS90cmFjZS1ldmVudHMgICAg
+IHwgIDEgKw0KPiA+ICAyIGZpbGVzIGNoYW5nZWQsIDYxIGluc2VydGlvbnMoKykNCj4gPg0KPiA+
+IGRpZmYgLS1naXQgYS9ody9hcm0vdGVncmEyNDEtY21kcXYuYyBiL2h3L2FybS90ZWdyYTI0MS1j
+bWRxdi5jDQo+ID4gaW5kZXggODUzYzU0OGU1OC4uMGJiYTJjMTgwMSAxMDA2NDQNCj4gPiAtLS0g
+YS9ody9hcm0vdGVncmEyNDEtY21kcXYuYw0KPiA+ICsrKyBiL2h3L2FybS90ZWdyYTI0MS1jbWRx
+di5jDQo+ID4gQEAgLTE0LDYgKzE0LDcgQEANCj4gPg0KPiA+ICAjaW5jbHVkZSAiaHcvYXJtL3Nt
+bXV2My5oIg0KPiA+ICAjaW5jbHVkZSAiaHcvYXJtL3NtbXV2My1jb21tb24uaCINCj4gPiArI2lu
+Y2x1ZGUgImh3L2NvcmUvaXJxLmgiDQo+ID4gICNpbmNsdWRlICJzbW11djMtYWNjZWwuaCINCj4g
+PiAgI2luY2x1ZGUgInRlZ3JhMjQxLWNtZHF2LmgiDQo+ID4gICNpbmNsdWRlICJ0cmFjZS5oIg0K
+PiA+IEBAIC03MzYsNiArNzM3LDQ4IEBAIG91dDoNCj4gPiAgICAgIHRyYWNlX3RlZ3JhMjQxX2Nt
+ZHF2X3dyaXRlX21taW8ob2Zmc2V0LCB2YWx1ZSwgc2l6ZSk7DQo+ID4gIH0NCj4gPg0KPiA+ICtz
+dGF0aWMgdm9pZCB0ZWdyYTI0MV9jbWRxdl9ldmVudF9yZWFkKHZvaWQgKm9wYXF1ZSkNCj4gPiAr
+ew0KPiA+ICsgICAgVGVncmEyNDFDTURRViAqY21kcXYgPSBvcGFxdWU7DQo+ID4gKyAgICBJT01N
+VUZEVmV2ZW50cSAqdmV2ZW50cSA9IGNtZHF2LT52ZXZlbnRxOw0KPiA+ICsgICAgc3RydWN0IHsN
+Cj4gPiArICAgICAgICBzdHJ1Y3QgaW9tbXVmZF92ZXZlbnRfaGVhZGVyIGhkcjsNCj4gPiArICAg
+ICAgICBzdHJ1Y3QgaW9tbXVfdmV2ZW50X3RlZ3JhMjQxX2NtZHF2IHZldmVudDsNCj4gPiArICAg
+IH0gYnVmOw0KPiA+ICsgICAgRXJyb3IgKmxvY2FsX2VyciA9IE5VTEw7DQo+ID4gKw0KPiA+ICsg
+ICAgaWYgKCFzbW11djNfYWNjZWxfZXZlbnRfcmVhZF92YWxpZGF0ZSh2ZXZlbnRxLA0KPiA+ICsg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBJT01NVV9WRVZFTlRRX1RZ
+UEVfVEVHUkEyNDFfQ01EUVYsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICZidWYsIHNpemVvZihidWYpLCAmbG9jYWxfZXJyKSkgew0KPiA+ICsgICAgICAg
+IHdhcm5fcmVwb3J0X2Vycl9vbmNlKGxvY2FsX2Vycik7DQo+ID4gKyAgICAgICAgcmV0dXJuOw0K
+PiA+ICsgICAgfQ0KPiA+ICsNCj4gPiArICAgIGlmIChidWYudmV2ZW50Lmx2Y21kcV9lcnJfbWFw
+WzBdIHx8IGJ1Zi52ZXZlbnQubHZjbWRxX2Vycl9tYXBbMV0pIHsNCj4gPiArICAgICAgICBjbWRx
+di0+dmludGZfY21kcV9lcnJfbWFwWzBdID0NCj4gPiArICAgICAgICAgICAgZXh0cmFjdDY0KGJ1
+Zi52ZXZlbnQubHZjbWRxX2Vycl9tYXBbMF0sIDAsIDMyKTsNCj4gPiArICAgICAgICBjbWRxdi0+
+dmludGZfY21kcV9lcnJfbWFwWzFdID0NCj4gPiArICAgICAgICAgICAgZXh0cmFjdDY0KGJ1Zi52
+ZXZlbnQubHZjbWRxX2Vycl9tYXBbMF0sIDMyLCAzMik7DQo+ID4gKyAgICAgICAgY21kcXYtPnZp
+bnRmX2NtZHFfZXJyX21hcFsyXSA9DQo+ID4gKyAgICAgICAgICAgIGV4dHJhY3Q2NChidWYudmV2
+ZW50Lmx2Y21kcV9lcnJfbWFwWzFdLCAwLCAzMik7DQo+ID4gKyAgICAgICAgY21kcXYtPnZpbnRm
+X2NtZHFfZXJyX21hcFszXSA9DQo+ID4gKyAgICAgICAgICAgIGV4dHJhY3Q2NChidWYudmV2ZW50
+Lmx2Y21kcV9lcnJfbWFwWzFdLCAzMiwgMzIpOw0KPiA+ICsgICAgICAgIC8qDQo+ID4gKyAgICAg
+ICAgICogQ01EUVZfQ01EUV9FUlJfTUFQIGFuZCBWSU5URjBfTFZDTURRX0VSUl9NQVAgYXJlDQo+
+IGRpc3RpbmN0DQo+ID4gKyAgICAgICAgICogcmVnaXN0ZXJzIChkaWZmZXJlbnQgTU1JTyBvZmZz
+ZXRzKS4gV2l0aCBvbmx5IFZJTlRGMCBleHBvc2VkDQo+ID4gKyAgICAgICAgICogdGhleSBjYXJy
+eSB0aGUgc2FtZSBkYXRhLCBzbyBtaXJyb3IuDQo+ID4gKyAgICAgICAgICovDQo+ID4gKyAgICAg
+ICAgZm9yIChpbnQgaSA9IDA7IGkgPCA0OyBpKyspIHsNCj4gPiArICAgICAgICAgICAgY21kcXYt
+PmNtZHFfZXJyX21hcFtpXSA9IGNtZHF2LT52aW50Zl9jbWRxX2Vycl9tYXBbaV07DQo+ID4gKyAg
+ICAgICAgfQ0KPiA+ICsgICAgICAgIGNtZHF2LT52aV9lcnJfbWFwWzBdIHw9IDB4MTsNCj4gPiAr
+ICAgICAgICBxZW11X2lycV9wdWxzZShjbWRxdi0+aXJxKTsNCj4gSSBkb24ndCBzZWUgU01NVV9D
+TURRVl9WSV9FUlJfTUFQXzAgdXBkYXRlZCBhbnl3aGVyZS4gSWYgSQ0KPiB1bmRlcnN0YW5kDQo+
+IGNvcnJlY3RseSwgaWYgeW91IGdldCBhbiBlcnJvciBvbiBhbnkgVkNNRFEgeW91IHNob3VsZCB1
+cGRhdGUgaXQuDQoNClRoaXMgb25lIGFib3ZlIGRvZXMgdGhhdDoNCmNtZHF2LT52aV9lcnJfbWFw
+WzBdIHw9IDB4MTsgaXQgc2V0cyBiaXQgMCwgd2hpY2ggaXMgdGhlDQplcnJvciBiaXQgZm9yIFZJ
+TlRGMCAodGhlIG9ubHkgVklOVEYgUUVNVSBleHBvc2VzKS4NCg0KSSB3aWxsIGFkZCBhIGNvbW1l
+bnQgdG8gbWFrZSBpdCBjbGVhci4NCg0KIEFsc28NCj4gdGhlIHRyaWdnZXJpbmcgb2YgdGhlIGly
+cSBzaG91bGQgZGVwbmQgb24gU01NVV9DTURRX1ZJX0lOVF9NQVNLMCwgbm8/DQoNClJpZ2h0LiB3
+aWxsIGFkZDoNCg0KaWYgKCEoY21kcXYtPnZpX2ludF9tYXNrWzBdICYgQklUKDApKSkgew0KICAg
+ICAgICBxZW11X2lycV9wdWxzZShjbWRxdi0+aXJxKTsNCiAgICB9DQoNClRoYW5rcywNClNoYW1l
+ZXINCg0K
 

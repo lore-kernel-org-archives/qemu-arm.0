@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E418CD5BB4
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 08:27:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F505CD5BC8
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 08:27:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRn12-0005e7-Rf; Tue, 26 May 2026 04:19:57 -0400
+	id 1wRn1W-0006Oa-P6; Tue, 26 May 2026 04:20:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0w-0005YG-3s
- for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:50 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn18-0005kb-Px
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 04:20:02 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0u-0007zc-1w
- for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:49 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn16-00086r-Ee
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 04:20:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779783587;
+ s=mimecast20190719; t=1779783599;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=fCgznlD0h4aDrCL60FtGy8ty0eINfhTz603sGwzZIJc=;
- b=Aje6dCec/YPZGtsSZEIw0Ju6AJzDkp8cL5PqQgTjh4yL3P8LkWlGotiAPJ+kTb9KgkfLWa
- +QOefuAi32oatNQDp3cgdNIqqPeIR53OhALwJ+eQJa6EGTC3HUmevv2l8bfoB7tb7auz43
- JVTuMkVN48Cbo/RX0Fq9GN5NQsOplkQ=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=CNR+v2xJbWUIaPMe4qgACVmR6FI8fj3yQqtNT+oBfbg=;
+ b=jSrVLsM6NFhyBNmhb7VBAmAmOG4QfmXPDljIICatnVoT6Y54iIUhJwc2GRc4qjw5M2wAOz
+ o3QapetpgxD2LdUxab1QbUzNXw51ZHuNwBgrvtLkPb6xhw6sXxCuaCRhY23IaS719Na+wd
+ DAMj+3rVxH3wg0VGso5PwAGH3eBeRfw=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-653-GSV4cJANMpefHJTkI8bM9w-1; Tue,
- 26 May 2026 04:19:44 -0400
-X-MC-Unique: GSV4cJANMpefHJTkI8bM9w-1
-X-Mimecast-MFC-AGG-ID: GSV4cJANMpefHJTkI8bM9w_1779783583
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-59-G8bw92EVM86X2fS9LJvmQA-1; Tue,
+ 26 May 2026 04:19:55 -0400
+X-MC-Unique: G8bw92EVM86X2fS9LJvmQA-1
+X-Mimecast-MFC-AGG-ID: G8bw92EVM86X2fS9LJvmQA_1779783594
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6865F18005B3; Tue, 26 May 2026 08:19:43 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8489F1956058; Tue, 26 May 2026 08:19:54 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.30])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id AA76B180075B; Tue, 26 May 2026 08:19:41 +0000 (UTC)
+ id AF679180056E; Tue, 26 May 2026 08:19:52 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Kane Chen <kane_chen@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 24/37] hw/pci-host/aspeed_pcie: convert to use Resettable
- interface
-Date: Tue, 26 May 2026 10:18:35 +0200
-Message-ID: <20260526081848.651835-25-clg@redhat.com>
+Subject: [PULL 29/37] hw/intc/aspeed_vic: convert to use Resettable interface
+Date: Tue, 26 May 2026 10:18:40 +0200
+Message-ID: <20260526081848.651835-30-clg@redhat.com>
 In-Reply-To: <20260526081848.651835-1-clg@redhat.com>
 References: <20260526081848.651835-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: XJeI-FGaYmasCgJFh5e6NCd0V0RFJAk1t_kFt4ByKB0_1779783583
+X-Mimecast-MFC-PROC-ID: H-hjVRwKArWZ7zNVI76Aovnl2cicgwRQHnO0GWia6PA_1779783594
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,94 +93,38 @@ device_class_set_legacy_reset() with the Resettable interface.
 
 Signed-off-by: Kane Chen <kane_chen@aspeedtech.com>
 Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Link: https://lore.kernel.org/qemu-devel/20260525044129.3133916-11-kane_chen@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260525044129.3133916-16-kane_chen@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/pci-host/aspeed_pcie.c | 21 ++++++++++++---------
- 1 file changed, 12 insertions(+), 9 deletions(-)
+ hw/intc/aspeed_vic.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
-index c150496f7b9c..186e5aeea298 100644
---- a/hw/pci-host/aspeed_pcie.c
-+++ b/hw/pci-host/aspeed_pcie.c
-@@ -613,9 +613,9 @@ static void aspeed_pcie_cfg_instance_init(Object *obj)
-     return;
- }
- 
--static void aspeed_pcie_cfg_reset(DeviceState *dev)
-+static void aspeed_pcie_cfg_reset_hold(Object *obj, ResetType type)
- {
--    AspeedPCIECfgState *s = ASPEED_PCIE_CFG(dev);
-+    AspeedPCIECfgState *s = ASPEED_PCIE_CFG(obj);
-     AspeedPCIECfgClass *apc = ASPEED_PCIE_CFG_GET_CLASS(s);
- 
-     memset(s->regs, 0, apc->nr_regs << 2);
-@@ -663,12 +663,13 @@ static const Property aspeed_pcie_cfg_props[] = {
- static void aspeed_pcie_cfg_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-     AspeedPCIECfgClass *apc = ASPEED_PCIE_CFG_CLASS(klass);
- 
-     dc->desc = "ASPEED PCIe Config";
-     dc->realize = aspeed_pcie_cfg_realize;
-     dc->unrealize = aspeed_pcie_cfg_unrealize;
--    device_class_set_legacy_reset(dc, aspeed_pcie_cfg_reset);
-+    rc->phases.hold = aspeed_pcie_cfg_reset_hold;
-     device_class_set_props(dc, aspeed_pcie_cfg_props);
- 
-     apc->reg_ops = &aspeed_pcie_cfg_ops;
-@@ -870,9 +871,9 @@ static const MemoryRegionOps aspeed_pcie_phy_ops = {
-     },
+diff --git a/hw/intc/aspeed_vic.c b/hw/intc/aspeed_vic.c
+index b0a9a3970552..13d8423d835a 100644
+--- a/hw/intc/aspeed_vic.c
++++ b/hw/intc/aspeed_vic.c
+@@ -291,9 +291,9 @@ static const MemoryRegionOps aspeed_vic_ops = {
+     .valid.unaligned = false,
  };
  
--static void aspeed_pcie_phy_reset(DeviceState *dev)
-+static void aspeed_pcie_phy_reset_hold(Object *obj, ResetType type)
+-static void aspeed_vic_reset(DeviceState *dev)
++static void aspeed_vic_reset_hold(Object *obj, ResetType type)
  {
--    AspeedPCIEPhyState *s = ASPEED_PCIE_PHY(dev);
-+    AspeedPCIEPhyState *s = ASPEED_PCIE_PHY(obj);
-     AspeedPCIEPhyClass *apc = ASPEED_PCIE_PHY_GET_CLASS(s);
+-    AspeedVICState *s = ASPEED_VIC(dev);
++    AspeedVICState *s = ASPEED_VIC(obj);
  
-     memset(s->regs, 0, apc->nr_regs << 2);
-@@ -913,12 +914,13 @@ static const Property aspeed_pcie_phy_props[] = {
- static void aspeed_pcie_phy_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-     AspeedPCIEPhyClass *apc = ASPEED_PCIE_PHY_CLASS(klass);
- 
-     dc->desc = "ASPEED PCIe Phy";
-     dc->realize = aspeed_pcie_phy_realize;
-     dc->unrealize = aspeed_pcie_phy_unrealize;
--    device_class_set_legacy_reset(dc, aspeed_pcie_phy_reset);
-+    rc->phases.hold = aspeed_pcie_phy_reset_hold;
-     device_class_set_props(dc, aspeed_pcie_phy_props);
- 
-     apc->nr_regs = 0x100 >> 2;
-@@ -932,9 +934,9 @@ static const TypeInfo aspeed_pcie_phy_info = {
-     .class_size = sizeof(AspeedPCIEPhyClass),
- };
- 
--static void aspeed_2700_pcie_phy_reset(DeviceState *dev)
-+static void aspeed_2700_pcie_phy_reset_hold(Object *obj, ResetType type)
- {
--    AspeedPCIEPhyState *s = ASPEED_PCIE_PHY(dev);
-+    AspeedPCIEPhyState *s = ASPEED_PCIE_PHY(obj);
-     AspeedPCIEPhyClass *apc = ASPEED_PCIE_PHY_GET_CLASS(s);
- 
-     memset(s->regs, 0, apc->nr_regs << 2);
-@@ -950,10 +952,11 @@ static void aspeed_2700_pcie_phy_class_init(ObjectClass *klass,
-                                             const void *data)
+     s->level = 0;
+     s->raw = 0;
+@@ -342,8 +342,9 @@ static const VMStateDescription vmstate_aspeed_vic = {
+ static void aspeed_vic_class_init(ObjectClass *klass, const void *data)
  {
      DeviceClass *dc = DEVICE_CLASS(klass);
 +    ResettableClass *rc = RESETTABLE_CLASS(klass);
-     AspeedPCIEPhyClass *apc = ASPEED_PCIE_PHY_CLASS(klass);
- 
-     dc->desc = "ASPEED AST2700 PCIe Phy";
--    device_class_set_legacy_reset(dc, aspeed_2700_pcie_phy_reset);
-+    rc->phases.hold = aspeed_2700_pcie_phy_reset_hold;
- 
-     apc->nr_regs = 0x800 >> 2;
+     dc->realize = aspeed_vic_realize;
+-    device_class_set_legacy_reset(dc, aspeed_vic_reset);
++    rc->phases.hold = aspeed_vic_reset_hold;
+     dc->desc = "ASPEED Interrupt Controller (New)";
+     dc->vmsd = &vmstate_aspeed_vic;
  }
 -- 
 2.54.0

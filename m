@@ -4,96 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D246CD5BC8
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 10:35:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80697CD5BC8
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 10:43:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRp8E-0003t5-3z; Tue, 26 May 2026 06:35:30 -0400
+	id 1wRpFg-00063S-3y; Tue, 26 May 2026 06:43:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wRp8C-0003sU-8O
- for qemu-arm@nongnu.org; Tue, 26 May 2026 06:35:28 -0400
-Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
+ id 1wRpFe-00062x-UJ
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 06:43:10 -0400
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wRp8A-0004mJ-Ih
- for qemu-arm@nongnu.org; Tue, 26 May 2026 06:35:27 -0400
-Received: by mail-yx1-xb132.google.com with SMTP id
- 956f58d0204a3-65eb1b25c77so5001855d50.0
- for <qemu-arm@nongnu.org>; Tue, 26 May 2026 03:35:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779791725; cv=none;
+ id 1wRpFa-0003ZU-FE
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 06:43:08 -0400
+Received: by mail-yx1-xb12e.google.com with SMTP id
+ 956f58d0204a3-65c52bb5dd7so9927185d50.2
+ for <qemu-arm@nongnu.org>; Tue, 26 May 2026 03:42:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779792177; cv=none;
  d=google.com; s=arc-20240605;
- b=eNP861qdLtYHwsScIGlrodmv+PRp1iUlVSUQE1vfOXwOkwJxhQ7P3IWcySnKurZBRX
- QasOSHHF8ffuN/RCWuKS7zbvOZJKtAq/vA0ah1xb8x6Cvz0ekeepctf64ujZG2tb0869
- WNKDEXeBAzGuRL30cfd79e/ne8ZaTKS0oxrXzFoeEcgvU9fJKANStFAStPcRNhEyb3tz
- XTeNxylOv+XdvpVFJ11dOGrc/ikh+CE9EZnk9D6vyeyqz2ioe3L/xBNNCnZnDJ0TXQ/N
- Hfpsjqgo9RTb6UsoX3xB114+91s0RD7eAZpDs3LU1F0mrsz7+0RgL61+VDlA0EvIe1/g
- Ou4A==
+ b=k9l7NkfY9xzs5Nunsgscqi/HkBsrPYS07FuJI4AlUqHHgvXKjZOCPou650ddPzR7w2
+ O6yF1maFkfz7eAwJY5FV/LoMxKvKYyvn6iMM3g1M/jrjFY0qQDqbOJM8SUrZd0n9tJYz
+ EHu74K71Qd6DQ5EJQTJC1K9EfzYsZu8uQW+iSALbAAh6IkAmYCPcZRB1IPj+/n8TP9Lq
+ FsWu6gZ//B2hU2QEPiyyYNk7RqNUuO2+XRqDLxiNc5/9NSa2McSVW8h4xp0QEDooQMx4
+ iSlUp4Mu/U7Md3L2YVqzkYtU2PteE04yKrxVuTnpE7ZrvTBpWGi7ZCBNS1mqJfJYrk0U
+ dzEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=8FBtHS86zxEDYAxC8eP7pfGIMxW6VLBRn2QKCrqcg70=;
- fh=twrFuSwJwbhnQZZAtMcxsAw3NtCIW7TLgNHuLjMSM2g=;
- b=aAw1AXkR+uYjbiXbYQwOLawPNAlLPK0zNyVrWXnPM4WDaPWQiEsLmnFbudWyOja6Pe
- 08FIAoXIDK220ZscDITbnGEuHsnNojrHjsvvgLSLn+SLX8kyVDQjMGhYFgmIa3ojCHUV
- n7A6v5TDstGIoulDVOfDZ7QP3/KYePprjvqpnLNB8rUGO9UVEO2ogdODE7p1VrBBBohe
- 6IWANHWGlrS+GOk0Ro7yaxrAQdKBcXDQki9H1p48tl9VEf3VWDVAfZHwtyfJBkDh95Gz
- fOuFkBXwp9zTyGFFjLXbL7Ez2EeG0SZPe+6wLPV1nh2XS6GwNwOGDIoLrJ5gU/iZ8Tnr
- /6Gg==; darn=nongnu.org
+ bh=M/UjtwWeJn3BV8j/cB5oDZf5o8Psj2+8LhjOEwpeKPE=;
+ fh=nhfmkjb6jgCjUVKWyD+kLli06m3KyF48Y019mCNlvPw=;
+ b=CGZrRsxfHHhHGVbxz/SDDYyFEBMRQOXYZgq5uY48tCI+O5ibu/yZoTfHb/yCb8v3ar
+ tRzAlYMSUb3z5dlaY1ItBjffsDQpbDFLH6pTAhmWlHf2QBCBMex5vrfJ5FHSLFp7/VUl
+ tPdLaWWZKsMGBjpFK1cHe69MfPnn+HThM63k+OnCWzq3F50zTb0Zfs17hzQ5JbDUgzrk
+ bzPML6zKXgTJZYuyeKayB2RVwPXcMkBnnSHANLR6Xp0OOqZkbh27+yybe6M8aAFHroBl
+ pzgW6aGyx6GkTZ4px0cfzfpnCvr8zh5uZL1HEmbsOlmlN8W3GPhMVf6nopw2rXv8/Ha5
+ orpw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779791725; x=1780396525; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779792177; x=1780396977; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=8FBtHS86zxEDYAxC8eP7pfGIMxW6VLBRn2QKCrqcg70=;
- b=pvNOQvPYGJx7CylZz6N3v0gnzQm+DTI5ufzKmTvMrwj3wPtrYO788RXM/IIKCaVd4H
- qKsuDG3Znyh7kyBZAOgYa8zVjXjJA1p4AhplSC7BvKBJddfh2L7N3wm76Q4iJUjVmsaU
- q+6tTWNDwSEcBcSUftgVE5nzh+h/lUtXq+pYq/DZlW4QctRhGNNRe8Q5/hWuy2xJvQ/8
- F3FpsBxp82TigKWaBY0IG00GC+f8L24xEzui2pB7ubYrKRs0mHDyYqsMArGgDMq+Umk+
- 6x+GwAePecirdjYmda8KU1i/6AjHNDmeEbYKf3PszVtiobBaBgcRstBFVrr/c8NVWEyW
- AQOg==
+ bh=M/UjtwWeJn3BV8j/cB5oDZf5o8Psj2+8LhjOEwpeKPE=;
+ b=XsEy1gC26etHDgynCrOotamUoSVKcRoS3qiDQCKF3ypaNfvPOjVGGHAkB7KSDSS8fP
+ zcGzAcQMS+s5u+JUYBihsywhXR7jCHzqSQIubZg0mGwXE3114bawo55PuLnXi5YXazHq
+ hR4zob2/r0d35Hzh3+z7B5huzN/zK5TnpuVCRiWcbc9xw7hhOI48JGXMQEJgmLQiQC0w
+ 3F7seCjg02mvDQowfqnp7/9944DT+0n3sAximjFy/gGl80zEodpZ3U6Gu+WKPaS2RtWp
+ BwzXsu0sKrH3wPVD+mW4UMNiKtMS49beCMKvptm346lF15umsX5yI7Y/NzorlxnCnB96
+ 9CLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779791725; x=1780396525;
+ d=1e100.net; s=20251104; t=1779792177; x=1780396977;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8FBtHS86zxEDYAxC8eP7pfGIMxW6VLBRn2QKCrqcg70=;
- b=e06RGZVkZf3kKhSN1P8T9TnXKNy5U4tTQH7EQtw1hrBpwK+eb6VWGK07WP5FhJVxK7
- ZoPzoQTSC4j765iduTsA2TYKYIllT0B7WclG49aGB8u0Cn9uB9J3OhNhXyWZi+z7d0Mx
- 3EdOfHSv5vv1rDEDm60WqC41dKLRrFcfiaFDhdwjr+liXzfgLaW0lEGo02lgKQkcbijZ
- Rkclvev4AMa0phoLyRX8i6he+iDkRZB31LE3XceR4Ijo85UN6E4yFac/oumcxPA7sFfT
- +K4CH4iC8UiPBStIi+HwOSEMN1bn3TVncStdKVLj5W3zaE5OUQWzu/X+yK4bnoKi57qi
- JaWg==
+ bh=M/UjtwWeJn3BV8j/cB5oDZf5o8Psj2+8LhjOEwpeKPE=;
+ b=FLloCmtTO4JfnHQu/Es9z+MWdBiIUBqeJO9UfpxKTegVrBmwwhrEra24z2YF0ByDkH
+ aejfNc8ZfTkzCHJUUuDGIppU3P2nbQuyBUQ1KKk9q7m97Ghw3Qg/DoTs2hrGBV+1mkXV
+ d5Mx32yPsm2htFTX7H9zftJVtZ1TCKhzt2OBhafaCYPXjDnQErtC9aVa18H68+axpyht
+ +hbrUR5fTO4TzpC69sBc3N+HtQ43iQKj4nflw1MHoQ2rqetg+l6ig6p1/71k2mcyEGM4
+ A6YQhYUOUlSHsFnmnGdnB+7cP7+lblvKXbvk0EpZoKE08ieMwAw3TcF34/kIlqeZP5mm
+ d5Ng==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/Jr+PiOgjdO0AkLsl8jZu62YE0Cs+61y09irvkoyGQ9IB4irIFYo3YdiMg0zTlmxdOpnlkh5SaPg==@nongnu.org
-X-Gm-Message-State: AOJu0YwjAPMK30qs35HdfaKLsELg7iWn1jLGIFjkolbtQO8y7TcSanY8
- vRdRwh30UnfOkkjgkEnjCI5jML5gdIDmh7AxecbaQFC8YulwGlM3zUS2lcROL32dLiVT/eJPL/L
- e7mSMUcwuHoJ2Q6vx5dF/BlhvuTWuuA5pVVAeW/AlPw==
-X-Gm-Gg: Acq92OF1h6l+IddNnnxni765oAEcmCbqbNKtho8RSqXtb322L/eURp7xQfJ/c/VDGhU
- c0QLSUkUqJUvISA0jMl9gKI30qPIERz3Z9Kb4NIHoPWuLJ4ZSs4TXceqLo/QngjM1wh9GCpDPI3
- RB+O62GlrhKLq/dlt2k5aIsX97a7ie8AKosup58wQJ6CfTQfQCykVSyKj0rthdCohXxfKxOU2B7
- BiYYJGOjn1nOfJWdTaA8tpeWBTCljeGD+fLB8BJb/rxxyaj2YCFvMdnMA0teZny9c4zjt2dxaT3
- h8slZZyzmC95QUh9PxGTyVpuVG7s4/JThByjhyWdrrtzV889bpJXRKKbnwxmqF2hHZQ=
-X-Received: by 2002:a05:690e:4813:b0:650:dbb:e79c with SMTP id
- 956f58d0204a3-65ec98aa45bmr13146437d50.40.1779791724868; Tue, 26 May 2026
- 03:35:24 -0700 (PDT)
+ AFNElJ8Ox8UHKxGetS7Wp8VF9V2JjvNfQaU0ByVuUK8KOy+m2b89ErMwQYImoPwkbJFsAm8c8JM6MOmsSA==@nongnu.org
+X-Gm-Message-State: AOJu0YzSPhSIR01auGftq9WGU49urBK/Ixv3nFhxQtxF532CCp6o3eKo
+ p0cYta6hb3DBZLXrQFk65YO66XdRu4qjmWT+YmXfgvQwG7+8cPoMyRFYeH1Y7A7ltVIeosgegAs
+ s930Z4arbo9UGZWVGJO1aytQeLUub6lKN0vzh9B1nuAQdGx2gdmWm
+X-Gm-Gg: Acq92OH22WWkLtpqL9AH0npt9cgcG/29MmClSShIXoaYMx25AA/22RspHdj6+MzOKp2
+ Y/L7C9SY1pdcYkJNMBNXNAqV2aFoUnaazpfpckBr+PpgBRlSEMMgA1w8gKwa93tmESNB0Pb0o2E
+ q15XV9nKQTBrXhD1yLi7U6XhiXGdSaeFCwndWPlLdoF2frlFo6By+0mhBSnNDQrd1ApJy4nyEVX
+ 6z1asgtWfisPw18R459MNnUtSp1X8L7OT3Bvp9MbgTpO2t/RaG9WWpWMvbXYMniSeQ4fLO7NXpi
+ LWk8wkquqZzkOanMgw0wz/R6kj+D9EICd0i4Tgebd/YXP9guTCJqSYi8dwKiUYP0HRg=
+X-Received: by 2002:a05:690e:140c:b0:651:daf6:3d82 with SMTP id
+ 956f58d0204a3-65ec98bdef0mr16952737d50.42.1779792177020; Tue, 26 May 2026
+ 03:42:57 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260522220306.235200-1-richard.henderson@linaro.org>
- <20260522220306.235200-25-richard.henderson@linaro.org>
-In-Reply-To: <20260522220306.235200-25-richard.henderson@linaro.org>
+In-Reply-To: <20260522220306.235200-1-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 26 May 2026 11:35:12 +0100
-X-Gm-Features: AVHnY4ImPTfzd7WilH9XSk5hs67h4n2rUMOGiIMO7YrSYpcWejmOZ5RCgPJiJFw
-Message-ID: <CAFEAcA9xvc6BUY2LqAS1akZHpyouRchcmZAs6DVbQhkdoFsq8g@mail.gmail.com>
-Subject: Re: [PATCH v7 24/64] target/arm: Introduce arm_init_fp_status
+Date: Tue, 26 May 2026 11:42:45 +0100
+X-Gm-Features: AVHnY4I1L5gT8Sq8fEIo0Ks2_EflK8xAj3C3OWx2scmoctjfNXRsNjoHET3Lx9Y
+Message-ID: <CAFEAcA82v=48FxXuddVi8JHDFK+Z-nM9Z3oAxB0K-xoO=ZNEbA@mail.gmail.com>
+Subject: Re: [PATCH v7 00/64] target/arm: Implement FEAT_FP8
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,88 +115,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 22 May 2026 at 23:10, Richard Henderson
+On Fri, 22 May 2026 at 23:03, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Initialize all of a float_status settings in one place.
+> Based-on: 20260522182658.184604-1-richard.henderson@linaro.org
+> ("[PULL 00/30] fpu patch queue")
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/cpu.c | 45 +++++++++++++++++++++++++++------------------
->  1 file changed, 27 insertions(+), 18 deletions(-)
->
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index a13e6dae2a..4ea076fe4b 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -304,6 +304,22 @@ static void cp_reg_check_reset(gpointer key, gpointer value,  gpointer opaque)
->      assert(oldvalue == newvalue);
->  }
->
-> +static void arm_init_fp_status(float_status *s, bool ah, bool fz, bool dn)
-> +{
-> +    memset(s, 0, sizeof(*s));
-> +
-> +    if (ah) {
-> +        arm_set_ah_fp_behaviours(s);
-> +    } else {
-> +        arm_set_default_fp_behaviours(s);
-> +    }
-> +    set_flush_to_zero(fz, s);
-> +    set_flush_inputs_to_zero(fz, s);
-> +    set_default_nan_mode(dn, s);
-> +
-> +    /* We want 0 for all other settings. */
-> +}
-> +
->  static void arm_cpu_reset_hold(Object *obj, ResetType type)
->  {
->      CPUState *cs = CPU(obj);
-> @@ -626,24 +642,17 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
->          env->sau.ctrl = 0;
->      }
->
-> -    set_flush_to_zero(1, &env->vfp.fp_status[FPST_STD]);
-> -    set_flush_inputs_to_zero(1, &env->vfp.fp_status[FPST_STD]);
-> -    set_default_nan_mode(1, &env->vfp.fp_status[FPST_STD]);
-> -    set_default_nan_mode(1, &env->vfp.fp_status[FPST_STD_F16]);
-> -    set_default_nan_mode(1, &env->vfp.fp_status[FPST_ZA]);
-> -    set_default_nan_mode(1, &env->vfp.fp_status[FPST_ZA_F16]);
-> -    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_A32]);
-> -    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_A64]);
-> -    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_ZA]);
-> -    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_STD]);
-> -    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_A32_F16]);
-> -    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_A64_F16]);
-> -    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_ZA_F16]);
-> -    arm_set_default_fp_behaviours(&env->vfp.fp_status[FPST_STD_F16]);
-> -    arm_set_ah_fp_behaviours(&env->vfp.fp_status[FPST_AH]);
-> -    set_flush_to_zero(1, &env->vfp.fp_status[FPST_AH]);
-> -    set_flush_inputs_to_zero(1, &env->vfp.fp_status[FPST_AH]);
-> -    arm_set_ah_fp_behaviours(&env->vfp.fp_status[FPST_AH_F16]);
-> +    arm_init_fp_status(&env->vfp.fp_status[FPST_A32], false, false, false);
-> +    arm_init_fp_status(&env->vfp.fp_status[FPST_A32_F16], false, false, false);
-> +    arm_init_fp_status(&env->vfp.fp_status[FPST_STD], false, true, true);
-> +    arm_init_fp_status(&env->vfp.fp_status[FPST_STD_F16], false, false, true);
-> +
-> +    arm_init_fp_status(&env->vfp.fp_status[FPST_A64], false, false, false);
-> +    arm_init_fp_status(&env->vfp.fp_status[FPST_A64_F16], false, false, false);
-> +    arm_init_fp_status(&env->vfp.fp_status[FPST_ZA], false, false, true);
-> +    arm_init_fp_status(&env->vfp.fp_status[FPST_ZA_F16], false, false, true);
-> +    arm_init_fp_status(&env->vfp.fp_status[FPST_AH], true, true, false);
-> +    arm_init_fp_status(&env->vfp.fp_status[FPST_AH_F16], true, false, false);
+> Changes for v7:
+>   - Lots of patch feedback.
+>   - Split "Implement hwcap bits for fp8 features" into the
+>     various "Enable FEAT_FOO" patches so that we get 1 or 2
+>     at a time; previously missed F8MM8 and F8MM4.
 
-I think the use of these boolean arguments leaves this looking
-less readable than what we had here before, unfortunately
-(now you have to go look at the function prototype to figure
-out what "false, false, true" means, whereas direct calls
-to "set_default_nan_mode()" or "set_flush_to_zero()" are
-immediately clear about what they're setting.)
-
-I think it would be clearer to have an arm_init_fp_status()
-which doesn't take any arguments and which we use on every
-fp_status[] element, before then calling the functions that
-override the necessary settings from that default.
+I'm going to continue to review the second half of this patchset,
+but for the moment I have taken patches 1-23 into target-arm.next,
+since they have been reviewed and the fpu prereqs are now upstream.
+(I've added the comment I suggested for patch 4.) That gets us
+FEAT_FAMINMAX and FEAT_FPMR enabled, and chops a third off
+the size of the series.
 
 thanks
 -- PMM

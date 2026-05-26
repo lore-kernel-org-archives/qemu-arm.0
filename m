@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 801FFCD5BB1
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 11:04:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1DC4CD5BB1
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 11:04:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRpZ6-0002iW-ST; Tue, 26 May 2026 07:03:16 -0400
+	id 1wRpZ6-0002iH-Mp; Tue, 26 May 2026 07:03:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wRpYq-0002bD-5v
+ id 1wRpYq-0002bG-7z
  for qemu-arm@nongnu.org; Tue, 26 May 2026 07:03:00 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wRpYj-00068D-O1
- for qemu-arm@nongnu.org; Tue, 26 May 2026 07:02:58 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4903997fcb5so48531385e9.2
- for <qemu-arm@nongnu.org>; Tue, 26 May 2026 04:02:53 -0700 (PDT)
+ id 1wRpYl-00069P-Qh
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 07:02:59 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-490426d72f7so37494675e9.3
+ for <qemu-arm@nongnu.org>; Tue, 26 May 2026 04:02:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779793372; x=1780398172; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779793373; x=1780398173; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=e1tshj1Tdk11jGilXXYrFYvIhwcfFh7AdRq1o+pa3CI=;
- b=rP3T/2DaXxHLUhm+KlBtOX5pk1HnYGParcAwo7OGEw6F7u8uMosJZLSXjLRWoX2w4G
- z03YCp8rhWrC+O4w3Pn+2252NkTLyCIztYwj00bPwLVyCioaauiUwf77MKWjkTNouTCj
- 2VzqTj/0P558GtkdHN2/KG7mqp8rBygpGl0Zxbu+gaT92UPL/RfAea6gUln3/UZ1QO8Z
- FQEKo+llJi5VnJuU1PbfYwGh/U+AQm8XznmOZd7QdH7pKRBFSvKUJc9I+uxgRrHTt5/j
- 21d760GwnN0CQvFCmcfT0Nrc2ytlSsJ6aZy5UTbgXtPzsKsHyHyPVu9YJnTadTCp80pa
- 1Xww==
+ bh=wVKvvcFZA7qeNP1zeIYLgBVKsLe8igaQLT3KMhNnesE=;
+ b=ts/5J7rPkqtqjA81NzA4BrnBkCvsmQshMT1uCBqbjL+mmHQ+FvG4mcL+TtD5/MFEiW
+ 2d2HHhT9GOm5Wr3Tp8P0eX/pwMlKvIVXN09mI/G+t0J38uFHuuZ1iYD7AtKG/uDutCeb
+ /Hl5kUJY41w3XsB5iYLh9DCwui+dT8Wa0KI9qOkHwCr2V1iiJN8RSF1zLhSz0iHr3MyL
+ Q+0JyKqLHyloXc4cS1ZABaFayTzitbQuOVg7kn4rFXTonBzCx14L4nPM6tJnQ030GNqD
+ dsbanrGj6aUG3kwcRgWZP2jwgKJlLprmYetYLZCSPffwkwgo1dCtnHRr2zmrsglaG3Mv
+ B4Fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779793372; x=1780398172;
+ d=1e100.net; s=20251104; t=1779793373; x=1780398173;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=e1tshj1Tdk11jGilXXYrFYvIhwcfFh7AdRq1o+pa3CI=;
- b=dLYB1f2G+rxnWXtbnCfYFT1hA8OUD18cPbmpFCAOB4qak1kXzPATgDVA/9HyCRs5i4
- wopYTzeg5MG8Z41rfaJXn2dL5BiwHRL7wGjgxgvywdBVSfyd0sm0Z0v8ctfErFkIoU62
- MUadfUFj0CpXSOhH0CnuQB4N+KrC3aDFo2dfzDoTXcsO724ZS2GRrHR7HBADwLbLpVAw
- u+f5KMgYbO4l3vOn4xcwQTWNrt4fxxlO9UdkPbJApR+kEL+LBAAUDEcMOehuErY+HEHC
- 5FjHISgfPU7f7ToZaTyNce3afxd4FINJa55ah0uC3E8+nJIrtp0MxK9AnoXtZQNf4dE4
- PQXQ==
+ bh=wVKvvcFZA7qeNP1zeIYLgBVKsLe8igaQLT3KMhNnesE=;
+ b=iWAUZQ0WalRi0tSZhh+R4nyzhl2K+rtOnjFNGzOdbL77KHHRllbsujRtRXl8uWbZUJ
+ psCjNVTzaIyFXdfw0xO7O5EMgXsb9XihDRXyfg/+eCxmtCBDxm+/7QxjyvacLlOPEEdb
+ EQlofyeixuuNWfuPvk7D09IC7Cuf//wEE8CJuEs/K0X9o5TMPQwnsI8So325fAz0XhRM
+ 4g9CumgAz24dgDlgcjAx4A93ErVlQiQM78CF+sOsEkchc1nKJrvc9f7TTTLul+yjrdNm
+ LWMJ5b3eel8atj0ageI1hFVuxkYGBmQcUNh+nbhvvjKdKuv3yBiXrqM3MxSnRgddKbiI
+ zKNw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9vuu/e7TpEnva+CmuJ2SUOiipALn6s8H1diYC/O1ux0DU08G4SypCDRpiol+7ssEKAHMIAmgHgrA==@nongnu.org
-X-Gm-Message-State: AOJu0YzprXPKP3WF5FAy+AvgyfCgqoN8wMI+9/NLed3P0DxVxW1rgSVE
- LyCkBsBNuv89Ogz74ToZiqo/GWiw9MrHv1zzeVUHlsFgSDExUCw/YyLzT/RwGKGZh9A=
-X-Gm-Gg: Acq92OGh9EygMR+NNzoR/uDAIH0xs7W5GYDY8O/eIeS3ifGbiHDQMISoNOHyNjwGH0H
- IYgESOBhSho2QH8p9wnZs+5r+V7gOT26YcMUcSW2dsHtlmAwAW0ng4kwlp/EyGiAEFrEqsNxOxU
- BRFZB3h4jdktmO3ugJ298lAe4E1VnBdBw+q3zZM+MN93JU2GmjUuSnB7ecQqNawBhyXV6br9+88
- sJRHZW94eF+lchkhaNgOQx7kl1OdP5pYhkXDw1aXN2102oLE12s6lrOPwqJBSvPYxZCOf4UKBMO
- 4VeAE3BxSdtY1mAeBxpdZ/CAH20kotCpipoBTjaLk/kkiHMRRs9TiYdWtnUWl6rnhlN7crCGJc8
- +rODJ8pg+XkuanQTgr+pM4ggKGxvODckiJrzsrMyoRmUK63Il4nROrpWoNcDzweoae/aRZ1UqLf
- 2NTGG5bKNjllgq8yygPLgqmmW8KKKr+WTf3A==
-X-Received: by 2002:a05:600c:4f52:b0:490:4f91:5519 with SMTP id
- 5b1f17b1804b1-4904f91568dmr284321065e9.18.1779793371721; 
- Tue, 26 May 2026 04:02:51 -0700 (PDT)
+ AFNElJ/7dz4Ph5x3FC7EsPVtfK35+RVOlH2QPiCm9GcjH++hw6upfzc4LhJzBfY9Ixlj5gDuaSUBxTnBRA==@nongnu.org
+X-Gm-Message-State: AOJu0Yyk7bvKjZoWEXad1Vx3pUZ0fVgZUhPDbrhWjbQlqqVKIeDfyZSk
+ 4wDmaYoGkclndcrlF0Mpe+CsYxIN5D68VlVCkyV2NBebSxG1pc488yQomzJcDHrNXIk=
+X-Gm-Gg: Acq92OEB3nE2o7GdUgsPJvq0jAsvOyvNo/trWciPcGPf2plVhbwJ6/DRgogYPktckiD
+ HGrp77Di2SbaV3pQ6L5UPitTDR1bKT7lAoY81eHFy/7D3ariVW1ZLknQE63KmPuFBZamaQwLdTI
+ TRisRUxH+N3+fYtAG+xfXSIYTbzSW6Co+ad0gFRXtDpSq5tWB4Ug3cislWfz2ON0o1u95c8+t/A
+ PIJ38+a4g/iYlgFgKy9g0j7xc71V+mjIQZfbbk8Gpt0K8i3S0bTOvMHNMcqxRRveP5ANEFB0ZLl
+ 8xah6g7I2DmNqfuD+AsvAjSVDRbo+d8/P/AZRUw5hZsOo6M2reWIjg/K6iu5RDSap74p7C2XDSu
+ HMfpeXjHocgGYntaHvRoAc9/EDT8q2V/OoHYJHSKNxxP7lmppg29VmZ51MxiEpzd8WWM7y4fmrm
+ Q/esOPj3M+pzZJeJIfe7yHG3U=
+X-Received: by 2002:a05:600c:a402:b0:490:3d62:eb0 with SMTP id
+ 5b1f17b1804b1-490426d7019mr248024605e9.24.1779793373391; 
+ Tue, 26 May 2026 04:02:53 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-490418c4497sm106275355e9.13.2026.05.26.04.02.46
+ ffacd0b85a97d-45eb6d5cb9asm37363433f8f.27.2026.05.26.04.02.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 May 2026 04:02:46 -0700 (PDT)
+ Tue, 26 May 2026 04:02:51 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 5E0E96047F;
+ by draig.lan (Postfix) with ESMTP id C3A81604B4;
  Tue, 26 May 2026 12:02:44 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -86,17 +86,18 @@ Cc: Brad Smith <brad@comstyle.com>, Thomas Huth <thuth@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
  Warner Losh <imp@bsdimp.com>
-Subject: [PATCH v3 09/14] MAINTAINERS: add a section for AI agents
-Date: Tue, 26 May 2026 12:02:37 +0100
-Message-ID: <20260526110243.470002-10-alex.bennee@linaro.org>
+Subject: [PATCH v3 13/14] MAINTAINERS: Cover debian-tricore-cross.docker with
+ TriCore section
+Date: Tue, 26 May 2026 12:02:41 +0100
+Message-ID: <20260526110243.470002-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260526110243.470002-1-alex.bennee@linaro.org>
 References: <20260526110243.470002-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,32 +120,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-For completeness add a section to MAINTAINERS to catch changes should
-we decide to merge this.
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Message-ID: <20260518102222.80735-5-philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- MAINTAINERS | 6 ++++++
- 1 file changed, 6 insertions(+)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index cd5c4831e27..520f7678287 100644
+index a534f91e87a..08363ab5449 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -4564,6 +4564,12 @@ M: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
- S: Maintained
- F: docs/
+@@ -458,6 +458,7 @@ S: Orphan
+ F: target/tricore/
+ F: hw/tricore/
+ F: include/hw/tricore/
++F: tests/docker/dockerfiles/debian-tricore-cross.docker
+ F: tests/tcg/tricore/
  
-+AI agents
-+M: Alex Bennée <alex.bennee@linaro.org>
-+S: Maintained
-+F: .agents/skills/
-+F: AGENTS.md
-+
- Build System
- ------------
- Meson
+ Multiarch Linux User Tests
 -- 
 2.47.3
 

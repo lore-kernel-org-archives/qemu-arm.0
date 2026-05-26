@@ -4,101 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA19ECD5BD0
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 09:31:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB49CD5BD0
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 09:35:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRo8C-0002MC-SX; Tue, 26 May 2026 05:31:24 -0400
+	id 1wRoCG-00039V-FF; Tue, 26 May 2026 05:35:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wRo8B-0002LW-QS
- for qemu-arm@nongnu.org; Tue, 26 May 2026 05:31:23 -0400
+ id 1wRoCF-00039E-KK
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 05:35:35 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wRo89-0002Gg-NY
- for qemu-arm@nongnu.org; Tue, 26 May 2026 05:31:23 -0400
+ id 1wRoCE-0005ei-17
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 05:35:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779787880;
+ s=mimecast20190719; t=1779788133;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=BnTVsmuQT9pSkyj+6cp6lv+f/P9MMNzNx1hUsif2Jys=;
- b=eDiUbInJi61LwkVb0JMxXvSDUfxBZ8p1h5ZDB/+Cr1cUC4nTE5kcQ8GMOJosVzgRZuRYw9
- y0F6xciER3hFQQHI7y+f7Fa7AImQreCU/oXfv+ybu1oGfuHT7lrK3KIBVhs/8DSOffKBVF
- gQAL0wU+gp/fa1EKcdeLsUV2BwHNAKk=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=CX6stQxWTq4DSc9tz0ICUvcs2EXqQQ/sJ+r7aB/Xf1I=;
+ b=Dib2DPQjxKzg70vWh7hSlL3LI1RgUY2S8W0p3clNC+mtZA7QNAIivHGLorV8M/MxHh6slr
+ OF5tCYlSm9Q9BPRPwIiQKGbfZQZZi/irgpRl+vUL9vQOdfA2At1LOPCWWYSidYuaeaSWDE
+ UaW/OI7s0sIMxF+p3Lp8ZdbiwETtPXA=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-446-t86309H1PSyMg1fHK-2ChA-1; Tue, 26 May 2026 05:31:16 -0400
-X-MC-Unique: t86309H1PSyMg1fHK-2ChA-1
-X-Mimecast-MFC-AGG-ID: t86309H1PSyMg1fHK-2ChA_1779787876
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-48feb0298d7so83465985e9.1
- for <qemu-arm@nongnu.org>; Tue, 26 May 2026 02:31:16 -0700 (PDT)
+ us-mta-146-0M8bIsPWOq2vw1-Gjl_oPA-1; Tue, 26 May 2026 05:35:31 -0400
+X-MC-Unique: 0M8bIsPWOq2vw1-Gjl_oPA-1
+X-Mimecast-MFC-AGG-ID: 0M8bIsPWOq2vw1-Gjl_oPA_1779788131
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-49048bcbeb8so44731955e9.2
+ for <qemu-arm@nongnu.org>; Tue, 26 May 2026 02:35:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779787876; x=1780392676;
+ d=1e100.net; s=20251104; t=1779788130; x=1780392930;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=BnTVsmuQT9pSkyj+6cp6lv+f/P9MMNzNx1hUsif2Jys=;
- b=GzNnU5up/l6ODvgUXuCh5hDKl7S4AVddzCtWr3yqZie2tAwal13xL2aXA0oyrN0b4z
- 2VH2rtqH4L9RKUFiTib20g/d14iMQmGne8CsZK1D+jaaGO4NynUGsYz2TNQDjwwrqe1p
- K6gpXIY6h5O01fJs035B2EgdCKw2vUXHlt4nKWyrXWzM2a5rsO6wCDPOcNl2Xs7MLFjp
- F+tG5B8QZeq5pdSNMw1Kqc/2aZ0i3t8jDKNmU4JuWKhhLUYLm4hgyPd5M60HEKvlVW8c
- CgNDlZK6bo3lN1ljHmw0F1oFzcMu4HJ4PseFkySskBbwcxnGWpXTHvJ2oP+1ggsT4byN
- VWrQ==
+ bh=CX6stQxWTq4DSc9tz0ICUvcs2EXqQQ/sJ+r7aB/Xf1I=;
+ b=GSyHo5HMd6h4j6JdfXwYozMwsYfh8/MQk9WAhvNW/WnTY3kkCZxSLncJL1JG8ttqXC
+ 4j8M3gxHwz4wDCRMLiLvx4OdYbEuUyyn049K3y39fG4yXFjHl/15rQCkcg1ZRQ33mOpz
+ LZ/x+n/SfWjU5zFpmL7TMoPib4WtjIvth0edwYw/s970rtqtCulWFUwU5DSk+NnVzJsC
+ /6WGclpBMXzq85+RiOYRR0W6Hwz7ERlwkpv/kF0+qVlPTx4Pbu/ayi+zm/OYl7sv6Tm1
+ tgmqyXFEvGaSBF9FySbngr2HRF1o4KdHjAGxw0yZtAFDasTOtTJ7Snf+aY5QXEpoLA5W
+ vTJw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+Zi5EPSnX3VM5sRdxr7yL/8uiLqoX/6hWV9DlVbxX+SoGURqzMLI89i/byyMv/DUTg/YtdjFFhgw==@nongnu.org
-X-Gm-Message-State: AOJu0Yx6zz8jrepSsPjbXFOaC4WpuJnt7Bfj0XNJrPHS3roOaf7t1KnX
- Gwh28IFg+usx0VbCUFYkV8vuJAiA1aYtz6bgDh7q6CcMGmLZ4v0r9wOHnyImVke1+DkhZeh/gUy
- /tUcwX5NwBJyC4xtLYglboj7XuU7MEI4Z2f4bbGS+ti25WOfeYEqWYA==
-X-Gm-Gg: Acq92OFM0mOuqyO7ShcTid6NskmLirw/DHIbcZS4yKToZlq2V9LtKocW5zu6Ka/gkgP
- s52y4VZVJ/CSigsx+5tuUOGebEHH34OYtqEUVuGYZ+h2iSEfuZ6TETzn01aRlSVMuIvNMa3ZseX
- 4fPlwSG6W3BZoD6EjsJ8B0vhyNwgvguuxUTn510Cj+5QJUOOUc9QnGN067zYR3slXNxBiQHqiTx
- udjtGIqIb87vcPCIJLdD1t4tZSDHurp/mnNF9V1AW/qow6brYgyOMS6Kk9hqzgsHGSiV3BRa9cz
- t66J/RZH7j4Bwd+DVoCu7KKRDr/nure5qW3v8eM6q2T2TslAw/29U7GGYcUu+5SI8DwwIcuhG3X
- W8JO4+Cu2hbVHrfLYa0CXT/09iNo4Qke3jucJRKfDjWVbnoQYKVAdOpszXW55yDqKaAG4WA==
-X-Received: by 2002:a05:600c:4511:b0:490:6869:46c3 with SMTP id
- 5b1f17b1804b1-490686947bemr101932305e9.30.1779787875609; 
- Tue, 26 May 2026 02:31:15 -0700 (PDT)
-X-Received: by 2002:a05:600c:4511:b0:490:6869:46c3 with SMTP id
- 5b1f17b1804b1-490686947bemr101931555e9.30.1779787875035; 
- Tue, 26 May 2026 02:31:15 -0700 (PDT)
+ AFNElJ8yrGRgiIYv7NSCPgSCeljae4XeurUPA7xAU6QDkFEYbqa7Yry0qIpLuz7t45ukfFOyFkZKnqGjug==@nongnu.org
+X-Gm-Message-State: AOJu0YxQS785qw1ZakwAB2ipy6SiJ8fqWfGP1CsbZO2yYlnLz8ScI4C6
+ 2gnJkdNTEDg87F3Np13u3HBPoYzHJ2ZJ2g09J0fuJ95jFHBwOuVRNQ4x3B4Mf8MpyfkQPtRXGsV
+ vmWivE2Dkzj6sCjllsGgcoeBRWb7RmaIEI4fEKyTNiZAgt3kWqy5X6w==
+X-Gm-Gg: Acq92OFLUMdefSmpyEXStYu9EL6PXeAXNHekX0kgcmv4oJySnRoxdRMewHRY8571hUf
+ lHXFhO6qKcfE9de2XDTzUdEuwp/fikV1SMhKmFQJOYjRqORkXJu1qkGd56OvK20jZKq3IVmdSmM
+ E9GBNIypF/awUFsO+7W9N0VfCjpCSe8wmLXsw0bbCgO5AJJn80bXUbTgKjkMrxPvLFJZJPuPwG0
+ U9bJQcGLKXOjA4iHdYpXLomIl6/as/bR3hdnHzKVHGEuj0GpNXcK7x+gE5x7xny+eIOiplo08/A
+ oFYQJo29iDUDFxeSbtMuMSLOD9g+1P6F06gDg7wdNLJXjZjgwXQ5gk+6InnF0Pv+fabEiQLB01b
+ Se67iKDGWPh/oddSVNAtHOIfo0Ej6lnZp8+kg1kFnKl1Cza2yljvpGJSpN9z4uEsvr8rOfQ==
+X-Received: by 2002:a05:600c:314e:b0:490:4ee0:82f9 with SMTP id
+ 5b1f17b1804b1-4904ee08766mr249598875e9.7.1779788130456; 
+ Tue, 26 May 2026 02:35:30 -0700 (PDT)
+X-Received: by 2002:a05:600c:314e:b0:490:4ee0:82f9 with SMTP id
+ 5b1f17b1804b1-4904ee08766mr249598125e9.7.1779788129919; 
+ Tue, 26 May 2026 02:35:29 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45eb6d6ebf0sm35074765f8f.34.2026.05.26.02.31.13
+ 5b1f17b1804b1-490454a0cd5sm380605195e9.10.2026.05.26.02.35.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 May 2026 02:31:14 -0700 (PDT)
-Message-ID: <6b944d99-617e-4ae9-a48d-9e28c6a8bcde@redhat.com>
-Date: Tue, 26 May 2026 11:31:12 +0200
+ Tue, 26 May 2026 02:35:29 -0700 (PDT)
+Message-ID: <12bc6dd2-2ef0-453d-bd49-2776dbda63be@redhat.com>
+Date: Tue, 26 May 2026 11:35:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 26/32] system/physmem: Add
- qemu_ram_backend_pagesize_min() helper
+Subject: Re: [PATCH v5 27/32] hw/arm/tegra241-cmdqv: Limit queue size based on
+ backend page size
 To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
  nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
  jgg@nvidia.com, zhenzhong.duan@intel.com, kjaju@nvidia.com,
- phrdina@redhat.com, Peter Xu <peterx@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+ phrdina@redhat.com
 References: <20260519103727.899332-1-skolothumtho@nvidia.com>
- <20260519103727.899332-27-skolothumtho@nvidia.com>
+ <20260519103727.899332-28-skolothumtho@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260519103727.899332-27-skolothumtho@nvidia.com>
+In-Reply-To: <20260519103727.899332-28-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: lugvAuAxuajRFgO0hZyqBi6pvDjdH6t0JUbaZrioPZI_1779787876
+X-Mimecast-MFC-PROC-ID: MT5JiaLmRxMEnqegd4cbfMBF8kzZfhSRZ6Mi_zfvC4c_1779788131
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -107,7 +106,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,94 +123,81 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
+Hi Shameer,
 
 On 5/19/26 12:37 PM, Shameer Kolothum wrote:
-> Some hardware accelerators DMA directly to the host physical address
-s/DMA/perform DMA accesses
-> of a guest-resident buffer (e.g. set up via IOMMUFD). The HPA is
-> contiguous only within a single host backing page; a buffer larger
-> than the smallest backing page in use may span non-contiguous host
-> pages and fault.
+> From: Nicolin Chen <nicolinc@nvidia.com>
 >
-> Introduce qemu_ram_backend_pagesize_min(), which returns the smallest
-> page size among RAM regions backed by a memory-backend object. Falls
-Don't you have means to be more precise? I mean you know the GPA of the
-cmdq, can't you make sure it belongs to a specific ramblock and check
-its min page_size?
+> CMDQV HW reads guest queue memory by its host physical address set
+> up via IOMMUFD. This requires the guest queue to be contiguous in
+> both guest PA and host PA space. With Tegra241 CMDQV enabled, we
+> must only advertise a command queue size (CMDQS) that the host can
+> safely back with physically contiguous memory. Allowing a queue size
+> larger than the host page size could cause the hardware to DMA across
+> page boundaries, leading to faults.
+>
+> Use qemu_ram_backend_pagesize_min() to find the smallest memory-
+> backend page size in use, then cap IDR1.CMDQS so the guest cannot
+> configure a command queue that exceeds that contiguous backing.
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  hw/arm/tegra241-cmdqv.c | 17 +++++++++++++++++
+>  1 file changed, 17 insertions(+)
+>
+> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
+> index ad64f06260..7f617bcc97 100644
+> --- a/hw/arm/tegra241-cmdqv.c
+> +++ b/hw/arm/tegra241-cmdqv.c
+> @@ -16,6 +16,8 @@
+>  #include "hw/arm/smmuv3-common.h"
+>  #include "hw/core/irq.h"
+>  #include "smmuv3-accel.h"
+> +#include "smmuv3-internal.h"
+> +#include "system/ramblock.h"
+>  #include "tegra241-cmdqv.h"
+>  #include "trace.h"
+>  
+> @@ -856,6 +858,8 @@ free_viommu:
+>  static void tegra241_cmdqv_init_regs(SMMUv3State *s, Tegra241CMDQV *cmdqv)
+>  {
+>      int i;
+> +    size_t pgsize;
+> +    uint32_t val;
+>  
+>      cmdqv->config = V_CONFIG_RESET;
+>      cmdqv->param = FIELD_DP32(0, PARAM, CMDQV_VER, CMDQV_VER);
+> @@ -887,6 +891,19 @@ static void tegra241_cmdqv_init_regs(SMMUv3State *s, Tegra241CMDQV *cmdqv)
+>          cmdqv->vcmdq_base[i] = 0;
+>          cmdqv->vcmdq_cons_indx_base[i] = 0;
+>      }
+> +
+> +    /*
+> +     * CMDQ must not cross a physical RAM backend page. Adjust CMDQS so the
+> +     * queue fits entirely within the smallest backend page size, ensuring
+> +     * the command queue is physically contiguous in host memory.
+> +     *
+> +     *   IDR1.CMDQS = log2(max_qsz) - entry_shift
+> +     *
+> +     * where entry_shift = 4 (each CMDQ entry is 16 bytes = 2^4).
+> +     */
+> +    pgsize = qemu_ram_backend_pagesize_min();
+OK I see this is done at init size before we know the GPA. But I meant
+you may end up with a page size that is suboptimal, no?
 
-By the way there is find_min_backend_pagesize() that exists. Can't you
-reuse that?
+Could you elaborate on the actual requirements with regards to huge page
+usage in this patch and in the cover letter?
 
 Thanks
 
 Eric
-> back to qemu_real_host_page_size() if no memory-backend RAM blocks
-> are found. Callers can use this to bound the size of buffers that
-> must remain host-physically contiguous.
->
-> A subsequent Tegra241 CMDQV support patch will use this to bound the
-> command queue size exposed to the guest.
->
-> Cc: Peter Xu <peterx@redhat.com>
-> Cc: "Philippe Mathieu-Daudé" <philmd@linaro.org>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  include/system/ramblock.h |  1 +
->  system/physmem.c          | 29 +++++++++++++++++++++++++++++
->  2 files changed, 30 insertions(+)
->
-> diff --git a/include/system/ramblock.h b/include/system/ramblock.h
-> index 4435f8d55f..7f7ea53557 100644
-> --- a/include/system/ramblock.h
-> +++ b/include/system/ramblock.h
-> @@ -175,6 +175,7 @@ int qemu_ram_get_fd(const RAMBlock *rb);
->  
->  size_t qemu_ram_pagesize(const RAMBlock *block);
->  size_t qemu_ram_pagesize_largest(void);
-> +size_t qemu_ram_backend_pagesize_min(void);
->  #include "exec/target_page.h"
->  #include "exec/hwaddr.h"
->  
-> diff --git a/system/physmem.c b/system/physmem.c
-> index 46b36c7b10..7ccec52aa2 100644
-> --- a/system/physmem.c
-> +++ b/system/physmem.c
-> @@ -1999,6 +1999,35 @@ size_t qemu_ram_pagesize_largest(void)
->      return largest;
+
+
+> +    val = FIELD_EX32(s->idr[1], IDR1, CMDQS);
+> +    s->idr[1] = FIELD_DP32(s->idr[1], IDR1, CMDQS, MIN(ctz64(pgsize) - 4, val));
 >  }
 >  
-> +/*
-> + * Returns the smallest page size among RAM regions backed by a
-> + * memory-backend object. Falls back to qemu_real_host_page_size() if no
-> + * memory-backend RAM blocks are found.
-> + */
-> +size_t qemu_ram_backend_pagesize_min(void)
-> +{
-> +    RAMBlock *rb;
-> +    size_t pg, min_pg = SIZE_MAX;
-> +
-> +    RAMBLOCK_FOREACH(rb) {
-> +        MemoryRegion *mr = rb->mr;
-> +
-> +        if (!mr || !memory_region_is_ram(mr)) {
-> +            continue;
-> +        }
-> +        if (!object_dynamic_cast(mr->owner, TYPE_MEMORY_BACKEND)) {
-> +            continue;
-> +        }
-> +
-> +        pg = qemu_ram_pagesize(rb);
-> +        if (pg && pg < min_pg) {
-> +            min_pg = pg;
-> +        }
-> +    }
-> +
-> +    return (min_pg == SIZE_MAX) ? qemu_real_host_page_size() : min_pg;
-> +}
-> +
->  static int memory_try_enable_merging(void *addr, size_t len)
->  {
->      if (!machine_mem_merge(current_machine)) {
+>  static void tegra241_cmdqv_reset(SMMUv3State *s)
 
 

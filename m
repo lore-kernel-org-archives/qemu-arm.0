@@ -4,103 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF405CD5BB1
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 12:20:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31169CD5BC8
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 12:22:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRqlq-0005OS-Eg; Tue, 26 May 2026 08:20:30 -0400
+	id 1wRqne-0006QD-GT; Tue, 26 May 2026 08:22:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wRqlp-0005OD-16
- for qemu-arm@nongnu.org; Tue, 26 May 2026 08:20:29 -0400
+ id 1wRqna-0006Pa-Ro
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 08:22:19 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wRqlm-0000NC-Q7
- for qemu-arm@nongnu.org; Tue, 26 May 2026 08:20:28 -0400
+ id 1wRqnZ-0002Cm-9J
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 08:22:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779798025;
+ s=mimecast20190719; t=1779798136;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=wBQdbQ2EkWg6Gl9nMhSWs8e8r1aCtELC/PJIuE9MupU=;
- b=HCETWUk6YS9Lu8OHA/y6wLQcOifpa/KvESocBy6Jq7QOuUbW28L/X+ChNqIwHzmwUvkGp9
- 8dr2D0eUTp1qMw2aPoFfoV/156giRwb+P07F4iBSYQKE9ErkX/YGZk6QUEKIDAfyjXdOeF
- 0R7bKe14vB1eKxMSs+LfA/EDRbhJO80=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=xegYGdHu279bzwjsX3IA0WBIJCVVU/0/HehgFZDv+RY=;
+ b=X+Ua3zKETF4SfBQRCYXn/n/Br6r7QF9btsZId/EbzWXWOoUg1BwmPMZBZBNhqa2Ege5p4+
+ MREqswt47VKABGmL6VH7CoiK1YUbvaadrtWDi0SbwcW9qAvyOIhzmr5RwuKAgJ/SMZHRiL
+ b4DgdwLYaV4kNF7Zy6Fr6GspFaDvMXo=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-37-W-VTAhK4MoCiOvw0L7emGg-1; Tue, 26 May 2026 08:20:24 -0400
-X-MC-Unique: W-VTAhK4MoCiOvw0L7emGg-1
-X-Mimecast-MFC-AGG-ID: W-VTAhK4MoCiOvw0L7emGg_1779798022
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-45ed830a0eeso427459f8f.3
- for <qemu-arm@nongnu.org>; Tue, 26 May 2026 05:20:22 -0700 (PDT)
+ us-mta-659-yg7PIR9NOc2xDmR_fEdr0A-1; Tue, 26 May 2026 08:22:13 -0400
+X-MC-Unique: yg7PIR9NOc2xDmR_fEdr0A-1
+X-Mimecast-MFC-AGG-ID: yg7PIR9NOc2xDmR_fEdr0A_1779798132
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4904bbc6094so24550245e9.3
+ for <qemu-arm@nongnu.org>; Tue, 26 May 2026 05:22:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779798022; x=1780402822;
+ d=1e100.net; s=20251104; t=1779798132; x=1780402932;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wBQdbQ2EkWg6Gl9nMhSWs8e8r1aCtELC/PJIuE9MupU=;
- b=BMFUMxrlwjN5q6SnPhiQSOZSoriTi+yWnBjHBppFzw7FCDJnQ1xQZK3Z0s6Gm6Xd7k
- nbrf2f1qG6fcP8YSL20yqwDZwPiu5FeDBfgBQs4CU9y5A6MIdoBv/U0swldxSZB9NEWX
- ztLJTmBy9JNuunGGtm6gVIduBwZfwY+RONlgI8/xfz3HF9lLIuslCtsLz/cFO/u7Xzt/
- ITqKkx0nN1ta3dAu26VlOxeFZS4UTK9YkOf/29z4BcwrTOdsGlTd8UMsajTsOuiqwppp
- UiitENiVeU2NzLyRWR17aDVhP/YXlWgYklxU5LaAzB+hddwzxJllAPxfgNXevgGdLlzm
- /t7g==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+aKJ8lxUKPgRT/hEk5KqIMtdHG0/+Xb8lm3jVbhH5wCkqRYDAGTNuNntzC2F0isULn2uJ+4+0UHw==@nongnu.org
-X-Gm-Message-State: AOJu0YyIv2jje5gxqAyyiqQ+x0yNOsxJWZlTsZathZ5q2AqEY1M05P3h
- qJKZz/ypSRvqJHr9+H+4friChh6qMaXRZlqgDjDmxX5roMqh0eSAVYTweob5HV023qwG63xKwqW
- Cw0HhU6o0ZFfG024RJwDQbwd9+7A5rySrW/Us0vqkEjUyYaSeWVVOkA==
-X-Gm-Gg: Acq92OGqCxGnkkMH2xyT+fWNR+wTWyOZLgmcQ9ZgkDBU1S9p2ChO+38qNr4nW+VNiaI
- UkH2Wqnyhd13y/TADLXKtP8kzL4So13LYHoyT6xePNHVjJn/D+Znytbkt0URSihPyX0AlgA8v90
- udlzGuu+8iqsMGy3jKFmQ9zESBO/ycWcnHmAp+PSlZsXX4qIGkQtno1bRIllmVEvpCheMNWfeky
- VauJhoFmFZpgvD0XX/2dFeC3MmWe+3XtTh4b6ZkQfv2pGRKrdtMfAEEGK+Nw5/qdFVyLe3xuuFX
- OgSxrSSscsQKRMBTwMTA1eWdwZ4BBfdgmIQhMYiNjuW/AgDS45FGEAx66NkQknB6Ge1qtn+m5TB
- RZonp5T9FomeQ1d8y7+yiFX7TjCLHpw2UPgxwlBGT+O3vDgy2U8n/LqTvWESlTELM7uXJxw==
-X-Received: by 2002:a05:6000:2384:b0:441:3144:efc5 with SMTP id
- ffacd0b85a97d-45eb38e4fd0mr31504976f8f.42.1779798021772; 
- Tue, 26 May 2026 05:20:21 -0700 (PDT)
-X-Received: by 2002:a05:6000:2384:b0:441:3144:efc5 with SMTP id
- ffacd0b85a97d-45eb38e4fd0mr31504934f8f.42.1779798021364; 
- Tue, 26 May 2026 05:20:21 -0700 (PDT)
+ bh=xegYGdHu279bzwjsX3IA0WBIJCVVU/0/HehgFZDv+RY=;
+ b=pn90qPWmP5dzugTwS7GSVql+CBgKRH6CcX6m2pY1HSsI0+kpK463zIXVkh4JbZDkaw
+ CHXca1BiuiLbHH8V/pADaQ/9s+uyvAlbAH80H+qX4lkAT8zl4sJXjrC+z1jLQObKqVl+
+ 5q10RMSrmv9HYBstP6ZAuyiM0YVjRFKwn1j0xFMRmatpYCrOO9NTynRk63CKCvD7Kk/f
+ 5KrKCYa9igmV7TRXWQcfmLwcHPoYvKasJABNT5KqAW1gYcQ5ySd9VMvDCq8/xtheWEBD
+ DmNYinxenis/rAEd6nABBR0lVsX9Zi3Xu34y4LFDR8+sohk92NdTdAiB0lok3Rq31Bwg
+ TmMw==
+X-Gm-Message-State: AOJu0YwFKlD2pbI+qZP2yLNUijJb/W6GCLlLA8nZyroKwI0ondD8FSNY
+ NlNuvhoemwSlTT1EUO6VJKhz9N/RBOAxRdOU5d0A0jNge10N6pnhjiHuk53OPRrsazQVR1wiTmj
+ ggJMVHACCxt/Txrnl2W5F5SbyxE1YpONzq+9XGrA6ZX75wtlOgQQRLQ==
+X-Gm-Gg: Acq92OGMrkFmGKwW8UwHFZzKGeVq/QYOrfYTWXR7ZmpDQJYocoqxu1fMHdYGJVvhUoM
+ hRaXCE8WT38LaCX2fJvFkGkgTccXmnsa0cw4dTOQkeC6SRMFjCfLkxCGH6oxqzQ2Lx+QRS++/pU
+ hQO0+FZ0e23ByCbtUkeDRF02WrLRHqFBsxJ4R4tIV76oef6/oeWcuK6rwJwOLMsNBa+apHm5zPV
+ SPHGubqTk79Lq9/XeFU08MBacoqvi3wFvAMDc3XAMAd98rWFnH+iG8S0VkfG5W+pDUP/3CZRB8k
+ Jf0v2LyS0wet5v0GzayoKH9VKzeJN6mG7sMyz8+Pp9Mgb4+d7d4/Ud6sloRQUh5v10iZ4yiLSc7
+ keUR3IczVwij65xE7foQRLoQ90NKMIGvZmLOWNhutKhtNAw1YaWrFmeu/WHQT9XTxC4yTiw==
+X-Received: by 2002:a05:600c:35cf:b0:490:3bad:3784 with SMTP id
+ 5b1f17b1804b1-490426bc6demr350772055e9.18.1779798131812; 
+ Tue, 26 May 2026 05:22:11 -0700 (PDT)
+X-Received: by 2002:a05:600c:35cf:b0:490:3bad:3784 with SMTP id
+ 5b1f17b1804b1-490426bc6demr350770975e9.18.1779798131138; 
+ Tue, 26 May 2026 05:22:11 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45eb6d4741bsm36618511f8f.22.2026.05.26.05.20.20
+ ffacd0b85a97d-45eb6c9de2dsm33799258f8f.4.2026.05.26.05.22.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 May 2026 05:20:20 -0700 (PDT)
-Message-ID: <862edcac-d8b0-465a-bc58-11678ff15890@redhat.com>
-Date: Tue, 26 May 2026 14:20:19 +0200
+ Tue, 26 May 2026 05:22:10 -0700 (PDT)
+Message-ID: <ffdb0b2c-0795-4ed4-9bfb-dcd0564f7da9@redhat.com>
+Date: Tue, 26 May 2026 14:22:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 20/32] hw/arm/tegra241-cmdqv: Use mmap'd VINTF page0 as
- VCMDQ backing
+Subject: Re: [PATCH v5 19/32] hw/arm/tegra241-cmdqv: Allocate HW VCMDQs once
+ configured
 To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Nicolin Chen <nicolinc@nvidia.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
  "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
- Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>,
- Matt Ochs <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>,
- Jason Gunthorpe <jgg@nvidia.com>,
+ Nathan Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ Jiandi An <jan@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
  "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
  Krishnakant Jaju <kjaju@nvidia.com>, "phrdina@redhat.com"
  <phrdina@redhat.com>
 References: <20260519103727.899332-1-skolothumtho@nvidia.com>
- <20260519103727.899332-21-skolothumtho@nvidia.com>
- <2a4edb3b-064b-4c46-8737-1bd74d5f22e9@redhat.com>
- <CH3PR12MB754807F1C34CCB89A73A219EAB0E2@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <20260519103727.899332-20-skolothumtho@nvidia.com>
+ <166c5efb-0fa3-49f6-a1e7-faec85a6ec44@redhat.com>
+ <CH3PR12MB7548314422301EA66803DD40AB0E2@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <69ec35de-1f7c-40ae-9ea5-3727c047c590@redhat.com>
+ <ag9/KMztV/pb7lA0@Asurada-Nvidia>
+ <e3af7e21-f5cd-47fa-85f3-d8744b529246@redhat.com>
+ <CH3PR12MB75483876FED87775450277C9AB0B2@CH3PR12MB7548.namprd12.prod.outlook.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB754807F1C34CCB89A73A219EAB0E2@CH3PR12MB7548.namprd12.prod.outlook.com>
+In-Reply-To: <CH3PR12MB75483876FED87775450277C9AB0B2@CH3PR12MB7548.namprd12.prod.outlook.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: RrS_E1pcfCms23XvbAq-rgDY-MX5YGyszwZYegnVpj8_1779798022
+X-Mimecast-MFC-PROC-ID: RzIza9u1SIN9vtRendgGw15y23WDP8-0eWhtVBdWdWc_1779798132
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -130,140 +132,72 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
 
-On 5/21/26 5:46 PM, Shameer Kolothum Thodi wrote:
-> Hi Eric,
+
+On 5/26/26 12:24 PM, Shameer Kolothum Thodi wrote:
 >
 >> -----Original Message-----
 >> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 21 May 2026 14:41
->> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
->> arm@nongnu.org; qemu-devel@nongnu.org
->> Cc: peter.maydell@linaro.org; clg@redhat.com; alex@shazbot.org; Nicolin
->> Chen <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt
->> Ochs <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
->> <jgg@nvidia.com>; zhenzhong.duan@intel.com; Krishnakant Jaju
+>> Sent: 26 May 2026 09:37
+>> To: Nicolin Chen <nicolinc@nvidia.com>
+>> Cc: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
+>> arm@nongnu.org; qemu-devel@nongnu.org; peter.maydell@linaro.org;
+>> clg@redhat.com; alex@shazbot.org; Nathan Chen <nathanc@nvidia.com>;
+>> Matt Ochs <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason
+>> Gunthorpe <jgg@nvidia.com>; zhenzhong.duan@intel.com; Krishnakant Jaju
 >> <kjaju@nvidia.com>; phrdina@redhat.com
->> Subject: Re: [PATCH v5 20/32] hw/arm/tegra241-cmdqv: Use mmap'd VINTF
->> page0 as VCMDQ backing
+>> Subject: Re: [PATCH v5 19/32] hw/arm/tegra241-cmdqv: Allocate HW
+>> VCMDQs once configured
 >>
 >> External email: Use caution opening links or attachments
 >>
 >>
->> Hi Shameer,
+>> Hi Nicolin,
 >>
->> On 5/19/26 12:36 PM, Shameer Kolothum wrote:
->>> Introduce tegra241_cmdqv_vintf_ptr() to route VCMDQ Page0 register
->>> accesses through the mmap'd VINTF page0 backing once a hardware
->>> queue has been allocated.
+>> On 5/21/26 11:54 PM, Nicolin Chen wrote:
+>>> On Thu, May 21, 2026 at 03:27:17PM +0200, Eric Auger wrote:
+>>>> On 5/21/26 2:26 PM, Shameer Kolothum Thodi wrote:
+>>>>>>> +    /* Ignore any invalid address. This may come as part of reset etc. */
+>>>>>>> +    if (!address_space_range_is_ram(&address_space_memory, addr,
+>> size)) {
+>>>>>> why do you need to test the whole range and not only the start addressa
+>>>>> That was to make it more defensive based on v4 discussion here:
+>>>>> https://lore.kernel.org/qemu-devel/aft%2FDTFLqQnufzWl@nvidia.com/
+>>>>>
+>>>>> Please let me know if there is a better way.
+>>>> Well it is unclear to me. You want to make sure the GPA was fully set
+>>>> through the H and L regs. To me that's enough. As far as I understand
+>>>> Nicolin's reply, the kernel checks the rest. But please sync with Jason
+>>>> or Nicolin
+>>> Yes. Kernel checks if the range is in the stage-2 page table, i.e.,
+>>> mapped GPAs. One caveat: mapped GPA doesn't guarantee it's is_ram.
 >>>
->>> There are two QEMU trapped MMIO apertures for VCMDQ Page0 registers:
->>>
->>>   - Direct VCMDQ Page0 aperture (offset 0x10000)
->>>   - VINTF Page0 (offset 0x30000)
->>>
->>> These are hardware aliases: they address the same underlying
->>> registers. A subsequent patch maps the VINTF aperture as a
->>> guest-direct RAM region; in this patch both remain QEMU-trapped.
->>>
->>> VCMDQ Page0 accesses operate in one of two mutually exclusive modes,
->>> depending on whether a hardware queue (IOMMU_HW_QUEUE_ALLOC)
->> has
->>> been allocated for the VCMDQ:
->>>
->>>   Pre-alloc:  vintf_ptr is NULL. Both apertures use QEMU's register
->> do you mean vintf_page0 instead of vintf_ptr.
->>
->> vintf_page0 is set on mmap, right? and not on hwqueue_alloc
-> Yeah. I actually meant the ptr returned by tegra241_cmdqv_vintf_ptr()
+>>> So, what if the GPA is in the IO space (PCI BAR) or reserved space
+>>> (firmware)?
+> Looking at our helper address_space_range_is_ram(), it isn't foolproof
+> for the above cases. For the PCI BAR case we could add:
 >
->> Besides pre/post-alloc sounds a bit confusing to me since it can mean
->> queue_alloc or mmap.
->> If I understand correctly vintf_page0 can be set while hwqueue_alloc has
->> not been done yet and conversely, hence the double check below:
-> The "alloc" is in reference to a vcmdq is "allocated" to a vintf. I think spec
-> has that usage.
+>     if (!memory_region_is_ram(mr) || memory_region_is_ram_device(mr)) {
+>         return false;
+>     }
 >
-> Anyway, I will make it clear.
+> But I'm not sure how to tackle the reserved spaces. For firmware ROM
+> we could add a memory_region_is_rom() check, but the others will
+> still look like normal RAM, so they're hard to detect at this layer.
 >
->> +    if (!cmdqv->vcmdq[index] || !cmdqv->vintf_page0) {
->>
->>
->>>               cache. Hardware is not yet engaged.
->>>
->>>   Post-alloc: vintf_ptr is valid. Both QEMU trapped apertures access
->>>               registers directly via the mmap'd vintf_page0 pointer,
->>>               bypassing the cache. Hardware is the single source of
->>>               truth.
->>>
->>> The pre-to-post-alloc transition is triggered by the IOMMUFD hardware
->> so here you mean alloc is hw queue alloc
->>> queue allocation. The tegra241_cmdqv_sync_vcmdq() copies any pre-alloc
->>> cached writes (CONS_INDX, PROD_INDX, CONFIG, GERRORN) into the
->> mmap'd
->>> page so the guest's view survives the transition.
->>>
->>> CMDQV acceleration only becomes active once the guest enables VINTF
->>> and the corresponding HW QUEUE is allocated through IOMMUFD. Until
->>> then, all VCMDQ accesses are served from the emulated register cache
->>> with no real hardware command processing. This matches the CMDQV
->>> hardware specification: if the logical CMDQ index does not map to any
->>> allocated Virtual CMDQ, "the access is dropped with no Fault/Interrupt".
->> I still does not realy understand what would be the problem of directly
->> mapping the direct cmdqv page0 too - I understand that theoretically the
->> direct view is larger than the VINTF one though -. I still think a
->> proper explanation is missed in this patch of 22/32
->>
->> Assuming the guest tries to set up some unmapped vcmdqs in the direct
->> cmdqv page and this eventually ends up writing into the VINTF view, what
->> would happen and in which terms does it violate the spec?
-> Ok. Let me try to explain my understanding.
->
-> This is my rationale after reading Nicolin's explanation here on the
-> RFC where we had both direct aperture and vintf page 0 mapped to Guest .
-> https://lore.kernel.org/qemu-devel/aXkTzRM695oTWFaD@Asurada-Nvidia/
->
-> Consider the example: 
->
-> QEMU advertises 2 VCMDQs (CMDQV_NUM_CMDQ_LOG2=1).
-> Guest allocates vcmdq0 only, leaves vcmdq1 unallocated, then on the
-> direct aperture for vcmdq1:
->
->   write 0x10 ->  A_VCMDQ1_PROD_INDX
->   read     A_VCMDQ1_PROD_INDX
->
-> If we aliased the direct aperture to the VINTF mmap, the write
-> would physically hit VINTF Page 0 in HW at an unmapped logical
-> slot. And the spec says(p.172):
->
-> " If no Virtual CMDQ is mapped to the Guest, or if the logical CMDQ index in 
-> the Virtual Interface being accessed by the software does not map to any Virtual
-> CMDQ, the access is dropped with no Fault/Interrupt."
-OK
->
-> So even though guest is using the direct aperture, in turn it ends up
-> accessing the corresponding vinf page0 and won't see whatever it wrote.
->
-> I think this contradicts spec p.176 where it says:
->
-> "While the software can program the Virtual CMDQ(s) directly using the
-> direct VCMDQ aperture (and not through the Virtual Interface), it is
-> required that the VCMDQ be allocated to a Virtual  Interface before it
-> is used to send commands to the SMMU."
->
-> So the spec allows register programming through the direct aperture
-> without requiring the VCMDQ to be allocated first.
-Hum. So it is said if the cmdqv is not mapped on the VI you cannot send
-commands to it through the direct aperture. But it does not say what
-does happen if you do so. Why wouldn't the VI behavior be wrong, ie. "
+>>> AFAIK, kernel doesn't have a way to know. So, it's VMM's job to do
+>>> so.
+>> would it jeopardize the host integrity or would it just break the
+>> misbehaving guest. If the latest I am not sure this is critical to
+>> check. We are not checking either with regular SMMU cmd queues
+> I think it would just be the guest shooting itself in the foot. Can't think
+> of a host security/integrity issue here. So we could drop the check if
+> that's preferred.
 
-the access is dropped with no Fault/Interrupt."
+In that case I would rather simplify and remove the check. But that's my
+humble opinion ;-)
 
 Eric
-
->
-> @Nicolin: did I understand your earlier reasoning correctly here?
 >
 > Thanks,
 > Shameer

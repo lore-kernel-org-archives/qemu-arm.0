@@ -4,118 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF17DCD5BC8
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 13:53:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25CA5CD5BB1
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 13:59:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRsDF-0003ME-3u; Tue, 26 May 2026 09:52:53 -0400
+	id 1wRsJj-0004r5-5y; Tue, 26 May 2026 09:59:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wRsDC-0003LX-OI
- for qemu-arm@nongnu.org; Tue, 26 May 2026 09:52:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1wRsJh-0004qY-Mt
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 09:59:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wRsD9-0003e0-Vv
- for qemu-arm@nongnu.org; Tue, 26 May 2026 09:52:50 -0400
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1wRsJd-00077j-HN
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 09:59:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779803566;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1779803967;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WXrULs/oSXmIN2UzJZ/abXzzQGkCIlcShXbpCnKwkKo=;
- b=DNPxHlA7h+Zfk4/2IIXR51Q2aTWnk6FbSLQyweoEm9dgpgnw3LLhRasDbLDWx1hz4OeGkC
- iqlzRJSm8PnRRMKNNIy2oWqnicBaauLsp71YM8Tw6UEa8wJGJ5oZL94qbda/ClMpgsAiA0
- MpgBfGs8kq+EPk2AkMl1kku4KiIMZLI=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Tm+vk7b7hM9z9WUMCqJo2kSLoI0BR/fiYKzq/Qm41ao=;
+ b=LqKAvmozwKzu0kLrI0k5D3sEvFZGjQkMq3e4t9FmkkUogIeQInreXeeRr3qCi6SCLRyuDU
+ Ks9YGDj+q8QJcSPb7dtpGIg4hNjvmBwi5myuDe6k9pN9YztkEax04guAm4Ws8O+5KMFj/q
+ HCtbEqmGWXw0G0oW1QJ+MBm2OsDB6Mo=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-466-BVqjPwfQOVSwWjr9L7Mitg-1; Tue, 26 May 2026 09:52:44 -0400
-X-MC-Unique: BVqjPwfQOVSwWjr9L7Mitg-1
-X-Mimecast-MFC-AGG-ID: BVqjPwfQOVSwWjr9L7Mitg_1779803563
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-48fd3dbd16aso87513875e9.0
- for <qemu-arm@nongnu.org>; Tue, 26 May 2026 06:52:44 -0700 (PDT)
+ us-mta-497-7NUC5E_tM4ydvqZLKXs80Q-1; Tue, 26 May 2026 09:58:13 -0400
+X-MC-Unique: 7NUC5E_tM4ydvqZLKXs80Q-1
+X-Mimecast-MFC-AGG-ID: 7NUC5E_tM4ydvqZLKXs80Q_1779803891
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-45dbbbf8d57so12328228f8f.3
+ for <qemu-arm@nongnu.org>; Tue, 26 May 2026 06:58:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779803563; x=1780408363;
+ d=1e100.net; s=20251104; t=1779803891; x=1780408691;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=WXrULs/oSXmIN2UzJZ/abXzzQGkCIlcShXbpCnKwkKo=;
- b=c3vgEGAFvbngwu/xjiA1gY2HNfJggDDsmNJ+qnFc3DA/goJ7VoAzSjPTKbLXCw78lY
- SiS9zdxEOlpQehTVLZevP4m74wfPGnVwS+sFQX1AlAzcg6Hv9Htp4x3oM6jWGiEKqdh5
- c/SIYVHqqlwDAe+/iIgtudzEnu1lQD6WLmc84fbdv9xgc0anYCWA/+4otswMghfoh0EJ
- Z+8kCWeoCDAz646yO/crwzWtxQfs0gyfsbOgNd6Kk/reN5g9lw0mSlveaeKzo0XOnAYm
- DPptmpSyeGIHxZgfxuhvCTge2N3J/eyI8byZxqqC8Lad5KHMaLI64Opt4V1dZ651P5KI
- G2aw==
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Tm+vk7b7hM9z9WUMCqJo2kSLoI0BR/fiYKzq/Qm41ao=;
+ b=LRJ92iKQV8A7sRz+3nDOE6+pnsRwlNb+gHn8EUhNUqqRIE0uY10dqTvH2nbHnai8WS
+ sAoHipVmyyqLrcAwBRTxqJtmr0AUldkKlEXzp80ia2lWxwG8FifgXlu+i4XhuZmGset4
+ HkltOqvYG4XXwFjWHzVfiURLG2176+MBJiukOAqNwCjBHu693TTGtr6mL9Jvw+nB0KBr
+ 1eMTD8PLpwmw9BlEf2D6NQ+WkE1HKKARwmDRp0dUIPrdJWIKENJS4zInqeuPJ2aNfP8S
+ cJxs103c/4/HI5EPVt1pOXCJt2byH5UpFWT3yGiWir7SdRyXvvALrtouBUNMKqXykseV
+ gx/Q==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8qGbprXF3nim8zaqsbb04QvX1LhCWquJODSLnOZAZZI4RVW1Frug8RkRnYm3SLihuRO9XeqP7MNA==@nongnu.org
-X-Gm-Message-State: AOJu0Ywwa10hzCL6j06lak4OlfrO/b3SJ86ibaJ6MWQui3pLzabPKScy
- WPFcXSTbCHezYgRZDPaYZ4mpht5TXXUiBV6l/LAr9sTA/201OgxdPQmXsH5uLnsYyZmq78b3UKi
- h/8WyWWV608O+vtlgovk+5fRRUaQRVXNsvaIMAFNOJu8/LFrAOCXZLQ==
-X-Gm-Gg: Acq92OGgI8xad6uDi8OGCo5Jugp/fhvGr4vtVn1T+MFyOgE3w8lNmN5T8Nx4YgwM+WJ
- 4IFfkS0c1mV5nLy3Zz1s8fkyaZVOlRzE+L6EKMw9uxCdg+mBw5qriTqCp6COAFhxKsmK5ZdesRB
- fRXdUtJh0oxZSDQg5buUFdCAWUowOD+fQbdNnPTOREzRFUN0NlvzEsfJe/9BJcm+h/5sI0PFprW
- rS3tXyN6waP7b7uZe9N6rvDPDkDFOKEKn1yCrolwEkzrXp/nE/qRr1g5BakhjwPI0K3LtgoIpWO
- DJMM2XBK5roy9dkDNXtpbn2/+SR8dBcSO4T1ORPd2DnW3/XM67S7YVj7I6HtQHaoaAeLuB0uMZp
- srOXau4hFOVfgE1j8DVyMvOxKDs21AQZpUvcw4l3dJS0UH14aTkRRh8a/HMQG4rJsxfrah4Ain1
- v/wKbY
-X-Received: by 2002:a05:600c:4ecc:b0:490:3c90:2cda with SMTP id
- 5b1f17b1804b1-490426cef73mr297957465e9.20.1779803562906; 
- Tue, 26 May 2026 06:52:42 -0700 (PDT)
-X-Received: by 2002:a05:600c:4ecc:b0:490:3c90:2cda with SMTP id
- 5b1f17b1804b1-490426cef73mr297957165e9.20.1779803562500; 
- Tue, 26 May 2026 06:52:42 -0700 (PDT)
+ AFNElJ9RPh48anJ+PtheB3pxfKNyW8YH0X00hvds5lkeraljyawrRJfLoW91fzzmQZ+n7cTZktxJsmRZBg==@nongnu.org
+X-Gm-Message-State: AOJu0YzzgrnruJT+CxapgyuliQGJLdmG25Fah32ieohwl+rZOzHtMnKF
+ 8EENjnY0BfHGLDXHB6cxdTeGVSI1gfFROfXGfvnGH57IRdluERyR7OS8ZyaOH1Mo4bgv0bZtevd
+ eOwKkoOwIRc2YTDD515XHvM5YOd674dYpsko/VPEeqnZav83t4PvhfA==
+X-Gm-Gg: Acq92OEk0TFQutCMttzEYpNebTGZnZWuQU1m4sSUINL7quAENGFmGem3C+3rFJk/RF/
+ XBxqq8gWMNiktunqjsxJci1rdT2mFCCIph2BQuYDuPQExRmtNA2MGe1BbLV075ojWRzxlg82OoD
+ 2SMevB1noFw5roEkEMw7kOgtOEirdeifSA2ZucXcpSaoXV23P4Yn41zOGRcmvVTOTc+rikzt/SS
+ zacJLG+DVruTtY47i8f2ZmGosdQ4aq1uuILm+R87szu9MIdtf+MeF4dH7XX2iZIyD7Xl4/TIVwX
+ 1O5gXdGugLv+fiauUOMAQL0e1v5GJ59MCxB24U+joO/BG4XVcJLXyDhmwrvfaLk4wLqCo8sW1RI
+ GAvJWtBCwkcp20e/E6kfQXR0A5+GtGPn1PjYAmCqn7HXrNcz3GgBhokUkLYc3VRYS07vo8Qd15X
+ E=
+X-Received: by 2002:a05:6000:18af:b0:43b:3b80:6776 with SMTP id
+ ffacd0b85a97d-45eb38badd5mr32703489f8f.30.1779803890873; 
+ Tue, 26 May 2026 06:58:10 -0700 (PDT)
+X-Received: by 2002:a05:6000:18af:b0:43b:3b80:6776 with SMTP id
+ ffacd0b85a97d-45eb38badd5mr32703398f8f.30.1779803890309; 
+ Tue, 26 May 2026 06:58:10 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45eb6d6ebf0sm36902751f8f.34.2026.05.26.06.52.41
+ ffacd0b85a97d-45ed1939c6asm14695725f8f.2.2026.05.26.06.58.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 May 2026 06:52:41 -0700 (PDT)
-Message-ID: <c2b6e502-0bd5-4b1f-b2c3-dcbc760ca733@redhat.com>
-Date: Tue, 26 May 2026 15:52:40 +0200
+ Tue, 26 May 2026 06:58:09 -0700 (PDT)
+Message-ID: <4cdd38f4-4efc-48c5-a236-a40449ad8e85@redhat.com>
+Date: Tue, 26 May 2026 15:58:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 20/32] hw/arm/tegra241-cmdqv: Use mmap'd VINTF page0 as
- VCMDQ backing
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
- Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>,
- Matt Ochs <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>,
- Jason Gunthorpe <jgg@nvidia.com>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- Krishnakant Jaju <kjaju@nvidia.com>, "phrdina@redhat.com"
- <phrdina@redhat.com>
-References: <20260519103727.899332-1-skolothumtho@nvidia.com>
- <20260519103727.899332-21-skolothumtho@nvidia.com>
- <2a4edb3b-064b-4c46-8737-1bd74d5f22e9@redhat.com>
- <CH3PR12MB754807F1C34CCB89A73A219EAB0E2@CH3PR12MB7548.namprd12.prod.outlook.com>
- <862edcac-d8b0-465a-bc58-11678ff15890@redhat.com>
- <CH3PR12MB75481CAA2DD727BC68C88AA3AB0B2@CH3PR12MB7548.namprd12.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB75481CAA2DD727BC68C88AA3AB0B2@CH3PR12MB7548.namprd12.prod.outlook.com>
+Subject: Re: [PATCH v2 09/21] arm: virt: create sbsa_gwdt watchdog
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+Cc: mst@redhat.com, anisinha@redhat.com, pbonzini@redhat.com,
+ peter.maydell@linaro.org, shannon.zhaosl@gmail.com, philmd@linaro.org,
+ zhao1.liu@intel.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com,
+ qemu-arm@nongnu.org
+References: <20260303092532.2410177-1-imammedo@redhat.com>
+ <20260303092532.2410177-10-imammedo@redhat.com>
+From: Eric Auger <eauger@redhat.com>
+In-Reply-To: <20260303092532.2410177-10-imammedo@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: vz31TMsoGxwHLdJiVO6-CxLFuR6jjknCHw7GHsrkmi4_1779803563
+X-Mimecast-MFC-PROC-ID: q38IU9sJDPVecsuKlvTpXrkUfcl-iRB5NUnf-hUmKTk_1779803891
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=eauger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,204 +115,203 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Igor,
 
-
-On 5/26/26 3:00 PM, Shameer Kolothum Thodi wrote:
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 26 May 2026 13:20
->> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
->> arm@nongnu.org; qemu-devel@nongnu.org
->> Cc: peter.maydell@linaro.org; clg@redhat.com; alex@shazbot.org; Nicolin
->> Chen <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt
->> Ochs <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
->> <jgg@nvidia.com>; zhenzhong.duan@intel.com; Krishnakant Jaju
->> <kjaju@nvidia.com>; phrdina@redhat.com
->> Subject: Re: [PATCH v5 20/32] hw/arm/tegra241-cmdqv: Use mmap'd VINTF
->> page0 as VCMDQ backing
->>
->> External email: Use caution opening links or attachments
->>
->>
->> Hi Shameer,
->>
->> On 5/21/26 5:46 PM, Shameer Kolothum Thodi wrote:
->>> Hi Eric,
->>>
->>>> -----Original Message-----
->>>> From: Eric Auger <eric.auger@redhat.com>
->>>> Sent: 21 May 2026 14:41
->>>> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
->>>> arm@nongnu.org; qemu-devel@nongnu.org
->>>> Cc: peter.maydell@linaro.org; clg@redhat.com; alex@shazbot.org; Nicolin
->>>> Chen <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt
->>>> Ochs <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
->>>> <jgg@nvidia.com>; zhenzhong.duan@intel.com; Krishnakant Jaju
->>>> <kjaju@nvidia.com>; phrdina@redhat.com
->>>> Subject: Re: [PATCH v5 20/32] hw/arm/tegra241-cmdqv: Use mmap'd
->> VINTF
->>>> page0 as VCMDQ backing
->>>>
->>>> External email: Use caution opening links or attachments
->>>>
->>>>
->>>> Hi Shameer,
->>>>
->>>> On 5/19/26 12:36 PM, Shameer Kolothum wrote:
->>>>> Introduce tegra241_cmdqv_vintf_ptr() to route VCMDQ Page0 register
->>>>> accesses through the mmap'd VINTF page0 backing once a hardware
->>>>> queue has been allocated.
->>>>>
->>>>> There are two QEMU trapped MMIO apertures for VCMDQ Page0
->> registers:
->>>>>   - Direct VCMDQ Page0 aperture (offset 0x10000)
->>>>>   - VINTF Page0 (offset 0x30000)
->>>>>
->>>>> These are hardware aliases: they address the same underlying
->>>>> registers. A subsequent patch maps the VINTF aperture as a
->>>>> guest-direct RAM region; in this patch both remain QEMU-trapped.
->>>>>
->>>>> VCMDQ Page0 accesses operate in one of two mutually exclusive modes,
->>>>> depending on whether a hardware queue (IOMMU_HW_QUEUE_ALLOC)
->>>> has
->>>>> been allocated for the VCMDQ:
->>>>>
->>>>>   Pre-alloc:  vintf_ptr is NULL. Both apertures use QEMU's register
->>>> do you mean vintf_page0 instead of vintf_ptr.
->>>>
->>>> vintf_page0 is set on mmap, right? and not on hwqueue_alloc
->>> Yeah. I actually meant the ptr returned by tegra241_cmdqv_vintf_ptr()
->>>
->>>> Besides pre/post-alloc sounds a bit confusing to me since it can mean
->>>> queue_alloc or mmap.
->>>> If I understand correctly vintf_page0 can be set while hwqueue_alloc has
->>>> not been done yet and conversely, hence the double check below:
->>> The "alloc" is in reference to a vcmdq is "allocated" to a vintf. I think spec
->>> has that usage.
->>>
->>> Anyway, I will make it clear.
->>>
->>>> +    if (!cmdqv->vcmdq[index] || !cmdqv->vintf_page0) {
->>>>
->>>>
->>>>>               cache. Hardware is not yet engaged.
->>>>>
->>>>>   Post-alloc: vintf_ptr is valid. Both QEMU trapped apertures access
->>>>>               registers directly via the mmap'd vintf_page0 pointer,
->>>>>               bypassing the cache. Hardware is the single source of
->>>>>               truth.
->>>>>
->>>>> The pre-to-post-alloc transition is triggered by the IOMMUFD hardware
->>>> so here you mean alloc is hw queue alloc
->>>>> queue allocation. The tegra241_cmdqv_sync_vcmdq() copies any pre-
->> alloc
->>>>> cached writes (CONS_INDX, PROD_INDX, CONFIG, GERRORN) into the
->>>> mmap'd
->>>>> page so the guest's view survives the transition.
->>>>>
->>>>> CMDQV acceleration only becomes active once the guest enables VINTF
->>>>> and the corresponding HW QUEUE is allocated through IOMMUFD. Until
->>>>> then, all VCMDQ accesses are served from the emulated register cache
->>>>> with no real hardware command processing. This matches the CMDQV
->>>>> hardware specification: if the logical CMDQ index does not map to any
->>>>> allocated Virtual CMDQ, "the access is dropped with no Fault/Interrupt".
->>>> I still does not realy understand what would be the problem of directly
->>>> mapping the direct cmdqv page0 too - I understand that theoretically the
->>>> direct view is larger than the VINTF one though -. I still think a
->>>> proper explanation is missed in this patch of 22/32
->>>>
->>>> Assuming the guest tries to set up some unmapped vcmdqs in the direct
->>>> cmdqv page and this eventually ends up writing into the VINTF view, what
->>>> would happen and in which terms does it violate the spec?
->>> Ok. Let me try to explain my understanding.
->>>
->>> This is my rationale after reading Nicolin's explanation here on the
->>> RFC where we had both direct aperture and vintf page 0 mapped to Guest .
->>> https://lore.kernel.org/qemu-devel/aXkTzRM695oTWFaD@Asurada-
->> Nvidia/
->>> Consider the example:
->>>
->>> QEMU advertises 2 VCMDQs (CMDQV_NUM_CMDQ_LOG2=1).
->>> Guest allocates vcmdq0 only, leaves vcmdq1 unallocated, then on the
->>> direct aperture for vcmdq1:
->>>
->>>   write 0x10 ->  A_VCMDQ1_PROD_INDX
->>>   read     A_VCMDQ1_PROD_INDX
->>>
->>> If we aliased the direct aperture to the VINTF mmap, the write
->>> would physically hit VINTF Page 0 in HW at an unmapped logical
->>> slot. And the spec says(p.172):
->>>
->>> " If no Virtual CMDQ is mapped to the Guest, or if the logical CMDQ index in
->>> the Virtual Interface being accessed by the software does not map to any
->> Virtual
->>> CMDQ, the access is dropped with no Fault/Interrupt."
->> OK
->>> So even though guest is using the direct aperture, in turn it ends up
->>> accessing the corresponding vinf page0 and won't see whatever it wrote.
->>>
->>> I think this contradicts spec p.176 where it says:
->>>
->>> "While the software can program the Virtual CMDQ(s) directly using the
->>> direct VCMDQ aperture (and not through the Virtual Interface), it is
->>> required that the VCMDQ be allocated to a Virtual  Interface before it
->>> is used to send commands to the SMMU."
->>>
->>> So the spec allows register programming through the direct aperture
->>> without requiring the VCMDQ to be allocated first.
->> Hum. So it is said if the cmdqv is not mapped on the VI you cannot send
->> commands to it through the direct aperture. But it does not say what
->> does happen if you do so. Why wouldn't the VI behavior be wrong, ie. "
->>
->> the access is dropped with no Fault/Interrupt."
-> "While the software can program the Virtual CMDQ(s) directly using the
->   direct VCMDQ aperture (and not through the Virtual Interface), it is
->   required that the VCMDQ be allocated to a Virtual Interface before it
->   is used to send commands to the SMMU."
->
-> Assuming your question is regarding the above quote:
->
-> The quote is about the direct aperture and says the software "can
-> program the Virtual CMDQ(s) directly using the direct VCMDQ aperture",
-> and only the "send commands to the SMMU" step is gated by VINTF
-> allocation. If direct-aperture writes were also dropped for unallocated
-> VCMDQs, the "can program directly" wording wouldn't be meaningful.
->
-> "Can program" behaviour:
->
-> write 0x10 ->  A_VCMDQ1_PROD_INDX
-> read       A_VCMDQ1_PROD_INDX  // read returns 0x10
->
->
-> "Drop" behaviour:
->
-> write 0x10 ->  A_VCMDQ1_PROD_INDX
-> read       A_VCMDQ1_PROD_INDX  // read returns 0 or undefined
->
-> Hope this answers your question. let me know if not.
-
-On my end, I read that the software can use either the direct view or
-the VINTF view as long as the cmdqv is mapped. And if the vcmdq is not
-mapped we are not really told what happens.
-But anyway this use case of using the direct view looks pretty marginal,
-doesn't it. So feel free to interpret it as you agree with Nicolin and
-HW experts.
-
-Thanks
+On 3/3/26 10:25 AM, Igor Mammedov wrote:
+> Allow to use SBSA generic watchdog with virt machine type.
+> (includes conditional generation of corresponding FDT and
+> ACPI GTDT descriptors)
+> 
+> Use '-device sbsa_gwdt' to command line to enable it.
+I thank that in general Peter is not a big fan of dynamic instantiation
+of sysbus devices. Don't you have means to instantiate it statically in
+arm virt memory map?
 
 Eric
-
->
-> Thanks,
-> Shameer
->
->
->
->
->
+> 
+> Tested with Fedora 43:
+>   FDT: -M virt,acpi=off -device sbsa_gwdt
+>   ACPI: -M virt -device sbsa_gwdt
+> 
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+>  hw/arm/Kconfig           |  1 +
+>  hw/arm/virt-acpi-build.c | 33 +++++++++++++++++++++++++++++++--
+>  hw/arm/virt.c            |  2 ++
+>  hw/core/sysbus-fdt.c     | 32 ++++++++++++++++++++++++++++++++
+>  hw/watchdog/sbsa_gwdt.c  |  1 +
+>  5 files changed, 67 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index c66c452737..1222efadd1 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -36,6 +36,7 @@ config ARM_VIRT
+>      select VIRTIO_MEM_SUPPORTED
+>      select ACPI_CXL
+>      select ACPI_HMAT
+> +    select WDT_SBSA
+>  
+>  config CUBIEBOARD
+>      bool
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 719d2f994e..9c14b1d4d5 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -64,6 +64,7 @@
+>  #include "hw/virtio/virtio-acpi.h"
+>  #include "target/arm/cpu.h"
+>  #include "target/arm/multiprocessing.h"
+> +#include "hw/watchdog/sbsa_gwdt.h"
+>  
+>  #define ARM_SPI_BASE 32
+>  
+> @@ -863,6 +864,8 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      const uint32_t irqflags = 0;  /* Interrupt is Level triggered  */
+>      AcpiTable table = { .sig = "GTDT", .rev = 3, .oem_id = vms->oem_id,
+>                          .oem_table_id = vms->oem_table_id };
+> +    uint32_t gtdt_start = table_data->len;
+> +    Object *wdt = object_resolve_type_unambiguous(TYPE_WDT_SBSA, NULL);
+>  
+>      acpi_table_begin(&table, table_data);
+>  
+> @@ -893,10 +896,15 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      build_append_int_noprefix(table_data, irqflags, 4);
+>      /* CntReadBase Physical address */
+>      build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
+> +
+>      /* Platform Timer Count */
+> -    build_append_int_noprefix(table_data, 0, 4);
+> +    build_append_int_noprefix(table_data,  wdt ? 1 : 0, 4);
+>      /* Platform Timer Offset */
+> -    build_append_int_noprefix(table_data, 0, 4);
+> +    build_append_int_noprefix(table_data,
+> +        wdt ? (table_data->len - gtdt_start) +
+> +              4 + 4 + 4 /* len of this & following 2 fields to skip */
+> +            : 0, 4);
+> +
+>      if (vms->ns_el2_virt_timer_irq) {
+>          /* Virtual EL2 Timer GSIV */
+>          build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL2_VIRT_IRQ, 4);
+> @@ -906,6 +914,27 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          build_append_int_noprefix(table_data, 0, 4);
+>          build_append_int_noprefix(table_data, 0, 4);
+>      }
+> +
+> +    /* ACPI 6.5 spec: 5.2.25.2 ARM Generic Watchdog Structure (Table 5-124) */
+> +    if (wdt) {
+> +        PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
+> +        SysBusDevice *sd = SYS_BUS_DEVICE(wdt);
+> +        hwaddr mmio_base = vms->memmap[VIRT_PLATFORM_BUS].base;
+> +        hwaddr rbase = mmio_base + platform_bus_get_mmio_addr(pbus, sd, 0);
+> +        hwaddr cbase = mmio_base + platform_bus_get_mmio_addr(pbus, sd, 1);
+> +        int irq = ARM_SPI_BASE + vms->irqmap[VIRT_PLATFORM_BUS] +
+> +                  platform_bus_get_irqn(pbus, sd, 0);
+> +
+> +        build_append_int_noprefix(table_data, 1 /* Type: Watchdog GT */, 1);
+> +        build_append_int_noprefix(table_data, 28 /* Length */, 2);
+> +        build_append_int_noprefix(table_data, 0, 1);  /* Reserved */
+> +        /* RefreshFrame Physical Address */
+> +        build_append_int_noprefix(table_data, rbase, 8);
+> +        /* WatchdogControlFrame Physical Address */
+> +        build_append_int_noprefix(table_data, cbase, 8);
+> +        build_append_int_noprefix(table_data, irq, 4); /* Watchdog Timer GSIV */
+> +        build_append_int_noprefix(table_data, 0, 4); /* Watchdog Timer Flags */
+> +    }
+>      acpi_table_end(linker, &table);
+>  }
+>  
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index cab2e21e8a..a87991b591 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -95,6 +95,7 @@
+>  #include "hw/cxl/cxl.h"
+>  #include "hw/cxl/cxl_host.h"
+>  #include "qemu/guest-random.h"
+> +#include "hw/watchdog/sbsa_gwdt.h"
+>  
+>  static GlobalProperty arm_virt_compat_defaults[] = {
+>      { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
+> @@ -3474,6 +3475,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_UEFI_VARS_SYSBUS);
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3);
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_WDT_SBSA);
+>  #ifdef CONFIG_TPM
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+>  #endif
+> diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+> index 89d0c46445..76aa1bc579 100644
+> --- a/hw/core/sysbus-fdt.c
+> +++ b/hw/core/sysbus-fdt.c
+> @@ -36,6 +36,7 @@
+>  #include "hw/display/ramfb.h"
+>  #include "hw/uefi/var-service-api.h"
+>  #include "hw/arm/fdt.h"
+> +#include "hw/watchdog/sbsa_gwdt.h"
+>  
+>  /*
+>   * internal struct that contains the information to create dynamic
+> @@ -118,6 +119,36 @@ static int add_uefi_vars_node(SysBusDevice *sbdev, void *opaque)
+>      return 0;
+>  }
+>  
+> +static int add_sbsa_gwdt_node(SysBusDevice *sbdev, void *opaque)
+> +{
+> +    PlatformBusFDTData *data = opaque;
+> +    PlatformBusDevice *pbus = data->pbus;
+> +    const char *parent_node = data->pbus_node_name;
+> +    void *fdt = data->fdt;
+> +    uint64_t cbase, rbase;
+> +    char *nodename;
+> +    int irq;
+> +
+> +    cbase = platform_bus_get_mmio_addr(pbus, sbdev, 1);  /* control frame */
+> +    rbase = platform_bus_get_mmio_addr(pbus, sbdev, 0);  /* refresh frame */
+> +    irq = platform_bus_get_irqn(pbus, sbdev, 0);
+> +
+> +    nodename = g_strdup_printf("%s/watchdog@%" PRIx64, parent_node, cbase);
+> +    qemu_fdt_add_subnode(fdt, nodename);
+> +
+> +    qemu_fdt_setprop_string(fdt, nodename, "compatible", "arm,sbsa-gwdt");
+> +    qemu_fdt_setprop_cells(fdt, nodename, "reg",
+> +                           cbase, SBSA_GWDT_CMMIO_SIZE,
+> +                           rbase, SBSA_GWDT_RMMIO_SIZE);
+> +    qemu_fdt_setprop_cells(fdt, nodename, "interrupts",
+> +                           GIC_FDT_IRQ_TYPE_SPI, data->irq_start + irq,
+> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> +    qemu_fdt_setprop_cell(fdt, nodename, "timeout-sec", 30);
+> +
+> +    g_free(nodename);
+> +    return 0;
+> +}
+> +
+>  static int no_fdt_node(SysBusDevice *sbdev, void *opaque)
+>  {
+>      return 0;
+> @@ -140,6 +171,7 @@ static const BindingEntry bindings[] = {
+>      TYPE_BINDING(TYPE_ARM_SMMUV3, no_fdt_node),
+>      TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
+>      TYPE_BINDING(TYPE_UEFI_VARS_SYSBUS, add_uefi_vars_node),
+> +    TYPE_BINDING(TYPE_WDT_SBSA, add_sbsa_gwdt_node),
+>      TYPE_BINDING("", NULL), /* last element */
+>  };
+>  
+> diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
+> index acb970e8b3..c4dd8005b7 100644
+> --- a/hw/watchdog/sbsa_gwdt.c
+> +++ b/hw/watchdog/sbsa_gwdt.c
+> @@ -285,6 +285,7 @@ static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, const void *data)
+>      dc->realize = wdt_sbsa_gwdt_realize;
+>      device_class_set_legacy_reset(dc, wdt_sbsa_gwdt_reset);
+>      dc->hotpluggable = false;
+> +    dc->user_creatable = true;
+>      set_bit(DEVICE_CATEGORY_WATCHDOG, dc->categories);
+>      dc->vmsd = &vmstate_sbsa_gwdt;
+>      dc->desc = "SBSA-compliant generic watchdog device";
 
 

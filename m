@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42B4CCD5BB4
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 08:26:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39AC8CD5BB4
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 08:26:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRn1b-0006kY-St; Tue, 26 May 2026 04:20:31 -0400
+	id 1wRn0s-0005Wv-Dl; Tue, 26 May 2026 04:19:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn1D-0005pK-4R
- for qemu-arm@nongnu.org; Tue, 26 May 2026 04:20:08 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0a-0005Qh-DX
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:29 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn1A-00087w-SV
- for qemu-arm@nongnu.org; Tue, 26 May 2026 04:20:06 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0Y-0007kq-Jb
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779783602;
+ s=mimecast20190719; t=1779783566;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Ra5wuvWUGCMJ11x8BdsPZvQImTaq3ZoVqRRB2z5dPX8=;
- b=Q7f/mR+GNmKqwJqtFgq/2DFreuNfoyOkBtlRCSOBZiNt8PA+Ezkk+GHOd9GCzObf0yPGUE
- Vp5YbQWVrwzd1u7PM3KLlYRZd25dn0QTZn9c3BKKBekldEKwTRmShP35myiyum3qx5Y91G
- F19an/AWVjW8v4hI6u8ooBKXzliv2s8=
+ bh=CyaVP63uw41aQRZ1cguSKQ8Eh0uX5EWMSBBwc7dF8BQ=;
+ b=dkRC+DJBdUHvibhAr2rhDLQ904Ru7vCZZ1oWhYD/Fcf7OHJEDB5RJmSxItcR5K9+XTyrA0
+ edtPcZE849ke3Qbp9dvjlmSkLntVDSdcxPyOkg/cBvFPM8YAPz9yBFBH9nElk6ibUCZvQy
+ UH3QbloL/YkNdVfs2RIAo/PeP2U1MTM=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-158-NUokxBExNneSbYdDzMejhg-1; Tue,
- 26 May 2026 04:19:57 -0400
-X-MC-Unique: NUokxBExNneSbYdDzMejhg-1
-X-Mimecast-MFC-AGG-ID: NUokxBExNneSbYdDzMejhg_1779783596
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-580-W7jRnSlzPu-pzaj6jrupkg-1; Tue,
+ 26 May 2026 04:19:22 -0400
+X-MC-Unique: W7jRnSlzPu-pzaj6jrupkg-1
+X-Mimecast-MFC-AGG-ID: W7jRnSlzPu-pzaj6jrupkg_1779783561
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A0332195608D; Tue, 26 May 2026 08:19:56 +0000 (UTC)
+ id 24F021956088; Tue, 26 May 2026 08:19:21 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.30])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E16731800357; Tue, 26 May 2026 08:19:54 +0000 (UTC)
+ id A2401180056E; Tue, 26 May 2026 08:19:19 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Kane Chen <kane_chen@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 30/37] hw/intc/aspeed_intc: convert to use Resettable interface
-Date: Tue, 26 May 2026 10:18:41 +0200
-Message-ID: <20260526081848.651835-31-clg@redhat.com>
+Subject: [PULL 14/37] docs/system/arm/aspeed: Add AST1040 Bridge IC evaluation
+ board
+Date: Tue, 26 May 2026 10:18:25 +0200
+Message-ID: <20260526081848.651835-15-clg@redhat.com>
 In-Reply-To: <20260526081848.651835-1-clg@redhat.com>
 References: <20260526081848.651835-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: ZoL8FEgu2y4Tmzk4qaA1Lv0EkOQHClyJjtxWDO918Xk_1779783596
+X-Mimecast-MFC-PROC-ID: EilR16ngHgU0Nn_TAii1dTQHbPA8fFVCYB-F34Nhejc_1779783561
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -86,50 +87,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Kane Chen <kane_chen@aspeedtech.com>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Replace the legacy reset callback registered via
-device_class_set_legacy_reset() with the Resettable interface.
+Update the Aspeed AST10x0 documentation to include the
+AST1040 evaluation board and clarify the AST10x0 family
+classification.
 
-Signed-off-by: Kane Chen <kane_chen@aspeedtech.com>
-Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Link: https://lore.kernel.org/qemu-devel/20260525044129.3133916-17-kane_chen@aspeedtech.com
+The documentation now describes:
+- AST1030 and AST1040 as Bridge IC devices
+- AST1060 as a Platform Root of Trust processor
+- AST1040 Cortex-M4F CPU frequency running at 400 MHz
+
+Also add the ast1040-evb machine entry to the supported
+AST10x0 SoC based machine list.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20260525053036.3305181-10-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/intc/aspeed_intc.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ docs/system/arm/aspeed.rst | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
 
-diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-index 52f2f946d59e..389280943091 100644
---- a/hw/intc/aspeed_intc.c
-+++ b/hw/intc/aspeed_intc.c
-@@ -692,9 +692,9 @@ static void aspeed_intc_instance_init(Object *obj)
-     }
- }
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index a2eccf54892d..2d51ceeb8443 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -441,18 +441,26 @@ Use ``tio`` or another terminal emulator to connect to the consoles:
+    $ tio /dev/pts/57
  
--static void aspeed_intc_reset(DeviceState *dev)
-+static void aspeed_intc_reset_hold(Object *obj, ResetType type)
- {
--    AspeedINTCState *s = ASPEED_INTC(dev);
-+    AspeedINTCState *s = ASPEED_INTC(obj);
-     AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
  
-     memset(s->regs, 0, aic->nr_regs << 2);
-@@ -746,12 +746,13 @@ static void aspeed_intc_unrealize(DeviceState *dev)
- static void aspeed_intc_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-     AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
+-Aspeed MiniBMC and Platform Root of Trust processor family boards (``ast1030-evb``, ``ast1060-evb``)
+-====================================================================================================
++Aspeed Bridge IC and Platform Root of Trust processor family boards (``ast1030-evb``, ``ast1040-evb``, ``ast1060-evb``)
++=======================================================================================================================
  
-     dc->desc = "ASPEED INTC Controller";
-     dc->realize = aspeed_intc_realize;
-     dc->unrealize = aspeed_intc_unrealize;
--    device_class_set_legacy_reset(dc, aspeed_intc_reset);
-+    rc->phases.hold = aspeed_intc_reset_hold;
-     dc->vmsd = NULL;
+-The QEMU Aspeed machines model mini BMCs and Platform Root of Trust processors of various Aspeed
+-evaluation boards. They are based on different releases of the Aspeed SoC : the AST1030 (MiniBMC)
+-and AST1060 (Platform Root of Trust Processor), both integrating an Arm Cortex M4F CPU (200MHz).
++The QEMU Aspeed machines model Bridge ICs and Platform Root of Trust processors
++of various Aspeed evaluation boards. They are based on different members of
++the Aspeed AST10x0 SoC family:
++
++- AST1030 : Bridge IC
++- AST1040 : Bridge IC
++- AST1060 : Platform Root of Trust processor
++
++The AST1030 and AST1060 integrate an Arm Cortex-M4F CPU running at 200 MHz.
++The AST1040 integrates an Arm Cortex-M4F CPU running at 400 MHz.
  
-     aic->reg_ops = &aspeed_intc_ops;
+ The SoC comes with SRAM, SPI, I2C, etc.
+ 
+ AST10x0 SoC based machines :
+ 
+ - ``ast1030-evb``          Aspeed AST1030 Evaluation board (Cortex-M4F)
++- ``ast1040-evb``          Aspeed AST1040 Evaluation board (Cortex-M4F)
+ - ``ast1060-evb``          Aspeed AST1060 Evaluation board (Cortex-M4F)
+ 
+ Supported devices
 -- 
 2.54.0
 

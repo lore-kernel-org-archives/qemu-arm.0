@@ -4,79 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26827CD5BC8
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 17:42:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB575CD5BC8
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 18:00:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRvn0-0007Gt-AU; Tue, 26 May 2026 13:42:02 -0400
+	id 1wRw3O-00078c-1J; Tue, 26 May 2026 13:58:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wRvmy-0007GZ-VT
- for qemu-arm@nongnu.org; Tue, 26 May 2026 13:42:00 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wRw3N-00078B-3J
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 13:58:57 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wRvmx-0004AT-6t
- for qemu-arm@nongnu.org; Tue, 26 May 2026 13:42:00 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-49039a8851fso53522605e9.2
- for <qemu-arm@nongnu.org>; Tue, 26 May 2026 10:41:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wRw3K-0008SZ-DP
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 13:58:56 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-43d7645adbdso6782532f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 26 May 2026 10:58:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779817317; x=1780422117; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=0mssOI/2jraHsHBlbkv+u0I5kV8JcukvHeex68v/cTo=;
- b=wMP+5KSyYhVUOUUb10nfkfF+zWYVWfFPG2Ve5fS6n6NNZmCg5e0FAjaaBSZP/TYk3L
- 8OG5rjs0FkdT1m3i5CH10NqNkn8hrePMh5f7Knh3ax743xQuOlY41lTvacwuwLcRlIFU
- Qx32p4Kz/HmvvTpKenrAx4K9uzxOGucFutdtx1HLtkKdp9kxr3ULYAjA8MLNpI4f0kn+
- Pq8+BhCE++D8rMuw1rvSZhHsy+x/zLS7qUP1MWBsc/zVfT//NsbOSIX3r4SdELmomT1F
- kyxdK1WDH87qwtbWolZ3TNk0ZAwIAUg/lL/IawApedHNbMMO50+a49frj0jjx9qteGPE
- kBkA==
+ d=linaro.org; s=google; t=1779818332; x=1780423132; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=BfhvteW6OePuP0G4po6kROOJkaLhl+e/wyXJSRtAICQ=;
+ b=yG5r5RrXPXz43k9DCeqxSOQ3DiHftylZoYUOMOEq5T+5XdRRscC1ys5WXhUnaj9C0C
+ sT2IVvk3osiCpOIxNQlJ0sb3t0C3EL74zBSO8dp3e1a/A+iGAUIGok62DwUJkGMVBP2e
+ v2UPdMdTtSCucQ8yJ+Lzvgr96bBZmZDhHqlxxoXgr8U9Wc4YCRaf8K76HqHhHwv9sI/J
+ mB4XH4ecCQHsKuDIHeqdGZmPjabDsBA4fJ4K0SdqCHFksxTPN6Uq+4AysWkxpx4Cajpu
+ DxSYZvtVfbxenIE557ODsUnxh+KPrcQBaO5m2aQKnpJZHZzIYzN4eyqdcb+RrSVMSLHI
+ zUKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779817317; x=1780422117;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=0mssOI/2jraHsHBlbkv+u0I5kV8JcukvHeex68v/cTo=;
- b=lo/VyRnFS8nJv8IIPykBtnDAgJmVBzvbkseURtnkPds1DsFyclXexd9Bls6Q+1I+Ee
- ciLmlLXNG2mP8x0D2aW5ZGyR9DBXqpAUKqW0M8OG6pURyjgZaVdfW9R3Y5akVfxt5KgI
- cK6YY+ub2gyi8EMzk7vhSuZ9adQZ2HXDdEgloem3Ytg7VUOtN/q5Pw0bd6JnuMGKUlz0
- ITnwzEvX478WytaCDsfqpsWIuDoE1dbhMQzx47yICsQu1KyL8znImAHvWlGQ7ZLH1Hst
- NZwblC7GwCOFuaYmGb967SK8vz5VhcogfNajuqfcMirQAdDoTVTmrKJfJkg+8Ne1rLPk
- NqnA==
-X-Gm-Message-State: AOJu0Yyp5QC0/PZrbJCa5bEfgBQO4zz1D780WrsUz3DTrHKXm2MQRfQR
- XUZjRzqbzQvCQiVNngFkgYinmsQ6e61irymkkJS1+9ylwxaM0qcJxEl0hTmxqeZZP8Da40oP+Is
- c2zdL
-X-Gm-Gg: Acq92OE68rFsN8CkePi3R5hZWX+jtnb90mPZm2CMM1+EfWWdEOgN4Xoqdb8VzTlGBMd
- xgfYdUk4wDU0dV+HleiMQtivyCEi0mFgWnN6geazj6cv9usRSr8tHhk5uvhio03TAB+vs552cbP
- 44AjgH9H+/JgP84xDL00L1biw2yyrVXYVrbBIl60rLnGcKJTbts/3UXk99s7ViaXLWy5l7JstG9
- 8rEoiZjm/1xKRg4wQKyQ/DdwAO9MxsXrxjxkP5D+BMc9sN4injy/G5zFifZtyPrTfp0nND7VYOh
- XMoFzp6EQCtCAkKwvOVZV/DpP86uHY7GxXhdvA+Pe1oW0Umlkmj0AHQ/n0vJeTD/2p6dSwMiKws
- dI6Q3zTd/UMRQIAggU4kD2eAIeS7xrhj3YRKZxxET239RmI0Uc3+LjxGM0y1ts/cIkbA09Lhp1J
- Vxpg/ybm4nEV3DyCXAWi5S6b+dOB15lP21CjJ8hiw+eiv7lFRPHGYgkRoY/9wZFOwAUerWq4Go0
- 8pEaADNkH+KbWXxLZp2mcOJxyDS+YRQLW8aK2KE4A==
-X-Received: by 2002:a05:600c:4ecc:b0:488:aa33:dcbd with SMTP id
- 5b1f17b1804b1-490428db91cmr296943015e9.26.1779817317323; 
- Tue, 26 May 2026 10:41:57 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-490454c600esm335920215e9.3.2026.05.26.10.41.56
+ d=1e100.net; s=20251104; t=1779818332; x=1780423132;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=BfhvteW6OePuP0G4po6kROOJkaLhl+e/wyXJSRtAICQ=;
+ b=k4XFnWDo3ZsobcDy8sMiGtWN43nCJuqn9H0TNRKFzBPAF3Sv0Cc8DIFmHbB1m8mFdO
+ quVnHfFe/X0vwoo8aMF7qY0YZkewYMdA7myaDIo1pNpw2Ped3t2RPNYBHgzhLj8+SyXk
+ h+0FBIlnF0FBb6ev3W/DOEAuPG5qJ6qGzoNzR5VmO/wmLwV34SlGUWebIrTJiB5Z9CMv
+ i2otxXgkxluBaPIW/r/98cCXzZ2tuvFBgxRIAE4yVyAfuMGYcU2hTJNiHUqd1V5EFFIs
+ vkM/ymrkyU0dDh/kiQCsBgsZeyopinp4HxREXNmqjYWe5tzVCAT/Jx2coe/lenx8JwQR
+ z/iw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8qGKbj7NXffZMHvMVNcU0pB9gzDHxPIQ0m7mSSf0Wpe0YkC3TX/0JyE8UuEezxP7RiaAA9kvWWug==@nongnu.org
+X-Gm-Message-State: AOJu0Yx1TuBeADymffkwXkY7LyHHZYdUf3HojZrB1O35V8DHizZmCjZP
+ CbqJWDTDHQepQqnxkf29zqo2TGFUCixMXLuIHNASg2hAtAtaw7x60muc/kqu9P9jVaw=
+X-Gm-Gg: Acq92OGfmuJrn6CKTcfW2kKy9t0VnEMp2lAIOWytvrwZbPFtBEmge/jtaMwgTR2YQPd
+ 7HYiEa3/HDDNLer8kcz2CaIVFXQObyHvlVe/yyqTKrvwYca5g5LsbTGgmBNuUx6/sjUM7R5ZYlp
+ AL9Nta3JbmmGFhnMRGSn58JFh8d/UxMde4vKkmoMB/COZtMkccbuBn3WRsemTUJhgqFUh7D7zvU
+ 4uw7xnVhZsHY5YvaksCqpJH7nzFBcGFr5RT/Qy3BHXbPnQbmMDXjrQ5Y/AwLZT5qo/snpSYEQGP
+ jYWCWZE0QzfT4uDYsVl1gd660/QZSyJqfmhn9AAiDth1Zay7bpZeGFZzTpP3Z82BTlgcwSAJkTi
+ c2DgiKucLr/5kN0llCPoooztJFtSEpN9ZWL8mX8gXIuPelb/4sI36VuBQEI6tSYQOmEV1FtgLEv
+ vNEWxIUysujkhm+G3Yz/V+8U8=
+X-Received: by 2002:a05:6000:400c:b0:45d:d092:aca4 with SMTP id
+ ffacd0b85a97d-45eb38a81b5mr30783438f8f.4.1779818332228; 
+ Tue, 26 May 2026 10:58:52 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45eb6d5caeesm38741704f8f.29.2026.05.26.10.58.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 May 2026 10:41:56 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Don't assert if 64-bit EL2 AT insn sees a Domain
- fault
-Date: Tue, 26 May 2026 18:41:55 +0100
-Message-ID: <20260526174155.2491217-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ Tue, 26 May 2026 10:58:51 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 72BB05F87C;
+ Tue, 26 May 2026 18:58:50 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org,  Peter Xu <peterx@redhat.com>,  Daniel P.
+ =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Thomas Huth
+ <th.huth+qemu@posteo.eu>,
+ Song Gao <gaosong@loongson.cn>,  John Snow <jsnow@redhat.com>,  Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Kyle Evans
+ <kevans@freebsd.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Cleber Rosa
+ <crosa@redhat.com>,  Warner Losh <imp@bsdimp.com>,  Brad Smith
+ <brad@comstyle.com>,  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Max Filippov <jcmvbkbc@gmail.com>,  Brian Cain
+ <brian.cain@oss.qualcomm.com>,  Fabiano Rosas <farosas@suse.de>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Richard Henderson
+ <richard.henderson@linaro.org>,  qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 03/16] tests/Makefile.include: add binary dependency
+ to run-tcg-tests-% rules
+In-Reply-To: <06092208-1b56-4fea-8d92-bf035fbd0fa3@oss.qualcomm.com> (Pierrick
+ Bouvier's message of "Tue, 26 May 2026 10:15:00 -0700")
+References: <20260521131739.540157-1-alex.bennee@linaro.org>
+ <20260521131739.540157-4-alex.bennee@linaro.org>
+ <74e8bc86-cd81-43f9-b5cb-7e3de3bcd3d0@oss.qualcomm.com>
+ <87tsrzl138.fsf@draig.linaro.org>
+ <093614fb-ced1-4b15-b1e1-5da755f87237@oss.qualcomm.com>
+ <87cxymec7b.fsf@draig.linaro.org>
+ <5bd51a1a-4079-4073-bbd8-f0206a1ad458@oss.qualcomm.com>
+ <0f73d717-1621-4c3f-9c5e-9bfdfaffb0b8@oss.qualcomm.com>
+ <877bor9vor.fsf@draig.linaro.org>
+ <7d58926d-a36d-430f-828e-7ebdd9cc4eb5@oss.qualcomm.com>
+ <87qzmyzbut.fsf@draig.linaro.org>
+ <06092208-1b56-4fea-8d92-bf035fbd0fa3@oss.qualcomm.com>
+User-Agent: mu4e 1.14.1; emacs 30.1
+Date: Tue, 26 May 2026 18:58:50 +0100
+Message-ID: <87fr3eyrvp.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,52 +129,206 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The Domain fault type can only happen for 32-bit short-format
-descriptors.  This means that it almost never needs to be encoded in
-a long-format fault status code.  However, there is one corner case
-where we do need to report it as a long-format FSC: if a 64-bit EL2
-does an AT insn on an AArch32 EL1&0 translation regime that is using
-short-descriptors and that translation operation hits a Domain fault,
-then this is reported in the PAR_EL1 in long-format.
+Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
 
-The PAR_EL1 register description defines that this should be reported
-as 0b111101 for a level 1 Domain fault or 0b111110 for a level 2
-Domain fault.
+> On 5/26/2026 3:47 AM, Alex Benn=C3=A9e wrote:
+>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+>>=20
+>>> On 5/25/2026 11:43 AM, Alex Benn=C3=A9e wrote:
+>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+>>>>
+>>>>> On 5/25/2026 8:46 AM, Pierrick Bouvier wrote:
+>>>>>> On 5/23/2026 1:56 AM, Alex Benn=C3=A9e wrote:
+>>>>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+>>>>>>>
+>>>>>>>> On 5/22/2026 12:02 PM, Alex Benn=C3=A9e wrote:
+>>>>>>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+>>>>>>>>>
+>>>>>>>>>> On 5/21/2026 6:17 AM, Alex Benn=C3=A9e wrote:
+>>>>>>>>>>> Explicitly set the appropriate QEMU binary as a dependency so w=
+e can
+>>>>>>>>>>> ensure they get built. This is especially important for MacOS w=
+hich
+>>>>>>>>>>> otherwise only builds the unsigned binaries on a normal "make a=
+ll"
+>>>>>>>>>>> run.
+>>>>>>>>>>>
+>>>>>>>>>>
+>>>>>>>>>> I'm not sure to see why it matters. tcg-tests don't make use of =
+hvf, so
+>>>>>>>>>> unsigned binaries are plenty for it.
+>>>>>>>>>>
+>>>>>>>>>> Which other binary is this building that is not built by default?
+>>>>>>>>>>
+>>>>>>>>>> In general, if something is not included in "all" target, let's =
+make
+>>>>>>>>>> sure it's included there (meson.build?) instead of adding a work=
+around
+>>>>>>>>>> here. Not only tests benefit this, but anyone doing a build on a
+>>>>>>>>>> platform that might have optional binaries not built by default.
+>>>>>>>>>
+>>>>>>>>> If you have a suggestion on how to make that work I'm all ears.
+>>>>>>>>>
+>>>>>>>>
+>>>>>>>> I would be happy to help, but I don't understand what the goal is.=
+ I
+>>>>>>>> have three questions that should help to provide a suggestion.
+>>>>>>>>
+>>>>>>>> Which exact test command do you run?
+>>>>>>>
+>>>>>>> make check-tcg
+>>>>>>>
+>>>>>>>>
+>>>>>>>> ```
+>>>>>>>> Explicitly set the appropriate QEMU binary as a dependency so we c=
+an
+>>>>>>>> ensure they get built.
+>>>>>>>> ```
+>>>>>>>> Aren't they built by all?
+>>>>>>>
+>>>>>>> Apparently not.
+>>>>>>>
+>>>>>>>> It seems to be a dependency, at least for check-tcg:
+>>>>>>>> .ninja-goals.check-tcg =3D all test-plugins
+>>>>>>>>
+>>>>>>>> ```
+>>>>>>>> This is especially important for MacOS which otherwise only builds=
+ the
+>>>>>>>> unsigned binaries on a normal "make all" run.
+>>>>>>>> ```
+>>>>>>>> Why do you need signed binaries for testing on MacOS (hvf?)?
+>>>>>>>
+>>>>>>> In a previous iteration I made configure spit out the unsigned bina=
+ries
+>>>>>>> to config-target.mak but the request was to fix the dependencies
+>>>>>>> instead.
+>>>>>>>
+>>>>>>> It all works on Linux so I'm not sure why MacOS is being so weird
+>>>>>>> because the meson emulators target mechanism should be the same.
+>>>>>>>
+>>>>>>
+>>>>>> Just tried now, and it does not work on Linux neither (make check-tcg
+>>>>>> does not build any target beyond tests). Maybe you forgot to clean y=
+our
+>>>>>> folder?
+>>>>>>
+>>>>>
+>>>>> The root issue is that tests/Makefile.include is included *after*
+>>>>> evaluation of ninja-targets in main Makefile. Thus,
+>>>>> .ninja-goals.check-tcg is ignored.
+>>>>
+>>>> So this replaces patch 1/16 - I think we have a circular dependency he=
+re.
+>>>>
+>>>
+>>> Indeed, I didn't notice the duplication. While it solves things under
+>>> Linux, it doesn't trigger any build on MacOS, which is what you observed
+>>> also. I wonder if it's a gmake vs whatever-make difference.
+>>>
+>>> Another solution that seems ok on both platforms is to use (harmful)
+>>> recursive make:
+>>>
+>>>  .PHONY: check-tcg
+>>> -.ninja-goals.check-tcg =3D all test-plugins
+>>> -check-tcg: $(RUN_TCG_TARGET_RULES)
+>>> +check-tcg:
+>>> + $(MAKE) all test-plugins
+>>> + $(MAKE) $(RUN_TCG_TARGET_RULES)
+>>>
+>>>  .PHONY: clean-tcg
+>>>  clean-tcg: $(CLEAN_TCG_TARGET_RULES)
+>>>
+>>> Or maybe just leave it as it is? Doc already mentions build should be
+>>> done before running any test to avoid missing binaries.
+>>> Hopefully we'll completely move tcg tests to meson one day, so there is
+>>> no need to deal with make idiosyncrasy anymore.
+>>=20
+>> The blocker for that to happen would be meson knowing about anything
+>> else than the host compiler and singular cross compiler.
+>>
+>
+> Meson indeed supports a single compiler + cross compiler at a time.
+> However, you can directly generate cross binaries using a custom_target
+> or a generator object. This way, meson would generate programs without
+> having to know it's a C compiler. Since all files are single source,
 
-The Arm ARM pseudocode special cases this in the function
-AArch64_PARFaultStatus() (because no other "fault to LFSC" code path
-can be a Domain fault).  For QEMU, implement it in arm_fi_to_lfsc().
+That is an incorrect assumption - the softmmu binaries especially have a
+multiple objects which are linked together.
 
-Cc: qemu-stable@nongnu.org
-Fixes: 1fa498fe0de97 ("target/arm: Provide fault type enum and FSR conversion functions")
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3512
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/internals.h | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+> it's not a problem, since we don't need to declare them.
+> Generators have the advantage of being less verbose (you declare only
+> once how to use them) than custom target when used several times.
+>
+> https://mesonbuild.com/Reference-manual_functions_generator.html
+> https://mesonbuild.com/Generating-sources.html#using-generator
+>
+> See a full working example below:
+> ```
+> $ cat meson.build
+> project('cross_compile_tests', 'c')
+>
+> cc_aarch64 =3D generator(
+>                find_program('aarch64-linux-gnu-gcc'),
+>                arguments: ['@INPUT@', '-o', '@OUTPUT@', '@EXTRA_ARGS@'],
+>                output: '@BASENAME@')
+>
+> tests =3D [
+>   cc_aarch64.process('test.c'),
+>   cc_aarch64.process('test2.c', extra_args: '-lpthread')
+> ]
+> # we need a target that actually uses tests
+> executable('test_aarch64', 'empty_main.c', tests)
+>
+> $ mkdir -p build && cd build
+> $ meson && ninja -v
+> [1/4] /usr/bin/aarch64-linux-gnu-gcc ../test.c -o test_aarch64.p/test
+> [2/4] /usr/bin/aarch64-linux-gnu-gcc ../test2.c -o test_aarch64.p/test2
+> -lpthread
+> [3/4] ccache cc -Itest_aarch64.p -I. -I.. -fdiagnostics-color=3Dalways
+> -D_FILE_OFFSET_BITS=3D64 -Wall -Winvalid-pch -O0 -g -MD -MQ
+> test_aarch64.p/empty_main.c.o -MF test_aarch64.p/empty_main.c.o.d -o
+> test_aarch64.p/empty_main.c.o -c ../empty_main.c
+> [4/4] cc  -o test_aarch64 test_aarch64.p/empty_main.c.o -Wl,--as-needed
+> -Wl,--no-undefined
+> $ file test_aarch64.p/test*
+> test_aarch64.p/test:  ELF 64-bit LSB pie executable, ARM aarch64,
+> version 1 (SYSV), dynamically linked, interpreter
+> /lib/ld-linux-aarch64.so.1,
+> BuildID[sha1]=3D8162b8f045880c75118958ad46be78ed75bb708d, for GNU/Linux
+> 3.7.0, not stripped
+> test_aarch64.p/test2: ELF 64-bit LSB pie executable, ARM aarch64,
+> version 1 (SYSV), dynamically linked, interpreter
+> /lib/ld-linux-aarch64.so.1,
+> BuildID[sha1]=3Deed48625e02cd436a2708f94e5dd9ce6d5c162a9, for GNU/Linux
+> 3.7.0, not stripped
+> ```
+>
+> We'll need to remove the mechanic to build cross compilers containers.
+> In my experience, it's clunky anyway and fails when building several
+> from scratch. Try it yourself after cleaning your docker/podman images.
+> It's just better and simpler to expect user to install cross
+> compilers.
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 00830b1724..bb15b149f9 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -880,6 +880,16 @@ static inline uint32_t arm_fi_to_lfsc(ARMMMUFaultInfo *fi)
-         assert(fi->level >= 0 && fi->level <= 3);
-         fsc = 0b001100 | fi->level;
-         break;
-+    case ARMFault_Domain:
-+        /*
-+         * This can only happen when doing an AT insn at EL2 for an AArch32
-+         * stage 1 EL1&0 translation regime using short-descriptors, and
-+         * the translation hits a Domain fault. This needs to be reported in
-+         * in the long-format PAR. Compare pseudocode AArch64_PARFault_Status().
-+         */
-+        assert(fi->level == 1 || fi->level == 2);
-+        fsc = 0b111100 | fi->level;
-+        break;
-     case ARMFault_Translation:
-         assert(fi->level >= -1 && fi->level <= 3);
-         if (fi->level < 0) {
--- 
-2.43.0
+That would loose a bunch of functionality and doesn't help users running
+anything that isn't Debian.
 
+> The only thing that prevented me to implement this before is that I
+> didn't know if concerned maintainers would accept it, or just hold onto
+> the precious handcrafted Makefiles, into which so much energy and time
+> has been spent.
+
+There is no desire to hold onto Makefiles, but I do want to keep the
+same capabilities as the current system. The driver for containerising
+the compilers was that setting up cross compilers is a barrier to
+contributors who want to be able to add and build tests.
+
+> If it's not the case, then we should definitely move into the direction
+> of migrating all this to meson, and rely on meson tests infrastructure.
+>
+> Regards,
+> Pierrick
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

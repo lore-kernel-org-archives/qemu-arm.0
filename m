@@ -4,94 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4D13CD5BC8
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 19:35:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F634CD5BB1
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 20:13:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRxYq-0003in-Gz; Tue, 26 May 2026 15:35:34 -0400
+	id 1wRy8a-0002N0-HN; Tue, 26 May 2026 16:12:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wRxYo-0003iX-4Y
- for qemu-arm@nongnu.org; Tue, 26 May 2026 15:35:30 -0400
-Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wRy8U-0002Ja-Ej
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 16:12:24 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wRxYm-00053i-Bv
- for qemu-arm@nongnu.org; Tue, 26 May 2026 15:35:29 -0400
-Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-6579254f996so6857642d50.1
- for <qemu-arm@nongnu.org>; Tue, 26 May 2026 12:35:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779824127; cv=none;
- d=google.com; s=arc-20240605;
- b=c9dV6FffPw6NC7g92K9HPf2YnaogNCyAscf9GjGFI9P2mT8wZng/BjotBSv8XasAyM
- E/0+zXYI/Dc8KkYyF/EQZwvFZ7lM9TuOCselhPLJ2a04G6BxKK6MpZNtFIgUuTlvapFA
- ghPUyH0XgJLO2uGeZ0cpLODrZdLMF8YcYGfiSMKKn0mU+nuNiOekZHJz1A74pTXvQt5L
- fy2/nS2WFK51cwNY7eKDTfCeSEY76gX1Qa+C78MbapOd5VbIObOdMIYdHd8s2cXWJWNa
- 2DzvrsHr+B/AmxF59Z0wG2DMHx8nsmN3Xr7EuwXw8orVxVC4wEq5nPbchzQUiI8AtQoT
- FS6A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :dkim-signature;
- bh=6PnqVaY/NN2kfARNKe9yvKSpfkwhROM4WdwQun3RfVY=;
- fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
- b=BcFVt3K1NDjYR/hF/IJp6MDcqTOSTHeb7zbyzSOsqVwSstLhgiNbcebDTim/U0qjql
- QtVpWA22dnxrx8aFbdNu7aDlnV8yuahIx+T6IVkTIE9lJTcA3u9GIY4v1r87hMCApL71
- 8wtkho0Zp1G+zHb6IJvEa+UXgN3U6WhczYjc0AdzsnTzTTPkXsh8mA46EDEw+MuZnX73
- S5zOYap/ci0URAJH3LYAMfhjmFqYB39y/96yyESt4g4nrJjMS5nh2UrqAdyFBwrOMyBa
- yWr3ZHfNiPYAxdoh1cXAp6Xf69xjS94klAQjZhrUVsujVmnN2qfvwEfyieJxag3w4K5Z
- U7yA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wRy8S-0004qF-Tm
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 16:12:22 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-44509921fbcso7048967f8f.3
+ for <qemu-arm@nongnu.org>; Tue, 26 May 2026 13:12:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779824127; x=1780428927; darn=nongnu.org;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ d=linaro.org; s=google; t=1779826339; x=1780431139; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=6PnqVaY/NN2kfARNKe9yvKSpfkwhROM4WdwQun3RfVY=;
- b=BMpc8DNO/6SWVzdha6aDIrHXAYQfzd1jDVbl+g0MPUD/iZNbHO+lt1gf4WL8xLQygH
- ngUEfslr4FYehZTezdpca01bMaRr2L0V8SJf62eP1qgtfHUu0/Vh46juxuTVrmTZPK8Z
- 4z/B6I27xf6i5Igv0GLkKxgMjp8o/r9HVwk2/sj1bRVV5XxenKde6kzBVzPG88JGYGO0
- XoQ1bFO9wDqIK+7NWqdXg33+qxPBC7Xyy/JTIRzKMcxvfT957XYSkiSCTlk7Rf4DGS1l
- 4AJxTs+izuTTi+jCo+cSgOr0Ju50qCDgeUO5y/p1Fb14CptMcKbJ3krbO864W18ZhBAl
- WOeg==
+ bh=nyD8wheZIvqh25sa/tavUVwSj39qnoEY9Y5OoPgjPgE=;
+ b=GMEVlWDiXblGldiAtl7Hcm2TjOhuyKNnPP29tIZjmaNTbtA8Y7Sm6Sxtwvq7aLtDsM
+ bNkl94bwL+ddaY811ZRxAwcl1BRSHeiPPdwU46d5TCFHDIoD75QrtWV766g627rzmyTm
+ TQ9ASigP2wtkzK6XGrBjgjDVgtCYD1qe9GrdkK85QuH1EPlOijlIFXzZeXM1Xcxwx0dF
+ cukEVay/jUcovb2Y/cF0H1DbAOWkOBqKuE8taS6XvVWJG/hpfZLFs6dDT7IptFXlr8SD
+ iAw3Pl5tZqFWTckE9N8NqQt+XvDbvpiZxDlJO/S2xR76HpZKvGVkffokOQCKhBc5PYmf
+ PyXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779824127; x=1780428927;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ d=1e100.net; s=20251104; t=1779826339; x=1780431139;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=6PnqVaY/NN2kfARNKe9yvKSpfkwhROM4WdwQun3RfVY=;
- b=etTIPECKy3nyhdVDohc3l0om71WeaeKag+vDjEKdnz6mHwpiPJmGhYAQwm8vZHQDbI
- jU/kuEN3AmGAZ/fMPxzraB/HBV4k9u1iuhchghzvjaVTbmNfO1P2lAmjP3hUCf3r+zfe
- 9GVBwTZb+3xx23FCQ+L4jIkA6IQyKmN0beYK3KpyOPqvOVsFlgUAKWoM7arhcoBW4Bbx
- 7RYw4PusvkXiduI9QnoGORghcQWgsBOFo0rSyMjmXs13wUw1plBh0HdTupWcWnCLq+Ly
- 2dJUoV1WZXqInSMSWeLti2YK3JKroHsbRtWvIvJh/U90VQSFPov0faf9P9GbgMRxTy0s
- TjRw==
-X-Gm-Message-State: AOJu0YzPXl50SNTM/NcKBEsKOjNF+iweOBg5cpHokqCGYy06OxFY5TW1
- Q6CGDIjzAnB+GnzAd4aTdfrVW/iysscj+uU/2H5OoyHrJes9GcWcxWxTqEhEpt4zikX3Y/f2s6v
- NFwrmnse2RRAnODQSMFW/EHbKLclnvsO9O+68PbqsvCmEEHZchouV
-X-Gm-Gg: Acq92OFqhZnOvNI3/mHTdFWJoz8Pd2qTEx7MEZWo31C1DqPqZISaG8Sl4WIOzAjCXG4
- PxIsafE5O/BrTrAcGe8YxHKop86zKUeLt/84j3rfqBucG+AhgFT6YxEwPePWGZ7ZoMl5wyMx7wn
- w8wfl3+OEFXswOqJyg8RUGsP88ImloEZfXO48+DhAzxdTqdjOX4DoKi8uWy7Af9L2Bljr6HR/6c
- GYxeljnIyR4SGMDUqOIwF2pAA9QRXvorq5p2guV1tg/6/HlWJ14hmHY5/pTGEX9ztlDzPca9BsW
- O37okMjo0OTpFsL7tnfpTY7PNfaBxpE0tAzchvpqsEvHKpFbinaokQ/EpeIz9/Wejtek7PlO1u7
- JXNUjq8g5VB3O
-X-Received: by 2002:a53:b1c3:0:b0:65c:2b92:f8de with SMTP id
- 956f58d0204a3-65ec9808584mr15451807d50.28.1779824126670; Tue, 26 May 2026
- 12:35:26 -0700 (PDT)
+ bh=nyD8wheZIvqh25sa/tavUVwSj39qnoEY9Y5OoPgjPgE=;
+ b=WJ5tBOCQpyP1xNu1h07p+ZEIx348THhqfl+Q0IVHZ7w5MFrYQWc5ilWC6z5J3utyC7
+ eKlCwqxE/qWDEXkBl6yu7Mos/xHLNyHFDOr6HVCipD6wIyasDvPVVIy8TrILX0bW7Va5
+ 1K+GcAvxTEF8AIxf75S3WU5/1NDv/skRwIQoTB8rTNrHhCdUf4KICJOiryUQPZoP1KIw
+ VEbTvSmn4a0l7z7mxhO8hpr0GU/TaeNLYWVP7/E7QuEtryackmXFAoYyDbwnu7OWXgYm
+ Xl7ezWC8j5sC9vZ1iP1gKi/mFNa9vRa/ALHLi1lAe2p4lNyECtRBWWyXSDYjocrR9q/n
+ p5HQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+sXS/KyVqCojSjKa3mvb+AOTNcyU9MrhdDMuvqbmfWXFtPPMLz1ID97npaODM7FrckqMKEd8bC/A==@nongnu.org
+X-Gm-Message-State: AOJu0YziO3bNI+aBDeHyGR5WHYSq1xR6gWT2CD687Xk7PTcnqSHyJ24E
+ x8tIk6oZoGl5Ck4fIUH5leC663PkBlVY0xk5rmN0mgkBGkSDgvJwiM3z5sHvutHHs8Y=
+X-Gm-Gg: Acq92OG4X34irfrTmoPlu4n8smRLxmap6uHBFNtJF5kRH6RMuw/hsjbASKplm2Der8L
+ MNR5tTgkNriH792KCC3tW6aiS3yiIs9GznYvptNYLxV2lY9U+JeLmUwWIaUQmDyj5MXvQjc3QX3
+ ZOG++Gs4UhxnmDwSawIRcngZg76XRTu82bcEUz3hocgR05aKD+pujKPWAUIJICRm9MMIr3U5XUQ
+ RP456x8Z7hG2O+5auQ9yppD17dWZWjY21iLTiP6vQLuN2UKsQ7zFSJdJrKivFWgxMP64dyzvuMB
+ j6V1PNhQ1JjLXJ68b4+58+Pe0SwpmKD+wJKhtltQ5JUkSMLxMWCx8dQRUr6TkwZtTHgVX1qBndq
+ UueG4O3Da1BcU2u5f+fXrHU+rm84LXyaLc9SOFqGnGcZYlEEcXaD7BiPjETpO1nOf8oIvh4IP/x
+ cJI7Rf9Z8NwYw8J4rlpNyqxSM99b+4VqZtMF/I145DqyqWiRc+4m4t0EhDxhAd98a2/g==
+X-Received: by 2002:a05:6000:98b:b0:44d:821:1a0b with SMTP id
+ ffacd0b85a97d-45eb38a1692mr32270631f8f.29.1779826339030; 
+ Tue, 26 May 2026 13:12:19 -0700 (PDT)
+Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45edb5c44e4sm555745f8f.36.2026.05.26.13.12.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 26 May 2026 13:12:18 -0700 (PDT)
+Message-ID: <406516d7-7de5-4876-b40b-ebe188166cdd@linaro.org>
+Date: Tue, 26 May 2026 22:12:17 +0200
 MIME-Version: 1.0
-References: <20260526174155.2491217-1-peter.maydell@linaro.org>
-In-Reply-To: <20260526174155.2491217-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 26 May 2026 20:35:15 +0100
-X-Gm-Features: AVHnY4L3r75_kZNWoOipqsJoijL-re3oIYdX5SBKVTZIMVgYWh1PfJw-_HfyngI
-Message-ID: <CAFEAcA-dKxq8S=Mb7NfgRp3060QwokbUkxey5u-XcwB77Nam3A@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Don't assert if 64-bit EL2 AT insn sees a
- Domain fault
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 00/18] single-binary: Make hw/arm/ common
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20260519144553.91483-1-philmd@linaro.org>
+ <CAFEAcA9_RB-VjLuy43p5kgkvXNJPa=WyADocKLxRxve1rFq-Ng@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA9_RB-VjLuy43p5kgkvXNJPa=WyADocKLxRxve1rFq-Ng@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,16 +103,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 26 May 2026 at 18:41, Peter Maydell <peter.maydell@linaro.org> wrote:
-> +    case ARMFault_Domain:
-> +        /*
-> +         * This can only happen when doing an AT insn at EL2 for an AArch32
-> +         * stage 1 EL1&0 translation regime using short-descriptors, and
-> +         * the translation hits a Domain fault. This needs to be reported in
-> +         * in the long-format PAR. Compare pseudocode AArch64_PARFault_Status().
-> +         */
+On 26/5/26 17:55, Peter Maydell wrote:
+> On Tue, 19 May 2026 at 15:46, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> Series fully reviewed.
+> 
+> Since it's all reviewed, if you want to take it via
+> a single-binary pullreq you can have my
+> Acked-by: Peter Maydell <peter.maydell@linaro.org>
 
-The "in in" here should just be "in".
+Thanks!
 
--- PMM
+> 
+> Otherwise I can take it in my next arm pullreq, but
+> that might be a while as I've just sent one.
+
+Unfortunately an aspeed pull request got merged today which
+also updates hw/arm/meson.build, so I need to respin another time.
 

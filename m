@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22337CD5BC8
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 08:26:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27B35CD5BB4
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 08:26:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRn0O-0005Gy-Pg; Tue, 26 May 2026 04:19:17 -0400
+	id 1wRn0s-0005Wz-Ev; Tue, 26 May 2026 04:19:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0N-0005Gb-Es
- for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0c-0005Sl-W7
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0L-0007aA-5H
- for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:15 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0b-0007lW-GD
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779783552;
+ s=mimecast20190719; t=1779783568;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rizq2K3PQZy6O3Z2ND0nuJ82zts+TTfxvu42v2xOi/c=;
- b=jQRHH0/oGsmL8VV0uRnv6BOR23LDB4AhO/dun6pCplPUbu/rxDU4fyjFObNpama0jKlRPk
- RmLF9F8/7e2HtU+ehvAxkz2cXk7IaFc47vv7dXcc7iqQvNxM5lpbjvUF8NyqA3PVBBwYro
- W6j95PNhrEZ784EoPY5ENn/VdvTqkwc=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=cTwgf1J+6VJ/GIyAISjrd9Aw3fFT8/2a6+CR3dAfHc8=;
+ b=AEEulr+Yowwv7LoOVJ9W809pn2T8u7lOxvULXYIDEA4sxY8r5NkZoijle6vOVO+fmkVPYb
+ c0auA/YEg3NUNQw4dQNUgy5wg6WUXMtO3fiejEuScQbPTLSjee05jYL30OPjBsH0qzgoAs
+ rgk3daCtuuvBr7FiLN2F8OicTt2O82Q=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-685-Cyg0zb8CMA-yl_hTpfvCTg-1; Tue,
- 26 May 2026 04:19:06 -0400
-X-MC-Unique: Cyg0zb8CMA-yl_hTpfvCTg-1
-X-Mimecast-MFC-AGG-ID: Cyg0zb8CMA-yl_hTpfvCTg_1779783545
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-650-L-Dtm7K4PJWXxFmJj0zHaw-1; Tue,
+ 26 May 2026 04:19:26 -0400
+X-MC-Unique: L-Dtm7K4PJWXxFmJj0zHaw-1
+X-Mimecast-MFC-AGG-ID: L-Dtm7K4PJWXxFmJj0zHaw_1779783565
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2F48A18002CB; Tue, 26 May 2026 08:19:05 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A327A1956053; Tue, 26 May 2026 08:19:25 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.30])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id ADD6D180056E; Tue, 26 May 2026 08:19:03 +0000 (UTC)
+ id C7DC21800357; Tue, 26 May 2026 08:19:23 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Kane Chen <kane_chen@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 06/37] hw/arm/aspeed: Convert SRAM MemoryRegion to array type
-Date: Tue, 26 May 2026 10:18:17 +0200
-Message-ID: <20260526081848.651835-7-clg@redhat.com>
+Subject: [PULL 16/37] hw/misc/aspeed_peci: convert to use Resettable interface
+Date: Tue, 26 May 2026 10:18:27 +0200
+Message-ID: <20260526081848.651835-17-clg@redhat.com>
 In-Reply-To: <20260526081848.651835-1-clg@redhat.com>
 References: <20260526081848.651835-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 5vMS2BGj68Gkh7RgC15yhYYgeNQUHzZck6S_tH0ispg_1779783545
+X-Mimecast-MFC-PROC-ID: 7ieSIEcuI-W3KiPLR1fHTGf-Cc8G5BLaophh0r5AjT8_1779783565
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,138 +86,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Kane Chen <kane_chen@aspeedtech.com>
 
-Several kinds of RAM are supported across Aspeed SoCs, including
-SRAM, SDRAM, HyperRAM, secure SRAM, and generic SRAM. In addition,
-different SoCs may expose multiple SRAM regions at different MMIO
-addresses.
+Replace the legacy reset callback registered via
+device_class_set_legacy_reset() with the Resettable interface.
 
-The current implementation models SRAM with a single MemoryRegion
-instance, which makes future expansion cumbersome when additional
-SRAM types or regions are introduced.
-
-Prepare for future SoC designs by converting the SRAM MemoryRegion
-from a single object into an array-based structure. This change
-introduces ASPEED_SRAM_NUM and converts existing SRAM users to
-reference sram[0].
-
-No functional change.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260525053036.3305181-2-jamin_lin@aspeedtech.com
+Signed-off-by: Kane Chen <kane_chen@aspeedtech.com>
+Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Link: https://lore.kernel.org/qemu-devel/20260525044129.3133916-3-kane_chen@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed_soc.h | 3 ++-
- hw/arm/aspeed_ast10x0.c     | 5 +++--
- hw/arm/aspeed_ast2400.c     | 6 +++---
- hw/arm/aspeed_ast2600.c     | 6 +++---
- hw/arm/aspeed_ast27x0.c     | 4 ++--
- 5 files changed, 13 insertions(+), 11 deletions(-)
+ hw/misc/aspeed_peci.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index d7b3647ca16c..e6942b2936ae 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -60,6 +60,7 @@
- #define ASPEED_PCIE_NUM  3
- #define ASPEED_INTC_NUM  2
- #define ASPEED_IOEXP_NUM 2
-+#define ASPEED_SRAM_NUM 1
+diff --git a/hw/misc/aspeed_peci.c b/hw/misc/aspeed_peci.c
+index 0569ee57d1fa..7469f82fad19 100644
+--- a/hw/misc/aspeed_peci.c
++++ b/hw/misc/aspeed_peci.c
+@@ -123,9 +123,9 @@ static void aspeed_peci_realize(DeviceState *dev, Error **errp)
+     sysbus_init_irq(sbd, &s->irq);
+ }
  
- struct AspeedSoCState {
-     DeviceState parent;
-@@ -67,7 +68,7 @@ struct AspeedSoCState {
-     MemoryRegion *memory;
-     MemoryRegion *dram_mr;
-     MemoryRegion dram_container;
--    MemoryRegion sram;
-+    MemoryRegion sram[ASPEED_SRAM_NUM];
-     MemoryRegion spi_boot_container;
-     MemoryRegion spi_boot;
-     MemoryRegion vbootrom;
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index 41a4e82c1f87..3e478f752058 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -240,14 +240,15 @@ static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCState *a, Error **errp)
-     /* Internal SRAM */
-     sram_name = g_strdup_printf("aspeed.sram.%d",
-                                 CPU(a->armv7m.cpu)->cpu_index);
--    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
-+    memory_region_init_ram(&s->sram[0], OBJECT(s), sram_name, sc->sram_size,
-+                           &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
-         return false;
-     }
-     memory_region_add_subregion(s->memory,
-                                 sc->memmap[ASPEED_DEV_SRAM],
--                                &s->sram);
-+                                &s->sram[0]);
-     memory_region_init_ram(&s->secsram, OBJECT(s), "sec.sram",
-                            sc->secsram_size, &err);
-     if (err != NULL) {
-diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
-index b1b826b7e0b1..d79aa832f3fa 100644
---- a/hw/arm/aspeed_ast2400.c
-+++ b/hw/arm/aspeed_ast2400.c
-@@ -281,12 +281,12 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
+-static void aspeed_peci_reset(DeviceState *dev)
++static void aspeed_peci_reset_hold(Object *obj, ResetType type)
+ {
+-    AspeedPECIState *s = ASPEED_PECI(dev);
++    AspeedPECIState *s = ASPEED_PECI(obj);
  
-     /* SRAM */
-     sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
--    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
--                                errp)) {
-+    if (!memory_region_init_ram(&s->sram[0], OBJECT(s), sram_name,
-+                                sc->sram_size, errp)) {
-         return;
-     }
-     memory_region_add_subregion(s->memory,
--                                sc->memmap[ASPEED_DEV_SRAM], &s->sram);
-+                                sc->memmap[ASPEED_DEV_SRAM], &s->sram[0]);
+     memset(s->regs, 0, sizeof(s->regs));
+ }
+@@ -133,9 +133,10 @@ static void aspeed_peci_reset(DeviceState *dev)
+ static void aspeed_peci_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
  
-     /* SCU */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index efb1d8c0637c..a69103de89ea 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -437,12 +437,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     dc->realize = aspeed_peci_realize;
+-    device_class_set_legacy_reset(dc, aspeed_peci_reset);
++    rc->phases.hold = aspeed_peci_reset_hold;
+     dc->desc = "Aspeed PECI Controller";
+ }
  
-     /* SRAM */
-     sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
--    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
--                                errp)) {
-+    if (!memory_region_init_ram(&s->sram[0], OBJECT(s), sram_name,
-+                                sc->sram_size, errp)) {
-         return;
-     }
-     memory_region_add_subregion(s->memory,
--                                sc->memmap[ASPEED_DEV_SRAM], &s->sram);
-+                                sc->memmap[ASPEED_DEV_SRAM], &s->sram[0]);
- 
-     /* DPMCU */
-     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->dpmcu),
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 87dcb82e1b01..0fb5e4b24c9d 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -778,12 +778,12 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
- 
-     /* SRAM */
-     name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
--    if (!memory_region_init_ram(&s->sram, OBJECT(s), name, sc->sram_size,
-+    if (!memory_region_init_ram(&s->sram[0], OBJECT(s), name, sc->sram_size,
-                                 errp)) {
-         return;
-     }
-     memory_region_add_subregion(s->memory,
--                                sc->memmap[ASPEED_DEV_SRAM], &s->sram);
-+                                sc->memmap[ASPEED_DEV_SRAM], &s->sram[0]);
- 
-     /* VBOOTROM */
-     if (!memory_region_init_ram(&s->vbootrom, OBJECT(s), "aspeed.vbootrom",
 -- 
 2.54.0
 

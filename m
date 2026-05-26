@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAEA0CD5BC8
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 08:21:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2C62CD5BB4
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 08:21:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRn1c-0006nc-Db; Tue, 26 May 2026 04:20:32 -0400
+	id 1wRn1g-0007AZ-5y; Tue, 26 May 2026 04:20:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn1E-0005q6-8c
- for qemu-arm@nongnu.org; Tue, 26 May 2026 04:20:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn1M-0005zH-P2
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 04:20:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn1A-000896-Vf
- for qemu-arm@nongnu.org; Tue, 26 May 2026 04:20:07 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn1K-0008DB-BV
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 04:20:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779783604;
+ s=mimecast20190719; t=1779783613;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mh8uk8O98sGKKsdKFs9tZfoYXDEU/HSSldFTkWwlD50=;
- b=PNCYxXhGqhL51IQUn06UtB4D4IvLDpBo5E2xhVEBuBArzbUbMtkMC1n1RfaIYaj8IWFepM
- 61J1hKJtDyxBQwy86QJ08foGEk5/hpvoTMfscdp79tnsIwjOWa8iYhKw1Q1igBh294FT+9
- XZnis8jvs0X1nXNKEKlvqLnJye02aGw=
+ bh=f1QWfeIUPzpW/TT4Eho6egcL6OEbsFR2owTq3V9KXl8=;
+ b=cZUhy4FKqT61KZ5j3rWU2KaGHsMVzcuDnk8DBw78UZiYrW9wCr4+Pf9x4MzIK8HfDHtS9+
+ uv6keWsbgb1B/V4W4xZjZnyzM0cBc7VnsIJjBZ9dJthjyk45bFKTPUQiiktFDvMByjv3JS
+ 3mTYN2/bb+kvddGdKtiz/tB6cVGGjbU=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-121-xP7oUhyAOyS5-UX1N_wYKQ-1; Tue,
- 26 May 2026 04:20:02 -0400
-X-MC-Unique: xP7oUhyAOyS5-UX1N_wYKQ-1
-X-Mimecast-MFC-AGG-ID: xP7oUhyAOyS5-UX1N_wYKQ_1779783601
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-460-igc9GeU5N9SMvfXSUxSYQg-1; Tue,
+ 26 May 2026 04:20:08 -0400
+X-MC-Unique: igc9GeU5N9SMvfXSUxSYQg-1
+X-Mimecast-MFC-AGG-ID: igc9GeU5N9SMvfXSUxSYQg_1779783607
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2B1EA180047F; Tue, 26 May 2026 08:20:01 +0000 (UTC)
+ id BCB1218005BE; Tue, 26 May 2026 08:20:07 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.30])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6D0131800357; Tue, 26 May 2026 08:19:59 +0000 (UTC)
+ id 0B97D180056E; Tue, 26 May 2026 08:20:05 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Kane Chen <kane_chen@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 32/37] hw/watchdog/wdt_aspeed: convert to use Resettable
- interface
-Date: Tue, 26 May 2026 10:18:43 +0200
-Message-ID: <20260526081848.651835-33-clg@redhat.com>
+Subject: [PULL 35/37] hw/rtc/aspeed_rtc: convert to use Resettable interface
+Date: Tue, 26 May 2026 10:18:46 +0200
+Message-ID: <20260526081848.651835-36-clg@redhat.com>
 In-Reply-To: <20260526081848.651835-1-clg@redhat.com>
 References: <20260526081848.651835-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 5_6cYP0I6BnbeYGjKsxu2vs7CSOSaaNjIiN0Q72gfNk_1779783601
+X-Mimecast-MFC-PROC-ID: cWCJPxMONM2bgTonVHuoOcy-jsmiaiDLapteEvL-_ow_1779783607
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -93,41 +92,41 @@ device_class_set_legacy_reset() with the Resettable interface.
 
 Signed-off-by: Kane Chen <kane_chen@aspeedtech.com>
 Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Link: https://lore.kernel.org/qemu-devel/20260525044129.3133916-19-kane_chen@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260525044129.3133916-22-kane_chen@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/watchdog/wdt_aspeed.c | 7 ++++---
+ hw/rtc/aspeed_rtc.c | 7 ++++---
  1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index 26506f3c33f9..ae411593c583 100644
---- a/hw/watchdog/wdt_aspeed.c
-+++ b/hw/watchdog/wdt_aspeed.c
-@@ -247,9 +247,9 @@ static const MemoryRegionOps aspeed_wdt_ops = {
-     .valid.unaligned = false,
- };
+diff --git a/hw/rtc/aspeed_rtc.c b/hw/rtc/aspeed_rtc.c
+index 6793e253f472..5245f3f95633 100644
+--- a/hw/rtc/aspeed_rtc.c
++++ b/hw/rtc/aspeed_rtc.c
+@@ -120,9 +120,9 @@ static void aspeed_rtc_write(void *opaque, hwaddr addr,
+     trace_aspeed_rtc_write(addr, val);
+ }
  
--static void aspeed_wdt_reset(DeviceState *dev)
-+static void aspeed_wdt_reset_hold(Object *obj, ResetType type)
+-static void aspeed_rtc_reset(DeviceState *d)
++static void aspeed_rtc_reset_hold(Object *obj, ResetType type)
  {
--    AspeedWDTState *s = ASPEED_WDT(dev);
-+    AspeedWDTState *s = ASPEED_WDT(obj);
-     AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(s);
+-    AspeedRtcState *rtc = ASPEED_RTC(d);
++    AspeedRtcState *rtc = ASPEED_RTC(obj);
  
-     s->regs[WDT_STATUS] = awc->default_status;
-@@ -310,10 +310,11 @@ static const Property aspeed_wdt_properties[] = {
- static void aspeed_wdt_class_init(ObjectClass *klass, const void *data)
+     rtc->offset = 0;
+     memset(rtc->reg, 0, sizeof(rtc->reg));
+@@ -159,10 +159,11 @@ static void aspeed_rtc_realize(DeviceState *dev, Error **errp)
+ static void aspeed_rtc_class_init(ObjectClass *klass, const void *data)
  {
      DeviceClass *dc = DEVICE_CLASS(klass);
 +    ResettableClass *rc = RESETTABLE_CLASS(klass);
  
-     dc->desc = "ASPEED Watchdog Controller";
-     dc->realize = aspeed_wdt_realize;
--    device_class_set_legacy_reset(dc, aspeed_wdt_reset);
-+    rc->phases.hold = aspeed_wdt_reset_hold;
-     set_bit(DEVICE_CATEGORY_WATCHDOG, dc->categories);
-     dc->vmsd = &vmstate_aspeed_wdt;
-     device_class_set_props(dc, aspeed_wdt_properties);
+     dc->realize = aspeed_rtc_realize;
+     dc->vmsd = &vmstate_aspeed_rtc;
+-    device_class_set_legacy_reset(dc, aspeed_rtc_reset);
++    rc->phases.hold = aspeed_rtc_reset_hold;
+ }
+ 
+ static const TypeInfo aspeed_rtc_info = {
 -- 
 2.54.0
 

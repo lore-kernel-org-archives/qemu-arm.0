@@ -4,105 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A9F4CD5BB1
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 10:47:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82630CD5BB1
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 11:03:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRpJp-0007jU-E1; Tue, 26 May 2026 06:47:29 -0400
+	id 1wRpYm-0002ZZ-Gb; Tue, 26 May 2026 07:02:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wRpJo-0007jE-5q
- for qemu-arm@nongnu.org; Tue, 26 May 2026 06:47:28 -0400
+ id 1wRpYh-0002XU-Jn
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 07:02:52 -0400
 Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wRpJm-0005yM-Aw
- for qemu-arm@nongnu.org; Tue, 26 May 2026 06:47:27 -0400
+ id 1wRpYd-0005v1-LS
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 07:02:50 -0400
 Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-490426d72f7so37337845e9.3
- for <qemu-arm@nongnu.org>; Tue, 26 May 2026 03:47:25 -0700 (PDT)
+ 5b1f17b1804b1-4891e5b9c1fso89873825e9.2
+ for <qemu-arm@nongnu.org>; Tue, 26 May 2026 04:02:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779792444; x=1780397244; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1779793366; x=1780398166; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1OuTu71O+a92onUemZiUDqg/Kn/1kwKgwFUodFC5Hq0=;
- b=awq2eb/gN292mV5p1dMegO/bXA/VI7IrKPMBeY6jzu4jieVxrMzCY6L1LBrjpUR77Y
- WJTqgh+lyk9hMTaEonr/1Kj+6eYW5BkLWyXWWrndCTHZSaQMHC8/Rqp5D6XDBDrSuPbT
- gfsv8FnThJF33a9p0C3i8tBz0QQdlQsxlLWzrXKk2MCOpMVm6mEW7HY/BMUd6+9d7jt6
- ImTrP1dmS6SlnQfBsjzZfjm1stqj2cBAPqEabhjYLPtEUTXii0nsg3hFhMKYup7D1sp4
- G94iRp9wfFo4hG3da2s841g3cFpAOFo/BRRPzv1vU+oSF90FpDegcBXd6qcm5h3cvC5T
- u5vQ==
+ bh=/2bsmuO+kVEMUScCu/3Tp/3Q2iWfYkMTotzXmGMcKJo=;
+ b=EBC7A4tDyAeyJlDe9pR1uhQcx/FJSa2mRI59ORDQhi2wc/5Bup/6G+oSJlJZEhUVF0
+ wVg/zHfndCXu+VdLdthAr//l2mD9oFEqWr1fTBkk5w53rIMoOW2phj4brwOeRB8WQQ+R
+ 75HBBgHEQ+hJ3c29m7RFuBikNK8JqUdHqAw5TdpTAZ5+NYFHscnYHJ0C0KnHI5AN+3qI
+ 6eqaD5eWB1XrafATSHyolkFIW78I4IIEmrYGga5BejyMbf0AZWXBQ0ITPHBrcXLNWcMS
+ dL1GDwcH+Qkv4Yk6p9BVZRF+TKkZmreOf15GY5ZHuzfGWBvgDtxpUCTdK8Q7zbPOq407
+ G1Xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779792444; x=1780397244;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=1OuTu71O+a92onUemZiUDqg/Kn/1kwKgwFUodFC5Hq0=;
- b=CSHaoV6j4gGsywnRNGJ3xJ88C0s5AVjLW68SuTspFVNWKxRQRPAgjQezMeG0xn3TnF
- OkhRhI9wTgtL2/T803Gh1bwAKjIWigf4jMVS6WynwTd3Wahjpv6MWhiQn/rk1AG/NpZg
- 6269j5KriNm/z2BBxXro7sByeGBttMJb7F/F0GuPekFCYoZXiz8YX8m229G8ekk96AhC
- tfmOznd/qjrF5Ic+bNORKzflut43cGlunx7grk15KvujCtVqxR3gfEWFkENng8lJVKtg
- HuQ2uz1zBdF1GJiyxIAHArQbpTDuki2qAa+mzFbcQc+i2ZnJK/F0qveMiugrESIddMOk
- Ww5Q==
+ d=1e100.net; s=20251104; t=1779793366; x=1780398166;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=/2bsmuO+kVEMUScCu/3Tp/3Q2iWfYkMTotzXmGMcKJo=;
+ b=T2mQq3hGLFptNvgNKV+IZ4NBH3ld+8GPCNNy1LPeRqMEjOY1wAu2hU8uJEcjDnWKxq
+ YzqbOM1XRQsKHYTz0NaYtu/QQ1hKisFCFCTTqqO9l7dPxXhffpsR3PjJAtNHi+DMZU1A
+ ic3A9YGLvOLrWq12srgItMrcqYKM7QwMFhsMR3lyPqdzt+RN4/FzIt8EL/HAe98P/EHy
+ nr18cCHuoY52Cc+hr+uwtuM0g8WAYiGnyxqCHstXamCg8LCDGCU+SWegW7jtMbfThZPN
+ l7EcEFeitXc68Fj8fg28J8MvOKfHY12cKqe8m8RLU2f37IlebAGHfWABWPHDB5E2zuqT
+ hEJg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/B+fClH41857GD1H9eslGHzFZwIodqs2tjWzjvDR4JTnfG1rejNwGuqI3B/jE7rx9H3UUikDpktQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yzb342A893WIsGlfngilgrypXOyqLdmmCa1xDjtfNzt0v55Xfhy
- rl8qn93Sv4cu6AG6vTlMOgVCOJ5CDuUDosbZs1eHZXXwcUL7y4yK62yDnV30Sc9cqZk=
-X-Gm-Gg: Acq92OGONqijHcDIe6FBbFL9rO/d4PeDKr92Ap1XtlUS82qF4zPSQNVYlTBUJxqo6YF
- tr0WmNwHpDJwMUu8Qi5t3waPqtYl9iY9Nx1xSHov/xxU+Xyyyg1/tCJd7yaCGBSSZUsVdXsLv1I
- e33YdcziWw6d/xhcFVpqJ50xLZsNe9am+LHupqVuhlOePaKxnTtAU4dpM10I36ZIhxHbREvytrG
- dY9sC8STPTK1pGFj7BGrkTmlb8EJWKJH0p55Vx4QeyQPHgxAaPSg4HRqIQt/7shZBiF99p9kylD
- 5pJRmifVBzmTIOMOJpBpoDrOPdsACDE/ZL64tOsxgeobXRmVtTfbBBJ9jA4bbcl4/hzmZo0zMEt
- j/LnBrLymzdcnxs5WfRyN6PuVN+4Yb8g0ioQQva1GeS7XhbBfKcof8jYiinc21/Sytdx7NVAiF/
- GdGWhhREeinOZEzHYJTcvJ1fznyik7jWAtDA==
-X-Received: by 2002:a05:600c:5298:b0:490:778:4fec with SMTP id
- 5b1f17b1804b1-490428e02d3mr304386955e9.33.1779792444029; 
- Tue, 26 May 2026 03:47:24 -0700 (PDT)
+ AFNElJ9tlq7AkoQ6oJg2NcYXrX9u17ZuK8i2qvRi/8UkJoKl2ZJ8c+PG00wnnUis7uCrdeX76MTnLlJqAQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyDUIDzKPnjA3lXLhw8lYuI6rD+WRvCY7akXxBn997CV/Euqdhz
+ 2AMSVS724vKonoTCmCAWMhzOmsPOH/bBQjfA/it1EpyxHaHdu8uJzjht3UKz3pcEYcE=
+X-Gm-Gg: Acq92OFllKXLBwy+YwbA8VSvROKZom6q8XHm4Lo1MIO0BmmF6dMKxFq3inJMxao5Kz0
+ P3cNyttb/rvBXoxesHCQG+r4/o2qwRCWEsSTaIKguL6QXdqLr8wuGSZgQjxpMCgn4qWthaA0nb7
+ 87bSd+7OGAqCGHZVpoQtAcHK3PHPglbodOWrHejHwuYC6cx5reeb78Q8Hkdj+MgrCau3m8StvBW
+ YSuY6Fbs/tXkEDT0oKziAhoFs2E06eQv4LFDdGfw3htK9+ObQUfY/BPJV5mQPsoP8edas7uj3te
+ W6lIUtiQXjy5B2D6h53VUkiJGyZOJYwg9XfXGeOA0ocFMPekGpAszcU2y+NuCEvVOOMC8EBkFp/
+ 5PE8ukjMAPSxoD/4gidU24xA7tdfMKk/qQGURRMHrJV3b8LjoWmAE7pkc8MRYmEJ7bTI+URV9vH
+ 9DMC/h7vPYxCZR5L/oq7BFi1I=
+X-Received: by 2002:a05:600c:138c:b0:490:60cb:55f0 with SMTP id
+ 5b1f17b1804b1-49060cb56femr170900035e9.21.1779793365544; 
+ Tue, 26 May 2026 04:02:45 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45eb6d5cb9asm37255865f8f.27.2026.05.26.03.47.23
+ 5b1f17b1804b1-490454ac6a6sm326946015e9.12.2026.05.26.04.02.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 May 2026 03:47:23 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 5024C5F810;
- Tue, 26 May 2026 11:47:22 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org,  Peter Xu <peterx@redhat.com>,  Daniel P.
- =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Thomas Huth
- <th.huth+qemu@posteo.eu>,
- Song Gao <gaosong@loongson.cn>,  John Snow <jsnow@redhat.com>,  Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Kyle Evans
- <kevans@freebsd.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Cleber Rosa
- <crosa@redhat.com>,  Warner Losh <imp@bsdimp.com>,  Brad Smith
- <brad@comstyle.com>,  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Max Filippov <jcmvbkbc@gmail.com>,  Brian Cain
- <brian.cain@oss.qualcomm.com>,  Fabiano Rosas <farosas@suse.de>,  Peter
- Maydell <peter.maydell@linaro.org>,  Richard Henderson
- <richard.henderson@linaro.org>,  qemu-arm@nongnu.org
-Subject: Re: [PATCH v2 03/16] tests/Makefile.include: add binary dependency
- to run-tcg-tests-% rules
-In-Reply-To: <7d58926d-a36d-430f-828e-7ebdd9cc4eb5@oss.qualcomm.com> (Pierrick
- Bouvier's message of "Mon, 25 May 2026 12:22:39 -0700")
-References: <20260521131739.540157-1-alex.bennee@linaro.org>
- <20260521131739.540157-4-alex.bennee@linaro.org>
- <74e8bc86-cd81-43f9-b5cb-7e3de3bcd3d0@oss.qualcomm.com>
- <87tsrzl138.fsf@draig.linaro.org>
- <093614fb-ced1-4b15-b1e1-5da755f87237@oss.qualcomm.com>
- <87cxymec7b.fsf@draig.linaro.org>
- <5bd51a1a-4079-4073-bbd8-f0206a1ad458@oss.qualcomm.com>
- <0f73d717-1621-4c3f-9c5e-9bfdfaffb0b8@oss.qualcomm.com>
- <877bor9vor.fsf@draig.linaro.org>
- <7d58926d-a36d-430f-828e-7ebdd9cc4eb5@oss.qualcomm.com>
-User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Tue, 26 May 2026 11:47:22 +0100
-Message-ID: <87qzmyzbut.fsf@draig.linaro.org>
+ Tue, 26 May 2026 04:02:44 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id B59185F873;
+ Tue, 26 May 2026 12:02:43 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Brad Smith <brad@comstyle.com>, Thomas Huth <thuth@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Fabiano Rosas <farosas@suse.de>, Kyle Evans <kevans@freebsd.org>,
+ Thomas Huth <th.huth+qemu@posteo.eu>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ John Snow <jsnow@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Peter Xu <peterx@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>, Song Gao <gaosong@loongson.cn>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
+ Warner Losh <imp@bsdimp.com>
+Subject: [PATCH v3 02/14] tests/Makefile.include: fix typo in comment
+Date: Tue, 26 May 2026 12:02:30 +0100
+Message-ID: <20260526110243.470002-3-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260526110243.470002-1-alex.bennee@linaro.org>
+References: <20260526110243.470002-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
  envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
@@ -111,7 +103,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,128 +119,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/Makefile.include | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> On 5/25/2026 11:43 AM, Alex Benn=C3=A9e wrote:
->> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>=20
->>> On 5/25/2026 8:46 AM, Pierrick Bouvier wrote:
->>>> On 5/23/2026 1:56 AM, Alex Benn=C3=A9e wrote:
->>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>>>>
->>>>>> On 5/22/2026 12:02 PM, Alex Benn=C3=A9e wrote:
->>>>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>>>>>>
->>>>>>>> On 5/21/2026 6:17 AM, Alex Benn=C3=A9e wrote:
->>>>>>>>> Explicitly set the appropriate QEMU binary as a dependency so we =
-can
->>>>>>>>> ensure they get built. This is especially important for MacOS whi=
-ch
->>>>>>>>> otherwise only builds the unsigned binaries on a normal "make all"
->>>>>>>>> run.
->>>>>>>>>
->>>>>>>>
->>>>>>>> I'm not sure to see why it matters. tcg-tests don't make use of hv=
-f, so
->>>>>>>> unsigned binaries are plenty for it.
->>>>>>>>
->>>>>>>> Which other binary is this building that is not built by default?
->>>>>>>>
->>>>>>>> In general, if something is not included in "all" target, let's ma=
-ke
->>>>>>>> sure it's included there (meson.build?) instead of adding a workar=
-ound
->>>>>>>> here. Not only tests benefit this, but anyone doing a build on a
->>>>>>>> platform that might have optional binaries not built by default.
->>>>>>>
->>>>>>> If you have a suggestion on how to make that work I'm all ears.
->>>>>>>
->>>>>>
->>>>>> I would be happy to help, but I don't understand what the goal is. I
->>>>>> have three questions that should help to provide a suggestion.
->>>>>>
->>>>>> Which exact test command do you run?
->>>>>
->>>>> make check-tcg
->>>>>
->>>>>>
->>>>>> ```
->>>>>> Explicitly set the appropriate QEMU binary as a dependency so we can
->>>>>> ensure they get built.
->>>>>> ```
->>>>>> Aren't they built by all?
->>>>>
->>>>> Apparently not.
->>>>>
->>>>>> It seems to be a dependency, at least for check-tcg:
->>>>>> .ninja-goals.check-tcg =3D all test-plugins
->>>>>>
->>>>>> ```
->>>>>> This is especially important for MacOS which otherwise only builds t=
-he
->>>>>> unsigned binaries on a normal "make all" run.
->>>>>> ```
->>>>>> Why do you need signed binaries for testing on MacOS (hvf?)?
->>>>>
->>>>> In a previous iteration I made configure spit out the unsigned binari=
-es
->>>>> to config-target.mak but the request was to fix the dependencies
->>>>> instead.
->>>>>
->>>>> It all works on Linux so I'm not sure why MacOS is being so weird
->>>>> because the meson emulators target mechanism should be the same.
->>>>>
->>>>
->>>> Just tried now, and it does not work on Linux neither (make check-tcg
->>>> does not build any target beyond tests). Maybe you forgot to clean your
->>>> folder?
->>>>
->>>
->>> The root issue is that tests/Makefile.include is included *after*
->>> evaluation of ninja-targets in main Makefile. Thus,
->>> .ninja-goals.check-tcg is ignored.
->>=20
->> So this replaces patch 1/16 - I think we have a circular dependency here.
->>
->
-> Indeed, I didn't notice the duplication. While it solves things under
-> Linux, it doesn't trigger any build on MacOS, which is what you observed
-> also. I wonder if it's a gmake vs whatever-make difference.
->
-> Another solution that seems ok on both platforms is to use (harmful)
-> recursive make:
->
->  .PHONY: check-tcg
-> -.ninja-goals.check-tcg =3D all test-plugins
-> -check-tcg: $(RUN_TCG_TARGET_RULES)
-> +check-tcg:
-> + $(MAKE) all test-plugins
-> + $(MAKE) $(RUN_TCG_TARGET_RULES)
->
->  .PHONY: clean-tcg
->  clean-tcg: $(CLEAN_TCG_TARGET_RULES)
->
-> Or maybe just leave it as it is? Doc already mentions build should be
-> done before running any test to avoid missing binaries.
-> Hopefully we'll completely move tcg tests to meson one day, so there is
-> no need to deal with make idiosyncrasy anymore.
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index a063a1d60fe..3b1af78ca1e 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -42,7 +42,7 @@ SPEED = quick
+ 
+ 
+ # TCG_TESTS_WITH_COMPILERS represents the test targets we have cross compiler
+-# support for, CONFIGURED_TEST_TARGETS it what meson has finally
++# support for, CONFIGURED_TCG_TARGETS it what meson has finally
+ # configured having rejected stuff we can't build.
+ CONFIGURED_TCG_TARGETS=$(patsubst %-config-target.h, %, $(wildcard *-config-target.h))
+ 
+-- 
+2.47.3
 
-The blocker for that to happen would be meson knowing about anything
-else than the host compiler and singular cross compiler.
-
->
->>>
->>> The fix is to move ninja-targets evaluation to the end of main Makefile,
->>> which introduce the expected dependency for check-tcg to "all
->>> test-plugins" targets.
->>>
->>> You can replace current patch with the one attached to this email.
->>>
->>> Regards,
->>> Pierrick
->>=20
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
 

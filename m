@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27B35CD5BB4
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 08:26:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A61E4CD5BD5
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 08:26:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRn0s-0005Wz-Ev; Tue, 26 May 2026 04:19:46 -0400
+	id 1wRn12-0005e9-S0; Tue, 26 May 2026 04:19:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0c-0005Sl-W7
- for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:31 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0l-0005VG-Oj
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:41 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0b-0007lW-GD
- for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:30 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wRn0j-0007wG-TB
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 04:19:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779783568;
+ s=mimecast20190719; t=1779783577;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cTwgf1J+6VJ/GIyAISjrd9Aw3fFT8/2a6+CR3dAfHc8=;
- b=AEEulr+Yowwv7LoOVJ9W809pn2T8u7lOxvULXYIDEA4sxY8r5NkZoijle6vOVO+fmkVPYb
- c0auA/YEg3NUNQw4dQNUgy5wg6WUXMtO3fiejEuScQbPTLSjee05jYL30OPjBsH0qzgoAs
- rgk3daCtuuvBr7FiLN2F8OicTt2O82Q=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=bS7rxvtohKHPAQPZPBhGugcovi5Pw9w4A8+8QFhy8uM=;
+ b=Fiv/7O4iI07BnlbuxOTUUb6rac+CCZYPAp88c9ZWXc+nrL67kqWtZERceJIW6+KZ9v25hY
+ B4r7Quf3PSWa4yvsB4jmf/CTGsBO8B6PUiZH+IO+VBOV3OUt9gsFLu+9RrnWRK81FM7geL
+ z3uJmWum1omRSxt2ozWWlrj2grPo9u8=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-650-L-Dtm7K4PJWXxFmJj0zHaw-1; Tue,
- 26 May 2026 04:19:26 -0400
-X-MC-Unique: L-Dtm7K4PJWXxFmJj0zHaw-1
-X-Mimecast-MFC-AGG-ID: L-Dtm7K4PJWXxFmJj0zHaw_1779783565
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-56-7XX_J_aPM3mFQic8dJiCHQ-1; Tue,
+ 26 May 2026 04:19:31 -0400
+X-MC-Unique: 7XX_J_aPM3mFQic8dJiCHQ-1
+X-Mimecast-MFC-AGG-ID: 7XX_J_aPM3mFQic8dJiCHQ_1779783570
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A327A1956053; Tue, 26 May 2026 08:19:25 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1248F195608E; Tue, 26 May 2026 08:19:30 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.30])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C7DC21800357; Tue, 26 May 2026 08:19:23 +0000 (UTC)
+ id 543431800357; Tue, 26 May 2026 08:19:28 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Kane Chen <kane_chen@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 16/37] hw/misc/aspeed_peci: convert to use Resettable interface
-Date: Tue, 26 May 2026 10:18:27 +0200
-Message-ID: <20260526081848.651835-17-clg@redhat.com>
+Subject: [PULL 18/37] hw/misc/aspeed_sbc: convert to use Resettable interface
+Date: Tue, 26 May 2026 10:18:29 +0200
+Message-ID: <20260526081848.651835-19-clg@redhat.com>
 In-Reply-To: <20260526081848.651835-1-clg@redhat.com>
 References: <20260526081848.651835-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 7ieSIEcuI-W3KiPLR1fHTGf-Cc8G5BLaophh0r5AjT8_1779783565
+X-Mimecast-MFC-PROC-ID: 7273f21HueVed6bisMs_-E0FaA1QAN53vauaDeptYrk_1779783570
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -93,40 +93,40 @@ device_class_set_legacy_reset() with the Resettable interface.
 
 Signed-off-by: Kane Chen <kane_chen@aspeedtech.com>
 Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Link: https://lore.kernel.org/qemu-devel/20260525044129.3133916-3-kane_chen@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260525044129.3133916-5-kane_chen@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/misc/aspeed_peci.c | 7 ++++---
+ hw/misc/aspeed_sbc.c | 7 ++++---
  1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/hw/misc/aspeed_peci.c b/hw/misc/aspeed_peci.c
-index 0569ee57d1fa..7469f82fad19 100644
---- a/hw/misc/aspeed_peci.c
-+++ b/hw/misc/aspeed_peci.c
-@@ -123,9 +123,9 @@ static void aspeed_peci_realize(DeviceState *dev, Error **errp)
-     sysbus_init_irq(sbd, &s->irq);
- }
+diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+index e5dab1c7bb7c..6125d2f134e8 100644
+--- a/hw/misc/aspeed_sbc.c
++++ b/hw/misc/aspeed_sbc.c
+@@ -261,9 +261,9 @@ static const MemoryRegionOps aspeed_sbc_ops = {
+     },
+ };
  
--static void aspeed_peci_reset(DeviceState *dev)
-+static void aspeed_peci_reset_hold(Object *obj, ResetType type)
+-static void aspeed_sbc_reset(DeviceState *dev)
++static void aspeed_sbc_reset_hold(Object *obj, ResetType type)
  {
--    AspeedPECIState *s = ASPEED_PECI(dev);
-+    AspeedPECIState *s = ASPEED_PECI(obj);
+-    struct AspeedSBCState *s = ASPEED_SBC(dev);
++    AspeedSBCState *s = ASPEED_SBC(obj);
  
      memset(s->regs, 0, sizeof(s->regs));
- }
-@@ -133,9 +133,10 @@ static void aspeed_peci_reset(DeviceState *dev)
- static void aspeed_peci_class_init(ObjectClass *klass, const void *data)
+ 
+@@ -330,9 +330,10 @@ static const Property aspeed_sbc_properties[] = {
+ static void aspeed_sbc_class_init(ObjectClass *klass, const void *data)
  {
      DeviceClass *dc = DEVICE_CLASS(klass);
 +    ResettableClass *rc = RESETTABLE_CLASS(klass);
  
-     dc->realize = aspeed_peci_realize;
--    device_class_set_legacy_reset(dc, aspeed_peci_reset);
-+    rc->phases.hold = aspeed_peci_reset_hold;
-     dc->desc = "Aspeed PECI Controller";
+     dc->realize = aspeed_sbc_realize;
+-    device_class_set_legacy_reset(dc, aspeed_sbc_reset);
++    rc->phases.hold = aspeed_sbc_reset_hold;
+     dc->vmsd = &vmstate_aspeed_sbc;
+     device_class_set_props(dc, aspeed_sbc_properties);
  }
- 
 -- 
 2.54.0
 

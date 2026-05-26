@@ -4,103 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D847CD5BB1
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 14:11:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F7CDCD5BB1
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 14:20:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRsVS-0002aC-3c; Tue, 26 May 2026 10:11:42 -0400
+	id 1wRsdL-0004wh-Pp; Tue, 26 May 2026 10:19:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1wRsVQ-0002Zo-LD
- for qemu-arm@nongnu.org; Tue, 26 May 2026 10:11:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1wRsdJ-0004w5-CU
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 10:19:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1wRsVN-0003qT-Ni
- for qemu-arm@nongnu.org; Tue, 26 May 2026 10:11:40 -0400
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1wRsdH-0006Fk-Oy
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 10:19:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779804697;
+ s=mimecast20190719; t=1779805187;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VjZX+fvkTp1huSeLjS2B6u9Smx9ekUJsPEt5bh6hUpI=;
- b=Djcq4IlPTWkacHBwJgD1yReGrGAcxV8fIn7UBJoBFyJTzCmmIaK5PL/8aemEOYuD//ucUY
- gmgMONTPT2en+yNNs6tzf0Y0AXooF7bXcxHQGH93HBVFYvE49B/w1Fpj0E+C6pXyBy1+CX
- T+i8HoSGVJJOS7wV01x3/IKGtQSLEE8=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=VyRxyxI+z4/HONnlsJTMkCC5rG1G0mOJ4/NX0O6JM4k=;
+ b=dDItb8BvvPeIybDCYHu85qVqX6qgQSVQdru28pSwDwaMD7P8NwWzUt0OW+ksNYSe3itwwx
+ GLlHwFpt5Q4UYQ5JxCT2DsspiLyEM9y30Hx1XPFd6o64mFGTJawefKQpP8jY18KBZnYKea
+ Jyhw0u461/rpeVzKZGGZ360Z3MpPFqc=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-556-DZSraXylNFaNviQwpunU-w-1; Tue, 26 May 2026 10:11:30 -0400
-X-MC-Unique: DZSraXylNFaNviQwpunU-w-1
-X-Mimecast-MFC-AGG-ID: DZSraXylNFaNviQwpunU-w_1779804689
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-44f1b4d0fb0so6430924f8f.1
- for <qemu-arm@nongnu.org>; Tue, 26 May 2026 07:11:29 -0700 (PDT)
+ us-mta-551-jzIroXNZNyuYQUjzbFTkAw-1; Tue, 26 May 2026 10:19:42 -0400
+X-MC-Unique: jzIroXNZNyuYQUjzbFTkAw-1
+X-Mimecast-MFC-AGG-ID: jzIroXNZNyuYQUjzbFTkAw_1779805181
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-48fde68e420so83978195e9.0
+ for <qemu-arm@nongnu.org>; Tue, 26 May 2026 07:19:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779804689; x=1780409489;
+ d=1e100.net; s=20251104; t=1779805181; x=1780409981;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=VjZX+fvkTp1huSeLjS2B6u9Smx9ekUJsPEt5bh6hUpI=;
- b=nSjG1M1GMgYAQOfprOfSQHlRhV3Xb0TOVaEjVs5DcfKK/M2DLkTjU9st8R8I37TDiw
- wBWO6mjuVk+bn19f/odk59mpqJkx+A5wnM0nExCVHZJ7IYcGGrgT5e0by1Pf8B9KTqhw
- DptVBi4wYuAh8QAJe2klwMVtK9paUstsFkfctz/OE1hTUBjaQKklR6SFELSm7tWGM/Dz
- Sqd+TBy34w1Z4LvQR3fwG0KgGVTaP7VjqtLykFg1b2xx4NqrbByvDAbXDYeY5UEH+w86
- apJ4ANnAlR65kQ1teRbi9BJmdzTFkxKe08JYYcjTJUAuQ9JnophCCa1KgZnVpoUyl1QQ
- DsUQ==
+ bh=VyRxyxI+z4/HONnlsJTMkCC5rG1G0mOJ4/NX0O6JM4k=;
+ b=RKLaFBr/JFZWD7zXyF5D+cmznA5zu5TNBgF/GTVZ6xYiFlgcj0net1hzOxI1NWP6fG
+ 0q66RwzKeQyu8WZT4YaHTljZ6Qf4V6Y/1mUtjBeVUYiddNjSd9PItSW7tLIacOH4ROLU
+ 1nKJ8Dj4IwgNJTGBfC5MxvHbYWQQW39s+wxliErrozxBahYJqtXzE0twFuH/KHyPNjee
+ fy86TIWO7Ki8nSlWlVZnKODpCH2BzDMdVmCVDg6m5blSm1LGYnrwYkdM6X+0J3JqbKjm
+ uV7blQEsX8Soqli6zw3lOaoBH8M2TUfACRjbxePNL4tWmOqzPivkMSi6XStZL5CHLFj1
+ fElw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8kzDPL42xQKYKM2+yXSBQ1pQR8KWCZpYUzJStN5yKz42SdbS2Rm7iHDpfXwIqw3svysvAZWkwLDQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzoOOMOYofJLcrxKMRE0pw8zHWwjC36ErjDaitToYZC0fFMAqrf
- Dbc7o+7tS7UTfFKO9a3VI9r9QCunSnD76mCqyGDmKzlJTwdPAoPdmKoe0iJCiIIrb8PGp2PKTbs
- S8/20BkmPm73WqBdlHlTbsMobr15NWJniyJ2RPLJLDTAsiikv9Askzw==
-X-Gm-Gg: Acq92OEffvRKCJibnO8rh4oVIlabMH7JK6FLU4kvJ/8QPjWeqyfoQCLYzg+xuF2m72K
- bNzk740SlVH06qNwk15XF02IV73rUYvIex5NhjsXR4lieLzWXR1OYX4DTg3pS6oNEoilzfPRVJp
- gC+8nH2SWJzbqOz24sPIA+HnrsxaL2kNffM7f9T4NX2FyV17kgugsQYhGMAGc3tOl9GLtHmA0B3
- BTYGSJB309q4I0AuL9z61yiKLYt/13OQyrDC2E9CJ0wHp50EPqNEdYLTG7tYPaWnU2IT6LzbwdR
- DYQSo1IlTVoCnwpH+QvVGW/Nd4Dis+pBs6ofTS9Ozj8lEYTjbB4WLrecaZ7SG4i3UCu2BLzg8wx
- 6Cj1EnZ3GwoIKnF8LqgWGFgaI7XRcl0dNfYMOTmx4RU9Yks0NkSIJ81bBA7qnY0sI
-X-Received: by 2002:a05:6000:1acb:b0:45d:b14b:2409 with SMTP id
- ffacd0b85a97d-45eb38a798dmr35514310f8f.2.1779804688720; 
- Tue, 26 May 2026 07:11:28 -0700 (PDT)
-X-Received: by 2002:a05:6000:1acb:b0:45d:b14b:2409 with SMTP id
- ffacd0b85a97d-45eb38a798dmr35514194f8f.2.1779804688015; 
- Tue, 26 May 2026 07:11:28 -0700 (PDT)
+ AFNElJ+Fyk+hih9Cush3kwPSTXNLnFQLFSxVfSoIHs2wRomqj1POa/DzqUm6RHpuYRqeFOfLa9V6FTyCQw==@nongnu.org
+X-Gm-Message-State: AOJu0YwFQo2r69GVmS58AQQXEJkmJlGlT+Wv8c4KlP7NrfPTj5InF9or
+ uQF8+enIWEdTsriCJbYQC4Al9sHTAVXbHznF+Ler97M5GbJD1V99czLjBICAonZyDr0NTqKDSIK
+ rrGXqjZ0VHXdQM85nKrn1j9cMZKat0YDwWuLjxAiab0ySG4cugO3RaQ==
+X-Gm-Gg: Acq92OFVV3z8Q2MS9cpGyPEVy6Vyun5EUHiaHGiKiBST1DA97P+EblZhsm3pj0Ng+SD
+ l+KIemmM7cZHLY9zLWVQSrfzben88YRBmEFY9JOmW3dkZXxJzAo12Ej4/gPHMDCVXaV9cnlxal7
+ K+KMY3xK6/lCuvjpT3DXAWVIlVmcBQxFrIDd1bQH4iXNuC2kso/BjvFP4aVDr7TxjPjRpu7ifvQ
+ kGW1Z2teWjJbqVXeA+E/ek5tiv3tzcYkNHBwJlt8WmaYkv5mwlI10zFOmumbMUjpdnfoiIHfHWQ
+ LdWlgbtmw5RFlAeTkxdq/fsQ03mdcyZtWH1bMjqWAlsWPAN/id3bmt9FDDQ2dTpyJF1jpO6P1B5
+ ZsTw9vd8jAm8aHIxiHZg9DzTJpvWP40xS9+mAkchf7szw95qUB4ky5OJ0F6Z237lQ
+X-Received: by 2002:a05:600c:1d25:b0:490:58e0:f466 with SMTP id
+ 5b1f17b1804b1-49058e0f614mr218945955e9.33.1779805181013; 
+ Tue, 26 May 2026 07:19:41 -0700 (PDT)
+X-Received: by 2002:a05:600c:1d25:b0:490:58e0:f466 with SMTP id
+ 5b1f17b1804b1-49058e0f614mr218945265e9.33.1779805180507; 
+ Tue, 26 May 2026 07:19:40 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45eb6d5c32esm34704737f8f.26.2026.05.26.07.11.26
+ 5b1f17b1804b1-4904526c926sm584181715e9.1.2026.05.26.07.19.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 May 2026 07:11:27 -0700 (PDT)
-Message-ID: <24184b07-2ba4-4bc4-a73f-084f0e4719ab@redhat.com>
-Date: Tue, 26 May 2026 16:11:26 +0200
+ Tue, 26 May 2026 07:19:40 -0700 (PDT)
+Message-ID: <ecc7cb66-791e-4d8b-9c3d-f172bfaf83d3@redhat.com>
+Date: Tue, 26 May 2026 16:19:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/21] acpi: add API to build WDAT instructions
+Subject: Re: [PATCH v2 07/21] arm: sbsa_gwdt: fixup default "clock-frequency"
 To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
 Cc: mst@redhat.com, anisinha@redhat.com, pbonzini@redhat.com,
  peter.maydell@linaro.org, shannon.zhaosl@gmail.com, philmd@linaro.org,
  zhao1.liu@intel.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com,
  qemu-arm@nongnu.org
 References: <20260303092532.2410177-1-imammedo@redhat.com>
- <20260303092532.2410177-2-imammedo@redhat.com>
+ <20260303092532.2410177-8-imammedo@redhat.com>
 From: Eric Auger <eauger@redhat.com>
-In-Reply-To: <20260303092532.2410177-2-imammedo@redhat.com>
+In-Reply-To: <20260303092532.2410177-8-imammedo@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Y3HMlUD6S7-OfKox1cXNSgL2jSZ4tQ6aP3eZLLs2k5I_1779804689
+X-Mimecast-MFC-PROC-ID: yxnB76nCEwsjsmsbW4iC7bahUj8dKBdHyAqew55KGHs_1779805181
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=eauger@redhat.com;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=eauger@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -120,176 +120,41 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 On 3/3/26 10:25 AM, Igor Mammedov wrote:
-> Add definitions for WDAT[1] actions/instructions
-> and build_append_wdat_ins() API to build table entries.
+> Comment about keeping legacy freq, is wrong to begin with
+> (should be 62.5MHz), but that value also doesn't make
+> sense anymore as the watchdog is used only by un-versioned
+> SBSA board and the later has hard-coded it to 1GHz.
 > 
-> 1)
-> "Hardware Watchdog Timers Design Specification"
->   https://uefi.org/acpi 'Watchdog Action Table (WDAT)'
+> Other potential user (arm/virt) also has system clock at 1GHz.
+> 
+> Drop misleading comment about legacy and set default to 1GHz
+> to match both boards.
 > 
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> Reviewed-by: Ani Sinha <anisinha@redhat.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
 Eric
 > ---
->  include/hw/acpi/wdat.h | 118 +++++++++++++++++++++++++++++++++++++++++
->  hw/acpi/aml-build.c    |  14 +++++
->  2 files changed, 132 insertions(+)
->  create mode 100644 include/hw/acpi/wdat.h
+>  hw/watchdog/sbsa_gwdt.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
 > 
-> diff --git a/include/hw/acpi/wdat.h b/include/hw/acpi/wdat.h
-> new file mode 100644
-> index 0000000000..89803eef4b
-> --- /dev/null
-> +++ b/include/hw/acpi/wdat.h
-> @@ -0,0 +1,118 @@
-> +/*
-> + * Watchdog Action Table (WDAT) definitions
-> + *
-> + * Copyright Red Hat, Inc. 2026
-> + * Author(s): Igor Mammedov <imammedo@redhat.com>
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +#ifndef QEMU_HW_ACPI_WDAT_H
-> +#define QEMU_HW_ACPI_WDAT_H
-> +
-> +#include "hw/acpi/acpi-defs.h"
-> +
-> +/*
-> + * Watchdog actions as described in
-> + *  "Hardware Watchdog Timers Design Specification"
-> + * for link to spec see https://uefi.org/acpi
-> + *     'Watchdog Action Table (WDAT)'
-> + */
-> +typedef enum {
-> +    /*
-> +     * Restarts the watchdog timer's countdown. This action is
-> +     * required.
-> +     */
-> +    WDAT_ACTION_RESET = 0x1,
-> +    /*
-> +     * Returns the current countdown value of the watchdog hardware
-> +     * (in count intervals).
-> +     */
-> +    WDAT_ACTION_QUERY_CURRENT_COUNTDOWN_PERIOD = 0x4,
-> +    /*
-> +     * Returns the countdown value the watchdog hardware is
-> +     * configured to use when reset (in count intervals).
-> +     */
-> +    WDAT_ACTION_QUERY_COUNTDOWN_PERIOD = 0x5,
-> +    /*
-> +     * Sets the countdown value (in count intervals) to be used when
-> +     * the watchdog timer is reset. This action is required if
-> +     * WDAT_ACTION_RESET does not explicitly write a new
-> +     * countdown value to a register during a reset. Otherwise, this
-> +     * action is optional.
-> +     */
-> +    WDAT_ACTION_SET_COUNTDOWN_PERIOD = 0x6,
-> +    /*
-> +     * Determines if the watchdog hardware is currently in enabled/
-> +     * running state. The same result must occur when performed from
-> +     * both from enabled/stopped state and enabled/running state. If
-> +     * the watchdog hardware is disabled, results are indeterminate.
-> +     * This action is required.
-> +     */
-> +    WDAT_ACTION_QUERY_RUNNING_STATE = 0x8,
-> +    /*
-> +     * Starts the watchdog, if not already in running state. If the
-> +     * watchdog hardware is disabled, results are indeterminate.
-> +     * This action is required.
-> +     */
-> +    WDAT_ACTION_SET_RUNNING_STATE = 0x9,
-> +    /*
-> +     * Determines if the watchdog hardware is currently in enabled/
-> +     * stopped state. The same result must occur when performed from
-> +     * both the enabled/stopped state and enabled/running state. If
-> +     * the watchdog hardware is disabled, results are indeterminate.
-> +     * This action is required.
-> +     */
-> +    WDAT_ACTION_QUERY_STOPPED_STATE = 0xA,
-> +    /*
-> +     * Stops the watchdog, if not already in stopped state. If the
-> +     * watchdog hardware is disabled, results are indeterminate.
-> +     * This action is required.
-> +     */
-> +    WDAT_ACTION_SET_STOPPED_STATE = 0xB,
-> +    /*
-> +     * Determines if the watchdog hardware is configured to perform a
-> +     * reboot when the watchdog is fired.
-> +     */
-> +    WDAT_ACTION_QUERY_REBOOT = 0x10,
-> +    /*
-> +     * Configures the watchdog hardware to perform a reboot when it
-> +     * is fired.
-> +     */
-> +    WDAT_ACTION_SET_REBOOT = 0x11,
-> +    /*
-> +     * Determines if the watchdog hardware is configured to perform a
-> +     * system shutdown when fired.
-> +     */
-> +    WDAT_ACTION_QUERY_SHUTDOWN = 0x12,
-> +    /*
-> +     * Configures the watchdog hardware to perform a system shutdown
-> +     * when fired.
-> +     */
-> +    WDAT_ACTION_SET_SHUTDOWN = 0x13,
-> +    /*
-> +     * Determines if the current boot was caused by the watchdog
-> +     * firing. The boot status is required to be set if the watchdog
-> +     * fired and caused a reboot. It is recommended that the
-> +     * Watchdog Status be set if the watchdog fired and caused a
-> +     * shutdown. This action is required.
-> +     */
-> +    WDAT_ACTION_QUERY_WATCHDOG_STATUS = 0x20,
-> +    /*
-> +     * Sets the watchdog's boot status to the default value. This
-> +     * action is required.
-> +     */
-> +    WDAT_ACTION_SET_WATCHDOG_STATUS = 0x21,
-> +} WDATAction;
-> +
-> +#define WDAT_INS_READ_VALUE 0x0
-> +#define WDAT_INS_READ_COUNTDOWN 0x1
-> +#define WDAT_INS_WRITE_VALUE 0x2
-> +#define WDAT_INS_WRITE_COUNTDOWN 0x3
-> +#define WDAT_INS_PRESERVE_REGISTER 0x80
-> +
-> +void build_append_wdat_ins(GArray *table_data,
-> +                           WDATAction action, uint8_t flags,
-> +                           struct AcpiGenericAddress as,
-> +                           uint32_t val, uint32_t mask);
-> +
-> +#endif /* QEMU_HW_ACPI_WDAT_H */
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index ea1c415b21..9f9ce28dcc 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -32,6 +32,7 @@
->  #include "hw/pci/pci_bus.h"
->  #include "hw/pci/pci_bridge.h"
->  #include "qemu/cutils.h"
-> +#include "hw/acpi/wdat.h"
+> diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
+> index 7ade5c6f18..b739a3ce3c 100644
+> --- a/hw/watchdog/sbsa_gwdt.c
+> +++ b/hw/watchdog/sbsa_gwdt.c
+> @@ -264,11 +264,10 @@ static void wdt_sbsa_gwdt_realize(DeviceState *dev, Error **errp)
+>  static const Property wdt_sbsa_gwdt_props[] = {
+>      /*
+>       * Timer frequency in Hz. This must match the frequency used by
+> -     * the CPU's generic timer. Default 62.5Hz matches QEMU's legacy
+> -     * CPU timer frequency default.
+> +     * the CPU's generic timer.
+>       */
+>      DEFINE_PROP_UINT64("clock-frequency", struct SBSA_GWDTState, freq,
+> -                       62500000),
+> +                       1000000000),
+>  };
 >  
->  static GArray *build_alloc_array(void)
->  {
-> @@ -2647,3 +2648,16 @@ Aml *aml_error_device(void)
->  
->      return dev;
->  }
-> +
-> +void build_append_wdat_ins(GArray *table_data,
-> +                           WDATAction action, uint8_t flags,
-> +                           struct AcpiGenericAddress as,
-> +                           uint32_t val, uint32_t mask)
-> +{
-> +    build_append_int_noprefix(table_data, action, 1);    /* Watchdog Action */
-> +    build_append_int_noprefix(table_data, flags, 1);     /* Instruction Flags */
-> +    build_append_int_noprefix(table_data, 0, 2);         /* Reserved */
-> +    build_append_gas_from_struct(table_data, &as);       /* Register Region */
-> +    build_append_int_noprefix(table_data, val, 4);       /* Value */
-> +    build_append_int_noprefix(table_data, mask, 4);      /* Mask */
-> +}
+>  static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, const void *data)
 
 

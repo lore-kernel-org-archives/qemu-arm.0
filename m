@@ -4,69 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA093CD5BB1
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 10:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A9F4CD5BB1
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 May 2026 10:47:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wRpH1-0006Xg-0L; Tue, 26 May 2026 06:44:35 -0400
+	id 1wRpJp-0007jU-E1; Tue, 26 May 2026 06:47:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dmitry.osipenko@collabora.com>)
- id 1wRpGx-0006X2-Ou; Tue, 26 May 2026 06:44:31 -0400
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dmitry.osipenko@collabora.com>)
- id 1wRpGv-0003zu-Td; Tue, 26 May 2026 06:44:31 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1779792263; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=G9Ln8nSzpsxJY/C9wMJwMWITt32C1+1wtDTSnZRMtWmkZGe09Q/gvgFQ//TPFTrIJudBdGImEc4z3kSnW7JobiKw3Cd6fEETwBT58Y9LPEiFlrtClqtBu9gFHuYFgkQlSlSN4iNVLCl3LqVKavrwqkpluZ1DNM/2YTkNTdWMaEE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1779792263;
- h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
- bh=HoXrJUu4A2tRq43rSlpoFLt6ugqcuSxbEHX5wYjPohI=; 
- b=MZSzaP83gR8gdEjjXVA9K1SKi6AeY0patt+WgQ7tRvezOogImur/4FIdm7dZZTx+fOGmcwJKHL69V7Mj4XTHCHZ/I6ol1RjjnKKGAmdg7b7EwJQRjJxRN6HD1kF8q3bQQIIf/g3ErED7e9V3OZjzvGZ8ZdMtKMsV/RsVAoV/RVI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=collabora.com;
- spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
- dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1779792263; 
- s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com; 
- h=Message-ID:Date:Date:MIME-Version:Subject:Subject:From:From:To:To:Cc:Cc:References:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
- bh=HoXrJUu4A2tRq43rSlpoFLt6ugqcuSxbEHX5wYjPohI=;
- b=jEac+cyWQnFcfPwX4jQRI2orBVIfvwiCD/30eFKGIATmRUyXWg9PM8by638kuCeo
- FxYTZ+OtNl4AN4IstbJBGkURAV5CzuQiGwKFRbyTxsndeZLqVcz5RkR2NH8/IXxo+Wu
- QtFjHgliJda/4Om3Reqb6rR/nouiHUBYZTgmr520=
-Received: by mx.zohomail.com with SMTPS id 1779792260513489.0132292696708;
- Tue, 26 May 2026 03:44:20 -0700 (PDT)
-Message-ID: <89b9b848-5bb1-4f13-884a-975ef3bd06bb@collabora.com>
-Date: Tue, 26 May 2026 13:44:16 +0300
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wRpJo-0007jE-5q
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 06:47:28 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wRpJm-0005yM-Aw
+ for qemu-arm@nongnu.org; Tue, 26 May 2026 06:47:27 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-490426d72f7so37337845e9.3
+ for <qemu-arm@nongnu.org>; Tue, 26 May 2026 03:47:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1779792444; x=1780397244; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1OuTu71O+a92onUemZiUDqg/Kn/1kwKgwFUodFC5Hq0=;
+ b=awq2eb/gN292mV5p1dMegO/bXA/VI7IrKPMBeY6jzu4jieVxrMzCY6L1LBrjpUR77Y
+ WJTqgh+lyk9hMTaEonr/1Kj+6eYW5BkLWyXWWrndCTHZSaQMHC8/Rqp5D6XDBDrSuPbT
+ gfsv8FnThJF33a9p0C3i8tBz0QQdlQsxlLWzrXKk2MCOpMVm6mEW7HY/BMUd6+9d7jt6
+ ImTrP1dmS6SlnQfBsjzZfjm1stqj2cBAPqEabhjYLPtEUTXii0nsg3hFhMKYup7D1sp4
+ G94iRp9wfFo4hG3da2s841g3cFpAOFo/BRRPzv1vU+oSF90FpDegcBXd6qcm5h3cvC5T
+ u5vQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779792444; x=1780397244;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=1OuTu71O+a92onUemZiUDqg/Kn/1kwKgwFUodFC5Hq0=;
+ b=CSHaoV6j4gGsywnRNGJ3xJ88C0s5AVjLW68SuTspFVNWKxRQRPAgjQezMeG0xn3TnF
+ OkhRhI9wTgtL2/T803Gh1bwAKjIWigf4jMVS6WynwTd3Wahjpv6MWhiQn/rk1AG/NpZg
+ 6269j5KriNm/z2BBxXro7sByeGBttMJb7F/F0GuPekFCYoZXiz8YX8m229G8ekk96AhC
+ tfmOznd/qjrF5Ic+bNORKzflut43cGlunx7grk15KvujCtVqxR3gfEWFkENng8lJVKtg
+ HuQ2uz1zBdF1GJiyxIAHArQbpTDuki2qAa+mzFbcQc+i2ZnJK/F0qveMiugrESIddMOk
+ Ww5Q==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/B+fClH41857GD1H9eslGHzFZwIodqs2tjWzjvDR4JTnfG1rejNwGuqI3B/jE7rx9H3UUikDpktQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzb342A893WIsGlfngilgrypXOyqLdmmCa1xDjtfNzt0v55Xfhy
+ rl8qn93Sv4cu6AG6vTlMOgVCOJ5CDuUDosbZs1eHZXXwcUL7y4yK62yDnV30Sc9cqZk=
+X-Gm-Gg: Acq92OGONqijHcDIe6FBbFL9rO/d4PeDKr92Ap1XtlUS82qF4zPSQNVYlTBUJxqo6YF
+ tr0WmNwHpDJwMUu8Qi5t3waPqtYl9iY9Nx1xSHov/xxU+Xyyyg1/tCJd7yaCGBSSZUsVdXsLv1I
+ e33YdcziWw6d/xhcFVpqJ50xLZsNe9am+LHupqVuhlOePaKxnTtAU4dpM10I36ZIhxHbREvytrG
+ dY9sC8STPTK1pGFj7BGrkTmlb8EJWKJH0p55Vx4QeyQPHgxAaPSg4HRqIQt/7shZBiF99p9kylD
+ 5pJRmifVBzmTIOMOJpBpoDrOPdsACDE/ZL64tOsxgeobXRmVtTfbBBJ9jA4bbcl4/hzmZo0zMEt
+ j/LnBrLymzdcnxs5WfRyN6PuVN+4Yb8g0ioQQva1GeS7XhbBfKcof8jYiinc21/Sytdx7NVAiF/
+ GdGWhhREeinOZEzHYJTcvJ1fznyik7jWAtDA==
+X-Received: by 2002:a05:600c:5298:b0:490:778:4fec with SMTP id
+ 5b1f17b1804b1-490428e02d3mr304386955e9.33.1779792444029; 
+ Tue, 26 May 2026 03:47:24 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45eb6d5cb9asm37255865f8f.27.2026.05.26.03.47.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 May 2026 03:47:23 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 5024C5F810;
+ Tue, 26 May 2026 11:47:22 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org,  Peter Xu <peterx@redhat.com>,  Daniel P.
+ =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Thomas Huth
+ <th.huth+qemu@posteo.eu>,
+ Song Gao <gaosong@loongson.cn>,  John Snow <jsnow@redhat.com>,  Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Kyle Evans
+ <kevans@freebsd.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Cleber Rosa
+ <crosa@redhat.com>,  Warner Losh <imp@bsdimp.com>,  Brad Smith
+ <brad@comstyle.com>,  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Max Filippov <jcmvbkbc@gmail.com>,  Brian Cain
+ <brian.cain@oss.qualcomm.com>,  Fabiano Rosas <farosas@suse.de>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Richard Henderson
+ <richard.henderson@linaro.org>,  qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 03/16] tests/Makefile.include: add binary dependency
+ to run-tcg-tests-% rules
+In-Reply-To: <7d58926d-a36d-430f-828e-7ebdd9cc4eb5@oss.qualcomm.com> (Pierrick
+ Bouvier's message of "Mon, 25 May 2026 12:22:39 -0700")
+References: <20260521131739.540157-1-alex.bennee@linaro.org>
+ <20260521131739.540157-4-alex.bennee@linaro.org>
+ <74e8bc86-cd81-43f9-b5cb-7e3de3bcd3d0@oss.qualcomm.com>
+ <87tsrzl138.fsf@draig.linaro.org>
+ <093614fb-ced1-4b15-b1e1-5da755f87237@oss.qualcomm.com>
+ <87cxymec7b.fsf@draig.linaro.org>
+ <5bd51a1a-4079-4073-bbd8-f0206a1ad458@oss.qualcomm.com>
+ <0f73d717-1621-4c3f-9c5e-9bfdfaffb0b8@oss.qualcomm.com>
+ <877bor9vor.fsf@draig.linaro.org>
+ <7d58926d-a36d-430f-828e-7ebdd9cc4eb5@oss.qualcomm.com>
+User-Agent: mu4e 1.14.1; emacs 30.1
+Date: Tue, 26 May 2026 11:47:22 +0100
+Message-ID: <87qzmyzbut.fsf@draig.linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 4/4] virtio-gpu: advertise VIRTIO_GPU_F_BLOB_ALIGNMENT
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Lucas Amaral <lucaaamaral@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, marcandre.lureau@redhat.com,
- visitorckw@gmail.com
-References: <20260317182049.33848-1-lucaaamaral@gmail.com>
- <20260317182049.33848-5-lucaaamaral@gmail.com>
- <87se7nbr96.fsf@draig.linaro.org>
- <6d3ab702-a931-4a48-81b4-d774b25095c1@collabora.com>
-Content-Language: en-US
-In-Reply-To: <6d3ab702-a931-4a48-81b4-d774b25095c1@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.112;
- envelope-from=dmitry.osipenko@collabora.com; helo=sender4-pp-f112.zoho.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,54 +127,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/19/26 17:30, Dmitry Osipenko wrote:
-> On 5/19/26 13:58, Alex Bennée wrote:
->> Lucas Amaral <lucaaamaral@gmail.com> writes:
+Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+
+> On 5/25/2026 11:43 AM, Alex Benn=C3=A9e wrote:
+>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+>>=20
+>>> On 5/25/2026 8:46 AM, Pierrick Bouvier wrote:
+>>>> On 5/23/2026 1:56 AM, Alex Benn=C3=A9e wrote:
+>>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+>>>>>
+>>>>>> On 5/22/2026 12:02 PM, Alex Benn=C3=A9e wrote:
+>>>>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+>>>>>>>
+>>>>>>>> On 5/21/2026 6:17 AM, Alex Benn=C3=A9e wrote:
+>>>>>>>>> Explicitly set the appropriate QEMU binary as a dependency so we =
+can
+>>>>>>>>> ensure they get built. This is especially important for MacOS whi=
+ch
+>>>>>>>>> otherwise only builds the unsigned binaries on a normal "make all"
+>>>>>>>>> run.
+>>>>>>>>>
+>>>>>>>>
+>>>>>>>> I'm not sure to see why it matters. tcg-tests don't make use of hv=
+f, so
+>>>>>>>> unsigned binaries are plenty for it.
+>>>>>>>>
+>>>>>>>> Which other binary is this building that is not built by default?
+>>>>>>>>
+>>>>>>>> In general, if something is not included in "all" target, let's ma=
+ke
+>>>>>>>> sure it's included there (meson.build?) instead of adding a workar=
+ound
+>>>>>>>> here. Not only tests benefit this, but anyone doing a build on a
+>>>>>>>> platform that might have optional binaries not built by default.
+>>>>>>>
+>>>>>>> If you have a suggestion on how to make that work I'm all ears.
+>>>>>>>
+>>>>>>
+>>>>>> I would be happy to help, but I don't understand what the goal is. I
+>>>>>> have three questions that should help to provide a suggestion.
+>>>>>>
+>>>>>> Which exact test command do you run?
+>>>>>
+>>>>> make check-tcg
+>>>>>
+>>>>>>
+>>>>>> ```
+>>>>>> Explicitly set the appropriate QEMU binary as a dependency so we can
+>>>>>> ensure they get built.
+>>>>>> ```
+>>>>>> Aren't they built by all?
+>>>>>
+>>>>> Apparently not.
+>>>>>
+>>>>>> It seems to be a dependency, at least for check-tcg:
+>>>>>> .ninja-goals.check-tcg =3D all test-plugins
+>>>>>>
+>>>>>> ```
+>>>>>> This is especially important for MacOS which otherwise only builds t=
+he
+>>>>>> unsigned binaries on a normal "make all" run.
+>>>>>> ```
+>>>>>> Why do you need signed binaries for testing on MacOS (hvf?)?
+>>>>>
+>>>>> In a previous iteration I made configure spit out the unsigned binari=
+es
+>>>>> to config-target.mak but the request was to fix the dependencies
+>>>>> instead.
+>>>>>
+>>>>> It all works on Linux so I'm not sure why MacOS is being so weird
+>>>>> because the meson emulators target mechanism should be the same.
+>>>>>
+>>>>
+>>>> Just tried now, and it does not work on Linux neither (make check-tcg
+>>>> does not build any target beyond tests). Maybe you forgot to clean your
+>>>> folder?
+>>>>
+>>>
+>>> The root issue is that tests/Makefile.include is included *after*
+>>> evaluation of ninja-targets in main Makefile. Thus,
+>>> .ninja-goals.check-tcg is ignored.
+>>=20
+>> So this replaces patch 1/16 - I think we have a circular dependency here.
 >>
->>> Set blob_alignment to the host page size so the guest kernel can
->>> align blob BAR offsets accordingly, avoiding alignment mismatches
->>> with the VMM's memory mapping API (e.g., hv_vm_map on macOS).
->>>
->>> Guest-side kernel support (drm_mm alignment) is pending upstream
->>> Linux merge.
->>>
->>> Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
->>> ---
->>>  hw/display/virtio-gpu.c | 8 ++++++++
->>>  1 file changed, 8 insertions(+)
->>>
->>> diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
->>> index de7a86a7..44ae5034 100644
->>> --- a/hw/display/virtio-gpu.c
->>> +++ b/hw/display/virtio-gpu.c
->>> @@ -1532,6 +1532,14 @@ void virtio_gpu_device_realize(DeviceState *qdev, Error **errp)
->>>  #endif
->>>      }
->>>  
->>> +    /*
->>> +     * TODO: guest-side F_BLOB_ALIGNMENT support pending upstream Linux merge
->>> +     * (Sergio Lopez's patches, Nov 2025). Until merged, the guest won't
->>> +     * negotiate this feature. The host advertises it per OASIS virtio spec.
->>> +     */
->>> +    g->parent_obj.virtio_config.blob_alignment =
->>> +        cpu_to_le32(qemu_real_host_page_size());
->>> +
->>
->> Is it merged yet?
-> 
-> Not merged, I actually missed the v2 patches Sergio sent couple weeks
-> ago [1], thanks for bringing it up. In general, it's enough to have the
-> field defined in the virtio spec, there should be no need to wait for
-> the kernel patch to land.
-> 
-> [1]
-> https://lore.kernel.org/dri-devel/20260428194450.518296-1-slp@redhat.com/
+>
+> Indeed, I didn't notice the duplication. While it solves things under
+> Linux, it doesn't trigger any build on MacOS, which is what you observed
+> also. I wonder if it's a gmake vs whatever-make difference.
+>
+> Another solution that seems ok on both platforms is to use (harmful)
+> recursive make:
+>
+>  .PHONY: check-tcg
+> -.ninja-goals.check-tcg =3D all test-plugins
+> -check-tcg: $(RUN_TCG_TARGET_RULES)
+> +check-tcg:
+> + $(MAKE) all test-plugins
+> + $(MAKE) $(RUN_TCG_TARGET_RULES)
+>
+>  .PHONY: clean-tcg
+>  clean-tcg: $(CLEAN_TCG_TARGET_RULES)
+>
+> Or maybe just leave it as it is? Doc already mentions build should be
+> done before running any test to avoid missing binaries.
+> Hopefully we'll completely move tcg tests to meson one day, so there is
+> no need to deal with make idiosyncrasy anymore.
 
-Kernel patches landed to misc-next tree last week [1].
+The blocker for that to happen would be meson knowing about anything
+else than the host compiler and singular cross compiler.
 
-[1] https://gitlab.freedesktop.org/drm/misc/kernel/-/commits/drm-misc-next
+>
+>>>
+>>> The fix is to move ninja-targets evaluation to the end of main Makefile,
+>>> which introduce the expected dependency for check-tcg to "all
+>>> test-plugins" targets.
+>>>
+>>> You can replace current patch with the one attached to this email.
+>>>
+>>> Regards,
+>>> Pierrick
+>>=20
 
--- 
-Best regards,
-Dmitry
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

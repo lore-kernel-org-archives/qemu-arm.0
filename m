@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF233CD5BDE
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 05:02:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A21ADCD5BDE
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 05:02:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wS6Ny-0001I2-1n; Wed, 27 May 2026 01:00:54 -0400
+	id 1wS6OO-0001P1-Lt; Wed, 27 May 2026 01:01:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wS6Ns-0001DM-L5; Wed, 27 May 2026 01:00:48 -0400
+ id 1wS6ON-0001OX-47; Wed, 27 May 2026 01:01:19 -0400
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wS6Nq-0004D1-Dq; Wed, 27 May 2026 01:00:48 -0400
+ id 1wS6OL-0004GB-C4; Wed, 27 May 2026 01:01:18 -0400
 Received: from localhost (unknown [131.107.147.136])
- by linux.microsoft.com (Postfix) with ESMTPSA id 8300420B7169;
- Tue, 26 May 2026 22:00:32 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 8300420B7169
+ by linux.microsoft.com (Postfix) with ESMTPSA id 81E6420B7178;
+ Tue, 26 May 2026 22:00:43 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 81E6420B7178
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1779858032;
- bh=VMoK3GpptJwDCUW4WqrzlU0uSIXw3ImWH6c3t5gkgXE=;
+ s=default; t=1779858043;
+ bh=nSRviMTjzY05eP4undoQCtpa2DSIEGk82eY16zPUOpM=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=TvpGbMYxmBUfsD8nT6hJBQR3oCaji4aN/cH3JpmyWzZdQ4bcnoHX8KCkqPgpyGvH2
- ny29qk/Avl7NrGkwvufZdXi0i2QiPa8VTO+BcLEx8WX1roKyTjj0+L/6w5kCasJo2F
- wWjmel3lNc7Itjwhz1fsOsii4OOIwK6duBtlyBqc=
+ b=CHewVDOJN82yKN5HDhsfL/MhxVtptAZtKNTDFaKojpz/B6IaCba97yM8rP9+cGLzN
+ +jYc5pf2e05oISsuea9HtOmYMKK0X5fFMBi7gBSSOfrhQs0n9wzA0zBcn7FqYOYroJ
+ yOUnJx+qG+HxkpdgHgagaDKbdmJ4hepBHFGEhQdQ=
 From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Wed, 27 May 2026 05:00:37 +0000
-Subject: [PATCH v4 01/15] accel/mshv: move msr.c to target/i386
+Date: Wed, 27 May 2026 05:00:49 +0000
+Subject: [PATCH v4 13/15] include/hw/hyperv: adjust hv_interrupt_control
+ structure for arm64
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260527-mshv_accel_arm64_supp-v4-1-66d871dcdc53@linux.microsoft.com>
+Message-Id: <20260527-mshv_accel_arm64_supp-v4-13-66d871dcdc53@linux.microsoft.com>
 References: <20260527-mshv_accel_arm64_supp-v4-0-66d871dcdc53@linux.microsoft.com>
 In-Reply-To: <20260527-mshv_accel_arm64_supp-v4-0-66d871dcdc53@linux.microsoft.com>
 To: qemu-devel@nongnu.org
@@ -76,45 +77,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This file has x86 specific implementations. Move this file to i386
-folder in preparation for ARM64 MSHV support.
+From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
 
-Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
-Acked-by: Wei Liu <wei.liu@kernel.org>
-Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+Add the arm64 specific fields to the hv_interrupt_control struct and
+adjust the existing usage accordingly. mshv_request_interrupt is only
+needed only for x86 so compile it out entirely for arm64.
+
+Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
 ---
- accel/mshv/meson.build            | 1 -
- target/i386/mshv/meson.build      | 1 +
- {accel => target/i386}/mshv/msr.c | 0
- 3 files changed, 1 insertion(+), 1 deletion(-)
+ accel/mshv/irq.c               |  2 ++
+ include/hw/hyperv/hvgdk_mini.h | 25 +++++++++++++++++++++++++
+ include/system/mshv.h          |  2 ++
+ 3 files changed, 29 insertions(+)
 
-diff --git a/accel/mshv/meson.build b/accel/mshv/meson.build
-index c1b1787c5e..e433187cde 100644
---- a/accel/mshv/meson.build
-+++ b/accel/mshv/meson.build
-@@ -1,6 +1,5 @@
- system_ss.add(when: 'CONFIG_MSHV', if_true: files(
-   'irq.c',
-   'mem.c',
--  'msr.c',
-   'mshv-all.c'
- ))
-diff --git a/target/i386/mshv/meson.build b/target/i386/mshv/meson.build
-index 49f28d4a5b..6091c21887 100644
---- a/target/i386/mshv/meson.build
-+++ b/target/i386/mshv/meson.build
-@@ -2,6 +2,7 @@ i386_mshv_ss = ss.source_set()
+diff --git a/accel/mshv/irq.c b/accel/mshv/irq.c
+index 3c238c33c3..a391d7db86 100644
+--- a/accel/mshv/irq.c
++++ b/accel/mshv/irq.c
+@@ -310,6 +310,7 @@ int mshv_irqchip_update_msi_route(int virq, MSIMessage msg, PCIDevice *dev)
+     return 0;
+ }
  
- i386_mshv_ss.add(files(
-   'mshv-cpu.c',
-+  'msr.c',
- ))
++#if defined(__x86_64__)
+ int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint32_t vector,
+                            uint32_t vp_index, bool logical_dest_mode,
+                            bool level_triggered)
+@@ -346,6 +347,7 @@ int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint3
+     }
+     return 0;
+ }
++#endif
  
- i386_system_ss.add_all(when: 'CONFIG_MSHV', if_true: i386_mshv_ss)
-diff --git a/accel/mshv/msr.c b/target/i386/mshv/msr.c
-similarity index 100%
-rename from accel/mshv/msr.c
-rename to target/i386/mshv/msr.c
+ void mshv_irqchip_commit_routes(void)
+ {
+diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
+index 192d464d22..c3424b760a 100644
+--- a/include/hw/hyperv/hvgdk_mini.h
++++ b/include/hw/hyperv/hvgdk_mini.h
+@@ -510,13 +510,38 @@ typedef struct hv_input_set_vp_registers {
+     struct hv_register_assoc elements[];
+ } QEMU_PACKED hv_input_set_vp_registers;
+ 
++enum hv_interrupt_type {
++#if defined(__x86_64__)
++    HV_X64_INTERRUPT_TYPE_FIXED             = 0x0000,
++    HV_X64_INTERRUPT_TYPE_LOWESTPRIORITY    = 0x0001,
++    HV_X64_INTERRUPT_TYPE_SMI               = 0x0002,
++    HV_X64_INTERRUPT_TYPE_REMOTEREAD        = 0x0003,
++    HV_X64_INTERRUPT_TYPE_NMI               = 0x0004,
++    HV_X64_INTERRUPT_TYPE_INIT              = 0x0005,
++    HV_X64_INTERRUPT_TYPE_SIPI              = 0x0006,
++    HV_X64_INTERRUPT_TYPE_EXTINT            = 0x0007,
++    HV_X64_INTERRUPT_TYPE_LOCALINT0         = 0x0008,
++    HV_X64_INTERRUPT_TYPE_LOCALINT1         = 0x0009,
++    HV_X64_INTERRUPT_TYPE_MAXIMUM           = 0x000A,
++#elif defined(__aarch64__)
++    HV_ARM64_INTERRUPT_TYPE_FIXED           = 0x0000,
++    HV_ARM64_INTERRUPT_TYPE_MAXIMUM         = 0x0008,
++#endif
++};
++
+ union hv_interrupt_control {
+     uint64_t as_uint64;
+     struct {
+         uint32_t interrupt_type; /* enum hv_interrupt type */
++#if defined(__x86_64__)
+         uint32_t level_triggered:1;
+         uint32_t logical_dest_mode:1;
+         uint32_t rsvd:30;
++#elif defined(__aarch64__)
++        uint32_t rsvd1:2;
++        uint32_t asserted:1;
++        uint32_t rsvd2:29;
++#endif
+     };
+ };
+ 
+diff --git a/include/system/mshv.h b/include/system/mshv.h
+index 75286baf16..0db18fcee9 100644
+--- a/include/system/mshv.h
++++ b/include/system/mshv.h
+@@ -47,10 +47,12 @@ extern bool mshv_allowed;
+ typedef struct MshvState MshvState;
+ extern MshvState *mshv_state;
+ 
++#if defined(__x86_64__)
+ /* interrupt */
+ int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint32_t vector,
+                            uint32_t vp_index, bool logical_destination_mode,
+                            bool level_triggered);
++#endif
+ 
+ int mshv_irqchip_add_msi_route(int vector, PCIDevice *dev);
+ int mshv_irqchip_update_msi_route(int virq, MSIMessage msg, PCIDevice *dev);
 
 -- 
 2.45.4

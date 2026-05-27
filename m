@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1B80CD4F54
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 11:44:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7240CCD5BD5
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 11:44:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSCfZ-0005LM-W4; Wed, 27 May 2026 07:43:30 -0400
+	id 1wSCfZ-0005Kt-Ct; Wed, 27 May 2026 07:43:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wSCfY-0005KI-SY
- for qemu-arm@nongnu.org; Wed, 27 May 2026 07:43:28 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1wSCfX-0005Iy-SU
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 07:43:27 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wSCfW-0008Vf-8H
- for qemu-arm@nongnu.org; Wed, 27 May 2026 07:43:28 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-4891b0786beso77781775e9.1
- for <qemu-arm@nongnu.org>; Wed, 27 May 2026 04:43:25 -0700 (PDT)
+ id 1wSCfV-0008UV-4e
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 07:43:27 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-44a5174670eso6482350f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 27 May 2026 04:43:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779882204; x=1780487004; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779882203; x=1780487003; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AJonqsC661AicUoZ3WXf5dOPD/EyukyFdYhNbfWENfY=;
- b=Bdwi5i8YkT07kA5l7QiSdckCarbeG9BMmi0JFpaGiRxrOabKEVA9+A60WTQeCVL0F/
- dI4r/txCPitjy/vFM7Pd8SiibC7Nerc3V7ZCxVYsH4dU7CHLtxaNCuPD2YBIGMjaBB+E
- lIEGyzI5LXI/Be78moHR5HzlgqHNUDtP0ZiTUXL08dL1Rpjna8byUa2aCkZofq/7+1Mw
- HgOJbAHO6I1CL8WT4+eNL3AIc77fGvx+CkSB1B3xpr6fBbNPOw5FImZCenZZAioPIBub
- ryI1J45bHv3nb0uZkv/n1hPhFHCfcb3Ve8C8AbOORZGFFzI54jAPQgFWdiKMLmhwlOWX
- ikCg==
+ bh=+7GYxN2UVnGng7v1vHA64tX2rIv4kqC27OcexOk0+YM=;
+ b=U5B9t06H7u9az+5T4GeRnxIWGoRLwNCaoQBQnTGd4fHVrC1oHILBAtYkPLfrDLMDM0
+ Q7sELKEpsSfPBdYWx8DpbWeFKmShc6oBXTsZBfBJNHyzrv9wr0IRwu0ynk1FC9ijjj6P
+ O2bLGunOXaG+5xofdoeQuJr6WPQ1eKFZAjvP/WdqKjn+tmbJnqxaoH9PdqLj8blI7LOV
+ qPKjcJHRWUjFx7aEbViiiYN+UA+gmYei3iWclNLPgYRsuCWS2ROKGy8EuL/FkDKNtAgK
+ IovycJ8UjEbugdcwFa5p4dBWbY4Mbzpnc3IzawYHSczQZl6fNqloKYBaFOzBqAa7gJaq
+ +wUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779882204; x=1780487004;
+ d=1e100.net; s=20251104; t=1779882203; x=1780487003;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=AJonqsC661AicUoZ3WXf5dOPD/EyukyFdYhNbfWENfY=;
- b=aG0zPyFl+jbijk3vKzlfu6diuwhKvAZJz/x90rFyjBk7UZbxp1zpWqxfJeuK05ossN
- vBHTaOjR1hz1xafgFWbPPRlzsf1UmjEJ4E3827pd8RtrQd2DL+3PCCnjJxsais8tbiLZ
- ubKb4k71XGvVlCleZFcAHkd4zHhWRTEMqdGmz+bVDKFnWg7uRp+XMPedcvMjHyJVji6e
- KEMbO0P76Okz+cr5RMqnj5G/ZeEOUDAvP9EbfK+GUltwoNIF5i+Oy1M52+sFzhUwxQMv
- qR5zUrjAis4GZWaFN6db/o5q2xUutA6Z35lIVSSIZI7u1aoOhgAksyxwKhm6V3IvYq5E
- SPiw==
+ bh=+7GYxN2UVnGng7v1vHA64tX2rIv4kqC27OcexOk0+YM=;
+ b=OZHD44rqcGq9tecSDn201Hs+1iYMaldGv5Gss4D50yZbio/L+iSbNoDZbz+XFrzsIO
+ EnL/WlTgSa37c50T48IAejZKa4Rby4dU3U2suqbgkSueB4yK5/+S468v35b+150zg7Z7
+ aE8isooCqLkUc0SYvs4P8ero3Fo+y9K7hY03j54NOc4iqemxboq+ek/jDRw0AXgTjIS6
+ le3UrzHcfVlYH6vBoKwxXtihj1tdROGAp1B9vKK2BNh7Po6roiIm8M45Jx2SSHQSVnTG
+ U9t0RunR6sCOsuVdH6uYeBwYPqtVuL99VyjvFtslzfvRGnYNHRE9DTtbmTcelH6F18yj
+ tHXQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/riLgRyW8kLDoTPxwY5skJvi9buAGx5yBt4jvRBitDkc1xZ1FWV7X1zqf3h/pAlT3aY2lS/9/DYQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyPc8XIsTjPJQzvpuKjCWfh/r8tRtpz8dHrb14MVtCO6I4COZzM
- tn9lsh7bBsqyw81FZHOZlPxotsgvCRZ7KrhJDBrNw5visVvzku7fKri0i23wJKx6w70=
-X-Gm-Gg: Acq92OEhVtVPtmDA6Suinnq4ohqL0gVN12TH9P0coc/EbUGYpyCrArQll7vECcKdJbU
- 5OcwtBB41lZrZ1mac6uctrSIJzvFRMKQN8JQ/TS5a95wwDWaFW7olpJvq23pNsWLY+DmY6lYU26
- WDd+RVMR965VECvNJRY77wb1T9Fc1YIhBTLdrgskfHDmtbg3Wyn2UDhUktRLSWaxhny6hUvGsMI
- ngDxNrwhpXzXjYBcjfPHvzyo3ngI9ndsLnTuKfyFo+M8YhLMPR7aOsZB0au1g6rs1YUbEVljhmG
- ZdRfRNrHwzOHSwguML+lo8Ys7lIfCDPbL3o/ljA+Q1b2QyfRt5cL80dxJ5xUdLwciRQuV14Y31/
- ockEO25uEFQ1amEa6/xuZacTpso87qMYNoslv3vTsQvOfCexpkKSWnyssJ+0aCJrslVXVIkleeC
- HCS4UH3vAd1b+tm3V7ieWDtrM=
-X-Received: by 2002:a05:600c:45ce:b0:490:59cc:998e with SMTP id
- 5b1f17b1804b1-49059cc99famr238489835e9.3.1779882204321; 
- Wed, 27 May 2026 04:43:24 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45edb557679sm9410757f8f.10.2026.05.27.04.43.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ AFNElJ8j/9soSuxQA6NdVzjqpue7p1t9Nfp4nr/Ssyz59mpkYtDWEYuDFbe29bvH+CcRlm+ZB00FlfowZw==@nongnu.org
+X-Gm-Message-State: AOJu0YwILasKPP/P2SW5udDFPEFkQIYhRihIS4VB2BT0+qmkVB7jH8Iq
+ P0scoII5+SN+TGpA8pyAHqwMwrClWkF2gujFUom1xUGcgLnQR9FLpKmDRc6RX7aoqUg=
+X-Gm-Gg: Acq92OFKVTKA9SKKempJpXEACHH+P5HdXCC2/VqG8v7NPfNyr2h0aPK84Vlf5kKMvPT
+ gBfRKF/KFn4dtzM4RHiS+z2KCeknfIIMeK23/XYkGOOYbqdWos2LFkdzSFsp7L+hr7im2CptVZQ
+ oIz5fePCVimaJiUYPQoTaCDDkYq41QSlIIemz85LsWDbEqhtYlHIwdYsCL8Lb/wdj83PkTBYyR+
+ ivPPqqEg0qHmI5Tm5ADHM81n/ZaEyCegNjin6LYq7MFd7eUJyQ5KJ+/K1ehmREWMnuRd4QMgxeV
+ BkgrcTHa1Q5pClBSs8s964jMYi9u7uZUf5Nqcx2VDNLeK14UZsayTmu25ihfkvW5MsxCYImdwlV
+ ZG2xFQ28ZQBRfZ0hu68Igk+GwsdZT0+hc6X79qabmZ13mAq5IJmAi0GQhKGCixMekRyG3z8Dm2m
+ uctLdad2oqB7qKbpIBUNNTQlR7EBQlUOyipw==
+X-Received: by 2002:a05:6000:26c1:b0:44f:d9f8:c0e7 with SMTP id
+ ffacd0b85a97d-45eb36731f6mr39921252f8f.5.1779882202929; 
  Wed, 27 May 2026 04:43:22 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45edb5c47a2sm5341167f8f.37.2026.05.27.04.43.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 May 2026 04:43:21 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 396A95FBBF;
- Wed, 27 May 2026 12:43:21 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id E2E5F5F92B;
+ Wed, 27 May 2026 12:43:20 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pedro Barbuda <pbarbuda@microsoft.com>, Alexander Graf <agraf@csgraf.de>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v6 4/8] target/arm: ensure aarch64 DISAS_WFE will exit
-Date: Wed, 27 May 2026 12:43:16 +0100
-Message-ID: <20260527114320.1581552-5-alex.bennee@linaro.org>
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v6 1/8] target/arm: fix WFET typo in syndrome
+Date: Wed, 27 May 2026 12:43:13 +0100
+Message-ID: <20260527114320.1581552-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260527114320.1581552-1-alex.bennee@linaro.org>
 References: <20260527114320.1581552-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,63 +108,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This mirrors the logic for DISAS_WFE in 32 bit world. As the WFE/WFI
-have similar behaviours shuffle the case statements around a little
-and update the commentary to cover both.
+A stray x slipped in and we didn't notice!
 
-Fixes: 252ec405768 (target-arm: implement WFE/YIELD as a yield for AArch64)
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Fixes: 4575da5ecb7 (target/arm: report register in WFIT syndromes)
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v4
-  - shuffle case statements, unify the comments.
----
- target/arm/tcg/translate-a64.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ target/arm/syndrome.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 3e3971db3fb..d057241e9df 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -10913,25 +10913,25 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
-         case DISAS_NORETURN:
-         case DISAS_SWI:
-             break;
--        case DISAS_WFE:
--            gen_a64_update_pc(dc, 4);
--            gen_helper_wfe(tcg_env);
--            break;
-         case DISAS_YIELD:
-             gen_a64_update_pc(dc, 4);
-             gen_helper_yield(tcg_env);
-             break;
-+        /*
-+         * Both WFE/WFI can cause exceptions or exit the loop to
-+         * halt so we have to make sure we have rectified the PC.
-+         * However they can also return directly if they don't
-+         * enter a wait state so we must add an exit block so we exit
-+         * the loop and check for interrupts.
-+         */
-+        case DISAS_WFE:
-+            gen_a64_update_pc(dc, 4);
-+            gen_helper_wfe(tcg_env);
-+            tcg_gen_exit_tb(NULL, 0);
-+            break;
-         case DISAS_WFI:
--            /*
--             * This is a special case because we don't want to just halt
--             * the CPU if trying to debug across a WFI.
--             */
-             gen_a64_update_pc(dc, 4);
-             gen_helper_wfi(tcg_env, tcg_constant_i32(4));
--            /*
--             * The helper doesn't necessarily throw an exception, but we
--             * must go back to the main loop to check for interrupts anyway.
--             */
-             tcg_gen_exit_tb(NULL, 0);
-             break;
-         }
+diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
+index 4d1f1c529e2..0eb54c15ce7 100644
+--- a/target/arm/syndrome.h
++++ b/target/arm/syndrome.h
+@@ -674,7 +674,7 @@ typedef enum {
+     WFI = 0b00,
+     WFE = 0b01,
+     WFIT = 0b10,
+-    WFET = 0xb11
++    WFET = 0b11
+ } wfx_ti;
+ 
+ static inline uint32_t syn_wfx(int cv, int cond, int rn, bool rv, wfx_ti ti, bool is_16bit)
 -- 
 2.47.3
 

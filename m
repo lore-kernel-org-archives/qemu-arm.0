@@ -4,165 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E4C0CD5BD0
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 20:56:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1960DCD4F54
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 22:16:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSLHo-0005oy-Cb; Wed, 27 May 2026 16:55:32 -0400
+	id 1wSMYY-0004h1-Fy; Wed, 27 May 2026 18:16:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wSLHm-0005lE-R5
- for qemu-arm@nongnu.org; Wed, 27 May 2026 16:55:30 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1wSMYX-0004gl-A8; Wed, 27 May 2026 18:16:53 -0400
+Received: from mail-eastusazlp17011000f.outbound.protection.outlook.com
+ ([2a01:111:f403:c100::f] helo=BL2PR02CU003.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wSLHl-0006a8-2M
- for qemu-arm@nongnu.org; Wed, 27 May 2026 16:55:30 -0400
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 64RKlxJR125537
- for <qemu-arm@nongnu.org>; Wed, 27 May 2026 20:55:24 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- BUk9+IXcVgGbb0ZfCLkGaCqqOZFsiQUjXIssHj5OG2o=; b=fMmo/ZfMHfuThY5x
- h4Hw9saM57ERu4I2vUub7Ea+mfo1nGAPcmXC6Rt1aZw4fqlt4WbT4H/SHdArUxWd
- ZYnDd1dtTm6cy+Qv3Mag8eKyPHcW/wmO3nwuYlLaEunDFprCSDutMx9Zrx8w83pI
- nndATj9YvLteYxiRq2sAQTwpesRYYNOb4gNxJ3HTm/lvjMOsB9u5cONk2cBw6zW5
- n/PjUoJIhO1+uUBgcjfTd4thwyVeWfdBxENFbpKwoUlp1nNeA23ox7rQEN9BK4Yw
- jdJYl+JZk2jhNcI2vv5WI9tTyKlu+gckUujKq7i2cx0cgTTp4acjAcg40b5UBg2E
- fvD4TQ==
-Received: from mail-dy1-f199.google.com (mail-dy1-f199.google.com
- [74.125.82.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ee7yag1t8-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 27 May 2026 20:55:24 +0000 (GMT)
-Received: by mail-dy1-f199.google.com with SMTP id
- 5a478bee46e88-3041ab826ddso11770494eec.0
- for <qemu-arm@nongnu.org>; Wed, 27 May 2026 13:55:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1779915324; x=1780520124; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=BUk9+IXcVgGbb0ZfCLkGaCqqOZFsiQUjXIssHj5OG2o=;
- b=RXNVGX0Q26H4pwUjIk8iuqyOZLjHO30kehmqiygPhkfPypcDIsIXegY7u+EHV+KQti
- c9p9TP1DdT8nHygx8u7INVmGMtrUpfLVFyZKMoD8LVOVy93cTABU6GFpqVOndMLyCRWN
- 6WRdldQbgmZ/MQQV4H87FS1oV6D+bk9Ed2pYqD5anZ5uyyO3QjlY6VQZzvsfDnmdqJ20
- IcRvhCSu5LM+oRpxyRInBnBn2erawjGxqe86P7ewUwaZqz25NFVW7dU1heFh1n8SjUQ9
- 1lvZRLuvF92rhMYnqbeS1g+b5QrlpoQgypJIfrJPwWCrUN8haJsidtODM9/ioQwa5+oN
- qf4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779915324; x=1780520124;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=BUk9+IXcVgGbb0ZfCLkGaCqqOZFsiQUjXIssHj5OG2o=;
- b=sB7MLAG0O52yQoYfLSvQn+KlGZVFoL/BXZ+qmMaW7+VvOgqJYWmi0wygStH/5VTNOI
- fmz9K95XAQTpGY9/1RjJ0WI+y2hXekvH9M05QJlfGSarc2wJSrHEYL/ThOaBWh1+ExDz
- ntwMLfdSG+UvsNd01zM38j1EgmNyA20X0uCVT9bzQuH+oNFrRWWjIXeOAPqhKyvwFZ8i
- Rlo947Xrl+6nOpzI4dDxTKPOQqbqeIl8JLtO2lNC/PePDGbVVtCx5FF+5BfvBS9+fozz
- ZASwu2TDRyF1kuO7ZY1dEswEbMr05tP0IVdl7G0/tAzgsleOS/0fuCiU0QHOMF/rMp5e
- TNhg==
-X-Forwarded-Encrypted: i=1;
- AFNElJ8IqLX3goX052xF2QyDfe0Fr4DINT4kord0yi9ffxeNC4a6+injc8xVQtykMoBvrYmojJg6N3an4Q==@nongnu.org
-X-Gm-Message-State: AOJu0YwPWwq2zcqMJv4Z/HPir9FJ4nEhbxQsF0YCX2xypUuz5YxYMX0O
- syzHY4SW5VJGGp6HgsYtBXdr7CplXyDf24iNUG62ZqEQc007GeW1ZDgeYbrG2AgcWoXzw/nFh71
- pdPhwO4PYHDLHYiqMQ4jcJJWL3wWdDE0kI3hBSljwnvDge6ZJU3tF7l4=
-X-Gm-Gg: Acq92OFpI24F7I2R3yQZDI308x6EEEZbkMPV4nKdAN47CytNZiIhkVpYuRpeRBjY8aq
- 0t1pCczXbnqCBlJ6X7g6Xmi5AX3FKZPSa8D26RD3pst0Oes2R5wjQV8ql9MKD5HqtpuU2MWBJBh
- 4qt2QvwhGwpbpIhB1FA6G91UtpQJ286kRD/RMTegAmMplim4ELtjGJdxtYCkHVu3VukPi8NffXA
- gtMY7s/Vy78PITE4WUlyCDvkyA8aCSBT3uD+IKw88eXV5M4F3awo0J1UwJjg3iefni/fsiFIbEq
- nVUUwRT0dBEm7JvWkAjlqmlrg5lgw+U6vltOErlLKXQlWelPkUzbHWQ84/BiyVI7UqI+g13SEf3
- +WvDpEdV7INBGfzLSrcEpQXoREA75w3B/MqzA2gMvOpPC9RobiDarCQ/0rFHceN9mOGLMlRj7ZJ
- mKW4LEAAZuTg4hMP+BEz+nevLd
-X-Received: by 2002:a05:7300:ac94:b0:304:5a9c:644c with SMTP id
- 5a478bee46e88-3045a9c6cffmr7813609eec.15.1779915323881; 
- Wed, 27 May 2026 13:55:23 -0700 (PDT)
-X-Received: by 2002:a05:7300:ac94:b0:304:5a9c:644c with SMTP id
- 5a478bee46e88-3045a9c6cffmr7813566eec.15.1779915323306; 
- Wed, 27 May 2026 13:55:23 -0700 (PDT)
-Received: from [192.168.1.170] (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-30452461cb5sm20044274eec.31.2026.05.27.13.55.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 May 2026 13:55:22 -0700 (PDT)
-Message-ID: <86385e93-5425-4145-8a9f-0f72ed5de022@oss.qualcomm.com>
-Date: Wed, 27 May 2026 13:55:20 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 03/16] tests/Makefile.include: add binary dependency to
- run-tcg-tests-% rules
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Thomas Huth <th.huth+qemu@posteo.eu>, Song Gao <gaosong@loongson.cn>,
- John Snow <jsnow@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Kyle Evans <kevans@freebsd.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Cleber Rosa <crosa@redhat.com>, Warner Losh <imp@bsdimp.com>,
- Brad Smith <brad@comstyle.com>, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Brian Cain <brian.cain@oss.qualcomm.com>, Fabiano Rosas <farosas@suse.de>,
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1wSMYV-0002I5-UU; Wed, 27 May 2026 18:16:53 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=p9N+/bulpVdLC2JjzAA61lU8pwM4Gn0p1MU/o2xK8NOQk8cIfZzrT+krjcfm0VLEGecRR5aYe48WB1hlW4eZR/Rg7aRSG6Qtqgqd50WgxkfRQDdYMdmR+OeaamtGMR8JFNvPaE5wzyuA28IyxpiUb8sraFh8BCk8VV+BXU5NGTfAYhdvWzusKXqmUDLcvaDQKEbZMTmXW6DYlEkxPplX9PveSJYjrcJQTsG/L87W/ljOwhNd90CjmcxH2lBDPBt9aaGvv4l6ishR30m+crgOXU0UBqYVzHa5nrve140/1UlD+lMi0KLb9y//9P+5Smwb6BAPdS16mKLE3KYy14t+mQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=4Wkc7yf/mo4n2+QI3YZ2y29cI5cGezGD+raGNoK7Mmo=;
+ b=ixTz+8TBKIPDq2z5bgiiwg5n3XXdNQ3A+2xRxiq2hOUwo6yd0HSgECqDzXu/dMdmJBiVEcj38KJbIGGoUifOc4x5J5SajTaHP+dKw0FbAFAGc6fnldeBAbvzDF5eOjSFwZfpyeZhOCnyqzumt18vEsnXED9zeuVEoyJ+tloZFGynxPD7d9K5w/Wz478G5tysvNKdDv2+APK2sROP/kQH7l+jJusyPqzBjH6N090myv3N423pRqWUL7IZDAHZG+UWpId8qF216urmFC3a02zaUw5KSp1tJ7EfxQzJ3TszYqV/gYKvDsxJY7ukdL2Cja4sOn7cNHHBtVm0910EM9eNFQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=4Wkc7yf/mo4n2+QI3YZ2y29cI5cGezGD+raGNoK7Mmo=;
+ b=H+SEh70Q/vbPaR37B0P3xiesLlCtTIGN5NXIEg7bvKmnNmB3gJn5vVU6j3RdK6ogOIcf9aNS03GWlbRsEHQlvbZB89ruV4AHVjscVGwD3JfNsa9BpmWzZs/S2nAs8o/4/Nn4OgYECTRAaXBF0+cRvMgXxnLPcd2etGxCt2WRijP9Rvmt8ntDZLzI5XrTgt615tZPIGefJzYeYp4/aIeP87c7isps07FVzaCwf6CgWtz6SBhXeDa2RmpmeQy+QcGjaIYRMSP09fYY/xg+DVjA7tw4B93NdHAeXQg/oItr7XQB35bNgfAHpDp5rxmNrXKklB+wB5gwfsgA6mnwiVE03Q==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from DS2PR12MB9567.namprd12.prod.outlook.com (2603:10b6:8:27c::8) by
+ IA0PR12MB7775.namprd12.prod.outlook.com (2603:10b6:208:431::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.12; Wed, 27 May
+ 2026 22:16:45 +0000
+Received: from DS2PR12MB9567.namprd12.prod.outlook.com
+ ([fe80::636:1b52:24ca:d7e5]) by DS2PR12MB9567.namprd12.prod.outlook.com
+ ([fe80::636:1b52:24ca:d7e5%2]) with mapi id 15.21.0071.011; Wed, 27 May 2026
+ 22:16:44 +0000
+From: Nathan Chen <nathanc@nvidia.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Eric Auger <eric.auger@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-References: <20260521131739.540157-1-alex.bennee@linaro.org>
- <20260521131739.540157-4-alex.bennee@linaro.org>
- <74e8bc86-cd81-43f9-b5cb-7e3de3bcd3d0@oss.qualcomm.com>
- <87tsrzl138.fsf@draig.linaro.org>
- <093614fb-ced1-4b15-b1e1-5da755f87237@oss.qualcomm.com>
- <87cxymec7b.fsf@draig.linaro.org>
- <5bd51a1a-4079-4073-bbd8-f0206a1ad458@oss.qualcomm.com>
- <0f73d717-1621-4c3f-9c5e-9bfdfaffb0b8@oss.qualcomm.com>
- <877bor9vor.fsf@draig.linaro.org>
- <7d58926d-a36d-430f-828e-7ebdd9cc4eb5@oss.qualcomm.com>
- <87qzmyzbut.fsf@draig.linaro.org>
- <06092208-1b56-4fea-8d92-bf035fbd0fa3@oss.qualcomm.com>
- <87fr3eyrvp.fsf@draig.linaro.org>
- <8a878679-733c-451c-8053-663a74f8d4a7@oss.qualcomm.com>
- <87a4tlz897.fsf@draig.linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <87a4tlz897.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Zhao Liu <zhao1.liu@intel.com>, Matt Ochs <mochs@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>,
+ Nathan Chen <nathanc@nvidia.com>, qemu-stable@nongnu.org
+Subject: [PATCH v4 1/9] hw/arm/smmuv3: Update ATC invalidation check
+Date: Wed, 27 May 2026 15:16:23 -0700
+Message-ID: <20260527221631.612026-2-nathanc@nvidia.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260527221631.612026-1-nathanc@nvidia.com>
+References: <20260527221631.612026-1-nathanc@nvidia.com>
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: oJAm84K-EEuuVnprQWAN9AyU40eq8CD3
-X-Proofpoint-GUID: oJAm84K-EEuuVnprQWAN9AyU40eq8CD3
-X-Authority-Analysis: v=2.4 cv=E/r9Y6dl c=1 sm=1 tr=0 ts=6a175a3c cx=c_pps
- a=cFYjgdjTJScbgFmBucgdfQ==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
- a=IkcTkHD0fZMA:10 a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=EUspDBNiAAAA:8 a=7JdIQKnF0icQP4fr_JkA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=scEy_gLbYbu1JhEsrz4S:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTI3MDIwOSBTYWx0ZWRfX4ge4yamG0d3f
- xDP3YDk3ThTohgKNjamt+1Uaj2BdIveKK/6A6aPp511JpolCFwNdH4/M/mfx5gHN9GxvCqwtD9f
- A85EJR/bU+mhMiH1fyCGYB5/Zz2KOTn+cMwaBsmyb7mmmBdmHMiM3yLDolwxA8FKQpPZbWV8rUo
- SKVTx8jPIg4pIbe3HwvlBW3ktKwvHRShriYvL2Xnn6a4WenFivbBPx5DiDLPf/FuJBV/An279e/
- CPOqcqXcD0Jkeo7toSsbrEsSL2SBJc4O0nVguEhmTcdYC3Niw8aLa6LOZZfm01xBp6V0ItTWCxS
- Tac6NMssF66jCduG5ohCw2pQZCX7spcoMnX9uIsTqqlZIHwRuoSGYaLgNBjy7er8AZAGQ6mg/Gr
- wBHAWR3Y2WJoioxHX3BKvu3CLtNUi2uHQaigEcdwDkH4T7azG34sQb3ju5aAJN8qx5lu2PFj2aN
- vGgnRlf+GfJ3FgfqAVA==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-05-27_04,2026-05-26_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 lowpriorityscore=0 adultscore=0 priorityscore=1501 phishscore=0
- impostorscore=0 bulkscore=0 malwarescore=0 suspectscore=0 spamscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2605210000 definitions=main-2605270209
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+X-ClientProxiedBy: BY1P220CA0008.NAMP220.PROD.OUTLOOK.COM
+ (2603:10b6:a03:59d::16) To DS2PR12MB9567.namprd12.prod.outlook.com
+ (2603:10b6:8:27c::8)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS2PR12MB9567:EE_|IA0PR12MB7775:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5d533f45-4fbf-4517-140e-08debc3da28e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|366016|1800799024|376014|18002099003|22082099003|11063799006|56012099006;
+X-Microsoft-Antispam-Message-Info: BtJ6gfPGPtS1KsV6THyib2QPDsxlBfSXy0vavq8+mEY+NlCVREhW0v97/S1wb0vESlev2b0X+w44OlxrY/jsZp0/V+tmYgjNjKwCn1gOou4/WarCCKi4/874/2gAGP93pJdY2VKYgQR2wgXGhprZvAImzo+HvkItVcbkroy7nNz9D/BkkCV3hbP7y6Quf0GGXMAbLKHeVLKQQ6s718BMfUVjmdmDKKvIPSxyU7D4VOyRNOFfcZRfpxwZAE+I/sX5LmKPceXraxttQNz42/od7gaLeA/J+dchiCQnNrF4zA21rugMZqRvA1jnZaZ0e2FZoUUw5VdHvV4n8KdWe9Fa4SHwJXKETfejOERhFw6y3ABB/g0RMmnTPwJVlrfnnuVZM4Icg3kmcK5L7c/03qj0SVzFlrsbbqmb6551DVWCLgGVV4EKQvgL7QDFdg+XhYXggeJLsYoUnO5gQNv9Z0eVZKX35dA7I9Dsr7k2dtJn4sNsZn/fBpFdKN7r41CKKkDQLHwt1oUW7OxC4GpQ2nRSvG3SdWwn3GBXc3xk4Jku8AtyW27JPempU8UiyjdMuUzOfdy4Iq3qkx9QZwTzmCrH+/xhowHFhkLqzCkzLA4nEXTUnUdeuhE12OXqDUSwUe/5DxiNTzqx+f0BS3GAzqogPttG6hPcoRe56XpIv5Ig/FrQZ7qzjIEV7Qsq1TgeYZPN
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS2PR12MB9567.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(376014)(18002099003)(22082099003)(11063799006)(56012099006);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?AH32yVCDkIp2BTS22IBpzdwEtd1tyJRRaF6H1nuJMam02f7opvwRn9UZSBU5?=
+ =?us-ascii?Q?PdO5kpqEaQisoKEvWyTD7nZXVaDfCj1xtdRG8Av5eT2mQzt4d2gFNvTRZGR3?=
+ =?us-ascii?Q?13R+8VrYCj7rt4BcZpYmdePREXbNMQXXMfbqvVROkvuVNIfFD6/UJQhV64f+?=
+ =?us-ascii?Q?wBU7+yJkqmUIFXGmKbMWTy7jnnCGi/tNxbr/yZO2b5Dq8F0AwftmyCvRcVha?=
+ =?us-ascii?Q?R6Dozs7QE8Plgaa6NBSTl0Go8zIgvUL/4AJX5Mai2X2BXj2VJGyq13MjExdf?=
+ =?us-ascii?Q?TAkcYsa1C9n+GLlin9r8GbXDEbu+O3MBYLJ1KxBTtj1nMRD+3r1Wkf7SdHHS?=
+ =?us-ascii?Q?b/mBjLBkNhi2NZbkXQsyGtyQ/hZI2ETsprgwU7bsmkY2IYPnaCjb/uHE3qNH?=
+ =?us-ascii?Q?PPxT3nSAZOj0r0aCiMItguN1d263FQZ3rF2lkeNo9LmBMnFkFgdrrPOuWaGi?=
+ =?us-ascii?Q?6hDmZY5ShTlxhwR0kdyKRAyTFr9BFn+Rdp5pq/Otdn+PIheG3lxEoDhvf+Iy?=
+ =?us-ascii?Q?juI6pckbTh/Yl7wTCQXtxzQpTFcVlvil3eaRV4gLe5vhUaVQ92Q/x0L5d8gy?=
+ =?us-ascii?Q?wC6EBKQY3k5Gg+T2higfpNorB9CytNXAugTQ38vZ+rlg5zvBg/KX3l/XZm8Z?=
+ =?us-ascii?Q?G4Bxs8L/OywlPshNToV4yIq/U9h16Q6oCB44//w4PDJN1vE4ANMF835lEvYC?=
+ =?us-ascii?Q?buuqacX3pulKmt4KPTyLw7bVvbCugTxJ69S+zWw45TTlcFzQdY5gTUK+ef0B?=
+ =?us-ascii?Q?jAN8+MOmAthg+Lp0FROO8w8TPx1Ct/RO5EuHWE8g/yPxCfVYEO9nKC+jLjP2?=
+ =?us-ascii?Q?HBRZWx+9b/cUzh+O+l5Iii+brUOARxQm8eSToiVb0OwkMQJToR3xdTpWUD5E?=
+ =?us-ascii?Q?KK+m8R4xlFLnr6D359XA7iYZyr+FQnDF/I1JpVKoKd0AlXK1yB0coRCEWjUI?=
+ =?us-ascii?Q?j0Rgd2RTMyON3KN2VK8w3ki6uhsgVaRkBjFBJGOlI/KaoGq4R8UC84P7ucUt?=
+ =?us-ascii?Q?Oe84bmuk0Je1pw5/CV2s3rhLGRVOOPNTgJuj3cMgHzrVuzlZAj0XObadenqA?=
+ =?us-ascii?Q?egjL8PuaVJ2wXoTI68eEN6Sx8WpJS7nC5Fc/BSbSTVcxkXWea+WIA+af6z3f?=
+ =?us-ascii?Q?jwNGTXDZRk0tKgBXiDi1DujRCEq6jNMWVn2N0lWOBQ0kblw72zYvjmzQaIhb?=
+ =?us-ascii?Q?pQe+d1yPcLNpK1WZeh++o274asLxiigpNNwnyT4kMI90iheoQxj0EDX27uJl?=
+ =?us-ascii?Q?E8Z70VWbIYFjNo5WLi6Hs2Y7XXFkMkMmji+QTZLTY18M/7XOMzqU+XVl5zSB?=
+ =?us-ascii?Q?S9rWElz/2n6IbumdpNeixI+iF1E5NLd/UPVn0E+5TkyhUKDmLFPqc6XhQPWB?=
+ =?us-ascii?Q?94SC7LxhUc1ywpgZNe0Jos/wwas39WPciq+yrRekp2BkwNFsoDXdIUsyjSjV?=
+ =?us-ascii?Q?vQU0GB41L0rXlQ7CdiFvwRESW+OJ1k3S6OKQ31Jy3GvQUEmXyfwYzAVUeMRA?=
+ =?us-ascii?Q?n68aiX//h8BA4KDm9owvGlOyFZEckekMFpDDULNXqAF8rFYaVKhTgC30Exzg?=
+ =?us-ascii?Q?WiD8OAvnjyNX4pkXzmWQteTBJfQNN+QefT6QzCG0aq/T44ietT62CO35jWBZ?=
+ =?us-ascii?Q?+jZOFETYW31sVIFZLowunvAyIPttzVQ7BRj3jXWeg3S5SweCg5clAg5qqDyU?=
+ =?us-ascii?Q?nI00v/XN7KMcPCYobKXP71gdv7E4grez0lHgk5EbfAMIISl70d15I63j7sWV?=
+ =?us-ascii?Q?5umTn5k+XA=3D=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5d533f45-4fbf-4517-140e-08debc3da28e
+X-MS-Exchange-CrossTenant-AuthSource: DS2PR12MB9567.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 May 2026 22:16:44.0673 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: hJOqT8HqsF08s7mZ8STSs4o3go6V9M4zBGvEneJJ4qSG/F2m7A0a5fz1nYXmi9dTOx0IBpTC5PK2L69Ns24Qdw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR12MB7775
+Received-SPF: permerror client-ip=2a01:111:f403:c100::f;
+ envelope-from=nathanc@nvidia.com;
+ helo=BL2PR02CU003.outbound.protection.outlook.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -178,110 +145,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/26/2026 11:17 PM, Alex Bennée wrote:
-> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
-> 
->> On 5/26/2026 10:58 AM, Alex Bennée wrote:
->>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>>
->>>> On 5/26/2026 3:47 AM, Alex Bennée wrote:
->>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>>>>
->>>>>> On 5/25/2026 11:43 AM, Alex Bennée wrote:
->>>>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>>>>>>
->>>>>>>> On 5/25/2026 8:46 AM, Pierrick Bouvier wrote:
->>>>>>>>> On 5/23/2026 1:56 AM, Alex Bennée wrote:
->>>>>>>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>>>>>>>>>
->>>>>>>>>>> On 5/22/2026 12:02 PM, Alex Bennée wrote:
->>>>>>>>>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>>>>>>>>>>>
->>>>>>>>>>>>> On 5/21/2026 6:17 AM, Alex Bennée wrote:
-> <snip>
->>>>
->>>> We'll need to remove the mechanic to build cross compilers containers.
->>>> In my experience, it's clunky anyway and fails when building several
->>>> from scratch. Try it yourself after cleaning your docker/podman images.
->>>> It's just better and simpler to expect user to install cross
->>>> compilers.
->>>
->>> That would loose a bunch of functionality and doesn't help users running
->>> anything that isn't Debian.
->>>
->>
->> Out of fedora, who does it exclude?
-> 
-> RHEL, CentOS, SuSE
-> 
-> The cross compiler situation may have improved since - Debian has always
-> been ahead of the curve in its multi-arch support.
-> 
->> We can still provide a fat debian container with all cross compilers
->> embedded for people who don't run ubuntu/debian.
->>
->>>> The only thing that prevented me to implement this before is that I
->>>> didn't know if concerned maintainers would accept it, or just hold onto
->>>> the precious handcrafted Makefiles, into which so much energy and time
->>>> has been spent.
->>>
->>> There is no desire to hold onto Makefiles, but I do want to keep the
->>> same capabilities as the current system. The driver for containerising
->>> the compilers was that setting up cross compilers is a barrier to
->>> contributors who want to be able to add and build tests.
->>>
->>
->> Personally, this "smart" layer has been a barrier even on Debian, since
->> by default it tries to build them, and it fails from scratch.
->> Give it a try by purging your docker images, and run a make check-tcg
->> -j$(nproc). I doubt anyone is really running check-tcg with this in real
->> life.
-> 
-> What do you mean? I run check-tcg all the time.
-> 
-> Which containers fail to build for you? The main cross-compiler one
-> (debian-all-test-cross) is built all the time.
->
+From: Nathan Chen <nathanc@nvidia.com>
 
-Build is working out of the box now.
-However, it seems that only tests for aarch64, arm and x86_64 are run
-when using containers without having installed cross compilers.
-Maybe it's another carefully handcrafted feature of tcg Makefiles?
+Use smmuv3_ats_enabled() to determine whether ATS is enabled for the
+guest when handling an ATC invalidation command, as setting the ATS
+property value to 'auto' will resolve to ATS being detected as
+enabled in the ATC invalidation check otherwise.
 
->> But well, if the cross-container thing is *really* a blocker, we can
->> just wrap build and run in a script per cross compiler, that does
->> docker/podman build && docker/podman run and call that.
-> 
-> We still have the remnants of that in the docker.py script although for
-> most containers we moved to invoking docker (or podman) directly.
->
+Fixes: f7f5013a55a3 ("hw/arm/smmuv3-accel: Add support for ATS")
+Suggested-by: Shameer Kolothum <skolothumtho@nvidia.com>
+Signed-off-by: Nathan Chen <nathanc@nvidia.com>
+---
+ hw/arm/smmuv3.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Maybe that's why I encountered issues in the past, and now it works out
-of the box.
-
-> Also bear in mind the containers are also used to cross build QEMU
-> itself. 
-> 
->>
->> Now we solved the problem with system tests, and cross compilers, is
->> there another thing that is absolutely needed from Makefiles?
->>
->>>> If it's not the case, then we should definitely move into the direction
->>>> of migrating all this to meson, and rely on meson tests infrastructure.
->>>>
-
-To add on top of this, I would be happy to help with the transition, but
-I want to make sure you'll accept it first, with a list of requirements.
-
-I'm a bit tired of seeing patches in your subsystems get stuck for
-weeks, without any proper review, to finally be (re)posted again in a
-new series, blocked for more weeks, and finally reach upstream one month
-later or worse. It's truly exhausting for everyone contributing in such
-places.
-
->>>> Regards,
->>>> Pierrick
->>>
-> 
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 5c2855c377..0c65dc8c91 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -1528,7 +1528,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
+         {
+             SMMUDevice *sdev = smmu_find_sdev(bs, CMD_SID(&cmd));
+ 
+-            if (!sdev || !s->ats) {
++            if (!sdev || !smmuv3_ats_enabled(s)) {
+                 trace_smmuv3_unhandled_cmd(type);
+                 break;
+             }
+-- 
+2.43.0
 
 

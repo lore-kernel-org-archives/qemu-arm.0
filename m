@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98647CD5BDE
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 05:04:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D771CD5BD5
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 05:48:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wS6OL-0001Nj-DY; Wed, 27 May 2026 01:01:17 -0400
+	id 1wS77Q-0006D6-AA; Wed, 27 May 2026 01:47:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wS6OK-0001Mv-4H; Wed, 27 May 2026 01:01:16 -0400
-Received: from linux.microsoft.com ([13.77.154.182])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wS6OH-0004E6-RD; Wed, 27 May 2026 01:01:15 -0400
-Received: from localhost (unknown [131.107.147.136])
- by linux.microsoft.com (Postfix) with ESMTPSA id BEA9320B7175;
- Tue, 26 May 2026 22:00:41 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com BEA9320B7175
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1779858041;
- bh=l13jBPla7LYedM0eeBCZ04xfKeLLY7LCqMZx2PSJOSU=;
- h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=NNHDh6rBKIem++H0Zdf+q1RFBTseuax3AAJhZxEXUImaw5HvDhGNsP5wB5mcEnnIC
- 3vY22zy2ab/odHWgxcCN0CoQBeThSQsvFuqKWzUdVa7zXGsCvgkQk+kJPm4Tp322Tg
- LTsJ8DkuDM2/RL0jpvkVDWrNjiSbH7GBIetDTgho=
-From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Wed, 27 May 2026 05:00:47 +0000
-Subject: [PATCH v4 11/15] target/arm: extract MMIO emulation logic for HVF
- & WHPX
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260527-mshv_accel_arm64_supp-v4-11-66d871dcdc53@linux.microsoft.com>
-References: <20260527-mshv_accel_arm64_supp-v4-0-66d871dcdc53@linux.microsoft.com>
-In-Reply-To: <20260527-mshv_accel_arm64_supp-v4-0-66d871dcdc53@linux.microsoft.com>
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1wS77L-0006Bs-57; Wed, 27 May 2026 01:47:47 -0400
+Received: from mgamail.intel.com ([198.175.65.11])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1wS77I-0000Yr-W6; Wed, 27 May 2026 01:47:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1779860865; x=1811396865;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=L5VMZ/d6CxxhM/OTaqjPPPlV7ezMALRx5b07JFpxBlc=;
+ b=WMCwQtiQdD/9lr89Utxvqwj8ptNs7HsPqehio9n593dzr3FJA4H/Usd7
+ gHS5wVJZTYJw62ebbm7TDebpQfg5xsBby9s/7758QbjVus32+HugwGB9G
+ /TRFYQQnUxHnLRfrmFsZQ2dw7bgfbSLP6rbZiCULybi6rb6QC/Zm+YeOI
+ gZSF2521hW3xKQi+9tKgmBA3bdmItzJF59m3b2l0PIg2LHslcVp0K2pja
+ BIvue44w7EMn3CKhEhN/IJjYb1X1ONvy7fbcbPbDw1SXT8kYZ1VGtagzy
+ YGl1Zur+1sP8BCmCHxfwSpftsa2L55vr6YU4Nt7hI8V8WUYmat4B0bxJz Q==;
+X-CSE-ConnectionGUID: W+prF7jOT7WORMvddD9/uQ==
+X-CSE-MsgGUID: W+vsso8kRtmGFbHDprj5BA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11798"; a="90988084"
+X-IronPort-AV: E=Sophos;i="6.24,170,1774335600"; d="scan'208";a="90988084"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 May 2026 22:47:42 -0700
+X-CSE-ConnectionGUID: nTat9gfCTWubBF3aa1pEnw==
+X-CSE-MsgGUID: Jd7+2GtiTVWo8CIZMh3ntA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,170,1774335600"; d="scan'208";a="241086667"
+Received: from unknown (HELO gnr-sp-2s-612.sh.intel.com) ([10.112.230.229])
+ by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 May 2026 22:47:38 -0700
+From: Zhenzhong Duan <zhenzhong.duan@intel.com>
 To: qemu-devel@nongnu.org
-Cc: Magnus Kulke <magnuskulke@linux.microsoft.com>, 
- Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Anirudh Rayabharam <anirudh@anirudhrb.com>, 
- Aastha Rawat <aastharawat@linux.microsoft.com>, qemu-arm@nongnu.org, 
- Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>, 
- Mohamed Mediouni <mohamed@unpredictable.fr>, 
- =?utf-8?q?Doru_Bl=C3=A2nzeanu?= <dblanzeanu@linux.microsoft.com>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- Magnus Kulke <magnus.kulke@linux.microsoft.com>
-X-Mailer: b4 0.15.1
-Received-SPF: pass client-ip=13.77.154.182;
- envelope-from=aastharawat@linux.microsoft.com; helo=linux.microsoft.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Cc: alex@shazbot.org, clg@redhat.com, eric.auger@redhat.com, mst@redhat.com,
+ jasowang@redhat.com, jgg@nvidia.com, nicolinc@nvidia.com,
+ skolothumtho@nvidia.com, joao.m.martins@oracle.com,
+ clement.mathieu--drif@bull.com, kevin.tian@intel.com, yi.l.liu@intel.com,
+ xudong.hao@intel.com, Zhenzhong Duan <zhenzhong.duan@intel.com>,
+ qemu-arm@nongnu.org
+Subject: [PATCH v6 02/17] iommufd: Extend attach/detach_hwpt callbacks to
+ support pasid
+Date: Wed, 27 May 2026 01:46:40 -0400
+Message-ID: <20260527054658.1021096-3-zhenzhong.duan@intel.com>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260527054658.1021096-1-zhenzhong.duan@intel.com>
+References: <20260527054658.1021096-1-zhenzhong.duan@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=198.175.65.11;
+ envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -47
+X-Spam_score: -4.8
+X-Spam_bar: ----
+X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,366 +86,226 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-- Move common MMIO emulation code from HVF and WHPX backend to
-  arm_emulate_mmio() in helper.c.
-- Update HVF and WHPX to use the new helper and shared types.
+Same for the two wrappers and their call sites.
 
-Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+Suggested-by: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+Suggested-by: Nicolin Chen <nicolinc@nvidia.com>
+Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+Reviewed-by: Yi Liu <yi.l.liu@intel.com>
+Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Reviewed-by: Shameer Kolothum <skolothumtho@nvidia.com>
+Tested-by: Xudong Hao <xudong.hao@intel.com>
 ---
- target/arm/helper.c        | 62 ++++++++++++++++++++++++++++++++++++++++++++++
- target/arm/helper.h        | 16 ++++++++++++
- target/arm/hvf/hvf.c       | 57 +++++++++++++++++++-----------------------
- target/arm/syndrome.h      | 47 +++++++++++++++++++++++++++++++++++
- target/arm/whpx/whpx-all.c | 41 ++++++++++++------------------
- 5 files changed, 167 insertions(+), 56 deletions(-)
+ include/system/iommufd.h    | 18 ++++++++++++------
+ backends/iommufd.c          |  9 +++++----
+ hw/arm/smmuv3-accel.c       | 12 ++++++++----
+ hw/i386/intel_iommu_accel.c | 19 ++++++++++---------
+ hw/vfio/iommufd.c           | 10 +++++-----
+ 5 files changed, 40 insertions(+), 28 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 8240f1b384..6e7b4591dc 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -34,6 +34,8 @@
- #endif
- #include "cpregs.h"
- #include "target/arm/gtimer.h"
-+#include "target/arm/helper.h"
-+#include "target/arm/syndrome.h"
- #include "qemu/plugin.h"
+diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+index 2925d116ac..4257e50f62 100644
+--- a/include/system/iommufd.h
++++ b/include/system/iommufd.h
+@@ -138,14 +138,16 @@ struct HostIOMMUDeviceIOMMUFDClass {
+      *
+      * @hiodi: host IOMMU device backed by IOMMUFD backend.
+      *
++     * @pasid: target pasid of the device to be attached.
++     *
+      * @hwpt_id: ID of IOMMUFD hardware page table.
+      *
+      * @errp: pass an Error out when attachment fails.
+      *
+      * Returns: true on success, false on failure.
+      */
+-    bool (*attach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, uint32_t hwpt_id,
+-                        Error **errp);
++    bool (*attach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, uint32_t pasid,
++                        uint32_t hwpt_id, Error **errp);
+     /**
+      * @detach_hwpt: detach host IOMMU device from IOMMUFD hardware page table.
+      * VFIO and VDPA device can have different implementation.
+@@ -154,15 +156,19 @@ struct HostIOMMUDeviceIOMMUFDClass {
+      *
+      * @hiodi: host IOMMU device backed by IOMMUFD backend.
+      *
+-     * @errp: pass an Error out when attachment fails.
++     * @pasid: target pasid of the device to be detached.
++     *
++     * @errp: pass an Error out when detachment fails.
+      *
+      * Returns: true on success, false on failure.
+      */
+-    bool (*detach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, Error **errp);
++    bool (*detach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, uint32_t pasid,
++                        Error **errp);
+ };
  
- static void switch_mode(CPUARMState *env, int mode);
-@@ -9097,6 +9099,66 @@ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
-     take_aarch32_exception(env, new_mode, mask, offset, addr);
+ bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
+-                                           uint32_t hwpt_id, Error **errp);
+-bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
++                                           uint32_t pasid, uint32_t hwpt_id,
+                                            Error **errp);
++bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
++                                           uint32_t pasid, Error **errp);
+ #endif
+diff --git a/backends/iommufd.c b/backends/iommufd.c
+index 410b044370..cfde6f2b2c 100644
+--- a/backends/iommufd.c
++++ b/backends/iommufd.c
+@@ -539,23 +539,24 @@ bool iommufd_backend_alloc_veventq(IOMMUFDBackend *be, uint32_t viommu_id,
  }
  
-+/*
-+ * Emulate a data abort syndrome for MMIO/guest memory access
-+ */
-+int arm_emulate_mmio(CPUState *cpu, EsrEl2 syndrome, uint64_t gpa,
-+                     const struct arm_emul_ops *ops)
-+{
-+    int ret;
-+    IssDataAbort iss = { 0 };
-+    iss.raw = syndrome.iss;
-+
-+    if (!(syndrome.ec == data_abort_lower || syndrome.ec == data_abort)) {
-+        error_report("Unknown exception class 0x%x", syndrome.ec);
-+        return -1;
-+    }
-+
-+    if (!iss.isv) {
-+        error_report("Cannot emulate MMIO. ISS not valid.");
-+        return -1;
-+    }
-+
-+    AddressSpace *as = cpu_get_address_space(cpu, ARMASIdx_NS);
-+    uint64_t len = 1ULL << iss.sas;
-+    bool sign_extend = iss.sse;
-+    uint64_t reg_index = iss.srt;
-+
-+    if (iss.wnr) {
-+        uint8_t data[8];
-+        uint64_t val = reg_index < 31 ? ops->get_reg(cpu, reg_index) : 0ULL;
-+        val = cpu_to_le64(val);
-+        memcpy(data, &val, sizeof(val));
-+        ret = address_space_write(as, gpa, MEMTXATTRS_UNSPECIFIED, data, len);
-+        if (ret != MEMTX_OK) {
-+            error_report("Failed to write guest memory");
-+            return -1;
-+        }
-+    } else {
-+        uint8_t data[8] = { 0 };
-+        ret = address_space_read(as, gpa, MEMTXATTRS_UNSPECIFIED, data, len);
-+        if (ret != MEMTX_OK) {
-+            error_report("Failed to read guest memory");
-+            return -1;
-+        }
-+        uint64_t val;
-+        memcpy(&val, data, sizeof(val));
-+        val = le64_to_cpu(val);
-+        if (sign_extend) {
-+            uint64_t shift = 64 - (len * 8);
-+            val = (((int64_t)val << shift) >> shift);
-+        }
-+        if (!iss.sf) {
-+            val &= 0xffffffff;
-+        }
-+        if (reg_index < 31) {
-+            ops->set_reg(cpu, reg_index, val);
-+        }
-+    }
-+
-+    return 0;
-+}
-+
- static int aarch64_regnum(CPUARMState *env, int aarch32_reg)
+ bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
+-                                           uint32_t hwpt_id, Error **errp)
++                                           uint32_t pasid, uint32_t hwpt_id,
++                                           Error **errp)
  {
-     /*
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index b1c26c180e..503404112d 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -3,8 +3,24 @@
- #ifndef HELPER__H
- #define HELPER__H
+     HostIOMMUDeviceIOMMUFDClass *hiodic =
+         HOST_IOMMU_DEVICE_IOMMUFD_GET_CLASS(hiodi);
  
-+#include <stdint.h>
-+#include <stdbool.h>
- #include "exec/helper-proto-common.h"
- #include "exec/helper-gen-common.h"
-+#include "target/arm/syndrome.h"
-+
-+/*
-+ * Callback ops for per-register access during MMIO emulation.
-+ * Each hypervisor backend provides its own implementation to avoid
-+ * syncing the full CPU state for a single-register MMIO access.
-+ */
-+struct arm_emul_ops {
-+    uint64_t (*get_reg)(CPUState *cpu, int reg);
-+    void (*set_reg)(CPUState *cpu, int reg, uint64_t val);
-+};
-+
-+int arm_emulate_mmio(CPUState *cpu, EsrEl2 syndrome, uint64_t gpa,
-+                     const struct arm_emul_ops *ops);
+     g_assert(hiodic->attach_hwpt);
+-    return hiodic->attach_hwpt(hiodi, hwpt_id, errp);
++    return hiodic->attach_hwpt(hiodi, pasid, hwpt_id, errp);
+ }
  
- #define HELPER_H "tcg/helper-defs.h"
- #include "exec/helper-proto.h.inc"
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index d88cbe7c82..18867795ab 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -13,6 +13,7 @@
- #include "qemu/error-report.h"
- #include "qemu/log.h"
- 
-+#include "syndrome.h"
- #include "system/runstate.h"
- #include "system/hvf.h"
- #include "system/hvf_int.h"
-@@ -37,6 +38,7 @@
- #include "target/arm/multiprocessing.h"
- #include "target/arm/gtimer.h"
- #include "target/arm/trace.h"
-+#include "target/arm/helper.h"
- #include "trace.h"
- #include "migration/vmstate.h"
- 
-@@ -2331,12 +2333,15 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
+ bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
+-                                           Error **errp)
++                                           uint32_t pasid, Error **errp)
  {
-     CPUARMState *env = cpu_env(cpu);
-     ARMCPU *arm_cpu = env_archcpu(env);
--    uint64_t syndrome = excp->syndrome;
--    uint32_t ec = syn_get_ec(syndrome);
-+    uint64_t syndrome;
-+    uint32_t ec;
-     bool advance_pc = false;
-     hv_return_t r;
-     int ret = 0;
+     HostIOMMUDeviceIOMMUFDClass *hiodic =
+         HOST_IOMMU_DEVICE_IOMMUFD_GET_CLASS(hiodi);
  
-+    syndrome = excp->syndrome;
-+    ec = syn_get_ec(syndrome);
-+
-     switch (ec) {
-     case EC_SOFTWARESTEP: {
-         ret = EXCP_DEBUG;
-@@ -2382,29 +2387,22 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
-         break;
+     g_assert(hiodic->detach_hwpt);
+-    return hiodic->detach_hwpt(hiodi, errp);
++    return hiodic->detach_hwpt(hiodi, pasid, errp);
+ }
+ 
+ static int hiod_iommufd_get_cap(HostIOMMUDevice *hiod, int cap, Error **errp)
+diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+index 862be814a0..2947e2e5dc 100644
+--- a/hw/arm/smmuv3-accel.c
++++ b/hw/arm/smmuv3-accel.c
+@@ -300,7 +300,8 @@ bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
+         return false;
      }
-     case EC_DATAABORT: {
--        bool isv = FIELD_EX32(syndrome, DABORT_ISS, ISV);
--        bool iswrite = FIELD_EX32(syndrome, DABORT_ISS, WNR);
--        bool s1ptw = FIELD_EX32(syndrome, DABORT_ISS, S1PTW);
--        bool sse = FIELD_EX32(syndrome, DABORT_ISS, SSE);
--        uint32_t sas = FIELD_EX32(syndrome, DABORT_ISS, SAS);
--        uint32_t len = 1 << sas;
--        uint32_t srt = FIELD_EX32(syndrome, DABORT_ISS, SRT);
--        uint32_t cm = FIELD_EX32(syndrome, DABORT_ISS, CM);
--        uint64_t val = 0;
-+        EsrEl2 esr_el2 = { .raw = syndrome };
-+        IssDataAbort iss = { .raw = esr_el2.iss };
-         uint64_t ipa = excp->physical_address;
-         AddressSpace *as = cpu_get_address_space(cpu, ARMASIdx_NS);
  
--        trace_hvf_data_abort(excp->virtual_address, ipa, isv,
--                             iswrite, s1ptw, len, srt);
-+        trace_hvf_data_abort(excp->virtual_address, ipa, iss.isv,
-+                             iss.wnr, iss.s1ptw, 1ULL << iss.sas, iss.srt);
+-    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, hwpt_id, errp)) {
++    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID, hwpt_id,
++                                               errp)) {
+         if (s1_hwpt) {
+             iommufd_backend_free_id(hiodi->iommufd, s1_hwpt->hwpt_id);
+             g_free(s1_hwpt);
+@@ -575,7 +576,8 @@ smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *hiodi,
  
--        if (cm) {
-+        if (iss.cm) {
-             /* We don't cache MMIO regions */
-             advance_pc = true;
-             break;
+     /* Attach a HWPT based on SMMUv3 GBPA.ABORT value */
+     hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
+-    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, hwpt_id, errp)) {
++    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID, hwpt_id,
++                                               errp)) {
+         goto free_veventq;
+     }
+     return true;
+@@ -665,7 +667,8 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
+     hiodi = accel_dev->hiodi;
+     accel = accel_dev->s_accel;
+     /* Re-attach the default s2 hwpt id */
+-    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, hiodi->hwpt_id, NULL)) {
++    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID,
++                                               hiodi->hwpt_id, NULL)) {
+         error_report("Unable to attach the default HW pagetable: hiodi devid "
+                      "0x%x", hiodi->devid);
+     }
+@@ -879,7 +882,8 @@ bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
+ 
+     hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
+     QLIST_FOREACH(accel_dev, &accel->device_list, next) {
+-        if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->hiodi, hwpt_id,
++        if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->hiodi,
++                                                   IOMMU_NO_PASID, hwpt_id,
+                                                    &local_err)) {
+             error_append_hint(&local_err, "Failed to attach GBPA hwpt %u for "
+                               "hiodi devid %u", hwpt_id,
+diff --git a/hw/i386/intel_iommu_accel.c b/hw/i386/intel_iommu_accel.c
+index ed3793602b..3217a2afac 100644
+--- a/hw/i386/intel_iommu_accel.c
++++ b/hw/i386/intel_iommu_accel.c
+@@ -121,8 +121,9 @@ static bool vtd_device_attach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
          }
+     }
  
-         /* Handle dirty page logging for ram. */
--        if (iswrite) {
-+        if (iss.wnr) {
-             hwaddr xlat;
-             MemoryRegion *mr = address_space_translate(as, ipa, &xlat,
-                                                        NULL, true,
-@@ -2431,28 +2429,25 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
-          * TODO: If s1ptw, this is an error in the guest os page tables.
-          * Inject the exception into the guest.
-          */
--        assert(!s1ptw);
--
--        /*
--         * TODO: ISV will be 0 for SIMD or SVE accesses.
--         * Inject the exception into the guest.
--         */
--        assert(isv);
-+        assert(!iss.s1ptw);
+-    ret = host_iommu_device_iommufd_attach_hwpt(hiodi, hwpt_id, errp);
+-    trace_vtd_device_attach_hwpt(hiodi->devid, vtd_as->pasid, hwpt_id, ret);
++    ret = host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID, hwpt_id,
++                                                errp);
++    trace_vtd_device_attach_hwpt(hiodi->devid, IOMMU_NO_PASID, hwpt_id, ret);
+     if (ret) {
+         /* Destroy old fs_hwpt if it's a replacement */
+         vtd_destroy_old_fs_hwpt(hiodi, vtd_as);
+@@ -141,22 +142,22 @@ static bool vtd_device_detach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
+ {
+     HostIOMMUDeviceIOMMUFD *hiodi = HOST_IOMMU_DEVICE_IOMMUFD(vtd_hiod->hiod);
+     IntelIOMMUState *s = vtd_as->iommu_state;
+-    uint32_t pasid = vtd_as->pasid;
+     bool ret;
  
+     if (s->dmar_enabled && s->root_scalable) {
+-        ret = host_iommu_device_iommufd_detach_hwpt(hiodi, errp);
+-        trace_vtd_device_detach_hwpt(hiodi->devid, pasid, ret);
++        ret = host_iommu_device_iommufd_detach_hwpt(hiodi, IOMMU_NO_PASID,
++                                                    errp);
++        trace_vtd_device_detach_hwpt(hiodi->devid, IOMMU_NO_PASID, ret);
+     } else {
          /*
-          * Emulate MMIO.
-          * TODO: Inject faults for errors.
+          * If DMAR remapping is disabled or guest switches to legacy mode,
+          * we fallback to the default HWPT which contains shadow page table.
+          * So guest DMA could still work.
           */
--        if (iswrite) {
--            val = hvf_get_reg(cpu, srt);
--            address_space_write(as, ipa, MEMTXATTRS_UNSPECIFIED, &val, len);
--        } else {
--            address_space_read(as, ipa, MEMTXATTRS_UNSPECIFIED, &val, len);
--            if (sse) {
--                val = sextract64(val, 0, len * 8);
--            }
--            hvf_set_reg(cpu, srt, val);
-+
-+        static const struct arm_emul_ops hvf_arm_emul_ops = {
-+            .get_reg = hvf_get_reg,
-+            .set_reg = hvf_set_reg,
-+        };
-+
-+        ret = arm_emulate_mmio(cpu, esr_el2, ipa, &hvf_arm_emul_ops);
-+        if (ret < 0) {
-+            error_report("Failed to emulate MMIO, syndrome=0x%llx, gpa=0x%llx",
-+                         esr_el2.raw, ipa);
-+            return -1;
-         }
-+
-         advance_pc = true;
-         break;
-     }
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index 4d1f1c529e..b1a55735ac 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -106,6 +106,53 @@ typedef enum {
-     GCS_IT_GCSPOPX = 9,
- } GCSInstructionType;
- 
-+typedef union {
-+    uint64_t raw;
-+    struct {
-+        uint32_t iss:25;
-+        uint32_t il:1;
-+        uint32_t ec:6;
-+        uint32_t iss2:5;
-+        uint32_t _rsvd:27;
-+    } QEMU_PACKED;
-+} EsrEl2;
-+
-+typedef union {
-+    uint32_t raw;
-+    struct {
-+        uint32_t dfsc:6;
-+        uint32_t wnr:1;
-+        uint32_t s1ptw:1;
-+        uint32_t cm:1;
-+        uint32_t ea:1;
-+        uint32_t fnv:1;
-+        uint32_t set:2;
-+        uint32_t vncr:1;
-+        uint32_t ar:1;
-+        uint32_t sf:1;
-+        uint32_t srt:5;
-+        uint32_t sse:1;
-+        uint32_t sas:2;
-+        uint32_t isv:1;
-+        uint32_t _unused:7;
-+    } QEMU_PACKED;
-+} IssDataAbort;
-+
-+typedef enum {
-+    data_abort_lower = 36,
-+    data_abort = 37,
-+} ExceptionClass;
-+
-+#define ARM_EL_EC_LENGTH 6
-+#define ARM_EL_EC_SHIFT 26
-+#define ARM_EL_IL_SHIFT 25
-+#define ARM_EL_ISV_SHIFT 24
-+#define ARM_EL_IL (1 << ARM_EL_IL_SHIFT)
-+#define ARM_EL_ISV (1 << ARM_EL_ISV_SHIFT)
-+
-+/* In the Data Abort syndrome */
-+#define ARM_EL_VNCR (1 << 13)
-+
- static inline uint32_t syn_get_ec(uint32_t syn)
- {
-     return FIELD_EX32(syn, SYNDROME, EC);
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index 3079c6293c..c98450be99 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -28,6 +28,8 @@
- 
- #include "syndrome.h"
- #include "target/arm/cpregs.h"
-+#include "target/arm/helper.h"
-+#include "target/arm/syndrome.h"
- #include "internals.h"
- 
- #include "system/whpx-internal.h"
-@@ -354,34 +356,23 @@ static void whpx_set_gp_reg(CPUState *cpu, int rt, uint64_t val)
- 
- static int whpx_handle_mmio(CPUState *cpu, WHV_MEMORY_ACCESS_CONTEXT *ctx)
- {
--    uint64_t syndrome = ctx->Syndrome;
--
--    bool isv = FIELD_EX32(syndrome, DABORT_ISS, ISV);
--    bool iswrite = FIELD_EX32(syndrome, DABORT_ISS, WNR);
--    bool sse = FIELD_EX32(syndrome, DABORT_ISS, SSE);
--    uint32_t sas = FIELD_EX32(syndrome, DABORT_ISS, SAS);
--    uint32_t len = 1 << sas;
--    uint32_t srt = FIELD_EX32(syndrome, DABORT_ISS, SRT);
--    uint32_t cm = FIELD_EX32(syndrome, DABORT_ISS, CM);
--    uint64_t val = 0;
-+    int ret = 0;
-+    EsrEl2 esr = { .raw = ctx->Syndrome };
-+    uint32_t cm = (esr.iss >> 8) & 0x1;
- 
-     assert(syn_get_ec(syndrome) == EC_DATAABORT);
-     assert(!cm);
--    assert(isv);
--
--    if (iswrite) {
--        val = whpx_get_gp_reg(cpu, srt);
--        address_space_write(&address_space_memory,
--                            ctx->Gpa,
--                            MEMTXATTRS_UNSPECIFIED, &val, len);
--    } else {
--        address_space_read(&address_space_memory,
--                           ctx->Gpa,
--                           MEMTXATTRS_UNSPECIFIED, &val, len);
--        if (sse) {
--            val = sextract64(val, 0, len * 8);
--        }
--        whpx_set_gp_reg(cpu, srt, val);
-+
-+    static const struct arm_emul_ops whpx_arm_emul_ops = {
-+        .get_reg = whpx_get_gp_reg,
-+        .set_reg = whpx_set_gp_reg,
-+    };
-+
-+    ret = arm_emulate_mmio(cpu, esr, ctx->Gpa, &whpx_arm_emul_ops);
-+    if (ret < 0) {
-+        error_report("WHPX: Failed to handle MMIO, syndrome=0x%llx, gpa=0x%llx",
-+                     esr.raw, ctx->Gpa);
-+        return -1;
+-        ret = host_iommu_device_iommufd_attach_hwpt(hiodi, hiodi->hwpt_id,
+-                                                    errp);
+-        trace_vtd_device_reattach_def_hwpt(hiodi->devid, pasid, hiodi->hwpt_id,
+-                                           ret);
++        ret = host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID,
++                                                    hiodi->hwpt_id, errp);
++        trace_vtd_device_reattach_def_hwpt(hiodi->devid, IOMMU_NO_PASID,
++                                           hiodi->hwpt_id, ret);
      }
  
-     return 0;
-
+     if (ret) {
+diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
+index f86f6f0d7b..78e7b6a045 100644
+--- a/hw/vfio/iommufd.c
++++ b/hw/vfio/iommufd.c
+@@ -934,21 +934,21 @@ static void vfio_iommu_iommufd_class_init(ObjectClass *klass, const void *data)
+ 
+ static bool
+ host_iommu_device_iommufd_vfio_attach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
+-                                           uint32_t hwpt_id, Error **errp)
++                                           uint32_t pasid, uint32_t hwpt_id,
++                                           Error **errp)
+ {
+     VFIODevice *vbasedev = HOST_IOMMU_DEVICE(hiodi)->agent;
+ 
+-    return !iommufd_cdev_pasid_attach_ioas_hwpt(vbasedev, IOMMU_NO_PASID,
+-                                                hwpt_id, errp);
++    return !iommufd_cdev_pasid_attach_ioas_hwpt(vbasedev, pasid, hwpt_id, errp);
+ }
+ 
+ static bool
+ host_iommu_device_iommufd_vfio_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
+-                                           Error **errp)
++                                           uint32_t pasid, Error **errp)
+ {
+     VFIODevice *vbasedev = HOST_IOMMU_DEVICE(hiodi)->agent;
+ 
+-    return iommufd_cdev_pasid_detach_ioas_hwpt(vbasedev, IOMMU_NO_PASID, errp);
++    return iommufd_cdev_pasid_detach_ioas_hwpt(vbasedev, pasid, errp);
+ }
+ 
+ static bool hiod_iommufd_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
 -- 
-2.45.4
+2.47.3
 
 

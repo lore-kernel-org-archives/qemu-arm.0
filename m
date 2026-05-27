@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B81F2CD5BD0
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 15:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 587E5CD5BD0
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 15:14:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSFur-0005SW-Qa; Wed, 27 May 2026 11:11:29 -0400
+	id 1wSFxf-0006Ly-W6; Wed, 27 May 2026 11:14:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wSFuq-0005SA-Ci
- for qemu-arm@nongnu.org; Wed, 27 May 2026 11:11:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1wSFxc-0006JH-SY
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 11:14:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wSFun-0005Wf-FJ
- for qemu-arm@nongnu.org; Wed, 27 May 2026 11:11:27 -0400
+ id 1wSFxZ-0006X7-7v
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 11:14:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779894684;
+ s=mimecast20190719; t=1779894856;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6gEJcXPLx6uljtp8toNSGlyGTFwh0jJNdOwJtnugnvM=;
- b=fV/LWujZsJ2VcqRvOCZPwdZs+qsSF+RcxJOp5lqQ0vKc1Keioar3ko5RyV5tnudFe7U+gy
- 62tiK971V0duZNJ7whbpoB48NHO1dDJxUkZmX6s7Mv/IDCU6O9vm1AKLIFZZFDxyg1qLP2
- 8U2mlMo3LzGrXymPTkAknDtfOpoPaWg=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=YHNZso132dglP2payHGFSmMwbdloulfUIzdNpbPvJbc=;
+ b=MiN/eaBqVkI18+oHWCqt6/LzVLWEsqHvAsji+wfymYI4Knu2/G6G/zKdUHZ0XiM5GLpxCg
+ g19R/kf562vNNT6XVtrCyAKF5f/0n8mCbeIM92O60Pol5lM1uVzIp4w3vntUSmlDU75Jzb
+ CSYpGhkbeXd1ZM3xzOMmk/k1KE6oseg=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-678-XGkBwFPFPny4j1aJ7KNFww-1; Wed, 27 May 2026 11:11:23 -0400
-X-MC-Unique: XGkBwFPFPny4j1aJ7KNFww-1
-X-Mimecast-MFC-AGG-ID: XGkBwFPFPny4j1aJ7KNFww_1779894682
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-44f1b4d0fb0so7313538f8f.1
- for <qemu-arm@nongnu.org>; Wed, 27 May 2026 08:11:22 -0700 (PDT)
+ us-mta-339-1eBoYg7vPimYC4sTvvjvqg-1; Wed, 27 May 2026 11:14:14 -0400
+X-MC-Unique: 1eBoYg7vPimYC4sTvvjvqg-1
+X-Mimecast-MFC-AGG-ID: 1eBoYg7vPimYC4sTvvjvqg_1779894853
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-49081106196so9058815e9.1
+ for <qemu-arm@nongnu.org>; Wed, 27 May 2026 08:14:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779894682; x=1780499482;
+ d=1e100.net; s=20251104; t=1779894853; x=1780499653;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=6gEJcXPLx6uljtp8toNSGlyGTFwh0jJNdOwJtnugnvM=;
- b=Zy7WDYb2Ekz+476i/Q6DPNB+AsgWkwnLUE4ieI0jxaSaxXqnl8Kz9lkQDRA9EVfAU4
- b/EVXmHnFTYefsFg6FDn8Ki6kz8+1hSP/f242YFnIGEIRhEcsSTa6MatiC1/tVNY9Zi2
- eRINFOyCBlgmSYPxyASbZ6DxBuc2zRyJpIi/M5KaWLOnGB/YzULYDhAqnYPUPDDoafza
- ImploGOsu/h3os9FZG4qZDDiSjm9PBkFENhMWBSp3kBQzJj1CodaS81/380yQ4932Oum
- vX1vmceqwBEDwjHElGSLJ7e/6ZZSQCGK8kcvY2IMK07CkXJycf+fv0+Kmjk308t25akM
- obrQ==
+ bh=YHNZso132dglP2payHGFSmMwbdloulfUIzdNpbPvJbc=;
+ b=gErDlpalgFiqDQ6SS76OABTFgcvdcyBXl8wcTiu23h4E/qg6vfmU0TXKp1Wrf3D0ag
+ 8fkTNExKjx3KoiF29tCZR0/6hQQJfOiyl8x/8cRPVemwrD+WaOSbfcExRYmsHyPq5I3C
+ Nnf42fR5mPcBFqaa2L4nTFfx+bqB9UFlD4ZpFuf5JzIFUFeWRZHal3xt2c161bPyPf+i
+ kQiJgl2t+BAGHZnG0AIPQYe8Lvl95bzOuP5nmgFrlkWRv7OHv7ghTjdUFKZxRPzLCAt7
+ BGKl4IOqNDECVw4yafYxcuZY3ktZVfKnvLjYkA+hLjhITBWi9KFU1wuANs4yul5lDQe3
+ 6t5A==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/EkEoaJvqAQSroOGj+sMwuBTAcLcBYemXrEEW1H8TpqbK29jV3Ep4ILgyTGpokCS4u8GEKOVrmsQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyXQ0wD9acI+GnUFGNVIoEQjjqxvmVif7KBMM2DHgod4rMUz9RF
- VPO2/lJj5Mvywpxx80rkuXK/i3bvUmxsycEkrnaPVWJHkm4LpCEzs08fNtmoycwHmRUtyoDIUEQ
- uZRr4RqEGJXL8byPhDeAAma4JLutBPRDm/zqWpoLKHK6ug17Pkyr0LA==
-X-Gm-Gg: Acq92OEApXmaXSKPZb7o6j7WnpUdE4zJLJNlo1lhL6mfOyilzM8Pwt1fnIMJ9S67qbU
- kG0PVmwxRksT8kAjrCVsgAd1j++mA97FZ9YO5zQxNoIEQCKf92Gae49nS+jDXr/Xt931Gdgsjnp
- g/bJuGGwDtmEi14509PyYsm2vmq8WeJKxAs/VnBOeR4c5CauGCfhCzhEPSuyV9WlnQVi+wVKc+h
- Atq7kpmF9kDjUQU5vYFFK2kl+DCznPvBAi1vnsZN4WaFZTz+LaEky8c7LSIx885ecmJvR1iUwFN
- GQg9LAJvTXBSI+lyWLO/LtVrUl0oXUBHzoko86x85ZO8DG4Hw4rnE+36i2yvtSaNv6fDl+4+rjX
- Q2yzFQaCI/j7AIq2NSgAtZMPQWVGf6eEnNRUJdbx5IXBl/YpzEN9qtLuJ8YAX35uaQaMM9ejeVg
- 8RZvPI
-X-Received: by 2002:a05:6000:1888:b0:441:1e1e:a050 with SMTP id
- ffacd0b85a97d-45eb38b8a09mr40132415f8f.16.1779894681546; 
- Wed, 27 May 2026 08:11:21 -0700 (PDT)
-X-Received: by 2002:a05:6000:1888:b0:441:1e1e:a050 with SMTP id
- ffacd0b85a97d-45eb38b8a09mr40132343f8f.16.1779894681072; 
- Wed, 27 May 2026 08:11:21 -0700 (PDT)
+ AFNElJ9r5eUiiZo/YX9irpsJ7gBDYnVO5kLuJE03kUM8bREBMvIVKLU4qYnD0DgfFkq83VVytdTK48FJhQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy8FYz1e8E/ej1J6HI0f4VjuJyWOj5toR2ItBXbvTJv9eKcogdq
+ gpPi6XWsK1OnvjF8Jn6A2Lot+rjEqesm8SwUYs0Dm3xeivZXDileXJGwJ4X/oh/bea3dYo58LFZ
+ e17iQkkjBA70AkYOStFQMhrbMt9c/nCLF5N5mWjph5MLEjML6ByNVVA==
+X-Gm-Gg: Acq92OEVmU7Dtd+ueSyp/9Q4upBO+27nEz9n6fgRKycqVrO9/9HvYo+/NBgYCyhW5ot
+ 1pLefG+0Ke4MW09DX+RsD/jvxMrwgGwzKuMaC+bW95tMMCHB80eC7B7B2Jo8YM4TV+0Pq08dxkr
+ DMjmmmWpcZQY1NLVAJMCZpWTpZXqljq2RXEQ8bo63Ah7fC9ZlPCXyTYkuzWgueeDywqI6rnsJah
+ 3HqNjdk9lXLSMPES91UhjmWIZG4RWjD0qC7+Urej/T0VLRkKk6zSHy+wyWPY1OmwEyEDhtoykaW
+ 24KIAAEjw4Qdw0iuRWt2S101chIS7ah/XymZGA0pGi/QxUVqIqnM+XP8Lks7mPiACYZON+WKmt6
+ HIMlNEfyti8Op8S0gRwE3imUEUIjlPl4Y4v//0Hpl45sIcC0Uvqk6QvKc5iEjBqMjDeGAN0x4YS
+ w+wLRa
+X-Received: by 2002:a05:600c:3b02:b0:489:201c:dc46 with SMTP id
+ 5b1f17b1804b1-490424b2cf1mr398245255e9.12.1779894853258; 
+ Wed, 27 May 2026 08:14:13 -0700 (PDT)
+X-Received: by 2002:a05:600c:3b02:b0:489:201c:dc46 with SMTP id
+ 5b1f17b1804b1-490424b2cf1mr398244605e9.12.1779894852820; 
+ Wed, 27 May 2026 08:14:12 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45edb557545sm7375629f8f.12.2026.05.27.08.11.17
+ 5b1f17b1804b1-4904561a198sm393501675e9.10.2026.05.27.08.14.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 May 2026 08:11:20 -0700 (PDT)
-Message-ID: <fcc79400-aef5-4f64-b094-a2d3eb99bfa0@redhat.com>
-Date: Wed, 27 May 2026 17:11:15 +0200
+ Wed, 27 May 2026 08:14:12 -0700 (PDT)
+Message-ID: <35a3fb6f-cb9a-4d47-af6c-1b9c23a6a66b@redhat.com>
+Date: Wed, 27 May 2026 17:14:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 06/18] scripts: Introduce
- scripts/update-aarch64-cpu-sysreg-properties.py
+Subject: Re: [PATCH v5 08/18] target/arm/cpu_idregs: generate tables for Arm64
+ ID registers and fields
 To: Khushit Shah <khushit.shah@nutanix.com>
 Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
@@ -103,25 +103,25 @@ Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
  "abologna@redhat.com" <abologna@redhat.com>,
  "jdenemar@redhat.com" <jdenemar@redhat.com>
 References: <20260519132905.145643-1-eric.auger@redhat.com>
- <20260519132905.145643-7-eric.auger@redhat.com>
- <903E3FE0-1286-4917-8A90-5186562D3A6D@nutanix.com>
+ <20260519132905.145643-9-eric.auger@redhat.com>
+ <E6706A9A-B0E0-4A1B-B7E9-8A0BF73A1170@nutanix.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <903E3FE0-1286-4917-8A90-5186562D3A6D@nutanix.com>
+In-Reply-To: <E6706A9A-B0E0-4A1B-B7E9-8A0BF73A1170@nutanix.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: EDhiFtiRHXynazGmiUXsaw-GdfsN-IP2ggI6XDRXzUQ_1779894682
+X-Mimecast-MFC-PROC-ID: fpd6QEYxHh4Sy1tpSdASr0HZkUkgJfzzFkNydGoOUFM_1779894853
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,9 +138,9 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Khushit,
 
-On 5/27/26 4:35 PM, Khushit Shah wrote:
+
+On 5/27/26 4:52 PM, Khushit Shah wrote:
 >
 >> On 19 May 2026, at 6:57 PM, Eric Auger <eric.auger@redhat.com> wrote:
 >>
@@ -149,214 +149,105 @@ On 5/27/26 4:35 PM, Khushit Shah wrote:
 >>
 >> |-------------------------------------------------------------------!
 >>
->> Introduce a script that takes as input the Registers.json file
->> delivered in the AARCHMRS Features Model downloadable from the
->> Arm Developer A-Profile Architecture Exploration Tools page:
->> https://urldefense.proofpoint.com/v2/url?u=https-3A__developer.arm.com_Architectures_A-2DProfile-2520Architecture-23Downloads&d=DwIDAg&c=s883GpUCOChKOHiocYtGcg&r=PGWMyignA0NiDmTlyP7vOTHozBws_VN86yrVmSMkBp0&m=lifWLuAPiWiPtZHA1AnNwE36XKErpJppnuqSRce8eEXbd2seIXgOyghkIcv1h_tk&s=HRujmTCQGTPR11d90Orv_1iwKOLX_k3RFbkK_mx7A1s&e= 
->> and automates the generation of system register properties definitions.
+>> From: Shaju Abraham <shaju.abraham@nutanix.com>
 >>
->> generates target/arm/cpu-idregs.h.inc containing definitions for
->> feature ID registers.
+>> Include cpu-idregs.h.inc multiple times with different definitions for the
+>> X-macros. This will generate tables for all Arm64 ID registers and their
+>> fields. Additionally, initialize the tables with all architecturally defined
+>> values. These tables will be consumed by the property layer in future
+>> patches.
 >>
->> We only care about IDregs with opcodes satisfying:
->> op0 = 3, op1 = {0,1,3}, crn = 0, crm within [0, 7], op2 within [0, 7]
->>
+>> Co-authored-by: Khushit Shah <khushit.shah@nutanix.com>
+>> Signed-off-by: Shaju Abraham <shaju.abraham@nutanix.com>
 >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 >> ---
->> .../update-aarch64-cpu-sysreg-properties.py   | 168 ++++++++++++++++++
->> 1 file changed, 168 insertions(+)
->> create mode 100644 scripts/update-aarch64-cpu-sysreg-properties.py
+>> target/arm/cpu-idregs.c | 50 +++++++++++++++++++++++++++++++++++++++++
+>> target/arm/meson.build  |  1 +
+>> 2 files changed, 51 insertions(+)
+>> create mode 100644 target/arm/cpu-idregs.c
 >>
->> diff --git a/scripts/update-aarch64-cpu-sysreg-properties.py b/scripts/update-aarch64-cpu-sysreg-properties.py
+>> diff --git a/target/arm/cpu-idregs.c b/target/arm/cpu-idregs.c
 >> new file mode 100644
->> index 0000000000..3571e228ee
+>> index 0000000000..f79b22680c
 >> --- /dev/null
->> +++ b/scripts/update-aarch64-cpu-sysreg-properties.py
->> @@ -0,0 +1,168 @@
->> +#!/usr/bin/env python3
+>> +++ b/target/arm/cpu-idregs.c
+>> @@ -0,0 +1,50 @@
+>> +/*
+>> + *   ARM ID register field table.
+>> + *
+>> + *   Builds the per-id-register field descriptor arrays and the global
+>> + *   arm_idregs[] table.
+>> + *
+>> + *  SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +#include "qemu/osdep.h"
+>> +#include "qemu/error-report.h"
+>> +#include "qapi/error.h"
+>> +#include "cpu.h"
+>> +#include "cpu-idregs.h"
 >> +
->> +# This script takes as input the Registers.json file delivered in
->> +# the AARCHMRS Features Model downloadable from the Arm Developer
->> +# A-Profile Architecture Exploration Tools page:
->> +# https://urldefense.proofpoint.com/v2/url?u=https-3A__developer.arm.com_Architectures_A-2DProfile-2520Architecture-23Downloads&d=DwIDAg&c=s883GpUCOChKOHiocYtGcg&r=PGWMyignA0NiDmTlyP7vOTHozBws_VN86yrVmSMkBp0&m=lifWLuAPiWiPtZHA1AnNwE36XKErpJppnuqSRce8eEXbd2seIXgOyghkIcv1h_tk&s=HRujmTCQGTPR11d90Orv_1iwKOLX_k3RFbkK_mx7A1s&e= 
->> +# and outputs target/arm/cpu-sysreg-properties.c content.
->> +# There, initialize_cpu_sysreg_properties() populates arm64_id_regs array
->> +# with the name of each ID register and definition of all its fields
->> +# including their name and min/max bit under the form of the below pattern:
->> +#
->> +# /* CCSIDR2_EL1 */
->> +# ARM64SysReg *CCSIDR2_EL1 = arm64_sysreg_get(CCSIDR2_EL1_IDX);
->> +# CCSIDR2_EL1->name = "CCSIDR2_EL1";
->> +# arm64_sysreg_add_field(CCSIDR2_EL1, "NumSets", 0, 23);
->> +#
->> +# Copyright (C) 2026 Red Hat, Inc.
->> +#
->> +# Authors: Eric Auger <eric.auger@redhat.com>
->> +#
->> +# SPDX-License-Identifier: GPL-2.0-or-later
+>> +#define IDREG_START(reg) \
+>> +    static ARM64SysRegField reg##_fields[] = {
 >> +
+>> +#define IDREG_END(reg) \
+>> +    };
 >> +
->> +import json
->> +import os
->> +import sys
->> +from aarch64_sysreg_helpers import extract_idregs_from_registers_json
+>> +#define IDREG_FIELD(reg, field, _shift, _length) \
+>> +    { \
+>> +        .name = #field, \
+>> +        .index = reg##_IDX, \
+>> +        .shift = (_shift), \
+>> +        .length = (_length), \
+>> +    },
+>> +#include "cpu-idregs.h.inc"
+>> +#undef IDREG_START
+>> +#undef IDREG_END
+>> +#undef IDREG_FIELD
 >> +
->> +def collect_fields(item, bit_offset=0):
->> +    """
->> +    Recursively finds all field-like objects, handling Fields.Array,
->> +    Fields.ArrayField, and ConditionalField structures.
->> +    Applies bit_offset from containers to child fields.
->> +    """
->> +    fields = []
->> +    if not isinstance(item, dict):
->> +        return fields
+>> +/* generate an array of top level ID registers */
+>> +#define IDREG_END(reg)
+>> +#define IDREG_FIELD(reg, field, shift, length)
 >> +
->> +    _type = item.get('_type', '')
+>> +#define IDREG_START(reg) \
+>> +    [reg##_IDX] = { \
+>> +        .name = #reg, \
+>> +        .index = reg##_IDX, \
+>> +        .fields = reg##_fields, \
+>> +        .fields_count = ARRAY_SIZE(reg##_fields), \
+>> +    },
 >> +
->> +    # Array types (for example CLIDR_EL1 Ctype<n>, Ttype<n>)
->> +    if _type == 'Fields.Array':
->> +        name_template = item.get('name') or item.get('label', '')
->> +        index_info = item.get('indexes', [{}])[0]
->> +        start_idx = index_info.get('start', 0)
->> +        count = index_info.get('width', 0)
->> +
->> +        full_range = item.get('rangeset', [{}])[0]
->> +        bit_start = full_range.get('start', 0) + bit_offset
->> +        elem_width = full_range.get('width', 0) // count if count else 0
->> +
->> +        for i in range(count):
->> +            idx = start_idx + i
->> +            # Correctly handle indexed names like Ctype1, Ctype2
->> +            field_name = name_template.replace('<n>', str(idx))
->> +            fields.append({
->> +                'name': field_name,
->> +                'rangeset': [{
->> +                    'start': bit_start + (i * elem_width),
->> +                    'width': elem_width
->> +                }],
->> +                '_type': 'Fields.Field'
->> +            })
->> +        return fields
->> +
->> +    # ConditionalFields
->> +    elif _type == 'Fields.ConditionalField':
->> +        inner_offset = bit_offset
->> +        if item.get('rangeset'):
->> +            # Parent container defines the absolute start bit
->> +            inner_offset = item['rangeset'][0].get('start', bit_offset)
->> +
->> +        for entry in item.get('fields', []):
->> +            inner = entry.get('field')
->> +            if inner:
->> +                fields.extend(collect_fields(inner, inner_offset))
->> +        return fields
->> +
->> +    # Normal Field Types
->> +    leaf_types = ['Fields.Field', 'Fields.ConstantField',
->> +                  'Fields.EnumeratedField', 'Fields.Bitfield']
->> +    if _type in leaf_types:
->> +        field_copy = item.copy()
->> +        if field_copy.get('rangeset'):
->> +            new_ranges = []
->> +            for r in field_copy['rangeset']:
->> +                nr = r.copy()
->> +                # Apply the cumulative offset to the field's start bit
->> +                nr['start'] = r.get('start', 0) + bit_offset
->> +                new_ranges.append(nr)
->> +            field_copy['rangeset'] = new_ranges
->> +        fields.append(field_copy)
->> +        return fields
->> +
->> +    # Traverse the hierarchy for other cases
->> +    for key in ['fields', 'values', 'fieldsets']:
->> +        for nested in item.get(key, []):
->> +            fields.extend(collect_fields(nested, bit_offset))
->> +
->> +    return fields
->> +
->> +
->> +def generate_sysreg_properties_from_registers_json(id_reg_names, raw_json_path):
->> +    with open(raw_json_path, 'r') as f:
->> +        register_data = json.load(f)
->> +
->> +    regs = {r.get('name'): r for r in register_data if r.get('_type') == 'Register'}
->> +
->> +    final_output = ""
->> +
->> +    for reg_name in id_reg_names:
->> +        register = regs.get(reg_name)
->> +        if not register:
->> +            continue
->> +
->> +        final_output += f"    IDREG_START({reg_name})\n"
->> +
->> +        unique_fields = {}
->> +        for fieldset in register.get('fieldsets', []):
->> +            candidates = collect_fields(fieldset)
->> +            for val in candidates:
->> +                name = (val.get('name') or val.get('label', '')).strip()
->> +                if not name or "RESERVED" in name.upper():
->> +                    continue
->> +                for r in val.get('rangeset', []):
->> +                    lsb = int(r.get('start'))
->> +                    width = r.get('width')
->> +                    msb = lsb + int(width) - 1
->> +
->> +                    # Only keep the fields with the highest MSB
->> +                    # needed fir CCSIDR_EL1
->> +                    if name not in unique_fields or msb > unique_fields[name]['msb']:
->> +                        unique_fields[name] = {'lsb': lsb, 'msb': msb, 'width': width}
->> +
->> +        # Sort decreasing lsbs
->> +        sorted_fields = sorted(unique_fields.items(),
->> +                               key=lambda x: x[1]['lsb'], reverse=True)
->> +
->> +        for name, bits in sorted_fields:
->> +            line = (f"    IDREG_FIELD({reg_name}, "
->> +                    f"{name}, {bits['lsb']}, {bits['width']})\n")
->> +            final_output += line
->> +        final_output += f"    IDREG_END({reg_name})\n"
->> +        final_output += "\n"
->> +
->> +    os.makedirs("target/arm", exist_ok=True)
->> +    with open("target/arm/cpu-idregs.h.inc", 'w') as f:
->> +        f.write("/* AUTOMATICALLY GENERATED, DO NOT MODIFY */\n\n")
->> +        f.write("/* SPDX-License-Identifier: GPL-2.0-or-later */\n\n")
->> +        f.write("/* IDREG_START(REG) */\n")
->> +        f.write("/* IDREG_FIELD(REG, FIELD, SHIFT, LENGTH) */\n")
->> +        f.write("/* ... */\n")
->> +        f.write("/* IDREG_END(REG) */\n\n")
->> +        f.write(final_output)
->> +
->> +if __name__ == "__main__":
->> +    if len(sys.argv) < 2:
->> +        print("Usage: python scripts/update-aarch64-cpu-sysreg-properties.py "
->> +              "<path_to_registers_json>")
->> +    else:
->> +        json_path = sys.argv[1]
->> +
->> +        id_regs_dict = extract_idregs_from_registers_json(json_path)
->> +        sorted_names = sorted(id_regs_dict.keys())
->> +
->> +        if sorted_names:
->> +            generate_sysreg_properties_from_registers_json(sorted_names, json_path)
->> +            print("Generated target/arm/cpu-idregs.h.inc")
+>> +ARM64SysReg arm64_id_regs[NUM_ID_IDX] = {
+>> +#include "cpu-idregs.h.inc"
+>> +};
+>> +#undef IDREG_START
+>> +#undef IDREG_END
+>> +#undef IDREG_FIELD
+>> diff --git a/target/arm/meson.build b/target/arm/meson.build
+>> index 4723f9f170..64d1ec63ab 100644
+>> --- a/target/arm/meson.build
+>> +++ b/target/arm/meson.build
+>> @@ -19,6 +19,7 @@ arm_common_ss.add(files(
+>>
+>> arm_common_system_ss.add(files(
+>>   'arm-qmp-cmds.c',
+>> +  'cpu-idregs.c',
+>> ))
+>> arm_system_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c', 'kvm.c'))
+>> arm_system_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
 >> -- 
 >> 2.53.0
 >>
-> Hi Eric,
->
-> Can we also have the arch-defined values in here? It is already available in Registers.json easily, would be great if we can validate at-least the user
-> set values are architecturally valid.
+> We can also store writable_masks here. writable_mask exposed by KVM is
+> static. It does not change in any configuration hence can be fetched once 
+> during scratch vCPU creation
 
-Yes valid values should be easily extractable
-
-Thanks
+I agree. Nevertheless when using the KVM API we need an array to store
+the bitmasks anyway. That's why I initially saved it in the CPU state.
+We can copy the bitmask to each id reg struct though
 
 Eric
 >
 > Warm Regards,
 > Khushit
->
 
 

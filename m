@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C8F4CD4F54
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 16:20:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFB80CD4F54
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 16:31:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSGz2-0005wN-Bf; Wed, 27 May 2026 12:19:52 -0400
+	id 1wSH9m-00038n-TX; Wed, 27 May 2026 12:30:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wSGz0-0005tq-9W
- for qemu-arm@nongnu.org; Wed, 27 May 2026 12:19:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1wSH9j-000384-S4
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 12:30:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wSGyy-0005U0-99
- for qemu-arm@nongnu.org; Wed, 27 May 2026 12:19:50 -0400
+ id 1wSH9d-0003tg-Le
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 12:30:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779898787;
+ s=mimecast20190719; t=1779899426;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=EWehKC6VzlOi12pDotLZu0gXRvyJlSMzVrHQdPkljoo=;
- b=hSNgbYRZxhKJlp67EZ03JrkHJ2ljkVJO4X9dohfwymEVov8F67nOgv2yWIpwC88YgjPwcH
- B0LooMaXNOQ90qgmm5o5jN+6D2qcg1rfNJ1JprCi7nBGov5mhlGFxAc/53WJdkoFZMdjYi
- sra3de3DR+o7TD05awthiw0q+SlyPlc=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=vmaVEarjl+29HjUmp4g0LDPMRPfL+U1HfCPbEe43AKU=;
+ b=M11P5wzeaIbCUb+iix9A+OL6d8Kv/Vu8eIXCckcZAY9/ZSeRmUd1y6kByTPDtSiFIWFRMF
+ GbKVDVAgEbD6fXGqkQif6dEU/KXLiz1kpjI884vomTsVjMUEWQtqOK+1wmA+sV/A8RjUNg
+ lNZYUaz+VP0V932Nt/St91ebwMkXoS4=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-493-x57newJZPdW4WdwOWMrm6A-1; Wed, 27 May 2026 12:19:45 -0400
-X-MC-Unique: x57newJZPdW4WdwOWMrm6A-1
-X-Mimecast-MFC-AGG-ID: x57newJZPdW4WdwOWMrm6A_1779898784
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-49045243094so77036555e9.2
- for <qemu-arm@nongnu.org>; Wed, 27 May 2026 09:19:45 -0700 (PDT)
+ us-mta-340-96o3oI0cNlC6zFIBgS7Xfg-1; Wed, 27 May 2026 12:30:23 -0400
+X-MC-Unique: 96o3oI0cNlC6zFIBgS7Xfg-1
+X-Mimecast-MFC-AGG-ID: 96o3oI0cNlC6zFIBgS7Xfg_1779899422
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-45ea19f2564so6578012f8f.2
+ for <qemu-arm@nongnu.org>; Wed, 27 May 2026 09:30:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779898784; x=1780503584;
+ d=1e100.net; s=20251104; t=1779899422; x=1780504222;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=EWehKC6VzlOi12pDotLZu0gXRvyJlSMzVrHQdPkljoo=;
- b=cXk4zE0mv0TzMxDfYrwyAGGNKZ8N7gbLFmxiAMbYurwOTpgvt1o9TtkXHWsl20iDv6
- MUguaJmJ+J+jj0swvl+blFTeAXRNh37I8MG/fc6oW54vjtn9Go0EOp0fav4VDDYwo8an
- DuudwQ7uRYGsDNkHnX7idaQr2Axn5VgqNN2ljcnkfAMoHR7isqyVYlWYJs904UzzLGZs
- OHRctm72vWayNgBGf4z50hKUwELqTIIa85Z0EPzKXkg1Slk9ueHWwAJJnfKD0z04felV
- pUxkP4XFeiSX+Nb3Jzz2FiqEtIJMNmEgjVNLLZMpg3na1JSjLALN++7ClbDPmjjgGBg4
- nCQA==
+ bh=vmaVEarjl+29HjUmp4g0LDPMRPfL+U1HfCPbEe43AKU=;
+ b=Anc2Z9akcDusqP4B+pVCu4KkV7o9YLmDQK20F5SjsAQn72LXcyLsqsIDNAMa+lZTYs
+ IpE9TovhrxwgRn27b2Rc271dkl0ygWtc1GPQLGUEimSHgftV34GEjeVmQltO/oi8vrTi
+ kcjhmdVd6+QvXkFCW8/uNJH0tvBCQlPWkUfn52tU6MRd016RYav8WrOrRqktxQ34EmgK
+ 3js4Nm8rj8mCQITnbXF6+FU4eNoc0FvwEe5fxw7MZTt0fuGlKG30YIvLuimFtGBe8I7O
+ omml4lIy03IRGt/E1SdUmZBjkNGVJPj9BzWyA+FhbkebqFYrybbke0OhfDfwSbAU5lZZ
+ 4UQg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9WgGJ5zKciP0aINM7WMylX8o7lrFK4KaccmIjPRF/DB5fZJYqG1RMGlFQlJx7txZ0pkI4fZ6vl3g==@nongnu.org
-X-Gm-Message-State: AOJu0YyuTF8U8U8/Tuyif5HdoYYIYtQicT4k4BUdYTM2IO+xfj6Chvxr
- gdrsQHS4JV3raB8YVnKHhv4b0Srcz0q9p7VCgRO6QXPaFqL808eMuZhaEFDXb+6oexvfBxoQGPG
- AFRRYlHKE8utcVqLzUfeFGDHqUiEKouxthkuil1AJYaAA/HczHnRWUQ==
-X-Gm-Gg: Acq92OHSW3MZMmAIos+A5kaotAczywPfr7tlPVmivPykrSon+rgCzcmiFAR/Ft7PPfm
- rVlfG5omiC+APyPOg1wx7b9IhZzso4WHo5MXLvAWSTj9uve0dEIapWOtprDO4E8ANlMSGc7KJ0B
- aP8e48oMmpYC/Sfe580UixQbNQho53rzSanKxcpHUydZgP3BKbcLbrmLHpNfyAcsscR+LgxZBk3
- ZTBWiYkJ6zN4EMZO4RbxGsZ2S+mXnjkXMLVKYD0RXwAVJYdPkZB2QODDHWkFAiZLNf+AJj+Z5Ma
- 6j6gaPso5my+io/3nJIf0/HeIY2oPZPp88N+Wu1NZvofAJKXm6gMFdakIOyB41ggC1nfCvPCLld
- Wrp22EqStQumUTbax/OPM6hcUZmKL+ZshMvGm16oU2McOZLQupMRrhBVcvmumlURvBFiejYne2U
- KoHWM6
-X-Received: by 2002:a05:600c:4746:b0:490:469c:556b with SMTP id
- 5b1f17b1804b1-490469c56d6mr377120165e9.12.1779898784024; 
- Wed, 27 May 2026 09:19:44 -0700 (PDT)
-X-Received: by 2002:a05:600c:4746:b0:490:469c:556b with SMTP id
- 5b1f17b1804b1-490469c56d6mr377119545e9.12.1779898783505; 
- Wed, 27 May 2026 09:19:43 -0700 (PDT)
+ AFNElJ95MLxL2iw3fc/M/ulYXAnqrcd4LM4BmNumARRLTBwhx0uGEMU33y4vpomTFZeyJwwng2VBEB92Ow==@nongnu.org
+X-Gm-Message-State: AOJu0YyxSvrXLgJR/s0ujso51wHipJM9pgYRiId1Sa6ocE+S6pZn4bBL
+ tAfPYgr52dfP8J8Z2x6RK/pYqA4ZHOrH71XB0MAt6v0/m7RgWcK4kKKFPuxXa+rd9IukBInGCTI
+ HVywF7MZKwTO1Zdg5+FweJuZjMZjey9aN5oVP7VUlLNZjF3D8Kf+FuQ==
+X-Gm-Gg: Acq92OHY/cQxdxiWQ2XaCDY2hqwJXz/xJzKh0QuXnPvcXxlBfE3+lMNw2X3i8l7B8H4
+ 0Q0dAoi95NvLNDmpEt4dsaToDnWBZFRtOMf7tqM6U2s0GxdcYwUqxgYDUoeEjXvwxzp2da23gCA
+ 8UnO5721zAIhZ2wDQbhuFcrILfifAAifZsGlew2m7OpyIqx+KM8tDIMfOzpd+YLKBDYjdG1RBqc
+ TLXZskENPVuZEshwaUmRPn42jS8dhwPdCA5MthVyOdhXICzUgN+lNsEyEOnJ5qm0fTF9sLbN3Pw
+ EEMo917U1uasI4YJ9eHycTB/DTQzjLUOJ4XBVtkpYGjYHzjZsLc0u/tih4pNVlJ7ck0u6hDqsVC
+ Lp2acyblUdGeukmO2mHPouOjIyjDR+epC932U+v5p5AoWMqXYypK+TJqg7ApFHqrn9ykNoA==
+X-Received: by 2002:a05:600c:46c6:b0:490:4927:3777 with SMTP id
+ 5b1f17b1804b1-490492738a4mr354193515e9.2.1779899421680; 
+ Wed, 27 May 2026 09:30:21 -0700 (PDT)
+X-Received: by 2002:a05:600c:46c6:b0:490:4927:3777 with SMTP id
+ 5b1f17b1804b1-490492738a4mr354192575e9.2.1779899421146; 
+ Wed, 27 May 2026 09:30:21 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4904561a198sm396774325e9.10.2026.05.27.09.19.42
+ 5b1f17b1804b1-490809b7619sm20632265e9.25.2026.05.27.09.30.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 May 2026 09:19:43 -0700 (PDT)
-Message-ID: <63a8bd66-c324-4d2f-9d6b-1ea35e72db5b@redhat.com>
-Date: Wed, 27 May 2026 18:19:41 +0200
+ Wed, 27 May 2026 09:30:20 -0700 (PDT)
+Message-ID: <1cf36575-a542-49a2-a23f-2357184da8fc@redhat.com>
+Date: Wed, 27 May 2026 18:30:18 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 13/18] target/arm/kvm: Introduce
- kvm_arm_expose_idreg_properties
+Subject: Re: [PATCH v5 15/18] target/arm/kvm: Ignore some writable bits that
+ shouldn't be
 To: Khushit Shah <khushit.shah@nutanix.com>
 Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
@@ -103,26 +102,28 @@ Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
  "abologna@redhat.com" <abologna@redhat.com>,
  "jdenemar@redhat.com" <jdenemar@redhat.com>
 References: <20260519132905.145643-1-eric.auger@redhat.com>
- <20260519132905.145643-14-eric.auger@redhat.com>
- <3344B74E-39B1-421D-8417-373A688DB372@nutanix.com>
- <c4a38526-a803-4e69-b6ca-f6bf0583198a@redhat.com>
- <F50EB764-5F22-42AD-89E2-677BF7DB453B@nutanix.com>
+ <20260519132905.145643-16-eric.auger@redhat.com>
+ <E5402D74-AE00-4088-801C-C87A749E17C9@nutanix.com>
+ <80fa5157-2376-4010-88b2-deb6ab50f87f@redhat.com>
+ <6CA1EBCE-BA44-42A1-81D3-1A723C6F0CC3@nutanix.com>
+ <72f22825-d810-4fa1-8fc5-123ae06af91e@redhat.com>
+ <3A56B398-0213-4962-B27C-96F716DAB799@nutanix.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <F50EB764-5F22-42AD-89E2-677BF7DB453B@nutanix.com>
+In-Reply-To: <3A56B398-0213-4962-B27C-96F716DAB799@nutanix.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 50HSB3vp4hNuToGVlusJgTfOKwal7k3sy96IUZcvnJA_1779898784
+X-Mimecast-MFC-PROC-ID: PCLoDyvC_5K-ywzCQ6SLdEjQNQrviWKw-93aeFCbyEo_1779899422
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -142,131 +143,41 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-On 5/27/26 5:44 PM, Khushit Shah wrote:
+On 5/27/26 6:16 PM, Khushit Shah wrote:
 >
->> On 27 May 2026, at 9:02 PM, Eric Auger <eric.auger@redhat.com> wrote:
+>> On 27 May 2026, at 9:31 PM, Eric Auger <eric.auger@redhat.com> wrote:
 >>
->> I replied separately to this on your series thread. I am inclined to do
->> so but this raises another problematic for the layered products to know
->> which mismatch can be fixed
+>> but if a field is RESx why don't you want to overwrite it? Are there
+>> cases where a field is RESx depending on a condition?
 >>
 >> Thanks
 >>
 >> Eric
 >>
+> There are cases where fields are RESx based on conditions.
+> but too complex to get into those (CCSIDR for e.g.). 
 >
-> Hence the safe-value tags :), sneak peek to v2 of RFC, with safe-value tags.
-> For each prop we can say:
->         ...
->         {
->             "name": "feat_RDM",
->             "supported-values": [
->                 "off",
->                 "on"
->             ],
->             "type": "string"
->         },
->         {
->             "name": "feat_ATOMIC",
->             "supported-values": [
->                 "off",
->                 "on"
->             ],
->             "type": "string"
->         },
->         {
->             "name": "feat_CRC32",
->             "supported-values": [
->                 "off",
->                 "on"
->             ],
->             "type": "string"
->         },
->         {
->             "name": "feat_SHA2",
->             "supported-values": [
->                 "off",
->                 "sha256",
->                 "sha512"
->             ],
->             "type": "string"
->         },
->         {
->             "name": "feat_SHA1",
->             "supported-values": [
->                 "off",
->                 "on"
->             ],
->             "type": "string"
->         },
->         {
->             "name": "feat_AES",
->             "supported-values": [
->                 "off",
->                 "aes",
->                 "pmull"
->             ],
->             "type": "string"
->         }
->         {
->             "name": "feat_NV",
->             "supported-values": [
->                 "0.0"
->             ],
->             "type": "string"
->         },
->         {
->             "name": "feat_RAS",
->             "supported-values": [
->                 "0.0",
->                 "1.0",
->                 "1.1_base"
->             ],
->             "type": "string"
->         },
->         {
->             "name": "feat_MPAM",
->             "supported-values": [
->                 "0.0"
->             ],
->             "type": "string"
->         },
->         {
->             "name": "feat_CSV2",
->             "supported-values": [
->                 "0.0",
->                 "1.0"
->             ],
->             "type": "string"
->         },
-I am not sure what the above represents
->         …
->
->
-> 	I am inclined to do so but this raises another problematic for the 	layered products to know which mismatch can be fixed
-> 	
-> I am tempted to make the same argument for writable fields: how will the
-> layered products know which values are safe (or effectively can be set?)?
->
-> I know right now we don’t agree on keeping safe-value tags or default values.
-> But, I hope the above inclines you towards keeping those :) 
-
-OK I think I now understand what you plan to do with safe_rule (which,
-as far as I understand is not currently implemented in your v1). With a
-"tool" like 
-
-query-cpu-model-expansion you would be able to retrieve the host value. If it does not match your named model default value, you can use the safe_rule to see if it could be applied, without relying on any scratch vcpu instantiation. This makes sense in the context of providing ways for layered products to see which vcpu model can be used, assuming there is no other way like scratch vcpu instantiation.
-
-Is that a correct understanding?
-
-I think this implies that we need to return more information though query-cpu-model-expansion than what we currently do (at least in [1] we only return the value). We would need to return whether the prop value can apply on this host (its default value is same as host value or OK with regards to host value and safe rule and the ID reg field is writable). This most probably means we need to enhance the prop value to contain more fields.
-
-Thoughts?
+> What I meant is when we want to realize a model, 
+> 1. If we don’t account for RESx fields how will we know which fields Res0 or Res1.
+why would you care. Those fields are not exposed through props so host
+has the good value, Res0 or 1, no?
+> 2. In future what if RESx field becomes a defined field? Instead of maintaining:
+>>
+>> +    if ((!strcmp(reg->name, "ID_ISAR0_EL1") && i >= 28 && i <= 31) || /* RES0 */
+>> +        (!strcmp(reg->name, "ID_ISAR5_EL1") && i >= 20 && i <= 23) || /* RES0 */
+>> +        (!strcmp(reg->name, "MVFR2_EL1") && i >= 8 && i <= 31) || /* RES0 */
+>> +        (!strcmp(reg->name, "ID_PFR2_EL1") && i >= 12 && i <= 31) || /* RES0 */
+>> +        (!strcmp(reg->name, "ID_MMFR5_EL1") && i >= 8 && i <= 31) || /* RES0 */
+>> +        (!strcmp(reg->name, "ID_AA64FPFR0_EL1") && i >= 2 && i <= 7)) { /* RAZ */
+>> +        return true;
+>> +    }
+but you still have to care with old kernels which expose those fields as
+writable. If the value becomes non RESx, you won't have any mismatch
+anymore so I think you're just fine. Effectively either we keep this
+patch for we just turn the warnings into trace points
 
 Eric
-
-
-
+> We can just maintain one cpu-idregs.h.inc and have RESx in that.
 >
 > Warm Regards,
 > Khushit

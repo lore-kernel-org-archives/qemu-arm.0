@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A21ADCD5BDE
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 05:02:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBA1BCD4F54
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 05:02:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wS6OO-0001P1-Lt; Wed, 27 May 2026 01:01:20 -0400
+	id 1wS6Nv-0001FL-Fq; Wed, 27 May 2026 01:00:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wS6ON-0001OX-47; Wed, 27 May 2026 01:01:19 -0400
+ id 1wS6Nt-0001Dp-O7; Wed, 27 May 2026 01:00:49 -0400
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wS6OL-0004GB-C4; Wed, 27 May 2026 01:01:18 -0400
+ id 1wS6Nr-0004De-Uu; Wed, 27 May 2026 01:00:49 -0400
 Received: from localhost (unknown [131.107.147.136])
- by linux.microsoft.com (Postfix) with ESMTPSA id 81E6420B7178;
- Tue, 26 May 2026 22:00:43 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 81E6420B7178
+ by linux.microsoft.com (Postfix) with ESMTPSA id 4F59D20B716A;
+ Tue, 26 May 2026 22:00:36 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 4F59D20B716A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1779858043;
- bh=nSRviMTjzY05eP4undoQCtpa2DSIEGk82eY16zPUOpM=;
+ s=default; t=1779858036;
+ bh=qtlP0uBJP+8WkJRoY5C7ajRNqn+hFDb3SPRaB45GNYc=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=CHewVDOJN82yKN5HDhsfL/MhxVtptAZtKNTDFaKojpz/B6IaCba97yM8rP9+cGLzN
- +jYc5pf2e05oISsuea9HtOmYMKK0X5fFMBi7gBSSOfrhQs0n9wzA0zBcn7FqYOYroJ
- yOUnJx+qG+HxkpdgHgagaDKbdmJ4hepBHFGEhQdQ=
+ b=HpVvhJ6mW/7ZXqo0GhIDHNIk+9o6LokJeZqgkc0qJtZjRYFOY1r+8b/rqY8nsiT2C
+ yEJjWi2aioSohJJlG+qZTO/MZ8IJliYKmEk4adKSTLrmbNPqKlJm6FAZerQEJ5IzP0
+ pxqWcLGxGt+a0zXJZr2IHsrxgrmaszyo5lb6SsAc=
 From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Wed, 27 May 2026 05:00:49 +0000
-Subject: [PATCH v4 13/15] include/hw/hyperv: adjust hv_interrupt_control
- structure for arm64
+Date: Wed, 27 May 2026 05:00:40 +0000
+Subject: [PATCH v4 04/15] meson, target/arm/mshv: Enable arm64 build & add
+ initial MSHV support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260527-mshv_accel_arm64_supp-v4-13-66d871dcdc53@linux.microsoft.com>
+Message-Id: <20260527-mshv_accel_arm64_supp-v4-4-66d871dcdc53@linux.microsoft.com>
 References: <20260527-mshv_accel_arm64_supp-v4-0-66d871dcdc53@linux.microsoft.com>
 In-Reply-To: <20260527-mshv_accel_arm64_supp-v4-0-66d871dcdc53@linux.microsoft.com>
 To: qemu-devel@nongnu.org
@@ -77,99 +77,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
+Enable the build of the MSHV accelerator for arm64 in the Meson build
+system. Introduce initial files and stub implementations to support MSHV
+for the ARM target.
 
-Add the arm64 specific fields to the hv_interrupt_control struct and
-adjust the existing usage accordingly. mshv_request_interrupt is only
-needed only for x86 so compile it out entirely for arm64.
-
-Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
+Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
 ---
- accel/mshv/irq.c               |  2 ++
- include/hw/hyperv/hvgdk_mini.h | 25 +++++++++++++++++++++++++
- include/system/mshv.h          |  2 ++
- 3 files changed, 29 insertions(+)
+ meson.build                 |  8 +++----
+ target/arm/meson.build      |  1 +
+ target/arm/mshv/meson.build |  7 ++++++
+ target/arm/mshv/mshv-all.c  | 56 +++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 68 insertions(+), 4 deletions(-)
 
-diff --git a/accel/mshv/irq.c b/accel/mshv/irq.c
-index 3c238c33c3..a391d7db86 100644
---- a/accel/mshv/irq.c
-+++ b/accel/mshv/irq.c
-@@ -310,6 +310,7 @@ int mshv_irqchip_update_msi_route(int virq, MSIMessage msg, PCIDevice *dev)
-     return 0;
- }
+diff --git a/meson.build b/meson.build
+index eb07491819..ff54d48e6e 100644
+--- a/meson.build
++++ b/meson.build
+@@ -305,7 +305,8 @@ if cpu == 'aarch64'
+   accelerator_targets += {
+     'CONFIG_HVF': ['aarch64-softmmu'],
+     'CONFIG_NITRO': ['aarch64-softmmu'],
+-    'CONFIG_WHPX': ['aarch64-softmmu']
++    'CONFIG_WHPX': ['aarch64-softmmu'],
++    'CONFIG_MSHV': ['aarch64-softmmu'],
+   }
+ elif cpu == 'x86_64'
+   accelerator_targets += {
+@@ -871,10 +872,9 @@ if get_option('kvm').allowed() and host_os == 'linux'
+ endif
  
-+#if defined(__x86_64__)
- int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint32_t vector,
-                            uint32_t vp_index, bool logical_dest_mode,
-                            bool level_triggered)
-@@ -346,6 +347,7 @@ int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint3
-     }
-     return 0;
- }
-+#endif
+ if get_option('mshv').allowed() and host_os == 'linux'
+-  if get_option('mshv').enabled() and host_machine.cpu() != 'x86_64'
+-    error('mshv accelerator requires x64_64 host')
++  if host_machine.cpu() in [ 'x86_64', 'aarch64' ]
++    accelerators += 'CONFIG_MSHV'
+   endif
+-  accelerators += 'CONFIG_MSHV'
+ endif
  
- void mshv_irqchip_commit_routes(void)
- {
-diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
-index 192d464d22..c3424b760a 100644
---- a/include/hw/hyperv/hvgdk_mini.h
-+++ b/include/hw/hyperv/hvgdk_mini.h
-@@ -510,13 +510,38 @@ typedef struct hv_input_set_vp_registers {
-     struct hv_register_assoc elements[];
- } QEMU_PACKED hv_input_set_vp_registers;
+ if get_option('whpx').allowed() and host_os == 'windows'
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 4723f9f170..74d21544b9 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -58,6 +58,7 @@ arm_common_system_ss.add(files(
  
-+enum hv_interrupt_type {
-+#if defined(__x86_64__)
-+    HV_X64_INTERRUPT_TYPE_FIXED             = 0x0000,
-+    HV_X64_INTERRUPT_TYPE_LOWESTPRIORITY    = 0x0001,
-+    HV_X64_INTERRUPT_TYPE_SMI               = 0x0002,
-+    HV_X64_INTERRUPT_TYPE_REMOTEREAD        = 0x0003,
-+    HV_X64_INTERRUPT_TYPE_NMI               = 0x0004,
-+    HV_X64_INTERRUPT_TYPE_INIT              = 0x0005,
-+    HV_X64_INTERRUPT_TYPE_SIPI              = 0x0006,
-+    HV_X64_INTERRUPT_TYPE_EXTINT            = 0x0007,
-+    HV_X64_INTERRUPT_TYPE_LOCALINT0         = 0x0008,
-+    HV_X64_INTERRUPT_TYPE_LOCALINT1         = 0x0009,
-+    HV_X64_INTERRUPT_TYPE_MAXIMUM           = 0x000A,
-+#elif defined(__aarch64__)
-+    HV_ARM64_INTERRUPT_TYPE_FIXED           = 0x0000,
-+    HV_ARM64_INTERRUPT_TYPE_MAXIMUM         = 0x0008,
-+#endif
-+};
+ subdir('hvf')
+ subdir('whpx')
++subdir('mshv')
+ 
+ if 'CONFIG_TCG' in config_all_accel
+    subdir('tcg')
+diff --git a/target/arm/mshv/meson.build b/target/arm/mshv/meson.build
+new file mode 100644
+index 0000000000..169643691e
+--- /dev/null
++++ b/target/arm/mshv/meson.build
+@@ -0,0 +1,7 @@
++arm_mshv_ss = ss.source_set()
 +
- union hv_interrupt_control {
-     uint64_t as_uint64;
-     struct {
-         uint32_t interrupt_type; /* enum hv_interrupt type */
-+#if defined(__x86_64__)
-         uint32_t level_triggered:1;
-         uint32_t logical_dest_mode:1;
-         uint32_t rsvd:30;
-+#elif defined(__aarch64__)
-+        uint32_t rsvd1:2;
-+        uint32_t asserted:1;
-+        uint32_t rsvd2:29;
-+#endif
-     };
- };
- 
-diff --git a/include/system/mshv.h b/include/system/mshv.h
-index 75286baf16..0db18fcee9 100644
---- a/include/system/mshv.h
-+++ b/include/system/mshv.h
-@@ -47,10 +47,12 @@ extern bool mshv_allowed;
- typedef struct MshvState MshvState;
- extern MshvState *mshv_state;
- 
-+#if defined(__x86_64__)
- /* interrupt */
- int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint32_t vector,
-                            uint32_t vp_index, bool logical_destination_mode,
-                            bool level_triggered);
-+#endif
- 
- int mshv_irqchip_add_msi_route(int vector, PCIDevice *dev);
- int mshv_irqchip_update_msi_route(int virq, MSIMessage msg, PCIDevice *dev);
++arm_mshv_ss.add(files(
++  'mshv-all.c',
++))
++
++arm_system_ss.add_all(when: 'CONFIG_MSHV', if_true: arm_mshv_ss)
+diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
+new file mode 100644
+index 0000000000..32adf26838
+--- /dev/null
++++ b/target/arm/mshv/mshv-all.c
+@@ -0,0 +1,56 @@
++/*
++ * QEMU MSHV support
++ *
++ * Copyright Microsoft, Corp. 2026
++ *
++ * Authors: Aastha Rawat          <aastharawat@linux.microsoft.com>
++ *          Anirudh Rayabharam    <anirudh@anirudhrb.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "hw/arm/virt.h"
++#include "system/mshv.h"
++#include "system/mshv_int.h"
++
++int mshv_load_regs(CPUState *cpu)
++{
++    return 0;
++}
++
++int mshv_arch_put_registers(const CPUState *cpu)
++{
++    return 0;
++}
++
++int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
++{
++    return 0;
++}
++
++void mshv_arch_init_vcpu(CPUState *cpu)
++{
++
++}
++
++void mshv_arch_destroy_vcpu(CPUState *cpu)
++{
++
++}
++
++int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
++{
++    return 0;
++}
++
++void mshv_arch_amend_proc_features(
++    union hv_partition_synthetic_processor_features *features)
++{
++
++}
++
++int mshv_arch_post_init_vm(int vm_fd)
++{
++    return 0;
++}
 
 -- 
 2.45.4

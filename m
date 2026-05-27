@@ -4,95 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6FBCCD5BD5
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 13:22:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66A67CD5BD0
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 13:33:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSECq-0000ya-Qw; Wed, 27 May 2026 09:21:56 -0400
+	id 1wSEOG-0005yj-3a; Wed, 27 May 2026 09:33:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wSECp-0000yE-OI
- for qemu-arm@nongnu.org; Wed, 27 May 2026 09:21:55 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ id 1wSEOE-0005yV-LZ
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 09:33:42 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wSECn-0000ZO-Sp
- for qemu-arm@nongnu.org; Wed, 27 May 2026 09:21:55 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-490426d72f7so50675015e9.3
- for <qemu-arm@nongnu.org>; Wed, 27 May 2026 06:21:53 -0700 (PDT)
+ id 1wSEOC-0002aM-WB
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 09:33:42 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-44a5174670eso6548049f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 27 May 2026 06:33:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779888112; x=1780492912; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779888819; x=1780493619; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jbzzr0gERYizfHYbiBkh1MGR81fYEEnusIvBrkkcOnc=;
- b=e0czkzPJ5M//q/9u5wBi3WfeXZ3QR4r87UCzaZ/ZH8LxUdrEloGMT4KHuvFPCC9mca
- 6qEpJ4VQwIpv3N4G8TSwCzg9H9+ITq1p+6WPAZjgMxt5MbHhjmhlPOHzQSPmsQxUyOeh
- iBHPFrzbD5JssCn5P+DiF6mFARzmsn0azXVFPBChRC83otdP1WLDHknUvDvTI6ad9egE
- TkzWCvXj7PnlWn0WCXfv+ovPCZEHd8Macr690iXVcjvIXG3Fvw3wuaQuy/Y4siyYAM7W
- NWmggQZmvA9z9GJpktzmh2FTRGeUZaeIIc+fBhBf104y4u5M3486JRDLvokVsTovn9tE
- Sp9Q==
+ bh=gB8BM9o205SK4nZQZ8Fne9PayL3l3YRAC9i9Pf8IgZ8=;
+ b=fLMyTdzjs3FHQzPDNT3Iwm0O6e8wdioMCGhs9VdroRtRndUZKvC5pm1guGjS6DIZRx
+ wFurN5a3/aJF0qq4+yc4e7QX9QVF3t2E5yfDzR7apoREVPqLGsCW4EVkNb3OzkMVPtwH
+ pKrzjKFw2cU82/2YZR5bUZhbHCC1hAnxj6K+GY9HPFMv/qQU8zB6EtKi+oZF7c0+Dsgw
+ /qMzhaA7QtfuDaxf7hze3pLIep/fR1oR/eyILJXHz5kz0mNz8R67RPFQNoQ9vScBTiPv
+ wG7ijLFLUM16PmT9FDJJN1uZGlhMDuwMOv65SkDwpr8R7aRnS/brm/M315444PYl0a7a
+ ReQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779888112; x=1780492912;
+ d=1e100.net; s=20251104; t=1779888819; x=1780493619;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=jbzzr0gERYizfHYbiBkh1MGR81fYEEnusIvBrkkcOnc=;
- b=HdO6s9kNaciOTiVH3bQMbD+AM76AmqNN4cPNJUC+0Qx7Di3Sm2iAsEVoX8uR1z2p+8
- HpTNT8pFeHHLpR8KvMk6fEFh52LgaP1l1W0oQAM7AAYwHjHxcaEyEHgWHnMUg6I8iMzR
- valsCuGOGz85Hitlih1gEHr3sX5Ridg7G21JqmMe2Swy9Oa+KfoHzja+7vxVBFFYqeQv
- dQwPbO0a8qNRqUP7vrSZFBjRxlpCZ4FY4zGntT2HXu+dSSKlc2yHI+JCxPZBzvYgEMzW
- W4SSJ4c0gxwAxF6UFBD+NWCbt2Y/0s98zaQFaC1l6RZQZ6otMVlwtfKtDhO9ES61s7Zf
- Xpcw==
+ bh=gB8BM9o205SK4nZQZ8Fne9PayL3l3YRAC9i9Pf8IgZ8=;
+ b=jFr9KpFtfhIXZp/AXLGXHtN8eRhuaY+XJkZg4r3t7VHG8jN4jS96DMi+gatMWVPote
+ 935aujvNYu5eHXbrRUmmU8+HRzvZpU4bJAa9NXVaMsRrOb5GO90+VrmJywKou2zxhOH8
+ xgsB7oj/57BpYQJpM9/SYZg0qJQQa2oWTWYQ9VmLA7xTOBR8NrbG0p9ydt7hYFkSWFRu
+ tiDALjVInJS+WFCisBG26TuYfaD6f4aNFdurV90n391k3DI/AW4N/rE36vad4r/cHCzP
+ dXjEggjFp/wTQLYWXpi1p/ghzczFVNGblPjeFvk4H6eFnh2Q4IALSye1h1fWY6XfQ47u
+ Tayw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/K2hrC7aNV8tKJEuZq0lLkDs0TunIG947/laJ+PoxV06C8b+DK6s1n1S0NtV9l5OSZ/pkmytxh5A==@nongnu.org
-X-Gm-Message-State: AOJu0Yy6FuTbXk5Y7kW6o1paqEzN5q3r619oU6IwtxG7cnbgziTUZJOr
- II/uKme+B3C4IaHtoSTwyKbFx73qIcOWUgiXjCwSlASEl7Wuhw/8/B8jf9IBOr4Gqjw=
-X-Gm-Gg: Acq92OE2pGC0Kw/XILWfkcrOmNdLB144h2bwcIQZLurRoAdlW1TL9bLcHlTJnN/NnZw
- ZdOPPUw5BrKPorRJGrWeUqHcAzJsXZVjKuYA+bzEAmFbHkFhbRqBTszY/Rgrhgv4ZqBm0cnFimI
- r8Z6MEpPFydw928xVqzecbMTLhZQX99FOIzwVMpT22IKWDOjz0OpHbt4Y6506p+SbbTFhA/AXkQ
- jBMbPEZvPUCc/j4SeHbQXhnUbkEJK2er8W6ReqY89JJCZoltxzaqdo+GK9WL3jXgg/y4g7twoDt
- fbvjOoO5ZIn2rwkpGaj7RYAijP2Oo0R0NowfhbYTbEgLrRS7YRJzGUfNGbrNX900RWWFKmtbLMe
- vAqsvtNAF7nuEXETBfbUYzAmQD/KSTOa6AENDGrqufs5yrJcw/FaYlFAzynCOOC08kcOBlz6+Ut
- JJ7zngW0eULJDxFGpou5vXDkv1QIu7OCpGpg==
-X-Received: by 2002:a05:600c:4fc1:b0:490:7227:100 with SMTP id
- 5b1f17b1804b1-49072aa14b3mr138575805e9.18.1779888111413; 
- Wed, 27 May 2026 06:21:51 -0700 (PDT)
+ AFNElJ/XNEEp7uHDv2cmufl/UViTZ/q21juZ80sxdLpz+5wuAJfa9aRcELMoM8szZWu8wG+6Y6iRvp4WvA==@nongnu.org
+X-Gm-Message-State: AOJu0Yzuch2rlkAsWJNqx84IXE8SfqC61aD0VKzXZ4qJ7Yoyk48PJJf4
+ by6zaSGJ7EflnibJUjWpy2QV6lqVTmlxS638enMLP7Q8DRkYCALlIF3ejybSyw7s6ww=
+X-Gm-Gg: Acq92OG852Rc6rkbjfYJZEiTlBF4QLaJ+YAlnP0kRx0l1yB+2iMduOL7WfYAkHpfya8
+ ijcbQFOHa8DgTbPbR7hmEQP8Atf98uxJtNNY3DjwdwbeTKGX4CcDMtJK4Fno5V5kG2XfRTsHORV
+ sUCg6IMZiLIKmDVXxk+bTayKtoUUMX3pNNMJpR3Lqni9OyYRjURq5TTYuMEbt9FFcW6LjswCIbq
+ f6e+JxyqJlWnglrcGxLjIKB0Fq2xe04ork2bWP+OSWbqqgscWk+JrVXCZgJGfiwo+tfv+2rVy0d
+ ifvUa/XhL8dmauN3/l5Y2Uwuaju9O9lc7kCxWl2J/VfVLcVj3cwasWEtucZOYeO2pJlY7mdwZYH
+ 4T2PHOsNCA0pJjKG9Eu6gVGE2mmf9LbSB77RnJ1IKdo//y1y++C6n1+FteR9FyuhFPbiuTf3mfe
+ c+RjBT/Uv88wbLP4vV35Ff4nlRvjEpKezhWA==
+X-Received: by 2002:a05:6000:2007:b0:44a:247e:67b4 with SMTP id
+ ffacd0b85a97d-45eb3689031mr38653570f8f.18.1779888812608; 
+ Wed, 27 May 2026 06:33:32 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45edb5b2bbfsm6461998f8f.32.2026.05.27.06.21.50
+ ffacd0b85a97d-45edb5c44e4sm5918860f8f.36.2026.05.27.06.33.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2026 06:21:50 -0700 (PDT)
+ Wed, 27 May 2026 06:33:31 -0700 (PDT)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 888E25F7F0;
- Wed, 27 May 2026 14:21:49 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id D64145F7F0;
+ Wed, 27 May 2026 14:33:30 +0100 (BST)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: =?utf-8?Q?Torbj=C3=B6rn?= SVENSSON <torbjorn.svensson@foss.st.com>
 Cc: <qemu-devel@nongnu.org>,  Peter Maydell <peter.maydell@linaro.org>,
  <qemu-arm@nongnu.org>
-Subject: Re: [PATCH 1/3] target/arm/tcg: define cortex-m85 cpu
-In-Reply-To: <20260518-pr-pacbti-v1-1-8932a885b03d@foss.st.com>
+Subject: Re: [PATCH 2/3] target/arm/tcg: add PAC related instructions
+In-Reply-To: <20260518-pr-pacbti-v1-2-8932a885b03d@foss.st.com>
  (=?utf-8?Q?=22Torbj=C3=B6rn?=
- SVENSSON"'s message of "Mon, 18 May 2026 18:13:59 +0200")
+ SVENSSON"'s message of "Mon, 18 May 2026 18:14:00 +0200")
 References: <20260518-pr-pacbti-v1-0-8932a885b03d@foss.st.com>
- <20260518-pr-pacbti-v1-1-8932a885b03d@foss.st.com>
+ <20260518-pr-pacbti-v1-2-8932a885b03d@foss.st.com>
 User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Wed, 27 May 2026 14:21:49 +0100
-Message-ID: <87h5ntxa1e.fsf@draig.linaro.org>
+Date: Wed, 27 May 2026 14:33:30 +0100
+Message-ID: <87bje1x9hx.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,87 +110,94 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Torbj=C3=B6rn SVENSSON <torbjorn.svensson@foss.st.com> writes:
 
-Can you mention the TRM in the commit:
-
-  https://developer.arm.com/documentation/101924/0100/
-
+> This commit adds the pointer authentication instructions from the Arm
+> v8.1-m PACBTI extension.
+> While the instructions are properly recognized, they are all NOPs.
+>
 > Signed-off-by: Torbj=C3=B6rn SVENSSON <torbjorn.svensson@foss.st.com>
 > ---
->  target/arm/tcg/cpu-v7m.c | 40 ++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 40 insertions(+)
+>  target/arm/tcg/t32.decode  | 21 +++++++++++++---
+>  target/arm/tcg/translate.c | 62 ++++++++++++++++++++++++++++++++++++++++=
+++++++
+>  2 files changed, 80 insertions(+), 3 deletions(-)
 >
-> diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
-> index dc249ce1f1..5cfda232cd 100644
-> --- a/target/arm/tcg/cpu-v7m.c
-> +++ b/target/arm/tcg/cpu-v7m.c
-> @@ -237,6 +237,44 @@ static void cortex_m55_initfn(Object *obj)
->      cpu->ctr =3D 0x8303c003;
+> diff --git a/target/arm/tcg/t32.decode b/target/arm/tcg/t32.decode
+> index 49b8d0037e..a885eed101 100644
+> --- a/target/arm/tcg/t32.decode
+> +++ b/target/arm/tcg/t32.decode
+> @@ -263,6 +263,7 @@ BFCI             1111 0011 011 0 .... 0 ... .... ..0.=
+....     @bfi
+>  @s0_rnadm        .... .... .... rn:4 ra:4 rd:4 .... rm:4      &s_rrrr s=
+=3D0
+>  @s0_rn0dm        .... .... .... rn:4 .... rd:4 .... rm:4      &s_rrrr ra=
+=3D0 s=3D0
+>  @rnadm           .... .... .... rn:4 ra:4 rd:4 .... rm:4      &rrrr
+> +@rna0m           .... .... .... rn:4 ra:4 .... .... rm:4      &rrrr rd=
+=3D0
+>  @rn0dm           .... .... .... rn:4 .... rd:4 .... rm:4      &rrrr ra=
+=3D0
+>  @rndm            .... .... .... rn:4 .... rd:4 .... rm:4      &rrr
+>  @rdm             .... .... .... .... .... rd:4 .... rm:4      &rr
+> @@ -319,9 +320,18 @@ SMLALDX          1111 1011 1100 .... .... .... 1101 =
+....      @rnadm
+>  SMLSLD           1111 1011 1101 .... .... .... 1100 ....      @rnadm
+>  SMLSLDX          1111 1011 1101 .... .... .... 1101 ....      @rnadm
+>=20=20
+> -SMMLA            1111 1011 0101 .... .... .... 0000 ....      @rnadm
+> -SMMLAR           1111 1011 0101 .... .... .... 0001 ....      @rnadm
+> -SMMLS            1111 1011 0110 .... .... .... 0000 ....      @rnadm
+> +{
+> +  AUTG           1111 1011 0101 .... .... 1111 0000 ....      @rna0m
+> +  SMMLA          1111 1011 0101 .... .... .... 0000 ....      @rnadm
+> +}
+> +{
+> +  BXAUT          1111 1011 0101 .... .... 1111 0001 ....      @rna0m
+> +  SMMLAR         1111 1011 0101 .... .... .... 0001 ....      @rnadm
+> +}
+> +{
+> +  PACG           1111 1011 0110 .... 1111 .... 0000 ....      @rndm
+> +  SMMLS          1111 1011 0110 .... .... .... 0000 ....      @rnadm
+> +}
+>  SMMLSR           1111 1011 0110 .... .... .... 0001 ....      @rnadm
+>=20=20
+>  SDIV             1111 1011 1001 .... 1111 .... 1111 ....      @rndm
+> @@ -375,6 +385,11 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 =
+....      @rdm
+>          # SEVL   1111 0011 1010 1111 1000 0000 0000 0101
+>=20=20
+>          ESB      1111 0011 1010 1111 1000 0000 0001 0000
+> +
+> +        # v8.1-m PACBTI extention
+> +        AUT      1111 0011 1010 1111 1000 0000 0010 1101
+> +        PAC      1111 0011 1010 1111 1000 0000 0001 1101
+> +        PACBTI   1111 0011 1010 1111 1000 0000 0000 1101
+>        ]
+>=20=20
+>        # The canonical nop ends in 0000 0000, but the whole rest
+> diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+> index c744b16345..ae1351ef03 100644
+> --- a/target/arm/tcg/translate.c
+> +++ b/target/arm/tcg/translate.c
+> @@ -5012,6 +5012,68 @@ static bool trans_SMMLSR(DisasContext *s, arg_rrrr=
+ *a)
+>      return op_smmla(s, a, true, true);
 >  }
 >=20=20
-> +static void cortex_m85_initfn(Object *obj)
+> +static bool trans_PAC(DisasContext *s, arg_empty *a)
 > +{
-> +    ARMCPU *cpu =3D ARM_CPU(obj);
-> +    ARMISARegisters *isar =3D &cpu->isar;
-> +
-> +    set_feature(&cpu->env, ARM_FEATURE_V8);
-> +    set_feature(&cpu->env, ARM_FEATURE_V8_1M);
-> +    set_feature(&cpu->env, ARM_FEATURE_M);
-> +    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-> +    set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
-> +    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
-> +    cpu->midr =3D 0x411fd230; /* r1p0 */
-> +    cpu->revidr =3D 0;
-> +    cpu->pmsav7_dregion =3D 16;
-> +    cpu->sau_sregion =3D 8;
-> +    /* These are the MVFR* values for the FPU + full MVE configuration */
-> +    cpu->isar.mvfr0 =3D 0x10110221;
-> +    cpu->isar.mvfr1 =3D 0x12100211;
-> +    cpu->isar.mvfr2 =3D 0x00000040;
-> +    SET_IDREG(isar, ID_PFR0, 0x20000030);
-> +    SET_IDREG(isar, ID_PFR1, 0x00000230);
-> +    SET_IDREG(isar, ID_DFR0, 0x10200000);
-> +    SET_IDREG(isar, ID_AFR0, 0x00000000);
-> +    SET_IDREG(isar, ID_MMFR0, 0x00111040);
-> +    SET_IDREG(isar, ID_MMFR1, 0x00000000);
-> +    SET_IDREG(isar, ID_MMFR2, 0x01000000);
-> +    SET_IDREG(isar, ID_MMFR3, 0x00000011);
-> +    SET_IDREG(isar, ID_ISAR0, 0x01103110);
-> +    SET_IDREG(isar, ID_ISAR1, 0x02212000);
-> +    SET_IDREG(isar, ID_ISAR2, 0x20232232);
-> +    SET_IDREG(isar, ID_ISAR3, 0x01111131);
-> +    SET_IDREG(isar, ID_ISAR4, 0x01310132);
-> +    SET_IDREG(isar, ID_ISAR5, 0x00000000);
+> +    if (!arm_dc_feature(s, ARM_FEATURE_V8_1M)) {
+> +        return false;
+> +    }
 
-The TRM specifies this as 0x00100000 and you set this to in 3/3 to:
+These are the wrong feature tests. I would bring the
+isar_feature_aa32_m_pacbti from 3/3 into this patch and invert the logic
+in the same way the a64 does:
 
-  SET_IDREG(isar, ID_ISAR5, 0x00200000); /* PACBTI=3Dimplementation defined=
- */
-
-which isn't one of the available config options. We'd rather not present
-a CPU that can't exist.
-
-With that said for A-profile we do offer the control knob of
-pauth-impdef (which is the default for -cpu max). We could add similar
-logic to aarch64_cpu_pauth_finalize to cpu32 to allow the user to
-actively tune their emulation speed.
-
-> +    SET_IDREG(isar, ID_ISAR6, 0x00000000);
-> +    SET_IDREG(isar, CLIDR, 0x00000000); /* caches not implemented */
-> +    cpu->ctr =3D 0x8303c003;
-> +}
-> +
->  static const TCGCPUOps arm_v7m_tcg_ops =3D {
->      /* ARM processors have a weak memory model */
->      .guest_default_memory_order =3D 0,
-> @@ -290,6 +328,8 @@ static const ARMCPUInfo arm_v7m_cpus[] =3D {
->                               .class_init =3D arm_v7m_class_init },
->      { .name =3D "cortex-m55",  .initfn =3D cortex_m55_initfn,
->                               .class_init =3D arm_v7m_class_init },
-> +    { .name =3D "cortex-m85",  .initfn =3D cortex_m85_initfn,
-> +                             .class_init =3D arm_v7m_class_init },
->  };
->=20=20
->  static void arm_v7m_cpu_register_types(void)
+    if (dc_isar_feature(aa32_m_pacbti, s)) {
+        /* treat as NOP for now */
+        return true;
+    }
+    return false;
 
 --=20
 Alex Benn=C3=A9e

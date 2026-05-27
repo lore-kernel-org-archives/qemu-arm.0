@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DCE1CD4F54
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 05:04:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D679CD5BDE
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 05:04:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wS6OI-0001MP-VF; Wed, 27 May 2026 01:01:14 -0400
+	id 1wS6Nx-0001He-S6; Wed, 27 May 2026 01:00:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wS6OI-0001MB-00; Wed, 27 May 2026 01:01:14 -0400
+ id 1wS6Nv-0001FJ-Fi; Wed, 27 May 2026 01:00:51 -0400
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wS6OG-0004EF-Dx; Wed, 27 May 2026 01:01:13 -0400
+ id 1wS6Nt-0004EF-R4; Wed, 27 May 2026 01:00:51 -0400
 Received: from localhost (unknown [131.107.147.136])
- by linux.microsoft.com (Postfix) with ESMTPSA id 279D920B7171;
- Tue, 26 May 2026 22:00:41 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 279D920B7171
+ by linux.microsoft.com (Postfix) with ESMTPSA id A2BD120B716D;
+ Tue, 26 May 2026 22:00:37 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com A2BD120B716D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1779858041;
- bh=rR42O+0rVDaPThPxlEfqyoRuOVFaZyLyobxHuZwCe8o=;
+ s=default; t=1779858037;
+ bh=fWNd/JjLcK2tqzFwCo6zR4cXEWjzV9boQ7HURZ9IUVs=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=GVL7aI9XzntZ4cvbor3KyT8zaebeCOx87PWCjdz1n5cUHkzEOvOXiMrWe+1V4XTpP
- l5B0Ork1GgtDM6awGmv7qjR7czsO0hsPLXoiDGDbn73eOtFLB4GCY91lTM2PJyPvbd
- vUceKmlGS/+rEHMtj9i80a6X4LvaazorYAv98Ox8=
+ b=nu2kFqe5R+3HtuAqa+B0AcIhyuVFHcRFP3P28kpnrQK4LEPhZsVziO9ZVCozURnfd
+ 414bDgsxqjVtX6tMZ4NhfNYP39iPjYEidE6S1cBBGRVGIWTXTNRp+kQvQnZzPLCFzw
+ M7HiYNoGz1QRR5bYLGM12q75VUhhZmLF+HJ/MSvM=
 From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Wed, 27 May 2026 05:00:46 +0000
-Subject: [PATCH v4 10/15] accel/mshv: implement cpu_thread_is_idle() hook
+Date: Wed, 27 May 2026 05:00:42 +0000
+Subject: [PATCH v4 06/15] target/arm: convert host CPU feature ifdef ladder
+ to runtime checks
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260527-mshv_accel_arm64_supp-v4-10-66d871dcdc53@linux.microsoft.com>
+Message-Id: <20260527-mshv_accel_arm64_supp-v4-6-66d871dcdc53@linux.microsoft.com>
 References: <20260527-mshv_accel_arm64_supp-v4-0-66d871dcdc53@linux.microsoft.com>
 In-Reply-To: <20260527-mshv_accel_arm64_supp-v4-0-66d871dcdc53@linux.microsoft.com>
 To: qemu-devel@nongnu.org
@@ -76,48 +77,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Magnus Kulke <magnuskulke@linux.microsoft.com>
+Replace the compile-time #if/#elif preprocessor ladder in
+aarch64_host_initfn() with runtime calls and add mshv_enabled() to it.
+This ensures the correct accelerator is selected at runtime when
+multiple accelerators are compiled in.
 
-In MSHV the hypervisor APIC is always used, so we to implement this hook
-to make sure the AP's vcpu thread is not blocked waiting for an INIT SIPI
-by the BSP. Without this change soft reboots with -smp cpus>=2 will
-hang.
+Add CONFIG_MSHV to the aarch64_cpus[] guard so that mshv accelerator can
+register the "host" CPU type.
 
-Signed-off-by: Magnus Kulke <magnuskulke@linux.microsoft.com>
-Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
 ---
- accel/mshv/mshv-all.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ target/arm/cpu64.c | 25 +++++++++++++++----------
+ 1 file changed, 15 insertions(+), 10 deletions(-)
 
-diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
-index 927e1b39bb..61a9d58546 100644
---- a/accel/mshv/mshv-all.c
-+++ b/accel/mshv/mshv-all.c
-@@ -719,11 +719,23 @@ static const TypeInfo mshv_accel_type = {
-     .instance_size = sizeof(MshvState),
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index b38a78aac3..aed84a3c0b 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -859,17 +859,21 @@ static void aarch64_host_initfn(Object *obj)
+     }
+ #endif
+ 
++    if (mshv_enabled()) {
++        mshv_arm_set_cpu_features_from_host(cpu);
++    } else if (kvm_enabled()) {
+ #if defined(CONFIG_KVM)
+-    kvm_arm_set_cpreg_mig_tolerances(cpu);
+-    kvm_arm_set_cpu_features_from_host(cpu);
+-    aarch64_add_sve_properties(obj);
+-#elif defined(CONFIG_HVF)
+-    hvf_arm_set_cpu_features_from_host(cpu);
+-#elif defined(CONFIG_WHPX)
+-    whpx_arm_set_cpu_features_from_host(cpu);
+-#else
+-    g_assert_not_reached();
++        kvm_arm_set_cpreg_mig_tolerances(cpu);
+ #endif
++        kvm_arm_set_cpu_features_from_host(cpu);
++        aarch64_add_sve_properties(obj);
++    } else if (hvf_enabled()) {
++        hvf_arm_set_cpu_features_from_host(cpu);
++    } else if (whpx_enabled()) {
++        whpx_arm_set_cpu_features_from_host(cpu);
++    } else {
++        g_assert_not_reached();
++    }
+     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+         aarch64_add_pauth_properties(obj);
+     }
+@@ -897,7 +901,8 @@ static const ARMCPUInfo aarch64_cpus[] = {
+     { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
+     { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
+     { .name = "max",                .initfn = aarch64_max_initfn },
+-#if defined(CONFIG_KVM) || defined(CONFIG_HVF) || defined(CONFIG_WHPX)
++#if defined(CONFIG_KVM) || defined(CONFIG_HVF) || \
++    defined(CONFIG_WHPX) || defined(CONFIG_MSHV)
+     { .name = "host",               .initfn = aarch64_host_initfn },
+ #endif
  };
- 
-+/*
-+ * Haulted vCPUs must still enter mshv_cpu_exec() so that MSHV_RUN_VP
-+ * is called and the hypervisor can wake them (via SIPI on x86 or
-+ * PSCI on ARM64).
-+ */
-+
-+static bool mshv_vcpu_thread_is_idle(CPUState *cpu)
-+{
-+    return false;
-+}
-+
- static void mshv_accel_ops_class_init(ObjectClass *oc, const void *data)
- {
-     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
- 
-     ops->create_vcpu_thread = mshv_start_vcpu_thread;
-+    ops->cpu_thread_is_idle = mshv_vcpu_thread_is_idle;
-     ops->synchronize_post_init = mshv_cpu_synchronize_post_init;
-     ops->synchronize_post_reset = mshv_cpu_synchronize_post_reset;
-     ops->synchronize_state = mshv_cpu_synchronize;
 
 -- 
 2.45.4

@@ -4,96 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D432CD6E44
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 11:45:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 562E9CD5BD0
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 12:50:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSCfZ-0005Ky-Kp; Wed, 27 May 2026 07:43:29 -0400
+	id 1wSDi3-0001FN-LS; Wed, 27 May 2026 08:50:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wSCfY-0005JJ-2B
- for qemu-arm@nongnu.org; Wed, 27 May 2026 07:43:28 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wSCfU-0008Ub-T5
- for qemu-arm@nongnu.org; Wed, 27 May 2026 07:43:27 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-490686877a1so22222955e9.0
- for <qemu-arm@nongnu.org>; Wed, 27 May 2026 04:43:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779882203; x=1780487003; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Vr/dCWZqkxecamIVH5FjFCNfp5PazmhoCWjfR1OvVNg=;
- b=SogYB00knIA9Uql+I2ujVkTkelh37FDKuyP++dNS4ZzoUX5jpuiarx8fODIbVQwMgG
- lDQGWRSIftyE05pG7oPtq3nEEHo46tWLhI8CnPsLZY8u0l8U3K5Pm0N/YZ4C+5GqJs/U
- Sa5nvGurWY6AXw/c1FDNZgp0a7/NAwVresaq07GnxzHrCobaID2VbojXVtZ9PC2lz9pU
- Nkl6AP2Ie5TQEHI9vViZh8Qe+4quUuD6j2LBJ0KOaF8tOjg8p7hMYSaz/CbuNBfw3vFG
- 6ULP/zdE5aiiy8dv0gmEHHOPelBswZ0jn/vpzfrgYDXzVTEKZs/OjNaagECuYqa2Ys3w
- hxnw==
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wSDi1-0001CV-OV
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 08:50:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wSDhz-0002G3-Hu
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 08:50:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779886201;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=PmIVvUgK/Jfq8EAUgtLqo/2md2hXVkdPiMRajXFIb9U=;
+ b=d7RDwzDMKv17cpP/fmrPJ8h5yWyvEaZNFt45DnBOD8J8r46lk1HSbg+jw9Tn9rjTnpCo9M
+ sGsFig9XTW0PNWyi+mFEsUQsS/dOTc1xA8sI9x65/mMMdAZe43g+NMtZSE2fYktYagSCIv
+ YfDtykV14ngQYvzu4TiWGpTU8lH30fw=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-513-fzqlXUPeO7eVmZi8bc632g-1; Wed, 27 May 2026 08:50:00 -0400
+X-MC-Unique: fzqlXUPeO7eVmZi8bc632g-1
+X-Mimecast-MFC-AGG-ID: fzqlXUPeO7eVmZi8bc632g_1779886199
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-45e2f74da10so11080138f8f.2
+ for <qemu-arm@nongnu.org>; Wed, 27 May 2026 05:49:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779882203; x=1780487003;
+ d=1e100.net; s=20251104; t=1779886199; x=1780490999;
  h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Vr/dCWZqkxecamIVH5FjFCNfp5PazmhoCWjfR1OvVNg=;
- b=lTk515ImfHOKTKh+DmAavvHyOdKGz7Fd4J9rLOyAJfjkiTd08FCxS1XF7aM6JqxGmp
- eErVa7Pj317HJeaSPASXZgXCJEIFg4VgaJErFEL41pZNWKqGEPWEPYK0uExd8gi0NApq
- 3hPFwI5uAcInBaKXGmNus0V37jzm9RogYPs79Il22ucMCb5EYOUrbBjaDkigYv01EvS0
- rghAimNVQvaI1XoZc89A50//aJWhchXRsPW+7DtO8C0sEPUwMgOHmXQDJYbR8R/79XXV
- kYgNvVQVTTMYpA2x7jFSxqOlpEojNrnz414/PZ7vEDUMO3tvW21YCZ4nyIeIxLx1880l
- BDgQ==
+ bh=PmIVvUgK/Jfq8EAUgtLqo/2md2hXVkdPiMRajXFIb9U=;
+ b=MlHS/2ymCGGJjR+C6V1fWpCYbJwcYEXUOEmzFuOlB5Hm9T36hDl+Fw/myxd7rLyVo0
+ 71b7/sEwgl6erBEYK8ga93srwdNAkT06ZeUyDFDNzHlqoh+NsX6fRiqOVxkzXAunk6Xv
+ tLB53vptxbpCggLutvM3jCoxpaymu9qsg6nTmu8zyGpDDPRNq8pHvubggOWztuTWgPkk
+ r1ylMzVONsRzCo07KPqNxJdRZUrxmcqwZSUKF4Xgi4wYLlwtkfarmK/LukClcOw02Ua9
+ YU/psuC0Annl5Swx3FueD4F7Rl4x39sLOsbBow94SQZGjFm1UqCsDIOdg31GYZZIhWGQ
+ Ipgw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+UYdEYm97rs8YWW8u0Na2kBGbA5zMXJD2WBvOwgA8pKkNyNOCVGuUJshaX1YgjI2p/6JaX+D6SMg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx/+Ykz7UbDGpYjOj/FNcu8KlrD6zSF3O8rqMnISEzkUE277Zdn
- XBOtU/5Y54peYAb5oUgiZVltM/fPzmWRWX6FQin1QZCo9PHgqLR7Ec/JJEJ75uyEm/E=
-X-Gm-Gg: Acq92OF+iy5Khb7ChYATFPTrMSLkJJYAr2NLQjC9agiydYn16fdhl+TpxVqiF2DZaXR
- y+xTz4vTGQts78fpRGNEDbVp0pgQ0FFy4msZk91gr88/0bALHpDS5u2Q+AJHJbjrFJUUKMBpzfp
- iYRvIctFjt1RppHq4ktAficesD7B8Y63JIqAThuVpzYTbIqzzGS0OKx/LV2dQTAgUuQ5JMIXVLG
- JobBVgoBeJMPAHJBPwKVo5K+txsvqxybcy92BsaaGdivpp3XZLQJDLjSjv9ZLbyLoNi+0Lb1JyD
- dLn+RM4JDEgIzCaI87Qa9R80+hz2pnk8/ShWQET7R6ejbSsDIqeiC4S7NGXM46+SsN3J+EsISI9
- Ji0/0AOWg+oN0nGIGPRzReJyGkmV2MCjGVDzHcrFbtbmcBS+Tpn7/3zmgImXGKAABmRQBoizTEL
- SAUO4GuEDTmNtXIE3DsxqTy8bFPQdc3iiSeg==
-X-Received: by 2002:a05:600c:6992:b0:490:5000:917 with SMTP id
- 5b1f17b1804b1-49050000ae6mr310718185e9.1.1779882203368; 
- Wed, 27 May 2026 04:43:23 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-490454c600esm383473175e9.3.2026.05.27.04.43.21
+ AFNElJ8Fs/B5lar10iQJXK8vQLTm5iZmgGNB5ar1chXkM8Fmjj194hk1FoOz7GbpysFuNtLZXTaOVU2EcA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz8Tv8+/OLNbc/5EsfZNTOidNeeS/uExUC9ERDHtXZ7GAgLzi7D
+ S/SknOtOhckQIz9zK7US+VEmb77qXIxJjM5ZFEJt9//Qr41VR+l+7bf1M3CSFNVldZ/WsTCbD1e
+ m9Z2aQ/kjnFjbJQJH14gm7q/yVTis9P7kHMbznwH9d/WW325f5SKpPFLGL/345w==
+X-Gm-Gg: Acq92OFIJhCFYMvJdUukeZ7xTbnqE7FBG2IcSlQ7+IGycrkvi5AZnWobSZXTZKx3amp
+ 7lIX4wc6ocFpkWSAxaEvQTHFQISE+/FXxZZU/ZMDCSY6mWsj1ZzGnUD272qSJ+EMc+ObFsUBiCu
+ fx/SUlDqkpEGuAoyVU8LYAoktrjjljY75u3zRbKYmVcrPvM+/mvIvwiNOpwHWGwiDs+UJu0d++H
+ hjDzpVF1VW317U8WcQd4UpMjNjRzy+dx85OLV32fUl1P+YRKuLdo8vV+n9Pc5VcyVZ/3mKjjB80
+ mh43lDs9UAeu+7POwI8rGAmn8F0vxzmRsIEiPOZfkowNR0wR0zRf8aqJjLgLzfKlXGg7heZfPEE
+ 5gCwbr25XqaEd5Ans
+X-Received: by 2002:a05:6000:98d:b0:45d:41e0:467b with SMTP id
+ ffacd0b85a97d-45eb367044bmr32847948f8f.3.1779886198752; 
+ Wed, 27 May 2026 05:49:58 -0700 (PDT)
+X-Received: by 2002:a05:6000:98d:b0:45d:41e0:467b with SMTP id
+ ffacd0b85a97d-45eb367044bmr32847894f8f.3.1779886198288; 
+ Wed, 27 May 2026 05:49:58 -0700 (PDT)
+Received: from imammedo ([213.175.37.14]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45edb5c47a2sm5714702f8f.37.2026.05.27.05.49.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2026 04:43:21 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 24CF75FB96;
- Wed, 27 May 2026 12:43:21 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Pedro Barbuda <pbarbuda@microsoft.com>, Alexander Graf <agraf@csgraf.de>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v6 3/8] target/arm: redefine event stream fields
-Date: Wed, 27 May 2026 12:43:15 +0100
-Message-ID: <20260527114320.1581552-4-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260527114320.1581552-1-alex.bennee@linaro.org>
-References: <20260527114320.1581552-1-alex.bennee@linaro.org>
+ Wed, 27 May 2026 05:49:57 -0700 (PDT)
+Date: Wed, 27 May 2026 14:49:55 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eauger@redhat.com>
+Cc: qemu-devel@nongnu.org, mst@redhat.com, anisinha@redhat.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
+ philmd@linaro.org, zhao1.liu@intel.com, rad@semihalf.com,
+ leif.lindholm@oss.qualcomm.com, qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 09/21] arm: virt: create sbsa_gwdt watchdog
+Message-ID: <20260527144955.64eff309@imammedo>
+In-Reply-To: <4cdd38f4-4efc-48c5-a236-a40449ad8e85@redhat.com>
+References: <20260303092532.2410177-1-imammedo@redhat.com>
+ <20260303092532.2410177-10-imammedo@redhat.com>
+ <4cdd38f4-4efc-48c5-a236-a40449ad8e85@redhat.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: V1pZmF-AcNX-g71fhW4T-3OtUWl_8j5cShpsB1v3YCc_1779886199
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,81 +116,214 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The event stream control bits are the same for both CNTHCTL and
-CNTKCTL so rather than duplicating the definitions rename them to be
-useful in both cases.
+On Tue, 26 May 2026 15:58:08 +0200
+Eric Auger <eauger@redhat.com> wrote:
 
-We will need these in a later commit when we start implementing event
-streams.
+> Hi Igor,
+> 
+> On 3/3/26 10:25 AM, Igor Mammedov wrote:
+> > Allow to use SBSA generic watchdog with virt machine type.
+> > (includes conditional generation of corresponding FDT and
+> > ACPI GTDT descriptors)
+> > 
+> > Use '-device sbsa_gwdt' to command line to enable it.  
+> I thank that in general Peter is not a big fan of dynamic instantiation
+> of sysbus devices. Don't you have means to instantiate it statically in
+> arm virt memory map?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/internals.h | 11 +++++++----
- target/arm/helper.c    |  8 ++++----
- 2 files changed, 11 insertions(+), 8 deletions(-)
+/me neither
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 7deaf1ab6de..0c22781919b 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -269,14 +269,17 @@ FIELD(VSTCR, SA, 30, 1)
-  * have different bit definitions, and EL1PCTEN might be
-  * bit 0 or bit 10. We use _E2H1 and _E2H0 suffixes to
-  * disambiguate if necessary.
-+ *
-+ * The event stream bits (EVN*) are in the same position for
-+ * CNTKCTL_EL1/CTNKCTL.
-  */
- FIELD(CNTHCTL, EL0PCTEN_E2H1, 0, 1)
- FIELD(CNTHCTL, EL0VCTEN_E2H1, 1, 1)
- FIELD(CNTHCTL, EL1PCTEN_E2H0, 0, 1)
- FIELD(CNTHCTL, EL1PCEN_E2H0, 1, 1)
--FIELD(CNTHCTL, EVNTEN, 2, 1)
--FIELD(CNTHCTL, EVNTDIR, 3, 1)
--FIELD(CNTHCTL, EVNTI, 4, 4)
-+FIELD(CNTxCTL, EVNTEN, 2, 1)
-+FIELD(CNTxCTL, EVNTDIR, 3, 1)
-+FIELD(CNTxCTL, EVNTI, 4, 4)
- FIELD(CNTHCTL, EL0VTEN, 8, 1)
- FIELD(CNTHCTL, EL0PTEN, 9, 1)
- FIELD(CNTHCTL, EL1PCTEN_E2H1, 10, 1)
-@@ -286,7 +289,7 @@ FIELD(CNTHCTL, EL1TVT, 13, 1)
- FIELD(CNTHCTL, EL1TVCT, 14, 1)
- FIELD(CNTHCTL, EL1NVPCT, 15, 1)
- FIELD(CNTHCTL, EL1NVVCT, 16, 1)
--FIELD(CNTHCTL, EVNTIS, 17, 1)
-+FIELD(CNTxCTL, EVNTIS, 17, 1)
- FIELD(CNTHCTL, CNTVMASK, 18, 1)
- FIELD(CNTHCTL, CNTPMASK, 19, 1)
+in previous version there was a machine option to enable the feature
+to that was rejected in favor of device.
+
+in this case for platform  -device of sysbus based device, I don't think
+we can do better that dynamic sysbus. 
+
  
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 8240f1b3848..3b06bd80a01 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1766,9 +1766,9 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     uint32_t valid_mask =
-         R_CNTHCTL_EL0PCTEN_E2H1_MASK |
-         R_CNTHCTL_EL0VCTEN_E2H1_MASK |
--        R_CNTHCTL_EVNTEN_MASK |
--        R_CNTHCTL_EVNTDIR_MASK |
--        R_CNTHCTL_EVNTI_MASK |
-+        R_CNTxCTL_EVNTEN_MASK |
-+        R_CNTxCTL_EVNTDIR_MASK |
-+        R_CNTxCTL_EVNTI_MASK |
-         R_CNTHCTL_EL0VTEN_MASK |
-         R_CNTHCTL_EL0PTEN_MASK |
-         R_CNTHCTL_EL1PCTEN_E2H1_MASK |
-@@ -1783,7 +1783,7 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
-             R_CNTHCTL_EL1TVCT_MASK |
-             R_CNTHCTL_EL1NVPCT_MASK |
-             R_CNTHCTL_EL1NVVCT_MASK |
--            R_CNTHCTL_EVNTIS_MASK;
-+            R_CNTxCTL_EVNTIS_MASK;
-     }
-     if (cpu_isar_feature(aa64_ecv, cpu)) {
-         valid_mask |= R_CNTHCTL_ECV_MASK;
--- 
-2.47.3
+> 
+> Eric
+> > 
+> > Tested with Fedora 43:
+> >   FDT: -M virt,acpi=off -device sbsa_gwdt
+> >   ACPI: -M virt -device sbsa_gwdt
+> > 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> >  hw/arm/Kconfig           |  1 +
+> >  hw/arm/virt-acpi-build.c | 33 +++++++++++++++++++++++++++++++--
+> >  hw/arm/virt.c            |  2 ++
+> >  hw/core/sysbus-fdt.c     | 32 ++++++++++++++++++++++++++++++++
+> >  hw/watchdog/sbsa_gwdt.c  |  1 +
+> >  5 files changed, 67 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> > index c66c452737..1222efadd1 100644
+> > --- a/hw/arm/Kconfig
+> > +++ b/hw/arm/Kconfig
+> > @@ -36,6 +36,7 @@ config ARM_VIRT
+> >      select VIRTIO_MEM_SUPPORTED
+> >      select ACPI_CXL
+> >      select ACPI_HMAT
+> > +    select WDT_SBSA
+> >  
+> >  config CUBIEBOARD
+> >      bool
+> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > index 719d2f994e..9c14b1d4d5 100644
+> > --- a/hw/arm/virt-acpi-build.c
+> > +++ b/hw/arm/virt-acpi-build.c
+> > @@ -64,6 +64,7 @@
+> >  #include "hw/virtio/virtio-acpi.h"
+> >  #include "target/arm/cpu.h"
+> >  #include "target/arm/multiprocessing.h"
+> > +#include "hw/watchdog/sbsa_gwdt.h"
+> >  
+> >  #define ARM_SPI_BASE 32
+> >  
+> > @@ -863,6 +864,8 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >      const uint32_t irqflags = 0;  /* Interrupt is Level triggered  */
+> >      AcpiTable table = { .sig = "GTDT", .rev = 3, .oem_id = vms->oem_id,
+> >                          .oem_table_id = vms->oem_table_id };
+> > +    uint32_t gtdt_start = table_data->len;
+> > +    Object *wdt = object_resolve_type_unambiguous(TYPE_WDT_SBSA, NULL);
+> >  
+> >      acpi_table_begin(&table, table_data);
+> >  
+> > @@ -893,10 +896,15 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >      build_append_int_noprefix(table_data, irqflags, 4);
+> >      /* CntReadBase Physical address */
+> >      build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
+> > +
+> >      /* Platform Timer Count */
+> > -    build_append_int_noprefix(table_data, 0, 4);
+> > +    build_append_int_noprefix(table_data,  wdt ? 1 : 0, 4);
+> >      /* Platform Timer Offset */
+> > -    build_append_int_noprefix(table_data, 0, 4);
+> > +    build_append_int_noprefix(table_data,
+> > +        wdt ? (table_data->len - gtdt_start) +
+> > +              4 + 4 + 4 /* len of this & following 2 fields to skip */
+> > +            : 0, 4);
+> > +
+> >      if (vms->ns_el2_virt_timer_irq) {
+> >          /* Virtual EL2 Timer GSIV */
+> >          build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL2_VIRT_IRQ, 4);
+> > @@ -906,6 +914,27 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >          build_append_int_noprefix(table_data, 0, 4);
+> >          build_append_int_noprefix(table_data, 0, 4);
+> >      }
+> > +
+> > +    /* ACPI 6.5 spec: 5.2.25.2 ARM Generic Watchdog Structure (Table 5-124) */
+> > +    if (wdt) {
+> > +        PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
+> > +        SysBusDevice *sd = SYS_BUS_DEVICE(wdt);
+> > +        hwaddr mmio_base = vms->memmap[VIRT_PLATFORM_BUS].base;
+> > +        hwaddr rbase = mmio_base + platform_bus_get_mmio_addr(pbus, sd, 0);
+> > +        hwaddr cbase = mmio_base + platform_bus_get_mmio_addr(pbus, sd, 1);
+> > +        int irq = ARM_SPI_BASE + vms->irqmap[VIRT_PLATFORM_BUS] +
+> > +                  platform_bus_get_irqn(pbus, sd, 0);
+> > +
+> > +        build_append_int_noprefix(table_data, 1 /* Type: Watchdog GT */, 1);
+> > +        build_append_int_noprefix(table_data, 28 /* Length */, 2);
+> > +        build_append_int_noprefix(table_data, 0, 1);  /* Reserved */
+> > +        /* RefreshFrame Physical Address */
+> > +        build_append_int_noprefix(table_data, rbase, 8);
+> > +        /* WatchdogControlFrame Physical Address */
+> > +        build_append_int_noprefix(table_data, cbase, 8);
+> > +        build_append_int_noprefix(table_data, irq, 4); /* Watchdog Timer GSIV */
+> > +        build_append_int_noprefix(table_data, 0, 4); /* Watchdog Timer Flags */
+> > +    }
+> >      acpi_table_end(linker, &table);
+> >  }
+> >  
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index cab2e21e8a..a87991b591 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -95,6 +95,7 @@
+> >  #include "hw/cxl/cxl.h"
+> >  #include "hw/cxl/cxl_host.h"
+> >  #include "qemu/guest-random.h"
+> > +#include "hw/watchdog/sbsa_gwdt.h"
+> >  
+> >  static GlobalProperty arm_virt_compat_defaults[] = {
+> >      { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
+> > @@ -3474,6 +3475,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_UEFI_VARS_SYSBUS);
+> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3);
+> > +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_WDT_SBSA);
+> >  #ifdef CONFIG_TPM
+> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+> >  #endif
+> > diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+> > index 89d0c46445..76aa1bc579 100644
+> > --- a/hw/core/sysbus-fdt.c
+> > +++ b/hw/core/sysbus-fdt.c
+> > @@ -36,6 +36,7 @@
+> >  #include "hw/display/ramfb.h"
+> >  #include "hw/uefi/var-service-api.h"
+> >  #include "hw/arm/fdt.h"
+> > +#include "hw/watchdog/sbsa_gwdt.h"
+> >  
+> >  /*
+> >   * internal struct that contains the information to create dynamic
+> > @@ -118,6 +119,36 @@ static int add_uefi_vars_node(SysBusDevice *sbdev, void *opaque)
+> >      return 0;
+> >  }
+> >  
+> > +static int add_sbsa_gwdt_node(SysBusDevice *sbdev, void *opaque)
+> > +{
+> > +    PlatformBusFDTData *data = opaque;
+> > +    PlatformBusDevice *pbus = data->pbus;
+> > +    const char *parent_node = data->pbus_node_name;
+> > +    void *fdt = data->fdt;
+> > +    uint64_t cbase, rbase;
+> > +    char *nodename;
+> > +    int irq;
+> > +
+> > +    cbase = platform_bus_get_mmio_addr(pbus, sbdev, 1);  /* control frame */
+> > +    rbase = platform_bus_get_mmio_addr(pbus, sbdev, 0);  /* refresh frame */
+> > +    irq = platform_bus_get_irqn(pbus, sbdev, 0);
+> > +
+> > +    nodename = g_strdup_printf("%s/watchdog@%" PRIx64, parent_node, cbase);
+> > +    qemu_fdt_add_subnode(fdt, nodename);
+> > +
+> > +    qemu_fdt_setprop_string(fdt, nodename, "compatible", "arm,sbsa-gwdt");
+> > +    qemu_fdt_setprop_cells(fdt, nodename, "reg",
+> > +                           cbase, SBSA_GWDT_CMMIO_SIZE,
+> > +                           rbase, SBSA_GWDT_RMMIO_SIZE);
+> > +    qemu_fdt_setprop_cells(fdt, nodename, "interrupts",
+> > +                           GIC_FDT_IRQ_TYPE_SPI, data->irq_start + irq,
+> > +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> > +    qemu_fdt_setprop_cell(fdt, nodename, "timeout-sec", 30);
+> > +
+> > +    g_free(nodename);
+> > +    return 0;
+> > +}
+> > +
+> >  static int no_fdt_node(SysBusDevice *sbdev, void *opaque)
+> >  {
+> >      return 0;
+> > @@ -140,6 +171,7 @@ static const BindingEntry bindings[] = {
+> >      TYPE_BINDING(TYPE_ARM_SMMUV3, no_fdt_node),
+> >      TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
+> >      TYPE_BINDING(TYPE_UEFI_VARS_SYSBUS, add_uefi_vars_node),
+> > +    TYPE_BINDING(TYPE_WDT_SBSA, add_sbsa_gwdt_node),
+> >      TYPE_BINDING("", NULL), /* last element */
+> >  };
+> >  
+> > diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
+> > index acb970e8b3..c4dd8005b7 100644
+> > --- a/hw/watchdog/sbsa_gwdt.c
+> > +++ b/hw/watchdog/sbsa_gwdt.c
+> > @@ -285,6 +285,7 @@ static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, const void *data)
+> >      dc->realize = wdt_sbsa_gwdt_realize;
+> >      device_class_set_legacy_reset(dc, wdt_sbsa_gwdt_reset);
+> >      dc->hotpluggable = false;
+> > +    dc->user_creatable = true;
+> >      set_bit(DEVICE_CATEGORY_WATCHDOG, dc->categories);
+> >      dc->vmsd = &vmstate_sbsa_gwdt;
+> >      dc->desc = "SBSA-compliant generic watchdog device";  
+> 
 
 

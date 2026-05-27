@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02F9CCD5BD0
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 11:45:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D432CD6E44
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 11:45:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSCfc-0005NW-5q; Wed, 27 May 2026 07:43:32 -0400
+	id 1wSCfZ-0005Ky-Kp; Wed, 27 May 2026 07:43:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wSCfa-0005LT-84
- for qemu-arm@nongnu.org; Wed, 27 May 2026 07:43:30 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1wSCfY-0005JJ-2B
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 07:43:28 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wSCfX-00005Z-Hc
- for qemu-arm@nongnu.org; Wed, 27 May 2026 07:43:29 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4891c00e7aeso80055255e9.2
- for <qemu-arm@nongnu.org>; Wed, 27 May 2026 04:43:27 -0700 (PDT)
+ id 1wSCfU-0008Ub-T5
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 07:43:27 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-490686877a1so22222955e9.0
+ for <qemu-arm@nongnu.org>; Wed, 27 May 2026 04:43:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779882206; x=1780487006; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779882203; x=1780487003; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=0nGT9Jp4pthasA5g2F4sYzBBA0JTzuDlDIySeJkpXWw=;
- b=eO8gg54NhNvbwpkBDkn7wVdsSS2Ju85gT6XI1w7ZM+7IBJW0rWbl61mEnmPbyCplHe
- EkkjZaYn1yTdEUcKIXzcoc0iPmwUuRoo5QstIRl3iZfjEs7WiNN/5IanySyrkqW4om/O
- 3guSJfCBmNyDIwyYuZRpF5cJamUvqXwEweP1soO8JM/AMjMHY2Am+LE1jzOeFv1U8epj
- MxLEmTdepWzGs0YiMxNGU8qfGBb+xYWbLNs2T93YquJaGeUEj/zyPQzaOHA7ZvTxjHlm
- Jewd3tNGY51HHevsBGFASDDKRX1sczUfj393MKrKEEzc3GhIqMyYaWFHumsAysbQe8rg
- 52Dg==
+ bh=Vr/dCWZqkxecamIVH5FjFCNfp5PazmhoCWjfR1OvVNg=;
+ b=SogYB00knIA9Uql+I2ujVkTkelh37FDKuyP++dNS4ZzoUX5jpuiarx8fODIbVQwMgG
+ lDQGWRSIftyE05pG7oPtq3nEEHo46tWLhI8CnPsLZY8u0l8U3K5Pm0N/YZ4C+5GqJs/U
+ Sa5nvGurWY6AXw/c1FDNZgp0a7/NAwVresaq07GnxzHrCobaID2VbojXVtZ9PC2lz9pU
+ Nkl6AP2Ie5TQEHI9vViZh8Qe+4quUuD6j2LBJ0KOaF8tOjg8p7hMYSaz/CbuNBfw3vFG
+ 6ULP/zdE5aiiy8dv0gmEHHOPelBswZ0jn/vpzfrgYDXzVTEKZs/OjNaagECuYqa2Ys3w
+ hxnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779882206; x=1780487006;
+ d=1e100.net; s=20251104; t=1779882203; x=1780487003;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=0nGT9Jp4pthasA5g2F4sYzBBA0JTzuDlDIySeJkpXWw=;
- b=YWjYRVG/6bk/c4SWCgJa/Y/BhWFnShrpyD+ugSnSvi3s/o7wJyTuCN0B/eqEYBkkPd
- ApvWIyk1WUN8NZtJaQRTOljSxexVYCZPz8lsXniTGtwa386EU12Nn4ldYA4feAd/0w3v
- f7TbkYodys7VXbIvJGjTdBwX0pnEERYJoIfbdEspibzri5p8vRaE0sSTbweIXzC6YH8W
- WZGYolXzFHfeE31yTZrdrf14XEhyS0jNEk1y2n/g3pVHh1sM2S7RQMGyt63384mgyphX
- +hE0hbQ16hEtGtKr2d2k77I4USXHA3vpT8Kk5ueZjtqbnCmyhvvVtugNJCC3t6NUFKZa
- Lz1g==
+ bh=Vr/dCWZqkxecamIVH5FjFCNfp5PazmhoCWjfR1OvVNg=;
+ b=lTk515ImfHOKTKh+DmAavvHyOdKGz7Fd4J9rLOyAJfjkiTd08FCxS1XF7aM6JqxGmp
+ eErVa7Pj317HJeaSPASXZgXCJEIFg4VgaJErFEL41pZNWKqGEPWEPYK0uExd8gi0NApq
+ 3hPFwI5uAcInBaKXGmNus0V37jzm9RogYPs79Il22ucMCb5EYOUrbBjaDkigYv01EvS0
+ rghAimNVQvaI1XoZc89A50//aJWhchXRsPW+7DtO8C0sEPUwMgOHmXQDJYbR8R/79XXV
+ kYgNvVQVTTMYpA2x7jFSxqOlpEojNrnz414/PZ7vEDUMO3tvW21YCZ4nyIeIxLx1880l
+ BDgQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/gCWEk3ExKWWhpKkGcjPAHuM8h4RSnkqxG9wdoW/nBqAbF5WAvIhixD5KgZaJoUS5XLg69eSi8tw==@nongnu.org
-X-Gm-Message-State: AOJu0YzdDZCtW7K7YOeWXf6AyD/oxXlSYur9NxXcQsLZk5b2srrkL0pQ
- R7EoYS+B/UqT5kldFHGodamqGp77mavjQlINsG3Cr2mwK6t3B+jneWIB1LQSp8C9yBg=
-X-Gm-Gg: Acq92OEGnuw+W94Hd8/DvVlfrolpSD1s7TBE14RGuu2cMNTWalp088kJFpaM4bx65TH
- 8QS9wPAa0N/zWROihfyheBnqxSCZqNDrv3vkpXXADMytfZz7CSBjCxg/wFVRuhXFXP5fnd8p3hm
- oY/bRyracf1U48w7JOM7riHOZRlg6KQvNdRSB2jMneROP+tKDcD+ZTX9eabihxOcm2FJS+kyHgb
- 1yRcgRHQR9dIoSnWhWLfyxsoxTnMy3DtgQ3VcmDa9PWxSkd5dd4brmwIop93iwrN9u0x21Q1zz6
- k+WnN4tW6qm0ruxHCWPuydAUy3TZ2sAVNOTlzRMhhfYiRyosgPFH5C34W4EezdG+s6/O0tUK/oi
- Y0gXk7zzBG2keoc6/WaQmiJjgdj7lBThn4CBldNive7Sy4dfd9NJH45cfjNlnZ5myOnEhBSwX3s
- bheUzhfVF4o1pahYARhD8NtjE=
-X-Received: by 2002:a05:600c:45d2:b0:490:6237:521d with SMTP id
- 5b1f17b1804b1-490623753admr219397755e9.13.1779882205893; 
- Wed, 27 May 2026 04:43:25 -0700 (PDT)
+ AFNElJ+UYdEYm97rs8YWW8u0Na2kBGbA5zMXJD2WBvOwgA8pKkNyNOCVGuUJshaX1YgjI2p/6JaX+D6SMg==@nongnu.org
+X-Gm-Message-State: AOJu0Yx/+Ykz7UbDGpYjOj/FNcu8KlrD6zSF3O8rqMnISEzkUE277Zdn
+ XBOtU/5Y54peYAb5oUgiZVltM/fPzmWRWX6FQin1QZCo9PHgqLR7Ec/JJEJ75uyEm/E=
+X-Gm-Gg: Acq92OF+iy5Khb7ChYATFPTrMSLkJJYAr2NLQjC9agiydYn16fdhl+TpxVqiF2DZaXR
+ y+xTz4vTGQts78fpRGNEDbVp0pgQ0FFy4msZk91gr88/0bALHpDS5u2Q+AJHJbjrFJUUKMBpzfp
+ iYRvIctFjt1RppHq4ktAficesD7B8Y63JIqAThuVpzYTbIqzzGS0OKx/LV2dQTAgUuQ5JMIXVLG
+ JobBVgoBeJMPAHJBPwKVo5K+txsvqxybcy92BsaaGdivpp3XZLQJDLjSjv9ZLbyLoNi+0Lb1JyD
+ dLn+RM4JDEgIzCaI87Qa9R80+hz2pnk8/ShWQET7R6ejbSsDIqeiC4S7NGXM46+SsN3J+EsISI9
+ Ji0/0AOWg+oN0nGIGPRzReJyGkmV2MCjGVDzHcrFbtbmcBS+Tpn7/3zmgImXGKAABmRQBoizTEL
+ SAUO4GuEDTmNtXIE3DsxqTy8bFPQdc3iiSeg==
+X-Received: by 2002:a05:600c:6992:b0:490:5000:917 with SMTP id
+ 5b1f17b1804b1-49050000ae6mr310718185e9.1.1779882203368; 
+ Wed, 27 May 2026 04:43:23 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49045620c05sm389935035e9.14.2026.05.27.04.43.23
+ 5b1f17b1804b1-490454c600esm383473175e9.3.2026.05.27.04.43.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2026 04:43:24 -0700 (PDT)
+ Wed, 27 May 2026 04:43:21 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 8D7045FFEF;
+ by draig.lan (Postfix) with ESMTP id 24CF75FB96;
  Wed, 27 May 2026 12:43:21 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -76,24 +76,24 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v6 7/8] target/arm: handle the WFE trap case
-Date: Wed, 27 May 2026 12:43:19 +0100
-Message-ID: <20260527114320.1581552-8-alex.bennee@linaro.org>
+Subject: [PATCH v6 3/8] target/arm: redefine event stream fields
+Date: Wed, 27 May 2026 12:43:15 +0100
+Message-ID: <20260527114320.1581552-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260527114320.1581552-1-alex.bennee@linaro.org>
 References: <20260527114320.1581552-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,101 +109,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now WFE can actually suspend on A-profile we also need to handle when
-its trapped. To do this we need to pass the instruction size so we can
-deal with the is_16bit syndrome encoding.
+The event stream control bits are the same for both CNTHCTL and
+CNTKCTL so rather than duplicating the definitions rename them to be
+useful in both cases.
+
+We will need these in a later commit when we start implementing event
+streams.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v6
-  - defer calculating target_el until after the early return
----
- target/arm/tcg/helper-defs.h   |  2 +-
- target/arm/tcg/op_helper.c     | 16 +++++++++++++++-
- target/arm/tcg/translate-a64.c |  2 +-
- target/arm/tcg/translate.c     |  2 +-
- 4 files changed, 18 insertions(+), 4 deletions(-)
+ target/arm/internals.h | 11 +++++++----
+ target/arm/helper.c    |  8 ++++----
+ 2 files changed, 11 insertions(+), 8 deletions(-)
 
-diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
-index a05f2258f29..ebdf09be38a 100644
---- a/target/arm/tcg/helper-defs.h
-+++ b/target/arm/tcg/helper-defs.h
-@@ -54,7 +54,7 @@ DEF_HELPER_2(exception_swstep, noreturn, env, i32)
- DEF_HELPER_2(exception_pc_alignment, noreturn, env, vaddr)
- DEF_HELPER_1(setend, void, env)
- DEF_HELPER_2(wfi, void, env, i32)
--DEF_HELPER_1(wfe, void, env)
-+DEF_HELPER_2(wfe, void, env, i32)
- DEF_HELPER_2(wfit, void, env, i32)
- DEF_HELPER_1(yield, void, env)
- DEF_HELPER_1(pre_hvc, void, env)
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index b803c9bf162..060b155d559 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -574,7 +574,7 @@ static int64_t gt_calc_next_event_stream(CPUARMState *env)
- }
- #endif
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 7deaf1ab6de..0c22781919b 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -269,14 +269,17 @@ FIELD(VSTCR, SA, 30, 1)
+  * have different bit definitions, and EL1PCTEN might be
+  * bit 0 or bit 10. We use _E2H1 and _E2H0 suffixes to
+  * disambiguate if necessary.
++ *
++ * The event stream bits (EVN*) are in the same position for
++ * CNTKCTL_EL1/CTNKCTL.
+  */
+ FIELD(CNTHCTL, EL0PCTEN_E2H1, 0, 1)
+ FIELD(CNTHCTL, EL0VCTEN_E2H1, 1, 1)
+ FIELD(CNTHCTL, EL1PCTEN_E2H0, 0, 1)
+ FIELD(CNTHCTL, EL1PCEN_E2H0, 1, 1)
+-FIELD(CNTHCTL, EVNTEN, 2, 1)
+-FIELD(CNTHCTL, EVNTDIR, 3, 1)
+-FIELD(CNTHCTL, EVNTI, 4, 4)
++FIELD(CNTxCTL, EVNTEN, 2, 1)
++FIELD(CNTxCTL, EVNTDIR, 3, 1)
++FIELD(CNTxCTL, EVNTI, 4, 4)
+ FIELD(CNTHCTL, EL0VTEN, 8, 1)
+ FIELD(CNTHCTL, EL0PTEN, 9, 1)
+ FIELD(CNTHCTL, EL1PCTEN_E2H1, 10, 1)
+@@ -286,7 +289,7 @@ FIELD(CNTHCTL, EL1TVT, 13, 1)
+ FIELD(CNTHCTL, EL1TVCT, 14, 1)
+ FIELD(CNTHCTL, EL1NVPCT, 15, 1)
+ FIELD(CNTHCTL, EL1NVVCT, 16, 1)
+-FIELD(CNTHCTL, EVNTIS, 17, 1)
++FIELD(CNTxCTL, EVNTIS, 17, 1)
+ FIELD(CNTHCTL, CNTVMASK, 18, 1)
+ FIELD(CNTHCTL, CNTPMASK, 19, 1)
  
--void HELPER(wfe)(CPUARMState *env)
-+void HELPER(wfe)(CPUARMState *env, uint32_t insn_len)
- {
- #ifdef CONFIG_USER_ONLY
-     /*
-@@ -592,11 +592,25 @@ void HELPER(wfe)(CPUARMState *env)
-      */
-     CPUState *cs = env_cpu(env);
-     ARMCPU *cpu = env_archcpu(env);
-+    uint32_t excp;
-+    int target_el;
- 
-     if (qatomic_xchg(&env->event_register, false)) {
-         return;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 8240f1b3848..3b06bd80a01 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1766,9 +1766,9 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     uint32_t valid_mask =
+         R_CNTHCTL_EL0PCTEN_E2H1_MASK |
+         R_CNTHCTL_EL0VCTEN_E2H1_MASK |
+-        R_CNTHCTL_EVNTEN_MASK |
+-        R_CNTHCTL_EVNTDIR_MASK |
+-        R_CNTHCTL_EVNTI_MASK |
++        R_CNTxCTL_EVNTEN_MASK |
++        R_CNTxCTL_EVNTDIR_MASK |
++        R_CNTxCTL_EVNTI_MASK |
+         R_CNTHCTL_EL0VTEN_MASK |
+         R_CNTHCTL_EL0PTEN_MASK |
+         R_CNTHCTL_EL1PCTEN_E2H1_MASK |
+@@ -1783,7 +1783,7 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
+             R_CNTHCTL_EL1TVCT_MASK |
+             R_CNTHCTL_EL1NVPCT_MASK |
+             R_CNTHCTL_EL1NVVCT_MASK |
+-            R_CNTHCTL_EVNTIS_MASK;
++            R_CNTxCTL_EVNTIS_MASK;
      }
- 
-+    /* We might sleep, so now we check to see if we should trap */
-+    target_el = check_wfx_trap(env, true, &excp);
-+    if (target_el) {
-+        if (env->aarch64) {
-+            env->pc -= insn_len;
-+        } else {
-+            env->regs[15] -= insn_len;
-+        }
-+        raise_exception(env, excp, syn_wfx(1, 0xe, 0, false, WFE, insn_len == 2),
-+                        target_el);
-+    }
-+
-     /*
-      * If the CPU has entered the exclusive region we could sleep
-      * until the global monitor moves from Exclusive to Open Access.
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index ee584e9a793..92db4e69b64 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -10935,7 +10935,7 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
-          */
-         case DISAS_WFE:
-             gen_a64_update_pc(dc, 4);
--            gen_helper_wfe(tcg_env);
-+            gen_helper_wfe(tcg_env, tcg_constant_i32(4));
-             tcg_gen_exit_tb(NULL, 0);
-             break;
-         case DISAS_WFI:
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index c10cc382d15..1f554f6c271 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -6836,7 +6836,7 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
-             tcg_gen_exit_tb(NULL, 0);
-             break;
-         case DISAS_WFE:
--            gen_helper_wfe(tcg_env);
-+            gen_helper_wfe(tcg_env, tcg_constant_i32(curr_insn_len(dc)));
-             /*
-              * The helper can return if the event register is set, so we
-              * must go back to the main loop to check for events.
+     if (cpu_isar_feature(aa64_ecv, cpu)) {
+         valid_mask |= R_CNTHCTL_ECV_MASK;
 -- 
 2.47.3
 

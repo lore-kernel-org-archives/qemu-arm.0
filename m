@@ -4,79 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35695CD5BD0
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 15:46:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 948A6CD4F54
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 15:46:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSGRb-0003Cq-QP; Wed, 27 May 2026 11:45:20 -0400
+	id 1wSGSI-0003so-8x; Wed, 27 May 2026 11:46:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pisa@fel.cvut.cz>)
- id 1wSGRZ-0003CU-HS; Wed, 27 May 2026 11:45:18 -0400
-Received: from smtpx.feld.cvut.cz ([2001:718:2:1516::210:153]
- helo=smtpx.fel.cvut.cz)
- by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_CHACHA20_POLY1305:256)
- (Exim 4.90_1) (envelope-from <pisa@fel.cvut.cz>)
- id 1wSGRT-0005z5-Nk; Wed, 27 May 2026 11:45:15 -0400
-Received: from localhost (unknown [192.168.200.27])
- by smtpx.fel.cvut.cz (Postfix) with ESMTP id 84734F064;
- Wed, 27 May 2026 17:45:02 +0200 (CEST)
-X-Virus-Scanned: IMAP STYX AMAVIS
-Authentication-Results: cerokez-250.feld.cvut.cz (amavis);
- dkim=pass (2048-bit key) header.d=fel.cvut.cz
-Received: from smtpx.fel.cvut.cz ([192.168.200.2])
- by localhost (cerokez-250.feld.cvut.cz [192.168.200.27]) (amavis, port 10060)
- with ESMTP id 7QT77C1oMh4u; Wed, 27 May 2026 17:45:01 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fel.cvut.cz;
- s=felmail; t=1779896303;
- bh=fE19YoDJr0H3xkso9GICPamHx1IFHU/eRXXo7yQyeG8=;
- h=From:To:Subject:Date:Cc:References:In-Reply-To:From;
- b=DE0Q7D1HmyVVRjkTuHEHaBjnM3/9iQWP8/4xCywJYzTHI+tZuIE9UPRTI+thjl1eh
- s+Ah2HX0D4GseNIEnv7WAY4SM8Eqd24C9JXuDlk/We2CEgbk76zjOsDD9znUgZKo+x
- 91NBy4sg3g3mbACRLL+r4uHL0X42ZdnULgJ+Hd4Rdw6pfCBEgl516a0erZrwKJjv3d
- miDfOZRv/B/IHWj7xvgLZxAtzAiY5jHlhTd4O0JgBJJgltZ1hMWtz1eouVWtgMw4B1
- dJE8duKqMWRxUu3elyLVUiCQ9Jt/moRszvtTMDSiUz7LJ2RZQaxTUe8NE9Ahle3PnA
- PPh1c0exvklxw==
-Received: from [147.32.86.192] (unknown [147.32.86.192])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pisa)
- by smtpx.fel.cvut.cz (Postfix) with ESMTPSA id A2A1BF387;
- Wed, 27 May 2026 17:38:22 +0200 (CEST)
-From: Pavel Pisa <pisa@fel.cvut.cz>
-To: "Marc Kleine-Budde" <mkl@pengutronix.de>
-Subject: Re: [PATCH v3 0/7] hw/arm/sabrelite: Add FlexCAN support
-Date: Wed, 27 May 2026 17:38:21 +0200
-User-Agent: KMail/1.9.10
-Cc: Bernhard Beschow <shentey@gmail.com>,
- =?utf-8?q?Maty=C3=A1=C5=A1_Bobek?= <matyas.bobek@gmail.com>,
- Matyas Bobek <bobekmat@fel.cvut.cz>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Oliver Hartkopp <socketcan@hartkopp.net>,
- Nikita Ostrenkov <n.ostrenkov@gmail.com>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, linux-can@vger.kernel.org,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Andrey Volkov <andrey.volkov@munic.io>
-References: <cover.1777571962.git.matyas.bobek@gmail.com>
- <CAFEAcA95RcGhhN8ZqVeOgRyhRqSar23EnJhCjVgKBwoqXBJwjw@mail.gmail.com>
- <08A7BC6B-7019-45C4-B581-0A26AD3AA554@gmail.com>
-In-Reply-To: <08A7BC6B-7019-45C4-B581-0A26AD3AA554@gmail.com>
-X-KMail-QuotePrefix: > 
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wSGSG-0003ml-Kk
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 11:46:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wSGSF-0006de-1w
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 11:46:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779896758;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9muSlnmiwd2mhBLAgro+7z3m7qZ5WDxt0cKhMmUlN+E=;
+ b=PvnAGxp+eoEs1G4NtWTn6aMdVzTcOpDRAcpLTCihzffOyebI03UzoJkTLskBAi+G5yWHyv
+ hafbEraNVZlRytJRPKOPbX6uKKTP53DGXlYx1BJ2+x1VkJdVTeUZL4iz4oSVF7DWCs8hPk
+ PaQV0jIBbBbCTrdPisYtZtjr+Xw2O3o=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-453-n3hXwhLwMTOpA0K7m5ISZA-1; Wed, 27 May 2026 11:45:53 -0400
+X-MC-Unique: n3hXwhLwMTOpA0K7m5ISZA-1
+X-Mimecast-MFC-AGG-ID: n3hXwhLwMTOpA0K7m5ISZA_1779896752
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-45ed830a0eeso1398149f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 27 May 2026 08:45:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779896752; x=1780501552;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=9muSlnmiwd2mhBLAgro+7z3m7qZ5WDxt0cKhMmUlN+E=;
+ b=jDTjYx6D6uCgHf61b7M+AXaHNENSD5l9/2V6736ReG2RBG5fFGvdxkyvXvtMfkLZP7
+ v7I0/FxSX+JlPaL2q4E22WxLjP/8GHi4nhsRuvuEE8BmNhRTb1aQEEh2nY+fi2f/R+5a
+ U9TEFmo7HGDkSzhXscoe8hAKIyo1N9Z1AZHW4PKlibIE3lANPBb5kgaZGTzqVHXNRi3s
+ F1C6huKxdDBYDhYOpzEnj3mB49gueNTVDuExrksGBS5RVY/qvProfOoXhYbgYoYWIQSa
+ Luc49CFjaFlB9qa28s5BccB1oK6ixez7sH7hd0dgV6IPIQGF8uq5UkeXZ6DOU9RBF5MH
+ qjFA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/Ys6mBFArKiCsfmjrRKVh0qfIh+bVoXauellfV9vAH0m2eCcy+CAyFPH4j/xqZmWxbLTqoQnuyxw==@nongnu.org
+X-Gm-Message-State: AOJu0YyTeoJQi9/pEZpPBij51iMrG1KDmcpo6DaL3M7LzYzHAxFRMSel
+ ImGcc4BlrEeSBidtie+TGvOPAvA7zRt7d/dAsFZdpPL8a3ld5y3vlx3tv9QGQck2BQx4WE/EAuY
+ LrQYrwcVCIxvgLleMNk1CITE4gEOpcMleA35jIL5SNsc/HrrxNir/lA==
+X-Gm-Gg: Acq92OFgZKyMPTgoNv++q+6IVZvUYcfZFzR73PCRRcVHZi3aby8ZIWWuMxcmZ2CxG8q
+ cek3shhqSVcwp8JNVol6p+evCQhSJI9oob4+i63rfDFJz+07g59vCwINUg+SBeJASFM0mVmIYZ3
+ 4FdzUMvqY/ndVVVhyJSjyO3ECkzwF5p46khkIZsZeRGszytZhzHrsKDwOW3Kk29SvmApHkehZjX
+ ZAMyCFKKPmBzN/AtOTUQ8WRFWlVH+HWyipXREzYoggl0sbN6I9Wt4y0XLQ1cqlq313nktkOmAej
+ cpMsJDt2lJSJ99kvoow2iPwXboE8XAxzxmiwg2TaZiik42tJLrkarb0xOnV0HsHlQ/d5x0cokjR
+ IuA7HuxQ77Wpo0zOKAf8n7UIM3WukRR+4/Vo1JYxY0MSsmI47qVpEoihvSxJjf2Eqpts2D8kl+q
+ gr6T+i
+X-Received: by 2002:a05:600c:4ecc:b0:488:aa33:dcbd with SMTP id
+ 5b1f17b1804b1-490428db91cmr360447615e9.26.1779896752300; 
+ Wed, 27 May 2026 08:45:52 -0700 (PDT)
+X-Received: by 2002:a05:600c:4ecc:b0:488:aa33:dcbd with SMTP id
+ 5b1f17b1804b1-490428db91cmr360446945e9.26.1779896751891; 
+ Wed, 27 May 2026 08:45:51 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4908097a320sm27674265e9.3.2026.05.27.08.45.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 27 May 2026 08:45:51 -0700 (PDT)
+Message-ID: <80fa5157-2376-4010-88b2-deb6ab50f87f@redhat.com>
+Date: Wed, 27 May 2026 17:45:49 +0200
 MIME-Version: 1.0
-Content-Type: Text/Plain;
-  charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-Message-Id: <202605271738.21722.pisa@fel.cvut.cz>
-Received-SPF: pass client-ip=2001:718:2:1516::210:153;
- envelope-from=pisa@fel.cvut.cz; helo=smtpx.fel.cvut.cz
-X-Spam_score_int: -49
-X-Spam_score: -5.0
-X-Spam_bar: -----
-X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, NICE_REPLY_A=-2.97, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 15/18] target/arm/kvm: Ignore some writable bits that
+ shouldn't be
+To: Khushit Shah <khushit.shah@nutanix.com>
+Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Shaju Abraham <shaju.abraham@nutanix.com>,
+ "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "sebott@redhat.com" <sebott@redhat.com>,
+ "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
+ "philmd@linaro.org" <philmd@linaro.org>, "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "abologna@redhat.com" <abologna@redhat.com>,
+ "jdenemar@redhat.com" <jdenemar@redhat.com>
+References: <20260519132905.145643-1-eric.auger@redhat.com>
+ <20260519132905.145643-16-eric.auger@redhat.com>
+ <E5402D74-AE00-4088-801C-C87A749E17C9@nutanix.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <E5402D74-AE00-4088-801C-C87A749E17C9@nutanix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 49qWOfBc1PGD6WG4yKxdQpYz2rQpcTTNU2Sqci0tjLo_1779896752
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,377 +134,91 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello Marc,
 
-please, provide your opinion, the license for small Linux kernel
-headers excepts seems to be the last and only blocker for mainlining.
-See the copied code below.
 
-On Wednesday 27 of May 2026 12:42:23 Bernhard Beschow wrote:
-> Am 8. Mai 2026 12:10:21 UTC schrieb Peter Maydell <peter.maydell@linaro.o=
-rg>:
-> >On Tue, 5 May 2026 at 21:21, Bernhard Beschow <shentey@gmail.com> wrote:
-> >> Am 5. Mai 2026 18:41:52 UTC schrieb Peter Maydell <peter.maydell@linar=
-o.org>:
-> >> >On Tue, 5 May 2026 at 19:03, Bernhard Beschow <shentey@gmail.com> wro=
-te:
-> >> >> I guess the only open issue is the licensing of struct FlexcanRegs
-> >> >> [1] which originates from Linux? How do we proceed here?
-> >> >>
-> >> >> Best regards,
-> >> >> Bernhard
-> >> >>
-> >> >> [1]
-> >> >> https://lore.kernel.org/qemu-devel/202603211316.18181.pisa@fel.cvut=
-=2Ec
-> >> >>z/
-> >> >
-> >> >Could you say what the problem is? In general there is no problem
-> >> >with taking header structs from the Linux kernel, as they are
-> >> >GPL-2-only and that is a QEMU-compatible license. The relevant
-> >> >source files or pieces of source files would need to be noted
-> >> >as 2-only rather than our default of 2-or-later, but that is
-> >> >doable -- we already do that for other things we have borrowed
-> >> >from the kernel.
-> >>
-> >> In
-> >> https://lore.kernel.org/qemu-devel/f3cb3166-c3f8-4ed8-8c9a-cbf48b071d1=
-e@
-> >>gmail.com/ I raised this review question: "The following structure looks
-> >> like being based on Linux. Does this affect the copyright of this file=
-?"
-> >> I was just asking for advice and I'm glad the solution is that easy.
-> >
-> >If the struct was copied from the kernel, then it's GPL-2.0-only,
-> >and we should just note the license and where we got the code from.
-> >
-> >If the struct is just very similar to the kernel's one because
-> >it's the obvious representation taken from the datasheet, then
-> >it's not related to the kernel code and we can treat it as
-> >GPL-2.0-or-later like the rest of the file.
-> >
-> >Since Maty=C3=A1=C5=A1 says in the cover letter here "the headers (struct
-> >FlexcanRegs and flexcan_regs.h macros) were copied from the Linux
-> >kernel" then we're in case 1.
-> >
-> >You can mark this up by having the file's SPDX tag be
-> >"SPDX-License-Identifier: (GPL-2.0-only AND GPL-2.0-or-later)"
-> >Then have a normal comment in the file next to the part that is
-> >2.0-only that says
-> >/*
-> > * [This struct / the macros X, Y, Z / whatever ] are borrowed
-> > * from the Linux kernel, and so (unlike the rest of this file)
-> > * they are GPL-2.0-only.
-> > */
+On 5/27/26 4:46 PM, Khushit Shah wrote:
 >
-> Ping
+>> On 19 May 2026, at 6:57 PM, Eric Auger <eric.auger@redhat.com> wrote:
+>>
+>>
+>> KVM currently reports some bits as writable whereas they are
+>> RES0 or RAZ. This is detected because the code attempts to
+>> match those bits against a named field and this later does not
+>> exist in target/arm/cpu-idregs.h.inc.
+>>
+>> Let's silence warnings until those bits get fixed in the kernel.
+>>
+>> This was observed with v7.1-rc4 kernel.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>> target/arm/kvm.c | 23 +++++++++++++++++++----
+>> 1 file changed, 19 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index 6373a66bbd..1688cc2106 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -405,6 +405,19 @@ static void get_sysreg_prop(Object *obj, Visitor *v,
+>>     trace_get_sysreg_prop(name, value);
+>> }
+>>
+>> +static bool ignore_unnamed_writable_field(ARM64SysReg *reg, int i)
+>> +{
+>> +    if ((!strcmp(reg->name, "ID_ISAR0_EL1") && i >= 28 && i <= 31) || /* RES0 */
+>> +        (!strcmp(reg->name, "ID_ISAR5_EL1") && i >= 20 && i <= 23) || /* RES0 */
+>> +        (!strcmp(reg->name, "MVFR2_EL1") && i >= 8 && i <= 31) || /* RES0 */
+>> +        (!strcmp(reg->name, "ID_PFR2_EL1") && i >= 12 && i <= 31) || /* RES0 */
+>> +        (!strcmp(reg->name, "ID_MMFR5_EL1") && i >= 8 && i <= 31) || /* RES0 */
+>> +        (!strcmp(reg->name, "ID_AA64FPFR0_EL1") && i >= 2 && i <= 7)) { /* RAZ */
+>> +        return true;
+>> +    }
+>> +    return false;
+>> +}
+>> +
+>> /*
+>>  * decode_idreg_writemap: Generate props for writable fields
+>>  *
+>> @@ -426,10 +439,12 @@ decode_idreg_writemap(Object *obj, int index, uint64_t map, ARM64SysReg *reg)
+>>         uint64_t mask;
+>>
+>>         if (!field) {
+>> -            warn_report("%s bit %d of %s is writable but no named field "
+>> -                        "in target/arm/cpu-idregs.h.inc",
+>> -                        __func__, i, reg->name);
+>> -            warn_report("%s is target/arm/cpu-idregs.h.inc?", __func__);
+>> +            if (!ignore_unnamed_writable_field(reg, i)) {
+>> +                warn_report("%s bit %d of %s is writable but no named field "
+>> +                            "in target/arm/cpu-idregs.h.inc",
+>> +                            __func__, i, reg->name);
+>> +                warn_report("%s is target/arm/cpu-idregs.h.inc?", __func__);
+>> +            }
+>>             map =  map & ~BIT_ULL(i);
+>>             i = ctz64(map);
+>>             continue;
+>> — 
+> This is why I feel the generated cpu-idregs.h.inc should also have information of
+> RES0/1 fields as in our RFC. These fields will obviously have only one architecturally
+> valid value, hence we will never allow user to write something else.
+The good thing is it allowed to detect that kind of kernel inconsistency ;-)
+
+RES fields are not defined either in target/arm/cpu-features.h and since
+they are not meant to be touched, it was not that obvious to add them.
+
+What would it change anyway, if we detect we have a writable field
+matching a RESx field, I guess we would continue raising a warning, no?
+
+Thanks
+
+Eric
+
+ 
 >
-> Any news? With just the license issue remaining, it would be nice to get
-> FlexCAN support into the upcoming release.
+> Warm Regards,
+> Khushit
 
-The problem is that QEMU maintainers decided to prefer GPL-2.0-or-later
-as the rule for new contributions and Matyas Bobek has reused
-next excepts from Linux kernel sources
-
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/dri=
-vers/net/can/flexcan/flexcan-core.c
-
-which have license
-
-// SPDX-License-Identifier: GPL-2.0
-//
-// flexcan.c - FLEXCAN CAN controller driver
-//
-// Copyright (c) 2005-2006 Varma Electronics Oy
-// Copyright (c) 2009 Sascha Hauer, Pengutronix
-// Copyright (c) 2010-2017 Pengutronix, Marc Kleine-Budde <kernel@pengutron=
-ix.de>
-// Copyright (c) 2014 David Jander, Protonic Holland
-//
-// Based on code originally by Andrey Volkov <avolkov@varma-el.com>
-
-
-I think, personally, that the code excepts are on the edge
-of the rules for copyright applications because the lines are direct
-transformation of the offests and bit-fields found in the original
-=46reeScale/NXP manuals so there should be no problem to use them for
-QEMU and revwite from scratch for copyright clarity with a little
-different naming rules would make only more mess for future updates
-to FexCAN 3 etc.
-
-Thanaks in advance
-
-Pavel
-
-hw/net/can/flexcan_regs.h
-
-+/**
-+ * These macros ware originally written for the Linux kernel
-+ * by Marc Kleine-Budde.
-+ */
-+
-+/* FLEXCAN module configuration register (CANMCR) bits */
-+#define FLEXCAN_MCR_MDIS                BIT(31)
-+#define FLEXCAN_MCR_FRZ                 BIT(30)
-+#define FLEXCAN_MCR_FEN                 BIT(29)
-+#define FLEXCAN_MCR_HALT                BIT(28)
-+#define FLEXCAN_MCR_NOT_RDY             BIT(27)
-+#define FLEXCAN_MCR_WAK_MSK             BIT(26)
-+#define FLEXCAN_MCR_SOFTRST             BIT(25)
-+#define FLEXCAN_MCR_FRZ_ACK             BIT(24)
-+#define FLEXCAN_MCR_SUPV                BIT(23)
-+#define FLEXCAN_MCR_SLF_WAK             BIT(22)
-+#define FLEXCAN_MCR_WRN_EN              BIT(21)
-+#define FLEXCAN_MCR_LPM_ACK             BIT(20)
-+#define FLEXCAN_MCR_WAK_SRC             BIT(19)
-+#define FLEXCAN_MCR_DOZE                BIT(18)
-+#define FLEXCAN_MCR_SRX_DIS             BIT(17)
-+#define FLEXCAN_MCR_IRMQ                BIT(16)
-+#define FLEXCAN_MCR_LPRIO_EN            BIT(13)
-+#define FLEXCAN_MCR_AEN                 BIT(12)
-+#define FLEXCAN_MCR_FDEN                BIT(11)
-+#define FLEXCAN_MCR_MAXMB(x)            ((x) & 0x7f)
-+#define FLEXCAN_MCR_IDAM_A              (0x0 << 8)
-+#define FLEXCAN_MCR_IDAM_B              (0x1 << 8)
-+#define FLEXCAN_MCR_IDAM_C              (0x2 << 8)
-+#define FLEXCAN_MCR_IDAM_D              (0x3 << 8)
-+#define FLEXCAN_MCR_IDAM_MASK           (0x3 << 8)
-+
-+/* FLEXCAN control register (CANCTRL) bits */
-+#define FLEXCAN_CTRL_PRESDIV(x)         (((x) & 0xFF) << 24)
-+#define FLEXCAN_CTRL_PRESDIV_MASK       FLEXCAN_CTRL_PRESDIV(UINT32_MAX)
-+#define FLEXCAN_CTRL_RJW(x)             (((x) & 0x03) << 22)
-+#define FLEXCAN_CTRL_RJW_MASK           FLEXCAN_CTRL_RJW(UINT32_MAX)
-+#define FLEXCAN_CTRL_PSEG1(x)           (((x) & 0x07) << 19)
-+#define FLEXCAN_CTRL_PSEG1_MASK         FLEXCAN_CTRL_PSEG1(UINT32_MAX)
-+#define FLEXCAN_CTRL_PSEG2(x)           (((x) & 0x07) << 16)
-+#define FLEXCAN_CTRL_PSEG2_MASK         FLEXCAN_CTRL_PSEG2(UINT32_MAX)
-+#define FLEXCAN_CTRL_BOFF_MSK           BIT(15)
-+#define FLEXCAN_CTRL_ERR_MSK            BIT(14)
-+#define FLEXCAN_CTRL_CLK_SRC            BIT(13)
-+#define FLEXCAN_CTRL_LPB                BIT(12)
-+#define FLEXCAN_CTRL_TWRN_MSK           BIT(11)
-+#define FLEXCAN_CTRL_RWRN_MSK           BIT(10)
-+#define FLEXCAN_CTRL_SMP                BIT(7)
-+#define FLEXCAN_CTRL_BOFF_REC           BIT(6)
-+#define FLEXCAN_CTRL_TSYN               BIT(5)
-+#define FLEXCAN_CTRL_LBUF               BIT(4)
-+#define FLEXCAN_CTRL_LOM                BIT(3)
-+#define FLEXCAN_CTRL_PROPSEG(x)         ((x) & 0x07)
-+#define FLEXCAN_CTRL_PROPSEG_MASK       FLEXCAN_CTRL_PROPSEG(UINT32_MAX)
-+#define FLEXCAN_CTRL_ERR_BUS            (FLEXCAN_CTRL_ERR_MSK)
-+#define FLEXCAN_CTRL_ERR_STATE \
-+        (FLEXCAN_CTRL_TWRN_MSK | FLEXCAN_CTRL_RWRN_MSK | \
-+         FLEXCAN_CTRL_BOFF_MSK)
-+#define FLEXCAN_CTRL_ERR_ALL \
-+        (FLEXCAN_CTRL_ERR_BUS | FLEXCAN_CTRL_ERR_STATE)
-+
-+/* FLEXCAN control register 2 (CTRL2) bits */
-+#define FLEXCAN_CTRL2_ECRWRE            BIT(29)
-+#define FLEXCAN_CTRL2_WRMFRZ            BIT(28)
-+#define FLEXCAN_CTRL2_RFFN(x)           (((x) & 0x0f) << 24)
-+#define FLEXCAN_CTRL2_TASD(x)           (((x) & 0x1f) << 19)
-+#define FLEXCAN_CTRL2_MRP               BIT(18)
-+#define FLEXCAN_CTRL2_RRS               BIT(17)
-+#define FLEXCAN_CTRL2_EACEN             BIT(16)
-+#define FLEXCAN_CTRL2_ISOCANFDEN        BIT(12)
-+
-+/* FLEXCAN memory error control register (MECR) bits */
-+#define FLEXCAN_MECR_ECRWRDIS           BIT(31)
-+#define FLEXCAN_MECR_HANCEI_MSK         BIT(19)
-+#define FLEXCAN_MECR_FANCEI_MSK         BIT(18)
-+#define FLEXCAN_MECR_CEI_MSK            BIT(16)
-+#define FLEXCAN_MECR_HAERRIE            BIT(15)
-+#define FLEXCAN_MECR_FAERRIE            BIT(14)
-+#define FLEXCAN_MECR_EXTERRIE           BIT(13)
-+#define FLEXCAN_MECR_RERRDIS            BIT(9)
-+#define FLEXCAN_MECR_ECCDIS             BIT(8)
-+#define FLEXCAN_MECR_NCEFAFRZ           BIT(7)
-+
-+/* FLEXCAN error and status register (ESR) bits */
-+#define FLEXCAN_ESR_SYNCH               BIT(18)
-+#define FLEXCAN_ESR_TWRN_INT            BIT(17)
-+#define FLEXCAN_ESR_RWRN_INT            BIT(16)
-+#define FLEXCAN_ESR_BIT1_ERR            BIT(15)
-+#define FLEXCAN_ESR_BIT0_ERR            BIT(14)
-+#define FLEXCAN_ESR_ACK_ERR             BIT(13)
-+#define FLEXCAN_ESR_CRC_ERR             BIT(12)
-+#define FLEXCAN_ESR_FRM_ERR             BIT(11)
-+#define FLEXCAN_ESR_STF_ERR             BIT(10)
-+#define FLEXCAN_ESR_TX_WRN              BIT(9)
-+#define FLEXCAN_ESR_RX_WRN              BIT(8)
-+#define FLEXCAN_ESR_IDLE                BIT(7)
-+#define FLEXCAN_ESR_BOFF_INT            BIT(2)
-+#define FLEXCAN_ESR_ERR_INT             BIT(1)
-+#define FLEXCAN_ESR_WAK_INT             BIT(0)
-+
-+/* FLEXCAN Bit Timing register (CBT) bits */
-+#define FLEXCAN_CBT_BTF                 BIT(31)
-+#define FLEXCAN_CBT_EPRESDIV_MASK       FLEXCAN_GENMASK(30, 21)
-+#define FLEXCAN_CBT_ERJW_MASK           FLEXCAN_GENMASK(20, 16)
-+#define FLEXCAN_CBT_EPROPSEG_MASK       FLEXCAN_GENMASK(15, 10)
-+#define FLEXCAN_CBT_EPSEG1_MASK         FLEXCAN_GENMASK(9, 5)
-+#define FLEXCAN_CBT_EPSEG2_MASK         FLEXCAN_GENMASK(4, 0)
-+
-+/* FLEXCAN FD control register (FDCTRL) bits */
-+#define FLEXCAN_FDCTRL_FDRATE           BIT(31)
-+#define FLEXCAN_FDCTRL_MBDSR1           FLEXCAN_GENMASK(20, 19)
-+#define FLEXCAN_FDCTRL_MBDSR0           FLEXCAN_GENMASK(17, 16)
-+#define FLEXCAN_FDCTRL_MBDSR_8          0x0
-+#define FLEXCAN_FDCTRL_MBDSR_12         0x1
-+#define FLEXCAN_FDCTRL_MBDSR_32         0x2
-+#define FLEXCAN_FDCTRL_MBDSR_64         0x3
-+#define FLEXCAN_FDCTRL_TDCEN            BIT(15)
-+#define FLEXCAN_FDCTRL_TDCFAIL          BIT(14)
-+#define FLEXCAN_FDCTRL_TDCOFF           FLEXCAN_GENMASK(12, 8)
-+#define FLEXCAN_FDCTRL_TDCVAL           FLEXCAN_GENMASK(5, 0)
-+
-+/* FLEXCAN FD Bit Timing register (FDCBT) bits */
-+#define FLEXCAN_FDCBT_FPRESDIV_MASK     FLEXCAN_GENMASK(29, 20)
-+#define FLEXCAN_FDCBT_FRJW_MASK         FLEXCAN_GENMASK(18, 16)
-+#define FLEXCAN_FDCBT_FPROPSEG_MASK     FLEXCAN_GENMASK(14, 10)
-+#define FLEXCAN_FDCBT_FPSEG1_MASK       FLEXCAN_GENMASK(7, 5)
-+#define FLEXCAN_FDCBT_FPSEG2_MASK       FLEXCAN_GENMASK(2, 0)
-+
-+/* FLEXCAN CRC Register (CRCR) bits */
-+#define FLEXCAN_CRCR_MBCRC_MASK         FLEXCAN_GENMASK(22, 16)
-+#define FLEXCAN_CRCR_MBCRC(x)           (((x) & FLEXCAN_CRCR_MBCRC_MASK) <=
-< 16)
-+#define FLEXCAN_CRCR_TXCRC_MASK         FLEXCAN_GENMASK(14, 0)
-+#define FLEXCAN_CRCR_TXCRC(x)           ((x) & FLEXCAN_CRCR_TXCRC_MASK)
-+
-+/* FLEXCAN interrupt flag register (IFLAG) bits */
-+/* Errata ERR005829 step7: Reserve first valid MB */
-+#define I_FIFO_OVERFLOW  7
-+#define I_FIFO_WARN      6
-+#define I_FIFO_AVAILABLE 5
-+
-+#define FLEXCAN_TX_MB_RESERVED_RX_FIFO  8
-+#define FLEXCAN_TX_MB_RESERVED_RX_MAILBOX       0
-+#define FLEXCAN_RX_MB_RX_MAILBOX_FIRST  (FLEXCAN_TX_MB_RESERVED_RX_MAILBOX=
- + 1)
-+#define FLEXCAN_IFLAG_MB(x)             BIT_ULL(x)
-+#define FLEXCAN_IFLAG_RX_FIFO_OVERFLOW  BIT(I_FIFO_OVERFLOW)
-+#define FLEXCAN_IFLAG_RX_FIFO_WARN      BIT(I_FIFO_WARN)
-+#define FLEXCAN_IFLAG_RX_FIFO_AVAILABLE BIT(I_FIFO_AVAILABLE)
-+
-+/* FLEXCAN message buffers */
-+#define FLEXCAN_MB_CODE_RX_BUSY_BIT     (0x1 << 24)
-+#define FLEXCAN_MB_CODE_RX_INACTIVE     (0x0 << 24)
-+#define FLEXCAN_MB_CODE_RX_EMPTY        (0x4 << 24)
-+#define FLEXCAN_MB_CODE_RX_FULL         (0x2 << 24)
-+#define FLEXCAN_MB_CODE_RX_OVERRUN      (0x6 << 24)
-+#define FLEXCAN_MB_CODE_RX_RANSWER      (0xa << 24)
-+
-+#define FLEXCAN_MB_CODE_TX_INACTIVE     (0x8 << 24)
-+#define FLEXCAN_MB_CODE_TX_ABORT        (0x9 << 24)
-+#define FLEXCAN_MB_CODE_TX_DATA         (0xc << 24)
-+#define FLEXCAN_MB_CODE_TX_TANSWER      (0xe << 24)
-+
-+#define FLEXCAN_MB_CODE(x)              (((x) & 0xF) << 24)
-+#define FLEXCAN_MB_CODE_MASK            FLEXCAN_MB_CODE(UINT32_MAX)
-+
-+#define FLEXCAN_MB_CNT_EDL              BIT(31)
-+#define FLEXCAN_MB_CNT_BRS              BIT(30)
-+#define FLEXCAN_MB_CNT_ESI              BIT(29)
-+#define FLEXCAN_MB_CNT_SRR              BIT(22)
-+#define FLEXCAN_MB_CNT_IDE              BIT(21)
-+#define FLEXCAN_MB_CNT_RTR              BIT(20)
-+#define FLEXCAN_MB_CNT_LENGTH(x)        (((x) & 0xF) << 16)
-+#define FLEXCAN_MB_CNT_TIMESTAMP(x)     ((x) & 0xFFFF)
-+#define FLEXCAN_MB_CNT_TIMESTAMP_MASK   FLEXCAN_MB_CNT_TIMESTAMP(UINT32_MA=
-X)
-
-+/* view of single message buffer registers */
-+typedef struct FlexcanRegsMessageBuffer {
-+    uint32_t can_ctrl;
-+    uint32_t can_id;
-+    uint32_t data[2];
-+} FlexcanRegsMessageBuffer;
-
-
-include/hw/net/flexcan.h
-
-+/**
-+ * Structure of the hardware registers
-+ *
-+ * originally created for the Linux kernel by Marc Kleine-Budde
-+ */
-+typedef struct FlexcanRegs {
-+    uint32_t mcr;                /* 0x00 */
-+    uint32_t ctrl;               /* 0x04 - not affected by soft reset */
-+    uint32_t timer;              /* 0x08 */
-+    uint32_t tcr;                /* 0x0C */
-+    uint32_t rxmgmask;           /* 0x10 - not affected by soft reset */
-+    uint32_t rx14mask;           /* 0x14 - not affected by soft reset */
-+    uint32_t rx15mask;           /* 0x18 - not affected by soft reset */
-+    uint32_t ecr;                /* 0x1C */
-+    uint32_t esr;                /* 0x20 */
-+    uint32_t imask2;             /* 0x24 */
-+    uint32_t imask1;             /* 0x28 */
-+    uint32_t iflag2;             /* 0x2C */
-+    uint32_t iflag1;             /* 0x30 */
-+    union {                      /* 0x34 */
-+        uint32_t gfwr_mx28;      /* MX28, MX53 */
-+        uint32_t ctrl2;          /* MX6, VF610 - not affected by soft rese=
-t */
-+    };
-+    uint32_t esr2;               /* 0x38 */
-+    uint32_t imeur;              /* 0x3C, unused */
-+    uint32_t lrfr;               /* 0x40, unused */
-+    uint32_t crcr;               /* 0x44 */
-+    uint32_t rxfgmask;           /* 0x48 */
-+    uint32_t rxfir;              /* 0x4C - not affected by soft reset */
-+    uint32_t cbt;                /* 0x50, unused - not affected by soft re=
-set */
-+    uint32_t _reserved2;         /* 0x54 */
-+    uint32_t dbg1;               /* 0x58, unused */
-+    uint32_t dbg2;               /* 0x5C, unused */
-+    uint32_t _reserved3[8];      /* 0x60 */
-+    union {                      /* 0x80 - not affected by soft reset */
-+        uint32_t mb[sizeof(FlexcanRegsMessageBuffer) * FLEXCAN_MAILBOX_COU=
-NT];
-+        FlexcanRegsMessageBuffer mbs[FLEXCAN_MAILBOX_COUNT];
-+        FlexcanRegsRXFifo fifo;
-+    };
-+    uint32_t _reserved4[256];    /* 0x480 */
-+    uint32_t rximr[64];          /* 0x880 - not affected by soft reset */
-+    uint32_t _reserved5[24];     /* 0x980 */
-+    uint32_t gfwr_mx6;           /* 0x9E0 - MX6 */
-+
-+    /* the rest is unused except for SMB */
-+    uint32_t _reserved6[39];     /* 0x9E4 */
-+    uint32_t _rxfir[6];          /* 0xA80 */
-+    uint32_t _reserved8[2];      /* 0xA98 */
-+    uint32_t _rxmgmask;          /* 0xAA0 */
-+    uint32_t _rxfgmask;          /* 0xAA4 */
-+    uint32_t _rx14mask;          /* 0xAA8 */
-+    uint32_t _rx15mask;          /* 0xAAC */
-+    uint32_t tx_smb[4];          /* 0xAB0 */
-+    union {                      /* 0xAC0, used for SMB emulation */
-+        uint32_t rx_smb0_raw[4];
-+        FlexcanRegsMessageBuffer rx_smb0;
-+    };
-+    uint32_t rx_smb1[4];         /* 0xAD0 */
-+    uint32_t mecr;               /* 0xAE0 */
-+    uint32_t erriar;             /* 0xAE4 */
-+    uint32_t erridpr;            /* 0xAE8 */
-+    uint32_t errippr;            /* 0xAEC */
-+    uint32_t rerrar;             /* 0xAF0 */
-+    uint32_t rerrdr;             /* 0xAF4 */
-+    uint32_t rerrsynr;           /* 0xAF8 */
-+    uint32_t errsr;              /* 0xAFC */
-+    uint32_t _reserved7[64];     /* 0xB00 */
-+    uint32_t fdctrl;             /* 0xC00 - not affected by soft reset */
-+    uint32_t fdcbt;              /* 0xC04 - not affected by soft reset */
-+    uint32_t fdcrc;              /* 0xC08 */
-+    uint32_t _reserved9[199];    /* 0xC0C */
-+    uint32_t tx_smb_fd[18];      /* 0xF28 */
-+    uint32_t rx_smb0_fd[18];     /* 0xF70 */
-+    uint32_t rx_smb1_fd[18];     /* 0xFB8 */
-+} FlexcanRegs;
-+
 

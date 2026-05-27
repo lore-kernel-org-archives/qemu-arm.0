@@ -4,118 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1385CD5BDE
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 06:17:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22D01CD5BD5
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 06:30:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wS7aG-0004dU-K4; Wed, 27 May 2026 02:17:41 -0400
+	id 1wS7mB-0007Aw-Mv; Wed, 27 May 2026 02:30:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wS7a8-0004T0-Kb
- for qemu-arm@nongnu.org; Wed, 27 May 2026 02:17:34 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wS7a6-0004VU-CJ
- for qemu-arm@nongnu.org; Wed, 27 May 2026 02:17:32 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-4891c0620bcso71571455e9.1
- for <qemu-arm@nongnu.org>; Tue, 26 May 2026 23:17:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779862647; x=1780467447; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=muFvNJiYGBkBMOTJ+DCWFxdRk9ijjvf0RR6y8wSXTf0=;
- b=b/TYP/LPm14iTxA1QK5B0rVBPF/CdOeWYOohZy2GJcXbiLuPg9KocWys0afH56Hpf2
- jG36b91pbrLMxuVvikTcdBnU0p0c2fcttSi+5DoK52NVPHnTUAMSHw2/Eo08Joc84SMy
- AlNU5ljRe14gH4jWiDjUKurGLET6dMg5VD6IvDD+pn4dEBa4d0BSxyKhLwHY62aixYzJ
- CGZb9atQ4otNqkAyIdiQ/biBt0599JWBA5cplrlxlMowqX3k5yw3ATUHJOxt9q+pVFhh
- 3RvKBgdXNZw297I1qGZ9e8tsucAEoNH9Tqw/OHvnR+CEFR6TqPCfCEF0lNFPrp4rf79V
- frzQ==
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wS7m6-00078w-BA
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 02:29:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wS7m4-0007uv-R8
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 02:29:54 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779863391;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=JExJPPFLzVkYK23Ymb0qqNKDhD/YOhK6O4Mtx8xPHYI=;
+ b=BaLa9vk4jQyNeL+nmBYor/ufcnVUNg2KY6IYsuyXvIcvKLp8PvmtG5AxdlnBK5eqr7Txfk
+ PXtirUNeZPXoAIlANx4SDJmmw/57ycTUDgDvi0q1dj0BkSj/wUR6nQHvNn9SZJHPR8QleT
+ Worqy7pKTYDwGXRW6e7qCp8nOM6JdXU=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-198-boxP-hxcM6694k6w-AfzzA-1; Wed, 27 May 2026 02:29:47 -0400
+X-MC-Unique: boxP-hxcM6694k6w-AfzzA-1
+X-Mimecast-MFC-AGG-ID: boxP-hxcM6694k6w-AfzzA_1779863386
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-44f1b4d0fb0so7002349f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 26 May 2026 23:29:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779862647; x=1780467447;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=muFvNJiYGBkBMOTJ+DCWFxdRk9ijjvf0RR6y8wSXTf0=;
- b=n6fhDiYFr523WP31XDbmDuu2MrJY9OIDDdEnXLLqk3gzZiyR2CScVHpQr0MXt70ABq
- cD9P4wjXcuxkGZsUKFQsw7jpnJJrDJdxT4l1W9XNfSvlUEYrYB6Wygmzrp+yOU1OcvcV
- 1PHHn7PTnHOsZnRY6Iem3jp18uqo24geuYqxe3/QrMXjmn/MtcSI8bJZfndhw4qcWFfH
- w4TC+oDMPOi+QxsB1NpBv68GzK+Rw5GflD0S10orYRG+47GXKyosXwU1U3GJo3S6gsYc
- 46OHHtF3ooeol1/skTPKDFPk2f1JYfuXKS3Ol4xLaN/MtpQ6ios/xRSGvLEAHVZWo56+
- cTJw==
+ d=1e100.net; s=20251104; t=1779863386; x=1780468186;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+ :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=JExJPPFLzVkYK23Ymb0qqNKDhD/YOhK6O4Mtx8xPHYI=;
+ b=eF5L/LpV5wLflTH8NSHSSJBGeSLEqdM2DAsjnlXxNO997msYgn4AwQV1vyjLOwvDsv
+ iiENaWzvd36FGUtYypE4npoLQzh1yMWseTG98tXxeEJ+tpmOfHnW7vVqV2uxmmQh/grV
+ mGLOPaySuj5Kp9hX3I80IHQ6rYgj7Y5qRyO23jsY3IkTVcJTvc0I49An5+e3qwSN3U5W
+ i5aLoC0Rkg1uX6NKuIS83Pped3F/bya+6IHvSIdfJ0oVXafRQAKhkWg/IY4QWC6Y/vU+
+ B04ZkGJToSagg1f/zZiFOi+ll38LvVSZUP21TMoAz4MWjIEIYpW8qthzZxGzVbeZV05u
+ WKOA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+a1zhxBecyAmkaEP64rJGH0Nscv0/06gn7E8LmWtReYmuDtGqoZ+zt4Pn0ZxWtWl4pnGzOhRcOVw==@nongnu.org
-X-Gm-Message-State: AOJu0YyEkAt2TIQQvkFlJM90zlNE0iakouiKsO53lR7EH6wIMWXD+mGh
- +/NhTdaUm4v61/QOkLJAjZxpPD8JkEhyQa/sySeP4hUz5amoneCUv2HnYwg3SUT4aXY=
-X-Gm-Gg: Acq92OEEmHgsqJULN6ygULCpqq4sjB4hk0HIpr0LrDwiws8lssFRK7zq7GCVTgvC7oA
- cLF90bcOXnI1s3vlD20ia+gH44kgOfIwkAm/SXWha49bouKaZK9ROWDUy85tZP52XZKRB6rS3Li
- LawXeU2+2AyDrbtM53ziMTlJuHlzzzwGsqE0DYRlPHdi5uwQkONeGpzihMG/dVnkUNV2srU9zao
- IEVBFGfbP3E/lQgDLPhzt/gTXoFecGq3BokcvZz35r7Zlb+JOR+Hcrf7138hIh3AWa6qp2QTqQG
- z0bxhI5lmdfngdh3osC2NIKjSGygSM55f94TjdXTH8aSrh5ZGIK3bHs7Qod2xpxXjg1MCnMCmTy
- L3f+k4w/z8R9oyUe4Y2P7HvCmQZ3oN/JRZqL6vDBXHZRY1wCGNBtbf9ey8XYn/zKovOshs0rSkW
- KsOfB6GWu36yPDt9ifUagQj60=
-X-Received: by 2002:a05:600c:3b02:b0:48a:5821:5ff2 with SMTP id
- 5b1f17b1804b1-490425aa70fmr366042845e9.8.1779862646654; 
- Tue, 26 May 2026 23:17:26 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4904526c926sm669073835e9.1.2026.05.26.23.17.25
+ AFNElJ8JiAS8fa2v/dBRYiv98MDrtok0ivUBOI1Gq2TgiDik7LESNOPjk39f+8O6eOgtFJ678WVcXM6wZg==@nongnu.org
+X-Gm-Message-State: AOJu0YxgdheHF4BamZSd2mfLXW1K4qbPozMl4LSSs3m4webFKkcL4BYX
+ 6C7OuQpxGyjSJg96vnO/ExBDAdz9hvsuY5J0x087JYVYVjmDTwsegIRQa9zbQ1Cvhce/56dw3bd
+ CoffEsFu2LlfdHGb91243jOe1iTuCgAbc9IROzlY+I+zP0szAONP1WQ==
+X-Gm-Gg: Acq92OF8OPbHrPqn1ehORP6AjXQKKZR5GHgVWmbMWAn5aOHVSt0UqF85C1++J82kphW
+ f6kPtWB2wTfoTOL7BaavDkJvEYP7MAcHqFpkotWM5OtpQN+pLjWVnq6QfHQuPbrS4qq5y6IJabq
+ f61n3sTBJCnVnZzWm+Chs6HV3kCnAdVt5Jl5heU2cvRvVBcnDfinYTkwaYEz5ugbLMrsF4ouo67
+ IlAVXzVV/90jB2Im9+yMSD+z1MV220XOybOZZ9xVopRUR9P3FxBp33PG9tCHmeUr8Kxymj40TNF
+ /LepJPlTCHi8et6O7CIaNqms6oV4JDfCQBuNZrrrj9v5jhtWwpyzCuNk31OLGO52pOEfJWr8Ia3
+ Vq9X+w78NPgRfenKALU6U+WhrRBsRlIpUqyczKNZ5sRWfh/VKMUskerOwjGBV0yRy0btVQ8o=
+X-Received: by 2002:a05:6000:1447:b0:452:d03a:7abe with SMTP id
+ ffacd0b85a97d-45eb38b91c3mr38816075f8f.17.1779863386135; 
+ Tue, 26 May 2026 23:29:46 -0700 (PDT)
+X-Received: by 2002:a05:6000:1447:b0:452:d03a:7abe with SMTP id
+ ffacd0b85a97d-45eb38b91c3mr38816017f8f.17.1779863385730; 
+ Tue, 26 May 2026 23:29:45 -0700 (PDT)
+Received: from rh (p200300f6af2a6100f239e076bbd76784.dip0.t-ipconnect.de.
+ [2003:f6:af2a:6100:f239:e076:bbd7:6784])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45edb54959bsm4149286f8f.1.2026.05.26.23.29.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 May 2026 23:17:25 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 6109A5F81C;
- Wed, 27 May 2026 07:17:24 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org,  Peter Xu <peterx@redhat.com>,  Daniel P.
- =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Thomas Huth
- <th.huth+qemu@posteo.eu>,
- Song Gao <gaosong@loongson.cn>,  John Snow <jsnow@redhat.com>,  Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Kyle Evans
- <kevans@freebsd.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Cleber Rosa
- <crosa@redhat.com>,  Warner Losh <imp@bsdimp.com>,  Brad Smith
- <brad@comstyle.com>,  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Max Filippov <jcmvbkbc@gmail.com>,  Brian Cain
- <brian.cain@oss.qualcomm.com>,  Fabiano Rosas <farosas@suse.de>,  Peter
- Maydell <peter.maydell@linaro.org>,  Richard Henderson
- <richard.henderson@linaro.org>,  qemu-arm@nongnu.org
-Subject: Re: [PATCH v2 03/16] tests/Makefile.include: add binary dependency
- to run-tcg-tests-% rules
-In-Reply-To: <8a878679-733c-451c-8053-663a74f8d4a7@oss.qualcomm.com> (Pierrick
- Bouvier's message of "Tue, 26 May 2026 11:07:50 -0700")
-References: <20260521131739.540157-1-alex.bennee@linaro.org>
- <20260521131739.540157-4-alex.bennee@linaro.org>
- <74e8bc86-cd81-43f9-b5cb-7e3de3bcd3d0@oss.qualcomm.com>
- <87tsrzl138.fsf@draig.linaro.org>
- <093614fb-ced1-4b15-b1e1-5da755f87237@oss.qualcomm.com>
- <87cxymec7b.fsf@draig.linaro.org>
- <5bd51a1a-4079-4073-bbd8-f0206a1ad458@oss.qualcomm.com>
- <0f73d717-1621-4c3f-9c5e-9bfdfaffb0b8@oss.qualcomm.com>
- <877bor9vor.fsf@draig.linaro.org>
- <7d58926d-a36d-430f-828e-7ebdd9cc4eb5@oss.qualcomm.com>
- <87qzmyzbut.fsf@draig.linaro.org>
- <06092208-1b56-4fea-8d92-bf035fbd0fa3@oss.qualcomm.com>
- <87fr3eyrvp.fsf@draig.linaro.org>
- <8a878679-733c-451c-8053-663a74f8d4a7@oss.qualcomm.com>
-User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Wed, 27 May 2026 07:17:24 +0100
-Message-ID: <87a4tlz897.fsf@draig.linaro.org>
+ Tue, 26 May 2026 23:29:45 -0700 (PDT)
+Date: Wed, 27 May 2026 08:29:44 +0200 (CEST)
+From: Sebastian Ott <sebott@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ kvmarm@lists.linux.dev, peter.maydell@linaro.org, 
+ shaju.abraham@nutanix.com, khushit.shah@nutanix.com, 
+ yangjinqian1@huawei.com, cohuck@redhat.com, richard.henderson@linaro.org, 
+ skolothumtho@nvidia.com, philmd@linaro.org, maz@kernel.org, 
+ oliver.upton@linux.dev, pbonzini@redhat.com, armbru@redhat.com, 
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com
+Subject: Re: [PATCH v5 17/18] arm-qmp-cmds: introspection for ID register props
+In-Reply-To: <20260519132905.145643-18-eric.auger@redhat.com>
+Message-ID: <10ae56f5-6fc7-fe58-1e17-7c3b968045be@redhat.com>
+References: <20260519132905.145643-1-eric.auger@redhat.com>
+ <20260519132905.145643-18-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x334.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: gq5JxSpQ_F1HGEukq124XgOmLP2_Zoebg8vV3m5wmtg_1779863386
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; format=flowed; charset=US-ASCII
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,91 +115,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
-
-> On 5/26/2026 10:58 AM, Alex Benn=C3=A9e wrote:
->> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>=20
->>> On 5/26/2026 3:47 AM, Alex Benn=C3=A9e wrote:
->>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>>>
->>>>> On 5/25/2026 11:43 AM, Alex Benn=C3=A9e wrote:
->>>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>>>>>
->>>>>>> On 5/25/2026 8:46 AM, Pierrick Bouvier wrote:
->>>>>>>> On 5/23/2026 1:56 AM, Alex Benn=C3=A9e wrote:
->>>>>>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>>>>>>>>
->>>>>>>>>> On 5/22/2026 12:02 PM, Alex Benn=C3=A9e wrote:
->>>>>>>>>>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>>>>>>>>>>
->>>>>>>>>>>> On 5/21/2026 6:17 AM, Alex Benn=C3=A9e wrote:
-<snip>
->>>
->>> We'll need to remove the mechanic to build cross compilers containers.
->>> In my experience, it's clunky anyway and fails when building several
->>> from scratch. Try it yourself after cleaning your docker/podman images.
->>> It's just better and simpler to expect user to install cross
->>> compilers.
->>=20
->> That would loose a bunch of functionality and doesn't help users running
->> anything that isn't Debian.
->>
+On Tue, 19 May 2026, Eric Auger wrote:
+> From: Cornelia Huck <cohuck@redhat.com>
 >
-> Out of fedora, who does it exclude?
-
-RHEL, CentOS, SuSE
-
-The cross compiler situation may have improved since - Debian has always
-been ahead of the curve in its multi-arch support.
-
-> We can still provide a fat debian container with all cross compilers
-> embedded for people who don't run ubuntu/debian.
+> Implement the capability to query available ID register values by
+> adding SYSREG_* options and values to the cpu model expansion for the
+> host model, if available.
 >
->>> The only thing that prevented me to implement this before is that I
->>> didn't know if concerned maintainers would accept it, or just hold onto
->>> the precious handcrafted Makefiles, into which so much energy and time
->>> has been spent.
->>=20
->> There is no desire to hold onto Makefiles, but I do want to keep the
->> same capabilities as the current system. The driver for containerising
->> the compilers was that setting up cross compilers is a barrier to
->> contributors who want to be able to add and build tests.
->>
+> Excerpt:
+> (QEMU) query-cpu-model-expansion type=full model={"name":"host"}
+> {"return": {"model": {"name": "host", "props":
+> {"SYSREG_ID_AA64PFR0_EL1_EL3": 1224979098931106066,
+ 				 ^
+This looks wrong - more like the full reg value and not just EL3..
+
+> "SYSREG_ID_AA64ISAR2_EL1_CLRBHB": 0,
+> ../..
 >
-> Personally, this "smart" layer has been a barrier even on Debian, since
-> by default it tries to build them, and it fails from scratch.
-> Give it a try by purging your docker images, and run a make check-tcg
-> -j$(nproc). I doubt anyone is really running check-tcg with this in real
-> life.
-
-What do you mean? I run check-tcg all the time.
-
-Which containers fail to build for you? The main cross-compiler one
-(debian-all-test-cross) is built all the time.
-
-> But well, if the cross-container thing is *really* a blocker, we can
-> just wrap build and run in a script per cross compiler, that does
-> docker/podman build && docker/podman run and call that.
-
-We still have the remnants of that in the docker.py script although for
-most containers we moved to invoking docker (or podman) directly.
-
-Also bear in mind the containers are also used to cross build QEMU
-itself.=20
-
+> So this allows the upper stack to detect available writable ID
+> regs and the "host passthrough model" values.
 >
-> Now we solved the problem with system tests, and cross compilers, is
-> there another thing that is absolutely needed from Makefiles?
+> [CH: moved SYSREG_* values to host model]
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 >
->>> If it's not the case, then we should definitely move into the direction
->>> of migrating all this to meson, and rely on meson tests infrastructure.
->>>
->>> Regards,
->>> Pierrick
->>=20
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Reviewed-by: Sebastian Ott <sebott@redhat.com>
+
 

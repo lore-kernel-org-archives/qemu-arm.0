@@ -4,97 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40C5BCD5BD0
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 12:58:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8FC7CD5BD0
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 12:59:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSDqS-0004DV-BQ; Wed, 27 May 2026 08:58:49 -0400
+	id 1wSDqk-0004G6-Fa; Wed, 27 May 2026 08:59:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wSDqO-0004BE-R8
- for qemu-arm@nongnu.org; Wed, 27 May 2026 08:58:46 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wSDqN-00081q-13
- for qemu-arm@nongnu.org; Wed, 27 May 2026 08:58:44 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-490686877a1so22800055e9.0
- for <qemu-arm@nongnu.org>; Wed, 27 May 2026 05:58:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779886721; x=1780491521; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=PmkaGBmXz63OfwFXK5yL3ohL7iGoSyYRoYxjunfShhM=;
- b=uTDMcena0qBWHJs4xFJFtNpQJ7FGUuBXfmqz3MhXpA76h0KeUzkCRWp53ri326WKPz
- wthFdfgSPVHnASFQ6GoAbE6MzPpJW8HM6d+Mmbya5K+79gB97vPZLiAXesHbeRNtWrMB
- +8mtOXYNJiVJGwy98Ov1932OIfBj3jTzJiC0XVCUDmx0hL/2fkoEs5KGRWOEra7TSSxN
- XjpPSS2Ah3YExAiG7GVfx9HVciDcK8EZK/b/uJt6zejkWNfAkASRSAXqZEGeNsT71quv
- bL0BqiYtMW655PbZv7qCNpcCszeWM2cwciLMv9rRN+R0KHhRVhxSLI0KIv73MkP2eaTD
- qBpg==
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wSDqe-0004F2-KQ
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 08:59:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wSDqd-000830-30
+ for qemu-arm@nongnu.org; Wed, 27 May 2026 08:59:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779886738;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=iEQAfLvOet6qO6R1zNac4aqvvCu/csDx1DZhIdUpyCE=;
+ b=Q3B4HnsjsClF85VCIa05wWLwGtOAoH2Xv+w142Nrqknb/SxcvlRBgku6PAOxgGUtQl7iOw
+ SV4BBQwIUtX7jnaildYml46ZNveqkHgQiAbVgM+AklUxVTOb9f52sLeJOp9YvGCmazOeeo
+ 4cmQ35oypBiUjkblAl48UeYjR3MnZ1Q=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-448-ONSce1I4PmGDMiOMXYWZ-A-1; Wed, 27 May 2026 08:58:54 -0400
+X-MC-Unique: ONSce1I4PmGDMiOMXYWZ-A-1
+X-Mimecast-MFC-AGG-ID: ONSce1I4PmGDMiOMXYWZ-A_1779886734
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4903dcb32f8so50412435e9.0
+ for <qemu-arm@nongnu.org>; Wed, 27 May 2026 05:58:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779886721; x=1780491521;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=PmkaGBmXz63OfwFXK5yL3ohL7iGoSyYRoYxjunfShhM=;
- b=EoVpXMAjGNDqr0m1Nkm6wrCk3zcH8rgazUt2zCYaqbSZD0WM5Ac3+/HuSmuh+Phfv4
- AWMn0NvJC63IPyNYJF6+kjuatiU9CHdyBQTar+eJ14nlcOGzZNmSlDdXycVuxI5mjoRL
- YBYIhqoKL83D1xwfx/f5DrLcXkSBT+AhdntCc2D7r06yh8J1dneadvtM+3mOxv60/8XY
- pSPnAaRW8ol9Wntr+ArDW7Biv8lZY6tPOCmUREmVmrKPXroC4IwRtyMAGCjQFz0I4dzB
- 6SXvRG5W3kYk9UeJmbcO+Q5ABsnv/N4wxPdOkXKFAkQRpA8JWHc0tJ4Y+AAs7l4rfPEM
- lcZA==
+ d=1e100.net; s=20251104; t=1779886733; x=1780491533;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=iEQAfLvOet6qO6R1zNac4aqvvCu/csDx1DZhIdUpyCE=;
+ b=knpD72yYhR1x5dyxVO12JP4OPuvK8tBguNaS7TRvMcjI8sritO16FK0mZM7Vv/tyQx
+ BGyhf8XXFRQUnhltLJhqZLsOTHpG1q96Eph1SXoGt221sdM+Gh0+bUnP6q/tLu9xeDYo
+ DiKorvDTRZqmsnwYAtw/5EP+JiiEXMDBWbA50lSMJaQYGSCdhQnf4muDAgMQhkCc8fW0
+ C1wU5JD0mrlTv277AOXDUA7m+s0YIUiOTdsQEDoXUzZ7+oy895sQWiMGAWDSA8z5du9Z
+ 2FfjDYKg3/5SBlSxUewRsyRZcj/Sydf9GHYtJlOHKVAWPbACNWD7nNoJG/zO/Epi1ehD
+ Bcog==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/WaOd/VXeJnoO8ZU1C85+gQOcixZVTnMQnv8v7ipBbEWLuBLur7LJMEvPMDhscbfe/03cn49M8dA==@nongnu.org
-X-Gm-Message-State: AOJu0YzWmX//T4RxzPx8JaEIKHgsY4BYPqt2kD1XIUZ3jyO7NqRgqbNs
- MR6tiXPxyIKru00t/2gyaQmej9p7ChXTwSD91Nw3poV+HIK7jfoejaN7C/JhcxJlDVYP0sHqZf+
- MM6Is
-X-Gm-Gg: Acq92OFAIpMUONRsGoXmSl9n/0z4oNIeSdnP9YrN1cogTzXsxseD553NSsPeXul7f0g
- YXd649HdpD5F+2y02hxvCSKavaze2UR6BzXJku4wu6WrhvgqL4oGYO/A9H5nyDyfFg7ghPTanZA
- DJBY5L3vgFadAEwquSwAYaxWktd/mvtIWpH9DuOdvJ/kJ2XNIY4Z249+xe+r6NhxdEMjgiYUJwO
- LK2nM/738r4SycRZ9nWXvc1X+DtkvA6+DtqafcKSqw4pQIrNZ5qdiSJOIQNRDK0U6f81JSHwm3v
- MvykVaslmvZ6GYQS/uTd+hPYEBXR+mUVvGNcqBDi7Tub93DkdDweL3n5Z6Ag4hmEQcvszQOcBg7
- sKdbpz5IEmDY2xxzkU9jiI0r1NJMSRZMuJ+ROGeDqOjro6qCsF/VQO4PEPueMglvNnDDlGHNDto
- W7uwxsFboRbSIN+ryv12MeVNM=
-X-Received: by 2002:a05:600c:3e12:b0:48a:5339:a46 with SMTP id
- 5b1f17b1804b1-49042481066mr337575375e9.9.1779886721202; 
- Wed, 27 May 2026 05:58:41 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-490454ac676sm429859485e9.13.2026.05.27.05.58.40
+ AFNElJ/Qb4kdINPj7X52CoaPC+uYKg58DX2tp3JtVJGmDJSe1/ouiH/BNxibu3Jrs4Z78tXuXojVAY3luA==@nongnu.org
+X-Gm-Message-State: AOJu0YzdCCEHzeiOUVb6FNtwAbis5e7qws+S4jzG1Ogm1QmGCTn5ZZl9
+ RVoCrQ5Vy2TvYNiLkPrzsrueI/iDFVn3cZvTLCg7wNECk5FFs6XQL3GDOfXOApZY7k+SbxvDMeV
+ solsGKymIWXpLYSK56F8y3QQ2kJxciOIksgaNOGZVIdNWGmBIqUYR5w==
+X-Gm-Gg: Acq92OEJgo77T8VwL0zY20V5gFLg6xhezCEjdk5vm/USfjDe2eerYqrRS1MG8YNEjCB
+ 5vvIWi0dFWsvzllcj5wtSvCKCSrmOvdp+cIfOGJz8+AQ9RNxwJO8orJyttA5UGMmHYGI0Zbd4tt
+ zh/rZH3F7Lj1Dz5K5d3tM64icXKdh0plnK7/1BBIUh6Ej7lLg2yAsRWP3zt180YHbQ+Qjkli6cX
+ nqP8e1V0zgs6B3twmZmiKF7MxnTF7I4Dg6839/4F2FmNUaxF0Z2HBagEv1a66GZ4usE+n4+jx/x
+ KOFLlsBgiRqADR/JnMJ0K4m+nT7Xiq0q8Wb1Z6X84WMtXK6oAKLA9NYcjEZA3+J2FgdHSGrwUbQ
+ NPQLfQQ==
+X-Received: by 2002:a05:600c:a402:b0:48f:d1c0:721e with SMTP id
+ 5b1f17b1804b1-490426b294amr265356125e9.12.1779886733600; 
+ Wed, 27 May 2026 05:58:53 -0700 (PDT)
+X-Received: by 2002:a05:600c:a402:b0:48f:d1c0:721e with SMTP id
+ 5b1f17b1804b1-490426b294amr265355855e9.12.1779886733205; 
+ Wed, 27 May 2026 05:58:53 -0700 (PDT)
+Received: from imammedo ([213.175.46.86]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-490809c2dc2sm16208485e9.28.2026.05.27.05.58.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2026 05:58:40 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 93D9E5F7F0;
- Wed, 27 May 2026 13:58:39 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Torbjorn SVENSSON <torbjorn.svensson@foss.st.com>
-Cc: <qemu-devel@nongnu.org>,  <qemu-arm@nongnu.org>,  Peter Maydell
- <peter.maydell@linaro.org>,  Richard Henderson
- <richard.henderson@linaro.org>
-Subject: Re: [PING] [PATCH 0/3] target/arm: add support for Cortex-M pointer
- authentication code
-In-Reply-To: <b50cb0e2-5198-460c-abee-ba86c7002a96@foss.st.com> (Torbjorn
- SVENSSON's message of "Wed, 27 May 2026 09:36:03 +0200")
-References: <20260518-pr-pacbti-v1-0-8932a885b03d@foss.st.com>
- <b50cb0e2-5198-460c-abee-ba86c7002a96@foss.st.com>
-User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Wed, 27 May 2026 13:58:39 +0100
-Message-ID: <87mrxlxb40.fsf@draig.linaro.org>
+ Wed, 27 May 2026 05:58:52 -0700 (PDT)
+Date: Wed, 27 May 2026 14:58:51 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eauger@redhat.com>
+Cc: qemu-devel@nongnu.org, mst@redhat.com, anisinha@redhat.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
+ philmd@linaro.org, zhao1.liu@intel.com, rad@semihalf.com,
+ leif.lindholm@oss.qualcomm.com, qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 16/21] tests: acpi: arm/virt: add GTDT watchdog table
+ test case
+Message-ID: <20260527145851.2b0abebd@imammedo>
+In-Reply-To: <cba87a73-0458-445e-8c12-683ca639f2de@redhat.com>
+References: <20260303092532.2410177-1-imammedo@redhat.com>
+ <20260303092532.2410177-17-imammedo@redhat.com>
+ <cba87a73-0458-445e-8c12-683ca639f2de@redhat.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: W2AH3b-EvX6JE__ETyadV6xpBDQ4tkgcIJa1Vj2zE0c_1779886734
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,81 +117,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Torbjorn SVENSSON <torbjorn.svensson@foss.st.com> writes:
+On Tue, 26 May 2026 16:44:08 +0200
+Eric Auger <eauger@redhat.com> wrote:
 
-> Gentle ping! :)
->
-> There is apparently also a ticket for this work (that I did not see befor=
-e I sent the patches): https://linaro.atlassian.net/browse/QEMU-444
->
+> On 3/3/26 10:25 AM, Igor Mammedov wrote:
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> >  tests/qtest/bios-tables-test.c | 20 ++++++++++++++++++++
+> >  1 file changed, 20 insertions(+)
+> > 
+> > diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> > index 5082866184..11c6854af8 100644
+> > --- a/tests/qtest/bios-tables-test.c
+> > +++ b/tests/qtest/bios-tables-test.c
+> > @@ -2290,6 +2290,24 @@ static void test_acpi_aarch64_virt_tcg_wdat(void)
+> >      free_test_data(&data);
+> >  }
+> >  
+> > +static void test_acpi_aarch64_virt_tcg_gtdt_wd(void)
+> > +{
+> > +    test_data data = {
+> > +        .machine = "virt",
+> > +        .arch = "aarch64",
+> > +        .variant = ".gwdt",
+> > +        .tcg_only = true,
+> > +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
+> > +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
+> > +        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
+> > +        .ram_start = 0x40000000ULL,
+> > +        .scan_len = 128ULL * MiB,
+> > +    };
+> > +
+> > +    test_acpi_one("-cpu cortex-a57 " "-device sbsa_gwdt", &data);  
+> depends on the instantiation strategy, ie. whether Peter is OK with
+> dynamic sysbus instantiation
 
-The Linaro tickets are public (because we work directly upstream)
-although the existence of a ticket should not imply that we plan to work
-on it. We create tickets for most of the Arm CPU features so we can
-track dependencies, what is left to do and when others have patches that
-need review.
+machine option in v1 to do the same opened another can of worms
+that I think consensus was it would be better go with -device. 
 
-Our actual planned roadmap can be seen here: https://linaro.atlassian.net/w=
-iki/spaces/QEMU/overview
+> 
+> Thanks
+> 
+> Eric
+> > +    free_test_data(&data);
+> > +}
+> > +
+> >  static void test_acpi_q35_viot(void)
+> >  {
+> >      test_data data = {
+> > @@ -2910,6 +2928,8 @@ int main(int argc, char *argv[])
+> >              }
+> >              qtest_add_func("acpi/virt/acpi-watchdog",
+> >                             test_acpi_aarch64_virt_tcg_wdat);
+> > +            qtest_add_func("acpi/virt/gwdt-watchdog",
+> > +                           test_acpi_aarch64_virt_tcg_gtdt_wd);
+> >          }
+> >      } else if (strcmp(arch, "riscv64") == 0) {
+> >          if (has_tcg && qtest_has_device("virtio-blk-pci")) {  
+> 
 
->
-> On 2026-05-18 18:13, Torbj=C3=B6rn SVENSSON wrote:
->> Testing an arm-none-eabi GCC toolchain using QEMU gives unpredictable
->> test results for some test cases. In the GCC testsuite function
->> check_effective_target_arm_pacbti_hw, the testsuite tries to identify
->> if the target supports PACBTI instructions. The test consists of:
->>          __attribute__ ((naked)) int
->>          main (void)
->>          {
->>            asm ("pac r12, lr, sp");
->>            asm ("mov r0, #0");
->>            asm ("autg r12, lr, sp");
->>            asm ("bx lr");
->>          }
->> Running the above code in QEMU will cause LR to get corrupted.
->> The reson for the corruption is that AUTG overlaps with the SMMLA
->> instruction, and SMMLA will write the result to Rn, that for
->> `AUTG R12, LR, SP` happens to match `LR`.
->
-> The above statement is not entirely true.
-> SMMLA is writing the result to Rd and that happens to match PC, not Rn an=
-d LR.
-> Sorry for the confusion this might have caused.
->
-> Kind regards,
-> Torbj=C3=B6rn
->
->> The solution to the above problem is to define the following new
->> Cortex-M instructions in QEMU:
->> * AUT
->> * AUTG
->> * BXAUT
->> * PAC
->> * PACBTI
->> * PACG
->> This patch series only implements the pointer authentication code
->> part
->> of PACBTI. The branch target identification part is not implemented.
->> Signed-off-by: Torbj=C3=B6rn SVENSSON <torbjorn.svensson@foss.st.com>
->> ---
->> Torbj=C3=B6rn SVENSSON (3):
->>        target/arm/tcg: define cortex-m85 cpu
->>        target/arm/tcg: add PAC related instructions
->>        target/arm: implement v8.1-m PAC support
->>   target/arm/cpu-features.h  |   6 ++
->>   target/arm/internals.h     |   2 +
->>   target/arm/tcg/cpu-v7m.c   |  40 +++++++++++++
->>   target/arm/tcg/m_helper.c  |  17 ++++++
->>   target/arm/tcg/t32.decode  |  21 ++++++-
->>   target/arm/tcg/translate.c | 138 +++++++++++++++++++++++++++++++++++++=
-++++++++
->>   6 files changed, 221 insertions(+), 3 deletions(-)
->> ---
->> base-commit: ac6721b88df944ade0048822b2b74210f543d656
->> change-id: 20260518-pr-pacbti-366d7acbe1be
->> Best regards,
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
 

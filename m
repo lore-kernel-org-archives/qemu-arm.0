@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBA1BCD4F54
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 05:02:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 310A9CD6E41
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 05:02:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wS6Nv-0001FL-Fq; Wed, 27 May 2026 01:00:51 -0400
+	id 1wS6Ny-0001IJ-Lz; Wed, 27 May 2026 01:00:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wS6Nt-0001Dp-O7; Wed, 27 May 2026 01:00:49 -0400
+ id 1wS6Nx-0001Gw-Ew; Wed, 27 May 2026 01:00:53 -0400
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wS6Nr-0004De-Uu; Wed, 27 May 2026 01:00:49 -0400
+ id 1wS6Nv-0004Em-IC; Wed, 27 May 2026 01:00:53 -0400
 Received: from localhost (unknown [131.107.147.136])
- by linux.microsoft.com (Postfix) with ESMTPSA id 4F59D20B716A;
- Tue, 26 May 2026 22:00:36 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 4F59D20B716A
+ by linux.microsoft.com (Postfix) with ESMTPSA id E14E720B716F;
+ Tue, 26 May 2026 22:00:39 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com E14E720B716F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1779858036;
- bh=qtlP0uBJP+8WkJRoY5C7ajRNqn+hFDb3SPRaB45GNYc=;
+ s=default; t=1779858039;
+ bh=0j3thrHMRbNXhEGSi4mSHAo5S/+B16ZolXMhJcH00JQ=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=HpVvhJ6mW/7ZXqo0GhIDHNIk+9o6LokJeZqgkc0qJtZjRYFOY1r+8b/rqY8nsiT2C
- yEJjWi2aioSohJJlG+qZTO/MZ8IJliYKmEk4adKSTLrmbNPqKlJm6FAZerQEJ5IzP0
- pxqWcLGxGt+a0zXJZr2IHsrxgrmaszyo5lb6SsAc=
+ b=E+w37ppf3fhWVdmZkzjhw2FDBIwFVqlkXNdgTNS5RSN5ydWoZIXCkR0w/TRR5XEUS
+ Ka4SV0w140WJSXu5707Jnvef1/lQAqPdq5XI1kcExU0eFs3mSCR0AYSyPX11pldT5w
+ 9DNNylrNIqhgt6X5q+fl5iThVTxPvW7li+Mz6QO8=
 From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Wed, 27 May 2026 05:00:40 +0000
-Subject: [PATCH v4 04/15] meson, target/arm/mshv: Enable arm64 build & add
- initial MSHV support
+Date: Wed, 27 May 2026 05:00:44 +0000
+Subject: [PATCH v4 08/15] accel/mshv: Add access_vp_regs synthetic proc
+ features
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260527-mshv_accel_arm64_supp-v4-4-66d871dcdc53@linux.microsoft.com>
+Message-Id: <20260527-mshv_accel_arm64_supp-v4-8-66d871dcdc53@linux.microsoft.com>
 References: <20260527-mshv_accel_arm64_supp-v4-0-66d871dcdc53@linux.microsoft.com>
 In-Reply-To: <20260527-mshv_accel_arm64_supp-v4-0-66d871dcdc53@linux.microsoft.com>
 To: qemu-devel@nongnu.org
@@ -77,132 +77,161 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Enable the build of the MSHV accelerator for arm64 in the Meson build
-system. Introduce initial files and stub implementations to support MSHV
-for the ARM target.
+Enable access_vp_regs feature for regs. In arm64, this feature bit
+allows the guest to set VP registers using hypercall. This wasn't
+required for x86 because such registers are set using wrmsr instead of
+hypercall.
 
 Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
 ---
- meson.build                 |  8 +++----
- target/arm/meson.build      |  1 +
- target/arm/mshv/meson.build |  7 ++++++
- target/arm/mshv/mshv-all.c  | 56 +++++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 68 insertions(+), 4 deletions(-)
+ accel/mshv/mshv-all.c     |  1 +
+ include/hw/hyperv/hvhdk.h | 91 ++++++++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 91 insertions(+), 1 deletion(-)
 
-diff --git a/meson.build b/meson.build
-index eb07491819..ff54d48e6e 100644
---- a/meson.build
-+++ b/meson.build
-@@ -305,7 +305,8 @@ if cpu == 'aarch64'
-   accelerator_targets += {
-     'CONFIG_HVF': ['aarch64-softmmu'],
-     'CONFIG_NITRO': ['aarch64-softmmu'],
--    'CONFIG_WHPX': ['aarch64-softmmu']
-+    'CONFIG_WHPX': ['aarch64-softmmu'],
-+    'CONFIG_MSHV': ['aarch64-softmmu'],
-   }
- elif cpu == 'x86_64'
-   accelerator_targets += {
-@@ -871,10 +872,9 @@ if get_option('kvm').allowed() and host_os == 'linux'
- endif
+diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
+index 294955788a..927e1b39bb 100644
+--- a/accel/mshv/mshv-all.c
++++ b/accel/mshv/mshv-all.c
+@@ -156,6 +156,7 @@ static int set_synthetic_proc_features(int vm_fd)
+     features.tb_flush_hypercalls = 1;
+     features.synthetic_cluster_ipi = 1;
+     features.direct_synthetic_timers = 1;
++    features.access_vp_regs = 1;
  
- if get_option('mshv').allowed() and host_os == 'linux'
--  if get_option('mshv').enabled() and host_machine.cpu() != 'x86_64'
--    error('mshv accelerator requires x64_64 host')
-+  if host_machine.cpu() in [ 'x86_64', 'aarch64' ]
-+    accelerators += 'CONFIG_MSHV'
-   endif
--  accelerators += 'CONFIG_MSHV'
- endif
+     mshv_arch_amend_proc_features(&features);
  
- if get_option('whpx').allowed() and host_os == 'windows'
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 4723f9f170..74d21544b9 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -58,6 +58,7 @@ arm_common_system_ss.add(files(
+diff --git a/include/hw/hyperv/hvhdk.h b/include/hw/hyperv/hvhdk.h
+index 4695ceb92c..0261063908 100644
+--- a/include/hw/hyperv/hvhdk.h
++++ b/include/hw/hyperv/hvhdk.h
+@@ -94,11 +94,16 @@ union hv_partition_synthetic_processor_features {
+          */
+         uint64_t access_partition_reference_tsc:1;
  
- subdir('hvf')
- subdir('whpx')
-+subdir('mshv')
++#if defined(__x86_64__)
++
+         /*
+          * Partition has access to the guest idle reg. Corresponds to
+          * access_guest_idle_reg privilege.
+          */
+         uint64_t access_guest_idle_reg:1;
++#else
++        uint64_t reserved_z10:1;
++#endif
  
- if 'CONFIG_TCG' in config_all_accel
-    subdir('tcg')
-diff --git a/target/arm/mshv/meson.build b/target/arm/mshv/meson.build
-new file mode 100644
-index 0000000000..169643691e
---- /dev/null
-+++ b/target/arm/mshv/meson.build
-@@ -0,0 +1,7 @@
-+arm_mshv_ss = ss.source_set()
+         /*
+          * Partition has access to frequency regs. corresponds to
+@@ -110,11 +115,16 @@ union hv_partition_synthetic_processor_features {
+         uint64_t reserved_z13:1; /* Reserved for access_root_scheduler_reg */
+         uint64_t reserved_z14:1; /* Reserved for access_tsc_invariant_controls */
+ 
++#if defined(__x86_64__)
 +
-+arm_mshv_ss.add(files(
-+  'mshv-all.c',
-+))
+         /*
+          * Extended GVA ranges for HvCallFlushVirtualAddressList hypercall.
+          * Corresponds to privilege.
+          */
+         uint64_t enable_extended_gva_ranges_for_flush_virtual_address_list:1;
++#else
++        uint64_t reserved_z15:1;
++#endif
+ 
+         uint64_t reserved_z16:1; /* Reserved for access_vsm. */
+         uint64_t reserved_z17:1; /* Reserved for access_vp_registers. */
+@@ -161,13 +171,92 @@ union hv_partition_synthetic_processor_features {
+         /* HvCallRetargetDeviceInterrupt is supported. */
+         uint64_t retarget_device_interrupt:1;
+ 
++#if defined(__x86_64__)
+         /* HvCallRestorePartitionTime is supported. */
+         uint64_t restore_time:1;
+ 
+         /* EnlightenedVmcs nested enlightenment is supported. */
+         uint64_t enlightened_vmcs:1;
+ 
+-        uint64_t reserved:30;
++        uint64_t nested_debug_ctl:1;
++        uint64_t synthetic_time_unhalted_timer:1;
++        uint64_t idle_spec_ctrl:1;
 +
-+arm_system_ss.add_all(when: 'CONFIG_MSHV', if_true: arm_mshv_ss)
-diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
-new file mode 100644
-index 0000000000..32adf26838
---- /dev/null
-+++ b/target/arm/mshv/mshv-all.c
-@@ -0,0 +1,56 @@
-+/*
-+ * QEMU MSHV support
-+ *
-+ * Copyright Microsoft, Corp. 2026
-+ *
-+ * Authors: Aastha Rawat          <aastharawat@linux.microsoft.com>
-+ *          Anirudh Rayabharam    <anirudh@anirudhrb.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
++#else
++        uint64_t reserved_z31:1;
++        uint64_t reserved_z32:1;
++        uint64_t reserved_z33:1;
++        uint64_t reserved_z34:1;
++        uint64_t reserved_z35:1;
++#endif
 +
-+#include "qemu/osdep.h"
-+#include "hw/arm/virt.h"
-+#include "system/mshv.h"
-+#include "system/mshv_int.h"
++#if defined(__aarch64__)
++        /*
++         * Register intercepts supported in V1. As more registers are supported
++         * in future releases, new bits will be added here to prevent migration
++         * between incompatible hosts.
++         *
++         * List of registers supported in V1:
++         * 1. TPIDRRO_EL0
++         * 2. TPIDR_EL1
++         * 3. SCTLR_EL1 - Supports write intercept mask.
++         * 4. VBAR_EL1
++         * 5. TCR_EL1 - Supports write intercept mask.
++         * 6. MAIR_EL1 - Supports write intercept mask.
++         * 7. CPACR_EL1 - Supports write intercept mask.
++         * 8. CONTEXTIDR_EL1
++         * 9. PAuth keys (total 10 registers)
++         * 10. HvArm64RegisterSyntheticException
++         */
++        uint64_t register_intercepts_v1:1;
++#else
++        uint64_t reserved_z36:1;
++#endif
 +
-+int mshv_load_regs(CPUState *cpu)
-+{
-+    return 0;
-+}
++        /* HvCallWakeVps is supported */
++        uint64_t wake_vps:1;
 +
-+int mshv_arch_put_registers(const CPUState *cpu)
-+{
-+    return 0;
-+}
++        /*
++         * HvCallGet/SetVpRegisters is supported.
++         * Corresponds to AccessVpRegisters privilege.
++         * This feature only affects exo partitions.
++         */
++        uint64_t access_vp_regs:1;
 +
-+int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
-+{
-+    return 0;
-+}
++#if defined(__aarch64__)
++        /* HvCallSyncContext/Ex is supported. */
++        uint64_t sync_context:1;
++#else
++        uint64_t reserved_z39:1;
++#endif /* __aarch64__ */
 +
-+void mshv_arch_init_vcpu(CPUState *cpu)
-+{
++        /*
++         * Management VTL synic support is allowed.
++         * Corresponds to the ManagementVtlSynicSupport privilege.
++         */
++        uint64_t management_vtl_synic_support:1;
 +
-+}
++#if defined(__x86_64__)
++        /*
++         * Hypervisor supports guest mechanism to signal pending interrupts to
++         * paravisor.
++         */
++        uint64_t proxy_interrupt_doorbell_support:1;
++#else
++        uint64_t reserved_z41:1;
++#endif
 +
-+void mshv_arch_destroy_vcpu(CPUState *cpu)
-+{
++#if defined(__aarch64__)
++        /* InterceptSystemResetAvailable is exposed. */
++        uint64_t intercept_system_reset:1;
++#else
++        uint64_t reserved_z42:1;
++#endif
 +
-+}
++        /* Hypercalls for host MMIO operations are available. */
++        uint64_t mmio_hypercalls:1;
 +
-+int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
-+{
-+    return 0;
-+}
-+
-+void mshv_arch_amend_proc_features(
-+    union hv_partition_synthetic_processor_features *features)
-+{
-+
-+}
-+
-+int mshv_arch_post_init_vm(int vm_fd)
-+{
-+    return 0;
-+}
++        uint64_t reserved:20;
+     };
+ };
+ 
 
 -- 
 2.45.4

@@ -4,102 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3478CD5BDE
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 06:38:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21F63CD5BDE
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 May 2026 07:36:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wS7ti-0001qw-5g; Wed, 27 May 2026 02:37:49 -0400
+	id 1wS8od-0005kA-J4; Wed, 27 May 2026 03:36:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wS7tf-0001pB-ED
- for qemu-arm@nongnu.org; Wed, 27 May 2026 02:37:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <torbjorn.svensson@foss.st.com>)
+ id 1wS8oa-0005jN-Rw; Wed, 27 May 2026 03:36:33 -0400
+Received: from mail-westeuropeazlp170130006.outbound.protection.outlook.com
+ ([2a01:111:f403:c201::6] helo=AM0PR02CU008.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wS7td-0005VC-02
- for qemu-arm@nongnu.org; Wed, 27 May 2026 02:37:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779863860;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=99hv26laU3xOjDxYBDwbdj8sZVc8KA0FHocO0j3PfOc=;
- b=Koeic0uLWyHn+cxcfmsoyD4gNIFK9Y9xR+jQgcyUKHyTypUBdLtyJXFW+wvH07/XKElbzP
- DhtmSCf5e7VDi999fzEKNMVc6T/eUX2Tw4np3Ht0mYVOayRAYMTdBUSWIvO9eWNp4YmCCQ
- XJ1GTN4seefVDWtLkrsB6ziw2tPmpVE=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-443-Gn7k4xyKMGuWSNcP2kK8Sw-1; Wed, 27 May 2026 02:37:36 -0400
-X-MC-Unique: Gn7k4xyKMGuWSNcP2kK8Sw-1
-X-Mimecast-MFC-AGG-ID: Gn7k4xyKMGuWSNcP2kK8Sw_1779863855
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-43d7a5b9678so7060234f8f.2
- for <qemu-arm@nongnu.org>; Tue, 26 May 2026 23:37:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779863855; x=1780468655;
- h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
- :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=99hv26laU3xOjDxYBDwbdj8sZVc8KA0FHocO0j3PfOc=;
- b=QlcpoAIs1m+q9wPe+AOte9MRqvSB5Y5l05ngsaR2KiPcvzjyMNLKsy+bbai/O7VHaa
- mKtM91C346wv59ZX8DP1gaiHKQSj6jC9MRRR3B/nD3yMiggFNAT+oG41aySRbrs0j7Zd
- IXOKKqecrBnEZnCoOSSIr+xt8BbRfUP/tL7lnfNBv5V/3ZIYPKBDcZ4skmmGGOB0FSLx
- U+7sUvLHSjYEbEEUTgEXqvVbwTDa9K3J1NBG1vlzh+zy+Bva0HSS81bRAFWsTHS+D64m
- RyoMgos2H/gcrLJ3GtxxyVg6ijDjoQMI1C4DcCK7uwjUqmFbI+d7ZbnvjEtyWuhPZ8of
- 70gQ==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9xmdCLICRdsjbtrgJU8a/gZ5Xl8EAkiCfpG8cXd/7GCHSiob6QfMob5uN6WydShWu24WNu8HXwAg==@nongnu.org
-X-Gm-Message-State: AOJu0Yzvg9ibBXrQ4YPWs7vr/2oU9WOTUSG18yaS6n74MAzNTaG7CSxb
- X8tzUWkAWlpQAvBwjtl0ER/NfFbyfSCuizaeb45at0iHo99RJuN3Orel7AtTLanZmJiHq/lXWrX
- AKtBEodZzk48CaJ4mQ8O7LKVl0nuTR8Y1rTx/8h+4XOhxlDR4V8FkYheoDNFuWA==
-X-Gm-Gg: Acq92OHM5i6VhpjK3PuqpClDonRUHG7vW4pIIUdSI5SYEUjcGBk6ksSVz42F/2zZgiF
- b9p8rQkIit7bIkcpB/j79iETOFghEhuRR6PY6dJdF0sFq0UYg1lKy0ruHYJLPpY9HfQj65kgjJc
- 1TFd1D4PKcn9JrYhkzFKlof3vZTnSZ3FKeKmDJ5VUjp912h5cUp/pGneilAa4MauBFUJbzIWRfP
- nlo0c7tbtaMN1mjuCg7SEKbKcX922NhAf6KaJzcUqSRraPcsdrykN8FNtHRJ2P0SPoF+EVHO+rr
- OH7+fZcd3bM3tynXCfTmqL7FMRGKSCTEzHuy5sEiwdb2rmxKxoDGqF/WmxBLTQLKN2AjBS5fbbN
- GSzm8rqLzYOStJHX9+Ajp0z55Us/sRG/boGfvECUvcyFhA/19PPX3cOCzSvi/MSzpNXU7JPM=
-X-Received: by 2002:a05:600c:6209:b0:490:601f:d776 with SMTP id
- 5b1f17b1804b1-490601fd9admr239463735e9.3.1779863855053; 
- Tue, 26 May 2026 23:37:35 -0700 (PDT)
-X-Received: by 2002:a05:600c:6209:b0:490:601f:d776 with SMTP id
- 5b1f17b1804b1-490601fd9admr239463355e9.3.1779863854687; 
- Tue, 26 May 2026 23:37:34 -0700 (PDT)
-Received: from rh (p200300f6af2a6100f239e076bbd76784.dip0.t-ipconnect.de.
- [2003:f6:af2a:6100:f239:e076:bbd7:6784])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4904561a33dsm342690905e9.11.2026.05.26.23.37.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 May 2026 23:37:34 -0700 (PDT)
-Date: Wed, 27 May 2026 08:37:32 +0200 (CEST)
-From: Sebastian Ott <sebott@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- kvmarm@lists.linux.dev, peter.maydell@linaro.org, 
- shaju.abraham@nutanix.com, khushit.shah@nutanix.com, 
- yangjinqian1@huawei.com, cohuck@redhat.com, richard.henderson@linaro.org, 
- skolothumtho@nvidia.com, philmd@linaro.org, maz@kernel.org, 
- oliver.upton@linux.dev, pbonzini@redhat.com, armbru@redhat.com, 
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com
-Subject: Re: [PATCH v5 18/18] arm/cpu-features: document ID reg properties
-In-Reply-To: <20260519132905.145643-19-eric.auger@redhat.com>
-Message-ID: <1cc64955-1bc3-452b-b783-664acb2f8dea@redhat.com>
-References: <20260519132905.145643-1-eric.auger@redhat.com>
- <20260519132905.145643-19-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <torbjorn.svensson@foss.st.com>)
+ id 1wS8oY-0002FA-JW; Wed, 27 May 2026 03:36:32 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=bbFZFca6DFvEgH1q7mpBmomnBCbD+T1AGOVXcKI1HGvCuihlcIitDW0aLyK1bJ3ZNQaILZCqegO3JyGyQqVpaLNlAzFFqSnLZqnQzBZ02fqlFz6M4C8RzkggdcAq6n0Wdgtj18bkgq5VulnaIrOXWzJtQPGvaFDLS0+//j1hFDXRGDGuYUgn+Aeqol21HGskKTxLCf3HgBoVnKikBjo0MxQ9gh5Mr0ytjP87te7vDNiYFz4ih58eqUUEfBbJ/knBD/tXYbnGV/l5GJY0DRqXyoEqJDpe0vEv6Ma+3YpYWW6c97hy/zmfAcF7VZnYSGZ0kpSuYm4t0DiZp9ux4/bSBg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=gEeee33uDgRYZeNg/1MSULfJjZrqEgh9/ez4XPenLZc=;
+ b=rgv+7/vcjPlZ81fDfX/PkvC9iQKypB5YsDzmIL8Jc1y95ML4i/9zcMS+Ndvgw5jN0uh80E5OIw2oDHHUxG9PI7XEcZBRLVWEmr6InzAH5kM7b8BbZasBJ2CkNqgztDob1gaT/p3RQYLeuvVTJbvFjPBBUkxw7Op7rwteL7DCgjo2eBXFJb1gJ6O8I8trHOzNaRKXfzzJ+7U6n34FGOkbDNib6inl6eRMyqEECCVCdNsdHYPI0pL6xAtVzgEZyGvzAY9qMOjEfIh4FiwafhxGPs+tCmQfq8RMa9IsFe9tk0YFcfeqGrC28bw+rVr3JMyZ0CdLX4zl72ZWKllpyWPwiw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
+ 164.130.1.60) smtp.rcpttodomain=nongnu.org smtp.mailfrom=foss.st.com;
+ dmarc=fail (p=none sp=none pct=100) action=none header.from=foss.st.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=gEeee33uDgRYZeNg/1MSULfJjZrqEgh9/ez4XPenLZc=;
+ b=LGkIDJAd4D6Bx/tqRCMjFkKuDAAYn4ZtiHGVAM+XK4Fvc1VS7qnnm/IlsT7FjItRCsbTDNFqoUj/fR5HIFvFdF4EjGgle8EQc7ksDlCL+MscOJvZJb7AIUZc2A2iUiIaoyZ/Xmui8Lxt/Wi2JxV3fubRJaBMLeIT+leWVB1+DOQZqB1X+ar2faO5eqlQK/LHNE8Z7jTCrTIOoQBjoL/2ETML8xi3IblcbwUuvNOXv+2AXDuJIEgp/4kxZTyINnVGOi1cOULf9RKxXVrR4/evOGcykGWA8qvu+n6VD1mHveKY2uomkVWxMYuESCzgc8TcdoQQrAMwcLv9WF6XtnJQhQ==
+Received: from DU2P251CA0010.EURP251.PROD.OUTLOOK.COM (2603:10a6:10:230::25)
+ by DU0PR10MB6319.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:10:3b0::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.11; Wed, 27 May
+ 2026 07:36:22 +0000
+Received: from DB1PEPF000509FF.eurprd03.prod.outlook.com
+ (2603:10a6:10:230:cafe::3b) by DU2P251CA0010.outlook.office365.com
+ (2603:10a6:10:230::25) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.71.13 via Frontend Transport; Wed, 27
+ May 2026 07:36:20 +0000
+X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 164.130.1.60)
+ smtp.mailfrom=foss.st.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=none header.from=foss.st.com;
+Received-SPF: Fail (protection.outlook.com: domain of foss.st.com does not
+ designate 164.130.1.60 as permitted sender) receiver=protection.outlook.com;
+ client-ip=164.130.1.60; helo=smtpO365.st.com;
+Received: from smtpO365.st.com (164.130.1.60) by
+ DB1PEPF000509FF.mail.protection.outlook.com (10.167.242.41) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.48.11 via Frontend Transport; Wed, 27 May 2026 07:36:20 +0000
+Received: from STKDAG1NODE2.st.com (10.75.128.133) by smtpO365.st.com
+ (10.250.44.72) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Wed, 27 May
+ 2026 09:40:01 +0200
+Received: from [10.74.16.102] (10.74.16.102) by STKDAG1NODE2.st.com
+ (10.75.128.133) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Wed, 27 May
+ 2026 09:36:04 +0200
+Message-ID: <b50cb0e2-5198-460c-abee-ba86c7002a96@foss.st.com>
+Date: Wed, 27 May 2026 09:36:03 +0200
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: w_xCJaUdUtQ6eUuM08UTbDDrIl6giHf5sdc4vWkNdgM_1779863855
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; format=flowed; charset=US-ASCII
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+User-Agent: Mozilla Thunderbird
+Subject: [PING] [PATCH 0/3] target/arm: add support for Cortex-M pointer
+ authentication code
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Richard Henderson
+ <richard.henderson@linaro.org>
+References: <20260518-pr-pacbti-v1-0-8932a885b03d@foss.st.com>
+From: Torbjorn SVENSSON <torbjorn.svensson@foss.st.com>
+Content-Language: en-US
+In-Reply-To: <20260518-pr-pacbti-v1-0-8932a885b03d@foss.st.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.74.16.102]
+X-ClientProxiedBy: ENXCAS1NODE2.st.com (10.75.128.138) To STKDAG1NODE2.st.com
+ (10.75.128.133)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DB1PEPF000509FF:EE_|DU0PR10MB6319:EE_
+X-MS-Office365-Filtering-Correlation-Id: 448416c5-74e2-4ef3-71be-08debbc2a580
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|82310400026|1800799024|36860700016|13003099007|11063799006|22082099003|18002099003|3023799007|56012099006;
+X-Microsoft-Antispam-Message-Info: inVJZRrjqF7AI/h1i1jyejlLREiMAm1V+ZBztTjqioeg6sCwEAGQ7TzJMe4RdEFwHc1iu8jDfPKS+uR3d775PbpgK/1ME91hY6MzW4r2hw68SmGAWwvBc4NfKa363Mph1iC/+hOsKWmpXGsH+wvRWbvvncmxv/3h5x74MQDlHS/RJrochcpf+y60rw1roy1M6wFC0g7sWW6Epg3xMR7wLb6oHLWVLVloWXtWvf6TRx6eoHJvr7aFiSs5pDL+HEhyfeiBw3IVSAlEwwRHL+Cei4N/KKGmZvapZCv2CoQO4Mna/j/lDoTr0185vDiyBWOIsoAwRBODCEEaLJlHDdUQfuyixEKIQpRmP3rrXwRb7b1jn69ZGGZA1zcjuPsllJirMXe0AQNE/pizc76bTDAR5BJ0OAxAAI5tfeT2I5zSic3V0IlfKk+zFi9BDS8ojnApEquyJe3/PolENkqBnCbDCVRNuZZMA6mZ6tr8pD3vOYyyaHMpbGq57CiZIZdbkQcOFHiAjY8D3PfNbTkutob5WsbNLd3I3f0vkaeAGUTeBswyRBmK/RU8zm0lQG+L7V05vk9InikmNRkFruNeCIHxdCNllIwSl0KjX2Y01uyzlXhu2CF+BrktoKvixr4r2057+qObHmxuijXeSjP9T3YdgADPTus9ezbSo00WqpJbOBoMQMNIHVPv8YyX+XrjrcbYqvXPm5KRpSR+FSD+vAVk66EtH179wgvWMoZ+9x9b5NA=
+X-Forefront-Antispam-Report: CIP:164.130.1.60; CTRY:IT; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:smtpO365.st.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230040)(376014)(82310400026)(1800799024)(36860700016)(13003099007)(11063799006)(22082099003)(18002099003)(3023799007)(56012099006);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: UUjteYeZa0qCv9WYOSufCRogcKKoAbLkgJGBqN518rSW+zuKbO/AHhbOJAQCq1diERGImeIJ+WKGJBqdcDACMv1kJyKlYKrYDR1CQILOz2xZNajSyEJWTEEpCLz3qP1Xl8SFphJFdNpx56hLtWwVFYlGYVYe/3wWWaeGsTeO/7hOmLgPwxA3NGoYswW5GNYbd7FnZYamvxi6dq9tof3UA1uu4SMS5gP5lyJOKXY3WXoXAA51RkIYKQouQhyGM2cr2uOrwV6bFeCLWXvJH0c13Oi8LzdfTb08cs4Ef1VfNiGns37NzrboxQ0DnJ50iY8MVoG7DKpJwPYyVUahQ0lnaHLv1hD6u0fwbkRsktqKLiCbo3OGkNeryZXQ4khBIxxjlnDa7hTuYeGqsMHkQ4XHDCZwBxuKMfLnQBmWstJvDswUw4i9HB9rStX4JSz1HuN2
+X-OriginatorOrg: foss.st.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 May 2026 07:36:20.6798 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 448416c5-74e2-4ef3-71be-08debbc2a580
+X-MS-Exchange-CrossTenant-Id: 75e027c9-20d5-47d5-b82f-77d7cd041e8f
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=75e027c9-20d5-47d5-b82f-77d7cd041e8f; Ip=[164.130.1.60];
+ Helo=[smtpO365.st.com]
+X-MS-Exchange-CrossTenant-AuthSource: DB1PEPF000509FF.eurprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU0PR10MB6319
+Received-SPF: pass client-ip=2a01:111:f403:c201::6;
+ envelope-from=torbjorn.svensson@foss.st.com;
+ helo=AM0PR02CU008.outbound.protection.outlook.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,32 +130,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 19 May 2026, Eric Auger wrote:
-> From: Cornelia Huck <cohuck@redhat.com>
->
-> Add some documentation for how individual ID registers can be
-> configured with the host cpu model.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+Gentle ping! :)
+
+There is apparently also a ticket for this work (that I did not see before I sent the patches): https://linaro.atlassian.net/browse/QEMU-444
+
+
+On 2026-05-18 18:13, Torbjörn SVENSSON wrote:
+> Testing an arm-none-eabi GCC toolchain using QEMU gives unpredictable
+> test results for some test cases. In the GCC testsuite function
+> check_effective_target_arm_pacbti_hw, the testsuite tries to identify
+> if the target supports PACBTI instructions. The test consists of:
+> 
+>          __attribute__ ((naked)) int
+>          main (void)
+>          {
+>            asm ("pac r12, lr, sp");
+>            asm ("mov r0, #0");
+>            asm ("autg r12, lr, sp");
+>            asm ("bx lr");
+>          }
+> 
+> Running the above code in QEMU will cause LR to get corrupted.
+> The reson for the corruption is that AUTG overlaps with the SMMLA
+> instruction, and SMMLA will write the result to Rn, that for
+> `AUTG R12, LR, SP` happens to match `LR`.
+
+The above statement is not entirely true.
+SMMLA is writing the result to Rd and that happens to match PC, not Rn and LR.
+Sorry for the confusion this might have caused.
+
+Kind regards,
+Torbjörn
+
+> The solution to the above problem is to define the following new
+> Cortex-M instructions in QEMU:
+> 
+> * AUT
+> * AUTG
+> * BXAUT
+> * PAC
+> * PACBTI
+> * PACG
+> 
+> This patch series only implements the pointer authentication code part
+> of PACBTI. The branch target identification part is not implemented.
+> 
+> Signed-off-by: Torbjörn SVENSSON <torbjorn.svensson@foss.st.com>
 > ---
-> docs/system/arm/cpu-features.rst | 106 ++++++++++++++++++++++++++++---
-> 1 file changed, 98 insertions(+), 8 deletions(-)
->
-> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-> index 10b0eff27e..6203757781 100644
-> --- a/docs/system/arm/cpu-features.rst
-[...]
-> +2. Additionally, the ``host`` CPU model on KVM allows to configure optional
-> +CPU features via the corresponding ID registers. The host kernel allows
-> +to write a subset of ID register fields. The host model exposes
-> +properties for each writable ID register field. Those options are named
-> +SYSREG_<IDREG>_<FIELD>. IDREG and FIELD names are those used in the
-> +ARM ARM Reference Manual. Their availability depend on the host capability
-
-^
-ARM ARM
-
-Reviewed-by: Sebastian Ott <sebott@redhat.com>
+> Torbjörn SVENSSON (3):
+>        target/arm/tcg: define cortex-m85 cpu
+>        target/arm/tcg: add PAC related instructions
+>        target/arm: implement v8.1-m PAC support
+> 
+>   target/arm/cpu-features.h  |   6 ++
+>   target/arm/internals.h     |   2 +
+>   target/arm/tcg/cpu-v7m.c   |  40 +++++++++++++
+>   target/arm/tcg/m_helper.c  |  17 ++++++
+>   target/arm/tcg/t32.decode  |  21 ++++++-
+>   target/arm/tcg/translate.c | 138 +++++++++++++++++++++++++++++++++++++++++++++
+>   6 files changed, 221 insertions(+), 3 deletions(-)
+> ---
+> base-commit: ac6721b88df944ade0048822b2b74210f543d656
+> change-id: 20260518-pr-pacbti-366d7acbe1be
+> 
+> Best regards,
 
 

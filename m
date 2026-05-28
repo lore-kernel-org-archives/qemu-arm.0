@@ -4,96 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36D36CD6E44
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 09:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1816ECD5BD1
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 09:52:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSXLl-0003tQ-3T; Thu, 28 May 2026 05:48:25 -0400
+	id 1wSXPZ-0005Uj-0X; Thu, 28 May 2026 05:52:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSXLk-0003t7-4d
- for qemu-arm@nongnu.org; Thu, 28 May 2026 05:48:24 -0400
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+ id 1wSXPW-0005Pv-9i
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 05:52:18 -0400
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSXLi-0002J7-M0
- for qemu-arm@nongnu.org; Thu, 28 May 2026 05:48:23 -0400
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-65c477a3278so12863776d50.3
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 02:48:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779961701; cv=none;
+ id 1wSXPU-0004KA-AK
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 05:52:18 -0400
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-7cd35604a95so121831517b3.1
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 02:52:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779961934; cv=none;
  d=google.com; s=arc-20240605;
- b=Kll5PC/EKuB7wXjWLv+2UXpPHBxBnG/x+TgblSaD5O+AHuhPsnZoepbCFmTSetkznY
- yGvqofm5EUOjZG2H9TWsvrD3K+vUxKrBmL5ZbfJV0pKw9OBWyJVbxEQ4BhOD6viKJtHy
- G3mo3KaaYOoJ341cbyP/cNL6aHSIsg6rWYHkzZgeIFA/r/00gAeW8jJAeHsZVuz3zc1t
- 5o1U99oANX3XY/V5E96YsXhTNGfmcG3VOIxbj0XGO6ezE/HUfzxhuANxk3SRo4TaCFix
- fHN011Tzge+iQoxHt6+BTILe6BaA3TyeqT0xu7aOViBeZKSrzJkTd9yK1fr7a7iqrzt0
- USUw==
+ b=ET9dG297lLZH2xwGgMtGI3JTmDFjvBYTJBXDjwMEf+2OFT6lpUSKlIcdm77J0M/lCz
+ n3rqluHaePRaA1UT/gIZTza6osWuV4+TCPQpJ8RcEMDzTNZgPd8NFlW62iOwr71NaEcE
+ GpkTY85iNEfoQlQktlRyZXuTYSF2G+Qz3n66wq+2jyEYzaWVpBtIT9fT3d8HoIgRI3pU
+ NZU4+utstoyVJiB9Rqy7obbV0vNM7G2eXtJyqWxQm2hjoFZUh5bIkIDa50nRTMxjoU3M
+ uHyJldkIsypHfmOgP/h+00g/ukbyazIdocaR7tWQu6pg4tlnjmfelx/e+X0E6zKtpw9B
+ tJTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=1HU1zwMXbhz7xLkyYPPNmDVJLve1TXNd/hOzasB73pI=;
+ bh=yVnX1CvyMgiLMXnC6mLBbF00QNioMAzNA307LYuJ1Lo=;
  fh=s+xhdkpxGcasYv5WHTkLIFHyFtBtMZntESBkY2mx2F8=;
- b=Au3iuRID7ZJ6BWfhUw/u8zgwxPiDZwpAZycA4Xyc4yCTYKKMpGWDeZ7M2/UOKKQJhH
- oXqUTeCOr3cyFISNsYS9wmm57BxxPJYE3KOER4xo1TBmTfhOG6Xh5XxljvfemPQCxiZE
- GzXNNI6Dux4jNOXmAsAmRKszRAner05GknzVVKuI6eIMPZ02NpmzAe7S7PAkQMhu8/Jf
- 9gbTwuDsnwpgxHXfDShOWQMfHSU9SWwVrkmMteZL0seTaltdyA84yZzuchH3en7+oSv7
- dyVp/TFhrPqhVJM+LypGdmqcJOpNLz8py4Jw9nEcAGNSpRnf48qvn4EK0TB+RFpTIkeF
- rV+A==; darn=nongnu.org
+ b=JyvWsBMAqUzJS/wCoXL42KbvZM9MY2ljoLipTdTUV/mOdERFGI55LZEWa0Tp85jtcn
+ e78Af+06VYvKhEvNcEfjcduUMb9Ao6Y+zLR1xj81u4qS4o9klfLkiW0SarV/jydDuBqX
+ CKVOcZobyoHMCtl6Nt34r89fEaUW1ZfOcaRK3HFUpAysixXLjMnFIUNHTqgNM8o1ID6n
+ HF5JS0U1wu5aTTpwrFgKWh6rirrJZNwOlwQITGygnGHNMQ82ZTEc+Hr5UfmM9mcJ7HV3
+ WlxY+rcBYJ9qTgVYMCG0n9ymh08uBnRy+me/QZ5VwfH8NSElzO558Kl+iOV5S3v7eedF
+ +2xw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779961701; x=1780566501; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779961934; x=1780566734; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=1HU1zwMXbhz7xLkyYPPNmDVJLve1TXNd/hOzasB73pI=;
- b=aUTaN1zBfRnuQ0YkzVi0qsu4yE0wcgds4CHfE6TEA1a1AV03l97knYUvCn/L7TJKEd
- Af1FLQQ9tVbqPZ1EfiR8dWZBPhstwvouWLPc1ZxuiGpZkWM1gFuAM6M07rjrqx/tBSRD
- 50BkbcOzP5dIGjm1iyXI/t0uSxJkwJaXO51K2cfBJAif4Ac4JuIAj1uL6kwxm4BCpELH
- toJyraZx3Q1a9M1Y8QFISu+x5YvtqfNNzQobAJamlM5+hUkuS0jO/9J7pX8nncUlKiXO
- tvCObmsyrstdPeEgHwcDq7On6KUal1PcsHbU/QF2/xBDfA+PrqjJkrGj419Izvld/1ha
- heaA==
+ bh=yVnX1CvyMgiLMXnC6mLBbF00QNioMAzNA307LYuJ1Lo=;
+ b=GNIC+Yxkk4oCrgNPIftB8+tPHhO8MUDNDpLV80l4/m7uL0Bq2BYxtVzL2nxq1OxSVs
+ JdpNIYUZylFZbbi2OVu7AB6MEzfnViEL2mqy11yvk3IpporiGvRua0ElBU1SpNyJOBK2
+ GeH6q5lm58JoNoMwy3ecXrCR5fxXmM67lJbrDIbX07lUr8kujHIPvFwfvtnDoEaBNhB7
+ TbQtY7uhyceT7Sqw9AEV0afMk6pJ+m2KvEDhEC5qMRqNrWdlDYbZ2FebXeIKgnPEQc5N
+ o0vG9/OG/XMtVzoPFv8K3SxKIaQPd3ZuC0om5qf0OWnMpTyxD3V7GiXIngmGPdIZfoZ/
+ Vf+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779961701; x=1780566501;
+ d=1e100.net; s=20251104; t=1779961934; x=1780566734;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1HU1zwMXbhz7xLkyYPPNmDVJLve1TXNd/hOzasB73pI=;
- b=lz+ASAKLkLsSCBQxwfyhSy1RJK3Ewr2yjA147K0W49/OvCwetyVU76Km26o0cJe+Dp
- capJtFJA4yUCMrOKswPmSO9xwOpviWdHmgydnbBFaVTEcS/uSViXkFFMEJgupS7s8Rfy
- jXrCuVboeh+bBjghqb3Qcxo+jxaSvih25r2elE3LIZuFHMcZtAxGqfycoeP/HvKJkXhs
- ecBEhTnH84TB9BzqFPFwgeGvBVNpwZ6EM424dMBIRo+SP52cggVTGbvSD/KXpJKAhGZV
- IHWDSE/WZ7Wt+pVNHQ5VsPKO6qo8ChHEBnQr1Afy4UVn6Ln3KRo2yvs60dx7eS001AuG
- heSw==
-X-Gm-Message-State: AOJu0YwHyyUDsgyY0Td2I3PtPy1wDnx6/17Bh1VYJQ/whpT51+aL0ouN
- fsQnr2coZQjqDJZl2ZxhB/oH2btsCAbQqXMQRfNTV5LlO6zIQYMV6yZNgmxB+lHYDUakve3USND
- HzaOlgFiVWveqygfnOYeLjtcDpWzsYIULLDACsg5QLw==
-X-Gm-Gg: Acq92OEooDNRGVn4o6riKvAK/wE33ldjFYxSINgJLqPmFirsj+mCBsAsCJLfOoadqi9
- 6rCHVFia7VWm4+twQDOM95s8/FuS3Z//B3Mx4bK8/Z5RCklYvEd6dvNpZynnBiSFeUWGMdP75np
- /rO4YTpwVGToxUEwcroRisy/F40bPrRYnh3if/KHIbuMPPfVW/9m/aRE5e1NTiHqtgHZQmJPXDe
- IudVaRXdfs0vCqEmovmyg7N2X40fNg2tHTJUj6dSzp7Udg7v8wZLD+0uZWnLXPr64srHSCZTyQT
- un1ZWIAuEIZsDPn1bV4F7Sa+QBZBGyBZH/IxAXh/rVaJPB7vsf+v/KxO1tncURBDyhQ2o2jrRXp
- 1wCmPSEb3jT81
-X-Received: by 2002:a05:690e:2513:20b0:65e:14b6:b1c5 with SMTP id
- 956f58d0204a3-65ec9658015mr19963825d50.15.1779961701149; Thu, 28 May 2026
- 02:48:21 -0700 (PDT)
+ bh=yVnX1CvyMgiLMXnC6mLBbF00QNioMAzNA307LYuJ1Lo=;
+ b=aBWMowyJLLwXPC6jmUIEJz8ouNUzV0EE7kDNZJV/cRYwydL5IBunDwo8KspOgVmxz1
+ te6+jRRIHna9htAemI3d+xF7tx/Jw52Lg4uc41+cxc1LvLRXFChwY48iPb14JIryRQVb
+ tK2onMekN6bR/4ejyMpcihH8rHcd9Vc/DirLCBGfWHcxayY5AbbFNcf3ehNYVoAQdXf3
+ digYwr9hiN8x22Au8ib545eu/ljAibhGliTDyqre0uEh/VFmESxsqRtHT+sPBPX1xVTX
+ nk8eqlx3jAL9rNCa5EP1QauPLXKK0ycrAGAQKUQvaRiZ7MAVLPHLvDt8WQRARSpIdqua
+ oDrg==
+X-Gm-Message-State: AOJu0YwwRkwvHLPDxCR13a+gsOFgGpgcJz1oCwZS2MEKmV2aGpEPW7Wg
+ XznXlc7S5A46O0FE9chJhns0ewOaFZVj2Sc4p7qgM7dB3hJjH+2nvGy+aSImNHIVe/c2vO/izqE
+ aC6fE16eO/LZTSgckQZvl4AndcYXWQUQyRJPauGh9xQ==
+X-Gm-Gg: Acq92OHcagPzYafcNhqEgGOkWpiykj6yy/3HplKIYvYLpROWY2NHEx3g6CqcMvsp7Sf
+ hyKRxd9jz3Gf/VD0H6BfBTNvDTPWAA/ZiakzZlk5mFiNrZS7ZEhvNp4Z6p5HbOs9rWjAXRKMbaa
+ /XV1EbgIsZEWTEm/Qu1WsT96lEAQraSG1BM7KM7rXb5rPPv3N8axTeQhEklUszQ1cAJqcIy0N6P
+ pPiD12eKjjPSXBZX1FFvIr6HKEC6B0A9/FrIu8mjY74evZVe8/jGVbqK9SzmhWgUrjh67RbFEtT
+ Th/1Sisdhh0+sCkekQRaf/hgZnUBjxi7eGLbiw3rrufCLWnzDH4IVwOAikMoCPpR69VVB/l3DqT
+ 4dQ==
+X-Received: by 2002:a05:690e:419a:b0:660:329a:38d4 with SMTP id
+ 956f58d0204a3-66044a12dbbmr402048d50.10.1779961934120; Thu, 28 May 2026
+ 02:52:14 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260519153249.31100-1-wrigjl@proton.me>
  <20260524002617.69593-1-wrigjl@proton.me>
- <20260524002617.69593-2-wrigjl@proton.me>
-In-Reply-To: <20260524002617.69593-2-wrigjl@proton.me>
+ <20260524002617.69593-3-wrigjl@proton.me>
+In-Reply-To: <20260524002617.69593-3-wrigjl@proton.me>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 May 2026 10:48:09 +0100
-X-Gm-Features: AVHnY4Ljkn0384QaxK9BKn2PghL8VN6RXMmK2qNFWxSONSflpgjUiFaTXcwXR0I
-Message-ID: <CAFEAcA9nqbCXxu6A1f6gbBjHWkP=P8a0WgMLTfAUxzqdNm_N9g@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS
+Date: Thu, 28 May 2026 10:52:01 +0100
+X-Gm-Features: AVHnY4LFyxZW4UjOWOgre3DES04JrDW6CnCoLpc7D0IBED3yVD48t5h5yNymrLE
+Message-ID: <CAFEAcA9qc-uLROo7K=fMbRn0mKUrC2GQgi6_SiJhMmUAqPSs-w@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] target/arm: advertise FEAT_RNG_TRAP on cortex-max
 To: Jason Wright <wrigjl@proton.me>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, richard.henderson@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,31 +118,37 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Sun, 24 May 2026 at 01:26, Jason Wright <wrigjl@proton.me> wrote:
 >
-> Add an .accessfn to the RNDR and RNDRRS system registers that traps
-> reads to EL3 when SCR_EL3.TRNDR is set, as required by FEAT_RNG_TRAP.
-> Mark SCR_EL3.TRNDR (bit 40) as a writable field in scr_write() when
-> the CPU advertises the feature. The pseudocode in DDI0487 revision M.b
-> shows the trap firing from EL0, EL1, EL2, and EL3, so there is no
-> check of arm_current_el().
+> Set ID_AA64PFR1.RNDR_TRAP=1 on the max CPU model so guests and
+> firmware detect FEAT_RNG_TRAP, per the Arm Architecture Reference
+> Manual for A-profile architecture (DDI 0487).
 >
-> When FEAT_RNG_TRAP is implemented without FEAT_RNG, an RNDR/RNDRRS read
-> with SCR_EL3.TRNDR=0 should UNDEF rather than succeed; handle that case
-> in access_rndr(). Register the rndr_reginfo CP reg entries whenever either
-> FEAT_RNG or FEAT_RNG_TRAP is implemented, so the accessfn fires even on a
-> FEAT_RNG_TRAP-only CPU.
->
-> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
 > Signed-off-by: Jason Wright <wrigjl@proton.me>
+> ---
+>  target/arm/tcg/cpu64.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+> index 649d854a65..8caa06ecb7 100644
+> --- a/target/arm/tcg/cpu64.c
+> +++ b/target/arm/tcg/cpu64.c
+> @@ -1291,6 +1291,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+>      t = FIELD_DP64(t, ID_AA64PFR1, CSV2_FRAC, 0); /* FEAT_CSV2_3 */
+>      t = FIELD_DP64(t, ID_AA64PFR1, NMI, 1);       /* FEAT_NMI */
+>      t = FIELD_DP64(t, ID_AA64PFR1, GCS, 1);       /* FEAT_GCS */
+> +    t = FIELD_DP64(t, ID_AA64PFR1, RNDR_TRAP, 1); /* FEAT_RNG_TRAP */
 
-SCR_EL3.TRNDR = 1 also does one other thing: when it is set,
-ID_AA64ISAR0_EL1.RNDR reads as 0b0001, regardless of whether
-FEAT_RNG is implemented. (When TRNDR = 0, ID_AA64ISAR0_EL1.RNDR
-reports the presence or absence of FEAT_RNG as usual.)
+I think we try to keep these sorted in the order of the fields
+in the ID register: RNDR_TRAP comes after SME and before
+CSV2_FRAC.
 
-It looks like this patch has missed that bit. We need to give
-that ID register a readfn so it can at runtime report the
-different value if necessary, similar to what we do with
-id_aa64pfr0_read().
+>      SET_IDREG(isar, ID_AA64PFR1, t);
+>
+>      t = GET_IDREG(isar, ID_AA64MMFR0);
+
+We also need to document that we now support emulation of this
+feature, by adding a line to docs/system/arm/emulation.rst:
+
+- FEAT_RNG_TRAP (Trapping support for RNDR/RNDRRS)
 
 thanks
 -- PMM

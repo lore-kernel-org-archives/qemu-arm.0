@@ -4,108 +4,179 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32777CD6E44
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 14:28:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7C4CCD6E49
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 14:31:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSbij-00041e-KP; Thu, 28 May 2026 10:28:27 -0400
+	id 1wSbkn-0004ve-He; Thu, 28 May 2026 10:30:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSbif-00040z-8a
- for qemu-arm@nongnu.org; Thu, 28 May 2026 10:28:21 -0400
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSbid-0008D0-PQ
- for qemu-arm@nongnu.org; Thu, 28 May 2026 10:28:21 -0400
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-7bb0d18c7f9so121986787b3.0
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 07:28:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779978497; cv=none;
- d=google.com; s=arc-20240605;
- b=jVqAT8lIL0+s23fHZb1vVNDvQrDcPdOEqxACTtFim1WyM0EF4qrGLrBofBUPnaDyBz
- EuI7SuGOZl94JlgQRboezGOOdnVy5qkqYVqO2NI3mcLxas3KKGozv3b/FR0Ux/RzAKaG
- SkepJfE0LiRURgjpAXVOTgLeGNJwPRpik62nNh1zG9wY4p5dHZBTW1yzoKQ5bFAmNLXV
- TfX4xpVoI4pD+/4CuC6BErV5noG7yY9nuD/nbgoofN5U7ZVl5pJI5wtpOZMIY5FgPrpT
- uGrwWgyrLj9Z6X30x0tEGTzaOQGG/+VrV2zkIb4FiDZKcpoAMOwGgkvGZ/GQX3ayG0Dy
- MUQw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=8ct7jLG6nYI6De/B/xTcfdYl6028bsiYvvbbLGS1MqM=;
- fh=hke+1lF8if4Nqw4L9U7tKdCEitKb5nBkLQkXOYGZh0U=;
- b=htb63biFA+73tQLxN01wi0QdIKQ0K1Q/kNtRpPTYrZ0F0tt/UiQErXfpAGBmZYRr4j
- I0ornw3dgVm3pkZNkDvTugtgohjcFE5nYcb22r7n6nF1hHKzDBJM6paxxX8hPQHfZWRE
- 1ygjJDKquOgp/o30p+e/olPj+ors2Y1lht88WM7cZZM8wU85jd++zy64J9DSovUrGZWj
- qmW9jb9OmabPT49sc0co402upWZqZU6sG/QWbnu8g7maEeje5Ra6l8wO9LLZ+6roLYZF
- KM4Q93xmOxMPfG4Fnmj2Og47qXU12gbh55h3p5p5dh8ZZL9IqPIFEcviEIayisxhMjDg
- EfXQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wSbke-0004hP-Tt
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 10:30:30 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wSbkb-00012H-GP
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 10:30:24 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 64S8vb8p1697246
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 14:30:19 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ JjKngCH+tN/DN3kMGAPIRvmTGn60U/+B3RchTraZprM=; b=HqpgP86jObG52SDP
+ Pqvc2jq4wRlYdh/MX1/IGI5+TzKosi/09c0PB2c+aDFeplnNI5vQ8cvVooriVb9+
+ hPFOA3KF/lUXhuJex/Zriqf6R1t1PL6MoPehOm1ZTiLS8TP4Ojoy690I+ulO71aZ
+ CXWmMaMTpctFE4BY8qvjO+V+rJaWCi/cBWeYFmTh7e2FBBvlGMcX6C2FDH9/bymd
+ E4ciRVQbgAKf/yD11lsxCh5NRIR1qj/usEuKsP9kshRLPgV2TkRV1qOKOEKjn5XR
+ 6fPlJACkyKgKEXgPYDIqJaohZ1N+U5/LNKa+HWfo8ett7FOM/8lSzgbVNEInBP3D
+ q902sQ==
+Received: from mail-dy1-f197.google.com (mail-dy1-f197.google.com
+ [74.125.82.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ee7yak3xy-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 14:30:19 +0000 (GMT)
+Received: by mail-dy1-f197.google.com with SMTP id
+ 5a478bee46e88-304dd917645so375990eec.1
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 07:30:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779978497; x=1780583297; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=8ct7jLG6nYI6De/B/xTcfdYl6028bsiYvvbbLGS1MqM=;
- b=Ej1Gjt/5WfQP3LPfyO9SYOgvGD9SbdhdvR+dv8T0MAATRtub83Y1Z1fmnmqgSGeyW6
- Hrf3yfebcXJHy44TZ3Efx4AymEioqqleBAwbi3GWtUxhQGducAfZS5XWr0Ydak99mmgA
- CA0JlTXq3uKEENtXok3r4QaOatTofqKFHp4v/eWTdcXgvy8XK6G8s2Xei0MQYZnHnKC1
- blZeYAqjLpcS4Xi8x6juHKGS2/nqcX3FDoRWkN5d0PZMd28wG2Vj2vNWBD7DiTAMdglK
- L0co3oRb88z0Kfo75bTymiLwNKUzgYHagvlqKd5j9/GFC2cyeUku7WvlEJxtR2cf0luZ
- 2IKA==
+ d=oss.qualcomm.com; s=google; t=1779978619; x=1780583419; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=JjKngCH+tN/DN3kMGAPIRvmTGn60U/+B3RchTraZprM=;
+ b=cfPt6YqhvaZDEE1ojDvovkAemYLHxiALHzDBDxN8IXOibjuR/jQMdxdUBCPt0qZt1E
+ iMW5m5TIo/1ps+Flgx2XdBuen7o1hMyiZmVW/iVt84Go/Gc0Omr1BZHHNwHXnUxEosWz
+ KeAlt7dx1OxYiGYl/mf9O+udscqv52RNm6iij+/ZpkteYUS8E5sZlHCege5X3vLfxYdw
+ E4bhFjC7/hSoG4dw5El4a0ne7NBmTQKm6VpbEkNcoanOsUUy6cIAksQE+dKfqclDKsHj
+ Bl42/g8pei53ehSkX3huzjFL6CelxKEHKGMElCrVbPBtJsBsX1G3S/Zx/A+qfTzGi/6W
+ IVoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779978497; x=1780583297;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=8ct7jLG6nYI6De/B/xTcfdYl6028bsiYvvbbLGS1MqM=;
- b=VAx+eSGMOkzVfrpljLPi2v69H2/CA6w+SvFs/aJxeHHcWkOqz8DbcdjR6TCGm7zkxx
- 5ELPm7F8xwl5W4+AdAilI9UqIXn5ghUJc9P9IUChBypJVc3LYSlZYazkdJn51vNfjsH/
- bIWFWa3r1WZKUqjbNQGOLKFeGL/XBELzAbvVo7oTy7a5smYTOoe09Ppm9kX1362Ycndi
- fo6SZqHQ88O4XCcFdi46oc75fmyOcM70rTvkplzXAaQOXYKr246CSlk/L2fu/ix7f805
- Zgx9AY4Bhr/o0MRueaX/M+By92asdHXL+Hm5dJKNkTQF+IF1L+k9gz75MYxLarZcMr+0
- /8SQ==
+ d=1e100.net; s=20251104; t=1779978619; x=1780583419;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=JjKngCH+tN/DN3kMGAPIRvmTGn60U/+B3RchTraZprM=;
+ b=IsXUXqSzmKHmfuuLORaEywCjxlsCMUovn3zNIp9h7Qkoeg6ZwTtgquWHzENGeo96jt
+ Y0WeVvE5qNUsrQK4sdYbLY1d6lUfCCgERDHTduBkG+dUZtWdFWWYCdydEbEQLYacH/nx
+ IrdTVhzPFJnmvHACahzberuMB3mpHJpmc9vFsgqW6aYG4cdPvBNsBaQyQGqLQLt8Gdwc
+ i3xARMHM0EhRXYLpr5kGfISRLIXExFMrIPinh5LTGJTUDx/oIKzvaCI4aPGy33lsEOLL
+ aVM72CJVCMHyjNSJjNE/CbGaPc4uZBaTkYOmlqFDINIpOja0UwZNxoKCuJPdX1RVrZF0
+ c/Rw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ85m585uIftjdK3ihiELVrTME3ENt2M4TprkvU83KCKicWNmeOdGsR1MjrL1EZPwc35nPF4J/k9RQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwG3J9743KLpcksbJE4e+Q9h99YoTwxHtIgc0LkiofAGTORMgPe
- asuBpcpP6r2ep4jztPPFk5Wrv9XXcfMJlgtQrf4uAEDCQgytd6h8y/bOqpAAWPB7I065aZ2jCr+
- HY26qTwGOFbZaLeWJCIbB+eEj7UkoxEJqRiHI1dMMYw==
-X-Gm-Gg: Acq92OHr7fp38MDH41EjgN0aP7GSZdj2UHusWyqAC3C9W2qZKokS2zqsunvedfp63Ge
- HXxYeclxGDAct4/9F3bTNbf8sJhV1PpklbAcYC3SxD8svrzkDOetp1HJSJABWlN027sE/GTCd9G
- pcv9BMy8WrdhK4/2+kLnQN49l0KVSGc55qcn5KzKk4xujpEE0k9Uv07+g1ZWtm71AzwkG9T3yJG
- IKODpsCkKfHNEnfFht8GWwlt6yp924BZoc3z+nMYltSTJe4htK54n5UiIastDs3/U5rL9024hdW
- KMqlZjwk5EgLlhCjOaLQcMnLqbnUhNZkVcT27YgIgYOSs1kwKvViXsz0nzvS5t00tNkcSeA7aix
- 6gSWbDs//F5Jg
-X-Received: by 2002:a05:690c:4883:b0:7d1:c256:b5a8 with SMTP id
- 00721157ae682-7d33ac50c26mr284710027b3.40.1779978497225; Thu, 28 May 2026
- 07:28:17 -0700 (PDT)
+ AFNElJ/i5xwqPOZBOYwq9jVW7icKghM2rI+2elFLdKprwEjHu2Z6eOuQHoBpfdm2JYBgrttuW0BWaR5ncQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwXyoXx5LaQNwUZREWDYkaOuUhozi3IHJqjkOpqrqnkEmPB7wiu
+ 9h/jQGfI02LifWQKml5alP381lSUtL+scBzznJewtmwIzZ5AJD1pWthp0IwU7L5mv9RsoEGXvlk
+ +rSvpzyJppLIVjN2FCnBGtmbgX9uV3NTkiB+ZPogWNzTzQxRdOzWIlDU=
+X-Gm-Gg: Acq92OG+xi9Ik2wVaYdls+E3L1T+1fmtDxnC6n35RLEM7D4/a73aYZwL5lIkDSKoEFl
+ URhs/G0eHUbjOgJlA/i9RPWqeBa+Y2WviZ3qOONLN/5G+cSx105JpmBV6gNbLCCqxulOSMjDUrr
+ Q1+tYxkG5nCGDdfX2ZmePLZTdPCeGMeHBkEhxEcyCxzyi2p6zTxiiJIseur4Telby1Y8tJT+yVY
+ IBy9WI5k5XLhZRSKYkTiQJwfco4S1RVcQiUKVu3lqNVSVRqR6yVPCrU4xN17PZHuNk+pAdLcVy5
+ 6C7Ry5VN7rykz/xKI0QdQeAP81Go7tbUGkzJ8GjBGrInYZnd9cxtn43xKmm77d8tprXEbdYu9Bn
+ /TRWRgtJYiI2+lNZcqcQzcMGKyAL/OOTnfMSPjmmUGhUwyfi4TE8R7bDILMUAP1El9nQ2/78tP9
+ yZeLYspeIceTD8BISbrkuy+KMs
+X-Received: by 2002:a05:7300:cd91:b0:2ed:e12:3769 with SMTP id
+ 5a478bee46e88-30449228424mr11544238eec.31.1779978618611; 
+ Thu, 28 May 2026 07:30:18 -0700 (PDT)
+X-Received: by 2002:a05:7300:cd91:b0:2ed:e12:3769 with SMTP id
+ 5a478bee46e88-30449228424mr11544154eec.31.1779978617834; 
+ Thu, 28 May 2026 07:30:17 -0700 (PDT)
+Received: from [192.168.1.170] (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-3045245d6aesm14720790eec.26.2026.05.28.07.30.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 May 2026 07:30:17 -0700 (PDT)
+Message-ID: <afaf1562-cd2b-4da4-b7e4-f4e699b750a1@oss.qualcomm.com>
+Date: Thu, 28 May 2026 07:30:13 -0700
 MIME-Version: 1.0
-References: <20260521112806.504961-1-kraxel@redhat.com>
-In-Reply-To: <20260521112806.504961-1-kraxel@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 May 2026 15:28:05 +0100
-X-Gm-Features: AVHnY4JnM6IPyy5CnDL1pkD4ue-X8IKL9XJ6YXa4ODlXiauZLNXJttCH7g2egEM
-Message-ID: <CAFEAcA8hbObntY8Tp+kOV7btb-io92O9GW99-6SPxigPJUjPrw@mail.gmail.com>
-Subject: Re: [PATCH 0/3] hw/arm: add support for shim loading
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 09/10] target/microblaze: rename helper unaligned_access
+ to microblaze_unaligned_access
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
+ Helge Deller <deller@gmx.de>, Michael Rolnik <mrolnik@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Glenn Miles <milesg@linux.ibm.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Chao Liu <chao.liu.zevorn@gmail.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>, Alex Williamson <alex@shazbot.org>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-ppc@nongnu.org,
+ Palmer Dabbelt <palmer@dabbelt.com>, Jason Wang <jasowang@redhat.com>,
+ Stafford Horne <shorne@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cornelia Huck <cohuck@redhat.com>, Song Gao <gaosong@loongson.cn>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Peter Xu <peterx@redhat.com>, Pedro Barbuda <pbarbuda@microsoft.com>,
+ Chinmay Rath <rathc@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, qemu-riscv@nongnu.org,
+ David Hildenbrand <david@kernel.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>, Fabiano Rosas <farosas@suse.de>
+References: <20260528051642.115721-1-pierrick.bouvier@oss.qualcomm.com>
+ <20260528051642.115721-10-pierrick.bouvier@oss.qualcomm.com>
+ <41e70c92-99d0-49d5-b233-a7f80f863f8d@linaro.org>
+ <33274371-2cab-4132-a4ef-0497c7ffec3e@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <33274371-2cab-4132-a4ef-0497c7ffec3e@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-ORIG-GUID: hIoKlk901XnA4a1OqI7iJ40RajJZcsz7
+X-Proofpoint-GUID: hIoKlk901XnA4a1OqI7iJ40RajJZcsz7
+X-Authority-Analysis: v=2.4 cv=E/r9Y6dl c=1 sm=1 tr=0 ts=6a18517b cx=c_pps
+ a=Uww141gWH0fZj/3QKPojxA==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
+ a=IkcTkHD0fZMA:10 a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=KKAkSRfTAAAA:8 a=sUTfoMr8b-0mKdkWX2sA:9
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=PxkB5W3o20Ba91AHUih5:22
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTI4MDE0NiBTYWx0ZWRfX5jJIEuJu/dTw
+ o506Q4vc60hSNij1JhkztWrLHWA4NH7LdLC9durIeNkW8zkGCzHx1LaZ3Ufox1L9JEseFaAGatN
+ +rlPn3r1vzWeqnLee+GJK4kJEEAKYNLFehuDThXVIhekbMKsBhghrBtx4oCJiKDK3zMHtSM9uQP
+ qzpnUMRmvacz70yWHKQG4rSFBrIe3Cue/rhJMg/iKtaX/GKHtTFycASP7sx5z8CHr97W2+q5mLH
+ hAQV+aHeVyVWl1XcA8r7MCuHnF9ZjQAiWbglVbGndxHZ+VswKWa7VJvRd4hCzk5DxeHb8XRWiN9
+ baT65m5h0iLFXhiIc5W7DrcIxV8OkQSSzYvMPbg2wTbA48/aWWFDmqZOzHT+g9XZtMWhgEAWanL
+ OjSj30PHG3AHwAC3ZslsHJjIokguLR5u6AY6nk1G66niP0ccF/u0Pe2VgiNnV80OgtuRFPCKbYO
+ A+o+KUd8j+rkn8kVJ+Q==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
+ definitions=2026-05-28_04,2026-05-28_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 lowpriorityscore=0 adultscore=0 priorityscore=1501 phishscore=0
+ impostorscore=0 bulkscore=0 malwarescore=0 suspectscore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2605210000 definitions=main-2605280146
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,25 +192,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 21 May 2026 at 12:28, Gerd Hoffmann <kraxel@redhat.com> wrote:
+On 5/28/2026 12:27 AM, Philippe Mathieu-Daudé wrote:
+> On 28/5/26 09:24, Philippe Mathieu-Daudé wrote:
+>> On 28/5/26 07:16, Pierrick Bouvier wrote:
+>>> Solves conflict with aarch64 unaligned_access.
+>>>
+>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+>>> ---
+>>>   target/microblaze/helper.c    | 2 +-
+>>>   target/microblaze/helper.h    | 2 +-
+>>>   target/microblaze/translate.c | 2 +-
+>>>   3 files changed, 3 insertions(+), 3 deletions(-)
+>>
+>> Duplicate of this patch which you already reviewed:
+>> https://lore.kernel.org/qemu-devel/20260224193028.2370-4-
+>> philmd@linaro.org/
 >
-> Also little refactoring in preparation
-> to avoid code duplication.
->
-> Gerd Hoffmann (3):
->   hw/nvram: add load_image_to_fw_cfg_file()
->   hw/i386: switch shim loading to load_image_to_fw_cfg_file
->   hw/arm: add support for shim loading
 
-Any chance of some information on what this is?
+I remember you did something around that, but it didn't cross my mind to
+go see if you had such patches in your single-binary branch.
+Problem with checking someone else branch is that there is no guarantee
+on branch status (build, checkpatch, tests).
+ > The point of this comment is to avoid duplicated work (I thought
+> you had these patches in your branches). Should I maintain some
+> single-binary-next branch in my repository with these unmerged
+> patches?
 
-There's no real description of it in the commit messages,
-and as far as I can see the only documentation we have
-is the rather cryptic:
-  -shim shim.efi
-    Use =E2=80=98shim.efi=E2=80=99 to boot the kernel
-in the "Invocation" section...
+Continuous integration is the answer: we need to integrate things
+upstream as soon as they are ready.
+The best way to have this solved is to pull those commits once they are
+ready and reviewed, even if your PR has only 1 commit.
 
-thanks
--- PMM
+Luckily, this one is not a huge duplicated work.
+
+Regards,
+Pierrick
 

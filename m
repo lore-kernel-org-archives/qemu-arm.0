@@ -4,175 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE1F2CD5BD5
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 18:52:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 663C3CD5BD5
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 18:52:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSfq2-0005ay-Ke; Thu, 28 May 2026 14:52:14 -0400
+	id 1wSfqN-0005jw-7b; Thu, 28 May 2026 14:52:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wSfp9-0005Qv-Mj
- for qemu-arm@nongnu.org; Thu, 28 May 2026 14:51:30 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wSfoz-0003gw-PS
- for qemu-arm@nongnu.org; Thu, 28 May 2026 14:51:15 -0400
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 64SGw0Wo2753136
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 18:51:08 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- Bqks5si4g3GXmg0Ng2sm0SeHDK9Z61vdMKamg1Dgc2s=; b=PvydP0fysBisCDep
- M/54YU4/1SC2CpIgvsRNdjxPYIixJ7bHmXbxh6RWYR7+Uut52AYRApmvq8v0/ZWU
- eiHJDAyG1J0eQC1cuFSz5rnrQkITo2H9RtqbjrLYGubjYBsuFHywZh0740IlUYxQ
- xQpTQg1J0L993ARL3JmDH+I9U5RmEqoOFFU0jAp9qkY8qRGvCiG4o2p6DNYvADoy
- lN5RPL50mPvE2d5SODJOWeVBgDGBszAjf5KjzO7JQnR9/FakKT4fXZvivuygGV4T
- QLLy+uClFq4LS0TxqgglIh/tT4Wzs5XPa90Yf9iz2LBo3foOol9KvdeZ19/97VQR
- oMR+Gw==
-Received: from mail-dy1-f199.google.com (mail-dy1-f199.google.com
- [74.125.82.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4eespn0em2-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 18:51:08 +0000 (GMT)
-Received: by mail-dy1-f199.google.com with SMTP id
- 5a478bee46e88-2bdd327d970so8048347eec.1
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 11:51:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wSfq4-0005da-L1
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 14:52:16 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wSfq2-0004Jy-RY
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 14:52:16 -0400
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-2bd2051167eso65524805ad.1
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 11:52:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1779994267; x=1780599067; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779994332; x=1780599132; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Bqks5si4g3GXmg0Ng2sm0SeHDK9Z61vdMKamg1Dgc2s=;
- b=SvTmhv4sL03nUkXsoArPOhEeAeT2/zEEo+5c8FLQZey4AyzCMCuQf3Z8b2ew2aSLxd
- PRtkeKiTZYMgNIMAxtdgcCqxExxu9em95aSjfI3rhhpOVulFcB1u2jQ57i+3+LvGBIX+
- 9w4MlJbi9Fe+L0amajyTRPw83kLmtbOl3XVksi0D00fpNVvfXOOFSM1dxuvCvLPeqPe7
- g/m6kTS972luswKd2531UezNeL+gCBzE/2ltVMKymyPb2a9Me8eq1CHu/OvseYXF6OT6
- 5fLm0+/W8d4rL9m1UGbW+7kg1c23YZYXtxf6A0g8Y7agTZB0iC+7RcfHiN7PY7j9s2Ys
- TDIw==
+ bh=NYsYQPPzASPlduWBTHd7CgXIQYjUbRELd2rXX6l4MtU=;
+ b=KqXxdchE2wELlrQ1nPIhUv4MAqBQ/ZILDw0A2sTmFJ5fGrOHpLwwJLRxKvSIaESRUY
+ 2pmsP3CQyxbH8PAO7SwGnqaFCQ4luAlhm0ERktf4PWcQzWUlgzPhggcpXq5cnPSw+vd6
+ DwFcXFdS+AUGaTjjyjZDMMwhy5RoDeZ0Miqqun5O+ZACxmq6j0cDyZoqYjCDMUR+4ReX
+ CD8nKdJgBxSgr0BNlAVSRIaJA8Fwy4L3QI2zIV82eB2sRk54AS/Njy6y/qiCMfL7rDmy
+ 4VlJRh0h7ox/q/trIkWYdTB5loizY/lXryvFL3z6QeoBnzf25Y5QWKxS60YPxyOhWJB5
+ 6/kg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779994267; x=1780599067;
+ d=1e100.net; s=20251104; t=1779994332; x=1780599132;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Bqks5si4g3GXmg0Ng2sm0SeHDK9Z61vdMKamg1Dgc2s=;
- b=bWUyxkFM7y+bS5ZfgnwPa15L/MvHq4nIRbSJz3xowQD6N9b0xlS/n1W9vFXxHZDtnl
- kWiVVNWtN+MXL288R/SyeUlrSUDfIYdIvFwURqZHwfQBsCiGTyPaPd9dz4pp2O9j8v4J
- ar80DGa3m4MegHLam9DLxrogf4j9QpJ/xAPVJFrNVDXfTZomUGGcqK4TDllE29avukOg
- YXQi+uchYvISnk26xsNthjvpgvH3KRdeuxh3lsNcEp3xIbTUQOPz7/pqkfBs8cOKKDDd
- fs4wi+MgLzojEe3hHQpUnkj4fjThUCPonq1YVH5PdHKxYUlAxldj+ewFUXyNBhLR8SS7
- XEHQ==
+ bh=NYsYQPPzASPlduWBTHd7CgXIQYjUbRELd2rXX6l4MtU=;
+ b=ixdzRDeZ1IAcUHD58d3UEnfqsoA598aRNx9tPoOYo9Ijrn60KvNZwBDaBggTt9e4Zy
+ TcppWQp3yLAe0a6xdtoBnH4kylgonU+yOCGDQblDb9TCzn3adYuu35j1+Hb4WdJ5vf8q
+ 9J/Ra8kfrZ+nLJs7WFaTq24KcmxouZZr/YlVs6R7Yb8pwXixuwxTcR2iO4giupItEFkG
+ ba7aTvAWh6CYlAWTm0u1f8lOQ70Eh3Z13Bt6yhhaCjvSlwmTyTHi1GkGKiiMB5txbSV6
+ kj3fori/GFQaPQyj/88CfgoEvi4hQUH1JaPceuBeD1HkFRv+XvsQZoIpwMIMk2hSxF+1
+ ylCw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+BddzdhRDYgfcfuiDTdt/EWUJLMXMwpg2Hld/XIzs+3hCYUFRKTR/NglSp9fPNOazhdlSgFh+teg==@nongnu.org
-X-Gm-Message-State: AOJu0YwcLltLd8cMzGM5VjF/ZDasKA2GvtsehDAia9TMjnhMCo1HclRs
- iQ2kUORKiB8DwFI3amT+ECP6s5n5Y9Nw325qqlzqajlii49Pkj/7gyJDyn+27tg9U/wI1bbIa0z
- ha8Uyldo0XgDCZ3cja7w/WR5OwtBn/VEteT4zWcsIxjELiYKM5Oq9xVQ=
-X-Gm-Gg: Acq92OF9+Vv+F55VMwMRlTwNI/gUCvuo+1BbShFP+lu0W7PJffy4Gl9noZ2gj0dW999
- u9IhnKB6z4WobwhSA9uleMPz0SYqJQyE2ra1FiVR4Z0QdSz70VmW9GWU1SR9ijvaK0tYcOA3xCe
- Tzqwg2O/RKGQw6nFizqFCDQ30eTNpVvcp92eTEpqSamU+zagT4TssN9h5gFSzR325WA5ueFu+AC
- FS9zLO8I6m/hTRSRyf5C7C3iiGhx0+8Tk+MchUY0mMdqYniVpdVLevZyy8ZCa2WTReaEP1k571Q
- pgQLy1HFwWncK2PthNPyAhLuqvC1lGgs+jw5/xFu+nCo2WCS7fVulHOcQU2KKIZ3osU2tRj7PjH
- 8IKtY39O00VBr4ifadtah0sZfofJlEYjRYfLhWbleTdMLfiDkxqa3EsaeUpqxlOEvTHQ5nTFo0M
- NzUKEfgXxF1pbi2UJAra1O2c5Q
-X-Received: by 2002:a05:7300:a888:b0:2ed:e16:6b39 with SMTP id
- 5a478bee46e88-304dd3b8a1bmr1215582eec.17.1779994267324; 
- Thu, 28 May 2026 11:51:07 -0700 (PDT)
-X-Received: by 2002:a05:7300:a888:b0:2ed:e16:6b39 with SMTP id
- 5a478bee46e88-304dd3b8a1bmr1215534eec.17.1779994266745; 
- Thu, 28 May 2026 11:51:06 -0700 (PDT)
-Received: from [192.168.1.170] (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-304e9715fbfsm64895eec.10.2026.05.28.11.51.04
+ AFNElJ9o2wJZdRdKTbVjKfFXYKSkf4WSLRYyI5aH9CTlJ8TiIE1EWJFj2cpLzUFxgP1kFIjZBsNP51j22g==@nongnu.org
+X-Gm-Message-State: AOJu0YzIOkIiFv7owsVF1rfbnxS2PU1fm3X8VGTNyrAvA4MeXznkmU5t
+ VUVbBjQZ/UtfKuvCys0scjZE/BRG1ifyWr8pCc2YAQO2SnAW9j24rwv7/8MC7/pzsNM=
+X-Gm-Gg: Acq92OEgjttACIb/l5NXMwuUc1MhBkwemSw5lvp7N7ltXdTJ1uOsNhvpqHkPmcw8ouD
+ bwm7arZpw31g/AeM4Kh/QK8+7BqOVmQHAlVhM31QBRv6xMgzHS8DHdmUg32ZqZdIO2w1cnP+ySr
+ aJPnIBrskfqR3FLNX3u4tkJnrQsLHU3y8p/KoaZmDXaZ24RVFt9HkBZ8Zrq6k/3xpPhIldKB3Zv
+ BCHnzzdC7VPzpw26kRQnZs7Vg8LtWJKBmulzw0Sn3YhBGzFFxjNgMd7bg4qvFZlqB/pQggEnXTT
+ A07vcjoDYoShAX2WHeXZVWzOCTf002vuw7KaC4PPJWdUMBUmK3iZmbdrCTpIJ4iVMGcJkCtYo0T
+ biAnatU4gfCfy49QiX6nUaWVnqSFvWWnSQ86Vjag3bum0NQVigITIaniIMEz5hQEDuwJk6CL/VW
+ XnHP+iv2X7RcbJhLRMOsWdXt9mlIyyDhcQ/gvqn2Wzfh+uHrw=
+X-Received: by 2002:a17:902:f544:b0:2bf:1748:aa8c with SMTP id
+ d9443c01a7336-2bf1ebf512dmr377265ad.26.1779994331936; 
+ Thu, 28 May 2026 11:52:11 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.142.33])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2bf1e821447sm251235ad.80.2026.05.28.11.52.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 May 2026 11:51:06 -0700 (PDT)
-Message-ID: <5f55a2b5-d126-4759-93a9-557a97d038af@oss.qualcomm.com>
-Date: Thu, 28 May 2026 11:51:03 -0700
+ Thu, 28 May 2026 11:52:11 -0700 (PDT)
+Message-ID: <c5e98ece-ecad-42cc-9b83-154453f535a5@linaro.org>
+Date: Thu, 28 May 2026 11:52:09 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/10] accel/accel-target.c: move compilation to every
- target meson.build
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
- Helge Deller <deller@gmx.de>, Michael Rolnik <mrolnik@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Glenn Miles <milesg@linux.ibm.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Chao Liu <chao.liu.zevorn@gmail.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>, Alex Williamson <alex@shazbot.org>,
- Brian Cain <brian.cain@oss.qualcomm.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-ppc@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Jason Wang <jasowang@redhat.com>,
- Stafford Horne <shorne@gmail.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cornelia Huck <cohuck@redhat.com>, Song Gao <gaosong@loongson.cn>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Yoshinori Sato <yoshinori.sato@nifty.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Peter Xu <peterx@redhat.com>, Pedro Barbuda <pbarbuda@microsoft.com>,
- Chinmay Rath <rathc@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, qemu-riscv@nongnu.org,
- David Hildenbrand <david@kernel.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Aleksandar Rikalo <arikalo@gmail.com>, Fabiano Rosas <farosas@suse.de>
-References: <20260528051642.115721-1-pierrick.bouvier@oss.qualcomm.com>
- <20260528051642.115721-4-pierrick.bouvier@oss.qualcomm.com>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Subject: Re: [PATCH 3/5] target/arm/ptw.c: Add Granule Bypass Windows
+To: Jim MacArthur <jim.macarthur@linaro.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+References: <20260528-jmac-gpc3b-v1-0-d34c46c5069f@linaro.org>
+ <20260528-jmac-gpc3b-v1-3-d34c46c5069f@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260528051642.115721-4-pierrick.bouvier@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20260528-jmac-gpc3b-v1-3-d34c46c5069f@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Proofpoint-GUID: UPs7SVjHdXNI_XwVue8yDYStSIZrY6NF
-X-Proofpoint-ORIG-GUID: UPs7SVjHdXNI_XwVue8yDYStSIZrY6NF
-X-Authority-Analysis: v=2.4 cv=auOCzyZV c=1 sm=1 tr=0 ts=6a188e9c cx=c_pps
- a=cFYjgdjTJScbgFmBucgdfQ==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
- a=IkcTkHD0fZMA:10 a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=UtqSAlyDIoC1vP3DVQYA:9 a=QEXdDO2ut3YA:10
- a=scEy_gLbYbu1JhEsrz4S:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTI4MDE4OSBTYWx0ZWRfX04VmGfHT8uuS
- u730D1sb5sS4NvU/Qu3g9eLZ1ZB6KCInKQOimgPkIUy4qUquG4EVKQaljfoFQ3r6ussmHW3kofr
- 1WK+xenwE/TaBkuta2zIH4HYSju8dMZI+/otKXliwKJB0AIwbnRvQNBv97IdReD4E2cswiZUOed
- miL8h7mufP4RY/Lt2AHEzP5/5KpkkOBWgTRCuya86W2dRFm3hws6IXdK9lULdkzSOXmHJ2sNty1
- ELyq5u7filA3eNsbO+/Z6w+1+iLUncYHomIvPH2fRPo44tYxrBbh+mKGUmR59RGMMEhwgrjfqNS
- wLgeimWSRulAjnea6w8a1Dp1fiF7NF6SuxQqN9L+cAFkwnyXkZEvLPN4NEUTWTYx1nGhPH1YDOr
- Fq95b77DO994adKW4812ijEa2mPqM60IyGTtnzmRDnMRdFZ3iHD1O6qQldOkK+TVc4wooF9ER8e
- NfHE8SzWhBOzMqmhhkg==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-05-28_05,2026-05-28_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 malwarescore=0 impostorscore=0 bulkscore=0 spamscore=0
- lowpriorityscore=0 suspectscore=0 clxscore=1015 phishscore=0 adultscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2605210000 definitions=main-2605280189
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -188,49 +105,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/27/2026 10:16 PM, Pierrick Bouvier wrote:
-> This file defines TYPE_ACCEL_CPU, which is accel-${CPU_RESOLVING_TYPE}.
-> 
-> This type is used to define cpu accelerators, and accel/accel-common.c
-> relies on naming convention to find matching cpus to apply a given
-> accelerator.
-> 
-> Since variants of a given architecture share the same base
-> CPU_RESOLVING_TYPE (arm and aarch64 both use TYPE_ARM_CPU), the
-> TYPE_ACCEL_CPU gets registered twice in a single-binary.
-> 
-> Thus, for the single binary, we need to register TYPE_ACCEL_CPU only
-> once per base architecture. As a first step, we simply move compilation
-> to each target/*/meson.build, without solving duplication yet.
-> 
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+On 5/28/26 08:34, Jim MacArthur wrote:
+> Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 > ---
->  accel/meson.build             | 3 ++-
->  target/alpha/meson.build      | 4 +++-
->  target/arm/meson.build        | 2 ++
->  target/avr/meson.build        | 4 +++-
->  target/hexagon/meson.build    | 1 +
->  target/hppa/meson.build       | 4 +++-
->  target/i386/meson.build       | 4 +++-
->  target/loongarch/meson.build  | 4 +++-
->  target/m68k/meson.build       | 4 +++-
->  target/microblaze/meson.build | 4 +++-
->  target/mips/meson.build       | 4 +++-
->  target/or1k/meson.build       | 4 +++-
->  target/ppc/meson.build        | 4 +++-
->  target/riscv/meson.build      | 4 +++-
->  target/rx/meson.build         | 4 +++-
->  target/s390x/meson.build      | 4 +++-
->  target/sh4/meson.build        | 4 +++-
->  target/sparc/meson.build      | 4 +++-
->  target/tricore/meson.build    | 4 +++-
->  target/xtensa/meson.build     | 4 +++-
->  20 files changed, 56 insertions(+), 18 deletions(-)
+>   target/arm/ptw.c | 50 ++++++++++++++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 50 insertions(+)
 > 
+> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+> index 0a5201763a..46568cc5cb 100644
+> --- a/target/arm/ptw.c
+> +++ b/target/arm/ptw.c
+> @@ -341,11 +341,21 @@ bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
+>           .space = ARMSS_Root,
+>       };
+>       const uint64_t gpccr = config.gpccr;
+> +    const uint64_t gpcbw = config.gpcbw;
+>       unsigned pps, pgs, l0gptsz, level = 0;
+>       uint64_t tableaddr, pps_mask, align, entry, index;
+>       MemTxResult result;
+>       int gpi;
+>   
+> +    const uint64_t BW_ADDR_SHIFT = 30;
+> +    const uint64_t BW_SIZE_SHIFT = 30;
+> +    const uint64_t BW_STRIDE_SHIFT = 40;
+> +
+> +    uint64_t bw_start = FIELD_EX64(gpcbw, GPCBW, BWADDR) << BW_ADDR_SHIFT;
+> +    uint64_t bw_size_field = FIELD_EX64(gpcbw, GPCBW, BWSIZE);
+> +    uint64_t bw_stride_mask = -1L << (FIELD_EX64(gpcbw, GPCBW, BWSTRIDE) +
+> +                                      BW_STRIDE_SHIFT + 1);
 
-This patch (and 4) will be replaced by:
-https://lore.kernel.org/qemu-devel/5b693f87-2f9a-4564-9efb-83c815bcb20e@oss.qualcomm.com/T/#m5c3e717dcacbbf013c9b4255248a3b5daac5a2ea
+This appears to be the inverse of what you wanted, setting high bits instead of setting 
+low bits.
 
-Regards,
-Pierrick
+Never "L", always LL or ULL; but here you certainly want MAKE_64BIT_MASK.
+
+> +
+>       /*
+>        * We assume Granule Protection Check is enabled when
+>        * calling this function (GPCCR.GPC == 1).
+> @@ -383,6 +393,28 @@ bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
+>           goto fault_walk;
+>       }
+>   
+> +    /* At this point, GPCCR_EL3 is valid */
+
+Not true, because you added the new block before validating PGS...
+
+> +
+> +    /*
+> +     * GPC Priority 1 (R_GMGRR):
+> +     * If GPCCR_EL3.GPCBW is 1 and the configuration GPCBW
+> +     * is invalid, the access fails as GPT walk fault at level 0.
+> +     */
+> +    if (FIELD_EX64(gpccr, GPCCR, GPCBW)) {
+> +        /*
+> +         * GPCBW is invalid if the base address is:
+> +         * not aligned to the size programmed in BWSIZE, or
+> +         * greater than or equal to the stride value configured by BWSTRIDE.
+> +         */
+> +        uint64_t bw_size_mask = -1L << (bw_size_field + 31);
+> +        if (bw_start & bw_size_mask) {
+> +            goto fault_walk;
+> +        }
+> +        if (bw_start & bw_stride_mask) {
+> +            goto fault_walk;
+> +        }
+> +    }
+> +
+>       switch (FIELD_EX64(gpccr, GPCCR, PGS)) {
+
+... here.
+
+None of the checks you're adding are correct:
+  - Missing size and stride validation,
+  - Alignment check vs size is incorrect; you wanted
+
+     bw_start & MAKE_64BIT_MASK(0, bw_size + BW_ADDR_SHIFT)
+
+  - Check vs stride is incorrect; you wanted bw_stride <= bw_addr.
+
+See GPCRegistersConsistent().
+
+> @@ -431,6 +463,23 @@ bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
+>           goto fault_fail;
+>       }
+>   
+> +    /*
+> +     * Bypass window check.
+> +     * I_JJLRM: Granule Protection Table (GPT) lookups can be skipped
+> +     * in portions of the memory map by using GPC bypass windows.
+> +     * I_XNHTX: The GPC bypass window check (...) is performed
+> +     * immediately after priority 3.
+> +     */
+> +    if (FIELD_EX64(gpccr, GPCCR, GPCBW)) {
+> +        uint64_t bw_size = 1 << (bw_size_field + BW_SIZE_SHIFT);
+> +        uint64_t effective_address = paddress & bw_stride_mask;
+> +
+> +        if (effective_address >= bw_start &&
+> +            effective_address < (bw_start + bw_size)) {
+
+No need for extra ().
+
+
+r~
 

@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84D18CD5BD5
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 06:11:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4205DCD5BD1
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 06:12:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSTxr-0003Qn-VA; Thu, 28 May 2026 02:11:31 -0400
+	id 1wSTyY-0004NV-3b; Thu, 28 May 2026 02:12:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wSTxq-0003Pa-RD
- for qemu-arm@nongnu.org; Thu, 28 May 2026 02:11:31 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ id 1wSTyN-00047B-Mk
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 02:12:04 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wSTxp-0004Rm-5U
- for qemu-arm@nongnu.org; Thu, 28 May 2026 02:11:30 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-4585a116a4aso10372552f8f.3
- for <qemu-arm@nongnu.org>; Wed, 27 May 2026 23:11:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779948688; cv=none;
+ id 1wSTyK-0004VT-3r
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 02:12:02 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-45e6a4d0be0so5532892f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 27 May 2026 23:11:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779948718; cv=none;
  d=google.com; s=arc-20240605;
- b=FX29jwXfBgN/ELTKMTp+vbJhzKOiYqnAJJdzRc0LrhWRisHjdj3DlhdKDk3EHcDze0
- FYllASUOrVnO20TGTHFoJN/86bOjmtSZkT2iCii/53IuKK9wW6/tpJWUJQTOuW4CIC5H
- hrAaP5lw7hbFQSuX+4VjCKQgWfZawjfSmcziCGdQL1GKRLvSE7F9O/Mowqt+TdAyzKfs
- 3bmCNaII3XjXrhAjugXnSyApAv9gpHKtN2Kp33oJvootgs3dFYkGe4US5NCbakLflp4c
- oCuk4iLF5lsbhtj7POlVsNFMNnCJ15pPJh239wN27ec2d8ro8yYHw45UnQ8Pi6OIWs2c
- Fs6g==
+ b=I/mdadfJazc0T4/yHQho5l8bZHj+nKkUHO7wQorpano8yVofFDxCeE+Ej3aS2fHA7h
+ MSnDEq/ucgIr22pIX5pPUKi4d9+NyP5CvjigU8Hqri5LSAnGKpXBp4BFGeOq9woDzMR7
+ 2PQ5TgzVTvfdv8fo89nFv+4SbbSOK6TLg1gWm0Z+xF8V0zrPAehF2AgZ1VznfizcvJdd
+ NVJSK2fC80bfvCv82XUOc84n/P8y7Z8yIs+hln+7siYEWqdFlJJaq1CzXmlq9Yaglfq9
+ As/EaWQe6+R0I/7iq23qww1OS1i2jpv3fnjsbxvZPsNYQ5QIQgYCny79sPU9W7hh/ZlB
+ 4URg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=987p3tTTfT5NU3Jz/Tj67qE9H1wl8NyOwiSvElqoVHY=;
- fh=dTiCKhLR0SXkdC6TGTQomBpN1ZMy1gSHpg+QWXfG/is=;
- b=F+HqDI901cMip0PwUflzQ7/OTKeickqYSFdrdJ902YyaXt4mKS15PyGp+FrQDR6TMq
- YLCnJcebHR8Np96lmW1PH8SyE3qStQ5Te3XsYVCsw7NteBfamgAvGlS7Pl3Od3SDaGdf
- 5nrz3rq34Rka96FhjY2F2KpYj0LXnkaEu+tVQpwZ4tzwKljxZL0fwhcolAexhY5tlX/j
- dDcnGLYBZWdrnls4LPrilcRg2xUf8WDmJtxB5iOc+ZNvs01hd/+9T8g5U1x6REwbtU5M
- LzH+q2kuCEllhIVKZPfRy4TgggTqqSIU1+ee5n5sb6WyizYgBPfiZp4A9juE9Xlz6/ro
- W5gw==; darn=nongnu.org
+ bh=nWJR1mFWqJeDyXtxshoXxGQrOxpYQAsGxvjy+YZyY0k=;
+ fh=wZlQM/ae6ora3aZ2Lzh+RPjtzmblPm22pnQ92jMnorI=;
+ b=Z1ktQM8Glftev5CIgk9l/ZnZRnwxbrxJhpHNynYAuvMDkkWE8FqpgcRjLkcZJo+Wv3
+ gAfiyDtnV1T6fI5TmR6ZiLRajub2LDt+Z5gOhzgilXPa4KkrT1AN1DckCP+Q1EQ/lqnN
+ mgQ8HdF5WiAEO5Jn6+IWdYleVkwe8VLBacYjKyYKLuaTmRVjHa0ffcsZmz9cUQ575e2U
+ XI9y2VqaiUn2RGP18493AtS3J1hzvkBSkhemDYENU0i2R+I1/Vm0knhRuxoxiqnKcPpA
+ pWyw9/vOvlqofJJYdXDAEExbXYQHSvVxGVW2B/t61T2RMQDLB/7x1WwbC88d0gRfMm3z
+ bRmA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779948688; x=1780553488; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779948718; x=1780553518; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=987p3tTTfT5NU3Jz/Tj67qE9H1wl8NyOwiSvElqoVHY=;
- b=uV5ZlCadyw2VGfLinawnfv+DRYwHMhuhSf1F7PTF4uECphnewgeUo0DoINdS4AFfaR
- CEMjfZx6zGqAn8laR7+xK8dWQO/JoP0I/AJRJZuaUddciqIXsT8d+s38nj9Z87cjvP1W
- Lb1cI3vlqbnE1hBMDdy3x2sMxQ7KG4E3fCUTQ/E/HjUrm5QfoFmKlouXsiHacryOy0DC
- bgHgCv6NzJaGxdqRnJdxg4e7TAbR3Nxbaj+yaD08gEIsay1C6yE3/Spu8LhEPyaxwf9W
- nDtoYIMqDpblQVV8fE8VhVMTY4NVhe2XRpHkPcWGzwOqG8t87QDIbcyMS82GtoCyBLcB
- oawg==
+ bh=nWJR1mFWqJeDyXtxshoXxGQrOxpYQAsGxvjy+YZyY0k=;
+ b=VI6ubiH4psojojHraq3UAjB6GRyawDeVrNQl5PnJgxe8jwbyT5sUFrQ0iL/xShhx4S
+ W9HTFUCUW4JnsBDLo3qJGztJDgMCzevMtotuBtGUEUjb7/eizmthE6Re3tCdhb534MyM
+ Ua3Jy3ZzwHzn7FKRZQffc2j2UBx0GBrQqJcrVzN8RU0O/EXGn+CPTSLpwYG9bXZcqAR3
+ RGB2wElPiLNwpbZlXW7mhe6KzdcHxEdIQTs3HG4giVnp8Dpg260bTwGtFNeM48mtflvy
+ 6luV0sk043QcqUQ4uZYlQu5fC/5VuWADDcE3MZXegBxbZWJbVQB+NZ5MtxWIDDXnnw1T
+ Ktxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779948688; x=1780553488;
+ d=1e100.net; s=20251104; t=1779948718; x=1780553518;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=987p3tTTfT5NU3Jz/Tj67qE9H1wl8NyOwiSvElqoVHY=;
- b=UafplIrW+BhoxwYB6jAv66J7J2WR6aiuj/66tZdOMQ3G5sHXHyqfSniQqzYOKDDZH7
- ri0Ks7dQVZ3jWb7+JyNCMV/6ts+QASwx9uM267uYQOg4vRF6XI58/TmVSUzatyufSMCa
- b80VAkk9QlicZgzOYdb2/NTd0VLnyIVZWMoB3JX5ui2LUI7sU5WAHDDsp81dX/pNC0a1
- xpGl/wjokuZTTGgBGjH1ef7mU2/YLYugjbrq5LihVdwGgM9nE8Uep7KqopHgeETCdLQV
- SCiJgx3TfUVA5Vm1ssSxo/762JjBSVLFXXavU/iO5DdA5DS+CKXGAqwR6YqvI+ePzpAV
- 1I1Q==
+ bh=nWJR1mFWqJeDyXtxshoXxGQrOxpYQAsGxvjy+YZyY0k=;
+ b=Yi9TI475o1tZ96XpsXBaNkOYyG5d2dv20dqQHlhvElylPfBf2ht1kZ7QHnFOfQKcn1
+ 0jVDzUtteA/9iuQh5meaDFHUY+UBqExF/KoiFTshvHxEnSzcjtAyd4XFNPQ3QVslmR5k
+ crHjdNmTRI9rU7A3+BmIA0oSEcIdClTYdPWtRFRIkD23F3RFdnXVMIH+jGFQ9sQfkNb9
+ v8WYIhCxF/Cs3EM+Cx4fBSCg5r65ehSui7jTvYlDJdy9B/XyZ9LhEuQZCn5V+t6U8FhG
+ 8+nYJEXUFGEiNSdvZeEhqJJTlIm+4XY8P8/viOri5TuveQ58ZchsDC071Eo4zkF1Ju2b
+ 1rvg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8zMX6W/WkbCcCY6yTr2qPgyYGRPbU0nas3qmit/chOFcBvg5vmNtICUzYQ7zJ4cLMi51gMVAiDaw==@nongnu.org
-X-Gm-Message-State: AOJu0Yy6wshCiBLoNSRQ5HJ3Bgz6xvM+1OSILxjpklqmvdbBXuUDqigA
- kzs+pmY5JR53F8y2q8kaHz+HfvFiSv4Zgrr189ctECB/LTw+3oWHG1rCwLtTSwAMyCM3/Pomj16
- Jz7rOLonorz3KixJqiQC9OkNTjIcfEMtFZ8n1GrKbxg==
-X-Gm-Gg: Acq92OHtNgXY+XgKls1IpgSBaMJSV6TtpsZ/jYqBpmgofUQ0p3P72NV98m6AESKeuD9
- 8WpEnHn3KmIA8qn7wWcNviOCqP6zY1+DYvJsiRQkFHd4HniXovCP9mPnG8pb62riD77u3pPlHr2
- nsWqT2fdgr55qt3VEW9HgZVBvsnSg1zhh4rFa5uTZcPUB27fromRrh7aJVH1/e2YkAYZiNoFd9C
- f+9+MGzEpHxad/8gb6dULAjhHim5CRohD8TgGBAhsMF6qmXvhRM/rPR+a6U9mw9PYyl7ywJANOk
- 1NB8bmDIlaI00hTTOfzSCYTXPbuL7yvL2q8ecObJOlEEu0awGEsYj4NxDj0+GrtMsuvQgZA=
-X-Received: by 2002:a5d:5e8c:0:b0:43c:f90b:5668 with SMTP id
- ffacd0b85a97d-45eb36acd72mr41400771f8f.23.1779948687025; Wed, 27 May 2026
- 23:11:27 -0700 (PDT)
+ AFNElJ/LbnJqYJmkCRJhY9qr0tSp2yd8FvYWfKdSU350AE0mvNaK8DW6JvwJHh1nocJqKzrgtRt7Wg6INQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwBvWHu9UKGlD3GETIrllt2OTlirBYaNV7cs+Mxx4EqMsv2zHZu
+ nzN2Uo91jcPwfMx9KTdNjtmsmAu0JjORO4nHz90B1dh6Qj7zvlOsanu4iDQVMUj3noS1aIr06ix
+ A1pkwWxg5vfjFfXxCNP9DSM+o1sDKH+dacM+cP5Tjbw==
+X-Gm-Gg: Acq92OEGj6uztfYVGVM47cgQG4akrfJJxyH59RpVvMQNALEOARumi3ddXLNoC7Hleze
+ tP2HIHVYYsuzxtUG58IlUA3T9nDAbH5veTUPMnpsQB70N1G55imCzbOmHEmF+Qomv6X17iN0c+u
+ t/4vN9qLk3SVWNzQTzvCRB+VfEWxlnXFIYXkdsqffB2UtSHfmiGiPDW2iJ2nzc9hTlQDQvxkE+z
+ cIw6yM1GaXmEVB/JUr2eaaWzo+nk2k+9IBXNM9x/KRoQJs12jlscRJ6toRTG/emvYhlfSqwjps2
+ vsVJlWVT1AGDYKsXzULboQXOgU4wb2YWLlv47U00LU2Lb5Qav3IEDwEyRs1C
+X-Received: by 2002:a05:6000:610:b0:45e:739e:499 with SMTP id
+ ffacd0b85a97d-45eb3690838mr47401039f8f.13.1779948718329; Wed, 27 May 2026
+ 23:11:58 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260528051642.115721-1-pierrick.bouvier@oss.qualcomm.com>
- <20260528051642.115721-3-pierrick.bouvier@oss.qualcomm.com>
-In-Reply-To: <20260528051642.115721-3-pierrick.bouvier@oss.qualcomm.com>
+ <20260528051642.115721-2-pierrick.bouvier@oss.qualcomm.com>
+In-Reply-To: <20260528051642.115721-2-pierrick.bouvier@oss.qualcomm.com>
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Thu, 28 May 2026 09:11:00 +0300
-X-Gm-Features: AVHnY4I-NlqunV7wGFvsqjvPsEW0Kz4bYN0AMsmvycIhhQ5fzxo0IqI0aq8IobA
-Message-ID: <CAAjaMXaajQ0XsZmru3rtkT5G=0Zf5w0NUNdeeoq0P7pchc1iOw@mail.gmail.com>
-Subject: Re: [PATCH 02/10] target/arm/whpx: move whpx-stub to arm_stubs_ss
+Date: Thu, 28 May 2026 09:11:32 +0300
+X-Gm-Features: AVHnY4IicJF0awCuwWI625F07b2UbZojXl-1f5k2gfheLZgVQwHOzrRbzB4BIVE
+Message-ID: <CAAjaMXZdNBV=4ECRQz74MgKZE_WSBDrCZz-ZTQ6SynFW_ZtabA@mail.gmail.com>
+Subject: Re: [PATCH 01/10] target/arm/meson: move kvm-stub to arm_stubs_ss
 To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
  Alistair Francis <alistair.francis@wdc.com>,
@@ -127,15 +127,15 @@ Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Fabiano Rosas <farosas@suse.de>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -154,28 +154,43 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On Thu, May 28, 2026 at 8:19=E2=80=AFAM Pierrick Bouvier
 <pierrick.bouvier@oss.qualcomm.com> wrote:
 >
-> This eliminates symbol conflicts for whpx symbols on windows-aarch64 host=
-.
+> This eliminates symbol conflicts for kvm symbols on linux-aarch64 host.
 >
 > Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 > ---
 
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
->  target/arm/whpx/meson.build | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  target/arm/meson.build | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 >
-> diff --git a/target/arm/whpx/meson.build b/target/arm/whpx/meson.build
-> index 3df632c9d30..7385c14f534 100644
-> --- a/target/arm/whpx/meson.build
-> +++ b/target/arm/whpx/meson.build
-> @@ -2,4 +2,4 @@ arm_system_ss.add(when: 'CONFIG_WHPX', if_true: files(
->    'whpx-all.c',
->  ))
+> diff --git a/target/arm/meson.build b/target/arm/meson.build
+> index 9408131d178..4412fde065f 100644
+> --- a/target/arm/meson.build
+> +++ b/target/arm/meson.build
+> @@ -35,7 +35,10 @@ arm_system_ss.add(when: 'CONFIG_KVM', if_true: files('=
+hyp_gdbstub.c', 'kvm.c'))
+>  arm_system_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
 >
-> -arm_common_system_ss.add(when: 'CONFIG_WHPX', if_false: files('whpx-stub=
-.c'))
-> +arm_stubs_ss.add(files('whpx-stub.c'))
+>  arm_user_ss.add(files('cpu.c'))
+> -arm_stubs_ss.add(files('cpu32-stubs.c'))
+> +arm_stubs_ss.add(files(
+> +  'cpu32-stubs.c',
+> +  'kvm-stub.c'
+> +))
+>  arm_user_ss.add(files(
+>    'el2-stubs.c',
+>    'cpregs-omap-stub.c',
+> @@ -44,7 +47,6 @@ arm_user_ss.add(when: 'CONFIG_ARM_COMPATIBLE_SEMIHOSTIN=
+G',
+>                         if_true: files('common-semi-target.c'))
+>
+>  arm_common_system_ss.add(files('cpu.c'))
+> -arm_common_system_ss.add(when: 'CONFIG_KVM', if_false: files('kvm-stub.c=
+'))
+>  arm_common_system_ss.add(when: 'CONFIG_ARM_COMPATIBLE_SEMIHOSTING',
+>                                  if_true: files('common-semi-target.c'))
+>  arm_common_system_ss.add(files(
 > --
 > 2.47.3
 >

@@ -4,91 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4483CD4F54
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 22:33:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6342CD5BD5
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 22:33:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSjHU-00007d-3r; Thu, 28 May 2026 18:32:48 -0400
+	id 1wSjIE-0001cn-0T; Thu, 28 May 2026 18:33:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wSi1b-0008VZ-BO
- for qemu-arm@nongnu.org; Thu, 28 May 2026 17:12:19 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wSjIB-0001b5-Au
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 18:33:31 -0400
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wSi1X-00055A-OY
- for qemu-arm@nongnu.org; Thu, 28 May 2026 17:12:18 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4903d730b1fso65175555e9.2
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 14:12:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wSjI9-0000D5-Mv
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 18:33:31 -0400
+Received: by mail-pf1-x430.google.com with SMTP id
+ d2e1a72fcca58-83f674f978fso5283901b3a.3
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 15:33:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1780002734; x=1780607534; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Pd+UEfP8Fkx65KGHNLigoqyWnVI7rHhjzFMv0CnIYaw=;
- b=BrIztlZdGcUnahBn/Ey2/Hx+kHGjqLcaWnfLQDnIBt05tchHoGgwvr0a7/ZB+9sXOM
- m4yjO3jSokEkEN71knbs1McyGAWzdt3C+E5DDBkURKBFNLMdChPPXiPbmfRFIGUbiGRu
- V4nNjnyF3yMoo8uQyIvl2+QAm+YKVk1NqSIFa4tk9Oi3tMgs/8dIpGp4ET1uHZrOgsWo
- VhvMos65scTmMQZvcIefUpv4+c5/OHFTv5VupNi1YVFBKg+/eB5FGCyzoMDn4pMVIgN0
- Q9RiZOkWsrafIB2z9kTT/PNedW7XFr0MI/Xgj8pC33nCNcagk7n6RowMhFq8WpcW3uU6
- p2rQ==
+ d=linaro.org; s=google; t=1780007608; x=1780612408; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=gyEu49Z6M3fX0YH/zwu9x8ApPANqz7j3tAfBQMK/VsE=;
+ b=rK8tJOKyA6bzEqhJkEqozAYQA1rem1eubAJhb4Ao5OaICZL3yVtsfRCwqbDNg48Pux
+ 103B/QM0DKYNfySurJ414l89kJf85tvHfCJc3TqIYYHuw2v8pExmDV1NpcPtGar9MCIZ
+ clHpciibDA2MJ8MhTk3yGuuEmw1TKtGTq91gJxgndzoCSsRyGlq9nRTGChmonPihomT4
+ Z1dm5yDGPsGqdtuAKuOqmMJ7qVlPLXL4K/WjXSUrCCmLHfNrPMPGXtTaGe5IOHdpJsTI
+ pNdGB8qQiIyOwIDu0njUt5eVPOADdVluoUsTrkYqsaQuZeMLgAro6/Op9lYn/zcB565K
+ 5yLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780002734; x=1780607534;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=Pd+UEfP8Fkx65KGHNLigoqyWnVI7rHhjzFMv0CnIYaw=;
- b=itLncrfqc4w4PNPKA4sU2EEd2s0UmbRVlwC0AnzI2PeoiHo7/Fk6uuW/N4T3y6X2ns
- tKX5SfRVdd8Y95wxDqrfWZptyZpeuCnFVZYD72mae9yOYGERHOWY7O5d6X2pokh13/VQ
- OscD30bd3BM1RcWcwuqwsVlA0zah7CQBrm0KaZDxn5hHzwHhBKbEGhglxCIRZX6FX4Ug
- 0Buxq4KO0HWe62fqY+Ck3FFuqedJKy36FwIrJMKcXhMjyLIug4encu4Z+QhG+1rxz8kw
- YnSPzlCJVxjXx0VI3ggSZpPcMTa0mgbm3v71k7UIOM9Bxf6yad11uNI1FUuhZEiaAgx6
- 87UQ==
+ d=1e100.net; s=20251104; t=1780007608; x=1780612408;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=gyEu49Z6M3fX0YH/zwu9x8ApPANqz7j3tAfBQMK/VsE=;
+ b=fBOtiJ544aYNAIpnEzpmmqJuTuHk76MU//wPTf15ukHzKX7+p4MpzwXeHFNeRf8E2Y
+ 2XRjKvRyXn+NTZRI3Zgvj7Hl1f//C6CiTuSPWcOBj/cfa7yF+CFKCwhOqjuSX9yWUVqa
+ reqhEDkFVo9L04Iwv5all2Rbpr9A0L6fXFzRpC6ggB/3aKm2no6eamXg77VZwuZtgruc
+ mtfzyzmvks3YKQqE/as651wcQVRRPF5I52wuP206zxR4HJB9iMHUYuIyeLZsmRCF+De+
+ /c1ysGZAwMFkmVypCxFncLjwEuGGN1UxkmQCFW1AZf/YL3lEofLy+kSi3y+yAfK8xK/g
+ qXwA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9SW65oR+BWmQzC4SEv5ANYz5Aj7ftmLo/LVEBdiGJQWl9u59PuGYpes9ccO48xFc13EgW2iTppoQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzYNlGboqoG69ebSg4On7QvWYT+XtzkZAFbCxGeVgp0VN5swI/A
- 3nEiE42exsXui3lmvjd6clJONDHUhOikbR9/GgfblJClRduCc+n+L34J1PBGVGKw
-X-Gm-Gg: Acq92OFWiSTrAGtbNfBADvLAhcXiDfNoj6Tsyozj5GTzSACwZBFMAQGO6m7UiPuFp9c
- 5YogxhwpjT84Nq/SyYKFrHYAK4cXPWOkzU3mMSlhM1wKDFZl7mgnXUsFq4neU3EhkbP/tGmh0oF
- +FfsatueGoXxGoJkpj1uJUvFXSZxVEH1tN94+JSjA1jKUgP1fDkDn4E8eu5GjnNPI0DRv4C6SCT
- pDpfNEs9RCBmyRma+yZVwT4LPv2Keh4G8WAe6Vk5qPoePLmTnctrSjYYx2kcM09ME1tcRJkH3Y5
- +JQRaZnWcxxmL7+NWWRNZ70y3txMNHptJKJemOxJYPo4ZiBx5aXXJUT4McKvVG1pwoSSvq9A06Z
- useC1I93Dsn22DSwBVD1x5asOzMvtLLxKc1/DjgZ22wCMnjnoCDWieshH06SWfRdEL27bMTHFoT
- 0dlp7YPHkpuCL1DvQ=
-X-Received: by 2002:a05:600c:3504:b0:488:d6eb:e63c with SMTP id
- 5b1f17b1804b1-4909c0b493bmr2242105e9.15.1780002733800; 
- Thu, 28 May 2026 14:12:13 -0700 (PDT)
-Received: from sefo-laptop ([2a02:8071:50c5:5c0::361b])
+ AFNElJ+Jh0bvwh03VH8Rx+SjeNFvukDNqYANYqqVI85jbtyb2BwBxKuAv1ke5YATjpqQhJdpdYKhRWnk5g==@nongnu.org
+X-Gm-Message-State: AOJu0YwFl6/YcemfCd3LVQnM18FKtBDNrkIDKEnlJMS7PtHAmFV4/170
+ 3/usj+Zo6MC/uergKH3BcWfeENuta/piyHrOPvw6aXvLUx7hHk2GJbQWjEjhLDtN5rE=
+X-Gm-Gg: Acq92OGuqgvjaIeo0s2/pklFKafsVwtkRDGakY1JFTylah2vQSEv9MTicKq4Avi3qD8
+ sChcPCnaHrvyGOxUFVINjlivgEp9icViyyFoL5OkVGlOBl24jROrdBdEIXzZ2/rDz/oS3FfHtjU
+ 8NIzPFsCJRlipZaIsqeJJ1fxDwFagFjibh3wJONrE1MQxx5AsekfBj6YIYlB7ieLniMXePGXw55
+ Jmlyn0AXJnN2NGtTsqlmFFUS8/Tk6Z21tM5YgiMHsWjKCA4nXbY+T+fq85Gf7NyY9B1cLze9Y0W
+ d0GeJGMKD4f0YcM1iQnX9EhkeF8XemS12oLceJ91YH1TEVZal9emVAiBD3tz+x87NRlX1fw4w39
+ Mq36S2woGS+hsxNJbUAC8C49oBiYg0m97xJqcGAEnzIqHrOFOSPHragoVZJXHN6AJlGIfLVyAvK
+ vwdkmQOFecc8a1JAUJ/5o9T2n1TEEXftq4/Bx+M+BZfZGNfpYF/KLCe/dTSQ==
+X-Received: by 2002:a05:6a00:1742:b0:81f:9b4c:81c0 with SMTP id
+ d2e1a72fcca58-84212d2ca6cmr102172b3a.41.1780007608072; 
+ Thu, 28 May 2026 15:33:28 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.142.33])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4909c609787sm108365e9.6.2026.05.28.14.12.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 May 2026 14:12:13 -0700 (PDT)
-From: Wadim Mueller <wafgo01@gmail.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [RFC PATCH v0 2/2] hw/arm: Add AM64-virt machine
-Date: Thu, 28 May 2026 23:12:10 +0200
-Message-ID: <20260528211210.74266-3-wafgo01@gmail.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260528211210.74266-1-wafgo01@gmail.com>
-References: <20260528211210.74266-1-wafgo01@gmail.com>
+ d2e1a72fcca58-841d71f2d45sm6947492b3a.47.2026.05.28.15.33.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 May 2026 15:33:27 -0700 (PDT)
+Message-ID: <8b02d8c4-8fad-4600-8e0e-64c9914cc598@linaro.org>
+Date: Thu, 28 May 2026 15:33:26 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=wafgo01@gmail.com; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 13/15] docs: add MTE4 features to docs
+To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+References: <20260511-feat-mte4-v6-0-8557cc1313b9@gmail.com>
+ <20260511-feat-mte4-v6-13-8557cc1313b9@gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260511-feat-mte4-v6-13-8557cc1313b9@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 28 May 2026 18:32:47 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,145 +108,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add an "am64-virt" machine that instantiates the TI AM64x SoC model
-and prepares it to boot a Linux kernel on the Cortex-A53 cluster.
+On 5/11/26 07:01, Gabriel Brookman wrote:
+> The implemented MTE4 features are now present in
+> docs/system/arm/emulation.rst
+> 
+> Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   docs/system/arm/emulation.rst | 5 +++++
+>   target/arm/tcg/cpu64.c        | 8 ++++++++
+>   2 files changed, 13 insertions(+)
+> 
+> diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+> index 8cd7fe7b00..c660074ec4 100644
+> --- a/docs/system/arm/emulation.rst
+> +++ b/docs/system/arm/emulation.rst
+> @@ -111,6 +111,11 @@ the following architecture extensions:
+>   - FEAT_MTE3 (MTE Asymmetric Fault Handling)
+>   - FEAT_MTE_ASYM_FAULT (Memory tagging asymmetric faults)
+>   - FEAT_MTE_ASYNC (Asynchronous reporting of Tag Check Fault)
+> +- FEAT_MTE_PERM (NoTagAccess memory attribute)
+> +- FEAT_MTE_TAGGED_FAR (Full address reporting of Tag Check Fault)
+> +- FEAT_MTE_STORE_ONLY (Store-only tag checking)
+> +- FEAT_MTE_CANONICAL_TAGS (Canonical tag checking)
+> +- FEAT_MTE_NO_ADDRESS_TAGS (Address tagging disabled)
 
-The machine wires up DDR at 0x80000000 and uses the standard ARM PSCI
-SMC conduit for SMP bring-up. It is intentionally minimal:
+These should be alphabetically sorted.
 
-  - No built-in device tree; users supply one via -dtb.
-  - No flash, no PCIe, no MCU/R5F cores.
+>   - FEAT_NMI (Non-maskable Interrupt)
+>   - FEAT_NV (Nested Virtualization)
+>   - FEAT_NV2 (Enhanced nested virtualization support)
+> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+> index 649d854a65..77b8c2a0a9 100644
+> --- a/target/arm/tcg/cpu64.c
+> +++ b/target/arm/tcg/cpu64.c
+> @@ -1291,8 +1291,16 @@ void aarch64_max_tcg_initfn(Object *obj)
+>       t = FIELD_DP64(t, ID_AA64PFR1, CSV2_FRAC, 0); /* FEAT_CSV2_3 */
+>       t = FIELD_DP64(t, ID_AA64PFR1, NMI, 1);       /* FEAT_NMI */
+>       t = FIELD_DP64(t, ID_AA64PFR1, GCS, 1);       /* FEAT_GCS */
+> +    t = FIELD_DP64(t, ID_AA64PFR1,
+> +            MTEX, 1);   /* FEAT_MTE_NO_ADDRESS_TAGS + FEAT_MTE_CANONICAL_TAGS */
 
-The intent is to provide a starting point on top of which the full
-AM64x platform (mailbox, secure proxy, DMSC/TISCI service, M4F core,
-R5F cores, dynamic DT generation, ...) can be added in subsequent
-patches.
+Better as
 
-Signed-off-by: Wadim Mueller <wafgo01@gmail.com>
----
- hw/arm/Kconfig     |  7 ++++
- hw/arm/am64-virt.c | 80 ++++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/meson.build |  1 +
- 3 files changed, 88 insertions(+)
- create mode 100644 hw/arm/am64-virt.c
+     /* FEAT_MTE_NO_ADDRESS_TAGS + FEAT_MTE_CANONICAL_TAGS */
+     t = FIELD_DP64(t, ID_AA64PFR1, MTEX, 1);
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 96cb0f5185..e0884a806e 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -631,6 +631,13 @@ config TI_AM64X
-     select ARM_GIC
-     select SERIAL_MM
- 
-+config AM64_VIRT
-+    bool
-+    default y
-+    depends on AARCH64
-+    depends on TCG
-+    select TI_AM64X
-+
- config ARM_SMMUV3
-     bool
- 
-diff --git a/hw/arm/am64-virt.c b/hw/arm/am64-virt.c
-new file mode 100644
-index 0000000000..3018773045
---- /dev/null
-+++ b/hw/arm/am64-virt.c
-@@ -0,0 +1,80 @@
-+/*
-+ * TI K3 AM64-virt machine
-+ *
-+ * Copyright (c) 2026 CMBlu
-+ * Written by Wadim Mueller <wafgo01@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu/units.h"
-+#include "hw/arm/boot.h"
-+#include "hw/arm/machines-qom.h"
-+#include "hw/arm/ti-am64x.h"
-+#include "hw/boards.h"
-+#include "qemu/error-report.h"
-+#include "system/address-spaces.h"
-+
-+#define AM64_VIRT_DRAM_BASE 0x80000000ULL
-+
-+typedef struct AM64VirtMachineState {
-+    MachineState parent_obj;
-+    TIAM64xState soc;
-+    struct arm_boot_info bootinfo;
-+} AM64VirtMachineState;
-+
-+#define TYPE_AM64_VIRT_MACHINE MACHINE_TYPE_NAME("am64-virt")
-+OBJECT_DECLARE_SIMPLE_TYPE(AM64VirtMachineState, AM64_VIRT_MACHINE)
-+
-+static void am64_virt_init(MachineState *machine)
-+{
-+    AM64VirtMachineState *ams = AM64_VIRT_MACHINE(machine);
-+    MemoryRegion *sysmem = get_system_memory();
-+
-+    if (machine->ram_size > 2 * GiB) {
-+        error_report("am64-virt: maximum supported RAM size is 2 GiB");
-+        exit(1);
-+    }
-+
-+    object_initialize_child(OBJECT(machine), "soc", &ams->soc, TYPE_TI_AM64X);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(&ams->soc), &error_fatal);
-+
-+    memory_region_add_subregion(sysmem, AM64_VIRT_DRAM_BASE, machine->ram);
-+
-+    ams->bootinfo.ram_size = machine->ram_size;
-+    ams->bootinfo.loader_start = AM64_VIRT_DRAM_BASE;
-+    ams->bootinfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
-+    ams->bootinfo.board_id = -1;
-+    arm_load_kernel(&ams->soc.a53[0], machine, &ams->bootinfo);
-+}
-+
-+static void am64_virt_machine_class_init(ObjectClass *oc, const void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-+    mc->desc = "TI K3 AM64x virt machine";
-+    mc->init = am64_virt_init;
-+    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a53");
-+    mc->default_ram_id = "am64-virt.ram";
-+    mc->default_ram_size = 1 * GiB;
-+    mc->default_cpus = TI_AM64X_NUM_A53_CPUS;
-+    mc->max_cpus = TI_AM64X_NUM_A53_CPUS;
-+    mc->min_cpus = 1;
-+}
-+
-+static const TypeInfo am64_virt_machine_info = {
-+    .name = TYPE_AM64_VIRT_MACHINE,
-+    .parent = TYPE_MACHINE,
-+    .instance_size = sizeof(AM64VirtMachineState),
-+    .class_init = am64_virt_machine_class_init,
-+    .interfaces = arm_aarch64_machine_interfaces,
-+};
-+
-+static void am64_virt_machine_register_types(void)
-+{
-+    type_register_static(&am64_virt_machine_info);
-+}
-+
-+type_init(am64_virt_machine_register_types)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 89fad790f5..faa00741c3 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -85,6 +85,7 @@ arm_common_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d
- arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
- arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
- arm_common_ss.add(when: 'CONFIG_TI_AM64X', if_true: files('ti-am64x.c'))
-+arm_common_ss.add(when: 'CONFIG_AM64_VIRT', if_true: files('am64-virt.c'))
- arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
- arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
- arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
--- 
-2.52.0
 
+r~
 

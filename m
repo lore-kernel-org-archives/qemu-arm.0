@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 663C3CD5BD5
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 18:52:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 420CACD4F54
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 19:55:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSfqN-0005jw-7b; Thu, 28 May 2026 14:52:35 -0400
+	id 1wSgoE-00081I-Ef; Thu, 28 May 2026 15:54:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wSfq4-0005da-L1
- for qemu-arm@nongnu.org; Thu, 28 May 2026 14:52:16 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ id 1wSgo9-000805-D3
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 15:54:22 -0400
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wSfq2-0004Jy-RY
- for qemu-arm@nongnu.org; Thu, 28 May 2026 14:52:16 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-2bd2051167eso65524805ad.1
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 11:52:13 -0700 (PDT)
+ id 1wSgo7-0001td-RQ
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 15:54:21 -0400
+Received: by mail-pj1-x102e.google.com with SMTP id
+ 98e67ed59e1d1-369002b26f4so7768363a91.3
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 12:54:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779994332; x=1780599132; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779998058; x=1780602858; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=NYsYQPPzASPlduWBTHd7CgXIQYjUbRELd2rXX6l4MtU=;
- b=KqXxdchE2wELlrQ1nPIhUv4MAqBQ/ZILDw0A2sTmFJ5fGrOHpLwwJLRxKvSIaESRUY
- 2pmsP3CQyxbH8PAO7SwGnqaFCQ4luAlhm0ERktf4PWcQzWUlgzPhggcpXq5cnPSw+vd6
- DwFcXFdS+AUGaTjjyjZDMMwhy5RoDeZ0Miqqun5O+ZACxmq6j0cDyZoqYjCDMUR+4ReX
- CD8nKdJgBxSgr0BNlAVSRIaJA8Fwy4L3QI2zIV82eB2sRk54AS/Njy6y/qiCMfL7rDmy
- 4VlJRh0h7ox/q/trIkWYdTB5loizY/lXryvFL3z6QeoBnzf25Y5QWKxS60YPxyOhWJB5
- 6/kg==
+ bh=XBuSsHiEHgYnWgeNK9Jy+biU6DBsZhKV8neRcmnLcmw=;
+ b=ZfSwlDljHJRHyeCFOMgCYoui/+mge41AbvuenqJTTabBUb9jNy/ZfrP1R3voFPuMmt
+ rfe9JK5HWJJVaEOXYoxJxN3Olo9Txk7fbkCmcFbsk/Aqr8Dn6xBbfTfI7AzzxCJdoEMs
+ 06O9BiaOl4XT+jFB7FytwEJXjHQ1otmAYqJUvKn1VtIADLIOyD/VHaxBJA3kQEGG4TSK
+ KIAVLjuq+4+5SQJIr5l6wuvchZeRJd8kD0astbMKDlJWwBtZck+P9FtO7tzyrzFJh3sf
+ mst9Nq58QA0nFhW5IUP8zX0rU4gOG23x8tjo6bMd4a2Ck9R1YSVu6z0OsrptFEEWb4uP
+ 05Mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779994332; x=1780599132;
+ d=1e100.net; s=20251104; t=1779998058; x=1780602858;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=NYsYQPPzASPlduWBTHd7CgXIQYjUbRELd2rXX6l4MtU=;
- b=ixdzRDeZ1IAcUHD58d3UEnfqsoA598aRNx9tPoOYo9Ijrn60KvNZwBDaBggTt9e4Zy
- TcppWQp3yLAe0a6xdtoBnH4kylgonU+yOCGDQblDb9TCzn3adYuu35j1+Hb4WdJ5vf8q
- 9J/Ra8kfrZ+nLJs7WFaTq24KcmxouZZr/YlVs6R7Yb8pwXixuwxTcR2iO4giupItEFkG
- ba7aTvAWh6CYlAWTm0u1f8lOQ70Eh3Z13Bt6yhhaCjvSlwmTyTHi1GkGKiiMB5txbSV6
- kj3fori/GFQaPQyj/88CfgoEvi4hQUH1JaPceuBeD1HkFRv+XvsQZoIpwMIMk2hSxF+1
- ylCw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9o2wJZdRdKTbVjKfFXYKSkf4WSLRYyI5aH9CTlJ8TiIE1EWJFj2cpLzUFxgP1kFIjZBsNP51j22g==@nongnu.org
-X-Gm-Message-State: AOJu0YzIOkIiFv7owsVF1rfbnxS2PU1fm3X8VGTNyrAvA4MeXznkmU5t
- VUVbBjQZ/UtfKuvCys0scjZE/BRG1ifyWr8pCc2YAQO2SnAW9j24rwv7/8MC7/pzsNM=
-X-Gm-Gg: Acq92OEgjttACIb/l5NXMwuUc1MhBkwemSw5lvp7N7ltXdTJ1uOsNhvpqHkPmcw8ouD
- bwm7arZpw31g/AeM4Kh/QK8+7BqOVmQHAlVhM31QBRv6xMgzHS8DHdmUg32ZqZdIO2w1cnP+ySr
- aJPnIBrskfqR3FLNX3u4tkJnrQsLHU3y8p/KoaZmDXaZ24RVFt9HkBZ8Zrq6k/3xpPhIldKB3Zv
- BCHnzzdC7VPzpw26kRQnZs7Vg8LtWJKBmulzw0Sn3YhBGzFFxjNgMd7bg4qvFZlqB/pQggEnXTT
- A07vcjoDYoShAX2WHeXZVWzOCTf002vuw7KaC4PPJWdUMBUmK3iZmbdrCTpIJ4iVMGcJkCtYo0T
- biAnatU4gfCfy49QiX6nUaWVnqSFvWWnSQ86Vjag3bum0NQVigITIaniIMEz5hQEDuwJk6CL/VW
- XnHP+iv2X7RcbJhLRMOsWdXt9mlIyyDhcQ/gvqn2Wzfh+uHrw=
-X-Received: by 2002:a17:902:f544:b0:2bf:1748:aa8c with SMTP id
- d9443c01a7336-2bf1ebf512dmr377265ad.26.1779994331936; 
- Thu, 28 May 2026 11:52:11 -0700 (PDT)
+ bh=XBuSsHiEHgYnWgeNK9Jy+biU6DBsZhKV8neRcmnLcmw=;
+ b=l2fOFTnoxWnqO8+IDU1yDdJAkoLpXzu651LJigfMT4w2QxgWrq0WFUbGRxXPVloegl
+ ga6uV0bSl6TLvcLhjAGQxg5LguH1jgFRDlzQZac6/jES2nEme2Wy7j/HEwclMYG/9u5G
+ xAceI0RR6ENW/N+pwwo+xSqwXm201K7stzt6D860rtaVDD58XJQHrMELciG/TEgFqRw1
+ bYTipSIOmKqrcorHuuqDeU7nrnKO/2WCcrAqZXEO96oPb+F8ez1DjzZ0OtFlo2reuKdZ
+ SHRhZshjkkhJALWi3Uy3CkGrHh1C3VV1kSvjK4ddzsXNrjXHrm4G8pbem4dqTVogVj9V
+ wSlw==
+X-Gm-Message-State: AOJu0Yyr0Y/gl//TnWD9AIw89d1W3KXnKwRoz8DSEXf/7pEYPDWR+ajU
+ VWoFiBJVL3nf9yrOcsHtYS9TBlydVXL7RWQCOSjzrlKXtHdL/l1ztP63YnQZY716P1A=
+X-Gm-Gg: Acq92OEwbvO4Q1mC4t6+UtXN37mBNheEcdv4pgVddPLgKVjExT756jZw08XK4shU5aV
+ 2Sb2X7mUKksqVrSBfMOj+VrK+lUQxPhEckpZlgFbRjtYmg2Eqt16NQl15gUcd5LD3JgwU6Apw0i
+ taUK59nyZ/8j4BMYnVn8D/B8VJ++4WMA3AA49zPiZlMwJbfQtKc9ZHkAZpsmrA7RUtQciw4XzrI
+ Clr77raXrd48/wCRqdxNJS+Mj7v5Q4D4bo15rgBtzijmDA8jmy4dKxOopyPbx3rprggD9qg/hup
+ CrCbc9xZsvEKqUdySIpYnDDtCAiV97ZchXd0ofgn/iWZngEUUO711mKbhzTeSHio6D520F75cVi
+ MYU7/Yx+sutr+4xc09hodQCZjeMk9nEExudtUbcKIZ0ZAEtLLiwXiPLKhMzky4xBMDwPucHa283
+ 8ioV4bGG4XZVUc+OSL9dOaPyv+JsIG4vaSD9KADYAu6Lj562U=
+X-Received: by 2002:a05:6300:2293:b0:3a3:90d8:fd7f with SMTP id
+ adf61e73a8af0-3b40e2e8f2fmr219851637.8.1779998057738; 
+ Thu, 28 May 2026 12:54:17 -0700 (PDT)
 Received: from [192.168.0.4] ([71.212.142.33])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2bf1e821447sm251235ad.80.2026.05.28.11.52.11
+ 41be03b00d2f7-c8573062c4fsm88729a12.22.2026.05.28.12.54.17
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 May 2026 11:52:11 -0700 (PDT)
-Message-ID: <c5e98ece-ecad-42cc-9b83-154453f535a5@linaro.org>
-Date: Thu, 28 May 2026 11:52:09 -0700
+ Thu, 28 May 2026 12:54:17 -0700 (PDT)
+Message-ID: <5eae07fe-f397-472a-8a49-346471d27d3c@linaro.org>
+Date: Thu, 28 May 2026 12:54:15 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/5] target/arm/ptw.c: Add Granule Bypass Windows
-To: Jim MacArthur <jim.macarthur@linaro.org>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20260528-jmac-gpc3b-v1-0-d34c46c5069f@linaro.org>
- <20260528-jmac-gpc3b-v1-3-d34c46c5069f@linaro.org>
+Subject: Re: [PATCH v3 1/2] target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS
+To: Jason Wright <wrigjl@proton.me>, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20260519153249.31100-1-wrigjl@proton.me>
+ <20260524002617.69593-1-wrigjl@proton.me>
+ <20260528181857.92087-1-wrigjl@proton.me>
+ <20260528181857.92087-2-wrigjl@proton.me>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260528-jmac-gpc3b-v1-3-d34c46c5069f@linaro.org>
+In-Reply-To: <20260528181857.92087-2-wrigjl@proton.me>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,107 +105,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/28/26 08:34, Jim MacArthur wrote:
-> Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
-> ---
->   target/arm/ptw.c | 50 ++++++++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 50 insertions(+)
+On 5/28/26 11:19, Jason Wright wrote:
+> Add an .accessfn to the RNDR and RNDRRS system registers that traps
+> reads to EL3 when SCR_EL3.TRNDR is set, as required by FEAT_RNG_TRAP.
+> Mark SCR_EL3.TRNDR (bit 40) as a writable field in scr_write() when
+> the CPU advertises the feature. The pseudocode in DDI0487 revision M.b
+> shows the trap firing from EL0, EL1, EL2, and EL3, so there is no
+> check of arm_current_el().
 > 
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index 0a5201763a..46568cc5cb 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -341,11 +341,21 @@ bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
->           .space = ARMSS_Root,
->       };
->       const uint64_t gpccr = config.gpccr;
-> +    const uint64_t gpcbw = config.gpcbw;
->       unsigned pps, pgs, l0gptsz, level = 0;
->       uint64_t tableaddr, pps_mask, align, entry, index;
->       MemTxResult result;
->       int gpi;
->   
-> +    const uint64_t BW_ADDR_SHIFT = 30;
-> +    const uint64_t BW_SIZE_SHIFT = 30;
-> +    const uint64_t BW_STRIDE_SHIFT = 40;
-> +
-> +    uint64_t bw_start = FIELD_EX64(gpcbw, GPCBW, BWADDR) << BW_ADDR_SHIFT;
-> +    uint64_t bw_size_field = FIELD_EX64(gpcbw, GPCBW, BWSIZE);
-> +    uint64_t bw_stride_mask = -1L << (FIELD_EX64(gpcbw, GPCBW, BWSTRIDE) +
-> +                                      BW_STRIDE_SHIFT + 1);
+> When FEAT_RNG_TRAP is implemented without FEAT_RNG, an RNDR/RNDRRS read
+> with SCR_EL3.TRNDR=0 should UNDEF rather than succeed; handle that case
+> in access_rndr(). Register the rndr_reginfo CP reg entries whenever either
+> FEAT_RNG or FEAT_RNG_TRAP is implemented, so the accessfn fires even on a
+> FEAT_RNG_TRAP-only CPU.
+> 
+> When SCR_EL3.TRNDR is set, ID_AA64ISAR0_EL1.RNDR reads as 1 regardless
+> of whether FEAT_RNG is implemented; give ID_AA64ISAR0_EL1 a readfn so it
+> reports this at runtime, as we already do for ID_AA64PFR0_EL1.
+> 
+> Suggested-by: Richard Henderson<richard.henderson@linaro.org>
+> Suggested-by: Peter Maydell<peter.maydell@linaro.org>
+> Signed-off-by: Jason Wright<wrigjl@proton.me>
+> ---
+>   target/arm/cpu-features.h |  5 ++++
+>   target/arm/helper.c       | 58 +++++++++++++++++++++++++++++++++++----
+>   2 files changed, 58 insertions(+), 5 deletions(-)
 
-This appears to be the inverse of what you wanted, setting high bits instead of setting 
-low bits.
-
-Never "L", always LL or ULL; but here you certainly want MAKE_64BIT_MASK.
-
-> +
->       /*
->        * We assume Granule Protection Check is enabled when
->        * calling this function (GPCCR.GPC == 1).
-> @@ -383,6 +393,28 @@ bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
->           goto fault_walk;
->       }
->   
-> +    /* At this point, GPCCR_EL3 is valid */
-
-Not true, because you added the new block before validating PGS...
-
-> +
-> +    /*
-> +     * GPC Priority 1 (R_GMGRR):
-> +     * If GPCCR_EL3.GPCBW is 1 and the configuration GPCBW
-> +     * is invalid, the access fails as GPT walk fault at level 0.
-> +     */
-> +    if (FIELD_EX64(gpccr, GPCCR, GPCBW)) {
-> +        /*
-> +         * GPCBW is invalid if the base address is:
-> +         * not aligned to the size programmed in BWSIZE, or
-> +         * greater than or equal to the stride value configured by BWSTRIDE.
-> +         */
-> +        uint64_t bw_size_mask = -1L << (bw_size_field + 31);
-> +        if (bw_start & bw_size_mask) {
-> +            goto fault_walk;
-> +        }
-> +        if (bw_start & bw_stride_mask) {
-> +            goto fault_walk;
-> +        }
-> +    }
-> +
->       switch (FIELD_EX64(gpccr, GPCCR, PGS)) {
-
-... here.
-
-None of the checks you're adding are correct:
-  - Missing size and stride validation,
-  - Alignment check vs size is incorrect; you wanted
-
-     bw_start & MAKE_64BIT_MASK(0, bw_size + BW_ADDR_SHIFT)
-
-  - Check vs stride is incorrect; you wanted bw_stride <= bw_addr.
-
-See GPCRegistersConsistent().
-
-> @@ -431,6 +463,23 @@ bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
->           goto fault_fail;
->       }
->   
-> +    /*
-> +     * Bypass window check.
-> +     * I_JJLRM: Granule Protection Table (GPT) lookups can be skipped
-> +     * in portions of the memory map by using GPC bypass windows.
-> +     * I_XNHTX: The GPC bypass window check (...) is performed
-> +     * immediately after priority 3.
-> +     */
-> +    if (FIELD_EX64(gpccr, GPCCR, GPCBW)) {
-> +        uint64_t bw_size = 1 << (bw_size_field + BW_SIZE_SHIFT);
-> +        uint64_t effective_address = paddress & bw_stride_mask;
-> +
-> +        if (effective_address >= bw_start &&
-> +            effective_address < (bw_start + bw_size)) {
-
-No need for extra ().
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~
 

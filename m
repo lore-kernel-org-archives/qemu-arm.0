@@ -4,106 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62C7FCD6E44
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 10:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E849DCD6E49
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 11:24:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSYK9-0002lB-3z; Thu, 28 May 2026 06:50:49 -0400
+	id 1wSYqV-0002cM-AK; Thu, 28 May 2026 07:24:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSYK7-0002ku-NF
- for qemu-arm@nongnu.org; Thu, 28 May 2026 06:50:47 -0400
-Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSYK6-0005wT-4x
- for qemu-arm@nongnu.org; Thu, 28 May 2026 06:50:47 -0400
-Received: by mail-yx1-xb12a.google.com with SMTP id
- 956f58d0204a3-65c477a3278so12910069d50.3
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 03:50:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779965445; cv=none;
- d=google.com; s=arc-20240605;
- b=ehNDW2+4HJopIbt6kl0zG4pb98FaFnCne1QVH3X453QUpAx2alkPmuFrIc0fxv1rQ9
- 6n/BUEuKdW8xiZoWvP//bPmmzV/ale+GYI4Q70SFisF1r8/MfWmZnT6msmsEjDDrTnyx
- UDhcL+H+8ctYWNM7qBtWCK44Lu+iwrVE+zNhuQzKay8q5FXuQn4MD0rSBvC9uVWPPrU9
- W6MQEHjhbSMTEytWXLN5Dua/J1cpKzAJ0hrnLUTikFPu/2roQ7abq8xXseynZhBgbFdg
- GV9acmres7iU5u92Bz6JGysd/tIOU87UJuzvZBGGz2KnCP6Nzvv5dCNjuHfzTdoDrIOB
- bpRg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=9rkKefH7qkaM7PYGtNz39Smfm7od6r4vxNbFh/5YrUA=;
- fh=vyGnWcRmO00t/qO1TXK5AMv1SmMq+I6sWN4MqEoJ8fM=;
- b=cC0QC9kPtgGJAHgfUxB1g2wpTMo/haRqI2eYF+5HBw2LhAlOPD5izElmkr2EPfZkuo
- 0jfRKWHZjk8JFzL5+n8G0CBY8g+953vwk+8i4MmjScCii4+ob0gVxWtJt5z4UnEzl6AK
- KnUVgdRmf8elaIlF8IP9jGGSZ5QIIVCY6aG5CPCInRkywJpilcHcIU9M4KE5ah/LHjsQ
- Io6kLkGoIgyu5mTS7io8Xi8tBjWjBbY/iINgTQ6h/O9tYb+hwAqq6aPqwgbMqVDtPo1B
- mN7eEBpCOO+mbJdi8hLO769Sao0vWotmspJUInKQvO2KDo/A0kp8bYhSOd8NAl4o59Go
- AWiA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779965445; x=1780570245; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=9rkKefH7qkaM7PYGtNz39Smfm7od6r4vxNbFh/5YrUA=;
- b=dWaoRJRJJTpcIaiH0UrdUT2Eexl77wkoHKNrcUEFj1jkm44xTH9NysSzYvi+hz4pHO
- l9QmhJrRWm81FLRhdsoCVn4fD2Cpms5yZ2c8Fo50wIsLQVBwhbTGyNEMqJU2Hy5sU5q1
- bKdbO0xLA1KEsRryWVNw9KXRRLhQETT1QCTB1jl6lB9ZHQ4Q1cRKsI65BWY3+v1g+ExX
- swDU8cS65RxepM+CdzU4Z+p4rIusvNWSxShOY9hZ5kClQxfPyN8fE/bWbOHXio8YMFbD
- gXr4HznJgerHvzuR3/GOk68E7CLjb9mDfo4nh7AGeFEuGi+PZKNqT5QI9VD44GxhVVZD
- gqKA==
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wSYqG-0002Sl-NI
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 07:24:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wSYqC-0004rx-FS
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 07:23:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779967434;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=vEc99dVBYHFovn4jM6dMr8Mo0YEo+VlxEaTA/0juKnM=;
+ b=EFP1JwHXHCgs+HcKJbYWoCjt8qRPesuB7rA5kxH/FuErwa86PnzhZhNWB/ksNG0tNg8Ux9
+ qUEY960BgnBCbpyirNCHiZwGONJaPTY7f/40aGvgTS+bbFWb4Ao/T+H1sSyCVET9kq1TUK
+ /x61QES3dh7arijvxEhHk5uf02qtJV4=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-137-_pS9bQApNti41hUEJkFo3Q-1; Thu, 28 May 2026 07:23:53 -0400
+X-MC-Unique: _pS9bQApNti41hUEJkFo3Q-1
+X-Mimecast-MFC-AGG-ID: _pS9bQApNti41hUEJkFo3Q_1779967432
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-490402ae2c1so64849165e9.0
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 04:23:52 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779965445; x=1780570245;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=9rkKefH7qkaM7PYGtNz39Smfm7od6r4vxNbFh/5YrUA=;
- b=CN0GZdAwuZaXXi8cA8RgLKL/sRF/YxarGUHPFS8jiB3I2BPKD8sN6jO2lAL+9BQws+
- isLqcqmS4FdZvFiN9WmWVIsdNOJlp9MET9UueRppO3UFa4CDkM7YrjtznaS3q45JJW0Q
- ODrSJf1UUMoHYtO+77xUjkjMo2tA5MfkWEM/9j3K6G6tE4rknGmff62fUa7kYjEFw/yR
- ogxnNoeOkpSEn4FiND9kqPOamU8chabgd0JkWWjCoh8gfI3RGlOr9GaOlp/QssQ7fPe9
- Ci9UXKpmyrKKZuAYvooJX44LlFPXqqYhRkmkEKDCwnJyINOGr52J3hCvFRU5qwQSHINJ
- WVwg==
+ d=1e100.net; s=20251104; t=1779967432; x=1780572232;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+ :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=vEc99dVBYHFovn4jM6dMr8Mo0YEo+VlxEaTA/0juKnM=;
+ b=MtibvH4uCwQ97ZDjDPAEtE/Okkk1tnyUlj+WEJB9s1N89+t0972UrySbUajI9nNdOf
+ Dg75O6sv1VPknpJoRZtWo5IVZFqDNBj/q6xfWd7yg86gzvps9lAH7LXu1E9xjyBPwgLz
+ pGB7Dsf6e82Gp5v8Y3ka+rl2j7MrPFsCjmRiq7OYsIqp1eQib75taIykRvDDU4RSpIr0
+ xe892vlOZNb9qqfoNpM6XAk2d01OcXSWWYAUF7R2YpTfr34IHdm93QFg1bF5mJ4G06Xm
+ dq5y7hrXJd5M6F/yEDeuWiYSb8caaFoHt1VPL9EsvBTLhrBrudNLp/N3uZzqjOCtHOGF
+ 78rQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/yUkLAa948IAdYpWMKWNOa5et34inytVkCtIWDgDaXYUf9hd3sOq/BowLcXp/Xd5miMiwT8NoPkg==@nongnu.org
-X-Gm-Message-State: AOJu0YwWH3jEZz5r7T2S90eWyLi44daHWxGq1sU7rRL+RMlVXPvEYMzX
- JK1Eax5qnm6o01Wb3ZgBHXdYGn1xdqgi+duBasOmAmBwU5DDy6/c24vqr/AWbBFwotljt3Bxu6p
- kYxdUm7AZd6NSY2y73kNDrJTl5UmlEeyHbG2DmK0kjw==
-X-Gm-Gg: Acq92OFV4S4wcQP7IVfAzomaQ5BGPcJM5kas7ZsLeCMTcBCImkOqGJN+s9AEd2zrAuM
- kGPruc26BS0mEnzxOHCNvJTOvqQszEyIXhQXajoYGXjoJ+9Egb3/Z9vxSUqez5Sr/bZH8NB7n8f
- ULeJzqK/EPDy0h5cSTzOrYENudAP8ZCbbv2EUPO1UAIhmvIOpO9EFoF8sYVsjWl5/x4rCkjXpsM
- PmMhyTfpRzEoCTclXI4a+uR+oFe0wnkYTe2srKMjCh6p0iEKmIZpVZ46LSfmEOIBDxcKEd1BQhX
- ZkLulimoqtDxPlDXi1gEztyXk/e0j/HdSeycVqjXQdIgUwEMhaT0K+DIxvfNlolBdQZRP2Dq+j7
- hrg==
-X-Received: by 2002:a53:acd3:0:20b0:65e:3bde:7c14 with SMTP id
- 956f58d0204a3-65ec98abf9emr19937828d50.32.1779965444708; Thu, 28 May 2026
- 03:50:44 -0700 (PDT)
+ AFNElJ/tQITn3Vlzz284qP/mOSXSSa2+a9gC+ff3bEU4WaGF5pKm2X1dNSBQFSULcKDLIo0I/6PPlzpg6Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yy8suaHzqrlW22ZJI5dLY9yUNyxQf8M7cAK5hXI/rlFBOvIeTy6
+ 95jfbrG0+5kwf8sffv+L+udcF5Jw98pKoP4Rdo7Su8wvu7ni00KU1TPOh8l6CO3/sAkVHDCOhqA
+ 3+Wr7NeJq/ODxYPa8BmAQf3DS4SD99193mFnH4MiNi7RRfRYkzDoB9g==
+X-Gm-Gg: Acq92OGmdMSj/GxW0oHVCgG0dM6/oTDDbxplMyl+g0b5SFPzVpx09O+FJPz8fRZ0/1N
+ ZT91/0AIBd7OaM//c8IeiaSDIgQeHnkUEF5OZidbYd0LAfTD19CnW83zXn+jVzcadU2bMZuJl0d
+ OzHiIT2vfU5pK7pKwpgHjUF5bNR/Hpb1Od7O1svWavhpreLlBgagl1uIG6uysnnThh5hpQxBNN2
+ AgNPSJmpzYDM3QWwv+bOjzN3IR41DvK3fwPi9h92pGA077TgAZMeHD2gPz9GJERMWlbJ3LdzQsV
+ yp24P/OVcT01MWnufBMkxaPw91prVi7MEBKi/b4snhniE1vvwdPQvUPJ0pD871XfD270cP92m+a
+ yBOX1uWhHmWMYiiHEYucOJCSbFR+PPuVZN0QPQqKwqgLbOJX+jVoJyvnqbkW5SAglNtm8Vlzb6i
+ wMNZb5DA==
+X-Received: by 2002:a05:600c:8214:b0:490:5000:917 with SMTP id
+ 5b1f17b1804b1-490947855eamr18587225e9.1.1779967431859; 
+ Thu, 28 May 2026 04:23:51 -0700 (PDT)
+X-Received: by 2002:a05:600c:8214:b0:490:5000:917 with SMTP id
+ 5b1f17b1804b1-490947855eamr18586645e9.1.1779967431309; 
+ Thu, 28 May 2026 04:23:51 -0700 (PDT)
+Received: from rh (p200300f6af2a6100f239e076bbd76784.dip0.t-ipconnect.de.
+ [2003:f6:af2a:6100:f239:e076:bbd7:6784])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4908b59c53asm15178305e9.6.2026.05.28.04.23.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 May 2026 04:23:50 -0700 (PDT)
+Date: Thu, 28 May 2026 13:23:49 +0200 (CEST)
+From: Sebastian Ott <sebott@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+cc: mst@redhat.com, Eric Auger <eauger@redhat.com>, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH] hw/arm/virt: preserve config for ACPI PCI hotplug
+In-Reply-To: <CAFEAcA-PkO3aeGoaAzpbJGrrE-_-RjJy9Q4D4MnQ=9W61--3hA@mail.gmail.com>
+Message-ID: <582348f6-c128-96b6-4d40-1c078e24038d@redhat.com>
+References: <0de640a2-8807-69cf-4429-672263e3e759@redhat.com>
+ <CAFEAcA-PkO3aeGoaAzpbJGrrE-_-RjJy9Q4D4MnQ=9W61--3hA@mail.gmail.com>
 MIME-Version: 1.0
-References: <20260518-pr-pacbti-v1-0-8932a885b03d@foss.st.com>
-In-Reply-To: <20260518-pr-pacbti-v1-0-8932a885b03d@foss.st.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 May 2026 11:50:33 +0100
-X-Gm-Features: AVHnY4KJRmcjERNiffgoDdYHdUlGdwxutkidaNwXeY929YG_M0Vlg0VGmaz-2xs
-Message-ID: <CAFEAcA-EVi2K2=LgZ4QZXoX7qQAg8j7mCphWostTmpVtBzTJvw@mail.gmail.com>
-Subject: Re: [PATCH 0/3] target/arm: add support for Cortex-M pointer
- authentication code
-To: =?UTF-8?Q?Torbj=C3=B6rn_SVENSSON?= <torbjorn.svensson@foss.st.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: jJ-iKjUeCF8hgExLEtC4TdhapquAjko5Z2cWlXB1i1Y_1779967432
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,57 +111,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 18 May 2026 at 17:16, Torbj=C3=B6rn SVENSSON
-<torbjorn.svensson@foss.st.com> wrote:
+On Thu, 28 May 2026, Peter Maydell wrote:
+> On Thu, 28 May 2026 at 10:23, Sebastian Ott <sebott@redhat.com> wrote:
+>>
+>> ACPI PCI hotplug of a PCI device using a bar > 2M fails on ARM
+>> with a resource allocation failure in the guest kernel (Linux):
+>>
+>> qemu-system-aarch64 [..] -device pcie-root-port,id=rp1,bus=pcie.0 \
+>>                     -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on \
+>>                     -pflash /usr/share/edk2/aarch64/QEMU_EFI-silent-pflash.qcow2
+>>
+>> (qemu) device_add pci-testdev,bus=rp1,membar=4M
+>>
+>> [   55.106283] pci 0000:01:00.0: [1b36:0005] type 00 class 0x00ff00 conventional PCI endpoint
+>> [   55.107627] pci 0000:01:00.0: BAR 0 [mem 0x00000000-0x00000fff]
+>> [   55.107864] pci 0000:01:00.0: BAR 1 [io  0x0000-0x00ff]
+>> [   55.108015] pci 0000:01:00.0: BAR 2 [mem 0x00000000-0x003fffff 64bit pref]
+>> [   55.118609] pci 0000:01:00.0: BAR 2 [mem size 0x00400000 64bit pref]: can't assign; no space
+>> [   55.118653] pci 0000:01:00.0: BAR 2 [mem size 0x00400000 64bit pref]: failed to assign
+>> [   55.118671] pci 0000:01:00.0: BAR 0 [mem 0x10000000-0x10000fff]: assigned
+>> [   55.122828] pci 0000:01:00.0: BAR 1 [io  0x1000-0x10ff]: assigned
+>> [   55.127090] pci 0000:01:00.0: BAR 0 [mem 0x10000000-0x10000fff]: releasing
+>> [   55.127098] pci 0000:01:00.0: BAR 2 [mem size 0x00400000 64bit pref]: can't assign; no space
+>> [   55.127102] pci 0000:01:00.0: BAR 2 [mem size 0x00400000 64bit pref]: failed to assign
+>> [   55.127106] pci 0000:01:00.0: BAR 0 [mem 0x10000000-0x10000fff]: assigned
+>>
+>> This behavior is exactly the same on x86 - except the busses are created
+>> with a default window size of 256M there. If the PCI devices being
+>> hotplugged use a bar > 256M you get the same failure like on ARM.
+>>
+>> The workaround on x86 is to specify "pref64-reserve=" for the PCIe
+>> root-port. On ARM this is currently ignored.
 >
-> Testing an arm-none-eabi GCC toolchain using QEMU gives unpredictable
-> test results for some test cases. In the GCC testsuite function
-> check_effective_target_arm_pacbti_hw, the testsuite tries to identify
-> if the target supports PACBTI instructions. The test consists of:
+> From the perspective of somebody who doesn't know much about
+> ACPI or PCI, this commit message doesn't really tell me why
+> QEMU needs to change. The above reads like "this is a kernel
+> problem" to me. Why is the kernel unable to allocate this BAR?
+
+DSM #5 defaults to 1 on ARM which tells the OS that it could
+ignore the firmwares PCI configuration at boot time. Linux is
+just doing that. The acpi pci hotplug controller can't find a
+sufficient resource window of the parent bus and resource
+allocation fails. DSM #5 == 0 tells the OS to not ignore the
+boot time config from firmware.
+
+>> The following patch changes ACPI DSM #5 to return 0 (only when
+>> ACPI HP is used) which basically tells the guest kernel to keep
+>> all PCI resource allocations.
 >
->         __attribute__ ((naked)) int
->         main (void)
->         {
->           asm ("pac r12, lr, sp");
->           asm ("mov r0, #0");
->           asm ("autg r12, lr, sp");
->           asm ("bx lr");
->         }
+> If this makes things work why isn't it the default for all ACPI?
+> Why doesn't the kernel ignore the ACPI table setting and do
+> the thing that works all the time? Do we break some other use
+> case by setting it to 0 ?
+
+From what I was able to find in the archives this has been tried
+before but led to regressions for legacy devices:
+https://lore.kernel.org/all/20210724185234.GA2265457@roeck-us.net
+
+It was recently selectively enabled for accel SMMU - I guess the
+rational was that you don't use accel SMMU with legacy devices:
+45c57eaefd hw/arm/virt: Set PCI preserve_config for accel SMMUv3
+
 >
-> Running the above code in QEMU will cause LR to get corrupted.
-> The reson for the corruption is that AUTG overlaps with the SMMLA
-> instruction, and SMMLA will write the result to Rn, that for
-> `AUTG R12, LR, SP` happens to match `LR`.
-
-If the test case is expecting to be able to run on any M-profile
-CPU, this is a bug in the test case. The AUTG instruction is
-specified as being UNPREDICTABLE if the DSP extension is implemented
-and the PACBTI extension is not (and to UNDEF if neither extension
-is implemented).
-
-(We could consider making the QEMU behaviour for these
-UNPREDICTABLE cases in SMMLA etc be "UNDEF" rather than
-"write to the PC/LR"; we choose to handle this kind of
-UNPREDICTABLE decode that way for other insns already.)
-
-> The solution to the above problem is to define the following new
-> Cortex-M instructions in QEMU:
+>> ------->8
+>> From 92cd64b8398f13e51b67ff8baf62f15cac300c94 Mon Sep 17 00:00:00 2001
+>> From: Sebastian Ott <sebott@redhat.com>
+>> Date: Wed, 20 May 2026 10:39:26 -0400
+>> Subject: [PATCH] hw/arm/virt: preserve config for ACPI PCI hotplug
+>>
+>> Change ACPI DSM #5 to return 0 when ACPI PCI hotplug is used
+>> to tell the guest kernel to keep all PCI resource allocations.
+>>
+>> This allows to use the pref64-reserve= option for pcie-root-ports
+>> and thus enables hotplug of PCI devices with a barsize > 2M.
+>>
+>> Signed-off-by: Sebastian Ott <sebott@redhat.com>
+>> ---
+>>   hw/arm/virt.c | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index b090233893..293a0c2163 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -1094,6 +1094,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+>>           pcihp_region_index = sysbus_mmio_map_name(sbdev, ACPI_PCIHP_REGION_NAME,
+>>                                                     vms->memmap[VIRT_ACPI_PCIHP].base);
+>>           assert(pcihp_region_index >= 0);
+>> +        vms->pci_preserve_config = true;
+>>       }
 >
-> * AUT
-> * AUTG
-> * BXAUT
-> * PAC
-> * PACBTI
-> * PACG
->
-> This patch series only implements the pointer authentication code part
-> of PACBTI. The branch target identification part is not implemented.
+> If we set this here, do we still need to set it in
+> virt_machine_device_pre_plug_cb(), or is that now redundant?
 
-I think that overall we need the full PACBTI implemented -- we
-can't advertise it in the CPU ID registers but only implement
-part of it, or only implement it for user-mode and not for
-system mode.
+I guess you can use accel SMMU without acpi pci hotplug and vice versa.
 
-thanks
--- PMM
+Thanks,
+Sebastian
+
 

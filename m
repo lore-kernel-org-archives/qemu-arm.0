@@ -4,99 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F021CD5BD1
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 10:23:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D53BACD6E44
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 10:40:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSXtR-0004As-MM; Thu, 28 May 2026 06:23:13 -0400
+	id 1wSYA6-0008VQ-SG; Thu, 28 May 2026 06:40:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSXtP-0004A9-Nw
- for qemu-arm@nongnu.org; Thu, 28 May 2026 06:23:11 -0400
-Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
+ id 1wSYA3-0008Qp-6U
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 06:40:23 -0400
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSXtO-00067Y-4y
- for qemu-arm@nongnu.org; Thu, 28 May 2026 06:23:11 -0400
-Received: by mail-yx1-xb12a.google.com with SMTP id
- 956f58d0204a3-65dd9b25829so9989699d50.3
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 03:23:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779963789; cv=none;
+ id 1wSYA0-0000xF-VA
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 06:40:22 -0400
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-7dc78af7371so6779497b3.1
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 03:40:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779964818; cv=none;
  d=google.com; s=arc-20240605;
- b=eikZweiXLBWno9g6H2viTZRtSWRwjzY6wbNt24KbwNudZiCjqIx0+cTCVfjRcmpuGw
- 4uAUNY9/ac3szK6YAOxSYqirOs8ou9W01Ef+KGoFY5SVayCehKy2r/JEmNpH5hVDMYET
- QLAoZZ3ozwnvGakLNsYxB0WtQuu3fN1J5U0BfbtnWSM/DchafT0qIs0ufqDWW9VLuviw
- 3NiJnIdg+4PhNVNiaa26za6qfM+SCzyaxfOnL4Vo6zUGR3jAWcIaFgPncOyhETpe8E3z
- QDB+9OlMLkrNXvhVrl0BPEcVJ9NeP3raEsd7kYm+2NxNgrQiJGtfhDOq+N6owzVYSqnm
- erhg==
+ b=QY1WyucTV9IEIWedcTL4wg2lqQs/0vn/leITbvALqM3WvXnJSlFc5vtWRaYT0+rTwx
+ HELdC1EcurUB/F9RrMtUdqfCguI5dthfkec9/9S6k9yZ2zbWWaaPMakUOz8L4TTSXICA
+ 8VGe4ccGQt5u7SjPj96fUn8m0wjoZw1vkwqMkZVZxwM+z3WcchyS2yc0tV/874pMo+n9
+ kmEp9z/c3iMMQTT0bzHwz/wXMYrF3ywg2Gg0nBKns93acTPPdcghZhQXPdAgl6X9UUtr
+ hSbYXLEZo5NrUAzibEG9O7izSz8nd8FBkUghbV1wqM0qCRRsDM2bB9H+n+maEtywHOAy
+ Z/PA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=Ih0tAGC2oD+ODfyMV7mnUd5xBZ1bDG8Oxezd/MEAjeM=;
- fh=vvlJL5482+iXfQddQAecQWAhD9V9NLZArLzHsjLn1B0=;
- b=Urhy6ACJXdqX6LpRDhdridWCeMZGzZF/bJJAUSnCJBk88fPzxWCVg60KTpIiDLKjC8
- SYFoddO6rPjdmp+HjcBUMrvf2i5xxHNFaNGOzpe5btCGQn0WFlPBwPGGWxco4loH/DrW
- qVO8M37errt6aRNI06JdLiCK5ySR7u+AVh3X2ZCgNyC0IEFET1bXtfeLHzDImqixAO/e
- iT1xoVZmjkM55LkKt0/Z90wELbHKhgh2iPSBJ/KIGRhcBGm0Mq3j+8yVXI/srlHhHckH
- GpSw2y+QeQnZToFTmbGZFLnvOw6A2pWAQXazJx9Pb8Wm1Wm7Gh5LKMTToErTIUUhBByD
- aLTw==; darn=nongnu.org
+ bh=QhrKEQNZQJwZJj4PFhQODbUrn0jnDsRifxb+Tmoq+SU=;
+ fh=vqp4YhocgafDhBM4fkwQQarApoS4MErnJ/RyESerbz8=;
+ b=hdLl5J1F/lk0r6nKaBX2IiCCqGQxd4uC0jiT+UvtH6VWoSz1/u5y+iH0fSN3iZxKR+
+ wDt279mVJlut/AMa2p8i2RyLyEfkY3AjFRKR6zT1T5mx9AMUKFYdQK++Fo0L/KkFG4mK
+ ax2U8udjGsPgnj5qsRYbUcv/LKoQJ68Pspm+IwWiwiGXpnrxmOFwmOKkzPZDH+7rum+T
+ wYlSFIUbNXy1EuD29lfyQL+dlPimxaL5aCUlsb+EumlXxpnuxA3AL7HjRvNp6fD86WDv
+ aswa4gSok1B0zL+PzBFSaP6cJFJiZO7n2rwGG1mDkaPXu0UFOdEoj9gQY8LusFOuyyYl
+ Yj7A==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779963789; x=1780568589; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779964818; x=1780569618; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Ih0tAGC2oD+ODfyMV7mnUd5xBZ1bDG8Oxezd/MEAjeM=;
- b=nbAfmwllpdqt6R6FbbG5mlNf68PXMCe3hJHi+FL/a6MKcvZiyVd6SRxrXGsFDGONqN
- yIiSdBPAIXT8SuBgoHOBzhEUZxTWj4YCIez/YWHl5JegXTerhYiJFBUEv6WE10DeYobB
- Ve0fLIWTRfx0ydpF2QyUaMu2H5GCQHFb0rsZud7ro46vHZLE5t3j0ECJXmqk1AyRVS9m
- FqDoCqobh+IdUReANkocGc3Iu49z+WntxZH2DQ7wYKL+wtfkhWOr+cyv5dw8bBc5EL3d
- MJfYUHwM4D8ZFmWo0mfQ3HD9sXOqeG3LaMLFdZQIP9W3NKVJAtK5Pz7tUULZ1EO9JBEw
- 6cYA==
+ bh=QhrKEQNZQJwZJj4PFhQODbUrn0jnDsRifxb+Tmoq+SU=;
+ b=Y2GcHbFuJcuFuj8L26ifLQWi92lUgqWSME4m/Ziz464aMLcnEBs50IQIS9TvaIVLhI
+ kPaiKukezoeC4WVHIEA33PFyuAsoTJV6Z5FnDfk4Y8nNMnsssWc8piu7b2OnOBmqchRc
+ U1Lri8bDxSIDlKs16oye8o9Xpr7IxnqyURhKzA+4of1JMzUKAT0lju6yWfK2T5bqjhCZ
+ gynG6Po0sYPbaf5wWmvbnTgzRIyn9xDcjwMY/ssm8guq2k+irb1K41iDX+/LzhHCGNGa
+ E6Dro6BmkFCpkHZ1cpiooIhUIUtmfgP0eykOwRyMAKxzc5b78vfEuodJY5DIJ8UHaYnh
+ Xwbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779963789; x=1780568589;
+ d=1e100.net; s=20251104; t=1779964818; x=1780569618;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Ih0tAGC2oD+ODfyMV7mnUd5xBZ1bDG8Oxezd/MEAjeM=;
- b=hrP//eM8lFSWttZ5TsdpLzetNgsFnElOTZelfkNnw9Chiei/nGvzGo6XioKjvrVOtz
- E9ATJPh4uTm+OveuLjruPFp9GabxmDMa4Xw233IDbl54hhJLmXslgL7vkgLUUskhs+nb
- GhkfDQsMoqV7GQYL7aOwH+Tx/sNtIv5ART0cuWFCJYRWJbKUl3jjfYLy4tJxbowwCmBM
- jxkkW3h9DU3HiGAcMHe0WLegSPHToN2njL+Y9aw9N/Abh2ySRHauECDMAZHjXuKRl9V8
- xG3GQ7XNjNE0Ld7rA2u/61VVMiN6S8AJ1kHFyGPFKifuKqvbfr021skFpDVZYCAYcwWZ
- 9zHA==
+ bh=QhrKEQNZQJwZJj4PFhQODbUrn0jnDsRifxb+Tmoq+SU=;
+ b=snNpK+ucNiaNsHmmrAgSwW9+/e8XbLx1kJBSsH1wXiSJbZuM0eeRwe2CKq1b56tvaO
+ AcOslKZfknvIlmDiNbM3TiKlH7sdsEdP25ZzIsQoRrJqoytiUBUogZoHNiEUs1r/2QAL
+ pV6pUnw/J69jmO+mmWboXHUeHoWGFd+UAYsKXVqGvnwrXQnQxAdax0K6SU9eisAQXh9X
+ fnRDpvanwVOVdrv0xjUPCHbxqpSw/RYRQms4n2DWz76c2F1MfwF0ecN9KUcaxMe6fu5q
+ Fk9+p4aKgaNbG7aJi7aNBK3RbtEa2Ll3eiWgL6JPbQ4s7cLunZ4QJ/GIZNbxOGYYXE40
+ wSvw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9ZYqvKuW1DDx4/kIS7oukA5KpgBAntJyi8Nmjv/EGYZOhnz+9DtX1WH2Cet4OTr9xh7gKytI5GkQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy4FMVsFOOQ/Y7FDVEJswgQDID0r10sb5h0sA3crGBBSlYXt9br
- /aFaMLHAW3jjmtTwBwesnrx7UeI5sAc0l+UGstCcYmSmivOkm4+0VlYXGjIvS0riHn1UozLXsiV
- TsYxSoSI+Dkk25ogCMsC7d1zyjocLIBF4abOUys9IHQ==
-X-Gm-Gg: Acq92OH5DgOTd7OMvnoXI9YQFO+RZQVMWH+eFKJfHIlcpjS2DEsoHAV9fgot8Y1uykc
- OJfTHJ0CM/eF7Lj5EUQ8Io1ajoqIjJvHqiQQDBwKGrdsGYp3iRnokSxzoHosYgrpbkMaFWQev/5
- TcFJCqYmjdm4vBhiOCXEXisFMK19ULT6MpAbcfLpmj4bTzjJZgSnf1LI0QhwZ55eqmn+T3bZFpY
- M4L+eV00CTjf8iSLfJSMwBvGtwrCPF1qUtuk2yfusJCNX5ddr0ir+5QLT71lhU7JwfelVfLNu5z
- VIaTJWavHksLOiTA3KmKh6+pQDnAy38E0NHQZ4b/POwUwAIjp+vw6y/1noE07N3LKyHrqZdKI47
- gycqH8BwsaqJJ
-X-Received: by 2002:a53:ac83:0:b0:65d:6f10:d42a with SMTP id
- 956f58d0204a3-65ec98a9bbamr25888606d50.39.1779963788854; Thu, 28 May 2026
- 03:23:08 -0700 (PDT)
+ AFNElJ+OLHHQeIHhk8/SmXV+gHwQUoAbTCQdg8EUwrS21AyVPiibMmwi3foINf/LNiSTsVty0VZQs3UveQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy4ksBQnaHNAx6rgn45uG/JpUMsEIlkM7makveWtmqypoDADUL5
+ saOWDCixd8fPdbM2hTN3gkO5wuudF85ASF2g7DD2R/QO1JAdiiThKmyjsSxE0f6VtgacTBO35K8
+ KbSYY+RFxMYgIUBa9O35+l5lGFAluex/PKdWw1mz8sw==
+X-Gm-Gg: Acq92OF4M/R6bqT8b5uyxF+EAnXPDf6lGj2XihSYnPT9xAuv2kjaql7cW0vaKB13G9N
+ 8/uDdlJ0dU5o3LL14wpTv+5xX6XvxoXhPibZ7mkGuA5sBH0gUmr0+PURXvpXUlwx58eXRWrRq8J
+ YkF8GJ6BBHD843u/2yxg8okPoMXH+zkAt9pqSfQgIwEsuI6chRhlEJjxCVz73JiSiOCwui2kvsF
+ Lk+0/LXN6kwhpgbjyZJdbAFWYDt67JpP9bbNIPlT4ReJ15cbN2T9nmJdAdve7WQtu611wvw/Q2q
+ cbdwPrTEUBoViQmJJwDCVqzIkB27uLEnDMe6bfBhEpxTIAIv+Bd/i45S27Uq9I3mnMuJ7JGJq29
+ wGA==
+X-Received: by 2002:a05:690e:12c7:b0:660:3a2b:73c with SMTP id
+ 956f58d0204a3-6603a2b0c9fmr2878519d50.25.1779964818523; Thu, 28 May 2026
+ 03:40:18 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260518-pr-pacbti-v1-0-8932a885b03d@foss.st.com>
- <20260518-pr-pacbti-v1-1-8932a885b03d@foss.st.com>
-In-Reply-To: <20260518-pr-pacbti-v1-1-8932a885b03d@foss.st.com>
+ <20260518-pr-pacbti-v1-2-8932a885b03d@foss.st.com>
+In-Reply-To: <20260518-pr-pacbti-v1-2-8932a885b03d@foss.st.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 May 2026 11:22:57 +0100
-X-Gm-Features: AVHnY4LaMlxtA_Q4sNPBjupH8IL1E5jUJirlGtiw_jqw0bNDL6TKUDmhL6jJDXs
-Message-ID: <CAFEAcA_LcEO1J8gC5kpAVeiQ-pNEr2oNsdmx_NeEZhLgbstjNQ@mail.gmail.com>
-Subject: Re: [PATCH 1/3] target/arm/tcg: define cortex-m85 cpu
+Date: Thu, 28 May 2026 11:40:07 +0100
+X-Gm-Features: AVHnY4IS_4fEMPfoGyXrbvJy8U5Zh_40Ncd9TnhaHGM26G05DGm83BsAM_1QPQU
+Message-ID: <CAFEAcA-n3CLVsdze_tQSLVDrs9+AcOKga70g_0Tc=QrWSsxhYg@mail.gmail.com>
+Subject: Re: [PATCH 2/3] target/arm/tcg: add PAC related instructions
 To: =?UTF-8?Q?Torbj=C3=B6rn_SVENSSON?= <torbjorn.svensson@foss.st.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,39 +122,99 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On Mon, 18 May 2026 at 17:16, Torbj=C3=B6rn SVENSSON
 <torbjorn.svensson@foss.st.com> wrote:
 >
+> This commit adds the pointer authentication instructions from the Arm
+> v8.1-m PACBTI extension.
+> While the instructions are properly recognized, they are all NOPs.
+>
 > Signed-off-by: Torbj=C3=B6rn SVENSSON <torbjorn.svensson@foss.st.com>
+
+I think it's worth mentioning in the commit message that we previously
+decoded these as SMMLA, and that changing what we do is OK because
+for v7A and v8A these SMMLA etc encodings say that Rd =3D=3D 0b1111 is
+UNPREDICTABLE.
+
 > ---
->  target/arm/tcg/cpu-v7m.c | 40 ++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 40 insertions(+)
-
-This patch should go last in the series -- first add
-all the new features the CPU needs, and only then add
-the new CPU, so there isn't a window where the user can
-select the new CPU type but it isn't completely implemented yet.
-
-> diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
-> index dc249ce1f1..5cfda232cd 100644
-> --- a/target/arm/tcg/cpu-v7m.c
-> +++ b/target/arm/tcg/cpu-v7m.c
-> @@ -237,6 +237,44 @@ static void cortex_m55_initfn(Object *obj)
->      cpu->ctr =3D 0x8303c003;
+>  target/arm/tcg/t32.decode  | 21 +++++++++++++---
+>  target/arm/tcg/translate.c | 62 ++++++++++++++++++++++++++++++++++++++++=
+++++++
+>  2 files changed, 80 insertions(+), 3 deletions(-)
+>
+> diff --git a/target/arm/tcg/t32.decode b/target/arm/tcg/t32.decode
+> index 49b8d0037e..a885eed101 100644
+> --- a/target/arm/tcg/t32.decode
+> +++ b/target/arm/tcg/t32.decode
+> @@ -263,6 +263,7 @@ BFCI             1111 0011 011 0 .... 0 ... .... ..0.=
+....     @bfi
+>  @s0_rnadm        .... .... .... rn:4 ra:4 rd:4 .... rm:4      &s_rrrr s=
+=3D0
+>  @s0_rn0dm        .... .... .... rn:4 .... rd:4 .... rm:4      &s_rrrr ra=
+=3D0 s=3D0
+>  @rnadm           .... .... .... rn:4 ra:4 rd:4 .... rm:4      &rrrr
+> +@rna0m           .... .... .... rn:4 ra:4 .... .... rm:4      &rrrr rd=
+=3D0
+>  @rn0dm           .... .... .... rn:4 .... rd:4 .... rm:4      &rrrr ra=
+=3D0
+>  @rndm            .... .... .... rn:4 .... rd:4 .... rm:4      &rrr
+>  @rdm             .... .... .... .... .... rd:4 .... rm:4      &rr
+> @@ -319,9 +320,18 @@ SMLALDX          1111 1011 1100 .... .... .... 1101 =
+....      @rnadm
+>  SMLSLD           1111 1011 1101 .... .... .... 1100 ....      @rnadm
+>  SMLSLDX          1111 1011 1101 .... .... .... 1101 ....      @rnadm
+>
+> -SMMLA            1111 1011 0101 .... .... .... 0000 ....      @rnadm
+> -SMMLAR           1111 1011 0101 .... .... .... 0001 ....      @rnadm
+> -SMMLS            1111 1011 0110 .... .... .... 0000 ....      @rnadm
+> +{
+> +  AUTG           1111 1011 0101 .... .... 1111 0000 ....      @rna0m
+> +  SMMLA          1111 1011 0101 .... .... .... 0000 ....      @rnadm
+> +}
+> +{
+> +  BXAUT          1111 1011 0101 .... .... 1111 0001 ....      @rna0m
+> +  SMMLAR         1111 1011 0101 .... .... .... 0001 ....      @rnadm
+> +}
+> +{
+> +  PACG           1111 1011 0110 .... 1111 .... 0000 ....      @rndm
+> +  SMMLS          1111 1011 0110 .... .... .... 0000 ....      @rnadm
+> +}
+>  SMMLSR           1111 1011 0110 .... .... .... 0001 ....      @rnadm
+>
+>  SDIV             1111 1011 1001 .... 1111 .... 1111 ....      @rndm
+> @@ -375,6 +385,11 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 =
+....      @rdm
+>          # SEVL   1111 0011 1010 1111 1000 0000 0000 0101
+>
+>          ESB      1111 0011 1010 1111 1000 0000 0001 0000
+> +
+> +        # v8.1-m PACBTI extention
+> +        AUT      1111 0011 1010 1111 1000 0000 0010 1101
+> +        PAC      1111 0011 1010 1111 1000 0000 0001 1101
+> +        PACBTI   1111 0011 1010 1111 1000 0000 0000 1101
+>        ]
+>
+>        # The canonical nop ends in 0000 0000, but the whole rest
+> diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+> index c744b16345..ae1351ef03 100644
+> --- a/target/arm/tcg/translate.c
+> +++ b/target/arm/tcg/translate.c
+> @@ -5012,6 +5012,68 @@ static bool trans_SMMLSR(DisasContext *s, arg_rrrr=
+ *a)
+>      return op_smmla(s, a, true, true);
 >  }
 >
-> +static void cortex_m85_initfn(Object *obj)
+> +static bool trans_PAC(DisasContext *s, arg_empty *a)
 > +{
-> +    ARMCPU *cpu =3D ARM_CPU(obj);
-> +    ARMISARegisters *isar =3D &cpu->isar;
+> +    if (!arm_dc_feature(s, ARM_FEATURE_V8_1M)) {
+> +        return false;
+> +    }
 > +
-> +    set_feature(&cpu->env, ARM_FEATURE_V8);
-> +    set_feature(&cpu->env, ARM_FEATURE_V8_1M);
-> +    set_feature(&cpu->env, ARM_FEATURE_M);
-> +    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-> +    set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
-> +    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
-> +    cpu->midr =3D 0x411fd230; /* r1p0 */
+> +    /* Handle as if PACBTI is disabled. */
+> +    return true;
+> +}
 
-The most recent release is r1p1, so we might as well model that:
-0x411fd231.
+I think the patchset would be clearer if we implemented
+the insns (in whatever combinations make sense) in the same
+patches as we add their decode, rather than adding decode
+only in one patch and then implementation later.
 
 thanks
 -- PMM

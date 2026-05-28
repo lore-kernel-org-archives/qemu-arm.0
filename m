@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE982CD5BD5
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 17:18:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D192CD5BD5
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 17:18:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSeMp-0006hx-RM; Thu, 28 May 2026 13:17:59 -0400
+	id 1wSeMh-0006be-Dc; Thu, 28 May 2026 13:17:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
- id 1wSeMT-0006VV-EG
- for qemu-arm@nongnu.org; Thu, 28 May 2026 13:17:38 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1wSeMM-0006TT-S4
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 13:17:34 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
- id 1wSeMO-000497-UD
- for qemu-arm@nongnu.org; Thu, 28 May 2026 13:17:37 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-45eebccc346so580787f8f.0
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 10:17:32 -0700 (PDT)
+ id 1wSeML-00046s-1U
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 13:17:30 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-45ed9336049so2654736f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 10:17:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779988651; x=1780593451; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1779988647; x=1780593447; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7XlZXXikjZPJNyVBb/rRAGZGRpHVkZDtSGlI/gZ7+vI=;
- b=Y80X80n+FZZVeZY6u62qP0P73ED1RaIOBbfdkmWOxx+hesZAUBUwT8ADjj22pxhzjI
- 1vB2BWmyjvDVQD2rxrRiRYDvaE93Fwhqd7t0b5elP5KGXSCGVup7Tex6/+k1ZK27qE7I
- ldjkU5T/5J0eA35LzsacUbC3QXh1qU75UQdGgOxWAGZHC85Ru3JmS/a+W2yfmOXU800o
- 6sDtBnZJxHqOar8uivsLCujglwPtgzunHUnNBpXdtHLePrb26txtOIbDevHgrSFN5sO9
- rgjWwk4PS+Q9N0UM97wipoFJ02zrOOngUrhgTxFdmTQGwTNmypg/qD51LQ1SZEV7bRHe
- iFxQ==
+ bh=naAjGDZPbJ67GvzkWP49qsFsJVwJRVlvC8LloXp3eNQ=;
+ b=XM+NVbO0YEw3uuFDOEmQBzZaS67KdEl05/0oRqkz3m+Qyg12YZP3O2mSzV8sDCwXhV
+ dnCEU8lrQUnxM6L5YVClLlp18pN8LpSvCK6BIFQc17hPGN1kZvvx9qms7H8xgx7L1RAq
+ 0HXk3hPM5wErxPONiDokucCE0gwXqWs8yA0Kp0P8VEI/iZ21AuM+JQxae6OMiaeqTEcZ
+ D9v6B5BgsGe9xqhXiIqLgH4ugBWNg1F3zfOCxUFzPhcginGo1ERNhHulyqJ6sBkRdzY7
+ GSkGq1XWFCvKFhoBxdVTj43QiBuMRwx4E1uF1/4gs6eUGCloVj6lqB86GVaHuysTmjvy
+ o6Ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779988651; x=1780593451;
+ d=1e100.net; s=20251104; t=1779988647; x=1780593447;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=7XlZXXikjZPJNyVBb/rRAGZGRpHVkZDtSGlI/gZ7+vI=;
- b=BUsjbS8HUQKmbyKNKekzRbNwwaX6ZqesSZ4+k/FiWNwAQsJr1f15k47xLmKgLoEtYo
- O2yPD4PXR+/GM2/8NVib7QR6rVUhR1uxAjjE/aEv/3Zf5PQSBof4CiVo0iWElBB9VUPa
- gJ3f+6M1I0ec1AxuLQPiSTnId7zy+CQR++dRqDmPs74lQLUB8Vq/k9k335cFqZ29vpLR
- 8ZvqqeC2plRsxZCUv4aV1nwsg3laLrNvPCXBX5HtTrJvDF0RjH0msLyzRz13e3BCAA1k
- CXNCsGcvr4KdbUoAxUEEPO6Uteb7MWU+BCO6j4NFj40qDbHjufEeoM8lt6EGc7saBmmv
- fyDQ==
-X-Gm-Message-State: AOJu0Yzgd6w9yjYbHo5zmxszaBkZxjvhC2TmF9wDH0zLho9OGc0oWlrN
- DvSyHM9vsvpkYevLqA/gKd8Yom2dYW1nepSP7s7+Xovol63CcuDdKDOSez6Lvzcz
-X-Gm-Gg: Acq92OF28Wk+9N+H5Niqq2O6CViXojspSnlPeLJNYal0sZb6BpzR4MCXT6dao04mw4n
- 3iDCgJUb2ayMgids2ccB0BCcyz7Mw951lQXn/biucknHV1obf0nCn1uqKR946y8Fo6yd9WmEY6g
- B9prHeElnUDClWZZp0CXfg0eiAawSszn6CKVMZnm+cg+fYudGUVfRPFlY/PJ0IWu6xIBfBPBrgw
- pRnmB6FiLypgJz8Z6w9cHSuFFg81H9N6TLjgukK8bsqgytU64n+JxSQ5KR7plvxJTpMYBSfJEhL
- +sol+KVsyoT6rq6aLawZdrtPIMoIbHzE/ebiWiz/RmmXYaC2s3hiq5wYuUlTqSWRAUax/C07MJY
- Xs1k/ac4uVwKmhx1cLe3eTIPL0hbKFsZomDX5HskMzVd1rVSO3WI1YHLZCB3U00Fnphz+xko94y
- vOjoWpKZLfFVuvranduw7WodfOkdthw0YvD4t+PoH+EzZB3nJ0qoaaIBccXLJWWyYi
-X-Received: by 2002:a05:600c:4ecc:b0:490:3c90:2cda with SMTP id
- 5b1f17b1804b1-490426cef73mr446648735e9.20.1779988651275; 
- Thu, 28 May 2026 10:17:31 -0700 (PDT)
+ bh=naAjGDZPbJ67GvzkWP49qsFsJVwJRVlvC8LloXp3eNQ=;
+ b=bD2c6afdiLnMBcAxYV2vJ3yRv6v2E0hPZPJ2/DsquNm2FcqLN+BB1iyRaB1rhgtAPC
+ 1MjpLdHubHzSwH4XziZvtuKx5ONnok3l5RIFkLs32M0tEa+/Bu2+jYaZJjGASVlzlQuo
+ KkhZD9vkjSL1cLYBwqa4+OS/VdHLoM1Z/+Z4cZm/n0oJYPYvSBLLysjBFJ89CLr8Cgyi
+ BWj4iRYUZll0h93z+ILb3uwXpXQn8khYrXIMr5TVv7kEB2Naxmiucl8ksR9C9OBZNWZ7
+ +3DOBojQ1s0vyexxpk5mVYtWAiTtQCTa+X5Y3l0G6svfFbzcKc8V7SOYtxU8dOUeZXCr
+ zpmA==
+X-Gm-Message-State: AOJu0YxJZq90ne/IEAd13afgaukdVaEiQuDBewr4LlB1/cbqrXDEErXY
+ HhG16NrKq4iZXuW+pJlLqB5kvWgMWNdkOND+dGJ+fdxAznH4Jjxv2KAd
+X-Gm-Gg: Acq92OEUrbRSXYDv49BY0PG16BlTbJh8Yk4kXPZ/EUIgNx5QpMAvMtyf+bt4Vmp8BIf
+ Aky6SAzB5aaUcG6k+aDmbP+yycHFnYbuUSSToIMw6YKxw7zcVT1GZDmoKZHdxVtX3FaC1+oCOZD
+ a6r2yno+HEndaa1q7xCphG8Ll0F/JTwC/4Mbw4pJadWL4Q3+c8a1Zw81FPQC1G7eg9ME03nH+SB
+ Q8btS+UlRrBV1ncLWpl0o3bx8vKcmGekfI4jtcaBZIRtJnmR247oH9Qor49ESir8XP6AaoO11Qz
+ 0PtIacQSJGw3xEJrz8eT7xhTnxq7J/cmeX73kN1S/vfYkcdvFfKcBTXDxrb8BrhWF4kysnOZMVv
+ 61oNFPZiqpZDhNJcYQB64zBUCxjBoTgJ065VoBjobqB4g9vv8bG6XeB5kdxF5VuoaNIGrrJa94k
+ Mi7rnfy5WpGgaehayVHk5rmkGtc8Ip1BgbYi6uxhjvkfgYa1Tsf/gi2DieClp997dkqn6USl+NO
+ NA=
+X-Received: by 2002:a05:600c:1c0b:b0:488:b187:3c with SMTP id
+ 5b1f17b1804b1-490426aa7acmr513786875e9.14.1779988647059; 
+ Thu, 28 May 2026 10:17:27 -0700 (PDT)
 Received: from acidburn.pod.cvut.cz (acidburn.pod.cvut.cz. [147.32.90.2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49092968066sm53774085e9.15.2026.05.28.10.17.30
+ 5b1f17b1804b1-49092968066sm53774085e9.15.2026.05.28.10.17.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 May 2026 10:17:30 -0700 (PDT)
+ Thu, 28 May 2026 10:17:26 -0700 (PDT)
 From: =?UTF-8?q?Maty=C3=A1=C5=A1=20Bobek?= <matyas.bobek@gmail.com>
 To: qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
  Pavel Pisa <pisa@fel.cvut.cz>, Bernhard Beschow <shentey@gmail.com>
@@ -72,24 +73,24 @@ Cc: qemu-arm@nongnu.org, Marc Kleine-Budde <mkl@pengutronix.de>,
  Nikita Ostrenkov <n.ostrenkov@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>, Andrey Volkov <andrey@volkov.fr>,
  =?UTF-8?q?Maty=C3=A1=C5=A1=20Bobek?= <matyas.bobek@gmail.com>
-Subject: [PATCH v4 6/7] tests: Add qtests for FlexCAN
-Date: Thu, 28 May 2026 19:17:16 +0200
-Message-ID: <7363e06de3b8a8eac0e7878bc15a0b9238cce06d.1779986496.git.matyas.bobek@gmail.com>
+Subject: [PATCH v4 2/7] hw/arm/sabrelite: Introduce class SabreliteMachineState
+Date: Thu, 28 May 2026 19:17:12 +0200
+Message-ID: <838e241ffe451b508403a716ff200cb7ae3af564.1779986496.git.matyas.bobek@gmail.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <cover.1779986496.git.matyas.bobek@gmail.com>
 References: <cover.1779986496.git.matyas.bobek@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=matyas.bobek@gmail.com; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=matyas.bobek@gmail.com; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,7 +106,13 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The tests do not test all of the FlexCAN emulator functionality.
+Create full class SabreliteMachineState extending MachineState.
+
+Previously, Sabrelite board MachineState was declared indirectly by the
+DEFINE_MACHINE_ARM macro. FslIMX6State was only instantiated in the
+sabrelite_init function. For FlexCAN device, machine properties
+will be used to select QEMU CAN buses. A custom class is therefore
+required, so the CanBusState "connections" can then be added as fields.
 
 Signed-off-by: Matyáš Bobek <matyas.bobek@gmail.com>
 Signed-off-by: Pavel Pisa <pisa@fel.cvut.cz>
@@ -113,463 +120,95 @@ Tested-by: Pavel Pisa <pisa@fel.cvut.cz>
 Reviewed-by: Bernhard Beschow <shentey@gmail.com>
 Reviewed-by: Pavel Pisa <pisa@fel.cvut.cz>
 ---
- MAINTAINERS                |   1 +
- tests/qtest/flexcan-test.c | 421 +++++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build    |   1 +
- 3 files changed, 423 insertions(+)
- create mode 100644 tests/qtest/flexcan-test.c
+ hw/arm/sabrelite.c | 28 ++++++++++++++++++----------
+ 1 file changed, 18 insertions(+), 10 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 36e056309b..45d5848da6 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2108,6 +2108,7 @@ S: Maintained
- F: hw/net/can/flexcan.c
- F: hw/net/can/flexcan_regs.h
- F: include/hw/net/flexcan.h
-+F: tests/qtest/flexcan-test.c
+diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
+index 04484aaa14..7e036e6388 100644
+--- a/hw/arm/sabrelite.c
++++ b/hw/arm/sabrelite.c
+@@ -20,6 +20,15 @@
+ #include "qemu/error-report.h"
+ #include "system/qtest.h"
  
- EDU
- M: Jiri Slaby <jslaby@suse.cz>
-diff --git a/tests/qtest/flexcan-test.c b/tests/qtest/flexcan-test.c
-new file mode 100644
-index 0000000000..87d947a806
---- /dev/null
-+++ b/tests/qtest/flexcan-test.c
-@@ -0,0 +1,421 @@
-+/*
-+ * QTests for FlexCAN CAN controller device model
-+ *
-+ * Copyright (c) 2025 Matyas Bobek <matyas.bobek@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
++struct SabreliteMachineState {
++    MachineState parent_obj;
 +
-+#include "qemu/osdep.h"
-+#include "libqtest-single.h"
-+
-+#include "hw/net/flexcan.h"
-+#include "hw/net/can/flexcan_regs.h"
-+
-+#define FSL_IMX6_CAN2_ADDR 0x02094000
-+#define FSL_IMX6_CAN2_SIZE 0x4000
-+#define FSL_IMX6_CAN1_ADDR 0x02090000
-+#define FSL_IMX6_CAN1_SIZE 0x4000
-+
-+#define FC_QEMU_ARGS "-nographic -M sabrelite " \
-+                     "-object can-bus,id=qcan0  " \
-+                     "-machine canbus0=qcan0 -machine canbus1=qcan0"
-+
-+/* used for masking out unused/reserved bits */
-+#define FC_MB_CNT_USED_MASK (~0xF080FFFFu)
-+
-+#define FCREG(BASE_ADDR, REG) ((BASE_ADDR) + offsetof(FlexcanRegs, REG))
-+#define FCMB(BASE_ADDR, MB_IDX, WORD_IDX) (FCREG(BASE_ADDR, mbs) + \
-+    0x10 * (MB_IDX) + 4 * (WORD_IDX))
-+
-+typedef struct FcTestFrame {
-+    uint32_t id;
-+    uint32_t data[2];
-+    uint8_t len;
-+    bool ide;
-+    bool rtr;
-+
-+    /* rx only */
-+    bool expect_overrun;
-+} FcTestFrame;
-+
-+static const FcTestFrame fc_test_frame_1 = {
-+    .id = 0x5AF,
-+    .len = 8,
-+    .data = {
-+        0x01020304,
-+        0x0A0B0C0D
-+    },
-+    .ide = false
++    FslIMX6State soc;
 +};
 +
-+static const FcTestFrame fc_test_frame_1_ide = {
-+    .id = 0x105AF5AF,
-+    .len = 8,
-+    .data = {
-+        0x01020304,
-+        0x0A0B0C0D
-+    },
-+    .ide = true
-+};
++#define TYPE_SABRELITE_MACHINE MACHINE_TYPE_NAME("sabrelite")
++OBJECT_DECLARE_SIMPLE_TYPE(SabreliteMachineState, SABRELITE_MACHINE)
 +
-+static void fc_reset(hwaddr ba, uint32_t mcr_flags)
-+{
-+    /* disable */
-+    writel(FCREG(ba, mcr), 0xD890000F);
-+
-+    /* enable in freeze mode */
-+    writel(FCREG(ba, mcr), 0x5980000F);
-+
-+    /* soft reset */
-+    writel(FCREG(ba, mcr), 0x5980000F | FLEXCAN_MCR_SOFTRST);
-+
-+    g_assert_cmpuint(readl(FCREG(ba, mcr)), ==, 0x5980000F);
-+    g_assert_cmpuint(readl(FCREG(ba, ctrl)), ==, 0);
-+    g_assert_cmpuint(readl(FCREG(ba, ctrl2)), ==, 0);
-+
-+    writel(FCREG(ba, mcr), (0x5980000F & ~FLEXCAN_MCR_HALT) | mcr_flags);
-+    writel(FCREG(ba, ctrl2), FLEXCAN_CTRL2_RRS);
-+
-+    /* initialize all mailboxes as rx inactive */
-+    for (int i = 0; i < FLEXCAN_MAILBOX_COUNT; i++) {
-+        writel(FCMB(ba, i, 0), FLEXCAN_MB_CODE_RX_INACTIVE);
-+        writel(FCMB(ba, i, 1), 0);
-+        writel(FCMB(ba, i, 2), 0);
-+        writel(FCMB(ba, i, 3), 0);
-+    }
-+}
-+
-+static uint64_t fc_get_irqs(hwaddr ba)
-+{
-+    return (uint64_t)readl(FCREG(ba, iflag1)) |
-+        ((uint64_t)readl(FCREG(ba, iflag2)) << 32);
-+}
-+
-+static void fc_clear_irq(hwaddr ba, int idx)
-+{
-+    if (idx >= 32) {
-+        writel(FCREG(ba, iflag2), (uint32_t)1 << (idx - 32));
-+    } else {
-+        writel(FCREG(ba, iflag1), (uint32_t)1 << idx);
-+    }
-+
-+    g_assert_cmpuint(fc_get_irqs(ba) & ((uint64_t)1 << idx), ==, 0);
-+}
-+
-+static void fc_setup_rx_mb(hwaddr ba, int mbidx)
-+{
-+    writel(FCMB(ba, mbidx, 0), FLEXCAN_MB_CODE_RX_EMPTY);
-+    writel(FCMB(ba, mbidx, 1), 0);
-+    /* the data value should be ignored for RX mb */
-+    writel(FCMB(ba, mbidx, 2), 0);
-+    writel(FCMB(ba, mbidx, 3), 0);
-+
-+    g_assert_cmpuint(readl(FCMB(ba, mbidx, 0)), ==, FLEXCAN_MB_CODE_RX_EMPTY);
-+}
-+
-+static void fc_tx(hwaddr ba, int mbidx, const FcTestFrame *frame)
-+{
-+    g_assert_cmpuint(frame->len, <=, 8);
-+
-+    writel(FCMB(ba, mbidx, 0), FLEXCAN_MB_CODE_TX_INACTIVE);
-+    uint32_t id = frame->ide ? frame->id : frame->id << 18;
-+    writel(FCMB(ba, mbidx, 1), id);
-+    writel(FCMB(ba, mbidx, 2), frame->data[0]);
-+    writel(FCMB(ba, mbidx, 3), frame->data[1]);
-+
-+    uint32_t ctrl = FLEXCAN_MB_CODE_TX_DATA | FLEXCAN_MB_CNT_LENGTH(frame->len);
-+    if (frame->ide) {
-+        ctrl |= FLEXCAN_MB_CNT_IDE | FLEXCAN_MB_CNT_SRR;
-+    }
-+    if (frame->rtr) {
-+        ctrl |= FLEXCAN_MB_CNT_RTR;
-+    }
-+    writel(FCMB(ba, mbidx, 0), ctrl);
-+
-+    /* check frame was transmitted */
-+    g_assert_cmpuint(fc_get_irqs(ba) & ((uint64_t)1 << mbidx),
-+                     !=, 0);
-+
-+    uint32_t xpectd_ctrl = (ctrl & ~FLEXCAN_MB_CODE_MASK) |
-+        FLEXCAN_MB_CODE_TX_INACTIVE;
-+    g_assert_cmpuint(readl(FCMB(ba, mbidx, 0)) & FC_MB_CNT_USED_MASK, ==,
-+                     xpectd_ctrl);
-+    /* other fields should stay unchanged */
-+    g_assert_cmpuint(readl(FCMB(ba, mbidx, 1)), ==, id);
-+    g_assert_cmpuint(readl(FCMB(ba, mbidx, 2)), ==, frame->data[0]);
-+    g_assert_cmpuint(readl(FCMB(ba, mbidx, 3)), ==, frame->data[1]);
-+}
-+
-+static void fc_rx_check(hwaddr ba, int mbidx, const FcTestFrame *frame)
-+{
-+    uint32_t xpectd_ctrl = frame->expect_overrun ? FLEXCAN_MB_CODE_RX_OVERRUN
-+                             : FLEXCAN_MB_CODE_RX_FULL;
-+    xpectd_ctrl |= FLEXCAN_MB_CNT_LENGTH(frame->len) | FLEXCAN_MB_CNT_SRR;
-+    if (frame->ide) {
-+        xpectd_ctrl |= FLEXCAN_MB_CNT_IDE;
-+    }
-+    if (frame->rtr) {
-+        xpectd_ctrl |= FLEXCAN_MB_CNT_RTR;
-+    }
-+
-+    uint32_t xpectd_id = frame->ide ? frame->id : frame->id << 18;
-+
-+    uint32_t ctrl = readl(FCMB(ba, mbidx, 0)) & FC_MB_CNT_USED_MASK;
-+    if ((ctrl & FLEXCAN_MB_CODE_MASK) == FLEXCAN_MB_CODE_RX_EMPTY) {
-+        fprintf(stderr, "expected frame (id=0x%X) not received\n", frame->id);
-+    }
-+
-+    g_assert_cmpuint(ctrl, ==, xpectd_ctrl);
-+    g_assert_cmpuint(readl(FCMB(ba, mbidx, 1)), ==, xpectd_id);
-+    g_assert_cmpuint(readl(FCMB(ba, mbidx, 2)), ==, frame->data[0]);
-+    g_assert_cmpuint(readl(FCMB(ba, mbidx, 3)), ==, frame->data[1]);
-+}
-+
-+static void fc_check_empty_multi(hwaddr ba, int idx_count, int mbidxs[])
-+{
-+    for (int i = 0; i < FLEXCAN_MAILBOX_COUNT; i++) {
-+        bool check_empty = true;
-+        int ctrl = readl(FCMB(ba, i, 0));
-+
-+        for (int j = 0; j < idx_count; j++) {
-+            if (i == mbidxs[j]) {
-+                check_empty = false;
-+            }
-+        }
-+
-+        if (check_empty) {
-+            if (!(ctrl == FLEXCAN_MB_CODE_RX_EMPTY ||
-+                  ctrl == FLEXCAN_MB_CODE_RX_INACTIVE)) {
-+                g_assert_cmpuint(ctrl, ==, FLEXCAN_MB_CODE_RX_INACTIVE);
-+            }
-+            g_assert_cmpuint(readl(FCMB(ba, i, 1)), ==, 0);
-+            g_assert_cmpuint(readl(FCMB(ba, i, 2)), ==, 0);
-+            g_assert_cmpuint(readl(FCMB(ba, i, 3)), ==, 0);
-+        } else {
-+            g_assert_cmpuint(
-+                ctrl & FLEXCAN_MB_CODE_MASK, !=,
-+                FLEXCAN_MB_CODE_RX_INACTIVE
-+            );
-+        }
-+    }
-+}
-+
-+static void fc_check_empty(hwaddr ba, int mbidx)
-+{
-+    fc_check_empty_multi(ba, 1, &mbidx);
-+}
-+
-+static void flexcan_test_linux_probe_impl(hwaddr fba)
-+{
-+    /* -- test a Linux driver-like probe sequence -- */
-+    /* disable */
-+    writel(FCREG(fba, mcr), 0xD890000F);
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0xD890000F);
-+    g_assert_cmpuint(readl(FCREG(fba, ctrl)), ==, 0);
-+
-+    /* set bit in reserved field we do not implement (CTRL_CLK_SRC) */
-+    writel(FCREG(fba, ctrl), 0x00002000);
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0xD890000F);
-+
-+    /* enable in freeze mode */
-+    writel(FCREG(fba, mcr), 0x5980000F);
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0x5980000F);
-+
-+    /* enable Rx-FIFO */
-+    writel(FCREG(fba, mcr), 0x7980000F);
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0x7980000F);
-+    g_assert_cmpuint(readl(FCREG(fba, ecr)), ==, 0);
-+
-+    /* disable */
-+    writel(FCREG(fba, mcr), 0xF890000F);
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0xF890000F);
-+}
-+
-+static void flexcan_test_freeze_disable_interaction_impl(hwaddr fba)
-+{
-+    /* -- test normal <=> freeze <=> disable transitions -- */
-+
-+    /* leave freeze in disabled, FRZ_ACK should stay cleared */
-+    writel(FCREG(fba, mcr), 0xF890000F); /* disable */
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0xF890000F);
-+    writel(FCREG(fba, mcr), 0xB890000F);  /* by clearing FRZ */
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0xB890000F);
-+
-+    writel(FCREG(fba, mcr), 0xF890000F); /* disable */
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0xF890000F);
-+    writel(FCREG(fba, mcr), 0xE890000F);  /* by clearing HALT */
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0xE890000F);
-+
-+    writel(FCREG(fba, mcr), 0xF890000F); /* disable */
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0xF890000F);
-+    writel(FCREG(fba, mcr), 0xA890000F);  /* by clearing both */
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0xA890000F);
-+
-+    /* enter and leave freeze */
-+    writel(FCREG(fba, mcr), 0x7980000F); /* enable in freeze mode */
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0x7980000F);
-+    writel(FCREG(fba, mcr), 0x3980000F); /* leave by clearing FRZ */
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0x3080000F);
-+
-+    writel(FCREG(fba, mcr), 0x7980000F); /* enable in freeze mode */
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0x7980000F);
-+    writel(FCREG(fba, mcr), 0x6980000F); /* leave by clearing HALT */
-+    g_assert_cmpuint(readl(FCREG(fba, mcr)), ==, 0x6080000F);
-+}
-+
-+static void flexcan_test_mailbox_io_impl(hwaddr ba_tx, hwaddr ba_rx)
-+{
-+    /* -- test correct handling of mailbox IO -- */
-+    const int test_1_mbidx = 0;
-+    fc_reset(ba_tx,
-+             FLEXCAN_MCR_SRX_DIS | FLEXCAN_MCR_MAXMB(FLEXCAN_MAILBOX_COUNT));
-+    fc_reset(ba_rx,
-+             FLEXCAN_MCR_SRX_DIS | FLEXCAN_MCR_MAXMB(FLEXCAN_MAILBOX_COUNT));
-+
-+    fc_setup_rx_mb(ba_rx, test_1_mbidx);
-+    fc_tx(ba_tx, test_1_mbidx, &fc_test_frame_1_ide);
-+    g_assert_cmpuint(fc_get_irqs(ba_rx), ==, 1 << test_1_mbidx);
-+    fc_rx_check(ba_rx, test_1_mbidx, &fc_test_frame_1_ide);
-+    readl(FCREG(ba_rx, timer)); /* reset lock */
-+
-+    writel(FCMB(ba_rx, test_1_mbidx, 0), 0);
-+    g_assert_cmpuint(readl(FCMB(ba_rx, test_1_mbidx, 0)), ==, 0);
-+    writel(FCMB(ba_rx, test_1_mbidx, 1), 0x99AABBCC);
-+    g_assert_cmpuint(readl(FCMB(ba_rx, test_1_mbidx, 1)), ==, 0x99AABBCC);
-+}
-+
-+static void flexcan_test_dual_transmit_receive_impl(hwaddr ba_tx, hwaddr ba_rx)
-+{
-+    /* -- test TX and RX between the two FlexCAN instances -- */
-+    const int test_1_mbidx = 50;
-+    const int test_rounds = 50;
-+
-+    /* self-receive enabled on tx FC */
-+    fc_reset(ba_tx,
-+             FLEXCAN_MCR_MAXMB(FLEXCAN_MAILBOX_COUNT));
-+    fc_reset(ba_rx,
-+             FLEXCAN_MCR_SRX_DIS | FLEXCAN_MCR_MAXMB(FLEXCAN_MAILBOX_COUNT));
-+
-+    /* tests self-receive on tx and reception on rx */
-+    fc_setup_rx_mb(ba_rx, test_1_mbidx);
-+    fc_check_empty(ba_rx, test_1_mbidx);
-+    fc_setup_rx_mb(ba_tx, test_1_mbidx + 1);
-+    fc_check_empty(ba_tx, test_1_mbidx + 1);
-+    g_assert_cmpuint(fc_get_irqs(ba_rx), ==, 0);
-+    g_assert_cmpuint(fc_get_irqs(ba_tx), ==, 0);
-+
-+    fc_tx(ba_tx, test_1_mbidx, &fc_test_frame_1);
-+    fc_clear_irq(ba_tx, test_1_mbidx);
-+
-+    fc_rx_check(ba_rx, test_1_mbidx, &fc_test_frame_1);
-+    fc_check_empty(ba_rx, test_1_mbidx);
-+    fc_rx_check(ba_tx, test_1_mbidx + 1, &fc_test_frame_1);
-+    int tx_non_empty_mbidxs[] = {test_1_mbidx, test_1_mbidx + 1};
-+
-+    fc_check_empty_multi(ba_tx, 2, tx_non_empty_mbidxs);
-+    fc_clear_irq(ba_rx, test_1_mbidx);
-+    fc_clear_irq(ba_tx, test_1_mbidx + 1);
-+    readl(FCREG(ba_rx, timer)); /* reset lock */
-+
-+    for (int ridx = 0; ridx < test_rounds; ridx++) {
-+        /* test extended IDs sent to all mailboxes */
-+        for (int i = 0; i < FLEXCAN_MAILBOX_COUNT; i++) {
-+            fc_setup_rx_mb(ba_rx, i);
-+        }
-+        fc_check_empty_multi(ba_rx, 0, NULL);
-+        g_assert_cmpuint(fc_get_irqs(ba_rx), ==, 0);
-+        g_assert_cmpuint(fc_get_irqs(ba_tx), ==, 0);
-+
-+        for (int i = 0; i < FLEXCAN_MAILBOX_COUNT; i++) {
-+            fc_tx(ba_tx, i, &fc_test_frame_1_ide);
-+        }
-+        g_assert_cmpuint(fc_get_irqs(ba_rx), ==, UINT64_MAX);
-+        g_assert_cmpuint(fc_get_irqs(ba_tx), ==, UINT64_MAX);
-+        for (int i = 0; i < FLEXCAN_MAILBOX_COUNT; i++) {
-+            fc_rx_check(ba_rx, i, &fc_test_frame_1_ide);
-+        }
-+
-+        /* reset interrupts */
-+        writel(FCREG(ba_rx, iflag1), UINT32_MAX);
-+        writel(FCREG(ba_rx, iflag2), UINT32_MAX);
-+        writel(FCREG(ba_tx, iflag1), UINT32_MAX);
-+        writel(FCREG(ba_tx, iflag2), UINT32_MAX);
-+        g_assert_cmpuint(fc_get_irqs(ba_rx), ==, 0);
-+        g_assert_cmpuint(fc_get_irqs(ba_tx), ==, 0);
-+    }
-+}
-+
-+static void flexcan_test_tx_abort_impl(hwaddr ba)
-+{
-+    /* -- test the TX abort feature -- */
-+    fc_reset(ba,
-+             FLEXCAN_MCR_SRX_DIS | FLEXCAN_MCR_MAXMB(FLEXCAN_MAILBOX_COUNT));
-+
-+
-+    for (int mbidx = 0; mbidx < FLEXCAN_MAILBOX_COUNT; mbidx++) {
-+        fc_tx(ba, mbidx, &fc_test_frame_1);
-+
-+        writel(FCMB(ba, mbidx, 0), FLEXCAN_MB_CODE_TX_ABORT);
-+        g_assert_cmpuint(readl(FCMB(ba, mbidx, 0)), ==,
-+                         FLEXCAN_MB_CODE_TX_INACTIVE);
-+    }
-+}
-+
-+static void flexcan_test_freeze_disable_interaction(void)
-+{
-+    qtest_start(FC_QEMU_ARGS);
-+    flexcan_test_freeze_disable_interaction_impl(FSL_IMX6_CAN1_ADDR);
-+    flexcan_test_freeze_disable_interaction_impl(FSL_IMX6_CAN2_ADDR);
-+    qtest_end();
-+}
-+
-+static void flexcan_test_linux_probe(void)
-+{
-+    qtest_start(FC_QEMU_ARGS);
-+    flexcan_test_linux_probe_impl(FSL_IMX6_CAN1_ADDR);
-+    flexcan_test_linux_probe_impl(FSL_IMX6_CAN2_ADDR);
-+    qtest_end();
-+}
-+
-+static void flexcan_test_dual_transmit_receive(void)
-+{
-+    qtest_start(FC_QEMU_ARGS);
-+    flexcan_test_dual_transmit_receive_impl(FSL_IMX6_CAN1_ADDR,
-+                                            FSL_IMX6_CAN2_ADDR);
-+    flexcan_test_dual_transmit_receive_impl(FSL_IMX6_CAN2_ADDR,
-+                                            FSL_IMX6_CAN1_ADDR);
-+    qtest_end();
-+}
-+
-+static void flexcan_test_tx_abort(void)
-+{
-+    qtest_start(FC_QEMU_ARGS);
-+    flexcan_test_tx_abort_impl(FSL_IMX6_CAN1_ADDR);
-+    flexcan_test_tx_abort_impl(FSL_IMX6_CAN2_ADDR);
-+    qtest_end();
-+}
-+
-+static void flexcan_test_mailbox_io(void)
-+{
-+    qtest_start(FC_QEMU_ARGS);
-+    flexcan_test_mailbox_io_impl(FSL_IMX6_CAN1_ADDR, FSL_IMX6_CAN2_ADDR);
-+    flexcan_test_mailbox_io_impl(FSL_IMX6_CAN2_ADDR, FSL_IMX6_CAN1_ADDR);
-+    qtest_end();
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    qtest_add_func("/net/flexcan/linux_probe", flexcan_test_linux_probe);
-+    qtest_add_func("/net/flexcan/freeze_disable_interaction",
-+                   flexcan_test_freeze_disable_interaction);
-+    qtest_add_func("/net/flexcan/dual_transmit_receive",
-+                   flexcan_test_dual_transmit_receive);
-+    qtest_add_func("/net/flexcan/tx_abort",
-+                   flexcan_test_tx_abort);
-+    qtest_add_func("/net/flexcan/mailbox_io", flexcan_test_mailbox_io);
-+
-+    return g_test_run();
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 728dde54b3..7bf1efcda5 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -249,6 +249,7 @@ qtests_arm = \
-   (config_all_devices.has_key('CONFIG_MICROBIT') ? ['microbit-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') ? qtests_stm32l4x5 : []) + \
-   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fsi-test'] : []) + \
-+  (config_all_devices.has_key('CONFIG_CAN_FLEXCAN') ? ['flexcan-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
-    config_all_devices.has_key('CONFIG_DM163')? ['dm163-test'] : []) + \
-   ['arm-cpu-features',
+ static struct arm_boot_info sabrelite_binfo = {
+     /* DDR memory start */
+     .loader_start = FSL_IMX6_MMDC_ADDR,
+@@ -41,7 +50,7 @@ static void sabrelite_reset_secondary(ARMCPU *cpu,
+ 
+ static void sabrelite_init(MachineState *machine)
+ {
+-    FslIMX6State *s;
++    SabreliteMachineState *s = SABRELITE_MACHINE(machine);
+ 
+     /* Check the amount of memory is compatible with the SOC */
+     if (machine->ram_size > FSL_IMX6_MMDC_SIZE) {
+@@ -50,13 +59,12 @@ static void sabrelite_init(MachineState *machine)
+         exit(1);
+     }
+ 
+-    s = FSL_IMX6(object_new(TYPE_FSL_IMX6));
+-    object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
++    object_initialize_child(OBJECT(machine), "soc", &s->soc, TYPE_FSL_IMX6);
+ 
+     /* Ethernet PHY address is 6 */
+-    object_property_set_int(OBJECT(s), "fec-phy-num", 6, &error_fatal);
++    object_property_set_int(OBJECT(&s->soc), "fec-phy-num", 6, &error_fatal);
+ 
+-    qdev_realize(DEVICE(s), NULL, &error_fatal);
++    qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
+ 
+     memory_region_add_subregion(get_system_memory(), FSL_IMX6_MMDC_ADDR,
+                                 machine->ram);
+@@ -70,7 +78,7 @@ static void sabrelite_init(MachineState *machine)
+         /* Add the sst25vf016b NOR FLASH memory to first SPI */
+         Object *spi_dev;
+ 
+-        spi_dev = object_resolve_path_component(OBJECT(s), "spi1");
++        spi_dev = object_resolve_path_component(OBJECT(&s->soc), "spi1");
+         if (spi_dev) {
+             SSIBus *spi_bus;
+ 
+@@ -89,7 +97,7 @@ static void sabrelite_init(MachineState *machine)
+                 qdev_realize_and_unref(flash_dev, BUS(spi_bus), &error_fatal);
+ 
+                 cs_line = qdev_get_gpio_in_named(flash_dev, SSI_GPIO_CS, 0);
+-                qdev_connect_gpio_out(DEVICE(&s->gpio[2]), 19, cs_line);
++                qdev_connect_gpio_out(DEVICE(&s->soc.gpio[2]), 19, cs_line);
+             }
+         }
+     }
+@@ -100,7 +108,7 @@ static void sabrelite_init(MachineState *machine)
+     sabrelite_binfo.secondary_cpu_reset_hook = sabrelite_reset_secondary;
+ 
+     if (!qtest_enabled()) {
+-        arm_load_kernel(&s->cpu[0], machine, &sabrelite_binfo);
++        arm_load_kernel(&s->soc.cpu[0], machine, &sabrelite_binfo);
+     }
+ }
+ 
+@@ -117,10 +125,10 @@ static void sabrelite_machine_class_init(ObjectClass *oc, const void *data)
+ }
+ 
+ static const TypeInfo sabrelite_machine_init_typeinfo = {
+-    .name          = MACHINE_TYPE_NAME("sabrelite"),
++    .name          = TYPE_SABRELITE_MACHINE,
+     .parent        = TYPE_MACHINE,
+     .class_init    = sabrelite_machine_class_init,
+-    .instance_size = sizeof(MachineState),
++    .instance_size = sizeof(SabreliteMachineState),
+     .abstract      = false,
+     .interfaces    = arm_machine_interfaces,
+ };
 -- 
 2.54.0
 

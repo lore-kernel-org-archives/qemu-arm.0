@@ -4,128 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04ECCCD6E44
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 15:23:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B59AECD6E44
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 15:29:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wScZG-0005Mo-0a; Thu, 28 May 2026 11:22:42 -0400
+	id 1wScfP-0006uP-9s; Thu, 28 May 2026 11:29:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wScZE-0005M3-Jm
- for qemu-arm@nongnu.org; Thu, 28 May 2026 11:22:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wScZB-0001ua-VP
- for qemu-arm@nongnu.org; Thu, 28 May 2026 11:22:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779981754;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BWiwiiY+LDiQr0yd8VQcVqBy0PYAtYZ/fqvE6dB6fvA=;
- b=fk/25XYzbsKo2iV1DCQV3L9yWnJdemZcBVUAce86mC9tOigcbUxf0ii6EKNIBLChq/CAD6
- TclmACdsUZGUolipJ6na05SNOS6xXesgp20muq7UEyBYQxqA5VsFMANcxd/SiOHWtaL162
- xPYTM3VrUqICqwDdu/kGdtMQZGQvUZE=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-605-0JMGnXr5OT2RywM-kD3zww-1; Thu, 28 May 2026 11:22:31 -0400
-X-MC-Unique: 0JMGnXr5OT2RywM-kD3zww-1
-X-Mimecast-MFC-AGG-ID: 0JMGnXr5OT2RywM-kD3zww_1779981750
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-490261c79fcso49690885e9.0
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 08:22:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wScfO-0006th-2J
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 11:29:02 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wScfM-0004TO-8t
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 11:29:01 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-4903974854dso63906375e9.3
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 08:28:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1779982139; x=1780586939; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=2EJwGI7q6G04dldtqGDuhK+ytkl5e4vXy4BHhse+K1Q=;
+ b=KEVTFR3VYh1VuaXzeu3U/F7nQEQd4MeUV0xkmJg8uiyF/QsPmsAF9WM10QLFvBnPah
+ Hv6ruYi0aqtpFRWlVV5ao0Z78MVjCjeuLRqXiI/LKzjeBw9L1cDSh3lkzADQshnXvogh
+ pKqqfrG7N1hAfPw9e2xQG9Api7o0XhhQYdHAyHknbfsBJrXlT9vo4Mkc3HTCjh2QTqq3
+ V95A7iqyzaSojsIQ72auJLYZAwrA/26WuBnYws5exLGYJY7Tl0F/h/bwNQorLaDbvV+V
+ WrVEJL/0pwCVsLZzXzkt9F2K5f/HO0FJaFdtYGZohi+TpWpsQ4ohvUwtJbDZFq54di46
+ wxmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779981750; x=1780586550;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=BWiwiiY+LDiQr0yd8VQcVqBy0PYAtYZ/fqvE6dB6fvA=;
- b=tBNSNkGGNwATnQcaP0eY0yeD/c1XURHYy5WbMl6rRhIMpsqj/wUWZgsRZMAr+aCDCB
- 13tCUppaEKoKARE6T7/LtHJeeeX5EtFuFMOtc2iRQgC+DOph4AER+sYOJ9TB+FiWctC3
- IqG2i9uuukJK/rEhMD+ShiGA1JcE57AYaBSPCxtmWmHyIpB1i/pf7UkIU6xsge4FPRJw
- OHE2VWYT59VcMNyZBlmcMY4F51OmoNWB28a1rSswxGAeOGR9VGqhEwvDEUuQgnbDcxbf
- BqFNFGUL4/rBo7Mot/QQiVyiGdozJGDlDZfP1THwIyErzP4Aq/NHY65hH3VaAkh+VsGO
- PVsw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ8YrexJy3/t8hsLkZA1/iHBVCnN2fVhASnREynVwcs01/vb22E5VliE/DO8Tgjc/B+My9+yyJRZ5A==@nongnu.org
-X-Gm-Message-State: AOJu0YwqBJ+hiV3pYNric9m0kMrZBfJewHz0vz2IY+qb5F/zU0a0dYGS
- uvFpQ6CSEQTbq/GCMCSmY3gdJ//EgcZqXbHzFFLUZGWCFhbXRWPl4cg/4NGYPQj6G6nUH/n6Nlz
- DNQVUYLNuc89Ikki6E66Ut2Tiw1wd0iC2RB2J9LkD9FfPEVwcakmSVg==
-X-Gm-Gg: Acq92OEEGU4WNcjJj5/UV3P+HDR9Gd0+YKz6DGIUCvh63nAv6aYsrUs//7c1bT2kKm/
- ACCDTmL1FjfHFBJF0XVfJZqJbccxU7Zf5bhfX9dlFbhruM7lPP5lmeGjACWWSEBXm0TqVyL8uZJ
- ksYQw9H1EfP6clOOla/IvNve0gxYNONjOj6e6cuYmnVTaEiBEcikS9z4TUNFAXMjX7TPJ9+8Nmz
- 0H1GZ0i+ZnkyVimzRigC85/Wb2A+9duHmKBNA11s3lBqqCNGTA9xTPlMUqesBx/+Yck3OrYyWxz
- Y2Db4Ds8WWz30WYvoQSda6dklKpHZhp2WpVMP/WpMD0oULB7BPVwn23hwVpAAMps8+tv7OW+zMl
- wRrVV5E63zoVepcWU2aNmN1eneXLrSsZ2hE8FCLyXqBUopbAOk3kWxHoxck6s/8sc5b/zX5KOfS
- G53RWC
-X-Received: by 2002:a05:600c:528c:b0:490:3b8a:b0c with SMTP id
- 5b1f17b1804b1-490947779d4mr37582195e9.3.1779981749904; 
- Thu, 28 May 2026 08:22:29 -0700 (PDT)
-X-Received: by 2002:a05:600c:528c:b0:490:3b8a:b0c with SMTP id
- 5b1f17b1804b1-490947779d4mr37581675e9.3.1779981749452; 
- Thu, 28 May 2026 08:22:29 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ d=1e100.net; s=20251104; t=1779982139; x=1780586939;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=2EJwGI7q6G04dldtqGDuhK+ytkl5e4vXy4BHhse+K1Q=;
+ b=RY0M97zFnASCD0SrrO1bq+HJdZUcHCd/4NccCiPPm7AianEkoru4waqbT41XD1wEZi
+ GZ38+p+RNeOkakMCNkbI2kZUnxyZlMQFSWakoY0W+6fn2RkKlmrSPDEhWOle0xUBalyH
+ a/HWEIC1mndcrsqc7kPjl56iQihlq8jy25jCsTHj6VngbNnjgE4jji4L06hhEr+frO9E
+ 3C348a4FBpUoXKBkbK/WuALZmWXBFQoFcSQHD/i92DRj4U+S3Dd1k2CGLkU4M6fH/PUT
+ CLSMjah0GFDiWQf+mLMmh9tSXkIXqdZwPyrNcUSve4KBSdT92q3N2HzW7dg0uIUgLaoW
+ gwnA==
+X-Gm-Message-State: AOJu0YxP/gdqD/mX0XDZUEO1bkzOV/BCLGLMg0qF65YDwrUn9ovxof9H
+ WIpp3/XNN9WDIBNVTnB/qzVU7/0JTqX3DKtiANqaNTnWNDq1UMO7/3AC/YYfaKvWoZekjrss39n
+ F6h9u
+X-Gm-Gg: Acq92OGCf2+/+Lr24W19NIrhU8LipXoS2nJAPxP9atmlbuExKdUZdvFYjwMwvb77bcW
+ Yg1mojLkp9AmJtQ0PetPyBJMZMN84aTgVkvfSZc9KBNIr2ijvN0PNHtZeTgdjxdZUs6kXB1YvjW
+ HXjGRbUVfRAVD8DVuUvFah8vVP8hx+V2ti/BhuEcqSWbi/SaUHaevkAxGfRgS6hsu8tytoyGyQ3
+ JtcBONCDJpajK5nZVe0GEC7WQU60K3/+AgNQJFqsQjYHu7vGyp3HPeqaxY+GEqH1G+eS6cfRzG1
+ iieYgjpvNyFF2hCjfQ9rp0lNEdp4Fgw5yB7mf++F2Xlxvy2pUlNdjsgQnkujM65pxDtaf2iYX/x
+ eqcVpD7hC7d93NB0Fly9JNQx2Rv/H5eUazPwkCuGn6ld/dQP77RuyiFYSzhIr9JeWwoVO+n1ymc
+ br+UOjkwrwAnveQZBmwWDqpXIkcweyunvGQjjm0L4Ivd05FAEIEln6ZYLg4aGnVrjcuAxL4SDmY
+ EyUTHcTn978JPDqMAkw9vMGzE/P2ldelQQdszp5Mg==
+X-Received: by 2002:a05:600c:1c0b:b0:490:44eb:c1dc with SMTP id
+ 5b1f17b1804b1-49044ebc2e0mr492333825e9.20.1779982138660; 
+ Thu, 28 May 2026 08:28:58 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45eed49f19bsm2222373f8f.14.2026.05.28.08.22.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 May 2026 08:22:28 -0700 (PDT)
-Message-ID: <294d4e4b-6ddf-412c-9a47-24aab232a2b8@redhat.com>
-Date: Thu, 28 May 2026 17:22:27 +0200
+ 5b1f17b1804b1-4908b7a70b9sm19116605e9.12.2026.05.28.08.28.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 May 2026 08:28:57 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 3/3] hw/dma/omap_dma: Fix indentation after ifdef removal
+Date: Thu, 28 May 2026 16:28:52 +0100
+Message-ID: <20260528152852.3349928-4-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260528152852.3349928-1-peter.maydell@linaro.org>
+References: <20260528152852.3349928-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 13/18] target/arm/kvm: Introduce
- kvm_arm_expose_idreg_properties
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
- "philmd@linaro.org" <philmd@linaro.org>, "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-References: <20260519132905.145643-1-eric.auger@redhat.com>
- <20260519132905.145643-14-eric.auger@redhat.com>
- <3344B74E-39B1-421D-8417-373A688DB372@nutanix.com>
- <c4a38526-a803-4e69-b6ca-f6bf0583198a@redhat.com>
- <F50EB764-5F22-42AD-89E2-677BF7DB453B@nutanix.com>
- <63a8bd66-c324-4d2f-9d6b-1ea35e72db5b@redhat.com>
- <47CCCA9C-EE35-4314-9619-50F28BFFB0AD@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <47CCCA9C-EE35-4314-9619-50F28BFFB0AD@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: dAoKrMnz62PEoqXBR-9b4Q4qI9839aTAMBdAPQP-LWI_1779981750
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,164 +97,194 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Some of the ifdefs in omap_dma_transfer_setup() which we just
+removed had if() blocks in them. Now that the code inside them
+is always unconditional it has an extra unnecessary layer of
+indentation; fix this, as a whitespace only change.
 
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/dma/omap_dma.c | 156 +++++++++++++++++++++++-----------------------
+ 1 file changed, 78 insertions(+), 78 deletions(-)
 
-On 5/28/26 7:07 AM, Khushit Shah wrote:
->
->> On 27 May 2026, at 9:49 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> !-------------------------------------------------------------------|
->>  CAUTION: External Email
->>
->> |-------------------------------------------------------------------!
->>
->>
->>
->> On 5/27/26 5:44 PM, Khushit Shah wrote:
->>>> On 27 May 2026, at 9:02 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>>>
->>>> I replied separately to this on your series thread. I am inclined to do
->>>> so but this raises another problematic for the layered products to know
->>>> which mismatch can be fixed
->>>>
->>>> Thanks
->>>>
->>>> Eric
->>>>
->>> Hence the safe-value tags :), sneak peek to v2 of RFC, with safe-value tags.
->>> For each prop we can say:
->>>        ...
->>>        {
->>>            "name": "feat_RDM",
->>>            "supported-values": [
->>>                "off",
->>>                "on"
->>>            ],
->>>            "type": "string"
->>>        },
->>>        {
->>>            "name": "feat_ATOMIC",
->>>            "supported-values": [
->>>                "off",
->>>                "on"
->>>            ],
->>>            "type": "string"
->>>        },
->>>        {
->>>            "name": "feat_CRC32",
->>>            "supported-values": [
->>>                "off",
->>>                "on"
->>>            ],
->>>            "type": "string"
->>>        },
->>>        {
->>>            "name": "feat_SHA2",
->>>            "supported-values": [
->>>                "off",
->>>                "sha256",
->>>                "sha512"
->>>            ],
->>>            "type": "string"
->>>        },
->>>        {
->>>            "name": "feat_SHA1",
->>>            "supported-values": [
->>>                "off",
->>>                "on"
->>>            ],
->>>            "type": "string"
->>>        },
->>>        {
->>>            "name": "feat_AES",
->>>            "supported-values": [
->>>                "off",
->>>                "aes",
->>>                "pmull"
->>>            ],
->>>            "type": "string"
->>>        }
->>>        {
->>>            "name": "feat_NV",
->>>            "supported-values": [
->>>                "0.0"
->>>            ],
->>>            "type": "string"
->>>        },
->>>        {
->>>            "name": "feat_RAS",
->>>            "supported-values": [
->>>                "0.0",
->>>                "1.0",
->>>                "1.1_base"
->>>            ],
->>>            "type": "string"
->>>        },
->>>        {
->>>            "name": "feat_MPAM",
->>>            "supported-values": [
->>>                "0.0"
->>>            ],
->>>            "type": "string"
->>>        },
->>>        {
->>>            "name": "feat_CSV2",
->>>            "supported-values": [
->>>                "0.0",
->>>                "1.0"
->>>            ],
->>>            "type": "string"
->>>        },
->> I am not sure what the above represents
-> This is truncated output of similar qmp command as cpu-model-expansion, which returns for each prop what
-> values can be set. For example MPAM is not writable by KVM, hence only one supported value “0.0”,
-> CSV2 on the host is only “1.0” (architecturally, 2.0 is also valid), hence only “0.0” and “1.0” in the supported values.
->
->>>        …
->>>
->>>
->>> I am inclined to do so but this raises another problematic for the layered products to know which mismatch can be fixed
->>>
->>> I am tempted to make the same argument for writable fields: how will the
->>> layered products know which values are safe (or effectively can be set?)?
->>>
->>> I know right now we don’t agree on keeping safe-value tags or default values.
->>> But, I hope the above inclines you towards keeping those :)
->> OK I think I now understand what you plan to do with safe_rule (which,
->> as far as I understand is not currently implemented in your v1). With a
->> "tool" like 
-> Yes not implemented in v1.
->
->> query-cpu-model-expansion you would be able to retrieve the host value. If it does not match your named model default value, you can use the safe_rule to see if it could be applied, without relying on any scratch vcpu instantiation. This makes sense in the context of providing ways for layered products to see which vcpu model can be used, assuming there is no other way like scratch vcpu instantiation.
->>
->> Is that a correct understanding?
-> Yes!!! 
->
->> I think this implies that we need to return more information though query-cpu-model-expansion than what we currently do (at least in [1] we only return the value). We would need to return whether the prop value can apply on this host (its default value is same as host value or OK with regards to host value and safe rule and the ID reg field is writable). This most probably means we need to enhance the prop value to contain more fields.
-
-I imagined we could return all the data
-through query-cpu-model-expansion but it seems you plan to use another
-qmp cmd. Let's see what it looks like in your v2
-
-Thanks
-
-Eric
-> Sorry, did not fully understand this.
->
-> Warm Regards,
-> Khushit
->
->> Thoughts?
->>
->> Eric
->>
->>
->>
->>> Warm Regards,
->>> Khushit
+diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
+index b8bbb707c4..668fc49054 100644
+--- a/hw/dma/omap_dma.c
++++ b/hw/dma/omap_dma.c
+@@ -470,91 +470,91 @@ static void omap_dma_transfer_setup(struct soc_dma_ch_s *dma)
+     /* Set appropriate interrupts and/or deactivate channels */
+ 
+ 
+-        /* If the channel is element synchronized, deactivate it */
+-        if (min_elems == elements[omap_dma_intr_element_sync]) {
++    /* If the channel is element synchronized, deactivate it */
++    if (min_elems == elements[omap_dma_intr_element_sync]) {
++        omap_dma_deactivate_channel(s, ch);
++    }
++
++    /* If it is the last frame, set the LAST_FRAME interrupt */
++    if (min_elems == elements[omap_dma_intr_last_frame]) {
++        ch->status |= LAST_FRAME_INTR;
++    }
++
++    /*
++     * If exactly half of the frame was reached, set the HALF_FRAME
++     * interrupt
++     */
++    if (min_elems == elements[omap_dma_intr_half_frame]) {
++        ch->status |= HALF_FRAME_INTR;
++    }
++
++    /* If a full packet has been transferred, set the END_PKT interrupt */
++    if (min_elems == elements[omap_dma_intr_packet]) {
++        ch->status |= END_PKT_INTR;
++    }
++
++    /* If the channel is packet-synchronized, deactivate it */
++    if (min_elems == elements[omap_dma_intr_packet_sync]) {
++        omap_dma_deactivate_channel(s, ch);
++    }
++
++    /* If the channel is frame synchronized, deactivate it */
++    if (min_elems == elements[omap_dma_intr_frame_sync]) {
++        omap_dma_deactivate_channel(s, ch);
++    }
++
++    /* Set the END_FRAME interrupt */
++    if (min_elems == elements[omap_dma_intr_frame]) {
++        ch->status |= END_FRAME_INTR;
++    }
++
++    if (min_elems == elements[omap_dma_intr_block]) {
++        /* End of Block */
++        /* Disable the channel */
++
++        if (!ch->auto_init) {
++            omap_dma_disable_channel(s, ch);
++        } else if (ch->repeat || ch->end_prog) {
++            omap_dma_channel_load(ch);
++        } else {
++            ch->waiting_end_prog = 1;
+             omap_dma_deactivate_channel(s, ch);
+         }
+ 
+-        /* If it is the last frame, set the LAST_FRAME interrupt */
+-        if (min_elems == elements[omap_dma_intr_last_frame]) {
+-            ch->status |= LAST_FRAME_INTR;
++        if (ch->interrupts & END_BLOCK_INTR) {
++            ch->status |= END_BLOCK_INTR;
++        }
++    }
++
++    /* Update packet number */
++    if (ch->fs && ch->bs) {
++        a->pck_element += min_elems;
++        a->pck_element %= a->pck_elements;
++    }
++
++    /*
++     * TODO: check if we really need to update anything here or perhaps we
++     * can skip part of this.
++     */
++    if (dma->update) {
++        a->element += min_elems;
++
++        frames = a->element / a->elements;
++        a->element = a->element % a->elements;
++        a->frame += frames;
++        a->src += min_elems * a->elem_delta[0] + frames * a->frame_delta[0];
++        a->dest += min_elems * a->elem_delta[1] + frames * a->frame_delta[1];
++
++        /* If the channel is async, update cpc */
++        if (!ch->sync && frames) {
++            ch->cpc = a->dest & 0xffff;
+         }
+ 
+         /*
+-         * If exactly half of the frame was reached, set the HALF_FRAME
+-         * interrupt
++         * TODO: if the destination port is IMIF or EMIFF, set the dirty
++         * bits on it.
+          */
+-        if (min_elems == elements[omap_dma_intr_half_frame]) {
+-            ch->status |= HALF_FRAME_INTR;
+-        }
+-
+-        /* If a full packet has been transferred, set the END_PKT interrupt */
+-        if (min_elems == elements[omap_dma_intr_packet]) {
+-            ch->status |= END_PKT_INTR;
+-        }
+-
+-        /* If the channel is packet-synchronized, deactivate it */
+-        if (min_elems == elements[omap_dma_intr_packet_sync]) {
+-            omap_dma_deactivate_channel(s, ch);
+-        }
+-
+-        /* If the channel is frame synchronized, deactivate it */
+-        if (min_elems == elements[omap_dma_intr_frame_sync]) {
+-            omap_dma_deactivate_channel(s, ch);
+-        }
+-
+-        /* Set the END_FRAME interrupt */
+-        if (min_elems == elements[omap_dma_intr_frame]) {
+-            ch->status |= END_FRAME_INTR;
+-        }
+-
+-        if (min_elems == elements[omap_dma_intr_block]) {
+-            /* End of Block */
+-            /* Disable the channel */
+-
+-            if (!ch->auto_init) {
+-                omap_dma_disable_channel(s, ch);
+-            } else if (ch->repeat || ch->end_prog) {
+-                omap_dma_channel_load(ch);
+-            } else {
+-                ch->waiting_end_prog = 1;
+-                omap_dma_deactivate_channel(s, ch);
+-            }
+-
+-            if (ch->interrupts & END_BLOCK_INTR) {
+-                ch->status |= END_BLOCK_INTR;
+-            }
+-        }
+-
+-        /* Update packet number */
+-        if (ch->fs && ch->bs) {
+-            a->pck_element += min_elems;
+-            a->pck_element %= a->pck_elements;
+-        }
+-
+-        /*
+-         * TODO: check if we really need to update anything here or perhaps we
+-         * can skip part of this.
+-         */
+-        if (dma->update) {
+-            a->element += min_elems;
+-
+-            frames = a->element / a->elements;
+-            a->element = a->element % a->elements;
+-            a->frame += frames;
+-            a->src += min_elems * a->elem_delta[0] + frames * a->frame_delta[0];
+-            a->dest += min_elems * a->elem_delta[1] + frames * a->frame_delta[1];
+-
+-            /* If the channel is async, update cpc */
+-            if (!ch->sync && frames) {
+-                ch->cpc = a->dest & 0xffff;
+-            }
+-
+-            /*
+-             * TODO: if the destination port is IMIF or EMIFF, set the dirty
+-             * bits on it.
+-             */
+-        }
++    }
+ 
+     omap_dma_interrupts_update(s);
+ }
+-- 
+2.43.0
 
 

@@ -4,83 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73D68CD5BD5
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 15:35:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46A05CD5BD5
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 15:45:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSclM-0002LS-Bx; Thu, 28 May 2026 11:35:12 -0400
+	id 1wScvd-0006m0-Qg; Thu, 28 May 2026 11:45:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wSclE-0002H8-Br
- for qemu-arm@nongnu.org; Thu, 28 May 2026 11:35:05 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wScvY-0006hL-7B
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 11:45:47 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wScl8-0007bo-9u
- for qemu-arm@nongnu.org; Thu, 28 May 2026 11:35:03 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-48a563e4ef7so93200035e9.0
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 08:34:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wScvK-0004pY-UX
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 11:45:43 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4903974854dso64048135e9.3
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 08:45:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779982497; x=1780587297; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=A3ZjY9XAHXF5+tqD9XXR8Q92fc9OY13ALUDW4tvh2xE=;
- b=TRP3SvtmEtRIHv7ExCvkyD+0PjNp4bRtrMMT4l6FuIU05d4ZCJnLOwCQF5D3TAsRJR
- s17DkYrpId6fVQc9L+9A72nOV4p9SpsNOLqKdi0rsPxYL7VRm6LsAo52ptJiqDAFVrIB
- OevFGIp+5kqAElqMmcM0VKe3JFKM1y8Tdvu1ksD5YjInyeTyWBt7mr8Gc30/8ZJqeZdZ
- J7VBiQS5bG+6PiARTQ+5uBPPu7fEdRKbTeQVnkYx2769oCtLh6RyxELm2YIzvUo0UBU0
- mvcV32nEn96//gyTQbRe9xjaw6jRIrNMdWlVoAd676McB+l/4I8UX0ad/XPVteqWtcFp
- MmPQ==
+ d=linaro.org; s=google; t=1779983125; x=1780587925; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=8vCDK+KeyJO3gUt/aA96bfC2TBWjmjbKE5Dg98WGwbA=;
+ b=Z+PnqcfxyHqPuNRgiyR0ohAPIDWuPp/QpXuCQBhe9LQQNc/BltUHrKddoAzF5vHZK4
+ GN7a5ruttYmjosd7/JXd/c+X8GXEPYDFyg+Ws6yZCBZ8wCUrtyb4Klb6inwyoKatK+uU
+ j+LDBbjL3TPL0I9/UCL8n5AGugi+X/fxvJoWDM6rtgZwB44Ss2rxkIWq/68kw9Gep2fr
+ OQDTOAOyeVVRriuzL2+mtaIltK31VT394GdaWAYE1shcLA/7SSYBGVHTFuNwHLE6aR60
+ SKQPbMWfyhNiHkpYWq0OSnf8N4nd2qyUq7DRz6p44KIEVkoYr/EC/qbgvY/bePhWyGFs
+ OzvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779982497; x=1780587297;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=A3ZjY9XAHXF5+tqD9XXR8Q92fc9OY13ALUDW4tvh2xE=;
- b=bz8wmcWWsucfk1/+zBiomZ7q7jK0lzX/YAfVGt8qvLNSRUV4gy5kdiyfhAs6KXXknk
- hruJS6HvO1Ko0CYkySwBdJgY3+usrhwfl4DeT5Ael5yd1KcbZUe2hqhuDOKw17eNq5wP
- zBIbzZB8ZR7tnRChK4OAn/MVCOGCFkIM4ozpLDZw5Qkahxow5dAtufWu5KaCB1EZJ6he
- TqiPxG7QoWpBKp+53uUvbF4hQsFVAF4BKnoKERWXQY1bBv1xGSpFkzc6QK7V9IawbsQI
- Q8NxZe85+D+vSrKnqFIfiGP5QZy75AKaO+jzu4xk0sUZ429trqQ18y4XjKmtU9aGNE60
- 53wA==
+ d=1e100.net; s=20251104; t=1779983125; x=1780587925;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8vCDK+KeyJO3gUt/aA96bfC2TBWjmjbKE5Dg98WGwbA=;
+ b=lLv1D5gI+j8C11URYSCBnHNhw6kQXnDVbsT4iAxTVvDz0AIR9fcavW0f9nxaQcq9M/
+ +KD56FZ6g/++MSmYqos7DCPGLiw0ShKJrU1H97lfhHIRnNI/pyzVr/6hjr8nBpJCA5BN
+ LrKCqEthxSRkPrzxyGenmKUo8EMGlh7X61j3YdgXCi7ZQRJkUpKlwAWQ4kARVw3UBELk
+ UfjWRSs+kUlikuW0BpTB4HfQ8DtlSWX17RdSTfDYfm5iYc1s+fL0Brz3a3EaOicFYw9V
+ 1NNTYtZklt9w0D9b+bTzd7Tm9duIYBj3vsmWcp5diAHHfK0u4VxxcmMuBzEs6OY2gBo8
+ E3qA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/iagLXjp1qND58mSbyKo3ckatKImaoFfOhYhUKLZD3M7jnqME8EnrSQNEudM+OztEVn84TTjmwyw==@nongnu.org
-X-Gm-Message-State: AOJu0Yy5QXUeQwB56iCU4xeOTwUKUueJ38Rf61cN8iAemZXCjbZi+p+d
- n1R3MBH8gl2a68I6QI4A4t/dfQzWvcbraM2BNEuwIgZgqeMe/IwK7ItUcbaJFta53DI=
-X-Gm-Gg: Acq92OGV9QU67yMYqlZZVcUtEDd1UErWEHyUJ1PNAfBuRrfbJldyasfmLopctj+Oql0
- WZKW+rkY75KyQ9kVJMOrDKP2+H7o470r7tpSKv7gmALE/DMAP8sLZbpuAVQfnip3yhB14qZpUFq
- 1wXQUKRZdHkk5udI7rtCi7X4m75FOraD5B1wrvjzaKmi+wJbzE9BXJaBwaGNgEaM0OOHd55D6rH
- nHN8HqdrUjjNsKfO37xGqd7RG8RgRLmu3f8kaDKq2pZ/AROr4khK4W522OuqQilBG5PniSE/cxv
- g8jdBmYg4s4G2Wak8D8NACUyV8TfVdcMsfBr76s5vdiisUjBjTP9gCLOMB/O51rtrdpPhTDaOEE
- CTZFwM4b7t5p2wOc3ic30z0iYENcLQzh6t5SKSZDPl1TgntAJ63gcaTK+vwjSCAPCzjCT8LcaQj
- Atg2a3IDO8m4PkvpIR70uaxM/dzLxXt2jeENLKNQ==
-X-Received: by 2002:a05:600c:8b84:b0:490:5466:8576 with SMTP id
- 5b1f17b1804b1-490546689a7mr448742385e9.1.1779982496952; 
- Thu, 28 May 2026 08:34:56 -0700 (PDT)
-Received: from [127.0.1.1] ([2a10:d582:31e:0:f5a7:372a:ab8b:3c01])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4909298d41bsm46514785e9.11.2026.05.28.08.34.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 May 2026 08:34:56 -0700 (PDT)
-From: Jim MacArthur <jim.macarthur@linaro.org>
-Date: Thu, 28 May 2026 16:34:39 +0100
-Subject: [PATCH 4/5] tests/tcg/aarch64/system: Alternative boot object for
- exception logging
+ AFNElJ9WQyyhGTTIhfpVfhdMx/V3YMn+BjDhOlMQ5peABGPjYn8Z0V6Ve2H/g4Q2VMrPHaOx5t5lvukQqA==@nongnu.org
+X-Gm-Message-State: AOJu0YyG4RWFYmYPx+sehPgbZwqqcBFKHTKpimYMueLqiHqTPaa9ZY8O
+ 21xWkHF4lTO8FOym9kqlDrpWvaKdws/uH5/MvFyQN4lxMKuVx5JERWNk6+s1yXLr+PE=
+X-Gm-Gg: Acq92OE3U0yUFlH+NenQguJuWjRs+9EyFAjcNX/avAsoO1dKm8HMs50inVyct3cxsX/
+ EARRQsn/RKeS/Vshxhu3aQUnhqDwBhYudOgZMguTYAXBB8k6jul5jneBdi9WVX8a4euL3mNZk51
+ Armvow81nvoTJtlwRpl1vbZwjzwK3vdH47GOBUOCiuMOH5X1KNf/iSueCCDnh0jlPN0rnJxiY+Z
+ SeOv/fmnOYx+8Sykn8r+Mg07VLm+Yfw8RzMMGUgO79Wp+LhOQkPCg/b2OqbT51/su2OvTx56SfR
+ tdoAnQgxdGo2+/lGL1JGLXL5n5TeHKCUyD3Q5JQFnTamoMz6NS00rV7wPs3Hb8IitdTw5nDMHFL
+ vnm4vTVir+bnGrosZ4ydMyZJg6Rw9TDFz49VBGZ5vw5DNAbc9ogge3f3sV+9Toa0qYC2+e1iBSQ
+ rT9P3fBohLpeu0AYroi8IqS8qIbIaAQaDI3Tlp+HsVr5PALAaZR+M2j5B4QldTKY3diQbcH9c0I
+ 5fN
+X-Received: by 2002:a05:600c:a402:b0:486:fd5c:2b35 with SMTP id
+ 5b1f17b1804b1-490426adf66mr379191365e9.13.1779983125221; 
+ Thu, 28 May 2026 08:45:25 -0700 (PDT)
+Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45edb54903csm14606215f8f.6.2026.05.28.08.45.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 May 2026 08:45:24 -0700 (PDT)
+Message-ID: <1eeb409a-3319-45b5-9dc3-2b983b291967@linaro.org>
+Date: Thu, 28 May 2026 17:45:22 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260528-jmac-gpc3b-v1-4-d34c46c5069f@linaro.org>
-References: <20260528-jmac-gpc3b-v1-0-d34c46c5069f@linaro.org>
-In-Reply-To: <20260528-jmac-gpc3b-v1-0-d34c46c5069f@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Jim MacArthur <jim.macarthur@linaro.org>
-X-Mailer: b4 0.13.0
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x32a.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/3] hw/dma/omap_dma: Fix coding style in
+ omap_dma_transfer_setup()
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20260528152852.3349928-1-peter.maydell@linaro.org>
+ <20260528152852.3349928-3-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260528152852.3349928-3-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,176 +105,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This allows us to record information about exceptions using a small
-area of memory, and continue with the test so it can verify exceptions
-have been taken where expected.
+On 28/5/26 17:28, Peter Maydell wrote:
+> We're about to fix indent in a section of the
+> omap_dma_transfer_setup() function, which will make checkpatch
+> complain.  Since we're touching the code anyway, fix the uses of if()
+> with no braces and wrongly formatted multiline comments.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/dma/omap_dma.c | 51 ++++++++++++++++++++++++++++++-----------------
+>   1 file changed, 33 insertions(+), 18 deletions(-)
 
-ALT_VECTOR_TABLE is added to switch this on, and altboot.o
-is built from boot.S with this flag. Since boot.o is created for multiple
-test targets, we have to build a separate object and selectively link this
-new altboot.o into particular test binaries.
-
-Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
----
- tests/tcg/aarch64/Makefile.softmmu-target | 11 ++++--
- tests/tcg/aarch64/system/boot.S           | 62 +++++++++++++++++++++++++++++++
- tests/tcg/aarch64/system/boot.h           | 14 +++++++
- 3 files changed, 83 insertions(+), 4 deletions(-)
-
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index f7a7d2b800..47b32968fb 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -25,7 +25,7 @@ LDFLAGS=-Wl,-T$(LINK_SCRIPT)
- TESTS+=$(AARCH64_TESTS) $(MULTIARCH_TESTS)
- EXTRA_RUNS+=$(MULTIARCH_RUNS)
- CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
--LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
-+LDFLAGS+=-static -nostdlib $(MINILIB_OBJS) -lgcc
- 
- config-cc.mak: Makefile
- 	$(quiet-@)( \
-@@ -36,17 +36,20 @@ config-cc.mak: Makefile
- # building head blobs
- .PRECIOUS: $(CRT_OBJS)
- 
-+altboot.o: $(CRT_PATH)/boot.S
-+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -DALT_VECTOR_TABLE -x assembler-with-cpp -Wa,--noexecstack -c $< -o $@
-+
- %.o: $(CRT_PATH)/%.S
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -x assembler-with-cpp -Wa,--noexecstack -c $< -o $@
- 
- # Build and link the tests
- %: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
-+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
- 
- memory: CFLAGS+=-DCHECK_UNALIGNED=1
- 
- memory-sve: memory.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
-+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
- 
- memory-sve: CFLAGS+=-DCHECK_UNALIGNED=1 -march=armv8.1-a+sve -O3
- 
-@@ -107,7 +110,7 @@ QEMU_MTE_ENABLED_MACHINE=-M virt,mte=on -cpu max -display none
- QEMU_OPTS_WITH_MTE_ON = $(QEMU_MTE_ENABLED_MACHINE) $(QEMU_BASE_ARGS) -kernel
- mte: CFLAGS+=-march=armv8.5-a+memtag
- mte: mte.S $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
-+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
- 
- run-mte: QEMU_OPTS=$(QEMU_OPTS_WITH_MTE_ON)
- run-mte: mte
-diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
-index 8bfa4e4efc..225ae76388 100644
---- a/tests/tcg/aarch64/system/boot.S
-+++ b/tests/tcg/aarch64/system/boot.S
-@@ -60,6 +60,40 @@ curr_sp0_irq:
- curr_sp0_fiq:
- curr_sp0_serror:
- curr_spx_sync:
-+#ifdef ALT_VECTOR_TABLE
-+	sub     sp, sp, #16
-+	stp     x0, x1, [sp, #0]
-+	mrs     x0, ESR_EL3
-+	lsr 	x0, x0, #26
-+	and 	x0, x0, #0x3f
-+	cmp 	x0, #37
-+	beq 	data_fault
-+	cmp 	x0, #30
-+	beq 	gpc_fault
-+	b       generic_exception
-+
-+data_fault:
-+	mrs     x0, FAR_EL3
-+	adrp    x1, exception_log
-+	str     x0, [x1]
-+	ldr     x0, =0x1001
-+	str     x0, [x1, #8]
-+	b       skip_return
-+gpc_fault:
-+	mrs     x0, FAR_EL3
-+	adrp    x1, exception_log
-+	str     x0, [x1]
-+	ldr     x0, =0x1002
-+	str     x0, [x1, #8]
-+	/* Fall through */
-+skip_return:
-+	mrs     x0, ELR_EL3
-+	add     x0, x0, #4 /* Skip faulting instruction */
-+	msr     ELR_EL3, x0
-+	ldp     x0, x1, [sp, #0]
-+	add     sp, sp, #16
-+	eret
-+#endif
- curr_spx_irq:
- curr_spx_fiq:
- curr_spx_serror:
-@@ -71,6 +105,7 @@ lower_a32_sync:
- lower_a32_irq:
- lower_a32_fiq:
- lower_a32_serror:
-+generic_exception:
- 	adr	x1, .unexp_excp
- exit_msg:
- 	mov	x0, SYS_WRITE0
-@@ -404,6 +439,33 @@ ttb_stage2:
- 	.space	4096, 0
- 
- 	.align	12
-+	.global realms_gpt0
-+	/* GPT stage 0 table */
-+realms_gpt0:
-+	.space 4096, 0
-+	.align 17
-+	.global realms_gpt1
-+	/* GPT stage 1 table, initialised to all 0xFF (full access) */
-+realms_gpt1:
-+	.space 524288, 0xFF
-+#ifdef ALT_VECTOR_TABLE
-+	.align 8
-+	.global exception_log
-+	.global exception_fault_address
-+	.global exception_type_code
-+exception_log:
-+	/*
-+	 *These fields record details of the last exception, if ALT_VECTOR_TABLE
-+	 * is defined.
-+	 */
-+exception_fault_address:
-+	/* The contents of FAR_EL3 when an exception is taken. */
-+	.space 8, 0
-+exception_type_code:
-+	/* A generic code indicating what type of exception occurred. */
-+	.space 8, 0
-+#endif
-+	.align 12
- system_stack:
- 	.space 4096, 0
- system_stack_end:
-diff --git a/tests/tcg/aarch64/system/boot.h b/tests/tcg/aarch64/system/boot.h
-new file mode 100644
-index 0000000000..cb9ab6c1b9
---- /dev/null
-+++ b/tests/tcg/aarch64/system/boot.h
-@@ -0,0 +1,14 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+/*
-+ *
-+ *
-+ * Copyright (c) 2026 Linaro Ltd
-+ *
-+ */
-+
-+
-+/* Global variables exported in boot.S */
-+extern volatile uint64_t exception_fault_address; /* Updated by ISR */
-+extern volatile uint64_t exception_type_code; /* Updated by ISR */
-+extern uint64_t realms_gpt0[];
-+extern uint64_t realms_gpt1[];
-
--- 
-2.43.0
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

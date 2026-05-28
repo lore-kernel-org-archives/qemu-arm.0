@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91375CD5BD1
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 07:30:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 321BECD5BD1
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 07:31:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSVCF-0006jy-02; Thu, 28 May 2026 03:30:27 -0400
+	id 1wSVDU-000861-Rs; Thu, 28 May 2026 03:31:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSVCD-0006iC-DQ
- for qemu-arm@nongnu.org; Thu, 28 May 2026 03:30:25 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSVDP-00083M-BL
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 03:31:39 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSVCB-0004Jf-Km
- for qemu-arm@nongnu.org; Thu, 28 May 2026 03:30:25 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-45ea19f412aso4176752f8f.3
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 00:30:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSVDN-0005yd-KQ
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 03:31:39 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4891e5b9c1fso107543055e9.2
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 00:31:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779953422; x=1780558222; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779953496; x=1780558296; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=MIYOm45HKLIkfZLveq09PjDarV95RI0539rL5PJdKUk=;
- b=cl/eX3o64q2V40a2kPAhQjJCYvDO9KRq+gBVHNzTcGWDpkzxio1Kddn2JD0zlJu6eA
- FeTvSeR78hvV6qH9WQVXIVta+uM4pcgZCP77x0oLQTSYHQW8N5r9zLHnkKQjZ59EspPI
- vU71b+hw97BmQhEXKSaUn2SGqN76wtGZGss9syiZkMuIrw0R8dC04aMoqhCKZKClbOtu
- nk16ZZbGD/iWqDJaL7qO3Nr3zkEv7phgpTXyfU5EAHoGjdtmgudEHyY0ZUNAzTtUpoyO
- GIFjcEzTnC3GBqbChJTcdpg2mEbZtlC0a5u3ezaZL37q2acgXg0tIUnLAC/B42G9JSru
- IVJA==
+ bh=iBcsPHpeORLFwkSUrxks6ls24E0nrkuKUrAAkhe4+E8=;
+ b=nyHNzNQruWKnqoP7o8ehHOzuntXIoleX0SKTwzp8q1ka8LjSKuj1Bi+b2lvyseO7Hx
+ cFY955B8Msrf00Lmm+M2m17EH8Dt2z4wwz7BgPSMTSiO1Jo1laXB87p+d/+miS5MYFV5
+ OMw2s3l431AK9sa7VeG9vL/XvmomduliZcHICOPb1BHNWpKRfRNF7g4yVJYhV0FUAzvn
+ lFju8kb0Yki7kbiea5wB35x2BmwkKCEzD0Op27kk9+kmkmg0ZbrOgSD1aLcCOPRq+fWC
+ mN7xwWjfpU4lJl/Q162UgHAkxI06vi9dYHXZ9KiIvssZSoXe8QuSXyDNmvXdL9q+Q2h/
+ r8NA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779953422; x=1780558222;
+ d=1e100.net; s=20251104; t=1779953496; x=1780558296;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=MIYOm45HKLIkfZLveq09PjDarV95RI0539rL5PJdKUk=;
- b=le7NMRpkBY/vIToc5suJfaTosNh4BES7SyzJew3SA6gc/+7yFrL4ay6oh0w8VpjM2b
- mCwxbav12bGcxd4kuzEp7ZcSJW1cPN1g8cNOE43oR1XvLKjSZm+qWNvirMWi7W/XVGVi
- Cfe1onz8+ay+9yq+r448da1fhH/adTmXirppDAqGNZVJTANO3CI0LHrEStD8tmJLGIuZ
- XhHs+dmkMnjTOHLJCjw4ThVSwcncQV/ZABgNC5uIvFjU+IxoAenzLJZXdj5nLxrieXzq
- PXGiWeSIr/WYgOg7Ezoe5LT/0mCqxdcC79LdZAYQYL2w27LQCezRq3/Nj1Vv26VXz6AW
- g7Wg==
+ bh=iBcsPHpeORLFwkSUrxks6ls24E0nrkuKUrAAkhe4+E8=;
+ b=iYjvF0Yyu4mK1S7NcAy6qgRydbx+4UU64D9yVMVq5WJJj221Vya9WehsoK7V1yi1qH
+ mGvRZY4hAgKZdFGWnoQt4pWKf2Xv8XlaPp6UXEFDhPxhO3m1UgEgbNpn7vSlNfKzXThk
+ fpLFQ/g7KrbbEa+6Fhakpjw9X0kO9Z1nn0Xmb2rOU4/zRzACeb6VgOPxAYTGjqyIqjR3
+ pXQCeMYJyaH5wvk1b+lIE64QZMKw4GufcKZO91wTeDoODyJNWV90GOWfcQzRa5DJxi38
+ 71uBp31S3mI5R5abhvCuGzp+ZVk4uU7tLxlMPdrLRj4kWhPEwFn/nIWXXTtY63exfRnR
+ OEDg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8mHl40V1bktZ9F4hmQkNWknxIUs699P7mE5LI85ZBS8EgC6cwWLsd8mItQNUgctAr6AlKyHoNH/A==@nongnu.org
-X-Gm-Message-State: AOJu0YxRyquYX6p3tMqvBXIy71PcdOmy1bOLymhGbdq6df7H8epqoFz1
- hGfIdUrX26NNACOpxnNkB92H3ZIh8WnCAdx1bJtw8l6+ak5frZ/XvZ9CZAGqQ7fCo+4=
-X-Gm-Gg: Acq92OGHPYBnZaPhncdB09YV4QklrqKAeAu3Eu04AglYToDgfuoilFIi+1w8sMyLOwt
- 62yWX16AtLGB0I/VhvI34OHbEDuCg4DxkqFiyTasE45Iaj/Pm3y1c2ttAztawdI/PmyCJPj+3CK
- KfeYIrmPW48GA+4XBHFO4ionFFBi7RaWnI8TcHAFOYhgIWh24jhHSjMGl6riBtBFv3L+5cB1Fpv
- 5DqYn+1GQ6wyKezbRoe1AMXPeFD+0JggAmpVlgq0tul/YGZdmrHw6x72fSqYoZdk3Y2Xhrh1+34
- 6HhI947cJn9gsx8pEPyIwlAcfGihlJJOjZilpouziTDMokmQ22xS1MDR4GZnup/uv5QLtz4MERc
- f0Qpf9qzdx65a+vRSUnkitfpUGRuptWHY/7fNAaeqEp7GzEji65wxutK8fpaxSjacdh+tRzC8ge
- TMOabaPIgtg6/vNYbf5n/dQv9R1kT4dLrBodYmrWwEqGNh+glC8sSGnBhC+jHhLTU7JNI33Y4Qf
- Qcw
-X-Received: by 2002:a05:600c:a402:b0:48f:d1c0:721e with SMTP id
- 5b1f17b1804b1-490426b294amr300869545e9.12.1779953422014; 
- Thu, 28 May 2026 00:30:22 -0700 (PDT)
+ AFNElJ/o+5H1lLH2+mXThHwZ5dbu5Q9TqM/aIIFT63yqUT7ur2xieo4pj7QCf4yTdm8/cMI9JHHL4i3Qsg==@nongnu.org
+X-Gm-Message-State: AOJu0Yyfsnj1xiujQcxPFFRHdzUmHXt0agevfQIPFwbnOpwm4ai3TuFZ
+ BwzgTsJPlE8Ofe3NCZyoBdS7pu4WcxpS5Bxshpx6Pv1QkUthcBmSMzu4puEM49xewJg=
+X-Gm-Gg: Acq92OEh578MmSxDKp3BHcXAmhaLaFXFZhwDE92mf6EgH/SgJx/1+dPwKi+/bBsoy+X
+ +8ldEI8sUdSCoVys5OsdjpBJVZHRssy8fDL+EUt636Apfrb7TnUaBmrKdJZjMn7ESFcwWymjvGa
+ 8YqRTQGLVS7mmQ6PDuvJhXh2vIuCE9O1XEvBeGoequzPqq7BS/rGBxqV+NwVZo9YZrGuYOo9iLu
+ uv2hNZBGbZFqvcbYZtQc6suCNJdZ7mjvHY3R4Wyv8q4q52NU7xdNAi3kOUbXQQ4cQxYiVInNKOk
+ q76f3nM6FCPBi0srDy6wNb+LQLxNeQRm4ZkKABGSRGDq4cg+j0Hr3w2XFp+1I61pf36WkNZM/YF
+ 5MZDK2eeykiU7NI25tnbnxBpm6G9+lsdmybFQDIQ4X2idVh6ENZibdey5cvecl+jxjNr/XbLfui
+ kjZYOV1lVaM0AzfLAT13hL1qNIG8Uuppkx776o3/JwKphSk9EoxsoezOKou99ZO2bz7mydiHzCf
+ F4s
+X-Received: by 2002:a05:600c:8217:b0:490:51e9:deba with SMTP id
+ 5b1f17b1804b1-49051e9e233mr350959295e9.27.1779953496033; 
+ Thu, 28 May 2026 00:31:36 -0700 (PDT)
 Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49092a925acsm38797545e9.14.2026.05.28.00.30.17
+ 5b1f17b1804b1-4909284a895sm20109615e9.8.2026.05.28.00.31.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 May 2026 00:30:19 -0700 (PDT)
-Message-ID: <9be6fb5f-c75f-45ad-b8db-658037946e19@linaro.org>
-Date: Thu, 28 May 2026 09:30:17 +0200
+ Thu, 28 May 2026 00:31:35 -0700 (PDT)
+Message-ID: <0fc476ae-b546-4fe4-b6f2-31ada0d9e89b@linaro.org>
+Date: Thu, 28 May 2026 09:31:32 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/10] net: use stub_ss for vhost-user-stub.c and
- vhost-vdpa-stub.c
+Subject: Re: [PATCH 06/10] hw/net: use stub_ss for vhost_net-stub.c
 Content-Language: en-US
 To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -108,13 +107,13 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Nicholas Piggin <npiggin@gmail.com>, Aleksandar Rikalo <arikalo@gmail.com>,
  Fabiano Rosas <farosas@suse.de>
 References: <20260528051642.115721-1-pierrick.bouvier@oss.qualcomm.com>
- <20260528051642.115721-9-pierrick.bouvier@oss.qualcomm.com>
+ <20260528051642.115721-7-pierrick.bouvier@oss.qualcomm.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260528051642.115721-9-pierrick.bouvier@oss.qualcomm.com>
+In-Reply-To: <20260528051642.115721-7-pierrick.bouvier@oss.qualcomm.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -138,10 +137,13 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 28/5/26 07:16, Pierrick Bouvier wrote:
+> Removes conflict with several targets where some support vhost, and some
+> don't.
+> 
 > Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 > ---
->   net/meson.build | 6 ++++--
->   1 file changed, 4 insertions(+), 2 deletions(-)
+>   hw/net/meson.build | 5 ++---
+>   1 file changed, 2 insertions(+), 3 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

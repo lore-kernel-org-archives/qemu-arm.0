@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55A53CD5BD1
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 06:11:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84D18CD5BD5
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 06:11:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSTxV-0003EV-Lt; Thu, 28 May 2026 02:11:09 -0400
+	id 1wSTxr-0003Qn-VA; Thu, 28 May 2026 02:11:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wSTxT-0003DQ-Ft
- for qemu-arm@nongnu.org; Thu, 28 May 2026 02:11:07 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ id 1wSTxq-0003Pa-RD
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 02:11:31 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wSTxR-0004En-Fj
- for qemu-arm@nongnu.org; Thu, 28 May 2026 02:11:07 -0400
-Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-45eebccc346so44086f8f.0
- for <qemu-arm@nongnu.org>; Wed, 27 May 2026 23:11:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779948663; cv=none;
+ id 1wSTxp-0004Rm-5U
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 02:11:30 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-4585a116a4aso10372552f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 27 May 2026 23:11:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779948688; cv=none;
  d=google.com; s=arc-20240605;
- b=FaXbZUQVS3xwdvpuSXp7xxO6JRITequ3wS7thRUd8BR4QS5wkiftYs+FlO0zM1lyDB
- P98E7FevbJ2rMY6b5gGDmh+gm90DYUrN4VR7lqB/FJCPVjw9NGfjbkgGOzxB4uKbBqM2
- EoAK4PvjarE3loojskgEjQvs/KohM3JUDYkm3YoTX64Z9s6aCdeC8UUmZMS8kGMjphcc
- 8P3/D6eK+syV4qolNr9wGlq9ElRB2CFIcR2ZUcB/+58jYA75nXxWwWItMlWGRf0h3cWV
- UHyJiqEujCdPRyRR0HgMMsWQ/lQQfDvqJLRl2b66PBs5v5CLHUy5ClDomwgvjG2T01M2
- oY6w==
+ b=FX29jwXfBgN/ELTKMTp+vbJhzKOiYqnAJJdzRc0LrhWRisHjdj3DlhdKDk3EHcDze0
+ FYllASUOrVnO20TGTHFoJN/86bOjmtSZkT2iCii/53IuKK9wW6/tpJWUJQTOuW4CIC5H
+ hrAaP5lw7hbFQSuX+4VjCKQgWfZawjfSmcziCGdQL1GKRLvSE7F9O/Mowqt+TdAyzKfs
+ 3bmCNaII3XjXrhAjugXnSyApAv9gpHKtN2Kp33oJvootgs3dFYkGe4US5NCbakLflp4c
+ oCuk4iLF5lsbhtj7POlVsNFMNnCJ15pPJh239wN27ec2d8ro8yYHw45UnQ8Pi6OIWs2c
+ Fs6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=BmP2mmq5DU6SnVzp3/Y3fQwcmxPvDtZzg2yLss5TQQY=;
- fh=VHf2aRkOmEU5rnNIcYyZ2n6Vw/IAAUFLl8gEWv4SwmA=;
- b=j+q4lPurjn1ExOD/Me3Teu1W8DY3fCFoXTGpfG/BmsUQpYqcXFzhUywmDh1L3sGg99
- 7B/E3D+r0GwB/3V2l6O0uVErWo4sjobTNDFu3MjqKI7CsUBbY96FS4A/ukN5IXyXVrnF
- 9HSZR3oUbQbRLIyZALLtoKyBzbPITZP/CPDTBO+8pSCEZ39+27MKwMyEYn4Vc7VBAVEL
- /weCiq+fDrtOhV/xJD2l7iU8m68a0UNlrDCifdHY/VwnaQ1yvJ1RntlHy7G/KYZwPShM
- lB3lb03KoG3nO8gxDKn/Z/1UQorD+xdQI1355/mMcGnhb+lzjWSV0mJ/nHLKaBTwqX94
- V7vQ==; darn=nongnu.org
+ bh=987p3tTTfT5NU3Jz/Tj67qE9H1wl8NyOwiSvElqoVHY=;
+ fh=dTiCKhLR0SXkdC6TGTQomBpN1ZMy1gSHpg+QWXfG/is=;
+ b=F+HqDI901cMip0PwUflzQ7/OTKeickqYSFdrdJ902YyaXt4mKS15PyGp+FrQDR6TMq
+ YLCnJcebHR8Np96lmW1PH8SyE3qStQ5Te3XsYVCsw7NteBfamgAvGlS7Pl3Od3SDaGdf
+ 5nrz3rq34Rka96FhjY2F2KpYj0LXnkaEu+tVQpwZ4tzwKljxZL0fwhcolAexhY5tlX/j
+ dDcnGLYBZWdrnls4LPrilcRg2xUf8WDmJtxB5iOc+ZNvs01hd/+9T8g5U1x6REwbtU5M
+ LzH+q2kuCEllhIVKZPfRy4TgggTqqSIU1+ee5n5sb6WyizYgBPfiZp4A9juE9Xlz6/ro
+ W5gw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779948663; x=1780553463; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779948688; x=1780553488; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=BmP2mmq5DU6SnVzp3/Y3fQwcmxPvDtZzg2yLss5TQQY=;
- b=rKcLT9T8cPXSwpHJJHtqWah12HeEu3OwHhKYCeCpH4PLIF5Tb75OPGm7IF4BaCjxqK
- Z5D761XsMnkiQmLXotqrhWOVMoxo3F7e2ZWkCxIeXOEHhhE0box54pT3iGyhV8kl9yY1
- J+PMw+AkvvXBSw+URxdy2YnDHbmnrSRELgcNcEs+aTTCR/7EgYbiit7YWpxiKrTIPUv3
- Vp6qN47pB52PZW9mO4iHNNpfEtftxtt1TJ53YGXl7lDAj8puh5IyVOAfzd9nViGuBlTu
- ikjv2edIgKiRPYH02aI6a+xZGZAqps9PLVUWPAo7eEMkoza60f1n9l9vpjdbspinzayV
- sByA==
+ bh=987p3tTTfT5NU3Jz/Tj67qE9H1wl8NyOwiSvElqoVHY=;
+ b=uV5ZlCadyw2VGfLinawnfv+DRYwHMhuhSf1F7PTF4uECphnewgeUo0DoINdS4AFfaR
+ CEMjfZx6zGqAn8laR7+xK8dWQO/JoP0I/AJRJZuaUddciqIXsT8d+s38nj9Z87cjvP1W
+ Lb1cI3vlqbnE1hBMDdy3x2sMxQ7KG4E3fCUTQ/E/HjUrm5QfoFmKlouXsiHacryOy0DC
+ bgHgCv6NzJaGxdqRnJdxg4e7TAbR3Nxbaj+yaD08gEIsay1C6yE3/Spu8LhEPyaxwf9W
+ nDtoYIMqDpblQVV8fE8VhVMTY4NVhe2XRpHkPcWGzwOqG8t87QDIbcyMS82GtoCyBLcB
+ oawg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779948663; x=1780553463;
+ d=1e100.net; s=20251104; t=1779948688; x=1780553488;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=BmP2mmq5DU6SnVzp3/Y3fQwcmxPvDtZzg2yLss5TQQY=;
- b=LlaBdQvFJnOd8TrXiU/oYaCwLLDAdc56y77mB4pBMLRs3Fqq2/GpBnkU57dECqdHmE
- aM/2w1LZtKA1KpUW4QzhGeEhHQ4COzfVKXeT6Wqvc3WAhY9C7+rzyo4EaFmhHjeigUJd
- mGFDCa/93nptKYBnTSHiujBz7Ntzl4GX1nedn1YoyDqWGVpy8iFt2IBMpUruTtQMd5IU
- pfW8LGco0pj3N8VXaM5OMm+K4q7R6iLBrSD2lwbDUthWMTWCXlt8LinCbJUxKNBTsd1W
- 9JpvBJfGm5tlL3BBybeDC/LgOgPuyxotg1WWLHprcBGo1+JskLxewheWknDBkI73J3H2
- IaCA==
+ bh=987p3tTTfT5NU3Jz/Tj67qE9H1wl8NyOwiSvElqoVHY=;
+ b=UafplIrW+BhoxwYB6jAv66J7J2WR6aiuj/66tZdOMQ3G5sHXHyqfSniQqzYOKDDZH7
+ ri0Ks7dQVZ3jWb7+JyNCMV/6ts+QASwx9uM267uYQOg4vRF6XI58/TmVSUzatyufSMCa
+ b80VAkk9QlicZgzOYdb2/NTd0VLnyIVZWMoB3JX5ui2LUI7sU5WAHDDsp81dX/pNC0a1
+ xpGl/wjokuZTTGgBGjH1ef7mU2/YLYugjbrq5LihVdwGgM9nE8Uep7KqopHgeETCdLQV
+ SCiJgx3TfUVA5Vm1ssSxo/762JjBSVLFXXavU/iO5DdA5DS+CKXGAqwR6YqvI+ePzpAV
+ 1I1Q==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/6XRV3vcqF1jxT2sTOSyE0AFINu4c36TFbT0yvNokM9dHYTJfGvGt0W/omNI8zTYitpvgot9o3Jg==@nongnu.org
-X-Gm-Message-State: AOJu0Yxy4XhRgt+mTok1G7ikoNqd5RFjdi8jqXKaYl7v2v1k7bSNdoj+
- gMD2UsXsUHpw0w1F6QPB/3EWqxy8y7Szhch1oSatKGQ5NwW2QSuStbeVIGelnDIuUHJhDaQ/2A9
- mK0aMBUbNu3nnMndOva1gWH2jxl8TEJE9Kol5YIg+pQ==
-X-Gm-Gg: Acq92OH8NGp0ZJodW+lWh6JyPTegpH7Od4I+ohKADBkEP76p9te1S6Dzm+ThdWXV8Z9
- X5W7wht+aeklDWK3VlxoIXPWLEnGdcLaDRqPDVojd9Jhu9HcPH8f71H+zTSAVjEj4Bd6Dugy6NA
- c4IIlrkW0x0BtEqaoMJ3/7TGu3QASjriSgyLmYFLAXnDZSBWB5MUCOAwPd/neX41AzT6T8G0v1U
- KANW7TOUN2t722zeK51FDwJHv8qI62h6TL/uMkU57PxagNr3RxpP+UGUFaZTdDFpEKOBZo6hl70
- BKfole9YX+lQbH7yZvGqRwUyWiHPxRoaBk/K6PVcOhbZ0QXcVDfPXkEE5X0FecZqi85HP7U=
-X-Received: by 2002:a5d:5e87:0:b0:45e:eafd:bb33 with SMTP id
- ffacd0b85a97d-45eeafdbc63mr595844f8f.29.1779948663291; Wed, 27 May 2026
- 23:11:03 -0700 (PDT)
+ AFNElJ8zMX6W/WkbCcCY6yTr2qPgyYGRPbU0nas3qmit/chOFcBvg5vmNtICUzYQ7zJ4cLMi51gMVAiDaw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy6wshCiBLoNSRQ5HJ3Bgz6xvM+1OSILxjpklqmvdbBXuUDqigA
+ kzs+pmY5JR53F8y2q8kaHz+HfvFiSv4Zgrr189ctECB/LTw+3oWHG1rCwLtTSwAMyCM3/Pomj16
+ Jz7rOLonorz3KixJqiQC9OkNTjIcfEMtFZ8n1GrKbxg==
+X-Gm-Gg: Acq92OHtNgXY+XgKls1IpgSBaMJSV6TtpsZ/jYqBpmgofUQ0p3P72NV98m6AESKeuD9
+ 8WpEnHn3KmIA8qn7wWcNviOCqP6zY1+DYvJsiRQkFHd4HniXovCP9mPnG8pb62riD77u3pPlHr2
+ nsWqT2fdgr55qt3VEW9HgZVBvsnSg1zhh4rFa5uTZcPUB27fromRrh7aJVH1/e2YkAYZiNoFd9C
+ f+9+MGzEpHxad/8gb6dULAjhHim5CRohD8TgGBAhsMF6qmXvhRM/rPR+a6U9mw9PYyl7ywJANOk
+ 1NB8bmDIlaI00hTTOfzSCYTXPbuL7yvL2q8ecObJOlEEu0awGEsYj4NxDj0+GrtMsuvQgZA=
+X-Received: by 2002:a5d:5e8c:0:b0:43c:f90b:5668 with SMTP id
+ ffacd0b85a97d-45eb36acd72mr41400771f8f.23.1779948687025; Wed, 27 May 2026
+ 23:11:27 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260528051642.115721-1-pierrick.bouvier@oss.qualcomm.com>
- <20260528051642.115721-7-pierrick.bouvier@oss.qualcomm.com>
-In-Reply-To: <20260528051642.115721-7-pierrick.bouvier@oss.qualcomm.com>
+ <20260528051642.115721-3-pierrick.bouvier@oss.qualcomm.com>
+In-Reply-To: <20260528051642.115721-3-pierrick.bouvier@oss.qualcomm.com>
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Thu, 28 May 2026 09:10:37 +0300
-X-Gm-Features: AVHnY4JHzF2g7cNPKdI8yWGi-BoNXwjgTxUCplvyczRd5X9FUcNlnhGVFGoJXfw
-Message-ID: <CAAjaMXZJ395DJmNGUrEivN3=+3KZRgYHxn3OPKMQw-D9Q3E3Dg@mail.gmail.com>
-Subject: Re: [PATCH 06/10] hw/net: use stub_ss for vhost_net-stub.c
+Date: Thu, 28 May 2026 09:11:00 +0300
+X-Gm-Features: AVHnY4I-NlqunV7wGFvsqjvPsEW0Kz4bYN0AMsmvycIhhQ5fzxo0IqI0aq8IobA
+Message-ID: <CAAjaMXaajQ0XsZmru3rtkT5G=0Zf5w0NUNdeeoq0P7pchc1iOw@mail.gmail.com>
+Subject: Re: [PATCH 02/10] target/arm/whpx: move whpx-stub to arm_stubs_ss
 To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
  Alistair Francis <alistair.francis@wdc.com>,
@@ -127,15 +127,15 @@ Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Fabiano Rosas <farosas@suse.de>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -154,37 +154,28 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On Thu, May 28, 2026 at 8:19=E2=80=AFAM Pierrick Bouvier
 <pierrick.bouvier@oss.qualcomm.com> wrote:
 >
-> Removes conflict with several targets where some support vhost, and some
-> don't.
+> This eliminates symbol conflicts for whpx symbols on windows-aarch64 host=
+.
 >
 > Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 > ---
 
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
->  hw/net/meson.build | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
+>  target/arm/whpx/meson.build | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/hw/net/meson.build b/hw/net/meson.build
-> index 31025874699..84f142df222 100644
-> --- a/hw/net/meson.build
-> +++ b/hw/net/meson.build
-> @@ -48,10 +48,9 @@ system_ss.add(when: 'CONFIG_VIRTIO_NET', if_true: file=
-s('net_rx_pkt.c'))
->  system_ss.add(when: 'CONFIG_VIRTIO_NET', if_true: files('virtio-net.c'))
+> diff --git a/target/arm/whpx/meson.build b/target/arm/whpx/meson.build
+> index 3df632c9d30..7385c14f534 100644
+> --- a/target/arm/whpx/meson.build
+> +++ b/target/arm/whpx/meson.build
+> @@ -2,4 +2,4 @@ arm_system_ss.add(when: 'CONFIG_WHPX', if_true: files(
+>    'whpx-all.c',
+>  ))
 >
->  if have_vhost_net
-> -  system_ss.add(when: 'CONFIG_VIRTIO_NET', if_true: files('vhost_net.c')=
-, if_false: files('vhost_net-stub.c'))
-> -else
-> -  system_ss.add(files('vhost_net-stub.c'))
-> +  system_ss.add(when: 'CONFIG_VIRTIO_NET', if_true: files('vhost_net.c')=
-)
->  endif
-> +stub_ss.add(files('vhost_net-stub.c'))
->
->  system_ss.add(when: 'CONFIG_ETSEC', if_true: files(
->    'fsl_etsec/etsec.c',
+> -arm_common_system_ss.add(when: 'CONFIG_WHPX', if_false: files('whpx-stub=
+.c'))
+> +arm_stubs_ss.add(files('whpx-stub.c'))
 > --
 > 2.47.3
 >

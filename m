@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2F67CD5BD1
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 07:25:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 615ADCD5BD5
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 07:28:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSV6v-0003YV-J3; Thu, 28 May 2026 03:24:59 -0400
+	id 1wSV9d-0004Rl-7l; Thu, 28 May 2026 03:27:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSV6u-0003Y0-Bp
- for qemu-arm@nongnu.org; Thu, 28 May 2026 03:24:56 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSV9a-0004Pw-Dt
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 03:27:42 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSV6s-0001ax-OP
- for qemu-arm@nongnu.org; Thu, 28 May 2026 03:24:56 -0400
-Received: by mail-wm1-x343.google.com with SMTP id
- 5b1f17b1804b1-49056b9f04aso63607745e9.0
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 00:24:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSV9X-0002y9-KZ
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 03:27:42 -0400
+Received: by mail-wm1-x344.google.com with SMTP id
+ 5b1f17b1804b1-4906238c62eso38026335e9.3
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 00:27:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779953093; x=1780557893; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1779953256; x=1780558056; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=XsafEjPNf0aehMFFDkjIO29wWxRkbVrPF2thKPprA4w=;
- b=TeuHHtcApkQja+sD8RDM3jXfH3pRQI6AvNWeHf1AHZZZ0qaPZJ17nGLDKsx11maYui
- rA3uTlikWbHRJHHOaDWthKFLOQX47EpeNGG7G8Over3ZiJNJ/5d4Y5X12VdRpFjtH/9z
- ZU3JimqWR36mhOFeT7JJ1iaN4NpoMqqsUMg80pnsoYFYRwCvmnSPanqiMwj/sYBTVjAk
- 1YO1wNtVrZlMW7XOeZqFhTHImQKUnFpjs4nkmU+RKQYD5ESPfWY4V4+XiC8wZieDyB2u
- an23Fc2m9AK1OUL3AWsDWAsEvCEOvEGumLQ/FLlmfmfClbwe6hZO9pB3gV6BSn/zgwBW
- SKBA==
+ bh=0qCDPXaHxWaorpx71uSvC55Tu28UVHfzlN+uktRNtHA=;
+ b=RcE3xKHYT9/SqJJrTKJOUQaDV6wu4R6871lBs+TZHOmSVOSOSM9Xdpu472ULrltZLZ
+ xp6BZUnmEXzTVgNBzZ4E/uudchdfAZEvDAr5PIjvXPlsXJrclk9HUU7BECsx3Eeke8cv
+ GeuFtslzaxp58OQKJYIs9KdhJSh2hjjU0bjDqXzmFWf/f9UTx+KNzd6rQuVRvyY7zL+h
+ mzcgGQToslFaNmpFW2AZZ9raPTeCOvQb3zTtYGAA7FzymL3+XTjtUUwY81+d6CoiT0gk
+ K6CsOEk1TBroI/i1y4r8hMJNfsfZ6p0RHPD5KksEuw8nOSXg8x1E7PKfYl2abmUVd3pd
+ MlaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779953093; x=1780557893;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20251104; t=1779953256; x=1780558056;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=XsafEjPNf0aehMFFDkjIO29wWxRkbVrPF2thKPprA4w=;
- b=nRibQi5HoMgI3PIOZX4byhXgQSVDWFg+2HN3HHPXB5w7dHkoyYru3MLvZewsK9xDf0
- ug6/308KL66OBWs+GbA2sp5NoH7NgqwKB7/dQsFnhqwaV4CnRVNcGCXwd4+DLWa9QEIc
- KcvlOTaXGlwHPerGC3Gd5kA8Av6MlHmEsfP8gOJpK4JItuHQ3dSG2Iz4iMvrg5N8w2NE
- XrYR18n3nQ0l4P0F9bKaXtexXM/5b40+VTpetIJ0ZtZ1GTsMRPlyRdlHFnI0W/0Xqhpb
- OMEyvJlM6HKaBu6opS7HCPIAFFtT36YfovWITms0VYRFuvmtje8fNOXucjE7PghLoXBD
- Z0Ww==
+ bh=0qCDPXaHxWaorpx71uSvC55Tu28UVHfzlN+uktRNtHA=;
+ b=XD97KN3289dcJ77ZByxHmrcSMeMJyP2SKHOJIe3VE8rNfCLh3XqyxboXaT2HE8KGi+
+ D9wXbu29BpQHiSK0WTB9o0F/7slayPMdD7elg2IadsOuSr8bA8Lu+DW50zNh8KlyAjSX
+ uSgmQhMuVnU+NGUqpyfohcq8pQcV0ZIoh2xEtLSSmAHRlKd29Apf00WBWFC9pUhujAfR
+ pNR8EoyeImnw6bDZUml7NJFpxvSLk5AEIOn8lFgX95fjCOJO2PrYJZOsyFhwGf06TkUk
+ vSPuTsbuztr5L0vB6NWKbXVgEsmbafcCTmimK7ZqaGKLV7PpoN11758FFp5pSMro3/mw
+ I1QQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/w+UFxVZA9Szjm2kFaAW8o0LekEggwZFl7yEJjOWeuMJ8izhae4cLxqIvQnT26YjPPyBU9iJBl9w==@nongnu.org
-X-Gm-Message-State: AOJu0YwSIAoN5i0hNYMcFu+mQ6wmNBeoRAGxUXm3sILYgc+nkkC24sOg
- EjtX2YXnvwQM3IOWkOscxbcx+842ZGNDiyfnp398iU4k3aP6CPqkIIfQ/1Df8qEbrCU=
-X-Gm-Gg: Acq92OEjyNPZmmm9mLAnO3TRhc8O3N3O6LDFiSFqQERT6EEUkmRdVEGwKeHoiYpqEsf
- 0wpuN8f2bfi8N5LpoSzAcXKBrih76uMx33e4KroyaSO+5+h/1j4T+A7unslFVdJYUmk5+bHEHet
- 4CAq1PG/LP3YjAKepHGONqMa15h8485JeErfEszadUK/m6GCwme4uZNEwW8pMrPZ225fHQ7u7bP
- Vv/anhmwbhiXftC1GA4/WOzMtNVpEW+WD3lLWa++sVbAdZ1payyPPdKD49S/3mNjIuHHcOYFeqD
- vxS5RaA2PYPhz7fyJSev76vnaY+5ecQn6wag6EiNqLR9U+Qx0Q8SjPzHwWLEIl65SqK70JAft4p
- X+CNqpg4FV9l/opYNn5dKu7noyICSMH+9uhnQy9sT7XJGnn4CnOCG7bVe8iIjbKPV8XNCc18dST
- 4WVnC6ejeF8aW1JwLhbVmEcuBvC9L6/58tI11VHHIeRR5qh80wXjxSiOr025gSQ+uoqG/5zKoXw
- h7ZfohN1ahyl94=
-X-Received: by 2002:a05:600c:8b23:b0:48f:d5b2:7c1a with SMTP id
- 5b1f17b1804b1-490425aa7a4mr451413785e9.13.1779953092743; 
- Thu, 28 May 2026 00:24:52 -0700 (PDT)
+ AFNElJ8TYFs3BzNx6KBzvl2efAfn0W+0hrWRSatlaxpbgaMQJJThgnnEOM+dPbNP/PlFxzOueC4NXbjzkA==@nongnu.org
+X-Gm-Message-State: AOJu0YxYzrmSRjRqjrxdQujSYMLIzybNN6TlM68vAb+E91OwGsE/LidI
+ c8SQA7lxJ2RSgVeMxyTZsNKOHBrsT/nSFm15kgh7uAFuADxNtuy2V0njRWxWt+qKcJ4=
+X-Gm-Gg: Acq92OHjWzrNMn5s1GtW76lZ+ydzYYkDEYnpXNFLUf4DI1uAzHq1ben3xacsch9yqE/
+ PSquBozZZJazpPkUorw/v77/Sc+aux+mZNBBXbvKz/l7cVHiDGSH+sJHbCMfFZC0JatpO+yLOaf
+ bw8WzEmy2m0QNKHAjnpYPwOJn1+eVuqnjxEWH4RYk2nzcPmt/CvaKPGctj9ma0gWicJT3BWPEcq
+ ef5YqWCELRM18HiY08KvYwCRLzQ50p3mdj+a6Ys5gLEPnIdgZRCBmdNLfyOREe/wSze6qewUw4z
+ 7YUABilo/WaLVOcrRD48wGT1r4rVTJGCU/a1VacIhMhUWAMQgIey3r7sEKghAwDp6w0ZPQxdmc2
+ R9L6EXCTn8iFBriH6AvtljcdzryEW4+R8k8IuA8dzvTbWf2O9u8cudy1gJ5Y6DL69axTf7Pk1GT
+ v7mGEQQm78XV6lNAej7ZK3WF6ecqoYN0Cg8P+Is0wu8rp5WzNHktw0qtoWXOczR9HHWBpz573LU
+ Tm0PAdnVvBk1lI=
+X-Received: by 2002:a05:600c:a00d:b0:490:9588:bdb6 with SMTP id
+ 5b1f17b1804b1-4909588becbmr1007685e9.33.1779953255876; 
+ Thu, 28 May 2026 00:27:35 -0700 (PDT)
 Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4908b6a93bdsm11873225e9.10.2026.05.28.00.24.49
+ 5b1f17b1804b1-4908e9b0c57sm13530385e9.7.2026.05.28.00.27.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 May 2026 00:24:51 -0700 (PDT)
-Message-ID: <41e70c92-99d0-49d5-b233-a7f80f863f8d@linaro.org>
-Date: Thu, 28 May 2026 09:24:48 +0200
+ Thu, 28 May 2026 00:27:35 -0700 (PDT)
+Message-ID: <33274371-2cab-4132-a4ef-0497c7ffec3e@linaro.org>
+Date: Thu, 28 May 2026 09:27:32 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 09/10] target/microblaze: rename helper unaligned_access
  to microblaze_unaligned_access
+Content-Language: en-US
 To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair.francis@wdc.com>,
@@ -108,20 +109,20 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Fabiano Rosas <farosas@suse.de>
 References: <20260528051642.115721-1-pierrick.bouvier@oss.qualcomm.com>
  <20260528051642.115721-10-pierrick.bouvier@oss.qualcomm.com>
+ <41e70c92-99d0-49d5-b233-a7f80f863f8d@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20260528051642.115721-10-pierrick.bouvier@oss.qualcomm.com>
+In-Reply-To: <41e70c92-99d0-49d5-b233-a7f80f863f8d@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x343.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x344.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,16 +138,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 28/5/26 07:16, Pierrick Bouvier wrote:
-> Solves conflict with aarch64 unaligned_access.
+On 28/5/26 09:24, Philippe Mathieu-Daudé wrote:
+> On 28/5/26 07:16, Pierrick Bouvier wrote:
+>> Solves conflict with aarch64 unaligned_access.
+>>
+>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+>> ---
+>>   target/microblaze/helper.c    | 2 +-
+>>   target/microblaze/helper.h    | 2 +-
+>>   target/microblaze/translate.c | 2 +-
+>>   3 files changed, 3 insertions(+), 3 deletions(-)
 > 
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-> ---
->   target/microblaze/helper.c    | 2 +-
->   target/microblaze/helper.h    | 2 +-
->   target/microblaze/translate.c | 2 +-
->   3 files changed, 3 insertions(+), 3 deletions(-)
+> Duplicate of this patch which you already reviewed:
+> https://lore.kernel.org/qemu-devel/20260224193028.2370-4-philmd@linaro.org/
 
-Duplicate of this patch which you already reviewed:
-https://lore.kernel.org/qemu-devel/20260224193028.2370-4-philmd@linaro.org/
+The point of this comment is to avoid duplicated work (I thought
+you had these patches in your branches). Should I maintain some
+single-binary-next branch in my repository with these unmerged
+patches?
 

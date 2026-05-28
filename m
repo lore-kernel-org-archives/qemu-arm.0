@@ -4,106 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB913CD4F54
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 15:09:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F02DCD6E44
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 15:15:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wScM2-0007WE-5Z; Thu, 28 May 2026 11:09:02 -0400
+	id 1wScRy-0002Tl-5E; Thu, 28 May 2026 11:15:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wScLz-0007VT-LP
- for qemu-arm@nongnu.org; Thu, 28 May 2026 11:08:59 -0400
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wScLy-0003gG-1g
- for qemu-arm@nongnu.org; Thu, 28 May 2026 11:08:59 -0400
-Received: by mail-yw1-x1135.google.com with SMTP id
- 00721157ae682-7cfd0d8eb09so96606247b3.1
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 08:08:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779980937; cv=none;
- d=google.com; s=arc-20240605;
- b=G7NaJoMnpPD4R1XixF7UVCeXu2D7X5snQqTFRLoZPLDiVj1Aw5TrPYxlGqsURqLhsI
- PFaHMr+wurOLpIojF9+YwptE8pxvMYz9dsxanL49E9hcP4UOc4J4NVqRDSrEH8yQpqlK
- UX1hUFp9veOCCW7inbKsZKU1I8PZV4UBlY/fNqqoebPIi6yUK0LCK3cAcUntk3zG0F63
- a6lx467UkI0H1UokZHDertgDW5o+F774sUKrb9CtHwuxS+rN4kX9ECsDXnUOXrGyAwQO
- JSSLeobEL3g/yQK517Rtxi0rubSczL1/5Bi9blio5pfGPthvYZ9YWl3PJOKtAuHopeMg
- qqZw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=ZH+Pr2gCxkUA8KclhiyGn3ySabYvxbuLNcuyTXCLJcg=;
- fh=pChtpq20mQRMNKJ/LBi7cJkW2puaig7AC0IysZbvTFs=;
- b=MHePs/0Sxy1G+sEXqcd/CMfbKFVwsYK2hmzhybj3Qto5ugiruihu4Ge6zunh9LCn7M
- ER4p2Ew6mnxSKKR2sLkcr1c6UYM+wwqSi9Plnst6bnVkgZaBHSeuY/5qZirRHk59pW2m
- O+ATaAV33FvCRCWktJimdLLiUNbJPBT1T/5pYPFaPud96Np9lIiV8pAhmM5aBkbXEjpb
- YvQmC+TjAXxD2CX1GECgZGZ67dn+R4hhYFBxbyMq72oZ3Z03LsicOXrQQ/IBjledJRNf
- M0UsYZbkphXmgzu6b8+9KglMmwg2pn/f/6V5okPX8mRzjpZPHBbyGZOY0TAZxWL7aIBP
- OtOQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779980937; x=1780585737; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ZH+Pr2gCxkUA8KclhiyGn3ySabYvxbuLNcuyTXCLJcg=;
- b=IGAiBfPXaI5TMRTGAxGLTkdWRJXh18VXODX8pH0uew77gvJ8nh6B3js7mv8coLxJH2
- Mk7LitrAwrruQF8VmjILuQ1ZoQIwsoITzlnXVAUfAYF+fonnKTx8QpEuRIMpz0SxTyjS
- ert+Nx9Dg6u3UJKppybolOInOymCjI/tg21qRGOHq2b2KXK0+qjf6kIrGf/VQErx0Pxj
- QazY5pQCUX7pNDpnmOifHyYSi/AxSDUUxpJJl1R+YhyXIOw9hZPtZ2Funh0EJBLJzdef
- beToslwGlcjjt/34499/vqYIv71C/klwvQVojnvqwW3oe05DdxHH607cWTEOnmOlbnKg
- crHg==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wScRo-0002NT-Kc
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 11:15:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wScRm-0006Mx-VY
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 11:15:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779981297;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=U/+bC7QjDQS+fTuqHVrJHYLhO5StgoEy46exv+WFnTk=;
+ b=RYYqjzCueIcvQ++lSf85na6V7u/DcQRqCpAWWNxJHACeQOiM6ZBvoDWviaNuFJumUSXsQO
+ SGRnUFsSdUhSxZtE9NU57CoKoHhDEYCSBtcr3mVnTTjYcqhjAYEnUemHRyDUt+pWHXXbrt
+ p+3B52i14bUUp1sa9WKlrurqkndHuuA=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-564-j05njBIuOPeowiXSb1Jo9g-1; Thu, 28 May 2026 11:14:54 -0400
+X-MC-Unique: j05njBIuOPeowiXSb1Jo9g-1
+X-Mimecast-MFC-AGG-ID: j05njBIuOPeowiXSb1Jo9g_1779981294
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-44dad1b938fso7542235f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 08:14:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779980937; x=1780585737;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1779981293; x=1780586093;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZH+Pr2gCxkUA8KclhiyGn3ySabYvxbuLNcuyTXCLJcg=;
- b=i5sIrYOybgjcqykmmrhyIHRSFZ7ZSHxxp/a+Rz8QynE3JDluVD6XSM/J677SPjijZQ
- z2yH/yB0GlqvMHwzRYxuSb/GNRxQxZTSan9ME/hw+uW08tO6LWUD3tWxdfs3cTfEp5Th
- tJyv4krnsbM8SOI8+glWGkitvClip49E4K8mY78ORUZRFOv8YmAbOD/N/hdKMvelIw3/
- 6Xyc/H3w7fYAJtOfvNZdpyTX/c7uI6BJodoKcIrvfBMf9sOK89tSdmmspkkAujFaRihT
- tYCJ8Cr3WJbFbcH9DWyZXcaqXaaFqk1GCfYSiyFsB2gRGvkHfzPI2w3ps+2cvAZx8eIU
- V74w==
+ bh=U/+bC7QjDQS+fTuqHVrJHYLhO5StgoEy46exv+WFnTk=;
+ b=HZiJHiDMP4giivzgo0KjzHIAlztmjPxwxXENlY/Lxk5cs7aY2Kw/UIJ1+j1l0hlUrP
+ DRl7k8vdgpFupMfg2SOJ2XREbtDXJLIdQZ1UA40IcOGFO6YKoLlvpKwgfSp8fQlUq7BY
+ c9zaYpqRqUDxQ86IySxZTtQNk+BMAbMnyAd4rguCxyy/jdWGFu4/T8kzqmi2mxfobGJ3
+ adh63nAabTU+GanuoSoBhX+U1iJVUBmgkcR4+IJ3wvkalgDwhC6b+w+ASMPlCK6fwVu2
+ 7EDOMMNFXeOGC7+LDlDD0LFiJNTbqIGxyfyv2wwPK7CzkRVZ6B4wTkWpFLohoLt7eCUO
+ Zvcg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+7N/YKJWxyz3+FRJYCefiGqgfdrUznQmV2RpsR0V0ZDT/Fv8l1OCMLNry9cb53R0C2V02RUJQ1bA==@nongnu.org
-X-Gm-Message-State: AOJu0YwX1ByAJp8OzxwRDPGaqJB758YuotxmXc6vu8FOYqbF4wxr9DpT
- VpFNGpTS0/gIqdR2hwHjJogXs4QDkN2AEc2lTRF4PDrfwwKJMl6l+arsAeX0uIqz6hRJKco0beF
- iIVplrOx97+YIkM3Veyy4BFgR28iwyvmaNP3AvxCRcA==
-X-Gm-Gg: Acq92OG/AuSn6o9m4i2PnYPin6FmRjl+u1L6jwpB/Xhk4sPZoLJxR7RkvALrkGMF1Rj
- zhFEyGhUUTOnnaFp35GzkFBg+usiG26Xp8EzQfIG2FZmg96zx4QSQcF0vaVXBMcIduluim/lRA8
- kWaIDJtZyvm/tInuq5kd8LIDTsRvKcTDnYjjAl66ha93E8howGzDnDeGRMwIuyhsBn0HMjyendH
- 4/IFJIZgTdKFtlXcVsJsTyGtp8SUXEvtBd2NAZgVzvXBWNIOVTP9Hcu8OlEF+/0NR3dyPteToC6
- 0UIM0SCbysSq7rZwatuVMgEmKo2Vvsr+Mk+ZYF9aOMDlaaOZ+CSh0AnUvJEusZPI3W0xeprWKfJ
- hrQ==
-X-Received: by 2002:a05:690c:6982:b0:79a:daf7:c4fb with SMTP id
- 00721157ae682-7d33b44d216mr290968997b3.50.1779980936798; Thu, 28 May 2026
- 08:08:56 -0700 (PDT)
+ AFNElJ/I2qgsoco+eW1c9I7IUvJW9UHUGKNF4Ca1LESfx1M6IxVVbbVBKLiw4zMmioU+y80/OY0uNJsmKg==@nongnu.org
+X-Gm-Message-State: AOJu0YxXC7UkTpfxBm57eKrJK/jYrwJ8JCV7w52UhdbRnuEspBAqZ+lj
+ VLhZQ8+yUcW8VdM8BgZ4i73YFOgLqQpdHJquYX3Z3tEjamfDipnti7pSERT8FEHtzQjau3G/WjA
+ FeSz3aJ8ke8dsADBDhpd+Pu3p2wQkJ0h+aYReDuTMAG1te8gin8bo8w==
+X-Gm-Gg: Acq92OEwAJuJSI5Lqw0CMNMMCPC1tOGtmelCCRIr+sitMcRCNNn74u6UNwpqEPKv/7F
+ b/qp5C1X7DfaA3iWHb2FyAmVLhAIUtsUPb5M5CjpZGrw36qJLaOD9Mz/wYWamOGrWoWoMpbRhQG
+ v+5Wayuqb0NSwxqYEVCMGNM5Q8aF9ordvO9NdRYZzpd1xN0ror244O0kYqzEdqsCaVuHMf/ARzT
+ Guc2hS21j/CKml9zXt41LVyGipiEWmo/3mrXwIsfUP4fWbbSiVPEnCLlRNa+QXHUi+gHPNh3v35
+ i22qx/z4IoqxHcwcL8FuqCIBe5MCSMx+bPCuhgTL233z0EnkQaIOBIn6UcroW1EwDz3XBgsjaJf
+ ZFI+dhq1p35Zs127NJ5MhN5tTdPRB+DsBLqDofc077hsn1D6CJXZcPpSrVM1uWbpe4QbcITdahr
+ jhlXO/
+X-Received: by 2002:a05:6000:400c:b0:45e:b2b7:1863 with SMTP id
+ ffacd0b85a97d-45eb38a8507mr45091486f8f.16.1779981293657; 
+ Thu, 28 May 2026 08:14:53 -0700 (PDT)
+X-Received: by 2002:a05:6000:400c:b0:45e:b2b7:1863 with SMTP id
+ ffacd0b85a97d-45eb38a8507mr45091427f8f.16.1779981293242; 
+ Thu, 28 May 2026 08:14:53 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45edb549e79sm15071313f8f.7.2026.05.28.08.14.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 May 2026 08:14:52 -0700 (PDT)
+Message-ID: <6a402e30-91c1-4be7-aa93-0c287839bac2@redhat.com>
+Date: Thu, 28 May 2026 17:14:50 +0200
 MIME-Version: 1.0
-References: <20260511-feat-mte4-v6-0-8557cc1313b9@gmail.com>
-In-Reply-To: <20260511-feat-mte4-v6-0-8557cc1313b9@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 May 2026 16:08:45 +0100
-X-Gm-Features: AVHnY4IrFnMULkPvEJHqjIRbadQy4hTr57kVoMRxxpQGeVzzBA9-uSHz-ZVWP6A
-Message-ID: <CAFEAcA9J0DVUbgKviEjwEN8K0M2aAJTLaOpkndus6HNCPNRH0w@mail.gmail.com>
-Subject: Re: [PATCH v6 00/15] target/arm: add support for MTE4
-To: Gabriel Brookman <brookmangabriel@gmail.com>
-Cc: qemu-devel@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
- Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 16/18] target/arm/cpu: Expose writable ID reg field
+ properties on the kvm host vcpu model
+To: Khushit Shah <khushit.shah@nutanix.com>
+Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Shaju Abraham <shaju.abraham@nutanix.com>,
+ "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "sebott@redhat.com" <sebott@redhat.com>,
+ "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
+ "philmd@linaro.org" <philmd@linaro.org>, "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "abologna@redhat.com" <abologna@redhat.com>,
+ "jdenemar@redhat.com" <jdenemar@redhat.com>
+References: <20260519132905.145643-1-eric.auger@redhat.com>
+ <20260519132905.145643-17-eric.auger@redhat.com>
+ <30F66A6A-E26B-486C-81D1-8E1B2CCB558A@nutanix.com>
+ <6c14a58a-60ab-419f-9395-ca3489f6cff8@redhat.com>
+ <CA136979-E0CC-420E-9271-63CF27CD7DA5@nutanix.com>
+ <2fd2057d-c74b-4bbe-b2d0-cb9ed092a37d@redhat.com>
+ <6F6ECB0E-82A8-4FFA-8687-2D6E243A2096@nutanix.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <6F6ECB0E-82A8-4FFA-8687-2D6E243A2096@nutanix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 5mi6n9aVYC69ovf6GMcTDCkCVBdLr99ufoZTbYN5F-M_1779981294
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,39 +138,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 11 May 2026 at 15:01, Gabriel Brookman
-<brookmangabriel@gmail.com> wrote:
->
-> This series implements ARM's Enhanced Memory Tagging Extension
-> (MTE4). MTE4 implies the presence of several subfeatures:
-> FEAT_MTE_CANONICAL_TAGS, FEAT_MTE_TAGGED_FAR, FEAT_MTE_STORE_ONLY,
-> FEAT_MTE_NO_ADDRESS_TAGS, and FEAT_MTE_PERM, none of which are
-> currently implemented in QEMU. This patch implements all five.
->
-> Testing:
->   - Included for FAR and STORE_ONLY.
->   - The MTE_CANONICAL/NAT test from v2, modified so MTE_CANONICAL is
->     enabled in user mode (removed from tree in v3).
->   - A bare-metal testsuite that sets up page tables for S1 and S2
->     translation, to test the Tagged NoTagAccess fault.
->   - The bare-metal testsuite also was used to test LDGM and similar
->     instructions not permitted in user-mode.
->   - The bare-metal testsuite also was used to test the mtx related
->     patches.
->
-> Thanks,
-> Gabriel Brookman
 
-For me this series causes "make check-tcg" to fail, because the
-"mte-10" test segfaults:
 
-$ ./build/arm-clang/qemu-aarch64
-./build/arm-clang/tests/tcg/aarch64-linux-user/mte-10
-qemu: uncaught target signal 11 (Segmentation fault) - core dumped
+On 5/27/26 6:11 PM, Khushit Shah wrote:
+>
+>> On 27 May 2026, at 9:34 PM, Eric Auger <eric.auger@redhat.com> wrote:
+>>
+>> On 5/27/26 5:56 PM, Khushit Shah wrote:
+>>> So you are saying, if I do, 
+>>> -cpu host,sve=on,SYSREG_ID_AA64PFR0_SVE=0
+>>> QEMU will still show sve capabilities to the guest?
+>> Yes that's what I expect. Require more extensive testing though. That
+>> could be way to handle coexistence of different levels of granulaity.
+>> Lowest level applies first, overriden by legacy compositive options. I
+>> guess if you plan to introduce other layers of compositive props you
+>> will most probably handle this situation too.
+>>
+> I am sure this at-least does not work with sve, 
+> because arm_cpu_sve_finalize() just takes looks at the PFR0.SVE field and If value is 0 sve is 'off' otherwise 'on’.
+ID_AA64PFR0_EL1 SVE field is not writable if I am not wrong. Only
+ID_AA64ZFR0_EL1.SVEver is
 
-thanks
--- PMM
+        ID_FILTERED(ID_AA64PFR0_EL1, id_aa64pfr0_el1,
+                    ~(ID_AA64PFR0_EL1_AMU |
+                      ID_AA64PFR0_EL1_MPAM |
+                      ID_AA64PFR0_EL1_SVE |
+                      ID_AA64PFR0_EL1_AdvSIMD |
+                      ID_AA64PFR0_EL1_FP)),
+
+Eric
+
+>
+> What you describe might work for legacy props backed by prop_* boolean variables in ARMCPU like pauth (backed by cpu->prop_pauth).
+>
+> I have not tested this. I maybe wrong if some prop ordering magic happens at machine level.
+>
+> My plan is to just parse properties in order they arrive in cmdline :)
+>
+> Warm Regards,
+> Khushit
+
 

@@ -4,92 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C604CD5BD5
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 17:19:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CC98CD5BD5
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 17:31:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSeMa-0006XY-91; Thu, 28 May 2026 13:17:46 -0400
+	id 1wSeZq-0004iD-Ip; Thu, 28 May 2026 13:31:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
- id 1wSeMO-0006TU-3q
- for qemu-arm@nongnu.org; Thu, 28 May 2026 13:17:34 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
- id 1wSeML-000475-Kj
- for qemu-arm@nongnu.org; Thu, 28 May 2026 13:17:31 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-4891d7164ddso62355295e9.3
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 10:17:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779988648; x=1780593448; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=v7B7MPlm8lxhhWU0KcQHkTsOfZGkRsES1ICXN/vP+BI=;
- b=k5lfQDh68Eff5vNYgHTR+A6PGqRma7oohYu5/UDzENReMNn3TEBqWx2dMteZHpLxIN
- wo9VIl/G8QDLZLt/J+9oJI3yRhwFyqUS9l+VlBuzHQCIYIgrteBcTPi/5hQ63f7jPr3/
- TvTHP/5DjnUZl8ASAR8YrDYNf91lBuEF5l4S8zjL7dp4c1LgQ75jK73Yz9wrdekGjl4J
- O9GXtD7d83dB38+nVN4t4sjO+Hw72qH+xqOK8VFGH9VdIOKMMbcuJeFeUUKFs2vN2Wn5
- FP0I3hYxE4iLs4tTF7u/lDoPLiCsUoRpNXot9onHLtCPGUzegmuWE+vlbQv0MmI4jWaN
- kE+w==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wSeZn-0004hH-O0
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 13:31:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wSeZl-00017X-99
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 13:31:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779989479;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=M0MvIsOMtx2WQpp0fYhvBDybCxrQLnoGgi8za0wNTLo=;
+ b=ig3/dNXdH4sUCKvalY/vn2vyWhwq3YVVwOmGIv091NPUwWXIZwa2AZAhS1rUDncLL1p54f
+ 4nvuWhho1Jhef1oq2tQLKxNmu0vJ4XOqeJG3aAxDCRXGMcVF+z+sXy5wN+dHNcjIbnRdx3
+ M8V+/D/kuPItKle61f61uT5T+JXFEeM=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-126-POxLWIscNmazVj6t_-aLFw-1; Thu, 28 May 2026 13:31:17 -0400
+X-MC-Unique: POxLWIscNmazVj6t_-aLFw-1
+X-Mimecast-MFC-AGG-ID: POxLWIscNmazVj6t_-aLFw_1779989476
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-45ea38c03a1so6680564f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 10:31:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779988648; x=1780593448;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=v7B7MPlm8lxhhWU0KcQHkTsOfZGkRsES1ICXN/vP+BI=;
- b=h+vGWJPAMEZHASKKGLrBR9VdxEk2+8mHxqE641h3bnHYwZCqAAoCjlHIBCGz8mOyD1
- VrZqFMCSaljZZcwEBCxFxp0Tr2dqUO5O8OHid6LWthHvIO5zJEuw1XLqsWsOtvxJaQfD
- 709jB5ydHwvUEnenUmOXda6Y/8TB29RJnEwkWHhaM+eiPLX0N8sM5eAejQ0HYLIZvt3P
- RAC+cjPydFDKR89mHxpoWK/XCDva2ddNYsGwH5vKN+eGhnHGbMHvKYllnISjw3q0U2Rg
- 0Tb2rCVPYeogMTQ9ILVDYvBAPgJtptgemK3xbp5mqh+DV/y6V6/fksc8UM8HVpkMlJ9f
- yKGQ==
-X-Gm-Message-State: AOJu0YxBvuYw+mLmvcTTTWSPUF4uvz4durRQdCT/qyWt6LuWfT4Y+7As
- /Vd2HOMQvPzdzG3eYVG2JZ7s1pIP5uilLOp64VDRI2+p/f91OmNQAzFo
-X-Gm-Gg: Acq92OGNlMwKGp4A4aT2mcIuvpBhDYzwr/w/eGO8bGxA5a0qc+0s4ISG7LIr1AAqr0a
- kgTOtmAeUVhezQjnKAfoJTt8I4KiZk7yXqpmTMs93lk4DOqY/WPZR3UGuzxrXjpoisi7QRqeiuo
- Gg8LC0in2JIkLQovQYWEKqBO9CRVL3BmBbFferuOAsB528g+yL/Nm71x2CGIfG8ox0woUZIy0/8
- BPTKggCryH58dBw5llHMSbPjhBvo/dp07f10SLbwg6wWBaI+SJo7t8z3qeZ3joAhfKIx4eNH7eV
- Lt8JLdB5mDe4mJdiemb7zjDzRtU2LIOcuhl2dTinMUTwmCtKc33Cl18jyG7IiVeb/BsiKAxN8ms
- 6NJaHcwTSFwOgrLPKn+YOsP0yXHfNlIXdEw+ps7NgqMlBmT3sRGmBmOpmpyxYnEMJC9xvC701jT
- nxkSsOdexaBCyxzzc++zcij7rrLteDVicjkWtw9uvvoI/E0ajxUMFyZk4+nGDvuoHs
-X-Received: by 2002:a05:600c:3e0c:b0:488:ac01:72de with SMTP id
- 5b1f17b1804b1-49042489c30mr534509905e9.5.1779988648089; 
- Thu, 28 May 2026 10:17:28 -0700 (PDT)
-Received: from acidburn.pod.cvut.cz (acidburn.pod.cvut.cz. [147.32.90.2])
+ d=1e100.net; s=20251104; t=1779989476; x=1780594276;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=M0MvIsOMtx2WQpp0fYhvBDybCxrQLnoGgi8za0wNTLo=;
+ b=YSpArUha/2hXqwcdCy8O5ppALXbt9q0h1i+IGLt9+5MR0/IU82VJdU+d1yBO0b/FAm
+ 0oCPZe5Pwg7vuTbyd5t51RIk++uDVWjTQLey6C+6SpfU0eVWF7b2YQdxJa3G8DT6Nql9
+ QwC0XLfCJiOpRQdSifyfSr0V5yRVLN437wmBt6jJFaEgVc8QIEAoYrb5Uy5W50ZhbHMv
+ 1vj/ozZ0CXOCRhZb502Mw5qzVdOfpyptnopKDHCBgX7/sxrsWosdsAsFguGVhmEp4sCY
+ b6NNBKiLA7PhLlpJu3FAun4lgcYONlmnX0Alk65O/ajgOPKOM5nAz45z9NVTYKECl6UL
+ q8Jw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ//5NZ6ig+Lis2usUvoq1eI84rw6FwMSMBd14jxiL9b2AT43Jzfp+x2J8v9+39fDfUJ6SWFflvPVg==@nongnu.org
+X-Gm-Message-State: AOJu0YwjuQPJkqBD5764RzYU2ypwzzOpwagVZ6XgQFm6d9ZEkcGiZSzg
+ FUdFNw37jUopp0ZezXHKDf/dncs2x2E09rO3YWjvYPmFskhXqRkQC0BiWiApXqeIJ6vE3L3ixas
+ +maX64qM4PpCLdwKBkLD6fhdXzQUP/rG4bxrrURDRHCGvYpDmnDvLfA==
+X-Gm-Gg: Acq92OGqF4xkYVrcKm1d6T+Qpom6FLVF7uhRtP8qJW+5LhQH+odvFAbJwUtIGBlGcQd
+ is6b5z5xq42V0a54/EjPq2lRa7X8T4KqtKBcnYQmVGMV5VKfoN/4wtlxy7FBXH6M/LjmkgGa1Sk
+ aUbcGlFvwCi5sNN0Re2HS8oMNgn2iVL6Pu3aF/V7ZfzubtX6F3fs+qqtZKxQVY9Cin2XbGxqPq+
+ nh2b+Lr69D5kZLhzLlMc1oAYbSYQUhFqRjflYXRX5P5wZ8rB5WfppxzTQi4QT63yhSAk0g7mLmP
+ DbPwTbPao3peBYn0XtDmdUGbMjJpXj/x7yZvplhW2DDxj+PVUoroqbHGrbaHinK9S3svzqZXZg/
+ rJ8GXRoh7VO9AG7RnoZ1qgZytMe38exqbTieit6CBzsO3DqKP/ntFjmLrmaH6gT78JHpLEjZ7mQ
+ nV4WwT
+X-Received: by 2002:a05:6000:4698:b0:45d:41e0:467b with SMTP id
+ ffacd0b85a97d-45ef02895dcmr144947f8f.3.1779989476337; 
+ Thu, 28 May 2026 10:31:16 -0700 (PDT)
+X-Received: by 2002:a05:6000:4698:b0:45d:41e0:467b with SMTP id
+ ffacd0b85a97d-45ef02895dcmr144891f8f.3.1779989475906; 
+ Thu, 28 May 2026 10:31:15 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49092968066sm53774085e9.15.2026.05.28.10.17.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 May 2026 10:17:27 -0700 (PDT)
-From: =?UTF-8?q?Maty=C3=A1=C5=A1=20Bobek?= <matyas.bobek@gmail.com>
-To: qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
- Pavel Pisa <pisa@fel.cvut.cz>, Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-arm@nongnu.org, Marc Kleine-Budde <mkl@pengutronix.de>,
- Oliver Hartkopp <socketcan@hartkopp.net>,
- Nikita Ostrenkov <n.ostrenkov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrey Volkov <andrey@volkov.fr>,
- =?UTF-8?q?Maty=C3=A1=C5=A1=20Bobek?= <matyas.bobek@gmail.com>
-Subject: [PATCH v4 3/7] hw/misc/imx6_ccm: Add PLL3 and CAN clock
-Date: Thu, 28 May 2026 19:17:13 +0200
-Message-ID: <2b93d12e6c19930cbfbabd2a257925fcaa9149aa.1779986496.git.matyas.bobek@gmail.com>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <cover.1779986496.git.matyas.bobek@gmail.com>
-References: <cover.1779986496.git.matyas.bobek@gmail.com>
+ ffacd0b85a97d-45edb5b2bbfsm15454279f8f.32.2026.05.28.10.31.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 May 2026 10:31:15 -0700 (PDT)
+Message-ID: <ad70e8f8-0dbb-407c-828e-96b9da188974@redhat.com>
+Date: Thu, 28 May 2026 19:31:13 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 16/18] target/arm/cpu: Expose writable ID reg field
+ properties on the kvm host vcpu model
+To: Khushit Shah <khushit.shah@nutanix.com>
+Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Shaju Abraham <shaju.abraham@nutanix.com>,
+ "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "sebott@redhat.com" <sebott@redhat.com>,
+ "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
+ "philmd@linaro.org" <philmd@linaro.org>, "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "abologna@redhat.com" <abologna@redhat.com>,
+ "jdenemar@redhat.com" <jdenemar@redhat.com>
+References: <20260519132905.145643-1-eric.auger@redhat.com>
+ <20260519132905.145643-17-eric.auger@redhat.com>
+ <30F66A6A-E26B-486C-81D1-8E1B2CCB558A@nutanix.com>
+ <6c14a58a-60ab-419f-9395-ca3489f6cff8@redhat.com>
+ <CA136979-E0CC-420E-9271-63CF27CD7DA5@nutanix.com>
+ <2fd2057d-c74b-4bbe-b2d0-cb9ed092a37d@redhat.com>
+ <6F6ECB0E-82A8-4FFA-8687-2D6E243A2096@nutanix.com>
+ <8ee2b611-ef48-4805-aaf0-087856dc30f0@redhat.com>
+ <7737B413-51C1-49FA-AC0C-31DCEE1FD45E@nutanix.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <7737B413-51C1-49FA-AC0C-31DCEE1FD45E@nutanix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 08L2kP5oCvg7ru-O_zd1ZpnCoielQvrU-Hnw8IiXQEI_1779989476
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=matyas.bobek@gmail.com; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,123 +140,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add fixed frequency (480 MHz) PLL3, of which the FlexCAN
-clock is derived, and compute FlexCAN frequency based on
-the divider configuration (CCM_CSCMR2).
+Hi Khushit,
 
-The clock frequency will be used for computing timestamps
-in FlexCAN emulator.
+On 5/28/26 7:29 AM, Khushit Shah wrote:
+>
+>> On 27 May 2026, at 10:50 PM, Eric Auger <eric.auger@redhat.com> wrote:
+>>
+>> My reasoning was:
+>>
+>> arm_cpu_post_init
+>> ---> kvm_arm_add_vcpu_properties
+>>     ---> set_sysreg_prop set the new value in cpu->isar.idregs
+>> arm_cpu_finalize_features
+>> ---> arm_cpu_sve_finalize
+>> ---> arm_cpu_sme_finalize
+>> ---> arm_cpu_pauth_finalize
+>> ../..
+>> those fonctions do some subsequent isar accesses
+>>
+>> So I think in general id reg field settings are applied before composite
+>> legacy options
+>>
+>> Thanks
+>>
+>> Eric
+>
+>
+> Nope, kvm_arm_add_vcpu_properties, just adds KVM specific properties.
+right, wrong copy/paste. kvm_arm_add_vcpu_properties just registers the
+props
+>
+> Right now, set_sysreg_prop are called along with legacy props during
+Yes options are applied in order but the difference is ID reg field
+props settings directly touch the isar array while others are stored in
+some temporary field in either machine or cpu code and analyzed later,
+for what I see in arm_cpu_realizefn(), either in
+arm_cpu_finalize_features() or directly in the body. So isar access
+related to compositive functions should be done after those related to
+new SYSREG_REG_FIELD props. However I acknoledge the requires a case by
+case check and testing.
 
-Signed-off-by: Matyáš Bobek <matyas.bobek@gmail.com>
-Signed-off-by: Pavel Pisa <pisa@fel.cvut.cz>
-Tested-by: Pavel Pisa <pisa@fel.cvut.cz>
-Reviewed-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Pavel Pisa <pisa@fel.cvut.cz>
----
- hw/misc/imx6_ccm.c         | 24 ++++++++++++++++++++++++
- hw/misc/trace-events       |  2 ++
- include/hw/misc/imx6_ccm.h |  4 ++++
- include/hw/misc/imx_ccm.h  |  1 +
- 4 files changed, 31 insertions(+)
+Thanks
 
-diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
-index a10b67d396..45fdd0d5a8 100644
---- a/hw/misc/imx6_ccm.c
-+++ b/hw/misc/imx6_ccm.c
-@@ -257,6 +257,15 @@ static uint64_t imx6_analog_get_pll2_clk(IMX6CCMState *dev)
-     return freq;
- }
- 
-+static uint64_t imx6_analog_get_pll3_clk(IMX6CCMState *dev)
-+{
-+    uint64_t freq = 480000000;
-+
-+    trace_imx6_analog_get_pll3_clk(freq);
-+
-+    return freq;
-+}
-+
- static uint64_t imx6_analog_get_pll2_pfd0_clk(IMX6CCMState *dev)
- {
-     uint64_t freq = 0;
-@@ -344,6 +353,18 @@ static uint64_t imx6_ccm_get_per_clk(IMX6CCMState *dev)
-     return freq;
- }
- 
-+static uint64_t imx6_ccm_get_can_clk(IMX6CCMState *dev)
-+{
-+    uint64_t freq = 0;
-+
-+    freq = imx6_analog_get_pll3_clk(dev) / 8;
-+    freq /= (1 + EXTRACT(dev->ccm[CCM_CSCMR2], CAN_CLK_PODF));
-+
-+    trace_imx6_ccm_get_can_clk(freq);
-+
-+    return freq;
-+}
-+
- static uint32_t imx6_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
- {
-     uint32_t freq = 0;
-@@ -358,6 +379,9 @@ static uint32_t imx6_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
-     case CLK_IPG_HIGH:
-         freq = imx6_ccm_get_per_clk(s);
-         break;
-+    case CLK_CAN:
-+        freq = imx6_ccm_get_can_clk(s);
-+        break;
-     case CLK_32k:
-         freq = CKIL_FREQ;
-         break;
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index b88accc437..99910fc068 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -242,11 +242,13 @@ imx6_analog_get_periph_clk(uint32_t freq) "freq = %u Hz"
- imx6_analog_get_pll2_clk(uint32_t freq) "freq = %u Hz"
- imx6_analog_get_pll2_pfd0_clk(uint32_t freq) "freq = %u Hz"
- imx6_analog_get_pll2_pfd2_clk(uint32_t freq) "freq = %u Hz"
-+imx6_analog_get_pll3_clk(uint32_t freq) "freq = %u Hz"
- imx6_analog_read(const char *reg, uint32_t value) "reg[%s] => 0x%" PRIx32
- imx6_analog_write(const char *reg, uint32_t value) "reg[%s] <= 0x%" PRIx32
- imx6_ccm_get_ahb_clk(uint32_t freq) "freq = %u Hz"
- imx6_ccm_get_ipg_clk(uint32_t freq) "freq = %u Hz"
- imx6_ccm_get_per_clk(uint32_t freq) "freq = %u Hz"
-+imx6_ccm_get_can_clk(uint32_t freq) "freq = %u Hz"
- imx6_ccm_get_clock_frequency(unsigned clock, uint32_t freq) "(Clock = %d) = %u"
- imx6_ccm_read(const char *reg, uint32_t value) "reg[%s] => 0x%" PRIx32
- imx6_ccm_reset(void) ""
-diff --git a/include/hw/misc/imx6_ccm.h b/include/hw/misc/imx6_ccm.h
-index ccf46d7353..a54b940686 100644
---- a/include/hw/misc/imx6_ccm.h
-+++ b/include/hw/misc/imx6_ccm.h
-@@ -164,6 +164,10 @@
- #define PERCLK_PODF_SHIFT        (0)
- #define PERCLK_PODF_LENGTH       (6)
- 
-+/* CCM_CSCMR2 */
-+#define CAN_CLK_PODF_SHIFT       (2)
-+#define CAN_CLK_PODF_LENGTH      (6)
-+
- /* CCM_ANALOG_PFD_528 */
- #define PFD0_FRAC_SHIFT          (0)
- #define PFD0_FRAC_LENGTH         (6)
-diff --git a/include/hw/misc/imx_ccm.h b/include/hw/misc/imx_ccm.h
-index c4212d04ea..6839716ea3 100644
---- a/include/hw/misc/imx_ccm.h
-+++ b/include/hw/misc/imx_ccm.h
-@@ -46,6 +46,7 @@ typedef enum  {
-     CLK_EXT,
-     CLK_HIGH_DIV,
-     CLK_HIGH,
-+    CLK_CAN,
- } IMXClk;
- 
- struct IMXCCMClass {
--- 
-2.54.0
+Eric
+
+
+>
+> The call stack is:
+> machvirt_init
+> ----> set cpu specific machine_props (has-el2, has-el3, mp-affinity)
+> ----> dev_realize(cpu)
+>   ----> set cmd cpu props (prop set in order they appear in cmdline)
+
+
+>
+>
+> Warm Regards,
+> Khushit
 
 

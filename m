@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C202BCD5BD1
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 05:19:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E312CD5BD1
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 05:19:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wST7b-0001qH-6r; Thu, 28 May 2026 01:17:31 -0400
+	id 1wST8h-0002R0-Go; Thu, 28 May 2026 01:18:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wST7Y-0001nZ-L1
- for qemu-arm@nongnu.org; Thu, 28 May 2026 01:17:28 -0400
+ id 1wST7j-0001t9-C7
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 01:17:47 -0400
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wST7W-0003fX-I6
- for qemu-arm@nongnu.org; Thu, 28 May 2026 01:17:28 -0400
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+ id 1wST7g-0003oY-94
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 01:17:39 -0400
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 64RKlrwx2754308
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 05:17:15 GMT
+ 64RKl9If1225042
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 05:17:25 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:date:from:in-reply-to:message-id
- :mime-version:references:subject:to; s=qcppdkim1; bh=35giVodLf81
- lJuJPIwpxYiwrV1aluPV9PhABuPn61t4=; b=Bk/Mwh/sLNqUqPBUnFkVIzOoMIF
- Ag0bWIXZKvF6C20FxthAplpr2X9WOHrzKItByjW5QpJM4awvMHRkyxcaNS0I6yjJ
- 4nzvOzPTY20nZsVhOhpyW4Twhao/IBa4tKBHQEuy3PHS3I6PSbgkwYbsdiRHUpRE
- CGE9LIgLot9D0Hn54uTkG9GJEdWycInBTjhrBbtxQrl2a2fFVwXhNDewn+C70YE8
- tXYe+xBG9b0re4rdzJhXFWJ+HzRY8lqI5MlXT4JO3qflEO2WAljF/H7ZfYRCzRpd
- 8Z4nHOR6JGVAajZga6vGw8I/0U6GYhl2yez4uhxW8d3ecfx6WQMNqEZgZEA==
-Received: from mail-dy1-f198.google.com (mail-dy1-f198.google.com
- [74.125.82.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ee7yc9ddt-1
+ :mime-version:references:subject:to; s=qcppdkim1; bh=r6Q9uqmouqU
+ 0KUQoADLBFN1QJBO+6mV0Bq/R1Vjkl9s=; b=GPJEk3EZDZhf4wSsETYxwDY4fiV
+ H4ZrlmhvgFOMOYc3Z6p5H0HqeVkDg1gUKVZX38NjyO3jPUHrxyqxKyKG9dSXw4GH
+ iCQrYXaqzILxiA8+cUuQwxEjUaiCJcc3mM4vcduSTT3KNzlQGuqaX+1zM/4xg8lB
+ iMyqlU0QHjC2b3SB0zYf6X04jOFRSfD8dxd5kmeCucSrRmNppe2y7raaUESmXl2M
+ sL7kRlbMCckbYPptA9furejhkc7tc8ob7mz4dCgYFY+L7I2QWS4K2TgdXIIkpajb
+ 6uWJBXVq77yUYg4sWuiMj3hHyEQpFDq7of0Rlz6NTUhCVRiNWHbHd1h3srw==
+Received: from mail-dy1-f200.google.com (mail-dy1-f200.google.com
+ [74.125.82.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ee7y1se66-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 05:17:15 +0000 (GMT)
-Received: by mail-dy1-f198.google.com with SMTP id
- 5a478bee46e88-2bdd327d970so7623789eec.1
- for <qemu-arm@nongnu.org>; Wed, 27 May 2026 22:17:15 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 05:17:25 +0000 (GMT)
+Received: by mail-dy1-f200.google.com with SMTP id
+ 5a478bee46e88-30457ff05b8so5459493eec.0
+ for <qemu-arm@nongnu.org>; Wed, 27 May 2026 22:17:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1779945434; x=1780550234; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1779945444; x=1780550244; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=35giVodLf81lJuJPIwpxYiwrV1aluPV9PhABuPn61t4=;
- b=M1Fsdn5DR7IUtpzPjKrT7HAyQaM7WMbsbTZ1Jo3F0bAdlXjxGab0KDL8rQ8aW0eysD
- mii/ufwhNR5kq1Ne/LPQ0zYiE6ILKO9IyAr+JKp2YjLnbzZV6lwXU4TWRc0hi/rufGTy
- OEKnW/HJZXiwOxB//0D9c+2lTaEPE7l7sDk5cHhPvRYD8H4MhY3ncgdaGK+txHBZBzHw
- dlPTuT7WknmW4bOOVja6/FSn38KQwbUCs2gqoSYT7Gk0Q+QtHQ/Apdk/8AhJifqlAo7V
- YF40vanFnWPxEfwB97aW6vsxqcalFtwnciMRipPJDSn4yn6X1dRSvyPwjhoIF20irKAs
- C8+g==
+ bh=r6Q9uqmouqU0KUQoADLBFN1QJBO+6mV0Bq/R1Vjkl9s=;
+ b=cnK61sofQM1CbeW/uicOhcESK6vpR+h5NL/72nRzVcNNH3qCKt/RCQPVGiSXnHH84X
+ CK6xfpM7pWNfk0k+M3mkQbNb2l0to4eWrzI+yIueCckCHJs4/wgEMCi3THLPXOy54P4r
+ E675dpyJvIDvFClSjvaT/6Zr5DOP2EfofwYN5nWqI6LbeoFab04nfra2TA1XMshNBTXm
+ JOgdLyWARM94T7cKr+GOpWCGaJJEOGQX7m5z3Ui401jhqwCq8EoLpM6sNirzN2xJz0Z/
+ wPPmAWxBT0pXzOHE1gPFDnRGi9KEZ/UcO2b1v8esusQqYBNIvGVyfR113oR3iUWmJLF4
+ uAxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779945434; x=1780550234;
+ d=1e100.net; s=20251104; t=1779945444; x=1780550244;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=35giVodLf81lJuJPIwpxYiwrV1aluPV9PhABuPn61t4=;
- b=C4D1b9WGNMD6CB+u/ykCx3nQZs1DJ+zF6txLPfweGuZcsKnypkSXtWMwcNBK5NTazH
- WfJG7tvDDTVcHj6oZ4u4wwX597CjYpKAOsTZy0yDYPhBL2Rkd5OXrp/vFvo4lfY6uDLY
- cok0vdq6xuYnlFxoOG0AxU+HIiLdU394L1KUI+igddWOfF4AVs3wgHhSgltWsQZGjvAw
- 9uJsTiFj/xaHDeF/K+cVZuQ/wsDyJbnwzwXEUGn3hvIE1KbXnUbsOiMUNIm/Ei1ZJaXU
- sRnIMGBwIcuY/xWqrNEHprj8Pvyb9Nu1zxyLicqMTfSYCNv8gPqrnsBhHRDtLMFUi6Xg
- KAZg==
+ bh=r6Q9uqmouqU0KUQoADLBFN1QJBO+6mV0Bq/R1Vjkl9s=;
+ b=X0v8bMBYf8f7VRxFF49qgjkNjLyqDzbedSJLiWXZ7qIGHz8fPlAyf0MgapIK4UN/D8
+ 08w00tKP888HGen3Q78zJNAR5vlJwndQnLBAHj/Digz5DDzgKgxsuukre9N2yAOI5/rd
+ 1XgmqUVC7hPfDrnLfQZgWnBZKU6DWw1nsVQa8VAWpif3JAc5Id0kHChJarMdT7d9zkAy
+ pmKzTg1X17H6uEQj1+ok5QEPM7UlL93VK5DPJ4v3h9kGYiQXuGNo8tcHLncTzYxonX8g
+ r6DdxSJhBy9QRP9dS0ImY1nViEpJnkuebSvDXPlV9YXpZPhphTWu6k4BOHUGYQR8BQpK
+ SD2g==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/hpiNFd9U90Qi7+mhNZoNeKouzATSjsy5KHgm/QqYENFALMe1BPPiekEXeQbgbwkV0VXP3QhdM8w==@nongnu.org
-X-Gm-Message-State: AOJu0YyN59p7UNArk82f8eATY0fj5SXPM8M77HEBrLyG5NGQBw9tbNkT
- WmxAqfA4MDvmPS1skAwNtejr2Hec1LF68bQWjW1AlM0eywZ7dzb/nriXvZAVg6Ie/HFSjaQBhia
- +2NUCr6N6OFrDJ9loq5/NI1341pBdI497TM5gHFLL1bIBrK955Hymu4E=
-X-Gm-Gg: Acq92OF0OCgd7IYqzfcFxIPPK9z3Xck0MmGA6WfCgbddCDOR/9pGJq+PqFU9g1hT9Lo
- Lj9VncLcSDUF6TwKWqZ3rroLM3GZmynn9+w1cG9729e8i2zobVj7hox+C5EL2Acl4EYHQ67rGNv
- u1rqCRKraRAR7zI+Saulk4fo5MRMS7Xw8BYzxgUI2GJRqYMyCAPo1LlJ3PAru6qWWlaZ1lflPJi
- kI7X7sA3ezjO6ss6+zPhLi1LRhSI0FmAPcbHUUH8b0Msl2VvUkR+yQTwCWCMx4SI8d2KTtEJs9m
- tKpfYDVGe+iGNon+Olz7IrA+XIE35Qd4cadkw2JNPBEui+hc38uW65v2mp6jojd4VvXFObq3uxy
- PhfeaxPD6wZOmtS0/tNv4oXvi7BCm8y3TCh7oCOIfewXkydhTxihZmKASKPlCZfGP+58xIPKPrw
- qUve9PzINGxxUS4m1k
-X-Received: by 2002:a05:7300:1493:b0:2d1:9b35:4edb with SMTP id
- 5a478bee46e88-304dd11a171mr54282eec.0.1779945434338; 
- Wed, 27 May 2026 22:17:14 -0700 (PDT)
-X-Received: by 2002:a05:7300:1493:b0:2d1:9b35:4edb with SMTP id
- 5a478bee46e88-304dd11a171mr54246eec.0.1779945433731; 
- Wed, 27 May 2026 22:17:13 -0700 (PDT)
+ AFNElJ9Ocw2fULk5lA0yjyPyXhyUKn8kfNZY68Grh7ycKV+z/ucYYsVNcim3HA0XN7Aw6aHMMFagxGTdZw==@nongnu.org
+X-Gm-Message-State: AOJu0YwDudbvCNkVZrUzCyWF7PCEwpk37/RRkxX4L0RDCxNE3RL9+3HB
+ BCjtV4tKrKjC+qH6UDZvLtjo/M08c/O6wI12B3WLRF7aWeEFByemVY/lbMh+0X8yonbdWUeE6LA
+ f9c4dWEQ37SR4/3+e5wdRU5MxH37rUEh1mNdlpI//sbl0DqjHANFVcvg=
+X-Gm-Gg: Acq92OGH0x7jfVwCcfdEYI9aRRicaaor03J1l/wBBZwSxx1AqhGotpVzdnTIYORUf9j
+ 615V2ipsy9QTHAkawSTlG0kwE/xJ4DGw8dLHDlOK7i8kkD/FGXnJ1whyre1GFx2crOQFAGAsx8y
+ x4agR2Ds9PPK5LiKP8d83bq6hlTrghZGpSPRg73R6VlHY2hZQkyCfOj/D0su5zhSn3VUToYsnlR
+ rhZtu5JWJ+twHuJp4m+d9dil10+8iuRH/oU6PVdZ1dPeoKDdh7y1+P053t1g2dqlz5nJsgTzLB0
+ h7FWKLxtFCiwu9O6UyZBTF53ap0hYqY+s4GWptFiMZ1H5bQRm4/ynmRkaByoDJMRXH/XojyAE+S
+ Nd8FuRiyTqSI9iQTv7TGEKWItA0kvDTmNaVaqEZwhfW2SLeHmibgqH0NJs1t9N4GNbbRDpg3KGk
+ WgKjwBK8am1H5TmiCI
+X-Received: by 2002:a05:7300:8b14:b0:304:8361:a87e with SMTP id
+ 5a478bee46e88-3048361afcdmr7602102eec.33.1779945444251; 
+ Wed, 27 May 2026 22:17:24 -0700 (PDT)
+X-Received: by 2002:a05:7300:8b14:b0:304:8361:a87e with SMTP id
+ 5a478bee46e88-3048361afcdmr7602055eec.33.1779945443698; 
+ Wed, 27 May 2026 22:17:23 -0700 (PDT)
 Received: from hu-pbouvier-lv.qualcomm.com (Global_NAT1.qualcomm.com.
  [129.46.96.20]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-304b984d9b5sm4094607eec.7.2026.05.27.22.17.12
+ 5a478bee46e88-304b984d9b5sm4094607eec.7.2026.05.27.22.17.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2026 22:17:12 -0700 (PDT)
+ Wed, 27 May 2026 22:17:23 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -126,38 +126,39 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Nicholas Piggin <npiggin@gmail.com>,
  Aleksandar Rikalo <arikalo@gmail.com>, Fabiano Rosas <farosas@suse.de>
-Subject: [PATCH 03/10] accel/accel-target.c: move compilation to every target
- meson.build
-Date: Thu, 28 May 2026 05:16:35 +0000
-Message-ID: <20260528051642.115721-4-pierrick.bouvier@oss.qualcomm.com>
+Subject: [PATCH 09/10] target/microblaze: rename helper unaligned_access to
+ microblaze_unaligned_access
+Date: Thu, 28 May 2026 05:16:41 +0000
+Message-ID: <20260528051642.115721-10-pierrick.bouvier@oss.qualcomm.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260528051642.115721-1-pierrick.bouvier@oss.qualcomm.com>
 References: <20260528051642.115721-1-pierrick.bouvier@oss.qualcomm.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=VOntWdPX c=1 sm=1 tr=0 ts=6a17cfdb cx=c_pps
- a=wEP8DlPgTf/vqF+yE6f9lg==:117 a=ouPCqIW2jiPt+lZRy3xVPw==:17
+X-Authority-Analysis: v=2.4 cv=DsNmPm/+ c=1 sm=1 tr=0 ts=6a17cfe5 cx=c_pps
+ a=PfFC4Oe2JQzmKTvty2cRDw==:117 a=ouPCqIW2jiPt+lZRy3xVPw==:17
  a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22 a=EUspDBNiAAAA:8
- a=P7G6aJzc36RU-8N-B5gA:9 a=bBxd6f-gb0O0v-kibOvt:22
-X-Proofpoint-GUID: Nd6-fjzLbnEYXDBId_HCqDh6JQ5d3SHy
-X-Proofpoint-ORIG-GUID: Nd6-fjzLbnEYXDBId_HCqDh6JQ5d3SHy
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTI4MDA0OSBTYWx0ZWRfXznaxIoxj2AiE
- f9FPSOwEswlxnKzt/g1e6kFufzXUiMyMS+1VBarfNDdkoRcTP5OeiDMY1ArKQFhaTdk4rqduTMa
- KPD9s6eu/mdHIPZMVt2qcBq1y8DQuT9PE3SHJfg0mZcQYGg9DNB7HQyPSpqS0rOMdf6uZ+vMl4T
- XxBNerGxLJEWHMlYyduzHUClGZchEs4+VxJwTrMFVVxzHUPHC4QYXE3b4dcmgBtMFu3Pk9bvBKr
- pqQsx9imzDOUKp2ZaLGotnE4AfYwhJBud7/g+IU0HThDbey8unyq/yTd3ToJEjF0FpqAhWUThNc
- 74h8dloQkGiB9cohO7gADcLmOxlkltBqNb+QWnSsV8QVwOOlh13EbaRfu4a5pTcHDTwDus4DEUQ
- OhVjggYGZ8VOp2y+4xF5dv4Ai6hkffvD9HRDXZlOPCFvetmGHd214420WVvv1+JLfBIciRIIirk
- F6E68nsYAvNrGau7efQ==
+ a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22 a=EUspDBNiAAAA:8
+ a=NETCEBYecQgaRV2tlM8A:9 a=6Ab_bkdmUrQuMsNx7PHu:22
+X-Proofpoint-ORIG-GUID: HvlcLQ2UvGpQ1DHAw_gfr1SrwKJzuk3D
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTI4MDA0OSBTYWx0ZWRfX+5xc/hjoJr1L
+ TbRETD0o3CoY2doRPGMebAuTIWkebN9v4xJN9/QzWbmM8wO34ZGN+eHGEwJzmapeNOe+euCZbYn
+ 49N27j1th75yRfuNO+yOWGyJ6QfTSHpHQLJmgwO5yRU8Ra1TyZXEijSppT7kY2OoJOajX+L+t9H
+ iX5wLX5WGU6dvyo4aevbDgJBnCd25D5vuCGtdZHWTnwAZ5NInWxFICJNOI5v3ZdZjjHyZQzi49l
+ ZtXnSt4t4gECQt2V7yeD7OBGdDZWWY36KT9V8G5btC4+dykcKddaiaYCtNFuzAfVqAkByOTpMD8
+ 68debYLiFucslVnC/C0FdSPCTj5JxlGr04uvRSU7qUB7TK/Fla9V+1QjvgEaVZpBeh43ukcZNuS
+ Hj15kTVX5xlh2bh0zthLQZepDiRgTWSj9dByyw4sSHYcnKCo7c+kheWWKmUdEMcl7KSedClwj/u
+ YOnY1qINRRW+twXexEw==
+X-Proofpoint-GUID: HvlcLQ2UvGpQ1DHAw_gfr1SrwKJzuk3D
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
  definitions=2026-05-28_01,2026-05-26_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 phishscore=0 adultscore=0 impostorscore=0 suspectscore=0
- lowpriorityscore=0 bulkscore=0 clxscore=1015 malwarescore=0 spamscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2605210000 definitions=main-2605280049
+ spamscore=0 phishscore=0 suspectscore=0 adultscore=0 clxscore=1015
+ priorityscore=1501 malwarescore=0 impostorscore=0 bulkscore=0
+ lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2605210000
+ definitions=main-2605280049
 Received-SPF: pass client-ip=205.220.180.131;
  envelope-from=pierrick.bouvier@oss.qualcomm.com;
  helo=mx0b-0031df01.pphosted.com
@@ -167,7 +168,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -183,323 +184,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This file defines TYPE_ACCEL_CPU, which is accel-${CPU_RESOLVING_TYPE}.
-
-This type is used to define cpu accelerators, and accel/accel-common.c
-relies on naming convention to find matching cpus to apply a given
-accelerator.
-
-Since variants of a given architecture share the same base
-CPU_RESOLVING_TYPE (arm and aarch64 both use TYPE_ARM_CPU), the
-TYPE_ACCEL_CPU gets registered twice in a single-binary.
-
-Thus, for the single binary, we need to register TYPE_ACCEL_CPU only
-once per base architecture. As a first step, we simply move compilation
-to each target/*/meson.build, without solving duplication yet.
+Solves conflict with aarch64 unaligned_access.
 
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 ---
- accel/meson.build             | 3 ++-
- target/alpha/meson.build      | 4 +++-
- target/arm/meson.build        | 2 ++
- target/avr/meson.build        | 4 +++-
- target/hexagon/meson.build    | 1 +
- target/hppa/meson.build       | 4 +++-
- target/i386/meson.build       | 4 +++-
- target/loongarch/meson.build  | 4 +++-
- target/m68k/meson.build       | 4 +++-
- target/microblaze/meson.build | 4 +++-
- target/mips/meson.build       | 4 +++-
- target/or1k/meson.build       | 4 +++-
- target/ppc/meson.build        | 4 +++-
- target/riscv/meson.build      | 4 +++-
- target/rx/meson.build         | 4 +++-
- target/s390x/meson.build      | 4 +++-
- target/sh4/meson.build        | 4 +++-
- target/sparc/meson.build      | 4 +++-
- target/tricore/meson.build    | 4 +++-
- target/xtensa/meson.build     | 4 +++-
- 20 files changed, 56 insertions(+), 18 deletions(-)
+ target/microblaze/helper.c    | 2 +-
+ target/microblaze/helper.h    | 2 +-
+ target/microblaze/translate.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/accel/meson.build b/accel/meson.build
-index 7da12b9741f..f67623a7b4e 100644
---- a/accel/meson.build
-+++ b/accel/meson.build
-@@ -1,5 +1,6 @@
- common_ss.add(files('accel-common.c'))
--specific_ss.add(files('accel-target.c'))
-+# file below is compiled by each target
-+accel_target_c = files('accel-target.c')
- system_ss.add(files('accel-system.c', 'accel-blocker.c', 'accel-qmp.c', 'accel-irq.c'))
- user_ss.add(files('accel-user.c'))
+diff --git a/target/microblaze/helper.c b/target/microblaze/helper.c
+index f81c4f625b5..3434ea47e8c 100644
+--- a/target/microblaze/helper.c
++++ b/target/microblaze/helper.c
+@@ -69,7 +69,7 @@ void mb_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
  
-diff --git a/target/alpha/meson.build b/target/alpha/meson.build
-index 818256a1c31..004fdb5c6c0 100644
---- a/target/alpha/meson.build
-+++ b/target/alpha/meson.build
-@@ -1,5 +1,7 @@
- alpha_ss = ss.source_set()
--alpha_ss.add(files(
-+alpha_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
-   'fpu_helper.c',
-   'helper.c',
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 4412fde065f..158ff07654f 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -13,6 +13,8 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-   'cpu64.c',
- ))
+ #ifndef CONFIG_USER_ONLY
  
-+arm_ss.add(accel_target_c)
-+
- arm_common_ss.add(files(
-   'mmuidx.c',
- ))
-diff --git a/target/avr/meson.build b/target/avr/meson.build
-index 39e5eb02c2b..8bd70be6bd9 100644
---- a/target/avr/meson.build
-+++ b/target/avr/meson.build
-@@ -7,7 +7,9 @@ avr_ss = ss.source_set()
- avr_system_ss = ss.source_set()
+-void HELPER(unaligned_access)(CPUMBState *env, uint64_t addr)
++void HELPER(microblaze_unaligned_access)(CPUMBState *env, uint64_t addr)
+ {
+     mb_unaligned_access_internal(env_cpu(env), addr, GETPC());
+ }
+diff --git a/target/microblaze/helper.h b/target/microblaze/helper.h
+index 01eba592b26..1429c1727ef 100644
+--- a/target/microblaze/helper.h
++++ b/target/microblaze/helper.h
+@@ -27,7 +27,7 @@ DEF_HELPER_FLAGS_3(put, TCG_CALL_NO_RWG, void, i32, i32, i32)
+ #ifndef CONFIG_USER_ONLY
+ DEF_HELPER_FLAGS_3(mmu_read, TCG_CALL_NO_RWG, i32, env, i32, i32)
+ DEF_HELPER_FLAGS_4(mmu_write, TCG_CALL_NO_RWG, void, env, i32, i32, i32)
+-DEF_HELPER_FLAGS_2(unaligned_access, TCG_CALL_NO_WG, noreturn, env, i64)
++DEF_HELPER_FLAGS_2(microblaze_unaligned_access, TCG_CALL_NO_WG, noreturn, env, i64)
+ DEF_HELPER_FLAGS_2(lbuea, TCG_CALL_NO_WG, i32, env, i64)
+ DEF_HELPER_FLAGS_2(lhuea_be, TCG_CALL_NO_WG, i32, env, i64)
+ DEF_HELPER_FLAGS_2(lhuea_le, TCG_CALL_NO_WG, i32, env, i64)
+diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
+index 74b5420ed24..a93f14d6e09 100644
+--- a/target/microblaze/translate.c
++++ b/target/microblaze/translate.c
+@@ -692,7 +692,7 @@ static void gen_alignment_check_ea(DisasContext *dc, TCGv_i64 ea, int rb,
+         record_unaligned_ess(dc, rd, size, store);
  
- avr_ss.add(gen)
--avr_ss.add(files(
-+avr_ss.add(
-+  accel_target_c,
-+  files(
-   'translate.c',
-   'helper.c',
-   'cpu.c',
-diff --git a/target/hexagon/meson.build b/target/hexagon/meson.build
-index d169cf71b2f..83b1db39ca3 100644
---- a/target/hexagon/meson.build
-+++ b/target/hexagon/meson.build
-@@ -387,5 +387,6 @@ analyze_funcs_generated = custom_target(
-     command: [python, files('gen_analyze_funcs.py'), helper_in, '@OUTPUT@'],
- )
- hexagon_ss.add(analyze_funcs_generated)
-+hexagon_ss.add(accel_target_c)
- 
- target_arch += {'hexagon': hexagon_ss}
-diff --git a/target/hppa/meson.build b/target/hppa/meson.build
-index f47e54f5fa9..9488e1dd442 100644
---- a/target/hppa/meson.build
-+++ b/target/hppa/meson.build
-@@ -2,7 +2,9 @@ gen = decodetree.process('insns.decode')
- 
- hppa_ss = ss.source_set()
- hppa_ss.add(gen)
--hppa_ss.add(files(
-+hppa_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
-   'fpu_helper.c',
-   'gdbstub.c',
-diff --git a/target/i386/meson.build b/target/i386/meson.build
-index 80062d1d0d8..38edd70131c 100644
---- a/target/i386/meson.build
-+++ b/target/i386/meson.build
-@@ -1,5 +1,7 @@
- i386_ss = ss.source_set()
--i386_ss.add(files(
-+i386_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
-   'gdbstub.c',
-   'helper.c',
-diff --git a/target/loongarch/meson.build b/target/loongarch/meson.build
-index c5a2953b29c..059d145ec16 100644
---- a/target/loongarch/meson.build
-+++ b/target/loongarch/meson.build
-@@ -1,7 +1,9 @@
- gen = decodetree.process('insns.decode')
- 
- loongarch_ss = ss.source_set()
--loongarch_ss.add(files(
-+loongarch_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
- ))
- 
-diff --git a/target/m68k/meson.build b/target/m68k/meson.build
-index c36d817134b..b57ae79332e 100644
---- a/target/m68k/meson.build
-+++ b/target/m68k/meson.build
-@@ -1,5 +1,7 @@
- m68k_ss = ss.source_set()
--m68k_ss.add(files(
-+m68k_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
-   'fpu_helper.c',
-   'helper.c',
-diff --git a/target/microblaze/meson.build b/target/microblaze/meson.build
-index 9c1ecd1cf1c..47efcdca8e3 100644
---- a/target/microblaze/meson.build
-+++ b/target/microblaze/meson.build
-@@ -2,7 +2,9 @@ gen = decodetree.process('insns.decode')
- 
- microblaze_common_ss = ss.source_set()
- microblaze_common_ss.add(gen)
--microblaze_common_ss.add(files(
-+microblaze_common_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
-   'gdbstub.c',
-   'helper.c',
-diff --git a/target/mips/meson.build b/target/mips/meson.build
-index 5acb3a2dcf5..0a9c149b461 100644
---- a/target/mips/meson.build
-+++ b/target/mips/meson.build
-@@ -1,7 +1,9 @@
- mips_user_ss = ss.source_set()
- mips_system_ss = ss.source_set()
- mips_ss = ss.source_set()
--mips_ss.add(files(
-+mips_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
-   'fpu.c',
-   'gdbstub.c',
-diff --git a/target/or1k/meson.build b/target/or1k/meson.build
-index 7cea45287a2..baf79ca7087 100644
---- a/target/or1k/meson.build
-+++ b/target/or1k/meson.build
-@@ -2,7 +2,9 @@ gen = decodetree.process('insns.decode')
- 
- or1k_ss = ss.source_set()
- or1k_ss.add(gen)
--or1k_ss.add(files(
-+or1k_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
-   'disas.c',
-   'exception.c',
-diff --git a/target/ppc/meson.build b/target/ppc/meson.build
-index d4ebbaf0a19..bdc0e33bc9f 100644
---- a/target/ppc/meson.build
-+++ b/target/ppc/meson.build
-@@ -1,5 +1,7 @@
- ppc_ss = ss.source_set()
--ppc_ss.add(files(
-+ppc_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu-models.c',
-   'cpu.c',
-   'cpu_init.c',
-diff --git a/target/riscv/meson.build b/target/riscv/meson.build
-index 79f36abd63b..e2637fd4553 100644
---- a/target/riscv/meson.build
-+++ b/target/riscv/meson.build
-@@ -14,7 +14,9 @@ riscv_ss.add(gen)
- riscv_ss.add(when: 'CONFIG_ARM_COMPATIBLE_SEMIHOSTING',
- 		     if_true: files('common-semi-target.c'))
- 
--riscv_ss.add(files(
-+riscv_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
-   'cpu_helper.c',
-   'csr.c',
-diff --git a/target/rx/meson.build b/target/rx/meson.build
-index d80ced11e2f..7e5218c8318 100644
---- a/target/rx/meson.build
-+++ b/target/rx/meson.build
-@@ -4,7 +4,9 @@ gen = [
- 
- rx_ss = ss.source_set()
- rx_ss.add(gen)
--rx_ss.add(files(
-+rx_ss.add(
-+  accel_target_c,
-+  files(
-   'translate.c',
-   'op_helper.c',
-   'helper.c',
-diff --git a/target/s390x/meson.build b/target/s390x/meson.build
-index c2cb4aca469..9c8994258c2 100644
---- a/target/s390x/meson.build
-+++ b/target/s390x/meson.build
-@@ -4,7 +4,9 @@ s390x_common_system_ss = ss.source_set()
- s390x_system_ss = ss.source_set()
- s390x_user_ss = ss.source_set()
- 
--s390x_ss.add(files(
-+s390x_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
-   'cpu_features.c',
-   'cpu_models.c',
-diff --git a/target/sh4/meson.build b/target/sh4/meson.build
-index 3861d9b194a..ea9cf3905a8 100644
---- a/target/sh4/meson.build
-+++ b/target/sh4/meson.build
-@@ -1,5 +1,7 @@
- sh4_ss = ss.source_set()
--sh4_ss.add(files(
-+sh4_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
-   'helper.c',
-   'op_helper.c',
-diff --git a/target/sparc/meson.build b/target/sparc/meson.build
-index 46289c86693..e4cd25b73c0 100644
---- a/target/sparc/meson.build
-+++ b/target/sparc/meson.build
-@@ -2,7 +2,9 @@ gen = decodetree.process('insns.decode')
- 
- sparc_ss = ss.source_set()
- sparc_ss.add(gen)
--sparc_ss.add(files(
-+sparc_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
-   'fop_helper.c',
-   'gdbstub.c',
-diff --git a/target/tricore/meson.build b/target/tricore/meson.build
-index 76cd78e990e..abcef2af13b 100644
---- a/target/tricore/meson.build
-+++ b/target/tricore/meson.build
-@@ -1,5 +1,7 @@
- tricore_ss = ss.source_set()
--tricore_ss.add(files(
-+tricore_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
-   'fpu_helper.c',
-   'helper.c',
-diff --git a/target/xtensa/meson.build b/target/xtensa/meson.build
-index f8d60101e3d..dbb89638f60 100644
---- a/target/xtensa/meson.build
-+++ b/target/xtensa/meson.build
-@@ -3,7 +3,9 @@ xtensa_ss = ss.source_set()
- xtensa_cores = fs.read('cores.list')
- xtensa_ss.add(files(xtensa_cores.strip().split('\n')))
- 
--xtensa_ss.add(files(
-+xtensa_ss.add(
-+  accel_target_c,
-+  files(
-   'cpu.c',
-   'exc_helper.c',
-   'fpu_helper.c',
+         tcg_gen_brcondi_i64(TCG_COND_TSTEQ, ea, (1 << size) - 1, over);
+-        gen_helper_unaligned_access(tcg_env, ea);
++        gen_helper_microblaze_unaligned_access(tcg_env, ea);
+         gen_set_label(over);
+     }
+ }
 -- 
 2.47.3
 

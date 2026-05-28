@@ -4,108 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6B03CD5BD1
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 09:59:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5896ACD6E44
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 10:13:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSXWI-0007FC-A8; Thu, 28 May 2026 05:59:18 -0400
+	id 1wSXkG-0000bP-GU; Thu, 28 May 2026 06:13:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1wSXWG-0007EZ-Pd
- for qemu-arm@nongnu.org; Thu, 28 May 2026 05:59:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1wSXWE-0000Xr-96
- for qemu-arm@nongnu.org; Thu, 28 May 2026 05:59:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779962352;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ovRx+sev4bTK56alCnYUaSQDqAPK3uVNpV0CBk53D2M=;
- b=NEEoa0SKGa4i/7ccdX2il/wKZoDGA5Wb/Qy4nUO3Nx3jZXb6qJGxjYa6UYSu5DmcHimqre
- sYHaD5bHYueJH3wnX9kmdB/JqwMfTg/kuYGK85Bbac4hr3dwvKOTlNg48v/Tx5zy9MHL4L
- QiQcTZOIKguM5Pgw2VgdIDA0CwhWC8A=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-503-8CzBCWibMRmr4713gARUhg-1; Thu, 28 May 2026 05:59:11 -0400
-X-MC-Unique: 8CzBCWibMRmr4713gARUhg-1
-X-Mimecast-MFC-AGG-ID: 8CzBCWibMRmr4713gARUhg_1779962350
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-44696b11265so15301319f8f.0
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 02:59:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wSXkA-0000aU-B5
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 06:13:38 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wSXk7-0000fm-4g
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 06:13:37 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-4906238c62eso39803995e9.3
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 03:13:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1779963213; x=1780568013; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=gbyuZgG6AkLETi0yBsD+It6Az1xMY7xBHjetWH8EGuM=;
+ b=nDg68BQC7hYASlR2rhTpoZeVLKa9NG7rR/tni8Qs0LtJAnXBQA2DO9WsC2NPbn0WuI
+ 4hFmLY2nixiURlbcGZXitJ+K9lbE/Oduc6QEx9QOuIG2sTlmpDn5zq8H3Oul4xgTK7pG
+ 5N2bfAx5R+oQheUrHezkI2K1KjZoEIdY5TwAmSF34TsRqpwe07XKgGNcVbMt852NG71N
+ WLL8Fbas1iYifvC0B6GBQYcsUKWuaa+E85VuRaonysz+NkjqrYteuDjCuJXzVltC7LPH
+ TexpqKjcDGoimlHi6BU0ln2tW1VgoehORphPFwF6u+VhvKt9Z1k27vnmzykeZmaBu7TM
+ cppw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779962350; x=1780567150;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ovRx+sev4bTK56alCnYUaSQDqAPK3uVNpV0CBk53D2M=;
- b=ojZoosqobty0HYCr6VoByQ0A5NZnq7NCBScUSOm2OmTgv9uuf8iRwa8KbfqEytVlSz
- LgSC7qr+dsve5cyn1w3BHC8Ac/0jlZanCfIWuWwn6j0+qQJIoKuiSrBv9Iuz9kZojH2c
- /jEtYENmOOt83Y6EA9KVX7dk7rsnXHy+q1ZsWtt/KQbNwzA35GQGIysyQVFcLYOJJO/A
- OvMRdvht/z0rvMCf1r6wt3T+uPS1OC6LC4Ss+Ha6vdIIYqjDheDLVXAyj9RyE7ucKP3z
- J4xBM0i486HUOohrfgk3OUkxml7JW72hEXChrrUWNHdHc08fMAw42N6o+iPENeeSUUkx
- fWBw==
+ d=1e100.net; s=20251104; t=1779963213; x=1780568013;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=gbyuZgG6AkLETi0yBsD+It6Az1xMY7xBHjetWH8EGuM=;
+ b=W0EK/V+ZBqic6IfW1IeplwHcSx0gR4ORNV8j+66mWysXl7GXIkWx7Nnc8jyA/cMpVR
+ pvqiq/m4TJBSpe9wkxmGMszlQ/vvoaS7sUD57r+aGfKbvF3ONAgyCAjKbb9T6R2zWWWq
+ PAPLELwI1aInhAjj4b1BZe9KXFXafLOs15VVfKgk/V+llAdNoFYOSOrLMxpPG/znKELI
+ jrUbqEjK/SuiFNZxXnWiiIf3zFdJZ/m1WGsEf4Ho1hOx7WwJb47dD9uK+lzl9JDUosof
+ /K8T4iOmLVp3pgQdp9XufA/OXZONJjssKf6xBFR1S7FQOeK2spvxWZFMp/i8+Ak509r8
+ KsZg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/+t10TZsXT3FJ2hozuE841+bu0Deqb3HPCZkoZRGoBfYqpNtXKE5HgKkOVhy4CHD/+WAd+IODI+A==@nongnu.org
-X-Gm-Message-State: AOJu0YyCVBn4khI1WjIvhCGA1tFZWGnRo01eU4vH1zBKe09A9nf8Kw8s
- eGiPPMZXjjBRpe8AGIP7ZtY6whAUadRB++k7zUcSwVI3B0fkJquxEvrTbRkTMxJHg46FpqJsYwo
- TzwJFdKtoFDjoaanMSjbBX8PfW+CiIyPwWdV34WJn4aX7MSCRgAm1WQ==
-X-Gm-Gg: Acq92OFrS4dnP+ZK+zDqOZazEjnVhrr8gswq+FSxW+cqnaugNrxcqPPEenM9Sfoy7Df
- fBR4OF1tJdG+hGWzf+zC+zljOJSwSxVGPWQxEYV5dp7YM/iPuHDhnCJTKugJcvUNvx4WGOTt6+N
- UvOXMzpiMvrzzJ8426/g6EWQzIaxI2UbBkXqohDfqzu0l3JM4vgVBIC4sE1jH7Dku5NLbsCtGcO
- 41A4lSxnDVQsNTGsw5GqeruCZTNWWTToGAAgeWs1/JAASLaLEDXkmSrCfXkKW5owdvDTLgYrWBI
- I17y8xsAKwrZ7F97p88KVWZPch+OBdQ9TtEaWlmyXS2/uxcREzB9go6NJLZMdId6OEYewbd7L+g
- Z9JveQ5rYYCotsKiPt9tg/OMES69eWRjU2AUPwoMzvcznKKpLB2D/iKELdwOuyPRMf7Ba9LLYZp
- M=
-X-Received: by 2002:a05:600c:a49:b0:490:6889:202 with SMTP id
- 5b1f17b1804b1-4906889026emr269463775e9.29.1779962349772; 
- Thu, 28 May 2026 02:59:09 -0700 (PDT)
-X-Received: by 2002:a05:600c:a49:b0:490:6889:202 with SMTP id
- 5b1f17b1804b1-4906889026emr269463305e9.29.1779962349303; 
- Thu, 28 May 2026 02:59:09 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4908ecb5238sm13682765e9.24.2026.05.28.02.59.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 May 2026 02:59:08 -0700 (PDT)
-Message-ID: <b6895403-e294-44de-b77d-511cddadb567@redhat.com>
-Date: Thu, 28 May 2026 11:59:06 +0200
+ AFNElJ+0jQBs1ijXPdsRaVncxSwygQpnKpBqdPfmA7nVs0E0pAgBxHRiCGqmpE66SWiQF2R+hfP8qx7CQg==@nongnu.org
+X-Gm-Message-State: AOJu0YzlIJlZsFXp1fHeTWoDP94CKwXqz/VJDxaOfkUQnO846MFcVCq0
+ uIKioA9smjvU9WH002ZOiSuSIyzf/218N28+GjeNaG6swyKuS4VVnXOC1FGHODq8WeE=
+X-Gm-Gg: Acq92OEMvDXaPO9SjLRWZT9H9Z+CXRtoKI7XHPNk6Ltxj52QJjdrqSlHYOp+JENuKYg
+ puiXbhpyXuvUs5Fb8xLeygBv5lvaoMSul1A1Z0mdJN8LdyCOaas9G/NfcKDnezGi3dgBCI9WtNc
+ ZA8GlFvSrgytAvzTw2cesulrpagbwv0nIdkOEapwU9j9XHMzrjYiOuikWsPz1SR4cnizUOfj/8f
+ JLICulqeSIlofi2+RS0BufTXiyJ7LbmLyZ36HOpcPhQ2HZLFB61H5aPIyd3AW32/9woJZ3thH5I
+ GnpddyT/D5zKff154EAfG4yD3AHMCpNrDZ4zrrEbglgYKgrsPepvh/V0P6N0vihTyFbsm1LyyfB
+ dOHBEH8y3BWgMfWIEjqV5mlGJQYZLG8AoY49yhNNNXh6Dns3vcyuXdmTYNNCfrBWRQyGyHuvd8d
+ fCynWdhSlzmde9l0FSrWKgqcsJlciBaeBEeA==
+X-Received: by 2002:a05:600c:6094:b0:490:625e:bb68 with SMTP id
+ 5b1f17b1804b1-490625ebc14mr289953765e9.3.1779963212662; 
+ Thu, 28 May 2026 03:13:32 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4909235f98bsm42288825e9.1.2026.05.28.03.13.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 May 2026 03:13:31 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id AF9625F886;
+ Thu, 28 May 2026 11:13:30 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org,  Peter Xu <peterx@redhat.com>,  Daniel P.
+ =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Thomas Huth
+ <th.huth+qemu@posteo.eu>,
+ Song Gao <gaosong@loongson.cn>,  John Snow <jsnow@redhat.com>,  Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Kyle Evans
+ <kevans@freebsd.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Cleber Rosa
+ <crosa@redhat.com>,  Warner Losh <imp@bsdimp.com>,  Brad Smith
+ <brad@comstyle.com>,  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Max Filippov <jcmvbkbc@gmail.com>,  Brian Cain
+ <brian.cain@oss.qualcomm.com>,  Fabiano Rosas <farosas@suse.de>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Richard Henderson
+ <richard.henderson@linaro.org>,  qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 03/16] tests/Makefile.include: add binary dependency
+ to run-tcg-tests-% rules
+In-Reply-To: <86385e93-5425-4145-8a9f-0f72ed5de022@oss.qualcomm.com> (Pierrick
+ Bouvier's message of "Wed, 27 May 2026 13:55:20 -0700")
+References: <20260521131739.540157-1-alex.bennee@linaro.org>
+ <20260521131739.540157-4-alex.bennee@linaro.org>
+ <74e8bc86-cd81-43f9-b5cb-7e3de3bcd3d0@oss.qualcomm.com>
+ <87tsrzl138.fsf@draig.linaro.org>
+ <093614fb-ced1-4b15-b1e1-5da755f87237@oss.qualcomm.com>
+ <87cxymec7b.fsf@draig.linaro.org>
+ <5bd51a1a-4079-4073-bbd8-f0206a1ad458@oss.qualcomm.com>
+ <0f73d717-1621-4c3f-9c5e-9bfdfaffb0b8@oss.qualcomm.com>
+ <877bor9vor.fsf@draig.linaro.org>
+ <7d58926d-a36d-430f-828e-7ebdd9cc4eb5@oss.qualcomm.com>
+ <87qzmyzbut.fsf@draig.linaro.org>
+ <06092208-1b56-4fea-8d92-bf035fbd0fa3@oss.qualcomm.com>
+ <87fr3eyrvp.fsf@draig.linaro.org>
+ <8a878679-733c-451c-8053-663a74f8d4a7@oss.qualcomm.com>
+ <87a4tlz897.fsf@draig.linaro.org>
+ <86385e93-5425-4145-8a9f-0f72ed5de022@oss.qualcomm.com>
+User-Agent: mu4e 1.14.1; emacs 30.1
+Date: Thu, 28 May 2026 11:13:30 +0100
+Message-ID: <87o6hzx2np.fsf@draig.linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 09/21] arm: virt: create sbsa_gwdt watchdog
-From: Eric Auger <eauger@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: qemu-devel@nongnu.org, mst@redhat.com, anisinha@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
- philmd@linaro.org, zhao1.liu@intel.com, rad@semihalf.com,
- leif.lindholm@oss.qualcomm.com, qemu-arm@nongnu.org
-References: <20260303092532.2410177-1-imammedo@redhat.com>
- <20260303092532.2410177-10-imammedo@redhat.com>
- <4cdd38f4-4efc-48c5-a236-a40449ad8e85@redhat.com>
- <20260527144955.64eff309@imammedo>
- <affe914f-157f-4125-93c5-abb94df3ab5b@redhat.com>
-In-Reply-To: <affe914f-157f-4125-93c5-abb94df3ab5b@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: fQ4ww_fFgdMSYhfIUpnAR8QHPf5_5MkUJJGXF814RA8_1779962350
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=eauger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,256 +133,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
 
-On 5/28/26 11:04 AM, Eric Auger wrote:
-> Hi Igor,
-> 
-> On 5/27/26 2:49 PM, Igor Mammedov wrote:
->> On Tue, 26 May 2026 15:58:08 +0200
->> Eric Auger <eauger@redhat.com> wrote:
+> On 5/26/2026 11:17 PM, Alex Benn=C3=A9e wrote:
+>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+>>=20
+<snip>
+>>=20
+>> What do you mean? I run check-tcg all the time.
+>>=20
+>> Which containers fail to build for you? The main cross-compiler one
+>> (debian-all-test-cross) is built all the time.
 >>
->>> Hi Igor,
+>
+> Build is working out of the box now.
+> However, it seems that only tests for aarch64, arm and x86_64 are run
+> when using containers without having installed cross compilers.
+> Maybe it's another carefully handcrafted feature of tcg Makefiles?
+
+Works for me over here. Do you have podman or docker installed?
+
+It's true the Makefile has to jump through some hoops to compute
+TCG_TESTS_TARGETS from TCG_TESTS_WITH_COMPILERS (config-host.mak) and
+CONFIGURED_TCG_TARGETS (via $(wildcard *-config-target.h)). Is that
+where it fails?
+
+As I've said before I'm not wedded to Makefiles, in fact I would look
+forward to a world when I can run an individual test directly from
+meson. However I'm not prepared to throw away functionality, especially
+the ability of new developers/testers to build the tests without having
+to install cross-compilers. That would take us back to the *before
+times* when TCG tests where hardly ever run and tended to bitrot.
+
+>>> But well, if the cross-container thing is *really* a blocker, we can
+>>> just wrap build and run in a script per cross compiler, that does
+>>> docker/podman build && docker/podman run and call that.
+>>=20
+>> We still have the remnants of that in the docker.py script although for
+>> most containers we moved to invoking docker (or podman) directly.
+>>
+>
+> Maybe that's why I encountered issues in the past, and now it works out
+> of the box.
+
+The original script attempted to deal with caching layers and the
+consequences of custom USER/UID on local machines. Nowadays it is mostly
+used as a basic wrapper around "probe" for the runtime and is still used
+by the binfmt_misc and toolchain wrappers.
+
+For porting to meson it might be worth just having a minimal wrapper
+just for building rather than mess with it.
+
+>> Also bear in mind the containers are also used to cross build QEMU
+>> itself.=20
+>>=20
 >>>
->>> On 3/3/26 10:25 AM, Igor Mammedov wrote:
->>>> Allow to use SBSA generic watchdog with virt machine type.
->>>> (includes conditional generation of corresponding FDT and
->>>> ACPI GTDT descriptors)
->>>>
->>>> Use '-device sbsa_gwdt' to command line to enable it.  
->>> I thank that in general Peter is not a big fan of dynamic instantiation
->>> of sysbus devices. Don't you have means to instantiate it statically in
->>> arm virt memory map?
->>
->> /me neither
->>
->> in previous version there was a machine option to enable the feature
->> to that was rejected in favor of device.
->>
->> in this case for platform  -device of sysbus based device, I don't think
->> we can do better that dynamic sysbus. 
-> 
-> sorry I may have missed some previous discussion details. As far as I
-> can read, I understand you could instantiate the wdt in a free MMIO
-> slot, unconfitionnaly just as it is done in hw/arm/sbsa-ref.c. Maybe add
-> a compat to avoid having it by default on older machine types. Then
-> about the type of the integration gtdt or wat, can't you have a device
-> compat?
-After further reading of the previous version thread, I wonder if you
-shouldn't always instantiate the watchdog in the machine instead.
-
-Add a device property allowing to switch between GWDT or WDAT version.
-
-In arm virt,
-
-1) if you discover the GWDT version is selected (default) you generate
-both dt and GTDT ACPI table
-2) if you discover the WDAT version is selected, you only generate WDAT
-ACPI description and you output an error in case of DT boot.
-
-You may add a machine no_wdt flag to handle compats for older machine
-types if needed.
-
-Would that make sense?
-
-Otherwise, can you point me the msgid where the -device was prefered?
-
-Thanks
-
-Eric
-> 
-> Thanks
-> 
-> Eric
-> 
->>
->>  
+>>> Now we solved the problem with system tests, and cross compilers, is
+>>> there another thing that is absolutely needed from Makefiles?
 >>>
->>> Eric
->>>>
->>>> Tested with Fedora 43:
->>>>   FDT: -M virt,acpi=off -device sbsa_gwdt
->>>>   ACPI: -M virt -device sbsa_gwdt
->>>>
->>>> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
->>>> ---
->>>>  hw/arm/Kconfig           |  1 +
->>>>  hw/arm/virt-acpi-build.c | 33 +++++++++++++++++++++++++++++++--
->>>>  hw/arm/virt.c            |  2 ++
->>>>  hw/core/sysbus-fdt.c     | 32 ++++++++++++++++++++++++++++++++
->>>>  hw/watchdog/sbsa_gwdt.c  |  1 +
->>>>  5 files changed, 67 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->>>> index c66c452737..1222efadd1 100644
->>>> --- a/hw/arm/Kconfig
->>>> +++ b/hw/arm/Kconfig
->>>> @@ -36,6 +36,7 @@ config ARM_VIRT
->>>>      select VIRTIO_MEM_SUPPORTED
->>>>      select ACPI_CXL
->>>>      select ACPI_HMAT
->>>> +    select WDT_SBSA
->>>>  
->>>>  config CUBIEBOARD
->>>>      bool
->>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->>>> index 719d2f994e..9c14b1d4d5 100644
->>>> --- a/hw/arm/virt-acpi-build.c
->>>> +++ b/hw/arm/virt-acpi-build.c
->>>> @@ -64,6 +64,7 @@
->>>>  #include "hw/virtio/virtio-acpi.h"
->>>>  #include "target/arm/cpu.h"
->>>>  #include "target/arm/multiprocessing.h"
->>>> +#include "hw/watchdog/sbsa_gwdt.h"
->>>>  
->>>>  #define ARM_SPI_BASE 32
->>>>  
->>>> @@ -863,6 +864,8 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>>>      const uint32_t irqflags = 0;  /* Interrupt is Level triggered  */
->>>>      AcpiTable table = { .sig = "GTDT", .rev = 3, .oem_id = vms->oem_id,
->>>>                          .oem_table_id = vms->oem_table_id };
->>>> +    uint32_t gtdt_start = table_data->len;
->>>> +    Object *wdt = object_resolve_type_unambiguous(TYPE_WDT_SBSA, NULL);
->>>>  
->>>>      acpi_table_begin(&table, table_data);
->>>>  
->>>> @@ -893,10 +896,15 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>>>      build_append_int_noprefix(table_data, irqflags, 4);
->>>>      /* CntReadBase Physical address */
->>>>      build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
->>>> +
->>>>      /* Platform Timer Count */
->>>> -    build_append_int_noprefix(table_data, 0, 4);
->>>> +    build_append_int_noprefix(table_data,  wdt ? 1 : 0, 4);
->>>>      /* Platform Timer Offset */
->>>> -    build_append_int_noprefix(table_data, 0, 4);
->>>> +    build_append_int_noprefix(table_data,
->>>> +        wdt ? (table_data->len - gtdt_start) +
->>>> +              4 + 4 + 4 /* len of this & following 2 fields to skip */
->>>> +            : 0, 4);
->>>> +
->>>>      if (vms->ns_el2_virt_timer_irq) {
->>>>          /* Virtual EL2 Timer GSIV */
->>>>          build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL2_VIRT_IRQ, 4);
->>>> @@ -906,6 +914,27 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>>>          build_append_int_noprefix(table_data, 0, 4);
->>>>          build_append_int_noprefix(table_data, 0, 4);
->>>>      }
->>>> +
->>>> +    /* ACPI 6.5 spec: 5.2.25.2 ARM Generic Watchdog Structure (Table 5-124) */
->>>> +    if (wdt) {
->>>> +        PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
->>>> +        SysBusDevice *sd = SYS_BUS_DEVICE(wdt);
->>>> +        hwaddr mmio_base = vms->memmap[VIRT_PLATFORM_BUS].base;
->>>> +        hwaddr rbase = mmio_base + platform_bus_get_mmio_addr(pbus, sd, 0);
->>>> +        hwaddr cbase = mmio_base + platform_bus_get_mmio_addr(pbus, sd, 1);
->>>> +        int irq = ARM_SPI_BASE + vms->irqmap[VIRT_PLATFORM_BUS] +
->>>> +                  platform_bus_get_irqn(pbus, sd, 0);
->>>> +
->>>> +        build_append_int_noprefix(table_data, 1 /* Type: Watchdog GT */, 1);
->>>> +        build_append_int_noprefix(table_data, 28 /* Length */, 2);
->>>> +        build_append_int_noprefix(table_data, 0, 1);  /* Reserved */
->>>> +        /* RefreshFrame Physical Address */
->>>> +        build_append_int_noprefix(table_data, rbase, 8);
->>>> +        /* WatchdogControlFrame Physical Address */
->>>> +        build_append_int_noprefix(table_data, cbase, 8);
->>>> +        build_append_int_noprefix(table_data, irq, 4); /* Watchdog Timer GSIV */
->>>> +        build_append_int_noprefix(table_data, 0, 4); /* Watchdog Timer Flags */
->>>> +    }
->>>>      acpi_table_end(linker, &table);
->>>>  }
->>>>  
->>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>>> index cab2e21e8a..a87991b591 100644
->>>> --- a/hw/arm/virt.c
->>>> +++ b/hw/arm/virt.c
->>>> @@ -95,6 +95,7 @@
->>>>  #include "hw/cxl/cxl.h"
->>>>  #include "hw/cxl/cxl_host.h"
->>>>  #include "qemu/guest-random.h"
->>>> +#include "hw/watchdog/sbsa_gwdt.h"
->>>>  
->>>>  static GlobalProperty arm_virt_compat_defaults[] = {
->>>>      { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
->>>> @@ -3474,6 +3475,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
->>>>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
->>>>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_UEFI_VARS_SYSBUS);
->>>>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3);
->>>> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_WDT_SBSA);
->>>>  #ifdef CONFIG_TPM
->>>>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
->>>>  #endif
->>>> diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
->>>> index 89d0c46445..76aa1bc579 100644
->>>> --- a/hw/core/sysbus-fdt.c
->>>> +++ b/hw/core/sysbus-fdt.c
->>>> @@ -36,6 +36,7 @@
->>>>  #include "hw/display/ramfb.h"
->>>>  #include "hw/uefi/var-service-api.h"
->>>>  #include "hw/arm/fdt.h"
->>>> +#include "hw/watchdog/sbsa_gwdt.h"
->>>>  
->>>>  /*
->>>>   * internal struct that contains the information to create dynamic
->>>> @@ -118,6 +119,36 @@ static int add_uefi_vars_node(SysBusDevice *sbdev, void *opaque)
->>>>      return 0;
->>>>  }
->>>>  
->>>> +static int add_sbsa_gwdt_node(SysBusDevice *sbdev, void *opaque)
->>>> +{
->>>> +    PlatformBusFDTData *data = opaque;
->>>> +    PlatformBusDevice *pbus = data->pbus;
->>>> +    const char *parent_node = data->pbus_node_name;
->>>> +    void *fdt = data->fdt;
->>>> +    uint64_t cbase, rbase;
->>>> +    char *nodename;
->>>> +    int irq;
->>>> +
->>>> +    cbase = platform_bus_get_mmio_addr(pbus, sbdev, 1);  /* control frame */
->>>> +    rbase = platform_bus_get_mmio_addr(pbus, sbdev, 0);  /* refresh frame */
->>>> +    irq = platform_bus_get_irqn(pbus, sbdev, 0);
->>>> +
->>>> +    nodename = g_strdup_printf("%s/watchdog@%" PRIx64, parent_node, cbase);
->>>> +    qemu_fdt_add_subnode(fdt, nodename);
->>>> +
->>>> +    qemu_fdt_setprop_string(fdt, nodename, "compatible", "arm,sbsa-gwdt");
->>>> +    qemu_fdt_setprop_cells(fdt, nodename, "reg",
->>>> +                           cbase, SBSA_GWDT_CMMIO_SIZE,
->>>> +                           rbase, SBSA_GWDT_RMMIO_SIZE);
->>>> +    qemu_fdt_setprop_cells(fdt, nodename, "interrupts",
->>>> +                           GIC_FDT_IRQ_TYPE_SPI, data->irq_start + irq,
->>>> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
->>>> +    qemu_fdt_setprop_cell(fdt, nodename, "timeout-sec", 30);
->>>> +
->>>> +    g_free(nodename);
->>>> +    return 0;
->>>> +}
->>>> +
->>>>  static int no_fdt_node(SysBusDevice *sbdev, void *opaque)
->>>>  {
->>>>      return 0;
->>>> @@ -140,6 +171,7 @@ static const BindingEntry bindings[] = {
->>>>      TYPE_BINDING(TYPE_ARM_SMMUV3, no_fdt_node),
->>>>      TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
->>>>      TYPE_BINDING(TYPE_UEFI_VARS_SYSBUS, add_uefi_vars_node),
->>>> +    TYPE_BINDING(TYPE_WDT_SBSA, add_sbsa_gwdt_node),
->>>>      TYPE_BINDING("", NULL), /* last element */
->>>>  };
->>>>  
->>>> diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
->>>> index acb970e8b3..c4dd8005b7 100644
->>>> --- a/hw/watchdog/sbsa_gwdt.c
->>>> +++ b/hw/watchdog/sbsa_gwdt.c
->>>> @@ -285,6 +285,7 @@ static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, const void *data)
->>>>      dc->realize = wdt_sbsa_gwdt_realize;
->>>>      device_class_set_legacy_reset(dc, wdt_sbsa_gwdt_reset);
->>>>      dc->hotpluggable = false;
->>>> +    dc->user_creatable = true;
->>>>      set_bit(DEVICE_CATEGORY_WATCHDOG, dc->categories);
->>>>      dc->vmsd = &vmstate_sbsa_gwdt;
->>>>      dc->desc = "SBSA-compliant generic watchdog device";  
->>>
->>
-> 
+>>>>> If it's not the case, then we should definitely move into the directi=
+on
+>>>>> of migrating all this to meson, and rely on meson tests infrastructur=
+e.
+>>>>>
+>
+> To add on top of this, I would be happy to help with the transition, but
+> I want to make sure you'll accept it first, with a list of
+> requirements.
 
+For check-tcg the requirements are simple:
+
+  - support building tests with containers
+  - handle all existing tests
+    - per-arch *-user and *-softmmu
+      - including post test validation checks (conditional-diff-out, valida=
+te-memory-counts.py, etc...)
+      - per-target overrides (some targets are broken for some tests)
+      - custom QEMU_OPTS for some tests
+      - including sub-arch tests (e.g. x86_64 includes i386, mips64el inclu=
+des mips64 etc...)
+    - multiarch tests for all *-user targets
+    - multiarch tests for all *-softmmu targets with boot.S
+    - gdbstub tests
+      - don't forget gdb feature probing for arch and arch features (e.g. G=
+DB_HAS_SME_TILES)
+    - record/replay tests
+    - tcg plugin tests
+      - modulate plugins over tests to avoid combinatorial explosion
+      - filter some plugins from general testing (e.g. patch)
+      - filter some plugins based on mode (e.g. syscall)
+      - specific plugins with specific tests (e.g. patch, memory)
+    - support build variations
+      - compiler feature probing to gate tests
+      - custom cflags for some tests
+      - alternate cflag builds for some tests (e.g. sha512-[vector|sse|mvx|=
+...])
+      - build scripts (e.g. test-mmx.py)
+
+with meson TCG_TEST_FILTER should be obsolete.
+
+> I'm a bit tired of seeing patches in your subsystems get stuck for
+> weeks, without any proper review, to finally be (re)posted again in a
+> new series, blocked for more weeks, and finally reach upstream one month
+> later or worse. It's truly exhausting for everyone contributing in such
+> places.
+
+What can I say - reviews are welcome. I always list what patches are
+still waiting for review in the cover letter. I should also add for
+testing/next I try to be extra careful that regressions don't slip in
+because keeping the testing sub-system stable is important to support
+things like bisection.
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

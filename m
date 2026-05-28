@@ -4,94 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61308CD6E44
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 12:55:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73DACCD4F54
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 12:56:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSaFp-0007ZX-M6; Thu, 28 May 2026 08:54:29 -0400
+	id 1wSaHV-0008GR-3J; Thu, 28 May 2026 08:56:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSaFn-0007Yc-Vt
- for qemu-arm@nongnu.org; Thu, 28 May 2026 08:54:28 -0400
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ id 1wSaHS-0008Fr-Ng
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 08:56:10 -0400
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSaFl-00079u-GB
- for qemu-arm@nongnu.org; Thu, 28 May 2026 08:54:27 -0400
-Received: by mail-yw1-x112c.google.com with SMTP id
- 00721157ae682-7dc6d090381so7541697b3.2
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 05:54:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779972863; cv=none;
+ id 1wSaHO-00080b-LM
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 08:56:09 -0400
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-660390acd71so943546d50.1
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 05:56:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779972964; cv=none;
  d=google.com; s=arc-20240605;
- b=AHEnXBj0aBDJSo/uVo+Tb4YrBTnnrrVGbS5sQl2wzSJ+wJ5RP9lSvyExefpIsV3Uii
- IrWjn6tuMHxiz3cFbq4AAnWCx6e+EL1wbs7nLZpD1QNVzsqrhmATc0XRHxd0KnsP7/zD
- wwW+RgswV9diE4f4oslg9rBu0yLoUaNc6mZ/5dyzQYme/xwi5Q54JWWQMb+s6B9CmuaT
- ZcaBS+CoWeoRD7dxOQdKL8LU+BMhpG9lc+Gayf5pS0BQmdz3lRnfeHetFJQ9fQ3jFYBz
- +7xa+3n8mLb0xc+wIsUo3l7pWG2ML9tsjuOS5n6VZlN/k+dxMoyp6tTHWTaLBjlG++Nj
- en+g==
+ b=i2ZwnKk9VOFcQ0dvBS4A+jNyZshDxRJSzx2/VqrbtydhveQ0hzkpvlxoPHPGGPsQXN
+ kaQ/EqgUYaNk7Yjn/quejsru7EL1vCRLAZVGzjg59/W17xP5/r2WsyX+w+Rqr1+9udLp
+ 02HYM00ZcFUyFYQiD6ZyJjVuAk5Cq3zWAuqdxUqKHSPIEcCzf83OsfoLxKPgScku0Pd1
+ oDnwPcuRykWXxxmyR/sEPxjD5vnw1qy8Xr04hOXl/es5MBQiOOP4cBD6uPSnXHhABSGU
+ Rm3ZuU8191DV4sEpEZZ0ysnAXCxbfKKYsoJ6LhpuC4hpqm2E7TfTXJLkmhmae11FR1Lr
+ sPmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=DAv25ndm3MvnTR5ZhnygaG9HStfvAseM/0GXjVRpQAo=;
- fh=dsTVWq7xYWNBIdMmM2dBsXIV5ZaPadlTb3u1X5z7EUc=;
- b=J/r4JdhwvWfhr/U2PZwuyH/WOCgdie+PbcmHyDjOCe7UCf9yS55q3+M8XDJp5w8SnQ
- 13VxtCu/7MSCvppTbvNjjuYC/PLYNtTKIURWMrfT9+Na14T9aFZqNbqw4nUmQNeOIAi7
- BV++WzO4GNmYb97DajnmnAHCW/De1drJjvj17Qm4KbLd0QXK6RCHbNFWXpm+sLwhT6cw
- rAF1Ke6xu22GZ65j98K308MTacsAOcu3CAyCexVXReazirD4igULDA9W9Sz1e9/iSnUs
- MC6h/6C7hoG5k2h4HDxhfrHxbp5JhWodpxSgfI/8NUDZeI+PJORgy3eg3S4fhXU5Dqk6
- iXkw==; darn=nongnu.org
+ bh=+5yjlEgM1kw2CqWiW/w+YsADSYuG4xsPIjdO5G70lcI=;
+ fh=aatruMxyOhPib/Oxg2zmlWgERSQXaiPC+Th8poB4b7U=;
+ b=UMapYKjv2e718NylwhAzxLMH85U9YF5JYYNTCHp2Ijo5XyQtRPSd5uEv6vlmRKDJp4
+ ji7gSU32E/4JQe88FIvZFsaIXPO3ty1XdnxaXHPH9U6TCBiJkqjPJEQT0WrF9FbEztle
+ XIihMO7Pb68aIUIA2xoFHwtZFoK2JnWPTQ89/MgOYyqqJZwOs6/Y94zOsprZCjw3x4rx
+ dOmPMZCnN1An62WR3M/k4PWTblvQ5ScHItj+e5eJMOwFa+wh2EdKNPa92ja2DVg8leC6
+ U+RllRnnhAQH03heKVhWCRTgpnJdC7nJ/RwLEaUZ9jgyrpPd+Ev/gDvSum8X7vIAL6Zo
+ af8A==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779972863; x=1780577663; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779972964; x=1780577764; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=DAv25ndm3MvnTR5ZhnygaG9HStfvAseM/0GXjVRpQAo=;
- b=gPTQzvaXiuqBIkY+aBJlI2YhccX8GGiLfbKsQm3j18EwIkbYSsf08UWFdFY36Kr2Hd
- RpMw7zvsLJbEEUZeWQ1Av9f0eg4E/hYij1ByVLgDT+4V7rSEke7H5VEUp6CTdn0IOCHy
- bFPOPBEwMGgKeLZKtO+P067syNVmE/3fGeQ04m6kCx6xkNrMTrFM1y5V74bDq0G7/aef
- oL3jwW9IOopYjxGc3ivFobqQxmSr3c462+Nr7LP4ddxnPddUG1KJEb444mzwdo7MlzV4
- btDncYas1+bxwfYacOIAo/qpcpJR/8Iis6Qf0afuT8Fw6DpXF3tayXf15oKnwZsKVJJc
- Cy7A==
+ bh=+5yjlEgM1kw2CqWiW/w+YsADSYuG4xsPIjdO5G70lcI=;
+ b=f7tWuw0vqhS6Y3x0JKll8xttwP0Fneox+nMUbvz/LYbPdbzI1MLVbWB2Cw1YaY0A14
+ WzmyRZrqrtMpLYRHXgJ0JT5HepLeVBnOuJJ0NSTnl5A1QlocXEo7gc/yQWCLQKSY1ezM
+ T9pW6G/so78RuhRQlIk5dwttb0ZbGwvyN/b50Qv200+s0Q9EoYKD+UyxAYCQTyd1uk11
+ QOAV7h2NitqrH52BlJ2tVHbJrSb0TfNqwh8txmLyR2HZ+AtkdVlzzPmmieRFTqlKq/UQ
+ ersGodsllx69PZuPqyTI1WYGh9yYoEXZwmZq9HZiGp6R66sM0/PhvhiXQZy9nsbu6K5X
+ CCFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779972863; x=1780577663;
+ d=1e100.net; s=20251104; t=1779972964; x=1780577764;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=DAv25ndm3MvnTR5ZhnygaG9HStfvAseM/0GXjVRpQAo=;
- b=DO2vH4ozhUUEO/b+9pV65SL+HvyiXrs7b9RNtyxIqUslmJYEkuV2MalHlL2vEDMmde
- 7fDcJGdI9q6uSciEurNK1J1TwDwF5vNI2WREjUAMIzTTpjp7pnZVVFKCOvHyi+SkPuL7
- oCWx7ZYMV7tEz2X8X3ZgBQo2QIeiTGKGCswJ7P3mfX2cE3HVtoa1aQuajbSfFYzb3G6E
- jCM7cu+e6hUWK/NKRq21lkRHk3fRTbFf+/NTSz7IxD3AAWRZmHetNfLYqZENCiEa0Lfg
- IapVxhMLVWjvJWHYva2jYkM8CdWolSAYZbwZVZV28m5F6wsM5Hp/gS6V1AnrkYBoANR8
- c+ew==
+ bh=+5yjlEgM1kw2CqWiW/w+YsADSYuG4xsPIjdO5G70lcI=;
+ b=YV/FSemBf0w0++h+N8sryGIzyffSHIAPkwEOFIa59D2aaMawOZVw9ffeiMeDfSX9VH
+ utQrn23bR8VD1Pf8GtU8iBhr+PyKfYlYzfq47l676cNzgXTbsWJ+55MyfNPZExM67Pu/
+ IGkWKiSEFX121balsl6ooDCUxvH3vNOkzXBnRP9f1/vAbPRsFLUEX1tX3AQHE4fJ9V8+
+ Z5ecXR7209umJ4aOGXJSqDPthxiEjsI2fsncNiZBgORTyV6raFhe3w0pD1YLCchT8kG8
+ tzkCq3HYGosOoa8OeVOYRQjTMGbXjMn751hQ0NRgSNGiDjPaz0sOHtgLFGHUaTGdsG4X
+ QmNw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+wSRQuE9uV67qrxMpP+eKbjN5MgVzuPx8YV5ImupWM0mhigfH80Txwhq9BD8X8+9Hui2yoV6FhWg==@nongnu.org
-X-Gm-Message-State: AOJu0Yym1lj8RWfSpJbH/muy5t3QUkP5GlzyAIm1jzHYY0nX3YNYikJ8
- NuDtM0G5p0XrEZFdKsRYEFZTfgqIRDE8ViZzFCsVu7S9zNqG28SLAQQq5GkbDivT0aHKT3twKzZ
- SDez3l8wLUG5DDUWMDrlBNbtkKSniQ/1hhVxoo0ATlw==
-X-Gm-Gg: Acq92OFFpNCOOdvQMNobbnOddrGCnkjCTFZEsGwDfY4qYUIfQSAOTcild7LjiVIhLNe
- I9BE9lukZh7YCgHagZpOQyLoD8tGjnFHPUpbAf1Jn561YWjRMbUF33uZEA//T91yE2JqcnVqToR
- Vu3lIYOscnn+6YXyCO/KDyXW/Z5zFuwk5+iYnpGwD5+uzUaGRfs2VdVOeoJaw4+RuiqDYMckkbB
- EAgt2A2mWgY7VG1Nl+9I2/cv0KyDIUUU1oazgX9gTEZCsX0si6OlT4W9X6m+q0/oo3LMVCsQOGN
- HbwbiOdpTy+5xUX6xpVv4Gg7bfZ71AwqkKv3QZmRxkq3GxJdp8z75jJMfVE4nhTcguQ/z+7l1zW
- oUA==
-X-Received: by 2002:a05:690c:8f:b0:7dc:605d:7a9a with SMTP id
- 00721157ae682-7dc606cc504mr29399047b3.12.1779972863322; Thu, 28 May 2026
- 05:54:23 -0700 (PDT)
+ AFNElJ89MlNaSXPJZe4pSGN80bsCRTFjYwNNSZGZNvyc0M5dx4B6ejjJ38uvZk2K0CHDIfBmGLu05yrfxg==@nongnu.org
+X-Gm-Message-State: AOJu0Yxfv8q7F6lRKyzTx1xa7pbHimm2UvGyfMJ0nSk0IpMO80DEuBO6
+ /z2l0G6rHU6+3b/Tev+yEdOEUgPtReT+OdRzcyjPPM/i6WMxTwR9QNanGT+WwOjYoHvpf+0579M
+ RqYVHB7XBJNdVUvo1HUhibHe+DBzL1oR1TX4pIjILXg==
+X-Gm-Gg: Acq92OGyhVq5EFyvjTu9VSjPBmnC4kAthdCFuAu3pfRV20I63jvxSy3ZDu+2gURUweq
+ wzNWxGLFMyD1ahWEM25K0B2jdfb6nmideqPAdzVeLhCFvpCqgLSOFyE94ucrk0GFoQIYIpgwfSb
+ VWYAU8H9QCJ748RvR+0I/Q2+oit/EPcUaBpouhAdB5kBi60t6V021bL4GEep2dwLxShqVR5Bk/N
+ f5MKpH1YImE8S/hdfIhx5y2bYSD6j+tRomk7xmLHqSd6RYXMi4YoUv/8hE194ky67DsYI3IJbFz
+ X8U7CDpreDD6i+xpod/zf2G+Rjt6fPw7SDu71Ttvf1buH7kneqEHXFuN3+tX9xBK3W44ZJ58+1A
+ wBaFASER/BuoP
+X-Received: by 2002:a05:690e:1905:b0:65e:1cab:c245 with SMTP id
+ 956f58d0204a3-66044a2bb05mr838417d50.4.1779972963907; Thu, 28 May 2026
+ 05:56:03 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260518073401.11279-1-corvin.koehne@gmail.com>
- <20260518073401.11279-14-corvin.koehne@gmail.com>
-In-Reply-To: <20260518073401.11279-14-corvin.koehne@gmail.com>
+ <20260518073401.11279-7-corvin.koehne@gmail.com>
+In-Reply-To: <20260518073401.11279-7-corvin.koehne@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 May 2026 13:54:10 +0100
-X-Gm-Features: AVHnY4IreIkBoesA2_tEVETtj4-KfeK-IdJBI6F4ZpWadK6mhQ4ymOFms6DVOqs
-Message-ID: <CAFEAcA_CKm+wjtMh1nQTiVK8W4GDgBXbzugCaoqCvyjXHrVbJQ@mail.gmail.com>
-Subject: Re: [PATCH v7 13/16] hw/timer,
- cpu: Add Clock API support to A9MPCore timers
+Date: Thu, 28 May 2026 13:55:52 +0100
+X-Gm-Features: AVHnY4Jkhz-x12OW3l2kTK4Rewu23FBHsdOw3HZOqpuj8D8Xdgj_OJIzavx74Jo
+Message-ID: <CAFEAcA85HGU2zw95oyVL9m1iYnFXs9WwTH-k5hvXX=KLTd9a5g@mail.gmail.com>
+Subject: Re: [PATCH v7 06/16] hw/misc: Add dummy ZYNQ DDR controller
 To: =?UTF-8?Q?Corvin_K=C3=B6hne?= <corvin.koehne@gmail.com>
 Cc: qemu-devel@nongnu.org,
  =?UTF-8?Q?Yannick_Vo=C3=9Fen?= <y.vossen@beckhoff.com>, 
@@ -104,15 +103,15 @@ Cc: qemu-devel@nongnu.org,
  qemu-block@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,37 +132,18 @@ rote:
 >
 > From: YannickV <Y.Vossen@beckhoff.com>
 >
-> Add a clock input to a9gtimer, arm_mptimer and a9mpcore. a9mpcore
-> distributes the clock to the other timers. If no clock is
-> connected, falls back to 100 MHz for backward compatibility with
-> existing machine types.
->
-> Frequency calculation now uses the input clock and prescaler
-> values according to ARM Cortex-A9 MPCore Technical Reference Manual.
->
-> More information about the A9MPCore timers can be found here:
-> https://developer.arm.com/documentation/ddi0407/c/timers-and-watchdog-reg=
-isters?lang=3Den
+> A dummy DDR controller for ZYNQ has been added. While all registers are p=
+resent,
+> not all are functional. Read and write access is validated, and the user =
+mode
+> can be set. This provides a basic DDR controller initialization, preventi=
+ng
+> system hangs due to endless polling or similar issues.
 >
 > Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
+> ---
 
-> -/* Return conversion factor from mpcore timer ticks to qemu timer ticks.=
-  */
-> -static inline uint32_t timerblock_scale(uint32_t control)
-> +static inline uint32_t timerblock_scale(TimerBlock *tb, uint32_t control=
-)
->  {
-> -    return (((control >> 8) & 0xff) + 1) * 10;
-> +    uint64_t prescale =3D (((control >> 8) & 0xff) + 1);
-> +    uint64_t clk_hz =3D clock_get_hz(tb->clk);
-> +    assert(clk_hz !=3D 0);
-> +    return muldiv64(prescale, NANOSECONDS_PER_SECOND, clk_hz);
->  }
-
-
-This causes "make check" to fail, because we hit the assertion
-in various of the qtests. Could you investigate, please, and make
-sure you have a clean pass of "make check" and "make check-functional"?
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

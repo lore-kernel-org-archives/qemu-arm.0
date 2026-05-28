@@ -4,108 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB74BCD4F54
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 14:53:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB913CD4F54
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 15:09:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSc6T-0002fM-CW; Thu, 28 May 2026 10:52:57 -0400
+	id 1wScM2-0007WE-5Z; Thu, 28 May 2026 11:09:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSc6R-0002eu-Np
- for qemu-arm@nongnu.org; Thu, 28 May 2026 10:52:55 -0400
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+ id 1wScLz-0007VT-LP
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 11:08:59 -0400
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSc6Q-0005HM-10
- for qemu-arm@nongnu.org; Thu, 28 May 2026 10:52:55 -0400
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-7dca5a81be2so7724227b3.2
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 07:52:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779979972; cv=none;
+ id 1wScLy-0003gG-1g
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 11:08:59 -0400
+Received: by mail-yw1-x1135.google.com with SMTP id
+ 00721157ae682-7cfd0d8eb09so96606247b3.1
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 08:08:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779980937; cv=none;
  d=google.com; s=arc-20240605;
- b=YpF8YygySObCHyA2xzZvBmwxvRC88ILzE7EvuSmq/9u7mPP/gdZzVf9BBtYuoREgzp
- Rzd7OnafagQJOHnXeq1KSG9IhTj2lmZWH7w/hNZuF73bE7lQAGBenntFLfi+g/OFL+Cp
- ivNYFSNbqthJZMNuD0antrXNqg5ARkMFfLZECbTRHkADJlNijee5ycgihr/IrNsbObnn
- ZT45a0xIhtH0S79+WpYi6ntoQAjp2wxalKeuZIPIUwZnbAbhcpzb32yU4mW/CwuvaPaU
- HyEf2v1vtjeRMKSPXmPCs4uoYfU1oTObxK6Y9p+q1KIo4RWashVVSkOHUl8ftc1NIqz+
- R5KQ==
+ b=G7NaJoMnpPD4R1XixF7UVCeXu2D7X5snQqTFRLoZPLDiVj1Aw5TrPYxlGqsURqLhsI
+ PFaHMr+wurOLpIojF9+YwptE8pxvMYz9dsxanL49E9hcP4UOc4J4NVqRDSrEH8yQpqlK
+ UX1hUFp9veOCCW7inbKsZKU1I8PZV4UBlY/fNqqoebPIi6yUK0LCK3cAcUntk3zG0F63
+ a6lx467UkI0H1UokZHDertgDW5o+F774sUKrb9CtHwuxS+rN4kX9ECsDXnUOXrGyAwQO
+ JSSLeobEL3g/yQK517Rtxi0rubSczL1/5Bi9blio5pfGPthvYZ9YWl3PJOKtAuHopeMg
+ qqZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=YAJ0dGPzwhje96Ryswv7lkftrV15fiyRJ6i2zYsnlCA=;
- fh=20T+8HY4bNVx8qxNwcM00Ai13qyv3jygg7iqkrFbE+Y=;
- b=KzpEpvxJ6CotpOAcCb9vMiwkkZZqT5lP58MEz3uHrEFv+aG052nsYXmomzgtxFLVlm
- Sk2keWFuywmk2yvVRXqgV8yZaZIiZ9F+H0jILbwOPlnPj0mNpPtqZRgbG6/EKhm0tlsY
- hiPbso7aGZQmYdDREdDtfz0J0tpk8nGkFst2WGOm1rqtwgJGEpZqgNP+SOkL+DEWEM3t
- EpmYZ8bFXFwuOjpFvbJQFo9pRsPQ5r9TZGFl0WMsdU4L2XKkM8+bBBOmCaQUm/Bo3q2t
- W8a/4xw6dw8Yp4r/pzazqeLGkqw/mvImDZMCjKHn+Q6Viirkbzf7ZDw2mXCzLX+XTErj
- VaUQ==; darn=nongnu.org
+ bh=ZH+Pr2gCxkUA8KclhiyGn3ySabYvxbuLNcuyTXCLJcg=;
+ fh=pChtpq20mQRMNKJ/LBi7cJkW2puaig7AC0IysZbvTFs=;
+ b=MHePs/0Sxy1G+sEXqcd/CMfbKFVwsYK2hmzhybj3Qto5ugiruihu4Ge6zunh9LCn7M
+ ER4p2Ew6mnxSKKR2sLkcr1c6UYM+wwqSi9Plnst6bnVkgZaBHSeuY/5qZirRHk59pW2m
+ O+ATaAV33FvCRCWktJimdLLiUNbJPBT1T/5pYPFaPud96Np9lIiV8pAhmM5aBkbXEjpb
+ YvQmC+TjAXxD2CX1GECgZGZ67dn+R4hhYFBxbyMq72oZ3Z03LsicOXrQQ/IBjledJRNf
+ M0UsYZbkphXmgzu6b8+9KglMmwg2pn/f/6V5okPX8mRzjpZPHBbyGZOY0TAZxWL7aIBP
+ OtOQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779979972; x=1780584772; darn=nongnu.org;
+ d=linaro.org; s=google; t=1779980937; x=1780585737; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=YAJ0dGPzwhje96Ryswv7lkftrV15fiyRJ6i2zYsnlCA=;
- b=xRmHg5JOE/vxZZZeoZD7YQJltN3lBCodI42VeEwqnURUOHKwlR5G/eqkfuB3Tkgcx/
- JPBqmJnpLN1oTUx0wBrx1V5+fZzFd0U048pq/2Dy9gmFY9cOxuHmvRuujhWihTI5dYMR
- GsQDkZdAcP9TamDbVwh2rHVK0Lyaya8QjHHBGq1rkeAtX2KC/kJ4yFTL1uSrCZyPLIGM
- mKTAmfBtUco4PH9wwoU4PKr8HBgd93UExL0q3+9XItC+9aA4PR6BIOBAJ2c8p0tG8IOa
- kKwO+XNxiTh3+RxV/CDGysgjlTttHZ+M+AqwmSh81pIuBkiDLLHeipb7ODtlszzlViHC
- tv4w==
+ bh=ZH+Pr2gCxkUA8KclhiyGn3ySabYvxbuLNcuyTXCLJcg=;
+ b=IGAiBfPXaI5TMRTGAxGLTkdWRJXh18VXODX8pH0uew77gvJ8nh6B3js7mv8coLxJH2
+ Mk7LitrAwrruQF8VmjILuQ1ZoQIwsoITzlnXVAUfAYF+fonnKTx8QpEuRIMpz0SxTyjS
+ ert+Nx9Dg6u3UJKppybolOInOymCjI/tg21qRGOHq2b2KXK0+qjf6kIrGf/VQErx0Pxj
+ QazY5pQCUX7pNDpnmOifHyYSi/AxSDUUxpJJl1R+YhyXIOw9hZPtZ2Funh0EJBLJzdef
+ beToslwGlcjjt/34499/vqYIv71C/klwvQVojnvqwW3oe05DdxHH607cWTEOnmOlbnKg
+ crHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779979972; x=1780584772;
+ d=1e100.net; s=20251104; t=1779980937; x=1780585737;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YAJ0dGPzwhje96Ryswv7lkftrV15fiyRJ6i2zYsnlCA=;
- b=NW3BNq6kdP4T0hdAV73DIjEfMgUoJ+vPnggFH6OrnWQrUG6VJkwOWPfHuG2B688nuQ
- 38Q5nsf0sKabla03uUuuzTIea1stC3sie40/HKsuE6C9UoFxZV+R5kUmI92jxHWSCFr5
- a2THL8MVM9TI+JioGoEVIZhjNH44tr/OsxkLqIEIbKyV4AiGXCNSy1Dwu7QOqL+u/kPu
- V2AEMqOQFaVOx+OA4eERvrdEAIcuL39ayZbzJauuNGJA0pyRPVpAMD/8kV2L7EnrfwLw
- cpYfiDZl9MY7CExZN8LtN9n5oqZEq33SUfjCSp41RbMZ5+/AmePCy3vXx3oiNN4gYhVo
- hcjw==
+ bh=ZH+Pr2gCxkUA8KclhiyGn3ySabYvxbuLNcuyTXCLJcg=;
+ b=i5sIrYOybgjcqykmmrhyIHRSFZ7ZSHxxp/a+Rz8QynE3JDluVD6XSM/J677SPjijZQ
+ z2yH/yB0GlqvMHwzRYxuSb/GNRxQxZTSan9ME/hw+uW08tO6LWUD3tWxdfs3cTfEp5Th
+ tJyv4krnsbM8SOI8+glWGkitvClip49E4K8mY78ORUZRFOv8YmAbOD/N/hdKMvelIw3/
+ 6Xyc/H3w7fYAJtOfvNZdpyTX/c7uI6BJodoKcIrvfBMf9sOK89tSdmmspkkAujFaRihT
+ tYCJ8Cr3WJbFbcH9DWyZXcaqXaaFqk1GCfYSiyFsB2gRGvkHfzPI2w3ps+2cvAZx8eIU
+ V74w==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/QgaM//1g3O2H566bEcj2ikypmxlqYfVPU9LHugriVO/9h3e+TCafYXZf1409IHTmeDHfFLcYixA==@nongnu.org
-X-Gm-Message-State: AOJu0Yw+d0WFUfDooteKoRPNFIte7/TyhMvuGF4EZXtUC9V4n6uupQv8
- F2M1M8uVLsX2h7H84gKXR7CSg+dY4miifpbOSTuXIivVQu1wAifwVNxK8G6Sd7ph/fx1A/oBBS4
- WTIJQFFqmmo2tSsSjkRMB1pcJBtcjNIFfTsIkxPI0mw==
-X-Gm-Gg: Acq92OEsQ56so+BupiEvkuOT61ul8pEDQMAJjnnq7y981KulpQU8Z7BXsirjoKPAPp2
- hYlk5Q9DeMhsf4W2NZtrfYIUzq3Q6FPBQbh0zofnGlVV5MQxgrGb/j9byxk2uK2cetyREXv/cym
- Ho9tjTmn4QJYGmDsWgDqC0JSk8+YD/QwrWihprQBIOCkB68RkBuXlwdmXDIn82KYPCO69DDemEx
- tfQVR2UJ/bL8NYTrw/SIOHYDoqKvvzyxDNhAVWcjGUAdB9RYAZoeYYvDncFNHCqHpUuget3oxXj
- GYp20u+SNlO3+Cb1a5upZcAaSaqlmwnvTutqOiVxdk4pxGKFrETzSvFBs7FpQeUzckoXUuLDLZf
- ePa15bAYx20s1
-X-Received: by 2002:a05:690c:6a12:b0:7dc:1d92:17f9 with SMTP id
- 00721157ae682-7dc1d921c36mr44219887b3.27.1779979971780; Thu, 28 May 2026
- 07:52:51 -0700 (PDT)
+ AFNElJ+7N/YKJWxyz3+FRJYCefiGqgfdrUznQmV2RpsR0V0ZDT/Fv8l1OCMLNry9cb53R0C2V02RUJQ1bA==@nongnu.org
+X-Gm-Message-State: AOJu0YwX1ByAJp8OzxwRDPGaqJB758YuotxmXc6vu8FOYqbF4wxr9DpT
+ VpFNGpTS0/gIqdR2hwHjJogXs4QDkN2AEc2lTRF4PDrfwwKJMl6l+arsAeX0uIqz6hRJKco0beF
+ iIVplrOx97+YIkM3Veyy4BFgR28iwyvmaNP3AvxCRcA==
+X-Gm-Gg: Acq92OG/AuSn6o9m4i2PnYPin6FmRjl+u1L6jwpB/Xhk4sPZoLJxR7RkvALrkGMF1Rj
+ zhFEyGhUUTOnnaFp35GzkFBg+usiG26Xp8EzQfIG2FZmg96zx4QSQcF0vaVXBMcIduluim/lRA8
+ kWaIDJtZyvm/tInuq5kd8LIDTsRvKcTDnYjjAl66ha93E8howGzDnDeGRMwIuyhsBn0HMjyendH
+ 4/IFJIZgTdKFtlXcVsJsTyGtp8SUXEvtBd2NAZgVzvXBWNIOVTP9Hcu8OlEF+/0NR3dyPteToC6
+ 0UIM0SCbysSq7rZwatuVMgEmKo2Vvsr+Mk+ZYF9aOMDlaaOZ+CSh0AnUvJEusZPI3W0xeprWKfJ
+ hrQ==
+X-Received: by 2002:a05:690c:6982:b0:79a:daf7:c4fb with SMTP id
+ 00721157ae682-7d33b44d216mr290968997b3.50.1779980936798; Thu, 28 May 2026
+ 08:08:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260511-feat-mte4-v6-0-8557cc1313b9@gmail.com>
- <20260511-feat-mte4-v6-3-8557cc1313b9@gmail.com>
-In-Reply-To: <20260511-feat-mte4-v6-3-8557cc1313b9@gmail.com>
+In-Reply-To: <20260511-feat-mte4-v6-0-8557cc1313b9@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 May 2026 15:52:40 +0100
-X-Gm-Features: AVHnY4LhXf20mD6Gfud7JWBwpztXsU0lgtjVeaZi0M5L1ySHEb28Qa0YpvAv1lo
-Message-ID: <CAFEAcA_DxvTNq6qV0JXP5T+1r2035zuYM-G-n51H0ZkETPVzGQ@mail.gmail.com>
-Subject: Re: [PATCH v6 03/15] target/arm: mte_check unemitted on STORE_ONLY
- load
+Date: Thu, 28 May 2026 16:08:45 +0100
+X-Gm-Features: AVHnY4IrFnMULkPvEJHqjIRbadQy4hTr57kVoMRxxpQGeVzzBA9-uSHz-ZVWP6A
+Message-ID: <CAFEAcA9J0DVUbgKviEjwEN8K0M2aAJTLaOpkndus6HNCPNRH0w@mail.gmail.com>
+Subject: Re: [PATCH v6 00/15] target/arm: add support for MTE4
 To: Gabriel Brookman <brookmangabriel@gmail.com>
 Cc: qemu-devel@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>, 
  Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
  Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,32 +122,32 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On Mon, 11 May 2026 at 15:01, Gabriel Brookman
 <brookmangabriel@gmail.com> wrote:
 >
-> This feature disables generation of the mte check helper on loads when
-> STORE_ONLY tag checking mode is enabled.
+> This series implements ARM's Enhanced Memory Tagging Extension
+> (MTE4). MTE4 implies the presence of several subfeatures:
+> FEAT_MTE_CANONICAL_TAGS, FEAT_MTE_TAGGED_FAR, FEAT_MTE_STORE_ONLY,
+> FEAT_MTE_NO_ADDRESS_TAGS, and FEAT_MTE_PERM, none of which are
+> currently implemented in QEMU. This patch implements all five.
 >
-> Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/cpu.h               |  2 ++
->  target/arm/tcg/hflags.c        | 12 ++++++++++++
->  target/arm/tcg/translate-a64.c |  8 ++++++--
->  target/arm/tcg/translate.h     |  2 ++
->  4 files changed, 22 insertions(+), 2 deletions(-)
+> Testing:
+>   - Included for FAR and STORE_ONLY.
+>   - The MTE_CANONICAL/NAT test from v2, modified so MTE_CANONICAL is
+>     enabled in user mode (removed from tree in v3).
+>   - A bare-metal testsuite that sets up page tables for S1 and S2
+>     translation, to test the Tagged NoTagAccess fault.
+>   - The bare-metal testsuite also was used to test LDGM and similar
+>     instructions not permitted in user-mode.
+>   - The bare-metal testsuite also was used to test the mtx related
+>     patches.
 >
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 0894a050b1..fce0bde168 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -2531,6 +2531,8 @@ FIELD(TBFLAG_A64, ZT0EXC_EL, 39, 2)
->  FIELD(TBFLAG_A64, GCS_EN, 41, 1)
->  FIELD(TBFLAG_A64, GCS_RVCEN, 42, 1)
->  FIELD(TBFLAG_A64, GCSSTR_EL, 43, 2)
-> +FIELD(TBFLAG_A64, MTE_STORE_ONLY, 45, 1)
-> +FIELD(TBFLAG_A64, MTE0_STORE_ONLY, 46, 1)
+> Thanks,
+> Gabriel Brookman
 
-You'll find when you next rebase this that you'll need to bump
-up the bit numbers here, as the FPMR_EL field that just
-landed is using bits 45 and 46 now.
+For me this series causes "make check-tcg" to fail, because the
+"mte-10" test segfaults:
+
+$ ./build/arm-clang/qemu-aarch64
+./build/arm-clang/tests/tcg/aarch64-linux-user/mte-10
+qemu: uncaught target signal 11 (Segmentation fault) - core dumped
 
 thanks
 -- PMM

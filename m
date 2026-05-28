@@ -4,124 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82CAECD5BD5
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 07:33:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36BF1CD5BD5
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 08:36:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSVDu-0008Sh-8D; Thu, 28 May 2026 03:32:10 -0400
+	id 1wSWDT-0003VA-24; Thu, 28 May 2026 04:35:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSVDq-0008Lg-Ov
- for qemu-arm@nongnu.org; Thu, 28 May 2026 03:32:08 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSVDn-000689-DC
- for qemu-arm@nongnu.org; Thu, 28 May 2026 03:32:06 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-459bf19e87bso7483862f8f.1
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 00:32:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779953522; x=1780558322; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=9LWPOs2Ju2J8pG8wru04Q+1RDnSE64nD1JGRnbxc5Ks=;
- b=SghT8nm6dTZYLEhndLtBn68lCIEONyuBYVO76h5ZrUn2VUaT6zE6VScjeFv7XkkFgI
- 9yc2I9GdlCh/pwDXrFQussY20Y5Clh+dwKcvtwbeXFcuhNfYyZfvQ2DwBRE4cvruQDtB
- pDlBk9vn4cgIqtgYjiXEyuuAPWFZIotiTYnRCxsfPFWTGIH4rjr+JdHcGr0/ryvPTi1t
- ocoxf1NbhL1SQhCjjGyWyzH11/NPzkRsCtL5cRLczmNAvaHliI1gbM389YRwr3wRgkFq
- Mxto4hSl7y2oOJM3JEN7Yr+SH1w7Cq1l4JNrFcshhwV3PwUmR6rEbESPXAjkaawNzD8s
- mIMg==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wSWDS-0003Ur-2r
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 04:35:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wSWDQ-0003gH-6n
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 04:35:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779957342;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=c7p32ZveSOYd79eJSK7Qr4Uf8PGaqfR2i4ZQxMCYgJM=;
+ b=R9HTbjYu4cIFyW4dh7rGVPkkupql55jj/M988/T1QLzU4+bYO3D/ERzpO/r3KshucFFVTB
+ TZEj6UFUzim9jbmYfKBqJmqhaXtZzOIjYVr5Nv4A+ggLZaSeemk2CDdfoMXAkD5R+CdPrp
+ LAVi+N10rHNgobdDpsfYfq6yPQ/6lZo=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-247-UHtv7BSKMcuQ33GYhl00sw-1; Thu, 28 May 2026 04:35:41 -0400
+X-MC-Unique: UHtv7BSKMcuQ33GYhl00sw-1
+X-Mimecast-MFC-AGG-ID: UHtv7BSKMcuQ33GYhl00sw_1779957340
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4904ee02e72so46304615e9.1
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 01:35:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779953522; x=1780558322;
+ d=1e100.net; s=20251104; t=1779957340; x=1780562140;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=9LWPOs2Ju2J8pG8wru04Q+1RDnSE64nD1JGRnbxc5Ks=;
- b=I1aUxIi3cUvMdZ1EoncvlY/nY5QfL/JNPZBjUzCr5+rt1u8W8C/BK6pioCGjxJQqBQ
- nKBb0giq+Tnp4sN3nf85RoL5f/8q1lZXFj/8PMmSuiQufzndxShNfN9N+PZ3VdfXbiPy
- 0K4Ij8lt9bcbTGihmuTW/U9Qfxy2gSl6e8huVzgoBzEljtFFD+6//FgfEa3yjZcrLHOn
- hH57qUl4ZoiI5G3jGgi0I1b3QTQBvabAADI8rAI/3IH9huu6xXunsZURc9Bes833QXeD
- i29kvig6/NHxeMbvC1WsW6JgqEc5oCa6AHB7+7+VWKiiUaRdeCYO0T23CvN7HoS8epkH
- 6iBw==
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=c7p32ZveSOYd79eJSK7Qr4Uf8PGaqfR2i4ZQxMCYgJM=;
+ b=CzBdxLxqtkLe/NeYDRH0EGDmF4Uwai+/+fCJ736ip/yt/+LQUYWpk2wytx53TZFxV8
+ 2Ok3hA20vpk41iFoXC8/2k7XelqyZTGZigGAnO4gFiJ1l4sz/q7ZOaJqcqfVJ4dn1qGs
+ wy5VgyzdHvHzbQQnSRhFbk+kwN5uslo4ZdzmZhgykv9+nsFbfvdhIntUtScRDrQ7yzqP
+ 5/8f6fQg2bsm/ScsEM4l1rey0joB+ml5l3eVx00B+qTu1dF1ciQJjDNy69umCsQXQ/SU
+ 4baqmXVBOjHLz70t7DY7r52VF9IWYkvH9uoA/+DAS1FAcqU1gdwUbAt6APNjXE9IGADk
+ 6MYg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8srZI85J1gzOxsrVBFJ465avcvMrwiuOmU22j9yQpYr94maCj3ec5Y0CRIaUFnQP7UQPcgNYHQQg==@nongnu.org
-X-Gm-Message-State: AOJu0YzUYwNYFkW97cgzuFNuYWnHzt9u6TKUEpPOwYVNGmVvIUbBycIC
- sDERetS3p4KItvb8d/i8Mwq65AiLgjvHUMzfKZEZMLOP9gRUKzQsjtv9Maay/fxhQRw=
-X-Gm-Gg: Acq92OGS15cr6oNNkm2eNPvoB737IidZSBje5Y2zyyLU6NzNEWTFwkYSRDtUDw3IgSc
- 0E+8+3GL2nr41Mv7wiXON9leFN7VMNJUrCP11USrLZ5hn6yWRt4uFpzAXCPSQbP2nedBeFcaGyW
- DnFjn7TTfEPod66S1iH8lpBuWE2LBMiX/BoNv8ZHo4AhRmff+REEdIxNS02dNRKXVQ6gLu5vfbJ
- GzqYUfevyRg6ktfA3ReROK7pCryAnHa6YyicbBEwprrJJfYvm5iP8MFR5tjekR64hElBvrQjHu/
- 5W5E6hW3jkX/2tuM9jNzTBWmzalNihq7WcymAlJ85FWWZVs68nQSV1AvOcwYVo0tAX8acAqmoI4
- ROGyobVSdYzO2f3ipXxP59kQVblopqN/qA4xvcdkU25uUF5old2jVATrX7CNCWflhWTM7k7zjXM
- k8iHHcVdu1yFCcKegEn8JCd/helnIVlileeDV6SRJ0AF3zPcMBNdOFiy3UmDr4d8yp65Irf+KSZ
- DfL
-X-Received: by 2002:a05:6000:400d:b0:43d:1cec:4766 with SMTP id
- ffacd0b85a97d-45eb38c52famr42422051f8f.23.1779953521738; 
- Thu, 28 May 2026 00:32:01 -0700 (PDT)
-Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45edb5b1c7bsm11594438f8f.29.2026.05.28.00.31.58
+ AFNElJ9SnTJ67sEQeViQImRBsEAfXGQR6ugds1pVaaY6OMUUDbFi2ElL0jckqY1t+uDs69pnDKnfeD9VJA==@nongnu.org
+X-Gm-Message-State: AOJu0YyxtUhG5wxlTYElvzjEbxYLTv8U4s6wJMkjUaV+CAejc6nZRTvS
+ 3EWN3hPZDR07yIgXpNqailcGF8xHVA7KIn1vESbG55bxZWhe64KArq9e5LijaGLfJJECAm2EGrY
+ gsLzevWbKlpZKPl7EQEKiXwMTdINswIgWc1w4qHQZulZjERwZi8rEmw==
+X-Gm-Gg: Acq92OHGko9CplkdUDyURIW89AXMsRE+59b3kWrYFA4eqKZ2+cIbDXSHfb3AXDkSFB8
+ bFCMXl/LXmurRF5RsSvzZD0FHT0yGGxsRyaonik1j/8Cv73fl1SkBNZkCzvqsQOlM8tXc0cBjSd
+ pGv9+xGEPaY0ZbhS/bu7PP7kibRY+rM7mbbgmrnT+bSYmkXrpVAKTpwEc/w+wztKgnp8iJcVQuT
+ 1D8od7wC+P7kM015WDbzQ+azir6VHDc6RW16NgYHZyg1ig26wYYrXzskdSC1H2bzmI7DPisbKar
+ 5yAq8NuDlQtHnPWGgNguH9rFaZGO3t4pzwD68WQYgN/hs/BCls8rmZDup3Ci+kNWDQx038ux6Br
+ PosJMsJhxxMgPHGrAvAPEVHwObh/hSR+68lJacpZqs1Pf+01xXihzlqv1cmI2Cebi/KpQMYdVAy
+ ErkOJt
+X-Received: by 2002:a05:600d:8499:20b0:48a:5970:1fe1 with SMTP id
+ 5b1f17b1804b1-4904248ad4cmr334141365e9.4.1779957339767; 
+ Thu, 28 May 2026 01:35:39 -0700 (PDT)
+X-Received: by 2002:a05:600d:8499:20b0:48a:5970:1fe1 with SMTP id
+ 5b1f17b1804b1-4904248ad4cmr334140895e9.4.1779957339327; 
+ Thu, 28 May 2026 01:35:39 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49092a902bfsm43631575e9.12.2026.05.28.01.35.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 May 2026 00:32:00 -0700 (PDT)
-Message-ID: <6f46ca78-26dd-4de3-85a1-a73a7509dd28@linaro.org>
-Date: Thu, 28 May 2026 09:31:58 +0200
+ Thu, 28 May 2026 01:35:38 -0700 (PDT)
+Message-ID: <f4d57564-12e3-4f04-aa1c-4b828049dd15@redhat.com>
+Date: Thu, 28 May 2026 10:35:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/10] meson.build: move some subdir before system lib
- creation
-Content-Language: en-US
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-devel@nongnu.org
+Subject: Re: [PATCH v4 1/9] hw/arm/smmuv3: Update ATC invalidation check
+To: Nathan Chen <nathanc@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Weiwei Li <liwei1518@gmail.com>, Helge Deller <deller@gmx.de>,
- Michael Rolnik <mrolnik@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-arm@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Glenn Miles <milesg@linux.ibm.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Chao Liu <chao.liu.zevorn@gmail.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-s390x@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Alex Williamson <alex@shazbot.org>, Brian Cain
- <brian.cain@oss.qualcomm.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-ppc@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Jason Wang <jasowang@redhat.com>,
- Stafford Horne <shorne@gmail.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cornelia Huck <cohuck@redhat.com>, Song Gao <gaosong@loongson.cn>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Yoshinori Sato <yoshinori.sato@nifty.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, Peter Xu <peterx@redhat.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>, Chinmay Rath <rathc@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, qemu-riscv@nongnu.org,
- David Hildenbrand <david@kernel.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Nicholas Piggin <npiggin@gmail.com>, Aleksandar Rikalo <arikalo@gmail.com>,
- Fabiano Rosas <farosas@suse.de>
-References: <20260528051642.115721-1-pierrick.bouvier@oss.qualcomm.com>
- <20260528051642.115721-6-pierrick.bouvier@oss.qualcomm.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260528051642.115721-6-pierrick.bouvier@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Zhao Liu <zhao1.liu@intel.com>, Matt Ochs <mochs@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>, qemu-stable@nongnu.org
+References: <20260527221631.612026-1-nathanc@nvidia.com>
+ <20260527221631.612026-2-nathanc@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260527221631.612026-2-nathanc@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: AWntJ2DzFKJWGxikpnoJxDTNAEKsxN__QRrCrD17h8U_1779957340
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,16 +120,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 28/5/26 07:16, Pierrick Bouvier wrote:
-> Allows to use stub_ss in those sub directories.
-> 
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-> ---
->   meson.build | 26 +++++++++++++-------------
->   1 file changed, 13 insertions(+), 13 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+On 5/28/26 12:16 AM, Nathan Chen wrote:
+> From: Nathan Chen <nathanc@nvidia.com>
+>
+> Use smmuv3_ats_enabled() to determine whether ATS is enabled for the
+> guest when handling an ATC invalidation command, as setting the ATS
+> property value to 'auto' will resolve to ATS being detected as
+> enabled in the ATC invalidation check otherwise.
+>
+> Fixes: f7f5013a55a3 ("hw/arm/smmuv3-accel: Add support for ATS")
+> Suggested-by: Shameer Kolothum <skolothumtho@nvidia.com>
+nit: Reported-by whould have been more suited
+> Signed-off-by: Nathan Chen <nathanc@nvidia.com>
+> ---
+>  hw/arm/smmuv3.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 5c2855c377..0c65dc8c91 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -1528,7 +1528,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
+>          {
+>              SMMUDevice *sdev = smmu_find_sdev(bs, CMD_SID(&cmd));
+>  
+> -            if (!sdev || !s->ats) {
+> +            if (!sdev || !smmuv3_ats_enabled(s)) {
+>                  trace_smmuv3_unhandled_cmd(type);
+>                  break;
+>              }
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Eric
+
 

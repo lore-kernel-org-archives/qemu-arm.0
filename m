@@ -4,120 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5896ACD6E44
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 10:13:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F021CD5BD1
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 May 2026 10:23:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSXkG-0000bP-GU; Thu, 28 May 2026 06:13:44 -0400
+	id 1wSXtR-0004As-MM; Thu, 28 May 2026 06:23:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wSXkA-0000aU-B5
- for qemu-arm@nongnu.org; Thu, 28 May 2026 06:13:38 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wSXtP-0004A9-Nw
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 06:23:11 -0400
+Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wSXk7-0000fm-4g
- for qemu-arm@nongnu.org; Thu, 28 May 2026 06:13:37 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-4906238c62eso39803995e9.3
- for <qemu-arm@nongnu.org>; Thu, 28 May 2026 03:13:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wSXtO-00067Y-4y
+ for qemu-arm@nongnu.org; Thu, 28 May 2026 06:23:11 -0400
+Received: by mail-yx1-xb12a.google.com with SMTP id
+ 956f58d0204a3-65dd9b25829so9989699d50.3
+ for <qemu-arm@nongnu.org>; Thu, 28 May 2026 03:23:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779963789; cv=none;
+ d=google.com; s=arc-20240605;
+ b=eikZweiXLBWno9g6H2viTZRtSWRwjzY6wbNt24KbwNudZiCjqIx0+cTCVfjRcmpuGw
+ 4uAUNY9/ac3szK6YAOxSYqirOs8ou9W01Ef+KGoFY5SVayCehKy2r/JEmNpH5hVDMYET
+ QLAoZZ3ozwnvGakLNsYxB0WtQuu3fN1J5U0BfbtnWSM/DchafT0qIs0ufqDWW9VLuviw
+ 3NiJnIdg+4PhNVNiaa26za6qfM+SCzyaxfOnL4Vo6zUGR3jAWcIaFgPncOyhETpe8E3z
+ QDB+9OlMLkrNXvhVrl0BPEcVJ9NeP3raEsd7kYm+2NxNgrQiJGtfhDOq+N6owzVYSqnm
+ erhg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=Ih0tAGC2oD+ODfyMV7mnUd5xBZ1bDG8Oxezd/MEAjeM=;
+ fh=vvlJL5482+iXfQddQAecQWAhD9V9NLZArLzHsjLn1B0=;
+ b=Urhy6ACJXdqX6LpRDhdridWCeMZGzZF/bJJAUSnCJBk88fPzxWCVg60KTpIiDLKjC8
+ SYFoddO6rPjdmp+HjcBUMrvf2i5xxHNFaNGOzpe5btCGQn0WFlPBwPGGWxco4loH/DrW
+ qVO8M37errt6aRNI06JdLiCK5ySR7u+AVh3X2ZCgNyC0IEFET1bXtfeLHzDImqixAO/e
+ iT1xoVZmjkM55LkKt0/Z90wELbHKhgh2iPSBJ/KIGRhcBGm0Mq3j+8yVXI/srlHhHckH
+ GpSw2y+QeQnZToFTmbGZFLnvOw6A2pWAQXazJx9Pb8Wm1Wm7Gh5LKMTToErTIUUhBByD
+ aLTw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779963213; x=1780568013; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1779963789; x=1780568589; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=gbyuZgG6AkLETi0yBsD+It6Az1xMY7xBHjetWH8EGuM=;
- b=nDg68BQC7hYASlR2rhTpoZeVLKa9NG7rR/tni8Qs0LtJAnXBQA2DO9WsC2NPbn0WuI
- 4hFmLY2nixiURlbcGZXitJ+K9lbE/Oduc6QEx9QOuIG2sTlmpDn5zq8H3Oul4xgTK7pG
- 5N2bfAx5R+oQheUrHezkI2K1KjZoEIdY5TwAmSF34TsRqpwe07XKgGNcVbMt852NG71N
- WLL8Fbas1iYifvC0B6GBQYcsUKWuaa+E85VuRaonysz+NkjqrYteuDjCuJXzVltC7LPH
- TexpqKjcDGoimlHi6BU0ln2tW1VgoehORphPFwF6u+VhvKt9Z1k27vnmzykeZmaBu7TM
- cppw==
+ bh=Ih0tAGC2oD+ODfyMV7mnUd5xBZ1bDG8Oxezd/MEAjeM=;
+ b=nbAfmwllpdqt6R6FbbG5mlNf68PXMCe3hJHi+FL/a6MKcvZiyVd6SRxrXGsFDGONqN
+ yIiSdBPAIXT8SuBgoHOBzhEUZxTWj4YCIez/YWHl5JegXTerhYiJFBUEv6WE10DeYobB
+ Ve0fLIWTRfx0ydpF2QyUaMu2H5GCQHFb0rsZud7ro46vHZLE5t3j0ECJXmqk1AyRVS9m
+ FqDoCqobh+IdUReANkocGc3Iu49z+WntxZH2DQ7wYKL+wtfkhWOr+cyv5dw8bBc5EL3d
+ MJfYUHwM4D8ZFmWo0mfQ3HD9sXOqeG3LaMLFdZQIP9W3NKVJAtK5Pz7tUULZ1EO9JBEw
+ 6cYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779963213; x=1780568013;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=gbyuZgG6AkLETi0yBsD+It6Az1xMY7xBHjetWH8EGuM=;
- b=W0EK/V+ZBqic6IfW1IeplwHcSx0gR4ORNV8j+66mWysXl7GXIkWx7Nnc8jyA/cMpVR
- pvqiq/m4TJBSpe9wkxmGMszlQ/vvoaS7sUD57r+aGfKbvF3ONAgyCAjKbb9T6R2zWWWq
- PAPLELwI1aInhAjj4b1BZe9KXFXafLOs15VVfKgk/V+llAdNoFYOSOrLMxpPG/znKELI
- jrUbqEjK/SuiFNZxXnWiiIf3zFdJZ/m1WGsEf4Ho1hOx7WwJb47dD9uK+lzl9JDUosof
- /K8T4iOmLVp3pgQdp9XufA/OXZONJjssKf6xBFR1S7FQOeK2spvxWZFMp/i8+Ak509r8
- KsZg==
+ d=1e100.net; s=20251104; t=1779963789; x=1780568589;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=Ih0tAGC2oD+ODfyMV7mnUd5xBZ1bDG8Oxezd/MEAjeM=;
+ b=hrP//eM8lFSWttZ5TsdpLzetNgsFnElOTZelfkNnw9Chiei/nGvzGo6XioKjvrVOtz
+ E9ATJPh4uTm+OveuLjruPFp9GabxmDMa4Xw233IDbl54hhJLmXslgL7vkgLUUskhs+nb
+ GhkfDQsMoqV7GQYL7aOwH+Tx/sNtIv5ART0cuWFCJYRWJbKUl3jjfYLy4tJxbowwCmBM
+ jxkkW3h9DU3HiGAcMHe0WLegSPHToN2njL+Y9aw9N/Abh2ySRHauECDMAZHjXuKRl9V8
+ xG3GQ7XNjNE0Ld7rA2u/61VVMiN6S8AJ1kHFyGPFKifuKqvbfr021skFpDVZYCAYcwWZ
+ 9zHA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+0jQBs1ijXPdsRaVncxSwygQpnKpBqdPfmA7nVs0E0pAgBxHRiCGqmpE66SWiQF2R+hfP8qx7CQg==@nongnu.org
-X-Gm-Message-State: AOJu0YzlIJlZsFXp1fHeTWoDP94CKwXqz/VJDxaOfkUQnO846MFcVCq0
- uIKioA9smjvU9WH002ZOiSuSIyzf/218N28+GjeNaG6swyKuS4VVnXOC1FGHODq8WeE=
-X-Gm-Gg: Acq92OEMvDXaPO9SjLRWZT9H9Z+CXRtoKI7XHPNk6Ltxj52QJjdrqSlHYOp+JENuKYg
- puiXbhpyXuvUs5Fb8xLeygBv5lvaoMSul1A1Z0mdJN8LdyCOaas9G/NfcKDnezGi3dgBCI9WtNc
- ZA8GlFvSrgytAvzTw2cesulrpagbwv0nIdkOEapwU9j9XHMzrjYiOuikWsPz1SR4cnizUOfj/8f
- JLICulqeSIlofi2+RS0BufTXiyJ7LbmLyZ36HOpcPhQ2HZLFB61H5aPIyd3AW32/9woJZ3thH5I
- GnpddyT/D5zKff154EAfG4yD3AHMCpNrDZ4zrrEbglgYKgrsPepvh/V0P6N0vihTyFbsm1LyyfB
- dOHBEH8y3BWgMfWIEjqV5mlGJQYZLG8AoY49yhNNNXh6Dns3vcyuXdmTYNNCfrBWRQyGyHuvd8d
- fCynWdhSlzmde9l0FSrWKgqcsJlciBaeBEeA==
-X-Received: by 2002:a05:600c:6094:b0:490:625e:bb68 with SMTP id
- 5b1f17b1804b1-490625ebc14mr289953765e9.3.1779963212662; 
- Thu, 28 May 2026 03:13:32 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4909235f98bsm42288825e9.1.2026.05.28.03.13.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 May 2026 03:13:31 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id AF9625F886;
- Thu, 28 May 2026 11:13:30 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org,  Peter Xu <peterx@redhat.com>,  Daniel P.
- =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Thomas Huth
- <th.huth+qemu@posteo.eu>,
- Song Gao <gaosong@loongson.cn>,  John Snow <jsnow@redhat.com>,  Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Kyle Evans
- <kevans@freebsd.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Cleber Rosa
- <crosa@redhat.com>,  Warner Losh <imp@bsdimp.com>,  Brad Smith
- <brad@comstyle.com>,  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Max Filippov <jcmvbkbc@gmail.com>,  Brian Cain
- <brian.cain@oss.qualcomm.com>,  Fabiano Rosas <farosas@suse.de>,  Peter
- Maydell <peter.maydell@linaro.org>,  Richard Henderson
- <richard.henderson@linaro.org>,  qemu-arm@nongnu.org
-Subject: Re: [PATCH v2 03/16] tests/Makefile.include: add binary dependency
- to run-tcg-tests-% rules
-In-Reply-To: <86385e93-5425-4145-8a9f-0f72ed5de022@oss.qualcomm.com> (Pierrick
- Bouvier's message of "Wed, 27 May 2026 13:55:20 -0700")
-References: <20260521131739.540157-1-alex.bennee@linaro.org>
- <20260521131739.540157-4-alex.bennee@linaro.org>
- <74e8bc86-cd81-43f9-b5cb-7e3de3bcd3d0@oss.qualcomm.com>
- <87tsrzl138.fsf@draig.linaro.org>
- <093614fb-ced1-4b15-b1e1-5da755f87237@oss.qualcomm.com>
- <87cxymec7b.fsf@draig.linaro.org>
- <5bd51a1a-4079-4073-bbd8-f0206a1ad458@oss.qualcomm.com>
- <0f73d717-1621-4c3f-9c5e-9bfdfaffb0b8@oss.qualcomm.com>
- <877bor9vor.fsf@draig.linaro.org>
- <7d58926d-a36d-430f-828e-7ebdd9cc4eb5@oss.qualcomm.com>
- <87qzmyzbut.fsf@draig.linaro.org>
- <06092208-1b56-4fea-8d92-bf035fbd0fa3@oss.qualcomm.com>
- <87fr3eyrvp.fsf@draig.linaro.org>
- <8a878679-733c-451c-8053-663a74f8d4a7@oss.qualcomm.com>
- <87a4tlz897.fsf@draig.linaro.org>
- <86385e93-5425-4145-8a9f-0f72ed5de022@oss.qualcomm.com>
-User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Thu, 28 May 2026 11:13:30 +0100
-Message-ID: <87o6hzx2np.fsf@draig.linaro.org>
+ AFNElJ9ZYqvKuW1DDx4/kIS7oukA5KpgBAntJyi8Nmjv/EGYZOhnz+9DtX1WH2Cet4OTr9xh7gKytI5GkQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy4FMVsFOOQ/Y7FDVEJswgQDID0r10sb5h0sA3crGBBSlYXt9br
+ /aFaMLHAW3jjmtTwBwesnrx7UeI5sAc0l+UGstCcYmSmivOkm4+0VlYXGjIvS0riHn1UozLXsiV
+ TsYxSoSI+Dkk25ogCMsC7d1zyjocLIBF4abOUys9IHQ==
+X-Gm-Gg: Acq92OH5DgOTd7OMvnoXI9YQFO+RZQVMWH+eFKJfHIlcpjS2DEsoHAV9fgot8Y1uykc
+ OJfTHJ0CM/eF7Lj5EUQ8Io1ajoqIjJvHqiQQDBwKGrdsGYp3iRnokSxzoHosYgrpbkMaFWQev/5
+ TcFJCqYmjdm4vBhiOCXEXisFMK19ULT6MpAbcfLpmj4bTzjJZgSnf1LI0QhwZ55eqmn+T3bZFpY
+ M4L+eV00CTjf8iSLfJSMwBvGtwrCPF1qUtuk2yfusJCNX5ddr0ir+5QLT71lhU7JwfelVfLNu5z
+ VIaTJWavHksLOiTA3KmKh6+pQDnAy38E0NHQZ4b/POwUwAIjp+vw6y/1noE07N3LKyHrqZdKI47
+ gycqH8BwsaqJJ
+X-Received: by 2002:a53:ac83:0:b0:65d:6f10:d42a with SMTP id
+ 956f58d0204a3-65ec98a9bbamr25888606d50.39.1779963788854; Thu, 28 May 2026
+ 03:23:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20260518-pr-pacbti-v1-0-8932a885b03d@foss.st.com>
+ <20260518-pr-pacbti-v1-1-8932a885b03d@foss.st.com>
+In-Reply-To: <20260518-pr-pacbti-v1-1-8932a885b03d@foss.st.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 28 May 2026 11:22:57 +0100
+X-Gm-Features: AVHnY4LaMlxtA_Q4sNPBjupH8IL1E5jUJirlGtiw_jqw0bNDL6TKUDmhL6jJDXs
+Message-ID: <CAFEAcA_LcEO1J8gC5kpAVeiQ-pNEr2oNsdmx_NeEZhLgbstjNQ@mail.gmail.com>
+Subject: Re: [PATCH 1/3] target/arm/tcg: define cortex-m85 cpu
+To: =?UTF-8?Q?Torbj=C3=B6rn_SVENSSON?= <torbjorn.svensson@foss.st.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,118 +119,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
-
-> On 5/26/2026 11:17 PM, Alex Benn=C3=A9e wrote:
->> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>=20
-<snip>
->>=20
->> What do you mean? I run check-tcg all the time.
->>=20
->> Which containers fail to build for you? The main cross-compiler one
->> (debian-all-test-cross) is built all the time.
->>
+On Mon, 18 May 2026 at 17:16, Torbj=C3=B6rn SVENSSON
+<torbjorn.svensson@foss.st.com> wrote:
 >
-> Build is working out of the box now.
-> However, it seems that only tests for aarch64, arm and x86_64 are run
-> when using containers without having installed cross compilers.
-> Maybe it's another carefully handcrafted feature of tcg Makefiles?
+> Signed-off-by: Torbj=C3=B6rn SVENSSON <torbjorn.svensson@foss.st.com>
+> ---
+>  target/arm/tcg/cpu-v7m.c | 40 ++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 40 insertions(+)
 
-Works for me over here. Do you have podman or docker installed?
+This patch should go last in the series -- first add
+all the new features the CPU needs, and only then add
+the new CPU, so there isn't a window where the user can
+select the new CPU type but it isn't completely implemented yet.
 
-It's true the Makefile has to jump through some hoops to compute
-TCG_TESTS_TARGETS from TCG_TESTS_WITH_COMPILERS (config-host.mak) and
-CONFIGURED_TCG_TARGETS (via $(wildcard *-config-target.h)). Is that
-where it fails?
-
-As I've said before I'm not wedded to Makefiles, in fact I would look
-forward to a world when I can run an individual test directly from
-meson. However I'm not prepared to throw away functionality, especially
-the ability of new developers/testers to build the tests without having
-to install cross-compilers. That would take us back to the *before
-times* when TCG tests where hardly ever run and tended to bitrot.
-
->>> But well, if the cross-container thing is *really* a blocker, we can
->>> just wrap build and run in a script per cross compiler, that does
->>> docker/podman build && docker/podman run and call that.
->>=20
->> We still have the remnants of that in the docker.py script although for
->> most containers we moved to invoking docker (or podman) directly.
->>
+> diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
+> index dc249ce1f1..5cfda232cd 100644
+> --- a/target/arm/tcg/cpu-v7m.c
+> +++ b/target/arm/tcg/cpu-v7m.c
+> @@ -237,6 +237,44 @@ static void cortex_m55_initfn(Object *obj)
+>      cpu->ctr =3D 0x8303c003;
+>  }
 >
-> Maybe that's why I encountered issues in the past, and now it works out
-> of the box.
+> +static void cortex_m85_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu =3D ARM_CPU(obj);
+> +    ARMISARegisters *isar =3D &cpu->isar;
+> +
+> +    set_feature(&cpu->env, ARM_FEATURE_V8);
+> +    set_feature(&cpu->env, ARM_FEATURE_V8_1M);
+> +    set_feature(&cpu->env, ARM_FEATURE_M);
+> +    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
+> +    set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
+> +    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
+> +    cpu->midr =3D 0x411fd230; /* r1p0 */
 
-The original script attempted to deal with caching layers and the
-consequences of custom USER/UID on local machines. Nowadays it is mostly
-used as a basic wrapper around "probe" for the runtime and is still used
-by the binfmt_misc and toolchain wrappers.
+The most recent release is r1p1, so we might as well model that:
+0x411fd231.
 
-For porting to meson it might be worth just having a minimal wrapper
-just for building rather than mess with it.
-
->> Also bear in mind the containers are also used to cross build QEMU
->> itself.=20
->>=20
->>>
->>> Now we solved the problem with system tests, and cross compilers, is
->>> there another thing that is absolutely needed from Makefiles?
->>>
->>>>> If it's not the case, then we should definitely move into the directi=
-on
->>>>> of migrating all this to meson, and rely on meson tests infrastructur=
-e.
->>>>>
->
-> To add on top of this, I would be happy to help with the transition, but
-> I want to make sure you'll accept it first, with a list of
-> requirements.
-
-For check-tcg the requirements are simple:
-
-  - support building tests with containers
-  - handle all existing tests
-    - per-arch *-user and *-softmmu
-      - including post test validation checks (conditional-diff-out, valida=
-te-memory-counts.py, etc...)
-      - per-target overrides (some targets are broken for some tests)
-      - custom QEMU_OPTS for some tests
-      - including sub-arch tests (e.g. x86_64 includes i386, mips64el inclu=
-des mips64 etc...)
-    - multiarch tests for all *-user targets
-    - multiarch tests for all *-softmmu targets with boot.S
-    - gdbstub tests
-      - don't forget gdb feature probing for arch and arch features (e.g. G=
-DB_HAS_SME_TILES)
-    - record/replay tests
-    - tcg plugin tests
-      - modulate plugins over tests to avoid combinatorial explosion
-      - filter some plugins from general testing (e.g. patch)
-      - filter some plugins based on mode (e.g. syscall)
-      - specific plugins with specific tests (e.g. patch, memory)
-    - support build variations
-      - compiler feature probing to gate tests
-      - custom cflags for some tests
-      - alternate cflag builds for some tests (e.g. sha512-[vector|sse|mvx|=
-...])
-      - build scripts (e.g. test-mmx.py)
-
-with meson TCG_TEST_FILTER should be obsolete.
-
-> I'm a bit tired of seeing patches in your subsystems get stuck for
-> weeks, without any proper review, to finally be (re)posted again in a
-> new series, blocked for more weeks, and finally reach upstream one month
-> later or worse. It's truly exhausting for everyone contributing in such
-> places.
-
-What can I say - reviews are welcome. I always list what patches are
-still waiting for review in the cover letter. I should also add for
-testing/next I try to be extra careful that regressions don't slip in
-because keeping the testing sub-system stable is important to support
-things like bisection.
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+thanks
+-- PMM
 

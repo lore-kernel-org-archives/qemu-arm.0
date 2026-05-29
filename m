@@ -4,99 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79550CD6E4A
-	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 12:45:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3611FCD4F54
+	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 13:00:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSwZR-000165-7U; Fri, 29 May 2026 08:44:14 -0400
+	id 1wSwpB-0003oU-9z; Fri, 29 May 2026 09:00:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1wSwZF-00010l-A8
- for qemu-arm@nongnu.org; Fri, 29 May 2026 08:44:06 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1wSwZ9-0004lN-9Y
- for qemu-arm@nongnu.org; Fri, 29 May 2026 08:44:00 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-45ee1a56328so2008657f8f.3
- for <qemu-arm@nongnu.org>; Fri, 29 May 2026 05:43:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=9elements.com; s=google; t=1780058632; x=1780663432; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=C5YfvPix9JRVMLq5pqy0F5KTeMae+z3jj4lvXkKKiEY=;
- b=YjqsjYwR2XzsfnoRevC4+rf/cNndHk/7f1EruLa8KLtaicG/yhGslA9+/ftrg1oM+D
- zdE84rXdbDd/e1zLWA3B3RAVO3igVtcQbZjZZ3TgG8MLRi35r3Y2fulmfU6nyWk1TRdK
- dIQgazleG/2uIrQ8Vwk84eQfQ9w2sFsyCOT+Ut7fkAibJXgqtraHuIi5Io4SkVHH6g42
- fd/XbIn0n/c708svYvMlQmgvfkk0tORrA6io/ihFmaa8Z2LEZ1p4zv8BqJDfIBZ37dTI
- 4H1kNY6/UAvZb4WoGb1xVvpCyKT816n0F+cygxU4jJlhN6h517FEADA1j9wquD6ti1Jz
- kAdw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780058632; x=1780663432;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=C5YfvPix9JRVMLq5pqy0F5KTeMae+z3jj4lvXkKKiEY=;
- b=RkIovzjTszlq4+S2csJafDhb40hW7M0jxcZ8VpliAz2/ufoh4Gq1D0n7FdSke1s3pb
- trDLuVCfHNNzbyjLzqSFJmDH++SJ9bMb6Q33WJMn1nKjzSN/pMs7NEk+MPQYd0PuzgUS
- Ea19xC0hHs/Zfy/UK/+PA5PxWfxfcL/29p1FUE/V+LWiRyQWgUBYsTAizV+ZH3GGTMMZ
- JjuSi9WEpqfbVn99Y6+81LOt7leGZmQ/+TBfqKrGybLeUGhLCZrrEGWIWIp2Zezja4rL
- 6LniJ6XZje/evRKUNa+ujR2rqt6v1OhxAZkT+pjaPaM+euCSTmMf2X6YUgLKvBkEOlKe
- 3org==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/TRWVilgOoTl83r4rNu7qXVPQuPTnkUYEhvHjU8h15+w1fEDxsg/k15/7WhcdLilyXVZZJDdJoig==@nongnu.org
-X-Gm-Message-State: AOJu0YwQXz1Qnmr553fsrgJZk9HYNkluyobkG7JjuTeFXi5UKKPLFh44
- 86yLvjN3UnYZ9RODKI0YmvywDBEdF/4mixO5LNZ8XupHp77sZ/3/XER2HOsTA0Zdk6o=
-X-Gm-Gg: Acq92OGcxkg0kuJiBgjy1EvbIJvokDD9OFmZmUw/As7v4vw1WS3UAI7QWA1wozw7x0z
- 0lcKY0TdlQ18qUKjjpVh2Jt/sIwYVwIUiZM9AWTOzGmweMz84pcf153f0LL/KyKty3y3xw9RniP
- D2aUi4JRIVTFfbEY9apl62KeWb/Ygs3bqHHoD32JNIa+/57m8gCrZmZchmLSXPKDxJSNae1YxsR
- ya/PN1Zb/YkwRMou88kwrFRLmiuUADRnPMaQiRQ6ntKd9Al8wUkORUN0MHcnrQQmkAOIgHuRRH7
- neFAUJKDb18Vry6M+AhZaCG3UEPhOpjazQs7EfkBVIkmv97iOVvyh3FFwAClkeVgovIwrXsFIbA
- 3K52+PqTlRBMdZEtS1fvS2YBHfSpTTI2TXzCkSZS/mCsfaCPsm7Z3ZU3yFtnJh6+Jm74gPuP+9h
- IXHhZSeT9skR9sncPXl63veZeK5WTuLqA+dpTLh0Q1sin3jMuDceCGMHfUx6pQXEvnBA==
-X-Received: by 2002:a05:6000:481c:b0:43f:e934:50ac with SMTP id
- ffacd0b85a97d-45ef13fd680mr4852362f8f.7.1780058632019; 
- Fri, 29 May 2026 05:43:52 -0700 (PDT)
-Received: from alexanderarchlinux ([188.111.3.154])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45ef35598e5sm3163354f8f.27.2026.05.29.05.43.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 May 2026 05:43:51 -0700 (PDT)
-From: Alexander Hansen <alexander.hansen@9elements.com>
-To: qemu-devel@nongnu.org
-Cc: Alexander Hansen <alexander.hansen@9elements.com>,
- Titus Rwantare <titusr@google.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>,
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
-Subject: [PATCH v5 5/5] hw/sensor: support Texas Instruments ADC128D818
-Date: Fri, 29 May 2026 14:37:34 +0200
-Message-ID: <20260529124237.94087-6-alexander.hansen@9elements.com>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260529124237.94087-1-alexander.hansen@9elements.com>
-References: <20260529124237.94087-1-alexander.hansen@9elements.com>
+ (Exim 4.90_1) (envelope-from <jic23@kernel.org>)
+ id 1wSwow-0003la-Nk; Fri, 29 May 2026 09:00:21 -0400
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jic23@kernel.org>)
+ id 1wSwou-0000N7-5R; Fri, 29 May 2026 09:00:14 -0400
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+ by sea.source.kernel.org (Postfix) with ESMTP id AE884444F7;
+ Fri, 29 May 2026 13:00:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB1C71F00893;
+ Fri, 29 May 2026 13:00:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+ s=k20260515; t=1780059609;
+ bh=ig5z6GvTcvtiouWzhZB2hwdFrrm6k/U19rfC10wc4is=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References;
+ b=b8vw+y4SdFWT8VnoECDZiWcxjHj9FtvQ4lDmgvbez6matOoW0ITHwMGLy0luh9oc1
+ DM59iByfXQ2mxTt7x2/nrhM4zHgdIMOEwxH81gSrC9LFn/9cPqpCQBXygAzfxO3EkY
+ 5mD6+gVK0l+ZOJTXUmhz5zm67g5FrImeF73JFY/cJ83OzMplN6yqg+h8qY6HiQzdlm
+ adKjB+4RIBZzqYbAj6gF0amwX89/f9feMJK4DgGrSrYL3zdpfrfKtu7yDFSA5WwPXK
+ W0/XMcDor3xlVWiD/OUkfloRptM2+QCQfGk03IDYInneR0CehlkIJya8Vmpum73EA7
+ rbsNLy3LcxycQ==
+Date: Fri, 29 May 2026 14:00:01 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Fan Ni
+ <fan.ni@samsung.com>, Paolo Bonzini <pbonzini@redhat.com>, Richard
+ Henderson <richard.henderson@linaro.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, qemu-arm@nongnu.org, linux-cxl@vger.kernel.org
+Subject: Re: [PATCH] hw/cxl: Fix cxl_fmws_set_memmap() range check
+Message-ID: <20260529140001.435eaebd@jic23-huawei>
+In-Reply-To: <20260528-cxl-v1-1-a470c8255264@rsg.ci.i.u-tokyo.ac.jp>
+References: <20260528-cxl-v1-1-a470c8255264@rsg.ci.i.u-tokyo.ac.jp>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=alexander.hansen@9elements.com; helo=mail-wr1-x436.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2600:3c0a:e001:78e:0:1991:8:25;
+ envelope-from=jic23@kernel.org; helo=sea.source.kernel.org
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,677 +71,199 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Product: [1]
-Datasheet: [2]
+On Thu, 28 May 2026 21:24:05 +0900
+Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
 
-ADC128D818 Support:
-- channel readings from pre-set values
-- driver can read and write most configuration registers
+> cxl_fmws_set_memmap() leaves the zero-initialized base address of a CXL
+> fixed window unchanged when it does not fit in the memory map, which
+> results in incorrect mapping. Change the function to report an error
+> instead.
+> 
+> The Arm virt machine passes the exclusive end of the memory map while
+> the i386 pc machine passes the inclusive end to cxl_fmws_set_memmap().
+> Change the i386 pc machine to pass the exclusive end and perform the
+> range check accordingly in cxl_fmws_set_memmap().
+Hi,
 
-ADC128D818 currently unsupported:
-- slave address restriction
-- startup sequence and realistic busy register emulation
-- external VREF
-- conversion rate
-- interrupts
-- deep shutdown mode
-- individual channel shutdown
-- selection between Mode 0,1,2,3
-- pseudo-differential input
 
-Anyone could expand it in the future for more accurate emulation.
++CC linux-cxl as more folk there who might take a look at this.
+(also my remove my dead huawei address)
 
-The reason for adding this device is to support Yosemite V4 emulation.
+What are the results of this on users?  Obviously the CFMWS doesn't
+work, but how do they observe that.
 
-Tested: on yosemite v4 qemu
+Also seems like this is a fix and it can be a lot more minimal
+(just one error_fatal use).
 
-initialize the device:
-// ti,adc128d818 @ 0x1f    (adc)
-// the driver will throw away the last 4 bits, set them 0
-uint16_t adc_values1[8] = {
-    0b011110000000, 0b010100010000,
-    0b001000110000, 0b100000100000,
-    0b011110000000, 0b010100010000,
-    0b001000110000, 0b100000100000};
-adc128d818_init_with_values(bus, 0x1f, adc_values1, 8);
+Jonathan
 
-Trace outputs directly after initialization:
-adc128d818_realize i2c_addr: 0x1f
-adc128d818_realize i2c_addr: 0x1f
-adc128d818_event i2c_addr: 0x1f, event: 0x01
-adc128d818_send i2c_addr: 0x1f, data: 0x00
-adc128d818_send i2c_addr: 0x1f, data: 0x80
-adc128d818_write i2c_addr: 0x1f, reg: 0x00 data: 0x80
-adc128d818_event i2c_addr: 0x1f, event: 0x03
-adc128d818_event i2c_addr: 0x1f, event: 0x01
-...
 
-read the values
-root@yosemite4:/sys/bus/i2c/devices/30-001f# cat hwmon/hwmon0/in0_min
-0
-root@yosemite4:/sys/bus/i2c/devices/30-001f# cat hwmon/hwmon0/in0_max
-0
-root@yosemite4:/sys/bus/i2c/devices/30-001f# cat hwmon/hwmon0/in0_input
-75
-root@yosemite4:/sys/bus/i2c/devices/30-001f# cat hwmon/hwmon0/name
-adc128d818
+> 
+> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+> ---
+>  include/hw/cxl/cxl_host.h |  2 +-
+>  hw/arm/virt.c             |  6 +++---
+>  hw/cxl/cxl-host-stubs.c   |  4 ++--
+>  hw/cxl/cxl-host.c         | 12 +++++++-----
+>  hw/i386/pc.c              | 12 ++++++------
+>  5 files changed, 19 insertions(+), 17 deletions(-)
+> 
+> diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
+> index 21619bb748ab..ed34c3159f59 100644
+> --- a/include/hw/cxl/cxl_host.h
+> +++ b/include/hw/cxl/cxl_host.h
+> @@ -16,7 +16,7 @@
+>  void cxl_machine_init(Object *obj, CXLState *state);
+>  void cxl_fmws_link_targets(Error **errp);
+>  void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp);
+> -hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr);
+> +bool cxl_fmws_set_memmap(hwaddr *cursor, hwaddr end, Error **errp);
+>  void cxl_fmws_update_mmio(void);
+>  GSList *cxl_fmws_get_all_sorted(void);
+>  
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index b090233893c5..a22778575cfb 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2536,9 +2536,9 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+>      if (device_memory_size > 0) {
+>          machine_memory_devices_init(ms, device_memory_base, device_memory_size);
+>      }
+> -    vms->highest_gpa = cxl_fmws_set_memmap(ROUND_UP(vms->highest_gpa + 1,
+> -                                                    256 * MiB),
+> -                                           BIT_ULL(pa_bits)) - 1;
+> +    vms->highest_gpa = ROUND_UP(vms->highest_gpa + 1, 256 * MiB);
+> +    cxl_fmws_set_memmap(&vms->highest_gpa, BIT_ULL(pa_bits), &error_fatal);
+> +    vms->highest_gpa--;
 
-We initially configured 0b011110000000 for the first channel.
-The driver throws away the last 4 bits and does calculation similar to
-below:
+Hmm. The previous code kept the tight coupling of cxl_fmws_set_memmap()
+returning an address that we then decremented as the value is inclusive.
+This loses that clarity to my eyes.
 
-val = DIV_ROUND_CLOSEST(data->in[index][nr] * data->vref, 4095);
+Perhaps we now need a comment.
 
-We can check that the calculation is as expected given our configured
-value.
+>  }
+>  
+>  static VirtGICType finalize_gic_version_do(const char *accel_name,
+> diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
+> index 9b515913ea4d..fa87cea0e8b9 100644
+> --- a/hw/cxl/cxl-host-stubs.c
+> +++ b/hw/cxl/cxl-host-stubs.c
+> @@ -11,9 +11,9 @@
+>  void cxl_fmws_link_targets(Error **errp) {};
+>  void cxl_machine_init(Object *obj, CXLState *state) {};
+>  void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp) {};
+> -hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
+> +bool cxl_fmws_set_memmap(hwaddr *base, hwaddr max_addr, Error **errp)
 
-((0b011110000000 >> 4) * 2560) / 4095
-75.01831501831502
+Feels like a more minimal solution is to just use error_fatal() internally and
+keep the original return of value.
 
-References:
-[1] https://www.ti.com/product/ADC128D818
-[2] https://www.ti.com/lit/gpn/adc128d818
+>  {
+> -    return base;
+> +    return true;
+>  };
+>  void cxl_fmws_update_mmio(void) {};
+>  
+> diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
+> index a94b893e9991..33421b3ca174 100644
+> --- a/hw/cxl/cxl-host.c
+> +++ b/hw/cxl/cxl-host.c
+> @@ -429,7 +429,7 @@ void cxl_fmws_update_mmio(void)
+>      object_child_foreach_recursive(object_get_root(), cxl_fmws_mmio_map, NULL);
+>  }
+>  
+> -hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
+> +bool cxl_fmws_set_memmap(hwaddr *cursor, hwaddr end, Error **errp)
 
-Cc: Titus Rwantare <titusr@google.com>
-Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
-Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com> (maintainer:Kconfig)
-Cc: Peter Maydell <peter.maydell@linaro.org> (supporter:ARM TCG CPUs)
-Cc: "Philippe Mathieu-Daudé" <philmd@linaro.org> (odd fixer:Overall sensors)
-Cc: qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Cc: qemu-devel@nongnu.org (open list:All patches CC here)
-Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
----
- MAINTAINERS                              |   1 +
- include/hw/sensor/adc128d818.h           |  23 ++
- hw/arm/aspeed_ast2600_fby4.c             |   9 +-
- hw/sensor/adc128d818.c                   | 433 +++++++++++++++++++++++
- hw/arm/Kconfig                           |   1 +
- hw/sensor/Kconfig                        |   4 +
- hw/sensor/meson.build                    |   1 +
- hw/sensor/trace-events                   |   7 +
- tests/functional/arm/test_aspeed_fby4.py |  10 +
- 9 files changed, 488 insertions(+), 1 deletion(-)
- create mode 100644 include/hw/sensor/adc128d818.h
- create mode 100644 hw/sensor/adc128d818.c
+The cursor naming makes little sense to me. It is an address.
+Also the rename to end doesn't seem to bring any more clarity over max_addr.
+I guess maybe you did this because it's an exclusive value? I'm not sure end
+conveys that any more than max_addr.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 195e3c7927..470e118f3c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3985,6 +3985,7 @@ PMBus
- M: Titus Rwantare <titusr@google.com>
- S: Maintained
- F: hw/i2c/pmbus_device.c
-+F: hw/sensor/adc128d818.c
- F: hw/sensor/adm1272.c
- F: hw/sensor/isl_pmbus_vr.c
- F: hw/sensor/max11615.c
-diff --git a/include/hw/sensor/adc128d818.h b/include/hw/sensor/adc128d818.h
-new file mode 100644
-index 0000000000..02d75ca3e1
---- /dev/null
-+++ b/include/hw/sensor/adc128d818.h
-@@ -0,0 +1,23 @@
-+/*  Copyright 2026 9elements */
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+#ifndef QEMU_ADC128D818_H
-+#define QEMU_ADC128D818_H
-+
-+#include "qemu/osdep.h"
-+#include "hw/i2c/i2c.h"
-+
-+#define TYPE_ADC128D818 "adc128d818"
-+
-+/*
-+ * Create and realize a adc128d818 ADC with constant caller-supplied readings
-+ * @bus: I2C bus to put it on
-+ * @address: I2C address
-+ * @init_values: array of readings for each ADC channel
-+ * @init_values_size: Size of @init_values, can be less than the number of
-+ * channels
-+ */
-+I2CSlave *adc128d818_init_with_values(I2CBus *bus, uint8_t address,
-+                                      const uint16_t *init_values,
-+                                      uint32_t init_values_size);
-+
-+#endif
-diff --git a/hw/arm/aspeed_ast2600_fby4.c b/hw/arm/aspeed_ast2600_fby4.c
-index c55f7ca895..cfcf689723 100644
---- a/hw/arm/aspeed_ast2600_fby4.c
-+++ b/hw/arm/aspeed_ast2600_fby4.c
-@@ -12,6 +12,7 @@
- #include "hw/arm/aspeed_soc.h"
- #include "hw/nvram/eeprom_at24c.h"
- #include "hw/sensor/max11615.h"
-+#include "hw/sensor/adc128d818.h"
- #include "hw/i2c/i2c_mux_pca954x.h"
- #include "hw/gpio/pca9552.h"
- 
-@@ -162,7 +163,13 @@ static void fby4_i2c_init_fanboard(I2CSlave *fan_mux, size_t eepromSize)
-         I2CBus *bus = pca954x_i2c_get_bus(fan_mux, i);
- 
-         /* ti,adc128d818 @ 0x1f    (adc) */
--        /* TODO */
-+        /* the driver will throw away the last 4 bits, set them 0 */
-+        static const uint16_t adc_values1[8] = {
-+            0b011110000000, 0b010100010000,
-+            0b001000110000, 0b100000100000,
-+            0b011110000000, 0b010100010000,
-+            0b001000110000, 0b100000100000};
-+        adc128d818_init_with_values(bus, 0x1f, adc_values1, 8);
- 
-         /* maxim,max31790 @ 0x20   (pwm) */
-         i2c_slave_create_simple(bus, "max31790", 0x20);
-diff --git a/hw/sensor/adc128d818.c b/hw/sensor/adc128d818.c
-new file mode 100644
-index 0000000000..7ad7c935fc
---- /dev/null
-+++ b/hw/sensor/adc128d818.c
-@@ -0,0 +1,433 @@
-+/*
-+ * Texas Instruments ADC128D818 12 bit ADC with temperature sensor
-+ * Models ADC128D818
-+ *
-+ * Product: https://www.ti.com/product/ADC128D818
-+ * Datasheet: https://www.ti.com/lit/gpn/adc128d818
-+ *
-+ * Copyright 2026 9elements
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "hw/sensor/adc128d818.h"
-+#include "hw/i2c/i2c.h"
-+#include "migration/vmstate.h"
-+#include "qapi/error.h"
-+#include "qapi/visitor.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/osdep.h"
-+#include "trace.h"
-+
-+/* 8 bit, r/w */
-+#define REG_CONFIG 0x00
-+
-+/* 8 bit, readonly */
-+#define REG_INTERRUPT_STATUS 0x01
-+
-+/* 8 bit, r/w */
-+#define REG_INTERRUPT_MASK 0x03
-+
-+/* 8 bit, r/w */
-+#define REG_CONVERSION_RATE 0x07
-+
-+/* 8 bit, r/w */
-+#define REG_CHANNEL_DISABLE 0x08
-+
-+/* 8 bit, write-only */
-+#define REG_ONE_SHOT 0x09
-+
-+/* 8 bit, r/w */
-+#define REG_DEEP_SHUTDOWN 0x0a
-+
-+/* 8 bit, r/w */
-+#define REG_ADVANCED_CONFIG 0x0b
-+
-+/* 8 bit, readonly */
-+#define REG_BUSY_STATUS 0x0c
-+
-+/* 16 bit registers, N = 0..7, readonly */
-+#define REG_CHANNEL_READING(N) (0x20 + N)
-+
-+/* 8 bit registers N = 0..15, r/w */
-+#define REG_LIMIT(N) (0x2a + N)
-+
-+/* 8 bit register, readonly */
-+#define REG_MANUFACTURER_ID 0x3e
-+
-+/* 8 bit register, readonly */
-+#define REG_REVISION_ID 0x3f
-+
-+#define ADC128D818_NUM_CHANNELS 8
-+
-+struct ADC128D818State {
-+    I2CSlave i2c;
-+
-+    uint8_t config;
-+    uint8_t interrupt_status;
-+    uint8_t interrupt_mask;
-+    uint8_t conversion_rate;
-+    uint8_t channel_disable;
-+    bool deep_shutdown;
-+    uint8_t advanced_config;
-+
-+    /* channel reading registers, 2 bytes each */
-+    uint16_t channels[ADC128D818_NUM_CHANNELS];
-+
-+    /* high and low limit registers 0x2a - 0x39, one byte each */
-+    uint8_t limit[ADC128D818_NUM_CHANNELS * 2];
-+
-+    /* input buffer */
-+    uint8_t len;
-+    uint8_t buf[2];
-+
-+    /* output buffer */
-+    uint8_t outlen;
-+    uint8_t outbuf[2];
-+
-+    /* selected channel for read/write operation */
-+    uint8_t pointer;
-+};
-+
-+struct ADC128D818Class {
-+    I2CSlaveClass parent_class;
-+};
-+
-+OBJECT_DECLARE_TYPE(ADC128D818State, ADC128D818Class, ADC128D818)
-+
-+static void adc128d818_read(ADC128D818State *s)
-+{
-+    uint8_t ch_num = 0;
-+    switch (s->pointer) {
-+    case REG_CONFIG:
-+        s->outbuf[0] = s->config;
-+        break;
-+    case REG_INTERRUPT_STATUS:
-+        s->outbuf[0] = s->interrupt_status;
-+        break;
-+    case REG_INTERRUPT_MASK:
-+        s->outbuf[0] = s->interrupt_mask;
-+        break;
-+    case REG_CONVERSION_RATE:
-+        s->outbuf[0] = s->conversion_rate;
-+        break;
-+    case REG_CHANNEL_DISABLE:
-+        s->outbuf[0] = s->channel_disable;
-+        break;
-+    case REG_ONE_SHOT:
-+        /* not marked as readable */
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: read of register 0x%02x\n",
-+                      __func__, s->pointer);
-+        s->outbuf[0] = 0x0;
-+        break;
-+    case REG_DEEP_SHUTDOWN:
-+        s->outbuf[0] = s->deep_shutdown ? 0x1 : 0x0;
-+        break;
-+    case REG_ADVANCED_CONFIG:
-+        s->outbuf[0] = s->advanced_config & 0b111;
-+        break;
-+    case REG_BUSY_STATUS:
-+        /* not implemented */
-+        s->outbuf[0] = 0b00000010; /* POR State */
-+        break;
-+    case REG_CHANNEL_READING(0):
-+    case REG_CHANNEL_READING(1):
-+    case REG_CHANNEL_READING(2):
-+    case REG_CHANNEL_READING(3):
-+    case REG_CHANNEL_READING(4):
-+    case REG_CHANNEL_READING(5):
-+    case REG_CHANNEL_READING(6):
-+    case REG_CHANNEL_READING(7):
-+        ch_num = s->pointer - REG_CHANNEL_READING(0);
-+        /* high byte comes first, driver reads swapped */
-+        s->outbuf[0] = (s->channels[ch_num] >> 8) & 0xff;
-+        s->outbuf[1] = s->channels[ch_num] & 0xff;
-+        break;
-+    case REG_LIMIT(0):
-+    case REG_LIMIT(1):
-+    case REG_LIMIT(2):
-+    case REG_LIMIT(3):
-+    case REG_LIMIT(4):
-+    case REG_LIMIT(5):
-+    case REG_LIMIT(6):
-+    case REG_LIMIT(7):
-+    case REG_LIMIT(8):
-+    case REG_LIMIT(9):
-+    case REG_LIMIT(10):
-+    case REG_LIMIT(11):
-+    case REG_LIMIT(12):
-+    case REG_LIMIT(13):
-+    case REG_LIMIT(14):
-+    case REG_LIMIT(15):
-+        s->outbuf[0] = s->limit[s->pointer - REG_LIMIT(0)];
-+        break;
-+    case REG_MANUFACTURER_ID:
-+        s->outbuf[0] = 0x1; /* readonly */
-+        break;
-+    case REG_REVISION_ID:
-+        s->outbuf[0] = 0b00001001; /* readonly */
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: read of register 0x%02x\n",
-+                      __func__, s->pointer);
-+        break;
-+    }
-+}
-+
-+static void adc128d818_write_advanced_config(ADC128D818State *s, uint8_t data)
-+{
-+    /*
-+     * Note: Whenever the Advanced Configuration Register is programmed,
-+     * all of the values in the Channel Reading Registers and
-+     * Interrupt Status Registers will return to their default values.
-+     */
-+
-+    s->advanced_config = (data & 0b111);
-+
-+    s->interrupt_status = 0x0;
-+
-+    /*
-+     *  The channel reading registers do not have a default value.
-+     * See 8.6.1 ADC128D818 Internal Registers
-+     * To do something sane, just reset the channels to an arbitrary value
-+     */
-+
-+    /* reset channels to a defined state */
-+    for (int i = 0; i < ADC128D818_NUM_CHANNELS; i++) {
-+
-+        /* arbitrary value */
-+        s->channels[i] = 0b0000101011010010;
-+    }
-+}
-+
-+static void adc128d818_write(ADC128D818State *s, uint8_t data)
-+{
-+    trace_adc128d818_write(s->i2c.address, s->pointer, data);
-+
-+    /* which bits in config register are writable */
-+    const uint8_t config_w_mask = 0b10001011;
-+    const uint8_t config_ro_mask = (uint8_t)~config_w_mask;
-+
-+    switch (s->pointer) {
-+    case REG_CONFIG:
-+        s->config = (s->config & config_ro_mask) | (data & config_w_mask);
-+        break;
-+    case REG_INTERRUPT_MASK:
-+        s->interrupt_mask = data;
-+        break;
-+    case REG_CONVERSION_RATE:
-+        s->conversion_rate = data;
-+        break;
-+    case REG_CHANNEL_DISABLE:
-+        s->channel_disable = data;
-+        break;
-+    case REG_ONE_SHOT:
-+        /*
-+         * Initiate a single conversion and comparison cycle when
-+         * the device is in shutdown mode or deep shutdown mode, after
-+         * which the device returns to the respective mode that it was in
-+         *
-+         */
-+        break;
-+    case REG_DEEP_SHUTDOWN:
-+        s->deep_shutdown = (data & 0x1) != 0;
-+        break;
-+    case REG_ADVANCED_CONFIG:
-+        adc128d818_write_advanced_config(s, data);
-+        break;
-+    case REG_LIMIT(0):
-+    case REG_LIMIT(1):
-+    case REG_LIMIT(2):
-+    case REG_LIMIT(3):
-+    case REG_LIMIT(4):
-+    case REG_LIMIT(5):
-+    case REG_LIMIT(6):
-+    case REG_LIMIT(7):
-+    case REG_LIMIT(8):
-+    case REG_LIMIT(9):
-+    case REG_LIMIT(10):
-+    case REG_LIMIT(11):
-+    case REG_LIMIT(12):
-+    case REG_LIMIT(13):
-+    case REG_LIMIT(14):
-+    case REG_LIMIT(15):
-+        s->limit[s->pointer - REG_LIMIT(0)] = data;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: write of register 0x%02x\n",
-+                      __func__, s->pointer);
-+        break;
-+    }
-+}
-+
-+static int adc128d818_send(I2CSlave *i2c, uint8_t data)
-+{
-+    ADC128D818State *s = ADC128D818(i2c);
-+    trace_adc128d818_send(s->i2c.address, data);
-+
-+    s->outlen = 0;
-+
-+    if (s->len >= 2) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: wrote too many bytes\n", __func__);
-+        return 1;
-+    }
-+
-+    s->buf[s->len] = data;
-+
-+    if (s->len == 0) {
-+        s->pointer = data;
-+    } else if (s->len == 1) {
-+        adc128d818_write(s, data);
-+    }
-+
-+    s->len++;
-+    return 0;
-+}
-+
-+static uint8_t adc128d818_recv(I2CSlave *i2c)
-+{
-+    ADC128D818State *s = ADC128D818(i2c);
-+    trace_adc128d818_recv(s->i2c.address, s->pointer);
-+
-+    adc128d818_read(s);
-+
-+    if (s->outlen >= 2) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: too many bytes read\n", __func__);
-+        s->outlen = 0;
-+    }
-+
-+    const uint8_t data = s->outbuf[s->outlen++];
-+
-+    trace_adc128d818_recv_return(s->i2c.address, data);
-+    return data;
-+}
-+
-+static int adc128d818_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    ADC128D818State *s = ADC128D818(i2c);
-+
-+    trace_adc128d818_event(s->i2c.address, event);
-+
-+    switch (event) {
-+    case I2C_START_RECV:
-+        s->outlen = 0;
-+        break;
-+    case I2C_START_SEND:
-+        s->len = 0;
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_adc128d818 = {
-+    .name = TYPE_ADC128D818,
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .fields =
-+        (const VMStateField[]){
-+            VMSTATE_UINT8(config, ADC128D818State),
-+            VMSTATE_UINT8(interrupt_mask, ADC128D818State),
-+            VMSTATE_UINT8(conversion_rate, ADC128D818State),
-+            VMSTATE_UINT8(channel_disable, ADC128D818State),
-+            VMSTATE_BOOL(deep_shutdown, ADC128D818State),
-+            VMSTATE_UINT8(advanced_config, ADC128D818State),
-+            VMSTATE_UINT16_ARRAY(channels, ADC128D818State,
-+                                 ADC128D818_NUM_CHANNELS),
-+            VMSTATE_UINT8_ARRAY(limit, ADC128D818State,
-+                                ADC128D818_NUM_CHANNELS * 2),
-+            VMSTATE_UINT8(len, ADC128D818State),
-+            VMSTATE_UINT8_ARRAY(buf, ADC128D818State, 2),
-+            VMSTATE_UINT8(outlen, ADC128D818State),
-+            VMSTATE_UINT8_ARRAY(outbuf, ADC128D818State, 2),
-+            VMSTATE_UINT8(pointer, ADC128D818State),
-+            VMSTATE_I2C_SLAVE(i2c, ADC128D818State), VMSTATE_END_OF_LIST() }
-+};
-+
-+I2CSlave *adc128d818_init_with_values(I2CBus *bus, uint8_t address,
-+                                      const uint16_t *init_values,
-+                                      uint32_t init_values_size)
-+{
-+    ADC128D818State *s;
-+
-+    s = ADC128D818(i2c_slave_new(TYPE_ADC128D818, address));
-+
-+    for (int i = 0; i < ADC128D818_NUM_CHANNELS; i++) {
-+
-+        /* arbitrary value */
-+        s->channels[i] =
-+            i < init_values_size ? init_values[i] : 0b0000101011010010;
-+    }
-+
-+    i2c_slave_realize_and_unref(I2C_SLAVE(s), bus, &error_abort);
-+
-+    return I2C_SLAVE(s);
-+}
-+
-+static void adc128d818_reset(DeviceState *dev)
-+{
-+    ADC128D818State *s = ADC128D818(dev);
-+
-+    s->pointer = 0;
-+    s->outlen = 0;
-+
-+    /* POR-State */
-+    s->config = 0b00001000;
-+    s->interrupt_status = 0x0;
-+    s->interrupt_mask = 0;
-+    s->conversion_rate = 0;
-+    s->channel_disable = 0;
-+    s->deep_shutdown = 0;
-+    s->advanced_config = 0;
-+
-+    /* No POR-State defined in datasheet */
-+    for (int i = 0; i < ADC128D818_NUM_CHANNELS * 2; i++) {
-+        s->limit[i] = 0;
-+    }
-+
-+    /* reset channels to a defined state */
-+    for (int i = 0; i < ADC128D818_NUM_CHANNELS; i++) {
-+
-+        /* arbitrary value */
-+        s->channels[i] = 0b0000101011010010;
-+    }
-+}
-+
-+static void adc128d818_realize(DeviceState *dev, Error **errp)
-+{
-+    ADC128D818State *s = ADC128D818(dev);
-+
-+    trace_adc128d818_realize(s->i2c.address);
-+}
-+
-+static void adc128d818_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-+
-+    dc->realize = adc128d818_realize;
-+    dc->desc = "Texas Instruments ADC128D818 12-bit ADC with temp sensor";
-+    dc->vmsd = &vmstate_adc128d818;
-+    dc->legacy_reset = adc128d818_reset;
-+    k->event = adc128d818_event;
-+    k->recv = adc128d818_recv;
-+    k->send = adc128d818_send;
-+}
-+
-+static const TypeInfo adc128d818_info = {
-+    .name = TYPE_ADC128D818,
-+    .parent = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(ADC128D818State),
-+    .class_size = sizeof(ADC128D818Class),
-+    .class_init = adc128d818_class_init,
-+};
-+
-+static void adc128d818_register_types(void)
-+{
-+    type_register_static(&adc128d818_info);
-+}
-+
-+type_init(adc128d818_register_types)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 76a7d327a9..cc89c65e3f 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -554,6 +554,7 @@ config ASPEED_SOC
-     select MAX31785
-     select MAX31790
-     select MAX11615
-+    select ADC128D818
-     select FSI_APB2OPB_ASPEED
-     select AT24C
-     select PCI_EXPRESS
-diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
-index 441bee7604..a640958257 100644
---- a/hw/sensor/Kconfig
-+++ b/hw/sensor/Kconfig
-@@ -51,3 +51,7 @@ config MAX31790
- config MAX11615
-     bool
-     depends on I2C
-+
-+config ADC128D818
-+    bool
-+    depends on I2C
-diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
-index a1e26604fa..defd7647e7 100644
---- a/hw/sensor/meson.build
-+++ b/hw/sensor/meson.build
-@@ -10,3 +10,4 @@ system_ss.add(when: 'CONFIG_ISL_PMBUS_VR', if_true: files('isl_pmbus_vr.c'))
- system_ss.add(when: 'CONFIG_MAX31785', if_true: files('max31785.c'))
- system_ss.add(when: 'CONFIG_MAX31790', if_true: files('max31790.c'))
- system_ss.add(when: 'CONFIG_MAX11615', if_true: files('max11615.c'))
-+system_ss.add(when: 'CONFIG_ADC128D818', if_true: files('adc128d818.c'))
-diff --git a/hw/sensor/trace-events b/hw/sensor/trace-events
-index 23e34d8297..dc6cf26a0b 100644
---- a/hw/sensor/trace-events
-+++ b/hw/sensor/trace-events
-@@ -23,3 +23,10 @@ max11615_recv_return(uint8_t i2c_addr, uint8_t data) "i2c_addr: 0x%02x, returns:
- max11615_event(uint8_t i2c_addr, uint8_t event) "i2c_addr: 0x%02x, event: 0x%02x"
- max11615_realize(uint8_t i2c_addr) "i2c_addr: 0x%02x"
- 
-+# adc128d818.c
-+adc128d818_send(uint8_t i2c_addr, uint8_t data) "i2c_addr: 0x%02x, data: 0x%02x"
-+adc128d818_write(uint8_t i2c_addr, uint8_t reg, uint8_t data) "i2c_addr: 0x%02x, reg: 0x%02x data: 0x%02x"
-+adc128d818_recv(uint8_t i2c_addr, uint8_t reg) "i2c_addr: 0x%02x, reg: 0x%02x"
-+adc128d818_recv_return(uint8_t i2c_addr, uint8_t data) "i2c_addr: 0x%02x, returns: 0x%02x"
-+adc128d818_event(uint8_t i2c_addr, uint8_t event) "i2c_addr: 0x%02x, event: 0x%02x"
-+adc128d818_realize(uint8_t i2c_addr) "i2c_addr: 0x%02x"
-diff --git a/tests/functional/arm/test_aspeed_fby4.py b/tests/functional/arm/test_aspeed_fby4.py
-index 4ace4985d2..4957d3d89f 100755
---- a/tests/functional/arm/test_aspeed_fby4.py
-+++ b/tests/functional/arm/test_aspeed_fby4.py
-@@ -68,6 +68,16 @@ def do_test_arm_aspeed_openbmc_no_network(self, machine, image, uboot,
-         exec_command_and_wait_for_pattern(self,
-             "cat /sys/bus/i2c/devices/30-0033/iio:device*/in_voltage_scale", "0.500000000");
- 
-+        # ADC128D818 test
-+        exec_command_and_wait_for_pattern(self,
-+            "cat /sys/bus/i2c/devices/30-001f/hwmon/hwmon0/name", "adc128d818");
-+        exec_command_and_wait_for_pattern(self,
-+            "cat /sys/bus/i2c/devices/30-001f/hwmon/hwmon0/in0_input", "108");
-+        exec_command_and_wait_for_pattern(self,
-+            "cat /sys/bus/i2c/devices/30-001f/hwmon/hwmon0/in0_min", "0");
-+        exec_command_and_wait_for_pattern(self,
-+            "cat /sys/bus/i2c/devices/30-001f/hwmon/hwmon0/in0_max", "0");
-+
-     def test_arm_ast2600_yosemitev4_openbmc(self):
-         image_path = self.uncompress(self.ASSET_YOSEMITE_V4_FLASH)
- 
--- 
-2.54.0
+
+>  {
+>      GSList *cfmws_list, *iter;
+>      CXLFixedWindow *fw;
+> @@ -437,14 +437,16 @@ hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
+>      cfmws_list = cxl_fmws_get_all_sorted();
+>      for (iter = cfmws_list; iter; iter = iter->next) {
+>          fw = CXL_FMW(iter->data);
+> -        if (base + fw->size <= max_addr) {
+> -            fw->base = base;
+> -            base += fw->size;
+> +        if (end - *cursor < fw->size) {
+I'm not seeing why this form is an improvement on the original test.
+
+> +            error_setg(errp, "A CXL fixed memory window does not fit in the memory map");
+
+This bit I'm fine with!  Makes sense to error out as otherwise we get a rather
+confusing result.
+
+> +            return false;
+>          }
+> +        fw->base = *cursor;
+> +        *cursor += fw->size;
+>      }
+>      g_slist_free(cfmws_list);
+>  
+> -    return base;
+> +    return true;
+>  }
+>  
+>  static void cxl_fmw_realize(DeviceState *dev, Error **errp)
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 2ecad3c503fb..eadf37096533 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -747,7 +747,7 @@ void pc_memory_init(PCMachineState *pcms,
+>      PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
+>      X86MachineState *x86ms = X86_MACHINE(pcms);
+>      hwaddr maxphysaddr, maxusedaddr;
+> -    hwaddr cxl_base, cxl_resv_end = 0;
+> +    hwaddr cxl_cursor = 0;
+As above, I'm not sure how the cursor naming is useful. Its
+an address so I'd expect naming to reflect that. To me base does
+and cursor (which to me is typically the current position of an
+iterator) does not.
+
+>      X86CPU *cpu = X86_CPU(first_cpu);
+>      uint64_t res_mem_end;
+>  
+> @@ -857,11 +857,11 @@ void pc_memory_init(PCMachineState *pcms,
+>          MemoryRegion *mr = &pcms->cxl_devices_state.host_mr;
+>          hwaddr cxl_size = MiB;
+>  
+> -        cxl_base = pc_get_cxl_range_start(pcms);
+> +        cxl_cursor = pc_get_cxl_range_start(pcms);
+>          memory_region_init(mr, OBJECT(machine), "cxl_host_reg", cxl_size);
+> -        memory_region_add_subregion(system_memory, cxl_base, mr);
+> -        cxl_base = ROUND_UP(cxl_base + cxl_size, 256 * MiB);
+> -        cxl_resv_end = cxl_fmws_set_memmap(cxl_base, maxphysaddr);
+> +        memory_region_add_subregion(system_memory, cxl_cursor, mr);
+> +        cxl_cursor = ROUND_UP(cxl_cursor + cxl_size, 256 * MiB);
+> +        cxl_fmws_set_memmap(&cxl_cursor, maxphysaddr + 1, &error_fatal);
+>          cxl_fmws_update_mmio();
+>      }
+>  
+> @@ -892,7 +892,7 @@ void pc_memory_init(PCMachineState *pcms,
+>      rom_set_fw(fw_cfg);
+>  
+>      if (pcms->cxl_devices_state.is_enabled) {
+> -        res_mem_end = cxl_resv_end;
+> +        res_mem_end = cxl_cursor;
+>      } else if (machine->device_memory) {
+>          res_mem_end = machine->device_memory->base
+>                        + memory_region_size(&machine->device_memory->mr);
+> 
+> ---
+> base-commit: e89049b3ba5f1f0468bc0d294173345597514a1b
+> change-id: 20260528-cxl-d3bf91bac0c6
+> 
+> Best regards,
+> --  
+> Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+> 
+> 
 
 

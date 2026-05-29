@@ -4,102 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72B51CD6E50
-	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 14:32:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68874CD6E50
+	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 14:36:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSyAv-0007P5-2V; Fri, 29 May 2026 10:27:01 -0400
+	id 1wSyKJ-0006Mw-IP; Fri, 29 May 2026 10:36:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSyAs-0007Jn-Pi
- for qemu-arm@nongnu.org; Fri, 29 May 2026 10:26:58 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wSyKB-0006Id-R0
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 10:36:38 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSyAp-0003QB-MQ
- for qemu-arm@nongnu.org; Fri, 29 May 2026 10:26:58 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-48a3e9862f0so74155235e9.1
- for <qemu-arm@nongnu.org>; Fri, 29 May 2026 07:26:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wSyK8-0007T4-Og
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 10:36:34 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-441209fb77eso8653583f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 29 May 2026 07:36:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780064814; x=1780669614; darn=nongnu.org;
+ d=linaro.org; s=google; t=1780065391; x=1780670191; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=JIu8PCygzL9wHkP8hkt7uxJi7hvxrUL4lU7Ro6etspM=;
- b=P9X7BxTigXRmmyO29DHvdv6+AVDN8Sd93paUAsNqp8ud5/u36SIdG9rz3N4BUEd+ok
- AyPP3d2vgtaXvj5EW6YVYfvXZTDwh25/Uhe+SvGOwXh7GdzGPr5pluGFhnBXuOXY6ssO
- ny8FoQHZuFtADMpc3jV58y9eR/9LU1sBclHjUBMts4Czoha6rAC3ohfZy4H5I3nTPKEQ
- 7m1sVrq/tPDEHx0vmtcjcf+UIHdc7GVtApV5SDx+SwI8Aym43NEwBUSU4MDXZKy9vXGe
- 1MFLPGNgzkQIt2IsfOpPn4NhcS9Ji1CG/0K3P04HA+AqOtOy+JxlNXx2GdKwMZQTR/7i
- rgCg==
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=v8hnt8QTR0m3dsrSXtppaehwSCPzuZgau1gE20XoQoc=;
+ b=cdMcGbEpkeRoZEx+3Vb+1T5vVs4at9j88fabbENveiakmSiJxioqpK7QxAjCmrSbHU
+ USn94MjZVbvKhKGiSHS8eoXluwnJixTVfRfYH46yGibasaVmjyPhdAbIm596VjKec28z
+ uvLx7++CgpM8PlIFdyze79oEZ1Opz9Q9jvisrioCXgeueMegkdjWMzL7s45MZx7d7Muj
+ h4TyiCIAOJ+hu8jg1d+P5Bn32z1Jh5WZJTmsauAZxYXjOwCFt1ZPE0QV5gDTw7KIR900
+ 6TPbWeaksWw1XCynlBVJ0VgPOJfxTsj3osPqp/6oa+DOZ3mwg65yU+4nkbpi5zDfZqht
+ ZpDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780064814; x=1780669614;
+ d=1e100.net; s=20251104; t=1780065391; x=1780670191;
  h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=JIu8PCygzL9wHkP8hkt7uxJi7hvxrUL4lU7Ro6etspM=;
- b=pDuC+9HeiCE6/xv+EyegiGFIVCz/EuBS8qVYokxBoHxXOAgTKh79M2I4UIVs4fTGP/
- YmN4/MEL3NNOQnPcFqz1cCnzCitQda/mbZmJdRmbz4EGkBOAqnlmMQcjPGIWbq9xqFJL
- Y/AKPtPqsrMN0cRn+DYCjIQv+FPjdUwBeh2gnKr7drmroxHpGe2iXxLMlcerO3TVpCHj
- kUR68geAWCV+sakgcR0ol00XxCCFPKhDAzqGz/PbsxZYHqOXvLFqLIY3tIfQON6TcGG2
- D//i9c4IMSDuN5sdXDUWyXyYeKUqvHj241DZoycaRfOgKEl7VQdTTbyUljAZ9m/OXFdv
- IFXg==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+U6tdwzreAQHKwcJU278xykEmt6J9WyR/ajNWl7FCBaC1MQQCBkvP6bwV9boZLKbPcUIUhcwMrXw==@nongnu.org
-X-Gm-Message-State: AOJu0YzL/QWtTGPQLCq1lZslmUB9LmLVxnr3N0TuztriBBlrB/33EF0t
- KbZcAjViQ0eh7boXUY37IA7gzpfy5pYiwd++MAAeYlzRJevEVJmgewWRJhBf+sKeCvI=
-X-Gm-Gg: Acq92OGMIvb5c+x2ZogviKuqvdVWAalGMGXsmBNqHblhxuvtdsiNjBnoHzmabn/pygT
- 2s+B5FUlM9kgBch5ISd3zR6AYexGQF7qPymwWXlNyAI9jHZMn8I2nDwQj6cfKvP+wn6odZRC/gI
- QI8WDdiCw19R61gYrnecX+wuI1Mi9VU6H4PQaRT9die8HQwZwKhJmuf9EDgGI0tWMLeDtz/OMUP
- qwL2tTC6tqymq+2RO2YWyVySpji80o0DUjCYof7jYxAc3abi9i49H4jKPRe3//0rMBGo/5K++8M
- lbbrq1cEe7cAHva/TUUSNW+JMD7wBM+ZDf7EDK8yv3teRjXex+pUzpPfRa1SG0/1IuHkObPHB8g
- EF38uiyryGisccK5uzapUdKODV6fg/3hwgL+oMJKKO1K7y8PP7Ty8tx/7MdDetHOQxfz/90cf2u
- Kale+tzOjxyPJsUzfiOI5ABBm6ZYLr+RiNWLCTVs6Z9QxkqQ9UdIKfwQFWrRPMyadM0j6MAXZDG
- JLK
-X-Received: by 2002:a05:600c:a30f:b0:490:4b89:5372 with SMTP id
- 5b1f17b1804b1-4909c62603cmr36489245e9.11.1780064814109; 
- Fri, 29 May 2026 07:26:54 -0700 (PDT)
-Received: from m15.home (88-187-86-199.subs.proxad.net. [88.187.86.199])
+ :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=v8hnt8QTR0m3dsrSXtppaehwSCPzuZgau1gE20XoQoc=;
+ b=fjHofuFKK09j0CWtIrua2q7oJvjxLiFAwHLj3ZCpv/ikYP7J/4URI2xtG7HZMZ176j
+ 1BQg9fm10Gpi1OtPcR+CT+UJSLAl9YyKx+OHUUOTLrbZgpPOQuFYOb8qwxkhDoT2IAzd
+ M79F0Y+Q0v/KsoZ+ySOvT1j+ciDoTBbMTi7UB/HxrzrkaGHvZybCQ4RHw72dLZuuLHqa
+ pYiikncqasu3owYVCMa6ltJyAbj+db6fGYajjzzOV1MMKhEFJbb40jMxbqf3Cq3S1xRU
+ hZ7MgunH3H6zA8dEtmmVfCy25+ySAezQdEj3Fo5xw/2+zyQfJHWIvdlQ7Ha0LF8GvVSR
+ W5Hg==
+X-Gm-Message-State: AOJu0YxTf8a6+TPzmC3G7LF7M8QcN/KWyucxvA4RQ3zhmy31B3Od/o2G
+ GicJu9nERM7itYgmexqmimW9R7T17BhpLIAEldoeiw84gC0fvydCFgndTokcl0xvrew4QHFZxQp
+ JUJwm
+X-Gm-Gg: Acq92OGuXJ+VWHuG9TGlGbIeBO0kIiX15+oedla3mZVRjjqmzstUVjwzrlSTErzebuD
+ 9sAaiHLQMRdw1izRIWRmFd7mI6SJBijvOE16QMDLJhP/o3sU3V6P0Udq0nyZnhtfa+3JTd69Fzd
+ KrZZeLulf9zXF7NqsN/una1Q1Io56lars9zZlxpvoSq5WC3KJ1WKKzrGs/pF/zTysCVjWCgNuiU
+ g6VYHqQCbspF6Eojqir3IQZIn4Klle4DjYKFrBtdgW4rdO9MHljxnbIO9OOhP1jLjxJMEB3Q8Ey
+ KGRAoY5Z7j84eFvBY1mPVLlkT/QZODOcvTYw2tA5LqVdlGbE9lSTTEm6KBxRbGiC6DM+gBmssH9
+ i4zpMVsXe+iPYNs7Xw6632hp6b8BgK1XtpHxDRZ/ZrJqHCUwhSvnz5l2IhcLpo6yZwu0gegUXxA
+ h1mrGDAuWG5UbTNeMECdS4LsMd9PTonmxEdp6YAK3Ke8KSDMoVNFdY00qC0baSTl3mEMETkFHlX
+ 4BPRpEeujC/GHlUrpiYjkUuZMi1gmt4Vta1bUmQ83o=
+X-Received: by 2002:a5d:6684:0:b0:45e:739b:2750 with SMTP id
+ ffacd0b85a97d-45ef1447483mr3640431f8f.9.1780065390603; 
+ Fri, 29 May 2026 07:36:30 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4909d6a0e42sm43781075e9.8.2026.05.29.07.26.52
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 29 May 2026 07:26:53 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Reinoud Zandijk <reinoud@netbsd.org>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Nicholas Piggin <npiggin@gmail.com>, Glenn Miles <milesg@linux.ibm.com>,
- Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Anton Johansson <anjo@rev.ng>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Song Gao <gaosong@loongson.cn>,
- qemu-riscv@nongnu.org, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Alistair Francis <alistair.francis@wdc.com>, qemu-ppc@nongnu.org,
- Weiwei Li <liwei1518@gmail.com>, Chao Liu <chao.liu.zevorn@gmail.com>,
- kvm@vger.kernel.org, Claudio Fontana <cfontana@suse.de>,
- Chinmay Rath <rathc@linux.ibm.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 17/17] accel: Remove AccelCPUClass and
- 'accel/accel-cpu-target.h'
-Date: Fri, 29 May 2026 16:24:33 +0200
-Message-ID: <20260529142434.87880-18-philmd@linaro.org>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260529142434.87880-1-philmd@linaro.org>
-References: <20260529142434.87880-1-philmd@linaro.org>
+ ffacd0b85a97d-45ef356a4c4sm4180675f8f.31.2026.05.29.07.36.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 May 2026 07:36:28 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 2/2] hw/dma/pl080: Don't use hw_error() for unimplemented
+ features
+Date: Fri, 29 May 2026 15:36:24 +0100
+Message-ID: <20260529143624.158935-3-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260529143624.158935-1-peter.maydell@linaro.org>
+References: <20260529143624.158935-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,113 +101,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-AccelCPUClass is now an empty class. We removed all uses of
-the TYPE_ACCEL_CPU definition. Remove as dead code, along with
-register_accel_target_type().
+In the pl080 device, we don't implement "peripheral flow control",
+which is where the DMA engine can be programmed to transfer data
+until a source or destination peripheral tells it to stop.  We
+currently call hw_error() if the guest tries to use this missing
+feature, which prints a register dump and aborts QEMU.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Change the hw_error() call to the LOG_UNIMP log-and-continue,
+which is how we prefer to report guest attempts to use
+unimplemented features these days.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3409
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/accel/accel-cpu-target.h | 31 -------------------------------
- include/accel/accel-cpu.h        | 19 -------------------
- accel/accel-common.c             | 16 ----------------
- 3 files changed, 66 deletions(-)
- delete mode 100644 include/accel/accel-cpu-target.h
- delete mode 100644 include/accel/accel-cpu.h
+ hw/dma/pl080.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/accel/accel-cpu-target.h b/include/accel/accel-cpu-target.h
-deleted file mode 100644
-index 6feb344e29b..00000000000
---- a/include/accel/accel-cpu-target.h
-+++ /dev/null
-@@ -1,31 +0,0 @@
--/*
-- * Accelerator interface, specializes CPUClass
-- * This header is used only by target-specific code.
-- *
-- * Copyright 2021 SUSE LLC
-- *
-- * This work is licensed under the terms of the GNU GPL, version 2 or later.
-- * See the COPYING file in the top-level directory.
-- */
--
--#ifndef ACCEL_CPU_TARGET_H
--#define ACCEL_CPU_TARGET_H
--
--/*
-- * This header is used to define new accelerator-specific target-specific
-- * accelerator cpu subclasses.
-- * It uses CPU_RESOLVING_TYPE, so this is clearly target-specific.
-- *
-- * Do not try to use for any other purpose than the implementation of new
-- * subclasses in target/, or the accel implementation itself in accel/
-- */
--
--#include "qom/object.h"
--#include "accel/accel-cpu.h"
--#include "cpu.h"
--
--#define TYPE_ACCEL_CPU "accel-" CPU_RESOLVING_TYPE
--#define ACCEL_CPU_NAME(name) (name "-" TYPE_ACCEL_CPU)
--DECLARE_CLASS_CHECKERS(AccelCPUClass, ACCEL_CPU, TYPE_ACCEL_CPU)
--
--#endif /* ACCEL_CPU_H */
-diff --git a/include/accel/accel-cpu.h b/include/accel/accel-cpu.h
-deleted file mode 100644
-index d7ea45ada2e..00000000000
---- a/include/accel/accel-cpu.h
-+++ /dev/null
-@@ -1,19 +0,0 @@
--/*
-- * Accelerator interface, specializes CPUClass
-- *
-- * Copyright 2021 SUSE LLC
-- *
-- * SPDX-License-Identifier: GPL-2.0-or-later
-- */
--
--#ifndef ACCEL_CPU_H
--#define ACCEL_CPU_H
--
--#include "qom/object.h"
--#include "hw/core/cpu.h"
--
--typedef struct AccelCPUClass {
--    ObjectClass parent_class;
--} AccelCPUClass;
--
--#endif /* ACCEL_CPU_H */
-diff --git a/accel/accel-common.c b/accel/accel-common.c
-index d8ee6d62667..4fe15349012 100644
---- a/accel/accel-common.c
-+++ b/accel/accel-common.c
-@@ -11,7 +11,6 @@
- #include "qemu/accel.h"
- #include "qemu/target-info.h"
- #include "accel/accel-ops.h"
--#include "accel/accel-cpu.h"
- #include "accel/accel-cpu-ops.h"
- #include "accel-internal.h"
- 
-@@ -98,18 +97,3 @@ static const TypeInfo accel_types[] = {
- };
- 
- DEFINE_TYPES(accel_types)
--
--static void register_accel_target_type(void)
--{
--    g_autofree char *name = g_strconcat("accel-", target_cpu_type(), NULL);
--    const TypeInfo accel_cpu_type = {
--        .name = name,
--        .parent = TYPE_OBJECT,
--        .abstract = true,
--        .class_size = sizeof(AccelCPUClass),
--    };
--
--    type_register_static(&accel_cpu_type);
--}
--
--type_init(register_accel_target_type);
+diff --git a/hw/dma/pl080.c b/hw/dma/pl080.c
+index 4a90c7bb27..f9f1e3e931 100644
+--- a/hw/dma/pl080.c
++++ b/hw/dma/pl080.c
+@@ -13,7 +13,6 @@
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "hw/dma/pl080.h"
+-#include "hw/core/hw-error.h"
+ #include "hw/core/irq.h"
+ #include "hw/core/qdev-properties.h"
+ #include "qapi/error.h"
+@@ -132,8 +131,9 @@ again:
+                 continue;
+             flow = (ch->conf >> 11) & 7;
+             if (flow >= 4) {
+-                hw_error(
+-                    "pl080_run: Peripheral flow control not implemented\n");
++                qemu_log_mask(LOG_UNIMP,
++                              "pl080_run: Peripheral flow control not implemented\n");
++                continue;
+             }
+             src_id = (ch->conf >> 1) & 0x1f;
+             dest_id = (ch->conf >> 6) & 0x1f;
 -- 
-2.53.0
+2.43.0
 
 

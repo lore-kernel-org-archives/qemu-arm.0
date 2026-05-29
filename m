@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D3B8CD6E4A
-	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 14:26:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0F79CD4F54
+	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 14:26:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSy9k-0004oW-MV; Fri, 29 May 2026 10:25:48 -0400
+	id 1wSy9K-0003du-2P; Fri, 29 May 2026 10:25:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSy9i-0004hf-A1
- for qemu-arm@nongnu.org; Fri, 29 May 2026 10:25:46 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSy93-0003SR-4e
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 10:25:13 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSy9g-0002jG-DC
- for qemu-arm@nongnu.org; Fri, 29 May 2026 10:25:46 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4905e190c71so67208385e9.3
- for <qemu-arm@nongnu.org>; Fri, 29 May 2026 07:25:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSy91-0002L1-BQ
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 10:25:04 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4904c1ce4c1so82275235e9.3
+ for <qemu-arm@nongnu.org>; Fri, 29 May 2026 07:25:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780064743; x=1780669543; darn=nongnu.org;
+ d=linaro.org; s=google; t=1780064701; x=1780669501; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LKn4RQHGDomnnmi9l8u/n3j933cMw6QUVCqU0AdCGPc=;
- b=kvgiZ2yMpsdKJOE9DaorRHiYolCntKp8AD9rhqChb4whCmkokkvn88KoP+NIiUyQia
- w2MG5XAgzgZa9mEjJ2GPETuRLJ3mCTHJKEQw8SAgbcO5ejYoJqCb9mQux/SaDvWZnmJk
- NUhpNxKmYKno0dB8+S5HXpZRp32NmfuHVRJtSBTXPPEDbZVK3Wd8JLrQexTxzUobyGKs
- THvs6jHRCumjq0TyvjSV/zWBGdvOOKF+KEiYKi1r6wtUejz20Q7MCqJsHf9NaHNEQ320
- vLfLchnnXz2o+eOLc1NCxgwfgZaN7xFATPM057rA9BywiXo1yY+1MVbUAYIYlz6S19KP
- cUtQ==
+ bh=jW2zG1X8bHmlXnWN82TlCGxlIo9/KiyZAvhHEyZQIgo=;
+ b=QUDskZt5d+2OuKFbLcILoHSaTuymCcwXf+j15qlvwh1TpM4dfolyFYlJCT6b9bXlBO
+ 30nLmCs4qDKaHc72BzlpnjeLbyU21Cz8SPwJWAg53WKK2GhZUL9s87jMSrfrY/wDquEe
+ kUehVUNQ3kvNnO4SLwsSxYT8PBSqXcydDPmWpDSzrFHd+bh5vx//aBJwZ13QOkx2vq1b
+ E8ThxZci1cLnpB1+1QJjZLnaNIBNlOrEu6lE9kr6G3Nh1+6iDc4IgCzZArjO6NIV1+8i
+ oqU3R+/2YLga6V8Dq74ZevPfTFZWPfmk9zd9fCS0bILbuW53SPLZnmSMbMDtyMoxkGiv
+ nfJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780064743; x=1780669543;
+ d=1e100.net; s=20251104; t=1780064701; x=1780669501;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=LKn4RQHGDomnnmi9l8u/n3j933cMw6QUVCqU0AdCGPc=;
- b=E2GKeRac/iEGBIhdrJ739lAjVEhFCi4qykiuN2c5eIxoCIa/d1uIwaQhpozZx5Y1kV
- hC3Y4IE9R1jGn9NqYtHlBZ2UOX62xpkGLcsNx2XUHe3Cp2tquLQmJ/kQE2UI+/oeZIZG
- 4tMUzDzuZlUAIQKYGpQ7HOvGofZoeNWwIIbrDrk/5jCeXmkpvvP6OMqUdFBkwy6iTw1k
- Ke0FpDTY85wLEF8iUVOlvjjfnyUXleJLGTX+hzeZFEfqHX+bB/1Q/WzIWRtbQju1GiQe
- D5i8jy2Ni4yUYIY/HFxor7EmozxK+HNjyo+8s8A/MKV19U5fNG4IqWm2PSaEDKhkJfiH
- qSgw==
+ bh=jW2zG1X8bHmlXnWN82TlCGxlIo9/KiyZAvhHEyZQIgo=;
+ b=mxk6byaCbYP0TAO+vIXwW67BxyZ6dQB9ewF4BJMKwYQG0Nt3x0iHVer7zYY66teZyu
+ DJRu7tQPVIUPGozB4QMDD7bmGmzbKBHu+Rf1prHfQLO5uCAKayQWXw5iFv6kqPCKaf1t
+ G9Ko1CrMstzE2W/Ux8qkM/Uj9TcpFK+qbsl1FjLkjgJ8TgnfDChM656LJab2Dn/mhaUE
+ U06qkKLS3UphrVQSOfqB+DJ08O8jfkNI23AZZfdojsK88rPoMl/MCIeBJI+bE5/qyaN8
+ 5Qob2LKgxorhxazJfSYjrqMSf0CsosTUnx7MqbcDPLnNITwDyNXuWxpy5wjN9BtSEXp6
+ y7pA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ81vNH7vulKvtxne+PI+9wAdNMuvrR2HK002nk+ThIB7pyAj+Tfakw+u5zD3I+wA5DKwrYLTPyNKA==@nongnu.org
-X-Gm-Message-State: AOJu0Yw+vVoKrLOMW9WY8FO5PFO3aShaO/LJXVuwMryPtH5bLKaA0HtY
- jwXBugOpUup66IF0uHka5ILIUluwgwjsinCqQgvmovsZmvDVe4FRIoO7MX91SIitHrM=
-X-Gm-Gg: Acq92OGri5ZNiZzTz/+ow4S0vcKyVAu4bWxnLPMlzyMCIrcET39TBhcUTjKQOtD9sTW
- YCvPHCC5DTnHnHE2HWwL7kp+1oWvvRebSaHPzjqcGWIRtZTH4XJQynQzNu04CZJc0KIdkswE/4S
- c7wOXLIr59MJFwjrUdSZmYBQtnfRJ9AhVSoFUfJ5DYzVHs/uXfaA/0ViEmQEOhLaMWy5qW00BTA
- rNDD36ajm6HxKIZWa6SkXG/sobTrGfCa+F4Ca7aRcrQcu84K1yez1HVluxMpEa5tRzwiaox0xY7
- YasVr2LmQ/98Kvp65k/OaWverLLmlyNcbXqxoiUK1wYEUEInBwpag5J2FUguJ1O9ljZGTUa51h6
- 6zWsdUJ8fG3oK8An3toQ8vTcBJHtgLkCugeRDkEFBLvezLy86AswLTPuv/FXTpxtTEW/ZJU2UAe
- ngOCL3GwV1uFMNkgiMImuKxiTOI+66jM/fFapqa389k9Ud8m7RHHs9gDcVpCL0BkGaAw==
-X-Received: by 2002:a05:600c:897:b0:48e:6f39:f7be with SMTP id
- 5b1f17b1804b1-4909c07f9e7mr33215785e9.10.1780064742579; 
- Fri, 29 May 2026 07:25:42 -0700 (PDT)
+ AFNElJ9muLJ3sGq62jBqPxmBQyCiSuWYby7181Rt9F5Hc6ksYxWC5Qbl9FMKo7/VYbx7GsxlRxsgyEj3PA==@nongnu.org
+X-Gm-Message-State: AOJu0YzvWqyampGYhgw06AnteQWV6vctI6pJ5dCB+PCz7r5QWL04sCEO
+ V8teUxBLwzwwKDaf8piTVIsGnoIJFsMFmtPfObFpYj/RuML1X6OvW+p9fIOUio1inQU=
+X-Gm-Gg: Acq92OHEmcXfZaAp5s9McH4yKZRN0HBtDyneW8K0ug6Q1RbUGwE0rgS02MQw2bwIRV4
+ tymZO5E//fHPNM3QKbURUICPJCQ06Nv5TvZf7m2/SHZNtCl25I0f4loW5MbTGgMDLXJSnRUd0X9
+ Ktir9vaVLR7fvHsoov04vG8VshYZGU2a0mnMfmuCeZSxGjDOeZyuB6D/YRe/Cjfpv4aoIIJHXde
+ OgPLkLJbxYT7JW4zi1Ty8ZYifVhbkyAhJJXXMk55IdDKY1/BY8IJpIHooc0/7cFLB5QddLJaMXm
+ PLYvIEtXZpKvTWvYO92FS50xHizrUhHt7mTwbUmh+7kWei38LLm+2nOSWjmReYKpj4CqKpfJjbm
+ 3DDaP8JQpwrDN5MUpjWm6+nUN0dtyGLRG8f8gIa2e3YkR1dbG7MPd/FP1Flciwbl626OKsH0fyN
+ 00cpJ9EoHKy9k2OLvpKF6WYovrMBkc3VXZBxg09lferGBwLlLMUZG2hdvqpJf7C/ipvg==
+X-Received: by 2002:a05:600c:1453:b0:490:9536:c513 with SMTP id
+ 5b1f17b1804b1-4909c0b0012mr40361385e9.19.1780064701417; 
+ Fri, 29 May 2026 07:25:01 -0700 (PDT)
 Received: from m15.home (88-187-86-199.subs.proxad.net. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4909d68b853sm45850685e9.3.2026.05.29.07.25.40
+ 5b1f17b1804b1-4909d696f25sm60774685e9.5.2026.05.29.07.24.59
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 29 May 2026 07:25:41 -0700 (PDT)
+ Fri, 29 May 2026 07:25:00 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -87,18 +87,18 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Chinmay Rath <rathc@linux.ibm.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 08/17] accel/nvmm: Convert AccelCPUClass ->
- AccelOpsClass::cpu_instance_init
-Date: Fri, 29 May 2026 16:24:24 +0200
-Message-ID: <20260529142434.87880-9-philmd@linaro.org>
+Subject: [PATCH 03/17] accel: Rename AccelOpsClass::cpu_target_realize() ->
+ cpu_realize()
+Date: Fri, 29 May 2026 16:24:19 +0200
+Message-ID: <20260529142434.87880-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260529142434.87880-1-philmd@linaro.org>
 References: <20260529142434.87880-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,90 +121,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Register the new AccelOpsClass::cpu_instance_init hook.
-
-ACCEL_CPU_NAME("nvmm") TypeInfo is now empty, remove it.
+cpu_target_realize() is misleading, we simply want the host
+accelerator to realize its things on a vCPU. Rename more
+generically.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/i386/nvmm/nvmm-accel-ops.h |  2 ++
- target/i386/nvmm/nvmm-accel-ops.c |  2 ++
- target/i386/nvmm/nvmm-all.c       | 19 +------------------
- 3 files changed, 5 insertions(+), 18 deletions(-)
+ include/accel/accel-cpu-ops.h | 2 +-
+ accel/accel-common.c          | 5 +++--
+ accel/hvf/hvf-accel-ops.c     | 2 +-
+ 3 files changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/target/i386/nvmm/nvmm-accel-ops.h b/target/i386/nvmm/nvmm-accel-ops.h
-index 931bb5ca243..f2a78c12110 100644
---- a/target/i386/nvmm/nvmm-accel-ops.h
-+++ b/target/i386/nvmm/nvmm-accel-ops.h
-@@ -16,6 +16,8 @@ int nvmm_init_vcpu(CPUState *cpu);
- int nvmm_vcpu_exec(CPUState *cpu);
- void nvmm_destroy_vcpu(CPUState *cpu);
+diff --git a/include/accel/accel-cpu-ops.h b/include/accel/accel-cpu-ops.h
+index 9c07a903ea0..fd1307dad6d 100644
+--- a/include/accel/accel-cpu-ops.h
++++ b/include/accel/accel-cpu-ops.h
+@@ -34,7 +34,7 @@ struct AccelOpsClass {
+     /* initialization function called when accel is chosen */
+     void (*ops_init)(AccelClass *ac);
  
-+void nvmm_arch_cpu_instance_init(CPUState *cpu);
+-    bool (*cpu_target_realize)(CPUState *cpu, Error **errp);
++    bool (*cpu_realize)(CPUState *cpu, Error **errp);
+     bool (*cpus_are_resettable)(void);
+     void (*cpu_reset_hold)(CPUState *cpu);
+ 
+diff --git a/accel/accel-common.c b/accel/accel-common.c
+index ebc103053dc..176b03e0e90 100644
+--- a/accel/accel-common.c
++++ b/accel/accel-common.c
+@@ -60,9 +60,10 @@ bool accel_cpu_common_realize(CPUState *cpu, Error **errp)
+     if (acc->cpu_common_realize && !acc->cpu_common_realize(cpu, errp)) {
+         return false;
+     }
 +
- void nvmm_cpu_synchronize_state(CPUState *cpu);
- void nvmm_cpu_synchronize_post_reset(CPUState *cpu);
- void nvmm_cpu_synchronize_post_init(CPUState *cpu);
-diff --git a/target/i386/nvmm/nvmm-accel-ops.c b/target/i386/nvmm/nvmm-accel-ops.c
-index dd5d5428b1c..60044b83527 100644
---- a/target/i386/nvmm/nvmm-accel-ops.c
-+++ b/target/i386/nvmm/nvmm-accel-ops.c
-@@ -87,6 +87,8 @@ static void nvmm_accel_ops_class_init(ObjectClass *oc, const void *data)
-     ops->kick_vcpu_thread = nvmm_kick_vcpu_thread;
-     ops->handle_interrupt = generic_handle_interrupt;
++    /* specialize with target specific realization */
+     if (acc->ops
+-        && acc->ops->cpu_target_realize
+-        && !acc->ops->cpu_target_realize(cpu, errp)) {
++        && acc->ops->cpu_realize && !acc->ops->cpu_realize(cpu, errp)) {
+         return false;
+     }
  
-+    ops->cpu_instance_init = nvmm_arch_cpu_instance_init;
-+
-     ops->synchronize_post_reset = nvmm_cpu_synchronize_post_reset;
-     ops->synchronize_post_init = nvmm_cpu_synchronize_post_init;
-     ops->synchronize_state = nvmm_cpu_synchronize_state;
-diff --git a/target/i386/nvmm/nvmm-all.c b/target/i386/nvmm/nvmm-all.c
-index 8a1af35ed32..10ab7b2a4dc 100644
---- a/target/i386/nvmm/nvmm-all.c
-+++ b/target/i386/nvmm/nvmm-all.c
-@@ -22,7 +22,6 @@
- #include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "qemu/queue.h"
--#include "accel/accel-cpu-target.h"
- #include "host-cpu.h"
- #include "migration/blocker.h"
- #include "strings.h"
-@@ -1212,33 +1211,17 @@ static const TypeInfo nvmm_accel_type = {
-     .class_init = nvmm_accel_class_init,
- };
- 
--static void nvmm_cpu_instance_init(CPUState *cs)
-+void nvmm_arch_cpu_instance_init(CPUState *cpu)
+diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+index b74a5779c3d..6edc2242ed9 100644
+--- a/accel/hvf/hvf-accel-ops.c
++++ b/accel/hvf/hvf-accel-ops.c
+@@ -356,7 +356,7 @@ static void hvf_accel_ops_class_init(ObjectClass *oc, const void *data)
  {
-     X86CPU *cpu = X86_CPU(cs);
+     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
  
-     host_cpu_instance_init(cpu);
- }
+-    ops->cpu_target_realize = hvf_arch_cpu_realize;
++    ops->cpu_realize = hvf_arch_cpu_realize;
  
--static void nvmm_cpu_accel_class_init(ObjectClass *oc, const void *data)
--{
--    AccelCPUClass *acc = ACCEL_CPU_CLASS(oc);
--
--    acc->cpu_instance_init = nvmm_cpu_instance_init;
--}
--
--static const TypeInfo nvmm_cpu_accel_type = {
--    .name = ACCEL_CPU_NAME("nvmm"),
--
--    .parent = TYPE_ACCEL_CPU,
--    .class_init = nvmm_cpu_accel_class_init,
--    .abstract = true,
--};
--
- static void
- nvmm_type_init(void)
- {
-     type_register_static(&nvmm_accel_type);
--    type_register_static(&nvmm_cpu_accel_type);
- }
- 
- type_init(nvmm_type_init);
+     ops->create_vcpu_thread = hvf_start_vcpu_thread;
+     ops->kick_vcpu_thread = hvf_kick_vcpu_thread;
 -- 
 2.53.0
 

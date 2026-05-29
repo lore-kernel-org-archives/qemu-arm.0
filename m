@@ -4,61 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE1FACD6E43
-	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 11:06:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D1BECD6E43
+	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 11:36:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSv2g-0007Hl-Fv; Fri, 29 May 2026 07:06:18 -0400
+	id 1wSvVG-0008Ot-KL; Fri, 29 May 2026 07:35:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jic23@kernel.org>)
- id 1wSv2e-0007HA-LL; Fri, 29 May 2026 07:06:16 -0400
-Received: from sea.source.kernel.org ([172.234.252.31])
+ (Exim 4.90_1) (envelope-from <andrey@volkov.fr>)
+ id 1wSvVF-0008Ob-E7; Fri, 29 May 2026 07:35:49 -0400
+Received: from 102.0.133.77.rev.sfr.net ([77.133.0.102] helo=gate.volkov.fr)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jic23@kernel.org>)
- id 1wSv2c-0005au-P7; Fri, 29 May 2026 07:06:16 -0400
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by sea.source.kernel.org (Postfix) with ESMTP id 2898E404F2;
- Fri, 29 May 2026 11:06:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF2D21F00893;
- Fri, 29 May 2026 11:06:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
- s=k20260515; t=1780052771;
- bh=Q9AUF7L2yHF3DZR6jprKlAO6Mro0ThDf+QYDpnxQTG4=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References;
- b=BlWRXiCHlnYnEUKBYUGuaoCm1UyZH6X0nBoOCYmR7IG71jJ6QTGyLN6awMUVJ9CA+
- Duhg+DLsGWqned1gGqLcVBeR3lo/DjF+RtIxq6bkhjwMr2xfGpUvaOVeDMFyQw1X4C
- TuMfk4Gus0opor6wWOxEk/EguCMBxjq3IV8GbuS1D/gqrP1cKMiB2Pv7KhMofhKL6N
- kSOyPlvY6zC3FQqLZvZPCAmlQjhC3i9tbOHwhWfeOATHsNNhBvKCt9vtMFWWZKakxd
- 8iYtvs8EQ7t/PuayKrbkLGnYo6GQMOGWrkIeXj8jZXrWJ/Bkhw7Fuw0A0xSJa1ZdTh
- nek6xB9j0XIdA==
-Date: Fri, 29 May 2026 12:06:00 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: "Jian Zhang" <zhangjian.3032@bytedance.com>
-Cc: =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@kaod.org>, "Peter Maydell"
- <peter.maydell@linaro.org>, "Steven Lee" <steven_lee@aspeedtech.com>, "Troy
- Lee" <leetroy@gmail.com>, "Jamin Lin" <jamin_lin@aspeedtech.com>, "Andrew
- Jeffery" <andrew@codeconstruct.com.au>, "Joel Stanley" <joel@jms.id.au>,
- "Paolo Bonzini" <pbonzini@redhat.com>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>, "Jeremy Kerr" <jk@codeconstruct.com.au>, "Matt
- Johnston" <matt@codeconstruct.com.au>, Klaus Jensen <its@irrelevant.dk>
-Subject: Re: [PATCH v1 0/2] hw: introduce a lightweight MCTP-over-I2C responder
-Message-ID: <20260529120600.19bc7aa9@jic23-huawei>
-In-Reply-To: <20260408085941.3837334-1-zhangjian.3032@bytedance.com>
-References: <20260408085941.3837334-1-zhangjian.3032@bytedance.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+ (Exim 4.90_1) (envelope-from <andrey@volkov.fr>)
+ id 1wSvVC-00052p-VO; Fri, 29 May 2026 07:35:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=volkov.fr; s=mail;
+ t=1780054541; bh=V+eIzMUsR4WfWvLNpTA2+A+GMYJflzugrSTgDrED9tc=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=KtYLo8EBoXM2PB9qRQtkggeqjBMsWlhyDW0t3lhuiwyJ6/WSAjT6BR3hobDGbsVvM
+ 7r/J7JaItTM8VMQAIjCLLIArViqjSxdvatNgU8yjTnrKgsLo5bhL20rSdjJljvIX1X
+ m3DFdT1lsuE6SCEJbmJKNivrWoCRujKFgSwmZ/bduqoQBFUOq3+u5We+sHGzb6I70x
+ bvkwiXYlWOnngWDUETAlUOqKocYXfRaigmgy0e92XsNCSMI7LKhTVi6xWtByc5F35l
+ O/SggSHyoKtctc7HeTVhA5zT2QmLmfP50JcmWc+fJ8G0xgtL80vFjUYuP58H6aTYNm
+ N4AlRlyWLXyNg==
+X-Virus-Scanned: Debian amavisd-new at volkov.fr
+Authentication-Results: gate.volkov.fr;
+ dmarc=fail (p=reject dis=none) header.from=volkov.fr
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=volkov.fr; s=mail;
+ t=1780054539; bh=V+eIzMUsR4WfWvLNpTA2+A+GMYJflzugrSTgDrED9tc=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=cr/GobdYu0w9SKiGoqhjQNMkZ3y9YwqQipFRZ57yTD7oobZnj5CIZ55cnh/WqymNn
+ liJMeBb3r467/uLEBCQOiPIZmPC51+hCm0RoFdpGRd3pPbikUXOFVGWqYPi1R1ZyLN
+ HroG46h0hIKXPEtd5qjkhiceUr3nuwHweaoYKGTW5nYTuQGkpf97MTlDo40CytPk63
+ 0t/+ORlZsT2J4/PyVg6n8WAEJ2ffQQi/Y2wkdxoujAk7DkKwsOmiQ9ijZIZMm2c2fL
+ wt6qC76B6ngKzEMnvJFN0FEp8pl7uxBMYeBC3luE+8Er9SqswhP+itq9TCuw/QdcqK
+ kfIM0wweJXOgg==
+Message-ID: <dca6513c-5494-4eee-a0bb-bce64ffa3934@volkov.fr>
+Date: Fri, 29 May 2026 13:35:39 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=172.234.252.31; envelope-from=jic23@kernel.org;
- helo=sea.source.kernel.org
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Subject: Re: [PATCH v4 5/7] hw/arm: Plug FlexCAN into FSL_IMX6 and Sabrelite
+Content-Language: en-US
+To: =?UTF-8?B?TWF0ecOhxaEgQm9iZWs=?= <matyas.bobek@gmail.com>,
+ qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
+ Pavel Pisa <pisa@fel.cvut.cz>
+Cc: qemu-arm@nongnu.org, Marc Kleine-Budde <mkl@pengutronix.de>,
+ Oliver Hartkopp <socketcan@hartkopp.net>,
+ Nikita Ostrenkov <n.ostrenkov@gmail.com>,
+ Bernhard Beschow <shentey@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <cover.1779986496.git.matyas.bobek@gmail.com>
+ <9b0a0ffeeeff5ca0ec9525659bb2296850a88c62.1779986496.git.matyas.bobek@gmail.com>
+From: Andrey VOLKOV <andrey@volkov.fr>
+In-Reply-To: <9b0a0ffeeeff5ca0ec9525659bb2296850a88c62.1779986496.git.matyas.bobek@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=77.133.0.102; envelope-from=andrey@volkov.fr;
+ helo=gate.volkov.fr
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RDNS_DYNAMIC=0.982,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ TVD_RCVD_IP=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,74 +82,217 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed,  8 Apr 2026 16:59:39 +0800
-"Jian Zhang" <zhangjian.3032@bytedance.com> wrote:
+Hi Matyáš, Pavel,
 
-> Hi,
-> 
-> MCTP (Management Component Transport Protocol) is a DMTF-defined
-> management transport protocol commonly used between BMCs and managed
-> components.
-> 
-> This series adds a lightweight MCTP implementation to QEMU. To keep the
-> scope small and make the first step easier to review, the current series
-> focuses only on the SMBus/I2C transport layer.
-> 
-> Patch 1 introduces a minimal MCTP-over-I2C responder core together with
-> a simple NCSI-related extension built on top of it. Patch 2 wires the
-> device into the ASPEED AST2600 EVB machine for initial testing.
-> 
-> The goal of this series is not to implement a full MCTP stack, but to
-> provide a small and practical foundation for simple emulation use cases.
-> 
-> This is my first submission to the QEMU upstream community, so any
-> comments, suggestions, or corrections would be valuable.
-Hi.
+Some small remarks regarding the use of hard-coded constants such as 
+FSL_IMX6_NUM_WDTS in loops, IMHO, it would be better to use 
+|ARRAY_SIZE()|instead:
 
-There have been a couple of tries at mctp emulation before
-in qemu and I'm maintaining (currently out of tree) emulation of
-CXL fmapi over mctp over usb.  I dropped an equivalent using i2c from
-the CXL tree because it relied on the aspeed i2c controller and we only
-cared about server level systems (x86 and arm64) where that was an odd
-thing to hack in :)
+-    for (i = 0; i < FSL_IMX6_NUM_CANS; i++) {
++    for (i = 0; i < ARRAY_SIZE(s->can); i++) {
 
-https://gitlab.com/jic23/qemu/-/commit/d4c8c25d90253349ba8808a57a2991e6f784930d
-has the usb device.
+BTW, it would be also more logical to combine |CanBusState|and 
+|FlexcanState|into a single structure (possibly anonymous), for 
+example:struct FslIMX6State { ...
 
-I went monolothic with the design this time around because there wasn't a lot
-of sharing with the prior i2c mctp stack as the mctp transport independent
-stuff was too small + that series (see below) wasn't going anywhere.
+  struct {
+     CanBusState       *state;
+     FlexcanState       flexcan;
+  } can[FSL_IMX6_NUM_CANS];
 
-Prior to that there was nvme-mi and code more similar to what you have
+...
+};
 
-https://lore.kernel.org/qemu-devel/20230914-nmi-i2c-v6-0-11bbb4f74d18@samsung.com/
-Would be good to know how this differs. IIRC that project stalled on getting
-tests in place rather than any fundamental problems.
+As a matter of personal preference, I would also rename "|can"|to 
+"|flexcan"/"fcan"|, since these objects represent FlexCAN controllers 
+rather than CAN2.0 ones.
 
-It might be better to focus on building on top of that earlier work than
-spinning something new.
+Regards,
+Andrey VOLKOV
 
-
-> 
-> mctp spec[0]: https://www.dmtf.org/sites/default/files/standards/documents/DSP0236_1.3.1.pdf
-> mctp i2c binding[1]: https://www.dmtf.org/sites/default/files/standards/documents/DSP0237_1.2.0.pdf
-> ncsi spec[2]: https://www.dmtf.org/sites/default/files/standards/documents/DSP0222_1.2.0.pdf
-> 
-> Jian Zhang (2):
->   hw/misc: introduce mctp I2C responder and NCSI support
->   hw/arm/aspeed: add mctp responder device for test
-> 
->  MAINTAINERS                          |   2 +
->  hw/arm/aspeed_ast2600_evb.c          |  14 +
->  hw/misc/Kconfig                      |   5 +
->  hw/misc/mctp-i2c-responder-ncsi.c    | 777 +++++++++++++++++++++++++++
->  hw/misc/mctp-i2c-responder.c         | 694 ++++++++++++++++++++++++
->  hw/misc/meson.build                  |   5 +
->  include/hw/misc/mctp-i2c-responder.h | 116 ++++
->  7 files changed, 1613 insertions(+)
->  create mode 100644 hw/misc/mctp-i2c-responder-ncsi.c
->  create mode 100644 hw/misc/mctp-i2c-responder.c
->  create mode 100644 include/hw/misc/mctp-i2c-responder.h
-> 
-
+Le 28/05/2026 à 19:17, Matyáš Bobek a écrit :
+> FlexcanState is added to the FslIMX6State struct like other peripherals.
+>
+> Add two new machine properties to Sabrelite machine for linking
+> the embedded FlexCAN instances to QEMU CAN buses by name.
+> No other machine uses FslIMX6State.
+>
+> Signed-off-by: Matyáš Bobek <matyas.bobek@gmail.com>
+> Signed-off-by: Pavel Pisa <pisa@fel.cvut.cz>
+> Tested-by: Pavel Pisa <pisa@fel.cvut.cz>
+> Reviewed-by: Bernhard Beschow <shentey@gmail.com>
+> Reviewed-by: Pavel Pisa <pisa@fel.cvut.cz>
+> ---
+>   hw/arm/Kconfig            |  1 +
+>   hw/arm/fsl-imx6.c         | 29 +++++++++++++++++++++++++++++
+>   hw/arm/sabrelite.c        | 24 ++++++++++++++++++++++++
+>   include/hw/arm/fsl-imx6.h |  6 ++++++
+>   4 files changed, 60 insertions(+)
+>
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 5b198402d5..c44fc562e1 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -519,6 +519,7 @@ config FSL_IMX6
+>       select IMX_FEC
+>       select IMX_I2C
+>       select IMX_USBPHY
+> +    select CAN_FLEXCAN
+>       select WDT_IMX2
+>       select PL310  # cache controller
+>       select PCI_EXPRESS_DESIGNWARE
+> diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+> index f663ddbf0a..337921d17d 100644
+> --- a/hw/arm/fsl-imx6.c
+> +++ b/hw/arm/fsl-imx6.c
+> @@ -90,6 +90,10 @@ static void fsl_imx6_init(Object *obj)
+>           snprintf(name, NAME_SIZE, "spi%d", i + 1);
+>           object_initialize_child(obj, name, &s->spi[i], TYPE_IMX_SPI);
+>       }
+> +    for (i = 0; i < FSL_IMX6_NUM_CANS; i++) {
+> +        snprintf(name, NAME_SIZE, "flexcan%d", i + 1);
+> +        object_initialize_child(obj, name, &s->can[i], TYPE_CAN_FLEXCAN);
+> +    }
+>       for (i = 0; i < FSL_IMX6_NUM_WDTS; i++) {
+>           snprintf(name, NAME_SIZE, "wdt%d", i);
+>           object_initialize_child(obj, name, &s->wdt[i], TYPE_IMX2_WDT);
+> @@ -377,6 +381,27 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+>                              qdev_get_gpio_in(gic, spi_table[i].irq));
+>       }
+>   
+> +    /* Initialize all FLEXCANs */
+> +    for (i = 0; i < FSL_IMX6_NUM_CANS; i++) {
+> +        static const struct {
+> +            hwaddr addr;
+> +            unsigned int irq;
+> +        } flexcan_table[FSL_IMX6_NUM_CANS] = {
+> +            { FSL_IMX6_CAN1_ADDR, FSL_IMX6_FLEXCAN1_IRQ },
+> +            { FSL_IMX6_CAN2_ADDR, FSL_IMX6_FLEXCAN2_IRQ },
+> +        };
+> +
+> +        s->can[i].ccm = IMX_CCM(&s->ccm);
+> +        object_property_set_link(OBJECT(&s->can[i]), "canbus",
+> +                                 OBJECT(s->canbus[i]), &error_abort);
+> +
+> +        sysbus_realize(SYS_BUS_DEVICE(&s->can[i]), &error_abort);
+> +
+> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->can[i]), 0, flexcan_table[i].addr);
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->can[i]), 0,
+> +                           qdev_get_gpio_in(gic, flexcan_table[i].irq));
+> +    }
+> +
+>       object_property_set_uint(OBJECT(&s->eth), "phy-num", s->phy_num,
+>                                &error_abort);
+>       qemu_configure_nic_device(DEVICE(&s->eth), true, NULL);
+> @@ -480,6 +505,10 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+>   
+>   static const Property fsl_imx6_properties[] = {
+>       DEFINE_PROP_UINT32("fec-phy-num", FslIMX6State, phy_num, 0),
+> +    DEFINE_PROP_LINK("canbus0", FslIMX6State, canbus[0], TYPE_CAN_BUS,
+> +                     CanBusState *),
+> +    DEFINE_PROP_LINK("canbus1", FslIMX6State, canbus[1], TYPE_CAN_BUS,
+> +                     CanBusState *),
+>   };
+>   
+>   static void fsl_imx6_class_init(ObjectClass *oc, const void *data)
+> diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
+> index 7e036e6388..84bbc2f979 100644
+> --- a/hw/arm/sabrelite.c
+> +++ b/hw/arm/sabrelite.c
+> @@ -24,6 +24,7 @@ struct SabreliteMachineState {
+>       MachineState parent_obj;
+>   
+>       FslIMX6State soc;
+> +    CanBusState *canbus[FSL_IMX6_NUM_CANS];
+>   };
+>   
+>   #define TYPE_SABRELITE_MACHINE MACHINE_TYPE_NAME("sabrelite")
+> @@ -64,6 +65,13 @@ static void sabrelite_init(MachineState *machine)
+>       /* Ethernet PHY address is 6 */
+>       object_property_set_int(OBJECT(&s->soc), "fec-phy-num", 6, &error_fatal);
+>   
+> +    for (int i = 0; i < FSL_IMX6_NUM_CANS; i++) {
+> +        g_autofree char *bus_name = g_strdup_printf("canbus%d", i);
+> +
+> +        object_property_set_link(OBJECT(&s->soc), bus_name,
+> +                                 OBJECT(s->canbus[i]), &error_fatal);
+> +    }
+> +
+>       qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
+>   
+>       memory_region_add_subregion(get_system_memory(), FSL_IMX6_MMDC_ADDR,
+> @@ -112,6 +120,21 @@ static void sabrelite_init(MachineState *machine)
+>       }
+>   }
+>   
+> +static void sabrelite_machine_instance_init(Object *obj)
+> +{
+> +    SabreliteMachineState *s = SABRELITE_MACHINE(obj);
+> +
+> +    object_property_add_link(obj, "canbus0", TYPE_CAN_BUS,
+> +                             (Object **)&s->canbus[0],
+> +                             object_property_allow_set_link,
+> +                             0);
+> +
+> +    object_property_add_link(obj, "canbus1", TYPE_CAN_BUS,
+> +                             (Object **)&s->canbus[1],
+> +                             object_property_allow_set_link,
+> +                             0);
+> +}
+> +
+>   static void sabrelite_machine_class_init(ObjectClass *oc, const void *data)
+>   {
+>       MachineClass *mc = MACHINE_CLASS(oc);
+> @@ -128,6 +151,7 @@ static const TypeInfo sabrelite_machine_init_typeinfo = {
+>       .name          = TYPE_SABRELITE_MACHINE,
+>       .parent        = TYPE_MACHINE,
+>       .class_init    = sabrelite_machine_class_init,
+> +    .instance_init = sabrelite_machine_instance_init,
+>       .instance_size = sizeof(SabreliteMachineState),
+>       .abstract      = false,
+>       .interfaces    = arm_machine_interfaces,
+> diff --git a/include/hw/arm/fsl-imx6.h b/include/hw/arm/fsl-imx6.h
+> index cddd100dd6..8ea1677e86 100644
+> --- a/include/hw/arm/fsl-imx6.h
+> +++ b/include/hw/arm/fsl-imx6.h
+> @@ -30,12 +30,14 @@
+>   #include "hw/sd/sdhci.h"
+>   #include "hw/ssi/imx_spi.h"
+>   #include "hw/net/imx_fec.h"
+> +#include "hw/net/flexcan.h"
+>   #include "hw/usb/chipidea.h"
+>   #include "hw/usb/imx-usb-phy.h"
+>   #include "hw/pci-host/designware.h"
+>   #include "hw/core/or-irq.h"
+>   #include "system/memory.h"
+>   #include "target/arm/cpu.h"
+> +#include "net/can_emu.h"
+>   #include "qom/object.h"
+>   
+>   #define TYPE_FSL_IMX6 "fsl-imx6"
+> @@ -51,6 +53,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(FslIMX6State, FSL_IMX6)
+>   #define FSL_IMX6_NUM_WDTS 2
+>   #define FSL_IMX6_NUM_USB_PHYS 2
+>   #define FSL_IMX6_NUM_USBS 4
+> +#define FSL_IMX6_NUM_CANS 2
+>   
+>   struct FslIMX6State {
+>       /*< private >*/
+> @@ -73,6 +76,7 @@ struct FslIMX6State {
+>       IMXUSBPHYState     usbphy[FSL_IMX6_NUM_USB_PHYS];
+>       ChipideaState      usb[FSL_IMX6_NUM_USBS];
+>       IMXFECState        eth;
+> +    FlexcanState       can[FSL_IMX6_NUM_CANS];
+>       DesignwarePCIEHost pcie;
+>       OrIRQState         pcie4_msi_irq;
+>       MemoryRegion       rom;
+> @@ -80,6 +84,8 @@ struct FslIMX6State {
+>       MemoryRegion       ocram;
+>       MemoryRegion       ocram_alias;
+>       uint32_t           phy_num;
+> +
+> +    CanBusState       *canbus[FSL_IMX6_NUM_CANS];
+>   };
+>   
+>   
 

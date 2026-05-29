@@ -4,101 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91952CD6E4A
-	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 13:16:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3B24CD4F54
+	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 13:39:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSx4b-0001Wc-Hn; Fri, 29 May 2026 09:16:29 -0400
+	id 1wSxQt-0006vy-91; Fri, 29 May 2026 09:39:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1wSx4D-0001VX-3n
- for qemu-arm@nongnu.org; Fri, 29 May 2026 09:16:09 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1wSx49-0004dN-Jq
- for qemu-arm@nongnu.org; Fri, 29 May 2026 09:15:59 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-45eeba68948so1205031f8f.1
- for <qemu-arm@nongnu.org>; Fri, 29 May 2026 06:15:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=9elements.com; s=google; t=1780060556; x=1780665356; darn=nongnu.org;
- h=in-reply-to:from:content-language:references:cc:to:subject
- :user-agent:mime-version:date:message-id:from:to:cc:subject:date
- :message-id:reply-to;
- bh=PNZuWO14/hYrfF1FbYBmYNjTR26OQiJxBVDHKZXrrH4=;
- b=GqMb71e2AyYG4fRU9Xfa9EBel8NZATpmLbL2jQI3r6IcQmfvzOgEWYMkHHsSEot8gn
- Hk9HzWJsqnZ7Rbxl9K9XksNmT8X9s+NGwnlsaF7J3JzNKtmXw5evu/BnkLrMHWiT/Txi
- NKjqnhP7lOFadxLroXlyac1NZ53ZqLzP7YRHUVxWKrAFiyx6U8Bup4SXr4HCIlN8zqn3
- VogFUfGw06ltnbEQfHoxo5b9JFVpDtTkrl1CHgJCAzds6yJOqzPKhLQ3NH6r+143W6un
- rFutJFElOq/a1agpZOEj6NKrVCnXRmJspJhwNZo9w0Uwk/fysduGWoXO1EYDaP8WNuD7
- Gqqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780060556; x=1780665356;
- h=in-reply-to:from:content-language:references:cc:to:subject
- :user-agent:mime-version:date:message-id:x-gm-gg:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=PNZuWO14/hYrfF1FbYBmYNjTR26OQiJxBVDHKZXrrH4=;
- b=GFojMdNyGeJIs8yMfN+Zpjdr9zp8H4S8L/+jhAGad24u4XYd7kQS8JvnhkQ03UxPzc
- PBev4E5SjqFv6mJHWVK2tUAUQalIoE3kIkNTgd/cXPVD6iVph0YJgQ5IoDl/voq9EU0D
- aeEwUfJIwXnhe1yZYLGfrFnH+s6QMSrCvbQ/Jb74hop9Uk9ZNCRkyD9jvlLgK2RuHsef
- BPIj149PVR7UFj8W0gtJ3WEwbC7AkrjDydZt+Dv7tkBDkXCauArS3Ft1EAh27i2CefA4
- 5n6AvWdplB1OSVHdagfaYR0Ewiu7QmQaCXFRqQTmchfNnqsdCgTP6YWOqme8hU2m2LHf
- bzmw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+kxYn49TjEwkwhuv2DZqDk/rZza1Jx4Y67uI/yrS9fh/TYxzfUYYSKNKNCHuBKfjyjNUjmAC0Owg==@nongnu.org
-X-Gm-Message-State: AOJu0YzV4YH1+3VubwTw3JzcLjOICJHhZ+3ZHZS6ysh9QK5XMeDxegXB
- NSMynxtvbf4gl+UR/Ne+PwM8sncYIq+9dGNVhgCRe5+zRin5Z7fCAQ2BkiQtpFg9fV8=
-X-Gm-Gg: Acq92OHKlX0beN2f+lWpVA9V5cxeoHF4lOGfkDGVxTjeahRnzB4ovdKIZQWLHLUh9rO
- JXIcJKLND+hcjeY9Xv7uS82Zu3vdX/3poIztAQ3KTW4JH0dX9j//sUGv8g6en0ulhogkFLBmSEP
- GDoiNy18h//ppMgyuXjnf8fARCDwRKzwiXrLc6YBvZcPxV0Y+2ul3uY0HQ84JQqmdL32v+8n9uX
- tCMQUmo3cupy+lqaL4wCjNftPJjiQur7dkUz3vdqPJRHvJexaACXnsfQrgdL+pENZWAG9Z3lSdj
- 0+2UHtasacjX2GgpHdLiaENqZvmiDnppmdaC0iuAqt/Gjwpmb3RtcaqPsNxWAbvXCr3rkwzpcAC
- b2Y7sLLoXpVw+PGApP/5MI7PtC4ZWqf16GHLRLCd4c27THPNYqY9iv1ZPm1DfoIoR/e/6f9CLCY
- fn4Y/bL+Wxsn290Hspk3cdz01YsqK+ykblyhn8kQoguTEILojsdDLLWjRbyL8dER5T8jKP2FVVY
- 6EImtjn7cIhRic84mwwmWlDR9HWx9Vk0SYBYQ==
-X-Received: by 2002:adf:e00b:0:10b0:45e:98ed:bde5 with SMTP id
- ffacd0b85a97d-45ef143edf4mr3809894f8f.24.1780060555593; 
- Fri, 29 May 2026 06:15:55 -0700 (PDT)
-Received: from ?IPV6:2a02:8071:5c81:9f00:b51d:3606:8cce:d388?
- ([2a02:8071:5c81:9f00:b51d:3606:8cce:d388])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45ef34c50f6sm4016286f8f.16.2026.05.29.06.15.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 29 May 2026 06:15:55 -0700 (PDT)
-Content-Type: multipart/alternative;
- boundary="------------FUORgOBfGxIswJCvs3NVuKmW"
-Message-ID: <8b7ee02e-fe95-40db-9f2e-2d47262d6020@9elements.com>
-Date: Fri, 29 May 2026 15:15:53 +0200
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1wSxQn-0006vV-Ju; Fri, 29 May 2026 09:39:22 -0400
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1wSxQk-0004PC-Fr; Fri, 29 May 2026 09:39:21 -0400
+Received: from [192.168.10.145] (p865013-ipoe.ipoe.ocn.ne.jp [153.242.222.12])
+ (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64TDd2YZ057184
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Fri, 29 May 2026 22:39:03 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=ARPVCavVU5+6sb54n8Daa5m5t7+of2b1Asseo7o7Q3U=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=From:Message-ID:To:Subject:Date;
+ s=rs20250326; t=1780061943; v=1;
+ b=dpk8dmvFc3zoeQfwo1geyHXDpSxC9t7mBit4v9GlrXNUOC5SLEyuaKexdwCTt/Ze
+ JvThuJxWnZmKdhZIaXUGd6wh9tqfBrTzdajMrEbCIAuRKe2Y/Y5ZtZ2lwqDPpVOS
+ KaQzK/biZtTBSIH1QiD9xHi9gEcEUiA3W4TkpYZkhAdWc2hWbDgxmttM6xHQlq+t
+ /undmNDxmayuHhfOmel5nkmEhmh1v6HXdfDHg6EgYL6H8W4sUmlimckug89faQc7
+ Dc+xR7Uvw1sLa/1sGeJuLpY7QyOQjt38oNuls/dEeFbCBnwOqUu1BWL6t30B/M/X
+ ZdXMkQ1YNqFvlWdtq5BV6A==
+Message-ID: <7b025488-0517-42ae-9f2b-fce720312163@rsg.ci.i.u-tokyo.ac.jp>
+Date: Fri, 29 May 2026 22:39:02 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 4/5] hw/sensor: support MAX11615
+Subject: Re: [PATCH] hw/cxl: Fix cxl_fmws_set_memmap() range check
 To: Jonathan Cameron <jic23@kernel.org>
-Cc: qemu-devel@nongnu.org, Titus Rwantare <titusr@google.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
-References: <20260515150610.381066-1-alexander.hansen@9elements.com>
- <20260515150610.381066-5-alexander.hansen@9elements.com>
- <20260529133919.3194636b@jic23-huawei>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Fan Ni <fan.ni@samsung.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
+ linux-cxl@vger.kernel.org
+References: <20260528-cxl-v1-1-a470c8255264@rsg.ci.i.u-tokyo.ac.jp>
+ <20260529140001.435eaebd@jic23-huawei>
 Content-Language: en-US
-From: Alexander Hansen <alexander.hansen@9elements.com>
-In-Reply-To: <20260529133919.3194636b@jic23-huawei>
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=alexander.hansen@9elements.com; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <20260529140001.435eaebd@jic23-huawei>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,205 +75,222 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is a multi-part message in MIME format.
---------------FUORgOBfGxIswJCvs3NVuKmW
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-
-Hi Jonathan, i just sent out a v5 which should address at least some of 
-the comments you had for MAX11615 on v3 of this patchset.
-
-I do appreciate the detailed feedback, apparently you know a lot about 
-this device.
-
-Overall i did underestimate the difficulty of making a good emulation 
-for any of these 3 devices i am targeting as part of yv4 support. Maybe 
-i should have started with only MAX31790, but i needed all 3 of those 
-for my OpenBMC development use-case.
-
-I would still like to continue the work on these. Iterating on 3 devices 
-at the same time can be challenging for someone starting out,
-so most of my focus is on getting machine + functional test in, then 
-MAX31790, then the others.
-
- > So what is the purpose of limited emulation vs just not emulating it 
-at all. My use-case for these devices is to support firmware 
-development, specifically OpenBMC development on that platform.
-For that purpose it is already sufficient since the drivers probe and 
-provide readings. If i find gaps later, i can address them.
-
-Of course if someone else wants a specific feature of the sensor 
-supported or finds a bug in any of these patches i am happy
-to implement these things :)
-
-Thanks again for reviewing,
-
-Alexander
-
-On 5/29/26 14:39, Jonathan Cameron wrote:
-> On Fri, 15 May 2026 16:58:01 +0200
-> Alexander Hansen<alexander.hansen@9elements.com> wrote:
->
->> Product: [1]
->> Datasheet: [2]
+On 2026/05/29 22:00, Jonathan Cameron wrote:
+> On Thu, 28 May 2026 21:24:05 +0900
+> Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
+> 
+>> cxl_fmws_set_memmap() leaves the zero-initialized base address of a CXL
+>> fixed window unchanged when it does not fit in the memory map, which
+>> results in incorrect mapping. Change the function to report an error
+>> instead.
 >>
->> Sensor readings can be provided upon creation of the device. In case no
->> readings are provided the ADC reads a pre-defined arbitrary value.
->>
->> root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/name
->> max11615
->> root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage0_raw
->> 1922
->> root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage_scale
->> 0.500000000
-> As I mentioned on v1 a lot of the standard linux driver operations with this
-> device will not work. The emulation doesn't deal with multi channel
-> scans for example.
->
-> So what is the purpose of limited emulation vs just not emulating it at all.
-> (which will fail a couple more things obviously!)
->
-> I'm not sure what the standard expectations are for this when the
-> features that aren't emulated are not discoverable (i.e. the driver can't
-> tell it should not use them).
->
+>> The Arm virt machine passes the exclusive end of the memory map while
+>> the i386 pc machine passes the inclusive end to cxl_fmws_set_memmap().
+>> Change the i386 pc machine to pass the exclusive end and perform the
+>> range check accordingly in cxl_fmws_set_memmap().
+> Hi,
+> 
+> 
+> +CC linux-cxl as more folk there who might take a look at this.
+> (also my remove my dead huawei address)
+> 
+> What are the results of this on users?  Obviously the CFMWS doesn't
+> work, but how do they observe that.
+> 
+> Also seems like this is a fix and it can be a lot more minimal
+> (just one error_fatal use).
+> 
 > Jonathan
->
->> trace:
->> less /tmp/qemu-trace.log | grep -i max116
->> max11615_realize i2c_addr: 0x33
->> max11615_realize i2c_addr: 0x33
->> max11615_event i2c_addr: 0x33, event: 0x01
->> max11615_write_setup i2c_addr: 0x33, data: 0xd2
->> max11615_write_config i2c_addr: 0x33, data: 0x0f
->> max11615_event i2c_addr: 0x33, event: 0x03
->> max11615_event i2c_addr: 0x33, event: 0x01
->> max11615_write_setup i2c_addr: 0x33, data: 0xd2
->> max11615_write_config i2c_addr: 0x33, data: 0x0f
->> max11615_event i2c_addr: 0x33, event: 0x03
->> max11615_event i2c_addr: 0x33, event: 0x01
->> max11615_write_setup i2c_addr: 0x33, data: 0xd2
->> max11615_write_config i2c_addr: 0x33, data: 0x61
->> max11615_event i2c_addr: 0x33, event: 0x03
->> max11615_event i2c_addr: 0x33, event: 0x00
->> max11615_recv i2c_addr: 0x33, reg_addr: 0x00
->> max11615_recv_return i2c_addr: 0x33, returns: 0xfa
->> max11615_recv i2c_addr: 0x33, reg_addr: 0x00
->> max11615_recv_return i2c_addr: 0x33, returns: 0xd2
->> max11615_event i2c_addr: 0x33, event: 0x04
->> max11615_event i2c_addr: 0x33, event: 0x03
---------------FUORgOBfGxIswJCvs3NVuKmW
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+> 
+> 
+>>
+>> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+>> ---
+>>   include/hw/cxl/cxl_host.h |  2 +-
+>>   hw/arm/virt.c             |  6 +++---
+>>   hw/cxl/cxl-host-stubs.c   |  4 ++--
+>>   hw/cxl/cxl-host.c         | 12 +++++++-----
+>>   hw/i386/pc.c              | 12 ++++++------
+>>   5 files changed, 19 insertions(+), 17 deletions(-)
+>>
+>> diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
+>> index 21619bb748ab..ed34c3159f59 100644
+>> --- a/include/hw/cxl/cxl_host.h
+>> +++ b/include/hw/cxl/cxl_host.h
+>> @@ -16,7 +16,7 @@
+>>   void cxl_machine_init(Object *obj, CXLState *state);
+>>   void cxl_fmws_link_targets(Error **errp);
+>>   void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp);
+>> -hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr);
+>> +bool cxl_fmws_set_memmap(hwaddr *cursor, hwaddr end, Error **errp);
+>>   void cxl_fmws_update_mmio(void);
+>>   GSList *cxl_fmws_get_all_sorted(void);
+>>   
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index b090233893c5..a22778575cfb 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -2536,9 +2536,9 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+>>       if (device_memory_size > 0) {
+>>           machine_memory_devices_init(ms, device_memory_base, device_memory_size);
+>>       }
+>> -    vms->highest_gpa = cxl_fmws_set_memmap(ROUND_UP(vms->highest_gpa + 1,
+>> -                                                    256 * MiB),
+>> -                                           BIT_ULL(pa_bits)) - 1;
+>> +    vms->highest_gpa = ROUND_UP(vms->highest_gpa + 1, 256 * MiB);
+>> +    cxl_fmws_set_memmap(&vms->highest_gpa, BIT_ULL(pa_bits), &error_fatal);
+>> +    vms->highest_gpa--;
+> 
+> Hmm. The previous code kept the tight coupling of cxl_fmws_set_memmap()
+> returning an address that we then decremented as the value is inclusive.
+> This loses that clarity to my eyes.
+> 
+> Perhaps we now need a comment.
+> 
+>>   }
+>>   
+>>   static VirtGICType finalize_gic_version_do(const char *accel_name,
+>> diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
+>> index 9b515913ea4d..fa87cea0e8b9 100644
+>> --- a/hw/cxl/cxl-host-stubs.c
+>> +++ b/hw/cxl/cxl-host-stubs.c
+>> @@ -11,9 +11,9 @@
+>>   void cxl_fmws_link_targets(Error **errp) {};
+>>   void cxl_machine_init(Object *obj, CXLState *state) {};
+>>   void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp) {};
+>> -hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
+>> +bool cxl_fmws_set_memmap(hwaddr *base, hwaddr max_addr, Error **errp)
+> 
+> Feels like a more minimal solution is to just use error_fatal() internally and
+> keep the original return of value.
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  </head>
-  <body>
-    <p>Hi Jonathan, i just sent out a v5 which should address at least
-      some of the comments you had for MAX11615 on v3 of this patchset.<br>
-      <br>
-      I do appreciate the detailed feedback, apparently you know a lot
-      about this device.<br>
-      <br>
-      Overall i did underestimate the difficulty of making a good
-      emulation for any of these 3 devices i am targeting as part of yv4
-      support. Maybe i should have started with only MAX31790, but i
-      needed all 3 of those for my OpenBMC development use-case.<br>
-      <br>
-      I would still like to continue the work on these. Iterating on 3
-      devices at the same time can be challenging for someone starting
-      out, <br>
-      so most of my focus is on getting machine + functional test in,
-      then MAX31790, then the others.<br>
-      <br>
-      &gt; <span style="white-space: pre-wrap">So what is the purpose of limited emulation vs just not emulating it at all.
+I followed what other functions (cxl_fmws_link_targets() and 
+cxl_hook_up_pxb_registers()) do.
 
-</span>My use-case for these devices is to support firmware development,
-      specifically OpenBMC development on that platform.<br>
-      For that purpose it is already sufficient since the drivers probe
-      and provide readings. If i find gaps later, i can address them.<br>
-      <br>
-      Of course if someone else wants a specific feature of the sensor
-      supported or finds a bug in any of these patches i am happy<br>
-      to implement these things :)<br>
-      <br>
-      Thanks again for reviewing,<br>
-      <br>
-      Alexander<br>
-      <br>
-    </p>
-    <div class="moz-cite-prefix">On 5/29/26 14:39, Jonathan Cameron
-      wrote:<br>
-    </div>
-    <blockquote type="cite"
-      cite="mid:20260529133919.3194636b@jic23-huawei">
-      <pre wrap="" class="moz-quote-pre">On Fri, 15 May 2026 16:58:01 +0200
-Alexander Hansen <a class="moz-txt-link-rfc2396E" href="mailto:alexander.hansen@9elements.com">&lt;alexander.hansen@9elements.com&gt;</a> wrote:
+> 
+>>   {
+>> -    return base;
+>> +    return true;
+>>   };
+>>   void cxl_fmws_update_mmio(void) {};
+>>   
+>> diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
+>> index a94b893e9991..33421b3ca174 100644
+>> --- a/hw/cxl/cxl-host.c
+>> +++ b/hw/cxl/cxl-host.c
+>> @@ -429,7 +429,7 @@ void cxl_fmws_update_mmio(void)
+>>       object_child_foreach_recursive(object_get_root(), cxl_fmws_mmio_map, NULL);
+>>   }
+>>   
+>> -hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
+>> +bool cxl_fmws_set_memmap(hwaddr *cursor, hwaddr end, Error **errp)
+> 
+> The cursor naming makes little sense to me. It is an address.
 
-</pre>
-      <blockquote type="cite">
-        <pre wrap="" class="moz-quote-pre">Product: [1]
-Datasheet: [2]
+It is not really "base" though and it's moving during execution; please 
+see how the resulting value is used in cxl_fmws_set_memmap(). The naming 
+represents the moving nature and has no implication on being an address.
 
-Sensor readings can be provided upon creation of the device. In case no
-readings are provided the ADC reads a pre-defined arbitrary value.
+> Also the rename to end doesn't seem to bring any more clarity over max_addr.
+> I guess maybe you did this because it's an exclusive value? I'm not sure end
+> conveys that any more than max_addr.
 
-root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/name
-max11615
-root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage0_raw
-1922
-root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage_scale
-0.500000000
-</pre>
-      </blockquote>
-      <pre wrap="" class="moz-quote-pre">
-As I mentioned on v1 a lot of the standard linux driver operations with this
-device will not work. The emulation doesn't deal with multi channel
-scans for example.
+Indeed the rename was done because it's exclusive. max_addr is 
+misleading as it implies inclusive and "end" is not at least, though it 
+still doesn't tell it is the exclusive end.
 
-So what is the purpose of limited emulation vs just not emulating it at all.
-(which will fail a couple more things obviously!)
+> 
+> 
+>>   {
+>>       GSList *cfmws_list, *iter;
+>>       CXLFixedWindow *fw;
+>> @@ -437,14 +437,16 @@ hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
+>>       cfmws_list = cxl_fmws_get_all_sorted();
+>>       for (iter = cfmws_list; iter; iter = iter->next) {
+>>           fw = CXL_FMW(iter->data);
+>> -        if (base + fw->size <= max_addr) {
+>> -            fw->base = base;
+>> -            base += fw->size;
+>> +        if (end - *cursor < fw->size) {
+> I'm not seeing why this form is an improvement on the original test.
 
-I'm not sure what the standard expectations are for this when the
-features that aren't emulated are not discoverable (i.e. the driver can't
-tell it should not use them).
+The original form overflows when fw->size is too big and I'm just being 
+careful here.
 
-Jonathan
+Regards,
+Akihiko Odaki
 
-</pre>
-      <blockquote type="cite">
-        <pre wrap="" class="moz-quote-pre">
-trace:
-less /tmp/qemu-trace.log | grep -i max116
-max11615_realize i2c_addr: 0x33
-max11615_realize i2c_addr: 0x33
-max11615_event i2c_addr: 0x33, event: 0x01
-max11615_write_setup i2c_addr: 0x33, data: 0xd2
-max11615_write_config i2c_addr: 0x33, data: 0x0f
-max11615_event i2c_addr: 0x33, event: 0x03
-max11615_event i2c_addr: 0x33, event: 0x01
-max11615_write_setup i2c_addr: 0x33, data: 0xd2
-max11615_write_config i2c_addr: 0x33, data: 0x0f
-max11615_event i2c_addr: 0x33, event: 0x03
-max11615_event i2c_addr: 0x33, event: 0x01
-max11615_write_setup i2c_addr: 0x33, data: 0xd2
-max11615_write_config i2c_addr: 0x33, data: 0x61
-max11615_event i2c_addr: 0x33, event: 0x03
-max11615_event i2c_addr: 0x33, event: 0x00
-max11615_recv i2c_addr: 0x33, reg_addr: 0x00
-max11615_recv_return i2c_addr: 0x33, returns: 0xfa
-max11615_recv i2c_addr: 0x33, reg_addr: 0x00
-max11615_recv_return i2c_addr: 0x33, returns: 0xd2
-max11615_event i2c_addr: 0x33, event: 0x04
-max11615_event i2c_addr: 0x33, event: 0x03
-</pre>
-      </blockquote>
-    </blockquote>
-  </body>
-</html>
+> 
+>> +            error_setg(errp, "A CXL fixed memory window does not fit in the memory map");
+> 
+> This bit I'm fine with!  Makes sense to error out as otherwise we get a rather
+> confusing result.
+> 
+>> +            return false;
+>>           }
+>> +        fw->base = *cursor;
+>> +        *cursor += fw->size;
+>>       }
+>>       g_slist_free(cfmws_list);
+>>   
+>> -    return base;
+>> +    return true;
+>>   }
+>>   
+>>   static void cxl_fmw_realize(DeviceState *dev, Error **errp)
+>> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+>> index 2ecad3c503fb..eadf37096533 100644
+>> --- a/hw/i386/pc.c
+>> +++ b/hw/i386/pc.c
+>> @@ -747,7 +747,7 @@ void pc_memory_init(PCMachineState *pcms,
+>>       PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
+>>       X86MachineState *x86ms = X86_MACHINE(pcms);
+>>       hwaddr maxphysaddr, maxusedaddr;
+>> -    hwaddr cxl_base, cxl_resv_end = 0;
+>> +    hwaddr cxl_cursor = 0;
+> As above, I'm not sure how the cursor naming is useful. Its
+> an address so I'd expect naming to reflect that. To me base does
+> and cursor (which to me is typically the current position of an
+> iterator) does not.
+> 
+>>       X86CPU *cpu = X86_CPU(first_cpu);
+>>       uint64_t res_mem_end;
+>>   
+>> @@ -857,11 +857,11 @@ void pc_memory_init(PCMachineState *pcms,
+>>           MemoryRegion *mr = &pcms->cxl_devices_state.host_mr;
+>>           hwaddr cxl_size = MiB;
+>>   
+>> -        cxl_base = pc_get_cxl_range_start(pcms);
+>> +        cxl_cursor = pc_get_cxl_range_start(pcms);
+>>           memory_region_init(mr, OBJECT(machine), "cxl_host_reg", cxl_size);
+>> -        memory_region_add_subregion(system_memory, cxl_base, mr);
+>> -        cxl_base = ROUND_UP(cxl_base + cxl_size, 256 * MiB);
+>> -        cxl_resv_end = cxl_fmws_set_memmap(cxl_base, maxphysaddr);
+>> +        memory_region_add_subregion(system_memory, cxl_cursor, mr);
+>> +        cxl_cursor = ROUND_UP(cxl_cursor + cxl_size, 256 * MiB);
+>> +        cxl_fmws_set_memmap(&cxl_cursor, maxphysaddr + 1, &error_fatal);
+>>           cxl_fmws_update_mmio();
+>>       }
+>>   
+>> @@ -892,7 +892,7 @@ void pc_memory_init(PCMachineState *pcms,
+>>       rom_set_fw(fw_cfg);
+>>   
+>>       if (pcms->cxl_devices_state.is_enabled) {
+>> -        res_mem_end = cxl_resv_end;
+>> +        res_mem_end = cxl_cursor;
+>>       } else if (machine->device_memory) {
+>>           res_mem_end = machine->device_memory->base
+>>                         + memory_region_size(&machine->device_memory->mr);
+>>
+>> ---
+>> base-commit: e89049b3ba5f1f0468bc0d294173345597514a1b
+>> change-id: 20260528-cxl-d3bf91bac0c6
+>>
+>> Best regards,
+>> --
+>> Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+>>
+>>
+> 
 
---------------FUORgOBfGxIswJCvs3NVuKmW--
 

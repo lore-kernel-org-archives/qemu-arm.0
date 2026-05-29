@@ -4,90 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A0DFCD6E49
-	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 19:04:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57C6ECD6E49
+	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 19:50:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wT2Uo-0000nn-2H; Fri, 29 May 2026 15:03:50 -0400
+	id 1wT3DS-0004VG-Q9; Fri, 29 May 2026 15:49:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wT2Uh-0000ma-81
- for qemu-arm@nongnu.org; Fri, 29 May 2026 15:03:43 -0400
-Received: from p-east2-cluster6-host2-snip4-8.eps.apple.com ([57.103.76.189]
- helo=outbound.st.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wT2Ud-00086d-2F
- for qemu-arm@nongnu.org; Fri, 29 May 2026 15:03:41 -0400
-Received: from outbound.st.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-1a-60-percent-2 (Postfix) with ESMTPS id
- 54CDB18003BF; Fri, 29 May 2026 19:03:33 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCh5cAEsdVwRUH1MSVR0dC0VLQBMESwNNXw5eHwQXRhlVBEceXVZAGRkCURxWDVdDVARfUEkMQVBsWgBHF0gdXRlZb1BdHA4YWRtAFV0RUBlWCV4VFx5BTVoCVk0FQAtVDi4HRQ5VBF90Kh9EfT13QHVbBDUUTHdVBVoBRXo+Cl8EK0ceSQpWCV4IRhFbFFZDURkMUE0BQwgKCEcDTRdeMlMEXxFQFg==
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1780081414; x=1782673414;
- bh=L5MbozJ5ZtclVRHz2/UqMohOJuTYcCfjXEZ5p11/12M=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=IVVgtVKNoeujD2aToxqnTEDEGofjD0PbXjBayJ13XZDLzrJC0Qth6X2sjlnjIRBmfFSRaf+kSR4VCFIzlB+A5gSM1SA0zOwQ4NQMUAVy9Dv+UvSl7SvX2ldlA9b2LVrE5uwsYwxP3BwdURT3xmKdoQOKpQWzCyzlmGt2JwfT72qH+p90UGyjEoCiXzQ+8LVoD80jFIBKAPlXS8QAyWP36RAU/emWY7+FiXn4MxT3HLWlA+xXoizHVkFJncqE33SnDJfUfC0iG6U8RLRxPIHRx2lOSawib4hRNQOo/0VN3dFc4CfS7vCNd22VVxkx3PFUUSvof0JBdTd0J1hZSgpmmw==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.42.251.67])
- by p00-icloudmta-asmtp-us-east-1a-60-percent-2 (Postfix) with ESMTPSA id
- 5FAFB18011CD; Fri, 29 May 2026 19:03:29 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
-Subject: Re: [PATCH 07/17] accel/whpx: Convert AccelCPUClass ->
- AccelOpsClass::cpu_instance_init
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <20260529142434.87880-8-philmd@linaro.org>
-Date: Fri, 29 May 2026 21:03:17 +0200
-Cc: qemu-devel@nongnu.org, Reinoud Zandijk <reinoud@netbsd.org>,
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wT3DP-0004NX-BX
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 15:49:55 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wT3DN-0004DD-L3
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 15:49:54 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-45ef1198766so654057f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 29 May 2026 12:49:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1780084192; x=1780688992; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=gToO07btHAw940X+sVMcM9/aOH/ZnEfIGi+vwCzDH2o=;
+ b=ftecYP1bdSgAOPkDuxRVrwKJ08i182es8gZlL5VM6JlbNo/t4j6DQDRcbOeftqCQ46
+ I0N7NVGkUukK/RVh7Ak33947uAHgqSUbuABslUfcyDXskOncYzhBCdtMKuxM8zV6ZBEO
+ 3KHTgvC0g3B69VMRxM/7ANnnvnedhwpzsQR6w2DLvXp2oQyj8pLtB+ykJQiPlbxvdFOX
+ hjOVUupxsm+pQvL/RhMNiIIfjxYeLlmoxYGI0sozUb8uobPMdGivk5lNv/x+wfXa64Dj
+ DNbhdTw5VFYa7srzLz0G/+x9Q7w1AZlI/BngtqSk9Hb/mRE6u26vuVjY+3fgKQ+WUeRM
+ sx1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1780084192; x=1780688992;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=gToO07btHAw940X+sVMcM9/aOH/ZnEfIGi+vwCzDH2o=;
+ b=sObPLX0hET1/oGxgDyZglxz79icqHQqLIPgJGfvaQVcv8y7aucER0CJM2o7HnvAR5M
+ ex9+6+kUoi/Ex1+iXQBFDSwagACMV4rBNTf9E0iI3ovypogF+pi0QkACAP9VgtEyPXsI
+ +iLBP5uF1KP0l9G1ozhqd48gGYesNdJZ5nkwj9BSU4OUyyAoBcHVDV5yIfLpQKuONc6s
+ D0qqzcEfwt7U6vZwtwSiFCF6+QsDWgqT2AYUQ3Z/ge8jtWUjQ5bMMpkCKcA/LiRzZnrQ
+ oKfYJd37ReUyeD0Ov/tnA3+5CMNdpGpMz8wBWN9HHQbJtk8deg+PTdpVt2ZAOS8QzOyo
+ 5nyg==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8ezTapv4kezpTRRqgPiWKBLwWAcRqI0GIKWTocamUVJQLH/aKdm/kvFkwRp2Oiiiazq50Rvrh2vg==@nongnu.org
+X-Gm-Message-State: AOJu0Yyw6z51+ukhkP252ENlgCET39Xtvq3PMHejg1fuV6zzxToTb014
+ xe0Y8TIoIDqhX0GgUxwqA3j2F1uh8XzCpeJo9zntZuQEcRUP5e4Br6Jj/KS400ItHow=
+X-Gm-Gg: Acq92OFSoEtGVvm0haj2dbIgQvBvmdj06+WcTXVhiz+Cj6cNS7u/oXHdHOe0CfYexfO
+ XewHxda2EwvExKxdzkycRJO/pdGnY/dPAKHx6ymlaXGfokYnzPfVQcieP5zj0Nlnns2B2a/F9SL
+ j7o3woTzO+aoXWgDHeML0M+DkxpbahLs9qiJJ3gQCj4aCZbiAvDzHn+87PpbZm4HFP1BdnLMmoz
+ evzT6PSwoQf37vK8Tj8uiCbkJxZL06ZhwwnrxvzuaEiNsMFyTKX4qg0AmuIB0SSRiM60LjF7t+X
+ WHU70+21fdGcIgW4qDxUVgBYSi7ChFCLsayCn8Gbimu1DkhxYZIYULg215fxAOzdVnhczEW5HoC
+ XuEFoc67VxCQGvTjyc03qA122IJQWQpV6uRYWNEamJXGXjDh2BYxeeOb3NM8mnB5I9YqlXmgo3k
+ sjLFUsjafF+nADqIqFBcpS6QHoYVqZxXSaJBrAazsu5StXQ21CkZQGOyrRREKsLGisqg==
+X-Received: by 2002:a05:6000:11d2:b0:45e:f295:33cd with SMTP id
+ ffacd0b85a97d-45ef6ea9417mr918738f8f.11.1780084192037; 
+ Fri, 29 May 2026 12:49:52 -0700 (PDT)
+Received: from m15.home (88-187-86-199.subs.proxad.net. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45ef34c50f6sm6471508f8f.16.2026.05.29.12.49.49
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 29 May 2026 12:49:51 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Weiwei Li <liwei1518@gmail.com>, Glenn Miles <milesg@linux.ibm.com>,
+ kvm@vger.kernel.org, qemu-s390x@nongnu.org,
+ Chao Liu <chao.liu.zevorn@gmail.com>, David Hildenbrand <david@kernel.org>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
- Nicholas Piggin <npiggin@gmail.com>, Glenn Miles <milesg@linux.ibm.com>,
- Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, qemu-arm@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
  Richard Henderson <richard.henderson@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Anton Johansson <anjo@rev.ng>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Song Gao <gaosong@loongson.cn>,
- qemu-riscv@nongnu.org, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Song Gao <gaosong@loongson.cn>, Paolo Bonzini <pbonzini@redhat.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Anton Johansson <anjo@rev.ng>, Claudio Fontana <cfontana@suse.de>,
+ Eric Farman <farman@linux.ibm.com>, Alexander Graf <agraf@csgraf.de>,
+ Chinmay Rath <rathc@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ qemu-riscv@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>,
  Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
- Alistair Francis <alistair.francis@wdc.com>, qemu-ppc@nongnu.org,
- Weiwei Li <liwei1518@gmail.com>, Chao Liu <chao.liu.zevorn@gmail.com>,
- kvm@vger.kernel.org, Claudio Fontana <cfontana@suse.de>,
- Chinmay Rath <rathc@linux.ibm.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <8889E557-72CA-4DED-B06E-4D82135CF923@unpredictable.fr>
-References: <20260529142434.87880-1-philmd@linaro.org>
- <20260529142434.87880-8-philmd@linaro.org>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-X-Mailer: Apple Mail (2.3864.500.181)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTI5MDE5MCBTYWx0ZWRfX4o4D5iz7EZwB
- PafAprm4LAshjRT8vyziar5UHXlrRXeaCPpL8YtaSFbSe+khRmYckQMr8HJM+wFDb0UzxhbJ2f0
- vbVX5PY+D6pzFCt54DkKrz//hqR9i3C/zrVD0gyG6wILpCyhq7kQWANXj0l95ZDk+QdRE8Jr2F4
- 7gRhv3KD/jPqNaKEF40tXEpDAKNVM+8ik7645wl4FXn3rWsjFNrQVLw5YSbySX4pf3TiMg4a8k2
- 9xTnU0wK1CGgjZ1xEhBW2uUc2jbecGk+/pUf0pA/WaC6McGzCdUnVudt1b0s9461fPBMhSnIxve
- V8njC4Z6OtNr44Eo8CaHNJkAcv7dF4i5fMgO4+1fyf+habX8GesupW6T7OIaf8=
-X-Proofpoint-GUID: vYP-en4IsCvIH_H4la6OLn5fC5b_mBMB
-X-Authority-Info-Out: v=2.4 cv=Jtb8bc4C c=1 sm=1 tr=0 ts=6a19e306
- cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
- a=YrL12D//S6tul8v/L+6tKg==:17 a=IkcTkHD0fZMA:10 a=NGcC8JguVDcA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=S16TypstT75ussWUPpsA:9
- a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: vYP-en4IsCvIH_H4la6OLn5fC5b_mBMB
-Received-SPF: pass client-ip=57.103.76.189;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
+ Reinoud Zandijk <reinoud@netbsd.org>, Halil Pasic <pasic@linux.ibm.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 01/17] target/loongarch: Remove unused
+ 'accel/accel-cpu-target.h' header
+Date: Fri, 29 May 2026 21:49:23 +0200
+Message-ID: <20260529194940.97143-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260529194940.97143-1-philmd@linaro.org>
+References: <20260529194940.97143-1-philmd@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,117 +126,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+"accel/accel-cpu-target.h" is to register accelerator target
+specific hooks via TypeInfo::ACCEL_CPU_NAME(), which LoongArch
+TCG frontend does not. Remove as unused header.
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+---
+ target/loongarch/tcg/tcg_cpu.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-> On 29. May 2026, at 16:24, Philippe Mathieu-Daud=C3=A9 =
-<philmd@linaro.org> wrote:
->=20
-> Register the new AccelOpsClass::cpu_instance_init hook.
->=20
-> ACCEL_CPU_NAME("whpx") TypeInfo is now empty, remove it.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
-> accel/whpx/whpx-accel-ops.c |  2 ++
-> accel/whpx/whpx-common.c    | 17 -----------------
-> target/arm/whpx/whpx-all.c  |  1 -
-> target/i386/whpx/whpx-all.c |  1 -
-> 4 files changed, 2 insertions(+), 19 deletions(-)
->=20
-> diff --git a/accel/whpx/whpx-accel-ops.c b/accel/whpx/whpx-accel-ops.c
-> index b8f41544cbe..099e8ef6da3 100644
-> --- a/accel/whpx/whpx-accel-ops.c
-> +++ b/accel/whpx/whpx-accel-ops.c
-> @@ -98,6 +98,8 @@ static void whpx_accel_ops_class_init(ObjectClass =
-*oc, const void *data)
->     ops->handle_interrupt =3D generic_handle_interrupt;
->     ops->supports_guest_debug =3D whpx_supports_guest_debug;
->=20
-> +    ops->cpu_instance_init =3D whpx_cpu_instance_init;
-> +
-Hi,
-
-No whpx_cpu_instance_init implementation present in the commit
-as far as I can tell.
-
-Did you miss it? Other than that things look fine and a stub =
-implementation=20
-should be okay.
-
->     ops->synchronize_post_reset =3D whpx_cpu_synchronize_post_reset;
->     ops->synchronize_post_init =3D whpx_cpu_synchronize_post_init;
->     ops->synchronize_state =3D whpx_cpu_synchronize_state;
-> diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
-> index 247e12db812..25c5d84fd30 100644
-> --- a/accel/whpx/whpx-common.c
-> +++ b/accel/whpx/whpx-common.c
-> @@ -24,7 +24,6 @@
-> #include "qapi/qapi-types-common.h"
-> #include "qapi/qapi-visit-common.h"
-> #include "migration/blocker.h"
-> -#include "accel/accel-cpu-target.h"
-> #include <winerror.h>
->=20
-> #include "system/whpx-internal.h"
-> @@ -505,21 +504,6 @@ static void whpx_set_hyperv(Object *obj, Visitor =
-*v,
->     }
-> }
->=20
-> -static void whpx_cpu_accel_class_init(ObjectClass *oc, const void =
-*data)
-> -{
-> -    AccelCPUClass *acc =3D ACCEL_CPU_CLASS(oc);
-> -
-> -    acc->cpu_instance_init =3D whpx_cpu_instance_init;
-> -}
-> -
-> -static const TypeInfo whpx_cpu_accel_type =3D {
-> -    .name =3D ACCEL_CPU_NAME("whpx"),
-> -
-> -    .parent =3D TYPE_ACCEL_CPU,
-> -    .class_init =3D whpx_cpu_accel_class_init,
-> -    .abstract =3D true,
-> -};
-> -
-> static void whpx_accel_class_init(ObjectClass *oc, const void *data)
-> {
->     AccelClass *ac =3D ACCEL_CLASS(oc);
-> @@ -569,7 +553,6 @@ static const TypeInfo whpx_accel_type =3D {
-> static void whpx_type_init(void)
-> {
->     type_register_static(&whpx_accel_type);
-> -    type_register_static(&whpx_cpu_accel_type);
-> }
->=20
-> bool init_whp_dispatch(void)
-> diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-> index 3079c6293c8..16040f102a3 100644
-> --- a/target/arm/whpx/whpx-all.c
-> +++ b/target/arm/whpx/whpx-all.c
-> @@ -23,7 +23,6 @@
-> #include "qapi/qapi-types-common.h"
-> #include "qapi/qapi-visit-common.h"
-> #include "migration/blocker.h"
-> -#include "accel/accel-cpu-target.h"
-> #include <winerror.h>
->=20
-> #include "syndrome.h"
-> diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-> index e626acef2f0..1b68f13a7dd 100644
-> --- a/target/i386/whpx/whpx-all.c
-> +++ b/target/i386/whpx/whpx-all.c
-> @@ -33,7 +33,6 @@
-> #include "qapi/qapi-visit-common.h"
-> #include "migration/blocker.h"
-> #include "host-cpu.h"
-> -#include "accel/accel-cpu-target.h"
-> #include <winerror.h>
->=20
-> #include "system/whpx-internal.h"
-> --=20
-> 2.53.0
->=20
->=20
+diff --git a/target/loongarch/tcg/tcg_cpu.c b/target/loongarch/tcg/tcg_cpu.c
+index 31d3db6e8e1..2bb1feaa66f 100644
+--- a/target/loongarch/tcg/tcg_cpu.c
++++ b/target/loongarch/tcg/tcg_cpu.c
+@@ -9,7 +9,6 @@
+ #include "qemu/error-report.h"
+ #include "qemu/log.h"
+ #include "qemu/plugin.h"
+-#include "accel/accel-cpu-target.h"
+ #include "accel/tcg/cpu-ldst.h"
+ #include "accel/tcg/cpu-ops.h"
+ #include "exec/translation-block.h"
+-- 
+2.53.0
 
 

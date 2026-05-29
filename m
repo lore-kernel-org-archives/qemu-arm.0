@@ -4,113 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C558DCD6E49
-	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 19:52:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AF00CD6E4A
+	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 19:53:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wT3FZ-0001pg-7Q; Fri, 29 May 2026 15:52:09 -0400
+	id 1wT3Gl-0005cy-UZ; Fri, 29 May 2026 15:53:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wT3FK-0001Py-LR
- for qemu-arm@nongnu.org; Fri, 29 May 2026 15:51:56 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
+ id 1wT3GY-00050S-R1
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 15:53:11 -0400
+Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wT3FH-0005Av-Pi
- for qemu-arm@nongnu.org; Fri, 29 May 2026 15:51:54 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-4903d730b1fso74470905e9.2
- for <qemu-arm@nongnu.org>; Fri, 29 May 2026 12:51:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
+ id 1wT3GW-0005aL-Ur
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 15:53:10 -0400
+Received: by mail-ot1-x32d.google.com with SMTP id
+ 46e09a7af769-7e6201aeb2aso6482052a34.3
+ for <qemu-arm@nongnu.org>; Fri, 29 May 2026 12:53:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780084310; x=1780689110; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=g/8lHSi3EP+6l9bUS/wKfhybD6uSaQVMlqXN20XnJKM=;
- b=R01vJtRvTg7X6pKqlCaMyVX0ZGOfT4oUTJWOXwPf53GQxzI03X40yZKmuYUOGqPswS
- PtkXbMffkBtVmN29OEOGzDZf0UERIR6PGyLXL0hZuN4AGims9iyXiBaedN9tcCztkh3+
- z26yeawI3heeSjeG584JUO7SsQY5xLvtNc225DSXlg7w/6fKUlSJ/rA2Neepfvq28NTc
- iSZ65CHVg7Aatzbnp5qWpfZnWGkgqsGAh1/jSpJQbSeYhDgQDddxxeslktULWh4m9feG
- yzWVnq+8AbsC6pzKBj5itlFbuWB844g0K9ul+0tz9wNiCF+zqtM8Zka+9f13/0k1M+Zv
- T7og==
+ d=gmail.com; s=20251104; t=1780084388; x=1780689188; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=OJWK/EkTlXrsXIihSwbH79j1+Y9Z/xhoRkrOHiWGDKk=;
+ b=Qy3KWGOryzu0R/RDeo7KnWhOBpBipKfcYIcMqH6R/jPBtOR4FGIWpDbkKkXrUMVPCk
+ wsoSWXyJhdsfD749YxPEJ5L71bdx6KAvvncbP/Leb157tYLVxjYK8M/7nxH2q9WFh79E
+ 8gm6l4vGF7PtBJ5OQDJCqurJoSQpy8w/UNAC6LTbuXcO82qBWuPD0h4Q+p48V0ZH+MML
+ YZD70B3HUEgjE0K2dhqZ7NQ0KTHjhBF8F3qn7CiB/ejqG+PL5b4di6+0Jwqds7PYrPFr
+ wBMrIbbt28UjsMhWSUoYQ2yaypV9iUR+XK3oNdfuhQqikUhFyxwMJ3d9nNtRO62OWG/1
+ LZiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780084310; x=1780689110;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=g/8lHSi3EP+6l9bUS/wKfhybD6uSaQVMlqXN20XnJKM=;
- b=JrwswmbEMw+fH9N4/POSH+S1RDA5QJvW2mYuUIQFmOsOW0ztDgEu5JOkX8K3gzivwt
- A29o9yoRqywL0OQvXQ4KYvhzHbIVzje8e3KuLblVXE6BPCmKWyHbOvHVQTIiPAvcLNTi
- PTBnJhCVXgbjWVrn/+W1FxJSQU8unVpOw4+gBsunfjOz0mRXok9cjhYGdcFNOXXTe2xe
- oKvXmkTKMwVOCpwM0O6Z5mW1rmNKSEiFSFaAUr8vp1cAgevrJeRj+76J6o4d4o18BMjl
- mRAduDJY8r1WcoymP75jIpCJBm27B9xtkhYDmXtoYotktmePyiV1Rn0ZiW4m95ggxJLE
- dyqA==
+ d=1e100.net; s=20251104; t=1780084388; x=1780689188;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=OJWK/EkTlXrsXIihSwbH79j1+Y9Z/xhoRkrOHiWGDKk=;
+ b=E0naztRNk5NlEYqPqrqxewAtVyBHob5yrs9/PAtjbyq61xlU/RCmKBeRQFQhhSXais
+ dJbg4Yz6LgpyImlRp9/w7+LgJqjyl1O91nwfTFa87tHg+wqTFQ3GhZfcNfpysSaVkegy
+ bFnoBaoo4n5EymoPHmLkIrCKXfOzwMLk2Y7gMFcd1t5WyscKvE7duYsT3j83qwsuDDb4
+ B62MneKNOgYT7dPdYS0Ty5OmY9pY9qd45SKQELWeBVx2CSIkWOtpL00bq8l48aIiraua
+ OIdUJnXikNgwtgCpXgflFo/pnyu5986rdZDtXS2x5kr5hjtMjYTrGggh7ZZNBJoPWoUd
+ xcbw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/iwRU6ZbgJBjxT4CzqxGmIpy13PhD6lnYzZeetG48JeEfGvlXCkm0yPXC/6I1PRiLcxtLddKUHlg==@nongnu.org
-X-Gm-Message-State: AOJu0YwhRt+rY1I0l7V3Pq1mjjhqfMMo+TjE/Z106N6WteX0imCT1f7i
- 90m72oaVytOTg+TsOetEsTxURaS0K7DU5zXZbwAvbn8GGAMhkjbKie8SorIvGc03ARs=
-X-Gm-Gg: Acq92OHd9WCKMaPl9/lfMwtJF3rg0UppyoTLe95gQWwC2l+UJZLObS8f6mbDY0hp/cR
- YVVs7KzxBmMShXII57+ETfltDHnBZI7gGJP75PyMNJk0Ec93TPkfexYqfNdyiP0LIfMCSu+rURQ
- Np8+LZrcOFOL7zs53RQzFeW8enOCPn03zYKIGmwf2QCSuwpkzWlJ+bQtbyeKonbD0bUSbasg2x+
- mwWI/ywWjTA8Hsb+LrSQ/SF+kJ8y+jvnELmJZF7Z4dE8VhNN1u9DIkzrmgZmdNeMkPwC0aOtQzq
- 0GFNgrWcas4N/G23bkZMXasgSF/G6GTchhYdG3wsqEkfzMBajga2sPZ2S5y4yliXJ4WVbCl7m7i
- ucPf+L8xjicXBU8ITMRwwdit/k1CgvujiB9QXxKUiC1ESPcS4W5FmXW1M3xFzQG+LRqR2xK7Doo
- DYwA9fHavpb9Km1/audcPbaoeUF7Wn54ewDkhe/PpUDpA7BEZAK/BdLTvF+8ETbhb9Fw==
-X-Received: by 2002:a05:600c:4f08:b0:490:5149:a242 with SMTP id
- 5b1f17b1804b1-490a290d4f9mr16749005e9.5.1780084309682; 
- Fri, 29 May 2026 12:51:49 -0700 (PDT)
-Received: from m15.home (88-187-86-199.subs.proxad.net. [88.187.86.199])
+ AFNElJ9TMJFqwVwc5NFr+HGJ2I1DnGBYwpJzP0UKPQCBno2dsqhganrfDBBeUSxAuX/6GLc6CO4MrGnHhQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzcYP3IYkp9KR0STT5boEInyb5mucpVbqzcuGYar7D3ImEaaW7a
+ sT2N0xMpBaT2M+1nNrvwKog6eXa1s20oXSdsfMwnSFr+FOj87iIUJM4/
+X-Gm-Gg: Acq92OHTyGYp8bYf8vY+wOnpOVjJbIk86R/SgUeiMyOVW6Twu1Hhkri4U+fzBgq2MCd
+ cg4qjUjs/Mvx9+gZ70ON+xxnwteT2c+v9mXFV/cZSGGYDebUf3757Xn2H7MD96LmrDVDgt0LlhI
+ ZR8+MW5szr+1T3ee25gl0dDzSGlrXmjP/dGtgHIf+ck+WjFkNDK4hFTfR+k7IPZZad2adqOZRUq
+ sDUwEnBZG0xbXf2GejGz9Km6MK4nTyk7IrvlDsQnVfovTDoKCZRDjqkiG+xuX7f8CToEuWNug8E
+ wJ5HUo/WbqGTgxr8ygA2pLdjTj+2jsctTu3fH+6t4wFk/aaUyxn/vN/WI3W3Slz5/EXMGThGIb7
+ A9oMClYv1Io9trCNQqxzMMgSYXgtZPzFsslPXT36x6arMl36nEvuGTFvpbhQ3Gf43+/k+Nx9lK9
+ h53fBAW3xpuS2FmJP0BeHdLWL40aMvO0RL24qIqso/2lbHcyLiEpv9Dw==
+X-Received: by 2002:a05:6820:2906:b0:69d:f794:5959 with SMTP id
+ 006d021491bc7-69e105c89bbmr380990eaf.56.1780084387759; 
+ Fri, 29 May 2026 12:53:07 -0700 (PDT)
+Received: from [10.21.163.79] ([146.74.94.63])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4909d68980csm69622085e9.1.2026.05.29.12.51.47
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 29 May 2026 12:51:48 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Weiwei Li <liwei1518@gmail.com>, Glenn Miles <milesg@linux.ibm.com>,
- kvm@vger.kernel.org, qemu-s390x@nongnu.org,
- Chao Liu <chao.liu.zevorn@gmail.com>, David Hildenbrand <david@kernel.org>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Song Gao <gaosong@loongson.cn>, Paolo Bonzini <pbonzini@redhat.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Anton Johansson <anjo@rev.ng>, Claudio Fontana <cfontana@suse.de>,
- Eric Farman <farman@linux.ibm.com>, Alexander Graf <agraf@csgraf.de>,
- Chinmay Rath <rathc@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- qemu-riscv@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Cornelia Huck <cohuck@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Reinoud Zandijk <reinoud@netbsd.org>, Halil Pasic <pasic@linux.ibm.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 15/17] accel/tcg: Convert RISCV AccelCPUClass ->
- TCGCPUOps::cpu_realize
-Date: Fri, 29 May 2026 21:49:37 +0200
-Message-ID: <20260529194940.97143-16-philmd@linaro.org>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260529194940.97143-1-philmd@linaro.org>
-References: <20260529194940.97143-1-philmd@linaro.org>
+ 006d021491bc7-69e06587eecsm1626692eaf.0.2026.05.29.12.53.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 May 2026 12:53:07 -0700 (PDT)
+From: Gabriel Brookman <brookmangabriel@gmail.com>
+Date: Fri, 29 May 2026 12:52:49 -0700
+Subject: [PATCH v7 09/15] target/arm: load on canonical tag loads ext bits
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260529-feat-mte4-v7-9-ccbd3c14eb3c@gmail.com>
+References: <20260529-feat-mte4-v7-0-ccbd3c14eb3c@gmail.com>
+In-Reply-To: <20260529-feat-mte4-v7-0-ccbd3c14eb3c@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, 
+ Gustavo Romero <gustavo.romero@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
+ Laurent Vivier <laurent@vivier.eu>, 
+ Gabriel Brookman <brookmangabriel@gmail.com>, Helge Deller <deller@gmx.de>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1780084373; l=4424;
+ i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
+ bh=ucqsYSjKNLvRjA8zNnf+RDqvB6/wlstLRsyvDgUe30c=;
+ b=uTgMOcWX5l91glXE/ctf6rvfNpOSuGieGWKAhAlj4MWi7/Kw7JfHSOqHippSJuKyE2bs0lXw1
+ OHuoZoqmQAaC0p0nW60B2jxYiX8pNq7pgTtafpnIUMdMyA14VB4mOEO
+X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
+ pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32d;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-ot1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,71 +114,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Register AccelCPUClass::cpu_target_realize as
-riscv_tcg_ops::cpu_realize. RISCV's ACCEL_CPU_NAME("tcg")
-TypeInfo is now empty, remove it.
+Loading tags from canonically tagged regions should use the canonical
+tags (extension bits), not allocation tags. See AArch64_MemTagRead().
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 ---
- target/riscv/tcg/tcg-cpu.c | 24 ++----------------------
- 1 file changed, 2 insertions(+), 22 deletions(-)
+ target/arm/tcg/helper-a64-defs.h |  4 ++--
+ target/arm/tcg/mte_helper.c      | 14 ++++++++++++--
+ target/arm/tcg/translate-a64.c   |  4 ++--
+ 3 files changed, 16 insertions(+), 6 deletions(-)
 
-diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
-index 703c2d9bd0a..c885af6c03f 100644
---- a/target/riscv/tcg/tcg-cpu.c
-+++ b/target/riscv/tcg/tcg-cpu.c
-@@ -30,7 +30,6 @@
- #include "qemu/accel.h"
- #include "qemu/error-report.h"
- #include "qemu/log.h"
--#include "accel/accel-cpu-target.h"
- #include "accel/tcg/cpu-ops.h"
- #include "tcg/tcg.h"
- #ifndef CONFIG_USER_ONLY
-@@ -269,6 +268,7 @@ static vaddr riscv_pointer_wrap(CPUState *cs, int mmu_idx,
- #endif
+diff --git a/target/arm/tcg/helper-a64-defs.h b/target/arm/tcg/helper-a64-defs.h
+index b7880f773e..c196c927f4 100644
+--- a/target/arm/tcg/helper-a64-defs.h
++++ b/target/arm/tcg/helper-a64-defs.h
+@@ -102,14 +102,14 @@ DEF_HELPER_FLAGS_3(mte_check, TCG_CALL_NO_WG, i64, env, i32, i64)
+ DEF_HELPER_FLAGS_3(mte_check_zva, TCG_CALL_NO_WG, i64, env, i32, i64)
+ DEF_HELPER_FLAGS_3(irg, TCG_CALL_NO_RWG, i64, env, i64, i64)
+ DEF_HELPER_FLAGS_4(addsubg, TCG_CALL_NO_RWG_SE, i64, env, i64, s32, i32)
+-DEF_HELPER_FLAGS_3(ldg, TCG_CALL_NO_WG, i64, env, i64, i64)
++DEF_HELPER_FLAGS_4(ldg, TCG_CALL_NO_WG, i64, env, i64, i64, i32)
+ DEF_HELPER_FLAGS_3(stg, TCG_CALL_NO_WG, void, env, i64, i64)
+ DEF_HELPER_FLAGS_3(stg_parallel, TCG_CALL_NO_WG, void, env, i64, i64)
+ DEF_HELPER_FLAGS_2(stg_stub, TCG_CALL_NO_WG, void, env, i64)
+ DEF_HELPER_FLAGS_3(st2g, TCG_CALL_NO_WG, void, env, i64, i64)
+ DEF_HELPER_FLAGS_3(st2g_parallel, TCG_CALL_NO_WG, void, env, i64, i64)
+ DEF_HELPER_FLAGS_2(st2g_stub, TCG_CALL_NO_WG, void, env, i64)
+-DEF_HELPER_FLAGS_2(ldgm, TCG_CALL_NO_WG, i64, env, i64)
++DEF_HELPER_FLAGS_3(ldgm, TCG_CALL_NO_WG, i64, env, i64, i32)
+ DEF_HELPER_FLAGS_3(stgm, TCG_CALL_NO_WG, void, env, i64, i64)
+ DEF_HELPER_FLAGS_3(stzgm_tags, TCG_CALL_NO_WG, void, env, i64, i64)
  
- static void riscv_tcg_cpu_instance_init(CPUState *cs);
-+static bool riscv_tcg_cpu_realize(CPUState *cs, Error **errp);
+diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
+index d35e3ef04d..c382f0149f 100644
+--- a/target/arm/tcg/mte_helper.c
++++ b/target/arm/tcg/mte_helper.c
+@@ -304,7 +304,7 @@ int load_tag1(uint64_t ptr, uint8_t *mem)
+     return extract32(*mem, ofs, 4);
+ }
  
- const TCGCPUOps riscv_tcg_ops = {
-     .mttcg_supported = true,
-@@ -276,6 +276,7 @@ const TCGCPUOps riscv_tcg_ops = {
+-uint64_t HELPER(ldg)(CPUARMState *env, uint64_t ptr, uint64_t xt)
++uint64_t HELPER(ldg)(CPUARMState *env, uint64_t ptr, uint64_t xt, uint32_t mtx)
+ {
+     int mmu_idx = arm_env_mmu_index(env);
+     uint8_t *mem;
+@@ -317,6 +317,9 @@ uint64_t HELPER(ldg)(CPUARMState *env, uint64_t ptr, uint64_t xt)
+     /* Load if page supports tags. */
+     if (mem) {
+         rtag = load_tag1(ptr, mem);
++    } else if (mtx) {
++        uint64_t bit55 = extract64(ptr, 55, 1);
++        rtag = 0xF * bit55;
+     }
  
-     .initialize = riscv_translate_init,
-     .cpu_instance_init = riscv_tcg_cpu_instance_init,
-+    .cpu_realize = riscv_tcg_cpu_realize,
-     .translate_code = riscv_translate_code,
-     .get_tb_cpu_state = riscv_get_tb_cpu_state,
-     .synchronize_from_tb = riscv_cpu_synchronize_from_tb,
-@@ -1676,24 +1677,3 @@ static void riscv_tcg_cpu_instance_init(CPUState *cs)
-         riscv_init_max_cpu_extensions(obj);
+     return address_with_allocation_tag(xt, rtag);
+@@ -458,7 +461,7 @@ void HELPER(st2g_stub)(CPUARMState *env, uint64_t ptr)
      }
  }
--
--static void riscv_tcg_cpu_accel_class_init(ObjectClass *oc, const void *data)
--{
--    AccelCPUClass *acc = ACCEL_CPU_CLASS(oc);
--
--    acc->cpu_target_realize = riscv_tcg_cpu_realize;
--}
--
--static const TypeInfo riscv_tcg_cpu_accel_type_info = {
--    .name = ACCEL_CPU_NAME("tcg"),
--
--    .parent = TYPE_ACCEL_CPU,
--    .class_init = riscv_tcg_cpu_accel_class_init,
--    .abstract = true,
--};
--
--static void riscv_tcg_cpu_accel_register_types(void)
--{
--    type_register_static(&riscv_tcg_cpu_accel_type_info);
--}
--type_init(riscv_tcg_cpu_accel_register_types);
+ 
+-uint64_t HELPER(ldgm)(CPUARMState *env, uint64_t ptr)
++uint64_t HELPER(ldgm)(CPUARMState *env, uint64_t ptr, uint32_t mtx)
+ {
+     int mmu_idx = arm_env_mmu_index(env);
+     uintptr_t ra = GETPC();
+@@ -476,6 +479,13 @@ uint64_t HELPER(ldgm)(CPUARMState *env, uint64_t ptr)
+ 
+     /* The tag is squashed to zero if the page does not support tags.  */
+     if (!tag_mem) {
++        /* Load canonical value if mtx is set (untagged memory region) */
++        if (mtx) {
++            bool bit55 = extract64(ptr, 55, 1);
++            ret = extract64(-bit55, 0, 1 << gm_bs);
++            shift = extract64(ptr, LOG2_TAG_GRANULE, 4) * 4;
++            return ret << shift;
++        }
+         return 0;
+     }
+ 
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 036081d897..852578aae1 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -4715,7 +4715,7 @@ static bool trans_LDGM(DisasContext *s, arg_ldst_tag *a)
+     tcg_rt = cpu_reg(s, a->rt);
+ 
+     if (s->ata[0]) {
+-        gen_helper_ldgm(tcg_rt, tcg_env, addr);
++        gen_helper_ldgm(tcg_rt, tcg_env, addr, tcg_constant_i32(s->mtx));
+     } else {
+         MMUAccessType acc = MMU_DATA_LOAD;
+         int size = 4 << s->gm_blocksize;
+@@ -4750,7 +4750,7 @@ static bool trans_LDG(DisasContext *s, arg_ldst_tag *a)
+     tcg_gen_andi_i64(addr, addr, -TAG_GRANULE);
+     tcg_rt = cpu_reg(s, a->rt);
+     if (s->ata[0]) {
+-        gen_helper_ldg(tcg_rt, tcg_env, addr, tcg_rt);
++        gen_helper_ldg(tcg_rt, tcg_env, addr, tcg_rt, tcg_constant_i32(s->mtx));
+     } else {
+         /*
+          * Tag access disabled: we must check for aborts on the load
+
 -- 
-2.53.0
+2.54.0
 
 

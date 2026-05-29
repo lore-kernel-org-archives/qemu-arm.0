@@ -4,98 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A83B8CD6E4A
-	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 13:04:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91952CD6E4A
+	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 13:16:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSwsa-0006U0-Ie; Fri, 29 May 2026 09:04:00 -0400
+	id 1wSx4b-0001Wc-Hn; Fri, 29 May 2026 09:16:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wSwsW-0006Og-OR
- for qemu-arm@nongnu.org; Fri, 29 May 2026 09:03:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wSwsV-0001Mb-0r
- for qemu-arm@nongnu.org; Fri, 29 May 2026 09:03:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780059832;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=k0h/e48HKzK8qaSEuhnE2gETMlM29GhONx96gOKhjY0=;
- b=ak1+4NMlQAfvzOnnLLcwPv+4dLCOA0jCCVnQkhp55UaHV1RER8vUko4x+18ZagOBmpHD65
- Kbk76o8DYvZ6Pipab3mf8GZoqpdIk557LFjB1+kuNFDlWng6LvdoDCvdwrGxvEbi8yW5We
- 6MWigjk3/iAqCRJ3mOj3ZHFmijSJsrI=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-76--tktn3pHPSuxeObc_Hch4w-1; Fri, 29 May 2026 09:03:50 -0400
-X-MC-Unique: -tktn3pHPSuxeObc_Hch4w-1
-X-Mimecast-MFC-AGG-ID: -tktn3pHPSuxeObc_Hch4w_1780059829
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-49050c44bcdso80200135e9.3
- for <qemu-arm@nongnu.org>; Fri, 29 May 2026 06:03:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
+ id 1wSx4D-0001VX-3n
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 09:16:09 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
+ id 1wSx49-0004dN-Jq
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 09:15:59 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-45eeba68948so1205031f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 29 May 2026 06:15:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=9elements.com; s=google; t=1780060556; x=1780665356; darn=nongnu.org;
+ h=in-reply-to:from:content-language:references:cc:to:subject
+ :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=PNZuWO14/hYrfF1FbYBmYNjTR26OQiJxBVDHKZXrrH4=;
+ b=GqMb71e2AyYG4fRU9Xfa9EBel8NZATpmLbL2jQI3r6IcQmfvzOgEWYMkHHsSEot8gn
+ Hk9HzWJsqnZ7Rbxl9K9XksNmT8X9s+NGwnlsaF7J3JzNKtmXw5evu/BnkLrMHWiT/Txi
+ NKjqnhP7lOFadxLroXlyac1NZ53ZqLzP7YRHUVxWKrAFiyx6U8Bup4SXr4HCIlN8zqn3
+ VogFUfGw06ltnbEQfHoxo5b9JFVpDtTkrl1CHgJCAzds6yJOqzPKhLQ3NH6r+143W6un
+ rFutJFElOq/a1agpZOEj6NKrVCnXRmJspJhwNZo9w0Uwk/fysduGWoXO1EYDaP8WNuD7
+ Gqqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780059829; x=1780664629;
- h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
- :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=k0h/e48HKzK8qaSEuhnE2gETMlM29GhONx96gOKhjY0=;
- b=ctgn0ume4zdmxFoozPBrM/VxwslYhPjwswxp28QR6WO0NPHhUHyRcuNRpw92llK+1T
- 7PklhMVlezKypAA2AVEObghA+t1uIkY3rVoC7DhdrFh7Aa258U6LteUmKmgfOsodQfoq
- N2lOTMuhxQeVGVkZrmCSu4rJzaDZ9ZO1wZEYIKzRSKavs+uxr/Aj4KLYcZhQdnYew8Nv
- RPs1rI9N6D2rAw/MQzX2y5DDdBSGaCQW8KuynM06lwRdipi5UUxUvc7zNSM9PAuqXBo4
- UbVhAxaWpbFQtdAZhy54zPwqPkHaEH34ZSeKGjsPjZ9z5NLkzl2unm6pDd9TzIOIF4hq
- Ip7w==
+ d=1e100.net; s=20251104; t=1780060556; x=1780665356;
+ h=in-reply-to:from:content-language:references:cc:to:subject
+ :user-agent:mime-version:date:message-id:x-gm-gg:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=PNZuWO14/hYrfF1FbYBmYNjTR26OQiJxBVDHKZXrrH4=;
+ b=GFojMdNyGeJIs8yMfN+Zpjdr9zp8H4S8L/+jhAGad24u4XYd7kQS8JvnhkQ03UxPzc
+ PBev4E5SjqFv6mJHWVK2tUAUQalIoE3kIkNTgd/cXPVD6iVph0YJgQ5IoDl/voq9EU0D
+ aeEwUfJIwXnhe1yZYLGfrFnH+s6QMSrCvbQ/Jb74hop9Uk9ZNCRkyD9jvlLgK2RuHsef
+ BPIj149PVR7UFj8W0gtJ3WEwbC7AkrjDydZt+Dv7tkBDkXCauArS3Ft1EAh27i2CefA4
+ 5n6AvWdplB1OSVHdagfaYR0Ewiu7QmQaCXFRqQTmchfNnqsdCgTP6YWOqme8hU2m2LHf
+ bzmw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/7+sWpT8/5PnBgFNszpFd6N7dDEjPTF9bHgJWNb0Khyh+4EuL0xPpidMr6tFoqMgdCtfrzOiQ4MQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxVO9hKVP4Sx6BR6IOWW90omb4jn6MTmO8mNMv7o6FmpVlQPv3U
- levFrPOnYepPTMU3Vhy7suSbvW3AzeZV7mBd10ZzwXyIUhu4pNQT5uDuwxXVgIchZBi0mtGByNa
- F8xeHgJcyLsemxZBPz7qmShOAzEKWTg/R06Ov6YKETmH909SUoWr70g==
-X-Gm-Gg: Acq92OGBwBbTz1EXVvo2n6SH4spiZuwb4QyaAPjnr0dFg91uHtllHA8P6l2xC6aq9RP
- tLJZV5/F5goGL/0usJfxeBwyFWSL6XsZnBCczbXXMEkj4DnVnJtqMndOOmA4OAtU8cYocqI3n7M
- oAusj8fd67sCWIZSbF9qha6gDMucTjYA4eczYEAjIh4NUovNCiVcOSHT774FbPpNVjWhJB//W/v
- qZpLuH3o7YIkR/BnR1dryX1E/H61I3BGMorlo8aR0W5ZSfdYqWYDsPYsLkzFlj6VvBqlnp95WoG
- c9GRnCCaXhcK6WOwsiLGONO9UkJVOb0FvVrl6Xyt5MvK9tZLtousxtD5izzvTOLuyWTJbvZioTW
- GPyzqExeDnLtKhny0VnWBvIlGtb0hm01X6nHiTuxrej0YbHec5WL6yImP339MhcBndUUG87aQFr
- gXTY9avg==
-X-Received: by 2002:a05:600c:1c0d:b0:490:45bb:8dd8 with SMTP id
- 5b1f17b1804b1-4909c0e02c1mr57151375e9.25.1780059829219; 
- Fri, 29 May 2026 06:03:49 -0700 (PDT)
-X-Received: by 2002:a05:600c:1c0d:b0:490:45bb:8dd8 with SMTP id
- 5b1f17b1804b1-4909c0e02c1mr57150705e9.25.1780059828738; 
- Fri, 29 May 2026 06:03:48 -0700 (PDT)
-Received: from rh (p200300f6af2a6100f239e076bbd76784.dip0.t-ipconnect.de.
- [2003:f6:af2a:6100:f239:e076:bbd7:6784])
+ AFNElJ+kxYn49TjEwkwhuv2DZqDk/rZza1Jx4Y67uI/yrS9fh/TYxzfUYYSKNKNCHuBKfjyjNUjmAC0Owg==@nongnu.org
+X-Gm-Message-State: AOJu0YzV4YH1+3VubwTw3JzcLjOICJHhZ+3ZHZS6ysh9QK5XMeDxegXB
+ NSMynxtvbf4gl+UR/Ne+PwM8sncYIq+9dGNVhgCRe5+zRin5Z7fCAQ2BkiQtpFg9fV8=
+X-Gm-Gg: Acq92OHKlX0beN2f+lWpVA9V5cxeoHF4lOGfkDGVxTjeahRnzB4ovdKIZQWLHLUh9rO
+ JXIcJKLND+hcjeY9Xv7uS82Zu3vdX/3poIztAQ3KTW4JH0dX9j//sUGv8g6en0ulhogkFLBmSEP
+ GDoiNy18h//ppMgyuXjnf8fARCDwRKzwiXrLc6YBvZcPxV0Y+2ul3uY0HQ84JQqmdL32v+8n9uX
+ tCMQUmo3cupy+lqaL4wCjNftPJjiQur7dkUz3vdqPJRHvJexaACXnsfQrgdL+pENZWAG9Z3lSdj
+ 0+2UHtasacjX2GgpHdLiaENqZvmiDnppmdaC0iuAqt/Gjwpmb3RtcaqPsNxWAbvXCr3rkwzpcAC
+ b2Y7sLLoXpVw+PGApP/5MI7PtC4ZWqf16GHLRLCd4c27THPNYqY9iv1ZPm1DfoIoR/e/6f9CLCY
+ fn4Y/bL+Wxsn290Hspk3cdz01YsqK+ykblyhn8kQoguTEILojsdDLLWjRbyL8dER5T8jKP2FVVY
+ 6EImtjn7cIhRic84mwwmWlDR9HWx9Vk0SYBYQ==
+X-Received: by 2002:adf:e00b:0:10b0:45e:98ed:bde5 with SMTP id
+ ffacd0b85a97d-45ef143edf4mr3809894f8f.24.1780060555593; 
+ Fri, 29 May 2026 06:15:55 -0700 (PDT)
+Received: from ?IPV6:2a02:8071:5c81:9f00:b51d:3606:8cce:d388?
+ ([2a02:8071:5c81:9f00:b51d:3606:8cce:d388])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4909cabfd6esm45521605e9.15.2026.05.29.06.03.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 May 2026 06:03:48 -0700 (PDT)
-Date: Fri, 29 May 2026 15:03:46 +0200 (CEST)
-From: Sebastian Ott <sebott@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-cc: mst@redhat.com, Eric Auger <eauger@redhat.com>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org
-Subject: Re: [PATCH] hw/arm/virt: preserve config for ACPI PCI hotplug
-In-Reply-To: <CAFEAcA-PkO3aeGoaAzpbJGrrE-_-RjJy9Q4D4MnQ=9W61--3hA@mail.gmail.com>
-Message-ID: <48595a74-78b5-6136-8752-0a73501b9531@redhat.com>
-References: <0de640a2-8807-69cf-4429-672263e3e759@redhat.com>
- <CAFEAcA-PkO3aeGoaAzpbJGrrE-_-RjJy9Q4D4MnQ=9W61--3hA@mail.gmail.com>
+ ffacd0b85a97d-45ef34c50f6sm4016286f8f.16.2026.05.29.06.15.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 29 May 2026 06:15:55 -0700 (PDT)
+Content-Type: multipart/alternative;
+ boundary="------------FUORgOBfGxIswJCvs3NVuKmW"
+Message-ID: <8b7ee02e-fe95-40db-9f2e-2d47262d6020@9elements.com>
+Date: Fri, 29 May 2026 15:15:53 +0200
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: S4cnqIZpuE5hnFU8G2PlhGhfBgWFrG1rCgaxNz9-B4U_1780059829
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=sebott@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 4/5] hw/sensor: support MAX11615
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: qemu-devel@nongnu.org, Titus Rwantare <titusr@google.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+References: <20260515150610.381066-1-alexander.hansen@9elements.com>
+ <20260515150610.381066-5-alexander.hansen@9elements.com>
+ <20260529133919.3194636b@jic23-huawei>
+Content-Language: en-US
+From: Alexander Hansen <alexander.hansen@9elements.com>
+In-Reply-To: <20260529133919.3194636b@jic23-huawei>
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=alexander.hansen@9elements.com; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,49 +114,205 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 28 May 2026, Peter Maydell wrote:
-> On Thu, 28 May 2026 at 10:23, Sebastian Ott <sebott@redhat.com> wrote:
->>
->> ACPI PCI hotplug of a PCI device using a bar > 2M fails on ARM
->> with a resource allocation failure in the guest kernel (Linux):
->>
->> qemu-system-aarch64 [..] -device pcie-root-port,id=rp1,bus=pcie.0 \
->>                     -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on \
->>                     -pflash /usr/share/edk2/aarch64/QEMU_EFI-silent-pflash.qcow2
->>
->> (qemu) device_add pci-testdev,bus=rp1,membar=4M
->>
->> [   55.106283] pci 0000:01:00.0: [1b36:0005] type 00 class 0x00ff00 conventional PCI endpoint
->> [   55.107627] pci 0000:01:00.0: BAR 0 [mem 0x00000000-0x00000fff]
->> [   55.107864] pci 0000:01:00.0: BAR 1 [io  0x0000-0x00ff]
->> [   55.108015] pci 0000:01:00.0: BAR 2 [mem 0x00000000-0x003fffff 64bit pref]
->> [   55.118609] pci 0000:01:00.0: BAR 2 [mem size 0x00400000 64bit pref]: can't assign; no space
->> [   55.118653] pci 0000:01:00.0: BAR 2 [mem size 0x00400000 64bit pref]: failed to assign
->> [   55.118671] pci 0000:01:00.0: BAR 0 [mem 0x10000000-0x10000fff]: assigned
->> [   55.122828] pci 0000:01:00.0: BAR 1 [io  0x1000-0x10ff]: assigned
->> [   55.127090] pci 0000:01:00.0: BAR 0 [mem 0x10000000-0x10000fff]: releasing
->> [   55.127098] pci 0000:01:00.0: BAR 2 [mem size 0x00400000 64bit pref]: can't assign; no space
->> [   55.127102] pci 0000:01:00.0: BAR 2 [mem size 0x00400000 64bit pref]: failed to assign
->> [   55.127106] pci 0000:01:00.0: BAR 0 [mem 0x10000000-0x10000fff]: assigned
->>
->> This behavior is exactly the same on x86 - except the busses are created
->> with a default window size of 256M there. If the PCI devices being
->> hotplugged use a bar > 256M you get the same failure like on ARM.
->>
->> The workaround on x86 is to specify "pref64-reserve=" for the PCIe
->> root-port. On ARM this is currently ignored.
+This is a multi-part message in MIME format.
+--------------FUORgOBfGxIswJCvs3NVuKmW
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Hi Jonathan, i just sent out a v5 which should address at least some of 
+the comments you had for MAX11615 on v3 of this patchset.
+
+I do appreciate the detailed feedback, apparently you know a lot about 
+this device.
+
+Overall i did underestimate the difficulty of making a good emulation 
+for any of these 3 devices i am targeting as part of yv4 support. Maybe 
+i should have started with only MAX31790, but i needed all 3 of those 
+for my OpenBMC development use-case.
+
+I would still like to continue the work on these. Iterating on 3 devices 
+at the same time can be challenging for someone starting out,
+so most of my focus is on getting machine + functional test in, then 
+MAX31790, then the others.
+
+ > So what is the purpose of limited emulation vs just not emulating it 
+at all. My use-case for these devices is to support firmware 
+development, specifically OpenBMC development on that platform.
+For that purpose it is already sufficient since the drivers probe and 
+provide readings. If i find gaps later, i can address them.
+
+Of course if someone else wants a specific feature of the sensor 
+supported or finds a bug in any of these patches i am happy
+to implement these things :)
+
+Thanks again for reviewing,
+
+Alexander
+
+On 5/29/26 14:39, Jonathan Cameron wrote:
+> On Fri, 15 May 2026 16:58:01 +0200
+> Alexander Hansen<alexander.hansen@9elements.com> wrote:
 >
-> From the perspective of somebody who doesn't know much about
-> ACPI or PCI, this commit message doesn't really tell me why
-> QEMU needs to change. The above reads like "this is a kernel
-> problem" to me. Why is the kernel unable to allocate this BAR?
+>> Product: [1]
+>> Datasheet: [2]
+>>
+>> Sensor readings can be provided upon creation of the device. In case no
+>> readings are provided the ADC reads a pre-defined arbitrary value.
+>>
+>> root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/name
+>> max11615
+>> root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage0_raw
+>> 1922
+>> root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage_scale
+>> 0.500000000
+> As I mentioned on v1 a lot of the standard linux driver operations with this
+> device will not work. The emulation doesn't deal with multi channel
+> scans for example.
+>
+> So what is the purpose of limited emulation vs just not emulating it at all.
+> (which will fail a couple more things obviously!)
+>
+> I'm not sure what the standard expectations are for this when the
+> features that aren't emulated are not discoverable (i.e. the driver can't
+> tell it should not use them).
+>
+> Jonathan
+>
+>> trace:
+>> less /tmp/qemu-trace.log | grep -i max116
+>> max11615_realize i2c_addr: 0x33
+>> max11615_realize i2c_addr: 0x33
+>> max11615_event i2c_addr: 0x33, event: 0x01
+>> max11615_write_setup i2c_addr: 0x33, data: 0xd2
+>> max11615_write_config i2c_addr: 0x33, data: 0x0f
+>> max11615_event i2c_addr: 0x33, event: 0x03
+>> max11615_event i2c_addr: 0x33, event: 0x01
+>> max11615_write_setup i2c_addr: 0x33, data: 0xd2
+>> max11615_write_config i2c_addr: 0x33, data: 0x0f
+>> max11615_event i2c_addr: 0x33, event: 0x03
+>> max11615_event i2c_addr: 0x33, event: 0x01
+>> max11615_write_setup i2c_addr: 0x33, data: 0xd2
+>> max11615_write_config i2c_addr: 0x33, data: 0x61
+>> max11615_event i2c_addr: 0x33, event: 0x03
+>> max11615_event i2c_addr: 0x33, event: 0x00
+>> max11615_recv i2c_addr: 0x33, reg_addr: 0x00
+>> max11615_recv_return i2c_addr: 0x33, returns: 0xfa
+>> max11615_recv i2c_addr: 0x33, reg_addr: 0x00
+>> max11615_recv_return i2c_addr: 0x33, returns: 0xd2
+>> max11615_event i2c_addr: 0x33, event: 0x04
+>> max11615_event i2c_addr: 0x33, event: 0x03
+--------------FUORgOBfGxIswJCvs3NVuKmW
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-Lack of resources on the parent bus/bridge device - the bridge windows are
-2M per default on ARM. The native PCIe hotplug controller would add the
-additional resources to the parent bridge and retry allocation. The
-ACPI PCI hotplug controller does not do that. I'm curently playing with
-a hack that adds this to acpiphp.
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <p>Hi Jonathan, i just sent out a v5 which should address at least
+      some of the comments you had for MAX11615 on v3 of this patchset.<br>
+      <br>
+      I do appreciate the detailed feedback, apparently you know a lot
+      about this device.<br>
+      <br>
+      Overall i did underestimate the difficulty of making a good
+      emulation for any of these 3 devices i am targeting as part of yv4
+      support. Maybe i should have started with only MAX31790, but i
+      needed all 3 of those for my OpenBMC development use-case.<br>
+      <br>
+      I would still like to continue the work on these. Iterating on 3
+      devices at the same time can be challenging for someone starting
+      out, <br>
+      so most of my focus is on getting machine + functional test in,
+      then MAX31790, then the others.<br>
+      <br>
+      &gt; <span style="white-space: pre-wrap">So what is the purpose of limited emulation vs just not emulating it at all.
 
-Sebastian
+</span>My use-case for these devices is to support firmware development,
+      specifically OpenBMC development on that platform.<br>
+      For that purpose it is already sufficient since the drivers probe
+      and provide readings. If i find gaps later, i can address them.<br>
+      <br>
+      Of course if someone else wants a specific feature of the sensor
+      supported or finds a bug in any of these patches i am happy<br>
+      to implement these things :)<br>
+      <br>
+      Thanks again for reviewing,<br>
+      <br>
+      Alexander<br>
+      <br>
+    </p>
+    <div class="moz-cite-prefix">On 5/29/26 14:39, Jonathan Cameron
+      wrote:<br>
+    </div>
+    <blockquote type="cite"
+      cite="mid:20260529133919.3194636b@jic23-huawei">
+      <pre wrap="" class="moz-quote-pre">On Fri, 15 May 2026 16:58:01 +0200
+Alexander Hansen <a class="moz-txt-link-rfc2396E" href="mailto:alexander.hansen@9elements.com">&lt;alexander.hansen@9elements.com&gt;</a> wrote:
 
+</pre>
+      <blockquote type="cite">
+        <pre wrap="" class="moz-quote-pre">Product: [1]
+Datasheet: [2]
+
+Sensor readings can be provided upon creation of the device. In case no
+readings are provided the ADC reads a pre-defined arbitrary value.
+
+root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/name
+max11615
+root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage0_raw
+1922
+root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage_scale
+0.500000000
+</pre>
+      </blockquote>
+      <pre wrap="" class="moz-quote-pre">
+As I mentioned on v1 a lot of the standard linux driver operations with this
+device will not work. The emulation doesn't deal with multi channel
+scans for example.
+
+So what is the purpose of limited emulation vs just not emulating it at all.
+(which will fail a couple more things obviously!)
+
+I'm not sure what the standard expectations are for this when the
+features that aren't emulated are not discoverable (i.e. the driver can't
+tell it should not use them).
+
+Jonathan
+
+</pre>
+      <blockquote type="cite">
+        <pre wrap="" class="moz-quote-pre">
+trace:
+less /tmp/qemu-trace.log | grep -i max116
+max11615_realize i2c_addr: 0x33
+max11615_realize i2c_addr: 0x33
+max11615_event i2c_addr: 0x33, event: 0x01
+max11615_write_setup i2c_addr: 0x33, data: 0xd2
+max11615_write_config i2c_addr: 0x33, data: 0x0f
+max11615_event i2c_addr: 0x33, event: 0x03
+max11615_event i2c_addr: 0x33, event: 0x01
+max11615_write_setup i2c_addr: 0x33, data: 0xd2
+max11615_write_config i2c_addr: 0x33, data: 0x0f
+max11615_event i2c_addr: 0x33, event: 0x03
+max11615_event i2c_addr: 0x33, event: 0x01
+max11615_write_setup i2c_addr: 0x33, data: 0xd2
+max11615_write_config i2c_addr: 0x33, data: 0x61
+max11615_event i2c_addr: 0x33, event: 0x03
+max11615_event i2c_addr: 0x33, event: 0x00
+max11615_recv i2c_addr: 0x33, reg_addr: 0x00
+max11615_recv_return i2c_addr: 0x33, returns: 0xfa
+max11615_recv i2c_addr: 0x33, reg_addr: 0x00
+max11615_recv_return i2c_addr: 0x33, returns: 0xd2
+max11615_event i2c_addr: 0x33, event: 0x04
+max11615_event i2c_addr: 0x33, event: 0x03
+</pre>
+      </blockquote>
+    </blockquote>
+  </body>
+</html>
+
+--------------FUORgOBfGxIswJCvs3NVuKmW--
 

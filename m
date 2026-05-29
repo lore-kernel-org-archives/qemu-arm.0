@@ -4,100 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C696CD4F54
-	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 19:55:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B71A6CD6E49
+	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 19:57:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wT3Gj-0005MK-LO; Fri, 29 May 2026 15:53:21 -0400
+	id 1wT3KG-0004tA-P7; Fri, 29 May 2026 15:57:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1wT3GW-00050E-Be
- for qemu-arm@nongnu.org; Fri, 29 May 2026 15:53:11 -0400
-Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1wT3GU-0005Ys-1B
- for qemu-arm@nongnu.org; Fri, 29 May 2026 15:53:08 -0400
-Received: by mail-ot1-x330.google.com with SMTP id
- 46e09a7af769-7e6201aeb2aso6482010a34.3
- for <qemu-arm@nongnu.org>; Fri, 29 May 2026 12:53:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wT3KF-0004rm-34
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 15:56:59 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wT3K9-0006if-3v
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 15:56:58 -0400
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 64TItHx23528094
+ for <qemu-arm@nongnu.org>; Fri, 29 May 2026 19:56:51 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ L1FH1W5U1Zo+xcXwsO7uD2MIuU02K6pwTbQnTJHDcOU=; b=QZSH5gu2JZQUQ1o7
+ m01rOZSkv3wqp3Z2WuW9qTn68Ihvqp9Tl+rZk2cS460yxXAnIaS6dhW4GupV1gcn
+ fT3+rUdSn8eDCrUhN45CAo7LPMezrZCVp2zx0uSqIB0EbI5BFppWVHxObLy+Y93i
+ IOnmZcyqOUzTuv5VYxKh6w7c1sPrdPspYid4GZYr/+Apvxu03Ce8iklEDI4S735D
+ d6vMkCllrqT0AwIUgoLDcppJvPVuXTtMNrEIaWmrhRmk13U6o7VsjhXMfNLM86X5
+ iqfyzJNsyiAeiBN3c3+ci6mux+fWyQdW1qQL1i2dxflKPhSHZYogyd87vjyU4EoZ
+ 4cT8FA==
+Received: from mail-dy1-f197.google.com (mail-dy1-f197.google.com
+ [74.125.82.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4efgge88ux-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Fri, 29 May 2026 19:56:50 +0000 (GMT)
+Received: by mail-dy1-f197.google.com with SMTP id
+ 5a478bee46e88-304ea42b025so351427eec.0
+ for <qemu-arm@nongnu.org>; Fri, 29 May 2026 12:56:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1780084384; x=1780689184; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=AlrO//27Om236RSs+kJZmChk5zcuJ68zlH0WDU+6pyU=;
- b=Cj7E3mHiLFZ/Qpk3LPZc7y7Cl1rMvf3MIunLiMzFBaIm7glpEpzpAsZUyJiE3855W/
- jcoUj5rscasgRVGHuIHxdxG9caluu1VGHP5FIvRCwncumL5WrTvelqe73I2XWoOqPocm
- fFwP/XxzPtDvnkp3xbki9tUHhwod/pX1U5gHdIL7zsR5aulvtShYcKVHTxTktf6zeMWr
- MrvWzdrHWU7OL6OzsBWk8L0z4wj4pN3PStg6CEZH2Mpe9qHBtYR6PC607oPcq+I915K+
- WHW1vtx6gbAji3TVHuN2Vuf2Ab1bwU5Gu3uGOtcaZ9xs1VTcB7l0exIZkSMR8M4oQ27a
- RC5g==
+ d=oss.qualcomm.com; s=google; t=1780084610; x=1780689410; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=L1FH1W5U1Zo+xcXwsO7uD2MIuU02K6pwTbQnTJHDcOU=;
+ b=MbVWp2vy7kBmEvdk5qTDE2oHg7IsEXrPdyOKE4Bq4RJdLzTRn+lLnhCjTuwAEKJKoU
+ r9FnzgFWBKBTpaQR8T+8MUfDYBe14TNeIplB2h6AuqMSdpjiPPo2aNrw48rQYVGX1obW
+ 7igq+jU9i0AwX++dQQtrIt+QsNfrig5I/bpjhlicCops4O/rMcB31271ZdAjGFlid4lZ
+ UkTSKfOWCjxugfBg+6tSlwr07DQ9+x802gRkgVwBpB+6ghMAEfOTID/TVDEI9Vi8SO1i
+ vRkWNkRcxYcAisUesFJjjw1GMKkQQJ3yu2qHqoUqsxDIak+T8hYS7zivu0IbnLGs9lK8
+ nhbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780084384; x=1780689184;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=AlrO//27Om236RSs+kJZmChk5zcuJ68zlH0WDU+6pyU=;
- b=gm87Vf6YIghM1HHA5KKICEwj+u9lWShMxOBxqIGWhRomnvuf+tDcmd/yttEIxlgC1h
- UqDtkYwCPVDuUSuITo8fTBrHHB4vpDg+drk0Uzw7ONhUPriQ9LAVdbkhUPZoLh9HMPqn
- 9CbwfRfw8Sq6EGJMb4sUly4noRBn6b7hoWLeAOoLAfXcZVOMwWam6l5a35IsOCdSHy4e
- fehyI0RzMU+dzqxesPxGoUyag8nFWq/aurON623bRx8z1QYO/CS2whP0NkgVCHgFx59F
- YYR66BU3gIMDsODDwrVmlfZpRv8mJZUzdA6n7pm+rKKui3F9KtThNksevCCFHzat5bKw
- 1GkQ==
+ d=1e100.net; s=20251104; t=1780084610; x=1780689410;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=L1FH1W5U1Zo+xcXwsO7uD2MIuU02K6pwTbQnTJHDcOU=;
+ b=KIvez6FnVwQCqHRwK3ePi/WCVz+dli9Kcs4dZk5l/KOwID0R0GTnV/HaGn62tSGY0/
+ UBlMdoCd/yOZOlm4pggaX+zSA2SWBHO6Hw+8/imIkL6kXTD5ozEOfOoeJgWxwAJhzZEu
+ yjDjHqazSdVo4Ews8ty4906zQ7BA5z7+lCRwXfWypKhv/R3VerBBj1sIMiHrq/wM5LPE
+ VdmQNiS+2EqNfN+pbOkKI+A4UxJoPdH+nL0EqoLyCjMBEwm2gKcLZD7nAF6gtTgPg9Ki
+ 8NkOOZjhoe5NFiYM1HLAug/wMUDtcsQ0xPhTvhHMBoJvHv88wcTFmEQ36+NO+Mmjv/zT
+ B2ZQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9pMDiuBvkbZENUCYwjA1yrl2UDZctiVV8qszjKtU4Po0arAyU8n/wkmcaYJmxQI9vCaVy/8jdHnA==@nongnu.org
-X-Gm-Message-State: AOJu0YxT8BNAkKV3kOmljkZugxvkRhRmTtG7cTT9FxWMBfjQbM7G/UJ9
- oXwM1fRej0sYAmwv5QYCAVo5kQxcrivFGVwxVE/br099DzU8psOVeUH7
-X-Gm-Gg: Acq92OH09UDwCbJZgSOpGm2lqCC8N3IPz73YARXnFqYYTmwoiCvITTWhkoRdCwsZe3i
- +O4YcxvMv20cEg7NXfp/7aNb5AHePcI/LbERpxg0p6W3sy54ryvpF1X0cgGf3R3eF/8lbxNzGhj
- CmWWyLWTj7Ou4QOrQtQrHISxyPbkCi6Ne17/q4K7Fk3lfPfvSAIVBD1PUaTrUrfjnwfnUpxJsEB
- 0CtHiNCgSRyIAkQ58HxVewz5VgBITOdByarUoD8cHyPZ7hEzjoUDnhz/j/TImshEQI/nwZKnr4N
- oAsk8DVarBBTmlsx6kPHkzzN/0vtIs7aXQkX3qPc4ZqPc0zXQX4t9xb/RrN7Jb0T4bYrHvLFl+1
- Pra24Vci1edXHnvBfGyrm9vFNoE3Hm0wXSWUL3DnaKyr45ZAIJi7hwlUgloGXViXqcvRhksxGT/
- y1G5wUMrIyxIvw/MOuLISCFWLF0r4+idr4QoiOKm4Z5Qs=
-X-Received: by 2002:a05:6820:4cc1:b0:69d:6a9e:e925 with SMTP id
- 006d021491bc7-69e104b941bmr395263eaf.27.1780084384184; 
- Fri, 29 May 2026 12:53:04 -0700 (PDT)
-Received: from [10.21.163.79] ([146.74.94.63])
- by smtp.gmail.com with ESMTPSA id
- 006d021491bc7-69e06587eecsm1626692eaf.0.2026.05.29.12.53.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 May 2026 12:53:03 -0700 (PDT)
-From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Fri, 29 May 2026 12:52:46 -0700
-Subject: [PATCH v7 06/15] target/arm: add MTX to MTEDESC and DisasContext
+ AFNElJ9ih7HGF9vwy/pzX3DPEEUM3L1aYLHTfBdyCYprrxx49U33DgJZg6v8ZDrJ3jEunt7CUZKxkTJUMA==@nongnu.org
+X-Gm-Message-State: AOJu0YxuoIjWEIZhzAVVr0Yq5/l65b16J/MEREniadEEzDQm+PczPUGi
+ PCyqT+4VRLEUKc7Mb8PaZyk4nDf5uxiOt/pPdNLTHIUA7a8NJZ7OYhuHDWl1m3rI4zWLkx1kA0W
+ PuAS3/6/e6hLBzxn5yONWEZKBwaw4NmMHcU+HuyNW7el2EfJ99EkRV/8=
+X-Gm-Gg: Acq92OGNqx9hs9N9UovB5zYun38EOezHCeQG/DBffp800QRGu6tlbDP9o6mvPc25yyz
+ 37sdpjfjg8rvUs/owXhLyF6dHL8ccEfxH9To8rfGd/eectIuoo63H5AqWNpbyL4qYThTjwjsX2B
+ 0TKv87BMAKoV0MdTa1++LE1H3nDZvkX6U5eE30fccBpWmNcqBYdXbIZ7VJPz9Yrc3HUJY5URyIk
+ qF7yUSLAPyeGq2ogW8k3v9t0X1jN3gQzBQafVeCMMi8edTStSg5feGM33Sbj3T9eqPL1moLdy5y
+ qqpmyfsO/Tn77DT4Q0J1QDInbZFs1ythQBN65hg1MYXKzYm57v5qzgg+9uV0B7zGBqLTJLE9TGR
+ v3LbaUoiSC1CUROSSvy9D6NBYO180y2rhJg0998yHJVWGrvQmQlkCtCyAnqtvXPyI1SeNn1HHQG
+ ClBUZ5q1T2Zt9Tqd7eQKU0VW+G
+X-Received: by 2002:a05:693c:620f:b0:2c1:82c2:bc31 with SMTP id
+ 5a478bee46e88-304eb182e11mr1526497eec.10.1780084609597; 
+ Fri, 29 May 2026 12:56:49 -0700 (PDT)
+X-Received: by 2002:a05:693c:620f:b0:2c1:82c2:bc31 with SMTP id
+ 5a478bee46e88-304eb182e11mr1526455eec.10.1780084609020; 
+ Fri, 29 May 2026 12:56:49 -0700 (PDT)
+Received: from [192.168.1.170] (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-304ed2c3121sm2253871eec.5.2026.05.29.12.56.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 29 May 2026 12:56:48 -0700 (PDT)
+Message-ID: <748cc9e7-072a-45db-ba42-372669858f60@oss.qualcomm.com>
+Date: Fri, 29 May 2026 12:56:45 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260529-feat-mte4-v7-6-ccbd3c14eb3c@gmail.com>
-References: <20260529-feat-mte4-v7-0-ccbd3c14eb3c@gmail.com>
-In-Reply-To: <20260529-feat-mte4-v7-0-ccbd3c14eb3c@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, 
- Gustavo Romero <gustavo.romero@linaro.org>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
- Laurent Vivier <laurent@vivier.eu>, 
- Gabriel Brookman <brookmangabriel@gmail.com>, Helge Deller <deller@gmx.de>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1780084373; l=5379;
- i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=AyoBnLhE7qQZx6eJGl83wzWfquYA0tuBBKvsqKudltE=;
- b=LdJc1ZrDb7S2/Ymzk6QSwMsKhhOP7WpAxyyahp3RKn9MM5g4W0blsx+/OmsfT5WPc6EKzkaP2
- 8FQSOfDjoLVDUio4zUnPv6EXwPyLWug6L/Yw8TV+neKPvZPAcUYtFlS
-X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
- pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
-Received-SPF: pass client-ip=2607:f8b0:4864:20::330;
- envelope-from=brookmangabriel@gmail.com; helo=mail-ot1-x330.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 00/17] accel: Remove need for AccelCPUClass
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Weiwei Li <liwei1518@gmail.com>, Glenn Miles <milesg@linux.ibm.com>,
+ kvm@vger.kernel.org, qemu-s390x@nongnu.org,
+ Chao Liu <chao.liu.zevorn@gmail.com>, David Hildenbrand <david@kernel.org>,
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Song Gao <gaosong@loongson.cn>, Paolo Bonzini <pbonzini@redhat.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Anton Johansson <anjo@rev.ng>,
+ Claudio Fontana <cfontana@suse.de>, Eric Farman <farman@linux.ibm.com>,
+ Alexander Graf <agraf@csgraf.de>, Chinmay Rath <rathc@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
+ qemu-riscv@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Cornelia Huck <cohuck@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Reinoud Zandijk
+ <reinoud@netbsd.org>, Halil Pasic <pasic@linux.ibm.com>
+References: <20260529194940.97143-1-philmd@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <20260529194940.97143-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-ORIG-GUID: uIC5mcBMACxs6PgGi1lit2Uem9Oeb-g7
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTI5MDE5OSBTYWx0ZWRfXzdsPAer1BjSC
+ oghvRGRCP7yoyPkTT00jywmf6EugD5qgFVCplsitOHkQ5qc5OdGuK3b4lFDMdkFbLZcN1clVkxi
+ EJrewfK28kNSeSAG7DMlIj/j06PJyRwupi0uAy2FM8zDyefFLwptNlZkJZYINLbe0Lammb2ZViL
+ Gbj9TmN+nDVfxNbWUVRtBx2bGKdmrYE5I6VebTYbapyHESY9X3nELtMjkmHD2d6q/+BMKcLCpOJ
+ OrKru1nSROZHxPtsvRc4Wb2AdMSPUtXTmePaDV371aMEpoZlj6L7KA+Jh/lIJhU1xfoOTP+DnzZ
+ tTlgiG8Pq8g3O7KDGOTgLRTRMc0yk0PyiHDvnPnQbSx7uc38rD2NA0MPPgPg7yKxbvUka+jywCD
+ Z+Ga8M1fPPXUv1Ffy+rWLB9L5SJrbFdMNGj55cIBV1Lu63n0fGL1+Y32arw9/Izwz3RgsrfbRHK
+ av/WXYwRgYs5Xx1xyXg==
+X-Proofpoint-GUID: uIC5mcBMACxs6PgGi1lit2Uem9Oeb-g7
+X-Authority-Analysis: v=2.4 cv=Z4zc2nRA c=1 sm=1 tr=0 ts=6a19ef82 cx=c_pps
+ a=Uww141gWH0fZj/3QKPojxA==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
+ a=IkcTkHD0fZMA:10 a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
+ a=Zsuq9JpdEuuag0fFG78A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=PxkB5W3o20Ba91AHUih5:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
+ definitions=2026-05-29_05,2026-05-28_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 adultscore=0 suspectscore=0 priorityscore=1501 bulkscore=0
+ lowpriorityscore=0 phishscore=0 malwarescore=0 impostorscore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2605210000 definitions=main-2605290199
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -114,116 +176,191 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add fields for MTX to DisasContext and MTEDESC. With MTE4, the fields
-will be needed in future patches that alter tag check, tag load and tag
-store behavior.
+On 5/29/2026 12:49 PM, Philippe Mathieu-Daudé wrote:
+> Could get re-review: 4 & 5
+>
 
-Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu.h               | 1 +
- target/arm/tcg/hflags.c        | 2 ++
- target/arm/tcg/translate-a64.c | 7 +++++++
- target/arm/tcg/translate.h     | 1 +
- 4 files changed, 11 insertions(+)
+Looks good, thanks.
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 08f04a57af..dd939ab22b 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2536,6 +2536,7 @@ FIELD(TBFLAG_A64, GCSSTR_EL, 43, 2)
- FIELD(TBFLAG_A64, FPMR_EL, 45, 2)
- FIELD(TBFLAG_A64, MTE_STORE_ONLY, 47, 1)
- FIELD(TBFLAG_A64, MTE0_STORE_ONLY, 48, 1)
-+FIELD(TBFLAG_A64, MTX, 49, 2)
- 
- /*
-  * Helpers for using the above. Note that only the A64 accessors use
-diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
-index d9d783489c..0716ca98fd 100644
---- a/target/arm/tcg/hflags.c
-+++ b/target/arm/tcg/hflags.c
-@@ -500,6 +500,8 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
-         }
-         /* Cache TCMA as well as TBI. */
-         DP_TBFLAG_A64(flags, TCMA, aa64_va_parameter_tcma(tcr, mmu_idx));
-+        /* Cache MTX. */
-+        DP_TBFLAG_A64(flags, MTX, mtx);
-     }
- 
-     if (cpu_isar_feature(aa64_gcs, env_archcpu(env))) {
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index a5850fb58d..036081d897 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -312,6 +312,7 @@ static TCGv_i64 gen_mte_check1_mmuidx(DisasContext *s, TCGv_i64 addr,
-         desc = FIELD_DP32(desc, MTEDESC, TCMA, s->tcma);
-         desc = FIELD_DP32(desc, MTEDESC, WRITE, is_write);
-         desc = FIELD_DP32(desc, MTEDESC, ALIGN, memop_alignment_bits(memop));
-+        desc = FIELD_DP32(desc, MTEDESC, MTX, s->mtx);
-         desc = FIELD_DP32(desc, MTEDESC, SIZEM1, memop_size(memop) - 1);
- 
-         ret = tcg_temp_new_i64();
-@@ -345,6 +346,7 @@ TCGv_i64 gen_mte_checkN(DisasContext *s, TCGv_i64 addr, bool is_write,
-         desc = FIELD_DP32(desc, MTEDESC, TCMA, s->tcma);
-         desc = FIELD_DP32(desc, MTEDESC, WRITE, is_write);
-         desc = FIELD_DP32(desc, MTEDESC, ALIGN, memop_alignment_bits(single_mop));
-+        desc = FIELD_DP32(desc, MTEDESC, MTX, s->mtx);
-         desc = FIELD_DP32(desc, MTEDESC, SIZEM1, total_size - 1);
- 
-         ret = tcg_temp_new_i64();
-@@ -3007,6 +3009,7 @@ static void handle_sys(DisasContext *s, bool isread,
-             desc = FIELD_DP32(desc, MTEDESC, MIDX, get_mem_index(s));
-             desc = FIELD_DP32(desc, MTEDESC, TBI, s->tbid);
-             desc = FIELD_DP32(desc, MTEDESC, TCMA, s->tcma);
-+            desc = FIELD_DP32(desc, MTEDESC, MTX, s->mtx);
- 
-             tcg_rt = tcg_temp_new_i64();
-             gen_helper_mte_check_zva(tcg_rt, tcg_env,
-@@ -4874,6 +4877,7 @@ static bool do_SET(DisasContext *s, arg_set *a, bool is_epilogue,
-         desc = FIELD_DP32(desc, MTEDESC, TBI, s->tbid);
-         desc = FIELD_DP32(desc, MTEDESC, TCMA, s->tcma);
-         desc = FIELD_DP32(desc, MTEDESC, WRITE, true);
-+        desc = FIELD_DP32(desc, MTEDESC, MTX, s->mtx);
-         /* SIZEM1 and ALIGN we leave 0 (byte write) */
-     }
-     /* The helper function always needs the memidx even with MTE disabled */
-@@ -4928,11 +4932,13 @@ static bool do_CPY(DisasContext *s, arg_cpy *a, bool is_epilogue, CpyFn fn)
-     if (s->mte_active[runpriv]) {
-         rdesc = FIELD_DP32(rdesc, MTEDESC, TBI, s->tbid);
-         rdesc = FIELD_DP32(rdesc, MTEDESC, TCMA, s->tcma);
-+        rdesc = FIELD_DP32(rdesc, MTEDESC, MTX, s->mtx);
-     }
-     if (s->mte_active[wunpriv]) {
-         wdesc = FIELD_DP32(wdesc, MTEDESC, TBI, s->tbid);
-         wdesc = FIELD_DP32(wdesc, MTEDESC, TCMA, s->tcma);
-         wdesc = FIELD_DP32(wdesc, MTEDESC, WRITE, true);
-+        wdesc = FIELD_DP32(wdesc, MTEDESC, MTX, s->mtx);
-     }
-     /* The helper function needs these parts of the descriptor regardless */
-     rdesc = FIELD_DP32(rdesc, MTEDESC, MIDX, rmemidx);
-@@ -10723,6 +10729,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
-     dc->mte_active[1] = EX_TBFLAG_A64(tb_flags, MTE0_ACTIVE);
-     dc->mte_store_only[0] = EX_TBFLAG_A64(tb_flags, MTE_STORE_ONLY);
-     dc->mte_store_only[1] = EX_TBFLAG_A64(tb_flags, MTE0_STORE_ONLY);
-+    dc->mtx = EX_TBFLAG_A64(tb_flags, MTX);
-     dc->pstate_sm = EX_TBFLAG_A64(tb_flags, PSTATE_SM);
-     dc->pstate_za = EX_TBFLAG_A64(tb_flags, PSTATE_ZA);
-     dc->sme_trap_nonstreaming = EX_TBFLAG_A64(tb_flags, SME_TRAP_NONSTREAMING);
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index 551c6ff347..37a7268b32 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -82,6 +82,7 @@ typedef struct DisasContext {
-     uint8_t tbii;      /* TBI1|TBI0 for insns */
-     uint8_t tbid;      /* TBI1|TBI0 for data */
-     uint8_t tcma;      /* TCMA1|TCMA0 for MTE */
-+    uint8_t mtx;       /* MTX1|MTX0 for MTE */
-     bool ns;        /* Use non-secure CPREG bank on access */
-     int fp_excp_el; /* FP exception EL or 0 if enabled */
-     int sve_excp_el; /* SVE exception EL or 0 if enabled */
-
--- 
-2.54.0
+> Move cpu_init/realize hooks from AccelCPUClass to
+> AccelOpsClass. Specialize them for TCG in TCGCPUOps.
+> 
+> This drastically simplifies the need of per-binary QOM
+> types per accelerator per target (see also the nice
+> diff-stat).
+> 
+> Based-on: tag single-binary-20260528
+> 
+> Ignoring checkpatch.pl:
+> 
+>   WARNING: added, moved or deleted file(s), does MAINTAINERS need updating?
+>     accel/accel-target.c
+>     include/accel/accel-cpu-target.h
+>     include/accel/accel-cpu.h
+> 
+> $ git backport-diff since v1:
+> 
+>   [----] : patches are identical
+>   [####] : number of functional differences between upstream/downstream patch
+>   [down] : patch is downstream-only
+>   The flags [FC] indicate (F)unctional and (C)ontextual differences, respectively
+> 
+>   001/      17:[----] [--] 'target/loongarch: Remove unused 'accel/accel-cpu-target.h' header'
+>   002/      17:[----] [--] 'accel: Remove AccelCPUClass::cpu_class_init()'
+>   003/      17:[----] [--] 'accel: Rename AccelOpsClass::cpu_target_realize() -> cpu_realize()'
+>   004/      17:[----] [--] 'accel/hvf: Remove need for AccelCPUClass::cpu_realize'
+>   005/      17:[----] [--] 'accel/kvm: Remove need for AccelCPUClass::cpu_realize'
+>   006/      17:[----] [--] 'accel: Introduce AccelOpsClass::cpu_instance_init handler'
+>   007/      17:[----] [--] 'accel/whpx: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init'
+>   008/      17:[0002] [FC] 'accel/nvmm: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init'
+>   009/      17:[0002] [FC] 'accel/hvf: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init'
+>   010/      17:[0016] [FC] 'accel/kvm: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init'
+>   011/      17:[----] [--] 'accel/tcg: Convert AccelCPUClass -> new TCGCPUOps::cpu_instance_init'
+>   012/      17:[----] [--] 'accel: Remove AccelCPUClass::cpu_instance_init()'
+>   013/      17:[----] [--] 'accel/tcg: Convert AccelCPUClass -> new TCGCPUOps::cpu_realize'
+>   014/      17:[----] [--] 'accel/tcg: Convert X86 AccelCPUClass -> TCGCPUOps::cpu_realize'
+>   015/      17:[----] [--] 'accel/tcg: Convert RISCV AccelCPUClass -> TCGCPUOps::cpu_realize'
+>   016/      17:[----] [--] 'accel: Remove AccelCPUClass::cpu_target_realize()'
+>   017/      17:[----] [--] 'accel: Remove AccelCPUClass and 'accel/accel-cpu-target.h''
+> 
+>   diff --git a/include/system/kvm.h b/include/system/kvm.h
+>   index 2c31fa6019e..a249f076763 100644
+>   --- a/include/system/kvm.h
+>   +++ b/include/system/kvm.h
+>   @@ -225,0 +226,3 @@ void kvm_irqchip_change_notify(void);
+>   +void kvm_arch_cpu_instance_init(CPUState *cpu);
+>   +bool kvm_arch_cpu_realize(CPUState *cpu, Error **errp);
+>   +
+>   @@ -367,3 +369,0 @@ int kvm_arch_destroy_vcpu(CPUState *cpu);
+>   -void kvm_arch_cpu_instance_init(CPUState *cpu);
+>   -bool kvm_arch_cpu_realize(CPUState *cpu, Error **errp);
+>   -
+>   diff --git a/accel/kvm/kvm-accel-ops.c b/accel/kvm/kvm-accel-ops.c
+>   index 113a23f2384..edad3c1acea 100644
+>   --- a/accel/kvm/kvm-accel-ops.c
+>   +++ b/accel/kvm/kvm-accel-ops.c
+>   @@ -101 +101 @@ static void kvm_accel_ops_class_init(ObjectClass *oc, const void *data)
+>   -    ops->cpu_target_realize = kvm_arch_cpu_realize;
+>   +    ops->cpu_realize = kvm_arch_cpu_realize;
+>   diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>   index 7d194ea112b..0f1a98b430f 100644
+>   --- a/target/arm/kvm.c
+>   +++ b/target/arm/kvm.c
+>   @@ -1785,0 +1786,9 @@ void kvm_arch_accel_class_init(ObjectClass *oc)
+>   +void kvm_arch_cpu_instance_init(CPUState *cpu)
+>   +{
+>   +}
+>   +
+>   +bool kvm_arch_cpu_realize(CPUState *cpu, Error **errp)
+>   +{
+>   +    return true;
+>   +}
+>   +
+>   diff --git a/target/i386/hvf/hvf-cpu.c b/target/i386/hvf/hvf-cpu.c
+>   index 5d74ca6fd56..536bcecd7d2 100644
+>   --- a/target/i386/hvf/hvf-cpu.c
+>   +++ b/target/i386/hvf/hvf-cpu.c
+>   @@ -58 +58 @@ static void hvf_cpu_xsave_init(void)
+>   -void hvf_arch_cpu_instance_init(CPUState *cpu)
+>   +void hvf_arch_cpu_instance_init(CPUState *cs)
+>   diff --git a/target/i386/nvmm/nvmm-all.c b/target/i386/nvmm/nvmm-all.c
+>   index 10ab7b2a4dc..2973e28122a 100644
+>   --- a/target/i386/nvmm/nvmm-all.c
+>   +++ b/target/i386/nvmm/nvmm-all.c
+>   @@ -1214 +1214 @@ static const TypeInfo nvmm_accel_type = {
+>   -void nvmm_arch_cpu_instance_init(CPUState *cpu)
+>   +void nvmm_arch_cpu_instance_init(CPUState *cs)
+>   diff --git a/target/loongarch/kvm/kvm.c b/target/loongarch/kvm/kvm.c
+>   index 9d844c4905a..167fdd515be 100644
+>   --- a/target/loongarch/kvm/kvm.c
+>   +++ b/target/loongarch/kvm/kvm.c
+>   @@ -1497,0 +1498,9 @@ void kvm_arch_accel_class_init(ObjectClass *oc)
+>   +
+>   +void kvm_arch_cpu_instance_init(CPUState *cpu)
+>   +{
+>   +}
+>   +
+>   +bool kvm_arch_cpu_realize(CPUState *cpu, Error **errp)
+>   +{
+>   +    return true;
+>   +}
+>   diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+>   index 013f5e852e1..894962d509f 100644
+>   --- a/target/ppc/kvm.c
+>   +++ b/target/ppc/kvm.c
+>   @@ -2354,0 +2355,4 @@ static void alter_insns(uint64_t *word, uint64_t flags, bool on)
+>   +void kvm_arch_cpu_instance_init(CPUState *cpu)
+>   +{
+>   +}
+>   +
+>   diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
+>   index 2e4f435c537..46730e72a92 100644
+>   --- a/target/s390x/kvm/kvm.c
+>   +++ b/target/s390x/kvm/kvm.c
+>   @@ -2613,0 +2614,9 @@ void kvm_arch_accel_class_init(ObjectClass *oc)
+>   +
+>   +void kvm_arch_cpu_instance_init(CPUState *cpu)
+>   +{
+>   +}
+>   +
+>   +bool kvm_arch_cpu_realize(CPUState *cpu, Error **errp)
+>   +{
+>   +    return true;
+>   +}
+> 
+> Philippe Mathieu-Daudé (17):
+>   target/loongarch: Remove unused 'accel/accel-cpu-target.h' header
+>   accel: Remove AccelCPUClass::cpu_class_init()
+>   accel: Rename AccelOpsClass::cpu_target_realize() -> cpu_realize()
+>   accel/hvf: Remove need for AccelCPUClass::cpu_realize
+>   accel/kvm: Remove need for AccelCPUClass::cpu_realize
+>   accel: Introduce AccelOpsClass::cpu_instance_init handler
+>   accel/whpx: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init
+>   accel/nvmm: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init
+>   accel/hvf: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init
+>   accel/kvm: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init
+>   accel/tcg: Convert AccelCPUClass -> new TCGCPUOps::cpu_instance_init
+>   accel: Remove AccelCPUClass::cpu_instance_init()
+>   accel/tcg: Convert AccelCPUClass -> new TCGCPUOps::cpu_realize
+>   accel/tcg: Convert X86 AccelCPUClass -> TCGCPUOps::cpu_realize
+>   accel/tcg: Convert RISCV AccelCPUClass -> TCGCPUOps::cpu_realize
+>   accel: Remove AccelCPUClass::cpu_target_realize()
+>   accel: Remove AccelCPUClass and 'accel/accel-cpu-target.h'
+> 
+>  accel/tcg/tcg-accel-ops.h         |  1 +
+>  include/accel/accel-cpu-ops.h     |  3 +-
+>  include/accel/accel-cpu-target.h  | 31 --------------
+>  include/accel/accel-cpu.h         | 23 -----------
+>  include/accel/tcg/cpu-ops.h       |  2 +
+>  include/system/hvf_int.h          |  1 +
+>  include/system/kvm.h              |  3 ++
+>  target/i386/nvmm/nvmm-accel-ops.h |  2 +
+>  accel/accel-common.c              | 68 ++++---------------------------
+>  accel/hvf/hvf-accel-ops.c         |  3 +-
+>  accel/kvm/kvm-accel-ops.c         |  2 +
+>  accel/tcg/cpu-exec.c              | 15 ++++++-
+>  accel/tcg/tcg-accel-ops.c         |  1 +
+>  accel/whpx/whpx-accel-ops.c       |  2 +
+>  accel/whpx/whpx-common.c          | 17 --------
+>  target/arm/hvf/hvf.c              |  4 ++
+>  target/arm/kvm.c                  |  9 ++++
+>  target/arm/whpx/whpx-all.c        |  1 -
+>  target/i386/hvf/hvf-cpu.c         | 25 ++----------
+>  target/i386/hvf/hvf.c             |  5 ---
+>  target/i386/kvm/kvm-cpu.c         | 25 +-----------
+>  target/i386/nvmm/nvmm-accel-ops.c |  2 +
+>  target/i386/nvmm/nvmm-all.c       | 19 +--------
+>  target/i386/tcg/tcg-cpu.c         | 28 ++-----------
+>  target/i386/whpx/whpx-all.c       |  1 -
+>  target/loongarch/kvm/kvm.c        |  9 ++++
+>  target/loongarch/tcg/tcg_cpu.c    |  1 -
+>  target/ppc/kvm.c                  | 27 +++---------
+>  target/riscv/kvm/kvm-cpu.c        | 33 +--------------
+>  target/riscv/tcg/tcg-cpu.c        | 28 +++----------
+>  target/s390x/kvm/kvm.c            |  9 ++++
+>  31 files changed, 95 insertions(+), 305 deletions(-)
+>  delete mode 100644 include/accel/accel-cpu-target.h
+>  delete mode 100644 include/accel/accel-cpu.h
+> 
 
 

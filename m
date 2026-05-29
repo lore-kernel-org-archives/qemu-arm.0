@@ -4,81 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68874CD6E50
-	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 14:36:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A94F3CD6E50
+	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 14:37:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSyKJ-0006Mw-IP; Fri, 29 May 2026 10:36:43 -0400
+	id 1wSyKJ-0006N3-Re; Fri, 29 May 2026 10:36:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSyKB-0006Id-R0
- for qemu-arm@nongnu.org; Fri, 29 May 2026 10:36:38 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1wSyK8-0006Hj-6q
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 10:36:33 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSyK8-0007T4-Og
- for qemu-arm@nongnu.org; Fri, 29 May 2026 10:36:34 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-441209fb77eso8653583f8f.1
- for <qemu-arm@nongnu.org>; Fri, 29 May 2026 07:36:32 -0700 (PDT)
+ id 1wSyK6-0007SU-A5
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 10:36:31 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-68bfcf11050so1515411a12.0
+ for <qemu-arm@nongnu.org>; Fri, 29 May 2026 07:36:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780065391; x=1780670191; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=v8hnt8QTR0m3dsrSXtppaehwSCPzuZgau1gE20XoQoc=;
- b=cdMcGbEpkeRoZEx+3Vb+1T5vVs4at9j88fabbENveiakmSiJxioqpK7QxAjCmrSbHU
- USn94MjZVbvKhKGiSHS8eoXluwnJixTVfRfYH46yGibasaVmjyPhdAbIm596VjKec28z
- uvLx7++CgpM8PlIFdyze79oEZ1Opz9Q9jvisrioCXgeueMegkdjWMzL7s45MZx7d7Muj
- h4TyiCIAOJ+hu8jg1d+P5Bn32z1Jh5WZJTmsauAZxYXjOwCFt1ZPE0QV5gDTw7KIR900
- 6TPbWeaksWw1XCynlBVJ0VgPOJfxTsj3osPqp/6oa+DOZ3mwg65yU+4nkbpi5zDfZqht
- ZpDA==
+ d=linaro.org; s=google; t=1780065389; x=1780670189; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=xNjQ8ATolvxkQnQXFaFGJLRrymYi+CqagUpkaiZh+jg=;
+ b=P3UB767TDiwOwk0RKQU9l9ao05gM07Wp/3gRJ7GV8IF3MV8/gCoLgvix/V9xT0apn6
+ /EjHBdq7Gsd5yhmrC93BQEx+etk4jT/EEwVeKyugwLgGJPmvETWmKKxCEIwqrIQpBo6r
+ LoC2UUlCBvq7B69FEuaBk6+yczPvurm4JdJKTt5/JY/PHGGTSB0Y3qRfML4bSeKtU3xU
+ CklSWpyOCd8Ncp0DP/PJWrrTM8dOIFeQeNw1jorkZuRIuB4UYtQUf4uJCp5rJrdUTfcI
+ Sg5xfje0naIBJtSeurvS4tIWLf/Zyevu5rT8xxNKpFEjmobUtH8K47MKX3/f3ViG8YnU
+ pevg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780065391; x=1780670191;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=v8hnt8QTR0m3dsrSXtppaehwSCPzuZgau1gE20XoQoc=;
- b=fjHofuFKK09j0CWtIrua2q7oJvjxLiFAwHLj3ZCpv/ikYP7J/4URI2xtG7HZMZ176j
- 1BQg9fm10Gpi1OtPcR+CT+UJSLAl9YyKx+OHUUOTLrbZgpPOQuFYOb8qwxkhDoT2IAzd
- M79F0Y+Q0v/KsoZ+ySOvT1j+ciDoTBbMTi7UB/HxrzrkaGHvZybCQ4RHw72dLZuuLHqa
- pYiikncqasu3owYVCMa6ltJyAbj+db6fGYajjzzOV1MMKhEFJbb40jMxbqf3Cq3S1xRU
- hZ7MgunH3H6zA8dEtmmVfCy25+ySAezQdEj3Fo5xw/2+zyQfJHWIvdlQ7Ha0LF8GvVSR
- W5Hg==
-X-Gm-Message-State: AOJu0YxTf8a6+TPzmC3G7LF7M8QcN/KWyucxvA4RQ3zhmy31B3Od/o2G
- GicJu9nERM7itYgmexqmimW9R7T17BhpLIAEldoeiw84gC0fvydCFgndTokcl0xvrew4QHFZxQp
- JUJwm
-X-Gm-Gg: Acq92OGuXJ+VWHuG9TGlGbIeBO0kIiX15+oedla3mZVRjjqmzstUVjwzrlSTErzebuD
- 9sAaiHLQMRdw1izRIWRmFd7mI6SJBijvOE16QMDLJhP/o3sU3V6P0Udq0nyZnhtfa+3JTd69Fzd
- KrZZeLulf9zXF7NqsN/una1Q1Io56lars9zZlxpvoSq5WC3KJ1WKKzrGs/pF/zTysCVjWCgNuiU
- g6VYHqQCbspF6Eojqir3IQZIn4Klle4DjYKFrBtdgW4rdO9MHljxnbIO9OOhP1jLjxJMEB3Q8Ey
- KGRAoY5Z7j84eFvBY1mPVLlkT/QZODOcvTYw2tA5LqVdlGbE9lSTTEm6KBxRbGiC6DM+gBmssH9
- i4zpMVsXe+iPYNs7Xw6632hp6b8BgK1XtpHxDRZ/ZrJqHCUwhSvnz5l2IhcLpo6yZwu0gegUXxA
- h1mrGDAuWG5UbTNeMECdS4LsMd9PTonmxEdp6YAK3Ke8KSDMoVNFdY00qC0baSTl3mEMETkFHlX
- 4BPRpEeujC/GHlUrpiYjkUuZMi1gmt4Vta1bUmQ83o=
-X-Received: by 2002:a5d:6684:0:b0:45e:739b:2750 with SMTP id
- ffacd0b85a97d-45ef1447483mr3640431f8f.9.1780065390603; 
- Fri, 29 May 2026 07:36:30 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1780065389; x=1780670189;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=xNjQ8ATolvxkQnQXFaFGJLRrymYi+CqagUpkaiZh+jg=;
+ b=oWGsW5COxbQjtd0XRaWTbf8zqPGPBwV4Hi1EZdPtlV/pE3PmBckd+BYoaRvEQQ8CCP
+ 7QX8Hs1f62bJCGj5EcGry6+bO5FPQE5SsGhfCZP+3+KhqoRpcd2bu3xo6ozxXVl1t7uG
+ 45oNqkNQEaK3DoQKt8qAzOS9Wz5oRchGGV1+aPfdD7TifVzI7wR1+qwFKPj8rQWXtKJm
+ mn+P3tn6nyGeA+gU+bQyt6GNoHbXVCqyE3XQNvrFA9m7xrI+UuqRh0gFyeg3GSHXzNvn
+ lJda4nhMoo+kwTik+zP2LqPWpj0nmYvKD9nBDir6Aj1K7cg/tjI5e5YiAKVKzfRFEebg
+ 7K2g==
+X-Gm-Message-State: AOJu0YylyS6SjYSV7qUzbrVZEPpc+GPmgdsz5sgd92R+YM+r6rfVSXGJ
+ bKBbfATdwkS8pRUigkVQYht5SG5HAOdvVL6oKcNcp1uBsOeJWm8tJgIPyzTWaBYM7OL0/IoCUV/
+ NgSsb
+X-Gm-Gg: Acq92OEEGaZ0N2Ubx92RZis8yO7LdT88Asf8gn0WzBHewk5S7ujur4yqA1EyOnFEGL+
+ JSbu1rp7M/uJANTjhABfYniR85BOA5O7FrliWPVIc+BU42NgcJDRW55CT/dFrTsmPNrJ9sWs9iF
+ 9Cw+jkKGZqMjGFJ2gUaYxfO5C8LGLGzuZuMkXktr9+UIseGNDVYg7Mom6Pe3yS9NrNfFHqy3tAl
+ gy4sJ/8qGh5O1vuF8ho9vkqrZftdrFibrSLB6YplAkUhUWpFCRmmUC/uMSgdFd0Vsa8J0H715NI
+ WtvwLG1nPwWVb3bAbgufpNTaZNyYJ/i9VptDidJzgbVjSKOi2d8YaJQD6AnZJFSQW24E64Ce1hT
+ C8jzvl0ua1ytuLlibuHCZFa9RJA6v9hhYYJqm3/F9Q03XhYRAgAnDCX/ms2uqdLsGIGDwWg6e3J
+ bQ1NyUCUygnaqDq0INs0/9PLOMQku1aYiIp0Ypk67DHBfr9UsKWQhStUBIwSMpzQa3rWN8xXtC3
+ bOM6pRScg6dVH3Bc9TUwV7u5gYgMApKoCoDgf0XGbw=
+X-Received: by 2002:a17:907:2675:b0:bdb:2fad:4811 with SMTP id
+ a640c23a62f3a-be9cab1bceamr139303666b.28.1780065386091; 
+ Fri, 29 May 2026 07:36:26 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45ef356a4c4sm4180675f8f.31.2026.05.29.07.36.28
+ ffacd0b85a97d-45ef356a4c4sm4180675f8f.31.2026.05.29.07.36.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 May 2026 07:36:28 -0700 (PDT)
+ Fri, 29 May 2026 07:36:25 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 2/2] hw/dma/pl080: Don't use hw_error() for unimplemented
- features
-Date: Fri, 29 May 2026 15:36:24 +0100
-Message-ID: <20260529143624.158935-3-peter.maydell@linaro.org>
+Subject: [PATCH 0/2] hw: arm: use logging rather than hw_error
+Date: Fri, 29 May 2026 15:36:22 +0100
+Message-ID: <20260529143624.158935-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260529143624.158935-1-peter.maydell@linaro.org>
-References: <20260529143624.158935-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,46 +98,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the pl080 device, we don't implement "peripheral flow control",
-which is where the DMA engine can be programmed to transfer data
-until a source or destination peripheral tells it to stop.  We
-currently call hw_error() if the guest tries to use this missing
-feature, which prints a register dump and aborts QEMU.
+These patches switch a couple of older devices away from hw_error()
+for "guest can do something wrong" or "guest uses some feature
+QEMU doesn't implement" cases, replacing it with qemu_log_mask().
 
-Change the hw_error() call to the LOG_UNIMP log-and-continue,
-which is how we prefer to report guest attempts to use
-unimplemented features these days.
+These aren't really very important, but I was at a loose end this
+afternoon and they do let us close out a couple of gitlab issues.
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3409
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/dma/pl080.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+-- PMM
 
-diff --git a/hw/dma/pl080.c b/hw/dma/pl080.c
-index 4a90c7bb27..f9f1e3e931 100644
---- a/hw/dma/pl080.c
-+++ b/hw/dma/pl080.c
-@@ -13,7 +13,6 @@
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "hw/dma/pl080.h"
--#include "hw/core/hw-error.h"
- #include "hw/core/irq.h"
- #include "hw/core/qdev-properties.h"
- #include "qapi/error.h"
-@@ -132,8 +131,9 @@ again:
-                 continue;
-             flow = (ch->conf >> 11) & 7;
-             if (flow >= 4) {
--                hw_error(
--                    "pl080_run: Peripheral flow control not implemented\n");
-+                qemu_log_mask(LOG_UNIMP,
-+                              "pl080_run: Peripheral flow control not implemented\n");
-+                continue;
-             }
-             src_id = (ch->conf >> 1) & 0x1f;
-             dest_id = (ch->conf >> 6) & 0x1f;
+
+Peter Maydell (2):
+  hw/intc/exynos4210_combiner: Avoid hw_error for guest errors
+  hw/dma/pl080: Don't use hw_error() for unimplemented features
+
+ hw/dma/pl080.c                |  6 +++---
+ hw/intc/exynos4210_combiner.c | 29 ++++++++++++++++++-----------
+ 2 files changed, 21 insertions(+), 14 deletions(-)
+
 -- 
 2.43.0
 

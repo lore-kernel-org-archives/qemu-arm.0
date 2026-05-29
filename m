@@ -4,58 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3611FCD4F54
-	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 13:00:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A83B8CD6E4A
+	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 13:04:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSwpB-0003oU-9z; Fri, 29 May 2026 09:00:29 -0400
+	id 1wSwsa-0006U0-Ie; Fri, 29 May 2026 09:04:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jic23@kernel.org>)
- id 1wSwow-0003la-Nk; Fri, 29 May 2026 09:00:21 -0400
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wSwsW-0006Og-OR
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 09:03:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jic23@kernel.org>)
- id 1wSwou-0000N7-5R; Fri, 29 May 2026 09:00:14 -0400
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by sea.source.kernel.org (Postfix) with ESMTP id AE884444F7;
- Fri, 29 May 2026 13:00:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB1C71F00893;
- Fri, 29 May 2026 13:00:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
- s=k20260515; t=1780059609;
- bh=ig5z6GvTcvtiouWzhZB2hwdFrrm6k/U19rfC10wc4is=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References;
- b=b8vw+y4SdFWT8VnoECDZiWcxjHj9FtvQ4lDmgvbez6matOoW0ITHwMGLy0luh9oc1
- DM59iByfXQ2mxTt7x2/nrhM4zHgdIMOEwxH81gSrC9LFn/9cPqpCQBXygAzfxO3EkY
- 5mD6+gVK0l+ZOJTXUmhz5zm67g5FrImeF73JFY/cJ83OzMplN6yqg+h8qY6HiQzdlm
- adKjB+4RIBZzqYbAj6gF0amwX89/f9feMJK4DgGrSrYL3zdpfrfKtu7yDFSA5WwPXK
- W0/XMcDor3xlVWiD/OUkfloRptM2+QCQfGk03IDYInneR0CehlkIJya8Vmpum73EA7
- rbsNLy3LcxycQ==
-Date: Fri, 29 May 2026 14:00:01 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Fan Ni
- <fan.ni@samsung.com>, Paolo Bonzini <pbonzini@redhat.com>, Richard
- Henderson <richard.henderson@linaro.org>, "Michael S. Tsirkin"
- <mst@redhat.com>, qemu-arm@nongnu.org, linux-cxl@vger.kernel.org
-Subject: Re: [PATCH] hw/cxl: Fix cxl_fmws_set_memmap() range check
-Message-ID: <20260529140001.435eaebd@jic23-huawei>
-In-Reply-To: <20260528-cxl-v1-1-a470c8255264@rsg.ci.i.u-tokyo.ac.jp>
-References: <20260528-cxl-v1-1-a470c8255264@rsg.ci.i.u-tokyo.ac.jp>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wSwsV-0001Mb-0r
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 09:03:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1780059832;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=k0h/e48HKzK8qaSEuhnE2gETMlM29GhONx96gOKhjY0=;
+ b=ak1+4NMlQAfvzOnnLLcwPv+4dLCOA0jCCVnQkhp55UaHV1RER8vUko4x+18ZagOBmpHD65
+ Kbk76o8DYvZ6Pipab3mf8GZoqpdIk557LFjB1+kuNFDlWng6LvdoDCvdwrGxvEbi8yW5We
+ 6MWigjk3/iAqCRJ3mOj3ZHFmijSJsrI=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-76--tktn3pHPSuxeObc_Hch4w-1; Fri, 29 May 2026 09:03:50 -0400
+X-MC-Unique: -tktn3pHPSuxeObc_Hch4w-1
+X-Mimecast-MFC-AGG-ID: -tktn3pHPSuxeObc_Hch4w_1780059829
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-49050c44bcdso80200135e9.3
+ for <qemu-arm@nongnu.org>; Fri, 29 May 2026 06:03:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1780059829; x=1780664629;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+ :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=k0h/e48HKzK8qaSEuhnE2gETMlM29GhONx96gOKhjY0=;
+ b=ctgn0ume4zdmxFoozPBrM/VxwslYhPjwswxp28QR6WO0NPHhUHyRcuNRpw92llK+1T
+ 7PklhMVlezKypAA2AVEObghA+t1uIkY3rVoC7DhdrFh7Aa258U6LteUmKmgfOsodQfoq
+ N2lOTMuhxQeVGVkZrmCSu4rJzaDZ9ZO1wZEYIKzRSKavs+uxr/Aj4KLYcZhQdnYew8Nv
+ RPs1rI9N6D2rAw/MQzX2y5DDdBSGaCQW8KuynM06lwRdipi5UUxUvc7zNSM9PAuqXBo4
+ UbVhAxaWpbFQtdAZhy54zPwqPkHaEH34ZSeKGjsPjZ9z5NLkzl2unm6pDd9TzIOIF4hq
+ Ip7w==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/7+sWpT8/5PnBgFNszpFd6N7dDEjPTF9bHgJWNb0Khyh+4EuL0xPpidMr6tFoqMgdCtfrzOiQ4MQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxVO9hKVP4Sx6BR6IOWW90omb4jn6MTmO8mNMv7o6FmpVlQPv3U
+ levFrPOnYepPTMU3Vhy7suSbvW3AzeZV7mBd10ZzwXyIUhu4pNQT5uDuwxXVgIchZBi0mtGByNa
+ F8xeHgJcyLsemxZBPz7qmShOAzEKWTg/R06Ov6YKETmH909SUoWr70g==
+X-Gm-Gg: Acq92OGBwBbTz1EXVvo2n6SH4spiZuwb4QyaAPjnr0dFg91uHtllHA8P6l2xC6aq9RP
+ tLJZV5/F5goGL/0usJfxeBwyFWSL6XsZnBCczbXXMEkj4DnVnJtqMndOOmA4OAtU8cYocqI3n7M
+ oAusj8fd67sCWIZSbF9qha6gDMucTjYA4eczYEAjIh4NUovNCiVcOSHT774FbPpNVjWhJB//W/v
+ qZpLuH3o7YIkR/BnR1dryX1E/H61I3BGMorlo8aR0W5ZSfdYqWYDsPYsLkzFlj6VvBqlnp95WoG
+ c9GRnCCaXhcK6WOwsiLGONO9UkJVOb0FvVrl6Xyt5MvK9tZLtousxtD5izzvTOLuyWTJbvZioTW
+ GPyzqExeDnLtKhny0VnWBvIlGtb0hm01X6nHiTuxrej0YbHec5WL6yImP339MhcBndUUG87aQFr
+ gXTY9avg==
+X-Received: by 2002:a05:600c:1c0d:b0:490:45bb:8dd8 with SMTP id
+ 5b1f17b1804b1-4909c0e02c1mr57151375e9.25.1780059829219; 
+ Fri, 29 May 2026 06:03:49 -0700 (PDT)
+X-Received: by 2002:a05:600c:1c0d:b0:490:45bb:8dd8 with SMTP id
+ 5b1f17b1804b1-4909c0e02c1mr57150705e9.25.1780059828738; 
+ Fri, 29 May 2026 06:03:48 -0700 (PDT)
+Received: from rh (p200300f6af2a6100f239e076bbd76784.dip0.t-ipconnect.de.
+ [2003:f6:af2a:6100:f239:e076:bbd7:6784])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4909cabfd6esm45521605e9.15.2026.05.29.06.03.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 May 2026 06:03:48 -0700 (PDT)
+Date: Fri, 29 May 2026 15:03:46 +0200 (CEST)
+From: Sebastian Ott <sebott@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+cc: mst@redhat.com, Eric Auger <eauger@redhat.com>, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH] hw/arm/virt: preserve config for ACPI PCI hotplug
+In-Reply-To: <CAFEAcA-PkO3aeGoaAzpbJGrrE-_-RjJy9Q4D4MnQ=9W61--3hA@mail.gmail.com>
+Message-ID: <48595a74-78b5-6136-8752-0a73501b9531@redhat.com>
+References: <0de640a2-8807-69cf-4429-672263e3e759@redhat.com>
+ <CAFEAcA-PkO3aeGoaAzpbJGrrE-_-RjJy9Q4D4MnQ=9W61--3hA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2600:3c0a:e001:78e:0:1991:8:25;
- envelope-from=jic23@kernel.org; helo=sea.source.kernel.org
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: S4cnqIZpuE5hnFU8G2PlhGhfBgWFrG1rCgaxNz9-B4U_1780059829
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -71,199 +111,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 28 May 2026 21:24:05 +0900
-Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
+On Thu, 28 May 2026, Peter Maydell wrote:
+> On Thu, 28 May 2026 at 10:23, Sebastian Ott <sebott@redhat.com> wrote:
+>>
+>> ACPI PCI hotplug of a PCI device using a bar > 2M fails on ARM
+>> with a resource allocation failure in the guest kernel (Linux):
+>>
+>> qemu-system-aarch64 [..] -device pcie-root-port,id=rp1,bus=pcie.0 \
+>>                     -global acpi-ged.acpi-pci-hotplug-with-bridge-support=on \
+>>                     -pflash /usr/share/edk2/aarch64/QEMU_EFI-silent-pflash.qcow2
+>>
+>> (qemu) device_add pci-testdev,bus=rp1,membar=4M
+>>
+>> [   55.106283] pci 0000:01:00.0: [1b36:0005] type 00 class 0x00ff00 conventional PCI endpoint
+>> [   55.107627] pci 0000:01:00.0: BAR 0 [mem 0x00000000-0x00000fff]
+>> [   55.107864] pci 0000:01:00.0: BAR 1 [io  0x0000-0x00ff]
+>> [   55.108015] pci 0000:01:00.0: BAR 2 [mem 0x00000000-0x003fffff 64bit pref]
+>> [   55.118609] pci 0000:01:00.0: BAR 2 [mem size 0x00400000 64bit pref]: can't assign; no space
+>> [   55.118653] pci 0000:01:00.0: BAR 2 [mem size 0x00400000 64bit pref]: failed to assign
+>> [   55.118671] pci 0000:01:00.0: BAR 0 [mem 0x10000000-0x10000fff]: assigned
+>> [   55.122828] pci 0000:01:00.0: BAR 1 [io  0x1000-0x10ff]: assigned
+>> [   55.127090] pci 0000:01:00.0: BAR 0 [mem 0x10000000-0x10000fff]: releasing
+>> [   55.127098] pci 0000:01:00.0: BAR 2 [mem size 0x00400000 64bit pref]: can't assign; no space
+>> [   55.127102] pci 0000:01:00.0: BAR 2 [mem size 0x00400000 64bit pref]: failed to assign
+>> [   55.127106] pci 0000:01:00.0: BAR 0 [mem 0x10000000-0x10000fff]: assigned
+>>
+>> This behavior is exactly the same on x86 - except the busses are created
+>> with a default window size of 256M there. If the PCI devices being
+>> hotplugged use a bar > 256M you get the same failure like on ARM.
+>>
+>> The workaround on x86 is to specify "pref64-reserve=" for the PCIe
+>> root-port. On ARM this is currently ignored.
+>
+> From the perspective of somebody who doesn't know much about
+> ACPI or PCI, this commit message doesn't really tell me why
+> QEMU needs to change. The above reads like "this is a kernel
+> problem" to me. Why is the kernel unable to allocate this BAR?
 
-> cxl_fmws_set_memmap() leaves the zero-initialized base address of a CXL
-> fixed window unchanged when it does not fit in the memory map, which
-> results in incorrect mapping. Change the function to report an error
-> instead.
-> 
-> The Arm virt machine passes the exclusive end of the memory map while
-> the i386 pc machine passes the inclusive end to cxl_fmws_set_memmap().
-> Change the i386 pc machine to pass the exclusive end and perform the
-> range check accordingly in cxl_fmws_set_memmap().
-Hi,
+Lack of resources on the parent bus/bridge device - the bridge windows are
+2M per default on ARM. The native PCIe hotplug controller would add the
+additional resources to the parent bridge and retry allocation. The
+ACPI PCI hotplug controller does not do that. I'm curently playing with
+a hack that adds this to acpiphp.
 
-
-+CC linux-cxl as more folk there who might take a look at this.
-(also my remove my dead huawei address)
-
-What are the results of this on users?  Obviously the CFMWS doesn't
-work, but how do they observe that.
-
-Also seems like this is a fix and it can be a lot more minimal
-(just one error_fatal use).
-
-Jonathan
-
-
-> 
-> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-> ---
->  include/hw/cxl/cxl_host.h |  2 +-
->  hw/arm/virt.c             |  6 +++---
->  hw/cxl/cxl-host-stubs.c   |  4 ++--
->  hw/cxl/cxl-host.c         | 12 +++++++-----
->  hw/i386/pc.c              | 12 ++++++------
->  5 files changed, 19 insertions(+), 17 deletions(-)
-> 
-> diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
-> index 21619bb748ab..ed34c3159f59 100644
-> --- a/include/hw/cxl/cxl_host.h
-> +++ b/include/hw/cxl/cxl_host.h
-> @@ -16,7 +16,7 @@
->  void cxl_machine_init(Object *obj, CXLState *state);
->  void cxl_fmws_link_targets(Error **errp);
->  void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp);
-> -hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr);
-> +bool cxl_fmws_set_memmap(hwaddr *cursor, hwaddr end, Error **errp);
->  void cxl_fmws_update_mmio(void);
->  GSList *cxl_fmws_get_all_sorted(void);
->  
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index b090233893c5..a22778575cfb 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2536,9 +2536,9 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->      if (device_memory_size > 0) {
->          machine_memory_devices_init(ms, device_memory_base, device_memory_size);
->      }
-> -    vms->highest_gpa = cxl_fmws_set_memmap(ROUND_UP(vms->highest_gpa + 1,
-> -                                                    256 * MiB),
-> -                                           BIT_ULL(pa_bits)) - 1;
-> +    vms->highest_gpa = ROUND_UP(vms->highest_gpa + 1, 256 * MiB);
-> +    cxl_fmws_set_memmap(&vms->highest_gpa, BIT_ULL(pa_bits), &error_fatal);
-> +    vms->highest_gpa--;
-
-Hmm. The previous code kept the tight coupling of cxl_fmws_set_memmap()
-returning an address that we then decremented as the value is inclusive.
-This loses that clarity to my eyes.
-
-Perhaps we now need a comment.
-
->  }
->  
->  static VirtGICType finalize_gic_version_do(const char *accel_name,
-> diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
-> index 9b515913ea4d..fa87cea0e8b9 100644
-> --- a/hw/cxl/cxl-host-stubs.c
-> +++ b/hw/cxl/cxl-host-stubs.c
-> @@ -11,9 +11,9 @@
->  void cxl_fmws_link_targets(Error **errp) {};
->  void cxl_machine_init(Object *obj, CXLState *state) {};
->  void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp) {};
-> -hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
-> +bool cxl_fmws_set_memmap(hwaddr *base, hwaddr max_addr, Error **errp)
-
-Feels like a more minimal solution is to just use error_fatal() internally and
-keep the original return of value.
-
->  {
-> -    return base;
-> +    return true;
->  };
->  void cxl_fmws_update_mmio(void) {};
->  
-> diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
-> index a94b893e9991..33421b3ca174 100644
-> --- a/hw/cxl/cxl-host.c
-> +++ b/hw/cxl/cxl-host.c
-> @@ -429,7 +429,7 @@ void cxl_fmws_update_mmio(void)
->      object_child_foreach_recursive(object_get_root(), cxl_fmws_mmio_map, NULL);
->  }
->  
-> -hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
-> +bool cxl_fmws_set_memmap(hwaddr *cursor, hwaddr end, Error **errp)
-
-The cursor naming makes little sense to me. It is an address.
-Also the rename to end doesn't seem to bring any more clarity over max_addr.
-I guess maybe you did this because it's an exclusive value? I'm not sure end
-conveys that any more than max_addr.
-
-
->  {
->      GSList *cfmws_list, *iter;
->      CXLFixedWindow *fw;
-> @@ -437,14 +437,16 @@ hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
->      cfmws_list = cxl_fmws_get_all_sorted();
->      for (iter = cfmws_list; iter; iter = iter->next) {
->          fw = CXL_FMW(iter->data);
-> -        if (base + fw->size <= max_addr) {
-> -            fw->base = base;
-> -            base += fw->size;
-> +        if (end - *cursor < fw->size) {
-I'm not seeing why this form is an improvement on the original test.
-
-> +            error_setg(errp, "A CXL fixed memory window does not fit in the memory map");
-
-This bit I'm fine with!  Makes sense to error out as otherwise we get a rather
-confusing result.
-
-> +            return false;
->          }
-> +        fw->base = *cursor;
-> +        *cursor += fw->size;
->      }
->      g_slist_free(cfmws_list);
->  
-> -    return base;
-> +    return true;
->  }
->  
->  static void cxl_fmw_realize(DeviceState *dev, Error **errp)
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 2ecad3c503fb..eadf37096533 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -747,7 +747,7 @@ void pc_memory_init(PCMachineState *pcms,
->      PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
->      X86MachineState *x86ms = X86_MACHINE(pcms);
->      hwaddr maxphysaddr, maxusedaddr;
-> -    hwaddr cxl_base, cxl_resv_end = 0;
-> +    hwaddr cxl_cursor = 0;
-As above, I'm not sure how the cursor naming is useful. Its
-an address so I'd expect naming to reflect that. To me base does
-and cursor (which to me is typically the current position of an
-iterator) does not.
-
->      X86CPU *cpu = X86_CPU(first_cpu);
->      uint64_t res_mem_end;
->  
-> @@ -857,11 +857,11 @@ void pc_memory_init(PCMachineState *pcms,
->          MemoryRegion *mr = &pcms->cxl_devices_state.host_mr;
->          hwaddr cxl_size = MiB;
->  
-> -        cxl_base = pc_get_cxl_range_start(pcms);
-> +        cxl_cursor = pc_get_cxl_range_start(pcms);
->          memory_region_init(mr, OBJECT(machine), "cxl_host_reg", cxl_size);
-> -        memory_region_add_subregion(system_memory, cxl_base, mr);
-> -        cxl_base = ROUND_UP(cxl_base + cxl_size, 256 * MiB);
-> -        cxl_resv_end = cxl_fmws_set_memmap(cxl_base, maxphysaddr);
-> +        memory_region_add_subregion(system_memory, cxl_cursor, mr);
-> +        cxl_cursor = ROUND_UP(cxl_cursor + cxl_size, 256 * MiB);
-> +        cxl_fmws_set_memmap(&cxl_cursor, maxphysaddr + 1, &error_fatal);
->          cxl_fmws_update_mmio();
->      }
->  
-> @@ -892,7 +892,7 @@ void pc_memory_init(PCMachineState *pcms,
->      rom_set_fw(fw_cfg);
->  
->      if (pcms->cxl_devices_state.is_enabled) {
-> -        res_mem_end = cxl_resv_end;
-> +        res_mem_end = cxl_cursor;
->      } else if (machine->device_memory) {
->          res_mem_end = machine->device_memory->base
->                        + memory_region_size(&machine->device_memory->mr);
-> 
-> ---
-> base-commit: e89049b3ba5f1f0468bc0d294173345597514a1b
-> change-id: 20260528-cxl-d3bf91bac0c6
-> 
-> Best regards,
-> --  
-> Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-> 
-> 
+Sebastian
 
 

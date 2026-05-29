@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B34DCD6E50
-	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 14:31:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DC4CCD6E50
+	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 14:31:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wSy9t-0005I5-Kn; Fri, 29 May 2026 10:25:57 -0400
+	id 1wSyAm-0007BA-J9; Fri, 29 May 2026 10:26:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSy9r-0005D0-OX
- for qemu-arm@nongnu.org; Fri, 29 May 2026 10:25:55 -0400
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSyAk-000787-Nw
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 10:26:50 -0400
 Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSy9o-0002os-Ch
- for qemu-arm@nongnu.org; Fri, 29 May 2026 10:25:55 -0400
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wSyAh-0003OC-MZ
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 10:26:50 -0400
 Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-48984d29fe3so145501875e9.0
- for <qemu-arm@nongnu.org>; Fri, 29 May 2026 07:25:51 -0700 (PDT)
+ 5b1f17b1804b1-4903997fcb5so82668285e9.2
+ for <qemu-arm@nongnu.org>; Fri, 29 May 2026 07:26:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780064751; x=1780669551; darn=nongnu.org;
+ d=linaro.org; s=google; t=1780064806; x=1780669606; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=NWzkQMOFrGlqEcHz0n7zXBP32rozO6O28cZDds3tjf0=;
- b=WD3Yg+0GOZ3NPlCGXuTGQ7dyXjoa8tmV1MptmWOSKZUEqcZaCDGIzR4QGfe4emUpyG
- RCTZkiaSYUTgPdhQTu3kwm063RLFvNEOhB15TtsB6I+h87btv9CvT53DWtG0JGog5CS1
- W2YSsrH5L/Iy6fCzMN29OME6yMJ8lNXFDicVs4ysPI/QbTPWQqjRAlcVIWU4oIWxglKm
- 7lMsWcNxqLF2ZF6Wbx5jKtJCARps705RU/+XJXl+7jUsgqRfZGBjyNJt4Iqkttnv529Y
- r79wgNFwu5TDQsCEdMqF37yAPty4v4wYf+34eDCrlBUeK9t+DquUyvmHp0RnIUfXbWev
- HO5w==
+ bh=Z5ag1C+2SG1c3WsflC/6w87NYFOhc1Xx+nqXj9RTveg=;
+ b=NStu9ErOgmmuYI5JKfGo+t8xhW6yWsgzQt0znAtRSF3/XjB5aN3TcJMEIC2rG4RFtt
+ lf5MoTBXamNUQBvs6B/PU4j5pojEhVuGdYGw+4bapZvTB4gFsCrNqi39osZhUcOAmtx+
+ y90ull9GKnqZZfG6OSKkVSPjYN2N7WpfFk74qsjuBVK7GXQSXNUaYXhgZC9Latr7M2/4
+ FBlrf9u5xLc/WR5KWEP4+DLZ0tgXyDcdfc19AcwHUxZA1DeUraKw4LQd9sysbad4jXAa
+ PuL4aZzg14NOZIEtT6XNjwtf9+ia3PTBjFFo1hqfmdF1HYR6m0/XOhjOrwTVxV20CTT+
+ 8Usw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780064751; x=1780669551;
+ d=1e100.net; s=20251104; t=1780064806; x=1780669606;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=NWzkQMOFrGlqEcHz0n7zXBP32rozO6O28cZDds3tjf0=;
- b=qJlO6tTpz2ceHq9UYEIYc9JdET6a470WXP5D7DL41pPQSbBeqFTzfjmRSc51n8BN6M
- Mm//ZTSgkfDRJAUyCVgap5IyefwqiXz+rBjrmH+4nWNWKTLBtUsz9eEMVrUeERc1C+3w
- k6uv+3qLJJGOu/hXXXv4tsqjkIymO+Gh8GImwJc0Xn56m6ZEydVk+mTvNAIRvjhsOGbK
- n+PhLm/LFum7ShGHJPCdh4ibj6zsiTttHzVkVqDsAF9u6g0XopvrIySL45suuUwITyhk
- ZDRcBtwo/KudoVYsKyjQa3GSh0eFdbKt/LZ+zgHFgYFLZjZ9pZX8Cn8TEODBlhuH/qqa
- wDaQ==
+ bh=Z5ag1C+2SG1c3WsflC/6w87NYFOhc1Xx+nqXj9RTveg=;
+ b=LWPKawHmmRF0IIyp1xhH+QPP+EuSwzG8evkl1vgMa5d8xf8SEkvzOxyv065MW+aeTP
+ xyfuhWXE7lKeGzGdg+y8k+uHtu4vT7oTaeDjx79aOOvpbqE6jtMrvrrPjletqjxrfJwm
+ 2qYveFzFnevmZEcKmNf9QwJx9YkijbD5bDlTb9qhZrCSXJSuqgEAZho29qR97KYPAxy1
+ NcfTwRBntSHlovefd1TpyiUNNz5dmrvKRgqGeAqM8EXq1RyJAvGJSoeTAsX2PhMRni1b
+ GMck3Quja1AncXI/Dy0KmbksvX5f0WgeKRvVpSPK5x13zY+HBO0ou0nugmTAEgYSA0os
+ QNbA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8xJC958dKP3KTWAz/uVS8uULvmx+e44AOQSalbrBq+5miRtZRAJX34npuQ7vTTy9Cpa2nj5Q04TA==@nongnu.org
-X-Gm-Message-State: AOJu0YzhfL8ib9nLZ2p9hgExcZxewX9c4BK9mt8VRx41Xon+c6b7UtuT
- JrbXKwbaQanXyJj4B9rsGpCbpd7/mEXv4bV7m46NEfnfaoat7mskSAh4ssQTJmNro5k=
-X-Gm-Gg: Acq92OFlT9aNwwsc+0aOuq7OMI+m2iqu1M/rBMk+0EuDIPxFitkzRxOtFElszJFzBOg
- IOb2PEQ2L3jtKb3wUlPozOKw9EJEVxJ7QHLtdpZw0hSvmImII6jhQ4xxxP9g7vgiS56K65hmwEj
- DCt73nWAPtIVG5fhNAHivPYssWa7pYfdZTG4UlG/zEh3xMAxdCzlN4DkXUVvvsCQsfaJ+IUDrsU
- WA2r4ly+D6xR1LxvAPsPA1wsmnggbE3IC13KDF1cYwxofcWgPmddQvxR4KTA4+6T4fAYSLOkSp6
- 7cMElKmZx0vcj9XsaJM+mvIyPY0VbqkK9ZGSWm+otXOFY3VRV3ChIy4DW/5gTsJYAVxd3s5dDA1
- l/dFj5Cx7NZCLzevtvi7nv3DTYeUBAWjulTYdE0vNB3bNvEHQmK+wQNEF3rZhElBbiAb/RzHKRm
- jZFccnMZ0bvmBlwHm6DYOKJzZOqMGS/B6apEuxMg5rSKHyBCa3G84Aanq5uFNmxYIDIg==
-X-Received: by 2002:a05:600c:6d8:b0:48a:7a10:4f17 with SMTP id
- 5b1f17b1804b1-4909c092cecmr33812615e9.6.1780064750811; 
- Fri, 29 May 2026 07:25:50 -0700 (PDT)
+ AFNElJ80m+szkdA6SmbbFx2SdB9oPWwra0iXBLCT6iBanN07B7IoTL0XqwKcNL6fbEWkJiJ/jHp2Uud1Ow==@nongnu.org
+X-Gm-Message-State: AOJu0YxjOqHKBwsPn78Nha/ICCk6bHuy7fyJDEAUa3IGO3iQWreqn079
+ Ux6dgpjVz/I26OuNfeUO+VsryP0lHyBC8B9iRkEZk7cKPkTBMe+VtjSrRrFqFKpcI0Q=
+X-Gm-Gg: Acq92OFMunI7ymxsJKFa9G+NOntgCEN2Lnwieo9yqvqx2AB7DnuYxBjEk0Snh1itBJI
+ +kzOIflbVlI0vR5gRs3+1wEvB3aql/t1yoGnVEa/X4t998LWBJj1GCARYrz0wr2Sq4Ywd7EJSpR
+ zUYiDHp3xgl+PyZRs1zXfWZkfBB5DKK1JByoDYuATEz2n+8QjX6hU1FoNv4EhFSdmYpHU6XuhQ6
+ a27daSgzrhxfdnHqI+8Yd/bNQZePsg+zrK3BrCWEbsi0H7N2T8ofKkDeoJGcaV8hGL4bT7CZGXH
+ 6t7C8lu2p+818TKyPoiOK/GCqp3ZdMs8zed1TNN8h4+SexgKzgzDDzgQGloQneDgGwv4AsPOLRe
+ JQ2MzfMgPJRtdIjvWSLP+nD+vG0+o3BmuS/ogZN/3SYuC3SgRk/ldsgicwcjy8x54oMlA7FLkLy
+ 1agGdO0m4gPdWZzen8zSAwEJEVDLvMUKpn3tDC2Gs2u2ExPY7S8AJtiyzpLvt8v4jTpg==
+X-Received: by 2002:a05:600c:a105:b0:490:6e12:542c with SMTP id
+ 5b1f17b1804b1-4909c0e4476mr45336475e9.23.1780064806113; 
+ Fri, 29 May 2026 07:26:46 -0700 (PDT)
 Received: from m15.home (88-187-86-199.subs.proxad.net. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4909c10376asm15283585e9.23.2026.05.29.07.25.48
+ 5b1f17b1804b1-4909c103b98sm14989405e9.19.2026.05.29.07.26.44
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 29 May 2026 07:25:49 -0700 (PDT)
+ Fri, 29 May 2026 07:26:45 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -87,10 +87,9 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Chinmay Rath <rathc@linux.ibm.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 09/17] accel/hvf: Convert AccelCPUClass ->
- AccelOpsClass::cpu_instance_init
-Date: Fri, 29 May 2026 16:24:25 +0200
-Message-ID: <20260529142434.87880-10-philmd@linaro.org>
+Subject: [PATCH 16/17] accel: Remove AccelCPUClass::cpu_target_realize()
+Date: Fri, 29 May 2026 16:24:32 +0200
+Message-ID: <20260529142434.87880-17-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260529142434.87880-1-philmd@linaro.org>
 References: <20260529142434.87880-1-philmd@linaro.org>
@@ -121,106 +120,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-HVF cpu_instance_init() was only implemented for X86.
-Add a stub for ARM, allowing to register as generic
-AccelOpsClass::cpu_instance_init hook.
-
-X86's ACCEL_CPU_NAME("hvf") TypeInfo is now empty, remove it.
+We removed all implementations of AccelCPUClass::cpu_target_realize,
+remove the calls in accel_cpu_common_realize().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/system/hvf_int.h  |  1 +
- accel/hvf/hvf-accel-ops.c |  1 +
- target/arm/hvf/hvf.c      |  4 ++++
- target/i386/hvf/hvf-cpu.c | 25 +------------------------
- 4 files changed, 7 insertions(+), 24 deletions(-)
+ include/accel/accel-cpu.h | 2 --
+ accel/accel-common.c      | 7 -------
+ 2 files changed, 9 deletions(-)
 
-diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
-index d5eaf26dda8..cb8abbc7cc9 100644
---- a/include/system/hvf_int.h
-+++ b/include/system/hvf_int.h
-@@ -109,6 +109,7 @@ int hvf_update_guest_debug(CPUState *cpu);
-  */
- bool hvf_arch_supports_guest_debug(void);
+diff --git a/include/accel/accel-cpu.h b/include/accel/accel-cpu.h
+index c42221f96cf..d7ea45ada2e 100644
+--- a/include/accel/accel-cpu.h
++++ b/include/accel/accel-cpu.h
+@@ -14,8 +14,6 @@
  
-+void hvf_arch_cpu_instance_init(CPUState *cpu);
- bool hvf_arch_cpu_realize(CPUState *cpu, Error **errp);
- uint32_t hvf_arch_get_default_ipa_bit_size(void);
- uint32_t hvf_arch_get_max_ipa_bit_size(void);
-diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-index 6edc2242ed9..a9c9d5d9a81 100644
---- a/accel/hvf/hvf-accel-ops.c
-+++ b/accel/hvf/hvf-accel-ops.c
-@@ -356,6 +356,7 @@ static void hvf_accel_ops_class_init(ObjectClass *oc, const void *data)
- {
-     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
+ typedef struct AccelCPUClass {
+     ObjectClass parent_class;
+-
+-    bool (*cpu_target_realize)(CPUState *cpu, Error **errp);
+ } AccelCPUClass;
  
-+    ops->cpu_instance_init = hvf_arch_cpu_instance_init;
-     ops->cpu_realize = hvf_arch_cpu_realize;
+ #endif /* ACCEL_CPU_H */
+diff --git a/accel/accel-common.c b/accel/accel-common.c
+index 04482b6b57e..d8ee6d62667 100644
+--- a/accel/accel-common.c
++++ b/accel/accel-common.c
+@@ -52,13 +52,6 @@ bool accel_cpu_common_realize(CPUState *cpu, Error **errp)
+     AccelState *accel = current_accel();
+     AccelClass *acc = ACCEL_GET_CLASS(accel);
  
-     ops->create_vcpu_thread = hvf_start_vcpu_thread;
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index d88cbe7c82a..b825a1ae6d4 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1504,6 +1504,10 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-     return 0;
- }
- 
-+void hvf_arch_cpu_instance_init(CPUState *cpu)
-+{
-+}
-+
- bool hvf_arch_cpu_realize(CPUState *cs, Error **errp)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-diff --git a/target/i386/hvf/hvf-cpu.c b/target/i386/hvf/hvf-cpu.c
-index 35f6bddbc0e..5d74ca6fd56 100644
---- a/target/i386/hvf/hvf-cpu.c
-+++ b/target/i386/hvf/hvf-cpu.c
-@@ -14,7 +14,6 @@
- #include "system/system.h"
- #include "hw/core/boards.h"
- #include "system/hvf.h"
--#include "accel/accel-cpu-target.h"
- #include "hvf-i386.h"
- 
- static void hvf_cpu_max_instance_init(X86CPU *cpu)
-@@ -56,7 +55,7 @@ static void hvf_cpu_xsave_init(void)
-     }
- }
- 
--static void hvf_cpu_instance_init(CPUState *cs)
-+void hvf_arch_cpu_instance_init(CPUState *cpu)
- {
-     X86CPU *cpu = X86_CPU(cs);
-     X86CPUClass *xcc = X86_CPU_GET_CLASS(cpu);
-@@ -77,25 +76,3 @@ bool hvf_arch_cpu_realize(CPUState *cs, Error **errp)
- {
-     return host_cpu_realizefn(cs, errp);
- }
+-    /* target specific realization */
+-    if (cpu->cc->accel_cpu
+-        && cpu->cc->accel_cpu->cpu_target_realize
+-        && !cpu->cc->accel_cpu->cpu_target_realize(cpu, errp)) {
+-        return false;
+-    }
 -
--static void hvf_cpu_accel_class_init(ObjectClass *oc, const void *data)
--{
--    AccelCPUClass *acc = ACCEL_CPU_CLASS(oc);
--
--    acc->cpu_instance_init = hvf_cpu_instance_init;
--}
--
--static const TypeInfo hvf_cpu_accel_type_info = {
--    .name = ACCEL_CPU_NAME("hvf"),
--
--    .parent = TYPE_ACCEL_CPU,
--    .class_init = hvf_cpu_accel_class_init,
--    .abstract = true,
--};
--
--static void hvf_cpu_accel_register_types(void)
--{
--    type_register_static(&hvf_cpu_accel_type_info);
--}
--
--type_init(hvf_cpu_accel_register_types);
+     /* generic realization */
+     if (acc->cpu_common_realize && !acc->cpu_common_realize(cpu, errp)) {
+         return false;
 -- 
 2.53.0
 

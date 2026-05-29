@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91DC4CD4F54
-	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 19:50:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E03BCD4F54
+	for <qemu-arm@archiver.kernel.org>; Fri, 29 May 2026 19:50:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wT3DR-0004T1-Dj; Fri, 29 May 2026 15:49:57 -0400
+	id 1wT3Dj-0005Ua-RC; Fri, 29 May 2026 15:50:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wT3DJ-00040P-QW
- for qemu-arm@nongnu.org; Fri, 29 May 2026 15:49:50 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wT3Di-0005M8-CY
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 15:50:14 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wT3DG-00049E-0M
- for qemu-arm@nongnu.org; Fri, 29 May 2026 15:49:49 -0400
-Received: by mail-wm1-x342.google.com with SMTP id
- 5b1f17b1804b1-48a3e9862f0so75759985e9.1
- for <qemu-arm@nongnu.org>; Fri, 29 May 2026 12:49:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wT3Df-0004Ww-6F
+ for qemu-arm@nongnu.org; Fri, 29 May 2026 15:50:14 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-48e8132c6d0so91383175e9.1
+ for <qemu-arm@nongnu.org>; Fri, 29 May 2026 12:50:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780084184; x=1780688984; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=zgZBm14Uyju02XQkgmWQYMN4Aqeyrq3QWm64d0lF2pg=;
- b=cY/uO65xZBVYT+YVORaX5Deaa0m0mLlDIWiwFPYGca0y+WIfb3hY7heO5ABuJayIwg
- +YdoiasgwuDcW/2M2viddj087pwcmd1UCUfaS6/d9ielwajAfiNYsNrIWZlm/C+0imXU
- uzmxVoJ2EDmuftjfn3K55ESL6UbyNDPmjNz/krJnKQDz+yTyG3RjTWhUcApEmqFyqfcn
- AVpb6hLHP9CUkL6Sa4b3BH2PsndTF5NITriu/5FCCUJTHIYKomwDgzPcMYq9Urk13VcZ
- UuYGLQto3C4C++oTxx6/mLDavBGKWf0Gshp+3U/C2eKX4dZQkmypr1wZAUtHTR6iV+DR
- j7bQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780084184; x=1780688984;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1780084209; x=1780689009; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=zgZBm14Uyju02XQkgmWQYMN4Aqeyrq3QWm64d0lF2pg=;
- b=WCAVCvSTD8E953UXwSg5yrrnaaYdrrBzJCwduYvWuw6FWnEe9QZ8F+i+Iz7YDPDkcx
- nwOrO3Oz35UqbX8laAevfz81SULgAqdphFgh0j0YcmidzzAvSC4ATbua8wdpH9gHZ2rM
- ZaKElSQU2D/3EjNBbb/BuHsUr+8VD1Metn66q+AvnWrtb7awdBXcvrA8LLwhsjQOY+eQ
- SKRL5FJOqHoLbt72Yum3hlFWXseVAFFrQ5WiL+fUrDLzFq2NNyYwMIVtQkz4IYxYtTUY
- 8hbuLMpx6t8Je2/SpCEQj4vGj3R8+36EjHBkCSNsJ0pBvqKYaIPUZjGB1tWsoowCyY/u
- hLeQ==
+ bh=tDALMDNynw3GUuarnrLNetX0Kec6G0245sRIZSxkHLs=;
+ b=aIf94tDb7qWtb7tPlvZ8BoJ9teHaDc+bT/haxiAXFdHRxdYaAKYZNKY7SnqhlEFuKO
+ TnHolPp2agYV8YIy+PCyL4i9g6kL0BHO8eMLYIv+2n3gOSgqd6DVe1ilP75vBhL6PGqw
+ F6RtTVbLvKvBuKYZnipbMx0SMppGlDRE+CYahUAqiJShO0o03ga+kfD2K2Et8FOa4LRZ
+ sU6ilgRrpEEdnVyl8gX58KFK7533aAvQTFKV4co9+9h229JfK0YvmnttgYBjBiOrtgqM
+ 6TiSbYEm8vmKZYR5fequ3g00xW0+k9q+/Q7aUNg7UNL5Jy/1YJ+LXimcU/E/Q1GXdszc
+ QF/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1780084209; x=1780689009;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=tDALMDNynw3GUuarnrLNetX0Kec6G0245sRIZSxkHLs=;
+ b=aNKss34UWfWRcHculE4MHR/XTHpf2UzOKpkcsbNAJNNvuBkK0czeNqzkLHjzU3u8IE
+ dR5FgUeY2j51CVBMUcF4WqK2lLV8WZ8+cHoUxSFDiIbuqmZuYfkiON96bFzT51NzYTF4
+ gNP+ur4puBDbccixPHDEhk2nzpm58nlRwXK/vUzDp5lR6HadL8svAV3tha3FqiILWcTv
+ cbRJYgbJdGc7+EPNAM8V/426gpKOPFFcBv5/d3q+Y5T0CGgSjq/LDZGovWjTaXSlf9ip
+ 57tL/V2avYzTWFZ8J2X+cmv28//K6ItKhuY9vj4yxCERIt8yZg5S8GIuIAZmfpEPYJOd
+ 9dhA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8tjS0AuPZTT/ooUT/nT5p3rzg50kqM7BOCB5sEhkfiKY/AhzKao0hewhsrZek488Eu8RVtrLuVUQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yyc6tYdttBrsfKTdDxpehMTLHvSDIJ7uIhYPRCP6S4r7eGinfhQ
- P/1KBJ1hnBiRrDKsnn3dgmDzHHo+D/C+r17zeGNFiRKfxHfB/Jbn+NonrKrnrKeTfEE=
-X-Gm-Gg: Acq92OFzy+nTCc73gdQTNHgFvV7vECiJs72blQtvIdR+JYZU9JWwBwaWYDHFuRPelOJ
- Bop8D+jfWbTOQ87XWzq7/wOzqh7MnvQzRKbEJ7snpbn9Jp6SHt69yUzsOGb4GPdkU1+uWKHSJn8
- i881iHVOGxGeB82GuRTO5ZsBtV5HKgCRnuNl6i44Qzj6e/zTEjPomUd+xfveSIDE1j/uqW4ATM0
- ysaRR/ogoLymoRwqml2WZg78MyPXGZlTPRvT5e3WgIMf0Rj0Vxw0VVBY1G4CcXEwibdhzWMUW/6
- 041eveq25M0ViF7xQxoBtQfnJsNBcFS4xS5Z/bJ8p3xv43nN80ZwoKmzySs2yBp/eyMYoptO4nj
- wYeP9DVE8Lwr6x4GP8Jv5eFKcjmnbKuSaufvT4CqSqk156QM6fyWwLHb32d8UDu864U54IECE4H
- NOUaGOsTLPKhTd/aCBi4331p0EJxSA+Yi0y9u2s1e9CFVS4G8sC4xdcqDnzJESMnDNxg==
-X-Received: by 2002:a05:600c:64c8:b0:489:1abb:5559 with SMTP id
- 5b1f17b1804b1-490a2a1f07cmr10902485e9.5.1780084183971; 
- Fri, 29 May 2026 12:49:43 -0700 (PDT)
+ AFNElJ9nC/lLQC2TNFh3fq8gA2toPckogzDBRlcBU5uNGZzA7Y3ufgG45/7UT1TgvLwR7i61L+lIXlG8BQ==@nongnu.org
+X-Gm-Message-State: AOJu0YywVRJyQNRft3BwpMlWfdg6WLM0I/w0PLBDyhL16rHQWr06xU5i
+ hHeAJMsCaGVx1s4vzmVtkmBAjmZk8VvJLDJ6Tdj2pIsdCNJ0xTh7G9lX4mLMSnfKV8I=
+X-Gm-Gg: Acq92OHPsOeLdcdNK5Ed2mwACx+1jh9hAbkwfcRbE0mWWoyLL5SebM/2/GeNLwJ7+YF
+ f9jMR4qlXIn9OTHrP18xRffyKMJ4NjZr5eZ2yFyre6kNse5Jl2Ja2hd/w9uFDB5fJNamQTW3I5S
+ kqTxTiF4sbJ2B+/7krIhe85xjNLq9DkfveYI8biJE/NQze+Bl5nc3VB6UkHOgiWxdxQPz9LEmIN
+ gi+SRrpWeymFpTE/Xxwa5q7451DPqiLSUc9O2zJuHJ3X/wg166oB3FLn4JgRaCd/wYzaKCCp/sY
+ yuLMi1Nu+IulIg9LSdkIsnwMi1SqdJN/XdiEZD43oD4xsUm/Aw4b+0xwMzKpSTSfnf3+ueW49hP
+ ecRkQplFwL+PHH8cIz2xRQZ2xAAFQt9T/upLnW3mhToq8NyDWiJNBFPjh5DMpDJdL8S/F6zmmxX
+ YgIMh3TkGVayuqFkTKj+GojWBp7NPe8I10lDsErYixLEgGvnayA7Wgq+ylxElWwDFF9g==
+X-Received: by 2002:a05:600c:8b53:b0:490:a29b:e72f with SMTP id
+ 5b1f17b1804b1-490a29be7a4mr15412425e9.4.1780084209487; 
+ Fri, 29 May 2026 12:50:09 -0700 (PDT)
 Received: from m15.home (88-187-86-199.subs.proxad.net. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4909c103baesm20533745e9.17.2026.05.29.12.49.41
+ 5b1f17b1804b1-4909c0d4f4esm28563585e9.1.2026.05.29.12.50.06
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 29 May 2026 12:49:43 -0700 (PDT)
+ Fri, 29 May 2026 12:50:08 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
@@ -91,15 +92,18 @@ Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Reinoud Zandijk <reinoud@netbsd.org>, Halil Pasic <pasic@linux.ibm.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 00/17] accel: Remove need for AccelCPUClass
-Date: Fri, 29 May 2026 21:49:22 +0200
-Message-ID: <20260529194940.97143-1-philmd@linaro.org>
+Subject: [PATCH v2 03/17] accel: Rename AccelOpsClass::cpu_target_realize() ->
+ cpu_realize()
+Date: Fri, 29 May 2026 21:49:25 +0200
+Message-ID: <20260529194940.97143-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260529194940.97143-1-philmd@linaro.org>
+References: <20260529194940.97143-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x342.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,188 +126,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Could get re-review: 4 & 5
+cpu_target_realize() is misleading, we simply want the host
+accelerator to realize its things on a vCPU. Rename more
+generically.
 
-Move cpu_init/realize hooks from AccelCPUClass to
-AccelOpsClass. Specialize them for TCG in TCGCPUOps.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+---
+ include/accel/accel-cpu-ops.h | 2 +-
+ accel/accel-common.c          | 5 +++--
+ accel/hvf/hvf-accel-ops.c     | 2 +-
+ 3 files changed, 5 insertions(+), 4 deletions(-)
 
-This drastically simplifies the need of per-binary QOM
-types per accelerator per target (see also the nice
-diff-stat).
-
-Based-on: tag single-binary-20260528
-
-Ignoring checkpatch.pl:
-
-  WARNING: added, moved or deleted file(s), does MAINTAINERS need updating?
-    accel/accel-target.c
-    include/accel/accel-cpu-target.h
-    include/accel/accel-cpu.h
-
-$ git backport-diff since v1:
-
-  [----] : patches are identical
-  [####] : number of functional differences between upstream/downstream patch
-  [down] : patch is downstream-only
-  The flags [FC] indicate (F)unctional and (C)ontextual differences, respectively
-
-  001/      17:[----] [--] 'target/loongarch: Remove unused 'accel/accel-cpu-target.h' header'
-  002/      17:[----] [--] 'accel: Remove AccelCPUClass::cpu_class_init()'
-  003/      17:[----] [--] 'accel: Rename AccelOpsClass::cpu_target_realize() -> cpu_realize()'
-  004/      17:[----] [--] 'accel/hvf: Remove need for AccelCPUClass::cpu_realize'
-  005/      17:[----] [--] 'accel/kvm: Remove need for AccelCPUClass::cpu_realize'
-  006/      17:[----] [--] 'accel: Introduce AccelOpsClass::cpu_instance_init handler'
-  007/      17:[----] [--] 'accel/whpx: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init'
-  008/      17:[0002] [FC] 'accel/nvmm: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init'
-  009/      17:[0002] [FC] 'accel/hvf: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init'
-  010/      17:[0016] [FC] 'accel/kvm: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init'
-  011/      17:[----] [--] 'accel/tcg: Convert AccelCPUClass -> new TCGCPUOps::cpu_instance_init'
-  012/      17:[----] [--] 'accel: Remove AccelCPUClass::cpu_instance_init()'
-  013/      17:[----] [--] 'accel/tcg: Convert AccelCPUClass -> new TCGCPUOps::cpu_realize'
-  014/      17:[----] [--] 'accel/tcg: Convert X86 AccelCPUClass -> TCGCPUOps::cpu_realize'
-  015/      17:[----] [--] 'accel/tcg: Convert RISCV AccelCPUClass -> TCGCPUOps::cpu_realize'
-  016/      17:[----] [--] 'accel: Remove AccelCPUClass::cpu_target_realize()'
-  017/      17:[----] [--] 'accel: Remove AccelCPUClass and 'accel/accel-cpu-target.h''
-
-  diff --git a/include/system/kvm.h b/include/system/kvm.h
-  index 2c31fa6019e..a249f076763 100644
-  --- a/include/system/kvm.h
-  +++ b/include/system/kvm.h
-  @@ -225,0 +226,3 @@ void kvm_irqchip_change_notify(void);
-  +void kvm_arch_cpu_instance_init(CPUState *cpu);
-  +bool kvm_arch_cpu_realize(CPUState *cpu, Error **errp);
-  +
-  @@ -367,3 +369,0 @@ int kvm_arch_destroy_vcpu(CPUState *cpu);
-  -void kvm_arch_cpu_instance_init(CPUState *cpu);
-  -bool kvm_arch_cpu_realize(CPUState *cpu, Error **errp);
-  -
-  diff --git a/accel/kvm/kvm-accel-ops.c b/accel/kvm/kvm-accel-ops.c
-  index 113a23f2384..edad3c1acea 100644
-  --- a/accel/kvm/kvm-accel-ops.c
-  +++ b/accel/kvm/kvm-accel-ops.c
-  @@ -101 +101 @@ static void kvm_accel_ops_class_init(ObjectClass *oc, const void *data)
-  -    ops->cpu_target_realize = kvm_arch_cpu_realize;
-  +    ops->cpu_realize = kvm_arch_cpu_realize;
-  diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-  index 7d194ea112b..0f1a98b430f 100644
-  --- a/target/arm/kvm.c
-  +++ b/target/arm/kvm.c
-  @@ -1785,0 +1786,9 @@ void kvm_arch_accel_class_init(ObjectClass *oc)
-  +void kvm_arch_cpu_instance_init(CPUState *cpu)
-  +{
-  +}
-  +
-  +bool kvm_arch_cpu_realize(CPUState *cpu, Error **errp)
-  +{
-  +    return true;
-  +}
-  +
-  diff --git a/target/i386/hvf/hvf-cpu.c b/target/i386/hvf/hvf-cpu.c
-  index 5d74ca6fd56..536bcecd7d2 100644
-  --- a/target/i386/hvf/hvf-cpu.c
-  +++ b/target/i386/hvf/hvf-cpu.c
-  @@ -58 +58 @@ static void hvf_cpu_xsave_init(void)
-  -void hvf_arch_cpu_instance_init(CPUState *cpu)
-  +void hvf_arch_cpu_instance_init(CPUState *cs)
-  diff --git a/target/i386/nvmm/nvmm-all.c b/target/i386/nvmm/nvmm-all.c
-  index 10ab7b2a4dc..2973e28122a 100644
-  --- a/target/i386/nvmm/nvmm-all.c
-  +++ b/target/i386/nvmm/nvmm-all.c
-  @@ -1214 +1214 @@ static const TypeInfo nvmm_accel_type = {
-  -void nvmm_arch_cpu_instance_init(CPUState *cpu)
-  +void nvmm_arch_cpu_instance_init(CPUState *cs)
-  diff --git a/target/loongarch/kvm/kvm.c b/target/loongarch/kvm/kvm.c
-  index 9d844c4905a..167fdd515be 100644
-  --- a/target/loongarch/kvm/kvm.c
-  +++ b/target/loongarch/kvm/kvm.c
-  @@ -1497,0 +1498,9 @@ void kvm_arch_accel_class_init(ObjectClass *oc)
-  +
-  +void kvm_arch_cpu_instance_init(CPUState *cpu)
-  +{
-  +}
-  +
-  +bool kvm_arch_cpu_realize(CPUState *cpu, Error **errp)
-  +{
-  +    return true;
-  +}
-  diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-  index 013f5e852e1..894962d509f 100644
-  --- a/target/ppc/kvm.c
-  +++ b/target/ppc/kvm.c
-  @@ -2354,0 +2355,4 @@ static void alter_insns(uint64_t *word, uint64_t flags, bool on)
-  +void kvm_arch_cpu_instance_init(CPUState *cpu)
-  +{
-  +}
-  +
-  diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
-  index 2e4f435c537..46730e72a92 100644
-  --- a/target/s390x/kvm/kvm.c
-  +++ b/target/s390x/kvm/kvm.c
-  @@ -2613,0 +2614,9 @@ void kvm_arch_accel_class_init(ObjectClass *oc)
-  +
-  +void kvm_arch_cpu_instance_init(CPUState *cpu)
-  +{
-  +}
-  +
-  +bool kvm_arch_cpu_realize(CPUState *cpu, Error **errp)
-  +{
-  +    return true;
-  +}
-
-Philippe Mathieu-Daudé (17):
-  target/loongarch: Remove unused 'accel/accel-cpu-target.h' header
-  accel: Remove AccelCPUClass::cpu_class_init()
-  accel: Rename AccelOpsClass::cpu_target_realize() -> cpu_realize()
-  accel/hvf: Remove need for AccelCPUClass::cpu_realize
-  accel/kvm: Remove need for AccelCPUClass::cpu_realize
-  accel: Introduce AccelOpsClass::cpu_instance_init handler
-  accel/whpx: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init
-  accel/nvmm: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init
-  accel/hvf: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init
-  accel/kvm: Convert AccelCPUClass -> AccelOpsClass::cpu_instance_init
-  accel/tcg: Convert AccelCPUClass -> new TCGCPUOps::cpu_instance_init
-  accel: Remove AccelCPUClass::cpu_instance_init()
-  accel/tcg: Convert AccelCPUClass -> new TCGCPUOps::cpu_realize
-  accel/tcg: Convert X86 AccelCPUClass -> TCGCPUOps::cpu_realize
-  accel/tcg: Convert RISCV AccelCPUClass -> TCGCPUOps::cpu_realize
-  accel: Remove AccelCPUClass::cpu_target_realize()
-  accel: Remove AccelCPUClass and 'accel/accel-cpu-target.h'
-
- accel/tcg/tcg-accel-ops.h         |  1 +
- include/accel/accel-cpu-ops.h     |  3 +-
- include/accel/accel-cpu-target.h  | 31 --------------
- include/accel/accel-cpu.h         | 23 -----------
- include/accel/tcg/cpu-ops.h       |  2 +
- include/system/hvf_int.h          |  1 +
- include/system/kvm.h              |  3 ++
- target/i386/nvmm/nvmm-accel-ops.h |  2 +
- accel/accel-common.c              | 68 ++++---------------------------
- accel/hvf/hvf-accel-ops.c         |  3 +-
- accel/kvm/kvm-accel-ops.c         |  2 +
- accel/tcg/cpu-exec.c              | 15 ++++++-
- accel/tcg/tcg-accel-ops.c         |  1 +
- accel/whpx/whpx-accel-ops.c       |  2 +
- accel/whpx/whpx-common.c          | 17 --------
- target/arm/hvf/hvf.c              |  4 ++
- target/arm/kvm.c                  |  9 ++++
- target/arm/whpx/whpx-all.c        |  1 -
- target/i386/hvf/hvf-cpu.c         | 25 ++----------
- target/i386/hvf/hvf.c             |  5 ---
- target/i386/kvm/kvm-cpu.c         | 25 +-----------
- target/i386/nvmm/nvmm-accel-ops.c |  2 +
- target/i386/nvmm/nvmm-all.c       | 19 +--------
- target/i386/tcg/tcg-cpu.c         | 28 ++-----------
- target/i386/whpx/whpx-all.c       |  1 -
- target/loongarch/kvm/kvm.c        |  9 ++++
- target/loongarch/tcg/tcg_cpu.c    |  1 -
- target/ppc/kvm.c                  | 27 +++---------
- target/riscv/kvm/kvm-cpu.c        | 33 +--------------
- target/riscv/tcg/tcg-cpu.c        | 28 +++----------
- target/s390x/kvm/kvm.c            |  9 ++++
- 31 files changed, 95 insertions(+), 305 deletions(-)
- delete mode 100644 include/accel/accel-cpu-target.h
- delete mode 100644 include/accel/accel-cpu.h
-
+diff --git a/include/accel/accel-cpu-ops.h b/include/accel/accel-cpu-ops.h
+index 9c07a903ea0..fd1307dad6d 100644
+--- a/include/accel/accel-cpu-ops.h
++++ b/include/accel/accel-cpu-ops.h
+@@ -34,7 +34,7 @@ struct AccelOpsClass {
+     /* initialization function called when accel is chosen */
+     void (*ops_init)(AccelClass *ac);
+ 
+-    bool (*cpu_target_realize)(CPUState *cpu, Error **errp);
++    bool (*cpu_realize)(CPUState *cpu, Error **errp);
+     bool (*cpus_are_resettable)(void);
+     void (*cpu_reset_hold)(CPUState *cpu);
+ 
+diff --git a/accel/accel-common.c b/accel/accel-common.c
+index ebc103053dc..176b03e0e90 100644
+--- a/accel/accel-common.c
++++ b/accel/accel-common.c
+@@ -60,9 +60,10 @@ bool accel_cpu_common_realize(CPUState *cpu, Error **errp)
+     if (acc->cpu_common_realize && !acc->cpu_common_realize(cpu, errp)) {
+         return false;
+     }
++
++    /* specialize with target specific realization */
+     if (acc->ops
+-        && acc->ops->cpu_target_realize
+-        && !acc->ops->cpu_target_realize(cpu, errp)) {
++        && acc->ops->cpu_realize && !acc->ops->cpu_realize(cpu, errp)) {
+         return false;
+     }
+ 
+diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+index b74a5779c3d..6edc2242ed9 100644
+--- a/accel/hvf/hvf-accel-ops.c
++++ b/accel/hvf/hvf-accel-ops.c
+@@ -356,7 +356,7 @@ static void hvf_accel_ops_class_init(ObjectClass *oc, const void *data)
+ {
+     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
+ 
+-    ops->cpu_target_realize = hvf_arch_cpu_realize;
++    ops->cpu_realize = hvf_arch_cpu_realize;
+ 
+     ops->create_vcpu_thread = hvf_start_vcpu_thread;
+     ops->kick_vcpu_thread = hvf_kick_vcpu_thread;
 -- 
 2.53.0
 

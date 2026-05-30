@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 480A4CD4F54
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 May 2026 23:21:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 250DBCD4F54
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 May 2026 23:21:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wTSrY-0000QE-Qu; Sat, 30 May 2026 19:13:04 -0400
+	id 1wTSrN-0000Bh-KI; Sat, 30 May 2026 19:12:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wTSrW-0000NW-Hp
- for qemu-arm@nongnu.org; Sat, 30 May 2026 19:13:02 -0400
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+ id 1wTSrM-0000Ag-3x
+ for qemu-arm@nongnu.org; Sat, 30 May 2026 19:12:52 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wTSrU-0007bn-M5
- for qemu-arm@nongnu.org; Sat, 30 May 2026 19:13:02 -0400
-Received: by mail-pj1-x102f.google.com with SMTP id
- 98e67ed59e1d1-36d98b5e4dcso66352a91.2
- for <qemu-arm@nongnu.org>; Sat, 30 May 2026 16:13:00 -0700 (PDT)
+ id 1wTSrK-0007X0-EJ
+ for qemu-arm@nongnu.org; Sat, 30 May 2026 19:12:51 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-2c0c2a68d01so1055495ad.1
+ for <qemu-arm@nongnu.org>; Sat, 30 May 2026 16:12:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780182779; x=1780787579; darn=nongnu.org;
+ d=linaro.org; s=google; t=1780182769; x=1780787569; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8GUy3BdiFH0e2kziTMnKk/rosFHDSopdGmPfzydA1pg=;
- b=HfVykE4mBVsqVtPSzaPc6PPK0WigZbkxyxfhySes5JzWsjNvJuc0euMQKa12LYKV3k
- UlKQyF3/TnpMdRczlx32qExsws7A+p4Qf2w01DLAfTAEvBtuHDZEnIbOl/o7Jna2TkF9
- //SB3ZWzHDKD2hjN0fg7AtWxGCUtaAatlG+Unc2cfd94V72lFAonLxz0pGuKkj+8AJap
- S8RhepXQid+iRORPMn6F8mpUKsZDY36waWLwn2ZjOAky9ugsIBXK9B3STEPIbiiKN6Hw
- 6ujZHWe6WHISGgd8dPRsrfKoP896RWUn/gzxa7XVC+wDUiwUNYt1moeBoXOuu9RtnFeb
- P/4A==
+ bh=TDR0Y4sXlbZK7TrziuxhbkAjyW4mGMb7eMYpZqe9/Ss=;
+ b=Zc8uI/QPjtwgWAfbz0LJTp1KtwU60KdbKezxAfWuYGT0ZCj4m5LxbRaSypyzvEYW6E
+ NW5SISbXvNN/uDH5HMryK/rTWe3+bdt9/7rpg0cVF1ItxLGgCC6TdhAAABNFWRkeb0/t
+ y2r2mpNnqTsFGyzAcqnXvrK/EKjNIKpcKg297ETF134WExG+vxjCIt5oOXtQ52Qm5ut8
+ UGiIkrQWM8PFLk39mfzYAp9EE0EVymBpyzwGP7x62Q0vZN/czlsFj2deFLpKMds/CzyR
+ LSPRtH+L9o2kzBcj8eVf5Mq9F4nTOZ3sb1ogccadmRyTvK57eY/4WAtksjKVbOHkH8Fg
+ 80jg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780182779; x=1780787579;
+ d=1e100.net; s=20251104; t=1780182769; x=1780787569;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=8GUy3BdiFH0e2kziTMnKk/rosFHDSopdGmPfzydA1pg=;
- b=KBSq+ho2cAN349EURIm2cgM0Rwi5cqmNnL5hZfrVPyAh0aZehGJjLNTUpQR0sgc0Ij
- FJ+UX9ZGAIdtCxJbMFBrRm89auOhiBIyKIKqrG/Jg9MTt03tt6kVjGxFKbrPF71+q4GI
- FzInxX6WEfIrxLmdgPs2Y1BvFZk8rxonEN1sr2f80iAUD8llyCIRXk/frp4nVludI4tW
- p+jZGRmtnadCIihUIpesS7BfNrU3GdCQSbe//354fahntiakf17hBFlrzCk+LS3F3GMV
- 3RP0cXInsB3jbPM21cVw3yHBAxpz/JPokSFm42nytspZMVCytBXo3QFlYcPU+ocIgHb7
- +BWw==
-X-Gm-Message-State: AOJu0Yz8ZRsBZWGNlGPM6j6SoZY2mFnFfpthBH0rcHJ5wrIqp/N917O/
- +bJN8pYyh8GwLcxH1Ijjnx91fjOebmNyPZrzIGVGW9iAnB08mH7sx1McdMltzDYgStNvhaGVZeN
- YHt9jom0=
-X-Gm-Gg: Acq92OFcFqPaUWZpjuIfoevFIBcAvmCRW2Kccz9J7DCFV6Pu+G9boWppc5y0tsn0F8i
- whB/tUxVMr8piQLZ1DT/rYTtVpS+1xp89OPkPBmnNiOPm0tlMW/2xNBsK2yc1YLgBxcerJePkIT
- 3hvgE+Hcus9a6g7dEHr3yZLZF3RCQOhZSJGOXRZdlP4zwawbC/+eP89aVzCu7TsumsxlEDHhvSy
- H1Z04qFU1aexT4rpQl4FFrynwguMxmXA4lpouUVvid94AF0laD/yrkmzrAnYgGqjBZ/Gtuag/kE
- Fo+7q5TchddBy6l8zfCK5xjEFH2TrEmn6D740fRWWm7uwCnNmiQT6c/Ey6fPSdEZA8ZZNjWbM/G
- NAAeg8/HBLwifBoGGJsLsaurbYDdG0qlgkyeSveU02inNpg4+8jGIlG2HNpzsvoKYf9ConFtg9N
- pfyjwWXukP2dAiicAco9uzQv8kGrindJVmhUk2MI4=
-X-Received: by 2002:a05:6a21:9202:b0:3b3:23a2:edff with SMTP id
- adf61e73a8af0-3b42823c91cmr5086905637.28.1780182779208; 
- Sat, 30 May 2026 16:12:59 -0700 (PDT)
+ bh=TDR0Y4sXlbZK7TrziuxhbkAjyW4mGMb7eMYpZqe9/Ss=;
+ b=hzwdsWBreRyyAXUZRj+XuDimVfgNrpxoNOkqiBAW7ry+c2lwYo7AKGPgEPO5a3cbUY
+ s+a/YMg1s9WXegAlQ/DXRVK0CWpxmE7LPWbEvI9FuAX0CW/RKOdYSAoJHv9wcPPQeAtX
+ KdxU+KOh1BrQ4xc6PxOvQpYCHAJXoFiuJ5c7UwJP35HLUcDK7ACcXWGCo/9OVBY2NJK9
+ jXcQryPew9zPS/Y9zebxFF9YPmAiQ6f4GM8/ew3DRSRsvlwNNWKhZ5/rhFccRlqxr6mc
+ 8EPneTGuUuQXwMOz1utYZKbEVdODJjfvPZsqHYqeKpnbCsppudpbtKhLpJOTzuUVBRZb
+ k+5g==
+X-Gm-Message-State: AOJu0YxS8BcdEj07BwG2oowq9Zg49iGl7idQlC5mr4JPMPfLLmKk3ZYS
+ Ff9xppoqxvdqU12dQr/lo5KQldkLXs7RcoWx8Onj+vwH/tK198DF3MFIGM/I7DlOFJqgHOFSKLb
+ ogYWYgFA=
+X-Gm-Gg: Acq92OHKg/JVyYx2citvmhXAwtBubCU1fch6YIII92itP+VVipWC7uUtlyUwqRJu7to
+ t1TXs2dANX5f2eXYKJtJ+ysvbBB4cjRQ5AbqTA3PFiFLBEn/SVlku+6PmKoYc/Ykim8amvV9SpB
+ mOuAWrcoAzxHu0vkSzzSQWIwiJg+owajKaVQ2Nz0Rw6+iKCnW/mya3+eEqXDv7ZddxW/iqG5UTO
+ 1q6puhRgW6+fdM5lTnsh7AppKtcZCAZ/cL2E0Ai0aIp6gWAH4AzbCARVJBeN9ZMbYnFIchZYQOr
+ 4ht9AIgf0gMlaSKe2CWEsjrfs1sw/vbbW42SSgQyxSG3Ne/BkF3C2FtmEDQgECPxY8wfKHDa6ed
+ njKje/ewkBHIXCkYQ69GlgJnkk53Uye2IFawNOhiQjqwGEbzlLI8JXmg9BKhVyGL9Xj6zqyuXyh
+ oJM52gbLP1GEtKZ6LCf/2b4XCxHUBd/8VUsoaUxLU=
+X-Received: by 2002:a05:6a21:2d43:b0:3b2:b0f7:50f with SMTP id
+ adf61e73a8af0-3b427fc9892mr5455003637.41.1780182769007; 
+ Sat, 30 May 2026 16:12:49 -0700 (PDT)
 Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c857729d3d1sm5634356a12.21.2026.05.30.16.12.58
+ 41be03b00d2f7-c857729d3d1sm5634356a12.21.2026.05.30.16.12.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 30 May 2026 16:12:58 -0700 (PDT)
+ Sat, 30 May 2026 16:12:48 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v8 31/41] target/arm: Implement FDOT (FP8 to FP32) for SVE
-Date: Sat, 30 May 2026 16:12:19 -0700
-Message-ID: <20260530231229.400441-32-richard.henderson@linaro.org>
+Subject: [PATCH v8 16/41] target/arm: Implement FCVT,
+ FCVTN (FP32 to FP8) for SME
+Date: Sat, 30 May 2026 16:12:04 -0700
+Message-ID: <20260530231229.400441-17-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260530231229.400441-1-richard.henderson@linaro.org>
 References: <20260530231229.400441-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,92 +102,117 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu-features.h      |  5 +++++
- target/arm/tcg/translate-sve.c | 35 ++++++++++++++++++++++++++++++++++
- target/arm/tcg/sve.decode      |  4 ++++
- 3 files changed, 44 insertions(+)
+ target/arm/tcg/helper-fp8-defs.h |  2 ++
+ target/arm/tcg/fp8_helper.c      | 59 ++++++++++++++++++++++++++++++++
+ target/arm/tcg/translate-sme.c   |  3 ++
+ target/arm/tcg/sme.decode        |  3 ++
+ 4 files changed, 67 insertions(+)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 4342a2461e..fbf4decd74 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1560,6 +1560,11 @@ static inline bool isar_feature_aa64_ssve_f8fma(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64SMFR0, SF8FMA);
+diff --git a/target/arm/tcg/helper-fp8-defs.h b/target/arm/tcg/helper-fp8-defs.h
+index 5863a6dbb8..36ae977431 100644
+--- a/target/arm/tcg/helper-fp8-defs.h
++++ b/target/arm/tcg/helper-fp8-defs.h
+@@ -21,3 +21,5 @@ DEF_HELPER_FLAGS_4(sve2_fcvtn_bh, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+ DEF_HELPER_FLAGS_5(advsimd_fcvt_bs, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+ DEF_HELPER_FLAGS_4(sve2_fcvtnb_bs, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+ DEF_HELPER_FLAGS_4(sve2_fcvtnt_bs, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(sme2_fcvt_bs, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(sme2_fcvtn_bs, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+diff --git a/target/arm/tcg/fp8_helper.c b/target/arm/tcg/fp8_helper.c
+index 3bd57ff350..a39dc6f859 100644
+--- a/target/arm/tcg/fp8_helper.c
++++ b/target/arm/tcg/fp8_helper.c
+@@ -509,3 +509,62 @@ void HELPER(sve2_fcvtnt_bs)(void *vd, void *vn, CPUARMState *env, uint32_t desc)
+ 
+     fp8_cvt_finish(env, &ctx);
  }
- 
-+static inline bool isar_feature_aa64_ssve_f8dp4(const ARMISARegisters *id)
++
++void HELPER(sme2_fcvt_bs)(void *vd, void *vn, CPUARMState *env, uint32_t desc)
 +{
-+    return FIELD_EX64_IDREG(id, ID_AA64SMFR0, SF8DP4);
-+}
++    ARMVectorReg scratch[4];
++    FP8Context ctx = fp8_dst_start(env, desc, false);
++    fcvt_fp8_output_fn *output_fmt = fcvt_fp8_output_fmt[ctx.f8fmt];
++    uint32_t *n = vn;
++    uint8_t *d = vd;
++    bool osc = FIELD_EX64(env->vfp.fpmr, FPMR, OSC);
++    size_t oprsz = simd_oprsz(desc);
++    size_t nelem = oprsz / 4;
++    size_t stride = sizeof(ARMVectorReg) / 4;
 +
- static inline bool isar_feature_aa64_sme_b16b16(const ARMISARegisters *id)
- {
-     return FIELD_EX64_IDREG(id, ID_AA64SMFR0, B16B16);
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index 95ec3a011e..96ea0b4bd2 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -8391,3 +8391,38 @@ TRANS(FMLAL_idx_hb, do_fmla_fp8, a, gen_helper_gvec_fmla_idx_hb)
- 
- TRANS(FMLALL_sb, do_fmla_fp8, a, gen_helper_gvec_fmla_sb)
- TRANS(FMLALL_idx_sb, do_fmla_fp8, a, gen_helper_gvec_fmla_idx_sb)
-+
-+static bool do_f8dp4(DisasContext *s, gen_helper_gvec_3_ptr *fn,
-+                     int rd, int rn, int rm, int index)
-+{
-+    bool fp8dp4 = dc_isar_feature(aa64_f8dp4, s);
-+    bool ssve_fp8dp4 = dc_isar_feature(aa64_ssve_f8dp4, s);
-+    bool ok = false;
-+
-+    /* Feature detection and enabling are complex here. */
-+    if (!(ssve_fp8dp4 || (fp8dp4 && dc_isar_feature(aa64_sve2, s)))) {
-+        return false;
++    if (vectors_overlap(vd, 1, vn, 4)) {
++        n = memcpy(scratch, vn, sizeof(scratch));
 +    }
-+    if (fpmr_access_check(s)) {
-+        if (fp8dp4) {
-+            s->is_nonstreaming = !ssve_fp8dp4;
-+            ok = sve_access_check(s);
-+        } else {
-+            ok = sme_sm_enabled_check(s);
++
++    for (size_t i = 0; i < nelem; i++) {
++        for (size_t j = 0; j < 4; j++) {
++            d[H1(i + nelem * j)] = fcvt_f32_to_fp8(n[H4(i) + stride * j],
++                                                   output_fmt, ctx.scale,
++                                                   osc, &ctx.stat);
 +        }
 +    }
 +
-+    if (ok) {
-+        unsigned vsz = vec_full_reg_size(s);
-+        tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, rd),
-+                           vec_full_reg_offset(s, rn),
-+                           vec_full_reg_offset(s, rm),
-+                           tcg_env, vsz, vsz,
-+                           index, fn);
-+    }
-+    return true;
++    fp8_cvt_finish(env, &ctx);
 +}
 +
-+TRANS(FDOT_sb, do_f8dp4, gen_helper_gvec_fdot_sb, a->rd, a->rn, a->rm, 0)
-+TRANS(FDOT_idx_sb, do_f8dp4, gen_helper_gvec_fdot_idx_sb,
-+      a->rd, a->rn, a->rm, a->index)
-diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
-index 06bbd7fa63..c49e992f10 100644
---- a/target/arm/tcg/sve.decode
-+++ b/target/arm/tcg/sve.decode
-@@ -1874,6 +1874,8 @@ FMLALL_sb       01100100 00 1 rm:5 10 idxn:2  10 rn:5 rd:5 &rxx idxm=0
- FDOT_zzzz       01100100 00 1 ..... 10 0 00 0 ..... .....  @rda_rn_rm_ex esz=2
- BFDOT_zzzz      01100100 01 1 ..... 10 0 00 0 ..... .....  @rda_rn_rm_ex esz=2
- 
-+FDOT_sb         01100100 01 1 ..... 10 0 00 1 ..... .....  @rda_rn_rm_ex esz=2
++void HELPER(sme2_fcvtn_bs)(void *vd, void *vn, CPUARMState *env, uint32_t desc)
++{
++    FP8Context ctx = fp8_dst_start(env, desc, false);
++    fcvt_fp8_output_fn *output_fmt = fcvt_fp8_output_fmt[ctx.f8fmt];
++    uint32_t *n0 = vn;
++    uint32_t *n1 = vn + sizeof(ARMVectorReg);
++    uint32_t *n2 = vn + sizeof(ARMVectorReg) * 2;
++    uint32_t *n3 = vn + sizeof(ARMVectorReg) * 3;
++    uint8_t *d = vd;
++    bool osc = FIELD_EX64(env->vfp.fpmr, FPMR, OSC);
++    size_t oprsz = simd_oprsz(desc);
++    size_t nelem = oprsz / 4;
 +
- ### SVE2 floating-point multiply-add long (indexed)
- 
- FMLALB_zzxw     01100100 10 1 ..... 0100.0 ..... .....     @rrxr_3a esz=2
-@@ -1897,6 +1899,8 @@ FMLALL_idx_sb   01100100 idxn:2  1 .. rm:3 1100 .. rn:5 rd:5 \
- FDOT_zzxz       01100100 00 1 ..... 010000 ..... .....     @rrxr_2 esz=2
- BFDOT_zzxz      01100100 01 1 ..... 010000 ..... .....     @rrxr_2 esz=2
- 
-+FDOT_idx_sb     01100100 01 1 ..... 010001 ..... .....     @rrxr_2 esz=2
++    for (size_t i = 0; i < nelem; ++i) {
++        float32 e0 = n0[H4(i)];
++        float32 e1 = n1[H4(i)];
++        float32 e2 = n2[H4(i)];
++        float32 e3 = n3[H4(i)];
 +
- ### SVE broadcast predicate element
++        d[H1(4 * i + 0)] = fcvt_f32_to_fp8(e0, output_fmt,
++                                           ctx.scale, osc, &ctx.stat);
++        d[H1(4 * i + 1)] = fcvt_f32_to_fp8(e1, output_fmt,
++                                           ctx.scale, osc, &ctx.stat);
++        d[H1(4 * i + 2)] = fcvt_f32_to_fp8(e2, output_fmt,
++                                           ctx.scale, osc, &ctx.stat);
++        d[H1(4 * i + 3)] = fcvt_f32_to_fp8(e3, output_fmt,
++                                           ctx.scale, osc, &ctx.stat);
++    }
++
++    fp8_cvt_finish(env, &ctx);
++}
+diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
+index 49eee95d88..76bbacfb6e 100644
+--- a/target/arm/tcg/translate-sme.c
++++ b/target/arm/tcg/translate-sme.c
+@@ -1572,6 +1572,9 @@ static bool trans_FCVT_bh(DisasContext *s, arg_zz_n *a)
+     return true;
+ }
  
- &psel           esz pd pn pm rv imm
++TRANS_FEAT(FCVT_bs, aa64_sme2_f8cvt, do_f8cvt, a, gen_helper_sme2_fcvt_bs, 0)
++TRANS_FEAT(FCVTN_bs, aa64_sme2_f8cvt, do_f8cvt, a, gen_helper_sme2_fcvtn_bs, 0)
++
+ static bool do_zipuzp_4(DisasContext *s, arg_zz_e *a,
+                         gen_helper_gvec_2 * const fn[5])
+ {
+diff --git a/target/arm/tcg/sme.decode b/target/arm/tcg/sme.decode
+index a02bcc0e22..2b9e41a75a 100644
+--- a/target/arm/tcg/sme.decode
++++ b/target/arm/tcg/sme.decode
+@@ -865,6 +865,9 @@ BF2CVTL         11000001 111 00110 111000 ..... ....1       @zz_2x1
+ 
+ FCVT_bh         11000001 001 00100 111000 ....0 .....       @zz_1x2
+ 
++FCVT_bs         11000001 001 10100 111000 ...00 .....       @zz_1x4
++FCVTN_bs        11000001 001 10100 111000 ...01 .....       @zz_1x4
++
+ ZIP_4           11000001 esz:2 1 10110 111000 ...00 ... 00   \
+                 &zz_e zd=%zd_ax4 zn=%zn_ax4
+ ZIP_4           11000001 001     10111 111000 ...00 ... 00   \
 -- 
 2.43.0
 

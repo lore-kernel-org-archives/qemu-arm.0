@@ -4,80 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86411CD6E4C
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 May 2026 23:22:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45847CD6E57
+	for <qemu-arm@archiver.kernel.org>; Sun, 31 May 2026 22:13:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wTSrX-0000Oj-NF; Sat, 30 May 2026 19:13:03 -0400
+	id 1wToOy-0000nA-71; Sun, 31 May 2026 18:13:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wTSrU-0000LY-Kt
- for qemu-arm@nongnu.org; Sat, 30 May 2026 19:13:00 -0400
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wToOw-0000m7-7n
+ for qemu-arm@nongnu.org; Sun, 31 May 2026 18:12:58 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wTSrS-0007aU-Fe
- for qemu-arm@nongnu.org; Sat, 30 May 2026 19:13:00 -0400
-Received: by mail-pj1-x102f.google.com with SMTP id
- 98e67ed59e1d1-36bb3551f6eso1949857a91.1
- for <qemu-arm@nongnu.org>; Sat, 30 May 2026 16:12:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wToOu-0007Cz-MB
+ for qemu-arm@nongnu.org; Sun, 31 May 2026 18:12:57 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-49048e043e5so74176155e9.1
+ for <qemu-arm@nongnu.org>; Sun, 31 May 2026 15:12:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780182777; x=1780787577; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=8638pdFBL8KDRGiBmUmVT7L/zfj6XnB9LqR0Mzcf5iM=;
- b=wGBu0joyEOUyHm2gsozMA0poMyxSdiyGQhVzZ0DlMKTbgDVUchVk4qoQs6CuC2sBJu
- EoRj830S0ieX7HKQ/VrX/crUieWZzA8sV2yqitgF+cc9d1NOwc/SR2rzQxdvSPLAq2wT
- 8eYxyXfnpFC83GR/82/KaKfs3QnmlgRWWqnnKhlKxOp94hXM8Ub0Tw8R9QJkfzXtixmo
- 9u3h4O9TAkpUcK3t6C2socMQmzN7lyx0qHyeSetbkhxOT1FKnJRGkQTblGfx/ypcF4R5
- Mgn7Z0qLbLXHXnLRH2M8SO2iCDa6iN+hPNOumNUhB4qtRir9WEOq6LEUd3zz8PZVb4yV
- Avug==
+ d=linaro.org; s=google; t=1780265573; x=1780870373; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=oWF6tyr2CYayU1PYtFJKATyY4aqFNfuk6d6waCisXn8=;
+ b=p5A7o4MyfdCyht6MD9H5oG9X/wm2s8A34MvxiHeOia9xjxScHMLcBuQh4hBtmhLZrw
+ idkfCvid9gRQrlGXVzkzNCDsO8sR8i4JhlCtGkytPng1zXp+eezoNMH2uiR57VS2HpCh
+ w7yi7te77YvF3iK3q726g7+34Um9XzeS+f1QQWDYIBcCPzYYE9rPCHOwNRvkl3MXSK6a
+ KG9lN33g4dJN94sCrKWotp0g/0/16BIs9hMD3SNljycoyFWuzGl44MzxpI5u1i35Z623
+ RxnT7OkoOej4lvA+zHD5BAs+CdTvWhI3sNQvjrSQjCoho/b7KzuA8miMUgzEUkcxwBlU
+ W9GA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780182777; x=1780787577;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=8638pdFBL8KDRGiBmUmVT7L/zfj6XnB9LqR0Mzcf5iM=;
- b=ShhV4PoK4snG09wdnxmFLzeAOcjzwbrKLbbrCZMi3LCqzEYIKbdzR2b01pg5B8VxNP
- nY4dM9xAJjg9j5V/+xNnx8Z/K69MM3BWeagCS+nGHAyOPmw7qLPZQeNEYaCnLaQi0h7m
- ILcakgkkT1iC5wesQyMCq57+KB9SZzXZp09OyMkyqfnCJc/UI/X+s3rZZb1XwCp7g/TW
- WULTenrmf4oSex+JFpnj56TM0KzJbyGEuedMNzfcn02PWcNIR2MInyqqlEsD0a2KSXql
- QZOM2ndAsU4S2+qRgaWrVDHeryLynPv/W3YWepI2ELrnUgFxOQ4vqmILaCtWYuQMiW2g
- n5Og==
-X-Gm-Message-State: AOJu0Yxmi2ztO2NhWiQkHwVY7rfv7sSJVo/L6jV4BQZX7+1ZAbUkxDfa
- e1xZFW+dB3dmjRUAyqZC2Vxh2CujBaL+hfxnfqlLmLNkid6LXU3ZC8159Bmep/Seqf9YNd+wPXO
- RpnKaR3I=
-X-Gm-Gg: Acq92OHno8yHwKjpKJXNYkihT4boEqgMcPv6lI0NYBm3UZ8K2Kgie695KlcKd8ZKjBm
- WvnAvDsp094r+ReZHYNFbG/RF25T9/1FE5LfXenx+GIl/1/lFwch/iFpESehqKnV/mhGIS7UkTg
- 7ZnE8YekdimYDQVpknjzzeMxELE4wDAE95XCUaqiJKRstKo4OXYRHE0GnczNFizVST5++ZHib3z
- 7pjydEfUd5s1jZ85Clp68+vpyPp87eelVLlbCjB/vS538dQwLJr0vw85ReIcY6VxCjJ+HNpJUbv
- gXYXQr3LgYOh2o7uWTBR8zojlYxuDwohqvrK6UJgW2hh2SbycfPGe8tUk8ggUONrhZc6jQo4UXN
- S0QjRPAwImd9k4vxRtyYIifSl73toIBS9+EgUnUvH+ne9mFA8z9eZPXA9hEzbEBmrVSq+v5YKcN
- RnPQAhKlvA3YUHhJO+7OEzYVVR/QFs8mLLR7BBR5I=
-X-Received: by 2002:a05:6a21:4584:b0:3a2:e089:ae5a with SMTP id
- adf61e73a8af0-3b427e73a57mr5123330637.20.1780182776785; 
- Sat, 30 May 2026 16:12:56 -0700 (PDT)
-Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c857729d3d1sm5634356a12.21.2026.05.30.16.12.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 30 May 2026 16:12:56 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v8 27/41] target/arm: Implement FMLALL{BB, BT, TB,
- TT} for AdvSIMD
-Date: Sat, 30 May 2026 16:12:15 -0700
-Message-ID: <20260530231229.400441-28-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260530231229.400441-1-richard.henderson@linaro.org>
-References: <20260530231229.400441-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20251104; t=1780265573; x=1780870373;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oWF6tyr2CYayU1PYtFJKATyY4aqFNfuk6d6waCisXn8=;
+ b=loR4T6NAV61cu92fs8D40gr6/8W106gC8oEzgb7g18heIS3sh1opWfTkP87EvrXooO
+ 6bbo3GAY7WdQGwgVym8uUMeNGJtX8VITrYdpd6TEzafufy4HdBbN5M/61kTjw8sJjhWK
+ tFFPvWG9iGYoGJWHMiS9yO8ajYqDqdFO2aIsQW+yr7q9fLwvOmgd2icPHSWbZRM9jqr4
+ 9XLFc5MNOE2Ppo7NjHQOplbtHWnVzYlmc3na0+U12pJ+NPVku2UOh2noYuAYRcEtTunx
+ nEQckwzO7TJVwAMwphXbYuf8jcC2pPhyavLSnp98pyWEHKs64k48wsc8JldcXMVY5Gdv
+ uQew==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/hlYqkcWWYaKaFDIFSFEnLKP7H2rmIC4M7BbygJgwnRc+XH9a0d9DPuAsqy0xltK6vt3+x1iPWVA==@nongnu.org
+X-Gm-Message-State: AOJu0YyBFmf806eKmwQpfpNO7hcIUoFBYzkzwybbaumFW5FVLxTlr2Vf
+ 2fLjLXAwvTFMuYAn6jIc0PCqdgKGXXIJVv3kGjR59DqZIHv3pnlhRLQ75VWSnYyCMk0=
+X-Gm-Gg: Acq92OEp8X5rs4PYaEndZ66ZrSlTV0pUK+PPPRe6Xct4Z3mk+wzH5RCug4f+04ynUZM
+ fgPfwJgW5maY9kyx5+MVy/0wg5NCRG5gRCtdFkubIT4CF1Rq9RDtW64YXCbcX2tU6FnolrSf+Ab
+ Y7FWp2deeNTkY/rnIjmvZxPLoL4mOvluqDqpc8Rp8lKXjEow3mLMO0+PXB2NtzApV60AYm5dxzV
+ ANdN2wz2rks02kAdZPb3AE5i04AKrPyLP5NMI6Imn1CTZvWVB5R+kdSJzavNSpvbyWTgSvnF0a4
+ 4SB8Tn+crhrJQ1VegxCimQWLkX6LBBUctKQ2y4FfYYjRBfnDjrsBOgX5rboTqYbTTUtB97jw8hu
+ dH/4Feu++VRCQmNjSIbSOALlEXjtySQsmrxjtJPeUsFpD16jab6F7nUEaCQl8YoUEgPNRbc3a4/
+ t4zbu4FWgg/DoT95cJvYAxmmB6NeFF089l6DZsRmvoaV8j/2jbAoEIEI08DEnGXTbvDSy6DA69J
+ LuM
+X-Received: by 2002:a05:600c:6d2:b0:490:5368:743 with SMTP id
+ 5b1f17b1804b1-490a2946a23mr100294545e9.32.1780265572879; 
+ Sun, 31 May 2026 15:12:52 -0700 (PDT)
+Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4909c123406sm82118745e9.5.2026.05.31.15.12.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 31 May 2026 15:12:52 -0700 (PDT)
+Message-ID: <b8f40cca-2646-4912-8aa6-43442eab4f31@linaro.org>
+Date: Mon, 1 Jun 2026 00:12:50 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 07/17] accel/whpx: Convert AccelCPUClass ->
+ AccelOpsClass::cpu_instance_init
+Content-Language: en-US
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, Reinoud Zandijk <reinoud@netbsd.org>,
+ Pedro Barbuda <pbarbuda@microsoft.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Glenn Miles <milesg@linux.ibm.com>, Alexander Graf <agraf@csgraf.de>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Anton Johansson <anjo@rev.ng>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Song Gao <gaosong@loongson.cn>,
+ qemu-riscv@nongnu.org, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-ppc@nongnu.org,
+ Weiwei Li <liwei1518@gmail.com>, Chao Liu <chao.liu.zevorn@gmail.com>,
+ kvm@vger.kernel.org, Claudio Fontana <cfontana@suse.de>,
+ Chinmay Rath <rathc@linux.ibm.com>
+References: <20260529142434.87880-1-philmd@linaro.org>
+ <20260529142434.87880-8-philmd@linaro.org>
+ <8889E557-72CA-4DED-B06E-4D82135CF923@unpredictable.fr>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <8889E557-72CA-4DED-B06E-4D82135CF923@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,135 +124,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/helper-fp8-defs.h |  3 ++
- target/arm/tcg/fp8_helper.c      | 55 ++++++++++++++++++++++++++++++++
- target/arm/tcg/translate-a64.c   |  3 ++
- target/arm/tcg/a64.decode        |  7 ++++
- 4 files changed, 68 insertions(+)
+On 29/5/26 21:03, Mohamed Mediouni wrote:
+> 
+> 
+>> On 29. May 2026, at 16:24, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> Register the new AccelOpsClass::cpu_instance_init hook.
+>>
+>> ACCEL_CPU_NAME("whpx") TypeInfo is now empty, remove it.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>> accel/whpx/whpx-accel-ops.c |  2 ++
+>> accel/whpx/whpx-common.c    | 17 -----------------
+>> target/arm/whpx/whpx-all.c  |  1 -
+>> target/i386/whpx/whpx-all.c |  1 -
+>> 4 files changed, 2 insertions(+), 19 deletions(-)
+>>
+>> diff --git a/accel/whpx/whpx-accel-ops.c b/accel/whpx/whpx-accel-ops.c
+>> index b8f41544cbe..099e8ef6da3 100644
+>> --- a/accel/whpx/whpx-accel-ops.c
+>> +++ b/accel/whpx/whpx-accel-ops.c
+>> @@ -98,6 +98,8 @@ static void whpx_accel_ops_class_init(ObjectClass *oc, const void *data)
+>>      ops->handle_interrupt = generic_handle_interrupt;
+>>      ops->supports_guest_debug = whpx_supports_guest_debug;
+>>
+>> +    ops->cpu_instance_init = whpx_cpu_instance_init;
+>> +
+> Hi,
+> 
+> No whpx_cpu_instance_init implementation present in the commit
+> as far as I can tell.
 
-diff --git a/target/arm/tcg/helper-fp8-defs.h b/target/arm/tcg/helper-fp8-defs.h
-index 7aa8366d94..802a3b430e 100644
---- a/target/arm/tcg/helper-fp8-defs.h
-+++ b/target/arm/tcg/helper-fp8-defs.h
-@@ -26,3 +26,6 @@ DEF_HELPER_FLAGS_4(sme2_fcvtn_bs, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
- 
- DEF_HELPER_FLAGS_5(gvec_fmla_hb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
- DEF_HELPER_FLAGS_5(gvec_fmla_idx_hb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
-+
-+DEF_HELPER_FLAGS_5(gvec_fmla_sb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
-+DEF_HELPER_FLAGS_5(gvec_fmla_idx_sb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
-diff --git a/target/arm/tcg/fp8_helper.c b/target/arm/tcg/fp8_helper.c
-index 316e151817..2e3eb43799 100644
---- a/target/arm/tcg/fp8_helper.c
-+++ b/target/arm/tcg/fp8_helper.c
-@@ -629,6 +629,16 @@ static float16 f8dotadd_h(uint64_t a, uint64_t b, int n, float16 c,
-     return float16_round_pack_canonical(&p0, &ctx->stat);
- }
- 
-+static float32 f8dotadd_s(uint64_t a, uint64_t b, int n, float32 c,
-+                          FP8MulContext *ctx)
-+{
-+    FloatParts64 p0 = f8dot(a, b, n, ctx);
-+    FloatParts64 p1 = float32_unpack_canonical(c, &ctx->stat);
-+
-+    p0 = parts64_addsub(&p0, &p1, &ctx->stat, false);
-+    return float32_round_pack_canonical(&p0, &ctx->stat);
-+}
-+
- void HELPER(gvec_fmla_hb)(void *vd, void *vn, void *vm,
-                           CPUARMState *env, uint32_t desc)
- {
-@@ -673,3 +683,48 @@ void HELPER(gvec_fmla_idx_hb)(void *vd, void *vn, void *vm,
- 
-     clear_tail(vd, oprsz, simd_maxsz(desc));
- }
-+
-+void HELPER(gvec_fmla_sb)(void *vd, void *vn, void *vm,
-+                          CPUARMState *env, uint32_t desc)
-+{
-+    FP8MulContext ctx = fp8_mul_start(env, -1);
-+    size_t idx = extract32(desc, SIMD_DATA_SHIFT, 2);
-+    size_t oprsz = simd_oprsz(desc);
-+    size_t nelem = oprsz / 4;
-+    uint8_t *n = vn;
-+    uint8_t *m = vm;
-+    float32 *d = vd;
-+
-+    for (size_t i = 0; i < nelem; i++) {
-+        uint8_t e0 = n[H1(4 * i + idx)];
-+        uint8_t e1 = m[H1(4 * i + idx)];
-+
-+        d[H4(i)] = f8dotadd_s(e0, e1, 1, d[H4(i)], &ctx);
-+    }
-+
-+    clear_tail(vd, oprsz, simd_maxsz(desc));
-+}
-+
-+void HELPER(gvec_fmla_idx_sb)(void *vd, void *vn, void *vm,
-+                              CPUARMState *env, uint32_t desc)
-+{
-+    FP8MulContext ctx = fp8_mul_start(env, -1);
-+    size_t idx_n = extract32(desc, SIMD_DATA_SHIFT, 2);
-+    size_t idx_m = extract32(desc, SIMD_DATA_SHIFT + 2, 4);
-+    size_t oprsz = simd_oprsz(desc);
-+    size_t nelem = oprsz / 4;
-+    uint8_t *n = vn;
-+    uint8_t *m = vm;
-+    float32 *d = vd;
-+    size_t i = 0;
-+
-+    do {
-+        uint8_t e1 = m[4 * i + H1(idx_m)];
-+        do {
-+            uint8_t e0 = n[H1(4 * i + idx_n)];
-+            d[H4(i)] = f8dotadd_s(e0, e1, 1, d[H4(i)], &ctx);
-+        } while (++i % 4 != 0);
-+    } while (i < nelem);
-+
-+    clear_tail(vd, oprsz, simd_maxsz(desc));
-+}
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 4abf75531f..b58a55895b 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -7483,6 +7483,9 @@ static bool do_fmla_fp8(DisasContext *s, arg_rxx *a,
- TRANS_FEAT(FMLAL_hb_v, aa64_f8fma, do_fmla_fp8, a, gen_helper_gvec_fmla_hb)
- TRANS_FEAT(FMLAL_hb_vi, aa64_f8fma, do_fmla_fp8, a, gen_helper_gvec_fmla_idx_hb)
- 
-+TRANS_FEAT(FMLALL_sb_v, aa64_f8fma, do_fmla_fp8, a, gen_helper_gvec_fmla_sb)
-+TRANS_FEAT(FMLALL_sb_vi, aa64_f8fma, do_fmla_fp8, a, gen_helper_gvec_fmla_idx_sb)
-+
- static bool do_int3_vector_idx(DisasContext *s, arg_qrrx_e *a,
-                                gen_helper_gvec_3 * const fns[2])
- {
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 715d5f05d8..ee7391a13c 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -1220,6 +1220,10 @@ FCVTN_bs        0.00 1110 000 ..... 11110 1 ..... ..... @qrrr_h
- FMLAL_hb_v      0 idxn:1 00 1110 110 rm:5 11111 1 rn:5 rd:5 \
-                 &rxx idxm=0
- 
-+%fmlall_idxn    30:1 22:1
-+FMLALL_sb_v     0.00 1110 0.0 rm:5 110001 rn:5 rd:5 \
-+                &rxx idxm=0 idxn=%fmlall_idxn
-+
- ### Advanced SIMD scalar x indexed element
- 
- FMUL_si         0101 1111 00 .. .... 1001 . 0 ..... .....   @rrx_h
-@@ -1341,6 +1345,9 @@ SQDMLSL_vi      0.00 1111 10 . ..... 0111 . 0 ..... .....   @qrrx_s
- FMLAL_hb_vi     0 idxn:1 00 1111 11 ... rm:3 0000 . 0 rn:5 rd:5 \
-                 &rxx idxm=%hlm4
- 
-+FMLALL_sb_vi    0 . 10 1111 0 . ... rm:3 1000 . 0 rn:5 rd:5 \
-+                &rxx idxm=%hlm4 idxn=%fmlall_idxn
-+
- # Floating-point conditional select
- 
- FCSEL           0001 1110 .. 1 rm:5 cond:4 11 rn:5 rd:5     esz=%esz_hsd
--- 
-2.43.0
+You exposed it in commit 4610fee3242 ("whpx: reshuffle common code") :)
 
+> 
+> Did you miss it? Other than that things look fine and a stub implementation
+> should be okay.
+> 
+>>      ops->synchronize_post_reset = whpx_cpu_synchronize_post_reset;
+>>      ops->synchronize_post_init = whpx_cpu_synchronize_post_init;
+>>      ops->synchronize_state = whpx_cpu_synchronize_state;
 

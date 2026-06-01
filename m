@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0862CD6E5D
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 02:33:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A86F0CD5BD1
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 02:33:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wTsRr-0007MS-DS; Sun, 31 May 2026 22:32:15 -0400
+	id 1wTsRo-0007LF-EA; Sun, 31 May 2026 22:32:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1wTsRp-0007LI-HB; Sun, 31 May 2026 22:32:13 -0400
+ id 1wTsRm-0007KY-SS; Sun, 31 May 2026 22:32:10 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72]
  helo=twmbx01.aspeedtech.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1wTsRn-0004V7-NN; Sun, 31 May 2026 22:32:13 -0400
+ id 1wTsRk-0004V7-Un; Sun, 31 May 2026 22:32:10 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 1 Jun
- 2026 10:31:51 +0800
+ 2026 10:31:50 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Mon, 1 Jun 2026 10:31:51 +0800
+ Transport; Mon, 1 Jun 2026 10:31:50 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
  <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, "Andrew
@@ -36,9 +36,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <longzl2@lenovo.com>,
  <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>
-Subject: [PATCH 4/6] hw/arm/aspeed_ast1040: Wire Caliptra mailbox
-Date: Mon, 1 Jun 2026 10:31:45 +0800
-Message-ID: <20260601023149.2309299-5-steven_lee@aspeedtech.com>
+Subject: [PATCH 3/6] hw/misc: Add external Caliptra mailbox peer
+Date: Mon, 1 Jun 2026 10:31:44 +0800
+Message-ID: <20260601023149.2309299-4-steven_lee@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260601023149.2309299-1-steven_lee@aspeedtech.com>
 References: <20260601023149.2309299-1-steven_lee@aspeedtech.com>
@@ -69,285 +69,366 @@ From:  Steven Lee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Instantiate the Caliptra mailbox in the AST1040 SoC and map its SRAM and CSR windows at the guest-visible MCI addresses.
+Add a cptra-mbox-peer-extern backend that forwards mailbox execute requests to a chardev peer using a small framed protocol.
 
-Add the 4 KiB MCI aperture controlled by the AST1040 SCU CPTRA page register, switch the SoC to the AST1040 SCU model, and expose a machine option that links an external mailbox peer after machine initialization.
+Run the blocking chardev transaction from the thread pool and report completion back through the mailbox peer interface. Block migration while this external backend is realized because the peer state lives outside QEMU.
 
 Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
 ---
- include/hw/arm/aspeed_soc.h | 11 ++++++
- hw/arm/aspeed_ast1040.c     | 60 ++++++++++++++++++++++++++++--
- hw/arm/aspeed_ast1040_evb.c | 74 ++++++++++++++++++++++++++++++++++++-
- 3 files changed, 140 insertions(+), 5 deletions(-)
+ MAINTAINERS                      |   1 +
+ hw/misc/cptra_mbox_peer_extern.c | 318 +++++++++++++++++++++++++++++++
+ hw/misc/meson.build              |   1 +
+ 3 files changed, 320 insertions(+)
+ create mode 100644 hw/misc/cptra_mbox_peer_extern.c
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 3aac144cd4..9fad3bc082 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -46,6 +46,7 @@
- #include "hw/intc/arm_gicv3.h"
- #include "hw/misc/aspeed_ltpi.h"
- #include "hw/arm/aspeed_ast1700.h"
+diff --git a/MAINTAINERS b/MAINTAINERS
+index cd5c4831e2..a0e11d4a0e 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1270,6 +1270,7 @@ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/*/*aspeed*
+ F: include/hw/*/*aspeed*
++F: hw/misc/cptra_mbox_peer_extern.c
+ F: hw/net/ftgmac100.c
+ F: include/hw/net/ftgmac100.h
+ F: docs/system/arm/aspeed.rst
+diff --git a/hw/misc/cptra_mbox_peer_extern.c b/hw/misc/cptra_mbox_peer_extern.c
+new file mode 100644
+index 0000000000..f8d5886880
+--- /dev/null
++++ b/hw/misc/cptra_mbox_peer_extern.c
+@@ -0,0 +1,318 @@
++/*
++ * Caliptra mailbox external peer (backend).
++ *
++ * Copyright (C) 2026 ASPEED Technology Inc.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "block/thread-pool.h"
++#include "chardev/char-fe.h"
 +#include "hw/misc/aspeed_cptra_mbox.h"
- 
- #define VBOOTROM_FILE_NAME  "ast27x0_bootrom.bin"
- 
-@@ -165,6 +166,16 @@ struct Aspeed10x0SoCState {
- #define TYPE_ASPEED10X0_SOC "aspeed10x0-soc"
- OBJECT_DECLARE_SIMPLE_TYPE(Aspeed10x0SoCState, ASPEED10X0_SOC)
- 
-+struct Aspeed1040SoCState {
-+    Aspeed10x0SoCState parent;
-+
-+    AspeedCptraMboxState cptra_mbox;
-+    MemoryRegion cptra_mci_window;
-+};
-+
-+#define TYPE_ASPEED1040_SOC "ast1040-a0"
-+OBJECT_DECLARE_SIMPLE_TYPE(Aspeed1040SoCState, ASPEED1040_SOC)
-+
- struct AspeedSoCClass {
-     DeviceClass parent_class;
- 
-diff --git a/hw/arm/aspeed_ast1040.c b/hw/arm/aspeed_ast1040.c
-index 8efcdad8f6..c597982bc5 100644
---- a/hw/arm/aspeed_ast1040.c
-+++ b/hw/arm/aspeed_ast1040.c
-@@ -8,12 +8,17 @@
- 
- #include "qemu/osdep.h"
- #include "qapi/error.h"
--#include "system/address-spaces.h"
- #include "system/system.h"
- #include "hw/core/qdev-clock.h"
- #include "hw/misc/unimp.h"
-+#include "hw/misc/aspeed_cptra_mbox.h"
- #include "hw/arm/aspeed_soc.h"
- 
-+#define AST1040_CPTRA_MCI_WINDOW_BASE 0x74200000
-+#define AST1040_CPTRA_MCI_WINDOW_SIZE 0x1000
-+#define AST1040_CPTRA_MBOX_SRAM_BASE  0x21400000
-+#define AST1040_CPTRA_MBOX_CSR_BASE   0x21600000
-+
- static const hwaddr aspeed_soc_ast1040_memmap[] = {
-     [ASPEED_DEV_SRAM1]     = 0x00000000, /* Hyper RAM */
-     [ASPEED_DEV_FMC]       = 0x74000000,
-@@ -88,6 +93,7 @@ static qemu_irq aspeed_soc_ast1040_get_irq(AspeedSoCState *s, int dev)
- 
- static void aspeed_soc_ast1040_init(Object *obj)
- {
-+    Aspeed1040SoCState *a1040 = ASPEED1040_SOC(obj);
-     Aspeed10x0SoCState *a = ASPEED10X0_SOC(obj);
-     AspeedSoCState *s = ASPEED_SOC(obj);
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-@@ -96,12 +102,13 @@ static void aspeed_soc_ast1040_init(Object *obj)
- 
-     s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
- 
--    /* AST1040 uses the AST2700 SCUIO model */
--    object_initialize_child(obj, "scu", &s->scu, TYPE_ASPEED_2700_SCUIO);
-+    object_initialize_child(obj, "scu", &s->scu, TYPE_ASPEED_1040_SCU);
-     qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev", sc->silicon_rev);
- 
-     object_property_add_alias(obj, "hw-strap1", OBJECT(&s->scu), "hw-strap1");
-     object_property_add_alias(obj, "hw-strap2", OBJECT(&s->scu), "hw-strap2");
-+    object_initialize_child(obj, "cptra-mbox", &a1040->cptra_mbox,
-+                            TYPE_ASPEED_CPTRA_MBOX);
- 
-     for (i = 0; i < sc->uarts_num; i++) {
-         object_initialize_child(obj, "uart[*]", &s->uart[i], TYPE_SERIAL_MM);
-@@ -120,8 +127,31 @@ static void aspeed_soc_ast1040_init(Object *obj)
-                             TYPE_UNIMPLEMENTED_DEVICE);
- }
- 
-+static bool aspeed_soc_ast1040_realize_cptra_mbox(Aspeed1040SoCState *a1040,
-+                                                  Error **errp)
-+{
-+    AspeedSoCState *s = ASPEED_SOC(a1040);
-+    DeviceState *mbox = DEVICE(&a1040->cptra_mbox);
-+
-+    /*
-+     * Caliptra is an AST1040 integrated RoT IP. The external peer is
-+     * optional; without a peer, the mailbox registers remain present and
-+     * EXECUTE completes with CMD_FAILURE.
-+     */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(mbox), errp)) {
-+        return false;
-+    }
-+
-+    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(mbox), 0,
-+                    AST1040_CPTRA_MBOX_SRAM_BASE);
-+    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(mbox), 1,
-+                    AST1040_CPTRA_MBOX_CSR_BASE);
-+    return true;
-+}
-+
- static void aspeed_soc_ast1040_realize(DeviceState *dev_soc, Error **errp)
- {
-+    Aspeed1040SoCState *a1040 = ASPEED1040_SOC(dev_soc);
-     Aspeed10x0SoCState *a = ASPEED10X0_SOC(dev_soc);
-     AspeedSoCState *s = ASPEED_SOC(dev_soc);
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-@@ -171,6 +201,27 @@ static void aspeed_soc_ast1040_realize(DeviceState *dev_soc, Error **errp)
-     memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SRAM1],
-                                 &s->sram[1]);
- 
-+    if (!aspeed_soc_ast1040_realize_cptra_mbox(a1040, errp)) {
-+        return;
-+    }
-+
-+    /*
-+     * The Caliptra MCI aperture is a 4 KiB alias whose target is selected by
-+     * AST1040_SCU_CPTRA_PAGE_REG0. Firmware commonly switches it between
-+     * mailbox SRAM (0x21400000) and mailbox CSR (0x21600000), then accesses
-+     * the selected page through 0x74200000.
-+     */
-+    memory_region_init_alias(&a1040->cptra_mci_window, OBJECT(s),
-+                             "aspeed.ast1040.cptra-mci-window", s->memory,
-+                             0, AST1040_CPTRA_MCI_WINDOW_SIZE);
-+    memory_region_add_subregion(s->memory, AST1040_CPTRA_MCI_WINDOW_BASE,
-+                                &a1040->cptra_mci_window);
-+    /* The SCU drives the aperture's target offset via SCU_CPTRA_PAGE_REG0. */
-+    object_property_set_link(OBJECT(&s->scu), "cptra-page-window",
-+                             OBJECT(&a1040->cptra_mci_window), &error_abort);
-+    object_property_set_uint(OBJECT(&s->scu), "cptra-page-window-base",
-+                             AST1040_CPTRA_MCI_WINDOW_BASE, &error_abort);
-+
-     /* SCU */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
-         return;
-@@ -244,8 +295,9 @@ static void aspeed_soc_ast1040_class_init(ObjectClass *klass, const void *data)
- 
- static const TypeInfo aspeed_soc_ast1040_types[] = {
-     {
--        .name           = "ast1040-a0",
-+        .name           = TYPE_ASPEED1040_SOC,
-         .parent         = TYPE_ASPEED10X0_SOC,
-+        .instance_size  = sizeof(Aspeed1040SoCState),
-         .instance_init  = aspeed_soc_ast1040_init,
-         .class_init     = aspeed_soc_ast1040_class_init,
-     }
-diff --git a/hw/arm/aspeed_ast1040_evb.c b/hw/arm/aspeed_ast1040_evb.c
-index 1d9b55247f..eb325a1095 100644
---- a/hw/arm/aspeed_ast1040_evb.c
-+++ b/hw/arm/aspeed_ast1040_evb.c
-@@ -8,17 +8,59 @@
- 
- #include "qemu/osdep.h"
- #include "qapi/error.h"
++#include "hw/core/qdev-properties.h"
++#include "hw/core/qdev-properties-system.h"
++#include "migration/blocker.h"
++#include "qapi/error.h"
++#include "qemu/bswap.h"
 +#include "qemu/error-report.h"
- #include "hw/arm/boot.h"
- #include "hw/arm/machines-qom.h"
- #include "hw/arm/aspeed.h"
- #include "hw/arm/aspeed_soc.h"
- #include "hw/core/qdev-clock.h"
-+#include "hw/misc/aspeed_cptra_mbox.h"
- #include "system/system.h"
- 
- #define AST1040_INTERNAL_FLASH_SIZE (4 * MiB)
- /* Main SYSCLK frequency in Hz (400MHz) */
- #define SYSCLK_FRQ 400000000ULL
- 
-+#define TYPE_AST1040_EVB_MACHINE MACHINE_TYPE_NAME("ast1040-evb")
-+OBJECT_DECLARE_SIMPLE_TYPE(Ast1040EvbMachineState, AST1040_EVB_MACHINE)
 +
-+struct Ast1040EvbMachineState {
-+    AspeedMachineState parent_obj;
++#define CPTRA_MBOX_PROTO_MAGIC      0x4D424F58u   /* "MBOX" */
++#define CPTRA_MBOX_PROTO_VERSION    1u
++#define CPTRA_MBOX_CMD_EXECUTE      1u
++#define CPTRA_MBOX_CMD_RESPONSE     2u
++#define CPTRA_MBOX_PROTO_MAX_PAYLOAD (8 + CPTRA_MBOX0_SRAM_SIZE)
 +
-+    char *cptra_peer;
-+    Notifier machine_done;
++typedef struct QEMU_PACKED CptraMboxProtoHdr {
++    uint32_t magic;
++    uint16_t version;
++    uint16_t command;
++    uint32_t payload_len;
++} CptraMboxProtoHdr;
++
++OBJECT_DECLARE_SIMPLE_TYPE(CptraMboxPeerExtern, CPTRA_MBOX_PEER_EXTERN)
++
++struct CptraMboxPeerExtern {
++    CptraMboxPeer parent;
++
++    CharFrontend chr;
++    Error *migration_blocker;
 +};
 +
-+static void aspeed_bic_machine_done(Notifier *notifier, void *data)
-+{
-+    Ast1040EvbMachineState *m = container_of(notifier,
-+                                             Ast1040EvbMachineState,
-+                                             machine_done);
-+    AspeedMachineState *bmc = ASPEED_MACHINE(m);
-+    Aspeed1040SoCState *a1040 = ASPEED1040_SOC(bmc->soc);
-+    bool ambiguous = false;
-+    Object *peer;
-+    Error *err = NULL;
++typedef struct CptraMboxExternReq {
++    CptraMboxPeerExtern *p;
 +
-+    if (!m->cptra_peer) {
++    uint32_t cmd;
++    uint32_t dlen;
++    uint8_t *req_data;
++    size_t req_len;
++
++    uint32_t rsp_status;
++    uint32_t rsp_dlen;
++    uint8_t *rsp_data;
++    size_t rsp_len;
++
++    char *error;
++} CptraMboxExternReq;
++
++static size_t cptra_padded_len(uint32_t dlen)
++{
++    return (size_t)((dlen + 3) / 4) * 4;
++}
++
++static int G_GNUC_PRINTF(2, 3)
++cptra_req_fail(CptraMboxExternReq *req, const char *fmt, ...)
++{
++    va_list ap;
++
++    va_start(ap, fmt);
++    g_free(req->error);
++    req->error = g_strdup_vprintf(fmt, ap);
++    va_end(ap);
++
++    return -1;
++}
++
++static int cptra_write_all(CptraMboxExternReq *req, const void *buf, size_t len)
++{
++    int ret;
++
++    if (len > INT_MAX) {
++        return cptra_req_fail(req, "write too large: %zu", len);
++    }
++    ret = qemu_chr_fe_write_all(&req->p->chr, buf, len);
++    if (ret < 0 || (size_t)ret != len) {
++        return cptra_req_fail(req, "backend write failed");
++    }
++    return 0;
++}
++
++static int cptra_read_all(CptraMboxExternReq *req, void *buf, size_t len)
++{
++    int ret;
++
++    if (len > INT_MAX) {
++        return cptra_req_fail(req, "read too large: %zu", len);
++    }
++    ret = qemu_chr_fe_read_all(&req->p->chr, buf, len);
++    if (ret < 0 || (size_t)ret != len) {
++        return cptra_req_fail(req, "backend read failed");
++    }
++    return 0;
++}
++
++/*
++ * Wire protocol (magic 0x4D424F58 "MBOX"):
++ *
++ *   Header (12 bytes, little-endian):
++ *     u32 magic       = 0x4D424F58
++ *     u16 version     = 1
++ *     u16 command
++ *     u32 payload_len
++ *
++ *   MBOX_EXECUTE (1)  QEMU -> backend
++ *     payload: u32 cmd, u32 dlen, u8 sram[ROUND_UP(dlen, 4)]
++ *
++ *   MBOX_RESPONSE (2) backend -> QEMU
++ *     payload: u32 status, u32 dlen, u8 sram[ROUND_UP(dlen, 4)]
++ */
++static int cptra_extern_worker(gpointer data)
++{
++    CptraMboxExternReq *req = data;
++    CptraMboxProtoHdr hdr;
++    size_t tx_payload_len = 8 + req->req_len;
++    g_autofree uint8_t *payload = NULL;
++    size_t rsp_data_len;
++
++    if (!qemu_chr_fe_backend_open(&req->p->chr)) {
++        return cptra_req_fail(req, "backend is not connected");
++    }
++
++    payload = g_malloc0(tx_payload_len);
++    stl_le_p(payload, req->cmd);
++    stl_le_p(payload + 4, req->dlen);
++    if (req->req_len) {
++        memcpy(payload + 8, req->req_data, req->req_len);
++    }
++
++    hdr.magic = cpu_to_le32(CPTRA_MBOX_PROTO_MAGIC);
++    hdr.version = cpu_to_le16(CPTRA_MBOX_PROTO_VERSION);
++    hdr.command = cpu_to_le16(CPTRA_MBOX_CMD_EXECUTE);
++    hdr.payload_len = cpu_to_le32(tx_payload_len);
++
++    if (cptra_write_all(req, &hdr, sizeof(hdr)) < 0 ||
++        cptra_write_all(req, payload, tx_payload_len) < 0) {
++        return -1;
++    }
++
++    if (cptra_read_all(req, &hdr, sizeof(hdr)) < 0) {
++        return -1;
++    }
++
++    hdr.magic = le32_to_cpu(hdr.magic);
++    hdr.version = le16_to_cpu(hdr.version);
++    hdr.command = le16_to_cpu(hdr.command);
++    hdr.payload_len = le32_to_cpu(hdr.payload_len);
++
++    if (hdr.magic != CPTRA_MBOX_PROTO_MAGIC) {
++        return cptra_req_fail(req, "bad response magic 0x%08x", hdr.magic);
++    }
++    if (hdr.version != CPTRA_MBOX_PROTO_VERSION) {
++        return cptra_req_fail(req, "bad response version %u", hdr.version);
++    }
++    if (hdr.command != CPTRA_MBOX_CMD_RESPONSE) {
++        return cptra_req_fail(req, "unexpected response command %u",
++                              hdr.command);
++    }
++    if (hdr.payload_len < 8 || hdr.payload_len > CPTRA_MBOX_PROTO_MAX_PAYLOAD) {
++        return cptra_req_fail(req, "invalid response payload length %u",
++                              hdr.payload_len);
++    }
++
++    g_free(payload);
++    payload = g_malloc(hdr.payload_len);
++    if (cptra_read_all(req, payload, hdr.payload_len) < 0) {
++        return -1;
++    }
++
++    req->rsp_status = ldl_le_p(payload);
++    req->rsp_dlen = ldl_le_p(payload + 4);
++    if (req->rsp_dlen > CPTRA_MBOX0_SRAM_SIZE) {
++        return cptra_req_fail(req, "response DLEN 0x%x exceeds SRAM",
++                              req->rsp_dlen);
++    }
++
++    rsp_data_len = cptra_padded_len(req->rsp_dlen);
++    if (8 + rsp_data_len > hdr.payload_len) {
++        return cptra_req_fail(req, "short response payload for DLEN 0x%x",
++                              req->rsp_dlen);
++    }
++
++    if (rsp_data_len) {
++        req->rsp_data = g_malloc0(rsp_data_len);
++        memcpy(req->rsp_data, payload + 8, rsp_data_len);
++        req->rsp_len = rsp_data_len;
++    }
++
++    return 0;
++}
++
++static void cptra_extern_req_free(CptraMboxExternReq *req)
++{
++    g_free(req->req_data);
++    g_free(req->rsp_data);
++    g_free(req->error);
++    g_free(req);
++}
++
++static void cptra_extern_complete(void *opaque, int ret)
++{
++    CptraMboxExternReq *req = opaque;
++    CptraMboxPeerExtern *p = req->p;
++    CptraMboxIf *intf = p->parent.intf;
++    CptraMboxIfClass *ic = intf ? CPTRA_MBOX_IF_GET_CLASS(intf) : NULL;
++
++    if (req->error) {
++        error_report("cptra-mbox-peer-extern: %s", req->error);
++    }
++
++    if (ic) {
++        if (ret == 0) {
++            ic->complete(intf, req->rsp_status, req->rsp_dlen,
++                         req->rsp_data, req->rsp_len);
++        } else {
++            ic->complete(intf, CPTRA_MBOX0_STATUS_CMD_FAILURE, 0, NULL, 0);
++        }
++    }
++
++    cptra_extern_req_free(req);
++    object_unref(OBJECT(p));
++}
++
++static void cptra_extern_handle_execute(CptraMboxPeer *peer, uint32_t cmd,
++                                        uint32_t dlen, const uint8_t *data,
++                                        uint32_t len)
++{
++    CptraMboxPeerExtern *p = CPTRA_MBOX_PEER_EXTERN(peer);
++    CptraMboxIf *intf = peer->intf;
++    CptraMboxExternReq *req;
++
++    if (!qemu_chr_fe_backend_connected(&p->chr) ||
++        !qemu_chr_fe_backend_open(&p->chr)) {
++        if (intf) {
++            CPTRA_MBOX_IF_GET_CLASS(intf)->complete(
++                intf, CPTRA_MBOX0_STATUS_CMD_FAILURE, 0, NULL, 0);
++        }
 +        return;
 +    }
 +
-+    peer = object_resolve_path_type(m->cptra_peer, TYPE_CPTRA_MBOX_PEER,
-+                                    &ambiguous);
-+    if (!peer || ambiguous) {
-+        error_report("cptra-peer: peer '%s' not found%s",
-+                     m->cptra_peer, ambiguous ? " (ambiguous)" : "");
-+        exit(1);
++    req = g_new0(CptraMboxExternReq, 1);
++    req->p = p;
++    req->cmd = cmd;
++    req->dlen = dlen;
++    if (len) {
++        req->req_data = g_memdup2(data, len);
++        req->req_len = len;
 +    }
 +
-+    if (!aspeed_cptra_mbox_set_peer(&a1040->cptra_mbox,
-+                                    CPTRA_MBOX_PEER(peer), &err)) {
-+        error_report_err(err);
-+        exit(1);
-+    }
++    object_ref(OBJECT(p));
++    thread_pool_submit_aio(cptra_extern_worker, req,
++                           cptra_extern_complete, req);
 +}
 +
- static void aspeed_bic_machine_init(MachineState *machine)
- {
-     AspeedMachineState *bmc = ASPEED_MACHINE(machine);
-@@ -38,12 +80,35 @@ static void aspeed_bic_machine_init(MachineState *machine)
-     aspeed_connect_serial_hds_to_uarts(bmc);
-     qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
- 
-+    if (AST1040_EVB_MACHINE(machine)->cptra_peer) {
-+        AST1040_EVB_MACHINE(machine)->machine_done.notify =
-+            aspeed_bic_machine_done;
-+        qemu_add_machine_init_done_notifier(
-+            &AST1040_EVB_MACHINE(machine)->machine_done);
-+    }
-+
-     armv7m_load_kernel(ARM_CPU(first_cpu),
-                        machine->kernel_filename,
-                        0,
-                        AST1040_INTERNAL_FLASH_SIZE);
- }
- 
-+static char *aspeed_bic_get_cptra_peer(Object *obj, Error **errp)
++static void cptra_extern_realize(DeviceState *dev, Error **errp)
 +{
-+    Ast1040EvbMachineState *m = AST1040_EVB_MACHINE(obj);
++    CptraMboxPeerExtern *p = CPTRA_MBOX_PEER_EXTERN(dev);
 +
-+    return g_strdup(m->cptra_peer);
++    if (!qemu_chr_fe_backend_connected(&p->chr)) {
++        error_setg(errp, "cptra-mbox-peer-extern requires a chardev attribute");
++        return;
++    }
++
++    qemu_chr_fe_set_open(&p->chr, true);
++    error_setg(&p->migration_blocker,
++               "Migration disabled: cptra-mbox-peer-extern chardev backend "
++               "state is external");
++    if (migrate_add_blocker(&p->migration_blocker, errp) < 0) {
++        return;
++    }
 +}
 +
-+static void aspeed_bic_set_cptra_peer(Object *obj, const char *value,
-+                                      Error **errp)
++static void cptra_extern_finalize(Object *obj)
 +{
-+    Ast1040EvbMachineState *m = AST1040_EVB_MACHINE(obj);
++    CptraMboxPeerExtern *p = CPTRA_MBOX_PEER_EXTERN(obj);
 +
-+    g_free(m->cptra_peer);
-+    m->cptra_peer = g_strdup(value);
++    migrate_del_blocker(&p->migration_blocker);
++    qemu_chr_fe_deinit(&p->chr, false);
 +}
 +
- static void aspeed_machine_ast1040_evb_class_init(ObjectClass *oc,
-                                                   const void *data)
- {
-@@ -59,12 +124,19 @@ static void aspeed_machine_ast1040_evb_class_init(ObjectClass *oc,
-     amc->macs_mask = 0;
-     amc->uart_default = ASPEED_DEV_UART12;
-     aspeed_machine_class_init_cpus_defaults(mc);
++static const Property cptra_extern_props[] = {
++    DEFINE_PROP_CHR("chardev", CptraMboxPeerExtern, chr),
++};
 +
-+    object_class_property_add_str(oc, "cptra-peer",
-+                                  aspeed_bic_get_cptra_peer,
-+                                  aspeed_bic_set_cptra_peer);
-+    object_class_property_set_description(oc, "cptra-peer",
-+        "Caliptra mailbox peer object id");
- }
- 
- static const TypeInfo aspeed_ast1040_evb_types[] = {
-     {
--        .name           = MACHINE_TYPE_NAME("ast1040-evb"),
-+        .name           = TYPE_AST1040_EVB_MACHINE,
-         .parent         = TYPE_ASPEED_MACHINE,
-+        .instance_size  = sizeof(Ast1040EvbMachineState),
-         .class_init     = aspeed_machine_ast1040_evb_class_init,
-         .interfaces     = arm_machine_interfaces,
-     }
++static void cptra_extern_class_init(ObjectClass *oc, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    CptraMboxPeerClass *pc = CPTRA_MBOX_PEER_CLASS(oc);
++
++    dc->desc = "Caliptra mailbox external (chardev) peer";
++    dc->realize = cptra_extern_realize;
++    dc->hotpluggable = false;
++    device_class_set_props(dc, cptra_extern_props);
++    pc->handle_execute = cptra_extern_handle_execute;
++}
++
++static const TypeInfo cptra_extern_type = {
++    .name              = TYPE_CPTRA_MBOX_PEER_EXTERN,
++    .parent            = TYPE_CPTRA_MBOX_PEER,
++    .instance_size     = sizeof(CptraMboxPeerExtern),
++    .instance_finalize = cptra_extern_finalize,
++    .class_init        = cptra_extern_class_init,
++};
++
++static void cptra_extern_register_types(void)
++{
++    type_register_static(&cptra_extern_type);
++}
++
++type_init(cptra_extern_register_types)
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index d23045c4b5..9d545e8fb7 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -136,6 +136,7 @@ system_ss.add(when: 'CONFIG_PVPANIC_MMIO', if_true: files('pvpanic-mmio.c'))
+ system_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
+ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_cptra_mbox.c',
++  'cptra_mbox_peer_extern.c',
+   'aspeed_hace.c',
+   'aspeed_lpc.c',
+   'aspeed_ltpi.c',
 -- 
 2.43.0
 

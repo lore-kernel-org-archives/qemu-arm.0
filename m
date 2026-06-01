@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D95B7CD6E56
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 02:51:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31567CD6E60
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 02:51:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wTsjR-000387-L9; Sun, 31 May 2026 22:50:25 -0400
+	id 1wTsjT-000395-6k; Sun, 31 May 2026 22:50:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wTsjP-00036m-Hc; Sun, 31 May 2026 22:50:23 -0400
+ id 1wTsjS-00038e-8u; Sun, 31 May 2026 22:50:26 -0400
 Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
  ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wTsjM-0002Y8-Le; Sun, 31 May 2026 22:50:23 -0400
+ id 1wTsjQ-0002Y8-KD; Sun, 31 May 2026 22:50:25 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=NsP/kUUxMgSSOyMZgKuiGqRyNHpp3bFyLkaakSV3Ef/E7z65wCxCwr8T5id2BU4NHEmuhv54SzNZ5d1Mg6lYQaa2M0ix0qqOeavYfHuA+Xa2TNo6nlJ1mOHzrr/6CXECQrYjcN4l9pm8HJ+izm2AWmlnl76sfcdKEymiib2gM2MfkqHTZS3/G+jK0nFLIUQjxswuQKfPHpqLYEF6dS5bvZfB4wml9701VoajpT565Wc+qVwiUmFB20zTs0wA+4gFSuc9nF7LZAGhoWIBmSGL31wlhJXS5I1DhySGpMEgcol5ntNFz0oWL+cO5EBz9INCSFjuhM/tmQpXQrElOAzQ3g==
+ b=e1rDc5cf3gpC49QMaG7di1+QNDVbCftLXcQi5QvoN1nI8a5lRWfwv26e3RWKyZ3Ty1wua+Z/kF3jvM7eKYpYf69/Oz1L0teaPiq6FBffGeQcpG7Awvu16kxvflnkr4lOBM82H2Wg6SqbgpEwVB2ymHhmo+LNclI8VzKsVTOXMO9G7SVwC/THPnv69gKvhaYyJQO6LbgrjgrmLlpCXNLX9OAtUz51E5Kx8+Ql1NVcpF2cC/KYmsWry6Tp50ppx6JnN7o/aDllcsxW0yagNQxPqqzbh2BHVbXmWs6SIWQyNCS5crL3MACczEuqyQoN247IkPx6hD+hhnW+g2SV3nhxHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=CsNIwz/Wi7aP/WEnTeZjG1pEmbqEVo0Uhduc6aO+7r0=;
- b=v9brKYTr8zkBXh+rZC+MyLKmqPC/4cZqHie4inGdeBzpmoNUfnWqjVwMQmMmlIIDxrVbSeOQ6G7mBVDUaVXx6ooVKHnHqup2wwH6Tc6KaPmiKXPG8cLlaDP8cJ3aLVmiHG+xoy190ffgyiIFdjkpjihJ8jUpMBolvYpx1U/etb5B02gOpYFJp1UG9b8YPta0NyHJkwlFeSpIxA7ca3xhj7gnuZpzeGwX7Op3Hl0jhIKur+MJAylo2Jn0fkFJDQjR8avR+zszDwSNRTwzklRfWGHtK1OYtwmSnI8LAR993v3hW/ggd1EqcjMckA8bjmV1+BlPs+B2mQzoEBG+m2lMtw==
+ bh=zburnr8OaIDEW7+lcYDri23dUOWKaJOC5IsB4gUVAoY=;
+ b=dXp7+LhJDqkW00Zde8soDXsmfzPTsWHJNH21Ptci3n2e4coTT2uhfDxX/JgcqsG8DcQAWtCNyazsCqUunrlRfOXiTUKo04rVwy7bs+eb5LUsx1zLv5MeUj3zgx+ey2tCvIOEnFHZsQsphzXvVzP/leu/NU/WrrV20Mxd+BpQPPm9IUfXcJGSaWEWaCTM7b3J8jruzK5EETAEC7T5IJwtNkDka6vizjYS+lG1qi3pYpYCc9ainL1Gn2seSAHK/GAQqb9lTOFfl7j+kZknmZfWalz0G1fBTQM38Avz0Yu4r7kuOC5r/Vx7HpgzxHstBh2S3RjKFGX0cqDUN4V5e3I8jw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=CsNIwz/Wi7aP/WEnTeZjG1pEmbqEVo0Uhduc6aO+7r0=;
- b=qPmQrKfYLg2LAmzahhydp4zXaXwGovUBsHoc3PghOQGJvti6XoDNiVv4v/drZr+Pg2IwxRFHyjqnj8xs9US2RbcbjwHM/FElTBiUYOXRW2hhxug8Y6dnuoAtxfk+lEzWqzCbEB75uxrP6fKq7yIYsTLbY13Pq94zCvNe4PFRT3qf0Jr2ZDzOPpw9wKrVTGiUvWcekxs/vSce1yExNVM7q6lV8I0bUGwrPpdi4X9F/8zBZONSUpZ+XUOtoDvox1e0jzws56AuD+ohNJO+vfvrAxgDDatl86Duk92qVX3lb7OzBjZyuo70KbHewx+Dkofve96mCOw1dLM/p9+LmQ6sEQ==
+ bh=zburnr8OaIDEW7+lcYDri23dUOWKaJOC5IsB4gUVAoY=;
+ b=N9PhCQBvPESPd3AHAGP01d29dfHL+p7BQNbtHVvPAiVS752G+tieqkcHUF6VnQQXUZU6ewK24dl2MPjmy8qgllU4dC4LyF2R06LBNL8aVFhXKkLcUl+4OJ9BOogSY8AYcO82M2kyI231S6+x9OLLEqw9Hf/+ulIt9XxUBc5T+x48LkohI9VFycTvbXcENA5W/xjQO9I07SBFqO4Nmx8ofGk03/aG7bVgxWFyb2KT8nMZS1+xsMdUjYDU6PjR7lFeuva0euyh51k1H+Pey0zhp4MRYAqYzOO2wq84MRYZZZ+H/NfvvIcAEnzLARKIIfYho4de4bAO/aB83HilcKeT+Q==
 Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
  by KU4PR06MB8361.apcprd06.prod.outlook.com (2603:1096:d10:7a::9) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.15; Mon, 1 Jun 2026
- 02:50:05 +0000
+ 02:50:08 +0000
 Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
  ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
  ([fe80::e659:1ead:77cb:f6d3%2]) with mapi id 15.21.0071.014; Mon, 1 Jun 2026
- 02:50:05 +0000
+ 02:50:08 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+To: Alistair Francis <alistair@alistair23.me>, Peter Maydell
+ <peter.maydell@linaro.org>, =?iso-8859-1?Q?C=E9dric_Le_Goater?=
+ <clg@kaod.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Alistair
- Francis <alistair@alistair23.me>, Ninad Palsule <ninad@linux.ibm.com>, Jason
- Wang <jasowang@redhat.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Ninad Palsule
+ <ninad@linux.ibm.com>, Jason Wang <jasowang@redhat.com>, "open
+ list:STM32F205" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
 CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 03/24] hw/misc/aspeed_ltpi: Convert to DEFINE_TYPES() with
+Subject: [PATCH v1 05/24] hw/misc/aspeed_sbc: Convert to DEFINE_TYPES() with
  inlined TypeInfo
-Thread-Topic: [PATCH v1 03/24] hw/misc/aspeed_ltpi: Convert to DEFINE_TYPES()
+Thread-Topic: [PATCH v1 05/24] hw/misc/aspeed_sbc: Convert to DEFINE_TYPES()
  with inlined TypeInfo
-Thread-Index: AQHc8XFaVeCmLSp36EaNYjmxZMJjfg==
-Date: Mon, 1 Jun 2026 02:50:05 +0000
-Message-ID: <20260601024959.2347639-4-jamin_lin@aspeedtech.com>
+Thread-Index: AQHc8XFbFXiS5+zLiEuhImfTx2HKDQ==
+Date: Mon, 1 Jun 2026 02:50:08 +0000
+Message-ID: <20260601024959.2347639-6-jamin_lin@aspeedtech.com>
 References: <20260601024959.2347639-1-jamin_lin@aspeedtech.com>
 In-Reply-To: <20260601024959.2347639-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
@@ -69,61 +70,61 @@ authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|KU4PR06MB8361:EE_
-x-ms-office365-filtering-correlation-id: 2ffe634a-67f0-419d-f2d3-08debf887c82
+x-ms-office365-filtering-correlation-id: 4ea2f38a-1293-47bf-b91e-08debf887e3c
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
  ARA:13230040|366016|7416014|376014|1800799024|18002099003|22082099003|38070700021|921020|56012099006;
-x-microsoft-antispam-message-info: ra9p2CKm1Cvyj/4gqjA5K1iei/DgVoq+QJomhVSiA/bb6NPT35+xi4eLAcAS0iYSkl6T9esa+L/8DYLubpAXiQYkH3A/xKQo/LqGAD3J1mO+ZHpY12IEK68baMPzJYef1ek1wbMCjNeV9hIpKa5K509aCHZf3gAlnuFSBmPe/iyU+M79GL8WVmbFPbyDWAoKGRw3N7HNQgtW7bifeSkhhaK0p385zBQeHwHiHoKAuw29OV/Sw22aklxZC/7JBarI+GU4raKoPgnqvdxsQO+08M9WbciCF5iPtJMnvzb2XttIvklj2EE8g6uBbsa8WfD/Q3f4vGrOPznBYb6rXyO+G2EgWKH1Zc2KFZWRmy7X7/V21oWPPsV1cpjxNq/Z6ymhh1ZH3dteQ0RCkJVsm55kf/ZyCvRAFrLzJ0ROTo98q6OTL8xXvW9CIfdQenIb+IpURWFWnRVxBPWFCnKz7jRWzYN2joLsj/uWUd6PQ/vxBXN3GicUEy/gldm5NJcv13MLS/3qLeXHqaegH23er/0nw4E4p9E3G4hV1ZMKND4RoxB0luQXLK4NqcpQ/SCwACLBrlkbJJQZQ6XJuLTCbi9OuIDQyItmlQH+uunDzptiUtcP4N3xnFtnQ1cThf/U964rtjbce6tdU0z65tKUKuahsVASKW2EwxDkbI0cqUlHVzC/+BaTb4i+0PCrs29+0FpyPnrD51dWrZgYfQ1AReF/2ZFqdw9q8Yc7X6N0pEgF2DrMjrKQ8yJThSZUFNkYuB/7oB4iPb7aKKQ+1yXHmRCdSQ==
+x-microsoft-antispam-message-info: sUJtKjn1Xsw/fIWWTUj2JmRKytnfZwxt/IiGjZSQxFjoaJGRtOldfOo8Z2YxJwSTS4ovuqDcowuRJB12wUqLGLmUAVN443OZWsC6+5q9A8sId2vd1r/dg/dgSAJfhoCElI9F8bhxz7+jxtW+OeSOzsg6jLZ/9Tt8jpvd0ufogRljv6xP/V3Z6QAckT+s6qVKNl/PVitLshcnMh3cr4Gj7pVHoZAFrqkdzjP+Cr8Jp8AKASXdn0LBIGEuC+y9uk3K6pGruiqOYRqUhLxl06kdPQBJqgKybJtNdOa78fhd0b74DQxcPwloAPV9+y4Rr86hso4GST8ZkUsYImxAHfiQjTlp6a0FhH1pr714UtCmUacOo/qSmnCZMmCSKNMqRsP7iKUxBoQii7L3ny/WNexW3i40z2RIueBeKHxe3Sfqqp7KciPm3zH8xRav9RUIUQF8VjaogOtcyQxWwPqxtjhtfaBASnOsejuUOUZqtsPpna/d8XYdMbCb3lLofu92e5jjsBRjipQDPhqcjF8QeYbiWnyECnnqbc83WCidll9bb0Zk6MpzkkQHxBjOC2meCJpex+UPNkhYv0add9PL5vLTqFRNFoUodlPQ8uXBh08nGA/6JjKTv9wmLuJkPj109Pt59xcPBuSHISNyFpmBLJGG17ewGltcbT7IX43VpPMtgc/GX90C/nPBx5gYthc5uKS1mhKtVhgeJFla0rYn+8528//EQc051W8mWpsViAAmlS0xAcrsG2OfmIjtqDOtv3czVPHScHq+N3yK92aRAuSybQ==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(366016)(7416014)(376014)(1800799024)(18002099003)(22082099003)(38070700021)(921020)(56012099006);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?SqgqsvrInDayMbE75U2Gu/jaf2rIi+wCKJF4csA4v866knJdeKMrApNE6/?=
- =?iso-8859-1?Q?6SJndGcGS5P4qAgf3PNjwSSx90qs0SP/mNEdgG0IUiS1XLn0gl/vom0LRI?=
- =?iso-8859-1?Q?MJdLdLgI1YDypO/GtD+J/VezhM3nhqm4dF3VXGZz3/U5z2YsgX9LozBnpi?=
- =?iso-8859-1?Q?DQwa0ZtGQyPUUjuVw98XkilxYe61HJTEBvIZUuvR7NmJMoBjGJ/r3wL+ON?=
- =?iso-8859-1?Q?xS43e2P3qhJI9ksQRtk0HOhfoN64PsGvARUBfT/vZs37hS90c0Ws7lDOt/?=
- =?iso-8859-1?Q?2Pe3fLLDONfeMAOJ0QOOfLodZBqDErH7w9ACI/vBlUkc/RqyMtyz02K1hD?=
- =?iso-8859-1?Q?FGHwyv8NZezgB7VF8bj++T7peyTfHfY2fvD5TJEnRu9zekpzHguofqnue2?=
- =?iso-8859-1?Q?5VJaLDomqllmiA0KMMWZn9TAxSeFoPQBOpsJ+IX7HHDVyCD8cJIGfTe+ep?=
- =?iso-8859-1?Q?GwEpK6l6EqLU3SctHt3VL9NuIZRRgTyiMKy1Z5LBT4u3VLjmrOYOhfxLUh?=
- =?iso-8859-1?Q?Q24taYCrEmiSOdq2dmlgtOBK/L0TJzgzw/jwALJGMSR1Ix2D3cz9HRCbG/?=
- =?iso-8859-1?Q?B2kzkAMry5MBWKD3fdVdvi8q+emJb5uAimdOtHiBxmCd1uXofPKn17lLCw?=
- =?iso-8859-1?Q?4a/UXKrr3cbu/r2yXhTH0RDJiWLHpkgny0qHW71ZgwEDCxiuBeX8oGamsI?=
- =?iso-8859-1?Q?5hCx9OCMGuCl1xdNtayohCuL6R+u8xcq/JkNnNR1bagAV9qjnHAZf9uci5?=
- =?iso-8859-1?Q?7Ho056+BUusAxTWT0EDYd9V5/YECm7iCsk+ymN0F/Xjq0T8+vIedUjnrVO?=
- =?iso-8859-1?Q?fqpEOzOzrivZsIaZkefRy56fKNXHTDrmM3Z0hzuvQy78CBIGKquPaz5BNL?=
- =?iso-8859-1?Q?YSe7wvQdxKVF6GnksiXhFKZAfJeJ99D4YWow9g0l3eY3j2RjfB8qLpS1aI?=
- =?iso-8859-1?Q?G7iNdZahJW6XqKvLnhpP7DeTalRw3/S8h25gmG9E7WoBxemSo1LtzIfW1o?=
- =?iso-8859-1?Q?a2Zlg/KKYopQaS4nR3Bl2OFStq08S2Jqaz+qcPUGaVCEkDehtBPR66jISR?=
- =?iso-8859-1?Q?4qMmrltCLn2+79aa98vrpnsYyrnXgDZINAfACInyX/klcjzUEOmH+eR/ZA?=
- =?iso-8859-1?Q?sZcsQPV+4GwhDYo0OJAeHPFq3nX4O1Zv/XdCE8VcsZDUhrzgXHar+pBeD5?=
- =?iso-8859-1?Q?p7c0xiJJ3IkvRSeb8e8a6mApECj7wqUFs4otcjcm9JhgFxetTAcueXt8wp?=
- =?iso-8859-1?Q?rt/Q4fUJsGkPSbeDS0po+mV986fxKTIE+bA45lvGE+sBgBqBCUW4J6jXc2?=
- =?iso-8859-1?Q?yAZGvpL+8a5ArT9F5lsoFATor70GEwx3O2dbsk7ojG2AxrBcsa8nqoHHEz?=
- =?iso-8859-1?Q?ZPGasSEwLZscmG/5y0nxg59+NKFOpviox974etpNIQ89wq8xZg0Zb+8nTe?=
- =?iso-8859-1?Q?GQ9cCGM9W6HLWxLma+xUr3bCnECsS6Mz86AFKG9HTPJPdoxh11GEAf/jEZ?=
- =?iso-8859-1?Q?j1JzuEz1F0Wqgar/8auaP1Xas/kjR/WouSxFOzFN2azmpJsh6Yc+JtfyCb?=
- =?iso-8859-1?Q?x6TD/97GUa2CRoeRUVzIcv0cobzpKNkcvuQsmpTk4iXWPl9Qb4DTCROrYY?=
- =?iso-8859-1?Q?ZqW1+CcsSt8uI/M1Fdb9ParY+oEH2YeCaoXTHueTQ9w+2BsnkmbJmfNELq?=
- =?iso-8859-1?Q?rzyRBV0cwEHarzfdPLgqHoYsirzrczKGUeS4JvLGlorOND9CeQnErfIq70?=
- =?iso-8859-1?Q?Mnb8tIJ39B/ODcByNFVtNMB+3loTncHsC/6b2+xUkWj36zd1CohARBaQJ/?=
- =?iso-8859-1?Q?MGM6lCnhyw=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?/ig98lME2+ApLJTk6OU9+7AvoVd6D4ClExjwFi8VebTOfgW3L6Aj0midTj?=
+ =?iso-8859-1?Q?j/GIF/N/07IXxPadK1iCA12wjr3icW+Ze6FHBnXpeoSqo9nt3ORguONRTJ?=
+ =?iso-8859-1?Q?zd4A03JRTuOv9pqBXCo9jiValW1Z3X1Oai6YOiViZepgGmfveT4WnJnlY6?=
+ =?iso-8859-1?Q?a00qAb0ISCgOMiVnXhMeHqTny9JMP+duNuU5lUW5eiqm2RwNwbZr8sraoJ?=
+ =?iso-8859-1?Q?of+ZXmRRXhfFEe72r1CyKR0DiG9Is1RCLu7EQGFBu+S8ju1fT7A4C7N1sA?=
+ =?iso-8859-1?Q?gOMqb8KqgrXKEi9Mi4oiI7k3g0ThH8nJiSqZ6Kumrjk0c6dnh5cU5eNU3C?=
+ =?iso-8859-1?Q?9ipK9mQh1oc1HqYaZTuIorZUYkxzDYgWwIdZLMsrjuxlh9uJGyvAFy10V9?=
+ =?iso-8859-1?Q?jFf/0rKJhCnrtq+kTs/62zszue7V2ekizpL5nUMPghZAdlAU1WuJg8KoR1?=
+ =?iso-8859-1?Q?H7uXwSWJhKNI/rly2k0FaoKJIVn9cm/3ZqgcxcHwquDBMkENuTP6chMwoL?=
+ =?iso-8859-1?Q?JqYTIIL9j63YBPWgK3rifLuj8j+iSpamo19lfQP9fA8fM+i876edsYjQrW?=
+ =?iso-8859-1?Q?mI2YUJM7b4CkAtbIywrJp+WwAvxMbbvCAAxOtSIpzDhgY65X0s4qCFa5OM?=
+ =?iso-8859-1?Q?9PkFr0D3lTpPpN5qondZj2E5KqAFI0ZMCgvJDW5+Y/OYzvSSndrlgLt42s?=
+ =?iso-8859-1?Q?IBARGoM3AJqgzOBJCBRicXmZDXsn56/b3VVQeegWb0u1SYVH6bhnJ5jEUc?=
+ =?iso-8859-1?Q?ZLaGfLbFo/9G+gSOBHEwOSwIgRyFAhGdQEntD42anFS67+ZyFsPHjTowJN?=
+ =?iso-8859-1?Q?SFdelIsWlXbL0D/5SUGYQ/hwM6YZPk+GOEErbG5FIo2CrS7MVVCQJNXyL7?=
+ =?iso-8859-1?Q?sLWLjccaHszpXKkoycVyDho6NIXVZkThSU466X63XiorXbBJ0qVgCZXSPo?=
+ =?iso-8859-1?Q?mZUQlQx0UM1f/RMNKmw/bPGlnkTYtzN8C/qzAyZWbyB0BbQIQ+BcvzNuvT?=
+ =?iso-8859-1?Q?4W1ytZtm7Z5SlL8qMRhlC1+lvaOXtXAtEr6CHVX111phYasiufUMhVCugl?=
+ =?iso-8859-1?Q?88emsp9QxpMAjUPfQm26lshrAmiRLu9O700m6Bx+if3ptEN7QJnBKgw9ww?=
+ =?iso-8859-1?Q?eiEP5sJ1Cw2szHp8anILT2AEN3/zBELLOJ9f8VUbb7AY/HMjy40DnH1aTO?=
+ =?iso-8859-1?Q?Ccshx1xh+9voW/1MdKYemNV94BPTV6cCHfuvIl5ExUlp50RjItn6Cvq8Bz?=
+ =?iso-8859-1?Q?ac/h0bdxvVSlI5c5VedoBEBRJMVFksJiDZnhX/cgGiHUAm/nRsGVnPBlhJ?=
+ =?iso-8859-1?Q?6Pa0bCxDqs8rC9dMmJ7q9CSPllk2NNHmo8By1nI1n4yo4yKxlZPBR+FWZS?=
+ =?iso-8859-1?Q?ym5dznl2MKIRJc6JXLp3vSUomkrHDM4YgbTNdnlvxXc1JvFUuRseoTkEVw?=
+ =?iso-8859-1?Q?AvqbqhKUjAzehPBSnR6gu8RGxdbf84nrsuFLyNY2UMvrfd1v1njgr+PO49?=
+ =?iso-8859-1?Q?iULalJyueojOqSiHdv5/cGFauubXV8AvcHuPx0eGw6Tbpa1dd6JAwBS6ny?=
+ =?iso-8859-1?Q?GNXr3LYcbg4r0y+G38Y/wuy3JUsk2o2cLbSXvVn9v7QqHXk9iHIioMf6C3?=
+ =?iso-8859-1?Q?yY26LJ28h5hm9JPQ7g1Q+YSl6DlqQyGV/lKDPt3Clbh0e4vda79a/gpPgW?=
+ =?iso-8859-1?Q?FdQNQ9zqeh53YKojBz2uEeDuC7gP9he0N0v+sKhGD5jIFAJNj3u/Ya+Q/w?=
+ =?iso-8859-1?Q?0DPOLrD7F7T+AtYWbsV122MaI3pA5GmWOqG42/XepZHTMhizRP2BNuobuX?=
+ =?iso-8859-1?Q?/LxshaYzQg=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: ZfrPoicURu3w7Msa4T+2IM67kywT/v4RQloorvCHFx7OP/u1oAZBsJPHKF7ygCNN2+XhEYDM1LmN/uPpANxMnr9ozZRa20illDq58rPN5UH57zt9iOQ2daHiBKg4hk+VRhHiJNHXGeGyfifj6neY9t73QqfntiwTthqIpFbCng+6kDcB5MIdXD2mH5lMgyX33xdatv+63J/AiwaAC21clI7e/IPC/YTJrrclJ1jMnCF9J5UDO9cvJ9IE6bzO0DCxiEsS3RLcJAcZVQ0qSNPMGJm9lrPWp+RjKPlSdzn7SC6d0zwb8cKDU5PKhE9Yy93GIyeZsc/9gtw4dyL4Ryb68w==
+X-Exchange-RoutingPolicyChecked: fUOeQxIzH1tVMsnegFh/dmnvAcdZlYR2ePLJm3Y0hls7uS7QNzwRsTixEg3++t/Av+AqIflJhG+TXLDU5XemWQ+8YNhvFoBtgeRHoTAuHRoKAFZ38grUgJp1rq2iAN8PK7LX6S7ZWAIqunMuSG46iWbOeGafbVuXf/J4nSwVYsbCVtxLJseIcMdMKb0kbBhHqHEtF8K5Yulvy3v3d8DUMPCcO3cLiy14SrToyc4Q3yquycDToMpBNO8eC+fr1wiOe+Af57UpCYaNcc2yk5DIN3HrDLXUMGjj13kCGzSInt/mNi9ohcCcVlXhfEtp914PRFUtC6KsYu6rrZUg2CTxUg==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2ffe634a-67f0-419d-f2d3-08debf887c82
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jun 2026 02:50:05.8531 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4ea2f38a-1293-47bf-b91e-08debf887e3c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jun 2026 02:50:08.7353 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: f8oRcweiv11N3clXeKLQpZjEodlZAjZCH+zkE5Qiy3AXrTUQC+pOtlKdxDZKCtrZN/3CCmGXLdNI3ViFZi1OkOMG/beYiW4uONxS45XXo0k=
+X-MS-Exchange-CrossTenant-userprincipalname: +j3+Zc9KeDXK5JtyPBSIqX3lvIapicTPMJ9y+j7zyizSJ2GivkePVnrvV2NOrf+D42OxxoHu5B5cySsk3NtEXWYqrdwKdA00fplEHbeJWCQ=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: KU4PR06MB8361
 Received-SPF: pass client-ip=2a01:111:f403:c405::5;
  envelope-from=jamin_lin@aspeedtech.com;
@@ -153,47 +154,93 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Replace the legacy type_register_static()/type_init() registration=0A=
 pattern with the modern DEFINE_TYPES() macro.=0A=
 =0A=
-Inline the standalone 'aspeed_ltpi_info' TypeInfo variable directly=0A=
-into the 'aspeed_ltpi_types[]' array, removing the need for a separate=0A=
-declaration.=0A=
+Inline 3 standalone TypeInfo variables (aspeed_2600_sbc_info,=0A=
+aspeed_ast10x0_sbc_info, aspeed_sbc_info) directly into the=0A=
+'aspeed_sbc_types[]' array, removing the need for separate=0A=
+declarations.=0A=
 =0A=
 No functional change.=0A=
 =0A=
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
 ---=0A=
- hw/misc/aspeed_ltpi.c | 19 ++++++++-----------=0A=
- 1 file changed, 8 insertions(+), 11 deletions(-)=0A=
+ hw/misc/aspeed_sbc.c | 46 +++++++++++++++++++-------------------------=0A=
+ 1 file changed, 20 insertions(+), 26 deletions(-)=0A=
 =0A=
-diff --git a/hw/misc/aspeed_ltpi.c b/hw/misc/aspeed_ltpi.c=0A=
-index 956e91d143..2e413550b9 100644=0A=
---- a/hw/misc/aspeed_ltpi.c=0A=
-+++ b/hw/misc/aspeed_ltpi.c=0A=
-@@ -179,16 +179,13 @@ static void aspeed_ltpi_class_init(ObjectClass *klass=
-, const void *data)=0A=
-     rc->phases.hold =3D aspeed_ltpi_reset_hold;=0A=
+diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c=0A=
+index 6125d2f134..1dfcf14e5b 100644=0A=
+--- a/hw/misc/aspeed_sbc.c=0A=
++++ b/hw/misc/aspeed_sbc.c=0A=
+@@ -338,14 +338,6 @@ static void aspeed_sbc_class_init(ObjectClass *klass, =
+const void *data)=0A=
+     device_class_set_props(dc, aspeed_sbc_properties);=0A=
  }=0A=
  =0A=
--static const TypeInfo aspeed_ltpi_info =3D {=0A=
--    .name          =3D TYPE_ASPEED_LTPI,=0A=
--    .parent        =3D TYPE_SYS_BUS_DEVICE,=0A=
--    .instance_size =3D sizeof(AspeedLTPIState),=0A=
--    .class_init    =3D aspeed_ltpi_class_init,=0A=
-+static const TypeInfo aspeed_ltpi_types[] =3D {=0A=
+-static const TypeInfo aspeed_sbc_info =3D {=0A=
+-    .name =3D TYPE_ASPEED_SBC,=0A=
+-    .parent =3D TYPE_SYS_BUS_DEVICE,=0A=
+-    .instance_size =3D sizeof(AspeedSBCState),=0A=
+-    .instance_init =3D aspeed_sbc_instance_init,=0A=
+-    .class_init =3D aspeed_sbc_class_init,=0A=
+-    .class_size =3D sizeof(AspeedSBCClass)=0A=
+-};=0A=
+ =0A=
+ static void aspeed_ast2600_sbc_class_init(ObjectClass *klass, const void *=
+data)=0A=
+ {=0A=
+@@ -356,12 +348,6 @@ static void aspeed_ast2600_sbc_class_init(ObjectClass =
+*klass, const void *data)=0A=
+     sc->has_otp =3D true;=0A=
+ }=0A=
+ =0A=
+-static const TypeInfo aspeed_ast2600_sbc_info =3D {=0A=
+-    .name =3D TYPE_ASPEED_AST2600_SBC,=0A=
+-    .parent =3D TYPE_ASPEED_SBC,=0A=
+-    .class_init =3D aspeed_ast2600_sbc_class_init,=0A=
+-};=0A=
+-=0A=
+ static void aspeed_ast10x0_sbc_class_init(ObjectClass *klass, const void *=
+data)=0A=
+ {=0A=
+     DeviceClass *dc =3D DEVICE_CLASS(klass);=0A=
+@@ -371,17 +357,25 @@ static void aspeed_ast10x0_sbc_class_init(ObjectClass=
+ *klass, const void *data)=0A=
+     sc->has_otp =3D true;=0A=
+ }=0A=
+ =0A=
+-static const TypeInfo aspeed_ast10x0_sbc_info =3D {=0A=
+-    .name =3D TYPE_ASPEED_AST10X0_SBC,=0A=
+-    .parent =3D TYPE_ASPEED_SBC,=0A=
+-    .class_init =3D aspeed_ast10x0_sbc_class_init,=0A=
++static const TypeInfo aspeed_sbc_types[] =3D {=0A=
 +    {=0A=
-+        .name          =3D TYPE_ASPEED_LTPI,=0A=
-+        .parent        =3D TYPE_SYS_BUS_DEVICE,=0A=
-+        .instance_size =3D sizeof(AspeedLTPIState),=0A=
-+        .class_init    =3D aspeed_ltpi_class_init,=0A=
++        .name =3D TYPE_ASPEED_SBC,=0A=
++        .parent =3D TYPE_SYS_BUS_DEVICE,=0A=
++        .instance_size =3D sizeof(AspeedSBCState),=0A=
++        .instance_init =3D aspeed_sbc_instance_init,=0A=
++        .class_init =3D aspeed_sbc_class_init,=0A=
++        .class_size =3D sizeof(AspeedSBCClass),=0A=
++    },=0A=
++    {=0A=
++        .name =3D TYPE_ASPEED_AST10X0_SBC,=0A=
++        .parent =3D TYPE_ASPEED_SBC,=0A=
++        .class_init =3D aspeed_ast10x0_sbc_class_init,=0A=
++    },=0A=
++    {=0A=
++        .name =3D TYPE_ASPEED_AST2600_SBC,=0A=
++        .parent =3D TYPE_ASPEED_SBC,=0A=
++        .class_init =3D aspeed_ast2600_sbc_class_init,=0A=
 +    }=0A=
  };=0A=
  =0A=
--static void aspeed_ltpi_register_types(void)=0A=
+-static void aspeed_sbc_register_types(void)=0A=
 -{=0A=
--    type_register_static(&aspeed_ltpi_info);=0A=
+-    type_register_static(&aspeed_ast2600_sbc_info);=0A=
+-    type_register_static(&aspeed_ast10x0_sbc_info);=0A=
+-    type_register_static(&aspeed_sbc_info);=0A=
 -}=0A=
 -=0A=
--type_init(aspeed_ltpi_register_types);=0A=
-+DEFINE_TYPES(aspeed_ltpi_types)=0A=
+-type_init(aspeed_sbc_register_types);=0A=
++DEFINE_TYPES(aspeed_sbc_types)=0A=
 -- =0A=
 2.43.0=0A=
 

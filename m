@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFD86CD6E55
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 14:32:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B0FFCD6E55
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 14:32:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wU3g4-0007hp-7Q; Mon, 01 Jun 2026 10:31:40 -0400
+	id 1wU3g4-0007hn-0M; Mon, 01 Jun 2026 10:31:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wU3g1-0007ft-Jv
- for qemu-arm@nongnu.org; Mon, 01 Jun 2026 10:31:37 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1wU3g0-0007eo-EL
+ for qemu-arm@nongnu.org; Mon, 01 Jun 2026 10:31:36 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wU3fy-0005vL-R2
- for qemu-arm@nongnu.org; Mon, 01 Jun 2026 10:31:37 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-490ace40f4bso8666145e9.3
- for <qemu-arm@nongnu.org>; Mon, 01 Jun 2026 07:31:34 -0700 (PDT)
+ id 1wU3fy-0005vA-49
+ for qemu-arm@nongnu.org; Mon, 01 Jun 2026 10:31:36 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-45ef5146b56so1769862f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 01 Jun 2026 07:31:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linaro.org; s=google; t=1780324293; x=1780929093; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=qzwjuCWmq/Dw+0YnOxPvb42vtp1TDlEzsHkpZWlr0uI=;
- b=CpHUyRyV8RTm/zgkOvFpOiFXoyfAdWLGbk5giIh3aTMK6sjT5WzdnMa70CnykHzhcp
- u/UwMfV3cUZd+ImMSbMdG880s4CAtye1mPdqeevDab2WhrrLFlCQGCjd04RlxHPCdRL9
- h9UmDADkLQY7SK7EEjX/Hd5i0tjUfY65L95S0HWBD7TpRMZ3euMo5Hmcm8X4vxZt8ShC
- 73crdz2w0K0UyK/4vqh12Yoky5lcsnAv3O+nYzIwhsRZEGwjxBrrTYEDxLmlXlN+ogcx
- ldFABoQvVAV4+cCuXwWxZIqtSL55xkiNDJcdmFY8yCQeOJtywKZDtDBdSXT7xRiPbK6m
- 6+SA==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=JDTMZpcawyWOqyr+KGw142zG9E8Gm5P3YR3vkRbg/VU=;
+ b=WWOJOxScm6oJRjbnV65azEEqgomIpdDCb7FPOiup63498vDgb7VtMcxfr/wOdxkLGL
+ SEW3XCykfZXQvQN2PlD0Pd2+1pjmGPaNzqNw0F7rrpSgBpbh5QeYhSovnd2BJiU/I5Ev
+ cz9CIp960hmhR/R+yeShp6y7fy7yMHyhAyvPZEy/Sd1OrtSTCPKl9zI/VQcSpqkVJtZk
+ P2gWibPBuGIjRWzRW+sstXy283SAuyPot/sYzkgfPigM6zhFUn3WycymRir2Ksqdh3Uw
+ ds3J0mVAF3lKect6Xy++qnLbNY32iqv+6Dye4SE/GWAWA47TulWyimcRwUB1a8cIfPkq
+ ikyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20251104; t=1780324293; x=1780929093;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=qzwjuCWmq/Dw+0YnOxPvb42vtp1TDlEzsHkpZWlr0uI=;
- b=NiBrQ7WdS0TUf3WXYG+HkeO2TMGWs3QxftGHbjMLptxyM0QKvsH7Na7DbgxP7z8fOb
- Dv4yqxkJcU7dKq+xydHviryblp3rzzvGhcNmGJH86Vgvo2fQr1VRk5QFpaKP9D3noERd
- 3GBfCSBVYPKP8afrAHn9pWnyIY9R7t2vgiAaBmQTEZvakm27PqDM+b1uIy3WRXUm4MkH
- SWemZXuFJyOBPWs50AXSp1e8fSkXTkpKaj05GD7QtJfS7IY+nv07zBMKjVSb+d9CJiQE
- HmHSEnNSKFp1biqIwCoQevklrrx7I38xIE13Jr3qoCTRkzhfclweRcN0R1UEFuO/KscG
- 6mpw==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=JDTMZpcawyWOqyr+KGw142zG9E8Gm5P3YR3vkRbg/VU=;
+ b=OCrJoTdPV++ACLJUJmdyAWII0BLABOY8oypuqIcaaCxrcP4nIgp/bZeyIkjsuiMh2k
+ dJtmNZhP+q4o58cVerCKdPCfpbQeqQRH5yXqqwRUw2bnhDGPUXDQafBDhHy4FXvSFCO0
+ GiNig6cn82QPiHX1eymBmYdZmMDofSxzmrh8KfhMdxonZGllLDi6M9F1nDfXnQvqndk1
+ Wuj9euaOAtHtsSaCbBYaHCzB16MzZUqmvW3E4utWRiJMy3bt8CBeEWLswwvySplC00hX
+ oApWB/QoKuzAdRW56qukfe2ryuuZS4nXDYH8d8TYR5SWZdAKeKuq6t2BxzHDsK6v8AYA
+ YWZg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/IsP+j43bgvwJx42ypVCsv1hdnNNgTjv2CRZ/kNudu+9ZqFPeJyVJNQxbwwdxlZlELdi872ZXiug==@nongnu.org
-X-Gm-Message-State: AOJu0YzrjxwHFlGSlGWki3f3YswjSWAJ97Gut3SnkBIMBaQjpg9vMXk9
- GaRmtdTIo5rQkEe4o8IXj7TP+pvqH1Nc3//r0EZu3iXAUVyBF8cjIEOXwShksFspSRA=
-X-Gm-Gg: Acq92OGebzrBS2CdRODgEx5qxBvjzhqkK2K83gQM+ItMYUWtejEWnH2B/b/YGBRzWzK
- AsdkegIik7w4IkwazGxf4KCnOcLuu9ebvMpZq34BNtmOQGP8j61RJVLzBsgShNGhB4QT5+9hsoh
- cuDa/wFkzmC8sk6ZNcBY53EDA2ZZguBshd4/VqLRzk15d/gEO+N7v3nHuJgz8xYNffF9UBvrFY9
- WVeaWtXOJhRd9x+4Es/djiyMF6ZiPCD3+DUxsSFm9Lo+Bk09qLNFM1eQnUbW8EOHTFLoS8C4Vvx
- D37eAt5HIRM4T4l4IpPO7G6RbFIQlcfg6ZSlKF2u+pzWZGWL/VgdvmSJYenUQTKG0N7oVBK6hgc
- 5WZcd7UUkBQ2dofPyZaT/riwcgDWzLcpuxEdisdl90nWCIYF/NKxYVpBl0ucBlGJbEI3rvTqHBB
- yFSStCj8YXRqe5DLZLX0uK9criBIbM2rpnJXHSWwfFc4Bx
-X-Received: by 2002:a05:600c:4703:b0:48f:d1b8:9ab1 with SMTP id
- 5b1f17b1804b1-490a2915af8mr223740825e9.9.1780324293068; 
- Mon, 01 Jun 2026 07:31:33 -0700 (PDT)
+ AFNElJ/K5WymprH+f+mnfGxPADhcEG/rs5Jml7vxu+YtGNP0808gP7RC18RCLELUOcNlhvV1LRmOrLhQxQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxlJ7LaS2H1sheGp1DsmW2pYaTqvGGGNCjUhqIc13+jpewGKoWg
+ rBbmGBDFFipUd2sArybvRAlw+uNV76H/6ZrgFGFqOIHkeyUYTnZKWVb6ebz/QrzSETs=
+X-Gm-Gg: Acq92OEaIlf8F2lfK/wkC/0eIj0x5EYwXNHFK/nzIhYR9swZJy+YSxLoSuv1EZ3vZd8
+ nh4qzqpxY8vbdZvuYX8CcI0dKhlk2QElTlZcACOhuY08pE1iAJLzICF0iQQJZZQSSHEjCbl+gst
+ 8Nyk9nbkYUSkV6iJ1I5K6PQNA3d/LkBiMXJQR1V+yQpYauZ/qHhZP/5NsgPeWTb+0g07/qWtXM6
+ CBY2ldWBsidIYWTQdsRHJOB+wwmiWYFYQoqdmdYFK1hMEBw7S6lgzcv/cotEjcRZ6J8SaN0dJrK
+ BeNIQ58m5qMH7vhh5bNGoJZKJXGLQAdPRWziGTANHSj267wMpmmCYPt3wlKVH7T78EKakD8c/fC
+ WSeRwip3wJptIBrMxKV9J3t2dJoWZ+9kIK/im+cWDnn4unDmo83IbApVQqgKO4Y5UZcmTxfpEvt
+ PDkMxZpNGgp5ItT3MHBV0Uw0ZvfmG0l3w9YQ==
+X-Received: by 2002:a05:6000:4b1a:b0:450:ad00:86aa with SMTP id
+ ffacd0b85a97d-45ef137a154mr20847638f8f.15.1780324292531; 
+ Mon, 01 Jun 2026 07:31:32 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4909c08f1bdsm121501605e9.1.2026.06.01.07.31.30
+ ffacd0b85a97d-45ef32fabcasm25033236f8f.0.2026.06.01.07.31.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Mon, 01 Jun 2026 07:31:30 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 21A34602F7;
- Mon, 01 Jun 2026 15:31:30 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id D75F25F7C7;
+ Mon, 01 Jun 2026 15:31:29 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Fabiano Rosas <farosas@suse.de>,
@@ -81,19 +80,16 @@ Cc: Fabiano Rosas <farosas@suse.de>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Song Gao <gaosong@loongson.cn>, Cornelia Huck <cohuck@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 3/3] configure: use debian-all-test-cross for mipsel tcg tests
-Date: Mon,  1 Jun 2026 15:31:29 +0100
-Message-ID: <20260601143129.144786-4-alex.bennee@linaro.org>
+ Song Gao <gaosong@loongson.cn>, Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH 0/3] testing/next: hot fixes (Makefile, gitlab, docker)
+Date: Mon,  1 Jun 2026 15:31:26 +0100
+Message-ID: <20260601143129.144786-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260601143129.144786-1-alex.bennee@linaro.org>
-References: <20260601143129.144786-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,32 +112,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Although we have had the mips compilers in all-test-cross for a while
-we had been surviving using the mipsel cross compiler image. However
-when that was removed we missed updating the container to use.
+The last testing/next which enabled MacOS broke check-functional-FOO
+(which isn't directly called in GitLab CI). Revert the offending
+commit and replace with a more hacky workaround in the gitlab
+invocation itself.
 
-Fixes: 366bb88e785 (buildsys: Remove MIPS cross containers)
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Message-ID: <20260529181713.612230-1-alex.bennee@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- configure | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Also include a fix to select the right docker fallback for building
+mips things.
 
-diff --git a/configure b/configure
-index e138d83bc9f..1ceb4d7ecc4 100755
---- a/configure
-+++ b/configure
-@@ -1430,7 +1430,7 @@ probe_target_compiler() {
-         container_image=debian-all-test-cross
-         container_cross_prefix=aarch64-linux-gnu-
-         ;;
--      alpha|hppa|m68k|mips|riscv64|sh4|sparc64)
-+      alpha|hppa|m68k|mips|mipsel|riscv64|sh4|sparc64)
-         container_image=debian-all-test-cross
-         ;;
-       mips64)
+Please review.
+
+Alex.
+
+Alex Bennée (3):
+  Revert "Makefile: include tests/Makefile.include before ninja
+    calculation"
+  gitlab: work around the inability to build targets for MacOS
+  configure: use debian-all-test-cross for mipsel tcg tests
+
+ configure              | 2 +-
+ Makefile               | 4 ++--
+ .gitlab-ci.d/macos.yml | 3 +++
+ 3 files changed, 6 insertions(+), 3 deletions(-)
+
 -- 
 2.47.3
 

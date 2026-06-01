@@ -4,111 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45847CD6E57
-	for <qemu-arm@archiver.kernel.org>; Sun, 31 May 2026 22:13:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22A7ACD6E56
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 02:32:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wToOy-0000nA-71; Sun, 31 May 2026 18:13:00 -0400
+	id 1wTsRu-0007NC-Kz; Sun, 31 May 2026 22:32:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wToOw-0000m7-7n
- for qemu-arm@nongnu.org; Sun, 31 May 2026 18:12:58 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wToOu-0007Cz-MB
- for qemu-arm@nongnu.org; Sun, 31 May 2026 18:12:57 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-49048e043e5so74176155e9.1
- for <qemu-arm@nongnu.org>; Sun, 31 May 2026 15:12:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780265573; x=1780870373; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=oWF6tyr2CYayU1PYtFJKATyY4aqFNfuk6d6waCisXn8=;
- b=p5A7o4MyfdCyht6MD9H5oG9X/wm2s8A34MvxiHeOia9xjxScHMLcBuQh4hBtmhLZrw
- idkfCvid9gRQrlGXVzkzNCDsO8sR8i4JhlCtGkytPng1zXp+eezoNMH2uiR57VS2HpCh
- w7yi7te77YvF3iK3q726g7+34Um9XzeS+f1QQWDYIBcCPzYYE9rPCHOwNRvkl3MXSK6a
- KG9lN33g4dJN94sCrKWotp0g/0/16BIs9hMD3SNljycoyFWuzGl44MzxpI5u1i35Z623
- RxnT7OkoOej4lvA+zHD5BAs+CdTvWhI3sNQvjrSQjCoho/b7KzuA8miMUgzEUkcxwBlU
- W9GA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780265573; x=1780870373;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=oWF6tyr2CYayU1PYtFJKATyY4aqFNfuk6d6waCisXn8=;
- b=loR4T6NAV61cu92fs8D40gr6/8W106gC8oEzgb7g18heIS3sh1opWfTkP87EvrXooO
- 6bbo3GAY7WdQGwgVym8uUMeNGJtX8VITrYdpd6TEzafufy4HdBbN5M/61kTjw8sJjhWK
- tFFPvWG9iGYoGJWHMiS9yO8ajYqDqdFO2aIsQW+yr7q9fLwvOmgd2icPHSWbZRM9jqr4
- 9XLFc5MNOE2Ppo7NjHQOplbtHWnVzYlmc3na0+U12pJ+NPVku2UOh2noYuAYRcEtTunx
- nEQckwzO7TJVwAMwphXbYuf8jcC2pPhyavLSnp98pyWEHKs64k48wsc8JldcXMVY5Gdv
- uQew==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/hlYqkcWWYaKaFDIFSFEnLKP7H2rmIC4M7BbygJgwnRc+XH9a0d9DPuAsqy0xltK6vt3+x1iPWVA==@nongnu.org
-X-Gm-Message-State: AOJu0YyBFmf806eKmwQpfpNO7hcIUoFBYzkzwybbaumFW5FVLxTlr2Vf
- 2fLjLXAwvTFMuYAn6jIc0PCqdgKGXXIJVv3kGjR59DqZIHv3pnlhRLQ75VWSnYyCMk0=
-X-Gm-Gg: Acq92OEp8X5rs4PYaEndZ66ZrSlTV0pUK+PPPRe6Xct4Z3mk+wzH5RCug4f+04ynUZM
- fgPfwJgW5maY9kyx5+MVy/0wg5NCRG5gRCtdFkubIT4CF1Rq9RDtW64YXCbcX2tU6FnolrSf+Ab
- Y7FWp2deeNTkY/rnIjmvZxPLoL4mOvluqDqpc8Rp8lKXjEow3mLMO0+PXB2NtzApV60AYm5dxzV
- ANdN2wz2rks02kAdZPb3AE5i04AKrPyLP5NMI6Imn1CTZvWVB5R+kdSJzavNSpvbyWTgSvnF0a4
- 4SB8Tn+crhrJQ1VegxCimQWLkX6LBBUctKQ2y4FfYYjRBfnDjrsBOgX5rboTqYbTTUtB97jw8hu
- dH/4Feu++VRCQmNjSIbSOALlEXjtySQsmrxjtJPeUsFpD16jab6F7nUEaCQl8YoUEgPNRbc3a4/
- t4zbu4FWgg/DoT95cJvYAxmmB6NeFF089l6DZsRmvoaV8j/2jbAoEIEI08DEnGXTbvDSy6DA69J
- LuM
-X-Received: by 2002:a05:600c:6d2:b0:490:5368:743 with SMTP id
- 5b1f17b1804b1-490a2946a23mr100294545e9.32.1780265572879; 
- Sun, 31 May 2026 15:12:52 -0700 (PDT)
-Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4909c123406sm82118745e9.5.2026.05.31.15.12.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 31 May 2026 15:12:52 -0700 (PDT)
-Message-ID: <b8f40cca-2646-4912-8aa6-43442eab4f31@linaro.org>
-Date: Mon, 1 Jun 2026 00:12:50 +0200
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1wTsRs-0007MU-BZ; Sun, 31 May 2026 22:32:16 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72]
+ helo=twmbx01.aspeedtech.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1wTsRq-0004V7-Dd; Sun, 31 May 2026 22:32:16 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 1 Jun
+ 2026 10:31:51 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Mon, 1 Jun 2026 10:31:51 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, "Andrew
+ Jeffery" <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, Fabiano Rosas
+ <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, <longzl2@lenovo.com>,
+ <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>
+Subject: [PATCH 5/6] tests/qtest: Add ASPEED Caliptra mailbox test
+Date: Mon, 1 Jun 2026 10:31:46 +0800
+Message-ID: <20260601023149.2309299-6-steven_lee@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260601023149.2309299-1-steven_lee@aspeedtech.com>
+References: <20260601023149.2309299-1-steven_lee@aspeedtech.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 07/17] accel/whpx: Convert AccelCPUClass ->
- AccelOpsClass::cpu_instance_init
-Content-Language: en-US
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, Reinoud Zandijk <reinoud@netbsd.org>,
- Pedro Barbuda <pbarbuda@microsoft.com>, Nicholas Piggin <npiggin@gmail.com>,
- Glenn Miles <milesg@linux.ibm.com>, Alexander Graf <agraf@csgraf.de>,
- Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Anton Johansson <anjo@rev.ng>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Song Gao <gaosong@loongson.cn>,
- qemu-riscv@nongnu.org, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Alistair Francis <alistair.francis@wdc.com>, qemu-ppc@nongnu.org,
- Weiwei Li <liwei1518@gmail.com>, Chao Liu <chao.liu.zevorn@gmail.com>,
- kvm@vger.kernel.org, Claudio Fontana <cfontana@suse.de>,
- Chinmay Rath <rathc@linux.ibm.com>
-References: <20260529142434.87880-1-philmd@linaro.org>
- <20260529142434.87880-8-philmd@linaro.org>
- <8889E557-72CA-4DED-B06E-4D82135CF923@unpredictable.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <8889E557-72CA-4DED-B06E-4D82135CF923@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=steven_lee@aspeedtech.com; helo=twmbx01.aspeedtech.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,48 +64,264 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Steven Lee <steven_lee@aspeedtech.com>
+From:  Steven Lee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 29/5/26 21:03, Mohamed Mediouni wrote:
-> 
-> 
->> On 29. May 2026, at 16:24, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> Register the new AccelOpsClass::cpu_instance_init hook.
->>
->> ACCEL_CPU_NAME("whpx") TypeInfo is now empty, remove it.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->> accel/whpx/whpx-accel-ops.c |  2 ++
->> accel/whpx/whpx-common.c    | 17 -----------------
->> target/arm/whpx/whpx-all.c  |  1 -
->> target/i386/whpx/whpx-all.c |  1 -
->> 4 files changed, 2 insertions(+), 19 deletions(-)
->>
->> diff --git a/accel/whpx/whpx-accel-ops.c b/accel/whpx/whpx-accel-ops.c
->> index b8f41544cbe..099e8ef6da3 100644
->> --- a/accel/whpx/whpx-accel-ops.c
->> +++ b/accel/whpx/whpx-accel-ops.c
->> @@ -98,6 +98,8 @@ static void whpx_accel_ops_class_init(ObjectClass *oc, const void *data)
->>      ops->handle_interrupt = generic_handle_interrupt;
->>      ops->supports_guest_debug = whpx_supports_guest_debug;
->>
->> +    ops->cpu_instance_init = whpx_cpu_instance_init;
->> +
-> Hi,
-> 
-> No whpx_cpu_instance_init implementation present in the commit
-> as far as I can tell.
+Cover the AST1040 Caliptra mailbox execute flow through the external peer protocol and verify that the SCU CPTRA page register remaps the MCI aperture between CSR and SRAM pages.
 
-You exposed it in commit 4610fee3242 ("whpx: reshuffle common code") :)
+Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+---
+ tests/qtest/aspeed_cptra_mbox-test.c | 223 +++++++++++++++++++++++++++
+ tests/qtest/meson.build              |   3 +-
+ 2 files changed, 225 insertions(+), 1 deletion(-)
+ create mode 100644 tests/qtest/aspeed_cptra_mbox-test.c
 
-> 
-> Did you miss it? Other than that things look fine and a stub implementation
-> should be okay.
-> 
->>      ops->synchronize_post_reset = whpx_cpu_synchronize_post_reset;
->>      ops->synchronize_post_init = whpx_cpu_synchronize_post_init;
->>      ops->synchronize_state = whpx_cpu_synchronize_state;
+diff --git a/tests/qtest/aspeed_cptra_mbox-test.c b/tests/qtest/aspeed_cptra_mbox-test.c
+new file mode 100644
+index 0000000000..4d0e1682da
+--- /dev/null
++++ b/tests/qtest/aspeed_cptra_mbox-test.c
+@@ -0,0 +1,223 @@
++/*
++ * QTest for the ASPEED Caliptra mailbox on the ast1040-evb machine.
++ *
++ * Copyright (C) 2026 ASPEED Technology Inc.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest-single.h"
++#include "qemu/sockets.h"
++
++/* AST1040 guest-visible mailbox bases. */
++#define SRAM_BASE   0x21400000ULL
++#define CSR_BASE    0x21600000ULL
++
++#define CSR_LOCK         0x000
++#define CSR_USER         0x004
++#define CSR_CMD          0x010
++#define CSR_DLEN         0x014
++#define CSR_EXECUTE      0x018
++#define CSR_CMD_STATUS   0x020
++
++#define STATUS_BUSY        0
++#define STATUS_COMPLETE    2
++#define STATUS_CMD_FAILURE 3
++
++/* SCU CPTRA page-select register (SCU base 0x74C02000 + 0x120). */
++#define SCU_CPTRA_PAGE_REG0  0x74C02120ULL
++/* MCI remap aperture. */
++#define MCI_WINDOW           0x74200000ULL
++
++/* Wire protocol. */
++#define PROTO_MAGIC    0x4D424F58u
++#define PROTO_VERSION  1u
++#define CMD_EXECUTE    1u
++#define CMD_RESPONSE   2u
++
++static int peer_lfd = -1;
++static int peer_fd = -1;
++
++static void peer_read(void *buf, size_t len)
++{
++    size_t off = 0;
++
++    while (off < len) {
++        ssize_t r = read(peer_fd, (uint8_t *)buf + off, len - off);
++        g_assert_cmpint(r, >, 0);
++        off += r;
++    }
++}
++
++static void peer_write(const void *buf, size_t len)
++{
++    size_t off = 0;
++
++    while (off < len) {
++        ssize_t w = write(peer_fd, (const uint8_t *)buf + off, len - off);
++        g_assert_cmpint(w, >, 0);
++        off += w;
++    }
++}
++
++static uint32_t ld32(const uint8_t *p)
++{
++    return p[0] | (p[1] << 8) | (p[2] << 16) | ((uint32_t)p[3] << 24);
++}
++
++static void st32(uint8_t *p, uint32_t v)
++{
++    p[0] = v; p[1] = v >> 8; p[2] = v >> 16; p[3] = v >> 24;
++}
++
++/*
++ * Service one MBOX_EXECUTE: read the request, optionally check it, then reply
++ * with MBOX_RESPONSE carrying @rsp_status and @rsp_data.
++ */
++static void peer_serve_execute(uint32_t expect_cmd, uint32_t expect_dlen,
++                               uint32_t rsp_status,
++                               const uint8_t *rsp_data, uint32_t rsp_dlen)
++{
++    uint8_t hdr[12];
++    uint32_t plen, cmd, dlen;
++    g_autofree uint8_t *payload = NULL;
++    uint32_t rsp_padded = (rsp_dlen + 3) & ~3u;
++    uint32_t rsp_plen = 8 + rsp_padded;
++    g_autofree uint8_t *rsp = g_malloc0(12 + rsp_plen);
++
++    peer_read(hdr, sizeof(hdr));
++    g_assert_cmpuint(ld32(hdr), ==, PROTO_MAGIC);
++    g_assert_cmpuint(hdr[4] | (hdr[5] << 8), ==, PROTO_VERSION);
++    g_assert_cmpuint(hdr[6] | (hdr[7] << 8), ==, CMD_EXECUTE);
++    plen = ld32(hdr + 8);
++    g_assert_cmpuint(plen, >=, 8);
++
++    payload = g_malloc(plen);
++    peer_read(payload, plen);
++    cmd = ld32(payload);
++    dlen = ld32(payload + 4);
++    g_assert_cmpuint(cmd, ==, expect_cmd);
++    g_assert_cmpuint(dlen, ==, expect_dlen);
++
++    st32(rsp, PROTO_MAGIC);
++    rsp[4] = PROTO_VERSION; rsp[5] = 0;
++    rsp[6] = CMD_RESPONSE;  rsp[7] = 0;
++    st32(rsp + 8, rsp_plen);
++    st32(rsp + 12, rsp_status);
++    st32(rsp + 16, rsp_dlen);
++    if (rsp_dlen) {
++        memcpy(rsp + 20, rsp_data, rsp_dlen);
++    }
++    peer_write(rsp, 12 + rsp_plen);
++}
++
++static uint32_t poll_cmd_status(void)
++{
++    uint32_t s = STATUS_BUSY;
++    int tries = 1000;
++
++    while (tries--) {
++        s = qtest_readl(global_qtest, CSR_BASE + CSR_CMD_STATUS);
++        if (s != STATUS_BUSY) {
++            break;
++        }
++    }
++    return s;
++}
++
++/*
++ * Realistic mailbox transaction: acquire the lock, run an EXECUTE roundtrip
++ * against the peer, verify the response lands in SRAM, then release.
++ */
++static void test_execute(void)
++{
++    static const uint8_t resp[] = {
++        0x11, 0xf9, 0xff, 0xff,   /* checksum */
++        0x00, 0x00, 0x00, 0x00,
++        0x14, 0x00, 0x00, 0x00,   /* inner dlen = 20 */
++        'C', 'a', 'l', 'i', 'p', 't', 'r', 'a',
++        '_', 'C', 'o', 'r', 'e', '_', 'v', '2', '.', '0', '.', '0',
++    };
++    uint32_t status;
++
++    /*
++     * Acquire: first read returns 0, USER reflects the SoC agent, busy after.
++     */
++    g_assert_cmpuint(qtest_readl(global_qtest, CSR_BASE + CSR_LOCK), ==, 0);
++    g_assert_cmpuint(qtest_readl(global_qtest, CSR_BASE + CSR_USER), ==, 1);
++    g_assert_cmpuint(qtest_readl(global_qtest, CSR_BASE + CSR_LOCK), ==, 1);
++
++    qtest_writel(global_qtest, SRAM_BASE + 0, 0xfffffec0);
++    qtest_writel(global_qtest, CSR_BASE + CSR_CMD, 0x4d465756);
++    qtest_writel(global_qtest, CSR_BASE + CSR_DLEN, 8);
++    qtest_writel(global_qtest, CSR_BASE + CSR_EXECUTE, 1);
++
++    peer_serve_execute(0x4d465756, 8, STATUS_COMPLETE, resp, sizeof(resp));
++
++    status = poll_cmd_status();
++    g_assert_cmpuint(status, ==, STATUS_COMPLETE);
++    g_assert_cmpuint(qtest_readl(global_qtest, CSR_BASE + CSR_DLEN),
++                     ==, sizeof(resp));
++    g_assert_cmpuint(qtest_readl(global_qtest, SRAM_BASE + 0), ==, 0xfffff911);
++    g_assert_cmpuint(qtest_readl(global_qtest, SRAM_BASE + 8), ==, 0x14);
++    g_assert_cmpuint(qtest_readl(global_qtest, SRAM_BASE + 12), ==, 0x696c6143);
++
++    /* Completing the transaction (EXECUTE 1->0) releases the lock. */
++    qtest_writel(global_qtest, CSR_BASE + CSR_EXECUTE, 0);
++    g_assert_cmpuint(qtest_readl(global_qtest, CSR_BASE + CSR_LOCK), ==, 0);
++    qtest_writel(global_qtest, CSR_BASE + CSR_EXECUTE, 0);
++}
++
++/* SCU CPTRA_PAGE_REG0 selects the target page seen through the MCI window. */
++static void test_scu_remap(void)
++{
++    /* Window pointed at the CSR page exposes the CMD register. */
++    qtest_writel(global_qtest, CSR_BASE + CSR_CMD, 0xdeadbeef);
++    qtest_writel(global_qtest, SCU_CPTRA_PAGE_REG0, CSR_BASE);
++    g_assert_cmpuint(qtest_readl(global_qtest, MCI_WINDOW + CSR_CMD),
++                     ==, 0xdeadbeef);
++
++    /* Re-point at the SRAM page. */
++    qtest_writel(global_qtest, SRAM_BASE + 0, 0x12345678);
++    qtest_writel(global_qtest, SCU_CPTRA_PAGE_REG0, SRAM_BASE);
++    g_assert_cmpuint(qtest_readl(global_qtest, MCI_WINDOW + 0),
++                     ==, 0x12345678);
++}
++
++int main(int argc, char **argv)
++{
++    g_autofree char *sock_path = NULL;
++    g_autofree char *cmdline = NULL;
++    int ret;
++
++    g_test_init(&argc, &argv, NULL);
++
++    sock_path = g_strdup_printf("%s/cptra-mbox-%u.sock",
++                                g_get_tmp_dir(), getpid());
++    unlink(sock_path);
++    peer_lfd = qtest_socket_server(sock_path);
++
++    cmdline = g_strdup_printf(
++        "-machine ast1040-evb,cptra-peer=peer0 "
++        "-chardev socket,id=cptra0,path=%s "
++        "-device cptra-mbox-peer-extern,id=peer0,chardev=cptra0", sock_path);
++    qtest_start(cmdline);
++
++    peer_fd = accept(peer_lfd, NULL, NULL);
++    g_assert_cmpint(peer_fd, >=, 0);
++
++    qtest_add_func("/cptra-mbox/execute", test_execute);
++    qtest_add_func("/cptra-mbox/scu-remap", test_scu_remap);
++
++    ret = g_test_run();
++
++    qtest_end();
++    if (peer_fd >= 0) {
++        close(peer_fd);
++    }
++    close(peer_lfd);
++    unlink(sock_path);
++
++    return ret;
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 728dde54b3..c50da850f7 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -219,7 +219,8 @@ qtests_aspeed = \
+   ['aspeed_gpio-test',
+    'aspeed_hace-test',
+    'aspeed_scu-test',
+-   'aspeed_smc-test']
++   'aspeed_smc-test',
++   'aspeed_cptra_mbox-test']
+ qtests_aspeed64 = \
+   ['ast2700-gpio-test',
+    'ast2700-hace-test',
+-- 
+2.43.0
+
 

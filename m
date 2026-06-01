@@ -4,122 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72DD9CD5BD1
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 13:04:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 411E5CD6E55
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 13:40:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wU2J2-0006U9-Cz; Mon, 01 Jun 2026 09:03:48 -0400
+	id 1wU2sU-0007fj-4D; Mon, 01 Jun 2026 09:40:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wU2J1-0006Th-HL
- for qemu-arm@nongnu.org; Mon, 01 Jun 2026 09:03:47 -0400
-Received: from smtpout3.mo540.mail-out.ovh.net ([51.210.91.52])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wU2sS-0007e6-QW; Mon, 01 Jun 2026 09:40:24 -0400
+Received: from mail-eastus2azlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c110::1] helo=BN1PR04CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wU2Iz-0004BK-Of
- for qemu-arm@nongnu.org; Mon, 01 Jun 2026 09:03:47 -0400
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net [51.68.94.138])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4gTZ0G0Xqzz3wYt;
- Mon,  1 Jun 2026 13:03:42 +0000 (UTC)
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net. [127.0.0.1])
- by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Mon,  1 Jun 2026 13:03:41 +0000 (UTC)
-Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.109.254.103])
- by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4gTZ0F4VGPz7tjH;
- Mon,  1 Jun 2026 13:03:41 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.0])
- (Authenticated sender: clg@kaod.org)
- by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- F09D62403043; Mon,  1 Jun 2026 13:03:39 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-107S0011691990a-7c96-4bf8-8595-021fef9f0a81,
- E35A50153BDE4127F94F88E3CE699B0651996EDF) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <8c183f34-271c-4af2-90ea-31700b719c97@kaod.org>
-Date: Mon, 1 Jun 2026 15:03:39 +0200
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wU2sR-0007Ds-1G; Mon, 01 Jun 2026 09:40:24 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=D/nE9Qqs4PDUZhpO3Osnl3XN23dRlmFobCgydfzKfCzorHtVgfZ6xeZY5B3W0+er0ruMZ2nrLGUAn8YLPsn3xRtSebbcRKo0jfdFZDwdwJxDcOZaP7SiwPdWy8cYmY7+IBSS522MMrcB+lK8FgyYVsJOBQ6IkPnC+g2ul09xGD5awWeFp7Lmx5qxpaP5ZQ13xVX+qMARMjJOKkJH+9NEQx9GPPppX+vuqA+CLiWd+qVcyqRNBeQNpozaTaTWLXktjwBvOEc5b55ghc4fytY/TuA1weEYE837SVQDs2XpuraCwLkRR+8K9xfSkBq9z4Mx6B56U4YNIPVOYEXWAtP4PA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=kVOSQ+G3/Z3z1BrMPz2jV4zu4aNvC+OcT+sohMAATCs=;
+ b=hbPP4tWSYLjMsf037MN7gjJaTFb1DXVdxVLBoo1OVgijRR4JoZD2WIQiW2TBGjIUzm0Yhi4R+pwzfMQHC9iclCoi2EmNMOgAigy+GF7ZcPtp+nPRUoGWCjvW9vnRyO8JwGpOUdKr6GfKwIZsdE+hC+JUZDU7WdzsXfkXzJlH8CalkxCikw8QyO4IQ272+8UJFHnspEQ3/SjhsnvSjowQ1jdlMXuO4PkrgZXwCPeESal07LcLvkaXrmLfBIm7eeYqzSrfMZg/s6HxY5Dopf6BEs/DNSV77cyQvvD2V/tl2ud95pq91VJQf4TGVI/eGll5PNDfN0P0HA3+kx+UA6ZTrw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kVOSQ+G3/Z3z1BrMPz2jV4zu4aNvC+OcT+sohMAATCs=;
+ b=rcHPgOnWKR6nD72WfyhoSd6ItUFV/mTpQWC5S5fX9BrpAsu3/THH9B51XYcrnwRKnQqQ7/QFVRsmyxL3la8abX/Lzhqbrb1pBh7Np1Jiy4yjaTuDco5+wlSY1PGY6W8EKG+mVplR2i2kXCw3ZT9z+/Va6zqNCtcrDEe5qFAxJrWwSdjfQhicTrXedOoaqbXPo8S2t22bt37OgJqXXB/zh5PZSWBSrkuZTMsWU7narz6aKtSeF1qug9P4tnqJU/w27rWzgBm6FvzMPCXywGGMmx9TC5WOg7QJYXgEA1xoRGgvmrN98mHyyBkUoHSPnUrMob5YSUDIi3PCt3jkCmF1tQ==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by DS2PR12MB9661.namprd12.prod.outlook.com (2603:10b6:8:27b::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.48.17; Mon, 1 Jun 2026
+ 13:40:12 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%6]) with mapi id 15.21.0071.015; Mon, 1 Jun 2026
+ 13:40:12 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: Nathan Chen <nathanc@nvidia.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: Eric Auger <eric.auger@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?=
+ <philmd@linaro.org>, Zhao Liu <zhao1.liu@intel.com>, Matt Ochs
+ <mochs@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>,
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>
+Subject: RE: [PATCH v4 1/9] hw/arm/smmuv3: Update ATC invalidation check
+Thread-Topic: [PATCH v4 1/9] hw/arm/smmuv3: Update ATC invalidation check
+Thread-Index: AQHc7iaDcGyS/1ElF0OXmIGdVd1JsbYpu7Pg
+Date: Mon, 1 Jun 2026 13:40:12 +0000
+Message-ID: <CH3PR12MB7548CD679260979B3CD87064AB152@CH3PR12MB7548.namprd12.prod.outlook.com>
+References: <20260527221631.612026-1-nathanc@nvidia.com>
+ <20260527221631.612026-2-nathanc@nvidia.com>
+In-Reply-To: <20260527221631.612026-2-nathanc@nvidia.com>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|DS2PR12MB9661:EE_
+x-ms-office365-filtering-correlation-id: 3725e641-9c03-48be-e731-08debfe34e1a
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|366016|1800799024|56012099006|4143699003|11063799006|18002099003|22082099003|38070700021;
+x-microsoft-antispam-message-info: lq0Fs7UuiUpCq/v07UnZRmcd657U2LOVFoRSXX6vCUZkOCHkISER4toYCpiLkOC+ZUohWTEhWo2xmYNcWGA26qM8FAyCK+OHjPnVRMX4YtY55T1ZMCitdpL6+YwN23XWAzUyfrAUL1bJb8iaFp257umt6KAXmpFjcft+VQdCjzVaEmcIwKcpz7WSKmGyDoiZeHFwe3mbJn31dzKaaRPSGyOJUQn9XjrU4K9hP8MgrHMiIjybUrY+jEo75lq+sLBidnYzzOvLxL/EfV1mW/Tjw1iXmQAjdxAyEwdCxEMSpsdlU8hGcV7IiPXGH76jZ2aOLY8opUS2ppw4TYWbsqPbEUbASE11jREmWn7pkm9IiUZRO6+490tXKmucUZkoR5eokpEIdPf3Hgc8VUPB5khx1oqlwxg9ARjhsxCJhcCAx5m2PC05qSnhiibtb0veuq2sChjxKDDu5OJ3Bh8dR+CFH7eQqK0U/HQNJj9iFMnFKy9c1QjMmuDVu/Oz+KU6s++Hm4Lj2U2SQjrtuyhQua6MyzXrY8+R3PESk+P6Ge1iQ9F0ZMSw71IaKeFZ9+PMiSXxhunUZ5xK5Hu/Wg8s5Bz3uMYmIzxBh4EkDlFGh99vhIxIhzDPLhSWFE/W0+nEe+ad9XMdzXnHiDJxAfzXJ1G3TaKxYsacPc6+ORl+7v01gOUm/OQhNNH72qQw8U0l32mFpB+WCOmsQFnL885JLKkFZx4fWDDFbnVTZubkFJUuN5ytyhTQW0zp5o7TFSe9i9A5
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(1800799024)(56012099006)(4143699003)(11063799006)(18002099003)(22082099003)(38070700021);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?AiX7MOTb93cM9BjVMKyAEF8gKvjY97CXy/hHkTiQMQPeZ5/YOsaZrmQdvL?=
+ =?iso-8859-1?Q?klPjSEiNENQ/mQpk0FkQmNXaoBh5cylS/QYogus2TBl20XVm6DoS9JAwxO?=
+ =?iso-8859-1?Q?X9FJ+ErMB8YDa4PhMnoCZqc0ETbdnitvT0Ykhu1rUIll4TDLxPdh4Fg3t7?=
+ =?iso-8859-1?Q?yWL2RQ4L+fsxn47e10Y/NKZhQV4j+I3R4tWJU2GJaLKFOYRsFkfu2yOjNg?=
+ =?iso-8859-1?Q?9HBax+60/fWbtT5AC49VX6xmN2aE+dxefqy9EYOcnDnBNYnNVQEgXULQM+?=
+ =?iso-8859-1?Q?s6pFgKrn7t7/HxTpklAMXY/BBbmMMTD4D+3Td2kafEw0AxTgyeotifMfh6?=
+ =?iso-8859-1?Q?f8V/rTF8miMXs+HoUO0f1VKs7BR8F8ZzPG38yAaqxW2Kw6/DwlYvGSfb7Z?=
+ =?iso-8859-1?Q?SEnThT4CNf0yRZbFSCSOOKtS84L0bIXIZ8JRgto15g6Y14bDeR6FCW1l69?=
+ =?iso-8859-1?Q?SEzhOEAyFZ+rFAbpveg6JxfxOPxvBKsnLOD2zWF+280LPSAoft7mffnUEU?=
+ =?iso-8859-1?Q?F0+YXLVk5aO/5KBVjNPOVJ+nT910UxxnadOaP9USwbwsXmHkuwZnEZAdki?=
+ =?iso-8859-1?Q?V2BAAwOiKtfeL+MLYNNb4sPMKm1hdyihRZ/27g9pKGsAMGczENYKsto4Az?=
+ =?iso-8859-1?Q?VBJZvHgZhputp+UOPcKZ+YX8c9lKbTYY/26U8AUOCCtO/eBlBkfiZHiuDq?=
+ =?iso-8859-1?Q?o2fI5rBOdIwPCnh5y1X1t56T2+FKXm3SQzsp7NgS+D16GlbLfkNqKWvt5L?=
+ =?iso-8859-1?Q?nJ5M0PBFMa5psp//iXasgnRY0ETNHVX1mHjCmR2paCmGeA922xIJJQQm5j?=
+ =?iso-8859-1?Q?a1g6Tnhb38PStGHT93bz7fG03Rcv5rXCTIUOqA9NB/N7oSeRSM6BTDJTU2?=
+ =?iso-8859-1?Q?B1Cx/8gdQ7tUgvoZ1CfnEvYF2FytUudMrGjaz/yQGjkVukXV032ELwsbaR?=
+ =?iso-8859-1?Q?c1ILIa6SVYhOakivW4/TOKjPg3LKbO8WccgIATC1+OCI0QHxoapLDvPItf?=
+ =?iso-8859-1?Q?JdekE2k1yEu+ljBdXr7SkHJul9Jq6ICnBK08iCfkfnzOGuwCGbNwp2tKRb?=
+ =?iso-8859-1?Q?DQxUqACZJgy6/YyO/19B6XSqwz/4uhyHOlxGyeG+lhChRkFtQZ2eUFby0S?=
+ =?iso-8859-1?Q?JfLjVIMId0qBkPtQtBjXiFsNyMAP1kdS46v4r0aCfXjhca2mEU9ub/d7Q5?=
+ =?iso-8859-1?Q?mqyPO6yhrCKAtlqVvR7lP0e3zWjhBwJH81Svf3xjabS46TIIpBqs2mRzMy?=
+ =?iso-8859-1?Q?Bo2/AV6njw0yu8P21FmVv/S9UiDCdOVuvMtiljQGMW7nXozvB/bhve3tLd?=
+ =?iso-8859-1?Q?+7ZUFalZLNnvPcORVGBmf9nvQxueRgsJEldAvxZYVJ+dk0h5UICamNRf/j?=
+ =?iso-8859-1?Q?11U3BzEBYRwFdIdRDyCgCSMLzl6FvJ/8MYK919ayMsnxoQWOtSN+zQQUOp?=
+ =?iso-8859-1?Q?9jMmiy6yxMewaDXr2QaG7C/Xv996kPWtxzFMqej5ZI+Bp3XPFlm14EPjmR?=
+ =?iso-8859-1?Q?/XeIBPdw11nysV/KQih/mCzCUjB2MXeujoj/2lRMT3P9S5OK2bU7+9XcI0?=
+ =?iso-8859-1?Q?0lY/vE8zU/9y0nG1vo5Dl91Ga+nYN4bwP7hJTAiJuFnu8XWsA2ZaTzCnMQ?=
+ =?iso-8859-1?Q?SLP89Fe3M8/wHj/DpubScLobKNddXd5jLGOdX/bvlbD3MQl8btWAHqOsMc?=
+ =?iso-8859-1?Q?23N8ra2oogWnZez5UjjvM2GFTYqIMDf2a93ubKoLTK3PPV53/jmQnhmcsO?=
+ =?iso-8859-1?Q?P9eqF2vgvHY+A2q+igFhV8nOhuVRm8bmVQCW17fx/iEp6vc0pXZ48Kz9BP?=
+ =?iso-8859-1?Q?DJiHd9672w=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 10/10] hw/arm/aspeed_ast1040: Reuse AST2700 watchdog
- models
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260529064243.2064188-1-jamin_lin@aspeedtech.com>
- <20260529064243.2064188-11-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260529064243.2064188-11-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 9452211192925760523
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGl/dIjqdgJM/NpUD3pnXqNgQDT0uUxyBa1sLRmJG4N/NPq4M9uP7IlhZuCWrfyTNZw2bnNB0znsqqLqWTFbFat/sg9uwQQFY9k7W9pB1wUVAnMT4gX1QYD6HJk5QRlMZUTw+U1qV5Fxwtt0c242wblcRAXQSJ0C3JKg9x3i6fbatScxN/+Y4f0YAiyBz3iEs7saMhv1MmeoAbmYdyRI/k3JAshjSOdNV69So+0srUL+HmXds94z7gYEgLdalZjp89MlV9rBx5L4bEJbu6ITexMbQBjQE3Iqv7exRuYMmb5o2b2p664rCK4JMrhYiC+GFkGKtCQmQXDQMJgS1RM8J+TbmiDFQ1Ej8Rh/wFRiSk2jwnnJ5OV4cBkcnFWWW037V7TNpkqrVN45nNuDv1wJ/o7mcO5rfm7yDLaqMuoE4Rzd+yP6pe/boF+UYpEZN8t5pkBqpUKmPQueGJfre4VUn7FXlJDAw6S1bj8EfWO/voQFmyLexLOTeqWSAw/IcZhZRIk5LKixK2CkhemGQ7H52woxR8kdiaT/9h0hyDYehOTm6LNNgAmj0uQK1dSINzhH72MWWXsajw7Mi6SX0EPxwDr2vzJn7p7szDIffh1f3KEQcMQp5Vj85d8BE/9KlLQ1gcl2uhYrMVaqPxDs5tKdDm2hJCzzaD2Atxu6GftFb1gvA
-DKIM-Signature: a=rsa-sha256; bh=OSG+SSYFrWmlAREMXWfE/vKOJENDVYBqcKnGKj/PaYM=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1780319023; v=1;
- b=W/Joz1SFwX7P3IHGAH6ktcRUtOwEga3T1KLTqTwpqbKO4iVpFm2tTodFDllJZxZYGf0U2oSG
- xY1Y9JUCAzuWpG0tCMQHUvbVvSVhTvJ8FHrKb+yKw46qIAf0yeBmCufiDdR81KQG5KuKRbbPLda
- rmDT619MMo7oLKuokz+S3JlijsfwRIAtNe75rH+CuvjY9ks1fOOWjZTVMGNOthk6dqAEkzgGagf
- NSRodaX/I8TWZ/7yQk7POxbNMVyNsOWKNlj95KbSaHHQZskY5TBLXD5TV8JZW1NdX5Y9Jyttz7K
- +NxPFizH3uZXt24VF1ry1P4wsC5ccC1FQ628effr35hqQ==
-Received-SPF: pass client-ip=51.210.91.52; envelope-from=clg@kaod.org;
- helo=smtpout3.mo540.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3725e641-9c03-48be-e731-08debfe34e1a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jun 2026 13:40:12.1804 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: FjTZNQosQrwxE9I2MIdfK93C/j4xVmwkB5esVnLoHu2doQ1E/KZdV/SikX18ZHf8b1sSBdyVPO0pXKRHUwrd8w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS2PR12MB9661
+Received-SPF: permerror client-ip=2a01:111:f403:c110::1;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=BN1PR04CU002.outbound.protection.outlook.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,76 +147,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/29/26 08:42, Jamin Lin wrote:
-> Instantiate and realize the watchdog models for the AST1040 SoC.
-> 
-> The AST1040 watchdog controller is compatible with the AST2700 watchdog
-> controller, so reuse the existing AST2700 watchdog model.
-> 
-> Configure the AST1040 SoC with 8 watchdog instances and map them to
-> their corresponding MMIO regions. The first watchdog controller (WDT0) is
-> located at 0x74c37000, with subsequent watchdogs placed according to the
-> controller register space size.
-> 
-> Each watchdog is linked to the SCU device before realization to provide the
-> required reset and system control interactions.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/arm/aspeed_ast1040.c | 19 +++++++++++++++++++
->   1 file changed, 19 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed_ast1040.c b/hw/arm/aspeed_ast1040.c
-> index a4fe0658d5..edf28c62f9 100644
-> --- a/hw/arm/aspeed_ast1040.c
-> +++ b/hw/arm/aspeed_ast1040.c
-> @@ -127,6 +127,11 @@ static void aspeed_soc_ast1040_init(Object *obj)
->       snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
->       object_initialize_child(obj, "i2c", &s->i2c, typename);
->   
-> +    for (i = 0; i < sc->wdts_num; i++) {
-> +        object_initialize_child(obj, "wdt[*]", &s->wdt[i],
-> +                                "aspeed.wdt-ast2700");
-> +    }
-> +
->       object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE);
->       object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVICE);
->       object_initialize_child(obj, "udc", &s->udc, TYPE_UNIMPLEMENTED_DEVICE);
-> @@ -257,6 +262,19 @@ static void aspeed_soc_ast1040_realize(DeviceState *dev_soc, Error **errp)
->           sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c.busses[i]), 0, irq);
->       }
->   
-> +    /* Watch dog */
-> +    for (i = 0; i < sc->wdts_num; i++) {
-> +        AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
-> +        hwaddr wdt_offset = sc->memmap[ASPEED_DEV_WDT] + i * awc->iosize;
-> +
-> +        object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&s->scu),
-> +                                 &error_abort);
-> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
-> +            return;
-> +        }
-> +        aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->wdt[i]), 0, wdt_offset);
-> +    }
-> +
->       /* Unimplemented peripherals */
->       aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->pwm),
->                                     "aspeed.pwm",
-> @@ -298,6 +316,7 @@ static void aspeed_soc_ast1040_class_init(ObjectClass *klass, const void *data)
->       sc->sram_size[1]    = 16 * MiB; /* Hyper RAM */
->       sc->uarts_num       = 13;
->       sc->sgpio_num       = 2;
-> +    sc->wdts_num        = 8;
->       sc->uarts_base      = ASPEED_DEV_UART0;
->       sc->irqmap          = aspeed_soc_ast1040_irqmap;
->       sc->memmap          = aspeed_soc_ast1040_memmap;
 
 
+> -----Original Message-----
+> From: Nathan Chen <nathanc@nvidia.com>
+> Sent: 27 May 2026 23:16
+> To: qemu-arm@nongnu.org; qemu-devel@nongnu.org
+> Cc: Eric Auger <eric.auger@redhat.com>; Peter Maydell
+> <peter.maydell@linaro.org>; Philippe Mathieu-Daud=E9 <philmd@linaro.org>;
+> Zhao Liu <zhao1.liu@intel.com>; Matt Ochs <mochs@nvidia.com>; Nicolin
+> Chen <nicolinc@nvidia.com>; Shameer Kolothum Thodi
+> <skolothumtho@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; qemu-
+> stable@nongnu.org
+> Subject: [PATCH v4 1/9] hw/arm/smmuv3: Update ATC invalidation check
+>=20
+> From: Nathan Chen <nathanc@nvidia.com>
+>=20
+> Use smmuv3_ats_enabled() to determine whether ATS is enabled for the
+> guest when handling an ATC invalidation command, as setting the ATS
+> property value to 'auto' will resolve to ATS being detected as
+> enabled in the ATC invalidation check otherwise.
+>=20
+> Fixes: f7f5013a55a3 ("hw/arm/smmuv3-accel: Add support for ATS")
+> Suggested-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> Signed-off-by: Nathan Chen <nathanc@nvidia.com>
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+With the tag change mentioned by Eric:
+
+Reviewed-by: Shameer Kolothum <skolothumtho@nvidia.com>
 
 Thanks,
-
-C.
-
+Shameer
 

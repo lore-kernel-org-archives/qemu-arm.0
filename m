@@ -4,56 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCB6ECD5BD1
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 08:50:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D4CACD6E56
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 09:14:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wTyLg-0007Sj-D2; Mon, 01 Jun 2026 04:50:16 -0400
+	id 1wTyaK-0003gw-45; Mon, 01 Jun 2026 05:05:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wTyLe-0007RD-Fn
- for qemu-arm@nongnu.org; Mon, 01 Jun 2026 04:50:15 -0400
-Received: from smtpout1.mo540.mail-out.ovh.net ([51.210.91.50])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wTyZa-000381-Hi; Mon, 01 Jun 2026 05:04:39 -0400
+Received: from smtpout1.mo528.mail-out.ovh.net ([46.105.34.251])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wTyLc-0000tR-Kg
- for qemu-arm@nongnu.org; Mon, 01 Jun 2026 04:50:14 -0400
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net [51.255.22.22])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4gTSMW3hccz4Qt6;
- Mon,  1 Jun 2026 08:49:59 +0000 (UTC)
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net. [127.0.0.1])
- by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alistair@alistair23.me>; Mon,  1 Jun 2026 08:49:59 +0000 (UTC)
-Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.43.95])
- by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gTSMW26DHz7th0; Mon,  1 Jun 2026 08:49:59 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wTyZW-0007sL-Cy; Mon, 01 Jun 2026 05:04:37 -0400
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net [79.137.60.37])
+ by mo528.mail-out.ovh.net (Postfix) with ESMTPS id 4gTShD5gkcz6R5F;
+ Mon,  1 Jun 2026 09:04:28 +0000 (UTC)
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net. [127.0.0.1])
+ by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <alexander.hansen@9elements.com>; Mon,  1 Jun 2026 09:04:28 +0000 (UTC)
+Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.184])
+ by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gTShD4VHxz1yb8; Mon,  1 Jun 2026 09:04:28 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.7])
  (Authenticated sender: clg@kaod.org)
- by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- 135512403043; Mon,  1 Jun 2026 08:49:56 +0000 (UTC)
+ by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 0CB5312E3053;
+ Mon,  1 Jun 2026 09:04:26 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-108S002992e5ba5-dd78-49b6-a67f-524cb20876b9,
+ (GARM-106R00612ca77b8-1d7a-4764-981d-df10f147e213,
  E35A50153BDE4127F94F88E3CE699B0651996EDF) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <a986d247-a6f8-497d-ab37-261d8a7b43df@kaod.org>
-Date: Mon, 1 Jun 2026 10:49:53 +0200
+Message-ID: <ca461260-3730-458c-847a-5ef9718abfd0@kaod.org>
+Date: Mon, 1 Jun 2026 11:04:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 00/24] hw/aspeed: Convert all Aspeed devices to
- DEFINE_TYPES() with inlined TypeInfo
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
+Subject: Re: [PATCH v5 1/5] ast2600: yosemite4 initial support
+To: Alexander Hansen <alexander.hansen@9elements.com>, qemu-devel@nongnu.org
+Cc: Titus Rwantare <titusr@google.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- Ninad Palsule <ninad@linux.ibm.com>, Jason Wang <jasowang@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260601024959.2347639-1-jamin_lin@aspeedtech.com>
+ qemu-arm@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+References: <20260529124237.94087-1-alexander.hansen@9elements.com>
+ <20260529124237.94087-2-alexander.hansen@9elements.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -98,30 +95,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260601024959.2347639-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260529124237.94087-2-alexander.hansen@9elements.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 5167599097832254524
+x-ovh-tracer-id: 5412200856256883736
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTE2KY71qfhg80v2imIbFbQWFoBudvcxBker6rpaKRwgbpHgoi/umRDTd63qh5OnqZ8TFHt6eBnX4tTg0ungWt9Q5mlnEM5iwwE1nYcTz75Z/FUNKXTMGHgEvVuPnMYWoiNNIe9CR49WWP0iHHvrlSO9h1mAB3DfbG39BdVKzmG6ms0By2/EQ0rtyBSqAOBcdjFOsVQIYdKQ+J7PPuMUB8KsLI03E9dqbVG3hlBqJ9N/oQU8Ijx3NgUM730PXMKBOP+EsBChrlajK5sDFngHUXugYUaI3GCsduAlg0rXGSl/6lW8tH0PcxT4Nt4ttAvpqJfOqZW/ES8iisytK6Z0BG9peYT3mka+pTp6iKCitdUqeDloK/mM0ltxGLelXnRXCGrtIx6a7Uzjc4nK1UzT4ogV/YQxsE3nzVhrXcgOImOsOSGKQsOxfTPhfQbr/5Tc7+BDw2hMxle21eeDqI5eh2z460IAYBQhx+Tbh2i7UDhrwG/T2fRXuOoWYYoKaxA9X7eBcuGsDvpDNNYOZCOJAn5CRIpbPacS+RWMydpPaANat8jTTV5eueogcLOC/XvdmynxOd7uUDbywWw2Tuoho6ocCmw1G5PDYjh8L8JjcWGxyJNtOoqNWxNvA7nPzHYbPF9C2Sr+jbKSwqfqmQ9qRxtRXl1+NBVCLo9yvqxMejryHw
-DKIM-Signature: a=rsa-sha256; bh=a/rg0Hn8eSqVzC2dInq+MikNnd1lbrrDHIsXG2wjLsM=; 
+X-VR-SPAMCAUSE: dmFkZTFlQFJS/oR1PJWpr7mqJe46AsOF6DRvMFvdPEwPIkXyRNuUkcq3vMCtDct2A52vYOipdWO4nSTHC6s2S0hgQ6vQOuGCrzNxzF3wfNWJXFlAw0I5PO8I6cDm9keLzVhA81/J1QF8QK41jpN2fSovY/asLzqpnMiSDmAdeCnxeUSwMeCpz9emKdnSlbs5zzeSr3fwZ4C78sOKUMHkc6tPtpDgJIlPwzS7XwSjSKc6SYyXWTTykj6M8Ga4p2brSVXj2Cuc9P6PE4YOA9EKnlS5mDEfSEZVeo2tsf/A5rzZCMhScqvT/Mhsjp5oRJarVao5X6rzmebtl3RW+WUXwpt6oBhoO/08n29v+BllTl6KYRcvJMvEX6ATcA8PGhrrfHWo+5xNInGcVkXc0MOP4rha95AJYKu8eIRC5xi/ec3LjU0zT0zpGLVjW6kKD7BGEkF3jSCQGZDgX3iWHq9iOSdoQIeYWb+c0hDSkXznlUlBZLUPML63qp1JldT4LTUWnw9T/2xHdsr8ng/f4zRjHMjkCJWhCAY/o0/uD81OEPbtrzBhqlbtjzsX0ADrSBst1I7TEZHc7lJ1UoYHD6lkeXYRkaHrv5z8NweCJsOv3fPDhdp7/U4x5P2UCkzzEKt6p54S92IhRql7KfoDqyRv0QCY5xsxBK9P87TnIJf0zqMbSkJOWw
+DKIM-Signature: a=rsa-sha256; bh=Pqu97hHJ0WGa4CVxNc/4Tk0VxClOdSmlsWHcYcDAjtM=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1780303801; v=1;
- b=bJf4/QFLGo0C5NeLlzam7IbqBb4LM38tfp8XwJFzfm+VrMBQfya4M1X66gG0I/2tq4fIDDaT
- z3C88Lziwm0ULXhNgJvCRiDjf7bE1lCZbcF3WJwtpxFmK147aXNNFSj/IYNf6P0Poudbrhxv7uG
- Wg0oQFWy+YBJ9LBZugynE5HBAnZ/Me4tsAPpV3T9OTmTESIp23/BwPkoYWGFwWy0L0i7DatxDM8
- O2+pT9R4nJfHhEA7y+HOptVQ5kAuQKeuKmcM0d61xKynzB3hXBZbbRL6Z2ufKIsBbvehVBUVJ/j
- QvyXsW46wndZRm4R4wBQLWjX4C71LlCDgOHeoplUgSPfA==
-Received-SPF: pass client-ip=51.210.91.50; envelope-from=clg@kaod.org;
- helo=smtpout1.mo540.mail-out.ovh.net
+ t=1780304670; v=1;
+ b=sYcN1fSBW5g5WuA3Xb+svNRJleaHWo4p8MHH392hJ/DCEolKXAyZmaEKlWaXn7YutZDFYD8z
+ zIiemanNY6Yp7I+0VqXy6J2VJkqGxHYhuVb5shJqI77oN9BGZcXlIA0hfwLHLnkoBZGUyeW7+w8
+ w6YQk9C+YKk/nfT6hnJqukY2ek7iYAozjfT9sL3GoSCinBDmhhR+0w0XgT82Dztjxs4TlCSuiip
+ O/38N397c9CzaHbPnMtAuNSrtPq9FvVCgRtJe6zQtsVBNck74Sq3HHPz7qC9grT5c7efa0XA7Xv
+ JhZETGvQKlbwqyvh57LTshzcSicVlSfQVeWSLG1xkWSXQ==
+Received-SPF: pass client-ip=46.105.34.251; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo528.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,84 +134,351 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 6/1/26 04:50, Jamin Lin wrote:
-> The QEMU community now prefers the DEFINE_TYPES() macro over the legacy
-> type_register_static()/type_init() pattern for device type registration.
-> DEFINE_TYPES() accepts an array of TypeInfo structs and registers them
-> all in a single call, making the registration code more concise and
-> consistent with modern QEMU coding style.
+On 5/29/26 14:37, Alexander Hansen wrote:
+> Initial patch based on [1] to support yosemite v4 bmc emulation.
 > 
-> This series converts all Aspeed device models to use DEFINE_TYPES() and
-> further inlines the individual static TypeInfo variable declarations
-> directly into the types array, eliminating the need for standalone
-> TypeInfo variables scattered throughout each file.
+> The goal of this machine support is to support OpenBMC development.
 > 
-> v1:
->    The changes are purely mechanical refactoring with no functional
->    difference. The 24 patches cover all Aspeed-related device models
->    across hw/adc, hw/arm, hw/fsi, hw/gpio, hw/i2c, hw/intc, hw/misc,
->    hw/net, hw/nvram, hw/pci-host, hw/rtc, hw/ssi, hw/timer and
->    hw/watchdog.
+> Reference linux devicetree from openbmc linux is [2].
 > 
-> Jamin Lin (24):
->    hw/misc/aspeed_hace: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/misc/aspeed_lpc: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/misc/aspeed_ltpi: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/misc/aspeed_pwm: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/misc/aspeed_sbc: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/misc/aspeed_scu: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/misc/aspeed_sdmc: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/misc:aspeed_sli: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/misc/aspeed_xdma: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/adc/aspeed_adc: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/arm/aspeed_ast1700: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/gpio/aspeed_gpio: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/gpio/aspeed_sgpio: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/intc/aspeed_intc: convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/intc/aspeed_vic: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/rtc/aspeed_rtc: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/watchdog/wdt_aspeed: Convert to DEFINE_TYPES() with inlined
->      TypeInfo
->    hw/nvram/aspeed_otp: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/timer/aspeed_timer: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/fsi/aspeed_apb2opb: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/pci-host/aspeed_pcie: Convert to DEFINE_TYPES() with inlined
->      TypeInfo
->    hw/i2c/aspeed_i2c: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/net/ftgmac100: Convert to DEFINE_TYPES() with inlined TypeInfo
->    hw/ssi/aspeed_smc: Convert to DEFINE_TYPES() with inlined TypeInfo
+> Status:
+> - Enclosure FRU:         showing up
+> - Management Board FRU:  showing up
+> - Blade Board FRU:       showing up
+> - Blade Board sensors:   not implemented
+> - Blade Chassis FRU:     showing up
+> - Fan Board FRU:         both showing up
+> - Fan Board sensors:     supported
 > 
->   hw/adc/aspeed_adc.c       |  95 +++++++---------
->   hw/arm/aspeed_ast1700.c   |  21 ++--
->   hw/fsi/aspeed_apb2opb.c   |  42 +++----
->   hw/gpio/aspeed_gpio.c     | 107 ++++++++----------
->   hw/gpio/aspeed_sgpio.c    |  37 +++----
->   hw/i2c/aspeed_i2c.c       | 113 ++++++++-----------
->   hw/intc/aspeed_intc.c     | 121 +++++++++-----------
->   hw/intc/aspeed_vic.c      |  19 ++--
->   hw/misc/aspeed_hace.c     |  81 ++++++--------
->   hw/misc/aspeed_lpc.c      |  21 ++--
->   hw/misc/aspeed_ltpi.c     |  19 ++--
->   hw/misc/aspeed_pwm.c      |  19 ++--
->   hw/misc/aspeed_sbc.c      |  46 ++++----
->   hw/misc/aspeed_scu.c      | 107 ++++++++----------
->   hw/misc/aspeed_sdmc.c     |  73 ++++++------
->   hw/misc/aspeed_sli.c      |  44 ++++----
->   hw/misc/aspeed_xdma.c     |  58 +++++-----
->   hw/net/ftgmac100.c        |  32 +++---
->   hw/nvram/aspeed_otp.c     |  19 ++--
->   hw/pci-host/aspeed_pcie.c |  94 +++++++---------
->   hw/rtc/aspeed_rtc.c       |  19 ++--
->   hw/ssi/aspeed_smc.c       | 228 ++++++++++++++++----------------------
->   hw/timer/aspeed_timer.c   |  83 ++++++--------
->   hw/watchdog/wdt_aspeed.c  |  93 +++++++---------
->   24 files changed, 678 insertions(+), 913 deletions(-)
+> Overall the emulation is incomplete but already helpful in development
+> and testing.
 > 
+> The focus of this initial support is on the FRU eeproms and fanboard
+> sensors.
+> 
+> Tested: booted an OpenBMC image for yosemite4 target.
+> 
+> References:
+> [1] https://github.com/9elements/qemu/commit/32139f913c2bd0ebe4bd26c46765861f6f9f2d49
+> [2] arch/arm/boot/dts/aspeed/aspeed-bmc-facebook-yosemite4.dts
+> [3] https://github.com/legoater/qemu-aspeed-boot/pull/5
+> 
+> Cc: Titus Rwantare <titusr@google.com>
+> Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
+> Cc: Peter Maydell <peter.maydell@linaro.org> (maintainer:ASPEED BMCs)
+> Cc: Steven Lee <steven_lee@aspeedtech.com> (reviewer:ASPEED BMCs)
+> Cc: Troy Lee <leetroy@gmail.com> (reviewer:ASPEED BMCs)
+> Cc: Jamin Lin <jamin_lin@aspeedtech.com> (reviewer:ASPEED BMCs)
+> Cc: Kane Chen <kane_chen@aspeedtech.com> (reviewer:ASPEED BMCs)
+> Cc: Andrew Jeffery <andrew@codeconstruct.com.au> (reviewer:ASPEED BMCs)
+> Cc: Joel Stanley <joel@jms.id.au> (reviewer:ASPEED BMCs)
+> Cc: qemu-arm@nongnu.org (open list:ASPEED BMCs)
+> Cc: qemu-devel@nongnu.org (open list:All patches CC here)
+> Reviewed-by: Cédric Le Goater <clg@redhat.com>
+> Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
+> ---
+>   hw/arm/aspeed_ast2600_fby4.c | 267 +++++++++++++++++++++++++++++++++++
+>   hw/arm/meson.build           |   1 +
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Please mention the new machine in docs/system/arm/aspeed.rst
 
-Thanks,
 
-C.
+>   2 files changed, 268 insertions(+)
+>   create mode 100644 hw/arm/aspeed_ast2600_fby4.c
+> 
+> diff --git a/hw/arm/aspeed_ast2600_fby4.c b/hw/arm/aspeed_ast2600_fby4.c
+> new file mode 100644
+> index 0000000000..89fb0ac2fd
+> --- /dev/null
+> +++ b/hw/arm/aspeed_ast2600_fby4.c
+> @@ -0,0 +1,267 @@
+> +/*
+> + * Facebook Yosemite V4
+> + *
+> + * Copyright 2026 9elements.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/arm/machines-qom.h"
+> +#include "hw/arm/aspeed.h"
+> +#include "hw/arm/aspeed_soc.h"
+> +#include "hw/nvram/eeprom_at24c.h"
+> +#include "hw/i2c/i2c_mux_pca954x.h"
+> +#include "hw/gpio/pca9552.h"
+> +
+> +#define FBY4_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+> +
+> +/* START OF EEPROM CONTENTS */
+> +
+> +/*
+> + *./frugen -s board.mfg="Wiwynn" \
+> + * --set board.pname="Fan Board FSC-MAX ADC-TI LED-NXP EFUSE-MAX" \
+> + * --set text:board.pn="BRD-PN-345" \
+> + * --board-date "10/1/2017 12:58:00" \
+> + * --set board.serial="123456" \
+> + * --set product.pname="Yosemite V4" \
+> + * --set product.mfg="Wiwynn" \
+> + * --set product.ver="v1.1" \
+> + * --set product.serial="123456" \
+> + * --set product.atag="PLACEHOLDER" \
+> + * --set product.custom="Fanboard Custom1" \
+> + * --set product.custom.1="Fanboard Custom2" \
+> + * --set text:product.pn="PN-345" \
+> + * fru-yv4-fanboard.bin
+> + */
+> +/* EM Config: yosemite4_fanboard_fsc_max_adc_ti_led_nxp_ons_efuse_max.json */
+> +/* Yosemite4 fan board */
+> +static const uint8_t fru_yv4_fanboard_bin[] = {
+> +  0x01, 0x00, 0x00, 0x01, 0x0b, 0x00, 0x00, 0xf3, 0x01, 0x0a, 0x19, 0xce,
+> +  0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xea, 0x46, 0x61,
+> +  0x6e, 0x20, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x20, 0x46, 0x53, 0x43, 0x2d,
+> +  0x4d, 0x41, 0x58, 0x20, 0x41, 0x44, 0x43, 0x2d, 0x54, 0x49, 0x20, 0x4c,
+> +  0x45, 0x44, 0x2d, 0x4e, 0x58, 0x50, 0x20, 0x45, 0x46, 0x55, 0x53, 0x45,
+> +  0x2d, 0x4d, 0x41, 0x58, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0xca, 0x42,
+> +  0x52, 0x44, 0x2d, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc0, 0xc1, 0x00,
+> +  0x00, 0x00, 0x00, 0xdb, 0x01, 0x09, 0x19, 0xc6, 0x57, 0x69, 0x77, 0x79,
+> +  0x6e, 0x6e, 0xcb, 0x59, 0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65, 0x20,
+> +  0x56, 0x34, 0xc6, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc4, 0x76, 0x31,
+> +  0x2e, 0x31, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0x89, 0x30, 0x1b, 0x8e,
+> +  0x25, 0xfa, 0xb2, 0x64, 0x29, 0x03, 0xc0, 0xd0, 0x46, 0x61, 0x6e, 0x62,
+> +  0x6f, 0x61, 0x72, 0x64, 0x20, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x32,
+> +  0xc1, 0x00, 0x00, 0x9d
+> +};
+> +static const size_t fru_yv4_fanboard_bin_len = sizeof(fru_yv4_fanboard_bin);
+> +
+> +/*
+> + *./frugen -s board.mfg="Wiwynn" \
+> + * --set board.pname="Sentinel Dome without Retimer" \
+> + * --set text:board.pn="BRD-PN-345" \
+> + * --board-date "10/1/2017 12:58:00" \
+> + * --set board.serial="123456" \
+> + * --set product.pname="Yosemite V4" \
+> + * --set product.mfg="Wiwynn" \
+> + * --set product.ver="v1.1" \
+> + * --set product.serial="123456" \
+> + * --set product.atag="PLACEHOLDER" \
+> + * --set product.custom="Yosemite V4 T1" \
+> + * --set product.custom.1="Yosemite V4 T1" \
+> + * --set text:product.pn="PN-345" \
+> + * fru-yv4-sentineldome-board.bin
+> + */
+> +/* product.cust maps to PRODUCT_INFO_AM2 */
+> +/* EM Config: yosemite4_sentineldome_t1.json */
+> +/* Yosemite4 Sentinel Dome without Retimer Boards */
+> +static const uint8_t fru_yv4_sentineldome_board_bin[] = {
+> +  0x01, 0x00, 0x00, 0x01, 0x09, 0x00, 0x00, 0xf5, 0x01, 0x08, 0x19, 0xce,
+> +  0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xdd, 0x53, 0x65,
+> +  0x6e, 0x74, 0x69, 0x6e, 0x65, 0x6c, 0x20, 0x44, 0x6f, 0x6d, 0x65, 0x20,
+> +  0x77, 0x69, 0x74, 0x68, 0x6f, 0x75, 0x74, 0x20, 0x52, 0x65, 0x74, 0x69,
+> +  0x6d, 0x65, 0x72, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0xca, 0x42, 0x52,
+> +  0x44, 0x2d, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc0, 0xc1, 0x00, 0x78,
+> +  0x01, 0x09, 0x19, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xcb, 0x59,
+> +  0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65, 0x20, 0x56, 0x34, 0xc6, 0x50,
+> +  0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc4, 0x76, 0x31, 0x2e, 0x31, 0x85, 0x91,
+> +  0x34, 0x51, 0x95, 0x05, 0x89, 0x30, 0x1b, 0x8e, 0x25, 0xfa, 0xb2, 0x64,
+> +  0x29, 0x03, 0xc0, 0xce, 0x59, 0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65,
+> +  0x20, 0x56, 0x34, 0x20, 0x54, 0x31, 0xc1, 0x00, 0x00, 0x00, 0x00, 0xeb
+> +};
+> +static const size_t fru_yv4_sentineldome_board_bin_len =
+> +    sizeof(fru_yv4_sentineldome_board_bin);
+> +
+> +/*
+> + *./frugen -s board.mfg="Wiwynn" \
+> + * --set board.pname="Sentinel Dome" \
+> + * --set text:board.pn="BRD-PN-345" \
+> + * --board-date "10/1/2017 12:58:00" \
+> + * --set board.serial="123456" \
+> + * --set product.pname="Yosemite V4" \
+> + * --set product.mfg="Wiwynn" \
+> + * --set product.ver="v1.1" \
+> + * --set product.serial="123456" \
+> + * --set product.atag="PLACEHOLDER" \
+> + * --set text:product.pn="PN-345" \
+> + * fru-yv4-sentineldome-chassis.bin
+> + */
+> +/* EM Config: yosemite4_sentineldome_chassis.json */
+> +/* Yosemite 4 Sentinel Dome Chassis FRU */
+> +static const uint8_t fru_yv4_sentineldome_chassis_bin[] = {
+> +  0x01, 0x00, 0x00, 0x01, 0x07, 0x00, 0x00, 0xf7, 0x01, 0x06, 0x19, 0xce,
+> +  0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xcd, 0x53, 0x65,
+> +  0x6e, 0x74, 0x69, 0x6e, 0x65, 0x6c, 0x20, 0x44, 0x6f, 0x6d, 0x65, 0x85,
+> +  0x91, 0x34, 0x51, 0x95, 0x05, 0xca, 0x42, 0x52, 0x44, 0x2d, 0x50, 0x4e,
+> +  0x2d, 0x33, 0x34, 0x35, 0xc0, 0xc1, 0x00, 0xb6, 0x01, 0x07, 0x19, 0xc6,
+> +  0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xcb, 0x59, 0x6f, 0x73, 0x65, 0x6d,
+> +  0x69, 0x74, 0x65, 0x20, 0x56, 0x34, 0xc6, 0x50, 0x4e, 0x2d, 0x33, 0x34,
+> +  0x35, 0xc4, 0x76, 0x31, 0x2e, 0x31, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05,
+> +  0x89, 0x30, 0x1b, 0x8e, 0x25, 0xfa, 0xb2, 0x64, 0x29, 0x03, 0xc0, 0xc1,
+> +  0x00, 0x00, 0x00, 0x59
+> +};
+> +static const size_t fru_yv4_sentineldome_chassis_bin_len =
+> +    sizeof(fru_yv4_sentineldome_chassis_bin);
+> +
+> +/*
+> + *./frugen -s board.mfg="Wiwynn" \
+> + * --set board.pname="Management Board wBMC" \
+> + * --set text:board.pn="BRD-PN-345" \
+> + * --board-date "10/1/2017 12:58:00" \
+> + * --set board.serial="123456" \
+> + * --set product.pname="Yosemite V4" \
+> + * --set product.mfg="Wiwynn" \
+> + * --set product.ver="v1.1" \
+> + * --set product.serial="123456" \
+> + * --set product.atag="PLACEHOLDER" \
+> + * --set text:product.pn="PN-345" \
+> + * fru-yv4-eclosure.bin
+> + */
+> +/* EM Config: yosemite4_chassis.json, yosemite4.json */
+> +/* Yosemite 4 Sentinel Dome Enclosure FRU */
+> +static const uint8_t fru_yv4_eclosure_bin[] = {
+> +  0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0xce,
+> +  0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xd5, 0x4d, 0x61,
+> +  0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x42, 0x6f, 0x61,
+> +  0x72, 0x64, 0x20, 0x77, 0x42, 0x4d, 0x43, 0x85, 0x91, 0x34, 0x51, 0x95,
+> +  0x05, 0xca, 0x42, 0x52, 0x44, 0x2d, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35,
+> +  0xc0, 0xc1, 0x00, 0x26, 0x01, 0x07, 0x19, 0xc6, 0x57, 0x69, 0x77, 0x79,
+> +  0x6e, 0x6e, 0xcb, 0x59, 0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65, 0x20,
+> +  0x56, 0x34, 0xc6, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc4, 0x76, 0x31,
+> +  0x2e, 0x31, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0x89, 0x30, 0x1b, 0x8e,
+> +  0x25, 0xfa, 0xb2, 0x64, 0x29, 0x03, 0xc0, 0xc1, 0x00, 0x00, 0x00, 0x59
+> +};
+> +static const size_t fru_yv4_eclosure_bin_len = sizeof(fru_yv4_eclosure_bin);
+> +
+> +/* END OF EEPROM CONTENTS */
+> +
+> +static void fby4_i2c_init_fanboard(I2CSlave *fan_mux, size_t eepromSize)
+> +{
+> +    /* 2 fan boards */
+> +    for (int i = 0; i <= 1; i++) {
+> +        /* downstream bus */
+> +        I2CBus *bus = pca954x_i2c_get_bus(fan_mux, i);
+> +
+> +        /* ti,adc128d818 @ 0x1f    (adc) */
+> +        /* TODO */
+> +
+> +        /* maxim,max31790 @ 0x20   (pwm) */
+> +        /* TODO */
+> +
+> +        /*
+> +         * ti,tca6424 @ 0x22       (gpio)
+> +         * linux handles tca6424 with PCA953X_TYPE, same as pca9535
+> +         * { "pca9535", 16 | PCA953X_TYPE | PCA_INT, },
+> +         * { "tca6424", 24 | PCA953X_TYPE | PCA_INT, },
+> +         * so we _could_ be fine here unless more than 16 gpios are used
+> +         */
+> +        i2c_slave_create_simple(bus, TYPE_PCA9535, 0x22);
+> +
+> +        /*
+> +         * NOTE: above works and could use for gpio presence:
+> +         * $ gpioget gpiochip2 2
+> +         * 1
+> +         */
+> +
+> +        /* maxim,max31790 @ 0x2f   (pwm) */
+> +        /* TODO */
+> +
+> +        /* maxim,max11615 @ 0x33   (adc) */
+> +        /* TODO */
+> +
+> +        at24c_eeprom_init_rom(
+> +            bus, 0x52, eepromSize,
+> +            fru_yv4_fanboard_bin,
+> +            fru_yv4_fanboard_bin_len);
+> +
+> +        /* LED blink driver / gpio expander */
+> +        /* nxp,pca9552 @ 0x61   (gpio) */
+> +        i2c_slave_create_simple(bus, TYPE_PCA9552, 0x61);
+> +    }
+> +}
+> +
+> +static void fby4_i2c_init_blade_chassis(I2CBus *bus, size_t eepromSize)
+> +{
+> +    /* Sentinel Dome Blade EEPROMS */
+> +
+> +    /* Board */
+> +    at24c_eeprom_init_rom(bus, 0x54, eepromSize,
+> +        fru_yv4_sentineldome_board_bin, fru_yv4_sentineldome_board_bin_len);
+> +
+> +    /* Chassis */
+> +   at24c_eeprom_init_rom(bus, 0x55, eepromSize,
+> +       fru_yv4_sentineldome_chassis_bin, fru_yv4_sentineldome_chassis_bin_len);
+> +}
+> +
+> +static void fby4_i2c_init_multiple_blade_chassis(I2CBus **i2c,
+> +    size_t eepromSize)
+> +{
+> +    /* there is 8 blade chassis, but we only emulate 2 for performance reason */
+> +    for (int bus = 1; bus <= (8 / 4); bus++) {
+> +        fby4_i2c_init_blade_chassis(i2c[bus], eepromSize);
+> +    }
+
+I don't think this routine has much value. I would keep the comment
+and simply add :
+
+         fby4_i2c_init_blade_chassis(i2c[1], eepromSize);
+         fby4_i2c_init_blade_chassis(i2c[2], eepromSize);
+
+in fby4_i2c_init()
+
+> +}
+> +
+> +static void fby4_i2c_init(AspeedMachineState *bmc)
+> +{
+> +    AspeedSoCState *soc = bmc->soc;
+> +    I2CBus *i2c[16];
+> +
+> +    for (int i = 0; i < 16; i++) {
+> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+> +    }
+> +
+> +    /* Enclosure (EM Config: yosemite4_chassis.json, yosemite4.json) */
+> +    at24c_eeprom_init_rom(i2c[1], 0x51, 128 * KiB,
+> +        fru_yv4_eclosure_bin, fru_yv4_eclosure_bin_len);
+> +
+> +    fby4_i2c_init_multiple_blade_chassis(i2c, 128 * KiB);
+> +
+> +    /* Yv4 fanboard connection */
+> +    I2CSlave *fan_mux = i2c_slave_create_simple(i2c[14], TYPE_PCA9546, 0x74);
+> +
+> +    fby4_i2c_init_fanboard(fan_mux, 128 * KiB);
+> +}
+> +
+> +static void aspeed_machine_fby4_class_init(ObjectClass *oc, const void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> +
+> +    mc->desc       = "Facebook fby4 BMC (Cortex-A7)";
+> +    amc->fmc_model = "mx66l1g45g";
+> +    amc->num_cs    = 2;
+> +    amc->macs_mask = ASPEED_MAC3_ON;
+> +    amc->i2c_init  = fby4_i2c_init;
+> +    mc->default_ram_size = FBY4_BMC_RAM_SIZE;
+> +    aspeed_machine_class_init_cpus_defaults(mc);
+> +}
+> +
+> +static const TypeInfo aspeed_ast2600_fby4_types[] = {
+> +    {
+> +        .name          = MACHINE_TYPE_NAME("fby4-bmc"),
+> +        .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
+> +        .class_init    = aspeed_machine_fby4_class_init,
+> +        .interfaces    = arm_machine_interfaces,
+> +    }
+> +};
+> +
+> +DEFINE_TYPES(aspeed_ast2600_fby4_types)
+> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+> index 68d204bb4e..30d92c3f33 100644
+> --- a/hw/arm/meson.build
+> +++ b/hw/arm/meson.build
+> @@ -59,6 +59,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+>     'aspeed_ast2600_catalina.c',
+>     'aspeed_ast2600_evb.c',
+>     'aspeed_ast2600_fby35.c',
+> +  'aspeed_ast2600_fby4.c',
+>     'aspeed_ast2600_fuji.c',
+>     'aspeed_ast2600_gb200nvl.c',
+>     'aspeed_ast2600_rainier.c',
 
 

@@ -4,121 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DBBDCD6E5D
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 11:54:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5586FCD5BD1
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 12:50:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wU1AK-0008RX-0o; Mon, 01 Jun 2026 07:50:45 -0400
+	id 1wU25y-0000Hr-KG; Mon, 01 Jun 2026 08:50:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wU19s-0007Tm-4C; Mon, 01 Jun 2026 07:50:17 -0400
-Received: from mail-westcentralusazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c112::7] helo=CY3PR05CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wU25u-0000HJ-Ru; Mon, 01 Jun 2026 08:50:16 -0400
+Received: from smtpout1.mo528.mail-out.ovh.net ([46.105.34.251])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wU19q-0005G7-D1; Mon, 01 Jun 2026 07:50:15 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=V9QjpcjrhtWZ+ktuF/YSx3sINr8UFlpTZi5picYnjLawsaLadUmkqy76P9HMYmOrFc9Ok84/wTjQ9TwVAFIB4KDpbsDv2WDPxtlHUbCurUpu87hCBZbnIuaPKhzk10XuIjpiQtHyIiCX+pmUPUsjgk1cnqbhuuaxO62uJYVh4S1NdYpZLeEPjLxT1fY+p5S4l6+inmVXWsKCbFgmAwqNNceZYtmbN3W6O/Wx9roc5kw8uCfxaFPotKQ7zzBdflHF6uWpLznwVMplh9DSmCCmpM2T4V0vBTJBUn4X8o8jXs3VbtviV17ltmmIgLU3k4yMXPQTD/Fg8HmdrUiVdEjuKA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=agj4bIOMCHDWcO3Nemp93fjYkOm5nkrg3/JH5lDXxJQ=;
- b=a6d9MGlm33hcVbgS1D8KzMNdrclYjM8DGd9F/s/wyjFBkHqvFF1Ug1oyiMJLoeUBWxR5fmhreTdUhzZOA98+TiyuY2a7b3VFiD5vcBKYh/sg03YnbVVeL+ygSu4Ei7d+1/iwCjomtiWhvm7EdxPvNTcF3EpFxVrFJAcQ4FBjzAjw1FN9ah6sSVK/7rVsGyW4oo6UPijwtBoafEOvf4PAhFqwbm8/wvIAUInvOjT/GyJoFvTOjyFnyXPhIziP5jeh4PmaUvwc6ycFRUfLlhi3stRxn+YZU2fZ22c1YteoBwxsFej51My6tywnna1y/qYqZZLM/2QQde0erPyMNhPlLw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=agj4bIOMCHDWcO3Nemp93fjYkOm5nkrg3/JH5lDXxJQ=;
- b=W07D8jKz3RCjdYQ6CaywD4FKCzNdYwYdf0jfm5cYs9dVdFhkvTH+p0Z86kkxFon3RphOzfoi0k4gXzq5It/f7AwzzI5EEDSEaELUH+83HdIxOyru5qxwnUeVZpWWEgqz90J7sUPEm7u3SyM4pd5dv6/TSEAgIMOvmZ3+6lSZYloQ+sxAItZXeTXys0TCBHll8ARjdcRwWga1PECc8wWR/ay5HVKWPm1+nPWMZPaD28DXTrh7d/dGJ4WlIO+Pk+f660soMef8eKeneWUl0chY/TdDC6enA+vLXVTd2Mn/wr4uZkcspEncuU7e79+ejTIeGlRGxBOPbxIE/x62f6nqig==
-Received: from IA1P220CA0006.NAMP220.PROD.OUTLOOK.COM (2603:10b6:208:461::11)
- by BY5PR12MB4051.namprd12.prod.outlook.com (2603:10b6:a03:20c::7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.16; Mon, 1 Jun 2026
- 11:50:07 +0000
-Received: from BL6PEPF0001AB53.namprd02.prod.outlook.com
- (2603:10b6:208:461:cafe::67) by IA1P220CA0006.outlook.office365.com
- (2603:10b6:208:461::11) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.71.17 via Frontend Transport; Mon, 1
- Jun 2026 11:50:06 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- BL6PEPF0001AB53.mail.protection.outlook.com (10.167.241.5) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.92.5 via Frontend Transport; Mon, 1 Jun 2026 11:50:06 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 1 Jun
- 2026 04:49:56 -0700
-Received: from NV-2Y5XW94.nvidia.com (10.126.230.37) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 1 Jun
- 2026 04:49:52 -0700
-From: Shameer Kolothum <skolothumtho@nvidia.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <clg@redhat.com>,
- <alex@shazbot.org>, <nicolinc@nvidia.com>, <nathanc@nvidia.com>,
- <mochs@nvidia.com>, <jan@nvidia.com>, <jgg@nvidia.com>,
- <zhenzhong.duan@intel.com>, <kjaju@nvidia.com>, <phrdina@redhat.com>,
- <skolothumtho@nvidia.com>
-Subject: [PATCH v6 27/31] hw/arm/smmuv3-accel: Introduce helper to query CMDQV
- type
-Date: Mon, 1 Jun 2026 12:42:17 +0100
-Message-ID: <20260601114221.457995-28-skolothumtho@nvidia.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260601114221.457995-1-skolothumtho@nvidia.com>
-References: <20260601114221.457995-1-skolothumtho@nvidia.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wU25s-0006th-EE; Mon, 01 Jun 2026 08:50:14 -0400
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net [51.68.94.138])
+ by mo528.mail-out.ovh.net (Postfix) with ESMTPS id 4gTYhY5tXGz5wr3;
+ Mon,  1 Jun 2026 12:50:05 +0000 (UTC)
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net. [127.0.0.1])
+ by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Mon,  1 Jun 2026 12:50:05 +0000 (UTC)
+Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.178.128])
+ by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gTYhY31b8z7vQr; Mon,  1 Jun 2026 12:50:05 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.3])
+ (Authenticated sender: clg@kaod.org)
+ by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id EE2E2940D6D; 
+ Mon,  1 Jun 2026 12:50:03 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-98R002f0fb598c-c824-41e0-a8b8-1acbc347c9b4,
+ E35A50153BDE4127F94F88E3CE699B0651996EDF) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <760b6545-2710-4eb3-9a70-321374b6e3e4@kaod.org>
+Date: Mon, 1 Jun 2026 14:50:03 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.126.230.37]
-X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
- rnnvmail201.nvidia.com (10.129.68.8)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL6PEPF0001AB53:EE_|BY5PR12MB4051:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8d19e731-8864-4196-dac6-08debfd3ed0c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|36860700016|82310400026|1800799024|376014|18002099003|22082099003|6133799003|11063799006|56012099006;
-X-Microsoft-Antispam-Message-Info: lRNghs6HOnNHAwOJ+Vf7WzD0aIHApvzCPOVL5wfvSgwOH6vUhP89L7A8jMnAwmTYnHKuzzSHOeG7mJ2v4iCMOROrFrDcG9O6jIOEBOmelxDYGnaYtCHZfZNSGz3okh9b8TcscPQTMNqRD3KbA636SdLSWXE3Q9tQEdrYS1SVb3o1qARTut43AQnz5sY9W1lyGR7F4+h1CfHr+qK4/LEQw6vOROQmy2/Xk3pf3eDwARL4RyDOi7aJKEMOBZvq9XEUDwf670zfB0coKsDNeNycKC6+oqrXg8nkiBJUfsVTp3PgGE+6Y9yjEUvxt+RyV3JrJtR7L3TrpplZjaxyi1WOu16G3eo/tCAsdbkMycOtMnrw64xn5gSpIhUcTvgqS9g5WQIeeRclIsB6D+TO9RNer03M89T0WLDsCRTBX+b2yxtQlWgquKy2H+/dCb3EMZlSFrDF10ZNY8C+9Aenr4lb+I+gKcO19lND7ya2WaMZ6owSOnP9ddTVK+5muiJ3n1hOjlusHb7cmjzuzjfDoFyJ/W2KI333gxojYc3HD6NuzszDhoAfJLbBsNmZSfLoZpUJ4aan4BvUGb8ilPAuRkjS+tKZ3phpXDulMgiuGq9cQtgUx+b9a8oSgcVSquf0H675Q6Z+t9Rt/9+0BPw6Wqrj5WJg3rLzUSARAM7qXtWFvZUpslAB2Q97P5SmRj4EI8J/g53MY72rcGGzhfHfxtp4EQpB4xiJf5ZsJCSibb9akVw=
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(36860700016)(82310400026)(1800799024)(376014)(18002099003)(22082099003)(6133799003)(11063799006)(56012099006);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: bDPDXZ3NjmeemnRVfGu+5PUG2Odk5wOicb/rI7jG2m/05C2e+/sTNGaRb9WbRunFMc77wpleSjK2uYsqXGo83Cj3NMa1Pr1So/wUJGtGCjCjO87eG/t4U4H2BBu9may9l1e8IHHWuNSl+5oV+kTIdssQLE2eKOR6h1tWUhuJpmC59sVrcNO+yh/S4MftDKTswKI9707neq8XPiga5iVGuW2RVocswL1Vlg3INFFhI+Gn+VLQKLtn1sFhFp4TANmHWhl/pHNF9aDiQdhAM7mDw8oRkLOGUbHPYW9HY4ATU58BTtQ9KfAGUOOHQSqWaIT+/lYJGacr31dHl7gOCDdbea8nJnk50D1+p1vokgPO/yS3gfTWiTzIn29zWKQJ1J3+0DEBnkjID7ZO/uaAcdZXlExLqx0JqOtT0vV/Mu9y1NJccYVsU3L6i/SDAUcRAMRc
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Jun 2026 11:50:06.7311 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8d19e731-8864-4196-dac6-08debfd3ed0c
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF0001AB53.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR12MB4051
-Received-SPF: permerror client-ip=2a01:111:f403:c112::7;
- envelope-from=skolothumtho@nvidia.com;
- helo=CY3PR05CU001.outbound.protection.outlook.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 02/10] hw/i2c/aspeed_i2c: Increase AST2700 buffer mode
+ size and adjust offset
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20260529064243.2064188-1-jamin_lin@aspeedtech.com>
+ <20260529064243.2064188-3-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260529064243.2064188-3-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 9222527615399144459
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTFmxk+WDcHuHdIYpLDPqQDnMCXTuNYiQOn1YtF3+6lwZPILaesj4ZWt9lFT0eo5ydSCIB7jn8UFf+HROZKZbelGH9PSAVGoIFAqCd9zIRcynnQH3WfN7pyYUtZC1gF+ao8aMMC01Pjzxo65So2+FV0t/VojHoZ6u1AV6cmys3NaEHS4+njEDVfOcniUvP8BNic4ZpiwqQ7nDbu65DjuFCyJHNOTgvQOf0Q7zlokolZVsFhxskK6pBCTrtsc4QfSdI000nkz8tlhcj+947W8JLFNPC7k49xOs/xHzlWrlemyqp1bAq853klYu2SznZ9eylq0OydzDGN39ycmxodZshC6AIsrE802qh4Uo+x18u9KTk6ZeTTKB7fF/54lGwngk021HL3YlWryf4tUezu5QjZpyXp544fXfWojSh7tdbDVSXiABbZHwmJgTj3RjgVCXZF9Nq6omTdj9I2nl1tvFC8szfacCbb8bLZABAnO4IPHcztYol8gusX3w0Yudkl2FyAtDVP0zH6J3yJG8rddCQr0YQMLJdo7K0p7wUGNPVD+PdQJTvC6MrCAuGne28BD9mXgtJfMyyk6IIfyyNCB4AFq0am88cHyF18cvXLo0ynE69coY/11/+qp8VUBZYvJysjKU9mscACW0MvWhR82KTpAS78cwP/YO9Ir3nDCQqqG5Q
+DKIM-Signature: a=rsa-sha256; bh=OAPm/uLYEj8c8Ge3MBSXNhYlpLDa46JIPh+wI0YSTsU=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1780318208; v=1;
+ b=L9/G3jsTqquWQJmJNWqDBa6xoti7UIanr9kKZMw6Jboz+swI9ojW9YQpgYH5Z7E8QFcBTOlO
+ PSTKNIBL0pTHNXY/W/d9ggykNup3EkiMOy9dsZH+Bu9AAWPTHe+53oPq9tmFGKfp3SdwJ+qlCcs
+ a4jTbxwbLvtA7/KqqkY8y+/jm2+/Qf1r8ROiuWws1ri8z5Z9qsG869Ce0KEr0dpVPkzGKFgmJyR
+ b4sEPjoZ+mRQx6B7GDL6Mz0QCA9JKb25eN/BTqElFsUtkLRbOkczS/gbKvEdbL/gVjGcEfPFob4
+ /6DrC2bYFZ7xKjCr9zub87nS8BSeDiZYmZmJAwHwyi0JA==
+Received-SPF: pass client-ip=46.105.34.251; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo528.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,118 +136,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce a SMMUv3AccelCmdqvType enum and a helper to query the
-CMDQV implementation type associated with an accelerated SMMUv3
-instance.
+On 5/29/26 08:42, Jamin Lin wrote:
+> Update the AST2700 I2C buffer mode configuration to match
+> the latest firmware definition:
 
-A subsequent patch will use this helper when generating the
-Tegra241 CMDQV DSDT.
+Firmware or Hardware ?
 
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
----
- hw/arm/smmuv3-accel.h       | 10 ++++++++++
- hw/arm/smmuv3-accel-stubs.c |  5 +++++
- hw/arm/smmuv3-accel.c       | 12 ++++++++++++
- hw/arm/tegra241-cmdqv.c     |  6 ++++++
- 4 files changed, 33 insertions(+)
+> - Increase buffer mode pool size from 0x20 to 0x40
+> - Adjust buffer mode base offset to 0x1c0
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   include/hw/i2c/aspeed_i2c.h |  2 +-
+>   hw/i2c/aspeed_i2c.c         | 38 ++++++++++++++++++-------------------
+>   2 files changed, 20 insertions(+), 20 deletions(-)
+> 
+> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+> index 1fc229f699..b2e4d2fb9d 100644
+> --- a/include/hw/i2c/aspeed_i2c.h
+> +++ b/include/hw/i2c/aspeed_i2c.h
+> @@ -35,7 +35,7 @@ OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
+>   
+>   #define ASPEED_I2C_NR_BUSSES 16
+>   #define ASPEED_I2C_SHARE_POOL_SIZE 0x800
+> -#define ASPEED_I2C_BUS_POOL_SIZE 0x20
+> +#define ASPEED_I2C_BUS_POOL_SIZE 0x40
 
-diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
-index 8d0f636338..5fc85fb89d 100644
---- a/hw/arm/smmuv3-accel.h
-+++ b/hw/arm/smmuv3-accel.h
-@@ -16,6 +16,11 @@
- #include <linux/iommufd.h>
- #endif
- 
-+typedef enum SMMUv3AccelCmdqvType {
-+    SMMUV3_CMDQV_NONE = 0,
-+    SMMUV3_CMDQV_TEGRA241,
-+} SMMUv3AccelCmdqvType;
-+
- /*
-  * CMDQ-Virtualization (CMDQV) hardware support, extends the SMMUv3 to
-  * support multiple VCMDQs with virtualization capabilities.
-@@ -42,6 +47,10 @@ typedef struct SMMUv3AccelCmdqvOps {
-      * If NULL, the viommu_id is freed directly via iommufd_backend_free_id().
-      */
-     void (*free_viommu)(SMMUv3State *s);
-+    /**
-+     * @get_type: Optional callback. Return the CMDQV implementation type.
-+     */
-+    SMMUv3AccelCmdqvType (*get_type)(void);
-     /**
-      * @reset: Optional callback. Reset CMDQV state.
-      */
-@@ -90,5 +99,6 @@ bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp);
- bool smmuv3_accel_event_read_validate(IOMMUFDVeventq *veventq, uint32_t type,
-                                       void *buf, size_t size, Error **errp);
- void smmuv3_accel_reset(SMMUv3State *s);
-+SMMUv3AccelCmdqvType smmuv3_accel_cmdqv_type(Object *obj);
- 
- #endif /* HW_ARM_SMMUV3_ACCEL_H */
-diff --git a/hw/arm/smmuv3-accel-stubs.c b/hw/arm/smmuv3-accel-stubs.c
-index 9e6c44a282..147ae06163 100644
---- a/hw/arm/smmuv3-accel-stubs.c
-+++ b/hw/arm/smmuv3-accel-stubs.c
-@@ -57,3 +57,8 @@ bool smmuv3_accel_event_read_validate(IOMMUFDVeventq *veventq, uint32_t type,
- void smmuv3_accel_reset(SMMUv3State *s)
- {
- }
-+
-+SMMUv3AccelCmdqvType smmuv3_accel_cmdqv_type(Object *obj)
-+{
-+    return SMMUV3_CMDQV_NONE;
-+}
-diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-index c1c2a67c97..9c3bd4413d 100644
---- a/hw/arm/smmuv3-accel.c
-+++ b/hw/arm/smmuv3-accel.c
-@@ -1060,6 +1060,18 @@ static void smmuv3_accel_as_init(SMMUv3State *s)
-     address_space_init(shared_as_sysmem, &root, "smmuv3-accel-as-sysmem");
- }
- 
-+SMMUv3AccelCmdqvType smmuv3_accel_cmdqv_type(Object *obj)
-+{
-+    SMMUv3State *s = ARM_SMMUV3(obj);
-+    SMMUv3AccelState *accel = s->s_accel;
-+
-+    if (!accel || !accel->cmdqv_ops || !accel->cmdqv_ops->get_type) {
-+        return SMMUV3_CMDQV_NONE;
-+    }
-+
-+    return accel->cmdqv_ops->get_type();
-+}
-+
- static void smmuv3_accel_machine_done(Notifier *notifier, void *data)
- {
-     SMMUv3State *s = container_of(notifier, SMMUv3State, machine_done);
-diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
-index 661c46e3d9..4dba1783fa 100644
---- a/hw/arm/tegra241-cmdqv.c
-+++ b/hw/arm/tegra241-cmdqv.c
-@@ -974,6 +974,11 @@ static bool tegra241_cmdqv_init(SMMUv3State *s, Error **errp)
-     return true;
- }
- 
-+static SMMUv3AccelCmdqvType tegra241_cmdqv_get_type(void)
-+{
-+    return SMMUV3_CMDQV_TEGRA241;
-+}
-+
- static bool tegra241_cmdqv_probe(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
-                                  Error **errp)
- {
-@@ -1014,6 +1019,7 @@ static const SMMUv3AccelCmdqvOps tegra241_cmdqv_ops = {
-     .init = tegra241_cmdqv_init,
-     .alloc_viommu = tegra241_cmdqv_alloc_viommu,
-     .free_viommu = tegra241_cmdqv_free_viommu,
-+    .get_type = tegra241_cmdqv_get_type,
-     .reset = tegra241_cmdqv_reset,
- };
- 
--- 
-2.43.0
+This change has an impact on the vmstate.
+
+Thanks,
+
+C.
+
+
+>   #define ASPEED_I2C_NEW_NUM_REG (0xa0 >> 2)
+>   
+>   #define A_I2CD_M_STOP_CMD       BIT(5)
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index 9c0387a394..5be6fefc4d 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -1250,37 +1250,37 @@ static void aspeed_i2c_instance_init(Object *obj)
+>    * Address Definitions (AST2700)
+>    *   0x000 ... 0x0FF: Global Register
+>    *   0x100 ... 0x19F: Device 0
+> - *   0x1A0 ... 0x1BF: Device 0 buffer
+> + *   0x1C0 ... 0x1FF: Device 0 buffer
+>    *   0x200 ... 0x29F: Device 1
+> - *   0x2A0 ... 0x2BF: Device 1 buffer
+> + *   0x2C0 ... 0x2FF: Device 1 buffer
+>    *   0x300 ... 0x39F: Device 2
+> - *   0x3A0 ... 0x3BF: Device 2 buffer
+> + *   0x3C0 ... 0x3FF: Device 2 buffer
+>    *   0x400 ... 0x49F: Device 3
+> - *   0x4A0 ... 0x4BF: Device 3 buffer
+> + *   0x4C0 ... 0x4FF: Device 3 buffer
+>    *   0x500 ... 0x59F: Device 4
+> - *   0x5A0 ... 0x5BF: Device 4 buffer
+> + *   0x5C0 ... 0x5FF: Device 4 buffer
+>    *   0x600 ... 0x69F: Device 5
+> - *   0x6A0 ... 0x6BF: Device 5 buffer
+> + *   0x6C0 ... 0x6FF: Device 5 buffer
+>    *   0x700 ... 0x79F: Device 6
+> - *   0x7A0 ... 0x7BF: Device 6 buffer
+> + *   0x7C0 ... 0x7FF: Device 6 buffer
+>    *   0x800 ... 0x89F: Device 7
+> - *   0x8A0 ... 0x8BF: Device 7 buffer
+> + *   0x8C0 ... 0x8FF: Device 7 buffer
+>    *   0x900 ... 0x99F: Device 8
+> - *   0x9A0 ... 0x9BF: Device 8 buffer
+> + *   0x9C0 ... 0x9FF: Device 8 buffer
+>    *   0xA00 ... 0xA9F: Device 9
+> - *   0xAA0 ... 0xABF: Device 9 buffer
+> + *   0xAC0 ... 0xAFF: Device 9 buffer
+>    *   0xB00 ... 0xB9F: Device 10
+> - *   0xBA0 ... 0xBBF: Device 10 buffer
+> + *   0xBC0 ... 0xBFF: Device 10 buffer
+>    *   0xC00 ... 0xC9F: Device 11
+> - *   0xCA0 ... 0xCBF: Device 11 buffer
+> + *   0xCC0 ... 0xCFF: Device 11 buffer
+>    *   0xD00 ... 0xD9F: Device 12
+> - *   0xDA0 ... 0xDBF: Device 12 buffer
+> + *   0xDC0 ... 0xDFF: Device 12 buffer
+>    *   0xE00 ... 0xE9F: Device 13
+> - *   0xEA0 ... 0xEBF: Device 13 buffer
+> + *   0xEC0 ... 0xEFF: Device 13 buffer
+>    *   0xF00 ... 0xF9F: Device 14
+> - *   0xFA0 ... 0xFBF: Device 14 buffer
+> + *   0xFC0 ... 0xFFF: Device 14 buffer
+>    *   0x1000 ... 0x109F: Device 15
+> - *   0x10A0 ... 0x10BF: Device 15 buffer
+> + *   0x10C0 ... 0x10BF: Device 15 buffer
+>    */
+>   static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+>   {
+> @@ -1714,9 +1714,9 @@ static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
+>       aic->reg_gap_size = 0x60;
+>       aic->gap = -1; /* no gap */
+>       aic->bus_get_irq = aspeed_2600_i2c_bus_get_irq;
+> -    aic->pool_size = 0x20;
+> -    aic->pool_gap_size = 0xe0;
+> -    aic->pool_base = 0x1a0;
+> +    aic->pool_size = 0x40;
+> +    aic->pool_gap_size = 0xc0;
+> +    aic->pool_base = 0x1c0;
+>       aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
+>       aic->has_dma = true;
+>       aic->mem_size = 0x2000;
 
 

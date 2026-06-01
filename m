@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 034DDCD6E55
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 17:21:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72303CD6E55
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 17:23:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wU6KF-0005u3-TY; Mon, 01 Jun 2026 13:21:20 -0400
+	id 1wU6ML-0006cE-DO; Mon, 01 Jun 2026 13:23:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wU6KE-0005ob-7v
- for qemu-arm@nongnu.org; Mon, 01 Jun 2026 13:21:18 -0400
-Received: from smtpout5.mo539.mail-out.ovh.net ([51.210.91.44])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wU6MJ-0006by-W7; Mon, 01 Jun 2026 13:23:28 -0400
+Received: from smtpout1.mo528.mail-out.ovh.net ([46.105.34.251])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wU6KC-0003JK-Fr
- for qemu-arm@nongnu.org; Mon, 01 Jun 2026 13:21:17 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo539.mail-out.ovh.net (Postfix) with ESMTPS id 4gTgjN5dmLz4bqY;
- Mon,  1 Jun 2026 17:21:12 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alistair@alistair23.me>; Mon,  1 Jun 2026 17:21:12 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.101.74])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gTgjN4VY1z1yhg; Mon,  1 Jun 2026 17:21:12 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wU6MI-0003ni-Fq; Mon, 01 Jun 2026 13:23:27 -0400
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net [79.137.60.36])
+ by mo528.mail-out.ovh.net (Postfix) with ESMTPS id 4gTglv3w9gz62VY;
+ Mon,  1 Jun 2026 17:23:23 +0000 (UTC)
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net. [127.0.0.1])
+ by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <alistair@alistair23.me>; Mon,  1 Jun 2026 17:23:23 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.228])
+ by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gTglv3HP7z20lw; Mon,  1 Jun 2026 17:23:23 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.7])
  (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 87A641B400A7;
- Mon,  1 Jun 2026 17:21:10 +0000 (UTC)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id EB0B5203041; 
+ Mon,  1 Jun 2026 17:23:21 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R001414dee38-bee1-4712-9440-2ac73aedc57f,
+ (GARM-104R005cf53a59d-66ad-466b-86df-d03429aeae4d,
  E35A50153BDE4127F94F88E3CE699B0651996EDF) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <89fdb3d4-edf4-43f6-a489-076863325d0c@kaod.org>
-Date: Mon, 1 Jun 2026 19:21:09 +0200
+Message-ID: <845631ed-6a52-4068-a002-92c3f70dc4df@kaod.org>
+Date: Mon, 1 Jun 2026 19:23:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 17/21] hw/misc/aspeed_scu: Add AST2700 SCUIO RNG
- control and data registers
+Subject: Re: [PATCH v4 19/21] hw/arm/aspeed_ast27x0-fc: Fix hardware strap
+ settings
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -55,7 +55,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20260417032837.2664122-1-jamin_lin@aspeedtech.com>
- <20260417032837.2664122-18-jamin_lin@aspeedtech.com>
+ <20260417032837.2664122-20-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -100,30 +100,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260417032837.2664122-18-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260417032837.2664122-20-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 13801281058122607755
+x-ovh-tracer-id: 13838154283589872779
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTG11xkYjVc7pQ60C4X1ARPNSR7czKXT9p5cn/Wl47NcnaLYjmQ0sJleCnDEkzILpt+51H+z8nEQyYie+WIQDHUUaH8vO3ZyjUVJbH9NPmqon+b+IEwi8U7XM8MpTaUlf25NrcB28mcLjlnzsdFregVxhhcaFjwkdSgWIsn9hOrXKFe//sMxr5srWqMa4MfX23z/U6zN7756WTAp6MyFeoHx4MB+t6+luLf8D/q0xPS5BTkoK+JwEpidoBAk2+qEuE/+GbgD8dreWx3jHPNf0/40yxCbePNcMH7pNwCRYIUyq1/QHsJht01NlYO8RC0DyEJcdflqGhdjcvOgP4+FYuTkqzutxy+er4s/uHi9oP2nC4tADZcmb95zhwUDIh/kiUol7FlShm4eBfjd5sijnK1kt8+gLAndgDWZ0iWD4QV6HNiy22OrOrCiaEY3JGBsNoldKX+HT2sxUwvR6UktsVRqaDOf0idQTgShwyjfC91I+rkxrHBh2zqTrStjbPP9+NP2yto5bSpVsIxPPnsRQAe7GAWJjlNSTU0Gq20Zay2UGMp/NFMKc0sOGc5TY5BAXG/bb2gO7ivd8Custc8c8EMYZaEvIlWS7E86CYBCX7vRLxJHu4w717LIYL7W7k/DPMoAD4Q2KSJCdgL2Z9hdwM9JyXH+A9Y6oOtzqll6g7iCDg
-DKIM-Signature: a=rsa-sha256; bh=12jL3lkKFZ2gMDX5Y49x2WIvODFed+Iz7zpVbsxVU/o=; 
+X-VR-SPAMCAUSE: dmFkZTFgt7mQBHukMnZgpKCq+gor8yy2HmY7SeYCZVCoHzSEr927rzGxC710iC5PAvR8yuAJ4mz4bXMfshlmFUK5RhEiSA3olVC5awS8Ciz7MmoVMn3Biww8w58XYoZyfKLYvRPlODPvX35uyonN4YHxFYZMgLzyWwG+ZOgGeArfs5Xs1ERzx74Tz1HO7rx10bJNid2vclot8eD1NrUu1CmJRXyqoRjxyIqnwZtdDqYuhLoJkSeG0XTXC09wStjYSb7Qq3RO1Y/YbTN3nw7eLvV2NXVTYCw/puvOMXueR3Xsc+z4F2HmmbdN7dC47r2IFmX86Qrfj1m0vsaQEXv7+FtciJHdDjJq9jw9fG1hXv93ekgQ2ZrGOHOgi4TUSoXJuXVLDH9HUR2p4o+O40vlWULdeK5h0KzpX8xeGZXEKwU41axIqA4NhIa2Xs74jKQ9KGu4nnZNjJ6tmdZLyHH3oVZH3zC/2VyUd+xZUuKiTNryXdOcJgFtSVR66KXA9bdvOf+BYFLSt9aWbW5iOlYYl0MRANU9wDcS8xRXeys1VrBf9xmoMZtiAKoJARDvlrKGB2j3DvJIq2M3i+0QI9NPTHZRRjHNdo4XNvJO6aHzRSzxK9xfMW0cHX5cQBE/weLkrpHSUvBqm0MFraHcgEtv4yg+tsBBnC0nKKeQMPsPpb8mIhawDQ
+DKIM-Signature: a=rsa-sha256; bh=AHwYl4e5/ZTewa/AIou3tUZQ4w1oNLGTJ+mO+VCUt+Q=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1780334473; v=1;
- b=lm58+xTyrLq6ogIbahWXCGBDUU8LzD/z85kUBXqlfCdExE1auGjDrNGBevzkYkOyzPQcHIzc
- OKx4fpsRf3QzT2FUX1FX4qRbur195hX4PXXbSOsif6LEJu/Z9DTGN8wdKsX4/GcfgXRSzki211G
- S3ccHIMbBbwvAR0H1Kmz9maAbXP8rwGX55J/Ft365LuhmsROh6H+t65DNEMzh1yr8rQvDj7qewO
- ByYfAJq1gliDlvAZpX+x9vngFG/bksIYadw4Syc/sKuxhS5mkJYFBYDNlVikv0nndQLxZ66NP5F
- pYYzo7OrC6QEzKGMuZTyYXTiABpZTVZ8fUE0QCjoNZyVg==
-Received-SPF: pass client-ip=51.210.91.44; envelope-from=clg@kaod.org;
- helo=smtpout5.mo539.mail-out.ovh.net
+ t=1780334603; v=1;
+ b=BKkxzCYQDwSbF6uDG0h5XtqZFFHavKH8wp3T7jVizkh9kqPN0N3ALx5y9mBg3HOKrHWpbeQC
+ DxXF/KOSvpjEB6RRK3jIY2cQ4yRL3L/OZUgMH0I7GYzLxQv2ufPKzLhWOBZiAnsUkjRCRZPkjf2
+ bU6TIcJQcvYbsUPGPlp32rIK3RAFB1kLkpry4R3PysVlSSwoqZ/pIo6iAWWGYa9/xOQtcOGOVn8
+ 1magbmz9pMDTfsc9Tsgb+3CMFvCuOJzDmkbebH5Q7hTb8MFFTfzajiSoeySFnduf9Hx/05lCA6q
+ 8nLtTJs5sPKwP9Sw9i536jOEcRn4pIzUMfshLdu9mLeLQ==
+Received-SPF: pass client-ip=46.105.34.251; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo528.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,81 +140,39 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 4/17/26 05:29, Jamin Lin wrote:
-> Implement basic behavior for RNG_CTRL and RNG_DATA:
+> The hardware strap settings in the AST2700 FC machine model were incorrect.
 > 
-> - RNG_CTRL allows guest to enable/disable the RNG via the DIS bit.
->    Only bits [0:3] and bit 5 are writable; other bits are masked.
-> - The VLD bit (bit 31) is updated by the model to reflect the RNG
->    enable state, and is not writable by the guest.
-> - When RNG is enabled, reads from RNG_DATA return a newly generated
->    random value.
-> - When RNG is disabled, RNG_DATA return 0.
+> Update HW_STRAP1 and HW_STRAP2 to match the values observed from the
+> real EVB dump. These values are also consistent with the current
+> aspeed_ast27x0_evb.c machine setup.
 > 
-> This provides a minimal functional model of the RNG sufficient for
-> software that expects readable random data without modeling full
-> hardware behavior.
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   hw/arm/aspeed_ast27x0-fc.c | 6 ++++--
+>   1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
+> index d1ff6fbd4d..69f114e68d 100644
+> --- a/hw/arm/aspeed_ast27x0-fc.c
+> +++ b/hw/arm/aspeed_ast27x0-fc.c
+> @@ -50,8 +50,10 @@ struct Ast2700FCState {
+>   
+>   #define AST2700FC_BMC_RAM_SIZE (2 * GiB)
+>   
+> -#define AST2700FC_HW_STRAP1 0x000000C0
+> -#define AST2700FC_HW_STRAP2 0x00000003
+> +/* SCU HW Strap1 */
+> +#define AST2700FC_HW_STRAP1 0x00000800
+> +/* SCUIO HW Strap1 */
+> +#define AST2700FC_HW_STRAP2 0x00000700
+>   #define AST2700FC_FMC_MODEL "w25q01jvq"
+>   #define AST2700FC_SPI_MODEL "w25q512jv"
+>   
 
-please send first.
+Please send first.
 
 Thanks,
 
 C.
-
-
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/misc/aspeed_scu.c | 25 +++++++++++++++++++++++++
->   1 file changed, 25 insertions(+)
-> 
-> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-> index 362733ba11..f9ae65d83c 100644
-> --- a/hw/misc/aspeed_scu.c
-> +++ b/hw/misc/aspeed_scu.c
-> @@ -187,6 +187,11 @@
->   #define AST2700_SCU_CPU_SCRATCH_1   TO_REG(0x784)
->   #define AST2700_SCU_VGA_SCRATCH_0   TO_REG(0x900)
->   
-> +#define AST2700_SCUIO_RNG_CTRL          TO_REG(0xF0)
-> +#define AST2700_SCUIO_RNG_CTRL_MASK     0x2F
-> +#define AST2700_SCUIO_RNG_CTRL_DIS      BIT(0)
-> +#define AST2700_SCUIO_RNG_CTRL_VLD      BIT(31)
-> +#define AST2700_SCUIO_RNG_DATA          TO_REG(0xF4)
->   #define AST2700_SCUIO_CLK_STOP_CTL_1    TO_REG(0x240)
->   #define AST2700_SCUIO_CLK_STOP_CLR_1    TO_REG(0x244)
->   #define AST2700_SCUIO_CLK_STOP_CTL_2    TO_REG(0x260)
-> @@ -1257,6 +1262,14 @@ static uint64_t aspeed_ast2700_scuio_read(void *opaque, hwaddr offset,
->           return 0;
->       }
->   
-> +    switch (reg) {
-> +    case AST2700_SCUIO_RNG_DATA:
-> +        if (!(s->regs[AST2700_SCUIO_RNG_CTRL] & AST2700_SCUIO_RNG_CTRL_DIS)) {
-> +            s->regs[AST2700_SCUIO_RNG_DATA] = aspeed_scu_get_random();
-> +        }
-> +        break;
-> +    }
-> +
->       trace_aspeed_ast2700_scuio_read(offset, size, s->regs[reg]);
->       return s->regs[reg];
->   }
-> @@ -1280,6 +1293,18 @@ static void aspeed_ast2700_scuio_write(void *opaque, hwaddr offset,
->       trace_aspeed_ast2700_scuio_write(offset, size, data);
->   
->       switch (reg) {
-> +    case AST2700_SCUIO_RNG_CTRL:
-> +        data &= AST2700_SCUIO_RNG_CTRL_MASK;
-> +        if (data & AST2700_SCUIO_RNG_CTRL_DIS) {
-> +            data &= ~AST2700_SCUIO_RNG_CTRL_VLD;
-> +            s->regs[AST2700_SCUIO_RNG_DATA] = 0;
-> +        } else {
-> +            s->regs[AST2700_SCUIO_RNG_DATA] = aspeed_scu_get_random();
-> +            data |= AST2700_SCUIO_RNG_CTRL_VLD;
-> +        }
-> +        s->regs[reg] = data;
-> +        updated = true;
-> +        break;
->       case AST2700_SCUIO_CLK_STOP_CTL_1:
->       case AST2700_SCUIO_CLK_STOP_CTL_2:
->           s->regs[reg] |= data;
 
 

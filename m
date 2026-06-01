@@ -4,44 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4299CD5BD1
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 12:53:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 149CFCD6E56
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 12:53:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wU28L-0001KD-BV; Mon, 01 Jun 2026 08:52:45 -0400
+	id 1wU28U-0001TV-Lt; Mon, 01 Jun 2026 08:52:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1wU28F-0001Be-WC; Mon, 01 Jun 2026 08:52:41 -0400
-Received: from smtpout1.mo2.mail-out.ovh.net ([79.137.123.219])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wU28Q-0001Qp-L8
+ for qemu-arm@nongnu.org; Mon, 01 Jun 2026 08:52:51 -0400
+Received: from smtpout9.mo536.mail-out.ovh.net ([51.210.91.18])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1wU28D-0007cg-FX; Mon, 01 Jun 2026 08:52:39 -0400
-Received: from director3.derp.mail-out.ovh.net
- (director3.derp.mail-out.ovh.net [152.228.215.222])
- by mo2.mail-out.ovh.net (Postfix) with ESMTPS id 4gTYlN3Sx2z4CfM;
- Mon,  1 Jun 2026 12:52:31 +0000 (UTC)
-Received: from director3.derp.mail-out.ovh.net
- (director3.derp.mail-out.ovh.net. [127.0.0.1])
- by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Mon,  1 Jun 2026 12:52:31 +0000 (UTC)
-Received: from mta10.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.168.134])
- by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4gTYlM4jMRz5vM9;
- Mon,  1 Jun 2026 12:52:31 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.3])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wU28O-0007kl-MV
+ for qemu-arm@nongnu.org; Mon, 01 Jun 2026 08:52:50 -0400
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net [51.68.94.138])
+ by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4gTYlc4cVrz86XF;
+ Mon,  1 Jun 2026 12:52:44 +0000 (UTC)
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net. [127.0.0.1])
+ by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Mon,  1 Jun 2026 12:52:43 +0000 (UTC)
+Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.0.156])
+ by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gTYlb5L78z7thY; Mon,  1 Jun 2026 12:52:43 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.0])
  (Authenticated sender: clg@kaod.org)
- by mta10.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- 39AB91923050; Mon,  1 Jun 2026 12:52:30 +0000 (UTC)
+ by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ 2851E2403043; Mon,  1 Jun 2026 12:52:42 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-108S00233f0b467-d3a5-478e-a452-6281797a8e93,
+ (GARM-108S00272ca8836-72cd-459a-a9f8-08342b89fb61,
  E35A50153BDE4127F94F88E3CE699B0651996EDF) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <785dc8f5-67b1-4e62-b3e5-e3b54c961005@kaod.org>
-Date: Mon, 1 Jun 2026 14:52:29 +0200
+Message-ID: <dd748e25-5bff-4b59-a93b-a7f65d0e1b5f@kaod.org>
+Date: Mon, 1 Jun 2026 14:52:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 04/10] hw/arm/aspeed_ast1040: Introduce PECI support
+Subject: Re: [PATCH v1 05/10] hw/arm/aspeed_ast1040: Reuse AST2700 GPIO
+ controller model
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -51,7 +52,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20260529064243.2064188-1-jamin_lin@aspeedtech.com>
- <20260529064243.2064188-5-jamin_lin@aspeedtech.com>
+ <20260529064243.2064188-6-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -96,30 +97,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260529064243.2064188-5-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260529064243.2064188-6-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 9263622960828754955
+x-ovh-tracer-id: 9267000658979433483
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTExWjqg+pYeyCCwiJ8Owucakq1Pobk3bLs1PkGxhZVYALkPnzcoRFCUkIY0VrxjwsFNtH1lmPscdKRESqPvPbpmabnKdRVJDUvfUWcpTGrszPsTXlDHC2dO6yFIq77r6hPal+dOIGEi988Epd0NOzAmF/5KIuk3YSVO0wb3MsT81DTiBU6F9W/RHDzxKv1Tk/mdxU3vXZ7kr1T3svFHNAZHDGRE8dkSlnddNwUcIFbdK+9U54ivmDwSkSO0tsVtf/CdZ7ZxVOkBXSxKSJeQLJZaPxaemwGHuOsEl34u0vnSrkF/TUp9WhDaLIJ8tWQW2JUrVvtIpWaJjkSw3s4xOar5HSto1yvlanyRYi2JK1W4+pne6xTLfX8idkr4Xdylsk9OL4davHF480knNSnxxnIGvEn1pu3cMKHUFkb/mj+suJJhWbiIfzpyfmO6yBDCAFYXQBgq9MZMFRULWcKUHeG4wFzQyQ8usjC2OJScxxNCCgpzWeT6gGHf8koEym0Ytil5ksDlu/U52WUrlGGwWJ+0Ox5pTEGfzabIldMFZC1yLtWFtePNWQGnfK2PI2aMrKVfrP+RUNRjJPUw4i/GXsPWMZoS/EG6wYUVGfIDrBrZnrw+mz4e91u6qUBghc/xF0772DxlW5Vs1ugCBi1L1L/8sR6IOstvcamJh9Z3nrPTMw
-DKIM-Signature: a=rsa-sha256; bh=LKmQxycYhZOYigFdPdkS8qPhGhrpm7l1QKQ0p4UNp84=; 
+X-VR-SPAMCAUSE: dmFkZTGAN+b8wkfvbTGMBPi8a2WQOObvUKsUDnqgUH20JqZ10lepCv3bXB3lhBGLgm3zU4jsFEpuSpDOFvvdp80XasyOjFFKATIBowXv/tqUnfbWDfWgNHTdKyYlObJzTWDo/j5rLu3zhDdLsMSoXVZDUR+TmiD1l6kw15jlWcfiwhjlOfWUV4AZiMNid6Q/mM3cF9odfYttUZy8AyYQeexP0vVJ5CIN0/gRA2LG5wSJcM3NgsDOY0IgFCl9ZjBoAMJXbCJriqVDykKSWYlTuIDLvjGEGfdnXIHjrl4VTdWE+n3ZTz474RIzkokKhZihQ2MHCDAP3StUOXEOIPDLgUoZcGC5O7ImjMGYK9JvbdL86UOfBZm5TqlNHQVm1gOQewlg/gOMbOgvVE2L5xDYdcXzh1MxpaZAVOkVrpLyjFv9aSq1yAxbIQsT0S3U+7IBrHswoQvuxcU6W8EmNA37otwIiTUJ+phE3wMeDv9ibfXqM2R9LJ6nOgwkAzQc23q0ysWeRoQT43i+n6oAH+7l4kaRF9BHHHVzx4/5Tl0hZ+jpgMqK5Bj/ej++ya02bFGMwT847Jk/dxFUowox1n/nqvkzIH/0i7Usrbx/oCaj4SJYF7KdS7x5oK7ssVEIAsjcQhIKj6ORqcnoyrWRb+znVDw6lZW98MJdLatMS30pu4jbKHnLmw
+DKIM-Signature: a=rsa-sha256; bh=ea/YgDw/3atBjprfTBFm8cPqnjCV585n0BCqTh8cRiI=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1780318354; v=1;
- b=QhANSmTuexTemQe/f0R3Lxwtq57iWrrNraEJr4hgW9CRM8VMwCe1Sx0MnTG//GSWW4MACAub
- AdCYhOCIsH1U/6oXw3kEnpkIz9Yk0VIRPOXxx8PMO66ypDfVGVsaKtxTuC3ow9k46pHefcMPJ3z
- xblnMyj4sMPkBFlv+FSGSrZYelfYYhZQrYx3eRcJ02ZophB7oLtAyWLQf7mElVGQF82IOz+/aH2
- mUZBKinfNCs73hv15wn6S0k8PtsLH0wwuaPNU9BeUBlYyN7Bz4PhGZLuMqCaqQGwpTanNN6LOt6
- 0R1fKVCaIS/ST8K4X+MOV3IkTeaoSboYDVyiq6LAPrjrQ==
-Received-SPF: pass client-ip=79.137.123.219; envelope-from=clg@kaod.org;
- helo=smtpout1.mo2.mail-out.ovh.net
+ t=1780318366; v=1;
+ b=O+uegVwLGbBfT4HvF7891e4pXlt06uWQvLpHiUpFSBhCGABuNj8DrtnC4zShqJT/Am+ITo59
+ dj30vVMMQSZWs8G/vENfcOxy1+pwoIij4vvaLcpPARwFO+9cbaN4oxhSQJfJXZXmKJJY8c7YObK
+ w1Id3gqTfhbpfIZhBOaVjDVd3fmB2A0kdCrreYVuJTm2eL5YA0i/NkLAHTRNA7hC6sqg2R4xwBM
+ v5+W7TI1WbB6wN/m6XAzirNPaVOR0/FvJJ08xNTi1yS1qq7pp5k1q0pW4R/SN/wRLZcUGJR/uxm
+ YKCCNv0fBNB8b85wSiY3EQKTWmtrszgwSi1NNp7uXqa8g==
+Received-SPF: pass client-ip=51.210.91.18; envelope-from=clg@kaod.org;
+ helo=smtpout9.mo536.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,60 +137,44 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 5/29/26 08:42, Jamin Lin wrote:
-> Introduce PECI support for the AST1040 SoC model.
+> The AST1040 GPIO controller is compatible with the AST2700 GPIO
+> controller implementation.
 > 
-> This change adds the PECI MMIO region and IRQ mapping,
-> initializes the PECI device instance, and realizes the
-> controller during SoC initialization.
+> Reuse the existing "aspeed.gpio-ast2700" device model for AST1040
+> instead of introducing a separate implementation.
 > 
-> The PECI controller is mapped at 0x74C1F000 and connected
-> to IRQ 164.
+> Add the GPIO device initialization, MMIO mapping, and IRQ wiring
+> for the AST1040 SoC model.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/arm/aspeed_ast1040.c | 12 ++++++++++++
->   1 file changed, 12 insertions(+)
+>   hw/arm/aspeed_ast1040.c | 10 ++++++++++
+>   1 file changed, 10 insertions(+)
 > 
 > diff --git a/hw/arm/aspeed_ast1040.c b/hw/arm/aspeed_ast1040.c
-> index b736e690e5..9ae0a0e7a4 100644
+> index 9ae0a0e7a4..c6b22186ce 100644
 > --- a/hw/arm/aspeed_ast1040.c
 > +++ b/hw/arm/aspeed_ast1040.c
-> @@ -31,6 +31,7 @@ static const hwaddr aspeed_soc_ast1040_memmap[] = {
->       [ASPEED_DEV_SGPIOM0]   = 0x74C0C000,
->       [ASPEED_DEV_SGPIOM1]   = 0x74C0D000,
->       [ASPEED_DEV_I2C]       = 0x74C0F000,
-> +    [ASPEED_DEV_PECI]      = 0x74C1F000,
->       [ASPEED_DEV_I3C]       = 0x74C20000,
->       [ASPEED_DEV_UART0]     = 0x74C33000,
->       [ASPEED_DEV_UART1]     = 0x74C33100,
-> @@ -76,6 +77,7 @@ static const int aspeed_soc_ast1040_irqmap[] = {
->       [ASPEED_DEV_UART11]    = 146,
->       [ASPEED_DEV_UART12]    = 147,
->       [ASPEED_DEV_JTAG0]     = 162,
-> +    [ASPEED_DEV_PECI]      = 164,
->   };
->   
->   static qemu_irq aspeed_soc_ast1040_get_irq(AspeedSoCState *s, int dev)
-> @@ -108,6 +110,7 @@ static void aspeed_soc_ast1040_init(Object *obj)
->       }
+> @@ -111,6 +111,7 @@ static void aspeed_soc_ast1040_init(Object *obj)
 >   
 >       object_initialize_child(obj, "adc", &s->adc, TYPE_ASPEED_2700_ADC);
-> +    object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
+>       object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
+> +    object_initialize_child(obj, "gpio", &s->gpio, "aspeed.gpio-ast2700");
 >   
 >       object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE);
 >       object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVICE);
-> @@ -199,6 +202,15 @@ static void aspeed_soc_ast1040_realize(DeviceState *dev_soc, Error **errp)
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
->                          aspeed_soc_ast1040_get_irq(s, ASPEED_DEV_ADC));
+> @@ -211,6 +212,15 @@ static void aspeed_soc_ast1040_realize(DeviceState *dev_soc, Error **errp)
+>       sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
+>                          aspeed_soc_ast1040_get_irq(s, ASPEED_DEV_PECI));
 >   
-> +    /* PECI */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->peci), errp)) {
+> +    /* GPIO */
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
 > +        return;
 > +    }
-> +    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->peci), 0,
-> +                    sc->memmap[ASPEED_DEV_PECI]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
-> +                       aspeed_soc_ast1040_get_irq(s, ASPEED_DEV_PECI));
+> +    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->gpio), 0,
+> +                    sc->memmap[ASPEED_DEV_GPIO]);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
+> +                       aspeed_soc_ast1040_get_irq(s, ASPEED_DEV_GPIO));
 > +
 >       /* Unimplemented peripherals */
 >       aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->pwm),

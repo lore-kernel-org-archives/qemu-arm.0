@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06A86CD6E56
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 11:52:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A72B0CD6E5D
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 11:52:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wU1Ac-0000qj-09; Mon, 01 Jun 2026 07:51:02 -0400
+	id 1wU19N-0006kx-T2; Mon, 01 Jun 2026 07:49:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wU1A6-0007y5-A9; Mon, 01 Jun 2026 07:50:33 -0400
+ id 1wU19M-0006a2-5c; Mon, 01 Jun 2026 07:49:44 -0400
 Received: from mail-westus2azlp170100005.outbound.protection.outlook.com
  ([2a01:111:f403:c005::5] helo=CO1PR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wU1A2-0005T0-Lo; Mon, 01 Jun 2026 07:50:29 -0400
+ id 1wU19K-00057v-3P; Mon, 01 Jun 2026 07:49:43 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=bJC8VM3FnhrnPOZ8zV8REZUfOnccqrj21hh4hQx5OSuor4ZREuhzKeh481FLGdipxd7LWWtWv02HlvzytlO2kxGtYuKHPrszrqNhZsPouBr6M2dd3wzu8XFxYOSOp7iR5SqpKiKOoIJCGLmwBBGgQxNrqTmuBrmh50xhr3HDdUSre3TwysRSL+Puphr981kRj3okKmyVefZFB9Q5gx4Oc4L3e7YP6QNoLrzE+bQK/s72kOixmnXJS1f9IM8uyoBM4H9BRp2Gy1baT+eh1RLmOiwUVj1CWPf+1aN133EdXwTjmTW/H5YO2FbUC82dMMqI1CFE7kFRLxP/zFbp+JT9FA==
+ b=sj5s6E0jG2S1hyx8Z+8Wjywsy1W8IKL/gH58mos/LLcUYxZuVMzU9aTaIkgF9R/tMhuSTwwwfrhGkmX+aMy0Qwugk3YE+uv3Wdcp3FhdfcOPbaRVE+Tr8qcVd3YIZbDFLxqefJwrmt41xglMfqMTaMxNT8JLrPQzbj7vDxgnt70W9TuLtPI/0dDhbItNWjc6vD0EfS2IeNbna3Sl2pQxcskmEutkYLcZjZkZIszi8mksN3mOtxwBdEUIqwKdI7fnGCizJZowWoDblHfhbgjJ4CVrdDQdektn5XFmdM6JEuY4UIOQcaI/CzRoi4T56N55hD0rt4Mrcs24erOT7ZzuRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/hVQ/holYJL7aJQ2/r47Snz+ZdcVkBO9PAjJbhtuEm8=;
- b=wA018KUb4ZnghWnqTdVOtrVcSu81OCWMF8n26CGj9fOHgSfIEtYJsVxE2RgWHz5LzdQrktkbUfcKHVp7c5SID/jukTK3XIR3M47r93baa8/aNc0PKk1YoCZ5NIZxK5xFZARwP6HBfAgHjM73jM0Vjki9l/J4gSSkkfyP42pD0hsdHC7FzjoiC3Dcg/pD1gG5G0f/M2uWWPClTIL8UtbZBfvYKgUbkonfzEmPF99ViJS0rHJAun9+qtfD/IUxiPBELk5KRcf4NAuu6X40jxESvAMS6AtSXFZJ6hZveFjQys0+KZM7pMtJg7TIeKrhFXOQM3O22j3yp3pz4Lk00v2+KA==
+ bh=z+Ey0RJeFvQiD0ihTSSQ1W9xj8xRC6Z0D1Jh4aEXVBY=;
+ b=uvDkbZ4PzCztX1fApQPkOl0EfVYKrg5U8WCLyIC4I83NJzi+wtmZ3Wh11m6BxN6W1yjS33XRKwvtye9PtlojTPT5YyscF/wA4lATVNTArsQOj3CWy4pyBkZqH9Vt8FKlm/rKB3N9NggU6kShJS+U1mLjjjSz6bMQcWJXUj5aGPAVtYMiTh8VTbVwcR9yKeuqW78mfB6o6TFSpaIghBbNkGXYImApypWT99IuXh1atP280pxLK1hJ/SmcZI78dcOhmS/F6OdgZwN9zL0FX7WLAMtrI8oC5p/U+oR9dn8PsUgWEhawR04lI0znG9rrBHZohGXwGHtzBQrQgV8LHyeKQg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
@@ -33,18 +33,18 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/hVQ/holYJL7aJQ2/r47Snz+ZdcVkBO9PAjJbhtuEm8=;
- b=YmcGxTM8JkfyrgRI7Ln8pZi2DE6GrVyyv9BdOm8GqgQtEitV4WYFTDbbaEqKIttr15mQpueyPkITti8TMro4Y0Wdcygar3n11p1g3zEkfoFh/tBUy0XCjZMZZ83A4k9Icf3FnbiKpcItzlnRSYLQZdvXqeyAdj8tAdW4aWm2EsGPUZ8jaSMuWEzlIh6Qfdyhy/OoRKCZmAmlMTWqrzRmE7+kqc3s4BhS/2bnBiyvJwDC+UnVh1lmn6zu5fIEhrEUHAu7Faee04x5US0ZylCSE9mM7g0S9PU3Kyvry+8gCNwOrzX0XOZf5Pl0ZXP49jDGlhUam7BuelgReXi2QWa3jA==
-Received: from MN2PR07CA0027.namprd07.prod.outlook.com (2603:10b6:208:1a0::37)
- by PH7PR12MB6718.namprd12.prod.outlook.com (2603:10b6:510:1b1::11)
+ bh=z+Ey0RJeFvQiD0ihTSSQ1W9xj8xRC6Z0D1Jh4aEXVBY=;
+ b=pj8NFLDrA2U618TYUxzvI2Eiwcaq758BTmMjwVgNbyZWAumMKvzDCslwh25/541zSgEpi659RXkW58xLoZGJA8CKDUYkJsHwVRZist5YZ/FXGaNcMqseY82oBH6Nubg4Fpuls3FnLXwsSWPhrjDOsk5DkqWTupqFcNls6Y1/UiOVgNzMk0Ra5b7QM+6SfOt2d/3nJtmAAhusrj0cCysAZladxtOcy+pvTyzwjlaHEyFlSd/J0fVCHh3UZDtu/aEc//mO0sw8vPd8TRxVou7cq3TsWeGtO2UlyHylTZEzCrxg9/+JPGgSBtDQ+OS5Orw5LkdjVx3fbX3QqiS9076QlQ==
+Received: from MN0P220CA0018.NAMP220.PROD.OUTLOOK.COM (2603:10b6:208:52e::16)
+ by IA1PR12MB6187.namprd12.prod.outlook.com (2603:10b6:208:3e5::12)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.17; Mon, 1 Jun 2026
- 11:50:17 +0000
-Received: from BN2PEPF000055DC.namprd21.prod.outlook.com
- (2603:10b6:208:1a0:cafe::85) by MN2PR07CA0027.outlook.office365.com
- (2603:10b6:208:1a0::37) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.71.16 via Frontend Transport; Mon, 1
- Jun 2026 11:50:16 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.15; Mon, 1 Jun 2026
+ 11:49:35 +0000
+Received: from BN2PEPF000055DF.namprd21.prod.outlook.com
+ (2603:10b6:208:52e:cafe::24) by MN0P220CA0018.outlook.office365.com
+ (2603:10b6:208:52e::16) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.71.15 via Frontend Transport; Mon, 1
+ Jun 2026 11:49:35 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
@@ -53,17 +53,17 @@ Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
  216.228.117.160 as permitted sender) receiver=protection.outlook.com;
  client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
 Received: from mail.nvidia.com (216.228.117.160) by
- BN2PEPF000055DC.mail.protection.outlook.com (10.167.245.6) with Microsoft
+ BN2PEPF000055DF.mail.protection.outlook.com (10.167.245.9) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.92.0 via Frontend Transport; Mon, 1 Jun 2026 11:50:16 +0000
+ 15.21.92.0 via Frontend Transport; Mon, 1 Jun 2026 11:49:35 +0000
 Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
  (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 1 Jun
- 2026 04:50:04 -0700
+ 2026 04:49:24 -0700
 Received: from NV-2Y5XW94.nvidia.com (10.126.230.37) by rnnvmail201.nvidia.com
  (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 1 Jun
- 2026 04:50:01 -0700
+ 2026 04:49:20 -0700
 From: Shameer Kolothum <skolothumtho@nvidia.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <clg@redhat.com>,
@@ -71,10 +71,10 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <clg@redhat.com>,
  <mochs@nvidia.com>, <jan@nvidia.com>, <jgg@nvidia.com>,
  <zhenzhong.duan@intel.com>, <kjaju@nvidia.com>, <phrdina@redhat.com>,
  <skolothumtho@nvidia.com>
-Subject: [PATCH v6 29/31] hw/arm/smmuv3-accel: Enforce viommu association when
- CMDQV is active
-Date: Mon, 1 Jun 2026 12:42:19 +0100
-Message-ID: <20260601114221.457995-30-skolothumtho@nvidia.com>
+Subject: [PATCH v6 20/31] memory: Allow RAM device regions to skip IOMMU
+ mapping
+Date: Mon, 1 Jun 2026 12:42:10 +0100
+Message-ID: <20260601114221.457995-21-skolothumtho@nvidia.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260601114221.457995-1-skolothumtho@nvidia.com>
 References: <20260601114221.457995-1-skolothumtho@nvidia.com>
@@ -86,29 +86,29 @@ X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
  rnnvmail201.nvidia.com (10.129.68.8)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN2PEPF000055DC:EE_|PH7PR12MB6718:EE_
-X-MS-Office365-Filtering-Correlation-Id: ed00166a-e7cb-4a71-ef0b-08debfd3f2f7
+X-MS-TrafficTypeDiagnostic: BN2PEPF000055DF:EE_|IA1PR12MB6187:EE_
+X-MS-Office365-Filtering-Correlation-Id: bd318e22-b600-4fe0-b236-08debfd3da5d
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|82310400026|36860700016|1800799024|18002099003|22082099003|56012099006|6133799003|11063799006|3023799007;
-X-Microsoft-Antispam-Message-Info: 1Mpf3qqjkefq0J+tCR+oBwBeDQoRtcK1BzlH2Qg0VRLQU4ttHQUBh2CyoWm5+/ApJVVL0s6UpLQujxzo2g4BQREG1GrXZCdy4YlNy2CVkhuiUmNVydLdtE2Q36ULUDPbGmxX52Ob3gIdZkdQZqdMcIdj0YsPynxrkPwyCJjq9x8I0MK5IEx3RUcxrTstky5riRLTdE/LdpHS8bt6e0f8wCp5PQX7g91qgQFVM2H6X68YHup+sQ40SLmjB/2uqjs2nkKAKok41Uhun5oCC863QS0fOVnWwxbcUugtspYH54ZSr3BIaWA83BW+Cy4oztkdX9Dp82xjWIuf8kzgyTdfS/VF5HHqfrjRykbzIbGiEjXPxWETDOxmSyB3jjE/f7Pzg7ehe+nTvPrz6M5Agh/dVKLSJfPzTP/J8ilAOXq3cDaI04ZWEuAVh8VnIH5MTJpGZgSuktEYge22IPhrq8yCo9tOF6GnLRe+9R03+dZp5lDxc0IgJRRnV52rWywmCUz1XA9A8fOV6pj9YedZMocqY5QnYsM0tanpfyDxWUOwBF3dC1h0pRk2VMRaUoGC0zIt9HoSZmITRMpqkKOUQy0e3/z53CeoiorugRB89mIVa5/WSIRzAgwdXyO4EPtSo0o+U2olY5se/Jb/MxBx5tzAUKrTuDeLsaVrFmxfcYxl9AtfpjZhYrctTpP9DrlRgNShR141acv9dscy8sKdfUa8HuZB8awNeNrf08Ot3HLG4Eo=
+ ARA:13230040|1800799024|376014|36860700016|82310400026|18002099003|22082099003|11063799006|5023799004|56012099006;
+X-Microsoft-Antispam-Message-Info: XU64nZdbdXF42CDhu6pRRpRJP4FjAUjmdTFPzw1ylylGFHRFnCguNide+R4vCT3r5Z7auFSISWsIbaBDMznGpXaRYrFoBt0nWoxFT2Wnia6HDfErI/QUoF/oIqVn7fYTuWs8X/LOf57shRH4YqhXJHurAv1np2lUsUg2mn19YvUtz3pBVybEAZVbfyxAggqnO20Chnvpyu7hp+0gLhEmZVa0a0JfTHP656MR8/3Eik9+/GYWcXnzSidmrIOVNbzGrIL6tBerqlj2GCEKTF6l6QIla876W6EmQtSsfoQz8JTEjPAfltbfx6OPyCPDi7C3+MqroauGKc2QKvfvsif6bSWxKl10Ka15ZCmdgsy+SMl+ebWsaCKSvGnI2G9+L4zmZcd2QwcqpVONkfjhh0b9n+uaoGO77wWGoLxqYV2hYhvQuywsVxNyh+HanfASMSq+kE3CMbNRpsn1Rmxu+pxFTOsXVdgxzdOuXiJYZ7QR56ve6xVWL3x7eBWWHTfJcCVgMmxSRCt+qI2BB7+E1K2VzoJ9tDKs166K/aCqpL33pppPgXwreIaqp9HjkBzXCdrHGjG2iETGWO38A+oZip22JRDNPvicyUBQuAcI81S0XF4rJBvG2NvpdQa67ORcd1i928YlD18O9gW21dtbd1ifjZdEDsbjCARS10pWGCs55bFKfeZun4Ldc0hbw3g+on4wW3hDqJkX3FcsqnG0DXsEVchEnQSuOKyp6ZQVJTiZQ3I=
 X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(376014)(82310400026)(36860700016)(1800799024)(18002099003)(22082099003)(56012099006)(6133799003)(11063799006)(3023799007);
+ SFS:(13230040)(1800799024)(376014)(36860700016)(82310400026)(18002099003)(22082099003)(11063799006)(5023799004)(56012099006);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: Kquy0/kDMtgJhauNDU6ctyakAvzq2EVNxK4Un0jcSEO7oI/gX4NOMlBN08697MHImp7qRWeAQOLiatQlPfAPoMcb11GBrKM4XXA6Qyzoc6LN/NIFH2+sjvECi3npoTY98WlPUA+FJt0UEEgOE5EHzZYcc7vPSzEnAqJvMXbM3Pt5PC8nVAa0NEWV+pYJojRxDAGPkVsSMWLiLej7DGVyKTM6IH14hdD8Zdb8OnxqRndKs7UM+NIOYKBNb7iYLS9//aVvm/i+ka8M0GL4SzPG540svzBmMfjcD+OVeLObNxPQhbahtV3QgH0YF2luUGGiPCc1ERlEwTCr8uqKSjKEAkigTfhQAG7aDKQJXjm0Qrqz24oOOqGJ3sNhuSJ1iNfEDF8fML3V8ImSa8guaU1vuVzSMopNCrithUXBxeUJOgh334kxf87uwks++xcuH7oc
+X-MS-Exchange-AntiSpam-MessageData-0: qJ+HfOVVDyPKS7BVcAiDoiiSLz3j/pZyHSPylo9qa18scehD4PvphX3hjfNUJmtbQ6y1k09OZWRlFoaoBxrW5RLsZO32yGg6CkKR+/tVXrEqkfGrGyvVM9EF2jXfZPh0c5c7msdEEoJuhtXuf8Y7KGXrZjkAbK96E5Pv0O8P0S7j4HHbyydGQKNp6QF6Z7+QO7qfiwtFBWl8cbhFZhzeV7yRldDNVkrRIBnYFtRlpfSxqCQPrw+npn3aR7ETzPwTNj97iMYltooWVE8NCoz8UpP1ffFtu23W0/Rm+Y3dIGjL0DvR/LBG/37/WDZiVKkJvsPmr42kcr2R0YR0gvm/Ehs9q15nv87V+TN+deZJKDqBudA3w2b28YMThtIroaa/96K8CtBeKJ7XFMGKljDe3Io/6TaCxzE6RPl2o2c1TflrbNq5jte5PgWsT50yPIrQ
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Jun 2026 11:50:16.6615 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ed00166a-e7cb-4a71-ef0b-08debfd3f2f7
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Jun 2026 11:49:35.3912 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: bd318e22-b600-4fe0-b236-08debfd3da5d
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN2PEPF000055DC.namprd21.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: BN2PEPF000055DF.namprd21.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB6718
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6187
 Received-SPF: permerror client-ip=2a01:111:f403:c005::5;
  envelope-from=skolothumtho@nvidia.com;
  helo=CO1PR03CU002.outbound.protection.outlook.com
@@ -134,76 +134,120 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When CMDQV is active, the first cold-plugged VFIO device establishes
-the viommu to host SMMUv3 association, and the guest's boot-time CMDQV
-configuration (VINTFs, VCMDQs) is built on top of that association.
+Some RAM device regions created with memory_region_init_ram_device_ptr()
+are not intended to be P2P DMA targets.
 
-Hot-unplugging that device would release the viommu and tear down all
-CMDQV state. Hot-plugging another device behind a different host
-SMMUv3+CMDQV would then re-bind the same vSMMUv3 to new host hardware,
-while the guest keeps using its boot-time configuration and ends up
-issuing commands to the wrong host. Block hot-unplug of the
-establishing device to avoid this; retaining the binding across unplug
-is non-trivial and not required by any current use case.
+The VFIO listener currently treats all RAM device regions as DMA
+capable and attempts to map them into the IOMMU. For regions without
+dma-buf backing this fails and prints warnings such as:
 
-Also abort at machine_done if cmdqv=on is requested but no cold-plugged
-VFIO device was present to initialize it.
+  IOMMU_IOAS_MAP failed: Bad address, PCI BAR?
 
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+Introduce a MemoryRegion flag (ram_device_skip_iommu_map) to mark RAM
+device regions that should not be IOMMU mapped, paired with
+memory_region_skip_iommu_map() / memory_region_set_skip_iommu_map()
+accessors. When the flag is set, the VFIO listener skips DMA mapping
+for that region.
+
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 ---
- hw/arm/smmuv3-accel.h |  1 +
- hw/arm/smmuv3-accel.c | 18 ++++++++++++++++++
- 2 files changed, 19 insertions(+)
+ include/system/memory.h | 21 +++++++++++++++++++++
+ hw/vfio/listener.c      |  6 ++++++
+ system/memory.c         | 10 ++++++++++
+ hw/vfio/trace-events    |  1 +
+ 4 files changed, 38 insertions(+)
 
-diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
-index 5fc85fb89d..dd755c394d 100644
---- a/hw/arm/smmuv3-accel.h
-+++ b/hw/arm/smmuv3-accel.h
-@@ -84,6 +84,7 @@ typedef struct SMMUv3AccelDevice {
-     IOMMUFDVdev *vdev;
-     QLIST_ENTRY(SMMUv3AccelDevice) next;
-     SMMUv3AccelState *s_accel;
-+    Error *unplug_blocker; /* set when CMDQV is active to block hot-unplug */
- } SMMUv3AccelDevice;
+diff --git a/include/system/memory.h b/include/system/memory.h
+index 1417132f6d..4560809013 100644
+--- a/include/system/memory.h
++++ b/include/system/memory.h
+@@ -864,6 +864,8 @@ struct MemoryRegion {
  
- bool smmuv3_accel_init(SMMUv3State *s, Error **errp);
-diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-index 9c3bd4413d..80900c2521 100644
---- a/hw/arm/smmuv3-accel.c
-+++ b/hw/arm/smmuv3-accel.c
-@@ -759,6 +759,18 @@ static bool smmuv3_accel_set_iommu_device(PCIBus *bus, void *opaque, int devfn,
-         return false;
-     }
+     /* For devices designed to perform re-entrant IO into their own IO MRs */
+     bool disable_reentrancy_guard;
++    /* RAM device region that does not require IOMMU mapping for P2P */
++    bool ram_device_skip_iommu_map;
+ };
  
-+    /*
-+     * CMDQV is active: block hot-unplug of the device that established the
-+     * viommu association. Removing it would cause the vIOMMU to host SMMUv3
-+     * association be changed via device hot-plug.
-+     */
-+    if (s->s_accel->cmdqv_ops) {
-+        PCIDevice *pdev = pci_find_device(bus, pci_bus_num(bus), devfn);
-+        error_setg(&accel_dev->unplug_blocker,
-+                   "CMDQV is active: removing the device that established the "
-+                   "viommu association would break the guest CMDQV");
-+        qdev_add_unplug_blocker(DEVICE(pdev), accel_dev->unplug_blocker);
-+    }
- done:
-     accel_dev->hiodi = hiodi;
-     accel_dev->s_accel = s->s_accel;
-@@ -1082,6 +1094,12 @@ static void smmuv3_accel_machine_done(Notifier *notifier, void *data)
-                      "at least one cold-plugged VFIO device");
-         exit(1);
-     }
+ struct IOMMUMemoryRegion {
+@@ -1743,6 +1745,25 @@ static inline bool memory_region_is_romd(const MemoryRegion *mr)
+  */
+ bool memory_region_is_protected(const MemoryRegion *mr);
+ 
++/**
++ * memory_region_skip_iommu_map: check whether a memory region is excluded
++ *                               from IOMMU mapping
++ *
++ * Returns %true if @mr is a RAM device region marked to skip IOMMU mapping.
++ *
++ * @mr: the memory region being queried
++ */
++bool memory_region_skip_iommu_map(const MemoryRegion *mr);
 +
-+    if (s->cmdqv == ON_OFF_AUTO_ON && !accel->cmdqv) {
-+        error_report("arm-smmuv3 cmdqv=on requires at least one cold-plugged "
-+                     "VFIO device");
-+        exit(1);
++/**
++ * memory_region_set_skip_iommu_map: mark a RAM device region to skip IOMMU
++ *                                   mapping
++ *
++ * @mr: the memory region being modified
++ * @skip: %true to skip IOMMU mapping, %false to allow it
++ */
++void memory_region_set_skip_iommu_map(MemoryRegion *mr, bool skip);
++
+ /**
+  * memory_region_has_guest_memfd: check whether a memory region has guest_memfd
+  *     associated
+diff --git a/hw/vfio/listener.c b/hw/vfio/listener.c
+index 0b72a2cf5e..14cca678ae 100644
+--- a/hw/vfio/listener.c
++++ b/hw/vfio/listener.c
+@@ -610,6 +610,12 @@ void vfio_container_region_add(VFIOContainer *bcontainer,
+         }
+     }
+ 
++    if (memory_region_skip_iommu_map(section->mr)) {
++        trace_vfio_listener_region_skip_dma_map(memory_region_name(section->mr),
++                                                iova, int128_get64(llsize));
++        return;
 +    }
++
+     ret = vfio_container_dma_map(bcontainer, iova, int128_get64(llsize),
+                                  vaddr, section->readonly, section->mr);
+     if (ret) {
+diff --git a/system/memory.c b/system/memory.c
+index 739ba11da6..48245fd01b 100644
+--- a/system/memory.c
++++ b/system/memory.c
+@@ -1814,6 +1814,16 @@ bool memory_region_is_protected(const MemoryRegion *mr)
+     return mr->ram && (mr->ram_block->flags & RAM_PROTECTED);
  }
  
- bool smmuv3_accel_init(SMMUv3State *s, Error **errp)
++bool memory_region_skip_iommu_map(const MemoryRegion *mr)
++{
++    return memory_region_is_ram_device(mr) && mr->ram_device_skip_iommu_map;
++}
++
++void memory_region_set_skip_iommu_map(MemoryRegion *mr, bool skip)
++{
++    mr->ram_device_skip_iommu_map = skip;
++}
++
+ bool memory_region_has_guest_memfd(const MemoryRegion *mr)
+ {
+     return mr->ram_block && mr->ram_block->guest_memfd >= 0;
+diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+index 2049159015..70c5aa1bcc 100644
+--- a/hw/vfio/trace-events
++++ b/hw/vfio/trace-events
+@@ -100,6 +100,7 @@ vfio_listener_region_del_iommu(const char *name) "region_del [iommu] %s"
+ vfio_listener_region_add_ram(uint64_t iova_start, uint64_t iova_end, void *vaddr) "region_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
+ vfio_known_safe_misalignment(const char *name, uint64_t iova, uint64_t offset_within_region, uintptr_t page_size) "Region \"%s\" iova=0x%"PRIx64" offset_within_region=0x%"PRIx64" qemu_real_host_page_size=0x%"PRIxPTR
+ vfio_listener_region_add_no_dma_map(const char *name, uint64_t iova, uint64_t size, uint64_t page_size) "Region \"%s\" 0x%"PRIx64" size=0x%"PRIx64" is not aligned to 0x%"PRIx64" and cannot be mapped for DMA"
++vfio_listener_region_skip_dma_map(const char *name, uint64_t iova, uint64_t size) "Region \"%s\" 0x%"PRIx64" size=0x%"PRIx64" marked to skip IOMMU mapping"
+ vfio_listener_region_del(uint64_t start, uint64_t end) "region_del 0x%"PRIx64" - 0x%"PRIx64
+ vfio_device_dirty_tracking_update(uint64_t start, uint64_t end, uint64_t min, uint64_t max) "section 0x%"PRIx64" - 0x%"PRIx64" -> update [0x%"PRIx64" - 0x%"PRIx64"]"
+ vfio_device_dirty_tracking_start(int nr_ranges, uint64_t min32, uint64_t max32, uint64_t min64, uint64_t max64, uint64_t minpci, uint64_t maxpci) "nr_ranges %d 32:[0x%"PRIx64" - 0x%"PRIx64"], 64:[0x%"PRIx64" - 0x%"PRIx64"], pci64:[0x%"PRIx64" - 0x%"PRIx64"]"
 -- 
 2.43.0
 

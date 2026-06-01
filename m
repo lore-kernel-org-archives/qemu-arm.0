@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CB0ACD6E55
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 17:20:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 034DDCD6E55
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 17:21:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wU6If-0003c0-Vo; Mon, 01 Jun 2026 13:19:42 -0400
+	id 1wU6KF-0005u3-TY; Mon, 01 Jun 2026 13:21:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1wU6Id-0003aB-Uo; Mon, 01 Jun 2026 13:19:39 -0400
-Received: from smtpout1.mo2.mail-out.ovh.net ([79.137.123.219])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wU6KE-0005ob-7v
+ for qemu-arm@nongnu.org; Mon, 01 Jun 2026 13:21:18 -0400
+Received: from smtpout5.mo539.mail-out.ovh.net ([51.210.91.44])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1wU6Ib-0002hp-BN; Mon, 01 Jun 2026 13:19:39 -0400
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net [51.68.94.138])
- by mo2.mail-out.ovh.net (Postfix) with ESMTPS id 4gTggP6pVlz4CJ3;
- Mon,  1 Jun 2026 17:19:29 +0000 (UTC)
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net. [127.0.0.1])
- by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alistair@alistair23.me>; Mon,  1 Jun 2026 17:19:29 +0000 (UTC)
-Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.137])
- by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gTggP47Drz7vQd; Mon,  1 Jun 2026 17:19:29 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.2])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wU6KC-0003JK-Fr
+ for qemu-arm@nongnu.org; Mon, 01 Jun 2026 13:21:17 -0400
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net [79.137.60.37])
+ by mo539.mail-out.ovh.net (Postfix) with ESMTPS id 4gTgjN5dmLz4bqY;
+ Mon,  1 Jun 2026 17:21:12 +0000 (UTC)
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net. [127.0.0.1])
+ by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <alistair@alistair23.me>; Mon,  1 Jun 2026 17:21:12 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.101.74])
+ by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gTgjN4VY1z1yhg; Mon,  1 Jun 2026 17:21:12 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.5])
  (Authenticated sender: clg@kaod.org)
- by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id EB33C203041; 
- Mon,  1 Jun 2026 17:19:27 +0000 (UTC)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 87A641B400A7;
+ Mon,  1 Jun 2026 17:21:10 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R00101c704de-8256-4b8e-94e1-7083206a8c59,
+ (GARM-96R001414dee38-bee1-4712-9440-2ac73aedc57f,
  E35A50153BDE4127F94F88E3CE699B0651996EDF) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <3e22bece-b6b5-4980-9d20-d38c6685361a@kaod.org>
-Date: Mon, 1 Jun 2026 19:19:27 +0200
+Message-ID: <89fdb3d4-edf4-43f6-a489-076863325d0c@kaod.org>
+Date: Mon, 1 Jun 2026 19:21:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 12/21] hw/arm/aspeed_ast27x0: Add unimplemented
- Privilege Controller MMIO regions for SSP/TSP
+Subject: Re: [PATCH v4 17/21] hw/misc/aspeed_scu: Add AST2700 SCUIO RNG
+ control and data registers
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -55,7 +55,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20260417032837.2664122-1-jamin_lin@aspeedtech.com>
- <20260417032837.2664122-13-jamin_lin@aspeedtech.com>
+ <20260417032837.2664122-18-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -100,30 +100,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260417032837.2664122-13-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260417032837.2664122-18-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 13772289136505760907
+x-ovh-tracer-id: 13801281058122607755
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTG11xkYjVc7pQ60C4X1ARPNSR7czKXT9p5cn/Wl47NcnaLYjmQ0sJleCnDEkzILpt+51H+z8nEQyYie+WIQDHUUaH8vO3ZyjUVJbH9NPmqon+b+IEwi8U7XM8MpTaUlf25NrcB28mcLjlnzsdFregVxhhcaFjwkdSgWIsn9hOrXKFe//sMxr5srWqMa4MfX23z/U6zN7756WTAp6MyFeoHx4MB+t6+luLf8D/q0xPS5BTkoK+JwEpidoBAk2+qEuE/+GbgD8dreWx3jHPNf0/40yxCbePNcMH7pNwCRYIUyq1/QHsJht01NlYO8RC0DyEJcdflqGhdjcvOgP4+FYuTkE6PZ/NLjyC1trx+mnGZaIpF0/jeBuM6a0CrTmvVkg6PTzSKrzzY8UI3LTQTKXoJkSd2B+E03asNSaxnE0mTzvHGyUlWWh0UJ1pOnKivTcfmUGsAa9UZ9TDaKkip4HvkseIL/Yt87cewfwvl3nnFGHhJvUDywuxd9JXeTaKLYrJYVHi6wpKCwkS7AlxG55UTrrwwAUjjKERQke3EHzQm4g7Qd8y042+04dNvkL3yrlER4Ntxmd5kj3pevRLoYupNTt+GEM33EIHXSUukk7781S+6GXKiKLWPjFoSo7bzaau32F9HNgKjaQ0nBNYznLn6MKOXDW5lI6kU4PrCixO5A1w
-DKIM-Signature: a=rsa-sha256; bh=riw5ThzDCG0mKZTh0uiSKclEKbq+bekWYIMjpV3cFR0=; 
+X-VR-SPAMCAUSE: dmFkZTG11xkYjVc7pQ60C4X1ARPNSR7czKXT9p5cn/Wl47NcnaLYjmQ0sJleCnDEkzILpt+51H+z8nEQyYie+WIQDHUUaH8vO3ZyjUVJbH9NPmqon+b+IEwi8U7XM8MpTaUlf25NrcB28mcLjlnzsdFregVxhhcaFjwkdSgWIsn9hOrXKFe//sMxr5srWqMa4MfX23z/U6zN7756WTAp6MyFeoHx4MB+t6+luLf8D/q0xPS5BTkoK+JwEpidoBAk2+qEuE/+GbgD8dreWx3jHPNf0/40yxCbePNcMH7pNwCRYIUyq1/QHsJht01NlYO8RC0DyEJcdflqGhdjcvOgP4+FYuTkqzutxy+er4s/uHi9oP2nC4tADZcmb95zhwUDIh/kiUol7FlShm4eBfjd5sijnK1kt8+gLAndgDWZ0iWD4QV6HNiy22OrOrCiaEY3JGBsNoldKX+HT2sxUwvR6UktsVRqaDOf0idQTgShwyjfC91I+rkxrHBh2zqTrStjbPP9+NP2yto5bSpVsIxPPnsRQAe7GAWJjlNSTU0Gq20Zay2UGMp/NFMKc0sOGc5TY5BAXG/bb2gO7ivd8Custc8c8EMYZaEvIlWS7E86CYBCX7vRLxJHu4w717LIYL7W7k/DPMoAD4Q2KSJCdgL2Z9hdwM9JyXH+A9Y6oOtzqll6g7iCDg
+DKIM-Signature: a=rsa-sha256; bh=12jL3lkKFZ2gMDX5Y49x2WIvODFed+Iz7zpVbsxVU/o=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1780334370; v=1;
- b=js6w5wzaA6dwfDm4qZlahCmHbt3zVmwUZYZcKqSLSO3uD9TFkNpdM0fNWUtD8DdvOGgUth53
- kYaigIZY0n/8X04P91jhmEguzXQgp6sGFlq2/n6PKSx9dm5P2oV0QvlxZnx2AfIIRw3DWe+nGUS
- LOWQy+7mtKiK/GeQXKq+006hHBVZgaMk3ykmAnS3VoA3AmsXjWaCzeoZjaJmUIXKjHYoUvB/1BE
- uK3QD+2C4sT9wIdff9+N4YzyyhvyRNhuktxik2YMdwlnBzcRz2liqACaS5Dwx2O+XnyA61XTbjG
- 5VbKWu9buv26qw4oN8zD7seEcDdwkQ7tXWkO7Vnc6ajIA==
-Received-SPF: pass client-ip=79.137.123.219; envelope-from=clg@kaod.org;
- helo=smtpout1.mo2.mail-out.ovh.net
+ t=1780334473; v=1;
+ b=lm58+xTyrLq6ogIbahWXCGBDUU8LzD/z85kUBXqlfCdExE1auGjDrNGBevzkYkOyzPQcHIzc
+ OKx4fpsRf3QzT2FUX1FX4qRbur195hX4PXXbSOsif6LEJu/Z9DTGN8wdKsX4/GcfgXRSzki211G
+ S3ccHIMbBbwvAR0H1Kmz9maAbXP8rwGX55J/Ft365LuhmsROh6H+t65DNEMzh1yr8rQvDj7qewO
+ ByYfAJq1gliDlvAZpX+x9vngFG/bksIYadw4Syc/sKuxhS5mkJYFBYDNlVikv0nndQLxZ66NP5F
+ pYYzo7OrC6QEzKGMuZTyYXTiABpZTVZ8fUE0QCjoNZyVg==
+Received-SPF: pass client-ip=51.210.91.44; envelope-from=clg@kaod.org;
+ helo=smtpout5.mo539.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,25 +139,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/17/26 05:28, Jamin Lin wrote:
-> The AST2700 SSP/TSP firmware accesses Privilege Controller MMIO regions that
-> are not yet implemented in QEMU.
+On 4/17/26 05:29, Jamin Lin wrote:
+> Implement basic behavior for RNG_CTRL and RNG_DATA:
 > 
-> This change adds unimplemented MMIO devices for the Privilege Controller
-> blocks and maps them to their corresponding physical addresses in the SSP/TSP
-> address space. These stub devices allow QEMU to safely handle firmware
-> accesses and prevent spurious exceptions, while accurately reflecting
-> the hardware memory map.
+> - RNG_CTRL allows guest to enable/disable the RNG via the DIS bit.
+>    Only bits [0:3] and bit 5 are writable; other bits are masked.
+> - The VLD bit (bit 31) is updated by the model to reflect the RNG
+>    enable state, and is not writable by the guest.
+> - When RNG is enabled, reads from RNG_DATA return a newly generated
+>    random value.
+> - When RNG is disabled, RNG_DATA return 0.
 > 
-> No functional changes.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   include/hw/arm/aspeed_coprocessor.h |  1 +
->   include/hw/arm/aspeed_soc.h         |  2 ++
->   hw/arm/aspeed_ast27x0-ssp.c         | 12 ++++++++++++
->   hw/arm/aspeed_ast27x0-tsp.c         | 12 ++++++++++++
->   4 files changed, 27 insertions(+)
+> This provides a minimal functional model of the RNG sufficient for
+> software that expects readable random data without modeling full
+> hardware behavior.
 
 please send first.
 
@@ -165,115 +160,61 @@ Thanks,
 
 C.
 
+
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   hw/misc/aspeed_scu.c | 25 +++++++++++++++++++++++++
+>   1 file changed, 25 insertions(+)
 > 
-> diff --git a/include/hw/arm/aspeed_coprocessor.h b/include/hw/arm/aspeed_coprocessor.h
-> index 2460a11401..084040bbed 100644
-> --- a/include/hw/arm/aspeed_coprocessor.h
-> +++ b/include/hw/arm/aspeed_coprocessor.h
-> @@ -46,6 +46,7 @@ struct Aspeed27x0CoprocessorState {
->       AspeedINTCState intc[2];
->       UnimplementedDeviceState ipc[2];
->       UnimplementedDeviceState scuio;
-> +    UnimplementedDeviceState pric[2];
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index 362733ba11..f9ae65d83c 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -187,6 +187,11 @@
+>   #define AST2700_SCU_CPU_SCRATCH_1   TO_REG(0x784)
+>   #define AST2700_SCU_VGA_SCRATCH_0   TO_REG(0x900)
 >   
->       ARMv7MState armv7m;
+> +#define AST2700_SCUIO_RNG_CTRL          TO_REG(0xF0)
+> +#define AST2700_SCUIO_RNG_CTRL_MASK     0x2F
+> +#define AST2700_SCUIO_RNG_CTRL_DIS      BIT(0)
+> +#define AST2700_SCUIO_RNG_CTRL_VLD      BIT(31)
+> +#define AST2700_SCUIO_RNG_DATA          TO_REG(0xF4)
+>   #define AST2700_SCUIO_CLK_STOP_CTL_1    TO_REG(0x240)
+>   #define AST2700_SCUIO_CLK_STOP_CLR_1    TO_REG(0x244)
+>   #define AST2700_SCUIO_CLK_STOP_CTL_2    TO_REG(0x260)
+> @@ -1257,6 +1262,14 @@ static uint64_t aspeed_ast2700_scuio_read(void *opaque, hwaddr offset,
+>           return 0;
+>       }
 >   
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index adf2f2898a..d39e4f7553 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -297,6 +297,8 @@ enum {
->       ASPEED_DEV_IOEXP1_INTCIO,
->       ASPEED_DEV_IOEXP0_I3C,
->       ASPEED_DEV_IOEXP1_I3C,
-> +    ASPEED_DEV_PRIC0,
-> +    ASPEED_DEV_PRIC1,
->   };
->   
->   const char *aspeed_soc_cpu_type(const char * const *valid_cpu_types);
-> diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c
-> index bfd6fe4485..467fdea9db 100644
-> --- a/hw/arm/aspeed_ast27x0-ssp.c
-> +++ b/hw/arm/aspeed_ast27x0-ssp.c
-> @@ -22,11 +22,13 @@ static const hwaddr aspeed_soc_ast27x0ssp_memmap[] = {
->       [ASPEED_DEV_SDRAM]     =  0x00000000,
->       [ASPEED_DEV_SRAM]      =  0x70000000,
->       [ASPEED_DEV_INTC]      =  0x72100000,
-> +    [ASPEED_DEV_PRIC0]     =  0x72140000,
->       [ASPEED_DEV_SCU]       =  0x72C02000,
->       [ASPEED_DEV_TIMER1]    =  0x72C10000,
->       [ASPEED_DEV_UART4]     =  0x72C1A000,
->       [ASPEED_DEV_IPC0]      =  0x72C1C000,
->       [ASPEED_DEV_FMC]       =  0x74000000,
-> +    [ASPEED_DEV_PRIC1]     =  0x74100000,
->       [ASPEED_DEV_SCUIO]     =  0x74C02000,
->       [ASPEED_DEV_INTCIO]    =  0x74C18000,
->       [ASPEED_DEV_UART0]     =  0x74C33000,
-> @@ -142,6 +144,10 @@ static void aspeed_soc_ast27x0ssp_init(Object *obj)
->                               TYPE_UNIMPLEMENTED_DEVICE);
->       object_initialize_child(obj, "scuio", &a->scuio,
->                               TYPE_UNIMPLEMENTED_DEVICE);
-> +    object_initialize_child(obj, "pric0", &a->pric[0],
-> +                            TYPE_UNIMPLEMENTED_DEVICE);
-> +    object_initialize_child(obj, "pric1", &a->pric[1],
-> +                            TYPE_UNIMPLEMENTED_DEVICE);
+> +    switch (reg) {
+> +    case AST2700_SCUIO_RNG_DATA:
+> +        if (!(s->regs[AST2700_SCUIO_RNG_CTRL] & AST2700_SCUIO_RNG_CTRL_DIS)) {
+> +            s->regs[AST2700_SCUIO_RNG_DATA] = aspeed_scu_get_random();
+> +        }
+> +        break;
+> +    }
+> +
+>       trace_aspeed_ast2700_scuio_read(offset, size, s->regs[reg]);
+>       return s->regs[reg];
 >   }
+> @@ -1280,6 +1293,18 @@ static void aspeed_ast2700_scuio_write(void *opaque, hwaddr offset,
+>       trace_aspeed_ast2700_scuio_write(offset, size, data);
 >   
->   static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
-> @@ -276,6 +282,12 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
->       aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&a->scuio),
->                                     "aspeed.scuio",
->                                     sc->memmap[ASPEED_DEV_SCUIO], 0x1000);
-> +    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&a->pric[0]),
-> +                                  "aspeed.pric0",
-> +                                  sc->memmap[ASPEED_DEV_PRIC0], 0x1000);
-> +    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&a->pric[1]),
-> +                                  "aspeed.pric1",
-> +                                  sc->memmap[ASPEED_DEV_PRIC1], 0x1000);
->   }
->   
->   static const Property aspeed_27x0_coprocessor_properties[] = {
-> diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c
-> index 166dcb14ed..3a90bbec51 100644
-> --- a/hw/arm/aspeed_ast27x0-tsp.c
-> +++ b/hw/arm/aspeed_ast27x0-tsp.c
-> @@ -22,11 +22,13 @@ static const hwaddr aspeed_soc_ast27x0tsp_memmap[] = {
->       [ASPEED_DEV_SDRAM]     =  0x00000000,
->       [ASPEED_DEV_SRAM]      =  0x70000000,
->       [ASPEED_DEV_INTC]      =  0x72100000,
-> +    [ASPEED_DEV_PRIC0]     =  0x72140000,
->       [ASPEED_DEV_SCU]       =  0x72C02000,
->       [ASPEED_DEV_TIMER1]    =  0x72C10000,
->       [ASPEED_DEV_UART4]     =  0x72C1A000,
->       [ASPEED_DEV_IPC0]      =  0x72C1C000,
->       [ASPEED_DEV_FMC]       =  0x74000000,
-> +    [ASPEED_DEV_PRIC1]     =  0x74100000,
->       [ASPEED_DEV_SCUIO]     =  0x74C02000,
->       [ASPEED_DEV_INTCIO]    =  0x74C18000,
->       [ASPEED_DEV_UART0]     =  0x74C33000,
-> @@ -142,6 +144,10 @@ static void aspeed_soc_ast27x0tsp_init(Object *obj)
->                               TYPE_UNIMPLEMENTED_DEVICE);
->       object_initialize_child(obj, "scuio", &a->scuio,
->                               TYPE_UNIMPLEMENTED_DEVICE);
-> +    object_initialize_child(obj, "pric0", &a->pric[0],
-> +                            TYPE_UNIMPLEMENTED_DEVICE);
-> +    object_initialize_child(obj, "pric1", &a->pric[1],
-> +                            TYPE_UNIMPLEMENTED_DEVICE);
->   }
->   
->   static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
-> @@ -273,6 +279,12 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
->       aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&a->scuio),
->                                     "aspeed.scuio",
->                                     sc->memmap[ASPEED_DEV_SCUIO], 0x1000);
-> +    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&a->pric[0]),
-> +                                  "aspeed.pric0",
-> +                                  sc->memmap[ASPEED_DEV_PRIC0], 0x1000);
-> +    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&a->pric[1]),
-> +                                  "aspeed.pric1",
-> +                                  sc->memmap[ASPEED_DEV_PRIC1], 0x1000);
->   }
->   
->   static const Property aspeed_27x0_coprocessor_properties[] = {
+>       switch (reg) {
+> +    case AST2700_SCUIO_RNG_CTRL:
+> +        data &= AST2700_SCUIO_RNG_CTRL_MASK;
+> +        if (data & AST2700_SCUIO_RNG_CTRL_DIS) {
+> +            data &= ~AST2700_SCUIO_RNG_CTRL_VLD;
+> +            s->regs[AST2700_SCUIO_RNG_DATA] = 0;
+> +        } else {
+> +            s->regs[AST2700_SCUIO_RNG_DATA] = aspeed_scu_get_random();
+> +            data |= AST2700_SCUIO_RNG_CTRL_VLD;
+> +        }
+> +        s->regs[reg] = data;
+> +        updated = true;
+> +        break;
+>       case AST2700_SCUIO_CLK_STOP_CTL_1:
+>       case AST2700_SCUIO_CLK_STOP_CTL_2:
+>           s->regs[reg] |= data;
 
 

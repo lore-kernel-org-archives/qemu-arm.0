@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C2A4CD6E55
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 14:32:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88A68CD6E57
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 14:32:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wU3g2-0007gd-8n; Mon, 01 Jun 2026 10:31:38 -0400
+	id 1wU3g2-0007gf-Gq; Mon, 01 Jun 2026 10:31:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wU3g0-0007ev-Jd
+ id 1wU3g0-0007ep-FY
  for qemu-arm@nongnu.org; Mon, 01 Jun 2026 10:31:36 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wU3fy-0005v1-1n
+ id 1wU3fx-0005v3-Jo
  for qemu-arm@nongnu.org; Mon, 01 Jun 2026 10:31:36 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-bd8d0e4e341so2372710566b.0
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-45ebafde87cso6719996f8f.3
  for <qemu-arm@nongnu.org>; Mon, 01 Jun 2026 07:31:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linaro.org; s=google; t=1780324292; x=1780929092; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=rCtNsjmQslyB0RdDx/tiQHHKKU/KczkMtBa9QQ2aWcs=;
- b=atYn4rX+a1Kz40rdwn/o2Vzd9WemPZNxFaXdh+UV+qF3J5DNKZqOzHenRUTt4ijnHd
- YGUKtexdGTIJY4/ZMgsIWkF4RFrJftEWUcmsndAXY2qXG01gfV6efgw3H8ENXkSJslgj
- KU19B5CCC9iOVEdWeCWQDCKIZshHzYeLcagZepYhywb72kNMgeVZp+q3QNZLADaLeArL
- z7g/Fg5PNUtE/GCS9Ohq/caU4i1haAIz2io1GflkOXZuIJ2jx65gq25jSep3zIRNP4rG
- /T2BVaEl8anxzsbR2setFOrUq/q6z+uYLcdS/uAV6mQQJvdYTCwZaDizvYZRkuEXumi/
- YaJg==
+ bh=NT18CePaV0fGVJXLvh+q22hGG/t8aNhHu8KRmvW+bGo=;
+ b=cYBlZgB5XqPjpZeaB9wl7egI9T976zBq3Hvd9RDN3diEvmoYmFdBETJLsHQzG3FLgp
+ /wn6wA4XSl8jeYVCtbtcqqYHRn4MahdhlzIOXiG+vdP2MDeWF61cAjDJOyDSwqmbcV3b
+ G0ILRB3sSB6ars/jzJtIEAtJq9sW7lVnAUAEPQ6ilthRTH2mgNljtIp02xNF1v6grXKC
+ d8VvuYZJYPq/I3AgiaybM8HES4dE9gPoWYTwDwV2HQQqUE9U/NSWgl8dr8s7ri1DEvS3
+ gNfPKN6b8zSf0iCYvVCkIJSuhV/x0U7l3vk2vePyD0OHunkSA9pEAyx/jOAb+ydRPx4h
+ 72Rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20251104; t=1780324292; x=1780929092;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=rCtNsjmQslyB0RdDx/tiQHHKKU/KczkMtBa9QQ2aWcs=;
- b=DdZbW8wEHvUEFJLhg5MDzwn52ZnepW90YToNoV8ulWIJ+E4Pi6zuk8VqjZkj4EnWTw
- K4vXfSZNHIo05/zULwzp6C80e1gaMAK7Ib/pFLSJ75z7JzkY60tZ5+UXgo+HfYORzL1A
- 7lGV/xA+ieBD8rhkQHUuTvPqAguebA7BoRvklkfcXwH1GhwFg/HojF+CktgTIfjNzOjN
- FPP3GdefC+Ur3CsRVgJKHdno6uNSX9Y/pS3BgiZen3/oPCl/OFpdrxOrBWE+VxkgCpt1
- rbAA0mmj+HuUiDeZT7rB35asm8kGTJ5bfV98DLV1gO789FS/g23jIeJfVTWlQhAkBOjr
- ohlA==
+ bh=NT18CePaV0fGVJXLvh+q22hGG/t8aNhHu8KRmvW+bGo=;
+ b=Xs0dItg6oN0Esxms12XayFH5eXPWNqHLXDCP8oyuyXUmiZRgG6HvjRYfF6dFe4Vi5u
+ wjHdkKbVMWYvvrNbiycrMPeFRscimGA0SdsX0sPROc+lWfFeI/wrjelyOnca825ln2/L
+ k8Dl1oBMepZ2E/tL4zSKA+OQnXgWiEk4jjbWJuOvWTxGGcrbwpYdNn90d/q1LJHDVvOD
+ LNMKgikQHCDuEQPxvfPggY5lUQIjtrJlcb8HNhli+V8BpZ4Wmd55KiklDlCfbnZgppK1
+ sRCaxomGY7/948mkdK0K2tlXxkyWVPFh3Q6hk4htI9C9vX6k5pI2MLuvxRGXGZSyQkRh
+ XesA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8Hk30mYol/W0fQkONzzmj0oc4KFSdLe33KzePl5OUyz6r11TU1GXd1i5LLGT6xshn2VSFNLDxPQg==@nongnu.org
-X-Gm-Message-State: AOJu0YxZh8iH4/u62tiRq3FZsUTRMrzLMzVf892jlDNfVRBBSdwXeR5Y
- o8S5dGZgyOjkooc85/HLxCJbqzMoIb5+fBlHk4ErI/Uk1QoZpz/YaqKX1j6up7wWOFI=
-X-Gm-Gg: Acq92OGpiLCGkaqTrhLMAe14nPl8TYB8mAQuUTfbPn9a/UQuWV0h2b1UGh7GhW/q6bK
- CX7mvN/JoUJgPatoefIVpx2Visybg+U1SP3LlCDA8VUwP3MPHu9f4RuczS0O5IdZfqPuyVMZKxB
- oLigzeN3jk9no6m9QXZZNuW/DZETZzWqLqN+wOV15k1FJ8dyoWTtQaiXy3bDtmlGlbVLXI3eOBr
- YAhI/Cmi4SqfBj8WkrN6p9kmgbc8zkTkNY1VKherWZcV/i1+CKoW4QUpfKgn6HOv6jSg+Y7dErB
- +A1m5oue5L1OS+38nsTzuvcm9xBc7sL/wW8UYgZkjaqxBIJ3j2kfU/YiShMNGo++yWj7SYCHIMt
- SbJLHrkFwegni7pyPhlG8lpJdhtgIsGB8LbQPPJSBLvkOrHyjB2iu+dzeyfxr5hFW5OP9RJ05oh
- k81cUKq7iHFUdmTb6HW6WSjSmgj7QZl7c5rA==
-X-Received: by 2002:a17:906:fe41:b0:be8:c839:3c4f with SMTP id
- a640c23a62f3a-beab2081b53mr639855566b.23.1780324291536; 
- Mon, 01 Jun 2026 07:31:31 -0700 (PDT)
+ AFNElJ8PYGK8fkDN/pP5izOQKLc68JnnmK8AE5Gzbb62YMDRMo4jtGpw0wEB1Q9HC95a+IU2EowWwH0toA==@nongnu.org
+X-Gm-Message-State: AOJu0YxxBErdhhnfkfzHf+IGpGs6Rnk5GVauPZtrfybNcJ+eOdU5qvRV
+ UpnE0LldAeVrbhqmoeqdkLMDCmm2/WaSncyF6SsIajMh//0cwsyHZRKDPOrn6V8AQrc=
+X-Gm-Gg: Acq92OElxvuKJ0AnLe0YAQx94/mdefQCMPAVq4Sj4Dyo4QnAV8cplitsqtN0+YDnJZy
+ wTyMcUPE6pTpmFIjU47RdftGQU7l2MB8J5T8yEs+500tv9V/7IRZr+UQ2N9D7+OErt9gIzSFOIV
+ pgqkvHvyjeADI4JiNxBhiAFMcpfVfEfyCe3FpVJsC6iGAMHt05xahJ3IE/4K2UqBQfPcWHSohml
+ +5RaAvESdu6IXwc+KE4TOMKeg3ilusaHR+KusXgM6H5P26xc47DSNVwBgpNSmYrwY28noHGNciy
+ A81pFEhFJ6mIta+ZH7g4JFQ3bsAs5+YRHTJCb87wMu+ZUz5ha3GLC7z1+PTUgqaaNcl93S5oPEM
+ K7X9ceNho0XLHYI5GBf8P/r/u/2K0GWDnB0DZJv4gdWYESjuWyHMg1RB2k0DdbYffhpQLjLcOTp
+ bryP/i0b0r8sLzL4myxsvHk+4yEtlNZZ8F3Q==
+X-Received: by 2002:a5d:55c2:0:b0:44a:247e:67b1 with SMTP id
+ ffacd0b85a97d-45ef6b025a3mr15719859f8f.5.1780324292031; 
+ Mon, 01 Jun 2026 07:31:32 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45ef354cd7csm25510759f8f.18.2026.06.01.07.31.30
+ ffacd0b85a97d-45ef3595ef4sm24594620f8f.37.2026.06.01.07.31.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Mon, 01 Jun 2026 07:31:30 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 0D7926016A;
- Mon, 01 Jun 2026 15:31:30 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id EC9215F8BB;
+ Mon, 01 Jun 2026 15:31:29 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Fabiano Rosas <farosas@suse.de>,
@@ -82,25 +82,25 @@ Cc: Fabiano Rosas <farosas@suse.de>,
  Paolo Bonzini <pbonzini@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Song Gao <gaosong@loongson.cn>, Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH 2/3] gitlab: work around the inability to build targets for
- MacOS
-Date: Mon,  1 Jun 2026 15:31:28 +0100
-Message-ID: <20260601143129.144786-3-alex.bennee@linaro.org>
+Subject: [PATCH 1/3] Revert "Makefile: include tests/Makefile.include before
+ ninja calculation"
+Date: Mon,  1 Jun 2026 15:31:27 +0100
+Message-ID: <20260601143129.144786-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260601143129.144786-1-alex.bennee@linaro.org>
 References: <20260601143129.144786-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x631.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,43 +116,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Unfortunately a previous fix to ensure .ninja-goals was set for the
-TCG tests broken the ability to run check-functional-FOO. As we have
-now reverted we need a solution for the MacOS gitlab run. The simplest
-is to add an explicit make invocation to build the signed binaries
-before we run the tests.
+This reverts commit fd63125b9089610d63a53c11ff2fda6b53a2265d which
+broke the ability to run the check-functional-FOO series of tests.
+
+We will need to try something else for the MacOS builds.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/macos.yml | 3 +++
- 1 file changed, 3 insertions(+)
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/.gitlab-ci.d/macos.yml b/.gitlab-ci.d/macos.yml
-index f61750a3f4a..8366b4ad564 100644
---- a/.gitlab-ci.d/macos.yml
-+++ b/.gitlab-ci.d/macos.yml
-@@ -29,6 +29,7 @@
-     - cd build
-     - ../configure --enable-werror $CONFIGURE_ARGS || { cat config.log meson-logs/meson-log.txt; exit 1; }
-     - $MAKE -j$(sysctl -n hw.ncpu)
-+    - for TARGET in $TEST_BINARIES ; do $MAKE $TARGET ; done
-     - for TARGET in $TEST_TARGETS ; do $MAKE $TARGET ; done
+diff --git a/Makefile b/Makefile
+index 829c51e364c..54547a37b1a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -45,8 +45,6 @@ include config-host.mak
+ include Makefile.prereqs
+ Makefile.prereqs: config-host.mak
  
- aarch64-macos-15-build:
-@@ -44,6 +45,7 @@ aarch64-macos-15-build:
-         --cross-prefix-i386=i686-elf-
-         --cross-prefix-x86_64=x86_64-elf-
-         --disable-plugins
-+    TEST_BINARIES: qemu-system-aarch64 qemu-system-i386 qemu-system-x86_64
-     TEST_TARGETS: check-unit run-tcg-tests-aarch64-softmmu run-tcg-tests-i386-softmmu run-tcg-tests-x86_64-softmmu
+-include $(SRC_PATH)/tests/Makefile.include
+-
+ # 0. ensure the build tree is okay
  
- aarch64-macos-26-build:
-@@ -60,4 +62,5 @@ aarch64-macos-26-build:
-         --cross-prefix-i386=i686-elf-
-         --cross-prefix-x86_64=x86_64-elf-
-         --disable-plugins
-+    TEST_BINARIES: qemu-system-aarch64 qemu-system-i386 qemu-system-x86_64
-     TEST_TARGETS: check-unit run-tcg-tests-aarch64-softmmu run-tcg-tests-i386-softmmu run-tcg-tests-x86_64-softmmu
+ # Check that we're not trying to do an out-of-tree build from
+@@ -182,6 +180,8 @@ endif # config-host.mak does not exist
+ 
+ SUBDIR_MAKEFLAGS=$(if $(V),,--no-print-directory --quiet)
+ 
++include $(SRC_PATH)/tests/Makefile.include
++
+ all: recurse-all
+ 
+ SUBDIR_RULES=$(foreach t, all clean distclean, $(addsuffix /$(t), $(SUBDIRS)))
 -- 
 2.47.3
 

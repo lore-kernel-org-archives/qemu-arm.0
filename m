@@ -4,137 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96EA6CD5BD1
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 02:54:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CEACCD6E4C
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Jun 2026 06:26:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wTsjd-0003Fz-B2; Sun, 31 May 2026 22:50:37 -0400
+	id 1wTw68-0003kn-H7; Mon, 01 Jun 2026 02:26:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wTsja-0003Dy-K7; Sun, 31 May 2026 22:50:34 -0400
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
+ id 1wTw66-0003kV-3D; Mon, 01 Jun 2026 02:26:02 -0400
+Received: from mail-northcentralusazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c105::5] helo=CH5PR02CU005.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wTsjY-0002Y8-Rv; Sun, 31 May 2026 22:50:34 -0400
+ (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
+ id 1wTw61-0001Xt-2M; Mon, 01 Jun 2026 02:26:01 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vehDyCfLYkz0qrAMS7O78GEuRZHYQwgV9KlT5hQ7tJzwJILBSlkgHbUq44yJaSbJJmqokT3AJ4Dni2MDAuLga3iwM6prs2502/a9nwq7FvzmbPdjoSiJabTCaq3Q3F4pzSezJQBnXA7o89L3agf3cqm264ZCAgcX7tHkiXKqXXsQAgwO/UsU2+VvU3EPl4NOjmwpLfh3rznb8C2TIlACHjNpx4vW2Q8N4NVMs+zKFJOG2llBR4F/wYH7fmcpuapdxBHIR7e7Y8e0HI/BF4HIfbeYTw8ulJFMpVmqtwDumNbSDplOXlb752Qwr/k62G3aMmwkgwt4J1CF5HoqDpRn0w==
+ b=Smhy5zLFylZX959tYfr0uJaiZy3SLZPB5Vsvh4FHA4xZl6zrPlZ1lyeazGqHwKLSxfbVRvL1K6VYZbm1/xEDfD1EC5XNhFaUCPLUlcDPlTcXSQ+kSXo15m5oLi91GfWDPO/OTloOVIgOYnlBb9ChiZsUlx1gha1FpyC6Bf0cWjPn3S/UfW3P1/2/E2oaNIEzK2nCein78AvccI6NWCynCeTZK/pwaLvGQ/8JT0EK5ZG/l1OwL/iB9WQeC47mVx4j0CsHpB8qclPxVQnj/MBIXmwNpT6xE/ZWBU85xG22tzVi+CMv/OdhcfGpHq/h0rFwH7RzKW2JyKjsgn6T+8bv1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=LgqgMTEFSNJe4FZPOPLIihdFIqOOVCIGU6DEj0JnHjU=;
- b=Rh510AGBRDQXTgizdaqQyptZkluoALA+tGjBWvRfcSWVXu0lFW2hsdScz9a/xABCWRgg1tvyTSl4Z7iDKJPtZzGlXUFgYrbolIVSsjFdGBGouBoDUzPW+exI/2CJ4OGnxUAtdYTtPjA3tAXqL46w+r8jjIPhtHWS9WhRYEk1YusWVjbzAjqF4mjiold449d+LbrrhWQvuzf31JiseEbivwUgLtgiAlu8LNb2lxKar3N1cbV3+lwcujfabjAjp48SM/1RHqVBKdPN1ooXw6YvzWmd/jMrC1HpkvG5IRsOmTLxR667qE1+HrZWMKd/+QhLKhd3uJ6SCJLhsUFCSJFlMg==
+ bh=nujJWKSEk+j4uPdSFjQICZXL9VGzF85tI0bN+BR8KvM=;
+ b=Qd73NRYn9PeW5jofXCdavRHZJUD2h966QJgNQMneDOMhncb4uHOfh0eZf/C7MZcLaOkNSXpR0YW8dEDv51BfuKxL8UgUq/MY1Q3PlOWdG8HQ+/RvyC7DsbqlvnNgSxOdKOlQrPyy7rOSv8xTK+ArjV03BA+9eQhd+pjAMKyvwGyURlViNbXPeLLxVeKFEJr3Y+rCpuIAjSqzPAAGKPRNjOUOsO+N1Hg6pGjJamtMltfOEX2ZXSYI4cspRWi0q31bcFQf0fAkFQRRmVR4DqsN4Ze54fm+1lRycoq6ffONKt25ngoM8tCyHRUyVeAjgAZH+LysFAh1Xq8Ba7aa2+sIbw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=LgqgMTEFSNJe4FZPOPLIihdFIqOOVCIGU6DEj0JnHjU=;
- b=GaY54s4h/mBDzPR6LTsFvq2ZTUp5GBiQvIDTcno4+gtUNk9tL31vkV/s3UjR9iBZaUYmh396epUZp05IAcXRLxN8/ZVB88IFZnd+WJg889W6T88euavolZ54GHrAT7HtCHuBxTfrIBmdoMwQCkgaYrQsQFQOAGmXvDCAW+f66svR3ikxn+5DrtVL4Xl5RXoz9zaLaMhF88BoTGjM9L+N32v/S1zDj499Twe9UOWKx5npsqJOBRFHj57Vurx4KxEiL7Oksnai2iFFV0Tspf8nVAOvGnVm6P1ScGs3Dp7orxracKY07ZOy12kekmzLCrAhOeZ4nQ66gMbMJ21S0tcR7A==
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
- by KU4PR06MB8361.apcprd06.prod.outlook.com (2603:1096:d10:7a::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.15; Mon, 1 Jun 2026
- 02:50:19 +0000
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::e659:1ead:77cb:f6d3%2]) with mapi id 15.21.0071.014; Mon, 1 Jun 2026
- 02:50:19 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Alistair
- Francis <alistair@alistair23.me>, Ninad Palsule <ninad@linux.ibm.com>, Jason
- Wang <jasowang@redhat.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 12/24] hw/gpio/aspeed_gpio: Convert to DEFINE_TYPES() with
- inlined TypeInfo
-Thread-Topic: [PATCH v1 12/24] hw/gpio/aspeed_gpio: Convert to DEFINE_TYPES()
- with inlined TypeInfo
-Thread-Index: AQHc8XFhZfZiu4BZ30i6z64DiE/nag==
-Date: Mon, 1 Jun 2026 02:50:19 +0000
-Message-ID: <20260601024959.2347639-13-jamin_lin@aspeedtech.com>
-References: <20260601024959.2347639-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20260601024959.2347639-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
+ bh=nujJWKSEk+j4uPdSFjQICZXL9VGzF85tI0bN+BR8KvM=;
+ b=JsJsnP99b5nzxi8U/6C5XWcXrLHkUQK5+aM0UwIGbM/rrSU1eabBq4/79VT1wVF8eq8kvwd8sNcsKld4s8iqnzseiNPdDOfd6GLrOcCJLU3dLGHMScP/ZAYsT53zv0VdPeDjkEmmt8wagvjt7gVI4tfndoktsmAfhEpxAJNGATcbZZj56zamyZEoruszxrlhVqCsfV/ynqYOF4XErzh83OxRukBfKiQLFK0G2Q+DwGnOoXzlSqoMhkqzijFRRTqClFySOzkJc6Q/oxSaW4KstRoGoEd+bL6leiEerEWF/wcIKE2djhJcKBAPzPmjrCtLNRUE6aV+8/A73BX3z70Saw==
+Received: from IA1PR12MB9030.namprd12.prod.outlook.com (2603:10b6:208:3f2::22)
+ by MN2PR12MB4255.namprd12.prod.outlook.com (2603:10b6:208:198::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.17; Mon, 1 Jun 2026
+ 06:25:50 +0000
+Received: from IA1PR12MB9030.namprd12.prod.outlook.com
+ ([fe80::2c1d:ed27:b53a:97d2]) by IA1PR12MB9030.namprd12.prod.outlook.com
+ ([fe80::2c1d:ed27:b53a:97d2%6]) with mapi id 15.21.0071.014; Mon, 1 Jun 2026
+ 06:25:50 +0000
+From: Manish Honap <mhonap@nvidia.com>
+To: Jonathan Cameron <jic23@kernel.org>
+CC: Alex Williamson <alwilliamson@nvidia.com>, Shameer Kolothum Thodi
+ <skolothumtho@nvidia.com>, Ankit Agrawal <ankita@nvidia.com>,
+ "mst@redhat.com" <mst@redhat.com>, "imammedo@redhat.com"
+ <imammedo@redhat.com>, "anisinha@redhat.com" <anisinha@redhat.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "shannon.zhaosl@gmail.com"
+ <shannon.zhaosl@gmail.com>, "jonathan.cameron@huawei.com"
+ <jonathan.cameron@huawei.com>, "fan.ni@samsung.com" <fan.ni@samsung.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>, "richard.henderson@linaro.org"
+ <richard.henderson@linaro.org>, "marcel.apfelbaum@gmail.com"
+ <marcel.apfelbaum@gmail.com>, "clg@redhat.com" <clg@redhat.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>, "dan.j.williams@intel.com"
+ <dan.j.williams@intel.com>, "dave.jiang@intel.com" <dave.jiang@intel.com>,
+ "alejandro.lucero-palau@amd.com" <alejandro.lucero-palau@amd.com>, Vikram
+ Sethi <vsethi@nvidia.com>, Neo Jia <cjia@nvidia.com>, "Tarun Gupta (SW-GPU)"
+ <targupta@nvidia.com>, Zhi Wang <zhiw@nvidia.com>, Krishnakant Jaju
+ <kjaju@nvidia.com>, "linux-cxl@vger.kernel.org" <linux-cxl@vger.kernel.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Manish
+ Honap <mhonap@nvidia.com>
+Subject: RE: [RFC 1/9] hw/arm/virt: Add CXL FMWS PA window for device memory
+Thread-Topic: [RFC 1/9] hw/arm/virt: Add CXL FMWS PA window for device memory
+Thread-Index: AQHc1nGdihclCKZIH0Gl4GzzPan94bYVbGMAgBP7NNA=
+Date: Mon, 1 Jun 2026 06:25:50 +0000
+Message-ID: <IA1PR12MB9030BFF376C4D5B62A672AB8BD152@IA1PR12MB9030.namprd12.prod.outlook.com>
+References: <20260427181235.3003865-1-mhonap@nvidia.com>
+ <20260427181235.3003865-2-mhonap@nvidia.com>
+ <20260519134014.474a8289@jic23-huawei>
+In-Reply-To: <20260519134014.474a8289@jic23-huawei>
+Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|KU4PR06MB8361:EE_
-x-ms-office365-filtering-correlation-id: ddf52236-ce14-4bb6-84af-08debf88846a
+x-ms-traffictypediagnostic: IA1PR12MB9030:EE_|MN2PR12MB4255:EE_
+x-ms-office365-filtering-correlation-id: 699d0f27-222f-4a8d-38cb-08debfa6a035
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|7416014|376014|1800799024|18002099003|22082099003|38070700021|921020|56012099006;
-x-microsoft-antispam-message-info: 1FlsZD4K/uzdYFBCTjx/MZJMhoeJqAeeYOUzk6EgP7Powueblb03BriK8mvt6vDFKUDyS4KpmUlpvtaSl99U7bmsRPWnMWwOB/f0qiKBhc0K2c2kbTIscNI9ltTUARcVGjejX05x/QDuB8LUgjKHzOQZt3uaMmkpxnseb6aRVSHsKwYkVRsnVGPzxep0Qr8m7MgqV39HFzHo4qnRLFZEhjKaaIvrLWkkNOX14xEr93zWi9+OCSjRTZS/jFsZrdS/Q5BJCFuXHogdhxUOCg8YrFc/tDxHwbo1M7Ym8ebXToGxnOFM/2NjYLaIzL6eVVibnPfbkNOXS13Wti+RwJmm0XwRIBtyX+pR0TmRwGkIJNvGGGQEPcSiosXZVE6hq3OeDyED/Ey0djJ5pMsYjurS2pSLz9duIGuCpenmiQStrZBlkt4672dXfdf02BF1X259RusgsvWrk/INniSQ2l75MiE8aPwSeXyGTBA/KCFTu+foZtsxQ1kiEPYJDq3xJMkk3OAUMwzzg21CFTcqLSjl1Hl2lLfRqhrs9yAMCHwwHYT0CDSRpzhQOW9JWSIHoviuXoEH7Jshr9/Iqxot0tY2g3LDkfhuYrCNyADL5b8s+HyRwBh2Kpd9nv+8ywEoMfFYgW2CecHJ5Q9tw8rCEaCAP7hbn5Z+YqlOduCyLOJ0xpVaEzXXF6x3qgJpkKEkbr0VwLr2x+6RCftxkV9AAGovjWgi76UBJucnuJMHs4+E/Nw0Nh7qjw5dIZyJlxCqHk+ZEveJbVtzJdT/VKHCVBaJjA==
+ ARA:13230040|1800799024|366016|7416014|376014|56012099006|4143699003|5023799004|18002099003|22082099003|11063799006|6133799003|38070700021;
+x-microsoft-antispam-message-info: iF9kiRm8y58dayzZQpe1S9dzW8gT9JKd1pNjCvTkdRC1tcpwj5n6kEpfwQ2SCPy8eAn59VTIqUQfz/IDehV5hpW+t8uSq6b9Cr0qqIpjGmclbLkmGBEjhZCuH75dS1fLDC3eRiR7Cwtd6sxodD0KmBNpJeWFERsO3X0N5VwAu44cTlJ8LHWDbaYTTDsN2pwgFGGhfEwATUjNTFXFA50SiukD12EpSul6sE9cnNQPSnN4AepHVIwieIi0hiEMDDFThHxOJt2xaWx5G8cylLtQAxZgGHQi4UEzvq+gJSzcebAG4vr+KlSCsLXOH3z5eG2omB/RRpNt+OEAjzMhWQfQHFvt3VIt4RxWFfFl+JmgGhAnrJ28quVbkcpSykm0r2eDxpINh4r/6qvFO672P7EcxR6Goss15ta1BWclXD4mePtKWWnR0SFY4aiMuANxM7ZDeIGuB4fyMlfiPJBim6McbG5d/nnKpkQs320IbDc8lDJ/syOKx0Xg0dP5CFnces4xtOFWRFTvrlB590uWo61JjyDf57IkrrR9XqJibpBJoXz1T0CvaxItzELGANRSxDVQ8EMp8gLkw+uH+QEkhpBx9X+2O524pUHJogWRqgnWsGhn6peOVXGMeRRPyJ78IOtRrCOOZlzRjyc0gSOCKoOw2Y1BoksBBt/KmJaUk1d4hqsLWvDE8Wldj9XVD1A8gn+AWW4nTKpEjj6V/1TgtEnKiNA8vRnjah09q5Z0Ias7ZL/+7JV35EEdJsD0N7M3mhyC
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(7416014)(376014)(1800799024)(18002099003)(22082099003)(38070700021)(921020)(56012099006);
- DIR:OUT; SFP:1102; 
+ IPV:NLI; SFV:NSPM; H:IA1PR12MB9030.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(7416014)(376014)(56012099006)(4143699003)(5023799004)(18002099003)(22082099003)(11063799006)(6133799003)(38070700021);
+ DIR:OUT; SFP:1101; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?tN9IiICvx4BcThRv3ui1TwzmCgEsIS48DjnCvKOho7m23LOt3GDWWC68v6?=
- =?iso-8859-1?Q?xSIZCWFCR1ER6QoHpy4bEjM/l4LxbkuYCEmtwExO5uZwuYDclWtK5319rm?=
- =?iso-8859-1?Q?1vOKgrYu5qujt2ASouVmEhKl3nqhmbisx99bz1atNNkMwsAWSb47ku77/g?=
- =?iso-8859-1?Q?l4+YT5KuIsGSomvymGWrkF/6P5At3IkTp8vo/64uHveb2MdxaMzuydV3g+?=
- =?iso-8859-1?Q?WzaJB0OSDvhWmjiMrSpQAtkVJjChu1JiROJlwwrTJw+xCrCpXswy5r3lPm?=
- =?iso-8859-1?Q?qPRBn1N4tqQJci38XLb/NIYwbuEqueQrvp2pW/31zyjZmnhA3Hvbsxvp7b?=
- =?iso-8859-1?Q?nMZU2ZOOk4t2WmtQJQWg2Iy4MTY2mGx3cJJuc4JW0lUmNpF/PylG+fkrtA?=
- =?iso-8859-1?Q?k9zTkRU8P2NcBC7KH8HgrMP5mWpKxLaRwIlyBPKEssFXCyyzPBJwybuGXG?=
- =?iso-8859-1?Q?QxyzWRYCwfDzPe2RjM3o9LPK6BYI0KdAw47mn+XzHw/0KyKXNRCuDwxpsD?=
- =?iso-8859-1?Q?/1/7eqxuGZk3dwHc8sTnQ2F9yGzmYGVNM2JpcM+4SBopmbiRJTDKfRLQxI?=
- =?iso-8859-1?Q?ZAgeYBPiPp7qsrpiHhykH43kAVbpyWM7fFY4cNfYllsF0f2aNLNvFipUis?=
- =?iso-8859-1?Q?wur2ZZ0m27zDz4rTPYHxJ0UvaGMY0fcz6efSU/8l3frrhneFy8k/hrM4GR?=
- =?iso-8859-1?Q?L3XENqEFnd3vnaQ+7BMnLvjYjkrDJ9ceVa2HrEqoFucshOKCADBx92/9ye?=
- =?iso-8859-1?Q?56hueVfQJ+fVtYaCFBJ56dbuV4D9Tx5gLOn/ub9Z/q4xsdUfbHG/wvuVcp?=
- =?iso-8859-1?Q?UOBI9OsGGKZkRrNz0Mi1myQlsaIjC9M5Qyyorkr3puFUV7LVSqm+o+sk4w?=
- =?iso-8859-1?Q?+KEubFqTlvKU/NqhP02x+dCZ2SkF4LKNO3Vunkg4nb8sRHztkX0Mxy6P5E?=
- =?iso-8859-1?Q?aq7tkwElL5R7xQZ3DTc8pe1QE7+MkaiDItcKppoIMqJIPRJN+dCl4w6r1f?=
- =?iso-8859-1?Q?iysprfhQGE2sgWtuWOTk2IHeZMPqZQuSdiXM1D0UeUevJaukMMEhvqnVgu?=
- =?iso-8859-1?Q?kC8WmGD9sNR6pboGkdyC+hS+SBx0vTZF098aQJwC2zrBpCud3BI3aLQxkK?=
- =?iso-8859-1?Q?B+/4AH8FWzXMdCOQIfkGhKF/CJPxQbsnsVINPSFQvn9NMIm1IVT6oJ6Al2?=
- =?iso-8859-1?Q?xFTYgo2p6X9F+CfE5RSeeLsxv2+nM9ApCkqvsZw5fwXGSJBUXm3NQhgfxM?=
- =?iso-8859-1?Q?yX86wyoGcwyayHE9vggOkSGOifK9w3aj5T11CyQSiXM3YGlMMYNd2AIc4E?=
- =?iso-8859-1?Q?rg8SWim3J6mK1S1nBjVv7DRK7MN1o2pBgmXko0rbHscMkN2ZiL729CV6GY?=
- =?iso-8859-1?Q?B7tYCQEtpyQX8sdpC3ExDD3y2PjvRKm11WntR+Z5gZ7JdbaFu/bxbMg0Yp?=
- =?iso-8859-1?Q?T0yxJdLzaTA0O0oqWL0ASTaBtIaXlUQmBcfHx22N+5BgsF1k3spykPUkr5?=
- =?iso-8859-1?Q?F38D8zjBr0Xq5+c3fxJeDGH4yFv6FDEFGpkVXghwtSQehV2cPiejIRnaT7?=
- =?iso-8859-1?Q?OgZ0rtjUhEqkqvK3d+gR+w9isGnvIcyY8DeU6aUSZ8Ot9s9+GjxRCS5e1u?=
- =?iso-8859-1?Q?o7iD2Qt33gXQF1G1essh77S8viUMVfvUZdTVQSYVOJiZTQVidVkpvuWCJS?=
- =?iso-8859-1?Q?Ut2TCs3QpHefizHOu/QAyb35Vd0I7UZ/9M3ITP5E3z1noh5mkg0xJnNgN6?=
- =?iso-8859-1?Q?IoZOOn2TlWp0b0to3CU1IA0OaOgm4xbXraAXs80YIogXWTfqwF8GfWx9DF?=
- =?iso-8859-1?Q?vlLw8jcydQ=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?i+jDtsie4TdEdnDaH+K40iDjp4bJOQCQumq5mAyZPe9CCpx+yux9ybA2IwoS?=
+ =?us-ascii?Q?S/pAwySAk+ygHMx2b8sVsMeRnkdXsnWcgH2Mk6aaZV470A4OPgv4tKnTZstF?=
+ =?us-ascii?Q?iKcZhRt9aGAJ2dyQQUnZgqWJVetiFcooRK9iLm5ADdJ9vvVlQJ+RB4/OA7vS?=
+ =?us-ascii?Q?W3UY0L5POXMBy/pABWY6ajV1sIWJ+udzh/5xToBl4pNNQjxFDZJFur6ttBNe?=
+ =?us-ascii?Q?x6S/X9xi9e9kbkz3FTv4Q6kZS4haLD4WQXehVCjR2ZGEC/4DqOgCUqSBlmD3?=
+ =?us-ascii?Q?HgxCuQYnAd0zhrxzvjwkpobmgsvrjPllDgshgNFAh+Zx+z8luELWfX+6U6LA?=
+ =?us-ascii?Q?Hwko+O19KbplKWrpG0AQDvtaPnN5RW2G7nOZCSueLGbjRcmgbcBqeBC+Pyqi?=
+ =?us-ascii?Q?RRly6zFoa9CJON2y9SXVa56dnAI0y9uENR1FBhZs6GFWVdJRS3/FMaKyHcw/?=
+ =?us-ascii?Q?Q30uJjvs4jGkPWVOo+ta3zmBFPpGtsM0dpo6gBzb4fAWFtrortx2K90z7+Mt?=
+ =?us-ascii?Q?gzQGCRlPX5zOUeBWl6cZOcSc++ogudEAQ4otPsG93BoJenI7GFBFeaxjQgs3?=
+ =?us-ascii?Q?2wFXb9tNp3v5lC58Bjmh1xeYo17He0lzgDU39kAEcLmsG9gS6fxKN7ysQxN1?=
+ =?us-ascii?Q?aQrsNVzF9Z1Ivso8OdNcXXicrY0gsa1E0Qd4kH50t9sn5uNR4ATeTUisRVVE?=
+ =?us-ascii?Q?iX3ssnddEaUJH/DC8pJdmq0vNABYMUTO0XQ8tYFXsVaGW1mIjhamlF7beNyo?=
+ =?us-ascii?Q?v7OqlLv7oq+Lr/tIrL4XtqukLLuB8madlZy+ShmCtBZUz2EKNZ+Np7wgifCv?=
+ =?us-ascii?Q?3naXB+W25CVoDKL5NX9mwoVM0DELaPJmoKYQuk7aB86Y/Fcks7I1pCaU20Ry?=
+ =?us-ascii?Q?pY1/yiT9vjdVYVAuSDBsG0E/0btm7Y10LaVCe9zxtg5dy2R37+S1vFsVhgBh?=
+ =?us-ascii?Q?t6FDTjZ4adP9yTFyp77GmdeOkqq/wpt7XCgFgWOQxAu+r3Ew2YA3eH346BYr?=
+ =?us-ascii?Q?+cs2BfV8zUBAFSJffpTdoQqFnTS/3HtrTNdfNl1OH2QEk5njB4sknDMZUQ3C?=
+ =?us-ascii?Q?kZA+UZ1Anu5wQd3zURnVHNUV6t2dN0kMcUptYshsNV3I9kTBxdZ3NOzBx8UO?=
+ =?us-ascii?Q?k9QG8Pn2MLY0Dp6B8vqTQ9sd2pibP94ZTbfxBixd6lhTFzkFM+noJmMzWVUl?=
+ =?us-ascii?Q?OfNCZ1O3Ygj8xDbub4VZJ9hMbDqyQpyrlkM8vwRSGakmpxqaHkdWapRz0JTl?=
+ =?us-ascii?Q?dWrZAZ6dPdSSRTAgn/D/lNX68kN0Z9j0sZHqxWH7w0EvTmV9IdIwBB2j+bPA?=
+ =?us-ascii?Q?1dB+1i1HTtwDdu3lhqbRBg9iZrnPyJV8meGbrKiIOarTXVpBH5k39OyKTd1x?=
+ =?us-ascii?Q?ZZZGqx24GGK79ZtjihsnXa/bobBMEVkYVF4tpDqvECiDyxWAGqrch7UcmiDG?=
+ =?us-ascii?Q?mEH8RaaPhdrFBwm+9cZKBwTCVWc0lmqKmO7e7vsVbrmyPPCJAAd6jUUetMTB?=
+ =?us-ascii?Q?e2CbEQVJJxjtleTDN83z+vl9pTtYJpFPgwRWqqfUUzkv8qPbBGpVAEQ5GktR?=
+ =?us-ascii?Q?HJ6nB4yEBjr4HTIkn5IIksBdeAn/0aaqUFX+tVIVH2NOBb2ajIxUzC+yvCfv?=
+ =?us-ascii?Q?4/vGqlPhhv2T6jrQNTUPBQ+t6qdw8CXLzkc61x0Kzv5xEgQj4VQermvPDBK0?=
+ =?us-ascii?Q?1VCe9c59+1IA6zgMKJXOQGnvuZXDKisd7PIWmJB4Jysl4f3O?=
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: emSuMKkMhmeznk6Pk7z2WToZ5Ka9rRq5Ll4XJXYykPmVdBamw6TcxfWVLsv4eOAYm8DyaJFRh9zGHAFR/7OmkCbogtBr/rIyI9LCaIE/ifl57g9Wq13iky+V64Lxl/4Vo5KNTwb8HN6qLzs5qYdlj7FsNQZVQ5ro45i85tKkDnvbpeGel5Q8FZqmG70cp+xiNxJjvc6v53IQkDlekHFo5kPdtpICZzVGMs1Tp5qyp5XOOCXngTEN84HZdDTf4ytcAMwPXNoMgGLZsmd2ohAAycFztlRY60i3gLMm7SJk1DbGL0tDCuYxcAvY8RiTHel6YAPUgkynrG5JVV+sbY9pcw==
-X-OriginatorOrg: aspeedtech.com
+X-OriginatorOrg: Nvidia.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ddf52236-ce14-4bb6-84af-08debf88846a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jun 2026 02:50:19.1163 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: IA1PR12MB9030.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 699d0f27-222f-4a8d-38cb-08debfa6a035
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jun 2026 06:25:50.5354 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: L6IZqmOtBltmQ+xPAGRyuO5CnnZ7y7Hckf5Yq4bVEqz8eDXMVpD+BzrNcP4yvxNycH/FpM1KZYtGAPkcL86X7ZwVmnnLqF6dlUqOuj327g8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KU4PR06MB8361
-Received-SPF: pass client-ip=2a01:111:f403:c405::5;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=TYPPR03CU001.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-MS-Exchange-CrossTenant-userprincipalname: 1X/wL8m2X3bHLFiaPbiLfDJbuo7WlucGkcI6ZFtzBxx5Utm6RYCQ5JNflV26cCH2BXwjn1hB6yoDy8GOnSqNmA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4255
+Received-SPF: permerror client-ip=2a01:111:f403:c105::5;
+ envelope-from=mhonap@nvidia.com;
+ helo=CH5PR02CU005.outbound.protection.outlook.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -150,141 +160,276 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Replace the legacy type_register_static()/type_init() registration=0A=
-pattern with the modern DEFINE_TYPES() macro.=0A=
-=0A=
-Inline 7 standalone TypeInfo variables (aspeed_gpio_info as abstract=0A=
-base, aspeed_2400_gpio_info, aspeed_2500_gpio_info,=0A=
-aspeed_2600_1_8v_gpio_info, aspeed_2600_3_3v_gpio_info,=0A=
-aspeed_1030_gpio_info, aspeed_2700_gpio_info)=0A=
-directly into the 'aspeed_gpio_types[]'=0A=
-array, removing the need for separate declarations.=0A=
-=0A=
-No functional change.=0A=
-=0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
----=0A=
- hw/gpio/aspeed_gpio.c | 107 ++++++++++++++++++------------------------=0A=
- 1 file changed, 46 insertions(+), 61 deletions(-)=0A=
-=0A=
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c=0A=
-index ef321b7386..1cf6f5df55 100644=0A=
---- a/hw/gpio/aspeed_gpio.c=0A=
-+++ b/hw/gpio/aspeed_gpio.c=0A=
-@@ -1620,66 +1620,51 @@ static void aspeed_gpio_2700_class_init(ObjectClass=
- *klass, const void *data)=0A=
-     agc->reg_ops =3D &aspeed_gpio_2700_ops;=0A=
- }=0A=
- =0A=
--static const TypeInfo aspeed_gpio_info =3D {=0A=
--    .name           =3D TYPE_ASPEED_GPIO,=0A=
--    .parent         =3D TYPE_SYS_BUS_DEVICE,=0A=
--    .instance_size  =3D sizeof(AspeedGPIOState),=0A=
--    .class_size     =3D sizeof(AspeedGPIOClass),=0A=
--    .class_init     =3D aspeed_gpio_class_init,=0A=
--    .abstract       =3D true,=0A=
--};=0A=
--=0A=
--static const TypeInfo aspeed_gpio_ast2400_info =3D {=0A=
--    .name           =3D TYPE_ASPEED_GPIO "-ast2400",=0A=
--    .parent         =3D TYPE_ASPEED_GPIO,=0A=
--    .class_init     =3D aspeed_gpio_ast2400_class_init,=0A=
--    .instance_init  =3D aspeed_gpio_init,=0A=
--};=0A=
--=0A=
--static const TypeInfo aspeed_gpio_ast2500_info =3D {=0A=
--    .name           =3D TYPE_ASPEED_GPIO "-ast2500",=0A=
--    .parent         =3D TYPE_ASPEED_GPIO,=0A=
--    .class_init     =3D aspeed_gpio_2500_class_init,=0A=
--    .instance_init  =3D aspeed_gpio_init,=0A=
--};=0A=
--=0A=
--static const TypeInfo aspeed_gpio_ast2600_3_3v_info =3D {=0A=
--    .name           =3D TYPE_ASPEED_GPIO "-ast2600",=0A=
--    .parent         =3D TYPE_ASPEED_GPIO,=0A=
--    .class_init     =3D aspeed_gpio_ast2600_3_3v_class_init,=0A=
--    .instance_init  =3D aspeed_gpio_init,=0A=
--};=0A=
--=0A=
--static const TypeInfo aspeed_gpio_ast2600_1_8v_info =3D {=0A=
--    .name           =3D TYPE_ASPEED_GPIO "-ast2600-1_8v",=0A=
--    .parent         =3D TYPE_ASPEED_GPIO,=0A=
--    .class_init     =3D aspeed_gpio_ast2600_1_8v_class_init,=0A=
--    .instance_init  =3D aspeed_gpio_init,=0A=
--};=0A=
--=0A=
--static const TypeInfo aspeed_gpio_ast1030_info =3D {=0A=
--    .name           =3D TYPE_ASPEED_GPIO "-ast1030",=0A=
--    .parent         =3D TYPE_ASPEED_GPIO,=0A=
--    .class_init     =3D aspeed_gpio_1030_class_init,=0A=
--    .instance_init  =3D aspeed_gpio_init,=0A=
--};=0A=
--=0A=
--static const TypeInfo aspeed_gpio_ast2700_info =3D {=0A=
--    .name           =3D TYPE_ASPEED_GPIO "-ast2700",=0A=
--    .parent         =3D TYPE_ASPEED_GPIO,=0A=
--    .class_init     =3D aspeed_gpio_2700_class_init,=0A=
--    .instance_init  =3D aspeed_gpio_init,=0A=
-+static const TypeInfo aspeed_gpio_types[] =3D {=0A=
-+    {=0A=
-+        .name           =3D TYPE_ASPEED_GPIO,=0A=
-+        .parent         =3D TYPE_SYS_BUS_DEVICE,=0A=
-+        .instance_size  =3D sizeof(AspeedGPIOState),=0A=
-+        .class_size     =3D sizeof(AspeedGPIOClass),=0A=
-+        .class_init     =3D aspeed_gpio_class_init,=0A=
-+        .abstract       =3D true,=0A=
-+    },=0A=
-+    {=0A=
-+        .name           =3D TYPE_ASPEED_GPIO "-ast1030",=0A=
-+        .parent         =3D TYPE_ASPEED_GPIO,=0A=
-+        .class_init     =3D aspeed_gpio_1030_class_init,=0A=
-+        .instance_init  =3D aspeed_gpio_init,=0A=
-+    },=0A=
-+    {=0A=
-+        .name           =3D TYPE_ASPEED_GPIO "-ast2400",=0A=
-+        .parent         =3D TYPE_ASPEED_GPIO,=0A=
-+        .class_init     =3D aspeed_gpio_ast2400_class_init,=0A=
-+        .instance_init  =3D aspeed_gpio_init,=0A=
-+    },=0A=
-+    {=0A=
-+        .name           =3D TYPE_ASPEED_GPIO "-ast2500",=0A=
-+        .parent         =3D TYPE_ASPEED_GPIO,=0A=
-+        .class_init     =3D aspeed_gpio_2500_class_init,=0A=
-+        .instance_init  =3D aspeed_gpio_init,=0A=
-+    },=0A=
-+    {=0A=
-+        .name           =3D TYPE_ASPEED_GPIO "-ast2600",=0A=
-+        .parent         =3D TYPE_ASPEED_GPIO,=0A=
-+        .class_init     =3D aspeed_gpio_ast2600_3_3v_class_init,=0A=
-+        .instance_init  =3D aspeed_gpio_init,=0A=
-+    },=0A=
-+    {=0A=
-+        .name           =3D TYPE_ASPEED_GPIO "-ast2600-1_8v",=0A=
-+        .parent         =3D TYPE_ASPEED_GPIO,=0A=
-+        .class_init     =3D aspeed_gpio_ast2600_1_8v_class_init,=0A=
-+        .instance_init  =3D aspeed_gpio_init,=0A=
-+    },=0A=
-+    {=0A=
-+        .name           =3D TYPE_ASPEED_GPIO "-ast2700",=0A=
-+        .parent         =3D TYPE_ASPEED_GPIO,=0A=
-+        .class_init     =3D aspeed_gpio_2700_class_init,=0A=
-+        .instance_init  =3D aspeed_gpio_init,=0A=
-+    }=0A=
- };=0A=
- =0A=
--static void aspeed_gpio_register_types(void)=0A=
--{=0A=
--    type_register_static(&aspeed_gpio_info);=0A=
--    type_register_static(&aspeed_gpio_ast2400_info);=0A=
--    type_register_static(&aspeed_gpio_ast2500_info);=0A=
--    type_register_static(&aspeed_gpio_ast2600_3_3v_info);=0A=
--    type_register_static(&aspeed_gpio_ast2600_1_8v_info);=0A=
--    type_register_static(&aspeed_gpio_ast1030_info);=0A=
--    type_register_static(&aspeed_gpio_ast2700_info);=0A=
--}=0A=
--=0A=
--type_init(aspeed_gpio_register_types);=0A=
-+DEFINE_TYPES(aspeed_gpio_types)=0A=
--- =0A=
-2.43.0=0A=
+
+
+> -----Original Message-----
+> From: Jonathan Cameron <jic23@kernel.org>
+> Sent: 19 May 2026 18:10
+> To: Manish Honap <mhonap@nvidia.com>
+> Cc: Alex Williamson <alwilliamson@nvidia.com>; Shameer Kolothum Thodi
+> <skolothumtho@nvidia.com>; Ankit Agrawal <ankita@nvidia.com>;
+> mst@redhat.com; imammedo@redhat.com; anisinha@redhat.com;
+> eric.auger@redhat.com; peter.maydell@linaro.org;
+> shannon.zhaosl@gmail.com; jonathan.cameron@huawei.com;
+> fan.ni@samsung.com; pbonzini@redhat.com; richard.henderson@linaro.org;
+> marcel.apfelbaum@gmail.com; clg@redhat.com; cohuck@redhat.com;
+> dan.j.williams@intel.com; dave.jiang@intel.com; alejandro.lucero-
+> palau@amd.com; Vikram Sethi <vsethi@nvidia.com>; Neo Jia
+> <cjia@nvidia.com>; Tarun Gupta (SW-GPU) <targupta@nvidia.com>; Zhi Wang
+> <zhiw@nvidia.com>; Krishnakant Jaju <kjaju@nvidia.com>; linux-
+> cxl@vger.kernel.org; kvm@vger.kernel.org; qemu-devel@nongnu.org; qemu-
+> arm@nongnu.org
+> Subject: Re: [RFC 1/9] hw/arm/virt: Add CXL FMWS PA window for device
+> memory
+>=20
+> External email: Use caution opening links or attachments
+>=20
+>=20
+> On Mon, 27 Apr 2026 23:42:27 +0530
+> <mhonap@nvidia.com> wrote:
+>=20
+> > From: Manish Honap <mhonap@nvidia.com>
+> >
+> > CXL VFIO passthrough needs a stable guest physical address range for
+> > device memory (DPA) that falls inside a CFMWS entry the guest
+> > discovers from ACPI CEDT. Without a dedicated range in the address
+> > map, the HDM decoder has nowhere to point.
+> >
+> > Add VIRT_HIGH_CXL_MMIO immediately after the second PCIe MMIO window.
+> > It gets its own highmem_cxl_mmio flag in VirtMachineState rather than
+> > sharing highmem_cxl, so the two slots are independently controllable
+> > even though both are currently tied to CXL bridge presence.
+>=20
+> Can we clearly state here what they are.  highmem_cxl is the root bridge
+> registers. I'm not entirely sure I yet understand what highmem_cxl_mmio
+>=20
+> >
+> > The base and size flow through GPEXConfig.cxl_mmio to
+> > acpi_dsdt_add_gpex(), which carves out a QWord memory descriptor in
+> > the first CXL root bridge's _CRS. The CFMWS window is system-wide, so
+> > only the first CXL bridge gets the descriptor - subsequent ones would
+> > produce duplicate resource claims for the same range.
+>=20
+> I don't follow. CFMWS are not system wide. They refer to one or more of
+> the root bridges. I suppose you could argue that the 'or more' bit makes
+> them kind of system wide. Right now I'm not even sure why they are in
+> CRS at all as opposed to being obtained from CEDT.
+>=20
+> Maybe a spec reference for why a bridge should be claiming these
+> regions?
+>=20
+> I'm not understanding yet why we can't use the existing CFMWS support so
+> please add information on that tot his commit message.
+>=20
+>=20
+> >
+> > build_crs() already emits the bridge's own 64-bit ranges into crs.
+> > The CFMWS window is a separate system-wide range, so only that window
+> > is appended as a new QWord descriptor; the bridge ranges are not
+> > re-emitted. A warn_report() fires if the CFMWS window overlaps any
+> > existing bridge 64-bit range, since that would indicate an address
+> > layout conflict.
+> >
+> > Signed-off-by: Zhi Wang <zhiw@nvidia.com>
+> > Signed-off-by: Manish Honap <mhonap@nvidia.com>
+> > ---
+> >  hw/arm/virt-acpi-build.c   |  5 +++++
+> >  hw/arm/virt.c              |  9 +++++++++
+> >  hw/pci-host/gpex-acpi.c    | 40
+> ++++++++++++++++++++++++++++++++++++++
+> >  include/hw/arm/virt.h      |  2 ++
+> >  include/hw/pci-host/gpex.h |  1 +
+> >  5 files changed, 57 insertions(+)
+> >
+> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c index
+> > 591cfc993c..863e0680fb 100644
+> > --- a/hw/arm/virt-acpi-build.c
+> > +++ b/hw/arm/virt-acpi-build.c
+> > @@ -176,6 +176,11 @@ static void acpi_dsdt_add_pci(Aml *scope, const
+> MemMapEntry *memmap,
+> >          cfg.mmio64 =3D memmap[VIRT_HIGH_PCIE_MMIO];
+> >      }
+> >
+> > +    if (vms->highmem_cxl) {
+> > +        cfg.cxl_mmio.base =3D memmap[VIRT_HIGH_CXL_MMIO].base;
+> > +        cfg.cxl_mmio.size =3D memmap[VIRT_HIGH_CXL_MMIO].size;
+> > +    }
+> > +
+> >      acpi_dsdt_add_gpex(scope, &cfg);
+> >      QLIST_FOREACH(bus, &vms->bus->child, sibling) {
+> >          if (pci_bus_is_cxl(bus)) {
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c index
+> > ec0d8475ca..fa07819401 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -211,6 +211,8 @@ static const MemMapEntry base_memmap[] =3D {
+> > #define DEFAULT_HIGH_PCIE_MMIO_SIZE_GB 512  #define
+> > DEFAULT_HIGH_PCIE_MMIO_SIZE (DEFAULT_HIGH_PCIE_MMIO_SIZE_GB * GiB)
+> >
+> > +#define DEFAULT_HIGH_CXL_MMIO_SIZE  DEFAULT_HIGH_PCIE_MMIO_SIZE
+> > +
+> >  /*
+> >   * Highmem IO Regions: This memory map is floating, located after the
+> RAM.
+> >   * Each MemMapEntry base (GPA) will be dynamically computed,
+> > depending on the @@ -237,6 +239,11 @@ static MemMapEntry
+> extended_memmap[] =3D {
+> >      [VIRT_HIGH_PCIE_ECAM] =3D     { 0x0, 256 * MiB },
+> >      /* Second PCIe window */
+> >      [VIRT_HIGH_PCIE_MMIO] =3D     { 0x0, DEFAULT_HIGH_PCIE_MMIO_SIZE }=
+,
+> > +    /*
+> > +     * CXL FMWS guest PA window - separate from PCIe MMIO so the two
+> are
+> > +     * independently sizeable. Same default size for now.
+> > +     */
+> > +    [VIRT_HIGH_CXL_MMIO] =3D      { 0x0, DEFAULT_HIGH_CXL_MMIO_SIZE },
+> >      /* Any CXL Fixed memory windows come here */
+>=20
+> Why not use the infra this comment is talking about?
+
+Hello Jonathan,
+
+You're right that the new VIRT_HIGH_CXL_MMIO slot is redundant.
+I will use the existing CFMWS support in V2.
+
+>=20
+> >  };
+> >
+> > @@ -1724,6 +1731,7 @@ static void
+> create_cxl_host_reg_region(VirtMachineState *vms)
+> >                         vms->memmap[VIRT_CXL_HOST].size);
+> >      memory_region_add_subregion(sysmem, vms-
+> >memmap[VIRT_CXL_HOST].base, mr);
+> >      vms->highmem_cxl =3D true;
+> > +    vms->highmem_cxl_mmio =3D true;
+> >  }
+> >
+> >  static void create_platform_bus(VirtMachineState *vms) @@ -1897,6
+> > +1905,7 @@ static inline bool
+> *virt_get_high_memmap_enabled(VirtMachineState *vms,
+> >          &vms->highmem_cxl,
+> >          &vms->highmem_ecam,
+> >          &vms->highmem_mmio,
+> > +        &vms->highmem_cxl_mmio,
+> >      };
+> >
+> >      assert(ARRAY_SIZE(extended_memmap) - VIRT_LOWMEMMAP_LAST =3D=3D di=
+ff
+> > --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c index
+> > d9820f9b41..7de57bbc46 100644
+> > --- a/hw/pci-host/gpex-acpi.c
+> > +++ b/hw/pci-host/gpex-acpi.c
+> > @@ -7,6 +7,7 @@
+> >  #include "hw/pci/pci_bridge.h"
+> >  #include "hw/pci/pcie_host.h"
+> >  #include "hw/acpi/cxl.h"
+> > +#include "qemu/error-report.h"
+> >
+> >  static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq,
+> >                                            Aml *scope, uint8_t
+> > bus_num) @@ -108,6 +109,7 @@ void acpi_dsdt_add_gpex(Aml *scope,
+> struct GPEXConfig *cfg)
+> >      CrsRangeSet crs_range_set;
+> >      CrsRangeEntry *entry;
+> >      int i;
+> > +    bool first_cxl =3D true;
+> >
+> >      /* start to construct the tables for pxb */
+> >      crs_range_set_init(&crs_range_set);
+> > @@ -161,6 +163,44 @@ void acpi_dsdt_add_gpex(Aml *scope, struct
+> GPEXConfig *cfg)
+> >               */
+> >              crs =3D build_crs(PCI_HOST_BRIDGE(BUS(bus)->parent),
+> &crs_range_set,
+> >                              cfg->pio.base, 0, 0, 0);
+> > +            if (is_cxl && first_cxl && cfg->cxl_mmio.size) {
+> > +                uint64_t cfmws_end =3D cfg->cxl_mmio.base +
+> > +                                     cfg->cxl_mmio.size - 1;
+> > +
+> > +                /*
+> > +                 * The CXL Fixed Memory Window (CFMWS) is a system-
+> wide GPA
+> > +                 * range.  Only the first CXL root bridge emits the
+> QWord
+> > +                 * descriptor; adding it to every bridge would give
+> the OS
+> > +                 * duplicate resource claims for the same range.
+> > +                 *
+> > +                 * build_crs() has already appended the bridge's own
+> 64-bit
+> > +                 * ranges into crs.  Do not copy them again here;
+> only append
+> > +                 * the CFMWS window itself as a new QWord descriptor.
+> > +                 *
+> > +                 * Warn if the CFMWS window overlaps any range
+> already claimed
+> > +                 * by the bridge; in the current address layout they
+> should be
+> > +                 * disjoint, but catch it early if the layout ever
+> changes.
+> > +                 */
+> > +                for (i =3D 0; i < crs_range_set.mem_64bit_ranges->len;
+> i++) {
+> > +                    entry =3D
+> g_ptr_array_index(crs_range_set.mem_64bit_ranges,
+> > +                                              i);
+> > +                    if (entry->base <=3D cfmws_end &&
+> > +                        entry->limit >=3D cfg->cxl_mmio.base) {
+> > +                        warn_report("CXL CFMWS [0x%"PRIx64"-
+> 0x%"PRIx64"] "
+> > +                                    "overlaps CXL root bridge 64-bit
+> range "
+> > +                                    "[0x%"PRIx64"-0x%"PRIx64"]",
+> > +                                    cfg->cxl_mmio.base, cfmws_end,
+> > +                                    entry->base, entry->limit);
+> > +                    }
+> > +                }
+> > +                aml_append(crs,
+> > +                    aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED,
+> > +                        AML_MAX_FIXED, AML_NON_CACHEABLE,
+> AML_READ_WRITE,
+> > +                        0x0000, cfg->cxl_mmio.base, cfmws_end,
+> 0x0000,
+> > +                        cfg->cxl_mmio.size));
+> > +                first_cxl =3D false;
+> > +            }
+> > +
+> >              aml_append(dev, aml_name_decl("_CRS", crs));
+> >
+> >              if (is_cxl) {
+> > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h index
+> > 5fcbd1c76f..88bb3c0bdf 100644
+> > --- a/include/hw/arm/virt.h
+> > +++ b/include/hw/arm/virt.h
+> > @@ -91,6 +91,7 @@ enum {
+> >      VIRT_CXL_HOST,
+> >      VIRT_HIGH_PCIE_ECAM,
+> >      VIRT_HIGH_PCIE_MMIO,
+> > +    VIRT_HIGH_CXL_MMIO,
+> >  };
+> >
+> >  typedef enum VirtIOMMUType {
+> > @@ -147,6 +148,7 @@ struct VirtMachineState {
+> >      bool highmem;
+> >      bool highmem_compact;
+> >      bool highmem_cxl;
+> > +    bool highmem_cxl_mmio;  /* VIRT_HIGH_CXL_MMIO window; follows
+> > + highmem_cxl */
+> >      bool highmem_ecam;
+> >      bool highmem_mmio;
+> >      bool highmem_redists;
+> > diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+> > index 1da9c85bce..a7c2e2edf3 100644
+> > --- a/include/hw/pci-host/gpex.h
+> > +++ b/include/hw/pci-host/gpex.h
+> > @@ -43,6 +43,7 @@ struct GPEXConfig {
+> >      MemMapEntry mmio32;
+> >      MemMapEntry mmio64;
+> >      MemMapEntry pio;
+> > +    MemMapEntry cxl_mmio;
+> >      int         irq;
+> >      PCIBus      *bus;
+> >      bool        pci_native_hotplug;
+
 

@@ -4,44 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC138CD6E4A
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Jun 2026 06:34:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0123EC5DF71
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Jun 2026 06:36:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUIhP-0005eG-Ue; Tue, 02 Jun 2026 02:34:04 -0400
+	id 1wUIiZ-00073b-1V; Tue, 02 Jun 2026 02:35:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUIhO-0005dV-FH
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 02:34:02 -0400
-Received: from smtpout4.mo537.mail-out.ovh.net ([51.210.91.23])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUIi3-00062T-6n
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2026 02:34:43 -0400
+Received: from smtpout9.mo536.mail-out.ovh.net ([51.210.91.18])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUIhM-0004bT-KD
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 02:34:01 -0400
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net [51.68.94.138])
- by mo537.mail-out.ovh.net (Postfix) with ESMTPS id 4gV1J40G06z3wx7;
- Tue,  2 Jun 2026 06:33:56 +0000 (UTC)
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net. [127.0.0.1])
- by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Tue,  2 Jun 2026 06:33:55 +0000 (UTC)
-Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.226])
- by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gV1J351Klz7vRS; Tue,  2 Jun 2026 06:33:55 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUIi1-0004l7-Id
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2026 02:34:42 -0400
+Received: from director6.derp.mail-out.ovh.net
+ (director6.derp.mail-out.ovh.net [51.255.22.22])
+ by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4gV1Jt4H0Dz827h;
+ Tue,  2 Jun 2026 06:34:38 +0000 (UTC)
+Received: from director6.derp.mail-out.ovh.net
+ (director6.derp.mail-out.ovh.net. [127.0.0.1])
+ by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Tue,  2 Jun 2026 06:34:38 +0000 (UTC)
+Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.37.33])
+ by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4gV1Jt30Znz7vfP;
+ Tue,  2 Jun 2026 06:34:38 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.2])
  (Authenticated sender: clg@kaod.org)
- by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- 487DA240305F; Tue,  2 Jun 2026 06:33:54 +0000 (UTC)
+ by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 26DAD12E305E;
+ Tue,  2 Jun 2026 06:34:37 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-99G00390792dc9-3525-4b48-9998-1c4f937cbf95,
+ (GARM-114S0085e620c05-f064-4c90-8d86-2c6b3f2816bb,
  E738715FB773EF828F8B902CE3F45C10C1B236B1) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <554cdfc3-13b0-48c9-83e0-b5e43461f7f7@kaod.org>
-Date: Tue, 2 Jun 2026 08:33:53 +0200
+Message-ID: <904f30ab-14ed-41e8-8875-42179c444b56@kaod.org>
+Date: Tue, 2 Jun 2026 08:34:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 08/10] hw/arm/aspeed_ast1040: Introduce I2C support
+Subject: Re: [PATCH v2 09/10] hw/arm/aspeed_ast1040_evb: Introduce onboard I2C
+ device
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -51,7 +52,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20260602052827.1535299-1-jamin_lin@aspeedtech.com>
- <20260602052827.1535299-9-jamin_lin@aspeedtech.com>
+ <20260602052827.1535299-10-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -96,30 +97,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260602052827.1535299-9-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260602052827.1535299-10-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 8742331303049800715
+Content-Transfer-Encoding: 8bit
+x-ovh-tracer-id: 8754434728548740107
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGsdPbpdtqZW4s89iWVZu3Ln7hX5wgdMUkm8ksNwJNSyvQ9eP4CiyJPRR3HzmYHQrlWv5OW6708iwfqMB5mzlqAyBjH1INkxeT9H/75a0OaoI2txS5E9lUl4a9ukv+utztcGWqpbZh6ZpujD/WHavp+7DqobRB4v4o2Pkk2RL2VHNhDuD4JPydPRQWfW+8BF1lVEdGWcv4PxJKZVLR/QeQ5/JhQFAzUK3141cl6rbpnBcVrrcAX3nDl+m7hcfLsuNBdun1W3bMEYiwnw1/FThwDMElrsyEAVHIxHkdDW5ZlyKaN8O5s2QOZ0Eens4KVCtwoB8+vOvf/mQxOFVCR/RLdnfhX8EuhgR+02BV2/FQvfy67WNJUGSVwoRLoCLdRrLK5H+i/Kj1SgQQRcJKxvGw4K7Ijd96RSqBOX6ZcpD0N3h+P3nN3mZsJDPsnKhbwJ09DT4wNpmidg9jxvauDViouSciSeHjWPoqzYSXxUp5KcYYzrnmeKj+bzG1+CGt+9hm7Cc5IoBFQE4vVnOv+kXh8TvTlFQuZ8fuj6XtIXoGbXfDV8ATAb1azmf7yGusXDXXFx/BElRmUditPEdD3IwKdWAWcKhYgs/FuVi1zI8ga3aHNQzHoxaaSy8GHkb+yZ0T0nMUrXxWlO1K/DN2BrpqUDc2E5LLM0LB0o4Fnq3TejA
-DKIM-Signature: a=rsa-sha256; bh=lyhO2gm0RxoCJRj8ffOvC2KxMO8e2tm4Cm+d/g+ijgU=; 
+X-VR-SPAMCAUSE: dmFkZTGbUxDtm0LlJfuMZW4FGwKf0YvPeZl+LMuyhANbUieSobq/xs7MxFyCCXkDbOwejshX8xPriEryFQ6mSViJeM4jmXbMAA9LryL137eatNq4/rzz0WIDbvZAhixdo7fH6IKcGpTuU+Vy119cYEUU/n/OziL18aXVPEW2bUOqeuvYqFauyPBYqeBH4fa5+/yNUwvGLJ5/+u7Tkx4okQ4oVk5n9TxLIvuLsb3JtN2EcgEaOuw++ttlrUTz9i+yU5Dx5LtMxPEzoJ6+RUWqEmhu4gCRFwEqdu3b/f3GFcqbAUppH8Gtdrh+0b0Eb1zMMehB8RidlQdgVwSUg2vtnDiwEQXGgAjPOR8VXUX/fhytRQn1yG4jD48ms9LiCEU8PwEvfCqe46VbSgf1ANyVdx1RhhJhanhO5+FBSHqtNg6g9ysK1tXBJbq85FdwwnL4a1HNtXEIafaBD5/6LjuzeVRXH8s6GHGtGF3KGDaSqJY+0mWhD7egTb6P0+DptrGh5bwmvUxmVTQxTjEw/LOJ87FHs7OSME3ytrY92XsZMjZpVyA5frHqPKAFTJq1iGUsSMcBd/dKhYXZddpw1/LW76Cv6QYngHt80fRAoRACM8kAn1C1i6mVwdiT5nVCsS2jzMIzCG6bcwhjfQGpj0GhsnrpaMAq6qzlE3AGPJQFOXTNFLXvAg
+DKIM-Signature: a=rsa-sha256; bh=GVCInvhL3HQgbnY/IlNhszuV16Sx6VFt0bpT/zMYKxw=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1780382037; v=1;
- b=LHXhcqvWVToE1kSA5IKsRo7r9WhlJteB3ryVKx48GZGH6EuTeF906kOuItSfAmb6fG3VLwvn
- GMer72rZ0IRfsd6k65leXcZv8LhsIxV+xQlzkkPmGrnb+P7N2CX0kQl8aw4b6UQWuAtSr4RvHy+
- hcthM9uZ6DHGFnUT9mho4ExFDiFT2iu/I3+Y330AduBF+Iau8qGniT0hdAfKhbFI3kprR2Hfmsz
- Vh8fUY4DB/nRmL/g2OGK/09jJDkAG3QFsaqootd4/suBUKkmdrQ7mqKLSomjRBJSNRp8M+e/8A8
- jNs2ioXz9/LR++1gf7Ij10cs1oGx8dwEGx8pRlFc5nTsw==
-Received-SPF: pass client-ip=51.210.91.23; envelope-from=clg@kaod.org;
- helo=smtpout4.mo537.mail-out.ovh.net
+ t=1780382079; v=1;
+ b=LwD0Tl/elwYYv+r7TG5TsSeIfmm7xd5TtcIbTZ3uA8tDWSbFqXhKmii9++02sQrm+YVWwWNo
+ mKd8EESk7Yw2JOUB+V2o4Y4F+CIa5lmaXHT4mA53pDHJe8nlSukQXFB5PQ56jTwFfF8O3Ahkbge
+ VyuCIgD1yZ9BiKf6Za2WgRJAGFZF+qCL2x5GXUxghTvTfqAl+JvnmGG0LvEd/1Dk6IbqxHZSGIt
+ Y2hZlqUPF6sX7GEH1Yt2wgRC25G0drizTmsZCCKYGqyCIxAeULvHzOKQKtIPPheg/SSAY7jX4bx
+ 4wfLQJrJ4Pyy5FsGQ01Oa2lX90mMrqrWIVg3Sse2NCmnA==
+Received-SPF: pass client-ip=51.210.91.18; envelope-from=clg@kaod.org;
+ helo=smtpout9.mo536.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,58 +137,84 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 6/2/26 07:28, Jamin Lin wrote:
-> Introduce I2C controller support for the AST1040 SoC model.
+> Introduce onboard I2C device initialization for the AST1040
+> EVB model.
 > 
-> The I2C model type is selected from the SoC type name, allowing the AST1040
-> SoC to use the corresponding aspeed.i2c-ast1040 model.
-> 
-> The I2C controller is mapped at 0x74C0F000 and uses IRQs
-> 64 - 77, with one IRQ assigned per I2C bus.
-
-64 - 79. The irqmap array needs a change too.
-
-> 
-> The controller DRAM link is connected to SRAM1 (HyperRAM)
-> for DMA support.
+> This change adds the initial onboard I2C device setup flow
+> and instantiates a 24C08 SMBus EEPROM device connected to
+> I2C bus 0, matching the current AST1040 EVB hardware design.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/arm/aspeed_ast1040.c | 16 ++++++++++++++++
->   1 file changed, 16 insertions(+)
+>   hw/arm/aspeed_ast1040_evb.c | 18 ++++++++++++++++++
+>   1 file changed, 18 insertions(+)
 > 
-> diff --git a/hw/arm/aspeed_ast1040.c b/hw/arm/aspeed_ast1040.c
-> index 77211ce1f3..6d1cb9b102 100644
-> --- a/hw/arm/aspeed_ast1040.c
-> +++ b/hw/arm/aspeed_ast1040.c
-> @@ -117,6 +117,7 @@ static void aspeed_soc_ast1040_init(Object *obj)
->           object_initialize_child(obj, "sgpio[*]", &s->sgpiom[i],
->                                   "aspeed.sgpio-ast2700");
->       }
-> +    object_initialize_child(obj, "i2c", &s->i2c, TYPE_ASPEED_1040_I2C);
+> diff --git a/hw/arm/aspeed_ast1040_evb.c b/hw/arm/aspeed_ast1040_evb.c
+> index 1d9b55247f..66f08ccbe6 100644
+> --- a/hw/arm/aspeed_ast1040_evb.c
+> +++ b/hw/arm/aspeed_ast1040_evb.c
+> @@ -14,6 +14,7 @@
+>   #include "hw/arm/aspeed_soc.h"
+>   #include "hw/core/qdev-clock.h"
+>   #include "system/system.h"
+> +#include "hw/i2c/smbus_eeprom.h"
 >   
->       object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE);
->       object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVICE);
-> @@ -233,6 +234,21 @@ static void aspeed_soc_ast1040_realize(DeviceState *dev_soc, Error **errp)
->                          aspeed_soc_ast1040_get_irq(s, ASPEED_DEV_SGPIOM0 + i));
->       }
+>   #define AST1040_INTERNAL_FLASH_SIZE (4 * MiB)
+>   /* Main SYSCLK frequency in Hz (400MHz) */
+> @@ -38,12 +39,28 @@ static void aspeed_bic_machine_init(MachineState *machine)
+>       aspeed_connect_serial_hds_to_uarts(bmc);
+>       qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
 >   
-> +    /* I2C */
-> +    object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(&s->sram[1]),
-> +                             &error_abort);
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->i2c), errp)) {
-> +        return;
-> +    }
-> +    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->i2c), 0,
-> +                    sc->memmap[ASPEED_DEV_I2C]);
-> +    for (i = 0; i < ASPEED_I2C_GET_CLASS(&s->i2c)->num_busses; i++) {
-> +        qemu_irq irq = qdev_get_gpio_in(DEVICE(&a->armv7m),
-> +                                        sc->irqmap[ASPEED_DEV_I2C] + i);
-> +        /* The AST1040 I2C controller has one IRQ per bus. */
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c.busses[i]), 0, irq);
+> +    if (amc->i2c_init) {
+> +        amc->i2c_init(bmc);
 > +    }
 > +
->       /* Unimplemented peripherals */
->       aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->pwm),
->                                     "aspeed.pwm",
+>       armv7m_load_kernel(ARM_CPU(first_cpu),
+>                          machine->kernel_filename,
+>                          0,
+>                          AST1040_INTERNAL_FLASH_SIZE);
+>   }
+>   
+> +static void ast1040_evb_i2c_init(AspeedMachineState *bmc)
+> +{
+> +    AspeedSoCState *soc = bmc->soc;
+> +
+> +    /* U10 24C08 connects to SDA/SCL Group 1 by default */
+> +    uint8_t *eeprom_buf = g_malloc0(32 * KiB);
+
+
+The smbus-eeprom device's internal buffer is 256 bytes.
+
+We have been copy/pasting this 32 * KiB size for a while it seems but
+SMBUS_EEPROM_SIZE would be enough.
+
+Anyhow,
+
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
+
+> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50, eeprom_buf);
+> +
+> +    /* U11 LM75 connects to SDA/SCL Group 2 by default */
+> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4d);
+> +}
+> +
+>   static void aspeed_machine_ast1040_evb_class_init(ObjectClass *oc,
+>                                                     const void *data)
+>   {
+> @@ -55,6 +72,7 @@ static void aspeed_machine_ast1040_evb_class_init(ObjectClass *oc,
+>       amc->hw_strap1 = 0;
+>       amc->hw_strap2 = 0;
+>       mc->init = aspeed_bic_machine_init;
+> +    amc->i2c_init = ast1040_evb_i2c_init;
+>       mc->default_ram_size = 0;
+>       amc->macs_mask = 0;
+>       amc->uart_default = ASPEED_DEV_UART12;
 
 

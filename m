@@ -4,135 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 140EFCD6E4A
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Jun 2026 05:31:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C994C5DF71
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Jun 2026 06:27:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUHgI-0003wz-HC; Tue, 02 Jun 2026 01:28:50 -0400
+	id 1wUIaW-0002zj-Kq; Tue, 02 Jun 2026 02:26:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wUHgH-0003wF-BG; Tue, 02 Jun 2026 01:28:49 -0400
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUIaV-0002zW-Qv
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2026 02:26:55 -0400
+Received: from smtpout9.mo540.mail-out.ovh.net ([51.210.91.58])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wUHgE-0002gS-Dl; Tue, 02 Jun 2026 01:28:48 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=fkST8Iv+X40eNg8Y+VytOpNCf9NI6EoT2Aqe7Np9qby44f5Y1vy2dfBxtms47sVMEPEvqN1kLsvCJ7xZebeWuSUKTkHFB5BYFm/KR64gZ1vS7lPOmllecgn2/cvBPSt2xOol+mRYrRsxjRorkLIQ0xmS1NxP+LXPg6/AWAquw0awoORc44s/cCGVVNXuOnCyJhQWsSSyhXGXHzesbYEJixl0VkkfI1ajQcwuVzOyMwH0gUwkYL4R3SygVxhnl5fpsTyTrIHijQQi8uGq8UVPD0buYKbTmkgSJXFeUs+OKIAVyLVNswviDTnybXQ0CkzM+XyAHKO2hZ0/imBTNfExEw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+sQFWHVUXY18uniuXWWtKF9n764bQm6UVtavQBNUvvw=;
- b=g2Jg/qcgEYvUv/DAOb32eOjCg317wn5WreUIjhpwgWVUrozajmBABq1G1wtkJBlb/n56vC+yZy4czgwc/cfZJjW9rnwK1yqHKwjnbKA16Byigf5ckta0rOFFwz0u2D/gPG/mpJerr9+fY3ESesBeX6SemCZy6UXA/4OqlObZOJj49Y9jg8HOnKY0/yuanh9pgAlW53zrnxpyFQ/5EZAueAhcxEo5w2TH502/8XfzkUNFr4nfAftdslqp1yELytk2A5H9m175M5JdE4tuuzoyifELrJHmUfAwy3t9bp7IyHyjlRTRN6DYtXX8edKdfTGpimZ97/gsTmuJbkSPWpXa/Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+sQFWHVUXY18uniuXWWtKF9n764bQm6UVtavQBNUvvw=;
- b=iTFtialvXRk5kNJjDpn90GG0c0kv5aN/Pyt7Ed8qWA+N+gaUbaeTtPt54cK+OQn+LxjX4J/lUIjE/vPPJL7cad0auOQRmJ1QbSAwDiUK4fkDu0JUj7kjEJbMjABz4u4UpaIeGpqLcJ2fJdrevBokMS/OHEhVWuCdvuYm9djWFweOw5B0NEWTOu88Tcz7SkgUCqXg7h+Zqtz/1geGRO/c7kM+uuTO5/MwTtF6Oni5lBNVT3F1D+ri9chOLaPkloHlOsGa+SvZQ5b+GRv2McgZPFmKuEnDSFPba6TMiOp8VDfODgcoQKMg2ol8G/G7koC12MF/CbQGnSQqL7vONDmizw==
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
- by OSNPR06MB9190.apcprd06.prod.outlook.com (2603:1096:604:493::18)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.16; Tue, 2 Jun 2026
- 05:28:40 +0000
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3%5]) with mapi id 15.21.0071.015; Tue, 2 Jun 2026
- 05:28:40 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
- =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@redhat.com>
-Subject: [PATCH v2 10/10] hw/arm/aspeed_ast1040: Reuse AST2700 watchdog models
-Thread-Topic: [PATCH v2 10/10] hw/arm/aspeed_ast1040: Reuse AST2700 watchdog
- models
-Thread-Index: AQHc8lCrHYFiMY5pDkuQB66IJp8DvA==
-Date: Tue, 2 Jun 2026 05:28:40 +0000
-Message-ID: <20260602052827.1535299-11-jamin_lin@aspeedtech.com>
-References: <20260602052827.1535299-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20260602052827.1535299-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|OSNPR06MB9190:EE_
-x-ms-office365-filtering-correlation-id: 2bbd4275-c3eb-4522-5334-08dec067ce25
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|376014|1800799024|22082099003|18002099003|56012099006|38070700021;
-x-microsoft-antispam-message-info: KNPZIa5PrD1kcjpyThhjQh+hKtxD9kaR6NqsjwZf+l0Vd2Qe4yMVlxho6TbQbNR6wLNJMfmeqLzsiWbQf++U9jo32YnJ+uxZSYmGx6T72Z99czcBbNmlOAa0AgFA7TPPIo2z0xuTZeJ+YrXapW77PT15XYFUMrWqwYUKxm5yZfYfT35f5swyYHwZTLNkvNS0fM2IWkzxtR6yx5NVaCKGthh4+cEIiy9Nh+jDs1PaL7vENXlvgNbbudxKIcljqCTQy2ngHZsmEh+jDeqxq2W05ApeQwDUl7Ryy4zWTiqSA+gTDMlgkyflUxbXMzFvi41K5Nw7YcuyhMnYNgDspI+24ABUWOy6WuU/E7p9h8YPTOxYJGTcygWOQZU0zeCj3RmZZ7w1Xtk42kwEuwBdKtiP7sbJtkR2b/gJn4tvKsPkXF6bKG/9z0V2benGm0yQqgbVTmEyl/YxmM7EZV1gADRRJ3KISKkXl9MbHSOnQOQkQ4XoBzZyMDaGqXvF/XmeCh4Essav2JsoWjBVrTjv4+l+CcCBzjWBl8S2Rm5K8/NKynlSi4PIbi5YX1WRPxUkyYACcCVM/T34F24+ciKe5mI+O6bAuwO9ckBb9XtsZrjyuo4gjQoBvHtsbeoy4F90fWvKFJCgSiD7pfFc3yFutNKZgzgw7XYOthZJQP7DQPlCM6qKoh0zzn1pxr0IhhMHZOpAqVKxrtX+nqhJlMZHpinB6qsJLi1oO6BM3/wMYecpKqA5ReF4RwOEjI0y3NjFfJQ2
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(1800799024)(22082099003)(18002099003)(56012099006)(38070700021);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?y7f0/sMA0nkqyFjTwyfWi1GL8sw5upa1mOFf7Qzeyu17ihM+X/R2+/q58f?=
- =?iso-8859-1?Q?XTz9MrIKbNtzJQR0ULNelQjbajUxpMnhnF3kPQbuLBp3jYnkkfBY/zFjsq?=
- =?iso-8859-1?Q?Ee1AeCR2DFOq89MHP6pB75TwvyGEVvzBNDvONaVkq/5Z8EU/L4I2vNmidD?=
- =?iso-8859-1?Q?bumpUxRKN1jP+kLf9EwUxJBB/Fix8oF1r2YRYtFZ51Cz4g+7AmckpRpYHK?=
- =?iso-8859-1?Q?L6ty46AvOn7NdjvlBrwXc6aYew54/xV/eTV/0mSwgRf0Og9PQA6o1HCfN3?=
- =?iso-8859-1?Q?eFXMQgcwvt/+In0tTMSgwehlBkfF4aHWUOZ43lLGdH8Flb87kVDQ9bWmU8?=
- =?iso-8859-1?Q?6/I+doMi/0GuRjXLVfMb7iHltQz3tYxzXQQlA6gyvtEqZlKiMzj5thhaJA?=
- =?iso-8859-1?Q?8AKK8tRPUDmE6VHa0vYFKc2JTT6sgiEo6kKQjndYAv4Reiqp/O98mi8HKI?=
- =?iso-8859-1?Q?6jKxAObm/zOHQSOrypvKPHojEU+QTfcL2XzK+So6Nckk4RJR11fytrQ7zx?=
- =?iso-8859-1?Q?BigL2hRZtxhLp58s1TYuWiuwbhYcnyGc5Fzms1VszHSHnNChnuhMrTJOA8?=
- =?iso-8859-1?Q?GXBlLEtfhWiHFri8MOFyKh8Z8XHtmd+U0+a+i7TUAtHXBJwNoBugJA9s1n?=
- =?iso-8859-1?Q?8dPsBXfOmt+zvQTIntPvbB/Kn/dzUXGwzsAYiwz8IoVX6TZoPISCIqQGJb?=
- =?iso-8859-1?Q?mnTR78VcYwSoNc51vb51I6BYQpT0uq/wdw3SIM7SP8lZgMeAP/tUDMrGEN?=
- =?iso-8859-1?Q?CCTqw65J1kuHWpBSgDUU8TmNOY5jSReXn3KvmPp7j9xQ1phqnoPjbmbnUZ?=
- =?iso-8859-1?Q?IvSCYZ877oyQ3Tb0EZbiPFOlbmM5DCAGcIrKsJlEQK2REO/7Xv9ttviUUD?=
- =?iso-8859-1?Q?K5ZgHv1CQ7tqdNKiQpHEgaoA7i0QRIj7pBOaIXJXQ+jom1FvV7nUsbIJFm?=
- =?iso-8859-1?Q?hhpuaukVaVpWIoxFGd3y6Q7dtyfZdx+69/6UfrANSe1weSUEl3AobQ3bg8?=
- =?iso-8859-1?Q?BCSPbjIvdHy2/Jg3FXRvvmINEPmxet4lezgppJBB5kLPOMkBWEBqUhq7JG?=
- =?iso-8859-1?Q?lt+hDX7wxKPGNpzSrzo6JOUj6eZ8g12J+ZIiLdMyQ+S2U9qHK/oUKH0bpc?=
- =?iso-8859-1?Q?C4ukv+2bnxufTLJ13B1+IAyxzYAIgXrNAARGW+fMJMS5qsQkvrQW9FfN2B?=
- =?iso-8859-1?Q?6hq3N2hgtWpyLqtviN9CVqmk0NsJjYo1qy6r53IBSISZA74SNtkqK17ko8?=
- =?iso-8859-1?Q?hMCTpifys0u2h2YybzHGShpekJW9xMScsq8S9VwgY0b8aC2Oxho06QwKC4?=
- =?iso-8859-1?Q?55CtqkHhJ1fe7MSwW1t2siWE1M5BeYG6R4tRfFR8AtVOwlU1dWADyQamgK?=
- =?iso-8859-1?Q?fKcjpjlj8tLo5fW0LP+X1Sq7SZk28DYm+H7/YeV1vQxnaLOYJ24gJwTfQa?=
- =?iso-8859-1?Q?W9qe0YNRniqO6XVnBnRPJqAdZmwaw2Y0k9p0QBpRTtwxt0Iz6OX5vyhp0O?=
- =?iso-8859-1?Q?IzKyalQEIx3xgcf658A/830dyGABfYEn2wRoS0V6NJMnzg9JpNJytAuQq1?=
- =?iso-8859-1?Q?Da/qI5Io6uWG8PJTHSBIsHE4EzD+PqX2JT070Bt5TnHrnDuvP2oq0NHJmk?=
- =?iso-8859-1?Q?QniTa94cKN7UXQliWHUpts4pSC+o9A+2C/mrACk4MYkrMR4nYru63isuDf?=
- =?iso-8859-1?Q?9bScxbzXfVnXL8q/Gik7EH7Gm9uVFXdZl5Sv0BXwZNNrDmSoIRV3ipbe0t?=
- =?iso-8859-1?Q?1cQuIEA17QagzUfi96bQOpENeOcM14zzYOIAZ1aw/d23CsWVz+9COydJpF?=
- =?iso-8859-1?Q?t/OW8R09Xw=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUIaS-0002qc-Um
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2026 02:26:55 -0400
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net [79.137.60.37])
+ by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4gV17q3mZdz4PJv;
+ Tue,  2 Jun 2026 06:26:47 +0000 (UTC)
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net. [127.0.0.1])
+ by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Tue,  2 Jun 2026 06:26:47 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.188.27])
+ by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gV17q2dX9z1xwQ; Tue,  2 Jun 2026 06:26:47 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.2])
+ (Authenticated sender: clg@kaod.org)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 277491B4305E;
+ Tue,  2 Jun 2026 06:26:46 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-105G00628c4218e-f4b6-49f6-b47f-22b72bdfa7db,
+ E738715FB773EF828F8B902CE3F45C10C1B236B1) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <29a404a8-690e-4457-b7f5-352ebce5724a@kaod.org>
+Date: Tue, 2 Jun 2026 08:26:45 +0200
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: YY3MJMFsFj2sgRzye4nB+zCFxVTpliiEzo4ZeVZrC/ofEHcCBfQIlEDlI3rp5MJX+U1pozy2zR1ETtStI74gR4ya4pbz2n/bACs4Tg/xCWezzVOxXJutm8DpD7dkgC7+1oHIaVp+rLpcyb8SOESHZTN3liewseXRisQ+m5Q3Uh7lPjHSQAO3TTBS9OHwcQv+3wzE0eDa6d6JtWNlmrGVAJ90GG7Wh5yHnvY639/5rQ71TXT1jJOMlUMXgHL1M19Ieo5cspPK5Iwd9KuEaNtILxA1sLC3KWzOcGyySfd+swqMQb3pgZGyZP5PlmXcDXxXVtahw/vkYSVCg+69IxmWMQ==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2bbd4275-c3eb-4522-5334-08dec067ce25
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Jun 2026 05:28:40.5696 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: pODJ0x26VJ/4UaiA8QjxUhrKmyxpo0r/GZUxb1bGQNdOOo6/T6BeGQEjdYKqpCjkn7R8N4I4fVGLilGgwdvA1uJbAuJJMiUJali54vY3Y+I=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSNPR06MB9190
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 01/10] hw/i2c/aspeed_i2c: Introduce dma_addr_lo_mask to
+ unify DMA address handling
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20260602052827.1535299-1-jamin_lin@aspeedtech.com>
+ <20260602052827.1535299-2-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260602052827.1535299-2-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 8621860012335344651
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTFvkDYSte38RtoOedIniqTq90VBIAR/zjMPbUViliRF0WWJylZ1egQh69yqHus13FOcMt0ceZCszYzz3hS+bv3Z5qgVjRKmnAk8VfZ7bHX17kJhxA4cL6X+EFh33CeCTogAyXSOEf/JEj7vG+pIMzWF8WoIVRY4Xi07V+rlNSYm3FhL8w3TvQEYU/pX1nE8R/fd3hHsEJM6n0Yz3nFKa4DqVFzs+rU4nBzsL6X8YdbkRjtvLUQutR6ya9bPFtKyqsU7BPqYVrX3ikVTHf9OSwJIKQll+ffx3ebm5VEhrLuVrMb1XtGphOn742kiPVmPL/Hi2x1RCc8wTXMZ9rUwzbqaS2aU2u9AgrvYgKWtCXo0cu7VKa9Oe5LiPchWPRchhJpt0sFUJL1CtejHSsdYy51zI39csNX2Q7LvIB1VwYhqi4qmEn1huDZUuK/0z+tQA1y1Gw76Vuqi5XTyPa16zEWhU8pDi4yzb7Cm+T1EgT2IvHLGaBQgOXq/CpCPxODKDN4e3Zv8iEncxjuJ6rV4scX+/DqTPI0e79kRl0gY+pAc0uFtnF3epDYfk/5pBM3piw9+ZBiot8qIY2RZRH+ELxeUYBvc/YgIrdg2T0bAkOvSQg0kglfZR6iHun9TfKeRM3AXYRbjj2ILGEQ9IjWqlbaVLutQ8C7YTtd5CkRlg29xHA
+DKIM-Signature: a=rsa-sha256; bh=/Lj0iClBDgGx1rawjoRYbbXS3tIHWB7XKr9bHMjxq5k=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1780381608; v=1;
+ b=pvBlFP4cJcms5JSxey7qloRHsAj1c3GT4281nXd5e4MAKpQbeecHV2xnk61cUemCxhXdnerV
+ LPmjE2YmXjWPtaP//eeH5tLQclmdEqJNEMdJqWYbo3DOeNa9WSebMZ54YoSqFk575V3H8jeZBPn
+ SiQcXkmTEWcuvbfF0zNTLmlcPQkUkQ0VEBz8ysoXumS4OAhr8c8SDLQd50PcBqSNeAHfVoRl3X/
+ L6vG2iHm9jQQeJPQCkOsICIPsrO9nnfJU3JkfS2TeeOBRMUowtBIuGKr8UQ2wu/611pYNlUe8Gr
+ o5ZaRZppowLISpHwrT6lg2DpSktS1B3hmTPRRy0f+6tug==
+Received-SPF: pass client-ip=51.210.91.58; envelope-from=clg@kaod.org;
+ helo=smtpout9.mo540.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -148,79 +136,177 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Instantiate and realize the watchdog models for the AST1040 SoC.=0A=
-=0A=
-The AST1040 watchdog controller is compatible with the AST2700 watchdog=0A=
-controller, so reuse the existing AST2700 watchdog model.=0A=
-=0A=
-Configure the AST1040 SoC with 8 watchdog instances and map them to=0A=
-their corresponding MMIO regions. The first watchdog controller (WDT0) is=
-=0A=
-located at 0x74c37000, with subsequent watchdogs placed according to the=0A=
-controller register space size.=0A=
-=0A=
-Each watchdog is linked to the SCU device before realization to provide the=
-=0A=
-required reset and system control interactions.=0A=
-=0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
-Reviewed-by: C=E9dric Le Goater <clg@redhat.com>=0A=
----=0A=
- hw/arm/aspeed_ast1040.c | 19 +++++++++++++++++++=0A=
- 1 file changed, 19 insertions(+)=0A=
-=0A=
-diff --git a/hw/arm/aspeed_ast1040.c b/hw/arm/aspeed_ast1040.c=0A=
-index 6d1cb9b102..57ffc0807a 100644=0A=
---- a/hw/arm/aspeed_ast1040.c=0A=
-+++ b/hw/arm/aspeed_ast1040.c=0A=
-@@ -119,6 +119,11 @@ static void aspeed_soc_ast1040_init(Object *obj)=0A=
-     }=0A=
-     object_initialize_child(obj, "i2c", &s->i2c, TYPE_ASPEED_1040_I2C);=0A=
- =0A=
-+    for (i =3D 0; i < sc->wdts_num; i++) {=0A=
-+        object_initialize_child(obj, "wdt[*]", &s->wdt[i],=0A=
-+                                "aspeed.wdt-ast2700");=0A=
-+    }=0A=
-+=0A=
-     object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE=
-);=0A=
-     object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVI=
-CE);=0A=
-     object_initialize_child(obj, "udc", &s->udc, TYPE_UNIMPLEMENTED_DEVICE=
-);=0A=
-@@ -249,6 +254,19 @@ static void aspeed_soc_ast1040_realize(DeviceState *de=
-v_soc, Error **errp)=0A=
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c.busses[i]), 0, irq);=0A=
-     }=0A=
- =0A=
-+    /* Watch dog */=0A=
-+    for (i =3D 0; i < sc->wdts_num; i++) {=0A=
-+        AspeedWDTClass *awc =3D ASPEED_WDT_GET_CLASS(&s->wdt[i]);=0A=
-+        hwaddr wdt_offset =3D sc->memmap[ASPEED_DEV_WDT] + i * awc->iosize=
-;=0A=
-+=0A=
-+        object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&s->scu=
-),=0A=
-+                                 &error_abort);=0A=
-+        if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {=0A=
-+            return;=0A=
-+        }=0A=
-+        aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->wdt[i]), 0, wdt_offs=
-et);=0A=
-+    }=0A=
-+=0A=
-     /* Unimplemented peripherals */=0A=
-     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->pwm),=0A=
-                                   "aspeed.pwm",=0A=
-@@ -290,6 +308,7 @@ static void aspeed_soc_ast1040_class_init(ObjectClass *=
-klass, const void *data)=0A=
-     sc->sram_size[1]    =3D 16 * MiB; /* Hyper RAM */=0A=
-     sc->uarts_num       =3D 13;=0A=
-     sc->sgpio_num       =3D 2;=0A=
-+    sc->wdts_num        =3D 8;=0A=
-     sc->uarts_base      =3D ASPEED_DEV_UART0;=0A=
-     sc->irqmap          =3D aspeed_soc_ast1040_irqmap;=0A=
-     sc->memmap          =3D aspeed_soc_ast1040_memmap;=0A=
--- =0A=
-2.43.0=0A=
+On 6/2/26 07:28, Jamin Lin wrote:
+> The Aspeed I2C controller has two register layouts.
+> 
+> The AST2500 uses the old mode with a single DMA address register (I2CD_DMA_ADDR)
+> where the address is 4-byte aligned and masked to 0x3ffffffc.
+> 
+>  From AST2600 onwards, the new mode provides separate master TX/RX and slave RX DMA
+> address registers (I2CM_DMA_TX_ADDR, I2CM_DMA_RX_ADDR, I2CS_DMA_RX_ADDR)
+> with different address widths per SoC:
+>    AST2600 (new mode): 0x7fffffff  - bits[30:0]
+>    AST1030 (new mode): 0x7fffffff  - bits[30:0]
+>    AST1060 (new mode): 0x7fffffff  - bits[30:0]
+>    AST2700 (new mode): 0xffffffff  - bits[31:0]
+> 
+> Introduce dma_addr_lo_mask as a per-class attribute and apply it
+> uniformly when storing DMA address register writes and when loading
+> the address into dma_dram_offset for both master and slave paths.
+> This replaces the previous FIELD_EX32 extractions (which incorrectly
+> stripped bit 31 on AST2700) and the hardcoded 0x3ffffffc literal in
+> the old-mode path.
+> 
+> Fixes: 1809ab6a67359e0876981cd05d2a50b2843eabad ("hw/i2c/aspeed: Add AST2700 support")
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   include/hw/i2c/aspeed_i2c.h |  5 +----
+>   hw/i2c/aspeed_i2c.c         | 22 +++++++++++++---------
+>   2 files changed, 14 insertions(+), 13 deletions(-)
+
+aspeed_i2c_bus_new_write() still has :
+
+     case A_I2CS_DMA_RX_ADDR:
+         bus->regs[R_I2CS_DMA_RX_ADDR] = value;
+
+Is that ok ?
+
+Thanks,
+
+C.
+
+
+> 
+> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+> index d42cb4865a..1fc229f699 100644
+> --- a/include/hw/i2c/aspeed_i2c.h
+> +++ b/include/hw/i2c/aspeed_i2c.h
+> @@ -209,13 +209,9 @@ REG32(I2CS_DMA_LEN, 0x2c)
+>       FIELD(I2CS_DMA_LEN, TX_BUF_LEN_W1T, 15, 1)
+>       FIELD(I2CS_DMA_LEN, TX_BUF_LEN, 0, 11)
+>   REG32(I2CM_DMA_TX_ADDR, 0x30)
+> -    FIELD(I2CM_DMA_TX_ADDR, ADDR, 0, 31)
+>   REG32(I2CM_DMA_RX_ADDR, 0x34)
+> -    FIELD(I2CM_DMA_RX_ADDR, ADDR, 0, 31)
+>   REG32(I2CS_DMA_TX_ADDR, 0x38)
+> -    FIELD(I2CS_DMA_TX_ADDR, ADDR, 0, 31)
+>   REG32(I2CS_DMA_RX_ADDR, 0x3c)
+> -    FIELD(I2CS_DMA_RX_ADDR, ADDR, 0, 31)
+>   REG32(I2CS_DEV_ADDR, 0x40)
+>   REG32(I2CM_DMA_LEN_STS, 0x48)
+>       FIELD(I2CM_DMA_LEN_STS, RX_LEN, 16, 13)
+> @@ -303,6 +299,7 @@ struct AspeedI2CClass {
+>       bool has_share_pool;
+>       uint64_t mem_size;
+>       bool has_dma64;
+> +    uint32_t dma_addr_lo_mask;
+>   };
+>   
+>   static inline bool aspeed_i2c_is_new_mode(AspeedI2CState *s)
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index 4a6732a185..a6b44174f5 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -236,7 +236,7 @@ static void aspeed_i2c_set_tx_dma_dram_offset(AspeedI2CBus *bus)
+>           value = bus->regs[R_I2CM_DMA_TX_ADDR];
+>           bus->dma_dram_offset =
+>               deposit64(bus->dma_dram_offset, 0, 32,
+> -                      FIELD_EX32(value, I2CM_DMA_TX_ADDR, ADDR));
+> +                      value & aic->dma_addr_lo_mask);
+>           if (aic->has_dma64) {
+>               value = bus->regs[R_I2CM_DMA_TX_ADDR_HI];
+>               bus->dma_dram_offset =
+> @@ -246,7 +246,7 @@ static void aspeed_i2c_set_tx_dma_dram_offset(AspeedI2CBus *bus)
+>       } else {
+>           value = bus->regs[R_I2CD_DMA_ADDR];
+>           bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 0, 32,
+> -                                         value & 0x3ffffffc);
+> +                                         value & aic->dma_addr_lo_mask);
+>       }
+>   }
+>   
+> @@ -261,7 +261,7 @@ static void aspeed_i2c_set_rx_dma_dram_offset(AspeedI2CBus *bus)
+>           value = bus->regs[R_I2CM_DMA_RX_ADDR];
+>           bus->dma_dram_offset =
+>               deposit64(bus->dma_dram_offset, 0, 32,
+> -                      FIELD_EX32(value, I2CM_DMA_RX_ADDR, ADDR));
+> +                      value & aic->dma_addr_lo_mask);
+>           if (aic->has_dma64) {
+>               value = bus->regs[R_I2CM_DMA_RX_ADDR_HI];
+>               bus->dma_dram_offset =
+> @@ -271,7 +271,7 @@ static void aspeed_i2c_set_rx_dma_dram_offset(AspeedI2CBus *bus)
+>       } else {
+>           value = bus->regs[R_I2CD_DMA_ADDR];
+>           bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 0, 32,
+> -                                         value & 0x3ffffffc);
+> +                                         value & aic->dma_addr_lo_mask);
+>       }
+>   }
+>   
+> @@ -735,12 +735,10 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+>           aspeed_i2c_bus_raise_interrupt(bus);
+>           break;
+>       case A_I2CM_DMA_TX_ADDR:
+> -        bus->regs[R_I2CM_DMA_TX_ADDR] = FIELD_EX32(value, I2CM_DMA_TX_ADDR,
+> -                                                   ADDR);
+> +        bus->regs[R_I2CM_DMA_TX_ADDR] = value & aic->dma_addr_lo_mask;
+>           break;
+>       case A_I2CM_DMA_RX_ADDR:
+> -        bus->regs[R_I2CM_DMA_RX_ADDR] = FIELD_EX32(value, I2CM_DMA_RX_ADDR,
+> -                                                   ADDR);
+> +        bus->regs[R_I2CM_DMA_RX_ADDR] = value & aic->dma_addr_lo_mask;
+>           break;
+>       case A_I2CM_DMA_LEN:
+>           w1t = FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T) ||
+> @@ -1375,6 +1373,8 @@ static void aspeed_i2c_class_init(ObjectClass *klass, const void *data)
+>   static int aspeed_i2c_bus_new_slave_event(AspeedI2CBus *bus,
+>                                             enum i2c_event event)
+>   {
+> +    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
+> +
+>       switch (event) {
+>       case I2C_START_SEND_ASYNC:
+>           if (!SHARED_ARRAY_FIELD_EX32(bus->regs, R_I2CS_CMD, RX_DMA_EN)) {
+> @@ -1385,7 +1385,7 @@ static int aspeed_i2c_bus_new_slave_event(AspeedI2CBus *bus,
+>           ARRAY_FIELD_DP32(bus->regs, I2CS_DMA_LEN_STS, RX_LEN, 0);
+>           bus->dma_dram_offset =
+>               deposit64(bus->dma_dram_offset, 0, 32,
+> -                      ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_RX_ADDR, ADDR));
+> +                      bus->regs[R_I2CS_DMA_RX_ADDR] & aic->dma_addr_lo_mask);
+>           bus->regs[R_I2CC_DMA_LEN] =
+>               ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_LEN, RX_BUF_LEN) + 1;
+>           i2c_ack(bus->bus);
+> @@ -1608,6 +1608,7 @@ static void aspeed_2500_i2c_class_init(ObjectClass *klass, const void *data)
+>       aic->check_sram = true;
+>       aic->has_dma = true;
+>       aic->mem_size = 0x1000;
+> +    aic->dma_addr_lo_mask = 0x3ffffffc;
+>   }
+>   
+>   static qemu_irq aspeed_2600_i2c_bus_get_irq(AspeedI2CBus *bus)
+> @@ -1631,6 +1632,7 @@ static void aspeed_2600_i2c_class_init(ObjectClass *klass, const void *data)
+>       aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
+>       aic->has_dma = true;
+>       aic->mem_size = 0x1000;
+> +    aic->dma_addr_lo_mask = 0x7fffffff;
+>   }
+>   
+>   static void aspeed_1030_i2c_class_init(ObjectClass *klass, const void *data)
+> @@ -1649,6 +1651,7 @@ static void aspeed_1030_i2c_class_init(ObjectClass *klass, const void *data)
+>       aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
+>       aic->has_dma = true;
+>       aic->mem_size = 0x10000;
+> +    aic->dma_addr_lo_mask = 0x7fffffff;
+>   }
+>   
+>   static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
+> @@ -1670,6 +1673,7 @@ static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
+>       aic->has_dma = true;
+>       aic->mem_size = 0x2000;
+>       aic->has_dma64 = true;
+> +    aic->dma_addr_lo_mask = 0xffffffff;
+>   }
+>   
+>   static const TypeInfo aspeed_i2c_types[] = {
+
 

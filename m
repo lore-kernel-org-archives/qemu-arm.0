@@ -4,145 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDBD6CD6E57
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Jun 2026 10:40:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10E49CD6E60
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Jun 2026 12:41:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUMXs-0007qX-4w; Tue, 02 Jun 2026 06:40:28 -0400
+	id 1wUOQs-0003aa-UX; Tue, 02 Jun 2026 08:41:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wUMXp-0007pm-7Y; Tue, 02 Jun 2026 06:40:25 -0400
-Received: from mail-westus2azlp170120002.outbound.protection.outlook.com
- ([2a01:111:f403:c007::2] helo=MW6PR02CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wUOQp-0003aG-Rs
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2026 08:41:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wUMXn-0006wP-DW; Tue, 02 Jun 2026 06:40:24 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Kg/BVSDM06gl/VWtwBflStip8eh9SbhIGNDdo2cWJww5dvn68aHs/qvJWtFNtEC5ek+C/4c2+bhy+9dI7RrnXKuZFfGt1MYfptq+CN7loKbq3vjfsGqBSJM8VX8O+GHu82dr0ausGKVJ5H47QSODJ8ZxTVMMU0eCtJKzgyiF9FcYI+BKQnLx3yJBk3XXALJcNK+hBUoBvdZ+onZ+y6LHxvGoXiiYshqG9VvwCLIRP7HZQzrnDD7SwBLj5Ji1DxC1PXcGdayYIE34ktfCTl9scaAsYLtXg6rWRpGkSejUgYoiomz1OGb0hkZ549uGrsla/cYUVEPL2lEheQn2Lnll2Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=a16/qaFdGNEBYcdBj6drxtGAJCxX9Z69sglkYjOtSTY=;
- b=yy5weSXw+79fnehSWwaHwr18mfA0AMFPF0jHeSWDIL0o4NY0r8Y12ePcvRRg0ATMb34esgK2ZsTiFGvQ3kTQbZu+6Hnp+IFMCWxZaNFtxL1Omq32q1EY5kjrheTWPhHFxZcL2UBXzCUCSqoHD68p+G1/Wf4RSVUIp3X13PXnLqWBMNcDdZxpSQWAlqIh9crY3iqqbBpRIJcwhMtBn74IHSMw9hFJbKpmboyfX3OvEPuu/7GcFPg9Z0Gv5T4YdX6yEoBrMdEaoM5j5eU8c3/x1W77NxDFlmvk/O0BYWf+BrQ1gcxS8AeAensaZgsbNwkrbXodeIupFO3by7I8c96QIg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=a16/qaFdGNEBYcdBj6drxtGAJCxX9Z69sglkYjOtSTY=;
- b=jn5sYJDq1el8F/J1UOL7ZhoTfsnq+MT8pXHsf9Rkf6wYi/HEMTUhNFv6/gN+kf1gUIa6INUQK5ES+8IuJRNLFVmFsF1w6UL/rqwfKqkBBmjc90oS9IONfDdgAwEOiscQYz0Dq3A4JnP2/X+imhDqeUJNYY14u9LvdmDDU1wuJSEQ6J4wlxEgGoX7xnpjypL1/XRiPxIzjifZqTdaDu6/qfPKmI1nv3ooNpHXrSnaKdq8MK4jnRtdoLll8pZndXYUvbglQeFrEwtG5KZ1lxSFmXR0caxG+evGGmQx+wic9MTvoi5OyH+SZH0SgLgWrY2BOeUybpTvjVYQ5F1S3lpDYQ==
-Received: from IA0PR12MB7555.namprd12.prod.outlook.com (2603:10b6:208:43d::5)
- by MN0PR12MB5954.namprd12.prod.outlook.com (2603:10b6:208:37d::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.15; Tue, 2 Jun 2026
- 10:40:14 +0000
-Received: from IA0PR12MB7555.namprd12.prod.outlook.com
- ([fe80::5a27:a8d9:43b7:3b8d]) by IA0PR12MB7555.namprd12.prod.outlook.com
- ([fe80::5a27:a8d9:43b7:3b8d%3]) with mapi id 15.21.0071.014; Tue, 2 Jun 2026
- 10:40:14 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: Manish Honap <mhonap@nvidia.com>, Jonathan Cameron <jic23@kernel.org>
-CC: Alex Williamson <alwilliamson@nvidia.com>, Ankit Agrawal
- <ankita@nvidia.com>, "mst@redhat.com" <mst@redhat.com>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "anisinha@redhat.com" <anisinha@redhat.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "shannon.zhaosl@gmail.com"
- <shannon.zhaosl@gmail.com>, "jonathan.cameron@huawei.com"
- <jonathan.cameron@huawei.com>, "fan.ni@samsung.com" <fan.ni@samsung.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>, "marcel.apfelbaum@gmail.com"
- <marcel.apfelbaum@gmail.com>, "clg@redhat.com" <clg@redhat.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>, "dave.jiang@intel.com"
- <dave.jiang@intel.com>, "alejandro.lucero-palau@amd.com"
- <alejandro.lucero-palau@amd.com>, Vikram Sethi <vsethi@nvidia.com>, Neo Jia
- <cjia@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Zhi Wang
- <zhiw@nvidia.com>, Krishnakant Jaju <kjaju@nvidia.com>,
- "linux-cxl@vger.kernel.org" <linux-cxl@vger.kernel.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: RE: [RFC 0/9] QEMU: CXL Type-2 device passthrough via vfio-pci
-Thread-Topic: [RFC 0/9] QEMU: CXL Type-2 device passthrough via vfio-pci
-Thread-Index: AQHc1nGWvPFiki6WBEiAZDHEC2g8trYVdZwAgBQVvoCAAbph0A==
-Date: Tue, 2 Jun 2026 10:40:13 +0000
-Message-ID: <IA0PR12MB75555B8E9FDD4546F383663AAB122@IA0PR12MB7555.namprd12.prod.outlook.com>
-References: <20260427181235.3003865-1-mhonap@nvidia.com>
- <20260519141314.3eda68bc@jic23-huawei>
- <IA1PR12MB90303161DD09A1E248852728BD152@IA1PR12MB9030.namprd12.prod.outlook.com>
-In-Reply-To: <IA1PR12MB90303161DD09A1E248852728BD152@IA1PR12MB9030.namprd12.prod.outlook.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA0PR12MB7555:EE_|MN0PR12MB5954:EE_
-x-ms-office365-filtering-correlation-id: bba82ade-0aa1-448d-505a-08dec093544d
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|366016|7416014|1800799024|38070700021|18002099003|22082099003|6133799003|56012099006|11063799006|4143699003;
-x-microsoft-antispam-message-info: pEqqWMbz2kfUBIsW8Nn5h/0kK6Uxfj6Cpbj4YwOk70teO/fTzrbJ/ADCgPoSsByz7xBLAibcNjcG3YO1VqRi3+4VNBq/C+VIdcTc0PxHUrjMjFxF2TapaM6K73gNpsJ1i8JQni4NNXkwnjLJzk8B86kxYwElxiAFfg71mBT4o9XRJpZpXFveePi7TZBmAkYqsNgqL7M0+J8CoZ5mMOmTjpUYu6UBbKrikTq1bUoMV+fhwE4R9/kU00m2wPUoXyjPdux1Zfdn2AVAmJmkJsiXwaGFLZXeRzof2AoUOW/5omh1UmDeaM1s1k1SYIn52lMBiuNbvCRvDXbM93PUli7rP/7aKnCuIL3KojyUe7pqSQpW6eu9SeTjGfX0rxhItSKPxf63vX8AKWkRzuTj7xMq64puQPC3GijKxAgTXDocwA6z2MOgSYPoUsnloxDz9oMlW4l6UVSxW/oWfNhsLsXA335iZGFTvcW3+y71QEDtvK263cO2CmA+xt3kAoG8DTwU415bVdzkTovcMPotO2FO64zQaoXtaM6tsS5rk78p+zexYQpTYBEOrCEH3a+Kfq5GVAoJ0sZJYw0iULtFWcjdoriYKRqd5IVGkaR04aGYzbFNkvKK1/Zl4ngVmUEiURFyamOFH1Ov+/xKUYCU7PWkS2JLzIwiFyoF1ZMSMR0hM0gfwo1Zmz8lDElQCmzlTPpKGAkZX9ohwisQ9SKlF6w3Sp5LIMOppAwJbi0EhR+xCdoLuExMdj2Szen6BfMC90Qv
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA0PR12MB7555.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(7416014)(1800799024)(38070700021)(18002099003)(22082099003)(6133799003)(56012099006)(11063799006)(4143699003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?7umbB1NJdFQ/rEcx+tGS3mMijJNhu/xDJdEHzHQTd1JKRiAzL0VrJhRcDKcq?=
- =?us-ascii?Q?y288whtEE77NYZC56TncDLSczdIAp8zoePrsC2N7HOCdiC14h6yuncLYknEP?=
- =?us-ascii?Q?3fM3PjDkfDBNoGBlQjI5q9bdN0/lU6aIZ9OonlJR6NDJwS/MpwSvpugOUCf+?=
- =?us-ascii?Q?YdO2KN4M2qJczrD4NxG7FOgFRhX7b983byNVuP07tNAM8MoUmZWjxNtScBJL?=
- =?us-ascii?Q?79KqE5/n2YvSUukfRC4vEyJl+DX3WiusWprIgBYiq3BsZP7H9Cp3/7ruiuIe?=
- =?us-ascii?Q?B68h9xdPUo/pue2i8YK2vkWHLGcFe1SDE0BhybASZaIQ5gsilragE2NKDKrk?=
- =?us-ascii?Q?NU2u/eS6oWD0r4Lv58WBTJ2tdGZUS+P/uVKuhQTPh5BSo0DZVllEQyb3WnRe?=
- =?us-ascii?Q?1v0Wez2Oir71mLoABaIXBTQtUwp10pRMhqE+otxEGxft0dQmPes1Z8J8+wz+?=
- =?us-ascii?Q?XppFjXSTdky7f1NA4MxgRmWFsfJuzr5A/b3K06E1v3iZqrtxBv+WYxsuEJnx?=
- =?us-ascii?Q?J8bqB2y9nMMsFmLY5VYK1n1H4a/x5qBUgkgXXHfpbei/pB+CwyfL3BZi6+hx?=
- =?us-ascii?Q?/BVAFZdCoAabtVepzULA3AObCqSsBUTgx4a0sCTsNHyMGuiiJtZEYjfvYpfU?=
- =?us-ascii?Q?tCI4WPxL2KBzXUet3JTV732iPej4gTDeIb8R/Tl/qNFgMTSyqlQuaIOk75s0?=
- =?us-ascii?Q?BsWf43/vI2FxzV3wp3c3IeSob3Ad+2fhpPUprsGvT3ic0pOQyfFCX/W8qDyL?=
- =?us-ascii?Q?MXNM7XkKzgVMY/+GE1VoTbil2jThiPv/alcxen7OCpo3ZszRz5V5vW0yI15g?=
- =?us-ascii?Q?KYR3WkNVOqpirPqCLQLzptsB44GBbnCiy/yy3jkSatOkjM55yanICV+CHxVH?=
- =?us-ascii?Q?dE3m63YovZfkwckt6lCG148UQMcurqLfReOz9YE0PMNJEhV/ZkvCHZwMaN+Z?=
- =?us-ascii?Q?viyL28cED5dcACCbK8lMYmoEo+0ZzCOcrHyLTTp0p5gVcbZtBxyrSSaMWaEn?=
- =?us-ascii?Q?gkYzQ/XABP/2oliTdccP7I8l8lAgDTr2kazeeGnAPiN3sA2unD6yI7gQVyMl?=
- =?us-ascii?Q?w+blF+ElsmRLGUi0rEm5Zdq0/UfUJZfvY7x8mKF3lZDU5SM04Ig6lJqmiuyu?=
- =?us-ascii?Q?Wj14RGzzUa96AbHcoVSYOt6wSZRpPcyYcTPo+xw/j+324jmDI2SGtf3rVJiy?=
- =?us-ascii?Q?VmD4spMQzYHgtXjLZgISajmToHuMZJ8TXRZRs8bLS9EVawZsWZ9v7RiU+pW9?=
- =?us-ascii?Q?vIcaKvfqg1ojmXwn6RjvygEJLw2qKapkcvv3FbnSxTnyMg4g5ivoca8tSsh6?=
- =?us-ascii?Q?FsRCpF+MSTmhSWfva/ScUk+WKvDp59Q3rWxdS3V7m/7K6OrKHny2Wexdm2V7?=
- =?us-ascii?Q?HDebaL187LcQU3Sm8AT0dItE413nN4kGaFDMFr7eTPsO+2Vsjt5pkJsYVWH2?=
- =?us-ascii?Q?wzAwKLkI9eNxzPiJuciE1cPbeRsrwyS+KZ609xNMdvAkwbqkQRbiQ/LEOKdU?=
- =?us-ascii?Q?cIO8d/juLYge7WKgmdOiJ3rNuDU3UZaX5LkYzPRfMcfMBU8FYONITrg01G+W?=
- =?us-ascii?Q?Q99D4cOODw0BHlw+N58x+t2qDv4WfcY40T+8ERXuBHsFXVVkjcju1i7f1ScK?=
- =?us-ascii?Q?kqZF95zExeT9e+m2ezGUvLiKIjTLBgYHOE0JPWXOhdQsattlTL/lq8wLuJGq?=
- =?us-ascii?Q?zU8rk1JrpgtiWG4iKht1xhrTFwCCtLF5x9ZMmd/lLIpKdX75L3QRXINNkclU?=
- =?us-ascii?Q?YnjP+xxe4Q=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wUOQn-0001V3-8X
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2026 08:41:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1780404073;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=EUVqvPaTxP9t/OuQxpBY8J6nr/flMfuWVpMZBOXFiJw=;
+ b=Zv8Qb0D1u32xR8WFt7jdQUH4JfCkdpcUa1S97hdW6OIQYoH1zlOOYRbitQK1m/mCYke5sI
+ EHrKh87cJY9JHgyrffeSw7tGICZnnHfmUUy4UcncVqi0MKKDQthK75ULFpiIzVZl2WbbsY
+ cEEOgE0p9NJ7KbcPqLBKjP+bTGnp4R0=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-42-SyeAtY6rPvSeQhOh88O2fQ-1; Tue, 02 Jun 2026 08:41:12 -0400
+X-MC-Unique: SyeAtY6rPvSeQhOh88O2fQ-1
+X-Mimecast-MFC-AGG-ID: SyeAtY6rPvSeQhOh88O2fQ_1780404071
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-4908af8d7f9so47794165e9.1
+ for <qemu-arm@nongnu.org>; Tue, 02 Jun 2026 05:41:12 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1780404071; x=1781008871;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=EUVqvPaTxP9t/OuQxpBY8J6nr/flMfuWVpMZBOXFiJw=;
+ b=ZTlWXs/9To0EClX3lURv++1gTQ3i0isgUQ0DF3I2sPF9DKOC0T+yHNBIPWQe2/uXpK
+ w7N5fpjAdZvy4f2WEs3sj7sm76ALwsn5RYWJoElgiPQ/g71dnc9ALDoaTS5/qRzeKQjS
+ 1xzeSF5hfZiKTsu4SeeIkyU2VsYtFllHtWwFk8YirJwfuk514MuTmfOX2hptQKdHjC62
+ +FFUQ6Ne0P6ja5TDdM0TtDqEfuliFv5y60iejm/ByNv7MUyae1bqgd8LHbZ5Va/jCmJm
+ DYLPrl3oFY56DmgFFbljdTznXD9fUkSIC9JG+F+QywwwH8Bva+IAETnEUfIKkRRQc9QL
+ 5Olw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8HDmg3EcEQZB1PxrDwQyxopGRSWA/iCivk6pvLlweHzgQPq5eenN7U64QWcnT7Yq/8A+bJ1dcrqA==@nongnu.org
+X-Gm-Message-State: AOJu0Yzv+kmnFaJKZe0cninIHnNXT8jW+EQbpdk325KZ6qBtqHZCp+LY
+ od0JVyGWC63/o+vY58R3JglhiMTiIm9eWLImlCuCbrLFY3DW3Iyn3y+nTII2VvayuE5KiRnaQMl
+ TG76Xvzw450Bwtil4XnBTUmcRozOSjgbX1lCpLR7raA6GUpeTlle8Gw==
+X-Gm-Gg: Acq92OFJD5DNuTjyJDX8S1SoI0QGNCcnGihYKItuY2f2BRxHLWqfxfvvLLSIDWzqU12
+ 3L1Eq6Wki0PM9j4YgiCuTZtvxZd7OrF43g6lDjcPwIHGFoGvJ6jF+obZFM2kKp9jkyArexcX2ii
+ y6Z5lJpgEps7vfp7K6obsUxMB5mueOFidHDJgI7qAwRBT64nhhKmwe/M3/eoAT5Qd1eDjHBKafb
+ RbH4u/aer/3gXAPjyiLNiyWD3nyTHuitniMzNDURtRngoqm1egzbDxpDV+BP8mCEKoBUCiefms+
+ baqv4ujzDaYAb9LJKlbo/NpwNiCRpR5r3Wp6PoO+r1diicQERz5ccWirrTX0lYlt+97e5vtougN
+ BuKo18H8F4yCzsN4E
+X-Received: by 2002:a05:600c:4e13:b0:490:b11f:2560 with SMTP id
+ 5b1f17b1804b1-490b11f272dmr65367565e9.9.1780404070701; 
+ Tue, 02 Jun 2026 05:41:10 -0700 (PDT)
+X-Received: by 2002:a05:600c:4e13:b0:490:b11f:2560 with SMTP id
+ 5b1f17b1804b1-490b11f272dmr65366575e9.9.1780404070029; 
+ Tue, 02 Jun 2026 05:41:10 -0700 (PDT)
+Received: from imammedo ([213.175.46.86]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-46018c87803sm5589952f8f.30.2026.06.02.05.41.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Jun 2026 05:41:09 -0700 (PDT)
+Date: Tue, 2 Jun 2026 14:41:08 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eauger@redhat.com>
+Cc: qemu-devel@nongnu.org, mst@redhat.com, anisinha@redhat.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
+ philmd@linaro.org, zhao1.liu@intel.com, rad@semihalf.com,
+ leif.lindholm@oss.qualcomm.com, qemu-arm@nongnu.org, "Daniel P.
+ =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>, Markus Armbruster
+ <armbru@redhat.com>
+Subject: Re: [PATCH v2 09/21] arm: virt: create sbsa_gwdt watchdog
+Message-ID: <20260602144108.0d2d6384@imammedo>
+In-Reply-To: <01f82785-b6c0-4436-ad93-251c837a5cdc@redhat.com>
+References: <20260303092532.2410177-1-imammedo@redhat.com>
+ <20260303092532.2410177-10-imammedo@redhat.com>
+ <4cdd38f4-4efc-48c5-a236-a40449ad8e85@redhat.com>
+ <20260527144955.64eff309@imammedo>
+ <affe914f-157f-4125-93c5-abb94df3ab5b@redhat.com>
+ <b6895403-e294-44de-b77d-511cddadb567@redhat.com>
+ <20260528163714.7efb851e@imammedo>
+ <01f82785-b6c0-4436-ad93-251c837a5cdc@redhat.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA0PR12MB7555.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bba82ade-0aa1-448d-505a-08dec093544d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Jun 2026 10:40:14.0226 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: FSkgvHjLVswkYWMcc79FzmyF/WsWYirHwXgjNw7e2zyDOFUkxicqVyAu2uHrH63mul6RdNvhU2HREmKE+rDLlg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB5954
-Received-SPF: permerror client-ip=2a01:111:f403:c007::2;
- envelope-from=skolothumtho@nvidia.com;
- helo=MW6PR02CU001.outbound.protection.outlook.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: P3FhVTy9mV42GUKL7GRsKfyeuP5795FTTh1hWYEN20c_1780404071
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -158,51 +123,366 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Mon, 1 Jun 2026 18:37:05 +0200
+Eric Auger <eauger@redhat.com> wrote:
 
+> Hi Igor,
+> 
+> On 5/28/26 4:37 PM, Igor Mammedov wrote:
+> > On Thu, 28 May 2026 11:59:06 +0200
+> > Eric Auger <eauger@redhat.com> wrote:
+> >   
+> >> Hi,
+> >>
+> >> On 5/28/26 11:04 AM, Eric Auger wrote:  
+> >>> Hi Igor,
+> >>>
+> >>> On 5/27/26 2:49 PM, Igor Mammedov wrote:    
+> >>>> On Tue, 26 May 2026 15:58:08 +0200
+> >>>> Eric Auger <eauger@redhat.com> wrote:
+> >>>>    
+> >>>>> Hi Igor,
+> >>>>>
+> >>>>> On 3/3/26 10:25 AM, Igor Mammedov wrote:    
+> >>>>>> Allow to use SBSA generic watchdog with virt machine type.
+> >>>>>> (includes conditional generation of corresponding FDT and
+> >>>>>> ACPI GTDT descriptors)
+> >>>>>>
+> >>>>>> Use '-device sbsa_gwdt' to command line to enable it.      
+> >>>>> I thank that in general Peter is not a big fan of dynamic instantiation
+> >>>>> of sysbus devices. Don't you have means to instantiate it statically in
+> >>>>> arm virt memory map?    
+> > 
+> > On Peter's part, there weren't any objection to the idea using -device.
+> > (neither in v1 nor in this revision).
+> > 
+> >   
+> >>>> /me neither
+> >>>>
+> >>>> in previous version there was a machine option to enable the feature
+> >>>> to that was rejected in favor of device.
+> >>>>
+> >>>> in this case for platform  -device of sysbus based device, I don't think
+> >>>> we can do better that dynamic sysbus.     
+> >>>
+> >>> sorry I may have missed some previous discussion details. As far as I
+> >>> can read, I understand you could instantiate the wdt in a free MMIO
+> >>> slot, unconfitionnaly just as it is done in hw/arm/sbsa-ref.c. Maybe add
+> >>> a compat to avoid having it by default on older machine types. Then
+> >>> about the type of the integration gtdt or wat, can't you have a device
+> >>> compat?    
+> >> After further reading of the previous version thread, I wonder if you
+> >> shouldn't always instantiate the watchdog in the machine instead.
+> >>
+> >> Add a device property allowing to switch between GWDT or WDAT version.
+> >>
+> >> In arm virt,
+> >>
+> >> 1) if you discover the GWDT version is selected (default) you generate
+> >> both dt and GTDT ACPI table
+> >> 2) if you discover the WDAT version is selected, you only generate WDAT
+> >> ACPI description and you output an error in case of DT boot.
+> >>
+> >> You may add a machine no_wdt flag to handle compats for older machine
+> >> types if needed.  
+> > 
+> > rereading v1 thread it seems that there weren't much objection to adding
+> > a dedicated virt machine property to enable 'wdat' [1] /like what is done to q35/.
+> > 
+> > problem was in conflating too generic whatchdog=none/auto/native/acpi into
+> > one knob and discussion quickly went down rabbit hole of semantics.
+> > 
+> > For Q35, we don't really have a choice as it's already builtin device,
+> > but for arm/virt we can do better than a bunch of compats and proxy
+> > properties. (as Markus noted in v1 review, we've done that/still do
+> > but it doesn't scale well)
+> > 
+> > I can go old route and revert to simplified v1 that would:
+> >   * make gwdt builtin device on arm/virt board
+> >     (i.e. default to SBSA native watchdog with GTDT ACPI table
+> >      and relevant FDT entries)  
+> would make sense to me.
 
-> -----Original Message-----
-> From: Manish Honap <mhonap@nvidia.com>
-> Sent: 01 June 2026 08:56
-> To: Jonathan Cameron <jic23@kernel.org>
-> Cc: Alex Williamson <alwilliamson@nvidia.com>; Shameer Kolothum Thodi
-> <skolothumtho@nvidia.com>; Ankit Agrawal <ankita@nvidia.com>;
-> mst@redhat.com; imammedo@redhat.com; anisinha@redhat.com;
-> eric.auger@redhat.com; peter.maydell@linaro.org;
-> shannon.zhaosl@gmail.com; jonathan.cameron@huawei.com;
-> fan.ni@samsung.com; pbonzini@redhat.com; richard.henderson@linaro.org;
-> marcel.apfelbaum@gmail.com; clg@redhat.com; cohuck@redhat.com;
-> dave.jiang@intel.com; alejandro.lucero-palau@amd.com; Vikram Sethi
-> <vsethi@nvidia.com>; Neo Jia <cjia@nvidia.com>; Tarun Gupta (SW-GPU)
-> <targupta@nvidia.com>; Zhi Wang <zhiw@nvidia.com>; Krishnakant Jaju
-> <kjaju@nvidia.com>; linux-cxl@vger.kernel.org; kvm@vger.kernel.org; qemu-
-> devel@nongnu.org; qemu-arm@nongnu.org; Manish Honap
-> <mhonap@nvidia.com>
-> Subject: RE: [RFC 0/9] QEMU: CXL Type-2 device passthrough via vfio-pci
->=20
+forgot about why it's not default ATM,
+the reason being that native/default GWDT causes issues on Windows
+(only WDAT variant works).
+the last 2 patches trying to do some damage control,
+but what we can do on qemu side is limited.
 
-[...]
+and builtin gwdt we would end up with a mess of gwdt=on|of and wdat=o|n,
 
-> > > pxb-cxl bridges had no _DSM method. Without _DSM function 5 the OS
-> > > defaults to treating PCI configuration as reassignable.
-> >
-> > That one is annoyingly controversial. I see you have Shameer's patch
-> > so he can go into history of why. I tried to land that in the past and
-> > I was far from the first.
->=20
-> okay, I will check this part for additional details.
+So I'd rather have watchdog as an optional device included to VM
+when asked by user.
+With side benefit reducing attack surface when device is not
+needed compared to built-in by default variant.
+ 
 
-I guess the concern here is the QEMU regression reported with certain
-devices with legacy IO port BARs having issues on arm64 when _DSM #5 is
-specified:
-https://lore.kernel.org/all/20210724185234.GA2265457@roeck-us.net/
+> >   * add a machine.gwdt-wdat=on|off property
+> >      1. that will make gwdt to use 1KHz frequency
+> >      2. enable WDAT ACPI table
+> >      3. disable GTDT ACPI table and relevant FDT entries
+> >         as they are mutually exclusive with #1 point 
+> >   * add a compat knob to disable gwdt on old machine types.  
+> Either that or device prop setting as we have for ACPI PCI HP (technique
+> you advocated at some point).
 
-For accel SMMUv3 this is fine as we restrict the devices to vfio-pci only.
-One option, until there is a proper fix in the Linux kernel or EDK2, might
-be to maintain a checklist so that devices known to have issues are not
-attached when _DSM #5 is advertised.
+that was for symmetry with existing acpi pci hp feature on x86 if I recall
+correctly. There is no much options for builtin devices, we either
+ * use -global to tweak them  (historical variant)
+ * more recent trend is proxy property in -machine
+both not great variants, I've tried in v1 to propose generic
+-machine watchdog=foo to at least limit a zoo of options, but that was rejected.
+ 
 
-Thanks,
-Shameer
+> > 
+> > Re-spinning that wouldn't take much effort, all the code already exist,
+> > just needs mostly reshuffling. 
+> > 
+> > 1) I think Daniel was ok having something like gwdt-wdat=on|off
+> >    from libvirt pov.
+> > 
+> > That said,
+> > Having watchdog as an optional -device is much cleaner compared to
+> > adding knobs to machine (both internal compats and external to enable
+> > specific watchdog).  
+> I am OK with that too. However in general I think Peter prefers having
+> them statically instantiated if possible. All the more so I think that
+> having a watchdog, always instantiated, in its GTDT/FDT form (not WDAT
+> ACPI only) in machvirt would make sense in general and does not make
+> much trouble in terms of MMIO layout.
 
+If there is no objections, lets go with -device variant
+
+If dynamic sysbus resources is of concern, I probably can pin/make them
+static, using device plug handler (virt_machine_device_plug_cb).
+Let me try and see what could be done wrt static resources.
+
+At this point series needs a rebase, due to conflicts.
+So I'll respin it with staic variant if it works out or as it's now.
+
+But while I'm at it, pls review the remaining not reviewed yet patches,
+as they aren't likely to change. Especially generic GWDT fixes 18-21/21. 
+
+> Good (well bad actualy) example
+> of compats/props is set of
+> > ITS ones, one eventually can untangle what depends on what
+> > and how that works together, but I'd rather avoid doing that. 
+> > 
+> > Perhaps I went overboard with move to -device.
+> > Anyways, all I can do is suggest in my opinion a better way,
+> > but it's upto arm folks to pick a preferred approach.
+> >   
+> >> Would that make sense?
+> >>
+> >> Otherwise, can you point me the msgid where the -device was prefered?  
+> > Sorry, rereading v1 thread, -device was just an idea to try
+> > (but by no means a preferred/consensus one).  
+> This is what I understood too.
+> 
+> Thanks
+> 
+> Eric
+> >   
+> >>
+> >> Thanks
+> >>
+> >> Eric  
+> >>>
+> >>> Thanks
+> >>>
+> >>> Eric
+> >>>     
+> >>>>
+> >>>>      
+> >>>>>
+> >>>>> Eric    
+> >>>>>>
+> >>>>>> Tested with Fedora 43:
+> >>>>>>   FDT: -M virt,acpi=off -device sbsa_gwdt
+> >>>>>>   ACPI: -M virt -device sbsa_gwdt
+> >>>>>>
+> >>>>>> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> >>>>>> ---
+> >>>>>>  hw/arm/Kconfig           |  1 +
+> >>>>>>  hw/arm/virt-acpi-build.c | 33 +++++++++++++++++++++++++++++++--
+> >>>>>>  hw/arm/virt.c            |  2 ++
+> >>>>>>  hw/core/sysbus-fdt.c     | 32 ++++++++++++++++++++++++++++++++
+> >>>>>>  hw/watchdog/sbsa_gwdt.c  |  1 +
+> >>>>>>  5 files changed, 67 insertions(+), 2 deletions(-)
+> >>>>>>
+> >>>>>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> >>>>>> index c66c452737..1222efadd1 100644
+> >>>>>> --- a/hw/arm/Kconfig
+> >>>>>> +++ b/hw/arm/Kconfig
+> >>>>>> @@ -36,6 +36,7 @@ config ARM_VIRT
+> >>>>>>      select VIRTIO_MEM_SUPPORTED
+> >>>>>>      select ACPI_CXL
+> >>>>>>      select ACPI_HMAT
+> >>>>>> +    select WDT_SBSA
+> >>>>>>  
+> >>>>>>  config CUBIEBOARD
+> >>>>>>      bool
+> >>>>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> >>>>>> index 719d2f994e..9c14b1d4d5 100644
+> >>>>>> --- a/hw/arm/virt-acpi-build.c
+> >>>>>> +++ b/hw/arm/virt-acpi-build.c
+> >>>>>> @@ -64,6 +64,7 @@
+> >>>>>>  #include "hw/virtio/virtio-acpi.h"
+> >>>>>>  #include "target/arm/cpu.h"
+> >>>>>>  #include "target/arm/multiprocessing.h"
+> >>>>>> +#include "hw/watchdog/sbsa_gwdt.h"
+> >>>>>>  
+> >>>>>>  #define ARM_SPI_BASE 32
+> >>>>>>  
+> >>>>>> @@ -863,6 +864,8 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >>>>>>      const uint32_t irqflags = 0;  /* Interrupt is Level triggered  */
+> >>>>>>      AcpiTable table = { .sig = "GTDT", .rev = 3, .oem_id = vms->oem_id,
+> >>>>>>                          .oem_table_id = vms->oem_table_id };
+> >>>>>> +    uint32_t gtdt_start = table_data->len;
+> >>>>>> +    Object *wdt = object_resolve_type_unambiguous(TYPE_WDT_SBSA, NULL);
+> >>>>>>  
+> >>>>>>      acpi_table_begin(&table, table_data);
+> >>>>>>  
+> >>>>>> @@ -893,10 +896,15 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >>>>>>      build_append_int_noprefix(table_data, irqflags, 4);
+> >>>>>>      /* CntReadBase Physical address */
+> >>>>>>      build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
+> >>>>>> +
+> >>>>>>      /* Platform Timer Count */
+> >>>>>> -    build_append_int_noprefix(table_data, 0, 4);
+> >>>>>> +    build_append_int_noprefix(table_data,  wdt ? 1 : 0, 4);
+> >>>>>>      /* Platform Timer Offset */
+> >>>>>> -    build_append_int_noprefix(table_data, 0, 4);
+> >>>>>> +    build_append_int_noprefix(table_data,
+> >>>>>> +        wdt ? (table_data->len - gtdt_start) +
+> >>>>>> +              4 + 4 + 4 /* len of this & following 2 fields to skip */
+> >>>>>> +            : 0, 4);
+> >>>>>> +
+> >>>>>>      if (vms->ns_el2_virt_timer_irq) {
+> >>>>>>          /* Virtual EL2 Timer GSIV */
+> >>>>>>          build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL2_VIRT_IRQ, 4);
+> >>>>>> @@ -906,6 +914,27 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >>>>>>          build_append_int_noprefix(table_data, 0, 4);
+> >>>>>>          build_append_int_noprefix(table_data, 0, 4);
+> >>>>>>      }
+> >>>>>> +
+> >>>>>> +    /* ACPI 6.5 spec: 5.2.25.2 ARM Generic Watchdog Structure (Table 5-124) */
+> >>>>>> +    if (wdt) {
+> >>>>>> +        PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
+> >>>>>> +        SysBusDevice *sd = SYS_BUS_DEVICE(wdt);
+> >>>>>> +        hwaddr mmio_base = vms->memmap[VIRT_PLATFORM_BUS].base;
+> >>>>>> +        hwaddr rbase = mmio_base + platform_bus_get_mmio_addr(pbus, sd, 0);
+> >>>>>> +        hwaddr cbase = mmio_base + platform_bus_get_mmio_addr(pbus, sd, 1);
+> >>>>>> +        int irq = ARM_SPI_BASE + vms->irqmap[VIRT_PLATFORM_BUS] +
+> >>>>>> +                  platform_bus_get_irqn(pbus, sd, 0);
+> >>>>>> +
+> >>>>>> +        build_append_int_noprefix(table_data, 1 /* Type: Watchdog GT */, 1);
+> >>>>>> +        build_append_int_noprefix(table_data, 28 /* Length */, 2);
+> >>>>>> +        build_append_int_noprefix(table_data, 0, 1);  /* Reserved */
+> >>>>>> +        /* RefreshFrame Physical Address */
+> >>>>>> +        build_append_int_noprefix(table_data, rbase, 8);
+> >>>>>> +        /* WatchdogControlFrame Physical Address */
+> >>>>>> +        build_append_int_noprefix(table_data, cbase, 8);
+> >>>>>> +        build_append_int_noprefix(table_data, irq, 4); /* Watchdog Timer GSIV */
+> >>>>>> +        build_append_int_noprefix(table_data, 0, 4); /* Watchdog Timer Flags */
+> >>>>>> +    }
+> >>>>>>      acpi_table_end(linker, &table);
+> >>>>>>  }
+> >>>>>>  
+> >>>>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> >>>>>> index cab2e21e8a..a87991b591 100644
+> >>>>>> --- a/hw/arm/virt.c
+> >>>>>> +++ b/hw/arm/virt.c
+> >>>>>> @@ -95,6 +95,7 @@
+> >>>>>>  #include "hw/cxl/cxl.h"
+> >>>>>>  #include "hw/cxl/cxl_host.h"
+> >>>>>>  #include "qemu/guest-random.h"
+> >>>>>> +#include "hw/watchdog/sbsa_gwdt.h"
+> >>>>>>  
+> >>>>>>  static GlobalProperty arm_virt_compat_defaults[] = {
+> >>>>>>      { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
+> >>>>>> @@ -3474,6 +3475,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+> >>>>>>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+> >>>>>>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_UEFI_VARS_SYSBUS);
+> >>>>>>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3);
+> >>>>>> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_WDT_SBSA);
+> >>>>>>  #ifdef CONFIG_TPM
+> >>>>>>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+> >>>>>>  #endif
+> >>>>>> diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+> >>>>>> index 89d0c46445..76aa1bc579 100644
+> >>>>>> --- a/hw/core/sysbus-fdt.c
+> >>>>>> +++ b/hw/core/sysbus-fdt.c
+> >>>>>> @@ -36,6 +36,7 @@
+> >>>>>>  #include "hw/display/ramfb.h"
+> >>>>>>  #include "hw/uefi/var-service-api.h"
+> >>>>>>  #include "hw/arm/fdt.h"
+> >>>>>> +#include "hw/watchdog/sbsa_gwdt.h"
+> >>>>>>  
+> >>>>>>  /*
+> >>>>>>   * internal struct that contains the information to create dynamic
+> >>>>>> @@ -118,6 +119,36 @@ static int add_uefi_vars_node(SysBusDevice *sbdev, void *opaque)
+> >>>>>>      return 0;
+> >>>>>>  }
+> >>>>>>  
+> >>>>>> +static int add_sbsa_gwdt_node(SysBusDevice *sbdev, void *opaque)
+> >>>>>> +{
+> >>>>>> +    PlatformBusFDTData *data = opaque;
+> >>>>>> +    PlatformBusDevice *pbus = data->pbus;
+> >>>>>> +    const char *parent_node = data->pbus_node_name;
+> >>>>>> +    void *fdt = data->fdt;
+> >>>>>> +    uint64_t cbase, rbase;
+> >>>>>> +    char *nodename;
+> >>>>>> +    int irq;
+> >>>>>> +
+> >>>>>> +    cbase = platform_bus_get_mmio_addr(pbus, sbdev, 1);  /* control frame */
+> >>>>>> +    rbase = platform_bus_get_mmio_addr(pbus, sbdev, 0);  /* refresh frame */
+> >>>>>> +    irq = platform_bus_get_irqn(pbus, sbdev, 0);
+> >>>>>> +
+> >>>>>> +    nodename = g_strdup_printf("%s/watchdog@%" PRIx64, parent_node, cbase);
+> >>>>>> +    qemu_fdt_add_subnode(fdt, nodename);
+> >>>>>> +
+> >>>>>> +    qemu_fdt_setprop_string(fdt, nodename, "compatible", "arm,sbsa-gwdt");
+> >>>>>> +    qemu_fdt_setprop_cells(fdt, nodename, "reg",
+> >>>>>> +                           cbase, SBSA_GWDT_CMMIO_SIZE,
+> >>>>>> +                           rbase, SBSA_GWDT_RMMIO_SIZE);
+> >>>>>> +    qemu_fdt_setprop_cells(fdt, nodename, "interrupts",
+> >>>>>> +                           GIC_FDT_IRQ_TYPE_SPI, data->irq_start + irq,
+> >>>>>> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> >>>>>> +    qemu_fdt_setprop_cell(fdt, nodename, "timeout-sec", 30);
+> >>>>>> +
+> >>>>>> +    g_free(nodename);
+> >>>>>> +    return 0;
+> >>>>>> +}
+> >>>>>> +
+> >>>>>>  static int no_fdt_node(SysBusDevice *sbdev, void *opaque)
+> >>>>>>  {
+> >>>>>>      return 0;
+> >>>>>> @@ -140,6 +171,7 @@ static const BindingEntry bindings[] = {
+> >>>>>>      TYPE_BINDING(TYPE_ARM_SMMUV3, no_fdt_node),
+> >>>>>>      TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
+> >>>>>>      TYPE_BINDING(TYPE_UEFI_VARS_SYSBUS, add_uefi_vars_node),
+> >>>>>> +    TYPE_BINDING(TYPE_WDT_SBSA, add_sbsa_gwdt_node),
+> >>>>>>      TYPE_BINDING("", NULL), /* last element */
+> >>>>>>  };
+> >>>>>>  
+> >>>>>> diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
+> >>>>>> index acb970e8b3..c4dd8005b7 100644
+> >>>>>> --- a/hw/watchdog/sbsa_gwdt.c
+> >>>>>> +++ b/hw/watchdog/sbsa_gwdt.c
+> >>>>>> @@ -285,6 +285,7 @@ static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, const void *data)
+> >>>>>>      dc->realize = wdt_sbsa_gwdt_realize;
+> >>>>>>      device_class_set_legacy_reset(dc, wdt_sbsa_gwdt_reset);
+> >>>>>>      dc->hotpluggable = false;
+> >>>>>> +    dc->user_creatable = true;
+> >>>>>>      set_bit(DEVICE_CATEGORY_WATCHDOG, dc->categories);
+> >>>>>>      dc->vmsd = &vmstate_sbsa_gwdt;
+> >>>>>>      dc->desc = "SBSA-compliant generic watchdog device";      
+> >>>>>    
+> >>>>    
+> >>>     
+> >>  
+> >   
+> 
 
 

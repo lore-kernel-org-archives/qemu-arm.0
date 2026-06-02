@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C994C5DF71
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Jun 2026 06:27:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9805ACD6E4A
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Jun 2026 06:34:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUIaW-0002zj-Kq; Tue, 02 Jun 2026 02:26:56 -0400
+	id 1wUIgy-0005QZ-Im; Tue, 02 Jun 2026 02:33:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUIaV-0002zW-Qv
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 02:26:55 -0400
-Received: from smtpout9.mo540.mail-out.ovh.net ([51.210.91.58])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wUIgt-0005Pj-P2; Tue, 02 Jun 2026 02:33:32 -0400
+Received: from smtpout1.mo2.mail-out.ovh.net ([79.137.123.219])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUIaS-0002qc-Um
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 02:26:55 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4gV17q3mZdz4PJv;
- Tue,  2 Jun 2026 06:26:47 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Tue,  2 Jun 2026 06:26:47 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.188.27])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gV17q2dX9z1xwQ; Tue,  2 Jun 2026 06:26:47 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.2])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wUIgo-0004QX-A8; Tue, 02 Jun 2026 02:33:30 -0400
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net [152.228.215.222])
+ by mo2.mail-out.ovh.net (Postfix) with ESMTPS id 4gV1HB4h3nz40XV;
+ Tue,  2 Jun 2026 06:33:10 +0000 (UTC)
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net. [127.0.0.1])
+ by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Tue,  2 Jun 2026 06:33:10 +0000 (UTC)
+Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.0.164])
+ by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4gV1HB2g1rz5vMw;
+ Tue,  2 Jun 2026 06:33:10 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.7])
  (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 277491B4305E;
- Tue,  2 Jun 2026 06:26:46 +0000 (UTC)
+ by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 5901712E305D;
+ Tue,  2 Jun 2026 06:33:09 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-105G00628c4218e-f4b6-49f6-b47f-22b72bdfa7db,
+ (GARM-102R004e841e1db-4ea9-4d05-bf0b-956d6e7da252,
  E738715FB773EF828F8B902CE3F45C10C1B236B1) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <29a404a8-690e-4457-b7f5-352ebce5724a@kaod.org>
-Date: Tue, 2 Jun 2026 08:26:45 +0200
+Message-ID: <5ce16ff8-4b29-4e83-925b-621c8ecda57c@kaod.org>
+Date: Tue, 2 Jun 2026 08:33:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/10] hw/i2c/aspeed_i2c: Introduce dma_addr_lo_mask to
- unify DMA address handling
+Subject: Re: [PATCH v2 02/10] hw/i2c/aspeed_i2c: Increase AST2700 buffer mode
+ size and adjust offset
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -52,7 +52,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20260602052827.1535299-1-jamin_lin@aspeedtech.com>
- <20260602052827.1535299-2-jamin_lin@aspeedtech.com>
+ <20260602052827.1535299-3-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -97,30 +97,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260602052827.1535299-2-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260602052827.1535299-3-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 8621860012335344651
+x-ovh-tracer-id: 8729664929436576779
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFvkDYSte38RtoOedIniqTq90VBIAR/zjMPbUViliRF0WWJylZ1egQh69yqHus13FOcMt0ceZCszYzz3hS+bv3Z5qgVjRKmnAk8VfZ7bHX17kJhxA4cL6X+EFh33CeCTogAyXSOEf/JEj7vG+pIMzWF8WoIVRY4Xi07V+rlNSYm3FhL8w3TvQEYU/pX1nE8R/fd3hHsEJM6n0Yz3nFKa4DqVFzs+rU4nBzsL6X8YdbkRjtvLUQutR6ya9bPFtKyqsU7BPqYVrX3ikVTHf9OSwJIKQll+ffx3ebm5VEhrLuVrMb1XtGphOn742kiPVmPL/Hi2x1RCc8wTXMZ9rUwzbqaS2aU2u9AgrvYgKWtCXo0cu7VKa9Oe5LiPchWPRchhJpt0sFUJL1CtejHSsdYy51zI39csNX2Q7LvIB1VwYhqi4qmEn1huDZUuK/0z+tQA1y1Gw76Vuqi5XTyPa16zEWhU8pDi4yzb7Cm+T1EgT2IvHLGaBQgOXq/CpCPxODKDN4e3Zv8iEncxjuJ6rV4scX+/DqTPI0e79kRl0gY+pAc0uFtnF3epDYfk/5pBM3piw9+ZBiot8qIY2RZRH+ELxeUYBvc/YgIrdg2T0bAkOvSQg0kglfZR6iHun9TfKeRM3AXYRbjj2ILGEQ9IjWqlbaVLutQ8C7YTtd5CkRlg29xHA
-DKIM-Signature: a=rsa-sha256; bh=/Lj0iClBDgGx1rawjoRYbbXS3tIHWB7XKr9bHMjxq5k=; 
+X-VR-SPAMCAUSE: dmFkZTGsdPbpdtqZW4s89iWVZu3Ln7hX5wgdMUkm8ksNwJNSyvQ9eP4CiyJPRR3HzmYHQrlWv5OW6708iwfqMB5mzlqAyBjH1INkxeT9H/75a0OaoI2txS5E9lUl4a9ukv+utztcGWqpbZh6ZpujD/WHavp+7DqobRB4v4o2Pkk2RL2VHNhDuD4JPydPRQWfW+8BF1lVEdGWcv4PxJKZVLR/QeQ5/JhQFAzUK3141cl6rbpnBcVrrcAX3nDl+m7hcfLsuNBdun1W3bMEYiwnw1/FThwDMElrsyEAVHIxHkdDW5ZlyKaN8O5s2QOZ0Eens4KVCtwoB8+vOvf/mQxOFVCR/RLdOtf9BYMLT/ei7ldHa1R/1Ww8dtkjxBpAjz8atxxmhZlRvv5b4s87LlorDG9wPiDzPaqw4P70F9T3T0+Sbbr/X+WEFNaWozvqbclcRC04WyF3HSRrWMN5MnZuqYeHeWK2KNhWkUqnNHuE9i0xHQng9ELLaQL0xBUtiol69KN9tG646p4Pp9KQnIDCmnM4DrHEhrXx+WISvnPVRl6h6VJbgKGdlUo/sDnPLwAtTWGmeOt+N483+s6nJAm3t75TWRAQ0aHvplu0MR4MD7vkSzWzm0BY/4M9E29BXoJ1sHMil4Y3t0U+o8tKxxogvtntWFUWdlJB5Z5Vh54j4ZqPC/zzQg
+DKIM-Signature: a=rsa-sha256; bh=sFtXbp7HKk4oynXTLsBVa15XfgVJ/wIiwGfcjr2FMpY=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1780381608; v=1;
- b=pvBlFP4cJcms5JSxey7qloRHsAj1c3GT4281nXd5e4MAKpQbeecHV2xnk61cUemCxhXdnerV
- LPmjE2YmXjWPtaP//eeH5tLQclmdEqJNEMdJqWYbo3DOeNa9WSebMZ54YoSqFk575V3H8jeZBPn
- SiQcXkmTEWcuvbfF0zNTLmlcPQkUkQ0VEBz8ysoXumS4OAhr8c8SDLQd50PcBqSNeAHfVoRl3X/
- L6vG2iHm9jQQeJPQCkOsICIPsrO9nnfJU3JkfS2TeeOBRMUowtBIuGKr8UQ2wu/611pYNlUe8Gr
- o5ZaRZppowLISpHwrT6lg2DpSktS1B3hmTPRRy0f+6tug==
-Received-SPF: pass client-ip=51.210.91.58; envelope-from=clg@kaod.org;
- helo=smtpout9.mo540.mail-out.ovh.net
+ t=1780381992; v=1;
+ b=DvdkPkIwQwp8QP910A/WYi4KuloVXQQGERkZt9Ntkc226WFrLm4uk55LEfyLPsLXnhbXXELx
+ asnIhHwOe9bWX3E/kHLB5dwZ6TCsnt7wpnRwOqXCm8rU0FeLr3T1BR2eodbGRdO4l55BAU8DDAD
+ xNL2Nhti0ZOaPIn4swodmGevIZBwdgTqWbT6i9vRGWGID9CY8AIWgOyCyEIynlqbURd7wvx+xfe
+ JT0XfL3QGs3xAdAn2KbmAO9xTqW8PWjqwHPn2e4oLvUY40j+LUgWSSxTRGkAC63gaOWNwiNskyv
+ TvJbFG52+0abeX4ulVRW8luWQbeM5vCxTbZXx+xNkC5mg==
+Received-SPF: pass client-ip=79.137.123.219; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo2.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,176 +137,134 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 6/2/26 07:28, Jamin Lin wrote:
-> The Aspeed I2C controller has two register layouts.
+> Update the AST2700 I2C buffer mode configuration to match
+> the latest firmware definition:
+> - Increase buffer mode pool size from 0x20 to 0x40
+> - Adjust buffer mode base offset to 0x1c0
 > 
-> The AST2500 uses the old mode with a single DMA address register (I2CD_DMA_ADDR)
-> where the address is 4-byte aligned and masked to 0x3ffffffc.
-> 
->  From AST2600 onwards, the new mode provides separate master TX/RX and slave RX DMA
-> address registers (I2CM_DMA_TX_ADDR, I2CM_DMA_RX_ADDR, I2CS_DMA_RX_ADDR)
-> with different address widths per SoC:
->    AST2600 (new mode): 0x7fffffff  - bits[30:0]
->    AST1030 (new mode): 0x7fffffff  - bits[30:0]
->    AST1060 (new mode): 0x7fffffff  - bits[30:0]
->    AST2700 (new mode): 0xffffffff  - bits[31:0]
-> 
-> Introduce dma_addr_lo_mask as a per-class attribute and apply it
-> uniformly when storing DMA address register writes and when loading
-> the address into dma_dram_offset for both master and slave paths.
-> This replaces the previous FIELD_EX32 extractions (which incorrectly
-> stripped bit 31 on AST2700) and the hardcoded 0x3ffffffc literal in
-> the old-mode path.
+> Since the buffer mode region size changes, the migration state
+> layout is also modified. Bump the VMState version numbers to
+> prevent incompatible migration between old and new machine states.
 > 
 > Fixes: 1809ab6a67359e0876981cd05d2a50b2843eabad ("hw/i2c/aspeed: Add AST2700 support")
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   include/hw/i2c/aspeed_i2c.h |  5 +----
->   hw/i2c/aspeed_i2c.c         | 22 +++++++++++++---------
->   2 files changed, 14 insertions(+), 13 deletions(-)
-
-aspeed_i2c_bus_new_write() still has :
-
-     case A_I2CS_DMA_RX_ADDR:
-         bus->regs[R_I2CS_DMA_RX_ADDR] = value;
-
-Is that ok ?
-
-Thanks,
-
-C.
-
-
+>   include/hw/i2c/aspeed_i2c.h |  2 +-
+>   hw/i2c/aspeed_i2c.c         | 46 ++++++++++++++++++-------------------
+>   2 files changed, 24 insertions(+), 24 deletions(-)
 > 
 > diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-> index d42cb4865a..1fc229f699 100644
+> index 1fc229f699..b2e4d2fb9d 100644
 > --- a/include/hw/i2c/aspeed_i2c.h
 > +++ b/include/hw/i2c/aspeed_i2c.h
-> @@ -209,13 +209,9 @@ REG32(I2CS_DMA_LEN, 0x2c)
->       FIELD(I2CS_DMA_LEN, TX_BUF_LEN_W1T, 15, 1)
->       FIELD(I2CS_DMA_LEN, TX_BUF_LEN, 0, 11)
->   REG32(I2CM_DMA_TX_ADDR, 0x30)
-> -    FIELD(I2CM_DMA_TX_ADDR, ADDR, 0, 31)
->   REG32(I2CM_DMA_RX_ADDR, 0x34)
-> -    FIELD(I2CM_DMA_RX_ADDR, ADDR, 0, 31)
->   REG32(I2CS_DMA_TX_ADDR, 0x38)
-> -    FIELD(I2CS_DMA_TX_ADDR, ADDR, 0, 31)
->   REG32(I2CS_DMA_RX_ADDR, 0x3c)
-> -    FIELD(I2CS_DMA_RX_ADDR, ADDR, 0, 31)
->   REG32(I2CS_DEV_ADDR, 0x40)
->   REG32(I2CM_DMA_LEN_STS, 0x48)
->       FIELD(I2CM_DMA_LEN_STS, RX_LEN, 16, 13)
-> @@ -303,6 +299,7 @@ struct AspeedI2CClass {
->       bool has_share_pool;
->       uint64_t mem_size;
->       bool has_dma64;
-> +    uint32_t dma_addr_lo_mask;
->   };
+> @@ -35,7 +35,7 @@ OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
 >   
->   static inline bool aspeed_i2c_is_new_mode(AspeedI2CState *s)
+>   #define ASPEED_I2C_NR_BUSSES 16
+>   #define ASPEED_I2C_SHARE_POOL_SIZE 0x800
+> -#define ASPEED_I2C_BUS_POOL_SIZE 0x20
+> +#define ASPEED_I2C_BUS_POOL_SIZE 0x40
+>   #define ASPEED_I2C_NEW_NUM_REG (0xa0 >> 2)
+>   
+>   #define A_I2CD_M_STOP_CMD       BIT(5)
 > diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index 4a6732a185..a6b44174f5 100644
+> index a6b44174f5..595b5fcf5c 100644
 > --- a/hw/i2c/aspeed_i2c.c
 > +++ b/hw/i2c/aspeed_i2c.c
-> @@ -236,7 +236,7 @@ static void aspeed_i2c_set_tx_dma_dram_offset(AspeedI2CBus *bus)
->           value = bus->regs[R_I2CM_DMA_TX_ADDR];
->           bus->dma_dram_offset =
->               deposit64(bus->dma_dram_offset, 0, 32,
-> -                      FIELD_EX32(value, I2CM_DMA_TX_ADDR, ADDR));
-> +                      value & aic->dma_addr_lo_mask);
->           if (aic->has_dma64) {
->               value = bus->regs[R_I2CM_DMA_TX_ADDR_HI];
->               bus->dma_dram_offset =
-> @@ -246,7 +246,7 @@ static void aspeed_i2c_set_tx_dma_dram_offset(AspeedI2CBus *bus)
->       } else {
->           value = bus->regs[R_I2CD_DMA_ADDR];
->           bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 0, 32,
-> -                                         value & 0x3ffffffc);
-> +                                         value & aic->dma_addr_lo_mask);
->       }
->   }
+> @@ -1132,8 +1132,8 @@ static const MemoryRegionOps aspeed_i2c_bus_pool_ops = {
 >   
-> @@ -261,7 +261,7 @@ static void aspeed_i2c_set_rx_dma_dram_offset(AspeedI2CBus *bus)
->           value = bus->regs[R_I2CM_DMA_RX_ADDR];
->           bus->dma_dram_offset =
->               deposit64(bus->dma_dram_offset, 0, 32,
-> -                      FIELD_EX32(value, I2CM_DMA_RX_ADDR, ADDR));
-> +                      value & aic->dma_addr_lo_mask);
->           if (aic->has_dma64) {
->               value = bus->regs[R_I2CM_DMA_RX_ADDR_HI];
->               bus->dma_dram_offset =
-> @@ -271,7 +271,7 @@ static void aspeed_i2c_set_rx_dma_dram_offset(AspeedI2CBus *bus)
->       } else {
->           value = bus->regs[R_I2CD_DMA_ADDR];
->           bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 0, 32,
-> -                                         value & 0x3ffffffc);
-> +                                         value & aic->dma_addr_lo_mask);
->       }
->   }
+>   static const VMStateDescription aspeed_i2c_bus_vmstate = {
+>       .name = TYPE_ASPEED_I2C,
+> -    .version_id = 7,
+> -    .minimum_version_id = 6,
+> +    .version_id = 8,
+> +    .minimum_version_id = 7,
+
+
+I think min should be '8'. QEMU can not deserialise a v7 format
+of the pool array. It reads exactly ASPEED_I2C_BUS_POOL_SIZE bytes
+from the migration stream. But the size has changed.
+
+
+>       .fields = (const VMStateField[]) {
+>           VMSTATE_UINT32_ARRAY(regs, AspeedI2CBus, ASPEED_I2C_NEW_NUM_REG),
+>           VMSTATE_UINT32_V(pending_intr_sts, AspeedI2CBus, 7),
+> @@ -1145,8 +1145,8 @@ static const VMStateDescription aspeed_i2c_bus_vmstate = {
 >   
-> @@ -735,12 +735,10 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
->           aspeed_i2c_bus_raise_interrupt(bus);
->           break;
->       case A_I2CM_DMA_TX_ADDR:
-> -        bus->regs[R_I2CM_DMA_TX_ADDR] = FIELD_EX32(value, I2CM_DMA_TX_ADDR,
-> -                                                   ADDR);
-> +        bus->regs[R_I2CM_DMA_TX_ADDR] = value & aic->dma_addr_lo_mask;
->           break;
->       case A_I2CM_DMA_RX_ADDR:
-> -        bus->regs[R_I2CM_DMA_RX_ADDR] = FIELD_EX32(value, I2CM_DMA_RX_ADDR,
-> -                                                   ADDR);
-> +        bus->regs[R_I2CM_DMA_RX_ADDR] = value & aic->dma_addr_lo_mask;
->           break;
->       case A_I2CM_DMA_LEN:
->           w1t = FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T) ||
-> @@ -1375,6 +1373,8 @@ static void aspeed_i2c_class_init(ObjectClass *klass, const void *data)
->   static int aspeed_i2c_bus_new_slave_event(AspeedI2CBus *bus,
->                                             enum i2c_event event)
+>   static const VMStateDescription aspeed_i2c_vmstate = {
+>       .name = TYPE_ASPEED_I2C,
+> -    .version_id = 3,
+> -    .minimum_version_id = 3,
+> +    .version_id = 4,
+> +    .minimum_version_id = 4,
+>       .fields = (const VMStateField[]) {
+>           VMSTATE_UINT32(intr_status, AspeedI2CState),
+>           VMSTATE_STRUCT_ARRAY(busses, AspeedI2CState,
+> @@ -1250,37 +1250,37 @@ static void aspeed_i2c_instance_init(Object *obj)
+>    * Address Definitions (AST2700)
+>    *   0x000 ... 0x0FF: Global Register
+>    *   0x100 ... 0x19F: Device 0
+> - *   0x1A0 ... 0x1BF: Device 0 buffer
+> + *   0x1C0 ... 0x1FF: Device 0 buffer
+>    *   0x200 ... 0x29F: Device 1
+> - *   0x2A0 ... 0x2BF: Device 1 buffer
+> + *   0x2C0 ... 0x2FF: Device 1 buffer
+>    *   0x300 ... 0x39F: Device 2
+> - *   0x3A0 ... 0x3BF: Device 2 buffer
+> + *   0x3C0 ... 0x3FF: Device 2 buffer
+>    *   0x400 ... 0x49F: Device 3
+> - *   0x4A0 ... 0x4BF: Device 3 buffer
+> + *   0x4C0 ... 0x4FF: Device 3 buffer
+>    *   0x500 ... 0x59F: Device 4
+> - *   0x5A0 ... 0x5BF: Device 4 buffer
+> + *   0x5C0 ... 0x5FF: Device 4 buffer
+>    *   0x600 ... 0x69F: Device 5
+> - *   0x6A0 ... 0x6BF: Device 5 buffer
+> + *   0x6C0 ... 0x6FF: Device 5 buffer
+>    *   0x700 ... 0x79F: Device 6
+> - *   0x7A0 ... 0x7BF: Device 6 buffer
+> + *   0x7C0 ... 0x7FF: Device 6 buffer
+>    *   0x800 ... 0x89F: Device 7
+> - *   0x8A0 ... 0x8BF: Device 7 buffer
+> + *   0x8C0 ... 0x8FF: Device 7 buffer
+>    *   0x900 ... 0x99F: Device 8
+> - *   0x9A0 ... 0x9BF: Device 8 buffer
+> + *   0x9C0 ... 0x9FF: Device 8 buffer
+>    *   0xA00 ... 0xA9F: Device 9
+> - *   0xAA0 ... 0xABF: Device 9 buffer
+> + *   0xAC0 ... 0xAFF: Device 9 buffer
+>    *   0xB00 ... 0xB9F: Device 10
+> - *   0xBA0 ... 0xBBF: Device 10 buffer
+> + *   0xBC0 ... 0xBFF: Device 10 buffer
+>    *   0xC00 ... 0xC9F: Device 11
+> - *   0xCA0 ... 0xCBF: Device 11 buffer
+> + *   0xCC0 ... 0xCFF: Device 11 buffer
+>    *   0xD00 ... 0xD9F: Device 12
+> - *   0xDA0 ... 0xDBF: Device 12 buffer
+> + *   0xDC0 ... 0xDFF: Device 12 buffer
+>    *   0xE00 ... 0xE9F: Device 13
+> - *   0xEA0 ... 0xEBF: Device 13 buffer
+> + *   0xEC0 ... 0xEFF: Device 13 buffer
+>    *   0xF00 ... 0xF9F: Device 14
+> - *   0xFA0 ... 0xFBF: Device 14 buffer
+> + *   0xFC0 ... 0xFFF: Device 14 buffer
+>    *   0x1000 ... 0x109F: Device 15
+> - *   0x10A0 ... 0x10BF: Device 15 buffer
+> + *   0x10C0 ... 0x10BF: Device 15 buffer
+>    */
+>   static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
 >   {
-> +    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
-> +
->       switch (event) {
->       case I2C_START_SEND_ASYNC:
->           if (!SHARED_ARRAY_FIELD_EX32(bus->regs, R_I2CS_CMD, RX_DMA_EN)) {
-> @@ -1385,7 +1385,7 @@ static int aspeed_i2c_bus_new_slave_event(AspeedI2CBus *bus,
->           ARRAY_FIELD_DP32(bus->regs, I2CS_DMA_LEN_STS, RX_LEN, 0);
->           bus->dma_dram_offset =
->               deposit64(bus->dma_dram_offset, 0, 32,
-> -                      ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_RX_ADDR, ADDR));
-> +                      bus->regs[R_I2CS_DMA_RX_ADDR] & aic->dma_addr_lo_mask);
->           bus->regs[R_I2CC_DMA_LEN] =
->               ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_LEN, RX_BUF_LEN) + 1;
->           i2c_ack(bus->bus);
-> @@ -1608,6 +1608,7 @@ static void aspeed_2500_i2c_class_init(ObjectClass *klass, const void *data)
->       aic->check_sram = true;
->       aic->has_dma = true;
->       aic->mem_size = 0x1000;
-> +    aic->dma_addr_lo_mask = 0x3ffffffc;
->   }
->   
->   static qemu_irq aspeed_2600_i2c_bus_get_irq(AspeedI2CBus *bus)
-> @@ -1631,6 +1632,7 @@ static void aspeed_2600_i2c_class_init(ObjectClass *klass, const void *data)
+> @@ -1666,9 +1666,9 @@ static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
+>       aic->reg_gap_size = 0x60;
+>       aic->gap = -1; /* no gap */
+>       aic->bus_get_irq = aspeed_2600_i2c_bus_get_irq;
+> -    aic->pool_size = 0x20;
+> -    aic->pool_gap_size = 0xe0;
+> -    aic->pool_base = 0x1a0;
+> +    aic->pool_size = 0x40;
+> +    aic->pool_gap_size = 0xc0;
+> +    aic->pool_base = 0x1c0;
 >       aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
->       aic->has_dma = true;
->       aic->mem_size = 0x1000;
-> +    aic->dma_addr_lo_mask = 0x7fffffff;
->   }
->   
->   static void aspeed_1030_i2c_class_init(ObjectClass *klass, const void *data)
-> @@ -1649,6 +1651,7 @@ static void aspeed_1030_i2c_class_init(ObjectClass *klass, const void *data)
->       aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
->       aic->has_dma = true;
->       aic->mem_size = 0x10000;
-> +    aic->dma_addr_lo_mask = 0x7fffffff;
->   }
->   
->   static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
-> @@ -1670,6 +1673,7 @@ static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
 >       aic->has_dma = true;
 >       aic->mem_size = 0x2000;
->       aic->has_dma64 = true;
-> +    aic->dma_addr_lo_mask = 0xffffffff;
->   }
->   
->   static const TypeInfo aspeed_i2c_types[] = {
 
 

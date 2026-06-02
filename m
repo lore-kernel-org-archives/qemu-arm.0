@@ -4,94 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78112CD6E57
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Jun 2026 16:29:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33EACCD6E5D
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Jun 2026 18:23:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wURyx-0007bs-OT; Tue, 02 Jun 2026 12:28:47 -0400
+	id 1wUTlp-00037h-7Y; Tue, 02 Jun 2026 14:23:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wURyq-0007aE-Ph
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 12:28:44 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wURyo-0002p6-FO
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 12:28:40 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-4903f7a90d1so105944005e9.2
- for <qemu-arm@nongnu.org>; Tue, 02 Jun 2026 09:28:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780417716; x=1781022516; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=RDPkFbZQTxPIs1ufIhGICnSIMcD2eKCe2VfC5grfm4k=;
- b=b6iGvYQICvHqZ+E5AYwWPKFtqAHDA8jlq/x4cghlQULXoSYA9GRXir6w1RX9Wu83zx
- PXiKlDFVmHK+IvIePAzUAMikbJs42j2sbB+YUBskrALkUVgeg+z3febXXHNphHyA4lcm
- UkRLh2EZzfBzvvTrtw9w+8c8hvIkIOMaCKpAhtiqI6GFwiALSmt5YT+q9RzvGUruOBzy
- E00QZVFQzEeuc5QleTPuQ4BZK3WGP1WqlmLxLFu715NZ+AIQma+nFEakQpMQ2fexA464
- Fvy3E9Ot0/OEQN1uJy/bi7u2g64sHOJTVunIKEysiP3s4bAVtE86UAdtoHlnf7T0u3Tn
- YtVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780417716; x=1781022516;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=RDPkFbZQTxPIs1ufIhGICnSIMcD2eKCe2VfC5grfm4k=;
- b=nMcLdG6Kq9hSL4A2YGJQSStzozJGWkjD2oTWt9nhnUFxLHYuDoGb0Z0JTXOiUSIwcD
- KutYjXZOXUyKmSJxn1fzZA6xvZKl0Do58IJo9+FvyNo00OPnj5l879WBp56PjI2rpV4c
- xCcef8HKbJJKR65yRSoPx/jfEQwAFHuHyifqTWDUXGnN3iJFy1dVQYEp4zQKCXBf1esD
- notNLsnuHHUoMfRaqryyDUYVxjeiKePR8rHnOD2owa0X6grSNw/ZIkJSl7vs9S2dlkkE
- GGj4J7+ixDnn67KTDErSK3Ja8f+qFe2hh4YQLgqDd3EPHWp//jyYjTY6GiSe2CLDIP61
- /ssA==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+pvyGtL57LlLoaOoiXEGo4rfQE3B2+Y1ycAUrrfuhPBw6mZcu8s4UDBdTeaDvm/lqCOMFA/9wbCQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyqXl+txy16nJ5Fv08r21+Ok9XwkluRIHDcKbfeWzwlIvtLZ/N5
- pRFSqYxVrSAl8VbL1wBkrtopYSVe1FvrizVmDZnFdc+nL4vwbJA8U7SR4YvBKpckoSI=
-X-Gm-Gg: Acq92OF8lvMigpF+mH8YB01L1Ars9FCH6wDS7ex5x/zYDw4KaSAk6Oj5B4H4lpngRPN
- I/6dvwpwMKMeShCBi/todpxhgh5h8k9QLSVfa19ZMu7ZBllOBfhJtDA9oJTHDSh9DVFNbWyhXGN
- VRNgK1EiA6dy0UbV0Nf7azxERR/3/vp1GQHBpOO8z7o943OifTSxM4Ry0/Os/rCQtoi+s9JOX28
- z97IeA8Bnj6Bq5z5qDcScHfb/a69sdjTg7y6Xaelr8gG35SWfKjhGWIeJUKhYJUJ0H/xWVnalDp
- ftCSWUF2sv04sMPsrmLcfnSh65+sF3YBx0jNq1fUtqeRnlYeugTcXRxIMYgHuXHAqKyBShukjIS
- 2mOgLjMhfP805ri3KN41HoIYnAe0JXX0tC4yLQltRJuaNs4WsyDSmwDxVijAaVfh1FXOktQhJUa
- FM7/JiStmC+VRQKag9sNppCmlRqcfxv/A/iA==
-X-Received: by 2002:a05:600c:1401:b0:490:9d1b:f06b with SMTP id
- 5b1f17b1804b1-490b509d02emr5263035e9.26.1780417715622; 
- Tue, 02 Jun 2026 09:28:35 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-490b0e0de7bsm67249955e9.3.2026.06.02.09.28.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Jun 2026 09:28:34 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id E10ED5F7F7;
- Tue, 02 Jun 2026 17:28:33 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Abdelrahman Elbehery <elbeheri95@gmail.com>
-Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-Subject: Re: [PATCH] target/arm: replace cp_regs hashtable lookup with
- direct array index
-In-Reply-To: <20260518-enhance_arm_gdb_get_sysreg_performance-v1-1-f0a5b22003c0@gmail.com>
- (Abdelrahman Elbehery's message of "Mon, 18 May 2026 12:58:15 +0300")
-References: <20260518-enhance_arm_gdb_get_sysreg_performance-v1-1-f0a5b22003c0@gmail.com>
-User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Tue, 02 Jun 2026 17:28:33 +0100
-Message-ID: <87qzmovrda.fsf@draig.linaro.org>
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1wUTll-00037H-7i; Tue, 02 Jun 2026 14:23:18 -0400
+Received: from mail-eastusazlp170120007.outbound.protection.outlook.com
+ ([2a01:111:f403:c101::7] helo=BL0PR03CU003.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1wUTlj-0002xB-Ez; Tue, 02 Jun 2026 14:23:17 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=c/yw+JnsNF1D26KnCXeKD9UrhqP8rNF9SOR8cfcBTngZtEgfoE69uZG9gvLxrB2GET55a7jAEKvNNLi83lybBb3817uoy9bTfxZ55mAXn3JOeirraTBr6cxcYrzwBoURtrx2yHiF+u2hNJzkl3G+khKZM8Tjudx4bEFwImerNTuAQa0Z/syDg92d2TRjBPtP78Q5xpkj26XzP5Bqu/iFxEI+g+qY+6m5urI1bhksRSPA4uH5/0EGBShhXaCWmdhjGRJ4ryRg9Xzw6ZyjDqIEmDa1H8R5TZzj9yb0vlD1zLQ6orKNP0La07EhDGu9iOpLS4PIQ1PobmmoxfBUTt7hAw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=OgHIwPGB+Azb50CTSIzGAtVmhuohvj1Q4rMLpt4qQVQ=;
+ b=fUqMRDA0j/IGpvhgWlGikPyMmCmEI/1zHgjmR8XhAbRwT9p4xumoKFEG3eqMlMPmWpWaLGiXvG4eQybZ9rNN7Ju3S6gyLYHWoVY7W6sIkXNiRudOhCNOqJct/k9mwc5jdUBrrqM9p4Bt4s07ZfrBAZD7nUZFNwhUVbLvfBsKX4uXX4tp18B6UlG/6OejO87gcXvwrFF2tyT0MsdVkqXEKV2FXG8nXh2CLhky6EnAVyHJU1YqYUMCXNgM2sGKwK83lzsbrNAfNqIzguOxplDzTCGr6kJ1DILnK+aT3MkHB2BwZlP6U4eRg92cauFgTIWuXuWxi4Z9e96v8wDMF4ykBw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=OgHIwPGB+Azb50CTSIzGAtVmhuohvj1Q4rMLpt4qQVQ=;
+ b=KPBl7LLacJJbqbf4pPUGhGoMxHVdXGa2+b1lyuZlCECQ0Ghq0r4YQEtVqx4RQTrjWNhRneYa9EkP/jfok8q1aFGt2fa2yg5rP5VilzDjW3wZ2znXjDye5PjgiizClJPSOWxMz04bK6o7ghdIKOWtotD7nhsWw/K0YA6jngWK3KQIMDAb9KPLmp8aOxEoLrGqlYdNJtzQRdEac9dLmJFngu4WsQVyGt8rgOhEeNZ9gTOr7xlTPI8Ly11oATXqzf1Q3ZDPh4pwK16Q43WWeJ4FoNMNoLunUtCLGbV07IlRaE3jrP/oHgRVVh0GiN3yiDuEqTeq71IWB/U5TbNSkHRzqg==
+Received: from SJ0PR03CA0150.namprd03.prod.outlook.com (2603:10b6:a03:33c::35)
+ by CY5PR12MB6525.namprd12.prod.outlook.com (2603:10b6:930:32::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.92.7; Tue, 2 Jun 2026
+ 18:22:57 +0000
+Received: from SJ1PEPF000026C7.namprd04.prod.outlook.com
+ (2603:10b6:a03:33c:cafe::96) by SJ0PR03CA0150.outlook.office365.com
+ (2603:10b6:a03:33c::35) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.71.17 via Frontend Transport; Tue, 2
+ Jun 2026 18:22:57 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ SJ1PEPF000026C7.mail.protection.outlook.com (10.167.244.104) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.92.5 via Frontend Transport; Tue, 2 Jun 2026 18:22:57 +0000
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 2 Jun
+ 2026 11:22:34 -0700
+Received: from rnnvmail202.nvidia.com (10.129.68.7) by rnnvmail204.nvidia.com
+ (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 2 Jun
+ 2026 11:22:34 -0700
+Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.129.68.7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
+ Transport; Tue, 2 Jun 2026 11:22:33 -0700
+Date: Tue, 2 Jun 2026 11:22:31 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "clg@redhat.com"
+ <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>, Nathan Chen
+ <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>, Jiandi An
+ <jan@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, Krishnakant Jaju
+ <kjaju@nvidia.com>, "phrdina@redhat.com" <phrdina@redhat.com>
+Subject: Re: [PATCH v6 30/31] hw/arm/tegra241-cmdqv: Document the CMDQV
+ design and lifecycle
+Message-ID: <ah8fZ+M/rQFBzK18@Asurada-Nvidia>
+References: <20260601114221.457995-1-skolothumtho@nvidia.com>
+ <20260601114221.457995-31-skolothumtho@nvidia.com>
+ <ah4aAZR29tw5/pV5@Asurada-Nvidia>
+ <IA0PR12MB7555F3EB9CDFD9B063CD5B73AB122@IA0PR12MB7555.namprd12.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <IA0PR12MB7555F3EB9CDFD9B063CD5B73AB122@IA0PR12MB7555.namprd12.prod.outlook.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ1PEPF000026C7:EE_|CY5PR12MB6525:EE_
+X-MS-Office365-Filtering-Correlation-Id: 66d58a00-f222-4d42-158e-08dec0d3f87b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|82310400026|36860700016|376014|18002099003|22082099003|6133799003|56012099006|11063799006|4143699003;
+X-Microsoft-Antispam-Message-Info: qgMIYhkNGj/z8cAEULGrHpd2HzCZGCSDdj6L9xYDO/OoV/xyaS44eW1/CsZKQpjhyWKtnxY+iE1r3E2B8en3qnKLdRlkBzR27OgqBZiO04UEt9cFeVv7CFyeAliVM+cpr8yZKTYVq3EYihHXySOL8l3ImRYnKBFo697uDtnZF4TT/NmKDE6RXzNX7c4Mo9cLvi4/vcwtXs3YCZtnb1VHWPr16mqeqohCvaeZMQ2oZORuGRcCdHAg+IHzVW08Wuoc2SjPdRfgYCufjn47+sbFBYvjLE0WyOOm7LbuLpBfWN38Ni7p1I3wGuzIzBvUwJFvzLMj+51Dhs5PdBWwQIfN7gyPfdKe3CDwpXYqXFCi6Vl+UuOg8dkCOntgXmZ0AIzc+eEA1LfQLkm0gG12yrKrVqNPBfqDcqI0YL9C/Q3osYpypGIl94U9olMyAgaP7W/4gRezk9LKJZ7kljlNF8BzM00Z8k7gZUklx1I5xpwEfY603dq6N0rRMCZP5luSM6xLNBE8F7eeW96R/LzQ7/8GyN6wywDzXvf1sJCw+YLKmxvrXsWXhcdWKHTUhqfi4iULRIBpilhivaiJKOfClTmxlaGNlQhvOVaodp+7qLLBHxOXSYWAH55Qhoi7bkbuJldf1lK1KHgYDfhOaG7dkesXkv4EcdQGWIS3bfHUsEgK5QRNXRZdC56W3kaOPHI9L8x/FMbTeE4oGUTA8NkFen1PC2dS3K6OoZdMaU0iYE8kUbo=
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(1800799024)(82310400026)(36860700016)(376014)(18002099003)(22082099003)(6133799003)(56012099006)(11063799006)(4143699003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: z1sCPCTYDrIN1nE3WHFrAAIsYjFislPL+7si0YlAZss6vo6NgKZbD+iYerq5cfTiZ8XEVtTAGcnCV2jhb8yv2t4weGDkfLZlla8MGn75idElnnsnkUZqR++lpbi28WZF0oupFlOy6sN37+Rm12unkqrXUqOpRW/xNPBtheFUQ+pF2YKdsaTnxG9hL7XrJ6AlDfjwziVf20usNAb9V/N5LdUqvUVL1qYKwWt8HKtN3k6ESfSxvx+pCWVNgDmxRORmbleaaXcux8sV3uH+lRWYFU7FnmIStvHIJpZ+3l3N9Qzferexil3MuY0xUGfF88ttsc0ofEmgljt+o8UDlTO355JMIabDIk9s0ZM3bxv6xmKmWXHoAUbTmuAwtPf1RIYMPigxWClexQrkhkZydcvEt54oVIA6mHmKcqPNv2d2sFXXu9B6iY+tstIHtg/tuDkT
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jun 2026 18:22:57.1369 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 66d58a00-f222-4d42-158e-08dec0d3f87b
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF000026C7.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR12MB6525
+Received-SPF: permerror client-ip=2a01:111:f403:c101::7;
+ envelope-from=nicolinc@nvidia.com;
+ helo=BL0PR03CU003.outbound.protection.outlook.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,194 +141,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Abdelrahman Elbehery <elbeheri95@gmail.com> writes:
+On Tue, Jun 02, 2026 at 02:40:07AM -0700, Shameer Kolothum Thodi wrote:
+> > From: Nicolin Chen <nicolinc@nvidia.com>
+> > > + * 2. Guest writes VINTF_CONFIG.ENABLE = 1:
+> > > + *    QEMU mmap()s the offset from step 1 into its address space and
+> > reports
+> > > + *    STATUS.ENABLE_OK = 1. The host VINTF was already enabled by
+> > > + *    IOMMU_VIOMMU_ALLOC; QEMU only acks back.
+> > 
+> > I wonder this mmap should be done after the
+> > CMDQV_CONFIG.CMDQV_EN=1
+> > rather than VINTF_CONFIG.ENABLE=1.
+> > 
+> > Spec says that:
+> >  "Program the CMDQV_CMDQ_ALLOC_MAP_X register(s) to map the Virtual
+> >   CMDQ(s) to the logical CMDQs on Virtual Interface following the
+> >   CMDQ allocation rules. This again is an optional step and the CMDQ
+> >   allocation can be done after the Virtual Interface is initialized."
+> > 
+> > This means the LVCMDQ mapping can happen before
+> > VINTF_CONFIG.ENABLE=1.
+> > 
+> > And the mmap info is returned with IOMMU_VIOMMU_ALLOC. So, this is
+> > doable?
+> 
+> I think it is. We could in theory as well do it just after IOMMU_VIOMMU_ALLOC.
+> What you think?
 
-> Profiling showed g_hash_table_lookup as a hot spot when running TCG
-> plugins that log all CPU registers (e.g. execlog with reg=3D*).
-> Replace it with a direct array index to avoid lookup overhead.
->
-> Signed-off-by: Abdelrahman Elbehery <elbeheri95@gmail.com>
-> ---
-> While profiling (via callgrind) a TCG plugin that logs all the CPU regist=
-ers
-> (very identical to execlog with reg=3D*) i noticed that arm_gdb_get_sysre=
-g is a hot spot,
-> mostly while calling g_hash_table_lookup. Probably this is due to some ha=
-shtable collision
-> that is handleded by glib internally.
->
-> Currently each DynamicGDBFeatureInfo item holds keys for cp_regs, and the=
- keys are always
-> used to retrieve the ARMCPRegInfo pointer.
->
-> By replacing the keys array with a GPtrArray, we now just access reg info=
- directly from
-> the given index.
->
-> The benchmarking was done on c2d-highcpu-16 (16 vCPUs, 32 GB memory) GCP
->
-> Setup was to run qemu-system-aarch64 against a buildroot kernel and rootfs
-> with and without the patch mostly using:
->     --plugin contrib/plugins/libstoptrigger.so,icount=3D2000000
->     --plugin contrib/plugins/libexeclog.so,reg=3D*
->     -M virt -cpu cortex-a710 -smp 1
->
-> Benchmark showed ~15% performance gain when hashtable is not used.
-> For benchmarking, i used hyperfine with 3 warmup rounds and 10 iterations=
- each.
-> ---
->  target/arm/cpu.h     |  6 +++---
->  target/arm/gdbstub.c | 28 ++++++++++++++++------------
->  2 files changed, 19 insertions(+), 15 deletions(-)
->
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 15a13b929276dad161032b61ba51ebbce7eeebc6..8816e94e3f8271ad403e77f61=
-82fdb8cee31c527 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -121,15 +121,15 @@
->   * DynamicGDBFeatureInfo:
->   * @desc: Contains the feature descriptions.
->   * @data: A union with data specific to the set of registers
-> - *    @cpregs_keys: Array that contains the corresponding Key of
-> - *                  a given cpreg with the same order of the cpreg
-> + *    @cpregs_regs: Array that contains the corresponding Register info =
-pointer
-> + *                  of a given cpreg with the same order of the cpreg
->   *                  in the XML description.
->   */
->  typedef struct DynamicGDBFeatureInfo {
->      GDBFeature desc;
->      union {
->          struct {
-> -            uint32_t *keys;
-> +            GPtrArray *regs;
->          } cpregs;
->      } data;
->  } DynamicGDBFeatureInfo;
-> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-> index d6e29c4cf46745dc7851bc5f8339c8d7c6857b8c..e66af8207b436fe8f1dd27441=
-a587b1eb52ff928 100644
-> --- a/target/arm/gdbstub.c
-> +++ b/target/arm/gdbstub.c
-> @@ -238,19 +238,23 @@ static int arm_gdb_get_sysreg(CPUState *cs, GByteAr=
-ray *buf, int reg)
->      ARMCPU *cpu =3D ARM_CPU(cs);
->      CPUARMState *env =3D &cpu->env;
->      const ARMCPRegInfo *ri;
-> -    uint32_t key;
->=20=20
-> -    key =3D cpu->dyn_sysreg_feature.data.cpregs.keys[reg];
-> -    ri =3D get_arm_cp_reginfo(cpu->cp_regs, key);
-> +    ri =3D g_ptr_array_index(cpu->dyn_sysreg_feature.data.cpregs.regs,
-> reg);
+Yea. That sounds right to me.
 
-I was only re-using key because we still use get_arm_cp_reginfo but I
-have no objection to making the access faster for plugins given the
-system registers don't change after CPU reset.
+> > > + * 5. Guest SMMU driver programs a Stream Table Entry for a passthrough
+> > > + *    device: IOMMU_VDEVICE_ALLOC programs SID_MATCH/SID_REPLACE
+> > in this
+> > 
+> > Ideally, the VDEVICE_ALLOC should happen right after the device gets
+> > plugged *and* its vSID is available; similarly the vdevice should be
+> > only freed when the device gets unplugged. So, its lifecycle should
+> > stay with the plugged state.
+> > 
+> > We do VDEVICE_ALLOC when guest programming STE is because that's the
+> > only place we found in the existing functions. We could (or arguably
+> > maybe we should) find a better place to allocate VDEVICE. E.g., vfio
+> > code can call qemu_add_vm_change_state_handler_prio() to register a
+> > callback function, where vSID (vBDF) should be available once the VM
+> > start to be "running".
+> > 
+> > I think your narrative fits the current design. But we might need to
+> > be more accurate here, since this is about "lifecycle".
+> 
+> Yes, the above is based on the current design. I will add a caveat to
+> cover that. 
+> 
+> I remember discussions about use cases(CCA realm ?) requiring an early
+> mandatory VDEVICE_ALLOC before guest boot. Regarding the suggestion
+> to use qemu_add_vm_change_state_handler_prio(), it might help,
+> but I'm not sure it covers all the cases like, hotplug, guest PCI
+> re-enumeration during boot, etc. (Having _DSM #5 might help here,
+> but per the PCI Firmware Spec it only "indicates to an operating
+> system that it should preserve assignments of PCI bus numbers",
+> so, guests are not strictly required to honour it.) Anyway, I'll take
+> another look as a follow up.
 
+Yea. I am not giving a suggestion that would work perfectly here.
+I think we are good with what we implemented for now. REALM stuff
+will need to take another look.
 
-Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-
->      if (ri) {
->          switch (cpreg_field_type(ri)) {
->          case MO_64:
->              if (ri->vhe_redir_to_el2 &&
->                  (arm_hcr_el2_eff(env) & HCR_E2H) &&
->                  arm_current_el(env) =3D=3D 2) {
-> -                ri =3D get_arm_cp_reginfo(cpu->cp_regs, ri->vhe_redir_to=
-_el2);
-> +                ri =3D g_ptr_array_index(
-> +                    cpu->dyn_sysreg_feature.data.cpregs.regs,
-> +                    ri->vhe_redir_to_el2
-> +                );
->              } else if (ri->vhe_redir_to_el01) {
-> -                ri =3D get_arm_cp_reginfo(cpu->cp_regs, ri->vhe_redir_to=
-_el01);
-> +                ri =3D g_ptr_array_index(
-> +                    cpu->dyn_sysreg_feature.data.cpregs.regs,
-> +                    ri->vhe_redir_to_el01
-> +                );
->              }
->              return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri)=
-);
->          case MO_32:
-> @@ -269,19 +273,18 @@ static int arm_gdb_set_sysreg(CPUState *cs, uint8_t=
- *buf, int reg)
->=20=20
->  static void arm_gen_one_feature_sysreg(GDBFeatureBuilder *builder,
->                                         DynamicGDBFeatureInfo *dyn_featur=
-e,
-> -                                       ARMCPRegInfo *ri, uint32_t ri_key,
-> +                                       ARMCPRegInfo *ri,
->                                         int bitsize, int n)
->  {
->      gdb_feature_builder_append_reg(builder, ri->name, bitsize, n,
->                                     "int", "cp_regs");
->=20=20
-> -    dyn_feature->data.cpregs.keys[n] =3D ri_key;
-> +    g_ptr_array_index(dyn_feature->data.cpregs.regs, n) =3D ri;
->  }
->=20=20
->  static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
->                                              gpointer p)
->  {
-> -    uint32_t ri_key =3D (uintptr_t)key;
->      ARMCPRegInfo *ri =3D value;
->      RegisterSysregFeatureParam *param =3D p;
->      ARMCPU *cpu =3D ARM_CPU(param->cs);
-> @@ -292,7 +295,7 @@ static void arm_register_sysreg_for_feature(gpointer =
-key, gpointer value,
->          if (arm_feature(env, ARM_FEATURE_AARCH64)) {
->              if (ri->state =3D=3D ARM_CP_STATE_AA64) {
->                  arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
-> -                                           ri, ri_key, 64, param->n++);
-> +                                           ri, 64, param->n++);
->              }
->          } else {
->              if (ri->state =3D=3D ARM_CP_STATE_AA32) {
-> @@ -302,10 +305,10 @@ static void arm_register_sysreg_for_feature(gpointe=
-r key, gpointer value,
->                  }
->                  if (ri->type & ARM_CP_64BIT) {
->                      arm_gen_one_feature_sysreg(&param->builder, dyn_feat=
-ure,
-> -                                               ri, ri_key, 64, param->n+=
-+);
-> +                                               ri, 64, param->n++);
->                  } else {
->                      arm_gen_one_feature_sysreg(&param->builder, dyn_feat=
-ure,
-> -                                               ri, ri_key, 32, param->n+=
-+);
-> +                                               ri, 32, param->n++);
->                  }
->              }
->          }
-> @@ -323,7 +326,8 @@ static GDBFeature *arm_gen_dynamic_sysreg_feature(CPU=
-State *cs, int base_reg)
->                               "org.qemu.gdb.arm.sys.regs",
->                               "system-registers.xml",
->                               base_reg);
-> -    cpu->dyn_sysreg_feature.data.cpregs.keys =3D g_new(uint32_t, num_reg=
-s);
-> +    cpu->dyn_sysreg_feature.data.cpregs.regs =3D g_ptr_array_new();
-> +    g_ptr_array_set_size(cpu->dyn_sysreg_feature.data.cpregs.regs, num_r=
-egs);
->      g_hash_table_foreach(cpu->cp_regs, arm_register_sysreg_for_feature, =
-&param);
->      gdb_feature_builder_end(&param.builder);
->      return &cpu->dyn_sysreg_feature.desc;
->
-> ---
-> base-commit: ac6721b88df944ade0048822b2b74210f543d656
-> change-id: 20260518-enhance_arm_gdb_get_sysreg_performance-4288474401d6
->
-> Best regards,
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Nicolin
 

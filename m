@@ -4,123 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0123EC5DF71
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Jun 2026 06:36:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B89DECD6E4A
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Jun 2026 08:09:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUIiZ-00073b-1V; Tue, 02 Jun 2026 02:35:16 -0400
+	id 1wUKBy-0003pS-VK; Tue, 02 Jun 2026 04:09:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUIi3-00062T-6n
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 02:34:43 -0400
-Received: from smtpout9.mo536.mail-out.ovh.net ([51.210.91.18])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wUKBv-0003p7-OO; Tue, 02 Jun 2026 04:09:40 -0400
+Received: from mail-southcentralusazlp170130001.outbound.protection.outlook.com
+ ([2a01:111:f403:c10c::1] helo=SA9PR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUIi1-0004l7-Id
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 02:34:42 -0400
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net [51.255.22.22])
- by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4gV1Jt4H0Dz827h;
- Tue,  2 Jun 2026 06:34:38 +0000 (UTC)
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net. [127.0.0.1])
- by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Tue,  2 Jun 2026 06:34:38 +0000 (UTC)
-Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.37.33])
- by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4gV1Jt30Znz7vfP;
- Tue,  2 Jun 2026 06:34:38 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.2])
- (Authenticated sender: clg@kaod.org)
- by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 26DAD12E305E;
- Tue,  2 Jun 2026 06:34:37 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-114S0085e620c05-f064-4c90-8d86-2c6b3f2816bb,
- E738715FB773EF828F8B902CE3F45C10C1B236B1) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <904f30ab-14ed-41e8-8875-42179c444b56@kaod.org>
-Date: Tue, 2 Jun 2026 08:34:36 +0200
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wUKBu-0002Sw-6D; Tue, 02 Jun 2026 04:09:39 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=sX/YFbiogIVewMgV/MHbfTo+NkQaC+Xban4OayoS2itKEY+DCiq1NLT5d+jsoa53TGNel2tH5OE9xxccsMi1o3LH3/cWZDDJhsoPuB2DJ655hpvw5Q46NMpUefNYwx1ZIdUANNFx2kR+t5VrVNpY8mSSmHPeWhNaRARtcPK/5+FLbhMcNnV8xuDM9zmT7KZKAU0DcIeqCIm9YjgguTOeQ38Y/0EubcQdKL8GPJ5q8gVenu2Qo1UU946qe8SnKbOTHoEHSWn59bPa0Wf3OrL1C68UBFY0kLI09j8AbwXpzyN75F/4cBHRVU/b0SA7t9l+zlINv5jIr78fQ279wi5aDw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=RzOY6fotPy+fM1NA27ScOFkqp9SmHJzScM767O8sgFQ=;
+ b=NkQXvBN2NKoVWvmwH/TXnSfxSKnB8F6uy+NO2amdYaG5go11h8Hpy0wCoLuaT9PSc8u4RT89RBcz3P5Xgu+LdW7Cq9xP4MSwWxPq7pRJ20Gk7fybPzC7zgfI/hHIODwaBWDkq6dZFDoRnVw4KjxaWw2UOUhLMn/aWAu3b5Yll0HXVJyzUNaJ/d3f2gJJpTDWdsHYSfaqRkYf1WwjWZJehzrzW4bWnvSoasDKPBaojqQ7cMLT6muFWmkDh28wr668AEGhvxd40UVUWXhLgHL7wo8U3c/+Qft3UD8qxsHCEjto7XNhJni4879KDkyB6eDmHseELhkc1xd8JYCRaiM3qg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=RzOY6fotPy+fM1NA27ScOFkqp9SmHJzScM767O8sgFQ=;
+ b=Pzg5iaZwv2UjjKtaoyyU5GEoR6ieDwIWVjDiAZcBVeBGYs1RP027ycng7BwcBPtdjhTcboKuxlTHdY+3CFZSzojtDaZM2b6jJBJm1onNzqJz3jsjm3waNpHBN+1uphIZf8v8DrKkXwxGsAnK+yPwPwc4jEfbWTV2Q2XZqwQL6BGUx03bjRqKnMoQzxaDgyEkj/O/ByuAMdRrzX7J1NVk7vrXK/sffY93WzetPEm+4M9HQbY//gCKhD+ktYYvhVav/yo2JT/nyjtJEmMh/kcKKcsEZKSczEvBtEUcp15pOg3aeigogXy+yJ8axpjBb8jLe82TC56F1qgDIn3kExSA6A==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by CH1PPF189669351.namprd12.prod.outlook.com
+ (2603:10b6:61f:fc00::608) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.17; Tue, 2 Jun 2026
+ 08:09:26 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%6]) with mapi id 15.21.0071.015; Tue, 2 Jun 2026
+ 08:09:26 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "clg@redhat.com"
+ <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>, Nathan Chen
+ <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>, Jiandi An
+ <jan@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, Krishnakant Jaju
+ <kjaju@nvidia.com>, "phrdina@redhat.com" <phrdina@redhat.com>
+Subject: RE: [PATCH v6 19/31] hw/arm/tegra241-cmdqv: Use mmap'd VINTF page0 as
+ VCMDQ backing
+Thread-Topic: [PATCH v6 19/31] hw/arm/tegra241-cmdqv: Use mmap'd VINTF page0
+ as VCMDQ backing
+Thread-Index: AQHc8by4fuaRR8TZcUOzaPeyLp//M7YqQiAAgACklNA=
+Date: Tue, 2 Jun 2026 08:09:26 +0000
+Message-ID: <CH3PR12MB75482E65685278D467EC6462AB122@CH3PR12MB7548.namprd12.prod.outlook.com>
+References: <20260601114221.457995-1-skolothumtho@nvidia.com>
+ <20260601114221.457995-20-skolothumtho@nvidia.com>
+ <ah4CPKqNMnRfuSxT@Asurada-Nvidia>
+In-Reply-To: <ah4CPKqNMnRfuSxT@Asurada-Nvidia>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|CH1PPF189669351:EE_
+x-ms-office365-filtering-correlation-id: 15fd627e-a034-4768-f434-08dec07e434b
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|376014|1800799024|38070700021|11063799006|22082099003|18002099003|56012099006|4143699003;
+x-microsoft-antispam-message-info: 0Ik8bD+psCDtC8VwRlcUf7S/CWcMrF7DuPm8KXSLcmel6jJaR9u0zCM4dOM7PnJot8KBPk5WUZPA52wsEwulYEwf1C6SNDAOerx6hC5NIzKPEjU6gkrNOb8ybAPj0v91EnFHCcFexxbUgzOPjVPoC67vHwuJ6hTKWDpypcdX7oXWWvnYcmpCBcPToVJv64WcgWAcdiS3mA2XX7Nv9RFqwZVfmNl/r7CuMUuUzLho91A3Cqq0Ums3C+v72SVPmLe9OcQ1xEfgN6fAsCJRmvyEfnJnHsEeSfF44l5T55OqTFkgcYqW2QRCjm6CTcmHK2xKoOl4Q5bHLcqGtMCgGlrN7eGenE7nQC0Sx/9Dp9trxJ1MfiuRJYqvK5ZpXLvRSqNpPbvmCjllrCiZCuH46xk+7baIW/1qZzCeGFJhXjpLo30dnEalB+NfsjeoSYYl69uWrnJJa3foSNPbnbi+d2tvCQ6vXMHmV2O2hh5C9IrMBPdHbPmOySBJWzFybjre+yvpfTy7TO7q21VYkT/mBeCfonWExosLAEIJnEvCBDo94KvwgrvbyMMv48OO219JUImyf6ZBz4/9Ho9IaJCtH/Ypt3L/2Rp25EmgAtly0OFgJ+JojuBaOSDBPk2V3KRrDXs2kGJkBTx6epA9VS9zHNfCWBfXVTThy5EqaV1j4V66UsI4H4JojKVVklhArHJd6LJ5ti1aVSUtbiQozWiaSsYuEx9JkH8ZcqacYcs17Ywuv6smgVEK9nNWbdjRKBVA8HTE
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(376014)(1800799024)(38070700021)(11063799006)(22082099003)(18002099003)(56012099006)(4143699003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?3q/j0NIOP9/6juvECXJa18pa/FAYezsSEyInycO/HNdCtrBpoc9VcrQq8sRl?=
+ =?us-ascii?Q?Sk4BHyqlymkt9E6OCBUsqqIif0S7NcohofMn8e1z2glwMnJWxcKaHlDbcMKV?=
+ =?us-ascii?Q?mcbrNcTI5QzcsTXsmhPrk/xacdkuK5xUCYYLvF2ZsV29Sv6BL6hb0JJ0QkJ3?=
+ =?us-ascii?Q?GPa0u2qjT/oteFjOUoiPIOHAq6tnlGGg1ErLPNnfhUIDPK5sImn+c+boMkln?=
+ =?us-ascii?Q?Qhcj12407vqkd0YTlFDD5EoklssmTyHwJKHdTCn8jDUPyYz5Omxvn4+8po3Z?=
+ =?us-ascii?Q?NJSUSlvnUMNLiqXNIEdlYY2GNw2snxDlHmkzTE2o9aiNlqp5OjHDAdTR3cta?=
+ =?us-ascii?Q?J3aF/JEUJ9sulJgCPMaumFWUPHA0RnYrXG6YTa7sTWcGaKRjQI84qukxvhJ7?=
+ =?us-ascii?Q?huWKRWtDsjmrKuuVDjBgQAwOp5nN3yVoIFoXTapUr+pFMdAIVOrl6gP9XPnt?=
+ =?us-ascii?Q?e0UdWA4fGHM4G+XdYtDj6wZqYW1jkfcIC53GPukudb+CFvQrSL/m4Q64nuBn?=
+ =?us-ascii?Q?ltcF1h6ZyUbMvN9gzesAI9HBc9CwYuNNamjZBHBXQNiHMDXT9eHQ2Ta30Mfx?=
+ =?us-ascii?Q?jtLXUmcTBRgEbs6oIgsUwK/xFNeM6v8knnYuhdTiQTpKW+jv+emcrD9sflyN?=
+ =?us-ascii?Q?n9kN9rvBQ6EXqrIvrbIU0QALRFg19gHRSfw3AIMS9y57FAh92Gz6DnUr/BrJ?=
+ =?us-ascii?Q?HFg8zP7fO/S9xrf/Ak94MDMLJCFbK4pXz8a7cSWRk65fYUYh/g8hHbqt+caG?=
+ =?us-ascii?Q?uSpjL9/51PF2++A1t4YDbXCpc6lwEtntVT+CTn5LPI4JCtxLNWegD6rW22o/?=
+ =?us-ascii?Q?9nuXSkvaTXEoOuDFTyI/MMIUivfyjnKJPbb7BUlfj7FtoTl5JrS52jxmvJz0?=
+ =?us-ascii?Q?AwCRNbf0w5bDfsPvOtrI/I9t2U/ApCzuWTM+G7p4r5qPkLmUtOTydIVit6iG?=
+ =?us-ascii?Q?MxuaSUrk38hims2awQzxoVQyr0ZIxxBWudaJza8Bb0hdn/gL+sM5Ev1l7px1?=
+ =?us-ascii?Q?JzR0M/UPdPyR0xD9O7Bjrru/gpsDo850xKuVTP23eFFV/tzBP5WeYrE09n4e?=
+ =?us-ascii?Q?WAEkRjeqw2/cvmn9rDgBQVORDQIR9M0dqA7tIfiHzkPkj+5nKAxzrh1yLBFJ?=
+ =?us-ascii?Q?9QunnR7YQdTU0XDlTJZUTuG0ilT0Gxc485wON5uvLzbNtkq+OXwDtxPmfrgy?=
+ =?us-ascii?Q?ZK/lSjVFVB86siMn0N6FX/U+Wxolx6GRAMH/sn3KLOqB6up43T312g0MD14p?=
+ =?us-ascii?Q?LRCmoXrsoBPEm9co5fJNQtPZYIXsVneJ3QLEDa348GGcO0E0Sr6dr0bnURPX?=
+ =?us-ascii?Q?Id1ny1RDoHzyjJGw2QNfGpvD4JTLTmSr4DImo0LAeXxSKC8GwuLKvzfX4n7y?=
+ =?us-ascii?Q?nY7+GI8R/rpLoubfhoZ7MaOK2ZfjhW6JHqOW8p4a2nT66JjEF7MUjYlBc+z2?=
+ =?us-ascii?Q?YJCYh6Phl+sOiw1fx7SjMGLPzR18SBHVEfMCH1/2W+IQN7bjddo/n2MKt2hr?=
+ =?us-ascii?Q?EngGtXqvif6WhxJ07n7mulzsIsLicvl+sql4jY9mRr0vh20x+oY77FmTg7qp?=
+ =?us-ascii?Q?xK0uZqYzZldTZkJGOkOslvgI1cnd36F0/T781wAMpACeftVe2stiiDTlztET?=
+ =?us-ascii?Q?XDzlpJV9AUqEMdPuwzkEi9oks/3NbmHgHygbT+oPYD/l7IhSgSQnyCYQeqKS?=
+ =?us-ascii?Q?pNEKFS9OfdEeafy2I2AGkVVFBskSj4p5kD1aMxiO8eRC7NLLCpQND861FMa0?=
+ =?us-ascii?Q?nEmtiHAjHg=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 09/10] hw/arm/aspeed_ast1040_evb: Introduce onboard I2C
- device
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260602052827.1535299-1-jamin_lin@aspeedtech.com>
- <20260602052827.1535299-10-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260602052827.1535299-10-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 8754434728548740107
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGbUxDtm0LlJfuMZW4FGwKf0YvPeZl+LMuyhANbUieSobq/xs7MxFyCCXkDbOwejshX8xPriEryFQ6mSViJeM4jmXbMAA9LryL137eatNq4/rzz0WIDbvZAhixdo7fH6IKcGpTuU+Vy119cYEUU/n/OziL18aXVPEW2bUOqeuvYqFauyPBYqeBH4fa5+/yNUwvGLJ5/+u7Tkx4okQ4oVk5n9TxLIvuLsb3JtN2EcgEaOuw++ttlrUTz9i+yU5Dx5LtMxPEzoJ6+RUWqEmhu4gCRFwEqdu3b/f3GFcqbAUppH8Gtdrh+0b0Eb1zMMehB8RidlQdgVwSUg2vtnDiwEQXGgAjPOR8VXUX/fhytRQn1yG4jD48ms9LiCEU8PwEvfCqe46VbSgf1ANyVdx1RhhJhanhO5+FBSHqtNg6g9ysK1tXBJbq85FdwwnL4a1HNtXEIafaBD5/6LjuzeVRXH8s6GHGtGF3KGDaSqJY+0mWhD7egTb6P0+DptrGh5bwmvUxmVTQxTjEw/LOJ87FHs7OSME3ytrY92XsZMjZpVyA5frHqPKAFTJq1iGUsSMcBd/dKhYXZddpw1/LW76Cv6QYngHt80fRAoRACM8kAn1C1i6mVwdiT5nVCsS2jzMIzCG6bcwhjfQGpj0GhsnrpaMAq6qzlE3AGPJQFOXTNFLXvAg
-DKIM-Signature: a=rsa-sha256; bh=GVCInvhL3HQgbnY/IlNhszuV16Sx6VFt0bpT/zMYKxw=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1780382079; v=1;
- b=LwD0Tl/elwYYv+r7TG5TsSeIfmm7xd5TtcIbTZ3uA8tDWSbFqXhKmii9++02sQrm+YVWwWNo
- mKd8EESk7Yw2JOUB+V2o4Y4F+CIa5lmaXHT4mA53pDHJe8nlSukQXFB5PQ56jTwFfF8O3Ahkbge
- VyuCIgD1yZ9BiKf6Za2WgRJAGFZF+qCL2x5GXUxghTvTfqAl+JvnmGG0LvEd/1Dk6IbqxHZSGIt
- Y2hZlqUPF6sX7GEH1Yt2wgRC25G0drizTmsZCCKYGqyCIxAeULvHzOKQKtIPPheg/SSAY7jX4bx
- 4wfLQJrJ4Pyy5FsGQ01Oa2lX90mMrqrWIVg3Sse2NCmnA==
-Received-SPF: pass client-ip=51.210.91.18; envelope-from=clg@kaod.org;
- helo=smtpout9.mo536.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 15fd627e-a034-4768-f434-08dec07e434b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Jun 2026 08:09:26.0231 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: hcAf7kgOdFUlOgdtyHWSEanyGQxJ6XEhb+hMfIQ28/c6AyJZBNRoJ/Ot+99CMMJcTveoOFQnvUeYlDZWTofeHw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH1PPF189669351
+Received-SPF: permerror client-ip=2a01:111:f403:c10c::1;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=SA9PR02CU001.outbound.protection.outlook.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,85 +151,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 6/2/26 07:28, Jamin Lin wrote:
-> Introduce onboard I2C device initialization for the AST1040
-> EVB model.
-> 
-> This change adds the initial onboard I2C device setup flow
-> and instantiates a 24C08 SMBus EEPROM device connected to
-> I2C bus 0, matching the current AST1040 EVB hardware design.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/arm/aspeed_ast1040_evb.c | 18 ++++++++++++++++++
->   1 file changed, 18 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed_ast1040_evb.c b/hw/arm/aspeed_ast1040_evb.c
-> index 1d9b55247f..66f08ccbe6 100644
-> --- a/hw/arm/aspeed_ast1040_evb.c
-> +++ b/hw/arm/aspeed_ast1040_evb.c
-> @@ -14,6 +14,7 @@
->   #include "hw/arm/aspeed_soc.h"
->   #include "hw/core/qdev-clock.h"
->   #include "system/system.h"
-> +#include "hw/i2c/smbus_eeprom.h"
->   
->   #define AST1040_INTERNAL_FLASH_SIZE (4 * MiB)
->   /* Main SYSCLK frequency in Hz (400MHz) */
-> @@ -38,12 +39,28 @@ static void aspeed_bic_machine_init(MachineState *machine)
->       aspeed_connect_serial_hds_to_uarts(bmc);
->       qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
->   
-> +    if (amc->i2c_init) {
-> +        amc->i2c_init(bmc);
-> +    }
-> +
->       armv7m_load_kernel(ARM_CPU(first_cpu),
->                          machine->kernel_filename,
->                          0,
->                          AST1040_INTERNAL_FLASH_SIZE);
->   }
->   
-> +static void ast1040_evb_i2c_init(AspeedMachineState *bmc)
-> +{
-> +    AspeedSoCState *soc = bmc->soc;
-> +
-> +    /* U10 24C08 connects to SDA/SCL Group 1 by default */
-> +    uint8_t *eeprom_buf = g_malloc0(32 * KiB);
 
 
-The smbus-eeprom device's internal buffer is 256 bytes.
+> -----Original Message-----
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> Sent: 01 June 2026 23:06
+> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> eric.auger@redhat.com; peter.maydell@linaro.org; clg@redhat.com;
+> alex@shazbot.org; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
+> <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
+> <jgg@nvidia.com>; zhenzhong.duan@intel.com; Krishnakant Jaju
+> <kjaju@nvidia.com>; phrdina@redhat.com
+> Subject: Re: [PATCH v6 19/31] hw/arm/tegra241-cmdqv: Use mmap'd VINTF
+> page0 as VCMDQ backing
+>=20
+> On Mon, Jun 01, 2026 at 12:42:09PM +0100, Shameer Kolothum wrote:
+> > +/*
+> > + * Return a pointer into the mmap'd VINTF page0 for the VCMDQ Page 0
+> > + * register at @offset0 in VCMDQ slot @index, or NULL when the VCMDQ
+> > + * has no hw_queue allocated or the VINTF page0 is not mmap'd.
+> > + */
+> > +static inline uint32_t *tegra241_cmdqv_vintf_ptr(Tegra241CMDQV
+> *cmdqv,
+> > +                                                 int index, hwaddr
+> > +offset0)
+>=20
+> I'd do:
+>   tegra241_cmdqv_vintf_lvcmdq_ptr()
+> or just:
+>   tegra241_vintf_lvcmdq_ptr()
 
-We have been copy/pasting this 32 * KiB size for a while it seems but
-SMBUS_EEPROM_SIZE would be enough.
+Ok. I will go with tegra241_cmdqv_vintf_lvcmdq_ptr()
 
-Anyhow,
+> >  static void tegra241_cmdqv_write_vcmdq_page0(Tegra241CMDQV
+> *cmdqv,
+> >                                               hwaddr offset0, int index=
+,
+> >                                               uint32_t value, bool
+> > direct)  {
+> > +    uint32_t *ptr =3D tegra241_cmdqv_vintf_ptr(cmdqv, index, offset0);
+> > +
+> > +    if (ptr) {
+> > +        switch (offset0) {
+> > +        case A_VCMDQ0_CONS_INDX:
+> > +        case A_VCMDQ0_PROD_INDX:
+> > +        case A_VCMDQ0_CONFIG:
+> > +        case A_VCMDQ0_GERRORN:
+> > +            *ptr =3D value;
+> > +            goto out;
+> > +        default:
+> > +            break;
+> > +        }
+> > +    }
+>=20
+> Could stuff this into the helper? Return a valid ptr only when the
+> offset0 is one of these four registers; otherwise, return NULL.
+>=20
+> Then, here if would be:
+>     if (ptr) {
+>         *ptr =3D value;
+>         goto out;
+>     }
 
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+The helper is shared with _read_vcmdq_page0(), where STATUS/
+GERROR reads also need to route to the mmap when allocated. Folding
+the above would require a separate handling for "write" inside the
+helper. Could do. But I think this is more readable...=20
 
 Thanks,
-
-C.
-
-
-
-> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50, eeprom_buf);
-> +
-> +    /* U11 LM75 connects to SDA/SCL Group 2 by default */
-> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4d);
-> +}
-> +
->   static void aspeed_machine_ast1040_evb_class_init(ObjectClass *oc,
->                                                     const void *data)
->   {
-> @@ -55,6 +72,7 @@ static void aspeed_machine_ast1040_evb_class_init(ObjectClass *oc,
->       amc->hw_strap1 = 0;
->       amc->hw_strap2 = 0;
->       mc->init = aspeed_bic_machine_init;
-> +    amc->i2c_init = ast1040_evb_i2c_init;
->       mc->default_ram_size = 0;
->       amc->macs_mask = 0;
->       amc->uart_default = ASPEED_DEV_UART12;
-
+Shameer
 

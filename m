@@ -4,90 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DDE2CD6E57
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 18:27:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79803CD6E57
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 18:27:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUqIe-0000f2-3u; Wed, 03 Jun 2026 14:26:44 -0400
+	id 1wUqId-0000cy-2c; Wed, 03 Jun 2026 14:26:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wUqIS-0000Y9-Fc
+ id 1wUqIU-0000YM-6O
  for qemu-arm@nongnu.org; Wed, 03 Jun 2026 14:26:35 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wUqIP-0003Zv-P8
- for qemu-arm@nongnu.org; Wed, 03 Jun 2026 14:26:32 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-45ef1198766so647386f8f.0
- for <qemu-arm@nongnu.org>; Wed, 03 Jun 2026 11:26:29 -0700 (PDT)
+ id 1wUqIR-0003aN-03
+ for qemu-arm@nongnu.org; Wed, 03 Jun 2026 14:26:33 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-45fd464d51fso2403123f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 03 Jun 2026 11:26:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780511188; x=1781115988; darn=nongnu.org;
+ d=linaro.org; s=google; t=1780511189; x=1781115989; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=9RYFdzZI9nhf0uIHPze27sdjwQc/3jiSP/AQ6IK1uAY=;
- b=AhPdDWGoN6dq433xggT82d2uLceu87ELOD//9AQdsHeH1aWUjyAVWPMY83cFJTfcci
- u/ivy6rC7XPmIuW33Wh4lNqGLX2ucI/mKm0RXYnmBbpwSp9Da/C3XtmNXvctY7gdfl0s
- D7lKhuP0+7snlU1Q6pMpRsyiyF0TysgfAdi0UjT9FlVh77iPkUj0F5MtmIIHxk+tA8e5
- vmYxUkKaSxwJgXSN3pS+Nd2UsmZHRw0HqqoeRhXybKMivAacwdQCYXd/2yMlI2wrw6Pr
- b9pHXub1BnTIwGjWILON5l1OyCjUu+/yLt+D8tCPlMu+7Ux71Zp+CbXKApoVjByJEGXJ
- 4afw==
+ :reply-to; bh=JCOFwbtmACj5KLqY5uWhFxRDRINL6yEo/buAYwIBFpo=;
+ b=w4ox6v6MiUUfabuSRGYj/ek7i1gSDSGBlrsv9ZN1ZrMoRawQFA4CCbE0tZST5acIfA
+ sPW6LZ5LEOaxgBUMSefDO/vfQUynTutCzg6UoGEEMcCsAZtGHYSo8vDW4fMlU8Jg1hEj
+ Jd06g6wViW5G7jTkVg7tFBMgmZUV8C9/RRH5XkrJkCJ1Cp69C6/qbkjklhwqRvD8WJAX
+ E21Wm7GhgmT8pKWRn/hYgT7ZnAtGT19qx/38tS1pQmNfKsiqfir1FkjS6t81q2geYlH1
+ KxEpv3PMu55KsLdUFci6MnfxWphG2lEghmLbMhwoxoQsh95U946uRTjo7ycndrMATMXE
+ DviA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780511188; x=1781115988;
+ d=1e100.net; s=20251104; t=1780511189; x=1781115989;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=9RYFdzZI9nhf0uIHPze27sdjwQc/3jiSP/AQ6IK1uAY=;
- b=M9pbUW60sLOWCS0hnAM5zDz4I3MH/vGMY83R+Z3Lau7/wUmQ34KkV/cBUqZv1FURtJ
- Ky3k1MW1HeMPYy/Qqm16u7vTn4uHPlEW+LmDL4x5Di9rcKzHusUfIakQ2JHHRJh1QDXE
- PqWMXEkiZ6c1muJp8UwkC7EQ+soxtX+h3xxgDpMBGRlO6PbE3Oiszq/YCZJN6R9Sp0+C
- apJolwaDPjFm5OYaXcepyQQK6hsRAbq4sxsJ8w3DKwpWLZ0p0FVWISsIl0HTNjX4Ykol
- R5ggUNUVvD3SNB8wUMaSn+Cv06gUXVn4ml1HBTxn7FbUFrdMhT1bHcpEdrmv6NIezSxz
- VACg==
+ bh=JCOFwbtmACj5KLqY5uWhFxRDRINL6yEo/buAYwIBFpo=;
+ b=GTYRny0jpKHYLFtCnZrhdwFKmRbbz8StwKgVTRAx3Ov2vKSzA5Xq+Ia+fRkGu8tA9e
+ Iv06R2cRwgmP8xh5SRf1qKWSQFbeNZrjSPjjHh3nJsBkt04jymuDfUZvFY9yYUJ9XRBO
+ C6KJi2NShJh2n5G6Bb0Lwlh+9yD+loufl6jXyi5KOQXBn+7JRhmiAVV9kI/HSZzddQOa
+ GeuBAkS4JbGy2bAP4Rp/WUtmfQpishCIRE6Wick+2y8LcZVKdQj48EfMI3AtKSWDDo/j
+ PBNfXbBiI4W6Qc6XIlQOWT7Zq0B2H0NDbzQgbZoNEv0y65RWyqmdoicZZ4oKtEzQAsbj
+ DqyA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+bwAbQWqDyVnEYDshCZAIYSfj+AyBl57+6qJpCxUlk1Ze2kuXAyyx2jBMdD/hoTPtMZ/FiGtQsJg==@nongnu.org
-X-Gm-Message-State: AOJu0YyB1adQyGEG/e5A0JQFVbgGAVKyv7wNtUT9nUxCfEptYSuTO/JA
- N7Mb8pXPW7J9En8W9g9AuNaWkLrSSQHNTK9PkcuJgV+sGsFa7UaZl4hLK6oFzm4xRhtqAHjaswX
- bJ8QeTFI=
-X-Gm-Gg: Acq92OF5Q8fuiSREGD8nwrajyo5krxn9LYtWZz7LJbR0THIDfVmq4EoCAil+HmoP35A
- /PWjjsFU4v7P3N+A78iAeq0ugBW8p20voXWJd7KApcVj9dFF6koVOUmv5GJcN6weVxIHCxm+YWI
- u3EWuq2VtUVFVnyJQJUPzUaNBId4f+TWnIswzniaJX3UYWIur83IDmReL+Fo8Z1b/7zzf0nkl2w
- 3d7vqNp9cnyB6tDO5M1F7npUeWyNYZcwbZONRpw5OzJU1TJjxhmQM/mlb6vOGug2PRybts4jCo2
- pohoZoaBnZ6g/Ci6WzTVgWRLDSi4lzYOVJZHS+E9/j2otOuVcTHsH2cObbXMI36eZH3soUt6D7J
- hf/Pv6srQJ/rioc8ifjrvGpSXUNDyKaXVIHo25iJzbDNLrUh5hsTsryMF5frXW3UeBEej0nrLsp
- J7sX7Dvea6LTi0yckfNVqC7sC3HGZa4ThNVlONlJJfwUZ/8fnY
-X-Received: by 2002:a05:6000:2082:b0:460:1c93:6eb6 with SMTP id
- ffacd0b85a97d-4602743465dmr802286f8f.20.1780511188154; 
- Wed, 03 Jun 2026 11:26:28 -0700 (PDT)
+ AFNElJ9YBzhIp/AE7kqTa65OLsbFQ7dBePZUDbq193lbReWDUDunRtON6lguAvsII+0hVHJOgcuPeepTJw==@nongnu.org
+X-Gm-Message-State: AOJu0YwcVZ/5sTQT0wMFeMZBKz2TDlARF4HkTWuh9V6uw/euOVrGcyV9
+ 0B6C9xKSyk6mGpMp0ogMbltzjrX9yodKuzA8MLyD1RG7EsiTgrizPhw3VgnTqEy3eRTSP0Yz7B0
+ 1G7lAVUk=
+X-Gm-Gg: Acq92OG5UZ0hWHBQX3AkPQ2GwfyJFMxRpZN1wWahNnOlIRCrj4Ez+PAzuX2TA6eys8a
+ q91bbElntOTQ1KWG85aiPvV+T5BQwNypAAfAOgtqiKtZTjE5T0Rel2w2OKEqe6UZGnNsG8abiFe
+ 6DqwhauYnmXpYBluSvXtI6ydeOyUzGe8qyBEmH1tnXPv3Y++LCEAEW1ADddRDj2Gy0O7IMBU9K8
+ HSX06bd02RzYZ5/rXWA9TY9C9Ky4nYZhwQPtFde7QLO7AB5RA/fTGhYTOZOnyhQDC+K6+aQD622
+ kDOIfBBYX+9+Bw2Q84FIT6aiIx3KYN4vxbUYFYeZzo4eQ8OJgTDPFAyDPkKk6VicXSKkv84Iw0t
+ 7zn5ZMgExMjbgCuY0GEeg33ZQCwxPKoaxVLNkEFFxV7FcNB4jlUBRxBwPBfvlI3Fr+s8+ivisaW
+ U5W4sfR43bY6d77igPrfDVpyyzy+nDOhANp4a23g==
+X-Received: by 2002:a05:6000:4b0b:b0:45e:f68d:e791 with SMTP id
+ ffacd0b85a97d-46021615d47mr7464882f8f.0.1780511189508; 
+ Wed, 03 Jun 2026 11:26:29 -0700 (PDT)
 Received: from [127.0.1.1] ([2a10:d582:31e:0:d530:6a6b:58a7:e220])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4601f2ed944sm9793127f8f.13.2026.06.03.11.26.27
+ ffacd0b85a97d-4601f2ed944sm9793127f8f.13.2026.06.03.11.26.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Jun 2026 11:26:27 -0700 (PDT)
+ Wed, 03 Jun 2026 11:26:29 -0700 (PDT)
 From: Jim MacArthur <jim.macarthur@linaro.org>
-Date: Wed, 03 Jun 2026 19:26:22 +0100
-Subject: [PATCH v2 3/6] target/arm/ptw.c: Add Granule Bypass Windows
+Date: Wed, 03 Jun 2026 19:26:24 +0100
+Subject: [PATCH v2 5/6] tests/tcg/aarch64/system: Alternative boot object
+ for exception logging
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260603-jmac-gpc3b-v2-3-115c51936962@linaro.org>
+Message-Id: <20260603-jmac-gpc3b-v2-5-115c51936962@linaro.org>
 References: <20260603-jmac-gpc3b-v2-0-115c51936962@linaro.org>
 In-Reply-To: <20260603-jmac-gpc3b-v2-0-115c51936962@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  Jim MacArthur <jim.macarthur@linaro.org>
 X-Mailer: b4 0.13.0
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,129 +104,174 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+This allows us to record information about exceptions using a small
+area of memory, and continue with the test so it can verify exceptions
+have been taken where expected.
+
+ALT_VECTOR_TABLE is added to switch this on, and altboot.o
+is built from boot.S with this flag. Since boot.o is created for multiple
+test targets, we have to build a separate object and selectively link this
+new altboot.o into particular test binaries.
+
 Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 ---
- target/arm/ptw.c | 81 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 81 insertions(+)
+ tests/tcg/aarch64/Makefile.softmmu-target | 11 ++++--
+ tests/tcg/aarch64/system/boot.S           | 62 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/system/boot.h           | 14 +++++++
+ 3 files changed, 83 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 0a5201763a..e4cc415ce5 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -341,11 +341,22 @@ bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
-         .space = ARMSS_Root,
-     };
-     const uint64_t gpccr = config.gpccr;
-+    const uint64_t gpcbw = config.gpcbw;
-     unsigned pps, pgs, l0gptsz, level = 0;
-     uint64_t tableaddr, pps_mask, align, entry, index;
-     MemTxResult result;
-     int gpi;
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index f7a7d2b800..47b32968fb 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -25,7 +25,7 @@ LDFLAGS=-Wl,-T$(LINK_SCRIPT)
+ TESTS+=$(AARCH64_TESTS) $(MULTIARCH_TESTS)
+ EXTRA_RUNS+=$(MULTIARCH_RUNS)
+ CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
+-LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
++LDFLAGS+=-static -nostdlib $(MINILIB_OBJS) -lgcc
  
-+    const uint64_t BW_ADDR_SHIFT = 30;
-+    const uint64_t BW_SIZE_SHIFT = 30;
-+    const uint64_t BW_STRIDE_SHIFT = 40;
-+
-+    uint64_t bw_size_field = FIELD_EX64(gpcbw, GPCBW, BWSIZE);
-+    uint64_t bw_stride_field = FIELD_EX64(gpcbw, GPCBW, BWSTRIDE);
-+    uint64_t bw_addr = FIELD_EX64(gpcbw, GPCBW, BWADDR) << BW_ADDR_SHIFT;
-+    uint64_t bw_size = 0;
-+    uint64_t bw_stride = 0;
-+
-     /*
-      * We assume Granule Protection Check is enabled when
-      * calling this function (GPCCR.GPC == 1).
-@@ -397,6 +408,58 @@ bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
-         goto fault_walk;
-     }
+ config-cc.mak: Makefile
+ 	$(quiet-@)( \
+@@ -36,17 +36,20 @@ config-cc.mak: Makefile
+ # building head blobs
+ .PRECIOUS: $(CRT_OBJS)
  
-+    /* At this point, GPCCR_EL3 is valid */
++altboot.o: $(CRT_PATH)/boot.S
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -DALT_VECTOR_TABLE -x assembler-with-cpp -Wa,--noexecstack -c $< -o $@
 +
-+    /*
-+     * GPC Priority 1 (R_GMGRR):
-+     * If GPCCR_EL3.GPCBW is 1 and the configuration GPCBW
-+     * is invalid, the access fails as GPT walk fault at level 0.
-+     */
-+    if (FIELD_EX64(gpccr, GPCCR, GPCBW)) {
-+        /* BWSIZE, BWSTRIDE have a limited number of acceptable values. */
-+        switch (bw_size_field) {
-+        case 0b000:
-+        case 0b001:
-+        case 0b010:
-+        case 0b100:
-+        case 0b110:
-+            bw_size = 1ULL << (bw_size_field + BW_SIZE_SHIFT);
-+            break;
-+        default: /* Reserved value */
-+            goto fault_walk;
-+        }
-+        switch (bw_stride_field) {
-+        case 0b00000:
-+        case 0b00010:
-+        case 0b00100:
-+        case 0b00110:
-+        case 0b00111:
-+        case 0b01000:
-+        case 0b01001:
-+        case 0b01010:
-+        case 0b10000:
-+            bw_stride = 1ULL << (bw_stride_field + BW_STRIDE_SHIFT);
-+            break;
-+        default: /* Reserved value */
-+            goto fault_walk;
-+        }
-+        /*
-+         * GPCBW is invalid if the base address is:
-+         * not aligned to the size programmed in BWSIZE, or
-+         * greater than or equal to the stride value configured by BWSTRIDE.
-+         */
-+        uint64_t bw_size_mask = MAKE_64BIT_MASK(0, bw_size_field +
-+                                                BW_SIZE_SHIFT);
-+
-+        if (bw_addr & bw_size_mask) {
-+            goto fault_walk;
-+        }
-+
-+        if (bw_addr >= bw_stride) {
-+            goto fault_walk;
-+        }
-+    }
-+
-     /* Note this field is read-only and fixed at reset. */
-     l0gptsz = 30 + FIELD_EX64(gpccr, GPCCR, L0GPTSZ);
+ %.o: $(CRT_PATH)/%.S
+ 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -x assembler-with-cpp -Wa,--noexecstack -c $< -o $@
  
-@@ -431,6 +494,23 @@ bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
-         goto fault_fail;
-     }
+ # Build and link the tests
+ %: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
+-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
  
-+    /*
-+     * Bypass window check.
-+     * I_JJLRM: Granule Protection Table (GPT) lookups can be skipped
-+     * in portions of the memory map by using GPC bypass windows.
-+     * I_XNHTX: The GPC bypass window check (...) is performed
-+     * immediately after priority 3.
-+     */
-+    if (FIELD_EX64(gpccr, GPCCR, GPCBW)) {
-+        uint64_t bw_stride_mask = MAKE_64BIT_MASK(0, bw_stride);
-+        uint64_t effective_address = paddress & bw_stride_mask;
+ memory: CFLAGS+=-DCHECK_UNALIGNED=1
+ 
+ memory-sve: memory.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
+-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
+ 
+ memory-sve: CFLAGS+=-DCHECK_UNALIGNED=1 -march=armv8.1-a+sve -O3
+ 
+@@ -107,7 +110,7 @@ QEMU_MTE_ENABLED_MACHINE=-M virt,mte=on -cpu max -display none
+ QEMU_OPTS_WITH_MTE_ON = $(QEMU_MTE_ENABLED_MACHINE) $(QEMU_BASE_ARGS) -kernel
+ mte: CFLAGS+=-march=armv8.5-a+memtag
+ mte: mte.S $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
+-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
+ 
+ run-mte: QEMU_OPTS=$(QEMU_OPTS_WITH_MTE_ON)
+ run-mte: mte
+diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
+index 8bfa4e4efc..57bddda976 100644
+--- a/tests/tcg/aarch64/system/boot.S
++++ b/tests/tcg/aarch64/system/boot.S
+@@ -60,6 +60,40 @@ curr_sp0_irq:
+ curr_sp0_fiq:
+ curr_sp0_serror:
+ curr_spx_sync:
++#ifdef ALT_VECTOR_TABLE
++	sub     sp, sp, #16
++	stp     x0, x1, [sp, #0]
++	mrs     x0, ESR_EL3
++	lsr 	x0, x0, #26
++	and 	x0, x0, #0x3f
++	cmp 	x0, #37
++	beq 	data_fault
++	cmp 	x0, #30
++	beq 	gpc_fault
++	b       generic_exception
 +
-+        if (effective_address >= bw_addr &&
-+            effective_address < bw_addr + bw_size) {
-+            return true;
-+        }
-+    }
++data_fault:
++	mrs     x0, FAR_EL3
++	adrp    x1, exception_log
++	str     x0, [x1]
++	ldr     x0, =0x1001
++	str     x0, [x1, #8]
++	b       skip_return
++gpc_fault:
++	mrs     x0, FAR_EL3
++	adrp    x1, exception_log
++	str     x0, [x1]
++	ldr     x0, =0x1002
++	str     x0, [x1, #8]
++	/* Fall through */
++skip_return:
++	mrs     x0, ELR_EL3
++	add     x0, x0, #4 /* Skip faulting instruction */
++	msr     ELR_EL3, x0
++	ldp     x0, x1, [sp, #0]
++	add     sp, sp, #16
++	eret
++#endif
+ curr_spx_irq:
+ curr_spx_fiq:
+ curr_spx_serror:
+@@ -71,6 +105,7 @@ lower_a32_sync:
+ lower_a32_irq:
+ lower_a32_fiq:
+ lower_a32_serror:
++generic_exception:
+ 	adr	x1, .unexp_excp
+ exit_msg:
+ 	mov	x0, SYS_WRITE0
+@@ -404,6 +439,33 @@ ttb_stage2:
+ 	.space	4096, 0
+ 
+ 	.align	12
++	.global realms_gpt0
++	/* GPT stage 0 table */
++realms_gpt0:
++	.space 4096, 0
++	.align 17
++	.global realms_gpt1
++	/* GPT stage 1 table, initialised to all 0xFF (full access) */
++realms_gpt1:
++	.space 524288, 0xFF
++#ifdef ALT_VECTOR_TABLE
++	.align 12
++	.global exception_log
++	.global exception_fault_address
++	.global exception_type_code
++exception_log:
++	/*
++	 *These fields record details of the last exception, if ALT_VECTOR_TABLE
++	 * is defined.
++	 */
++exception_fault_address:
++	/* The contents of FAR_EL3 when an exception is taken. */
++	.space 8, 0
++exception_type_code:
++	/* A generic code indicating what type of exception occurred. */
++	.space 8, 0
++#endif
++	.align 12
+ system_stack:
+ 	.space 4096, 0
+ system_stack_end:
+diff --git a/tests/tcg/aarch64/system/boot.h b/tests/tcg/aarch64/system/boot.h
+new file mode 100644
+index 0000000000..cb9ab6c1b9
+--- /dev/null
++++ b/tests/tcg/aarch64/system/boot.h
+@@ -0,0 +1,14 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/*
++ *
++ *
++ * Copyright (c) 2026 Linaro Ltd
++ *
++ */
 +
-     /* GPC Priority 4: the base address of GPTBR_EL3 exceeds PPS. */
-     tableaddr = config.gptbr << 12;
-     if (tableaddr & ~pps_mask) {
-@@ -3817,6 +3897,7 @@ static bool get_phys_addr_gpc(CPUARMState *env, S1Translate *ptw,
-         };
-         struct ARMGranuleProtectionConfig config = {
-             .gpccr = env->cp15.gpccr_el3,
-+            .gpcbw = env->cp15.gpcbw_el3,
-             .gptbr = env->cp15.gptbr_el3,
-             .parange = FIELD_EX64_IDREG(&cpu->isar, ID_AA64MMFR0, PARANGE),
-             .support_sel2 = cpu_isar_feature(aa64_sel2, cpu),
++
++/* Global variables exported in boot.S */
++extern volatile uint64_t exception_fault_address; /* Updated by ISR */
++extern volatile uint64_t exception_type_code; /* Updated by ISR */
++extern uint64_t realms_gpt0[];
++extern uint64_t realms_gpt1[];
 
 -- 
 2.43.0

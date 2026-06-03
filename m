@@ -4,99 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84F3BCD6E4A
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 06:17:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F07FCD6E55
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 06:31:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUeud-0002pE-Ru; Wed, 03 Jun 2026 02:17:11 -0400
+	id 1wUf8N-0006Xl-Or; Wed, 03 Jun 2026 02:31:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wUeuc-0002oY-Fm
- for qemu-arm@nongnu.org; Wed, 03 Jun 2026 02:17:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUf8M-0006XO-3U
+ for qemu-arm@nongnu.org; Wed, 03 Jun 2026 02:31:22 -0400
+Received: from smtpout6.mo540.mail-out.ovh.net ([51.210.91.55])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wUeua-0001yZ-MJ
- for qemu-arm@nongnu.org; Wed, 03 Jun 2026 02:17:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780467428;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=SK42V8DL8AiyUKt99gPwHBrxNb00Gv5X+Rl+2awU3sQ=;
- b=UoMdkf5PHxDhD1ZHw4tkEeJ3w222vBgAmcNEsQ8JhP1vQql90b20UiEE/PqSCUJ7KKXuu3
- tm18nycCG0U21sbb4W3bdhN311hx90jXbmbSlV/VpN4UoYgrBuV4fczyv4x6FC2UumteEY
- NdUPK9SCDxC8noQOqgyeZpePTJpJLYA=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-258-csodHl7eNCG7LPGzwS8x7w-1; Wed, 03 Jun 2026 02:17:05 -0400
-X-MC-Unique: csodHl7eNCG7LPGzwS8x7w-1
-X-Mimecast-MFC-AGG-ID: csodHl7eNCG7LPGzwS8x7w_1780467424
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-45ef2bd566bso2944563f8f.0
- for <qemu-arm@nongnu.org>; Tue, 02 Jun 2026 23:17:05 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780467424; x=1781072224;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=SK42V8DL8AiyUKt99gPwHBrxNb00Gv5X+Rl+2awU3sQ=;
- b=NtLbneeFhrgqDB/JIBmw0+t2S0l0+Fu1X3r4ElFqiaCCvMx58b1o1aUhtGwzpdSadx
- xV8CDn+J+H9ShvemtpMt64J5s4IbhrqNptbjZjJwoCGswCv3ocYXrZFrYP2RF5XlkpRo
- s3HmKjjD99P5rCSUfcwkuTwZpVs1MDiHIDDCgs0zlJv+xM0/Sy3LLLqjHIoH98pfdUip
- h8joUGISIG4eDkH+KaoV6w4BeO8ERSXJuOvyQ3GCyUlc8cIa4fAtvaBjLXM8ctcGghCj
- 48HieNNYCdVlldmXmqNqYhEAShp/aQ331bUiaj5/9OVAQhYFdoLdSaB6G7FOAsGZXoq5
- optQ==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+ruYxFwUvzg+GmLFHN7uqcv8+vknFxSTkPKp79F+RGDAdT9nasbBRAFLgTdaDn10gh5IhYcEY2Gg==@nongnu.org
-X-Gm-Message-State: AOJu0YxnXFMXW8v8HRf55v2Bo6+2esLZzS1CRWRAtFNGvaLOYbS8lLwM
- 6ZRgKYbEFaoCvpsx3Gu5iHMXfK222Fxj0LnZH6Srm5J3YC0UmWdNtkhlhFuG8L8U+BQitJVxalO
- 0Z5DLwo1+Rck2ku0+SaHZCb+Wou7baI0P+Z2dYYLhzZ/zwbV1SZ9CzQ==
-X-Gm-Gg: Acq92OEduS5dthVCjhxMm9oOlpolJi7uG+k6TeMDG/iQmPPZLdfwfODeCcvz29X9eLl
- jJ9AFUYebxEqKqr7EQ4+v9I0VVfXNf72KhJGmEehQp7U8biI73MZQGU4ZxtG/Nvj9W4XUPrKt5J
- IncG478oOH07CojG6lZPDHAzNqU7QstkevA1tv14y87+AlGItmxbNB0/5Jv/1de1A9+elMPZtW8
- 5Wlv5BLFw82y3TBBEblEtynLG4nz54YEq6BTI0Ywye1HEfssGIDY4z7zRhnx+CUCY7OzFn3TEAm
- V9vG47DTfr3A7yx5jxXdaeHOs72CALMhwdw3zjT/vvMarF9pUz4I7ajMj0peXwaujpMcWlLcr53
- gqF5hKwzFhQ6PfDfHlmxo1y8QTWc7xJZAqGOKPVTdjMaoG7/esq936g==
-X-Received: by 2002:adf:f484:0:b0:460:efd:c682 with SMTP id
- ffacd0b85a97d-460218271b6mr1911527f8f.24.1780467424015; 
- Tue, 02 Jun 2026 23:17:04 -0700 (PDT)
-X-Received: by 2002:adf:f484:0:b0:460:efd:c682 with SMTP id
- ffacd0b85a97d-460218271b6mr1911481f8f.24.1780467423511; 
- Tue, 02 Jun 2026 23:17:03 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-25-45.inter.net.il. [80.230.25.45])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4601f35f2e6sm4909136f8f.32.2026.06.02.23.17.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Jun 2026 23:17:03 -0700 (PDT)
-Date: Wed, 3 Jun 2026 02:17:00 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: qemu-devel@nongnu.org, anisinha@redhat.com, pbonzini@redhat.com,
- peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
- philmd@linaro.org, zhao1.liu@intel.com, rad@semihalf.com,
- leif.lindholm@oss.qualcomm.com, qemu-arm@nongnu.org
-Subject: Re: [PATCH v2 00/21] Introduce ACPI watchdog for Q35 and arm/virt
- boards
-Message-ID: <20260603021642-mutt-send-email-mst@kernel.org>
-References: <20260303092532.2410177-1-imammedo@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUf8J-000690-Or
+ for qemu-arm@nongnu.org; Wed, 03 Jun 2026 02:31:21 -0400
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net [79.137.60.37])
+ by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4gVdBT6vNfz4PwS;
+ Wed,  3 Jun 2026 06:31:13 +0000 (UTC)
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net. [127.0.0.1])
+ by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Wed,  3 Jun 2026 06:31:13 +0000 (UTC)
+Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.37.96])
+ by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gVdBT1yLvz1xpD; Wed,  3 Jun 2026 06:31:13 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.5])
+ (Authenticated sender: clg@kaod.org)
+ by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ 2D458240306A; Wed,  3 Jun 2026 06:31:12 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-104R0055e5032cd-eeac-4152-b026-7defa558cd84,
+ 5CFAFB9919344B1C1428CC102C89BC7CB8215022) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <23f1f0b1-bf57-4698-9080-5df3f032a2ed@kaod.org>
+Date: Wed, 3 Jun 2026 08:31:11 +0200
 MIME-Version: 1.0
-In-Reply-To: <20260303092532.2410177-1-imammedo@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: arKUztY2GOm4gj1dq3J4KouK8fBmSsGJAhoxC9-NiXs_1780467424
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 00/10] hw/arm/aspeed: Add AST1040 peripheral support
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20260603040027.938816-1-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260603040027.938816-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+x-ovh-tracer-id: 14569426272735046667
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTFwrRqCKDh+q+o5iXEncbbuBB5GVMgbSVw4R1AgmWNjUnaU+FgHJJzYajXYXxIc+XpvTosR6C3o0ZR4UE/2A3cmCz2/iRGv1FQQSAb8CaP7b+UczBHFdN+h7XUOGjqRDnMJUaSs5KhwAn+MRVGNgNOE3SMZet0aBz3c+exYnmh3uEuLcBzC3rbbu02/BDOh5Sjqm7LLzINPB6vLq5Ed1rtJB3U9RswueQjllPszMuXIzl/sJ9WXoNzlTt9f/lFmr+c8UaP/FuG8pzppaCCDFN0dNfeJ2W5vwlmAnKp572z6SJ/aJVsEWFShka0fKIUs6l1WrXYdAwaBhTZRty8TdLgkH8jCffFOV0mp4/5n0q7ROd4GcngsuBSAXDnwOcdtqILsxSrDJssNZgXXaqLnxsrc8JRuObscKeaAOKSse8vVQixd3YDuQZtAOmBNwZm/bEgb+WEqEN5bGWtC72fTUkk05iy6Rh6dvbes1Hdl6uTe4k7NCbTYAuU8bq0c7EvNE8jQuQt7zRvjVxUTC730wBhV+RH5I3P3a0rhTBU+S/t//ye8NsNtEzwkZnTmupP9bo+c2W9kYfOPkmMrqfy4EB1AZhCkqR2NcXfwlQbj3oN1LMGSYpK4oVgn0ZaIrcTshvL8HbX+/cr1PlKl8dQE61LZZqmALu+JHbDYbnWxf5tH6Q
+DKIM-Signature: a=rsa-sha256; bh=7cm9pIzhnwOwO6HaIfcO7ag1HjxCg873CDEbg0MM1HE=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1780468275; v=1;
+ b=KIxdCBsckYKk3TSzofnIkjfPgcGCfOwPdQuNqGaRSIj2UnZXG3FM984AcOkP8+IKZSf/qL4L
+ IqBIFfn9ILAGB5ty/GpGqEHwtqYtxk+EZ8NdtpAEJY3wSle+xCLWfswpDut9IGydGqD573jc7Ii
+ rcvXWqX7fQSbi/PNr/AZbHv0QXX/MVo2rCfwKPzBD9jmNMRQ1ibpY3zbNoYVxtZcMJw9NvTHqjL
+ ggJpIOl7E07hWsrax/H4aXSLBDa/nqVXCTpdjpyeuDYWvIvfQkeRfpyqjLCD31PiMaC0BoAXsJR
+ LXhevTvKNEBOZaH+aKJVdVrk92rrLL4iGr3sO+rR4qT/w==
+Received-SPF: pass client-ip=51.210.91.55; envelope-from=clg@kaod.org;
+ helo=smtpout6.mo540.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,132 +134,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Mar 03, 2026 at 10:25:11AM +0100, Igor Mammedov wrote:
-> Changelog:
->   v2:
->      * ditch generic '-machine acpi-watchdog' option in favor of
->        board specific variants:
->            x86/q35:  -machine wdat={on|off}
->            arm/virt: -device sbsa_gwdt,wdat={on|off}
->      * arm/virt: add FDT and GTDT ACPI entries for GWDT when it's present
->        and hide GDTD one when WDAT is enabled.
->      * arm/virt: add test case for GTDT 
->      * [18-21] optional GWDT cleanup/fixes in handling WCV register update,
->        make QEMU behave according to spec (at least the way I read it and
->        it appears MS also read it that way). It fixes Windows 11 reboots when
->        GWDT is present (without WDAT). With that fixed it's up to MS to fix
->        their driver to set sane timeout as with the current one wdatchdog
->        will never trigger.
+On 6/3/26 06:00, Jamin Lin wrote:
+> This series extends the AST1040 SoC model by adding support for several
+> peripherals that are compatible with existing AST2700 controller models.
+> 
+> The AST1040 shares a number of peripheral IP blocks with the AST2700,
+> allowing the existing QEMU models to be reused with minimal changes.
+> This series adds support for ADC, PECI, GPIO, SGPIO, I2C, and watchdog
+> controllers, and updates the AST1040 EVB machine to instantiate onboard
+> I2C devices for validation.
+> 
+> For I2C support, a new AST1040 I2C type is introduced. The model
+> inherits the AST2700 I2C architecture, including DMA support and
+> 64-bit DMA address registers, while constraining DMA accesses to the
+> 16 MiB HyperRAM address space available on AST1040.
+> 
+> Depends on:
+>    https://github.com/legoater/qemu.git (branch: aspeed-next)
+> 
+> v1:
+>    1. Support ADC, GPIO, SGPIO, I2C and PECI
+> 
+> v2:
+>    1. Address review feedback.
+>    2. Fix issues reported during review.
+>    3. Update i2c bus number to 14.
+> 
+> Jamin Lin (10):
+>    hw/i2c/aspeed_i2c: Introduce dma_addr_lo_mask to unify DMA address
+>      handling
+>    hw/i2c/aspeed_i2c: Increase AST2700 buffer mode size and adjust offset
+>    hw/arm/aspeed_ast1040: Reuse AST2700 ADC model
+>    hw/arm/aspeed_ast1040: Introduce PECI support
+>    hw/arm/aspeed_ast1040: Reuse AST2700 GPIO controller model
+>    hw/arm/aspeed_ast1040: Add SGPIO controller support
+>    hw/i2c/aspeed_i2c: Introduce AST1040 I2C model
+>    hw/arm/aspeed_ast1040: Introduce I2C support
+>    hw/arm/aspeed_ast1040_evb: Introduce onboard I2C device
+>    hw/arm/aspeed_ast1040: Reuse AST2700 watchdog models
+> 
+>   include/hw/i2c/aspeed_i2c.h |   8 ++-
+>   hw/arm/aspeed_ast1040.c     |  97 ++++++++++++++++++++++++++++-----
+>   hw/arm/aspeed_ast1040_evb.c |  15 ++++++
+>   hw/i2c/aspeed_i2c.c         | 103 ++++++++++++++++++++++++------------
+>   4 files changed, 173 insertions(+), 50 deletions(-)
+> 
 
-I picked the x86 patches for now.
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
-> Windows doesn't ship built-in TCO watchdog driver, and users are
-> forced to install vendor specific driver(s) if such exists.
-> However the OS provides a generic watchdog driver that uses
-> ACPI WDAT table [1] to abstract actual hardware behind it.
-> The same applies to ARM version of Windows.
-> 
-> This series adds
->  *  WDAT table tailored for TCO watchdog that Q35 already
->     has as part of ICH9 chipset and a knob to enable it.
->  *  SBSA GWDT to arm/virt machine with WDAT table tailored
->     for it and necessary tweaks to GWDT to make usable
->     with WDAT driver.
->     * in addition to WDAT, it also adds native variant
->       with GWDT described in FDT and DTDT
->       (broken on Windows/works on linux).
-> 
-> Guest OS WDAT support is present since Windows Vista and Linux since 2016[2].
-> 
-> One can test it launching VM with following options:
->   * x86:
->        -machine q35,wdat=on
->   * arm/virt:
->        -device sbsa_gwdt,wdat=on
-> 
-> to trace access to TCO registers one can add to CLI:
->     -trace "tco_*"
-> to trace access to GWDT registers one can add to CLI:
->     -trace "sbsa_gwdt*"
-> 
-> To verify that guest uses WDAT (both Windows and Linux would use it if present),
->   * on linux make sure that watchdog service is configured/enabled
->     (use wdctl to check what watchdog device is in use) and then
->     trigger kernel panic with command:
->       echo c > /proc/sysrq-trigger
->   * on Windows kill svchost process, running cmd in admin mode:
->       taskkill /f /im svchost.exe
-> 
-> Tested with WS2025 & RHEL9.6 & Fedora 43 (aarch64)
-> 
-> git tree at: https://gitlab.com/imammedo/qemu/-/commits/gwdt_v2
-> 
-> 1) http://msdn.microsoft.com/en-us/windows/hardware/gg463320.aspx
-> 2) https://lwn.net/Articles/700524/
-> 
-> PS:
->  previous revision:
->   https://patchew.org/QEMU/20260206131438.1857182-1-imammedo@redhat.com/
-> 
-> Igor Mammedov (21):
->   acpi: add API to build WDAT instructions
->   x86: q35: add 'wdat' property
->   x86: q35: generate WDAT ACPI table
->   tests: acpi: x86/q35: whitelist new WDAT table
->   tests: acpi: x86/q35: add WDAT table test case
->   tests: acpi: x86/q35: update expected WDAT blob
->   arm: sbsa_gwdt: fixup default "clock-frequency"
->   arm: add tracing events to sbsa_gwdt
->   arm: virt: create sbsa_gwdt watchdog
->   arm: sbsa_gwdt: add 'wdat' option
->   arm: virt: add support for WDAT based watchdog
->   tests: acpi: arm/virt: whitelist new WDAT table
->   tests: acpi: arm/virt: add WDAT table test case
->   tests: acpi: arm/virt: update expected WDAT blob
->   tests: acpi: arm/virt: whitelist GTDT table
->   tests: acpi: arm/virt: add GTDT watchdog table test case
->   tests: acpi: arm/virt: update expected GTDT blob
->   sbsa_gwdt: reduce code ident
->   sbsa_gwdt: move all foo_REFRESH logic under REFRESH condition
->   sbsa_gwdt: reschedule timer on direct WCV load
->   sbsa_gwdt: limit compare_value to INT64_MAX
-> 
->  include/hw/acpi/wdat-gwdt.h            |  19 ++++
->  include/hw/acpi/wdat-ich9.h            |  15 ++++
->  include/hw/acpi/wdat.h                 | 118 +++++++++++++++++++++++++
->  include/hw/i386/pc.h                   |   1 +
->  include/hw/watchdog/sbsa_gwdt.h        |   1 +
->  hw/acpi/aml-build.c                    |  14 +++
->  hw/acpi/meson.build                    |   5 +-
->  hw/acpi/wdat-gwdt-stub.c               |  16 ++++
->  hw/acpi/wdat-gwdt.c                    |  92 +++++++++++++++++++
->  hw/acpi/wdat-ich9-stub.c               |  15 ++++
->  hw/acpi/wdat-ich9.c                    |  90 +++++++++++++++++++
->  hw/arm/Kconfig                         |   1 +
->  hw/arm/virt-acpi-build.c               |  65 +++++++++++++-
->  hw/arm/virt.c                          |   2 +
->  hw/core/sysbus-fdt.c                   |  32 +++++++
->  hw/i386/acpi-build.c                   |  12 +++
->  hw/i386/pc_q35.c                       |  18 ++++
->  hw/watchdog/sbsa_gwdt.c                |  65 +++++++++-----
->  hw/watchdog/trace-events               |   9 ++
->  tests/data/acpi/aarch64/virt/GTDT.gwdt | Bin 0 -> 132 bytes
->  tests/data/acpi/aarch64/virt/WDAT.wdat | Bin 0 -> 260 bytes
->  tests/data/acpi/x86/q35/WDAT.wdat      | Bin 0 -> 308 bytes
->  tests/qtest/bios-tables-test.c         |  54 +++++++++++
->  23 files changed, 618 insertions(+), 26 deletions(-)
->  create mode 100644 include/hw/acpi/wdat-gwdt.h
->  create mode 100644 include/hw/acpi/wdat-ich9.h
->  create mode 100644 include/hw/acpi/wdat.h
->  create mode 100644 hw/acpi/wdat-gwdt-stub.c
->  create mode 100644 hw/acpi/wdat-gwdt.c
->  create mode 100644 hw/acpi/wdat-ich9-stub.c
->  create mode 100644 hw/acpi/wdat-ich9.c
->  create mode 100644 tests/data/acpi/aarch64/virt/GTDT.gwdt
->  create mode 100644 tests/data/acpi/aarch64/virt/WDAT.wdat
->  create mode 100644 tests/data/acpi/x86/q35/WDAT.wdat
-> 
-> -- 
-> 2.47.3
+Thanks,
+
+C.
 
 

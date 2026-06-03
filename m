@@ -4,120 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F07FCD6E55
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 06:31:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD000CD6E55
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 06:38:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUf8N-0006Xl-Or; Wed, 03 Jun 2026 02:31:23 -0400
+	id 1wUfF1-00006n-Lw; Wed, 03 Jun 2026 02:38:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUf8M-0006XO-3U
- for qemu-arm@nongnu.org; Wed, 03 Jun 2026 02:31:22 -0400
-Received: from smtpout6.mo540.mail-out.ovh.net ([51.210.91.55])
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1wUfEz-00006H-Ob; Wed, 03 Jun 2026 02:38:13 -0400
+Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
+ ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wUf8J-000690-Or
- for qemu-arm@nongnu.org; Wed, 03 Jun 2026 02:31:21 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4gVdBT6vNfz4PwS;
- Wed,  3 Jun 2026 06:31:13 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Wed,  3 Jun 2026 06:31:13 +0000 (UTC)
-Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.37.96])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gVdBT1yLvz1xpD; Wed,  3 Jun 2026 06:31:13 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
- (Authenticated sender: clg@kaod.org)
- by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- 2D458240306A; Wed,  3 Jun 2026 06:31:12 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-104R0055e5032cd-eeac-4152-b026-7defa558cd84,
- 5CFAFB9919344B1C1428CC102C89BC7CB8215022) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <23f1f0b1-bf57-4698-9080-5df3f032a2ed@kaod.org>
-Date: Wed, 3 Jun 2026 08:31:11 +0200
+ (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
+ id 1wUfEx-0008Je-UX; Wed, 03 Jun 2026 02:38:13 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=B4gcc+rX+DiKcWDO46K5euUqVbcrmxpFUu+88Z1bRSrLDJlfW6FD352FzhijF6DeT8jRw2t8FtYksNjS8h20sxbWdSCFAwyV2G4O75SQ7k7ed8mAdfmn4hYKhFiScw9GBeCFXUnVHBXo+haMeaSN4esKwORdAQb5gpuvPT2fb3cMe8yYD3PplrAUTh/V98lyBl31qE+tGL5rX1qaIC+mzdIw1RssaVPe8+OKY5pyp+AZ7AUudctzKEzKegJpl69LN7wYsGBKQObixq2SH7YJF5ue0rCKyI0yBL2G/eBj/Kl26bD7d6oTvhNXaYb99Qfi1bEGXxPKUEbq32vMKZAkFw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5NgAKbHhIGYOKlNWxbnpc77BWpuspkxp7Io2YLfQu9k=;
+ b=N3T9eW+9nEiNDDKSbYdSEb2+XpyUF1zZfN1nAsDCo1XYxzsvCdHgrXDSR1HknM2YcPFMLFO4uqTzFnWrGGQHVmbo7iYEpG/pfZgGxPdojb4P35kXxD3foZpCjud2aXkx2gbljeVIeN27m2yX3wLbkE9D1w258Ffy5wTdb4lxwb3JBguHLRgkGneqbIfoj1i7BytRaHZH8GQ6H14FUfYMh6rG3OCq/zDmZCRxk4JuPblVwwR1oxL12PnzqBK5SXHUN7iE0aR9iMr+poBEqsHRlC23tBIKkFMqphnMnnXCM1TvN5ckZ/8H1nFXJqwCkCoPtDznSexiJJnT/MCr/EudgQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5NgAKbHhIGYOKlNWxbnpc77BWpuspkxp7Io2YLfQu9k=;
+ b=DSZMvSWE26b3i4IqgN9mNCQ83fu+K27seQO3H5+kwJCfNLXfnLmrW/7AaeRZdI1TxWCCKURR+xdm3rxGo/Y1mv4AbSpzAd4Zek/34OEXU9/hXW1KQs8noLRV2N6d+3F6kZKcztsoQEIJlUDYrZszIuiMCHfa8bQFGy/DUnCZR1Z04UmDTXE/zWUsgI5Cu/8HtWq6m76hL3r9f71uOzp+rPYzgekSH7bpgmr/DNk3nJd+K8BR+2GJmyJitb5l/3BwCfeLvNCt2uMNwMKgq0GCYsWC6ZxkLIZBMnhDKfKNo63smpD6z9w1x0Rr5IvUEyEzL9VMm42wJnbj59hu98jYHw==
+Received: from TYZPR06MB4746.apcprd06.prod.outlook.com (2603:1096:400:129::9)
+ by SEZPR06MB6572.apcprd06.prod.outlook.com (2603:1096:101:184::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.92.7; Wed, 3 Jun 2026
+ 06:38:06 +0000
+Received: from TYZPR06MB4746.apcprd06.prod.outlook.com
+ ([fe80::b6d5:b318:c4a6:d995]) by TYZPR06MB4746.apcprd06.prod.outlook.com
+ ([fe80::b6d5:b318:c4a6:d995%6]) with mapi id 15.21.0092.006; Wed, 3 Jun 2026
+ 06:38:06 +0000
+From: Steven Lee <steven_lee@aspeedtech.com>
+To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen
+ <kane_chen@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>, Fabiano Rosas <farosas@suse.de>, Laurent
+ Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, "longzl2@lenovo.com"
+ <longzl2@lenovo.com>, Yunlin Tang <yunlin.tang@aspeedtech.com>
+Subject: [RESEND PATCH 6/6] docs/system/arm: Document AST1040 Caliptra mailbox
+Thread-Topic: [RESEND PATCH 6/6] docs/system/arm: Document AST1040 Caliptra
+ mailbox
+Thread-Index: AQHc8yOJiD0gPjj7QE+aUl73xW3lVw==
+Date: Wed, 3 Jun 2026 06:38:06 +0000
+Message-ID: <20260603063756.1481524-7-steven_lee@aspeedtech.com>
+References: <20260603063756.1481524-1-steven_lee@aspeedtech.com>
+In-Reply-To: <20260603063756.1481524-1-steven_lee@aspeedtech.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR06MB4746:EE_|SEZPR06MB6572:EE_
+x-ms-office365-filtering-correlation-id: 2fec0f8d-be7b-4cdc-bb7f-08dec13aabb5
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|7416014|1800799024|376014|366016|6133799003|18002099003|22082099003|3023799007|56012099006|38070700021|921020;
+x-microsoft-antispam-message-info: cVXjpdW/R5VhpyhAOfej/LuyDYw+60GD8kUONuQzItvYU7quNZSoFrLu+rMn3Hs81VxzYssikXBQlJHV2CsA783XgTz4kUxDWVakFz2+5TO+KQ3Mv+3y3oLPNcouZBNephZbYsDapIDakV5pefUFFkfCSzz6ez1BDPgYpuSeS+FrW5QLc2a0gz1mHawEPMVEdGvrEvnqQGT89/xomKiZTcdxpQf8rsGx3aE/oHnuSOSHp2od4Ev4izJS3OKEcEIA0931wGbd+mBvtovxT2/QWXi2hkrxR5zx26+HJi8/U5A3JPro0Qhqdevh6Qg+Ix2X6CNByrnTZ2WF8E8fzJ1ZYZ8mwVNUyroWmEgNwB6SEd47vxLNdBqzPeFm1RpmWLRbcCvawzLtXoDu3hFjdf5axDWSlaruKvq8f4/1wvP9IQyWwydmIHfbhh2I2M73DhjjLgnxqYP9RWcSgzoZSkFF2z5delAY1rVWMK7W/Vq11NdZnOekXSuWnoWixrpvgcGWZVW+7SkXz5XHAmmREVLbXYR0ljaSkvO+D5z6klLZqEZsiSL8LFaIs5VIjCbK0Z3iBCkMKCzjwqiIw7d9q/xkZIV7VFP3lm6HjNq4hqHPAVH6xeQXqgH63YGcOEjMmZn5tYXS7jydmk6UamXvrTCXytrkVK5wrgZ009X8nMVbUSI8dJ9JlXs1+l4wnispLwWX/A3CvrkQ0KtBF3fGMCxvDW2Qc33AyxHNjgBFAGTYGHwLKyLKTLByISTFCvMjOYCp3Fh7lYKM2kPUgfa5UlGt9g==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYZPR06MB4746.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(7416014)(1800799024)(376014)(366016)(6133799003)(18002099003)(22082099003)(3023799007)(56012099006)(38070700021)(921020);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?qEDLEZ8UbOWVM0sTaS8vIBoBP2EYdD1jxAZf5nWFKf2uKwW46nvaOPHOYc?=
+ =?iso-8859-1?Q?NgLA+nTNCtKxta/+dFneb2WuGHIsYBTlxsNuvhFTwN/FkIcedfzXehZIER?=
+ =?iso-8859-1?Q?G1nMSIwO5IpGhSPjPkOIbj+aPKPgkp/Ei6DkYGBjac+2EIwROterQc5KMy?=
+ =?iso-8859-1?Q?oeFicrDmT6jyzt5hhBIPGzB+aHM0awkbhO2o+FHkGaPp/yNf3nfG/cbB2F?=
+ =?iso-8859-1?Q?ewBDH/t/RU6kIuFPrvRrli80N7TxXs6y7zW5FKjI0Sc6PiygEAWjW1SxN6?=
+ =?iso-8859-1?Q?LS0sL9H3iYTo+ZWauEGi1yhLV+kc3Qe3GVBWRCruXJYhpNhEglManf8ncN?=
+ =?iso-8859-1?Q?lMHqGlHCCUm1GQcZAIoDUTUn7fPr5RaXiZGsOrbrN4UH0FynSzIhdg22y1?=
+ =?iso-8859-1?Q?BV1D9KQRUkqEp8vMxcRhfSyVv2RHmd5Ze+jPtVAqSSBrVJJjvniHBNFrLL?=
+ =?iso-8859-1?Q?xSrz1faiSLoC6Cr0DNLR5JRVFipnAA5so8nkVLaZTdF0WDhXtPyiwswMHG?=
+ =?iso-8859-1?Q?lY2oedFlLdaWAjYeJiSiOiq/uJPuMCls/TEdn302f497tiAJ0SLYtRgcLV?=
+ =?iso-8859-1?Q?AYy3MAosxZXJPAOMw9lIXaMET+Rtry1W5NXMUmmYHLH4NzSrCnb2zuwm91?=
+ =?iso-8859-1?Q?iBJ/5eukoNsqdF5OQ7ceFsbUzkDyPC/uAhlJiEdiV7VLi0/HFOCxRHiMFC?=
+ =?iso-8859-1?Q?xbjvjEXWu/t/bLOgpQWUqAeXZQkZ8p4sbVFvMU948ZbT9t6yh/uA6LzC7L?=
+ =?iso-8859-1?Q?qs4LZhBya+JwNv7n3ruUn5v2bMh8zFoImaCShRYA7pJEJfT2gi7jjeaa1D?=
+ =?iso-8859-1?Q?8Ll6f0/7aDHRa9ifvwgfO6utwpB6znEgJI6Ew1fHFMlJwJ99f6bPHE9UKX?=
+ =?iso-8859-1?Q?g/jWyBZ9oDgiA2vLoqGkHsA0yMv9433ibczN/SorHkwEJxaZkJoC6ptQe3?=
+ =?iso-8859-1?Q?dqybl6rew3NytGg3rMnRdnC4Pm/qhOoJrzWHUZkEnLg6veYIx7RdPvjd8v?=
+ =?iso-8859-1?Q?RR5neICm81H++j7v4OEN2K2DqUZFJu7O2er1YuKH/MCK2DE6GHhynv0W+Q?=
+ =?iso-8859-1?Q?KnROcy357/R0wxISyHYPCqNAt0thdk3bi1G7XyfmLoT9wjuTC2Yda3ymEW?=
+ =?iso-8859-1?Q?cN8M+Ep9nyR5KjYbDx1rpZEkBsjfoAza+ouQqdyJHq6HbzN/bJMw+dAdYj?=
+ =?iso-8859-1?Q?24F0uwtygPEC1qqYuuqCERJAmvfsJIlun7KtQa8t8F+1KkH5zlTS4ZePo1?=
+ =?iso-8859-1?Q?DrvHD1xs/BmlkF0mhs9M//mv/pexooRsXXMWSc2upzdKSzOU0xzNQ9Js1+?=
+ =?iso-8859-1?Q?gTOpUS5OJwMlnxbPG8v8QdU0N5H5e10v2Tl4nC0o9z2ND0HIT6lRjUPP0E?=
+ =?iso-8859-1?Q?6E+VMb4NCYCi0OcPb14soO1mluer21gGq4RBItwhqsE3JYkX7pM1q0RAl2?=
+ =?iso-8859-1?Q?0El8mj/CbFBpN9YGUPGVZD4AMgfVIS1nppMwV475lG3YgM6PJb6CQSQrYu?=
+ =?iso-8859-1?Q?NJGaQCEt4AiykXqjEJI0+XcKgdBv2gqC1gfRZw14MdFEvXyeIGiI0owVEq?=
+ =?iso-8859-1?Q?1iTjIQkx42XjHBdGbGPtmOwaLzsurwAwQyJ3VExRGLdtUB3jUSwH66y3jq?=
+ =?iso-8859-1?Q?J36ONMiwtcqfBSIEaSS+Bi901DtSZk9ZVW1Ykz3IPoCwTeIvXMwzqEGzWn?=
+ =?iso-8859-1?Q?x7yvpB6BSMskhrl7jLVYKGZhmiNZAUDeqsxfmNjq05SsHO4z7hd47cHX0X?=
+ =?iso-8859-1?Q?oOOvTYq07kQi4xAUGp9qCVDLGsS2Y1nEcxhDWZwYlEHXq5sa9F/z/1V6wZ?=
+ =?iso-8859-1?Q?hckakzcKUg=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 00/10] hw/arm/aspeed: Add AST1040 peripheral support
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260603040027.938816-1-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260603040027.938816-1-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 14569426272735046667
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFwrRqCKDh+q+o5iXEncbbuBB5GVMgbSVw4R1AgmWNjUnaU+FgHJJzYajXYXxIc+XpvTosR6C3o0ZR4UE/2A3cmCz2/iRGv1FQQSAb8CaP7b+UczBHFdN+h7XUOGjqRDnMJUaSs5KhwAn+MRVGNgNOE3SMZet0aBz3c+exYnmh3uEuLcBzC3rbbu02/BDOh5Sjqm7LLzINPB6vLq5Ed1rtJB3U9RswueQjllPszMuXIzl/sJ9WXoNzlTt9f/lFmr+c8UaP/FuG8pzppaCCDFN0dNfeJ2W5vwlmAnKp572z6SJ/aJVsEWFShka0fKIUs6l1WrXYdAwaBhTZRty8TdLgkH8jCffFOV0mp4/5n0q7ROd4GcngsuBSAXDnwOcdtqILsxSrDJssNZgXXaqLnxsrc8JRuObscKeaAOKSse8vVQixd3YDuQZtAOmBNwZm/bEgb+WEqEN5bGWtC72fTUkk05iy6Rh6dvbes1Hdl6uTe4k7NCbTYAuU8bq0c7EvNE8jQuQt7zRvjVxUTC730wBhV+RH5I3P3a0rhTBU+S/t//ye8NsNtEzwkZnTmupP9bo+c2W9kYfOPkmMrqfy4EB1AZhCkqR2NcXfwlQbj3oN1LMGSYpK4oVgn0ZaIrcTshvL8HbX+/cr1PlKl8dQE61LZZqmALu+JHbDYbnWxf5tH6Q
-DKIM-Signature: a=rsa-sha256; bh=7cm9pIzhnwOwO6HaIfcO7ag1HjxCg873CDEbg0MM1HE=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1780468275; v=1;
- b=KIxdCBsckYKk3TSzofnIkjfPgcGCfOwPdQuNqGaRSIj2UnZXG3FM984AcOkP8+IKZSf/qL4L
- IqBIFfn9ILAGB5ty/GpGqEHwtqYtxk+EZ8NdtpAEJY3wSle+xCLWfswpDut9IGydGqD573jc7Ii
- rcvXWqX7fQSbi/PNr/AZbHv0QXX/MVo2rCfwKPzBD9jmNMRQ1ibpY3zbNoYVxtZcMJw9NvTHqjL
- ggJpIOl7E07hWsrax/H4aXSLBDa/nqVXCTpdjpyeuDYWvIvfQkeRfpyqjLCD31PiMaC0BoAXsJR
- LXhevTvKNEBOZaH+aKJVdVrk92rrLL4iGr3sO+rR4qT/w==
-Received-SPF: pass client-ip=51.210.91.55; envelope-from=clg@kaod.org;
- helo=smtpout6.mo540.mail-out.ovh.net
+X-Exchange-RoutingPolicyChecked: p0a0Va8rJo50OpoMcno/Mw6KFFlONlPboUvIWs+OW4w7Lq6IdCfXFYJP6qWuRIUTBuQopg3heno7cOcuSLzoLEc0P2crUD5wddVAUqS9QzpnQZv2hbfzxfk7v4WiT6UOBFedeZ7Ijb4x2h+hqPT8qmq0M1vTPpD3e54qGN/nQ6paY5mtibcTx5WKpEfHiGRQqPq9lJwm7Epj4zFdFWpO2b7dQqeLB+xQMn58goIGFkscMUrCEXyz7QxTtkgWgrDn4rgDPJbQrZx25ekHdgEYa0Gv/VnyQRAyM0txCIAxe7dmM19cgunxQ1Lqh+BcDdMaVpnfC71Y5FqCo/uN/F8OIA==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4746.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2fec0f8d-be7b-4cdc-bb7f-08dec13aabb5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Jun 2026 06:38:06.6103 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: QFAUX8rnYFnQUaaroypmaV+V1rRuz58TUFrEOo1oHn+EZvw4K1dcyYwLUcVSbBEII6LEz43F8T9qT1J7EmbhwGjIvESh7sY73O/KAp15eBU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB6572
+Received-SPF: pass client-ip=2a01:111:f403:c406::3;
+ envelope-from=steven_lee@aspeedtech.com;
+ helo=OS8PR02CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -134,56 +151,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 6/3/26 06:00, Jamin Lin wrote:
-> This series extends the AST1040 SoC model by adding support for several
-> peripherals that are compatible with existing AST2700 controller models.
-> 
-> The AST1040 shares a number of peripheral IP blocks with the AST2700,
-> allowing the existing QEMU models to be reused with minimal changes.
-> This series adds support for ADC, PECI, GPIO, SGPIO, I2C, and watchdog
-> controllers, and updates the AST1040 EVB machine to instantiate onboard
-> I2C devices for validation.
-> 
-> For I2C support, a new AST1040 I2C type is introduced. The model
-> inherits the AST2700 I2C architecture, including DMA support and
-> 64-bit DMA address registers, while constraining DMA accesses to the
-> 16 MiB HyperRAM address space available on AST1040.
-> 
-> Depends on:
->    https://github.com/legoater/qemu.git (branch: aspeed-next)
-> 
-> v1:
->    1. Support ADC, GPIO, SGPIO, I2C and PECI
-> 
-> v2:
->    1. Address review feedback.
->    2. Fix issues reported during review.
->    3. Update i2c bus number to 14.
-> 
-> Jamin Lin (10):
->    hw/i2c/aspeed_i2c: Introduce dma_addr_lo_mask to unify DMA address
->      handling
->    hw/i2c/aspeed_i2c: Increase AST2700 buffer mode size and adjust offset
->    hw/arm/aspeed_ast1040: Reuse AST2700 ADC model
->    hw/arm/aspeed_ast1040: Introduce PECI support
->    hw/arm/aspeed_ast1040: Reuse AST2700 GPIO controller model
->    hw/arm/aspeed_ast1040: Add SGPIO controller support
->    hw/i2c/aspeed_i2c: Introduce AST1040 I2C model
->    hw/arm/aspeed_ast1040: Introduce I2C support
->    hw/arm/aspeed_ast1040_evb: Introduce onboard I2C device
->    hw/arm/aspeed_ast1040: Reuse AST2700 watchdog models
-> 
->   include/hw/i2c/aspeed_i2c.h |   8 ++-
->   hw/arm/aspeed_ast1040.c     |  97 ++++++++++++++++++++++++++++-----
->   hw/arm/aspeed_ast1040_evb.c |  15 ++++++
->   hw/i2c/aspeed_i2c.c         | 103 ++++++++++++++++++++++++------------
->   4 files changed, 173 insertions(+), 50 deletions(-)
-> 
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
+Document the AST1040 Caliptra MCI mailbox windows, the SCU-controlled remap=
+ aperture, and how to connect the external mailbox peer through a chardev b=
+ackend.=0A=
+=0A=
+Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>=0A=
+---=0A=
+ docs/system/arm/aspeed.rst | 32 ++++++++++++++++++++++++++++++++=0A=
+ 1 file changed, 32 insertions(+)=0A=
+=0A=
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst=0A=
+index 2d51ceeb84..1ffa88c2ae 100644=0A=
+--- a/docs/system/arm/aspeed.rst=0A=
++++ b/docs/system/arm/aspeed.rst=0A=
+@@ -483,6 +483,7 @@ Supported devices=0A=
+  * ADC=0A=
+  * Secure Boot Controller=0A=
+  * PECI Controller (minimal)=0A=
++ * Caliptra MCI mailbox (AST1040 only)=0A=
+ =0A=
+ =0A=
+ Missing devices=0A=
+@@ -512,3 +513,34 @@ To boot a kernel directly from a Zephyr build tree:=0A=
+ =0A=
+   $ qemu-system-arm -M ast1030-evb -nographic \=0A=
+         -kernel zephyr.bin=0A=
++=0A=
++Caliptra MCI mailbox (ast1040-evb)=0A=
++^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^=0A=
++=0A=
++The AST1040 chip provides a mechanism to map the Caliptra MCI mailbox=0A=
++register space into the Cortex-M4F address space. The Caliptra MCI mailbox=
+=0A=
++SRAM and CSR are accessible at fixed addresses:=0A=
++=0A=
++- Mailbox SRAM at ``0x21400000`` (2 MiB, command/response payload)=0A=
++- Mailbox CSR  at ``0x21600000`` (4 KiB, LOCK/CMD/DLEN/EXECUTE/STATUS)=0A=
++=0A=
++The SCU ``CPTRA_PAGE_REG0`` register (at ``0x74C02120``) selects which=0A=
++Caliptra MCI page (SRAM or CSR) is exposed through the 4 KiB aperture at=
+=0A=
++``0x74200000``, allowing firmware to access either window through a single=
+=0A=
++address.=0A=
++=0A=
++By default the mailbox has no Caliptra peer, so writing ``EXECUTE`` report=
+s=0A=
++``CMD_FAILURE``. To service commands with an external Caliptra simulator (=
+for=0A=
++example caliptra-server) over a UNIX socket, start the simulator first, th=
+en=0A=
++create an external peer device and link it with the machine's ``cptra-peer=
+``=0A=
++option:=0A=
++=0A=
++.. code-block:: bash=0A=
++=0A=
++  $ qemu-system-arm -M ast1040-evb,cptra-peer=3Dpeer0 -nographic \=0A=
++        -chardev socket,id=3Dcptra0,path=3D/tmp/mcu_mbox.sock \=0A=
++        -device cptra-mbox-peer-extern,id=3Dpeer0,chardev=3Dcptra0 \=0A=
++        -kernel zephyr.elf=0A=
++=0A=
++Writing ``EXECUTE`` bridges the command and the mailbox SRAM payload to th=
+e=0A=
++peer over the socket, and writes the response back into the mailbox SRAM.=
+=0A=
+-- =0A=
+2.43.0=
 

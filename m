@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06742CD6E4A
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 03:33:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C8A1CD6E55
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 03:33:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUcIV-0007EL-U1; Tue, 02 Jun 2026 23:29:39 -0400
+	id 1wUcLK-0001ag-CP; Tue, 02 Jun 2026 23:32:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wUcI8-0006kj-P8
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 23:29:20 -0400
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+ id 1wUcLF-0001PL-Rt
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2026 23:32:29 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wUcI6-0003hf-QM
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 23:29:16 -0400
-Received: by mail-pg1-x530.google.com with SMTP id
- 41be03b00d2f7-c8588ec1b44so2823547a12.1
- for <qemu-arm@nongnu.org>; Tue, 02 Jun 2026 20:29:14 -0700 (PDT)
+ id 1wUcLD-0004c1-CT
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2026 23:32:28 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-2bf30d530bdso47792565ad.3
+ for <qemu-arm@nongnu.org>; Tue, 02 Jun 2026 20:32:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780457353; x=1781062153; darn=nongnu.org;
+ d=linaro.org; s=google; t=1780457546; x=1781062346; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZvTdErfxKyM18jy4fYLJA8neNrcYEuEEmDnUu40A3Ns=;
- b=AeM+BCdXwQbzmN128vqLAqtA3ISvWJfx8vaHqE0vBWYYRl7A9cgDEnLvW6xYWB/pmb
- qX+6ez0DAyoeco30dohw0FHtGyqQCRce2KrDxrjoLyIp8xLEELRC0xou39hZc3hFMTfO
- +UotWle5C8Yes1R0zreKyprQCScFpftY2UG70pV/VApxXeaMNkfoIxJFKKuy0BoFfsiU
- +CnV2JeoAzRn73qBtJREa5ZbeTn54S6KfKnAxYiuLQHxjF8XHkpb9symOWQOUu4YOqFP
- DWIwUx4nYP22W7mq9W9xNyn9REb1TD8PFW5JfiqDwJebXx7ee+kZIgxU27RQ775IeZnu
- 7qPA==
+ bh=WFZDxQPlMUk4Y3zCdCtj6jkmwOnh+sTkiuf5F+8SjLo=;
+ b=ulRimwm4X/4K+iPi7ZNEy41bBHkG/wcNGVq0R63oEZ/TZBzaJMbBIXa498EWUsNei+
+ 0cbBRAKADbEGNduWG+4/jEli9tXvrrQN8wiORKFpjNq9hip+Ea3br3LvfI9oJWYJmSM0
+ Ne9Jlm6tp77DwAOGyqoh/UIwW6+RYStOdnbuNuwULKile/6wEFjrG8nmel/rZkKMShYA
+ Ggb4t8Vqs5wlFqs4NvNn8VhQQjAtSLcMqSG0oZaQpM+oCjRPL7GjNxMCPV1jXjmKc7wQ
+ A2TPm/xvMgpuBw8HMMKUDvMXO9ZWXAO2dOlsjVE4QdcOC/FhdxurYTEDQklwi5nT51lC
+ MFmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780457353; x=1781062153;
+ d=1e100.net; s=20251104; t=1780457546; x=1781062346;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ZvTdErfxKyM18jy4fYLJA8neNrcYEuEEmDnUu40A3Ns=;
- b=V9tgGxf3fheTOK3f9FSjUqsob85yPa/oeMjqJKDOtHdORwEmOPh95sR8xysbYygjY2
- SFjikxN7/y1eUC1xvRJt3UJlL6jRiSAvU42Y3O6iZ4+0MFMMd3lZ9i21GjPlrIh1am/c
- 50C40JPDngl+LPlgmBoiUu6i9O2+i413orfim+U5t4k219QVuhOGheLYu/K30xX5A5lV
- oX0bjibz/His7L82HQ8i7r9lnx4V0tqINJsZfnDvXW67/uC0cnWUP7gwUkWQc9/23+nf
- ssNjVIRmM9HPViS+O5e08LLOXYwPpjdH5Yi4CCwOFjwOZpdCEmLYa0YhwU9cbHuEj3x4
- TvAQ==
-X-Gm-Message-State: AOJu0YwLLsJHNBMTWmIBYn1ySftH8khqsyy4rvRoxcrjIpZDACjwdxwR
- IZLVCLbwO+rzXkhFW24y9UTtfqFp58C6JuSQF+NFPHXY7SEuUx1aMip0iPy+XRLySdZG9Ozfr37
- rUS+7ob0=
-X-Gm-Gg: Acq92OFaZin1BUW4Q+dxvHpYHB4hSS5CZrj+1/+grj/lYRATaiX7FyMfKKtEiJThJ3x
- ZeuNRWSFueUsNBlKaaFF4ZGqEYEhr2epZMsuRGaStRGoH2W7zy5IsQq33XT9NVizkG1BK3YPGUc
- LWhtNwJ/5490eH+OfTHp0D+BP/Tf0EH8FZuWXWu+GvQEcLA/TYVq6sSNUBycn2sZEOa+nV3hpXc
- dcLVVKwXfMohe3hXKfqfVdQPXCr5hrkR1J093fM2g4Y9w8vU4/1VYmRpteTbWdSonOl/GAe6m+T
- t1jTWyVnsG/sva5+D0VNJu98OBjYCov2BMkq55G4ZOghzmDIns3rdSgQ6K9ab1GVPcMA9mLl2yq
- CGvdFF5mvqcxvhJgqFa8GXLc0e4MzxXHavQDZAaWJ3QcABOO061XCyYpBYoJc/GH+FO0iNPDLOT
- d1+5asEQQ2jf6rZEMwS+P+fibXFnmPglTeICnuZ4A=
-X-Received: by 2002:a05:6a00:2d29:b0:842:6c02:2fa3 with SMTP id
- d2e1a72fcca58-84284da7c66mr1526321b3a.15.1780457353288; 
- Tue, 02 Jun 2026 20:29:13 -0700 (PDT)
+ bh=WFZDxQPlMUk4Y3zCdCtj6jkmwOnh+sTkiuf5F+8SjLo=;
+ b=aHDkdKmkfASewR5dBoH9Itp0CzY0x7OYKtNVaeHBj/yNJUOgIE4hH2s/bvFmb1Ms4V
+ yZkcxyqY3p+N1Y4kvk3B2i38V9VzJ42xoAZ5st8FBALv1WRMgMNHKfhPyJW9i90SGQAY
+ /2zdXIjyttNCwVTRLwugW0xmjV9rC6bY5hh0PzITaxWoQI+45YgrNfJNd0TElnTu8MfY
+ +958HrPUDH1kGwSjEDF4siqUjXL+a8vE/MMuV+bIeQ6x9/m9Pdbt3t5J2TiwTrCDx0m/
+ JZ5ILrJ81YLhEhG6raTDy4pB54+YDn6AXBGcvUD2q9lSeusiStJLW+bVR4kJsjHhOFj1
+ 0MoQ==
+X-Gm-Message-State: AOJu0YxXlEwg44xEI9f2TqHNyFk2WVRs1V8Jies1bUwae7YCAjPoj+Dt
+ czFnIwNo5yy5w77A3AD4dhiUVi+l+5a2OfdaOtQGHWHAkfiZe4ANBXBAC5ytqFx/MRI=
+X-Gm-Gg: Acq92OEF0nmZcN77gU1oLHC3VTf89XOghtsaJK/DGwfxpKh3akm7BYzunCDjZXpGyAc
+ yLijYusquV17mNssguAo0pXiAM+8g6umlbgMGRce//N68z4mjZb53/eM64YZ8OskOqCX7Bu0vzP
+ MaHzV5tZvl8Uyhl6lbR9e7JeIsC/TY40ejqGJNkxqDU6U3syoI+fBhNo5Zj8pb9JMIyOeiUltYr
+ Zvc8ZDzsl3mm2cCeqXWmMmjvSHSZyoTN6I70EfNQ5/O+6c58S/lhoR6cJfyo2ldleHwWMWAdShx
+ JQjtp5sjprmV2JMWIkdcL993ns9YZldVFz8fms61knkLRt12ip52GxXOX2Rhj05WVQ80uibvDh5
+ PKKOok1m3iE84RX2TiGsmUQM5UpILsCXqh+J/A8repGt7EXQznscJmVGZ+SuaXoNDJ6Aywx74a5
+ qIUxWtCJRrDx1P4PsTZw2sQumqPszEiigNZPSmw2c=
+X-Received: by 2002:a17:902:d2c2:b0:2bf:21e6:baee with SMTP id
+ d9443c01a7336-2c1641be20dmr16543625ad.28.1780457545921; 
+ Tue, 02 Jun 2026 20:32:25 -0700 (PDT)
 Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-8428222263dsm1477831b3a.2.2026.06.02.20.29.12
+ d9443c01a7336-2c164fa0236sm7785685ad.33.2026.06.02.20.32.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Jun 2026 20:29:12 -0700 (PDT)
+ Tue, 02 Jun 2026 20:32:25 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v9 24/45] target/arm: Enable FEAT_FP8 for -cpu max
-Date: Tue,  2 Jun 2026 20:28:33 -0700
-Message-ID: <20260603032855.106930-25-richard.henderson@linaro.org>
+Subject: [PATCH v9 40/45] target/arm: Implement FMMLA (FP8 to FP32) for AdvSIMD
+Date: Tue,  2 Jun 2026 20:28:49 -0700
+Message-ID: <20260603032855.106930-41-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260603032855.106930-1-richard.henderson@linaro.org>
 References: <20260603032855.106930-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x530.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,54 +100,97 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/aarch64/elfload.c  | 3 +++
- target/arm/tcg/cpu64.c        | 6 ++++++
- docs/system/arm/emulation.rst | 1 +
- 3 files changed, 10 insertions(+)
+ target/arm/cpu-features.h        |  5 +++++
+ target/arm/tcg/helper-fp8-defs.h |  2 ++
+ target/arm/tcg/fp8_helper.c      | 25 +++++++++++++++++++++++++
+ target/arm/tcg/translate-a64.c   |  1 +
+ target/arm/tcg/a64.decode        |  2 ++
+ 5 files changed, 35 insertions(+)
 
-diff --git a/linux-user/aarch64/elfload.c b/linux-user/aarch64/elfload.c
-index 5ed7a7badb..1c0c404b7c 100644
---- a/linux-user/aarch64/elfload.c
-+++ b/linux-user/aarch64/elfload.c
-@@ -222,6 +222,9 @@ abi_ulong get_elf_hwcap2(CPUState *cs)
-     GET_FEATURE_ID(aa64_faminmax, ARM_HWCAP2_A64_FAMINMAX);
-     GET_FEATURE_ID(aa64_fpmr, ARM_HWCAP2_A64_FPMR);
-     GET_FEATURE_ID(aa64_lut, ARM_HWCAP2_A64_LUT);
-+    GET_FEATURE_ID(aa64_f8cvt, ARM_HWCAP2_A64_F8CVT |
-+                               ARM_HWCAP2_A64_F8E4M3 |
-+                               ARM_HWCAP2_A64_F8E5M2);
- 
-     return hwcaps;
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index 4629a3cf3e..1fc8db8d58 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -1630,6 +1630,11 @@ static inline bool isar_feature_aa64_f8dp2(const ARMISARegisters *id)
+     return FIELD_EX64_IDREG(id, ID_AA64FPFR0, F8DP2);
  }
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 39dc769a04..b48dd01a2c 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1392,6 +1392,12 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64SMFR0, FA64, 1);     /* FEAT_SME_FA64 */
-     SET_IDREG(isar, ID_AA64SMFR0, t);
  
-+    t = GET_IDREG(isar, ID_AA64FPFR0);
-+    t = FIELD_DP64(t, ID_AA64FPFR0, F8E5M2, 1);   /* FEAT_FP8 */
-+    t = FIELD_DP64(t, ID_AA64FPFR0, F8E4M3, 1);   /* FEAT_FP8 */
-+    t = FIELD_DP64(t, ID_AA64FPFR0, F8CVT, 1);    /* FEAT_FP8 */
-+    SET_IDREG(isar, ID_AA64FPFR0, t);
++static inline bool isar_feature_aa64_f8mm8(const ARMISARegisters *id)
++{
++    return FIELD_EX64_IDREG(id, ID_AA64FPFR0, F8MM8);
++}
 +
-     /* Replicate the same data to the 32-bit id registers.  */
-     aa32_max_features(cpu);
+ /*
+  * Combinations of feature tests, for ease of use with TRANS_FEAT.
+  */
+diff --git a/target/arm/tcg/helper-fp8-defs.h b/target/arm/tcg/helper-fp8-defs.h
+index 5995d77577..3c74f02022 100644
+--- a/target/arm/tcg/helper-fp8-defs.h
++++ b/target/arm/tcg/helper-fp8-defs.h
+@@ -35,3 +35,5 @@ DEF_HELPER_FLAGS_5(gvec_fdot_idx_sb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env,
  
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index dc20632097..470f7d891e 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -75,6 +75,7 @@ the following architecture extensions:
- - FEAT_FHM (Floating-point half-precision multiplication instructions)
- - FEAT_FP (Floating Point extensions)
- - FEAT_FP16 (Half-precision floating-point data processing)
-+- FEAT_FP8 (FP8 convert instructions)
- - FEAT_FPAC (Faulting on AUT* instructions)
- - FEAT_FPACCOMBINE (Faulting on combined pointer authentication instructions)
- - FEAT_FPACC_SPEC (Speculative behavior of combined pointer authentication instructions)
+ DEF_HELPER_FLAGS_5(gvec_fdot_hb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+ DEF_HELPER_FLAGS_5(gvec_fdot_idx_hb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fmmla_sb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+diff --git a/target/arm/tcg/fp8_helper.c b/target/arm/tcg/fp8_helper.c
+index a25e0a1d92..9db4ff4c2f 100644
+--- a/target/arm/tcg/fp8_helper.c
++++ b/target/arm/tcg/fp8_helper.c
+@@ -806,3 +806,28 @@ void HELPER(gvec_fdot_idx_hb)(void *vd, void *vn, void *vm,
+ 
+     clear_tail(vd, oprsz, simd_maxsz(desc));
+ }
++
++void HELPER(gvec_fmmla_sb)(void *vd, void *vn, void *vm,
++                           CPUARMState *env, uint32_t desc)
++{
++    FP8MulContext ctx = fp8_mul_start(env, -1);
++    size_t oprsz = simd_oprsz(desc);
++    size_t nseg = oprsz / 16;
++    uint64_t *n = vn;
++    uint64_t *m = vm;
++    float32 *d = vd;
++
++    for (size_t seg = 0; seg < nseg; seg++, d += 4, n += 2, m += 2) {
++        float32 d0 = f8dotadd_s(n[0], m[0], 8, d[H4(0)], &ctx);
++        float32 d1 = f8dotadd_s(n[0], m[1], 8, d[H4(1)], &ctx);
++        float32 d2 = f8dotadd_s(n[1], m[0], 8, d[H4(2)], &ctx);
++        float32 d3 = f8dotadd_s(n[1], m[1], 8, d[H4(3)], &ctx);
++
++        d[H4(0)] = d0;
++        d[H4(1)] = d1;
++        d[H4(2)] = d2;
++        d[H4(3)] = d3;
++    }
++
++    clear_tail(vd, oprsz, simd_maxsz(desc));
++}
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 83d90cfcf4..367f87f05d 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -7501,6 +7501,7 @@ static bool do_f8dot(DisasContext *s, arg_qrrr_e *a,
+ 
+ TRANS_FEAT(FDOT_sb_v, aa64_f8dp4, do_f8dot, a, gen_helper_gvec_fdot_sb)
+ TRANS_FEAT(FDOT_hb_v, aa64_f8dp2, do_f8dot, a, gen_helper_gvec_fdot_hb)
++TRANS_FEAT(FMMLA_sb, aa64_f8mm8, do_f8dot, a, gen_helper_gvec_fmmla_sb)
+ 
+ static bool do_f8dot_idx(DisasContext *s, arg_qrrx_e *a,
+                          gen_helper_gvec_3_ptr *fn)
+diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
+index a3e404e7fe..6922e91010 100644
+--- a/target/arm/tcg/a64.decode
++++ b/target/arm/tcg/a64.decode
+@@ -1227,6 +1227,8 @@ FMLALL_sb_v     0.00 1110 0.0 rm:5 110001 rn:5 rd:5 \
+ FDOT_sb_v       0.00 1110 000 ..... 11111 1 ..... ..... @qrrr_s
+ FDOT_hb_v       0.00 1110 010 ..... 11111 1 ..... ..... @qrrr_h
+ 
++FMMLA_sb        0110 1110 100 ..... 11101 1 ..... ..... @rrr_q1e0
++
+ ### Advanced SIMD scalar x indexed element
+ 
+ FMUL_si         0101 1111 00 .. .... 1001 . 0 ..... .....   @rrx_h
 -- 
 2.43.0
 

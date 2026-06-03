@@ -4,86 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AEF5CD6E6A
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 03:34:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0B5CCD6E4A
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 04:01:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUcIV-0007EG-M5; Tue, 02 Jun 2026 23:29:39 -0400
+	id 1wUcmi-0003Uk-Cg; Wed, 03 Jun 2026 00:00:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wUcI5-0006ia-Pj
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 23:29:13 -0400
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wUcI3-0003fx-JB
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 23:29:13 -0400
-Received: by mail-pf1-x42c.google.com with SMTP id
- d2e1a72fcca58-84237c55ef9so1482740b3a.0
- for <qemu-arm@nongnu.org>; Tue, 02 Jun 2026 20:29:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780457350; x=1781062150; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=TDR0Y4sXlbZK7TrziuxhbkAjyW4mGMb7eMYpZqe9/Ss=;
- b=IvdM3ccIRk4yXagQm7r932Z9+y2PrCTmNuRdrz986IodQOlF4FdKJJgt9mSZhgE4OC
- d38yMLm5jGZ6Q2ycEy+6kmgn6EGZLnqEluMQffqJi2PCB6MOf22wa1EIdvRtQDvhuUcT
- 66hQxDxDiUnUZ5wxihFiY7ox1TCXrqYJaKLPoX3qL36256267CMqGmmaSHsBOKnhzAXS
- 4mvhu/pM/15NpsfGuaHmT62pb2CSNC0jVND1iDsN7tVxwMCBPhIq/m4X0VmG5t2cJgw9
- PrMz4NxexbD07CPx1RTKy+P4sG1h7PpZDYKtR4Dq7f/n3rynBhMwdzQxVtthARlMpb16
- IH9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780457350; x=1781062150;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=TDR0Y4sXlbZK7TrziuxhbkAjyW4mGMb7eMYpZqe9/Ss=;
- b=rJDIOKrfxESDf4Leuy6lyIZ6tRaF3+r/lYt6yvCzX5rMmVgGGPCujPKrszPQg3ttxi
- wZMPOjtAhat8uhse6sQJPVd0rtOCc1NuzhbAT6ovQiOzETz/0oNrkXxy8r72A20p8IYL
- xfGxrNlbQVZOdyoAGqFA8V0wPKOCNJpwpLxOu78NPVzENgcl6Th8hH0vzEmCt87jPI8o
- 4y6K8LLpv52gcDUPjf6sM/chi/tYtotRord6EMvY+jpiFBar3ZuPuwtiTpNwGSznDK0P
- AagiiGeSasn4ZXaoV50g/sKFDrnD2peoTKntMpEgQulNUShathmitgNa2U6d6KNVQpKA
- 1qqw==
-X-Gm-Message-State: AOJu0Yy9JQnky9kAMojsb19a+y6fmrG5d3jxy7jbuGsvYwFJ877/NS7C
- bRBRLHwRZTvyspPtIb4zl5xJy0AmbuTvdApW9Nmk+JXZ709FUuxAO49bYYvWNtzU5hw=
-X-Gm-Gg: Acq92OF517dysLqleiWduO0iBBX/L8KtbMJspccIYToFQZdPl2xZkxFN68nhKkMetQM
- 4765r8Mx/UVihY+plHcOPqHh1ngJ3GY6eVRJNMB2XbbcQSCaVePjiLc/rTu6h8HtdEgC66Zjxr2
- ML3tjpDao9JRIqaJ2FD221ZLcZRNj082U4i+lZkDvdCoZXgaMqmp42BasMnOf4uO4nOQ3ISLjqW
- 5Y/zwfD14GdaI/BmI+KFPlEINYuMCb8jAxvdRW235L6st6Qo+3s26DCASPeL+dJ+HKnnGBmLeRj
- d+L3JNHXCz+vxrUcxJx12yMGyxObRV0Lbz2FAMG6MDs5tXDadcsYy3pjby1hrTe7uHMBnbo93T8
- fSQmAw7s6eZ1EaOUwfqWv7o3HPkTRNjZJwx9EGlh7UP8PuLJ0qyVTLporKOnPuFj0XXLHb63AAN
- FFUJZA9qDoZ1xzq6dvsz1TakcGA217HMBaXXy5bHM=
-X-Received: by 2002:a05:6a00:14d0:b0:842:5b63:610f with SMTP id
- d2e1a72fcca58-84284db9952mr1654442b3a.4.1780457350130; 
- Tue, 02 Jun 2026 20:29:10 -0700 (PDT)
-Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-8428222263dsm1477831b3a.2.2026.06.02.20.29.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Jun 2026 20:29:09 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v9 20/45] target/arm: Implement FCVT,
- FCVTN (FP32 to FP8) for SME
-Date: Tue,  2 Jun 2026 20:28:29 -0700
-Message-ID: <20260603032855.106930-21-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260603032855.106930-1-richard.henderson@linaro.org>
-References: <20260603032855.106930-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wUcme-0003TW-K9; Wed, 03 Jun 2026 00:00:49 -0400
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wUcmb-0002QB-F7; Wed, 03 Jun 2026 00:00:46 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ZcprCOj3k+oWKC96apFVD5bsPs01JGHN1fN5JPjbQadq2UGpVnjaZCZLMRNbPzZ4ReNc3+4ZFwHuhAGM66Tdpz3e5e/wOyzCQRzkP/a3hH7aYxBsTGWxHlKYtClTQ6oDKbxTVx0zu7Xxa4VDvc9+dqc7xIKQMOo9UURFCGXmaDXPY/16LikeTyoP5DOW6HpN30uf1xacw87gBbVYWUO+9WM5a3XVomvtIN/TG+J7UUEIlah+uyXVlp+LFrtN5bzcnZC9KqzjZypSb0MaBFTg2fKqqbPmLinCpA0RWqARHhCFtkCLAG2zbUCZ1g4bK6c9uVQRUbuJUNL2pivFReWEJQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=hrTG8zd2buClBhqaHE/pk14970IbTzF4v20Qqgtdp24=;
+ b=nsSt1IOWS2N8skFyWNOlqZk7zw26vnKWlYkgyelpHtOO7zPxoPKcollnx7ePtXDfTRipBKoIBXRhJCDKbYTcA+D1ur6l81b32gAJYFP4/70TpYZ5A1gj4GtZM/5JVuLxhT18UI3Xt0vbn9imfqkB9bxMiy62YVd5MH8ezYddkYSsoCWAXlP7pNCOSO23OI53ZUS0wCWyHCrvwThS4yqoR9zHqVG1flh9YSXrqu7QtBzg3U3YlGFYwQ82dChrLWWO1jAtu114b1W6rBhYzUO+uV6t1kWKrGFRIjdejP8iuQfja+8l3PaEg638mDEdSJjH9FAqgJiuXo7/LbzET2LgPg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hrTG8zd2buClBhqaHE/pk14970IbTzF4v20Qqgtdp24=;
+ b=SISJEzIBzaIwL7jC08nWYSlXqGX8ezsS8MTnpQ1BVttjbo5Zwd0rsWKd2LpIbjMJJ0AN/1e+h51zzi4DsEXOJ+E0theT6/0KZhskUY7stRFPOhSaZMBR4+G5LZquX1QHG433/IMJTkI6hsqALt3kN2Ush6IK9LqGyw6us9vMfgOyAUr+fhTRv+tE+p0Tw5P5j1U77hSviCbxXinw52G3lTeqo+zeVqp7+uKzBe6ccF8faeSz22q5LhowcyV6Tg82/YZHxClw78gzRggEL1VkC4hxx669h5t7I0jyoIdqfjtMT534yArxjutmuYybyitSNZEv9HEJzJLuPRdDoDxQfg==
+Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
+ by TYSPR06MB6921.apcprd06.prod.outlook.com (2603:1096:400:468::6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.92.7; Wed, 3 Jun 2026
+ 04:00:32 +0000
+Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
+ ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
+ ([fe80::ea8a:7cb7:4822:2fb3%5]) with mapi id 15.21.0092.006; Wed, 3 Jun 2026
+ 04:00:32 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
+ =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@redhat.com>
+Subject: [PATCH v3 03/10] hw/arm/aspeed_ast1040: Reuse AST2700 ADC model
+Thread-Topic: [PATCH v3 03/10] hw/arm/aspeed_ast1040: Reuse AST2700 ADC model
+Thread-Index: AQHc8w2F2AgyEN45eUGf5gJEVovVCg==
+Date: Wed, 3 Jun 2026 04:00:32 +0000
+Message-ID: <20260603040027.938816-4-jamin_lin@aspeedtech.com>
+References: <20260603040027.938816-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260603040027.938816-1-jamin_lin@aspeedtech.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|TYSPR06MB6921:EE_
+x-ms-office365-filtering-correlation-id: 0bdb3764-cc1c-45e2-2a7c-08dec124a86e
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|366016|376014|38070700021|22082099003|6133799003|18002099003|56012099006;
+x-microsoft-antispam-message-info: rZWIiFwVEYzsD6jCV1EeLp1DntWyl1J6udS2T5O+2TeVWMaFxBuxQbiyFh3v84m0GvFn3XU+6X/xHsAxcBTqe1YKUv8QEjVl4MtL9i3xcrZmqfuiGV4Il1Id5ekeqqn7zJ7BsaAEpl4TH4PZLDsW/Mdmsyj1oI0LAIJeAc0GoFPq33jkxU+2A1GxptZcPXCffz6PqCIWxmt9fN9tCTfSsP095jgDv0KDz9lOxRrFsPEXVEpiiL7CwDW9NYmBbR0kL/AiDKS58OaDtJD1fcqnq//g8nZg9fukHKL+c/xJVRX/D0EeuU1K29jDQS9HxXDtSt4AJ02Ap3A2XuPY7cVUUfppcRlFS4ZDABLK7uDdWnFqXH1KoWQnMxyjf8ZeXd0qpmXFiCGnpAHoLPr2gqkywnNX3wxROMznqfjWdB3lm/9zBkesWrghNLjvtgVB5zpFWjhhe1VNT1JHBoDlvEMxjecvzm9KcIs+dD+Lj87AeYFcqJhM2IDcPbTNu0SdDMsjk1Ay8qWW77uJOEOV8yuuiLKpjGRRKDre1Z9//o4dJPTnY3rU0q/OPlztEvpG/zNd5cJXaXNZEiHHkIGcGCJYECJAwejjSl7k6m4mPgFfMwWw58LJv1ukneXtxe8KeDDGnHTFfJt8nN/snoqOdTSC0P3g0FCnQ5SF+PmWDQWPp5/gYzprHDwsRHw5mwHUwvf3CUZnXerBEfzxeottex/dxY1KOENHC91CCtqiUEpk8/dEFflRTNvyVzn78SPsv+CV
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(376014)(38070700021)(22082099003)(6133799003)(18002099003)(56012099006);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?GuSqxe8oXqbIttOCQqTRVzhYQZrwomQhyON8mSFCAjN3MLqNFmq55IeZXm?=
+ =?iso-8859-1?Q?du/xfcHL7mEjOp9/RaAQK2EBPCPl/UXtmPkAXIrMof2u9uAMUZYg/a5H5u?=
+ =?iso-8859-1?Q?Ui0/ghUt3CT43/5VilxbK5/HFkBRQ0UQmT6lsfEliXRBGIMAjbLjr78NEN?=
+ =?iso-8859-1?Q?FemUEVSJj0hsYFt8rnQLAU/VgP2r7LKNaPFr6Y0aVriLfMui/gqLnIMtsO?=
+ =?iso-8859-1?Q?sZAzZqvgc9GrsEWR1LUgxKGV2PfR0e3sWFqVIYP8+GrebXLnAsKDLdkpfe?=
+ =?iso-8859-1?Q?p3n1KUcrvIjTZnjIvnPZ36SwBc3nZGFRrk3UptbQUpFniIOpozT0dRKnRm?=
+ =?iso-8859-1?Q?XVlIw3G8e0PDmVvnLj+6DHRIJHpdRZWt3IKM4T5ntbIT9D44w/ih5xlrcY?=
+ =?iso-8859-1?Q?YsZJnyas6sCv397whPJ6seC/yCrPTRHAMy++1jU8gxPf5HHK4RboGNFv9s?=
+ =?iso-8859-1?Q?g3ffm7t8ufDQbYvyqclfNut/RJO8RU0aabL9I8SwkToZsQt4zVO+drgA6/?=
+ =?iso-8859-1?Q?KAI+xyBjvJaeQETlM/H7sXIpL6KsDckyRcjk34mj1cqqI/g0wk6KFC59Ko?=
+ =?iso-8859-1?Q?IVqOHq3WUWiRjBNL2WMk85/Fl0RoQMCSGjOabo4i4PuDeWiiVjnGqsWHzY?=
+ =?iso-8859-1?Q?rGKkPEKm8DHWAr8XfIEjJaahz7Ftye8kAQARcTGS50pfV2em+QGUQ79HEx?=
+ =?iso-8859-1?Q?GqKjChwdKHzY/b6zKQbt1qpLbDCSlTtVJSHLkErOLh/ikg3gVEdBl9VkmY?=
+ =?iso-8859-1?Q?/8gJHA89S1D+WmtxuOJs3cwYA5lzJA+TapfCr3vDMTOABajIeh4rjLsxSs?=
+ =?iso-8859-1?Q?5D3ip/YkFseB0an0YvyQdepQ9lUEp0Efb7qY5kQJb65bgAfiv2rApArUqm?=
+ =?iso-8859-1?Q?unXKoVaSIvg+GqafYKPxt8jYBEZKMCzbL5GpJohfXGaB5UmzHNE/YJQpvh?=
+ =?iso-8859-1?Q?lasYlj7zoNeDtdGH7KgdG4ntAxvTL33Te1rTFM70K3eYGUh+7NRfHntQuX?=
+ =?iso-8859-1?Q?SSJs7SpYhedJDt2NON/l4iWkufaOH4mJqhAjaSKb0Lr1k4Z66EXTSTGWtS?=
+ =?iso-8859-1?Q?JL1GaCCRRd/SfrIYAMJ/WyzpLb3tMPz8fa0OZFtd6CPDVe0WwJDqd5N4T3?=
+ =?iso-8859-1?Q?Dk7KwOGKs6BTVKOcaksm7GHq77oHF2XkjrJiOkfTp43BR3VZRS2a+l/tNl?=
+ =?iso-8859-1?Q?/KwiKkeRBDaSQIHd0zVYeYzQLzvK9YPjZYtT4e9bLzzU/4K1J+KXcBZWqK?=
+ =?iso-8859-1?Q?qgS2nDtk8CyFsJvcuB22XKU7HqA02XnHVhYFeT1iLRokFiQouk+fOuefOw?=
+ =?iso-8859-1?Q?Kx8tZVkCq05vPXq9CtPJzORcmFCLQxaNd0takIav1jYLPKkZofft1TxvZk?=
+ =?iso-8859-1?Q?YpgSAJBCXVhkQ+46SjuNQvek8qJo2DCbgYPOZhLE2v6okxUdpC9q7JXxEs?=
+ =?iso-8859-1?Q?5wExILcBHkqKDQLfvjBj+UK3sDQQCc74mK2IximPAd9KcfFeW+qVVTLmEU?=
+ =?iso-8859-1?Q?0zSHl+qN8RJ6UjvPK1icxZx68Jt2uuZYxzF45XTI68R+lIWDf9PEv1uPfp?=
+ =?iso-8859-1?Q?LzfWxtxDzeE1Bl2F+yOO9M8RAngw3cwcPdimG7+AK0MPmBbImkWk1TlMYP?=
+ =?iso-8859-1?Q?19bBHKT5f9sbo6Cs/zwnrr+gA0jv3l9ZbUzKlsV736+MhONJSV6anJ4VRb?=
+ =?iso-8859-1?Q?XgUEeIqcbWhiIEDQabGCNhaYExhTOig+KnaV7CaeX/Zq3zuZagMhaMilSI?=
+ =?iso-8859-1?Q?BF/3ZHyfZvmBT8VZ5nZQPypmVBnAUHZgxJ4diGsPkFBTkD9/GpasRKzn7R?=
+ =?iso-8859-1?Q?yKovsE7RBw=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
+X-Exchange-RoutingPolicyChecked: rDIr8TNMTXvFIRx08cpaF0we6XYTRWKpktY+lalgCZR7ngoT8GHMKhLNisQ6tmiQyEK9vV/irZNKFwcuxx9g4FMo5sGEf2LMMwizZBZpGrRVUJEhsSuhSxfuf+EY8UQiqKm1Va4cFKl8vZtkEBeAVTBtVfawTyscrrh6T4FdJXyW8RRF6skz3r4T70RRkB1ziE+NQJtzJ6KxE91VuoQLphXo2oFH8okjOtgSxC4H2z8h7LGRA9E2FoDpv54Qxv8C9nSeapvedUysY8V7zWlEeFK1UfcgQJ8hMG9OxjJMEQ77RON6BsLgZkoRMb9juOKc9+EFD/qIoD5OQY0HAYP7gQ==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0bdb3764-cc1c-45e2-2a7c-08dec124a86e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Jun 2026 04:00:32.1561 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: u+GklzLIYft6ZHSx/rb8/gNF8ZbFyt1PInFtXKhmeRYCiMwL0AOFRq3O+Nlod4yP6TMudEhSIt9h+vxADRdwRxVRZnyNoMyALKvWwrAp2Z0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYSPR06MB6921
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYPPR03CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,120 +148,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/helper-fp8-defs.h |  2 ++
- target/arm/tcg/fp8_helper.c      | 59 ++++++++++++++++++++++++++++++++
- target/arm/tcg/translate-sme.c   |  3 ++
- target/arm/tcg/sme.decode        |  3 ++
- 4 files changed, 67 insertions(+)
-
-diff --git a/target/arm/tcg/helper-fp8-defs.h b/target/arm/tcg/helper-fp8-defs.h
-index 5863a6dbb8..36ae977431 100644
---- a/target/arm/tcg/helper-fp8-defs.h
-+++ b/target/arm/tcg/helper-fp8-defs.h
-@@ -21,3 +21,5 @@ DEF_HELPER_FLAGS_4(sve2_fcvtn_bh, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
- DEF_HELPER_FLAGS_5(advsimd_fcvt_bs, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
- DEF_HELPER_FLAGS_4(sve2_fcvtnb_bs, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
- DEF_HELPER_FLAGS_4(sve2_fcvtnt_bs, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
-+DEF_HELPER_FLAGS_4(sme2_fcvt_bs, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
-+DEF_HELPER_FLAGS_4(sme2_fcvtn_bs, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
-diff --git a/target/arm/tcg/fp8_helper.c b/target/arm/tcg/fp8_helper.c
-index 3bd57ff350..a39dc6f859 100644
---- a/target/arm/tcg/fp8_helper.c
-+++ b/target/arm/tcg/fp8_helper.c
-@@ -509,3 +509,62 @@ void HELPER(sve2_fcvtnt_bs)(void *vd, void *vn, CPUARMState *env, uint32_t desc)
- 
-     fp8_cvt_finish(env, &ctx);
- }
-+
-+void HELPER(sme2_fcvt_bs)(void *vd, void *vn, CPUARMState *env, uint32_t desc)
-+{
-+    ARMVectorReg scratch[4];
-+    FP8Context ctx = fp8_dst_start(env, desc, false);
-+    fcvt_fp8_output_fn *output_fmt = fcvt_fp8_output_fmt[ctx.f8fmt];
-+    uint32_t *n = vn;
-+    uint8_t *d = vd;
-+    bool osc = FIELD_EX64(env->vfp.fpmr, FPMR, OSC);
-+    size_t oprsz = simd_oprsz(desc);
-+    size_t nelem = oprsz / 4;
-+    size_t stride = sizeof(ARMVectorReg) / 4;
-+
-+    if (vectors_overlap(vd, 1, vn, 4)) {
-+        n = memcpy(scratch, vn, sizeof(scratch));
-+    }
-+
-+    for (size_t i = 0; i < nelem; i++) {
-+        for (size_t j = 0; j < 4; j++) {
-+            d[H1(i + nelem * j)] = fcvt_f32_to_fp8(n[H4(i) + stride * j],
-+                                                   output_fmt, ctx.scale,
-+                                                   osc, &ctx.stat);
-+        }
-+    }
-+
-+    fp8_cvt_finish(env, &ctx);
-+}
-+
-+void HELPER(sme2_fcvtn_bs)(void *vd, void *vn, CPUARMState *env, uint32_t desc)
-+{
-+    FP8Context ctx = fp8_dst_start(env, desc, false);
-+    fcvt_fp8_output_fn *output_fmt = fcvt_fp8_output_fmt[ctx.f8fmt];
-+    uint32_t *n0 = vn;
-+    uint32_t *n1 = vn + sizeof(ARMVectorReg);
-+    uint32_t *n2 = vn + sizeof(ARMVectorReg) * 2;
-+    uint32_t *n3 = vn + sizeof(ARMVectorReg) * 3;
-+    uint8_t *d = vd;
-+    bool osc = FIELD_EX64(env->vfp.fpmr, FPMR, OSC);
-+    size_t oprsz = simd_oprsz(desc);
-+    size_t nelem = oprsz / 4;
-+
-+    for (size_t i = 0; i < nelem; ++i) {
-+        float32 e0 = n0[H4(i)];
-+        float32 e1 = n1[H4(i)];
-+        float32 e2 = n2[H4(i)];
-+        float32 e3 = n3[H4(i)];
-+
-+        d[H1(4 * i + 0)] = fcvt_f32_to_fp8(e0, output_fmt,
-+                                           ctx.scale, osc, &ctx.stat);
-+        d[H1(4 * i + 1)] = fcvt_f32_to_fp8(e1, output_fmt,
-+                                           ctx.scale, osc, &ctx.stat);
-+        d[H1(4 * i + 2)] = fcvt_f32_to_fp8(e2, output_fmt,
-+                                           ctx.scale, osc, &ctx.stat);
-+        d[H1(4 * i + 3)] = fcvt_f32_to_fp8(e3, output_fmt,
-+                                           ctx.scale, osc, &ctx.stat);
-+    }
-+
-+    fp8_cvt_finish(env, &ctx);
-+}
-diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
-index 49eee95d88..76bbacfb6e 100644
---- a/target/arm/tcg/translate-sme.c
-+++ b/target/arm/tcg/translate-sme.c
-@@ -1572,6 +1572,9 @@ static bool trans_FCVT_bh(DisasContext *s, arg_zz_n *a)
-     return true;
- }
- 
-+TRANS_FEAT(FCVT_bs, aa64_sme2_f8cvt, do_f8cvt, a, gen_helper_sme2_fcvt_bs, 0)
-+TRANS_FEAT(FCVTN_bs, aa64_sme2_f8cvt, do_f8cvt, a, gen_helper_sme2_fcvtn_bs, 0)
-+
- static bool do_zipuzp_4(DisasContext *s, arg_zz_e *a,
-                         gen_helper_gvec_2 * const fn[5])
- {
-diff --git a/target/arm/tcg/sme.decode b/target/arm/tcg/sme.decode
-index a02bcc0e22..2b9e41a75a 100644
---- a/target/arm/tcg/sme.decode
-+++ b/target/arm/tcg/sme.decode
-@@ -865,6 +865,9 @@ BF2CVTL         11000001 111 00110 111000 ..... ....1       @zz_2x1
- 
- FCVT_bh         11000001 001 00100 111000 ....0 .....       @zz_1x2
- 
-+FCVT_bs         11000001 001 10100 111000 ...00 .....       @zz_1x4
-+FCVTN_bs        11000001 001 10100 111000 ...01 .....       @zz_1x4
-+
- ZIP_4           11000001 esz:2 1 10110 111000 ...00 ... 00   \
-                 &zz_e zd=%zd_ax4 zn=%zn_ax4
- ZIP_4           11000001 001     10111 111000 ...00 ... 00   \
--- 
-2.43.0
-
+Instead of introducing a dedicated TYPE_ASPEED_1040_ADC model,=0A=
+initialize the existing AST2700 ADC device directly for AST1040.=0A=
+This avoids unnecessary duplication and keeps the codebase simpler=0A=
+and easier to maintain.=0A=
+=0A=
+Add ADC device initialization and realization support to the=0A=
+AST1040 SoC model using TYPE_ASPEED_2700_ADC.=0A=
+=0A=
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+Reviewed-by: C=E9dric Le Goater <clg@redhat.com>=0A=
+---=0A=
+ hw/arm/aspeed_ast1040.c | 11 +++++++++++=0A=
+ 1 file changed, 11 insertions(+)=0A=
+=0A=
+diff --git a/hw/arm/aspeed_ast1040.c b/hw/arm/aspeed_ast1040.c=0A=
+index 8efcdad8f6..b736e690e5 100644=0A=
+--- a/hw/arm/aspeed_ast1040.c=0A=
++++ b/hw/arm/aspeed_ast1040.c=0A=
+@@ -107,6 +107,8 @@ static void aspeed_soc_ast1040_init(Object *obj)=0A=
+         object_initialize_child(obj, "uart[*]", &s->uart[i], TYPE_SERIAL_M=
+M);=0A=
+     }=0A=
+ =0A=
++    object_initialize_child(obj, "adc", &s->adc, TYPE_ASPEED_2700_ADC);=0A=
++=0A=
+     object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE=
+);=0A=
+     object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVI=
+CE);=0A=
+     object_initialize_child(obj, "udc", &s->udc, TYPE_UNIMPLEMENTED_DEVICE=
+);=0A=
+@@ -188,6 +190,15 @@ static void aspeed_soc_ast1040_realize(DeviceState *de=
+v_soc, Error **errp)=0A=
+                            aspeed_soc_ast1040_get_irq(s, uart));=0A=
+     }=0A=
+ =0A=
++    /* ADC */=0A=
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->adc), errp)) {=0A=
++        return;=0A=
++    }=0A=
++    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->adc), 0,=0A=
++                    sc->memmap[ASPEED_DEV_ADC]);=0A=
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,=0A=
++                       aspeed_soc_ast1040_get_irq(s, ASPEED_DEV_ADC));=0A=
++=0A=
+     /* Unimplemented peripherals */=0A=
+     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->pwm),=0A=
+                                   "aspeed.pwm",=0A=
+-- =0A=
+2.43.0=0A=
 

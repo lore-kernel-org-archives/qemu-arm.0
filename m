@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7015CD6E4A
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 03:30:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64101CD6E4A
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 03:30:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUcI5-0006iU-Ir; Tue, 02 Jun 2026 23:29:13 -0400
+	id 1wUcIK-0006ww-Ua; Tue, 02 Jun 2026 23:29:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wUcI3-0006ga-C5
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 23:29:11 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+ id 1wUcI7-0006jp-EI
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2026 23:29:15 -0400
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wUcI1-0003et-Mc
- for qemu-arm@nongnu.org; Tue, 02 Jun 2026 23:29:11 -0400
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-84237c55ef9so1482734b3a.0
- for <qemu-arm@nongnu.org>; Tue, 02 Jun 2026 20:29:09 -0700 (PDT)
+ id 1wUcI5-0003hA-Bs
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2026 23:29:15 -0400
+Received: by mail-pf1-x42b.google.com with SMTP id
+ d2e1a72fcca58-841882f8f4bso4327350b3a.0
+ for <qemu-arm@nongnu.org>; Tue, 02 Jun 2026 20:29:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780457348; x=1781062148; darn=nongnu.org;
+ d=linaro.org; s=google; t=1780457352; x=1781062152; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=g50CT4whMkEWMsWeDnJtJ5B0M4G//T1UV0U4fMA0Fto=;
- b=BjbWmsv4EzrtlXM8XymWYbwL9xRhxLRb9+6+o4do+rLlyb2v+32J4qBRT4o520V9hY
- G5NfGB7EPjlhgMHBhrYzm+tex9db0O/49so5vQSvALOHkrQCoNIFHRC0Slq6iR9w1KNq
- /a/TeeFQ+BQ4R3x06t+y9SHM5kBSDLh/2ebaMrxdqcRyeBDT1yGKKdBFVAXnh3toiKAw
- GwMcoXluAMiWm4gdkLlgcjVNWi2EV6aSfD0cc96BhXnDcbNyEBliT0r6MNajoeIvqh0u
- YJ8q7Y668yCmMgFiPT3CLXxNmyY3TU1jyxtWt6q5BkwNUHGLzxXrtdui3OlveZlVgBmV
- vy1g==
+ bh=jN74IEkGtZ/KNc9F46qPua/rkyHnoSA6n5kgXXd/Ils=;
+ b=reqqSaRaZnXVgbg9sVklpSxJuUBGgX3Qr6L3ekE1b1MfXnYII1IxQCe/I0Xw/Ry4LB
+ /Joakfb9i4jXNDYeS+CwKRnCUEJOmSuvWDB3VsSXEzb0jYkfuXz7vF0nKqICmy4gbgrI
+ eVNtFjaQ0dWdI6+aPBYIk0fVhXH2rMLqG1Z0XDYD5LvNAaWPD17kM9oh+pFoiVUhlp8G
+ BNU8xnwyv1vdmNOqzWoX2nKaexviWZJ5/Bk+6ApWhFDqhvODKil/lnGd+VKbB7taBJA/
+ cG5nmzYa3Rf4+aToY+aMEwOhy0tFEm/kEed98l08KtKt7RdkVIxqccjI4gNjAOnQSTbT
+ tv8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780457348; x=1781062148;
+ d=1e100.net; s=20251104; t=1780457352; x=1781062152;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=g50CT4whMkEWMsWeDnJtJ5B0M4G//T1UV0U4fMA0Fto=;
- b=IP7eNoqbevOjf7xyvI9XNbq76oWTLiPqet2n8GsgFW1Ou/j6qFC8xTABoS5OkcHi2j
- TELyD1M3a3hNR4BlSQhh9gCOz0+XqgtaFBBIv5HVNdIhe06KB6lEIMCXqieeWi2uHjr9
- krLzDhUlno/OVvjx91/zAZ2GeYbYFwD4qmOXoojnJ/+prGtJoyIItXSHLvBmEOFeMrbL
- 9GGX6PXccmQhZ4qGOQiHoHUDfz16i5lGNQFhm+GqLC3K5vkIzrYzjZtviatQ0HQN74Ul
- m0+rDZSnQ8JkPBw4DR4u+AP3yTLI+22MKGzKid607h740NLwvXeg7aocjSFkbj6lqG7c
- s2Rw==
-X-Gm-Message-State: AOJu0Yx4OPMi6SjY4gXQNd+nF9u6FrvjQb763Kz8xqHJR8OoQM1rlJ1A
- j+ROK3u8eySzdzD8IWaIUreeomEcZTOTF9jJ7bYDmOVZqHVcLrY3J9IIJfS03EFcBmk=
-X-Gm-Gg: Acq92OHv9l9ZEuhrReEsGH2BsU+VqGwTZHu88mIV/hyO98Dn8G7fPYuEYG10JRt+ASE
- qOjzLLJuo6K5Oxg87jIu67ehx5+o7RszoDff9I0ABAzg3KyEuvBzx88PSK+F6hGSVrAXeo0GUGa
- MZKFRi2y31zd104/CeUp3DpqrXDi0DOPIJO8WQrkVFxrPywgtR9kFKpDuO2iWcrQYGcmOzbI1iq
- oHp0pnfT5tqftz7de2EXJUKSS88wBNuL39QCkPLDNx6o/DlkkZl08XZ+6HeQq1wga6K1HfSDZrK
- bHZLMQ0jg5K7UDGd8X08M7pWddri5ERxDX+JroAUrxu3m3K6pKtq3nPZdk68CQ6AMUkAPP4nrek
- EqoB3tyla9Y0zwaZXcrWbdweXFPWKQGog68sTUlV1gSSeqoxfuRIXwpJ4+47hPTAEqsvSjhM4jv
- orZQqEN4qk3LdcuSBIQmYr4n+YDHMoBpoXXaG4B4o=
-X-Received: by 2002:a05:6a00:1d9a:b0:82a:780f:a187 with SMTP id
- d2e1a72fcca58-84284f34361mr1538200b3a.36.1780457348196; 
- Tue, 02 Jun 2026 20:29:08 -0700 (PDT)
+ bh=jN74IEkGtZ/KNc9F46qPua/rkyHnoSA6n5kgXXd/Ils=;
+ b=LUgETew1ertjAfp4tVhFtpY7fdXaqyjNifzTHeHl1KER8e5Hlme0RDz8UtitedF7No
+ J/j6x8G+H/L05YviPylNyVtPXCR9V9GrLxqDO8Fq56GlMILD2EmRR0GibslotiFzJEZn
+ pQLKJAA1flbrlPG1aN/LCTpjT0zWbaufu63coJQaFZwjC7XKTf8OAZPLDGN/wtm2gvmq
+ 3H88toXC8r5jpFn6iB4MbqWsp37NpfdYx01xsGk4GZuoNAsLsol0L+tovx1BsKLTd88/
+ Q1Jk09N97fRNQ7q7bVLGYMO09kw0gpFcRoWplPN+pHrUX97Cj9BbjlNnChoUEZtarv1d
+ qA7w==
+X-Gm-Message-State: AOJu0YyTuqHjC7mVs6tZMugDTVwNspbBiKpWo3Q4VyvMH0iUWvkBvB4p
+ dAsUnJAKTsqXFjpbn1wGSdZO7QRvciccQ3R69Q9gyXUDgw+8M0fdinXrRJlzLaRUn/PK3tfx32s
+ 28Mi/nPQ=
+X-Gm-Gg: Acq92OEvZmI/RsOdbKtviVveFc5JODuiYZXYI5IT2ielh+0UylR/gcaxNsV/nAKHzRF
+ HO+KYX7750gTwPRRr4x85lea23Erj2NGAtly8WST3Lk2oX5ZVYY9dkpzA7OAEPWiI6DpsiYeXJE
+ fCxnulpK4OMArUY2w1WgC8TgivpDOfovyrmodwT1GJKxjnDz+ScogPoZVwDJgv3tqh7OvJX2kaQ
+ o8L58HyjQUTrj2Thk4xzBsEJmCOBKZMk//sQGR5j2zKXlIgSISUaATAZX3WtNCMHOckXphlUjiA
+ Rbz0t6AqnsNWfAPGfRFcnZQ+rldm/gEe7F2JrcroN8hfFOuYRuo+xCTfb4vC82kZbNP0ZENwFDO
+ 1YOHnhuddA/idJQS5x2s+z3cUz3X1H3lFxKkuy3heltc4WW/Im9CGth9YHlKzFIzFbsx22+cTk9
+ FdBtXf9orAGsyxLLkzUmMNpOIBu78xppPyW7oXhmY=
+X-Received: by 2002:a05:6a00:4acc:b0:842:7e6f:f487 with SMTP id
+ d2e1a72fcca58-84284e70333mr1413532b3a.15.1780457351808; 
+ Tue, 02 Jun 2026 20:29:11 -0700 (PDT)
 Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-8428222263dsm1477831b3a.2.2026.06.02.20.29.07
+ d2e1a72fcca58-8428222263dsm1477831b3a.2.2026.06.02.20.29.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Jun 2026 20:29:07 -0700 (PDT)
+ Tue, 02 Jun 2026 20:29:11 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v9 17/45] target/arm: Implement FCVTN (16- to 8-bit fp) for SVE
-Date: Tue,  2 Jun 2026 20:28:26 -0700
-Message-ID: <20260603032855.106930-18-richard.henderson@linaro.org>
+Subject: [PATCH v9 22/45] target/arm: Implement LUTI2, LUTI4 for SVE
+Date: Tue,  2 Jun 2026 20:28:31 -0700
+Message-ID: <20260603032855.106930-23-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260603032855.106930-1-richard.henderson@linaro.org>
 References: <20260603032855.106930-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,82 +101,163 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/helper-fp8-defs.h |  1 +
- target/arm/tcg/fp8_helper.c      | 23 +++++++++++++++++++++++
- target/arm/tcg/translate-sve.c   |  2 ++
- target/arm/tcg/sve.decode        |  1 +
- 4 files changed, 27 insertions(+)
+ target/arm/cpu-features.h      |  6 +++
+ target/arm/tcg/translate.h     |  1 +
+ target/arm/tcg/translate-a64.c |  1 +
+ target/arm/tcg/translate-sve.c | 68 ++++++++++++++++++++++++++++++++++
+ target/arm/tcg/sve.decode      | 11 +++++-
+ 5 files changed, 86 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/tcg/helper-fp8-defs.h b/target/arm/tcg/helper-fp8-defs.h
-index 023a49e12f..e67fb191c2 100644
---- a/target/arm/tcg/helper-fp8-defs.h
-+++ b/target/arm/tcg/helper-fp8-defs.h
-@@ -16,5 +16,6 @@ DEF_HELPER_FLAGS_4(sme2_fcvtl_hb, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
- DEF_HELPER_FLAGS_4(sve2_bfcvtn_bh, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
- 
- DEF_HELPER_FLAGS_5(gvec_fcvt_bh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
-+DEF_HELPER_FLAGS_4(sve2_fcvtn_bh, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
- 
- DEF_HELPER_FLAGS_5(advsimd_fcvt_bs, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
-diff --git a/target/arm/tcg/fp8_helper.c b/target/arm/tcg/fp8_helper.c
-index 0b86ed9eb9..8295725b83 100644
---- a/target/arm/tcg/fp8_helper.c
-+++ b/target/arm/tcg/fp8_helper.c
-@@ -414,6 +414,29 @@ void HELPER(gvec_fcvt_bh)(void *vd, void *vn, void *vm,
-     clear_tail(vd, oprsz, simd_maxsz(desc));
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index 70649fe894..b220ed3437 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -1659,6 +1659,12 @@ isar_feature_aa64_sme2_or_sve2_f8cvt(const ARMISARegisters *id)
+     return isar_feature_aa64_sme2_or_sve2(id) && isar_feature_aa64_f8cvt(id);
  }
  
-+void HELPER(sve2_fcvtn_bh)(void *vd, void *vn, CPUARMState *env, uint32_t desc)
++static inline bool
++isar_feature_aa64_sme2_or_sve2_lut(const ARMISARegisters *id)
 +{
-+    FP8Context ctx = fp8_dst_start(env, desc, true);
-+    fcvt_fp8_output_fn *output_fmt = fcvt_fp8_output_fmt[ctx.f8fmt];
-+    uint16_t *n0 = vn;
-+    uint16_t *n1 = vn + sizeof(ARMVectorReg);
-+    uint8_t *d = vd;
-+    bool osc = FIELD_EX64(env->vfp.fpmr, FPMR, OSC);
-+    size_t oprsz = simd_oprsz(desc);
-+    size_t nelem = oprsz / 2;
-+
-+    for (size_t i = 0; i < nelem; ++i) {
-+        float16 e0 = n0[H2(i)];
-+        float16 e1 = n1[H2(i)];
-+        d[H1(2 * i + 0)] = fcvt_f16_to_fp8(e0, output_fmt,
-+                                           ctx.scale, osc, &ctx.stat);
-+        d[H1(2 * i + 1)] = fcvt_f16_to_fp8(e1, output_fmt,
-+                                           ctx.scale, osc, &ctx.stat);
-+    }
-+
-+    fp8_cvt_finish(env, &ctx);
++    return isar_feature_aa64_sme2_or_sve2(id) && isar_feature_aa64_lut(id);
 +}
 +
- void HELPER(advsimd_fcvt_bs)(void *vd, void *vn, void *vm,
-                              CPUARMState *env, uint32_t desc)
- {
+ /*
+  * Feature tests for "does this exist in either 32-bit or 64-bit?"
+  */
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index beaffe914e..7c9beb30e6 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -90,6 +90,7 @@ typedef struct DisasContext {
+     int vl;          /* current vector length in bytes */
+     int svl;         /* current streaming vector length in bytes */
+     int max_svl;     /* maximum implemented streaming vector length */
++    int max_any_vl;  /* maximum implemented vector length */
+     bool vfp_enabled; /* FP enabled via FPSCR.EN */
+     int vec_len;
+     int vec_stride;
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index b076605429..d6466de03f 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -10903,6 +10903,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
+     dc->vl = (EX_TBFLAG_A64(tb_flags, VL) + 1) * 16;
+     dc->svl = (EX_TBFLAG_A64(tb_flags, SVL) + 1) * 16;
+     dc->max_svl = arm_cpu->sme_max_vq * 16;
++    dc->max_any_vl = MAX(dc->max_svl, arm_cpu->sve_max_vq * 16);
+     dc->pauth_active = EX_TBFLAG_A64(tb_flags, PAUTH_ACTIVE);
+     dc->bt = EX_TBFLAG_A64(tb_flags, BT);
+     dc->btype = EX_TBFLAG_A64(tb_flags, BTYPE);
 diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index eccb5b191c..df2b89cad6 100644
+index 63fd1fe3db..5a3811d294 100644
 --- a/target/arm/tcg/translate-sve.c
 +++ b/target/arm/tcg/translate-sve.c
-@@ -4100,6 +4100,8 @@ TRANS_FEAT_STREAMING_IF(BF1CVTLT, aa64_sme2_or_sve2_f8cvt, aa64_sme2,
- TRANS_FEAT_STREAMING_IF(BF2CVTLT, aa64_sme2_or_sve2_f8cvt, aa64_sme2,
-                         do_f8cvt, a, gen_helper_sve2_bfcvt, true, true)
- 
-+TRANS_FEAT(FCVTN, aa64_sme2_or_sve2_f8cvt, do_f8cvt,
-+           a, gen_helper_sve2_fcvtn_bh, false, false)
- TRANS_FEAT(BFCVTN, aa64_sme2_or_sve2_f8cvt, do_f8cvt,
-            a, gen_helper_sve2_bfcvtn_bh, false, false)
- 
+@@ -8287,3 +8287,71 @@ TRANS_FEAT(LD1_zcrr_stride, aa64_sme2, gen_ldst_zcrr_c, a, false, true)
+ TRANS_FEAT(LD1_zcri_stride, aa64_sme2, gen_ldst_zcri_c, a, false, true)
+ TRANS_FEAT(ST1_zcrr_stride, aa64_sme2, gen_ldst_zcrr_c, a, true, true)
+ TRANS_FEAT(ST1_zcri_stride, aa64_sme2, gen_ldst_zcri_c, a, true, true)
++
++TRANS_FEAT_STREAMING_IF(LUTI2_1b, aa64_sme2_or_sve2_lut, aa64_sme2,
++                        gen_gvec_ool_zzz, gen_helper_gvec_luti2_b,
++                        a->rd, a->rn, a->rm, a->index)
++TRANS_FEAT_STREAMING_IF(LUTI2_1h, aa64_sme2_or_sve2_lut, aa64_sme2,
++                        gen_gvec_ool_zzz, gen_helper_gvec_luti2_h,
++                        a->rd, a->rn, a->rm, a->index)
++TRANS_FEAT_STREAMING_IF(LUTI4_1b, aa64_sme2_or_sve2_lut, aa64_sme2,
++                        gen_gvec_ool_zzz, gen_helper_gvec_luti4_b,
++                        a->rd, a->rn, a->rm, a->index)
++
++static bool trans_LUTI4_1h(DisasContext *s, arg_LUTI4_1h *a)
++{
++    if (!dc_isar_feature(aa64_sme2_or_sve2_lut, s)) {
++        return false;
++    }
++    s->is_nonstreaming = !dc_isar_feature(aa64_sme2, s);
++
++    /*
++     * The MaxImplementedAnyVL check happens in the decode pseudocode,
++     * before the Check*SVEEnabled check in the operation pseudocode.
++     */
++    if (s->max_any_vl < 32) {
++        unallocated_encoding(s);
++    } else if (sve_access_check(s)) {
++        unsigned vsz = vec_full_reg_size(s);
++
++        /* Then there's a second check against CurrentVL. */
++        if (vsz < 32) {
++            unallocated_encoding(s);
++        } else {
++            tcg_gen_gvec_3_ool(vec_full_reg_offset(s, a->rd),
++                               vec_full_reg_offset(s, a->rn),
++                               vec_full_reg_offset(s, a->rm),
++                               vsz, vsz, a->index,
++                               gen_helper_gvec_luti4_h);
++        }
++    }
++    return true;
++}
++
++static bool trans_LUTI4_2h(DisasContext *s, arg_LUTI4_2h *a)
++{
++    if (!dc_isar_feature(aa64_sme2_or_sve2_lut, s)) {
++        return false;
++    }
++    s->is_nonstreaming = !dc_isar_feature(aa64_sme2, s);
++
++    if (sve_access_check(s)) {
++        unsigned vsz = vec_full_reg_size(s);
++        /*
++         * (Ab)use preg_tmp to merge two disjoint 128-bit quantities
++         * into a sequential 256-bit table.
++         */
++        QEMU_BUILD_BUG_ON(sizeof_field(CPUARMState, vfp.preg_tmp) < 32);
++        unsigned tmp_ofs = offsetof(CPUARMState, vfp.preg_tmp);
++        unsigned rn0_ofs = vec_full_reg_offset(s, a->rn);
++        unsigned rn1_ofs = vec_full_reg_offset(s, (a->rn + 1) % 32);
++
++        tcg_gen_gvec_mov(MO_64, tmp_ofs, rn0_ofs, 16, 16);
++        tcg_gen_gvec_mov(MO_64, tmp_ofs + 16, rn1_ofs, 16, 16);
++
++        tcg_gen_gvec_3_ool(vec_full_reg_offset(s, a->rd), tmp_ofs,
++                           vec_full_reg_offset(s, a->rm),
++                           vsz, vsz, a->index, gen_helper_gvec_luti4_h);
++    }
++    return true;
++}
 diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
-index b6ef8ed8de..806953bc35 100644
+index 72755b27af..e2106fc7f5 100644
 --- a/target/arm/tcg/sve.decode
 +++ b/target/arm/tcg/sve.decode
-@@ -1101,6 +1101,7 @@ BF2CVT          01100101 00 001 000 001111 ..... .....          @rd_rn_e0
- BF1CVTLT        01100101 00 001 001 001110 ..... .....          @rd_rn_e0
- BF2CVTLT        01100101 00 001 001 001111 ..... .....          @rd_rn_e0
+@@ -31,6 +31,7 @@
+ %dtype_23_13    23:2 13:2
+ %index3_22_19   22:1 19:2
+ %index3_22_17   22:1 17:2
++%index3_22_12   22:2 12:1
+ %index3_19_11   19:2 11:1
+ %index2_20_11   20:1 11:1
  
-+FCVTN           01100101 00 001 010 001100 ....0 .....          @rd_rnx2 esz=1
- BFCVTN          01100101 00 001 010 001110 ....0 .....          @rd_rnx2 esz=1
+@@ -1737,11 +1738,19 @@ RSUBHNT         01000101 .. 1 ..... 011 111 ..... .....  @rd_rn_rm
+ MATCH           01000101 .. 1 ..... 100 ... ..... 0 .... @pd_pg_rn_rm
+ NMATCH          01000101 .. 1 ..... 100 ... ..... 1 .... @pd_pg_rn_rm
  
- ### SVE FP Compare with Zero Group
+-### SVE2 Histogram Computation
++### SVE2 Histogram Computation and Lookup Table
+ 
+ HISTCNT         01000101 .. 1 ..... 110 ... ..... .....  @rd_pg_rn_rm
+ HISTSEG         01000101 .. 1 ..... 101 000 ..... .....  @rd_rn_rm
+ 
++LUTI2_1b        01000101 index:2  1 rm:5 101100 rn:5 rd:5 &rrx_esz esz=0
++LUTI2_1h        01000101 ..       1 rm:5 101.10 rn:5 rd:5 \
++                &rrx_esz esz=1 index=%index3_22_12
++
++LUTI4_1b        01000101 index:1 11 rm:5 101001 rn:5 rd:5 &rrx_esz esz=0
++LUTI4_1h        01000101 index:2  1 rm:5 101111 rn:5 rd:5 &rrx_esz esz=1
++LUTI4_2h        01000101 index:2  1 rm:5 101101 rn:5 rd:5 &rrx_esz esz=1
++
+ ## SVE2 floating-point pairwise operations
+ 
+ FADDP           01100100 .. 010 00 0 100 ... ..... ..... @rdn_pg_rm
 -- 
 2.43.0
 

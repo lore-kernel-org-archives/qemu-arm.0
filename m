@@ -4,132 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D224CD6E4A
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 04:05:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5E50CD6E55
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 06:15:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUcmt-0003WM-3b; Wed, 03 Jun 2026 00:01:03 -0400
+	id 1wUesk-0001Zp-KD; Wed, 03 Jun 2026 02:15:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wUcma-0003TN-Id; Wed, 03 Jun 2026 00:00:49 -0400
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wUesi-0001Ye-Mm
+ for qemu-arm@nongnu.org; Wed, 03 Jun 2026 02:15:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wUcmW-0002OB-Kh; Wed, 03 Jun 2026 00:00:42 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=nbrr9Ma5gxAZ5L6FRcF9hxFm8Ig+Wm6kk11BmEluPNUK1dQZ+tqvrv4OvJXPJujptF442SFYmrGGmPnYVI8V5GFH24kR4Lh4BPWL7WsPTzbb2N1zrbnTb0GIdRAT6DSF69wUkCTDKQrCWn/04UdVPA+Q6SJ24RoqO5xdWWkgIwRPqS4AIhptlqrvxcN91UD3M18fuu7KEozpY7eF/O/QvbSExYIkggyUc2Pj1NuFMi/5RUFaoFOUEBSM4id20GsGe9eLFW7wbBwJ/IK6bxXgqeJRoojMy/qXbgczNNVal+2j9U5UL5BOvtBpdyfyI9NYVgWEuADIVl1IbJILdioFMQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=0sD+5f3XnSqsP4Wk8AboOCeAD8VeDid6uTASjc96O+E=;
- b=TwmAZKG4lJfq9GLAcfsJ97JDGPnPIvDQhYFTcq+SKtG6VyUXjP8pS6lxkiSetuoEv8cvTEYlOGP6g9BvXCeBZ5zRsvD2iBRAteJFTuzdMwZYq2H9Jgit6pdIBE2QxRUA21MAj+hXLjCdlgfieRRCrVLtaiWr4snJNfCHrDuFffeirDw4QzQo03GI5HowFYyjSr2zbcmP5egKzp0iTUXbXG32Nu/DlzY11wYx6ZcSG27DHVp+LpyPNTFXGjn0sIOuUpw1w7xyi1W34GulzE/AcVeZej/hFUP3boqTLYrMkVGLgYQa5r5NU4lbakEaNZNkl8h25OjWPkztzRj3XQ6gTA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0sD+5f3XnSqsP4Wk8AboOCeAD8VeDid6uTASjc96O+E=;
- b=Mv02EbY3CNGDe+4m6y/Po1J+eTMKkFSXuVA9cIePTBYDXLDlQA6BslpNAI+kKCstfEGlHqkGIXlCGx788ERrjJ2ycSh1aNf5D7ad4/kJSa7FDLSWkQa1Nwbu1dI/DzHZoqbNOfK9IiVIKeOKG5taiEqnU2MisFpj/IlFRKHA++pYNCfu6gkvtx8QMGR4lcCZZ9XnXHnF+pGCZsBFBCJNkZSfQS3jrve0+eu9ZoDeNt6ui4NHA7ZY9c89oeRzqEvLksJ8jYF89pjBoKmkltBqJR6og/I8xZopYLlts58w0FGxkH7R4mEBk8odrzPjqLQlsXMAdSCGWpufyi3BM9tM2w==
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
- by TYSPR06MB6921.apcprd06.prod.outlook.com (2603:1096:400:468::6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.92.7; Wed, 3 Jun 2026
- 04:00:28 +0000
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3%5]) with mapi id 15.21.0092.006; Wed, 3 Jun 2026
- 04:00:28 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v3 00/10] hw/arm/aspeed: Add AST1040 peripheral support
-Thread-Topic: [PATCH v3 00/10] hw/arm/aspeed: Add AST1040 peripheral support
-Thread-Index: AQHc8w2Du1EihNizZkK8TCvEX8xRNg==
-Date: Wed, 3 Jun 2026 04:00:28 +0000
-Message-ID: <20260603040027.938816-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|TYSPR06MB6921:EE_
-x-ms-office365-filtering-correlation-id: e73a7045-62d3-4d46-83da-08dec124a644
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|376014|38070700021|18002099003|56012099006; 
-x-microsoft-antispam-message-info: b9NMxHdflncaQZ7RXEshFaCcLIPDeHzKZrSxzV+rv/CugfwhKWrr7n//g5hwD94yuldH288r7WYTq7cuOvCmJ5R23eTJmoDhKD2cjrxEJG54SVhkWMIbagTZgaX+tYSRhLjvfcL8ZTu/rYw6V5XiubUvJ/UqHpp4rbo4Xj8msj0PxjSjCYnCCs6+y4r49czvuvl42C9/WohuMZ33cb4v7QH5ecvvcC2nYEpmUWtNu8S84KnlNvXWB1dQzIzUU320XVaD+J7p10ntQ/Sm0bnz25z58N45gnrRIQNsBpDI37BVAk+XL+1PjrzuE2mZl8UgovZn6GMtEOz4K2yUgoxMn2KsIC1PtfBczE8cLSLQtGAecYROENlfQn060cLtA/Y293E74l5ULGqOuahwbkmttV1SyI+KsBxOPzROrmApvX8O/E9lZWdMubMRFWgr3tv1ruxUUco/a9nY+7BMNO3LnKHmFz8L/qqvEY1KLh4+ZOHL+mdYdwY75DZkpYyRKWm56HpjrNix9UxxMOFg6cPL3CXsfjgmsgYd2OzXeWv/5UMMry8dGz7jt4zaX5w+X9BotGtcQg1O5QDXEodDfSdHhbgLdfzyNWA1TYxHD8s84vxw3sXA5gH6/Ds3kglnRl76cOdIVbtX+oUwBHzXdwOV8f7/FEwaD+qLYnBoLqG5beuERFdsNd9MXmUVGhU+pRChWLTa3isggrd8D2GDPWSP88AMhb9tTF5e4VESQfzA62Srj5FUjMWNyhBHXX4OWW8X
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(376014)(38070700021)(18002099003)(56012099006);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?/GL6v5yTUZ3cX9hZEGX6Wj6cEiKruiHQtnIAUUv/SakdiKCsZScOxS062q?=
- =?iso-8859-1?Q?7QJtSlmild8jbgARPKB9SeClqb079di7tk4MbAWvZYnCKDIQG4vrvyG5Hg?=
- =?iso-8859-1?Q?oOX4S/xtQJFWGCy9CWrU5975eNCulqa0uRWOJ6U+mSQzuqPj4LJz0VT+AX?=
- =?iso-8859-1?Q?0wCIxY3m4dOg83WYnLEWhn1oplbwRo7nG109GEuWqRz+I0YC2If2JK4PdO?=
- =?iso-8859-1?Q?PtYExPXBPWt9xsWmwx4hAsNvwGjRoooYheUqjHnhH48/eS0To+SNBfn8Gx?=
- =?iso-8859-1?Q?S9b3mELZVC98db8x+XSxaQxlj9PKiyHW24/m84OaO6X6B/fTaH0pIASXfs?=
- =?iso-8859-1?Q?uceuYEvBtlx7u53ZEUg5tZAaKLWsOIXfO2zKLRI67L6OAZVia2Up9LwDlC?=
- =?iso-8859-1?Q?XzjyO6hov4ICetTBxdCJWVEo358P74nJ0ZNO4h06aHp8agk3qulvu5bvPz?=
- =?iso-8859-1?Q?aqtJQ7byjtasaqC81H8FCjMcO7cPdjns2KAkN5Ox7QoxKZwCiHOY0cHAWC?=
- =?iso-8859-1?Q?gsaOW3yfp1QJMl/w+6pHo74xmUXk7CyFPkcL+ZsK03ZKM/jEkVkyVas91/?=
- =?iso-8859-1?Q?RH7xyQz+On2yBFVch4NxSA9DIuhGN8xnYQ16ZyG4MFR9dfZp8UhGkK4q+V?=
- =?iso-8859-1?Q?lkSPz5GM44DYyprZs9No3VX+xns/oYOXCR/66U0vwFI4Kd7UVM9eGG/OiH?=
- =?iso-8859-1?Q?VBZX9mqupaDfN1Dl/6wYvuahoYrD+BvfH4YSk+tHDUZJ9HJPu4w7ac6URA?=
- =?iso-8859-1?Q?60d2x8NA7DL8F4s01+MS8j7PYn3YaIk+pxFabdvrjCZ3zgDcHaZ7CsbcPE?=
- =?iso-8859-1?Q?iJWfTq3bS+057gyQW6AaG/MDdAjQ+kvB6XD8T/+KcLYxrK1aWFWNuzAhij?=
- =?iso-8859-1?Q?67uzuwnpWBW6txCmUo4CMeaEKeMcNiiQs7qky40Ps/aRZBP3TI4Oec17zy?=
- =?iso-8859-1?Q?ZvTnV14SPMCCfo8TE2xKuTg6VgBOSXWVzzJtM6QzEqw5QdTEe+1S8GuX0I?=
- =?iso-8859-1?Q?euciFxGZc+K/TKSUcqgvEXOkSbfnaC5IOcREWQvWisw+zE/z+CzGdSETOT?=
- =?iso-8859-1?Q?YT/esmd+zfLFZdniFwocPHmRJIgLOF0g7PzPTbyFVJyZu469tXUmniBJMN?=
- =?iso-8859-1?Q?m3HxK3U52cls8/AuEkQik5jmeDYSEvKBmGUdiOWBu7BUQaGq+VrexF1YLi?=
- =?iso-8859-1?Q?3X16ll4pKN06sNi7AXuCeGduNF1+XYSk+JYzll47ZIc7T2l95o3SkjbeXE?=
- =?iso-8859-1?Q?2nY/N9nt9xiPP+FiJsdsshmIC3RhQmA16AHPJiTpkO6C3I5xaF7dKEzROx?=
- =?iso-8859-1?Q?dsN6lX3uW44UbnImbFbpN5OMH6ppk0IYW4kU4p3307C8e8CJyMnjKwdE9k?=
- =?iso-8859-1?Q?30PhxEexbL3KX9GvuiOFi8fKbvz7V6g7jN9yta954jBPXDxZR9b9wZ/4aA?=
- =?iso-8859-1?Q?GmCAFcuIMrlCdTNWQ5gYp0thh4vQyqwdxDTio3G5qvG4jOS1jvEWKDs+qT?=
- =?iso-8859-1?Q?8ml595VWI0zlUwuLIHJylkG3NDaR9I7AdVSJe/BaRHWgssx8K9HyUGEOOj?=
- =?iso-8859-1?Q?7NlqDYWEFSjDzacR1VF7SNzxxybKsr8bMNN7PsJiAykyqpSKSZdizxDq/V?=
- =?iso-8859-1?Q?EG+1HtGmU+WeWs4ytwf0HsAAsp0albE+0VBVAnZgVMwA46K83T8+t1FhtD?=
- =?iso-8859-1?Q?/+1ub9KWol8z+tnYEdV7/FZ6f6ewSngu4PY/v89dO9xEqvsPkHJCj0GCzP?=
- =?iso-8859-1?Q?QPqrhwW1tiMTgCceuMWwVwgr+EBWnFUC3sCZt0ZyLEciVwHUKUDde0l7bG?=
- =?iso-8859-1?Q?Z9letXIjxw=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wUesh-0001YN-3q
+ for qemu-arm@nongnu.org; Wed, 03 Jun 2026 02:15:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1780467308;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zccXtAWB8UPN48DJU9mIQZiKPbVR+iNHeUU+BbcJqrY=;
+ b=ESzWf1rPf2SGOysVM2ud96PF3D/k87xYRhXkmw6L8toAUlHJx4p5h6uyNjn4WWsloeQJiD
+ TC39767i7v5TKIb03tOMNI7U8wyOXN1x4vDfIlZ9VRiaGm9jkqqO+T28LzMBZlru3xwraO
+ 5m4H7iURJoj0Z1IZaZnuvsRqFlK52bI=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-495-ugx0xCy-OF63Em_2QXSfAA-1; Wed, 03 Jun 2026 02:15:07 -0400
+X-MC-Unique: ugx0xCy-OF63Em_2QXSfAA-1
+X-Mimecast-MFC-AGG-ID: ugx0xCy-OF63Em_2QXSfAA_1780467306
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-490b71db390so2306235e9.2
+ for <qemu-arm@nongnu.org>; Tue, 02 Jun 2026 23:15:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1780467306; x=1781072106;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=zccXtAWB8UPN48DJU9mIQZiKPbVR+iNHeUU+BbcJqrY=;
+ b=gLGy4jEN5cP8qz1oQFomHLatTpdhk8hkKv0137AF4gXGv+rwsoh52HpvAGJIc+Cvai
+ Ryiz3oVpiQLSh/vEviMDeXjUK/HMwBoorsamFOHnEg8xY/YDhw/EpCVVAhBEx3KitEcv
+ CcMbWPX30OEU+fJJypyT7y1S32jA8SkRxYX1c+DJCxSCHj0OcT62NyHOGjcL/yb/wJxG
+ JRKCB1krTI8DAtyTNx6RNSiVf1su4xp/dM/Zgw+zImsIHCngxnnK7WSVxxlbCvYupLYu
+ FXUIEYcADyjqLb4Si5oxsDt5HXZTQEtEPts71D9QXMeZOCc1S+fPR6pUGIosp6UtsK3f
+ nuHQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ92Sern12gJmYcf9vfpMTLAOSAahBSxEcH1BMtvg+oU+WvdbjdoBBqSOBavpYNKiPXdm3Z3gUmk+Q==@nongnu.org
+X-Gm-Message-State: AOJu0YwB49/GkQMA+Xi9b8ToGzlZhKUcOrEEzT5dT1jsModR5S3h7xrS
+ mb99dzpop9/SxC+qPHa/namgHHPZPbGuSbobWPpUNqRvGCmrvixF0NpS5xfscVsEsaHZ4pXa84j
+ kimEU3XzyjdSNyTEvnmOgeK7cItK+AI6wDrnZJHs4UKoYhP+RDWQC0w==
+X-Gm-Gg: Acq92OEoam+dUP3PqJTlRCe5Y5xU7Xnio2Tk0mir6aIsmzqIJ6uODHx8rrUwQaVxuVq
+ YoYm57OWlXuroP32ygo+qbTyeoqTBxd7fjJtvbOkHoqanKsFPsarazIZUrtOAN8bvWFnwtLrVqM
+ 7JNwVcJJy0g4fYrYUk+ZPndXIHmtSi9JFnzxNj3+RanVdrasdnoCSLcbPOZ4O0eS2UE/CDoq0tQ
+ Iwisey7a90xtIss1wff2nBk1d0SqMQUtVD5jI+lIT9IKgM95w++w6ZKZkfilJBSFz6VFXcBt8v0
+ Uydpvv34CqIIUqwHB6hfyjQ8uQ8RG1rce7M0dmvMDYmq4TfX13gTf6CJR+pkvFAoxEN6fqom5Up
+ knzYMQ12IpvabwMygbTERPwLJ1XMWQC1NwsJFuy3BL3lwYPd8q13Bmg==
+X-Received: by 2002:a05:600c:c163:b0:490:b5d0:598e with SMTP id
+ 5b1f17b1804b1-490b5fe9575mr28740915e9.21.1780467306093; 
+ Tue, 02 Jun 2026 23:15:06 -0700 (PDT)
+X-Received: by 2002:a05:600c:c163:b0:490:b5d0:598e with SMTP id
+ 5b1f17b1804b1-490b5fe9575mr28740345e9.21.1780467305636; 
+ Tue, 02 Jun 2026 23:15:05 -0700 (PDT)
+Received: from redhat.com (IGLD-80-230-25-45.inter.net.il. [80.230.25.45])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-490b616fdffsm30662945e9.8.2026.06.02.23.15.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Jun 2026 23:15:05 -0700 (PDT)
+Date: Wed, 3 Jun 2026 02:15:01 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org, anisinha@redhat.com, pbonzini@redhat.com,
+ peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
+ philmd@linaro.org, zhao1.liu@intel.com, rad@semihalf.com,
+ leif.lindholm@oss.qualcomm.com, qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 07/21] arm: sbsa_gwdt: fixup default "clock-frequency"
+Message-ID: <20260603021313-mutt-send-email-mst@kernel.org>
+References: <20260303092532.2410177-1-imammedo@redhat.com>
+ <20260303092532.2410177-8-imammedo@redhat.com>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: guocsqqDjwzzNu7NeatOxTqwTYUraDt/NBpBSfbZxE7H1rNaMJ70jj73Jy2vnioVlWLOLS0qK/7qABwjUIMmhoy4G0HuSYYutGEJguuA+4SwbjO5lNaCRgWELS9TAlJzn4oH6CZBj7C4VE0ksMmJ3AnrDz1up0PoYQGJrUuojbb6Gb/OXiqS0Wsy6n35bZxH/sju+Oxh2z37SSN1hoB1f69ByeuSEffWmAjamS1CgrpqlDdo/uUayFfJtxz9VVfIFWqkOqt9zt0boSH9neqGS9K29NfT/kCn0Lv6G6e3MZoO7BUR9htcijp7Za7RlOg6qFAVfMr5kQx1tzJNLqGxzQ==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e73a7045-62d3-4d46-83da-08dec124a644
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Jun 2026 04:00:28.5148 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ZSQaqENgENpEQB2ZjSezvn3cu2URe9MfTOVa4tyxHqLxInsZSY6mvo1eAmjBy/7rRltxnSkbqsjwrncpHaqBMZiVxBpmYGqSFBFADxXTka0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYSPR06MB6921
-Received-SPF: pass client-ip=2a01:111:f403:c405::5;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=TYPPR03CU001.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20260303092532.2410177-8-imammedo@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: QByWIoBiTfKMx1ayGl4hs8wuVW1QSi3CasUlTJGMEEY_1780467306
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,50 +112,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series extends the AST1040 SoC model by adding support for several=0A=
-peripherals that are compatible with existing AST2700 controller models.=0A=
-=0A=
-The AST1040 shares a number of peripheral IP blocks with the AST2700,=0A=
-allowing the existing QEMU models to be reused with minimal changes.=0A=
-This series adds support for ADC, PECI, GPIO, SGPIO, I2C, and watchdog=0A=
-controllers, and updates the AST1040 EVB machine to instantiate onboard=0A=
-I2C devices for validation.=0A=
-=0A=
-For I2C support, a new AST1040 I2C type is introduced. The model=0A=
-inherits the AST2700 I2C architecture, including DMA support and=0A=
-64-bit DMA address registers, while constraining DMA accesses to the=0A=
-16 MiB HyperRAM address space available on AST1040.=0A=
-=0A=
-Depends on:=0A=
-  https://github.com/legoater/qemu.git (branch: aspeed-next)=0A=
-=0A=
-v1:=0A=
-  1. Support ADC, GPIO, SGPIO, I2C and PECI=0A=
-=0A=
-v2:=0A=
-  1. Address review feedback.=0A=
-  2. Fix issues reported during review.=0A=
-  3. Update i2c bus number to 14.=0A=
-=0A=
-Jamin Lin (10):=0A=
-  hw/i2c/aspeed_i2c: Introduce dma_addr_lo_mask to unify DMA address=0A=
-    handling=0A=
-  hw/i2c/aspeed_i2c: Increase AST2700 buffer mode size and adjust offset=0A=
-  hw/arm/aspeed_ast1040: Reuse AST2700 ADC model=0A=
-  hw/arm/aspeed_ast1040: Introduce PECI support=0A=
-  hw/arm/aspeed_ast1040: Reuse AST2700 GPIO controller model=0A=
-  hw/arm/aspeed_ast1040: Add SGPIO controller support=0A=
-  hw/i2c/aspeed_i2c: Introduce AST1040 I2C model=0A=
-  hw/arm/aspeed_ast1040: Introduce I2C support=0A=
-  hw/arm/aspeed_ast1040_evb: Introduce onboard I2C device=0A=
-  hw/arm/aspeed_ast1040: Reuse AST2700 watchdog models=0A=
-=0A=
- include/hw/i2c/aspeed_i2c.h |   8 ++-=0A=
- hw/arm/aspeed_ast1040.c     |  97 ++++++++++++++++++++++++++++-----=0A=
- hw/arm/aspeed_ast1040_evb.c |  15 ++++++=0A=
- hw/i2c/aspeed_i2c.c         | 103 ++++++++++++++++++++++++------------=0A=
- 4 files changed, 173 insertions(+), 50 deletions(-)=0A=
-=0A=
--- =0A=
-2.43.0=0A=
+On Tue, Mar 03, 2026 at 10:25:18AM +0100, Igor Mammedov wrote:
+> Comment about keeping legacy freq, is wrong to begin with
+> (should be 62.5MHz), but that value also doesn't make
+> sense anymore as the watchdog is used only by un-versioned
+> SBSA board and the later has hard-coded it to 1GHz.
+> 
+> Other potential user (arm/virt) also has system clock at 1GHz.
+> 
+> Drop misleading comment about legacy and set default to 1GHz
+> to match both boards.
+> 
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+
+
+if I take this in isolation then make check seems to fail
+on qemu:qtest-arm/aspeed_smc-test.
+
+follow up patches fix it, but I think it has to be reordered
+to avoid breaking bisect.
+
+
+
+> ---
+>  hw/watchdog/sbsa_gwdt.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
+> index 7ade5c6f18..b739a3ce3c 100644
+> --- a/hw/watchdog/sbsa_gwdt.c
+> +++ b/hw/watchdog/sbsa_gwdt.c
+> @@ -264,11 +264,10 @@ static void wdt_sbsa_gwdt_realize(DeviceState *dev, Error **errp)
+>  static const Property wdt_sbsa_gwdt_props[] = {
+>      /*
+>       * Timer frequency in Hz. This must match the frequency used by
+> -     * the CPU's generic timer. Default 62.5Hz matches QEMU's legacy
+> -     * CPU timer frequency default.
+> +     * the CPU's generic timer.
+>       */
+>      DEFINE_PROP_UINT64("clock-frequency", struct SBSA_GWDTState, freq,
+> -                       62500000),
+> +                       1000000000),
+>  };
+>  
+>  static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, const void *data)
+> -- 
+> 2.47.3
+
 

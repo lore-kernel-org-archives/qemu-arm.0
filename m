@@ -4,110 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B404CD6E55
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 17:38:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FB48CD6E57
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 18:26:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUpXc-0007Hc-Rj; Wed, 03 Jun 2026 13:38:08 -0400
+	id 1wUqIX-0000ZC-1Z; Wed, 03 Jun 2026 14:26:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wUpXV-0007F3-JB
- for qemu-arm@nongnu.org; Wed, 03 Jun 2026 13:38:01 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wUpXT-0004iJ-9L
- for qemu-arm@nongnu.org; Wed, 03 Jun 2026 13:38:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780508276;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=VTmWWkeh45oeFhSgljjk9+ifKjz8zWh8059zVQaYBK4=;
- b=OhplZkcgXldDPsjDPu9X7UH0eO0EltpobWTIHx8L6fS9d6kgG40BQAeySYwa5uyKjkWpcK
- 1GUlw4VfEUX8clv2PRaXCaMEdgEmy659wcBSDK/FAlNnei58O60lWkY3fi7kptAwAbBouJ
- BoSauo/FY70Pj4r0krjk6AesSq8YEC8=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-660-8a_0OgmiNW6uFzvkQW9Wjw-1; Wed, 03 Jun 2026 13:37:55 -0400
-X-MC-Unique: 8a_0OgmiNW6uFzvkQW9Wjw-1
-X-Mimecast-MFC-AGG-ID: 8a_0OgmiNW6uFzvkQW9Wjw_1780508274
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-45ef66cc579so2670182f8f.3
- for <qemu-arm@nongnu.org>; Wed, 03 Jun 2026 10:37:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wUqIQ-0000XT-VI
+ for qemu-arm@nongnu.org; Wed, 03 Jun 2026 14:26:31 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wUqIP-0003Yj-24
+ for qemu-arm@nongnu.org; Wed, 03 Jun 2026 14:26:30 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-490b09e4cccso20290085e9.0
+ for <qemu-arm@nongnu.org>; Wed, 03 Jun 2026 11:26:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1780511186; x=1781115986; darn=nongnu.org;
+ h=cc:to:content-transfer-encoding:mime-version:message-id:date
+ :subject:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=6RwiudhEWA7LbPZR+jTN6zMMB0hfCg8/CZoYlqSchzk=;
+ b=Je7R8ZiNyVrp+ENH6TzEzcfamivmY33DqK8GsIur/o56m6IImFt2J2XuuEmxd1LS1b
+ DGQ51WL7xShg1I34IsY7Fx+NQZuw1n8+GNj2fh1oeo+7ilTQ7Unrhp9SpLqSf5jg6/bH
+ 5LD2lNeOX/3xFu+jkHvWuIDCHelsneS8YlevSTyiMQep0OxYVjSgBfbBmA2eJsft0DKK
+ QmrhC5pSGQqQpTiuKvpR6C+wOrkPdj9EH0CfyvigjgkBPng8U0xIddfR7wUdqrvzqEhm
+ DExqiSL0jCxYr0oDrptnHR7GY18R9sCHTU6H2wrR934lX2pXuU3zudDtA/X3mmA9S1up
+ zYnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780508274; x=1781113074;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1780511186; x=1781115986;
+ h=cc:to:content-transfer-encoding:mime-version:message-id:date
+ :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VTmWWkeh45oeFhSgljjk9+ifKjz8zWh8059zVQaYBK4=;
- b=eoi1SEzNQ5e+p8m0ZG/q2isM7ttjDkBB8Mdvzi5UTYjIB/mC4U+Vdp9X0kT5NjNhsk
- tvo+tTYYs1GfKSerbFWoec0IioylOxH4dQ5u2Kf2KlEHDNH/UfJyn4cywsvqdPHPjxLJ
- qmpkhmpkc30HR9M1sdXFTvOQUSwFUfgLrNcsIqgk/4anPtNJX8llZ0TKmTXAHOIUUE/t
- hT/DmHTnCF1TRc1dBuoDuQWO/YStKeszGL8uWNFfCLSNwUzcycbhCwCRmoXQ/9CIOcDT
- zVyOZRFibihl6Bczcxz7WddYID2tPoB4Ylsmarl3/nHL3h7nthgRGXk8V/dYiNLPVAH3
- cYaA==
+ bh=6RwiudhEWA7LbPZR+jTN6zMMB0hfCg8/CZoYlqSchzk=;
+ b=pW7y82fwLB1iU7JZ+ly8b9rO7+m7wL7HiFUsgZJ/C7QkU58dMlL4UNHFCDxJZ/TwzZ
+ lWn1z0gs1tx2dgwr0a60nhj0irXSp0oswJrY1cBLB/sRIL0yo4S+A8HvthF2Oq5Qopyr
+ HVzSwsYc+qlxhTiSXRVwsrgYXGht1QClNqZc6YtvN+85N7AV1sv8hwJrlMXc89rNI5rx
+ QThLepYknxNvbgPE7PJeyVUwJpM11ikYdOLSS2XcpKyZBvkeMCcjmOp5ALrkK+1HJTRF
+ C9Cuza7QADPNEvGeFPHxXYUxWLqJZQt3HH0dCpCPOPvjFa4JfyaLU7Y8N3+PxROio79S
+ pljA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/dK9ZZoHH5XL/YJTeQFbNzSeQeUyrLETkCB0ZXMRPxkozBBejggk3TDuzGcv1XhkAIfd8nHMiJUA==@nongnu.org
-X-Gm-Message-State: AOJu0YwUZy2esZoqgSBN3D9dCjAvqNY6VKuR7McbBIERvqXrlfM65xCx
- I5w2PEy217aRXdb0Gm4D1o9LO0m7gCZarojGNHSiBlmQPrVgoKwDG6uRjsSGvzMDrdTU9OAGlW9
- k7uq4aScEs53jN5uoQzbikPnBwKLGW6yRlNzxDS48sq9Mx+JLjzswxg==
-X-Gm-Gg: Acq92OFRgVT4dUEwmwdlTC7BqOs8KQeEbBSe4WYvwwnjWuSE9+ln2lZQhksF0oJZj2v
- KHF3Pac3GxcpUCoPcMf5Ajlh+KDH7QR4+ozEb/t+V++YF3R8NvX2pe0krTvkA+05WJMeAvGPRn/
- +pqHL9SLJhYaTfl+ThxircxKIiS8EcwIi6qpJmnAaBdoQsAwVmLUsoxyCJJ9Hw8PlGluibGpHwW
- uV2vPSWsblKz3gZ8ufGQ2qtohJlubhbYFr6YzOgqlzJce1RKpueqS0f75WCbcxEvPqDMn5ze/Qm
- g9dmSHB3Ctx3ujLCVEblr0BxHYydrbZ8umkrmLoCFmPWf4VwFDLmiISmYUMEHMuNB9F1ahwya4m
- YeIkYID6cI3SDKqeTM6pi5D0uOKe8GEgfA8/Raj/PhHz9Frja0DxfeCQmRQEmFWKXe9Gr8KmIej
- cztxTN
-X-Received: by 2002:a05:6000:2a0e:b0:441:1c18:f779 with SMTP id
- ffacd0b85a97d-46021875a1dmr4698107f8f.37.1780508274232; 
- Wed, 03 Jun 2026 10:37:54 -0700 (PDT)
-X-Received: by 2002:a05:6000:2a0e:b0:441:1c18:f779 with SMTP id
- ffacd0b85a97d-46021875a1dmr4698074f8f.37.1780508273771; 
- Wed, 03 Jun 2026 10:37:53 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ AFNElJ/Elyc/A4LjP/D41NOyfiecgGriF2gL+uIa2AvIlqVKG4iCIwdynzL/XsqZc44LS1ubakJmyCe1fg==@nongnu.org
+X-Gm-Message-State: AOJu0YwXk31d/+pBdpcSEiYDv8BVvVh3GWqdsldKXLxjlrlUPJtZ/AZz
+ rhNal/1t09P42BjVGQBe1wMWYqRJLyBosfw6me7t8I6nmUzE8yV+qQ7fFixAyUm+ULdzaRJzqj/
+ NFaST7P4=
+X-Gm-Gg: Acq92OG8RZsExyJL8Cnh1KnILTKFBSI7sxz610tx1IAoCehJp0c/pbwNDc0jKFG0JN7
+ mr4Xz3EseIJRFdnSfV/OceX/dyLF8vSM92qCkVAdUdXJRDrhuLiazQyCcgh9w7xfXbHY/itOwLt
+ eyF4UnyBRps6Dk1ADeA/BuYIn9VqavIE8gEiO1bSS/6+2EkQIuuSm4HiPT7sZhzkYyyJdq/C3pB
+ 7nW6OUDUj64cGHU6c0X/8IR9jaocgjc22ibM2X8okp0d6h4wfmivZB/35qI7ta6RaOCsNvKGagV
+ HovTLw+nr7R1xQ8TS77MWSREZbn4J9KLmFWUoJcJRwP6WImfR+Vn8jwMOA38aDJz96KEvjPEo4x
+ 4RkUGLKkm2PiIWQMRtkRnzdUpfP4N/nd55pBE4v0iZLW6D+XUhV/jfrs2aMvkOv6xPzRc59RH1q
+ vaZDp6EXDJYno2bPcvefy5+wYLRrGn1qBx2x0BLQ==
+X-Received: by 2002:a05:600c:c84:b0:490:389:7644 with SMTP id
+ 5b1f17b1804b1-490b5fe0e36mr76438755e9.17.1780511185963; 
+ Wed, 03 Jun 2026 11:26:25 -0700 (PDT)
+Received: from [127.0.1.1] ([2a10:d582:31e:0:d530:6a6b:58a7:e220])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4601f2dcb13sm8436282f8f.2.2026.06.03.10.37.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 03 Jun 2026 10:37:53 -0700 (PDT)
-Message-ID: <f47a2f68-9bf1-4f6f-ae44-0b937f65e9ee@redhat.com>
-Date: Wed, 3 Jun 2026 19:37:51 +0200
+ ffacd0b85a97d-4601f2ed944sm9793127f8f.13.2026.06.03.11.26.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 03 Jun 2026 11:26:25 -0700 (PDT)
+From: Jim MacArthur <jim.macarthur@linaro.org>
+Subject: [PATCH v2 0/6] target/arm: Add aarch64 GPC3 bypass windows
+Date: Wed, 03 Jun 2026 19:26:19 +0100
+Message-Id: <20260603-jmac-gpc3b-v2-0-115c51936962@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 16/31] hw/arm/tegra241-cmdqv: Emulate VCMDQ register
- writes
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
- nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
- jgg@nvidia.com, zhenzhong.duan@intel.com, kjaju@nvidia.com,
- phrdina@redhat.com
-References: <20260601114221.457995-1-skolothumtho@nvidia.com>
- <20260601114221.457995-17-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260601114221.457995-17-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: vQI7CEHRds7Slk6PlVQeBag7eOsZMH210paD1DXsL8E_1780508274
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+X-B4-Tracking: v=1; b=H4sIAMxxIGoC/23MSw7CIBSF4a00dywGaEsfI/dhOkBevUahAUM0D
+ XsXO3b4n+R8OyQT0SSYmx2iyZgw+Br81IBapXeGoK4NnHJBez6S+1Mq4jbV3ggbBzvpQVmqNdT
+ DFo3F94Fdl9orpleIn8PO7Lf+ZTIjlOi2U51QPRWTvTzQyxjOITpYSilfR9nlxKUAAAA=
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Jim MacArthur <jim.macarthur@linaro.org>
+X-Mailer: b4 0.13.0
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,255 +101,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Adds the GPC bypass windows defined in D9.2 of the Arm ARM. D9.8 (the 
+APAS instruction) is not implemented yet.
 
+A large part of this is testing. To test GPC effectively, we need to
+check that memory accesses are causing exceptions, or not causing exceptions
+as appropriate. For some tests, boot.S is altered to record certain
+exceptions and continue executing the test. An alternative would be
+to use gdbstub to break on locations inside the vector table and continue,
+but this requires significant coordination between the C test binary and
+Python test driver, so has been avoided for now.
 
-On 6/1/26 1:42 PM, Shameer Kolothum wrote:
-> From: Nicolin Chen <nicolinc@nvidia.com>
->
-> This is the write side counterpart of the VCMDQ read emulation. Add
-> write handling for both the direct VCMDQ aperture and the VINTF
-> logical aperture using the same index decoding and VINTF-to-VCMDQ
-> translation logic as the read path.
->
-> VINTF aperture writes are translated to their direct-aperture
-> equivalent and update the same cached state. Page 1 registers
-> (BASE, CONS_INDX_BASE) always update the cache.
->
-> Per the CMDQV architecture, a VCMDQ must be allocated to a Virtual
-> Interface before it is used to send commands to the SMMU. Until
-> that allocation happens, MMIO writes only update cached register
-> state - no command consumption, error handling, or interrupt
-> activity is driven from these writes. Subsequent patches wire up
-> IOMMU_HW_QUEUE_ALLOC, mmap the host VINTF Page 0, and install it
-> into guest MMIO; after that, Page 0 writes from either aperture
-> reach the hardware-backed mmap'd page instead of just the cache.
->
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Co-developed-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
+---
+Changes in v2:
+- ptw.c changes have been rewritten after a number of faults were found
+- boot.S: Align exception_log to page
+- target/arm/helper.c: flush all caches and remove redundant mask
+- Switch on of GPC3 moved after feature implementation
+- Link to v1: https://lore.kernel.org/qemu-devel/20260528-jmac-gpc3b-v1-0-d34c46c5069f@linaro.org
 
-Thanks
+---
+Jim MacArthur (6):
+      target/arm/tcg/cpu64.c: Extra test for GPC3.
+      target/arm: Setup new registers for GPC3
+      target/arm/ptw.c: Add Granule Bypass Windows
+      target/arm/cpu-features.h: x-rme now means GPC3
+      tests/tcg/aarch64/system: Alternative boot object for exception logging
+      tests/tcg/aarch64/system/gpc-test.c: Basic test for granule protection check
 
-Eric
-> ---
->  hw/arm/tegra241-cmdqv.c | 159 +++++++++++++++++++++++++++++++++++++++-
->  hw/arm/trace-events     |   2 +
->  2 files changed, 159 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
-> index ff150fe0f3..3cb1b45575 100644
-> --- a/hw/arm/tegra241-cmdqv.c
-> +++ b/hw/arm/tegra241-cmdqv.c
-> @@ -120,6 +120,104 @@ static uint64_t tegra241_cmdqv_config_vintf_read(Tegra241CMDQV *cmdqv,
->      }
->  }
->  
-> +/*
-> + * Write a VCMDQ Page 0 register (control/status) using VCMDQ0_* offsets.
-> + *
-> + * The caller normalizes the MMIO offset such that @offset0 always refers
-> + * to a VCMDQ0_* register, while @index selects the VCMDQ instance.
-> + *
-> + * Page 0 registers are all 32-bit; this helper is only called for 4-byte
-> + * writes.
-> + */
-> +static void tegra241_cmdqv_write_vcmdq_page0(Tegra241CMDQV *cmdqv,
-> +                                             hwaddr offset0, int index,
-> +                                             uint32_t value, bool direct)
-> +{
-> +    switch (offset0) {
-> +    case A_VCMDQ0_CONS_INDX:
-> +        cmdqv->vcmdq_cons_indx[index] = value;
-> +        break;
-> +    case A_VCMDQ0_PROD_INDX:
-> +        /* VCMDQ is functional only once allocated to a VINTF; cache only. */
-> +        cmdqv->vcmdq_prod_indx[index] = value;
-> +        break;
-> +    case A_VCMDQ0_CONFIG:
-> +        if (value & R_VCMDQ0_CONFIG_CMDQ_EN_MASK) {
-> +            cmdqv->vcmdq_status[index] |= R_VCMDQ0_STATUS_CMDQ_EN_OK_MASK;
-> +        } else {
-> +            cmdqv->vcmdq_status[index] &= ~R_VCMDQ0_STATUS_CMDQ_EN_OK_MASK;
-> +        }
-> +        cmdqv->vcmdq_config[index] = value;
-> +        break;
-> +    case A_VCMDQ0_GERRORN:
-> +        /* VCMDQ is functional only once allocated to a VINTF; cache only. */
-> +        cmdqv->vcmdq_gerrorn[index] = value;
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s unhandled write access at 0x%" PRIx64 "\n",
-> +                      __func__, offset0);
-> +    }
-> +    trace_tegra241_cmdqv_write_vcmdq_page0(index, direct ? "direct" : "vi",
-> +                                           offset0, value);
-> +}
-> +
-> +/*
-> + * Write a VCMDQ Page 1 register (base / DRAM address) - 4-byte access.
-> + */
-> +static void tegra241_cmdqv_write_vcmdq_page1(Tegra241CMDQV *cmdqv,
-> +                                             hwaddr offset0, int index,
-> +                                             uint32_t value, bool direct)
-> +{
-> +    switch (offset0) {
-> +    case A_VCMDQ0_BASE_L:
-> +        cmdqv->vcmdq_base[index] =
-> +            deposit64(cmdqv->vcmdq_base[index], 0, 32, value);
-> +        break;
-> +    case A_VCMDQ0_BASE_H:
-> +        cmdqv->vcmdq_base[index] =
-> +            deposit64(cmdqv->vcmdq_base[index], 32, 32, value);
-> +        break;
-> +    case A_VCMDQ0_CONS_INDX_BASE_DRAM_L:
-> +        cmdqv->vcmdq_cons_indx_base[index] =
-> +            deposit64(cmdqv->vcmdq_cons_indx_base[index], 0, 32, value);
-> +        break;
-> +    case A_VCMDQ0_CONS_INDX_BASE_DRAM_H:
-> +        cmdqv->vcmdq_cons_indx_base[index] =
-> +            deposit64(cmdqv->vcmdq_cons_indx_base[index], 32, 32, value);
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s unhandled write access at 0x%" PRIx64 "\n",
-> +                      __func__, offset0);
-> +    }
-> +    trace_tegra241_cmdqv_write_vcmdq_page1(index, direct ? "direct" : "vi",
-> +                                           offset0, value);
-> +}
-> +
-> +/*
-> + * Write a VCMDQ Page 1 register - 8-byte access at BASE_L or DRAM_L.
-> + */
-> +static void tegra241_cmdqv_write_vcmdq_page1_64(Tegra241CMDQV *cmdqv,
-> +                                                hwaddr offset0, int index,
-> +                                                uint64_t value, bool direct)
-> +{
-> +    switch (offset0) {
-> +    case A_VCMDQ0_BASE_L:
-> +        cmdqv->vcmdq_base[index] = value;
-> +        break;
-> +    case A_VCMDQ0_CONS_INDX_BASE_DRAM_L:
-> +        cmdqv->vcmdq_cons_indx_base[index] = value;
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s unhandled 64-bit write at 0x%" PRIx64 "\n",
-> +                      __func__, offset0);
-> +    }
-> +    trace_tegra241_cmdqv_write_vcmdq_page1(index, direct ? "direct" : "vi",
-> +                                           offset0, value);
-> +}
-> +
->  static void tegra241_cmdqv_config_vintf_write(Tegra241CMDQV *cmdqv,
->                                                hwaddr offset, uint64_t value)
->  {
-> @@ -243,6 +341,8 @@ out:
->  static void tegra241_cmdqv_writel_mmio(Tegra241CMDQV *cmdqv, hwaddr offset,
->                                         uint32_t value)
->  {
-> +    int index;
-> +
->      switch (offset) {
->      case A_CONFIG:
->          cmdqv->config = value;
-> @@ -261,6 +361,39 @@ static void tegra241_cmdqv_writel_mmio(Tegra241CMDQV *cmdqv, hwaddr offset,
->      case A_VINTF0_CONFIG ... A_VINTF0_LVCMDQ_ERR_MAP_3:
->          tegra241_cmdqv_config_vintf_write(cmdqv, offset, value);
->          break;
-> +    case A_VI_VCMDQ0_CONS_INDX ... A_VI_VCMDQ1_GERRORN:
-> +        /*
-> +         * VINTF Page0 registers are hardware aliases of VCMDQ Page0 registers.
-> +         * Translate the VINTF aperture offset to its VCMDQ Page0 equivalent
-> +         * before dispatching to the Page 0 helper.
-> +         */
-> +        offset -= CMDQV_VINTF_PAGE0_BASE - CMDQV_VCMDQ_PAGE0_BASE;
-> +        index = (offset - CMDQV_VCMDQ_PAGE0_BASE) / CMDQV_VCMDQ_STRIDE;
-> +        tegra241_cmdqv_write_vcmdq_page0(cmdqv,
-> +                offset - index * CMDQV_VCMDQ_STRIDE, index, value, false);
-> +        break;
-> +    case A_VCMDQ0_CONS_INDX ... A_VCMDQ1_GERRORN:
-> +        /*
-> +         * Decode a per-VCMDQ Page 0 access. Each VCMDQ occupies a
-> +         * CMDQV_VCMDQ_STRIDE-byte window; extract the index and normalize
-> +         * to the VCMDQ0_* offset before calling the Page 0 helper.
-> +         */
-> +        index = (offset - CMDQV_VCMDQ_PAGE0_BASE) / CMDQV_VCMDQ_STRIDE;
-> +        tegra241_cmdqv_write_vcmdq_page0(cmdqv,
-> +                offset - index * CMDQV_VCMDQ_STRIDE, index, value, true);
-> +        break;
-> +    case A_VI_VCMDQ0_BASE_L ... A_VI_VCMDQ1_CONS_INDX_BASE_DRAM_H:
-> +        /* Same VINTF-to-VCMDQ translation as VINTF Page0 case above. */
-> +        offset -= CMDQV_VINTF_PAGE1_BASE - CMDQV_VCMDQ_PAGE1_BASE;
-> +        index = (offset - CMDQV_VCMDQ_PAGE1_BASE) / CMDQV_VCMDQ_STRIDE;
-> +        tegra241_cmdqv_write_vcmdq_page1(cmdqv,
-> +                offset - index * CMDQV_VCMDQ_STRIDE, index, value, false);
-> +        break;
-> +    case A_VCMDQ0_BASE_L ... A_VCMDQ1_CONS_INDX_BASE_DRAM_H:
-> +        index = (offset - CMDQV_VCMDQ_PAGE1_BASE) / CMDQV_VCMDQ_STRIDE;
-> +        tegra241_cmdqv_write_vcmdq_page1(cmdqv,
-> +                offset - index * CMDQV_VCMDQ_STRIDE, index, value, true);
-> +        break;
->      default:
->          qemu_log_mask(LOG_UNIMP, "%s unhandled write access at 0x%" PRIx64 "\n",
->                        __func__, offset);
-> @@ -268,14 +401,36 @@ static void tegra241_cmdqv_writel_mmio(Tegra241CMDQV *cmdqv, hwaddr offset,
->  }
->  
->  /*
-> - * 8-byte MMIO write handler.
-> + * 8-byte MMIO write handler. Only Page 1 BASE / CONS_INDX_BASE_DRAM accept
-> + * full 64-bit writes; other offsets are write-ignored.
->   */
->  static void tegra241_cmdqv_writell_mmio(Tegra241CMDQV *cmdqv, hwaddr offset,
->                                          uint64_t value)
->  {
-> -    qemu_log_mask(LOG_UNIMP,
-> +    int index;
-> +
-> +    switch (offset) {
-> +    case A_VI_VCMDQ0_BASE_L ... A_VI_VCMDQ1_CONS_INDX_BASE_DRAM_H:
-> +        /*
-> +         * VINTF Page1 registers are hardware aliases of VCMDQ Page1 registers.
-> +         * Translate the VINTF aperture offset to its VCMDQ Page1 equivalent
-> +         * before dispatching to the Page 1 helper.
-> +         */
-> +        offset -= CMDQV_VINTF_PAGE1_BASE - CMDQV_VCMDQ_PAGE1_BASE;
-> +        index = (offset - CMDQV_VCMDQ_PAGE1_BASE) / CMDQV_VCMDQ_STRIDE;
-> +        tegra241_cmdqv_write_vcmdq_page1_64(cmdqv,
-> +                offset - index * CMDQV_VCMDQ_STRIDE, index, value, false);
-> +        break;
-> +    case A_VCMDQ0_BASE_L ... A_VCMDQ1_CONS_INDX_BASE_DRAM_H:
-> +        index = (offset - CMDQV_VCMDQ_PAGE1_BASE) / CMDQV_VCMDQ_STRIDE;
-> +        tegra241_cmdqv_write_vcmdq_page1_64(cmdqv,
-> +                offset - index * CMDQV_VCMDQ_STRIDE, index, value, true);
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP,
->                        "%s unhandled 64-bit write at 0x%" PRIx64 " (WI)\n",
->                        __func__, offset);
-> +    }
->  }
->  
->  static void tegra241_cmdqv_write_mmio(void *opaque, hwaddr offset,
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index 4392135fa2..d76f408d8a 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -77,6 +77,8 @@ tegra241_cmdqv_read_mmio(uint64_t offset, uint64_t val, unsigned size) "offset:
->  tegra241_cmdqv_write_mmio(uint64_t offset, uint64_t val, unsigned size) "offset: 0x%"PRIx64" val: 0x%"PRIx64" size: 0x%x"
->  tegra241_cmdqv_read_vcmdq_page0(int index, const char *aperture, uint64_t offset0, uint64_t val) "vcmdq[%d] %s page0 offset0: 0x%"PRIx64" val: 0x%"PRIx64
->  tegra241_cmdqv_read_vcmdq_page1(int index, const char *aperture, uint64_t offset0, uint64_t val) "vcmdq[%d] %s page1 offset0: 0x%"PRIx64" val: 0x%"PRIx64
-> +tegra241_cmdqv_write_vcmdq_page0(int index, const char *aperture, uint64_t offset0, uint64_t val) "vcmdq[%d] %s page0 offset0: 0x%"PRIx64" val: 0x%"PRIx64
-> +tegra241_cmdqv_write_vcmdq_page1(int index, const char *aperture, uint64_t offset0, uint64_t val) "vcmdq[%d] %s page1 offset0: 0x%"PRIx64" val: 0x%"PRIx64
->  
->  # strongarm.c
->  strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
+ target/arm/cpu-features.h                 |   5 +
+ target/arm/cpu.h                          |   7 ++
+ target/arm/helper.c                       |  19 ++++
+ target/arm/ptw.c                          |  81 +++++++++++++++
+ target/arm/tcg/cpu64.c                    |   4 +-
+ tests/tcg/aarch64/Makefile.softmmu-target |  22 +++-
+ tests/tcg/aarch64/system/boot.S           |  62 +++++++++++
+ tests/tcg/aarch64/system/boot.h           |  14 +++
+ tests/tcg/aarch64/system/gpc-test.c       | 165 ++++++++++++++++++++++++++++++
+ 9 files changed, 372 insertions(+), 7 deletions(-)
+---
+base-commit: 405c32d2b18a683ba36301351af75125d9afda08
+change-id: 20260528-jmac-gpc3b-187f9d7cf0dd
+
+Best regards,
+-- 
+Jim MacArthur <jim.macarthur@linaro.org>
 
 

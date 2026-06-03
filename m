@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D206FCD6E4A
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 06:44:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FDF6CD6E55
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Jun 2026 06:46:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wUfIX-00059M-Qk; Wed, 03 Jun 2026 02:41:53 -0400
+	id 1wUfHq-0003hO-8K; Wed, 03 Jun 2026 02:41:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wUfHa-0003Rf-J0
- for qemu-arm@nongnu.org; Wed, 03 Jun 2026 02:41:00 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wUfHT-0003Ol-Mb
+ for qemu-arm@nongnu.org; Wed, 03 Jun 2026 02:40:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wUfHU-0000rA-8U
- for qemu-arm@nongnu.org; Wed, 03 Jun 2026 02:40:54 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wUfHQ-0000oV-Jd
+ for qemu-arm@nongnu.org; Wed, 03 Jun 2026 02:40:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780468847;
+ s=mimecast20190719; t=1780468843;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=IIrQAKya31ypo+5j9X3JO9WQgohhJh3rZPyQNjSBeAk=;
- b=MU1eAp/w5/tdGhBWeoms1t8rEA7tHw4Tn6rf35KEMc2zv60SIdLQz0wvN1IsRU2ckh9TXq
- xIggZj4Y+Z2vGueAkib6Mdo+a9HqRz/Eq3ciHAxb7sf7GyteNE+0MOrDfAocSOOO1/N7GU
- A2Xp4hvE+HCSBj8yPAgC6e5JrkrgRjY=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=LmtIaE8pRe7u61UvI5blNlS7yACd+32SICfDvmYP+V0=;
+ b=TzKgVz/sZhE/7mMAZuWO6ja+xUEeRz1KkJpKQRr14FMyUUw558WuHYpAOREVSbdqHeTQyi
+ QGjzmCT1ooTkW4paDvZVmUgPc7kL7jQoBhVcuCPF6mOjsYUVY/hOc7eR5OGypCppcGDb0a
+ L9yDJ++XL0u4dSZEmFUsJcRdeYst1Ag=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-3--wprOu8SNjiTER1NZqNFqw-1; Wed,
- 03 Jun 2026 02:40:42 -0400
-X-MC-Unique: -wprOu8SNjiTER1NZqNFqw-1
-X-Mimecast-MFC-AGG-ID: -wprOu8SNjiTER1NZqNFqw_1780468841
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-306-fi11rBfdOd2dbcMT6xDoCg-1; Wed,
+ 03 Jun 2026 02:40:39 -0400
+X-MC-Unique: fi11rBfdOd2dbcMT6xDoCg-1
+X-Mimecast-MFC-AGG-ID: fi11rBfdOd2dbcMT6xDoCg_1780468838
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 73739195608D; Wed,  3 Jun 2026 06:40:41 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 835DA195609D; Wed,  3 Jun 2026 06:40:38 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.44.22.2])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 24CE01966658; Wed,  3 Jun 2026 06:40:41 +0000 (UTC)
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3DEB81800367; Wed,  3 Jun 2026 06:40:38 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 7BA8D21E6742; Wed, 03 Jun 2026 08:40:32 +0200 (CEST)
+ id 6B2E121E6A3C; Wed, 03 Jun 2026 08:40:32 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: philmd@mailo.com, pierrick.bouvier@oss.qualcomm.com,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- linux-edac@vger.kernel.org, qemu-arm@nongnu.org
-Subject: [PATCH v2 18/38] MAINTAINERS: Fix F: typo in "ACPI/HEST/GHES/ARM
- processor CPER"
-Date: Wed,  3 Jun 2026 08:40:12 +0200
-Message-ID: <20260603064032.3733394-19-armbru@redhat.com>
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH v2 14/38] MAINTAINERS: Drop bad F: from "Xilinx Zynq"
+Date: Wed,  3 Jun 2026 08:40:08 +0200
+Message-ID: <20260603064032.3733394-15-armbru@redhat.com>
 In-Reply-To: <20260603064032.3733394-1-armbru@redhat.com>
 References: <20260603064032.3733394-1-armbru@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: y75He-N_UOXM5aQr9YelDTVa8K9fnYATGZSNc5Z2ElM_1780468841
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: uJKsmVH-F1tnGtwEeAV1uJKeVstnYC1oBXTowt8WmmU_1780468838
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 8
 X-Spam_score: 0.8
 X-Spam_bar: /
 X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -89,28 +89,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Fixes: ddd8f3baa2 (qapi/acpi-hest: add an interface to do generic CPER error injection, 2025-09-23)
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: linux-edac@vger.kernel.org
+include/hw/misc/zynq_slcr.h never existed.
+
+Fixes: 246f530cdb (adc: Move the zynq-xadc file to the adc directories, 2021-05-18)
+Cc: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+Cc: Alistair Francis <alistair@alistair23.me>
+Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ MAINTAINERS | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index ad56da5ca0..815ec48686 100644
+index 367d37f40a..8b28a21fe4 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -2233,7 +2233,7 @@ ACPI/HEST/GHES/ARM processor CPER
- M: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
- L: linux-edac@vger.kernel.org
- S: Maintained
--F: hw/arm/ghes_cper.c
-+F: hw/acpi/ghes_cper.c
- F: hw/acpi/ghes_cper_stub.c
- F: qapi/acpi-hest.json
- F: scripts/ghes_inject.py
+@@ -1141,7 +1141,6 @@ F: hw/misc/xlnx-zynq-ddrc.c
+ F: hw/misc/zynq_slcr.c
+ F: hw/adc/zynq-xadc.c
+ F: include/hw/misc/xlnx-zynq-ddrc.h
+-F: include/hw/misc/zynq_slcr.h
+ F: include/hw/adc/zynq-xadc.h
+ X: hw/ssi/xilinx_*
+ F: docs/system/arm/xlnx-zynq.rst
 -- 
 2.54.0
 

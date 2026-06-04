@@ -4,80 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C222CD6E75
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Jun 2026 23:52:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05746CD6E6E
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Jun 2026 23:52:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wVHoA-0006h6-4C; Thu, 04 Jun 2026 19:49:06 -0400
+	id 1wVHoC-0006jt-HG; Thu, 04 Jun 2026 19:49:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wVHo7-0006cd-Kk
- for qemu-arm@nongnu.org; Thu, 04 Jun 2026 19:49:03 -0400
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ id 1wVHoA-0006h7-83
+ for qemu-arm@nongnu.org; Thu, 04 Jun 2026 19:49:06 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wVHo4-0007rj-TB
- for qemu-arm@nongnu.org; Thu, 04 Jun 2026 19:49:02 -0400
-Received: by mail-pl1-x629.google.com with SMTP id
- d9443c01a7336-2bf3781ca51so13838095ad.0
- for <qemu-arm@nongnu.org>; Thu, 04 Jun 2026 16:48:59 -0700 (PDT)
+ id 1wVHo6-0007tQ-ON
+ for qemu-arm@nongnu.org; Thu, 04 Jun 2026 19:49:05 -0400
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-2bf2247e38eso13168335ad.3
+ for <qemu-arm@nongnu.org>; Thu, 04 Jun 2026 16:49:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780616938; x=1781221738; darn=nongnu.org;
+ d=linaro.org; s=google; t=1780616941; x=1781221741; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9uZQxyhgyiLou14mlgeDj5cB6BxBZLZaIk+PvH3KSC8=;
- b=TiVmVKPt5EXtcTymNSBY3EGxi0Lt5feSjtaRoVIhc5vyJNuMnLBPOJ2xRIXyoGzld6
- xeJ9iM+YzHsXbzmpeznGackdrH0f3QLoC16uNK4yPGqn4Sewkqry+rzThgpZ2FYD9SIE
- 6XYSLB6nsQ0WsR2C7yLE+XhFn/q1IBgAQ25JiS5fJRMjLiTxzLApD+NvgBeKtK0Dbjte
- mdzNqpgTX8GXMjaVxFG/H+FRTOaFgpVqRR0Z9vRSCm63cb7IRCQB9T70a0S/YBemjy1U
- o84LfIrEH7/SgK3fQJkepY9lwhGmeeEO0opqeSFqF21JniiIwOsCs4FqfB++oRkW/FAS
- WEdQ==
+ bh=HVdxUuVXoVTJSAA6YhnuFT2CqG+OhK5lpSAh/HDbipo=;
+ b=p4gDVhLYcX8jKTzd4fd+Aw6iarO3RdLgM2FSVIkXWNb2bJChVA0XXwYPm6Zc9yeaGN
+ fY+v0AtHJarbDzgKE6MMC/tXRUNFvZcmp55Y7HUQQ8tdSfafSY6poAXY4t/pQKO6MtdN
+ Cbp/A1SQjPado79/vRUAtb50s3552+SBSE8TjysrIB68dMBduBUyXNQ2Z6+zTbKXFFxX
+ 8y8RXVNHdqfJcqnR3+rSAMGPJgSWCQmaRZdx5xXasaLGehVZqsvD3RkTZFwMlUNyf/d4
+ fRLka5K4w4paFy8UeukegAILzMo1nCFf1L0tNaHeeRV8l0c9xi0bvcRi6G4AI5x9OxC1
+ FVPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780616938; x=1781221738;
+ d=1e100.net; s=20251104; t=1780616941; x=1781221741;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=9uZQxyhgyiLou14mlgeDj5cB6BxBZLZaIk+PvH3KSC8=;
- b=pO92FinU7YuGD2/Je8MGU1P6S4fDo+zY7rHQOOtqOv4awChsntkSHjjxbzfq7OEvcQ
- LPkzOFYnhfhcC0IO6omqpKDhnaw5kPKjSBqVXralM9XrYdr2nE6+vPmKhP/J+5DRePVw
- nDEuqwI5LgolY2toqXF+fuVSRGKInyIuxtb78e2ooVIhI8nKxzFrNo9DAeZ/xaDdsi0A
- Z3ytWN6WjdWfZQ3B/sSOIvpIlpJKytQfvy9XmUt1VOerR5vN9Qm18yVwbs/BNr/X2R0B
- FKPeAqLwfxZTVHSNCMGM/2JHPRrmaXaJg0PMUrej34t1Yh48/DjNIuYH0EOokeB6jBo+
- uTGA==
-X-Gm-Message-State: AOJu0YwSvfzh3+bYrdNOLKnqEvVNJP9/A7ZkKPnFF1JEOnao8jFXQKTb
- kJknx6rPDqXLfWvkrKaoqHSCoppHrzEhtn9CO8pszMS+/XQ99SzE+W1jWz0h3/dBeyZ3WAKnqPc
- p0RFyBks=
-X-Gm-Gg: Acq92OExrSO3oZSSS2NlY6v36v0Sdghjd5k2iaxiCsrRaJfH0WMch859V7BmvemoOvO
- R7HRSvleXO/rC6NfFFrsRnPXh4IGuL8x4l+Mvt9adTDUtnCHzFwIalIDDMydyCuxPsQXvipvuOL
- 17Bfo7fK9Z1D6Tnc1UCKzgBdlKgy3Fw51ihqV8fIyqICin3Mzfcll/JbLbuIReBoA3wD8FFdS48
- 9+2Vwfr/I6mP/SRFphRy/FH1v6QU6+fApUflDbL2j0VjVHxaX1vAJXSopa/ADU3jX4fS2128ePn
- o800dqCVKUV6hWYuJe4OE6igCmvmi75liEC+uCNnR/0PjPk1hLuJ9QIIlFN5om+rTg9AyDnOkfz
- M6qa5mr2QAoAf+Zc0i2CK3QC0FgHMV8Piof0bUCIWydvuKGQ8VMuemUR0CpFwj8xhDboRbz1x45
- w7YjyzMi4tKnmenJJ8h0lAJsJHQCJ+vjBeoI5R6vy+MSAG9jmBSA==
-X-Received: by 2002:a17:902:d4c6:b0:2bf:160f:7043 with SMTP id
- d9443c01a7336-2c1e834a531mr7251435ad.34.1780616937997; 
- Thu, 04 Jun 2026 16:48:57 -0700 (PDT)
+ bh=HVdxUuVXoVTJSAA6YhnuFT2CqG+OhK5lpSAh/HDbipo=;
+ b=ogGRgg/PEdtWOXmGqcYZwetQ6IsKmz5ZUElLRwjLvpvro74iU9DzXYFv6NV2k8rgDE
+ UsZqWCClVk7Bn1bwJ8WzcLSdW4wa9Svm95EuCGw6S9C2fgls48JR7Aq5gLjyI7om6Ij/
+ JtenO3xS8PD6YZeKCfhgcIdfMpQ5NQRo1+AAHamYiVtIXJ1uFkLcxUJknNIl636/Y0+0
+ RhPU2CgTK6FjOAOSeYLHFksr5FgYJo6aytajfP+kxbFVnWLTBxDxwavPdm1iWLm5iGox
+ q8oYYxb8LURlBnzZTGJeehff8qwzSjvOvfmu0SO3JROqOkLjf+xhhqGBnM4nx1nbvfB6
+ 7uXQ==
+X-Gm-Message-State: AOJu0YyjrqMglZuRdeuPkZMDTaJ2wV8i9Xt7FXUefYsqMGxFl5J7L5xF
+ afy1qVqf5PH71Vcus4TCCu4M6F/WI9U6FdpdkcPpYKPRm286IKLn6kyiBJE3FhLWFvoYul+dy5V
+ aptdPvGQ=
+X-Gm-Gg: Acq92OGyHsn3ApSutHUkEYiQnuQvr+WC8v74hUCJOYP2fOL0Mv6Nzn4EnJcw0eE1ai6
+ MXt61RYkh69jHtGzqnrZW3AMUW/DJ9vkdyx+hT2XZQ8SXS7nmIjbPyflOo9yrsgnkLnP4FpctWq
+ Comvmv+/9osCNr+iBKZ38QurIJvLllK9HhVZHchyOagk6/b6FcK87jYWletoqBR+meYZDA7Pgil
+ t9/FExHoe6QUJGAiLAAn7R5kgh4PppzTbN5h+J+NXsnrgQmRF/UK4suAl8sFVZdlYrPu337vZOI
+ 3pKeTZ6Vb/O8EfNMfYU8ZdJi5SueeQiUlA2JzjVvoAXl9yXrNVm30M2S6/tRFJtra2VW6/zozRp
+ eB/IQo11gZh4xrfRheqwLSU3+Fl7KSjdfrmUUXx228jduZ4pVMHmiq4SgMLOJqlwmlJZsNR6XS6
+ JvKa4L5OvNf0Ef9CbtDDBstqvYT2mFy1sGmVeq0b5+/8lLr4VCSg==
+X-Received: by 2002:a17:903:1205:b0:2c0:b6c7:2271 with SMTP id
+ d9443c01a7336-2c1e80e3bc0mr7674155ad.4.1780616941330; 
+ Thu, 04 Jun 2026 16:49:01 -0700 (PDT)
 Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2c1664950aesm66541465ad.69.2026.06.04.16.48.57
+ d9443c01a7336-2c1664950aesm66541465ad.69.2026.06.04.16.49.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Jun 2026 16:48:57 -0700 (PDT)
+ Thu, 04 Jun 2026 16:49:01 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 05/25] target/arm: Implement SVE integer unary operations
- (predicated, zeroing)
-Date: Thu,  4 Jun 2026 16:48:32 -0700
-Message-ID: <20260604234852.573178-6-richard.henderson@linaro.org>
+Subject: [PATCH 10/25] target/arm: Add data argument to do_frint_mode
+Date: Thu,  4 Jun 2026 16:48:37 -0700
+Message-ID: <20260604234852.573178-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260604234852.573178-1-richard.henderson@linaro.org>
 References: <20260604234852.573178-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,97 +99,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This includes ABS, NEG, SXT{B,H,W}.
+Prepare for needing a non-zero value.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-sve.c | 15 +++++++++++++++
- target/arm/tcg/sve.decode      |  9 +++++++++
- 2 files changed, 24 insertions(+)
+ target/arm/tcg/translate-sve.c | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
 
 diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index ea37c073c7..e090a0383d 100644
+index 083b70b487..e9c0a73e90 100644
 --- a/target/arm/tcg/translate-sve.c
 +++ b/target/arm/tcg/translate-sve.c
-@@ -811,12 +811,14 @@ static gen_helper_gvec_3 * const sve_abs_fns[4] = {
-     gen_helper_sve_abs_s, gen_helper_sve_abs_d,
- };
- TRANS_FEAT(ABS_m, aa64_sme_or_sve, gen_gvec_ool_arg_zpz, sve_abs_fns[a->esz], a, 0)
-+TRANS_FEAT(ABS_z, aa64_sme2p2_or_sve2p2, gen_gvec_ool_arg_zpz, sve_abs_fns[a->esz], a, 1)
+@@ -4656,7 +4656,8 @@ TRANS_FEAT(FRINTX_m, aa64_sme_or_sve, gen_gvec_fpst_arg_zpz,
+            a->esz == MO_16 ? FPST_A64_F16 : FPST_A64);
  
- static gen_helper_gvec_3 * const sve_neg_fns[4] = {
-     gen_helper_sve_neg_b, gen_helper_sve_neg_h,
-     gen_helper_sve_neg_s, gen_helper_sve_neg_d,
- };
- TRANS_FEAT(NEG_m, aa64_sme_or_sve, gen_gvec_ool_arg_zpz, sve_neg_fns[a->esz], a, 0)
-+TRANS_FEAT(NEG_z, aa64_sme2p2_or_sve2p2, gen_gvec_ool_arg_zpz, sve_neg_fns[a->esz], a, 1)
+ static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a,
+-                          ARMFPRounding mode, gen_helper_gvec_3_ptr *fn)
++                          ARMFPRounding mode, int data,
++                          gen_helper_gvec_3_ptr *fn)
+ {
+     unsigned vsz;
+     TCGv_i32 tmode;
+@@ -4676,22 +4677,22 @@ static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a,
+     tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, a->rd),
+                        vec_full_reg_offset(s, a->rn),
+                        pred_full_reg_offset(s, a->pg),
+-                       status, vsz, vsz, 0, fn);
++                       status, vsz, vsz, data, fn);
  
- static gen_helper_gvec_3 * const sve_rbit_fns[4] = {
-     gen_helper_sve_rbit_b, gen_helper_sve_rbit_h,
-@@ -873,6 +875,8 @@ static gen_helper_gvec_3 * const sxtb_fns[4] = {
- };
- TRANS_FEAT(SXTB_m, aa64_sme_or_sve, gen_gvec_ool_arg_zpz,
-            sxtb_fns[a->esz], a, 0)
-+TRANS_FEAT(SXTB_z, aa64_sme2p2_or_sve2p2, gen_gvec_ool_arg_zpz,
-+           sxtb_fns[a->esz], a, 1)
+     gen_restore_rmode(tmode, status);
+     return true;
+ }
  
- static gen_helper_gvec_3 * const uxtb_fns[4] = {
-     NULL,                  gen_helper_sve_uxtb_h,
-@@ -880,23 +884,34 @@ static gen_helper_gvec_3 * const uxtb_fns[4] = {
- };
- TRANS_FEAT(UXTB_m, aa64_sme_or_sve, gen_gvec_ool_arg_zpz,
-            uxtb_fns[a->esz], a, 0)
-+TRANS_FEAT(UXTB_z, aa64_sme2p2_or_sve2p2, gen_gvec_ool_arg_zpz,
-+           uxtb_fns[a->esz], a, 1)
+ TRANS_FEAT(FRINTN_m, aa64_sme_or_sve, do_frint_mode, a,
+-           FPROUNDING_TIEEVEN, frint_fns[a->esz])
++           FPROUNDING_TIEEVEN, 0, frint_fns[a->esz])
+ TRANS_FEAT(FRINTP_m, aa64_sme_or_sve, do_frint_mode, a,
+-           FPROUNDING_POSINF, frint_fns[a->esz])
++           FPROUNDING_POSINF, 0, frint_fns[a->esz])
+ TRANS_FEAT(FRINTM_m, aa64_sme_or_sve, do_frint_mode, a,
+-           FPROUNDING_NEGINF, frint_fns[a->esz])
++           FPROUNDING_NEGINF, 0, frint_fns[a->esz])
+ TRANS_FEAT(FRINTZ_m, aa64_sme_or_sve, do_frint_mode, a,
+-           FPROUNDING_ZERO, frint_fns[a->esz])
++           FPROUNDING_ZERO, 0, frint_fns[a->esz])
+ TRANS_FEAT(FRINTA_m, aa64_sme_or_sve, do_frint_mode, a,
+-           FPROUNDING_TIEAWAY, frint_fns[a->esz])
++           FPROUNDING_TIEAWAY, 0, frint_fns[a->esz])
  
- static gen_helper_gvec_3 * const sxth_fns[4] = {
-     NULL, NULL, gen_helper_sve_sxth_s, gen_helper_sve_sxth_d
- };
- TRANS_FEAT(SXTH_m, aa64_sme_or_sve, gen_gvec_ool_arg_zpz,
-            sxth_fns[a->esz], a, 0)
-+TRANS_FEAT(SXTH_z, aa64_sme2p2_or_sve2p2, gen_gvec_ool_arg_zpz,
-+           sxth_fns[a->esz], a, 1)
+ static gen_helper_gvec_3_ptr * const frecpx_fns[] = {
+     NULL,                    gen_helper_sve_frecpx_h,
+@@ -7998,9 +7999,9 @@ TRANS_FEAT(FCVTLT_sd_m, aa64_sme_or_sve2, gen_gvec_fpst_arg_zpz,
+            gen_helper_sve2_fcvtlt_sd, a, 0, FPST_A64)
  
- static gen_helper_gvec_3 * const uxth_fns[4] = {
-     NULL, NULL, gen_helper_sve_uxth_s, gen_helper_sve_uxth_d
- };
- TRANS_FEAT(UXTH_m, aa64_sme_or_sve, gen_gvec_ool_arg_zpz,
-            uxth_fns[a->esz], a, 0)
-+TRANS_FEAT(UXTH_z, aa64_sme2p2_or_sve2p2, gen_gvec_ool_arg_zpz,
-+           uxth_fns[a->esz], a, 1)
+ TRANS_FEAT(FCVTX_ds_m, aa64_sme_or_sve2, do_frint_mode, a,
+-           FPROUNDING_ODD, gen_helper_sve_fcvt_ds)
++           FPROUNDING_ODD, 0, gen_helper_sve_fcvt_ds)
+ TRANS_FEAT(FCVTXNT_ds_m, aa64_sme_or_sve2, do_frint_mode, a,
+-           FPROUNDING_ODD, gen_helper_sve2_fcvtnt_ds)
++           FPROUNDING_ODD, 0, gen_helper_sve2_fcvtnt_ds)
  
- TRANS_FEAT(SXTW_m, aa64_sme_or_sve, gen_gvec_ool_arg_zpz,
-            a->esz == 3 ? gen_helper_sve_sxtw_d : NULL, a, 0)
-+TRANS_FEAT(SXTW_z, aa64_sme2p2_or_sve2p2, gen_gvec_ool_arg_zpz,
-+           a->esz == 3 ? gen_helper_sve_sxtw_d : NULL, a, 1)
-+
- TRANS_FEAT(UXTW_m, aa64_sme_or_sve, gen_gvec_ool_arg_zpz,
-            a->esz == 3 ? gen_helper_sve_uxtw_d : NULL, a, 0)
-+TRANS_FEAT(UXTW_z, aa64_sme2p2_or_sve2p2, gen_gvec_ool_arg_zpz,
-+           a->esz == 3 ? gen_helper_sve_uxtw_d : NULL, a, 1)
- 
- static gen_helper_gvec_3 * const addqv_fns[4] = {
-     gen_helper_sve2p1_addqv_b, gen_helper_sve2p1_addqv_h,
-diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
-index c7e633ec4f..31b65fab1b 100644
---- a/target/arm/tcg/sve.decode
-+++ b/target/arm/tcg/sve.decode
-@@ -411,6 +411,15 @@ UXTH_m          00000100 .. 010 011 101 ... ..... .....         @rd_pg_rn
- SXTW_m          00000100 .. 010 100 101 ... ..... .....         @rd_pg_rn
- UXTW_m          00000100 .. 010 101 101 ... ..... .....         @rd_pg_rn
- 
-+ABS_z           00000100 .. 000 110 101 ... ..... .....         @rd_pg_rn
-+NEG_z           00000100 .. 000 111 101 ... ..... .....         @rd_pg_rn
-+SXTB_z          00000100 .. 000 000 101 ... ..... .....         @rd_pg_rn
-+UXTB_z          00000100 .. 000 001 101 ... ..... .....         @rd_pg_rn
-+SXTH_z          00000100 .. 000 010 101 ... ..... .....         @rd_pg_rn
-+UXTH_z          00000100 .. 000 011 101 ... ..... .....         @rd_pg_rn
-+SXTW_z          00000100 .. 000 100 101 ... ..... .....         @rd_pg_rn
-+UXTW_z          00000100 .. 000 101 101 ... ..... .....         @rd_pg_rn
-+
- ### SVE Floating Point Compare - Vectors Group
- 
- # SVE floating-point compare vectors
+ static gen_helper_gvec_3_ptr * const flogb_fns[] = {
+     NULL,               gen_helper_flogb_h,
 -- 
 2.43.0
 

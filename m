@@ -4,133 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F3DBCD6E75
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Jun 2026 17:06:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D326CD6E6E
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Jun 2026 23:49:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wVBVg-0001Ml-UW; Thu, 04 Jun 2026 13:05:37 -0400
+	id 1wVHo7-0006cc-IM; Thu, 04 Jun 2026 19:49:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjrosato@linux.ibm.com>)
- id 1wVBVb-0001F7-HL; Thu, 04 Jun 2026 13:05:34 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjrosato@linux.ibm.com>)
- id 1wVBVY-0006Pz-2r; Thu, 04 Jun 2026 13:05:30 -0400
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6547bsD72666058; Thu, 4 Jun 2026 17:05:07 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=pp1; bh=kh4113
- J+s6OAmwkIx4eGyI0EMlsjgGeeFEFeG0UdQlA=; b=JgrKkImUyYOkc5w9lSAGZo
- Pd93+YmJjJnjZt1NuVfz2Rt+8945PRdQGZhDJkRhKwgofnx8El41Z0dh7a7f2Zg3
- VXDZlyoCfe4gqmQd7s5aEgnox7v55r9zJeLz1ueJsf2/FwKteORGTdWaV0svfc2Y
- YQBj0TDWw8LMJvYBKMjb1ecbWQw8ldHOAYoqsy+vLSzVyHqK5yKfI4FeoW1EP9Cs
- VNhCD3jo4sEg0Iuui+QE3VZjD4eBPEw83KO5WTiID/S2Kl5Vft2+GeSMs/68Izmy
- kBj7qmyB0iG1SNjvc7hU68fC8RzIPLJXy0AJuIqX7YLD679GjFotr4dTu1ZGJwVw
- ==
-Received: from ppma12.dal12v.mail.ibm.com
- (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4efqhtg7f3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 04 Jun 2026 17:05:06 +0000 (GMT)
-Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
- by ppma12.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 654Gd7SR020936;
- Thu, 4 Jun 2026 17:05:05 GMT
-Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
- by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 4ega7qp75r-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 04 Jun 2026 17:05:05 +0000 (GMT)
-Received: from smtpav04.dal12v.mail.ibm.com (smtpav04.dal12v.mail.ibm.com
- [10.241.53.103])
- by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 654H53hj21496454
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 4 Jun 2026 17:05:04 GMT
-Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 981BC58065;
- Thu,  4 Jun 2026 17:05:03 +0000 (GMT)
-Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7A51658052;
- Thu,  4 Jun 2026 17:05:01 +0000 (GMT)
-Received: from [9.61.150.19] (unknown [9.61.150.19])
- by smtpav04.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Thu,  4 Jun 2026 17:05:01 +0000 (GMT)
-Message-ID: <b7766539-ecad-434c-b191-231665f572ea@linux.ibm.com>
-Date: Thu, 4 Jun 2026 13:05:01 -0400
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wVHo5-0006bO-63
+ for qemu-arm@nongnu.org; Thu, 04 Jun 2026 19:49:01 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wVHo1-0007r5-Om
+ for qemu-arm@nongnu.org; Thu, 04 Jun 2026 19:49:00 -0400
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-2c0c3315c5dso13682155ad.3
+ for <qemu-arm@nongnu.org>; Thu, 04 Jun 2026 16:48:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1780616936; x=1781221736; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=a0VjX09XRVlZNssyIpNmPffO8PV2GSj/dcv4OjuMNnI=;
+ b=baR8jp9NxM1yXBqdhMu1iSp8AenI3DQsjHf0Xy2ZuSFkoFcb49uxMMw9Eih3aAGaGj
+ SJZ355oLvOduf9XiNMnmiBNaaE6ZZSu3gKjG3aWkwUQSUAJdy2S/6PK9oe8XdHPL7tBC
+ YbZGO4cqErm7SDH7pyJRKOVn6RQrzxki3EeIRkEIEijpNssTrK53A0fB2tdl80EPMKC9
+ e/b4DRnpGrqAX+i3630+oZrU6xJbKXv91XFCCVN/CWGBJEs6sY3/US48sxmTYOMg1f9P
+ 2GdraEuGy9LmYAHUdvTy2lFJnwvoDybWW+J+XLQd9cymVs8o2ULovgnRLXno+oyTiZXN
+ rxtg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1780616936; x=1781221736;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=a0VjX09XRVlZNssyIpNmPffO8PV2GSj/dcv4OjuMNnI=;
+ b=AdquByBYqvai6KQmQ+uMfZ/BeZrgJ7ZMLIZYXCBkR0pln7zY3xsqDWoJ1DsAQDoXZu
+ tH876uwwSWmq0eG7wjb6ry+4v4UNqghsadBZn8ztAanHx+cThldxpkzFUittCb4Fu8nP
+ a7LlGFngoZwKp/cht+SZVjBClCIN3gvT5yvRLtEvMp3GgR4mdeHJ33Ag080exiULBZac
+ yBYoM2mPQqn6l4x6tLX/2vAhRKnsJT7q1tHBppsyLIhpcPZPmB+Nku01Pi5jICRWd4W2
+ VyTrYFqSsHIAkpYUVry2HM9cQnUQisMInQpOkI3k72opUp1VtSbBHLw1nVAQWHho8ah/
+ UfaQ==
+X-Gm-Message-State: AOJu0YxokuavJ+8ddiVkWX8LMZyhZgSz90bjTOyYnduk7OJaYO2cL+rW
+ PljGbn0dtXG/T1NBQMrTTitteso1ar80dS/o+AdYyZqYwAjIDelGOmKNHh9koPWKJHHDqYqnL7a
+ sJY00Yr4=
+X-Gm-Gg: Acq92OHzNXPLXMtokMfW8/LSQcbDB8E83Suz6PwK9cir5JLIoLCnF38u9OLRbNZNqxA
+ 1M1P2pdehdeKbT/1uZ0xHxlMMPb4eH7qjYkrLbD08Ybp3onbv/dWFBb8+HglSq29Sd+4oDMSM1i
+ yE3YKFlGk5CT9Q12G4EYybJsI4pH0nWwHuBUZ6gCOPyQZiwyZ5M9LFwdY3uB+Pn8QAehCPpUc7o
+ XMxW77J5qjAHHtZXNvNERh/iw8ejCW6EGwMIfEi/ghHEMj1Y1Mmlo3Ue/P3b7/nVbzMAl+qxJ3A
+ 2Jmwy1egHpk8I1eLDg0H9feBYF1BT52+KrlrZ3fj4PCVMbuTc4roH75gxs1s0blChyIvKLWW7QA
+ 1JK3a2Q9dqO8iUxqxmu8ZIDoe6YZ60aF2WQtRbuUbIlwPNGO/LZPjPVcnHDxs0NaIdfYfwwemt0
+ 021XZ2w3Vv0XAXe5IbP2YanIhISRshy32iC3qajBo=
+X-Received: by 2002:a17:903:f8b:b0:2c0:cf44:3b3b with SMTP id
+ d9443c01a7336-2c1e847d71dmr7768815ad.24.1780616936406; 
+ Thu, 04 Jun 2026 16:48:56 -0700 (PDT)
+Received: from stoup.. ([71.212.142.33]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2c1664950aesm66541465ad.69.2026.06.04.16.48.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 04 Jun 2026 16:48:56 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 03/25] target/arm: Enable zeroing in DO_ZPZ macros in
+ sve_helper.c
+Date: Thu,  4 Jun 2026 16:48:30 -0700
+Message-ID: <20260604234852.573178-4-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260604234852.573178-1-richard.henderson@linaro.org>
+References: <20260604234852.573178-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 05/17] accel/kvm: Remove need for
- AccelCPUClass::cpu_realize
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Weiwei Li <liwei1518@gmail.com>, Glenn Miles <milesg@linux.ibm.com>,
- kvm@vger.kernel.org, qemu-s390x@nongnu.org,
- Chao Liu <chao.liu.zevorn@gmail.com>, David Hildenbrand <david@kernel.org>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Song Gao <gaosong@loongson.cn>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Anton Johansson <anjo@rev.ng>,
- Claudio Fontana <cfontana@suse.de>, Eric Farman <farman@linux.ibm.com>,
- Alexander Graf <agraf@csgraf.de>, Chinmay Rath <rathc@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- qemu-riscv@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Cornelia Huck <cohuck@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Reinoud Zandijk
- <reinoud@netbsd.org>, Halil Pasic <pasic@linux.ibm.com>
-References: <20260529194940.97143-1-philmd@linaro.org>
- <20260529194940.97143-6-philmd@linaro.org>
-From: Matthew Rosato <mjrosato@linux.ibm.com>
-Content-Language: en-US
-In-Reply-To: <20260529194940.97143-6-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Proofpoint-GUID: 8AtGoXBI4OtHsNOqzXof9lXTErzx2ivV
-X-Authority-Analysis: v=2.4 cv=fv/sol4f c=1 sm=1 tr=0 ts=6a21b043 cx=c_pps
- a=bLidbwmWQ0KltjZqbj+ezA==:117 a=bLidbwmWQ0KltjZqbj+ezA==:17
- a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=RzCfie-kr_QcCd8fBx8p:22 a=KKAkSRfTAAAA:8
- a=EUspDBNiAAAA:8 a=VnNF1IyMAAAA:8 a=aGwGTAKf3ZeqeKgWoQ8A:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjA0MDE2MiBTYWx0ZWRfX8Mz7cPK1l/HC
- EHaTG16Ia4TV5Q1UbXicmsrbHbDnDzHhWpFOoLy6kbfjyh2SClrJOg8LJkLrCZdMaEthwri5rFR
- Hg/HMlaBlxV4X6uExW70LPSWYlyNW1lbQGdCgl0gtNL2JEwaIXZ2FUAhWpUUcBCmaPCWNtBeWz8
- VM3uCedX8u8hvS+kjp0gSvowILbUrbyYdl0kMdEQxtAdcAltVCyGD/OFQpaE2jZ/xuyRo/8xHuY
- SVn7gwuDxKudEnTaUJUNSAKEugVAtRevIZZIjH4JnjVDYs8qE+BbK/81jIMwms9dp5nSHJXL/qh
- 263JCUGKm7foTpCDjmEPKx7hCvhgjOEcCzN2cE7u6Y7WojKG8I/hv+YLQTKY88kz2cHYbo53ZAT
- uCWyRmsmua8H82w8k6TdcaMmFrRcepiLH+HwwkQ8xWPaWMgf9sFK9/ph0zAzQ6YXrcQFJbVQlWe
- Dj5OpbCfnQ+/EOdWAOA==
-X-Proofpoint-ORIG-GUID: Cz79bif9iYNnv7TYFdMn15K7CcuJH--b
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-06-04_04,2026-05-28_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 priorityscore=1501 spamscore=0 phishscore=0 clxscore=1011
- impostorscore=0 suspectscore=0 bulkscore=0 lowpriorityscore=0 malwarescore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2605210000 definitions=main-2606040162
-Received-SPF: pass client-ip=148.163.158.5;
- envelope-from=mjrosato@linux.ibm.com; helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -147,33 +100,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/29/26 3:49 PM, Philippe Mathieu-Daudé wrote:
-> accel_cpu_common_realize() first calls accel_cpu->cpu_realize
-> then ops->cpu_realize.
-> 
-> Rather than having one handler for each host architecture, use a
-> single host-specific method (prefixed with kvm_arch_* like other
-> similar KVM methods). Register it once as AccelOpsClass
-> cpu_realize handler. Add stubs for when a host lacks such method.
-> 
-> PPC's ACCEL_CPU_NAME("kvm") TypeInfo is  now empty, remove it.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-> ---
->  include/system/kvm.h       |  2 ++
->  accel/kvm/kvm-accel-ops.c  |  1 +
->  target/arm/kvm.c           |  5 +++++
->  target/i386/kvm/kvm-cpu.c  |  3 +--
->  target/loongarch/kvm/kvm.c |  5 +++++
->  target/ppc/kvm.c           | 23 +----------------------
->  target/riscv/kvm/kvm-cpu.c | 10 +---------
->  target/s390x/kvm/kvm.c     |  5 +++++
->  8 files changed, 21 insertions(+), 33 deletions(-)
+Use the low bit of simd_data to hold a 'zeroing' bit.
+The simd_data field is currently unused and always 0.
 
-For the s390x changes:
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/sve_helper.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
 
-Reviewed-by: Matthew Rosato <mjrosato@linux.ibm.com>
+diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
+index a002006ea5..59e4bad05f 100644
+--- a/target/arm/tcg/sve_helper.c
++++ b/target/arm/tcg/sve_helper.c
+@@ -823,18 +823,20 @@ DO_ZPZW(sve_lsl_zpzw_s, uint32_t, uint64_t, H1_4, DO_LSL)
+ 
+ #undef DO_ZPZW
+ 
+-/* Fully general two-operand expander, controlled by a predicate.
+- */
++/* Fully general two-operand expander, controlled by a predicate.  */
+ #define DO_ZPZ(NAME, TYPE, H, OP)                               \
+ void HELPER(NAME)(void *vd, void *vn, void *vg, uint32_t desc)  \
+ {                                                               \
+     intptr_t i, opr_sz = simd_oprsz(desc);                      \
++    bool zeroing = simd_data(desc) & 1;                         \
+     for (i = 0; i < opr_sz; ) {                                 \
+         uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));         \
+         do {                                                    \
+             if (pg & 1) {                                       \
+                 TYPE nn = *(TYPE *)(vn + H(i));                 \
+                 *(TYPE *)(vd + H(i)) = OP(nn);                  \
++            } else if (zeroing) {                               \
++                *(TYPE *)(vd + H(i)) = 0;                       \
+             }                                                   \
+             i += sizeof(TYPE), pg >>= sizeof(TYPE);             \
+         } while (i & 15);                                       \
+@@ -846,12 +848,15 @@ void HELPER(NAME)(void *vd, void *vn, void *vg, uint32_t desc)  \
+ void HELPER(NAME)(void *vd, void *vn, void *vg, uint32_t desc)  \
+ {                                                               \
+     intptr_t i, opr_sz = simd_oprsz(desc) / 8;                  \
++    bool zeroing = simd_data(desc) & 1;                         \
+     TYPE *d = vd, *n = vn;                                      \
+     uint8_t *pg = vg;                                           \
+     for (i = 0; i < opr_sz; i += 1) {                           \
+         if (pg[H1(i)] & 1) {                                    \
+             TYPE nn = n[i];                                     \
+             d[i] = OP(nn);                                      \
++        } else if (zeroing) {                                   \
++            d[i] = 0;                                           \
+         }                                                       \
+     }                                                           \
+ }
+@@ -4831,7 +4836,8 @@ DO_ZPZS_FP(sve_ah_fmins_h, float16, H1_2, helper_vfp_ah_minh)
+ DO_ZPZS_FP(sve_ah_fmins_s, float32, H1_4, helper_vfp_ah_mins)
+ DO_ZPZS_FP(sve_ah_fmins_d, float64, H1_8, helper_vfp_ah_mind)
+ 
+-/* Fully general two-operand expander, controlled by a predicate,
++/*
++ * Fully general two-operand expander, controlled by a predicate,
+  * With the extra float_status parameter.
+  */
+ #define DO_ZPZ_FP(NAME, TYPE, H, OP)                                  \
+@@ -4839,6 +4845,7 @@ void HELPER(NAME)(void *vd, void *vn, void *vg,                       \
+                   float_status *status, uint32_t desc)                \
+ {                                                                     \
+     intptr_t i = simd_oprsz(desc);                                    \
++    bool zeroing = simd_data(desc) & 1;                               \
+     uint64_t *g = vg;                                                 \
+     do {                                                              \
+         uint64_t pg = g[(i - 1) >> 6];                                \
+@@ -4847,6 +4854,8 @@ void HELPER(NAME)(void *vd, void *vn, void *vg,                       \
+             if (likely((pg >> (i & 63)) & 1)) {                       \
+                 TYPE nn = *(TYPE *)(vn + H(i));                       \
+                 *(TYPE *)(vd + H(i)) = OP(nn, status);                \
++            } else if (zeroing) {                                     \
++                *(TYPE *)(vd + H(i)) = 0;                             \
+             }                                                         \
+         } while (i & 63);                                             \
+     } while (i != 0);                                                 \
+-- 
+2.43.0
 
 

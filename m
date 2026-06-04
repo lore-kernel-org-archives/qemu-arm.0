@@ -4,68 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72C04CD6E4A
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Jun 2026 06:33:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC381CD6E4A
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Jun 2026 07:29:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wV1dd-0004c1-E9; Thu, 04 Jun 2026 02:33:09 -0400
+	id 1wV2VW-00088Y-4S; Thu, 04 Jun 2026 03:28:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yangjinqian1@huawei.com>)
- id 1wV1dc-0004bR-55; Thu, 04 Jun 2026 02:33:08 -0400
-Received: from canpmsgout12.his.huawei.com ([113.46.200.227])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yangjinqian1@huawei.com>)
- id 1wV1dW-0002vM-BF; Thu, 04 Jun 2026 02:33:07 -0400
-dkim-signature: v=1; a=rsa-sha256; d=huawei.com; s=dkim;
- c=relaxed/relaxed; q=dns/txt; h=From;
- bh=lICtzYs1mFPyTgDgLvlv3mIWdxDor5vCLT7iU63YAAc=;
- b=g6RQT3LhK2h92E7yJwV+wcxrBQ2eQAWlJrEFlg0oES1pxDgS5G6hPMIJYuv5moi1X+1tnt3OR
- 9N+PeUbz9SIKdISPFPLDcgEOfoPFqdYwtWnAARtSId1UU3Gp7KRSwv6+9/uONgLCBLIEf6aM+GH
- N8rpWDbU8ykaaQryh4ddzKU=
-Received: from mail.maildlp.com (unknown [172.19.163.163])
- by canpmsgout12.his.huawei.com (SkyGuard) with ESMTPS id 4gWF0l4hK4znTVh;
- Thu,  4 Jun 2026 14:24:55 +0800 (CST)
-Received: from dggpemf500013.china.huawei.com (unknown [7.185.36.188])
- by mail.maildlp.com (Postfix) with ESMTPS id 486344048B;
- Thu,  4 Jun 2026 14:32:48 +0800 (CST)
-Received: from [10.67.121.183] (10.67.121.183) by
- dggpemf500013.china.huawei.com (7.185.36.188) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Thu, 4 Jun 2026 14:32:47 +0800
-Message-ID: <1bdf5296-874b-488e-8a34-d6f8d23ddcae@huawei.com>
-Date: Thu, 4 Jun 2026 14:32:46 +0800
+ (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
+ id 1wV2VV-00088C-1e
+ for qemu-arm@nongnu.org; Thu, 04 Jun 2026 03:28:49 -0400
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
+ id 1wV2VS-0007l4-Q9
+ for qemu-arm@nongnu.org; Thu, 04 Jun 2026 03:28:48 -0400
+Received: by mail-pf1-x42b.google.com with SMTP id
+ d2e1a72fcca58-84237c55ef9so177351b3a.0
+ for <qemu-arm@nongnu.org>; Thu, 04 Jun 2026 00:28:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1780558124; cv=none;
+ d=google.com; s=arc-20240605;
+ b=WNN84rBhqjwI/EgnhcVboMwWZFAaZA5NW+UTw6i+jIXJneJ/1wAc5p7QV9ge9FzVs6
+ HxBIC3XwBGZIVeHWwljiMs7tT0QV5fa1zCJW27XjjBic1ooLVPghDo00tqXodj+LEk6R
+ pXUYgifTGyJhTLV1bVsNGgZuiGItC3GKEIL/IzWqozCzGEKAlXHym34R+J7w8b1/FPny
+ PXJOVgg54pSk0ntaRRWmvATD5GWzyl2yOQMi8ucuhrswv1wpBTBMzjjUm/vwqRWmh6qb
+ m6ja/0ZgJuHN6Y6gUyEgmtJjphOyT4ur9KwSIMgEnAu44+qJzyOcQi88kMVOeO2DX8/y
+ CFPg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=VpSRCwgDLMji91ZXDpZd4bhHuRUeCACFSqRLsM8YCwU=;
+ fh=1wBrW+lq1wwyIu2Hym7g5Iq6pecFZUYuG3O5IQ8FYnM=;
+ b=WgdBOUEZZ9VApvpvSgf7BNEhh/dKwlZ1BVfysCwYGbX61brS4Y5KByeEV/Vl4HOERH
+ LBi5jGbbH1QCUx7k0l+wHjyG/x2d09fK5yUx74dZ4F+wETplURc88YKjmTKZ1XmvzKzv
+ yr8fTFaQ+R7taxSWQmwRUdgONwPo2tg2VRMJ9qIsEXh0B2OZvTj8o4DzRXrgK8eP/qid
+ 79G2zmlyYMytyFpXoXec7qleF9nl8gXoY8A5vxC5qDukMq+1z7MZQxFvQbmyA+vF9Evx
+ qVn5nTyDzRWMLYv/+UrYZMNrgd1lOa3oJK7CbZi99gNbldmiho0tVBxUMcZMhPoaMGiA
+ Rl0g==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1780558124; x=1781162924; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=VpSRCwgDLMji91ZXDpZd4bhHuRUeCACFSqRLsM8YCwU=;
+ b=UGI7CUpAw2C0Zd72AnsgvoRi7aK8yVmWjUsXH98OmmwsUNeTI86c6F34BNe0oNSEXz
+ RJUUT4sUz3h35Y3xPiEtjnT13wVQMOyr47LUT/XICZbjsu8uh974SgGJA8QjMU/r4vst
+ +dUqQAxhkTjRGD8TC5qQC8lrIx7jTNXvyRxpF0VdfUas0z3UoeDG3phd7acPbJ2jJhtE
+ PxeZy1d9pskQ5T19Nt03vtgepKR7jnL167ksGyHstpfFiPWZ7Fc1oBemAqK3lXFBL7hf
+ KfLm4EgsOqg5r9KCTiCGjymaArDz+F22xbtSsiyBAGSeM6kVvcaF6e7m2ZYFJYXFGqFg
+ Aqdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1780558124; x=1781162924;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=VpSRCwgDLMji91ZXDpZd4bhHuRUeCACFSqRLsM8YCwU=;
+ b=mEVxSvBqpmRikb2c0mAiK0vgf1hVkc62ku7ny31iiW5u/9ccnqZqxwsqZXia+cGi+U
+ Yb8+52o8oCz+3oSVQ55TIxL1tYVpEK1vS5QwLeNCvQz+hnGZlmwuvU7jwT63lHvsAN4r
+ nT6RajKciKXpM04eqSL6phQrtMNJcqQLWo0poRIAh+WtVfuiGeBpy9CHMg2aITDebLuS
+ viV8Oenq1+JKvAHvXLFttpJjHfz2x2KiMRggkA5750zhtI8z4nuIcKN7ap7by1hEwm4U
+ R0q0A0uCGQ/loLQ6uxDQt1RCeTW1DQyBUK/tN/KZgG/800fd5q4dEPTifo6KDolo6Ao7
+ Uxig==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ9mhW64JaspnLn61Z4ViLpOpgKkJg4Uw1j1CzT1a2H8vMNpp8Bi04Ijr0K9pR1XSHHH7iNfiLBQ6g==@nongnu.org
+X-Gm-Message-State: AOJu0Yz87hnB7Ccv2hg2XOzuPYM7+HOwMJLpzJyQZj3q3kOvXWSJpeT5
+ QOIjOD0ce9+D1kGO96RHIvWLQ6vSt/Y3VF5KeomsJx7Fdfn87RPsjzETD/UtwkmvVaRpKusN5Yc
+ WMN5gNegAnFs/iJJtMk1Wwx+E729lNP8=
+X-Gm-Gg: Acq92OGWNx7Gvv6d2GWs4pE2/FApsYSlpGdb5zuvgewsGHZC9wjf6HELIQAq7coQxPQ
+ CDbkgvKJQsK+XxqErA09Z2VO4edhECCyTurHZTAxK7K+C2YqUv5suix+Alnoa1xKYJV9MfUVKnJ
+ F7GljEdbkT3Pgq5EthyZEc3v6A4Q7o34cftCg+Qij+s1agTiDEd1/ryy5Pocbtn30ziGwzMgXnL
+ EMNEDRCpBsladNNeIQ8LjWTZ7yplksvkA8vwErDEbfDLog1NUCJv5zN4hKLDHrUxAWQhTm3c5Ho
+ FkxkDUZK/Gd6mgApvN1lFa2p89145rc=
+X-Received: by 2002:a05:6a00:22cb:b0:842:5b63:6116 with SMTP id
+ d2e1a72fcca58-84284dbdf1amr6652336b3a.7.1780558124415; Thu, 04 Jun 2026
+ 00:28:44 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 00/18] kvm/arm: Introduce a customizable aarch64 KVM
- host model
-To: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <kvmarm@lists.linux.dev>,
- <peter.maydell@linaro.org>, <shaju.abraham@nutanix.com>,
- <khushit.shah@nutanix.com>, <cohuck@redhat.com>,
- <richard.henderson@linaro.org>, <sebott@redhat.com>,
- <skolothumtho@nvidia.com>, <philmd@linaro.org>
-CC: <maz@kernel.org>, <oliver.upton@linux.dev>, <pbonzini@redhat.com>,
- <armbru@redhat.com>, <berrange@redhat.com>, <abologna@redhat.com>,
- <jdenemar@redhat.com>
-References: <20260519132905.145643-1-eric.auger@redhat.com>
- <5a533932-06fe-4401-abfe-66546c15c4ec@huawei.com>
-From: Jinqian Yang <yangjinqian1@huawei.com>
-In-Reply-To: <5a533932-06fe-4401-abfe-66546c15c4ec@huawei.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.121.183]
-X-ClientProxiedBy: kwepems500001.china.huawei.com (7.221.188.70) To
- dggpemf500013.china.huawei.com (7.185.36.188)
-Received-SPF: pass client-ip=113.46.200.227;
- envelope-from=yangjinqian1@huawei.com; helo=canpmsgout12.his.huawei.com
+References: <20260529-feat-mte4-v7-0-ccbd3c14eb3c@gmail.com>
+In-Reply-To: <20260529-feat-mte4-v7-0-ccbd3c14eb3c@gmail.com>
+From: Gabriel Brookman <brookmangabriel@gmail.com>
+Date: Thu, 4 Jun 2026 00:28:32 -0700
+X-Gm-Features: AVHnY4JUR6Lj0SzYmQiULv7DmT4fq5rgboebDItbD7b-eIiHnHz4gjLO9JqoBFs
+Message-ID: <CA+1f7BA1Xbmb5atHKfFpd5K5VoXKo1zCmf4M6cH+PkQPifPXug@mail.gmail.com>
+Subject: Re: [PATCH v7 00/15] target/arm: add support for MTE4
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Gustavo Romero <gustavo.romero@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
+ Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-pf1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -82,149 +121,160 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hello all,
 
+Friendly ping: I have an external deadline this Sunday, so if anything
+needs to be addressed on my end I'd want to know soon.
 
-On 2026/6/4 14:08, Jinqian Yang wrote:
-> 
-> 
-> On 2026/5/19 21:27, Eric Auger wrote:
->> This series enhances the current host KVM model with capability to
->> set writable ID reg fields.
->>
->> Since v6.7 kernel, KVM/arm allows the userspace to overwrite the values
->> of a subset of ID regs. The list of writable fields continues to grow.
->> The feature ID range is defined as the AArch64 System register space
->> with op0==3, op1=={0, 1, 3}, CRn==0, CRm=={0-7}, op2=={0-7}.
->>
->> The end goal is to get more flexibility when migrating guests
->> between different host hardware.
->>
->> QEMU retrieves the writable ID fields from KVM UAPI [1] and
->> match them against a generated description of ID regs and their
->> named fields that stem from AARCHMRS Registers.json file.
->> Current description is based on latest 2026-03 edition.
->> The content of the generated files was compared against kernel
->> linux/arch/arm64/tools/sysreg file. It is not straightforward
->> to have unit tests for python scripts as there are many cases for
->> field extraction.
->>
->> For each writable named field a uint64 property is created
->> following the "SYSREG_<REG>_<FIELD>" naming convention. REG and
->> FIELD names are those described in ARM ARM Reference manual.
->>
->> The list of SYSREG_ID properties can be retrieved through the qmp
->> monitor using query-cpu-model-expansion [2].
->>
->> Connie & Eric
->>
->> This series can be found at:
->> https://github.com/eauger/qemu/tree/arm-cpu-model-v5
->>
->> History:
->> --------
->>
->> v4 -> v5:
->> - generate target/arm/cpu-idregs.h.inc that look similar to
->>    the format used in [RFC PATCH v1 02/13] target/arm:
->>    named_cpu_model: Add ID Register Fields without the
->>    description of the value values nor safe policy/value.
->>    I guess valid values could be generated from the Registers.json
->>    file too. Safe policy/values cannot.
->>    I reused one patch from the above series.
->>    Let's see how both series can progress/coexist without any
->>    anticipated bias.
->> - Addressed all comments from Shameer on v4
->> - Addressed 2 comments from v4 that were missed including the
->>    issue of IDreg visibility affected by some other settings.
->>    Unfortunately I was not able to test it.
->> - Further look at overrides between low level id reg field
->>    properties versus legacy CPU options. I have the feeling they
->>    can coexist as long as we document the hierarchy between them:
->>    host kvm default -> ID reg field props -> legacy CPU options
->> - Noticed more writable fields that are RES0/RAZ
->> - Improved commit messages in general
->>
->> References:
->> -----------
->>
->> [1]
->> KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES
->> KVM_ARM_GET_REG_WRITABLE_MASKS
->> Documentation/virt/kvm/api.rst
->>
->> [2]
->> qemu-system-aarch64 -qmp unix:/home/augere/TEST/QEMU/qmp- 
->> sock,server,nowait -M virt --enable-kvm -cpu custom
->> sudo build/run qmp-shell /home/augere/TEST/QEMU/qmp-sock
->> Welcome to the QMP low-level shell!
->> Connected to QEMU 11.0.50
->> (QEMU) query-cpu-model-expansion type=full model={"name":"host"}
->>
->>
->> Cornelia Huck (3):
->>    target/arm/kvm: Introduce kvm_get_writable_id_regs
->>    arm-qmp-cmds: introspection for ID register props
->>    arm/cpu-features: document ID reg properties
->>
->> Eric Auger (14):
->>    scripts: introduce scripts/update-aarch64-cpu-sysregs-header.py
->>    target/arm/cpu-sysregs.h.inc: Sort by name alphabetical order
->>    target/arm/cpu-sysregs.h.inc: Update with automatic generation
->>    arm/cpu: Add infra to handle generated ID register definitions
->>    scripts: Introduce scripts/aarch64_sysreg_helpers module
->>    scripts: Introduce scripts/update-aarch64-cpu-sysreg-properties.py
->>    target/arm/cpu-idregs.h.inc: generate with script
->>    target/arm/cpu64: Retrieve writable ID reg map in
->>      aarch64_host_initfn()
->>    arm/kvm: Initialize all writable ID registers from host
->>    arm/kvm: write back modified ID regs to KVM
->>    target/arm/kvm: Introduce kvm_arm_expose_idreg_properties
->>    target/arm/kvm: Special case REVIDR_EL1 and AIDR_EL1
->>    target/arm/kvm: Ignore some writable bits that shouldn't be
->>    target/arm/cpu: Expose writable ID reg field properties on the kvm
->>      host vcpu model
->>
->> Shaju Abraham (1):
->>    target/arm/cpu_idregs: generate tables for Arm64 ID registers and
->>      fields
->>
->>   docs/system/arm/cpu-features.rst              | 106 ++-
->>   scripts/aarch64_sysreg_helpers.py             | 109 ++++
->>   .../update-aarch64-cpu-sysreg-properties.py   | 168 +++++
->>   scripts/update-aarch64-cpu-sysregs-header.py  |  51 ++
->>   target/arm/arm-qmp-cmds.c                     |  19 +
->>   target/arm/cpu-idregs.c                       |  50 ++
->>   target/arm/cpu-idregs.h                       |  33 +
->>   target/arm/cpu-idregs.h.inc                   | 617 ++++++++++++++++++
->>   target/arm/cpu-sysregs.h.inc                  |  57 +-
->>   target/arm/cpu.h                              |   3 +
->>   target/arm/cpu64.c                            |  14 +
->>   target/arm/kvm-stub.c                         |   5 +
->>   target/arm/kvm.c                              | 320 ++++++++-
->>   target/arm/kvm_arm.h                          |  12 +
->>   target/arm/meson.build                        |   1 +
->>   target/arm/trace-events                       |   6 +
->>   16 files changed, 1539 insertions(+), 32 deletions(-)
->>   create mode 100644 scripts/aarch64_sysreg_helpers.py
->>   create mode 100644 scripts/update-aarch64-cpu-sysreg-properties.py
->>   create mode 100755 scripts/update-aarch64-cpu-sysregs-header.py
->>   create mode 100644 target/arm/cpu-idregs.c
->>   create mode 100644 target/arm/cpu-idregs.h
->>   create mode 100644 target/arm/cpu-idregs.h.inc
->>
-> 
-> Thanks for the patch series. I tested it, and it works as expected.
-> After configuring the QEMU command, it was able to successfully migrate
-> on Hisilicon KunPeng HIP09 and HIP12 chips.
-> 
-> Tested-by: Jinqian Yang <yangjinqian1@huawei.com>
-> 
-> Thanks,
-> Shameer
-> 
-
-Sorry, I forgot to update the salutation name at the end.
+(Re Peter's mte-10 segfault: like Richard, I can't reproduce it, but I
+am happy to dig in if Peter can share a way to reproduce it.)
 
 Thanks,
-Jinqian
+Gabriel
+
+On Fri, May 29, 2026 at 12:52=E2=80=AFPM Gabriel Brookman
+<brookmangabriel@gmail.com> wrote:
+>
+> This series implements ARM's Enhanced Memory Tagging Extension
+> (MTE4). MTE4 implies the presence of several subfeatures:
+> FEAT_MTE_CANONICAL_TAGS, FEAT_MTE_TAGGED_FAR, FEAT_MTE_STORE_ONLY,
+> FEAT_MTE_NO_ADDRESS_TAGS, and FEAT_MTE_PERM, none of which are
+> currently implemented in QEMU. This patch implements all five.
+>
+> Testing:
+>   - Included for FAR and STORE_ONLY.
+>   - The MTE_CANONICAL/NAT test from v2, modified so MTE_CANONICAL is
+>     enabled in user mode (removed from tree in v3).
+>   - A bare-metal testsuite that sets up page tables for S1 and S2
+>     translation, to test the Tagged NoTagAccess fault.
+>   - The bare-metal testsuite also was used to test LDGM and similar
+>     instructions not permitted in user-mode.
+>   - The bare-metal testsuite also was used to test the mtx related
+>     patches.
+>
+> Thanks,
+> Gabriel Brookman
+>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3116
+> Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
+> ---
+> Changes in v7:
+> - initialized "tagged" in combine_cacheattrs (MTEPERM), per Peter
+> - alphabetized MTE4 features on docs, per Richard
+> - moved comment in docs, per Richard
+> - rebased onto master, incrementing bits in TBFLAGS since FPMR_EL
+> - Link to v6: https://lore.kernel.org/qemu-devel/20260511-feat-mte4-v6-0-=
+8557cc1313b9@gmail.com
+>
+> Changes in v6:
+> - Moved certain functions between patches (Richard)
+> - Added G_NORETURN to canonical_tag_write_fail
+> - Updated ldg and bounds check functions to Richard's versions, tested
+>   these
+> - Link to v5: https://lore.kernel.org/qemu-devel/20260504-feat-mte4-v5-0-=
+232a648e63c6@gmail.com
+>
+> Changes in v5:
+> - MTX check feature split into three commits as per Richard's suggestion
+> - MTX passed down to instruction helpers in a new argument
+> - allocation_tag_mem_probe checks for probe in MTEPERM case
+> - tbi helper combined into tbi_or_mtx_helper
+> - MTX checks added to sme and sve functions
+> - bug with type conversion in LDGM helper fixed
+> - fixed multi-page tag-check bug and multi-page ST2G bug
+> - removed erroneous changes to _stub functions
+> - reorganized PAuth & MTX interactions to make them more readable
+> - Link to v4: https://lore.kernel.org/qemu-devel/20260309-feat-mte4-v4-0-=
+daaf0375620d@gmail.com
+>
+> Changes in v4:
+> - MTX now interacts with PAuth.
+> - Canonical tag checking only takes place in canonically tagged regions
+> - MTX bits enable tag checking
+> - MTX bits are placed in MTEDESC for access in mte_check helper
+> - Separate feature bits are used to delineate each feature
+> - PRCTL functions renamed and refactored as per Richard's suggestion
+> - Link to v3: https://lore.kernel.org/qemu-devel/20260105-feat-mte4-v3-0-=
+86a0d99ef2e4@gmail.com
+>
+> Changes in v3:
+> - Added prctl for MTE_STORE_ONLY to linux-user
+> - mte_check is no longer generated on read when STORE_ONLY enabled
+> - Implemented LDGM instruction
+> - Removed "long" datatype as per Richard's suggestion
+> - Implemented masking for VA range checks when MTX bit enabled
+> - Implemented MTE_PERM, with NoTagAccess attribute
+> - Removed user-mode test for MTE_CANONICAL, since can't enable in
+>   user-mode.
+> - Removed TBI from mte_check generation logic
+> - Link to v2: https://lore.kernel.org/qemu-devel/20251116-feat-mte4-v2-0-=
+9a7122b7fa76@gmail.com
+>
+> Changes in v2:
+> - Added tests for STORE_ONLY.
+> - Refined commit messages.
+> - Added FEAT_MTE_CANONICAL_TAGS and FEAT_MTE_NO_ADDRESS_TAGS + tests.
+> - fixed TCSO bit macro names.
+> - Link to v1: https://lore.kernel.org/qemu-devel/20251111-feat-mte4-v1-0-=
+72ef5cf276f9@gmail.com
+>
+> To: qemu-devel@nongnu.org
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Cc: Laurent Vivier <laurent@vivier.eu>
+> Cc: Helge Deller <deller@gmx.de>
+> Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+>
+> ---
+> Gabriel Brookman (15):
+>       target/arm: implement MTE_PERM
+>       target/arm: add TCSO bitmasks to SCTLR
+>       target/arm: mte_check unemitted on STORE_ONLY load
+>       linux-user: add MTE_STORE_ONLY to prctl
+>       target/arm: emit tag check when MTX without TBI
+>       target/arm: add MTX to MTEDESC and DisasContext
+>       target/arm: add canonical tag check helper
+>       target/arm: add canonical MTE check logic
+>       target/arm: load on canonical tag loads ext bits
+>       target/arm: fault on tag store to canonical tag
+>       target/arm: skip tag bit bounds check if MTX is on
+>       target/arm: tag is not a part of PAuth with MTX
+>       docs: add MTE4 features to docs
+>       tests/tcg: add test for MTE FAR
+>       tests/tcg: add test for MTE_STORE_ONLY
+>
+>  docs/system/arm/emulation.rst        |   5 ++
+>  linux-user/aarch64/mte_user_helper.c |  11 ++-
+>  linux-user/aarch64/mte_user_helper.h |  14 ++--
+>  linux-user/aarch64/target_prctl.h    |   6 +-
+>  target/arm/cpu-features.h            |  15 ++++
+>  target/arm/cpu.h                     |   5 ++
+>  target/arm/gdbstub64.c               |   2 +-
+>  target/arm/helper.c                  |  36 +++++++--
+>  target/arm/internals.h               |  40 ++++++++--
+>  target/arm/ptw.c                     |  60 ++++++++++++--
+>  target/arm/tcg/cpu64.c               |   5 ++
+>  target/arm/tcg/helper-a64-defs.h     |  16 ++--
+>  target/arm/tcg/helper-a64.c          |   7 +-
+>  target/arm/tcg/hflags.c              |  25 +++++-
+>  target/arm/tcg/mte_helper.c          | 146 +++++++++++++++++++++++++++++=
+------
+>  target/arm/tcg/pauth_helper.c        |  18 ++++-
+>  target/arm/tcg/sme_helper.c          |   4 +-
+>  target/arm/tcg/sve_helper.c          |   6 +-
+>  target/arm/tcg/translate-a64.c       |  45 +++++++----
+>  target/arm/tcg/translate.h           |   3 +
+>  tests/tcg/aarch64/Makefile.target    |   2 +-
+>  tests/tcg/aarch64/mte-10.c           |  49 ++++++++++++
+>  tests/tcg/aarch64/mte-9.c            |  48 ++++++++++++
+>  tests/tcg/aarch64/mte.h              |   7 +-
+>  24 files changed, 484 insertions(+), 91 deletions(-)
+> ---
+> base-commit: 2db91528542672cf0db78b3f2cc0e22b36302b38
+> change-id: 20251109-feat-mte4-6740a6202e83
+>
+> Best regards,
+> --
+> Gabriel Brookman <brookmangabriel@gmail.com>
+>
 

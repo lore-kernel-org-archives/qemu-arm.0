@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66159CD6E7D
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Jun 2026 08:45:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F47ACD6E6B
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Jun 2026 08:45:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wVQ9s-0006CS-DT; Fri, 05 Jun 2026 04:44:04 -0400
+	id 1wVQ9i-00062V-OK; Fri, 05 Jun 2026 04:43:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
- id 1wVQ9r-0006Bf-MO; Fri, 05 Jun 2026 04:44:03 -0400
+ id 1wVQ9g-00060t-HY; Fri, 05 Jun 2026 04:43:52 -0400
 Received: from mx0a-002c1b01.pphosted.com ([148.163.151.68])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
- id 1wVQ9p-0002bO-An; Fri, 05 Jun 2026 04:44:03 -0400
+ id 1wVQ9b-0002Tg-J3; Fri, 05 Jun 2026 04:43:52 -0400
 Received: from pps.filterd (m0127839.ppops.net [127.0.0.1])
  by mx0a-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6556OdLN854749; Fri, 5 Jun 2026 01:43:13 -0700
+ 6556OdLS854749; Fri, 5 Jun 2026 01:43:15 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=
- proofpoint20171006; bh=0WKwP7Lpsh45tUG848o0K+h628ltweK55ISKFj05h
- 2c=; b=SQWbr2Ni7pNgGlhj744qvIw6cTBrAT+H60XnDfV2UkRXLypwTIu+norTO
- z30xAVpf9+GAmbpWxN4oru555UdErQZQTMuRdTctCplihXEALLT+3rvQ2Knnqvrw
- WbxXrAzcs7n1EW9UlAcEF/ZKapC6907Ku7w5X7G1aAWagwRBeKoSLkcmj9yWENFd
- EHx4dws9tAsUPpO6Da7/rmxlqou4w2MbfzZ/DBzcA2MuB5TNit6P2+UcHprMfO0d
- 1TlGcHO6+CQDlNi0NtVAcNHIRnY+FfOXLG3mpQQB5UefUBP3cdKG+g/m2rPEPk2l
- ZaCSyeEANIulAW8P8TeJP7Tcb2HFg==
+ proofpoint20171006; bh=ZfW5OtIbsHhs+Su8dwgQ67EQ8B25FsGHHk49+l9J4
+ Rc=; b=VfpD4ljIRuG1wmFheFctcuzTuUXuPJ4EY1EmT0/zrK09XyOWfu8gUaWgc
+ uB9gnp/B8apc113EPaiJBA7GfAsqGe6rgZRCXMQuSiDM87fezMhL9V0ea2jtzJ52
+ 8dvMtDi8FRRgw1pPleU1YpcT0nldtXjVfBXODaF4v95sAETmInvgCpAGlEUeMiiv
+ HDzf0ymm56+35u/g6IeuPV0PT8D9nhqZ24ieIW2WfL7YEPmjXEGWpsgJVku4zpUA
+ 9S+f3r9yy34LyWy99LWdzmBH7D+58xgOW9pgetlWn7WrZHgg6uve6mT560mnUhKD
+ vxXSuyUVZTXF7yFfi2y+dMC5X9lZg==
 Received: from ph0pr06cu001.outbound.protection.outlook.com
  (mail-westus3azon11021094.outbound.protection.outlook.com [40.107.208.94])
- by mx0a-002c1b01.pphosted.com (PPS) with ESMTPS id 4ejupdmnv4-5
+ by mx0a-002c1b01.pphosted.com (PPS) with ESMTPS id 4ejupdmnv4-9
  (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Fri, 05 Jun 2026 01:43:13 -0700 (PDT)
+ Fri, 05 Jun 2026 01:43:15 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=arM7CQ3Rtz7xXgzbJw4U648hfCdtnA2kc5E4DHACSkwhLu2KdYqmnaEGB7EE2gzdEcNIZipp7NLTDYoDC454mI/pcdelYLvMdHCzP4UtxxG9t0u1fr77vOnyNgZAv8tYh0v7whK9Lpa9cXfDb1OCG820NIVsv5MrpNozJ1F8XmW7oWmZuPfyZE/RMD5ZR+vziR1VCsFybDRtsKvJPIGugyiHxCrfGRH63ZTkZh01JfYq2pLM/sbl6iqEiGi7BejsDJkyY4HPih/hGOKYQHXwp95EwBbktHebDD1J+yd6lDQQWAEYH+H7/a/08gA6jZ5j7ZicSqwBdICEX52cZ0RD5g==
+ b=endqdnWHiPnIx+kdHqdX0FaJPH2Tqj4M88gUlOADYcEdkD4QcKn+mcQBKEoNb3Wq8Wjic9LPoAJR1xrCeHrgwslnQZ4ywrTet0fwNgY4yq+d0rgApbU17xIAHFeadc/aood0GVkSGeaDrLfw2Z4l+JGVvkZ5THx9Xd1EcNlm20oE8oqmD1KAv4oIF+I30bMF8qWjCCv++zlSzs2SW9p4NoxLqKYRlZXuGPIVnRGpJXfu0Q5DEBHzUg3xb8YmeevjlVA6/oCveSk1LGGc96GwRtBYVj3WmMLQ3UwVWOxELsIDvC7IFEW26HMfwFYJL9dmuGqAryf8heoABbbNGIwVbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=0WKwP7Lpsh45tUG848o0K+h628ltweK55ISKFj05h2c=;
- b=q6l/I31jwqVJEV7hc0uUnh6RzjdSlb3KMV14L8jU0Nexs+JWAMDzgwZaQ8+QnV7k26RX7FWPvFfLBJWmw3hH5Xo0llxSM+A2813XsLPBZqm7OOKCA3RHJznJtPVxN74C35bce9PAeDzLInAAd/zDCF3K8omVF4RPjlnnbpe8Hoc6hhR2fLQhBNgBNlaAshYs1ZW9qWIvzBT8DC4C0vdh01ELmq7KIsrLeOB1YldPyXP2JuWYu/nlaHHM2C0okMRnA6PvsU0zaMSk3PIQtcUVgMYQ4j0NKnLjZZbwzb4QUGo2enJfrk5eNoKAd/+dpDM2NDttF8JhLgb8gmSvj6eMYg==
+ bh=ZfW5OtIbsHhs+Su8dwgQ67EQ8B25FsGHHk49+l9J4Rc=;
+ b=wJYKni5d9hFlw8OBSLcdHwGoNAhBcze9eE5zBa3SQUaxPsLEevmUHDZuVlru3Xmh9unObdhktmw8I1e1eK1bncurMzGakeBfj/xhAh6ddXf9UPioep8CysU6UF81iV0dJSqTMJyZKvo20tBAGbjKjhvT9WXmAhHWK9xkqd09RcDyBM64x+2+gR0MhLc1QAZtostEBSCC9y5qH64+IxXOnv9gYjlsX22PjtnTS4WGbMbHi9mkt1dKZGmjfyslnzc9CG39bhZwQuH+4shgEXZgSHUffyEfTFkBqsWmsb8V7wQDKDErrcxvhwFNIF2u2QimImq72yMZPx4UgKEQ2EEZjw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
  dkim=pass header.d=nutanix.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0WKwP7Lpsh45tUG848o0K+h628ltweK55ISKFj05h2c=;
- b=YrVD/CMzRguKKQQA7+cr9OJMDZ8MhojGjtK5TLdDJy5jHbnsZxEsN89BrhFLE1fBoLJLqy62K9gJoAa4hWbOF49D570SS78HegohuH0v4JLdHTScUKQCDShet70JBzx18a/1fN8mCQ4VNEr/ljOo/jBjXCj92hvuWWMQ6dlaullcSwVE/L7ZKAjQYL3xYk2pgMBjYnPY6Mse9cUAP8lqyG3yKFH/R+wDvUdDkCSew3JNKeUCV/wVI2uJTpOk3Vm9q/4PDoG6CoTL0TpNBMdlPNhkT01VgpwTvr/sMdjrLFrK3AzkFKijyJIJ4W1lxLHVNuxSecXfJh3BhQ/Aa4KACQ==
+ bh=ZfW5OtIbsHhs+Su8dwgQ67EQ8B25FsGHHk49+l9J4Rc=;
+ b=C3swA+vgESeiaDrUDxr4n6hJEZelaufR/hDg+Cgr4B5CIF+EP3rdWgguWooc1pmoL1RLX/T0YnTxslY5oZl4aHpUMQP6VuFZ4kkbPaX2cqHBhl+iZoO8hdTZo4tXGjM+pngT8fku9bUi7hXIJJE2vsIpTaamQeUuAWYSEifUG5b95aSu81fLwy8cpig4OpRrA5V1rUs4PWzCeQWjD6O8jYg1O4pm8eJtpw48Wh5XZTobZ+asu6dyx1ZNsFjCf88Gg9e83gvtISSkpeYwSGg1oWeR0P/+8zpTFAEsjOEb7+frYsXBtQxIu0vbAhp9DmpZAj9Ys9CXidkCeMB0qaDVVw==
 Received: from PH0PR02MB7557.namprd02.prod.outlook.com (2603:10b6:510:54::17)
  by CO6PR02MB7812.namprd02.prod.outlook.com (2603:10b6:303:a7::17)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.92.8; Fri, 5 Jun 2026
- 08:43:10 +0000
+ 08:43:12 +0000
 Received: from PH0PR02MB7557.namprd02.prod.outlook.com
  ([fe80::4917:bc05:4373:6bef]) by PH0PR02MB7557.namprd02.prod.outlook.com
  ([fe80::4917:bc05:4373:6bef%5]) with mapi id 15.21.0092.007; Fri, 5 Jun 2026
- 08:43:10 +0000
+ 08:43:12 +0000
 From: Khushit Shah <khushit.shah@nutanix.com>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
  Eric Auger <eric.auger@redhat.com>
@@ -77,10 +77,10 @@ Cc: Cornelia Huck <cohuck@redhat.com>,
  Shaju Abraham <shaju.abraham@nutanix.com>,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  Khushit Shah <khushit.shah@nutanix.com>
-Subject: [RFC PATCH v2 04/29] target/arm: Generate ARM64 ID registers and
- field tables
-Date: Fri,  5 Jun 2026 08:33:33 +0000
-Message-ID: <20260605083358.1320563-5-khushit.shah@nutanix.com>
+Subject: [RFC PATCH v2 08/29] target/arm: Add ID register field helper
+ functions
+Date: Fri,  5 Jun 2026 08:33:37 +0000
+Message-ID: <20260605083358.1320563-9-khushit.shah@nutanix.com>
 X-Mailer: git-send-email 2.43.7
 In-Reply-To: <20260605083358.1320563-1-khushit.shah@nutanix.com>
 References: <20260605083358.1320563-1-khushit.shah@nutanix.com>
@@ -92,75 +92,75 @@ X-ClientProxiedBy: PH7PR17CA0007.namprd17.prod.outlook.com
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: PH0PR02MB7557:EE_|CO6PR02MB7812:EE_
-X-MS-Office365-Filtering-Correlation-Id: e53f063c-c18a-44f4-c3b7-08dec2de78db
+X-MS-Office365-Filtering-Correlation-Id: 03241429-5bd6-49b6-7972-08dec2de79d3
 x-proofpoint-crosstenant: true
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
  ARA:13230040|1800799024|376014|7416014|366016|56012099006|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: Sb40ML1+CTnACH2e7f4MRD5gJty02ZnTFrQa5NpDBPq1KX2DeyAMTelaYhvbaZFNrtLXj/nvb99MvgSsi3/cWYFDN5/BnCtEWpRN1L3obce2YzlQRnVx501L9BCHRtW/7OQcYm6T5PPCvbJrYeGyfZ/dwyTXJgaOhF2JgAbjJKeDZLO6E69sNiCakdK6AJlbFEbBcrnf0CtuIMGToInfqZNqvivsmFvIK8hIvMDd8OVfQJgEionrcUQAvyE0/nfqvyJlQmQ4ky+MB2WhXEyPe27Fa5R9exJUgJiZU3FkdMqYG8J/bt6oNXopjk82eErew+FTyDh+o2DNRvLptz6/pk02v1a/2rOV0/aEY+T7A2uhECWi1hOLMa5rzrbA/43ojNzVCyK+zxH6rB/z4iXzyDzi82/DPRQnRKPLQBpE3IfADfMg0Ojnbej1uOVImRZtPb5+OrWJW10G5W7qexFmuH10qNGNkjrAgKVyD6AnLePjJYnimncqE6Z7zJVXTVA7tfRepmTrQn32sI5yJyw9ku0Qfg1507euRSrqiZTDe3+lfrpYvCITPkAaN5Py8phsfzITDrSdSkd7mo3wqlIFv6KiZdPnI+7aTMDAILe/2Edgxk09R0rFtWV3IF9YIbs/vhVxWVEzYnPQScZb+G5DtD7nElFd5Q6MyTyOdGFGqRqC5EipR0mIwZsJfYRqJrZm
+X-Microsoft-Antispam-Message-Info: DTtXRlODqd6FaUvczzWtgrighbnKDdXzYoEos9Mrwo2w1vpkOob2HA/og1MqFM33tyyOKOzqvfhZIYb1+qbFx53ceiczAX7rSuwJixqVi63zwyi6l6JNFstBmdrlEQicnb9ddaLdx/4Rrs7VXE0Uf2y4KX+puqj6E8JVWDgy5FibBKGn6g3LfemxnBMNsxkUImY/DQNf0fu4CmbRMpBPc0zdreKtphgheCcr1gbEJw19oRYRhasiI0rBhbYMcLMN3RNzO73k9GdOFqnbW+Daj1exIq8HkLCK5Kq+zJ0KCuT7S/oy0y2gggiVCYtfHpSL1VO9BbNsjoxyOonH/e0CH0M5zN4+XjR2v5uNCqOXT3N96i9L5mI2CtCNEpVcH3E+kKWzGIWwkejsG5xdpfc7taX/ORU4u3+EvUE1FFQ0Fh9a8SB153w2dTPultIFGCc8mvxJCxQdYl5sUz4h2resbgJzHzi/BU+0zAd1hNlRlY432vu5YjZsi+8KyMx7I+CRC6jyk0guoO9t9/RO2cv3B7c1HQODbi46392ekFhGaL7QrS8GaB/D4GIORV5Y0DU+Pf5KTxA1moON2sZ6Y4EGpNjRwNyR9gxEknlklPED3MvURwfmgGcQfdmJvaV2orJRbg/jQf0LhhiUd9x1KYDeGutpL1aODlF4Nmc1j1t7Y64eyqjW2WnziQu9Vrk0UXtp
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:PH0PR02MB7557.namprd02.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(1800799024)(376014)(7416014)(366016)(56012099006)(22082099003)(18002099003);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?BcXhTCeuOAWwBN1+cm6KP1m4Zwb1z25sPVdD9qkHwyL4BW2DZDil8Rd0Xjp1?=
- =?us-ascii?Q?xKZlRMNzMDqaOkO5oU4Ql2rV4z0elru3vjWJt/bnF+biPIL+RnKVqK2t54S3?=
- =?us-ascii?Q?VLOeyQDVwFFgnEE6emVcJKh4HaYi3L0zbww7SxjRzVjGu63vsprm0r3lIa1j?=
- =?us-ascii?Q?WeZHUnUMEibN3C3NauTUrjEFwHJ540iTLK7TtId31XJHut+4n3dMkt2EJPKW?=
- =?us-ascii?Q?27IRl5PKfOSToY0D5Lk+LGZw+E7Wicd4y3gEDafJ7MJpOPpdQiK7AVM1Qw4G?=
- =?us-ascii?Q?WuP+ioVMqYNgCOLcOOpBBAlH4zt7jbuFva6PjAO9QfpOAfvPZS0IzoHWtX1F?=
- =?us-ascii?Q?Zap0EnkrWrzRaNIQh0QKRPcB/iI4qkqRLUycSNEipQBptSnHO+G+Sfi6RWgc?=
- =?us-ascii?Q?FH7Hj6VqS/hq2gX9tvv5QoS0y4PTMN1a51ny5FFsImx2h+qP2brTGwgmPRRZ?=
- =?us-ascii?Q?McZOtUXScZMya2e2cWgZ0Elrs4Njl+zCXWqi9OpJjL9HEHhZDXznbWMVLuzM?=
- =?us-ascii?Q?6NZl0V5gfELzEIhKagUAxuxbWHD/rF8Xjas5ra7NwMEyLfRF7T5U9FVMzvfC?=
- =?us-ascii?Q?pCNQZdcSw9hhYTfdx/tRa8dcHzKRjRfoqxM7ohfjba36BZzz0rDlvUSeLdmv?=
- =?us-ascii?Q?huYOJ1R4oGTurMaRwItbK3uld4nNXDF0tlhqQvrpIGpMEHqG01tUBvzsWPdH?=
- =?us-ascii?Q?Sc9S8JXnXHqidKBKi1EMa8+SfzBYT3Ub9Um80Wr271I1Hz33qTuAAFm6f8wW?=
- =?us-ascii?Q?F/kihqRklHqjK1mSHboe9uuLp9ZhMQLYcj4/7h3AGX9AkHVs/sKiYPG87La+?=
- =?us-ascii?Q?Ycghu9BVE+ogSBWtbgkaYWeDUImjC8XDb0u755YtONv3oo9ax42vjazS4e5n?=
- =?us-ascii?Q?9ElhTwCiQCya4qzd1Q0cefp+buOM+N5oG4v35dGJcYZbLq8xuS9ErhT6uAaX?=
- =?us-ascii?Q?IuONNqbMByjU7wj4g7IuaCV6uLPns4VzmWFuLaNmAyGwRt8Ggx93BlacRsn7?=
- =?us-ascii?Q?lgASGlvKXjtwVbOf60RAxArbhmowhjJpPETDwDRNpmmY+EKglVwFpcPtFhTS?=
- =?us-ascii?Q?wOGjTwsbi0tr5O+Z9qqhZdW/pHvwhCnq+bXpomG1i/d7WXai8zu8nJ5m84TB?=
- =?us-ascii?Q?3kgB2Jeg3ZqP1vRcNKm94unwIA9kHLUi2vKEDxxgjb6Yhd9s+8VH5uPmEzvN?=
- =?us-ascii?Q?Riz1Q2b9YJSCcYCTsSuoWWhJl7QwhCkTWaPZst6PgsQarcQcK0SjSPh5roIy?=
- =?us-ascii?Q?LRCtskdLtTlfwnIdPN5zmWMGV9dxMc+tIcskz/PlqD2ngLcpP8FjKmueGZeD?=
- =?us-ascii?Q?4IYDmmCzBjLQzX0YiYqaYLxPh96qvDTEPyuTsAg/WYSYiHaD/ASlPfDtlXwZ?=
- =?us-ascii?Q?frAI8WKZBeOrinfcr01KLeaH+HItyozXcNXvrdVThhmXD5DQumRXdiblHtFZ?=
- =?us-ascii?Q?F6mQbPC8qoc/sJ3lRAZITCYlav+X/l+BbFUpu09qlhMmyoCRW0x0nYKjyCqo?=
- =?us-ascii?Q?KG9CvCiAGByVWHWcfs1VWbdt5j6MbAWTr4gX/rrhOLwvfvG973HVA6omuX+0?=
- =?us-ascii?Q?QcZ1PAbXzI6qf6Vm6N5u2Ahk2zSFyqccfAXW0+EfoFj3L6lFfHOT7W2fY1NS?=
- =?us-ascii?Q?sVGgBiQ9eXI5kXgNLytITakkHmzID2o/1ZWS5LBBjjGaVzA/odDHvfckrwp/?=
- =?us-ascii?Q?ahk/5TCU2ZTDHhRfapmN6+InugnFEw1IdSvBSWAx/6p5Ipy6hE4ymlojUYuy?=
- =?us-ascii?Q?FetyhVjJKw2MBUTDBdODKT3UTfZp/Jg=3D?=
-X-Exchange-RoutingPolicyChecked: kWLxKH//hokm+vvfqa5QR7X+u7bswAhnKtlHHFbKcWmoNlwEPhpuNdkYcD6IkwI92C/skEboLWudsArfNfMxAdTqrYsOkeMeOiw+N9EkpwVfrZXqSvY0Oxp2fOIt+9IezymhljHxpCZPxy2uZjh/gLbM8Rx6eNqHH1F6nXQWma7ugA7+HGLETE73chwm9oIni42/xBYbF5O6BwKnuND9kb9HvsbGkpS1mAl8p1a0D7MnSlR1Kg2oB64jC84CylJoSkGZ2AedaAWD/yBnOxVYWDU9emRpNR2xkGXZPuCG8swCMVD/b5BcPV2GIMIIVT2AK6Vi7llwWmVEbWql3L5ssw==
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?S/YwS9XeX3EZxdkzlc2dMQEBQAY6IfjFOSLZTUh2TggXTMFpGDfymvufEcEv?=
+ =?us-ascii?Q?BhXxDl1KMuEbdPz5nYEX7RpI9EBjh1wdq9zNS7Rw56IrfZ3rgCzJHAm5+3BC?=
+ =?us-ascii?Q?Qo+8ZmjM+zo8FAlmENUAvfGEeJSTBO0JsYEPTqK72BREDNUntX1ekbiKS6Y3?=
+ =?us-ascii?Q?NPVn3Wf4G23DIJxYO/mEGvfKDPyrTN5jckNGgLk61mg+oaealVxuugiIIadr?=
+ =?us-ascii?Q?wnB1q87VqrZdOp1gRBUi6cHmPgRtfwSEVr56lQEzGeq1oUBdVBeTL7U5aFFZ?=
+ =?us-ascii?Q?bUOsUDXaNp9sCnM/qndgSSbPKpj2ICJaVgzj/2o0vFzD0rz8T7Y5AQ6crZNX?=
+ =?us-ascii?Q?6laMmIo3aRGPOnjyHpBiXacuI1jEqUNDkZvRqJJXN18PEfH5SzWORRms05bg?=
+ =?us-ascii?Q?HYHPhtOdBHWQwDe5LmQuriFdXHQfJC4iz1JU6MGpAPHPaxd76M8EgZ13SIr8?=
+ =?us-ascii?Q?tud1c5Y7kYHvhodcboyZXi7gwdlRUJpftED0AlfPM7weGHgiOpDLNJRV+ocW?=
+ =?us-ascii?Q?TgNHJ9ei9ftpPrwSXJp0oAtngKX7ebJypJYDqBS+xSspDGdYwHj9E0cCy9Ny?=
+ =?us-ascii?Q?smgTh3NaRQaI9tbkFjXwsWk2IhsOGX0oGBM4pYwO8exx3pVUcNmWtpcqvG32?=
+ =?us-ascii?Q?63iNPnI47q5kWr35cjzPTcEBGYA/8u9xXzgtDZO2B52RYrFS+BK1ii5H5gVY?=
+ =?us-ascii?Q?r6/oNZGG2bl9L86o6w+Kq+OpW+o+eNW+mFrr8/Wdl1MlpO/yImLsbOrFPWaZ?=
+ =?us-ascii?Q?QlMDe5nIqnLBdWnd+QFUThahRHC4T2U/ubBk3PyPTYyQWhCdAATLrty4zYTH?=
+ =?us-ascii?Q?LAaFHiny+hjcnP3MbZEF83gzGI+NdXluLmCBzE7X4aihP6UT8rEakCAfUoOn?=
+ =?us-ascii?Q?GBblX9nLSmMd60MTHHA+uegIZT+QbxfXMvrDtuoLCzFd+nn645E8YqOfzoGF?=
+ =?us-ascii?Q?pp85lU8eoCcjvYh1+ZpFfUHPdw/V5sKbdP9IJSsbCByaD5CO1THMKu9foVeU?=
+ =?us-ascii?Q?0gCryCH95D3S6hrWZTk5eMyoeOdirv/8PuBHfJTI40Nb0bNdVSvgtXQpJA4N?=
+ =?us-ascii?Q?6jSWkM4Uu5q3IzxTs2aJXo+L74uoICrCd+X+Bm+I87Ebg1iGLGEAV6l1F0mo?=
+ =?us-ascii?Q?lxlxh0uHBXmMc0Lp6ByQWHa3rmV+d3TPtliCg2OBC9/U74ZpAgvaZwiyu+BK?=
+ =?us-ascii?Q?78PHvw9Swosdqs0f0zbFZRt1fQ+JB3jlgggbbPGguG+q2jsQMQ5J1YuPhcWH?=
+ =?us-ascii?Q?0oFXNQeANx8Uvkj5wOCitbXSecIHPck0Fl87DwH6ExrnFpBlX4CLggjU8lnL?=
+ =?us-ascii?Q?tOtt5ei8AdyMEcZOT/hnDCC2pOmTcm7SN+cl3tppvnd4BTH4vc4XVgdDOtQr?=
+ =?us-ascii?Q?jUJC5x+QIi14oVdcozNDJa+pzE+m36hfe5PZL3ehGZ3rZZPpiJPUCsZi25W+?=
+ =?us-ascii?Q?dJ8mv/Ng4390SbsOMs1AWoQpH095yhqDqZf+ynn1H8JtJaTmYswQAf0kC3vy?=
+ =?us-ascii?Q?O1ufgVv7fvGtrtH+Qim5RmDalHvb0OBhwyPe5D5AHdoX/ZTUhGjOMqVTeatu?=
+ =?us-ascii?Q?G2CMg/dfVW02Y4katMWoOkKjYYfCE26fGRNCJWstKDJUkv5QXaFKEkZGZCOK?=
+ =?us-ascii?Q?XHxOj/05+kX/ofE4sLHKqP+B4POX32YWSrpfkU5uJHyfacOY6CdfiE21Eoxo?=
+ =?us-ascii?Q?Gu5yDBLqoFEF+GpasfyzTTIHkK8S4/1Pp0HQ95M6lp2YsqH6QxseF4Yp+JXt?=
+ =?us-ascii?Q?Y7ydydlL7/I7CYvKcYcQdLP66gi34PU=3D?=
+X-Exchange-RoutingPolicyChecked: mCpK5IIZ9N589GIzVSU7mBJG60+U9ljIYnLzewcmYqkMjuEOoXJYCAqNvW7MqnY6Z6rm4FkfWqbVLb/fd8gKza6RcbME4gHB6BulrvGU1kZN7UEPFSbrbdybKya+XyWQCjszBEPbNpHpI7T0pLqTVkLLJYRhmyIzYSqLwEd4fk/q5VeCx5B7jsBs76nMT4w63K3qyt2YuFvH0jYnV1QFmAdLQf3wAdjTSskK/a5BKtc+ycDcto4dr8O3NoNxw2/376v4ZQsNbMXbizMw4F78c3fvvPHrSUsS8lItX+7hygo48+oz7rOeZNIq3FCriAwpCy8QCkbWs34ATfMCyWYSnQ==
 X-OriginatorOrg: nutanix.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e53f063c-c18a-44f4-c3b7-08dec2de78db
+X-MS-Exchange-CrossTenant-Network-Message-Id: 03241429-5bd6-49b6-7972-08dec2de79d3
 X-MS-Exchange-CrossTenant-AuthSource: PH0PR02MB7557.namprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jun 2026 08:43:10.0561 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jun 2026 08:43:11.7329 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: bb047546-786f-4de1-bd75-24e5b6f79043
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: XM92uLy4OAOqaC+WdHtTSZ79qMtQ1i6/Tt8RyqKljW+kULSDNhO6DIqwd3YuDF1QyM831PvpMmquYuBXk9M6fFp6SWhIMrK95FVnswmHkCQ=
+X-MS-Exchange-CrossTenant-UserPrincipalName: iIXrB/DhGmy2kX38BHpKEhdOzNZmA6B4GO6Ws7xhp4ydhScYH8NuD3tQvRABk8mO21Aai3DKK5sZbSONIsnSsU7dfa3CryYXzhDI/gMw8TI=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR02MB7812
-X-Proofpoint-ORIG-GUID: mFcvnf1PG37fCEU46EEarModPZBdFN6r
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjA1MDA4MyBTYWx0ZWRfX/laKBTPex3J2
- akyP0a3uEINsRKuRx155rMmHgFji1SskUcAuB3O2nvVg3AXuggD4DqG0P+fvq59Ted5NeVAacVj
- 30NDd+wotLtrEMPfY9vz/s8aUmA/RZHopi42L04Bist8XJKk4efozwoLbqufUkIm4WXGgOuw5jP
- euY4mASGexgCxcypoeIlI98YrKo+svD1TiSJSpmT225wkDraoNCoiLIibz3SgzE/dkRRuTP0IXL
- KHLjBHkVQnPMmm4vFuB0AfmLIAYS59pClLsu7AF5IXjJcAT3N9leFe9K3YlOu/ptI0pqdC7GEKX
- iaiFC/FUsHcwngujbiI/1QM8QXH1n/y3RMipGDkCL2rVrkcgtwI5ecJxD73PsF4/BtOmElpJeJ0
- qeId13RLFrnqj1aZl+ziRhm4ShDLPvD1nCbKGjkUwQ0MkM33O5da6E1zifVJXsAEHVFaw9YfyoU
- B9HCC4b+Pjyg+0KTZ8A==
-X-Proofpoint-GUID: mFcvnf1PG37fCEU46EEarModPZBdFN6r
-X-Authority-Analysis: v=2.4 cv=dYmwG3Xe c=1 sm=1 tr=0 ts=6a228c21 cx=c_pps
+X-Proofpoint-ORIG-GUID: f-2BgiJD5gIUB6bTTnkB223mJKuHc9rv
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjA1MDA4MyBTYWx0ZWRfX4ExxihbRBNk5
+ MucfXku/4Nvkq9QGfKfO5E81yPYLjVAeju6wEfNXXBYyEmHFpIjZmnOnXZR2XFIAPovj2ZK2xxO
+ t0YKxD8M8DHhFezRypmRwRS9qegEpJGnOGCkOMii7E+mtzpP3P4NxChYai32wkk/TkMZkd9BhyN
+ sgZwuBxgm3BK11Nh1XPK0pDPvwgBIclRwLgHvbfzb+/ce7JvYobckslOs8W5wFB5arlLhcjHRuL
+ 5iUOrr17Z98kcuHyrrA5GzXwkdwaUZCl4TKYbNdeJSMLslcyUc/S5+UyIYeEnhf/D1mFUU5IF8O
+ WTcwNqf6qGG3HAxw4hphyP/z7rUTEnLMzO1qmifpJGkvzbGuCuTgeys1kqWa0XtGb2FZyOnYfzV
+ dFyddq7vWRnIw/8n7wOXPQHO7w5iQ70j4flgmX38FQHMu83RQrpdNJB/cYK3i0GL0oyQx/+4+L9
+ 164+/Y76p5AOyUFdNmA==
+X-Proofpoint-GUID: f-2BgiJD5gIUB6bTTnkB223mJKuHc9rv
+X-Authority-Analysis: v=2.4 cv=dYmwG3Xe c=1 sm=1 tr=0 ts=6a228c23 cx=c_pps
  a=Dy1/g0x6RHl9kMZQX3cATQ==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
  a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
  a=xqWC_Br6kY4A:10 a=FelO9ux0wxsA:10 a=0kUYKlekyDsA:10
  a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=y4UcunY2MAxhM4LwGdWI:22
- a=64Cc0HZtAAAA:8 a=hOrA-tRr8AhjEMyW9QMA:9
+ a=64Cc0HZtAAAA:8 a=slIbVy7XD4hZSBV9b_MA:9
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
  definitions=2026-06-05_01,2026-05-28_03,2025-10-01_01
@@ -191,226 +191,484 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Shaju Abraham <shaju.abraham@nutanix.com>
 
-Include cpu-idregs.h.inc multiple times with different definitions for
-the X-macros. This will generate tables for all Arm64 ID registers and
-their fields and their architecturally defined values. These tables
-will be consumed by the property layer in future patches.
+Add helpers in cpu-idregs.c for working with individual ID registers
+and fields. This includes:
+- read/write specific field.
+- look up architectural value name for a given field value and vice
+  versa.
+- reset a field or ID register to it's default value.
 
 Co-authored-by: Khushit Shah <khushit.shah@nutanix.com>
 Signed-off-by: Shaju Abraham <shaju.abraham@nutanix.com>
 Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
 ---
- target/arm/cpu-idregs.c | 125 ++++++++++++++++++++++++++++++++++++++++
- target/arm/cpu-idregs.h |  38 +++++++++++-
- target/arm/meson.build  |   3 +-
- 3 files changed, 164 insertions(+), 2 deletions(-)
- create mode 100644 target/arm/cpu-idregs.c
+ target/arm/arm-cpu-props.c | 246 +++++++++++++++++++++++++++++++++++++
+ target/arm/arm-cpu-props.h |   8 ++
+ target/arm/cpu-idregs.c    | 119 ++++++++++++++++++
+ target/arm/cpu-idregs.h    |  11 ++
+ target/arm/cpu64.c         |   2 +-
+ 5 files changed, 385 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu-idregs.c b/target/arm/cpu-idregs.c
-new file mode 100644
-index 0000000000..81661dfca5
---- /dev/null
-+++ b/target/arm/cpu-idregs.c
-@@ -0,0 +1,125 @@
-+/*
-+ * ARM ID register field table.
-+ *
-+ * Builds the per-id-register field descriptor arrays and the global
-+ * arm_idregs[] table.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include "qemu/osdep.h"
+diff --git a/target/arm/arm-cpu-props.c b/target/arm/arm-cpu-props.c
+index 1c5d4c5727..d5900c0e23 100644
+--- a/target/arm/arm-cpu-props.c
++++ b/target/arm/arm-cpu-props.c
+@@ -18,12 +18,26 @@
+     { .name = (prop_name), .type = ARM_PROP_##_type, \
+       .u.field = ARM_FIELD_IDX(reg, fld) }
+ 
++#define ARM_SINGLE_FIELD_PROP_GS(prop_name, _type, reg, fld, _get, _set) \
++    { .name = (prop_name), .type = ARM_PROP_##_type, \
++      .u.field = ARM_FIELD_IDX(reg, fld),            \
++      .get = _get,                                   \
++      .set = _set }
++
+ #define ARM_FRAC_PROP(prop_name, base_reg, base_fld, frac_reg, frac_fld, valid_vals) \
+     { .name = (prop_name), .type = ARM_PROP_FRACTIONAL,                  \
+       .u.frac.base_field = ARM_FIELD_IDX(base_reg, base_fld),            \
+       .u.frac.frac_field = ARM_FIELD_IDX(frac_reg, frac_fld),            \
+       .u.frac.vals = valid_vals }
+ 
++#define ARM_FRAC_PROP_GS(prop_name, b_reg, b_fld, f_reg, f_fld, valid_vals, _get, _set) \
++      { .name = (prop_name), .type = ARM_PROP_FRACTIONAL,                 \
++        .u.frac.base_field = ARM_FIELD_IDX(b_reg, b_fld),                 \
++        .u.frac.frac_field = ARM_FIELD_IDX(f_reg, f_fld),                 \
++        .u.frac.vals = valid_vals,                                        \
++        .get = _get,                                                      \
++        .set = _set }
++
+ const ArmFracVal csv2_frac_vals[] = {
+     { "0.0", 0, 0 },
+     { "1.0", 1, 0 },
+@@ -240,3 +254,235 @@ const ArmCpuPropDesc arm_cpu_props[] = {
+     ARM_FRAC_PROP("feat_NV", ID_AA64MMFR2, NV, ID_AA64MMFR4, NV_FRAC, nv_frac_vals),
+     { .name = NULL }
+ };
++
++static const ArmCpuPropDesc *arm_find_prop(const char *name)
++{
++    const ArmCpuPropDesc *p;
++    for (p = arm_cpu_props; p->name; p++) {
++        if (g_str_equal(p->name, name)) {
++            return p;
++        }
++    }
++    return NULL;
++}
++
++static void arm_single_field_get(ARMCPU *cpu, const ArmCpuPropDesc *p,
++                                 Visitor *v, const char *name, Error **errp)
++{
++    uint64_t value;
++    char *s;
++    bool b;
++
++    arm_idreg_field_read(&cpu->isar, p->u.field, &value);
++
++    switch (p->type) {
++    case ARM_PROP_STRING: {
++        s = g_strdup(arm_arch_val_name(p->u.field, value));
++
++        if (!s) {
++            error_setg(errp, "Property '%s': unknown value %" PRIu64,
++                       name, value);
++            return;
++        }
++        visit_type_str(v, name, &s, errp);
++        g_free(s);
++        break;
++    }
++    case ARM_PROP_BOOLEAN: {
++        b = value != 0;
++        visit_type_bool(v, name, &b, errp);
++        break;
++    }
++    case ARM_PROP_NUMERIC:
++        visit_type_uint64(v, name, &value, errp);
++        break;
++    default:
++        g_assert_not_reached();
++    }
++}
++
++static void arm_fractional_get(ARMCPU *cpu, const ArmCpuPropDesc *p,
++                               Visitor *v, const char *name, Error **errp)
++{
++    uint64_t base_val, frac_val;
++    const ArmFracVal *val;
++    char *s;
++
++    arm_idreg_field_read(&cpu->isar, p->u.frac.base_field, &base_val);
++    arm_idreg_field_read(&cpu->isar, p->u.frac.frac_field, &frac_val);
++
++    for (val = p->u.frac.vals; val->name; val++) {
++        if (val->base_val == base_val && val->frac_val == frac_val) {
++            s = g_strdup(val->name);
++            visit_type_str(v, name, &s, errp);
++            g_free(s);
++            return;
++        }
++    }
++
++    error_setg(errp,
++               "Property '%s': unknown fractional value %" PRIu64
++               ".%" PRIu64, name, base_val, frac_val);
++}
++
++static void arm_cpu_prop_get(Object *obj, Visitor *v, const char *name,
++                             void *opaque, Error **errp)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++    const ArmCpuPropDesc *p = arm_find_prop(name);
++
++    if (!p) {
++        error_setg(errp, "Property %s not found", name);
++        return;
++    }
++
++    if (p->get) {
++        p->get(cpu, v, name, errp);
++        return;
++    }
++
++    switch (p->type) {
++    case ARM_PROP_STRING:
++    case ARM_PROP_BOOLEAN:
++    case ARM_PROP_NUMERIC:
++        arm_single_field_get(cpu, p, v, name, errp);
++        break;
++    case ARM_PROP_FRACTIONAL:
++        arm_fractional_get(cpu, p, v, name, errp);
++        break;
++    }
++}
++
++static void arm_single_field_set(ARMCPU *cpu, const ArmCpuPropDesc *p,
++                                 Visitor *v, const char *name, Error **errp)
++{
++    uint64_t value;
++    char *str = NULL;
++    bool b;
++
++    switch (p->type) {
++    case ARM_PROP_STRING: {
++
++        if (!visit_type_str(v, name, &str, errp)) {
++            return;
++        }
++        if (!arm_arch_val_from_name(p->u.field, str, &value)) {
++            error_setg(errp, "Property '%s': invalid value '%s'", name, str);
++            g_free(str);
++            return;
++        }
++        g_free(str);
++        break;
++    }
++    case ARM_PROP_BOOLEAN: {
++
++        if (!visit_type_bool(v, name, &b, errp)) {
++            return;
++        }
++        value = b ? 1 : 0;
++        break;
++    }
++    case ARM_PROP_NUMERIC:
++        if (!visit_type_uint64(v, name, &value, errp)) {
++            return;
++        }
++        break;
++    default:
++        g_assert_not_reached();
++    }
++
++    if (!arm_idreg_field_write(cpu, p->u.field, value, errp)) {
++        error_prepend(errp, "Property '%s': ", name);
++    }
++}
++
++static void arm_fractional_set(ARMCPU *cpu, const ArmCpuPropDesc *p,
++                               Visitor *v, const char *name, Error **errp)
++{
++    char *str = NULL;
++    const ArmFracVal *val;
++
++    if (!visit_type_str(v, name, &str, errp)) {
++        return;
++    }
++
++    for (val = p->u.frac.vals; val->name; val++) {
++        if (g_str_equal(val->name, str)) {
++            if (!arm_idreg_field_write(cpu, p->u.frac.base_field,
++                                       val->base_val, errp)) {
++                error_prepend(errp, "Property '%s': ", name);
++                g_free(str);
++                return;
++            }
++            if (!arm_idreg_field_write(cpu, p->u.frac.frac_field,
++                                       val->frac_val, errp)) {
++                error_prepend(errp, "Property '%s': ", name);
++            }
++            g_free(str);
++            return;
++        }
++    }
++
++    error_setg(errp, "Property '%s': invalid fractional value '%s'",
++               name, str);
++    g_free(str);
++}
++
++static void arm_cpu_prop_set(Object *obj, Visitor *v, const char *name,
++                             void *opaque, Error **errp)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++    const ArmCpuPropDesc *p = arm_find_prop(name);
++
++    if (!p) {
++        error_setg(errp, "Property %s not found", name);
++        return;
++    }
++
++    if (p->set) {
++        p->set(cpu, v, name, errp);
++        return;
++    }
++
++    switch (p->type) {
++    case ARM_PROP_STRING:
++    case ARM_PROP_BOOLEAN:
++    case ARM_PROP_NUMERIC:
++        arm_single_field_set(cpu, p, v, name, errp);
++        break;
++    case ARM_PROP_FRACTIONAL:
++        arm_fractional_set(cpu, p, v, name, errp);
++        break;
++    }
++}
++
++void arm_add_cpu_props(Object *obj)
++{
++    const char *type;
++    const ArmCpuPropDesc *p;
++
++    for (p = arm_cpu_props; p->name; p++) {
++        switch (p->type) {
++        case ARM_PROP_STRING:
++        case ARM_PROP_FRACTIONAL:
++            type = "string";
++            break;
++        case ARM_PROP_BOOLEAN:
++            type = "bool";
++            break;
++        case ARM_PROP_NUMERIC:
++            type = "number";
++            break;
++        default:
++            g_assert_not_reached();
++        }
++        object_property_add(obj, p->name, type,
++                            arm_cpu_prop_get, arm_cpu_prop_set,
++                            NULL, NULL);
++    }
++}
++
++const ArmCpuPropDesc *get_arm_cpu_props(void)
++{
++    return arm_cpu_props;
++}
+diff --git a/target/arm/arm-cpu-props.h b/target/arm/arm-cpu-props.h
+index 2c9bca9d97..9ba3f4c100 100644
+--- a/target/arm/arm-cpu-props.h
++++ b/target/arm/arm-cpu-props.h
+@@ -11,6 +11,8 @@
+ #define ARM_CPU_PROPS_H
+ 
+ #include "cpu-idregs.h"
 +#include "cpu.h"
-+#include "cpu-idregs.h"
-+#include "cpu-sysregs.h"
-+/*
-+ * Generate an array of architecturely defined values for each field
-+ * in arch-value format
-+ */
-+#define IDREG_START(reg)
-+#define IDREG_END(reg)
-+#define IDREG_FIELD_START(reg, field, shift, length, safe, defval) \
-+    static const ArmIdRegArchVal reg##_##field##_arch_vals[] = {
-+#define IDREG_FIELD_ARCH_VAL(v, n) { (v), (n) },
-+#define IDREG_FIELD_ARCH_VAL_ANY   { 0xffffffffUL, NULL },
-+#define IDREG_FIELD_END(reg, field) \
-+    };
-+#include "cpu-idregs.h.inc"
-+#undef IDREG_START
-+#undef IDREG_END
-+#undef IDREG_FIELD_START
-+#undef IDREG_FIELD_ARCH_VAL
-+#undef IDREG_FIELD_ARCH_VAL_ANY
-+#undef IDREG_FIELD_END
-+/* generate an array of per-register ArmIdRegField[] descriptors */
-+#define IDREG_FIELD_ARCH_VAL(v, n)
-+#define IDREG_FIELD_ARCH_VAL_ANY
-+#define IDREG_FIELD_END(reg, field)
-+#define IDREG_START(reg) \
-+    static ArmIdRegField reg##_fields[] = {
++#include "qemu/typedefs.h"
+ 
+ typedef enum ArmCpuPropType {
+     ARM_PROP_STRING,
+@@ -36,6 +38,12 @@ typedef struct ArmCpuPropDesc {
+             const ArmFracVal *vals;
+         } frac;
+     } u;
 +
-+#define IDREG_END(reg) \
-+    };
++    void (*get)(ARMCPU *cpu, Visitor *v, const char *name, Error **errp);
++    void (*set)(ARMCPU *cpu, Visitor *v, const char *name, Error **errp);
+ } ArmCpuPropDesc;
++void arm_add_cpu_props(Object *obj);
 +
-+#define IDREG_FIELD_START(reg, field, _shift, _length, safe, defval)  \
-+    {                                                                 \
-+        .idx = ARM_FIELD_IDX(reg, field),                             \
-+        .name = #field,                                               \
-+        .shift = (_shift),                                            \
-+        .length = (_length),                                          \
-+        .safe_rule = IDREG_SAFE_##safe,                               \
-+        .default_val = (defval),                                      \
-+        .arch_vals = (ArmIdRegArchVal *)reg##_##field##_arch_vals,    \
-+        .arch_vals_count = ARRAY_SIZE(reg##_##field##_arch_vals),     \
-+    },
-+#include "cpu-idregs.h.inc"
-+#undef IDREG_START
-+#undef IDREG_END
-+#undef IDREG_FIELD_START
-+#undef IDREG_FIELD_ARCH_VAL
-+#undef IDREG_FIELD_END
++const ArmCpuPropDesc *get_arm_cpu_props(void);
+ 
+ #endif
+diff --git a/target/arm/cpu-idregs.c b/target/arm/cpu-idregs.c
+index 81661dfca5..ee6165622a 100644
+--- a/target/arm/cpu-idregs.c
++++ b/target/arm/cpu-idregs.c
+@@ -10,6 +10,9 @@
+ #include "cpu.h"
+ #include "cpu-idregs.h"
+ #include "cpu-sysregs.h"
++#include "qemu/error-report.h"
++#include "qapi/error.h"
 +
-+/* generate an array of top level ID registers */
-+#define IDREG_END(reg)
-+#define IDREG_FIELD_START(reg, field, shift, length, safe, defval)
-+#define IDREG_FIELD_ARCH_VAL(v, n)
-+#define IDREG_FIELD_ARCH_VAL_ANY
-+#define IDREG_FIELD_END(reg, field)
+ /*
+  * Generate an array of architecturely defined values for each field
+  * in arch-value format
+@@ -123,3 +126,119 @@ const ArmIdRegFieldLoc arm_field_locs[ARM_FIELD__MAX] = {
+ #undef IDREG_FIELD_START
+ #undef IDREG_END
+ #undef IDREG_START
 +
-+#define IDREG_START(reg) \
-+    [reg##_IDX] = { \
-+        .name = #reg, \
-+        .fields = reg##_fields, \
-+        .fields_count = ARRAY_SIZE(reg##_fields), \
-+    },
++void arm_idreg_field_read(const ARMISARegisters *isar, ArmFieldIdx field,
++                          uint64_t *value)
++{
++    ARMIDRegisterIdx reg_idx = ARM_FIELD_REG(field);
++    uint64_t reg_value = isar->idregs[reg_idx];
++    uint32_t shift = ARM_FIELD_SHIFT(field);
++    uint32_t length = ARM_FIELD_LENGTH(field);
 +
-+ArmIdReg arm_idregs[NUM_ID_IDX] = {
-+#include "cpu-idregs.h.inc"
-+};
-+#undef IDREG_START
-+#undef IDREG_END
-+#undef IDREG_FIELD_START
-+#undef IDREG_FIELD_ARCH_VAL
-+#undef IDREG_FIELD_END
++    *value = extract64(reg_value, shift, length);
++}
 +
++bool arm_idreg_field_write(ARMCPU *cpu, ArmFieldIdx field, uint64_t value,
++                           Error **errp)
++{
++    ARMIDRegisterIdx reg_idx = ARM_FIELD_REG(field);
++    uint64_t reg_value = cpu->isar.idregs[reg_idx];
++    uint32_t shift = ARM_FIELD_SHIFT(field);
++    uint32_t length = ARM_FIELD_LENGTH(field);
++    ArmIdReg *reg;
++    ArmIdRegField *fdesc;
 +
-+/* Per-register field position enums (0..N-1 inside each register). */
-+#define IDREG_START(reg) enum {
-+#define IDREG_END(reg)   reg##_FIELD_POS__MAX };
-+#define IDREG_FIELD_START(reg, field, shift, length, safe, defval) \
-+    reg##_FIELD_POS_##field,
-+#define IDREG_FIELD_ARCH_VAL(v, n)
-+#define IDREG_FIELD_ARCH_VAL_ANY
-+#define IDREG_FIELD_END(reg, field)
++    if (length < 64 && value > ((1ULL << length) - 1)) {
++        reg = &arm_idregs[reg_idx];
++        fdesc = &reg->fields[ARM_FIELD_REG_FIELD(field)];
 +
-+#include "cpu-idregs.h.inc"
++        error_setg(errp, "value %" PRIu64 " is too large for field %s.%s",
++                   value, reg->name, fdesc->name);
++        return false;
++    }
 +
-+#undef IDREG_FIELD_END
-+#undef IDREG_FIELD_ARCH_VAL_ANY
-+#undef IDREG_FIELD_ARCH_VAL
-+#undef IDREG_FIELD_START
-+#undef IDREG_END
-+#undef IDREG_START
++    cpu->isar.idregs[reg_idx] = deposit64(reg_value, shift,
++        length, value);
++    return true;
++}
 +
-+/* Flat ArmFieldIdx -> {reg, field slot, shift, length}. */
-+#define IDREG_START(reg)
-+#define IDREG_END(reg)
-+#define IDREG_FIELD_START(reg, field, _shift, _length, safe, defval) \
-+    [ARM_FIELD_##reg##_##field] = {                                  \
-+        .reg_idx = reg##_EL1_IDX,                                    \
-+        .field_idx = reg##_FIELD_POS_##field,                        \
-+        .shift = (_shift),                                           \
-+        .length = (_length),                                         \
-+    },
-+#define IDREG_FIELD_ARCH_VAL(v, n)
-+#define IDREG_FIELD_ARCH_VAL_ANY
-+#define IDREG_FIELD_END(reg, field)
++static const ArmIdRegField *arm_get_field_desc(ArmFieldIdx field)
++{
++    ARMIDRegisterIdx reg_idx = ARM_FIELD_REG(field);
++    uint16_t field_idx = ARM_FIELD_REG_FIELD(field);
++    return &arm_idregs[reg_idx].fields[field_idx];
++}
 +
-+const ArmIdRegFieldLoc arm_field_locs[ARM_FIELD__MAX] = {
-+#include "cpu-idregs.h.inc"
-+};
++const char *arm_arch_val_name(ArmFieldIdx field, uint64_t val)
++{
++    uint32_t i;
++    const ArmIdRegField *f = arm_get_field_desc(field);
 +
-+#undef IDREG_FIELD_END
-+#undef IDREG_FIELD_ARCH_VAL_ANY
-+#undef IDREG_FIELD_ARCH_VAL
-+#undef IDREG_FIELD_START
-+#undef IDREG_END
-+#undef IDREG_START
++    for (i = 0; i < f->arch_vals_count; i++) {
++        if (f->arch_vals[i].value == val && f->arch_vals[i].name) {
++            return f->arch_vals[i].name;
++        }
++    }
++    return NULL;
++}
++
++bool arm_arch_val_from_name(ArmFieldIdx field, const char *name,
++                            uint64_t *val)
++{
++    uint32_t i;
++    ArmIdRegArchVal *av;
++    const ArmIdRegField *f = arm_get_field_desc(field);
++
++    for (i = 0; i < f->arch_vals_count; i++) {
++        av = &f->arch_vals[i];
++
++        if (av->name && g_ascii_strcasecmp(av->name, name) == 0) {
++            *val = av->value;
++            return true;
++        }
++    }
++    return false;
++}
++
++bool arm_field_is_idreg_any(ArmFieldIdx field)
++{
++    const ArmIdRegField *f = arm_get_field_desc(field);
++
++    return f->arch_vals_count == 1 &&
++           f->arch_vals[0].value == 0xffffffffUL &&
++           f->arch_vals[0].name == NULL;
++}
++
++void arm_idreg_field_reset_to_default(ARMCPU *cpu, ArmFieldIdx field)
++{
++    const ArmIdRegField *f = arm_get_field_desc(field);
++    ARMIDRegisterIdx reg_idx = ARM_FIELD_REG(field);
++
++    cpu->isar.idregs[reg_idx] = deposit64(cpu->isar.idregs[reg_idx],
++                                           f->shift, f->length,
++                                           f->default_val);
++}
++
++void arm_idregs_reset_to_defaults(ARMCPU *cpu)
++{
++    int i;
++    uint32_t j;
++    ArmIdReg *reg;
++
++    for (i = 0; i < NUM_ID_IDX; i++) {
++        reg = &arm_idregs[i];
++
++        if (!reg->name) {
++            warn_report("target/arm: no field table for ID register slot"
++                        " %d; cpu->isar.idregs[%d] left at 0x%016"
++                        PRIx64, i,
++                        i, cpu->isar.idregs[i]);
++            continue;
++        }
++
++        cpu->isar.idregs[i] = 0;
++        for (j = 0; j < reg->fields_count; j++) {
++            arm_idreg_field_reset_to_default(cpu, reg->fields[j].idx);
++        }
++    }
++}
 diff --git a/target/arm/cpu-idregs.h b/target/arm/cpu-idregs.h
-index 514ec39106..37a87e6d0b 100644
+index 37a87e6d0b..01d1b8f797 100644
 --- a/target/arm/cpu-idregs.h
 +++ b/target/arm/cpu-idregs.h
-@@ -16,12 +16,48 @@ typedef enum ArmIdRegSafeRule {
-     IDREG_SAFE_ANY,
- } ArmIdRegSafeRule;
- 
-+#define DCZID_EL0_EL1_IDX         DCZID_EL0_IDX
-+#define CTR_EL0_EL1_IDX           CTR_EL0_IDX
-+
-+/* ArmFieldIdx: per-field enum generated from cpu-idregs.h.inc */
-+#define IDREG_START(reg)
-+#define IDREG_END(reg)
-+#define IDREG_FIELD_START(reg, field, shift, length, safe, defval) \
-+    ARM_FIELD_##reg##_##field,
-+#define IDREG_FIELD_ARCH_VAL(v, n)
-+#define IDREG_FIELD_ARCH_VAL_ANY
-+#define IDREG_FIELD_END(reg, field)
-+typedef enum ArmFieldIdx {
-+#include "cpu-idregs.h.inc"
-+    ARM_FIELD__MAX,
-+} ArmFieldIdx;
-+#undef IDREG_FIELD_END
-+#undef IDREG_FIELD_ARCH_VAL_ANY
-+#undef IDREG_FIELD_ARCH_VAL
-+#undef IDREG_FIELD_START
-+#undef IDREG_END
-+#undef IDREG_START
-+
-+typedef struct ArmIdRegFieldLoc {
-+    ARMIDRegisterIdx reg_idx;
-+    uint16_t field_idx;
-+    uint8_t shift;
-+    uint8_t length;
-+} ArmIdRegFieldLoc;
-+extern const ArmIdRegFieldLoc arm_field_locs[ARM_FIELD__MAX];
-+#define ARM_FIELD_REG(idx)       (arm_field_locs[(idx)].reg_idx)
-+#define ARM_FIELD_REG_FIELD(idx) (arm_field_locs[(idx)].field_idx)
-+#define ARM_FIELD_SHIFT(idx)     (arm_field_locs[(idx)].shift)
-+#define ARM_FIELD_LENGTH(idx)    (arm_field_locs[(idx)].length)
-+#define ARM_FIELD_IDX(reg, field) ARM_FIELD_##reg##_##field
-+
- typedef struct ArmIdRegArchVal {
-     uint64_t value;
-     const char *name;
- } ArmIdRegArchVal;
- 
- typedef struct ArmIdRegField {
-+    ArmFieldIdx idx;
-     const char *name;
-     uint32_t shift;
-     uint32_t length;
-@@ -37,5 +73,5 @@ typedef struct ArmIdReg {
-     uint32_t fields_count;
+@@ -74,4 +74,15 @@ typedef struct ArmIdReg {
  } ArmIdReg;
  
--
-+extern ArmIdReg arm_idregs[NUM_ID_IDX];
+ extern ArmIdReg arm_idregs[NUM_ID_IDX];
++
++void arm_idreg_field_read(const ARMISARegisters *isar, ArmFieldIdx field,
++                          uint64_t *value);
++bool arm_idreg_field_write(ARMCPU *cpu, ArmFieldIdx field,
++                           uint64_t value, Error **errp);
++const char *arm_arch_val_name(ArmFieldIdx field, uint64_t val);
++bool arm_arch_val_from_name(ArmFieldIdx field, const char *name,
++                            uint64_t *val);
++bool arm_field_is_idreg_any(ArmFieldIdx field);
++void arm_idreg_field_reset_to_default(ARMCPU *cpu, ArmFieldIdx field);
++void arm_idregs_reset_to_defaults(ARMCPU *cpu);
  #endif /* CPU_IDREGS_H */
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 4723f9f170..be4361fbfd 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -10,7 +10,8 @@ arm_user_ss.add(files('gdbstub.c'))
- 
- arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-   'cpu64.c',
--  'gdbstub64.c'
-+  'gdbstub64.c',
-+  'cpu-idregs.c',
- ))
- 
- arm_common_ss.add(files(
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index a93ad2da5a..7fb3791643 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -37,7 +37,7 @@
+ #include "hw/core/qdev-properties.h"
+ #include "internals.h"
+ #include "cpu-features.h"
+-
++#include "arm-cpu-props.h"
+ /* convert between <register>_IDX and SYS_<register> */
+ #define DEF(NAME, OP0, OP1, CRN, CRM, OP2)      \
+     [NAME##_IDX] = SYS_##NAME,
 -- 
 2.52.0
 

@@ -4,175 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1EEDCD6E6B
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Jun 2026 08:49:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DE3ACD6E79
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Jun 2026 14:46:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wVQA1-0006I5-1R; Fri, 05 Jun 2026 04:44:13 -0400
+	id 1wVVoI-0005vq-NM; Fri, 05 Jun 2026 10:46:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
- id 1wVQ9z-0006HB-6I; Fri, 05 Jun 2026 04:44:11 -0400
-Received: from mx0b-002c1b01.pphosted.com ([148.163.155.12])
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wVVoB-0005ry-2Q
+ for qemu-arm@nongnu.org; Fri, 05 Jun 2026 10:46:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
- id 1wVQ9x-0002eC-B5; Fri, 05 Jun 2026 04:44:10 -0400
-Received: from pps.filterd (m0127844.ppops.net [127.0.0.1])
- by mx0b-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6556MRUF1185382; Fri, 5 Jun 2026 01:43:21 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=
- proofpoint20171006; bh=PXbDP9klCpM4kzndgvzvRlHdyJcudZplryw8ikfqI
- Zs=; b=tFMTxal4pqa7jmx5eUmR/XDmLX8oXolL9noezMWDDCT5skie2LaCqR3A5
- FQtk5FiaAAuZTJhbqjaW2qYhC2mY1TPUUO9KFQkmPs1DUhMBZn6tfhdd6mfPIPB+
- DwpyssyedeXT2h2LuO47wJlYzKy/9ueZXWn2Aw8jay67jPh9NzVZVcDyjeM4mMqS
- hgTKJitrMxf5q6Ea/DXK2ULchREGm1zfz9ViPi/6iMDvReN86RA1D6Kv4OJiCaoe
- +ov9AkC2/Y50is0Jh05w3khAcxouwWunn03qtHyahownjmKtocsIkjAVcNFID83G
- shUIDD9fMuRjgfaArBcpxB8C8087Q==
-Received: from ph7pr06cu001.outbound.protection.outlook.com
- (mail-westus3azon11020134.outbound.protection.outlook.com [52.101.201.134])
- by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 4ejuupcm1f-2
- (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Fri, 05 Jun 2026 01:43:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=eSJ8KF9SZGZMFrLDGZfNP4sG78VwFsgjwbn/0xE+4VcivQvPFBPVF/A7e2t8GG2VFsep3RiO7PVGRMIuGr4DXup2pXjNqkBWfbX4/4nJj5nwsa+fQAE0hmiM55lFcdUfYMQgXWI37PiTu8AUyUjD3NIfyD0z6xYMDWPBFbU7zxDJpGz5ToCA19vzlnoxoq0IWyPFNeXa1cYBnvbVZaFQ1hRdnM7btgdxh4Vq08btXJWaJMESYviXC13vkVxGHl8UugEtrsTj7FHXuaWobqOEV8y3bNEau74LC+HG0wM0+xxFei2HKOHfWsG2GQ0sS44e12CdXT39dYaJwtCR9SzN1g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=PXbDP9klCpM4kzndgvzvRlHdyJcudZplryw8ikfqIZs=;
- b=b++q8nu4Icu6PsX8XZGpb9tr656OXqEz8XlAV4oyxUD2OFnygk+Y+h8Mkj8JuKUpbo61zLvRHZkAyw2QNulogvIgacaM6ALlx5KwGDQbqWGPnhbY+b08fej7wo4JK4iD7lha1paGhjtG0Y8yr6QF6PwbrpI+7HhxaM3gg8qA7sZJkv1bX6SLaG3TsJHyWmrLW58Pbxh41MIqom2Bf+bQjxhjBXbrdck8JNcjbIl4ZsHZsDRG20kMkc2BU0pq8i7GHR/euESzyM7sv5QVJAa6gKZzqkVOcRc4vx6vxZVGc2OPJP7BzDazmv3vz96Q52j90MMKccZLhIL2xC2wdTEPag==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
- dkim=pass header.d=nutanix.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PXbDP9klCpM4kzndgvzvRlHdyJcudZplryw8ikfqIZs=;
- b=qCRbdt9LXmKMZ3VGnOxDTy5mk/0QSHhCbP6c5HImgA8P/EwQAK17ukONzrjiymnD2OQVYFokt7ytSbu9pnVRLNcoafAbakAVwKPIWiXCsOmIZdjwzNaHuQoXpDaI2vGhecQiSVy906hspNXe9SbzYsFfALCaTV+b8+GnlSWRxBpe6zWJ+00MNXdEGULWsoz2+oUL3VKU8NUf5w9+1hR4FX85DMPIpXeHzHhLSO9VSwzt93gkYUtkibX2W1AkCV4pV4OffdvLRn+buWq9tm9nr7d1BaZzdcMBG0d98P/VSVExXyBi8mVdqMEw4Hiq2DF2+WDRJ3PmHh5MIUQqs8HDiA==
-Received: from PH0PR02MB7557.namprd02.prod.outlook.com (2603:10b6:510:54::17)
- by MN6PR02MB10630.namprd02.prod.outlook.com (2603:10b6:208:4f4::5)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.92.8; Fri, 5 Jun 2026
- 08:43:16 +0000
-Received: from PH0PR02MB7557.namprd02.prod.outlook.com
- ([fe80::4917:bc05:4373:6bef]) by PH0PR02MB7557.namprd02.prod.outlook.com
- ([fe80::4917:bc05:4373:6bef%5]) with mapi id 15.21.0092.007; Fri, 5 Jun 2026
- 08:43:16 +0000
-From: Khushit Shah <khushit.shah@nutanix.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
- Eric Auger <eric.auger@redhat.com>
-Cc: Cornelia Huck <cohuck@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Marc Zyngier <maz@kernel.org>, Oliver Upton <oliver.upton@linux.dev>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Andrea Bolognani <abologna@redhat.com>,
- Jiri Denemark <jdenemar@redhat.com>, Gavin Shan <gshan@redhat.com>,
- Shameer Kolothum <skolothumtho@nvidia.com>,
- Sebastian Ott <sebott@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jinqian Yang <yangjinqian1@huawei.com>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>,
- Khushit Shah <khushit.shah@nutanix.com>
-Subject: [RFC PATCH v2 19/29] target/arm: define sve composite property
-Date: Fri,  5 Jun 2026 08:33:48 +0000
-Message-ID: <20260605083358.1320563-20-khushit.shah@nutanix.com>
-X-Mailer: git-send-email 2.43.7
-In-Reply-To: <20260605083358.1320563-1-khushit.shah@nutanix.com>
-References: <20260605083358.1320563-1-khushit.shah@nutanix.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: PH7PR17CA0007.namprd17.prod.outlook.com
- (2603:10b6:510:324::18) To PH0PR02MB7557.namprd02.prod.outlook.com
- (2603:10b6:510:54::17)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wVVo8-00086U-3F
+ for qemu-arm@nongnu.org; Fri, 05 Jun 2026 10:46:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1780670757;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pO/8EQJqkdldDQ4QRfncy2KBneiT/v+JJKUfe2mKjoo=;
+ b=QcWKXMvWk7vJvP9mBMrTjO7+7qAluUUCTcZ0j/gktfCtc4f+FH/QXs5nc/dpZQTIN7HafJ
+ o9LiDgYHBTzliGqbVdiftluUKTuw/fWj5P7aCeJADeycHmcVLo7yDwMYnncXmBke2pmSZt
+ 5nRtL33qlIrc3xeRJU5SgLxcGpMbUFk=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-404-IXAUWGmhN-yY1qVRsi0Vog-1; Fri, 05 Jun 2026 10:45:56 -0400
+X-MC-Unique: IXAUWGmhN-yY1qVRsi0Vog-1
+X-Mimecast-MFC-AGG-ID: IXAUWGmhN-yY1qVRsi0Vog_1780670755
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-45ef697092fso1267328f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 05 Jun 2026 07:45:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1780670755; x=1781275555;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=pO/8EQJqkdldDQ4QRfncy2KBneiT/v+JJKUfe2mKjoo=;
+ b=K/8DM1HWU7KrOmgLc80ZD9bz9JjlSTo/6VPo0BosFI5jMh8IDrYfon/Gw8p0s7XVVf
+ fVhuL0prY9lqzI5VBQTHRC0SdTYCX9X5cApidNtQgTfOvbPx6Vir876Rmlt9hcuSqvK8
+ ktARxYeG6gfq4ZR0FSvXMEZwSti0y2eNl3/n1zLHjqagmloG6YcZT0WJPn9sSs1L7mPE
+ aU93nar1RZGRc2Yr3OIOrXGGNSMavzVeveV/oAIR80dpurd5escUpb9MHm5zvVKveyVG
+ +kHaeKz0txyJFgjdBMpdJZcUrYh0xmZL/nSDgjTd54+JG+bdHarMbLca2o2IBaZbmDtA
+ yCRw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/z3RkgQgSswXWzDh/1V2oNWhgQm0ZUjpSWVh0GvrVO/lUy3IiqH87+mqvRKhT+L3ghbjtKChsaGg==@nongnu.org
+X-Gm-Message-State: AOJu0Yxr/a2AocBDc4rL0/RoUPTJlD/oIrQberDlzgo8PiNNiRuBsRgd
+ 2K4iFY4r6/BytRuwdXADEWkO1KGHOpFPcG4fNpma02OPSeKQzYxqh+mH2PgkXuRIiSuI7b/Rp1F
+ NL7Nz/lu4EDSyDAiBprol6LCMQPsxd/4OZLZ8t5LYhuMI/CXJgwQq9Q==
+X-Gm-Gg: Acq92OF9CfDg55IKUGZj7ClzLYV88xgtW15qntxpTRkeKgjipxQOGBxgIAXR+4/NQJi
+ mRxySY5L6/r0pxEwcm2m/6XtXt2n3nmAcFoDlU85+F+PJuZ4557GfoOwK974PzguFW+9/9OedQq
+ lvkUvg3oCdYUCKOWLDDHLLoclzXf80wUgJ9z3Hs8G7LWijWXJmPiCrHzut1ECeqnmiByuhBc7jZ
+ W1OLktJVHJACskfZVCr13uauhBX/OoYNjLaTYYIjVHWWlAyDybVVi+SnR3sK/Z6zfZzPkLviJXL
+ lUxMPD2mUmSLm01+wo7I6LpXiUoWgYWdUxooScnE8zza9mhxzPiSZL8XsFcRK5G3nVpHZiB2IlM
+ Kuon3zciRAs4gBePZ
+X-Received: by 2002:a05:600c:5246:b0:489:5022:39a4 with SMTP id
+ 5b1f17b1804b1-490c25d800dmr62687975e9.9.1780670754967; 
+ Fri, 05 Jun 2026 07:45:54 -0700 (PDT)
+X-Received: by 2002:a05:600c:5246:b0:489:5022:39a4 with SMTP id
+ 5b1f17b1804b1-490c25d800dmr62687315e9.9.1780670754465; 
+ Fri, 05 Jun 2026 07:45:54 -0700 (PDT)
+Received: from imammedo ([213.175.37.14]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-490bc23394asm159722215e9.0.2026.06.05.07.45.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Jun 2026 07:45:53 -0700 (PDT)
+Date: Fri, 5 Jun 2026 16:45:49 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eauger@redhat.com>
+Cc: qemu-devel@nongnu.org, mst@redhat.com, anisinha@redhat.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
+ philmd@linaro.org, zhao1.liu@intel.com, rad@semihalf.com,
+ leif.lindholm@oss.qualcomm.com, qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 09/21] arm: virt: create sbsa_gwdt watchdog
+Message-ID: <20260605164549.6bd95592@imammedo>
+In-Reply-To: <7d67628a-6fa0-4c4e-a469-a80adc902549@redhat.com>
+References: <20260303092532.2410177-1-imammedo@redhat.com>
+ <20260303092532.2410177-10-imammedo@redhat.com>
+ <7d67628a-6fa0-4c4e-a469-a80adc902549@redhat.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR02MB7557:EE_|MN6PR02MB10630:EE_
-X-MS-Office365-Filtering-Correlation-Id: 92ea7c37-ec83-418d-0172-08dec2de7c78
-x-proofpoint-crosstenant: true
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|7416014|1800799024|376014|56012099006|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: gQ6HeEhrBZDA0X0i4kylApmWDSs1wmL1/D/9QMK4Wztx6z4F4wn9jTd20lPYQwca/UMdYWCAee+Y5+B88u3WHJmfC4iU0sQ5ghLJWTa1KWchEG25L6zLuoJZjx3D9dhgPQ1dctjzCWJaY+U2TRD0qKs654GZ9iLtSjltKdUWgh6kfmIogohivGnoRSfCibwbZI+X7S9VT/hASVhM1/vbD5lKsKxliSHvXuS0T+KEpvNXVB5SLtxLUv8zHtw4FehgiNeGqJS24dMkO1plTEK6kFoDwKEviiKHdr2vn3JN9UG2A0S56RjfxNhdhSJVIpE4AmiZLkVlZ2Xs1yDXY4gcg0jzSb7RHgDXIEwZFFywNSnJCVnbjqLhyMi2+21s1gqP0I6t9oZFyXELmMFSDNbF/XMnuf8+lonuBZItFi0XVjJQHkXWGlr+3JhuFSyRTh+DTd4Bj98aiyVtVBRBVDq9pDxvDz7b4sSnpyTdYLhVPDy2P/OCF2rbcgFd+EV6rzmWThncXxMlBrikQ/d1ChjqSyXNkXZJaxvkHwchr3WybNZvCC1Z1kH4WLi7acHyDtg2CsP/SjtLgd0Nw2NxhPFkHe1MOcEF/r/RY1NGJPhi8LBGxkt4WoZeW1HhBV79G8FymWuK1qlaE0hooc9ALSvV1360hvieSOOrN6Z7Y6Rn3DzChOdGpEXDpYt1g/W4Mjnb
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR02MB7557.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(7416014)(1800799024)(376014)(56012099006)(18002099003)(22082099003);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qEL4bJKko+1LDABB3qv3giJzzB6qmvHS1YLjlueBKRx63o1XDeDJ9dhTgce0?=
- =?us-ascii?Q?LvMpN3c0aEELPh/U/lYjQv0oit7OnEVGrXPqj3hpMTU97Fbpu3VPqt/ndNGm?=
- =?us-ascii?Q?joyAO9thCeLz5mCB2+/o4knnxHsOnFTQDFpaPgmwC2Ilde7k3aslQhDKop3x?=
- =?us-ascii?Q?jo1y+TGQa+3ONBcZWxSPamys6+BjzC/5+2Ji4n2KbUZGTivfdGkXPspN0g5N?=
- =?us-ascii?Q?kCURlAYQcNd82nCiTqiE8JiGUWFUNlq6Jah2qjQ24mx/Bs8n/STgqLaTaKPi?=
- =?us-ascii?Q?ta1Xim2i72a17Xd8BrLyv+Cz+YXG0RXmAYivZz9C/nAfejpq8RO6TlD24bQw?=
- =?us-ascii?Q?L+P3iZfYxLeSxcfHEMxFwQKqoPBqjHzRVbR+vhmfCK3a4qsZlXzPLToUbakV?=
- =?us-ascii?Q?YStG3Vou6yfzxgZi+vs2jpg7Fb1GbNMxxPpXxssWoYq67RXUkLnLIKDirOmp?=
- =?us-ascii?Q?Q0YQB1CTM0eMPynrole85ZwSLtdx9ksYehBiGUh1ZSq4+541c9DUY5tEsGQp?=
- =?us-ascii?Q?Ts4zb8dWYAJvawPiNmXrABVF9OEDKEW1oGFTSBSm6ujYYMqeOjfKJkgVwE3n?=
- =?us-ascii?Q?WT+uFwsq4BR2N0dA7bUT1LpamAHQlTP4GqjJGq/G9mrr9C5qSm5OhRQVfn2M?=
- =?us-ascii?Q?MSpqR/58uuEMDcwWVwcVoQ/Aa+uo1ceRwYvcrwpenTVe4si5eZleIrhKP0et?=
- =?us-ascii?Q?l4nuO4nRY9LnYrKcNS6uv92QHju/H6i4WHNrds4g1pymrvoVOi43pz2Bupv9?=
- =?us-ascii?Q?r7lO+cCytExKdPkudPd5BJvtx4FBE5N54tQr+D6BEVlv7N/PRG6FWJ6db2la?=
- =?us-ascii?Q?elE/atG+GbP0Uc/DowCDhfvdplN2hYl65a+v1I982IzPO3GcL4J0ELp6Wg3q?=
- =?us-ascii?Q?lEImjft/uOjbCdubII9fUnXBuZOcqcOiqs4I1v0du/yumu/+jPdz1d3duy5Q?=
- =?us-ascii?Q?0lmkETNYfzUULwIuiKHT15nJTkD0K5bB5H7Oxio8afXPsRux9ry4YNjz4DXz?=
- =?us-ascii?Q?7H6fXWzRvBheGEZY4FqDSMHPlHca706VuYBpxgYvZdwXvGYY15wvug6s20k7?=
- =?us-ascii?Q?NYZlQBn98666LoC9MtkykpGyhlqYE7gx7KWqBjrsPh5l253bsn9AZEtNeCpW?=
- =?us-ascii?Q?9nQ1vUSQRbojW7QkFT0xcRavLmpgfy1q6vlB5qOHPEXnHUvtQrnr03egPTNr?=
- =?us-ascii?Q?Mqp6SvswYWpNBeNrBf9suJ7ejavdv/4Mk5cn6hkET7mNB7/n3jEHuV93lefb?=
- =?us-ascii?Q?8xkiSM8eAexc/qj8ee+2TCmmE3+ejzGQV/fPRaogdsO64x+thBpcPkl79FqD?=
- =?us-ascii?Q?4ZGoYSB/Ut5AEDszAmF6yQ/7tXvoo4afmZRV8yjueB8RXPYPUTD1qOvS+qVw?=
- =?us-ascii?Q?PN9qlouL/eCo0zpeN70lYVhTOJYnhKTel4vR4T0Odv0dgPmswMKh1xj+dcv7?=
- =?us-ascii?Q?HFWpa2emZXvqhbx1e01Z3o/+YE2dOc6+1O5PJhPMc2on75PRlaQmn8vIvfkp?=
- =?us-ascii?Q?6InNqfxZ5osimXIGxcZqILpgGHnZpTkbr/NMi1hCnk0vCHBSg2r8eaqm5n1p?=
- =?us-ascii?Q?eHKa5wDyJY+QDnwpC0AKGeiHegSqzNyTnaFH38tLUwN8ZR36g4LYiOywtiW0?=
- =?us-ascii?Q?VRi+Rb5xUEyrketI4Nmo1FvjlRhBGT2+YKT5yEdwew2zYTRKK5MyVzgQdQge?=
- =?us-ascii?Q?Rbw/wrvY4zgV/5qCAYpNrQWakCRoWr9BmjONEJRnAfPmQ1Mja1Vp0ot0zk4J?=
- =?us-ascii?Q?1TzRADigdtpUisoDnTgb+bvb87d+F5U=3D?=
-X-Exchange-RoutingPolicyChecked: jSZvH0JP7vSJTniseZKpoM4A+yJpynX3lzUMWxy8P4oSEU48x+x4aMHGEP0oe70vPssx0UnH1vNybRNsF52VGjNUXHslbBVnLyATxOJO4APmP8n2BilgEksZ1DT7F1WMfJCeIQaqq/4lp/RCS8ifvIhz2Ijqjydn0yAzVk+LDnmPNemLG5gn+R+OCjRVH0cVeQwNMiaEi5ZeyhzP6S2A1MPBTzheR+tzr8wBRscqODpT+/ObbHpyrWQZXwevtyNZLOpX1WelY+wb7jamtRg6VQTHshcw/lxDp0AM4T+1qa/cEqeyB/i7Q4MHn+R/T/LfkUd1YD/1Qt3YpD4Rb82joQ==
-X-OriginatorOrg: nutanix.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 92ea7c37-ec83-418d-0172-08dec2de7c78
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR02MB7557.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jun 2026 08:43:16.1400 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: bb047546-786f-4de1-bd75-24e5b6f79043
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: RY77zSEbTl/+JZKgL0cpXOIyGjUWlK0NQhSqsnUdb/qBSlo+4Tvv1TpXJyfx7eySZGCee1vD4mCM+VCuDmv8HKcw2jAqeJkkPA7S6p1Ae9M=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN6PR02MB10630
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjA1MDA4MyBTYWx0ZWRfX0oaexxK7XJNZ
- yfOSqdTGblWEyFi2AYNBrSt/WSaCRJedkPOWK18QeDjGEi7rofBwQ2sQuaSIFlY+MVNgu1Qz6W3
- M0/tPr6gBuIQmmdL7iuP3+XjaSV4KmmUoEwmQImqa+1IsEajga2wxcrlKcIkuXJF19g1pqJJtCM
- AAh1pQoRLeuzTBlQFi5Wd3rtOF79d4LJgbuOnB6GhZWEoJdYcu2ovXDodt3ugqPs7pvRREtQf6l
- F6PEZrIi1jgA9DJH9Lz1KJYLa+jLSKNQkrxv3Li7cqyVW4s7cQePpYXi8tmV4d6bTRmPPLogeRV
- qEmcrYi0wRE+sh+McU8q9ck9HRUqmDPXiU6HewiFZsEhU8S1rUw7rRpRTqSgPMZ6mHHTTKANEKH
- XvxpxsYRJoh9k/w8N6TUdc6+RVpgLh02yrAer9+eleixyWmwHgdgcPRAB0yCgOXU62eu6fm9mrG
- 58dRueNXqEWiZWCvTdw==
-X-Proofpoint-ORIG-GUID: OTI67p7ho0Dq2NSHe2R-JdP5MV4fEEGY
-X-Authority-Analysis: v=2.4 cv=V6FNF+ni c=1 sm=1 tr=0 ts=6a228c28 cx=c_pps
- a=h3Jk+6XEKCuoUZR+ZnWw9Q==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
- a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
- a=xqWC_Br6kY4A:10 a=FelO9ux0wxsA:10 a=0kUYKlekyDsA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=0LlEyIVc8U2lsR7dKhuH:22
- a=64Cc0HZtAAAA:8 a=wDSBecT5HbJQFDkPd9kA:9
-X-Proofpoint-GUID: OTI67p7ho0Dq2NSHe2R-JdP5MV4fEEGY
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-06-05_01,2026-05-28_03,2025-10-01_01
-X-Proofpoint-Spam-Reason: safe
-Received-SPF: pass client-ip=148.163.155.12;
- envelope-from=khushit.shah@nutanix.com; helo=mx0b-002c1b01.pphosted.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 6v0Y9hZcvNQ6Cjq-iaaEHslQluPgyvIn67ARe1fkC7A_1780670755
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -188,180 +116,219 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Define sve composite property for named cpu model. The sub-property
-list contains: feat_SVE, hw_prop_SVEVer, feat_SVE_AES, feat_SVE_ELTPERM,
-feat_SVE_BITPERM, feat_SVE_BFLOAT16, feat_SVE_B16B16, feat_SVE_SHA3,
-feat_SVE_SM4, feat_SVE_I8MM, feat_SVE_F16MM, feat_SVE_F32MM,
-feat_SVE_F64MM and sve* QEMU vector-length toggles.
+On Thu, 4 Jun 2026 18:48:28 +0200
+Eric Auger <eauger@redhat.com> wrote:
 
-Also add appropiate sve composite model values for neoverse-v1-v1,
-neoverse-v2-v1 and grace-v1.
+> Hi Igor,
+> 
+> On 3/3/26 10:25 AM, Igor Mammedov wrote:
+> > Allow to use SBSA generic watchdog with virt machine type.
+> > (includes conditional generation of corresponding FDT and
+> > ACPI GTDT descriptors)
+> > 
+> > Use '-device sbsa_gwdt' to command line to enable it.  
+> don't we use '-' instead of '_' in general. At least this is the case
+> for dynamically instantiable arm-smmuv3 device. Better to align
 
-In cpu64.c mandate a SVE vector length if named cpu model enables SVE.
+device names are usually ABI, when the get leaked to users,
+and another place it might break would be migration.
 
-Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
----
- target/arm/arm-cpu-models.c | 35 +++++++++++++++++++++++++++++++++++
- target/arm/arm-cpu-props.c  | 25 +++++++++++++++++++++++++
- target/arm/cpu64.c          | 14 +++++++++++++-
- 3 files changed, 73 insertions(+), 1 deletion(-)
+I agree with s/_/-/, but let me check/test. if it doesn't break
+migration, I think we are good to go with rename. 
 
-diff --git a/target/arm/arm-cpu-models.c b/target/arm/arm-cpu-models.c
-index 1fe20b7d6e..8a725a0c26 100644
---- a/target/arm/arm-cpu-models.c
-+++ b/target/arm/arm-cpu-models.c
-@@ -90,6 +90,14 @@ static const ArmModelPropValue neoverse_v1_v1_pauth_props[] = {
-     MODEL_PROP_END,
- };
- 
-+static const ArmModelPropValue neoverse_v1_v1_sve_props[] = {
-+    MODEL_PROP("feat_SVE", STR, "on"),
-+    MODEL_PROP("feat_SVE_BFLOAT16", STR, "on"),
-+    MODEL_PROP("feat_SVE_I8MM", STR, "on"),
-+    MODEL_PROP("sve128", BOOL, true),
-+    MODEL_PROP_END,
-+};
-+
- static const ArmModelPropValue neoverse_v1_v1_props[] = {
-     MODEL_PROP("cpu_implementer", NUM, 0x41),
-     MODEL_PROP("cpu_variant", NUM, 0x1),
-@@ -153,6 +161,7 @@ static const ArmModelPropValue neoverse_v1_v1_props[] = {
- 
-     MODEL_PROP("hw_prop_BS", NUM, 0x4),
-     MODEL_PROP_COMP("pauth", true, neoverse_v1_v1_pauth_props),
-+    MODEL_PROP_COMP("sve", true, neoverse_v1_v1_sve_props),
- 
-     MODEL_PROP_END,
- };
-@@ -210,6 +219,16 @@ static const ArmModelPropValue neoverse_v2_v1_pauth_props[] = {
-     MODEL_PROP_END,
- };
- 
-+static const ArmModelPropValue neoverse_v2_v1_sve_props[] = {
-+    MODEL_PROP("feat_SVE", STR, "on"),
-+    MODEL_PROP("hw_prop_SVEVer", STR, "sve2"),
-+    MODEL_PROP("feat_SVE_BFLOAT16", STR, "on"),
-+    MODEL_PROP("feat_SVE_BITPERM", STR, "on"),
-+    MODEL_PROP("feat_SVE_I8MM", STR, "on"),
-+    MODEL_PROP("sve128", BOOL, true),
-+    MODEL_PROP_END,
-+};
-+
- static const ArmModelPropValue neoverse_v2_v1_props[] = {
-     MODEL_PROP("cpu_implementer", NUM, 0x41),
-     MODEL_PROP("cpu_variant", NUM, 0x0),
-@@ -271,10 +290,25 @@ static const ArmModelPropValue neoverse_v2_v1_props[] = {
- 
-     MODEL_PROP("hw_prop_BS", NUM, 0x4),
-     MODEL_PROP_COMP("pauth", true, neoverse_v2_v1_pauth_props),
-+    MODEL_PROP_COMP("sve", true, neoverse_v2_v1_sve_props),
- 
-     MODEL_PROP_END,
- };
- 
-+static const ArmModelPropValue grace_v1_sve_props[] = {
-+    MODEL_PROP("feat_SVE", STR, "on"),
-+    MODEL_PROP("hw_prop_SVEVer", STR, "sve2"),
-+    MODEL_PROP("feat_SVE_BFLOAT16", STR, "on"),
-+    MODEL_PROP("feat_SVE_BITPERM", STR, "on"),
-+    MODEL_PROP("feat_SVE_I8MM", STR, "on"),
-+    MODEL_PROP("sve128", BOOL, true),
-+
-+    /* Grace SVE crypto adds */
-+    MODEL_PROP("feat_SVE_AES", STR, "pmull128"),
-+    MODEL_PROP("feat_SVE_SHA3", STR, "on"),
-+    MODEL_PROP("feat_SVE_SM4", STR, "on"),
-+    MODEL_PROP_END,
-+};
- 
- static const ArmModelPropValue grace_v1_props[] = {
-     MODEL_PROP("cpu_revision", NUM, 0x0),
-@@ -290,6 +324,7 @@ static const ArmModelPropValue grace_v1_props[] = {
-     MODEL_PROP("hw_prop_DIC", BOOL, true),
- 
-     MODEL_PROP("cpu_revidr", NUM, 1),
-+    MODEL_PROP_COMP("sve", true, grace_v1_sve_props),
- 
-     MODEL_PROP_END,
- };
-diff --git a/target/arm/arm-cpu-props.c b/target/arm/arm-cpu-props.c
-index 11f45523a0..94672040c5 100644
---- a/target/arm/arm-cpu-props.c
-+++ b/target/arm/arm-cpu-props.c
-@@ -298,6 +298,20 @@ static const char *pauth_sub_props[] = {
-     NULL
- };
- 
-+static const char *sve_sub_props[] = {
-+    "feat_SVE", "hw_prop_SVEVer", "feat_SVE_AES",
-+    "feat_SVE_ELTPERM", "feat_SVE_BITPERM",
-+    "feat_SVE_BFLOAT16", "feat_SVE_B16B16",
-+    "feat_SVE_SHA3", "feat_SVE_SM4", "feat_SVE_I8MM",
-+    "feat_SVE_F16MM", "feat_SVE_F32MM", "feat_SVE_F64MM",
-+    /* QEMU vector-length toggles */
-+    "sve128", "sve256", "sve384", "sve512",
-+    "sve640", "sve768", "sve896", "sve1024",
-+    "sve1152", "sve1280", "sve1408", "sve1536",
-+    "sve1664", "sve1792", "sve1920", "sve2048",
-+    NULL
-+};
-+
- static void pauth_get(ARMCPU *cpu, Visitor *v, const char *name, Error **errp)
- {
-     uint64_t apa, api, apa3;
-@@ -312,8 +326,19 @@ static void pauth_get(ARMCPU *cpu, Visitor *v, const char *name, Error **errp)
-     visit_type_bool(v, name, &pauth, errp);
- }
- 
-+static void sve_get(ARMCPU *cpu, Visitor *v, const char *name, Error **errp)
-+{
-+    uint64_t sve;
-+    bool sve_enabled = false;
-+
-+    arm_idreg_field_read(&cpu->isar, ARM_FIELD_IDX(ID_AA64PFR0, SVE), &sve);
-+    sve_enabled = sve != 0;
-+    visit_type_bool(v, name, &sve_enabled, errp);
-+}
-+
- const ArmCpuPropDesc arm_composite_props[] = {
-     ARM_COMPOSITE_PROP_GS("pauth", pauth_sub_props, pauth_get, pauth_set),
-+    ARM_COMPOSITE_PROP("sve", sve_sub_props, sve_get),
-     { .name = NULL }
- };
- 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index d326b3220a..2fa5b4d9da 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -134,6 +134,19 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
-             return;
-         }
- 
-+        /*
-+         * If SVE is enabled but no vector lengths are specified, we must not
-+         * default to the host's supported lengths for named CPU models, as
-+         * this breaks live migration.
-+         */
-+        {
-+            ARMCPUClass *acc = ARM_CPU_GET_CLASS(cpu);
-+            if (acc->info && arm_find_model(acc->info->name)) {
-+                error_setg(errp, "Named CPU models with SVE must set vector lengths");
-+                return;
-+            }
-+        }
-+
-         if (kvm_enabled()) {
-             /* Disabling a supported length disables all larger lengths. */
-             tmp = vq_init & vq_supported;
-@@ -569,7 +582,6 @@ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
-         }
-     }
- 
--
-     /*
-      * These properties enable or disable Pauth as a whole, or change
-      * the pauth algorithm, but do not change the set of features that
--- 
-2.52.0
+> 
+> also this is the terminology used in the fdt compat string
+> $id: http://devicetree.org/schemas/watchdog/arm,sbsa-gwdt.yaml#
+>     const: arm,sbsa-gwdt
+> 
+> > 
+> > Tested with Fedora 43:
+> >   FDT: -M virt,acpi=off -device sbsa_gwdt
+> >   ACPI: -M virt -device sbsa_gwdt
+> > 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> >  hw/arm/Kconfig           |  1 +
+> >  hw/arm/virt-acpi-build.c | 33 +++++++++++++++++++++++++++++++--
+> >  hw/arm/virt.c            |  2 ++
+> >  hw/core/sysbus-fdt.c     | 32 ++++++++++++++++++++++++++++++++
+> >  hw/watchdog/sbsa_gwdt.c  |  1 +
+> >  5 files changed, 67 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> > index c66c452737..1222efadd1 100644
+> > --- a/hw/arm/Kconfig
+> > +++ b/hw/arm/Kconfig
+> > @@ -36,6 +36,7 @@ config ARM_VIRT
+> >      select VIRTIO_MEM_SUPPORTED
+> >      select ACPI_CXL
+> >      select ACPI_HMAT
+> > +    select WDT_SBSA
+> >  
+> >  config CUBIEBOARD
+> >      bool
+> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > index 719d2f994e..9c14b1d4d5 100644
+> > --- a/hw/arm/virt-acpi-build.c
+> > +++ b/hw/arm/virt-acpi-build.c
+> > @@ -64,6 +64,7 @@
+> >  #include "hw/virtio/virtio-acpi.h"
+> >  #include "target/arm/cpu.h"
+> >  #include "target/arm/multiprocessing.h"
+> > +#include "hw/watchdog/sbsa_gwdt.h"
+> >  
+> >  #define ARM_SPI_BASE 32
+> >  
+> > @@ -863,6 +864,8 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >      const uint32_t irqflags = 0;  /* Interrupt is Level triggered  */
+> >      AcpiTable table = { .sig = "GTDT", .rev = 3, .oem_id = vms->oem_id,
+> >                          .oem_table_id = vms->oem_table_id };
+> > +    uint32_t gtdt_start = table_data->len;
+> > +    Object *wdt = object_resolve_type_unambiguous(TYPE_WDT_SBSA, NULL);
+> >  
+> >      acpi_table_begin(&table, table_data);
+> >  
+> > @@ -893,10 +896,15 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >      build_append_int_noprefix(table_data, irqflags, 4);
+> >      /* CntReadBase Physical address */
+> >      build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
+> > +
+> >      /* Platform Timer Count */
+> > -    build_append_int_noprefix(table_data, 0, 4);
+> > +    build_append_int_noprefix(table_data,  wdt ? 1 : 0, 4);
+> >      /* Platform Timer Offset */
+> > -    build_append_int_noprefix(table_data, 0, 4);
+> > +    build_append_int_noprefix(table_data,
+> > +        wdt ? (table_data->len - gtdt_start) +
+> > +              4 + 4 + 4 /* len of this & following 2 fields to skip */
+> > +            : 0, 4);
+> > +
+> >      if (vms->ns_el2_virt_timer_irq) {
+> >          /* Virtual EL2 Timer GSIV */
+> >          build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL2_VIRT_IRQ, 4);
+> > @@ -906,6 +914,27 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >          build_append_int_noprefix(table_data, 0, 4);
+> >          build_append_int_noprefix(table_data, 0, 4);
+> >      }
+> > +
+> > +    /* ACPI 6.5 spec: 5.2.25.2 ARM Generic Watchdog Structure (Table 5-124) */  
+> 5.124
+> > +    if (wdt) {
+> > +        PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
+> > +        SysBusDevice *sd = SYS_BUS_DEVICE(wdt);
+> > +        hwaddr mmio_base = vms->memmap[VIRT_PLATFORM_BUS].base;
+> > +        hwaddr rbase = mmio_base + platform_bus_get_mmio_addr(pbus, sd, 0);
+> > +        hwaddr cbase = mmio_base + platform_bus_get_mmio_addr(pbus, sd, 1);
+> > +        int irq = ARM_SPI_BASE + vms->irqmap[VIRT_PLATFORM_BUS] +
+> > +                  platform_bus_get_irqn(pbus, sd, 0);
+> > +
+> > +        build_append_int_noprefix(table_data, 1 /* Type: Watchdog GT */, 1);
+> > +        build_append_int_noprefix(table_data, 28 /* Length */, 2);
+> > +        build_append_int_noprefix(table_data, 0, 1);  /* Reserved */
+> > +        /* RefreshFrame Physical Address */
+> > +        build_append_int_noprefix(table_data, rbase, 8);
+> > +        /* WatchdogControlFrame Physical Address */
+> > +        build_append_int_noprefix(table_data, cbase, 8);
+> > +        build_append_int_noprefix(table_data, irq, 4); /* Watchdog Timer GSIV */
+> > +        build_append_int_noprefix(table_data, 0, 4); /* Watchdog Timer Flags */  
+> level, active high, non secure
+> > +    }
+> >      acpi_table_end(linker, &table);
+> >  }
+> >  
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index cab2e21e8a..a87991b591 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -95,6 +95,7 @@
+> >  #include "hw/cxl/cxl.h"
+> >  #include "hw/cxl/cxl_host.h"
+> >  #include "qemu/guest-random.h"
+> > +#include "hw/watchdog/sbsa_gwdt.h"
+> >  
+> >  static GlobalProperty arm_virt_compat_defaults[] = {
+> >      { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
+> > @@ -3474,6 +3475,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_UEFI_VARS_SYSBUS);
+> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3);
+> > +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_WDT_SBSA);
+> >  #ifdef CONFIG_TPM
+> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+> >  #endif
+> > diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+> > index 89d0c46445..76aa1bc579 100644
+> > --- a/hw/core/sysbus-fdt.c
+> > +++ b/hw/core/sysbus-fdt.c
+> > @@ -36,6 +36,7 @@
+> >  #include "hw/display/ramfb.h"
+> >  #include "hw/uefi/var-service-api.h"
+> >  #include "hw/arm/fdt.h"
+> > +#include "hw/watchdog/sbsa_gwdt.h"
+> >  
+> >  /*
+> >   * internal struct that contains the information to create dynamic
+> > @@ -118,6 +119,36 @@ static int add_uefi_vars_node(SysBusDevice *sbdev, void *opaque)
+> >      return 0;
+> >  }
+> >  
+> > +static int add_sbsa_gwdt_node(SysBusDevice *sbdev, void *opaque)
+> > +{
+> > +    PlatformBusFDTData *data = opaque;
+> > +    PlatformBusDevice *pbus = data->pbus;
+> > +    const char *parent_node = data->pbus_node_name;
+> > +    void *fdt = data->fdt;
+> > +    uint64_t cbase, rbase;
+> > +    char *nodename;
+> > +    int irq;
+> > +
+> > +    cbase = platform_bus_get_mmio_addr(pbus, sbdev, 1);  /* control frame */
+> > +    rbase = platform_bus_get_mmio_addr(pbus, sbdev, 0);  /* refresh frame */
+> > +    irq = platform_bus_get_irqn(pbus, sbdev, 0);
+> > +
+> > +    nodename = g_strdup_printf("%s/watchdog@%" PRIx64, parent_node, cbase);
+> > +    qemu_fdt_add_subnode(fdt, nodename);
+> > +
+> > +    qemu_fdt_setprop_string(fdt, nodename, "compatible", "arm,sbsa-gwdt");
+> > +    qemu_fdt_setprop_cells(fdt, nodename, "reg",
+> > +                           cbase, SBSA_GWDT_CMMIO_SIZE,
+> > +                           rbase, SBSA_GWDT_RMMIO_SIZE);
+> > +    qemu_fdt_setprop_cells(fdt, nodename, "interrupts",
+> > +                           GIC_FDT_IRQ_TYPE_SPI, data->irq_start + irq,
+> > +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> > +    qemu_fdt_setprop_cell(fdt, nodename, "timeout-sec", 30);
+> > +
+> > +    g_free(nodename);
+> > +    return 0;
+> > +}
+> > +
+> >  static int no_fdt_node(SysBusDevice *sbdev, void *opaque)
+> >  {
+> >      return 0;
+> > @@ -140,6 +171,7 @@ static const BindingEntry bindings[] = {
+> >      TYPE_BINDING(TYPE_ARM_SMMUV3, no_fdt_node),
+> >      TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
+> >      TYPE_BINDING(TYPE_UEFI_VARS_SYSBUS, add_uefi_vars_node),
+> > +    TYPE_BINDING(TYPE_WDT_SBSA, add_sbsa_gwdt_node),
+> >      TYPE_BINDING("", NULL), /* last element */
+> >  };
+> >  
+> > diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
+> > index acb970e8b3..c4dd8005b7 100644
+> > --- a/hw/watchdog/sbsa_gwdt.c
+> > +++ b/hw/watchdog/sbsa_gwdt.c
+> > @@ -285,6 +285,7 @@ static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, const void *data)
+> >      dc->realize = wdt_sbsa_gwdt_realize;
+> >      device_class_set_legacy_reset(dc, wdt_sbsa_gwdt_reset);
+> >      dc->hotpluggable = false;
+> > +    dc->user_creatable = true;
+> >      set_bit(DEVICE_CATEGORY_WATCHDOG, dc->categories);
+> >      dc->vmsd = &vmstate_sbsa_gwdt;
+> >      dc->desc = "SBSA-compliant generic watchdog device";  
+> Thanks
+> 
+> Eric
+> 
+> 
 
 

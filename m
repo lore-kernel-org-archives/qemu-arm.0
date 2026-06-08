@@ -4,101 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E10ACD8C9D
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 11:24:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19260CD8C9D
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 11:39:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWY5W-0000ho-4d; Mon, 08 Jun 2026 07:24:14 -0400
+	id 1wWYJy-0005B4-HY; Mon, 08 Jun 2026 07:39:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWY5U-0000gv-Jo
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 07:24:12 -0400
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWY5S-0007nD-Cb
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 07:24:12 -0400
-Received: by mail-yx1-xb12e.google.com with SMTP id
- 956f58d0204a3-660e9ff0587so1671564d50.0
- for <qemu-arm@nongnu.org>; Mon, 08 Jun 2026 04:24:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1780917849; cv=none;
- d=google.com; s=arc-20240605;
- b=R/vGKa0lwknV/7j8rxSwBep85bgf29YFZUni4iF+9ozNLfEABR414zmTE/MbyuGWPE
- dJkoIuJZO3n6CKi4CzILKcbaK9tJHRMFLR29dYg2bsGTQETccBGRpZIEMV1ecgrRLcvf
- t0WwgB3RXqLeKKY6a1e904XC+SAHvN2wypyd2VFMHVn2BYjqjzJg4Sp4pdtCZIeTPU4g
- zIbowaeL2MGERhDnfBJHUSkgYhvzmCIxU1Q5b1EgfN7RibRoEfYjK0CUhh1lGZQgaVVy
- LJnfxmrpmoRZ9NR/n3mNbmwZCPiiiV/f2D1dYJMSbhT0PWvJ4Vy5nGL/khV/VgQNN8/M
- qrlQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=c8O2L2fUkVgHrAoxPRr1mVmkz2Nr7Q7MrmLIszm84pU=;
- fh=oG+53MsbmDmhmmXFFz1mQNyImwWicRcBuUgrcYPHlSg=;
- b=QE1G76TnJDaWm6V4XEnbvKlhWw11+jj1dcUkQ0U6B5OM5h07/uR+PevdX7RbcWeX+F
- jq5CGkUf0YucSmBW+h+HTYrMK3RqG7VDQASrytZy8ri5Juc1/XwnrNRbTm5QDpsMLLqu
- MikuNJzGt62THwSzZTeF9pDdjcE/llsQwtYhyEISY+HUjTfdMUzKALSlczjYbXJxROYU
- 8WugWcKXtG/f+pnr1HYCWJ0hWW4lbqCO6Crr/swHj1q5B7B5GMUWxOSnA0G34+vCuhS3
- 0wCIzzGSi/F5ryyTv7PLow/uvA7x67t2UHR+Gn0qKqvCvvauSXvMXu+Vw80zUjeX+EAY
- KRmA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780917849; x=1781522649; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=c8O2L2fUkVgHrAoxPRr1mVmkz2Nr7Q7MrmLIszm84pU=;
- b=qsQH+zIiOYohHmiX27IXlKPQRy0LEI3YDB0fi2JqaeYlZCVXlF0LPO8pzbdUM5bu41
- T9sMtY9uZ5sAma+LSbBeOTB/GePGLd6ipvMftDPdOmvppHbOR5x3meCfsZXyitZ0Kvau
- EqJtylF+YCKm547wugpwUKdNP6knjd6EUB8Fr9xSyPt1WK8/qRZG+44VL3Foz0Uo5YZ9
- 02+XZ8bN6HedUvxReQVesO+Zk0wGfijcY1nNSfq0dtlnt1Db6o0k2V3g8+A5HpSFN7IV
- +oWEVzTjxp7SBkznbTd8Z7yJN+lAOOeB3uiIf75ohyFmSJSLpPvARDecTQ+73P901+Db
- Va1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780917849; x=1781522649;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=c8O2L2fUkVgHrAoxPRr1mVmkz2Nr7Q7MrmLIszm84pU=;
- b=luLgTimeUnOGk+OLquzcNdG0HGK4D1Jpmxdf/adTIv3EA9HcgbMJSGsXVs78IsPUhk
- vlvtOFKcxfBwc2o5VNfbusoqVTpc205NjKFHvudxKIln7YIcm8um1nYrdPFkUyeZk6C3
- CmdjIKbVFcy2+cF47/Hr+5DH1mIzaXbLpvOtgBxA741e3FNmrRTc1fyFgHKnGXpEI9zE
- ZMoBO8mXYHxm0Srkgl20yByBiEsPXVnI5X8BL//s4MIwMF5Gm+AU9zh4vzoNcvVkCOhR
- tNWDBGxI/STHniIKPFythwBZKlz/ifX7LqXAEstoyEfnHJJOKd/qjZPPOBoLP3ULecMA
- Kg3A==
-X-Gm-Message-State: AOJu0Yw6WYIUkXn7wgioY2IH88VpRz+AB8SZJvvJJd7LFoca51O5X63j
- yoc4rPUoTth7xZHuG4n62g/kcOQ4jbd14s+9v/793/rtsaWWYqtl1TVFkh3+EbkLIbuJ9OsPl0z
- pSljBsswrD8LHgdfT0h4SUmV2WEtYXMVMGnYgXHEFwQ==
-X-Gm-Gg: Acq92OGu6cWP0/iKc20fpjZw6VgHjAQlfW5LNKPv8wxPoyyRBmcgV2KyG177Kmpg0Et
- SptBZOSFpRvf8IghwCKNhcvN1e+cUqsElXTinpYP6Bm6Vcn4LKinMi5JtR+/AlhKRnO3ClUySG+
- v6RTF299JC7aeE5mlpUbxoO4kcgWOdOYRMrmY2Ri7auYGyNzzOqQ7dNYilx8VLyTZ0//H6I89vS
- 0XdfEVe6rax4/J4uI2EQApZpxNoK9IZTDZdtws1zqBdYjynWL07yBPFxNz5SWwVNDNFZKZlb46K
- y/5fcwg/ijz4gaHbvE54iX1tFVSZ5ks0kz+QIdLN/uBshtn/AQ2BaTbW6ouHiXUTq8jsamyfc2H
- p8w==
-X-Received: by 2002:a05:690e:bc8:b0:661:1307:3d48 with SMTP id
- 956f58d0204a3-661130740c1mr10639258d50.23.1780917848457; Mon, 08 Jun 2026
- 04:24:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1wWYJw-0005AU-7s
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 07:39:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1wWYJt-0006YY-Ft
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 07:39:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1780918743;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=R7U8ggQahttMFndg7bBnoA6ZA81bWpOUflLpAgHxqM4=;
+ b=eELdQCR6oP7Sqhw9BozbrMWcKPfr8xresoqkKPFECddgJk2ygk5FVL67wPKtuel2Y2UGGZ
+ mAhm02aDHZZxLBBweHHO0Epo0ra2QFUk9C7pbFmxDpUw/NHSKeZCrMIv2HsSZLAXqQpKeW
+ 4b72oLbVMNBC6znIlEkCMZwd8bQ282A=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-8-iwXai69yPte3MtlYnicYCw-1; Mon,
+ 08 Jun 2026 07:39:00 -0400
+X-MC-Unique: iwXai69yPte3MtlYnicYCw-1
+X-Mimecast-MFC-AGG-ID: iwXai69yPte3MtlYnicYCw_1780918739
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C4992195609F; Mon,  8 Jun 2026 11:38:58 +0000 (UTC)
+Received: from redhat.com (unknown [10.44.49.219])
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 51E24765; Mon,  8 Jun 2026 11:38:55 +0000 (UTC)
+Date: Mon, 8 Jun 2026 12:38:51 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Cc: Peter Xu <peterx@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, mst@redhat.com, jugraham@redhat.com,
+ shan.gavin@gmail.com
+Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
+ parent if possible
+Message-ID: <aiapywnJY64G7nUK@redhat.com>
+References: <20260608001821.850921-1-gshan@redhat.com>
+ <aiaDgG26a6TUrKuM@redhat.com>
+ <07ca74b4-52a8-4187-a57c-7c3277e574d3@redhat.com>
 MIME-Version: 1.0
-References: <20260605035012.2876664-1-kylefoxaustin.github@gmail.com>
-In-Reply-To: <20260605035012.2876664-1-kylefoxaustin.github@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Jun 2026 12:23:57 +0100
-X-Gm-Features: AVVi8Cf1YcfRehQFXbdyBu7dAdzHEoCPFxNgwnUWRXjKhCAxpUoC7Fe1mwSc-ck
-Message-ID: <CAFEAcA_JpBaHDucOfvc9NYkQhQBu0Py9hULTNcXajUo9gW6VGw@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: honour CCR.BFHFNMIGN for probed data BusFaults
-To: Kyle Fox <kylefoxaustin.github@gmail.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <07ca74b4-52a8-4187-a57c-7c3277e574d3@redhat.com>
+User-Agent: Mutt/2.3.2 (2026-04-26)
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: Ulx41vkB0YqyKzqfcqdb0bk4_1t-cJq0vatlfqsuTi4_1780918739
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,110 +91,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 5 Jun 2026 at 04:50, Kyle Fox <kylefoxaustin.github@gmail.com> wrote:
->
-> M-profile CCR.BFHFNMIGN lets software executing at a negative execution
-> priority (in HardFault/NMI, or with FAULTMASK set) suppress precise data
-> BusFaults caused by load/store instructions: the access completes
-> returning UNKNOWN data, the fault status is recorded in BFSR/BFAR, but no
-> BusFault exception is taken. Software uses this to probe for the presence
-> of a device.
->
-> QEMU stored CCR.BFHFNMIGN but never consumed it: arm_cpu_do_transaction_
-> failed() always raised the external abort, which arm_v7m_cpu_do_interrupt()
-> pended as a BusFault and then escalated to a HardFault it could not take at
-> priority -1, aborting the VM with "Lockup: can't escalate 3 to HardFault".
->
-> Honour the bit in arm_cpu_do_transaction_failed(): when the access is a
-> data access from M-profile code at negative priority with BFHFNMIGN set,
-> record PRECISERR/BFARVALID and BFAR and return without raising, so the
-> faulting instruction completes instead of re-faulting forever. Instruction
-> fetches are unaffected, since BFHFNMIGN applies only to data accesses.
->
-> This surfaced running the real NXP i.MX 95 System Manager firmware on the
-> emulated Cortex-M33: its SystemMemoryProbe() (set BFHFNMIGN + FAULTMASK,
-> do the access, test CFSR.BFARVALID) locked up the VM. With this change the
-> SM's debug-monitor memory-probe commands run and recover correctly.
->
-> Signed-off-by: Kyle Fox <kylefoxaustin.github@gmail.com>
-> ---
-> Found while bringing up an out-of-tree i.MX 95 machine running the real NXP
-> System Manager firmware on the emulated Cortex-M33; the change is generic to
-> any ARMv7-M guest that probes for devices via BusFault suppression. It is
-> independent of (and posted alongside) a separate PMSAv7 MPU align-down fix
-> from the same bring-up.
->
-> The new path only runs for an M-profile data access at negative priority with
-> CCR.BFHFNMIGN set - the previously-broken case that aborted the VM. Normal
-> BusFaults (no BFHFNMIGN, or at non-negative priority) and instruction fetches
-> are unchanged.
->
-> Tested on master: qemu-system-arm builds clean, and the ARMv7-M / MPS2 qtests
-> pass with no regression -- boot-serial (incl. stm32vldiscovery, Cortex-M3),
-> the stm32l4x5 suite (Cortex-M4: exti/gpio/rcc/syscfg/usart), microbit,
-> sse-timer and cmsdk-apb-watchdog.
->
->  target/arm/tcg/tlb_helper.c | 24 ++++++++++++++++++++++++
->  1 file changed, 24 insertions(+)
->
-> diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-> index f90765cb59..cbef9cb03e 100644
-> --- a/target/arm/tcg/tlb_helper.c
-> +++ b/target/arm/tcg/tlb_helper.c
-> @@ -10,6 +10,7 @@
->  #include "helper.h"
->  #include "internals.h"
->  #include "cpu-features.h"
-> +#include "hw/intc/armv7m_nvic.h"
->
->  /*
->   * Returns true if the stage 1 translation regime is using LPAE format page
-> @@ -318,8 +319,31 @@ void arm_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
->                                     MemTxResult response, uintptr_t retaddr)
->  {
->      ARMCPU *cpu = ARM_CPU(cs);
-> +    CPUARMState *env = &cpu->env;
->      ARMMMUFaultInfo fi = {};
->
-> +    /*
-> +     * For M-profile, CCR.BFHFNMIGN lets software executing at a negative
-> +     * priority (in HardFault/NMI, or with FAULTMASK set) suppress precise
-> +     * data BusFaults from load/store instructions: the access completes
-> +     * returning UNKNOWN data (the store is dropped), the fault status is
-> +     * recorded in BFSR/BFAR, but no BusFault exception is taken. This is
-> +     * the mechanism software uses to probe for the presence of a device
-> +     * (e.g. the NXP System Manager's SystemMemoryProbe). Honour it by
-> +     * recording the status and returning without raising, so the faulting
-> +     * instruction completes rather than re-faulting forever. BFHFNMIGN
-> +     * applies only to data accesses, so instruction fetches are unaffected.
-> +     */
-> +    if (arm_feature(env, ARM_FEATURE_M) &&
-> +        access_type != MMU_INST_FETCH &&
-> +        (env->v7m.ccr[M_REG_NS] & R_V7M_CCR_BFHFNMIGN_MASK) &&
-> +        armv7m_nvic_neg_prio_requested(env->nvic, env->v7m.secure)) {
-> +        env->v7m.cfsr[M_REG_NS] |=
-> +            (R_V7M_CFSR_PRECISERR_MASK | R_V7M_CFSR_BFARVALID_MASK);
-> +        env->v7m.bfar = addr;
-> +        return;
-> +    }
+On Mon, Jun 08, 2026 at 09:11:50PM +1000, Gavin Shan wrote:
+> Hi Daniel,
+> 
+> On 6/8/26 6:55 PM, Daniel P. Berrangé wrote:
+> > On Mon, Jun 08, 2026 at 10:18:21AM +1000, Gavin Shan wrote:
+> > > On the guest where a NVidia's GH100 card is passed from the host, the
+> > > guest system hang can be observed on attempt to compile 'cuda-samples',
+> > > as reported by Julia.
+> > 
+> > snip
+> > 
+> 
+> Thanks for looking into this.
 
-Thanks for this patch. This looks good, but it misses a very
-obscure corner case, which is the load of the word from the stack
-performed by the SG instruction. In the pseudocode that is an
-AccType_NORMAL access, so it should honour BFHFNMIGN. In QEMU
-we (for complicated reasons) implement that load manually in
-v7m_read_sg_stack_word(), so it doesn't go through the TCG TLB
-and this transaction_failed hook. So v7m_read_sg_stack_word()
-should check BFHFNMIGN to see if it should pend the ARMV7M_EXCP_BUS.
+NB, I didn't really look into it beyond noticing the suggestion
+that users set an "x-" property as a proposed solution to failing
+to boot, which raised a red-flag to me from a usability POV.
 
-The other places where we manually pend EXCP_BUS are all ones
-which should not or are not required to honour BFHFNMIGN
-(vector table loads, stacking and unstacking, which are
-AccType_VECTABLE, AccType_STACK, AccType_UNSTACK).
+I don't really know anything about the underlying technical problems
+here, so can't offer specific guidance in that area.
 
-thanks
--- PMM
+> 
+> > > By default, the max bounce buffer size is only 4096 bytes, even less
+> > > than one page when the guest page is 64KB. This tries to fix the issue
+> > > by inheriting the customized max bounce buffer size of the virtio bus's
+> > > parent through property 'x-max-bounce-buffer-size' when the customized
+> > > size is a larger one. With this applied, no guest system hang is seen
+> > > with '-device virtio-blk-pci,...,x-max-bounce-buffer-size=268435456'.
+> > 
+> > "x-max-bounce-buffer-size"  is an experimental / unsupported property.
+> > 
+> > We really shouldn't be expecting users to have to set this in a production
+> > deployment in order to stop a guest from hanging.  Even if we dropped the
+> > experimental marker from this property, users would still need to know to
+> > provide this magic setting, so it would still be broken out of the box.
+> > 
+> > How can we  get a solution that "just works" out of the box, which is
+> > fully supported, not relying on experimental properties ?
+> > 
+> 
+> How do we know that "x-max-bounce-buffer-size" is an experimental or unsupported
+> property? I guess the properties whose names start with "x-" are all treated as
+> experimental and unsupported?
+
+Yes, any QEMU property starting with 'x-' is experimental/unstable/
+unsupported and can be changed/withdrawn at any time.  Libvirt will
+not provide any way to configure 'x-' properties, as it requires a
+supported/stable solution from QEMU.
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+
 

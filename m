@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FE5FCD8C9D
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:53:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D998CD8C9D
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:53:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWSrf-0001k4-Kl; Mon, 08 Jun 2026 01:49:35 -0400
+	id 1wWSsH-0002a9-KP; Mon, 08 Jun 2026 01:50:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrb-0001fY-VD
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrq-0001vX-I8
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSra-0000Zi-01
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:31 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSro-0000kp-UL
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780897769;
+ s=mimecast20190719; t=1780897783;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=XNFTDEPSBh1l3YPKlbVUkDCbt8f5ZgobdVJy0qtAba0=;
- b=fmj0732+lg1PDsaCiw8+2OyiEkdWgXdc2z9MipvHP12pF+T719gaak4z+sHgitE9oDWrhd
- XL7nnFD47d2IMetNiooN8zvUC2Ot/mTlBWaW7hS9xBrDQKY+kWNOWwvs1+wKZrdU3nn8vy
- ANh51Yg6mNv6Htzg++jaadXvhfHqIEg=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=j/5HFTRLDPkHsIdT2BYat17qb86KTE+d98kCJwLRRjE=;
+ b=dzCpXNlcRj9FZIYo88+M3GWaYTPt+WKUhFt7vDZEEDGIYau6PW5AqSw0OoMCLEqqlpR+dF
+ 70MVlB8FKBMbSV4dqCKoRZNeTUBHJ0ua1tK/V9SZGJmrWI5CmJD2FVXYMrIJf9yartyyFc
+ v1TmCzCqW+1mvLDg4mZuUWMCZZlXuWk=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-492-UtrajwuoO0qrx_toBFBasQ-1; Mon,
- 08 Jun 2026 01:49:21 -0400
-X-MC-Unique: UtrajwuoO0qrx_toBFBasQ-1
-X-Mimecast-MFC-AGG-ID: UtrajwuoO0qrx_toBFBasQ_1780897761
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-513-1jSkFZF5Ms2-5CMle0vByA-1; Mon,
+ 08 Jun 2026 01:49:42 -0400
+X-MC-Unique: 1jSkFZF5Ms2-5CMle0vByA-1
+X-Mimecast-MFC-AGG-ID: 1jSkFZF5Ms2-5CMle0vByA_1780897781
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E26591944D3B; Mon,  8 Jun 2026 05:49:20 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 06CE5195608A; Mon,  8 Jun 2026 05:49:41 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.33])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6AD4C27A; Mon,  8 Jun 2026 05:49:19 +0000 (UTC)
+ id 0EDCB27A; Mon,  8 Jun 2026 05:49:38 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Jithu Joseph <jithu.joseph@oss.qualcomm.com>, qemu-stable@nongnu.org,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 25/37] hw/i2c/aspeed_i2c: Introduce dma_addr_lo_mask to unify
- DMA address handling
-Date: Mon,  8 Jun 2026 07:48:14 +0200
-Message-ID: <20260608054826.346488-26-clg@redhat.com>
+Subject: [PULL 35/37] hw/i3c: fix CMD/data FIFO depth reset values to match
+ real silicon
+Date: Mon,  8 Jun 2026 07:48:24 +0200
+Message-ID: <20260608054826.346488-36-clg@redhat.com>
 In-Reply-To: <20260608054826.346488-1-clg@redhat.com>
 References: <20260608054826.346488-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: GCOHXHzlaqlDOJwLvExUv3aCZrSFkxLqXF0LlYUHrOs_1780897761
+X-Mimecast-MFC-PROC-ID: THjCkNgSPooPAFz61ehK6KBiX7EqH5yF-baOX7X-AWI_1780897781
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 8
 X-Spam_score: 0.8
 X-Spam_bar: /
 X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -87,178 +88,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
 
-The Aspeed I2C controller has two register layouts.
+The Linux DW-I3C master driver infers controller queue depths at probe
+by reading two status registers that report free queue slots, which at
+probe (queues empty) equals the full depth.  It then uses those values
+to gate every I3C transfer -- any batch whose word count exceeds the
+advertised depth is rejected with -EOPNOTSUPP.
 
-The AST2500 uses the old mode with a single DMA address register (I2CD_DMA_ADDR)
-where the address is 4-byte aligned and masked to 0x3ffffffc.
+  QUEUE_STATUS_LEVEL        (0x4c) [7:0] -> cmdfifodepth  (cmd slots)
+  DATA_BUFFER_STATUS_LEVEL  (0x50) [7:0] -> datafifodepth (32-bit words)
 
->From AST2600 onwards, the new mode provides separate master TX/RX and slave RX DMA
-address registers (I2CM_DMA_TX_ADDR, I2CM_DMA_RX_ADDR, I2CS_DMA_RX_ADDR)
-with different address widths per SoC:
-  AST2600 (new mode): 0x7fffffff  - bits[30:0]
-  AST1030 (new mode): 0x7fffffff  - bits[30:0]
-  AST1060 (new mode): 0x7fffffff  - bits[30:0]
-  AST2700 (new mode): 0xffffffff  - bits[31:0]
+Per the AST2600 datasheet the reset values are 0x10 and 0x40 (16 cmd
+slots, 64 words = 256 B).  QEMU was advertising 0x02 and 0x10, making
+the kernel believe the controller can only do 64-byte transfers.  The
+visible symptom was -EOPNOTSUPP on any I3C transfer whose payload
+exceeded 64 B (datafifodepth = 0x10 = 16 words = 64 B).
 
-Introduce dma_addr_lo_mask as a per-class attribute and apply it
-uniformly when storing DMA address register writes and when loading
-the address into dma_dram_offset for both master and slave paths.
-This replaces the previous FIELD_EX32 extractions (which incorrectly
-stripped bit 31 on AST2700) and the hardcoded 0x3ffffffc literal in
-the old-mode path.
+The underlying FIFOs in QEMU were already allocated at the right size
+(fifo32_create takes word counts; the existing defaults give 16 cmd
+slots and 64 data words).  Only the advertised reset values were wrong.
 
-Fixes: 1809ab6a67359e0876981cd05d2a50b2843eabad ("hw/i2c/aspeed: Add AST2700 support")
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260603040027.938816-2-jamin_lin@aspeedtech.com
+Correct the reset values in dw_i3c_resets[], and additionally drive the
+advertised depths from the queue-capacity configs in the reset handlers
+(as is already done for the device/char table pointers), so a configured
+override is reflected in what the guest reads instead of being silently
+ignored.  The advertised fields are 8-bit, so the depth saturates at 255
+regardless of the wider capacity configs.
+
+With this fix the guest sees datafifodepth=64 words and accepts
+transfers up to 256 B.
+
+Fixes: e974c6957576 ("hw/i3c/dw-i3c: Add more reset values")
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
+Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Link: https://lore.kernel.org/qemu-devel/20260604142207.2118098-2-jithu.joseph@oss.qualcomm.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/i2c/aspeed_i2c.h |  5 +----
- hw/i2c/aspeed_i2c.c         | 24 ++++++++++++++----------
- 2 files changed, 15 insertions(+), 14 deletions(-)
+ hw/i3c/dw-i3c.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index d42cb4865aa5..1fc229f69919 100644
---- a/include/hw/i2c/aspeed_i2c.h
-+++ b/include/hw/i2c/aspeed_i2c.h
-@@ -209,13 +209,9 @@ REG32(I2CS_DMA_LEN, 0x2c)
-     FIELD(I2CS_DMA_LEN, TX_BUF_LEN_W1T, 15, 1)
-     FIELD(I2CS_DMA_LEN, TX_BUF_LEN, 0, 11)
- REG32(I2CM_DMA_TX_ADDR, 0x30)
--    FIELD(I2CM_DMA_TX_ADDR, ADDR, 0, 31)
- REG32(I2CM_DMA_RX_ADDR, 0x34)
--    FIELD(I2CM_DMA_RX_ADDR, ADDR, 0, 31)
- REG32(I2CS_DMA_TX_ADDR, 0x38)
--    FIELD(I2CS_DMA_TX_ADDR, ADDR, 0, 31)
- REG32(I2CS_DMA_RX_ADDR, 0x3c)
--    FIELD(I2CS_DMA_RX_ADDR, ADDR, 0, 31)
- REG32(I2CS_DEV_ADDR, 0x40)
- REG32(I2CM_DMA_LEN_STS, 0x48)
-     FIELD(I2CM_DMA_LEN_STS, RX_LEN, 16, 13)
-@@ -303,6 +299,7 @@ struct AspeedI2CClass {
-     bool has_share_pool;
-     uint64_t mem_size;
-     bool has_dma64;
-+    uint32_t dma_addr_lo_mask;
- };
+diff --git a/hw/i3c/dw-i3c.c b/hw/i3c/dw-i3c.c
+index 17ff484c5df1..06c2d55f5958 100644
+--- a/hw/i3c/dw-i3c.c
++++ b/hw/i3c/dw-i3c.c
+@@ -282,8 +282,8 @@ static const uint32_t dw_i3c_resets[DW_I3C_NR_REGS] = {
+     [R_QUEUE_THLD_CTRL]             = 0x01000101,
+     [R_DATA_BUFFER_THLD_CTRL]       = 0x01010100,
+     [R_SLV_EVENT_CTRL]              = 0x0000000b,
+-    [R_QUEUE_STATUS_LEVEL]          = 0x00000002,
+-    [R_DATA_BUFFER_STATUS_LEVEL]    = 0x00000010,
++    [R_QUEUE_STATUS_LEVEL]          = 0x00000010,
++    [R_DATA_BUFFER_STATUS_LEVEL]    = 0x00000040,
+     [R_PRESENT_STATE]               = 0x00000003,
+     [R_I3C_VER_ID]                  = 0x3130302a,
+     [R_I3C_VER_TYPE]                = 0x6c633033,
+@@ -947,6 +947,10 @@ static void dw_i3c_reset(DeviceState *dev)
+                      s->cfg.dev_char_table_pointer);
+     ARRAY_FIELD_DP32(s->regs, DEV_CHAR_TABLE_POINTER, DEV_CHAR_TABLE_DEPTH,
+                      s->cfg.dev_char_table_depth);
++    ARRAY_FIELD_DP32(s->regs, QUEUE_STATUS_LEVEL, CMD_QUEUE_EMPTY_LOC,
++                     s->cfg.cmd_resp_queue_capacity_bytes);
++    ARRAY_FIELD_DP32(s->regs, DATA_BUFFER_STATUS_LEVEL, TX_BUF_EMPTY_LOC,
++                     s->cfg.tx_rx_queue_capacity_bytes);
  
- static inline bool aspeed_i2c_is_new_mode(AspeedI2CState *s)
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 4a6732a18554..9d4e72c8585e 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -236,7 +236,7 @@ static void aspeed_i2c_set_tx_dma_dram_offset(AspeedI2CBus *bus)
-         value = bus->regs[R_I2CM_DMA_TX_ADDR];
-         bus->dma_dram_offset =
-             deposit64(bus->dma_dram_offset, 0, 32,
--                      FIELD_EX32(value, I2CM_DMA_TX_ADDR, ADDR));
-+                      value & aic->dma_addr_lo_mask);
-         if (aic->has_dma64) {
-             value = bus->regs[R_I2CM_DMA_TX_ADDR_HI];
-             bus->dma_dram_offset =
-@@ -246,7 +246,7 @@ static void aspeed_i2c_set_tx_dma_dram_offset(AspeedI2CBus *bus)
-     } else {
-         value = bus->regs[R_I2CD_DMA_ADDR];
-         bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 0, 32,
--                                         value & 0x3ffffffc);
-+                                         value & aic->dma_addr_lo_mask);
-     }
+     dw_i3c_cmd_queue_reset(s);
+     dw_i3c_resp_queue_reset(s);
+@@ -1793,6 +1797,10 @@ static void dw_i3c_reset_enter(Object *obj, ResetType type)
+                      s->cfg.dev_char_table_pointer);
+     ARRAY_FIELD_DP32(s->regs, DEV_CHAR_TABLE_POINTER, DEV_CHAR_TABLE_DEPTH,
+                      s->cfg.dev_char_table_depth);
++    ARRAY_FIELD_DP32(s->regs, QUEUE_STATUS_LEVEL, CMD_QUEUE_EMPTY_LOC,
++                     s->cfg.cmd_resp_queue_capacity_bytes);
++    ARRAY_FIELD_DP32(s->regs, DATA_BUFFER_STATUS_LEVEL, TX_BUF_EMPTY_LOC,
++                     s->cfg.tx_rx_queue_capacity_bytes);
  }
  
-@@ -261,7 +261,7 @@ static void aspeed_i2c_set_rx_dma_dram_offset(AspeedI2CBus *bus)
-         value = bus->regs[R_I2CM_DMA_RX_ADDR];
-         bus->dma_dram_offset =
-             deposit64(bus->dma_dram_offset, 0, 32,
--                      FIELD_EX32(value, I2CM_DMA_RX_ADDR, ADDR));
-+                      value & aic->dma_addr_lo_mask);
-         if (aic->has_dma64) {
-             value = bus->regs[R_I2CM_DMA_RX_ADDR_HI];
-             bus->dma_dram_offset =
-@@ -271,7 +271,7 @@ static void aspeed_i2c_set_rx_dma_dram_offset(AspeedI2CBus *bus)
-     } else {
-         value = bus->regs[R_I2CD_DMA_ADDR];
-         bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 0, 32,
--                                         value & 0x3ffffffc);
-+                                         value & aic->dma_addr_lo_mask);
-     }
- }
- 
-@@ -735,12 +735,10 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-         aspeed_i2c_bus_raise_interrupt(bus);
-         break;
-     case A_I2CM_DMA_TX_ADDR:
--        bus->regs[R_I2CM_DMA_TX_ADDR] = FIELD_EX32(value, I2CM_DMA_TX_ADDR,
--                                                   ADDR);
-+        bus->regs[R_I2CM_DMA_TX_ADDR] = value & aic->dma_addr_lo_mask;
-         break;
-     case A_I2CM_DMA_RX_ADDR:
--        bus->regs[R_I2CM_DMA_RX_ADDR] = FIELD_EX32(value, I2CM_DMA_RX_ADDR,
--                                                   ADDR);
-+        bus->regs[R_I2CM_DMA_RX_ADDR] = value & aic->dma_addr_lo_mask;
-         break;
-     case A_I2CM_DMA_LEN:
-         w1t = FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T) ||
-@@ -777,7 +775,7 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-         bus->regs[R_I2CS_DEV_ADDR] = value;
-         break;
-     case A_I2CS_DMA_RX_ADDR:
--        bus->regs[R_I2CS_DMA_RX_ADDR] = value;
-+        bus->regs[R_I2CS_DMA_RX_ADDR] = value & aic->dma_addr_lo_mask;
-         break;
-     case A_I2CS_DMA_LEN:
-         if (FIELD_EX32(value, I2CS_DMA_LEN, RX_BUF_LEN_W1T)) {
-@@ -1375,6 +1373,8 @@ static void aspeed_i2c_class_init(ObjectClass *klass, const void *data)
- static int aspeed_i2c_bus_new_slave_event(AspeedI2CBus *bus,
-                                           enum i2c_event event)
- {
-+    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
-+
-     switch (event) {
-     case I2C_START_SEND_ASYNC:
-         if (!SHARED_ARRAY_FIELD_EX32(bus->regs, R_I2CS_CMD, RX_DMA_EN)) {
-@@ -1385,7 +1385,7 @@ static int aspeed_i2c_bus_new_slave_event(AspeedI2CBus *bus,
-         ARRAY_FIELD_DP32(bus->regs, I2CS_DMA_LEN_STS, RX_LEN, 0);
-         bus->dma_dram_offset =
-             deposit64(bus->dma_dram_offset, 0, 32,
--                      ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_RX_ADDR, ADDR));
-+                      bus->regs[R_I2CS_DMA_RX_ADDR] & aic->dma_addr_lo_mask);
-         bus->regs[R_I2CC_DMA_LEN] =
-             ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_LEN, RX_BUF_LEN) + 1;
-         i2c_ack(bus->bus);
-@@ -1608,6 +1608,7 @@ static void aspeed_2500_i2c_class_init(ObjectClass *klass, const void *data)
-     aic->check_sram = true;
-     aic->has_dma = true;
-     aic->mem_size = 0x1000;
-+    aic->dma_addr_lo_mask = 0x3ffffffc;
- }
- 
- static qemu_irq aspeed_2600_i2c_bus_get_irq(AspeedI2CBus *bus)
-@@ -1631,6 +1632,7 @@ static void aspeed_2600_i2c_class_init(ObjectClass *klass, const void *data)
-     aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
-     aic->has_dma = true;
-     aic->mem_size = 0x1000;
-+    aic->dma_addr_lo_mask = 0x7fffffff;
- }
- 
- static void aspeed_1030_i2c_class_init(ObjectClass *klass, const void *data)
-@@ -1649,6 +1651,7 @@ static void aspeed_1030_i2c_class_init(ObjectClass *klass, const void *data)
-     aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
-     aic->has_dma = true;
-     aic->mem_size = 0x10000;
-+    aic->dma_addr_lo_mask = 0x7fffffff;
- }
- 
- static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
-@@ -1670,6 +1673,7 @@ static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
-     aic->has_dma = true;
-     aic->mem_size = 0x2000;
-     aic->has_dma64 = true;
-+    aic->dma_addr_lo_mask = 0xffffffff;
- }
- 
- static const TypeInfo aspeed_i2c_types[] = {
+ static void dw_i3c_realize(DeviceState *dev, Error **errp)
 -- 
 2.54.0
 

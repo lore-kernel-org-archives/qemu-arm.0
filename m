@@ -4,57 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D58B3CD8C89
-	for <qemu-arm@archiver.kernel.org>; Sun,  7 Jun 2026 18:23:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C3B3CD8C9D
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 00:20:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWI8y-0008Hq-9w; Sun, 07 Jun 2026 14:22:44 -0400
+	id 1wWNil-0004my-6J; Sun, 07 Jun 2026 20:20:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wrigjl@proton.me>)
- id 1wWI8x-0008Hf-Rt; Sun, 07 Jun 2026 14:22:43 -0400
-Received: from mail-07.mail-europe.com ([188.165.51.139])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wWNij-0004mE-Gn
+ for qemu-arm@nongnu.org; Sun, 07 Jun 2026 20:20:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wrigjl@proton.me>)
- id 1wWI8u-0001L7-KV; Sun, 07 Jun 2026 14:22:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
- s=protonmail; t=1780856551; x=1781115751;
- bh=ZQdAkYVIFVaTOqJuW8j/vIjhopqCarqaDjawrzt2kCU=;
- h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
- Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
- Message-ID:BIMI-Selector;
- b=Lkr51H0LOWhOiK+d/yEhs+wrIyZOTkXPZxXLD/vUJv6Sg5olJHoAiAERomCsUQNNU
- 589prkdYzL4olq3Eks09E5rqyiS/JPrW+pUeLm9yZteZSpqFLNswG7UW08VL9chssY
- 1jtWBpA5BlQ+xoGrpua0O3lX8+pdY28Am8H6bNMz5wxbKGZvcyJ+d3mRC1jrSmtjc6
- pSaJWg1hcTdGtnnJRgGLkvR83x8Hd5OSrw/IrkI5mAz0W8aDAUJuGymbcbPTVlYYkR
- 45HEpWUF3OQIJsrsja+Iue69vbxaJTUy5LiQnhL7mVqc2f3Dy6ZKmPAyCnbA46zSjH
- jCBDpnr+6Ou5g==
-Date: Sun, 07 Jun 2026 18:22:26 +0000
-To: agraf@csgraf.de, peter.maydell@linaro.org
-From: Jason Wright <wrigjl@proton.me>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, zenghui.yu@linux.dev,
- richard.henderson@linaro.org
-Subject: [PATCH] target/arm/hvf: manually sync ID_AA64ISAR0_EL1 on vCPU init
-Message-ID: <20260607182221.4357-1-wrigjl@proton.me>
-In-Reply-To: <745e66c7-2a9b-4185-bae7-77e10623332b@linux.dev>
-References: <20260529114723.42040-1-peter.maydell@linaro.org>
- <20260529114723.42040-18-peter.maydell@linaro.org>
- <745e66c7-2a9b-4185-bae7-77e10623332b@linux.dev>
-Feedback-ID: 198029889:user:proton
-X-Pm-Message-ID: 00ef15f4273d06cd7b6cf38421dc48d0aeef72f8
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wWNih-0004a5-Kn
+ for qemu-arm@nongnu.org; Sun, 07 Jun 2026 20:20:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1780877998;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=5vaHIIQFViOS2iqOdyLp/QUUrpdLIRe+sbrKu+JL6xs=;
+ b=IrZWSfyVHgMAm0nOmOt4+SXjmS3d7iX+7y4xPtKkJbiHKbguOIxRFfKmwdHjWvtZNBoLzM
+ BfRCBMO4JsBSjjSRseW1AHQpczDW9pa1cl/DRjZ42XuQ/tF+7UR0JdbKWSREhBQ5Shzei0
+ hsbAolLu0gbCk7dwNAngPaIEvhy8S9s=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-310-MeEc67aQP7Ghu_Pt6rDX9Q-1; Sun,
+ 07 Jun 2026 20:18:37 -0400
+X-MC-Unique: MeEc67aQP7Ghu_Pt6rDX9Q-1
+X-Mimecast-MFC-AGG-ID: MeEc67aQP7Ghu_Pt6rDX9Q_1780877916
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DCA6B18004A9; Mon,  8 Jun 2026 00:18:35 +0000 (UTC)
+Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.3])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5D3BE1800480; Mon,  8 Jun 2026 00:18:31 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, mst@redhat.com, jugraham@redhat.com,
+ shan.gavin@gmail.com
+Subject: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus parent
+ if possible
+Date: Mon,  8 Jun 2026 10:18:21 +1000
+Message-ID: <20260608001821.850921-1-gshan@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=188.165.51.139; envelope-from=wrigjl@proton.me;
- helo=mail-07.mail-europe.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: DFNTMjiSetOen8TM_5lgfEIc4YDdc0tQW9VbbMAlfPc_1780877916
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,75 +82,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Commit 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
-gave ID_AA64ISAR0_EL1 a readfn so the RNDR field can reflect SCR_EL3.TRNDR
-at read time, and marked the cpreg ARM_CP_NO_RAW in the system-emulation
-path.  HVF then trips its hvf_arch_init_vcpu() assertion that no ID
-register in hvf_sreg_list[] is NO_RAW, aborting on boot on Apple Silicon:
+On the guest where a NVidia's GH100 card is passed from the host, the
+guest system hang can be observed on attempt to compile 'cuda-samples',
+as reported by Julia.
 
-  Assertion failed: (!(ri->type & ARM_CP_NO_RAW)),
-  function hvf_arch_init_vcpu, file hvf.c, line 1442.
+   host$ lspci | grep GH100
+   0009:01:00.0 3D controller: NVIDIA Corporation GH100 [GH200 120GB / 480GB] (rev a1)
+   host$ /home/sandbox/gavin/qemu.main/build/qemu-system-aarch64 -accel kvm \
+         -machine virt,gic-version=host,ras=on,highmem-mmio-size=4T         \
+         -cpu host -smp cpus=32 -m size=8G                                  \
+         -drive file=/home/gavin/sandbox/images/disk.qcow2,if=none,id=d0    \
+         -device virtio-blk-pci,id=vb0,bus=pcie.0,drive=d0,num-queues=4     \
+         -device vfio-pci-nohotplug,host=0009:01:00.0,bus=pcie.1.0
 
-Reproduce with:
+   guest$ cd cuda-samples/build
+   guest$ make -j 20 clean
+   guest$ make -j 20
+               :
+   [ 54%] Linking CUDA executable graphMemoryNodes
+   [ 54%] Built target graphMemoryNodes
+   <no more output afterwards, guest becomes frozen here>
 
-  qemu-system-aarch64 -M virt,accel=3Dhvf -cpu host \
-                      -nographic -display none -bios /dev/null
+   guest$ qemu-system-aarch64: virtio: bogus descriptor or out of resources
+   [  555.814025] virtio_blk virtio0: [vda] new size: 268435456 512-byte logical blocks (137 GB/128 GiB)
 
-Mirror the existing treatment of ID_AA64PFR0_EL1: move
-HV_SYS_REG_ID_AA64ISAR0_EL1 into the SYNC_NO_RAW_REGS block in
-sysreg.c.inc so the assert loop skips it, and push QEMU's view of the
-register to the vCPU at init time.  HVF does not expose EL3, so
-SCR_EL3.TRNDR is never set and the readfn is functionally static there.
+When the GPU's driver (NVidia open driver) is loaded on guest bootup,
+the memory blocks residing in the PCI BAR can be presented to the guest
+through memory hot-add. The page cache can be allocated from the hot added
+memory blocks when cuda-samples is being built. Afterwards, he page cache
+is sent to QEMU's virtio-blk device as part of the DMA request, the bounce
+buffer is used to accomodate the request as the corresponding memory
+region (MemoryRegion) is a RAM DEVICE region in qemu. For this specific
+case, false is returned from memory_access_is_direct() in the path where
+the DMA request is handled.
 
-Reported-by: Zenghui Yu <zenghui.yu@linux.dev>
-Fixes: 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
-Signed-off-by: Jason Wright <wrigjl@proton.me>
+  QEMU
+  ====
+  virtio_blk_handle_output
+    virtio_blk_handle_vq
+      virtio_blk_get_request
+        virtqueue_pop
+          virtqueue_split_pop
+            virtqueue_map_desc
+              address_space_map
+                memory_access_is_direct         # Return false
+                  memory_region_supports_direct_access
+
+  (qemu) info mtree
+          :
+  memory-region: pci_bridge_pci
+    0000000000000000-ffffffffffffffff (prio 0, container): pci_bridge_pci
+      0000042000000000-0000043fffffffff (prio 1, i/o): 0009:01:00.0 base BAR 4
+        0000042000000000-0000043fffffffff (prio 0, i/o): 0009:01:00.0 BAR 4
+          0000042000000000-000004379fffffff (prio 0, ramd): 0009:01:00.0 BAR 4 mmaps[0]
+
+By default, the max bounce buffer size is only 4096 bytes, even less
+than one page when the guest page is 64KB. This tries to fix the issue
+by inheriting the customized max bounce buffer size of the virtio bus's
+parent through property 'x-max-bounce-buffer-size' when the customized
+size is a larger one. With this applied, no guest system hang is seen
+with '-device virtio-blk-pci,...,x-max-bounce-buffer-size=268435456'.
+
+Reported-by: Julia Graham <jugraham@redhat.com>
+Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- target/arm/hvf/hvf.c        | 4 ++++
- target/arm/hvf/sysreg.c.inc | 2 +-
- 2 files changed, 5 insertions(+), 1 deletion(-)
+ hw/virtio/virtio-bus.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index d88cbe7c82..afa1120c8a 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1485,6 +1485,10 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-     ret =3D hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64PFR0_EL1=
-, pfr);
-     assert_hvf_ok(ret);
-=20
-+    ret =3D hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64ISAR0_EL=
-1,
-+                              GET_IDREG(&arm_cpu->isar, ID_AA64ISAR0));
-+    assert_hvf_ok(ret);
-+
-     /* We're limited to underlying hardware caps, override internal versio=
-ns */
-     ret =3D hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64MMFR0_EL=
-1,
-                               &arm_cpu->isar.idregs[ID_AA64MMFR0_EL1_IDX])=
-;
-diff --git a/target/arm/hvf/sysreg.c.inc b/target/arm/hvf/sysreg.c.inc
-index c11dbf274e..acd5a41364 100644
---- a/target/arm/hvf/sysreg.c.inc
-+++ b/target/arm/hvf/sysreg.c.inc
-@@ -89,13 +89,13 @@ DEF_SYSREG(HV_SYS_REG_MDCCINT_EL1, 2, 0, 0, 2, 0)
- DEF_SYSREG(HV_SYS_REG_MIDR_EL1, 3, 0, 0, 0, 0)
- DEF_SYSREG(HV_SYS_REG_MPIDR_EL1, 3, 0, 0, 0, 5)
- DEF_SYSREG(HV_SYS_REG_ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
-+DEF_SYSREG(HV_SYS_REG_ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
- #endif
-=20
- DEF_SYSREG(HV_SYS_REG_ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
- /* Add ID_AA64PFR2_EL1 here when HVF supports it */
- DEF_SYSREG(HV_SYS_REG_ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
- DEF_SYSREG(HV_SYS_REG_ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
--DEF_SYSREG(HV_SYS_REG_ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
- DEF_SYSREG(HV_SYS_REG_ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
-=20
- #ifdef SYNC_NO_MMFR0
---=20
-2.50.1 (Apple Git-155)
-
+diff --git a/hw/virtio/virtio-bus.c b/hw/virtio/virtio-bus.c
+index cef944e015..e0933823f3 100644
+--- a/hw/virtio/virtio-bus.c
++++ b/hw/virtio/virtio-bus.c
+@@ -42,6 +42,7 @@ do { printf("virtio_bus: " fmt , ## __VA_ARGS__); } while (0)
+ /* A VirtIODevice is being plugged */
+ void virtio_bus_device_plugged(VirtIODevice *vdev, Error **errp)
+ {
++    AddressSpace *as;
+     DeviceState *qdev = DEVICE(vdev);
+     BusState *qbus = BUS(qdev_get_parent_bus(qdev));
+     VirtioBusState *bus = VIRTIO_BUS(qbus);
+@@ -100,6 +101,19 @@ void virtio_bus_device_plugged(VirtIODevice *vdev, Error **errp)
+                 return;
+             }
+         }
++    } else {
++        /*
++         * The maximal bounce buffer size of the virtio bus's parent may
++         * have been customized by property 'x-max-bounce-buffer-size'.
++         * Lets inherit the customized size if it's larger than the
++         * current one.
++         */
++        as = klass->get_dma_as ? klass->get_dma_as(qbus->parent) : NULL;
++        if (as) {
++            vdev->dma_as->max_bounce_buffer_size = MAX(
++                    vdev->dma_as->max_bounce_buffer_size,
++                    as->max_bounce_buffer_size);
++        }
+     }
+ }
+ 
+-- 
+2.54.0
 
 

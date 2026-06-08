@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDBE2CD8C8E
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:51:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C91CCD8CA4
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:51:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWSsF-0002Pn-Pf; Mon, 08 Jun 2026 01:50:11 -0400
+	id 1wWSrC-0001Q8-8M; Mon, 08 Jun 2026 01:49:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrj-0001r2-D8
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:40 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrA-0001NO-1V
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:04 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrh-0000hk-OB
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:39 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSr7-0000Pr-KP
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780897777;
+ s=mimecast20190719; t=1780897739;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=wMNvVJ7iJrL/5zHrO8QbpJsc8b209aVkYqUV2dm0o2g=;
- b=I+9q4SZvc+RRFngFX9xaSfY9sm8jdjZvELioSeDGdnRsy1XCgXtcRr1XnkyrVfrg8ngy4l
- bFv3TYKXICH2Zgo3R3FyobnfMacj+Hmt5LIL4a+0R9Lf8fofn+CHRZQrcIKv8u3VfniDpv
- NOtdI53P6r/DpMUX1K2RMd6RmlmxvBM=
+ bh=f8nn7+5MK5dYSRR9+P7Ec0CabtdONessNo0TO/ApKhI=;
+ b=ce4tGM9/Mazw5QVqsg/Ri1C8OKOf+1c9O/m2Me6bBbVP3miHUCpDDwn9WkENuVlZ6ei7AT
+ hXKZvR49npqqkXPi3Z30tDc5qQA3sHal2IzAfA/Vtopz6rK63WLqx0wjZM0ubgcNvPdPNf
+ JiHK3rdyOCxjZk0laA8uTamGqzBQxWw=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-576-AqKZQIggMcihedJzXfWqyA-1; Mon,
- 08 Jun 2026 01:49:33 -0400
-X-MC-Unique: AqKZQIggMcihedJzXfWqyA-1
-X-Mimecast-MFC-AGG-ID: AqKZQIggMcihedJzXfWqyA_1780897772
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-32-5-N_4-SUPn6p_v9hXMFskw-1; Mon,
+ 08 Jun 2026 01:48:57 -0400
+X-MC-Unique: 5-N_4-SUPn6p_v9hXMFskw-1
+X-Mimecast-MFC-AGG-ID: 5-N_4-SUPn6p_v9hXMFskw_1780897736
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8F4D11800473; Mon,  8 Jun 2026 05:49:32 +0000 (UTC)
+ id D380F180049F; Mon,  8 Jun 2026 05:48:56 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.33])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1A9FB27A; Mon,  8 Jun 2026 05:49:30 +0000 (UTC)
+ id 5ED6327A; Mon,  8 Jun 2026 05:48:55 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 31/37] hw/i2c/aspeed_i2c: Introduce AST1040 I2C model
-Date: Mon,  8 Jun 2026 07:48:20 +0200
-Message-ID: <20260608054826.346488-32-clg@redhat.com>
+Subject: [PULL 13/37] hw/gpio/aspeed_sgpio: Convert to DEFINE_TYPES() with
+ inlined TypeInfo
+Date: Mon,  8 Jun 2026 07:48:02 +0200
+Message-ID: <20260608054826.346488-14-clg@redhat.com>
 In-Reply-To: <20260608054826.346488-1-clg@redhat.com>
 References: <20260608054826.346488-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: 4d6Wr2A4hl_znPGIRKV2-Kp1fL33e_GFI_8yel7Omqs_1780897772
+X-Mimecast-MFC-PROC-ID: 7pQ7S64EN5Skb5X5MihbLj6KAW1GzApzrLzYQNAQUK8_1780897736
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -87,88 +88,70 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Introduce the AST1040 I2C controller model.
+Replace the legacy type_register_static()/type_init() registration
+pattern with the modern DEFINE_TYPES() macro.
 
-The AST1040 I2C controller is compatible with the AST2700 I2C controller,
-including DMA support and the 64-bit DMA address registers. Set has_dma64 so
-firmware can access the high address register and program it to zero, as the
-CM4 CPU only supports 32-bit addressing.
+Inline 2 standalone TypeInfo variables (aspeed_sgpio_info and
+aspeed_sgpio_ast2700_info) directly into the 'aspeed_sgpio_types[]'
+array, removing the need for separate declarations.
 
-AST1040 has 14 I2C buses and its HyperRAM is limited to 16 MiB,
-so restrict the DMA low address mask to 0x00ffffff.
+No functional change.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260603040027.938816-8-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260601024959.2347639-14-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/i2c/aspeed_i2c.h |  1 +
- hw/i2c/aspeed_i2c.c         | 33 +++++++++++++++++++++++++++++++++
- 2 files changed, 34 insertions(+)
+ hw/gpio/aspeed_sgpio.c | 37 ++++++++++++++++---------------------
+ 1 file changed, 16 insertions(+), 21 deletions(-)
 
-diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index b2e4d2fb9dcb..156998e7c14e 100644
---- a/include/hw/i2c/aspeed_i2c.h
-+++ b/include/hw/i2c/aspeed_i2c.h
-@@ -30,6 +30,7 @@
- #define TYPE_ASPEED_2500_I2C TYPE_ASPEED_I2C "-ast2500"
- #define TYPE_ASPEED_2600_I2C TYPE_ASPEED_I2C "-ast2600"
- #define TYPE_ASPEED_1030_I2C TYPE_ASPEED_I2C "-ast1030"
-+#define TYPE_ASPEED_1040_I2C TYPE_ASPEED_I2C "-ast1040"
- #define TYPE_ASPEED_2700_I2C TYPE_ASPEED_I2C "-ast2700"
- OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
- 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 856d5dc1db64..27afcaeceedc 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -1654,6 +1654,34 @@ static void aspeed_1030_i2c_class_init(ObjectClass *klass, const void *data)
-     aic->dma_addr_lo_mask = 0x7fffffff;
+diff --git a/hw/gpio/aspeed_sgpio.c b/hw/gpio/aspeed_sgpio.c
+index 0c53b03464e4..7d2f73699520 100644
+--- a/hw/gpio/aspeed_sgpio.c
++++ b/hw/gpio/aspeed_sgpio.c
+@@ -321,26 +321,21 @@ static void aspeed_sgpio_2700_class_init(ObjectClass *klass, const void *data)
+     agc->reg_ops = &aspeed_sgpio_2700_ops;
  }
  
-+static void aspeed_1040_i2c_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedI2CClass *aic = ASPEED_I2C_CLASS(klass);
-+
-+    dc->desc = "ASPEED 1040 I2C Controller";
-+
-+    /*
-+     * AST1040 reuses the AST2700 I2C controller implementation since
-+     * the AST1040 is compatible with AST2700. AST1040 has 14 I2C buses,
-+     * and its HyperRAM is limited to 16 MiB, so the DMA low address
-+     * mask is restricted accordingly.
-+     */
-+    aic->num_busses = 14;
-+    aic->reg_size = 0xa0;
-+    aic->reg_gap_size = 0x60;
-+    aic->gap = -1; /* no gap */
-+    aic->bus_get_irq = aspeed_2600_i2c_bus_get_irq;
-+    aic->pool_size = 0x40;
-+    aic->pool_gap_size = 0xc0;
-+    aic->pool_base = 0x1c0;
-+    aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
-+    aic->has_dma = true;
-+    aic->mem_size = 0x2000;
-+    aic->has_dma64 = true;
-+    aic->dma_addr_lo_mask = 0x00ffffff;
-+}
-+
- static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -1703,6 +1731,11 @@ static const TypeInfo aspeed_i2c_types[] = {
-         .parent = TYPE_ASPEED_I2C,
-         .class_init = aspeed_1030_i2c_class_init,
-     },
+-static const TypeInfo aspeed_sgpio_info = {
+-    .name           = TYPE_ASPEED_SGPIO,
+-    .parent         = TYPE_SYS_BUS_DEVICE,
+-    .instance_size  = sizeof(AspeedSGPIOState),
+-    .class_size     = sizeof(AspeedSGPIOClass),
+-    .class_init     = aspeed_sgpio_class_init,
+-    .abstract       = true,
+-};
+-
+-static const TypeInfo aspeed_sgpio_ast2700_info = {
+-    .name           = TYPE_ASPEED_SGPIO "-ast2700",
+-    .parent         = TYPE_ASPEED_SGPIO,
+-    .class_init     = aspeed_sgpio_2700_class_init,
+-    .instance_init  = aspeed_sgpio_init,
++static const TypeInfo aspeed_sgpio_types[] = {
 +    {
-+        .name = TYPE_ASPEED_1040_I2C,
-+        .parent = TYPE_ASPEED_I2C,
-+        .class_init = aspeed_1040_i2c_class_init,
++        .name           = TYPE_ASPEED_SGPIO,
++        .parent         = TYPE_SYS_BUS_DEVICE,
++        .instance_size  = sizeof(AspeedSGPIOState),
++        .class_size     = sizeof(AspeedSGPIOClass),
++        .class_init     = aspeed_sgpio_class_init,
++        .abstract       = true,
 +    },
-     {
-         .name = TYPE_ASPEED_2400_I2C,
-         .parent = TYPE_ASPEED_I2C,
++    {
++        .name           = TYPE_ASPEED_SGPIO "-ast2700",
++        .parent         = TYPE_ASPEED_SGPIO,
++        .class_init     = aspeed_sgpio_2700_class_init,
++        .instance_init  = aspeed_sgpio_init,
++    }
+ };
+ 
+-static void aspeed_sgpio_register_types(void)
+-{
+-    type_register_static(&aspeed_sgpio_info);
+-    type_register_static(&aspeed_sgpio_ast2700_info);
+-}
+-
+-type_init(aspeed_sgpio_register_types);
++DEFINE_TYPES(aspeed_sgpio_types)
 -- 
 2.54.0
 

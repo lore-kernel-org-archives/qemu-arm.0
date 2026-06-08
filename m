@@ -4,81 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19260CD8C9D
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 11:39:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6EC5CD8C9D
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 12:40:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWYJy-0005B4-HY; Mon, 08 Jun 2026 07:39:11 -0400
+	id 1wWZGi-0004NN-C0; Mon, 08 Jun 2026 08:39:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wWYJw-0005AU-7s
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 07:39:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1wWZGY-0004DX-H8
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 08:39:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wWYJt-0006YY-Ft
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 07:39:07 -0400
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1wWZGW-0001cB-ST
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 08:39:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780918743;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1780922379;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=R7U8ggQahttMFndg7bBnoA6ZA81bWpOUflLpAgHxqM4=;
- b=eELdQCR6oP7Sqhw9BozbrMWcKPfr8xresoqkKPFECddgJk2ygk5FVL67wPKtuel2Y2UGGZ
- mAhm02aDHZZxLBBweHHO0Epo0ra2QFUk9C7pbFmxDpUw/NHSKeZCrMIv2HsSZLAXqQpKeW
- 4b72oLbVMNBC6znIlEkCMZwd8bQ282A=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-8-iwXai69yPte3MtlYnicYCw-1; Mon,
- 08 Jun 2026 07:39:00 -0400
-X-MC-Unique: iwXai69yPte3MtlYnicYCw-1
-X-Mimecast-MFC-AGG-ID: iwXai69yPte3MtlYnicYCw_1780918739
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C4992195609F; Mon,  8 Jun 2026 11:38:58 +0000 (UTC)
-Received: from redhat.com (unknown [10.44.49.219])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 51E24765; Mon,  8 Jun 2026 11:38:55 +0000 (UTC)
-Date: Mon, 8 Jun 2026 12:38:51 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: Peter Xu <peterx@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com, jugraham@redhat.com,
- shan.gavin@gmail.com
-Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
- parent if possible
-Message-ID: <aiapywnJY64G7nUK@redhat.com>
-References: <20260608001821.850921-1-gshan@redhat.com>
- <aiaDgG26a6TUrKuM@redhat.com>
- <07ca74b4-52a8-4187-a57c-7c3277e574d3@redhat.com>
+ bh=TRnmyyU0jc1FKsuQoMfDeL9Q5YE29PO3wiwZ7cCvTps=;
+ b=ZqcRzyqRrXT7trKVvgPyaMvPlbKqfjL9GCaF4q4DxICQvPyuSaGEB3uV+KcMFqTeUj4mDj
+ rCD97wM2lgg/TXXyzFO+cR3/1iHO/OItJ4hg2EeT/mYE5KdS4Y/7UeTK867tDFYGwzhxrF
+ ckQ4+Sb5uoUOvJTqpYMWungBQF4BwfU=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-211-mzVHzBCoPYqzCG79X_ULPA-1; Mon, 08 Jun 2026 08:39:38 -0400
+X-MC-Unique: mzVHzBCoPYqzCG79X_ULPA-1
+X-Mimecast-MFC-AGG-ID: mzVHzBCoPYqzCG79X_ULPA_1780922377
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-4601c9b630fso1728975f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 08 Jun 2026 05:39:38 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1780922377; x=1781527177;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=TRnmyyU0jc1FKsuQoMfDeL9Q5YE29PO3wiwZ7cCvTps=;
+ b=adkz+Wdur6qwvf7459lu/Sp2J8cYywBTcYzxUTY3qcji8EahPka7ksB3v4Eq2i/f1d
+ K2gqbNsj6kJaUv5jlB8p7JMfEMFawOjVKvquIc50wNpmwKUWBUCPqx1ye8QbutD8VtKd
+ Zvbdkn/psQc0870DvZULrFg3s5DBBOIUIR7j1E4fQlZt4/JuIMoL2vxzUjGaWNc0K2NJ
+ Kwkz8Yxt45jeREaHJM+tx9zxOdliJCTlVF6hUT0wmQZu37kLm5dlRlXXdHc8Q2Rygulz
+ Fi0SfrQzU1J8bGRShcoQ0oCLsxHMqEHPXBgUPjooDDoP8XmVZ4rYO6gEuXwCX9bDzlAG
+ +FyA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/wJlfbLtTr2+TKYNwO2wDfz5NAyzTDL5ybjtsobGV246hxBvT5F+erqVRnOyC8iBuI9qTO6y4kIg==@nongnu.org
+X-Gm-Message-State: AOJu0YzGb6VW+v4UkN4erqjm3nJ3pkuMaQ8QREyPwIozVd+lHj3ZqOUQ
+ Wyj9mCoCU2lEvG3ogG5ioultvejuZ6m2NUuq8ONghdMSOm8BEZbfCWDnPPeYNcaTPxzdbOZVBAu
+ DLgk3BmtHu5p5RN4jun883Z9JD/PW9/qRbhuYk/QmTs8Ox6JWFG3ZsQ==
+X-Gm-Gg: Acq92OGyU2PIrKJMM+SZgWY4MwFe8+3QAejBK29ffz04pRSRtSpQebVO5e3lPAu1oEP
+ 3crok9GAqI9or3eW/tFeMn69TcohZVh2XlGii8ZMm4hsd2ZUK0Ziukj94BTPiuH1wT74X3h0qhC
+ /u/3NbhWn/uLlllUSkOx2Ttv/BkpK00OLjvpIwpjOJZA2zyO5hWZ8Xat1m4/a/KNhQWF1KbQ2XS
+ FM8/ICmIQBg98i/miGLswGLuHuIzyEIzsfBFSRcoZ4D+aeQHHa0KyB/HUiW1xmopodtKRkDCHTQ
+ Y0AEjUnh2U1UAtIR2Iz6sdXV8+XoU8/2ERKQafglh8MWTJpojIUt6CSuptQHsxprXKFL3HUMFNc
+ Tvc4meWTj+Dw9SJpfSenwhnq9KdomjKqmMrymUK+OHUAKvCwGECUM1NElTsDZ9EN4pDsqZsOkas
+ Q=
+X-Received: by 2002:a05:600c:a088:b0:48e:5fb8:f80f with SMTP id
+ 5b1f17b1804b1-490c25f9100mr250971705e9.24.1780922377009; 
+ Mon, 08 Jun 2026 05:39:37 -0700 (PDT)
+X-Received: by 2002:a05:600c:a088:b0:48e:5fb8:f80f with SMTP id
+ 5b1f17b1804b1-490c25f9100mr250971435e9.24.1780922376682; 
+ Mon, 08 Jun 2026 05:39:36 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-490be1f69bcsm424959065e9.8.2026.06.08.05.39.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 08 Jun 2026 05:39:35 -0700 (PDT)
+Message-ID: <f320e3f9-a89a-4c56-8d0f-a7694ec6ddcf@redhat.com>
+Date: Mon, 8 Jun 2026 14:39:33 +0200
 MIME-Version: 1.0
-In-Reply-To: <07ca74b4-52a8-4187-a57c-7c3277e574d3@redhat.com>
-User-Agent: Mutt/2.3.2 (2026-04-26)
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: Ulx41vkB0YqyKzqfcqdb0bk4_1t-cJq0vatlfqsuTi4_1780918739
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 10/21] arm: sbsa_gwdt: add 'wdat' option
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org, mst@redhat.com, anisinha@redhat.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
+ philmd@linaro.org, zhao1.liu@intel.com, rad@semihalf.com,
+ leif.lindholm@oss.qualcomm.com, qemu-arm@nongnu.org
+References: <20260303092532.2410177-1-imammedo@redhat.com>
+ <20260303092532.2410177-11-imammedo@redhat.com>
+ <e443a026-3511-46f5-809a-7555789d330c@redhat.com>
+ <20260527145534.7e96da78@imammedo>
+From: Eric Auger <eauger@redhat.com>
+In-Reply-To: <20260527145534.7e96da78@imammedo>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: bIlV4vxRAJIIko5qk0faPJOuC82lAj23rudm5Uz2CZg_1780922377
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=eauger@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,64 +117,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Jun 08, 2026 at 09:11:50PM +1000, Gavin Shan wrote:
-> Hi Daniel,
+
+
+On 5/27/26 2:55 PM, Igor Mammedov wrote:
+> On Tue, 26 May 2026 16:24:59 +0200
+> Eric Auger <eauger@redhat.com> wrote:
 > 
-> On 6/8/26 6:55 PM, Daniel P. Berrangé wrote:
-> > On Mon, Jun 08, 2026 at 10:18:21AM +1000, Gavin Shan wrote:
-> > > On the guest where a NVidia's GH100 card is passed from the host, the
-> > > guest system hang can be observed on attempt to compile 'cuda-samples',
-> > > as reported by Julia.
-> > 
-> > snip
-> > 
+>> On 3/3/26 10:25 AM, Igor Mammedov wrote:
+>>> it will be used by arm/virt board, to pick WDAT compatible watchdog impl.
+>>> and act as switch over to WDAT ACPI table vesus default GTDT ACPI table.
+>>>
+>>> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+>>> ---
+>>>  include/hw/watchdog/sbsa_gwdt.h | 1 +
+>>>  hw/watchdog/sbsa_gwdt.c         | 8 ++++++++
+>>>  2 files changed, 9 insertions(+)
+>>>
+>>> diff --git a/include/hw/watchdog/sbsa_gwdt.h b/include/hw/watchdog/sbsa_gwdt.h
+>>> index 307a4f291a..dc77e6be60 100644
+>>> --- a/include/hw/watchdog/sbsa_gwdt.h
+>>> +++ b/include/hw/watchdog/sbsa_gwdt.h
+>>> @@ -73,6 +73,7 @@ typedef struct SBSA_GWDTState {
+>>>      uint32_t woru;
+>>>      uint32_t wcvl;
+>>>      uint32_t wcvu;
+>>> +    bool wdat;
+>>>  } SBSA_GWDTState;
+>>>  
+>>>  #endif /* WDT_SBSA_GWDT_H */
+>>> diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
+>>> index c4dd8005b7..40d80f7f2b 100644
+>>> --- a/hw/watchdog/sbsa_gwdt.c
+>>> +++ b/hw/watchdog/sbsa_gwdt.c
+>>> @@ -265,6 +265,13 @@ static void wdt_sbsa_gwdt_realize(DeviceState *dev, Error **errp)
+>>>  
+>>>      sysbus_init_irq(sbd, &s->irq);
+>>>  
+>>> +    /*
+>>> +     * WDAT supports only upto 1KHz resolution,
+>>> +     */
+>>> +    if (s->wdat) {
+>>> +        s->freq = 1000;  
+>> where is it specified in the spec?
 > 
-> Thanks for looking into this.
-
-NB, I didn't really look into it beyond noticing the suggestion
-that users set an "x-" property as a proposed solution to failing
-to boot, which raised a red-flag to me from a usability POV.
-
-I don't really know anything about the underlying technical problems
-here, so can't offer specific guidance in that area.
-
+> next patch has link to WDAT spec and
+> comment around relevant field:
 > 
-> > > By default, the max bounce buffer size is only 4096 bytes, even less
-> > > than one page when the guest page is 64KB. This tries to fix the issue
-> > > by inheriting the customized max bounce buffer size of the virtio bus's
-> > > parent through property 'x-max-bounce-buffer-size' when the customized
-> > > size is a larger one. With this applied, no guest system hang is seen
-> > > with '-device virtio-blk-pci,...,x-max-bounce-buffer-size=268435456'.
-> > 
-> > "x-max-bounce-buffer-size"  is an experimental / unsupported property.
-> > 
-> > We really shouldn't be expecting users to have to set this in a production
-> > deployment in order to stop a guest from hanging.  Even if we dropped the
-> > experimental marker from this property, users would still need to know to
-> > provide this magic setting, so it would still be broken out of the box.
-> > 
-> > How can we  get a solution that "just works" out of the box, which is
-> > fully supported, not relying on experimental properties ?
-> > 
+> +    /*
+> +     * WDAT spec suports only 1KHz or more coarse watchdog timer,
+coarser?
+By the way, in above comment, you can directly quote the spec:
+"The clock interval that the WDT uses must be greater than or equal to 1
+millisecond."
+
+Besides:
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Thanks
+
+Eric
+> +     * Set resolution to minimum supported 1ms.
+> +     * Before starting watchdog Windows set countdown value to 5min.
+> +     */
+> +    g_assert(freq <= 1000);
+> +    build_append_int_noprefix(table_data, 1, 4);/* Timer Period, ms */
 > 
-> How do we know that "x-max-bounce-buffer-size" is an experimental or unsupported
-> property? I guess the properties whose names start with "x-" are all treated as
-> experimental and unsupported?
-
-Yes, any QEMU property starting with 'x-' is experimental/unstable/
-unsupported and can be changed/withdrawn at any time.  Libvirt will
-not provide any way to configure 'x-' properties, as it requires a
-supported/stable solution from QEMU.
-
-With regards,
-Daniel
--- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+> it's the hack to make gwdt usable for wdat and is applied only when
+> wdat is enabled, if not the gwdt is instantiated with native 1G and
+> provides corresponding fdt.
+> 
+>>
+>> Thanks
+>>
+>> Eric
+>>
+>>> +    }
+>>> +
+>>>      s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sbsa_gwdt_timer_sysinterrupt,
+>>>                  dev);
+>>>  }
+>>> @@ -276,6 +283,7 @@ static const Property wdt_sbsa_gwdt_props[] = {
+>>>       */
+>>>      DEFINE_PROP_UINT64("clock-frequency", struct SBSA_GWDTState, freq,
+>>>                         1000000000),
+>>> +    DEFINE_PROP_BOOL("wdat", struct SBSA_GWDTState, wdat, false),
+>>>  };
+>>>  
+>>>  static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, const void *data)  
+>>
+> 
 
 

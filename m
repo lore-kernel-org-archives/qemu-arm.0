@@ -4,101 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E317CD8C92
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 13:07:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 368B5CD8C92
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 13:09:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWZhS-0004Bt-76; Mon, 08 Jun 2026 09:07:31 -0400
+	id 1wWZin-0004eI-Da; Mon, 08 Jun 2026 09:08:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWZhH-0004AC-NU
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 09:07:20 -0400
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+ id 1wWZij-0004cT-6o
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 09:08:49 -0400
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWZhE-0006o4-NA
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 09:07:19 -0400
-Received: by mail-yx1-xb130.google.com with SMTP id
- 956f58d0204a3-660e9ea26b9so4040122d50.3
- for <qemu-arm@nongnu.org>; Mon, 08 Jun 2026 06:07:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1780924035; cv=none;
+ id 1wWZih-0007Rx-LP
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 09:08:48 -0400
+Received: by mail-yx1-xb12e.google.com with SMTP id
+ 956f58d0204a3-660ea43107fso4148010d50.0
+ for <qemu-arm@nongnu.org>; Mon, 08 Jun 2026 06:08:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1780924126; cv=none;
  d=google.com; s=arc-20240605;
- b=D5Iz0d0UNmFNLoAdgJJgeVP2YDySVwvxycP1QN8UNB6Nu1UMp99LwuRPlvesGVoTLi
- HV+wVR0Hv/BRaJEkuQxfNKW7E8iq/tQgo+MG+MezjqGy0XnRfOP+Hr4BBpUOccfpIVjq
- j7tWkhWvLGGDpIr2yQRPx6E3KAPpMd1u5+a35ckIcRGDAyeHOeuJb7TTcqt5fQeK7AmS
- H8ZrzRvK95ZfPBnEDIZPZv0/82Z5tlXKg/iY7+1Lz/ZfL4fYkGXZi+MoaXJAk7lqVD5r
- VMf3OHtFMt8qOq1qYT4yFeZyddJC6cHPkemcm5+x605mUbKX016L+XRYkp2Yo9gZxV1J
- hqgQ==
+ b=lOWpygmFBy0V8nMJZt9fb/AyH4YiS/sWmFjPa/zjpKZhuJFYdzSBxyqyzrBIOGD6PR
+ kzqt7DXRLaKSN6JCSjiNism4pCFO8vlWyik2filaWQ3/xVtK/pecVCWNRdpvb2M4+zLq
+ YTipxsEFHMcDSkSavHCIZLh0K75o5U8AYdUPEALfjdCFVnNUSWgIOYGFzTFJK7YvndGS
+ Flarl1zh+OIdjNEGmefGBlshPUgB46M6a5736mHygyj9iffSIrVj4yJ6FuwUFUYUpRr2
+ b2TEgQRIrzW2m2ueNGzEtoAM9z93nREu/dHjPL8owsWhOqPARXm/umOwUze24T9BkGG9
+ XoGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=X2E6QoyoXiQqafcCnuYVQGqLMF+AEhSP/fPIZuT/MpE=;
- fh=at+TNkD0LoocYCoaBA2h228v+QA2AnTobO5UcJ1LO7A=;
- b=K2ftkG0ZLouZJrkCvy9i98E2dxvWAUM3oxyqBYTCWf35SD2L1vlnCT9ZXScqz1XuL2
- Xhed0EPuaPwCu5jvHnUn7JITN0ty+6cTsda/1j3d8JPS7asHQglf7o2NzzVzJd67moGs
- Us04yfOy5DInMQHGQrgXmGGZTdovIOuPkk6Ka0qAgywzYAKhGJ7ol7ORc9vici1eO6Xc
- mdZ33Q0WW/yecZBEnPiG0vCsKgSbBDSi9MYId6HjQ2BWEJRXTaSflbXY/xjghdK1GnaZ
- gQZjIjeN0X1NTXDQBUgHw98DckbtBZm1QQ3vvhud76vt9Dn73uuUWmGr/tZX2CgbPN01
- lsIA==; darn=nongnu.org
+ bh=x/oBKlX15FX/SgQITgQB/o2DRuL+/xg12kYzT10J5q4=;
+ fh=WiHQLSDhWrz1lmFYYMSCXeMAfk++VW/gXAN7LjOeLaE=;
+ b=TsmoA24yOhbBXlVv2uQOg6DNQAzolLXQe6smFb7YFeRWWas0AmCYaDWhj2QseG2R4m
+ agL4zmnZkgcbqtX5IldaLqJcQUz6K4dC7lwRPha3J09B9mFa5z7QF9kVS3NDVOCObzKS
+ VXxJ31UH4olfEf4xDyGLjPG3TgwWTlaycoeoMCD+HTawA6ctM/M6Zt/ZE44zxX7sykKe
+ rrWjR6DuhzqvuiXGAbBevdQYoswWKQDnpnxBJGm9vZcN5Mms+tr9ZtWbJC02np0H42XU
+ wyTi2T8JO26R4PSzWFuuhiqBSh6nAmgXIYVDhFWRsiS+iuxUiicuMbs9o5YLKkcyFRwI
+ VaDw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780924035; x=1781528835; darn=nongnu.org;
+ d=linaro.org; s=google; t=1780924126; x=1781528926; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=X2E6QoyoXiQqafcCnuYVQGqLMF+AEhSP/fPIZuT/MpE=;
- b=KYoRll/9NZxmuqrr1EAZZs5Lgl0+y0x5tNH+2xn2Ltq97Ve3s4olA8mbRNJlBF+287
- /p/10Yfzq3laTQPOksFsQbZOZwr1T6Gtlv+zrZ5KSdStnKYphZ4bAEcAm3gNz2TThsJe
- 6yMXaggaaxoT+Aonoluxc5HvdKFsSpaiyuxorL3ZMj25MjSQ6ptgFLznyA5qZpMp3uiS
- 6g+b+BNyAtxm0uBVXc+2rMmtkhYq55jZtwqTJ9etsrPtsi4VJmYizoQUFn6i04LGSQjq
- IAi735qHuknbNAdoN1a5wCEmDSB2kq4xBajaSfi0RYpBrLaVaOF0NSX8Xi68WRs2WEFw
- 0Hpw==
+ bh=x/oBKlX15FX/SgQITgQB/o2DRuL+/xg12kYzT10J5q4=;
+ b=ranf24ikM0BAjnm3LFGLypwChUx0xGizORABx5YOh+cBJJlo04C3Xg4zTkW5CMJsQK
+ PxB4pqMIbaKf4b4F/+tb+0dNDzMgwb4FSBinmCeUxGnPB6Jshn4oCWlzzx+PNp5dDz1z
+ RzxtrDXScJoAH5lVLUcQbcyJ9heEoHfQDd0F7/4gOrsZLFXvNjGtUfxkLNVrucKQQKwe
+ +cqY89lIpIiAyOQZyFZYJ0N6qD16HAhtn8IM+Q3kyeak3YP5mHOr2L2cXb17SyVWtUE3
+ j7gFdKdrYNuhFSAUQW/0wpYJ6typ0GokG/pIxLsjb1FTxcTfCAb6PZKqVRKA3n7OL18Z
+ 0Kew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780924035; x=1781528835;
+ d=1e100.net; s=20251104; t=1780924126; x=1781528926;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=X2E6QoyoXiQqafcCnuYVQGqLMF+AEhSP/fPIZuT/MpE=;
- b=bl0GhHgkSzn/VQl3tCZBErq4CO33EnkqYtL5HbCRUtDDjnO7cfDteIwHIj6FcY9dZM
- x0nEy5TlBcp4vOXi0dCeYC63wQSkH+bsd1KrZgr7W9hqe2pAKyCEQM381kIstkCON53o
- Qr/CwSlDojLwpfzpZDVEnQn8dlmLoUnpghEMzhdXJZRntwR6Nim5i1GiGPcKhjLAU4O0
- aMiKmUr+ptkQz4Ir+gAvz+6eMnldIPi0/fElUR/JyeAwX/RPPIx5cVcO5pusxaL2y7OP
- E4LlIvARso9MvTu4yB4T51pQV5060KsAZhbk/bs3ZMf8IU8AnrO9MWPN7Vl4DMIGsqxJ
- 8beA==
+ bh=x/oBKlX15FX/SgQITgQB/o2DRuL+/xg12kYzT10J5q4=;
+ b=sCue6obK7oI73F/XNJKSM8uI0HNY8n+fKPvP1oTuYoYZBNFA3fXKWlqmLxFpx0vwSd
+ BGzw0IfSfk3TSqrRsDxzUE76GaHlwTHij4xRK99FnxsIfW1gL9G9b56vFQPi0NURL5F6
+ BirWiYnVELe0cwGrOwH4Fin43uOK1yTXC+kpfoqa86bL/zRujHr5COo/uv3wWRV+TvRa
+ YGDESFl4hzJIfr6g94nmUw5MIRE5wQNnj3PTzH6Fke7CqzPml2avnFXH+uM+NtP+2OAm
+ dME7td0ahrJQA5kvKxoWrpHud3P27MGMZpJ3RpJ3cpZ3TAOh5/t4ACagJYvk0+ALssMu
+ 6oAQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+l2XbaexCjYkGyhMH5p9+/+94ZncJZ2eAHnUdRZXo3yrTja3OeNkqyvMM/QZTZXITpQkzrJWm2/A==@nongnu.org
-X-Gm-Message-State: AOJu0YwlSz3qLUXVbmyQFkuSHnQ+CI5RABCJjuwukfE4NxlcPnyizc19
- 7ZM349FHgU9LV3tzGvkax8giax88SrHeHubTlsxVlI38j1HggQy3UCUXzyjemIyHp3RctYA8Sq1
- 2IVCXaDqGsufXkMeYt2gVWruQeXe0/8XLRe6DRq1qgw==
-X-Gm-Gg: Acq92OEudYEPFQKOmvdnNtXqHiaN1PxxGP6X8OAXxvc7jbtu22qG8Nbmf5ujI/EWrDT
- agy1NxbrM84xZowl5h2C5M10894CxgmA9GidSXNRuez7oJWmOOQxuUHJPw1A3p6H1jQWOou/+U2
- VJiejF21/WiyF71m6upXT5yNbHFohv25pY3+D/csozwSQR4uLoh87lLbLvArqaUGkfFIg3TrXg5
- sra01C+1jc7ytQbbsU+xDcoWkjaL2kad7wkADfwci3rcM6M3CA8DbOy5EJNwGor3KhXsx0lBzIj
- Ggtogq2WzP3eNy/q+YrF+OieUNlCYdQRl8eyrUpj+rmBNSU+JWlQo1A6EgrQ0JGOSlhucJoDaFQ
- JGQ==
-X-Received: by 2002:a05:690e:144b:b0:660:8e61:1a60 with SMTP id
- 956f58d0204a3-661073da64dmr12653994d50.14.1780924035332; Mon, 08 Jun 2026
- 06:07:15 -0700 (PDT)
+ AFNElJ8ilZ1QZcxKWbxBfxNVLDYf4ndr00MSFyqOBVM0k68GfeZHVsdvBKIOOwBnFAmi65bfpzesCY8kYQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxJWeX9WuvpmLIrn17UeAWCGVpmmrODwELRGeoMPfaHiVtv/jWb
+ AnRWBwoxun20kDQxfha5BCqgo1RznbrSi0bK9XnvtcTWLGOW5Q4zCsoAJf3vlavXgBib1zW2Gv2
+ 3k3vapjELpitiUfyQitaTAgYjR0px8xL23/ht+yTiTw==
+X-Gm-Gg: Acq92OEmPkvYsTAIR0tP4zWN+SPP94GLljMYJFTz13bIkW7IYAQCxZmfNWCcIXgvI0W
+ +mD+ipEhpYwdtReQKxn71JIii4xTvDRGLTuZEm9oO46buWTeHF1x7dMTHR8eTjQAXOyIXN99JR7
+ KMvmcizfGeMJzAQGL6fas5+9R3CXHrV2tgR5EkReK7lsN9e5qCckJ3F3gVReyTu7IhaE6PepT/p
+ ZPdQ8EIdJoO8UTytUKp4O3P0BAXaxLeRTWMo2TGHGiPvbr4NSyA2XsGG6KMrWZ/ZfO0+xl272Wn
+ 3/xB0bqzkM7DPiga2peKCF0SYgyCwHBgJ5xQ2cpBrHE/OUb/H89CbqZ1xKxDu+gWt3D0sBX+kE4
+ +rw==
+X-Received: by 2002:a05:690e:4403:b0:660:5694:9e5c with SMTP id
+ 956f58d0204a3-66106ff8070mr9173381d50.63.1780924126375; Mon, 08 Jun 2026
+ 06:08:46 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260529114723.42040-1-peter.maydell@linaro.org>
- <20260529114723.42040-18-peter.maydell@linaro.org>
- <745e66c7-2a9b-4185-bae7-77e10623332b@linux.dev>
- <20260607182221.4357-1-wrigjl@proton.me>
-In-Reply-To: <20260607182221.4357-1-wrigjl@proton.me>
+References: <20260521112806.504961-1-kraxel@redhat.com>
+ <CAFEAcA8hbObntY8Tp+kOV7btb-io92O9GW99-6SPxigPJUjPrw@mail.gmail.com>
+ <aiE5LrpfnJRbkx-A@sirius.home.kraxel.org>
+ <CAFEAcA_ow2ro3h0nfhY3jA_XToAnjdVFNPrF25aWLd=X2cnmaw@mail.gmail.com>
+ <aia8iXGozAclWQCb@sirius.home.kraxel.org>
+In-Reply-To: <aia8iXGozAclWQCb@sirius.home.kraxel.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Jun 2026 14:07:03 +0100
-X-Gm-Features: AVVi8CcPWkIESGx4vqtg_G5eMNCMNTKW_VlAYElXxaQxdD1ktV5N9k1BylPAKfM
-Message-ID: <CAFEAcA-xEaA2LM=17Q1pKOF6L=rHhaDimXeSmLe=BtDqeaBeFA@mail.gmail.com>
-Subject: Re: [PATCH] target/arm/hvf: manually sync ID_AA64ISAR0_EL1 on vCPU
- init
-To: Jason Wright <wrigjl@proton.me>
-Cc: agraf@csgraf.de, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- zenghui.yu@linux.dev, richard.henderson@linaro.org
+Date: Mon, 8 Jun 2026 14:08:34 +0100
+X-Gm-Features: AVVi8CeXy9uosj154vjgCmjpHJhyH-RK93mZXlvitdwuq5ib0V8AjiCggpUYcC8
+Message-ID: <CAFEAcA9oB_-ao5C8fGYonE7njUMWLHo5-iETeN_XtnFL4PzyvA@mail.gmail.com>
+Subject: Re: [PATCH 0/3] hw/arm: add support for shim loading
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,60 +123,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, 7 Jun 2026 at 19:22, Jason Wright <wrigjl@proton.me> wrote:
+On Mon, 8 Jun 2026 at 14:03, Gerd Hoffmann <kraxel@redhat.com> wrote:
 >
-> Commit 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
-> gave ID_AA64ISAR0_EL1 a readfn so the RNDR field can reflect SCR_EL3.TRNDR
-> at read time, and marked the cpreg ARM_CP_NO_RAW in the system-emulation
-> path.  HVF then trips its hvf_arch_init_vcpu() assertion that no ID
-> register in hvf_sreg_list[] is NO_RAW, aborting on boot on Apple Silicon:
+> On Mon, Jun 08, 2026 at 10:24:28AM +0100, Peter Maydell wrote:
+> > On Thu, 4 Jun 2026 at 10:27, Gerd Hoffmann <kraxel@redhat.com> wrote:
+> > >
+> > > On Thu, May 28, 2026 at 03:28:05PM +0100, Peter Maydell wrote:
+> > > > On Thu, 21 May 2026 at 12:28, Gerd Hoffmann <kraxel@redhat.com> wrote:
+> > > > >
+> > > > > Also little refactoring in preparation
+> > > > > to avoid code duplication.
+> > > > >
+> > > > > Gerd Hoffmann (3):
+> > > > >   hw/nvram: add load_image_to_fw_cfg_file()
+> > > > >   hw/i386: switch shim loading to load_image_to_fw_cfg_file
+> > > > >   hw/arm: add support for shim loading
+> > > >
+> > > > Any chance of some information on what this is?
+> > >
+> > > It passes the shim binary to the efi firmware,
+> > > in addition to the kernel binary.
+> > >
+> > > x86 has this for a while already, this brings arm on par.
+> > >
+> > > docs update with some background below.
+> > >
+> > > take care,
+> > >   Gerd
+> > >
+> > > --- a/docs/system/linuxboot.rst
+> > > +++ b/docs/system/linuxboot.rst
+> > > @@ -17,6 +17,15 @@ Use ``-kernel`` to provide the Linux kernel image and ``-append`` to
+> > >  give the kernel command line arguments. The ``-initrd`` option can be
+> > >  used to provide an INITRD image.
+> > >
+> > > +The ``-shim`` option specifies the shim.efi binary.  This is needed
+> > > +when using direct kernel boot with UEFI secure boot enabled.  The
+> > > +verification chain used by linux distros requires shim.efi.  Typically
+> > > +shim.efi is signed by micsosoft and verified by the firmware.  The
+> > > +linux kernel is signed by the distro and is verified by shim.efi.  So
+> > > +without shim.efi in the loop secure boot verification will not work.
+> > > +Usually you can find shim.efi as ``EFI/BOOT/BOOT{X64,AA64}.EFI`` on
+> > > +distro install media.
+> >
+> > Thanks. I'm not sure why you'd want to enable UEFI secure boot
+> > when you're not booting via UEFI, though.
 >
->   Assertion failed: (!(ri->type & ARM_CP_NO_RAW)),
->   function hvf_arch_init_vcpu, file hvf.c, line 1442.
->
-> Reproduce with:
->
->   qemu-system-aarch64 -M virt,accel=hvf -cpu host \
->                       -nographic -display none -bios /dev/null
->
-> Mirror the existing treatment of ID_AA64PFR0_EL1: move
-> HV_SYS_REG_ID_AA64ISAR0_EL1 into the SYNC_NO_RAW_REGS block in
-> sysreg.c.inc so the assert loop skips it, and push QEMU's view of the
-> register to the vCPU at init time.  HVF does not expose EL3, so
-> SCR_EL3.TRNDR is never set and the readfn is functionally static there.
->
-> Reported-by: Zenghui Yu <zenghui.yu@linux.dev>
-> Fixes: 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
-> Signed-off-by: Jason Wright <wrigjl@proton.me>
-> ---
->  target/arm/hvf/hvf.c        | 4 ++++
->  target/arm/hvf/sysreg.c.inc | 2 +-
->  2 files changed, 5 insertions(+), 1 deletion(-)
->
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index d88cbe7c82..afa1120c8a 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -1485,6 +1485,10 @@ int hvf_arch_init_vcpu(CPUState *cpu)
->      ret = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64PFR0_EL1, pfr);
->      assert_hvf_ok(ret);
->
-> +    ret = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64ISAR0_EL1,
-> +                              GET_IDREG(&arm_cpu->isar, ID_AA64ISAR0));
-> +    assert_hvf_ok(ret);
-> +
+> When not booting via UEFI you can ignore that.
 
-For ID_AA64PFR0_EL1, we do "read the value from hvf, update it,
-write it back", and we do not either read or write the isar.idregs[]
-entry for it.
-
-For ID_AA64MMFR0_EL1, we read the hvf value into the isar.idregs[]
-array entry, update it there, and write it back to hvf.
-
-For ID_AA64ISAR0_EL1, we write whatever is in the isar.idregs[]
-array entry into hvf.
-
-Why do we do three different things for these three registers ?
+But if I'm doing direct kernel boot then by definition I'm
+not booting via UEFI, I'm directly booting the kernel...
 
 thanks
 -- PMM

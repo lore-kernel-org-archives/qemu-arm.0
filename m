@@ -4,105 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00250CD8C92
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 13:30:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 232BDCD8C92
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 13:51:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWa3s-0004Db-8T; Mon, 08 Jun 2026 09:30:40 -0400
+	id 1wWaOC-0005Ik-On; Mon, 08 Jun 2026 09:51:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWa3q-0004DD-Bh
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 09:30:38 -0400
-Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
+ id 1wWaOB-0005IJ-Hm
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 09:51:39 -0400
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWa3o-0002ma-L8
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 09:30:38 -0400
-Received: by mail-yx1-xb132.google.com with SMTP id
- 956f58d0204a3-660456349d9so4151052d50.3
- for <qemu-arm@nongnu.org>; Mon, 08 Jun 2026 06:30:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1780925435; cv=none;
+ id 1wWaO9-0004Dh-Q1
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 09:51:39 -0400
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-6603d8697d2so4348432d50.0
+ for <qemu-arm@nongnu.org>; Mon, 08 Jun 2026 06:51:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1780926696; cv=none;
  d=google.com; s=arc-20240605;
- b=YnWkMWlN+BI2nGPKZC2an1u1yix1PlmQI+A6M4zWKXCmVg4mm5l2yz4AKg5tCFfMeD
- vt2zDttaab5/EYft57mZFXRct+PyaCQiAA5GbPanHvFLojN6pL1kf5ZqC8q2CZCIvdYh
- SfdGQ5S+wUVPDHYqwZ/Dkafvoo5e1PDWKFU5kLQIGlXNGQMYMYCIRItjZ7HMtErIr/5R
- xkOi6tge9YVLl7MsBXY5ua+Bbytd2z3/WbrAns2j8NS5aeJLmiDXBYp20b7uFeBfoExJ
- b7+40IHDoe+7Dyhfw3j/1EsAqLlfVO0EyZDYE1aS6gY7dRhI9NXm2ptUppGOkw/BCOl0
- dv0g==
+ b=TAgZfSMkmuNHZVVHVW+cVD6teGku/2JN14U74IAlZJkxg2pINYopGNrBTuAVGTzOkY
+ zvhyER1/N5PpRYYm/UN3aUMhsLl64op5Q1kOMyel4yOCWybjuG9Kjpx+8lpcC7lBcFvJ
+ Hkcws1o0FawXTLXUolKw98O8AZ7F1+hkYvxKbPztXO5ljYiDvBH5kBdPo1aHXNyILTcw
+ jXMTZEVZeP3HUhmG2eSvXzB66KLjkVQRh8PBYTIfz+ypBZ9C+6B2h3SuE3iUmteCRSF3
+ PxFWnlwMEPJny0aK3fYvgZWW+xvxemOaDU2D6G7xa7MRXaR1oxN493OJ8aXVXyU4D/FD
+ Veeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=PsLWL74BoRjUjdW6fn0hi8lSYZTAAtYLAmP4Y8UoPqk=;
- fh=hm5TdefFvmg7F1fDuB2i8MPI5PrTYQeHbFy8gtaTaV8=;
- b=OjmBCauhRrzWemZcizbh+OGglLDRDoIpbEcU6RiH2MhZ6Feq8DPCFqBAlTzqqZNSGd
- hJOuzmbO1b9KtofuIsOkJKlmwB/LK9eWdryfiRytXsCHdZe02EjEDMMA7UWeHz1bnk/S
- ffOly/2NtJJvL5mh9ASkVsbu4dRjZJz6y4XOSvPnkYrzPcuLxd3KnGDn+s6bGf3fzEC4
- 6myyc8Dz8xonj31ejsQkFUjVLVKRm77rjQmEJJpsIm7GUBYJGBjYOQqSzJl5veZbgAFS
- 5vKzf7DVFSZdnak93/oaev+dkgzaUDREmJVHkJ470/tYfBB3RE01avItw7FA7SlnbXN7
- 4Jvw==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=bKUj751TeY4nkEZpPo0FTWcTQnR2+/cwe6ZT7/QhNuQ=;
+ fh=Y8tUEWc7xFSJo3FgM/6atYX+LClIxyHAidxHCAnYfkk=;
+ b=MGX/dDVNwRcjiUu1AW1Lg/0ZHRSnrJ1eytlVUG/aEL7CPWq0AjYIF4OSBf503emYs+
+ scWuinMu9BcGD8LG+nUO3m4i5PERGTVb+RkIoJbWywyYMcvqZGTrmXemTrREXjmb7cms
+ g1jQ9bufA7cnBQK7p7whagOWhkTXSLbma/BW9q+QWRbMRdurcm2F0Cs72pv81zkb3xLM
+ c5r5uES+BLEeruwndBx4mT3bn/TEbmXxpxro3sE79zd1JwrxsNZAlTGEDdF1Eof/kGY5
+ afU/yTVyhyEMCUMg+8TdqlLhobiF9glLkVzruY83iCb7AY9BupM7l9RelwJZmJn6BXRP
+ x5ug==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780925435; x=1781530235; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=PsLWL74BoRjUjdW6fn0hi8lSYZTAAtYLAmP4Y8UoPqk=;
- b=iqq10YXkA6SWJgZijndLbVB6Dzbu8hiSmTvMezAV3wvucwL1PAuuTfNr3tJo4FjUhl
- /c/ul0twI4R+KH4Q03KoEUWGnEQfoW+SAk0JT1c7v27ar4Ft6amqiBLO5jaQSqO/SSkG
- N9gLZz8aUKdtMWgnK1jx5zuuFvAEi4996WGzjz8blFTYdqwJyOAtnzYCEflWofxnpS+w
- Rn60AJS5CBF/e2unCPZ4VCGg/LuPg0xGlthZBXuOVSVm5yzkcvzehF1kC1fM7YTptC6b
- tFoGipisbX/4zhxC1kBihL4B9CK/khgGzLRhRvMC94fRMRj7M9ZUIS6cUrDBbBHn83qQ
- jKSA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780925435; x=1781530235;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1780926696; x=1781531496; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PsLWL74BoRjUjdW6fn0hi8lSYZTAAtYLAmP4Y8UoPqk=;
- b=ewx+UB/cizhtbaKnGFDLoVmVChGCiKH8jsWBrg9CyZdnTpFVhxLW4ZzP3ZAFGg8ntU
- 6PB81ta9UpPxXL7+Wf68IV06P9a60ImLPOCVJHhxLA+dKHSq1wzWr3F6wbmce23XJBx/
- ZgnhIdpWcv9uNZg+SJRpHSFRdZTIHrkl7h1T3OnqBXPxHvfaFi4YhoQEmjyo6sb4K+hV
- Zlhlb6uH+Zqak+IUIISdc3HQolI/u6EjTBg5ay2VJl9eZDutj+cLOCGzv8uCCFW2muc7
- oNDj+B6jB5UZoN6H1Hl252di5PZHsuXC1NvxgqxBxWWvRxIsvKi7Xw+0B0lc4i2oeeR4
- 0fcw==
+ bh=bKUj751TeY4nkEZpPo0FTWcTQnR2+/cwe6ZT7/QhNuQ=;
+ b=gQ0IeJXXbtyS9VpiqvrTumtn8VbVTEmW8wq+OCdBeww1rO/i2OaX3mzN5hKE8GzxkZ
+ bX6gyqOYTq16WJwulXR1/dDMkr2KtLB4YTMn52y/GZP+MTlgX/T5A0d/re9dqzraRmHd
+ YrnkRIfg36XwqcoNvQV0LHSPg7O6IE4efRMns6gQv0FoXjFu49We+Jede+0e9IO/HDHI
+ jiuC05u1JZZlsAtJixVAwvHiazWANRId3hwq9L7nMmf/25AiyuoEx99aLOjNsUxK77sj
+ YpKqPJoqnbKT6q92QrKRCpJksWKEO7mePaFhETBWHKpSCmFozAu1udNQpxdOWlDDLfPp
+ sUpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1780926696; x=1781531496;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=bKUj751TeY4nkEZpPo0FTWcTQnR2+/cwe6ZT7/QhNuQ=;
+ b=aq0a6Tx9npuUj9bafCQMdPs7HT+fODF/PQRH1swPZ04CPu6RMJO124fmo2cqPXZ/he
+ /77XzXmplQy6svHYzhcz4hbTwQ93xsAIb0uIarc+83YjQjWRQTDV3D8SPy7klZRgIb2n
+ B0+PoQBLMbrA1EmE6G4N8bIu432sBfernJ2tu8kTSPJIxaoXfLqxGzX5hdn4HI2Ab9Xe
+ WgwCviM1ecYQRR7eIq38b7JoxkxomMsdrG9E/akoIyaYwKvr9TuNpATxbyTl8oE9yScl
+ nEWiPUrN+d3clNbuvVC7oHo+YDoI7ACUHKG7VUiEUNlzGfE5kNWYR8KYyfuTur56I1JM
+ I8TA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/jzHXp7aFJZuBpTOEDFqKi3t9R7jWY7l3oJd+tvv8SIEYYJQf334H3UpMKm8VZRD3OWkqJaCuOig==@nongnu.org
-X-Gm-Message-State: AOJu0Yw8wIbWfFAWw/E6xLZSfd2Jwk6NAGpgwR6dw3quIsniFIGfwchB
- b9S0LiOKIO20MXuIEfEJquIwzsZsUYA0UNQXHCudkq87zfKhh7qtZM2Ckw9l8ePBYcqBQF6y6iL
- HTzXi3xujls2QEpsLzGbW4BO7ocl8gISo/CYMu8qpsg==
-X-Gm-Gg: Acq92OH12BSWoMY4ILz7Tq6/+3ykKeANwAZ0ELSwiAnAwSEueEEawboznKtxMAScJK1
- tu4fkDo/w/QYhIwOUpaS9u80IBZ4ebqO71RNtDis2p4j40CNfieC1524IICTiha86D9+HEvLo2E
- XRnWe0DUCw4clUf1x70hpEZJUskGD3u0rGHNrDoMhv06BBzF+gZuhaZkTCX51KqOSEt30Y/4VyX
- 3p7O8mji5CTmNKHajxhf4Xiir1T5MGAUJMXIa6GVOppnUUFTaQfp7KkAkwxcMwy1jrSDCI0LQvN
- +Aj1EMJTCpa7h1Qj62r+SG7lxH1HLgS+tnxqm+gfCEVST56DZ7D5BVlVMVq17N4k+Af61v0ZFJR
- bTQ==
-X-Received: by 2002:a05:690e:120a:b0:661:37ed:6461 with SMTP id
- 956f58d0204a3-66137ed65dbmr3430968d50.1.1780925435175; Mon, 08 Jun 2026
- 06:30:35 -0700 (PDT)
+ AFNElJ+FkWb2E/u4SmL9rtpWtyTcpTOURNuYZq1w3ri0KyvHhYs4tYF2KNdZlgiICiXLML2UZHdWsMVfKg==@nongnu.org
+X-Gm-Message-State: AOJu0Yxvg5aLQr4QcpLfslrNKTCt7JSBVlmOeCrXGl8AIediiDUGY4wQ
+ Sj4/cOrB8ucjceXEGthVqQwF1p3s9iNGY8HbVXH2C55uKvc5L/wVpRKQ5gNp7Z495eY4K2OFu0P
+ 4HL4Y9jUAdXeouH8jCcm1HhupNwJAyJ7UiEFrqqgSKQ==
+X-Gm-Gg: Acq92OF1XrH2VVZqKKKl3q+AeuTmQGHJbYOHBZFd/Zet7YEUzsmm2XQiU/ElFeb3Im2
+ R8wjxDkmvLX4jeg1E+tkSSoo6hBmuLUXMvMvr7cYigwbtrjtJbCEk2Pr/skSiDpUbYL5JKC3rPI
+ lbEeU6ukxaJbkT3vP3kBELDcltqBKHJZMGu9+vHCWPyi8os4j7jIf8TfUAlYUEUJZ3SpCnmY5Gj
+ BS6oaeZRexF6TEAB3qWT10S29OOfFSf7hAUYsaJt1cW4Oo7g9iHQgb6K9gIxM8q8rQFL/TrpcFx
+ mi/L9ZZMWsYKdAKx+WPTBm8MjX8ZqsMiN4mn96i0g+lyVzsDRekcGX4ToSjp6tGGE7JMNX5XluL
+ rhw==
+X-Received: by 2002:a53:ac87:0:b0:661:1307:3d49 with SMTP id
+ 956f58d0204a3-66113074155mr12044887d50.7.1780926696345; Mon, 08 Jun 2026
+ 06:51:36 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260521112806.504961-1-kraxel@redhat.com>
- <CAFEAcA8hbObntY8Tp+kOV7btb-io92O9GW99-6SPxigPJUjPrw@mail.gmail.com>
- <aiE5LrpfnJRbkx-A@sirius.home.kraxel.org>
- <CAFEAcA_ow2ro3h0nfhY3jA_XToAnjdVFNPrF25aWLd=X2cnmaw@mail.gmail.com>
- <aia8iXGozAclWQCb@sirius.home.kraxel.org>
- <CAFEAcA9oB_-ao5C8fGYonE7njUMWLHo5-iETeN_XtnFL4PzyvA@mail.gmail.com>
- <aibALjyPTXVUDpDv@sirius.home.kraxel.org>
-In-Reply-To: <aibALjyPTXVUDpDv@sirius.home.kraxel.org>
+References: <20260529082948.363931-1-alex.bennee@linaro.org>
+In-Reply-To: <20260529082948.363931-1-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Jun 2026 14:30:23 +0100
-X-Gm-Features: AVVi8CetmNrwVukKIi-1g4-LBK3y_qq1bRAZUL-3XCNm9LKAy6WWUy7gT_Xf7FI
-Message-ID: <CAFEAcA-VQWKzJ-aNnzYHZ7a+sVP1y6tkUnE3YCPydsqP0uVXvg@mail.gmail.com>
-Subject: Re: [PATCH 0/3] hw/arm: add support for shim loading
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>
+Date: Mon, 8 Jun 2026 14:51:24 +0100
+X-Gm-Features: AVVi8CfELuu63-8QEYfJ12bzRvsrYJpzmkWaV0Rztq1EKICzbROxPC3RaYFy1rw
+Message-ID: <CAFEAcA94+mh_pigFDi+tEPRJ416fSWfxsQ1Lj8Byemug9kBp6w@mail.gmail.com>
+Subject: Re: [PATCH v7 0/8] target/arm: fully model WFxT instructions for
+ A-profile
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
+ Alexander Graf <agraf@csgraf.de>, Mohamed Mediouni <mohamed@unpredictable.fr>, 
+ Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
+ kvm@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,42 +122,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 8 Jun 2026 at 14:23, Gerd Hoffmann <kraxel@redhat.com> wrote:
+On Fri, 29 May 2026 at 09:29, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
->   Hi,
+> This series fully models the behaviour of WFxT instructions. We
+> already had support for WFE for M-profile but we left off A-profile as
+> it has more potential sources of wake-ups. The main one is the event
+> stream which includes events from significant bits of the timer
+> ticking over.
 >
-> > > When not booting via UEFI you can ignore that.
-> >
-> > But if I'm doing direct kernel boot then by definition I'm
-> > not booting via UEFI, I'm directly booting the kernel...
+> The refactoring from the previous iterations of the patch have now
+> been merged.
 >
-> You can (on aarch64) do direct kernel boot both with and without
-> UEFI firmware ...
+> I've dropped trying to fully model the global monitor in favour of
+> taking advantage of the architectural flexibility to have an IMPDEF
+> event wake up for any reason. We treat the setting of exclusive_addr
+> as such a reason because it indicates the current vCPU is in a ldstx
+> exclusive region and we don't want the guest to deadlock. This does mean
+> the system won't sleep on WFE enabled locks but people shouldn't be
+> relying on QEMU to model real world sleep patterns anyway given the
+> efficiency of emulation compared to real HW.
 >
-> Without firmware qemu will load the kernel binary, then start the VM
-> with the instruction pointer register pointing to the elf entry point.
+> I've written a test case using kvm-unit-tests:
 >
-> With firmware qemu exposes kernel + initrd (and with this patch shim
-> too) via fw_cfg, and the firmware can pick it up from there and run
-> it (instead of trying to boot via disk / cdrom / network).
+>   Message-ID: <20260527111822.1563679-1-alex.bennee@linaro.org>
+>   Date: Wed, 27 May 2026 12:18:21 +0100
+>   Subject: [kvm-unit-tests PATCH v2] arm: add wfx test case
+>   From: =3D?UTF-8?q?Alex=3D20Benn=3DC3=3DA9e?=3D <alex.bennee@linaro.org>
+>
+> All patches are now reviewed.
 
-I don't really think of the latter as being direct-boot, and
-nor does our documentation:
 
-https://www.qemu.org/docs/master/system/invocation.html#hxtool-8
 
-# There are broadly 4 ways you can boot a system with QEMU.
-#
-#  - specify a firmware and let it control finding a kernel
-#  - specify a firmware and pass a hint to the kernel to boot
-#  - direct kernel image boot
-#  - manually load files into the guest's address space
-#
-# The third method is useful for quickly testing kernels but as there is
-# no firmware to pass configuration information to the kernel [...]
-
-Anyway, I'll reply to your patch updating the documentation
-with some suggestions for expanding it.
+Applied to target-arm.next, thanks.
 
 -- PMM
 

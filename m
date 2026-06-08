@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A37FFCD8C8E
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:55:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4B0DCD8C8E
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:56:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWSsM-0002tX-LF; Mon, 08 Jun 2026 01:50:18 -0400
+	id 1wWSqr-0001Gg-Ca; Mon, 08 Jun 2026 01:48:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSry-0001zg-KL
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:58 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSqp-0001G0-O1
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:48:43 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrv-0000nZ-0g
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:53 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSqo-0000Li-5t
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:48:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780897790;
+ s=mimecast20190719; t=1780897721;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kORBPmEZIJMSQMsLcMufTbzpddl7gyDqe5MbRYQmXCc=;
- b=Ic8yq/X5hHDOnkArgJxI7gLgEFB5BgkGEDrEPLJN8xE+0uFEeE5qjD+3+PTxi46PqezQ7q
- as3sU8GW6I0nR5pzsonRCc943PhytL/pXN9+SHQSbyrdZ4OiKI4AKvpnVVfwKOI9aItgfq
- BeeItfKQITANBsGbizQJCmGjR1mOhW4=
+ bh=hGfeYpuAix5wAfxjUsQQZ4i5WS2PTpyUMv2zAR6tQE0=;
+ b=Ap29E+ix1Zhon5imW/Lw1oBQUw8g4hAnhPGnuX0+d1aGtdX26LJLKrGCvwsTwHBmqX9xNt
+ MI1X43cvZycRHQHG6iicUwnmezYtjAd6Toqdce2cRrMxxcSlTwhnMx94WrEwQTP1XbzM7J
+ K/IhMKoYchOegcjsKynPjRRWX5aeAhE=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-635-51yx0cAzMV6QHh7417WJIA-1; Mon,
- 08 Jun 2026 01:49:46 -0400
-X-MC-Unique: 51yx0cAzMV6QHh7417WJIA-1
-X-Mimecast-MFC-AGG-ID: 51yx0cAzMV6QHh7417WJIA_1780897785
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-691-X67GyIKcPV-PRZhqxA8Kxw-1; Mon,
+ 08 Jun 2026 01:48:37 -0400
+X-MC-Unique: X67GyIKcPV-PRZhqxA8Kxw-1
+X-Mimecast-MFC-AGG-ID: X67GyIKcPV-PRZhqxA8Kxw_1780897717
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6777C195608B; Mon,  8 Jun 2026 05:49:45 +0000 (UTC)
+ id E106A195608A; Mon,  8 Jun 2026 05:48:36 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.33])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A71FD765; Mon,  8 Jun 2026 05:49:43 +0000 (UTC)
+ id 2BDE927A; Mon,  8 Jun 2026 05:48:34 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jithu Joseph <jithu.joseph@oss.qualcomm.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 37/37] hw/i3c: keep _bytes aliases for renamed queue-capacity
- properties
-Date: Mon,  8 Jun 2026 07:48:26 +0200
-Message-ID: <20260608054826.346488-38-clg@redhat.com>
+Subject: [PULL 03/37] hw/misc/aspeed_ltpi: Convert to DEFINE_TYPES() with
+ inlined TypeInfo
+Date: Mon,  8 Jun 2026 07:47:52 +0200
+Message-ID: <20260608054826.346488-4-clg@redhat.com>
 In-Reply-To: <20260608054826.346488-1-clg@redhat.com>
 References: <20260608054826.346488-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: AW-30Kl-apSzoSOlC8U66Ja4EGAQhoW-cZpyx_Gs6NY_1780897785
+X-Mimecast-MFC-PROC-ID: -fHHKh_Nd-Rt9JC2KRHAZkKsu1rSc1HZS1L7X3SLiE4_1780897717
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -88,67 +87,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The command-response/tx-rx/ibi queue-capacity properties were renamed
-from "-bytes" to "-words".  The "-bytes" names are user-visible and
-shipped in v11.0.0 (reachable via e.g.
--global driver=dw.i3c,property=tx-rx-queue-capacity-bytes,...), so
-register them as aliases of the new names to keep existing command
-lines working.
+Replace the legacy type_register_static()/type_init() registration
+pattern with the modern DEFINE_TYPES() macro.
 
-object_property_add_alias() forwards both reads and writes to the
-target property, so the old names behave exactly as before; introspection
-and qom-get/qom-set continue to work under either name.
+Inline the standalone 'aspeed_ltpi_info' TypeInfo variable directly
+into the 'aspeed_ltpi_types[]' array, removing the need for a separate
+declaration.
 
-Signed-off-by: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
-Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Link: https://lore.kernel.org/qemu-devel/20260604142207.2118098-4-jithu.joseph@oss.qualcomm.com
+No functional change.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20260601024959.2347639-4-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/i3c/dw-i3c.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ hw/misc/aspeed_ltpi.c | 19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
 
-diff --git a/hw/i3c/dw-i3c.c b/hw/i3c/dw-i3c.c
-index 0d32d9ce78a0..6386499dd9fc 100644
---- a/hw/i3c/dw-i3c.c
-+++ b/hw/i3c/dw-i3c.c
-@@ -1830,6 +1830,27 @@ static void dw_i3c_realize(DeviceState *dev, Error **errp)
-     bc->ibi_finish = dw_i3c_ibi_finish;
+diff --git a/hw/misc/aspeed_ltpi.c b/hw/misc/aspeed_ltpi.c
+index 956e91d14361..2e413550b9fd 100644
+--- a/hw/misc/aspeed_ltpi.c
++++ b/hw/misc/aspeed_ltpi.c
+@@ -179,16 +179,13 @@ static void aspeed_ltpi_class_init(ObjectClass *klass, const void *data)
+     rc->phases.hold = aspeed_ltpi_reset_hold;
  }
  
-+/*
-+ * The *-queue-capacity-bytes properties shipped in v11.0.0 under names that
-+ * implied a byte count, but the values are 32-bit word counts (they are passed
-+ * straight to fifo32_create()).  They were renamed to *-queue-capacity-words;
-+ * keep the old names working as aliases so existing command lines using e.g.
-+ * -global driver=dw.i3c,property=tx-rx-queue-capacity-bytes,... don't break.
-+ */
-+static void dw_i3c_init(Object *obj)
-+{
-+    static const char *const alias[][2] = {
-+        { "command-response-queue-capacity-bytes",
-+          "command-response-queue-capacity-words" },
-+        { "tx-rx-queue-capacity-bytes", "tx-rx-queue-capacity-words" },
-+        { "ibi-queue-capacity-bytes", "ibi-queue-capacity-words" },
-+    };
-+
-+    for (int i = 0; i < ARRAY_SIZE(alias); i++) {
-+        object_property_add_alias(obj, alias[i][0], obj, alias[i][1]);
+-static const TypeInfo aspeed_ltpi_info = {
+-    .name          = TYPE_ASPEED_LTPI,
+-    .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(AspeedLTPIState),
+-    .class_init    = aspeed_ltpi_class_init,
++static const TypeInfo aspeed_ltpi_types[] = {
++    {
++        .name          = TYPE_ASPEED_LTPI,
++        .parent        = TYPE_SYS_BUS_DEVICE,
++        .instance_size = sizeof(AspeedLTPIState),
++        .class_init    = aspeed_ltpi_class_init,
 +    }
-+}
-+
- static const Property dw_i3c_properties[] = {
-     DEFINE_PROP_UINT8("device-id", DWI3C, cfg.id, 0),
-     DEFINE_PROP_UINT8("command-response-queue-capacity-words", DWI3C,
-@@ -1868,6 +1889,7 @@ static const TypeInfo dw_i3c_types[] = {
-         .name = TYPE_DW_I3C,
-         .parent = TYPE_SYS_BUS_DEVICE,
-         .instance_size = sizeof(DWI3C),
-+        .instance_init = dw_i3c_init,
-         .class_init = dw_i3c_class_init,
-     },
  };
+ 
+-static void aspeed_ltpi_register_types(void)
+-{
+-    type_register_static(&aspeed_ltpi_info);
+-}
+-
+-type_init(aspeed_ltpi_register_types);
++DEFINE_TYPES(aspeed_ltpi_types)
 -- 
 2.54.0
 

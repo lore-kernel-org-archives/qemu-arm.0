@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D9F3CD8C90
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 00:23:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86B9ACD8C9D
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:49:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWNm4-0005hf-Gv; Sun, 07 Jun 2026 20:23:28 -0400
+	id 1wWSqs-0001HP-Q1; Mon, 08 Jun 2026 01:48:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wWNm3-0005hW-Ay
- for qemu-arm@nongnu.org; Sun, 07 Jun 2026 20:23:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSqq-0001GJ-VW
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:48:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wWNm1-0005kQ-RH
- for qemu-arm@nongnu.org; Sun, 07 Jun 2026 20:23:27 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSqp-0000M3-DD
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:48:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780878204;
+ s=mimecast20190719; t=1780897722;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=vm2zjuFL31XFvgAb6Tw4aXzH3ExlILwIQ7zUbyCuiu8=;
- b=i2smvt88Su4iw44orN7+9sKYFs/DdGcYPmpfa9xzrQJxjt7zH19VZACLvmj566ilm4t3H8
- XRcq+eVzmZG5ZIRkC9TDtQh6dC5uhVaT4L3ZUTCA5GNJYO8jDi1fKKZlk+ZmsNzYYcuJUY
- HO4Xs9VT3uVp3L/UcfklAsPyIzfA5ag=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ADh9CRgt71Lz/GF9kAWfuhxzdG+i1in6PC0e4kbsRNI=;
+ b=bT2Gat81Oj9x7jTkqCHPS0dN7Q6AW+m3pKIz7A+g+Zhis4gCzasXFjJvCALtiLia4ml0Li
+ FrmRox7o9ZihYqWyVlDxHHmlDnvwQuxDvl/PMnzHn9DuoNMZ9DGIu1tIis7JmP2brNMQZ1
+ uxYCLeTdiwYdAq1ICAU2sQwQrcFnZQ8=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-679-jeIYaM57Ml-RuxUTbE9jNA-1; Sun,
- 07 Jun 2026 20:23:22 -0400
-X-MC-Unique: jeIYaM57Ml-RuxUTbE9jNA-1
-X-Mimecast-MFC-AGG-ID: jeIYaM57Ml-RuxUTbE9jNA_1780878201
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-632-a-uamPmFP723Iwy_av_pqg-1; Mon,
+ 08 Jun 2026 01:48:40 -0400
+X-MC-Unique: a-uamPmFP723Iwy_av_pqg-1
+X-Mimecast-MFC-AGG-ID: a-uamPmFP723Iwy_av_pqg_1780897719
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CAB101800473; Mon,  8 Jun 2026 00:23:20 +0000 (UTC)
-Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.3])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5D65130001BE; Mon,  8 Jun 2026 00:23:16 +0000 (UTC)
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, pbonzini@redhat.com, peterx@redhat.com,
- philmd@mailo.com, shan.gavin@gmail.com
-Subject: [PATCH] system/memory: Remove MAX_PHYS_ADDR
-Date: Mon,  8 Jun 2026 10:23:03 +1000
-Message-ID: <20260608002303.851456-1-gshan@redhat.com>
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D59441956050; Mon,  8 Jun 2026 05:48:38 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.44.32.33])
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 4A04E765; Mon,  8 Jun 2026 05:48:37 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 04/37] hw/misc/aspeed_pwm: Convert to DEFINE_TYPES() with
+ inlined TypeInfo
+Date: Mon,  8 Jun 2026 07:47:53 +0200
+Message-ID: <20260608054826.346488-5-clg@redhat.com>
+In-Reply-To: <20260608054826.346488-1-clg@redhat.com>
+References: <20260608054826.346488-1-clg@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: BMHDl2oR2xsagF5KSJUwpLbLgRtYwyoDPtkDo5uoaCY_1780878201
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: Is82gj810oeuVuPeFFg21OeeUtOqmybrOxXIk_B0mXE_1780897719
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,29 +87,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Remove MAX_PHYS_ADDR and MAX_PHYS_ADDR_SPACE_BITS as they're not used
-since the addition by commit 052e87b073cb ("memory: make section size
-a 128-bit integer").
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Signed-off-by: Gavin Shan <gshan@redhat.com>
+Replace the legacy type_register_static()/type_init() registration
+pattern with the modern DEFINE_TYPES() macro.
+
+Inline the standalone 'aspeed_pwm_info' TypeInfo variable directly
+into the 'aspeed_pwm_types[]' array, removing the need for a separate
+declaration.
+
+No functional change.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20260601024959.2347639-5-jamin_lin@aspeedtech.com
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/system/memory.h | 3 ---
- 1 file changed, 3 deletions(-)
+ hw/misc/aspeed_pwm.c | 19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
 
-diff --git a/include/system/memory.h b/include/system/memory.h
-index 1417132f6d..c449c0385e 100644
---- a/include/system/memory.h
-+++ b/include/system/memory.h
-@@ -36,9 +36,6 @@ enum device_endian {
+diff --git a/hw/misc/aspeed_pwm.c b/hw/misc/aspeed_pwm.c
+index 673a0f1346f0..dfb93ae7fb81 100644
+--- a/hw/misc/aspeed_pwm.c
++++ b/hw/misc/aspeed_pwm.c
+@@ -106,16 +106,13 @@ static void aspeed_pwm_class_init(ObjectClass *klass, const void *data)
+     dc->vmsd = &vmstate_aspeed_pwm;
+ }
  
- #define RAM_ADDR_INVALID (~(ram_addr_t)0)
+-static const TypeInfo aspeed_pwm_info = {
+-    .name = TYPE_ASPEED_PWM,
+-    .parent = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(AspeedPWMState),
+-    .class_init = aspeed_pwm_class_init,
++static const TypeInfo aspeed_pwm_types[] = {
++    {
++        .name = TYPE_ASPEED_PWM,
++        .parent = TYPE_SYS_BUS_DEVICE,
++        .instance_size = sizeof(AspeedPWMState),
++        .class_init = aspeed_pwm_class_init,
++    }
+ };
  
--#define MAX_PHYS_ADDR_SPACE_BITS 62
--#define MAX_PHYS_ADDR            (((hwaddr)1 << MAX_PHYS_ADDR_SPACE_BITS) - 1)
+-static void aspeed_pwm_register_types(void)
+-{
+-    type_register_static(&aspeed_pwm_info);
+-}
 -
- #define TYPE_MEMORY_REGION "memory-region"
- DECLARE_INSTANCE_CHECKER(MemoryRegion, MEMORY_REGION,
-                          TYPE_MEMORY_REGION)
+-type_init(aspeed_pwm_register_types);
++DEFINE_TYPES(aspeed_pwm_types)
 -- 
 2.54.0
 

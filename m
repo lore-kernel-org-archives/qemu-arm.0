@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DEB1CD8C8E
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:56:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90442CD8C9D
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:57:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWSrE-0001Sp-Qv; Mon, 08 Jun 2026 01:49:08 -0400
+	id 1wWSsD-0002Dk-HO; Mon, 08 Jun 2026 01:50:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrD-0001Rd-An
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrf-0001l4-St
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:36 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrB-0000Rz-UE
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:07 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrd-0000f5-V1
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780897745;
+ s=mimecast20190719; t=1780897773;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=S+ZsnyN6EjbBy0MH6Jj3+JhfJd/EN6CIq6apAopO5/I=;
- b=Pdu2n6u+L7omeJaZdaxc+u7jJuH8R1vg9TP9zQUrMuJni7lgmA/tB8DqX29dVN0mhU+1WI
- hK5sFTJ4B/vU3azlQ8NXq3MsgjfP1ULwoRuoijTNlDrkU3KCvNPjh37fQxdG2U57ialbA5
- obzqajjHFWOBvN1GlyuVZDPJxipWTa0=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=eDZtwZRXZZCr66ELqoFMvh5WzweIfksK+cS5qV8a/lY=;
+ b=TuRjK8LG2r8x5fe9dMTqVV68BqAwwHUAju+peHwRx/GQTbvsMtPS8WyJb2zIqEejBqdBOC
+ QCmHfPOftL65hcnsv25aM24sax7/3lmkWaAHPuYv0C4LTa2husZ2IqGL7lY57DuU7EnZbK
+ KiCkmjDukk4zG6DmQYL+10Ze+s7PN+Q=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-636-Ca9gM7XAPYCCs15Q21G0wQ-1; Mon,
- 08 Jun 2026 01:49:01 -0400
-X-MC-Unique: Ca9gM7XAPYCCs15Q21G0wQ-1
-X-Mimecast-MFC-AGG-ID: Ca9gM7XAPYCCs15Q21G0wQ_1780897741
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-323-tEG4Y8XUNHGlmxHjRLN5Bg-1; Mon,
+ 08 Jun 2026 01:49:31 -0400
+X-MC-Unique: tEG4Y8XUNHGlmxHjRLN5Bg-1
+X-Mimecast-MFC-AGG-ID: tEG4Y8XUNHGlmxHjRLN5Bg_1780897770
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E39C61956089; Mon,  8 Jun 2026 05:49:00 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9CE361800599; Mon,  8 Jun 2026 05:49:30 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.33])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6F76A27A; Mon,  8 Jun 2026 05:48:59 +0000 (UTC)
+ id 28D961624; Mon,  8 Jun 2026 05:49:28 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 15/37] hw/intc/aspeed_vic: Convert to DEFINE_TYPES() with
- inlined TypeInfo
-Date: Mon,  8 Jun 2026 07:48:04 +0200
-Message-ID: <20260608054826.346488-16-clg@redhat.com>
+Subject: [PULL 30/37] hw/arm/aspeed_ast1040: Add SGPIO controller support
+Date: Mon,  8 Jun 2026 07:48:19 +0200
+Message-ID: <20260608054826.346488-31-clg@redhat.com>
 In-Reply-To: <20260608054826.346488-1-clg@redhat.com>
 References: <20260608054826.346488-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: th0EpwAvj1CyqtiC4ufESDRGxVKmSFZorkEBJdAy0RQ_1780897741
+X-Mimecast-MFC-PROC-ID: GVLLzg0xt2UN9BVfZJQpkqA4EVKgJm3dZpIZpZiM7is_1780897770
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,52 +87,101 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Replace the legacy type_register_static()/type_init() registration
-pattern with the modern DEFINE_TYPES() macro.
+The AST1040 SGPIO controller is compatible with the AST2700
+SGPIO controller implementation.
 
-Inline the standalone 'aspeed_vic_info' TypeInfo variable directly
-into the 'aspeed_vic_types[]' array, removing the need for a separate
-declaration.
+AST1040 contains two SGPIO controllers, so reuse the existing
+"aspeed.sgpio-ast2700" device model instead of keeping them as
+unimplemented devices.
 
-No functional change.
+MMIO mapping:
+- SGPIOM0 : 0x74C0C000
+- SGPIOM1 : 0x74C0D000
+
+IRQ mapping:
+- SGPIOM0 : IRQ 85
+- SGPIOM1 : IRQ 88
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260601024959.2347639-16-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260603040027.938816-7-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/intc/aspeed_vic.c | 19 ++++++++-----------
- 1 file changed, 8 insertions(+), 11 deletions(-)
+ hw/arm/aspeed_ast1040.c | 29 +++++++++++++++++------------
+ 1 file changed, 17 insertions(+), 12 deletions(-)
 
-diff --git a/hw/intc/aspeed_vic.c b/hw/intc/aspeed_vic.c
-index 13d8423d835a..bd0c87802e67 100644
---- a/hw/intc/aspeed_vic.c
-+++ b/hw/intc/aspeed_vic.c
-@@ -349,16 +349,13 @@ static void aspeed_vic_class_init(ObjectClass *klass, const void *data)
-     dc->vmsd = &vmstate_aspeed_vic;
- }
- 
--static const TypeInfo aspeed_vic_info = {
--    .name = TYPE_ASPEED_VIC,
--    .parent = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(AspeedVICState),
--    .class_init = aspeed_vic_class_init,
-+static const TypeInfo aspeed_vic_types[] = {
-+    {
-+        .name = TYPE_ASPEED_VIC,
-+        .parent = TYPE_SYS_BUS_DEVICE,
-+        .instance_size = sizeof(AspeedVICState),
-+        .class_init = aspeed_vic_class_init,
+diff --git a/hw/arm/aspeed_ast1040.c b/hw/arm/aspeed_ast1040.c
+index c6b22186ce72..77211ce1f362 100644
+--- a/hw/arm/aspeed_ast1040.c
++++ b/hw/arm/aspeed_ast1040.c
+@@ -56,6 +56,7 @@ static const int aspeed_soc_ast1040_irqmap[] = {
+     [ASPEED_DEV_ADC]       = 80,
+     [ASPEED_DEV_GPIO]      = 82,
+     [ASPEED_DEV_SGPIOM0]   = 85,
++    [ASPEED_DEV_SGPIOM1]   = 88,
+     [ASPEED_DEV_TIMER1]    = 92,
+     [ASPEED_DEV_I3C]       = 96, /* 96 ~ 103 */
+     [ASPEED_DEV_WDT]       = 112,
+@@ -112,14 +113,14 @@ static void aspeed_soc_ast1040_init(Object *obj)
+     object_initialize_child(obj, "adc", &s->adc, TYPE_ASPEED_2700_ADC);
+     object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
+     object_initialize_child(obj, "gpio", &s->gpio, "aspeed.gpio-ast2700");
++    for (i = 0; i < sc->sgpio_num; i++) {
++        object_initialize_child(obj, "sgpio[*]", &s->sgpiom[i],
++                                "aspeed.sgpio-ast2700");
 +    }
- };
  
--static void aspeed_vic_register_types(void)
--{
--    type_register_static(&aspeed_vic_info);
--}
+     object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE);
+     object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVICE);
+     object_initialize_child(obj, "udc", &s->udc, TYPE_UNIMPLEMENTED_DEVICE);
+-    object_initialize_child(obj, "sgpiom[0]", &s->sgpiom[0],
+-                            TYPE_UNIMPLEMENTED_DEVICE);
+-    object_initialize_child(obj, "sgpiom[1]", &s->sgpiom[1],
+-                            TYPE_UNIMPLEMENTED_DEVICE);
+     object_initialize_child(obj, "jtag[0]", &s->jtag[0],
+                             TYPE_UNIMPLEMENTED_DEVICE);
+     object_initialize_child(obj, "jtag[1]", &s->jtag[1],
+@@ -221,6 +222,17 @@ static void aspeed_soc_ast1040_realize(DeviceState *dev_soc, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
+                        aspeed_soc_ast1040_get_irq(s, ASPEED_DEV_GPIO));
+ 
++    /* SGPIO */
++    for (i = 0; i < sc->sgpio_num; i++) {
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->sgpiom[i]), errp)) {
++            return;
++        }
++        aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->sgpiom[i]), 0,
++                        sc->memmap[ASPEED_DEV_SGPIOM0 + i]);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->sgpiom[i]), 0,
++                       aspeed_soc_ast1040_get_irq(s, ASPEED_DEV_SGPIOM0 + i));
++    }
++
+     /* Unimplemented peripherals */
+     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->pwm),
+                                   "aspeed.pwm",
+@@ -234,14 +246,6 @@ static void aspeed_soc_ast1040_realize(DeviceState *dev_soc, Error **errp)
+                                   "aspeed.udc",
+                                   sc->memmap[ASPEED_DEV_UDC], 0x4000);
+ 
+-    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->sgpiom[0]),
+-                                  "aspeed.sgpiom0",
+-                                  sc->memmap[ASPEED_DEV_SGPIOM0], 0x1000);
 -
--type_init(aspeed_vic_register_types);
-+DEFINE_TYPES(aspeed_vic_types)
+-    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->sgpiom[1]),
+-                                  "aspeed.sgpiom1",
+-                                  sc->memmap[ASPEED_DEV_SGPIOM1], 0x1000);
+-
+     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->jtag[0]),
+                                   "aspeed.jtag0",
+                                   sc->memmap[ASPEED_DEV_JTAG0], 0x100);
+@@ -269,6 +273,7 @@ static void aspeed_soc_ast1040_class_init(ObjectClass *klass, const void *data)
+     sc->sram_size[0]    = 128 * KiB;
+     sc->sram_size[1]    = 16 * MiB; /* Hyper RAM */
+     sc->uarts_num       = 13;
++    sc->sgpio_num       = 2;
+     sc->uarts_base      = ASPEED_DEV_UART0;
+     sc->irqmap          = aspeed_soc_ast1040_irqmap;
+     sc->memmap          = aspeed_soc_ast1040_memmap;
 -- 
 2.54.0
 

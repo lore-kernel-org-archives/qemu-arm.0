@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE0D1CD8C8E
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:51:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CD27CD8C8E
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:51:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWSr9-0001MY-1U; Mon, 08 Jun 2026 01:49:03 -0400
+	id 1wWSrK-0001Vz-O1; Mon, 08 Jun 2026 01:49:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSqx-0001IK-62
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:48:52 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrI-0001UH-3p
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:12 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSqv-0000My-2P
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:48:50 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrG-0000Sv-8g
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780897727;
+ s=mimecast20190719; t=1780897749;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=O6gK0iKpUcHmAVtVCVtQT+7M8qJ3nFde7PqZM+fgqnY=;
- b=iED7yLN1EiqqGWiBjIu7Qki7yzAMF64noBZppFbqJH1+HINzWz2/ubiSABJv4AePRPpQMz
- k+C4Wapd4TN6COu0nrcG345lo9mabC7Gak6w6zKe6HESRTlYgUcDJeWeJU99pAXn9CXdFN
- oulmgIs3gWCU4jhz48OqzTOHdDAGV/E=
+ bh=OVNxIapeP19+wx1gDjvqqWIIr+P2jHWr5RYAQhzozXc=;
+ b=OlOHIdXZorU4nTmCn+xIg0v5iN2MHJS6bZAbRnWQEWuSDRzfQ+Ll95PUjYFVGXB5YHaj6M
+ 4uy8jPP2NnWBVmtGxTGw09A417+BITy0ROl7+iWBj8V+GuPUmxwDx9n6rL999GIt0ImBnO
+ Q1we1KuCzkI6UDkVv9H5tB4YtKP17Lc=
 Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-341-FeKF6KTjMcmjJdxRTRLXnA-1; Mon,
- 08 Jun 2026 01:48:45 -0400
-X-MC-Unique: FeKF6KTjMcmjJdxRTRLXnA-1
-X-Mimecast-MFC-AGG-ID: FeKF6KTjMcmjJdxRTRLXnA_1780897724
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-393-tDUH6tROMim-ziT8GJCmCQ-1; Mon,
+ 08 Jun 2026 01:49:06 -0400
+X-MC-Unique: tDUH6tROMim-ziT8GJCmCQ-1
+X-Mimecast-MFC-AGG-ID: tDUH6tROMim-ziT8GJCmCQ_1780897745
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CD168195608C; Mon,  8 Jun 2026 05:48:44 +0000 (UTC)
+ id 345231956096; Mon,  8 Jun 2026 05:49:05 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.33])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 59054765; Mon,  8 Jun 2026 05:48:43 +0000 (UTC)
+ id 7FEBF765; Mon,  8 Jun 2026 05:49:03 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 07/37] hw/misc/aspeed_sdmc: Convert to DEFINE_TYPES() with
+Subject: [PULL 17/37] hw/watchdog/wdt_aspeed: Convert to DEFINE_TYPES() with
  inlined TypeInfo
-Date: Mon,  8 Jun 2026 07:47:56 +0200
-Message-ID: <20260608054826.346488-8-clg@redhat.com>
+Date: Mon,  8 Jun 2026 07:48:06 +0200
+Message-ID: <20260608054826.346488-18-clg@redhat.com>
 In-Reply-To: <20260608054826.346488-1-clg@redhat.com>
 References: <20260608054826.346488-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: 12IAkBiw2iPC-Ua4kGxpUKf0ommqbHfSnC9i9e8acyc_1780897724
+X-Mimecast-MFC-PROC-ID: poSTLv7_n9wflHVwZluu0Dq36VrM8lYROlseKbwPuFI_1780897745
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -92,133 +92,159 @@ From: Jamin Lin <jamin_lin@aspeedtech.com>
 Replace the legacy type_register_static()/type_init() registration
 pattern with the modern DEFINE_TYPES() macro.
 
-Inline 5 standalone TypeInfo variables (aspeed_sdmc_info as abstract
-base, aspeed_2400_sdmc_info, aspeed_2500_sdmc_info,
-aspeed_2600_sdmc_info, aspeed_2700_sdmc_info) directly into the
-'aspeed_sdmc_types[]' array, removing the need for separate
-declarations.
+Inline 6 standalone TypeInfo variables (aspeed_wdt_info as abstract
+base, aspeed_2400_wdt_info, aspeed_2500_wdt_info, aspeed_2600_wdt_info,
+aspeed_1030_wdt_info, aspeed_2700_wdt_info) directly into the
+'aspeed_wdt_types[]' array, removing the need for separate declarations.
 
 No functional change.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260601024959.2347639-8-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260601024959.2347639-18-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/misc/aspeed_sdmc.c | 73 ++++++++++++++++++-------------------------
- 1 file changed, 31 insertions(+), 42 deletions(-)
+ hw/watchdog/wdt_aspeed.c | 93 +++++++++++++++++-----------------------
+ 1 file changed, 40 insertions(+), 53 deletions(-)
 
-diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-index 055abf7f50f0..f8fbaebee6ab 100644
---- a/hw/misc/aspeed_sdmc.c
-+++ b/hw/misc/aspeed_sdmc.c
-@@ -310,16 +310,6 @@ static void aspeed_sdmc_class_init(ObjectClass *klass, const void *data)
-     device_class_set_props(dc, aspeed_sdmc_properties);
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index ae411593c583..deed970c89b9 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -321,15 +321,6 @@ static void aspeed_wdt_class_init(ObjectClass *klass, const void *data)
+     dc->desc = "Aspeed watchdog device";
  }
  
--static const TypeInfo aspeed_sdmc_info = {
--    .name = TYPE_ASPEED_SDMC,
+-static const TypeInfo aspeed_wdt_info = {
 -    .parent = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(AspeedSDMCState),
--    .instance_init = aspeed_sdmc_initfn,
--    .class_init = aspeed_sdmc_class_init,
--    .class_size = sizeof(AspeedSDMCClass),
--    .abstract   = true,
+-    .name  = TYPE_ASPEED_WDT,
+-    .instance_size  = sizeof(AspeedWDTState),
+-    .class_init = aspeed_wdt_class_init,
+-    .class_size    = sizeof(AspeedWDTClass),
+-    .abstract      = true,
 -};
 -
- static int aspeed_sdmc_get_ram_bits(AspeedSDMCState *s)
+ static void aspeed_2400_wdt_class_init(ObjectClass *klass, const void *data)
  {
-     AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
-@@ -393,12 +383,6 @@ static void aspeed_2400_sdmc_class_init(ObjectClass *klass, const void *data)
-     asc->valid_ram_sizes = aspeed_2400_ram_sizes;
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -345,13 +336,6 @@ static void aspeed_2400_wdt_class_init(ObjectClass *klass, const void *data)
+     awc->default_reload_value = 0x03EF1480;
  }
  
--static const TypeInfo aspeed_2400_sdmc_info = {
--    .name = TYPE_ASPEED_2400_SDMC,
--    .parent = TYPE_ASPEED_SDMC,
--    .class_init = aspeed_2400_sdmc_class_init,
+-static const TypeInfo aspeed_2400_wdt_info = {
+-    .name = TYPE_ASPEED_2400_WDT,
+-    .parent = TYPE_ASPEED_WDT,
+-    .instance_size = sizeof(AspeedWDTState),
+-    .class_init = aspeed_2400_wdt_class_init,
 -};
 -
- static uint32_t aspeed_2500_sdmc_compute_conf(AspeedSDMCState *s, uint32_t data)
+ static void aspeed_2500_wdt_reset_pulse(AspeedWDTState *s, uint32_t property)
  {
-     uint32_t fixed_conf = ASPEED_SDMC_HW_VERSION(1) |
-@@ -461,12 +445,6 @@ static void aspeed_2500_sdmc_class_init(ObjectClass *klass, const void *data)
-     asc->valid_ram_sizes = aspeed_2500_ram_sizes;
+     if (property) {
+@@ -383,13 +367,6 @@ static void aspeed_2500_wdt_class_init(ObjectClass *klass, const void *data)
+     awc->default_reload_value = 0x014FB180;
  }
  
--static const TypeInfo aspeed_2500_sdmc_info = {
--    .name = TYPE_ASPEED_2500_SDMC,
--    .parent = TYPE_ASPEED_SDMC,
--    .class_init = aspeed_2500_sdmc_class_init,
+-static const TypeInfo aspeed_2500_wdt_info = {
+-    .name = TYPE_ASPEED_2500_WDT,
+-    .parent = TYPE_ASPEED_WDT,
+-    .instance_size = sizeof(AspeedWDTState),
+-    .class_init = aspeed_2500_wdt_class_init,
 -};
 -
- static uint32_t aspeed_2600_sdmc_compute_conf(AspeedSDMCState *s, uint32_t data)
+ static void aspeed_2600_wdt_class_init(ObjectClass *klass, const void *data)
  {
-     uint32_t fixed_conf = ASPEED_SDMC_HW_VERSION(3) |
-@@ -555,12 +533,6 @@ static void aspeed_2600_sdmc_class_init(ObjectClass *klass, const void *data)
-     asc->valid_ram_sizes = aspeed_2600_ram_sizes;
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -406,13 +383,6 @@ static void aspeed_2600_wdt_class_init(ObjectClass *klass, const void *data)
+     awc->default_reload_value = 0x014FB180;
  }
  
--static const TypeInfo aspeed_2600_sdmc_info = {
--    .name = TYPE_ASPEED_2600_SDMC,
--    .parent = TYPE_ASPEED_SDMC,
--    .class_init = aspeed_2600_sdmc_class_init,
+-static const TypeInfo aspeed_2600_wdt_info = {
+-    .name = TYPE_ASPEED_2600_WDT,
+-    .parent = TYPE_ASPEED_WDT,
+-    .instance_size = sizeof(AspeedWDTState),
+-    .class_init = aspeed_2600_wdt_class_init,
 -};
 -
- static void aspeed_2700_sdmc_reset_hold(Object *obj, ResetType type)
+ static void aspeed_1030_wdt_class_init(ObjectClass *klass, const void *data)
  {
-     AspeedSDMCState *s = ASPEED_SDMC(obj);
-@@ -690,19 +662,36 @@ static void aspeed_2700_sdmc_class_init(ObjectClass *klass, const void *data)
-     asc->valid_ram_sizes = aspeed_2700_ram_sizes;
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -429,13 +399,6 @@ static void aspeed_1030_wdt_class_init(ObjectClass *klass, const void *data)
+     awc->default_reload_value = 0x014FB180;
  }
  
--static const TypeInfo aspeed_2700_sdmc_info = {
--    .name = TYPE_ASPEED_2700_SDMC,
--    .parent = TYPE_ASPEED_SDMC,
--    .class_init = aspeed_2700_sdmc_class_init,
-+static const TypeInfo aspeed_sdmc_types[] = {
+-static const TypeInfo aspeed_1030_wdt_info = {
+-    .name = TYPE_ASPEED_1030_WDT,
+-    .parent = TYPE_ASPEED_WDT,
+-    .instance_size = sizeof(AspeedWDTState),
+-    .class_init = aspeed_1030_wdt_class_init,
+-};
+-
+ static void aspeed_2700_wdt_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -452,21 +415,45 @@ static void aspeed_2700_wdt_class_init(ObjectClass *klass, const void *data)
+     awc->default_reload_value = 0x014FB180;
+ }
+ 
+-static const TypeInfo aspeed_2700_wdt_info = {
+-    .name = TYPE_ASPEED_2700_WDT,
+-    .parent = TYPE_ASPEED_WDT,
+-    .instance_size = sizeof(AspeedWDTState),
+-    .class_init = aspeed_2700_wdt_class_init,
++static const TypeInfo aspeed_wdt_types[] = {
 +    {
-+        .name = TYPE_ASPEED_SDMC,
 +        .parent = TYPE_SYS_BUS_DEVICE,
-+        .instance_size = sizeof(AspeedSDMCState),
-+        .instance_init = aspeed_sdmc_initfn,
-+        .class_init = aspeed_sdmc_class_init,
-+        .class_size = sizeof(AspeedSDMCClass),
-+        .abstract   = true,
++        .name  = TYPE_ASPEED_WDT,
++        .instance_size  = sizeof(AspeedWDTState),
++        .class_init = aspeed_wdt_class_init,
++        .class_size    = sizeof(AspeedWDTClass),
++        .abstract      = true,
 +    },
 +    {
-+        .name = TYPE_ASPEED_2400_SDMC,
-+        .parent = TYPE_ASPEED_SDMC,
-+        .class_init = aspeed_2400_sdmc_class_init,
++        .name = TYPE_ASPEED_1030_WDT,
++        .parent = TYPE_ASPEED_WDT,
++        .instance_size = sizeof(AspeedWDTState),
++        .class_init = aspeed_1030_wdt_class_init,
 +    },
 +    {
-+        .name = TYPE_ASPEED_2500_SDMC,
-+        .parent = TYPE_ASPEED_SDMC,
-+        .class_init = aspeed_2500_sdmc_class_init,
++        .name = TYPE_ASPEED_2400_WDT,
++        .parent = TYPE_ASPEED_WDT,
++        .instance_size = sizeof(AspeedWDTState),
++        .class_init = aspeed_2400_wdt_class_init,
 +    },
 +    {
-+        .name = TYPE_ASPEED_2600_SDMC,
-+        .parent = TYPE_ASPEED_SDMC,
-+        .class_init = aspeed_2600_sdmc_class_init,
++        .name = TYPE_ASPEED_2500_WDT,
++        .parent = TYPE_ASPEED_WDT,
++        .instance_size = sizeof(AspeedWDTState),
++        .class_init = aspeed_2500_wdt_class_init,
 +    },
 +    {
-+        .name = TYPE_ASPEED_2700_SDMC,
-+        .parent = TYPE_ASPEED_SDMC,
-+        .class_init = aspeed_2700_sdmc_class_init,
++        .name = TYPE_ASPEED_2600_WDT,
++        .parent = TYPE_ASPEED_WDT,
++        .instance_size = sizeof(AspeedWDTState),
++        .class_init = aspeed_2600_wdt_class_init,
++    },
++    {
++        .name = TYPE_ASPEED_2700_WDT,
++        .parent = TYPE_ASPEED_WDT,
++        .instance_size = sizeof(AspeedWDTState),
++        .class_init = aspeed_2700_wdt_class_init,
 +    }
  };
  
--static void aspeed_sdmc_register_types(void)
+-static void wdt_aspeed_register_types(void)
 -{
--    type_register_static(&aspeed_sdmc_info);
--    type_register_static(&aspeed_2400_sdmc_info);
--    type_register_static(&aspeed_2500_sdmc_info);
--    type_register_static(&aspeed_2600_sdmc_info);
--    type_register_static(&aspeed_2700_sdmc_info);
+-    type_register_static(&aspeed_wdt_info);
+-    type_register_static(&aspeed_2400_wdt_info);
+-    type_register_static(&aspeed_2500_wdt_info);
+-    type_register_static(&aspeed_2600_wdt_info);
+-    type_register_static(&aspeed_2700_wdt_info);
+-    type_register_static(&aspeed_1030_wdt_info);
 -}
 -
--type_init(aspeed_sdmc_register_types);
-+DEFINE_TYPES(aspeed_sdmc_types)
+-type_init(wdt_aspeed_register_types)
++DEFINE_TYPES(aspeed_wdt_types)
 -- 
 2.54.0
 

@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86B9ACD8C9D
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:49:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10D82CD8C8E
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:49:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWSqs-0001HP-Q1; Mon, 08 Jun 2026 01:48:46 -0400
+	id 1wWSrc-0001fu-4I; Mon, 08 Jun 2026 01:49:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSqq-0001GJ-VW
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:48:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrQ-0001XJ-7x
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSqp-0000M3-DD
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:48:44 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrO-0000VH-C7
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780897722;
+ s=mimecast20190719; t=1780897757;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ADh9CRgt71Lz/GF9kAWfuhxzdG+i1in6PC0e4kbsRNI=;
- b=bT2Gat81Oj9x7jTkqCHPS0dN7Q6AW+m3pKIz7A+g+Zhis4gCzasXFjJvCALtiLia4ml0Li
- FrmRox7o9ZihYqWyVlDxHHmlDnvwQuxDvl/PMnzHn9DuoNMZ9DGIu1tIis7JmP2brNMQZ1
- uxYCLeTdiwYdAq1ICAU2sQwQrcFnZQ8=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=0gj6devSdvGtSJwO1GoRjihnYYTQEc2hzqsdTXSyTwU=;
+ b=S1lslpCYUxskTaq+HChpucLvvsc9NrNgBuBuyy5an9QlFB2yYFMm+a3abQfpAzCHMgsFpP
+ GIoa0SOGFTtThyZ6Vy4wUcAhZeWyr0VFoS1TyV2gAcCcAHyHYak0MqmPs5XRDxVBU+nazB
+ Ygy6tt+rU2ivaNnA5ibj5mIm+0H+778=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-632-a-uamPmFP723Iwy_av_pqg-1; Mon,
- 08 Jun 2026 01:48:40 -0400
-X-MC-Unique: a-uamPmFP723Iwy_av_pqg-1
-X-Mimecast-MFC-AGG-ID: a-uamPmFP723Iwy_av_pqg_1780897719
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-365-OoG4FNVOMeO20xr87lJTLw-1; Mon,
+ 08 Jun 2026 01:49:15 -0400
+X-MC-Unique: OoG4FNVOMeO20xr87lJTLw-1
+X-Mimecast-MFC-AGG-ID: OoG4FNVOMeO20xr87lJTLw_1780897755
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D59441956050; Mon,  8 Jun 2026 05:48:38 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DEEBE1800473; Mon,  8 Jun 2026 05:49:14 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.33])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4A04E765; Mon,  8 Jun 2026 05:48:37 +0000 (UTC)
+ id 6B63527A; Mon,  8 Jun 2026 05:49:13 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 04/37] hw/misc/aspeed_pwm: Convert to DEFINE_TYPES() with
+Subject: [PULL 22/37] hw/i2c/aspeed_i2c: Convert to DEFINE_TYPES() with
  inlined TypeInfo
-Date: Mon,  8 Jun 2026 07:47:53 +0200
-Message-ID: <20260608054826.346488-5-clg@redhat.com>
+Date: Mon,  8 Jun 2026 07:48:11 +0200
+Message-ID: <20260608054826.346488-23-clg@redhat.com>
 In-Reply-To: <20260608054826.346488-1-clg@redhat.com>
 References: <20260608054826.346488-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: Is82gj810oeuVuPeFFg21OeeUtOqmybrOxXIk_B0mXE_1780897719
+X-Mimecast-MFC-PROC-ID: WiuRQjKEP0CNL6M6TnTbX1qsXpnUTbY4ivpvoxHfGU8_1780897755
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,49 +91,198 @@ From: Jamin Lin <jamin_lin@aspeedtech.com>
 Replace the legacy type_register_static()/type_init() registration
 pattern with the modern DEFINE_TYPES() macro.
 
-Inline the standalone 'aspeed_pwm_info' TypeInfo variable directly
-into the 'aspeed_pwm_types[]' array, removing the need for a separate
-declaration.
+Inline 9 standalone TypeInfo variables (aspeed_i2c_bus_info,
+aspeed_i2c_bus_slave_info, aspeed_i2c_info as abstract base,
+aspeed_2400_i2c_info, aspeed_2500_i2c_info, aspeed_2600_i2c_info,
+aspeed_1030_i2c_info and aspeed_2700_i2c_info) directly into the
+'aspeed_i2c_types[]' array, removing the need for
+separate declarations.
 
 No functional change.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260601024959.2347639-5-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260601024959.2347639-23-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/misc/aspeed_pwm.c | 19 ++++++++-----------
- 1 file changed, 8 insertions(+), 11 deletions(-)
+ hw/i2c/aspeed_i2c.c | 113 +++++++++++++++++++-------------------------
+ 1 file changed, 48 insertions(+), 65 deletions(-)
 
-diff --git a/hw/misc/aspeed_pwm.c b/hw/misc/aspeed_pwm.c
-index 673a0f1346f0..dfb93ae7fb81 100644
---- a/hw/misc/aspeed_pwm.c
-+++ b/hw/misc/aspeed_pwm.c
-@@ -106,16 +106,13 @@ static void aspeed_pwm_class_init(ObjectClass *klass, const void *data)
-     dc->vmsd = &vmstate_aspeed_pwm;
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 80c445750059..4a6732a18554 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -1372,16 +1372,6 @@ static void aspeed_i2c_class_init(ObjectClass *klass, const void *data)
+     dc->desc = "Aspeed I2C Controller";
  }
  
--static const TypeInfo aspeed_pwm_info = {
--    .name = TYPE_ASPEED_PWM,
--    .parent = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(AspeedPWMState),
--    .class_init = aspeed_pwm_class_init,
-+static const TypeInfo aspeed_pwm_types[] = {
+-static const TypeInfo aspeed_i2c_info = {
+-    .name          = TYPE_ASPEED_I2C,
+-    .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_init = aspeed_i2c_instance_init,
+-    .instance_size = sizeof(AspeedI2CState),
+-    .class_init    = aspeed_i2c_class_init,
+-    .class_size = sizeof(AspeedI2CClass),
+-    .abstract   = true,
+-};
+-
+ static int aspeed_i2c_bus_new_slave_event(AspeedI2CBus *bus,
+                                           enum i2c_event event)
+ {
+@@ -1500,13 +1490,6 @@ static void aspeed_i2c_bus_slave_class_init(ObjectClass *klass,
+     sc->send_async = aspeed_i2c_bus_slave_send_async;
+ }
+ 
+-static const TypeInfo aspeed_i2c_bus_slave_info = {
+-    .name           = TYPE_ASPEED_I2C_BUS_SLAVE,
+-    .parent         = TYPE_I2C_SLAVE,
+-    .instance_size  = sizeof(AspeedI2CBusSlave),
+-    .class_init     = aspeed_i2c_bus_slave_class_init,
+-};
+-
+ static void aspeed_i2c_bus_reset_hold(Object *obj, ResetType type)
+ {
+     AspeedI2CBus *s = ASPEED_I2C_BUS(obj);
+@@ -1565,13 +1548,6 @@ static void aspeed_i2c_bus_class_init(ObjectClass *klass, const void *data)
+     device_class_set_props(dc, aspeed_i2c_bus_properties);
+ }
+ 
+-static const TypeInfo aspeed_i2c_bus_info = {
+-    .name           = TYPE_ASPEED_I2C_BUS,
+-    .parent         = TYPE_SYS_BUS_DEVICE,
+-    .instance_size  = sizeof(AspeedI2CBus),
+-    .class_init     = aspeed_i2c_bus_class_init,
+-};
+-
+ static qemu_irq aspeed_2400_i2c_bus_get_irq(AspeedI2CBus *bus)
+ {
+     return bus->controller->irq;
+@@ -1605,12 +1581,6 @@ static void aspeed_2400_i2c_class_init(ObjectClass *klass, const void *data)
+     aic->mem_size = 0x1000;
+ }
+ 
+-static const TypeInfo aspeed_2400_i2c_info = {
+-    .name = TYPE_ASPEED_2400_I2C,
+-    .parent = TYPE_ASPEED_I2C,
+-    .class_init = aspeed_2400_i2c_class_init,
+-};
+-
+ static qemu_irq aspeed_2500_i2c_bus_get_irq(AspeedI2CBus *bus)
+ {
+     return bus->controller->irq;
+@@ -1640,12 +1610,6 @@ static void aspeed_2500_i2c_class_init(ObjectClass *klass, const void *data)
+     aic->mem_size = 0x1000;
+ }
+ 
+-static const TypeInfo aspeed_2500_i2c_info = {
+-    .name = TYPE_ASPEED_2500_I2C,
+-    .parent = TYPE_ASPEED_I2C,
+-    .class_init = aspeed_2500_i2c_class_init,
+-};
+-
+ static qemu_irq aspeed_2600_i2c_bus_get_irq(AspeedI2CBus *bus)
+ {
+     return bus->irq;
+@@ -1669,12 +1633,6 @@ static void aspeed_2600_i2c_class_init(ObjectClass *klass, const void *data)
+     aic->mem_size = 0x1000;
+ }
+ 
+-static const TypeInfo aspeed_2600_i2c_info = {
+-    .name = TYPE_ASPEED_2600_I2C,
+-    .parent = TYPE_ASPEED_I2C,
+-    .class_init = aspeed_2600_i2c_class_init,
+-};
+-
+ static void aspeed_1030_i2c_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -1693,12 +1651,6 @@ static void aspeed_1030_i2c_class_init(ObjectClass *klass, const void *data)
+     aic->mem_size = 0x10000;
+ }
+ 
+-static const TypeInfo aspeed_1030_i2c_info = {
+-    .name = TYPE_ASPEED_1030_I2C,
+-    .parent = TYPE_ASPEED_I2C,
+-    .class_init = aspeed_1030_i2c_class_init,
+-};
+-
+ static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -1720,25 +1672,56 @@ static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
+     aic->has_dma64 = true;
+ }
+ 
+-static const TypeInfo aspeed_2700_i2c_info = {
+-    .name = TYPE_ASPEED_2700_I2C,
+-    .parent = TYPE_ASPEED_I2C,
+-    .class_init = aspeed_2700_i2c_class_init,
++static const TypeInfo aspeed_i2c_types[] = {
 +    {
-+        .name = TYPE_ASPEED_PWM,
-+        .parent = TYPE_SYS_BUS_DEVICE,
-+        .instance_size = sizeof(AspeedPWMState),
-+        .class_init = aspeed_pwm_class_init,
++        .name           = TYPE_ASPEED_I2C_BUS,
++        .parent         = TYPE_SYS_BUS_DEVICE,
++        .instance_size  = sizeof(AspeedI2CBus),
++        .class_init     = aspeed_i2c_bus_class_init,
++    },
++    {
++        .name           = TYPE_ASPEED_I2C_BUS_SLAVE,
++        .parent         = TYPE_I2C_SLAVE,
++        .instance_size  = sizeof(AspeedI2CBusSlave),
++        .class_init     = aspeed_i2c_bus_slave_class_init,
++    },
++    {
++        .name          = TYPE_ASPEED_I2C,
++        .parent        = TYPE_SYS_BUS_DEVICE,
++        .instance_init = aspeed_i2c_instance_init,
++        .instance_size = sizeof(AspeedI2CState),
++        .class_init    = aspeed_i2c_class_init,
++        .class_size = sizeof(AspeedI2CClass),
++        .abstract   = true,
++    },
++    {
++        .name = TYPE_ASPEED_1030_I2C,
++        .parent = TYPE_ASPEED_I2C,
++        .class_init = aspeed_1030_i2c_class_init,
++    },
++    {
++        .name = TYPE_ASPEED_2400_I2C,
++        .parent = TYPE_ASPEED_I2C,
++        .class_init = aspeed_2400_i2c_class_init,
++    },
++    {
++        .name = TYPE_ASPEED_2500_I2C,
++        .parent = TYPE_ASPEED_I2C,
++        .class_init = aspeed_2500_i2c_class_init,
++    },
++    {
++        .name = TYPE_ASPEED_2600_I2C,
++        .parent = TYPE_ASPEED_I2C,
++        .class_init = aspeed_2600_i2c_class_init,
++    },
++    {
++        .name = TYPE_ASPEED_2700_I2C,
++        .parent = TYPE_ASPEED_I2C,
++        .class_init = aspeed_2700_i2c_class_init,
 +    }
  };
  
--static void aspeed_pwm_register_types(void)
+-static void aspeed_i2c_register_types(void)
 -{
--    type_register_static(&aspeed_pwm_info);
+-    type_register_static(&aspeed_i2c_bus_info);
+-    type_register_static(&aspeed_i2c_bus_slave_info);
+-    type_register_static(&aspeed_i2c_info);
+-    type_register_static(&aspeed_2400_i2c_info);
+-    type_register_static(&aspeed_2500_i2c_info);
+-    type_register_static(&aspeed_2600_i2c_info);
+-    type_register_static(&aspeed_1030_i2c_info);
+-    type_register_static(&aspeed_2700_i2c_info);
 -}
 -
--type_init(aspeed_pwm_register_types);
-+DEFINE_TYPES(aspeed_pwm_types)
+-type_init(aspeed_i2c_register_types)
++DEFINE_TYPES(aspeed_i2c_types)
+ 
+ 
+ I2CBus *aspeed_i2c_get_bus(AspeedI2CState *s, int busnr)
 -- 
 2.54.0
 

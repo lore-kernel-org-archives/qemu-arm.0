@@ -4,109 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 232BDCD8C92
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 13:51:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA316CD8C9D
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 14:08:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWaOC-0005Ik-On; Mon, 08 Jun 2026 09:51:41 -0400
+	id 1wWaeW-0000lE-D3; Mon, 08 Jun 2026 10:08:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWaOB-0005IJ-Hm
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 09:51:39 -0400
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWaO9-0004Dh-Q1
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 09:51:39 -0400
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-6603d8697d2so4348432d50.0
- for <qemu-arm@nongnu.org>; Mon, 08 Jun 2026 06:51:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1780926696; cv=none;
- d=google.com; s=arc-20240605;
- b=TAgZfSMkmuNHZVVHVW+cVD6teGku/2JN14U74IAlZJkxg2pINYopGNrBTuAVGTzOkY
- zvhyER1/N5PpRYYm/UN3aUMhsLl64op5Q1kOMyel4yOCWybjuG9Kjpx+8lpcC7lBcFvJ
- Hkcws1o0FawXTLXUolKw98O8AZ7F1+hkYvxKbPztXO5ljYiDvBH5kBdPo1aHXNyILTcw
- jXMTZEVZeP3HUhmG2eSvXzB66KLjkVQRh8PBYTIfz+ypBZ9C+6B2h3SuE3iUmteCRSF3
- PxFWnlwMEPJny0aK3fYvgZWW+xvxemOaDU2D6G7xa7MRXaR1oxN493OJ8aXVXyU4D/FD
- Veeg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=bKUj751TeY4nkEZpPo0FTWcTQnR2+/cwe6ZT7/QhNuQ=;
- fh=Y8tUEWc7xFSJo3FgM/6atYX+LClIxyHAidxHCAnYfkk=;
- b=MGX/dDVNwRcjiUu1AW1Lg/0ZHRSnrJ1eytlVUG/aEL7CPWq0AjYIF4OSBf503emYs+
- scWuinMu9BcGD8LG+nUO3m4i5PERGTVb+RkIoJbWywyYMcvqZGTrmXemTrREXjmb7cms
- g1jQ9bufA7cnBQK7p7whagOWhkTXSLbma/BW9q+QWRbMRdurcm2F0Cs72pv81zkb3xLM
- c5r5uES+BLEeruwndBx4mT3bn/TEbmXxpxro3sE79zd1JwrxsNZAlTGEDdF1Eof/kGY5
- afU/yTVyhyEMCUMg+8TdqlLhobiF9glLkVzruY83iCb7AY9BupM7l9RelwJZmJn6BXRP
- x5ug==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780926696; x=1781531496; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=bKUj751TeY4nkEZpPo0FTWcTQnR2+/cwe6ZT7/QhNuQ=;
- b=gQ0IeJXXbtyS9VpiqvrTumtn8VbVTEmW8wq+OCdBeww1rO/i2OaX3mzN5hKE8GzxkZ
- bX6gyqOYTq16WJwulXR1/dDMkr2KtLB4YTMn52y/GZP+MTlgX/T5A0d/re9dqzraRmHd
- YrnkRIfg36XwqcoNvQV0LHSPg7O6IE4efRMns6gQv0FoXjFu49We+Jede+0e9IO/HDHI
- jiuC05u1JZZlsAtJixVAwvHiazWANRId3hwq9L7nMmf/25AiyuoEx99aLOjNsUxK77sj
- YpKqPJoqnbKT6q92QrKRCpJksWKEO7mePaFhETBWHKpSCmFozAu1udNQpxdOWlDDLfPp
- sUpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780926696; x=1781531496;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=bKUj751TeY4nkEZpPo0FTWcTQnR2+/cwe6ZT7/QhNuQ=;
- b=aq0a6Tx9npuUj9bafCQMdPs7HT+fODF/PQRH1swPZ04CPu6RMJO124fmo2cqPXZ/he
- /77XzXmplQy6svHYzhcz4hbTwQ93xsAIb0uIarc+83YjQjWRQTDV3D8SPy7klZRgIb2n
- B0+PoQBLMbrA1EmE6G4N8bIu432sBfernJ2tu8kTSPJIxaoXfLqxGzX5hdn4HI2Ab9Xe
- WgwCviM1ecYQRR7eIq38b7JoxkxomMsdrG9E/akoIyaYwKvr9TuNpATxbyTl8oE9yScl
- nEWiPUrN+d3clNbuvVC7oHo+YDoI7ACUHKG7VUiEUNlzGfE5kNWYR8KYyfuTur56I1JM
- I8TA==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+FkWb2E/u4SmL9rtpWtyTcpTOURNuYZq1w3ri0KyvHhYs4tYF2KNdZlgiICiXLML2UZHdWsMVfKg==@nongnu.org
-X-Gm-Message-State: AOJu0Yxvg5aLQr4QcpLfslrNKTCt7JSBVlmOeCrXGl8AIediiDUGY4wQ
- Sj4/cOrB8ucjceXEGthVqQwF1p3s9iNGY8HbVXH2C55uKvc5L/wVpRKQ5gNp7Z495eY4K2OFu0P
- 4HL4Y9jUAdXeouH8jCcm1HhupNwJAyJ7UiEFrqqgSKQ==
-X-Gm-Gg: Acq92OF1XrH2VVZqKKKl3q+AeuTmQGHJbYOHBZFd/Zet7YEUzsmm2XQiU/ElFeb3Im2
- R8wjxDkmvLX4jeg1E+tkSSoo6hBmuLUXMvMvr7cYigwbtrjtJbCEk2Pr/skSiDpUbYL5JKC3rPI
- lbEeU6ukxaJbkT3vP3kBELDcltqBKHJZMGu9+vHCWPyi8os4j7jIf8TfUAlYUEUJZ3SpCnmY5Gj
- BS6oaeZRexF6TEAB3qWT10S29OOfFSf7hAUYsaJt1cW4Oo7g9iHQgb6K9gIxM8q8rQFL/TrpcFx
- mi/L9ZZMWsYKdAKx+WPTBm8MjX8ZqsMiN4mn96i0g+lyVzsDRekcGX4ToSjp6tGGE7JMNX5XluL
- rhw==
-X-Received: by 2002:a53:ac87:0:b0:661:1307:3d49 with SMTP id
- 956f58d0204a3-66113074155mr12044887d50.7.1780926696345; Mon, 08 Jun 2026
- 06:51:36 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260529082948.363931-1-alex.bennee@linaro.org>
-In-Reply-To: <20260529082948.363931-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Jun 2026 14:51:24 +0100
-X-Gm-Features: AVVi8CfELuu63-8QEYfJ12bzRvsrYJpzmkWaV0Rztq1EKICzbROxPC3RaYFy1rw
-Message-ID: <CAFEAcA94+mh_pigFDi+tEPRJ416fSWfxsQ1Lj8Byemug9kBp6w@mail.gmail.com>
-Subject: Re: [PATCH v7 0/8] target/arm: fully model WFxT instructions for
- A-profile
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
- Alexander Graf <agraf@csgraf.de>, Mohamed Mediouni <mohamed@unpredictable.fr>, 
- Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
- kvm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>) id 1wWaeT-0000kw-RG
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 10:08:29 -0400
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>) id 1wWaeS-0001HB-7h
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 10:08:29 -0400
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+ by tor.source.kernel.org (Postfix) with ESMTP id B94F76001D;
+ Mon,  8 Jun 2026 14:08:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6DD281F00893;
+ Mon,  8 Jun 2026 14:08:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+ s=k20260515; t=1780927706;
+ bh=uQbeUTHlxW33ePNUtyeXO5I2zGh86vHk5u66ukHFhAw=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References;
+ b=Rq9vaEM4+NIV3eOXVxxEjTDZA/rqgkZVgfe6Sz+3TgYabalz6Kq/VoQXvzN5Ym8mA
+ 3sioXkkXS29eX8QEpjNt+H8K0T1fX9plm2tmzTDholVloS9/4c0Xfsv8w+1MsM6bGi
+ rh1LVbEWmc6uFvWePU4vjw3i0A8ZFFH3+coBJ7SzlsYWQCt1OAmHCE2NQCpKtvyLwN
+ rIAmG1NB/PxtXFUgGw7M2V1cdfQIIgHN+ir1HczEHe8TZNw0PwlfyzARVG9t5N9sT/
+ ujQPnYIBnIDQQS52FxGM5oQQhFvZfpr2S2JVIsBjl0Q5/w0K39XZMEzO1yXtmVJ0uP
+ wgLlFlmT+NazQ==
+Received: from sofa.misterjones.org ([185.219.108.64]
+ helo=goblin-girl.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.98.2)
+ (envelope-from <maz@kernel.org>) id 1wWaeN-0000000AVTv-46jL;
+ Mon, 08 Jun 2026 14:08:24 +0000
+Date: Mon, 08 Jun 2026 15:08:23 +0100
+Message-ID: <86pl21t99k.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Khushit Shah <khushit.shah@nutanix.com>
+Cc: "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>, "oupton@kernel.org"
+ <oupton@kernel.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>, Shaju Abraham
+ <shaju.abraham@nutanix.com>
+Subject: Re: [RFC] Exposing arm64 ID-register safe_rules semantics to
+ userspace? 
+In-Reply-To: <E58B3007-0BB1-460F-9225-707FCF811B04@nutanix.com>
+References: <B5C9AE36-8181-4A76-905F-3E89B7200215@nutanix.com>
+ <86se6xthih.wl-maz@kernel.org>
+ <E58B3007-0BB1-460F-9225-707FCF811B04@nutanix.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/30.1
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: khushit.shah@nutanix.com, kvmarm@lists.linux.dev,
+ oupton@kernel.org, eric.auger@redhat.com, cohuck@redhat.com,
+ peter.maydell@linaro.org, qemu-arm@nongnu.org, mark.caveayland@nutanix.com,
+ shaju.abraham@nutanix.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Received-SPF: pass client-ip=2600:3c04:e001:324:0:1991:8:25;
+ envelope-from=maz@kernel.org; helo=tor.source.kernel.org
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,39 +92,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 29 May 2026 at 09:29, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> This series fully models the behaviour of WFxT instructions. We
-> already had support for WFE for M-profile but we left off A-profile as
-> it has more potential sources of wake-ups. The main one is the event
-> stream which includes events from significant bits of the timer
-> ticking over.
->
-> The refactoring from the previous iterations of the patch have now
-> been merged.
->
-> I've dropped trying to fully model the global monitor in favour of
-> taking advantage of the architectural flexibility to have an IMPDEF
-> event wake up for any reason. We treat the setting of exclusive_addr
-> as such a reason because it indicates the current vCPU is in a ldstx
-> exclusive region and we don't want the guest to deadlock. This does mean
-> the system won't sleep on WFE enabled locks but people shouldn't be
-> relying on QEMU to model real world sleep patterns anyway given the
-> efficiency of emulation compared to real HW.
->
-> I've written a test case using kvm-unit-tests:
->
->   Message-ID: <20260527111822.1563679-1-alex.bennee@linaro.org>
->   Date: Wed, 27 May 2026 12:18:21 +0100
->   Subject: [kvm-unit-tests PATCH v2] arm: add wfx test case
->   From: =3D?UTF-8?q?Alex=3D20Benn=3DC3=3DA9e?=3D <alex.bennee@linaro.org>
->
-> All patches are now reviewed.
+On Mon, 08 Jun 2026 14:28:13 +0100,
+Khushit Shah <khushit.shah@nutanix.com> wrote:
+> > On 8 Jun 2026, at 4:40=E2=80=AFPM, Marc Zyngier <maz@kernel.org> wrote:
+> >=20
+> > My question above still stands: why isn't knowing that a field is
+> > writable or not, together with the max value of that field, enough to
+> > decide what is possible to be set for that field?
+>=20
+> Okay, makes sense, there are 57 fields in cpufeatures.c that are not
+> unsigned FTR_LOWER_SAFE.=20
+>=20
+> Right now, only 21 of those are writable. 8 of those are single bit,
+> with FTR_EXACT and safe_value as 0, so no special case for them.
+>=20
+> So, only special handling for 13 fields are needed for now:
+>=20
+> EXACT: 4 (TGRAN*_2, L1Ip)
+> SIGNED_LOWER_SAFE: 7 (TGRAN4, TGRAN64, InnerShr, OuterShr, DoubleLock, PM=
+UVer, PerfMon)
+> HIGHER_SAFE: 2 (SpecSEI)
+>=20
+> Hardcoding these 13 works for today=E2=80=99s kernel. But when new fields=
+ are made
+> writable or are added to ftr_bits, older VMM will by default make assumpt=
+ion
+> of them as LOWER_SAFE, which might be wrong.
 
+Hardcoding *anything* feels very wrong. Each of these features is
+handled differently for a number of reasons that are related to the
+architecture itself and the way the kernel is using it *for itself*.
+This information is not supposed to be consumed by userspace, and is
+not exposed to it.
 
+The problem you seem to have here is that you want to deal with these
+features without capturing any understanding of what these actually
+mean in the context of the architecture. I can't see a good outcome of
+that sort of thing in the long run. The VMM is, for better or worse,
+part of the overall hypervisor. It cannot treat the features as a bag
+of bits.
 
-Applied to target-arm.next, thanks.
+This is also why the whole "CPU model" thing is IMO a bad idea: it is
+syntactic sugar that falls at the first hurdle, simply because the
+architecture is not fully virtualisable. For example you can't take a
+Neoverse V2 description and apply it to a KVM guest running on V2 HW.
 
--- PMM
+I think you need to revisit your approach to this stuff.
+
+	M.
+
+--=20
+Without deviation from the norm, progress is not possible.
 

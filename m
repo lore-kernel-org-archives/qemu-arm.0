@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B4C4CD8C8E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7F8DCD8CA4
 	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:54:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWSrQ-0001XI-3Z; Mon, 08 Jun 2026 01:49:21 -0400
+	id 1wWSsG-0002SC-4M; Mon, 08 Jun 2026 01:50:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrM-0001WL-3W
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:16 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrZ-0001dQ-OL
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:30 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrK-0000UE-Bo
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:15 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrX-0000ZN-TD
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780897753;
+ s=mimecast20190719; t=1780897767;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=AjcBNsHVpS8wYcRjIrqUgY55TrynsFIVW0VBdmWXKbg=;
- b=IFDTSM6Bgd1C05+YWZwhHnHAS3DODVHwOhwKncjastr0dKMK5y1J2gtG//fa9u8LRNJkTn
- W3dWO8VYPFhOUC79dQnuT+7oNsiA7gAB86JL1AujBAkqdoCfQqLdlkGA4azBjpPSDW5wLg
- mv+tLcZc6XnqczZ+Z857R4knDhUoZ7g=
+ bh=NNdM16FWNbr7TVbxZ52lQx341yc8VjhPTKPcYHWqqDg=;
+ b=J5azI3gFelZffOm4oMGhiMIAGqA6PvkS7jxkZbwRxqoz1sucFD07VVk55HKiFjrHBfQkcX
+ f5xBAZyuJE+9cyZT7Aedk5PnEjFzWLsW95gqExYSadpKeRDRJv78WUeDYHsppVO+0qOtoM
+ ahaKOuNOY6dp2Q8/YyX8JRUETJcJ4gI=
 Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-74-xwB87YvHMru76HdFXd-N5w-1; Mon,
- 08 Jun 2026 01:49:10 -0400
-X-MC-Unique: xwB87YvHMru76HdFXd-N5w-1
-X-Mimecast-MFC-AGG-ID: xwB87YvHMru76HdFXd-N5w_1780897749
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-544-kOOmblXtP7Sql1cr-AeMcw-1; Mon,
+ 08 Jun 2026 01:49:24 -0400
+X-MC-Unique: kOOmblXtP7Sql1cr-AeMcw-1
+X-Mimecast-MFC-AGG-ID: kOOmblXtP7Sql1cr-AeMcw_1780897763
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 154A01944D26; Mon,  8 Jun 2026 05:49:09 +0000 (UTC)
+ id ECA261956059; Mon,  8 Jun 2026 05:49:22 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.33])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9681C765; Mon,  8 Jun 2026 05:49:07 +0000 (UTC)
+ id 6099427A; Mon,  8 Jun 2026 05:49:21 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 19/37] hw/timer/aspeed_timer: Convert to DEFINE_TYPES() with
- inlined TypeInfo
-Date: Mon,  8 Jun 2026 07:48:08 +0200
-Message-ID: <20260608054826.346488-20-clg@redhat.com>
+Subject: [PULL 26/37] hw/i2c/aspeed_i2c: Increase AST2700 buffer mode size and
+ adjust offset
+Date: Mon,  8 Jun 2026 07:48:15 +0200
+Message-ID: <20260608054826.346488-27-clg@redhat.com>
 In-Reply-To: <20260608054826.346488-1-clg@redhat.com>
 References: <20260608054826.346488-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: FM2MDeTINPVmcyr7R_nNmt-hOwbLyCI0CwaLgXzQGvI_1780897749
+X-Mimecast-MFC-PROC-ID: 49qLecIuQT3pebcEyYWtvexp9lwcCdJaaqfVXKfb43k_1780897763
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -89,153 +89,131 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Replace the legacy type_register_static()/type_init() registration
-pattern with the modern DEFINE_TYPES() macro.
+Update the AST2700 I2C buffer mode configuration to match
+the latest firmware definition:
+- Increase buffer mode pool size from 0x20 to 0x40
+- Adjust buffer mode base offset to 0x1c0
 
-Inline 6 standalone TypeInfo variables (aspeed_timer_info as abstract
-base, aspeed_2400_timer_info, aspeed_2500_timer_info,
-aspeed_2600_timer_info, aspeed_1030_timer_info, aspeed_2700_timer_info)
-directly into the 'aspeed_timer_types[]' array, removing the need for
-separate declarations.
+Since the buffer mode region size changes, the migration state
+layout is also modified. Bump the VMState version numbers to
+prevent incompatible migration between old and new machine states.
 
-No functional change.
-
+Fixes: 1809ab6a67359e0876981cd05d2a50b2843eabad ("hw/i2c/aspeed: Add AST2700 support")
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260601024959.2347639-20-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260603040027.938816-3-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/timer/aspeed_timer.c | 83 +++++++++++++++++------------------------
- 1 file changed, 35 insertions(+), 48 deletions(-)
+ include/hw/i2c/aspeed_i2c.h |  2 +-
+ hw/i2c/aspeed_i2c.c         | 46 ++++++++++++++++++-------------------
+ 2 files changed, 24 insertions(+), 24 deletions(-)
 
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index 69f5c89215c5..a607736387c8 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -907,15 +907,6 @@ static void timer_class_init(ObjectClass *klass, const void *data)
-     device_class_set_props(dc, aspeed_timer_properties);
- }
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+index 1fc229f69919..b2e4d2fb9dcb 100644
+--- a/include/hw/i2c/aspeed_i2c.h
++++ b/include/hw/i2c/aspeed_i2c.h
+@@ -35,7 +35,7 @@ OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
  
--static const TypeInfo aspeed_timer_info = {
--    .name = TYPE_ASPEED_TIMER,
--    .parent = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(AspeedTimerCtrlState),
--    .class_init = timer_class_init,
--    .class_size = sizeof(AspeedTimerClass),
--    .abstract   = true,
--};
--
- static void aspeed_2400_timer_class_init(ObjectClass *klass, const void *data)
+ #define ASPEED_I2C_NR_BUSSES 16
+ #define ASPEED_I2C_SHARE_POOL_SIZE 0x800
+-#define ASPEED_I2C_BUS_POOL_SIZE 0x20
++#define ASPEED_I2C_BUS_POOL_SIZE 0x40
+ #define ASPEED_I2C_NEW_NUM_REG (0xa0 >> 2)
+ 
+ #define A_I2CD_M_STOP_CMD       BIT(5)
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 9d4e72c8585e..856d5dc1db64 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -1132,8 +1132,8 @@ static const MemoryRegionOps aspeed_i2c_bus_pool_ops = {
+ 
+ static const VMStateDescription aspeed_i2c_bus_vmstate = {
+     .name = TYPE_ASPEED_I2C,
+-    .version_id = 7,
+-    .minimum_version_id = 6,
++    .version_id = 8,
++    .minimum_version_id = 8,
+     .fields = (const VMStateField[]) {
+         VMSTATE_UINT32_ARRAY(regs, AspeedI2CBus, ASPEED_I2C_NEW_NUM_REG),
+         VMSTATE_UINT32_V(pending_intr_sts, AspeedI2CBus, 7),
+@@ -1145,8 +1145,8 @@ static const VMStateDescription aspeed_i2c_bus_vmstate = {
+ 
+ static const VMStateDescription aspeed_i2c_vmstate = {
+     .name = TYPE_ASPEED_I2C,
+-    .version_id = 3,
+-    .minimum_version_id = 3,
++    .version_id = 4,
++    .minimum_version_id = 4,
+     .fields = (const VMStateField[]) {
+         VMSTATE_UINT32(intr_status, AspeedI2CState),
+         VMSTATE_STRUCT_ARRAY(busses, AspeedI2CState,
+@@ -1250,37 +1250,37 @@ static void aspeed_i2c_instance_init(Object *obj)
+  * Address Definitions (AST2700)
+  *   0x000 ... 0x0FF: Global Register
+  *   0x100 ... 0x19F: Device 0
+- *   0x1A0 ... 0x1BF: Device 0 buffer
++ *   0x1C0 ... 0x1FF: Device 0 buffer
+  *   0x200 ... 0x29F: Device 1
+- *   0x2A0 ... 0x2BF: Device 1 buffer
++ *   0x2C0 ... 0x2FF: Device 1 buffer
+  *   0x300 ... 0x39F: Device 2
+- *   0x3A0 ... 0x3BF: Device 2 buffer
++ *   0x3C0 ... 0x3FF: Device 2 buffer
+  *   0x400 ... 0x49F: Device 3
+- *   0x4A0 ... 0x4BF: Device 3 buffer
++ *   0x4C0 ... 0x4FF: Device 3 buffer
+  *   0x500 ... 0x59F: Device 4
+- *   0x5A0 ... 0x5BF: Device 4 buffer
++ *   0x5C0 ... 0x5FF: Device 4 buffer
+  *   0x600 ... 0x69F: Device 5
+- *   0x6A0 ... 0x6BF: Device 5 buffer
++ *   0x6C0 ... 0x6FF: Device 5 buffer
+  *   0x700 ... 0x79F: Device 6
+- *   0x7A0 ... 0x7BF: Device 6 buffer
++ *   0x7C0 ... 0x7FF: Device 6 buffer
+  *   0x800 ... 0x89F: Device 7
+- *   0x8A0 ... 0x8BF: Device 7 buffer
++ *   0x8C0 ... 0x8FF: Device 7 buffer
+  *   0x900 ... 0x99F: Device 8
+- *   0x9A0 ... 0x9BF: Device 8 buffer
++ *   0x9C0 ... 0x9FF: Device 8 buffer
+  *   0xA00 ... 0xA9F: Device 9
+- *   0xAA0 ... 0xABF: Device 9 buffer
++ *   0xAC0 ... 0xAFF: Device 9 buffer
+  *   0xB00 ... 0xB9F: Device 10
+- *   0xBA0 ... 0xBBF: Device 10 buffer
++ *   0xBC0 ... 0xBFF: Device 10 buffer
+  *   0xC00 ... 0xC9F: Device 11
+- *   0xCA0 ... 0xCBF: Device 11 buffer
++ *   0xCC0 ... 0xCFF: Device 11 buffer
+  *   0xD00 ... 0xD9F: Device 12
+- *   0xDA0 ... 0xDBF: Device 12 buffer
++ *   0xDC0 ... 0xDFF: Device 12 buffer
+  *   0xE00 ... 0xE9F: Device 13
+- *   0xEA0 ... 0xEBF: Device 13 buffer
++ *   0xEC0 ... 0xEFF: Device 13 buffer
+  *   0xF00 ... 0xF9F: Device 14
+- *   0xFA0 ... 0xFBF: Device 14 buffer
++ *   0xFC0 ... 0xFFF: Device 14 buffer
+  *   0x1000 ... 0x109F: Device 15
+- *   0x10A0 ... 0x10BF: Device 15 buffer
++ *   0x10C0 ... 0x10BF: Device 15 buffer
+  */
+ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
  {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -926,12 +917,6 @@ static void aspeed_2400_timer_class_init(ObjectClass *klass, const void *data)
-     awc->write = aspeed_2400_timer_write;
- }
- 
--static const TypeInfo aspeed_2400_timer_info = {
--    .name = TYPE_ASPEED_2400_TIMER,
--    .parent = TYPE_ASPEED_TIMER,
--    .class_init = aspeed_2400_timer_class_init,
--};
--
- static void aspeed_2500_timer_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -942,12 +927,6 @@ static void aspeed_2500_timer_class_init(ObjectClass *klass, const void *data)
-     awc->write = aspeed_2500_timer_write;
- }
- 
--static const TypeInfo aspeed_2500_timer_info = {
--    .name = TYPE_ASPEED_2500_TIMER,
--    .parent = TYPE_ASPEED_TIMER,
--    .class_init = aspeed_2500_timer_class_init,
--};
--
- static void aspeed_2600_timer_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -958,12 +937,6 @@ static void aspeed_2600_timer_class_init(ObjectClass *klass, const void *data)
-     awc->write = aspeed_2600_timer_write;
- }
- 
--static const TypeInfo aspeed_2600_timer_info = {
--    .name = TYPE_ASPEED_2600_TIMER,
--    .parent = TYPE_ASPEED_TIMER,
--    .class_init = aspeed_2600_timer_class_init,
--};
--
- static void aspeed_1030_timer_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -974,12 +947,6 @@ static void aspeed_1030_timer_class_init(ObjectClass *klass, const void *data)
-     awc->write = aspeed_2600_timer_write;
- }
- 
--static const TypeInfo aspeed_1030_timer_info = {
--    .name = TYPE_ASPEED_1030_TIMER,
--    .parent = TYPE_ASPEED_TIMER,
--    .class_init = aspeed_1030_timer_class_init,
--};
--
- static void aspeed_2700_timer_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -990,20 +957,40 @@ static void aspeed_2700_timer_class_init(ObjectClass *klass, const void *data)
-     awc->write = aspeed_2700_timer_write;
- }
- 
--static const TypeInfo aspeed_2700_timer_info = {
--    .name = TYPE_ASPEED_2700_TIMER,
--    .parent = TYPE_ASPEED_TIMER,
--    .class_init = aspeed_2700_timer_class_init,
-+static const TypeInfo aspeed_timer_types[] = {
-+    {
-+        .name = TYPE_ASPEED_TIMER,
-+        .parent = TYPE_SYS_BUS_DEVICE,
-+        .instance_size = sizeof(AspeedTimerCtrlState),
-+        .class_init = timer_class_init,
-+        .class_size = sizeof(AspeedTimerClass),
-+        .abstract   = true,
-+    },
-+    {
-+        .name = TYPE_ASPEED_1030_TIMER,
-+        .parent = TYPE_ASPEED_TIMER,
-+        .class_init = aspeed_1030_timer_class_init,
-+    },
-+    {
-+        .name = TYPE_ASPEED_2400_TIMER,
-+        .parent = TYPE_ASPEED_TIMER,
-+        .class_init = aspeed_2400_timer_class_init,
-+    },
-+    {
-+        .name = TYPE_ASPEED_2500_TIMER,
-+        .parent = TYPE_ASPEED_TIMER,
-+        .class_init = aspeed_2500_timer_class_init,
-+    },
-+    {
-+        .name = TYPE_ASPEED_2600_TIMER,
-+        .parent = TYPE_ASPEED_TIMER,
-+        .class_init = aspeed_2600_timer_class_init,
-+    },
-+    {
-+        .name = TYPE_ASPEED_2700_TIMER,
-+        .parent = TYPE_ASPEED_TIMER,
-+        .class_init = aspeed_2700_timer_class_init,
-+    }
- };
- 
--static void aspeed_timer_register_types(void)
--{
--    type_register_static(&aspeed_timer_info);
--    type_register_static(&aspeed_2400_timer_info);
--    type_register_static(&aspeed_2500_timer_info);
--    type_register_static(&aspeed_2600_timer_info);
--    type_register_static(&aspeed_1030_timer_info);
--    type_register_static(&aspeed_2700_timer_info);
--}
--
--type_init(aspeed_timer_register_types)
-+DEFINE_TYPES(aspeed_timer_types)
+@@ -1666,9 +1666,9 @@ static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
+     aic->reg_gap_size = 0x60;
+     aic->gap = -1; /* no gap */
+     aic->bus_get_irq = aspeed_2600_i2c_bus_get_irq;
+-    aic->pool_size = 0x20;
+-    aic->pool_gap_size = 0xe0;
+-    aic->pool_base = 0x1a0;
++    aic->pool_size = 0x40;
++    aic->pool_gap_size = 0xc0;
++    aic->pool_base = 0x1c0;
+     aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
+     aic->has_dma = true;
+     aic->mem_size = 0x2000;
 -- 
 2.54.0
 

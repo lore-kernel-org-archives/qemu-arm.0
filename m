@@ -4,99 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB11CCD8C8E
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 08:57:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5063CCD8C92
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 09:19:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWVnR-0001jM-ST; Mon, 08 Jun 2026 04:57:32 -0400
+	id 1wWW8Q-0008Og-Al; Mon, 08 Jun 2026 05:19:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wWVnK-0001cb-7U
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 04:57:18 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wWVnG-0001w0-9z
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 04:57:17 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4905529b933so43273165e9.0
- for <qemu-arm@nongnu.org>; Mon, 08 Jun 2026 01:57:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780909033; x=1781513833; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ILbJILzoaP91WfXISNvrQkUdNusk3MvusDGjf7M5Vms=;
- b=G8oiT8iMbRaM7XhjzLkqxT33Lp/h3fye8HjXZrCUWmX8fM9lhQPLV2thNXLHA8hGRC
- iL1FYqRW4+Q4ZJQnTxVni8NtCHbeS+WJoVXO3E1hxue8lOuCfeXpZDQNrFrBaCEvNYaf
- qN88ZHTfA13FrQKLRNuWiO+oftI9NRBrsPGOmWBs4XvPaQJQjP0EjdEoCuxCtexrayvs
- KAzltNS7vB1/RbZH6tldXd7giC7tecoLbl8Vzlycx4xoUy0NgFC4+auTpuZI0n6E06Vm
- W/HeBEdIV7xtZzIBdRcpGnMImeQrhi2+PNvaxu58j3RL4Iji6ZgEjbz9f+bE9mjyc6zX
- ry1w==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wWW8M-0008Na-Tn
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 05:19:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wWW8L-0004om-Fc
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 05:19:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1780910340;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=H+zW08Pl7ILs1Vo32rmEYB2yCbBTXKjogUoZD02mssY=;
+ b=Gp5AFktf2qUS6bMe9HXGc1LcJ9TPdqs+M0I4H1OPKf3Tm/qYWI/YRwk0CTo029qZeop24u
+ xG+HPYeZ+/lwcTXXm8aB1rZA9ERt2f6+k1euxLJzFKMNkKMo00dKGd/7vU8kiKoZFKTVMi
+ Ayj3WNZbi2W/JdipQIlcFqoAD4sK3Ic=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-260-ZQASccCOM-iyFHVKg8N5hw-1; Mon, 08 Jun 2026 05:18:59 -0400
+X-MC-Unique: ZQASccCOM-iyFHVKg8N5hw-1
+X-Mimecast-MFC-AGG-ID: ZQASccCOM-iyFHVKg8N5hw_1780910338
+Received: by mail-ej1-f72.google.com with SMTP id
+ a640c23a62f3a-bf473656dcdso174159866b.1
+ for <qemu-arm@nongnu.org>; Mon, 08 Jun 2026 02:18:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780909033; x=1781513833;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ILbJILzoaP91WfXISNvrQkUdNusk3MvusDGjf7M5Vms=;
- b=rBBeLF5fOLcrt61bEc1y/OjJ8XcjE7oEL03XsV2hNIJNdJP0frg8bfovDrCDMPk1cU
- egnuNVA7nT70l+tJ6a+UjxWH7oFU0FXOx7X5acHTd8Xiq+WHD3nL5yu6C8IRJWL8OjJm
- eeMLl4JJArGJhnSYjzeZ7ygvktVSbSQU04oXIQwH5ySRKge2jZdLPq4LsovJcJf/l9+c
- gRRyxKtfS4t7e4NlTWmakcIVMx8FGFil9GxVrgdHn96ZvbDNP6e0D47Jz1Ei4uSQPuzg
- 1/sEh5dhS6qqXGVb7u5Mz8bNWGgF5NQQ9jkhCnvlCrcZwBtdNKHJsPN3uUBl+W4qitYF
- IIVQ==
+ d=1e100.net; s=20251104; t=1780910338; x=1781515138;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=H+zW08Pl7ILs1Vo32rmEYB2yCbBTXKjogUoZD02mssY=;
+ b=FcEbsOPHdFs08iVgP6gDBMTN8pq+x/TnL/mTA6Ot/H03VFC7vm4sWPKVbVMzkt/+WZ
+ +3pGz8qwadsjw6h+ShU2xa7W8tqDHhi1dL438h820kAIStdRZSafAFQ2mK+mZhZsWu0t
+ FU57mi1K2z9XrXR9sU8x3XR9Slq2SHN1RqUL4kxlavH312UmvRGNYyr3iaIk9iu6o+IR
+ 3+k1Bw8VWG5mYxl3kGa/DZa8WuKiGXMcgsUW5boBOg6Wl2AAgS7TaLzgueG1Dp49tX+G
+ Si06rtMoCdNtZza49kgQVICz69rf9VZ9Pkkdq+/6en+bes/HFMdST6rdJ1TtdzcfMRbj
+ s+PA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/hXAKVyEiSEU8ZuS7oMosMGXZr5RIIfKwt7KaK++H1ENpu9ZMOrPi5JD1TE322v3hejA4SQQcnpg==@nongnu.org
-X-Gm-Message-State: AOJu0YwW6pc/pBx0ik0jmHqM5caBacgZr2VjO+a2Mx2kCGjDy2ADhMup
- QDIJ6w4DlKa2vF4WcO7UZpSv9qUvMLyTOs13keZyg3XoGuQKvH6/S7WmFZW0w76Vfy0=
-X-Gm-Gg: Acq92OEjWF9m6c9BXR+uSHgIFTmv6UuHgefRa76eRqiGy5kclxeyHiIAGjocD48cAoa
- cWVsNJDXmEAt1KJsjV/ymMqdgNIk1+twLFd8zKGAwKLIOjTYCddZRC3FQ9h0kzdLQZx07xHtHRG
- kfE279MLGXZF3EqmfiL2Gz34nvYUhAfoOxTJEpLpuYKLF83vh+QBBLiWIFIa83bfzE+oEiSLiLS
- NeLpdU3xSwomgeqZNiF9MJzdtRIAMj1QoSff9Pgv7iW9h+whfsmBPVNN++myyNLWDmK5SKkXomW
- i3yjvEgWgOj34itiI/932NwYIgVTFNISTJgMeQt6i6bigxJDvOPIBkf9Hyf/NdZhLKHNg7Kf86C
- pQpubo6/s4XGKXWJ7FLuvHmXpudBi5Mg8aYCw1jGK3eVUhXRN4B1ODxXZSeWkht0bHUj/CIyx6g
- GIKcKhj1WOBfRHE8R6rdbWGK1zH0IZRDmlkhQXWOT7FmM7
-X-Received: by 2002:a05:600c:c059:10b0:488:b187:3c with SMTP id
- 5b1f17b1804b1-490c265b439mr177113085e9.14.1780909032610; 
- Mon, 08 Jun 2026 01:57:12 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-46028a6dcbdsm39785918f8f.7.2026.06.08.01.57.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Jun 2026 01:57:11 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 096DD5F9CE;
- Mon, 08 Jun 2026 09:57:11 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: "Jason L. Wright'" <wrigjl@proton.me>
-Cc: Zenghui Yu <zenghui.yu@linux.dev>,  Peter Maydell
- <peter.maydell@linaro.org>,  qemu-devel@nongnu.org,  Alexander Graf
- <agraf@csgraf.de>,  qemu-arm <qemu-arm@nongnu.org>, Philippe =?utf-8?Q?Ma?=
- =?utf-8?Q?thieu-Daud=C3=A9?=
- <philmd@mailo.com>, Mark Burton <mburton@qti.qualcomm.com>
-Subject: Re: [PULL 17/21] target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS
-In-Reply-To: <aiWyrX0aVvBk2olT@Jasons-MacBook-Pro.local> (Jason L. Wright''s
- message of "Sun, 07 Jun 2026 18:04:42 +0000")
-References: <20260529114723.42040-1-peter.maydell@linaro.org>
- <20260529114723.42040-18-peter.maydell@linaro.org>
- <745e66c7-2a9b-4185-bae7-77e10623332b@linux.dev>
- <aiWyrX0aVvBk2olT@Jasons-MacBook-Pro.local>
-User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Mon, 08 Jun 2026 09:57:10 +0100
-Message-ID: <874ijd2yvt.fsf@draig.linaro.org>
+ AFNElJ+ficc84DXHMZF2f0PeqeoBZfXSp3HQSrahCCPor9UVfKcNHlz8I0pFzBKLhqXM+1lsajK+7q6aew==@nongnu.org
+X-Gm-Message-State: AOJu0YyiucI1OsZqWYymUrH22gwKZ9/nZIt2dv0USDW/oTG3fmKkLizP
+ 4fciMuesqCJHu8N/loLdaXF92wIzq9Qaweenkmo7bAwbgmfA24NqGQxkbdTumS9bJSgsqnuVlyp
+ OfVhydxH3y4oc8+rudwrgxHGvXrCKqrdFkGkSAc+pOmffrFxO1A6vLA==
+X-Gm-Gg: Acq92OHYGlgqBo4HoERpdVcceou1/H/DkZDbqXrWQGodo2ZjpAG0pXj31LopdCnta5y
+ u+I+jL09mq3lFvBv0whiaO013ie+eaog1MUNcrJBjL0HqRVwPMaSfw8/ia6OIZWpXaj5v2LDjQl
+ esOFyNSnG56ohUrK512HtS98+YTHVGbrAdD9KCKUqO1uNLBYlN/GJoQvy9+b2owiBSomI1zm2qf
+ 6xbouAejTj+8nlIYOHPXLWgjx90bvOA2qpR7+VUMZxDHaFIeKKM5obFlknsLRrROr2/ye0I4QAN
+ 9JXE115iZHBvTRsd88UUy8OX2OAVcr931GYFQidJIwBSRV7gLoMptutuvsNRNFZxx8WHt1gz8IU
+ kxHYaO3K2HMa07ofM5HU6g9p2t4gGTXEM/D7U/Atds+9rnmd/+VxQaCTTT/Jqj2JdbfEsep6x9H
+ v47QT5
+X-Received: by 2002:a17:907:8b9b:b0:bec:894d:dd3f with SMTP id
+ a640c23a62f3a-bf37164d6demr686680766b.14.1780910337669; 
+ Mon, 08 Jun 2026 02:18:57 -0700 (PDT)
+X-Received: by 2002:a17:907:8b9b:b0:bec:894d:dd3f with SMTP id
+ a640c23a62f3a-bf37164d6demr686676766b.14.1780910336485; 
+ Mon, 08 Jun 2026 02:18:56 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-bf0553060dasm841276166b.44.2026.06.08.02.18.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 08 Jun 2026 02:18:55 -0700 (PDT)
+Message-ID: <de367a12-b814-4a65-97e2-ac7a63a9653f@redhat.com>
+Date: Mon, 8 Jun 2026 11:18:54 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 2/9] hw/arm/smmuv3: Improve accel SMMUv3 usage
+ documentation
+To: Nathan Chen <nathanc@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Matt Ochs <mochs@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>
+References: <20260605001712.1823737-1-nathanc@nvidia.com>
+ <20260605001712.1823737-3-nathanc@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260605001712.1823737-3-nathanc@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 4vtIkmz2yzDlMiRoZa3U9ojT0YtQg24jRjY8zsDWyCc_1780910338
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,202 +121,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-"Jason L. Wright'" <wrigjl@proton.me> writes:
+Hi Nathan,
 
-> On Sun, Jun 07, 2026 at 06:42:30PM +0800, Zenghui Yu wrote:
->> + Alexander and qemu-arm (for HVF/arm),
->>=20
->> On 5/29/26 7:47 PM, Peter Maydell wrote:
->> > From: Jason Wright <wrigjl@proton.me>
->> >
->> > Add an .accessfn to the RNDR and RNDRRS system registers that traps
->> > reads to EL3 when SCR_EL3.TRNDR is set, as required by FEAT_RNG_TRAP.
->> > Mark SCR_EL3.TRNDR (bit 40) as a writable field in scr_write() when
->> > the CPU advertises the feature. The pseudocode in DDI0487 revision M.b
->> > shows the trap firing from EL0, EL1, EL2, and EL3, so there is no
->> > check of arm_current_el().
->> >
->> > When FEAT_RNG_TRAP is implemented without FEAT_RNG, an RNDR/RNDRRS read
->> > with SCR_EL3.TRNDR=3D0 should UNDEF rather than succeed; handle that c=
-ase
->> > in access_rndr(). Register the rndr_reginfo CP reg entries whenever ei=
-ther
->> > FEAT_RNG or FEAT_RNG_TRAP is implemented, so the accessfn fires even o=
-n a
->> > FEAT_RNG_TRAP-only CPU.
->> >
->> > When SCR_EL3.TRNDR is set, ID_AA64ISAR0_EL1.RNDR reads as 1 regardless
->> > of whether FEAT_RNG is implemented; give ID_AA64ISAR0_EL1 a readfn so =
-it
->> > reports this at runtime, as we already do for ID_AA64PFR0_EL1.
->> >
->> > Suggested-by: Richard Henderson <richard.henderson@linaro.org>
->> > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
->> > Signed-off-by: Jason Wright <wrigjl@proton.me>
->> > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> > ---
->> >  target/arm/cpu-features.h |  5 ++++
->> >  target/arm/helper.c       | 58 +++++++++++++++++++++++++++++++++++----
->> >  2 files changed, 58 insertions(+), 5 deletions(-)
->> >
->> > diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
->> > index 4e8d844fea..38a695ded7 100644
->> > --- a/target/arm/cpu-features.h
->> > +++ b/target/arm/cpu-features.h
->> > @@ -908,6 +908,11 @@ static inline bool isar_feature_aa64_rndr(const A=
-RMISARegisters *id)
->> >      return FIELD_EX64_IDREG(id, ID_AA64ISAR0, RNDR) !=3D 0;
->> >  }
->> >
->> > +static inline bool isar_feature_aa64_rng_trap(const ARMISARegisters *=
-id)
->> > +{
->> > +    return FIELD_EX64_IDREG(id, ID_AA64PFR1, RNDR_TRAP) !=3D 0;
->> > +}
->> > +
->> >  static inline bool isar_feature_aa64_tlbirange(const ARMISARegisters =
-*id)
->> >  {
->> >      return FIELD_EX64_IDREG(id, ID_AA64ISAR0, TLB) =3D=3D 2;
->> > diff --git a/target/arm/helper.c b/target/arm/helper.c
->> > index 34487eeaa3..9dd8fdfa41 100644
->> > --- a/target/arm/helper.c
->> > +++ b/target/arm/helper.c
->> > @@ -790,6 +790,9 @@ static void scr_write(CPUARMState *env, const ARMC=
-PRegInfo *ri, uint64_t value)
->> >          if (cpu_isar_feature(aa64_fpmr, cpu)) {
->> >              valid_mask |=3D SCR_ENFPM;
->> >          }
->> > +        if (cpu_isar_feature(aa64_rng_trap, cpu)) {
->> > +            valid_mask |=3D SCR_TRNDR;
->> > +        }
->> >      } else {
->> >          valid_mask &=3D ~(SCR_RW | SCR_ST);
->> >          if (cpu_isar_feature(aa32_ras, cpu)) {
->> > @@ -5170,6 +5173,21 @@ static uint64_t id_aa64pfr0_read(CPUARMState *e=
-nv, const ARMCPRegInfo *ri)
->> >      }
->> >      return pfr0;
->> >  }
->> > +
->> > +static uint64_t id_aa64isar0_read(CPUARMState *env, const ARMCPRegInf=
-o *ri)
->> > +{
->> > +    ARMCPU *cpu =3D env_archcpu(env);
->> > +    uint64_t isar0 =3D GET_IDREG(&cpu->isar, ID_AA64ISAR0);
->> > +
->> > +    /*
->> > +     * When FEAT_RNG_TRAP is active (SCR_EL3.TRNDR set), ID_AA64ISAR0=
-_EL1.RNDR
->> > +     * reads as 1 regardless of whether FEAT_RNG is implemented.
->> > +     */
->> > +    if (env->cp15.scr_el3 & SCR_TRNDR) {
->> > +        isar0 =3D FIELD_DP64(isar0, ID_AA64ISAR0, RNDR, 1);
->> > +    }
->> > +    return isar0;
->> > +}
->> >  #endif
->> >
->> >  /*
->> > @@ -5304,6 +5322,22 @@ static const ARMCPRegInfo pauth_reginfo[] =3D {
->> >        .fieldoffset =3D offsetof(CPUARMState, keys.apib.hi) },
->> >  };
->> >
->> > +static CPAccessResult access_rndr(CPUARMState *env, const ARMCPRegInf=
-o *ri,
->> > +                                  bool isread)
->> > +{
->> > +    if (env->cp15.scr_el3 & SCR_TRNDR) {
->> > +        return CP_ACCESS_TRAP_EL3;
->> > +    }
->> > +    /*
->> > +     * Note that FEAT_RNG_TRAP may be implemented without FEAT_RNG.
->> > +     * In that case, if the trap is not enabled, the read undefs.
->> > +     */
->> > +    if (!cpu_isar_feature(aa64_rndr, env_archcpu(env))) {
->> > +        return CP_ACCESS_UNDEFINED;
->> > +    }
->> > +    return CP_ACCESS_OK;
->> > +}
->> > +
->> >  static uint64_t rndr_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
->> >  {
->> >      Error *err =3D NULL;
->> > @@ -5335,11 +5369,11 @@ static const ARMCPRegInfo rndr_reginfo[] =3D {
->> >      { .name =3D "RNDR", .state =3D ARM_CP_STATE_AA64,
->> >        .type =3D ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END | ARM_CP_IO,
->> >        .opc0 =3D 3, .opc1 =3D 3, .crn =3D 2, .crm =3D 4, .opc2 =3D 0,
->> > -      .access =3D PL0_R, .readfn =3D rndr_readfn },
->> > +      .access =3D PL0_R, .accessfn =3D access_rndr, .readfn =3D rndr_=
-readfn },
->> >      { .name =3D "RNDRRS", .state =3D ARM_CP_STATE_AA64,
->> >        .type =3D ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END | ARM_CP_IO,
->> >        .opc0 =3D 3, .opc1 =3D 3, .crn =3D 2, .crm =3D 4, .opc2 =3D 1,
->> > -      .access =3D PL0_R, .readfn =3D rndr_readfn },
->> > +      .access =3D PL0_R, .accessfn =3D access_rndr, .readfn =3D rndr_=
-readfn },
->> >  };
->> >
->> >  static void dccvap_writefn(CPUARMState *env, const ARMCPRegInfo *ri,
->> > @@ -6522,11 +6556,24 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->> >                .access =3D PL1_R, .type =3D ARM_CP_CONST,
->> >                .accessfn =3D access_tid3,
->> >                .resetvalue =3D 0 },
->> > +            /*
->> > +             * ID_AA64ISAR0_EL1 is not a plain ARM_CP_CONST in system
->> > +             * emulation because the RNDR field depends on SCR_EL3.TR=
-NDR
->> > +             * at read time when FEAT_RNG_TRAP is implemented.
->> > +             */
->> >              { .name =3D "ID_AA64ISAR0_EL1", .state =3D ARM_CP_STATE_A=
-A64,
->> >                .opc0 =3D 3, .opc1 =3D 0, .crn =3D 0, .crm =3D 6, .opc2=
- =3D 0,
->> > -              .access =3D PL1_R, .type =3D ARM_CP_CONST,
->> > +              .access =3D PL1_R,
->> > +#ifdef CONFIG_USER_ONLY
->> > +              .type =3D ARM_CP_CONST,
->> > +              .resetvalue =3D GET_IDREG(isar, ID_AA64ISAR0)
->> > +#else
->> > +              .type =3D ARM_CP_NO_RAW,
->> >                .accessfn =3D access_tid3,
->> > -              .resetvalue =3D GET_IDREG(isar, ID_AA64ISAR0)},
->> > +              .readfn =3D id_aa64isar0_read,
->> > +              .writefn =3D arm_cp_write_ignore
->> > +#endif
->> > +            },
->>=20
->> A new assert() was triggered when booting guest on M1 since this change:
->>=20
->> Assertion failed: (!(ri->type & ARM_CP_NO_RAW)), function hvf_arch_init_=
-vcpu, file hvf.c, line 1442.
->>=20
->> Thanks,
->> Zenghui
->>=20
-> Thanks for the report and the bisect, Zenghui. I can reproduce on M1 with:
+On 6/5/26 2:17 AM, Nathan Chen wrote:
+> From: Nathan Chen <nathanc@nvidia.com>
 >
-> qemu-system-aarch64 -M virt,accel=3Dhvf -cpu host \
->                       -nographic -display none -bios /dev/null
+> Add a statement to clarify that the host SMMUv3 must support HW-accelerated
+> vfio-pci device assignment when setting accel=on.
 >
-> ID_AA64PFR0_EL1 has the same NO_RAW + readfn shape that the FEAT_RNG_TRAP
-> change gave ID_AA64ISAR0_EL1, and HVF already accommodates it by listing
-> the cpreg in the SYNC_NO_RAW_REGS block in target/arm/hvf/sysreg.c.inc
-> (so the assert loop skips it) and pushing QEMU's value to the vCPU at
-> init time. Mirroring that pattern for ID_AA64ISAR0_EL1 clears the assert
-> without disturbing the readfn semantics that the spec requires if a
-> FEAT_RNG_TRAP-only CPU eventually appears.
->
-> I'll send a fix-up as [PATCH] target/arm/hvf shortly.
+> Reported-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Nathan Chen <nathanc@nvidia.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-This highlights why we need some bare metal MacOS machines in the
-CI to exercise this code path.
+Thanks
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Eric
+> ---
+>  hw/arm/smmuv3.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 0c65dc8c91..6b5035e11f 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -2165,7 +2165,9 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
+>  
+>      object_class_property_set_description(klass, "accel",
+>          "Enable SMMUv3 accelerator support. Allows host SMMUv3 to be "
+> -        "configured in nested mode for vfio-pci dev assignment");
+> +        "configured in nested mode for vfio-pci dev assignment. Please "
+> +        "ensure the host SMMUv3 supports nested translation before "
+> +        "enabling.");
+>      object_class_property_set_description(klass, "ril",
+>          "Disable range invalidation support (for accel=on). ril=auto "
+>          "is not supported.");
+
 

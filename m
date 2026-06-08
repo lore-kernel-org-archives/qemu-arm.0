@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AB11CD8C8E
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:54:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B4C4CD8C8E
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:54:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWSsK-0002ni-TE; Mon, 08 Jun 2026 01:50:16 -0400
+	id 1wWSrQ-0001XI-3Z; Mon, 08 Jun 2026 01:49:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSs8-00026j-Hg
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:50:05 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrM-0001WL-3W
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:16 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSs4-0000pW-KF
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:50:03 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrK-0000UE-Bo
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780897800;
+ s=mimecast20190719; t=1780897753;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Qbw3fOX5gATbYU/cclDLa2EHYWUMqv0Bw3auFmr7jBg=;
- b=KrR0n41cGyvgCcnN6nP9BvGteVLddzA/RuMmrNke1x+vMOgTic8dtsukCu8/k4WeIOXpwL
- yf7IM5EQrBEwppE5U6XH1AbCRFztXWB3W7QXsW/53G4vwJcxU/5nLcoE7ygpd9/6z8RAn9
- KX4SmqIMYqkhWJhGVODdooclWnYTfO0=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=AjcBNsHVpS8wYcRjIrqUgY55TrynsFIVW0VBdmWXKbg=;
+ b=IFDTSM6Bgd1C05+YWZwhHnHAS3DODVHwOhwKncjastr0dKMK5y1J2gtG//fa9u8LRNJkTn
+ W3dWO8VYPFhOUC79dQnuT+7oNsiA7gAB86JL1AujBAkqdoCfQqLdlkGA4azBjpPSDW5wLg
+ mv+tLcZc6XnqczZ+Z857R4knDhUoZ7g=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-468-goGjb7VBOGqIggGf7s56NA-1; Mon,
- 08 Jun 2026 01:49:44 -0400
-X-MC-Unique: goGjb7VBOGqIggGf7s56NA-1
-X-Mimecast-MFC-AGG-ID: goGjb7VBOGqIggGf7s56NA_1780897783
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-74-xwB87YvHMru76HdFXd-N5w-1; Mon,
+ 08 Jun 2026 01:49:10 -0400
+X-MC-Unique: xwB87YvHMru76HdFXd-N5w-1
+X-Mimecast-MFC-AGG-ID: xwB87YvHMru76HdFXd-N5w_1780897749
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3371E180049F; Mon,  8 Jun 2026 05:49:43 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 154A01944D26; Mon,  8 Jun 2026 05:49:09 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.33])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 797EC765; Mon,  8 Jun 2026 05:49:41 +0000 (UTC)
+ id 9681C765; Mon,  8 Jun 2026 05:49:07 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jithu Joseph <jithu.joseph@oss.qualcomm.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 36/37] hw/i3c: rename DW-I3C queue capacity fields from _bytes
- to _words
-Date: Mon,  8 Jun 2026 07:48:25 +0200
-Message-ID: <20260608054826.346488-37-clg@redhat.com>
+Subject: [PULL 19/37] hw/timer/aspeed_timer: Convert to DEFINE_TYPES() with
+ inlined TypeInfo
+Date: Mon,  8 Jun 2026 07:48:08 +0200
+Message-ID: <20260608054826.346488-20-clg@redhat.com>
 In-Reply-To: <20260608054826.346488-1-clg@redhat.com>
 References: <20260608054826.346488-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: bYIukGfPMJuVqgbqkKmcakHHGr4fpbrdPckYZ7pryJ4_1780897783
+X-Mimecast-MFC-PROC-ID: FM2MDeTINPVmcyr7R_nNmt-hOwbLyCI0CwaLgXzQGvI_1780897749
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,118 +87,155 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The cmd/resp, tx/rx, and IBI queue capacity values are passed straight
-to fifo32_create(), which interprets its capacity argument as a 32-bit
-word count.  The fields and device properties were therefore misnamed:
-setting e.g. tx-rx-queue-capacity-bytes=N sized the backing FIFO to N
-words, not N bytes.
+Replace the legacy type_register_static()/type_init() registration
+pattern with the modern DEFINE_TYPES() macro.
 
-Rename the three struct fields and matching device-property strings:
+Inline 6 standalone TypeInfo variables (aspeed_timer_info as abstract
+base, aspeed_2400_timer_info, aspeed_2500_timer_info,
+aspeed_2600_timer_info, aspeed_1030_timer_info, aspeed_2700_timer_info)
+directly into the 'aspeed_timer_types[]' array, removing the need for
+separate declarations.
 
-  cmd_resp_queue_capacity_bytes  -> cmd_resp_queue_capacity_words
-  tx_rx_queue_capacity_bytes     -> tx_rx_queue_capacity_words
-  ibi_queue_capacity_bytes       -> ibi_queue_capacity_words
+No functional change.
 
-Defaults are unchanged (0x10 / 0x40 / 0x10) -- they were being
-interpreted as word counts by fifo32_create() all along, just under a
-misleading label.  No behavioral change.
-
-Signed-off-by: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
-Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Link: https://lore.kernel.org/qemu-devel/20260604142207.2118098-3-jithu.joseph@oss.qualcomm.com
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20260601024959.2347639-20-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/i3c/dw-i3c.h |  6 +++---
- hw/i3c/dw-i3c.c         | 32 ++++++++++++++++----------------
- 2 files changed, 19 insertions(+), 19 deletions(-)
+ hw/timer/aspeed_timer.c | 83 +++++++++++++++++------------------------
+ 1 file changed, 35 insertions(+), 48 deletions(-)
 
-diff --git a/include/hw/i3c/dw-i3c.h b/include/hw/i3c/dw-i3c.h
-index d26f60580f02..391470207c43 100644
---- a/include/hw/i3c/dw-i3c.h
-+++ b/include/hw/i3c/dw-i3c.h
-@@ -181,9 +181,9 @@ struct DWI3C {
- 
-     struct {
-         uint8_t id;
--        uint8_t cmd_resp_queue_capacity_bytes;
--        uint16_t tx_rx_queue_capacity_bytes;
--        uint8_t ibi_queue_capacity_bytes;
-+        uint8_t cmd_resp_queue_capacity_words;
-+        uint16_t tx_rx_queue_capacity_words;
-+        uint8_t ibi_queue_capacity_words;
-         uint8_t num_addressable_devices;
-         uint16_t dev_addr_table_pointer;
-         uint16_t dev_addr_table_depth;
-diff --git a/hw/i3c/dw-i3c.c b/hw/i3c/dw-i3c.c
-index 06c2d55f5958..0d32d9ce78a0 100644
---- a/hw/i3c/dw-i3c.c
-+++ b/hw/i3c/dw-i3c.c
-@@ -948,9 +948,9 @@ static void dw_i3c_reset(DeviceState *dev)
-     ARRAY_FIELD_DP32(s->regs, DEV_CHAR_TABLE_POINTER, DEV_CHAR_TABLE_DEPTH,
-                      s->cfg.dev_char_table_depth);
-     ARRAY_FIELD_DP32(s->regs, QUEUE_STATUS_LEVEL, CMD_QUEUE_EMPTY_LOC,
--                     s->cfg.cmd_resp_queue_capacity_bytes);
-+                     s->cfg.cmd_resp_queue_capacity_words);
-     ARRAY_FIELD_DP32(s->regs, DATA_BUFFER_STATUS_LEVEL, TX_BUF_EMPTY_LOC,
--                     s->cfg.tx_rx_queue_capacity_bytes);
-+                     s->cfg.tx_rx_queue_capacity_words);
- 
-     dw_i3c_cmd_queue_reset(s);
-     dw_i3c_resp_queue_reset(s);
-@@ -1798,9 +1798,9 @@ static void dw_i3c_reset_enter(Object *obj, ResetType type)
-     ARRAY_FIELD_DP32(s->regs, DEV_CHAR_TABLE_POINTER, DEV_CHAR_TABLE_DEPTH,
-                      s->cfg.dev_char_table_depth);
-     ARRAY_FIELD_DP32(s->regs, QUEUE_STATUS_LEVEL, CMD_QUEUE_EMPTY_LOC,
--                     s->cfg.cmd_resp_queue_capacity_bytes);
-+                     s->cfg.cmd_resp_queue_capacity_words);
-     ARRAY_FIELD_DP32(s->regs, DATA_BUFFER_STATUS_LEVEL, TX_BUF_EMPTY_LOC,
--                     s->cfg.tx_rx_queue_capacity_bytes);
-+                     s->cfg.tx_rx_queue_capacity_words);
+diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+index 69f5c89215c5..a607736387c8 100644
+--- a/hw/timer/aspeed_timer.c
++++ b/hw/timer/aspeed_timer.c
+@@ -907,15 +907,6 @@ static void timer_class_init(ObjectClass *klass, const void *data)
+     device_class_set_props(dc, aspeed_timer_properties);
  }
  
- static void dw_i3c_realize(DeviceState *dev, Error **errp)
-@@ -1814,14 +1814,14 @@ static void dw_i3c_realize(DeviceState *dev, Error **errp)
-                           DW_I3C_NR_REGS << 2);
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
+-static const TypeInfo aspeed_timer_info = {
+-    .name = TYPE_ASPEED_TIMER,
+-    .parent = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(AspeedTimerCtrlState),
+-    .class_init = timer_class_init,
+-    .class_size = sizeof(AspeedTimerClass),
+-    .abstract   = true,
+-};
+-
+ static void aspeed_2400_timer_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -926,12 +917,6 @@ static void aspeed_2400_timer_class_init(ObjectClass *klass, const void *data)
+     awc->write = aspeed_2400_timer_write;
+ }
  
--    fifo32_create(&s->cmd_queue, s->cfg.cmd_resp_queue_capacity_bytes);
--    fifo32_create(&s->resp_queue, s->cfg.cmd_resp_queue_capacity_bytes);
--    fifo32_create(&s->tx_queue, s->cfg.tx_rx_queue_capacity_bytes);
--    fifo32_create(&s->rx_queue, s->cfg.tx_rx_queue_capacity_bytes);
--    fifo32_create(&s->ibi_queue, s->cfg.ibi_queue_capacity_bytes);
-+    fifo32_create(&s->cmd_queue, s->cfg.cmd_resp_queue_capacity_words);
-+    fifo32_create(&s->resp_queue, s->cfg.cmd_resp_queue_capacity_words);
-+    fifo32_create(&s->tx_queue, s->cfg.tx_rx_queue_capacity_words);
-+    fifo32_create(&s->rx_queue, s->cfg.tx_rx_queue_capacity_words);
-+    fifo32_create(&s->ibi_queue, s->cfg.ibi_queue_capacity_words);
-     /* Arbitrarily large enough to not be an issue. */
-     fifo8_create(&s->ibi_data.ibi_intermediate_queue,
--                 s->cfg.ibi_queue_capacity_bytes * 8);
-+                 s->cfg.ibi_queue_capacity_words * 8);
+-static const TypeInfo aspeed_2400_timer_info = {
+-    .name = TYPE_ASPEED_2400_TIMER,
+-    .parent = TYPE_ASPEED_TIMER,
+-    .class_init = aspeed_2400_timer_class_init,
+-};
+-
+ static void aspeed_2500_timer_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -942,12 +927,6 @@ static void aspeed_2500_timer_class_init(ObjectClass *klass, const void *data)
+     awc->write = aspeed_2500_timer_write;
+ }
  
-     s->bus = i3c_init_bus(DEVICE(s), name);
-     I3CBusClass *bc = I3C_BUS_GET_CLASS(s->bus);
-@@ -1832,12 +1832,12 @@ static void dw_i3c_realize(DeviceState *dev, Error **errp)
+-static const TypeInfo aspeed_2500_timer_info = {
+-    .name = TYPE_ASPEED_2500_TIMER,
+-    .parent = TYPE_ASPEED_TIMER,
+-    .class_init = aspeed_2500_timer_class_init,
+-};
+-
+ static void aspeed_2600_timer_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -958,12 +937,6 @@ static void aspeed_2600_timer_class_init(ObjectClass *klass, const void *data)
+     awc->write = aspeed_2600_timer_write;
+ }
  
- static const Property dw_i3c_properties[] = {
-     DEFINE_PROP_UINT8("device-id", DWI3C, cfg.id, 0),
--    DEFINE_PROP_UINT8("command-response-queue-capacity-bytes", DWI3C,
--                      cfg.cmd_resp_queue_capacity_bytes, 0x10),
--    DEFINE_PROP_UINT16("tx-rx-queue-capacity-bytes", DWI3C,
--                      cfg.tx_rx_queue_capacity_bytes, 0x40),
--    DEFINE_PROP_UINT8("ibi-queue-capacity-bytes", DWI3C,
--                      cfg.ibi_queue_capacity_bytes, 0x10),
-+    DEFINE_PROP_UINT8("command-response-queue-capacity-words", DWI3C,
-+                      cfg.cmd_resp_queue_capacity_words, 0x10),
-+    DEFINE_PROP_UINT16("tx-rx-queue-capacity-words", DWI3C,
-+                      cfg.tx_rx_queue_capacity_words, 0x40),
-+    DEFINE_PROP_UINT8("ibi-queue-capacity-words", DWI3C,
-+                      cfg.ibi_queue_capacity_words, 0x10),
-     DEFINE_PROP_UINT8("num-addressable-devices", DWI3C,
-                       cfg.num_addressable_devices, 8),
-     DEFINE_PROP_UINT16("dev-addr-table-pointer", DWI3C,
+-static const TypeInfo aspeed_2600_timer_info = {
+-    .name = TYPE_ASPEED_2600_TIMER,
+-    .parent = TYPE_ASPEED_TIMER,
+-    .class_init = aspeed_2600_timer_class_init,
+-};
+-
+ static void aspeed_1030_timer_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -974,12 +947,6 @@ static void aspeed_1030_timer_class_init(ObjectClass *klass, const void *data)
+     awc->write = aspeed_2600_timer_write;
+ }
+ 
+-static const TypeInfo aspeed_1030_timer_info = {
+-    .name = TYPE_ASPEED_1030_TIMER,
+-    .parent = TYPE_ASPEED_TIMER,
+-    .class_init = aspeed_1030_timer_class_init,
+-};
+-
+ static void aspeed_2700_timer_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -990,20 +957,40 @@ static void aspeed_2700_timer_class_init(ObjectClass *klass, const void *data)
+     awc->write = aspeed_2700_timer_write;
+ }
+ 
+-static const TypeInfo aspeed_2700_timer_info = {
+-    .name = TYPE_ASPEED_2700_TIMER,
+-    .parent = TYPE_ASPEED_TIMER,
+-    .class_init = aspeed_2700_timer_class_init,
++static const TypeInfo aspeed_timer_types[] = {
++    {
++        .name = TYPE_ASPEED_TIMER,
++        .parent = TYPE_SYS_BUS_DEVICE,
++        .instance_size = sizeof(AspeedTimerCtrlState),
++        .class_init = timer_class_init,
++        .class_size = sizeof(AspeedTimerClass),
++        .abstract   = true,
++    },
++    {
++        .name = TYPE_ASPEED_1030_TIMER,
++        .parent = TYPE_ASPEED_TIMER,
++        .class_init = aspeed_1030_timer_class_init,
++    },
++    {
++        .name = TYPE_ASPEED_2400_TIMER,
++        .parent = TYPE_ASPEED_TIMER,
++        .class_init = aspeed_2400_timer_class_init,
++    },
++    {
++        .name = TYPE_ASPEED_2500_TIMER,
++        .parent = TYPE_ASPEED_TIMER,
++        .class_init = aspeed_2500_timer_class_init,
++    },
++    {
++        .name = TYPE_ASPEED_2600_TIMER,
++        .parent = TYPE_ASPEED_TIMER,
++        .class_init = aspeed_2600_timer_class_init,
++    },
++    {
++        .name = TYPE_ASPEED_2700_TIMER,
++        .parent = TYPE_ASPEED_TIMER,
++        .class_init = aspeed_2700_timer_class_init,
++    }
+ };
+ 
+-static void aspeed_timer_register_types(void)
+-{
+-    type_register_static(&aspeed_timer_info);
+-    type_register_static(&aspeed_2400_timer_info);
+-    type_register_static(&aspeed_2500_timer_info);
+-    type_register_static(&aspeed_2600_timer_info);
+-    type_register_static(&aspeed_1030_timer_info);
+-    type_register_static(&aspeed_2700_timer_info);
+-}
+-
+-type_init(aspeed_timer_register_types)
++DEFINE_TYPES(aspeed_timer_types)
 -- 
 2.54.0
 

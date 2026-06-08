@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B6A7CD8C9D
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:52:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE675CD8C9D
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:52:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWSsF-0002QQ-Vx; Mon, 08 Jun 2026 01:50:12 -0400
+	id 1wWSrg-0001lS-Sc; Mon, 08 Jun 2026 01:49:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrv-0001yn-Uu
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:52 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrb-0001fQ-TQ
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:32 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSru-0000nO-Er
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:51 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSra-0000Zr-9L
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780897789;
+ s=mimecast20190719; t=1780897769;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=dzPcXMjJVMFZRcH4S5AUyUHbZ/WOYXon1snH6e5CcnY=;
- b=CK/577BkmTVtEOIh9dWWlqSkMep/Vw25EXLVSkQapP5kP9Ai/Yd1DgrWoF1iShtfpsoxSz
- P0bxoAY4vhLGNjpVsWQK28VRWdW85SUdafHq0G43cILjAHXkI7/cQXXS/oQlwcUrQ0B+rk
- UEIesBKF1e8Yc7Y6SWsGH0MjzFygS04=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=ZfVBhAkKSFXr5nO8islHlQFJb52F9RvRM2gwOrdIIQ4=;
+ b=IgX+ULhcqexRU/QGb/yOpCkxL5KB/BVSYbKmeIvRdumwLNnAVmvw1U/omv/my1bE6xETR8
+ 9Ew7j73r7BLuUDiuV6Vls2LkvTilp5UGDGQPy7BSsrdklbbR16b0oALzQdIXjjA+ADOSBp
+ 9pFE7Ef0Uo5g096xFBxYA5NjFUji8OU=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-369-tMxI7h_6NDamWSY6B7aFuw-1; Mon,
- 08 Jun 2026 01:49:35 -0400
-X-MC-Unique: tMxI7h_6NDamWSY6B7aFuw-1
-X-Mimecast-MFC-AGG-ID: tMxI7h_6NDamWSY6B7aFuw_1780897774
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-103-1TB_7Lz6Nr2TEF_LQlnUnA-1; Mon,
+ 08 Jun 2026 01:49:27 -0400
+X-MC-Unique: 1TB_7Lz6Nr2TEF_LQlnUnA-1
+X-Mimecast-MFC-AGG-ID: 1TB_7Lz6Nr2TEF_LQlnUnA_1780897766
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 976F71956089; Mon,  8 Jun 2026 05:49:34 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B88791800473; Mon,  8 Jun 2026 05:49:26 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.33])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0D1AD765; Mon,  8 Jun 2026 05:49:32 +0000 (UTC)
+ id 4612D1686; Mon,  8 Jun 2026 05:49:25 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 32/37] hw/arm/aspeed_ast1040: Introduce I2C support
-Date: Mon,  8 Jun 2026 07:48:21 +0200
-Message-ID: <20260608054826.346488-33-clg@redhat.com>
+Subject: [PULL 28/37] hw/arm/aspeed_ast1040: Introduce PECI support
+Date: Mon,  8 Jun 2026 07:48:17 +0200
+Message-ID: <20260608054826.346488-29-clg@redhat.com>
 In-Reply-To: <20260608054826.346488-1-clg@redhat.com>
 References: <20260608054826.346488-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: GI5jeSuQaT1j6gn_mMMtB4VDfGj4C0j9VksF6r28Hm8_1780897774
+X-Mimecast-MFC-PROC-ID: dUmkiv3ilt09gmeJ6-IGZkatWS9p4zVKz8ARYWFbEGo_1780897766
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,55 +87,63 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Introduce I2C controller support for the AST1040 SoC model.
+Introduce PECI support for the AST1040 SoC model.
 
-The I2C model type is selected from the SoC type name, allowing the AST1040
-SoC to use the corresponding aspeed.i2c-ast1040 model.
+This change adds the PECI MMIO region and IRQ mapping,
+initializes the PECI device instance, and realizes the
+controller during SoC initialization.
 
-The I2C controller is mapped at 0x74C0F000 and uses IRQs
-64 - 77, with one IRQ assigned per I2C bus.
-
-The controller DRAM link is connected to SRAM1 (HyperRAM)
-for DMA support.
+The PECI controller is mapped at 0x74C1F000 and connected
+to IRQ 164.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260603040027.938816-9-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260603040027.938816-5-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast1040.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ hw/arm/aspeed_ast1040.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
 diff --git a/hw/arm/aspeed_ast1040.c b/hw/arm/aspeed_ast1040.c
-index 77211ce1f362..6d1cb9b102d5 100644
+index b736e690e5e2..9ae0a0e7a4a1 100644
 --- a/hw/arm/aspeed_ast1040.c
 +++ b/hw/arm/aspeed_ast1040.c
-@@ -117,6 +117,7 @@ static void aspeed_soc_ast1040_init(Object *obj)
-         object_initialize_child(obj, "sgpio[*]", &s->sgpiom[i],
-                                 "aspeed.sgpio-ast2700");
+@@ -31,6 +31,7 @@ static const hwaddr aspeed_soc_ast1040_memmap[] = {
+     [ASPEED_DEV_SGPIOM0]   = 0x74C0C000,
+     [ASPEED_DEV_SGPIOM1]   = 0x74C0D000,
+     [ASPEED_DEV_I2C]       = 0x74C0F000,
++    [ASPEED_DEV_PECI]      = 0x74C1F000,
+     [ASPEED_DEV_I3C]       = 0x74C20000,
+     [ASPEED_DEV_UART0]     = 0x74C33000,
+     [ASPEED_DEV_UART1]     = 0x74C33100,
+@@ -76,6 +77,7 @@ static const int aspeed_soc_ast1040_irqmap[] = {
+     [ASPEED_DEV_UART11]    = 146,
+     [ASPEED_DEV_UART12]    = 147,
+     [ASPEED_DEV_JTAG0]     = 162,
++    [ASPEED_DEV_PECI]      = 164,
+ };
+ 
+ static qemu_irq aspeed_soc_ast1040_get_irq(AspeedSoCState *s, int dev)
+@@ -108,6 +110,7 @@ static void aspeed_soc_ast1040_init(Object *obj)
      }
-+    object_initialize_child(obj, "i2c", &s->i2c, TYPE_ASPEED_1040_I2C);
+ 
+     object_initialize_child(obj, "adc", &s->adc, TYPE_ASPEED_2700_ADC);
++    object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
  
      object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE);
      object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVICE);
-@@ -233,6 +234,21 @@ static void aspeed_soc_ast1040_realize(DeviceState *dev_soc, Error **errp)
-                        aspeed_soc_ast1040_get_irq(s, ASPEED_DEV_SGPIOM0 + i));
-     }
+@@ -199,6 +202,15 @@ static void aspeed_soc_ast1040_realize(DeviceState *dev_soc, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
+                        aspeed_soc_ast1040_get_irq(s, ASPEED_DEV_ADC));
  
-+    /* I2C */
-+    object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(&s->sram[1]),
-+                             &error_abort);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->i2c), errp)) {
++    /* PECI */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->peci), errp)) {
 +        return;
 +    }
-+    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->i2c), 0,
-+                    sc->memmap[ASPEED_DEV_I2C]);
-+    for (i = 0; i < ASPEED_I2C_GET_CLASS(&s->i2c)->num_busses; i++) {
-+        qemu_irq irq = qdev_get_gpio_in(DEVICE(&a->armv7m),
-+                                        sc->irqmap[ASPEED_DEV_I2C] + i);
-+        /* The AST1040 I2C controller has one IRQ per bus. */
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c.busses[i]), 0, irq);
-+    }
++    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->peci), 0,
++                    sc->memmap[ASPEED_DEV_PECI]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
++                       aspeed_soc_ast1040_get_irq(s, ASPEED_DEV_PECI));
 +
      /* Unimplemented peripherals */
      aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->pwm),

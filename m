@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2837ACD8C9D
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:52:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08304CD8C9D
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:52:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWSrA-0001Nl-52; Mon, 08 Jun 2026 01:49:04 -0400
+	id 1wWSrA-0001OH-DL; Mon, 08 Jun 2026 01:49:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSr3-0001Kk-Vl
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:48:58 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSqz-0001Ip-Uq
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:48:54 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSr2-0000Ox-6D
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:48:57 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSqy-0000OC-Fk
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:48:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780897735;
+ s=mimecast20190719; t=1780897731;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=sPrl4JP1fMu1Jf/dNqJ1VVy1Jjsvzj5NVwzbCq4lY8E=;
- b=Z8PK3iKCxVrU2jsf/IXUBlODUA0nvUpsVzt5FDxZ7jDxPVc0btfRcH4IMvyVJToRm1TySy
- 5bxQZvDHuGlxeUJwu+C1k58Qu0RV7qDOCeQcB9KodcpUVuSZTQ+r4P7uHUBKi+f3I1kJmp
- q8u2aTApCVFZXgex8obklOcgXLXSp/M=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=8VnaHfAzCaMJFYoW3QGdBrkrlcTvRnLe7EeeVYhYkB0=;
+ b=E4byWZciqQEtjrSunFeAPLc/PeNKGs53tLOR8kPRAQwYJaXZryQVmlFUT5rucG6A2zRSW3
+ 6HYA9eRUua1cg42IKB1uw8F5cBvJwwBTOjhwo7jHvGU4fKuSH6ausgmx6WYQCa3RQ9Ipo3
+ lxk5dgVRbr2HIUuekZR3oJMvYBfNAmI=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-17-3Y9ptUkoMF6IZozH6hZYtA-1; Mon,
- 08 Jun 2026 01:48:53 -0400
-X-MC-Unique: 3Y9ptUkoMF6IZozH6hZYtA-1
-X-Mimecast-MFC-AGG-ID: 3Y9ptUkoMF6IZozH6hZYtA_1780897733
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-673-3YgJdgEeOQuUZoUcy8WQQg-1; Mon,
+ 08 Jun 2026 01:48:47 -0400
+X-MC-Unique: 3YgJdgEeOQuUZoUcy8WQQg-1
+X-Mimecast-MFC-AGG-ID: 3YgJdgEeOQuUZoUcy8WQQg_1780897727
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EEFF61956080; Mon,  8 Jun 2026 05:48:52 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id EB445195608B; Mon,  8 Jun 2026 05:48:46 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.33])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7AF3827A; Mon,  8 Jun 2026 05:48:51 +0000 (UTC)
+ id 4C95F765; Mon,  8 Jun 2026 05:48:45 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 11/37] hw/arm/aspeed_ast1700: Convert to DEFINE_TYPES() with
+Subject: [PULL 08/37] hw/misc:aspeed_sli: Convert to DEFINE_TYPES() with
  inlined TypeInfo
-Date: Mon,  8 Jun 2026 07:48:00 +0200
-Message-ID: <20260608054826.346488-12-clg@redhat.com>
+Date: Mon,  8 Jun 2026 07:47:57 +0200
+Message-ID: <20260608054826.346488-9-clg@redhat.com>
 In-Reply-To: <20260608054826.346488-1-clg@redhat.com>
 References: <20260608054826.346488-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: 0bTLP3IJFxhWJ_mMVInrLH17L8oVcXJybc8j0xzU4hg_1780897733
+X-Mimecast-MFC-PROC-ID: evLFNwK7gDaFUYNCJQCE2kegb3UPW2LZtsByD8VFV1I_1780897727
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -92,51 +92,82 @@ From: Jamin Lin <jamin_lin@aspeedtech.com>
 Replace the legacy type_register_static()/type_init() registration
 pattern with the modern DEFINE_TYPES() macro.
 
-Inline the standalone TypeInfo variable directly into the
-'aspeed_ast1700_types[]' array, removing the need for a separate
-declaration.
+Inline 3 standalone TypeInfo variables (aspeed_sli_info as abstract
+base, aspeed_2700_sli_info, aspeed_2700_sliio_info) directly into the
+'aspeed_sli_types[]' array, removing the need for separate
+declarations.
 
 No functional change.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260601024959.2347639-12-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260601024959.2347639-9-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast1700.c | 21 +++++++++------------
- 1 file changed, 9 insertions(+), 12 deletions(-)
+ hw/misc/aspeed_sli.c | 44 +++++++++++++++++++-------------------------
+ 1 file changed, 19 insertions(+), 25 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c
-index e90302c11bcd..5af5da5b8a73 100644
---- a/hw/arm/aspeed_ast1700.c
-+++ b/hw/arm/aspeed_ast1700.c
-@@ -260,17 +260,14 @@ static void aspeed_ast1700_class_init(ObjectClass *klass, const void *data)
-     device_class_set_props(dc, aspeed_ast1700_props);
+diff --git a/hw/misc/aspeed_sli.c b/hw/misc/aspeed_sli.c
+index 5b4d70cdc064..74ad02faf5ea 100644
+--- a/hw/misc/aspeed_sli.c
++++ b/hw/misc/aspeed_sli.c
+@@ -132,13 +132,6 @@ static void aspeed_sli_class_init(ObjectClass *klass, const void *data)
+     dc->realize = aspeed_sli_realize;
  }
  
--static const TypeInfo aspeed_ast1700_info = {
--    .name          = TYPE_ASPEED_AST1700,
+-static const TypeInfo aspeed_sli_info = {
+-    .name          = TYPE_ASPEED_SLI,
 -    .parent        = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(AspeedAST1700SoCState),
--    .class_init    = aspeed_ast1700_class_init,
--    .instance_init = aspeed_ast1700_instance_init,
-+static const TypeInfo aspeed_ast1700_types[] = {
+-    .instance_size = sizeof(AspeedSLIState),
+-    .class_init    = aspeed_sli_class_init,
+-    .abstract      = true,
+-};
+ 
+ static void aspeed_2700_sli_class_init(ObjectClass *klass, const void *data)
+ {
+@@ -155,23 +148,24 @@ static void aspeed_2700_sliio_class_init(ObjectClass *klass, const void *data)
+     dc->realize = aspeed_sliio_realize;
+ }
+ 
+-static const TypeInfo aspeed_2700_sli_info = {
+-    .name           = TYPE_ASPEED_2700_SLI,
+-    .parent         = TYPE_ASPEED_SLI,
+-    .class_init     = aspeed_2700_sli_class_init,
+-};
+-
+-static const TypeInfo aspeed_2700_sliio_info = {
+-    .name           = TYPE_ASPEED_2700_SLIIO,
+-    .parent         = TYPE_ASPEED_SLI,
+-    .class_init     = aspeed_2700_sliio_class_init,
++static const TypeInfo aspeed_sli_types[] = {
 +    {
-+        .name          = TYPE_ASPEED_AST1700,
++        .name          = TYPE_ASPEED_SLI,
 +        .parent        = TYPE_SYS_BUS_DEVICE,
-+        .instance_size = sizeof(AspeedAST1700SoCState),
-+        .class_init    = aspeed_ast1700_class_init,
-+        .instance_init = aspeed_ast1700_instance_init,
++        .instance_size = sizeof(AspeedSLIState),
++        .class_init    = aspeed_sli_class_init,
++        .abstract      = true,
++    },
++    {
++        .name           = TYPE_ASPEED_2700_SLI,
++        .parent         = TYPE_ASPEED_SLI,
++        .class_init     = aspeed_2700_sli_class_init,
++    },
++    {
++        .name           = TYPE_ASPEED_2700_SLIIO,
++        .parent         = TYPE_ASPEED_SLI,
++        .class_init     = aspeed_2700_sliio_class_init,
 +    }
  };
  
--static void aspeed_ast1700_register_types(void)
+-static void aspeed_sli_register_types(void)
 -{
--    type_register_static(&aspeed_ast1700_info);
+-    type_register_static(&aspeed_sli_info);
+-    type_register_static(&aspeed_2700_sli_info);
+-    type_register_static(&aspeed_2700_sliio_info);
 -}
 -
--type_init(aspeed_ast1700_register_types);
-+DEFINE_TYPES(aspeed_ast1700_types)
+-type_init(aspeed_sli_register_types);
++DEFINE_TYPES(aspeed_sli_types)
 -- 
 2.54.0
 

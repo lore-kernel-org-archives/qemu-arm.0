@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE675CD8C9D
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:52:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F9BCCD8C9D
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Jun 2026 05:52:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWSrg-0001lS-Sc; Mon, 08 Jun 2026 01:49:37 -0400
+	id 1wWSsF-0002Pa-Na; Mon, 08 Jun 2026 01:50:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrb-0001fQ-TQ
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrh-0001mn-Ll
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:40 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSra-0000Zr-9L
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:31 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wWSrf-0000gi-1M
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 01:49:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780897769;
+ s=mimecast20190719; t=1780897774;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZfVBhAkKSFXr5nO8islHlQFJb52F9RvRM2gwOrdIIQ4=;
- b=IgX+ULhcqexRU/QGb/yOpCkxL5KB/BVSYbKmeIvRdumwLNnAVmvw1U/omv/my1bE6xETR8
- 9Ew7j73r7BLuUDiuV6Vls2LkvTilp5UGDGQPy7BSsrdklbbR16b0oALzQdIXjjA+ADOSBp
- 9pFE7Ef0Uo5g096xFBxYA5NjFUji8OU=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=qW0f8311kd5c+oUI1hixT0UXSpuywxH8OcV1GYZi3tg=;
+ b=bCEUeJqgPfPvOwmFLaorHOQ1BdB6A+/Hc3A9wV1iDHElsyE2M2MeKcuWqhCNgwNr4bKqHr
+ Wz4D/NTBQ6jErjDps6qmDpO/OO5WKfOsZ8vHBTj2Smvt6ifMx2A7rqeNoetjW2uK15Ggw2
+ rFNQryJUhglMEUAZ8pt2FkZetv+da8c=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-103-1TB_7Lz6Nr2TEF_LQlnUnA-1; Mon,
- 08 Jun 2026 01:49:27 -0400
-X-MC-Unique: 1TB_7Lz6Nr2TEF_LQlnUnA-1
-X-Mimecast-MFC-AGG-ID: 1TB_7Lz6Nr2TEF_LQlnUnA_1780897766
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-568-ubl9iv50NSCFy7Yh8Ms78Q-1; Mon,
+ 08 Jun 2026 01:49:21 -0400
+X-MC-Unique: ubl9iv50NSCFy7Yh8Ms78Q-1
+X-Mimecast-MFC-AGG-ID: ubl9iv50NSCFy7Yh8Ms78Q_1780897753
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B88791800473; Mon,  8 Jun 2026 05:49:26 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id EC8BB1956094; Mon,  8 Jun 2026 05:49:12 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.33])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4612D1686; Mon,  8 Jun 2026 05:49:25 +0000 (UTC)
+ id 7972727A; Mon,  8 Jun 2026 05:49:11 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 28/37] hw/arm/aspeed_ast1040: Introduce PECI support
-Date: Mon,  8 Jun 2026 07:48:17 +0200
-Message-ID: <20260608054826.346488-29-clg@redhat.com>
+Subject: [PULL 21/37] hw/pci-host/aspeed_pcie: Convert to DEFINE_TYPES() with
+ inlined TypeInfo
+Date: Mon,  8 Jun 2026 07:48:10 +0200
+Message-ID: <20260608054826.346488-22-clg@redhat.com>
 In-Reply-To: <20260608054826.346488-1-clg@redhat.com>
 References: <20260608054826.346488-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: dUmkiv3ilt09gmeJ6-IGZkatWS9p4zVKz8ARYWFbEGo_1780897766
+X-Mimecast-MFC-PROC-ID: ducoNHuJEOTNqLd7hn3vzRrIjugDZHb3PJqI2x3t4GM_1780897753
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,67 +89,164 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Introduce PECI support for the AST1040 SoC model.
+Replace the legacy type_register_static()/type_init() registration
+pattern with the modern DEFINE_TYPES() macro.
 
-This change adds the PECI MMIO region and IRQ mapping,
-initializes the PECI device instance, and realizes the
-controller during SoC initialization.
+Inline 6 standalone TypeInfo variables (aspeed_pcie_phy_info, aspeed_2700_pcie_phy_info
+aspeed_pcie_root_port_info, aspeed_pcie_rc_info, aspeed_pcie_cfg_info and
+aspeed_2700_pcie_cfg_info directly into the 'aspeed_pcie_types[]'
+array, removing the need for separate declarations.
 
-The PECI controller is mapped at 0x74C1F000 and connected
-to IRQ 164.
+No functional change.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260603040027.938816-5-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260601024959.2347639-22-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast1040.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ hw/pci-host/aspeed_pcie.c | 94 +++++++++++++++++----------------------
+ 1 file changed, 41 insertions(+), 53 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast1040.c b/hw/arm/aspeed_ast1040.c
-index b736e690e5e2..9ae0a0e7a4a1 100644
---- a/hw/arm/aspeed_ast1040.c
-+++ b/hw/arm/aspeed_ast1040.c
-@@ -31,6 +31,7 @@ static const hwaddr aspeed_soc_ast1040_memmap[] = {
-     [ASPEED_DEV_SGPIOM0]   = 0x74C0C000,
-     [ASPEED_DEV_SGPIOM1]   = 0x74C0D000,
-     [ASPEED_DEV_I2C]       = 0x74C0F000,
-+    [ASPEED_DEV_PECI]      = 0x74C1F000,
-     [ASPEED_DEV_I3C]       = 0x74C20000,
-     [ASPEED_DEV_UART0]     = 0x74C33000,
-     [ASPEED_DEV_UART1]     = 0x74C33100,
-@@ -76,6 +77,7 @@ static const int aspeed_soc_ast1040_irqmap[] = {
-     [ASPEED_DEV_UART11]    = 146,
-     [ASPEED_DEV_UART12]    = 147,
-     [ASPEED_DEV_JTAG0]     = 162,
-+    [ASPEED_DEV_PECI]      = 164,
- };
+diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
+index 186e5aeea298..b46eb74234bb 100644
+--- a/hw/pci-host/aspeed_pcie.c
++++ b/hw/pci-host/aspeed_pcie.c
+@@ -83,13 +83,6 @@ static void aspeed_pcie_root_port_class_init(ObjectClass *klass,
+     rpc->ssid = 0x1150;
+ }
  
- static qemu_irq aspeed_soc_ast1040_get_irq(AspeedSoCState *s, int dev)
-@@ -108,6 +110,7 @@ static void aspeed_soc_ast1040_init(Object *obj)
-     }
+-static const TypeInfo aspeed_pcie_root_port_info = {
+-    .name = TYPE_ASPEED_PCIE_ROOT_PORT,
+-    .parent = TYPE_PCIE_ROOT_PORT,
+-    .instance_size = sizeof(AspeedPCIERootPortState),
+-    .class_init = aspeed_pcie_root_port_class_init,
+-};
+-
+ /*
+  * PCIe Root Complex (RC)
+  */
+@@ -305,14 +298,6 @@ static void aspeed_pcie_rc_class_init(ObjectClass *klass, const void *data)
+     msi_nonbroken = true;
+ }
  
-     object_initialize_child(obj, "adc", &s->adc, TYPE_ASPEED_2700_ADC);
-+    object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
+-static const TypeInfo aspeed_pcie_rc_info = {
+-    .name = TYPE_ASPEED_PCIE_RC,
+-    .parent = TYPE_PCIE_HOST_BRIDGE,
+-    .instance_size = sizeof(AspeedPCIERcState),
+-    .instance_init = aspeed_pcie_rc_instance_init,
+-    .class_init = aspeed_pcie_rc_class_init,
+-};
+-
+ /*
+  * PCIe Config
+  *
+@@ -679,15 +664,6 @@ static void aspeed_pcie_cfg_class_init(ObjectClass *klass, const void *data)
+     apc->rc_rp_addr = PCI_DEVFN(8, 0);
+ }
  
-     object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE);
-     object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVICE);
-@@ -199,6 +202,15 @@ static void aspeed_soc_ast1040_realize(DeviceState *dev_soc, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
-                        aspeed_soc_ast1040_get_irq(s, ASPEED_DEV_ADC));
+-static const TypeInfo aspeed_pcie_cfg_info = {
+-    .name       = TYPE_ASPEED_PCIE_CFG,
+-    .parent     = TYPE_SYS_BUS_DEVICE,
+-    .instance_init = aspeed_pcie_cfg_instance_init,
+-    .instance_size = sizeof(AspeedPCIECfgState),
+-    .class_init = aspeed_pcie_cfg_class_init,
+-    .class_size = sizeof(AspeedPCIECfgClass),
+-};
+-
+ static void aspeed_2700_pcie_cfg_write(void *opaque, hwaddr addr,
+                                        uint64_t data, unsigned int size)
+ {
+@@ -798,12 +774,6 @@ static void aspeed_2700_pcie_cfg_class_init(ObjectClass *klass,
+     apc->rc_rp_addr = PCI_DEVFN(0, 0);
+ }
  
-+    /* PECI */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->peci), errp)) {
-+        return;
+-static const TypeInfo aspeed_2700_pcie_cfg_info = {
+-    .name = TYPE_ASPEED_2700_PCIE_CFG,
+-    .parent = TYPE_ASPEED_PCIE_CFG,
+-    .class_init = aspeed_2700_pcie_cfg_class_init,
+-};
+-
+ /*
+  * PCIe PHY
+  *
+@@ -926,14 +896,6 @@ static void aspeed_pcie_phy_class_init(ObjectClass *klass, const void *data)
+     apc->nr_regs = 0x100 >> 2;
+ }
+ 
+-static const TypeInfo aspeed_pcie_phy_info = {
+-    .name       = TYPE_ASPEED_PCIE_PHY,
+-    .parent     = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(AspeedPCIEPhyState),
+-    .class_init = aspeed_pcie_phy_class_init,
+-    .class_size = sizeof(AspeedPCIEPhyClass),
+-};
+-
+ static void aspeed_2700_pcie_phy_reset_hold(Object *obj, ResetType type)
+ {
+     AspeedPCIEPhyState *s = ASPEED_PCIE_PHY(obj);
+@@ -961,21 +923,47 @@ static void aspeed_2700_pcie_phy_class_init(ObjectClass *klass,
+     apc->nr_regs = 0x800 >> 2;
+ }
+ 
+-static const TypeInfo aspeed_2700_pcie_phy_info = {
+-    .name       = TYPE_ASPEED_2700_PCIE_PHY,
+-    .parent     = TYPE_ASPEED_PCIE_PHY,
+-    .class_init = aspeed_2700_pcie_phy_class_init,
+-};
++static const TypeInfo aspeed_pcie_types[] = {
++    {
++        .name = TYPE_ASPEED_PCIE_RC,
++        .parent = TYPE_PCIE_HOST_BRIDGE,
++        .instance_size = sizeof(AspeedPCIERcState),
++        .instance_init = aspeed_pcie_rc_instance_init,
++        .class_init = aspeed_pcie_rc_class_init,
++    },
++    {
++        .name = TYPE_ASPEED_PCIE_ROOT_PORT,
++        .parent = TYPE_PCIE_ROOT_PORT,
++        .instance_size = sizeof(AspeedPCIERootPortState),
++        .class_init = aspeed_pcie_root_port_class_init,
++    },
++    {
++        .name       = TYPE_ASPEED_PCIE_CFG,
++        .parent     = TYPE_SYS_BUS_DEVICE,
++        .instance_init = aspeed_pcie_cfg_instance_init,
++        .instance_size = sizeof(AspeedPCIECfgState),
++        .class_init = aspeed_pcie_cfg_class_init,
++        .class_size = sizeof(AspeedPCIECfgClass),
++    },
++    {
++        .name       = TYPE_ASPEED_PCIE_PHY,
++        .parent     = TYPE_SYS_BUS_DEVICE,
++        .instance_size = sizeof(AspeedPCIEPhyState),
++        .class_init = aspeed_pcie_phy_class_init,
++        .class_size = sizeof(AspeedPCIEPhyClass),
++    },
++    {
++        .name       = TYPE_ASPEED_2700_PCIE_PHY,
++        .parent     = TYPE_ASPEED_PCIE_PHY,
++        .class_init = aspeed_2700_pcie_phy_class_init,
++    },
++    {
++        .name = TYPE_ASPEED_2700_PCIE_CFG,
++        .parent = TYPE_ASPEED_PCIE_CFG,
++        .class_init = aspeed_2700_pcie_cfg_class_init,
 +    }
-+    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->peci), 0,
-+                    sc->memmap[ASPEED_DEV_PECI]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
-+                       aspeed_soc_ast1040_get_irq(s, ASPEED_DEV_PECI));
-+
-     /* Unimplemented peripherals */
-     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->pwm),
-                                   "aspeed.pwm",
+ 
+-static void aspeed_pcie_register_types(void)
+-{
+-    type_register_static(&aspeed_pcie_rc_info);
+-    type_register_static(&aspeed_pcie_root_port_info);
+-    type_register_static(&aspeed_pcie_cfg_info);
+-    type_register_static(&aspeed_2700_pcie_cfg_info);
+-    type_register_static(&aspeed_pcie_phy_info);
+-    type_register_static(&aspeed_2700_pcie_phy_info);
+-}
++};
+ 
+-type_init(aspeed_pcie_register_types);
++DEFINE_TYPES(aspeed_pcie_types)
+ 
 -- 
 2.54.0
 

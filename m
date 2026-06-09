@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D757BCD98C7
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 17:25:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 589C0CD8CB9
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 17:26:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wX0Cc-0007KV-K2; Tue, 09 Jun 2026 13:25:27 -0400
+	id 1wX0D9-0007mf-2S; Tue, 09 Jun 2026 13:25:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Ca-0007KB-Vd
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Ct-0007Ym-F1
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0CY-0001oP-H5
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:24 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Cp-0001wO-1h
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781025920;
+ s=mimecast20190719; t=1781025938;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=mFHoPhGhsuTmv+EEN396O5Two+rm7exFxgwa3OtldZU=;
- b=dOa3OcOOJr5xCFMm9I3Qe9CCagF6+uRGD1YkBLTQwA0Hfhh3sulOhIu2uJVrw+rTBAdUgA
- Tb2BmnLgXOwVCn1gro9EneaX2H4JYt4BDZl/u/2FwuaK8jLk1olpXFbclR861Fq9iWGPUO
- bw8+7dsknwHMDIuQf/bPVXJ6gm64Jjk=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ho/BMxX8YnQ131yrIsVBM8rRwXj38KUVhIf57yJSr4U=;
+ b=iqNNVHk5caVDGU79R69Eu+SsGZDKBMultXcibcsWNMe/9GsZXjQfs+CvzW9mWMwvI9QaKW
+ c7rOIdcZhQmJQF7duFG+B7loFzfnRYNVP+8qM9aS8yEtP+iiSeDFNXBd4RhH6CwA3LPS91
+ qLmF2iUiPy5mbXKrltGpd+hDAy32YP0=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-348-Y-zzZX2nPrCPC9kWNtcVcg-1; Tue, 09 Jun 2026 13:25:18 -0400
-X-MC-Unique: Y-zzZX2nPrCPC9kWNtcVcg-1
-X-Mimecast-MFC-AGG-ID: Y-zzZX2nPrCPC9kWNtcVcg_1781025917
-Received: by mail-qt1-f198.google.com with SMTP id
- d75a77b69052e-5175bf22b1bso81814721cf.3
- for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 10:25:18 -0700 (PDT)
+ us-mta-195-yrSznhMDOfigmy4ohQexbQ-1; Tue, 09 Jun 2026 13:25:37 -0400
+X-MC-Unique: yrSznhMDOfigmy4ohQexbQ-1
+X-Mimecast-MFC-AGG-ID: yrSznhMDOfigmy4ohQexbQ_1781025936
+Received: by mail-qt1-f200.google.com with SMTP id
+ d75a77b69052e-517615db531so155821451cf.1
+ for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 10:25:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781025917; x=1781630717;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=mFHoPhGhsuTmv+EEN396O5Two+rm7exFxgwa3OtldZU=;
- b=gvxhawtafjV76LiARmdPzim9axckXiRwNQAsDC4NbIILowFG/0CHn2GwAMTlVy8ZUO
- cVmXZw7iuBk4bD46VOnW3ykC9QNFsqVNVFNvF0Jf4CQwE8lR9nOV4JY46PrqW45sF/tf
- fBBj9nTXLGlDVTdlwDiTYAOJXyrFvIf2uqojGH46ZA8l0cgfAItNBf4XW8lBZar0+rGn
- 1gQTLVZBERt5pEaAziIXpJC44EtJ5ivxLUZTmlxAVfT0yiBSIyZ8JSIRlucxlYDEB2lO
- 6cUlC8VbC061nnSo406Z8FG6tNOc4lFrUr99XwO/d3/b3JbsrmfFhcKFMBqMuCJVXbnj
- UCZw==
-X-Gm-Message-State: AOJu0YzKeQc0/G8XpX90zdutTZGUfDa8xthZWk2lixCQ3N9FVf63ye3b
- rHpoquLQU726dh4KOultkjg6dkTMRLzm6YN8/PFjFOdyl/Lu1XzGtVeaLTshPTXd/wmg0O7c8Lw
- e7J19MRbakkZhBirbFRqos6qkRDWGh3+b4rbcC0nWgdBIpfhu3Fesww==
-X-Gm-Gg: Acq92OEHiqOMzmSGguZJKqSDLRn0TRPAiB/LEhkkjdG+pHuEid2tcDAv4f7NoJTZJEK
- hZUNoEnFpj4Zq3RhxzGDyc6lnYn9gh/utfnOyFNEMd1O1foBpNVgpP6VUXnNHKke8Ama6tkcSVz
- dHsLQAxKHBWa/ZRfNFvtREDGPCklRecIZ4hA4zDEQlWhe0ALRKWEiF+hKOyHBhMRs8jzwPk6TAJ
- 5vPK5wq24TUIfBz3+zdaz9sHxCjwfUzB8R49NuqF7q/Pe4zlfivt3/R/XeU9S7hiWhTzv+bUT3I
- TQHT4IJ0j7falP8kMJyM1gIMpTyWYjcY91IX4qGx+oB90ncIDv4WE2934mVCOUM7TNqGKIkdOSQ
- Xmjhkjx85ieQ2wlPAMZ+o1RE=
-X-Received: by 2002:ac8:53d7:0:b0:517:9648:f725 with SMTP id
- d75a77b69052e-5179648fbb3mr210643541cf.50.1781025917360; 
- Tue, 09 Jun 2026 10:25:17 -0700 (PDT)
-X-Received: by 2002:ac8:53d7:0:b0:517:9648:f725 with SMTP id
- d75a77b69052e-5179648fbb3mr210643101cf.50.1781025916804; 
- Tue, 09 Jun 2026 10:25:16 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1781025936; x=1781630736;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=ho/BMxX8YnQ131yrIsVBM8rRwXj38KUVhIf57yJSr4U=;
+ b=nzgmKxMQ4v9JswhqXR+Dg6Tu8ZqEzVOZWt4zizNDywwP0+1cqLQUrpm6oCSMuUiMzm
+ CSxpAHTuySbLwGKCFZDN0zZeTwOyLYzAqdgKPuRqv+BQfdcRMx88khXRmJm8qIcqi5MI
+ 5fVLRlZplw/PEvRCNodpBbjDC8cawJYAtZ35xIoxDnmDwxNCGMnQ3neemgpclspkdURN
+ ibuuJR1C+6zHenBLentTnTvtvzrTiXpQU8l6ikxB/SR4Fc9An6c7CrsHr2czTeL/5nVJ
+ tHlTmR5FQCPseRlzbH7qNCbD2tnMxaaFCKaVcXwedLu0Q4v+47QZwdkS8CPMih6j2/WM
+ 3ENA==
+X-Gm-Message-State: AOJu0YzLvpKEeoB67cQR1i6qy0iv1M4zcYf63/Jryzmm1KGS4MkbjJPq
+ Unhl31loJ3TOf8/v/0poAlEGfG7DaABI/yx43so+ugP93UibWvBAcmHNcAtiqHlYEX7aA+tnykG
+ IEI5cyvX+tSqsIvaEEqOEsUC9nTEqCZyrJwjOEnFC0vMY3aZBYa66bg==
+X-Gm-Gg: Acq92OFWlgrf4OsJ2ovEF1eEAAZ6cTNf1VXrN4hXOJKXy7SojqC9cTZxepOw6XL9zZa
+ Odz7LHbVGd3VmJtllUw7gjmzedp+kaIlmS8QVCnuxEonI5tOYaloluVuUEgTX00ciZarTsSunD9
+ 0xk6cjrRnm5XvWBG3mOlmGkVEzm+k1UYrgZI6d4R1bWHxgXGShUDqO/aCI8RQR5/l/rUb4bG9Yu
+ cQRbTkD3QXGCzEjdHVKgYPjUTq4JXgiLm4tzxy3aiu9EKhpkbq6wIt4+B6fU12wzNbSswb95iGC
+ uiXExAKnakRPnQnzm1r874H3DFkqElr+SAo8yPmvWfWuUD9LVdqytKe4jnzSAr2m7ca9Gl1S5ew
+ tcTAXg70KC1r2CPs7W8oqbHQ=
+X-Received: by 2002:a05:622a:400c:b0:517:7971:a234 with SMTP id
+ d75a77b69052e-51795b729ffmr305681491cf.4.1781025936248; 
+ Tue, 09 Jun 2026 10:25:36 -0700 (PDT)
+X-Received: by 2002:a05:622a:400c:b0:517:7971:a234 with SMTP id
+ d75a77b69052e-51795b729ffmr305680851cf.4.1781025935723; 
+ Tue, 09 Jun 2026 10:25:35 -0700 (PDT)
 Received: from x1.com ([142.189.10.167]) by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-51775da2c56sm187524711cf.21.2026.06.09.10.25.15
+ d75a77b69052e-51775da2c56sm187524711cf.21.2026.06.09.10.25.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Jun 2026 10:25:16 -0700 (PDT)
+ Tue, 09 Jun 2026 10:25:35 -0700 (PDT)
 From: Peter Xu <peterx@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -85,25 +86,26 @@ Cc: qemu-arm@nongnu.org,
  Juraj Marcin <jmarcin@redhat.com>, qemu-rust@nongnu.org,
  Markus Armbruster <armbru@redhat.com>,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Subject: [PATCH v2 00/10] migration/qom: Remove TYPE_DEVICE dependency on
- migration object
-Date: Tue,  9 Jun 2026 13:25:04 -0400
-Message-ID: <20260609172514.2037645-1-peterx@redhat.com>
+Subject: [PATCH v2 08/10] qom: Add object_property_add_*_ptr_def()
+Date: Tue,  9 Jun 2026 13:25:12 -0400
+Message-ID: <20260609172514.2037645-9-peterx@redhat.com>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260609172514.2037645-1-peterx@redhat.com>
+References: <20260609172514.2037645-1-peterx@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: rCR0p1S95dScKSrctW-2cdtKpjbBoR7tg9WfuP9Wi50_1781025917
+X-Mimecast-MFC-PROC-ID: I8PSmK_8pAYbNWgmM9b68IEhZbPTFLPnF5OQN38vZTY_1781025936
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -120,63 +122,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-CI: https://gitlab.com/peterx/qemu/-/pipelines/2588717620
-    (two irrelevant failures due to no runner)
+Add sister functions for existing pointer versions, to make it even easier
+to use by:
 
-rfc: https://lore.kernel.org/r/20251209162857.857593-1-peterx@redhat.com
-v1:  https://lore.kernel.org/r/20260604231118.1584889-1-peterx@redhat.com
+- always make properties to be rw-able
+- allowing to specify default values
+- no retcode needed (assert on failure, always)
 
-This v2 is a full rewrite of v1, changelog doesn't apply.
+Signed-off-by: Peter Xu <peterx@redhat.com>
+---
+ include/qom/object-property-ptr.h | 28 +++++++++++++
+ qom/object-property-ptr.c         | 67 +++++++++++++++++++++++++++++++
+ 2 files changed, 95 insertions(+)
 
-This version majorly addressed the concern in v1 having object API exported
-in qdev files. Instead of trying to expose qdev properties, this patchset
-switched migration object to use the object property API to add properties.
-
-Not all QOM facilities are ready for it, there're a few prior patches to
-improve QOM API to achieve it.
-
-The major concept that this series introduces that does not exist
-previously is the default value mechanisms for object properties (rather
-than object class properties).  Here migration object will rely on that to
-set default values.
-
-Patch 1:   A cleanup to use OBJECT_DECLARE_SIMPLE_TYPE for migration
-Patch 2-4: Qdev changes needed for the transition
-Patch 5-9: Improve QOM API to prepare for the property switch
-Patch 10:  Switch migration object to use TYPE_OBJECT and object props
-
-Comments welcomed, thanks.
-
-Peter Xu (10):
-  migration: Use OBJECT_DECLARE_SIMPLE_TYPE
-  qdev: Export global_props()
-  qdev: Introduce DEFINE_PROP_*_NODEFAULT for bool/uint32
-  hw/arm: Use nodefault version of qdev props when not needed
-  qom: Create object-property-ptr.[ch]
-  qom: Add object_property_add_bool_ptr()
-  qom: Add object_property_add_size_ptr()
-  qom: Add object_property_add_*_ptr_def()
-  qom: Allow default values for instance properties
-  migration: Switch to TYPE_OBJECT with object properties
-
- include/hw/core/qdev-properties.h |   7 +
- include/qom/object-property-ptr.h | 162 +++++++++
- include/qom/object.h              |  99 +-----
- migration/migration.h             |   9 +-
- migration/options.h               |   8 +-
- hw/arm/bcm2836.c                  |   3 +-
- hw/core/qdev-properties.c         |   2 +-
- migration/migration.c             |  42 ++-
- migration/options.c               | 526 +++++++++++++++++++-----------
- qom/object-property-ptr.c         | 394 ++++++++++++++++++++++
- qom/object.c                      | 266 ++-------------
- target/arm/cpu64.c                |   3 +-
- qom/meson.build                   |   1 +
- rust/bindings/hwcore-sys/lib.rs   |   2 +-
- 14 files changed, 957 insertions(+), 567 deletions(-)
- create mode 100644 include/qom/object-property-ptr.h
- create mode 100644 qom/object-property-ptr.c
-
+diff --git a/include/qom/object-property-ptr.h b/include/qom/object-property-ptr.h
+index be467c64af..ecd6f7819b 100644
+--- a/include/qom/object-property-ptr.h
++++ b/include/qom/object-property-ptr.h
+@@ -131,4 +131,32 @@ object_property_add_size_ptr(Object *obj, const char *name,
+                              const uint64_t *v,
+                              ObjectPropertyFlags flags);
+ 
++/*
++ * Below are sister helpers of above, except that:
++ *
++ * (1) nothing is returned
++ * (2) always make the property to be both readable and writeable
++ * (3) allow setting default value
++ *
++ * Please refer to the sister functions for the documentation.
++ */
++void
++object_property_add_bool_ptr_def(Object *obj, const char *name,
++                                 const bool *v, bool def);
++void
++object_property_add_uint8_ptr_def(Object *obj, const char *name,
++                                  const uint8_t *v, uint8_t def);
++void
++object_property_add_uint16_ptr_def(Object *obj, const char *name,
++                                   const uint16_t *v, uint16_t def);
++void
++object_property_add_uint32_ptr_def(Object *obj, const char *name,
++                                   const uint32_t *v, uint32_t def);
++void
++object_property_add_uint64_ptr_def(Object *obj, const char *name,
++                                   const uint64_t *v, uint64_t def);
++void
++object_property_add_size_ptr_def(Object *obj, const char *name,
++                                 const uint64_t *v, uint64_t def);
++
+ #endif
+diff --git a/qom/object-property-ptr.c b/qom/object-property-ptr.c
+index 21ceb2510d..ae9081d2d8 100644
+--- a/qom/object-property-ptr.c
++++ b/qom/object-property-ptr.c
+@@ -325,3 +325,70 @@ object_property_add_size_ptr(Object *obj, const char *name,
+     return object_property_add(obj, name, "size",
+                                getter, setter, NULL, (void *)v);
+ }
++
++void
++object_property_add_bool_ptr_def(Object *obj, const char *name,
++                                 const bool *v, bool def)
++{
++    ObjectProperty *prop;
++
++    prop = object_property_add_bool_ptr(obj, name, v,
++                                        OBJ_PROP_FLAG_READWRITE);
++    object_property_set_default_bool(prop, def);
++}
++
++
++void
++object_property_add_uint8_ptr_def(Object *obj, const char *name,
++                                  const uint8_t *v, uint8_t def)
++{
++    ObjectProperty *prop;
++
++    prop = object_property_add_uint8_ptr(obj, name, v,
++                                         OBJ_PROP_FLAG_READWRITE);
++    object_property_set_default_uint(prop, def);
++}
++
++void
++object_property_add_uint16_ptr_def(Object *obj, const char *name,
++                                   const uint16_t *v, uint16_t def)
++{
++    ObjectProperty *prop;
++
++    prop = object_property_add_uint16_ptr(obj, name, v,
++                                          OBJ_PROP_FLAG_READWRITE);
++    object_property_set_default_uint(prop, def);
++}
++
++void
++object_property_add_uint32_ptr_def(Object *obj, const char *name,
++                                   const uint32_t *v, uint32_t def)
++{
++    ObjectProperty *prop;
++
++    prop = object_property_add_uint32_ptr(obj, name, v,
++                                          OBJ_PROP_FLAG_READWRITE);
++    object_property_set_default_uint(prop, def);
++}
++
++void
++object_property_add_uint64_ptr_def(Object *obj, const char *name,
++                                   const uint64_t *v, uint64_t def)
++{
++    ObjectProperty *prop;
++
++    prop = object_property_add_uint64_ptr(obj, name, v,
++                                          OBJ_PROP_FLAG_READWRITE);
++    object_property_set_default_uint(prop, def);
++}
++
++void
++object_property_add_size_ptr_def(Object *obj, const char *name,
++                                 const uint64_t *v, uint64_t def)
++{
++    ObjectProperty *prop;
++
++    prop = object_property_add_size_ptr(obj, name, v,
++                                        OBJ_PROP_FLAG_READWRITE);
++    object_property_set_default_uint(prop, def);
++}
 -- 
 2.53.0
 

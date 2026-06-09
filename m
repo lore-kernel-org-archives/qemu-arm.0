@@ -4,87 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E48DDCD6E79
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 02:41:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99777CD8CAD
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 07:50:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWmOW-0004zc-Sb; Mon, 08 Jun 2026 22:40:48 -0400
+	id 1wWrDi-0000WJ-P2; Tue, 09 Jun 2026 03:49:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicholasrighi@gmail.com>)
- id 1wWmOR-0004yP-Ja
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 22:40:44 -0400
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nicholasrighi@gmail.com>)
- id 1wWmOP-0002p5-2P
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 22:40:43 -0400
-Received: by mail-pf1-x430.google.com with SMTP id
- d2e1a72fcca58-8423f869421so3764477b3a.3
- for <qemu-arm@nongnu.org>; Mon, 08 Jun 2026 19:40:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1780972839; x=1781577639; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=Sq6/7Tj1as7K589sHSt916NnS5Zheorryj+Xj3dr6eM=;
- b=EigD/3/B8iE8WjXt7h0RyMIyR//c+H2NTkQq3bWwD0SmtxAZ2kUg2HXfbV5D2XtlBt
- eoIfG22EnhfiZEhf0JKv/SrG1hyXkllUWIIaAWLBQ5XryTlO1OA6VqbjuNWCU0DmxBIX
- uvqIRhhfbkOTFvJOKMJwDguvT7HuUfmwYcfiogOcWLUwmpL/GZmskds4jmQ8/YVNwxf+
- C3hcfcqBYfSiDzi0qL4HDFutShrWhk6mVVwkYXDEnIAik4FqDMfioBQoRD1CAJtsLaWD
- vg+qMUCUB0PKlW6urr+c8e+X7gBubY2mkkHIsz7/C73ujs1lCgHD/JwWzJWws/yvt5Ly
- b57g==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wWrDh-0000Vc-0g
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 03:49:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wWrDf-0000Fm-8D
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 03:49:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1780991392;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=30lp4WUtqRDeoZ4j3sEJ16dmtXImE0oV8R9IIwLZRho=;
+ b=NkDptpGdYm4tXXtC0wPJJEzJTi2JsAiJLnV4eEi+OL5eqDrIP48DPKdFR89UOoZRtmARsv
+ RlwqVpS5V5+BAlAnMYeg4WmqFPraZnl2D2yf0b/u0dm+qoAuauz2MqFdQdsJWRpqd8SK5X
+ I0TfUZabw6JhftPXZME040mehrAgg2c=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-688-qGr2sKg0PbK8lDPbC_ZIDQ-1; Tue, 09 Jun 2026 03:49:47 -0400
+X-MC-Unique: qGr2sKg0PbK8lDPbC_ZIDQ-1
+X-Mimecast-MFC-AGG-ID: qGr2sKg0PbK8lDPbC_ZIDQ_1780991386
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-490cc1ae292so19428115e9.1
+ for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 00:49:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780972839; x=1781577639;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1780991386; x=1781596186;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Sq6/7Tj1as7K589sHSt916NnS5Zheorryj+Xj3dr6eM=;
- b=VuFc1tLCY2trVBCSwvPNImXojwYIdNfYCWAf1IL6q60OuPF5z4gbFhWiT1RwPnO1wB
- JA1zVVci/QSsU0Rfdh6BVOAIrAMbkLB6/ry1osW53j2Rk7OjjR7jAHh30AQjkfiQjs4h
- iKTkxMa0+Qtk1Kk4k+B88ZmuS5QAnNUZRg0Ngz4WI7RvjJSfhjkQH3CYoY2CkGlnOaLk
- GRWFbJuiEFjLoppWIz7rKEfOI3oyu7ruAT1JCWkBPf2eryJFQmITisLlFyOGOOQ1PTxv
- /g2Xc8W94U998uL+QCx/64g3JXIWrtuvRDlBuihUsq3VdI4XtsJ7vc15MTzsRbDVzQRh
- u3DA==
-X-Gm-Message-State: AOJu0YwP9FcW/SyvPRM2+l+0Bmab9AFlA9lp279tpBL8nHETFb5NhUGO
- mVj0Y63pC9hA49o7ubL/BztFg/lgoFsUAd00sUvq5YN7hxecp+xPLcby
-X-Gm-Gg: Acq92OFR1gahhyCLmkXnNRntIVa/SzqjOhawiZX0+AM4pcrMX9ExUXkNiQI9HX/IbC6
- h7TszZalfuNMpQ921HoPwUBPlmFYUPVkYVhN+ok0cxbCVmebHo1cKl5n+hRCU/iQqhZ74548xbQ
- POkaVNZ29Eva3/4RAB8N/UV1RHFdRpMFNVZt7VaN8A86dWNBC3e7ukk3Ti0PVxS0uvp3IfL9bMb
- jL8H1TF7eceL5ELLYoQDZfM+WQggLLfYhOZ4jspKNif8avBzP1birP+ZlcBAyxjlrAk4iAbdan2
- 91wANlDNZ3mhov214X1ekgtbzcB9797V9cG26pPS5G/z9DqP00ZpzzbsEFjgUGE/bsW0d0Pf0pu
- Ld943ongLCEdlrqwQoSKl7NApm+l3xVh6Ug+d3wp85cS1K5V8o/YCgFKjCxJmPFRVBOCoUAIAZJ
- tkQeKGT5Gy4D8V/5t1HjWLtaxPgXibX8Sq2G+1Tqwu4ONRUy8HGEvBZTgF8HkDsTNtBxPXUprPn
- Uu6tcbZ5CCYL3lZaw+s3hF9KgW5zo4YN6Mrvw==
-X-Received: by 2002:a05:6a00:ab83:b0:842:2280:538f with SMTP id
- d2e1a72fcca58-842b0e74b30mr18534645b3a.16.1780972838791; 
- Mon, 08 Jun 2026 19:40:38 -0700 (PDT)
-Received: from DESKTOP-G2FUN8N.hsd1.wa.comcast.net ([73.59.59.170])
+ bh=30lp4WUtqRDeoZ4j3sEJ16dmtXImE0oV8R9IIwLZRho=;
+ b=KWZGZrtNaqkmDZRFtmXUXUqVLb1bPkiCIZpYzMw84v9HMYVe3QvYjjhqAhHSuoaRWK
+ Mzm5Z1AXkkDpBip+3wbpJ1CqwoW0XbP6PbjnxP2dAUmrIu34Z8d6sbtw0WAWrdQmzf9o
+ CRHGmf4llg/76ltdzWmp9y1CnXg22RAu7Og3bMzA532k/L3vKT2iJENSfcb5Op40bpBO
+ fnS3Ex33YgZP7FrdWVTHHb1whVfpbYlHQBeHKirozLe5McD9FM1dAnMM1TWJW78Xe9jK
+ atpWW7nysk3r6Sk4ZQ7Sahfwtc5Pzr0mhLustlDKaszXnG3nrG8s5215a1VjKioJv+0+
+ 3tyQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8bM28jsXWwtCy2qtimPnHGzbMSNgdQcbbnwJv4nvXelbP2eSpWS7vtxgRP6mz1khyjcOwwkMcxuA==@nongnu.org
+X-Gm-Message-State: AOJu0YyPc0XU6RSUImM6tW89xNnV/dhhvjMGvKD8L743qU9TC6cq2vIm
+ x6zEk32xavYXeTqqmVL0eU2/u5JRK3awy4QP7VMywKW7j0sKaEn+BN3izz8UaQ22YMuO1FNlcHc
+ P+d466soMLxC742gJb9SqXXV46DFDqQmozXWwKgpHSeursXumB7COwQ==
+X-Gm-Gg: Acq92OHH8MGgSkr91g9gB+j5zufNxmK8aEUG71RzLQfb1nXO1qRpzTfLFD3Tj/GpmFm
+ 82hYDiUXnK476U2dc8pYYJjoQZ/3Rjkav7z3qLOvle9S036t7hIxsp+D99RpcR/9oubIy/UxBvp
+ cvlaBDCL6HrpcODBp7m8CxfuF/AQ7dZrvR8REginLVhFKWV6TytCS+Zq5ky3LIDJmHQX/PIXMXU
+ VZiL8unVD7AAAVlgJLZEh/wJDGcMBCY01t0aHH//XbZPd7QV9VPcnwf6HD0iLswHh93KQrl8y1b
+ 8ZE7uwNGEy9AOpU7ipu5J8GQw+mwZBrx7j0vQvPGICH1AEQV1b0RAdEgs6nvy5hGnmeKbxad3kI
+ yv+0J/W1bFRn54ql1Ugm7iiZM2jxzkcRbMba+3osz4n8nmBhFhpAj9r5J/whOrPsLbMbNO48wSO
+ msjTQv
+X-Received: by 2002:a7b:c845:0:b0:490:53b0:9e5a with SMTP id
+ 5b1f17b1804b1-490c2cceba8mr165072335e9.5.1780991386352; 
+ Tue, 09 Jun 2026 00:49:46 -0700 (PDT)
+X-Received: by 2002:a7b:c845:0:b0:490:53b0:9e5a with SMTP id
+ 5b1f17b1804b1-490c2cceba8mr165072095e9.5.1780991385939; 
+ Tue, 09 Jun 2026 00:49:45 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-842828e5638sm20128838b3a.50.2026.06.08.19.40.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Jun 2026 19:40:38 -0700 (PDT)
-From: Nicholas Righi <nicholasrighi@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Nicholas Righi <nicholasrighi@gmail.com>
-Subject: [PATCH v2] hw/arm/bcm2838: Route I2C interrupts to GIC
-Date: Mon,  8 Jun 2026 19:40:27 -0700
-Message-ID: <20260609024027.22140-1-nicholasrighi@gmail.com>
-X-Mailer: git-send-email 2.54.0
+ ffacd0b85a97d-4602cda363bsm47520708f8f.31.2026.06.09.00.49.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Jun 2026 00:49:45 -0700 (PDT)
+Message-ID: <20c8948f-1933-4410-96fc-10a2d53cb40a@redhat.com>
+Date: Tue, 9 Jun 2026 09:49:43 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 0/9] hw/arm/smmuv3-accel: Resolve AUTO properties
+To: Nathan Chen <nathanc@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Matt Ochs <mochs@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>
+References: <20260608174900.2227340-1-nathanc@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260608174900.2227340-1-nathanc@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: QApov3ztmbfFxi4F5Xo-9nAOYSlF_UOPDWP1lBhOt8A_1780991386
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=nicholasrighi@gmail.com; helo=mail-pf1-x430.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,127 +119,127 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The I2C interrupts are only routed to the legacy interrupt controller. This means
-that for modern device trees that use the GIC, the interrupts don't work. This patch
-adds a splitter to route the I2C interrupt to both the legacy interrupt controller and the GIC.
+Hi Nathan, Peter,
 
-Testing
+On 6/8/26 7:48 PM, Nathan Chen wrote:
+> Hi,
+>
+> This is a follow-up to the series [0] that introduces support for
+> resolving 'auto' for arm-smmuv3 accelerated mode's ATS, RIL, SSIDSIZE,
+> and OAS feature properties based on host IOMMU capabilities. This is
+> dependent on the series [1] for changing these property types to accept
+> 'auto' values.
+>
+> Accelerated SMMUv3 Address Translation Services support is derived from
+> IDR0, Range Invalidation support is derived from IDR3, Substream ID
+> size is derived from IDR1, and output address space is derived from
+> IDR5.
+>
+> The default values are set to 'auto' for all properties. If accel=off
+> and the values are set to 'auto' or are omitted and resolve to 'auto',
+> the default property values defined in smmuv3_init_id_regs() for OAS
+> and RIL will remain unchanged, while SSIDSIZE and ATS values will
+> remain initialized at 0.
+>
+> A complete branch can be found here:
+> https://github.com/NathanChenNVIDIA/qemu/tree/smmuv3-accel-auto-resolve-v6
+>
+> Please take a look and let me know your feedback.
 
-Add these lines to QEMU invocation
+The series looks good to me and I tested it with Grace-Hopper GPU
+passthrough
+with explicit option settings and auto settings. It collected R-bs for
+all the patches. Feel free to collect my T-b:
 
--drive if=none,id=i2c_storage,format=raw,file=eeprom.bin \
--device at24c-eeprom,bus=i2c-bus.1,address=0x50,drive=i2c_storage,rom-size=4096 \
+Tested-by: Eric Auger <eric.auger@redhat.com>
 
-note: eeprom.bin is all zeros
+Peter, please could you consider pulling it if it suits you.  
 
-Before this change, running i2c get to read from EEPROM would result in this
+There is also 
+[PATCH v2] hw/pci/pci: Enforce pci_setup_iommu_per_bus() is called only
+once per bus
+which collected R-bs and does not clash with the above series
 
-i2cget -y 1 0x50
-Error: Read failed
+Thanks
 
-After this change, running i2c to read from EEPROM results in this
+Eric
 
-i2cget -y 1 0x50
-0x00
 
-The eeprom can now also be enabled in the device tree. Before the
-eeprom driver load would fail due to the read failing
-
-ls -l /sys/bus/i2c/devices/i2c-1/1-0050/ | grep -i eeprom
--rw------- 1 root root 4096 May 17 16:57 eeprom
-
-Signed-off-by: Nicholas Righi <nicholasrighi@gmail.com>
----
-Changes v1 -> v2:
-    - Use a splitter to route the OR gated i2c interrupt to both the
-      legacy interrupt controller and the GIC, instead of just replacing
-      the legacy routing with the GIC routing
----
- hw/arm/bcm2835_peripherals.c         | 9 +++++++++
- hw/arm/bcm2838.c                     | 4 ++++
- include/hw/arm/bcm2835_peripherals.h | 2 ++
- include/hw/arm/bcm2838_peripherals.h | 1 +
- 4 files changed, 16 insertions(+)
-
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 8a1e72dfab..558c180df9 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -179,6 +179,8 @@ static void raspi_peripherals_base_init(Object *obj)
-                             &s->orgated_i2c_irq, TYPE_OR_IRQ);
-     object_property_set_int(OBJECT(&s->orgated_i2c_irq), "num-lines",
-                             ORGATED_I2C_IRQ_COUNT, &error_abort);
-+    object_initialize_child(obj, "orgated-i2c-irq-splitter",
-+                            &s->orgated_i2c_irq_splitter, TYPE_SPLIT_IRQ);
- }
- 
- static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-@@ -504,7 +506,14 @@ void bcm_soc_peripherals_common_realize(DeviceState *dev, Error **errp)
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c[n]), 0,
-                            qdev_get_gpio_in(DEVICE(&s->orgated_i2c_irq), n));
-     }
-+
-+    qdev_prop_set_uint32(DEVICE(&s->orgated_i2c_irq_splitter), "num-lines", 2);
-+    if (!qdev_realize(DEVICE(&s->orgated_i2c_irq_splitter), NULL, errp)) {
-+        return;
-+    }
-     qdev_connect_gpio_out(DEVICE(&s->orgated_i2c_irq), 0,
-+                          qdev_get_gpio_in(DEVICE(&s->orgated_i2c_irq_splitter), 0));
-+    qdev_connect_gpio_out(DEVICE(&s->orgated_i2c_irq_splitter), 0,
-                           qdev_get_gpio_in_named(DEVICE(&s->ic),
-                                                  BCM2835_IC_GPU_IRQ,
-                                                  INTERRUPT_I2C));
-diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
-index c14a854046..089af412a3 100644
---- a/hw/arm/bcm2838.c
-+++ b/hw/arm/bcm2838.c
-@@ -184,6 +184,10 @@ static void bcm2838_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->aux), 0,
-                        qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_AUX_UART1));
- 
-+    /* Connect the I2C interrupt to the interrupt controller */
-+    qdev_connect_gpio_out(DEVICE(&ps_base->orgated_i2c_irq_splitter), 1,
-+                          qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_I2C));
-+
-     /* Connect VC mailbox to the interrupt controller */
-     sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->mboxes), 0,
-                        qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_MBOX));
-diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
-index bf35bb18e5..4f356f4643 100644
---- a/include/hw/arm/bcm2835_peripherals.h
-+++ b/include/hw/arm/bcm2835_peripherals.h
-@@ -33,6 +33,7 @@
- #include "hw/usb/hcd-dwc2.h"
- #include "hw/ssi/bcm2835_spi.h"
- #include "hw/i2c/bcm2835_i2c.h"
-+#include "hw/core/split-irq.h"
- #include "hw/nvram/bcm2835_otp.h"
- #include "hw/misc/unimp.h"
- #include "qom/object.h"
-@@ -72,6 +73,7 @@ struct BCMSocPeripheralBaseState {
-     BCM2835SPIState spi[1];
-     BCM2835I2CState i2c[3];
-     OrIRQState orgated_i2c_irq;
-+    SplitIRQ orgated_i2c_irq_splitter;
-     BCM2835OTPState otp;
-     UnimplementedDeviceState dbus;
-     UnimplementedDeviceState ave0;
-diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index 7ee1bd066f..0be97e67c7 100644
---- a/include/hw/arm/bcm2838_peripherals.h
-+++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -22,6 +22,7 @@
- #define GIC_SPI_INTERRUPT_DMA_7_8      87
- #define GIC_SPI_INTERRUPT_DMA_9_10     88
- #define GIC_SPI_INTERRUPT_AUX_UART1    93
-+#define GIC_SPI_INTERRUPT_I2C          117
- #define GIC_SPI_INTERRUPT_SDHOST       120
- #define GIC_SPI_INTERRUPT_UART0        121
- #define GIC_SPI_INTERRUPT_RNG200       125
--- 
-2.54.0
+>
+> Thanks,
+> Nathan
+>
+> [0] https://lore.kernel.org/all/20260605001712.1823737-1-nathanc@nvidia.com/
+> [1] https://lore.kernel.org/qemu-arm/20260323182454.1416110-1-nathanc@nvidia.com/
+>
+> Changes from v5:
+> - Added R-by tags, thanks all!
+> - Rebase over latest upstream
+>   (https://lore.kernel.org/all/20260601215410.517009-15-stefanb@linux.ibm.com/)
+>
+> Changes from v4:
+> - Added R-by tags, thanks all!
+> - Re-word smmuv3_class_init() accel description to list nested
+>   translation support as a pre-requisite
+> - Fix typo in smmuv3_class_init() SubstreamID size description
+>
+> Changes from v3:
+> - Added R-by tags, thanks all!
+> - Include a fix patch for resolving ATS support in ATC invalidation
+>   case
+> - Update host requirements documented for accel=on, oas, and ssidsize
+> - Fix style issue, update comments
+> - Update function name for smmuv3_accel_machine_done
+> - Remove unnecessary early return for smmuv3_accel_machine_done
+> - Fix formatting in qemu-options.hx based on html render
+>
+> Changes from v2:
+> - Added R-by tags, thanks Eric, Shameer, Cédric for the feedback!
+> - Re-worded descriptions in qemu-options.hx and smmu_validate_property()
+> - Emphasize accel=off auto behavior in a comment for smmuv3_properties[]
+>
+> Changes from v1:
+> - Update qemu-options.hx to explicitly mention auto is supported
+> - Update qemu-options.hx to mention auto as default
+> - Simplify comments in smmuv3_accel_auto_finalise()
+> - Update descriptions in smmuv3_class_init()
+> - Consolidate all default value change patches into one patch
+> - Implement and use smmuv3_pasid_supported() for setting PASID support
+>   flag
+> - Move smmuv3_machine_done() and qemu_add_machine_init_done_notifier()
+>   to smmuv3-accel.c
+> - Register machine done notifier only in case auto_mode is set
+>
+> Testing:
+> Basic sanity testing was performed on an NVIDIA Grace platform with GPU
+> device assignment and running CUDA test apps on the guest. Observed the
+> feature properties being set based on host IOMMU capabilities.
+> Verified that the VM boot will fail without a cold-plugged device, and
+> that a hot-plugged device re-uses the resolved values from the initial
+> cold-plug. Additional testing and feedback are welcome.
+>
+> Nathan Chen (9):
+>   hw/arm/smmuv3: Update ATC invalidation check
+>   hw/arm/smmuv3: Improve accel SMMUv3 usage documentation
+>   hw/arm/smmuv3-accel: Add helper for resolving auto parameters
+>   hw/arm/smmuv3-accel: Implement "auto" value for "ats"
+>   hw/arm/smmuv3-accel: Implement "auto" value for "ril"
+>   hw/arm/smmuv3-accel: Implement "auto" value for "ssidsize"
+>   hw/arm/smmuv3-accel: Implement "auto" value for "oas"
+>   hw/arm/smmuv3: Set default ats, ril, ssidsize, oas to auto
+>   qemu-options.hx: Support "auto" for accel SMMUv3 properties
+>
+>  hw/arm/smmuv3-accel.c   | 77 ++++++++++++++++++++++++++++++++++++++-
+>  hw/arm/smmuv3-accel.h   |  2 +
+>  hw/arm/smmuv3.c         | 81 +++++++++++++++++++++++------------------
+>  hw/core/machine.c       |  5 +++
+>  include/hw/arm/smmuv3.h |  3 ++
+>  qemu-options.hx         | 25 ++++++++++---
+>  6 files changed, 150 insertions(+), 43 deletions(-)
+>
 
 

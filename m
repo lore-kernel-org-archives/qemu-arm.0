@@ -4,71 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA506CD8CA8
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 10:56:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D26DACD8CAA
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 11:02:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWu8O-0000eB-QE; Tue, 09 Jun 2026 06:56:40 -0400
+	id 1wWuDa-0001z5-Qj; Tue, 09 Jun 2026 07:02:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wWu8M-0000do-Rs
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 06:56:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wWu8J-0004Jj-CN
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 06:56:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781002593;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=wXABRRAevTm0wVVRrTSdgk6YyvsOYcfIeVKGsaY9ubo=;
- b=V4R45Y1St6o3xukfFmEMCW5bPhl5QPiZPm24GiCtnXv0ZYzwoYppKvxNR2iTpk7KAjIVsz
- DX9SmmGU7U2t6fROIMNI17wz6jaBN3Y/2JUvhTRTXZEcTnhTsvaQlkqELg2rOgDhQWL195
- HOposMILui4MfMFgTZM3pJd3k+ObvUE=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-604-t_f4R2NHPsmH_CWuxt788Q-1; Tue,
- 09 Jun 2026 06:56:31 -0400
-X-MC-Unique: t_f4R2NHPsmH_CWuxt788Q-1
-X-Mimecast-MFC-AGG-ID: t_f4R2NHPsmH_CWuxt788Q_1781002590
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 95E4518009D4; Tue,  9 Jun 2026 10:56:30 +0000 (UTC)
-Received: from thuth-p1g4.redhat.corp
- (headnet01.pony-001.prod.rdu2.dc.redhat.com [10.11.142.86])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C890B3008B38; Tue,  9 Jun 2026 10:56:28 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Titus Rwantare <titusr@google.com>
-Cc: qemu-trivial@nongnu.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH] hw/i2c/pmbus_device: Fix a possible crash when requesting too
- many bytes
-Date: Tue,  9 Jun 2026 12:56:26 +0200
-Message-ID: <20260609105626.1038690-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wWuDP-0001wb-Im
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 07:01:55 -0400
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wWuDN-0005Tp-IE
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 07:01:51 -0400
+Received: by mail-yx1-xb134.google.com with SMTP id
+ 956f58d0204a3-6603246b66dso5425263d50.1
+ for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 04:01:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781002908; cv=none;
+ d=google.com; s=arc-20240605;
+ b=AZpdI0KODJIwL1o+CO+c8Xmi4fABSJSYUUA5k7Kx6t8fylg5I0Qr0EWaIHcGz6i+3M
+ 7erVgwDYIhcu7XzrIsGNFBWpcsfE2CagSV4cfGT/dPGJomUHerJpYDyWcqXYqCiGrx1l
+ kn48bxjjmpCpCWjQOMiEAa4MEvFNo1H+rv5Pet8J/sD91KhC9ea6WApL7/lcOy2d9GSQ
+ akTVd6x/TEy3LNT7Q8O2elyBvpHQsvz0bnolfwl2zj7/LmuF/g5lH9LSvN9Kc1oHMS37
+ qzd3ugEAAlqlWXVtQva9syM6ZTKpl4NRCh2G+sT6tU71d2GXZHBdCdWYRaTvTCk0JHr5
+ nSCQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=IWvx6N/trd7GUv7lRQQJVJ/o7RKzQvf1YBdlMGaL8p0=;
+ fh=ItvdWDkvqC5arY5poLShezManql6HrJhqwuPRqXWPIU=;
+ b=F4lBkXlkHUl+auXuLvwfRfgtPgaAbWtA69zTz79nKYKPaulAAkMqLMSemosNpw4SXF
+ gcYiOUF+dsRSbq4KpdT0Wjlcbw5NrRFWmEF3PIEEqGCeOxPQEbuvjWSkYhWD6vZ/9BS/
+ K2Cr++m+29ZV+V8RYwtM8q2XebYnHdwRjAYe/RpkmwZxk0SnWhTtpYdLkz4LZf74KXQg
+ tU/MXbciIJGCi9c182AEZRHvwqtNYNPzgk0CYsrbwdJKhyIDPzkgqUra0OU8QmnkRbxq
+ L/iY6VW/cVNYRYDJZpUaPtV2mRleCxQZxm3brF6nzWPeDnxqrLlqXYSxjGYqnZWIrtO+
+ rwgQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1781002908; x=1781607708; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=IWvx6N/trd7GUv7lRQQJVJ/o7RKzQvf1YBdlMGaL8p0=;
+ b=j982zha9PMd0YJB2FolzjXg8DnxZPgzYM+fNPO2h7b43IL/z1IuRFeFZsbN/oBWVyq
+ vrVXgYoCQ6gbuGPTz8Pa/sif8FxanER3ffotZ9Jp3Jz069G7HK01Fnp4nZYfAlG9jBw2
+ yFRdK8v5cNiSU2Mqex2hqMSgG4mlhsWWtK8TNkqdPsRWvr+0xdS0yt7oCfsGSl/6gICZ
+ PPh+7fIR4sfr1Xxt7ZP44beVKq+mKS9evTxsdfnCxjNKOR1XIXAqy1IO8q+VBjeCCD90
+ kYDo+aoDyotgdOOPfXIIqViM4OjPXALZ3FdfuHNaTtDwhMCjIVngQ6oS6pqcofyrBVYW
+ TkQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1781002908; x=1781607708;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=IWvx6N/trd7GUv7lRQQJVJ/o7RKzQvf1YBdlMGaL8p0=;
+ b=lHPs/Sn/IqjYMd1O26D1N94TbKthtC1u46qyuxG3lz8p11s0NJfaoZZxftDyX9zhy2
+ Weac+DtjVmkuNpa20R+hXqvqMS07yKu1X4+lveqqPqad7cCaG7odgsfkyaXTmHy5abkP
+ 5pWt3miS+bNK84YcvUuMLHFQLNXrs2/O6Hmiz67IFGRp9jClNi5dRtttBQGIPC6Hd4rP
+ 0cL+drMBv9jFt4ThLuyi8oH8JN8UhSVLLke/y+HwkBfOjIfBijWfevB+w9ibOPTAdF4A
+ Na+oSQb4GvFAG6e4QP3iPLtnIdL4L1R1c4coVq9QsAxw4fTSnm58O4A2RNqU4rPPxyaq
+ bCpA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/JqvLz7V5KLtwc/w5c8AINGUpVJALA1J49k37gx5v+FP9x2qhOf8i9lqFdgTmNAAy4BeJ2ymIzqg==@nongnu.org
+X-Gm-Message-State: AOJu0Yx77pmR4LvueC0W/J3ApFuef2h4/N07uRztbJejLxnKxA0Q1mWn
+ dXwMq5KsQSjicytUh+P05yl6Sf8OAJso0VaNCr3yVNvRzdX3L98HSukjOZ+yec7yIC4FQ9KfmIz
+ Rv9CdeUXgetct4pn88rr5ZNrx/522Ma+DUCtYUHz2uw==
+X-Gm-Gg: Acq92OGuWIUHsO9bsnjcjSGbKUPePKfqOpOl1ESdjM/JXDcpJh0sxczfZWzFTo/8C1z
+ /Z8+U3SOVeiX3YiRVREn858x5LXkkTvShYXq7l1MFoEvn450c3mHRJAjxV3Od0iHdJ5baGHnFEm
+ cJHVDDl4+l5dWKYSQMmxdxjMpCZR45qFneD1yGuPY0KL2cjSb3P0xOl3TmJAKXc42ODx+ektq+D
+ K1kN3PdYoqcoCYTV2s4XK12zlE/b0T6N+UpLiHOXMkJ1LbXMV2Hz9TPYZiuYh6f2Qv/dp1hPkZY
+ jpMyWwLVUE+KS3nnKZCG/LCoAtZbWkuv4dVK1sFvqBY1nj0Hcdg5nd/7FGpeuHQtNJSZlOt3Oeh
+ ix9OcN8NlfAzk
+X-Received: by 2002:a05:690e:140d:b0:660:62e5:9300 with SMTP id
+ 956f58d0204a3-6610779e02amr17201153d50.48.1781002908052; Tue, 09 Jun 2026
+ 04:01:48 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 1796K1GpItHYMC2rLfyD_y0GPVZG_o8mrCbOpJBjMMU_1781002590
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+References: <20260609105626.1038690-1-thuth@redhat.com>
+In-Reply-To: <20260609105626.1038690-1-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 9 Jun 2026 12:01:36 +0100
+X-Gm-Features: AVVi8Cc8oKQrydmGDQOBxXvHxwWMlyhEXLAqM4JoePjcSpmZv054gl6whVUi45E
+Message-ID: <CAFEAcA9O6b02VMuto8VzaEsVi3zTqNtQKG_RcMaPnNdPXGUBhw@mail.gmail.com>
+Subject: Re: [PATCH] hw/i2c/pmbus_device: Fix a possible crash when requesting
+ too many bytes
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Titus Rwantare <titusr@google.com>,
+ qemu-trivial@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,40 +118,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+On Tue, 9 Jun 2026 at 11:56, Thomas Huth <thuth@redhat.com> wrote:
+>
+> From: Thomas Huth <thuth@redhat.com>
+>
+> The pmbus_send_string() function contains an assert() statement that
+> can be triggered by the guest code when requesting too many data
+> without reading from the device in between. This should not be possible.
+> pmbus_send() already has a similar logic, but it simply ignores the
+> error after logging a message with qemu_log_mask(), so do the same now
+> in pmbus_send_string() to fix the issue.
+>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3388
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/i2c/pmbus_device.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+> index b1f9843f52e..6aa608a2998 100644
+> --- a/hw/i2c/pmbus_device.c
+> +++ b/hw/i2c/pmbus_device.c
+> @@ -104,7 +104,12 @@ void pmbus_send_string(PMBusDevice *pmdev, const char *data)
+>      }
+>
+>      size_t len = strlen(data);
+> -    g_assert(len + pmdev->out_buf_len < SMBUS_DATA_MAX_LEN);
+> +    if (len + pmdev->out_buf_len >= SMBUS_DATA_MAX_LEN) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: requested too much data from PMBus device\n",
+> +                      __func__);
+> +        return;
+> +    }
 
-The pmbus_send_string() function contains an assert() statement that
-can be triggered by the guest code when requesting too many data
-without reading from the device in between. This should not be possible.
-pmbus_send() already has a similar logic, but it simply ignores the
-error after logging a message with qemu_log_mask(), so do the same now
-in pmbus_send_string() to fix the issue.
+I had a look at this bug earlier, but was not sure that this is the
+right thing. What happens is that the guest does something that
+causes the device to queue up data X ready for the guest to
+read, but then instead of reading it, the guest does another
+"I would like data X please" action. My guess is that the way
+the hardware handles this is probably not "add the second
+copy of data X after the first one". Perhaps it is "drop the
+data the guest didn't read, so the next guest read gets the
+second lot of data, not the first". But maybe the spec really
+does say "you can do things in the order 'ask for A, ask for
+B, read data for A, read data for B".
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3388
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/i2c/pmbus_device.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+I couldn't conveniently find the pmbus spec to find out what
+the hardware is supposed to do here. We need some input from
+somebody who knows about pmbus.
 
-diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-index b1f9843f52e..6aa608a2998 100644
---- a/hw/i2c/pmbus_device.c
-+++ b/hw/i2c/pmbus_device.c
-@@ -104,7 +104,12 @@ void pmbus_send_string(PMBusDevice *pmdev, const char *data)
-     }
- 
-     size_t len = strlen(data);
--    g_assert(len + pmdev->out_buf_len < SMBUS_DATA_MAX_LEN);
-+    if (len + pmdev->out_buf_len >= SMBUS_DATA_MAX_LEN) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: requested too much data from PMBus device\n",
-+                      __func__);
-+        return;
-+    }
-     pmdev->out_buf[len + pmdev->out_buf_len] = len;
- 
-     for (int i = len - 1; i >= 0; i--) {
--- 
-2.54.0
-
+thanks
+-- PMM
 

@@ -4,105 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD40ECD8C9D
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 02:09:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E48DDCD6E79
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 02:41:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWltZ-0007yn-DF; Mon, 08 Jun 2026 22:08:50 -0400
+	id 1wWmOW-0004zc-Sb; Mon, 08 Jun 2026 22:40:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wWltX-0007yX-8E
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 22:08:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wWltV-000757-KH
- for qemu-arm@nongnu.org; Mon, 08 Jun 2026 22:08:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780970923;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Y4v33umGdgm2QnITjy1hxJKHFbQtMz9zglZApgzaBUQ=;
- b=PlShw1D1rgDq4xYM2rOHC86X4tuKEdR/Rx9EU9IfhCWOCtELDJYgJZoREw1K+9bnin/YGr
- JCU61GlESZ50iUgrgwUROinRu4IN+cyMMR6zOBhhNO8Ni+GATxcNhSdnRic37Ds0K2KSl+
- zs6zUwRwN4hlfr206Dx/Ehtb3Gaw8+Y=
-Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
- [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-369-vGcCS5oeOReAGM4X4VcyDA-1; Mon, 08 Jun 2026 22:08:42 -0400
-X-MC-Unique: vGcCS5oeOReAGM4X4VcyDA-1
-X-Mimecast-MFC-AGG-ID: vGcCS5oeOReAGM4X4VcyDA_1780970921
-Received: by mail-pl1-f199.google.com with SMTP id
- d9443c01a7336-2c0c1e112dfso69399045ad.0
- for <qemu-arm@nongnu.org>; Mon, 08 Jun 2026 19:08:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <nicholasrighi@gmail.com>)
+ id 1wWmOR-0004yP-Ja
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 22:40:44 -0400
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nicholasrighi@gmail.com>)
+ id 1wWmOP-0002p5-2P
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2026 22:40:43 -0400
+Received: by mail-pf1-x430.google.com with SMTP id
+ d2e1a72fcca58-8423f869421so3764477b3a.3
+ for <qemu-arm@nongnu.org>; Mon, 08 Jun 2026 19:40:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1780972839; x=1781577639; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Sq6/7Tj1as7K589sHSt916NnS5Zheorryj+Xj3dr6eM=;
+ b=EigD/3/B8iE8WjXt7h0RyMIyR//c+H2NTkQq3bWwD0SmtxAZ2kUg2HXfbV5D2XtlBt
+ eoIfG22EnhfiZEhf0JKv/SrG1hyXkllUWIIaAWLBQ5XryTlO1OA6VqbjuNWCU0DmxBIX
+ uvqIRhhfbkOTFvJOKMJwDguvT7HuUfmwYcfiogOcWLUwmpL/GZmskds4jmQ8/YVNwxf+
+ C3hcfcqBYfSiDzi0qL4HDFutShrWhk6mVVwkYXDEnIAik4FqDMfioBQoRD1CAJtsLaWD
+ vg+qMUCUB0PKlW6urr+c8e+X7gBubY2mkkHIsz7/C73ujs1lCgHD/JwWzJWws/yvt5Ly
+ b57g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780970921; x=1781575721;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Y4v33umGdgm2QnITjy1hxJKHFbQtMz9zglZApgzaBUQ=;
- b=devVomyPt2q6fq9QHndNJnfduWfcGJJV+LtVW5Kqam9JrtQzV0tnBTeNKi0qrOs6Z4
- yYRw6tWk15T/K2hbGkORv/GWCoTHswGry5VaV14BfjHbIhKAdZgIwCvs/1qmS+81COc+
- gsqd1IlOO0dyy8RtToHCtUCQtKdrWPYKVMLhRb+tKxWOZv/UQag7NDPOyI6vPxaXgLQS
- iqy+qtvHUOlPxOGZyz8OCJUruBHu3kfMw4LwZplrPMwF2bBlVX1FCXSZ4FAWlqefAOeY
- 2EEb0a3Jlnf1kzWUzQD+YLajxZDuGQrlKE9zkZVvMkQT05WAi45BaBgO6CyWacD69YnD
- Ex5w==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/Vm5CKnp71LgE2UpWaaD95hq7sJjQlZ94/4xEKsXk34VxWIk2TVpRQ1z7hvLtlE9BRIi7Fx1fllw==@nongnu.org
-X-Gm-Message-State: AOJu0YzZ6hFyGggr+FRLMA2sYF4PFLdfWpMoJUdmrpLH6JxVxMOWnLxP
- 58STKYU+SywofE08EfbkILrfWOwTQqqRrec4k2pNK9CKzMb9xmE5XRaPi/JwBiRGbRSOs0/R9b7
- WIE/Ck/pbKsjFGGiGs8rc6wO3UZfwhuOQ46vQDLrPsaFrUcbSJW6oyA==
-X-Gm-Gg: Acq92OFsU9RXlFAeDTzeoBPR3L9RyqO03wRT2vHgwDr6IQJrfp16MbCd/psk9QJ7otq
- g3zMpGrInNQOiYR9eElrYEqaxkUEytOmq1x/ZBIs6wU557hv+bwyaCbEbHHqEtb9ZwfOsV8eBn/
- 7qnorMzjboABa2c8OXuqBVWTLEkH7mKhNJPyWj/BNQr5O1/xeyV+VPWj/cBq1NRFjLmDeWaJ0f/
- tnNJA1MFGNIjdDDYrOF3vZyQiRcPBdvFxcsol892q1PJ2O3447lXGV9Y1saDfcuVQwsWORB7Mj/
- h02tmGYjgN+GeUsW1owvG/ejp+8svK0yDyrWda/t3zNc88SvbFEARo65e1qqc9zJE6T9CKsXbCd
- WRbYZylOxdiAZt3GrH2yPABHTP7+L5kHu/zC59Dp9gUZ1slqf83OQyGu6WDSvisfN5IQaUQC5EC
- I=
-X-Received: by 2002:a05:6300:6705:b0:3b4:6af4:bd9e with SMTP id
- adf61e73a8af0-3b4cd0801efmr23481374637.43.1780970921124; 
- Mon, 08 Jun 2026 19:08:41 -0700 (PDT)
-X-Received: by 2002:a05:6300:6705:b0:3b4:6af4:bd9e with SMTP id
- adf61e73a8af0-3b4cd0801efmr23481330637.43.1780970920640; 
- Mon, 08 Jun 2026 19:08:40 -0700 (PDT)
-Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
- [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c85df0b56c5sm16986971a12.27.2026.06.08.19.08.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 08 Jun 2026 19:08:40 -0700 (PDT)
-Message-ID: <21664978-9a01-4ff5-8213-5bd5d93750ae@redhat.com>
-Date: Tue, 9 Jun 2026 12:08:34 +1000
+ d=1e100.net; s=20251104; t=1780972839; x=1781577639;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Sq6/7Tj1as7K589sHSt916NnS5Zheorryj+Xj3dr6eM=;
+ b=VuFc1tLCY2trVBCSwvPNImXojwYIdNfYCWAf1IL6q60OuPF5z4gbFhWiT1RwPnO1wB
+ JA1zVVci/QSsU0Rfdh6BVOAIrAMbkLB6/ry1osW53j2Rk7OjjR7jAHh30AQjkfiQjs4h
+ iKTkxMa0+Qtk1Kk4k+B88ZmuS5QAnNUZRg0Ngz4WI7RvjJSfhjkQH3CYoY2CkGlnOaLk
+ GRWFbJuiEFjLoppWIz7rKEfOI3oyu7ruAT1JCWkBPf2eryJFQmITisLlFyOGOOQ1PTxv
+ /g2Xc8W94U998uL+QCx/64g3JXIWrtuvRDlBuihUsq3VdI4XtsJ7vc15MTzsRbDVzQRh
+ u3DA==
+X-Gm-Message-State: AOJu0YwP9FcW/SyvPRM2+l+0Bmab9AFlA9lp279tpBL8nHETFb5NhUGO
+ mVj0Y63pC9hA49o7ubL/BztFg/lgoFsUAd00sUvq5YN7hxecp+xPLcby
+X-Gm-Gg: Acq92OFR1gahhyCLmkXnNRntIVa/SzqjOhawiZX0+AM4pcrMX9ExUXkNiQI9HX/IbC6
+ h7TszZalfuNMpQ921HoPwUBPlmFYUPVkYVhN+ok0cxbCVmebHo1cKl5n+hRCU/iQqhZ74548xbQ
+ POkaVNZ29Eva3/4RAB8N/UV1RHFdRpMFNVZt7VaN8A86dWNBC3e7ukk3Ti0PVxS0uvp3IfL9bMb
+ jL8H1TF7eceL5ELLYoQDZfM+WQggLLfYhOZ4jspKNif8avBzP1birP+ZlcBAyxjlrAk4iAbdan2
+ 91wANlDNZ3mhov214X1ekgtbzcB9797V9cG26pPS5G/z9DqP00ZpzzbsEFjgUGE/bsW0d0Pf0pu
+ Ld943ongLCEdlrqwQoSKl7NApm+l3xVh6Ug+d3wp85cS1K5V8o/YCgFKjCxJmPFRVBOCoUAIAZJ
+ tkQeKGT5Gy4D8V/5t1HjWLtaxPgXibX8Sq2G+1Tqwu4ONRUy8HGEvBZTgF8HkDsTNtBxPXUprPn
+ Uu6tcbZ5CCYL3lZaw+s3hF9KgW5zo4YN6Mrvw==
+X-Received: by 2002:a05:6a00:ab83:b0:842:2280:538f with SMTP id
+ d2e1a72fcca58-842b0e74b30mr18534645b3a.16.1780972838791; 
+ Mon, 08 Jun 2026 19:40:38 -0700 (PDT)
+Received: from DESKTOP-G2FUN8N.hsd1.wa.comcast.net ([73.59.59.170])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-842828e5638sm20128838b3a.50.2026.06.08.19.40.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Jun 2026 19:40:38 -0700 (PDT)
+From: Nicholas Righi <nicholasrighi@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Nicholas Righi <nicholasrighi@gmail.com>
+Subject: [PATCH v2] hw/arm/bcm2838: Route I2C interrupts to GIC
+Date: Mon,  8 Jun 2026 19:40:27 -0700
+Message-ID: <20260609024027.22140-1-nicholasrighi@gmail.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
- parent if possible
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Peter Xu <peterx@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- mst@redhat.com, jugraham@redhat.com, shan.gavin@gmail.com
-References: <20260608001821.850921-1-gshan@redhat.com>
- <aiaDgG26a6TUrKuM@redhat.com>
- <07ca74b4-52a8-4187-a57c-7c3277e574d3@redhat.com>
- <aiapywnJY64G7nUK@redhat.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <aiapywnJY64G7nUK@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: LQxQK_2mW4ZtMiPNVfpxPgO7LpQ5tjGPK8zGYqeY_Uk_1780970921
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
+ envelope-from=nicholasrighi@gmail.com; helo=mail-pf1-x430.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,69 +100,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 6/8/26 9:38 PM, Daniel P. Berrangé wrote:
-> On Mon, Jun 08, 2026 at 09:11:50PM +1000, Gavin Shan wrote:
->> Hi Daniel,
->>
->> On 6/8/26 6:55 PM, Daniel P. Berrangé wrote:
->>> On Mon, Jun 08, 2026 at 10:18:21AM +1000, Gavin Shan wrote:
->>>> On the guest where a NVidia's GH100 card is passed from the host, the
->>>> guest system hang can be observed on attempt to compile 'cuda-samples',
->>>> as reported by Julia.
->>>
->>> snip
->>>
->>
->> Thanks for looking into this.
-> 
-> NB, I didn't really look into it beyond noticing the suggestion
-> that users set an "x-" property as a proposed solution to failing
-> to boot, which raised a red-flag to me from a usability POV.
-> 
-> I don't really know anything about the underlying technical problems
-> here, so can't offer specific guidance in that area.
-> 
+The I2C interrupts are only routed to the legacy interrupt controller. This means
+that for modern device trees that use the GIC, the interrupts don't work. This patch
+adds a splitter to route the I2C interrupt to both the legacy interrupt controller and the GIC.
 
-Ok, no worries, I got your points :-)
+Testing
 
->>
->>>> By default, the max bounce buffer size is only 4096 bytes, even less
->>>> than one page when the guest page is 64KB. This tries to fix the issue
->>>> by inheriting the customized max bounce buffer size of the virtio bus's
->>>> parent through property 'x-max-bounce-buffer-size' when the customized
->>>> size is a larger one. With this applied, no guest system hang is seen
->>>> with '-device virtio-blk-pci,...,x-max-bounce-buffer-size=268435456'.
->>>
->>> "x-max-bounce-buffer-size"  is an experimental / unsupported property.
->>>
->>> We really shouldn't be expecting users to have to set this in a production
->>> deployment in order to stop a guest from hanging.  Even if we dropped the
->>> experimental marker from this property, users would still need to know to
->>> provide this magic setting, so it would still be broken out of the box.
->>>
->>> How can we  get a solution that "just works" out of the box, which is
->>> fully supported, not relying on experimental properties ?
->>>
->>
->> How do we know that "x-max-bounce-buffer-size" is an experimental or unsupported
->> property? I guess the properties whose names start with "x-" are all treated as
->> experimental and unsupported?
-> 
-> Yes, any QEMU property starting with 'x-' is experimental/unstable/
-> unsupported and can be changed/withdrawn at any time.  Libvirt will
-> not provide any way to configure 'x-' properties, as it requires a
-> supported/stable solution from QEMU.
-> 
+Add these lines to QEMU invocation
 
-Yeah. Apart from the option of adding a new property to MachineState to disable
-the check on the max bounce buffer size, we also can make this existing option
-"x-max-bounce-buffer-size" official and officially supported by renaming it to
-"max-bounce-buffer-size". Lets see what comments Michael or Peter will have.
+-drive if=none,id=i2c_storage,format=raw,file=eeprom.bin \
+-device at24c-eeprom,bus=i2c-bus.1,address=0x50,drive=i2c_storage,rom-size=4096 \
 
-> With regards,
-> Daniel
+note: eeprom.bin is all zeros
 
-Thanks,
-Gavin
+Before this change, running i2c get to read from EEPROM would result in this
+
+i2cget -y 1 0x50
+Error: Read failed
+
+After this change, running i2c to read from EEPROM results in this
+
+i2cget -y 1 0x50
+0x00
+
+The eeprom can now also be enabled in the device tree. Before the
+eeprom driver load would fail due to the read failing
+
+ls -l /sys/bus/i2c/devices/i2c-1/1-0050/ | grep -i eeprom
+-rw------- 1 root root 4096 May 17 16:57 eeprom
+
+Signed-off-by: Nicholas Righi <nicholasrighi@gmail.com>
+---
+Changes v1 -> v2:
+    - Use a splitter to route the OR gated i2c interrupt to both the
+      legacy interrupt controller and the GIC, instead of just replacing
+      the legacy routing with the GIC routing
+---
+ hw/arm/bcm2835_peripherals.c         | 9 +++++++++
+ hw/arm/bcm2838.c                     | 4 ++++
+ include/hw/arm/bcm2835_peripherals.h | 2 ++
+ include/hw/arm/bcm2838_peripherals.h | 1 +
+ 4 files changed, 16 insertions(+)
+
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 8a1e72dfab..558c180df9 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -179,6 +179,8 @@ static void raspi_peripherals_base_init(Object *obj)
+                             &s->orgated_i2c_irq, TYPE_OR_IRQ);
+     object_property_set_int(OBJECT(&s->orgated_i2c_irq), "num-lines",
+                             ORGATED_I2C_IRQ_COUNT, &error_abort);
++    object_initialize_child(obj, "orgated-i2c-irq-splitter",
++                            &s->orgated_i2c_irq_splitter, TYPE_SPLIT_IRQ);
+ }
+ 
+ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+@@ -504,7 +506,14 @@ void bcm_soc_peripherals_common_realize(DeviceState *dev, Error **errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c[n]), 0,
+                            qdev_get_gpio_in(DEVICE(&s->orgated_i2c_irq), n));
+     }
++
++    qdev_prop_set_uint32(DEVICE(&s->orgated_i2c_irq_splitter), "num-lines", 2);
++    if (!qdev_realize(DEVICE(&s->orgated_i2c_irq_splitter), NULL, errp)) {
++        return;
++    }
+     qdev_connect_gpio_out(DEVICE(&s->orgated_i2c_irq), 0,
++                          qdev_get_gpio_in(DEVICE(&s->orgated_i2c_irq_splitter), 0));
++    qdev_connect_gpio_out(DEVICE(&s->orgated_i2c_irq_splitter), 0,
+                           qdev_get_gpio_in_named(DEVICE(&s->ic),
+                                                  BCM2835_IC_GPU_IRQ,
+                                                  INTERRUPT_I2C));
+diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
+index c14a854046..089af412a3 100644
+--- a/hw/arm/bcm2838.c
++++ b/hw/arm/bcm2838.c
+@@ -184,6 +184,10 @@ static void bcm2838_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->aux), 0,
+                        qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_AUX_UART1));
+ 
++    /* Connect the I2C interrupt to the interrupt controller */
++    qdev_connect_gpio_out(DEVICE(&ps_base->orgated_i2c_irq_splitter), 1,
++                          qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_I2C));
++
+     /* Connect VC mailbox to the interrupt controller */
+     sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->mboxes), 0,
+                        qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_MBOX));
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index bf35bb18e5..4f356f4643 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -33,6 +33,7 @@
+ #include "hw/usb/hcd-dwc2.h"
+ #include "hw/ssi/bcm2835_spi.h"
+ #include "hw/i2c/bcm2835_i2c.h"
++#include "hw/core/split-irq.h"
+ #include "hw/nvram/bcm2835_otp.h"
+ #include "hw/misc/unimp.h"
+ #include "qom/object.h"
+@@ -72,6 +73,7 @@ struct BCMSocPeripheralBaseState {
+     BCM2835SPIState spi[1];
+     BCM2835I2CState i2c[3];
+     OrIRQState orgated_i2c_irq;
++    SplitIRQ orgated_i2c_irq_splitter;
+     BCM2835OTPState otp;
+     UnimplementedDeviceState dbus;
+     UnimplementedDeviceState ave0;
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+index 7ee1bd066f..0be97e67c7 100644
+--- a/include/hw/arm/bcm2838_peripherals.h
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -22,6 +22,7 @@
+ #define GIC_SPI_INTERRUPT_DMA_7_8      87
+ #define GIC_SPI_INTERRUPT_DMA_9_10     88
+ #define GIC_SPI_INTERRUPT_AUX_UART1    93
++#define GIC_SPI_INTERRUPT_I2C          117
+ #define GIC_SPI_INTERRUPT_SDHOST       120
+ #define GIC_SPI_INTERRUPT_UART0        121
+ #define GIC_SPI_INTERRUPT_RNG200       125
+-- 
+2.54.0
 
 

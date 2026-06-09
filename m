@@ -4,85 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EE53CD8CB9
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 14:01:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0892CD8CAA
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 14:01:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWx0C-0001O4-0C; Tue, 09 Jun 2026 10:00:27 -0400
+	id 1wWx04-0001M2-7R; Tue, 09 Jun 2026 10:00:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wWx04-0001M6-HP
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 10:00:16 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ id 1wWx02-0001LF-WF
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 10:00:15 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wWx02-0004Jc-H3
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 10:00:16 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-490b211ee6aso43159995e9.3
- for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 07:00:14 -0700 (PDT)
+ id 1wWx01-0004Ib-5n
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 10:00:14 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-490b8ac62baso44113725e9.0
+ for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 07:00:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781013613; x=1781618413; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1hgC4BPNJwqz49DQoEMfvPbzbVF2te92kpDfaNPld+I=;
- b=jxJHHMJDrsDjOXmvhDsUSoBLIb9dCQxlALJ2e+eoYBJYjPGLisM9nQ9brZxqXYX/LT
- ryLzbi3O+Km78blTSzcPOhxO6PuLV/S2+Sv0QOItuvuBnhka6doIQBgB+r0XYfYS1iYO
- fcBzHc+xoyFCshzxUEQSSaC4sfozVTA+DZx03rylCw16Fq9rg49VqCoY30v1Gj1OQpg6
- IgFV6FrYjgbBlAbAsAobZGPWyME6mwWrHdQ1osCcCmHR8Rs1Ur86/bWja8wufkRJhNwq
- HU6xee/nbGVYZP6Y51KBqXSNZq6zlFcrBrIrkXIldQyIV2KFblYfgkcxNtqJB6Vtpjk2
- sykg==
+ d=linaro.org; s=google; t=1781013610; x=1781618410; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=KjJGKEpH2qByU3Ess85Ejl8SXkz/f7VS9AteXOnW56c=;
+ b=Q9tNFYQVIOOKL6E3DV1UIPli6upb3PjE8YauDaqiO7fa5bbWc29+mJZvoFJmcBxZCt
+ jscBA1vdE6dL42++AVEhhgACoL29d+hdzp5i7vhoTKpvSpHoD+xMYm6ndMI3jUf2ORdQ
+ P3VL68cniFxTO2hhBoWa0oElhal3FquiG5sFGKDr1xmlsXrw14CnyVrKsU6SumKy1d12
+ 0Me2ndHcT+IJAr11Fvkdiq+ra8GXOM+TSjd+1ztCf9zJnqRi6+zHX2BEzBztlQhZxV+C
+ jx2PsCb2PKypLiEvtCGk4BVfSAS5HRmkozxidO43GqchVO4EP85MCo5tuau3IUnLx4nP
+ Blhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781013613; x=1781618413;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=1hgC4BPNJwqz49DQoEMfvPbzbVF2te92kpDfaNPld+I=;
- b=IWwvp68UkIKGhWY56rGmUcWBAxvsE6UMVCum9WBEP+2a/cOXMIhjy2BkpxECvDSx0w
- FKPpkEY6JGlmc34/ptU6DRczUkfJP2X+r9UnZ1WJvc3zHnGvXZtK8MV+vH+AREMjCguC
- Vnqo1R7tlEol51K135GWmPjyXpl+0C+5kLia6hzSMCQX/Rc9oXOW4BJVVa2S8/GYTT4n
- RH2FgUPaJxkfcc25o2+toCzSBm4q+Dqel1k4AunJdMEzN4PHUdaP3b0vK4Gjd+gi3vqh
- htEo/bpQSEunKqpXDK5hU1PoMQv5afBX9seqYgRk9v3Hk/0RZtRkzJvwtFbDUucaAJMg
- NMcg==
-X-Gm-Message-State: AOJu0YxJgPJ6glwZZU72VFW0lKLpVrPjsNHMG1he0xaIhg9bnG00s6yy
- x7qVJtb4g6x4dZgyHaThjzdsac0/jsKTu9OArOxDf6ysCN2xYnIMEdvhe6ubIHZ6WE8=
-X-Gm-Gg: Acq92OGPZShoyTjLhUZ/fftsnt0p2BmDrCppg/LTkHbSVK3IsRujeP40EoKqpdgDBGR
- wZjlqcoZZOPM38dx1XibEjq4V3bmtmKQS3uT9Pd58mt+ZDi7lLTAx7o+UaaynaHs0087H0Ji8qj
- +0/NDL2ShT89bi9XmovXsqK3P8pMm9+enOxdeMpgWHNg8kkMqo/e1mZlgmKZ3ziV91FxiHDCx9e
- q5nCToNuUNBY9tTfYbJoksFY/Bmf7waq9lPu55I4W5wv5JvUtIeXzF/xEmKQ83aA8GbdVP2Mel8
- vboHHfm4+T/jlOBHv2+nYjJLcpQIc83cu4f9N+sqKqb8m9rIUoISECyJHfN4tseOp3BR9I83wMi
- pKiyy6l3zPo8msoQxRXERzeUw+e+KMJLSeBLLibaqJFWCOMYdrZg4eZ6DXbNmcchbLF4gNpMXWf
- VMiPRX/s1Swh/SNYBTcfLy8eAQ2nTqo0lT772eRbs4GaU7
-X-Received: by 2002:a05:600c:a302:b0:490:c2a3:1781 with SMTP id
- 5b1f17b1804b1-490c2a317c3mr268615525e9.34.1781013612670; 
- Tue, 09 Jun 2026 07:00:12 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1781013610; x=1781618410;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=KjJGKEpH2qByU3Ess85Ejl8SXkz/f7VS9AteXOnW56c=;
+ b=Mz2bKFhpU/k3AbZOr8Pu8+tRsvqHvrWwLWdL8fTS1g+eqJEDlyD8NAs9YFScFv6Kyj
+ 8RhVllzYgSADu982y73kbb3W4a4SLemmUIL+GC7ZaVzcJABdE3e9D2HQv0LyVq9GB+CS
+ g3u4E8/i7RHXlIuasxiqoagfZGPb68mH9nCjXXwi6B4YaIDBSoqKX1GxccvzeJDBjd4V
+ PRiVG5VMxDUYWWPZJ4A7nhbDFVwfk2yvyzgSfETApSzRK+YB6IgJctBigI/Of8yNoRQf
+ QQkC6fQx8muFTTWZfTOgXT6+wKdh0VUma5+W+nvxDVoUzHyWADztvsu64E4JvIQe79pY
+ Nv2g==
+X-Gm-Message-State: AOJu0YxeTy5F4cB9qbhwrQweo+BfvI3ErZIcFEaW571fgk1VxcEgOgTZ
+ jVyB9y4WDQWpIyBOHrPWC2fx/U0tr5vtpgAn6xT/VnkZEQATPREU83jVN1jlJXKkn/I=
+X-Gm-Gg: Acq92OHBuisjFncML8nRyUrggVD2gjZffSCXteDuqraFZySjLZHkOTmz+Pzj8AEQOBc
+ H0Hl71ue2+c/N5f4EnSLO+nR/4A7pmzXNMZCSK5Ot+b8MD53rGLbUd6WO2QokEsz4A4ckk1nAyT
+ t00FXrnnDOYJcFt7wxfDKsyo4ouwORXENYbnuJbIFDkxkhA8ZjzztKexijIJxJGzC1W2iZH8lid
+ M2s99g6M9S/T8jo9tQytM4jFu2cRoaP6U56b7Y5UsrlfwsB8K1J20YtAaf1pKimUd6ROHPZzDTa
+ I+2/WmKRvE9XcBUM4FpF4DngwF8Hy3ZPFIoQpP7rwOrTfQ6DUOIrIUo0l7MEWmKhRKf4WyYarZI
+ Qg2mzGK326F9JRzxFHodwLD50p4s4pxuHAAH1kzqnhdI5GeklM+BLK1KbKe676OE201qKeBLoQ5
+ lRtQnNgnXeqPi4ntmZwzZ2QuxrNa0EAqkFIeFvAez0BS2Z
+X-Received: by 2002:a05:600c:1986:b0:489:32b:ac0b with SMTP id
+ 5b1f17b1804b1-490c2cc27bdmr277704615e9.6.1781013610508; 
+ Tue, 09 Jun 2026 07:00:10 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-490bc3c15cesm473268275e9.5.2026.06.09.07.00.09
+ 5b1f17b1804b1-490bc3918fcsm554328835e9.3.2026.06.09.07.00.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Tue, 09 Jun 2026 07:00:09 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id A5DA35FAE2;
+ by draig.lan (Postfix) with ESMTP id 79DFC5F7C6;
  Tue, 09 Jun 2026 15:00:08 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 2/5] target/arm: trigger timer recalculation when toggling
- CNTHCTL:ECV
-Date: Tue,  9 Jun 2026 15:00:05 +0100
-Message-ID: <20260609140008.3206970-3-alex.bennee@linaro.org>
+Subject: [PATCH 0/5] target/arm: a few timer fixes while checking FEAT_ECV_POFF
+Date: Tue,  9 Jun 2026 15:00:03 +0100
+Message-ID: <20260609140008.3206970-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260609140008.3206970-1-alex.bennee@linaro.org>
-References: <20260609140008.3206970-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,29 +101,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When toggling the state of ECV we affect the offset applied to timers.
-As a result we should trigger a recalculation of the timer value to
-take into account the new offset.
+While I was checking what was needed for FEAT_ECV_POFF I discovered a
+few potential correctness issues. We had actually already done the
+work for the feature so the final patch is just documentation.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/helper.c | 3 +++
- 1 file changed, 3 insertions(+)
+Alex.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index f4aae0a4072..5c640853060 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1806,6 +1806,9 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     if ((oldval ^ value) & R_CNTHCTL_CNTPMASK_MASK) {
-         gt_update_irq(cpu, GTIMER_PHYS);
-     }
-+    if ((oldval ^ value) & R_CNTHCTL_ECV_MASK) {
-+        gt_recalc_timer(cpu, GTIMER_PHYS);
-+    }
- }
- 
- static void gt_cntvoff_write(CPUARMState *env, const ARMCPRegInfo *ri,
+Alex Bennée (5):
+  target/arm: split evaluation of CNTHCTL timer IRQ masks
+  target/arm: trigger timer recalculation when toggling CNTHCTL:ECV
+  target/arm: trigger timer recalc on SCR:ECVEN change
+  target/arm: trigger timer recalc on HCR:(E2H|TGE) changes
+  docs/system: add FEAT_ECV_POFF to the emulation list
+
+ docs/system/arm/emulation.rst |  1 +
+ target/arm/helper.c           | 20 +++++++++++++++++++-
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+
 -- 
 2.47.3
 

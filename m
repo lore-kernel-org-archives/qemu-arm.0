@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAE43CD98C9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F36AFCD8CB9
 	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 17:26:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wX0DI-0007tM-LK; Tue, 09 Jun 2026 13:26:10 -0400
+	id 1wX0Cy-0007cH-5m; Tue, 09 Jun 2026 13:25:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Ct-0007Yh-EL
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Ch-0007Nt-Gy
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Cr-0001ww-1T
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:42 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Cd-0001qc-DV
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781025939;
+ s=mimecast20190719; t=1781025925;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZxoWieFRl5alZGyqHw8uY/Fy15O9Y6SOJg0ST4pPYm0=;
- b=MumQK9ym4Lm6iX0arzx5DDdmt4KIswxUGSzd2nw+ECM6gioMZoIkGNH3q7f4urQntDE8/2
- jIrIak25AfADLFAXKkqMwmHl42Q0ZMOF5XujIwDoqbt8Z0xFlo9Z9xIsnlQ2EpWTfzul0j
- RnvAEUym9irN0LTX7qJN5SPYT0x131s=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=TAvDvHwNOpZMXGaEBVC9aqY/2Ki2d+eUzFoO5QqTfx8=;
+ b=PDjoUd4hBWdLqDVpJJOBVH1DbwpV/TBCPwcao/HR5vxcdxuuT4icSx7lLCp9Pzq5D7qVAB
+ fsUe3K4c12Qe7KzByqCGSD/UDQ4nSytTJDb1pIpBetVUOGk4tsWnjJyCvKwcTK8zMmHRRq
+ kiT7wnHYX4joiBJQJLGLmtOpqFMJMDw=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-258-8rUaRVsGN9-v0wRP_3bTzg-1; Tue, 09 Jun 2026 13:25:38 -0400
-X-MC-Unique: 8rUaRVsGN9-v0wRP_3bTzg-1
-X-Mimecast-MFC-AGG-ID: 8rUaRVsGN9-v0wRP_3bTzg_1781025938
-Received: by mail-qt1-f198.google.com with SMTP id
- d75a77b69052e-5177f07eb05so113541121cf.3
- for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 10:25:38 -0700 (PDT)
+ us-mta-693-2M7IxbJvNqSDHME54n07Gw-1; Tue, 09 Jun 2026 13:25:24 -0400
+X-MC-Unique: 2M7IxbJvNqSDHME54n07Gw-1
+X-Mimecast-MFC-AGG-ID: 2M7IxbJvNqSDHME54n07Gw_1781025924
+Received: by mail-qt1-f200.google.com with SMTP id
+ d75a77b69052e-517d766e05aso15456791cf.0
+ for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 10:25:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781025938; x=1781630738;
+ d=1e100.net; s=20251104; t=1781025924; x=1781630724;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ZxoWieFRl5alZGyqHw8uY/Fy15O9Y6SOJg0ST4pPYm0=;
- b=Gqs5LPm+airmZ1tXaOFzkfY4cNAubQ+co5MBPq7PwW73efZiNRZhUa2yFqR2Q6fTz2
- hccJH7PDfKgKqkBvC7MfgIcewwNTZp07pU9GHR+xN3yAxq/hkFzm0e8BKXhR1XNLLhQV
- roEds3qBEgFVFQHsMgfguSenSabeiDN6c4lSmuUKXGad81MTtfX4Y2u3uI88HXIVam2K
- UxkV3/xtanr+MWun/j9jUedw4uR6C8bNY7x8a1ZChe4aqFbSaf0qN2GU6+MxDUSqe77v
- J3Zbe6cC4pZj9Hug8GoMMW67rZmX6DXnkL7YcZTEMqkNvuTwIJTJ+KoeNQe+A6EFvbjp
- dfKA==
-X-Gm-Message-State: AOJu0YyUoFyNFGqHdJ7ZgtQTDthygg6uNd801EBfNmBf2MmujRwV/5vJ
- V1LyE4gOwDJPX8g/mOxjjtLJKD5x3TPEUBD8sE0Zm/NqgFftXxf8kqhO1wczl/46/mMDeVl2TS/
- 74ZzbuddlpRWcTvMeXjSVCQ5V8St3JmYAYseGWnOuQjErwQ42Ba847XQ8GP8nag==
-X-Gm-Gg: Acq92OG0w1OSeL4hBSE1ur9HaWhamXDmyCLslSgp6KKseAwODrbVb17/JP0ayka4biu
- auEY7AMN1F9vF2HV0ONngqL+hbooylfNj1pdcatAEVppel7/rvU2IYLzx9sQLKJNfjr6foHdcqV
- BkgaS6HL6fHE/c4Bot2XjIZOL+HHoFcr6GE4wszfKLuFDzYi5LVNam920yQHrz0/Gff75mJ3kfo
- cBz237GMLsylyUUVnt28WNx0Yz8rnIrP6Tm1kd9mvUpujUgLFEJ5rUhPUH1jAmsvDWOJUC6o7GC
- aR2qG1IVx5ShXoFRqSGVCYo2YzJ0VgVmZkqRKiePTgGtxAE0jJwCLz3Leaalhq//juxIafesVRe
- 9YDmYE93+aWy+RKSPHunjzKY=
-X-Received: by 2002:ac8:1342:0:b0:517:6339:41d0 with SMTP id
- d75a77b69052e-51795bbf6c2mr213878521cf.29.1781025937811; 
- Tue, 09 Jun 2026 10:25:37 -0700 (PDT)
-X-Received: by 2002:ac8:1342:0:b0:517:6339:41d0 with SMTP id
- d75a77b69052e-51795bbf6c2mr213877991cf.29.1781025937264; 
- Tue, 09 Jun 2026 10:25:37 -0700 (PDT)
+ bh=TAvDvHwNOpZMXGaEBVC9aqY/2Ki2d+eUzFoO5QqTfx8=;
+ b=r+2GxJgfZfW7ZxGDjn6OZSSkA8AxBOsAxUwRHE7lPTE1xf7od+4BfbcEla5zSNEBuh
+ YYthjz62lqk9lStF4QDN8zpocqExJbXBc1cc5RJdfOlZOUOsSx/wG9Z0cI4Q0T0QclFD
+ hKP5YoFu99fKi/YvPJeQsLhUYiD4f7PWAjVe8lRS1UnJA+84Gy2UBLohXnWfnf4dANf3
+ f3GPI47+hrC0NXotChbv7tz9vRUP36D9bp2WRjpC5F6beDfRxgamcZXyaeQwkLj6iFHL
+ 0FnpDcrX1O2danHUXwYbQbpQT6aBSJ5/53lWA9/Hxd8VqujrO0GJV9rIVHz7aN58nOMJ
+ PDJw==
+X-Gm-Message-State: AOJu0YxbNL+EWBX6bnOBB3OdM/oVuEWLgjyGRqFOch+Vmiy0+e24AL0y
+ ekEx+KQBfNjxDcx11XqHT0qJLvTLFEAnTVeOKEeAjtzRcg1UUpfFduuv4xUKW6ddDnACX+j828Y
+ THoMrJyVM8Ut1L3cj8/9HyrLOAgjovcDln0NuJSDizGcfgkXxGIiDUg==
+X-Gm-Gg: Acq92OEoR5+bBEICUVgJuCmK+EbwdsCwcBA7z/ftc5dfkQGGa0AnnxoT3bvnpvI9k7o
+ P3mFJpvvAcECO2RdO3RXAvvI+/ruNpmVnEqtpUc4033qkhm1Yu9Sqnf5/hxb8JJV/8IdNyGQPY6
+ GfTZh/4XQMKBzw/99Bhap00M9v+enEFiEgvON6Bxg3iTwfcEglFgQGbmJCtJeQH+Zyw2DsFSzdG
+ hrPfRXoL5VIJPxu70h6q0/1ytFL3x/WXvoFDGSf/SZ2ZJx5puin69wVsrOQRvsKilAygjtsYjC4
+ ZQfUGr/8IQqDFzj1/bCXzf5a/Y5P8MGeag/Wy0avoqMaYwoSYSdGSMdbhIPbVoiTokn6Ij58xWG
+ EZgYfW1VVNKkS9X8DSZXcG+Q=
+X-Received: by 2002:a05:622a:a593:b0:517:7871:693f with SMTP id
+ d75a77b69052e-51798672991mr221134831cf.8.1781025923905; 
+ Tue, 09 Jun 2026 10:25:23 -0700 (PDT)
+X-Received: by 2002:a05:622a:a593:b0:517:7871:693f with SMTP id
+ d75a77b69052e-51798672991mr221134161cf.8.1781025923234; 
+ Tue, 09 Jun 2026 10:25:23 -0700 (PDT)
 Received: from x1.com ([142.189.10.167]) by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-51775da2c56sm187524711cf.21.2026.06.09.10.25.35
+ d75a77b69052e-51775da2c56sm187524711cf.21.2026.06.09.10.25.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Jun 2026 10:25:36 -0700 (PDT)
+ Tue, 09 Jun 2026 10:25:22 -0700 (PDT)
 From: Peter Xu <peterx@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -86,27 +86,28 @@ Cc: qemu-arm@nongnu.org,
  Juraj Marcin <jmarcin@redhat.com>, qemu-rust@nongnu.org,
  Markus Armbruster <armbru@redhat.com>,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Subject: [PATCH v2 09/10] qom: Allow default values for instance properties
-Date: Tue,  9 Jun 2026 13:25:13 -0400
-Message-ID: <20260609172514.2037645-10-peterx@redhat.com>
+Subject: [PATCH v2 03/10] qdev: Introduce DEFINE_PROP_*_NODEFAULT for
+ bool/uint32
+Date: Tue,  9 Jun 2026 13:25:07 -0400
+Message-ID: <20260609172514.2037645-4-peterx@redhat.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260609172514.2037645-1-peterx@redhat.com>
 References: <20260609172514.2037645-1-peterx@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: EU0hvK35q9wRzv_rhy6xtd8dYOVFI3gZxqqhBOLKfQg_1781025938
+X-Mimecast-MFC-PROC-ID: 9EHX_Ngs9P5QyvhtVbmhJXhZiaz6PYVtn6P026RadJE_1781025924
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,73 +123,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-ObjectProperty allows default value settings via proper setup of
-prop->init() and prop->defval.  It currently is only supported in class
-properties, not instance properties.
-
-However, since QOM allows class and instance properties, it should also
-allow instance to add properties during instance_init() and allow the
-default values to be applied properly for this instance only.
-
-Add the logic.  It will be useful for all kinds of pointer based properties
-because pointers are normally not accessble in a class but only when an
-instance is available.  This will be able to achieve similar function as
-what qdev properties have (which works by remembering offsets within a
-structure instead).
+Introduce two macros that will be used in follow up patch to create qdev
+bool or uint32 properties without a default value.  Do not introduce the
+rest until they can be used.
 
 Signed-off-by: Peter Xu <peterx@redhat.com>
 ---
- qom/object.c | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ include/hw/core/qdev-properties.h | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/qom/object.c b/qom/object.c
-index fc738549dc..eaef615924 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -487,6 +487,20 @@ static void object_class_property_init_all(Object *obj)
-     }
- }
+diff --git a/include/hw/core/qdev-properties.h b/include/hw/core/qdev-properties.h
+index 248bbcbba7..43878d1f9e 100644
+--- a/include/hw/core/qdev-properties.h
++++ b/include/hw/core/qdev-properties.h
+@@ -124,6 +124,9 @@ extern const PropertyInfo qdev_prop_link;
+                 .set_default = true,                         \
+                 .defval.u    = (bool)_defval)
  
-+static void object_property_init_all(Object *obj)
-+{
-+    GHashTableIter iter;
-+    gpointer key, val;
++#define DEFINE_PROP_BOOL_NODEFAULT(_name, _state, _field)     \
++    DEFINE_PROP(_name, _state, _field, qdev_prop_bool, bool)
 +
-+    g_hash_table_iter_init(&iter, obj->properties);
-+    while (g_hash_table_iter_next(&iter, &key, &val)) {
-+        ObjectProperty *prop = val;
-+        if (prop->init) {
-+            prop->init(obj, prop);
-+        }
-+    }
-+}
-+
- static void object_initialize_with_type(Object *obj, size_t size, TypeImpl *type)
- {
-     type_initialize(type);
-@@ -498,10 +512,22 @@ static void object_initialize_with_type(Object *obj, size_t size, TypeImpl *type
-     memset(obj, 0, type->instance_size);
-     obj->class = type->class;
-     object_ref(obj);
-+    /*
-+     * A few steps to initialize properties for the objects:
-+     *
-+     * (1) apply default values from class properties when available
-+     * (2) invoke instance_init(), which may add per-instance properties,
-+     *     which may further contain default values
-+     * (3) apply default values from instance properties when available
-+     *
-+     * instance_post_init() should happen at last, after the instance is
-+     * fully initialized.
-+     */
-     object_class_property_init_all(obj);
-     obj->properties = g_hash_table_new_full(g_str_hash, g_str_equal,
-                                             NULL, object_property_free);
-     object_init_with_type(obj, type);
-+    object_property_init_all(obj);
-     object_post_init_with_type(obj, type);
- }
- 
+ /**
+  * The DEFINE_PROP_UINT64_CHECKMASK macro checks a user-supplied value
+  * against corresponding bitmask, rejects the value if it violates.
+@@ -201,6 +204,8 @@ extern const PropertyInfo qdev_prop_link;
+     DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint16, uint16_t)
+ #define DEFINE_PROP_UINT32(_n, _s, _f, _d)                      \
+     DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint32, uint32_t)
++#define DEFINE_PROP_UINT32_NODEFAULT(_n, _s, _f)                        \
++    DEFINE_PROP_UNSIGNED_NODEFAULT(_n, _s, _f, qdev_prop_uint32, uint32_t)
+ #define DEFINE_PROP_INT32(_n, _s, _f, _d)                      \
+     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_int32, int32_t)
+ #define DEFINE_PROP_UINT64(_n, _s, _f, _d)                      \
 -- 
 2.53.0
 

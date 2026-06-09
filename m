@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE29ECD8CB9
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 17:27:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AF5CCD8CB2
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 17:27:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wX0D4-0007gO-R8; Tue, 09 Jun 2026 13:25:54 -0400
+	id 1wX0Cx-0007aP-5X; Tue, 09 Jun 2026 13:25:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Ct-0007Yj-ER
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Cd-0007Kv-Lw
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Cp-0001vR-3O
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:42 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0CZ-0001p6-HO
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781025936;
+ s=mimecast20190719; t=1781025922;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mqrDCR+oRMqmtrsRDcLBvqMYTFGEeRtYsKQ4H1N/ZoA=;
- b=cxMFjHU0TtDNw6/eTwtAPQh6rOBIv7NZZeeYBCO0hsDkQP5otbLM5ZanJwPKVkeyWb91wC
- rnlbGCQwoiSVE3jERyFRz/Kh6+maDRwCw9xc/55tli2lYjhpplWjYyr59TumTrLR9gUuYp
- ZFZ2Y0EnSubXb6W58WOFV9GoWwkz9YU=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=aVVARmJUwhep7oD37d2RCWN4JLy97YXNlME0a8arUGM=;
+ b=Z01QdNG+wea6xfS2B3ZgWSRjIIym0Vfb89BPTFaf+zJ3K6DmQjhKcc4kRK76M2JcomK9oK
+ 0IdL0hm16JtTobpBJc6NE/5IodR4tkts3vDw6niQlzv2sDWbyWVTxM/578xQtF7P6CboTm
+ dM9yu1KJZ8BTGWIOokoNrR9BY5/nx4U=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-452-NGHoGCSmPMmiLS6nH0bIMA-1; Tue, 09 Jun 2026 13:25:35 -0400
-X-MC-Unique: NGHoGCSmPMmiLS6nH0bIMA-1
-X-Mimecast-MFC-AGG-ID: NGHoGCSmPMmiLS6nH0bIMA_1781025935
-Received: by mail-qt1-f200.google.com with SMTP id
- d75a77b69052e-5178fc89b1bso73796281cf.1
- for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 10:25:35 -0700 (PDT)
+ us-mta-633-o1_yU7FKODiHpbSCZ9PSpw-1; Tue, 09 Jun 2026 13:25:21 -0400
+X-MC-Unique: o1_yU7FKODiHpbSCZ9PSpw-1
+X-Mimecast-MFC-AGG-ID: o1_yU7FKODiHpbSCZ9PSpw_1781025920
+Received: by mail-qt1-f199.google.com with SMTP id
+ d75a77b69052e-5178fc89b2aso95897491cf.3
+ for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 10:25:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781025935; x=1781630735;
+ d=1e100.net; s=20251104; t=1781025920; x=1781630720;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=mqrDCR+oRMqmtrsRDcLBvqMYTFGEeRtYsKQ4H1N/ZoA=;
- b=glbtmuccDs4rrdyY9c4arzzGJuqTnr7sOx7ZksEUzG4KhiiGi1Z3dd5VO7HwZveSNI
- aIR/235pJ2r6nVOAas/q0OPsf4Z7Y0Ot9AJ95CpLg1bC+PEJKLglIVjqNhtnI+ZzVCaz
- Fzt1urhltkA3emMlWE3ayPiVnuWKvZ5WdUBnpVWq1DUmUSnjHyKjlLgI/dS7TPaVns2T
- 376q4RaO1jhOHOcGRp3m/L4DAQegbH4cTieywHR2JWy9YyS8eS094lfWRSOtH4BLyNuo
- V7kHyNHEfdmDMYDH8fO9nqaJC4Xdsda1HG6bYQbaOIlQvfuVZBaN4oDxzl3RH9u/dyEy
- KdgQ==
-X-Gm-Message-State: AOJu0YwFXnn6UYNfqNqJsABcTYukSLd5c6uD53Tjifjnc+jfrUJKevHx
- 9cN6S5RzStCo9OAuqBV3c6d2jNNY7gtCJwwuYRqt2IhU52uiiWjwni4wyIQFdxbiic/hclHSE/L
- eZADNcvbsLnN/I/RnOHtlOrNhxOAgcf4ayDIg0gGNpVYU6zEa3ZgGjw==
-X-Gm-Gg: Acq92OEuFQN90UZLNCEIhliA7FQoqPg49GzACzD5O+sr4tMtl1Mj1GbXpGI6CJuYS2E
- 7HHiELnj/liKCkutE/UAtTdS3lFPH6y8s4DnD0QD8hsdFlhssdkR6XjBDMtdbVoKbWH7XtlsJ0A
- VjE79GdkwaLKsrBk+UzutyGeqf1eQw6diTz6uNsKNs3j22XS5vDwD9zY6HAg5SqGFwDRQReuh5K
- ZcNnNO4ms243MrnD4CxNVrPH0Dv6A8PvkAsG+TIZM0GGE9NH8JinqgZxfWNyTUqiZCpCjkUZ+1u
- 6E0VPBShxXEVXzda+BlwMFVFIl9SLO3v4Rc3BLq/V5gfGTEIIoWiCNAvI8Ix0uTwC7Qx11TDTPt
- 6JyIRpfG1eOJyCZXbf+uUQg4=
-X-Received: by 2002:ac8:610f:0:b0:517:707b:14f1 with SMTP id
- d75a77b69052e-51795c09df1mr301392941cf.46.1781025934759; 
- Tue, 09 Jun 2026 10:25:34 -0700 (PDT)
-X-Received: by 2002:ac8:610f:0:b0:517:707b:14f1 with SMTP id
- d75a77b69052e-51795c09df1mr301392161cf.46.1781025934194; 
- Tue, 09 Jun 2026 10:25:34 -0700 (PDT)
+ bh=aVVARmJUwhep7oD37d2RCWN4JLy97YXNlME0a8arUGM=;
+ b=EmkHQbNuTEabXjzkYiwHl8BkNrBGEALHd16eHHC9BY0QYf6/zSlNvjK2h+YkyL3SzZ
+ aRI+ffHodQwhpXxpg2qn5vzK40f3lE2FrgHfKN7tH1w/4gE2KjtSKueLalc+dJF8+kwq
+ nj4pg/XIt94CwbqEaWcAVNBuhF9sggZ9y5iPm62PVoJZNeOB7JuiYYwHvW1JEGkBlhYu
+ OEXO6k0eGa0SWlB4ehtikyirysSkmpoiBZAPqHlzQHAVX9pE/rngSmrnUwlRJQgsFYOM
+ uNUS+QqFEDtsWXvZ1sg4zfYVnW1fVXLTQkO4QYXaVa9ZAYLWBtq8eQCWdfJiTvlwD8Ro
+ t1FQ==
+X-Gm-Message-State: AOJu0Yz/mPyFFMGeUoFkMZaxepZanPbm8CPOHTVopTwd1hiLymFSqTWg
+ Xn+Y+kdedFZJTj5e/WvUHIbJUIIOfXWGWyOsh+6pbuQ+AyIsv4cXzCDb/OIUb61+j2ooWS7ZkDB
+ CahxBhcpcqJvZM92Bggqy3RKw6778twlx57cr2rBcC+p19eIrZCdDlg==
+X-Gm-Gg: Acq92OE8+t1Nn/ViD10R5BFwtiKpTH8TBv/zVAtZ7ljUQjzZEu0tkHa44cE0px09H3v
+ LsCzrEG8wDDnnDqjjTC9EakCJ+S/8Ip5I07knz6IdFvPnMI3haArAcRxpKsomCNohnn/Ki0VEhC
+ W9jz0N433jPUNC69bAXCP2CcT2xOX9hIPbk9jZxXR3wsYybHRfXE5OiIozFcubqrZAeQc31Qd1s
+ kIPrLb/0HCPyDGzt/NOg5Z+R9OQNbVCSiNQT+CMYD3Hde/XbR7RKgK2UsNsDu8tcV0Vt+tUEYhF
+ w/53e3Sxj78x7tWs8R6oj1SlmQyMwd+sj2UJhoY72fxCuIiDv2FkHKBYUjURYNzvQs17mCH2rcQ
+ r+qDK1WQQnFwGVnXQuGbkrh0=
+X-Received: by 2002:a05:622a:47cf:b0:517:2c1e:8b6 with SMTP id
+ d75a77b69052e-51795c66183mr278467401cf.38.1781025920335; 
+ Tue, 09 Jun 2026 10:25:20 -0700 (PDT)
+X-Received: by 2002:a05:622a:47cf:b0:517:2c1e:8b6 with SMTP id
+ d75a77b69052e-51795c66183mr278466621cf.38.1781025919664; 
+ Tue, 09 Jun 2026 10:25:19 -0700 (PDT)
 Received: from x1.com ([142.189.10.167]) by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-51775da2c56sm187524711cf.21.2026.06.09.10.25.32
+ d75a77b69052e-51775da2c56sm187524711cf.21.2026.06.09.10.25.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Jun 2026 10:25:33 -0700 (PDT)
+ Tue, 09 Jun 2026 10:25:19 -0700 (PDT)
 From: Peter Xu <peterx@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -86,26 +86,26 @@ Cc: qemu-arm@nongnu.org,
  Juraj Marcin <jmarcin@redhat.com>, qemu-rust@nongnu.org,
  Markus Armbruster <armbru@redhat.com>,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Subject: [PATCH v2 07/10] qom: Add object_property_add_size_ptr()
-Date: Tue,  9 Jun 2026 13:25:11 -0400
-Message-ID: <20260609172514.2037645-8-peterx@redhat.com>
+Subject: [PATCH v2 01/10] migration: Use OBJECT_DECLARE_SIMPLE_TYPE
+Date: Tue,  9 Jun 2026 13:25:05 -0400
+Message-ID: <20260609172514.2037645-2-peterx@redhat.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260609172514.2037645-1-peterx@redhat.com>
 References: <20260609172514.2037645-1-peterx@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: HBNqr9qX538yLaPhC0gmoup3huuzC5xDiXYAu29um5A_1781025935
+X-Mimecast-MFC-PROC-ID: 73DNVGhl2EO0aObWd1WED-pvX9F3EgzamDAqGkq1ZqE_1781025920
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -122,94 +122,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a helper to set qom property via a size pointer.
+Migration object's class has nothing special, switch to the newly
+introduced macro.
 
+Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Peter Xu <peterx@redhat.com>
 ---
- include/qom/object-property-ptr.h | 16 +++++++++++++
- qom/object-property-ptr.c         | 40 +++++++++++++++++++++++++++++++
- 2 files changed, 56 insertions(+)
+ migration/migration.h | 9 +--------
+ migration/migration.c | 7 +++----
+ 2 files changed, 4 insertions(+), 12 deletions(-)
 
-diff --git a/include/qom/object-property-ptr.h b/include/qom/object-property-ptr.h
-index 9cd8600094..be467c64af 100644
---- a/include/qom/object-property-ptr.h
-+++ b/include/qom/object-property-ptr.h
-@@ -115,4 +115,20 @@ ObjectProperty *object_class_property_add_uint64_ptr(ObjectClass *klass,
-                                           const uint64_t *v,
-                                           ObjectPropertyFlags flags);
+diff --git a/migration/migration.h b/migration/migration.h
+index 841f49b215..293ad60e07 100644
+--- a/migration/migration.h
++++ b/migration/migration.h
+@@ -263,14 +263,7 @@ void fill_destination_postcopy_migration_info(MigrationInfo *info);
  
-+/**
-+ * object_property_add_size_ptr:
-+ * @obj: the object to add a property to
-+ * @name: the name of the property
-+ * @v: pointer to value
-+ * @flags: bitwise-or'd ObjectPropertyFlags
-+ *
-+ * Add a property of type 'size' to the object.
-+ *
-+ * Returns: The newly added property on success, or %NULL on failure.
-+ */
-+ObjectProperty *
-+object_property_add_size_ptr(Object *obj, const char *name,
-+                             const uint64_t *v,
-+                             ObjectPropertyFlags flags);
-+
- #endif
-diff --git a/qom/object-property-ptr.c b/qom/object-property-ptr.c
-index 49f223da7b..21ceb2510d 100644
---- a/qom/object-property-ptr.c
-+++ b/qom/object-property-ptr.c
-@@ -107,6 +107,26 @@ static void property_set_uint64_ptr(Object *obj, Visitor *v, const char *name,
-     *field = value;
- }
+ #define TYPE_MIGRATION "migration"
  
-+static void property_get_size_ptr(Object *obj, Visitor *v, const char *name,
-+                                  void *opaque, Error **errp)
-+{
-+    uint64_t value = *(uint64_t *)opaque;
-+    visit_type_size(v, name, &value, errp);
-+}
-+
-+static void property_set_size_ptr(Object *obj, Visitor *v, const char *name,
-+                                  void *opaque, Error **errp)
-+{
-+    uint64_t *field = opaque;
-+    uint64_t value;
-+
-+    if (!visit_type_size(v, name, &value, errp)) {
-+        return;
-+    }
-+
-+    *field = value;
-+}
-+
- ObjectProperty *
- object_property_add_bool_ptr(Object *obj, const char *name,
-                              const bool *v, ObjectPropertyFlags flags)
-@@ -285,3 +305,23 @@ object_class_property_add_uint64_ptr(ObjectClass *klass, const char *name,
-     return object_class_property_add(klass, name, "uint64",
-                                      getter, setter, NULL, (void *)v);
- }
-+
-+ObjectProperty *
-+object_property_add_size_ptr(Object *obj, const char *name,
-+                             const uint64_t *v,
-+                             ObjectPropertyFlags flags)
-+{
-+    ObjectPropertyAccessor *getter = NULL;
-+    ObjectPropertyAccessor *setter = NULL;
-+
-+    if ((flags & OBJ_PROP_FLAG_READ) == OBJ_PROP_FLAG_READ) {
-+        getter = property_get_size_ptr;
-+    }
-+
-+    if ((flags & OBJ_PROP_FLAG_WRITE) == OBJ_PROP_FLAG_WRITE) {
-+        setter = property_set_size_ptr;
-+    }
-+
-+    return object_property_add(obj, name, "size",
-+                               getter, setter, NULL, (void *)v);
-+}
+-typedef struct MigrationClass MigrationClass;
+-DECLARE_OBJ_CHECKERS(MigrationState, MigrationClass,
+-                     MIGRATION_OBJ, TYPE_MIGRATION)
+-
+-struct MigrationClass {
+-    /*< private >*/
+-    DeviceClass parent_class;
+-};
++OBJECT_DECLARE_SIMPLE_TYPE(MigrationState, MIGRATION);
+ 
+ struct MigrationState {
+     /*< private >*/
+diff --git a/migration/migration.c b/migration/migration.c
+index 074d3f2c69..278cad502a 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -297,7 +297,7 @@ void migration_object_init(void)
+ {
+     /* This can only be called once. */
+     assert(!current_migration);
+-    current_migration = MIGRATION_OBJ(object_new(TYPE_MIGRATION));
++    current_migration = MIGRATION(object_new(TYPE_MIGRATION));
+ 
+     /*
+      * Init the migrate incoming object as well no matter whether
+@@ -3975,7 +3975,7 @@ static void migration_class_init(ObjectClass *klass, const void *data)
+ 
+ static void migration_instance_finalize(Object *obj)
+ {
+-    MigrationState *ms = MIGRATION_OBJ(obj);
++    MigrationState *ms = MIGRATION(obj);
+ 
+     qapi_free_BitmapMigrationNodeAliasList(ms->parameters.block_bitmap_mapping);
+     qapi_free_strList(ms->parameters.cpr_exec_command);
+@@ -3993,7 +3993,7 @@ static void migration_instance_finalize(Object *obj)
+ 
+ static void migration_instance_init(Object *obj)
+ {
+-    MigrationState *ms = MIGRATION_OBJ(obj);
++    MigrationState *ms = MIGRATION(obj);
+ 
+     ms->state = MIGRATION_STATUS_NONE;
+     ms->mbps = -1;
+@@ -4040,7 +4040,6 @@ static const TypeInfo migration_type = {
+      */
+     .parent = TYPE_DEVICE,
+     .class_init = migration_class_init,
+-    .class_size = sizeof(MigrationClass),
+     .instance_size = sizeof(MigrationState),
+     .instance_init = migration_instance_init,
+     .instance_finalize = migration_instance_finalize,
 -- 
 2.53.0
 

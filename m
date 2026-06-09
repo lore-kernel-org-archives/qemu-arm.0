@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52829CD8CB2
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 17:27:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65613CD8CB9
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 17:27:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wX0Ct-0007Y1-7S; Tue, 09 Jun 2026 13:25:43 -0400
+	id 1wX0DP-00082h-UA; Tue, 09 Jun 2026 13:26:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Cj-0007Rc-UV
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:34 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Cw-0007aC-F4
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:47 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Cf-0001rb-Fp
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:32 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wX0Ct-0001yg-3q
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 13:25:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781025928;
+ s=mimecast20190719; t=1781025941;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3NdlNtbeLa0/ps13OdYmmm+9iFxk0+Y/xOAdI1YEzAQ=;
- b=H3JUKszobwj7/FVnaONaOUm4wCSsIYXikWNPnhICe4eEYkV+kZ9K63VS/G3QZt+iknnjMC
- E5lk07Vy8kfFo8M0Z5JnTvsIulHbGqHdqT/oUB+Rq/1kMsg4RvxMrHkJncDALUgA41Qshk
- ltV9yv2zt0+8ze+FpE7aMNaQJzlhFK4=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=nEeE/ILPbUfNm0fHrOlFecQ+K6hT8Mcwf1ycjvTaswU=;
+ b=ZaUTGCc0DpR4iBjr7FxlqBPeEMkFPndV3OKTMcn3jmVLPyzMZ4hAbWPFGD9B7KyID6jkL3
+ VfTNZHg/lE5qhIknBUug9rEgkg59k3EVPxPJtk7ZqEhtCxZziklPgPieKrdIzww6bTI9LJ
+ PCNGWRkxlJsjUVqZth+dkq93nbTW4h4=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-29-maDou8W1OwyqDifEcQTwjg-1; Tue, 09 Jun 2026 13:25:26 -0400
-X-MC-Unique: maDou8W1OwyqDifEcQTwjg-1
-X-Mimecast-MFC-AGG-ID: maDou8W1OwyqDifEcQTwjg_1781025925
-Received: by mail-qt1-f199.google.com with SMTP id
- d75a77b69052e-5177bddf6e0so14282161cf.1
- for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 10:25:26 -0700 (PDT)
+ us-mta-111-qJ4QEMRqPrGCzlnnJuGo9w-1; Tue, 09 Jun 2026 13:25:40 -0400
+X-MC-Unique: qJ4QEMRqPrGCzlnnJuGo9w-1
+X-Mimecast-MFC-AGG-ID: qJ4QEMRqPrGCzlnnJuGo9w_1781025940
+Received: by mail-qt1-f200.google.com with SMTP id
+ d75a77b69052e-5177f07ea82so142244731cf.3
+ for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 10:25:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781025925; x=1781630725;
+ d=1e100.net; s=20251104; t=1781025940; x=1781630740;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=3NdlNtbeLa0/ps13OdYmmm+9iFxk0+Y/xOAdI1YEzAQ=;
- b=n9VeNmIA8utz7fuuUYs820EWBX1h6dNKVXRUoKUiwh92gsphptjdmgULUZYzDrepV6
- sRZibHccnKFcH2/PixlwWD/8EScqFrNhOU5KR+bcYjmM4UYSk4GmbNG0lWbm3WXGvR7H
- 5omxZmfrAvuLsgnTCIwFJrD7nRJwm3zvVnAVP+kAw8mzMYbFk/nmtrtEwQuHgXiDLqkD
- MIfHL359d/aZrO3rJd2OHaMvfvHd3dYCaUhHU3HDIMeEXW4RrBZjgrk2ApbEWoe1knzS
- Cf9xwVWyPSj22np63uTv5U+WopQ1LUe6EzBho15POV1xW7qaP73rwwL6mOHzkvKQ5kXd
- BdBw==
-X-Gm-Message-State: AOJu0Ywr2xxWq0OEIPed4XfeXsv51VDYXF4KWhF2jB7DuQpGqOBqTEbx
- Z7SX/cHiN8lNLD0POZR7wBDIL9mD2ISp5nD+nuONjDD3omCEys/hKmTbQK18M3ChdY41pNWDRtI
- jsMGqciX9FUnG9j7ZOkSjwugdKNizvOZzPhR5oDyK4lZDm9GJVSK+KB1d1OyuFQ==
-X-Gm-Gg: Acq92OGP8l53UzPJxDTO6Enofw8hrdmGAhsr4b5jRJS7C5IP/QvcuFKveqcTlU+1OTp
- LcVxsLB2lx15cNnBoGSvrKMKCkkDfqepsMyCFgvmM6+jyW1GHsQ28nsK8Ief7jvcPFOTMLyStq5
- IlEF9VwgueUjHXPnjmu7N7Wuk981lhV8/n5yFGjnpFm4AkRg6hDLN3DvPPX1s+KabC3UiV8o9gr
- WcZBuEb2Z9joSjtYrSyWEJTABCTqfDI5x86otXDmQME6bpODf+tptu+vGKhMqDkJfQcibH9zpZT
- zCcZhazwB0g6Bw/cGvuVYU/l6h8wjWDy5NAQzQ1XzbM9+t62LK+Ex8Nakw4ow5Avues3fedyBNi
- OmbFxw2YYdiFjTP7d5SA2k8M=
-X-Received: by 2002:a05:622a:5518:b0:50b:3429:a10b with SMTP id
- d75a77b69052e-517986d4a6emr218254611cf.12.1781025925407; 
- Tue, 09 Jun 2026 10:25:25 -0700 (PDT)
-X-Received: by 2002:a05:622a:5518:b0:50b:3429:a10b with SMTP id
- d75a77b69052e-517986d4a6emr218254171cf.12.1781025924798; 
- Tue, 09 Jun 2026 10:25:24 -0700 (PDT)
+ bh=nEeE/ILPbUfNm0fHrOlFecQ+K6hT8Mcwf1ycjvTaswU=;
+ b=JP1Te4VlzxihdElfCBwuic98MxXwtw62/64jyMK1FIYVQrhDen/+i/oHrWOo6SLoJP
+ ExiQOR3PE0+ns+gQ0G2fOamejyIaCd/VN/dIJ+YO9xgQEc/bwtPDU3Fj59LmkhRlseB5
+ FMTZekPT37xfCtO8Ghj99hCeYhpRUiCUS9AqsmAzZUkatZaVmvwTmNFNv9cEaObU74X/
+ tEhnZWQCV7mv07fVg09uSu1kQfVedlChPeRFJIYuiFKw0fb+eBd0d62gkxZrMJbYtHdA
+ kh8ZDMKRAwgvREENEdkVmS238FD/H7QlrtfYkmx65ir0t9X3Itf7msb9UiLGS2KfN5kE
+ 8Ilg==
+X-Gm-Message-State: AOJu0YziXYR20VV8YQtIK03Dytk3rCWiXYvxNXGTLWXP3gzdQORGCaOm
+ fzi7NOrNp5O6utdjKo/P6nlt1ZdidhAUPAa+RgeF28XHsQHyFMleq0MeuRmHWm6aVkn7ha4899g
+ 3qnaOtXVvereuje+QDF6+MSIoEHXtQ5NqfpgpJrd7ftB/X4lyq1fc9A==
+X-Gm-Gg: Acq92OFuOimHr2hovEdnlpao4cLdcR+cfFXo8Or9od/OgwP+wDq2Yxk4MUKrJRoppCk
+ lvxh/L+n0nfyG7cQCLd6ezCdwe1kwiL226J5bQizGO/MVp3qMxmhczD3TR8qF+w0zX7tCy1kpoh
+ ysCgE4WiElfaFtPWRYSq+TYlZcETRBa7z4ZmpgMsnsdxHPe/DfoDJYTpd1lt32CZbsruiQ4OCTx
+ jETuMoCIVDeXv3/TW5j1y/sMrwrht51VxJVQsIu+PE3hyAgfuykx5RwlAaLkfcnOVI2tFcFWWZF
+ o/sj2rZN2FR2mPiuva4ld3UHmxkA+o/4rrhXBcDcC8ETUJVY4BSGaMSipaCXtWnSBGoPNU4/P+T
+ ps296RD1VEA63JgbzxOdfBPo=
+X-Received: by 2002:a05:622a:4d98:b0:517:59a1:82cb with SMTP id
+ d75a77b69052e-51795bbdc93mr312956441cf.48.1781025939629; 
+ Tue, 09 Jun 2026 10:25:39 -0700 (PDT)
+X-Received: by 2002:a05:622a:4d98:b0:517:59a1:82cb with SMTP id
+ d75a77b69052e-51795bbdc93mr312955831cf.48.1781025938988; 
+ Tue, 09 Jun 2026 10:25:38 -0700 (PDT)
 Received: from x1.com ([142.189.10.167]) by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-51775da2c56sm187524711cf.21.2026.06.09.10.25.23
+ d75a77b69052e-51775da2c56sm187524711cf.21.2026.06.09.10.25.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Jun 2026 10:25:24 -0700 (PDT)
+ Tue, 09 Jun 2026 10:25:38 -0700 (PDT)
 From: Peter Xu <peterx@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -85,21 +85,20 @@ Cc: qemu-arm@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Juraj Marcin <jmarcin@redhat.com>, qemu-rust@nongnu.org,
  Markus Armbruster <armbru@redhat.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>,
- Marc Zyngier <maz@kernel.org>
-Subject: [PATCH v2 04/10] hw/arm: Use nodefault version of qdev props when not
- needed
-Date: Tue,  9 Jun 2026 13:25:08 -0400
-Message-ID: <20260609172514.2037645-5-peterx@redhat.com>
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>
+Subject: [PATCH v2 10/10] migration: Switch to TYPE_OBJECT with object
+ properties
+Date: Tue,  9 Jun 2026 13:25:14 -0400
+Message-ID: <20260609172514.2037645-11-peterx@redhat.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260609172514.2037645-1-peterx@redhat.com>
 References: <20260609172514.2037645-1-peterx@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 2OFjMiZ6mqhLX4QCXsMeGMQEW0TLMOpqEL06jahuzWk_1781025925
+X-Mimecast-MFC-PROC-ID: UXZ2bpbC0BIdcaVeRJTP-s3JRamhOKbwb_i5aS4n3-E_1781025940
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -124,84 +123,705 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We're going to introduce defvars for object properties just like qdev-props
-defvars.  It work slightly differently in that props can be added in
-instance_init() with default values, then the default values can only apply
-after instance_init() completes.
+The migration object used to depend on TYPE_DEVICE due to:
 
-It means any explicit set of property values within instance_init() when
-used together with object property's default value (or qdev-prop, which
-builts the default value framework on top) will stop working.
+- Usage of qdev properties
+- Apply compat properties and global properties
 
-This patch touches two of such use cases where the device may add qdev
-properties with a default value first, then quickly set another value
-within instance_init().
+This patch re-based the object to TYPE_OBJECT with the changes:
 
-These are the only two outliers I found across the QEMU tree that do it
-this way.  Switch them to use qdev-prop's NODEFAULT APIs, and always
-initialize the values manually.
+- Switch to object properties API
+- Manually apply both compat and global properties in post_init()
 
-Example 1:
+Note that to avoid too many property getter/setter helpers, this patch used
+the object_property_add_*_ptr_def() APIs so that an pointer is passed to
+bind to the property.  Such API is used for most of the conversions.
 
-bcm283x_base_init() adds qdev prop bcm2836_enabled_cores_property with a
-default value 0, then it immediately set another value inside the same
-instance_init() hook.
+After patch, the migration object initializes instance properties within
+its instance_init() callback, in migrate_params_init().
 
-Example 2:
+One side effect of this change is, since we switched to a loop to add all
+capabilities, the name of the properties representing a migration
+capability may chance from previously hard-coded ones (many with x-).  It's
+fine since it's only used in -global so it's only for debugging.
 
-aarch64_add_pauth_properties() adds qdev prop arm_cpu_pauth_property, but
-then it will immediately update the same field (cpu->prop_pauth)
-conditionally when hwaccel_enabled()==true.
+Similarly, I removed "x-" from other properites that used to start with
+"x-" but actually are not experimental.
 
-Without the change, some arm test may fail (boot-serial-test) after
-introducing object property's default value framework, because devices'
-values will be overwritten by the properties' later.
+After the whole conversion, we don't need migration_properties or the count
+anymore, hence can be removed.  While at it, we can also remove two
+DEFINE_PROP*() API that only migration uses (DEFINE_PROP_STR_OR_NULL, and
+DEFINE_PROP_MIG_CAP).
 
-OTOH, this patch itself should introduce no functional change.
-
-Cc: Marc Zyngier <maz@kernel.org>
-Cc: Philippe Mathieu-Daudé <philmd@mailo.com>
 Signed-off-by: Peter Xu <peterx@redhat.com>
 ---
- hw/arm/bcm2836.c   | 3 ++-
- target/arm/cpu64.c | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+ migration/options.h   |   8 +-
+ migration/migration.c |  35 ++-
+ migration/options.c   | 526 ++++++++++++++++++++++++++----------------
+ 3 files changed, 351 insertions(+), 218 deletions(-)
 
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index f4ecea908b..9e4d30c99c 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -19,7 +19,8 @@
- #include "target/arm/gtimer.h"
+diff --git a/migration/options.h b/migration/options.h
+index b46221998a..eadbb8cf61 100644
+--- a/migration/options.h
++++ b/migration/options.h
+@@ -18,11 +18,6 @@
+ #include "hw/core/qdev-properties-system.h"
+ #include "migration/client-options.h"
  
- static const Property bcm2836_enabled_cores_property =
--    DEFINE_PROP_UINT32("enabled-cpus", BCM283XBaseState, enabled_cpus, 0);
-+    DEFINE_PROP_UINT32_NODEFAULT(
-+        "enabled-cpus", BCM283XBaseState, enabled_cpus);
+-/* migration properties */
+-
+-extern const Property migration_properties[];
+-extern const size_t migration_properties_count;
+-
+ /* capabilities */
  
- static void bcm283x_base_init(Object *obj)
- {
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 2816735577..a3a014a994 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -635,7 +635,7 @@ void aarch64_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+ bool migrate_auto_converge(void);
+@@ -92,6 +87,7 @@ uint64_t migrate_rdma_chunk_size(void);
+ /* parameters helpers */
+ 
+ bool migrate_params_check(MigrationParameters *params, Error **errp);
+-void migrate_params_init(MigrationParameters *params);
++void migrate_params_init(MigrationState *s);
+ void migrate_tls_opts_free(MigrationParameters *params);
++
+ #endif
+diff --git a/migration/migration.c b/migration/migration.c
+index 278cad502a..ae0c373549 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -3964,15 +3964,6 @@ fail:
+     }
  }
  
- static const Property arm_cpu_pauth_property =
--    DEFINE_PROP_BOOL("pauth", ARMCPU, prop_pauth, true);
-+    DEFINE_PROP_BOOL_NODEFAULT("pauth", ARMCPU, prop_pauth);
- static const Property arm_cpu_pauth_impdef_property =
-     DEFINE_PROP_BOOL("pauth-impdef", ARMCPU, prop_pauth_impdef, false);
- static const Property arm_cpu_pauth_qarma3_property =
-@@ -660,6 +660,7 @@ void aarch64_add_pauth_properties(Object *obj)
-          */
-         cpu->prop_pauth = cpu_isar_feature(aa64_pauth, cpu);
-     } else {
-+        cpu->prop_pauth = true;
-         qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_impdef_property);
-         qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_qarma3_property);
-         qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_qarma5_property);
+-static void migration_class_init(ObjectClass *klass, const void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-
+-    dc->user_creatable = false;
+-    device_class_set_props_n(dc, migration_properties,
+-                             migration_properties_count);
+-}
+-
+ static void migration_instance_finalize(Object *obj)
+ {
+     MigrationState *ms = MIGRATION(obj);
+@@ -4001,7 +3992,7 @@ static void migration_instance_init(Object *obj)
+     qemu_event_init(&ms->pause_event, false);
+     qemu_mutex_init(&ms->error_mutex);
+ 
+-    migrate_params_init(&ms->parameters);
++    migrate_params_init(ms);
+ 
+     qemu_sem_init(&ms->postcopy_pause_sem, 0);
+     qemu_sem_init(&ms->rp_state.rp_sem, 0);
+@@ -4028,20 +4019,26 @@ static bool migration_object_check(MigrationState *ms, Error **errp)
+     return migrate_caps_check(old_caps, ms->capabilities, errp);
+ }
+ 
+-static const TypeInfo migration_type = {
+-    .name = TYPE_MIGRATION,
++static void migration_instance_post_init(Object *obj)
++{
+     /*
+-     * NOTE: TYPE_MIGRATION is not really a device, as the object is
+-     * not created using qdev_new(), it is not attached to the qdev
+-     * device tree, and it is never realized.
++     * Apply these properties on top of default values:
++     *
++     * (1) machine compat properties
++     * (2) -global settings in cmdlines
+      *
+-     * TODO: Make this TYPE_OBJECT once QOM provides something like
+-     * TYPE_DEVICE's "-global" properties.
++     * Need to be applied in order so (2) takes precedence over (1).
+      */
+-    .parent = TYPE_DEVICE,
+-    .class_init = migration_class_init,
++    object_apply_compat_props(obj);
++    object_apply_global_props(obj, global_props(), &error_fatal);
++}
++
++static const TypeInfo migration_type = {
++    .name = TYPE_MIGRATION,
++    .parent = TYPE_OBJECT,
+     .instance_size = sizeof(MigrationState),
+     .instance_init = migration_instance_init,
++    .instance_post_init = migration_instance_post_init,
+     .instance_finalize = migration_instance_finalize,
+ };
+ 
+diff --git a/migration/options.c b/migration/options.c
+index 5cbfd29099..1cc99382d3 100644
+--- a/migration/options.c
++++ b/migration/options.c
+@@ -54,7 +54,7 @@
+ /* The delay time (in ms) between two COLO checkpoints */
+ #define DEFAULT_MIGRATE_X_CHECKPOINT_DELAY (200 * 100)
+ #define DEFAULT_MIGRATE_MULTIFD_CHANNELS 2
+-#define DEFAULT_MIGRATE_MULTIFD_COMPRESSION MULTIFD_COMPRESSION_NONE
++#define DEFAULT_MIGRATE_MULTIFD_COMPRESSION "none"
+ /* 0: means nocompress, 1: best speed, ... 9: best compress ratio */
+ #define DEFAULT_MIGRATE_MULTIFD_ZLIB_LEVEL 1
+ /*
+@@ -81,216 +81,355 @@
+ #define DEFAULT_MIGRATE_ANNOUNCE_ROUNDS    5
+ #define DEFAULT_MIGRATE_ANNOUNCE_STEP    100
+ 
+-#define DEFINE_PROP_MIG_CAP(name, x)             \
+-    DEFINE_PROP_BOOL(name, MigrationState, capabilities[x], false)
+-
+-const PropertyInfo qdev_prop_StrOrNull;
+-#define DEFINE_PROP_STR_OR_NULL(_name, _state, _field)                  \
+-    DEFINE_PROP(_name, _state, _field, qdev_prop_StrOrNull, StrOrNull *, \
+-                .set_default = true)
+-
+ #define DEFAULT_MIGRATE_VCPU_DIRTY_LIMIT_PERIOD     1000    /* milliseconds */
+ #define DEFAULT_MIGRATE_VCPU_DIRTY_LIMIT            1       /* MB/s */
+ #define DEFAULT_MIGRATE_X_RDMA_CHUNK_SIZE           MiB
+ 
+-const Property migration_properties[] = {
+-    DEFINE_PROP_BOOL("store-global-state", MigrationState,
+-                     store_global_state, true),
+-    DEFINE_PROP_BOOL("send-configuration", MigrationState,
+-                     send_configuration, true),
+-    DEFINE_PROP_BOOL("send-section-footer", MigrationState,
+-                     send_section_footer, true),
+-    DEFINE_PROP_BOOL("send-switchover-start", MigrationState,
+-                     send_switchover_start, true),
+-    DEFINE_PROP_BOOL("multifd-flush-after-each-section", MigrationState,
+-                      multifd_flush_after_each_section, false),
+-    DEFINE_PROP_UINT8("x-clear-bitmap-shift", MigrationState,
+-                      clear_bitmap_shift, CLEAR_BITMAP_SHIFT_DEFAULT),
+-    DEFINE_PROP_BOOL("x-preempt-pre-7-2", MigrationState,
+-                     preempt_pre_7_2, false),
+-    DEFINE_PROP_BOOL("multifd-clean-tls-termination", MigrationState,
+-                     multifd_clean_tls_termination, true),
+-
+-    /* Migration parameters */
+-    DEFINE_PROP_UINT8("x-throttle-trigger-threshold", MigrationState,
+-                      parameters.throttle_trigger_threshold,
+-                      DEFAULT_MIGRATE_THROTTLE_TRIGGER_THRESHOLD),
+-    DEFINE_PROP_UINT8("x-cpu-throttle-initial", MigrationState,
+-                      parameters.cpu_throttle_initial,
+-                      DEFAULT_MIGRATE_CPU_THROTTLE_INITIAL),
+-    DEFINE_PROP_UINT8("x-cpu-throttle-increment", MigrationState,
+-                      parameters.cpu_throttle_increment,
+-                      DEFAULT_MIGRATE_CPU_THROTTLE_INCREMENT),
+-    DEFINE_PROP_BOOL("x-cpu-throttle-tailslow", MigrationState,
+-                      parameters.cpu_throttle_tailslow, false),
+-    DEFINE_PROP_SIZE("x-max-bandwidth", MigrationState,
+-                      parameters.max_bandwidth, MAX_THROTTLE),
+-    DEFINE_PROP_SIZE("avail-switchover-bandwidth", MigrationState,
+-                      parameters.avail_switchover_bandwidth, 0),
+-    DEFINE_PROP_UINT64("x-downtime-limit", MigrationState,
+-                      parameters.downtime_limit,
+-                      DEFAULT_MIGRATE_SET_DOWNTIME),
+-    DEFINE_PROP_UINT32("x-checkpoint-delay", MigrationState,
+-                      parameters.x_checkpoint_delay,
+-                      DEFAULT_MIGRATE_X_CHECKPOINT_DELAY),
+-    DEFINE_PROP_UINT8("multifd-channels", MigrationState,
+-                      parameters.multifd_channels,
+-                      DEFAULT_MIGRATE_MULTIFD_CHANNELS),
+-    DEFINE_PROP_MULTIFD_COMPRESSION("multifd-compression", MigrationState,
+-                      parameters.multifd_compression,
+-                      DEFAULT_MIGRATE_MULTIFD_COMPRESSION),
+-    DEFINE_PROP_UINT8("multifd-zlib-level", MigrationState,
+-                      parameters.multifd_zlib_level,
+-                      DEFAULT_MIGRATE_MULTIFD_ZLIB_LEVEL),
+-    DEFINE_PROP_UINT8("multifd-qatzip-level", MigrationState,
+-                      parameters.multifd_qatzip_level,
+-                      DEFAULT_MIGRATE_MULTIFD_QATZIP_LEVEL),
+-    DEFINE_PROP_UINT8("multifd-zstd-level", MigrationState,
+-                      parameters.multifd_zstd_level,
+-                      DEFAULT_MIGRATE_MULTIFD_ZSTD_LEVEL),
+-    DEFINE_PROP_SIZE("xbzrle-cache-size", MigrationState,
+-                      parameters.xbzrle_cache_size,
+-                      DEFAULT_MIGRATE_XBZRLE_CACHE_SIZE),
+-    DEFINE_PROP_SIZE("max-postcopy-bandwidth", MigrationState,
+-                      parameters.max_postcopy_bandwidth,
+-                      DEFAULT_MIGRATE_MAX_POSTCOPY_BANDWIDTH),
+-    DEFINE_PROP_UINT8("max-cpu-throttle", MigrationState,
+-                      parameters.max_cpu_throttle,
+-                      DEFAULT_MIGRATE_MAX_CPU_THROTTLE),
+-    DEFINE_PROP_SIZE("announce-initial", MigrationState,
+-                      parameters.announce_initial,
+-                      DEFAULT_MIGRATE_ANNOUNCE_INITIAL),
+-    DEFINE_PROP_SIZE("announce-max", MigrationState,
+-                      parameters.announce_max,
+-                      DEFAULT_MIGRATE_ANNOUNCE_MAX),
+-    DEFINE_PROP_SIZE("announce-rounds", MigrationState,
+-                      parameters.announce_rounds,
+-                      DEFAULT_MIGRATE_ANNOUNCE_ROUNDS),
+-    DEFINE_PROP_SIZE("announce-step", MigrationState,
+-                      parameters.announce_step,
+-                      DEFAULT_MIGRATE_ANNOUNCE_STEP),
+-    DEFINE_PROP_STR_OR_NULL("tls-creds", MigrationState, parameters.tls_creds),
+-    DEFINE_PROP_STR_OR_NULL("tls-hostname", MigrationState,
+-                            parameters.tls_hostname),
+-    DEFINE_PROP_STR_OR_NULL("tls-authz", MigrationState, parameters.tls_authz),
+-    DEFINE_PROP_UINT64("x-vcpu-dirty-limit-period", MigrationState,
+-                       parameters.x_vcpu_dirty_limit_period,
+-                       DEFAULT_MIGRATE_VCPU_DIRTY_LIMIT_PERIOD),
+-    DEFINE_PROP_UINT64("vcpu-dirty-limit", MigrationState,
+-                       parameters.vcpu_dirty_limit,
+-                       DEFAULT_MIGRATE_VCPU_DIRTY_LIMIT),
+-    DEFINE_PROP_MIG_MODE("mode", MigrationState,
+-                      parameters.mode,
+-                      MIG_MODE_NORMAL),
+-    DEFINE_PROP_ZERO_PAGE_DETECTION("zero-page-detection", MigrationState,
+-                       parameters.zero_page_detection,
+-                       ZERO_PAGE_DETECTION_MULTIFD),
+-    DEFINE_PROP_UINT64("x-rdma-chunk-size", MigrationState,
+-                      parameters.x_rdma_chunk_size,
+-                      DEFAULT_MIGRATE_X_RDMA_CHUNK_SIZE),
+-
+-    /* Migration capabilities */
+-    DEFINE_PROP_MIG_CAP("x-xbzrle", MIGRATION_CAPABILITY_XBZRLE),
+-    DEFINE_PROP_MIG_CAP("x-rdma-pin-all", MIGRATION_CAPABILITY_RDMA_PIN_ALL),
+-    DEFINE_PROP_MIG_CAP("x-auto-converge", MIGRATION_CAPABILITY_AUTO_CONVERGE),
+-    DEFINE_PROP_MIG_CAP("x-events", MIGRATION_CAPABILITY_EVENTS),
+-    DEFINE_PROP_MIG_CAP("x-postcopy-ram", MIGRATION_CAPABILITY_POSTCOPY_RAM),
+-    DEFINE_PROP_MIG_CAP("x-postcopy-preempt",
+-                        MIGRATION_CAPABILITY_POSTCOPY_PREEMPT),
+-    DEFINE_PROP_MIG_CAP("postcopy-blocktime",
+-                        MIGRATION_CAPABILITY_POSTCOPY_BLOCKTIME),
+-    DEFINE_PROP_MIG_CAP("x-colo", MIGRATION_CAPABILITY_X_COLO),
+-    DEFINE_PROP_MIG_CAP("x-release-ram", MIGRATION_CAPABILITY_RELEASE_RAM),
+-    DEFINE_PROP_MIG_CAP("x-return-path", MIGRATION_CAPABILITY_RETURN_PATH),
+-    DEFINE_PROP_MIG_CAP("x-multifd", MIGRATION_CAPABILITY_MULTIFD),
+-    DEFINE_PROP_MIG_CAP("x-background-snapshot",
+-            MIGRATION_CAPABILITY_BACKGROUND_SNAPSHOT),
+-#ifdef CONFIG_LINUX
+-    DEFINE_PROP_MIG_CAP("x-zero-copy-send",
+-            MIGRATION_CAPABILITY_ZERO_COPY_SEND),
+-#endif
+-    DEFINE_PROP_MIG_CAP("x-switchover-ack",
+-                        MIGRATION_CAPABILITY_SWITCHOVER_ACK),
+-    DEFINE_PROP_MIG_CAP("x-dirty-limit", MIGRATION_CAPABILITY_DIRTY_LIMIT),
+-    DEFINE_PROP_MIG_CAP("mapped-ram", MIGRATION_CAPABILITY_MAPPED_RAM),
+-    DEFINE_PROP_MIG_CAP("x-ignore-shared",
+-                        MIGRATION_CAPABILITY_X_IGNORE_SHARED),
+-};
+-const size_t migration_properties_count = ARRAY_SIZE(migration_properties);
+-
+-static void get_StrOrNull(Object *obj, Visitor *v, const char *name,
+-                          void *opaque, Error **errp)
++static void migration_object_init_props_bool(MigrationState *s)
+ {
+-    const Property *prop = opaque;
+-    StrOrNull **ptr = object_field_prop_ptr(obj, prop);
+-    StrOrNull *str_or_null = *ptr;
++    Object *obj = OBJECT(s);
++    int i;
+ 
+-    /*
+-     * The property should never be NULL because it's part of
+-     * s->parameters and a default value is always set by qdev. It
+-     * should also never be QNULL as the setter doesn't allow it.
+-     */
+-    assert(str_or_null && str_or_null->type != QTYPE_QNULL);
+-    visit_type_str(v, name, &str_or_null->u.s, errp);
++    struct MigPropBool {
++        const char *name;
++        void *ptr;
++        bool defvar;
++    } bool_list[] = {
++        {
++            "store-global-state",
++            &s->store_global_state,
++            true,
++        },
++        {
++            "send-configuration",
++            &s->send_configuration,
++            true,
++        },
++        {
++            "send-section-footer",
++            &s->send_section_footer,
++            true,
++        },
++        {
++            "send-switchover-start",
++            &s->send_switchover_start,
++            true,
++        },
++        {
++            "x-preempt-pre-7-2",
++            &s->preempt_pre_7_2,
++            false,
++        },
++        {
++            "x-cpu-throttle-tailslow",
++            &s->parameters.cpu_throttle_tailslow,
++            false,
++        },
++        {
++            "multifd-clean-tls-termination",
++            &s->multifd_clean_tls_termination,
++            true,
++        },
++        {
++            "multifd-flush-after-each-section",
++            &s->multifd_flush_after_each_section,
++            false,
++        },
++    };
++    struct MigPropBool *prop;
++
++    for (i = 0; i < ARRAY_SIZE(bool_list); i++) {
++        prop = &bool_list[i];
++        object_property_add_bool_ptr_def(obj, prop->name,
++                                         prop->ptr, prop->defvar);
++    }
+ }
+ 
+-static void set_StrOrNull(Object *obj, Visitor *v, const char *name,
+-                          void *opaque, Error **errp)
++static void migration_object_init_props_uint8(MigrationState *s)
+ {
+-    const Property *prop = opaque;
+-    StrOrNull **ptr = object_field_prop_ptr(obj, prop);
+-    StrOrNull *str_or_null;
+-    char *str;
++    Object *obj = OBJECT(s);
++    int i;
+ 
+-    if (!visit_type_str(v, name, &str, errp)) {
+-        return;
+-    }
++    struct MigPropUint8 {
++        const char *name;
++        void *ptr;
++        uint8_t defvar;
++    } uint8_list[] = {
++        {
++            "clear-bitmap-shift",
++            &s->clear_bitmap_shift,
++            CLEAR_BITMAP_SHIFT_DEFAULT,
++        },
++        {
++            "throttle-trigger-threshold",
++            &s->parameters.throttle_trigger_threshold,
++            DEFAULT_MIGRATE_THROTTLE_TRIGGER_THRESHOLD,
++        },
++        {
++            "cpu-throttle-initial",
++            &s->parameters.cpu_throttle_initial,
++            DEFAULT_MIGRATE_CPU_THROTTLE_INITIAL,
++        },
++        {
++            "cpu-throttle-increment",
++            &s->parameters.cpu_throttle_increment,
++            DEFAULT_MIGRATE_CPU_THROTTLE_INCREMENT,
++        },
++        {
++            "multifd-channels",
++            &s->parameters.multifd_channels,
++            DEFAULT_MIGRATE_MULTIFD_CHANNELS,
++        },
++        {
++            "multifd-zlib-level",
++            &s->parameters.multifd_zlib_level,
++            DEFAULT_MIGRATE_MULTIFD_ZLIB_LEVEL,
++        },
++        {
++            "multifd-qatzip-level",
++            &s->parameters.multifd_qatzip_level,
++            DEFAULT_MIGRATE_MULTIFD_QATZIP_LEVEL,
++        },
++        {
++            "multifd-zstd-level",
++            &s->parameters.multifd_zstd_level,
++            DEFAULT_MIGRATE_MULTIFD_ZSTD_LEVEL,
++        },
++        {
++            "max-cpu-throttle",
++            &s->parameters.max_cpu_throttle,
++            DEFAULT_MIGRATE_MAX_CPU_THROTTLE,
++        },
++    };
++    struct MigPropUint8 *prop;
+ 
+-    /*
+-     * This property only applies to the command line usage of
+-     * migration's TLS options (-global migration.tls-*) where the
+-     * NULL value cannot be provided as input (only strings are
+-     * allowed). Therefore, this StrOrNull implementation never
+-     * produces a QNULL value to avoid ever returning values outside
+-     * the range of what was previously handled by consumers of the
+-     * TLS options.
+-     */
+-    str_or_null = g_new0(StrOrNull, 1);
+-    str_or_null->type = QTYPE_QSTRING;
+-    str_or_null->u.s = str;
++    for (i = 0; i < ARRAY_SIZE(uint8_list); i++) {
++        prop = &uint8_list[i];
++        object_property_add_uint8_ptr_def(obj, prop->name,
++                                          prop->ptr, prop->defvar);
++    }
++}
+ 
+-    qapi_free_StrOrNull(*ptr);
+-    *ptr = str_or_null;
++static void migration_object_init_props_uint32(MigrationState *s)
++{
++    object_property_add_uint32_ptr_def(OBJECT(s), "x-checkpoint-delay",
++                                       &s->parameters.x_checkpoint_delay,
++                                       DEFAULT_MIGRATE_X_CHECKPOINT_DELAY);
+ }
+ 
+-static void release_StrOrNull(Object *obj, const char *name, void *opaque)
++static void migration_object_init_props_uint64(MigrationState *s)
+ {
+-    const Property *prop = opaque;
+-    qapi_free_StrOrNull(*(StrOrNull **)object_field_prop_ptr(obj, prop));
++    Object *obj = OBJECT(s);
++    int i;
++
++    struct MigPropUint64 {
++        const char *name;
++        void *ptr;
++        uint64_t defvar;
++    } uint64_list[] = {
++        {
++            "downtime-limit",
++            &s->parameters.downtime_limit,
++            DEFAULT_MIGRATE_SET_DOWNTIME,
++        },
++        {
++            "x-vcpu-dirty-limit-period",
++            &s->parameters.x_vcpu_dirty_limit_period,
++            DEFAULT_MIGRATE_VCPU_DIRTY_LIMIT_PERIOD,
++        },
++        {
++            "vcpu-dirty-limit",
++            &s->parameters.vcpu_dirty_limit,
++            DEFAULT_MIGRATE_VCPU_DIRTY_LIMIT,
++        },
++        {
++            "x-rdma-chunk-size",
++            &s->parameters.x_rdma_chunk_size,
++            DEFAULT_MIGRATE_X_RDMA_CHUNK_SIZE,
++        },
++    };
++    struct MigPropUint64 *prop;
++
++    for (i = 0; i < ARRAY_SIZE(uint64_list); i++) {
++        prop = &uint64_list[i];
++        object_property_add_uint64_ptr_def(obj, prop->name,
++                                           prop->ptr, prop->defvar);
++    }
+ }
+ 
+-static void set_default_value_tls_opt(ObjectProperty *op, const Property *prop)
++static void migration_object_init_props_size(MigrationState *s)
+ {
+-    /*
+-     * Initialization to the empty string here is important so
+-     * query-migrate-parameters doesn't need to deal with a NULL value
+-     * when it's called before any TLS option has been set.
+-     */
+-    object_property_set_default_str(op, "");
++    Object *obj = OBJECT(s);
++    int i;
++
++    struct MigPropSize {
++        const char *name;
++        void *ptr;
++        uint64_t defvar;
++    } size_list[] = {
++        {
++            "xbzrle-cache-size",
++            &s->parameters.xbzrle_cache_size,
++            DEFAULT_MIGRATE_XBZRLE_CACHE_SIZE,
++        },
++        {
++            "max-postcopy-bandwidth",
++            &s->parameters.max_postcopy_bandwidth,
++            DEFAULT_MIGRATE_MAX_POSTCOPY_BANDWIDTH,
++        },
++        {
++            "announce-initial",
++            &s->parameters.announce_initial,
++            DEFAULT_MIGRATE_ANNOUNCE_INITIAL,
++        },
++        {
++            "announce-max",
++            &s->parameters.announce_max,
++            DEFAULT_MIGRATE_ANNOUNCE_MAX,
++        },
++        {
++            "announce-rounds",
++            &s->parameters.announce_rounds,
++            DEFAULT_MIGRATE_ANNOUNCE_ROUNDS,
++        },
++        {
++            "announce-step",
++            &s->parameters.announce_step,
++            DEFAULT_MIGRATE_ANNOUNCE_STEP,
++        },
++        {
++            "max-bandwidth",
++            &s->parameters.max_bandwidth,
++            MAX_THROTTLE,
++        },
++        {
++            "avail-switchover-bandwidth",
++            &s->parameters.avail_switchover_bandwidth,
++            0,
++        },
++    };
++    struct MigPropSize *prop;
++
++    for (i = 0; i < ARRAY_SIZE(size_list); i++) {
++        prop = &size_list[i];
++        object_property_add_size_ptr_def(obj, prop->name,
++                                         prop->ptr, prop->defvar);
++    }
+ }
+ 
+-/*
+- * String property like qdev_prop_string, except it's backed by a
+- * StrOrNull instead of a char *.  This is intended for
+- * TYPE_MIGRATION's TLS options.
+- */
+-const PropertyInfo qdev_prop_StrOrNull = {
+-    .type  = "StrOrNull",
+-    .get = get_StrOrNull,
+-    .set = set_StrOrNull,
+-    .release = release_StrOrNull,
+-    .set_default_value = set_default_value_tls_opt,
+-};
++static void migration_object_init_props_caps(MigrationState *s)
++{
++    Object *obj = OBJECT(s);
++    int i;
++
++    /* Migration capabilties are always turned off by default */
++    for (i = 0; i < MIGRATION_CAPABILITY__MAX; i++) {
++        object_property_add_bool_ptr_def(obj,
++                                         MigrationCapability_str(i),
++                                         &s->capabilities[i],
++                                         false);
++    }
++}
++
++#define  DEFINE_TLS_PROP_HELPERS(varname)                               \
++    static char *mig_prop_##varname##_get(Object *obj, Error **errp)    \
++    {                                                                   \
++        MigrationState *s = MIGRATION(obj);                             \
++        StrOrNull *var = s->parameters.varname;                         \
++                                                                        \
++        assert(var->type == QTYPE_QSTRING);                             \
++        return g_strdup(var->u.s);                                      \
++    }                                                                   \
++                                                                        \
++    static void mig_prop_##varname##_set(Object *obj, const char *str,  \
++                                         Error **errp)                  \
++    {                                                                   \
++        MigrationState *s = MIGRATION(obj);                             \
++        StrOrNull *new = g_new0(StrOrNull, 1);                          \
++                                                                        \
++        qapi_free_StrOrNull(s->parameters.varname);                     \
++                                                                        \
++        new->type = QTYPE_QSTRING;                                      \
++        new->u.s = g_strdup(str);                                       \
++        s->parameters.varname = new;                                    \
++    }
++
++DEFINE_TLS_PROP_HELPERS(tls_creds)
++DEFINE_TLS_PROP_HELPERS(tls_authz)
++DEFINE_TLS_PROP_HELPERS(tls_hostname)
++
++static void migration_object_init_props_tls(MigrationState *s)
++{
++    Object *obj = OBJECT(s);
++    ObjectProperty *prop;
++
++    prop = object_property_add_str(obj, "tls-creds",
++                                   mig_prop_tls_creds_get,
++                                   mig_prop_tls_creds_set);
++    object_property_set_default_str(prop, "");
++
++    prop = object_property_add_str(obj, "tls-hostname",
++                                   mig_prop_tls_hostname_get,
++                                   mig_prop_tls_hostname_set);
++    object_property_set_default_str(prop, "");
++
++    prop = object_property_add_str(obj, "tls-authz",
++                                   mig_prop_tls_authz_get,
++                                   mig_prop_tls_authz_set);
++    object_property_set_default_str(prop, "");
++}
++
++#define  DEFINE_ENUM_PROP_HELPERS(param_name)                           \
++    static int mig_prop_##param_name##_get(Object *obj, Error **errp)   \
++    {                                                                   \
++        return (int) MIGRATION(obj)->parameters.param_name;             \
++    }                                                                   \
++                                                                        \
++    static void mig_prop_##param_name##_set(Object *obj, int val,       \
++                                            Error **errp)               \
++    {                                                                   \
++        MIGRATION(obj)->parameters.param_name = val;                    \
++    }
++
++DEFINE_ENUM_PROP_HELPERS(multifd_compression)
++DEFINE_ENUM_PROP_HELPERS(zero_page_detection)
++DEFINE_ENUM_PROP_HELPERS(mode)
++
++static void migration_object_init_props_enum(MigrationState *s)
++{
++    Object *obj = OBJECT(s);
++    ObjectProperty *prop;
++
++    prop = object_property_add_enum(obj, "multifd-compression",
++                                    "MultiFDCompression",
++                                    &MultiFDCompression_lookup,
++                                    mig_prop_multifd_compression_get,
++                                    mig_prop_multifd_compression_set);
++    object_property_set_default_str(prop, DEFAULT_MIGRATE_MULTIFD_COMPRESSION);
++
++    prop = object_property_add_enum(obj, "mode", "MigMode", &MigMode_lookup,
++                                    mig_prop_mode_get, mig_prop_mode_set);
++    object_property_set_default_str(prop, "normal");
++
++    prop = object_property_add_enum(obj, "zero-page-detection",
++                                    "ZeroPageDetection",
++                                    &ZeroPageDetection_lookup,
++                                    mig_prop_zero_page_detection_get,
++                                    mig_prop_zero_page_detection_set);
++    object_property_set_default_str(prop, "multifd");
++}
++
++static void migration_object_init_properties(MigrationState *s)
++{
++    migration_object_init_props_bool(s);
++    migration_object_init_props_uint8(s);
++    migration_object_init_props_uint32(s);
++    migration_object_init_props_uint64(s);
++    migration_object_init_props_size(s);
++    migration_object_init_props_caps(s);
++    migration_object_init_props_tls(s);
++    migration_object_init_props_enum(s);
++}
+ 
+ bool migrate_auto_converge(void)
+ {
+@@ -1107,9 +1246,10 @@ MigrationParameters *qmp_query_migrate_parameters(Error **errp)
+     return params;
+ }
+ 
+-void migrate_params_init(MigrationParameters *params)
++void migrate_params_init(MigrationState *s)
+ {
+-    migrate_mark_all_params_present(params);
++    migration_object_init_properties(s);
++    migrate_mark_all_params_present(&s->parameters);
+ }
+ 
+ static void migrate_post_update_params(MigrationParameters *new, Error **errp)
 -- 
 2.53.0
 

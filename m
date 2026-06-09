@@ -4,143 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1FEBCD8CAA
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 13:45:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1AF0CD8CAA
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Jun 2026 14:00:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wWwlL-0003bf-Iw; Tue, 09 Jun 2026 09:45:03 -0400
+	id 1wWwzp-0001BS-RI; Tue, 09 Jun 2026 10:00:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wWwev-0000SJ-AW
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 09:38:26 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wWwet-0003lf-JF
- for qemu-arm@nongnu.org; Tue, 09 Jun 2026 09:38:25 -0400
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 659ClK5Q652194
- for <qemu-arm@nongnu.org>; Tue, 9 Jun 2026 13:38:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- xIHty/11mw0B8J9msJRJHY45IKPbBhMdmHb2qkB989Y=; b=C6s8mkScYzytUGab
- uXXwmi6XUwHAuoEYSnoqqKUVuY6pjtBD/8MCdGsGpSgWK1KDZcI6RH8+ThT4mHnm
- unBs5JikdrAJBj0+81CDJ/Wj+JJrML5eDcdXwxzAcDIkhU+Q/2PAs5Q29XgillBw
- +2BPTF4PrZ1p0UnMlCY6CyLImYZidNK4W6HB2iPbaTZo7aDV7MlmEpObWENHBWkF
- GUlIAKYZAeWGZdR2hDSuBR7h+5WvZ3SUsnVdnY1MlspLMQWgUxSOyEg5AuTzcbNm
- VPJ18MaPlVZKAXzAC2xX7wlicwy1xI6yfiVfinD0NZff8x5idNErPtNZwh531/Hh
- vNO+Ow==
-Received: from mail-vs1-f72.google.com (mail-vs1-f72.google.com
- [209.85.217.72])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4epf0ssdwg-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 13:38:19 +0000 (GMT)
-Received: by mail-vs1-f72.google.com with SMTP id
- ada2fe7eead31-6751c50552dso135417137.2
- for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 06:38:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wWwzn-0001A1-Ve
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 09:59:59 -0400
+Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wWwzm-00042C-GN
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2026 09:59:59 -0400
+Received: by mail-yx1-xb131.google.com with SMTP id
+ 956f58d0204a3-660323f7b27so5863298d50.3
+ for <qemu-arm@nongnu.org>; Tue, 09 Jun 2026 06:59:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781013597; cv=none;
+ d=google.com; s=arc-20240605;
+ b=Jwi0oEFugXpXl8bx5mhfa1cuszGx4CJWUNXnvdKCDCRgveDp7wSLOncJA4v6WUDCiZ
+ cvB47kPyVtTA8IrHGfqErKEyabzdHCf4gPt57J3Qo0hgQE/OhSaqIYvcBjTHxkixxFKA
+ s0Vd4hOI8uuujRs0EtT1yow0XHnGHGpv5569p78c2+v8grCj7xjpi55nhHzHngwUwk7e
+ N/AO4+Ln0+KeowkMW0FMQnNiJlKjBvhMJmRvRQJyQig/hZUwpvpGSm7c3fu/mQU+5r+u
+ RSNJeeYcUNM+Bj65rVtNjlLbzluuIRnKciM5rmzCARC1KYxf4UrihQYzmpz2cilK7rgl
+ +APg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=OhyJqPZjg1+M3+Hnd/IypCSNajvZxsN9GFvQ8gg4HO4=;
+ fh=iVvZ8VbnlfSIZHGyTvAg/0UhoZZ3VrtFrl08z0EMh4A=;
+ b=GEZ+fg3hwa1NKokoWBiQEA6nryQpoNr3HOQsr7gVH9c23ruIZhU0pXgWObUkQs/DCX
+ mLuFldrhKZR9oyjpcT5VVfigWdGDO2irKS3pvNP2FEBPH7Ov+hj1ogPxUwvMqIjgMy9L
+ ofRJvtPpeepdcZUG2/DXFvcfECGbWoNTbOWt56XMNbrhZ8yu5PNrKCsVTGcunYVDYuTz
+ nXWWRSBZSXrCnLff4JRMTQ5aIYRkpF3fdKE6IVTDMg4ll2NJkqg+gGjrBl2MNEdoWCeh
+ r0832pWwLLBfbKPnH/XhW3wcBKujb/iy+cz2rdIT7v+kMwBA6aJnIvB9sCGOV1Xmdn2m
+ asCg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1781012299; x=1781617099; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=xIHty/11mw0B8J9msJRJHY45IKPbBhMdmHb2qkB989Y=;
- b=BCGws9Yhtfoau/BmLnPBHQFVDCTD5M0/T1LD8q48caaresMHpuZf0MX4S5E0egfI7t
- LGhham8ib3jhgHYDRyqf/ygOpbSiZSI0aqSqGpxR+oMm9hClDD1/xbvSHYHXqmSvb2XP
- Q6Ry8GfJQ9m9ODJo3rKsn/kwCCgWEQUBZBu9wf9gm+bcF0r/k/UkO50QiCyR8Od4ufMu
- h/y4gYrhK14gs5OP87k3f0W9lv7TBmgyFzkVHZOuY5wcxfN1Zd4BXgPCsTOpocCNEKq8
- rF6/6SvBn6XvbBiuDq9bJoKHlqgL3KVG1HNNkpRwD7gIHlbGJc9/IvZJGXJwjQdkD8JH
- QlTg==
+ d=linaro.org; s=google; t=1781013597; x=1781618397; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=OhyJqPZjg1+M3+Hnd/IypCSNajvZxsN9GFvQ8gg4HO4=;
+ b=zgtorxHTdnMY1KCJVbbG80U8tS5VlnfXW3g+H5fB7Ib7TklpzeD/nYhqS/IsshKgoy
+ HRWxo99nX5MTysqJuGey36mwaql5s1Zjqm3AzSh6uVic+u6bKrGS3cNtvK7Dr1iJApqz
+ gu8nj/TV/s2rPpRZWw1L3UedO4o8KC/XHjMFM/XKkidfMOMiHI8BP9U/9srgHCrfhOuM
+ y44YPnEdy/HDAkdppDT1m/y5aswj5zclNqqSNFWOlKWO9a68qc2MH28GCFlBzB5qjuTl
+ SqbmDf/unEY9gf41v8WvWGwmqxKq8PU3UNImsDH61TUp3p59Ip1vztkCCtM9BVJCB/xC
+ X+Zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781012299; x=1781617099;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=xIHty/11mw0B8J9msJRJHY45IKPbBhMdmHb2qkB989Y=;
- b=Zyh9XcjmhkmC+h+Ezz0hYjKDQuGLBa1687PifGHDpoG+ds+KaoR8Eh0jcUgYhnxula
- bCuYloRRhxO8UdKvsp8ruQKP9FQi06heN2qBSzh5q3aB+ER2lEt9cBrKH+Ydq3dqTd5W
- 7xZcBcwWFQ1WT7kkV6QlzFum4pVEj3EpWvreJ9xMMtJYhhjIT9QQjTKUMir2xjDl+1Jj
- 5IyUrnRamTfkTk0crimLd+nDCL5PBmKxFF9x9Tt9BShvFjiQLDgvyBvNgTso6fqs0qhk
- PaX7UE4s9RvKFEAmQaUQEWorCNwYB527vU5xhhhithAvgD8A6g8NuD0f7ZdwGP32KoF4
- FL6A==
+ d=1e100.net; s=20251104; t=1781013597; x=1781618397;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=OhyJqPZjg1+M3+Hnd/IypCSNajvZxsN9GFvQ8gg4HO4=;
+ b=gmciPqJdcWWJm8DiI74xD/DIYeOnJLG/QCRC/sJrcBL9YhlT+biJLjPqQrcX9YWo3a
+ L/uLm/ObWKa9d+JcJVSa4GKjnO6nM4/A0SpouXofEa/SsYPbsZvZ1uCvYp7o9+gfr/V6
+ 3SrS//BEwZwscJNgDpEFX7cxJSPP98rP7SZU5Zix+9Dxsjf3VuHDrS8Ea4M7rz8ZPQmp
+ 9oY5BZXovaHkkntAEngG5uCona9uc6RSVXOsgmyzFkgRo1+wNJ36u6mMOgpYGRw/77KS
+ r2LFuhuXvicOBT4+8nsUNo+tRLfFMMr7Eee3CnMv68onClSp/n4/lTmhMCe8Sk/OSidB
+ qc6Q==
 X-Forwarded-Encrypted: i=1;
- AFNElJ85OcBwFYKGbFxWs3+Hjtmw6NACp7W7SS+Ae2+B0W+G5tx3aoO2/Q9TIify9bYw5TXVkhr4UjpaHQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz4vVKTaipwBtnS6LB6jZMuNt9AeUUq2tSC+jtEZR0GPxFqgXvM
- Is3Y4Rw/vXdi7F6Oh86UUUzCcaIKAacm5xhGdPF0m/2VWqX7KyRDPlk3FJ4MWTTRpfAKCbCpwiY
- 1GnSb4X/looE7TLHLrSnot1S/DdQdeDrG9y9ValQIQRbQ+LUm405WmwI=
-X-Gm-Gg: Acq92OE56hOPs6DhkCTlBhhywLAi/logBdPAuQ+DzOCbz+6lkjONxuyHCTrSd6h7W67
- ujzszx8sza7ZJ8HcQjad3hzH97A5b0XtEJHQTRX0jR8Huvsm/sklZG39S53U3aby/Ar10uz24YW
- tKTJhc5vg9wRs8mu1wjFQkoXDapVdMCuCGNO4S3BFv2qbvmbT/WBO9pFzmZvdeDyoRqDxvyXzin
- W+MpqVq6HuGJYCJIYB0DCtuum8NHyuwcGRQiLBP/WL3OB4HunlMZOkamSRP82J79jQDB/jfUuXp
- gcBjQLE9X2LTei3mvi57HbJjOu3jLVgDF/tFpmW5EDpw0KS2rzvIrfgVsLptxXSf+dxseD1TkFJ
- axwTPhXBoYkzdsWzQbfcT21hYTCgED/jCI9NQNtYrz83QXLhDl/MhcjZdJsovDg==
-X-Received: by 2002:a05:6102:3910:b0:639:6533:65a0 with SMTP id
- ada2fe7eead31-719361e38d9mr1339595137.18.1781012298712; 
- Tue, 09 Jun 2026 06:38:18 -0700 (PDT)
-X-Received: by 2002:a05:6102:3910:b0:639:6533:65a0 with SMTP id
- ada2fe7eead31-719361e38d9mr1339560137.18.1781012298168; 
- Tue, 09 Jun 2026 06:38:18 -0700 (PDT)
-Received: from [10.156.84.244] (113.170.88.92.rev.sfr.net. [92.88.170.113])
- by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-68e65b57c66sm8589225a12.28.2026.06.09.06.38.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Jun 2026 06:38:17 -0700 (PDT)
-Message-ID: <c8c4c4bc-6936-4826-83c2-11c7322980e4@oss.qualcomm.com>
-Date: Tue, 9 Jun 2026 15:38:14 +0200
+ AFNElJ/HcTF2yI0IZOEkSRmW5KsFVBHPn3UDpv7Zd/DkDzAW+cWccX/NAA4bWbeUhDuPviOZ1VadZq8mlA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy/c9Krn5dH17cMA5yheVOM+v/tZuJ0jCB7BpwkBWRGGJxV1ItI
+ 1+ss0JXknDmkxFiDYuJzXAVSzUaEd+s/d6sDOVH4qELKe9apVxWUsTUViiLOQh+Mg5eSVyppnNJ
+ WG97ZvdITBP+Mb0HGcdbIVscMTr+4Ti1H65dex8MXew==
+X-Gm-Gg: Acq92OGBTly2uHRbHlU9obFcP9m123RBR/cAlnUfMXRPIv1aAaFMhfiWKNV7UeBZ9bz
+ UUPSCbaXSo8BOBdbG4IcNt+n8kVauO2iKA5a/mQpmxbkGH3GcxbBJu1zil6X87L1GshRDPbvMsN
+ 1MoKBueLWmeuejmA/RA5yWmwEoEBH0RF3edF1uVohDFiSXZp+imKydWuHiAVOBn5mIwVfvg0Yj1
+ miMhqXtkQ1zofmaINaWBbLyQplkj87RrnT1SCMoFHCIiumjwOEcsRez5CZQtYLqY2eLyQbUhC5n
+ jLKi7xKL+2ow46l/k4XuY4OMDKMIvshPXPmVPy08vns2tr6u7aO5ln6mGo+Vsh0CzFC3JGr2iDT
+ ijA==
+X-Received: by 2002:a05:690e:144b:b0:660:f0e2:8dfa with SMTP id
+ 956f58d0204a3-661073da663mr16335881d50.1.1781013596955; Tue, 09 Jun 2026
+ 06:59:56 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/bcm2838: Route I2C interrupts to GIC
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- Nicholas Righi <nicholasrighi@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20260525032634.7754-1-nicholasrighi@gmail.com>
- <CAFEAcA83RtkukDbExv72YztjHZkhLy8JyOc49gY3eaKoW-5jKA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <CAFEAcA83RtkukDbExv72YztjHZkhLy8JyOc49gY3eaKoW-5jKA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjA5MDEzMCBTYWx0ZWRfX7IGdJq4w9hXa
- x718Vu221xRHEfWHxGkswvo5vNuZBk8sLf0rk7e61TyQlwy8yCyMEozdb/1aztMf4hGNHMu2eKB
- +CRKmkIW7xIa9a2tl2GlUNs58bryA+H/JQ1nEVVB8f4tcBhgnkKaXNSbdQ3CK4UKCH98LiO3H9B
- 6i+5Gm1YoMoFoyRyWabDj+8XOSNjc7kZAMLFmF7dY1LocxSx3Qc3aoRGynSXSZKy1P8vK0FpjjF
- /psW8nPut6glYUV3FPbY2jYhQRTFWsjWjxoPqJIIMIMuahRmn1yyoxD+BJ9Gbr2x6ET85jElEyb
- 8aLhHrWR5vytuEWfDbRrWwhcYve9MQmeDODsRSi4PNfRNkRR5GOVIKj3Mjxz3MggEkBdrRG+Dw/
- mh5o85uIeY3mO57dJbs2sFH49AVI1CzkKDGdsX8T1ZaLQz5ja29cMVR0u+nGgx8DeWh3caNGLpg
- R/gs5024eERpVcD3YUw==
-X-Proofpoint-ORIG-GUID: hKCTHjguPAEaDyy_7Uauyl-KAz4lXoI6
-X-Proofpoint-GUID: hKCTHjguPAEaDyy_7Uauyl-KAz4lXoI6
-X-Authority-Analysis: v=2.4 cv=GeonWwXL c=1 sm=1 tr=0 ts=6a28174b cx=c_pps
- a=DUEm7b3gzWu7BqY5nP7+9g==:117 a=ASywmo1ADVsXjDI2RVyDAw==:17
- a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=pGLkceISAAAA:8 a=--Y-9FJRVdA-VZ1UcwcA:9 a=QEXdDO2ut3YA:10
- a=-aSRE8QhW-JAV6biHavz:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-06-09_03,2026-06-09_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 adultscore=0 malwarescore=0 clxscore=1011 spamscore=0
- lowpriorityscore=0 impostorscore=0 priorityscore=1501 suspectscore=0
- phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2605210000
- definitions=main-2606090130
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <aiE5LrpfnJRbkx-A@sirius.home.kraxel.org>
+ <CAFEAcA_ow2ro3h0nfhY3jA_XToAnjdVFNPrF25aWLd=X2cnmaw@mail.gmail.com>
+ <aia8iXGozAclWQCb@sirius.home.kraxel.org>
+ <CAFEAcA9oB_-ao5C8fGYonE7njUMWLHo5-iETeN_XtnFL4PzyvA@mail.gmail.com>
+ <aibALjyPTXVUDpDv@sirius.home.kraxel.org>
+ <CAFEAcA-VQWKzJ-aNnzYHZ7a+sVP1y6tkUnE3YCPydsqP0uVXvg@mail.gmail.com>
+ <aiflCrf0iDwcpj27@sirius.home.kraxel.org>
+ <CAFEAcA_+fZnFG_2xH2gXF7ZtGo-WVwAhwkz9ucuS5kXZOYShnw@mail.gmail.com>
+ <aif6QGPxr4oMhb94@sirius.home.kraxel.org>
+ <CAFEAcA_qjzLjdqi3NWfY3cTDfkE0HmuvxSV3yVuBb+O95zvV9w@mail.gmail.com>
+ <aigTPdBzp0q4sbKc@sirius.home.kraxel.org>
+In-Reply-To: <aigTPdBzp0q4sbKc@sirius.home.kraxel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 9 Jun 2026 14:59:45 +0100
+X-Gm-Features: AVVi8CcfahVoBYUIDG1Vy8llPuh-x_5fqiB4RpS62V7JtWWgosyva6O7Nxs4Eds
+Message-ID: <CAFEAcA9VLSRgLS8vMUQwip=AT0Zic+T7xQvNRUYjGhwxd4=-dw@mail.gmail.com>
+Subject: Re: [PATCH 0/3] hw/arm: add support for shim loading
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 09 Jun 2026 09:45:02 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -155,41 +129,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 26/5/26 10:08, Peter Maydell wrote:
-> On Mon, 25 May 2026 at 04:26, Nicholas Righi <nicholasrighi@gmail.com> wrote:
->>
->> The I2C interrupts are only routed to the legacy interrupt controller. This means
->> that for modern device trees that use the GIC, the interrupts don't work. This patch
->> re-routes the I2C OR'd interrupt from the legacy interrupt controller to the GIC so
->> I2C emulation works out of the box with current kernels.
->>
-> 
->> diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
->> index c14a854046..6895f70385 100644
->> --- a/hw/arm/bcm2838.c
->> +++ b/hw/arm/bcm2838.c
->> @@ -184,6 +184,9 @@ static void bcm2838_realize(DeviceState *dev, Error **errp)
->>       sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->aux), 0,
->>                          qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_AUX_UART1));
->>
->> +    qdev_connect_gpio_out(DEVICE(&ps_base->orgated_i2c_irq), 0,
->> +                        qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_I2C));
-> 
-> We already connect this output from orgated_i2c_irq to
-> somewhere else, in hw/arm/bcm2835_peripherals.c:
-> 
->      qdev_connect_gpio_out(DEVICE(&s->orgated_i2c_irq), 0,
->                            qdev_get_gpio_in_named(DEVICE(&s->ic),
->                                                   BCM2835_IC_GPU_IRQ,
->                                                   INTERRUPT_I2C));
-> 
-> It is not possible to connect one GPIO output to two places
-> like this -- the second call will silently override the first one.
-> You need to create a TYPE_IRQ_SPLIT object, connect the
-> output from the device to the input of the splitter, and
-> connect the outputs of the splitter to the legacy interrupt
-> controller and the GIC.
+On Tue, 9 Jun 2026 at 14:42, Gerd Hoffmann <kraxel@redhat.com> wrote:
+> The rpi4 with tcg takes quite some time indeed, but edk2 isn't
+> exceptionally slow.  Booting until the kernel panics because there is no
+> root filesystem takes ~30 seconds, and those are roughly 50% / 50%
+> splitted between firmware and kernel.
 
-Oops I misread that, good catch.
+Put another way, booting via EDK2 is doubling the time taken :-)
 
+> A good chunk of the firmware time
+> is probably the zboot efi stub for kernel self-decompression (would have
+> to instrument the firmware for more details on that).
+>
+> Comparing that to direct boot without firmware does not work for me:
+>
+>   unable to handle EFI zboot image with "zstd" compression
+>   qemu-system-aarch64: could not load kernel '/boot/vmlinuz-7.0.11-200.fc44.aarch64'
+
+That error happens if you didn't have libzstd-dev available when you
+built QEMU. A QEMU with zstd support should be able to decompress
+a zstd EFI image.
+
+thanks
+-- PMM
 

@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00BC9CD8CB2
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 11:00:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CE6ECD8CB2
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 11:01:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXGcp-00023T-K5; Wed, 10 Jun 2026 06:57:35 -0400
+	id 1wXGdQ-0002ft-6z; Wed, 10 Jun 2026 06:58:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wXGco-00021j-7O
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:57:34 -0400
+ id 1wXGdO-0002br-15
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:58:10 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wXGcm-0003qN-Hi
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:57:33 -0400
+ id 1wXGdM-0006tC-Ml
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:58:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781089051;
+ s=mimecast20190719; t=1781089088;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UxZUNvwWAjxJnqiWTST9BHMgAOWqnx0QfSP91jc8058=;
- b=Us7Lx3FE87NdNddL1VVxb5LDPiKtsG+HfauAPwxKHdOYNGUTLrPV/gHN4FPtrKwm2RnKFA
- UHciWG8wxck2zfWE629H3c/kS0luPmSegY0c+inW5U4bXduRAVUYhxoMqy7devdJBZgeko
- 8RsBlGqTPaamFHZy9ZqdBNnBZNfCo/I=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=sWLOxIX5XZl9vwCXNGaKm8hQOhR+iz6yVZkthJeSGF8=;
+ b=iwkKEYDOfIeWJ03eFTf99pAKb0z0evaa8mDSOnHjJ6GDOZo/F9QKLiqHy544QcAYUQ/Rk1
+ Oox4eZcCmE9aDwbEsVs3/14DwiVLOBwvUCePjXBDbBTMqy0vT0k/OLaA8M0NQYNp85nUtR
+ Rg3wH51KPRPQRvduNefWwACVXsxikrE=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-523-2aaLgp07NvaqgovLCOqCqg-1; Wed,
- 10 Jun 2026 06:57:28 -0400
-X-MC-Unique: 2aaLgp07NvaqgovLCOqCqg-1
-X-Mimecast-MFC-AGG-ID: 2aaLgp07NvaqgovLCOqCqg_1781089046
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-207-EDX2QUv3N0eoyqN4yqko-A-1; Wed,
+ 10 Jun 2026 06:58:04 -0400
+X-MC-Unique: EDX2QUv3N0eoyqN4yqko-A-1
+X-Mimecast-MFC-AGG-ID: EDX2QUv3N0eoyqN4yqko-A_1781089083
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0D9471800615; Wed, 10 Jun 2026 10:57:26 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DA733180AC71; Wed, 10 Jun 2026 10:58:02 +0000 (UTC)
 Received: from localhost (unknown [10.44.24.21])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B44641954B09; Wed, 10 Jun 2026 10:57:24 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 953F01954112; Wed, 10 Jun 2026 10:58:01 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Wed, 10 Jun 2026 14:56:44 +0400
-Subject: [PATCH v2 02/22] ui/hmp: move index_from_key() where it is used
+Date: Wed, 10 Jun 2026 14:56:50 +0400
+Subject: [PATCH v2 08/22] ui/input: remove dead declaration
 MIME-Version: 1.0
-Message-Id: <20260610-ui-input-v2-2-f68452dd6a22@redhat.com>
+Message-Id: <20260610-ui-input-v2-8-f68452dd6a22@redhat.com>
 References: <20260610-ui-input-v2-0-f68452dd6a22@redhat.com>
 In-Reply-To: <20260610-ui-input-v2-0-f68452dd6a22@redhat.com>
 To: qemu-devel@nongnu.org
@@ -64,25 +64,25 @@ Cc: "Dr. David Alan Gilbert" <dave@treblig.org>,
  Jan Kiszka <jan.kiszka@web.de>, Peter Maydell <peter.maydell@linaro.org>, 
  qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
  qemu-ppc@nongnu.org, Thomas Huth <th.huth+qemu@posteo.eu>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2281;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=783;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=wXfw72vTSr4KKaDWsW73dCO4+hZUkFWNWVCR09czORY=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqKUL+r7bLGC8nlmk5+iHMRbDPKnZx9n+IOth13
- XObG2sDyYGJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCailC/gAKCRDa6OEJdZac
- 5coNEACvRaIo6JlG9lVvi/nHWYCXYfnK0BEXPawz7LeV1JYZ48lFcTgPphRj2Iue4xYOFKm85p7
- BSMiJYUi7DCRsLASIy3ZX/F8ggdUa0os4GUwWQYqTj2KhF1thcVWYlGfrCkeOxOtN3SuNq9Jnuh
- LMB9RC9ZlbBQSRCzDJGFO53wjdyB9h5f58Culvt/5p3yjXVlxNxVYgVplzTL2j6YQKSy/gCPDGE
- 0DQu9EcNxOSJ5+0kYCBBx64epIqTBW9HuIORwu26OX9/E5RsxIz1j02g/lYc329f+sN0kYDYWmd
- 0FiMGyoKZ56Sz6gC16IdVAK3nGl4Mww2WxmNYOskBIe9tq0AY/eGc3mG4n84cHbx/CGfGqVM4Bn
- vNbhm1CX2SWZUG1V54QddoClbGdXuhfTwI+SYUlL9VHPCmb4TzJ6N0Q5vGB5PTk4TpW06dPCtm8
- JEbNg6BOmhd4muD3aP23G9ahzY1rf2FVGpfzn4+u291sVV4WlSy1+Se7tFx5bi7DgYgg43TVBuO
- ttAx9ON0EzI058ACPOdHPzkTT/DB51MF7VkBc+BCxpZrdp9NED7PX+pRnPqfkd4H+XF8AVKM/nH
- 0DEdvw83ELNZmprQquaDfLkZM6n6aM4oYUDw53qhvvZtTlK/8cQGxwneDRBHW7NPjeDgF3D/YIX
- PfX0BONnCxCmW9g==
+ bh=l6d+462ZKgCVnhnNIGhbq34EYcMeVFg4cug7qMLz0jQ=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqKUL/JJZtyzRXth9OJEimr/jjEn1rtA7ijHW5Z
+ PYnkkislPKJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCailC/wAKCRDa6OEJdZac
+ 5aJsD/9ki3sf8dtw2M16tD4L9SI6GT80rCmqnQtaxtfNL/1hVnFuwenXC46UDH46bBYRCiJdi9z
+ 3OiNGi1OrlzZIFwzw8VbM57GrxXFR134g2hnvOyGcEpGy9ImvkC0CnWHJNSyOY3VqjHA0ZfnXf0
+ F3kmIhfFWivvQPYKFXH5rydZ5mpI8v0ooyBNZEnM7rUr7Ul1IAh/fxuCXneySLGxDhMHaReZC6k
+ LZi6fmUN8k1LXsdOzBK0YhgZjza6M4ueVRqvOtU7n7o7BKbf/XBtGcqfNvCow6Zc+McUGWtC8wQ
+ xNd+cEs3RHYSnpiUxKlaGimltX2RuYUo5rfPiwZltHpMFZ+8s+TJetEx65N2mYH8mcf4mE3OvYq
+ +AJQL0suLbO1x4lHHrYbzX6f+oZ13WMM/2jR3kmix4Bapovhfiy5kUH7/xpyE9i1iKFtQNxSzHQ
+ uZ16v72yJH5q4xqxaRfEp7g10QwYB05vH8b0Uj6U+TcnIp9T/C/I5AkbXtWyhOij1sML4YtaIYN
+ HvWOo5r8LXJ+K3onazTD6bIXqMbigVnW83EDiqXRIpatC3ftEFzF3H4EAiSk3iqK281XbnbLR2/
+ 4GvoHb03CC0SzknWeq95LiPq9VPJiGhDlJ0zVKhn+JFh4fzXxFE0ce1fmFpF+54wFw55M2YVaaX
+ Q23EviDMcsz7Ffw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: rf2qA98iDoRFnDnCcy04N7k0PDegxHb_v7D7WtsFkLg_1781089046
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: 41L7biwcsb4PPVZBNAnZeWm6lo4STVGZ18iR2mLRqso_1781089083
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -111,80 +111,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Fixes: 0337e4123e6 ("input: Allow to choose console with  qemu_input_is_absolute")
 Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- include/ui/console.h |  3 ---
- ui/input-legacy.c    | 15 ---------------
- ui/ui-hmp-cmds.c     | 15 +++++++++++++++
- 3 files changed, 15 insertions(+), 18 deletions(-)
+ include/ui/input.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/include/ui/console.h b/include/ui/console.h
-index a31c5a4995c..3cb78989cd2 100644
---- a/include/ui/console.h
-+++ b/include/ui/console.h
-@@ -450,9 +450,6 @@ bool vnc_display_reload_certs(const char *id,  Error **errp);
- bool vnc_display_update(DisplayUpdateOptionsVNC *arg, Error **errp);
- void vnc_cleanup(void);
+diff --git a/include/ui/input.h b/include/ui/input.h
+index ea2d944a7ed..6df8ae3a8a3 100644
+--- a/include/ui/input.h
++++ b/include/ui/input.h
+@@ -100,7 +100,6 @@ void qemu_input_touch_event(QemuConsole *con,
+                             InputMultiTouchType type,
+                             Error **errp);
  
--/* input.c */
--int index_from_key(const char *key, size_t key_length);
--
- #ifdef CONFIG_LINUX
- /* udmabuf.c */
- int udmabuf_fd(void);
-diff --git a/ui/input-legacy.c b/ui/input-legacy.c
-index 193c9ae2ef9..71b17a3cfc7 100644
---- a/ui/input-legacy.c
-+++ b/ui/input-legacy.c
-@@ -56,21 +56,6 @@ struct QEMUPutLEDEntry {
- static QTAILQ_HEAD(, QEMUPutLEDEntry) led_handlers =
-     QTAILQ_HEAD_INITIALIZER(led_handlers);
+-void qemu_input_check_mode_change(void);
+ void qemu_add_mouse_mode_change_notifier(Notifier *notify);
+ void qemu_remove_mouse_mode_change_notifier(Notifier *notify);
  
--int index_from_key(const char *key, size_t key_length)
--{
--    int i;
--
--    for (i = 0; i < Q_KEY_CODE__MAX; i++) {
--        if (!strncmp(key, QKeyCode_str(i), key_length) &&
--            !QKeyCode_str(i)[key_length]) {
--            break;
--        }
--    }
--
--    /* Return Q_KEY_CODE__MAX if the key is invalid */
--    return i;
--}
--
- void qmp_send_key(KeyValueList *keys, bool has_hold_time, int64_t hold_time,
-                   Error **errp)
- {
-diff --git a/ui/ui-hmp-cmds.c b/ui/ui-hmp-cmds.c
-index 1e9bc77bd80..76f5181de43 100644
---- a/ui/ui-hmp-cmds.c
-+++ b/ui/ui-hmp-cmds.c
-@@ -350,6 +350,21 @@ void hmp_change_vnc(Monitor *mon, const char *device, const char *target,
- }
- #endif
- 
-+static int index_from_key(const char *key, size_t key_length)
-+{
-+    int i;
-+
-+    for (i = 0; i < Q_KEY_CODE__MAX; i++) {
-+        if (!strncmp(key, QKeyCode_str(i), key_length) &&
-+            !QKeyCode_str(i)[key_length]) {
-+            break;
-+        }
-+    }
-+
-+    /* Return Q_KEY_CODE__MAX if the key is invalid */
-+    return i;
-+}
-+
- void hmp_sendkey(Monitor *mon, const QDict *qdict)
- {
-     const char *keys = qdict_get_str(qdict, "keys");
 
 -- 
 2.54.0

@@ -4,110 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D7E1CD98CE
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 18:31:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24C72CD98CE
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 18:32:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXNhp-0008FN-BX; Wed, 10 Jun 2026 14:31:13 -0400
+	id 1wXNil-0000ww-KJ; Wed, 10 Jun 2026 14:32:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wXNhn-000884-30
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 14:31:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wXNij-0000vU-80
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 14:32:09 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wXNhk-0000ME-4B
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 14:31:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781116264;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=08yRJLGeOutE7WIQdWEGFM7bIAmFYFUntuqs8+y11oM=;
- b=PYSA9pG4FRtCZKrNLio/2wy1QezPo3jOFM+mDNqzZv+Y7jjvoJfPJY8M8YqhZPx/T1V7AG
- iVVr2taMpKpf13+wKWs/BQAx68W7jgQ+qkmW56BQp9ohMeC/SOA1F1PWKEF0ovARhy8evY
- iht9aAV62l1TbcJm+/u2gToeC2Qlbxc=
-Received: from mail-ot1-f72.google.com (mail-ot1-f72.google.com
- [209.85.210.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-36-WCLCkcRtNuaKD0vyRVtyAA-1; Wed, 10 Jun 2026 14:31:02 -0400
-X-MC-Unique: WCLCkcRtNuaKD0vyRVtyAA-1
-X-Mimecast-MFC-AGG-ID: WCLCkcRtNuaKD0vyRVtyAA_1781116262
-Received: by mail-ot1-f72.google.com with SMTP id
- 46e09a7af769-7e6daf5d8f3so3214491a34.2
- for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 11:31:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wXNih-0000Va-Cr
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 14:32:08 -0400
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 65AFwiEo2142058
+ for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 18:32:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ zIGwmWeL8iRJJrHwbg3axlJZu6twmPBrRTM1hEbJsQo=; b=fjVB32/e5n4DQlHN
+ HebEmTk7PLaRW86wlKaenvSebbkBy8u2c9yIJE9IIsxX8P5AzxGxMjsyjBKkhmew
+ yotgkDmBqu375GfYsreM3/sSDYb0kKv81GRwsyYhorWN+f2FQinLoa5XLWYkJ8hd
+ BN4+XFrx1IyZ5Uj3EFCkP7XY+lFCNEoFvttECMPnzf794paL6vVZ/i3ii+IaDY61
+ EqHzEctkiqG0J1/S/AFpNfZHdG5etMk6JF3J09hefHkxN1aaLd1Z2UvnxQ3/QEgf
+ unNolwRwZ45sYOZapajwMJptQwDUY0U2VSaPHGiUpELXQaEQArOYeaN/i9rkQALo
+ c5i5AA==
+Received: from mail-dy1-f197.google.com (mail-dy1-f197.google.com
+ [74.125.82.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4eq10abdpq-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 18:32:05 +0000 (GMT)
+Received: by mail-dy1-f197.google.com with SMTP id
+ 5a478bee46e88-3075fa5a407so12729462eec.1
+ for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 11:32:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1781116324; x=1781721124; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=zIGwmWeL8iRJJrHwbg3axlJZu6twmPBrRTM1hEbJsQo=;
+ b=YNpfiFHL9sN1LzGPCGG7Ddyyh6JZD/MO/LOOCaK373/QflGuvocyjuKjXJ6R1b4ZOf
+ 0YvWOj1x0cUNTFBe99HiLzLhdKw5kk2xxGg45Pp0alKOIMCW2f2c2UG/mGZ+ZibGqC+H
+ tSVA2a+NFUTBqoSmKWE0AhA0q+ksnO3ePTWVVuN2AC2QMWjLSkxzmSPUCQlcjYlljm5T
+ QbVtQDcBiEmRyBTwNdaScZg3i9qh6y4ANFHkMBjZk+Wn3bV8wJ1lKBtDsonZmmGjaWfa
+ nn3G4eQxuQVXOi1rLNiM8ynmNaLvxmPKSMj32joXfJobAY4fPTm3JnswTB6hOyrTSaaS
+ rPDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781116262; x=1781721062;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=08yRJLGeOutE7WIQdWEGFM7bIAmFYFUntuqs8+y11oM=;
- b=dms+ye4WodGwnBZqIeTIzVK9/yeYyZdgH+1HKhSuMXWn77rQjz9hyPF95HFVBAI1j/
- 1iD1Wuv5CXM/dfndSHYdlHa01lSLnn+C0oN4Yjj4ujZrD5JlVSkExmFMSXqhE8ThxTiD
- YGC5miQk4N8pT43Wx4RxO0ZUNeG4mMae3YC+aJZTBjD8QzW40s4tU0tmefK1rDM+o7iI
- 7ceHinI5oOlAwiO4iCoV50WWiYm50+hbweNI9lRqfV4YL9qnxPVSXMAoZZC4Dki4x3uw
- LszGf937KCJYCna1gDs7++sUbR5Gd9S9E/Xc2DoDdzJOa8FAKcC6JB1h1FZOjI+SrfTg
- lV0w==
+ d=1e100.net; s=20251104; t=1781116324; x=1781721124;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=zIGwmWeL8iRJJrHwbg3axlJZu6twmPBrRTM1hEbJsQo=;
+ b=ovsNRcDUuNSgGBtEpgPkM9ti32LnFBNzrInLjkREIGaemFncTCsE3CR8MwV6spKMlL
+ sHTWIjMwzyO2unJIJxCGGgLJ3MvAcuoGQ3JehnhhDoiiOKyQSsOObs4t7tPNsf1W48sM
+ FPtmUD8/myw9M/SeqtMnMF/ESUaQJlwqruogmsUhkZXu/iHG+MH+E5/34yQn75aig3ME
+ qhXStlM7kcqZimXbDYhiEMBEZdXta0CDbbwdYn+ZSPVxVGE+nL+cjtKC5juiS3E3kQlV
+ YhpntQ6LC8u7Oiz1/xZnPjRTUtIEVafFWGlvHSVbEOqcuraC/SP3CiKzPt4FI+Xk8F9M
+ GzFg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8dzFVKsSlbfmI4xLKYqgqVkccs329qNWEBq0rzvPPg4D+X3udqPhR6JOfh8ABQLowVq1Ec0dL4gg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx3hCh5hpmJ0X56EukcArAXM08rt4P4SGfz6BOL+cU4BLU4bx53
- yExlKWtYMONMtRPunA1F3BHKAku3pBkUOtq1dRniCjOCTDvJoWM/nv3TY/Yx0yIIDS4sAjT2caa
- y2w2BVJOq6bMzShL5d1nzpAQsEVFCakMFRWPd3Xu3Co41e0O0GX66uQ==
-X-Gm-Gg: Acq92OFUtcfjVbwvFjLQIoyR99+R99Tvwed5LId2czWmRNwOEZY+zJAfroubrMwKr5h
- 9cg35dH1bWIwQrgeH5wQgzhYx703t5jpM1A7cczlmwSlZZjH3vYTH6iQv434mWZsptVddTWZgLE
- xLVqoIwxkiRCpm2ZdDy3zTN3NEj2owUifq8XUFOlU8O2FcWPmjIZdZr6BqDJOGYaW7FiJW5MEUO
- p3fc30GjagMywMmVddyl5GQ+corgkehp/vZRAfhNNbD3TklGBsEo/FVt2dAuYGlv1BeudJpcRv+
- DBLPLS0iXp0MYIlcSTqJMa6T/qkR4NITi8ssYxNqzF7C0FzuGVA5wYFE5CyodvSXsj5UczN+jwx
- ID6WTyFZdkVnuZeNn6e297ljqNQ==
-X-Received: by 2002:a05:6830:4424:b0:7dc:dd19:7f69 with SMTP id
- 46e09a7af769-7e7707be2femr131735a34.17.1781116261587; 
- Wed, 10 Jun 2026 11:31:01 -0700 (PDT)
-X-Received: by 2002:a05:6830:4424:b0:7dc:dd19:7f69 with SMTP id
- 46e09a7af769-7e7707be2femr131704a34.17.1781116261015; 
- Wed, 10 Jun 2026 11:31:01 -0700 (PDT)
-Received: from x1.local ([142.189.10.167]) by smtp.gmail.com with ESMTPSA id
- 46e09a7af769-7e6e78de8bdsm16737947a34.16.2026.06.10.11.30.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Jun 2026 11:31:00 -0700 (PDT)
-Date: Wed, 10 Jun 2026 14:30:57 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Fabiano Rosas <farosas@suse.de>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Dr . David Alan Gilbert" <dave@treblig.org>,
- Eric Blake <eblake@redhat.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Sana Sharma <sansshar@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Juraj Marcin <jmarcin@redhat.com>, qemu-rust@nongnu.org,
- Markus Armbruster <armbru@redhat.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Subject: Re: [PATCH v2 00/10] migration/qom: Remove TYPE_DEVICE dependency on
- migration object
-Message-ID: <aimtYbka4GB9Qyk6@x1.local>
-References: <20260609172514.2037645-1-peterx@redhat.com>
- <87jys75npb.fsf@suse.de>
+ AFNElJ8mXKKpmzLKLVRz9qvh66IPS6QqeytPrOpjXWAi6VmSdAVR1E6auvEBy4KXNBl8xPws60nE3aQPkA==@nongnu.org
+X-Gm-Message-State: AOJu0Yx1v734OUDdUTSF75mU06QFlDatNa0wZ4fCSQd9ySgK5lI2Wq3K
+ MejQahBijx+JRCk5LjIkLhtPg5rnYOlSUpd2WA7I4uLNlzFItZJRmK2YRZG2Ck8xHrPsKEPlivL
+ fcrmZLOicJCliBZjgFFj8OqcRRRlRL5ODYMjsYmVDCzZlH7YJAuzlHFQ=
+X-Gm-Gg: Acq92OGyOHoldxDmeP05n8LQvpfBMSZkuM0XmaciO/bL1VS/2u4njjq8ZqbC4WOYLRo
+ HF+Nk3dtAcVYmAPFAYrErfPWoP/Ixr0rofgNA4yEqvBD/Nky+PvzJxJ056uTZBeM2QsZY8Vf4pT
+ fqR2s5G4RAouVlib6f2hYZz5ZJw6JOKWXcpn0zcUzrhPHpI7n4lorWkiUMoFKDpDvZuu65H+/kK
+ 0a/WNfkK1CO3H4yqDq4yeIEMSF+vWkRgh0Yyw2MkU34QrLdi6pkUZpWKGmwZ1u0iGT1Lr+fVW16
+ q6Dbv0iRJ/OHXsa/+nQXtXXHIjj0aAJXCN4UwbE1Zsl8IibmFdMmAXK7LJyOVZjnVQjDR2A6YkX
+ h5nKzpACG6czxv2pjM1zrtg9Ctdweed34cqiwErBo4vU+eectG2d67rW+mXRAgWnzXWN8O4lN+P
+ z+GgB2pNzFzsN/Y2IsWYjP5j+v
+X-Received: by 2002:a05:7300:7fa8:b0:304:e450:67e0 with SMTP id
+ 5a478bee46e88-3077b3c30famr18412586eec.10.1781116323944; 
+ Wed, 10 Jun 2026 11:32:03 -0700 (PDT)
+X-Received: by 2002:a05:7300:7fa8:b0:304:e450:67e0 with SMTP id
+ 5a478bee46e88-3077b3c30famr18412556eec.10.1781116323349; 
+ Wed, 10 Jun 2026 11:32:03 -0700 (PDT)
+Received: from [192.168.1.170] (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-3074dea8708sm28287408eec.15.2026.06.10.11.32.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 10 Jun 2026 11:32:02 -0700 (PDT)
+Message-ID: <215e273a-1910-4788-ab68-a76734d9eefe@oss.qualcomm.com>
+Date: Wed, 10 Jun 2026 11:32:01 -0700
 MIME-Version: 1.0
-In-Reply-To: <87jys75npb.fsf@suse.de>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 73_giy2EYq4WNz-ze3-nv7WHLfXbymzp8Vg0fD32dKA_1781116262
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 05/27] tests/tcg/meson.build: introduce exe_name
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud_=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn_=C3=A9_e?= <alex.bennee@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Gustavo Romero <gustavo.romero@linaro.org>
+References: <20260609214745.772536-1-pierrick.bouvier@oss.qualcomm.com>
+ <20260609214745.772536-6-pierrick.bouvier@oss.qualcomm.com>
+ <tgemg6.297pm0qzw7mjt@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <tgemg6.297pm0qzw7mjt@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Authority-Analysis: v=2.4 cv=GoFyPE1C c=1 sm=1 tr=0 ts=6a29ada5 cx=c_pps
+ a=Uww141gWH0fZj/3QKPojxA==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
+ a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
+ a=EUspDBNiAAAA:8 a=KKAkSRfTAAAA:8 a=5yw_3auFD0dBBNfgJhAA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=PxkB5W3o20Ba91AHUih5:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: XcpeZbX7oUdon_s_BwkLsR0EgguNhMIm
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjEwMDE3NSBTYWx0ZWRfX1nF9PfsGeQvP
+ MvyjfZWrzoX4HHnH98ss4ioGurS5OB+F9uxsc8dAiG8FNFk62OKGy+RxidMVeuwEKV+Z+YEp48k
+ pcgLSHkkMT7AEDk9pecrrjndvoJCu9HT7v+XLiCu7CqjEnVQ1o5MzArWqdneOKCRKQv+DJGM30w
+ mAZjraDUwBomOcaSv3erLf+QqjEkfugcbaAGSCAD67FT6QXP6BbxoGkbSPuEwEBk+KtKLWMxjM5
+ ijalQwVGoEk1WF/UWt7j9PtoINyu2GAMZ6230b10T54QfoaWNHO+cwxJ01Eget9mwaF9iFIgmnx
+ t42qjeZeSplpB1693lwUM+eglwjp/s94QOu112096sd0XTQLS+qWUAw7Ko7ht56cvz6KJ+amxl6
+ OaLxCpMDUjAgO14u2SW5OpmIfPz8w/gxYllOdWHdppLSdGt5QA0gV0pUs/+LMIgjl5AHSIVwAW3
+ zc/2VJSBarB529Lh5yw==
+X-Proofpoint-GUID: XcpeZbX7oUdon_s_BwkLsR0EgguNhMIm
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
+ definitions=2026-06-10_03,2026-06-09_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0 bulkscore=0 impostorscore=0 priorityscore=1501
+ suspectscore=0 adultscore=0 clxscore=1015 spamscore=0 phishscore=0
+ malwarescore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2605210000
+ definitions=main-2606100175
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,271 +161,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jun 09, 2026 at 07:54:56PM -0300, Fabiano Rosas wrote:
-> Hi,
+On 6/10/2026 12:03 AM, Manos Pitsidianakis wrote:
+> On Wed, 10 Jun 2026 00:47, Pierrick Bouvier
+> <pierrick.bouvier@oss.qualcomm.com> wrote:
+>> We add possibility to duplicate a test executable for a given source
+>> file. This is needed when different cflags need to be used (like
+>> vectorized vs non-vectorized for instance, like sve tests in aarch64).
+>>
+>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+>> ---
+>> tests/tcg/meson.build | 17 +++++++++++++++--
+>> 1 file changed, 15 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
+>> index 72d1a9f8986..2c6d85c586a 100644
+>> --- a/tests/tcg/meson.build
+>> +++ b/tests/tcg/meson.build
+>> @@ -11,6 +11,7 @@ tcg_tests = {}
+>> #     'tests': [
+>> #       {
+>> #         'src_file': {
+>> +#           'exe_name': ['provide an alternative binary name'],
+>> #         }
+>> #       },
+>> #       ...
+>> @@ -18,10 +19,10 @@ tcg_tests = {}
+>> #   }
+>> # }
+>> #
+>> -# Every test executable, is built only once.
+>> +# Every test executable, identified by 'exe_name' is built only once.
+>> # Tests for a given src use the same executable by default, and their
+>> definition
+>> # is guaranteed to be unique also.
+>> -# Default name is derived from src.
+>> +# Default name is derived from src if 'exe_name' is omitted.
+>>
+>> # plugins come first, as we need to build the list
+>> subdir('plugins')
+>> @@ -47,11 +48,23 @@ foreach target, plan: tcg_tests
+>>
+>>   foreach t : tests
+>>     foreach src, setup: t
+>> +      # return a clear error if user mispell a setup entry
 > 
-> After we discussed your v1 I started playing with this in parallel and
-> stumbled into pretty much all of the issues this series resolves. Nice
-> work!
-
-Good to know at least it looks reasonable for someone.. thanks. :)
-
-Looks like Dan still has concern that I use the ptrs in obj props but I'll
-discuss it later separately.
-
+> Minor typo:
 > 
-> I applied a patch [0] on top of this series to allow using the
-> command-line to create the migration object. It can set all (most)
-> options with -object migration,id=mig1,key=val,...
+>  If user misspells*
+>
+
+Thanks for the english fix, I'll check other places also.
+
+> Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 > 
->  $ ~/qemu-system-x86_64 -nodefaults -nographic -S \
->  -object migration,id=mig1,announce-initial=99,downtime-limit=99,multifd-channels=99,multifd-compression=zlib,multifd=on
->  ...
->  (qemu) info migrate_parameters
->  (qemu) info migrate_capabilities
->  ...
->  announce-initial: 99 ms
->  downtime-limit: 99 ms
->  multifd-channels: 99
->  multifd-compression: zlib
->  multifd: on
-> 
-> I'm not saying we should do that now. I just want to check with you to
-> make sure we're not closing the door for future improvements:
-
-IIUC it works, maybe indeed it's a better way than "-incoming config:" at
-least in that we stick with the current APIs.
-
-Said that, it does bypass the singleton work I did previously:
-
-https://lore.kernel.org/r/20241029211607.2114845-1-peterx@redhat.com
-
-Which was also unfortunately got rejected..
-
-So, I suppose this is still fine that all the tricks resides in migration/
-so far, maybe this is acceptable.
-
-But then, we'll need to make sure the rest QEMU object code doesn't have
-assumption that all objects can be created more than one.. and making sure
-nothing crash elsewhere: when it crashes or works inproperly, we may face
-again that singleton problem one way or another.  That's so far the only
-concern I have.
-
-> 
-> 1) It seems the "help" option is tied to the class. Setting options
-> work, but the help says otherwise:
-> 
->  $ ~/qemu-system-x86_64 -nographic -object migration,id=mig1,help                                                                            
->  There are no options for migration.
-
-This one is easy, something like this should work:
-
- bool type_print_class_properties(const char *type)
- {
-+    g_autoptr(Object) obj = NULL;                                                                                                       
-     ObjectClass *klass;
-     ObjectPropertyIterator iter;
-     ObjectProperty *prop;
-@@ -134,7 +135,12 @@ bool type_print_class_properties(const char *type)
-     }
- 
-     array = g_ptr_array_new();
--    object_class_property_iter_init(&iter, klass);                                                                                      
-+    if (object_class_is_abstract(klass)) {                                                                                              
-+        object_class_property_iter_init(&iter, klass);                                                                                  
-+    } else {                                                                                                                            
-+        obj = object_new_with_class(klass);                                                                                             
-+        object_property_iter_init(&iter, obj);                                                                                          
-+    }                                                                                                                                   
-     while ((prop = object_property_iter_next(&iter))) {
-         if (!prop->set) {
-             continue;
-
-> 
-> 2) user_creatable_add_qapi
-> 
->  The command line parsing goes through user_creatable_add_qapi() and
->  instantiates an object. Since migrate_params_init runs from inside
->  .instance_init, it cannot see any parameters that are set this way.
-> 
->  Moreover, the migration_object_init() call from vl.c will init a
->  second migration object.
-> 
->  In the patch below I have hacked the current_migration assignment to
->  first check if the object has already been created and use that
->  instead of creating a new one.
-
-Yeah that trick should work at least for now, except the concern I raised
-above.
-
-Since the tap work is unblocked (by temporarily introducing the tap flag),
-I plan to put aside the "-incoming config:*" work a bit.  We'll need to
-pick it up at least when there's yet another similiar use case like tap or
-"mode" of CPR, but then lower priority. But let me know if you or anyone
-still think we should have it land earlier, I can re-prioritize that.
-
-> 
->  How does this work for normal objects? I suppose most of them have the
->  TYPE_DEVICE as a parent, so they're not hanging in the "objects"
->  container.
-
-I may not get the real question behind, but.. iiuc normal objects shouldn't
-be sub-class of TYPE_DEVICE, and they should work fine with -object *help,
-and they should be able to be created with multiple instances in most
-cases.
-
-> 
-> 3) TLS (of course)
-> 
->  With the patch below, setting TLS options from the cmdline asserts:
->  visit_start_alternate: Assertion `!(v->type & VISITOR_INPUT)' failed.
->  (just mentioning in case it can affect the design of this series)
-
-Oh, I didn't really notice we'll have issue with it.. I did the string prop
-solution for tls* by pure accident, because we already assumed it's always
-strings anyway and it's trivial to use the object prop str helpers.  I
-didn't expect it an issue when used with string inputs.  So I assume for
-those we need to rely on JSON formats?
-
-  -object '{"qom-type": "migration", "id": "mig1", "tls-creds": "SOMETHING"}'
-
-> 
-> [0]
-> -->8--
-> From 8c6c0743f1659d9df45e80334e8dc5f068ff984e Mon Sep 17 00:00:00 2001
-> From: Fabiano Rosas <farosas@suse.de>
-> Date: Tue, 9 Jun 2026 16:00:21 -0300
-> Subject: [PATCH] wip
-> 
-> ---
->  migration/migration.c | 11 ++++++++++-
->  migration/options.c   |  1 +
->  qapi/qom.json         | 29 +++++++++++++++++++++++++++++
->  3 files changed, 40 insertions(+), 1 deletion(-)
-> 
-> diff --git a/migration/migration.c b/migration/migration.c
-> index ae0c373549..22c8ced766 100644
-> --- a/migration/migration.c
-> +++ b/migration/migration.c
-> @@ -297,7 +297,16 @@ void migration_object_init(void)
->  {
->      /* This can only be called once. */
->      assert(!current_migration);
-> -    current_migration = MIGRATION(object_new(TYPE_MIGRATION));
-> +
-> +    Object *root = object_get_objects_root();
-> +    ObjectProperty *prop = g_hash_table_lookup(root->properties, "mig1");
-> +
-> +    if (prop->opaque) {
-> +        current_migration = prop->opaque;
-> +        object_ref(current_migration);
-> +    } else {
-> +        current_migration = MIGRATION(object_new(TYPE_MIGRATION));
-> +    }
-
-A quick comment for this one; maybe better with:
-
-     Object *mig_obj = object_resolve_path_component(object_get_objects_root(),                                                          
-                                                     "mig1");                                                                            
-
-Or even better:
-
-static int find_migration_object(Object *obj, void *opaque)
-{
-    if (object_dynamic_cast(obj, TYPE_MIGRATION)) {
-        *(Object **)opaque = obj;
-        return 1;
-    }
-    return 0;
-}
-
-Then:
-
-     object_child_foreach(object_get_objects_root(),
-                          find_migration_object, &existing);
-
->  
->      /*
->       * Init the migrate incoming object as well no matter whether
-> diff --git a/migration/options.c b/migration/options.c
-> index 1cc99382d3..88f02c45a1 100644
-> --- a/migration/options.c
-> +++ b/migration/options.c
-> @@ -21,6 +21,7 @@
->  #include "qapi/qapi-visit-migration.h"
->  #include "qapi/qmp/qerror.h"
->  #include "qobject/qnull.h"
-> +#include "qom/object_interfaces.h"
->  #include "system/runstate.h"
->  #include "migration/colo.h"
->  #include "migration/cpr.h"
-> diff --git a/qapi/qom.json b/qapi/qom.json
-> index dd45ac1087..fe7dd4673c 100644
-> --- a/qapi/qom.json
-> +++ b/qapi/qom.json
-> @@ -8,6 +8,11 @@
->  { 'include': 'block-core.json' }
->  { 'include': 'common.json' }
->  { 'include': 'crypto.json' }
-> +# FIXME: this requires --disable-tools due to:
-> +# /usr/bin/ld.bfd: libqemuutil.a.p/meson-generated_.._qapi_qapi-commands-migration.c.o:
-> +# in function `qmp_marshal_query_migr: qemu/build/qapi/qapi-commands-migration.c:48:(.text+0x181c):
-> +# undefined reference to `qmp_query_migrate'
-> +{ 'include': 'migration.json' }
->  
->  ##
->  # ***********************
-> @@ -1187,6 +1192,28 @@
->    'data': { '*cpu-affinity': ['uint16'],
->              '*node-affinity': ['uint16'] } }
->  
-> +
-> +##
-> +# @MigProperties:
-> +#
-> +# Properties for migration objects.
-> +#
-> +# @multifd: this is a capability and therefore is not part of
-> +#     MigrationParameters yet (WIP).  (default: 0)
-> +#
-> +# @store-global-state: this is a compat property and therefore is not
-> +#     part of MigrationParameters.  It's probably best to keep it like
-> +#     this so we don't have to deal with previously impossible
-> +#     scenarios if the user tries to set it via set-migrate  (default:
-> +#     0)
-> +#
-> +# Since: 11.1
-> +##
-> +{ 'struct': 'MigProperties',
-> +  'base': 'MigrationParameters',
-> +  'data': { '*multifd': 'bool',
-> +            '*store-global-state': 'bool' } }
-> +
->  ##
->  # @ObjectType:
->  #
-> @@ -1237,6 +1264,7 @@
->      'memory-backend-ram',
->      { 'name': 'memory-backend-shm',
->        'if': 'CONFIG_POSIX' },
-> +    'migration',
->      'pef-guest',
->      { 'name': 'pr-manager-helper',
->        'if': 'CONFIG_LINUX' },
-> @@ -1315,6 +1343,7 @@
->        'memory-backend-ram':         'MemoryBackendProperties',
->        'memory-backend-shm':         { 'type': 'MemoryBackendShmProperties',
->                                        'if': 'CONFIG_POSIX' },
-> +      'migration':                    'MigProperties',
->        'pr-manager-helper':          { 'type': 'PrManagerHelperProperties',
->                                        'if': 'CONFIG_LINUX' },
->        'qtest':                      'QtestProperties',
-> -- 
-> 2.53.0
-> 
-> 
-
--- 
-Peter Xu
+>> +      foreach key, _ : setup
+>> +        if key not in [
+>> +                       'exe_name',
+>> +                       ]
+>> +          error('unknown tcg setup entry \'' + key + '\' for test ' +
+>> src)
+>> +        endif
+>> +      endforeach
+>> +
+>>       # meson '/' operator drops left operand if right is an absolute
+>> path
+>>       src = folder / src
+>>       file = files(src)
+>>       test = fs.name(file)
+>>       exe_name = fs.stem(src)
+>> +      if 'exe_name' in setup
+>> +        exe_name = setup['exe_name']
+>> +      endif
+>>
+>>       exe_name = target + '-' + exe_name
+>>       test_name = exe_name
+>> -- 
+>> 2.43.0
+>>
 
 

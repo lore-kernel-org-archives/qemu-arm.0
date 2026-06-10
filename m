@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B57E9CD98C5
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 20:44:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 956D2CD98D2
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 20:44:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXPlq-0005mu-T7; Wed, 10 Jun 2026 16:43:30 -0400
+	id 1wXPlt-0005pF-44; Wed, 10 Jun 2026 16:43:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wXPlp-0005l1-AJ
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 16:43:29 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1wXPlr-0005n7-CB
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 16:43:31 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wXPln-0003lp-H4
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 16:43:28 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-490d1e54b3bso35284545e9.1
- for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 13:43:27 -0700 (PDT)
+ id 1wXPlp-0003qO-SX
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 16:43:31 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-490b8a97b11so80459235e9.0
+ for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 13:43:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781124205; x=1781729005; darn=nongnu.org;
+ d=linaro.org; s=google; t=1781124208; x=1781729008; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=hwHZ9gYg6F3c24UR8lvzGRrX0K3Wt5/wFulUFwGmu88=;
- b=BNsUMKfURb/TAYuStHJC6WuukS50fbcFkd/A5bVMlaXoUIjgSbIhbzt3GutJqrj311
- NvMFudtR0SiuOqTm5dLVdC7jclcHyj+ejjA4bu8t+bl+LIlB0lmcajA0Sn2EmkHSaLbN
- /8opj/6RyPo9bHo41EP1HrRcA8iZc+JISSaqednEw/MG4GAE4jQhQYPapHKrcBP/yua8
- DqCH7Q3LTyPySJeNoF9UqFF7DB9VS4FVflMv6zWhgBfLERXzlVSxOBSSLXCWv+GplCJp
- maICIBZiRX8BSp3QHwZofYnvYPUMQhnIBzFNV+RRIjOENUXiHZtD8lL+M3qHyO1pHR6K
- lO0Q==
+ bh=ngYhxDvb+8oUas7oVCWnHd5LEJw2/QGnt9A2biWJF3g=;
+ b=BCgUIZPsAhup6MJ9PfEoafB0EsgBwMSEHwAEjdpmjAn6IXc/0C1/XkkdFLH0GH3O/t
+ Ww2m1tdywSvM9WexFZJbo8evald/md7ainjdCfwdQKmb800HcQPdruDisIZLFt2gOF/G
+ 5/ZrdKthfClWiHb46THWJemMrzR0oGdx8P4mzYKa4jsIEbDKIDvFlt48BtgByuTomV76
+ vGUAQ470yIPW5fSpU8BgKW6cwxhu0vPbXuo/42g7rJoo8BEFViygV54K3nxSIqNABr2/
+ iiTjLjBXoTNUhuhpcynQwwWBGVCNQZfVEv6xZPh7QINTWLtBlfrUT3+btsK5qmxkl+If
+ Mifg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781124205; x=1781729005;
+ d=1e100.net; s=20251104; t=1781124208; x=1781729008;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=hwHZ9gYg6F3c24UR8lvzGRrX0K3Wt5/wFulUFwGmu88=;
- b=rszbtnovxxHURpCwWQAumGbdqSmMt1pQ8Q71YA/1VWi9JKfzLXj1QyMnIYL0fFKW3J
- yczp6WVoB9nNL2i6McQThetb1XdP1PiqoZ/MB31S2AfMHmV1j0yn02igr9lWYyu9i5Uc
- AfkjgXGSico+3tS+t/9fdct5Xh2/Sw3EJIgz8XYrrfI7NLwkjsdPxD8TyJITql1xtWW4
- aGiu7Gl7SoLi6iNmdVIb+9/ZuuuNulrgOsXFT19BNGaRA45k8gAEY3Ghh7EFn7Vve76y
- HoAwYQQq2hnnHR7UawfjyrflkDIr+Yp6DML7DQbH+ravlvsNO5RjV8n+ZpXIFEkaJg9U
- TY3w==
-X-Gm-Message-State: AOJu0YyETJ3ChHCRePamLTHYB0MtcR/Osj+oRNpj6HEx8z8sVXRRkB4T
- IV0PdEDrNFzV2tA7QTSm6KRRvABPbre9PbFy/vFJ9uLlKzOuJtZwKlUPgIXYRomkGUc=
-X-Gm-Gg: Acq92OFBZSdVd5yo/l0AE24Cd8nz7akAYuPPIrHNL8o9QWJVq95Sa5vCZerNxqfJyZR
- 4HXlwFI4HG9/5qaY6N4LR1uzjjSWF2/L97GojvTHlaaEvxyAT+roIWdSlRzmkdU6LCfd1/vlETh
- wzBYcscGCUpobtAlhuiOdEEY0FFnq9bXbZpq+emNfo7bjOTigqZ14vsLAJ07zK6SdnHm0bzaO0w
- CXpghy4M/ynIXAwcYZTDzufTFNKM9u5y5LeH+0DaRcz2IZSHp5HLXKCh8aNTxRDQ6AeoTxubVNl
- agUZpj454YJSpG6p/mPqgD8rLzIXuV4OpMSlvemEzR3Q9iY2NDzu1p9ifAY52WMzJIuKfFApnxX
- RoLnTW8Q+LJteSU4x0ysEfIpxdiiHWg9wbFRJw/cH6RIO5VBYYxjhznbQBd2WGmiGpYAB/J/Lh7
- PU198v5KQbc0YAgLeIVApmFvJS67LNYWlyHg==
-X-Received: by 2002:a05:600c:8486:b0:490:e196:6574 with SMTP id
- 5b1f17b1804b1-490e196664fmr34202005e9.13.1781124205618; 
- Wed, 10 Jun 2026 13:43:25 -0700 (PDT)
+ bh=ngYhxDvb+8oUas7oVCWnHd5LEJw2/QGnt9A2biWJF3g=;
+ b=rk8zRcuGpsnkw5hjFVML0BX4hBneru+7Scw+KgNZ/sTUXDpW9+YUh6Oo02PtyG6FBn
+ dVAVNiN1DQSvdw/UR5a4H2ek3agGNEqq/DnrOWa8/9VUB95/0zwXYOwbtY5cx/0LbWXo
+ 2Rq2sb5w+++aLQDdooVl01vDMwx3lmvIe2YOymNo8O2PLgLNlu6bH6q64+wnS0+UbrL+
+ 6OoBASUxnB1JtnK/YKZbVPuLPfA8M99yB0RImzpbIosn4UcpQAAN8dGdtawQrLG34PIr
+ cQhbsmsKiJHirLOhQpFTn8N/eb7ZXTKE4sW65DwDOi79CK1FACWOcMASTDLvIAleBh6i
+ LjQg==
+X-Gm-Message-State: AOJu0YzdkwYqs6cX1FW+eLdJoUgqeafoOg9zWhfK2/DLVOGwUD4Cp9YN
+ fF70d8W98HR53D8xnaTdAdnTSgw2gOwTvaJphu5ZsQF5eEYZvbDEoLLWpU0FB0qoeCs56tOuWr2
+ NhFTS
+X-Gm-Gg: Acq92OGI2Omw0k8T/uo6O7MWFrwcyt7+6WtMd7kJbBYUZa6DA+lULWXQzzhNr+1v9z7
+ RB+WTP9G0BPKFoS/jFWt1N3G2mq3E22/uO5/5qvyE/EnSclHutIaxCnweuMs5hyH/7Mn5ojfZk7
+ 0g9nvFN2CjJ1fwu1XtsucghR8zXC2NZxVo4gSaZdWBzZvQb6VoPv9AvRV7Qs/GxBOZUR4p9rkcH
+ S6u+hPeN6xTJ54E7Y0JFviWYX4zAFDH/5O7ndxvl5kcPx0d5QkGf1WWHZIhYOHHshe4UHSWsuKJ
+ eQua1JDot3QbYF352xbA29KAhAHeo8YGu1gUTtFOE6RduqMTunrpN6Opy/Q3Kpa32+IYdv3RKA+
+ BM9dKzBakGaMK6V5X8EdfXQfQDeHxHjx70nuWOujq8qxlhsTCL43fkPbEGIx5+wIDEDsTMrQCJF
+ xKilbWJMb7pGMdADhexe9IXsdTPyXWB6qTaA==
+X-Received: by 2002:a05:600c:6995:b0:490:b473:8f78 with SMTP id
+ 5b1f17b1804b1-490c25dd66emr421828215e9.17.1781124208335; 
+ Wed, 10 Jun 2026 13:43:28 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-490dc47d4e0sm92781315e9.0.2026.06.10.13.43.23
+ 5b1f17b1804b1-490e2ca1a43sm10639925e9.8.2026.06.10.13.43.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Jun 2026 13:43:24 -0700 (PDT)
+ Wed, 10 Jun 2026 13:43:27 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 22D7A5FA2F;
+ by draig.lan (Postfix) with ESMTP id 88F015FC9A;
  Wed, 10 Jun 2026 21:43:23 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -72,17 +73,17 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 1/6] target/arm: split evaluation of CNTHCTL timer IRQ masks
-Date: Wed, 10 Jun 2026 21:43:17 +0100
-Message-ID: <20260610204322.828645-2-alex.bennee@linaro.org>
+Subject: [PATCH v2 6/6] docs/system: add FEAT_ECV_POFF to the emulation list
+Date: Wed, 10 Jun 2026 21:43:22 +0100
+Message-ID: <20260610204322.828645-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260610204322.828645-1-alex.bennee@linaro.org>
 References: <20260610204322.828645-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,33 +106,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Whether the physical and virtual timer IRQs are masked are independent
-of each other so the checking of CNTHCTL:CNTPMASK shouldn't depend of
-not changing CNTVMASK.
-
-While unlikely to be seen in real life we should still make sure we
-behave correctly.
+We already had this implemented since 2808d3b38a5 (target/arm:
+Implement FEAT_ECV CNTPOFF_EL2 handling) but it has its own feature
+name now. Add it to the list.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/helper.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ docs/system/arm/emulation.rst | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 9dd8fdfa41b..f4aae0a4072 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1802,7 +1802,8 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
-     if ((oldval ^ value) & R_CNTHCTL_CNTVMASK_MASK) {
-         gt_update_irq(cpu, GTIMER_VIRT);
--    } else if ((oldval ^ value) & R_CNTHCTL_CNTPMASK_MASK) {
-+    }
-+    if ((oldval ^ value) & R_CNTHCTL_CNTPMASK_MASK) {
-         gt_update_irq(cpu, GTIMER_PHYS);
-     }
- }
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index 18c63559679..3622e3889c7 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -60,6 +60,7 @@ the following architecture extensions:
+ - FEAT_E2H0 (Programming of HCR_EL2.E2H)
+ - FEAT_EBF16 (AArch64 Extended BFloat16 instructions)
+ - FEAT_ECV (Enhanced Counter Virtualization)
++- FEAT_ECV_POFF (Enhanced Counter Virtualization Physical Offset)
+ - FEAT_EL0 (Support for execution at EL0)
+ - FEAT_EL1 (Support for execution at EL1)
+ - FEAT_EL2 (Support for execution at EL2)
 -- 
 2.47.3
 

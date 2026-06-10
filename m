@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BFF8CD8CB9
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 16:22:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9F8ECD8CB2
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 16:23:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXLeq-0007VU-V0; Wed, 10 Jun 2026 12:20:01 -0400
+	id 1wXLbI-00014W-7T; Wed, 10 Jun 2026 12:16:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wXLep-0007Nv-Ei
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 12:19:59 -0400
+ id 1wXLbG-0000sU-Sr
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 12:16:18 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wXLen-0002pS-8j
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 12:19:59 -0400
+ id 1wXLbE-0000qQ-5m
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 12:16:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781108396;
+ s=mimecast20190719; t=1781108175;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=KPxM7JPrYnyM6ediqrKrMvZ91huDBa+SM17tsnloIR0=;
- b=GbbPKs+BWPYvdwsNp1xt1Z+dIlM6L7NEV5ixMQx60vSty8bqo3cPdCbHSOnXMwgcFw3j2P
- O6g2hbqF/nqaVetMdOkrWNPfbslFEiMjcZTRS7FfDGobavjwP88QDNGsOcuy/ofywOlsvQ
- R9M0DUlPcmPSb9d1YifVPREIg2Qdx6o=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=uvFTzZjjO9idlLWQM+nVp1cWVd0ft7IuIzu1cusxjTs=;
+ b=QkxGNgoZQ56xK0gzeiDjlaDCt7gXcFLuXT5e3+ySGVKTqqfmQ/iVn6Xv8E0mlUl9UTc1AZ
+ 3fwqqB6xMWssnzindHl7lcFOszvOZJqfuEmsl+kchuxrXkhm3ZUORuO8L9DVIi2R7mpPIn
+ EfD+C9wGivJQQef1v303/V6/fZjyCuY=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-550-ZIzlEbrbMomlf60wXH1_BA-1; Wed,
- 10 Jun 2026 12:19:51 -0400
-X-MC-Unique: ZIzlEbrbMomlf60wXH1_BA-1
-X-Mimecast-MFC-AGG-ID: ZIzlEbrbMomlf60wXH1_BA_1781108389
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-446-hEvMFg6XPy64OVPVP4T-FA-1; Wed,
+ 10 Jun 2026 12:16:11 -0400
+X-MC-Unique: hEvMFg6XPy64OVPVP4T-FA-1
+X-Mimecast-MFC-AGG-ID: hEvMFg6XPy64OVPVP4T-FA_1781108170
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 72622187BE3C; Wed, 10 Jun 2026 16:19:48 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B8645184EB59; Wed, 10 Jun 2026 16:16:08 +0000 (UTC)
 Received: from redhat.com (unknown [10.44.50.112])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 97C8D1800591; Wed, 10 Jun 2026 16:19:41 +0000 (UTC)
-Date: Wed, 10 Jun 2026 17:19:38 +0100
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5331619541B2; Wed, 10 Jun 2026 16:16:02 +0000 (UTC)
+Date: Wed, 10 Jun 2026 17:15:59 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Peter Xu <peterx@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
@@ -64,15 +64,15 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Juraj Marcin <jmarcin@redhat.com>, qemu-rust@nongnu.org,
  Markus Armbruster <armbru@redhat.com>,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Subject: Re: [PATCH v2 09/10] qom: Allow default values for instance properties
-Message-ID: <aimOmuNO_bLJ86Fa@redhat.com>
+Subject: Re: [PATCH v2 05/10] qom: Create object-property-ptr.[ch]
+Message-ID: <aimNv51iMZ_yEgDG@redhat.com>
 References: <20260609172514.2037645-1-peterx@redhat.com>
- <20260609172514.2037645-10-peterx@redhat.com>
+ <20260609172514.2037645-6-peterx@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20260609172514.2037645-10-peterx@redhat.com>
+In-Reply-To: <20260609172514.2037645-6-peterx@redhat.com>
 User-Agent: Mutt/2.3.2 (2026-04-26)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: 7hTSsXPjMNZScYUchIqngIYwiuJNeaj_PXk1E5ovfTs_1781108389
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: 7MDYlCQvXHGTfSuHPqV2lwUuFODcj3Ca4iZr2cRWkPQ_1781108170
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
@@ -84,7 +84,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,30 +101,23 @@ Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jun 09, 2026 at 01:25:13PM -0400, Peter Xu wrote:
-> ObjectProperty allows default value settings via proper setup of
-> prop->init() and prop->defval.  It currently is only supported in class
-> properties, not instance properties.
+On Tue, Jun 09, 2026 at 01:25:09PM -0400, Peter Xu wrote:
+> Create object-property-ptr.[ch] files to include all the helpers for
+> object_property_add*_ptr().
 > 
-> However, since QOM allows class and instance properties, it should also
-> allow instance to add properties during instance_init() and allow the
-> default values to be applied properly for this instance only.
+> These set of helpers are handy because they look extremely familiar with
+> qdev-properties, allowing the caller to provide a pointer and it will
+> manage all the setters and getters.
 > 
-> Add the logic.  It will be useful for all kinds of pointer based properties
-> because pointers are normally not accessble in a class but only when an
-> instance is available.  This will be able to achieve similar function as
-> what qdev properties have (which works by remembering offsets within a
-> structure instead).
+> The follow up patches may introduce more of such helpers.  Since object.c
+> has been already too big, split that part out.
 
-Again, I don't think we should be adding more features to the
-instance properties concept, as new code should use class
-level properties.
+The "ptr" helpers are all instance level properties which is a concept
+we discourage from new usage, in favour of class level properties.
 
-> 
-> Signed-off-by: Peter Xu <peterx@redhat.com>
-> ---
->  qom/object.c | 26 ++++++++++++++++++++++++++
->  1 file changed, 26 insertions(+)
+I don't think we should be adding more "ptr" helpers, but rather
+planning to eliminiate the (surprisingly little) usage of the
+existing ones.
 
 With regards,
 Daniel

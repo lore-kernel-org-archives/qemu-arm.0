@@ -4,105 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0333CD8CB2
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 12:13:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4EB2CD8CB9
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 12:20:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXHny-0003Gk-L8; Wed, 10 Jun 2026 08:13:10 -0400
+	id 1wXHuR-0005Ei-Nb; Wed, 10 Jun 2026 08:19:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXHnw-0003GQ-G2
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 08:13:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wXHuQ-0005Dy-CQ
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 08:19:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXHnu-0000T6-MM
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 08:13:07 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wXHuH-0003ql-Uu
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 08:19:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781093586;
+ s=mimecast20190719; t=1781093980;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=W0lGZlvaarvbNZ2qqQ575O9WKAsKard5eOnvv0n8+sM=;
- b=X9oNXCpalIcoWYEKaoPHqRePncpD8+xnkES6UyNOME3CLbmGr8MmYhbWQuVbsT0JxIwcZI
- v4W+mXISHMyl150yczOjL7p7MRt8WmuVimDuZ9LLr9Ty9SXDxrbcUmuFwQo0IQP0sxCxad
- Laf/B4JwzUbKoFj6hVhN3NDAhH67bs8=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=t/6TizB8C1cqu0uWMDVTOo+qpPTL27Y7UCm81lI5ogI=;
+ b=JLVDNzf3qYQcJaCU4ZjJIgpAsmbR8AD4uKZl6flrWJpmiZ2Hb5D4Fp0HyH1uxuvEPrvdL9
+ 18mWCwgUHo/G6YEQE4OdZGm4zsQIb5QYHMe4/4dpzGUyPCUCE0sJ8b5lTIqjXl8PhlkZfX
+ h7XRLg4bVAYFfC0WcKV7qdXN8j3Vy48=
+Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
+ [209.85.210.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-48-sSF62r9YNA-zzkrAr18xUg-1; Wed, 10 Jun 2026 08:13:04 -0400
-X-MC-Unique: sSF62r9YNA-zzkrAr18xUg-1
-X-Mimecast-MFC-AGG-ID: sSF62r9YNA-zzkrAr18xUg_1781093584
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-45eecec7667so4728384f8f.3
- for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 05:13:04 -0700 (PDT)
+ us-mta-609-eXPXWUIVPjKasYTyUzwFZQ-1; Wed, 10 Jun 2026 08:19:39 -0400
+X-MC-Unique: eXPXWUIVPjKasYTyUzwFZQ-1
+X-Mimecast-MFC-AGG-ID: eXPXWUIVPjKasYTyUzwFZQ_1781093978
+Received: by mail-pf1-f198.google.com with SMTP id
+ d2e1a72fcca58-8422a0eee68so8579274b3a.0
+ for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 05:19:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781093583; x=1781698383;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=W0lGZlvaarvbNZ2qqQ575O9WKAsKard5eOnvv0n8+sM=;
- b=c/z2ymK4+RBs7q9V2O53/qbpbl/wBUgJtLEX8w5ESmb3v9gMtQY2m04eTsAM+9Ppf/
- RJ58r4TLtqFzsv7UYOFazKScRf8zNl+cb6p7RJvFcBEVi5QsFzqtOBr5/FFMjWCN3yEj
- LjrDDYg8lPeLbST45iPq47hgR35wxvTUTN/Gw0xXpACSwTPTaqjTm/b5VTJes3wuTI2e
- AXgo7JiE+EzaGuK3DesgAjhQNiPdNfLUxBneLY85Msl8GvGZYPMxfI1/ureYZOzRRCzY
- PSVFzNSkX9HQcjZOgkPK5Ob+7c6juM/zZhgPzHP3Mr5Ub9meIqko4MIVfZMpUxrxP978
- yfAA==
+ d=1e100.net; s=20251104; t=1781093978; x=1781698778;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=t/6TizB8C1cqu0uWMDVTOo+qpPTL27Y7UCm81lI5ogI=;
+ b=s2p8OagIcElaAn4LSCsNWxN835Trd9BC4xHQl9fzopNPrptGnjXVv1vUGlTbqQI6+3
+ JgsH0Bj6Bs8eQWjnkQvL0G5bHzxzJuJeCoiUHSayB11rKYGYTpZPv963RfQHZYwvE3tk
+ tySufyB4rodsk30HS+vmBl44cyom5fH5Pmiz1gGLTOR1FPm5XRLt8cKzLAlH0/PHqCdQ
+ KbseEAa9Cb6PZaDWjpYow33iu6k0WB9jb7UA/g/3hYlHDZ97a4V9eq8wgil1qWruDjg9
+ cA72FMGII0qtoda07CWKNXx9OhtXKXT9Qi8ZeBnlhyp5qFbhxcHiObaOxz98eII7ATW2
+ RVtA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9wu9/lzHmkMPcR1JYFv5YAxcSZyjZTnvE5LRb5l6Xkt2UVIaxatVwrwk+b7+oGLUDQkaF5ITUqmw==@nongnu.org
-X-Gm-Message-State: AOJu0YwUFWRGvSyxzBWfVnyCUQJ2ViWeqXpSC+IMWk6s576cPcNhmIwj
- yDLRQj18hlhJbcOm2JGd8YO55lV4ZnjpGMZ+l4JaUkWkWjvqdomh3lS+lFs+Z52nkwlQFgo9AAZ
- DkON1pA8IXRL5vreUqkRacXn1P192Ss4+HghVj8tavx4l5sHbS1vjeA==
-X-Gm-Gg: Acq92OFOTdIHkxo/+/PD13wfvObTJxVqEZTwEFuFJkyuYfRlPK9UtKmSReIGuJ/f22m
- YexqZHZ1aQsGH8JMnWxXWScDrEw+ZDLg44jbzO5DZLi42zNOKJ9e05YDE377YZlWDbLfXMXYUt1
- OqSlwa9p/ny1x1sOyxNznSGRvI2ba1YXcYfaKU2N/qtrCEsP0XCSkvm8dnAJVMVP/dsMuD4HqMe
- +/PsUHYTOtF1gl4nBFpzowanl7z2hbcHZATQ0jQ/70ruKTkX0Lx4aWzm+IPK51uO6folmxuYAA8
- GwYEj4yUEV3uDoVtm5vIyDl3Mg7aX7D/iNV9lLQ4leTqPgwpRMZrACMzrvN7tRbKWtgcRDgTrvZ
- wZs0Qfq52X28BNb/7wQrbpFjx+JZdQ9liZ+DlDue9mWH78UtCn5W8KA==
-X-Received: by 2002:a5d:598b:0:b0:45e:73b3:8118 with SMTP id
- ffacd0b85a97d-46030512fa1mr38723280f8f.29.1781093583512; 
- Wed, 10 Jun 2026 05:13:03 -0700 (PDT)
-X-Received: by 2002:a5d:598b:0:b0:45e:73b3:8118 with SMTP id
- ffacd0b85a97d-46030512fa1mr38723238f8f.29.1781093582997; 
- Wed, 10 Jun 2026 05:13:02 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4601f0a43e9sm70931029f8f.0.2026.06.10.05.13.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Jun 2026 05:13:02 -0700 (PDT)
-Date: Wed, 10 Jun 2026 08:12:59 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: Pavel Hrdina <phrdina@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Peter Xu <peterx@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, jugraham@redhat.com, shan.gavin@gmail.com
+ AFNElJ9dw9G/qmNDVOzKo/+Sd7MOfHitVpXRyTU1z/02otpPH8mMN3/ZYtjRgePWJQ0D9Hx5n501NH5b3Q==@nongnu.org
+X-Gm-Message-State: AOJu0YxF6xIMAx1MWpLOo4SeqGtcpTQe23MwBTzTOl1SaBnIh9/TH8W/
+ mzCpL4NHOlIDxE1xcJKlBMrUWLbM1HraDrWaI6cdDMcDjAlDIJztyrPNU/ADOqgd7V26LT5ndZv
+ RJ5EP64oQgU9X3k4TF7Puj+dEwCfGd0anqfpq4ddGQFgjuhsiX0pF/A==
+X-Gm-Gg: Acq92OED1GExL00hsjAOOhMVBhak3smUz00Opy1B7RU/ORcKBFT52BggfwBm6HVfOcg
+ KdaYN/pxVLzAbkQe0MVXpI08wy/nQ9ldBWtP3xEiQlRqjCsxgYhxl9DegZ63lsgRoFGSrVXTO8Q
+ Gh+RnVX0xnF4mMvgaxuK6Yl9mod7TX1mLpiMxL6t7hXCFOnnKz91EUwMGZMoCVbhytP9F+wZAQl
+ srQSHssu4ToriEjZPop+mHXtVpV8TrTNpmeEObdY8HQ44+UTGNR3TsRydzOu62YX9Lpzv8eSS6Z
+ 1giQwgSH9nvvErZ177RwEhxitMZ5LK1juM995AEkiSv/JRFuXnbLSlv+DDX6V3G1nM3T6fXXgbs
+ 2gsiTtTJwsMr3Xv/TK3toiLyli/8mifwSQDqvTJ2wMDjUNXJeGKFY6s62CfgXX0VOWfyauWSL7u
+ w=
+X-Received: by 2002:a05:6a00:3494:b0:83e:e897:a394 with SMTP id
+ d2e1a72fcca58-842b0c0c621mr25008158b3a.7.1781093978143; 
+ Wed, 10 Jun 2026 05:19:38 -0700 (PDT)
+X-Received: by 2002:a05:6a00:3494:b0:83e:e897:a394 with SMTP id
+ d2e1a72fcca58-842b0c0c621mr25008128b3a.7.1781093977663; 
+ Wed, 10 Jun 2026 05:19:37 -0700 (PDT)
+Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
+ [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-84282221086sm24890377b3a.10.2026.06.10.05.19.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 10 Jun 2026 05:19:37 -0700 (PDT)
+Message-ID: <eb0f0da1-11dd-4437-94fd-a65af55851e1@redhat.com>
+Date: Wed, 10 Jun 2026 22:19:31 +1000
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
  parent if possible
-Message-ID: <20260610080947-mutt-send-email-mst@kernel.org>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Pavel Hrdina <phrdina@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Xu <peterx@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ jugraham@redhat.com, shan.gavin@gmail.com
 References: <20260608001821.850921-1-gshan@redhat.com>
  <aiaDgG26a6TUrKuM@redhat.com>
  <07ca74b4-52a8-4187-a57c-7c3277e574d3@redhat.com>
  <aiky9d9IwACIyKEC@phrdina-thinkpadt14gen4.rmtcz.csb>
  <674d5e21-88fa-4a10-a83c-eb6f7ce7032f@redhat.com>
-MIME-Version: 1.0
-In-Reply-To: <674d5e21-88fa-4a10-a83c-eb6f7ce7032f@redhat.com>
+ <20260610080947-mutt-send-email-mst@kernel.org>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20260610080947-mutt-send-email-mst@kernel.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: _VO8Ezzsx8nAl8glafmvqCyV6bk7vOBLhEuBCCRUKtA_1781093584
+X-Mimecast-MFC-PROC-ID: QCjfZP_mJcljZtKVLVNMU_U1XiEU1yR-1D_3vZOGrJ4_1781093978
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,108 +122,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Jun 10, 2026 at 08:55:10PM +1000, Gavin Shan wrote:
-> Hi Pavel,
-> 
-> On 6/10/26 7:54 PM, Pavel Hrdina wrote:
-> > On Mon, Jun 08, 2026 at 09:11:50PM +1000, Gavin Shan wrote:
-> > > Hi Daniel,
-> > > 
-> > > On 6/8/26 6:55 PM, Daniel P. Berrangé wrote:
-> > > > On Mon, Jun 08, 2026 at 10:18:21AM +1000, Gavin Shan wrote:
-> > > > > On the guest where a NVidia's GH100 card is passed from the host, the
-> > > > > guest system hang can be observed on attempt to compile 'cuda-samples',
-> > > > > as reported by Julia.
-> > > > 
-> > > > snip
-> > > > 
-> > > 
-> > > Thanks for looking into this.
-> > > 
-> > > > > By default, the max bounce buffer size is only 4096 bytes, even less
-> > > > > than one page when the guest page is 64KB. This tries to fix the issue
-> > > > > by inheriting the customized max bounce buffer size of the virtio bus's
-> > > > > parent through property 'x-max-bounce-buffer-size' when the customized
-> > > > > size is a larger one. With this applied, no guest system hang is seen
-> > > > > with '-device virtio-blk-pci,...,x-max-bounce-buffer-size=268435456'.
-> > > > 
-> > > > "x-max-bounce-buffer-size"  is an experimental / unsupported property.
-> > > > 
-> > > > We really shouldn't be expecting users to have to set this in a production
-> > > > deployment in order to stop a guest from hanging.  Even if we dropped the
-> > > > experimental marker from this property, users would still need to know to
-> > > > provide this magic setting, so it would still be broken out of the box.
-> > > > 
-> > > > How can we  get a solution that "just works" out of the box, which is
-> > > > fully supported, not relying on experimental properties ?
-> > > > 
-> > > 
-> > > How do we know that "x-max-bounce-buffer-size" is an experimental or unsupported
-> > > property? I guess the properties whose names start with "x-" are all treated as
-> > > experimental and unsupported?
-> > > 
-> > > For this case, the bounce buffer is inevitable as the memory region can't be
-> > > directly accessed. The memory region is initialized by memory_region_init_ram_device_ptr()
-> > > in hw/vfio/region.c::vfio_region_mmap(). So the question is how the allowed
-> > > bounce buffer size can be specified by users, and it's why the existing property
-> > > "x-max-bounce-buffer-size" is reused.
-> > > 
-> > > I even thought of a new property for MachineState (e.g. "limited-bounce-buffer"),
-> > > which is set to on by default, following the existing behavior. When it's set to
-> > > off by users, the max (allowed) buffer size won't be checked at all. However, I'm
-> > > not sure if this makes sense at all.
-> > 
-> > Hi Gavin,
-> > 
-> > You did not answer the question that Daniel was asking, how will user
-> > know that max-bounce-buffer-size should be used if it's necessary to fix
-> > guest system hangs and how will user know what magic value should be set?
-> > 
-> 
-> Sorry that I missed to answer Daniel's questions. For this specific case,
-> user need to enlarge the bounce buffer size when seeing the following error
-> message. We can add an explicit one in address_space_map() if the existing
-> error message isn't obvious.
-> 
->   qemu-system-aarch64: virtio: bogus descriptor or out of resources
-> 
->   void *address_space_map(AddressSpace *as,
->                         hwaddr addr,
->                         hwaddr *plen,
->                         bool is_write,
->                         MemTxAttrs attrs)
->   {
->       if (!memory_access_is_direct(mr, is_write, attrs)) {
->           if (l == 0) {
->               error_report("Running out of bounce buffer size , enlarge it with max-bounce-buffer-size");
->               *plen = 0;
->               return NULL;
->           }
->       }
-> 
-> As to the value user should take for max-bounce-buffer-size, it is really case by case
-> and decided by user. User needs to try 4096, 8192, ..., 0xFFFFFFFF to figure out the
-> smallest value works for them. The worst case is to set 0xFFFFFFFF.
-> 
-> > Pavel
-> > 
-> 
-> Thanks,
-> Gavin
+Hi Michael,
 
+On 6/10/26 10:12 PM, Michael S. Tsirkin wrote:
+> On Wed, Jun 10, 2026 at 08:55:10PM +1000, Gavin Shan wrote:
+>> On 6/10/26 7:54 PM, Pavel Hrdina wrote:
 
-This is not at all reasonable. All kind of fixes are possible but
-fundamentally, bounce buffering data path is by itself already a
-bad idea.
+[...]
 
-I have no idea what does bounce buffering device ram accomplish.
+>>>
+>>> You did not answer the question that Daniel was asking, how will user
+>>> know that max-bounce-buffer-size should be used if it's necessary to fix
+>>> guest system hangs and how will user know what magic value should be set?
+>>>
+>>
+>> Sorry that I missed to answer Daniel's questions. For this specific case,
+>> user need to enlarge the bounce buffer size when seeing the following error
+>> message. We can add an explicit one in address_space_map() if the existing
+>> error message isn't obvious.
+>>
+>>    qemu-system-aarch64: virtio: bogus descriptor or out of resources
+>>
+>>    void *address_space_map(AddressSpace *as,
+>>                          hwaddr addr,
+>>                          hwaddr *plen,
+>>                          bool is_write,
+>>                          MemTxAttrs attrs)
+>>    {
+>>        if (!memory_access_is_direct(mr, is_write, attrs)) {
+>>            if (l == 0) {
+>>                error_report("Running out of bounce buffer size , enlarge it with max-bounce-buffer-size");
+>>                *plen = 0;
+>>                return NULL;
+>>            }
+>>        }
+>>
+>> As to the value user should take for max-bounce-buffer-size, it is really case by case
+>> and decided by user. User needs to try 4096, 8192, ..., 0xFFFFFFFF to figure out the
+>> smallest value works for them. The worst case is to set 0xFFFFFFFF.
+>>
+> 
+> 
+> This is not at all reasonable. All kind of fixes are possible but
+> fundamentally, bounce buffering data path is by itself already a
+> bad idea.
+> 
+> I have no idea what does bounce buffering device ram accomplish.
+> 
+> In the end, qemu still simply reads the memory from/to the buffer.
+> 
+> My suggestion is to first of all look for ways to mark the
+> memory as direct.
+> 
 
-In the end, qemu still simply reads the memory from/to the buffer.
+As I explained to Peter Xu in another reply, we can't simply mark the (RAM
+DEVICE) memory region is directly accessible. The memory region is initialized
+by memory_region_init_ram_device_ptr() in hw/vfio/region.c::vfio_region_mmap().
 
-My suggestion is to first of all look for ways to mark the
-memory as direct.
+The  accesses to the memory region is handled by 'ram_device_mem_ops' where
+{ldn, stn}_he_p() are used in its read/write handler. They're different
+from memcpy() since the data endianness is well handled in {ldn, stn}_he_p().
 
--- 
-MST
+Thanks,
+Gavin
+
 
 

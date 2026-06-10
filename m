@@ -4,80 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F01DACD8CB2
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 16:21:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF7FBCD8CB2
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 16:22:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXLZD-0005Iq-I2; Wed, 10 Jun 2026 12:14:11 -0400
+	id 1wXLem-0007Ff-Jz; Wed, 10 Jun 2026 12:19:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wXLZB-0005FT-Sj
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 12:14:09 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXLek-0007B6-PV
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 12:19:55 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wXLZ9-00078g-K0
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 12:14:09 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXLei-0002on-IG
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 12:19:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781108046;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=5UaEU4+BaDuPjrl/JW705Nct5RnzLpt0GzsvI6jg94M=;
- b=MojtmjVQaDzMT5VwuALADQXlDR8Tz/Rgasd3tsTPS1/o1tGN48FL0Cie3uxAdth4mQOT1L
- 1pt178G8MC7qnu7xKDvA9I739wjep9oGgP48X6+n7mwkxkvEmjcTUzk/ACsKHsO3a1uHO9
- iugIVvpZL4YEssAx7SeZZ2oq+3wraCk=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-553-GHe8yqeRP0i8KVAetRAU8g-1; Wed,
- 10 Jun 2026 12:14:00 -0400
-X-MC-Unique: GHe8yqeRP0i8KVAetRAU8g-1
-X-Mimecast-MFC-AGG-ID: GHe8yqeRP0i8KVAetRAU8g_1781108039
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2CF41195FDE9; Wed, 10 Jun 2026 16:13:58 +0000 (UTC)
-Received: from redhat.com (unknown [10.44.50.112])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 45FBF1954102; Wed, 10 Jun 2026 16:13:50 +0000 (UTC)
-Date: Wed, 10 Jun 2026 17:13:47 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Xu <peterx@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Fabiano Rosas <farosas@suse.de>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Dr . David Alan Gilbert" <dave@treblig.org>,
- Eric Blake <eblake@redhat.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Sana Sharma <sansshar@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Juraj Marcin <jmarcin@redhat.com>, qemu-rust@nongnu.org,
- Markus Armbruster <armbru@redhat.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Subject: Re: [PATCH v2 10/10] migration: Switch to TYPE_OBJECT with object
- properties
-Message-ID: <aimNOxqrmmXPQTfS@redhat.com>
-References: <20260609172514.2037645-1-peterx@redhat.com>
- <20260609172514.2037645-11-peterx@redhat.com>
+ s=mimecast20190719; t=1781108391;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=oaDeH4LIoTfLU2nOk6YmmIXEAiIzcNkTHiQsFpqDOG8=;
+ b=M0u5VQbdF4FOy0S7LtirjIqNn4+7j0zqr+cCc+aQioGR/PPyFebO+fQ8O1bimpAebt5RKl
+ /6aNMRsHg/P1CAXoWUgpMb0LZ3x2JzFy6yh+kQgnWRJ9NRbbYc3HwLv8stgfZ1BC+RSjMS
+ +bUAnFZfMAg5g6yU7ByUs6YP3/oFFNw=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-353-U4Lw_573MNaMwg3gBuIGUg-1; Wed, 10 Jun 2026 12:19:47 -0400
+X-MC-Unique: U4Lw_573MNaMwg3gBuIGUg-1
+X-Mimecast-MFC-AGG-ID: U4Lw_573MNaMwg3gBuIGUg_1781108386
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-490b9318944so49859915e9.1
+ for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 09:19:47 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1781108386; x=1781713186;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=oaDeH4LIoTfLU2nOk6YmmIXEAiIzcNkTHiQsFpqDOG8=;
+ b=CVvtuuHqWvKH14m4dLC4zz5+SgTlwRcWkPFsTipy3vW9hiQb/j0skzi0W3/rNtuZJ0
+ vJ8BAUk2SiMFLk1VmVR46p9MZWb7Y1xUNh75XvW0u38n0K+bJo/YUY2N3WBtWb6r4B14
+ guW5UJAS4eOay366i9Bi9yN+m891cjHkR9Uu5E655TiU7fv22fg8AmRLaPU+Ik2B2F8M
+ OSLKUDjpDXEqutFVPM75GlWdCgDeqNmF4JDOw6SlHWNigAwbD6ffeuAGmplcGHtuMPoQ
+ LFvNOpaSXicyLcmSv8WxOv0gb+XSMU7juAILYyc8A4ve/ULCZwkWVddhE9HICEs4Q9dE
+ yLoQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+dUV1wMJrt6vzfVl0e/BxaeO/7jD7PIF6PrdiHzbLl6TuaWSN3WDCwgUCyx/IUg2RoNaeEZR919w==@nongnu.org
+X-Gm-Message-State: AOJu0Yy4Smat5EPIFJICQMDucCocSx9K9iinjmsS0GqJx5m54AXmMKu3
+ JuVazPIuu0wfauuApxGG2IdG93Fp4Jzdxj1J7MZ53LW9ULRI4IGIILTAmXb4ncEhPxNeEr5+0Ad
+ pLJvnwSn/T9LdyP34HyXnEazg+RGGTwEEaUKKKEuN9VVqNR7FoQLqVw==
+X-Gm-Gg: Acq92OG/8zWatqpE8nQN4zObUEm001OQEUjhO/SQsJ0i4HiAx2gY/6l/0AMGjTag/7e
+ J1zo0OxsyyAhCyfIQPtPgFXo9HX6tAFdL80dw5/uA/+eWk+r+hpNGD7PZabhS9Pk+J7USb2J5NX
+ pdqdmcJDNYXBhAolYpIq9qpK9nKsG52oCDz2xhsdJ8F+H/H2lzpU7r4If5R4u7oKR3CsleBHP4T
+ Jnke/2+riHNTvKS5Q6YuyXZCE8/AkL2GnxIXuyOgfoG01nU2kXJLeVe5f3uPU2XXm9a6dn6z1aF
+ N0ON4PeBY3A5Klag+mY+EAUQCgOsXaEV26SO4/w7uonTjGFuVP5SuGJooqmigYY+xtT3vRKjFTo
+ qdZYpHEtv7CMI7ac4ymeVNAUx/O1mkZawwP6sp8BRTQvTmM9F+X6ayg==
+X-Received: by 2002:a05:600c:5292:b0:490:688b:f9f8 with SMTP id
+ 5b1f17b1804b1-490d722e5ffmr110073485e9.27.1781108385844; 
+ Wed, 10 Jun 2026 09:19:45 -0700 (PDT)
+X-Received: by 2002:a05:600c:5292:b0:490:688b:f9f8 with SMTP id
+ 5b1f17b1804b1-490d722e5ffmr110073045e9.27.1781108385294; 
+ Wed, 10 Jun 2026 09:19:45 -0700 (PDT)
+Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-490e284bb55sm140685e9.4.2026.06.10.09.19.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 10 Jun 2026 09:19:44 -0700 (PDT)
+Date: Wed, 10 Jun 2026 12:19:39 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Peter Xu <peterx@redhat.com>, Gavin Shan <gshan@redhat.com>,
+ Pavel Hrdina <phrdina@redhat.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, jugraham@redhat.com,
+ shan.gavin@gmail.com, Alex Williamson <alex@shazbot.org>,
+ David Hildenbrand <david@kernel.org>
+Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
+ parent if possible
+Message-ID: <20260610121846-mutt-send-email-mst@kernel.org>
+References: <aiky9d9IwACIyKEC@phrdina-thinkpadt14gen4.rmtcz.csb>
+ <674d5e21-88fa-4a10-a83c-eb6f7ce7032f@redhat.com>
+ <20260610080947-mutt-send-email-mst@kernel.org>
+ <eb0f0da1-11dd-4437-94fd-a65af55851e1@redhat.com>
+ <20260610082637-mutt-send-email-mst@kernel.org>
+ <5d8cbd4b-3725-437e-88a3-e0af32164815@redhat.com>
+ <e7cc9f2d-ccb4-442f-a1ed-7c5474395099@redhat.com>
+ <20260610095712-mutt-send-email-mst@kernel.org>
+ <aimEl9QQ_LTRPLtd@x1.local>
+ <CAFEAcA8HhC-=KwdbNE5jgqdP+H1VF1aJXdGaME8KsaDHhnBG9Q@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20260609172514.2037645-11-peterx@redhat.com>
-User-Agent: Mutt/2.3.2 (2026-04-26)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: KF6cMd6vM7Yu_tF5oDmJlDBOQx-NjD648vFRHm-kVEs_1781108039
+In-Reply-To: <CAFEAcA8HhC-=KwdbNE5jgqdP+H1VF1aJXdGaME8KsaDHhnBG9Q@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: PEJd9p96dhmCb8Hjucn62C8ouhk4R4D0zr932sR8Y1Y_1781108386
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
@@ -98,224 +120,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jun 09, 2026 at 01:25:14PM -0400, Peter Xu wrote:
-> The migration object used to depend on TYPE_DEVICE due to:
+On Wed, Jun 10, 2026 at 05:11:40PM +0100, Peter Maydell wrote:
+> On Wed, 10 Jun 2026 at 16:37, Peter Xu <peterx@redhat.com> wrote:
+> >
+> > On Wed, Jun 10, 2026 at 10:06:24AM -0400, Michael S. Tsirkin wrote:
+> > > This is the change that broke it I think?
+> > >
+> > >
+> > > commit 4a2e242bbb306ef5c16ce9e7bb2da3bd8a4eb098
+> > > Author: Alex Williamson <alex@shazbot.org>
+> > > Date:   Mon Oct 31 09:53:03 2016 -0600
+> > >
+> > >     memory: Don't use memcpy for ram_device regions
+> > >
+> > >
+> > > Maybe Alex has an opinion on what to do.
+> >
+> > I can offer one idea here..
+> >
+> > IIUC the major issue was vector ops but the mr ops might be too heavy, then
+> > another way to fix it is in memory API instead of using memcpy()/memmove(),
+> > we always use a helper (say, memmove_no_vector()) to do the split and
+> > properly aligned IOs as what ram_device_mem_ops does right now, this should
+> > only applies to ram_device.
 > 
-> - Usage of qdev properties
-> - Apply compat properties and global properties
+> If the underlying memory needs to be accessed only with specific
+> alignment/size, as the 4a2e242bbb30 commit message suggests, then
+> we cannot expose it via address_space_map(), so we must have
+> a bounce-buffer.
+
+Right. And virtio currently isn't friendly to the bounce buffer.
+We can fix that but I worry about the perf impact.
+
+> The address_space_map() function says
+> "here's a host pointer to  memory, do what you like to it", and
+> the caller is entitled to memcpy to/from it or otherwise
+> access it with any C operations, which are not guaranteed to
+> respect any kind of alignment or similar restrictions.
 > 
-> This patch re-based the object to TYPE_OBJECT with the changes:
+> My guess from commit 4a2e242bbb30 is that that applied an
+> overly broad "don't do direct access" hammer to all
+> vfio assigned devices, and that there needs to be some
+> concept of "this vfio assigned device's region is OK for
+> direct access" vs "this other one is not", such that if
+> this GH100 card's BAR guarantees it can be treated entirely
+> as RAM then we can have memory_region_supports_direct_access()
+> return true for it.
 > 
-> - Switch to object properties API
-> - Manually apply both compat and global properties in post_init()
-> 
-> Note that to avoid too many property getter/setter helpers, this patch used
-> the object_property_add_*_ptr_def() APIs so that an pointer is passed to
-> bind to the property.  Such API is used for most of the conversions.
-> 
-> After patch, the migration object initializes instance properties within
-> its instance_init() callback, in migrate_params_init().
-> 
-> One side effect of this change is, since we switched to a loop to add all
-> capabilities, the name of the properties representing a migration
-> capability may chance from previously hard-coded ones (many with x-).  It's
-> fine since it's only used in -global so it's only for debugging.
-> 
-> Similarly, I removed "x-" from other properites that used to start with
-> "x-" but actually are not experimental.
-
-Mixing such a change into a refactoring commit is bad practice,
-can you keep property changes separated.
-
-> After the whole conversion, we don't need migration_properties or the count
-> anymore, hence can be removed.  While at it, we can also remove two
-> DEFINE_PROP*() API that only migration uses (DEFINE_PROP_STR_OR_NULL, and
-> DEFINE_PROP_MIG_CAP).
-> 
-> Signed-off-by: Peter Xu <peterx@redhat.com>
-> ---
->  migration/options.h   |   8 +-
->  migration/migration.c |  35 ++-
->  migration/options.c   | 526 ++++++++++++++++++++++++++----------------
->  3 files changed, 351 insertions(+), 218 deletions(-)
-
-
-> diff --git a/migration/options.c b/migration/options.c
-> index 5cbfd29099..1cc99382d3 100644
-> --- a/migration/options.c
-> +++ b/migration/options.c
-> @@ -54,7 +54,7 @@
-
-
-> +static void migration_object_init_props_bool(MigrationState *s)
->  {
-> -    const Property *prop = opaque;
-> -    StrOrNull **ptr = object_field_prop_ptr(obj, prop);
-> -    StrOrNull *str_or_null = *ptr;
-> +    Object *obj = OBJECT(s);
-> +    int i;
->  
-> -    /*
-> -     * The property should never be NULL because it's part of
-> -     * s->parameters and a default value is always set by qdev. It
-> -     * should also never be QNULL as the setter doesn't allow it.
-> -     */
-> -    assert(str_or_null && str_or_null->type != QTYPE_QNULL);
-> -    visit_type_str(v, name, &str_or_null->u.s, errp);
-> +    struct MigPropBool {
-> +        const char *name;
-> +        void *ptr;
-> +        bool defvar;
-> +    } bool_list[] = {
-> +        {
-> +            "store-global-state",
-> +            &s->store_global_state,
-> +            true,
-> +        },
-> +        {
-> +            "send-configuration",
-> +            &s->send_configuration,
-> +            true,
-> +        },
-> +        {
-> +            "send-section-footer",
-> +            &s->send_section_footer,
-> +            true,
-> +        },
-> +        {
-> +            "send-switchover-start",
-> +            &s->send_switchover_start,
-> +            true,
-> +        },
-> +        {
-> +            "x-preempt-pre-7-2",
-> +            &s->preempt_pre_7_2,
-> +            false,
-> +        },
-> +        {
-> +            "x-cpu-throttle-tailslow",
-> +            &s->parameters.cpu_throttle_tailslow,
-> +            false,
-> +        },
-> +        {
-> +            "multifd-clean-tls-termination",
-> +            &s->multifd_clean_tls_termination,
-> +            true,
-> +        },
-> +        {
-> +            "multifd-flush-after-each-section",
-> +            &s->multifd_flush_after_each_section,
-> +            false,
-> +        },
-> +    };
-> +    struct MigPropBool *prop;
-
-This approach to declaring properties is pretty unpleasant
-to follow IMHO. Being a custom different approach from every
-other object impl is not a good thing.
-
-> +
-> +    for (i = 0; i < ARRAY_SIZE(bool_list); i++) {
-> +        prop = &bool_list[i];
-> +        object_property_add_bool_ptr_def(obj, prop->name,
-> +                                         prop->ptr, prop->defvar);
-> +    }
-
-Using instance level properties is the old way to do things,
-it is preferred to use class level properties instead.
-
-This means you can't use the "ptr" concept to directly reference
-the instance fields and have to provide setters / getters explicitly
-instead, but as you've shown with the TLS properties,  a macro can
-make it simple to define the repetitive getters/setters.
-
-
-
-> +static void migration_object_init_props_enum(MigrationState *s)
-> +{
-> +    Object *obj = OBJECT(s);
-> +    ObjectProperty *prop;
-> +
-> +    prop = object_property_add_enum(obj, "multifd-compression",
-> +                                    "MultiFDCompression",
-> +                                    &MultiFDCompression_lookup,
-> +                                    mig_prop_multifd_compression_get,
-> +                                    mig_prop_multifd_compression_set);
-> +    object_property_set_default_str(prop, DEFAULT_MIGRATE_MULTIFD_COMPRESSION);
-> +
-> +    prop = object_property_add_enum(obj, "mode", "MigMode", &MigMode_lookup,
-> +                                    mig_prop_mode_get, mig_prop_mode_set);
-> +    object_property_set_default_str(prop, "normal");
-> +
-> +    prop = object_property_add_enum(obj, "zero-page-detection",
-> +                                    "ZeroPageDetection",
-> +                                    &ZeroPageDetection_lookup,
-> +                                    mig_prop_zero_page_detection_get,
-> +                                    mig_prop_zero_page_detection_set);
-> +    object_property_set_default_str(prop, "multifd");
-> +}
-
-Perhaps I'm missing something, but I'm not seeing the point in
-using the set_default methods - in fact I'm not really sure why
-they exist in QOM at all.
-
-I'd expect all defaults to be set in the instance _init method.
-ie why isn't this done as:
-
-   void migrate_params_init(MigrationState *s)
-   {
-      s->parameters.mode = MIG_MODE_NORMAL;
-      s->parameters.zero_page_detection = ZERO_PAGE_DETECTION_MULTIFD;
-      .... all other defaults...
-   }
-
-
-> +
-> +static void migration_object_init_properties(MigrationState *s)
-> +{
-> +    migration_object_init_props_bool(s);
-> +    migration_object_init_props_uint8(s);
-> +    migration_object_init_props_uint32(s);
-> +    migration_object_init_props_uint64(s);
-> +    migration_object_init_props_size(s);
-> +    migration_object_init_props_caps(s);
-> +    migration_object_init_props_tls(s);
-> +    migration_object_init_props_enum(s);
-> +}
-
-...and class properties be registered in migrate_params_class_init()
-and the grouping per type isn't helpful IMHO, just put all the
-object_class_property_add calls inline in one place.
-
->  
->  bool migrate_auto_converge(void)
->  {
-> @@ -1107,9 +1246,10 @@ MigrationParameters *qmp_query_migrate_parameters(Error **errp)
->      return params;
->  }
->  
-> -void migrate_params_init(MigrationParameters *params)
-> +void migrate_params_init(MigrationState *s)
->  {
-> -    migrate_mark_all_params_present(params);
-> +    migration_object_init_properties(s);
-> +    migrate_mark_all_params_present(&s->parameters);
->  }
->  
->  static void migrate_post_update_params(MigrationParameters *new, Error **errp)
-> -- 
-> 2.53.0
-> 
-
-With regards,
-Daniel
--- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+> thanks
+> -- PMM
 
 

@@ -4,101 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30EDBCD8CB2
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 07:31:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 517A9CD8CB2
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 08:06:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXDPc-0002Q4-GE; Wed, 10 Jun 2026 03:31:44 -0400
+	id 1wXDw2-0001AU-Tl; Wed, 10 Jun 2026 04:05:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wXDPa-0002PX-Hx
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 03:31:42 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wXDPY-0006jz-O2
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 03:31:42 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-45ef616daf6so5886458f8f.3
- for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 00:31:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781076699; x=1781681499; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to
- :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=UaztTtXKGjQvISAQdOR+p8Z5RioQFI+ci6eiPAPncNY=;
- b=FjJhw3HsrhmIuLhJyToEHbIVhsQlR2Ny4oxvzimDhLJeyIhdy6ZOpi1i2HXLoIxc07
- dnIEy4whyC2NeWIwCi9g9Oz8To0yKNeuQ8YZ/Lovj3eGw/4g/Rnqp2FnuUUgn0zU9ueY
- 60VQJWHhsI0iWnG/RnCRZ09VA55BpQy9Yq2CNre5OjBVviV+FM2+5cGKGaHqdLp2me6V
- uG1Etftkq+IvodXMv33atqNPL3+5PJRZIUYYC1RDWyZTbLO87F6NtubhvqvAGm77DjRN
- 9aaFOfoz9/sbVx/VBR8FsvmCyKEiKEq8AY8FCN8U9OI4YT7oxKzMmge3QM0tBlTz841N
- QPeg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781076699; x=1781681499;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to
- :references:user-agent:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=UaztTtXKGjQvISAQdOR+p8Z5RioQFI+ci6eiPAPncNY=;
- b=YMGvx0ovNURNXonzst62NqaR6XRcHN5kVHKAor1Wc3VWe4aOzx0wjoTJJ82ZMBhG8d
- cEIMpD4jOVfvfUOviBC5RPXplxxzK+ekHApD9R9jkkNl5PFkek9yKQf4z92KqAa0ovMB
- lvKcFl9GCamsPYlnoQsegnZFt/YyEn4IwWad1iOdDk7v3So4u7RuLh8Bn8OYki+Dp8/n
- ywjYZv88RJ5wRyxPfypTqKKH3qANaKu9hGNMVjNLrLZCBPHw/PsOXIYDidc23OSzlvuq
- fuVH7orR6mnlh4ma909cT6piun/f23Ycngv2lTiEzi2j+Zl2TbLv9BHt2aIWWPEWlmSg
- R8iw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9bOq3qVV2rsE8KX4f+Gq9CAFjXJIVb9Rw3nur3OVMgnUnnJ6LukPrVyAiZgQWltO9Im+osmDqacw==@nongnu.org
-X-Gm-Message-State: AOJu0YzQyKRP70UPOq2umRGFAXtpoPsbToJeG5MHOcAawBtjfPODO4+v
- lPS4Ucpk4kMKFlhZncy+n2wpZY8Rc0SxwsyG5KRtiWhwQH8pQudEfij+BCyxYzpHRx8=
-X-Gm-Gg: Acq92OFxuJUM+AydJffu+ig9F/rZ3hWUX3shIqFjG5Faai8zhckF3gP0MYtHvM01OFG
- KWqC+uAtWUX0+nBR1ehEWg8D5xeviXDTjLhdCrYTJI5d4YY5KSyhTRNyFt6E4x7HxvqRDZcfSKd
- 7+0s0fKDV9tBU9Z8QYVuAhN85NVLqCMAfIkPqFNDY5jo9vLL+WRXORhpY/759ME5WIgyT7u+lZI
- BFGGjKwcsmmq5GCHTdJwNtoJ2YD+vHXrMKgYxpMqUC7iin9poPX/LmspoT9f6Oxri7WAMvAdZBo
- /gqlANJ7QANnJrjdJK/2ENyCKCn6GkDDozZfWkDSY4LXTCPfLn9h388SlqTI/MHZEsiGXWk6ZyV
- R5tXw5ga1ZFcP1bVvBOD6xIWl6BXOaAoVEsZDKNdDer4YC3vELbfcxfP5AszNkoyHaud708GF45
- OWBO7rotoit7cZLe5iWCRrFd4iVn0PTnKb0Qq+guff4lo9Vi6QNCekk9rNSLQC+C14qyxmOcMwb
- l/aRNXXBujWJjTN9aanwz4iabFf8/FEnh2MokG616EvzN5GTu2zzSjenjR9AI5W
-X-Received: by 2002:a05:6000:178e:b0:460:3234:293e with SMTP id
- ffacd0b85a97d-46032342a79mr36036560f8f.41.1781076699136; 
- Wed, 10 Jun 2026 00:31:39 -0700 (PDT)
-Received: from meli-email.org (ppp-2-86-144-251.home.otenet.gr. [2.86.144.251])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4601f2dcbe3sm64829520f8f.8.2026.06.10.00.31.38
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 10 Jun 2026 00:31:38 -0700 (PDT)
-Date: Wed, 10 Jun 2026 10:30:31 +0300
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- "Daniel P . Berrang=?UTF-8?B?w6k=?=" <berrange@redhat.com>,
- Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Alex Benn=?UTF-8?B?w6k=?=e <alex.bennee@linaro.org>,
- Alexandre Iooss <erdnaxe@crans.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>
-Subject: Re: [PATCH 20/27] tests/tcg/meson.build: add wrapper
- check_plugin_output
-User-Agent: meli/0.8.13
-References: <20260609214745.772536-1-pierrick.bouvier@oss.qualcomm.com>
- <20260609214745.772536-21-pierrick.bouvier@oss.qualcomm.com>
-In-Reply-To: <20260609214745.772536-21-pierrick.bouvier@oss.qualcomm.com>
-Message-ID: <tgenkp.crsxljvbliqb@linaro.org>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wXDvw-00011I-7s
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 04:05:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wXDvr-0000dA-1M
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 04:05:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1781078702;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=eszFOUUD8DpxP8MNrSkKHy1/6DS/wzx+hBt7I/gzX2s=;
+ b=It7oGOMPNyl28Usoib+l20d7+FJBK7e7m2arDGPTBsozOSkfn7F3C/DZLcWLLt+ZOtFPon
+ wpZmC2RKk0DeUdhQSPlrKxPTdxQ4u7jN3aWRAexsmZTt5nD+MjAn2IKFFgfkLFqBKpEXBV
+ QHtj9j4KDfZ4+vySIvH2b39ixBgCNpE=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-44-W2HyXhiCNXa7Kkgn8fZM9g-1; Wed,
+ 10 Jun 2026 04:04:57 -0400
+X-MC-Unique: W2HyXhiCNXa7Kkgn8fZM9g-1
+X-Mimecast-MFC-AGG-ID: W2HyXhiCNXa7Kkgn8fZM9g_1781078696
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 74824195411C; Wed, 10 Jun 2026 08:04:56 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.28])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2B3671800591; Wed, 10 Jun 2026 08:04:56 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id D395321E68B2; Wed, 10 Jun 2026 10:04:47 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: stefanha@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PULL 17/42] MAINTAINERS: Fix F: in "Raspberry Pi"
+Date: Wed, 10 Jun 2026 10:04:22 +0200
+Message-ID: <20260610080447.1156502-18-armbru@redhat.com>
+In-Reply-To: <20260610080447.1156502-1-armbru@redhat.com>
+References: <20260610080447.1156502-1-armbru@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: DbQnepIj_le2_WWJtC-rJYZlRSVZS-5w0W_p9NPKaKA_1781078696
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset=utf-8; format=flowed
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,61 +89,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 10 Jun 2026 00:47, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> wrote:
->This wrapper runs a qemu command, record command output and plugin
->output, and forward both to a check script.
->We use this pattern in several plugin tests (for instance, with
->validate-memory-counts.py).
->
->Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
->---
-> tests/tcg/meson.build                    |  1 +
-> tests/tcg/scripts/check_plugin_output.sh | 19 +++++++++++++++++++
-> 2 files changed, 20 insertions(+)
-> create mode 100755 tests/tcg/scripts/check_plugin_output.sh
->
->diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
->index f0efd46ee3e..6e46c121fda 100644
->--- a/tests/tcg/meson.build
->+++ b/tests/tcg/meson.build
->@@ -6,6 +6,7 @@ if config_host.has_key('GDB')
->   gdb_progs = [config_host['GDB'], gdb_progs]
-> endif
-> gdb = find_program(gdb_progs, required: false)
->+prog_check_plugin_output = find_program('./scripts/check_plugin_output.sh')
-> prog_gdb_test = find_program('../guest-debug/run-test.py')
-> prog_record_replay = find_program('./scripts/record_replay.sh')
-> prog_run_and_diff = find_program('./scripts/run_and_diff.sh')
->diff --git a/tests/tcg/scripts/check_plugin_output.sh b/tests/tcg/scripts/check_plugin_output.sh
->new file mode 100755
->index 00000000000..4d12e23ad60
->--- /dev/null
->+++ b/tests/tcg/scripts/check_plugin_output.sh
->@@ -0,0 +1,19 @@
->+#!/usr/bin/env bash
->+# SPDX-License-Identifier: GPL-2.0-or-later
->+
->+set -euo pipefail
->+
->+if [ $# -lt 3 ]; then
->+    echo "check_plugin_output: check_cmd qemu_bin [args]..." 1>&2
->+    exit 1
->+fi
->+check_cmd="$1"; shift
->+qemu="$1"; shift
->+tmp=$(mktemp -d)
->+trap "rm -rf $tmp" EXIT
->+
->+set -x
->+
->+$qemu -d plugin -D $tmp/plugin "$@" |& tee $tmp/output
->+cat $tmp/plugin
->+$check_cmd $tmp/output $tmp/plugin
->-- 
+Cover hw/arm/raspi4b.c.  Drop hw/arm/raspi_platform.h, it's in
+include/hw/arm/, and covered there.
 
-Could we write a single python script for all the shell script wrappers 
-and use a different kind of wrapper depending on its command line 
-flags/subcommand we invoke it with? 
+Fixes: 95a5db3ae5 (MAINTAINERS: Add entries for missing ARM boards, 2018-11-19)
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Philippe Mathieu-Daudé <philmd@mailo.com>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20260603064032.3733394-14-armbru@redhat.com>
+---
+ MAINTAINERS | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Maybe this could be better? WDYT?
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1d91043407..ab83fd216d 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1011,8 +1011,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+ R: Philippe Mathieu-Daudé <philmd@mailo.com>
+ L: qemu-arm@nongnu.org
+ S: Odd Fixes
+-F: hw/arm/raspi.c
+-F: hw/arm/raspi_platform.h
++F: hw/arm/raspi*.c
+ F: hw/*/bcm283*
+ F: include/hw/arm/rasp*
+ F: include/hw/*/bcm283*
+-- 
+2.54.0
+
 

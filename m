@@ -4,54 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEE02CD8CB9
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 10:59:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDF3DCD8CB2
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 10:59:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXGdc-0003eZ-Ek; Wed, 10 Jun 2026 06:58:24 -0400
+	id 1wXGec-000620-7o; Wed, 10 Jun 2026 06:59:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wXGda-0003Mu-Di
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:58:22 -0400
+ id 1wXGeS-0005jb-7L
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:59:17 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wXGdY-00075C-Nc
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:58:22 -0400
+ id 1wXGeN-0000AK-Ew
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:59:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781089100;
+ s=mimecast20190719; t=1781089150;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ThQPvh/6KMck6XC4Go6k9daunEMDeU/oyPrV5UqYbus=;
- b=aaYD08hrqKqiAqil+Z417TYFIqMDWsrZWVjtltvppqJUjojpD7hhY4Co6G6sBd2EdXhgqr
- hy7FDIXsvFz88tiSr0k9cKT2FamgJ7N2wxVCQD+8zWqP3TOXI7B+XRjps74XzUNn1mdDHn
- sy+nneyRnzEaR1y2xq4/eeiShlXYspc=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=v/g5jfTi2AD+hzkWtUUyAkv+WqHTfhObwkFPbXFeULU=;
+ b=jSgOHRaIIMdVFX/F6vTf5ctISv7t46d0PHfP2TN15kx/OyTJ5RcBCT7g6gRqRkZbfJb/Hk
+ YrtONHsqyzEhCpjcOpxwaXmJsRFKTBvNot94w1C0rlDNVsZVifwZUSoiGb6vTLTKxmvDUj
+ FSRAVKVe9UxnRm57FF/kpUU463DB1S8=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-680-q9b2zmKfPHKtTqTkXBuZmA-1; Wed,
- 10 Jun 2026 06:58:16 -0400
-X-MC-Unique: q9b2zmKfPHKtTqTkXBuZmA-1
-X-Mimecast-MFC-AGG-ID: q9b2zmKfPHKtTqTkXBuZmA_1781089095
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-632-OgAhiXmnM1OdayB5g7ISIw-1; Wed,
+ 10 Jun 2026 06:59:04 -0400
+X-MC-Unique: OgAhiXmnM1OdayB5g7ISIw-1
+X-Mimecast-MFC-AGG-ID: OgAhiXmnM1OdayB5g7ISIw_1781089143
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D12BD180267D; Wed, 10 Jun 2026 10:58:14 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E67301800D9F; Wed, 10 Jun 2026 10:59:02 +0000 (UTC)
 Received: from localhost (unknown [10.44.24.21])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 86EFC3000223; Wed, 10 Jun 2026 10:58:13 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 47359414; Wed, 10 Jun 2026 10:59:00 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Wed, 10 Jun 2026 14:56:52 +0400
-Subject: [PATCH v2 10/22] hw/input/ps2: keep QemuInputHandlerState in PS2State
+Date: Wed, 10 Jun 2026 14:57:00 +0400
+Subject: [PATCH v2 18/22] hw/input/virtio-input-hid: use
+ qemu_input_handler_set_led() for LED state
 MIME-Version: 1.0
-Message-Id: <20260610-ui-input-v2-10-f68452dd6a22@redhat.com>
+Message-Id: <20260610-ui-input-v2-18-f68452dd6a22@redhat.com>
 References: <20260610-ui-input-v2-0-f68452dd6a22@redhat.com>
 In-Reply-To: <20260610-ui-input-v2-0-f68452dd6a22@redhat.com>
 To: qemu-devel@nongnu.org
@@ -64,25 +65,25 @@ Cc: "Dr. David Alan Gilbert" <dave@treblig.org>,
  Jan Kiszka <jan.kiszka@web.de>, Peter Maydell <peter.maydell@linaro.org>, 
  qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
  qemu-ppc@nongnu.org, Thomas Huth <th.huth+qemu@posteo.eu>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2933;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=877;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=HRbJvGcvY/gPmNkSLQ78JPU6/EdaocsZHw4YvB7qXuE=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqKUMAl2/dYRYAMIc8DUL+7/tCb2SsFSSeVtmLp
- cUCsPfgVx+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCailDAAAKCRDa6OEJdZac
- 5WHGD/0d8kJfPqiPILqhE7IYpr7k5O9/AXCo23IIdU63YRdHtKVc/+PEo+PIW8egYioawHIW1sD
- Uo0MtzjENAK6LJb/dPxKs5HjaoX4evMa3lmgqiiHY1vqz3h1z3GDrZTszptFUokKYFudepiB//8
- o7GCOQ9mEdS/b52YqjV7AfzySba3fNn+TB0KVubclapwxfz2GudZxqO5VYYItHubBmdRuAz8ZVX
- fi+Lm7p/p9wM5Jc+ew8+LvrUwA01+3y1Ywy/3KWardvK411hUSXEWbz5uBBZMB4BJGE+CE/7fqD
- 7LRk0Uy9252irX/om0NPHprJM2d6PCbsUDKf7UmChkL/UX2rJKq8TL0edU4WFir056l0VruFMd8
- rH+B/2YrLFfluxATSXPzkz4T3n3AmSf0+t2f2N6SKQTp2a+Wvrqs1yzyae9op5oplRoqPruD76b
- NfQ/488QJswiCf4Kq8wzJAZDedoxMbz1gJLCMNZbnhz7BzjUeFhGf9AVqL2kJy7WsgO4CprdZn3
- BhI7fsPI0RwLLIsgoPqf6XYP9T+m3wWArCJNG56JaVVgWWeSVId1rkGbwJOwvZKpTBHDOEYBHP/
- SDB0aGOGhC/Bo4I1FbC1UTtZhtXck84UEC8ImKa13QFxoYpo0Go4Sw0cN3E75nmq0fvfYLVAzkA
- ZU41fLUcvKWacAw==
+ bh=FxrGAwrXr2ksjrfGyAaKoh9XtsL3mW3yFUW3RWHGSfA=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqKUMBz9ffM6aA0FJXHn0z0skUON0T+m7CTRgHY
+ dTiozAR1g6JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCailDAQAKCRDa6OEJdZac
+ 5YHMD/96MdKXukgMZzsVd2DozlfLB5BTGOVrDUuhQ78MTgBTgmVQs2tOJVDRfhFG3qBQd759/h4
+ WRX5oeJmG/VMlPtrJp6hcwm7+Vex+q0AukJMUb9AUrQTtmbN5TFNfreIxrlhnLmcMod+K8q6PFa
+ 3flmt/c5Blj0Nwm4951JH/3CqzHDWkB2Iwwr72+b9cscKmBpsBJlCq7JztU2n3bMMbvR76njdT+
+ YfQv3LwcUcV5TkV6gxsvW0741Np2sW0mD1ew4p7KOojPFRfYLR5yQYq8Flq276vKlU0n1WY534I
+ 8Q8hkfa8iRWaTilUxQCxALh4YyjEo6njknZl+HMzHLdbOnN/5/1r58TVAP63NAaZ3709UuNh2yN
+ YX3A+HgYeePYR0THTVobBuXojVK0/DbSKdXeeaulklH9Iz/2cr/mYIqHN8TrN42XakRnxC5zcIH
+ 0AIkG5ZNFCX5+Dag69YETGtU5IhdRdgKWXvFRpXwa3c17MrZNmklSps8ddX1ts4vFKII6TWBgGn
+ mTZXRT4pqaUAgxc2+6Z9LcyUB5Fd/uFcWCmSpzUIOcBIxpbuiXM8RlMoCZDCiRkN+8j10XKVDFl
+ jCnIwWfDbjHXAeoOjjrmhsJWxsIQf8XUMydohdQGjFcQe2bILylJ216Gj34xxyMNIb/+71fhAjj
+ aqGXr7M6h6QfLiQ==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: Heqob1Eae8vfXmfbNClueUdkqiV1qhBWKfPK0VadAHc_1781089095
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: mKEXYJFTroexsfJHZaEuujufzxIFu5ibG5yGtY4OpCU_1781089143
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -111,91 +112,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Track the input handled state, and dispose it on unrealize.
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- include/hw/input/ps2.h |  2 ++
- hw/input/ps2.c         | 24 ++++++++++++++++++++++--
- 2 files changed, 24 insertions(+), 2 deletions(-)
+ hw/input/virtio-input-hid.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/input/ps2.h b/include/hw/input/ps2.h
-index 058db3e0890..d0c532a38f2 100644
---- a/include/hw/input/ps2.h
-+++ b/include/hw/input/ps2.h
-@@ -26,6 +26,7 @@
- #define HW_PS2_H
- 
- #include "hw/core/sysbus.h"
+diff --git a/hw/input/virtio-input-hid.c b/hw/input/virtio-input-hid.c
+index 73423ac0c73..d3062809a13 100644
+--- a/hw/input/virtio-input-hid.c
++++ b/hw/input/virtio-input-hid.c
+@@ -12,6 +12,7 @@
+ #include "hw/virtio/virtio.h"
+ #include "hw/core/qdev-properties.h"
+ #include "hw/virtio/virtio-input.h"
 +#include "ui/input.h"
  
- #define PS2_MOUSE_BUTTON_LEFT   0x01
- #define PS2_MOUSE_BUTTON_RIGHT  0x02
-@@ -59,6 +60,7 @@ struct PS2State {
-     PS2Queue queue;
-     int32_t write_cmd;
-     qemu_irq irq;
-+    QemuInputHandlerState *hs;
- };
+ #include "ui/console.h"
  
- #define TYPE_PS2_DEVICE "ps2-device"
-diff --git a/hw/input/ps2.c b/hw/input/ps2.c
-index f2523ff4bc7..97df7a9a43e 100644
---- a/hw/input/ps2.c
-+++ b/hw/input/ps2.c
-@@ -1233,7 +1233,16 @@ static const QemuInputHandler ps2_keyboard_handler = {
- 
- static void ps2_kbd_realize(DeviceState *dev, Error **errp)
- {
--    qemu_input_handler_register(dev, &ps2_keyboard_handler);
-+    PS2State *s = PS2_DEVICE(dev);
-+
-+    s->hs = qemu_input_handler_register(dev, &ps2_keyboard_handler);
-+}
-+
-+static void ps2_kbd_unrealize(DeviceState *dev)
-+{
-+    PS2State *s = PS2_DEVICE(dev);
-+
-+    g_clear_pointer(&s->hs, qemu_input_handler_unregister);
- }
- 
- static const QemuInputHandler ps2_mouse_handler = {
-@@ -1245,7 +1254,16 @@ static const QemuInputHandler ps2_mouse_handler = {
- 
- static void ps2_mouse_realize(DeviceState *dev, Error **errp)
- {
--    qemu_input_handler_register(dev, &ps2_mouse_handler);
-+    PS2State *s = PS2_DEVICE(dev);
-+
-+    s->hs = qemu_input_handler_register(dev, &ps2_mouse_handler);
-+}
-+
-+static void ps2_mouse_unrealize(DeviceState *dev)
-+{
-+    PS2State *s = PS2_DEVICE(dev);
-+
-+    g_clear_pointer(&s->hs, qemu_input_handler_unregister);
- }
- 
- static void ps2_kbd_class_init(ObjectClass *klass, const void *data)
-@@ -1255,6 +1273,7 @@ static void ps2_kbd_class_init(ObjectClass *klass, const void *data)
-     PS2DeviceClass *ps2dc = PS2_DEVICE_CLASS(klass);
- 
-     dc->realize = ps2_kbd_realize;
-+    dc->unrealize = ps2_kbd_unrealize;
-     resettable_class_set_parent_phases(rc, NULL, ps2_kbd_reset_hold, NULL,
-                                        &ps2dc->parent_phases);
-     dc->vmsd = &vmstate_ps2_keyboard;
-@@ -1274,6 +1293,7 @@ static void ps2_mouse_class_init(ObjectClass *klass, const void *data)
-     PS2DeviceClass *ps2dc = PS2_DEVICE_CLASS(klass);
- 
-     dc->realize = ps2_mouse_realize;
-+    dc->unrealize = ps2_mouse_unrealize;
-     resettable_class_set_parent_phases(rc, NULL, ps2_mouse_reset_hold, NULL,
-                                        &ps2dc->parent_phases);
-     dc->vmsd = &vmstate_ps2_mouse;
+@@ -208,7 +209,7 @@ static void virtio_input_hid_handle_status(VirtIOInput *vinput,
+         } else {
+             vhid->ledstate &= ~ledbit;
+         }
+-        kbd_put_ledstate(vhid->ledstate);
++        qemu_input_handler_set_led(vhid->hs, vhid->ledstate);
+         break;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR,
 
 -- 
 2.54.0

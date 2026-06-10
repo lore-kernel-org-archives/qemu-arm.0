@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BED3BCD8CB2
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 11:00:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00BC9CD8CB2
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 11:00:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXGdp-0004AL-R7; Wed, 10 Jun 2026 06:58:37 -0400
+	id 1wXGcp-00023T-K5; Wed, 10 Jun 2026 06:57:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wXGdl-00044k-Dt
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:58:33 -0400
+ id 1wXGco-00021j-7O
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:57:34 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wXGdj-00076w-D9
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:58:33 -0400
+ id 1wXGcm-0003qN-Hi
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:57:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781089110;
+ s=mimecast20190719; t=1781089051;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Z3x98RLTDQDDbBc3k2+DOQ4NJcU8pbjelIglG1thHGM=;
- b=DniyinTf8PsDGrMYIvTZ+LeI/4WSfoHFrgqB89xTjyfk7D58OCR3Itqib7FjFv2CbTU+T0
- oec/OefAHpGGKDrWOXQdzmSh6p0JO93HBuYLc3iP6Gai2ifcnQfxi50vmVks1Dmv4tc9A4
- mUZGX+4A6w2w4uAdet3ZiC2ZqUt9br4=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=UxZUNvwWAjxJnqiWTST9BHMgAOWqnx0QfSP91jc8058=;
+ b=Us7Lx3FE87NdNddL1VVxb5LDPiKtsG+HfauAPwxKHdOYNGUTLrPV/gHN4FPtrKwm2RnKFA
+ UHciWG8wxck2zfWE629H3c/kS0luPmSegY0c+inW5U4bXduRAVUYhxoMqy7devdJBZgeko
+ 8RsBlGqTPaamFHZy9ZqdBNnBZNfCo/I=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-161-jBSZrDqCO16aXq5NegReVA-1; Wed,
- 10 Jun 2026 06:58:27 -0400
-X-MC-Unique: jBSZrDqCO16aXq5NegReVA-1
-X-Mimecast-MFC-AGG-ID: jBSZrDqCO16aXq5NegReVA_1781089106
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-523-2aaLgp07NvaqgovLCOqCqg-1; Wed,
+ 10 Jun 2026 06:57:28 -0400
+X-MC-Unique: 2aaLgp07NvaqgovLCOqCqg-1
+X-Mimecast-MFC-AGG-ID: 2aaLgp07NvaqgovLCOqCqg_1781089046
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7B2281954111; Wed, 10 Jun 2026 10:58:25 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0D9471800615; Wed, 10 Jun 2026 10:57:26 +0000 (UTC)
 Received: from localhost (unknown [10.44.24.21])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 955851800599; Wed, 10 Jun 2026 10:58:18 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id B44641954B09; Wed, 10 Jun 2026 10:57:24 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Wed, 10 Jun 2026 14:56:53 +0400
-Subject: [PATCH v2 11/22] hw/arm: keep QemuInputHandlerState in musicpal
+Date: Wed, 10 Jun 2026 14:56:44 +0400
+Subject: [PATCH v2 02/22] ui/hmp: move index_from_key() where it is used
 MIME-Version: 1.0
-Message-Id: <20260610-ui-input-v2-11-f68452dd6a22@redhat.com>
+Message-Id: <20260610-ui-input-v2-2-f68452dd6a22@redhat.com>
 References: <20260610-ui-input-v2-0-f68452dd6a22@redhat.com>
 In-Reply-To: <20260610-ui-input-v2-0-f68452dd6a22@redhat.com>
 To: qemu-devel@nongnu.org
@@ -64,25 +64,25 @@ Cc: "Dr. David Alan Gilbert" <dave@treblig.org>,
  Jan Kiszka <jan.kiszka@web.de>, Peter Maydell <peter.maydell@linaro.org>, 
  qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
  qemu-ppc@nongnu.org, Thomas Huth <th.huth+qemu@posteo.eu>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1436;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2281;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=u6RG46vN0H5nTKZNkw4st/d2Sfo+DtW0qvBbkOugEy4=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqKUMArNhxzoUTPa1V2FymHQneqUWmH7TotSoj+
- Evc0EapgsiJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCailDAAAKCRDa6OEJdZac
- 5ULOEACcYBgo9zeOU4C6MpdEyOBaiNt0ogoVWzZSqhbs9gJ8idctbpP0m6EF0srJ8ZxX6NLjN4J
- 9P2IuMTO2fWx9JGYksS/FGkBOmfacU+5z/ISKmHIj5P0k0vAbRjUrW4XQ9uaRxHUHPlHZH7cz07
- yW7llNCunceGQPd10sqrbaXRazvmLXP26pL16DToWgj7fh1fcOz6ugME5vbm71qTnq4bmrwG1zj
- 7DoZEAq3zFdZTvCqeaImhDt//flKNxfaGklYxZ9RAebS2WUM9udj+UCZQz5Owtbg7BhRxzSlsy7
- J8U/yQEQvgNppfyy/1XYNeqgdvm+k8JZH5yImxYubbCEmyZ3tAhciE8ZY2hWZZED38KWSP10Fkl
- sXLET0aBIgJ+FHJDdLpvVLIXfNCBi4fbqRQjpNt3yifdRIEmxfBK2PL3tnR3HDg1o7Bo2LcF1n2
- u+qb9njPjuj60pCEUcfmqR7Ut2XYUmDvjsOgPYGKShCic4B0iq82XzamoURfK0uvSV8VjY2+vPj
- PV0bwWyQKHuYtb8FmyplKt+Ee9zCCudlAjAfZC7nlCreY/lapWR7sdC7dDg1YKR9tJsSPHgTMpS
- siS8HwE0QuWOvchdSC+44YxNescbtmlQ1ICSBwntWBy7UEmTM1aoFYm99gcLE+eawwBOCZHeaGI
- sH/YsXO1PLz5kUA==
+ bh=wXfw72vTSr4KKaDWsW73dCO4+hZUkFWNWVCR09czORY=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqKUL+r7bLGC8nlmk5+iHMRbDPKnZx9n+IOth13
+ XObG2sDyYGJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCailC/gAKCRDa6OEJdZac
+ 5coNEACvRaIo6JlG9lVvi/nHWYCXYfnK0BEXPawz7LeV1JYZ48lFcTgPphRj2Iue4xYOFKm85p7
+ BSMiJYUi7DCRsLASIy3ZX/F8ggdUa0os4GUwWQYqTj2KhF1thcVWYlGfrCkeOxOtN3SuNq9Jnuh
+ LMB9RC9ZlbBQSRCzDJGFO53wjdyB9h5f58Culvt/5p3yjXVlxNxVYgVplzTL2j6YQKSy/gCPDGE
+ 0DQu9EcNxOSJ5+0kYCBBx64epIqTBW9HuIORwu26OX9/E5RsxIz1j02g/lYc329f+sN0kYDYWmd
+ 0FiMGyoKZ56Sz6gC16IdVAK3nGl4Mww2WxmNYOskBIe9tq0AY/eGc3mG4n84cHbx/CGfGqVM4Bn
+ vNbhm1CX2SWZUG1V54QddoClbGdXuhfTwI+SYUlL9VHPCmb4TzJ6N0Q5vGB5PTk4TpW06dPCtm8
+ JEbNg6BOmhd4muD3aP23G9ahzY1rf2FVGpfzn4+u291sVV4WlSy1+Se7tFx5bi7DgYgg43TVBuO
+ ttAx9ON0EzI058ACPOdHPzkTT/DB51MF7VkBc+BCxpZrdp9NED7PX+pRnPqfkd4H+XF8AVKM/nH
+ 0DEdvw83ELNZmprQquaDfLkZM6n6aM4oYUDw53qhvvZtTlK/8cQGxwneDRBHW7NPjeDgF3D/YIX
+ PfX0BONnCxCmW9g==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: lP2652qVp26Nr4iJ7pzCJBhqrVy4tUVr9ydupLjGy1o_1781089106
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: rf2qA98iDoRFnDnCcy04N7k0PDegxHb_v7D7WtsFkLg_1781089046
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -111,51 +111,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Track the input handled state, and dispose it on unrealize.
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/arm/musicpal.c | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
+ include/ui/console.h |  3 ---
+ ui/input-legacy.c    | 15 ---------------
+ ui/ui-hmp-cmds.c     | 15 +++++++++++++++
+ 3 files changed, 15 insertions(+), 18 deletions(-)
 
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index e2630243eb7..69e83bdd973 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -1062,6 +1062,7 @@ struct musicpal_key_state {
-     SysBusDevice parent_obj;
-     /*< public >*/
+diff --git a/include/ui/console.h b/include/ui/console.h
+index a31c5a4995c..3cb78989cd2 100644
+--- a/include/ui/console.h
++++ b/include/ui/console.h
+@@ -450,9 +450,6 @@ bool vnc_display_reload_certs(const char *id,  Error **errp);
+ bool vnc_display_update(DisplayUpdateOptionsVNC *arg, Error **errp);
+ void vnc_cleanup(void);
  
-+    QemuInputHandlerState *hs;
-     uint32_t pressed_keys;
-     qemu_irq out[8];
- };
-@@ -1158,7 +1159,16 @@ static const QemuInputHandler musicpal_key_handler = {
+-/* input.c */
+-int index_from_key(const char *key, size_t key_length);
+-
+ #ifdef CONFIG_LINUX
+ /* udmabuf.c */
+ int udmabuf_fd(void);
+diff --git a/ui/input-legacy.c b/ui/input-legacy.c
+index 193c9ae2ef9..71b17a3cfc7 100644
+--- a/ui/input-legacy.c
++++ b/ui/input-legacy.c
+@@ -56,21 +56,6 @@ struct QEMUPutLEDEntry {
+ static QTAILQ_HEAD(, QEMUPutLEDEntry) led_handlers =
+     QTAILQ_HEAD_INITIALIZER(led_handlers);
  
- static void musicpal_key_realize(DeviceState *dev, Error **errp)
+-int index_from_key(const char *key, size_t key_length)
+-{
+-    int i;
+-
+-    for (i = 0; i < Q_KEY_CODE__MAX; i++) {
+-        if (!strncmp(key, QKeyCode_str(i), key_length) &&
+-            !QKeyCode_str(i)[key_length]) {
+-            break;
+-        }
+-    }
+-
+-    /* Return Q_KEY_CODE__MAX if the key is invalid */
+-    return i;
+-}
+-
+ void qmp_send_key(KeyValueList *keys, bool has_hold_time, int64_t hold_time,
+                   Error **errp)
  {
--    qemu_input_handler_register(dev, &musicpal_key_handler);
-+    musicpal_key_state *s = MUSICPAL_KEY(dev);
+diff --git a/ui/ui-hmp-cmds.c b/ui/ui-hmp-cmds.c
+index 1e9bc77bd80..76f5181de43 100644
+--- a/ui/ui-hmp-cmds.c
++++ b/ui/ui-hmp-cmds.c
+@@ -350,6 +350,21 @@ void hmp_change_vnc(Monitor *mon, const char *device, const char *target,
+ }
+ #endif
+ 
++static int index_from_key(const char *key, size_t key_length)
++{
++    int i;
 +
-+    s->hs = qemu_input_handler_register(dev, &musicpal_key_handler);
++    for (i = 0; i < Q_KEY_CODE__MAX; i++) {
++        if (!strncmp(key, QKeyCode_str(i), key_length) &&
++            !QKeyCode_str(i)[key_length]) {
++            break;
++        }
++    }
++
++    /* Return Q_KEY_CODE__MAX if the key is invalid */
++    return i;
 +}
 +
-+static void musicpal_key_unrealize(DeviceState *dev)
-+{
-+    musicpal_key_state *s = MUSICPAL_KEY(dev);
-+
-+    g_clear_pointer(&s->hs, qemu_input_handler_unregister);
- }
- 
- static const VMStateDescription musicpal_key_vmsd = {
-@@ -1177,6 +1187,7 @@ static void musicpal_key_class_init(ObjectClass *klass, const void *data)
- 
-     dc->vmsd = &musicpal_key_vmsd;
-     dc->realize = musicpal_key_realize;
-+    dc->unrealize = musicpal_key_unrealize;
- }
- 
- static const TypeInfo musicpal_key_info = {
+ void hmp_sendkey(Monitor *mon, const QDict *qdict)
+ {
+     const char *keys = qdict_get_str(qdict, "keys");
 
 -- 
 2.54.0

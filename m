@@ -4,111 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6378CD8CB9
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 12:20:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB5A2CD8CB2
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 12:23:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXHuP-0005DU-EX; Wed, 10 Jun 2026 08:19:49 -0400
+	id 1wXHxk-0006tC-9I; Wed, 10 Jun 2026 08:23:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1wXHuN-0005DB-UB
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 08:19:47 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ id 1wXHxh-0006rm-Sg
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 08:23:13 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1wXHuG-0003qS-P0
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 08:19:47 -0400
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-bf1cdcfd6deso821866366b.3
- for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 05:19:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781093977; cv=none;
- d=google.com; s=arc-20240605;
- b=G5zOROJTXs2bJKJb0oRfZlFS8ouSyKYIc8WQMg2bqg4VcYYtH57V5cnuMbvPHHgfdu
- 9XlRoaQ1Fj1fx+9LGmZg2L7ePIPE59md10JWuAfwiseNhdui58O5z2OMLDuOkLs2qpTc
- JvAfUo8QZ7Glc0RJ/6iew9phlkL1GKbVQpMlPT0NI8RqnejXpD3m371sx5Qo1yRgQmur
- 2Nq6mHHVk263nlxFin+5jbZ1lY81ZFAxpP146O9KX2zgFL8IWIMGtKbYQYB7ipSApPYz
- e+6Hzvkn8qbcB5u5v3Fp+/Sa2G55lLe1MzuwnjAzBpIy5mNu5E0Af6ElqwpG3E4Dhr19
- UjMg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=0U3c2O9xGWe6eB6GmOngCtISuAMmG9rEzewXi3SV1m8=;
- fh=FnTKw0TJFfki5oAOLPnIPWnfmyFvop+B/gn8TkU9tbE=;
- b=F91FgEfrphnFD3XuKl1u+dmFynvKAArad+e3pnDuRLXxzR7ru4oiPklCRU1yHP42Oe
- jxQCQt4vdRXVj1gZlIWuBzoU7KnCyocpIEW5U/jLbubjXUd2VFj91hRROqKcGmJ/hCt2
- tQVsgBymOYyscMlv4QfkRQ8NAyrC4k9lFY2Kq1O18RCcCVaw+BERYq0FKxPN1z5SovKb
- cQWVMuS4ntXTIJnlIdREr8doIzPVwC/gZuZC9GFjr9bQl+bZAB72dkeA8CXTvzTodx5k
- csComsykxKkTCNgNJaWDa9UR+L7pgbB6JC+ryKDS5AmZU1nXy0YgyTfylyA0oDPCX0yv
- 8XnA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ id 1wXHxe-0005rH-7C
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 08:23:12 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-45e9f4a3510so3320907f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 05:23:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=9elements.com; s=google; t=1781093977; x=1781698777; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=0U3c2O9xGWe6eB6GmOngCtISuAMmG9rEzewXi3SV1m8=;
- b=QVhWK5ZOW3LD8MH5G70hM/xWNC/p4MzK1eXRcQ53rMC1e1WUn7Bz4Wg4ix0KNE85cN
- TLYAQXcMpMbknVtlli7NYqmiR841hrLV6uhskhgxTj9yfGcGsSJ97DpC08SVh+TiljpI
- IY9imL+hJpw2igBqhtqHckUn9jriphsP5lalCVCbiGMsRGmbRLNS5vd60lX6JadV8inc
- 2nh2Yfi+xcz1l3Cv42Qf7zQMe16dza82q5CznhzRBZhv/j53s6sXTiChgbimkIAhpYl3
- uLo9dkxaDeIWlvm2baT7Ft8vVrHuRcw9X/Jd3PAGuiXoge/2czAWrb3bVORmQkJLjJdI
- PHaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781093977; x=1781698777;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=9elements.com; s=google; t=1781094189; x=1781698989; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=0U3c2O9xGWe6eB6GmOngCtISuAMmG9rEzewXi3SV1m8=;
- b=G5tavkob5FZl/egMwGWKTolrm3TXRHNUG4W619jGqHR2Vlg23iOrerKgsDss0bAHH+
- goCqNpTlt3YSU4wEqbNGU6XC1mTLLiuYMLSjelkOJXK6aWxtcx8l/DCCevsL1Z1cqJHr
- eWUBtUS7QtCs1mRudU/2QysdAVJaSv8AEd/2jnmF354sJFfojtCxOQ/J0N1OSMCMAqDx
- 9f7gOGANexG7Cn8CRQ0mPxDOE5wArq3EfZZEYS9hqPSrrddVsGa9hau1hUGzJsR+IExR
- ymCcWXKW58KsVbxsE1zuTTlIk6DQxN1kiLJnT458YBDMnKSmrlZNg87RkaMImpzdGKi5
- XVlw==
+ bh=Gx97R6nvlqLPdKU6XWZOgI4w8DtmWAcFkT1SFlCm7Mc=;
+ b=JfFTFMbzZgGmMs0sdK+lx1fW3xvDCqQqT8smc82OKKQ7K8Rew/1mTjuYg9+Ubpon/C
+ SXxAkQVcZKPU37iBQ5o6PhOo4dVs+t1XfzzaeKzsP84cqjOFeVlYG5aY9qBjG134t6xU
+ kSfEwevPkbi1053jKsezY/fXfdYscrbAOcqkL7cMKdUtiOR3kcMIWgktO4cDGad0OwkZ
+ wWyuxmpfzwHfNtwiNKXdiDku68FUN1WxoNc5cwpYXvSUUzo3IYnB32hqYB1Zsn0ltpXT
+ ercFOci/MkHp3PmYoFEhZY0sht//5HYvq/tFLfhdTPD89oX9YYekzWc9g6lyOula5FBJ
+ mNEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1781094189; x=1781698989;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=Gx97R6nvlqLPdKU6XWZOgI4w8DtmWAcFkT1SFlCm7Mc=;
+ b=ft8HjM1cckNfYZ4qPRO/vTY2aIsnxzuAfBN6mS8SYBzJL57s7QGmTD/ppdEAkRKKN7
+ Pq6E9FY5HLyawWJ6Ml+T26vVRgGX3rswIzSBhH0t1MqlNjVVjbTm8S6PnJpASOUnyysB
+ bV3xKmjoKrfvowLcWpOGFvx/3x7BPwSAusWTuiX9GH39+jc5rYz6QVOG4ZcmS3v5wF0b
+ BHF8l1KCv52UBybJLPnCgdwkwHFJBUh4LC2N/WX/O1+zm3Vcsyytia9jIWGXVTKhxHpP
+ ACMtNHinhju5N2BfHntML4ivHiX8ZK5xpv4GbultZzJabToHa0CVBwa9yoxUdSKokAw0
+ AQ1g==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/xiSrT2zmkVNFit3mrVA3IdyZeOd9zoJg1DWySL7pgBCAppEaX4ANfJ7OoVEJV/97IJNUOZS1SDw==@nongnu.org
-X-Gm-Message-State: AOJu0YxGoB2c4pYjDVghnsaAFuEGxBS2nA0tdQ9UGs9vBU3ulwxaRGfu
- k3BcW03T91T8ihKvZ6fMQucvmIAlDzi/wHL6OM9B1FHEP+FN5FYY9y5GY/M8lTLUKAkbZaHk+F3
- qukye0QC6Y2n4xCW8HImnQ074zbzxuEIWbsO8x2xT6w==
-X-Gm-Gg: Acq92OEy4iue3OnbPQlygmp36EG5zcaY0KFlCVa4xINT/+Tqb3BPHY/Y/j/DJDkzBTr
- lyAJnMmfRz9GFs3xe7BFcQUYb2iNW3N32rhvxN1aYO8JF8CqEUN1RomzA/uwlfm+YVODnKZjbI2
- 6Rd9nTzs4SoqZiFU7a2HJe1QJBNnvV0UMKSvo8zThmyOlxcCSnR8tWQZ4xqKshzE72ZdrzHqZrN
- IiPfR7GEiU83eEPsMYcAreI1k2N2TxvB+bU1TwUQknQVRWxLa1VD8XHrFkKU+RhRbNv1i+RbK/1
- RIrDPwY0D7uZ1yLc5lArycUTECT5
-X-Received: by 2002:a17:907:75f7:b0:bee:a25:b977 with SMTP id
- a640c23a62f3a-bf3745dce08mr880212966b.45.1781093977219; Wed, 10 Jun 2026
- 05:19:37 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260529124237.94087-1-alexander.hansen@9elements.com>
- <20260529124237.94087-4-alexander.hansen@9elements.com>
- <b011384e-cedf-4803-b07b-c41615ff5e0b@kaod.org>
-In-Reply-To: <b011384e-cedf-4803-b07b-c41615ff5e0b@kaod.org>
+ AFNElJ9rkVanWr8u1VbVAPjsL8U0ePnbac9vev8aE01fqNi7UWTRs7rep2YtDCXE9fTVn0ecFfEDxK0yCQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yw8OiQ9VzUZgkQnXFNUG8cnxkQZMW1hFAQuN5NlfQd9yRX7XDb0
+ UEBAt+VWJ44XBoGWsQrUqqOzAV6uRYobmUNGpitDjcSXr5alnsZ6xy6FML4Og56GNhI=
+X-Gm-Gg: Acq92OEhhapOd6CTmY94vV5JrQ2dujCKzhBMuw8hIH58uuH5S9k54EkQVihpZpRKjmM
+ 8IGRhb6qoyzHcBzuXiehp4fhSPdMMaz+BV5DEcN6wwfDraag2U/v8z09rQQVWmJ7MEgldPypbF8
+ b3QqgY7LBlqpSUig6L0LavkLKE3YmKUwmKSsmsuaqbg0QFlRb5nKOVkXYc1btJT97WjLF8+1MMD
+ NdXolN6H85MNdTBSCe0PUh0qodMygUrjxnjmcj2If0xpU0/yGTdAlkdfESSXCbP70hFDiY5BWbz
+ uiEwiZ9k0007bkMccCSVBHGCk7XydGnV8TW3Ul725S4Rp+TrxqD2+jrmTqCURsFuP3SJQ7aJInF
+ qz1KIYPJ3lHpbujP5m/g88yEpiyZw9IzXmgLLsqEjhfdU5EW0mgs/Bk/g/f4e2BhlyB3F0AMGBF
+ 6D7f+aPgHxaRNjjCMXNRy7wGlhwZFMpLxTyav9q+Jodu6XGwurVHmL+PY=
+X-Received: by 2002:a5d:5a4c:0:b0:452:273:5cd6 with SMTP id
+ ffacd0b85a97d-460302e3749mr28797122f8f.1.1781094188435; 
+ Wed, 10 Jun 2026 05:23:08 -0700 (PDT)
+Received: from alexanderarchlinux ([188.111.3.154])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4601f0a43e9sm70995963f8f.0.2026.06.10.05.23.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 10 Jun 2026 05:23:08 -0700 (PDT)
 From: Alexander Hansen <alexander.hansen@9elements.com>
-Date: Wed, 10 Jun 2026 14:19:24 +0200
-X-Gm-Features: AVVi8Cem1vJ7hq4emNXgCIIT8MXdqIPSze7pTGeZ09StowTrN7_WpOP6P8-CJzU
-Message-ID: <CAEr1sMtNt3hz8DDYLQs90kEV87ULssNLKLLO_+P-0jxHGxUQSQ@mail.gmail.com>
-Subject: Re: [PATCH v5 3/5] hw/sensor: MAX31790 support
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: qemu-devel@nongnu.org, Titus Rwantare <titusr@google.com>, 
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
+To: qemu-devel@nongnu.org
+Cc: Alexander Hansen <alexander.hansen@9elements.com>,
+ Titus Rwantare <titusr@google.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-arm@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>, 
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Joel Stanley <joel@jms.id.au>
-Content-Type: multipart/alternative; boundary="000000000000d2f5090653e541f7"
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=alexander.hansen@9elements.com; helo=mail-ej1-x635.google.com
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Subject: [PATCH v6 1/5] ast2600: yosemite4 initial support
+Date: Wed, 10 Jun 2026 14:20:58 +0200
+Message-ID: <20260610122252.349321-2-alexander.hansen@9elements.com>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260610122252.349321-1-alexander.hansen@9elements.com>
+References: <20260610122252.349321-1-alexander.hansen@9elements.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=alexander.hansen@9elements.com; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -126,1882 +111,351 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000d2f5090653e541f7
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Initial patch based on [1] to support yosemite v4 bmc emulation.
 
-Hi Cedric,
+The goal of this machine support is to support OpenBMC development.
 
-> How does the 0x4444 value relates to the one used in the tests ?
+Reference linux devicetree from openbmc linux is [2].
 
-There is something in the image which is writing the pwm, if you look at
-the traces
-it should be more obvious in the next patchset (v6, not yet sent)
+Status:
+- Enclosure FRU:         showing up
+- Management Board FRU:  showing up
+- Blade Board FRU:       showing up
+- Blade Board sensors:   not implemented
+- Blade Chassis FRU:     showing up
+- Fan Board FRU:         both showing up
+- Fan Board sensors:     supported
 
-max31790_pwm_write i2c_addr: 0x2f, index: 5, value: 0xb200
-max31790_rpm_write i2c_addr: 0x2f, index: 5, value: 0x1c34
-max31790_tach_count_reg i2c_addr: 0x2f, index: 5, value: 0x0440
-max31790_send i2c_addr: 0x2f, data: 0x80
-max31790_pwm_write i2c_addr: 0x2f, index: 5, value: 0xb280
-max31790_rpm_write i2c_addr: 0x2f, index: 5, value: 0x1c48
-max31790_tach_count_reg i2c_addr: 0x2f, index: 5, value: 0x0420
+Overall the emulation is incomplete but already helpful in development
+and testing.
 
-Looking then at the latest fan dynamics read from the driver
+The focus of this initial support is on the FRU eeproms and fanboard
+sensors.
 
-max31790_fan_dynamics_read i2c_addr: 0x20, channel: 0, value: 0x0000
-max31790_recv_return i2c_addr: 0x20, reg_addr: 0x08, returns: 0x00
+Tested: booted an OpenBMC image for yosemite4 target.
 
-and plugging that into the equation
+References:
+[1] https://github.com/9elements/qemu/commit/32139f913c2bd0ebe4bd26c46765861f6f9f2d49
+[2] arch/arm/boot/dts/aspeed/aspeed-bmc-facebook-yosemite4.dts
+[3] https://github.com/legoater/qemu-aspeed-boot/pull/5
 
->>> (60 * 1 * 8192) / (0x0420 >> 4)
-7447.272727272727
+Cc: Titus Rwantare <titusr@google.com>
+Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
+Cc: Peter Maydell <peter.maydell@linaro.org> (maintainer:ASPEED BMCs)
+Cc: Steven Lee <steven_lee@aspeedtech.com> (reviewer:ASPEED BMCs)
+Cc: Troy Lee <leetroy@gmail.com> (reviewer:ASPEED BMCs)
+Cc: Jamin Lin <jamin_lin@aspeedtech.com> (reviewer:ASPEED BMCs)
+Cc: Kane Chen <kane_chen@aspeedtech.com> (reviewer:ASPEED BMCs)
+Cc: Andrew Jeffery <andrew@codeconstruct.com.au> (reviewer:ASPEED BMCs)
+Cc: Joel Stanley <joel@jms.id.au> (reviewer:ASPEED BMCs)
+Cc: qemu-arm@nongnu.org (open list:ASPEED BMCs)
+Cc: qemu-devel@nongnu.org (open list:All patches CC here)
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
+---
+ docs/system/arm/aspeed.rst   |   3 +-
+ hw/arm/aspeed_ast2600_fby4.c | 260 +++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build           |   1 +
+ 3 files changed, 263 insertions(+), 1 deletion(-)
+ create mode 100644 hw/arm/aspeed_ast2600_fby4.c
 
-we get the value found in the test. The fan dynamics are wrong because the
-reset was not being called.
-Should be fixed in the next patchset. The newly added traces should make
-things clearer and the functional test will also have a comment
-going through an example calculation.
-
-Am Mo., 1. Juni 2026 um 11:17 Uhr schrieb C=C3=A9dric Le Goater <clg@kaod.o=
-rg>:
-
-> On 5/29/26 14:37, Alexander Hansen wrote:
-> > Product: [1]
-> > Datasheet: [2]
-> >
-> > MAX31790 Support:
-> > - fan inputs are reading
-> > - tach reading propertional to pwm setting from linux driver
-> > - fans do not show any fault
-> > - 6 PWM registers influence 6 TACH registers
-> >
-> > There is intentional stub behavior in some places and various functions
-> > of the device are currently unsupported.
-> >
-> > MAX31790 currently unsupported:
-> > - slave address restriction
-> > - fan dynamics
-> > - spin-up configuration
-> > - fault state / failure possibility
-> > - rate-of-change control
-> > - tach mode
-> > - mixed layouts where number of fans !=3D number of tachs
-> > - see Figure 5.9 in [2] for example of mixed layout
-> >
-> > Anyone could expand it in the future for more accurate emulation.
-> >
-> > The reason for adding this device is to support Yosemite V4 emulation.
-> >
-> > Tested: on yosemite 4 qemu
-> >
-> > root@yosemite4:~# ls /sys/class/hwmon/hwmon2/
-> > device            fan2_fault   fan3_target  fan5_fault   fan6_target
-> pwm2         pwm5
-> > fan1_enable  fan2_input   fan4_enable  fan5_input   name
-> pwm2_enable  pwm5_enable
-> > fan1_fault   fan2_target  fan4_fault   fan5_target  of_node   pwm3
->    pwm6
-> > fan1_input   fan3_enable  fan4_input   fan6_enable  power
->  pwm3_enable  pwm6_enable
-> > fan1_target  fan3_fault   fan4_target  fan6_fault   pwm1      pwm4
->    subsystem
-> > fan2_enable  fan3_input   fan5_enable  fan6_input   pwm1_enable
-> pwm4_enable  uevent
-> > root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_input
-> > 4551
-> > root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_enable
-> > 1
-> > root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_fault
-> > 0
-> > root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_target
-> > 2048
-> > root@yosemite4:~# cat /sys/class/hwmon/hwmon2/pwm1
-> > 178
-> > root@yosemite4:~# cat /sys/class/hwmon/hwmon2/name
-> > max31790
-> >
-> > Trace output:
-> > max31790_realize i2c_addr: 0x20
-> > max31790_realize i2c_addr: 0x2f
-> > max31790_realize i2c_addr: 0x20
-> > max31790_realize i2c_addr: 0x2f
-> > max31790_event i2c_addr: 0x20, event: 0x01
-> > max31790_send i2c_addr: 0x20, data: 0x02
-> > max31790_event i2c_addr: 0x20, event: 0x00
-> > max31790_recv i2c_addr: 0x20, reg_addr: 0x02
-> > max31790_recv_return i2c_addr: 0x20, returns: 0x08
-> > ...
-> >
-> > References:
-> > [1] https://www.analog.com/en/products/MAX31790.html
-> > [2]
-> https://www.analog.com/media/en/technical-documentation/data-sheets/MAX31=
-790.pdf
-> >
-> > Cc: Titus Rwantare <titusr@google.com>
-> > Cc: "C=C3=A9dric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
-> > Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-> > Cc: Paolo Bonzini <pbonzini@redhat.com>
-> > Cc: Peter Maydell <peter.maydell@linaro.org>
-> > Cc: "Philippe Mathieu-Daud=C3=A9" <philmd@linaro.org>
-> > Cc: qemu-arm@nongnu.org
-> > Cc: qemu-devel@nongnu.org
-> > Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
-> > ---
-> >   MAINTAINERS                              |   1 +
-> >   hw/arm/aspeed_ast2600_fby4.c             |   4 +-
-> >   hw/sensor/max31790.c                     | 537 ++++++++++++++++++++++=
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 2d51ceeb84..9e0d6f06b5 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -1,4 +1,4 @@
+-Aspeed family boards (``anacapa-bmc``, ``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
++Aspeed family boards (``anacapa-bmc``, ``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fby4-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
+ ===============================================================================================================================================================================================================================================================================================================================================
+ 
+ The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
+@@ -33,6 +33,7 @@ AST2600 SoC based machines :
+ - ``fuji-bmc``             Facebook Fuji BMC
+ - ``bletchley-bmc``        Facebook Bletchley BMC
+ - ``fby35-bmc``            Facebook fby35 BMC
++- ``fby4-bmc``             Facebook fby4 BMC
+ - ``anacapa-bmc``          Facebook Anacapa BMC
+ - ``gb200nvl-bmc``         Nvidia GB200nvl BMC
+ 
+diff --git a/hw/arm/aspeed_ast2600_fby4.c b/hw/arm/aspeed_ast2600_fby4.c
+new file mode 100644
+index 0000000000..03f54d4393
+--- /dev/null
++++ b/hw/arm/aspeed_ast2600_fby4.c
+@@ -0,0 +1,260 @@
++/*
++ * Facebook Yosemite V4
++ *
++ * Copyright 2026 9elements.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-> >   hw/arm/Kconfig                           |   1 +
-> >   hw/sensor/Kconfig                        |   4 +
-> >   hw/sensor/meson.build                    |   1 +
-> >   hw/sensor/trace-events                   |  11 +
-> >   tests/functional/arm/test_aspeed_fby4.py |  26 ++
-> >   8 files changed, 583 insertions(+), 2 deletions(-)
-> >   create mode 100644 hw/sensor/max31790.c
-> >
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index cd5c4831e2..2a0dbd1cc4 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -3987,6 +3987,7 @@ S: Maintained
-> >   F: hw/i2c/pmbus_device.c
-> >   F: hw/sensor/adm1272.c
-> >   F: hw/sensor/isl_pmbus_vr.c
-> > +F: hw/sensor/max31790.c
-> >   F: hw/sensor/max34451.c
-> >   F: include/hw/i2c/pmbus_device.h
-> >   F: include/hw/sensor/isl_pmbus_vr.h
-> > diff --git a/hw/arm/aspeed_ast2600_fby4.c b/hw/arm/aspeed_ast2600_fby4.=
-c
-> > index 89fb0ac2fd..1f391022a2 100644
-> > --- a/hw/arm/aspeed_ast2600_fby4.c
-> > +++ b/hw/arm/aspeed_ast2600_fby4.c
-> > @@ -164,7 +164,7 @@ static void fby4_i2c_init_fanboard(I2CSlave
-> *fan_mux, size_t eepromSize)
-> >           /* TODO */
-> >
-> >           /* maxim,max31790 @ 0x20   (pwm) */
-> > -        /* TODO */
-> > +        i2c_slave_create_simple(bus, "max31790", 0x20);
-> >
-> >           /*
-> >            * ti,tca6424 @ 0x22       (gpio)
-> > @@ -182,7 +182,7 @@ static void fby4_i2c_init_fanboard(I2CSlave
-> *fan_mux, size_t eepromSize)
-> >            */
-> >
-> >           /* maxim,max31790 @ 0x2f   (pwm) */
-> > -        /* TODO */
-> > +        i2c_slave_create_simple(bus, "max31790", 0x2f);
-> >
-> >           /* maxim,max11615 @ 0x33   (adc) */
-> >           /* TODO */
-> > diff --git a/hw/sensor/max31790.c b/hw/sensor/max31790.c
-> > new file mode 100644
-> > index 0000000000..b0430ea094
-> > --- /dev/null
-> > +++ b/hw/sensor/max31790.c
-> > @@ -0,0 +1,537 @@
-> > +/*
-> > + * Maxim MAX31790 PMBus 6-Channel Fan Controller
-> > + *
-> > + * Datasheet:
-> > + *
-> https://www.analog.com/media/en/technical-documentation/data-sheets/MAX31=
-790.pdf
-> > + *
-> > + * Copyright 2026 9elements
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "qemu/log.h"
-> > +#include "hw/i2c/i2c.h"
-> > +#include "qapi/error.h"
-> > +#include "qapi/visitor.h"
-> > +#include "migration/vmstate.h"
-> > +#include "qemu/module.h"
-> > +#include "qom/object.h"
-> > +#include "trace.h"
-> > +
-> > +#define TYPE_MAX31790 "max31790"
-> > +
-> > +#define MAX31790_NUM_FANS 6
-> > +#define MAX31790_NUM_TACHS 12
-> > +
-> > +#define MAX31790_REG_GLOBAL_CONFIG 0x00
-> > +#define MAX31790_REG_PWM_FREQ 0x01
-> > +
-> > +/* 0x02 to 0x07: N =3D 0 .. 5 */
-> > +#define MAX31790_REG_FAN_CONFIG(N) (0x02 + N)
-> > +
-> > +/* 0x08 to 0x0d: N =3D 0 .. 5 */
-> > +#define MAX31790_REG_FAN_DYNAMICS(N) (0x08 + N)
-> > +
-> > +#define MAX31790_REG_FAN_FAULT_STATUS_2 0x10
-> > +#define MAX31790_REG_FAN_FAULT_STATUS_1 0x11
-> > +#define MAX31790_REG_FAN_FAULT_MASK_2 0x12
-> > +#define MAX31790_REG_FAN_FAULT_MASK_1 0x13
-> > +#define MAX31790_REG_FAILED_FAN_OPT 0x14
-> > +
-> > +/* 0x18 to 0x2f: N =3D 0 .. 11 */
-> > +#define MAX31790_REG_TACH_COUNT_MSB(N) (0x18 + 2 * N)
-> > +#define MAX31790_REG_TACH_COUNT_LSB(N) (0x19 + 2 * N)
-> > +
-> > +/* 0x30 to 0x3b: N =3D 0 .. 5 */
-> > +#define MAX31790_REG_PWM_DUTY_CYCLE_MSB(N) (0x30 + 2 * N)
-> > +#define MAX31790_REG_PWM_DUTY_CYCLE_LSB(N) (0x31 + 2 * N)
-> > +
-> > +/* .. reserved registers ... */
-> > +
-> > +/* 0x40 to 0x4b: N =3D 0 .. 5 */
-> > +#define MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(N) (0x40 + 2 * N)
-> > +#define MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(N) (0x41 + 2 * N)
-> > +
-> > +/* ... 'User Byte' registers ... */
-> > +
-> > +/* 0x50 to 0x5b: N =3D 0 .. 5 */
-> > +#define MAX31790_REG_TACH_TARGET_COUNT_MSB(N) (0x50 + 2 * N)
-> > +#define MAX31790_REG_TACH_TARGET_COUNT_LSB(N) (0x51 + 2 * N)
-> > +
-> > +struct MAX31790State {
-> > +    I2CSlave i2c;
-> > +
-> > +    uint8_t fan_config[MAX31790_NUM_FANS];
-> > +    uint8_t fan_dynamics[MAX31790_NUM_FANS];
-> > +
-> > +    uint16_t pwm[MAX31790_NUM_FANS];
-> > +    uint16_t tach_target[MAX31790_NUM_FANS];
-> > +
-> > +    /*
-> > +     * Fan speed is measured by counting the number of internal 8192Hz
-> > +     * (fTOSC/4) clock cycles that take place during a select-
-> > +     * able number of tachometer periods. The number of clock
-> > +     * cycles counted (11-bit value) is stored in the associated
-> > +     * TACH Count registers and the desired number of cycles
-> > +     * is stored in the TACH Target Count registers.
-> > +    */
-> > +    uint16_t tach_count[MAX31790_NUM_TACHS];
-> > +
-> > +    /* command buffer */
-> > +    uint8_t len;
-> > +    uint8_t buf[2];
-> > +
-> > +    /* output buffer */
-> > +    uint8_t outlen;
-> > +    uint8_t outbuf[2];
-> > +
-> > +    /* selected register for read/write operation */
-> > +    uint8_t pointer;
-> > +};
-> > +
-> > +struct MAX31790Class {
-> > +    I2CSlaveClass parent_class;
-> > +};
-> > +
-> > +OBJECT_DECLARE_TYPE(MAX31790State, MAX31790Class, MAX31790)
-> > +
-> > +static void max31790_read(MAX31790State *s)
-> > +{
-> > +    size_t index =3D 0;
-> > +    uint8_t out0 =3D 0;
-> > +    uint8_t out1 =3D 0;
-> > +
-> > +    switch (s->pointer) {
-> > +    case MAX31790_REG_FAN_CONFIG(0):
-> > +    case MAX31790_REG_FAN_CONFIG(1):
-> > +    case MAX31790_REG_FAN_CONFIG(2):
-> > +    case MAX31790_REG_FAN_CONFIG(3):
-> > +    case MAX31790_REG_FAN_CONFIG(4):
-> > +    case MAX31790_REG_FAN_CONFIG(5):
-> > +        out0 =3D s->fan_config[s->pointer - MAX31790_REG_FAN_CONFIG(0)=
-];
-> > +        break;
-> > +    case MAX31790_REG_FAN_DYNAMICS(0):
-> > +    case MAX31790_REG_FAN_DYNAMICS(1):
-> > +    case MAX31790_REG_FAN_DYNAMICS(2):
-> > +    case MAX31790_REG_FAN_DYNAMICS(3):
-> > +    case MAX31790_REG_FAN_DYNAMICS(4):
-> > +    case MAX31790_REG_FAN_DYNAMICS(5):
-> > +        out0 =3D s->fan_dynamics[s->pointer -
-> MAX31790_REG_FAN_DYNAMICS(0)];
-> > +        break;
-> > +    case MAX31790_REG_FAN_FAULT_STATUS_1:
-> > +    case MAX31790_REG_FAN_FAULT_STATUS_2:
-> > +        /* we do not have any fan fault */
-> > +        out0 =3D 0x00;
-> > +        out1 =3D 0x00;
-> > +        break;
-> > +    case MAX31790_REG_TACH_COUNT_MSB(0):
-> > +    case MAX31790_REG_TACH_COUNT_MSB(1):
-> > +    case MAX31790_REG_TACH_COUNT_MSB(2):
-> > +    case MAX31790_REG_TACH_COUNT_MSB(3):
-> > +    case MAX31790_REG_TACH_COUNT_MSB(4):
-> > +    case MAX31790_REG_TACH_COUNT_MSB(5):
-> > +    case MAX31790_REG_TACH_COUNT_MSB(6):
-> > +    case MAX31790_REG_TACH_COUNT_MSB(7):
-> > +    case MAX31790_REG_TACH_COUNT_MSB(8):
-> > +    case MAX31790_REG_TACH_COUNT_MSB(9):
-> > +    case MAX31790_REG_TACH_COUNT_MSB(10):
-> > +    case MAX31790_REG_TACH_COUNT_MSB(11):
-> > +        index =3D (s->pointer - MAX31790_REG_TACH_COUNT_MSB(0)) / 2;
-> > +        out0 =3D (s->tach_count[index] >> 8) & 0xff;
-> > +        out1 =3D s->tach_count[index] & 0xff;
-> > +        break;
-> > +
-> > +    case MAX31790_REG_TACH_COUNT_LSB(0):
-> > +    case MAX31790_REG_TACH_COUNT_LSB(1):
-> > +    case MAX31790_REG_TACH_COUNT_LSB(2):
-> > +    case MAX31790_REG_TACH_COUNT_LSB(3):
-> > +    case MAX31790_REG_TACH_COUNT_LSB(4):
-> > +    case MAX31790_REG_TACH_COUNT_LSB(5):
-> > +    case MAX31790_REG_TACH_COUNT_LSB(6):
-> > +    case MAX31790_REG_TACH_COUNT_LSB(7):
-> > +    case MAX31790_REG_TACH_COUNT_LSB(8):
-> > +    case MAX31790_REG_TACH_COUNT_LSB(9):
-> > +    case MAX31790_REG_TACH_COUNT_LSB(10):
-> > +    case MAX31790_REG_TACH_COUNT_LSB(11):
-> > +        index =3D (s->pointer - MAX31790_REG_TACH_COUNT_LSB(0)) / 2;
-> > +        out0 =3D s->tach_count[index] & 0xff;
-> > +        break;
-> > +
-> > +    case MAX31790_REG_PWM_DUTY_CYCLE_MSB(0):
-> > +    case MAX31790_REG_PWM_DUTY_CYCLE_MSB(1):
-> > +    case MAX31790_REG_PWM_DUTY_CYCLE_MSB(2):
-> > +    case MAX31790_REG_PWM_DUTY_CYCLE_MSB(3):
-> > +    case MAX31790_REG_PWM_DUTY_CYCLE_MSB(4):
-> > +    case MAX31790_REG_PWM_DUTY_CYCLE_MSB(5):
-> > +        index =3D (s->pointer - MAX31790_REG_PWM_DUTY_CYCLE_MSB(0)) / =
-2;
-> > +        out0 =3D (s->pwm[index] >> 8) & 0xff;
-> > +        out1 =3D s->pwm[index] & 0xff;
-> > +        break;
-> > +    case MAX31790_REG_PWM_DUTY_CYCLE_LSB(0):
-> > +    case MAX31790_REG_PWM_DUTY_CYCLE_LSB(1):
-> > +    case MAX31790_REG_PWM_DUTY_CYCLE_LSB(2):
-> > +    case MAX31790_REG_PWM_DUTY_CYCLE_LSB(3):
-> > +    case MAX31790_REG_PWM_DUTY_CYCLE_LSB(4):
-> > +    case MAX31790_REG_PWM_DUTY_CYCLE_LSB(5):
-> > +        index =3D (s->pointer - MAX31790_REG_PWM_DUTY_CYCLE_LSB(0)) / =
-2;
-> > +        out0 =3D s->pwm[index] & 0xff;
-> > +        break;
-> > +
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(1):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(2):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(3):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(4):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(5):
-> > +        index =3D (s->pointer -
-> MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0)) / 2;
-> > +        out0 =3D (s->pwm[index] >> 8) & 0xff;
-> > +        out1 =3D s->pwm[index] & 0xff;
-> > +        break;
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(1):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(2):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(3):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(4):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(5):
-> > +        index =3D (s->pointer -
-> MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0)) / 2;
-> > +        out0 =3D s->pwm[index] & 0xff;
-> > +        break;
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(0):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(1):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(2):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(3):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(4):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(5):
-> > +        index =3D (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_MSB(0))=
- /
-> 2;
-> > +        out0 =3D (s->tach_target[index] >> 8) & 0xff;
-> > +        out1 =3D s->tach_target[index] & 0xff;
-> > +        break;
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_LSB(0):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_LSB(1):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_LSB(2):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_LSB(3):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_LSB(4):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_LSB(5):
-> > +        index =3D (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_LSB(0))=
- /
-> 2;
-> > +        out0 =3D s->tach_target[index] & 0xff;
-> > +        break;
-> > +    default:
-> > +        qemu_log_mask(LOG_UNIMP, "%s: read of register %d\n", __func__=
-,
-> > +                      s->pointer);
-> > +        break;
-> > +    }
-> > +
-> > +    s->outbuf[0] =3D out0;
-> > +    s->outbuf[1] =3D out1;
-> > +}
-> > +
-> > +static uint8_t max31790_get_speed_range(MAX31790State *s, size_t index=
-)
-> > +{
-> > +    const uint16_t value =3D (s->fan_dynamics[index] >> 5);
-> > +    return (value > 5) ? 32 : 1 << value;
-> > +}
-> > +
-> > +static void max31790_set_rpm(MAX31790State *s, size_t index, uint16_t
-> rpm)
-> > +{
-> > +    trace_max31790_rpm_write(s->i2c.address, index, rpm);
-> > +
-> > +    /*
-> > +     * (see page 11) NP =3D number of tachometer pulses per revolution=
-.
-> > +     * Most general-purpose brushless DC fans produce two tachometer
-> > +     * pulses per revolution.
-> > +     */
-> > +    const uint64_t sr =3D max31790_get_speed_range(s, index);
-> > +
-> > +    /* page 11: tach_count =3D 60 * SR * 8192 / (NP * RPM) */
-> > +
-> > +    /* prevent division by 0 */
-> > +    rpm =3D (rpm =3D=3D 0) ? 1 : rpm;
-> > +
-> > +    /* simplified, assuming NP =3D 2 */
-> > +    uint64_t tach_count =3D  (245760ULL * sr) / (uint64_t)rpm;
-> > +
-> > +    /* datasheet: lowest 5 bits are 0 */
-> > +    s->tach_count[index] =3D tach_count << 5;
->
-> Hmm, this is assigning a uint16_t from a uint64_t. There could be issues.
->
-> > +
-> > +    trace_max31790_tach_count_reg(s->i2c.address, index,
-> s->tach_count[index]);
-> > +}
-> > +
-> > +static void max31790_pwm_write(MAX31790State *s, size_t index, uint16_=
-t
-> value)
-> > +{
-> > +    trace_max31790_pwm_write(s->i2c.address, index, value);
-> > +
-> > +    s->pwm[index] =3D value;
-> > +
-> > +    /* last 7 bits in register are 0 , 9 bits remaining */
-> > +    const uint16_t pwm_real =3D s->pwm[index] >> 7;
-> > +
-> > +    /* maximum value will be 511 */
-> > +
-> > +    /*
-> > +     * This formula has magic values which model the relationship
-> > +     * of PWM input to a fan. Not derived from datasheet.
-> > +     */
-> > +    max31790_set_rpm(s, index, 100 + pwm_real * 20);
-> > +}
-> > +
-> > +static void max31790_write_2_byte(MAX31790State *s)
-> > +{
-> > +    size_t index =3D 0;
-> > +    const uint8_t value0 =3D s->buf[0];
-> > +    const uint8_t value1 =3D s->buf[1];
-> > +
-> > +    switch (s->pointer) {
-> > +    case MAX31790_REG_FAN_CONFIG(0):
-> > +    case MAX31790_REG_FAN_CONFIG(1):
-> > +    case MAX31790_REG_FAN_CONFIG(2):
-> > +    case MAX31790_REG_FAN_CONFIG(3):
-> > +    case MAX31790_REG_FAN_CONFIG(4):
-> > +    case MAX31790_REG_FAN_CONFIG(5):
-> > +        break; /* handled by one byte write */
-> > +    case MAX31790_REG_FAN_DYNAMICS(0):
-> > +    case MAX31790_REG_FAN_DYNAMICS(1):
-> > +    case MAX31790_REG_FAN_DYNAMICS(2):
-> > +    case MAX31790_REG_FAN_DYNAMICS(3):
-> > +    case MAX31790_REG_FAN_DYNAMICS(4):
-> > +    case MAX31790_REG_FAN_DYNAMICS(5):
-> > +        break; /* handled by one byte write */
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(1):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(2):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(3):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(4):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(5):
-> > +        index =3D (s->pointer -
-> MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0)) / 2;
-> > +        max31790_pwm_write(s, index, value0 << 8 | value1);
-> > +        break;
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(0):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(1):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(2):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(3):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(4):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(5):
-> > +        index =3D (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_MSB(0))=
- /
-> 2;
-> > +        s->tach_target[index] =3D (value0 << 8) | value1;
-> > +        break;
-> > +    default:
-> > +        qemu_log_mask(LOG_UNIMP, "%s: write to register %d\n", __func_=
-_,
-> > +                      s->pointer);
-> > +        break;
-> > +    }
-> > +}
-> > +
-> > +static void max31790_write_1_byte(MAX31790State *s)
-> > +{
-> > +    size_t index =3D 0;
-> > +    uint16_t pwm =3D 0;
-> > +    const uint8_t value =3D s->buf[0];
-> > +
-> > +    switch (s->pointer) {
-> > +    case MAX31790_REG_FAN_CONFIG(0):
-> > +    case MAX31790_REG_FAN_CONFIG(1):
-> > +    case MAX31790_REG_FAN_CONFIG(2):
-> > +    case MAX31790_REG_FAN_CONFIG(3):
-> > +    case MAX31790_REG_FAN_CONFIG(4):
-> > +    case MAX31790_REG_FAN_CONFIG(5):
-> > +        s->fan_config[s->pointer - MAX31790_REG_FAN_CONFIG(0)] =3D val=
-ue;
-> > +        break;
-> > +    case MAX31790_REG_FAN_DYNAMICS(0):
-> > +    case MAX31790_REG_FAN_DYNAMICS(1):
-> > +    case MAX31790_REG_FAN_DYNAMICS(2):
-> > +    case MAX31790_REG_FAN_DYNAMICS(3):
-> > +    case MAX31790_REG_FAN_DYNAMICS(4):
-> > +    case MAX31790_REG_FAN_DYNAMICS(5):
-> > +        s->fan_dynamics[s->pointer - MAX31790_REG_FAN_DYNAMICS(0)] =3D
-> value;
-> > +        break;
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(1):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(2):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(3):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(4):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(5):
-> > +        index =3D (s->pointer -
-> MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0)) / 2;
-> > +        pwm =3D (value << 8) | (s->pwm[index] & 0x00ff);
-> > +        max31790_pwm_write(s, index, pwm);
-> > +        break;
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(1):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(2):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(3):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(4):
-> > +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(5):
-> > +        index =3D (s->pointer -
-> MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0)) / 2;
-> > +        pwm =3D (s->pwm[index] & 0xff00) | (value & 0x00ff);
-> > +        max31790_pwm_write(s, index, pwm);
-> > +        break;
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(0):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(1):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(2):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(3):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(4):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(5):
-> > +        index =3D (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_MSB(0))=
- /
-> 2;
-> > +        s->tach_target[index] =3D (s->tach_target[index] & 0x00ff) |
-> (value << 8);
-> > +        break;
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_LSB(0):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_LSB(1):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_LSB(2):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_LSB(3):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_LSB(4):
-> > +    case MAX31790_REG_TACH_TARGET_COUNT_LSB(5):
-> > +        index =3D (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_LSB(0))=
- /
-> 2;
-> > +        s->tach_target[index] =3D (s->tach_target[index] & 0xff00) |
-> value;
-> > +        break;
-> > +    default:
-> > +        qemu_log_mask(LOG_UNIMP, "%s: write to register %d\n", __func_=
-_,
-> > +                      s->pointer);
-> > +        break;
-> > +    }
-> > +}
-> > +
-> > +static int max31790_send(I2CSlave *i2c, uint8_t data)
-> > +{
-> > +    MAX31790State *s =3D MAX31790(i2c);
-> > +
-> > +    trace_max31790_send(s->i2c.address, data);
-> > +
-> > +    if (s->len =3D=3D 0) {
-> > +        /* first byte is the register pointer for a read / write
-> operation */
-> > +        s->pointer =3D data;
-> > +        s->len++;
-> > +        return 0;
-> > +    }
-> > +
-> > +    if (s->len > 2) {
-> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: write too many bytes\n",
-> __func__);
-> > +        return 1; /* NAK */
-> > +    }
-> > +
-> > +    /* second / third byte is the data to write */
-> > +    s->buf[s->len - 1] =3D data;
-> > +    s->len++;
-> > +
-> > +    if (s->len =3D=3D 2) {
-> > +        max31790_write_1_byte(s);
-> > +    } else if (s->len =3D=3D 3) {
-> > +        max31790_write_2_byte(s);
-> > +    }
-> > +
-> > +    return 0;
-> > +}
-> > +
-> > +static uint8_t max31790_recv(I2CSlave *i2c)
-> > +{
-> > +    MAX31790State *s =3D MAX31790(i2c);
-> > +    trace_max31790_recv(s->i2c.address, s->pointer);
-> > +
-> > +    max31790_read(s);
-> > +    s->len =3D 0;
-> > +
-> > +    if (s->outlen >=3D 2) {
-> > +        /* error */
-> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: guest over read\n",
-> __func__);
-> > +        s->outlen =3D 0;
-> > +    }
-> > +
-> > +    const uint8_t data =3D s->outbuf[s->outlen++];
-> > +
-> > +    trace_max31790_recv_return(s->i2c.address, data);
-> > +    return data;
-> > +}
-> > +
-> > +static int max31790_event(I2CSlave *i2c, enum i2c_event event)
-> > +{
-> > +    MAX31790State *s =3D MAX31790(i2c);
-> > +
-> > +    trace_max31790_event(s->i2c.address, event);
-> > +
-> > +    switch (event) {
-> > +    case I2C_START_RECV:
-> > +        s->outlen =3D 0;
-> > +        break;
-> > +    case I2C_START_SEND:
-> > +        s->len =3D 0;
-> > +        break;
-> > +    default:
-> > +        break;
-> > +    }
-> > +
-> > +    return 0;
-> > +}
-> > +
-> > +static const VMStateDescription vmstate_max31790 =3D {
-> > +    .name =3D TYPE_MAX31790,
-> > +    .version_id =3D 0,
-> > +    .minimum_version_id =3D 0,
-> > +    .fields =3D
-> > +        (const VMStateField[]){
-> > +            VMSTATE_UINT8(len, MAX31790State),
-> > +            VMSTATE_UINT8_ARRAY(fan_config, MAX31790State,
-> MAX31790_NUM_FANS),
-> > +            VMSTATE_UINT8_ARRAY(fan_dynamics, MAX31790State,
-> MAX31790_NUM_FANS),
-> > +            VMSTATE_UINT16_ARRAY(pwm, MAX31790State, MAX31790_NUM_FANS=
-),
-> > +            VMSTATE_UINT16_ARRAY(tach_target, MAX31790State,
-> MAX31790_NUM_FANS),
-> > +            VMSTATE_UINT16_ARRAY(tach_count, MAX31790State,
-> MAX31790_NUM_TACHS),
-> > +            VMSTATE_UINT8_ARRAY(buf, MAX31790State, 2),
-> > +            VMSTATE_UINT8(outlen, MAX31790State),
-> > +            VMSTATE_UINT8_ARRAY(outbuf, MAX31790State, 2),
-> > +            VMSTATE_UINT8(pointer, MAX31790State),
-> > +            VMSTATE_I2C_SLAVE(i2c, MAX31790State),
-> VMSTATE_END_OF_LIST() }
-> > +};
-> > +
-> > +static void max31790_reset(DeviceState *dev)
-> > +{
-> > +    MAX31790State *s =3D MAX31790(dev);
-> > +
-> > +    for (int i =3D 0; i < MAX31790_NUM_FANS; i++) {
-> > +        /* POR-State 0b 0XX0 0000 */
-> > +        s->fan_config[i] =3D 0b00000000;
-> > +
-> > +        /* same as POR-State */
-> > +        s->tach_target[i] =3D 0b0011110000000000;
->
-> tach_target[] array size is  MAX31790_NUM_TACHS =3D 12. The loop uses
-> MAX31790_NUM_FANS =3D 6
->
->
->
-> > +
-> > +        /* same as POR-State */
-> > +        s->fan_dynamics[i] =3D 0b01001100;
-> > +    }
-> > +
-> > +    /* this will set both pwm and tach count */
-> > +    for (int i =3D 0; i < MAX31790_NUM_TACHS; i++) {
->
->
-> pwm[] array size is MAX31790_NUM_FANS =3D 6. The loop uses
-> MAX31790_NUM_TACHS =3D 12. this is an out-of-bounds write.
-> > +        max31790_pwm_write(s, i, 0x4444);
->
-> How does the 0x4444 value relates to the one used in the tests ?
->
-> > +    }
-> > +}
-> > +
-> > +static void max31790_realize(DeviceState *dev, Error **errp)
-> > +{
-> > +    MAX31790State *s =3D MAX31790(dev);
-> > +
-> > +    trace_max31790_realize(s->i2c.address);
-> > +}
-> > +
-> > +static void max31790_class_init(ObjectClass *klass, const void *data)
-> > +{
-> > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> > +    I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
-> > +
-> > +    dc->realize =3D max31790_realize;
-> > +    dc->desc =3D "Maxim MAX31790 6-Channel Fan Controller";
-> > +    dc->vmsd =3D &vmstate_max31790;
-> > +    dc->legacy_reset =3D max31790_reset;
-> > +    k->event =3D max31790_event;
-> > +    k->recv =3D max31790_recv;
-> > +    k->send =3D max31790_send;
-> > +}
-> > +
-> > +static const TypeInfo max31790_info =3D {
-> > +    .name =3D TYPE_MAX31790,
-> > +    .parent =3D TYPE_I2C_SLAVE,
-> > +    .instance_size =3D sizeof(MAX31790State),
-> > +    .class_size =3D sizeof(MAX31790Class),
-> > +    .class_init =3D max31790_class_init,
-> > +};
-> > +
-> > +static void max31790_register_types(void)
-> > +{
-> > +    type_register_static(&max31790_info);
-> > +}
-> > +
-> > +type_init(max31790_register_types)
-> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> > index 5b198402d5..99864eb878 100644
-> > --- a/hw/arm/Kconfig
-> > +++ b/hw/arm/Kconfig
-> > @@ -552,6 +552,7 @@ config ASPEED_SOC
-> >       select LED
-> >       select PMBUS
-> >       select MAX31785
-> > +    select MAX31790
-> >       select FSI_APB2OPB_ASPEED
-> >       select AT24C
-> >       select PCI_EXPRESS
-> > diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
-> > index bc6331b4ab..767f198e92 100644
-> > --- a/hw/sensor/Kconfig
-> > +++ b/hw/sensor/Kconfig
-> > @@ -43,3 +43,7 @@ config ISL_PMBUS_VR
-> >   config MAX31785
-> >       bool
-> >       depends on PMBUS
-> > +
-> > +config MAX31790
-> > +    bool
-> > +    depends on I2C
-> > diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
-> > index 420fdc3359..4987c3b253 100644
-> > --- a/hw/sensor/meson.build
-> > +++ b/hw/sensor/meson.build
-> > @@ -8,3 +8,4 @@ system_ss.add(when: 'CONFIG_MAX34451', if_true:
-> files('max34451.c'))
-> >   system_ss.add(when: 'CONFIG_LSM303DLHC_MAG', if_true:
-> files('lsm303dlhc_mag.c'))
-> >   system_ss.add(when: 'CONFIG_ISL_PMBUS_VR', if_true:
-> files('isl_pmbus_vr.c'))
-> >   system_ss.add(when: 'CONFIG_MAX31785', if_true: files('max31785.c'))
-> > +system_ss.add(when: 'CONFIG_MAX31790', if_true: files('max31790.c'))
-> > diff --git a/hw/sensor/trace-events b/hw/sensor/trace-events
-> > index a3fe54fa6d..0bde02e676 100644
-> > --- a/hw/sensor/trace-events
-> > +++ b/hw/sensor/trace-events
-> > @@ -4,3 +4,14 @@
-> >   tmp105_read(uint8_t dev, uint8_t addr) "device: 0x%02x, addr: 0x%02x"
-> >   tmp105_write(uint8_t dev, uint8_t addr) "device: 0x%02x, addr 0x%02x"
-> >   tmp105_write_shutdown(uint8_t dev) "device: 0x%02x"
-> > +
-> > +# max31790.c
-> > +max31790_send(uint8_t i2c_addr, uint8_t send) "i2c_addr: 0x%02x, data:
-> 0x%02x"
-> > +max31790_recv(uint8_t i2c_addr, uint8_t reg_addr) "i2c_addr: 0x%02x,
-> reg_addr: 0x%02x"
-> > +max31790_recv_return(uint8_t i2c_addr, uint8_t data) "i2c_addr: 0x%02x=
-,
-> returns: 0x%02x"
-> > +max31790_event(uint8_t i2c_addr, uint8_t event) "i2c_addr: 0x%02x,
-> event: 0x%02x"
-> > +max31790_realize(uint8_t i2c_addr) "i2c_addr: 0x%02x"
-> > +max31790_pwm_write(uint8_t i2c_addr, size_t index, uint16_t value)
-> "i2c_addr: 0x%02x, index: %zu, value: 0x%04x"
-> > +max31790_rpm_write(uint8_t i2c_addr, size_t index, uint16_t value)
-> "i2c_addr: 0x%02x, index: %zu, value: 0x%04x"
-> > +max31790_tach_count_reg(uint8_t i2c_addr, size_t index, uint16_t value=
-)
-> "i2c_addr: 0x%02x, index: %zu, value: 0x%04x"
-> > +
-> > diff --git a/tests/functional/arm/test_aspeed_fby4.py
-> b/tests/functional/arm/test_aspeed_fby4.py
-> > index a521834f79..dc2437a533 100755
-> > --- a/tests/functional/arm/test_aspeed_fby4.py
-> > +++ b/tests/functional/arm/test_aspeed_fby4.py
-> > @@ -8,6 +8,8 @@
-> >   from qemu_test import wait_for_console_pattern
-> >   from aspeed import AspeedTest
-> >
->
-> Drop the extra newline
->
-> > +from qemu_test import wait_for_console_pattern
-> > +from qemu_test import exec_command_and_wait_for_pattern
->
-> redundant import.
->
-> >
-> >   class YosemiteV4Machine(AspeedTest):
-> >
-> > @@ -34,6 +36,30 @@ def do_test_arm_aspeed_openbmc_no_network(self,
-> machine, image, uboot,
-> >           # different from the other machines.
-> >           self.wait_for_console_pattern('yosemite4 login:')
-> >
-> > +        # perform login
-> > +        exec_command_and_wait_for_pattern(self,
-> > +                                          "root", "Password:");
-> > +
-> > +        exec_command_and_wait_for_pattern(self, "0penBmc", "#");
-> > +
-> > +        # MAX31790 test
-> > +        exec_command_and_wait_for_pattern(self,
-> > +            "cat /sys/class/hwmon/hwmon2/name", "max31790");
-> > +        exec_command_and_wait_for_pattern(self,
-> > +            "cat /sys/class/hwmon/hwmon2/fan1_input", "7447");
-> > +        exec_command_and_wait_for_pattern(self,
-> > +            "cat /sys/class/hwmon/hwmon2/fan1_enable", "1");
-> > +        exec_command_and_wait_for_pattern(self,
-> > +            "cat /sys/class/hwmon/hwmon2/fan1_fault", "0");
-> > +        exec_command_and_wait_for_pattern(self,
-> > +            "echo 1 > /sys/class/hwmon/hwmon2/pwm1", "root@yosemite4")=
-;
-> > +        exec_command_and_wait_for_pattern(self,
-> > +            "cat /sys/class/hwmon/hwmon2/fan1_input", "140");
-> > +        exec_command_and_wait_for_pattern(self,
-> > +            "echo 255 > /sys/class/hwmon/hwmon2/pwm1", "root@yosemite4
-> ");
-> > +        exec_command_and_wait_for_pattern(self,
-> > +            "cat /sys/class/hwmon/hwmon2/fan1_input", "10685");
-> > +
-> >       def test_arm_ast2600_yosemitev4_openbmc(self):
-> >           image_path =3D self.uncompress(self.ASSET_YOSEMITE_V4_FLASH)
-> >
->
->
++#include "qemu/osdep.h"
++#include "hw/arm/machines-qom.h"
++#include "hw/arm/aspeed.h"
++#include "hw/arm/aspeed_soc.h"
++#include "hw/nvram/eeprom_at24c.h"
++#include "hw/i2c/i2c_mux_pca954x.h"
++#include "hw/gpio/pca9552.h"
++
++#define FBY4_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
++
++/* START OF EEPROM CONTENTS */
++
++/*
++ *./frugen -s board.mfg="Wiwynn" \
++ * --set board.pname="Fan Board FSC-MAX ADC-TI LED-NXP EFUSE-MAX" \
++ * --set text:board.pn="BRD-PN-345" \
++ * --board-date "10/1/2017 12:58:00" \
++ * --set board.serial="123456" \
++ * --set product.pname="Yosemite V4" \
++ * --set product.mfg="Wiwynn" \
++ * --set product.ver="v1.1" \
++ * --set product.serial="123456" \
++ * --set product.atag="PLACEHOLDER" \
++ * --set product.custom="Fanboard Custom1" \
++ * --set product.custom.1="Fanboard Custom2" \
++ * --set text:product.pn="PN-345" \
++ * fru-yv4-fanboard.bin
++ */
++/* EM Config: yosemite4_fanboard_fsc_max_adc_ti_led_nxp_ons_efuse_max.json */
++/* Yosemite4 fan board */
++static const uint8_t fru_yv4_fanboard_bin[] = {
++  0x01, 0x00, 0x00, 0x01, 0x0b, 0x00, 0x00, 0xf3, 0x01, 0x0a, 0x19, 0xce,
++  0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xea, 0x46, 0x61,
++  0x6e, 0x20, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x20, 0x46, 0x53, 0x43, 0x2d,
++  0x4d, 0x41, 0x58, 0x20, 0x41, 0x44, 0x43, 0x2d, 0x54, 0x49, 0x20, 0x4c,
++  0x45, 0x44, 0x2d, 0x4e, 0x58, 0x50, 0x20, 0x45, 0x46, 0x55, 0x53, 0x45,
++  0x2d, 0x4d, 0x41, 0x58, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0xca, 0x42,
++  0x52, 0x44, 0x2d, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc0, 0xc1, 0x00,
++  0x00, 0x00, 0x00, 0xdb, 0x01, 0x09, 0x19, 0xc6, 0x57, 0x69, 0x77, 0x79,
++  0x6e, 0x6e, 0xcb, 0x59, 0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65, 0x20,
++  0x56, 0x34, 0xc6, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc4, 0x76, 0x31,
++  0x2e, 0x31, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0x89, 0x30, 0x1b, 0x8e,
++  0x25, 0xfa, 0xb2, 0x64, 0x29, 0x03, 0xc0, 0xd0, 0x46, 0x61, 0x6e, 0x62,
++  0x6f, 0x61, 0x72, 0x64, 0x20, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x32,
++  0xc1, 0x00, 0x00, 0x9d
++};
++static const size_t fru_yv4_fanboard_bin_len = sizeof(fru_yv4_fanboard_bin);
++
++/*
++ *./frugen -s board.mfg="Wiwynn" \
++ * --set board.pname="Sentinel Dome without Retimer" \
++ * --set text:board.pn="BRD-PN-345" \
++ * --board-date "10/1/2017 12:58:00" \
++ * --set board.serial="123456" \
++ * --set product.pname="Yosemite V4" \
++ * --set product.mfg="Wiwynn" \
++ * --set product.ver="v1.1" \
++ * --set product.serial="123456" \
++ * --set product.atag="PLACEHOLDER" \
++ * --set product.custom="Yosemite V4 T1" \
++ * --set product.custom.1="Yosemite V4 T1" \
++ * --set text:product.pn="PN-345" \
++ * fru-yv4-sentineldome-board.bin
++ */
++/* product.cust maps to PRODUCT_INFO_AM2 */
++/* EM Config: yosemite4_sentineldome_t1.json */
++/* Yosemite4 Sentinel Dome without Retimer Boards */
++static const uint8_t fru_yv4_sentineldome_board_bin[] = {
++  0x01, 0x00, 0x00, 0x01, 0x09, 0x00, 0x00, 0xf5, 0x01, 0x08, 0x19, 0xce,
++  0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xdd, 0x53, 0x65,
++  0x6e, 0x74, 0x69, 0x6e, 0x65, 0x6c, 0x20, 0x44, 0x6f, 0x6d, 0x65, 0x20,
++  0x77, 0x69, 0x74, 0x68, 0x6f, 0x75, 0x74, 0x20, 0x52, 0x65, 0x74, 0x69,
++  0x6d, 0x65, 0x72, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0xca, 0x42, 0x52,
++  0x44, 0x2d, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc0, 0xc1, 0x00, 0x78,
++  0x01, 0x09, 0x19, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xcb, 0x59,
++  0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65, 0x20, 0x56, 0x34, 0xc6, 0x50,
++  0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc4, 0x76, 0x31, 0x2e, 0x31, 0x85, 0x91,
++  0x34, 0x51, 0x95, 0x05, 0x89, 0x30, 0x1b, 0x8e, 0x25, 0xfa, 0xb2, 0x64,
++  0x29, 0x03, 0xc0, 0xce, 0x59, 0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65,
++  0x20, 0x56, 0x34, 0x20, 0x54, 0x31, 0xc1, 0x00, 0x00, 0x00, 0x00, 0xeb
++};
++static const size_t fru_yv4_sentineldome_board_bin_len =
++    sizeof(fru_yv4_sentineldome_board_bin);
++
++/*
++ *./frugen -s board.mfg="Wiwynn" \
++ * --set board.pname="Sentinel Dome" \
++ * --set text:board.pn="BRD-PN-345" \
++ * --board-date "10/1/2017 12:58:00" \
++ * --set board.serial="123456" \
++ * --set product.pname="Yosemite V4" \
++ * --set product.mfg="Wiwynn" \
++ * --set product.ver="v1.1" \
++ * --set product.serial="123456" \
++ * --set product.atag="PLACEHOLDER" \
++ * --set text:product.pn="PN-345" \
++ * fru-yv4-sentineldome-chassis.bin
++ */
++/* EM Config: yosemite4_sentineldome_chassis.json */
++/* Yosemite 4 Sentinel Dome Chassis FRU */
++static const uint8_t fru_yv4_sentineldome_chassis_bin[] = {
++  0x01, 0x00, 0x00, 0x01, 0x07, 0x00, 0x00, 0xf7, 0x01, 0x06, 0x19, 0xce,
++  0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xcd, 0x53, 0x65,
++  0x6e, 0x74, 0x69, 0x6e, 0x65, 0x6c, 0x20, 0x44, 0x6f, 0x6d, 0x65, 0x85,
++  0x91, 0x34, 0x51, 0x95, 0x05, 0xca, 0x42, 0x52, 0x44, 0x2d, 0x50, 0x4e,
++  0x2d, 0x33, 0x34, 0x35, 0xc0, 0xc1, 0x00, 0xb6, 0x01, 0x07, 0x19, 0xc6,
++  0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xcb, 0x59, 0x6f, 0x73, 0x65, 0x6d,
++  0x69, 0x74, 0x65, 0x20, 0x56, 0x34, 0xc6, 0x50, 0x4e, 0x2d, 0x33, 0x34,
++  0x35, 0xc4, 0x76, 0x31, 0x2e, 0x31, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05,
++  0x89, 0x30, 0x1b, 0x8e, 0x25, 0xfa, 0xb2, 0x64, 0x29, 0x03, 0xc0, 0xc1,
++  0x00, 0x00, 0x00, 0x59
++};
++static const size_t fru_yv4_sentineldome_chassis_bin_len =
++    sizeof(fru_yv4_sentineldome_chassis_bin);
++
++/*
++ *./frugen -s board.mfg="Wiwynn" \
++ * --set board.pname="Management Board wBMC" \
++ * --set text:board.pn="BRD-PN-345" \
++ * --board-date "10/1/2017 12:58:00" \
++ * --set board.serial="123456" \
++ * --set product.pname="Yosemite V4" \
++ * --set product.mfg="Wiwynn" \
++ * --set product.ver="v1.1" \
++ * --set product.serial="123456" \
++ * --set product.atag="PLACEHOLDER" \
++ * --set text:product.pn="PN-345" \
++ * fru-yv4-eclosure.bin
++ */
++/* EM Config: yosemite4_chassis.json, yosemite4.json */
++/* Yosemite 4 Sentinel Dome Enclosure FRU */
++static const uint8_t fru_yv4_eclosure_bin[] = {
++  0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0xce,
++  0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xd5, 0x4d, 0x61,
++  0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x42, 0x6f, 0x61,
++  0x72, 0x64, 0x20, 0x77, 0x42, 0x4d, 0x43, 0x85, 0x91, 0x34, 0x51, 0x95,
++  0x05, 0xca, 0x42, 0x52, 0x44, 0x2d, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35,
++  0xc0, 0xc1, 0x00, 0x26, 0x01, 0x07, 0x19, 0xc6, 0x57, 0x69, 0x77, 0x79,
++  0x6e, 0x6e, 0xcb, 0x59, 0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65, 0x20,
++  0x56, 0x34, 0xc6, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc4, 0x76, 0x31,
++  0x2e, 0x31, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0x89, 0x30, 0x1b, 0x8e,
++  0x25, 0xfa, 0xb2, 0x64, 0x29, 0x03, 0xc0, 0xc1, 0x00, 0x00, 0x00, 0x59
++};
++static const size_t fru_yv4_eclosure_bin_len = sizeof(fru_yv4_eclosure_bin);
++
++/* END OF EEPROM CONTENTS */
++
++static void fby4_i2c_init_fanboard(I2CSlave *fan_mux, size_t eepromSize)
++{
++    /* 2 fan boards */
++    for (int i = 0; i <= 1; i++) {
++        /* downstream bus */
++        I2CBus *bus = pca954x_i2c_get_bus(fan_mux, i);
++
++        /* ti,adc128d818 @ 0x1f    (adc) */
++        /* TODO */
++
++        /* maxim,max31790 @ 0x20   (pwm) */
++        /* TODO */
++
++        /*
++         * ti,tca6424 @ 0x22       (gpio)
++         * linux handles tca6424 with PCA953X_TYPE, same as pca9535
++         * { "pca9535", 16 | PCA953X_TYPE | PCA_INT, },
++         * { "tca6424", 24 | PCA953X_TYPE | PCA_INT, },
++         * so we _could_ be fine here unless more than 16 gpios are used
++         */
++        i2c_slave_create_simple(bus, TYPE_PCA9535, 0x22);
++
++        /*
++         * NOTE: above works and could use for gpio presence:
++         * $ gpioget gpiochip2 2
++         * 1
++         */
++
++        /* maxim,max31790 @ 0x2f   (pwm) */
++        /* TODO */
++
++        /* maxim,max11615 @ 0x33   (adc) */
++        /* TODO */
++
++        at24c_eeprom_init_rom(
++            bus, 0x52, eepromSize,
++            fru_yv4_fanboard_bin,
++            fru_yv4_fanboard_bin_len);
++
++        /* LED blink driver / gpio expander */
++        /* nxp,pca9552 @ 0x61   (gpio) */
++        i2c_slave_create_simple(bus, TYPE_PCA9552, 0x61);
++    }
++}
++
++static void fby4_i2c_init_blade_chassis(I2CBus *bus, size_t eepromSize)
++{
++    /* Sentinel Dome Blade EEPROMS */
++
++    /* Board */
++    at24c_eeprom_init_rom(bus, 0x54, eepromSize,
++        fru_yv4_sentineldome_board_bin, fru_yv4_sentineldome_board_bin_len);
++
++    /* Chassis */
++   at24c_eeprom_init_rom(bus, 0x55, eepromSize,
++       fru_yv4_sentineldome_chassis_bin, fru_yv4_sentineldome_chassis_bin_len);
++}
++
++static void fby4_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = bmc->soc;
++    I2CBus *i2c[16];
++
++    for (int i = 0; i < 16; i++) {
++        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
++    }
++
++    /* Enclosure (EM Config: yosemite4_chassis.json, yosemite4.json) */
++    at24c_eeprom_init_rom(i2c[1], 0x51, 128 * KiB,
++        fru_yv4_eclosure_bin, fru_yv4_eclosure_bin_len);
++
++    /* there is 8 blade chassis, but we only emulate 2 for performance reason */
++    fby4_i2c_init_blade_chassis(i2c[1], 128 * KiB);
++    fby4_i2c_init_blade_chassis(i2c[2], 128 * KiB);
++
++    /* Yv4 fanboard connection */
++    I2CSlave *fan_mux = i2c_slave_create_simple(i2c[14], TYPE_PCA9546, 0x74);
++
++    fby4_i2c_init_fanboard(fan_mux, 128 * KiB);
++}
++
++static void aspeed_machine_fby4_class_init(ObjectClass *oc, const void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Facebook fby4 BMC (Cortex-A7)";
++    amc->fmc_model = "mx66l1g45g";
++    amc->num_cs    = 2;
++    amc->macs_mask = ASPEED_MAC3_ON;
++    amc->i2c_init  = fby4_i2c_init;
++    mc->default_ram_size = FBY4_BMC_RAM_SIZE;
++    aspeed_machine_class_init_cpus_defaults(mc);
++}
++
++static const TypeInfo aspeed_ast2600_fby4_types[] = {
++    {
++        .name          = MACHINE_TYPE_NAME("fby4-bmc"),
++        .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
++        .class_init    = aspeed_machine_fby4_class_init,
++        .interfaces    = arm_machine_interfaces,
++    }
++};
++
++DEFINE_TYPES(aspeed_ast2600_fby4_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 8f66a80e10..87d0de5ebc 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -62,6 +62,7 @@ arm_common_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_ast2600_catalina.c',
+   'aspeed_ast2600_evb.c',
+   'aspeed_ast2600_fby35.c',
++  'aspeed_ast2600_fby4.c',
+   'aspeed_ast2600_fuji.c',
+   'aspeed_ast2600_gb200nvl.c',
+   'aspeed_ast2600_rainier.c',
+-- 
+2.54.0
 
---000000000000d2f5090653e541f7
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi Cedric,<br><br>&gt; How does the 0x4444 value rela=
-tes to the one used in the tests ?<br><br>There is something in the image w=
-hich is writing the pwm, if you look at the traces<br>it should be more obv=
-ious in the next patchset (v6, not yet sent)<br><br>max31790_pwm_write i2c_=
-addr: 0x2f, index: 5, value: 0xb200<br>max31790_rpm_write i2c_addr: 0x2f, i=
-ndex: 5, value: 0x1c34<br>max31790_tach_count_reg i2c_addr: 0x2f, index: 5,=
- value: 0x0440<br>max31790_send i2c_addr: 0x2f, data: 0x80<br>max31790_pwm_=
-write i2c_addr: 0x2f, index: 5, value: 0xb280<br>max31790_rpm_write i2c_add=
-r: 0x2f, index: 5, value: 0x1c48<br>max31790_tach_count_reg i2c_addr: 0x2f,=
- index: 5, value: 0x0420<br><br>Looking then at the latest fan dynamics rea=
-d from the driver<br><br>max31790_fan_dynamics_read i2c_addr: 0x20, channel=
-: 0, value: 0x0000<br>max31790_recv_return i2c_addr: 0x20, reg_addr: 0x08, =
-returns: 0x00<br><br>and plugging that into the equation<br><br>&gt;&gt;&gt=
-; (60 * 1 * 8192) / (0x0420 &gt;&gt; 4)<br>7447.272727272727<br><br>we get =
-the value found in the test. The fan dynamics are wrong because the reset w=
-as not being called.<br>Should be fixed in the next patchset. The newly add=
-ed traces should make things clearer and the functional test will also have=
- a comment<br></div><div>going through an example calculation.</div><br><di=
-v class=3D"gmail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gma=
-il_attr">Am Mo., 1. Juni 2026 um 11:17=C2=A0Uhr schrieb C=C3=A9dric Le Goat=
-er &lt;<a href=3D"mailto:clg@kaod.org">clg@kaod.org</a>&gt;:<br></div><bloc=
-kquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:=
-1px solid rgb(204,204,204);padding-left:1ex">On 5/29/26 14:37, Alexander Ha=
-nsen wrote:<br>
-&gt; Product: [1]<br>
-&gt; Datasheet: [2]<br>
-&gt; <br>
-&gt; MAX31790 Support:<br>
-&gt; - fan inputs are reading<br>
-&gt; - tach reading propertional to pwm setting from linux driver<br>
-&gt; - fans do not show any fault<br>
-&gt; - 6 PWM registers influence 6 TACH registers<br>
-&gt; <br>
-&gt; There is intentional stub behavior in some places and various function=
-s<br>
-&gt; of the device are currently unsupported.<br>
-&gt; <br>
-&gt; MAX31790 currently unsupported:<br>
-&gt; - slave address restriction<br>
-&gt; - fan dynamics<br>
-&gt; - spin-up configuration<br>
-&gt; - fault state / failure possibility<br>
-&gt; - rate-of-change control<br>
-&gt; - tach mode<br>
-&gt; - mixed layouts where number of fans !=3D number of tachs<br>
-&gt; - see Figure 5.9 in [2] for example of mixed layout<br>
-&gt; <br>
-&gt; Anyone could expand it in the future for more accurate emulation.<br>
-&gt; <br>
-&gt; The reason for adding this device is to support Yosemite V4 emulation.=
-<br>
-&gt; <br>
-&gt; Tested: on yosemite 4 qemu<br>
-&gt; <br>
-&gt; root@yosemite4:~# ls /sys/class/hwmon/hwmon2/<br>
-&gt; device=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 fan2_fault=C2=A0 =C2=
-=A0fan3_target=C2=A0 fan5_fault=C2=A0 =C2=A0fan6_target=C2=A0 pwm2=C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0pwm5<br>
-&gt; fan1_enable=C2=A0 fan2_input=C2=A0 =C2=A0fan4_enable=C2=A0 fan5_input=
-=C2=A0 =C2=A0name=C2=A0 =C2=A0 =C2=A0 pwm2_enable=C2=A0 pwm5_enable<br>
-&gt; fan1_fault=C2=A0 =C2=A0fan2_target=C2=A0 fan4_fault=C2=A0 =C2=A0fan5_t=
-arget=C2=A0 of_node=C2=A0 =C2=A0pwm3=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0pwm6<=
-br>
-&gt; fan1_input=C2=A0 =C2=A0fan3_enable=C2=A0 fan4_input=C2=A0 =C2=A0fan6_e=
-nable=C2=A0 power=C2=A0 =C2=A0 =C2=A0pwm3_enable=C2=A0 pwm6_enable<br>
-&gt; fan1_target=C2=A0 fan3_fault=C2=A0 =C2=A0fan4_target=C2=A0 fan6_fault=
-=C2=A0 =C2=A0pwm1=C2=A0 =C2=A0 =C2=A0 pwm4=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0subsystem<br>
-&gt; fan2_enable=C2=A0 fan3_input=C2=A0 =C2=A0fan5_enable=C2=A0 fan6_input=
-=C2=A0 =C2=A0pwm1_enable=C2=A0 pwm4_enable=C2=A0 uevent<br>
-&gt; root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_input<br>
-&gt; 4551<br>
-&gt; root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_enable<br>
-&gt; 1<br>
-&gt; root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_fault<br>
-&gt; 0<br>
-&gt; root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_target<br>
-&gt; 2048<br>
-&gt; root@yosemite4:~# cat /sys/class/hwmon/hwmon2/pwm1<br>
-&gt; 178<br>
-&gt; root@yosemite4:~# cat /sys/class/hwmon/hwmon2/name<br>
-&gt; max31790<br>
-&gt; <br>
-&gt; Trace output:<br>
-&gt; max31790_realize i2c_addr: 0x20<br>
-&gt; max31790_realize i2c_addr: 0x2f<br>
-&gt; max31790_realize i2c_addr: 0x20<br>
-&gt; max31790_realize i2c_addr: 0x2f<br>
-&gt; max31790_event i2c_addr: 0x20, event: 0x01<br>
-&gt; max31790_send i2c_addr: 0x20, data: 0x02<br>
-&gt; max31790_event i2c_addr: 0x20, event: 0x00<br>
-&gt; max31790_recv i2c_addr: 0x20, reg_addr: 0x02<br>
-&gt; max31790_recv_return i2c_addr: 0x20, returns: 0x08<br>
-&gt; ...<br>
-&gt; <br>
-&gt; References:<br>
-&gt; [1] <a href=3D"https://www.analog.com/en/products/MAX31790.html" rel=
-=3D"noreferrer" target=3D"_blank">https://www.analog.com/en/products/MAX317=
-90.html</a><br>
-&gt; [2] <a href=3D"https://www.analog.com/media/en/technical-documentation=
-/data-sheets/MAX31790.pdf" rel=3D"noreferrer" target=3D"_blank">https://www=
-.analog.com/media/en/technical-documentation/data-sheets/MAX31790.pdf</a><b=
-r>
-&gt; <br>
-&gt; Cc: Titus Rwantare &lt;<a href=3D"mailto:titusr@google.com" target=3D"=
-_blank">titusr@google.com</a>&gt;<br>
-&gt; Cc: &quot;C=C3=A9dric Le Goater&quot; &lt;<a href=3D"mailto:clg@kaod.o=
-rg" target=3D"_blank">clg@kaod.org</a>&gt; (maintainer:ASPEED BMCs)<br>
-&gt; Cc: Jonathan Cameron &lt;<a href=3D"mailto:jonathan.cameron@huawei.com=
-" target=3D"_blank">jonathan.cameron@huawei.com</a>&gt;<br>
-&gt; Cc: Paolo Bonzini &lt;<a href=3D"mailto:pbonzini@redhat.com" target=3D=
-"_blank">pbonzini@redhat.com</a>&gt;<br>
-&gt; Cc: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" targ=
-et=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-&gt; Cc: &quot;Philippe Mathieu-Daud=C3=A9&quot; &lt;<a href=3D"mailto:phil=
-md@linaro.org" target=3D"_blank">philmd@linaro.org</a>&gt;<br>
-&gt; Cc: <a href=3D"mailto:qemu-arm@nongnu.org" target=3D"_blank">qemu-arm@=
-nongnu.org</a><br>
-&gt; Cc: <a href=3D"mailto:qemu-devel@nongnu.org" target=3D"_blank">qemu-de=
-vel@nongnu.org</a><br>
-&gt; Signed-off-by: Alexander Hansen &lt;<a href=3D"mailto:alexander.hansen=
-@9elements.com" target=3D"_blank">alexander.hansen@9elements.com</a>&gt;<br=
->
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01=
- +<br>
-&gt;=C2=A0 =C2=A0hw/arm/aspeed_ast2600_fby4.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A04 +-<br>
-&gt;=C2=A0 =C2=A0hw/sensor/max31790.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 537 +++++++++++++++++++++++<br>
-&gt;=C2=A0 =C2=A0hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br=
->
-&gt;=C2=A0 =C2=A0hw/sensor/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A04 +<br>
-&gt;=C2=A0 =C2=A0hw/sensor/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
-&gt;=C2=A0 =C2=A0hw/sensor/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 11 +<br>
-&gt;=C2=A0 =C2=A0tests/functional/arm/test_aspeed_fby4.py |=C2=A0 26 ++<br>
-&gt;=C2=A0 =C2=A08 files changed, 583 insertions(+), 2 deletions(-)<br>
-&gt;=C2=A0 =C2=A0create mode 100644 hw/sensor/max31790.c<br>
-&gt; <br>
-&gt; diff --git a/MAINTAINERS b/MAINTAINERS<br>
-&gt; index cd5c4831e2..2a0dbd1cc4 100644<br>
-&gt; --- a/MAINTAINERS<br>
-&gt; +++ b/MAINTAINERS<br>
-&gt; @@ -3987,6 +3987,7 @@ S: Maintained<br>
-&gt;=C2=A0 =C2=A0F: hw/i2c/pmbus_device.c<br>
-&gt;=C2=A0 =C2=A0F: hw/sensor/adm1272.c<br>
-&gt;=C2=A0 =C2=A0F: hw/sensor/isl_pmbus_vr.c<br>
-&gt; +F: hw/sensor/max31790.c<br>
-&gt;=C2=A0 =C2=A0F: hw/sensor/max34451.c<br>
-&gt;=C2=A0 =C2=A0F: include/hw/i2c/pmbus_device.h<br>
-&gt;=C2=A0 =C2=A0F: include/hw/sensor/isl_pmbus_vr.h<br>
-&gt; diff --git a/hw/arm/aspeed_ast2600_fby4.c b/hw/arm/aspeed_ast2600_fby4=
-.c<br>
-&gt; index 89fb0ac2fd..1f391022a2 100644<br>
-&gt; --- a/hw/arm/aspeed_ast2600_fby4.c<br>
-&gt; +++ b/hw/arm/aspeed_ast2600_fby4.c<br>
-&gt; @@ -164,7 +164,7 @@ static void fby4_i2c_init_fanboard(I2CSlave *fan_m=
-ux, size_t eepromSize)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* TODO */<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* maxim,max31790 @ 0x20=C2=A0=
- =C2=A0(pwm) */<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* TODO */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 i2c_slave_create_simple(bus, &quot;max317=
-90&quot;, 0x20);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/*<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * ti,tca6424 @ 0x22=C2=A0 =C2=
-=A0 =C2=A0 =C2=A0(gpio)<br>
-&gt; @@ -182,7 +182,7 @@ static void fby4_i2c_init_fanboard(I2CSlave *fan_m=
-ux, size_t eepromSize)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* maxim,max31790 @ 0x2f=C2=A0=
- =C2=A0(pwm) */<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* TODO */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 i2c_slave_create_simple(bus, &quot;max317=
-90&quot;, 0x2f);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* maxim,max11615 @ 0x33=C2=A0=
- =C2=A0(adc) */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* TODO */<br>
-&gt; diff --git a/hw/sensor/max31790.c b/hw/sensor/max31790.c<br>
-&gt; new file mode 100644<br>
-&gt; index 0000000000..b0430ea094<br>
-&gt; --- /dev/null<br>
-&gt; +++ b/hw/sensor/max31790.c<br>
-&gt; @@ -0,0 +1,537 @@<br>
-&gt; +/*<br>
-&gt; + * Maxim MAX31790 PMBus 6-Channel Fan Controller<br>
-&gt; + *<br>
-&gt; + * Datasheet:<br>
-&gt; + * <a href=3D"https://www.analog.com/media/en/technical-documentation=
-/data-sheets/MAX31790.pdf" rel=3D"noreferrer" target=3D"_blank">https://www=
-.analog.com/media/en/technical-documentation/data-sheets/MAX31790.pdf</a><b=
-r>
-&gt; + *<br>
-&gt; + * Copyright 2026 9elements<br>
-&gt; + *<br>
-&gt; + * SPDX-License-Identifier: GPL-2.0-or-later<br>
-&gt; + */<br>
-&gt; +<br>
-&gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt; +#include &quot;qemu/log.h&quot;<br>
-&gt; +#include &quot;hw/i2c/i2c.h&quot;<br>
-&gt; +#include &quot;qapi/error.h&quot;<br>
-&gt; +#include &quot;qapi/visitor.h&quot;<br>
-&gt; +#include &quot;migration/vmstate.h&quot;<br>
-&gt; +#include &quot;qemu/module.h&quot;<br>
-&gt; +#include &quot;qom/object.h&quot;<br>
-&gt; +#include &quot;trace.h&quot;<br>
-&gt; +<br>
-&gt; +#define TYPE_MAX31790 &quot;max31790&quot;<br>
-&gt; +<br>
-&gt; +#define MAX31790_NUM_FANS 6<br>
-&gt; +#define MAX31790_NUM_TACHS 12<br>
-&gt; +<br>
-&gt; +#define MAX31790_REG_GLOBAL_CONFIG 0x00<br>
-&gt; +#define MAX31790_REG_PWM_FREQ 0x01<br>
-&gt; +<br>
-&gt; +/* 0x02 to 0x07: N =3D 0 .. 5 */<br>
-&gt; +#define MAX31790_REG_FAN_CONFIG(N) (0x02 + N)<br>
-&gt; +<br>
-&gt; +/* 0x08 to 0x0d: N =3D 0 .. 5 */<br>
-&gt; +#define MAX31790_REG_FAN_DYNAMICS(N) (0x08 + N)<br>
-&gt; +<br>
-&gt; +#define MAX31790_REG_FAN_FAULT_STATUS_2 0x10<br>
-&gt; +#define MAX31790_REG_FAN_FAULT_STATUS_1 0x11<br>
-&gt; +#define MAX31790_REG_FAN_FAULT_MASK_2 0x12<br>
-&gt; +#define MAX31790_REG_FAN_FAULT_MASK_1 0x13<br>
-&gt; +#define MAX31790_REG_FAILED_FAN_OPT 0x14<br>
-&gt; +<br>
-&gt; +/* 0x18 to 0x2f: N =3D 0 .. 11 */<br>
-&gt; +#define MAX31790_REG_TACH_COUNT_MSB(N) (0x18 + 2 * N)<br>
-&gt; +#define MAX31790_REG_TACH_COUNT_LSB(N) (0x19 + 2 * N)<br>
-&gt; +<br>
-&gt; +/* 0x30 to 0x3b: N =3D 0 .. 5 */<br>
-&gt; +#define MAX31790_REG_PWM_DUTY_CYCLE_MSB(N) (0x30 + 2 * N)<br>
-&gt; +#define MAX31790_REG_PWM_DUTY_CYCLE_LSB(N) (0x31 + 2 * N)<br>
-&gt; +<br>
-&gt; +/* .. reserved registers ... */<br>
-&gt; +<br>
-&gt; +/* 0x40 to 0x4b: N =3D 0 .. 5 */<br>
-&gt; +#define MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(N) (0x40 + 2 * N)<br>
-&gt; +#define MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(N) (0x41 + 2 * N)<br>
-&gt; +<br>
-&gt; +/* ... &#39;User Byte&#39; registers ... */<br>
-&gt; +<br>
-&gt; +/* 0x50 to 0x5b: N =3D 0 .. 5 */<br>
-&gt; +#define MAX31790_REG_TACH_TARGET_COUNT_MSB(N) (0x50 + 2 * N)<br>
-&gt; +#define MAX31790_REG_TACH_TARGET_COUNT_LSB(N) (0x51 + 2 * N)<br>
-&gt; +<br>
-&gt; +struct MAX31790State {<br>
-&gt; +=C2=A0 =C2=A0 I2CSlave i2c;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 uint8_t fan_config[MAX31790_NUM_FANS];<br>
-&gt; +=C2=A0 =C2=A0 uint8_t fan_dynamics[MAX31790_NUM_FANS];<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 uint16_t pwm[MAX31790_NUM_FANS];<br>
-&gt; +=C2=A0 =C2=A0 uint16_t tach_target[MAX31790_NUM_FANS];<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /*<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* Fan speed is measured by counting the number of=
- internal 8192Hz<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* (fTOSC/4) clock cycles that take place during a=
- select-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* able number of tachometer periods. The number o=
-f clock<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* cycles counted (11-bit value) is stored in the =
-associated<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* TACH Count registers and the desired number of =
-cycles<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* is stored in the TACH Target Count registers.<b=
-r>
-&gt; +=C2=A0 =C2=A0 */<br>
-&gt; +=C2=A0 =C2=A0 uint16_t tach_count[MAX31790_NUM_TACHS];<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* command buffer */<br>
-&gt; +=C2=A0 =C2=A0 uint8_t len;<br>
-&gt; +=C2=A0 =C2=A0 uint8_t buf[2];<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* output buffer */<br>
-&gt; +=C2=A0 =C2=A0 uint8_t outlen;<br>
-&gt; +=C2=A0 =C2=A0 uint8_t outbuf[2];<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* selected register for read/write operation */<br>
-&gt; +=C2=A0 =C2=A0 uint8_t pointer;<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +struct MAX31790Class {<br>
-&gt; +=C2=A0 =C2=A0 I2CSlaveClass parent_class;<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +OBJECT_DECLARE_TYPE(MAX31790State, MAX31790Class, MAX31790)<br>
-&gt; +<br>
-&gt; +static void max31790_read(MAX31790State *s)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 size_t index =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 uint8_t out0 =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 uint8_t out1 =3D 0;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 switch (s-&gt;pointer) {<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out0 =3D s-&gt;fan_config[s-&gt;pointer -=
- MAX31790_REG_FAN_CONFIG(0)];<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out0 =3D s-&gt;fan_dynamics[s-&gt;pointer=
- - MAX31790_REG_FAN_DYNAMICS(0)];<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_FAULT_STATUS_1:<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_FAULT_STATUS_2:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* we do not have any fan fault */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out0 =3D 0x00;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out1 =3D 0x00;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_MSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_MSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_MSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_MSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_MSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_MSB(5):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_MSB(6):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_MSB(7):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_MSB(8):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_MSB(9):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_MSB(10):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_MSB(11):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_T=
-ACH_COUNT_MSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out0 =3D (s-&gt;tach_count[index] &gt;&gt=
-; 8) &amp; 0xff;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out1 =3D s-&gt;tach_count[index] &amp; 0x=
-ff;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_LSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_LSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_LSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_LSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_LSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_LSB(5):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_LSB(6):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_LSB(7):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_LSB(8):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_LSB(9):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_LSB(10):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_COUNT_LSB(11):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_T=
-ACH_COUNT_LSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out0 =3D s-&gt;tach_count[index] &amp; 0x=
-ff;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_DUTY_CYCLE_MSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_DUTY_CYCLE_MSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_DUTY_CYCLE_MSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_DUTY_CYCLE_MSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_DUTY_CYCLE_MSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_DUTY_CYCLE_MSB(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_P=
-WM_DUTY_CYCLE_MSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out0 =3D (s-&gt;pwm[index] &gt;&gt; 8) &a=
-mp; 0xff;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out1 =3D s-&gt;pwm[index] &amp; 0xff;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_DUTY_CYCLE_LSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_DUTY_CYCLE_LSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_DUTY_CYCLE_LSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_DUTY_CYCLE_LSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_DUTY_CYCLE_LSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_DUTY_CYCLE_LSB(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_P=
-WM_DUTY_CYCLE_LSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out0 =3D s-&gt;pwm[index] &amp; 0xff;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_P=
-WM_TARGET_DUTY_CYCLE_MSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out0 =3D (s-&gt;pwm[index] &gt;&gt; 8) &a=
-mp; 0xff;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out1 =3D s-&gt;pwm[index] &amp; 0xff;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_P=
-WM_TARGET_DUTY_CYCLE_LSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out0 =3D s-&gt;pwm[index] &amp; 0xff;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_T=
-ACH_TARGET_COUNT_MSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out0 =3D (s-&gt;tach_target[index] &gt;&g=
-t; 8) &amp; 0xff;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out1 =3D s-&gt;tach_target[index] &amp; 0=
-xff;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_LSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_LSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_LSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_LSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_LSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_LSB(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_T=
-ACH_TARGET_COUNT_LSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 out0 =3D s-&gt;tach_target[index] &amp; 0=
-xff;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: read o=
-f register %d\n&quot;, __func__,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 s-&gt;pointer);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 s-&gt;outbuf[0] =3D out0;<br>
-&gt; +=C2=A0 =C2=A0 s-&gt;outbuf[1] =3D out1;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static uint8_t max31790_get_speed_range(MAX31790State *s, size_t inde=
-x)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 const uint16_t value =3D (s-&gt;fan_dynamics[index] &gt=
-;&gt; 5);<br>
-&gt; +=C2=A0 =C2=A0 return (value &gt; 5) ? 32 : 1 &lt;&lt; value;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void max31790_set_rpm(MAX31790State *s, size_t index, uint16_t=
- rpm)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 trace_max31790_rpm_write(s-&gt;i2c.address, index, rpm)=
-;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /*<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* (see page 11) NP =3D number of tachometer pulse=
-s per revolution.<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* Most general-purpose brushless DC fans produce =
-two tachometer<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* pulses per revolution.<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
-&gt; +=C2=A0 =C2=A0 const uint64_t sr =3D max31790_get_speed_range(s, index=
-);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* page 11: tach_count =3D 60 * SR * 8192 / (NP * RPM) =
-*/<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* prevent division by 0 */<br>
-&gt; +=C2=A0 =C2=A0 rpm =3D (rpm =3D=3D 0) ? 1 : rpm;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* simplified, assuming NP =3D 2 */<br>
-&gt; +=C2=A0 =C2=A0 uint64_t tach_count =3D=C2=A0 (245760ULL * sr) / (uint6=
-4_t)rpm;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* datasheet: lowest 5 bits are 0 */<br>
-&gt; +=C2=A0 =C2=A0 s-&gt;tach_count[index] =3D tach_count &lt;&lt; 5;<br>
-<br>
-Hmm, this is assigning a uint16_t from a uint64_t. There could be issues.<b=
-r>
-<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 trace_max31790_tach_count_reg(s-&gt;i2c.address, index,=
- s-&gt;tach_count[index]);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void max31790_pwm_write(MAX31790State *s, size_t index, uint16=
-_t value)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 trace_max31790_pwm_write(s-&gt;i2c.address, index, valu=
-e);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 s-&gt;pwm[index] =3D value;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* last 7 bits in register are 0 , 9 bits remaining */<=
-br>
-&gt; +=C2=A0 =C2=A0 const uint16_t pwm_real =3D s-&gt;pwm[index] &gt;&gt; 7=
-;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* maximum value will be 511 */<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /*<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* This formula has magic values which model the r=
-elationship<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* of PWM input to a fan. Not derived from datashe=
-et.<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
-&gt; +=C2=A0 =C2=A0 max31790_set_rpm(s, index, 100 + pwm_real * 20);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void max31790_write_2_byte(MAX31790State *s)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 size_t index =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 const uint8_t value0 =3D s-&gt;buf[0];<br>
-&gt; +=C2=A0 =C2=A0 const uint8_t value1 =3D s-&gt;buf[1];<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 switch (s-&gt;pointer) {<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break; /* handled by one byte write */<br=
->
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break; /* handled by one byte write */<br=
->
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_P=
-WM_TARGET_DUTY_CYCLE_MSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 max31790_pwm_write(s, index, value0 &lt;&=
-lt; 8 | value1);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_T=
-ACH_TARGET_COUNT_MSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;tach_target[index] =3D (value0 &lt;=
-&lt; 8) | value1;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: write =
-to register %d\n&quot;, __func__,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 s-&gt;pointer);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void max31790_write_1_byte(MAX31790State *s)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 size_t index =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 uint16_t pwm =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 const uint8_t value =3D s-&gt;buf[0];<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 switch (s-&gt;pointer) {<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_CONFIG(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fan_config[s-&gt;pointer - MAX31790=
-_REG_FAN_CONFIG(0)] =3D value;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_FAN_DYNAMICS(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fan_dynamics[s-&gt;pointer - MAX317=
-90_REG_FAN_DYNAMICS(0)] =3D value;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_P=
-WM_TARGET_DUTY_CYCLE_MSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 pwm =3D (value &lt;&lt; 8) | (s-&gt;pwm[i=
-ndex] &amp; 0x00ff);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 max31790_pwm_write(s, index, pwm);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_P=
-WM_TARGET_DUTY_CYCLE_LSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 pwm =3D (s-&gt;pwm[index] &amp; 0xff00) |=
- (value &amp; 0x00ff);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 max31790_pwm_write(s, index, pwm);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_MSB(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_T=
-ACH_TARGET_COUNT_MSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;tach_target[index] =3D (s-&gt;tach_=
-target[index] &amp; 0x00ff) | (value &lt;&lt; 8);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_LSB(0):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_LSB(1):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_LSB(2):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_LSB(3):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_LSB(4):<br>
-&gt; +=C2=A0 =C2=A0 case MAX31790_REG_TACH_TARGET_COUNT_LSB(5):<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 index =3D (s-&gt;pointer - MAX31790_REG_T=
-ACH_TARGET_COUNT_LSB(0)) / 2;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;tach_target[index] =3D (s-&gt;tach_=
-target[index] &amp; 0xff00) | value;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: write =
-to register %d\n&quot;, __func__,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 s-&gt;pointer);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static int max31790_send(I2CSlave *i2c, uint8_t data)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 MAX31790State *s =3D MAX31790(i2c);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 trace_max31790_send(s-&gt;i2c.address, data);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (s-&gt;len =3D=3D 0) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* first byte is the register pointer for=
- a read / write operation */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;pointer =3D data;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;len++;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (s-&gt;len &gt; 2) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: =
-write too many bytes\n&quot;, __func__);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 1; /* NAK */<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* second / third byte is the data to write */<br>
-&gt; +=C2=A0 =C2=A0 s-&gt;buf[s-&gt;len - 1] =3D data;<br>
-&gt; +=C2=A0 =C2=A0 s-&gt;len++;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (s-&gt;len =3D=3D 2) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 max31790_write_1_byte(s);<br>
-&gt; +=C2=A0 =C2=A0 } else if (s-&gt;len =3D=3D 3) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 max31790_write_2_byte(s);<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 return 0;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static uint8_t max31790_recv(I2CSlave *i2c)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 MAX31790State *s =3D MAX31790(i2c);<br>
-&gt; +=C2=A0 =C2=A0 trace_max31790_recv(s-&gt;i2c.address, s-&gt;pointer);<=
-br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 max31790_read(s);<br>
-&gt; +=C2=A0 =C2=A0 s-&gt;len =3D 0;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (s-&gt;outlen &gt;=3D 2) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* error */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: =
-guest over read\n&quot;, __func__);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;outlen =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 const uint8_t data =3D s-&gt;outbuf[s-&gt;outlen++];<br=
->
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 trace_max31790_recv_return(s-&gt;i2c.address, data);<br=
->
-&gt; +=C2=A0 =C2=A0 return data;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static int max31790_event(I2CSlave *i2c, enum i2c_event event)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 MAX31790State *s =3D MAX31790(i2c);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 trace_max31790_event(s-&gt;i2c.address, event);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 switch (event) {<br>
-&gt; +=C2=A0 =C2=A0 case I2C_START_RECV:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;outlen =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case I2C_START_SEND:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;len =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 return 0;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static const VMStateDescription vmstate_max31790 =3D {<br>
-&gt; +=C2=A0 =C2=A0 .name =3D TYPE_MAX31790,<br>
-&gt; +=C2=A0 =C2=A0 .version_id =3D 0,<br>
-&gt; +=C2=A0 =C2=A0 .minimum_version_id =3D 0,<br>
-&gt; +=C2=A0 =C2=A0 .fields =3D<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 (const VMStateField[]){<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(len, MAX31790=
-State),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8_ARRAY(fan_con=
-fig, MAX31790State, MAX31790_NUM_FANS),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8_ARRAY(fan_dyn=
-amics, MAX31790State, MAX31790_NUM_FANS),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT16_ARRAY(pwm, M=
-AX31790State, MAX31790_NUM_FANS),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT16_ARRAY(tach_t=
-arget, MAX31790State, MAX31790_NUM_FANS),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT16_ARRAY(tach_c=
-ount, MAX31790State, MAX31790_NUM_TACHS),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8_ARRAY(buf, MA=
-X31790State, 2),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(outlen, MAX31=
-790State),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8_ARRAY(outbuf,=
- MAX31790State, 2),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(pointer, MAX3=
-1790State),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_I2C_SLAVE(i2c, MAX3=
-1790State), VMSTATE_END_OF_LIST() }<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +static void max31790_reset(DeviceState *dev)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 MAX31790State *s =3D MAX31790(dev);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 for (int i =3D 0; i &lt; MAX31790_NUM_FANS; i++) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* POR-State 0b 0XX0 0000 */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fan_config[i] =3D 0b00000000;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* same as POR-State */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;tach_target[i] =3D 0b00111100000000=
-00;<br>
-<br>
-tach_target[] array size is=C2=A0 MAX31790_NUM_TACHS =3D 12. The loop uses<=
-br>
-MAX31790_NUM_FANS =3D 6<br>
-<br>
-<br>
-<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* same as POR-State */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fan_dynamics[i] =3D 0b01001100;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* this will set both pwm and tach count */<br>
-&gt; +=C2=A0 =C2=A0 for (int i =3D 0; i &lt; MAX31790_NUM_TACHS; i++) {<br>
-<br>
-<br>
-pwm[] array size is MAX31790_NUM_FANS =3D 6. The loop uses<br>
-MAX31790_NUM_TACHS =3D 12. this is an out-of-bounds write.<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 max31790_pwm_write(s, i, 0x4444);<br>
-<br>
-How does the 0x4444 value relates to the one used in the tests ?<br>
-<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void max31790_realize(DeviceState *dev, Error **errp)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 MAX31790State *s =3D MAX31790(dev);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 trace_max31790_realize(s-&gt;i2c.address);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void max31790_class_init(ObjectClass *klass, const void *data)=
-<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-&gt; +=C2=A0 =C2=A0 I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 dc-&gt;realize =3D max31790_realize;<br>
-&gt; +=C2=A0 =C2=A0 dc-&gt;desc =3D &quot;Maxim MAX31790 6-Channel Fan Cont=
-roller&quot;;<br>
-&gt; +=C2=A0 =C2=A0 dc-&gt;vmsd =3D &amp;vmstate_max31790;<br>
-&gt; +=C2=A0 =C2=A0 dc-&gt;legacy_reset =3D max31790_reset;<br>
-&gt; +=C2=A0 =C2=A0 k-&gt;event =3D max31790_event;<br>
-&gt; +=C2=A0 =C2=A0 k-&gt;recv =3D max31790_recv;<br>
-&gt; +=C2=A0 =C2=A0 k-&gt;send =3D max31790_send;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static const TypeInfo max31790_info =3D {<br>
-&gt; +=C2=A0 =C2=A0 .name =3D TYPE_MAX31790,<br>
-&gt; +=C2=A0 =C2=A0 .parent =3D TYPE_I2C_SLAVE,<br>
-&gt; +=C2=A0 =C2=A0 .instance_size =3D sizeof(MAX31790State),<br>
-&gt; +=C2=A0 =C2=A0 .class_size =3D sizeof(MAX31790Class),<br>
-&gt; +=C2=A0 =C2=A0 .class_init =3D max31790_class_init,<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +static void max31790_register_types(void)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 type_register_static(&amp;max31790_info);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +type_init(max31790_register_types)<br>
-&gt; diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig<br>
-&gt; index 5b198402d5..99864eb878 100644<br>
-&gt; --- a/hw/arm/Kconfig<br>
-&gt; +++ b/hw/arm/Kconfig<br>
-&gt; @@ -552,6 +552,7 @@ config ASPEED_SOC<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0select LED<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0select PMBUS<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0select MAX31785<br>
-&gt; +=C2=A0 =C2=A0 select MAX31790<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0select FSI_APB2OPB_ASPEED<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0select AT24C<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0select PCI_EXPRESS<br>
-&gt; diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig<br>
-&gt; index bc6331b4ab..767f198e92 100644<br>
-&gt; --- a/hw/sensor/Kconfig<br>
-&gt; +++ b/hw/sensor/Kconfig<br>
-&gt; @@ -43,3 +43,7 @@ config ISL_PMBUS_VR<br>
-&gt;=C2=A0 =C2=A0config MAX31785<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0bool<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0depends on PMBUS<br>
-&gt; +<br>
-&gt; +config MAX31790<br>
-&gt; +=C2=A0 =C2=A0 bool<br>
-&gt; +=C2=A0 =C2=A0 depends on I2C<br>
-&gt; diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build<br>
-&gt; index 420fdc3359..4987c3b253 100644<br>
-&gt; --- a/hw/sensor/meson.build<br>
-&gt; +++ b/hw/sensor/meson.build<br>
-&gt; @@ -8,3 +8,4 @@ system_ss.add(when: &#39;CONFIG_MAX34451&#39;, if_true=
-: files(&#39;max34451.c&#39;))<br>
-&gt;=C2=A0 =C2=A0system_ss.add(when: &#39;CONFIG_LSM303DLHC_MAG&#39;, if_tr=
-ue: files(&#39;lsm303dlhc_mag.c&#39;))<br>
-&gt;=C2=A0 =C2=A0system_ss.add(when: &#39;CONFIG_ISL_PMBUS_VR&#39;, if_true=
-: files(&#39;isl_pmbus_vr.c&#39;))<br>
-&gt;=C2=A0 =C2=A0system_ss.add(when: &#39;CONFIG_MAX31785&#39;, if_true: fi=
-les(&#39;max31785.c&#39;))<br>
-&gt; +system_ss.add(when: &#39;CONFIG_MAX31790&#39;, if_true: files(&#39;ma=
-x31790.c&#39;))<br>
-&gt; diff --git a/hw/sensor/trace-events b/hw/sensor/trace-events<br>
-&gt; index a3fe54fa6d..0bde02e676 100644<br>
-&gt; --- a/hw/sensor/trace-events<br>
-&gt; +++ b/hw/sensor/trace-events<br>
-&gt; @@ -4,3 +4,14 @@<br>
-&gt;=C2=A0 =C2=A0tmp105_read(uint8_t dev, uint8_t addr) &quot;device: 0x%02=
-x, addr: 0x%02x&quot;<br>
-&gt;=C2=A0 =C2=A0tmp105_write(uint8_t dev, uint8_t addr) &quot;device: 0x%0=
-2x, addr 0x%02x&quot;<br>
-&gt;=C2=A0 =C2=A0tmp105_write_shutdown(uint8_t dev) &quot;device: 0x%02x&qu=
-ot;<br>
-&gt; +<br>
-&gt; +# max31790.c<br>
-&gt; +max31790_send(uint8_t i2c_addr, uint8_t send) &quot;i2c_addr: 0x%02x,=
- data: 0x%02x&quot;<br>
-&gt; +max31790_recv(uint8_t i2c_addr, uint8_t reg_addr) &quot;i2c_addr: 0x%=
-02x, reg_addr: 0x%02x&quot;<br>
-&gt; +max31790_recv_return(uint8_t i2c_addr, uint8_t data) &quot;i2c_addr: =
-0x%02x, returns: 0x%02x&quot;<br>
-&gt; +max31790_event(uint8_t i2c_addr, uint8_t event) &quot;i2c_addr: 0x%02=
-x, event: 0x%02x&quot;<br>
-&gt; +max31790_realize(uint8_t i2c_addr) &quot;i2c_addr: 0x%02x&quot;<br>
-&gt; +max31790_pwm_write(uint8_t i2c_addr, size_t index, uint16_t value) &q=
-uot;i2c_addr: 0x%02x, index: %zu, value: 0x%04x&quot;<br>
-&gt; +max31790_rpm_write(uint8_t i2c_addr, size_t index, uint16_t value) &q=
-uot;i2c_addr: 0x%02x, index: %zu, value: 0x%04x&quot;<br>
-&gt; +max31790_tach_count_reg(uint8_t i2c_addr, size_t index, uint16_t valu=
-e) &quot;i2c_addr: 0x%02x, index: %zu, value: 0x%04x&quot;<br>
-&gt; +<br>
-&gt; diff --git a/tests/functional/arm/test_aspeed_fby4.py b/tests/function=
-al/arm/test_aspeed_fby4.py<br>
-&gt; index a521834f79..dc2437a533 100755<br>
-&gt; --- a/tests/functional/arm/test_aspeed_fby4.py<br>
-&gt; +++ b/tests/functional/arm/test_aspeed_fby4.py<br>
-&gt; @@ -8,6 +8,8 @@<br>
-&gt;=C2=A0 =C2=A0from qemu_test import wait_for_console_pattern<br>
-&gt;=C2=A0 =C2=A0from aspeed import AspeedTest<br>
-&gt;=C2=A0 =C2=A0<br>
-<br>
-Drop the extra newline<br>
-<br>
-&gt; +from qemu_test import wait_for_console_pattern<br>
-&gt; +from qemu_test import exec_command_and_wait_for_pattern<br>
-<br>
-redundant import.<br>
-<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0class YosemiteV4Machine(AspeedTest):<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; @@ -34,6 +36,30 @@ def do_test_arm_aspeed_openbmc_no_network(self, mac=
-hine, image, uboot,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0# different from the other mac=
-hines.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0self.wait_for_console_pattern(=
-&#39;yosemite4 login:&#39;)<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 # perform login<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self,<b=
-r>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 &quot;root&quot;, &quot;Password:&quot;);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &=
-quot;0penBmc&quot;, &quot;#&quot;);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 # MAX31790 test<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self,<b=
-r>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;cat /sys/class/hwmon/=
-hwmon2/name&quot;, &quot;max31790&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self,<b=
-r>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;cat /sys/class/hwmon/=
-hwmon2/fan1_input&quot;, &quot;7447&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self,<b=
-r>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;cat /sys/class/hwmon/=
-hwmon2/fan1_enable&quot;, &quot;1&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self,<b=
-r>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;cat /sys/class/hwmon/=
-hwmon2/fan1_fault&quot;, &quot;0&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self,<b=
-r>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;echo 1 &gt; /sys/clas=
-s/hwmon/hwmon2/pwm1&quot;, &quot;root@yosemite4&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self,<b=
-r>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;cat /sys/class/hwmon/=
-hwmon2/fan1_input&quot;, &quot;140&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self,<b=
-r>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;echo 255 &gt; /sys/cl=
-ass/hwmon/hwmon2/pwm1&quot;, &quot;root@yosemite4&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self,<b=
-r>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;cat /sys/class/hwmon/=
-hwmon2/fan1_input&quot;, &quot;10685&quot;);<br>
-&gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0def test_arm_ast2600_yosemitev4_openbmc(self=
-):<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0image_path =3D self.uncompress=
-(self.ASSET_YOSEMITE_V4_FLASH)<br>
-&gt;=C2=A0 =C2=A0<br>
-<br>
-</blockquote></div></div>
-
---000000000000d2f5090653e541f7--
 

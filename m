@@ -4,104 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96D86CD98CC
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 18:51:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E84C3CD98C7
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 19:11:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXO1Y-00025q-Ov; Wed, 10 Jun 2026 14:51:36 -0400
+	id 1wXOKH-0000En-Ar; Wed, 10 Jun 2026 15:10:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wXO1V-000253-GF
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 14:51:33 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wXOKG-0000EH-FY
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 15:10:56 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wXO1T-0002N8-Ci
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 14:51:32 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wXOKE-00032q-Lr
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 15:10:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781117489;
+ s=mimecast20190719; t=1781118653;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GJizkvEeQr5W24xg9kyOBmTnK/HoAg1GDQLvaHCll9A=;
- b=WcDbsqFkQCBnDGPVixArdbWRzUbXcHskWeoQHbJBJ/3gCAmyIWJcCOnj5fnD88vznNXu84
- I5OienNnCmoVzk79ij8XXJis7q1gW5DwZuwTOFj5WKIGw15TkzdpTwxSA2Ju4MuO8H4ddY
- PfYCoofX3ETJ/cOu9JhDscFl+M9+vsI=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=dbZuCAR3Qw3b3+uFels71RaLeXUJjBvUUefXt7mDflE=;
+ b=WmvLrtMrRXY32I+rX6q1l1XtrQAQKqtCSKcgKskRfHZ9DYMp5MlWFyg9jHg2Qge5JTWTDR
+ RSdAFtt59IMCJC/awa/oTJrCD1S7Jbh0/asTtiPgM0KLce28uFoKV7BKsce5YwLYwHD0Fs
+ XnWBHPnebV7ltoJET+flQ+MWuYQa7Ww=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-216-cDK4VXkRNAmpTvJTAZDE2w-1; Wed, 10 Jun 2026 14:51:28 -0400
-X-MC-Unique: cDK4VXkRNAmpTvJTAZDE2w-1
-X-Mimecast-MFC-AGG-ID: cDK4VXkRNAmpTvJTAZDE2w_1781117487
-Received: by mail-qv1-f71.google.com with SMTP id
- 6a1803df08f44-8ccf3d72081so105454746d6.3
- for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 11:51:28 -0700 (PDT)
+ us-mta-198-dDil65BqMEiE_bA1p-YEzw-1; Wed, 10 Jun 2026 15:10:49 -0400
+X-MC-Unique: dDil65BqMEiE_bA1p-YEzw-1
+X-Mimecast-MFC-AGG-ID: dDil65BqMEiE_bA1p-YEzw_1781118649
+Received: by mail-qt1-f199.google.com with SMTP id
+ d75a77b69052e-51776d4355cso4395871cf.0
+ for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 12:10:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781117487; x=1781722287;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=GJizkvEeQr5W24xg9kyOBmTnK/HoAg1GDQLvaHCll9A=;
- b=OlDRBdpcfAhEv30jG0TVzNaKya/zxY4UjLiUne5JCz/tikHS4jvFqq1hoEXmDeNN2S
- trLbA+HDdRUT8f4rLI0Ftn2af/7tlReIRXQ3Nhz/HT+NHTsgcjImU8PZZaP+SRMIcB98
- TFTcXbQolCcxkttkqm8n9BSrmkQqTazRBHnuaHEcCyCY3OL+WeKn7eLe0Q5QK3FqNQx5
- Z/E+yyeEcUvdI7OTM4yG4zUm2dCxs+Ce/Q7oERec5br5bJ3LD9N2a3hfJSzDakH3xXlK
- JS77Hy2PfkHdWfCXPYykJWw49Q+WXdSHn8zvMuW4pk2D+0eTDBKZo6+jfch93aw/XoqS
- kK9g==
+ d=1e100.net; s=20251104; t=1781118649; x=1781723449;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=dbZuCAR3Qw3b3+uFels71RaLeXUJjBvUUefXt7mDflE=;
+ b=WRHHBq0L1cZjwrKXuJGeOrXwKiw+UFfeCAgHKP/443kFokuiEALdAuDlGlIu5eaSlK
+ UjfbInXiHCLv8ShxJ+Y73cMJGUeQT+rpfcUS4Z4dDBzVDOVcQpXAKG/LQwuXDqYzN4i2
+ bEndhuypLZJ98YLFqvxK6iGd8TE3mU3ehp/mabnDcX6QVBM7x0QysUcUrRgJxfJ3rc9X
+ Iac5iEAflIfuWOq4FpP/0bTtgWzmgmy6nvZXQJLydLTc9eGCCwz9pQ88lswRl7K4iN/S
+ QW3r+XwQE/rK9dlrFXcMNj+uZrQ1ju+4j+vPLvGkloPgv/XcPp372kampiJ9U9jGEc3T
+ Hu+Q==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9TkNnqkTv3uOWWEN+NibHD5XiCMezsH2/8RykcM/q+fndh7nt1X8iJqwW2Fsc6ahWS8IFtNZWwGw==@nongnu.org
-X-Gm-Message-State: AOJu0YwsUH3vKKYX3tQznReDUEJAqLhv0f9PSCY8jPJm6+W/bxpQ7z8o
- jzrQqctfykvoK6EwmVC3Uyoa9ropFdFUDm/IoThAYAG7dGXLVYsaOcU+g8HTHrXnCZwIIkXhoP2
- DFz3yqN8r1MUVRYsLbep1821D4OrKUBZbGTUj5J8QBKfmKbwAvbNG3w==
-X-Gm-Gg: Acq92OEkoc3s4R3POsc86M89SbEgvfNFN2gLl345kzhuK/6+WJLrUM3pFEMWnfho+KZ
- 0C0b/0GP/LUKsz1UaLVB11tdowVr58tERG25UPJNJ0fFbdYhDAVs3W8dILbAQrRtE3VrXC14XQp
- oaZ6GRc6my1Ko9ck9lcfD3+1q7RiuGOfBVCE/DNlse+2npQu+nokeISJjxV+IVN/YD2qCa0nJZB
- vgS8K+Uj1974B9xiwB+x3od9x348UTJ/OHuojquEqE/4Qkp3ThDR1Miz7nWrhjBpydfT5Ri42/Q
- HG+gVAnZRnhJkjrtpRcu9M9fwkdG3xgLVAF9lsUNYEL+KwrYFb0ZPmDTIqfp8VHZlMlk/J+mLcu
- z+sK09Rl8fITvYvwTtDvlQGl6gQ==
-X-Received: by 2002:a05:6214:1d0d:b0:8ce:eaf7:dbe7 with SMTP id
- 6a1803df08f44-8d18a00f4d9mr8732356d6.33.1781117486608; 
- Wed, 10 Jun 2026 11:51:26 -0700 (PDT)
-X-Received: by 2002:a05:6214:1d0d:b0:8ce:eaf7:dbe7 with SMTP id
- 6a1803df08f44-8d18a00f4d9mr8731826d6.33.1781117486102; 
- Wed, 10 Jun 2026 11:51:26 -0700 (PDT)
+ AFNElJ8BA/mz9ScZpXDCl+tAz9VhzkjC93lX/NHz1s83Nzf/dZ4bAV33Aw8MFYhjjGvRFzpWWWz3wXkNFw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy4HtSQMHGQJGlsiYpKHzvkPao7mjvj10Y9f21F5J4JEkTT8pso
+ 0wgCp0CRUd032V1vo7dsiaBcKWOu85G6aA3Yh3wCVCXdZfaIXm4sgkfutew/u7vYEvP0OzMBfLI
+ QR0paBsMyuZ9oRmHSkOnPuVk4JoitBnyuAcCmRrAz+AuTcRVNUGt66A==
+X-Gm-Gg: Acq92OH6hdtVe/UfupnTF00JDVrx69NgdRZ2zuZxRncTaqt1mhWFGqgs7BoGTZzFzCC
+ 2X9Pv4A/NvNDUGZzNPovkgyfDFbCFwdR0ijZywPnXja8OeBLHCofuCS0zPjYHkB7HDUvvcIdb2W
+ nrd2GvIzLZqnPyyp+GLPZ+d5VFIW9rpKjfU7btIIAJCtc6Ix6eebkFSsc+XZzSrVXXM1jv4ZQPG
+ XbGrBbCac5gKpsoPbY4PZvdlqPL1Dpue1CFF7rPz7TcHlNhnRh0HEesVsIyZ9JYbKAdrVcxlcA3
+ BpRd6b+Y9zq/pQZfRxY+yWSvKVzXizUoyMildzdzUPGytXjGAv3xquRRR/UE8Pb2K/xPk6FKxMa
+ sy6JLUUgnIpnlvkKFVWsaZMBE7g==
+X-Received: by 2002:a05:622a:4010:b0:516:dc75:1aca with SMTP id
+ d75a77b69052e-517987df360mr280200431cf.26.1781118649104; 
+ Wed, 10 Jun 2026 12:10:49 -0700 (PDT)
+X-Received: by 2002:a05:622a:4010:b0:516:dc75:1aca with SMTP id
+ d75a77b69052e-517987df360mr280199731cf.26.1781118648633; 
+ Wed, 10 Jun 2026 12:10:48 -0700 (PDT)
 Received: from x1.local ([142.189.10.167]) by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-8cecc8222bcsm246008466d6.0.2026.06.10.11.51.24
+ d75a77b69052e-51775dbd2c9sm228149321cf.23.2026.06.10.12.10.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Jun 2026 11:51:25 -0700 (PDT)
-Date: Wed, 10 Jun 2026 14:51:23 -0400
+ Wed, 10 Jun 2026 12:10:48 -0700 (PDT)
+Date: Wed, 10 Jun 2026 15:10:46 -0400
 From: Peter Xu <peterx@redhat.com>
-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Fabiano Rosas <farosas@suse.de>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Dr . David Alan Gilbert" <dave@treblig.org>,
- Eric Blake <eblake@redhat.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Sana Sharma <sansshar@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Juraj Marcin <jmarcin@redhat.com>, qemu-rust@nongnu.org,
- Markus Armbruster <armbru@redhat.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Subject: Re: [PATCH v2 10/10] migration: Switch to TYPE_OBJECT with object
- properties
-Message-ID: <aimyK31EgOJICi_X@x1.local>
-References: <20260609172514.2037645-1-peterx@redhat.com>
- <20260609172514.2037645-11-peterx@redhat.com>
- <aimRB5Uv2XtTE4Xy@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Gavin Shan <gshan@redhat.com>,
+ Pavel Hrdina <phrdina@redhat.com>,
+ Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, jugraham@redhat.com,
+ shan.gavin@gmail.com, Alex Williamson <alex@shazbot.org>,
+ David Hildenbrand <david@kernel.org>
+Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
+ parent if possible
+Message-ID: <aim2tpHiev3iOkDE@x1.local>
+References: <674d5e21-88fa-4a10-a83c-eb6f7ce7032f@redhat.com>
+ <20260610080947-mutt-send-email-mst@kernel.org>
+ <eb0f0da1-11dd-4437-94fd-a65af55851e1@redhat.com>
+ <20260610082637-mutt-send-email-mst@kernel.org>
+ <5d8cbd4b-3725-437e-88a3-e0af32164815@redhat.com>
+ <e7cc9f2d-ccb4-442f-a1ed-7c5474395099@redhat.com>
+ <20260610095712-mutt-send-email-mst@kernel.org>
+ <aimEl9QQ_LTRPLtd@x1.local>
+ <CAFEAcA8HhC-=KwdbNE5jgqdP+H1VF1aJXdGaME8KsaDHhnBG9Q@mail.gmail.com>
+ <20260610121846-mutt-send-email-mst@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <aimRB5Uv2XtTE4Xy@redhat.com>
+In-Reply-To: <20260610121846-mutt-send-email-mst@kernel.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: OMIdRUEHvyvmzwUySv_-Xa7YwvA2i5WQROBanAiixDE_1781117487
+X-Mimecast-MFC-PROC-ID: ujphGdcS65ZJYdbXpznyotuqoDkmiodbwiHv9eu7vbU_1781118649
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -110,7 +106,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,50 +122,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Jun 10, 2026 at 05:29:59PM +0100, Daniel P. Berrangé wrote:
-> -global is/was intended for devices, primarily those which
-> are created by default as part of the machine. For dynamically
-> created devices the docs recommend use of -device instead
-> of -global.
+On Wed, Jun 10, 2026 at 12:19:39PM -0400, Michael S. Tsirkin wrote:
+> On Wed, Jun 10, 2026 at 05:11:40PM +0100, Peter Maydell wrote:
+> > On Wed, 10 Jun 2026 at 16:37, Peter Xu <peterx@redhat.com> wrote:
+> > >
+> > > On Wed, Jun 10, 2026 at 10:06:24AM -0400, Michael S. Tsirkin wrote:
+> > > > This is the change that broke it I think?
+> > > >
+> > > >
+> > > > commit 4a2e242bbb306ef5c16ce9e7bb2da3bd8a4eb098
+> > > > Author: Alex Williamson <alex@shazbot.org>
+> > > > Date:   Mon Oct 31 09:53:03 2016 -0600
+> > > >
+> > > >     memory: Don't use memcpy for ram_device regions
+> > > >
+> > > >
+> > > > Maybe Alex has an opinion on what to do.
+> > >
+> > > I can offer one idea here..
+> > >
+> > > IIUC the major issue was vector ops but the mr ops might be too heavy, then
+> > > another way to fix it is in memory API instead of using memcpy()/memmove(),
+> > > we always use a helper (say, memmove_no_vector()) to do the split and
+> > > properly aligned IOs as what ram_device_mem_ops does right now, this should
+> > > only applies to ram_device.
+> > 
+> > If the underlying memory needs to be accessed only with specific
+> > alignment/size, as the 4a2e242bbb30 commit message suggests, then
+> > we cannot expose it via address_space_map(), so we must have
+> > a bounce-buffer.
 
-I wished it was called -device-global then it'll be clearer, otherwise from
-an API perspective it really shouldn't be limited to qdev..
+I get the point; this is technically a concern, but IMHO it's still
+slightly different, and I expect it non-issue in reality.
 
-It makes sense to not call it -device-global, IMHO essentially because we
-don't necessarily need to restrict it to -device.
+Essentially we can have two ways to iteract with the pci bar:
 
-> 
-> I get that -global was exposed for migration via the inappropriate
-> use of TYPE_DEVICE as a parent for TYPE_MIGRATION, but I don't
-> think we should be prolonging that misuse by exposing use of
-> -global for things which are QOM rather than QDev.
-> 
-> If we want todo that for the sake of backcompat, IMHO it should
-> be deprecated so it only lives for a short while after the
-> conversion to QOM.
-> 
-> This makes me realize that this does not implement the UserCreatable
-> interface on TYPE_MIGRATION, so I'm presuming the MigrationState is
-> still created internally. Perhaps we should switch to making it a
-> full UserCreatable, such that -object can be used to set all migration
-> parameters on the command line and -global won't be required ? 
+1) via vCPU / CPU access
+2) via DMA targets
 
-This is what Fabiano suggested in his reply here:
+Alex can correct me, but IIUC that problem was when the CPU accesses the
+mapped region with memcpy(), rather than making that bar to be DMA target.
+Hence, use case 1) only.  So my current understanding is the proposal
+shouldn't (hopefully..) regress that realtek problem because use case 1) is
+properly covered.
 
-https://lore.kernel.org/qemu-devel/87jys75npb.fsf@suse.de/
+I always think it is very bogus to have any register-like MMIO regions to
+be passed over, maybe it's a bug already?  It's because I don't know any
+way to guarantee DMA performs in a way that will be compatible with a pci
+bar that is register-based and will not have any side effect.  Say, if some
+pci bar (real register-backed) must be accessed in 4B and aligned, how
+would a DMA request guarantee that?
 
-I wonder what's your view on that when put together the singleton series I
-used to post, where I also mentioned in the reply:
-
-https://lore.kernel.org/qemu-devel/aimtYbka4GB9Qyk6@x1.local/
-
-If you think that's the right approach, we can try to have it to replace
--global.  -global is debug API for migration, we don't need to obsolete it.
-Compat property is, which is unaffected by this.  So we can remove -global
-support for migration, but it'll always be good to have a replacement for
-scripts.
+From that perspective, IMHO it's a guest (driver or app, I'm not sure..)
+bug to make such region to be DMA target in the first place.  The outcome
+of such setup should be undefined.  It'll be the same after applying the
+proposal I raised, that QEMU will have undefined behavior for such pci bars
+to be used as DMA targets.
 
 Thanks,
+
+> 
+> Right. And virtio currently isn't friendly to the bounce buffer.
+> We can fix that but I worry about the perf impact.
+> 
+> > The address_space_map() function says
+> > "here's a host pointer to  memory, do what you like to it", and
+> > the caller is entitled to memcpy to/from it or otherwise
+> > access it with any C operations, which are not guaranteed to
+> > respect any kind of alignment or similar restrictions.
+> > 
+> > My guess from commit 4a2e242bbb30 is that that applied an
+> > overly broad "don't do direct access" hammer to all
+> > vfio assigned devices, and that there needs to be some
+> > concept of "this vfio assigned device's region is OK for
+> > direct access" vs "this other one is not", such that if
+> > this GH100 card's BAR guarantees it can be treated entirely
+> > as RAM then we can have memory_region_supports_direct_access()
+> > return true for it.
+> > 
+> > thanks
+> > -- PMM
+> 
 
 -- 
 Peter Xu

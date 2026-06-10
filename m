@@ -4,55 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9476CD98CC
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 11:01:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B873CCD8CB9
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 11:01:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXGe6-0004y6-04; Wed, 10 Jun 2026 06:58:54 -0400
+	id 1wXGev-0006W7-HL; Wed, 10 Jun 2026 06:59:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wXGe4-0004ta-59
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:58:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1wXGes-0006Av-Ml
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:59:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wXGe2-0007cc-OQ
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:58:51 -0400
+ id 1wXGer-0000rP-5Z
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:59:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781089129;
+ s=mimecast20190719; t=1781089169;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8ovS/sVNMJKyOAfVQNi+vvbijpH9Tp4bdUPmW1tKPn8=;
- b=SbBSVaUEOYdlM7zwgkzmZazm/M+tHTdE6OmwGujispS3btcghRBcdvM6YbOV8loOGVuIhj
- HFFSD/pyfCCBJgzTdRfkUK+/fNKYtFQzL7hPKd6n8caeKwsTccSPrctVeILxRBci4TATbR
- SY8pn3fgQd07BcwMxZIMy+RjsWqUxag=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=DjnAxC/Mc7CJiqlOeCM3RQtg+Isi+MArKrw26TJllhg=;
+ b=dnUlYLkhLIhq34CQRS2Nh/DCTnwt6rT1upLTQCcGXKc1ltw6SbitcneMgsL1KS/9c3wunk
+ xadH+N/R47aok8vgbOr0U3bpTqJv8HrT8CE2WBxjPl6ScFC9SDZux6wLPHQ29M6dRmVO9/
+ b0ZBxKH3cZN134VLlc/W0pcUTpWRSGo=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-507--fxK6FwZPp23x6nSBMXnRw-1; Wed,
- 10 Jun 2026 06:58:48 -0400
-X-MC-Unique: -fxK6FwZPp23x6nSBMXnRw-1
-X-Mimecast-MFC-AGG-ID: -fxK6FwZPp23x6nSBMXnRw_1781089126
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-468-S1bNUaZnPp2ZT8k5ayIGZQ-1; Wed,
+ 10 Jun 2026 06:59:25 -0400
+X-MC-Unique: S1bNUaZnPp2ZT8k5ayIGZQ-1
+X-Mimecast-MFC-AGG-ID: S1bNUaZnPp2ZT8k5ayIGZQ_1781089164
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 707551801233; Wed, 10 Jun 2026 10:58:46 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 30A721835E2A; Wed, 10 Jun 2026 10:59:24 +0000 (UTC)
 Received: from localhost (unknown [10.44.24.21])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2B97C1954B09; Wed, 10 Jun 2026 10:58:44 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id DC4E33000223; Wed, 10 Jun 2026 10:59:22 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Wed, 10 Jun 2026 14:56:57 +0400
-Subject: [PATCH v2 15/22] ui/input: qemu_input_handler_register to warn for
- unused result
+Date: Wed, 10 Jun 2026 14:57:04 +0400
+Subject: [PATCH v2 22/22] ui/input: remove old LED handler broadcast queue
 MIME-Version: 1.0
-Message-Id: <20260610-ui-input-v2-15-f68452dd6a22@redhat.com>
+Message-Id: <20260610-ui-input-v2-22-f68452dd6a22@redhat.com>
 References: <20260610-ui-input-v2-0-f68452dd6a22@redhat.com>
 In-Reply-To: <20260610-ui-input-v2-0-f68452dd6a22@redhat.com>
 To: qemu-devel@nongnu.org
@@ -65,29 +64,29 @@ Cc: "Dr. David Alan Gilbert" <dave@treblig.org>,
  Jan Kiszka <jan.kiszka@web.de>, Peter Maydell <peter.maydell@linaro.org>, 
  qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
  qemu-ppc@nongnu.org, Thomas Huth <th.huth+qemu@posteo.eu>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=686;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2215;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=Kc2fKD50I8FJ0Pc9X1YOpmWSpQlE0hG/DBR+izlf9iA=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqKUMBRkRpC+i9Yi7d1ygxF2TTwmXgr0Ztzk9BS
- b2Ft+6/nKeJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCailDAQAKCRDa6OEJdZac
- 5Ru3D/sHm7/2sfEO6Zj6nVetLxFkCcmZZ/ZP1NaZRO5uHh6WB3gJSoW5iSEc3Vlu8rtZY+YUSsV
- 9xG1jRDEBFhxCJPLJcZoyyNSM57A2g5Nwl1ZVYp5mr7yK5nsEDmY7W7IxsQiZTfybyUqA3ADh4K
- 2HvWWZdqv9C6DAwdCwabTnkyOpbu1eVgmiWpe0IpDAA3T8ZWly32RHKQpMurABym1BGXaaG7/OF
- HSSc5jXufhwpUXFQOUwrCYrb1rwyA24V2RgPS5MYOVJSqmRdgFsSj0fYC2va9SrWvqeE3bJVeAy
- QcfVbf/t5l4MqC21LY6MmAVpmtIDHc7TdUkgEm76XHCsZJ5Q7N1PI5+R+ZtnOZyalfiDb4lDd8I
- P0ufkGJDYPokr2zvtmi2qodFlMzBwQr10EgySirWD2rBIk8van08p1RDjUYAIaTXmknv7JkorSr
- HVeEES5jGHBlqnO30zeL7myIkSm58bpqRUjP3m897BHzLu4O8OOazQo/79oNApRr2bUY+9Jmv9e
- Xp87utEhcHDxjSpvSLvntPdThGg8L5E6BgTK6MQvB9hqcqNF1QMLZ3gEYe0A5AoiMbMrrZDYAcA
- Y8Xc/Ka5oT4QHJhtaYboK7jepF30ZppTTlfJCRuXs+vr8YPEMM1OraBMubqWX85JNll/qKsWk5Q
- 6wI96+ROkZQOaLA==
+ bh=NHaVAaoIWOcPRSUWYUSpmvX80VOfS5rhWCqfzhbLc/A=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqKUMCLa/fQk8dnW2uYSSOvc5y5KgibiFfDhFaf
+ K0WAUTlbjCJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCailDAgAKCRDa6OEJdZac
+ 5YIHD/45615a+w90gRGk8EzG58eppx0B2URftz5YLSh7NzXY5w+8AFFTiJUo+jbAp8k1yjd+GuP
+ e2M5U0C2TWVCy44ywKJKELCRYLtBWhmwFyCeaSOtop3ql0ahEfHCH8bYpRKrhrBRHVdFOFJcrkY
+ PPWHpx8goVuyRCLPfTYkTFK5OrMscpGw/ePDilc6XwElJNPPbjevLByjir5nkePHWyo0hGojty9
+ c89bgnl+NmsH32ACPe17qDpfPUK9aALQYGeUBKXY9zI+i7hK338KB9ei8qY7EUCgf/PenKzUcMD
+ GepNICpQMDMev5USo5cmZzTDRtub1ldKDBxZBPbPSkpUrP8ww3d39CGp5v6b6QbSjRuZxUmQ9a9
+ ll0Kyy/1uzJkXhwEg+Ob+3pGP49+BPsRNf94/iU36SeikSgWQMaexfGLp1aXZpX2z3HVwPPLy8R
+ P4Q+Q9515h+ZrprkE9s6AADnoQM3PHEUOPXGFJjbBCqmnPpdhlcoA6aqlTYW78gPDVoyaUVu9Is
+ 615XZmAsMED8AZwqlFz/jGunhgiMck7WletKziJPCqKKo98Sm9hlJ8wz0MFCaTDCgeMQtZL7QsY
+ eAf9DlphAcX0QLthoJuIY+0lKyfr/mM1Ebjt6VB//Qt82T0lYK7keX0W2vMQMfoIYplQokm+FSS
+ /tH4yxHSD2oMu/A==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: gsbuwHQcElnMOOoeuxzxQy4aHce5HbRq_0zEcv1Jvmw_1781089126
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: SFN65ED2EMUvrfpV65QGsf4aHzy42qlymJRDNgO2Mms_1781089164
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -95,7 +94,7 @@ X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,24 +111,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Suggested-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- include/ui/input.h | 1 +
- 1 file changed, 1 insertion(+)
+ include/ui/console.h |  9 ---------
+ ui/input.c           | 40 ----------------------------------------
+ 2 files changed, 49 deletions(-)
 
-diff --git a/include/ui/input.h b/include/ui/input.h
-index 66e5c1f4b06..ea9f5b82646 100644
---- a/include/ui/input.h
-+++ b/include/ui/input.h
-@@ -45,6 +45,7 @@ struct QemuInputHandler {
-     QemuInputHandlerSync   sync;
- };
+diff --git a/include/ui/console.h b/include/ui/console.h
+index 0299ed4b566..b7bfecb6ee9 100644
+--- a/include/ui/console.h
++++ b/include/ui/console.h
+@@ -54,15 +54,6 @@ enum qemu_color_names {
+ #define ATTR2CHTYPE(c, fg, bg, bold) \
+     ((bold) << 21 | (bg) << 11 | (fg) << 8 | (c))
  
-+G_GNUC_WARN_UNUSED_RESULT
- QemuInputHandlerState *qemu_input_handler_register(DeviceState *dev,
-                                             const QemuInputHandler *handler);
- void qemu_input_handler_activate(QemuInputHandlerState *s);
+-typedef void QEMUPutLEDEvent(void *opaque, int ledstate);
+-
+-typedef struct QEMUPutLEDEntry QEMUPutLEDEntry;
+-
+-QEMUPutLEDEntry *qemu_add_led_event_handler(QEMUPutLEDEvent *func, void *opaque);
+-void qemu_remove_led_event_handler(QEMUPutLEDEntry *entry);
+-
+-void kbd_put_ledstate(int ledstate);
+-
+ bool qemu_mouse_set(int index, Error **errp);
+ 
+ /* keysym is a unicode code except for special keys (see QEMU_KEY_xxx
+diff --git a/ui/input.c b/ui/input.c
+index 99a1090f8c3..b6bbfa8f128 100644
+--- a/ui/input.c
++++ b/ui/input.c
+@@ -689,46 +689,6 @@ void qemu_input_touch_event(QemuConsole *con,
+     }
+ }
+ 
+-struct QEMUPutLEDEntry {
+-    QEMUPutLEDEvent *put_led;
+-    void *opaque;
+-    QTAILQ_ENTRY(QEMUPutLEDEntry) next;
+-};
+-
+-static QTAILQ_HEAD(, QEMUPutLEDEntry) led_handlers =
+-    QTAILQ_HEAD_INITIALIZER(led_handlers);
+-
+-QEMUPutLEDEntry *qemu_add_led_event_handler(QEMUPutLEDEvent *func,
+-                                            void *opaque)
+-{
+-    QEMUPutLEDEntry *s;
+-
+-    s = g_new0(QEMUPutLEDEntry, 1);
+-
+-    s->put_led = func;
+-    s->opaque = opaque;
+-    QTAILQ_INSERT_TAIL(&led_handlers, s, next);
+-    return s;
+-}
+-
+-void qemu_remove_led_event_handler(QEMUPutLEDEntry *entry)
+-{
+-    if (entry == NULL) {
+-        return;
+-    }
+-    QTAILQ_REMOVE(&led_handlers, entry, next);
+-    g_free(entry);
+-}
+-
+-void kbd_put_ledstate(int ledstate)
+-{
+-    QEMUPutLEDEntry *cursor;
+-
+-    QTAILQ_FOREACH(cursor, &led_handlers, next) {
+-        cursor->put_led(cursor->opaque, ledstate);
+-    }
+-}
+-
+ void qmp_send_key(KeyValueList *keys, bool has_hold_time, int64_t hold_time,
+                   Error **errp)
+ {
 
 -- 
 2.54.0

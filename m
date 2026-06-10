@@ -4,88 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68164CD98C6
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 16:30:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10296CD8CB9
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 16:42:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXLp0-0005Vw-Hm; Wed, 10 Jun 2026 12:30:30 -0400
+	id 1wXM0D-0001Lp-S1; Wed, 10 Jun 2026 12:42:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wXLoy-0005Tg-3H
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 12:30:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wXLot-00051A-WE
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 12:30:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781109016;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=ffQMrrIeEw+Z4qPbjB7+M8+ng5hnGuoNl7GHirLXJ9M=;
- b=bCEzBiw0pwgeHr666FzFhrymkViwzRx/+9VZQl3DmbJn3BFRjeh2WffDO9ynH5s2WcVv7L
- ZyqPwqQgSuOXVgzxEtUWGwMf9ApGo4NPXqTjn90DYyzRfdYIOpKiQGZZCijDVzgibHtDhS
- QHCQa73M595EIBt2psfe9PhIF9fBOhA=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-363-mQCUOurRPcW7HJ7ae6pw5Q-1; Wed,
- 10 Jun 2026 12:30:12 -0400
-X-MC-Unique: mQCUOurRPcW7HJ7ae6pw5Q-1
-X-Mimecast-MFC-AGG-ID: mQCUOurRPcW7HJ7ae6pw5Q_1781109010
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id AE989193F041; Wed, 10 Jun 2026 16:30:09 +0000 (UTC)
-Received: from redhat.com (unknown [10.44.50.112])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C2CD93008DC3; Wed, 10 Jun 2026 16:30:02 +0000 (UTC)
-Date: Wed, 10 Jun 2026 17:29:59 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Xu <peterx@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Fabiano Rosas <farosas@suse.de>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Dr . David Alan Gilbert" <dave@treblig.org>,
- Eric Blake <eblake@redhat.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Sana Sharma <sansshar@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Juraj Marcin <jmarcin@redhat.com>, qemu-rust@nongnu.org,
- Markus Armbruster <armbru@redhat.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Subject: Re: [PATCH v2 10/10] migration: Switch to TYPE_OBJECT with object
- properties
-Message-ID: <aimRB5Uv2XtTE4Xy@redhat.com>
-References: <20260609172514.2037645-1-peterx@redhat.com>
- <20260609172514.2037645-11-peterx@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wXM0B-0001LP-O8
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 12:42:03 -0400
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wXM09-0007ok-Fw
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 12:42:03 -0400
+Received: by mail-pf1-x429.google.com with SMTP id
+ d2e1a72fcca58-842307472d4so2363262b3a.0
+ for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 09:41:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1781109719; x=1781714519; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=vyw7zIyJf9SkknED0JnLpcttvibpiEiM5iVKY51g/w8=;
+ b=mjNAWn6DSeBToKXNlannKoQgV9PEHga7NhL2IMw8Cmd3fOr1JJ7DKuOYeDoz+VCuAK
+ 9IPDqihxjEFcN/Yz/OmuhLOlMzQAya3Ef5SnaGL0YP6wE8U0/IgLvxE7Put0vBkDhW8v
+ eqTSOXEpG+/SABpCAsi2OzOIdDiEevE0jJs0gZyUC5Z/WGJ0iXtewIGjqZOxLn0ok58O
+ 0LzsP6BQHpbmYZJtAYmYIgEHss/xA/mAkbiiYuHen7Xc9jD5gRKMxIdk4tDb1UcN6nhX
+ G1/NLJgbamwi+7lz8mU4BfoyG6/cBdhNkwkWLnSV7ezW6R8GK7Ka8CtX7xsgCA+MfGZ8
+ 4uBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1781109719; x=1781714519;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=vyw7zIyJf9SkknED0JnLpcttvibpiEiM5iVKY51g/w8=;
+ b=Sh7SlwRtjZRiiBQ57QA+cflDYsJEnbdHgHhc1Z/Zq9Znn4RissQqtBjVFwpdpdwWu/
+ BAv/ZxOYrqnPySsTFa3NJOWtKvRXV+ablPIEcmrh1/E4MRTopmsxBx4cBnFSOQ/W0Mtm
+ DMIdEkV5f8egf9BrFVZfY/aMG+pNYRwWgFHaloReEYA6V8byaENRoTco5Vl1IE3+gX+t
+ CAcmHtI8Co0SbSifl99gS+opiRX7mglrkO63dmkO9FDEcjG6PIk55beNsDmNPhvwu5FB
+ 5Wzram+91my5ex9OMdHmT/N/rqh1InjLpaKW7TnDp2uh8JIPqAbc3TvgVTaOqMf2sb4J
+ 9ZSg==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ9O5D3jc1NPx+7pmaNSlsl1TnpMW+5g5FCjeeectVqtVETaVMPZoFZl0QqP5ckmTGaDL+ZTpkBjIQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy9A7n0VCFWnSD+UatBGq+By60xEyZmsCOqp8FOiqQRT4L4VvWC
+ Y4An8gbkJ6c5wl0izDQE1QFp0QCeqtwTPYtonaI3s0dKj6RP8PkDn1Gn1ohrlMYNTwE=
+X-Gm-Gg: Acq92OH0oG3MqCh7H8ROOQ0OQusaSLrJHZuePawFjT/Y7T7i5FQFiZQqx2V79DxWdDB
+ 0um0E5qLUbV8qvZBFno/TD1NkG7+rYFYMmF4sAcq6GTlW4lIz3ZkyLGX2h/51HnmpLVjkqycIPZ
+ 3TDGVBDhEFELobQ50DUFx7iWyxAfFANz0e/jDRkPkq44vr1MZMAeYkPC2uKsOn+1B7nKG7Qj1Cz
+ 3HV3/TONLu6V441YU9oB4Dzzcg6sVoOqElSCx+rHWLd1uS9c8gsjL8o8Debwd7D5cy8IyMoGosL
+ WXR79eCRON5TkVxYBgl4srKwJ5O+5ns0C+UtAbUoiSIt87q0vM0v7XebXkxAnNQkQxCjI+QxLAR
+ 6kBBPRr6as17wR1rAQmVrerKan4Ql1xOl3Y3XO+VNf4RvbOtakOkaHq8yNjWDLgwMgasx8uU8lk
+ UNh9G5I3BUFHNk80rdF9I5dB0plQFU1wYQeEaJLw14BWc8tIs=
+X-Received: by 2002:a05:6a00:391d:b0:842:2f09:fde9 with SMTP id
+ d2e1a72fcca58-8430a62fa44mr9226125b3a.8.1781109718551; 
+ Wed, 10 Jun 2026 09:41:58 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.142.33])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-842828cb2bdsm25640656b3a.41.2026.06.10.09.41.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 10 Jun 2026 09:41:58 -0700 (PDT)
+Message-ID: <7615fda1-4052-4696-b477-6eacc057c4a5@linaro.org>
+Date: Wed, 10 Jun 2026 09:41:56 -0700
 MIME-Version: 1.0
-In-Reply-To: <20260609172514.2037645-11-peterx@redhat.com>
-User-Agent: Mutt/2.3.2 (2026-04-26)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: Ot0n1R00mmOcXzWoKconu-Zb6n-YXKudK768WzAjS0o_1781109010
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/6] target/arm/ptw.c: Add Granule Bypass Windows
+To: Jim MacArthur <jim.macarthur@linaro.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+References: <20260603-jmac-gpc3b-v2-0-115c51936962@linaro.org>
+ <20260603-jmac-gpc3b-v2-3-115c51936962@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260603-jmac-gpc3b-v2-3-115c51936962@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,104 +102,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jun 09, 2026 at 01:25:14PM -0400, Peter Xu wrote:
-> The migration object used to depend on TYPE_DEVICE due to:
-> 
-> - Usage of qdev properties
-> - Apply compat properties and global properties
-> 
-> This patch re-based the object to TYPE_OBJECT with the changes:
-> 
-> - Switch to object properties API
-> - Manually apply both compat and global properties in post_init()
-> 
-> Note that to avoid too many property getter/setter helpers, this patch used
-> the object_property_add_*_ptr_def() APIs so that an pointer is passed to
-> bind to the property.  Such API is used for most of the conversions.
-> 
-> After patch, the migration object initializes instance properties within
-> its instance_init() callback, in migrate_params_init().
-> 
-> One side effect of this change is, since we switched to a loop to add all
-> capabilities, the name of the properties representing a migration
-> capability may chance from previously hard-coded ones (many with x-).  It's
-> fine since it's only used in -global so it's only for debugging.
-> 
-> Similarly, I removed "x-" from other properites that used to start with
-> "x-" but actually are not experimental.
-> 
-> After the whole conversion, we don't need migration_properties or the count
-> anymore, hence can be removed.  While at it, we can also remove two
-> DEFINE_PROP*() API that only migration uses (DEFINE_PROP_STR_OR_NULL, and
-> DEFINE_PROP_MIG_CAP).
-> 
-> Signed-off-by: Peter Xu <peterx@redhat.com>
-> ---
->  migration/options.h   |   8 +-
->  migration/migration.c |  35 ++-
->  migration/options.c   | 526 ++++++++++++++++++++++++++----------------
->  3 files changed, 351 insertions(+), 218 deletions(-)
+On 6/3/26 11:26, Jim MacArthur wrote:
+> +    const uint64_t BW_STRIDE_SHIFT = 40;
+...
+> +        switch (bw_stride_field) {
+> +        case 0b00000:
+> +        case 0b00010:
+> +        case 0b00100:
+> +        case 0b00110:
+> +        case 0b00111:
+> +        case 0b01000:
+> +        case 0b01001:
+> +        case 0b01010:
+> +        case 0b10000:
+> +            bw_stride = 1ULL << (bw_stride_field + BW_STRIDE_SHIFT);
 
-> +static void migration_instance_post_init(Object *obj)
-> +{
->      /*
-> -     * NOTE: TYPE_MIGRATION is not really a device, as the object is
-> -     * not created using qdev_new(), it is not attached to the qdev
-> -     * device tree, and it is never realized.
-> +     * Apply these properties on top of default values:
-> +     *
-> +     * (1) machine compat properties
-> +     * (2) -global settings in cmdlines
->       *
-> -     * TODO: Make this TYPE_OBJECT once QOM provides something like
-> -     * TYPE_DEVICE's "-global" properties.
-> +     * Need to be applied in order so (2) takes precedence over (1).
->       */
-> -    .parent = TYPE_DEVICE,
-> -    .class_init = migration_class_init,
-> +    object_apply_compat_props(obj);
-> +    object_apply_global_props(obj, global_props(), &error_fatal);
+BW_STRIDE_SHIFT should be 39 not 40.
 
--global is/was intended for devices, primarily those which
-are created by default as part of the machine. For dynamically
-created devices the docs recommend use of -device instead
-of -global.
+Everything else is correct.
 
-I get that -global was exposed for migration via the inappropriate
-use of TYPE_DEVICE as a parent for TYPE_MIGRATION, but I don't
-think we should be prolonging that misuse by exposing use of
--global for things which are QOM rather than QDev.
+However, we can simplify:
 
-If we want todo that for the sake of backcompat, IMHO it should
-be deprecated so it only lives for a short while after the
-conversion to QOM.
+     bw_mask = bw_stride - bw_size;
 
-This makes me realize that this does not implement the UserCreatable
-interface on TYPE_MIGRATION, so I'm presuming the MigrationState is
-still created internally. Perhaps we should switch to making it a
-full UserCreatable, such that -object can be used to set all migration
-parameters on the command line and -global won't be required ? 
+contains the bits [gpcbwu:gpcbwl].  Then...
 
-> +}
+> +        /*
+> +         * GPCBW is invalid if the base address is:
+> +         * not aligned to the size programmed in BWSIZE, or
+> +         * greater than or equal to the stride value configured by BWSTRIDE.
+> +         */
+
+     if (bw_addr & ~bw_mask)
+
+tests both conditions and...
+
+
+> +        uint64_t bw_size_mask = MAKE_64BIT_MASK(0, bw_size_field +
+> +                                                BW_SIZE_SHIFT);
 > +
-> +static const TypeInfo migration_type = {
-> +    .name = TYPE_MIGRATION,
-> +    .parent = TYPE_OBJECT,
->      .instance_size = sizeof(MigrationState),
->      .instance_init = migration_instance_init,
-> +    .instance_post_init = migration_instance_post_init,
->      .instance_finalize = migration_instance_finalize,
->  };
+> +        if (bw_addr & bw_size_mask) {
+> +            goto fault_walk;
+> +        }
+> +
+> +        if (bw_addr >= bw_stride) {
+> +            goto fault_walk;
+> +        }
+> +    }
+> +
+>       /* Note this field is read-only and fixed at reset. */
+>       l0gptsz = 30 + FIELD_EX64(gpccr, GPCCR, L0GPTSZ);
+>   
+> @@ -431,6 +494,23 @@ bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
+>           goto fault_fail;
+>       }
+>   
+> +    /*
+> +     * Bypass window check.
+> +     * I_JJLRM: Granule Protection Table (GPT) lookups can be skipped
+> +     * in portions of the memory map by using GPC bypass windows.
+> +     * I_XNHTX: The GPC bypass window check (...) is performed
+> +     * immediately after priority 3.
+> +     */
+> +    if (FIELD_EX64(gpccr, GPCCR, GPCBW)) {
+> +        uint64_t bw_stride_mask = MAKE_64BIT_MASK(0, bw_stride);
+> +        uint64_t effective_address = paddress & bw_stride_mask;
+> +
+> +        if (effective_address >= bw_addr &&
+> +            effective_address < bw_addr + bw_size) {
+> +            return true;
+> +        }
 
-With regards,
-Daniel
--- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+     if ((paddress & bw_mask) == bw_addr) {
+         return true;
+     }
 
+is exactly the check in PAWithinGPCBypassWindow.
+
+
+r~
 

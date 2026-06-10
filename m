@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2B9ACD8CB2
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 10:59:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E540CD8CB2
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 10:59:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXGe3-0004rq-Cj; Wed, 10 Jun 2026 06:58:51 -0400
+	id 1wXGdv-0004Qs-TP; Wed, 10 Jun 2026 06:58:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wXGe1-0004o8-Um
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:58:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1wXGdv-0004Lm-5Q
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:58:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wXGe0-0007YZ-GX
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:58:49 -0400
+ id 1wXGdt-0007N1-Gm
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 06:58:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781089128;
+ s=mimecast20190719; t=1781089120;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=a7UMc9Olibe39PMu1zZm86wMxYjIQkDMmyXGtriuq+A=;
- b=iwo1AkRio2Z3DqUEOS+fVSDjAv1Z4k8Zn4R2q7n+eQtObnW9eOgatXCCa1v6wKixQN1rqM
- MS7XwzR1CTQt85kii2Q7jID0U7R+UzRm5DgdMEHLHjT2V1nf6kaNWqM6tLzMbdZ1WezSTG
- d0KmUvkaJPGA8QTObDyfz8SHXnTIf1w=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=lginq05kULLa0WOrt+nJYrmjrMyTghx9mx56okfUJWI=;
+ b=i1UWofO7S+QfxIIZ13HBH+rk6Ji7VdcB30naB0TWt3g3J6vpXrK/aht8WNOH/FjukUiWHT
+ 9IB7MDx7jd1spJXHe9Rw1Df0XdsG+9SAA3EqgfoUXdaDGne+tyH6CYSbbXoM6oupe9vagP
+ n9EOXvLIhj11/uXBjVcYNFJ0zVF3Gv0=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-328-NHmnLpk-NKyBl44V5LRyiA-1; Wed,
- 10 Jun 2026 06:58:43 -0400
-X-MC-Unique: NHmnLpk-NKyBl44V5LRyiA-1
-X-Mimecast-MFC-AGG-ID: NHmnLpk-NKyBl44V5LRyiA_1781089121
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-605-Nf_PqFIqNKKuTM2MkA_xsw-1; Wed,
+ 10 Jun 2026 06:58:37 -0400
+X-MC-Unique: Nf_PqFIqNKKuTM2MkA_xsw-1
+X-Mimecast-MFC-AGG-ID: Nf_PqFIqNKKuTM2MkA_xsw_1781089115
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3CAC118009DC; Wed, 10 Jun 2026 10:58:41 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C7BD119540CC; Wed, 10 Jun 2026 10:58:35 +0000 (UTC)
 Received: from localhost (unknown [10.44.24.21])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id AF1083008B35; Wed, 10 Jun 2026 10:58:39 +0000 (UTC)
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 8D5B1180057F; Wed, 10 Jun 2026 10:58:34 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Wed, 10 Jun 2026 14:56:56 +0400
-Subject: [PATCH v2 14/22] hw/m68k: keep QemuInputHandlerState in next-kbd
+Date: Wed, 10 Jun 2026 14:56:55 +0400
+Subject: [PATCH v2 13/22] hw/input: keep QemuInputHandlerState in stellaris
 MIME-Version: 1.0
-Message-Id: <20260610-ui-input-v2-14-f68452dd6a22@redhat.com>
+Message-Id: <20260610-ui-input-v2-13-f68452dd6a22@redhat.com>
 References: <20260610-ui-input-v2-0-f68452dd6a22@redhat.com>
 In-Reply-To: <20260610-ui-input-v2-0-f68452dd6a22@redhat.com>
 To: qemu-devel@nongnu.org
@@ -64,29 +64,29 @@ Cc: "Dr. David Alan Gilbert" <dave@treblig.org>,
  Jan Kiszka <jan.kiszka@web.de>, Peter Maydell <peter.maydell@linaro.org>, 
  qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
  qemu-ppc@nongnu.org, Thomas Huth <th.huth+qemu@posteo.eu>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1459;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2258;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=4Pla2htVz5YE2pGrHqAWgYdSRFlBor8jDG+m/EG6xN4=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqKUMABWdcufUUdygn8eQu/IxUkR2C3U/5HafEW
- 1q+pVP5/oaJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCailDAAAKCRDa6OEJdZac
- 5WA7D/40oHrucQ7s4qu7LEzBE8Yj6uh30x5c6VqKfwA0U7Vu3csLSq/2RWJ8Ov4dgzZDWCSkU5v
- qkIuBWhgVKomC/kR9l9jThcrAgwIU9OxYNeppiubJHtI4/KkyOJiSJPlt7mJNfaiFB65vuWarV5
- ymun1qcKKKmkOV8oDrFb9j88J+oLI2AvNCpOZHVqYEXigAX/DfCmmGhhWspJ16Fbf+lksT/CBay
- BQvF74C4SrQ2W968dN1WbYRmZqyh4yy+iN8cnSENtCfv9JrtGM6HFQCi3/gebyoS3RxVyC3zO4a
- FZBJTuw0cYVE29okcggtxGsb6MioD3Nc0HpJbQj7KDzlcxtnNjvxOwrJfP5jrVUI/eB+mDn4Z8E
- mLaOmPvoJgVocn4a4VCDGoFjZtiXAHRZ/1gcTPHhTx4joMKl2BI6U79CXa+w1i0gZRum2tHsurN
- yukC4tspM9CGOEqw6+DAAUh20pSGv5NrKCz3t7F0bkUVJd33hBRFu5QjYQ2y/Mw1xQlp5+J8I1j
- PZpW0HREuZ9uYiSlYVgbPbm5fl3rWp/NpMTASOch4z+6eoB4sWHUoFftnsfu5V9jXlutMDTtp6U
- 3qYvt74Z0zaP+wRgAldKF/BJA6eF3OxrgWSTpcU9/6gNVOdyDfwMG/KUvLAb8kDEyhrw+UI65yk
- 5Jb0bbq7hW7rXoQ==
+ bh=31dKGmjQ0ucYg8DBaj+bqrZrM6KhG0cYtmReIw9YdWs=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqKUMANB/B1BjoTx7etAXnd+O/dqm0zB8rk16v+
+ gQvRkPtKVCJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCailDAAAKCRDa6OEJdZac
+ 5d41D/9ha7dg3IdRYdl7vrNGf5174Zn+VxVT+Ipo8GLzqKuTeABvkPNT8sueEPatQUJpvG7gzMb
+ hXBY3ysve+Mzzc/CiSmBqf02eW3Ej3kkxKeQ46AQDZsFVKltPpfhwctJXonLV1K6B2wSt93k59U
+ hi7TAYPd2YHRz5aiSd0IPIXEehFgAji1x6/m/XN9TWRSY/9KKKchyQrKRAIMY3A+RTcctkimMc/
+ W6sHQPHB3VOaZTzjKZQgx8pLH+NdEXF5oNbYU7dvZBrZR0irUjAPeDZXzOLwR7gnKLaH88no+Z1
+ KrdJ1td19/7oh24XYWiC6tTdxBo+T33YvtweEG5DeRmKCFyz6Ym8dnRozXrPYlRFLKPK5bYQiqE
+ HQSbnWyMdMuYBltM0zhCx+jR2zduaX8pbO08/WQL8rCxbX5OpemyH548c0MF9tU/Q+e2RCRbB8j
+ YI82kv8GiXSCONSxs6wOB5fWJ54LcXwpC6VmzSMWiG2/hDpmBgP5K6Y47oW3s0Y8Fjbvv7PPOyp
+ lSi3ExruBE/Fdl8P5gRvyeljjrcl+DcpIjReFwvshQx2iGTcsSnQnrXfH04h0+VIht2E/El0pPO
+ nnhyhkQLdzGg/A67ZJEt6DTHK8cwf8Y9qcYUn5UhkBkvXfJTIj17h5j8jafwXPuDUyXtklM5EFP
+ NTCfJX5qGVjbLNw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 3_n-NZU7u1Bp9CjT8546lBqKf4ui8h6skoSP-9FUwek_1781089121
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: Km7rihaKtfdMyZumBfmheSKIqrRnpWE_WDRo-6IDgWY_1781089115
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -94,8 +94,8 @@ X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,47 +113,64 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Track the input handled state, and dispose it on unrealize.
 
+Also free some allocated fields during unrealize.
+
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/m68k/next-kbd.c | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
+ include/hw/input/stellaris_gamepad.h |  2 ++
+ hw/input/stellaris_gamepad.c         | 12 +++++++++++-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
 
-diff --git a/hw/m68k/next-kbd.c b/hw/m68k/next-kbd.c
-index 7be5ab2fb79..84a610edab2 100644
---- a/hw/m68k/next-kbd.c
-+++ b/hw/m68k/next-kbd.c
-@@ -65,6 +65,7 @@ typedef struct {
- struct NextKBDState {
-     SysBusDevice sbd;
-     MemoryRegion mr;
-+    QemuInputHandlerState *hs;
-     KBDQueue queue;
-     uint16_t shift;
- };
-@@ -304,7 +305,14 @@ static void nextkbd_realize(DeviceState *dev, Error **errp)
-     memory_region_init_io(&s->mr, OBJECT(dev), &kbd_ops, s, "next.kbd", 0x1000);
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
+diff --git a/include/hw/input/stellaris_gamepad.h b/include/hw/input/stellaris_gamepad.h
+index e011482646f..c1069735010 100644
+--- a/include/hw/input/stellaris_gamepad.h
++++ b/include/hw/input/stellaris_gamepad.h
+@@ -13,6 +13,7 @@
  
--    qemu_input_handler_register(dev, &nextkbd_handler);
-+    s->hs = qemu_input_handler_register(dev, &nextkbd_handler);
+ #include "hw/core/sysbus.h"
+ #include "qom/object.h"
++#include "ui/input.h"
+ 
+ /*
+  * QEMU interface:
+@@ -28,6 +29,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(StellarisGamepad, STELLARIS_GAMEPAD)
+ struct StellarisGamepad {
+     SysBusDevice parent_obj;
+ 
++    QemuInputHandlerState *hs;
+     uint32_t num_buttons;
+     qemu_irq *irqs;
+     uint32_t *keycodes;
+diff --git a/hw/input/stellaris_gamepad.c b/hw/input/stellaris_gamepad.c
+index 25769fc2616..376d91abad7 100644
+--- a/hw/input/stellaris_gamepad.c
++++ b/hw/input/stellaris_gamepad.c
+@@ -59,7 +59,16 @@ static void stellaris_gamepad_realize(DeviceState *dev, Error **errp)
+     s->irqs = g_new0(qemu_irq, s->num_buttons);
+     s->pressed = g_new0(uint8_t, s->num_buttons);
+     qdev_init_gpio_out(dev, s->irqs, s->num_buttons);
+-    qemu_input_handler_register(dev, &stellaris_gamepad_handler);
++    s->hs = qemu_input_handler_register(dev, &stellaris_gamepad_handler);
 +}
 +
-+static void nextkbd_unrealize(DeviceState *dev)
++static void stellaris_gamepad_unrealize(DeviceState *dev)
 +{
-+    NextKBDState *s = NEXTKBD(dev);
++    StellarisGamepad *s = STELLARIS_GAMEPAD(dev);
 +
++    g_clear_pointer(&s->irqs, g_free);
++    g_clear_pointer(&s->pressed, g_free);
 +    g_clear_pointer(&s->hs, qemu_input_handler_unregister);
  }
  
- static const VMStateDescription nextkbd_vmstate = {
-@@ -319,6 +327,7 @@ static void nextkbd_class_init(ObjectClass *oc, const void *data)
-     set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
-     dc->vmsd = &nextkbd_vmstate;
-     dc->realize = nextkbd_realize;
-+    dc->unrealize = nextkbd_unrealize;
-     device_class_set_legacy_reset(dc, nextkbd_reset);
- }
+ static void stellaris_gamepad_reset_enter(Object *obj, ResetType type)
+@@ -81,6 +90,7 @@ static void stellaris_gamepad_class_init(ObjectClass *klass, const void *data)
  
+     rc->phases.enter = stellaris_gamepad_reset_enter;
+     dc->realize = stellaris_gamepad_realize;
++    dc->unrealize = stellaris_gamepad_unrealize;
+     dc->vmsd = &vmstate_stellaris_gamepad;
+     device_class_set_props(dc, stellaris_gamepad_properties);
+ }
 
 -- 
 2.54.0

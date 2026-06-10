@@ -4,100 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06C5DCD98C5
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 21:01:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5341CD98C7
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 21:04:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXQ2t-0007Bm-1t; Wed, 10 Jun 2026 17:01:07 -0400
+	id 1wXQ5r-000831-VQ; Wed, 10 Jun 2026 17:04:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXQ2r-0007Ad-2d
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 17:01:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXQ5q-00081J-KE
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 17:04:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXQ2n-0000wh-MC
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 17:01:04 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXQ5o-0001Y9-QM
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 17:04:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781125259;
+ s=mimecast20190719; t=1781125446;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=7kffMNPo7Vcq5I9EW/XMk0pRt0sVo3NtWbpiMoqnqpY=;
- b=Zqqeua37DnFAp1knAc5Bzomj60DNn6ZPrw3jmaALvqd3BBqTfuTKitfCAT/EXHy/ht8wL0
- tybKLwkjoByXXIXGjrq9uxo9K3LmV2lqD7zVuw4IhMB0h71hOBFneB+gp9q7EZoP7ORv8v
- 0ysan327H0mOrjS5Av427VNj1hyevV8=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=8EBlXT8ZT3cbqCRoXecK6CqTgg9SqaxiG6QyZjxjFC4=;
+ b=YVXLie9+O7ZRmR3Cm1DtnUC2W4VOJ098yCv4LNzwA/OyCaTZrS8LBIO2WvrA5ANExrfYL+
+ 8wCyJpjfahDGYVQPBdSraxTdZ2IMfRVdTeS5N6z+qUBqDdCCp8DiiVWM3EQBH0Pxuz7Mv6
+ 47xYb3wL0kDbrFOnTo17j9kff+Zh5Do=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-151-bFOvWZ9RMsylbmHzX6qM3g-1; Wed, 10 Jun 2026 17:00:57 -0400
-X-MC-Unique: bFOvWZ9RMsylbmHzX6qM3g-1
-X-Mimecast-MFC-AGG-ID: bFOvWZ9RMsylbmHzX6qM3g_1781125257
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-490b93debc8so58205315e9.1
- for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 14:00:57 -0700 (PDT)
+ us-mta-582-d4Gi0M1-O8OqW0R6zihfcg-1; Wed, 10 Jun 2026 17:04:05 -0400
+X-MC-Unique: d4Gi0M1-O8OqW0R6zihfcg-1
+X-Mimecast-MFC-AGG-ID: d4Gi0M1-O8OqW0R6zihfcg_1781125443
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-490b8adf8b8so65043365e9.0
+ for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 14:04:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781125257; x=1781730057;
+ d=1e100.net; s=20251104; t=1781125443; x=1781730243;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7kffMNPo7Vcq5I9EW/XMk0pRt0sVo3NtWbpiMoqnqpY=;
- b=I1csMqdoZuD0B5QYdfoOjj/M9zd6H69L8v4cOe/CclN1LnvMjXHNhHwgDbuEtDGaNP
- Klzmn+3TcDU98gCMzWhBEkbRBNk0X3ktih/TQMfEBbDp7XxcJu9gFB8Xxn+YIyMp7Bma
- eni7SjJKCdE/gfh0rpOZCfEk6u5PcJPSQ3FmaRNZ2QDSrvfe3O4BGMe1Rer0Wib9c87O
- SON80VN/ZDofOF/mCKDhVHwCPvJ/kdWNoJMWc/V7EXZEoA8SUxYBR20ApPK4Spr2jQCw
- ChCVLcKn8xf8F1BYXOQDOzWQZVrIBBzNNEY55cc2PwKkKU6LZQHbvCxlK3MuYaPmk/IL
- Diqw==
+ bh=8EBlXT8ZT3cbqCRoXecK6CqTgg9SqaxiG6QyZjxjFC4=;
+ b=nn8gAWdQZEXQDj0IUW12CNab5lk/gyX7aY0Esu1dUa6snPG6epl3jWjSJsVDWQEECO
+ KZfxZoAHDQAbrjTiw2B1bZ9jSinozye16htVXgmc7NNZbpAtM63J8VdlROFsjtZJLV0u
+ 8SAU+vUCTXVRLHZEgw01P6OfEQzcrCIyjANEU8HNUQSZ5a8Y9qK8mzH7fccWAGOm7z7w
+ CQy0nJ8kG7YueQjUrSwYyD3ihHgs12IKM1WOwy8SFhPZsEvpxUYFOCNdv0spYy5QvGEH
+ 9CPX1nKHwiW3H2A1g1uzDLYxza6V1AnMRmWvns+YpCkHrM70+GvtZv8vqhOFq154RtzG
+ 0Qlw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+cLhR26bIAtzir9PMsx8FMJN6BXlWf+hMN+zerfFVx9/aWfob1MMynOHSVAirmdZJEIITibn1s/A==@nongnu.org
-X-Gm-Message-State: AOJu0YyNvXMytmY3FwJb3qOxxqi3yh51vJLYUy8TKDA/LmTPQpm35mUJ
- RZMDv89FqO0AO1OV2NOKitF07Md/rdjVl0J5GWreGjmKQjoBd+UEryzLcE4O4qPQIqMMSeUFedW
- Bqf8cN/B3LzNKCBN1IAbVfxTRQ3Ey9K39kA51RPu7o8527r4SEuyHxw==
-X-Gm-Gg: Acq92OE6dy+16iZTIyM8aZS+ivJbl39f5OyAgRqsn/u30LyFWboQMKSPo/Y/ryDDAF4
- GTO2QvN4B87nmE7yt3/ABQKh8jiax1z4gvrx38au9Gv3r5XBguEhsdAyiwUf2FTnVy631h/3uDi
- wwMelMLklrPQktLzs9r+vpwg7cX2VJO8n9mDG1TF5xcRP+SRqQt9KTMBkJ1ldx/GMGlnA1zKQfU
- 9JB5qqbNUwLhnDerymOsiDVKpZWsZEBFS3IFJOn68StwyjBWGLk2A1+zqh/sgGOUBcma2K+I8C9
- i+4GFZIL6A5B4hncMHoloi7eVu+VjjknlmFAdkTQ3HkhH8dj1ZwWtWuzKKMUqb5E05fAXL5TYzK
- o6PkQ1UuavQefAOWg4XQCujyEHHpRmRkccUEp8WFrvrTXCFFrVEhHWQ==
-X-Received: by 2002:a05:600c:4744:b0:490:e342:127 with SMTP id
- 5b1f17b1804b1-490e342106amr4616745e9.34.1781125256563; 
- Wed, 10 Jun 2026 14:00:56 -0700 (PDT)
-X-Received: by 2002:a05:600c:4744:b0:490:e342:127 with SMTP id
- 5b1f17b1804b1-490e342106amr4616465e9.34.1781125256043; 
- Wed, 10 Jun 2026 14:00:56 -0700 (PDT)
+ AFNElJ8XPCEJvh5oUJ5oaIucIPnQUR6RkU6PVrjuunuum8mB1tUxEFH/HVr0bo7xGEyZ0U0nTlv1cLdTug==@nongnu.org
+X-Gm-Message-State: AOJu0YxjVsKolaqhWCqlHvyaTYj7iLThbL+VgW/vvS0WVFV25h6PKYZ4
+ ZT+hV9soyQ2OskvosvmarimnB6H5pVvQ2rWA5dEjM6IGASiv3RlSDeQJsWEKNP7W//OhWckgjnE
+ VyLGNiqYmH+ccF2z6Cr1uO8jZuQUWRWIRJdT0bSgvMy72haXfC5Jbuc6/jDa6Tw==
+X-Gm-Gg: Acq92OHRZvBrzzJIOgUpEAaJ6L7U2eLeyTQ9cIVUc3JIasskqd7NyKRO6FehZGdbye7
+ BOPV3c0REMBPC7VCWFNrr32pkUhSSz0Yt/ZNbmN1L8MNUmfFhQNAenr/Wc27OPgt9OoIB/kOFcb
+ +QQpB9mBNqPGVrTxhNKKZ4BbzR0AEyi7sCnTyfK+q1n5y+N5Y6/1Dok7+pM5rF2qAyzY9Ncxlek
+ kChg0fadHlQ0B8U8OhxEyKhS323P9mZ3HQCc9wElWPJa7ezjhEvt8eFdoi6XGvYd+533Um8ssnZ
+ t7hGi+9uVBCfN35GqRg9C+g05I2W6dzUcQwi9LX0xkvK8yy3047mL6qAvv5NO09Kl/s2X+dpUr7
+ rgY+cVpUf4QnJkSk9/2xNmfy4gEWChIjct4JgYO2HGbO1Vi+4oXTDBw==
+X-Received: by 2002:a05:600c:35d4:b0:490:b8d3:5dcc with SMTP id
+ 5b1f17b1804b1-490c25e4634mr452192575e9.19.1781125443034; 
+ Wed, 10 Jun 2026 14:04:03 -0700 (PDT)
+X-Received: by 2002:a05:600c:35d4:b0:490:b8d3:5dcc with SMTP id
+ 5b1f17b1804b1-490c25e4634mr452192185e9.19.1781125442520; 
+ Wed, 10 Jun 2026 14:04:02 -0700 (PDT)
 Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-490e2d09a85sm10877425e9.14.2026.06.10.14.00.54
+ 5b1f17b1804b1-490e2c84110sm13393955e9.4.2026.06.10.14.04.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Jun 2026 14:00:55 -0700 (PDT)
-Date: Wed, 10 Jun 2026 17:00:51 -0400
+ Wed, 10 Jun 2026 14:04:02 -0700 (PDT)
+Date: Wed, 10 Jun 2026 17:03:59 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: Gavin Shan <gshan@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, jugraham@redhat.com, shan.gavin@gmail.com,
- qemu-block@nongnu.org
+To: Peter Xu <peterx@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Gavin Shan <gshan@redhat.com>,
+ Pavel Hrdina <phrdina@redhat.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, jugraham@redhat.com,
+ shan.gavin@gmail.com, Alex Williamson <alex@shazbot.org>,
+ David Hildenbrand <david@kernel.org>
 Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
  parent if possible
-Message-ID: <20260610165710-mutt-send-email-mst@kernel.org>
-References: <20260608001821.850921-1-gshan@redhat.com>
- <20260610041036-mutt-send-email-mst@kernel.org>
- <20260610183046.GB121666@fedora>
+Message-ID: <20260610170146-mutt-send-email-mst@kernel.org>
+References: <20260610080947-mutt-send-email-mst@kernel.org>
+ <eb0f0da1-11dd-4437-94fd-a65af55851e1@redhat.com>
+ <20260610082637-mutt-send-email-mst@kernel.org>
+ <5d8cbd4b-3725-437e-88a3-e0af32164815@redhat.com>
+ <e7cc9f2d-ccb4-442f-a1ed-7c5474395099@redhat.com>
+ <20260610095712-mutt-send-email-mst@kernel.org>
+ <aimEl9QQ_LTRPLtd@x1.local>
+ <CAFEAcA8HhC-=KwdbNE5jgqdP+H1VF1aJXdGaME8KsaDHhnBG9Q@mail.gmail.com>
+ <20260610121846-mutt-send-email-mst@kernel.org>
+ <aim2tpHiev3iOkDE@x1.local>
 MIME-Version: 1.0
-In-Reply-To: <20260610183046.GB121666@fedora>
+In-Reply-To: <aim2tpHiev3iOkDE@x1.local>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: LoOpf_zhydL1rW4HRQa0e271vOaJC-EdtGCMYuliN-A_1781125257
+X-Mimecast-MFC-PROC-ID: DOjOe_svFG8nKqaOdJe1zPEmU7vbAhW5CGZ3w99Db-w_1781125443
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,154 +123,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Jun 10, 2026 at 02:30:46PM -0400, Stefan Hajnoczi wrote:
-> On Wed, Jun 10, 2026 at 05:49:21AM -0400, Michael S. Tsirkin wrote:
-> > On Mon, Jun 08, 2026 at 10:18:21AM +1000, Gavin Shan wrote:
-> > > On the guest where a NVidia's GH100 card is passed from the host, the
-> > > guest system hang can be observed on attempt to compile 'cuda-samples',
-> > > as reported by Julia.
+On Wed, Jun 10, 2026 at 03:10:46PM -0400, Peter Xu wrote:
+> On Wed, Jun 10, 2026 at 12:19:39PM -0400, Michael S. Tsirkin wrote:
+> > On Wed, Jun 10, 2026 at 05:11:40PM +0100, Peter Maydell wrote:
+> > > On Wed, 10 Jun 2026 at 16:37, Peter Xu <peterx@redhat.com> wrote:
+> > > >
+> > > > On Wed, Jun 10, 2026 at 10:06:24AM -0400, Michael S. Tsirkin wrote:
+> > > > > This is the change that broke it I think?
+> > > > >
+> > > > >
+> > > > > commit 4a2e242bbb306ef5c16ce9e7bb2da3bd8a4eb098
+> > > > > Author: Alex Williamson <alex@shazbot.org>
+> > > > > Date:   Mon Oct 31 09:53:03 2016 -0600
+> > > > >
+> > > > >     memory: Don't use memcpy for ram_device regions
+> > > > >
+> > > > >
+> > > > > Maybe Alex has an opinion on what to do.
+> > > >
+> > > > I can offer one idea here..
+> > > >
+> > > > IIUC the major issue was vector ops but the mr ops might be too heavy, then
+> > > > another way to fix it is in memory API instead of using memcpy()/memmove(),
+> > > > we always use a helper (say, memmove_no_vector()) to do the split and
+> > > > properly aligned IOs as what ram_device_mem_ops does right now, this should
+> > > > only applies to ram_device.
 > > > 
-> > >    host$ lspci | grep GH100
-> > >    0009:01:00.0 3D controller: NVIDIA Corporation GH100 [GH200 120GB / 480GB] (rev a1)
-> > >    host$ /home/sandbox/gavin/qemu.main/build/qemu-system-aarch64 -accel kvm \
-> > >          -machine virt,gic-version=host,ras=on,highmem-mmio-size=4T         \
-> > >          -cpu host -smp cpus=32 -m size=8G                                  \
-> > >          -drive file=/home/gavin/sandbox/images/disk.qcow2,if=none,id=d0    \
-> > >          -device virtio-blk-pci,id=vb0,bus=pcie.0,drive=d0,num-queues=4     \
-> > >          -device vfio-pci-nohotplug,host=0009:01:00.0,bus=pcie.1.0
-> > > 
-> > >    guest$ cd cuda-samples/build
-> > >    guest$ make -j 20 clean
-> > >    guest$ make -j 20
-> > >                :
-> > >    [ 54%] Linking CUDA executable graphMemoryNodes
-> > >    [ 54%] Built target graphMemoryNodes
-> > >    <no more output afterwards, guest becomes frozen here>
-> > > 
-> > >    guest$ qemu-system-aarch64: virtio: bogus descriptor or out of resources
-> > >    [  555.814025] virtio_blk virtio0: [vda] new size: 268435456 512-byte logical blocks (137 GB/128 GiB)
-> > > 
-> > > When the GPU's driver (NVidia open driver) is loaded on guest bootup,
-> > > the memory blocks residing in the PCI BAR can be presented to the guest
-> > > through memory hot-add. The page cache can be allocated from the hot added
-> > > memory blocks when cuda-samples is being built. Afterwards, he page cache
-> > > is sent to QEMU's virtio-blk device as part of the DMA request, the bounce
-> > > buffer is used to accomodate the request as the corresponding memory
-> > > region (MemoryRegion) is a RAM DEVICE region in qemu. For this specific
-> > > case, false is returned from memory_access_is_direct() in the path where
-> > > the DMA request is handled.
-> > > 
-> > >   QEMU
-> > >   ====
-> > >   virtio_blk_handle_output
-> > >     virtio_blk_handle_vq
-> > >       virtio_blk_get_request
-> > >         virtqueue_pop
-> > >           virtqueue_split_pop
-> > >             virtqueue_map_desc
-> > >               address_space_map
-> > >                 memory_access_is_direct         # Return false
-> > >                   memory_region_supports_direct_access
-> > > 
-> > >   (qemu) info mtree
-> > >           :
-> > >   memory-region: pci_bridge_pci
-> > >     0000000000000000-ffffffffffffffff (prio 0, container): pci_bridge_pci
-> > >       0000042000000000-0000043fffffffff (prio 1, i/o): 0009:01:00.0 base BAR 4
-> > >         0000042000000000-0000043fffffffff (prio 0, i/o): 0009:01:00.0 BAR 4
-> > >           0000042000000000-000004379fffffff (prio 0, ramd): 0009:01:00.0 BAR 4 mmaps[0]
-> > > 
-> > > By default, the max bounce buffer size is only 4096 bytes, even less
-> > > than one page when the guest page is 64KB. This tries to fix the issue
-> > > by inheriting the customized max bounce buffer size of the virtio bus's
-> > > parent through property 'x-max-bounce-buffer-size' when the customized
-> > > size is a larger one. With this applied, no guest system hang is seen
-> > > with '-device virtio-blk-pci,...,x-max-bounce-buffer-size=268435456'.
-> > > 
-> > > Reported-by: Julia Graham <jugraham@redhat.com>
-> > > Signed-off-by: Gavin Shan <gshan@redhat.com>
-> > > ---
-> > >  hw/virtio/virtio-bus.c | 14 ++++++++++++++
-> > >  1 file changed, 14 insertions(+)
-> > > 
-> > > diff --git a/hw/virtio/virtio-bus.c b/hw/virtio/virtio-bus.c
-> > > index cef944e015..e0933823f3 100644
-> > > --- a/hw/virtio/virtio-bus.c
-> > > +++ b/hw/virtio/virtio-bus.c
-> > > @@ -42,6 +42,7 @@ do { printf("virtio_bus: " fmt , ## __VA_ARGS__); } while (0)
-> > >  /* A VirtIODevice is being plugged */
-> > >  void virtio_bus_device_plugged(VirtIODevice *vdev, Error **errp)
-> > >  {
-> > > +    AddressSpace *as;
-> > >      DeviceState *qdev = DEVICE(vdev);
-> > >      BusState *qbus = BUS(qdev_get_parent_bus(qdev));
-> > >      VirtioBusState *bus = VIRTIO_BUS(qbus);
-> > > @@ -100,6 +101,19 @@ void virtio_bus_device_plugged(VirtIODevice *vdev, Error **errp)
-> > >                  return;
-> > >              }
-> > >          }
-> > > +    } else {
-> > > +        /*
-> > > +         * The maximal bounce buffer size of the virtio bus's parent may
-> > > +         * have been customized by property 'x-max-bounce-buffer-size'.
-> > > +         * Lets inherit the customized size if it's larger than the
-> > > +         * current one.
-> > > +         */
-> > > +        as = klass->get_dma_as ? klass->get_dma_as(qbus->parent) : NULL;
-> > > +        if (as) {
-> > > +            vdev->dma_as->max_bounce_buffer_size = MAX(
-> > > +                    vdev->dma_as->max_bounce_buffer_size,
-> > > +                    as->max_bounce_buffer_size);
-> > > +        }
-> > >      }
-> > >  }
-> > >  
-> > > -- 
-> > > 2.54.0
-> > 
-> > 
-> > Problem with all this is, users would not know how to size this.
-> > 
-> > So fundamentally, is not the issue that virtio blk (and scsi!) maps
-> > all of the buffer all the time?
-> >
-> > It's not hard to add something like virtio_pop_unmapped that would not map,
-> > then build QEMUSGLists out of addr/len pairs and submit these.
-> > 
-> > Stefan, do you think doing it like this would be bad for perf? Good for
-> > perf?
+> > > If the underlying memory needs to be accessed only with specific
+> > > alignment/size, as the 4a2e242bbb30 commit message suggests, then
+> > > we cannot expose it via address_space_map(), so we must have
+> > > a bounce-buffer.
 > 
-> I'd like to first make sure that the BAR really cannot be mmapped.
-
-The issue is that qemu has no way to know, up front.
-
-What we could thinkably do, is map it and do the
-accesses from QEMU through the bounce buffer, while
-DMA through mmap.
-
-
-> A bounce buffer is necessary when QEMU has no way of mmapping the memory
-> (e.g. it needs to invoke a device model's callback to read/write the
-> MemoryRegion).
+> I get the point; this is technically a concern, but IMHO it's still
+> slightly different, and I expect it non-issue in reality.
 > 
-> The reason why the bounce buffer size is low is because it's normally
-> only used on emulated machines where MMIO registers or similar small
-> MemoryRegions are accessed by DMA. If we ran into this on modern
-> machines there would also be other consequences like vhost devices would
-> be unable to access that memory since it cannot be shared/mmapped.
+> Essentially we can have two ways to iteract with the pci bar:
 > 
-> This is why I think we need to understand why this BAR is a RAM DEVICE.
-
-
-VFIO maps all memory BARS like this.
-
-> If it can support mmap then this issue, plus anything else like vhost,
-> would work.
+> 1) via vCPU / CPU access
+> 2) via DMA targets
 > 
-> Gavin, can you share the output of `lspci -vv -s 0009:01:00.0`?
+> Alex can correct me, but IIUC that problem was when the CPU accesses the
+> mapped region with memcpy(), rather than making that bar to be DMA target.
+> Hence, use case 1) only.  So my current understanding is the proposal
+> shouldn't (hopefully..) regress that realtek problem because use case 1) is
+> properly covered.
+> 
+> I always think it is very bogus to have any register-like MMIO regions to
+> be passed over, maybe it's a bug already?  It's because I don't know any
+> way to guarantee DMA performs in a way that will be compatible with a pci
+> bar that is register-based and will not have any side effect.  Say, if some
+> pci bar (real register-backed) must be accessed in 4B and aligned, how
+> would a DMA request guarantee that?
+> 
+> >From that perspective, IMHO it's a guest (driver or app, I'm not sure..)
+> bug to make such region to be DMA target in the first place.  The outcome
+> of such setup should be undefined.  It'll be the same after applying the
+> proposal I raised, that QEMU will have undefined behavior for such pci bars
+> to be used as DMA targets.
 > 
 > Thanks,
-> Stefan
+
+Sorry, wasting gibabytes and GB/s of main
+RAM and PCI BW just to shuffle data back out the PCI bus
+is out of the question.
+
+You don't have to like it)
+
+> > 
+> > Right. And virtio currently isn't friendly to the bounce buffer.
+> > We can fix that but I worry about the perf impact.
+> > 
+> > > The address_space_map() function says
+> > > "here's a host pointer to  memory, do what you like to it", and
+> > > the caller is entitled to memcpy to/from it or otherwise
+> > > access it with any C operations, which are not guaranteed to
+> > > respect any kind of alignment or similar restrictions.
+> > > 
+> > > My guess from commit 4a2e242bbb30 is that that applied an
+> > > overly broad "don't do direct access" hammer to all
+> > > vfio assigned devices, and that there needs to be some
+> > > concept of "this vfio assigned device's region is OK for
+> > > direct access" vs "this other one is not", such that if
+> > > this GH100 card's BAR guarantees it can be treated entirely
+> > > as RAM then we can have memory_region_supports_direct_access()
+> > > return true for it.
+> > > 
+> > > thanks
+> > > -- PMM
+> > 
+> 
+> -- 
+> Peter Xu
 
 
 

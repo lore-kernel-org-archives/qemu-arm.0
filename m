@@ -4,77 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BB86CD98CE
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 14:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0D1DCD98CC
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 14:37:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXgGo-0001tZ-RV; Thu, 11 Jun 2026 10:20:34 -0400
+	id 1wXgWg-0006AD-NR; Thu, 11 Jun 2026 10:36:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1wXgGn-0001sg-87
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 10:20:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1wXgGl-0001Qq-6P
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 10:20:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781187629;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=GQHo+rT01YfKXX4j65wrxdRY6HLK5teuJ5PHFmWxRcI=;
- b=TYYdzE2XCOow6Tfy/DV8vQFRM9zXAo4hSt8Rn9c3Uh4Cxg/y2bKsOxmiVfxo/2rXCjB75+
- oHWVSarskb/jePZrOvXfswdujtGpcX2ocdJxfYs/04bl/CLDDn737er5eA37hberfbObsW
- A7QDqwKK/TeTn5LG9EDU9jsmzrPXLlM=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-248-hNMQPZ21PJa-f56v1QOy2A-1; Thu,
- 11 Jun 2026 10:20:27 -0400
-X-MC-Unique: hNMQPZ21PJa-f56v1QOy2A-1
-X-Mimecast-MFC-AGG-ID: hNMQPZ21PJa-f56v1QOy2A_1781187625
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1wXgWf-00069j-BU
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 10:36:57 -0400
+Received: from smtp-out2.suse.de ([195.135.223.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1wXgWd-0002rI-9p
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 10:36:57 -0400
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B589719774F0; Thu, 11 Jun 2026 14:20:24 +0000 (UTC)
-Received: from localhost (unknown [10.2.16.171])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D416519540C5; Thu, 11 Jun 2026 14:20:23 +0000 (UTC)
-Date: Thu, 11 Jun 2026 10:20:22 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Gavin Shan <gshan@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, jugraham@redhat.com, shan.gavin@gmail.com,
- qemu-block@nongnu.org
-Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
- parent if possible
-Message-ID: <20260611142022.GA202155@fedora>
-References: <20260608001821.850921-1-gshan@redhat.com>
- <20260610041036-mutt-send-email-mst@kernel.org>
- <20260610183046.GB121666@fedora>
- <20260610165710-mutt-send-email-mst@kernel.org>
+ by smtp-out2.suse.de (Postfix) with ESMTPS id 4A5C175DD3;
+ Thu, 11 Jun 2026 14:36:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1781188613; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=98e91pVuWmQXgXSR9efovE49gh5elHJ4VtQUj2ALPSc=;
+ b=gSoYlhi4gmGdRBN4cf4VUternMd3qMvvOH9ATldmJOJV6GIbWKSTViY63MY8QMgV93njL9
+ s1O0ZDDfxVs9qEYGL72lZaQPHbFW0b4Z4Ny9XS0LrrBb9RCiwDYqevENTpA6ftwi35ocfP
+ ADU1gSkGPWjUgzUl9NMY6LqgJan2vQs=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1781188613;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=98e91pVuWmQXgXSR9efovE49gh5elHJ4VtQUj2ALPSc=;
+ b=J46yJcOxKRRWmTeVDhPyC1+Y5w2XoVHQeQIw31Gugs8iQrXxF5q9etI+tFV5gFymxU0JOp
+ 6mvlc0m1rUPn9bCA==
+Authentication-Results: smtp-out2.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1781188613; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=98e91pVuWmQXgXSR9efovE49gh5elHJ4VtQUj2ALPSc=;
+ b=gSoYlhi4gmGdRBN4cf4VUternMd3qMvvOH9ATldmJOJV6GIbWKSTViY63MY8QMgV93njL9
+ s1O0ZDDfxVs9qEYGL72lZaQPHbFW0b4Z4Ny9XS0LrrBb9RCiwDYqevENTpA6ftwi35ocfP
+ ADU1gSkGPWjUgzUl9NMY6LqgJan2vQs=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1781188613;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=98e91pVuWmQXgXSR9efovE49gh5elHJ4VtQUj2ALPSc=;
+ b=J46yJcOxKRRWmTeVDhPyC1+Y5w2XoVHQeQIw31Gugs8iQrXxF5q9etI+tFV5gFymxU0JOp
+ 6mvlc0m1rUPn9bCA==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id BA9E2779A7;
+ Thu, 11 Jun 2026 14:36:52 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id zEH4IATIKmqYWAAAD6G6ig
+ (envelope-from <farosas@suse.de>); Thu, 11 Jun 2026 14:36:52 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, Peter Xu
+ <peterx@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, =?utf-8?Q?C=C3=A9dric?= Le
+ Goater <clg@redhat.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@mailo.com>, Vladimir
+ Sementsov-Ogievskiy <vsementsov@yandex-team.ru>, Peter Maydell
+ <peter.maydell@linaro.org>, "Dr . David Alan Gilbert" <dave@treblig.org>,
+ Eric Blake <eblake@redhat.com>, Akihiko Odaki
+ <odaki@rsg.ci.i.u-tokyo.ac.jp>, Paolo Bonzini <pbonzini@redhat.com>, Kevin
+ Wolf <kwolf@redhat.com>, Sana Sharma <sansshar@redhat.com>, =?utf-8?Q?Mar?=
+ =?utf-8?Q?c-Andr=C3=A9?=
+ Lureau <marcandre.lureau@redhat.com>, Juraj Marcin <jmarcin@redhat.com>,
+ qemu-rust@nongnu.org, Markus Armbruster <armbru@redhat.com>, Mark
+ Cave-Ayland <mark.caveayland@nutanix.com>
+Subject: Re: [PATCH v2 05/10] qom: Create object-property-ptr.[ch]
+In-Reply-To: <aiq9g60bOnvsOQOy@redhat.com>
+References: <20260609172514.2037645-1-peterx@redhat.com>
+ <20260609172514.2037645-6-peterx@redhat.com> <aimNv51iMZ_yEgDG@redhat.com>
+ <aimvTYDsv_-Xsboy@x1.local> <aiq9g60bOnvsOQOy@redhat.com>
+Date: Thu, 11 Jun 2026 11:36:46 -0300
+Message-ID: <87h5n94001.fsf@suse.de>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="bYfBcHUMCTLwmhob"
-Content-Disposition: inline
-In-Reply-To: <20260610165710-mutt-send-email-mst@kernel.org>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Spamd-Result: default: False [-4.30 / 50.00]; BAYES_HAM(-3.00)[100.00%];
+ NEURAL_HAM_LONG(-1.00)[-1.000];
+ NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
+ ARC_NA(0.00)[]; MISSING_XM_UA(0.00)[]; RCVD_TLS_ALL(0.00)[];
+ MIME_TRACE(0.00)[0:+]; RCVD_VIA_SMTP_AUTH(0.00)[];
+ RCPT_COUNT_TWELVE(0.00)[19];
+ FUZZY_RATELIMITED(0.00)[rspamd.com];
+ MID_RHS_MATCH_FROM(0.00)[];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ FROM_HAS_DN(0.00)[]; TO_DN_SOME(0.00)[];
+ FROM_EQ_ENVFROM(0.00)[]; TO_MATCH_ENVRCPT_ALL(0.00)[];
+ RCVD_COUNT_TWO(0.00)[2];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo, gnu.org:url,
+ suse.de:mid]
+Received-SPF: pass client-ip=195.135.223.131; envelope-from=farosas@suse.de;
+ helo=smtp-out2.suse.de
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,223 +134,166 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
 
---bYfBcHUMCTLwmhob
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> On Wed, Jun 10, 2026 at 02:39:09PM -0400, Peter Xu wrote:
+>> On Wed, Jun 10, 2026 at 05:15:59PM +0100, Daniel P. Berrang=C3=A9 wrote:
+>> > On Tue, Jun 09, 2026 at 01:25:09PM -0400, Peter Xu wrote:
+>> > > Create object-property-ptr.[ch] files to include all the helpers for
+>> > > object_property_add*_ptr().
+>> > >=20
+>> > > These set of helpers are handy because they look extremely familiar =
+with
+>> > > qdev-properties, allowing the caller to provide a pointer and it will
+>> > > manage all the setters and getters.
+>> > >=20
+>> > > The follow up patches may introduce more of such helpers.  Since obj=
+ect.c
+>> > > has been already too big, split that part out.
+>> >=20
+>> > The "ptr" helpers are all instance level properties which is a concept
+>> > we discourage from new usage, in favour of class level properties.
+>> >=20
+>> > I don't think we should be adding more "ptr" helpers, but rather
+>> > planning to eliminiate the (surprisingly little) usage of the
+>> > existing ones.
+>>=20
+>> The other way to do similar thing is qdev's offset way, but IMHO that's
+>> more awkward to remember an offset of a pointer then do math everytime.
+>> Essentially, from technical pov we need at least one uintptr_t to store
+>> either (1) offset, or (2) field pointer when there's a field that is bou=
+nd
+>> to a prop.  IMHO (2) can be better otherwise we'll need to do all the ma=
+ths
+>> to calculate offsets then when access we add the offset back and do a fo=
+rce
+>> cast.  It seems not necessary.
+>
+> There shouldn't be any need to play with field offsets either. Just
+> define the setters & getters to directly access the fields.
+>
+> Take some samples from the "machine_class_init" in hw/core/machine.c
+> as an example of the normal design pattern:
+>
+>     object_class_property_add_str(oc, "dumpdtb",
+>         machine_get_dumpdtb, machine_set_dumpdtb);
+>     object_class_property_set_description(oc, "dumpdtb",
+>         "Dump current dtb to a file and quit");
+>
+>    ..snip..
+>
+>     object_class_property_add_bool(oc, "dump-guest-core",
+>         machine_get_dump_guest_core, machine_set_dump_guest_core);
+>     object_class_property_set_description(oc, "dump-guest-core",
+>         "Include guest memory in a core dump");
+>
+> These are paired with:
+>
+>   static char *machine_get_dumpdtb(Object *obj, Error **errp)
+>   {
+>       MachineState *ms =3D MACHINE(obj);
+>
+>       return g_strdup(ms->dumpdtb);
+>   }
+>
+>   static void machine_set_dumpdtb(Object *obj, const char *value, Error *=
+*errp)
+>   {
+>       MachineState *ms =3D MACHINE(obj);
+>
+>       g_free(ms->dumpdtb);
+>       ms->dumpdtb =3D g_strdup(value);
+>   }
+>
+> and
+>
+>   static bool machine_get_dump_guest_core(Object *obj, Error **errp)
+>   {
+>       MachineState *ms =3D MACHINE(obj);
+>
+>       return ms->dump_guest_core;
+>   }
+>
+>   static void machine_set_dump_guest_core(Object *obj, bool value, Error =
+**errp)
+>   {
+>       MachineState *ms =3D MACHINE(obj);
+>
+>       if (!value && QEMU_MADV_DONTDUMP =3D=3D QEMU_MADV_INVALID) {
+>           error_setg(errp, "Dumping guest memory cannot be disabled on th=
+is host");
+>           return;
+>       }
+>       ms->dump_guest_core =3D value;
+>   }
+>
+>
+> and defaults (if needed) are set in  the instance init method:
+>
+>   static void machine_initfn(Object *obj)
+>   {
+>       MachineState *ms =3D MACHINE(obj);
+>       MachineClass *mc =3D MACHINE_GET_CLASS(obj);
+>
+>       ms->dump_guest_core =3D true;
+>       ms->mem_merge =3D (QEMU_MADV_MERGEABLE !=3D QEMU_MADV_INVALID);
+>       ...
+>   }
+>
 
-On Wed, Jun 10, 2026 at 05:00:51PM -0400, Michael S. Tsirkin wrote:
-> On Wed, Jun 10, 2026 at 02:30:46PM -0400, Stefan Hajnoczi wrote:
-> > On Wed, Jun 10, 2026 at 05:49:21AM -0400, Michael S. Tsirkin wrote:
-> > > On Mon, Jun 08, 2026 at 10:18:21AM +1000, Gavin Shan wrote:
-> > > > On the guest where a NVidia's GH100 card is passed from the host, t=
-he
-> > > > guest system hang can be observed on attempt to compile 'cuda-sampl=
-es',
-> > > > as reported by Julia.
-> > > >=20
-> > > >    host$ lspci | grep GH100
-> > > >    0009:01:00.0 3D controller: NVIDIA Corporation GH100 [GH200 120G=
-B / 480GB] (rev a1)
-> > > >    host$ /home/sandbox/gavin/qemu.main/build/qemu-system-aarch64 -a=
-ccel kvm \
-> > > >          -machine virt,gic-version=3Dhost,ras=3Don,highmem-mmio-siz=
-e=3D4T         \
-> > > >          -cpu host -smp cpus=3D32 -m size=3D8G                     =
-             \
-> > > >          -drive file=3D/home/gavin/sandbox/images/disk.qcow2,if=3Dn=
-one,id=3Dd0    \
-> > > >          -device virtio-blk-pci,id=3Dvb0,bus=3Dpcie.0,drive=3Dd0,nu=
-m-queues=3D4     \
-> > > >          -device vfio-pci-nohotplug,host=3D0009:01:00.0,bus=3Dpcie.=
-1.0
-> > > >=20
-> > > >    guest$ cd cuda-samples/build
-> > > >    guest$ make -j 20 clean
-> > > >    guest$ make -j 20
-> > > >                :
-> > > >    [ 54%] Linking CUDA executable graphMemoryNodes
-> > > >    [ 54%] Built target graphMemoryNodes
-> > > >    <no more output afterwards, guest becomes frozen here>
-> > > >=20
-> > > >    guest$ qemu-system-aarch64: virtio: bogus descriptor or out of r=
-esources
-> > > >    [  555.814025] virtio_blk virtio0: [vda] new size: 268435456 512=
--byte logical blocks (137 GB/128 GiB)
-> > > >=20
-> > > > When the GPU's driver (NVidia open driver) is loaded on guest bootu=
-p,
-> > > > the memory blocks residing in the PCI BAR can be presented to the g=
-uest
-> > > > through memory hot-add. The page cache can be allocated from the ho=
-t added
-> > > > memory blocks when cuda-samples is being built. Afterwards, he page=
- cache
-> > > > is sent to QEMU's virtio-blk device as part of the DMA request, the=
- bounce
-> > > > buffer is used to accomodate the request as the corresponding memory
-> > > > region (MemoryRegion) is a RAM DEVICE region in qemu. For this spec=
-ific
-> > > > case, false is returned from memory_access_is_direct() in the path =
-where
-> > > > the DMA request is handled.
-> > > >=20
-> > > >   QEMU
-> > > >   =3D=3D=3D=3D
-> > > >   virtio_blk_handle_output
-> > > >     virtio_blk_handle_vq
-> > > >       virtio_blk_get_request
-> > > >         virtqueue_pop
-> > > >           virtqueue_split_pop
-> > > >             virtqueue_map_desc
-> > > >               address_space_map
-> > > >                 memory_access_is_direct         # Return false
-> > > >                   memory_region_supports_direct_access
-> > > >=20
-> > > >   (qemu) info mtree
-> > > >           :
-> > > >   memory-region: pci_bridge_pci
-> > > >     0000000000000000-ffffffffffffffff (prio 0, container): pci_brid=
-ge_pci
-> > > >       0000042000000000-0000043fffffffff (prio 1, i/o): 0009:01:00.0=
- base BAR 4
-> > > >         0000042000000000-0000043fffffffff (prio 0, i/o): 0009:01:00=
-=2E0 BAR 4
-> > > >           0000042000000000-000004379fffffff (prio 0, ramd): 0009:01=
-:00.0 BAR 4 mmaps[0]
-> > > >=20
-> > > > By default, the max bounce buffer size is only 4096 bytes, even less
-> > > > than one page when the guest page is 64KB. This tries to fix the is=
-sue
-> > > > by inheriting the customized max bounce buffer size of the virtio b=
-us's
-> > > > parent through property 'x-max-bounce-buffer-size' when the customi=
-zed
-> > > > size is a larger one. With this applied, no guest system hang is se=
-en
-> > > > with '-device virtio-blk-pci,...,x-max-bounce-buffer-size=3D2684354=
-56'.
-> > > >=20
-> > > > Reported-by: Julia Graham <jugraham@redhat.com>
-> > > > Signed-off-by: Gavin Shan <gshan@redhat.com>
-> > > > ---
-> > > >  hw/virtio/virtio-bus.c | 14 ++++++++++++++
-> > > >  1 file changed, 14 insertions(+)
-> > > >=20
-> > > > diff --git a/hw/virtio/virtio-bus.c b/hw/virtio/virtio-bus.c
-> > > > index cef944e015..e0933823f3 100644
-> > > > --- a/hw/virtio/virtio-bus.c
-> > > > +++ b/hw/virtio/virtio-bus.c
-> > > > @@ -42,6 +42,7 @@ do { printf("virtio_bus: " fmt , ## __VA_ARGS__);=
- } while (0)
-> > > >  /* A VirtIODevice is being plugged */
-> > > >  void virtio_bus_device_plugged(VirtIODevice *vdev, Error **errp)
-> > > >  {
-> > > > +    AddressSpace *as;
-> > > >      DeviceState *qdev =3D DEVICE(vdev);
-> > > >      BusState *qbus =3D BUS(qdev_get_parent_bus(qdev));
-> > > >      VirtioBusState *bus =3D VIRTIO_BUS(qbus);
-> > > > @@ -100,6 +101,19 @@ void virtio_bus_device_plugged(VirtIODevice *v=
-dev, Error **errp)
-> > > >                  return;
-> > > >              }
-> > > >          }
-> > > > +    } else {
-> > > > +        /*
-> > > > +         * The maximal bounce buffer size of the virtio bus's pare=
-nt may
-> > > > +         * have been customized by property 'x-max-bounce-buffer-s=
-ize'.
-> > > > +         * Lets inherit the customized size if it's larger than the
-> > > > +         * current one.
-> > > > +         */
-> > > > +        as =3D klass->get_dma_as ? klass->get_dma_as(qbus->parent)=
- : NULL;
-> > > > +        if (as) {
-> > > > +            vdev->dma_as->max_bounce_buffer_size =3D MAX(
-> > > > +                    vdev->dma_as->max_bounce_buffer_size,
-> > > > +                    as->max_bounce_buffer_size);
-> > > > +        }
-> > > >      }
-> > > >  }
-> > > > =20
-> > > > --=20
-> > > > 2.54.0
-> > >=20
-> > >=20
-> > > Problem with all this is, users would not know how to size this.
-> > >=20
-> > > So fundamentally, is not the issue that virtio blk (and scsi!) maps
-> > > all of the buffer all the time?
-> > >
-> > > It's not hard to add something like virtio_pop_unmapped that would no=
-t map,
-> > > then build QEMUSGLists out of addr/len pairs and submit these.
-> > >=20
-> > > Stefan, do you think doing it like this would be bad for perf? Good f=
-or
-> > > perf?
-> >=20
-> > I'd like to first make sure that the BAR really cannot be mmapped.
->=20
-> The issue is that qemu has no way to know, up front.
+Thanks for the practical example. In this usage, do you think there
+would be a way to avoid having 53 getters and setters? We often run into
+this issue of the rest of QEMU having just a handful of options and
+migration having a ton. Anything we can do to streamline this would be
+good.
 
-Gavin posted the lspci output:
+>> OTOH, I still see value on non-class instance properties (that sometimes=
+ we
+>> don't even want to have some props avail for the class, but conditional =
+to
+>> some instances when created dynamically).  If that is needed, IMHO it's
+>> fine we still provide per-instance properties.
+>
+> Conditionally registering properties on instances is an anti-pattern
+> IMHO. It results in objects that cannot have all their properties
+> statically introspected.
+>
+> If a class needs different subsets of properties for different
+> scenarios, that is potentially a sign there ought to be a base
+> class and two or more specialized subclasses. Or that the
+> property needs a more explicit "unset" state in addition to
+> its other valid values.
+>
+> For introspection we hack around the use of instance properties
+> by instantiating every object in order to trigger registration of
+> instance props.  This is such a gross hack that it periodically=20
+> suffers crashes from objects not expecting to be instantiated
+> in this context and having undesired side-effects. Class props
+> are the only sane way to reliably provide introspection without
+> side-effects.
+>
+>> Is there any pointer I can read about the discussion previously on this?
+>
+> I don't know that there's a particular thread in recent times
+> that I'd point to, just my ancient series from when I introduced
+> class properties for QOM back in 2015 and started the effort to
+> convert away from instances properties.
+>
+>   https://lists.gnu.org/archive/html/qemu-devel/2015-08/msg03112.html
+>
 
-  Region 0: Memory at 661ffd000000 (64-bit, prefetchable) [size=3D16M]
-  Region 2: Memory at 662000000000 (64-bit, prefetchable) [size=3D128G]
-  Region 4: Memory at 661ffe000000 (64-bit, prefetchable) [size=3D32M]
+Anything we can do to avoid stumbling into this again? Should we add
+some words to object_property_add() discouraging instance properties?
 
-These are prefetchable memory BARs, so I would expect them to be
-mmappable. Why does QEMU have no way of knowing upfront whether they can
-be mmapped?
-
-> What we could thinkably do, is map it and do the
-> accesses from QEMU through the bounce buffer, while
-> DMA through mmap.
->=20
->=20
-> > A bounce buffer is necessary when QEMU has no way of mmapping the memory
-> > (e.g. it needs to invoke a device model's callback to read/write the
-> > MemoryRegion).
-> >=20
-> > The reason why the bounce buffer size is low is because it's normally
-> > only used on emulated machines where MMIO registers or similar small
-> > MemoryRegions are accessed by DMA. If we ran into this on modern
-> > machines there would also be other consequences like vhost devices would
-> > be unable to access that memory since it cannot be shared/mmapped.
-> >=20
-> > This is why I think we need to understand why this BAR is a RAM DEVICE.
->=20
->=20
-> VFIO maps all memory BARS like this.
->=20
-> > If it can support mmap then this issue, plus anything else like vhost,
-> > would work.
-> >=20
-> > Gavin, can you share the output of `lspci -vv -s 0009:01:00.0`?
-> >=20
-> > Thanks,
-> > Stefan
->=20
->=20
-
---bYfBcHUMCTLwmhob
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCgAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmoqxCYACgkQnKSrs4Gr
-c8h11wf/cHM0MtWQ6O1y2Z7uDdZLapdLeFEZkB0kwCZDxvyk9ki4E8j0AEF9h8z8
-AztfqEZzB5qYr/tBMtFps3bjTo930E7PYVMjEVELIIDlOO7zukFuffkMTz9/H9C+
-X6NgRVs29dgxolMkx/7z1P7xHYRqZeYqWzsXf1etKW/HWZzlE5NhE2Sf59Uaf6LS
-C5TfkgrDXS2Cwt0pNoK4tWRzntEla/vRqWtgFt5q1+q81tj6Fy9SEc0k58lQ/GoD
-dVJ4/q/12fozK7Ck0O5675x+cuPqTrQeyYT+7xxo7HBugGdHk8ehHsPUDX+0o97g
-6rRINiY1OEfE0KCaC/yGF1ZgmjK89A==
-=S6E+
------END PGP SIGNATURE-----
-
---bYfBcHUMCTLwmhob--
-
+>
+>
+>>=20
+>> Thanks,
+>>=20
+>> --=20
+>> Peter Xu
+>>=20
+>
+> With regards,
+> Daniel
 

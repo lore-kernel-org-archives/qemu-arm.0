@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C66CD98CE
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 15:57:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0B63CD98CE
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 16:13:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXhmv-0002ge-Dc; Thu, 11 Jun 2026 11:57:49 -0400
+	id 1wXi22-0007wq-29; Thu, 11 Jun 2026 12:13:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXhmt-0002gS-LS
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 11:57:47 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXi20-0007vl-8K
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 12:13:24 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXhmq-0005V7-Tq
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 11:57:47 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXi1y-00026B-0T
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 12:13:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781193463;
+ s=mimecast20190719; t=1781194400;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=0wEonq2dGt1fOHOCL85F50+fzjAb0sZKPZndRoL36SI=;
- b=RFfyUrLy/JByklKcbAMKY2nvdqcjAtzRMmwLFcjRbYD5mZEL2ygt/IdWFs9zlx+nbT/YQJ
- /n5tTN2q6xBx43wiTvy6yqgP0Nqmb530EgAbr7yCIiTQujGkxyJ1u7dgjX045ee7EDkvor
- jSydOoRurO8jZRNJuWjIKu+FYnuJoZs=
+ bh=kf6Sev/w0rBNUJxDj3vhxE/lISnasr7flvFzrUIZvwQ=;
+ b=TNANkiTzh/YJUzS/zt4yH8oQaGHwlyF45mFk9lm1LOMN/iAt+2j1+2+SuOpELxGDg58vZ9
+ 7GwNVCYUp9fLTB1uJE+BMFJ8cwrMp7fu9jWXH+tH5nLqeX1CXCMFj/0hG5NldhoatQV+G2
+ pdC3ntczEo5VVdnzVPATVe0w7gumr+A=
 Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
  [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-194-j0G9G2cVPX6ANc_6xlezGA-1; Thu, 11 Jun 2026 11:57:40 -0400
-X-MC-Unique: j0G9G2cVPX6ANc_6xlezGA-1
-X-Mimecast-MFC-AGG-ID: j0G9G2cVPX6ANc_6xlezGA_1781193459
+ us-mta-396-4nmc2dvgOjKi2Zyxu0NqhQ-1; Thu, 11 Jun 2026 12:13:19 -0400
+X-MC-Unique: 4nmc2dvgOjKi2Zyxu0NqhQ-1
+X-Mimecast-MFC-AGG-ID: 4nmc2dvgOjKi2Zyxu0NqhQ_1781194398
 Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-45ef6417092so6862722f8f.2
- for <qemu-arm@nongnu.org>; Thu, 11 Jun 2026 08:57:40 -0700 (PDT)
+ ffacd0b85a97d-45eef10d5ebso12044f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 11 Jun 2026 09:13:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781193459; x=1781798259;
+ d=1e100.net; s=20251104; t=1781194398; x=1781799198;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=0wEonq2dGt1fOHOCL85F50+fzjAb0sZKPZndRoL36SI=;
- b=RVDaj+s+wqhMULoCPg7dVj+xQpj9i07/7Ewh1Kiy5ZFRzjUA02obsjGf3cE6eFphYg
- Ckf/PvNYe0uBuNHrDjpL33zLGmwJr9GT14Bfhyj3nZZWBWWEyhsKjMp23Zl3i5et237b
- 3yS7PoGfIm+MHtjAlCIQ/n9mJxPpSbxDUx0TcgKlzNoj8N2BEiOM8gHchuCZSy2X4IBg
- WFgxVfa7BHvhQ7cd9OJlnYUNsBofvhgGYvw3f5kJT0RQsy6TKwDwYf20V2kkkS7IyFau
- aVj8hOm2bF3ARVO5JCpwbLdjtZIpIMah5D/N7qVoakmPCVg6sTHDYwA3vbt14AoDmSt9
- spbw==
+ bh=kf6Sev/w0rBNUJxDj3vhxE/lISnasr7flvFzrUIZvwQ=;
+ b=joNWjBSCY4zK8YIgQqUlyjdCqWc9vcL0O01UEc6rwD1wKZ6AagiMEB9b6Cq3c69sih
+ dXJGEOwISPBZlxdmJ+PD96u082Px/zqRvctxEP6sqSfTe2VkCSWY2iC4Qd0MzcgVSjUZ
+ Vg15OsHK4vH/JTEtVmciJbriZ6427VMrTqRq1KF+qZWNHMS49iZCe2xA0a8WlS3EvfHX
+ 6Ac+Ys75o0KrxqrwKceN68wPOboS7Zw0kaPt9XjQblJ5V6Tms+8hwqjglrEpzKb2L51F
+ BtAeRRcc2Tqrbtz5SiMSs7CnRTC3vRIfDZGvvs+TFEI1HI5SyClmEfQbUfzIdjvCAf47
+ 1a5w==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9/t7Hbg2bKQYdZ6Bpq7m7In2OWi/dUFu5thjxSYLb+BrBJgJoh6IR7p3Y32yCw4nf/w9V3LqsVqA==@nongnu.org
-X-Gm-Message-State: AOJu0YwplTXYndKQavtsDaae66aJgpS0ff0GKBUtUhjtdu6Y1IrCYLWf
- z/5tI8AERo5KUw17OHyuAr3yT7S1HhVVxmkhb75c4XWpZJEJGgEq19vJFlMliZkbgxO2QTlBHxa
- cBjXOMlqCtldxDvYaKD2RKMZ7ltgLr9E0nzBt8xZfKW9lJyj49wXOEw==
-X-Gm-Gg: Acq92OGxWvXvXoqJWg/Amk66YXOGau7UAES57/iPfpS+EhQIWQTn+SQhZEUkYAqFjrx
- j1m15ZDTMx8Ro8DeQeCldTR9tjf4Xtu6GGWsKVmSuS3jtlAiYiGT3e4oMxbSSFG+QD+rnoU6YQy
- q/3C6QnC0zxT3X3Wzs3pTqoaHRcKc0TZdFNQvMgVgdRa85I0yioFMXQUzX1P76WZxjvx6dv1VrZ
- kpYAT2nq4T3eweBXMw4cqqPSghW2S2CmtUwKOe6AtZMangjrKcEGSzFDCLc3+v6/bOSKqaLyaRK
- Dm4vlnGz1kzb2H9kUx1KCm298lBNSy3xuNzaaOkXJF4R0ZgDiWt9jPh1pr7GwbtOYE9hoAqav+G
- AC0hQ9XoEwrsU1gCIErMxOKIDwdbs4YJl/AoAqquahJ529B+kvbu6Xg==
-X-Received: by 2002:a5d:53d2:0:b0:45e:ed10:8e0c with SMTP id
- ffacd0b85a97d-46067599538mr4016720f8f.14.1781193459130; 
- Thu, 11 Jun 2026 08:57:39 -0700 (PDT)
-X-Received: by 2002:a5d:53d2:0:b0:45e:ed10:8e0c with SMTP id
- ffacd0b85a97d-46067599538mr4016678f8f.14.1781193458554; 
- Thu, 11 Jun 2026 08:57:38 -0700 (PDT)
+ AFNElJ83KlkzjVGxg1a3emJWq6/EJcUehqHcBn6/oPinrm7HayRuQJslNX0L38xrWTLhUn6g3YyfeDyckA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz7s8kZIAz/9Wb1On9tOzlQZlIpD3574lEep3vQ5wLYkXQaGkqj
+ YVWhj45W61AHcAdidGHyCbflm6pQxIR7GDmH4WMw1L4zAD22pFLX43dmq1XxFlShZ/Kep/inLUj
+ B+j4D8cTGHTfNOM0nFHj7Oqbmp2UIQ2J6pY055yCV8U0+x01vBokbkg==
+X-Gm-Gg: Acq92OGAQKsawmzVkK2bYo3ZjllSckcTJxPbRSSFTEdDurfzM0VFf1QalHdxHkcsvXm
+ YZkt8gjH+3WGGsadVBHPlldpMB7evFSdLbvBXdky+mAdtJ2wi57u2MK/3FTYe7lxQlPHr+aElPw
+ QF4UPr+0V/+0pb6S3B7ove9he8MemNI0xcHivbtFAcUgC4SLOS9wNrqNEwjU1Hx82SblLTld8am
+ 4MaPtJL1qM99APJLdhcksdtqOx1igIijEzc4eOoyGvFXHvuPvOfz6ztoHvA24VuVCaRPV0SmUeP
+ /2Wxgn4aoPLjS1SNIQ2CZnQ6PnDPmCL+l9LRnppcpFb/ndrrqPkesZpbtoP8bFtRQPSnlCZMEid
+ Eh0aSmJDhMZKni9o9phchT0xyrhBCUVuAedlcA/9O07U=
+X-Received: by 2002:a5d:5f82:0:b0:460:50a1:b23a with SMTP id
+ ffacd0b85a97d-460677ae8e3mr5525637f8f.27.1781194397967; 
+ Thu, 11 Jun 2026 09:13:17 -0700 (PDT)
+X-Received: by 2002:a5d:5f82:0:b0:460:50a1:b23a with SMTP id
+ ffacd0b85a97d-460677ae8e3mr5525589f8f.27.1781194397565; 
+ Thu, 11 Jun 2026 09:13:17 -0700 (PDT)
 Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4601f35eae5sm83507005f8f.33.2026.06.11.08.57.36
+ ffacd0b85a97d-4601f2dcbe3sm76782849f8f.8.2026.06.11.09.13.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Jun 2026 08:57:37 -0700 (PDT)
-Date: Thu, 11 Jun 2026 11:57:34 -0400
+ Thu, 11 Jun 2026 09:13:16 -0700 (PDT)
+Date: Thu, 11 Jun 2026 12:13:14 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Gavin Shan <gshan@redhat.com>, Peter Xu <peterx@redhat.com>,
@@ -81,8 +81,9 @@ Cc: Gavin Shan <gshan@redhat.com>, Peter Xu <peterx@redhat.com>,
  David Hildenbrand <david@kernel.org>
 Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
  parent if possible
-Message-ID: <20260611114811-mutt-send-email-mst@kernel.org>
-References: <1e9515c9-7e32-4d95-9b73-aab8bf10bddc@redhat.com>
+Message-ID: <20260611120325-mutt-send-email-mst@kernel.org>
+References: <20260610121026-mutt-send-email-mst@kernel.org>
+ <1e9515c9-7e32-4d95-9b73-aab8bf10bddc@redhat.com>
  <20260611012217-mutt-send-email-mst@kernel.org>
  <3726a607-6cac-41f1-b402-0eed7c4e3fe3@redhat.com>
  <20260611023428-mutt-send-email-mst@kernel.org>
@@ -91,11 +92,10 @@ References: <1e9515c9-7e32-4d95-9b73-aab8bf10bddc@redhat.com>
  <20260611093049-mutt-send-email-mst@kernel.org>
  <CAFEAcA-8Hv0o3PibjH=8jixsHyunH2HkOAMQVqHkGr34b1Ascg@mail.gmail.com>
  <20260611110156-mutt-send-email-mst@kernel.org>
- <CAFEAcA_2oZepwCoPS+cMgdnrSTj=mCGzdFZf5gGRHJK13yqaKQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_2oZepwCoPS+cMgdnrSTj=mCGzdFZf5gGRHJK13yqaKQ@mail.gmail.com>
+In-Reply-To: <20260611110156-mutt-send-email-mst@kernel.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: xuz0glRk-vifz21f9J8wUvYYHGb_tzi_XnnRoHJIECA_1781193459
+X-Mimecast-MFC-PROC-ID: 8jsUKG0olAL75NI3_Fs2sQOj4_MHHVDG-KKsiJ6CrJ8_1781194398
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -107,7 +107,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,167 +123,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Jun 11, 2026 at 04:29:49PM +0100, Peter Maydell wrote:
-> On Thu, 11 Jun 2026 at 16:05, Michael S. Tsirkin <mst@redhat.com> wrote:
-> >
-> > On Thu, Jun 11, 2026 at 03:55:12PM +0100, Peter Maydell wrote:
-> > > On Thu, 11 Jun 2026 at 15:10, Michael S. Tsirkin <mst@redhat.com> wrote:
-> > > > Yea, and I feel this is the main part:
-> > > >
-> > > >     The assumption here is that accesses initiated by the VM are
-> > > >     driven by a device specific driver, which knows the device
-> > > >     capabilities.
-> > > >
-> > > >
-> > > > Frankly I don't get why a big hammer of disabling direct access
-> > > > was taken, when all we apparently need to do is to make sure
-> > > > small aligned accesses through BAR stay aligned and same size.
-> > >
-> > > If you say an MR is OK for direct access then in my view you are
-> > > saying "any access of any kind is OK", because you're permitting
-> > > the pointer to be directly returned as a host pointer from
-> > > address_space_map() (at which point the caller might do anything
-> > > with that memory). That is not OK for every BAR, only for ones where
-> > > it's really RAM.
-> > >
-> >
-> > What is "OK"? If the BAR is RAM and I write into it, I will overwrite
-> > data guest stored there. Is that "OK"?
-> 
-> By "OK" I mean it behaves like RAM: any kind of load or store
-> will work, at any width and any alignment.
-> That is what makes
-> it OK to return the pointer from address_space_map(), where
-> the caller will treat it as any other C host pointer (e.g.
-> assigning it to a C struct pointer and then writing to fields
-> in that struct), like virtio does:
-> 
->         iov[num_sg].iov_base = dma_memory_map(vdev->dma_as, pa, &len,
->                                               is_write ?
->                                               DMA_DIRECTION_FROM_DEVICE :
->                                               DMA_DIRECTION_TO_DEVICE,
->                                               MEMTXATTRS_UNSPECIFIED);
->         if (!iov[num_sg].iov_base) {
->             virtio_error(vdev, "virtio: bogus descriptor or out of resources");
->             goto out;
->         }
-> [etc]
-> 
-> This is only safe when the pointer is something we can
-> handle as if it were a pointer to normal RAM (because the
-> C compiler makes no promises about only doing correctly
-> aligned and sized accesses: to it, memory is memory).
+On Thu, Jun 11, 2026 at 11:05:35AM -0400, Michael S. Tsirkin wrote:
+> > If and where we need to provide guarantees about "this access will
+> > really definitely only do this size access and it won't break it
+> > apart or anything like that" then we need to either be using compiler
+> > atomics or else inline asm.
 
+BTW you meant intrinsics, of course, but speaking of atomics, they do
+not work on device ram, or not yet. E.g. kvm does not support them
+when exiting to qemu I think (only if emulating within kernel)
+and it prints "emulating exchange as write".
 
-
-Safe as in what? Work meaning what?
-
-mmap of a device register is a standard API in Linux, it gives you a
-pointer and no, it does not imply that "any access" will not make your
-box go up in smoke, and never did.
-
-
-> > If the BAR is RAM and I write into it, I will overwrite
-> > data guest stored there. Is that "OK"?
-> 
-> If the guest said "please DMA to this address" then they're
-> expecting you to overwrite that data, yes.
-
-The "If the guest said" is critical here. It's not OK
-at a random time and place of your choosing, and never will be.
-
-It's exactly what I said: if we are doing what guest does,
-like fixed length memcpy does,
-then we are good. If instead we are replacing guest accesses
-with different ones like variable length memcpy does,
-we'll get issues.
-
-> 
-> Merging in your other reply:
-> 
-> >> The
-> >> problem is that for some PCI devices (like the network card
-> >> mentioned in 4a2e242bbb30's commit message) the BAR is *not*
-> >> safe for arbitrary access (because the actual real host hardware
-> >> inside it is not RAM).
-> >
-> > But we don't do arbitrary access. Why would we?
-> 
-> If we mark the MR as "direct access OK", then we do, or might do.
-
-what does this might mean?
-
-> The bug the commit is fixing is exactly that there is a codepath
-> that uses the latitude that marking the MR as direct access permits.
-
-
-No, the bug is that a 4 byte fixed length access was converted
-to a variable length memcpy function call which started
-doing single byte accesses.
-
-
-> 
-> > There's no such thing as "not safe for direct access" in PCI.
-> > All operations are memory operations.
-> > What can be unsafe is accesses of specific width and length.
-> 
-> I think we're talking at cross purposes here. By "safe for
-> direct access" I mean exactly that arbitrary width and
-> length and alignment are permitted.
-
-This is a strong demands that QEMU simply never needs.
-
-> This is what
-> memory_region_supports_direct_access() is testing.
-> If the PCI BAR can't handle arbitrary widths etc then that
-> function mustn't return true for its MR.
-> 
-> (Though if we ever get into trying to address_space_map()
-> a BAR like that something is going to go wrong anyway, because
-> the "not OK for direct access" path fills and empties the bounce
-> buffer by calling flatview_read() and address_space_write(),
-> which aren't going to honour any theoretical alignment requirements.
-> Perhaps that kind of BAR should just flat out not be one we handle
-> with a ram_device MR?)
-
-
-mmap of a device is a standard thing that everyone did on unix, for
-decades. just don't do things, with a device, that a driver does not do.
-
-> > > (I think there are places where we do need to be more careful about
-> > > what we do with accesses to real RAM, for where we're emulating a
-> > > device write to RAM that's updating a data structure shared with the
-> > > guest, and things like writing multiple times can cause problems.
-> > > https://lore.kernel.org/qemu-devel/CAFEAcA8dwHV8F48kb-013rxkG9kKcZhym9_qarKmoeUfeh0YWw@mail.gmail.com/
-> > > is an unrelated example of that, which I haven't done detailed
-> > > analysis of yet.)
-> 
-> > If it does not work, then QEMU is broken:
-> >
-> >
-> > /*
-> >  * Any compiler worth its salt will turn these memcpy into native unaligned
-> >  * operations.  Thus we don't need to play games with packed attributes, or
-> >  * inline byte-by-byte stores.
-> >  * Some compilation environments (eg some fortify-source implementations)
-> >  * may intercept memcpy() in a way that defeats the compiler optimization,
-> >  * though, so we use __builtin_memcpy() to give ourselves the best chance
-> >  * of good performance.
-> >  */
-> 
-> Good point. (Though if I were an optimizing compiler I might
-> be tempted to optimize a switch() on the length where each
-> case called memmove with a fixed length argument back into a
-> single call to memmove...)
-> 
-> I suspect your suggested flatview changes would fix that e1000
-> bug. But I don't think they're the right thing for this problem.
-> 
-> -- PMM
-
-Then I'd like to see an example where we have an actual good reason
-to do execute arbitrary width accesses on device RAM when the
-driver does not execute them, please.
+We are quite far from "arbitrary access" even on pure device RAM.
 
 -- 
 MST

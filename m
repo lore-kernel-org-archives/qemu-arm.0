@@ -4,103 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C35CD98CE
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 14:50:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8013CD98CE
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 14:56:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXgjQ-00018C-6F; Thu, 11 Jun 2026 10:50:08 -0400
+	id 1wXgpI-0002Ou-Pd; Thu, 11 Jun 2026 10:56:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1wXgjO-00015H-F1
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 10:50:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1wXgjM-0000sp-U1
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 10:50:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781189404;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DzWiAI6vwGF0FhOWqrIFcAOlxkwI+atKC+Yy2K5mWOk=;
- b=Ew78hb4ibuaiEj/9tXwtEg5dewHuaOgiQ1q3z5OSbEazpF/aQ5i2VSlGlMPKSbXtQlOdN8
- pcxK6y0ChDNC7neZ4oKtpjK13M+hQ6hsW7Ry7tLI4RRXbr4aAL8HJ8db0Zv9ZuQpj5oaZV
- l7eYxebWqS1ON14KJd2JALCnNENKalY=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-231-GHtOKM8gPWuD9F8JfVN9mQ-1; Thu, 11 Jun 2026 10:50:01 -0400
-X-MC-Unique: GHtOKM8gPWuD9F8JfVN9mQ-1
-X-Mimecast-MFC-AGG-ID: GHtOKM8gPWuD9F8JfVN9mQ_1781189401
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-45ef0af9517so5383844f8f.3
- for <qemu-arm@nongnu.org>; Thu, 11 Jun 2026 07:50:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wXgoo-0002GP-Lj
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 10:56:02 -0400
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wXgoh-0005B4-Pv
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 10:55:42 -0400
+Received: by mail-yx1-xb136.google.com with SMTP id
+ 956f58d0204a3-6626cd98209so597292d50.3
+ for <qemu-arm@nongnu.org>; Thu, 11 Jun 2026 07:55:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781189725; cv=none;
+ d=google.com; s=arc-20240605;
+ b=evfiieY0VbqkHzplvr3awurKUoqR/mIpG+pXGloV3b7sZqLrqi1AiQhRR2hgA8F+3N
+ sWutn8CUr+/lMiD6PF76QPsEhN8iZ7cKbdl6ZLSXtQmrqILEj4XBOnaOsvga9CNbotm9
+ PExUrn9X0BnU92f/0fvsSMlH3KPnZnrKS5+0U7YV+Yq+pwZ7hOcgdtx3QbCoiuXNbcKx
+ ZlsnHA9UxL39xuJ3ZQRI5XqG2JItMNqVSM1vv9zAMQV1Rans2vYYDzSVL64ENJynw3x0
+ 0CA51f7+fxH4S36XpjHmAKfzpRM6GOfCs2usKHmZFc60e0Jv2NgmgMndByQTVUZvsHbf
+ 5d/A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=MjLlFne7RMFlE8jgLAmOVQNVSIku/G1TjR6tfj9BSYk=;
+ fh=koBnsRY4yiIWBIExWw2c/eEJLCwo2Or9ma9vtvfQRnw=;
+ b=EZoeq0n4BLSTSj8cwqRB7KLTJnejtBr/9CfxZ92e29vnZJAFme4W12xTSKk42RP6vM
+ qiItbRQjzZy/OFV9Rx4MWpGDnb8r0ahhap1Jjgdfqc9djLlgvq5/Nll3Jay10W0mrFCB
+ 06MagutpChjhjjXj4SXaCaAvbxEVbw7IeUYZ2KL61LhVbKIuvYPdk2RLw83TtO+Dsf+b
+ QoAVU5O+YKc5IW+O7lLqkpu1J6H1XozsDFuQSWTJQ04RtAtvuPsHoWnmwytoKiaMxoJi
+ stWX7/PG9mATYxmoPoMr27vDx72pm7So66SGJuFCzsHs9DnuyX7PIdLd0/wdzwlO9EnP
+ CbzQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1781189725; x=1781794525; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=MjLlFne7RMFlE8jgLAmOVQNVSIku/G1TjR6tfj9BSYk=;
+ b=R6+k1RyJdRkjnrbL9fV879tVwyr7wPnSSJZWr0q61Yl7eCwMTHCRCofcMUTOXa+edd
+ lrrBvVV2AI99CwIjaVowX7us2ibH796bsabeLcCfJesuTyhaFwAfu5kVZTwcA1a2fkaL
+ Val4bgB1CxAvcHLTavdip+25Lp70VYmhxA6MTcv/PWy25o+i1sbSoAlKNTOmPwq3sAxD
+ MHZ70ZRfF4Qqjxx1w0l+o3VUzRz/vY+IA1vgiVdcPscR+44eAWvdg2X4hLe6Ia30NenM
+ tzDc4tEnT4q4AIrw3+y51AJcSlWlGLQbEdAU0rLw8nOATsE00r5E23v4Ntw6Ru0MvF2R
+ KJ4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781189400; x=1781794200;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=DzWiAI6vwGF0FhOWqrIFcAOlxkwI+atKC+Yy2K5mWOk=;
- b=gVjmule0NePcUjbsw+4KcbSlueAi66TTybc1ZZC2Vv2HnCAPC4kcA82RpQsG59ooQh
- 3+W4QhJlrRusNPqpzCm1g98iL/Qhot0qnO/UXCUvN8z1GFTofdell2tdn/2GBuNR8c9w
- JiKY9yCvFzVlrgJ4X/JK9zkEBo8Iyf6fBZzX8J4rmYgZfClEYW1247RkqsxQUn3op3iM
- T9foz7kTg8KEjI99iGrI9pzn7NycGm7FeQAstpVGqW9aDgIDy3Hser54dU+SE6lWzWXU
- MzUiYa4W83ek57VwXUBgL+x+Pp2AR5Qj22fNlJjZH5O56sNyT4bwAoezBtckMw/ACtCp
- PAMg==
+ d=1e100.net; s=20251104; t=1781189725; x=1781794525;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=MjLlFne7RMFlE8jgLAmOVQNVSIku/G1TjR6tfj9BSYk=;
+ b=O9Yder3OYfQgc0pyWLj7QuMiarEv1HhYFTfnXRNODfym9sW+4XLx1MQ5giu46tj7gA
+ D6fqNsf+JJFCObVgclMecNZnMTSQLoZ0utw2xlLQgGpbP5AaBcPDaNeYqERRlfO5xN7G
+ iuwRO2HDUzdy/+maSV+PEvvp0qAORnb4Q4RY+IECY+K5fcijpqq/tPKAdgM5zgPA1qyV
+ x55JEvWgW0oxDZ+QZkzklCArfsJ6T791h+PMPDbRzmQNiHALCyWQCY7EznBFT8emS145
+ ui/G7n4vn46bUSeU3oICtKehsU2q/83Fiue3Qyc3TyR7VQHlGelGqMRLb/Fytn5nK1jP
+ YBFA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/TkYa3hQbd6zgnBvBaoeboFu0/7pd9UntPl6MvoDYJ93cv503YzZcLrjjpwEPyjPrpyLmhGxiITw==@nongnu.org
-X-Gm-Message-State: AOJu0Yw+XZhdsrx7erxDYuhypMxqZvzZ4+q9VmgLS5OqGXSjzC/ESWi7
- afUJTxdFx2SIwxhqW18wcWhNohX8x7GS4qQaFP8jQOdhny9gt7q5ou1YTqEb5nGwRu4Rn6+xlgN
- orX377/huXWWncIhSF0zHCYBWS0rpC9nmsIf5eKSszQASOzWO9MW3HFbGVYY1GLG+PzGUPH2TXu
- MJUI93KPQGvnJPp36xd8ogF+phnI3n
-X-Gm-Gg: Acq92OHABE6nKMT0sS+Z5vjI1tqJ6Utl3clxQEY9knehxw3JV9JX1crIEfBRdQxhTLH
- /0NstkUh7kS/WHiMsVoPXEX2H0GuqlcfCggqdH5DBXTXitIv7a44yAbqSY1pkV6J6B4wJJN5C0s
- GBqtnqL9poVdsfo0mBcgDOc08BhPMwTcAyvf6e6I7BpvNaIGERXVieLaDNNSRkINxua6A0HgZnb
- eyw6r2rtG/8CB2USMva+Yzy9IPi7dCrur3uuNAO5C4q/0CKka9FD0FPFzRxSIIH4jvQOEUBfLSj
- kyXOHQj8cAN57yNiow==
-X-Received: by 2002:a05:6000:2508:b0:452:6aaf:76cb with SMTP id
- ffacd0b85a97d-460674772admr4746098f8f.1.1781189400405; 
- Thu, 11 Jun 2026 07:50:00 -0700 (PDT)
-X-Received: by 2002:a05:6000:2508:b0:452:6aaf:76cb with SMTP id
- ffacd0b85a97d-460674772admr4746055f8f.1.1781189399997; Thu, 11 Jun 2026
- 07:49:59 -0700 (PDT)
+ AFNElJ+Re66rDev19dUQEFXBLD9jpS4HVTZyWGxEjVG9xvZ//b29RSfkLBX3FglEpcunDMsoDKGhMZSKag==@nongnu.org
+X-Gm-Message-State: AOJu0Yze2cXRl5UwlUmX3vp2Qhtyv3j65KCfpLDCgg8X2e+wX0DzHGPG
+ Om+S+NW5imVW42MAOen9qr/HHRxFz1D7lgwWqJ2sCWcMDML4TKgDOi/+xFkvKsnCusxp8iXvi5z
+ LtISspfGMbvLeP11SA4SSoxR7N/kbL17RSAavWHN/NQ==
+X-Gm-Gg: Acq92OEbUN/bL/KhmZZABm3EUHySAcoBYoZ33swIvzFWRAEtptTx5VSJI/PNrKycLSt
+ vUM/J8FF6qmb7kKo4G8jSxlbMNawX57gMbOBOXx5+2GIR3/4ufTAA6+pUfx/TqaNtTMnquHpgGf
+ 407ax8mI2CVTpRPgeFGotBaSEXbbtjFhoeuzCXQPYP/5IDaa440bgFaVMWz1xbyc20QhupN8fav
+ iIJvyUUbhxpYnOk9pTDZgh2JgLKPo7JWcjWb2XtF7dn7Q2iW/lw60zs0BTvt1CtH0skkFNIfAjh
+ hXrFA+ELNCP8dbvpvThI8ZA13R0HdXx9vd/BmzSETxHkb9C0yUvcihB2mmrrqoclniaVc7iYsoD
+ A7A==
+X-Received: by 2002:a05:690e:4194:b0:660:ea4a:4903 with SMTP id
+ 956f58d0204a3-662696514cemr2867113d50.18.1781189724630; Thu, 11 Jun 2026
+ 07:55:24 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260609214745.772536-1-pierrick.bouvier@oss.qualcomm.com>
- <0a0a1116-a5f3-45f2-b079-f66e6b17f672@redhat.com>
- <c5945f76-ae18-4a8c-ae58-d22be7a7f6bd@oss.qualcomm.com>
-In-Reply-To: <c5945f76-ae18-4a8c-ae58-d22be7a7f6bd@oss.qualcomm.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Date: Thu, 11 Jun 2026 16:49:47 +0200
-X-Gm-Features: AVVi8CeojY-tAKMw1s-WmlI88t-Bn90WvGpOngGGwoGMBsULwsrOZDc8A6bqj8c
-Message-ID: <CABgObfYy48HzQmJTJ4r_dswGjmgMkeuy=1OiY_VbEupC1UX6ww@mail.gmail.com>
-Subject: Re: [PATCH 00/27] tests/tcg: run tests with meson
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, 
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Alexandre Iooss <erdnaxe@crans.org>, Peter Maydell <peter.maydell@linaro.org>, 
- Gustavo Romero <gustavo.romero@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: tJ0iZM9KS2Syo7jZ1MfvdpqjoL-YjmOzBV1RBg01ZYw_1781189401
-X-Mimecast-Originator: redhat.com
+References: <e7cc9f2d-ccb4-442f-a1ed-7c5474395099@redhat.com>
+ <20260610095712-mutt-send-email-mst@kernel.org> <aimEl9QQ_LTRPLtd@x1.local>
+ <20260610121026-mutt-send-email-mst@kernel.org>
+ <1e9515c9-7e32-4d95-9b73-aab8bf10bddc@redhat.com>
+ <20260611012217-mutt-send-email-mst@kernel.org>
+ <3726a607-6cac-41f1-b402-0eed7c4e3fe3@redhat.com>
+ <20260611023428-mutt-send-email-mst@kernel.org>
+ <0c3f1dba-3b2c-43c5-b181-1426f6da0951@redhat.com>
+ <CAFEAcA8Q9qEaZS8wCpZQ-4jpAnQ9JXvnb7iSeRTdhJ9Y3BcCRg@mail.gmail.com>
+ <20260611093049-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20260611093049-mutt-send-email-mst@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 11 Jun 2026 15:55:12 +0100
+X-Gm-Features: AVVi8CcrkmK07O1DQpfSH99m1cJBH3FkoCpN0gfGD78TtSdWd1qLWH7HPAZnjXc
+Message-ID: <CAFEAcA-8Hv0o3PibjH=8jixsHyunH2HkOAMQVqHkGr34b1Ascg@mail.gmail.com>
+Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
+ parent if possible
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Gavin Shan <gshan@redhat.com>, Peter Xu <peterx@redhat.com>, 
+ Pavel Hrdina <phrdina@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, jugraham@redhat.com, 
+ shan.gavin@gmail.com, Alex Williamson <alex@shazbot.org>, 
+ David Hildenbrand <david@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,43 +131,149 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Jun 10, 2026 at 7:01=E2=80=AFPM Pierrick Bouvier
-<pierrick.bouvier@oss.qualcomm.com> wrote:
-> Your idea is to have one project per target, and use meson cross compile
-> support for this?
-
-Yes, that was the idea.
-
-> `make check-tcg-aarch64-softmu` is supported out of the box with this
-> series, without having to write a single line of Makefile. You can still
-> do what you like: see cover letter usage, to run a suite or a single test=
-.
-> I don't see rewriting the cc_feat part in meson directly as a problem to
-> be honest. Not all architectures needs to check specific feat (only
-> aarch64, arm, i386, ppc64 and s390x).
+On Thu, 11 Jun 2026 at 15:10, Michael S. Tsirkin <mst@redhat.com> wrote:
 >
-> Also, calling:
->   supported =3D run_command[cc, check_cflags, flags].returncode() =3D=3D =
-0
-> vs
->   cc.get_supported_arguments(flags)
-> is not really much more complex IMHO, and not a huge reinvention.
+> On Thu, Jun 11, 2026 at 01:48:51PM +0100, Peter Maydell wrote:
+> > On Thu, 11 Jun 2026 at 13:34, Gavin Shan <gshan@redhat.com> wrote:
+> > >
+> > > Let me try to summarize what I understood. As VFIO is concerned, there
+> > > are multiple memory regions for one particular PCI BAR, and they're stacked
+> > > up. The memory regions for PCI BAR#4 of the GH100 card looks as below.
+> > >
+> > >    (qemu) info mtree
+> > >               :
+> > >    address-space: pci_bridge_pci_mem
+> > >      0000000000000000-ffffffffffffffff (prio 0, container): pci_bridge_pci
+> > >        0000042000000000-0000043fffffffff (prio 1, i/o): 0009:01:00.0 base BAR 4          <---- (1) VFIOBAR::mr
+> > >          0000042000000000-0000043fffffffff (prio 0, i/o): 0009:01:00.0 BAR 4             <---- (2) VFIOBAR::VFIORegion::mem
+> > >            0000042000000000-000004379fffffff (prio 0, ramd): 0009:01:00.0 BAR 4 mmaps[0] <---- (3) VFIOBAR::VFIORegion::VFIOMap::mem
+> > >
+> > >    (1) Its MemoryRegionOps is NULL. No data accesses are routed to this region
+> > >    (2) The data accesses routed to this region is handled by pread() and pwrite()
+> > >    (3) The data accesses routed to this region is handled by memcpy() before
+> > >        commit 4a2e242bbb.
+> > >
+> > > There are identified PCI devices who have quirks, see vfio_bar_quirk_setup().
+> > > Accesses to part of the PCI BAR have to be emulated by the extra IO regions,
+> > > something like below for rtl8168 PCI device, where two extra IO regions are
+> > > stacked up for the quirks.
+> > >
+> > >    address-space: pci_bridge_pci_mem
+> > >      0000000000000000-ffffffffffffffff (prio 0, container): pci_bridge_pci
+> > >        0000042000000000-0000043fffffffff (prio 1, i/o): 0009:01:00.0 base BAR 4          <---- (1) VFIOBAR::mr
+> > >          0000042000000000-0000043fffffffff (prio 0, i/o): 0009:01:00.0 BAR 4             <---- (2) VFIOBAR::VFIORegion::mem
+> > >            0000042000000000-000004379fffffff (prio 0, ramd): 0009:01:00.0 BAR 4 mmaps[0] <---- (3) VFIOBAR::VFIORegion::VFIOMap::mem
+> > >            0000042000000010-0000042000000014 (prio 1, i/o): 0009:01:00.0 BAR 4 quirk[0]  <---- (4) quirk[0]
+> > >            0000042000000018-000004200000001c (prio 1, i/o): 0009:01:00.0 BAR 4 quirk[1]  <---- (5) quirk[1]
+> > >
+> > > Access on 0000042000000010-0000042000000014 should be routed to region (4) quirk[0]
+> > > and access on 0000042000000018-000004200000001c should be routed to region (5) quirk[1].
+> > > However, accesses to 0000042000000000-0000042000000020 are routed to region (3) before
+> > > commit 4a2e242bbb and the data transfer is done by memcpy(), bypassing region (4) and
+> > > (5). It's not the expected behavior and why memcpy() isn't expected on device rtl8168's
+> > > PCI BAR due to the quirks, answering your question.
+> > >
+> > > With commit 4a2e242bbb applied, the accesses will be routed to the correct region.
+> >
+> > The way I read 4a2e242bbb's commit message, it isn't about things being routed
+> > to the wrong region. It's about the handling of areas which aren't in the small
+> > quirk regions but which are in the same 4K page as them. These have to
+> > be handled
+> > via the memory subsystem's "subpage" mechanism. This does route
+> > everything to the
+> > correct region, but if the region (3) is marked as "direct access is OK" then
+> > QEMU assumes that any kind of direct access is OK, i.e. this behaves
+> > like true RAM.
+> > It then does a memcpy access to a BAR that's really a bank of device registers,
+> > and this goes wrong.
+> >
+> > > Back to our case (GH100 card), there are no quirks for the PCI BAR (0009:01:00.0 BAR 4)
+> > > so it's fine mark the RAM DEVICE region as directly accessible. We perhaps needn't host
+> > > to export the capability (VFIO_REGION_INFO_CAP_DIRECT_ACCESS) suggested by you. It's
+> > > safe to mark any PCI BARs as directly accessible if they have no quirks attached. All
+> > > the devices except those listed in vfio_bar_quirk_setup() are capable of this.
+> >
+> > I still feel like there are different kinds of PCI BAR here ("this BAR is
+> > true RAM and can be accessed arbitrarily" vs "this BAR is full of registers
+> > and can't be handled that way") and the vfio code in QEMU needs to set up
+> > the memory regions differently for the two cases. For your example I think
+> > it would be fine to have direct-access even if there were some kind of
+> > quirk memory region, because for the parts of the BAR that aren't covered
+> > by a quirk overlay the underlying BAR still allows "entirely like RAM,
+> > any alignment and size is OK" accesses.
+
+> Yea, and I feel this is the main part:
 >
-> Also, the custom target is hidden inside tcg/tests/meson.build and not
-> exposed to arch files. Even if we had multiple projects, I would stick
-> to not exposing test() and executable() in arch files.
+>     The assumption here is that accesses initiated by the VM are
+>     driven by a device specific driver, which knows the device
+>     capabilities.
+>
+>
+> Frankly I don't get why a big hammer of disabling direct access
+> was taken, when all we apparently need to do is to make sure
+> small aligned accesses through BAR stay aligned and same size.
 
-Fair enough.
+If you say an MR is OK for direct access then in my view you are
+saying "any access of any kind is OK", because you're permitting
+the pointer to be directly returned as a host pointer from
+address_space_map() (at which point the caller might do anything
+with that memory). That is not OK for every BAR, only for ones where
+it's really RAM.
 
-> I would expect this file to disappear completely, and to rely on make
-> check-tcg-arch-* targets at top level instead. Would that work for you?
+> I guess it felt safe - a vfio specific change, and emulating device
+> accesses was assumed to be slow path, anyway.
+>
+> Except it no longer is with people wanting to do direct io
+> into device BARs.
 
-Yeah, you're right that at this point TCG tests are the last
-stragglers in that file. That tilts the balance for me, it does make
-sense to do this with custom_target() until Meson grows support for
-something like multi-machine projects. Just please add an alias_target
-'build-tcg-tests-...' for compatibility with tests/Makefile.include.
+> Isn't it basically the below?
+> At least I checked asm and it produces the correct code.
+> And then the whole pile of hacks can be reverted?
+>
+>
+> diff --git a/system/physmem.c b/system/physmem.c
+> index 7bcbf87573..aab4390d40 100644
+> --- a/system/physmem.c
+> +++ b/system/physmem.c
+> @@ -3272,7 +3272,29 @@ static MemTxResult flatview_write_continue_step(MemTxAttrs attrs,
+>          uint8_t *ram_ptr = qemu_ram_ptr_length(mr->ram_block, mr_addr, l,
+>                                                 false, true);
+>
+> -        memmove(ram_ptr, buf, *l);
+> +        switch (*l) {
+> +        case 1:
+> +            __builtin_memmove(ram_ptr, buf, 1);
+> +            break;
+> +        case 2:
+> +            __builtin_memmove(ram_ptr, buf, 2);
+> +            break;
+> +        case 4:
+> +            __builtin_memmove(ram_ptr, buf, 4);
+> +            break;
+> +        case 8:
+> +            __builtin_memmove(ram_ptr, buf, 8);
 
-Paolo
+Nothing says that __builtin_memmove() is required to do only a single
+access of the right size. memmove() can do all kinds of things.
+For instance on aarch64 if you get into the actual glibc memmove then
+a memmove of 1 byte will actually store the same byte multiple times.
+Or an architecture might decide that it's more efficient to do an
+8-byte write with two 4-byte writes even if there is an 8-byte access
+instruction.
 
+If and where we need to provide guarantees about "this access will
+really definitely only do this size access and it won't break it
+apart or anything like that" then we need to either be using compiler
+atomics or else inline asm.
+
+(I think there are places where we do need to be more careful about
+what we do with accesses to real RAM, for where we're emulating a
+device write to RAM that's updating a data structure shared with the
+guest, and things like writing multiple times can cause problems.
+https://lore.kernel.org/qemu-devel/CAFEAcA8dwHV8F48kb-013rxkG9kKcZhym9_qarKmoeUfeh0YWw@mail.gmail.com/
+is an unrelated example of that, which I haven't done detailed
+analysis of yet.)
+
+thanks
+-- PMM
 

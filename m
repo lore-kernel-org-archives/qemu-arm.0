@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07A8BCD98C6
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 06:35:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 636CBCD8CB9
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 06:52:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXZ0Q-0002Ct-63; Thu, 11 Jun 2026 02:35:11 -0400
+	id 1wXZGI-0007rZ-46; Thu, 11 Jun 2026 02:51:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXZ0J-0002CK-Tp
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 02:35:05 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXZGG-0007rJ-W7
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 02:51:33 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXZ0G-00024N-6w
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 02:35:01 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXZGF-00078t-1X
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 02:51:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781159699;
+ s=mimecast20190719; t=1781160689;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=IH7X/BsaoA0B6KFizfMoKkCEWocB8PozDwbY65oi35w=;
- b=gpgasKPQyISo+BrFI18cjlURe9UvnAr0HP5hMRPOamstHo5a+EG7Vzqo/GsHBYuCHlKCxH
- Fv7jc9rWxynWat/NtCPN3vpRvDz4cIQR0FZFMsmKYspQbY5LlmZPap4/iBoJteV+i6b6Wi
- tnOJkjYNJF/IBdK8eKRqpZqYXcBMJKU=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=c8ah96WPgdtbvq1PyE+wkIRcfiH+NS+6EfcqQ46lry4=;
+ b=Q9Q+V2smvEvIS82hmWE00izkpjK1P9Yoq5ABpUl1sTstd6t+Jc7X4AdLm7AZUvPwv7+rWt
+ /+AecmoDT661/YhrWHxuripAD6kUvzq+9wRBcdbM6jQJR8L154e62PNwjWX3gucHbrxncs
+ wetnySobONNBHTex+/Wm77c6yt+T+zg=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-502--tKw17cgOVqZ8LaJTSMTZQ-1; Thu, 11 Jun 2026 02:34:57 -0400
-X-MC-Unique: -tKw17cgOVqZ8LaJTSMTZQ-1
-X-Mimecast-MFC-AGG-ID: -tKw17cgOVqZ8LaJTSMTZQ_1781159697
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-490b93debc8so61129595e9.1
- for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 23:34:57 -0700 (PDT)
+ us-mta-502-anJof7wmPGWp3TXVaBCvXw-1; Thu, 11 Jun 2026 02:51:28 -0400
+X-MC-Unique: anJof7wmPGWp3TXVaBCvXw-1
+X-Mimecast-MFC-AGG-ID: anJof7wmPGWp3TXVaBCvXw_1781160687
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-45ef4931de5so306330f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 23:51:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781159696; x=1781764496;
+ d=1e100.net; s=20251104; t=1781160687; x=1781765487;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=IH7X/BsaoA0B6KFizfMoKkCEWocB8PozDwbY65oi35w=;
- b=qv8MBjuZQAHD/WOvsoBgJLrknVHXljhDnacg5uV03uOrIIsQsDBV9ShRyKbqB5hfNX
- aHQXVqq2kd50QE7H68Q0Jwtc0biQVqHok0qXKPgInCj1abP0d6sLLhePq4pvtJqBstyr
- AV8s56Sbq0aBD4oFeALugQWzFx25a0MQu062AJq9vD6Ey2XMW7FMc1/A1H5NlAHaeAkM
- HkVN96GGBXOJAw0SgEg99/y/Y+hGoe1d/CYpeOWTIRhAO/F+dfKVJnTF1W/lQLqw+5rF
- NPGM0GuK8vn1pjJpBp9rFO+goPhfHkqfh+HZuzO+R+9wQ91WQeor7Zvw3xmaqRGNJxNc
- aytg==
+ bh=c8ah96WPgdtbvq1PyE+wkIRcfiH+NS+6EfcqQ46lry4=;
+ b=CY1B78nCqLZ99nonpTVUGOhHwWkCmPC5MvQ7NXRzrRDGW3NtNrtS0terx90Hxi/RN3
+ AW46f631Nu/1mwvsQaSla7R1qy7zbMnuyjjJY618VyzJWXCsuXFeA3ItAAse/PwUmkxJ
+ Md82UqD0jxh5oagEdxTLs03rkNGDy/kd4Txdft4hmMHMTiF/sublCPArl28p5vIR1aY4
+ jw96vEJI5nbztUJ1ur8AcrrXqE3mFr5CCG2J2kllse67j9MXH82kEhdf1o3CKN/zvDmC
+ YYbbbUmi52rfqkTfRjdznmvU6H91wj2u66i6j+Ye3RJv9fCuBYNWzVdua7ELhNW1H1lO
+ mdpA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9Ler6XI2b5FpnI+NdZMLEw8ZDX67ElFGQESNJtg3zKVFUAUTjl6P/bqayrARkvJjXDAEdBEBcCiA==@nongnu.org
-X-Gm-Message-State: AOJu0YwQJTyuDqlghpI5ayKiktOO4o9btwlbyJ1DMOhWwWdB0KkP8EnI
- I6LyR0Dnl+HGY2mwgBxA+m6C9tHUn0zl9GE63VQFPHhDodY58fyDVuE+jtiiIFeLD/0heCUiN9A
- nF9gqB+PllEiYuI5tGI4fYqhZHnKKK0ErI7Rcu4E1Cz8Pu+BnbFBIWQ==
-X-Gm-Gg: Acq92OE/xEN0TA3z2AJDqFlWxgSGnN307IKFN7ht1cxYe8mJXnlQH9b3sBMUD5f1GNq
- BaXVh9n65GuoyaYjUSDc69cP51/A5IdhlG4WuJsHmNUS00acf+hXCxXoWSLouvAsajgGoQtdg9o
- N4xv0PGldpWFezuQ6/uFMNS3cUguANCt5TjZPjVwFBVCHKWEEDy/vlPHa0X8Fs3m4KRlLf8Mbav
- nPieFUoO+LVNsUxp9ZlAva3JLxhJjK+9QkO4cRw9T7gOznqdOWsc4/gnHvBx9iY7JExYYwMNjLy
- KuuIsBsMm2v06HEJ35/amaOb3hJ6LsVS7t4SoAGtXy2zbV8nztezdNpiUAeA5dBkY8wLDm/BM+r
- 7e6S0nUMAROnUr6xB0hlcBWL0Vm+m1pSJbABc6H4+vQXP5qDUGFU3qQ==
-X-Received: by 2002:a05:600c:41cc:b0:490:b0e0:3de2 with SMTP id
- 5b1f17b1804b1-490e561c40emr7362125e9.33.1781159696482; 
- Wed, 10 Jun 2026 23:34:56 -0700 (PDT)
-X-Received: by 2002:a05:600c:41cc:b0:490:b0e0:3de2 with SMTP id
- 5b1f17b1804b1-490e561c40emr7361785e9.33.1781159695991; 
- Wed, 10 Jun 2026 23:34:55 -0700 (PDT)
+ AFNElJ+Mtt7wifQkn0NjDQQ8sSF4i0iSwCvQHH7ZJ1yXV+I40iP4ph0YcbQPB7Rl6t9OI29r1AWQktHvsw==@nongnu.org
+X-Gm-Message-State: AOJu0YzigZ/UFl3tr8fP0obpXQCfFRk5/NmeefCNKtcgXUql+b++uYXr
+ nIS5kWWGwiuUFVH3DCMYgFWcAiIAiWgSk6o6CWvFY3hSs8/Fb2E8nXE2wQEx1gNNVyvGid0ZQ0J
+ dfSWcF4ToMquK7JTC4NLSqpgI2Hwa6ik8xULpEO8AQJ7Jxi7Wcb+uxQ==
+X-Gm-Gg: Acq92OHSas1vO3ZHBPOcANru7rYasSBofShDNQiNExasyyMyGRc1YBoxwFAxsDb8iSk
+ KUElUvkym8yZZb/K3Ey4Nd8eTHBUbflpFnaLQfC969OXbeVxA0PVFYtcVoEy1C9mGxa3Tp0AHM3
+ +T/XQNPPEK2AJDztmM39e86QKiaYnLBuuez0B01BIFDHdMMdGnYeKKkq7Hv1c05dtRbT5q4M2YX
+ PtKQrarAUVG6KYzPSnrVjqDrM8vpCG18wmsg3bq9qDkA37zsm8YB0HQGSuuVCeC82nCWpNgcqUu
+ rukkkPs+aT4EKwVlC79mn4uivmoCWJ4dBToOKuEYYYN7W1PRIqVIs81yvIHkXtLCJWWh1Hf/XHn
+ iLLNdaB4nb55JCOc5f0bO/JCmBZtmPF1FjGke91prTZ2Yz7LcA0uqlA==
+X-Received: by 2002:a05:600c:a41a:b0:490:af46:5c68 with SMTP id
+ 5b1f17b1804b1-490e510f954mr7800355e9.7.1781160686757; 
+ Wed, 10 Jun 2026 23:51:26 -0700 (PDT)
+X-Received: by 2002:a05:600c:a41a:b0:490:af46:5c68 with SMTP id
+ 5b1f17b1804b1-490e510f954mr7800085e9.7.1781160686266; 
+ Wed, 10 Jun 2026 23:51:26 -0700 (PDT)
 Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-490e531e6acsm24971195e9.12.2026.06.10.23.34.54
+ ffacd0b85a97d-4601f3444fesm78129019f8f.20.2026.06.10.23.51.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Jun 2026 23:34:55 -0700 (PDT)
-Date: Thu, 11 Jun 2026 02:34:52 -0400
+ Wed, 10 Jun 2026 23:51:25 -0700 (PDT)
+Date: Thu, 11 Jun 2026 02:51:23 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Gavin Shan <gshan@redhat.com>
 Cc: Peter Xu <peterx@redhat.com>, Pavel Hrdina <phrdina@redhat.com>,
@@ -80,7 +80,7 @@ Cc: Peter Xu <peterx@redhat.com>, Pavel Hrdina <phrdina@redhat.com>,
  David Hildenbrand <david@kernel.org>
 Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
  parent if possible
-Message-ID: <20260611023428-mutt-send-email-mst@kernel.org>
+Message-ID: <20260611024203-mutt-send-email-mst@kernel.org>
 References: <eb0f0da1-11dd-4437-94fd-a65af55851e1@redhat.com>
  <20260610082637-mutt-send-email-mst@kernel.org>
  <5d8cbd4b-3725-437e-88a3-e0af32164815@redhat.com>
@@ -94,7 +94,7 @@ References: <eb0f0da1-11dd-4437-94fd-a65af55851e1@redhat.com>
 MIME-Version: 1.0
 In-Reply-To: <3726a607-6cac-41f1-b402-0eed7c4e3fe3@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ri6sW_fISf_Yx0UNmGHOSMku7M4fzV2SPVT27VgIUjc_1781159697
+X-Mimecast-MFC-PROC-ID: 9ueoIIIvMiz0izKlFEvWEdnN4x2tNwCsnKZYyYUVvu8_1781160687
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -224,7 +224,12 @@ On Thu, Jun 11, 2026 at 04:28:20PM +1000, Gavin Shan wrote:
 > 
 
 
-This is header copy why and how would we try to avoid that?
+The original bug was QEMU doing MMIO on behalf of guest right?
+
+So maybe there's an even simpler thing: I think that if the BAR is
+mapped directly into guest we do not need a bounce buffer in qemu.
+
+Alex could you give your opinion on this?
 
 -- 
 MST

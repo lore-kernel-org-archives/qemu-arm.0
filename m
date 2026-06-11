@@ -4,119 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 587A7CD98CE
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 15:30:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2371CD98CE
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 15:53:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXhMA-00050t-7z; Thu, 11 Jun 2026 11:30:10 -0400
+	id 1wXhiH-0001H6-AW; Thu, 11 Jun 2026 11:53:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wXhM6-0004v6-1e
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 11:30:07 -0400
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wXhM3-0004fb-2m
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 11:30:05 -0400
-Received: by mail-yx1-xb12e.google.com with SMTP id
- 956f58d0204a3-6604176b575so7550524d50.1
- for <qemu-arm@nongnu.org>; Thu, 11 Jun 2026 08:30:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781191801; cv=none;
- d=google.com; s=arc-20240605;
- b=jCsU7EWdpYh8J9mHAYMhyQWMtpvBsPdc9FvaWXxQ9ZHBznUzkDgqP+SnqBnGaheGxw
- Qi6gUlUz0iYP7UrBSXRGuHtepJ9AaGB9x1tnP5EeYUfPiRa2SDI3QgqTvXOxmQjTNFiI
- JemLG0ntwbA2tRMQWWuGv6jVAyBoiw2jEIMjc3RUfSEw8pGf41VhRFyUjLqkY1hIRbhv
- bBTRMh0Wxto4wNOdY1mR9v8eKXpbi0HWepzimIkNVxXc/sAMcP4GHg3+xxTaRMjr2gK/
- nVj8vmtn76ciNSEPHOldZlpxXFXm7+iNZmU7kaj5OYM1X+xnrqFqf9X4vLrMUTxYTxuu
- kNMw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=Rz2Edo0wXIo6aoraoZ6DDbrzPnhsO3uUzQxwnu3WNuw=;
- fh=M+355H4y4evP9JGatv6D0lLXR1CT+kkRWGmPCN++Afw=;
- b=CSx1/QQpIOwYP0S2x+opTruC/vJERo6uorv7NqmhT3V/nLEL0RARIi1fRonsvVZwJS
- B+VNuVQkanVH6k/4+aA/KzKmRDdMOeHhRIPANMPazcv9x6utrusSTwcUPuSW/AR9GidP
- AYXHjFSrnPz5pLURrhwwqx2G1KzT0jC4s7t7XJdVR2p+tUADdEBqxtBtjKgI/aWfrbJT
- 2V05t/mpkzEC/VSdg+cbjA7XAp3LPaY2wlUZHi3TJjgdhv6cboRgWolLm4VdAka8rLVR
- XM2nKkVCY/8OFM4lCD+pMSMERlRWbIcTdsDugLEZdbZLyx2VELqqEletvooGLzMGmsUL
- 6Vtg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781191801; x=1781796601; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Rz2Edo0wXIo6aoraoZ6DDbrzPnhsO3uUzQxwnu3WNuw=;
- b=KGeKTcbjviLcsFAcGzsB2/ZKE7EMlQvDusKAxt5ZEJ1jSEVw4482yRK7T1MnL4OhdR
- /RsgniIo6nZw75JwtBJxwOs//xy9FfMIMex+G1ccn4vLbBDPiWNH7zYjyg46yPseHA1v
- FNT9KjnOeM43YiMT6neUuqdDsmOhdDMPB51rtfKwYj1vFVMwlED/guxczgGBsSfDJ1w+
- f/qCxG+GquaGtCGyvU7Gp1zhYtgQltpROwBLuTDxZLQLifM7Hs0FIl2SUVufAOciSgCp
- xFzy+qzEJR6skjW3gh1OPaIT+gdsOz7V7ivmWDY2fBRfv+HR+WfqqSULJR8mIfm771N+
- DzFg==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wXhiG-0001Gh-47
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 11:53:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wXhiE-0003wS-40
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 11:52:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1781193175;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=edqsxyAdaMXhekp7RRkv+Sct7cvEicgqfPFTS5N1oxk=;
+ b=iYjDkoeqHFO3e+OkBavAv8+FYqs/zq02CsRPXCqKWTNzhxyphMxr/k5ynigRig41EU7t3J
+ jdH2mZ04J75yoVaEVxQe6Id/Kw27XHMlV90/xvPGhbIrsj2neVrX7NQsGt0YDVrSuC1sCc
+ p2t6gOYSdI+mIiDV/fVekxnWMRsomWk=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-29-XPddv-A2MQaLpbTm7SPuVg-1; Thu, 11 Jun 2026 11:52:54 -0400
+X-MC-Unique: XPddv-A2MQaLpbTm7SPuVg-1
+X-Mimecast-MFC-AGG-ID: XPddv-A2MQaLpbTm7SPuVg_1781193173
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-46011aa5000so3629005f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 11 Jun 2026 08:52:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781191801; x=1781796601;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1781193173; x=1781797973;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Rz2Edo0wXIo6aoraoZ6DDbrzPnhsO3uUzQxwnu3WNuw=;
- b=FDGHS5+vW36tvjMkexipIZD+yiFkRzoZJyvQX71Ta8WjvQDekf3k3TdHI5jV3dvj0X
- Sxr7G1ChpaoK2Ccu1kZGfdeM5uKuZ1py2JufdiOvjgPXuPJZjPMcrIq0WyOw7czoQ8jm
- wEdsU1YQ3PHcES0Q+c84E5QivGd5SrRQZ3WOxcD6dmb732SLt1KNVMVtC8Ok13JJCnVV
- GX8p+130cxNr39gUDbtrwcRH4iFTA7Zs/7NMdwmYxXzD1F3zIxzsgYWEGznu+8+tMUYc
- ShWR4oqk1IqtSa41UmFaR4lSpXMD4M5r7jWYI4t0l5/l5XOEqZJKunksTK73qhx5Ep1w
- QxRw==
+ bh=edqsxyAdaMXhekp7RRkv+Sct7cvEicgqfPFTS5N1oxk=;
+ b=aNd+0NZVXKVaP7V9OZR2i/kI/vfM/p1/eZxEspjXBEHY0KmR8s9HQF1Ic/iKH/YK2t
+ nrOgN3VuIJKjOgOrjwPfgCe7YZ2NDmSPkscfED0UHBPjLdvH76LSb+mZMhg2rRSlxLsn
+ B4H0+Il7LfTFGgx6lyUXPOYUff6BtAbOHwFTYvc/bUor80dkZS3UO2IkAiC167JbmXNA
+ OV93T+LeiKaGZnmRxakzAYht/cn4V0qF1Ri6IEvfqOwGJ042fq/4qw757lmnV+xtakpE
+ SvKsE4EhiuPFZgU13Yi/AHSNkAW+Wuwv/Kx9iLdmYCNhCHOwIT0HQ2oWcC05cVAmxRs/
+ oUOA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9vYXfbpY9coUNSo1FYAbA+vrhYOo0sSvvEvPvsgJAyig+C7qUBUmYSI4JfoDOeJPwcGMCmvmHPEg==@nongnu.org
-X-Gm-Message-State: AOJu0YzyjFHr6F+0wOFuyHzoS7VQAglippoDebd3pdRtSXak9BQ+TdKa
- SW6b5hsf/Zocvw86uCDr8gnFYWT2r115Eihf1Rmisky6sk1L2KMjTS81sI1qsRYDhYT0tlRuPv6
- jBz3yytUvYyX0+D1KPeySIEJBVOg0Nsp0aIzfWuEm7Q==
-X-Gm-Gg: Acq92OE6ioV3SlBDhNVfbrjWGf99XJPYSNrImmQqV1Q1/Gg8sPcojK0pQvJT8do+lqr
- Z+Aw9PYjIwxCEDINtsqR9112arW9z14xwFqjJNGiyB6iPVQIDH/QL6W4oN9tMgOruMJKqqi3woj
- JBR4iwHYv7t0ZyhxLrA5RNQLVccfnlrNpzzQyIaLcVtJSkdww8XUAdGBhuPfDm54M08RwF3m6vy
- eMT2X/O3Akwz4XoqZY/74CUA+jwPoDOtqsuK5TXWF1QaP6K883LJlPabGCQ+6ADLcki7WyV6k8W
- 2VnnWoKh3XFVvPhnot7RXJdjyWD9ClcvanXmNnrAqYNo59FsMaId82au81eVsw2pa7cDvSwRPhy
- KDw==
-X-Received: by 2002:a05:690e:144b:b0:661:4da9:355a with SMTP id
- 956f58d0204a3-6626d19d81fmr1927337d50.60.1781191801384; Thu, 11 Jun 2026
- 08:30:01 -0700 (PDT)
+ AFNElJ8ibU0uGP2RkGIsIbBXCT3iaZsJ6urslDhobthCBpZyysda0SW4Ewpb8gayHAYJfULL6NpannW8vg==@nongnu.org
+X-Gm-Message-State: AOJu0YwDdHEQehVqu62BtPa28W85S7qFTaamjHS9SBnH1X4H4M0U6lYu
+ TnW1ENeBv7xu20KOX+Kf04T39ZyKH5JSojgrFk9jsA6yUbEiaKEWpn7ln7cXQIOQEYP9hwfX3Uy
+ SHnhisajRSPihF2RTW3vimIyH7vieV4KucAToVAhio/mNrqWPh9XEfQ==
+X-Gm-Gg: Acq92OHIVQBCvPgCGTmxNOZp4WrYAb101I3SwdcbsnPMif+CpK+A3Cnzvw+QR6dysyB
+ bSdC9IHUmLbswGOWAxwl/6qSKYb+0wHnI+ePk+7lhrfC+cswc8sQdfxKzfbZ9CnxctXGSz95iIT
+ R0D6SfaC1UohgbhjRwpGZiEFaopgpbo7dCW+U9SRZJAg4RppBfY5GZ5ZsztomDdWQktHOr6gdvK
+ OEyK4yLQcmQ8vZQ4Ki+aOlKVjuttboDBf73UD5aMOYABgSg91hi8zwlOaQ1tgitNhyWe5qxv6LR
+ 5bT5kgo5625Cr8rIKpbpUWs2DEOt+AaQjt8YQhIQQfU8s2cwuY7XySNNEjKG5sxuSSUpK7Ri9kM
+ 9VaEwhVRtQsgoYt4J5I5UEnR9TKNTFbVq5k5Ijr6/DIAo9AygyvUBNcg5YNE/jffzYoLe7gzrhR
+ jpfphx
+X-Received: by 2002:a5d:6f0f:0:b0:460:138d:c9b3 with SMTP id
+ ffacd0b85a97d-4606758d2fdmr5290002f8f.2.1781193173101; 
+ Thu, 11 Jun 2026 08:52:53 -0700 (PDT)
+X-Received: by 2002:a5d:6f0f:0:b0:460:138d:c9b3 with SMTP id
+ ffacd0b85a97d-4606758d2fdmr5289938f8f.2.1781193172631; 
+ Thu, 11 Jun 2026 08:52:52 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4601f2f67c6sm79073444f8f.16.2026.06.11.08.52.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 11 Jun 2026 08:52:52 -0700 (PDT)
+Message-ID: <79e43ff2-00fb-4cab-ae8a-21e5fb23d8e7@redhat.com>
+Date: Thu, 11 Jun 2026 17:52:50 +0200
 MIME-Version: 1.0
-References: <aimEl9QQ_LTRPLtd@x1.local>
- <20260610121026-mutt-send-email-mst@kernel.org>
- <1e9515c9-7e32-4d95-9b73-aab8bf10bddc@redhat.com>
- <20260611012217-mutt-send-email-mst@kernel.org>
- <3726a607-6cac-41f1-b402-0eed7c4e3fe3@redhat.com>
- <20260611023428-mutt-send-email-mst@kernel.org>
- <0c3f1dba-3b2c-43c5-b181-1426f6da0951@redhat.com>
- <CAFEAcA8Q9qEaZS8wCpZQ-4jpAnQ9JXvnb7iSeRTdhJ9Y3BcCRg@mail.gmail.com>
- <20260611093049-mutt-send-email-mst@kernel.org>
- <CAFEAcA-8Hv0o3PibjH=8jixsHyunH2HkOAMQVqHkGr34b1Ascg@mail.gmail.com>
- <20260611110156-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20260611110156-mutt-send-email-mst@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Jun 2026 16:29:49 +0100
-X-Gm-Features: AVVi8CfKej72HD9TklflF6X-WzDUqSQjPytTXV87BxMNUPbYa_Z7YXkpeQbrvjY
-Message-ID: <CAFEAcA_2oZepwCoPS+cMgdnrSTj=mCGzdFZf5gGRHJK13yqaKQ@mail.gmail.com>
-Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
- parent if possible
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Gavin Shan <gshan@redhat.com>, Peter Xu <peterx@redhat.com>, 
- Pavel Hrdina <phrdina@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, jugraham@redhat.com, 
- shan.gavin@gmail.com, Alex Williamson <alex@shazbot.org>, 
- David Hildenbrand <david@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 00/31] hw/arm/virt: Introduce Tegra241 CMDQV support
+ for accelerated SMMUv3
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
+ nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
+ jgg@nvidia.com, zhenzhong.duan@intel.com, kjaju@nvidia.com,
+ phrdina@redhat.com
+References: <20260609112552.378999-1-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260609112552.378999-1-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: qldQI3xGRv_8KntokKn6zhu0xOkvqqdS36NxAmGo_xk_1781193173
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,125 +119,156 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 11 Jun 2026 at 16:05, Michael S. Tsirkin <mst@redhat.com> wrote:
+Hi Shameer, Peter,
+
+On 6/9/26 1:25 PM, Shameer Kolothum wrote:
+> Hi,
 >
-> On Thu, Jun 11, 2026 at 03:55:12PM +0100, Peter Maydell wrote:
-> > On Thu, 11 Jun 2026 at 15:10, Michael S. Tsirkin <mst@redhat.com> wrote:
-> > > Yea, and I feel this is the main part:
-> > >
-> > >     The assumption here is that accesses initiated by the VM are
-> > >     driven by a device specific driver, which knows the device
-> > >     capabilities.
-> > >
-> > >
-> > > Frankly I don't get why a big hammer of disabling direct access
-> > > was taken, when all we apparently need to do is to make sure
-> > > small aligned accesses through BAR stay aligned and same size.
-> >
-> > If you say an MR is OK for direct access then in my view you are
-> > saying "any access of any kind is OK", because you're permitting
-> > the pointer to be directly returned as a host pointer from
-> > address_space_map() (at which point the caller might do anything
-> > with that memory). That is not OK for every BAR, only for ones where
-> > it's really RAM.
-> >
+> Changes from v6:
+>  https://lore.kernel.org/qemu-devel/20260601114221.457995-1-skolothumtho@nvidia.com/
 >
-> What is "OK"? If the BAR is RAM and I write into it, I will overwrite
-> data guest stored there. Is that "OK"?
+>  - Addressed v6 feedback and picked up R-by/T-by tags. Thanks!
+>  - mmap the host VINTF Page0 at IOMMU_VIOMMU_ALLOC instead of on VINTF
+>    enable (patch #14)
+>  - Reset the per-VCMDQ Page0 cache when a queue is freed (patch #19)
+>  - Distributed the reset teardown into the patches that introduce each
+>    resource (patches #18, #21)
+>  - Added a VCMDQ readiness helper and renamed the Page0 backing-pointer
+>    helper to vintf_lvcmdq_ptr() (patches #18, #19)
+>  - Trace the VCMDQ Page0 backing, hw vs cache (patch #19)
+>  - Renamed patch #24 to reflect the changes accurately
+>  - Updated the design and lifecycle documentation (patch #30)
+>  - Based on top of Nathan's "Resolve AUTO properties" v6 series [0].
+>  
+> Please find the complete branch here:
+>  https://github.com/shamiali2008/qemu-master/tree/master-vcmdq-v7-ext
+>  
+> Sanity tested on NVIDIA Grace. Further testing in progress.
 
-By "OK" I mean it behaves like RAM: any kind of load or store
-will work, at any width and any alignment. That is what makes
-it OK to return the pointer from address_space_map(), where
-the caller will treat it as any other C host pointer (e.g.
-assigning it to a C struct pointer and then writing to fields
-in that struct), like virtio does:
+Successfully tested on Grace-Hopper. Feel free to take my T-b:
 
-        iov[num_sg].iov_base = dma_memory_map(vdev->dma_as, pa, &len,
-                                              is_write ?
-                                              DMA_DIRECTION_FROM_DEVICE :
-                                              DMA_DIRECTION_TO_DEVICE,
-                                              MEMTXATTRS_UNSPECIFIED);
-        if (!iov[num_sg].iov_base) {
-            virtio_error(vdev, "virtio: bogus descriptor or out of resources");
-            goto out;
-        }
-[etc]
+Tested-by: Eric Auger <eric.auger@redhat.com>
 
-This is only safe when the pointer is something we can
-handle as if it were a pointer to normal RAM (because the
-C compiler makes no promises about only doing correctly
-aligned and sized accesses: to it, memory is memory).
+All patches are now reviewed. Peter, please consider pulling this if you
+are satisfied with it, in addition to
 
-> If the BAR is RAM and I write into it, I will overwrite
-> data guest stored there. Is that "OK"?
+[PATCH v6 0/9] hw/arm/smmuv3-accel: Resolve AUTO properties <https://lore.kernel.org/all/20c8948f-1933-4410-96fc-10a2d53cb40a@redhat.com/#r>
+[PATCH v2] hw/pci/pci: Enforce pci_setup_iommu_per_bus() is called only
+once per bus
 
-If the guest said "please DMA to this address" then they're
-expecting you to overwrite that data, yes.
+( see
+https://lore.kernel.org/all/20c8948f-1933-4410-96fc-10a2d53cb40a@redhat.com/)
 
-Merging in your other reply:
+Thanks
 
->> The
->> problem is that for some PCI devices (like the network card
->> mentioned in 4a2e242bbb30's commit message) the BAR is *not*
->> safe for arbitrary access (because the actual real host hardware
->> inside it is not RAM).
+Eric
+
+
+
 >
-> But we don't do arbitrary access. Why would we?
-
-If we mark the MR as "direct access OK", then we do, or might do.
-The bug the commit is fixing is exactly that there is a codepath
-that uses the latitude that marking the MR as direct access permits.
-
-> There's no such thing as "not safe for direct access" in PCI.
-> All operations are memory operations.
-> What can be unsafe is accesses of specific width and length.
-
-I think we're talking at cross purposes here. By "safe for
-direct access" I mean exactly that arbitrary width and
-length and alignment are permitted. This is what
-memory_region_supports_direct_access() is testing.
-If the PCI BAR can't handle arbitrary widths etc then that
-function mustn't return true for its MR.
-
-(Though if we ever get into trying to address_space_map()
-a BAR like that something is going to go wrong anyway, because
-the "not OK for direct access" path fills and empties the bounce
-buffer by calling flatview_read() and address_space_write(),
-which aren't going to honour any theoretical alignment requirements.
-Perhaps that kind of BAR should just flat out not be one we handle
-with a ram_device MR?)
-
-> > (I think there are places where we do need to be more careful about
-> > what we do with accesses to real RAM, for where we're emulating a
-> > device write to RAM that's updating a data structure shared with the
-> > guest, and things like writing multiple times can cause problems.
-> > https://lore.kernel.org/qemu-devel/CAFEAcA8dwHV8F48kb-013rxkG9kKcZhym9_qarKmoeUfeh0YWw@mail.gmail.com/
-> > is an unrelated example of that, which I haven't done detailed
-> > analysis of yet.)
-
-> If it does not work, then QEMU is broken:
+> Feedback and testing are very welcome.
 >
+> Thanks,
+> Shameer
+> [0] https://lore.kernel.org/qemu-devel/20260608174900.2227340-1-nathanc@nvidia.com/
 >
-> /*
->  * Any compiler worth its salt will turn these memcpy into native unaligned
->  * operations.  Thus we don't need to play games with packed attributes, or
->  * inline byte-by-byte stores.
->  * Some compilation environments (eg some fortify-source implementations)
->  * may intercept memcpy() in a way that defeats the compiler optimization,
->  * though, so we use __builtin_memcpy() to give ourselves the best chance
->  * of good performance.
->  */
+> ---
+> Background(from RFCv1):
+> https://lore.kernel.org/qemu-devel/20251210133737.78257-1-skolothumtho@nvidia.com/
+>
+> Thanks to Nicolin for the initial patches and testing on which this
+> is based.
+>
+> Tegra241 CMDQV extends SMMUv3 by allocating per-VM "virtual interfaces"
+> (VINTFs), each hosting up to 128 VCMDQs.
+>
+> Each VINTF exposes two 64KB MMIO pages:
+>  - Page0 – guest owned control and status registers (directly mapped
+>            into the VM)
+>  - Page1 – queue configuration registers (trapped/emulated by QEMU)
+>
+> Unlike the standard SMMU CMDQ, a guest owned Tegra241 VCMDQ does not
+> support the full command set. Only a subset, primarily invalidation
+> related commands, is accepted by the CMDQV hardware. For this reason,
+> a distinct CMDQV device must be exposed to the guest, and the guest OS
+> must include a Tegra241 CMDQV aware driver to take advantage of the
+> hardware acceleration.
+>
+> VCMDQ support is integrated via the IOMMU_HW_QUEUE_ALLOC mechanism,
+> allowing QEMU to attach guest configured VCMDQ buffers to the
+> underlying CMDQV hardware through IOMMUFD. The Linux kernel already
+> supports the full CMDQV virtualisation model via IOMMUFD[0].
+> ---
+>
+> Nicolin Chen (15):
+>   backends/iommufd: Update iommufd_backend_get_device_info
+>   backends/iommufd: Update iommufd_backend_alloc_viommu to allow user
+>     ptr
+>   backends/iommufd: Introduce iommufd_backend_alloc_hw_queue
+>   backends/iommufd: Introduce iommufd_backend_viommu_mmap
+>   hw/arm/tegra241-cmdqv: Implement CMDQV init
+>   hw/arm/tegra241-cmdqv: Implement CMDQV vIOMMU alloc/free
+>   hw/arm/tegra241-cmdqv: mmap host VINTF Page0 for CMDQV
+>   hw/arm/tegra241-cmdqv: Emulate CMDQ-V Config region
+>   hw/arm/tegra241-cmdqv: Emulate VCMDQ register reads
+>   hw/arm/tegra241-cmdqv: Emulate VCMDQ register writes
+>   hw/arm/tegra241-cmdqv: Allocate HW VCMDQs once configured
+>   hw/arm/tegra241-cmdqv: Use mmap'd host VINTF page0 for virtual VINTF
+>     page0
+>   hw/arm/tegra241-cmdqv: Initialize register state on reset
+>   hw/arm/tegra241-cmdqv: Limit queue size based on backend page size
+>   hw/arm/virt-acpi: Advertise Tegra241 CMDQV nodes in DSDT
+>
+> Shameer Kolothum (16):
+>   system/iommufd: Remove unused viommu pointer from IOMMUFDVeventq
+>   hw/arm/smmuv3-accel: Introduce CMDQV ops interface
+>   hw/arm/tegra241-cmdqv: Add Tegra241 CMDQV ops backend stub
+>   hw/arm/smmuv3-accel: Wire CMDQV ops into accel lifecycle
+>   hw/arm/virt: Use stored SMMUv3 device list for IORT build
+>   hw/arm/tegra241-cmdqv: Probe host Tegra241 CMDQV support
+>   hw/arm/virt: Link SMMUv3 CMDQV resources to platform bus
+>   hw/arm/tegra241-cmdqv: Route allocated VCMDQ Page0 accesses to the
+>     mmap'd host VINTF page0
+>   memory: Allow RAM device regions to skip IOMMU mapping
+>   hw/arm/smmuv3-accel: Introduce common helper for veventq read
+>   hw/arm/tegra241-cmdqv: Read and propagate Tegra241 CMDQV errors
+>   hw/arm/smmuv3: Add per-device identifier property
+>   hw/arm/smmuv3-accel: Introduce helper to query CMDQV type
+>   hw/arm/smmuv3-accel: Enforce viommu association when CMDQV is active
+>   hw/arm/tegra241-cmdqv: Document the CMDQV design and lifecycle
+>   hw/arm/smmuv3: Add cmdqv property for SMMUv3 device
+>
+>  hw/arm/smmuv3-accel.h         |   48 ++
+>  hw/arm/tegra241-cmdqv.h       |  384 +++++++++++
+>  include/hw/arm/smmuv3.h       |    3 +
+>  include/hw/arm/virt.h         |    1 +
+>  include/system/iommufd.h      |   17 +-
+>  include/system/memory.h       |   21 +
+>  backends/iommufd.c            |   64 ++
+>  hw/arm/smmuv3-accel-stubs.c   |   12 +
+>  hw/arm/smmuv3-accel.c         |  194 ++++--
+>  hw/arm/smmuv3.c               |   10 +
+>  hw/arm/tegra241-cmdqv-stubs.c |   16 +
+>  hw/arm/tegra241-cmdqv.c       | 1119 +++++++++++++++++++++++++++++++++
+>  hw/arm/virt-acpi-build.c      |  127 ++--
+>  hw/arm/virt.c                 |   37 ++
+>  hw/vfio/iommufd.c             |    4 +-
+>  hw/vfio/listener.c            |    6 +
+>  system/memory.c               |   10 +
+>  backends/trace-events         |    4 +-
+>  hw/arm/Kconfig                |    5 +
+>  hw/arm/meson.build            |    2 +
+>  hw/arm/trace-events           |   11 +
+>  hw/vfio/trace-events          |    1 +
+>  qemu-options.hx               |    8 +
+>  23 files changed, 2024 insertions(+), 80 deletions(-)
+>  create mode 100644 hw/arm/tegra241-cmdqv.h
+>  create mode 100644 hw/arm/tegra241-cmdqv-stubs.c
+>  create mode 100644 hw/arm/tegra241-cmdqv.c
+>
 
-Good point. (Though if I were an optimizing compiler I might
-be tempted to optimize a switch() on the length where each
-case called memmove with a fixed length argument back into a
-single call to memmove...)
-
-I suspect your suggested flatview changes would fix that e1000
-bug. But I don't think they're the right thing for this problem.
-
--- PMM
 

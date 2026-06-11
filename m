@@ -4,97 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 107D7CD98CC
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 15:09:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4BA5CD98CF
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 15:10:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXh2Q-0005v4-PI; Thu, 11 Jun 2026 11:09:46 -0400
+	id 1wXh2h-0005zT-B9; Thu, 11 Jun 2026 11:10:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXh2P-0005uK-AW
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 11:09:45 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wXh2g-0005z8-Om
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 11:10:02 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXh2N-0006vT-Kf
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 11:09:45 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wXh2d-0007Fi-UJ
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 11:10:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781190582;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1781190599;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=a7W2CargfE8xR1DCZz7K2E1bJJouHNJWNgxaxM3VxVA=;
- b=V0+zm3Ea5j5aTHz94AgIHtVkZIZeau9KSDA4pVJBF4h+prKrX4mKB/UVRrTzCEVnGO9TWJ
- VYs2/AiAwsIhX1LTUUR78+RWJKrdhZmeP5/IOjbClVt9fWaSuQBkIWHfqVe3FENAG9EQiE
- SqGLQ0FmPqJv9Bsk1+NPeeCjIKMdHOE=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=OwoMDHKyixROezYf5MQBAnBHtD5tsWXd1Xniqee45l4=;
+ b=fbg1lA0I4tBF081sShOz+4BMF8pTjOyqDaItc3HUj1sUYFKWXzb4B5xXUDglEyF8f2ZRia
+ WBQgVmJW1OZ2Lid9MBhYUB18HDUgQJNTNGS2XHeLk2HUboA6wkoFAMM6z13fDPYiXYBsRz
+ GoOQXGIeMkxxjlq1CyCGyiBZq/bjgno=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-614-rc7GkpvMPYyEVLqZQ3ycCg-1; Thu, 11 Jun 2026 11:09:41 -0400
-X-MC-Unique: rc7GkpvMPYyEVLqZQ3ycCg-1
-X-Mimecast-MFC-AGG-ID: rc7GkpvMPYyEVLqZQ3ycCg_1781190580
-Received: by mail-ej1-f72.google.com with SMTP id
- a640c23a62f3a-bef1e83c990so791980766b.1
- for <qemu-arm@nongnu.org>; Thu, 11 Jun 2026 08:09:40 -0700 (PDT)
+ us-mta-460-Kj5anSfgMy2V9XKRgwY-FQ-1; Thu, 11 Jun 2026 11:09:57 -0400
+X-MC-Unique: Kj5anSfgMy2V9XKRgwY-FQ-1
+X-Mimecast-MFC-AGG-ID: Kj5anSfgMy2V9XKRgwY-FQ_1781190596
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-460198535bcso5212767f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 11 Jun 2026 08:09:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781190580; x=1781795380;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=a7W2CargfE8xR1DCZz7K2E1bJJouHNJWNgxaxM3VxVA=;
- b=YENT7aAvXXgXC2GZKZndCdhD3s3Txp4hq/cWfZztEM2UXo7ZJbqa0f9aVphYgEr2LS
- t7kZPCJYofTywXVh5OnRefBpGUkTEdZQxA+Rz91LiyMHYZ1t/adEn2a/GcOgQ++IoAUR
- fAMVCzsXYUn8C0+vQDi0PDzLUDPJ2iCsSnkhjETZOwyzfuvqk7qe+TF8TfHoKiLsFcZP
- psxH560ofkpCTMfDiO+sD+HnQSyyFexcfwr6SPXKulrJJuaxbAV87xEGGl0LPPcX0tj3
- PBDdmxEURnq3cCiSxhQzFMa6kEjMUSB0hj2Sls1h32VgfI3Sc6bRrwLufvcJuA61YWH0
- YanQ==
+ d=1e100.net; s=20251104; t=1781190596; x=1781795396;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=OwoMDHKyixROezYf5MQBAnBHtD5tsWXd1Xniqee45l4=;
+ b=hW0FSypjjjYQZpqwD4fHoZG2mJAUShF100mSahNoBjnVhBdcqkxG2cZF237j5D8v5S
+ EjYjGL38On4P7tl2uhbQP4ufDagKgGFdrLgZqk7v7CyL8Kl1NTWELvJwxop/XHee8qnA
+ Cc78TaQgLWDb9cGSmOqt5Q65ogo9/uK75RYtVGUnF7HLOvbwMKjfTZTkUmt/AOCA6X3H
+ Fg9WKlIOjA3cAMdPp2ALmytc4yqNZyD2ItaUS3t8hJAy078n5Ds7R36e5VU8z5Ia2uB9
+ 7AAkI20oBlsb1iGSkTPw2blkt4KJT5bR6oOn9K2usDFD2jCA0/jsWxpJc/5/gPPODHT1
+ C3yQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8v5DfYW6S0/NKtqpDMOLggkIPxqSNI5AxrfdNto7prFFQNQXqjHEew3DxPHAlo0ugqOTJxN98ogw==@nongnu.org
-X-Gm-Message-State: AOJu0YyNGoIXYaBpZp/O+wk/1ijPEY4UbWo6qT0QPXjsyF5yoqHNzMr4
- FQuXG4kJ1u4ulpDHua5ReB+nrddDv//2It7FRbM+xYsFyjM1FCc/jwWuD+NvUXClcLj7EU1SxVB
- DxfUPAyxhT27jaWQ/nvcatE+4F6k+V4CyhsIp3JvRkViFnALXJTXDjZ+Et/319w==
-X-Gm-Gg: Acq92OEj25+UCFPAx4f/lYafsFXoq5cHYJM6IKSJno9jnBab7yjqUK5rBqp1jcpPtCW
- wV9bEwqUIB5yCBoW23Y5kyptGeu4GjpHq0bYuHm92JMuzLSLphXKb2atwugNY3hWGS5GmPsK2Ih
- HSxAwFgvlcp0k/z5Iq/Sa5nI+1slD9HXsEKbaiMcsqmJ+8W6cfPvRdPSejaZi1eYv+Fvs5md0zf
- DQqjhY8Pa+rezSLgOGWcCSfrs+LtU4iXmYHzTc1TmBmDVXBLr9OgLhBsFOJzIHwieM74b1UnUF4
- oxCNAyN/VvINLAyC6OuM8R7t4ZrK3HU4Nyz6pCA/QeR8FQ0Zz13emJB4WZXr3MfHgZD1ISEG976
- DlYqZBsxnqaB2CUho95q0YhkbMo8jXDJQtgBQ2HSBpxsZ7XnuB6bAjg==
-X-Received: by 2002:a17:907:78a:b0:bee:215e:5480 with SMTP id
- a640c23a62f3a-bfc84a05ccdmr168811766b.9.1781190579708; 
- Thu, 11 Jun 2026 08:09:39 -0700 (PDT)
-X-Received: by 2002:a17:907:78a:b0:bee:215e:5480 with SMTP id
- a640c23a62f3a-bfc84a05ccdmr168808266b.9.1781190579106; 
- Thu, 11 Jun 2026 08:09:39 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
+ AFNElJ9oAvFUF+VXC7UMszaqzGNnI/Wqd4U0kz8IRGctdp7m1U+dEO9ucMUdLxdabGhbWQXzl3eND7I7eg==@nongnu.org
+X-Gm-Message-State: AOJu0YycgqvXrNa1ExlNc7ztn8RGAlJRdE0les4B9zp6MpnJRL1afLQF
+ s5+GrQJtcW5qghbFBkKdYvQAQ/bYetbL0k324EzkBfivLIPPRrkliVcZK9HBD5YPyDLSGTDuigW
+ Ip45rS3hXEGJ2GK7AqrjkFt49UNx3Xi1oOHfuo4a+lAqesO1C9BplSA==
+X-Gm-Gg: Acq92OEKmZ9JvgGofNbW3b7TSIlYtqJO4zhEGCthcdf3+KyFGmTjIPX/NB3zpAtaiJU
+ K1vEdfzNrTBMsALBOse1yfKOOtXasTeXIF+zMP/JmrsVeg0UqCgQ79iWN6W8+TO5ZiBr/vNA2M/
+ ab75vUiRPaOKKlng9mycjv3d5NEZOR7PXFACQXMZx4KH+Z63k8VFPfC4ccq5Go888urwWohDQ4A
+ v1Utbqma4iRKMtSrTfRobHqFUIqOm8p1K8TaKgOmUry8jThteKKQBT6JGLFx9T4xfsV1GT9m367
+ SWTUXk8kj/Dd8LLuDwX3w1nW2IYX5FLHYuFoc2OmJlzayosDWdgE9URoirJ0Awy5YgNIRNYcHKV
+ 0G7BxOALIM9kmnlROQGdpOJRShlqpd2ZVdf4YdcvodOLqSCRa78qpkX00KAtx+Hs1/3f2bvdIqR
+ cyMoEI
+X-Received: by 2002:adf:e007:0:20b0:45d:b14b:23fb with SMTP id
+ ffacd0b85a97d-46067475934mr4139545f8f.11.1781190596196; 
+ Thu, 11 Jun 2026 08:09:56 -0700 (PDT)
+X-Received: by 2002:adf:e007:0:20b0:45d:b14b:23fb with SMTP id
+ ffacd0b85a97d-46067475934mr4139492f8f.11.1781190595795; 
+ Thu, 11 Jun 2026 08:09:55 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-bfcb0f14759sm80876966b.6.2026.06.11.08.09.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Jun 2026 08:09:38 -0700 (PDT)
-Date: Thu, 11 Jun 2026 11:09:35 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Stefan Hajnoczi <stefanha@redhat.com>, Gavin Shan <gshan@redhat.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, jugraham@redhat.com,
- shan.gavin@gmail.com, qemu-block@nongnu.org
-Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
- parent if possible
-Message-ID: <20260611110543-mutt-send-email-mst@kernel.org>
-References: <20260608001821.850921-1-gshan@redhat.com>
- <20260610041036-mutt-send-email-mst@kernel.org>
- <20260610183046.GB121666@fedora>
- <20260610165710-mutt-send-email-mst@kernel.org>
- <20260611142022.GA202155@fedora>
- <20260611103513-mutt-send-email-mst@kernel.org>
- <CAFEAcA8RAsmrAArKz0X7NU6sCnKTC-e413TgwLp1gt2vJGLgPw@mail.gmail.com>
+ ffacd0b85a97d-4601f2dcbe3sm76396194f8f.8.2026.06.11.08.09.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 11 Jun 2026 08:09:55 -0700 (PDT)
+Message-ID: <cd93c431-888d-40a6-b373-960d5498d2a5@redhat.com>
+Date: Thu, 11 Jun 2026 17:09:53 +0200
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8RAsmrAArKz0X7NU6sCnKTC-e413TgwLp1gt2vJGLgPw@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 14/31] hw/arm/tegra241-cmdqv: mmap host VINTF Page0 for
+ CMDQV
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
+ nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
+ jgg@nvidia.com, zhenzhong.duan@intel.com, kjaju@nvidia.com,
+ phrdina@redhat.com
+References: <20260609112552.378999-1-skolothumtho@nvidia.com>
+ <20260609112552.378999-15-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260609112552.378999-15-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: WPH7YHCC2WZuiqAS4bxjYSqs1HXWVVqMtpjKArECpYg_1781190580
+X-Mimecast-MFC-PROC-ID: SyBHXzkluIjqqoZ0dNVLbGCGyMHzZuJQxBi3TqZWIqI_1781190596
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
@@ -114,69 +120,107 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Jun 11, 2026 at 04:04:20PM +0100, Peter Maydell wrote:
-> On Thu, 11 Jun 2026 at 15:46, Michael S. Tsirkin <mst@redhat.com> wrote:
-> >
-> > On Thu, Jun 11, 2026 at 10:20:22AM -0400, Stefan Hajnoczi wrote:
-> > > Gavin posted the lspci output:
-> > >
-> > >   Region 0: Memory at 661ffd000000 (64-bit, prefetchable) [size=16M]
-> > >   Region 2: Memory at 662000000000 (64-bit, prefetchable) [size=128G]
-> > >   Region 4: Memory at 661ffe000000 (64-bit, prefetchable) [size=32M]
-> > >
-> > > These are prefetchable memory BARs, so I would expect them to be
-> > > mmappable. Why does QEMU have no way of knowing upfront whether they can
-> > > be mmapped?
-> >
-> >
-> > They can be mmapped.  The issue is just that after mmap flatview uses
-> > memcpy/memmove on them, and that might not match what guest driver is
-> > expecting specifically for 1/2/4/8 byte accesses.
-> 
-> Huh? The guest driver has nothing to do with it, surely.
+Hi Shameer,
 
-My answer is I don't know.
+On 6/9/26 1:25 PM, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
+>
+> The kernel currently exposes a single VINTF per emulated SMMUv3
+> instance. IOMMU_VIOMMU_ALLOC returns an mmap offset for the host
+> VINTF Page0 allocated for this SMMU. However, VCMDQs only become
+> bound to that VINTF after IOMMU_HW_QUEUE_ALLOC, so until then the
+> mapped Page0 does not back any real VCMDQ state.
+>
+> mmap the host VINTF Page0 right after IOMMU_VIOMMU_ALLOC, as the host
+> VINTF is already enabled at that point, and unmap it when the vIOMMU is
+> freed. The mapping shares the vIOMMU's lifetime. This prepares the VINTF
+> mapping in advance of subsequent patches that add VCMDQ allocation.
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> Co-developed-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-But the commit that introduced the regression says:
+Thanks
 
-	 The assumption here is that accesses initiated by the VM are
-	    driven by a device specific driver, which knows the device
-	    capabilities. 
-
-> The
-> problem is that for some PCI devices (like the network card
-> mentioned in 4a2e242bbb30's commit message) the BAR is *not*
-> safe for arbitrary access (because the actual real host hardware
-> inside it is not RAM).
-
-But we don't do arbitrary access. Why would we?
-
-> That commit disabled direct access
-> for all vfio MRs, which is safe but overcautious. Would
-> "direct access is OK if this is a prefetchable memory BAR" be OK?
-> Or do some prefetchable memory BARs still have restrictions
-> beyond those of real RAM?
-> 
-> > Removing mmap is one solution, this is what vfio does now.
-> > Fixing flatview is another.
-> 
-> No, you can't fix this in flatview. If a BAR is not safe for
-> direct access then it is not safe for direct access.
-> 
-> -- PMM
-
-There's no such thing as "not safe for direct access" in PCI.
-All operations are memory operations.
-What can be unsafe is accesses of specific width and length.
-
-So we should not use variable length memcpy/memmove which
-do that. Fixes length memcpy/memmove exactly mimic what
-guest does, so they are safe.
-
--- 
-MST
+Eric
+> ---
+>  hw/arm/tegra241-cmdqv.h |  3 +++
+>  hw/arm/tegra241-cmdqv.c | 16 +++++++++++++++-
+>  2 files changed, 18 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/tegra241-cmdqv.h b/hw/arm/tegra241-cmdqv.h
+> index 9fc720e96c..00c83b6186 100644
+> --- a/hw/arm/tegra241-cmdqv.h
+> +++ b/hw/arm/tegra241-cmdqv.h
+> @@ -25,6 +25,8 @@
+>   */
+>  #define TEGRA241_CMDQV_IO_LEN 0x50000
+>  
+> +#define VINTF_PAGE_SIZE 0x10000
+> +
+>  struct iommu_viommu_tegra241_cmdqv;
+>  
+>  typedef struct Tegra241CMDQV {
+> @@ -33,6 +35,7 @@ typedef struct Tegra241CMDQV {
+>      MemoryRegion mmio_cmdqv;
+>      qemu_irq irq;
+>      IOMMUFDVeventq *veventq;
+> +    void *vintf_page0;
+>  } Tegra241CMDQV;
+>  
+>  const SMMUv3AccelCmdqvOps *tegra241_cmdqv_get_ops(void);
+> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
+> index c1351c8519..3eec6073a4 100644
+> --- a/hw/arm/tegra241-cmdqv.c
+> +++ b/hw/arm/tegra241-cmdqv.c
+> @@ -41,6 +41,10 @@ static void tegra241_cmdqv_free_viommu(SMMUv3State *s)
+>          g_free(veventq);
+>          cmdqv->veventq = NULL;
+>      }
+> +    if (cmdqv->vintf_page0) {
+> +        munmap(cmdqv->vintf_page0, VINTF_PAGE_SIZE);
+> +        cmdqv->vintf_page0 = NULL;
+> +    }
+>      iommufd_backend_free_id(viommu->iommufd, viommu->viommu_id);
+>  }
+>  
+> @@ -60,13 +64,20 @@ tegra241_cmdqv_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+>          return false;
+>      }
+>  
+> +    if (!iommufd_backend_viommu_mmap(idev->iommufd, viommu_id, VINTF_PAGE_SIZE,
+> +                                     cmdqv->cmdqv_data->out_vintf_mmap_offset,
+> +                                     &cmdqv->vintf_page0, errp)) {
+> +        error_append_hint(errp, "Tegra241 CMDQV: failed to mmap VINTF page0");
+> +        goto free_viommu;
+> +    }
+> +
+>      if (!iommufd_backend_alloc_veventq(idev->iommufd, viommu_id,
+>                                         IOMMU_VEVENTQ_TYPE_TEGRA241_CMDQV,
+>                                         1 << SMMU_EVENTQS, &veventq_id,
+>                                         &veventq_fd,
+>                                         errp)) {
+>          error_append_hint(errp, "Tegra241 CMDQV: failed to alloc veventq");
+> -        goto free_viommu;
+> +        goto munmap_page0;
+>      }
+>  
+>      veventq = g_new(IOMMUFDVeventq, 1);
+> @@ -77,6 +88,9 @@ tegra241_cmdqv_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+>      *out_viommu_id = viommu_id;
+>      return true;
+>  
+> +munmap_page0:
+> +    munmap(cmdqv->vintf_page0, VINTF_PAGE_SIZE);
+> +    cmdqv->vintf_page0 = NULL;
+>  free_viommu:
+>      iommufd_backend_free_id(idev->iommufd, viommu_id);
+>      return false;
 
 

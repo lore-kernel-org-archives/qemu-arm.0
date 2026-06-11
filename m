@@ -4,102 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1A5ACD98C7
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Jun 2026 21:46:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96932CD98C5
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 01:20:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXQkh-0002oj-Ln; Wed, 10 Jun 2026 17:46:26 -0400
+	id 1wXU5c-0000Ck-Uj; Wed, 10 Jun 2026 21:20:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXQjU-0002Y3-Tc
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 17:45:12 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wXU5b-0000By-51
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 21:20:11 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXQjS-0006lJ-OJ
- for qemu-arm@nongnu.org; Wed, 10 Jun 2026 17:45:08 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wXU5Y-0006x0-QF
+ for qemu-arm@nongnu.org; Wed, 10 Jun 2026 21:20:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781127905;
+ s=mimecast20190719; t=1781140806;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=+VwT6K+h1UU5mBosQ2pzNZ+g+ZPuQv0L8tsjGrWpLMY=;
- b=iDNX/FHamHak6qsaB0os+JfQuYNFhqOpnZqor04y+ytZe/l6zpqr1ThYqiqFQCIHG6bbeW
- GQIHAySDsSLMTc2WlpIlbHSSm9WE7jc3Ei7Aoa7eeP+S/478uEiTznVboqVJG2I25TeZPA
- DZODxDH3eN/YRCmkBC5+96jDhcHFgYo=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=2Dib+nvxx7dhI24Xtk5OtCYThsTAz12g/c4r/JdGJmI=;
+ b=BchByijvQHNUc4ysRytTeDkvRaI4kNl5nM2CmUplgd5o1d2Cjyachtt5cMYKaL2oDPJWTz
+ 5c06493nTyairb/pN34Z2YJ5TQafeywwKK/5acUmyWuW0621ZjaVX2nII2UIDiM0680RBA
+ OE7bYLYYPYATDr9feuIX/yyKR8PL56I=
+Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
+ [209.85.215.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-12-5pLC0zXINnuocEmpb9zHTA-1; Wed, 10 Jun 2026 17:45:04 -0400
-X-MC-Unique: 5pLC0zXINnuocEmpb9zHTA-1
-X-Mimecast-MFC-AGG-ID: 5pLC0zXINnuocEmpb9zHTA_1781127903
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-490b93debc8so58415555e9.1
- for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 14:45:04 -0700 (PDT)
+ us-mta-48-icp1Bw0pNcOzgfbb52CAnw-1; Wed, 10 Jun 2026 21:20:04 -0400
+X-MC-Unique: icp1Bw0pNcOzgfbb52CAnw-1
+X-Mimecast-MFC-AGG-ID: icp1Bw0pNcOzgfbb52CAnw_1781140804
+Received: by mail-pg1-f198.google.com with SMTP id
+ 41be03b00d2f7-c8604fbe71eso9584455a12.3
+ for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 18:20:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781127903; x=1781732703;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=+VwT6K+h1UU5mBosQ2pzNZ+g+ZPuQv0L8tsjGrWpLMY=;
- b=haFZl/9FmtbLKGXIFf6WFZYJJpwpyVqvYQEqEDe9xKfWWn3acMber8520Ai+jEtwA5
- SFGb8NnJjnYVoFqbthQs3YCEl/9dXxq6hSQjumwMfO1byVs1L0t0XjU3Q5v/LmSBqMhT
- Hjg2KhPfVz05gszInY0Gvh0JV8whY98swbjpqOdV6OGHJwi3d3y0cP+ooFoiEwOQEAr+
- mRc5Dyr2TouSbyD2xzfX/wBE9Oof2mPX5laNmx7TMd+vHGfWJ6WCdRMKwzO/I3nA8Ygo
- +4egGlZWTikY6JCtKkZpeHcudLQpHa5debQ0VMk5U+bCcE1XKN+GUAPpeiFlnyLxUHtb
- sxow==
+ d=1e100.net; s=20251104; t=1781140804; x=1781745604;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=2Dib+nvxx7dhI24Xtk5OtCYThsTAz12g/c4r/JdGJmI=;
+ b=mlciauT0fpVh4tQx9KB04yJ75F0IHvk0ZklBssKnLmsgTcbJHj+SSkvpw4S+LmtdWX
+ wPuB/Xpfy+9p2kZ+aC4Z9WtZiJ3JLXU1RbMt6deL7XfBJa2TE6wLuRpPQu/O7yyDhxk0
+ YeRRp3lhC+pW84TZq8CuH2GlNeBEep+GYzTw/ZAppMMfqsFxoD3ZCjbyqE3bSxMZE5Me
+ j9tsomV+Qp5PeenvZG3hGGQS1w0+jD7NVHf0lsvabbI368ZrG2GaojgLLJ8bMCl1HMw/
+ 0AcL0kbeVff6DKpUL5FZ5UWih47rvi89m945o8JsujZZZqcqUtN6Vs6OAMwzFaR2ch/W
+ +wCg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+zVa+JPKEhHcBJgfePk2YBMA15TDw/VphQvybmsBFB6yiPVtEdLVNdAg8nGg72tWqCJeIPruvuyA==@nongnu.org
-X-Gm-Message-State: AOJu0Yx7F9p1O4oMNHWAihK7d3w1ZQgyXRmgSOGgDZGo0cyUeombxhFe
- WjNcjSck2/GEQIW/Sbv2RJIHzx4h8feM/1e2ewPuUwhPut0TgJEGmbO2JwSCtDe2oFpdD1XLqeD
- MWDErAlGtLly8ZegYuJ8GH/cTjM5k7s/L8be8+OAZaMMtLnd87509ng==
-X-Gm-Gg: Acq92OEgJkAK0t8sr6HxkS4aQaHcWZPFO4bnYn9HeaSd/Bpvib8Xjq1WyqSuZVVfxbn
- 14LYYsGT/fe744fHlxLizYq9gZNe/eLYZ8qRMF+0VwsL+ngiWcK+Aod2J1jzAw5F0g2xDG/vAbS
- LPiveTNBurM+w3a9aX3FIZ7/hgbs5TTz1Ta3MuIL3NAzunIqPuBdh4ChQA1/mlO00R0QKIP89DM
- 8koxjz7p6P5PI/IPqzBPv1IKqlMpDeRspnYWx7FfWe3sBiWNhEWmGOxinPfXEF7/mIMJMAbeISu
- gZX8LNFRUAENUg4ndBcXmGYn8a/Fy3eBToTdArE6nLUuL7A7wV/G6CZPaxsiGDN1/5nScdZUOAE
- Q6KDb1QeyMBnCdzITL+tO7z6L0Ba3jRUrAHJXPVtJthyP64dhZ6gqzQ==
-X-Received: by 2002:a05:600c:1c1f:b0:490:b724:dbd6 with SMTP id
- 5b1f17b1804b1-490c2598382mr420257415e9.6.1781127903002; 
- Wed, 10 Jun 2026 14:45:03 -0700 (PDT)
-X-Received: by 2002:a05:600c:1c1f:b0:490:b724:dbd6 with SMTP id
- 5b1f17b1804b1-490c2598382mr420257085e9.6.1781127902471; 
- Wed, 10 Jun 2026 14:45:02 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4601f2f2710sm58612759f8f.14.2026.06.10.14.45.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Jun 2026 14:45:01 -0700 (PDT)
-Date: Wed, 10 Jun 2026 17:44:58 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Peter Xu <peterx@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Gavin Shan <gshan@redhat.com>,
- Pavel Hrdina <phrdina@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, jugraham@redhat.com,
- shan.gavin@gmail.com, Alex Williamson <alex@shazbot.org>,
- David Hildenbrand <david@kernel.org>
+ AFNElJ/dDQwn4AJb4Ki4V0psU/opmWr70z/n1XeD8/AOBi/BhHjJyppVqHLF0r6r3dQgUZTNJWUSrHMnvQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yyizw4bQYoc024iF/I8t9qNJNspb40wJ1+hKXRqyVgoXCI7BQnM
+ qm/ygdbDbZ5dA5aOufS8aPWHlEb3/HZGU7scVbsoiW3NLU8MeKuNTzwR7OmsjlMm6azzlVeeBpq
+ UNLEwtzvnhciJ6xV4ezL6Q2GtZIHELkQwEnbUAO5fL5u24nOOPxcwbA==
+X-Gm-Gg: Acq92OH3TahgpRQ1UB0g2j1uT9L45qYUKCYEmpl8VV1eMFpTJyTXs8d640sTUSoikFs
+ u93gEfsmQP2H7f+SDHawzu7QAT7bgBxRU6qggMG97tf029ES2rnllXv354WoPjOKow+OpiPS9c6
+ ugt/k5B9dPgyGNe2SVi3nYKa/7V4Yg8o6U44PNy3GuoTjllkf3TeQCwvARtEqYw42LKBYv2LwKn
+ Dp2PP07oT4OEoXX+E+md4BjqWA9SNPWJ5vijwrTtCnodZEOy4QWy+deWy0kWCoN1TjpiLNklg+v
+ 8MHP0J+ad0pD85CNqkDJpz4sU/t/TiajkxYIFWR9HdRtiImlI95PNmEnQkQ6Udvn47rA04pminp
+ lqmK4oVqTsib59dC2lJZ/1L2PYGxHxm9f7R5zUcy0JXH4QCZjj2pEzjIwwLLEfK2W69mOVRKKNa
+ A=
+X-Received: by 2002:a05:6a21:9148:b0:3b4:85db:1bed with SMTP id
+ adf61e73a8af0-3b5e33785c6mr353694637.45.1781140803622; 
+ Wed, 10 Jun 2026 18:20:03 -0700 (PDT)
+X-Received: by 2002:a05:6a21:9148:b0:3b4:85db:1bed with SMTP id
+ adf61e73a8af0-3b5e33785c6mr353663637.45.1781140803047; 
+ Wed, 10 Jun 2026 18:20:03 -0700 (PDT)
+Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
+ [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-c85df0a624fsm22299869a12.18.2026.06.10.18.19.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 10 Jun 2026 18:20:02 -0700 (PDT)
+Message-ID: <c1a590e1-05d3-4c96-9df4-4f82bd08c678@redhat.com>
+Date: Thu, 11 Jun 2026 11:19:56 +1000
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
  parent if possible
-Message-ID: <20260610174052-mutt-send-email-mst@kernel.org>
-References: <20260610082637-mutt-send-email-mst@kernel.org>
- <5d8cbd4b-3725-437e-88a3-e0af32164815@redhat.com>
- <e7cc9f2d-ccb4-442f-a1ed-7c5474395099@redhat.com>
- <20260610095712-mutt-send-email-mst@kernel.org>
- <aimEl9QQ_LTRPLtd@x1.local>
- <CAFEAcA8HhC-=KwdbNE5jgqdP+H1VF1aJXdGaME8KsaDHhnBG9Q@mail.gmail.com>
- <20260610121846-mutt-send-email-mst@kernel.org>
- <aim2tpHiev3iOkDE@x1.local>
- <20260610170146-mutt-send-email-mst@kernel.org>
- <ainWw13-_TfX_vln@x1.local>
-MIME-Version: 1.0
-In-Reply-To: <ainWw13-_TfX_vln@x1.local>
+To: Stefan Hajnoczi <stefanha@redhat.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, jugraham@redhat.com,
+ shan.gavin@gmail.com, qemu-block@nongnu.org
+References: <20260608001821.850921-1-gshan@redhat.com>
+ <20260610041036-mutt-send-email-mst@kernel.org>
+ <20260610183046.GB121666@fedora>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20260610183046.GB121666@fedora>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: -SwRULIndgHA1jo1pkbb9SRVFHM_g-KfGbJ1Nl8zeQU_1781127903
+X-Mimecast-MFC-PROC-ID: fG0jlsqbeBlZWEHAL8bvGglA410dgxRWJzwg8bojz4s_1781140804
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
@@ -123,124 +118,256 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Jun 10, 2026 at 05:27:31PM -0400, Peter Xu wrote:
-> On Wed, Jun 10, 2026 at 05:03:59PM -0400, Michael S. Tsirkin wrote:
-> > On Wed, Jun 10, 2026 at 03:10:46PM -0400, Peter Xu wrote:
-> > > On Wed, Jun 10, 2026 at 12:19:39PM -0400, Michael S. Tsirkin wrote:
-> > > > On Wed, Jun 10, 2026 at 05:11:40PM +0100, Peter Maydell wrote:
-> > > > > On Wed, 10 Jun 2026 at 16:37, Peter Xu <peterx@redhat.com> wrote:
-> > > > > >
-> > > > > > On Wed, Jun 10, 2026 at 10:06:24AM -0400, Michael S. Tsirkin wrote:
-> > > > > > > This is the change that broke it I think?
-> > > > > > >
-> > > > > > >
-> > > > > > > commit 4a2e242bbb306ef5c16ce9e7bb2da3bd8a4eb098
-> > > > > > > Author: Alex Williamson <alex@shazbot.org>
-> > > > > > > Date:   Mon Oct 31 09:53:03 2016 -0600
-> > > > > > >
-> > > > > > >     memory: Don't use memcpy for ram_device regions
-> > > > > > >
-> > > > > > >
-> > > > > > > Maybe Alex has an opinion on what to do.
-> > > > > >
-> > > > > > I can offer one idea here..
-> > > > > >
-> > > > > > IIUC the major issue was vector ops but the mr ops might be too heavy, then
-> > > > > > another way to fix it is in memory API instead of using memcpy()/memmove(),
-> > > > > > we always use a helper (say, memmove_no_vector()) to do the split and
-> > > > > > properly aligned IOs as what ram_device_mem_ops does right now, this should
-> > > > > > only applies to ram_device.
-> > > > > 
-> > > > > If the underlying memory needs to be accessed only with specific
-> > > > > alignment/size, as the 4a2e242bbb30 commit message suggests, then
-> > > > > we cannot expose it via address_space_map(), so we must have
-> > > > > a bounce-buffer.
-> > > 
-> > > I get the point; this is technically a concern, but IMHO it's still
-> > > slightly different, and I expect it non-issue in reality.
-> > > 
-> > > Essentially we can have two ways to iteract with the pci bar:
-> > > 
-> > > 1) via vCPU / CPU access
-> > > 2) via DMA targets
-> > > 
-> > > Alex can correct me, but IIUC that problem was when the CPU accesses the
-> > > mapped region with memcpy(), rather than making that bar to be DMA target.
-> > > Hence, use case 1) only.  So my current understanding is the proposal
-> > > shouldn't (hopefully..) regress that realtek problem because use case 1) is
-> > > properly covered.
-> > > 
-> > > I always think it is very bogus to have any register-like MMIO regions to
-> > > be passed over, maybe it's a bug already?  It's because I don't know any
-> > > way to guarantee DMA performs in a way that will be compatible with a pci
-> > > bar that is register-based and will not have any side effect.  Say, if some
-> > > pci bar (real register-backed) must be accessed in 4B and aligned, how
-> > > would a DMA request guarantee that?
-> > > 
-> > > >From that perspective, IMHO it's a guest (driver or app, I'm not sure..)
-> > > bug to make such region to be DMA target in the first place.  The outcome
-> > > of such setup should be undefined.  It'll be the same after applying the
-> > > proposal I raised, that QEMU will have undefined behavior for such pci bars
-> > > to be used as DMA targets.
-> > > 
-> > > Thanks,
-> > 
-> > Sorry, wasting gibabytes and GB/s of main
-> > RAM and PCI BW just to shuffle data back out the PCI bus
-> > is out of the question.
-> > 
-> > You don't have to like it)
+On 6/11/26 4:30 AM, Stefan Hajnoczi wrote:
+> On Wed, Jun 10, 2026 at 05:49:21AM -0400, Michael S. Tsirkin wrote:
+>> On Mon, Jun 08, 2026 at 10:18:21AM +1000, Gavin Shan wrote:
+>>> On the guest where a NVidia's GH100 card is passed from the host, the
+>>> guest system hang can be observed on attempt to compile 'cuda-samples',
+>>> as reported by Julia.
+>>>
+>>>     host$ lspci | grep GH100
+>>>     0009:01:00.0 3D controller: NVIDIA Corporation GH100 [GH200 120GB / 480GB] (rev a1)
+>>>     host$ /home/sandbox/gavin/qemu.main/build/qemu-system-aarch64 -accel kvm \
+>>>           -machine virt,gic-version=host,ras=on,highmem-mmio-size=4T         \
+>>>           -cpu host -smp cpus=32 -m size=8G                                  \
+>>>           -drive file=/home/gavin/sandbox/images/disk.qcow2,if=none,id=d0    \
+>>>           -device virtio-blk-pci,id=vb0,bus=pcie.0,drive=d0,num-queues=4     \
+>>>           -device vfio-pci-nohotplug,host=0009:01:00.0,bus=pcie.1.0
+>>>
+>>>     guest$ cd cuda-samples/build
+>>>     guest$ make -j 20 clean
+>>>     guest$ make -j 20
+>>>                 :
+>>>     [ 54%] Linking CUDA executable graphMemoryNodes
+>>>     [ 54%] Built target graphMemoryNodes
+>>>     <no more output afterwards, guest becomes frozen here>
+>>>
+>>>     guest$ qemu-system-aarch64: virtio: bogus descriptor or out of resources
+>>>     [  555.814025] virtio_blk virtio0: [vda] new size: 268435456 512-byte logical blocks (137 GB/128 GiB)
+>>>
+>>> When the GPU's driver (NVidia open driver) is loaded on guest bootup,
+>>> the memory blocks residing in the PCI BAR can be presented to the guest
+>>> through memory hot-add. The page cache can be allocated from the hot added
+>>> memory blocks when cuda-samples is being built. Afterwards, he page cache
+>>> is sent to QEMU's virtio-blk device as part of the DMA request, the bounce
+>>> buffer is used to accomodate the request as the corresponding memory
+>>> region (MemoryRegion) is a RAM DEVICE region in qemu. For this specific
+>>> case, false is returned from memory_access_is_direct() in the path where
+>>> the DMA request is handled.
+>>>
+>>>    QEMU
+>>>    ====
+>>>    virtio_blk_handle_output
+>>>      virtio_blk_handle_vq
+>>>        virtio_blk_get_request
+>>>          virtqueue_pop
+>>>            virtqueue_split_pop
+>>>              virtqueue_map_desc
+>>>                address_space_map
+>>>                  memory_access_is_direct         # Return false
+>>>                    memory_region_supports_direct_access
+>>>
+>>>    (qemu) info mtree
+>>>            :
+>>>    memory-region: pci_bridge_pci
+>>>      0000000000000000-ffffffffffffffff (prio 0, container): pci_bridge_pci
+>>>        0000042000000000-0000043fffffffff (prio 1, i/o): 0009:01:00.0 base BAR 4
+>>>          0000042000000000-0000043fffffffff (prio 0, i/o): 0009:01:00.0 BAR 4
+>>>            0000042000000000-000004379fffffff (prio 0, ramd): 0009:01:00.0 BAR 4 mmaps[0]
+>>>
+>>> By default, the max bounce buffer size is only 4096 bytes, even less
+>>> than one page when the guest page is 64KB. This tries to fix the issue
+>>> by inheriting the customized max bounce buffer size of the virtio bus's
+>>> parent through property 'x-max-bounce-buffer-size' when the customized
+>>> size is a larger one. With this applied, no guest system hang is seen
+>>> with '-device virtio-blk-pci,...,x-max-bounce-buffer-size=268435456'.
+>>>
+>>> Reported-by: Julia Graham <jugraham@redhat.com>
+>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>> ---
+>>>   hw/virtio/virtio-bus.c | 14 ++++++++++++++
+>>>   1 file changed, 14 insertions(+)
+>>>
+>>> diff --git a/hw/virtio/virtio-bus.c b/hw/virtio/virtio-bus.c
+>>> index cef944e015..e0933823f3 100644
+>>> --- a/hw/virtio/virtio-bus.c
+>>> +++ b/hw/virtio/virtio-bus.c
+>>> @@ -42,6 +42,7 @@ do { printf("virtio_bus: " fmt , ## __VA_ARGS__); } while (0)
+>>>   /* A VirtIODevice is being plugged */
+>>>   void virtio_bus_device_plugged(VirtIODevice *vdev, Error **errp)
+>>>   {
+>>> +    AddressSpace *as;
+>>>       DeviceState *qdev = DEVICE(vdev);
+>>>       BusState *qbus = BUS(qdev_get_parent_bus(qdev));
+>>>       VirtioBusState *bus = VIRTIO_BUS(qbus);
+>>> @@ -100,6 +101,19 @@ void virtio_bus_device_plugged(VirtIODevice *vdev, Error **errp)
+>>>                   return;
+>>>               }
+>>>           }
+>>> +    } else {
+>>> +        /*
+>>> +         * The maximal bounce buffer size of the virtio bus's parent may
+>>> +         * have been customized by property 'x-max-bounce-buffer-size'.
+>>> +         * Lets inherit the customized size if it's larger than the
+>>> +         * current one.
+>>> +         */
+>>> +        as = klass->get_dma_as ? klass->get_dma_as(qbus->parent) : NULL;
+>>> +        if (as) {
+>>> +            vdev->dma_as->max_bounce_buffer_size = MAX(
+>>> +                    vdev->dma_as->max_bounce_buffer_size,
+>>> +                    as->max_bounce_buffer_size);
+>>> +        }
+>>>       }
+>>>   }
+>>>   
+>>> -- 
+>>> 2.54.0
+>>
+>>
+>> Problem with all this is, users would not know how to size this.
+>>
+>> So fundamentally, is not the issue that virtio blk (and scsi!) maps
+>> all of the buffer all the time?
+>>
+>> It's not hard to add something like virtio_pop_unmapped that would not map,
+>> then build QEMUSGLists out of addr/len pairs and submit these.
+>>
+>> Stefan, do you think doing it like this would be bad for perf? Good for
+>> perf?
 > 
-> I'm not sure if my previous comment wasn't clear, but just to make sure it
-> is..
+> I'd like to first make sure that the BAR really cannot be mmapped.
 > 
-> The proposal was exactly about making ram_device to be directly accessible
-> by default.  That is, make memory_region_supports_direct_access() return
-> true for ram_device like before, however when doing direct access from
-> QEMU, QEMU should use memmove_no_vector() version instead of memcpy().
+> A bounce buffer is necessary when QEMU has no way of mmapping the memory
+> (e.g. it needs to invoke a device model's callback to read/write the
+> MemoryRegion).
 > 
-> We leave DMA maps like virtio-blk to be directly accessible without
-> auditing device emulations using memcpy() or not: then QEMU faces the same
-> risk to bare metal where MMIO regions used for DMA buffers, then it's
-> undefined behavior.
+> The reason why the bounce buffer size is low is because it's normally
+> only used on emulated machines where MMIO registers or similar small
+> MemoryRegions are accessed by DMA. If we ran into this on modern
+> machines there would also be other consequences like vhost devices would
+> be unable to access that memory since it cannot be shared/mmapped.
 > 
-> In case of GPU bar mapping, it should then work like RAM for virtio-blk.
+> This is why I think we need to understand why this BAR is a RAM DEVICE.
+> If it can support mmap then this issue, plus anything else like vhost,
+> would work.
 > 
+> Gavin, can you share the output of `lspci -vv -s 0009:01:00.0`?
+> 
+
+root@nvidia-grace-hopper-01:/home/gavin/sandbox/qemu.main# lspci -vv -s 0009:01:00.0
+0009:01:00.0 3D controller: NVIDIA Corporation GH100 [GH200 120GB / 480GB] (rev a1)
+	Subsystem: NVIDIA Corporation Device 1809
+	Physical Slot: 9
+	Control: I/O+ Mem+ BusMaster- SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR+ FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Interrupt: pin A routed to IRQ 170
+	NUMA node: 0
+	IOMMU group: 12
+	Region 0: Memory at 661ffd000000 (64-bit, prefetchable) [size=16M]
+	Region 2: Memory at 662000000000 (64-bit, prefetchable) [size=128G]
+	Region 4: Memory at 661ffe000000 (64-bit, prefetchable) [size=32M]
+	Capabilities: [40] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0-,D1-,D2-,D3hot-,D3cold-)
+		Status: D3 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [48] MSI: Enable- Count=1/16 Maskable+ 64bit+
+		Address: 0000000000000000  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [60] Express (v2) Endpoint, IntMsgNum 0
+		DevCap:	MaxPayload 256 bytes, PhantFunc 0, Latency L0s <64ns, L1 <1us
+			ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W TEE-IO-
+		DevCtl:	CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+			RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 256 bytes, MaxReadReq 4096 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 32GT/s, Width x1, ASPM L1, Exit Latency L1 <4us
+			ClockPM+ Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 128 bytes, LnkDisable- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 16GT/s (downgraded), Width x1
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Range AB, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp+ 10BitTagReq+ OBFF Via message, ExtFmt- EETLPPrefix+, MaxEETLPPrefixes 1
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis-
+			 AtomicOpsCtl: ReqEn-
+			 IDOReq- IDOCompl- LTR+ EmergencyPowerReductionReq-
+			 10BitTagReq+ OBFF Disabled, EETLPPrefixBlk-
+		LnkCap2: Supported Link Speeds: 2.5-32GT/s, Crosslink- Retimer+ 2Retimers+ DRS-
+		LnkCtl2: Target Link Speed: 32GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete+ EqualizationPhase1+
+			 EqualizationPhase2+ EqualizationPhase3+ LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [9c] Vendor Specific Information: Len=14 <?>
+	Capabilities: [b0] MSI-X: Enable- Count=9 Masked-
+		Vector table: BAR=0 offset=00b90000
+		PBA: BAR=0 offset=00ba0000
+	Capabilities: [100 v1] Secondary PCI Express
+		LnkCtl3: LnkEquIntrruptEn- PerformEqu-
+		LaneErrStat: 0
+	Capabilities: [12c v1] Latency Tolerance Reporting
+		Max snoop latency: 0ns
+		Max no snoop latency: 0ns
+	Capabilities: [14c v1] Data Link Feature <?>
+	Capabilities: [158 v1] Physical Layer 16.0 GT/s <?>
+	Capabilities: [188 v1] Physical Layer 32.0 GT/s <?>
+	Capabilities: [1b8 v2] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP-
+			ECRC- UnsupReq- ACSViol- UncorrIntErr- BlockedTLP- AtomicOpBlocked- TLPBlockedErr-
+			PoisonTLPBlocked- DMWrReqBlocked- IDECheck- MisIDETLP- PCRC_CHECK- TLPXlatBlocked-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP-
+			ECRC- UnsupReq- ACSViol- UncorrIntErr+ BlockedTLP- AtomicOpBlocked- TLPBlockedErr-
+			PoisonTLPBlocked- DMWrReqBlocked- IDECheck- MisIDETLP- PCRC_CHECK- TLPXlatBlocked-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+
+			ECRC- UnsupReq- ACSViol- UncorrIntErr+ BlockedTLP- AtomicOpBlocked- TLPBlockedErr-
+			PoisonTLPBlocked- DMWrReqBlocked- IDECheck- MisIDETLP- PCRC_CHECK- TLPXlatBlocked-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr- CorrIntErr- HeaderOF-
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr- CorrIntErr+ HeaderOF+
+		AERCap:	First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 04000001 0000000f 01080000 00000000
+	Capabilities: [200 v1] Lane Margining at the Receiver
+		PortCap: Uses Driver+
+		PortSta: MargReady- MargSoftReady-
+	Capabilities: [248 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [250 v1] Single Root I/O Virtualization (SR-IOV)
+		IOVCap:	Migration- 10BitTagReq+ IntMsgNum 0
+		IOVCtl:	Enable- Migration- Interrupt- MSE- ARIHierarchy+ 10BitTagReq-
+		IOVSta:	Migration-
+		Initial VFs: 24, Total VFs: 24, Number of VFs: 0, Function Dependency Link: 00
+		VF offset: 2, stride: 1, Device ID: 2342
+		Supported Page Size: 00000573, System Page Size: 00000001
+		Region 0: Memory at 0000661ffca00000 (64-bit, prefetchable)
+		Region 2: Memory at 0000000000000000 (64-bit, prefetchable)
+		Region 4: Memory at 0000000000000000 (64-bit, prefetchable)
+		VF Migration: offset: 00000000, BIR: 0
+	Capabilities: [2a4 v1] Vendor Specific Information: ID=0001 Rev=1 Len=014 <?>
+	Capabilities: [2b8 v1] Power Budgeting <?>
+	Capabilities: [2c8 v1] Data Object Exchange
+		DOECap: IntSup+
+			IntMsgNum 0
+		DOECtl: IntEn-
+		DOESta: Busy- IntSta- Error- ObjectReady-
+	Capabilities: [2e0 v1] Address Translation Service (ATS)
+		ATSCap:	Invalidate Queue Depth: 00
+		ATSCtl:	Enable+, Smallest Translation Unit: 00
+	Capabilities: [2e8 v1] Process Address Space ID (PASID)
+		PASIDCap: Exec- Priv-, Max PASID Width: 14
+		PASIDCtl: Enable+ Exec- Priv-
+	Capabilities: [2f0 v1] Device Serial Number c5-c5-17-ff-f6-2d-b0-48
+	Kernel driver in use: nvgrace_gpu_vfio_pci
+	Kernel modules: nouveau
+
+
 > Thanks,
+> Stefan
 
-Ah, I get it. not sure we need memmove_no_vector even, we can keep
-the bounce buffer thing if we want.
-
-> > 
-> > > > 
-> > > > Right. And virtio currently isn't friendly to the bounce buffer.
-> > > > We can fix that but I worry about the perf impact.
-> > > > 
-> > > > > The address_space_map() function says
-> > > > > "here's a host pointer to  memory, do what you like to it", and
-> > > > > the caller is entitled to memcpy to/from it or otherwise
-> > > > > access it with any C operations, which are not guaranteed to
-> > > > > respect any kind of alignment or similar restrictions.
-> > > > > 
-> > > > > My guess from commit 4a2e242bbb30 is that that applied an
-> > > > > overly broad "don't do direct access" hammer to all
-> > > > > vfio assigned devices, and that there needs to be some
-> > > > > concept of "this vfio assigned device's region is OK for
-> > > > > direct access" vs "this other one is not", such that if
-> > > > > this GH100 card's BAR guarantees it can be treated entirely
-> > > > > as RAM then we can have memory_region_supports_direct_access()
-> > > > > return true for it.
-> > > > > 
-> > > > > thanks
-> > > > > -- PMM
-> > > > 
-> > > 
-> > > -- 
-> > > Peter Xu
-> > 
-> > 
-> 
-> -- 
-> Peter Xu
+Thanks,
+Gavin
 
 

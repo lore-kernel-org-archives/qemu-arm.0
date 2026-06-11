@@ -4,109 +4,151 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 636CBCD8CB9
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 06:52:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F20FCD98CC
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Jun 2026 11:21:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXZGI-0007rZ-46; Thu, 11 Jun 2026 02:51:34 -0400
+	id 1wXdSf-0000Jm-5m; Thu, 11 Jun 2026 07:20:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXZGG-0007rJ-W7
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 02:51:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wXdSd-0000JH-Hz
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 07:20:35 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXZGF-00078t-1X
- for qemu-arm@nongnu.org; Thu, 11 Jun 2026 02:51:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781160689;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=c8ah96WPgdtbvq1PyE+wkIRcfiH+NS+6EfcqQ46lry4=;
- b=Q9Q+V2smvEvIS82hmWE00izkpjK1P9Yoq5ABpUl1sTstd6t+Jc7X4AdLm7AZUvPwv7+rWt
- /+AecmoDT661/YhrWHxuripAD6kUvzq+9wRBcdbM6jQJR8L154e62PNwjWX3gucHbrxncs
- wetnySobONNBHTex+/Wm77c6yt+T+zg=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-502-anJof7wmPGWp3TXVaBCvXw-1; Thu, 11 Jun 2026 02:51:28 -0400
-X-MC-Unique: anJof7wmPGWp3TXVaBCvXw-1
-X-Mimecast-MFC-AGG-ID: anJof7wmPGWp3TXVaBCvXw_1781160687
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-45ef4931de5so306330f8f.1
- for <qemu-arm@nongnu.org>; Wed, 10 Jun 2026 23:51:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wXdSc-0007qs-1V
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2026 07:20:35 -0400
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 65BA1olh271437
+ for <qemu-arm@nongnu.org>; Thu, 11 Jun 2026 11:20:31 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ AD/Q7/2636o3hlObJyzSqNEjXF0nwYvyi+Igpex9TlQ=; b=WWdnyq84GjpkYHad
+ GGWfq3qyW2tV83c3aYdK1w1hSYVM72VM7rxPRKX2teKuxdsx7Hc3niZs1M0+seJm
+ hj7AOvmjFYHd0bGaASSwoiScPG9GBmGIyt3WSTxs8xY25gV8zmcbwFtWwYvErRF/
+ 2zg/B1tJseN7FAqYkKekPJSQF/JeIIou8YuD23jjfjJtv8Q8EQR18zngE9zS/URP
+ 4+tAO2QawPZsGC5NY1MIKf/Od2jyxXPSDTBClhcynRIRs88lBmXC13rxGkMwLVUt
+ zTEzfcsDZoX5i1TZpNPZ3ia87+0jBf19/3FOHPvn87JtUT0GEqV3RgbtljuHoDwH
+ +ky/YQ==
+Received: from mail-vs1-f69.google.com (mail-vs1-f69.google.com
+ [209.85.217.69])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4eqe71k7dp-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 11 Jun 2026 11:20:30 +0000 (GMT)
+Received: by mail-vs1-f69.google.com with SMTP id
+ ada2fe7eead31-6c33d75153dso2977726137.0
+ for <qemu-arm@nongnu.org>; Thu, 11 Jun 2026 04:20:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1781176830; x=1781781630; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=AD/Q7/2636o3hlObJyzSqNEjXF0nwYvyi+Igpex9TlQ=;
+ b=HIEjC/DTDcwk1t5wbEwp27BRt0BOheVcGtQJDwmhDG7yWxtHQJtLwfFY/r20u2B4g4
+ E7dMlyDmplnTjT416L/nbVlzxYzZZtLwsxsind2H15YoX7z+abU6y4s+oW3QZA4LkYEp
+ cXVecYL1VWoK19f5NIkK7HWkBFO2+ynlkgghf82Ce3KEeBb8h8wGreW+/NQH3K1wZKDc
+ W/a5NiaIePLxfD4aZR05Bj0tQtMUDJSxGvq4JCpCBqpHjGsjx8Kv9EZ9ydBoMDRg4/+2
+ 79lZOgTe326YJ0qILBjEckYYK/SSBlqHtubtLBHMIzSa9359l1nI2zjhQfgVLqMXuXfS
+ l7zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781160687; x=1781765487;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=c8ah96WPgdtbvq1PyE+wkIRcfiH+NS+6EfcqQ46lry4=;
- b=CY1B78nCqLZ99nonpTVUGOhHwWkCmPC5MvQ7NXRzrRDGW3NtNrtS0terx90Hxi/RN3
- AW46f631Nu/1mwvsQaSla7R1qy7zbMnuyjjJY618VyzJWXCsuXFeA3ItAAse/PwUmkxJ
- Md82UqD0jxh5oagEdxTLs03rkNGDy/kd4Txdft4hmMHMTiF/sublCPArl28p5vIR1aY4
- jw96vEJI5nbztUJ1ur8AcrrXqE3mFr5CCG2J2kllse67j9MXH82kEhdf1o3CKN/zvDmC
- YYbbbUmi52rfqkTfRjdznmvU6H91wj2u66i6j+Ye3RJv9fCuBYNWzVdua7ELhNW1H1lO
- mdpA==
+ d=1e100.net; s=20251104; t=1781176830; x=1781781630;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=AD/Q7/2636o3hlObJyzSqNEjXF0nwYvyi+Igpex9TlQ=;
+ b=Sx9ouPIHxAAPeJ/zyyX9AIwenoWy0l80XW2+anPleopL3nWZMHk1W0/mv9jwVNf+6Q
+ uX/Tru+3qLfC7NlyJjMt1XAY7XOWLK6tfOaggL+OaIKGEIaebT2E8g0NakLfR75sfwQx
+ ARMXi2LuDFpYCj95zfP0cEuZA5a7Ra6bAgTYQrTdbHuG4MT7AI606osx8uGoEMz02YJB
+ TxCiZgfDtfd0hKwW8eTusTUx/O7HEngGZAIe4uci7z4dD777LZkzVUAdZoJRoNk5KTtE
+ Kdy2JCU565aJx/68pNiGdVaptI8ns4sJYcUol4Ge/HVMB8j8umR8wSJJtQEgnWY+atD8
+ VdmA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+Mtt7wifQkn0NjDQQ8sSF4i0iSwCvQHH7ZJ1yXV+I40iP4ph0YcbQPB7Rl6t9OI29r1AWQktHvsw==@nongnu.org
-X-Gm-Message-State: AOJu0YzigZ/UFl3tr8fP0obpXQCfFRk5/NmeefCNKtcgXUql+b++uYXr
- nIS5kWWGwiuUFVH3DCMYgFWcAiIAiWgSk6o6CWvFY3hSs8/Fb2E8nXE2wQEx1gNNVyvGid0ZQ0J
- dfSWcF4ToMquK7JTC4NLSqpgI2Hwa6ik8xULpEO8AQJ7Jxi7Wcb+uxQ==
-X-Gm-Gg: Acq92OHSas1vO3ZHBPOcANru7rYasSBofShDNQiNExasyyMyGRc1YBoxwFAxsDb8iSk
- KUElUvkym8yZZb/K3Ey4Nd8eTHBUbflpFnaLQfC969OXbeVxA0PVFYtcVoEy1C9mGxa3Tp0AHM3
- +T/XQNPPEK2AJDztmM39e86QKiaYnLBuuez0B01BIFDHdMMdGnYeKKkq7Hv1c05dtRbT5q4M2YX
- PtKQrarAUVG6KYzPSnrVjqDrM8vpCG18wmsg3bq9qDkA37zsm8YB0HQGSuuVCeC82nCWpNgcqUu
- rukkkPs+aT4EKwVlC79mn4uivmoCWJ4dBToOKuEYYYN7W1PRIqVIs81yvIHkXtLCJWWh1Hf/XHn
- iLLNdaB4nb55JCOc5f0bO/JCmBZtmPF1FjGke91prTZ2Yz7LcA0uqlA==
-X-Received: by 2002:a05:600c:a41a:b0:490:af46:5c68 with SMTP id
- 5b1f17b1804b1-490e510f954mr7800355e9.7.1781160686757; 
- Wed, 10 Jun 2026 23:51:26 -0700 (PDT)
-X-Received: by 2002:a05:600c:a41a:b0:490:af46:5c68 with SMTP id
- 5b1f17b1804b1-490e510f954mr7800085e9.7.1781160686266; 
- Wed, 10 Jun 2026 23:51:26 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4601f3444fesm78129019f8f.20.2026.06.10.23.51.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Jun 2026 23:51:25 -0700 (PDT)
-Date: Thu, 11 Jun 2026 02:51:23 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: Peter Xu <peterx@redhat.com>, Pavel Hrdina <phrdina@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, jugraham@redhat.com,
- shan.gavin@gmail.com, Alex Williamson <alex@shazbot.org>,
- David Hildenbrand <david@kernel.org>
-Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
- parent if possible
-Message-ID: <20260611024203-mutt-send-email-mst@kernel.org>
-References: <eb0f0da1-11dd-4437-94fd-a65af55851e1@redhat.com>
- <20260610082637-mutt-send-email-mst@kernel.org>
- <5d8cbd4b-3725-437e-88a3-e0af32164815@redhat.com>
- <e7cc9f2d-ccb4-442f-a1ed-7c5474395099@redhat.com>
- <20260610095712-mutt-send-email-mst@kernel.org>
- <aimEl9QQ_LTRPLtd@x1.local>
- <20260610121026-mutt-send-email-mst@kernel.org>
- <1e9515c9-7e32-4d95-9b73-aab8bf10bddc@redhat.com>
- <20260611012217-mutt-send-email-mst@kernel.org>
- <3726a607-6cac-41f1-b402-0eed7c4e3fe3@redhat.com>
+ AFNElJ96GR0JnCVw7EWVCgXDiwQT5F4nEagP9oHp0hp+FHPNcFnpMibZVxmI/CXrzxqJWBXGYUD9r71vXA==@nongnu.org
+X-Gm-Message-State: AOJu0YyLaDddEvH1J1f/Ctv0bziirg5AcRYQHFXt+BhYebWFqMdIFDE0
+ tUWacHad+zcWsz0OU4aNuNRMxGTEoJJHVrvjyFfu4WAMqXI+qR758mEVuDSE0W7UZo6afYJd+LE
+ mQtXTd/CEBFJkpuKt2ffLhlrHwQYsQ2oDZwYKpX1jBy43v1D8/95+FiI=
+X-Gm-Gg: Acq92OG0IMwwdyBTI2L0NOu4f3+VLQaqwXnGu7pewXXf/6+WXhz2LaqPcln28kcRxlb
+ Ui0RCqIYK3WKfukXpDr0ZWZt1csfBYvuFqPfcGG/jm5TnGiKKm+VWMaEEIlKDrwYjVaQTVK34NC
+ p1K+h1trwIq7VNiNrYXI/xQb+QE9Df/gnwpV//E3F3G7E6O4+nClrUmk4qcsQWKmpHMqDWBO+Ev
+ LDID1z0697oWOH6StIZ9f6WQNkrRsdUoVF++sv5TlkqhtpkaRP4XI6JtnjINBkYJB6IX61IBZGs
+ Jh5W3z8cNxdFdNeKX6XwmDZ4DWXqnInKjJAhv/lofPCVofUmcinkNWhFAE1tHsEjSNxBF6FjiYW
+ USkEMRY8vC5xHLBnxxRch8pcPVMhYfdTG4DOO9hFp9dhBY4Xxfe5L3m6UtI5NyVIiTjqZyFQdCU
+ lguzQ3CDQ8rFot
+X-Received: by 2002:a05:6102:a51:b0:62f:34db:9474 with SMTP id
+ ada2fe7eead31-71d5f9c6774mr701231137.20.1781176830109; 
+ Thu, 11 Jun 2026 04:20:30 -0700 (PDT)
+X-Received: by 2002:a05:6102:a51:b0:62f:34db:9474 with SMTP id
+ ada2fe7eead31-71d5f9c6774mr701211137.20.1781176829620; 
+ Thu, 11 Jun 2026 04:20:29 -0700 (PDT)
+Received: from [192.168.69.208] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-490e2c9057bsm67424305e9.5.2026.06.11.04.20.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 11 Jun 2026 04:20:28 -0700 (PDT)
+Message-ID: <63c62a8e-2ff0-4175-be70-0aecd13c406c@oss.qualcomm.com>
+Date: Thu, 11 Jun 2026 13:20:26 +0200
 MIME-Version: 1.0
-In-Reply-To: <3726a607-6cac-41f1-b402-0eed7c4e3fe3@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 9ueoIIIvMiz0izKlFEvWEdnN4x2tNwCsnKZYyYUVvu8_1781160687
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 01/22] hmp-commands.hx: fix button_state doc
+Content-Language: en-US
+To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: "Dr. David Alan Gilbert" <dave@treblig.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-ppc@nongnu.org,
+ Thomas Huth <th.huth+qemu@posteo.eu>
+References: <20260610-ui-input-v2-0-f68452dd6a22@redhat.com>
+ <20260610-ui-input-v2-1-f68452dd6a22@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260610-ui-input-v2-1-f68452dd6a22@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-ORIG-GUID: 4ZY8PfKMPiDjTCFdNd7Qrl6tpFnlP9yQ
+X-Proofpoint-GUID: 4ZY8PfKMPiDjTCFdNd7Qrl6tpFnlP9yQ
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjExMDExMyBTYWx0ZWRfX+mUWDS0p67t9
+ 8/CL/Vm83p2QD9PKR4iDgbcWURU2RNFN/21WDC2aes43ruOC/lx8Z0gkjB34SYRmWs6nlIeoa7m
+ 6XTneumAHQ2LYiqyUvWdHGtk1NHdTrmOnYHBNJNxX7n9TedGDsDVtuZsW0sYCIXkcm1CouYqjqi
+ gw0wpvAJiHOAaxSAON1nhLEBWPOcoiku/yqaHyeMEuQYlhIPFzBBSexFMRXRaokr3IjxTwfwaki
+ bzkNJz7ZdRfTeZgPddMYbtWoKbWWdqiOtpdHaeJcQKeYM230G+0bDd548hkZ9p/aOPOBjfHlyN+
+ I4uFnR89bDVgpMkWK4MRTInQ2294YNhw5IzvtDxtBzLHYxQcbIuwOlaC4dODrNDY4UhovIq4sYg
+ WYJgG/DAQYAUKn2CCZVQCbetIgJXGHXakbgwd1NQiw1BlqsL1apZ7dC0YvmRGEha4MAxy4bpr+A
+ n57DP75kdzQXRwr1d9w==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNjExMDExMyBTYWx0ZWRfX7BLIAp+EckKc
+ +zKCWuFco2Ero7HaDUn0TaSc1pBHsIVx28sbT7c4aCKWJwu4Y3jBD2smbaQd6rU605QgI/kP8/5
+ EnSthxdYiQZ48n62K/rPML5DB1Eocfg=
+X-Authority-Analysis: v=2.4 cv=Lf0MLDfi c=1 sm=1 tr=0 ts=6a2a99fe cx=c_pps
+ a=5HAIKLe1ejAbszaTRHs9Ug==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
+ a=3WJfbomfAAAA:8 a=20KFwNOVAAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=gYDTvv6II1OnSo0itH1n:22
+ a=1cNuO-ABBywtgFSQhe9S:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
+ definitions=2026-06-11_02,2026-06-09_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 priorityscore=1501 spamscore=0 lowpriorityscore=0 malwarescore=0
+ suspectscore=0 phishscore=0 clxscore=1015 bulkscore=0 impostorscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606040000 definitions=main-2606110113
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,116 +164,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Jun 11, 2026 at 04:28:20PM +1000, Gavin Shan wrote:
-> Hi Michael,
+On 10/6/26 12:56, Marc-André Lureau wrote:
+> Right & middle buttons are inverted (see hmp_mouse_button)
 > 
-> On 6/11/26 3:31 PM, Michael S. Tsirkin wrote:
-> > On Thu, Jun 11, 2026 at 02:33:05PM +1000, Gavin Shan wrote:
-> > > On 6/11/26 2:18 AM, Michael S. Tsirkin wrote:
-> > > > On Wed, Jun 10, 2026 at 11:36:55AM -0400, Peter Xu wrote:
-> > > > > On Wed, Jun 10, 2026 at 10:06:24AM -0400, Michael S. Tsirkin wrote:
-> > > > > > On Wed, Jun 10, 2026 at 11:54:47PM +1000, Gavin Shan wrote:
-> 
-> [...]
-> 
-> > > > > > 
-> > > > > > I do not think it has anything to do with host endian-ness.
-> > > > > > 
-> > > > > > 
-> > > > > > This is the change that broke it I think?
-> > > > > > 
-> > > > > > 
-> > > > > > commit 4a2e242bbb306ef5c16ce9e7bb2da3bd8a4eb098
-> > > > > > Author: Alex Williamson <alex@shazbot.org>
-> > > > > > Date:   Mon Oct 31 09:53:03 2016 -0600
-> > > > > > 
-> > > > > >       memory: Don't use memcpy for ram_device regions
-> > > > > > 
-> > > > > > Maybe Alex has an opinion on what to do.
-> > > > > 
-> > > > > I can offer one idea here..
-> > > > > 
-> > > > > IIUC the major issue was vector ops but the mr ops might be too heavy, then
-> > > > > another way to fix it is in memory API instead of using memcpy()/memmove(),
-> > > > > we always use a helper (say, memmove_no_vector()) to do the split and
-> > > > > properly aligned IOs as what ram_device_mem_ops does right now, this should
-> > > > > only applies to ram_device.
-> > > > > 
-> > > > > With that, IIUC we can remove the current ram_device_mem_ops, then in
-> > > > > Gavin's case mmap() will go through and guest will not need to vmexit at
-> > > > > all.  Best perf, issue solve.
-> > > > > 
-> > > > > We just need to be careful to trap all possible memcpy()/memmove() used in
-> > > > > memory core.. if I didn't miss any, IMO below four should needs to be
-> > > > > replaced by memmove_no_vector():
-> > > > > 
-> > > > >     flatview_write_continue_step()
-> > > > >     flatview_read_continue_step()
-> > > > >     address_space_read()
-> > > > >     address_space_write_rom()
-> > > > > 
-> > > > > Thanks,
-> > > > > 
-> > > > > -- 
-> > > > > Peter Xu
-> > > > 
-> > > > First, this is a nice idea.
-> > > > Second, the ideal thing is still just allowing direct access.
-> > > > And I think VFIO actually knows it's regular RAM.
-> > > > So something like the following small patch in linux, maybe?
-> > > > 
-> > > 
-> > > If I understood everything, Peter's proposal seems to move the logics covered
-> > > by ram_device_mem_ops to the upper layer.
-> > 
-> > 
-> > I think the basics of Peter's idea are really simple: if guest is doing
-> > DMA into a region then that access is treating that region as RAM and so
-> > any vectored etc instructions into it are fine.
-> > 
-> > So we can fix specifically DMA into RAM DEVICE to bypass bounce buffering.
-> > 
-> > It's at the low memory level, not the upper layer.
-> > 
-> > He also apparently feels bounce buffering isn't needed
-> > generally and can be replaced with memmove_no_vector? And
-> > somehow virtio DMA can be done without kicking host? I'm not
-> > sure I understand these parts.
-> > 
-> 
-> For Peter's idea, I believe there is something I missed. Lets take our specific
-> case as an example where the DMA request is handled as the following calltrace
-> indicates.
-> 
->     virtio_blk_handle_output
->       virtio_blk_handle_vq
->         virtio_blk_get_request
->           virtqueue_pop
->             virtqueue_split_pop
->               virtqueue_map_desc
->                 address_space_map
->         virtio_blk_handle_request
->           iov_to_buf
->             memcpy
-> 
-> In address_space_map(), all RAM DEVICE regions treated as directly accessible
-> and the buffer (RAMBlock::host + offset) is returned. The buffer is passed on
-> to virtio_blk_handle_request() and iov_to_buf(), the data is then copied over
-> using memcpy(), which we're trying to avoid.
-> 
-> Thanks,
-> Gavin
-> 
+> Acked-by: Dr. David Alan Gilbert <dave@treblig.org>
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> ---
+>   hmp-commands.hx | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 
-
-The original bug was QEMU doing MMIO on behalf of guest right?
-
-So maybe there's an even simpler thing: I think that if the BAR is
-mapped directly into guest we do not need a bounce buffer in qemu.
-
-Alex could you give your opinion on this?
-
--- 
-MST
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 

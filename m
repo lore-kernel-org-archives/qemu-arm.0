@@ -4,105 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB631CD98CF
-	for <qemu-arm@archiver.kernel.org>; Fri, 12 Jun 2026 17:04:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BEB9CD98CE
+	for <qemu-arm@archiver.kernel.org>; Fri, 12 Jun 2026 17:19:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wY5If-0001Pi-Ew; Fri, 12 Jun 2026 13:04:09 -0400
+	id 1wY5X1-0004Ps-HA; Fri, 12 Jun 2026 13:19:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=4623e61353=eblot@meta.com>)
- id 1wY53o-0007gA-5l; Fri, 12 Jun 2026 12:48:48 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=4623e61353=eblot@meta.com>)
- id 1wY53l-0007oF-3u; Fri, 12 Jun 2026 12:48:47 -0400
-Received: from pps.filterd (m0109334.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 65C5xrd01867530; Fri, 12 Jun 2026 09:48:11 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=meta.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=s2048-2025-q2;
- bh=UW4lt0roWafYN8jzjK/PCUsJmmI/KdLUX3sywuexfl4=; b=hX6wcLsZtdVE
- MmW3TmOo489b2RqSDCervetCTG/4iZju83d8s3NYHxez2+Gjah1FhKDoM49vOLQY
- p5Gfk0DmB1lDt5TDv3y5vhZ7szmVbbVm4J/We+l/8Q2md0fQSdIUN0Vx8KIyyMKr
- g7Rewdul+NutIuBXFIs4tlrf012HVVg/fnrjdasldRwb7m1UHl7TRqkJLd+mH3tO
- eNkzbcVObvD0s99hZX/q6Wr314NhkWMxB5lu5rnSb2V0bDkOlJeZD4Cmx8djxvg/
- b6tm/T9rdt3W2cqSiw4z1oV1R/Q3fCtyNZUhFLbBQ0yqwAHe1Cex3xs28qnJKDcE
- N/HWn/A38Q==
-Received: from mail.thefacebook.com ([163.114.134.16])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 4ercf034r4-2
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Fri, 12 Jun 2026 09:48:11 -0700 (PDT)
-Received: from localhost (2620:10d:c085:208::f) by mail.thefacebook.com
- (2620:10d:c08b:78::c78f) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.2.2562.41; Fri, 12 Jun
- 2026 16:48:09 +0000
-From: Emmanuel Blot <eblot@meta.com>
-Date: Fri, 12 Jun 2026 18:47:02 +0200
-Subject: [PATCH 3/4] hw/arm: anacapa: add ADC128D818 devices
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wY5Wz-0004PZ-BK
+ for qemu-arm@nongnu.org; Fri, 12 Jun 2026 13:18:57 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wY5Wx-0004P5-I0
+ for qemu-arm@nongnu.org; Fri, 12 Jun 2026 13:18:57 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-490b211ee6aso8839145e9.3
+ for <qemu-arm@nongnu.org>; Fri, 12 Jun 2026 10:18:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1781284733; x=1781889533; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=DuOtHeBbJw1YDeqbXCJ3sEezGFxNJJSYyUp7OFWdCrE=;
+ b=csfa43W+/Owo314DeDZ8OLMymlIO2yntLNVwP9J8pWLdsvRPrMS0cfhTbfAUSGSUKd
+ JA5Plloov75yF6PShmEInvXYXXnHUmbRClCh42s7+naAF4XSeEOMb25Y0jeXBFpjAb+y
+ URfw0Lbgm/tmiC7FIpuLyMbjsT0jndQ9SeK8h2TFFNNEn7y+OEpq90A6AVOu35sLHLmJ
+ /+0spye9pd0p/xvm5oN+SSrL2av0LZCq2SN6M5IIL1w7moNrl66P1wwEZpbLkIOBwE+y
+ vVDk8BsiJsjnPKfIpW/jkMdnpwwLtJu/jDpkYlFSGYFzhqmLeYzPk5WYwVdGFLUN/Rzc
+ a/3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1781284733; x=1781889533;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=DuOtHeBbJw1YDeqbXCJ3sEezGFxNJJSYyUp7OFWdCrE=;
+ b=UoGRqCgKG9eryM2tNiuG6A+loNj6/jg2R8jGnDrIbmjxFbW4zrMm9Y5f75RsmeF8cT
+ kuY5S1iyfnJx31+wFCr2t1haNuTdmlq+NtIHQStxpIfmxAbE0VvTrvgnJJFTsS6pbtti
+ ppIJy9rYWfgtizERs4713CeM9kXaHqVhf+fThEH2JVE5zsrGZbSE2XTp63k7IAnpGIh+
+ UwsXwjubreQBU/D9piwX14ElhpbIbS7mwEMMBc3KJgg03pnkuJrzEcLZlPhIiypbAUNW
+ kQABamWUUMNLx2F+Bh6D2DgMyuzdu89eYwTkkE7FvLz03ZfA5BfBfXpHpMBv3G7g0SF5
+ VadQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ9fjOLSLw99oEpIGcQySyHZ/goK2A5qk0Y/ufEg5AiLiMjJajBXT9eehhzlQfMUAARVUcGY1FunHg==@nongnu.org
+X-Gm-Message-State: AOJu0YwOhtvcJ33SC0PN6uV2adH2odQydgeFTd2XiuwxzK+i7lF34CWc
+ NyiBy7YolyhMRTKETypWj1fsNfWPm+23u/XVUJHI+Iuqa64ZshSKkvk/lXWnsSVNbIc=
+X-Gm-Gg: Acq92OEmRXC/Ef2CJOlyVplHbOTROHz1yOtF13L1QuR9/uH6iEsoML2VCgls+G7Ed1V
+ phJHxCBn6oU31KvrZ9ypACXUVD2UeLT0X9B4t7kqUM/trM++netu71KtshPLoFBwF3y1Esdelaj
+ 2RBcwUWhH/3xLMsXN+onzSRYHmCmzUhV+AdU2ipMW5nnfiglCIiw3pqpNhidgSd4v79Wz3C1DSr
+ 0Uy/oHWHb9dOCe6s+FPnpOhmRk4oH7Cpzr/YmRVc/Z4XwcM8sbZxEGT1c1ILmTil8qyYMBOy0dn
+ aJilyiUxJULqUP8PS2Cl+UgZW5Y9KHP1HDtp3t50YbpRNdDDu69XU4w0fW94V0TjWpP3IJQKsgO
+ CMBLSrt3TjctKpPW/RnreSmUyKGSxr2HzdfWEjU/3NurZ6qQaXQrEEIn203Sw932HixpT+9RIGN
+ nVBUG7oW960yL1PPmz7Gku6Dk=
+X-Received: by 2002:a05:600c:83c8:b0:492:1e36:d16e with SMTP id
+ 5b1f17b1804b1-4921e36d1a9mr17505975e9.36.1781284733060; 
+ Fri, 12 Jun 2026 10:18:53 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4922035b4absm3694975e9.11.2026.06.12.10.18.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 12 Jun 2026 10:18:52 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 65D125F814;
+ Fri, 12 Jun 2026 18:18:51 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Alexander
+ Graf <agraf@csgraf.de>,  Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Pedro Barbuda <pbarbuda@microsoft.com>,  qemu-arm@nongnu.org,
+ kvm@vger.kernel.org
+Subject: Re: [PATCH v7 0/8] target/arm: fully model WFxT instructions for
+ A-profile
+In-Reply-To: <CAFEAcA94+mh_pigFDi+tEPRJ416fSWfxsQ1Lj8Byemug9kBp6w@mail.gmail.com>
+ (Peter Maydell's message of "Mon, 8 Jun 2026 14:51:24 +0100")
+References: <20260529082948.363931-1-alex.bennee@linaro.org>
+ <CAFEAcA94+mh_pigFDi+tEPRJ416fSWfxsQ1Lj8Byemug9kBp6w@mail.gmail.com>
+User-Agent: mu4e 1.14.1; emacs 30.1
+Date: Fri, 12 Jun 2026 18:18:51 +0100
+Message-ID: <87h5n7ekxw.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-ID: <20260612-i2c-adc128d818-anacapa-v1-3-9e4640cd164b@meta.com>
-References: <20260612-i2c-adc128d818-anacapa-v1-0-9e4640cd164b@meta.com>
-In-Reply-To: <20260612-i2c-adc128d818-anacapa-v1-0-9e4640cd164b@meta.com>
-To: <qemu-devel@nongnu.org>
-CC: Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>, Fabiano Rosas
- <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>,
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- "Jamin Lin" <jamin_lin@aspeedtech.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- "Andrew Jeffery" <andrew@codeconstruct.com.au>, Joel Stanley
- <joel@jms.id.au>, Alexander Hansen <alexander.hansen@9elements.com>,
- William de Abreu Pinho <williampinho@meta.com>, <qemu-arm@nongnu.org>,
- Emmanuel Blot <eblot@meta.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1781282877; l=3453;
- i=eblot@meta.com; s=20260602; h=from:subject:message-id;
- bh=5jm6W6C4SOyTwyd/zUTKKt1xHCZex8tImtbq4un/gkk=;
- b=O4fAfUNIbWFCpsMW3HuEhbxnssDu9kLTl/WTTlxz3NR11PwUMOapQd53UvFHHrwvAMxAdtTpJ
- sltrZ5d60MaBHNXXlINK670VWtIyJKA0Zaq6EmS+g3hPYjWUOO3ug8Y
-X-Developer-Key: i=eblot@meta.com; a=ed25519;
- pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-X-Originating-IP: [2620:10d:c085:208::f]
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNjEyMDE1NSBTYWx0ZWRfX+FEYCYzTZnBs
- kUT8Bw8MCdv9WDe+f8LzKtDbRnZHlaPS0UDUvkcNooWyeOwiG1WbHBYQiF5BRNvK7IiUfaOCHDp
- IK+mqxDBq6aLlAoo0KYU2RK1dbGuRzI=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjEyMDE1NSBTYWx0ZWRfXyC1MxcqGVKSd
- ZQAOvWBa7gNEXE7fK7hCy2Rjkpc/Cad6Fy+BHd95Wl2djG0ckZ8h/TOsSI5J5MlAcs+GtmASfRu
- 9nTa02pAs5YPYWaxQ/X1aOIxPxl1Q54ullBbxyiQzmJlz5iJ5ophe2Gamcb3O/QaykL8VBx3J3Y
- u1dxEIsqNkZ57Pa3Xnn14trAuSCZ4ACK5YTYNDAI2k2w4hm/CUL6LizNggD+1B3pp8c7psc1lmj
- +SKODtJHAFN8Xu4c0qflNKVzo9XdG63j4DkM8rN2yGgECtiw2i7eHXgh2YRDxgzczXl5C7H/8ko
- xxT27uo5sINFDCkA3cPmR+aPx4gapPte27YsCQbgk4Fd3llHWuuew0TSKjbSrEXOdooi49ULjup
- /rv7qZYYplq9FpdjzwrOe7xzAVOIHjzE4d3ADVX7Ze6qRBerpha/l3DhhsCSiCuDppXFxNRVdpD
- FXHSQfZuY8wolMa6lGQ==
-X-Proofpoint-ORIG-GUID: xMqiPUPJJnPkWe3yaZ197HxmAjMUPhTa
-X-Authority-Analysis: v=2.4 cv=QYhWeMbv c=1 sm=1 tr=0 ts=6a2c384b cx=c_pps
- a=CB4LiSf2rd0gKozIdrpkBw==:117 a=CB4LiSf2rd0gKozIdrpkBw==:17
- a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=7x6HtfJdh03M6CCDgxCd:22 a=crHB47gyY4rKiduisYu9:22 a=VabnemYjAAAA:8
- a=qgnhLYDG0d4QqU1ziEMA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=gKebqoRLp9LExxC7YDUY:22
-X-Proofpoint-GUID: xMqiPUPJJnPkWe3yaZ197HxmAjMUPhTa
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-06-12_02,2026-06-12_03,2025-10-01_01
-Received-SPF: pass client-ip=67.231.145.42;
- envelope-from=prvs=4623e61353=eblot@meta.com; helo=mx0a-00082601.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 12 Jun 2026 13:04:07 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,103 +110,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Wire up the two ADC128D818 instances that appear in the Anacapa DTS:
-one on i2c8 mux channel 0 and one on i2c13 mux channel 3.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Signed-off-by: Emmanuel Blot <eblot@meta.com>
----
- hw/arm/Kconfig                  |  1 +
- hw/arm/aspeed_ast2600_anacapa.c | 19 +++++++++++++++++--
- 2 files changed, 18 insertions(+), 2 deletions(-)
+> On Fri, 29 May 2026 at 09:29, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
+rote:
+>>
+>> This series fully models the behaviour of WFxT instructions. We
+>> already had support for WFE for M-profile but we left off A-profile as
+>> it has more potential sources of wake-ups. The main one is the event
+>> stream which includes events from significant bits of the timer
+>> ticking over.
+>>
+>> The refactoring from the previous iterations of the patch have now
+>> been merged.
+>>
+>> I've dropped trying to fully model the global monitor in favour of
+>> taking advantage of the architectural flexibility to have an IMPDEF
+>> event wake up for any reason. We treat the setting of exclusive_addr
+>> as such a reason because it indicates the current vCPU is in a ldstx
+>> exclusive region and we don't want the guest to deadlock. This does mean
+>> the system won't sleep on WFE enabled locks but people shouldn't be
+>> relying on QEMU to model real world sleep patterns anyway given the
+>> efficiency of emulation compared to real HW.
+>>
+>> I've written a test case using kvm-unit-tests:
+>>
+>>   Message-ID: <20260527111822.1563679-1-alex.bennee@linaro.org>
+>>   Date: Wed, 27 May 2026 12:18:21 +0100
+>>   Subject: [kvm-unit-tests PATCH v2] arm: add wfx test case
+>>   From: =3D?UTF-8?q?Alex=3D20Benn=3DC3=3DA9e?=3D <alex.bennee@linaro.org>
+>>
+>> All patches are now reviewed.
+>
+>
+>
+> Applied to target-arm.next, thanks.
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index fb798ccbee..04ecf5d473 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -553,6 +553,7 @@ config ASPEED_SOC
-     select LED
-     select PMBUS
-     select MAX31785
-+    select ADC128D818
-     select FSI_APB2OPB_ASPEED
-     select AT24C
-     select PCI_EXPRESS
-diff --git a/hw/arm/aspeed_ast2600_anacapa.c b/hw/arm/aspeed_ast2600_anacapa.c
-index a1c8111a93..7dc566d7fe 100644
---- a/hw/arm/aspeed_ast2600_anacapa.c
-+++ b/hw/arm/aspeed_ast2600_anacapa.c
-@@ -8,6 +8,7 @@
- 
- #include "qemu/osdep.h"
- #include "qapi/error.h"
-+#include "hw/sensor/adc128d818.h"
- #include "hw/arm/machines-qom.h"
- #include "hw/arm/aspeed.h"
- #include "hw/arm/aspeed_soc.h"
-@@ -16,9 +17,11 @@
- #include "hw/nvram/eeprom_at24c.h"
- 
- /* Anacapa hardware value */
-+/* clang-format off */
- #define ANACAPA_BMC_HW_STRAP1 0x00002002
- #define ANACAPA_BMC_HW_STRAP2 0x00000000
- #define ANACAPA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
-+/* clang-format on */
- 
- /*
-  * "Anacapa HPM (MB)" FRU data. Generated with frugen.
-@@ -221,6 +224,14 @@ static const uint8_t hpm_brd_id_eeprom[] = {
- };
- static const size_t hpm_brd_id_eeprom_len = sizeof(hpm_brd_id_eeprom);
- 
-+static void anacapa_add_adc128d818(I2CBus *bus, uint8_t addr,
-+                                   const char *description)
-+{
-+    DeviceState *dev = DEVICE(i2c_slave_new(TYPE_ADC128D818, addr));
-+    qdev_prop_set_string(dev, "description", description);
-+    i2c_slave_realize_and_unref(I2C_SLAVE(dev), bus, &error_fatal);
-+}
-+
- static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     /* Reference: aspeed-bmc-facebook-anacapa.dts */
-@@ -259,7 +270,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_mux = i2c_slave_create_simple(i2c[8], TYPE_PCA9546, 0x72);
- 
-     /* i2c8mux ch0 */
--    /* adc128d818@1f — no model */
-+    /* adc128d818@1f — R-PDB ADC (mode 1: 8 voltage channels) */
-+    anacapa_add_adc128d818(pca954x_i2c_get_bus(i2c_mux, 0), 0x1f, "i2c8:0:1f");
-     /* pca9555@22 */
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0),
-                             TYPE_PCA9552, 0x22);
-@@ -320,7 +332,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_mux = i2c_slave_create_simple(i2c[13], TYPE_PCA9548, 0x70);
- 
-     /* i2c13mux ch3 */
--    /* adc128d818@1f - no model */
-+    /* adc128d818@1f — MB ADC (mode 1: 8 voltage channels) */
-+    anacapa_add_adc128d818(pca954x_i2c_get_bus(i2c_mux, 3), 0x1f, "i2c13:3:1f");
- 
-     /* i2c13mux ch4 */
-     /* eeprom@51 */
-@@ -350,6 +363,7 @@ static void aspeed_machine_anacapa_class_init(ObjectClass *oc,
-     aspeed_machine_class_init_cpus_defaults(mc);
- }
- 
-+/* clang-format off */
- static const TypeInfo aspeed_ast2600_anacapa_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("anacapa-bmc"),
-@@ -358,5 +372,6 @@ static const TypeInfo aspeed_ast2600_anacapa_types[] = {
-         .interfaces    = arm_machine_interfaces,
+Is it too late to drop them? I've a fix for 2/8:
+
+--8<---------------cut here---------------start------------->8---
+modified   =EF=83=BD include/hw/core/sysemu-cpu-ops.h
+@@ -18,6 +18,9 @@
+ typedef struct SysemuCPUOps {
+     /**
+      * @has_work: Callback for checking if there is work to do.
++     *
++     * This function should be idempotent (i.e. not change state) as
++     * it will likely be queried multiple times before a CPU resumes.
+      */
+     bool (*has_work)(CPUState *cpu); /* MANDATORY NON-NULL */
+     /**
+modified   =EE=98=9E target/arm/cpu.c
+@@ -158,7 +158,6 @@ static bool arm_cpu_has_work(CPUState *cs)
+      * A wake-up event should only wake us if we are halted on a WFE
+      */
+     if (cpu->env.halt_reason =3D=3D HALT_WFE && cpu->env.event_register) {
+-        cpu->env.halt_reason =3D NOT_HALTED;
+         return true;
      }
- };
-+/* clang-format on */
- 
- DEFINE_TYPES(aspeed_ast2600_anacapa_types)
+=20
+@@ -170,7 +169,6 @@ static bool arm_cpu_has_work(CPUState *cs)
+                            | CPU_INTERRUPT_NMI | CPU_INTERRUPT_VINMI | CPU=
+_INTERRUPT_VFNMI
+                            | CPU_INTERRUPT_VFIQ | CPU_INTERRUPT_VIRQ | CPU=
+_INTERRUPT_VSERR
+                            | CPU_INTERRUPT_EXITTB)) {
+-        cpu->env.halt_reason =3D NOT_HALTED;
+         return true;
+     }
+=20
+@@ -874,6 +872,8 @@ bool arm_cpu_exec_halt(CPUState *cs)
+         if (cpu->wfxt_timer) {
+             timer_del(cpu->wfxt_timer);
+         }
++        /* clear the halt reason */
++        cpu->env.halt_reason =3D NOT_HALTED;
+     }
+     return leave_halt;
+ }
+--8<---------------cut here---------------end--------------->8---
 
--- 
-2.50.1
 
+>
+> -- PMM
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

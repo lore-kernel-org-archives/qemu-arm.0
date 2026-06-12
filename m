@@ -4,58 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 691FDCD8CA8
-	for <qemu-arm@archiver.kernel.org>; Fri, 12 Jun 2026 06:10:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A0E2CD98CE
+	for <qemu-arm@archiver.kernel.org>; Fri, 12 Jun 2026 07:39:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXv5P-0005m0-QP; Fri, 12 Jun 2026 02:09:47 -0400
+	id 1wXwTP-0000fi-Nz; Fri, 12 Jun 2026 03:38:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
- id 1wXv5N-0005lN-HN
- for qemu-arm@nongnu.org; Fri, 12 Jun 2026 02:09:45 -0400
-Received: from va-2-113.ptr.blmpb.com ([209.127.231.113])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
- id 1wXv5I-0005Yi-8p
- for qemu-arm@nongnu.org; Fri, 12 Jun 2026 02:09:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- s=2212171451; d=bytedance.com; t=1781244562; h=from:subject:
- mime-version:from:date:message-id:subject:to:cc:reply-to:content-type:
- mime-version:in-reply-to:message-id;
- bh=GVLDVYrQ6lycqF2TQkcMPAW26Qay9w9PpgAERu5/nvY=;
- b=HpeBXaqMPc2T//ESV2xMPXg7hJ2R/2STwkg2eXwv5d/DOkBF49dRA+1mXOEkRJSqUCeEmR
- CUbQfbi9lH4vAdkFZD7zJ3qmPKBknVwDd3bUyByyVqv0HFPv6Fr9iK4rPXhKzRVNSXGO2U
- uYpSeJ+V82BfCeqfnsnEpGuDZpFV+a2ar6UacSSfAtvJDRDekJ/x5f7dRfjEqsfg90VqcA
- iklkGNpNm5bRdkvWesbHFhEVQowSK4KvWNGifJuYTuE1y3qu8imBa5jKAvCsCKyTrjtiTA
- izbv25YtaYi5IbyUJ4fF35C/MWXYXwh9mlHhDEj/e5ZssYjmJmlenIQ8dNXevg==
-Date: Fri, 12 Jun 2026 14:08:57 +0800
-From: "Jian Zhang" <zhangjian.3032@bytedance.com>
-Message-Id: <20260612060857.1842819-1-zhangjian.3032@bytedance.com>
-Content-Transfer-Encoding: 7bit
-X-Original-From: Jian Zhang <zhangjian.3032@bytedance.com>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wXwTJ-0000er-Mj
+ for qemu-arm@nongnu.org; Fri, 12 Jun 2026 03:38:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wXwTH-0005FT-WD
+ for qemu-arm@nongnu.org; Fri, 12 Jun 2026 03:38:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1781249910;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=36OuNx9nK8T/nKzXs0flx3BkMIs014GXg11EFPwESHM=;
+ b=OIYk3vOzh/ZM9avUEs+ZjZcU0V+eQ5OQVphRWn8mvZupjn6YqdnT9usHUT/trZkuPtnTQC
+ /0ZQKWZfVXLHW7fBzg0DoP4KL6hewB1IzEIvSGYXyknkxoofC9NfQvMiUUdcKCguKh1LK9
+ FVRce312cRzARbPxlKuxgAbR8luoNCo=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-96-KPg8uMQdP6qbaBd2k6Opfg-1; Fri, 12 Jun 2026 03:38:29 -0400
+X-MC-Unique: KPg8uMQdP6qbaBd2k6Opfg-1
+X-Mimecast-MFC-AGG-ID: KPg8uMQdP6qbaBd2k6Opfg_1781249908
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-46067b07571so374406f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 12 Jun 2026 00:38:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1781249908; x=1781854708;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=36OuNx9nK8T/nKzXs0flx3BkMIs014GXg11EFPwESHM=;
+ b=M8KVw/LzZv3gbbcPs4NHDS8ZzeKiPO6EP2+Fr2laUr4yFHZRefs1Yo1Psdn5FE9RfD
+ V4edClhQGBTRNCidHDOiRVG/msNqiskXVopTY4U6kRenvvafwTt0QR0eJ6lgMmBR01Cm
+ sQIwr6NdZUhHhCm1gN60dpMh5SYiXHqJMgP0r3I5nHUhKfWry/FkZUQwD+unxznOxDfN
+ UA/HImnIVviuZX07HU74eEr9n0Ae+7iamlC9MnO6IEAkB+9GDXG39TNOFUx6D6VmsOxV
+ 7BFhZOkK29Sk2eYE8TbiFjlqHBV/D2gVQtnwg22NFQtPkDZTZVvpQyCnNXV7QBvoNgbE
+ /urw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/HY1scD2/U7KvJY7x7Du5ckTfGvXhkhFBy1WeSkWgwkvFwG7mYe0GoXk/vq7iC6EQUOu3e3mbAYA==@nongnu.org
+X-Gm-Message-State: AOJu0Ywm9PV2uohzWIgPRR6zMuvKX14xRWCz68hJq67wkdwEPKekCUCW
+ TA+oVUe/uib+CG2lDYSQp1Q8O9AIs51Us3TVPFj3Sw27FBVvqkNajsJ6CiSA8dD8pmOVD1GxTk8
+ LfDxnS041cDzvbTwytD9wOr6b2lIeqnl6y2as/5Xq321jy/+dT4Cu9w==
+X-Gm-Gg: Acq92OG4zG00bynv9hRVUWFALVhB2qVuOvRpg0M2V8IiCcHiYfX5tYTcjhN1kXAlP9A
+ CReUkFujQwkumvsM1xf0z4J1fKPwKAKDSqfHS1GMZ5RwJm5AcEUSV9SD5hhLOIZjGxTAReX0bA+
+ ujJqRDKRF1Ss1xHT3GHyV7AQ5Z18vRUIlGxaqXi2cHmnFOdRxU0aKQdDRmZqxTpbVfzP1swvZnp
+ LReIXIkYVTo1W5RKQSydVbkNgz5v/05El0kzMtDfjfIPn96u2YE9dmKYyA8HDPgPS1wHB0i7O6F
+ sMphK3Z+SPEwrNoSugRuiFu314beBBYc/6iMYhUZiJi7YQ7Aps4NX9JME3Qgy16KcFhsj1VaMXM
+ 3EuilF3nLNRgQDxHMOYti8Hn/UWaV3qGUv7lCvpa7ILT6Q3tzY1Qwh7kQLqdhqhGDgxasZw==
+X-Received: by 2002:a05:6000:2586:b0:460:684d:d565 with SMTP id
+ ffacd0b85a97d-4606f255ab8mr1753984f8f.15.1781249907931; 
+ Fri, 12 Jun 2026 00:38:27 -0700 (PDT)
+X-Received: by 2002:a05:6000:2586:b0:460:684d:d565 with SMTP id
+ ffacd0b85a97d-4606f255ab8mr1753954f8f.15.1781249907598; 
+ Fri, 12 Jun 2026 00:38:27 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4606f26f726sm3028887f8f.15.2026.06.12.00.38.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 12 Jun 2026 00:38:26 -0700 (PDT)
+Message-ID: <51ba045f-6ecf-4703-92c6-f362724c408e@redhat.com>
+Date: Fri, 12 Jun 2026 09:38:25 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 04/18] arm/cpu: Add infra to handle generated ID
+ register definitions
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "shaju.abraham@nutanix.com" <shaju.abraham@nutanix.com>,
+ "khushit.shah@nutanix.com" <khushit.shah@nutanix.com>,
+ "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "sebott@redhat.com" <sebott@redhat.com>,
+ "philmd@linaro.org" <philmd@linaro.org>
+Cc: "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "abologna@redhat.com" <abologna@redhat.com>,
+ "jdenemar@redhat.com" <jdenemar@redhat.com>
+References: <20260519132905.145643-1-eric.auger@redhat.com>
+ <20260519132905.145643-5-eric.auger@redhat.com>
+ <CH3PR12MB7548D1CA4348E04A14725645AB152@CH3PR12MB7548.namprd12.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CH3PR12MB7548D1CA4348E04A14725645AB152@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: MRUbViwmQMaG3F4TCv2TwaBEqxZmFc-PBuSNlz1SAK0_1781249908
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-X-Mailer: git-send-email 2.20.1
-To: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- "Peter Maydell" <peter.maydell@linaro.org>, 
- "Steven Lee" <steven_lee@aspeedtech.com>, "Troy Lee" <leetroy@gmail.com>, 
- "Jamin Lin" <jamin_lin@aspeedtech.com>, 
- "Kane Chen" <kane_chen@aspeedtech.com>, 
- "Andrew Jeffery" <andrew@codeconstruct.com.au>, 
- "Joel Stanley" <joel@jms.id.au>, <qemu-arm@nongnu.org>, 
- <qemu-devel@nongnu.org>
-Subject: [PATCH] hw/intc/aspeed: Drop stale pending interrupts
-Mime-Version: 1.0
-X-Lms-Return-Path: <lba+26a2ba290+667def+nongnu.org+zhangjian.3032@bytedance.com>
-Received-SPF: pass client-ip=209.127.231.113;
- envelope-from=zhangjian.3032@bytedance.com; helo=va-2-113.ptr.blmpb.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -68,102 +134,118 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The Aspeed INTC records an interrupt source in the pending bitmap when
-the source is masked or another status bit is still being handled.  When
-the guest later clears the status register, the model promotes all saved
-pending bits back to status unconditionally.
+Hi Shameer,
 
-This is not correct for level-triggered sources.  A source can deassert
-while another source connected to the same OR gate keeps the aggregated
-INTC line asserted.  Promoting the stale bit later makes the guest demux
-a child interrupt whose device status has already been cleared.
+On 6/1/26 4:28 PM, Shameer Kolothum Thodi wrote:
+> Hi Eric,
+>
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: 19 May 2026 14:27
+>> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
+>> devel@nongnu.org; qemu-arm@nongnu.org; kvmarm@lists.linux.dev;
+>> peter.maydell@linaro.org; shaju.abraham@nutanix.com;
+>> khushit.shah@nutanix.com; yangjinqian1@huawei.com;
+>> cohuck@redhat.com; richard.henderson@linaro.org; sebott@redhat.com;
+>> Shameer Kolothum Thodi <skolothumtho@nvidia.com>; philmd@linaro.org
+>> Cc: maz@kernel.org; oliver.upton@linux.dev; pbonzini@redhat.com;
+>> armbru@redhat.com; berrange@redhat.com; abologna@redhat.com;
+>> jdenemar@redhat.com
+>> Subject: [PATCH v5 04/18] arm/cpu: Add infra to handle generated ID register
+>> definitions
+>>
+>> External email: Use caution opening links or attachments
+>>
+>>
+>> The known ID regs are populated in a new initialization function
+>> named initialize_cpu_sysreg_properties(). That code will be
+>> automatically generated from AARCHMRS Registers.json. For the
+>> time being let's just describe a single id reg, CTR_EL0. In this
+>> description we only care about non RES/RAZ fields, ie. named fields.
+>>
+>> The registers are populated in an array indexed by ARMIDRegisterIdx
+>> and their fields are added in a sorted list.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>>
+>> ---
+>>
+>> v4 -> v5
+>> - ifdef TARGET_ARM_CPU_IDREGS_H
+>> - s/g_list_append/g_list_prepend
+>> - void arm64_sysreg_add_field()
 
-This is visible on AST2700 I2C, where the I2C buses are aggregated
-through INTCIO GICINT194 before reaching the GIC.  A stale I2C source bit
-can be promoted back to the INTCIO status register, causing Linux to run
-the corresponding I2C ISR with an empty I2C interrupt status register.
-For example, the Linux aspeed-i2c debug ring shows a transfer that first
-receives a valid status interrupt, then receives a spurious ISR with both
-isr and raw status equal to zero.  The zero-status ISR clears the saved
-command error and the transfer completes with ret=0:
+Effectively the whole commit desc is outdated now that I have migrated
+to Khushit description of idregs and their fields. No need for list nor 
 
-  event=start isr=0x00000000 raw=0x00000000 cmd_err=0 msgs_idx=0
-  event=isr   isr=0x00010011 raw=0x00010011 cmd_err=0 msgs_idx=0
-  event=isr   isr=0x00000000 raw=0x00000000 cmd_err=1 msgs_idx=1
-  event=complete ret=0 cmd_err=0 msgs_idx=1
+arm64_sysreg_add_field anymore.
 
-A normal command can then be reported as zero transferred messages, which
-is converted to -EIO by Linux i2c_smbus_xfer_emulated().  The race is
-more likely when multiple I2C buses are accessed concurrently.
+Arrays are populated in [PATCH v5 08/18] target/arm/cpu_idregs: generate tables for Arm64 ID registers and fields
+This is much nicer.
 
-Drop pending bits that no longer correspond to an asserted and enabled
-source before they can be promoted back to status.
+Thanks
 
-Signed-off-by: Jian Zhang <zhangjian.3032@bytedance.com>
----
- hw/intc/aspeed_intc.c | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+Eric
 
-diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-index 5a36fff5204..ab80c239bc1 100644
---- a/hw/intc/aspeed_intc.c
-+++ b/hw/intc/aspeed_intc.c
-@@ -107,6 +107,27 @@ static const AspeedINTCIRQ *aspeed_intc_get_irq(AspeedINTCClass *aic,
-     g_assert_not_reached();
- }
- 
-+static uint32_t aspeed_intc_orgate_levels(AspeedINTCState *s, int inpin_idx)
-+{
-+    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
-+    uint32_t levels = 0;
-+    int i;
-+
-+    for (i = 0; i < aic->num_lines && i < 32; i++) {
-+        if (s->orgates[inpin_idx].levels[i]) {
-+            levels |= BIT(i);
-+        }
-+    }
-+
-+    return levels;
-+}
-+
-+static void aspeed_intc_drop_stale_pending(AspeedINTCState *s, int inpin_idx)
-+{
-+    s->pending[inpin_idx] &= aspeed_intc_orgate_levels(s, inpin_idx) &
-+                             s->enable[inpin_idx];
-+}
-+
- /*
-  * Update the state of an interrupt controller pin by setting
-  * the specified output pin to the given level.
-@@ -231,6 +252,8 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
-     trace_aspeed_intc_set_irq(name, inpin_idx, level);
-     enable = s->enable[inpin_idx];
- 
-+    aspeed_intc_drop_stale_pending(s, inpin_idx);
-+
-     if (!level) {
-         return;
-     }
-@@ -343,6 +366,7 @@ static void aspeed_intc_status_handler(AspeedINTCState *s, hwaddr offset,
-     /* All source ISR execution are done */
-     if (!s->regs[reg]) {
-         trace_aspeed_intc_all_isr_done(name, inpin_idx);
-+        aspeed_intc_drop_stale_pending(s, inpin_idx);
-         if (s->pending[inpin_idx]) {
-             /*
-              * handle pending source interrupt
-@@ -402,6 +426,7 @@ static void aspeed_intc_status_handler_multi_outpins(AspeedINTCState *s,
-         /* All source ISR executions are done from a specific bit */
-         if (data & BIT(i)) {
-             trace_aspeed_intc_all_isr_done_bit(name, inpin_idx, i);
-+            aspeed_intc_drop_stale_pending(s, inpin_idx);
-             if (s->pending[inpin_idx] & BIT(i)) {
-                 /*
-                  * Handle pending source interrupt.
--- 
-2.20.1
+> Looks like this patch is missing the above and file:
+> target/arm/cpu-sysreg-properties.c
+>
+> Please check.
+>
+> Thanks,
+> Shameer
+>
+>> ---
+>>  target/arm/cpu-idregs.h | 33 +++++++++++++++++++++++++++++++++
+>>  1 file changed, 33 insertions(+)
+>>  create mode 100644 target/arm/cpu-idregs.h
+>>
+>> diff --git a/target/arm/cpu-idregs.h b/target/arm/cpu-idregs.h
+>> new file mode 100644
+>> index 0000000000..664e2d6ddd
+>> --- /dev/null
+>> +++ b/target/arm/cpu-idregs.h
+>> @@ -0,0 +1,33 @@
+>> +/*
+>> + * handle ID registers and their fields
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +#ifndef TARGET_ARM_CPU_IDREGS_H
+>> +#define TARGET_ARM_CPU_IDREGS_H
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "qemu/error-report.h"
+>> +#include "cpu.h"
+>> +#include "cpu-sysregs.h"
+>> +
+>> +typedef struct ARM64SysRegField {
+>> +    const char *name; /* name of the field, for instance CTR_EL0_IDC */
+>> +    ARMIDRegisterIdx index; /* parent register, e.g. CTR_EL0_IDX */
+>> +    int shift; /* lsb of the field in the register */
+>> +    int length; /* highest bit number */
+>> +} ARM64SysRegField;
+>> +
+>> +typedef struct ARM64SysReg {
+>> +    const char *name;   /* name of the sysreg, for instance CTR_EL0 */
+>> +    ARMIDRegisterIdx index; /* register index, e.g. CTR_EL0_IDX */
+>> +    struct ARM64SysRegField *fields;
+>> +    uint32_t fields_count;
+>> +} ARM64SysReg;
+>> +
+>> +/*
+>> + * List of exposed ID regs (automatically populated from AARCHMRS
+>> Registers.json)
+>> + */
+>> +extern ARM64SysReg arm64_id_regs[NUM_ID_IDX];
+>> +
+>> +#endif
+>> --
+>> 2.53.0
+
 

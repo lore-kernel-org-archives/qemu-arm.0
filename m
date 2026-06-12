@@ -4,145 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAA56CD8CA8
-	for <qemu-arm@archiver.kernel.org>; Fri, 12 Jun 2026 14:06:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8608CCD8CA8
+	for <qemu-arm@archiver.kernel.org>; Fri, 12 Jun 2026 14:51:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wY2W3-0006Rl-3O; Fri, 12 Jun 2026 10:05:47 -0400
+	id 1wY3Du-0006Rd-Ra; Fri, 12 Jun 2026 10:51:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wY2W0-0006RS-Pv
- for qemu-arm@nongnu.org; Fri, 12 Jun 2026 10:05:44 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wY3Dt-0006RU-2t
+ for qemu-arm@nongnu.org; Fri, 12 Jun 2026 10:51:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wY2Vy-0003DR-GH
- for qemu-arm@nongnu.org; Fri, 12 Jun 2026 10:05:44 -0400
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 65CCipMG3661225
- for <qemu-arm@nongnu.org>; Fri, 12 Jun 2026 14:05:39 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- hDSd1Ch4IG/snO3LC3CMu3U6AyQM8zbZGv8bpsK6uO4=; b=gmi9qkTjmKDWLa6D
- TUxbbwMGlUWbPcKuckxWt3VzpqdbU76UBcZdYkB6JEIH1XKYPbmQMLH+RkyzXDPR
- r2ALXYKiKv4reglnoWmbTRGvp13AhZv0S2jt48bARHPi5c3WiirEdOtMnuPlqpc+
- 41n46FK+16pv8TmryMFHQ6L+wS+LSZeMiXhYEpsA/zipa15/VMDaruNSz+OrqCf4
- UoC/R/ZD5x9cl2Zp4B+ux0G4HGiWXhFfiuAABbEFTsHlkKc27T6BDYPpyR4tg4HU
- B5KFd40YUlW89wdlND6BhigjleuIyRMrGR5aT+RGYxw6jiV987t0Gy8qPp1l+5un
- xLHwug==
-Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
- [209.85.167.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4er1xckbgp-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Fri, 12 Jun 2026 14:05:38 +0000 (GMT)
-Received: by mail-oi1-f200.google.com with SMTP id
- 5614622812f47-486a2231742so1670198b6e.1
- for <qemu-arm@nongnu.org>; Fri, 12 Jun 2026 07:05:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1781273138; x=1781877938; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=hDSd1Ch4IG/snO3LC3CMu3U6AyQM8zbZGv8bpsK6uO4=;
- b=Ny2gebCun2tOp355uhPqRDGqmwjCue/S10YKa71f3YfuX3Wvx20PgUE28XagvFm8PE
- 3tt5HPrJzoeeYrqKXoHlCD7DIJGJr3M4yjWwmLhTGLjjA7fRat7i6HirYjwryC9le+t4
- 0i0CwBiipMnV0U54UMUiSs3H+98KC2N4dn81yC4qO6JEz5CWOy0qCNlwvjVU7s1lGFGW
- T3s8SruEZJ1JWvlAFO8ToGg2VTxUtKmEz+any+lhl8bABF1RwtBIJZjs/zRCmRWsLCXA
- B39s5UlugWCSl0fSQ15ssjRiDOyJDIfw+Nn50WebLgeWVCjW5+6Sy8gDWwnocdsooxTh
- /MIA==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wY3Dq-0008PH-PS
+ for qemu-arm@nongnu.org; Fri, 12 Jun 2026 10:51:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1781275861;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=1jqjLk29+ylgKafy2vZZGpLUZYRXAPBweaq2/Vw0ZvI=;
+ b=YXlNw3epOVPfo7Kv4nCiKWsUTJUdHNuDPcf9G1M0XS1DelgYyKvCbknPr7WCmuL3NUULnz
+ UwZYLcev0O46xJ987USQh9Gi9hyWZBVKhO2rQC160RAjCwkwOgxNWhmacZjkVQZSe8PISe
+ algtF3Lnn/PAkPS1dWLBD21rzPuFNpc=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-335-Ul8tslr_NOS6LAWT00u00Q-1; Fri, 12 Jun 2026 10:51:00 -0400
+X-MC-Unique: Ul8tslr_NOS6LAWT00u00Q-1
+X-Mimecast-MFC-AGG-ID: Ul8tslr_NOS6LAWT00u00Q_1781275859
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-45ef6ad76bfso772226f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 12 Jun 2026 07:50:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781273138; x=1781877938;
+ d=1e100.net; s=20251104; t=1781275859; x=1781880659;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=hDSd1Ch4IG/snO3LC3CMu3U6AyQM8zbZGv8bpsK6uO4=;
- b=TynRZwHKvGbm3SKhmVD9zqcyRQKgD25D8kcB4UuEzlwvilyFe5KUZUGx7NR2Cb6gdD
- ejQUSrO6r4RiWoJMIa2LEp6D9lWZKoKXTGEjr2IJWi9bt+qQHHOvL2fgO11Xxg2HGeUX
- u1vz/EkpsRN2EdQtBE58wyLdXBfbNL1enUbdaI9IaewPpVU0vv7LFrFkchLa893LuEpS
- rgdutaGG8QFL1CXM3MJpllbB28PNtBiWEBUT0QEoIav8nGVtdSstf//jmo7YlF0Z/8eF
- ZKEgE4SAFbeCfWTQSttMQ3470Y8f9tUwfhMzpFe4S3ETeCoaCquQgm7Ys0NpJmx+QUYX
- lRxQ==
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1jqjLk29+ylgKafy2vZZGpLUZYRXAPBweaq2/Vw0ZvI=;
+ b=elT4s9ojHDrUv+5Wrr4xUxre6VKgExweHGRY6gSZkQWmMDNG89mx8s3BjvQRfQED2d
+ /eFdOVtbXLCw9JEr6jvCPMDQmHgO5UvpZPxpxxdTZEFtjDOn3iC+RsCxIU0Cddc95YVI
+ W4pJmGR2fV0gSaCgd4djz1/3qcwVEUJkuhFukPhn6295BWDGqu4x6wp/5yoD+h/4yTcJ
+ K9KgM6+7PnhqR4nsZYFxm0KSviaFCLWLpq0AwEK1m7SYk6SHhCK0j3oUx1itiICeVEeN
+ 4iYqb8rc9pY9PtJw3q2N//hFdq0ZN4GqbcXvx2DP3DTMybexF6rrUCYe0RPKigAHTBsy
+ XJ7A==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+0koa2rCxjZ3TRARQNvAAyKU1ebFteXhSoaabAG4PgkXGNnHBEHYZVzmlgOGtEkbYl5b5m6VXGJw==@nongnu.org
-X-Gm-Message-State: AOJu0Ywd8thkVgDxte34kKr8DDPGUzI60bPtkF3r06lmrWTw0YWjJn3V
- 6TBT13CEnbOhfPxbf7vvdrxVfvKWjHbRctxWpqbAdSO6ydqeHfTKuXx5lh0pBrlFKJlOLmjyqoL
- LpTJNognhypCpB7TEDhqrMiY+U8qzLZ6CAIwVEIZwTwjHDxdGWSDOAGQ=
-X-Gm-Gg: Acq92OEuF8B/Wlui1coFpzOMgE2HOexzcTacR4luFw2Mtcerfme83OFZ/9jBBaRBP7o
- DMQd3P2OLyebrAnc7bGXrJkTentU2GuVEZ90cseFDwBB3f4/ZBENh3h1LAodT1e0OXk9mR5pvKp
- jd2CLW8MfJA0TxNQc2iuhLovMwza/FL5/6p++rd9euSKy9O2gKgr+sOMX3aBbbLdL+2cmmIxVfk
- 9EM5+LL71AtbDONvguAP0pMq4EInFXy9GKM3UxP/ss3spDRSd4FHR/nBFZrZG/DNo8/hSQkMwSK
- h2as6LznrbvoWw9IW0c7EiOLLeiris8MMX+ux8eACpMbp0ODFzCv6mC9rKpRXTmcwPprgou9A75
- yGo8sH7dqSW+oORGU3HxlJPEnKPZZdwwQEBF0SW/tGX5dbbVgc5OimS4KT6Pi4rr0P8RUfH14
-X-Received: by 2002:a05:6808:4fc6:b0:472:c4ba:32d9 with SMTP id
- 5614622812f47-4872df27666mr1698192b6e.20.1781273137631; 
- Fri, 12 Jun 2026 07:05:37 -0700 (PDT)
-X-Received: by 2002:a05:6808:4fc6:b0:472:c4ba:32d9 with SMTP id
- 5614622812f47-4872df27666mr1698148b6e.20.1781273136840; 
- Fri, 12 Jun 2026 07:05:36 -0700 (PDT)
-Received: from [192.168.69.232] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-490e2d0475asm243290755e9.12.2026.06.12.07.05.35
+ AFNElJ/dd4yB5ml1FLBRfjQC+VzFCqCiI78V8XM7MkBzTlvhfyV26Jm0qM+s/BmzWd2FdAn44BhlXKrtBg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy5EWxYtpUP5nF4WcCmpK63tSY8/Y6bASdyzBReS3CrdlbL31Fi
+ ZFnyRar17+6RJxFSqfxE+oAgMkmyokzTW8aTYHwKpwhva2zHhmAiC4YDqdbCxytLffb7iQVNC3p
+ v1pUKVUoWooxFNYcA90OQARDvBbrUN585CvKCgTJPxRw6BH/hp7rvAw==
+X-Gm-Gg: Acq92OHfC2KRZ8qFKX8Jm8eltn33zi+neO6/PlFhrrCWLmiAik9DJqBWFvcCgrCwEU3
+ 67I/1mljlCzxa1JiSZgLh1zA7XTbIJkRw1QJXQFShf1JeZRV7kKqR+pT6N6Uq6wC5rSwNbmPfDh
+ IBU79ebT7BHHzCcivuhSo+p2zl42DeIcDYgBryVAS6r19cUMmlPJ/pnaiX9JQaCAfvC3U4+4bbn
+ hMxMfF364c9P5kOEk8ZevfajuECLj+Hazi/FHrzd6gn8JEElr23YZx5Yt4/tWb6DhbGP1giySiS
+ 3bFilTKMO9DXycrPuXC2HlxNVEPJKBdzSsrJAiDUZ8Kin1QlIafSEKPXpYULtm43iG9aUeYfbsb
+ 9Any9FpkDVZfyIKsg+jCzMbKNzUQ2zEtFfnDakJIlO5ZkJmyyJ9o+OVYIuwSWgp6S8F0v/w==
+X-Received: by 2002:a05:600c:a0d:b0:48e:6db3:ff3a with SMTP id
+ 5b1f17b1804b1-490ec4e6ddfmr42693795e9.16.1781275858767; 
+ Fri, 12 Jun 2026 07:50:58 -0700 (PDT)
+X-Received: by 2002:a05:600c:a0d:b0:48e:6db3:ff3a with SMTP id
+ 5b1f17b1804b1-490ec4e6ddfmr42693115e9.16.1781275858250; 
+ Fri, 12 Jun 2026 07:50:58 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4921eeb69d7sm2668905e9.15.2026.06.12.07.50.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 12 Jun 2026 07:05:35 -0700 (PDT)
-Message-ID: <aa8b97e2-14da-4df1-9b61-33e01b5cffce@oss.qualcomm.com>
-Date: Fri, 12 Jun 2026 16:05:34 +0200
+ Fri, 12 Jun 2026 07:50:57 -0700 (PDT)
+Message-ID: <eb5f98a0-1fc4-4a5a-839f-8bc3afc44165@redhat.com>
+Date: Fri, 12 Jun 2026 16:50:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] system/memory: Use __builtin_mem{cpy, move} in
- accessors of ram device region
+Subject: Re: [RFC PATCH v2 00/29] target/arm: Named CPU models for Arm64 on KVM
+To: Khushit Shah <khushit.shah@nutanix.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev
+Cc: Cornelia Huck <cohuck@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Marc Zyngier <maz@kernel.org>, Oliver Upton <oliver.upton@linux.dev>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Andrea Bolognani <abologna@redhat.com>, Jiri Denemark <jdenemar@redhat.com>,
+ Gavin Shan <gshan@redhat.com>, Shameer Kolothum <skolothumtho@nvidia.com>,
+ Sebastian Ott <sebott@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jinqian Yang <yangjinqian1@huawei.com>,
+ Shaju Abraham <shaju.abraham@nutanix.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>
+References: <20260605083358.1320563-1-khushit.shah@nutanix.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260605083358.1320563-1-khushit.shah@nutanix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: gIdf0mpQCKdbhs0PpVseJl-z1NXrN5L0mXTmYX_EKAg_1781275859
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, peterx@redhat.com, mst@redhat.com,
- peter.maydell@linaro.org, berrange@redhat.com, david@kernel.org,
- alex@shazbot.org, clg@redhat.com, pbonzini@redhat.com,
- phrdina@redhat.com, jugraham@redhat.com, shan.gavin@gmail.com
-References: <20260612110307.1264798-1-gshan@redhat.com>
- <20260612110307.1264798-2-gshan@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260612110307.1264798-2-gshan@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjEyMDEyOSBTYWx0ZWRfXxYdWjf2Pk1Gm
- nDYFUSGGH6pVt6eppAXpqdg5h1QzZvCy2MUiSNviS53l89Sr6SkZbQpsfnFNZ8+J8v6ShS0G/s4
- RjCotluJ2vHhVerYVSXQWdcW+02Q3uUxhxpjbWe68duxR+Pb7k0yiuxD2xfBgUm3x6OTtJ/2WU0
- oOAsoKI3uDDAg/XYXHAHjvYa1yyomRn33y2CLAo5m2Rjbl6XZrPBQ92G7fdIF2bqQvotjwVsz1f
- ieH9kZd3QrjlJZu87Ldg8HuMxP4/yL+UstTY/B45V1bhn5sAGrBvj7qhOM371qXhXLOuI2PdMXO
- TeaqfRggYIkb6d5xS6oLf5gA1E6harXVJPQhUaMrM8uW/0/8E3gVPf6XWcVZsrnAgAT7nTj1Yxp
- UUtho+ceSChBruHnq9GQpD/E9FPKWG+U+4g/LaS365Mtk/ipf51oAOOFGcLg3M8VY5kbDC2fnGU
- TzpwJJSdobLgLZrysNQ==
-X-Proofpoint-GUID: SG8Oe9YBswmSRE8NUBpdfnRMTNh8wWyu
-X-Proofpoint-ORIG-GUID: SG8Oe9YBswmSRE8NUBpdfnRMTNh8wWyu
-X-Authority-Analysis: v=2.4 cv=NZPWEWD4 c=1 sm=1 tr=0 ts=6a2c1232 cx=c_pps
- a=AKZTfHrQPB8q3CcvmcIuDA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
- a=20KFwNOVAAAA:8 a=0CTYnOhIUTuevSWfFCgA:9 a=QEXdDO2ut3YA:10
- a=pF_qn-MSjDawc0seGVz6:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNjEyMDEyOSBTYWx0ZWRfX1jfTqaUQHfVw
- AbQ228aGaHepA981lk8+F6kmd0bZ0YKR9VgLY7kwLDLXWqhj1F6tqXy2G5EUPTTWsyptofpyJrt
- KoUKlNqUidgiQX8fHJNlh4XNmlz0sRU=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-06-12_01,2026-06-12_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 suspectscore=0 adultscore=0 lowpriorityscore=0 clxscore=1015
- priorityscore=1501 malwarescore=0 bulkscore=0 spamscore=0 impostorscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606040000 definitions=main-2606120129
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -155,197 +125,250 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Gavin,
+Hi Khushit,
 
-On 12/6/26 13:03, Gavin Shan wrote:
-> All ram device regions was turned to be indirectly accessible by commit
-> 4a2e242bbb ("memory: Don't use memcpy for ram_device regions"). This leads
-> to guest hang on compiling 'cuda-samples' as reported by Julia. The guest
-> is started by the following command lines, with a GH100 GPU card.
-> 
->     host$ lspci | grep GH100
->     0009:01:00.0 3D controller: NVIDIA Corporation GH100 [GH200 120GB / 480GB] (rev a1)
->     host$ /home/sandbox/gavin/qemu.main/build/qemu-system-aarch64            \
->           -machine virt,gic-version=host,ras=on,highmem-mmio-size=4T         \
->           -accel kvm -cpu host -smp cpus=48 -m size=8G                       \
->           -drive file=/home/gavin/sandbox/images/disk.qcow2,if=none,id=d0    \
->           -device virtio-blk-pci,id=vb0,bus=pcie.0,drive=d0,num-queues=4     \
->           -device vfio-pci-nohotplug,host=0009:01:00.0,bus=pcie.1.0
->             :
->     guest$ cd cuda-samples/build
->     guest$ make -j 20 clean
->     guest$ make -j 20
->             :
->     [ 54%] Linking CUDA executable graphMemoryNodes
->     [ 54%] Built target graphMemoryNodes
->     <no more output afterwards, guest becomes frozen here>
-> 
->     guest$ qemu-system-aarch64: virtio: bogus descriptor or out of resources
->     [  555.814025] virtio_blk virtio0: [vda] new size: 268435456 512-byte logical blocks (137 GB/128 GiB)
-> 
-> When the GPU's driver (NVidia open driver) is loaded on guest bootup,
-> the memory blocks residing in the PCI BAR#4 can be presented to the
-> guest through memory hot-add. The page cache can be allocated from the
-> hot added memory blocks when cuda-samples is being compiled. Afterwards,
-> the page cache is sent to QEMU's virtio-blk device as part of the DMA
-> request, the bounce buffer has to be used to accomodate the request as
-> the corresponding memory region (MemoryRegion) is a RAM DEVICE region
-> and indirectly accessible in qemu. However, the max bounce bufer size
-> is only 4096 bytes by default. We're running out of that space quickly.
-> 
->    QEMU
->    ====
->    virtio_blk_handle_output
->      virtio_blk_handle_vq
->        virtio_blk_get_request
->          virtqueue_pop
->            virtqueue_split_pop
->              virtqueue_map_desc
->                address_space_map
->                  memory_access_is_direct         # Return false
->                    memory_region_supports_direct_access
-> 
->    (qemu) info mtree
->    memory-region: pci_bridge_pci
->      0000000000000000-ffffffffffffffff (prio 0, container): pci_bridge_pci
->        0000042000000000-0000043fffffffff (prio 1, i/o): 0009:01:00.0 base BAR 4
->          0000042000000000-0000043fffffffff (prio 0, i/o): 0009:01:00.0 BAR 4
->            0000042000000000-000004379fffffff (prio 0, ramd): 0009:01:00.0 BAR 4 mmaps[0]
-> 
-> This replaces mem{cpy, move} with __builtin_mem{cpy, move} in the memory
-> accessors to ram device memory region, preparatory work to make ram device
-> region directly accessible and bypass the bounce buffer in the DMA path
-> in next patch.
-> 
-> Reported-by: Julia Graham <jugraham@redhat.com>
-> Suggested-by: Michael S. Tsirkin <mst@redhat.com>
-> Suggested-by: Peter Xu <peterx@redhat.com>
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->   hw/remote/vfio-user-obj.c |  4 ++--
->   include/system/memory.h   | 42 ++++++++++++++++++++++++++++++++++++++-
->   system/physmem.c          |  8 ++++----
->   3 files changed, 47 insertions(+), 7 deletions(-)
-> 
-> diff --git a/hw/remote/vfio-user-obj.c b/hw/remote/vfio-user-obj.c
-> index 87fa7b6572..fe6f661fe2 100644
-> --- a/hw/remote/vfio-user-obj.c
-> +++ b/hw/remote/vfio-user-obj.c
-> @@ -375,9 +375,9 @@ static int vfu_object_mr_rw(MemoryRegion *mr, uint8_t *buf, hwaddr offset,
->           ram_ptr = memory_region_get_ram_ptr(mr);
->   
->           if (is_write) {
-> -            memcpy((ram_ptr + offset), buf, size);
-> +            address_space_memcpy(ram_ptr + offset, buf, size);
->           } else {
-> -            memcpy(buf, (ram_ptr + offset), size);
-> +            address_space_memcpy(buf, ram_ptr + offset, size);
->           }
->   
->           return 0;
-> diff --git a/include/system/memory.h b/include/system/memory.h
-> index 1417132f6d..6bb2e13eea 100644
-> --- a/include/system/memory.h
-> +++ b/include/system/memory.h
-> @@ -2938,6 +2938,46 @@ static inline bool memory_access_is_direct(const MemoryRegion *mr,
->       return true;
->   }
->   
-> +static inline void address_space_memcpy(void *dest, const void *src, size_t n)
+On 6/5/26 10:33 AM, Khushit Shah wrote:
+> Hi All,
+>
+> This is the v2 RFC of the Named CPU models support for Arm64 in QEMU.
+> v2 implements all of Planned items that were mentioned in v1.
+> v1 link: https://lore.kernel.org/qemu-arm/20260513163356.3033159-1-shaju.abraham@nutanix.com/
 
-'address_space_' prefix for something that doesn't use neither
-AddressSpace nor MemoryRegion is odd.
+Please could you share a branch. This fails to apply on mainline due to
+recent changes
 
-Maybe prefix 'qemu_ram_' or 'qemu_ram_ptr_' instead? (since the
-address is returned by memory_region_get_ram_ptr)
-Add the definitions in "system/ramblock.h" with that declaration?
+Thanks
 
-> +{
-> +    switch (n) {
-> +    case 1:
-> +        __builtin_memcpy(dest, src, 1);
-> +        break;
-> +    case 2:
-> +        __builtin_memcpy(dest, src, 2);
-> +        break;
-> +    case 4:
-> +        __builtin_memcpy(dest, src, 4);
-> +        break;
-> +    case 8:
-> +        __builtin_memcpy(dest, src, 8);
-> +        break;
-> +    default:
-> +        __builtin_memcpy(dest, src, n);
-> +    }
-> +}
-> +
-> +static inline void address_space_memmove(void *dest, const void *src, size_t n)
-> +{
-> +    switch (n) {
-> +    case 1:
-> +        __builtin_memmove(dest, src, 1);
-> +        break;
-> +    case 2:
-> +        __builtin_memmove(dest, src, 2);
-> +        break;
-> +    case 4:
-> +        __builtin_memmove(dest, src, 4);
-> +        break;
-> +    case 8:
-> +        __builtin_memmove(dest, src, 8);
-> +        break;
-> +    default:
-> +        __builtin_memmove(dest, src, n);
-> +    }
-> +}
-> +
->   /**
->    * address_space_read: read from an address space.
->    *
-> @@ -2970,7 +3010,7 @@ MemTxResult address_space_read(AddressSpace *as, hwaddr addr,
->               mr = flatview_translate(fv, addr, &addr1, &l, false, attrs);
->               if (len == l && memory_access_is_direct(mr, false, attrs)) {
->                   ptr = qemu_map_ram_ptr(mr->ram_block, addr1);
-> -                memcpy(buf, ptr, len);
-> +                __builtin_memcpy(buf, ptr, len);
->               } else {
->                   result = flatview_read_continue(fv, addr, attrs, buf, len,
->                                                   addr1, l, mr);
-> diff --git a/system/physmem.c b/system/physmem.c
-> index 7bcbf87573..5f46a9d676 100644
-> --- a/system/physmem.c
-> +++ b/system/physmem.c
-> @@ -3272,7 +3272,7 @@ static MemTxResult flatview_write_continue_step(MemTxAttrs attrs,
->           uint8_t *ram_ptr = qemu_ram_ptr_length(mr->ram_block, mr_addr, l,
->                                                  false, true);
->   
-> -        memmove(ram_ptr, buf, *l);
-> +        address_space_memmove(ram_ptr, buf, *l);
->           invalidate_and_set_dirty(mr, mr_addr, *l);
->   
->           return MEMTX_OK;
-> @@ -3365,7 +3365,7 @@ static MemTxResult flatview_read_continue_step(MemTxAttrs attrs, uint8_t *buf,
->           uint8_t *ram_ptr = qemu_ram_ptr_length(mr->ram_block, mr_addr, l,
->                                                  false, false);
->   
-> -        memcpy(buf, ram_ptr, *l);
-> +        address_space_memcpy(buf, ram_ptr, *l);
->   
->           return MEMTX_OK;
->       }
-> @@ -3503,8 +3503,8 @@ MemTxResult address_space_write_rom(AddressSpace *as, hwaddr addr,
->               l = memory_access_size(mr, l, addr1);
->           } else {
->               /* ROM/RAM case */
-> -            void *ram_ptr = qemu_map_ram_ptr(mr->ram_block, addr1);
-> -            memcpy(ram_ptr, buf, l);
-> +            address_space_memcpy(qemu_map_ram_ptr(mr->ram_block, addr1),
-> +                                 buf, l);
->               invalidate_and_set_dirty(mr, addr1, l);
->           }
->           len -= l;
+Eric
+>
+> Background:
+> =============================================================
+> Currently QEMU only support -cpu host/max for KVM on Arm64. This disables
+> live migration of VMs between hosts that differ in CPU features.
+>
+> This RFC proposes hierarchical named models for Arm64 under KVM, this
+> provides strict contract of CPU features that will be exposed to the guest
+> for a given named model. Models can be customized further with feature
+> properties (like feat_AES=off, pauth=on, sve=off, etc...). 
+>
+> The design has three layers: an ARM ID-register field table (single
+> source of truth for fields, safe-rules, defaults, arch-defined values); a
+> property layer on top (single-field, fractional, and composite properties);
+> and a hierarchical named-model layer that picks values for those properties
+> with parent-chain inheritance.
+>
+> The series also implements QMP commands that lets the management layer query
+> which models a host can run, what each model resolves to, and which feature
+> values the host supports.
+>
+> Relationship with "customizable host model" series:
+> ============================================================
+> This RFC overlaps with customizable host model series [1]. The two series
+> solve different parts of the same problem: [1] provides the lower layer
+> (per-field SYSREG_<REG>_<FIELD> u64 properties on -cpu host,
+> writable-mask probing, ID-register writeback).
+>
+> This series adds the layers above that, like:
+> hierarchical named CPU models, default-from-zero baselines, fractional and
+> composite properties for named models (sve, pauth, expose-cache),
+> property/value names, and QMP introspection (blockers via safe-rule
+> validation, supported values, new query-arm-cpu-props-info). This series
+> also fixes the host-supports-Nested-Virtualziation-while-qemu-booted-without-it
+> writeback case [2] that surfaces once [1]'s writeback lands.
+>
+> Long term plan is to rebase this series on top of [1]. Few difficulties
+> in that will be augmenting the ID regs fields table with safe rules and
+> default values, which Eric correctly mentioned in [1] that it cannot
+> be inferred from Registers.json.
+>
+> For property names and values we have no strong preference,
+> <SYSREG>_<REG>_<FIELD> with uint64 values or "feat_*" properties with
+> string values (SYSREG_ID_AA64ISAR0_AES=2/feat_AES="pmull").
+>
+> [1]: https://lore.kernel.org/qemu-arm/20260519132905.145643-1-eric.auger@redhat.com/
+> [2]: See patch 29 of this series.
+>
+> TL;DR examples:
+>   # Boot with Grace
+>   qemu-system-aarch64 -cpu grace-v1 -machine virt,accel=kvm ...
+>
+>   # Grace with a feature disabled
+>   qemu-system-aarch64 -cpu grace-v1,feat_SHA1=off ...
+>
+>   # Host passthrough with individual feature control
+>   qemu-system-aarch64 -cpu host,feat_AES=aes ...
+>
+>   # named CPU model with composite properties
+>   qemu-system-aarch64 -cpu grace-v1,pauth=off,sve=on ...
+>
+>   # QMP -cpu host query-cpu-model-expansion:
+>         "model": {
+>             "name": "host",
+>             "props": {
+>                 "cpu_partnum": 3407,
+>                 "feat_SM4": "on",
+>                 "feat_SM3": "on",
+>                 ....
+>             }
+>         }
+>
+>     # QMP -cpu graviton3-v1 query-cpu-model-expansion:
+>         "model": {
+>             "name": "graviton3-v1",
+>             "props": {
+>                 "cpu_partnum": 3392,
+>                 "feat_SM4": "on",
+>                 "feat_SM3": "on",
+>                 "feat_RNDR": "on",
+>                 ....
+>             }
+>         }
+>
+>     # QMP query-cpu-definitions (on Grace host) (blockers for graviton3-v1):
+>         {
+>             "name": "grace-v1",
+>             "typename": "grace-v1-arm-cpu",
+>             "static": false,
+>             "deprecated": false
+>         },
+>         {
+>             "name": "graviton3-v1",
+>             "typename": "graviton3-v1-arm-cpu",
+>             "unavailable-features": [
+>                 "hw_prop_TGRAN4_2",
+>                 "hw_prop_TGRAN64_2",
+>                 "hw_prop_TGRAN16_2",
+>                 "hw_prop_APA",
+>                 "feat_RNDR"
+>             ],
+>             "static": false,
+>             "deprecated": false
+>         },
+>         ....
+>
+>     # new QMP query-arm-cpu-props-info (on Grace host):
+>         {
+>             "name": "feat_SHA1",
+>             "type": "boolean",
+>             "supported-values": [
+>                 "on",
+>                 "off"
+>             ]
+>         },
+>         {
+>             "name": "feat_AES",
+>             "type": "string",
+>             "supported-values": [
+>                 "off",
+>                 "aes",
+>                 "pmull"
+>             ]
+>         },
+>         ....
+>
+> Changes since v1:
+>   - Added `query-cpu-definitions` and `query-cpu-model-expansion` QMP
+>     support for named models and accompanying properties.
+>   - Introduced `query-arm-cpu-props-info` QMP command that returns
+>     list of all newly supported properties for -cpu host, and its supported
+>     values.
+>   - Add composite properties for named models which acts as master "on"/"off"
+>     switches for features that compose of broader range of ID registers
+>     fields like pauth and sve.
+>   - Added `expose-cache` composite with other cache related properties to
+>     allow named models to expose cache information to the guest.
+>   - Cache the host isar view with and without EL2 support, and make
+>     -cpu host with writeback work on host kernel that supports
+>     virtualization.
+>   - Validate the cpu->isar.idregs before writing back to KVM to catch early
+>     errors.
+>   - Properties and models are now defined in file rather than using .h.inc 
+>     files.
+>
+> Tested on NVIDIA Grace and AWS Graviton3 hosts (6.18); booted grace-v1,
+> graviton3-v1, neoverse-v2-v1, neoverse-v1-v1, and -cpu host with per-feature
+> overrides.
+>
+> Plans for v3:
+>   - Some documentation and unit tests.
+>   - More properties based on what more the latest kernel supports.
+>   - pmu composite property.
+>   - Trying to rebase on top of [1].
+>   - Splitting this huge series into 3-4 sub series.
+>
+> Warm Regards,
+> Khushit, Shaju
+>
+> Khushit Shah (20):
+>   target/arm: Introduce data-structures for the ARM property layer
+>   target/arm: Add all ARM64 properties to host model
+>   target/arm: Add Nvidia Grace named model
+>   target/arm/kvm: enable writable implementation ID registers
+>   target/aarm: Validate cpu->isar.idregs[] before writeback
+>   target/arm/kvm: handle DCZID_EL0 specially
+>   target/arm: skip GIC, COPDBG and PMU fields during KVM writeback
+>   target/arm: Add composite property type to model definitions
+>   target/arm: define pauth composite property
+>   target/arm: define sve composite property
+>   target/arm: Introduce stub files required for qmp support
+>   target/arm/qmp: add named models and properties to cpu-model-expansion
+>   target/arm/kvm: introduce kvm_arm_get_host_isar helper
+>   target/arm/qmp: add query-arm-cpu-props-info
+>   target/arm: Report "off" for ID fields gated by vCPU init flags
+>   target/arm/qmp: hook blockers in query-cpu-definitions
+>   target/arm: Support exposing cache information for named cpu models
+>   target/arm: Provide default cache hierarchy
+>   target/arm: supported-values and blockers for CCSIDR cache properties
+>   target/arm/kvm: fix host model writeback when kernel supports EL2
+>
+> Shaju Abraham (9):
+>   target/arm: named_cpu_model: define containers for ID registers and
+>     fields
+>   target/arm: Add ID Register field descriptions in cpu-idregs.h.inc
+>   target/arm: Add MIDR, REVIDR, AIDR and extra ID regs to cpu-sysregs
+>   target/arm: Generate ARM64 ID registers and field tables
+>   target/arm: Replace FIELD() macros with IDREG_FIELD expansion
+>   target/arm: Define ARM properties
+>   target/arm: Add ID register field helper functions
+>   target/arm: Add named cpu model infra + graviton3 named model
+>   target/arm/kvm: Writeback modified ID registers to KVM
+>
+>  hw/arm/virt.c                    |   28 +-
+>  qapi/misc-arm.json               |   41 +
+>  stubs/qmp-arm-gic.c              |    6 +
+>  target/arm/arm-cpu-models-stub.c |   18 +
+>  target/arm/arm-cpu-models.c      |  620 ++++++++++
+>  target/arm/arm-cpu-models.h      |   49 +
+>  target/arm/arm-cpu-props-stub.c  |   36 +
+>  target/arm/arm-cpu-props.c       | 1212 +++++++++++++++++++
+>  target/arm/arm-cpu-props.h       |   70 ++
+>  target/arm/arm-qmp-cmds.c        |  128 +-
+>  target/arm/cpu-features.h        |  246 +---
+>  target/arm/cpu-idregs.c          |  508 ++++++++
+>  target/arm/cpu-idregs.h          |  119 ++
+>  target/arm/cpu-idregs.h.inc      | 1898 ++++++++++++++++++++++++++++++
+>  target/arm/cpu-sysregs.h.inc     |    5 +
+>  target/arm/cpu.h                 |    3 +
+>  target/arm/cpu64.c               |   31 +-
+>  target/arm/kvm-stub.c            |    7 +-
+>  target/arm/kvm.c                 |  356 +++++-
+>  target/arm/kvm_arm.h             |    7 +-
+>  target/arm/meson.build           |   11 +-
+>  target/arm/trace-events          |    1 +
+>  22 files changed, 5148 insertions(+), 252 deletions(-)
+>  create mode 100644 target/arm/arm-cpu-models-stub.c
+>  create mode 100644 target/arm/arm-cpu-models.c
+>  create mode 100644 target/arm/arm-cpu-models.h
+>  create mode 100644 target/arm/arm-cpu-props-stub.c
+>  create mode 100644 target/arm/arm-cpu-props.c
+>  create mode 100644 target/arm/arm-cpu-props.h
+>  create mode 100644 target/arm/cpu-idregs.c
+>  create mode 100644 target/arm/cpu-idregs.h
+>  create mode 100644 target/arm/cpu-idregs.h.inc
+>
 
 

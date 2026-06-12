@@ -4,124 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A0E2CD98CE
-	for <qemu-arm@archiver.kernel.org>; Fri, 12 Jun 2026 07:39:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0EDBCD4F2C
+	for <qemu-arm@archiver.kernel.org>; Fri, 12 Jun 2026 08:43:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wXwTP-0000fi-Nz; Fri, 12 Jun 2026 03:38:40 -0400
+	id 1wXxTt-0003wT-JU; Fri, 12 Jun 2026 04:43:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wXwTJ-0000er-Mj
- for qemu-arm@nongnu.org; Fri, 12 Jun 2026 03:38:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXxTr-0003vq-RF
+ for qemu-arm@nongnu.org; Fri, 12 Jun 2026 04:43:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wXwTH-0005FT-WD
- for qemu-arm@nongnu.org; Fri, 12 Jun 2026 03:38:33 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wXxTq-0003Bo-63
+ for qemu-arm@nongnu.org; Fri, 12 Jun 2026 04:43:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781249910;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
+ s=mimecast20190719; t=1781253789;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=36OuNx9nK8T/nKzXs0flx3BkMIs014GXg11EFPwESHM=;
- b=OIYk3vOzh/ZM9avUEs+ZjZcU0V+eQ5OQVphRWn8mvZupjn6YqdnT9usHUT/trZkuPtnTQC
- /0ZQKWZfVXLHW7fBzg0DoP4KL6hewB1IzEIvSGYXyknkxoofC9NfQvMiUUdcKCguKh1LK9
- FVRce312cRzARbPxlKuxgAbR8luoNCo=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=CiQsaORxtMIvHq95jZcjcnF36rd1YYR82LOVNgV3M+Q=;
+ b=AnVf4B8w1IedTkUqEPC30Ltmk0IGP8W8mdi6YCedfVodXJInPKoKUdQjPGZKzoV4I+hmcG
+ B7ZU6wZKH16rhk4l8fQe5+a+83niFwF01GP/M5EAZqBgtMgImmi0AFAZyQjYGiyvyR8YOI
+ 3TMLoCRvqyhJ8KN2auL9XMN2HpKa6Gs=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-96-KPg8uMQdP6qbaBd2k6Opfg-1; Fri, 12 Jun 2026 03:38:29 -0400
-X-MC-Unique: KPg8uMQdP6qbaBd2k6Opfg-1
-X-Mimecast-MFC-AGG-ID: KPg8uMQdP6qbaBd2k6Opfg_1781249908
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-46067b07571so374406f8f.1
- for <qemu-arm@nongnu.org>; Fri, 12 Jun 2026 00:38:29 -0700 (PDT)
+ us-mta-235-KJwR8qVYOtyP4GhdPxxRoA-1; Fri, 12 Jun 2026 04:43:05 -0400
+X-MC-Unique: KJwR8qVYOtyP4GhdPxxRoA-1
+X-Mimecast-MFC-AGG-ID: KJwR8qVYOtyP4GhdPxxRoA_1781253785
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-490b5d2e394so4605795e9.3
+ for <qemu-arm@nongnu.org>; Fri, 12 Jun 2026 01:43:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781249908; x=1781854708;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=36OuNx9nK8T/nKzXs0flx3BkMIs014GXg11EFPwESHM=;
- b=M8KVw/LzZv3gbbcPs4NHDS8ZzeKiPO6EP2+Fr2laUr4yFHZRefs1Yo1Psdn5FE9RfD
- V4edClhQGBTRNCidHDOiRVG/msNqiskXVopTY4U6kRenvvafwTt0QR0eJ6lgMmBR01Cm
- sQIwr6NdZUhHhCm1gN60dpMh5SYiXHqJMgP0r3I5nHUhKfWry/FkZUQwD+unxznOxDfN
- UA/HImnIVviuZX07HU74eEr9n0Ae+7iamlC9MnO6IEAkB+9GDXG39TNOFUx6D6VmsOxV
- 7BFhZOkK29Sk2eYE8TbiFjlqHBV/D2gVQtnwg22NFQtPkDZTZVvpQyCnNXV7QBvoNgbE
- /urw==
+ d=1e100.net; s=20251104; t=1781253784; x=1781858584;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=CiQsaORxtMIvHq95jZcjcnF36rd1YYR82LOVNgV3M+Q=;
+ b=FH5TXTjCRvUtsTEY2GWvpgWZ1iLhDYbZ7z7WaQIUoBVRnbL1Fb+rz3OCK+BQe/l1za
+ cTDpnWYoBCnf0kC3/c0C0CT3FQDtDjo9bt8qBIRPnZsutSeX6JpPY/xj7NzAmyJaF2XG
+ tbwREih3Q8GFscN+A3GmwH+M6y7Ud8dqVjwN2Dzk8uqEhV08WMcHVIurDduib+bukkE/
+ 8YlWrtbB2ONKJi11XSxCkrqK+wqqzcSj21zv3BvEEZzrPSpWYQp88b63n6GU6MJbJHkk
+ unFm5O5pzXzCMXV7T28n54EfBIzRDfP3UPv23BVf+KPKZa4ckPVbyh3FuyTV+0mQLHkE
+ 1jgw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/HY1scD2/U7KvJY7x7Du5ckTfGvXhkhFBy1WeSkWgwkvFwG7mYe0GoXk/vq7iC6EQUOu3e3mbAYA==@nongnu.org
-X-Gm-Message-State: AOJu0Ywm9PV2uohzWIgPRR6zMuvKX14xRWCz68hJq67wkdwEPKekCUCW
- TA+oVUe/uib+CG2lDYSQp1Q8O9AIs51Us3TVPFj3Sw27FBVvqkNajsJ6CiSA8dD8pmOVD1GxTk8
- LfDxnS041cDzvbTwytD9wOr6b2lIeqnl6y2as/5Xq321jy/+dT4Cu9w==
-X-Gm-Gg: Acq92OG4zG00bynv9hRVUWFALVhB2qVuOvRpg0M2V8IiCcHiYfX5tYTcjhN1kXAlP9A
- CReUkFujQwkumvsM1xf0z4J1fKPwKAKDSqfHS1GMZ5RwJm5AcEUSV9SD5hhLOIZjGxTAReX0bA+
- ujJqRDKRF1Ss1xHT3GHyV7AQ5Z18vRUIlGxaqXi2cHmnFOdRxU0aKQdDRmZqxTpbVfzP1swvZnp
- LReIXIkYVTo1W5RKQSydVbkNgz5v/05El0kzMtDfjfIPn96u2YE9dmKYyA8HDPgPS1wHB0i7O6F
- sMphK3Z+SPEwrNoSugRuiFu314beBBYc/6iMYhUZiJi7YQ7Aps4NX9JME3Qgy16KcFhsj1VaMXM
- 3EuilF3nLNRgQDxHMOYti8Hn/UWaV3qGUv7lCvpa7ILT6Q3tzY1Qwh7kQLqdhqhGDgxasZw==
-X-Received: by 2002:a05:6000:2586:b0:460:684d:d565 with SMTP id
- ffacd0b85a97d-4606f255ab8mr1753984f8f.15.1781249907931; 
- Fri, 12 Jun 2026 00:38:27 -0700 (PDT)
-X-Received: by 2002:a05:6000:2586:b0:460:684d:d565 with SMTP id
- ffacd0b85a97d-4606f255ab8mr1753954f8f.15.1781249907598; 
- Fri, 12 Jun 2026 00:38:27 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ AFNElJ9owr/uUQ0opTVIt3RUzoP8P3bjywzJ+Uxg8b95XF1wV9tFTz1qVmq9Rza/1UgGjVrv83UQ63UUVw==@nongnu.org
+X-Gm-Message-State: AOJu0YxNnhCJ1dTOdLHV0EsP4/JboicsS6JPPCnzRB5v7XxEtbKgoCh+
+ hu5MBcVOr6E5fHybdWokJpwT54o+k+qas9gvlUDs1NvZbwgRw5IUclN2kMRB40z/5Yq1gFQu6aZ
+ mSvWun+LGmkCoXkUeD9EnHIiq9jnr8x/VSaJXemboTk4lN0DU4iMKEg==
+X-Gm-Gg: Acq92OGVvpOmYjzwQmxKz7JVG5Ydxs7MfMZ49gwXkzq3aAFGmwx2GvdTn8qNF8zMprI
+ 1LThyc/2UrbzAFQxwiaugfFVUmLfp9Br47M9m+UKZgOQPhBiiUCwLkpx8J+bu3wqWm/pBnYOCb+
+ w2sRKLgVU3WqBXYdN8l9x9zUl9Z50TTG19lClrrUV0oh/xMb1WTPWoR5ueuBF4B3uF6TrdISpM1
+ qaOTJPZkE0bECRh9m1h6/1slSBQ2ARRw9cTFtuYDenYKGZemfCTr065zDDAqTkRunyZrKU9U/d1
+ 1oHRFGzCl/odKPtftiw9i18xy7691QUFjZTJ3bk+9jz5i+qljnzmJir2Fuu6croGxK3uWMwA1v+
+ EzUN2IBe+15T5O032HJbYR49gNGpdhDWD4e+Mlo27o4Q=
+X-Received: by 2002:a05:600c:820c:b0:490:bcf6:46bf with SMTP id
+ 5b1f17b1804b1-490ec4cdf95mr21839265e9.9.1781253784334; 
+ Fri, 12 Jun 2026 01:43:04 -0700 (PDT)
+X-Received: by 2002:a05:600c:820c:b0:490:bcf6:46bf with SMTP id
+ 5b1f17b1804b1-490ec4cdf95mr21838565e9.9.1781253783662; 
+ Fri, 12 Jun 2026 01:43:03 -0700 (PDT)
+Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4606f26f726sm3028887f8f.15.2026.06.12.00.38.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 12 Jun 2026 00:38:26 -0700 (PDT)
-Message-ID: <51ba045f-6ecf-4703-92c6-f362724c408e@redhat.com>
-Date: Fri, 12 Jun 2026 09:38:25 +0200
+ ffacd0b85a97d-4606f2e6a8fsm3701992f8f.37.2026.06.12.01.43.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 12 Jun 2026 01:43:03 -0700 (PDT)
+Date: Fri, 12 Jun 2026 04:43:00 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Peter Xu <peterx@redhat.com>,
+ Pavel Hrdina <phrdina@redhat.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, jugraham@redhat.com,
+ shan.gavin@gmail.com, Alex Williamson <alex@shazbot.org>,
+ David Hildenbrand <david@kernel.org>
+Subject: Re: [PATCH RFCv1] virtio: Inherit max bounce buffer size from bus
+ parent if possible
+Message-ID: <20260612044147-mutt-send-email-mst@kernel.org>
+References: <20260610095712-mutt-send-email-mst@kernel.org>
+ <aimEl9QQ_LTRPLtd@x1.local>
+ <20260610121026-mutt-send-email-mst@kernel.org>
+ <1e9515c9-7e32-4d95-9b73-aab8bf10bddc@redhat.com>
+ <20260611012217-mutt-send-email-mst@kernel.org>
+ <3726a607-6cac-41f1-b402-0eed7c4e3fe3@redhat.com>
+ <20260611023428-mutt-send-email-mst@kernel.org>
+ <0c3f1dba-3b2c-43c5-b181-1426f6da0951@redhat.com>
+ <CAFEAcA8Q9qEaZS8wCpZQ-4jpAnQ9JXvnb7iSeRTdhJ9Y3BcCRg@mail.gmail.com>
+ <ec32c5ae-782c-4c83-8432-23d979552fbe@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 04/18] arm/cpu: Add infra to handle generated ID
- register definitions
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "shaju.abraham@nutanix.com" <shaju.abraham@nutanix.com>,
- "khushit.shah@nutanix.com" <khushit.shah@nutanix.com>,
- "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "philmd@linaro.org" <philmd@linaro.org>
-Cc: "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-References: <20260519132905.145643-1-eric.auger@redhat.com>
- <20260519132905.145643-5-eric.auger@redhat.com>
- <CH3PR12MB7548D1CA4348E04A14725645AB152@CH3PR12MB7548.namprd12.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB7548D1CA4348E04A14725645AB152@CH3PR12MB7548.namprd12.prod.outlook.com>
+In-Reply-To: <ec32c5ae-782c-4c83-8432-23d979552fbe@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: MRUbViwmQMaG3F4TCv2TwaBEqxZmFc-PBuSNlz1SAK0_1781249908
+X-Mimecast-MFC-PROC-ID: RkvhXBlhFzjrVu-Z2aUQnabNWc8Llt-4mWnfl8xFCQo_1781253785
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,118 +120,115 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
+On Fri, Jun 12, 2026 at 02:25:07PM +1000, Gavin Shan wrote:
+> On 6/11/26 10:48 PM, Peter Maydell wrote:
+> > On Thu, 11 Jun 2026 at 13:34, Gavin Shan <gshan@redhat.com> wrote:
+> > > 
+> > > Let me try to summarize what I understood. As VFIO is concerned, there
+> > > are multiple memory regions for one particular PCI BAR, and they're stacked
+> > > up. The memory regions for PCI BAR#4 of the GH100 card looks as below.
+> > > 
+> > >     (qemu) info mtree
+> > >                :
+> > >     address-space: pci_bridge_pci_mem
+> > >       0000000000000000-ffffffffffffffff (prio 0, container): pci_bridge_pci
+> > >         0000042000000000-0000043fffffffff (prio 1, i/o): 0009:01:00.0 base BAR 4          <---- (1) VFIOBAR::mr
+> > >           0000042000000000-0000043fffffffff (prio 0, i/o): 0009:01:00.0 BAR 4             <---- (2) VFIOBAR::VFIORegion::mem
+> > >             0000042000000000-000004379fffffff (prio 0, ramd): 0009:01:00.0 BAR 4 mmaps[0] <---- (3) VFIOBAR::VFIORegion::VFIOMap::mem
+> > > 
+> > >     (1) Its MemoryRegionOps is NULL. No data accesses are routed to this region
+> > >     (2) The data accesses routed to this region is handled by pread() and pwrite()
+> > >     (3) The data accesses routed to this region is handled by memcpy() before
+> > >         commit 4a2e242bbb.
+> > > 
+> > > There are identified PCI devices who have quirks, see vfio_bar_quirk_setup().
+> > > Accesses to part of the PCI BAR have to be emulated by the extra IO regions,
+> > > something like below for rtl8168 PCI device, where two extra IO regions are
+> > > stacked up for the quirks.
+> > > 
+> > >     address-space: pci_bridge_pci_mem
+> > >       0000000000000000-ffffffffffffffff (prio 0, container): pci_bridge_pci
+> > >         0000042000000000-0000043fffffffff (prio 1, i/o): 0009:01:00.0 base BAR 4          <---- (1) VFIOBAR::mr
+> > >           0000042000000000-0000043fffffffff (prio 0, i/o): 0009:01:00.0 BAR 4             <---- (2) VFIOBAR::VFIORegion::mem
+> > >             0000042000000000-000004379fffffff (prio 0, ramd): 0009:01:00.0 BAR 4 mmaps[0] <---- (3) VFIOBAR::VFIORegion::VFIOMap::mem
+> > >             0000042000000010-0000042000000014 (prio 1, i/o): 0009:01:00.0 BAR 4 quirk[0]  <---- (4) quirk[0]
+> > >             0000042000000018-000004200000001c (prio 1, i/o): 0009:01:00.0 BAR 4 quirk[1]  <---- (5) quirk[1]
+> > > 
+> > > Access on 0000042000000010-0000042000000014 should be routed to region (4) quirk[0]
+> > > and access on 0000042000000018-000004200000001c should be routed to region (5) quirk[1].
+> > > However, accesses to 0000042000000000-0000042000000020 are routed to region (3) before
+> > > commit 4a2e242bbb and the data transfer is done by memcpy(), bypassing region (4) and
+> > > (5). It's not the expected behavior and why memcpy() isn't expected on device rtl8168's
+> > > PCI BAR due to the quirks, answering your question.
+> > > 
+> > > With commit 4a2e242bbb applied, the accesses will be routed to the correct region.
+> > 
+> > The way I read 4a2e242bbb's commit message, it isn't about things being routed
+> > to the wrong region. It's about the handling of areas which aren't in the small
+> > quirk regions but which are in the same 4K page as them. These have to
+> > be handled
+> > via the memory subsystem's "subpage" mechanism. This does route
+> > everything to the
+> > correct region, but if the region (3) is marked as "direct access is OK" then
+> > QEMU assumes that any kind of direct access is OK, i.e. this behaves
+> > like true RAM.
+> > It then does a memcpy access to a BAR that's really a bank of device registers,
+> > and this goes wrong.
+> > 
+> 
+> Ok, thanks for your followup and explanation. I also spent some time going through
+> system/memory.h and system/physmem.c. I think I fully understood the issue now. There
+> are two concerning paths as mentioned by Peter Xu in another reply: (a) vCPU accessors
+> like address_space_rw(), address_space_write_rom(), address_space_ldq(), address_space_stq()
+> and their variants; (b) functions used in the DMA path like address_space_map() and
+> address_space_unmap().
+> 
+> For (a), memmove() and memcpy() are used, and they can be replaced something else that
+> is safe. However, the replacement in (a) can't fix the issue existing in (b). In (b),
+> the host's pointer is returned by address_space_map() and the memory block (perhaps not
+> a real RAM block) can be accessed in all means after that. I guess we have to ensure
+> the memory region is a real RAM block before the pointer can be returned in (b). Otherwise,
+> we still fall back to the bounce buffer in (b).
 
-On 6/1/26 4:28 PM, Shameer Kolothum Thodi wrote:
-> Hi Eric,
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 19 May 2026 14:27
->> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
->> devel@nongnu.org; qemu-arm@nongnu.org; kvmarm@lists.linux.dev;
->> peter.maydell@linaro.org; shaju.abraham@nutanix.com;
->> khushit.shah@nutanix.com; yangjinqian1@huawei.com;
->> cohuck@redhat.com; richard.henderson@linaro.org; sebott@redhat.com;
->> Shameer Kolothum Thodi <skolothumtho@nvidia.com>; philmd@linaro.org
->> Cc: maz@kernel.org; oliver.upton@linux.dev; pbonzini@redhat.com;
->> armbru@redhat.com; berrange@redhat.com; abologna@redhat.com;
->> jdenemar@redhat.com
->> Subject: [PATCH v5 04/18] arm/cpu: Add infra to handle generated ID register
->> definitions
->>
->> External email: Use caution opening links or attachments
->>
->>
->> The known ID regs are populated in a new initialization function
->> named initialize_cpu_sysreg_properties(). That code will be
->> automatically generated from AARCHMRS Registers.json. For the
->> time being let's just describe a single id reg, CTR_EL0. In this
->> description we only care about non RES/RAZ fields, ie. named fields.
->>
->> The registers are populated in an array indexed by ARMIDRegisterIdx
->> and their fields are added in a sorted list.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->>
->> ---
->>
->> v4 -> v5
->> - ifdef TARGET_ARM_CPU_IDREGS_H
->> - s/g_list_append/g_list_prepend
->> - void arm64_sysreg_add_field()
 
-Effectively the whole commit desc is outdated now that I have migrated
-to Khushit description of idregs and their fields. No need for list nor 
+No guest will DMA into a "non RAM block". Whatever is a DMA target, is a
+'real RAM block'.
 
-arm64_sysreg_add_field anymore.
+> > > Back to our case (GH100 card), there are no quirks for the PCI BAR (0009:01:00.0 BAR 4)
+> > > so it's fine mark the RAM DEVICE region as directly accessible. We perhaps needn't host
+> > > to export the capability (VFIO_REGION_INFO_CAP_DIRECT_ACCESS) suggested by you. It's
+> > > safe to mark any PCI BARs as directly accessible if they have no quirks attached. All
+> > > the devices except those listed in vfio_bar_quirk_setup() are capable of this.
+> > 
+> > I still feel like there are different kinds of PCI BAR here ("this BAR is
+> > true RAM and can be accessed arbitrarily" vs "this BAR is full of registers
+> > and can't be handled that way") and the vfio code in QEMU needs to set up
+> > the memory regions differently for the two cases. For your example I think
+> > it would be fine to have direct-access even if there were some kind of
+> > quirk memory region, because for the parts of the BAR that aren't covered
+> > by a quirk overlay the underlying BAR still allows "entirely like RAM,
+> > any alignment and size is OK" accesses.
+> > 
+> 
+> Agreed. If the PCI BAR is a 'real RAM block' is determined by hardware vendor. I
+> think the solution proposed by Michael is a nice one as this specific case is concerned:
+> A flag (capability) is returned by nvgrace_gpu_vfio_pci driver to indicate that the
+> PCI BAR is a 'real RAM block' and tolerant to all kinds of memory accessor. QEMU marks
+> the memory region for this PCI BAR as directly accessible. Alternatively, qemu also
+> can determine the capability by the PCI device's vendor/device/subsystem/version information
+> in hw/vfio/region.c.
+> 
 
-Arrays are populated in [PATCH v5 08/18] target/arm/cpu_idregs: generate tables for Arm64 ID registers and fields
-This is much nicer.
 
-Thanks
+I sent it before I understood the issue.
 
-Eric
-
-> Looks like this patch is missing the above and file:
-> target/arm/cpu-sysreg-properties.c
->
-> Please check.
->
+> > -- PMM
+> > 
+> 
 > Thanks,
-> Shameer
->
->> ---
->>  target/arm/cpu-idregs.h | 33 +++++++++++++++++++++++++++++++++
->>  1 file changed, 33 insertions(+)
->>  create mode 100644 target/arm/cpu-idregs.h
->>
->> diff --git a/target/arm/cpu-idregs.h b/target/arm/cpu-idregs.h
->> new file mode 100644
->> index 0000000000..664e2d6ddd
->> --- /dev/null
->> +++ b/target/arm/cpu-idregs.h
->> @@ -0,0 +1,33 @@
->> +/*
->> + * handle ID registers and their fields
->> + *
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + */
->> +#ifndef TARGET_ARM_CPU_IDREGS_H
->> +#define TARGET_ARM_CPU_IDREGS_H
->> +
->> +#include "qemu/osdep.h"
->> +#include "qemu/error-report.h"
->> +#include "cpu.h"
->> +#include "cpu-sysregs.h"
->> +
->> +typedef struct ARM64SysRegField {
->> +    const char *name; /* name of the field, for instance CTR_EL0_IDC */
->> +    ARMIDRegisterIdx index; /* parent register, e.g. CTR_EL0_IDX */
->> +    int shift; /* lsb of the field in the register */
->> +    int length; /* highest bit number */
->> +} ARM64SysRegField;
->> +
->> +typedef struct ARM64SysReg {
->> +    const char *name;   /* name of the sysreg, for instance CTR_EL0 */
->> +    ARMIDRegisterIdx index; /* register index, e.g. CTR_EL0_IDX */
->> +    struct ARM64SysRegField *fields;
->> +    uint32_t fields_count;
->> +} ARM64SysReg;
->> +
->> +/*
->> + * List of exposed ID regs (automatically populated from AARCHMRS
->> Registers.json)
->> + */
->> +extern ARM64SysReg arm64_id_regs[NUM_ID_IDX];
->> +
->> +#endif
->> --
->> 2.53.0
+> Gavin
 
 

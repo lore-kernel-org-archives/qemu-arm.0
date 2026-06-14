@@ -4,90 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCB24CD98C5
-	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 00:09:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D55F4CD8CA8
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 00:11:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wYusg-0001Fq-76; Sun, 14 Jun 2026 20:08:46 -0400
+	id 1wYuuq-0001xe-O5; Sun, 14 Jun 2026 20:11:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wYusf-0001Fa-JT
- for qemu-arm@nongnu.org; Sun, 14 Jun 2026 20:08:45 -0400
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+ (Exim 4.90_1) (envelope-from <imaginos32@gmail.com>)
+ id 1wYtD9-0005qq-8w
+ for qemu-arm@nongnu.org; Sun, 14 Jun 2026 18:21:47 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wYusd-0001xV-OF
- for qemu-arm@nongnu.org; Sun, 14 Jun 2026 20:08:45 -0400
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-7dfceeaf168so27000367b3.0
- for <qemu-arm@nongnu.org>; Sun, 14 Jun 2026 17:08:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imaginos32@gmail.com>)
+ id 1wYtD7-0006jc-FN
+ for qemu-arm@nongnu.org; Sun, 14 Jun 2026 18:21:47 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-490ac10e337so17959855e9.3
+ for <qemu-arm@nongnu.org>; Sun, 14 Jun 2026 15:21:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1781482122; x=1782086922; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=0itSddNhXHUQmdf83KRdnrOB89AyIQq3+Tsy42l9m4E=;
- b=otyAaiUYnLTem2U1KOpRPDxiJC9DGLcywCXjMLHllI9rCb9a6tA9hxU2a3OuSTVl1c
- m0fyStH/hkN/yNwIxsNuvIK7WVErEok9tmu275T/XTD40oCLsTpa7Cc+iBuHXHTWx8RI
- rqXDl14Q9L7dVcdccGA0jJAb+Eg6f8/32R/9rLkDQV5HlAsZUH0gl49z2IVe5VbitwRz
- Bqx8yYJV9e7rtC8on3W671OQUdX3FFH4/Er3MsQyYOhojU9M1ZL6d4UcV5onBwZjJ9/6
- nFxudt4dzIRv4b5SVc+V9iR2QXofonUD8Q3aNUZxjaHSFjrbiH7kFgyCIKyRyKDUMXab
- MRIw==
+ d=gmail.com; s=20251104; t=1781475704; x=1782080504; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=6CG/WgbatJUkWqqEVEYulvnsdB1l2zxTLovXt1zwR6Y=;
+ b=fausyVPeelKBGUg3EIxm5rFDhusWjSKl3F1Hrg1WCBlkAcJ8zizPs4D20CfgS44oe8
+ NKW5OhnLv6ffrbWks5h5zsgTV0WbvoaVXSLnlFXMPirXuI5+01LMhowOp5fzFz6472jd
+ s9UiGJSdQ1solF9Yf1SBdnn8/B00q8gTcinKcQIe6fJ7xSZ7AtlJBV8dg318iGNWmpJC
+ qGXpy1qyIjdsDGaxrPMLYTT9QNq/5/L01Cr2PzwMPFkgCbik6vMnetU774hxOej+Ryfv
+ pd3jrZa9aulNQIre9ocOsyJSsfyUpGK2aN/Bm8iaJUEgeORG1SxufUQzf0bjGtKRsWx5
+ iGIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781482122; x=1782086922;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=0itSddNhXHUQmdf83KRdnrOB89AyIQq3+Tsy42l9m4E=;
- b=OyQD+3DeeHIOTMLCII4mWBENu7EnrEtx3k0KJ7U6o3FuPUKoRbKxmfccCTKzKJYGkB
- IbyqMJsQOiOWB9ftNb/0Lj+jXLvES3ismnu1Y86b09YzMNUd6PZBVh+Ma2sC00V1+m/G
- prunAc/Ci9oAn1LK0Fa18KvKwfvDbLmF4sIvarUjkXf7cav9OQIclD0hHHPsKiJCDEiF
- o344NqAeXFIqVnGxdwkuMRRW04VZnXGOVGKV9VyUCol8gr2AoTPXBp0hs2NLq1TUs/II
- yb5mLLGGBhQsnV4uTCLt6YNADctTamc/AleOPoeAucmlkh5z1CGdW8ew/ymDcpAfqAoP
- Lpvg==
-X-Gm-Message-State: AOJu0YyW+afDdFtfnpieiasEWIz0ZYbrBaFobItfwT2LiFQwHx1bWJG3
- 0QL2Aj1Qeip4wRsaU+h+cslN/QGdkIN7fBwfRf+XuNagnoYLBUG5v0uj
-X-Gm-Gg: Acq92OF9WJWbcvzh5oVskWCU4KU4epHIkyFs+cO2sBgtOqgA390rr0+P9ueY/e+Pf3x
- a7ObDB+NqwlEQCa2VJihea4T9jZ3SsHJ3XvO481WTexlzUQ9nB8zaLoWyoQ6BwzI1d+dGdwn29k
- Hv7LHXq/JVP27SBeFHE3qGOmkJwIkYocqEhZ4k6x9AwZmUmOJGtrn5IxiL1jNc5LuO6aW6s31aW
- yRUYyHFU0g4AkEGb+ZRF5iKJlHcQq0Moj0/iHeBloTOEn+s4x0FsL9AzyKlnfJ0rQ/7xehU6JZt
- 8C8p+UwG6pUwo/H6hFANBfiA1RwoeImbl9420UCZYJnwkeMnKP2vH+RzdS3x11Thhl3hgkuRjJy
- qUneu/XwP4JuVwN4CAlYktuFt7Yfi7C51dRdTSfIsg0+dIrvpfHQ0DZ5PFlLj1zBkLnew0fq7Sq
- 8g/a0LFU7Gv6IlyMK3uUx9JyKq8FqH0448/dEcHz4P+6Q+pJGZdDw6M9xj5xgMsUCGSy/qCDDmX
- jS2qosBkPKSoIJViR07T0B6
-X-Received: by 2002:a05:690c:4a11:b0:7bd:5af9:f0a2 with SMTP id
- 00721157ae682-7f7b5f52026mr122891037b3.14.1781482121917; 
- Sun, 14 Jun 2026 17:08:41 -0700 (PDT)
-Received: from skippy.tail1682c8.ts.net
- (99-61-67-1.lightspeed.austtx.sbcglobal.net. [99.61.67.1])
- by smtp.gmail.com with ESMTPSA id
- 00721157ae682-7f76e2b578asm38654607b3.3.2026.06.14.17.08.41
+ d=1e100.net; s=20251104; t=1781475704; x=1782080504;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=6CG/WgbatJUkWqqEVEYulvnsdB1l2zxTLovXt1zwR6Y=;
+ b=S6A/Yn2IVsg/7mnVV2tRDLDUZxwVcsDOu1+m2N+JHyFgtDE3SQ6M/2IcJL8rpl6ZUP
+ p1ve4DKRPG9KZOP09LrUBu9F9kOVylT5o3r0aJ000Kai3nTHn8F9iRGtKEwGYz8cDBJR
+ LPX6xl9WajjMtqIw+tn5Y7LMwUFz0BhswvsUmioddqZJqV0puc5IBXbJikdiFBXP7P9y
+ P6rPY//dda6o6WvzaqIoEbTsjCk+hdFyo6BJDmqmk2U+IDUB4xNaLn/lcsyYzDSBgVWr
+ 2i/nmCG7ln1SR/bs1+opIu4Hnr3iFSoCyfY+waHjk3L4io5Cor9APVAAHkbsWchdGd3H
+ OZGw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/HQrd/fE5CrAiwPB2C78r7IqC/gurPhNmsQxCd3ADU/15yl9ihsdfdovlmGNsqbLE/RRXoXZmlPw==@nongnu.org
+X-Gm-Message-State: AOJu0YyaPfqjlK2uHQ82q3qLVb6y5BJ/wf+bUDMhmS3aUN3YEYmON86I
+ Q87qK8JO0WXtTI/FHXBjFmHKiW9YuFZ4subpBm+PxT/UrJiKi+PRJPtv
+X-Gm-Gg: Acq92OGe8iW9LZTFStgnJ4run0ujdFh5DTdFCVF6+m9C5SBY2VdDS7RUb4CHrgTx+ie
+ TnPezEAxJ+nMQc86zWew0JJ5dIrMZ6DUZvi0Wj8aVmtm0Dd//ZhCgE4JlmKVWQpUHf3wTpAw6DL
+ O1tIz+xj7neBChm+dX/bWkaldverHb6nbTvHvZmf8Cwymd7tWESTljgkCO6Lp+jXhGh/Hd9Spxc
+ 7l3k+hHHjZd/IMOOTcvNOh/50esJgC3U0TBer3A5R/kEZjmLTIU9VKm9g9LJHjAAUIqD2QB5F7j
+ N55BeLSTKtPiMssleAKKq76FfSaBXllqq6sHA3d9i3DtkyQYCqW75IscwYO1PT3HwEHSw8BfMYg
+ 33+HpN4wtFGxJ+W+p5TyzdAIX9YLhGAMtHwR/0c3dIFGdo2ip89XSHgJzboIGECqMKCYwVYRW/A
+ vK/OnIoJzp/mOyN4ip/4fSc4YnHpv7THXR3CLPnVZGv6vFL+3pRM763da9x5E8ov+6QwuxALbxE
+ XRDZ/Q=
+X-Received: by 2002:a05:600c:4b13:b0:490:aef9:aa3b with SMTP id
+ 5b1f17b1804b1-49220104edbmr61113685e9.32.1781475703801; 
+ Sun, 14 Jun 2026 15:21:43 -0700 (PDT)
+Received: from user-Legion-Pro-5-16ARX8.. (cable-89-216-220-81.dynamic.sbb.rs.
+ [89.216.220.81]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4606f2b1056sm28423476f8f.18.2026.06.14.15.21.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 14 Jun 2026 17:08:41 -0700 (PDT)
-From: Kyle Fox <kylefoxaustin.github@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Kyle Fox <kylefoxaustin.github@gmail.com>
-Subject: [PATCH v2] target/arm: honour CCR.BFHFNMIGN for probed data BusFaults
-Date: Sun, 14 Jun 2026 19:08:35 -0500
-Message-Id: <20260615000835.996870-1-kylefoxaustin.github@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260605035012.2876664-1-kylefoxaustin.github@gmail.com>
-References: <20260605035012.2876664-1-kylefoxaustin.github@gmail.com>
+ Sun, 14 Jun 2026 15:21:43 -0700 (PDT)
+From: imaginos <imaginos32@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Titus Rwantare <titusr@google.com>, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ qemu-arm@nongnu.org, imaginos <imaginos32@gmail.com>
+Subject: [PATCH] hw/i2c: pmbus: NUL-terminate strings received via block write
+Date: Mon, 15 Jun 2026 00:21:31 +0200
+Message-ID: <20260614222131.5795-1-imaginos32@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yw1-x1133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=imaginos32@gmail.com; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 14 Jun 2026 20:10:55 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,119 +104,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-M-profile CCR.BFHFNMIGN lets software executing at a negative execution
-priority (in HardFault/NMI, or with FAULTMASK set) suppress precise data
-BusFaults caused by load/store instructions: the access completes
-returning UNKNOWN data, the fault status is recorded in BFSR/BFAR, but no
-BusFault exception is taken. Software uses this to probe for the presence
-of a device.
+The PMBus string registers (e.g. MFR_MODEL on the ADM1266) are writable
+by the guest. pmbus_receive_block() can fill the destination field
+completely, leaving no NUL terminator. When the value is later read back,
+pmbus_send_string() calls strlen() on it, which reads past the end of the
+array and returns a length that trips
 
-QEMU stored CCR.BFHFNMIGN but never consumed it: arm_cpu_do_transaction_
-failed() always raised the external abort, which arm_v7m_cpu_do_interrupt()
-pended as a BusFault and then escalated to a HardFault it could not take at
-priority -1, aborting the VM with "Lockup: can't escalate 3 to HardFault".
+    g_assert(len + pmdev->out_buf_len < SMBUS_DATA_MAX_LEN);
 
-Honour the bit in arm_cpu_do_transaction_failed(): when the access is a
-data access from M-profile code at negative priority with BFHFNMIGN set,
-record PRECISERR/BFARVALID and BFAR and return without raising, so the
-faulting instruction completes instead of re-faulting forever. Instruction
-fetches are unaffected, since BFHFNMIGN applies only to data accesses.
+aborting QEMU. This is guest-triggerable.
 
-The SG instruction's stack-word load is also an AccType_NORMAL data access
-that must honour BFHFNMIGN, but QEMU performs it manually in
-v7m_read_sg_stack_word() (outside the TCG TLB, so it never reaches
-arm_cpu_do_transaction_failed()). Apply the same suppression there: on a
-BusFault, record the status and, when BFHFNMIGN is set at negative
-priority, return the UNKNOWN data instead of pending ARMV7M_EXCP_BUS. The
-remaining manual EXCP_BUS sites (vector-table loads, stacking, unstacking)
-are AccType_VECTABLE/STACK/UNSTACK and are not required to honour the bit,
-so they are left unchanged.
+Add pmbus_receive_string(), the write-side mirror of pmbus_send_string(),
+which reserves the last byte of the destination so the stored value is
+always NUL-terminated, and use it for the ADM1266 MFR string registers.
 
-This surfaced running the real NXP i.MX 95 System Manager firmware on the
-emulated Cortex-M33: its SystemMemoryProbe() (set BFHFNMIGN + FAULTMASK,
-do the access, test CFSR.BFARVALID) locked up the VM. With this change the
-SM's debug-monitor memory-probe commands run and recover correctly.
-
-Signed-off-by: Kyle Fox <kylefoxaustin.github@gmail.com>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3388
+Signed-off-by: imaginos <imaginos32@gmail.com>
 ---
-v2:
- - Also honour BFHFNMIGN for the SG instruction's stack-word load in
-   v7m_read_sg_stack_word() (an AccType_NORMAL access performed manually,
-   outside the TCG TLB), per review. The vector-table/stacking/unstacking
-   EXCP_BUS sites are left unchanged (AccType_VECTABLE/STACK/UNSTACK).
+ hw/i2c/pmbus_device.c         | 13 +++++++++++++
+ hw/sensor/adm1266.c           |  7 +++----
+ include/hw/i2c/pmbus_device.h | 10 ++++++++++
+ 3 files changed, 26 insertions(+), 4 deletions(-)
 
- target/arm/tcg/m_helper.c   | 12 ++++++++++++
- target/arm/tcg/tlb_helper.c | 24 ++++++++++++++++++++++++
- 2 files changed, 36 insertions(+)
-
-diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
-index f2059ed8b03..ba101ecb953 100644
---- a/target/arm/tcg/m_helper.c
-+++ b/target/arm/tcg/m_helper.c
-@@ -2086,6 +2086,18 @@ static bool v7m_read_sg_stack_word(ARMCPU *cpu, ARMMMUIdx mmu_idx,
-         env->v7m.cfsr[M_REG_NS] |=
-             (R_V7M_CFSR_PRECISERR_MASK | R_V7M_CFSR_BFARVALID_MASK);
-         env->v7m.bfar = addr;
-+        /*
-+         * The SG instruction's stack-word load is an AccType_NORMAL data
-+         * access, so CCR.BFHFNMIGN applies: at negative execution priority
-+         * with BFHFNMIGN set, the BusFault is suppressed -- the access
-+         * completes returning UNKNOWN data (status recorded above), with no
-+         * BusFault exception pended.
-+         */
-+        if ((env->v7m.ccr[M_REG_NS] & R_V7M_CCR_BFHFNMIGN_MASK) &&
-+            armv7m_nvic_neg_prio_requested(env->nvic, env->v7m.secure)) {
-+            *spdata = value;
-+            return true;
-+        }
-         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_BUS, false);
-         return false;
-     }
-diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-index bbe1e70bc43..452688010f5 100644
---- a/target/arm/tcg/tlb_helper.c
-+++ b/target/arm/tcg/tlb_helper.c
-@@ -10,6 +10,7 @@
- #include "helper.h"
- #include "internals.h"
- #include "cpu-features.h"
-+#include "hw/intc/armv7m_nvic.h"
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index b1f9843f52..7c65d8c8b5 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -142,6 +142,19 @@ uint8_t pmbus_receive_block(PMBusDevice *pmdev, uint8_t *dest, size_t len)
+     return len;
+ }
  
- /*
-  * Returns true if the stage 1 translation regime is using LPAE format page
-@@ -318,8 +319,31 @@ void arm_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
-                                    MemTxResult response, uintptr_t retaddr)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-     ARMMMUFaultInfo fi = {};
- 
-+    /*
-+     * For M-profile, CCR.BFHFNMIGN lets software executing at a negative
-+     * priority (in HardFault/NMI, or with FAULTMASK set) suppress precise
-+     * data BusFaults from load/store instructions: the access completes
-+     * returning UNKNOWN data (the store is dropped), the fault status is
-+     * recorded in BFSR/BFAR, but no BusFault exception is taken. This is
-+     * the mechanism software uses to probe for the presence of a device
-+     * (e.g. the NXP System Manager's SystemMemoryProbe). Honour it by
-+     * recording the status and returning without raising, so the faulting
-+     * instruction completes rather than re-faulting forever. BFHFNMIGN
-+     * applies only to data accesses, so instruction fetches are unaffected.
-+     */
-+    if (arm_feature(env, ARM_FEATURE_M) &&
-+        access_type != MMU_INST_FETCH &&
-+        (env->v7m.ccr[M_REG_NS] & R_V7M_CCR_BFHFNMIGN_MASK) &&
-+        armv7m_nvic_neg_prio_requested(env->nvic, env->v7m.secure)) {
-+        env->v7m.cfsr[M_REG_NS] |=
-+            (R_V7M_CFSR_PRECISERR_MASK | R_V7M_CFSR_BFARVALID_MASK);
-+        env->v7m.bfar = addr;
-+        return;
++uint8_t pmbus_receive_string(PMBusDevice *pmdev, char *dest, size_t len)
++{
++    uint8_t rv;
++
++    if (len == 0) {
++        return 0;
 +    }
 +
-     /* now we have a real cpu fault */
-     cpu_restore_state(cs, retaddr);
++    rv = pmbus_receive_block(pmdev, (uint8_t *)dest, len - 1);
++    dest[len - 1] = '\0';
++    return rv;
++}
++
  
+ static uint64_t pmbus_receive_uint(PMBusDevice *pmdev)
+ {
+diff --git a/hw/sensor/adm1266.c b/hw/sensor/adm1266.c
+index 37d1cffd57..81545385a5 100644
+--- a/hw/sensor/adm1266.c
++++ b/hw/sensor/adm1266.c
+@@ -142,16 +142,15 @@ static int adm1266_write_data(PMBusDevice *pmdev, const uint8_t *buf,
+ 
+     switch (pmdev->code) {
+     case PMBUS_MFR_ID:                    /* R/W block */
+-        pmbus_receive_block(pmdev, (uint8_t *)s->mfr_id, sizeof(s->mfr_id));
++        pmbus_receive_string(pmdev, s->mfr_id, sizeof(s->mfr_id));
+         break;
+ 
+     case PMBUS_MFR_MODEL:                 /* R/W block */
+-        pmbus_receive_block(pmdev, (uint8_t *)s->mfr_model,
+-                            sizeof(s->mfr_model));
++        pmbus_receive_string(pmdev, s->mfr_model, sizeof(s->mfr_model));
+         break;
+ 
+     case PMBUS_MFR_REVISION:               /* R/W block*/
+-        pmbus_receive_block(pmdev, (uint8_t *)s->mfr_rev, sizeof(s->mfr_rev));
++        pmbus_receive_string(pmdev, s->mfr_rev, sizeof(s->mfr_rev));
+         break;
+ 
+     case ADM1266_SET_RTC:   /* do nothing */
+diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
+index f195c11384..4c4d3e5ae2 100644
+--- a/include/hw/i2c/pmbus_device.h
++++ b/include/hw/i2c/pmbus_device.h
+@@ -518,6 +518,16 @@ void pmbus_send_string(PMBusDevice *state, const char *data);
+  */
+ uint8_t pmbus_receive_block(PMBusDevice *pmdev, uint8_t *dest, size_t len);
+ 
++/**
++ * @brief Receive a Block Write and store it as a NUL-terminated string.
++ * Write-side mirror of pmbus_send_string(): guarantees dest is always a valid
++ * C string so later reads cannot run past the field. Use for string registers
++ * (e.g. MFR_ID, MFR_MODEL); use pmbus_receive_block() for binary blocks.
++ * @param dest - string buffer with enough capacity to receive the write
++ * @param len - the capacity of dest (the last byte is reserved for the NUL)
++ */
++uint8_t pmbus_receive_string(PMBusDevice *pmdev, char *dest, size_t len);
++
+ /**
+  * @brief Receive data over PMBus
+  * These methods help track how much data is being received over PMBus
 -- 
-2.34.1
+2.43.0
 
 

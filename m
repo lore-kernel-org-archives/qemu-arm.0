@@ -4,97 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD91ECD98DA
-	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 10:56:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A025CD98C7
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 10:57:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZ4zK-00045v-UP; Mon, 15 Jun 2026 06:56:19 -0400
+	id 1wZ50R-0004YR-Bb; Mon, 15 Jun 2026 06:57:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wZ4zJ-00045e-NA
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 06:56:17 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wZ50P-0004WW-Ty
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 06:57:25 -0400
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wZ4zI-0003Jo-2u
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 06:56:17 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-490afc47455so13561955e9.2
- for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 03:56:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wZ50O-0003ij-CJ
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 06:57:25 -0400
+Received: by mail-yx1-xb134.google.com with SMTP id
+ 956f58d0204a3-6603246b66dso3245732d50.1
+ for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 03:57:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781521043; cv=none;
+ d=google.com; s=arc-20240605;
+ b=MnQ9diwtHr0Vo0oFb39kiCKdWJ6WUlbiXgB1B1a6zmvXVCjfbhjuoEccnVVaV1tx+5
+ q+27KX0/1yd6vQSzf/DXgl4Nwbgu86jwM8bmkPLJMHHgpToKbkpz21rmMXlWRQGO3JQd
+ 051yNLBdS5nihhbywzxKTqqFV0LX2Pi5BLaQbjfnwyixoT9q9S6o8zQsz6LcguBodgiE
+ wOHJmI6y9NL3qkBc7VrYi/4u0H2byb+f8PZ5YYyU71BYXb8DX65ZjZ+pQ9pW3G1qe8oq
+ 7X7CohubJhLxMb9Zba/ypcl2ETtCdOpDjg6pZFRInJaYX9TrqHikY6WDZsS0ppnMwkIT
+ u9Qw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=S/wz8lKERvbYqf5bVZv2UL7q03dzo45KKXIRywWSaCY=;
+ fh=w90OkhXHIOYSOmZWdZC3cQSvA4EPbbOVsMQJEMWVOEo=;
+ b=TIfp9Xx+p6pLkHSgelUy7v2V6fLMX7rBymlSIRJR9EqBs2l9s1crdy4DQmVBN6bQ0f
+ Dad3knHYEzw/nztSHh/qvltHc7NfsexPAejZq97fMiVzDTuAQZt/AX7SlPsgNvH7+QuF
+ NgGTqSNHfbN46yHoD+K0y5iiE8t6TJ8BirjODSXfnOzMAFCMMCLcCh4KDSeoJNpP0aFc
+ Njb0wnz+fgWG0K+U1SbFMW8Y0V54v877vrhCR4864tMulajhbfkDylzBlJ22hOONG2FZ
+ X/BLo/PSedYGgF68zEBNp+Mf8Nvc9CJ6wqvMBCDkobHZ4lMEp7VJeuuLykrPfNZVxC9T
+ 7+JA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781520974; x=1782125774; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=BlpeBgIASY+9tAhOV1MNVpKTHhND3x1qs7SH/yICdUU=;
- b=wRc/nqFjJmQ5ss0oHejt0zlGZ58src1JnDFjP8Z5FrLO22vln2Wi97IjoMDBjA/XVU
- Domh40GAnDqGKYtUBLk9UyUtr53UDrJKgsV0bqwETRftx/BBn2R3YCUkKLPpZ7zkdsiV
- FT+e7maU5AykfcyfkhC4kk5gw1YoYJB/k8YKgp1cchwn3tDwDAaIaKvNNv0kJhLxT4ju
- uv6JI2iAKYjQj9u6rcpvfw80WiCmjDsmM90eToaG4ULXF/gmUDasy+mTEEZmxDfmTEK7
- ezXx+ox55T9gwWqDGtTVVNR3R0R54K4X6cxoP83hzC5clznanRS8BJQWkegAf3nge1cQ
- M4bQ==
+ d=linaro.org; s=google; t=1781521043; x=1782125843; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=S/wz8lKERvbYqf5bVZv2UL7q03dzo45KKXIRywWSaCY=;
+ b=EgsGvmDWM4N4lLNx5cF9bPkeVmS59Mp59Lzbg4T7lHpiV7x0ynq7iEsJdtlAe1SDfb
+ 3b656I3TMnW8X02NEb1Q8LwxV4REPvue6Wg4D7Lyvw2PiTfFd/CY/dBKqnV/AVRyONLE
+ 4up6lDwZ7H0cUjdYImQEN+FlFcnY8SqYRbTFV80AzQofl5b09kqRvd/Fm2XfohYI6JY0
+ tEq4/a5Sq3KNcUK5Z13DtTQmSVFvSjcRrWOIHGkuAJ/bySJTlw72DzHYCYC1ZHweZrMI
+ z5ksdH228nvVqAHFFYBrGHlsooX3+9Hn0OXnAcmgOcXPDrvY32tkNw8qN9gBk5qvgf9H
+ 8VLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781520974; x=1782125774;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=BlpeBgIASY+9tAhOV1MNVpKTHhND3x1qs7SH/yICdUU=;
- b=EdbcT6aNUds5eBQKBYcwo75fkmH84ZNoOpWx9fT7LRqB75Hp1JBKe3/ObrqANATvov
- 5xEs12UDcIpEbtjronEmWdboxI0ZG/SV1dHQwrPMP9FHOCcGNdgTl2bPXX8ssUZ1Fzsy
- xr5WP85ptqY1XxwoWT4vSOQ/qk36zEgIFrOCt6tukW0S6eGRIOTzrBkWYlZ5xl86jCaZ
- X3FEI/3lUJyUEQy3xyT4s99HFBiiQoCEgGsIEtq8yhwdq6uCoZegtQxyqUlVayvvXJ58
- yQoIqLdKR65PfdTyDgpGRd0xZEHnGzndNjHuRtuo87aKhjyw3/tUBXCNWP9b6bxWXP8m
- Udaw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ8ulgz2e5RAobysBYchAevgPGGpRvhKP8L/x/WNr5VNN4CmX/+e5BLJkpZrJquFeV4oV1Lbnz9SgQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwwpnIIqDHp7waqOdb63yMcgQwrdJr2PmqkLYEsddQUccj9ZXQ+
- pa9b3IUUE0xFRJjnk7f5bZ2V81XJV7EvAxETnPq5uIUvkaYXgjcrxeldMGfM8OvdWCw=
-X-Gm-Gg: Acq92OFn/v0J0585ptZHHlXcdb79sR4R9T1wWBSVuvKaKAJ75aYEW1t5qFVVRNSIPqE
- rTbSh840sTSYAn+O8t7uGX2pZNkiK5stLILQwuNVM1BwbPG5Dwp8yTFZEa93w7TP2yNQeWF4/8U
- Gdiixf2yA15H5hgIPCmNqGfRe3odl53Is0b+xWoseZA06R+4Tu7ZrmlvkkglF9BRo29379nKeHp
- wc/ezviPeDRBHALG0PblPP37JcyrNbYAo9mWRNZMadyk35JBg0zBpm2Y7IzoESq6ASVNRE44LgV
- 8lIHeMfMlJSIl255hpThyk1o+jbGRXJcfTGD78dG8eIbbVpG7H5twYF+dgYmM573JwEopVRlnlA
- 0wY0wT4Njb14+IoWhBz9E1HBt8XC6qygNjmU4XC55Rfotp+IP3E+dTKsuGIJeJHAzMrLZAGn9Pq
- SSZwfBOCvV10adFN68pWvfpOCW86WHs4r9Ng==
-X-Received: by 2002:a05:600c:ad9:b0:490:b58b:a4a5 with SMTP id
- 5b1f17b1804b1-490ec50f800mr123708325e9.31.1781520973992; 
- Mon, 15 Jun 2026 03:56:13 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-492201fad25sm250300855e9.0.2026.06.15.03.56.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Jun 2026 03:56:13 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id CB79C5F857;
- Mon, 15 Jun 2026 11:56:11 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Alexander
- Graf <agraf@csgraf.de>,  Mohamed Mediouni <mohamed@unpredictable.fr>,
- Pedro Barbuda <pbarbuda@microsoft.com>,  qemu-arm@nongnu.org,
- kvm@vger.kernel.org,  Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH v7 7/8] target/arm: handle the WFE trap case
-In-Reply-To: <CAFEAcA8719Q=VCwOm790V6FPA8FyaFZEux=N-7PmOGaaq=O_sw@mail.gmail.com>
- (Peter Maydell's message of "Mon, 8 Jun 2026 16:53:25 +0100")
-References: <20260529082948.363931-1-alex.bennee@linaro.org>
- <20260529082948.363931-8-alex.bennee@linaro.org>
- <CAFEAcA8719Q=VCwOm790V6FPA8FyaFZEux=N-7PmOGaaq=O_sw@mail.gmail.com>
-User-Agent: mu4e 1.14.2-pre1; emacs 30.1
-Date: Mon, 15 Jun 2026 11:56:11 +0100
-Message-ID: <878q8gjcms.fsf@draig.linaro.org>
+ d=1e100.net; s=20251104; t=1781521043; x=1782125843;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=S/wz8lKERvbYqf5bVZv2UL7q03dzo45KKXIRywWSaCY=;
+ b=JKUj2Q0W0ZsBdY4xfvhzE3wVrSi4UOTVZqOiaK7SHJ3UduXiPu0tGoJvkDpH9KQTkr
+ NYpnFhxb4jxLlDeuqzCMjUsgwP9K+6tUZODcPF72duU+vmDDIlDPgqync0YntCsTCQm4
+ c85bsJh1myrnaQ64lMgDb1uWSUDN9Ftm2je+LBoPqZTDkgDt6aYS6IvLQWVDRrct3REV
+ PVxY/w3SIHcjATl0zho6myAitOllXXRg5CUYsKtRSWl7Ekf2BhsQv9BDkKaigN7LkSne
+ MAf4b+6IgssBAJE69lZ4dmcu3erYHQFJtk+McPfEinClAqtXqL4M3gXfvOZ9R7Sgi79f
+ diMg==
+X-Gm-Message-State: AOJu0YynTiGKvyj2GPa2MtZu8tn+Bpbe6KZ09MYUA5M4UDwCeFZwujoS
+ eN7e96aUu4qvfEx9kShmZhFVs+fU0wBCaA2d7mst9MBR0MAtESKnZtiVD5gkbhMhPnkCN++Dva+
+ niUYHoqoODcqFw2xztNySHLs1hds4EVhVkHHdr9+XaA==
+X-Gm-Gg: Acq92OELx0ZCfUwFz1FYJ+wFY9I4gPzhmSfQBk6sUK+Sju1d2y+5moLZHB3MgRClfTO
+ y9uXvvM08os9H3DQmebgnWTjkr8k7mt16wDmI89i8naIBXDwXk5++zwhLnpEQLak+ouoAASLPh3
+ wBaRa9PeA5wpuMt2ujW1p8uxwxHoyK4ncVxFKD1E52EWY+4TF6KYycHawj0fkHLUENypkVGQYOY
+ Jn4XKa3EsVhc6sPyMTP3chGSOn1H6gnQO193c0E8KLgRz4+/7AEjmGpo5efoOHUgDJq/3bkKBpA
+ +Vv5zhpwBIL9gjOndiPr1eBUVd7JOjXvzIUeSIV6Ctz/EDc2BMRoyzTOwxMbrbOgEtg=
+X-Received: by 2002:a05:690e:124a:b0:660:460e:2563 with SMTP id
+ 956f58d0204a3-66278315b87mr12295166d50.33.1781521042754; Mon, 15 Jun 2026
+ 03:57:22 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
+References: <20260615100200.266968-1-gshan@redhat.com>
+ <20260615100200.266968-2-gshan@redhat.com>
+In-Reply-To: <20260615100200.266968-2-gshan@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 15 Jun 2026 11:57:09 +0100
+X-Gm-Features: AVVi8CcK9114rxVcfcgzUre6M_pMgbMdzMc0d-r31hNGHyPhIEI2Ir4K7Kfrb2s
+Message-ID: <CAFEAcA9CT6E8dhEV7Ek6ruT_o2dKUf==2V+U-1WFDOLtYbgeeQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
+ device region accessors
+To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com, 
+ peterx@redhat.com, alex@shazbot.org, richard.henderson@linaro.org, 
+ berrange@redhat.com, philmd@oss.qualcomm.com, philmd@mailo.com, 
+ david@kernel.org, clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com, 
+ jugraham@redhat.com, liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, 
+ shan.gavin@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,30 +120,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> On Fri, 29 May 2026 at 09:29, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
-rote:
->>
->> Now WFE can actually suspend on A-profile we also need to handle when
->> its trapped. To do this we need to pass the instruction size so we can
->> deal with the is_16bit syndrome encoding.
->>
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+On Mon, 15 Jun 2026 at 11:03, Gavin Shan <gshan@redhat.com> wrote:
 >
-> Doesn't this need to go earlier in the patchset? Otherwise there's
-> a point where WFE can go to sleep but doesn't honour the trap bit.
+> All ram device regions were turned to be indirectly accessible by commit
+> 4a2e242bbb ("memory: Don't use memcpy for ram_device regions"). This leads
+> to guest hang on attempt to build 'cuda-samples' as reported by Julia. The
+> guest is started by the following command lines, with GH100 GPU card passed
+> from the host.
 
-Hmm - the way I read the description was we would only trap if we were
-going to sleep. Pre 6/8 we never sleep so we can't trap. I could merge
-it with 6/8 but then that makes the patch even bigger.
-
+> diff --git a/include/system/memory.h b/include/system/memory.h
+> index 1417132f6d..5878727d09 100644
+> --- a/include/system/memory.h
+> +++ b/include/system/memory.h
+> @@ -2897,6 +2897,8 @@ void address_space_register_map_client(AddressSpace *as, QEMUBH *bh);
+>  void address_space_unregister_map_client(AddressSpace *as, QEMUBH *bh);
 >
-> thanks
-> -- PMM
+>  /* Internal functions, part of the implementation of address_space_read.  */
+> +void qemu_ram_copy(void *dest, const void *src, size_t n);
+> +void qemu_ram_move(void *dest, const void *src, size_t n);
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+New function prototypes in include headers need documentation comments.
+
+In particular for these, it's really important that we clearly say
+what semantics we are attempting to provide with them, so that
+(a) when we're reviewing or later updating the implementation we
+know what we are trying to provide
+(b) when we're looking at the callsites we know what the function
+is guaranteeing to us and what it is not, and thus whether it's
+OK to use it or we need something els.
+
+> +#if defined(__i386__) || defined(__x86_64__)
+> +#define HOST_UNALIGNED_MMIO_OK 1
+> +#else
+> +#define HOST_UNALIGNED_MMIO_OK 0
+> +#endif
+
+We need to do something better than this. We can't
+just say "oh, we trust that on x86 this works": it is
+neither actually true that the compiler guarantees it even
+on x86, nor is it the case that only x86 can do unaligned
+accesses to normal RAM.
+
+thanks
+-- PMM
 

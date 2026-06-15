@@ -4,108 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76C28CD98C5
-	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 12:18:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D53ECD98C5
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 12:22:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZ6H5-0003Q8-9t; Mon, 15 Jun 2026 08:18:43 -0400
+	id 1wZ6L1-0004s2-M1; Mon, 15 Jun 2026 08:22:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wZ6H4-0003Pr-HG
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 08:18:42 -0400
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+ (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
+ id 1wZ6L0-0004rl-LG
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 08:22:46 -0400
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wZ6H2-0003rs-Sd
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 08:18:42 -0400
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-6605c3453f2so3427233d50.1
- for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 05:18:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781525919; cv=none;
- d=google.com; s=arc-20240605;
- b=FHg+nfQhCVNrQ4KbNmzLRi/N77SaY4DlSl4ZULVdUx7MPDJPKyfj9Lnlr3ab24rQ/2
- fYsUbHEbS/IQaJRuFhg0LV7TeUdCg8D79rMN0RFxc18AzboXAlMjHfvBMTRJVkBvJUnm
- emLAaaznY/En0ip1V9pDXWW8Yxwu8BvLDM40JeemiYG6bXA8/DfTiS45VLClnqdXXpW8
- ZTzHKfD2B1ZcfxAeVTybkKd+RtOHZ6IfDyQu/A9P/UdSdpNeHbaPj5Qp7z2qMaodZnb+
- CIaqvjAjJ6cT86oLNf9tlbVP4qvzJyE/t5bHamYdzeEEGPOBYgDt6HrmaMm8tNcAeZDb
- Xaug==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=7SzBF98pEmxkKVc3fcTH2J/ZOuXUs4Wufa6y76QZkwk=;
- fh=R5FmfWn1ipgwl4eatu1ImMA98D8TgxbsuROOoXq8YQI=;
- b=ar0KX/0uawhN23NH+Y1UQ1NnX3CPmNmLfZ7Y1wKR8dKHFhlyj/rMoc5kcopTNkBOkl
- G6IfSZ0ZAApHZWs/1HvuZ0I7sprvZhGMUn8y0WP9DpHckxcU6o/pULzs08KIRMJ7dEyl
- fGlT3CTEim8peCwjlHMvwvQ/L3RUnoqziBDmJHg77OPdHtXjINJsr07AVM5lvIToH9Wk
- RXMwqf4gdg61RbJ62GNJccvTRwC+q5jdh6msnucWANbI9I2cCIJddsCgZdCZpT8slmoB
- xID73kMjpyRGe8RG585mIUocTsep41J3ftP3mG/jejRZphHlabV7HyC/A1Gri4dBSTZ7
- Hqlg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
+ id 1wZ6Ky-0004VO-QC
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 08:22:46 -0400
+Received: by mail-lf1-x12a.google.com with SMTP id
+ 2adb3069b0e04-5aa63daf2a5so2236700e87.3
+ for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 05:22:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781525919; x=1782130719; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7SzBF98pEmxkKVc3fcTH2J/ZOuXUs4Wufa6y76QZkwk=;
- b=IUPI1AvzQSJ8HZWugVMdtud4PkpxRng2feWgl6xW6EIqYBl6e91jJkHNCO9yP6jjor
- sFL4/kQAPlYfFH/+o775pppGEY114rtPjlST9l5J9ALYkHDUsMVeMM9MEiq6dDcaGxTS
- Q/nr5t9KaQ9h6QL3WIBkPt049e9XmLZG2UZWk1NgMJ41eGDUN+vhkfZLgtOZ/uqTt/F6
- d4sX7jG/OBbFeX6ccL8KiZ9SR5QcKdoOQo6bteFHDIq/Urj2PT07FV5iOc33yb/hfBkV
- x455vKPKsppOvxUDc9thl+4FiVWBYrF2IwdsOaEl5g5EGjkHZi9w5B397+UJtOb+WTFq
- aAag==
+ d=gmail.com; s=20251104; t=1781526162; x=1782130962; darn=nongnu.org;
+ h=mime-version:user-agent:content-transfer-encoding:references
+ :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=w6xa+Nj4Qvo2+9NgcQDPZ/3tk17AwN5Wknwhm61Rnpc=;
+ b=SahscPFTGfD+1tTL1jP/wu8/6yJPo3q493HtI8Duh5mpSNBnsP+cU9iJvgL+Zphz00
+ JermduAkI9DA8B2eD8hKi3T8Iqh2jM2cesxEAyI4zIbkVlPdUiok641nsAsVpJy8HVyE
+ 93SPSOEF/sH75TdztCEFzqgSpMmC4C45noaHgoMClvODPsAr6KADLClQiZEO5aKQ0ua9
+ 1T8IjWWQctWmjVGPMKJV4Nz6y26xcRfzC0lYC3652EH/X3gC/ALYZZrUlnc/xlLDQTEJ
+ 57FsPYzGyNagxlZv5Nzb9WK/zBuAX24Ebgybu5wEC/dOu5wHh9TLOdESKqDmlWwQLhAD
+ lD5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781525919; x=1782130719;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=7SzBF98pEmxkKVc3fcTH2J/ZOuXUs4Wufa6y76QZkwk=;
- b=T+MqMvqcyOro9X+iRlNTqhlFSCEuHl0YW1q4trh1UJOSWPjiboR1rrgxYJMwDooRMo
- NpdsHWAB8uoO1hiE8lgCM/hHoXBAPyk6S3PXqDRCaTkj5qpnwMVA7eVkP/fUuJDs/jQP
- XabwjkWGbv+UMOh4kDVhStVRcQCYPZADKO1F/E269C/AasTztbN53PHJ33fzv59lLj00
- SWs9yMLFle66V0JW5oBmsF1hMSyR+boRbeybPVR3zhaolwGL7yIWwrrdlkw5CUcks2WW
- pzsfAaY5P4+bHsqQ6iwRaVY/i1fqrKMOnCTUKmhu15A51EjT7eZ3Ci1FNYqVs4Oc1yjC
- pBNw==
+ d=1e100.net; s=20251104; t=1781526162; x=1782130962;
+ h=mime-version:user-agent:content-transfer-encoding:references
+ :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=w6xa+Nj4Qvo2+9NgcQDPZ/3tk17AwN5Wknwhm61Rnpc=;
+ b=NMQM6C53D8NrX1FGs6VAz6zqZ6XQrDYmHjC1xXeq5TYoFhWyqCxXHTrA0K6O6a8InN
+ lz7XS+HDprQBnafNXm9DGAFIzefIadBLiEI2L/lsgVjmRwfuqzRsO9MnureIB6ksYldC
+ UQTHL7dehq7/wYkj1ZpW0scBBpUEKwXFgrBfm++B0+S4iMFvnf4uHWcAO/36XGGpD+PI
+ Su9lGuR/rl9VYGFrjbIkuTqEctYjm3i30rgaKlBB8jWFQgZokuNCkm7kwtohjeFNSL3O
+ nRodwx6dz2cEWDXPsg6HEJ3k8jLljw+/0DAxHdu7Z1wAA+VQsws9trZAwbvoqgRSP98+
+ Mhdw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+jVwv0xlCkdxDx0mywc3jxpVVS71pH3Enwn6lYZbaaiN0pgyN4iGxGMHnFrlXTrOOKuHlr04xMKA==@nongnu.org
-X-Gm-Message-State: AOJu0Yy0JgMXattq7isFaxM68qG8uVn7BIqTS6tSPmlMXAZpvHDjBqa7
- sHiTsPfEJke1fxfPn4SHy5GRW5u0tIbzCT3hwgR/yl6LL2SzyuakhfUsFIUE1MjbrYCu5RtKZW3
- tyItL+FJBcxRjlAboHxSHc+GBUw7TUcXKYwW/IJaa9g==
-X-Gm-Gg: Acq92OEHd4eyJ77nHVIDM9UxozKxBxzSIPthm2g6FMrCJKr4lH3HYgexAj9TuTgr760
- YyadtErjdZd/TAv8J+CjvUlW9qQ4EYzSWDAMMw5RUcADqXhf4gWFDZOTQjm3/bIs0UTjXhVCfNS
- E3azlaWiHCm2FcRH0ec4LbYX78h6qvzKTpAvsUXOVWp2ZWjASCd0DgIqujltA4yA0hHk37+HXP5
- zs7HPiKwYuO9uX6Rz2HhiHCApWRivAbQgFSD837E+o4qEJ/jlCnEbvoco3A4e8CUfIn6H7Ek27a
- rx75wwzCwsSEnzKhzqaINquThETFt1FsRZkeBPYrj/ITcmrI0P9607/ZyNmCVM7IGU8=
-X-Received: by 2002:a05:690e:b4e:b0:660:8e61:1a5f with SMTP id
- 956f58d0204a3-66284e3748dmr9011653d50.16.1781525919306; Mon, 15 Jun 2026
- 05:18:39 -0700 (PDT)
-MIME-Version: 1.0
-References: <cover.1781111270.git.matyas.bobek@gmail.com>
-In-Reply-To: <cover.1781111270.git.matyas.bobek@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 15 Jun 2026 13:18:28 +0100
-X-Gm-Features: AVVi8CcSB1jIm5O4ojDUihCBSn1i3fRmVvzDDlqpEunZgx0Ryu_YRgGyAcDr8sg
-Message-ID: <CAFEAcA9aX4nhhGW-CxABO80rja9OG2LdwXyJs37=1eyFwPg_ug@mail.gmail.com>
+ AFNElJ/p62a1yym2tCiMxFIc5UTbEeLdMqpMdv6sgGBg/Bm4mrIZVkCLixUJPvh7vuCUVk9nDDWVhn0EGw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx4mYijR40B0Oaf+Kn+uqtCPEj2lXBv623vjXeV0wrDWmT+U1iK
+ xMuQ7ENicKaBMZBdADcMUSpheY3/r0R5luK3jZUGsnl5pMxB6EAbUC8G
+X-Gm-Gg: Acq92OEmyYAxQdh5SCt/NJbfdHHhE/lZaJVKr8lM7oN++bD9to+Rz6U5UPvjlhBCXDW
+ mnV/U9150Jd/EEJCW3xSuZZ14CcbCgX37wWfft1wZPNbN9k307m2FsjflFNFKRu+ESh3ntXPYHA
+ l+zSYb0yZr+fTfuN5whHw15lCqi8NZEue0Mg3HflDKLZek5xs3jISocnf88tbPbVVPBX/U/bq7h
+ RYK8+LAWCh3oqLvinzMwaU4DC1y9YUNjiT0MemtVZUu/hAIfd0MmNJHXzAJNFX7Uj2WhBdb1rQ8
+ 5xL+yGGD1mA3A5w/C9sbTvdTG6H5XviYBnLmHNprEkkv5dCbXOrOBt/Sd3QfmMVrwtcoGnNicaf
+ LCW3NDDbi4VCb8W3RR1jyg8Y5xMNwzLwkAWUID3rBDqDqyXnlWMEmd4TB+zWIfunfoAHaAqO1Bs
+ mXppQXfN5He84spW81bMyuLOEXv6ti/DDe7qkmjHhqV1f6cxvBIUf7cQ==
+X-Received: by 2002:a05:6512:2388:b0:5aa:64b4:13cf with SMTP id
+ 2adb3069b0e04-5ad2db245e6mr4267213e87.9.1781526162080; 
+ Mon, 15 Jun 2026 05:22:42 -0700 (PDT)
+Received: from acidburn.pod.cvut.cz (acidburn.pod.cvut.cz. [147.32.90.2])
+ by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-5ad2e16935esm2701651e87.25.2026.06.15.05.22.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 15 Jun 2026 05:22:41 -0700 (PDT)
+Message-ID: <be65c732739e8db8d63fcaf5a90f26d98556a9fd.camel@gmail.com>
 Subject: Re: [PATCH v5 0/7] hw/arm/sabrelite: Add FlexCAN support
-To: =?UTF-8?B?TWF0ecOhxaEgQm9iZWs=?= <matyas.bobek@gmail.com>
-Cc: qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>, 
- Pavel Pisa <pisa@fel.cvut.cz>, Bernhard Beschow <shentey@gmail.com>,
- qemu-arm@nongnu.org, Marc Kleine-Budde <mkl@pengutronix.de>,
- Oliver Hartkopp <socketcan@hartkopp.net>, 
- Nikita Ostrenkov <n.ostrenkov@gmail.com>, Andrey Volkov <andrey@volkov.fr>
+From: =?UTF-8?Q?Maty=C3=A1=C5=A1?= Bobek <matyas.bobek@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Pavel Pisa <pisa@fel.cvut.cz>, Bernhard Beschow	
+ <shentey@gmail.com>, qemu-arm@nongnu.org, Marc Kleine-Budde
+ <mkl@pengutronix.de>,  Oliver Hartkopp <socketcan@hartkopp.net>, Nikita
+ Ostrenkov <n.ostrenkov@gmail.com>, Andrey Volkov <andrey@volkov.fr>
+Date: Mon, 15 Jun 2026 14:22:40 +0200
+In-Reply-To: <CAFEAcA9aX4nhhGW-CxABO80rja9OG2LdwXyJs37=1eyFwPg_ug@mail.gmail.com>
+References: <cover.1781111270.git.matyas.bobek@gmail.com>
+ <CAFEAcA9aX4nhhGW-CxABO80rja9OG2LdwXyJs37=1eyFwPg_ug@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
+User-Agent: Evolution 3.60.2 
+MIME-Version: 1.0
+Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
+ envelope-from=matyas.bobek@gmail.com; helo=mail-lf1-x12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,36 +106,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 15 Jun 2026 at 13:15, Maty=C3=A1=C5=A1 Bobek <matyas.bobek@gmail.co=
-m> wrote:
->
-> This series adds emulation of the FlexCAN CAN controller, version 2,
-> found in NXP i.MX6 series SoCs. The controller is integrated into
-> fsl-imx6 and the Sabrelite ARM board.
->
-> The chip has two FlexCAN controllers, but the Linux Sabrelite
-> device tree enables only one by default. Linux kernel with both
-> controllers enabled has been tested to work properly (using a custom
-> device tree).
-> See docs/system/devices/can.rst for an example of QEMU command line
-> invocation.
->
-> More information about the implementation can be found in my bachelor
-> thesis [1].
->
-> Changes from v4:
-> - renamed can in fsl-imx6 to flexcan
-> - corrected attribution for definitions borrowed from the Linux kernel
-> - rebased onto latest master
-> - Link to v4: https://lore.kernel.org/qemu-devel/cover.1779986496.git.mat=
-yas.bobek@gmail.com/
+On Mon, 2026-06-15 at 13:18 +0100, Peter Maydell wrote:
+> On Mon, 15 Jun 2026 at 13:15, Maty=C3=A1=C5=A1 Bobek <matyas.bobek@gmail.=
+com>
+> wrote:
+> >=20
+> > This series adds emulation of the FlexCAN CAN controller, version
+> > 2,
+> > found in NXP i.MX6 series SoCs. The controller is integrated into
+> > fsl-imx6 and the Sabrelite ARM board.
+> >=20
+> > The chip has two FlexCAN controllers, but the Linux Sabrelite
+> > device tree enables only one by default. Linux kernel with both
+> > controllers enabled has been tested to work properly (using a
+> > custom
+> > device tree).
+> > See docs/system/devices/can.rst for an example of QEMU command line
+> > invocation.
+> >=20
+> > More information about the implementation can be found in my
+> > bachelor
+> > thesis [1].
+> >=20
+> > Changes from v4:
+> > - renamed can in fsl-imx6 to flexcan
+> > - corrected attribution for definitions borrowed from the Linux
+> > kernel
+> > - rebased onto latest master
+> > - Link to v4:
+> > https://lore.kernel.org/qemu-devel/cover.1779986496.git.matyas.bobek@gm=
+ail.com/
+>=20
+> Have you fixed the clang sanitizer array-overrun bug that
+> I reported against v4?
 
-Have you fixed the clang sanitizer array-overrun bug that
-I reported against v4?
-
-https://lore.kernel.org/qemu-devel/CAFEAcA-diz0Bh1Ah87MPXxkDcvxF58tACTcxxJw=
-68xtw8pTfLw@mail.gmail.com/
-
-thanks
--- PMM
+Oh, I'm afraid I forgot about it. I will fix it and post new version.
+Sorry, Matt
 

@@ -4,110 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EE3FCD98D2
-	for <qemu-arm@archiver.kernel.org>; Sun, 14 Jun 2026 19:14:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCB24CD98C5
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 00:09:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wYq9p-0007Pa-UZ; Sun, 14 Jun 2026 15:06:10 -0400
+	id 1wYusg-0001Fq-76; Sun, 14 Jun 2026 20:08:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wYq9o-0007PA-IS
- for qemu-arm@nongnu.org; Sun, 14 Jun 2026 15:06:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wYq9m-0001e6-FY
- for qemu-arm@nongnu.org; Sun, 14 Jun 2026 15:06:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781463965;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QgIY+nGCDvSIdDIV3G1LWmuhJbM/v5NYrOFOTkV+U/c=;
- b=A2RQ3DpE08ba0ss9l1A92GZ60hbFU/iW2Gf/4/BtrdklrX1CBZcJ/Xv8dpbjLteNLdBX7w
- MsTU44+uiBFQaMzVvgIPCGzk5ZR12AXJEJwy+OhG5pzCGKxiofaevncJIg+OXoHmN2kZFY
- pWLKjmY/WYc1EGQHjL8sILPqkNAWjXE=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-483-sAZi6tycOSmse_5iIDYb-w-1; Sun, 14 Jun 2026 15:06:04 -0400
-X-MC-Unique: sAZi6tycOSmse_5iIDYb-w-1
-X-Mimecast-MFC-AGG-ID: sAZi6tycOSmse_5iIDYb-w_1781463963
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-490ae3bcf4cso12092745e9.3
- for <qemu-arm@nongnu.org>; Sun, 14 Jun 2026 12:06:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
+ id 1wYusf-0001Fa-JT
+ for qemu-arm@nongnu.org; Sun, 14 Jun 2026 20:08:45 -0400
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
+ id 1wYusd-0001xV-OF
+ for qemu-arm@nongnu.org; Sun, 14 Jun 2026 20:08:45 -0400
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-7dfceeaf168so27000367b3.0
+ for <qemu-arm@nongnu.org>; Sun, 14 Jun 2026 17:08:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1781482122; x=1782086922; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=0itSddNhXHUQmdf83KRdnrOB89AyIQq3+Tsy42l9m4E=;
+ b=otyAaiUYnLTem2U1KOpRPDxiJC9DGLcywCXjMLHllI9rCb9a6tA9hxU2a3OuSTVl1c
+ m0fyStH/hkN/yNwIxsNuvIK7WVErEok9tmu275T/XTD40oCLsTpa7Cc+iBuHXHTWx8RI
+ rqXDl14Q9L7dVcdccGA0jJAb+Eg6f8/32R/9rLkDQV5HlAsZUH0gl49z2IVe5VbitwRz
+ Bqx8yYJV9e7rtC8on3W671OQUdX3FFH4/Er3MsQyYOhojU9M1ZL6d4UcV5onBwZjJ9/6
+ nFxudt4dzIRv4b5SVc+V9iR2QXofonUD8Q3aNUZxjaHSFjrbiH7kFgyCIKyRyKDUMXab
+ MRIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781463963; x=1782068763;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QgIY+nGCDvSIdDIV3G1LWmuhJbM/v5NYrOFOTkV+U/c=;
- b=Ess5wC2EOcmYhBgyQHIIbVq1vBnF9uC3s2Q7LI0BpAedwuCTVO7vEXJLlds/GrV3uO
- WWYQTTInHxDX8p9CfMF3H5hak0WM2wUXVrC2c6jh7fvQlf0QutAxXZ5yK3eZKYAQIuTI
- WFKmyyZdcmJXebG/XfdiNZgRL0XCm+gm7YyzpnMy7NIgI1JoeOWlI43xhBAYW8QB70gi
- L/wqWGMRm6NYoTuLtzF/RWFScBA5QCJgQG5nT45Iyx2BJnle/M+/eH7bh4nz5Rf8A9uz
- zV1DO5rK2I0FOhVAAZe/bSB7FgsBFv5TrS3iaNSFaMAbWzwA2GmJhmzt8/Ar5HN5xlw6
- 893w==
-X-Forwarded-Encrypted: i=1;
- AFNElJ96wVO9jbYut57TdCzQweU+DqR3JkIJjfbgOtxAmUk2raIaxUbYNFsKxDjcP8IbdCjw2ETLl4x2ZA==@nongnu.org
-X-Gm-Message-State: AOJu0YxGkeEk+NYUylfhlbqx6jS60o+vN7xXMCLIy15ztyhDXteZzs6y
- bu37V5qYcy1EFAyop+7ylezZOa0U+16uVobLsJMNAUi/gku/M88bcRszC9a2zNTalo5eznv8sSn
- N5z+ZP4kLl0tXjXSQjGYHOvdaGJWxSMCgTo7zlkEvbNnxfXgsxyAwmA==
-X-Gm-Gg: Acq92OHJErJKm1O+cM8Wt9c5ksw/CFkAvLg+9s869hNSbTQdqKMrkfyOMvUSrHVCeQt
- vIhcjCD/4na2qrXSfl/w7n+4PVT74Ye/EQgvEJ2+lx0EvjBhpp4N8IHDJPfT1ElXgqO9iiVYNH5
- /nz6kEUhn3+DFPxhZlkiWtqDcoy5e8fWQ1p0Ap3qMloBhTXnINdVqj53W7N9m/6/yL42ApJpNSr
- AD19GAEKyoSE7WoTcwP7MTJaYUAJlB0g6lS8/AOg9BVvRi7qwpjX5Ac1MeBJjX2ucomQzG71+44
- 3zlOgmhruS3vgQ6AUJlWs/SGwpLXztothiVkI6OZd78t3gXl885cYuInBE8cRIY5F7xqpsQTGF6
- 0X+6yyakMZsbNqpavl/sYBnnZcGLBpQ1Yz9yfP/wywgQ=
-X-Received: by 2002:a7b:cd0b:0:b0:490:b2c9:e284 with SMTP id
- 5b1f17b1804b1-49220143bc6mr63060465e9.30.1781463962863; 
- Sun, 14 Jun 2026 12:06:02 -0700 (PDT)
-X-Received: by 2002:a7b:cd0b:0:b0:490:b2c9:e284 with SMTP id
- 5b1f17b1804b1-49220143bc6mr63060215e9.30.1781463962231; 
- Sun, 14 Jun 2026 12:06:02 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
+ d=1e100.net; s=20251104; t=1781482122; x=1782086922;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=0itSddNhXHUQmdf83KRdnrOB89AyIQq3+Tsy42l9m4E=;
+ b=OyQD+3DeeHIOTMLCII4mWBENu7EnrEtx3k0KJ7U6o3FuPUKoRbKxmfccCTKzKJYGkB
+ IbyqMJsQOiOWB9ftNb/0Lj+jXLvES3ismnu1Y86b09YzMNUd6PZBVh+Ma2sC00V1+m/G
+ prunAc/Ci9oAn1LK0Fa18KvKwfvDbLmF4sIvarUjkXf7cav9OQIclD0hHHPsKiJCDEiF
+ o344NqAeXFIqVnGxdwkuMRRW04VZnXGOVGKV9VyUCol8gr2AoTPXBp0hs2NLq1TUs/II
+ yb5mLLGGBhQsnV4uTCLt6YNADctTamc/AleOPoeAucmlkh5z1CGdW8ew/ymDcpAfqAoP
+ Lpvg==
+X-Gm-Message-State: AOJu0YyW+afDdFtfnpieiasEWIz0ZYbrBaFobItfwT2LiFQwHx1bWJG3
+ 0QL2Aj1Qeip4wRsaU+h+cslN/QGdkIN7fBwfRf+XuNagnoYLBUG5v0uj
+X-Gm-Gg: Acq92OF9WJWbcvzh5oVskWCU4KU4epHIkyFs+cO2sBgtOqgA390rr0+P9ueY/e+Pf3x
+ a7ObDB+NqwlEQCa2VJihea4T9jZ3SsHJ3XvO481WTexlzUQ9nB8zaLoWyoQ6BwzI1d+dGdwn29k
+ Hv7LHXq/JVP27SBeFHE3qGOmkJwIkYocqEhZ4k6x9AwZmUmOJGtrn5IxiL1jNc5LuO6aW6s31aW
+ yRUYyHFU0g4AkEGb+ZRF5iKJlHcQq0Moj0/iHeBloTOEn+s4x0FsL9AzyKlnfJ0rQ/7xehU6JZt
+ 8C8p+UwG6pUwo/H6hFANBfiA1RwoeImbl9420UCZYJnwkeMnKP2vH+RzdS3x11Thhl3hgkuRjJy
+ qUneu/XwP4JuVwN4CAlYktuFt7Yfi7C51dRdTSfIsg0+dIrvpfHQ0DZ5PFlLj1zBkLnew0fq7Sq
+ 8g/a0LFU7Gv6IlyMK3uUx9JyKq8FqH0448/dEcHz4P+6Q+pJGZdDw6M9xj5xgMsUCGSy/qCDDmX
+ jS2qosBkPKSoIJViR07T0B6
+X-Received: by 2002:a05:690c:4a11:b0:7bd:5af9:f0a2 with SMTP id
+ 00721157ae682-7f7b5f52026mr122891037b3.14.1781482121917; 
+ Sun, 14 Jun 2026 17:08:41 -0700 (PDT)
+Received: from skippy.tail1682c8.ts.net
+ (99-61-67-1.lightspeed.austtx.sbcglobal.net. [99.61.67.1])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4606f26f4f6sm29121174f8f.16.2026.06.14.12.05.59
+ 00721157ae682-7f76e2b578asm38654607b3.3.2026.06.14.17.08.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 14 Jun 2026 12:06:00 -0700 (PDT)
-Date: Sun, 14 Jun 2026 15:05:58 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Zhenzhong Duan <zhenzhong.duan@intel.com>,
- Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Yi Liu <yi.l.liu@intel.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,
- Xudong Hao <xudong.hao@intel.com>, Eric Auger <eric.auger@redhat.com>,
- Jason Wang <jasowang@redhat.com>,
- =?utf-8?Q?Cl=C3=A9ment?= Mathieu--Drif <clement.mathieu--drif@bull.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Alex Williamson <alex@shazbot.org>, qemu-arm@nongnu.org
-Subject: [PULL 007/106] iommufd: Extend attach/detach_hwpt callbacks to
- support pasid
-Message-ID: <20fb2f6961f847392bdbc26f85017a73570af0b5.1781463125.git.mst@redhat.com>
-References: <cover.1781463125.git.mst@redhat.com>
+ Sun, 14 Jun 2026 17:08:41 -0700 (PDT)
+From: Kyle Fox <kylefoxaustin.github@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Kyle Fox <kylefoxaustin.github@gmail.com>
+Subject: [PATCH v2] target/arm: honour CCR.BFHFNMIGN for probed data BusFaults
+Date: Sun, 14 Jun 2026 19:08:35 -0500
+Message-Id: <20260615000835.996870-1-kylefoxaustin.github@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260605035012.2876664-1-kylefoxaustin.github@gmail.com>
+References: <20260605035012.2876664-1-kylefoxaustin.github@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <cover.1781463125.git.mst@redhat.com>
-X-Mailer: git-send-email 2.51.2.2891.g4157995a80.dirty
-X-Mutt-Fcc: =sent
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: IRimX0hWJ_jRgrejdcA9z2rmV4o9rlMAfKnCDXpvsRc_1781463963
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yw1-x1133.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,244 +102,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Zhenzhong Duan <zhenzhong.duan@intel.com>
+M-profile CCR.BFHFNMIGN lets software executing at a negative execution
+priority (in HardFault/NMI, or with FAULTMASK set) suppress precise data
+BusFaults caused by load/store instructions: the access completes
+returning UNKNOWN data, the fault status is recorded in BFSR/BFAR, but no
+BusFault exception is taken. Software uses this to probe for the presence
+of a device.
 
-Same for the two wrappers and their call sites.
+QEMU stored CCR.BFHFNMIGN but never consumed it: arm_cpu_do_transaction_
+failed() always raised the external abort, which arm_v7m_cpu_do_interrupt()
+pended as a BusFault and then escalated to a HardFault it could not take at
+priority -1, aborting the VM with "Lockup: can't escalate 3 to HardFault".
 
-Suggested-by: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-Suggested-by: Nicolin Chen <nicolinc@nvidia.com>
-Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
-Reviewed-by: Yi Liu <yi.l.liu@intel.com>
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Reviewed-by: Shameer Kolothum <skolothumtho@nvidia.com>
-Tested-by: Xudong Hao <xudong.hao@intel.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20260527054658.1021096-3-zhenzhong.duan@intel.com>
+Honour the bit in arm_cpu_do_transaction_failed(): when the access is a
+data access from M-profile code at negative priority with BFHFNMIGN set,
+record PRECISERR/BFARVALID and BFAR and return without raising, so the
+faulting instruction completes instead of re-faulting forever. Instruction
+fetches are unaffected, since BFHFNMIGN applies only to data accesses.
+
+The SG instruction's stack-word load is also an AccType_NORMAL data access
+that must honour BFHFNMIGN, but QEMU performs it manually in
+v7m_read_sg_stack_word() (outside the TCG TLB, so it never reaches
+arm_cpu_do_transaction_failed()). Apply the same suppression there: on a
+BusFault, record the status and, when BFHFNMIGN is set at negative
+priority, return the UNKNOWN data instead of pending ARMV7M_EXCP_BUS. The
+remaining manual EXCP_BUS sites (vector-table loads, stacking, unstacking)
+are AccType_VECTABLE/STACK/UNSTACK and are not required to honour the bit,
+so they are left unchanged.
+
+This surfaced running the real NXP i.MX 95 System Manager firmware on the
+emulated Cortex-M33: its SystemMemoryProbe() (set BFHFNMIGN + FAULTMASK,
+do the access, test CFSR.BFARVALID) locked up the VM. With this change the
+SM's debug-monitor memory-probe commands run and recover correctly.
+
+Signed-off-by: Kyle Fox <kylefoxaustin.github@gmail.com>
 ---
- backends/iommufd.c          | 23 ++++++++++++-----------
- hw/arm/smmuv3-accel.c       | 12 ++++++++----
- hw/i386/intel_iommu_accel.c | 19 ++++++++++---------
- hw/vfio/iommufd.c           | 22 +++++++++++-----------
- include/system/iommufd.h    | 18 ++++++++++++------
- 5 files changed, 53 insertions(+), 41 deletions(-)
+v2:
+ - Also honour BFHFNMIGN for the SG instruction's stack-word load in
+   v7m_read_sg_stack_word() (an AccType_NORMAL access performed manually,
+   outside the TCG TLB), per review. The vector-table/stacking/unstacking
+   EXCP_BUS sites are left unchanged (AccType_VECTABLE/STACK/UNSTACK).
 
-diff --git a/backends/iommufd.c b/backends/iommufd.c
-index 410b044370..cfde6f2b2c 100644
---- a/backends/iommufd.c
-+++ b/backends/iommufd.c
-@@ -539,23 +539,24 @@ bool iommufd_backend_alloc_veventq(IOMMUFDBackend *be, uint32_t viommu_id,
- }
- 
- bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
--                                           uint32_t hwpt_id, Error **errp)
--{
--    HostIOMMUDeviceIOMMUFDClass *hiodic =
--        HOST_IOMMU_DEVICE_IOMMUFD_GET_CLASS(hiodi);
--
--    g_assert(hiodic->attach_hwpt);
--    return hiodic->attach_hwpt(hiodi, hwpt_id, errp);
--}
--
--bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-+                                           uint32_t pasid, uint32_t hwpt_id,
-                                            Error **errp)
- {
-     HostIOMMUDeviceIOMMUFDClass *hiodic =
-         HOST_IOMMU_DEVICE_IOMMUFD_GET_CLASS(hiodi);
- 
-+    g_assert(hiodic->attach_hwpt);
-+    return hiodic->attach_hwpt(hiodi, pasid, hwpt_id, errp);
-+}
-+
-+bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-+                                           uint32_t pasid, Error **errp)
-+{
-+    HostIOMMUDeviceIOMMUFDClass *hiodic =
-+        HOST_IOMMU_DEVICE_IOMMUFD_GET_CLASS(hiodi);
-+
-     g_assert(hiodic->detach_hwpt);
--    return hiodic->detach_hwpt(hiodi, errp);
-+    return hiodic->detach_hwpt(hiodi, pasid, errp);
- }
- 
- static int hiod_iommufd_get_cap(HostIOMMUDevice *hiod, int cap, Error **errp)
-diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-index 862be814a0..2947e2e5dc 100644
---- a/hw/arm/smmuv3-accel.c
-+++ b/hw/arm/smmuv3-accel.c
-@@ -300,7 +300,8 @@ bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
+ target/arm/tcg/m_helper.c   | 12 ++++++++++++
+ target/arm/tcg/tlb_helper.c | 24 ++++++++++++++++++++++++
+ 2 files changed, 36 insertions(+)
+
+diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+index f2059ed8b03..ba101ecb953 100644
+--- a/target/arm/tcg/m_helper.c
++++ b/target/arm/tcg/m_helper.c
+@@ -2086,6 +2086,18 @@ static bool v7m_read_sg_stack_word(ARMCPU *cpu, ARMMMUIdx mmu_idx,
+         env->v7m.cfsr[M_REG_NS] |=
+             (R_V7M_CFSR_PRECISERR_MASK | R_V7M_CFSR_BFARVALID_MASK);
+         env->v7m.bfar = addr;
++        /*
++         * The SG instruction's stack-word load is an AccType_NORMAL data
++         * access, so CCR.BFHFNMIGN applies: at negative execution priority
++         * with BFHFNMIGN set, the BusFault is suppressed -- the access
++         * completes returning UNKNOWN data (status recorded above), with no
++         * BusFault exception pended.
++         */
++        if ((env->v7m.ccr[M_REG_NS] & R_V7M_CCR_BFHFNMIGN_MASK) &&
++            armv7m_nvic_neg_prio_requested(env->nvic, env->v7m.secure)) {
++            *spdata = value;
++            return true;
++        }
+         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_BUS, false);
          return false;
      }
+diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
+index bbe1e70bc43..452688010f5 100644
+--- a/target/arm/tcg/tlb_helper.c
++++ b/target/arm/tcg/tlb_helper.c
+@@ -10,6 +10,7 @@
+ #include "helper.h"
+ #include "internals.h"
+ #include "cpu-features.h"
++#include "hw/intc/armv7m_nvic.h"
  
--    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, hwpt_id, errp)) {
-+    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID, hwpt_id,
-+                                               errp)) {
-         if (s1_hwpt) {
-             iommufd_backend_free_id(hiodi->iommufd, s1_hwpt->hwpt_id);
-             g_free(s1_hwpt);
-@@ -575,7 +576,8 @@ smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *hiodi,
- 
-     /* Attach a HWPT based on SMMUv3 GBPA.ABORT value */
-     hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
--    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, hwpt_id, errp)) {
-+    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID, hwpt_id,
-+                                               errp)) {
-         goto free_veventq;
-     }
-     return true;
-@@ -665,7 +667,8 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
-     hiodi = accel_dev->hiodi;
-     accel = accel_dev->s_accel;
-     /* Re-attach the default s2 hwpt id */
--    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, hiodi->hwpt_id, NULL)) {
-+    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID,
-+                                               hiodi->hwpt_id, NULL)) {
-         error_report("Unable to attach the default HW pagetable: hiodi devid "
-                      "0x%x", hiodi->devid);
-     }
-@@ -879,7 +882,8 @@ bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
- 
-     hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
-     QLIST_FOREACH(accel_dev, &accel->device_list, next) {
--        if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->hiodi, hwpt_id,
-+        if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->hiodi,
-+                                                   IOMMU_NO_PASID, hwpt_id,
-                                                    &local_err)) {
-             error_append_hint(&local_err, "Failed to attach GBPA hwpt %u for "
-                               "hiodi devid %u", hwpt_id,
-diff --git a/hw/i386/intel_iommu_accel.c b/hw/i386/intel_iommu_accel.c
-index 18ca5a801a..3beadab035 100644
---- a/hw/i386/intel_iommu_accel.c
-+++ b/hw/i386/intel_iommu_accel.c
-@@ -121,8 +121,9 @@ static bool vtd_device_attach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
-         }
-     }
- 
--    ret = host_iommu_device_iommufd_attach_hwpt(hiodi, hwpt_id, errp);
--    trace_vtd_device_attach_hwpt(hiodi->devid, vtd_as->pasid, hwpt_id, ret);
-+    ret = host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID, hwpt_id,
-+                                                errp);
-+    trace_vtd_device_attach_hwpt(hiodi->devid, IOMMU_NO_PASID, hwpt_id, ret);
-     if (ret) {
-         /* Destroy old fs_hwpt if it's a replacement */
-         vtd_destroy_old_fs_hwpt(hiodi, vtd_as);
-@@ -141,22 +142,22 @@ static bool vtd_device_detach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
+ /*
+  * Returns true if the stage 1 translation regime is using LPAE format page
+@@ -318,8 +319,31 @@ void arm_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+                                    MemTxResult response, uintptr_t retaddr)
  {
-     HostIOMMUDeviceIOMMUFD *hiodi = HOST_IOMMU_DEVICE_IOMMUFD(vtd_hiod->hiod);
-     IntelIOMMUState *s = vtd_as->iommu_state;
--    uint32_t pasid = vtd_as->pasid;
-     bool ret;
+     ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
+     ARMMMUFaultInfo fi = {};
  
-     if (s->dmar_enabled && s->root_scalable) {
--        ret = host_iommu_device_iommufd_detach_hwpt(hiodi, errp);
--        trace_vtd_device_detach_hwpt(hiodi->devid, pasid, ret);
-+        ret = host_iommu_device_iommufd_detach_hwpt(hiodi, IOMMU_NO_PASID,
-+                                                    errp);
-+        trace_vtd_device_detach_hwpt(hiodi->devid, IOMMU_NO_PASID, ret);
-     } else {
-         /*
-          * If DMAR remapping is disabled or guest switches to legacy mode,
-          * we fallback to the default HWPT which contains shadow page table.
-          * So guest DMA could still work.
-          */
--        ret = host_iommu_device_iommufd_attach_hwpt(hiodi, hiodi->hwpt_id,
--                                                    errp);
--        trace_vtd_device_reattach_def_hwpt(hiodi->devid, pasid, hiodi->hwpt_id,
--                                           ret);
-+        ret = host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID,
-+                                                    hiodi->hwpt_id, errp);
-+        trace_vtd_device_reattach_def_hwpt(hiodi->devid, IOMMU_NO_PASID,
-+                                           hiodi->hwpt_id, ret);
-     }
- 
-     if (ret) {
-diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
-index f86f6f0d7b..78e7b6a045 100644
---- a/hw/vfio/iommufd.c
-+++ b/hw/vfio/iommufd.c
-@@ -934,21 +934,21 @@ static void vfio_iommu_iommufd_class_init(ObjectClass *klass, const void *data)
- 
- static bool
- host_iommu_device_iommufd_vfio_attach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
--                                           uint32_t hwpt_id, Error **errp)
--{
--    VFIODevice *vbasedev = HOST_IOMMU_DEVICE(hiodi)->agent;
--
--    return !iommufd_cdev_pasid_attach_ioas_hwpt(vbasedev, IOMMU_NO_PASID,
--                                                hwpt_id, errp);
--}
--
--static bool
--host_iommu_device_iommufd_vfio_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-+                                           uint32_t pasid, uint32_t hwpt_id,
-                                            Error **errp)
- {
-     VFIODevice *vbasedev = HOST_IOMMU_DEVICE(hiodi)->agent;
- 
--    return iommufd_cdev_pasid_detach_ioas_hwpt(vbasedev, IOMMU_NO_PASID, errp);
-+    return !iommufd_cdev_pasid_attach_ioas_hwpt(vbasedev, pasid, hwpt_id, errp);
-+}
++    /*
++     * For M-profile, CCR.BFHFNMIGN lets software executing at a negative
++     * priority (in HardFault/NMI, or with FAULTMASK set) suppress precise
++     * data BusFaults from load/store instructions: the access completes
++     * returning UNKNOWN data (the store is dropped), the fault status is
++     * recorded in BFSR/BFAR, but no BusFault exception is taken. This is
++     * the mechanism software uses to probe for the presence of a device
++     * (e.g. the NXP System Manager's SystemMemoryProbe). Honour it by
++     * recording the status and returning without raising, so the faulting
++     * instruction completes rather than re-faulting forever. BFHFNMIGN
++     * applies only to data accesses, so instruction fetches are unaffected.
++     */
++    if (arm_feature(env, ARM_FEATURE_M) &&
++        access_type != MMU_INST_FETCH &&
++        (env->v7m.ccr[M_REG_NS] & R_V7M_CCR_BFHFNMIGN_MASK) &&
++        armv7m_nvic_neg_prio_requested(env->nvic, env->v7m.secure)) {
++        env->v7m.cfsr[M_REG_NS] |=
++            (R_V7M_CFSR_PRECISERR_MASK | R_V7M_CFSR_BFARVALID_MASK);
++        env->v7m.bfar = addr;
++        return;
++    }
 +
-+static bool
-+host_iommu_device_iommufd_vfio_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-+                                           uint32_t pasid, Error **errp)
-+{
-+    VFIODevice *vbasedev = HOST_IOMMU_DEVICE(hiodi)->agent;
-+
-+    return iommufd_cdev_pasid_detach_ioas_hwpt(vbasedev, pasid, errp);
- }
+     /* now we have a real cpu fault */
+     cpu_restore_state(cs, retaddr);
  
- static bool hiod_iommufd_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
-diff --git a/include/system/iommufd.h b/include/system/iommufd.h
-index 2925d116ac..4257e50f62 100644
---- a/include/system/iommufd.h
-+++ b/include/system/iommufd.h
-@@ -138,14 +138,16 @@ struct HostIOMMUDeviceIOMMUFDClass {
-      *
-      * @hiodi: host IOMMU device backed by IOMMUFD backend.
-      *
-+     * @pasid: target pasid of the device to be attached.
-+     *
-      * @hwpt_id: ID of IOMMUFD hardware page table.
-      *
-      * @errp: pass an Error out when attachment fails.
-      *
-      * Returns: true on success, false on failure.
-      */
--    bool (*attach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, uint32_t hwpt_id,
--                        Error **errp);
-+    bool (*attach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, uint32_t pasid,
-+                        uint32_t hwpt_id, Error **errp);
-     /**
-      * @detach_hwpt: detach host IOMMU device from IOMMUFD hardware page table.
-      * VFIO and VDPA device can have different implementation.
-@@ -154,15 +156,19 @@ struct HostIOMMUDeviceIOMMUFDClass {
-      *
-      * @hiodi: host IOMMU device backed by IOMMUFD backend.
-      *
--     * @errp: pass an Error out when attachment fails.
-+     * @pasid: target pasid of the device to be detached.
-+     *
-+     * @errp: pass an Error out when detachment fails.
-      *
-      * Returns: true on success, false on failure.
-      */
--    bool (*detach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, Error **errp);
-+    bool (*detach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, uint32_t pasid,
-+                        Error **errp);
- };
- 
- bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
--                                           uint32_t hwpt_id, Error **errp);
--bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-+                                           uint32_t pasid, uint32_t hwpt_id,
-                                            Error **errp);
-+bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-+                                           uint32_t pasid, Error **errp);
- #endif
 -- 
-MST
+2.34.1
 
 

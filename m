@@ -4,47 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56412CD98C5
-	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 10:04:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9982CCD98C5
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 10:04:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZ4AD-0000HN-UG; Mon, 15 Jun 2026 06:03:30 -0400
+	id 1wZ4A6-0000FX-R6; Mon, 15 Jun 2026 06:03:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wZ4AB-0000GY-PO
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 06:03:27 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wZ49v-0000E8-MO
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 06:03:12 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wZ4A9-0000AD-Rj
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 06:03:27 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wZ49u-00007K-0T
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 06:03:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781517805;
+ s=mimecast20190719; t=1781517787;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2NewIdIPrMLwUps+7LWKz8VBHoxGyGBFdr1NdZYqt4E=;
- b=LwwJ1LwwlJA3l7Ln724wtLCNGyl36/0Oka50sfowgR+RWpF6vT1KQnd+HITUpXOiimHUxU
- xEtjSGupd5syhTuimbZrdYaZaGiDwsuMVJgdT7LmvgOoYsQEU1gTzljNfJltkRIXLmOuMs
- ESZ4vZYxF+cDQnYHx/jJJ1xsANJKFOw=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ content-transfer-encoding:content-transfer-encoding;
+ bh=dHkDtQCs+k1JtrXGfFOWbYx7a3/UZwhKCaP7RHOGn7U=;
+ b=FJ6O13a9gKADphnWcZeBjvVY689FBee7NRkWYYSnasQRIbsGUBclHMkaZVSXfLVfEJWPy2
+ uuTvqULqzodOZQadZ5bNfNkU77VFPea5CTkAETPOq/7ldowOQ6av0rRGwQimVuSB7OjiTP
+ BVWWmrZ790OKYbtUWyLeERe4ufx0B2I=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-67-ShJNzY8KND68XgNvKr7zfg-1; Mon,
- 15 Jun 2026 06:03:21 -0400
-X-MC-Unique: ShJNzY8KND68XgNvKr7zfg-1
-X-Mimecast-MFC-AGG-ID: ShJNzY8KND68XgNvKr7zfg_1781517800
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-59-oCWgFGreP6KptjgcpRubtQ-1; Mon,
+ 15 Jun 2026 06:03:04 -0400
+X-MC-Unique: oCWgFGreP6KptjgcpRubtQ-1
+X-Mimecast-MFC-AGG-ID: oCWgFGreP6KptjgcpRubtQ_1781517782
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8401C1800350; Mon, 15 Jun 2026 10:03:19 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 520C71954B2B; Mon, 15 Jun 2026 10:03:01 +0000 (UTC)
 Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.2])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 905F61955BCE; Mon, 15 Jun 2026 10:03:11 +0000 (UTC)
+ id 223C31955BCE; Mon, 15 Jun 2026 10:02:50 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, mst@redhat.com, peterx@redhat.com, alex@shazbot.org,
@@ -53,27 +52,26 @@ Cc: qemu-devel@nongnu.org, mst@redhat.com, peterx@redhat.com, alex@shazbot.org,
  david@kernel.org, clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com,
  jugraham@redhat.com, liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn,
  shan.gavin@gmail.com
-Subject: [PATCH v2 2/2] system/memory: Make ram device region directly
+Subject: [PATCH v2 0/2] system/memory: Make ram device region directly
  accessible
-Date: Mon, 15 Jun 2026 20:01:59 +1000
-Message-ID: <20260615100200.266968-3-gshan@redhat.com>
-In-Reply-To: <20260615100200.266968-1-gshan@redhat.com>
-References: <20260615100200.266968-1-gshan@redhat.com>
+Date: Mon, 15 Jun 2026 20:01:57 +1000
+Message-ID: <20260615100200.266968-1-gshan@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: WikiMQeQkwt2r-nprJJJ2eBL9AGdNhAnOOdVp9VPG-I_1781517800
+X-Mimecast-MFC-PROC-ID: DtxUU5Ymj1nLjyOucKZt-J7KW_Q2pWU7H50Q2ffB_-w_1781517782
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,119 +87,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This basically reverts 4a2e242bbb30 ("memory: Don't use memcpy for
-ram_device regions") to make ram device region directly accessible
-again. With this, the bounce buffer is bypassed in address_space_map()
-when a ram device region is involved, potentially avoid to overrun
-the (small) bounce buffer.
+All ram device regions was turned to be indirectly accessible by commit
+4a2e242bbb ("memory: Don't use memcpy for ram_device regions"). This leads
+to a hanged guest where a NVidia GH100 GPU is passed from host. The memory
+in its PCI BAR#4 can be allocated as DMA target buffer. qemu has to take
+DMA bounce buffer in address_space_map() to cover the DMA request. However,
+the bounce buffer size is 4096 bytes and we're overrunning it easily when
+the guest has significant disk activities on compiling 'cuda-samples'.
+The full log and problem description can be found from PATCH[1/2]'s commit
+log.
 
-Reported-by: Julia Graham <jugraham@redhat.com>
-Suggested-by: Michael S. Tsirkin <mst@redhat.com>
-Suggested-by: Peter Xu <peterx@redhat.com>
-Suggested-by: Richard Henderson <richard.henderson@linaro.org>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Gavin Shan <gshan@redhat.com>
----
- include/system/memory.h | 11 ++---------
- system/memory.c         | 41 +----------------------------------------
- system/trace-events     |  2 --
- 3 files changed, 3 insertions(+), 51 deletions(-)
+Try to fix the issue handled in commit 4a2e242bbb by replacing memcopy()/
+memmove() with newly added helpers qemu_ram_{copy, move}() that works on
+top of __builtin_{memcpy, memmove} or unaligned access friendly memory
+movement in the accessors to the ram device regions. With this, we can
+basically revert that commit to make ram device region directly accessible
+again and bypass the bounce buffer in address_space_map() where the guest
+hang is caused.
 
-diff --git a/include/system/memory.h b/include/system/memory.h
-index 5878727d09..7d6ef9b32e 100644
---- a/include/system/memory.h
-+++ b/include/system/memory.h
-@@ -2916,15 +2916,8 @@ static inline bool memory_region_supports_direct_access(const MemoryRegion *mr)
-     if (memory_region_is_romd(mr)) {
-         return true;
-     }
--    if (!memory_region_is_ram(mr)) {
--        return false;
--    }
--    /*
--     * RAM DEVICE regions can be accessed directly using memcpy, but it might
--     * be MMIO and access using mempy can be wrong (e.g., using instructions not
--     * intended for MMIO access). So we treat this as IO.
--     */
--    return !memory_region_is_ram_device(mr);
-+
-+    return memory_region_is_ram(mr);
- }
- 
- static inline bool memory_access_is_direct(const MemoryRegion *mr,
-diff --git a/system/memory.c b/system/memory.c
-index 739ba11da6..9549dd1a94 100644
---- a/system/memory.c
-+++ b/system/memory.c
-@@ -1362,43 +1362,6 @@ const MemoryRegionOps unassigned_mem_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
--static uint64_t memory_region_ram_device_read(void *opaque,
--                                              hwaddr addr, unsigned size)
--{
--    MemoryRegion *mr = opaque;
--    uint64_t data = ldn_he_p(mr->ram_block->host + addr, size);
--
--    trace_memory_region_ram_device_read(get_cpu_index(), mr, addr, data, size);
--
--    return data;
--}
--
--static void memory_region_ram_device_write(void *opaque, hwaddr addr,
--                                           uint64_t data, unsigned size)
--{
--    MemoryRegion *mr = opaque;
--
--    trace_memory_region_ram_device_write(get_cpu_index(), mr, addr, data, size);
--
--    stn_he_p(mr->ram_block->host + addr, size, data);
--}
--
--static const MemoryRegionOps ram_device_mem_ops = {
--    .read = memory_region_ram_device_read,
--    .write = memory_region_ram_device_write,
--    .endianness = HOST_BIG_ENDIAN ? DEVICE_BIG_ENDIAN : DEVICE_LITTLE_ENDIAN,
--    .valid = {
--        .min_access_size = 1,
--        .max_access_size = 8,
--        .unaligned = true,
--    },
--    .impl = {
--        .min_access_size = 1,
--        .max_access_size = 8,
--        .unaligned = true,
--    },
--};
--
- bool memory_region_access_valid(MemoryRegion *mr,
-                                 hwaddr addr,
-                                 unsigned size,
-@@ -1676,10 +1639,8 @@ void memory_region_init_ram_device_ptr(MemoryRegion *mr, Object *owner,
-                                        const char *name, uint64_t size,
-                                        void *ptr)
- {
--    memory_region_init_io(mr, owner, &ram_device_mem_ops, mr, name, size);
--    mr->ram = true;
-+    memory_region_init_ram_ptr(mr, owner, name, size, ptr);
-     mr->ram_device = true;
--    memory_region_set_ram_ptr(mr, size, ptr);
- }
- 
- void memory_region_init_alias(MemoryRegion *mr, Object *owner,
-diff --git a/system/trace-events b/system/trace-events
-index e6e1b61279..34af0a3a1e 100644
---- a/system/trace-events
-+++ b/system/trace-events
-@@ -20,8 +20,6 @@ memory_region_ops_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, u
- memory_region_ops_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
- memory_region_subpage_read(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
- memory_region_subpage_write(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
--memory_region_ram_device_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
--memory_region_ram_device_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
- memory_region_sync_dirty(const char *mr, const char *listener, int global) "mr '%s' listener '%s' synced (global=%d)"
- flatview_new(void *view, void *root) "%p (root %p)"
- flatview_destroy(void *view, void *root) "%p (root %p)"
+PATCH[1] uses qemu_ram_{copy, move}() in ram device region accessors
+PATCH[2] makes ram device region directly accessible again
+
+Changelog
+=========
+v1 -> v2:
+  * https://lore.kernel.org/qemu-arm/20260612110307.1264798-1-gshan@redhat.com/
+  * Rename address_space_{memcpy, memmove}() to qemu_ram_{copy, move}()
+    and move them to physmem.c and memory.h   (Philippe)
+  * Use memcpy() and memmove() in qemu_ram_{copy, move}() for the variable
+    length case                               (Miachel)
+  * Handle unaligned access in qemu_ram_{copy, move}() for all archs
+    except i386 and x86_64                    (Richard/Michael)
+RFCv1 -> v1:
+  * https://lists.nongnu.org/archive/html/qemu-arm/2026-06/msg00307.html
+  * Reworked solution based on suggestions from Peter Xu, Peter Maydell
+    and Michael S. Tsirkin
+
+Gavin Shan (2):
+  system/memory: Use qemu_ram_{copy, move}() in ram device region
+    accessors
+  system/memory: Make ram device region directly accessible
+
+ hw/remote/vfio-user-obj.c |  4 +-
+ include/system/memory.h   | 15 +++----
+ system/memory.c           | 41 +-----------------
+ system/physmem.c          | 91 +++++++++++++++++++++++++++++++++++++--
+ system/trace-events       |  2 -
+ 5 files changed, 95 insertions(+), 58 deletions(-)
+
 -- 
 2.54.0
 

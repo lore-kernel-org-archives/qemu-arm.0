@@ -4,87 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D26E1CD98DA
-	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 10:51:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EADBCD98C7
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 10:51:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZ4uJ-0000TG-Tm; Mon, 15 Jun 2026 06:51:09 -0400
+	id 1wZ4uE-0000Sm-4T; Mon, 15 Jun 2026 06:51:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wZ4to-0000QV-Sc
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 06:50:44 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ id 1wZ4tn-0000QR-RB
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 06:50:38 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wZ4tl-0001SN-Qi
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 06:50:35 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-45ef1629ff4so1963215f8f.0
- for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 03:50:33 -0700 (PDT)
+ id 1wZ4tk-0001SB-Rg
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 06:50:34 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-490b613a17bso28343085e9.3
+ for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 03:50:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781520632; x=1782125432; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=2fxx0HT57BvR4zKgzbdI8CQgvLW39zgONazI3L1iFlw=;
- b=EDemrtzmZ38UvEtKfvtWE56HXO78QCU6WYpPmXtWG3GCbBQPTBRXZhKYr2OWGQcRW1
- JT7HW2uigVL2b7pwMOyU1ntukNkfExlB2EzrMxrDRyOjfmUYOnLmvHxqRdLQx78SvMCb
- ORfWsY1i9fDovJlntQHJIoNyKDEV4IYURsIqqwMPgBgcRnr68Sb7l26q0J1mlFQnHPM4
- /xs/aN8FGPN6l5rO7GcIl4AcKQpZ8bMvADsqYUlnjRiEkWxgsoTNwory8z2j3WfxroHS
- tj48hJxchLklaYeOIgRsfd/yxAN5CJF+pRhBJ3PawPVKnBG3anBxXCVp3gwfbyhxxtqP
- WCXQ==
+ d=linaro.org; s=google; t=1781520631; x=1782125431; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=bElw+ObnrJANhvVaMpMY5W3cKHNMW4adXEFOoSTdva4=;
+ b=cUVzOzHK1LpkIRp2YGOF6ur4gw9P9F46tUFLfawQm1v3MZqIu+iCDjVTfkaBnsIH/7
+ Em4WoL8lySYtO/Ak6LNht9OcfxigCjIv3try8NjHRRvuFcPehq2lERyqqGi3QoBGU6GT
+ 42mxMcKrm7WZ2YJYhZYksO49uma0MRQWYcUzfLEX1hxTMUMTsGObpHhdt4fd8JnD6RQz
+ J2qga0YbiC2dSyWgjn0ONz4Yfy8d9Cea+f2siWqo2E7NgY+tMNGxSLe+cUblbtn1YEZd
+ DRkcFB80JkEBZQeUbRgqamv4Zvhk+eGkVUk0XScvcwMqAO62s8F+SNYq6/YQ0bhPwjlj
+ 1tEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781520632; x=1782125432;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=2fxx0HT57BvR4zKgzbdI8CQgvLW39zgONazI3L1iFlw=;
- b=loXhoNZ6Xhdf5Ncj7p1YXgydqyodBy20RGdzzr8Ld5lt77xk5e1cswo6FOEOt75Xd/
- clBMPU9jlhPDW6fFwFs3zdUHbNb0LJDG/wpCiiePGAFBk7GVxD7xsAmuCzuZBBJWKX0s
- nYIqbwH93Sy/cyaSyLIsm5pmN3T1VqPBc9o9fYhhnWvCWE8ktyfCnXlF+sq86XK1+2af
- 3HON5L88IG5V6IiYZrBoLVvkx81IyV35M++hTlfY5gy0PSfSTkLuD5cRstPs8kTnzQJK
- Sy0pTIpgmy+aC1TVWBcqXqMPQSOQjXbXvK69HM27P72nXL4zkU16T6JqqEk9kR3m5Dua
- OFJA==
-X-Gm-Message-State: AOJu0YyxD2EOg7Sbq5acfrO750Iqsiyml/ftgF86VCZA80qiHOR2TbFA
- iRHTsmli1LxSl/Vgz2ea9cMGDEqPNxEzRwshMy8khm8fLRA1ENrjsni5PFPYsVOW0U5cJ8hqmOX
- lv39o
-X-Gm-Gg: Acq92OH/bricsqsSt3r/nlHeguHupOpxheTzWkgqc7KT20qKPE7Y/7icpnuWJIR75/z
- /YU4RGhn3pruZxbK5YYTw6Db4c72Sq5J5byHQ2hAa7LJouM6DyrIZu2RF8K77z14zp4gkZeD723
- CW9mI2TqpgQDEQ3U1JwJTVpSL64qj0D6S8IUebny6EcSaoYRGbTEA+7TNq2aB9XJ6MXCM8wbCbU
- FkubEaZ5G1Yc1Hv4VLWCuUEBQb6SML3FHjjaewuyUBWNGHRRqikCd9wbZk+kdIyIHVsw/uEeUU7
- 4WXzrrvLzxFaulEAKUp3Y/vDz4BkGhyNQCs0nAQIKG8Tbb+bgL1TV0spyv7i5m1nmUoZ7SyN5tu
- nI+/B1QAm6B+EurR5JzucZeEi1gq4UrPX6KDwDJeUMWz5OtVkU22IezpxaI+/jAFyA2tuZdJYh1
- 3xge4WK8oCjwXX5uE2f7bcLxgjKkO+jS5lCPdK31CV2SE+HC8I7bgV/uMfLRyeKrryyh+aaBhHY
- O/7ThZw0hOH2EnWxRFnMLM2qzsArSQG8ZGEJah1wgg=
-X-Received: by 2002:a05:6000:400b:b0:460:660a:3647 with SMTP id
- ffacd0b85a97d-46074a89e32mr14757375f8f.25.1781520631912; 
- Mon, 15 Jun 2026 03:50:31 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1781520631; x=1782125431;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=bElw+ObnrJANhvVaMpMY5W3cKHNMW4adXEFOoSTdva4=;
+ b=k3I5TQyE20nyj+o03rYX9Zsp+qn2BhxU28oQKkWMBybI8+iJsvu1i0KKj6+MSI84lj
+ iFffVteaW/DakwPj/sInISVBphLe1WWn8WVbgJElxo7gVm9qma2QOENA8J7oA21ObmkD
+ RXVOla6nfuKB/xGHh0Al7iQOEQnpLLZnHk4h8hbAwAE53EmywyiegQhAygMLncnH9oHh
+ QdqWSQt9byZ7TcoTBKAp1HBaN3C6L1TQwcQ1r1i8KUEGgj7sqGRrKFrPhrh7ZQ0gVWm7
+ u0j3mAFvivz1ccPiX8JQrXrj8xb9E0SJUHDzFnWSWcGNtlBWXZXQiheV2t0sePrrg7L5
+ gkWQ==
+X-Gm-Message-State: AOJu0YxOVGTg0oxufx+fwi53NQ1JKLnZdsaBnmbd0Cxvvz/IU0eQXNRN
+ NHUJruDUuBtMjKvkIMJs1K4XtoqvvXwormuf2eIEbEnaj/ijn2K7ESEjeO3OrZpWFP7XLPkRICt
+ IAQ7D
+X-Gm-Gg: Acq92OE4kY/qb+HORMK7pglkJ2OkjPE3LrkWXP7Xy7c9pySAm3VwbIcA6QFw2kgxNUV
+ KefUv1X7jx8dOkMnl6MUXzC+iItZ2Zlap1FyLikkQC4yqdGicFG26shEenbSd0ftxbkMPDnKYLY
+ BQ5zGYKu8mhmalBvAkN60hI460TrkYZkuv0gUw1pMvDM2a+uIZticZp7OyMHDa5fFq/Yo3uPCDa
+ KxMVPr0ha2Df84OB5flknTNURWlQnZ335xm1uCqy7GsnnEGm+BPH8KKyNYMf9Bwb1JKT/HUEJ3D
+ YLcUXdXKvsWfLJ2nfDzGmJoh+c15QoIjsQyveWL1D83YKLsIRlyfHVenL/cjLwIBuo+T630UH1b
+ eeMnp1uVGFqVo1WrNZGXTwFMWCkBpzQDdYiFR9XKWU9VlLugr6ZWgU5K+Lym5jzcruZ8IVWk0sB
+ fBy3b3pvDHHfNYNHqSvtvA74YVkTs4VuLSPRiSCVzwi7dTDE+O3RH82HbjppjGoJU/gTRpO71Rm
+ MpjYcFVrc4ilS7PYb5QoJu9kyJEg4alYP/Y2diy+vM=
+X-Received: by 2002:a05:600c:c04b:10b0:490:be1e:6ce6 with SMTP id
+ 5b1f17b1804b1-490ec4d6ae3mr130077615e9.9.1781520630962; 
+ Mon, 15 Jun 2026 03:50:30 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4606f263945sm33863674f8f.8.2026.06.15.03.50.31
+ ffacd0b85a97d-4606f263945sm33863674f8f.8.2026.06.15.03.50.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Jun 2026 03:50:31 -0700 (PDT)
+ Mon, 15 Jun 2026 03:50:30 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 1/5] arm/gicv5: Add URL to GICv5 specification
-Date: Mon, 15 Jun 2026 11:50:25 +0100
-Message-ID: <20260615105029.2898872-2-peter.maydell@linaro.org>
+Subject: [PATCH 0/5] arm: GICv5: minor fixes
+Date: Mon, 15 Jun 2026 11:50:24 +0100
+Message-ID: <20260615105029.2898872-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260615105029.2898872-1-peter.maydell@linaro.org>
-References: <20260615105029.2898872-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,48 +98,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The GICv5 specification has now been assigned its final document ID
-for a rev A.a spec version.  This seems like a good point to add a
-pointer to the spec to the main source files.
+This patchset has some fixes for minor GICv5 issues that I noticed
+while I've been working on the GICv5 virtualization support:
+ - 2 actual (but minor) bugs
+ - the GICv5 spec now has a final URL we can cite
+ - a minor cleanup of how we say "no pending interrupt"
+ - the ICC_HAPR_EL1 register is removed in the latest version
+   of the spec, so we can drop it from our implementation
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/arm_gicv5.c          | 5 +++++
- target/arm/tcg/gicv5-cpuif.c | 5 +++++
- 2 files changed, 10 insertions(+)
+thanks
+-- PMM
 
-diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index 6b1dd04991..0fa3d6b601 100644
---- a/hw/intc/arm_gicv5.c
-+++ b/hw/intc/arm_gicv5.c
-@@ -4,6 +4,11 @@
-  * Copyright (c) 2025 Linaro Limited
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * The IRS is defined in IHI 111701
-+ * (ARM Generic Interrupt Controller Architecture Specification,
-+ * GIC architecture version 5):
-+ * https://developer.arm.com/documentation/111701/latest
-  */
- 
- #include "qemu/osdep.h"
-diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index dd2f696511..891cb2d3b7 100644
---- a/target/arm/tcg/gicv5-cpuif.c
-+++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -4,6 +4,11 @@
-  * Copyright (c) 2025 Linaro Limited
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * The cpu interface is defined in IHI 111701
-+ * (ARM Generic Interrupt Controller Architecture Specification,
-+ * GIC architecture version 5):
-+ * https://developer.arm.com/documentation/111701/latest
-  */
- 
- #include "qemu/osdep.h"
+Peter Maydell (5):
+  arm/gicv5: Add URL to GICv5 specification
+  target/arm: GICv5 cpuif: Recalculate IRQ/FIQ on ICC_PCR_EL1 write
+  target/arm: GICv5 cpuif: Tag ICC_PPI_PRIORITYR<n> regs as
+    ARM_CP_NO_RAW
+  target/arm: GICv5 cpuif: Remove ICC_HAPR_EL1
+  hw/intc/gicv5: Define and use GICV5_PENDING_IRQ_NONE
+
+ hw/intc/arm_gicv5.c               | 11 +++++++----
+ include/hw/intc/arm_gicv5_types.h |  4 ++++
+ target/arm/tcg/gicv5-cpuif.c      | 29 ++++++++++-------------------
+ 3 files changed, 21 insertions(+), 23 deletions(-)
+
 -- 
 2.43.0
 

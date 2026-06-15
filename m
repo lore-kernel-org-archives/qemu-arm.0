@@ -4,118 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 706D8CD98C5
-	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 16:16:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1DD0CD98C5
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 16:34:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZ9yk-0003Hb-8N; Mon, 15 Jun 2026 12:16:02 -0400
+	id 1wZAFs-0005qO-8f; Mon, 15 Jun 2026 12:33:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wZ9yi-0003H1-QG
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 12:16:00 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wZAFr-0005px-7p
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 12:33:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wZ9yg-0004ll-V3
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 12:16:00 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wZAFp-0001Uu-HP
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 12:33:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781540157;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1781541220;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hTtlP/QqSsUw2EpG04vwnXGEzoXHtHIDItfhdWtKU7s=;
- b=Y22rYQgFO1uzI2VokN/SM2sHRDRDj10bm8XE5/qyUjaSy/xGfZlBuA6n9co9WvnFMYdv7F
- luZ7P7gh2kJgrHAS9wv+CahJvmz9HBB9DaAi14yTXNJ3j8rX0pTW0qZWYXaWgv7kqIWdzi
- Puh4MHvTUdBqXtGPqoCfRho/CCixM8Q=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=y6w9lFh6PZ26UiIsyxaCt4t34MU6PXSASefpv0F91Ac=;
+ b=gUoL9rNoyC6MpSKr+e+qXrwgsz73fL0DUY+/ceO/v6LpmSfhO/XjaAKfoJH3sricl6G+PR
+ Of1S6fN6HwRIPiT+itn2pzsYo1aR8kRu4ORda2xkMZNf3ZCl7728higT1j3UyrYwfVhohd
+ +jzaA3gL7l8lDKm8X6YmH0nppUhqCUo=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-163-9D3QSKeWP6S_LJMdG7_yZg-1; Mon, 15 Jun 2026 12:15:56 -0400
-X-MC-Unique: 9D3QSKeWP6S_LJMdG7_yZg-1
-X-Mimecast-MFC-AGG-ID: 9D3QSKeWP6S_LJMdG7_yZg_1781540155
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-490b37e1f48so23910175e9.0
- for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 09:15:56 -0700 (PDT)
+ us-mta-424-OnMWtyQfONiOryZ_vPemMw-1; Mon, 15 Jun 2026 12:33:37 -0400
+X-MC-Unique: OnMWtyQfONiOryZ_vPemMw-1
+X-Mimecast-MFC-AGG-ID: OnMWtyQfONiOryZ_vPemMw_1781541216
+Received: by mail-pl1-f197.google.com with SMTP id
+ d9443c01a7336-2c40358e114so41900345ad.0
+ for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 09:33:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781540155; x=1782144955;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=hTtlP/QqSsUw2EpG04vwnXGEzoXHtHIDItfhdWtKU7s=;
- b=DGOiP8TuwRhQv119wNYxMMamGMfLgXyYzAum5SMoMITXO0RsJTC/d6gEqhvwV2BE4U
- iP5GGdMCm9sETd+QY1zZz8fo3AUz1rRfJ3fUaR/sd2XEAf2ZG8qtWjtRlHOPRsvqthKz
- E+Frmiq/P82lwFiqZ0qzHI+whWL11AKpGZ3RqtqmlJGv0lLvztibSIP6ON+hYmx6UKAK
- hLWuVSRIgE+MgEoyDJ3TwlbT9N8MEXY5cO5NncsN1kP5UZMMPP9EFy/AP/eJBgQYgjuH
- Vt7QhsUpsmMKrPy4UayXkNM9RYLfXzQ6KpJXT3Cuyes5gI/PLaO0XggqfWLW2BZmBUq0
- WERQ==
+ d=1e100.net; s=20251104; t=1781541216; x=1782146016;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=y6w9lFh6PZ26UiIsyxaCt4t34MU6PXSASefpv0F91Ac=;
+ b=ioxeylrXUHtd0yHxvLJLuJQoE/Z8T2BSrHhyRLiCmvzSJTPl6rOvhknGpeuOIuzt/x
+ TfqUMx9rMWf6DDMQshoIUojTTxpDwPQcU38coZIbWDs81sx9/Opu8P9ec5Vb0pIvZw1D
+ EvQy8/i6vRPX5Nf8CgVt23tW5c3pX0GODvmcRnhpCzVFUVe4kaxw2DbtrI/o3747Bo5y
+ LRa/v29IoiquLrVD5tYOW7Q4uwAjt2jXb/f5YLZ03MitMUA9S5UljiCYbbi4gMInnWuL
+ W17WIrFf1+ZQ1efk74RYIj+e3PNN52owTLjeKTj37U427pAX7M7m/532k91848nQnGTe
+ 1Qbg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8B97lmPIow45PbF+aLBSFJeG0OGOjkxK4eYm6GMFsi9pGeXT/qFA+V83Mw8d8alB/ViMRPhSp9Ww==@nongnu.org
-X-Gm-Message-State: AOJu0YxTrs9Y+tTdeCKWxeRoaemvIRKu4TLSTbhnoihalguk0+bKfSfF
- ox1J1+QVUjYCWt9YVbYYBZ63lwsFkWS/wo9hCwyYCHZEG3Unnsq/gkjIx+ekNuMr6x7Vkx4fdkV
- 2N3fbD52AzxOvdU/x9PPdQqwh+qKMNFCdfAAQyn+UXmcpKFnZNzDFow==
-X-Gm-Gg: Acq92OGlEg2IpzUX/iFyYw3Q22u1hfmRWW33mXSdaZ0N39FNkXTyqH+nkAh6V+EabSw
- d99zKsxn3ZekQnWPagSmFoGW8/5qbYfNMWtZ4LoGEmrFbRauKuhwrabamCVM6rJN0/+LnMiW4ef
- 2v2zBGJ5SiJCowfdOaGuz0THjDtGH6rTE65wDVGwkZW9nRsuNoUiDX6xgV5IH/TMUd4/I5RPShO
- a1UQf6aAVcWakifmPAW1WIB47xIR7WI7tu0NcXAS37ST+Mf4eWbP/rKzMRjsGgAgTqKjfirFVSc
- 2fZjTiyLDpMbdeFOsS6NSZUtPFMoHRXe4Vus/G//OlEyMXOE6hVKKFzAR13IaDmafsArdOHwKEQ
- 2Jclx+hYX+mXEBRuyhtZyhAivwzQmqoZxyC7P89PVt4ng7c+l9qkuNbI/hb8Jfu8RVLR1LQ==
-X-Received: by 2002:a05:600c:6d8b:b0:492:1e36:bb03 with SMTP id
- 5b1f17b1804b1-4922011dfd7mr118352805e9.36.1781540155083; 
- Mon, 15 Jun 2026 09:15:55 -0700 (PDT)
-X-Received: by 2002:a05:600c:6d8b:b0:492:1e36:bb03 with SMTP id
- 5b1f17b1804b1-4922011dfd7mr118352165e9.36.1781540154539; 
- Mon, 15 Jun 2026 09:15:54 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4606f2b0c10sm36563089f8f.21.2026.06.15.09.15.52
+ AFNElJ8nKqgS7ZSkHEN5BqTQOQE1YPr80TcpytmD2Mo221tdb8DsEiJmU4K4K1R2Nk02n4jC9I9USGbKyw==@nongnu.org
+X-Gm-Message-State: AOJu0YzInLyh7IKTVkUrFGQVaqKa1sqeAhnPPffiJb/CfsiVCXGrQKhG
+ hiEWw+rpT6ST/P6tkJfBHJwPAHGTsKt8+DLrmbcmF99h31DvKxoP6OKGDhk/tv/y+2Y1PCVcKRw
+ U3uRZOaJT6TB4lsEaaK8GW7+MFu6v5gRpOh5y5QYPclHoOte5n/npmQ==
+X-Gm-Gg: Acq92OGoPE/SNvhTNn2qWE1hrc8hBTggdTiePsGTr0Z9Ul0JHpGZnCkB8oXHir5Uzbe
+ zB1wWYKbZQrztpio9qheoweNghST3u65K2YmO39zD53EJCCV1ry+Tcz/8Bz9h9gfeeamTnyit3G
+ gqQNHwpPHF6Yof/yH9BpJ4xFbYP7IAUUsmF2xA/Rp+SUhsj9EAjm1J4tCalW7mXvCo7KZ9dX71v
+ gp4qRD/6IM4kRzeCcwtGUaUF1zMCLxOtrzkFxCwmHsRG4pLoWG3TC0ecjmWq0ZPanY+X5RFYEDK
+ TyrAFjy4BMr6+KiwZIWFxRWqT0KAn4Bak/ipBQO/oQuOeNh+LRKuBa+qMNzLi2197lxUuwjqw5i
+ WGup+Ney2PVlQnEBU7jkpA9e81i4sgrO3NODZJh8YBDNzVO+v0Mq4cnwsqZuK3oq6
+X-Received: by 2002:a17:902:e80c:b0:2c1:f262:4962 with SMTP id
+ d9443c01a7336-2c664242d9emr138012825ad.20.1781541216168; 
+ Mon, 15 Jun 2026 09:33:36 -0700 (PDT)
+X-Received: by 2002:a17:902:e80c:b0:2c1:f262:4962 with SMTP id
+ d9443c01a7336-2c664242d9emr138012425ad.20.1781541215722; 
+ Mon, 15 Jun 2026 09:33:35 -0700 (PDT)
+Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
+ [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2c4327ac794sm106755965ad.46.2026.06.15.09.33.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Jun 2026 09:15:53 -0700 (PDT)
-Message-ID: <a21e48fd-c614-4bcd-b5d3-9e5a72a9343a@redhat.com>
-Date: Mon, 15 Jun 2026 18:15:51 +0200
+ Mon, 15 Jun 2026 09:33:34 -0700 (PDT)
+Message-ID: <d0d18a5b-1178-416d-81aa-d6d5f56ae3a7@redhat.com>
+Date: Tue, 16 Jun 2026 02:33:26 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v2 00/29] target/arm: Named CPU models for Arm64 on KVM
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- Cornelia Huck <cohuck@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Marc Zyngier <maz@kernel.org>, Oliver Upton <oliver.upton@linux.dev>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Andrea Bolognani <abologna@redhat.com>, Jiri Denemark <jdenemar@redhat.com>,
- Gavin Shan <gshan@redhat.com>, Shameer Kolothum <skolothumtho@nvidia.com>,
- Sebastian Ott <sebott@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jinqian Yang <yangjinqian1@huawei.com>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>
-References: <20260605083358.1320563-1-khushit.shah@nutanix.com>
- <eb5f98a0-1fc4-4a5a-839f-8bc3afc44165@redhat.com>
- <C0A0943B-12A4-40CF-97E6-BF272A61AC36@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <C0A0943B-12A4-40CF-97E6-BF272A61AC36@nutanix.com>
+Subject: Re: [PATCH v2 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
+ device region accessors
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, mst@redhat.com, peterx@redhat.com,
+ alex@shazbot.org, peter.maydell@linaro.org, berrange@redhat.com,
+ philmd@oss.qualcomm.com, philmd@mailo.com, david@kernel.org, clg@redhat.com,
+ pbonzini@redhat.com, phrdina@redhat.com, jugraham@redhat.com,
+ liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, shan.gavin@gmail.com
+References: <20260615100200.266968-1-gshan@redhat.com>
+ <20260615100200.266968-2-gshan@redhat.com>
+ <93fb3b41-1543-4e3b-922b-043b774f57bf@linaro.org>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <93fb3b41-1543-4e3b-922b-043b774f57bf@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ZEXe-e_ZgJkaX7X27aZvi37XDyvX3uj4gvXNZBTGGcU_1781540155
+X-Mimecast-MFC-PROC-ID: VoysHlh4Rja7A6wn8x-yctifvLlAEQtlXv0iwdH7qwI_1781541216
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,32 +116,135 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Khushit,
+On 6/16/26 1:17 AM, Richard Henderson wrote:
+> On 6/15/26 03:01, Gavin Shan wrote:
+>> +void qemu_ram_copy(void *dest, const void *src, size_t n)
+>> +{
+>> +    if (HOST_UNALIGNED_MMIO_OK) {
+>> +        switch (n) {
+>> +        case 1:
+>> +            __builtin_memcpy(dest, src, 1);
+>> +            break;
+>> +        case 2:
+>> +            __builtin_memcpy(dest, src, 2);
+>> +            break;
+>> +        case 4:
+>> +            __builtin_memcpy(dest, src, 4);
+>> +            break;
+>> +        case 8:
+>> +            __builtin_memcpy(dest, src, 8);
+>> +            break;
+>> +        default:
+>> +            memcpy(dest, src, n);
+>> +        }
+>> +    } else {
+>> +        uintptr_t test, lsb;
+>> +
+>> +        do {
+>> +            test = (uintptr_t)dest | n;
+>> +            lsb = test & -test;
+>> +            switch (lsb) {
+> 
+> Either assert n != 0 to start, or use while not do/while.
+> Because the body of the loop won't handle n == 0 correctly.
+> 
 
-On 6/15/26 7:45 AM, Khushit Shah wrote:
->
->> On 12 Jun 2026, at 8:20 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> Please could you share a branch. This fails to apply on mainline due to
->> recent changes
->
-> Here is the v2 branch:
-> https://github.com/khushit-shah-nx/qemu/tree/upstream-checkout-2
+I will change this to "while (n > 0)" since we're not expecting
+"n < 0" either.
 
-thank you very much.
+>> +            case 1:
+>> +                *(uint8_t *)dest = *(uint8_t *)src;
+>> +                src += 1;
+>> +                dest += 1;
+>> +                n -= 1;
+>> +                break;
+>> +            case 2:
+>> +                *(uint16_t *)dest = *(uint16_t *)src;
+>> +                src += 2;
+>> +                dest += 2;
+>> +                n -= 2;
+>> +                break;
+>> +            case 4:
+>> +                *(uint32_t *)dest = *(uint32_t *)src;
+>> +                src += 4;
+>> +                dest += 4;
+>> +                n -= 4;
+>> +                break;
+>> +            default:
+>> +                *(uint64_t *)dest = *(uint64_t *)src;
+>> +                src += 8;
+>> +                dest += 8;
+>> +                n -= 8;
+> 
+> Use qatomic_set for the stores.
+> 
 
-I should be able to send my v6 on Tuesday or Wed.
+Could you confirm which stores need qatomic_set()? There are two sets
+of stores as below. I guess you're asking have qatomic_set() for (a)?
+Could you explain a bit why qatomic_set() is needed?
 
-Eric
->
-> Please do let me know if you also want v1 branch.
->
-> Warm Regards,
-> Khushit
->
+     // (a)
+     *(uint64_t *)dest = *(uint64_t *)src;
+
+
+     // (b)
+     src += 8;
+     dest += 8;
+     n -= 8;
+
+> src is not aligned, so except for case 1, you need ld{uw,l,q}_he_p.
+> 
+
+Yeah, I realized this after this patch was sent. ldub_p() will be
+used for case 1 either.
+
+Another unrelated question: why 'int' value is returned from ldub_p()
+and ld{uw, l}_he_p() in bswap.h? They would return 'uint{8, 16, 32}_t'
+values?
+
+static inline int ldub_p(const void *ptr)
+static inline int lduw_he_p(const void *ptr)
+static inline int ldl_he_p(const void *ptr)
+static inline uint64_t ldq_he_p(const void *ptr)   // return uint64_t
+
+>> +void qemu_ram_move(void *dest, const void *src, size_t n)
+>> +{
+>> +    if (HOST_UNALIGNED_MMIO_OK) {
+>> +        switch (n) {
+>> +        case 1:
+>> +            __builtin_memmove(dest, src, 1);
+>> +            break;
+>> +        case 2:
+>> +            __builtin_memmove(dest, src, 2);
+>> +            break;
+>> +        case 4:
+>> +            __builtin_memmove(dest, src, 4);
+>> +            break;
+>> +        case 8:
+>> +            __builtin_memmove(dest, src, 8);
+>> +            break;
+>> +        default:
+>> +            memmove(dest, src, n);
+>> +        }
+>> +    } else {
+>> +        qemu_ram_copy(dest, src, n);
+>> +    }
+>> +}
+> 
+> The qemu_ram_copy implementation above does not work with overlapping blocks.
+> 
+
+Yeah, it's something I need to figure out for next revision. Thanks for your
+review and comments.
+
+> 
+> r~
+> 
+
+Thanks,
+Gavin
 
 

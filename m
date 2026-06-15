@@ -4,100 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F385FCD98DA
-	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 19:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 149E0CD98CF
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 19:42:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZDAg-0004sC-P4; Mon, 15 Jun 2026 15:40:34 -0400
+	id 1wZDCQ-0005dd-AT; Mon, 15 Jun 2026 15:42:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZDAe-0004rP-Rb
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 15:40:32 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZDCM-0005d8-Nt
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 15:42:20 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZDAd-00032x-FX
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 15:40:32 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZDCK-0003Ta-HA
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 15:42:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781552430;
+ s=mimecast20190719; t=1781552533;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=83xUQYk0WNw//htfkZIQVB7lo3e4TfiGP4u3TF0wUFI=;
- b=MdfMN7wOVVHA0nATiIlKVN4Gkm8C+r/ggh6BbJwohGOhd7BKNDHfIqfVJuv/xFaj0+TcEC
- t8YagmVlzrEC0jR75+JaIRQwh6NOi8y407YRiqclcuIS76ibvBIWU2Iofs0WVWfmXtBU0l
- CUK4sVk3VOVuOuZlinbvTTzQBXpsr+Q=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Qi3yLOX+GX7yFtlr/F7eOJTa/nSf4uKiVPbZwlIlxc0=;
+ b=TtNg92nvekYmOqgvU/zUNgKi5p+kBjiFvaLmcxLUJlselmILYHzxTEOrbQPcsu7zC7N7Rh
+ G95OPpJHkSPuwoCLX8w4aglanEzUssy63tpgg2gBtOCU9WujuzGo6ComvOrv/gij3CqySW
+ 26iQxIbVAM5eB5cMvUpVc0apzK4sJws=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-159-wc3zWX-tOUakughdDKOz_Q-1; Mon, 15 Jun 2026 15:40:27 -0400
-X-MC-Unique: wc3zWX-tOUakughdDKOz_Q-1
-X-Mimecast-MFC-AGG-ID: wc3zWX-tOUakughdDKOz_Q_1781552426
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-490b9cd54f3so21493285e9.2
- for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 12:40:27 -0700 (PDT)
+ us-mta-619-KcTWHAMHOSS7-_NO191lOw-1; Mon, 15 Jun 2026 15:42:10 -0400
+X-MC-Unique: KcTWHAMHOSS7-_NO191lOw-1
+X-Mimecast-MFC-AGG-ID: KcTWHAMHOSS7-_NO191lOw_1781552529
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-4601c9b630fso1791249f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 12:42:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781552426; x=1782157226;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=83xUQYk0WNw//htfkZIQVB7lo3e4TfiGP4u3TF0wUFI=;
- b=d0+pyERi9egt2p/PLo3/EIZgEkRzi+rnG2CLqpPw/OiSgAr+urAXwOVqZ2F8i1pH9q
- dTjoUlDAb34bshxEbnYaZMNQ27/rMcd2m1onB1bdj7AnaG43A8NdRc/0KFPNS9tS4+Z7
- 3FW1MEBWeCwbER5RgIUXECWJ3Ph/kojN50N8Igfs310EIrF1wVMwM2kp17GOlxS4tjdi
- mK3pZ3WPPqpMi+7zDsgIg3NEHHtSYKIjM/qSFjTxRF+nY8cP06E9JJvMolPwikgQ8U64
- ItR2KTUjkxrnsXc2OtMz/n0ZrNWwMU3UFp3uut8OMG79lYyqmfrIBv224ZDOjGKngwPx
- zDDA==
+ d=1e100.net; s=20251104; t=1781552529; x=1782157329;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Qi3yLOX+GX7yFtlr/F7eOJTa/nSf4uKiVPbZwlIlxc0=;
+ b=fyHTnFaM+Mrd0FlC1ScyWRCEtN0UdrdoTB11p2Vd7xuMTT9vkVfcZsD+6P6WVYlxOQ
+ D7vi+jt1hf6ZpNLSWwnDW3GeIOutSVkRASmqLevPYwV3nqfV1L3YlY+nydXj1AmWBj1y
+ ioJgZSDA17xSIWS9Sq4KdQod1cHRvcZpzamldqucSP8fNLl65876fDPHBkFj4ysq8YYl
+ zvFilYtwihk89mwo+hwFGR6l8WLMbICfTzfNz+yZCTyToR1E9d7ZU+2G4OYKadrJzTFM
+ TmJ3++F/chK745ctgwxteLFv5YuiLF9ZERSQt/5ud+nElYYkHZw0K6BWvg4CFgRA6iB3
+ Q9pw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8wqaqoQJLaNsIYaECswbyP2Uy2zC/k3vH6Fvn0KqSzywOK7EElk4+tHZZ8dKXEgJwjXiBj0bmAAQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzQow5+7RSeCsHuvGLBh0G2H848dbGMljHT/jw1/RlZaHUV0upU
- IRzIhmH4UufZPTSRtVrV/EuroC2Zv7fG0Xyp29uHezXNrA0VQG1PFm+HVyzFNQ8BwnTFGt/Tiiv
- l3F6kMTfHQZaxzdnIPmS3ABaSMvTQLC8R1grdlRH0IKwuiYxUikhqxA==
-X-Gm-Gg: Acq92OFVqjq60d/ERmopCopF8923sHYJ8IoxRiWEx6wuTbzF9VEYMI9BaaZRkvCvs9T
- FPcabDxq1JqLQQx6TKyeNyYeFeKxidmiW9CScnBBqNUScsXuLFKVVSEwRIef0VEB2XrwPqQN1dH
- x4GTKjfo4ZmPVwFoiVcT0mDuHN5oPNs1bpGg4Lp4SpbmUdn6AMVG5Z1VV9nSmMGELb85uOReVxk
- V6P1l9p0/WhiG3NqgswVKb8n+L9pqLJi1vcsWLG7DffHYx8VEKuGH49cKHRomYqV87U/44dzmBg
- zhuLqUwxElNpgl474heo4fGo1qa1H55JSYo/nCIv4t79xZIfxUeQiYNmhicoE3ob6n7MTU2FPVg
- LaHm4qPDJvEvGlNuJXikErE4SgIgHNT51PpzjZ9qQFJg=
-X-Received: by 2002:a05:600c:348b:b0:490:e5c1:b89e with SMTP id
- 5b1f17b1804b1-49220061e38mr155820865e9.10.1781552426051; 
- Mon, 15 Jun 2026 12:40:26 -0700 (PDT)
-X-Received: by 2002:a05:600c:348b:b0:490:e5c1:b89e with SMTP id
- 5b1f17b1804b1-49220061e38mr155820525e9.10.1781552425582; 
- Mon, 15 Jun 2026 12:40:25 -0700 (PDT)
+ AFNElJ9q2o66LhT0iCzqH+wH7/tV6SjMlZ31uO8LhQoz/Jw7JGDQYAf1clifuMYG6sa7Tp7wR9R+4up8pg==@nongnu.org
+X-Gm-Message-State: AOJu0YzAGwj1KycO0i/7p4hezFmZbcqArHmtlCdsqNhqG8Q8vQfhSWoC
+ DZSRPMPIApOLHXurDnEZLl59RdKuQ16uWl8wPHCGxc+hWCEMDugJOUBlreh4ez2DQOK+CMUDgJ9
+ xU4OzShQP3k7yPx/kskUd0ynqh5xJCxm9cXrC00NZvkEOlEmmXKqAQA==
+X-Gm-Gg: Acq92OEBxybUnFbS3akby9lED8ASS5FhNFipBSBdJGfogzCuOcY5qzGtBpJaRMnH5Be
+ ++t6wP6cbjzl4pYuxMEH/gCsZJ7RC8cKbO9XM4CWyOn5H9sG6q2IpKQQJA3h0k38D+bpOUqu6fa
+ 5uPMxTrLdGWc+kkHAqRdh1WldsTh0ejts8fbHgabdHMRNLzyb+d800D0MJlU7BOZdubnkOCYhlT
+ UCpJtiE2VM8QAmAklFdkCBooyssktXIgLQL3iTFBqWGbdkg87CYwZMl+RmNwaE5Ad74niEQSBsE
+ F4ka1pCcUdkTI8wpzQMKEE6iJ4rT9ZEtFuGBL1F6lqkwEUtPYn5egDkUKqH+IA4VtJMjl9BDDRa
+ 0pM7aLDfuYGSsh+5d7FUof/Ruz0LiCc/KiUSp56hQAvE=
+X-Received: by 2002:a05:6000:1863:b0:461:946f:9bb4 with SMTP id
+ ffacd0b85a97d-4619f3abb97mr1148888f8f.23.1781552529008; 
+ Mon, 15 Jun 2026 12:42:09 -0700 (PDT)
+X-Received: by 2002:a05:6000:1863:b0:461:946f:9bb4 with SMTP id
+ ffacd0b85a97d-4619f3abb97mr1148850f8f.23.1781552528528; 
+ Mon, 15 Jun 2026 12:42:08 -0700 (PDT)
 Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4922fa5120esm16461965e9.8.2026.06.15.12.40.22
+ ffacd0b85a97d-4606f2cd6c2sm37181798f8f.30.2026.06.15.12.42.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Jun 2026 12:40:24 -0700 (PDT)
-Date: Mon, 15 Jun 2026 15:40:20 -0400
+ Mon, 15 Jun 2026 12:42:07 -0700 (PDT)
+Date: Mon, 15 Jun 2026 15:42:04 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Gavin Shan <gshan@redhat.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, peterx@redhat.com, alex@shazbot.org,
- peter.maydell@linaro.org, berrange@redhat.com,
+ richard.henderson@linaro.org, berrange@redhat.com,
  philmd@oss.qualcomm.com, philmd@mailo.com, david@kernel.org,
  clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com,
  jugraham@redhat.com, liugang24219@sangfor.com.cn,
  dinghui@sangfor.com.cn, shan.gavin@gmail.com
 Subject: Re: [PATCH v2 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
  device region accessors
-Message-ID: <20260615153757-mutt-send-email-mst@kernel.org>
+Message-ID: <20260615154054-mutt-send-email-mst@kernel.org>
 References: <20260615100200.266968-1-gshan@redhat.com>
  <20260615100200.266968-2-gshan@redhat.com>
- <93fb3b41-1543-4e3b-922b-043b774f57bf@linaro.org>
- <d0d18a5b-1178-416d-81aa-d6d5f56ae3a7@redhat.com>
- <fc1213f4-1500-4282-8c98-8ddf10d4955a@linaro.org>
- <32c4a353-1cbc-4d3e-b05c-a4324e985426@redhat.com>
+ <CAFEAcA9CT6E8dhEV7Ek6ruT_o2dKUf==2V+U-1WFDOLtYbgeeQ@mail.gmail.com>
+ <20260615105556-mutt-send-email-mst@kernel.org>
+ <CAFEAcA9Gi43qNZoZcGtq8ioffGwOc_XuhoFAjGx7-bt4U8qfxw@mail.gmail.com>
+ <e399ceb9-bc4a-4ba6-8efd-ed2742d0853b@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <32c4a353-1cbc-4d3e-b05c-a4324e985426@redhat.com>
+In-Reply-To: <e399ceb9-bc4a-4ba6-8efd-ed2742d0853b@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: BlArXEu372-cR1AuUdTO325CU9ri8zKQW9XQ64h9ksc_1781552426
+X-Mimecast-MFC-PROC-ID: 51o6MU2of-m9hGWzLKMQhoPv_ag165KVOxyjStclqhQ_1781552529
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -122,113 +120,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jun 16, 2026 at 04:09:27AM +1000, Gavin Shan wrote:
-> On 6/16/26 3:03 AM, Richard Henderson wrote:
-> > On 6/15/26 09:33, Gavin Shan wrote:
-> > > > Either assert n != 0 to start, or use while not do/while.
-> > > > Because the body of the loop won't handle n == 0 correctly.
+On Tue, Jun 16, 2026 at 05:24:15AM +1000, Gavin Shan wrote:
+> Hi Peter and Michael,
+> 
+> On 6/16/26 1:12 AM, Peter Maydell wrote:
+> > On Mon, 15 Jun 2026 at 15:56, Michael S. Tsirkin <mst@redhat.com> wrote:
+> > > 
+> > > On Mon, Jun 15, 2026 at 11:57:09AM +0100, Peter Maydell wrote:
+> > > > On Mon, 15 Jun 2026 at 11:03, Gavin Shan <gshan@redhat.com> wrote:
+> > > > > 
+> > > > > All ram device regions were turned to be indirectly accessible by commit
+> > > > > 4a2e242bbb ("memory: Don't use memcpy for ram_device regions"). This leads
+> > > > > to guest hang on attempt to build 'cuda-samples' as reported by Julia. The
+> > > > > guest is started by the following command lines, with GH100 GPU card passed
+> > > > > from the host.
 > > > > 
+> > > > > diff --git a/include/system/memory.h b/include/system/memory.h
+> > > > > index 1417132f6d..5878727d09 100644
+> > > > > --- a/include/system/memory.h
+> > > > > +++ b/include/system/memory.h
+> > > > > @@ -2897,6 +2897,8 @@ void address_space_register_map_client(AddressSpace *as, QEMUBH *bh);
+> > > > >   void address_space_unregister_map_client(AddressSpace *as, QEMUBH *bh);
+> > > > > 
+> > > > >   /* Internal functions, part of the implementation of address_space_read.  */
+> > > > > +void qemu_ram_copy(void *dest, const void *src, size_t n);
+> > > > > +void qemu_ram_move(void *dest, const void *src, size_t n);
+> > > > 
+> > > > New function prototypes in include headers need documentation comments.
+> > > > 
+> > > > In particular for these, it's really important that we clearly say
+> > > > what semantics we are attempting to provide with them, so that
+> > > > (a) when we're reviewing or later updating the implementation we
+> > > > know what we are trying to provide
+> > > > (b) when we're looking at the callsites we know what the function
+> > > > is guaranteeing to us and what it is not, and thus whether it's
+> > > > OK to use it or we need something els.
+> > > > 
+> > > > > +#if defined(__i386__) || defined(__x86_64__)
+> > > > > +#define HOST_UNALIGNED_MMIO_OK 1
+> > > > > +#else
+> > > > > +#define HOST_UNALIGNED_MMIO_OK 0
+> > > > > +#endif
+> > > > 
+> > > > We need to do something better than this. We can't
+> > > > just say "oh, we trust that on x86 this works": it is
+> > > > neither actually true that the compiler guarantees it
 > > > 
-> > > I will change this to "while (n > 0)" since we're not expecting
-> > > "n < 0" either.
+> > > sorry guarantee what?
 > > 
-> > size_t is unsigned.
-> > 
-> 
-> oh, yes.
-> 
-> > > Could you confirm which stores need qatomic_set()? There are two sets
-> > > of stores as below. I guess you're asking have qatomic_set() for (a)?
-> > > Could you explain a bit why qatomic_set() is needed?
-> > > 
-> > >      // (a)
-> > >      *(uint64_t *)dest = *(uint64_t *)src;
-> > 
-> > Of course (a).
-> > 
-> > Using qatomic_set prevents the compiler from merging the stores, kinda like volatile.  Not especially likely with the way you've written this, but if you had exchanged the switch and loop,
-> > 
-> >      switch (lsb) {
-> >      case 1:
-> >          for (; n ; n--, dst++, src++) {
-> >              *(uint8_t *)dst = *(uint8_t *)src;
-> >          }
-> > 
-> > then the compiler is quite likely to "optimize" the loop back to memcpy.
-> > 
-> > It's also self-documenting what we're intending with the store.
+> > Well, that's part of my point about "we need a doc comment":
+> > what exactly are we trying to guarantee ? But whatever it is,
+> > "hardcoded ifdef that privileges x86" is definitely the wrong
+> > answer.
 > > 
 > 
-> ok, thanks for your explanation.
+> Could you please check the following comments (documentation context) for the
+> added functions look good to you? Please let me know if there are anything
+> can be improved.
 > 
-> > I guess it's also worth asking if this copy is also used for copying *from* device memory.  The commit that added memmove (4a73aee8814) suggests that dma from the device uses these paths.  In which case you'll either want a separate function for that, or both source and destination must be aligned.
-> > 
-> 
-> I think it's a valid case. Lets handle this by limiting the 'step' based on
-> src/dest/n, something like below. atomic_read() instead of ldxxx_he_p() is
-> used for loads. Please take a look if there are anything we can improve
-> further.
-> 
-> // Not compiled and tested yet
-> static void qemu_ram_copy_unaligned(void *dest, const void *src, size_t n)
-> {
->     uintptr_t test, step;
-> 
->     while (n != 0) {
->         test = (uintptr_t)src | n;       /* alignment enforced by source */
->         step = test & -test;
->         test = (uintptr_t)dest | n;      /* alignment enforced by destination */
->         step = MIN(step, test & -test);
-> 
->         switch (step) {
->         case 1:
->             qatomic_set((uint8_t *)dest, qatomic_read((uint8_t *)src));
->             src += 1;
->             dest += 1;
->             n -= 1;
->             break;
->         case 2:
->             qatomic_set((uint16_t *)dest, qatomic_read((uint16_t *)src));
->             src += 2;
->             dest += 2;
->             n -= 2;
->             break;
->         case 4:
->             qatomic_set((uint32_t *)dest, qatomic_read((uint32_t *)src));
->             src += 4;
->             dest += 4;
->             n -= 4;
->             break;
->         default:
->             qatomic_set((uint64_t *)dest, qatomic_read((uint64_t *)src);
->             src += 8;
->             dest += 8;
->             n -= 8;
->         }
+> +
+> +/**
+> + * qemu_ram_copy: copy data to a RAMBlock
+> + *
+> + * @dest: destination where the data is copied to. It's the pointer returned
+> + *        by ramblock_ptr() and its variants.
+> + * @src: source where the data is copied from. It can be a regular memory block
+> + *       or a pointer returned by ramblock_ptr() and its variants.
+> + * @n: length of data to be copied
+> + *
+> + * The destination is always a pointer to data area of a RAMBlock which can
+> + * be for a regular memory block or a MMIO region. The source can be a pointer
+> + * to a regular memory block or a MMIO region. Atomicity isn't guranteed by
+> + * memcpy() to copy data between those MMIO regions as we do in this function.
+> + * Besides, unaligned accesses are well handled on all architectures except
+> + * i386 and x86_64 where the unaligned accesses are supported by the CPUs.
+> + *
+> + * The ensured atomicity and alignment consideration, which aren't needed
+> + * by data copy between two regular memory blocks. So performance penalty
+> + * is introduced by this function in such circumstance.
+> + */
+> +void qemu_ram_copy(void *dest, const void *src, size_t n);
+> +
+> +/**
+> + * qemu_ram_move: move data to a RAMBlock
+> + *
+> + * @dest: destination where the data is moved to. It's the pointer returned
+> + *        by ramblock_ptr() and its variants.
+> + * @src: source where the data is moved from. It can be a regular memory block
+> + *       or a pointer returned by ramblock_ptr() and its variants.
+> + * @n: length of data to be moved
+> + *
+> + * The destination is always a pointer to data area of a RAMBlock which can
+> + * be for a regular memory block or a MMIO region. The source can be a pointer
+> + * to a regular memory block or a MMIO region. Atomicity isn't guranteed by
+> + * memmove() to move data from or to those MMIO regions as we do in this
+> + * function. Besides, unaligned accesses are well handled on all architectures
+> + * except i386 and x86_64 where the unaligned accesses are supported by the
+> + * CPUs.
+> + *
+> + * The ensured atomicity and alignment consideration, which aren't needed
+> + * by data movement between two regular memory blocks. So performance penalty
+> + * is introduced by this function in such circumstance.
+> + */
+> +void qemu_ram_move(void *dest, const void *src, size_t n);
+> +
 
 
-If the length is > 8, I feel it's important to just use memcpy/memmove
-normally.
-
-Because at that point it's a large data transfer not MMIO, and performance
-is important.
+I apologize, I don't understand what these comments are saying, at all.
 
 
->     }
-> }
-> 
-> 
-> > > Another unrelated question: why 'int' value is returned from ldub_p()
-> > > and ld{uw, l}_he_p() in bswap.h? They would return 'uint{8, 16, 32}_t'
-> > > values?
-> > 
-> > A bad choice 20 years ago, and the need to audit all uses in order to change it now.
-> > Newer functions use uintN_t as you suggest.
-> > 
-> 
-> Ok :-)
-> 
-> > r~
+
+> > -- PMM
 > > 
 > 
 > Thanks,

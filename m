@@ -4,92 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D55F4CD8CA8
-	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 00:11:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C5EECD98C5
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 01:18:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wYuuq-0001xe-O5; Sun, 14 Jun 2026 20:11:00 -0400
+	id 1wYvxe-0007kv-3n; Sun, 14 Jun 2026 21:17:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imaginos32@gmail.com>)
- id 1wYtD9-0005qq-8w
- for qemu-arm@nongnu.org; Sun, 14 Jun 2026 18:21:47 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imaginos32@gmail.com>)
- id 1wYtD7-0006jc-FN
- for qemu-arm@nongnu.org; Sun, 14 Jun 2026 18:21:47 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-490ac10e337so17959855e9.3
- for <qemu-arm@nongnu.org>; Sun, 14 Jun 2026 15:21:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1781475704; x=1782080504; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=6CG/WgbatJUkWqqEVEYulvnsdB1l2zxTLovXt1zwR6Y=;
- b=fausyVPeelKBGUg3EIxm5rFDhusWjSKl3F1Hrg1WCBlkAcJ8zizPs4D20CfgS44oe8
- NKW5OhnLv6ffrbWks5h5zsgTV0WbvoaVXSLnlFXMPirXuI5+01LMhowOp5fzFz6472jd
- s9UiGJSdQ1solF9Yf1SBdnn8/B00q8gTcinKcQIe6fJ7xSZ7AtlJBV8dg318iGNWmpJC
- qGXpy1qyIjdsDGaxrPMLYTT9QNq/5/L01Cr2PzwMPFkgCbik6vMnetU774hxOej+Ryfv
- pd3jrZa9aulNQIre9ocOsyJSsfyUpGK2aN/Bm8iaJUEgeORG1SxufUQzf0bjGtKRsWx5
- iGIQ==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wYvxc-0007kg-L0
+ for qemu-arm@nongnu.org; Sun, 14 Jun 2026 21:17:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wYvxa-0002DS-Vu
+ for qemu-arm@nongnu.org; Sun, 14 Jun 2026 21:17:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1781486273;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=g64Akl6sLOfYcfMkbLIPU6aC7CTnGwycOcHgRVou1AY=;
+ b=QRYyqXvFIX3MAg38Fc/yIQAhpFGzWC8pN5xG5y5FvvL1vZZ+gmmdCVYXqDGkz/lOPGDKR1
+ 6Ae0at5OxPWU0WPoC2NIIzs4vSzhm3tBYgNs7xLx1HMDZSe9FayxZ0jKmgJg/NVYXQtDHK
+ OSN5liqQxH2eBbZdQAYSlxbp8mFDpGw=
+Received: from mail-dy1-f199.google.com (mail-dy1-f199.google.com
+ [74.125.82.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-370-fEy3TCJDMZ2-Jj9bKjrSSA-1; Sun, 14 Jun 2026 21:17:51 -0400
+X-MC-Unique: fEy3TCJDMZ2-Jj9bKjrSSA-1
+X-Mimecast-MFC-AGG-ID: fEy3TCJDMZ2-Jj9bKjrSSA_1781486271
+Received: by mail-dy1-f199.google.com with SMTP id
+ 5a478bee46e88-304ed777a96so1885319eec.1
+ for <qemu-arm@nongnu.org>; Sun, 14 Jun 2026 18:17:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781475704; x=1782080504;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=6CG/WgbatJUkWqqEVEYulvnsdB1l2zxTLovXt1zwR6Y=;
- b=S6A/Yn2IVsg/7mnVV2tRDLDUZxwVcsDOu1+m2N+JHyFgtDE3SQ6M/2IcJL8rpl6ZUP
- p1ve4DKRPG9KZOP09LrUBu9F9kOVylT5o3r0aJ000Kai3nTHn8F9iRGtKEwGYz8cDBJR
- LPX6xl9WajjMtqIw+tn5Y7LMwUFz0BhswvsUmioddqZJqV0puc5IBXbJikdiFBXP7P9y
- P6rPY//dda6o6WvzaqIoEbTsjCk+hdFyo6BJDmqmk2U+IDUB4xNaLn/lcsyYzDSBgVWr
- 2i/nmCG7ln1SR/bs1+opIu4Hnr3iFSoCyfY+waHjk3L4io5Cor9APVAAHkbsWchdGd3H
- OZGw==
+ d=1e100.net; s=20251104; t=1781486270; x=1782091070;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=g64Akl6sLOfYcfMkbLIPU6aC7CTnGwycOcHgRVou1AY=;
+ b=qEPlwnWc+rSB4uw4v0Mx/HRQ91EvldgWZjPVCu9uZrBT51kPtqpuR0sZQ+4j2Xx2ch
+ Jx0wl4sUOPUjmDxqYXqFZWVw+9WZOCw8XfkrsU33Np7aCDYRs7MnR4IKn5iIRYt01eBp
+ hV+Xoy2IYBk8T76CZ1okBbcj27cwxmhW97KF2aLnOckYLF0a9ZJQJido03T0fEhRdgyr
+ Odj2Xq8a2WZ2TZ4/n3rwAeVDJWeXnroz5lmmW37PK/vZOjf/mVi/gkjndo/N4t9m3Nnz
+ Wb5tZL+DQQGTqfVOi4SJv6LuYXBxBLBH2P6O3nRiR+OTEsHIfPzymlBiF3DJ9W1kT9hY
+ viYQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/HQrd/fE5CrAiwPB2C78r7IqC/gurPhNmsQxCd3ADU/15yl9ihsdfdovlmGNsqbLE/RRXoXZmlPw==@nongnu.org
-X-Gm-Message-State: AOJu0YyaPfqjlK2uHQ82q3qLVb6y5BJ/wf+bUDMhmS3aUN3YEYmON86I
- Q87qK8JO0WXtTI/FHXBjFmHKiW9YuFZ4subpBm+PxT/UrJiKi+PRJPtv
-X-Gm-Gg: Acq92OGe8iW9LZTFStgnJ4run0ujdFh5DTdFCVF6+m9C5SBY2VdDS7RUb4CHrgTx+ie
- TnPezEAxJ+nMQc86zWew0JJ5dIrMZ6DUZvi0Wj8aVmtm0Dd//ZhCgE4JlmKVWQpUHf3wTpAw6DL
- O1tIz+xj7neBChm+dX/bWkaldverHb6nbTvHvZmf8Cwymd7tWESTljgkCO6Lp+jXhGh/Hd9Spxc
- 7l3k+hHHjZd/IMOOTcvNOh/50esJgC3U0TBer3A5R/kEZjmLTIU9VKm9g9LJHjAAUIqD2QB5F7j
- N55BeLSTKtPiMssleAKKq76FfSaBXllqq6sHA3d9i3DtkyQYCqW75IscwYO1PT3HwEHSw8BfMYg
- 33+HpN4wtFGxJ+W+p5TyzdAIX9YLhGAMtHwR/0c3dIFGdo2ip89XSHgJzboIGECqMKCYwVYRW/A
- vK/OnIoJzp/mOyN4ip/4fSc4YnHpv7THXR3CLPnVZGv6vFL+3pRM763da9x5E8ov+6QwuxALbxE
- XRDZ/Q=
-X-Received: by 2002:a05:600c:4b13:b0:490:aef9:aa3b with SMTP id
- 5b1f17b1804b1-49220104edbmr61113685e9.32.1781475703801; 
- Sun, 14 Jun 2026 15:21:43 -0700 (PDT)
-Received: from user-Legion-Pro-5-16ARX8.. (cable-89-216-220-81.dynamic.sbb.rs.
- [89.216.220.81]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4606f2b1056sm28423476f8f.18.2026.06.14.15.21.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 14 Jun 2026 15:21:43 -0700 (PDT)
-From: imaginos <imaginos32@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Titus Rwantare <titusr@google.com>, Tyrone Ting <kfting@nuvoton.com>,
- Hao Wu <wuhaotsh@google.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- qemu-arm@nongnu.org, imaginos <imaginos32@gmail.com>
-Subject: [PATCH] hw/i2c: pmbus: NUL-terminate strings received via block write
-Date: Mon, 15 Jun 2026 00:21:31 +0200
-Message-ID: <20260614222131.5795-1-imaginos32@gmail.com>
-X-Mailer: git-send-email 2.43.0
+ AFNElJ8z8aTDbeP53kyXE887MQe1Sgk6oWmPEgRNKEt11q7xKU11FHty/hxFQxGjzrynkkhjsFBl7wSRBw==@nongnu.org
+X-Gm-Message-State: AOJu0YzB/f+YFWVZqYZA/sncVV6z0fWJ5ONOWFY+e9A3KOWJYOdPY7oO
+ kiGYtx//HOOTGR64Lx/QJGQT47emHu7E/vgq6GEU3HgMLTJ4cN29swG8dpEuP34K2H9sIKYcPTm
+ Tr+92kVQe03kGsiW8R8VkvkljTKsPP0hnVgOVADY1w1xiwKq+xsJUCw==
+X-Gm-Gg: Acq92OFy49dS0pRFDi253ZzHNBCu4r+HBoO1QzXmTIUHNFKA28it2Eh75K04zAnjWwb
+ E995CFYiXMy11YMnVU8s0vqJCMn6DzrNbLdF55xHfI7srY0yDTno7qNammmOVSiMz2mVsmb9QIU
+ uQWGiUg6DU8ikbCBM0PH1j4OuWs1KLvet8RFovyW7WepqT15PtDqF/GwfArA5dhjLWAqlJWJoW4
+ Uk8Fl9LjqDIh+LLarIiD7OL0LdghfwlhDf168axEEe1ZJKHIs7OoLKE0MOXHKxehqAGbpwM27Dc
+ vL1ZQFCWbzIFx7ZOX3Dgtfw6xkld3nfisgHfgn5q76cHhvvFfay40fyWpCd8DOYEwT0Rcu8Rdaw
+ J6peX7Aonwg53espORZVw+Iur7ommY20v7l4gxUxzQzsa6gjm/gYOc2q7JjsMa9kG
+X-Received: by 2002:a05:7301:4244:b0:2c6:67b6:3acc with SMTP id
+ 5a478bee46e88-3081e4885f4mr4092370eec.15.1781486270506; 
+ Sun, 14 Jun 2026 18:17:50 -0700 (PDT)
+X-Received: by 2002:a05:7301:4244:b0:2c6:67b6:3acc with SMTP id
+ 5a478bee46e88-3081e4885f4mr4092366eec.15.1781486269993; 
+ Sun, 14 Jun 2026 18:17:49 -0700 (PDT)
+Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
+ [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-3081e5d3f20sm12606899eec.9.2026.06.14.18.17.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 14 Jun 2026 18:17:49 -0700 (PDT)
+Message-ID: <f176c36a-c325-458b-b443-7eaa9fcf1dfb@redhat.com>
+Date: Mon, 15 Jun 2026 11:17:41 +1000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=imaginos32@gmail.com; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] system/memory: Use __builtin_mem{cpy, move} in
+ accessors of ram device region
+To: "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, peterx@redhat.com, berrange@redhat.com,
+ david@kernel.org, alex@shazbot.org, clg@redhat.com, pbonzini@redhat.com,
+ philmd@mailo.com, phrdina@redhat.com, jugraham@redhat.com,
+ shan.gavin@gmail.com
+References: <20260612110307.1264798-1-gshan@redhat.com>
+ <20260612110307.1264798-2-gshan@redhat.com>
+ <223f5f94-b9b7-46b0-8466-5be655203a0e@linaro.org>
+ <CAFEAcA-TgP_BM0WQo3rysZmvhNN17Gc_nrSYB6pXn-mvs5w13g@mail.gmail.com>
+ <123d9e80-d731-42c7-81cc-71de47bb13d3@linaro.org>
+ <20260614084004-mutt-send-email-mst@kernel.org>
+ <02d809b0-6396-40dd-a2c5-866028b7cc4d@linaro.org>
+ <20260614131704-mutt-send-email-mst@kernel.org>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20260614131704-mutt-send-email-mst@kernel.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: uVd2jXPbluvaZ2v5-Oo6cgSMCQOUIKhNZaAqbmQ_H8U_1781486271
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 14 Jun 2026 20:10:55 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,98 +125,149 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The PMBus string registers (e.g. MFR_MODEL on the ADM1266) are writable
-by the guest. pmbus_receive_block() can fill the destination field
-completely, leaving no NUL terminator. When the value is later read back,
-pmbus_send_string() calls strlen() on it, which reads past the end of the
-array and returns a length that trips
+On 6/15/26 3:22 AM, Michael S. Tsirkin wrote:
+> On Sun, Jun 14, 2026 at 09:45:51AM -0700, Richard Henderson wrote:
+>> On 6/14/26 08:13, Michael S. Tsirkin wrote:
+>>> Yes, I think it does work because we use -fno-strict-aliasing.
+>>> For bigger sizes we'll need packed because the addresses
+>>> could be unaligned.
+>> ...
+>>> For most host/guest pairs things simply work even for unaligned.
+>>>
+>>> And yes, guest drivers do do this.
+>>>
+>>> On classical pci, there are no transactions as such and
+>>> an unaligned access will be split anyway.
+>>
+>> I'm saying, if you're talking about pass-through to real devices, that won't
+>> work. For instance, AArch64 will trap unaligned accesses to Device memory.
+> 
+> Presumably, AArch64 drivers don't do unaligned at all then?
+> 
 
-    g_assert(len + pmdev->out_buf_len < SMBUS_DATA_MAX_LEN);
+I think Michael is correct because the unaligned access isn't a concern to
+ram device region. MemroyRegionOPs::impl::unaligned is true for ram device
+region, which means no unaligned access concerns.
 
-aborting QEMU. This is guest-triggerable.
+static const MemoryRegionOps ram_device_mem_ops = {
+     .read = memory_region_ram_device_read,
+     .write = memory_region_ram_device_write,
+     .endianness = HOST_BIG_ENDIAN ? DEVICE_BIG_ENDIAN : DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 1,
+         .max_access_size = 8,
+         .unaligned = true,
+     },
+     .impl = {
+         .min_access_size = 1,
+         .max_access_size = 8,
+         .unaligned = true,
+     },
+};
 
-Add pmbus_receive_string(), the write-side mirror of pmbus_send_string(),
-which reserves the last byte of the destination so the stored value is
-always NUL-terminated, and use it for the ADM1266 MFR string registers.
+system/physmem.c::memory_access_size
+====================================
+int memory_access_size(MemoryRegion *mr, unsigned l, hwaddr addr)
+{
+         :
+     /* Bound the maximum access by the alignment of the address.  */
+     if (!mr->ops->impl.unaligned) {
+         unsigned align_size_max = addr & -addr;
+         if (align_size_max != 0 && align_size_max < access_size_max) {
+             access_size_max = align_size_max;
+         }
+     }
+}
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3388
-Signed-off-by: imaginos <imaginos32@gmail.com>
----
- hw/i2c/pmbus_device.c         | 13 +++++++++++++
- hw/sensor/adm1266.c           |  7 +++----
- include/hw/i2c/pmbus_device.h | 10 ++++++++++
- 3 files changed, 26 insertions(+), 4 deletions(-)
+Please help to confirm if we really want to cover the unaligned access for
+all architectures. After it's confirmed, I can send (v2) for further review.
 
-diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-index b1f9843f52..7c65d8c8b5 100644
---- a/hw/i2c/pmbus_device.c
-+++ b/hw/i2c/pmbus_device.c
-@@ -142,6 +142,19 @@ uint8_t pmbus_receive_block(PMBusDevice *pmdev, uint8_t *dest, size_t len)
-     return len;
- }
- 
-+uint8_t pmbus_receive_string(PMBusDevice *pmdev, char *dest, size_t len)
-+{
-+    uint8_t rv;
-+
-+    if (len == 0) {
-+        return 0;
-+    }
-+
-+    rv = pmbus_receive_block(pmdev, (uint8_t *)dest, len - 1);
-+    dest[len - 1] = '\0';
-+    return rv;
-+}
-+
- 
- static uint64_t pmbus_receive_uint(PMBusDevice *pmdev)
- {
-diff --git a/hw/sensor/adm1266.c b/hw/sensor/adm1266.c
-index 37d1cffd57..81545385a5 100644
---- a/hw/sensor/adm1266.c
-+++ b/hw/sensor/adm1266.c
-@@ -142,16 +142,15 @@ static int adm1266_write_data(PMBusDevice *pmdev, const uint8_t *buf,
- 
-     switch (pmdev->code) {
-     case PMBUS_MFR_ID:                    /* R/W block */
--        pmbus_receive_block(pmdev, (uint8_t *)s->mfr_id, sizeof(s->mfr_id));
-+        pmbus_receive_string(pmdev, s->mfr_id, sizeof(s->mfr_id));
-         break;
- 
-     case PMBUS_MFR_MODEL:                 /* R/W block */
--        pmbus_receive_block(pmdev, (uint8_t *)s->mfr_model,
--                            sizeof(s->mfr_model));
-+        pmbus_receive_string(pmdev, s->mfr_model, sizeof(s->mfr_model));
-         break;
- 
-     case PMBUS_MFR_REVISION:               /* R/W block*/
--        pmbus_receive_block(pmdev, (uint8_t *)s->mfr_rev, sizeof(s->mfr_rev));
-+        pmbus_receive_string(pmdev, s->mfr_rev, sizeof(s->mfr_rev));
-         break;
- 
-     case ADM1266_SET_RTC:   /* do nothing */
-diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
-index f195c11384..4c4d3e5ae2 100644
---- a/include/hw/i2c/pmbus_device.h
-+++ b/include/hw/i2c/pmbus_device.h
-@@ -518,6 +518,16 @@ void pmbus_send_string(PMBusDevice *state, const char *data);
-  */
- uint8_t pmbus_receive_block(PMBusDevice *pmdev, uint8_t *dest, size_t len);
- 
-+/**
-+ * @brief Receive a Block Write and store it as a NUL-terminated string.
-+ * Write-side mirror of pmbus_send_string(): guarantees dest is always a valid
-+ * C string so later reads cannot run past the field. Use for string registers
-+ * (e.g. MFR_ID, MFR_MODEL); use pmbus_receive_block() for binary blocks.
-+ * @param dest - string buffer with enough capacity to receive the write
-+ * @param len - the capacity of dest (the last byte is reserved for the NUL)
+>> You need to actually handle unaligned.  Perhaps something like
+>>
+>>      /* Find unit to fit size and alignment of dst */
+>>      uintptr_t test = (uintptr_t)dst | size;
+>>      uintptr_t lsb = test & -test;
+>>
+>>      switch (lsb) {
+>>      case 1:   // loop over uint8_t
+>>      case 2:   // loop over uint16_t
+>>      case 4:   // loop over uint32_t
+>>      default:  // loop over uint64_t
+>>      }
+>>
+>> with the expectation that normally we'll have aligned addresses and size
+>> such that the loop will iterate once.
+>>
+
+Thanks, Richard. I think it should work if we really want to cover the unaligned
+access. I tried the following snippet based on yours, my issue can be fixed and
+no other issues are seen in my environment.
+
+-----> system/physmem.c
+
++/*
++ * qemu_ram_copy - copy data from ram block
++ *
++ * @dest: destination into which data is copied
++ * @src: source of the data
++ * @n: length of the data to be copied
++ *
++ * This function is friendly to unaligned access.
 + */
-+uint8_t pmbus_receive_string(PMBusDevice *pmdev, char *dest, size_t len);
++void qemu_ram_copy(void *dest, const void *src, size_t n)
++{
++    uintptr_t test, lsb;
 +
- /**
-  * @brief Receive data over PMBus
-  * These methods help track how much data is being received over PMBus
--- 
-2.43.0
++    do {
++        test = (uintptr_t)dest | n;
++        lsb = test & -test;
++        switch (lsb) {
++        case 1:
++            *(uint8_t *)dest = *(uint8_t *)src;
++            src += 1;
++            dest += 1;
++            n -= 1;
++            break;
++        case 2:
++            *(uint16_t *)dest = *(uint16_t *)src;
++            src += 2;
++            dest += 2;
++            n -= 2;
++            break;
++        case 4:
++            *(uint32_t *)dest = *(uint32_t *)src;
++            src += 4;
++            dest += 4;
++            n -= 4;
++            break;
++        default:
++            *(uint64_t *)dest = *(uint64_t *)src;
++            src += 8;
++            dest += 8;
++            n -= 8;
++        }
++    } while (n != 0);
++}
+
+-----> include/system/memory.h
+
++void qemu_ram_copy(void *dest, const void *src, size_t n);
++static inline void qemu_ram_move(void *dest, const void *src, size_t n)
++{
++    qemu_ram_copy(dest, src, n);
++}
+
+>>
+>> r~
+> 
+> And ifdef for arches without unaligned support?
+> 
+
+I guess we probably support unaligned access for all architectures or none of
+them. It will depend on guest if the unaligned access will be triggered :-)
+
+Thanks,
+Gavin
+
 
 

@@ -4,107 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42549CD98CE
-	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 19:52:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EB2ECD98DA
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Jun 2026 19:57:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZDMC-0007vf-VF; Mon, 15 Jun 2026 15:52:28 -0400
+	id 1wZDRL-00016H-Mq; Mon, 15 Jun 2026 15:57:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZDM5-0007tk-P6
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 15:52:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZDM1-0006kc-3J
- for qemu-arm@nongnu.org; Mon, 15 Jun 2026 15:52:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781553136;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=iW2O3Arlf3qHNxDiahWee/RaVc7qOF9kDwfA1DqcqEQ=;
- b=CEdqNKY5MsUuCn31dP5k2PCp/VS7NfNJ9H1ZUuJ6eHJrpqAzK3eeaMRSdB+7gwKmNZt4GN
- e34nsoMEBLdAe3RL+kNRSZF6MlE3BAwTAq52o9jgwWeTNVPPzNNhZarHVGRJs8AN7zktp5
- zZSnln6XiRsndb89dP/jh36kvRVsZdc=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-190-tntA6smUPkCBxQkKQxkbrw-1; Mon, 15 Jun 2026 15:52:13 -0400
-X-MC-Unique: tntA6smUPkCBxQkKQxkbrw-1
-X-Mimecast-MFC-AGG-ID: tntA6smUPkCBxQkKQxkbrw_1781553132
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-490dad70f95so38699895e9.3
- for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 12:52:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
+ id 1wZB5a-0001oo-WE
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 13:27:11 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
+ id 1wZB5Y-00004q-6k
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2026 13:27:10 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-45ef616daf6so4120351f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 10:27:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1781544426; x=1782149226; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=u2rHLzSIGXlCuUR9ZnsAYy2289TpLd/mMk0h6LJx/nM=;
+ b=mBlGvKdMeR+F7h1eJuKDpPoEa855nQeU50lOnZmWSUZMpOZzPh533H9WzziOUbO2C8
+ KrtIUe1rcWLdPoxOQxTQeZwiYZOOANsIYAuKOFvcvLb64tGyEbT9+bGpBKiuJfn98gSh
+ PmD5qfyDwSNztkjegAtJeqYMTRuZWzVMxQaeCJpdfrj5aOdDuvnhvsB2xxOJMmFtfWKO
+ WkuRFbcjPqPE1foE488rAXkwwWPTF6Rlrjw7mBZg1qrVGAOGj7qLKEtEi+Pydm8VEBPt
+ BKnEXzY6KYIGRNp89DoFErW7Qr14iESnL6K0MbiTlQRXpS0zrp+jmk09AZeykGN+Rgmw
+ Kj7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781553132; x=1782157932;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=iW2O3Arlf3qHNxDiahWee/RaVc7qOF9kDwfA1DqcqEQ=;
- b=J3MU0my8A0F45+OH4cMEXUbKe2Sydt1VjHNEA9N93yVvxA3w7im3k5DJuwr9dz9xEK
- JaIRE7mQDCCRbJiUbzAKXDP0Sw43Bl1t4cZ6ILBe3wYkranuwWS2n7qOi+5im04lOyob
- /NfYEVD89RvoFci86q2r033gfmroaMt2nQ4sTm/53sY9TwzoKExZCuUU0MuDkeUf4ccs
- wU0V8y6p/UGgPrDFZq2cYLjCaO9+xNyNH7ib9Hf3hFcA1SlEhNuPdyA7MZXlzjxcqtkb
- RMblM6unt7zERhiqSb73KG3mRqPSIgZAnrmdwAhQtWfUWX3vJxccQ1tM7KkYYITagksW
- lAGg==
+ d=1e100.net; s=20251104; t=1781544426; x=1782149226;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=u2rHLzSIGXlCuUR9ZnsAYy2289TpLd/mMk0h6LJx/nM=;
+ b=Ajl9FSttFl1SNbOs/9Qg8F1f0LVWdjEndw2Gq3E+fITc92qM8rVI7wGTV4XxUH7jL7
+ TCn4/VuQee8XKV1N2Ap5Qw78ywxzr6WIummHr8IE+NS0lx/if+ehNz6DilNVPzptgPAE
+ NWh3ndGDsXhEcnWkE+9OKtO3eLnno7B6iP6yE9tCM457tbh8P/RG42yWFNuoxUZYh8Fc
+ 5O8VNIEQL4HI1D0BhH8unfBw2R+PMKFl+DCcw9Me7XzG40ayXxR0VmJwtDCmG2azsQqp
+ X0goSATbzqMJhE42ubsjxhplaXzTqI4QESS8ZPSVRaGiC8frZ1KmDMw713Wmml4hFSKo
+ a3hw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9nZ+fhGN9x84aYVRSIP46TgsRTRQN7gi3q3vSDWOKuivR/adxwvG32hsOGZf8gKB3NEdb/TCrYbg==@nongnu.org
-X-Gm-Message-State: AOJu0YwD3hL6jXhC4RDYcYQzkTeL9GsPLdkuDMCrn/sdaJDhV1vxII/S
- f3pP6qY8hKnecFBOmKEhe03p63d+8SqTa9EVUJEA8Oh+wvJr6ncxDpkW2b5/gVMw1Uvw4Kimz/c
- FKxfIn2rNuZgKmgYWwp3D7TDRAG/xGyutwVs2IqA0nHemVdbvXaOeWw==
-X-Gm-Gg: Acq92OEJADLdXTRGhBShswZiJigh/8YfqADHeR5/NF2iCipjM+TZyN+Z5vDw2lJCLDb
- STQaoSY//Y8Y8a27vVWalTfbqnAKYrNK+GDhfGD9ctZF8zccf2pjbNM/wIU78zt/e1rvwJtAqXi
- 3GXI9kASIdNra/jDTdQe9j1C6VapqS1nWHXTbm85GWg8HvVmL4fKGXfLgKIVATjkHxewJwI8aDY
- Q6aNmE2Kl7stDGcQnQTUk2TB/fJ5hrUg3yWEYQ2eusqYjO/AEEX2hmRbRgA3UznWP+PhQ6Sq61q
- IXr61VbykWSA3kqpielndgMXBGvLrvOzUN0KAoQ97aRPuCGJTXPrmNqskOqueFMFrZKw0Sai9nF
- l6SWOcqGD3LJ7IxwnxIlzZ3PNJUKNv9juznaDLxExmTk=
-X-Received: by 2002:a05:600c:4215:b0:490:bb3e:30b0 with SMTP id
- 5b1f17b1804b1-490ec4c0ce3mr127252285e9.4.1781553131648; 
- Mon, 15 Jun 2026 12:52:11 -0700 (PDT)
-X-Received: by 2002:a05:600c:4215:b0:490:bb3e:30b0 with SMTP id
- 5b1f17b1804b1-490ec4c0ce3mr127252025e9.4.1781553131229; 
- Mon, 15 Jun 2026 12:52:11 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4606f263945sm37889839f8f.8.2026.06.15.12.52.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Jun 2026 12:52:10 -0700 (PDT)
-Date: Mon, 15 Jun 2026 15:52:06 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, peterx@redhat.com, alex@shazbot.org,
- richard.henderson@linaro.org, berrange@redhat.com,
- philmd@oss.qualcomm.com, philmd@mailo.com, david@kernel.org,
- clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com,
- jugraham@redhat.com, liugang24219@sangfor.com.cn,
- dinghui@sangfor.com.cn, shan.gavin@gmail.com
-Subject: Re: [PATCH v2 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
- device region accessors
-Message-ID: <20260615154913-mutt-send-email-mst@kernel.org>
-References: <20260615100200.266968-1-gshan@redhat.com>
- <20260615100200.266968-2-gshan@redhat.com>
- <CAFEAcA9CT6E8dhEV7Ek6ruT_o2dKUf==2V+U-1WFDOLtYbgeeQ@mail.gmail.com>
- <20260615105556-mutt-send-email-mst@kernel.org>
- <CAFEAcA9Gi43qNZoZcGtq8ioffGwOc_XuhoFAjGx7-bt4U8qfxw@mail.gmail.com>
+ AFNElJ/GctT47WJ9ohHlOH/q3v4TnOmy9N7DEsUyIMQZHt+D4P4d6lIFnn0OWl0nnqVNuA74FhyhPX9arQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwxWZtPkIuEc5J2upkloCSOf7bq5KfPC/y5lVd+isQh/Ig6lJOl
+ 0GtGgU79t06DbWmM3W5lmuA0XOjuR7VaMNX03PfKFBHMPCvLR2zXxj3N
+X-Gm-Gg: Acq92OG4TmjMC7/LQgIS+DNwugXNRtUiMbLUywSk2d3W5apIJrf2YxcjPLK9AjHMYFM
+ 1w+VdjLBQ8P3X/HbRCJKWREy0F4hoJlv08vwIXY6BR+Fz2gzRKVnD+7eLb5fgNcGlriUj0HS5hj
+ HMFn8RlmBJRhUWYCDF6HL3eWjM0KldXoKrJafk5A9wY7RyhjPIIF0urs5StM5r5k6ERBmgICJmG
+ RYxAcgI0U00dU/r3oVhvqSRdcNtxOzqRaZdNNxWWw/7GA5Xhf6LEh2RXpiQQOtlLGHPmbjDaDPK
+ kpnAGFJy9YWOkBlAk2tgUrcf6hxAjmAY1+3kx19cO5wI+0kWPa8tX2lBwwL7OBdVSfWlUZcdPcb
+ sQSzwtA3GIwz1KXhabk5N/mWHihYMvgNCaBAJ1U5r/MvZ4w0H0J+3c+4Hlt2LSc+R4Z/Tsjc0qA
+ iZrCdK5+5IJGd9UbvQOq4ku0Qbqz8e1tuaTdiAAAroRHCVV6eQuWKn5lOt9M81P/nSvqMDyMNYj
+ 5WK48w=
+X-Received: by 2002:a05:6000:605:b0:45e:f2bd:2b16 with SMTP id
+ ffacd0b85a97d-4619f394985mr503102f8f.18.1781544425648; 
+ Mon, 15 Jun 2026 10:27:05 -0700 (PDT)
+Received: from [192.168.25.24] (176\032-\032141-38-234.abo.bbox.fr.
+ [176.141.38.234]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4606f2b0d28sm37363193f8f.20.2026.06.15.10.27.03
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 15 Jun 2026 10:27:05 -0700 (PDT)
+From: eblot.ml@gmail.com
+To: Alexander Hansen <alexander.hansen@9elements.com>
+Cc: Titus Rwantare <titusr@google.com>,
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v6 3/5] hw/sensor: MAX31790 support
+Date: Mon, 15 Jun 2026 19:27:00 +0200
+X-Mailer: MailMate (2.0r6290)
+Message-ID: <866BCB0A-6CC6-41E4-914D-D38826F52550@gmail.com>
+In-Reply-To: <20260610122252.349321-4-alexander.hansen@9elements.com>
+References: <20260610122252.349321-4-alexander.hansen@9elements.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9Gi43qNZoZcGtq8ioffGwOc_XuhoFAjGx7-bt4U8qfxw@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Ijzt9sID9pxHSq9FWSq17DNo2nFf-80NPed8Vjmwgh8_1781553132
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Content-Type: multipart/alternative;
+ boundary="=_MailMate_E15DB50C-6010-443D-A88B-1FB3A50DA26A_="
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=eblot.ml@gmail.com; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 15 Jun 2026 15:57:46 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,70 +111,179 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Jun 15, 2026 at 04:12:40PM +0100, Peter Maydell wrote:
-> On Mon, 15 Jun 2026 at 15:56, Michael S. Tsirkin <mst@redhat.com> wrote:
-> >
-> > On Mon, Jun 15, 2026 at 11:57:09AM +0100, Peter Maydell wrote:
-> > > On Mon, 15 Jun 2026 at 11:03, Gavin Shan <gshan@redhat.com> wrote:
-> > > >
-> > > > All ram device regions were turned to be indirectly accessible by commit
-> > > > 4a2e242bbb ("memory: Don't use memcpy for ram_device regions"). This leads
-> > > > to guest hang on attempt to build 'cuda-samples' as reported by Julia. The
-> > > > guest is started by the following command lines, with GH100 GPU card passed
-> > > > from the host.
-> > >
-> > > > diff --git a/include/system/memory.h b/include/system/memory.h
-> > > > index 1417132f6d..5878727d09 100644
-> > > > --- a/include/system/memory.h
-> > > > +++ b/include/system/memory.h
-> > > > @@ -2897,6 +2897,8 @@ void address_space_register_map_client(AddressSpace *as, QEMUBH *bh);
-> > > >  void address_space_unregister_map_client(AddressSpace *as, QEMUBH *bh);
-> > > >
-> > > >  /* Internal functions, part of the implementation of address_space_read.  */
-> > > > +void qemu_ram_copy(void *dest, const void *src, size_t n);
-> > > > +void qemu_ram_move(void *dest, const void *src, size_t n);
-> > >
-> > > New function prototypes in include headers need documentation comments.
-> > >
-> > > In particular for these, it's really important that we clearly say
-> > > what semantics we are attempting to provide with them, so that
-> > > (a) when we're reviewing or later updating the implementation we
-> > > know what we are trying to provide
-> > > (b) when we're looking at the callsites we know what the function
-> > > is guaranteeing to us and what it is not, and thus whether it's
-> > > OK to use it or we need something els.
-> > >
-> > > > +#if defined(__i386__) || defined(__x86_64__)
-> > > > +#define HOST_UNALIGNED_MMIO_OK 1
-> > > > +#else
-> > > > +#define HOST_UNALIGNED_MMIO_OK 0
-> > > > +#endif
-> > >
-> > > We need to do something better than this. We can't
-> > > just say "oh, we trust that on x86 this works": it is
-> > > neither actually true that the compiler guarantees it
-> >
-> > sorry guarantee what?
-> 
-> Well, that's part of my point about "we need a doc comment":
-> what exactly are we trying to guarantee ?
 
-we are trying to guarantee that host transaction sizes match what
-guest requested as closely as possible.
+--=_MailMate_E15DB50C-6010-443D-A88B-1FB3A50DA26A_=
+Content-Type: text/plain; charset=UTF-8; format=flowed; markup=markdown
+Content-Transfer-Encoding: 8bit
 
-> But whatever it is,
-> "hardcoded ifdef that privileges x86" is definitely the wrong
-> answer.
-> 
-> -- PMM
 
-why is it "definitely a wrong answer" if a specific host architecture 
-supports originating transactions that other host architectures lack?
-should we intentionally break setups that could initiate unaligned
-accesses and work fine just because some other setups have hardware that
-simply can not initiate unaligned accesses?
+On 10 Jun 2026, at 14:21, Alexander Hansen wrote:
 
--- 
-MST
+> diff --git a/hw/sensor/max31790.c b/hw/sensor/max31790.c
+> new file mode 100644
+> index 0000000000..f0aaff84b5
+> --- /dev/null
+> +++ b/hw/sensor/max31790.c
 
+> +#define TYPE_MAX31790 "max31790"
+
+Might be nice to define it in a .h so machines can use the constant?
+
+> +
+> +#define MAX31790_NUM_FANS 6
+> +#define MAX31790_NUM_TACHS 12
+> +
+> +#define MAX31790_REG_GLOBAL_CONFIG 0x00
+> +#define MAX31790_REG_PWM_FREQ 0x01
+> +
+> +/* 0x02 to 0x07: N = 0 .. 5 */
+> +#define MAX31790_REG_FAN_CONFIG(N) (0x02 + N)
+
+Maybe use (0x02 + (N))?
+
+> +    switch (s->pointer) {
+> +    case MAX31790_REG_FAN_CONFIG(0):
+> +    case MAX31790_REG_FAN_CONFIG(1):
+> +    case MAX31790_REG_FAN_CONFIG(2):
+> +    case MAX31790_REG_FAN_CONFIG(3):
+> +    case MAX31790_REG_FAN_CONFIG(4):
+> +    case MAX31790_REG_FAN_CONFIG(5):
+
+Maybe use case ranges?
+
+> +    /* simplified, assuming NP = 2 */
+> +    uint64_t tach_count =  (245760ULL * sr) / (uint64_t)rpm;
+
+Maybe use (some) explicit constants?
+
+> +static void max31790_realize(DeviceState *dev, Error **errp)
+> +{
+> +    MAX31790State *s = MAX31790(dev);
+> +
+> +    trace_max31790_realize(s->i2c.address);
+> +
+> +    max31790_reset_enter(s);
+
+Initial reset is usually called from the SoC reset sequence (through 
+bus_reset_child_foreach), is this explicit reset required?
+
+> +static void max31790_class_init(ObjectClass *klass, const void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+> +
+> +    dc->realize = max31790_realize;
+> +    dc->desc = "Maxim MAX31790 6-Channel Fan Controller";
+> +    dc->vmsd = &vmstate_max31790;
+> +    dc->legacy_reset = max31790_reset;
+
+Maybe favor the “new” Resettable API, rather than the legacy reset 
+API?
+
+--=_MailMate_E15DB50C-6010-443D-A88B-1FB3A50DA26A_=
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/xhtml; charset=3Dutf-8"=
+>
+</head>
+<body><div style=3D"font-family: sans-serif;"><div class=3D"markdown" sty=
+le=3D"white-space: normal;">
+<p dir=3D"auto">On 10 Jun 2026, at 14:21, Alexander Hansen wrote:</p>
+<blockquote style=3D"margin: 0 0 5px; padding-left: 5px; border-left: 2px=
+ solid #777777; color: #777777;">
+<p dir=3D"auto">diff --git a/hw/sensor/max31790.c b/hw/sensor/max31790.c<=
+br>
+new file mode 100644<br>
+index 0000000000..f0aaff84b5<br>
+--- /dev/null<br>
++++ b/hw/sensor/max31790.c</p>
+</blockquote>
+<blockquote style=3D"margin: 0 0 5px; padding-left: 5px; border-left: 2px=
+ solid #777777; color: #777777;">
+<p dir=3D"auto">+#define TYPE_MAX31790 &quot;max31790&quot;</p>
+</blockquote>
+<p dir=3D"auto">Might be nice to define it in a .h so machines can use th=
+e constant?</p>
+<blockquote style=3D"margin: 0 0 5px; padding-left: 5px; border-left: 2px=
+ solid #777777; color: #777777;">
+<ul>
+<li></li>
+</ul>
+<p dir=3D"auto">+#define MAX31790_NUM_FANS 6<br>
++#define MAX31790_NUM_TACHS 12<br>
++<br>
++#define MAX31790_REG_GLOBAL_CONFIG 0x00<br>
++#define MAX31790_REG_PWM_FREQ 0x01<br>
++<br>
++/* 0x02 to 0x07: N =3D 0 .. 5 */<br>
++#define MAX31790_REG_FAN_CONFIG(N) (0x02 + N)</p>
+</blockquote>
+<p dir=3D"auto">Maybe use (0x02 + (N))?</p>
+<blockquote style=3D"margin: 0 0 5px; padding-left: 5px; border-left: 2px=
+ solid #777777; color: #777777;">
+<ul>
+<li>switch (s-&gt;pointer) {</li>
+<li>case MAX31790_REG_FAN_CONFIG(0):</li>
+<li>case MAX31790_REG_FAN_CONFIG(1):</li>
+<li>case MAX31790_REG_FAN_CONFIG(2):</li>
+<li>case MAX31790_REG_FAN_CONFIG(3):</li>
+<li>case MAX31790_REG_FAN_CONFIG(4):</li>
+<li>case MAX31790_REG_FAN_CONFIG(5):</li>
+</ul>
+</blockquote>
+<p dir=3D"auto">Maybe use case ranges?</p>
+<blockquote style=3D"margin: 0 0 5px; padding-left: 5px; border-left: 2px=
+ solid #777777; color: #777777;">
+<ul>
+<li>/* simplified, assuming NP =3D 2 */</li>
+<li>uint64_t tach_count =3D  (245760ULL * sr) / (uint64_t)rpm;</li>
+</ul>
+</blockquote>
+<p dir=3D"auto">Maybe use (some) explicit constants?</p>
+<blockquote style=3D"margin: 0 0 5px; padding-left: 5px; border-left: 2px=
+ solid #777777; color: #777777;">
+<p dir=3D"auto">+static void max31790_realize(DeviceState *dev, Error **e=
+rrp)<br>
++{</p>
+<ul>
+<li>MAX31790State *s =3D MAX31790(dev);</li>
+<li></li>
+<li>trace_max31790_realize(s-&gt;i2c.address);</li>
+<li></li>
+<li>max31790_reset_enter(s);</li>
+</ul>
+</blockquote>
+<p dir=3D"auto">Initial reset is usually called from the SoC reset sequen=
+ce (through bus_reset_child_foreach), is this explicit reset required?</p=
+>
+<blockquote style=3D"margin: 0 0 5px; padding-left: 5px; border-left: 2px=
+ solid #777777; color: #777777;">
+<p dir=3D"auto">+static void max31790_class_init(ObjectClass *klass, cons=
+t void *data)<br>
++{</p>
+<ul>
+<li>DeviceClass *dc =3D DEVICE_CLASS(klass);</li>
+<li>I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);</li>
+<li></li>
+<li>dc-&gt;realize =3D max31790_realize;</li>
+<li>dc-&gt;desc =3D &quot;Maxim MAX31790 6-Channel Fan Controller&quot;;<=
+/li>
+<li>dc-&gt;vmsd =3D &amp;vmstate_max31790;</li>
+<li>dc-&gt;legacy_reset =3D max31790_reset;</li>
+</ul>
+</blockquote>
+<p dir=3D"auto">Maybe favor the =E2=80=9Cnew=E2=80=9D Resettable API, rat=
+her than the legacy reset API?</p>
+
+</div>
+</div>
+</body>
+
+</html>
+
+--=_MailMate_E15DB50C-6010-443D-A88B-1FB3A50DA26A_=--
 

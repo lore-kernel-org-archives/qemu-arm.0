@@ -4,88 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF92BCD98CE
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 05:22:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BD6ECD98CE
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 05:26:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZMFh-0005os-W3; Tue, 16 Jun 2026 01:22:23 -0400
+	id 1wZMJK-0006o0-11; Tue, 16 Jun 2026 01:26:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wZMFd-0005o2-TT
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 01:22:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZMJJ-0006nY-GN
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2026 01:26:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wZMFZ-0001L1-MN
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 01:22:15 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZMJH-0002Jm-Tp
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2026 01:26:05 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781587332;
+ s=mimecast20190719; t=1781587562;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZE5nb+ERZyxn1cZ6YOlIOoaYtP0FCJL0L4PNt5yIf88=;
- b=VKDR2l30GsHisJDh+3V1cdCBIpfjcrZlRqgUrhsch3AR3TBTpJmjRZNfBlBuD9Q/EGIfHl
- ZjZz6oqHNiY7/bsaNpQdXoU90KazDF5wnOZixbm7eAX4qfGaoKSoRIGYuqcedE5dTb0kf3
- xbntTEwzQStjfqKdfWMBj2bmsjO54zY=
-Received: from mail-dl1-f72.google.com (mail-dl1-f72.google.com
- [74.125.82.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=iHMVucFQttqFOWfz8CZsdgvnHedB4IsaIsUZp6Fr5Bs=;
+ b=ZB+pR57RdsTBvzJVyLkboDIgEJJ5gqr4WvwLw2PDbgmgkF4QMEulheCiBLgb/I7uyTR6Xo
+ EBAL8pv80c/pyU7Yehi/7fhS7Xr83RZFkHGp5mGZLA5qA9GeRdB95K8gqbVVCR6Inbzy4z
+ f/lK1hnQ2kgvFJfB7n/qZhtBKzhPFAM=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-84-CebYSxz4MGiw2GnNrvb7Aw-1; Tue, 16 Jun 2026 01:22:10 -0400
-X-MC-Unique: CebYSxz4MGiw2GnNrvb7Aw-1
-X-Mimecast-MFC-AGG-ID: CebYSxz4MGiw2GnNrvb7Aw_1781587329
-Received: by mail-dl1-f72.google.com with SMTP id
- a92af1059eb24-137fc6f8e9fso4195583c88.1
- for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 22:22:10 -0700 (PDT)
+ us-mta-347-GA1F_REqNzWJ37BtdLtvWQ-1; Tue, 16 Jun 2026 01:26:01 -0400
+X-MC-Unique: GA1F_REqNzWJ37BtdLtvWQ-1
+X-Mimecast-MFC-AGG-ID: GA1F_REqNzWJ37BtdLtvWQ_1781587560
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-490c4f61a34so27981955e9.2
+ for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 22:26:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781587329; x=1782192129;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ZE5nb+ERZyxn1cZ6YOlIOoaYtP0FCJL0L4PNt5yIf88=;
- b=U7VwAb0Dz69LDxbIwKe8wlJcQkuShADd05ICsM7tJsnI+3lQonYx3QLQMJTMcgbfK1
- iBjytLT9bQbRtdl3jGoht7tCVlpI6p3cUiD0Gu2n1XVE3hsdFJdEuVurS8iUjrV4yFIs
- RRUhEopRR5Ov5eA8/A+/mCvlmUMDtIyQ8cI2KZuOW3CnZI2iomrLyH7m9Gh4rboSyd+r
- T55+6WZh7qGQtsUG37Onn6HQlXP92OgrJ5ikUeSCSADZwnSLRPA7wh4FYybItA+HtmqW
- TaFT0Wi4m8PZFHjvHb+W0w5NNPQ1sIR3tUQRnJS+3qEf85c1Mbc+lcA2H6KqxLCPsXg6
- VETQ==
+ d=1e100.net; s=20251104; t=1781587560; x=1782192360;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=iHMVucFQttqFOWfz8CZsdgvnHedB4IsaIsUZp6Fr5Bs=;
+ b=igXGXQBm6XFEldgb/UwLptnYVCXnXuXe8ITSvvhTKcW5Lh2uqybwsJJqJkTeJoRySp
+ HinzurO1DzA5ZMv0M9T8Cs2Q4ZRLBlLp49hdxPsJzlOfkFNSadIsUjHygZjj5LdkREfV
+ 7M4Qve23AcohDC3MB0sk5GosCrYKa8ItcQDUx+RutHI+RT7E7HwPJG7rqIfBKEymp94j
+ 8VdM7oUiIjZlp/NLmrFZkyt6bizXODKz1RP4j6a4PSZmjtMSeHBUOpPvB9sF3EpT5wPA
+ AhBvRgFCsKxHk7Kea5YnKJoBtfb10Sk7nMdZ5OYcUwNLk520+S+JnXUh05+Mj5U9hFPu
+ ALMw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8W6cAYu4vJl2DiEeU3LD37S2ONVKIx0I+vv3zYeOqr0D53eWZjmzwgfewCaxHMvMNchPVbuJUK+g==@nongnu.org
-X-Gm-Message-State: AOJu0Yz0XUXdI5CckvUOms8cJBA4Dqhf8a/cmudMPAsBoSjNAut6jBWg
- nXwuFxxn0J9BsEWL83J0IAiD3zMV91agYYFf4lEb7X4JjTUZNOlc5NRhr7pa6/QMOLg4bK/9gVR
- amd6nzug1jCKwQ/CsaxOutWN7LqL0ntEBSQRLfP4TGGrZ3WYBqFd8Kg==
-X-Gm-Gg: Acq92OFwQqAMUrO92RQwLSxMtcwKYX7m++yHFoN/S+UH4eFty+dlel88xxU2nLKexKG
- y1COxF1SjMEAXcrPdGDz89pYIA+0iV/MSxpepkPMErUxRYD8kFlnLcytUOOjNCgGIa3438vvUTb
- ScJKRuZNsoLMEYUGYYj5Up8hmVXZPj8J+Bf72AQj7cxELASBiZj5+wzueWIjfmxjzkpPb/sYsNm
- h3PDyE6iFcG6d97PTW0z4Qkia0MkBeCITjCBu3IfXGdg5qFPY/NMOnEwrlVolt3Kh5/BgFBRPxd
- 7pxmgngF3feNBjvN3pgEfajBH6DxeOHwRLorrde4H59bGjYS0gonBP2/EA4qpdGSzr8qQwqS2ib
- 2IB9vOJ+xWrf/bAI8cheoT14pMm8TdBCvPp6YKo1pRtr7i/iDQSMIqdp0xeTdNXV1
-X-Received: by 2002:a05:7023:b06:b0:138:1360:5bc9 with SMTP id
- a92af1059eb24-13985ebcba4mr922931c88.16.1781587329090; 
- Mon, 15 Jun 2026 22:22:09 -0700 (PDT)
-X-Received: by 2002:a05:7023:b06:b0:138:1360:5bc9 with SMTP id
- a92af1059eb24-13985ebcba4mr922920c88.16.1781587328545; 
- Mon, 15 Jun 2026 22:22:08 -0700 (PDT)
-Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
- [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-1384b8f9927sm12049489c88.1.2026.06.15.22.22.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Jun 2026 22:22:07 -0700 (PDT)
-Message-ID: <07119a34-d8d2-4e52-b566-267830b51a09@redhat.com>
-Date: Tue, 16 Jun 2026 15:21:58 +1000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
- device region accessors
-To: "Michael S. Tsirkin" <mst@redhat.com>
+ AFNElJ/9u8KQqpTaGhG65zESAb7csdjaews2KP2jww12GzLF/TmkQlNjurweR45OpLAacLZATLT9ldEBLA==@nongnu.org
+X-Gm-Message-State: AOJu0Yzl/mF7hmePy9pfCz5gSCa1I3tHTHpRtTpZo5HO1Lerl4/7lP2S
+ nxc5RN+3vwcI16suyvl6kM1hUrAU0h+NkM9vci5NiwOUIR5FMxSbW9Y1HIFWdoUDi2KxQkY0hVD
+ rj8hVoK8pr8W9vawHXeDb2eoQiuJ4WUhJzkyB3w66s5O/ApRrsUSIqA==
+X-Gm-Gg: Acq92OEsKQsqD0WQdMRBbQtxOwhpDRGhReZE2nZEUfdN5qMBstrIpzZw06ekymPCrKs
+ YTQmT22Z+XrRE2S41KhwUdB0RnvG4wSDZ6xkvDmjhFiI9nREvUIbIK/z/qNRzFkVdhH8VHuSNXt
+ j05dHJ68tpF/OtNoLWdbQkbjowdupXJnSXftV0oJkQFhcXOFki6Jbh4HUFZayAJvCellAWrGKf7
+ GcXaIzyJ59TZtgL32rVTZsyMd8F08cK2QR+pP4hzKqgsk1UPQdtdpM+wmdllTs/lh8NyZqoSDVa
+ xKMwjRRSyKj3mXRykd0ebBzwxuvx2EZJy5Fg842raGi3L7SuUyLxsm6xBYZpvooO2mp7vzTUlgo
+ B35ez8l8+W2BTPPEyro+LTnZtPXoS1/2XkD7qM8Ok4Go=
+X-Received: by 2002:a05:600c:354f:b0:490:d354:d151 with SMTP id
+ 5b1f17b1804b1-490ec4fe7aamr232642545e9.18.1781587560174; 
+ Mon, 15 Jun 2026 22:26:00 -0700 (PDT)
+X-Received: by 2002:a05:600c:354f:b0:490:d354:d151 with SMTP id
+ 5b1f17b1804b1-490ec4fe7aamr232641975e9.18.1781587559601; 
+ Mon, 15 Jun 2026 22:25:59 -0700 (PDT)
+Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4922fa47ce3sm53945275e9.6.2026.06.15.22.25.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 15 Jun 2026 22:25:59 -0700 (PDT)
+Date: Tue, 16 Jun 2026 01:25:55 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
 Cc: Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, peterx@redhat.com, alex@shazbot.org,
  berrange@redhat.com, philmd@oss.qualcomm.com, philmd@mailo.com,
- david@kernel.org, clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com,
- jugraham@redhat.com, liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn,
- shan.gavin@gmail.com
+ david@kernel.org, clg@redhat.com, pbonzini@redhat.com,
+ phrdina@redhat.com, jugraham@redhat.com,
+ liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, shan.gavin@gmail.com
+Subject: Re: [PATCH v2 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
+ device region accessors
+Message-ID: <20260616011744-mutt-send-email-mst@kernel.org>
 References: <CAFEAcA9CT6E8dhEV7Ek6ruT_o2dKUf==2V+U-1WFDOLtYbgeeQ@mail.gmail.com>
  <20260615105556-mutt-send-email-mst@kernel.org>
  <CAFEAcA9Gi43qNZoZcGtq8ioffGwOc_XuhoFAjGx7-bt4U8qfxw@mail.gmail.com>
@@ -94,25 +91,23 @@ References: <CAFEAcA9CT6E8dhEV7Ek6ruT_o2dKUf==2V+U-1WFDOLtYbgeeQ@mail.gmail.com>
  <22d55870-b521-4002-add7-791bce8ea96a@redhat.com>
  <20260615224658-mutt-send-email-mst@kernel.org>
  <0038f601-7647-4547-a67a-c6a17fae26ca@linaro.org>
- <20260616004924-mutt-send-email-mst@kernel.org>
- <3880910f-4465-46c5-a5e5-daa2f70821d1@redhat.com>
- <20260616010544-mutt-send-email-mst@kernel.org>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20260616010544-mutt-send-email-mst@kernel.org>
+ <20260616005429-mutt-send-email-mst@kernel.org>
+ <081a9e18-6504-4a13-a3c6-47e94be63f7c@redhat.com>
+MIME-Version: 1.0
+In-Reply-To: <081a9e18-6504-4a13-a3c6-47e94be63f7c@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: tVxOrEzq-anNbVHoB2BfPoyp4JsZEgTm7pgJbSnlt7s_1781587329
+X-Mimecast-MFC-PROC-ID: cF3D7IizkV-fdyZopDl9R-vbGkYbIarn_7sDfTJCNd8_1781587560
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,46 +124,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 6/16/26 3:17 PM, Michael S. Tsirkin wrote:
-> On Tue, Jun 16, 2026 at 02:55:52PM +1000, Gavin Shan wrote:
->> On 6/16/26 2:49 PM, Michael S. Tsirkin wrote:
->>> On Mon, Jun 15, 2026 at 09:48:00PM -0700, Richard Henderson wrote:
->>>> On 6/15/26 21:23, Michael S. Tsirkin wrote:
->>>>> B. Also on x86, I do not see why we should not use memcpy for large
->>>>> accesses if we can. Better perf.
->>>>
->>>> We have an example where memcpy writes to the same location 3 times.
->>>> This is not appropriate for any host.
->>>>
->>>>
->>>> r~
->>>
->>> as in, same byte?  could you share the details pls?
->>>
->>
->> This issue happened on aarch64 only.
->>
->> https://lore.kernel.org/qemu-devel/CAFEAcA8dwHV8F48kb-013rxkG9kKcZhym9_qarKmoeUfeh0YWw@mail.gmail.com/
->>
->> Thanks,
->> Gavin
+On Tue, Jun 16, 2026 at 03:07:27PM +1000, Gavin Shan wrote:
+> On 6/16/26 2:59 PM, Michael S. Tsirkin wrote:
+> > On Mon, Jun 15, 2026 at 09:48:00PM -0700, Richard Henderson wrote:
+> > > On 6/15/26 21:23, Michael S. Tsirkin wrote:
+> > > > B. Also on x86, I do not see why we should not use memcpy for large
+> > > > accesses if we can. Better perf.
+> > > 
+> > > We have an example where memcpy writes to the same location 3 times.
+> > > This is not appropriate for any host.
+> > > 
+> > > 
+> > > r~
+> > 
+> > Ah, checked libc and sure enough, it does it. E.g. it uses 2 overlapping SSE
+> > stores to do a 17 byte write. Not sure how we get 3 but whatevs.
+> > 
+> > 
+> > But just to clarify, I am talking about DMA accesses, that are not
+> > initiated by the VCPU.  I am not so sure we care about multiple stores
+> > in this instance? Do we? We do care about speed, for sure.
+> > 
 > 
-> oh wow. thanks for sharing!
+> In current implementation, qemu_ram_copy/move are differentiated on x86
+> and other architectures. Do we need to unify the implementations (qemu_ram_copy/move)
+> on all architectures to avoid using memcpy() and memmove()?
+
+I am not sure for anything outside 1,2,4,8 bytes the issues are not
+theoretical.
+
+I'd be care
+
+> Maybe it's time for me to post (v3) for a new round of discussions.
 > 
-> Still I think for sizes outside of 2,4,8 it's fine?
-> That is where the perf is.
-> 
+> Thanks,
+> Gavin
 
-For that point, I agree with you that it's fine to use memcpy/memmove
-when the length is 16-bytes or more, unless Richard is concerned by
-this.
+maybe start a toppost with the list of issues and solutions first of
+all.
 
-I'm posting (v3) and lets continue the discussion on (v3) series. Sorry
-for taking your guys so many time to review and discuss ;-)
+Let's add more to the list:
 
-Thanks,
-Gavin
 
-> 
+10. on x86 memcpy will sometimes do multiple overlapping stores when
+size is not a power of 2. for example, a 15 byte write is done with
+2 8-byte stores. This is theoretically an issue
+if guest does something super clever with ordering,
+but does not seem to be in practice.
+
+10. on non-x86 memcpy will do multiple overlapping stores even
+for single byte writes. E.g. it does it to avoid extra branches.
+This is causing issues in practice.
+
+
+-- 
+MST
 
 

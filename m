@@ -4,104 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 470F5CD98DA
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 11:10:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08FCBCD98E1
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 12:14:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZRge-00080g-CX; Tue, 16 Jun 2026 07:10:32 -0400
+	id 1wZSg3-0001qk-9i; Tue, 16 Jun 2026 08:13:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wZRgd-00080Q-8S
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 07:10:31 -0400
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+ id 1wZSg2-0001pD-9q
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2026 08:13:58 -0400
+Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wZRgb-0003yj-Qv
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 07:10:31 -0400
-Received: by mail-yx1-xb135.google.com with SMTP id
- 956f58d0204a3-662c360aa73so183113d50.3
- for <qemu-arm@nongnu.org>; Tue, 16 Jun 2026 04:10:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781608228; cv=none;
+ id 1wZSfz-0007O2-V0
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2026 08:13:58 -0400
+Received: by mail-yx1-xb129.google.com with SMTP id
+ 956f58d0204a3-6606678420bso4652891d50.1
+ for <qemu-arm@nongnu.org>; Tue, 16 Jun 2026 05:13:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781612034; cv=none;
  d=google.com; s=arc-20240605;
- b=T2qjM1z11X66XhWknkheoiEoWruSkyQv9hlfCygRboqQswywDnyB1VkmN+53+O8fAW
- AmZPBKogExPA6WqET5qL/rfRXns8C2a+mQSYyHWmQlCbjIa1WGpoE2U/5rKsl2aQQfiZ
- wmnHovmGVn1m4fThn4rPClWk5Hd64CD20nm3JmqaPHbRvDhylPtbY6Kl5vFT+Quye4TU
- Fuaplu7r6tF/JsOxLtGPcV2Rry2MV/ywcSqpR9w6G0u0oJe45E1SXX3QhDDTlW5TbbtZ
- tfHHXSEe6pz2W1rPmIXhGjbDpGoSOc22pxJbUTGO4eb2x/oTyGTp1ijR8sbo2FGaNmDe
- VEHQ==
+ b=ZbCN/Tfp0fQrVAwGfqmMVzaBVWpMgtjM/3oPW8/7U5ZhuXLVZ08dMM+ZV1yQk5650S
+ B4IyLhruPpkox1X/RmAjFTGNBpSqWPn5EYz/f39xTv+E8c22drs7PXFcAbEHdgLwhrm0
+ 38Q4v+Ys2wNjRnwQm/nN0yGwWPyd+YEA5WWOis8u+JuaAYknMGuG/jcTvHVmA6iSL1QO
+ 2Bc+t+Lu75EnxNATbiwLFrSy6nCrLSUt37vjd7O/mAJiCSAzurUjDEBlX6aXMaVVDJhq
+ d+3ViRjQEOMr+7/MKCl/btTAW8XRymrM625AjVfrBzMpz/YD5Gk43+6MtwJOPCrzs6RS
+ A6Nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=LfmaREOcJDzgMsSIFDgR/NYonjDVCQaU2EYRmKb6zjg=;
- fh=y3lOqzLwDA++fmGpApZEG57rFE6az46CWl3zMkRqPkY=;
- b=YurX/5guQ1WlrsHhfGyRErps6w56sFQo+OHIFHziujjCmsfIuAe2E+xUs57OVMLwCE
- cGpTF2/d/VhD/4ParE1Ol2Eqwn/qn3e+mV2iJXB86hNa8B+ubdXKX8GthmsfMYbgHJzq
- Y8XLIz+YHMQAEiIMKR4mK9CN8IUcCrD8nK/10oEECd8Wn1XatlVfdlt/dPxz27qI2yDm
- mXGMMOdFArcgfoK0Sf4MdN2w2PuVyULCr+grH9nsPSr8EcFNYTaqcGw03IQzmgf8gBy0
- eLIN4SXhUJ1cNyQMqFp2cI+HxTffBobYaIIyIObGgPjzfz+N/0AhsSrpbl+FhAS9If83
- mFdg==; darn=nongnu.org
+ bh=i80NjTv+gOcqKRAtL544hW65gkOooUdnIBR/5KAeDyo=;
+ fh=mYghR6WZh5dUUe1ZrhhGR/qw8vvQr2fnDG+AZQA3wcA=;
+ b=H/eVcf2NMcZnyQng9OdF7S1h8qchyxmC2pxcd4hOpcUKyv6HiNApflMeOolHIFRB05
+ XQiqU248L6s8ambn2Nxzoe+jkvodtatsSIerXWz8dNTEY0oRbcI/4By7sDrGexG+9m9L
+ SSXaVRAhHTQqvzizfCnxYBxkMY8XRJLB4TsOnt2serTIjAHd3S8lmgv2ti/wmXmIptAB
+ Ff1bhkksTmaFSOxDggMif3M8lm5RZuj2ZIJ3upfhsqnoXsWHZryPgG7vfFYowh13ZoNx
+ TdQyYPKksrOODAMuupORcIxZfXYg04cnj5+D6EvBayle2+Dw8y8dRqPrxTESAF5hdeg3
+ TTMw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781608228; x=1782213028; darn=nongnu.org;
+ d=linaro.org; s=google; t=1781612034; x=1782216834; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=LfmaREOcJDzgMsSIFDgR/NYonjDVCQaU2EYRmKb6zjg=;
- b=LeihutxhIzCv/0syDRzenVmHJEWpUNy9jhL/0yqzcpoibBTDPmHrYgXzs5yx2TVPUK
- OTZm8WeqHtcBTm5MRfoiRaokGVURfibCEXDXQzZjRa5XF3InTenyAXw3osaMFISBnIhv
- iGCqXqNtHPRgchTv/Qqd6EHMdK1eekMD0SXnwFZhChMLsQTeVFYL+wMVwTOrpM6qxNPZ
- oZmQh6hdgWkxwDVQTR5lHMaym/w4TkCyK75Wt5Z2jHXrF2aOAGipKIoDfpWjrMxhM04M
- dKpoY+Q7FgDM8iVe43Z7thp7qisnYQVrUw/LZdqE+6VVls/wUatHjQgBKXJ6L7phgPTo
- V8SA==
+ bh=i80NjTv+gOcqKRAtL544hW65gkOooUdnIBR/5KAeDyo=;
+ b=LKV4TtudMzuflgUYVMgsnEwQFvAcKcOGVaJuCFZEiXnu44R2kFPOvi1glkU/+j2sBW
+ cJVVp5IFReVsgzbEQFunrsvfigvBzCaa6+3qZa3VbAGpZOo3O4jgPE16/7lYVZ/I3+m0
+ AKoTuqN/XSa1MqBo0OUBrIiwxwoELxphEyxt4cklFY7XT9IdLh+seRPVf+ztdTYbKU2M
+ z9Y+Eky/jPenMWOzLyTsLWthu91s+8F4wQNiAJlRULH2MYA3DaK7d6qt3/OIt/WJwGR0
+ Bx+0Ia8eQVZNzu9jHuk/TApPhakLspzJj2D1+G8q+iSLcB6HYtYHWR/w7QeoNuTsDjdR
+ fPZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781608228; x=1782213028;
+ d=1e100.net; s=20251104; t=1781612034; x=1782216834;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LfmaREOcJDzgMsSIFDgR/NYonjDVCQaU2EYRmKb6zjg=;
- b=LWnPA+6VLZ/yu8z4IusgqcgIXpDMKK1a+4cuyDR93fdpjaXB/oRgJ3fcdm1tPoqi2H
- webRBZt59msHOHCpjb4oqZkPXAHpl3vmsAhnWbIkjisq+rNNWvKgUaHKnx9SI0bCWFdj
- 5dfv18P/PR4xTVbhm2XwFEJcJv9H7oQzxHKZZY+hl8aGyMTfrdnCZ9JwG+kpEbExtSQU
- YG2l2ayntYVBKUfTWZUoZSJfC8dbHcg8+wV9y1CUfPgmdDPk1ytpwRF9j5H0ZbBNZIGm
- +4SfxBQyU2IzE2n5Q+NWZf9T3v5JgK+qExWqZGZa/Eq4QRaTZiX3yNEjnq5jzFnY1ZCf
- Htdg==
+ bh=i80NjTv+gOcqKRAtL544hW65gkOooUdnIBR/5KAeDyo=;
+ b=JFQkdKa5gvvyD8n447jU04+TWNq/K2go0OI1eZb+9hr7quasAEHpny+/D1p/lyo99b
+ VwUZ3arY7zrdIF7yRRpwehSPtFj4KgjTvaHh7+nt/I5vvWuobgAvFVsp+PPazqtif0mI
+ I4+TafWQRuy8yWzlWu+jJFyE57O3OQF54r0JMtktnsY1r1GXdlMEF2rc+53DFFIZtO6l
+ 76hUQGFfYTSWgLzYj7wUIStZkRisChD8/1dO5jaZ5+i3R4vq5JoeeTKfvDFKVIAWav2R
+ Nzr8hy+JWiJNemriq4LLaOR7i+S8S0UDJ/xQjdtguoYboHKNNOZz4EzyNSkqY8TVMFWp
+ 7cIw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/cC6hHCKmYO4c0/CFm6taeqz/mtuAZX1SUzZQJ53AP3oYaoESocC2pXt8PDj4If6Oux8gAIfCG6w==@nongnu.org
-X-Gm-Message-State: AOJu0Yx/dhkJnPGQVNSgAg6MmAss/R85v7s2tFewX1SAyjt8vF5PWbZE
- 3Bmh0tMvcF8I3QiuJqggiIfh14ehKBQi39igLYUG+1cu6iQ4Z8FOCzkkMw+oRlGz+2bdXL0y7m+
- aJygV6MpLxY4plEhfghQ0lCdLfrXxPCjqIVF6fT8e+g==
-X-Gm-Gg: Acq92OFIF/3P8SGF+Bf/Thb7RPqmbH+QmQx3IF9OcFQ4EUVSDLoZWzC4SRf3y6cP8BC
- PAQtNyna5IPJcFOBtDdjEa9kLUuf2vPAdNQFhC4GNUPEiofJHMhAijuc5TwOsZB5GQLVQGUY2dz
- oTwoemReXirVyV4vkGiNncXihTuPmrQyV+beBSCsHYpYuTZy/gstGGj46mNMFpt54eNohc8NeiR
- C4k26zHKNNXrf2FPtV7OaZmWEbkpBXzarvgnFMnTrSVyErfWs+v9HWi/i77x+WeieawqYpnGUxG
- SQgMhnpwUDUyB2Kr5iQLJ7zL3sLZn9+lyquMgwzP/iu9/eabo9wIaTToL7DNorsxYco=
-X-Received: by 2002:a53:d005:0:b0:660:77f0:2cd3 with SMTP id
- 956f58d0204a3-662b616b697mr2165457d50.45.1781608228320; Tue, 16 Jun 2026
- 04:10:28 -0700 (PDT)
+ AFNElJ8cV+YaaoF+yB4InBTNA4FAXDegeRkJsqlsY4z0ZJ4u5c1OrSTj+QIb/92D52CGF7B9sattNFRslQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx7YdygAG0AON+a8lAdxAs1DPEZMdmVOcj+QrQyWMct8L+UarQI
+ mgx2oCeEdicb8IFMKQkacZoBTcs3MY9qt0XLMM/xNYwZQasLtC2R7bTX3I2cmu7345pgJluJSKO
+ DDZFqLjiqcSFUbiTA9TdgaYrSIFyyZSz9t5jIF1+ZTw==
+X-Gm-Gg: Acq92OHKFyIFLPhcD2hxjqKyHdNicqxQuSc0Za6xp331da5f/C9drepHIx9Oucsmcs9
+ mHAqGIqQ+gmIzjcgdCs8XcLaGRQi2JFSLhOPFFMjxpKY27SdyjTLEXYlwLC5/QqoZPs1RLiMWtc
+ murWCq9yE2lXfM5PzvlfOA812E3/ZhFni/CgLvTF68zOKAiFwb8gXTt9fiD0V0bcAieyur/Z3Er
+ W6L7lHJ06uWAmOlTUJ6wkEHtFMdD0Xcas2UeyYTmGBkkW6cxHWoj/c9f51kqXVidk7IAX3VpL2D
+ /8DFu9snXbUamObYrdHRn646zfd/szKmCnheZRfdLUv1v9k8IHPA9IyYWyoW+QAmaZY=
+X-Received: by 2002:a05:690e:4145:b0:660:ec14:ef87 with SMTP id
+ 956f58d0204a3-6628500a306mr12712040d50.34.1781612034578; Tue, 16 Jun 2026
+ 05:13:54 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260609024027.22140-1-nicholasrighi@gmail.com>
-In-Reply-To: <20260609024027.22140-1-nicholasrighi@gmail.com>
+References: <20260604234852.573178-1-richard.henderson@linaro.org>
+ <20260604234852.573178-2-richard.henderson@linaro.org>
+In-Reply-To: <20260604234852.573178-2-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Jun 2026 12:10:16 +0100
-X-Gm-Features: AVVi8CdY7HGDqivTxLqhyYJR2iuAaqPLO7GUdLCoYO9DFmsuDmv-dS_kOPlKJLA
-Message-ID: <CAFEAcA-YSacshreh4z0Ld7pYdqjECsGxHmkfBrKgQdVPqHVPXg@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/arm/bcm2838: Route I2C interrupts to GIC
-To: Nicholas Righi <nicholasrighi@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@mailo.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Date: Tue, 16 Jun 2026 13:13:43 +0100
+X-Gm-Features: AVVi8Celhm_5i3htRegQ-w_ztro-X9hId-aOVK1VSHnnGUjNzIjSK4jcc5KSOS4
+Message-ID: <CAFEAcA8_+K-PZh_d31MKh17MWMF9TXkoS6c6EC2pLMqhWQidCw@mail.gmail.com>
+Subject: Re: [PATCH 01/25] target/arm: Add feature predicates for SVE2.2 and
+ SME2.2
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb135.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,53 +117,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 9 Jun 2026 at 03:40, Nicholas Righi <nicholasrighi@gmail.com> wrote:
+On Fri, 5 Jun 2026 at 00:50, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> The I2C interrupts are only routed to the legacy interrupt controller. This means
-> that for modern device trees that use the GIC, the interrupts don't work. This patch
-> adds a splitter to route the I2C interrupt to both the legacy interrupt controller and the GIC.
->
-> Testing
->
-> Add these lines to QEMU invocation
->
-> -drive if=none,id=i2c_storage,format=raw,file=eeprom.bin \
-> -device at24c-eeprom,bus=i2c-bus.1,address=0x50,drive=i2c_storage,rom-size=4096 \
->
-> note: eeprom.bin is all zeros
->
-> Before this change, running i2c get to read from EEPROM would result in this
->
-> i2cget -y 1 0x50
-> Error: Read failed
->
-> After this change, running i2c to read from EEPROM results in this
->
-> i2cget -y 1 0x50
-> 0x00
->
-> The eeprom can now also be enabled in the device tree. Before the
-> eeprom driver load would fail due to the read failing
->
-> ls -l /sys/bus/i2c/devices/i2c-1/1-0050/ | grep -i eeprom
-> -rw------- 1 root root 4096 May 17 16:57 eeprom
->
-> Signed-off-by: Nicholas Righi <nicholasrighi@gmail.com>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
-> Changes v1 -> v2:
->     - Use a splitter to route the OR gated i2c interrupt to both the
->       legacy interrupt controller and the GIC, instead of just replacing
->       the legacy routing with the GIC routing
-> ---
->  hw/arm/bcm2835_peripherals.c         | 9 +++++++++
->  hw/arm/bcm2838.c                     | 4 ++++
->  include/hw/arm/bcm2835_peripherals.h | 2 ++
->  include/hw/arm/bcm2838_peripherals.h | 1 +
->  4 files changed, 16 insertions(+)
+>  target/arm/cpu-features.h | 17 ++++++++++++++++-
+>  1 file changed, 16 insertions(+), 1 deletion(-)
+>
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM
 

@@ -4,115 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33FF9CD98E1
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 14:28:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5365CD98E4
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 14:35:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZUlu-0008Co-8o; Tue, 16 Jun 2026 10:28:10 -0400
+	id 1wZUtE-0001MI-BU; Tue, 16 Jun 2026 10:35:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wZUlt-0008CC-2I
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 10:28:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <dinghui@sangfor.com.cn>)
+ id 1wZTYj-0000WQ-ET; Tue, 16 Jun 2026 09:10:29 -0400
+Received: from mail-m15593.qiye.163.com ([101.71.155.93])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wZUlq-0007gt-3E
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 10:28:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781620084;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=C8wtfGwFv/JDFtyBXHUbG1L/079VXo9GdmvPXNgTwL8=;
- b=QS57EsGUQY7OvApinmjkXFgP6+RgA4M8jE/l0pi3f3pB+jjtVFxKuuqTOIbUQoX0N1ZEv1
- MBVago++cvYAmr/hlPzweK9CkQoNtS9tnpRCkfQpS4oUbGvO1EYmUZ2RN70W9XsNsDR9kR
- vmf/zcMGEXlNVzgODdh6vyQWQLfeML4=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-475-hX_H1TYPNcusm-6gdO7Ecw-1; Tue, 16 Jun 2026 10:28:01 -0400
-X-MC-Unique: hX_H1TYPNcusm-6gdO7Ecw-1
-X-Mimecast-MFC-AGG-ID: hX_H1TYPNcusm-6gdO7Ecw_1781620081
-Received: by mail-ej1-f71.google.com with SMTP id
- a640c23a62f3a-bf5ea9d13f9so536685866b.0
- for <qemu-arm@nongnu.org>; Tue, 16 Jun 2026 07:28:01 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781620081; x=1782224881;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=C8wtfGwFv/JDFtyBXHUbG1L/079VXo9GdmvPXNgTwL8=;
- b=fKPwnQh48SHOSntw11kmdTBpoo9xeZeEt5PbeWp/WfssDcqwmKdzqFccv2LwgUzwmk
- uQjVfKdpmHDXLuVW1Hx4FSxOYAIv1fCK13YeXQyHV7NgmCgH7ajAXpmDg+efKPPxaTXC
- a4mVHVpksSx1DqCiXPv+ZJkcGP2PJp7bbOlg7RCJpSb6nAV3h6EBrME5D6fSdnwgHJ+T
- twgwoxjYSEfPxM67SA/eVTn/s1uUMhpD4fezzoajjcFiZ5yA4sr/GH3rAGNseqAf2Wg+
- pz2gk3XHI1EiocPyxUp5Wte9FPU3PAgB8dkO/0ysjCVZpH/8FfvG2Af342dx6bbuz75v
- zTvg==
-X-Gm-Message-State: AOJu0Yx1ZxY7nOjGkFyPzz6oGrG8Qfik8x9jyFxxfbl+0x3S1LblCxRE
- kRcvPj5i0uO/5RnmjctoCc9PwOOeVFWTnxdmcC/w7TFaTENdanXzvgavQnLPPfHU+sIsDHE0VnY
- 76Q5PGWIYHf7/V4B6larEEHQ1jAQjhZhCL5l98ta8YSkI+MRIF3vmyA==
-X-Gm-Gg: Acq92OHNR7MilkZUmHkmIAaTgz1YLBhzHM1dRNLPfKJeFQ5bqB0XS+JsJzDLUhrGnUS
- 7yYOZVh7aq4iJzOG16FWkHem9SOSfAETSjKL8TG+rBifG2YMlvwQRF3l8I9W1+xxQ2OF0bUEP1G
- /8x3uJ7FbArF8fJCCDPI3HARvbsQ876Du9kxMxtpS9w9y7iIQEZj6673OavHDfCX6DFVt8VedgD
- ezrX3bMlzq9zgWL7OgKFuivO4EtQf2Hdmu8xESToJVaLNQ7Osli3TPhX7Vo6AXL9ZQo1zUOfAGt
- b5F8t5X4GeWI8p8h8zReK8aHCh5OXGrxnejR98hXxuDFGt0jGb74h6gfwF6Fqa+2Kxujb0p7U7J
- dQQY3vwQOfdJJsgsrpLG+443gvPpgNuSrNRgKl+g6oLEnW0VMqIvuLHTVEgnCYyRHogD8ZA==
-X-Received: by 2002:a17:907:762a:b0:beb:9be6:f249 with SMTP id
- a640c23a62f3a-c043fcd74b4mr157361666b.47.1781620080471; 
- Tue, 16 Jun 2026 07:28:00 -0700 (PDT)
-X-Received: by 2002:a17:907:762a:b0:beb:9be6:f249 with SMTP id
- a640c23a62f3a-c043fcd74b4mr157358566b.47.1781620079786; 
- Tue, 16 Jun 2026 07:27:59 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-bfdb910f89bsm672722966b.61.2026.06.16.07.27.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Jun 2026 07:27:59 -0700 (PDT)
-Message-ID: <ce1730eb-7076-4ab5-8ef4-fea3fba00bd5@redhat.com>
-Date: Tue, 16 Jun 2026 16:27:57 +0200
+ (Exim 4.90_1) (envelope-from <dinghui@sangfor.com.cn>)
+ id 1wZTYe-0008Kh-Qw; Tue, 16 Jun 2026 09:10:29 -0400
+Received: from [172.23.68.66] (unknown [43.247.70.80])
+ by smtp.qiye.163.com (Hmail) with ESMTP id 429a6ad40;
+ Tue, 16 Jun 2026 20:50:29 +0800 (GMT+08:00)
+Message-ID: <ecbd8c97-29f4-4e80-af15-ef5c25f2a66b@sangfor.com.cn>
+Date: Tue, 16 Jun 2026 20:50:27 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC] arm: property and value naming summary between named CPU
- models vs customizable host model
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Shameer Kolothum <skolothumtho@nvidia.com>,
- Jinqian Yang <yangjinqian1@huawei.com>, Marc Zyngier <maz@kernel.org>,
- Sebastian Ott <sebott@redhat.com>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>
-References: <B820643E-3F14-4CDA-BA6B-09C632F17B9E@nutanix.com>
- <528ce8c1-dcec-45bd-9a50-c4c21529f812@redhat.com>
- <DACACA26-96A0-4F1D-B13E-701C453860D1@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <DACACA26-96A0-4F1D-B13E-701C453860D1@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: xNyYo4FgnN7538QAETsyIjFQyOdPSbAX07SEvqe_Vbc_1781620081
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
+ device region accessors
+To: "Michael S. Tsirkin" <mst@redhat.com>, Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peterx@redhat.com,
+ alex@shazbot.org, richard.henderson@linaro.org, peter.maydell@linaro.org,
+ berrange@redhat.com, philmd@oss.qualcomm.com, philmd@mailo.com,
+ david@kernel.org, clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com,
+ jugraham@redhat.com, liugang24219@sangfor.com.cn, shan.gavin@gmail.com
+References: <20260616052552.389021-1-gshan@redhat.com>
+ <20260616052552.389021-2-gshan@redhat.com>
+ <20260616021153-mutt-send-email-mst@kernel.org>
+ <dfc55b58-5f5d-4ac8-a508-b208cf9565fa@redhat.com>
+ <20260616054555-mutt-send-email-mst@kernel.org>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+From: Ding Hui <dinghui@sangfor.com.cn>
+In-Reply-To: <20260616054555-mutt-send-email-mst@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-HM-Tid: 0a9ed07bb86203a8kunmdebf58568d70b
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+ tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDS05DVkgeQktIGE9KQklMH1YVFA
+ kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlPSFVJT0xVTEtVQ0tZV1kWGg8SFR0UWUFZT0tIVUpLSU
+ 9PT0hVSktLVUpCS0tZBg++
+Received-SPF: pass client-ip=101.71.155.93;
+ envelope-from=dinghui@sangfor.com.cn; helo=mail-m15593.qiye.163.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 16 Jun 2026 10:35:42 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,390 +69,439 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Khushit,
+On 2026/6/16 17:51, Michael S. Tsirkin wrote:
+> On Tue, Jun 16, 2026 at 05:15:13PM +1000, Gavin Shan wrote:
+>>
+>> On 6/16/26 4:17 PM, Michael S. Tsirkin wrote:
+>>> On Tue, Jun 16, 2026 at 03:25:51PM +1000, Gavin Shan wrote:
+>>>> All ram device regions were turned to be indirectly accessible by commit
+>>>> 4a2e242bbb ("memory: Don't use memcpy for ram_device regions"). This leads
+>>>> to guest hang on attempt to build 'cuda-samples' as reported by Julia. The
+>>>> guest is started by the following command lines, with GH100 GPU card passed
+>>>> from the host.
+>>>>
+>>>>      host$ lspci | grep GH100
+>>>>      0009:01:00.0 3D controller: NVIDIA Corporation GH100 [GH200 120GB / 480GB] (rev a1)
+>>>>      host$ /home/sandbox/gavin/qemu.main/build/qemu-system-aarch64            \
+>>>>            -machine virt,gic-version=host,ras=on,highmem-mmio-size=4T         \
+>>>>            -accel kvm -cpu host -smp cpus=48 -m size=8G                       \
+>>>>            -drive file=/home/gavin/sandbox/images/disk.qcow2,if=none,id=d0    \
+>>>>            -device virtio-blk-pci,id=vb0,bus=pcie.0,drive=d0,num-queues=4     \
+>>>>            -device vfio-pci-nohotplug,host=0009:01:00.0,bus=pcie.1.0
+>>>>              :
+>>>>      guest$ cd cuda-samples/build
+>>>>      guest$ make -j 20 clean
+>>>>      guest$ make -j 20
+>>>>              :
+>>>>      [ 54%] Linking CUDA executable graphMemoryNodes
+>>>>      [ 54%] Built target graphMemoryNodes
+>>>>      <no more output afterwards, guest becomes frozen here>
+>>>>
+>>>>      guest$ qemu-system-aarch64: virtio: bogus descriptor or out of resources
+>>>>      [  555.814025] virtio_blk virtio0: [vda] new size: 268435456 512-byte logical blocks (137 GB/128 GiB)
+>>>>
+>>>> When the GPU's driver (NVidia open driver) is loaded on guest bootup,
+>>>> the memory blocks residing in the PCI BAR#4 of the GH100 GPU card can
+>>>> be presented to the guest through memory hot-add. The page cache can
+>>>> then be allocated from the hot added memory blocks when cuda-samples
+>>>> is being built. Afterwards, the page cache is sent to QEMU's virtio-blk
+>>>> device as part of the DMA request, the bounce buffer has to be used to
+>>>> accomodate the request as the corresponding memory region (MemoryRegion)
+>>>> is an indirectly accessible ram device region in qemu. However, the max
+>>>> bounce bufer size is only 4096 bytes by default and that is exhausted
+>>>> quickly, leading to a reset on the virtio-blk device and frozen guest
+>>>> eventually.
+>>>>
+>>>>     QEMU
+>>>>     ====
+>>>>     virtio_blk_handle_output
+>>>>       virtio_blk_handle_vq
+>>>>         virtio_blk_get_request
+>>>>           virtqueue_pop
+>>>>             virtqueue_split_pop
+>>>>               virtqueue_map_desc
+>>>>                 address_space_map
+>>>>                   memory_access_is_direct         # Return false
+>>>>                     memory_region_supports_direct_access
+>>>>
+>>>>     (qemu) info mtree
+>>>>     memory-region: pci_bridge_pci
+>>>>       0000000000000000-ffffffffffffffff (prio 0, container): pci_bridge_pci
+>>>>         0000042000000000-0000043fffffffff (prio 1, i/o): 0009:01:00.0 base BAR 4
+>>>>           0000042000000000-0000043fffffffff (prio 0, i/o): 0009:01:00.0 BAR 4
+>>>>             0000042000000000-000004379fffffff (prio 0, ramd): 0009:01:00.0 BAR 4 mmaps[0]
+>>>>
+>>>> This adds qemu_ram_{copy, move}() and replaces {memcpy, memmove}() with
+>>>> them in the ram device memory region accessors, similar to what's done
+>>>> in commit 4a2e242bbb so that the issue (MMIO access instructions were
+>>>> optimized to SSE instructions) covered by that commit is fixed. This
+>>>> makes 'ram_device_mem_ops' redundant, paving the way to revert that
+>>>> commit to make ram device region directly accessible again in the next
+>>>> patch.
+>>>>
+>>>> Reported-by: Julia Graham <jugraham@redhat.com>
+>>>> Suggested-by: Michael S. Tsirkin <mst@redhat.com>
+>>>> Suggested-by: Peter Xu <peterx@redhat.com>
+>>>> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+>>>> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>>> ---
+>>>> v3: Documentation for qemu_ram_{copy, move}           (Peter/Michael)
+>>>>       Support qemu_ram_move() for overlapped src/dest   (Richard)
+>>>>       Use {memcpy, memmove} if step is 16-bytes or more (Michael)
+>>>>       Code improvements                                 (Richard/Michael)
+>>>> ---
+>>>>    hw/remote/vfio-user-obj.c |   4 +-
+>>>>    include/system/memory.h   |  32 ++++++-
+>>>>    system/physmem.c          | 178 +++++++++++++++++++++++++++++++++++++-
+>>>>    3 files changed, 207 insertions(+), 7 deletions(-)
+>>>>
+>>>> diff --git a/hw/remote/vfio-user-obj.c b/hw/remote/vfio-user-obj.c
+>>>> index 87fa7b6572..97a6c88780 100644
+>>>> --- a/hw/remote/vfio-user-obj.c
+>>>> +++ b/hw/remote/vfio-user-obj.c
+>>>> @@ -375,9 +375,9 @@ static int vfu_object_mr_rw(MemoryRegion *mr, uint8_t *buf, hwaddr offset,
+>>>>            ram_ptr = memory_region_get_ram_ptr(mr);
+>>>>            if (is_write) {
+>>>> -            memcpy((ram_ptr + offset), buf, size);
+>>>> +            qemu_ram_copy(ram_ptr + offset, buf, size);
+>>>>            } else {
+>>>> -            memcpy(buf, (ram_ptr + offset), size);
+>>>> +            qemu_ram_copy(buf, ram_ptr + offset, size);
+>>>>            }
+>>>>            return 0;
+>>>> diff --git a/include/system/memory.h b/include/system/memory.h
+>>>> index 1417132f6d..84203c312d 100644
+>>>> --- a/include/system/memory.h
+>>>> +++ b/include/system/memory.h
+>>>> @@ -2897,6 +2897,36 @@ void address_space_register_map_client(AddressSpace *as, QEMUBH *bh);
+>>>>    void address_space_unregister_map_client(AddressSpace *as, QEMUBH *bh);
+>>>>    /* Internal functions, part of the implementation of address_space_read.  */
+>>>> +
+>>>> +/**
+>>>> + * qemu_ram_copy: copy data to ramblock
+>>>> + *
+>>>> + * @dst: destination where the data is copied to
+>>>> + * @src: source where the data is copied from
+>>>> + * @n: length of data to be copied
+>>>> + *
+>>>> + *
+>>>> + * Copy @n bytes from @src to @dst with the assumption that @src and @dst
+>>>> + * do not overlap. Handles special cases such as uncacheable ramblocks
+>>>> + * correctly. Use this for accessing ramblock in response to DMA/VCPU IO,
+>>>> + * in preference to memcpy().
+>>>> + */
+>>>> +void qemu_ram_copy(void *dest, const void *src, size_t n);
+>>>> +
+>>>> +/**
+>>>> + * qemu_ram_move: move data to ramblock
+>>>> + *
+>>>> + * @dst: destination where the data is moved to
+>>>> + * @src: source where the data is moved from
+>>>> + * @n: length of data to be moved
+>>>> + *
+>>>> + * Move @n bytes from @src to @dst with the assumption that @src and @dst
+>>>> + * can overlap. Handles special cases such as uncacheable ramblocks
+>>>> + * correctly. Use this for accessing ramblock in response to DMA/VCPU IO,
+>>>> + * in preference to memmove().
+>>>> + */
+>>>> +void qemu_ram_move(void *dest, const void *src, size_t n);
+>>>> +
+>>>>    MemTxResult address_space_read_full(AddressSpace *as, hwaddr addr,
+>>>>                                        MemTxAttrs attrs, void *buf, hwaddr len);
+>>>>    MemTxResult flatview_read_continue(FlatView *fv, hwaddr addr,
+>>>> @@ -2970,7 +3000,7 @@ MemTxResult address_space_read(AddressSpace *as, hwaddr addr,
+>>>>                mr = flatview_translate(fv, addr, &addr1, &l, false, attrs);
+>>>>                if (len == l && memory_access_is_direct(mr, false, attrs)) {
+>>>>                    ptr = qemu_map_ram_ptr(mr->ram_block, addr1);
+>>>> -                memcpy(buf, ptr, len);
+>>>> +                qemu_ram_copy(buf, ptr, len);
+>>>>                } else {
+>>>>                    result = flatview_read_continue(fv, addr, attrs, buf, len,
+>>>>                                                    addr1, l, mr);
+>>>> diff --git a/system/physmem.c b/system/physmem.c
+>>>> index 7bcbf87573..45a17cd580 100644
+>>>> --- a/system/physmem.c
+>>>> +++ b/system/physmem.c
+>>>> @@ -3160,6 +3160,177 @@ void memory_region_flush_rom_device(MemoryRegion *mr, hwaddr addr, hwaddr size)
+>>>>        invalidate_and_set_dirty(mr, addr, size);
+>>>>    }
+>>>> +static void qemu_ram_copy_aligned(void *dst, const void *src, size_t n)
+>>>> +{
+>>>> +    switch (n) {
+>>>> +    case 1:
+>>>> +        __builtin_memcpy(dst, src, 1);
+>>>> +        break;
+>>>> +    case 2:
+>>>> +        __builtin_memcpy(dst, src, 2);
+>>>> +        break;
+>>>> +    case 4:
+>>>> +        __builtin_memcpy(dst, src, 4);
+>>>> +        break;
+>>>> +    case 8:
+>>>> +        __builtin_memcpy(dst, src, 8);
+>>>> +        break;
+>>>> +    default:
+>>>> +        memcpy(dst, src, n);
+>>>> +    }
+>>>> +}
+>>>> +
+>>>> +static void qemu_ram_move_aligned(void *dst, const void *src, size_t n)
+>>>> +{
+>>>> +    switch (n) {
+>>>> +    case 1:
+>>>> +        __builtin_memmove(dst, src, 1);
+>>>> +        break;
+>>>> +    case 2:
+>>>> +        __builtin_memmove(dst, src, 2);
+>>>> +        break;
+>>>> +    case 4:
+>>>> +        __builtin_memmove(dst, src, 4);
+>>>> +        break;
+>>>> +    case 8:
+>>>> +        __builtin_memmove(dst, src, 8);
+>>>> +        break;
+>>>> +    default:
+>>>> +        memmove(dst, src, n);
+>>>> +    }
+>>>> +}
+>>>
+>>> A weird name for this. You call it for both aligned and unaligned.
+>>>
+>>> maybe this is _unsafe and the "unaligned" below is _safe ?
+>>>
+>>
+>> Yeah, xxx_{aligned, unaligned}() should be renamed to xxx_{unsafe, safe}(). The
+>> question is why we're away from __builtin_{memcpy, memmove}() and memcpy/memmove
+>> since they're not safe as the new function name indicates? :-)
+> 
+> What is the question, exactly? That's why I made the list of 11 issues.
+> Is that unclear, somehow?  Another reason to include that, maybe.
+> 
 
-On 6/15/26 7:22 AM, Khushit Shah wrote:
->
->> On 11 Jun 2026, at 11:39 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> !-------------------------------------------------------------------|
->>  CAUTION: External Email
->>
->> |-------------------------------------------------------------------!
->>
->> Hi Khushit,
->>
->> On 6/10/26 2:31 PM, Khushit Shah wrote:
->>> Hi everyone,
->>>
->>> Posting the summary of the differences in property/value names and types used
->>> in named CPU model RFCs [1] and in the customizable host model series [2].
->> thank you very much for the synthesis.
->>> [1]: (v1) https://urldefense.proofpoint.com/v2/url?u=https-3A__lore.kernel.org_qemu-2Darm_20260513163356.3033159-2D1-2Dshaju.abraham-40nutanix.com_&d=DwIDaQ&c=s883GpUCOChKOHiocYtGcg&r=PGWMyignA0NiDmTlyP7vOTHozBws_VN86yrVmSMkBp0&m=WMtMYzC1MWeNKP-tmrbn6sokY_jAe_ZAbKRNTr67I7R2YK27TuJiP6vS1AaHhXO4&s=rMkbrJl6O2LoQIKdTl3Mbgp4vHoyjEkfh4ZWIsRwz14&e=  
->>> [1]: (v2) https://urldefense.proofpoint.com/v2/url?u=https-3A__lore.kernel.org_qemu-2Darm_20260605083358.1320563-2D1-2Dkhushit.shah-40nutanix.com_&d=DwIDaQ&c=s883GpUCOChKOHiocYtGcg&r=PGWMyignA0NiDmTlyP7vOTHozBws_VN86yrVmSMkBp0&m=WMtMYzC1MWeNKP-tmrbn6sokY_jAe_ZAbKRNTr67I7R2YK27TuJiP6vS1AaHhXO4&s=XXWQ5323Nn5TGbbMJjqJfE_7ioyokd081viyRfz__AA&e=
->>> [2]: (v6)  https://urldefense.proofpoint.com/v2/url?u=https-3A__lore.kernel.org_qemu-2Ddevel_20260519132905.145643-2D1-2Deric.auger-40redhat.com_&d=DwIDaQ&c=s883GpUCOChKOHiocYtGcg&r=PGWMyignA0NiDmTlyP7vOTHozBws_VN86yrVmSMkBp0&m=WMtMYzC1MWeNKP-tmrbn6sokY_jAe_ZAbKRNTr67I7R2YK27TuJiP6vS1AaHhXO4&s=YnEAPGlUj6nQbg3quRKvEaFkqT_5Og5Mz82RAZyM0wg&e=
->>>
->>> [2] defines all ID register field level properties, [1] also defines the 
->>> same field-level properties with some extra sugar.
->>>
->>> Approach for CPU Properties in [2]:
->>>
->>> Notably, [2] is simpler: a property name follows this convention:
->>> SYSREG_<ID_REGISTER_NAME>_<FIELD_NAME> and the property values are of type
->>> u64. A property for a field is added to the CPU object only if the field is
->>> writable. This means no extra work on the QEMU side when KVM starts
->>> exposing a new field as writable.
->>>
->>> So, say you want to set AES capability for the guest, then you say:
->>> -cpu host,SYSREG_ID_AA64ISAR0_AES=0/1/2
->>>
->>> Approach for CPU Properties in [1]:
->>> [1] also works on field-based properties. But uses a different convention
->>> for property names:
->>>    - for a field that maps 1:1 with ARM ARM FEAT_Xs, define the property
->>>      name as feat_<FieldName>, for example, ID_AA64ISAR0.AES maps cleanly
->>>      with FEAT_AES and FEAT_PMULL. Property names for ID_AA64ISAR0.AES,
->>>      will be feat_AES.
->> don't you want to also expose feat_PMULL too? In that case ARM ARM
->> specifies 2 features which are advertised by the same ID reg field. Why
->> would you advertise one FEAT and not the other? 
-> Also exposing feat_PMULL makes it much harder to manage properties, like
-> set of user configurations explodes that decides a ID reg field value. We will
-> need to handle cases like feat_PMULL=on, feat_AES=off. What does even
-spec says "If FEAT_PMULL is implemented, then FEAT_AES is implemented."
-> feat_PMULL=off should do? Does it set ISAR0.AES=0 or 1?
-the spec does not seem to document that imply relationship
->
-> Hence, I feel field level properties is the way to go.
-Nevertheless I agree this brings extra implementation complexify.
+We can take the e1000 issue on aarch64 for example:
 
-But since your prop are named FEAT_* it is not obvious it does not
-exactly match an actual FEAT but rather matches an id reg field.
-Controlling FEAT_PMULL with FEAT_EAS does not sound logical to me, as
-the spec refers to separate features.
->
->> In that case the spec says/:
->>
->> 0b0000 No AES instructions implemented.
->> 0b0001 AESE, AESD, AESMC, and AESIMC instructions implemented.
->> 0b0010 As for 0b0001, plus PMULL and PMULL2 instructions operating on
->> 64-bit source elements.
->>
->> FEAT_AES implements the functionality identified by the value 0b0001.
->> FEAT_PMULL implements the functionality identified by the value 0b0010
->>
->>
->>>    - for a field that does not cleanly map 1:1 with any ARM ARM FEATs,
->>>      define the property name as hw_prop_<FieldName>, for example 
->>>      ID_AA64MMFR0.TGRAN16, CTR_EL0.L1IP, etc., are named like
->>>      hw_prop_TGRAN16, hw_prop_L1IP, etc.
->> you may add that the feature mapping is inspired of the kernel
->> arch/arm64/kvm/kernel/cpufeature.c arm64_ftr_regs[]
->> You used it to easily identify which fields correspond to feature and
->> also to extract some other data which are not dealt with in the summary
->> (safe rule and safe value)
-> Yes.
->
->>> [1] does not generate properties automatically; each property we want to
->>> add must be added manually.
->>>
->>> Property value types in [1]:
->>> - string properties: for fields which have arch-defined values.
->>>
->>>  String values are derived from the kernel's sysreg file, for example,
->>>  for the field ID_AA64ISAR1.LS64, the sysreg file has
->>>        UnsignedEnum    63:60   LS64
->>>                0b0000  NI
->>>                0b0001  LS64
->>>                0b0010  LS64_V
->>>                0b0011  LS64_ACCDATA
->>>                0b0100  LS64WB
->>>        EndEnum
->>>
->>> In QEMU, the value names are "off", "ls64", "ls64_v”, “ls64_accdata"
->>> and "ls64wb". Which also closely match the manual:
->> you may add that those string values are not specified in ARM ARM. This
->> is the result of some human processing with possible distortion:
-> Yes, the exact string values are not derived from ARM ARM, I am not sure
-> if that is also the case for x86.
-It seems x86 also use names which deviate from the formal HW spec.
-If I understood correctly this sticks as much as possible to data in
-/proc/cpuinfo though
+Link: https://lore.kernel.org/qemu-devel/20260527091711.3901-1-liugang24219@sangfor.com.cn/
 
-looking at some random /proc/cpuinfo we have for instance:
-Features    : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp
-asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 sm3 sm4 asimddp
-sha512 sve asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp sve2
-sveaes svepmull svebitperm svesha3 svesm4 flagm2 frint svei8mm svebf16
-i8mm bf16 dgh bti
+The software allocate ring buffer for hardware to receive packet.
+In normal case, the hardware fill the RX ring descriptor, and with status DD bit=1 (Descriptor Done),
+then the ownership of the ring descriptor is converted to software, after the software consume
+the descriptor, it will write status DD bit=0 and give it back to hardware to refill data.
 
-Couldn't we create a prop layer above the SYSREG layer that builds those
-features exposed through /proc/cpuinfo. All the other writable fields
-that do not match any of those would remain with the low SYSREG prop.
-This was the original idea we had with Connie.
+pci_dma_write calls memcpy at the underlying level, and on aarch64 with glibc 2.24+,
+the memcpy/memmove implementation uses a branchless sequence that copies
+the same byte three times when count == 1.
 
-I will spend more time studying what was done for x86 and especially
-target/i386/cpu.c ...
->
->> In that case spec says:
->>
->> 0b0000 No LD64B or ST64B instructions are supported.
->> 0b0001 The LD64B and ST64B instructions are supported.
->> 0b0010 As 0b0001, and adds the ST64BV instruction and traps.
->> 0b0011 As 0b0010, and adds the ST64BV0 instruction, ACCDATA_EL1
->> register, and traps.
->> 0b0100 As 0b0011, and adds support for atomic accesses to Write-back
->> Cacheable, Shareable memory using one of the following:
->>      • LD64B and ST64B instructions. • SIMD&FP instructions that load or
->> store a pair of 128-bit registers by generating 32-byte single-copy
->> atomic accesses.
->>
->> Documentation/arch/arm64/cpu-feature-registers.rst documents the ABI for
->> exporting CPU/ID/feature regs. Those values are not defined there. Is
->> there any place where those values are documented besides sysreg?
-> Sadly, no. Can we not document the values in QEMU’s documentation?
-for x86 they have:
-docs/system/cpu-models-x86.rst.inc
+So the issue case:
 
->
->>>        FEAT_LS64 implements the functionality identified by 0b0001.
->>>        FEAT_LS64_V implements the functionality identified by 0b0010.
->>>        FEAT_LS64_ACCDATA implements the functionality identified by 0b0011.
->>>        FEAT_LS64WB implements the functionality identified by 0b0100.
+qemu/e1000                      |       guest/dpdk
+-----------------------------------------------------
+memcpy(dst, &desc.status, 1)
+   1st write dst DD=1
+                                    poll and see DD==1
+                                    consume the descriptor
+                                    write status DD=0 back
+   2nd write dst DD=1
+   3rd write dst DD=1
+
+That left the dirty state, and RX will hang.
+
+>> If we're away from memcpy/memmove() and switch to xxx_safe() for x86, we shouldn't
+>> have any more concerns except the performance lost. At least, everything should
+>> be working from function POV because we're not affected by glibc and the optimization
+>> enforced by the compiler any more.
+> 
+> There's no way to write C and not depend on compiler's whims for
+> weird things such as unaligned memory accesses.
+> 
 >>>
->>> In most of the cases, as seen in the Appendix, this works very well.
 >>>
->>> - u64 properties: for fields which have no arch-defined values, like cache
->>>   size, debug registers, CPU revision, etc...
->>> - bool properties: for single-bit fields.
->>> - Fractional(string) properties: for fields like CSV2 and CSV2_FRAC that
->>>   collectively decide on a feature version. This helps in preventing invalid
->>>   configuration like CSV2=0 while CSV2_FRAC=1.
 >>>
->>> The property and value names for [1] are still open to bikeshedding. I have
->>> left composites out of this comparison as they are a convenience, and only
->>> defined for named models.
->>>
->>> I have tried to keep the comparison above neutral, but Eric/Cornelia can
->>> add more. I see real merit in [2]'s simplicity and generalization. But
->>> for [1], I love a command line that looks like:
->>> -cpu host,feat_DP=off,feat_AES=off,feat_RAS=0.0,...
->>>
->>> instead of:
->>> -cpu host \
->>>     SYSREG_ID_AA64ISAR0_DP=0,\
->>>     SYSREG_ID_AA64ISAR0_AES=0,\
->>>     SYSREG_ID_AA64PFR0_RAS=0,\
->>>     SYSREG_ID_AA64PFR1_RAS_FRAC=0 
->>>
->>> I have no strong preference on this topic. The named CPU model layer is
->>> independent of whichever convention we choose here, so I'd like the
->>> community to decide which direction makes the most sense :)
->>>
->>> The Appendix below lists all currently defined properties in [1] and their
->>> named values.
->> I would like to add that in [2] we generate all the data from AARCHMRS
->> registers.json (machine readable spec from ARM). In earlier versions we
->> also used kernel sysreg as source of truth and we got the feedback from
->> Marc to try using the MRS instead. The introduction of string values for
->> some of the props break that attempt because as I explained earlier
->> those string values are not defined in the spec and therefore cannot be
->> extracted from the MRS.
+>>>> +
+>>>> +static void qemu_ram_copy_unaligned(void *dst, const void *src,
+>>>> +                                    size_t n, size_t max_step)
+>>>> +{
+>>>> +    uintptr_t test, step;
+>>>> +
+>>>> +    /* Aligned maximal step */
+>>>> +    max_step = pow2floor(max_step);
+>>>> +
+>>>> +    while (n) {
+>>>> +        test = (uintptr_t)src | (uintptr_t)dst | n | max_step;
+>>>> +        step = test & -test;
+>>>> +
+>>>> +        switch (step) {
+>>>> +        case 1:
+>>>> +            qatomic_set((uint8_t *)dst, qatomic_read((uint8_t *)src));
+>>>> +            src += 1;
+>>>> +            dst += 1;
+>>>> +            n -= 1;
+>>>> +            break;
+>>>> +        case 2:
+>>>> +            qatomic_set((uint16_t *)dst, qatomic_read((uint16_t *)src));
+>>>> +            src += 2;
+>>>> +            dst += 2;
+>>>> +            n -= 2;
+>>>> +            break;
+>>>> +        case 4:
+>>>> +            qatomic_set((uint32_t *)dst, qatomic_read((uint32_t *)src));
+>>>> +            src += 4;
+>>>> +            dst += 4;
+>>>> +            n -= 4;
+>>>> +            break;
+>>>> +        case 8:
+>>>> +            qatomic_set((uint64_t *)dst, qatomic_read((uint64_t *)src));
+>>>> +            src += 8;
+>>>> +            dst += 8;
+>>>> +            n -= 8;
+>>>> +            break;
+>>>> +        default:
+>>>> +            memcpy(dst, src, step);
+>>>> +            src += step;
+>>>> +            dst += step;
+>>>> +            n -= step;
+>>>> +        }
+>>>> +    }
+>>>> +}
+>>>> +
+>>>> +static void qemu_ram_backwards_copy_unaligned(void *dst, const void *src,
+>>>> +                                              size_t n, size_t max_step)
+>>>> +{
+>>>> +    uintptr_t test, step;
+>>>> +
+>>>> +    /* Aligned maximal step */
+>>>> +    max_step = pow2floor(max_step);
+>>>> +
+>>>> +    /* End of the blocks */
+>>>> +    src += n;
+>>>> +    dst += n;
+>>>> +
+>>>> +    while (n) {
+>>>> +        test = (uintptr_t)src | (uintptr_t)dst | n | max_step;
+>>>> +        step = test & -test;
+>>>> +
+>>>> +        switch (step) {
+>>>> +        case 1:
+>>>> +            src -= 1;
+>>>> +            dst -= 1;
+>>>> +            n -= 1;
+>>>> +            qatomic_set((uint8_t *)dst, qatomic_read((uint8_t *)src));
+>>>> +            break;
+>>>> +        case 2:
+>>>> +            src -= 2;
+>>>> +            dst -= 2;
+>>>> +            n -= 2;
+>>>> +            qatomic_set((uint16_t *)dst, qatomic_read((uint16_t *)src));
+>>>> +            break;
+>>>> +        case 4:
+>>>> +            src -= 4;
+>>>> +            dst -= 4;
+>>>> +            n -= 4;
+>>>> +            qatomic_set((uint32_t *)dst, qatomic_read((uint32_t *)src));
+>>>> +            break;
+>>>> +        case 8:
+>>>> +            src -= 8;
+>>>> +            dst -= 8;
+>>>> +            n -= 8;
+>>>> +            qatomic_set((uint64_t *)dst, qatomic_read((uint64_t *)src));
+>>>> +            break;
+>>>> +        default:
+>>>> +            src -= step;
+>>>> +            dst -= step;
+>>>> +            n -= step;
+>>>> +            memmove(dst, src, step);
 >>
->> Maybe we shall further look at what can be extracted from AARCHMRS
->> Features.json. 
->>> Warm Regards,
->>> Khushit
->>>
->>> Appendix:
->>> ==================
->>> all currently defined properties in [1]:
->>>
->>> feat_AES (ID_AA64ISAR0.AES): off, aes, pmull
->>> feat_AFP (ID_AA64MMFR1.AFP): off, on
->>> feat_AMU (ID_AA64PFR0.AMU): off, on, v1p1
->>> feat_AT (ID_AA64MMFR2.AT): off, on
->>> feat_ATOMIC (ID_AA64ISAR0.ATOMIC): off, on, LSE128
->>> feat_AdvSIMD (ID_AA64PFR0.ADVSIMD): on, fp16, off
->>> feat_BBM (ID_AA64MMFR2.BBM): 0, 1, 2
->>> feat_BC (ID_AA64ISAR2.BC): off, on
->>> feat_BF16 (ID_AA64ISAR1.BF16): off, on, ebf16
->>> feat_BIGEND (ID_AA64MMFR0.BIGEND): off, on
->>> feat_BIGENDEL0 (ID_AA64MMFR0.BIGENDEL0): off, on
->>> feat_BT (ID_AA64PFR1.BT): off, on
->>> feat_CLRBHB (ID_AA64ISAR2.CLRBHB): off, on
->>> feat_CNP (ID_AA64MMFR2.CNP): off, on
->>> feat_CRC32 (ID_AA64ISAR0.CRC32): off, on
->>> feat_CSSC (ID_AA64ISAR2.CSSC): off, on, cmpbr
->>> feat_CSV3 (ID_AA64PFR0.CSV3): off, on
->>> feat_DBG (ID_AA64DFR0.DEBUGVER): on, vhe, v8p2, v8p4, v8p8, v8p9
->>> feat_DF2 (ID_AA64PFR1.DF2): off, on
->>> feat_DGH (ID_AA64ISAR1.DGH): off, on
->>> feat_DIT (ID_AA64PFR0.DIT): off, on
->>> feat_DP (ID_AA64ISAR0.DP): off, on
->>> feat_DPB (ID_AA64ISAR1.DPB): off, on, dpb2
->>> feat_DoubleLock (ID_AA64DFR0.DOUBLELOCK): on, off
->>> feat_E0PD (ID_AA64MMFR2.E0PD): off, on
->>> feat_E2H0 (ID_AA64MMFR4.E2H0): on, ni_nv1, off
->>> feat_ECBHB (ID_AA64MMFR1.ECBHB): off, on
->>> feat_ECV (ID_AA64MMFR0.ECV): off, on, cntpoff
->>> feat_ETS (ID_AA64MMFR1.ETS): off, on, ets2, ets3
->>> feat_EVT (ID_AA64MMFR2.EVT): off, on, ttlbxs
->>> feat_EXS (ID_AA64MMFR0.EXS): off, on
->>> feat_F8CVT (ID_AA64FPFR0.F8CVT): off, on
->>> feat_F8DP2 (ID_AA64FPFR0.F8DP2): off, on
->>> feat_F8DP4 (ID_AA64FPFR0.F8DP4): off, on
->>> feat_F8E4M3 (ID_AA64FPFR0.F8E4M3): off, on
->>> feat_F8E5M2 (ID_AA64FPFR0.F8E5M2): off, on
->>> feat_F8FMA (ID_AA64FPFR0.F8FMA): off, on
->>> feat_F8MM4 (ID_AA64FPFR0.F8MM4): off, on
->>> feat_F8MM8 (ID_AA64FPFR0.F8MM8): off, on
->>> feat_FAMINMAX (ID_AA64ISAR3.FAMINMAX): off, on
->>> feat_FCMA (ID_AA64ISAR1.FCMA): off, on
->>> feat_FGT (ID_AA64MMFR0.FGT): off, on, fgt2
->>> feat_FHM (ID_AA64ISAR0.FHM): off, on
->>> feat_FP (ID_AA64PFR0.FP): on, fp16, off
->>> feat_FPMR (ID_AA64PFR2.FPMR): off, on
->>> feat_FPRCVT (ID_AA64ISAR3.FPRCVT): off, on
->>> feat_FRINTTS (ID_AA64ISAR1.FRINTTS): off, on
->>> feat_GCS (ID_AA64PFR1.GCS): off, on
->>> feat_HAFDBS (ID_AA64MMFR1.HAFDBS): off, af, dbm, haft, hdbss
->>> feat_HCX (ID_AA64MMFR1.HCX): off, on
->>> feat_HPDS (ID_AA64MMFR1.HPDS): off, on, hpds2
->>> feat_I8MM (ID_AA64ISAR1.I8MM): off, on
->>> feat_IESB (ID_AA64MMFR2.IESB): off, on
->>> feat_JSCVT (ID_AA64ISAR1.JSCVT): off, on
->>> feat_LO (ID_AA64MMFR1.LO): off, on
->>> feat_LRCPC (ID_AA64ISAR1.LRCPC): off, on, lrcpc2, lrcpc3
->>> feat_LS64 (ID_AA64ISAR1.LS64): off, ls64, ls64_v, ls64_accdata, ls64wb
->>> feat_LSFE (ID_AA64ISAR3.LSFE): off, on
->>> feat_LSM (ID_AA64MMFR2.LSM): off, on
->>> feat_LUT (ID_AA64ISAR2.LUT): off, on
->>> feat_MOPS (ID_AA64ISAR2.MOPS): off, on
->>> feat_MTE (ID_AA64PFR1.MTE): off, on, mte2, mte3
->>> feat_MTEFAR (ID_AA64PFR2.MTEFAR): off, on
->>> feat_MTESTOREONLY (ID_AA64PFR2.MTESTOREONLY): off, on
->>> feat_MTE_FRAC (ID_AA64PFR1.MTE_FRAC): async, off
->>> feat_NMI (ID_AA64PFR1.NMI): off, on
->>> feat_PAN (ID_AA64MMFR1.PAN): off, on, pan2, pan3
->>> feat_PMU (ID_AA64DFR0.PMUVER): off, on, v3p1, v3p4, v3p5, v3p7, v3p8, v3p9, imp_def
->>> feat_RDM (ID_AA64ISAR0.RDM): off, on
->>> feat_RNDR (ID_AA64ISAR0.RNDR): off, on
->>> feat_RPRES (ID_AA64ISAR2.RPRES): off, on
->>> feat_RPRFM (ID_AA64ISAR2.RPRFM): off, on
->>> feat_S1PIE (ID_AA64MMFR3.S1PIE): off, on
->>> feat_S1POE (ID_AA64MMFR3.S1POE): off, on
->>> feat_SB (ID_AA64ISAR1.SB): off, on
->>> feat_SCTLRX (ID_AA64MMFR3.SCTLRX): off, on
->>> feat_SEL2 (ID_AA64PFR0.SEL2): off, on
->>> feat_SHA1 (ID_AA64ISAR0.SHA1): off, on
->>> feat_SHA2 (ID_AA64ISAR0.SHA2): off, sha256, sha512
->>> feat_SHA3 (ID_AA64ISAR0.SHA3): off, on
->>> feat_SM3 (ID_AA64ISAR0.SM3): off, on
->>> feat_SM4 (ID_AA64ISAR0.SM4): off, on
->>> feat_SNSMEM (ID_AA64MMFR0.SNSMEM): off, on
->>> feat_SPECRES (ID_AA64ISAR1.SPECRES): off, on, cosp_rctx
->>> feat_SSBS (ID_AA64PFR1.SSBS): off, on, ssbs2
->>> feat_SVE (ID_AA64PFR0.SVE): off, on
->>> feat_SVE_AES (ID_AA64ZFR0.AES): off, on, pmull128, aes2
->>> feat_SVE_B16B16 (ID_AA64ZFR0.B16B16): off, on, bfscale
->>> feat_SVE_BFLOAT16 (ID_AA64ZFR0.BFLOAT16): off, on, ebf16
->>> feat_SVE_BITPERM (ID_AA64ZFR0.BITPERM): off, on
->>> feat_SVE_ELTPERM (ID_AA64ZFR0.ELTPERM): off, on
->>> feat_SVE_F16MM (ID_AA64ZFR0.F16MM): off, on
->>> feat_SVE_F32MM (ID_AA64ZFR0.F32MM): off, on
->>> feat_SVE_F64MM (ID_AA64ZFR0.F64MM): off, on
->>> feat_SVE_I8MM (ID_AA64ZFR0.I8MM): off, on
->>> feat_SVE_SHA3 (ID_AA64ZFR0.SHA3): off, on
->>> feat_SVE_SM4 (ID_AA64ZFR0.SM4): off, on
->>> feat_SpecSEI (ID_AA64MMFR1.SPECSEI): off, on
->>> feat_TCRX (ID_AA64MMFR3.TCRX): off, on
->>> feat_TIDCP1 (ID_AA64MMFR1.TIDCP1): off, on
->>> feat_TLB (ID_AA64ISAR0.TLB): off, os, range
->>> feat_TS (ID_AA64ISAR0.TS): off, flagm, flagm2
->>> feat_TTL (ID_AA64MMFR2.TTL): off, on
->>> feat_TWED (ID_AA64MMFR1.TWED): off, on
->>> feat_UAO (ID_AA64MMFR2.UAO): off, on
->>> feat_VH (ID_AA64MMFR1.VH): off, on
->>> feat_WFXT (ID_AA64ISAR2.WFXT): off, on
->>> feat_XNX (ID_AA64MMFR1.XNX): off, on
->>> feat_XS (ID_AA64ISAR1.XS): off, on
->> in [1] you have properties for fields which are not writable in the
->> kernel whereas [2] exposes a reduced set of props, only for writable
->> fields. 
-> Yes, but also immediately makes a field property if it is writable. Shouldn’t
-> there be intent before exposing a property?
->
->>> Exceptions, because feat_ELx seemed wrong:
->>> el0_mode (ID_AA64PFR0.EL0): aarch64, aarch32
->>> el1_mode (ID_AA64PFR0.EL1): aarch64, aarch32
->>> el2_mode (ID_AA64PFR0.EL2): off, aarch64, aarch32
->>> el3_mode (ID_AA64PFR0.EL3): off, aarch64, aarch32
->>>
->>> CPU identification props:
->>> cpu_aidr (AIDR.VAL): u64
->>> cpu_architecture (MIDR.ARCHITECTURE): u64
->>> cpu_implementer (MIDR.IMPLEMENTER): u64
->>> cpu_partnum (MIDR.PARTNUM): u64
->>> cpu_revidr (REVIDR.VAL): u64
->>> cpu_revision (MIDR.REVISION): u64
->>> cpu_variant (MIDR.VARIANT): u64
->>>
->>> Fractional:
->>> feat_RAS (Fractional ID_AA64PFR0.RAS, ID_AA64PFR1.RAS_FRAC):
->>>    0.0, 1.0, 1.1, 1.1_base, 2.0
->>> feat_CSV2 (Fractional ID_AA64PFR0.CSV2, ID_AA64PFR1.CSV2_FRAC):
->>>    0.0, 1.0, 1.1, 1.2, 2.0, 3.0
->>> feat_MPAM (Fractional ID_AA64PFR0.MPAM, ID_AA64PFR1.MPAM_FRAC):
->>>    0.0, 0.1, 1.0, 1.1
->>> feat_NV (Fractional ID_AA64MMFR2.NV, ID_AA64MMFR4.NV_FRAC):
->>>    0.0, nv2_only, 1.0, 2.0, 2.0_only, 2.1
->>>
->>> Properties for fields not cleanly mapping 1:1 to any ARM FEAT_x:
->>> hw_prop_APA (ID_AA64ISAR1.APA): off, pauth, epac, pauth2, fpac, fpaccombine, pauth_lr
->>> hw_prop_APA3 (ID_AA64ISAR2.APA3): off, pauth, epac, pauth2, fpac, fpaccombine, pauth_lr
->>> hw_prop_API (ID_AA64ISAR1.API): off, pauth, epac, pauth2, fpac, fpaccombine, pauth_lr
->>> hw_prop_CCIDX (ID_AA64MMFR2.CCIDX): 32, 64
->>> hw_prop_FWB (ID_AA64MMFR2.FWB): off, on
->>> hw_prop_GPA (ID_AA64ISAR1.GPA): off, on
->>> hw_prop_GPA3 (ID_AA64ISAR2.GPA3): off, on
->>> hw_prop_GPI (ID_AA64ISAR1.GPI): off, on
->>> hw_prop_IDS (ID_AA64MMFR2.IDS): 0x0, 0x18
->>> hw_prop_L1IP (CTR_EL0.L1IP): reserved_vpipt, reserved_aivivt, vipt, pipt
->>> hw_prop_PARANGE (ID_AA64MMFR0.PARANGE): 32, 36, 40, 42, 44, 48, 52, 56
->>> hw_prop_PMSVer (ID_AA64DFR0.PMSVER): off, on, v1p1, v1p2, v1p3, v1p4, v1p5
->>> hw_prop_ST (ID_AA64MMFR2.ST): 39, 48_47
->>> hw_prop_SVEVer (ID_AA64ZFR0.SVEVER): on, sve2, sve2p1, sve2p2
->>> hw_prop_TGRAN16 (ID_AA64MMFR0.TGRAN16): off, on, 52_bit
->>> hw_prop_TGRAN16_2 (ID_AA64MMFR0.TGRAN16_2): tgran16, off, on, 52_bit
->>> hw_prop_TGRAN4 (ID_AA64MMFR0.TGRAN4): on, 52_bit, off
->>> hw_prop_TGRAN4_2 (ID_AA64MMFR0.TGRAN4_2): tgran4, off, on, 52_bit
->>> hw_prop_TGRAN64 (ID_AA64MMFR0.TGRAN64): on, off
->>> hw_prop_TGRAN64_2 (ID_AA64MMFR0.TGRAN64_2): tgran64, off, on
->>> hw_prop_VARANGE (ID_AA64MMFR2.VARANGE): 48, 52
->>> hw_prop_VMIDBITS (ID_AA64MMFR1.VMIDBITS): 8, 16
->>>
->>> hw_prop_WRPs (ID_AA64DFR0.WRPS): u64
->>> hw_prop_IMInline (CTR_EL0.IMINLINE): u64
->>> hw_prop_IDC (CTR_EL0.IDC): u64
->>> hw_prop_DMInline (CTR_EL0.DMINLINE): u64
->>> hw_prop_DZP (DCZID_EL0.DZP): u64
->>> hw_prop_ERG (CTR_EL0.ERG): u64
->>> hw_prop_CTX_CMPs (ID_AA64DFR0.CTX_CMPS): u64
->>> hw_prop_CWG (CTR_EL0.CWG): u64
->>> hw_prop_DIC (CTR_EL0.DIC): u64
->>> hw_prop_ASIDBITS (ID_AA64MMFR0.ASIDBITS): 8, 16
->>> hw_prop_BRPS (ID_AA64DFR0.BRPS): u64
->>> hw_prop_BS (DCZID_EL0.BS): u64
->> Thanks
+>> This should be memcpy() actually since src/dst don't overlap. However, I think
+>> Richard may suggest to avoid using memcpy/memmove() here.
 >>
->> Eric
-> Warm Regards,
-> Khushit
->
+>>>> +        }
+>>>> +    }
+>>>> +}
+>>>> +
+>>>> +/* x86 should work with __builtin_{memcpy, memmove}() for IO access */
+>>>> +#if defined(__i386__) || defined(__x86_64__)
+>>>> +#define HOST_UNALIGNED_MMIO_OK 1
+>>>
+>>> maybe HOST_UNALIGNED_VECTOR_MMIO_OK ? We also care that vector stores
+>>> are safe.
+>>>
+>>
+>> Yes, it should be renamed to HOST_UNALIGNED_VECTOR_MMIO_OK.
+>>
+>>>> +#else
+>>>> +#define HOST_UNALIGNED_MMIO_OK 0
+>>>> +#endif
+>>>> +
+>>>> +void qemu_ram_copy(void *dst, const void *src, size_t n)
+>>>> +{
+>>>> +    if (dst == src || n == 0) {
+>>>> +        return;
+>>>> +    }
+>>>> +
+>>>> +    if (HOST_UNALIGNED_MMIO_OK) {
+>>>> +        qemu_ram_copy_aligned(dst, src, n);
+>>>> +    } else {
+>>>> +        qemu_ram_copy_unaligned(dst, src, n, 8);
+>>>> +    }
+>>>> +}
+>>>> +
+>>>> +void qemu_ram_move(void *dst, const void *src, size_t n)
+>>>> +{
+>>>> +    if (src == dst || n == 0) {
+>>>> +        return;
+>>>> +    }
+>>>> +
+>>>> +    if (HOST_UNALIGNED_MMIO_OK) {
+>>>> +        qemu_ram_move_aligned(dst, src, n);
+>>>> +    } else if (dst < src) {
+>>>> +        qemu_ram_copy_unaligned(dst, src, n, src - dst);
+>>>> +    } else {
+>>>> +        qemu_ram_backwards_copy_unaligned(dst, src, n, dst - src);
+>>>> +    }
+>>>> +}
+>>>> +
+>>>>    int memory_access_size(MemoryRegion *mr, unsigned l, hwaddr addr)
+>>>>    {
+>>>>        unsigned access_size_max = mr->ops->valid.max_access_size;
+>>>> @@ -3272,7 +3443,7 @@ static MemTxResult flatview_write_continue_step(MemTxAttrs attrs,
+>>>>            uint8_t *ram_ptr = qemu_ram_ptr_length(mr->ram_block, mr_addr, l,
+>>>>                                                   false, true);
+>>>> -        memmove(ram_ptr, buf, *l);
+>>>> +        qemu_ram_move(ram_ptr, buf, *l);
+>>>>            invalidate_and_set_dirty(mr, mr_addr, *l);
+>>>>            return MEMTX_OK;
+>>>> @@ -3365,7 +3536,7 @@ static MemTxResult flatview_read_continue_step(MemTxAttrs attrs, uint8_t *buf,
+>>>>            uint8_t *ram_ptr = qemu_ram_ptr_length(mr->ram_block, mr_addr, l,
+>>>>                                                   false, false);
+>>>> -        memcpy(buf, ram_ptr, *l);
+>>>> +        qemu_ram_copy(buf, ram_ptr, *l);
+>>>>            return MEMTX_OK;
+>>>>        }
+>>>> @@ -3503,8 +3674,7 @@ MemTxResult address_space_write_rom(AddressSpace *as, hwaddr addr,
+>>>>                l = memory_access_size(mr, l, addr1);
+>>>>            } else {
+>>>>                /* ROM/RAM case */
+>>>> -            void *ram_ptr = qemu_map_ram_ptr(mr->ram_block, addr1);
+>>>> -            memcpy(ram_ptr, buf, l);
+>>>> +            qemu_ram_copy(qemu_map_ram_ptr(mr->ram_block, addr1), buf, l);
+>>>>                invalidate_and_set_dirty(mr, addr1, l);
+>>>>            }
+>>>>            len -= l;
+>>>> -- 
+>>>> 2.54.0
+>>>
+>>
+>> Thanks,
+>> Gavin
+> 
+> 
+> 
+
+-- 
+Thanks,
+- Ding Hui
 
 

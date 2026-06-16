@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E195CD98DA
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 13:28:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62748CD98E8
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 13:28:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZTpe-00083w-6C; Tue, 16 Jun 2026 09:27:58 -0400
+	id 1wZTq2-0000xt-UY; Tue, 16 Jun 2026 09:28:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wZTpb-0007wB-VP
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 09:27:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1wZTq1-0000rj-Jr
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2026 09:28:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wZTpa-0005zQ-Cm
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 09:27:55 -0400
+ id 1wZTpy-00065o-09
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2026 09:28:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781616472;
+ s=mimecast20190719; t=1781616497;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qySDmpGubd1jDBl8VeG5Y8I9gHIq9QwIiLHxNZ7iLZI=;
- b=FSZciyI7S1z1ryUiFczolKCWzEQamBYSyuQe6o+gm4St1H8KfcqmM14eKPvSxfGBbHMzOX
- pqQg6uaH+6UGDcT4MVWgc3Ip6Mx7NLqPFLOrIMkj19+5muVSh8yBoK9nkYMVPC149nVOAs
- WnsCGn+PLEr4HpEiOgZsxAN78iSXHWk=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=m+A/vxmsYMKabhk+ehh5QLIxfuqjhwoqhOGg2BRC+lg=;
+ b=QxDNOxjlVX5yIgQbVb3ucMo64JmcqNdvoThKnCyNGBqeympx2D2+mlmovfp51GdGR6i093
+ /slMT6eOiDQ19HdyliFUAyUzKJMJUj/SBIzoB4HUykbjr+2s9vrTwekoUQQmCX7dgeHtUI
+ KtxYOOH26rH2yDbpyzHi+zdeG5SCew4=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-466-C5W2-Wa8NoS7vpCoZazcbQ-1; Tue,
- 16 Jun 2026 09:27:46 -0400
-X-MC-Unique: C5W2-Wa8NoS7vpCoZazcbQ-1
-X-Mimecast-MFC-AGG-ID: C5W2-Wa8NoS7vpCoZazcbQ_1781616464
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-457-E4Wf4MNxOuiusikl6tK3Kg-1; Tue,
+ 16 Jun 2026 09:28:13 -0400
+X-MC-Unique: E4Wf4MNxOuiusikl6tK3Kg-1
+X-Mimecast-MFC-AGG-ID: E4Wf4MNxOuiusikl6tK3Kg_1781616491
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B85E3195607E; Tue, 16 Jun 2026 13:27:44 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C770A1805A17; Tue, 16 Jun 2026 13:28:11 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.48.30])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BC2353008B3B; Tue, 16 Jun 2026 13:27:38 +0000 (UTC)
+ id 8C5E43000203; Tue, 16 Jun 2026 13:28:05 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -56,27 +56,26 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [RFC PATCH v6 10/17] target/arm/kvm: Retrieve writable ID reg map
-Date: Tue, 16 Jun 2026 15:16:57 +0200
-Message-ID: <20260616132625.1732031-11-eric.auger@redhat.com>
+Subject: [RFC PATCH v6 14/17] arm-qmp-cmds: introspection for ID register props
+Date: Tue, 16 Jun 2026 15:17:01 +0200
+Message-ID: <20260616132625.1732031-15-eric.auger@redhat.com>
 In-Reply-To: <20260616132625.1732031-1-eric.auger@redhat.com>
 References: <20260616132625.1732031-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: AXO1Hi51JdYvmPsJkgiIvyvnsrhOJHUGmvmj5OsZZjU_1781616464
+X-Mimecast-MFC-PROC-ID: p9cPsAJB3ziH_DYmceak0nMMRdaLU3ZDZcdZKZzF8oo_1781616491
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,120 +93,100 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Cornelia Huck <cohuck@redhat.com>
 
-Add an helper to retrieve the writable id reg bitmask.
+Implement the capability to query available ID register values by
+adding SYSREG_* options and values to the cpu model expansion for the
+host model, if available.
 
-then retrieve the writable_map array and dispatch it in the writable_map
-fields of arm64_id_regs[] elements.
+Excerpt:
+(QEMU) query-cpu-model-expansion type=full model={"name":"host"}
+{"return": {"model": {"name": "host", "props": {"SYSREG_ID_AA64PFR0_EL1_EL3": 1,
+"SYSREG_ID_AA64ISAR2_EL1_CLRBHB": 0, "SYSREG_CTR_EL0_L1Ip": 3,
+"SYSREG_MIDR_EL1_PartNum": 3407, "SYSREG_CTR_EL0_DminLine": 4,
+"SYSREG_ID_AA64MMFR0_EL1_PARange": 5, "SYSREG_ID_AA64MMFR1_EL1_ECBHB": 0
+../..
+
+So this allows the upper stack to detect available writable ID
+regs and the "host passthrough model" values.
+
+It also allows to test some ID reg field values:
+(QEMU) query-cpu-model-expansion type=full model={"name":"host","props":{"SYSREG_ID_AA64ISAR0_EL1_DP":0x13}}
+{"error": {"class": "GenericError", "desc": "idreg SYSREG_ID_AA64ISAR0_EL1_DP set value (0x13) exceeds length of field (4)!"}}
+
+(QEMU) query-cpu-model-expansion type=full model={"name":"host","props":{"SYSREG_ID_AA64ISAR0_EL1_DP":0x2}}
+{"error": {"class": "GenericError", "desc": "idreg SYSREG_ID_AA64ISAR0_EL1_DP set value (0x2) does not match any arch valid enum value!"}}
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 
 ---
 
-v5 -> v6
-- use arm64_id_regs[].writable_map
-- squashed 2 commits (helper + user)
-- removed stub
+v5 -> v6:
+- add the write capability
 ---
- target/arm/kvm.c | 61 ++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 61 insertions(+)
+ target/arm/arm-qmp-cmds.c | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index a54ef51ec2..6f91407d41 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -28,6 +28,7 @@
+diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+index 83ec95c290..edcfc82a25 100644
+--- a/target/arm/arm-qmp-cmds.c
++++ b/target/arm/arm-qmp-cmds.c
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qemu/target-info.h"
+ #include "hw/core/boards.h"
  #include "kvm_arm.h"
- #include "cpu.h"
- #include "cpu-sysregs.h"
-+#include "cpu-idregs.h"
- #include "trace.h"
- #include "internals.h"
- #include "hw/pci/pci.h"
-@@ -51,6 +52,7 @@ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
- static bool cap_has_mp_state;
- static bool cap_has_inject_serror_esr;
- static bool cap_has_inject_ext_dabt;
-+static bool writable_map_dispatched;
- 
- /**
-  * ARMHostCPUFeatures: information about the host CPU (identified
-@@ -273,6 +275,21 @@ static uint32_t kvm_arm_sve_get_vls(int fd)
-     return vls[0] & MAKE_64BIT_MASK(0, ARM_MAX_VQ);
- }
- 
-+static int kvm_feature_idx_to_idregs_idx(int kidx)
-+{
-+    int op1, crm, op2;
-+    ARMSysRegs sysreg;
-+
-+    op1 = kidx / 64;
-+    if (op1 == 2) {
-+        op1 = 3;
-+    }
-+    crm = (kidx % 64) / 8;
-+    op2 = kidx % 8;
-+    sysreg = ENCODE_ID_REG(3, op1, 0, crm, op2);
-+    return get_sysreg_idx(sysreg);
-+}
-+
- static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+@@ -84,6 +85,8 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+                                                      Error **errp)
  {
-     /* Identify the feature bits corresponding to the host CPU, and
-@@ -480,9 +497,53 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     ahcf->features = features;
- }
+     CpuModelExpansionInfo *expansion_info;
++    ObjectPropertyIterator iter;
++    ObjectProperty *idregprop;
+     const QDict *qdict_in;
+     QDict *qdict_out;
+     ObjectClass *oc;
+@@ -145,6 +148,20 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+         }
  
-+static int kvm_arm_get_writable_id_regs(uint64_t *idregmap)
-+{
-+    int cap_writable_id_regs;
-+    struct reg_mask_range range = {
-+        .range = KVM_ARM_FEATURE_ID_RANGE,
-+        .reserved = {0},
-+        .addr = (uint64_t)idregmap,
-+    };
+         qdict_in = qobject_to(QDict, model->props);
 +
-+    cap_writable_id_regs =
-+        kvm_check_extension(kvm_state, KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES);
++        object_property_iter_init(&iter, obj);
 +
-+    if (!cap_writable_id_regs ||
-+        !(cap_writable_id_regs & (1 << KVM_ARM_FEATURE_ID_RANGE))) {
-+        return -ENOSYS;
-+    }
-+
-+    if (kvm_vm_ioctl(kvm_state, KVM_ARM_GET_REG_WRITABLE_MASKS, &range)) {
-+        return -errno;
-+    }
-+    return 0;
-+}
-+
- void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
- {
-     CPUARMState *env = &cpu->env;
-+    uint64_t *writable_map;
-+
-+    writable_map = g_new(uint64_t, KVM_ARM_FEATURE_ID_RANGE_SIZE);
-+
-+    if (!writable_map_dispatched &&
-+        !kvm_arm_get_writable_id_regs(writable_map)) {
-+        for (int i = 0; i < KVM_ARM_FEATURE_ID_RANGE_SIZE; i++) {
-+            uint64_t mask = writable_map[i];
-+
-+            if (mask) {
-+                int idx = kvm_feature_idx_to_idregs_idx(i);
-+
-+                if (idx < 0 || idx > ARRAY_SIZE(arm64_id_regs)) {
-+                    continue;
++        while ((idregprop = object_property_iter_next(&iter))) {
++            if (!g_str_has_prefix(idregprop->name, "SYSREG_")) {
++                continue;
++            }
++            if (qdict_get(qdict_in, idregprop->name)) {
++                if (!object_property_set(obj, idregprop->name, visitor, &err)) {
++                    break;
 +                }
-+                arm64_id_regs[idx].writable_mask = mask;
 +            }
 +        }
-+        writable_map_dispatched = true;
-+    }
-+    g_free(writable_map);
++
+         i = 0;
+         while ((name = cpu_model_advertised_features[i++]) != NULL) {
+             if (qdict_get(qdict_in, name)) {
+@@ -190,6 +207,18 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+         }
+     }
  
-     if (!arm_host_cpu_features.dtb_compatible) {
-         kvm_arm_get_host_cpu_features(&arm_host_cpu_features);
++    object_property_iter_init(&iter, obj);
++
++    while ((idregprop = object_property_iter_next(&iter))) {
++        QObject *value;
++
++        if (!g_str_has_prefix(idregprop->name, "SYSREG_")) {
++            continue;
++        }
++        value = object_property_get_qobject(obj, idregprop->name, &error_abort);
++        qdict_put_obj(qdict_out, idregprop->name, value);
++    }
++
+     if (!qdict_size(qdict_out)) {
+         qobject_unref(qdict_out);
+     } else {
 -- 
 2.53.0
 

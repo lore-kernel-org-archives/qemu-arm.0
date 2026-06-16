@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1744CD98E7
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 13:29:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFC5BCD98E1
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 13:29:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZTqA-0001DS-Lw; Tue, 16 Jun 2026 09:28:32 -0400
+	id 1wZTp4-0005tg-98; Tue, 16 Jun 2026 09:27:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wZTq7-00018Z-DD
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 09:28:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1wZTp0-0005pH-IK
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2026 09:27:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wZTq4-00066s-Od
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 09:28:27 -0400
+ id 1wZToy-0005sg-Hj
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2026 09:27:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781616504;
+ s=mimecast20190719; t=1781616436;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=0kG+75f11rlVDCq0jFrsgDaYRGqvIM4/OjycDQgMeu4=;
- b=OgGiXCl4SZq5TZfmKcKZNIemzDQngK6+gDtWr0EeOXAO+M5cANyqU1QuCrIRNxHLj2jnMV
- CeIi4TDZzrkuMz2E7/T0bxaKjyKWb7srHlLTNSTq6Obp9qapMOV8cbL/X9vUSWc3QJiGC6
- 9OBiO4eLg/yTBx5rSwE7VLwaOAVgpkE=
+ bh=2dgC0fflJ1IwtES7qZ7pmfKjjmQsGVnqh8/2aG4sPf8=;
+ b=V+QFPrVM7MkKk1BneWLCVAFhcHfv1k6c02w/XWKtlrfjsP8FjxPOdBUDhrWwXJscDxV/+y
+ oLaZ71KvQinr6qBxOGdpQnnjGDD7gR6Iq+6xZdT+aw/ySie4D71b02P0GbDrQ+nLFN1elI
+ lFpm3lCJjIzbQaZnS5kfjZ78fN7V7fQ=
 Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-621-8_vXgqm2OUmnUOa8koyb2Q-1; Tue,
- 16 Jun 2026 09:28:20 -0400
-X-MC-Unique: 8_vXgqm2OUmnUOa8koyb2Q-1
-X-Mimecast-MFC-AGG-ID: 8_vXgqm2OUmnUOa8koyb2Q_1781616498
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-552-nho_i_gKP1yKrpPZ4JR8Xw-1; Tue,
+ 16 Jun 2026 09:27:12 -0400
+X-MC-Unique: nho_i_gKP1yKrpPZ4JR8Xw-1
+X-Mimecast-MFC-AGG-ID: nho_i_gKP1yKrpPZ4JR8Xw_1781616430
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9B20019560BC; Tue, 16 Jun 2026 13:28:18 +0000 (UTC)
+ id 68BAE1956062; Tue, 16 Jun 2026 13:27:10 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.48.30])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4D6603000203; Tue, 16 Jun 2026 13:28:12 +0000 (UTC)
+ id 6DF503008B3B; Tue, 16 Jun 2026 13:27:04 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -56,28 +56,28 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [RFC PATCH v6 15/17] target/arm/cpu-idregs.h.inc: Generate reserved
- fields
-Date: Tue, 16 Jun 2026 15:17:02 +0200
-Message-ID: <20260616132625.1732031-16-eric.auger@redhat.com>
+Subject: [RFC PATCH v6 05/17] scripts: Introduce
+ scripts/aarch64_sysreg_helpers module
+Date: Tue, 16 Jun 2026 15:16:52 +0200
+Message-ID: <20260616132625.1732031-6-eric.auger@redhat.com>
 In-Reply-To: <20260616132625.1732031-1-eric.auger@redhat.com>
 References: <20260616132625.1732031-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: jkiTMZESE4J2PMGYj2kikzEppzhd4wx9L_4xAca8IzM_1781616498
+X-Mimecast-MFC-PROC-ID: QStXhb1qO1OF0NUv2iWMiVx3PjD6DAhGn0vN0kLYwdc_1781616430
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 8
 X-Spam_score: 0.8
 X-Spam_bar: /
 X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,625 +93,229 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Extract reserved fields: RES0, RES1, RAZ, ...
+We plan to reuse get_opcode() and extract_idregs_from_registers_json()
+functions in another script. So let's move them into a module
+
+No functional change intended.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- target/arm/cpu-idregs.h.inc                   | 69 ++++++++++++++-
- .../update-aarch64-cpu-sysreg-properties.py   | 83 +++++++++++++++----
- 2 files changed, 136 insertions(+), 16 deletions(-)
+ scripts/aarch64_sysreg_helpers.py            | 109 +++++++++++++++++++
+ scripts/update-aarch64-cpu-sysregs-header.py |  85 +--------------
+ 2 files changed, 110 insertions(+), 84 deletions(-)
+ create mode 100644 scripts/aarch64_sysreg_helpers.py
 
-diff --git a/target/arm/cpu-idregs.h.inc b/target/arm/cpu-idregs.h.inc
-index 1c8b26133b..5fdc84237c 100644
---- a/target/arm/cpu-idregs.h.inc
-+++ b/target/arm/cpu-idregs.h.inc
-@@ -15,16 +15,20 @@ IDREG_START(AIDR_EL1)
- IDREG_END(AIDR_EL1)
- 
- IDREG_START(CCSIDR2_EL1)
-+    IDREG_FIELD(CCSIDR2_EL1, RES0, 24, 40)
-     IDREG_FIELD(CCSIDR2_EL1, NumSets, 0, 24)
- IDREG_END(CCSIDR2_EL1)
- 
- IDREG_START(CCSIDR_EL1)
-+    IDREG_FIELD(CCSIDR_EL1, RES0, 56, 8)
-     IDREG_FIELD(CCSIDR_EL1, NumSets, 32, 24)
-+    IDREG_FIELD(CCSIDR_EL1, RES0, 24, 8)
-     IDREG_FIELD(CCSIDR_EL1, Associativity, 3, 21)
-     IDREG_FIELD(CCSIDR_EL1, LineSize, 0, 3)
- IDREG_END(CCSIDR_EL1)
- 
- IDREG_START(CLIDR_EL1)
-+    IDREG_FIELD(CLIDR_EL1, RES0, 47, 17)
-     IDREG_FIELD(CLIDR_EL1, Ttype7, 45, 2)
-     IDREG_FIELD(CLIDR_EL1, Ttype6, 43, 2)
-     IDREG_FIELD(CLIDR_EL1, Ttype5, 41, 2)
-@@ -55,7 +59,10 @@ IDREG_START(CLIDR_EL1)
- IDREG_END(CLIDR_EL1)
- 
- IDREG_START(CTR_EL0)
-+    IDREG_FIELD(CTR_EL0, RES0, 38, 26)
-     IDREG_FIELD(CTR_EL0, TminLine, 32, 6)
-+    IDREG_FIELD(CTR_EL0, RES1, 31, 1)
-+    IDREG_FIELD(CTR_EL0, RES0, 30, 1)
-     IDREG_FIELD_START(CTR_EL0, DIC, 29, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -73,23 +80,28 @@ IDREG_START(CTR_EL0)
-         IDREG_FIELD_ARCH_VAL(2)
-         IDREG_FIELD_ARCH_VAL(3)
-     IDREG_FIELD_END(CTR_EL0, L1Ip)
-+    IDREG_FIELD(CTR_EL0, RES0, 4, 10)
-     IDREG_FIELD(CTR_EL0, IminLine, 0, 4)
- IDREG_END(CTR_EL0)
- 
- IDREG_START(DCZID_EL0)
-+    IDREG_FIELD(DCZID_EL0, RES0, 9, 55)
-     IDREG_FIELD(DCZID_EL0, TBS, 5, 4)
-     IDREG_FIELD(DCZID_EL0, DZP, 4, 1)
-     IDREG_FIELD(DCZID_EL0, BS, 0, 4)
- IDREG_END(DCZID_EL0)
- 
- IDREG_START(GMID_EL1)
-+    IDREG_FIELD(GMID_EL1, RES0, 4, 60)
-     IDREG_FIELD(GMID_EL1, BS, 0, 4)
- IDREG_END(GMID_EL1)
- 
- IDREG_START(ID_AA64AFR0_EL1)
-+    IDREG_FIELD(ID_AA64AFR0_EL1, RES0, 32, 32)
- IDREG_END(ID_AA64AFR0_EL1)
- 
- IDREG_START(ID_AA64AFR1_EL1)
-+    IDREG_FIELD(ID_AA64AFR1_EL1, RES0, 0, 64)
- IDREG_END(ID_AA64AFR1_EL1)
- 
- IDREG_START(ID_AA64DFR0_EL1)
-@@ -136,6 +148,7 @@ IDREG_START(ID_AA64DFR0_EL1)
-     IDREG_FIELD_START(ID_AA64DFR0_EL1, CTX_CMPs, 28, 4)
-         IDREG_FIELD_ARCH_VAL(15)
-     IDREG_FIELD_END(ID_AA64DFR0_EL1, CTX_CMPs)
-+    IDREG_FIELD(ID_AA64DFR0_EL1, RES0, 24, 4)
-     IDREG_FIELD(ID_AA64DFR0_EL1, WRPs, 20, 4)
-     IDREG_FIELD_START(ID_AA64DFR0_EL1, PMSS, 16, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-@@ -209,6 +222,7 @@ IDREG_START(ID_AA64DFR1_EL1)
- IDREG_END(ID_AA64DFR1_EL1)
- 
- IDREG_START(ID_AA64DFR2_EL1)
-+    IDREG_FIELD(ID_AA64DFR2_EL1, RES0, 28, 36)
-     IDREG_FIELD_START(ID_AA64DFR2_EL1, TRBE_EXC, 24, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -221,6 +235,7 @@ IDREG_START(ID_AA64DFR2_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64DFR2_EL1, SPE_EXC)
-+    IDREG_FIELD(ID_AA64DFR2_EL1, RES0, 8, 8)
-     IDREG_FIELD_START(ID_AA64DFR2_EL1, BWE, 4, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -233,6 +248,7 @@ IDREG_START(ID_AA64DFR2_EL1)
- IDREG_END(ID_AA64DFR2_EL1)
- 
- IDREG_START(ID_AA64FPFR0_EL1)
-+    IDREG_FIELD(ID_AA64FPFR0_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_AA64FPFR0_EL1, F8CVT, 31, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -257,10 +273,13 @@ IDREG_START(ID_AA64FPFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64FPFR0_EL1, F8MM4)
-+    IDREG_FIELD(ID_AA64FPFR0_EL1, RES0, 16, 10)
-     IDREG_FIELD_START(ID_AA64FPFR0_EL1, F16MM2, 15, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64FPFR0_EL1, F16MM2)
-+    IDREG_FIELD(ID_AA64FPFR0_EL1, RES0, 8, 7)
-+    IDREG_FIELD(ID_AA64FPFR0_EL1, RAZ, 2, 6)
-     IDREG_FIELD_START(ID_AA64FPFR0_EL1, F8E4M3, 1, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -312,6 +331,7 @@ IDREG_START(ID_AA64ISAR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64ISAR0_EL1, RDM)
-+    IDREG_FIELD(ID_AA64ISAR0_EL1, RES0, 24, 4)
-     IDREG_FIELD_START(ID_AA64ISAR0_EL1, Atomic, 20, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(2)
-@@ -335,6 +355,7 @@ IDREG_START(ID_AA64ISAR0_EL1)
-         IDREG_FIELD_ARCH_VAL(1)
-         IDREG_FIELD_ARCH_VAL(2)
-     IDREG_FIELD_END(ID_AA64ISAR0_EL1, AES)
-+    IDREG_FIELD(ID_AA64ISAR0_EL1, RES0, 0, 4)
- IDREG_END(ID_AA64ISAR0_EL1)
- 
- IDREG_START(ID_AA64ISAR1_EL1)
-@@ -498,6 +519,7 @@ IDREG_START(ID_AA64ISAR2_EL1)
- IDREG_END(ID_AA64ISAR2_EL1)
- 
- IDREG_START(ID_AA64ISAR3_EL1)
-+    IDREG_FIELD(ID_AA64ISAR3_EL1, RES0, 48, 16)
-     IDREG_FIELD_START(ID_AA64ISAR3_EL1, LSCP, 44, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -561,6 +583,7 @@ IDREG_START(ID_AA64MMFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(1)
-         IDREG_FIELD_ARCH_VAL(2)
-     IDREG_FIELD_END(ID_AA64MMFR0_EL1, FGT)
-+    IDREG_FIELD(ID_AA64MMFR0_EL1, RES0, 48, 8)
-     IDREG_FIELD_START(ID_AA64MMFR0_EL1, ExS, 44, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -713,6 +736,7 @@ IDREG_START(ID_AA64MMFR2_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64MMFR2_EL1, TTL)
-+    IDREG_FIELD(ID_AA64MMFR2_EL1, RES0, 44, 4)
-     IDREG_FIELD_START(ID_AA64MMFR2_EL1, FWB, 40, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -778,6 +802,7 @@ IDREG_START(ID_AA64MMFR3_EL1)
-         IDREG_FIELD_ARCH_VAL(2)
-         IDREG_FIELD_ARCH_VAL(3)
-     IDREG_FIELD_END(ID_AA64MMFR3_EL1, SDERR)
-+    IDREG_FIELD(ID_AA64MMFR3_EL1, RES0, 48, 4)
-     IDREG_FIELD_START(ID_AA64MMFR3_EL1, ANERR, 44, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1031,6 +1056,7 @@ IDREG_START(ID_AA64PFR1_EL1)
-         IDREG_FIELD_ARCH_VAL(1)
-         IDREG_FIELD_ARCH_VAL(2)
-     IDREG_FIELD_END(ID_AA64PFR1_EL1, SME)
-+    IDREG_FIELD(ID_AA64PFR1_EL1, RES0, 20, 4)
-     IDREG_FIELD_START(ID_AA64PFR1_EL1, MPAM_frac, 16, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1058,6 +1084,7 @@ IDREG_START(ID_AA64PFR1_EL1)
- IDREG_END(ID_AA64PFR1_EL1)
- 
- IDREG_START(ID_AA64PFR2_EL1)
-+    IDREG_FIELD(ID_AA64PFR2_EL1, RES0, 48, 16)
-     IDREG_FIELD_START(ID_AA64PFR2_EL1, VMTETCL, 44, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1117,6 +1144,7 @@ IDREG_START(ID_AA64SMFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64SMFR0_EL1, FA64)
-+    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0, 62, 1)
-     IDREG_FIELD_START(ID_AA64SMFR0_EL1, LUT6, 61, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1136,6 +1164,7 @@ IDREG_START(ID_AA64SMFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(15)
-     IDREG_FIELD_END(ID_AA64SMFR0_EL1, I16I64)
-+    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0, 49, 3)
-     IDREG_FIELD_START(ID_AA64SMFR0_EL1, F64F64, 48, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1180,6 +1209,7 @@ IDREG_START(ID_AA64SMFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64SMFR0_EL1, F32F32)
-+    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0, 31, 1)
-     IDREG_FIELD_START(ID_AA64SMFR0_EL1, SF8FMA, 30, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1192,6 +1222,7 @@ IDREG_START(ID_AA64SMFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64SMFR0_EL1, SF8DP2)
-+    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0, 26, 2)
-     IDREG_FIELD_START(ID_AA64SMFR0_EL1, SBitPerm, 25, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1204,10 +1235,12 @@ IDREG_START(ID_AA64SMFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64SMFR0_EL1, SFEXPA)
-+    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0, 17, 6)
-     IDREG_FIELD_START(ID_AA64SMFR0_EL1, STMOP, 16, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64SMFR0_EL1, STMOP)
-+    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0, 1, 15)
-     IDREG_FIELD_START(ID_AA64SMFR0_EL1, SMOP4, 0, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1215,6 +1248,7 @@ IDREG_START(ID_AA64SMFR0_EL1)
- IDREG_END(ID_AA64SMFR0_EL1)
- 
- IDREG_START(ID_AA64ZFR0_EL1)
-+    IDREG_FIELD(ID_AA64ZFR0_EL1, RES0, 60, 4)
-     IDREG_FIELD_START(ID_AA64ZFR0_EL1, F64MM, 56, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1235,10 +1269,12 @@ IDREG_START(ID_AA64ZFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64ZFR0_EL1, SM4)
-+    IDREG_FIELD(ID_AA64ZFR0_EL1, RES0, 36, 4)
-     IDREG_FIELD_START(ID_AA64ZFR0_EL1, SHA3, 32, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64ZFR0_EL1, SHA3)
-+    IDREG_FIELD(ID_AA64ZFR0_EL1, RES0, 28, 4)
-     IDREG_FIELD_START(ID_AA64ZFR0_EL1, B16B16, 24, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1258,6 +1294,7 @@ IDREG_START(ID_AA64ZFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64ZFR0_EL1, EltPerm)
-+    IDREG_FIELD(ID_AA64ZFR0_EL1, RES0, 8, 4)
-     IDREG_FIELD_START(ID_AA64ZFR0_EL1, AES, 4, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1274,9 +1311,11 @@ IDREG_START(ID_AA64ZFR0_EL1)
- IDREG_END(ID_AA64ZFR0_EL1)
- 
- IDREG_START(ID_AFR0_EL1)
-+    IDREG_FIELD(ID_AFR0_EL1, RES0, 0, 64)
- IDREG_END(ID_AFR0_EL1)
- 
- IDREG_START(ID_DFR0_EL1)
-+    IDREG_FIELD(ID_DFR0_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_DFR0_EL1, TraceFilt, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1328,6 +1367,7 @@ IDREG_START(ID_DFR0_EL1)
- IDREG_END(ID_DFR0_EL1)
- 
- IDREG_START(ID_DFR1_EL1)
-+    IDREG_FIELD(ID_DFR1_EL1, RES0, 8, 56)
-     IDREG_FIELD_START(ID_DFR1_EL1, HPMN0, 4, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1340,6 +1380,7 @@ IDREG_START(ID_DFR1_EL1)
- IDREG_END(ID_DFR1_EL1)
- 
- IDREG_START(ID_ISAR0_EL1)
-+    IDREG_FIELD(ID_ISAR0_EL1, RES0, 28, 36)
-     IDREG_FIELD_START(ID_ISAR0_EL1, Divide, 24, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1375,6 +1416,7 @@ IDREG_START(ID_ISAR0_EL1)
- IDREG_END(ID_ISAR0_EL1)
- 
- IDREG_START(ID_ISAR1_EL1)
-+    IDREG_FIELD(ID_ISAR1_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_ISAR1_EL1, Jazelle, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1413,6 +1455,7 @@ IDREG_START(ID_ISAR1_EL1)
- IDREG_END(ID_ISAR1_EL1)
- 
- IDREG_START(ID_ISAR2_EL1)
-+    IDREG_FIELD(ID_ISAR2_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_ISAR2_EL1, Reversal, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1458,6 +1501,7 @@ IDREG_START(ID_ISAR2_EL1)
- IDREG_END(ID_ISAR2_EL1)
- 
- IDREG_START(ID_ISAR3_EL1)
-+    IDREG_FIELD(ID_ISAR3_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_ISAR3_EL1, T32EE, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1495,6 +1539,7 @@ IDREG_START(ID_ISAR3_EL1)
- IDREG_END(ID_ISAR3_EL1)
- 
- IDREG_START(ID_ISAR4_EL1)
-+    IDREG_FIELD(ID_ISAR4_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_ISAR4_EL1, SWP_frac, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1519,12 +1564,12 @@ IDREG_START(ID_ISAR4_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_ISAR4_EL1, Writeback)
--    IDREG_FIELD_START(ID_ISAR4_EL1, WithShifts, 4, 4)
-+    IDREG_FIELD_START(ID_ISAR4_EL1, WI, 4, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-         IDREG_FIELD_ARCH_VAL(3)
-         IDREG_FIELD_ARCH_VAL(4)
--    IDREG_FIELD_END(ID_ISAR4_EL1, WithShifts)
-+    IDREG_FIELD_END(ID_ISAR4_EL1, WI)
-     IDREG_FIELD_START(ID_ISAR4_EL1, Unpriv, 0, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1533,6 +1578,7 @@ IDREG_START(ID_ISAR4_EL1)
- IDREG_END(ID_ISAR4_EL1)
- 
- IDREG_START(ID_ISAR5_EL1)
-+    IDREG_FIELD(ID_ISAR5_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_ISAR5_EL1, VCMA, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1541,6 +1587,7 @@ IDREG_START(ID_ISAR5_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_ISAR5_EL1, RDM)
-+    IDREG_FIELD(ID_ISAR5_EL1, RES0, 20, 4)
-     IDREG_FIELD_START(ID_ISAR5_EL1, CRC32, 16, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1565,6 +1612,7 @@ IDREG_START(ID_ISAR5_EL1)
- IDREG_END(ID_ISAR5_EL1)
- 
- IDREG_START(ID_ISAR6_EL1)
-+    IDREG_FIELD(ID_ISAR6_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_ISAR6_EL1, CLRBHB, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1601,6 +1649,7 @@ IDREG_START(ID_ISAR6_EL1)
- IDREG_END(ID_ISAR6_EL1)
- 
- IDREG_START(ID_MMFR0_EL1)
-+    IDREG_FIELD(ID_MMFR0_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_MMFR0_EL1, InnerShr, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1647,6 +1696,7 @@ IDREG_START(ID_MMFR0_EL1)
- IDREG_END(ID_MMFR0_EL1)
- 
- IDREG_START(ID_MMFR1_EL1)
-+    IDREG_FIELD(ID_MMFR1_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_MMFR1_EL1, BPred, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1695,6 +1745,7 @@ IDREG_START(ID_MMFR1_EL1)
- IDREG_END(ID_MMFR1_EL1)
- 
- IDREG_START(ID_MMFR2_EL1)
-+    IDREG_FIELD(ID_MMFR2_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_MMFR2_EL1, HWAccFlg, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1733,6 +1784,7 @@ IDREG_START(ID_MMFR2_EL1)
- IDREG_END(ID_MMFR2_EL1)
- 
- IDREG_START(ID_MMFR3_EL1)
-+    IDREG_FIELD(ID_MMFR3_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_MMFR3_EL1, Supersec, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(15)
-@@ -1772,6 +1824,7 @@ IDREG_START(ID_MMFR3_EL1)
- IDREG_END(ID_MMFR3_EL1)
- 
- IDREG_START(ID_MMFR4_EL1)
-+    IDREG_FIELD(ID_MMFR4_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_MMFR4_EL1, EVT, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1809,6 +1862,7 @@ IDREG_START(ID_MMFR4_EL1)
- IDREG_END(ID_MMFR4_EL1)
- 
- IDREG_START(ID_MMFR5_EL1)
-+    IDREG_FIELD(ID_MMFR5_EL1, RES0, 8, 56)
-     IDREG_FIELD_START(ID_MMFR5_EL1, nTLBPA, 4, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1822,6 +1876,7 @@ IDREG_START(ID_MMFR5_EL1)
- IDREG_END(ID_MMFR5_EL1)
- 
- IDREG_START(ID_PFR0_EL1)
-+    IDREG_FIELD(ID_PFR0_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_PFR0_EL1, RAS, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1863,6 +1918,7 @@ IDREG_START(ID_PFR0_EL1)
- IDREG_END(ID_PFR0_EL1)
- 
- IDREG_START(ID_PFR1_EL1)
-+    IDREG_FIELD(ID_PFR1_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(ID_PFR1_EL1, GIC, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1902,6 +1958,7 @@ IDREG_START(ID_PFR1_EL1)
- IDREG_END(ID_PFR1_EL1)
- 
- IDREG_START(ID_PFR2_EL1)
-+    IDREG_FIELD(ID_PFR2_EL1, RES0, 12, 52)
-     IDREG_FIELD_START(ID_PFR2_EL1, RAS_frac, 8, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1949,11 +2006,14 @@ IDREG_START(MIDR_EL1)
- IDREG_END(MIDR_EL1)
- 
- IDREG_START(MPIDR_EL1)
-+    IDREG_FIELD(MPIDR_EL1, RES0, 40, 24)
-     IDREG_FIELD(MPIDR_EL1, Aff3, 32, 8)
-+    IDREG_FIELD(MPIDR_EL1, RES1, 31, 1)
-     IDREG_FIELD_START(MPIDR_EL1, U, 30, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(MPIDR_EL1, U)
-+    IDREG_FIELD(MPIDR_EL1, RES0, 25, 5)
-     IDREG_FIELD_START(MPIDR_EL1, MT, 24, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1964,6 +2024,7 @@ IDREG_START(MPIDR_EL1)
- IDREG_END(MPIDR_EL1)
- 
- IDREG_START(MVFR0_EL1)
-+    IDREG_FIELD(MVFR0_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(MVFR0_EL1, FPRound, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -2002,6 +2063,7 @@ IDREG_START(MVFR0_EL1)
- IDREG_END(MVFR0_EL1)
- 
- IDREG_START(MVFR1_EL1)
-+    IDREG_FIELD(MVFR1_EL1, RES0, 32, 32)
-     IDREG_FIELD_START(MVFR1_EL1, SIMDFMAC, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -2040,6 +2102,7 @@ IDREG_START(MVFR1_EL1)
- IDREG_END(MVFR1_EL1)
- 
- IDREG_START(MVFR2_EL1)
-+    IDREG_FIELD(MVFR2_EL1, RES0, 8, 56)
-     IDREG_FIELD_START(MVFR2_EL1, FPMisc, 4, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -2059,6 +2122,7 @@ IDREG_START(REVIDR_EL1)
- IDREG_END(REVIDR_EL1)
- 
- IDREG_START(SMIDR_EL1)
-+    IDREG_FIELD(SMIDR_EL1, RES0, 60, 4)
-     IDREG_FIELD_START(SMIDR_EL1, NSMC, 56, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(15)
-@@ -2094,6 +2158,7 @@ IDREG_START(SMIDR_EL1)
-         IDREG_FIELD_ARCH_VAL(2)
-         IDREG_FIELD_ARCH_VAL(3)
-     IDREG_FIELD_END(SMIDR_EL1, SH)
-+    IDREG_FIELD(SMIDR_EL1, RES0, 12, 1)
-     IDREG_FIELD(SMIDR_EL1, Affinity, 0, 12)
- IDREG_END(SMIDR_EL1)
- 
-diff --git a/scripts/update-aarch64-cpu-sysreg-properties.py b/scripts/update-aarch64-cpu-sysreg-properties.py
-index e1d6c4afef..9e829fda2e 100644
---- a/scripts/update-aarch64-cpu-sysreg-properties.py
-+++ b/scripts/update-aarch64-cpu-sysreg-properties.py
-@@ -81,9 +81,13 @@ def collect_fields(item, bit_offset=0):
- 
-     # Normal Field Types
-     leaf_types = ['Fields.Field', 'Fields.ConstantField',
--                  'Fields.EnumeratedField', 'Fields.Bitfield']
-+                  'Fields.EnumeratedField', 'Fields.Bitfield', 'Fields.Reserved']
-     if _type in leaf_types:
-         field_copy = item.copy()
+diff --git a/scripts/aarch64_sysreg_helpers.py b/scripts/aarch64_sysreg_helpers.py
+new file mode 100644
+index 0000000000..dd5ec4bafa
+--- /dev/null
++++ b/scripts/aarch64_sysreg_helpers.py
+@@ -0,0 +1,109 @@
++#!/usr/bin/env python3
 +
-+        if _type == 'Fields.Reserved' and not field_copy.get('name'):
-+            field_copy['name'] = item.get('value', 'RES0')
++# Helpers used in aarch64 sysreg definition generation
++#
++# Copyright (C) 2026 Red Hat, Inc.
++#
++# Authors: Eric Auger <eric.auger@redhat.com>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
-         if field_copy.get('rangeset'):
-             new_ranges = []
-             for r in field_copy['rangeset']:
-@@ -96,7 +100,7 @@ def collect_fields(item, bit_offset=0):
-         return fields
++
++import json
++import os
++
++# Some regs have op code values like 000x, 001x. Anyway we don't need
++# them. Besides some regs are undesired in the generated file such as
++# VMPIDR_EL2 and VPIDR_EL2 which are outside of the IDreg scope we
++# are interested in and are tricky to decode as their system accessor
++# refer to MPIDR_EL1/MIDR_EL1 respectively
++
++skiplist = ['ALLINT', 'PM', 'S1_', 'S3_', 'SVCR', \
++            'VMPIDR_EL2', 'VPIDR_EL2']
++
++# returns the int value of a given @opcode for a reg @encoding
++def get_opcode(encoding, opcode):
++    fvalue = encoding.get(opcode)
++    if fvalue:
++        value = fvalue.get('value')
++        if isinstance(value, str):
++            value = value.strip("'")
++            value = int(value, 2)
++            return value
++    return -1
++
++def extract_idregs_from_registers_json(filename):
++    """
++    Load a Registers.json file and extract all ID registers, decode their
++    opcode and dump the information in target/arm/cpu-sysregs.h.inc
++
++    Args:
++        filename (str): The path to the Registers.json
++    returns:
++        idregs: list of ID regs and their encoding
++    """
++    if not os.path.exists(filename):
++        print(f"Error: {filename} could not be found!")
++        return {}
++
++    try:
++        with open(filename, 'r') as f:
++            register_data = json.load(f)
++
++    except json.JSONDecodeError:
++        print(f"Could not decode json from '{filename}'!")
++        return {}
++    except Exception as e:
++        print(f"Unexpected error while reading {filename}: {e}")
++        return {}
++
++    registers = [r for r in register_data if isinstance(r, dict) and \
++                r.get('_type') == 'Register']
++
++    idregs = {}
++
++    # Some regs have op code values like 000x, 001x. Anyway we don't need
++    # them. Besides some regs are undesired in the generated file such as
++    # VMPIDR_EL2 and VPIDR_EL2 which are outside of the IDreg scope we
++    # are interested in and are tricky to decode as their system accessor
++    # refer to MPIDR_EL1/MIDR_EL1 respectively
++
++    skiplist = ['ALLINT', 'PM', 'S1_', 'S3_', 'SVCR', \
++                'VMPIDR_EL2', 'VPIDR_EL2']
++
++    for register in registers:
++        reg_name = register.get('name')
++
++        is_skipped = any(term in (reg_name or "").upper() for term in skiplist)
++
++        if reg_name and not is_skipped:
++            accessors = register.get('accessors', [])
++
++            for accessor in accessors:
++                type = accessor.get('_type')
++                if type in ['Accessors.SystemAccessor']:
++                    encoding_list = accessor.get('encoding')
++
++                    if isinstance(encoding_list, list) and encoding_list and \
++                       isinstance(encoding_list[0], dict):
++                        encoding_wrapper = encoding_list[0]
++                        encoding_source = encoding_wrapper.get('encodings', \
++                                                               encoding_wrapper)
++
++                        if isinstance(encoding_source, dict):
++                                op0 = get_opcode(encoding_source, 'op0')
++                                op1 = get_opcode(encoding_source, 'op1')
++                                op2 = get_opcode(encoding_source, 'op2')
++                                crn = get_opcode(encoding_source, 'CRn')
++                                crm = get_opcode(encoding_source, 'CRm')
++                                encoding_str=f"{op0} {op1} {crn} {crm} {op2}"
++
++                # ID regs are assumed within this scope
++                if op0 == 3 and (op1 == 0 or op1 == 1 or op1 == 3) and \
++                   crn == 0 and (crm >= 0 and crm <= 7) and (op2 >= 0 and op2 <= 7):
++                    idregs[reg_name] = encoding_str
++
++    return idregs
++
++
++
+diff --git a/scripts/update-aarch64-cpu-sysregs-header.py b/scripts/update-aarch64-cpu-sysregs-header.py
+index 8c337147dd..43107264e9 100755
+--- a/scripts/update-aarch64-cpu-sysregs-header.py
++++ b/scripts/update-aarch64-cpu-sysregs-header.py
+@@ -17,90 +17,7 @@
+ import json
+ import os
+ import sys
+-
+-# Some regs have op code values like 000x, 001x. Anyway we don't need
+-# them. Besides some regs are undesired in the generated file such as
+-# VMPIDR_EL2 and VPIDR_EL2 which are outside of the IDreg scope we
+-# are interested in and are tricky to decode as their system accessor
+-# refer to MPIDR_EL1/MIDR_EL1 respectively
+-
+-skiplist = ['ALLINT', 'PM', 'S1_', 'S3_', 'SVCR', \
+-            'VMPIDR_EL2', 'VPIDR_EL2']
+-
+-# returns the int value of a given @opcode for a reg @encoding
+-def get_opcode(encoding, opcode):
+-    fvalue = encoding.get(opcode)
+-    if fvalue:
+-        value = fvalue.get('value')
+-        if isinstance(value, str):
+-            value = value.strip("'")
+-            value = int(value, 2)
+-            return value
+-    return -1
+-
+-def extract_idregs_from_registers_json(filename):
+-    """
+-    Load a Registers.json file and extract all ID registers, decode their
+-    opcode and dump the information in target/arm/cpu-sysregs.h.inc
+-
+-    Args:
+-        filename (str): The path to the Registers.json
+-    returns:
+-        idregs: list of ID regs and their encoding
+-    """
+-    if not os.path.exists(filename):
+-        print(f"Error: {filename} could not be found!")
+-        return {}
+-
+-    try:
+-        with open(filename, 'r') as f:
+-            register_data = json.load(f)
+-
+-    except json.JSONDecodeError:
+-        print(f"Could not decode json from '{filename}'!")
+-        return {}
+-    except Exception as e:
+-        print(f"Unexpected error while reading {filename}: {e}")
+-        return {}
+-
+-    registers = [r for r in register_data if isinstance(r, dict) and \
+-                r.get('_type') == 'Register']
+-
+-    idregs = {}
+-
+-    for register in registers:
+-        reg_name = register.get('name')
+-
+-        is_skipped = any(term in (reg_name or "").upper() for term in skiplist)
+-
+-        if reg_name and not is_skipped:
+-            accessors = register.get('accessors', [])
+-
+-            for accessor in accessors:
+-                type = accessor.get('_type')
+-                if type in ['Accessors.SystemAccessor']:
+-                    encoding_list = accessor.get('encoding')
+-
+-                    if isinstance(encoding_list, list) and encoding_list and \
+-                       isinstance(encoding_list[0], dict):
+-                        encoding_wrapper = encoding_list[0]
+-                        encoding_source = encoding_wrapper.get('encodings', \
+-                                                               encoding_wrapper)
+-
+-                        if isinstance(encoding_source, dict):
+-                                op0 = get_opcode(encoding_source, 'op0')
+-                                op1 = get_opcode(encoding_source, 'op1')
+-                                op2 = get_opcode(encoding_source, 'op2')
+-                                crn = get_opcode(encoding_source, 'CRn')
+-                                crm = get_opcode(encoding_source, 'CRm')
+-                                encoding_str=f"{op0} {op1} {crn} {crm} {op2}"
+-
+-                # ID regs are assumed within this scope
+-                if op0 == 3 and (op1 == 0 or op1 == 1 or op1 == 3) and \
+-                   crn == 0 and (crm >= 0 and crm <= 7) and (op2 >= 0 and op2 <= 7):
+-                    idregs[reg_name] = encoding_str
+-
+-    return idregs
++from aarch64_sysreg_helpers import extract_idregs_from_registers_json
  
-     # Traverse the hierarchy for other cases
--    for key in ['fields', 'values', 'fieldsets']:
-+    for key in ['fields', 'values', 'fieldsets', 'constants']:
-         for nested in item.get(key, []):
-             fields.extend(collect_fields(nested, bit_offset))
- 
-@@ -163,44 +167,95 @@ def generate_sysreg_properties_from_registers_json(id_reg_names, raw_json_path):
- 
-         final_output += f"IDREG_START({reg_name})\n"
- 
--        unique_fields = {}
-+        fieldset_variants = []
-+
-         for fieldset in register.get('fieldsets', []):
-+            current_fieldset_fields = {}
-             candidates = collect_fields(fieldset)
-+
-             for val in candidates:
--                name = (val.get('name') or val.get('label', '')).strip()
--                if not name or "RESERVED" in name.upper():
-+                raw_name = val.get('name') or val.get('label') or val.get('value') or ''
-+                name = raw_name.strip()
-+                if not name:
-                     continue
-+
-+                name_upper = name.upper()
-+
-+                # Check for architectural target states, including UNKNOWN remapping
-+                base_reserved = None
-+                for r_type in ["RES0", "RES1", "RAZ", "RAO", "WI", "UNKNOWN"]:
-+                    if r_type in name_upper:
-+                        base_reserved = "RES0" if r_type == "UNKNOWN" else r_type
-+                        break
-+
-+                is_valid_reserved = base_reserved is not None
-+                if "RESERVED" in name_upper and not is_valid_reserved:
-+                    continue
-+
-+                # Force naming uniformity across padding blocks
-+                if is_valid_reserved:
-+                    name = base_reserved
-+
-                 for r in val.get('rangeset', []):
-                     lsb = int(r.get('start'))
-                     width = r.get('width')
-                     msb = lsb + int(width) - 1
- 
--                    # Only keep the fields with the highest MSB
--                    # needed fir CCSIDR_EL1
--                    if name not in unique_fields or msb > unique_fields[name]['msb']:
--                        # extract enum values if any
-+                    if is_valid_reserved:
-+                        unique_key = f"{name}_{lsb}"
-+                    else:
-+                        unique_key = name
-+
-+                    if unique_key not in current_fieldset_fields or \
-+                       msb > current_fieldset_fields[unique_key]['msb']:
-                         enums = extract_field_enums(val)
--                        unique_fields[name] = {'lsb': lsb, 'msb': msb, 'width': width, 'enums': enums}
-+                        current_fieldset_fields[unique_key] = {
-+                            'raw_name': name,
-+                            'lsb': lsb,
-+                            'msb': msb,
-+                            'width': width,
-+                            'enums': enums
-+                        }
-+
-+            if current_fieldset_fields:
-+                fieldset_variants.append(current_fieldset_fields)
-+
-+        best_fieldset = {}
-+        max_total_width = -1
-+
-+        for variant in fieldset_variants:
-+            total_width = sum(f['width'] for f in variant.values())
-+            # prioritize layout variants with the highest MSB coverage
-+            max_msb = max(f['msb'] for f in variant.values()) if variant else 0
-+
-+            # Combine width and max_msb into a fitness score tuple
-+            if (total_width, max_msb) > (max_total_width, max_total_width):
-+                max_total_width = total_width
-+                best_fieldset = variant
-+
-+        unique_fields = best_fieldset
- 
-         # Sort decreasing lsbs
-         sorted_fields = sorted(unique_fields.items(),
-                                key=lambda x: x[1]['lsb'], reverse=True)
- 
--        for name, bits in sorted_fields:
-+        for unique_key, bits in sorted_fields:
-             enums_list = bits.get('enums', [])
- 
-+            clean_name = bits.get('raw_name', unique_key)
-+
-             if enums_list:
-                line = (f"    IDREG_FIELD_START({reg_name}, "
--                       f"{name}, {bits['lsb']}, {bits['width']})\n")
-+                       f"{clean_name}, {bits['lsb']}, {bits['width']})\n")
-             else:
-                line = (f"    IDREG_FIELD({reg_name}, "
--                       f"{name}, {bits['lsb']}, {bits['width']})\n")
-+                       f"{clean_name}, {bits['lsb']}, {bits['width']})\n")
-             final_output += line
-             # add the enum value definition if any
-             for enum_item in enums_list:
-                 final_output += (f"        IDREG_FIELD_ARCH_VAL({enum_item['value']})\n")
-             if enums_list:
--               line = (f"    IDREG_FIELD_END({reg_name}, {name})\n")
-+               line = (f"    IDREG_FIELD_END({reg_name}, {clean_name})\n")
-                final_output += line
-      
-         final_output += f"IDREG_END({reg_name})\n"
+ if __name__ == "__main__":
+     # Single arg expected: the path to the Registers.json file
 -- 
 2.53.0
 

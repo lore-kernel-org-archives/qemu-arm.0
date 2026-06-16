@@ -4,107 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 988DCCD98E1
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 15:51:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5C59CD98DA
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 15:58:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZW4w-00019y-TI; Tue, 16 Jun 2026 11:51:54 -0400
+	id 1wZW97-00026F-F8; Tue, 16 Jun 2026 11:56:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZW4v-00019R-VC
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 11:51:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZW4u-0002Fm-Cf
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 11:51:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781625110;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=cFnbQnGTJ2IewXTUH8bk5sEhzZ/zFLPWGs1+B8RGTCY=;
- b=JcaEQduhOkVThxdRUGXQIXXP6yzA0yPA0+yRFBBCdZhrVjvSX/Yowc8XP4zeNSbfEVjw2l
- cD1gaORH4ge4XLPXUDI4qMdJb81dsjrv9p2XrlL47O9o5Kfg7GY86muHL+KlOrA9dQLZRI
- 8fjk6/OP1KPJbkdtJt6f4Bxq6nqEpP0=
-Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
- [209.85.167.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-421-9ZZVJCrMMH2SVVo8-UXZHw-1; Tue, 16 Jun 2026 11:51:49 -0400
-X-MC-Unique: 9ZZVJCrMMH2SVVo8-UXZHw-1
-X-Mimecast-MFC-AGG-ID: 9ZZVJCrMMH2SVVo8-UXZHw_1781625108
-Received: by mail-lf1-f70.google.com with SMTP id
- 2adb3069b0e04-5aa43c27d47so2713814e87.0
- for <qemu-arm@nongnu.org>; Tue, 16 Jun 2026 08:51:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wZW95-00025M-M4
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2026 11:56:11 -0400
+Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wZW94-0003jH-7f
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2026 11:56:11 -0400
+Received: by mail-yx1-xb12c.google.com with SMTP id
+ 956f58d0204a3-662b95934dcso933187d50.3
+ for <qemu-arm@nongnu.org>; Tue, 16 Jun 2026 08:56:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781625369; cv=none;
+ d=google.com; s=arc-20240605;
+ b=E3lE/bP3j89LibgzQEpd19yFWydP2TVA20LpR9JKxw8l1ia+BgJESfAhDwkm7Z7Kgu
+ fjqDGu7LG9t6RAF0ezwJrVPKlUvp/92YLT0MxpbUURBNHtHHxc+DJPO786HURPKMZbgu
+ wMz+E0n426Tg5dHvefHg0HRzpvB6lkLXRhmRxjC+0yjmjXdufl8ui+iml7DNf/zriIK2
+ P+bUca2z+C6pSwmhBncf4xWKJQbrQR9rrn4jUAbsyADOF6WcQpVwcjJy1t2EGZfgNOy2
+ hE9c++uRcKA0oohC3k/VvnHMpOxFulmdRuyqtibUQHzXglEMClT1ex7KEDxlX1Ebrgow
+ lDig==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=aLlXLLlZpsJLIJhAoQ1vgzkz1ZtgpX1qYhgNOsL8Bkw=;
+ fh=6/x0bjL4+P9wt8jw/OMhCCl0u1wS1El/eE4nqRyro/0=;
+ b=HGYFKxyJGJ+UXWfNBQImb0+Ar8+XKrfASiXh1sUJ65QFd1d/d58nbuFJVf74JXoi1n
+ Ggdt7CulCz/jRDacgjQWgvmzlXMsxQVtSUhY5a3gC0DK5hGLdQYFPc6/RowUqz03Vm2v
+ MtZSqfJqBkWlGnq8U/H05XcyuOhXOjOQxa4165ZL86LLsXZw345tkvGxDb7Jb9PorlxK
+ jNmKZ0g/+LkfmnVVu/yaPSeazmR0LsiRdlbKM4E5cV78XpnD/7NdaUnLznsW70vSquj6
+ 5M2NARt+gJaUZDTp/5K7hpFG+QqbWC8U55LHkhVZVd1dpno2mOg1zQpj3s6q1T6jxO3D
+ mEZA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1781625369; x=1782230169; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=aLlXLLlZpsJLIJhAoQ1vgzkz1ZtgpX1qYhgNOsL8Bkw=;
+ b=N1J1UxnSPrf1NBUwYxU8x5uo6XsgCigZsaj4z1IKzkpljHSOjAhigO7DEcgqrpW4sP
+ Bx8YggbhRFq+M0Fo+DkxR/ShU3GYT+9niofzpKZ5NnEmF9oFf0re+CwUI2aJlq8N/QrZ
+ dAk1io38FjUq7VQkA9hPa6Bv3btG3q+7RXi+XcaQqbC8xHoxOaoRAi158d5iq1Q/s3dC
+ ZwMmR9FJd1V2ehg/qZ+b3DHGrPMJBOmJ7czUYN12U4U0xsp1wONn4a1rst9LGa4TzSBo
+ BDmJtfEVtEW5q72WHcyr78fRXQ1ZweOBwlyfiKadFVsV6IazK8H9kpVNXaloBP+9bY/F
+ +PSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781625107; x=1782229907;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=cFnbQnGTJ2IewXTUH8bk5sEhzZ/zFLPWGs1+B8RGTCY=;
- b=tEdI8o6woqB8FQbh55UFDNQ6bvBmxi8VLs9kYWkr5hXE6NbG4FRB05mBmUfP5bx15y
- UJKur9tfazrgOG2biVKP/SwXZcbhwNMrymt0SmCB2/UGCfnE+xXFZBpkFUFuG7Mu2nY9
- Pj8Zg+t2m6NofWkJlAmkVLN9AFvboI09Vr9DFhV4t6owi5wcrc6DZaIRpJmRJ7IoRGS8
- 4GJWcVDd35UNt4RETpxL+SOR/CdeRXLP4kaE3AuvGFOkWCdRFMlzv5n1l6JvMJpaKrvn
- 89/hqDQ1Lu2uCZvI6ZI3OACWqqKDHlYwkb12jRi5ctoiOEc7NKZIcOwfdbnNinSRec7l
- 02Xw==
+ d=1e100.net; s=20251104; t=1781625369; x=1782230169;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=aLlXLLlZpsJLIJhAoQ1vgzkz1ZtgpX1qYhgNOsL8Bkw=;
+ b=Y6Wdt93/Em7qCIRjZU+YrbEkHpPtWbP4lClvhLbKZqs+z96BJkmtWbPG9TgavreLqI
+ 7F0CVrv65/PZyWvv7m6O1ngsMAz+8fyoX5RSXmsRL366TTsLEulruTUQHwZ526o3px2B
+ 9N9FTslw8tHKubFPem+nwThj0UHZYPfvHOlVC+tVpy17DhDC2QokomqBw6bkRkhcKptt
+ xms3OryHi+R9JFSwa+i9c5Dd5EKTtMqZfgZ4iffNxMyPttAdLn7yZZgFyWZ8oCq/Famr
+ CjhTY+48SQ6DdF3UJw0Ic/KCIXdlSD19LBctaLGJfYkJQGgJueHav8wAErJm7kJDYQjH
+ kqNg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/rvXax2DBSYnTYBvRbypaDxbnpek/DwTf4TeGI0kHAnVW8ql4A7QVmNx2cSw3h/jW1kO+BFOyTww==@nongnu.org
-X-Gm-Message-State: AOJu0YzMHW79nIcmTNcAjD/KUasr9MzoTtvsRnW1XAuNDnvglXIlr8bV
- 2RmEJNWwZ/dgNaZ+AK2jnnklDANtIPWFloOTUZ/nWgRNpMrrB4rr4s8I3TJQt0PaedL0/JaPT76
- Udl8hKmTPnUujpWVH8IzzntZgrSQ/1Uz3TarTMd5rAykvEZYCb1LpZA==
-X-Gm-Gg: Acq92OHNgkKNY9NIrynro0ZReoULDF1PPFacJElF7pgb4Q1/uXFGwjmFiyY8mrRMvH6
- LmWZvvmE2qRVZtiG5eq0fZPHYYsp7CcaEewM6RiNg5D9Ru5ASZoGNxWZzQlNoQwJSUpaO3gqVdB
- Oj7QCHjattiK2hhuXbsdNQfPG1qhmk4UBXCCiuDzhTUsc5Aw7SIQ+ss6nuugDg1xPiXcNAXjvAh
- mPtcbRZXVr66WQNgtth1igtGBmvTCPcdkRzvFMA4wigLNKlwGUUQkpsO8EDKVg0Q5U5S1wjXixv
- o7VNX/9LUunBlb3lq8+N9y8F3r1Mdngg5Hb3BNhD7+ULj2vXPTN+KEXsErykapaN7bfPlsbo8OA
- yvKliJnxGKSkB7ve1c5z6wdRvEJQecjznX1E2SOWFrOk=
-X-Received: by 2002:a05:6512:b95:b0:5ad:2fde:cd8f with SMTP id
- 2adb3069b0e04-5ad46fbccb8mr22205e87.2.1781625107375; 
- Tue, 16 Jun 2026 08:51:47 -0700 (PDT)
-X-Received: by 2002:a05:6512:b95:b0:5ad:2fde:cd8f with SMTP id
- 2adb3069b0e04-5ad46fbccb8mr22185e87.2.1781625106959; 
- Tue, 16 Jun 2026 08:51:46 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
- by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-5ad2e1b49aasm3607701e87.77.2026.06.16.08.51.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Jun 2026 08:51:46 -0700 (PDT)
-Date: Tue, 16 Jun 2026 11:51:42 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Ding Hui <dinghui@sangfor.com.cn>
-Cc: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, peterx@redhat.com, alex@shazbot.org,
- richard.henderson@linaro.org, peter.maydell@linaro.org,
- berrange@redhat.com, philmd@oss.qualcomm.com, philmd@mailo.com,
- david@kernel.org, clg@redhat.com, pbonzini@redhat.com,
- phrdina@redhat.com, jugraham@redhat.com,
- liugang24219@sangfor.com.cn, shan.gavin@gmail.com
-Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
- device region accessors
-Message-ID: <20260616115004-mutt-send-email-mst@kernel.org>
-References: <20260616052552.389021-1-gshan@redhat.com>
- <20260616052552.389021-2-gshan@redhat.com>
- <20260616021153-mutt-send-email-mst@kernel.org>
- <dfc55b58-5f5d-4ac8-a508-b208cf9565fa@redhat.com>
- <20260616054555-mutt-send-email-mst@kernel.org>
- <ecbd8c97-29f4-4e80-af15-ef5c25f2a66b@sangfor.com.cn>
+ AFNElJ+LK57BiuK8ThQPTVowk7rwW4tc/Q9dLOVdwLFgvM+CRBgPLYaC8gHBVeubwjE8tMRQFstaKG3LDw==@nongnu.org
+X-Gm-Message-State: AOJu0YzeIr2TrQmOJeapsM2XvPUAeQpA5HLm1nd7qbhXDpT8yeN9+xUb
+ sCKBvfhOUYykS5jRNeiFIjil+aIyJRc0T5hrpyPQ7kkknrnJqdIkzz9XMZmZZj4zIrqGGkVhKNr
+ GWgmXLqhzLxR1RY260meUf5W0zna0nlx9eam09rouyA==
+X-Gm-Gg: AfdE7cnWez+QyTXF9mrFUBpYCSj0IJ+4AONlEjkF60zS+lZZgYZFgOeHUXHGHPyZBxS
+ y71fR5OSmqk7nNCT/n+V/LR9bnKS0bRQZjwcmuJEsCRX/D5BsFNszXBjTrBKF0IE7N+U4DVVLP1
+ uTgR66xHk3+8v66pp0gyIlon6GlSKkyreMptDYnxLNNKNdt59H5assoD/soylo5sEv9upHY6Ln+
+ dNSAJCMna0nuWu7VN9X7L2ZeqzQNGAA9HWzfp9rx9Sk6YD4DDsVVg4317am2g+2Azj7dlz7/tz+
+ yWLjFmMVd3axeqa4GkVz/GOaJdKZL+TpxqaSifR1D+E6lDrTQIXSm0pL6vhRPcSL8W8=
+X-Received: by 2002:a05:690e:144d:b0:650:1cdb:5f57 with SMTP id
+ 956f58d0204a3-66277f2cb2amr15754178d50.5.1781625368876; Tue, 16 Jun 2026
+ 08:56:08 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <ecbd8c97-29f4-4e80-af15-ef5c25f2a66b@sangfor.com.cn>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: jL9vX-VMXv0P8aSXrEIiTvvCepNMCmtJRPdP7A7rk8M_1781625108
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+References: <20260604234852.573178-1-richard.henderson@linaro.org>
+In-Reply-To: <20260604234852.573178-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 16 Jun 2026 16:55:56 +0100
+X-Gm-Features: AVVi8Ce3H6kSUtKwn2x0XdizAtwIacXLa4FYqe-2djmgrrcPXqKyqoxEV6tpLpU
+Message-ID: <CAFEAcA8dg3Vyfj7UXgaP1L9Eq3mZS4K+pbwn7wVopC_RDG=E1g@mail.gmail.com>
+Subject: Re: [PATCH 00/25] target/arm: Implement FEAT_SVE2p2
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,32 +115,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jun 16, 2026 at 08:50:27PM +0800, Ding Hui wrote:
-> > What is the question, exactly? That's why I made the list of 11 issues.
-> > Is that unclear, somehow?  Another reason to include that, maybe.
-> > 
-> 
-> We can take the e1000 issue on aarch64 for example:
-> 
-> Link: https://lore.kernel.org/qemu-devel/20260527091711.3901-1-liugang24219@sangfor.com.cn/
-> 
-> The software allocate ring buffer for hardware to receive packet.
-> In normal case, the hardware fill the RX ring descriptor, and with status DD bit=1 (Descriptor Done),
-> then the ownership of the ring descriptor is converted to software, after the software consume
-> the descriptor, it will write status DD bit=0 and give it back to hardware to refill data.
-> 
-> pci_dma_write calls memcpy at the underlying level, and on aarch64 with glibc 2.24+,
-> the memcpy/memmove implementation uses a branchless sequence that copies
-> the same byte three times when count == 1.
+On Fri, 5 Jun 2026 at 00:51, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Based-on: 20260603032855.106930-1-richard.henderson@linaro.org
+> ("[PATCH v9 00/45] target/arm: Implement FEAT_FP8")
+>
+> Another batch of code on the way toward FEAT_SME2p2.
+>
+>
+> r~
+>
+>
+> Richard Henderson (25):
+>   target/arm: Add feature predicates for SVE2.2 and SME2.2
+>   target/arm: Rename sve unary predicated patterns
+>   target/arm: Enable zeroing in DO_ZPZ macros in sve_helper.c
+>   target/arm: Expand DO_ZPZ in translate-sve.c
+>   target/arm: Implement SVE integer unary operations (predicated,
+>     zeroing)
+>   target/arm: Implement SVE bitwise unary operations (predicated,
+>     zeroing)
+>   target/arm: Implement SVE reverse within elements (zeroing)
+>   target/arm: Implement SVE reverse doublewords (zeroing)
+>   target/arm: Implement SVE2 integer unary operations (predicated,
+>     zeroing)
+>   target/arm: Add data argument to do_frint_mode
+>   target/arm: Implement Floating-point round to integral value
+>     (predicated, zeroing)
+>   target/arm: Implement Floating-point convert (predicated, zeroing)
+>   target/arm: Implement Floating-point square root (predicated, zeroing)
+>   target/arm: Implement SCVTF, UCVTF (predicated, zeroing)
+>   target/arm: Implement FRINT{32,64}{X,Z}
+>   target/arm: Enable zeroing in DO_FCVT{N,L}T macros in sve_helper.c
+>   target/arm: Implement SVE floating-point convert (top, predicated,
+>     zeroing)
+>   target/arm: Implement floating-point log and convert to integer
+>     (zeroing)
 
-Yes this is issue 11:
+I'm going to apply these first 18 patches (all the zeroing versions
+of insns) to target-arm.next as they all were straightforward,
+and I have a pullreq nearly ready to go.
 
-10. on non-x86 memcpy will do multiple overlapping stores even
-for single byte writes. E.g. it does it to avoid extra branches.
-This is causing issues in practice.
-
-
--- 
-MST
-
+thanks
+-- PMM
 

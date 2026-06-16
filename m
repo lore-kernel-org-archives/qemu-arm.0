@@ -4,111 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BD6ECD98CE
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 05:26:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A446CD98D2
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Jun 2026 05:26:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZMJK-0006o0-11; Tue, 16 Jun 2026 01:26:06 -0400
+	id 1wZMJj-0006xy-5p; Tue, 16 Jun 2026 01:26:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZMJJ-0006nY-GN
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 01:26:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wZMJi-0006xe-Fp
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2026 01:26:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZMJH-0002Jm-Tp
- for qemu-arm@nongnu.org; Tue, 16 Jun 2026 01:26:05 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wZMJg-0002QM-7C
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2026 01:26:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781587562;
+ s=mimecast20190719; t=1781587587;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=iHMVucFQttqFOWfz8CZsdgvnHedB4IsaIsUZp6Fr5Bs=;
- b=ZB+pR57RdsTBvzJVyLkboDIgEJJ5gqr4WvwLw2PDbgmgkF4QMEulheCiBLgb/I7uyTR6Xo
- EBAL8pv80c/pyU7Yehi/7fhS7Xr83RZFkHGp5mGZLA5qA9GeRdB95K8gqbVVCR6Inbzy4z
- f/lK1hnQ2kgvFJfB7n/qZhtBKzhPFAM=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-347-GA1F_REqNzWJ37BtdLtvWQ-1; Tue, 16 Jun 2026 01:26:01 -0400
-X-MC-Unique: GA1F_REqNzWJ37BtdLtvWQ-1
-X-Mimecast-MFC-AGG-ID: GA1F_REqNzWJ37BtdLtvWQ_1781587560
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-490c4f61a34so27981955e9.2
- for <qemu-arm@nongnu.org>; Mon, 15 Jun 2026 22:26:01 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781587560; x=1782192360;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=iHMVucFQttqFOWfz8CZsdgvnHedB4IsaIsUZp6Fr5Bs=;
- b=igXGXQBm6XFEldgb/UwLptnYVCXnXuXe8ITSvvhTKcW5Lh2uqybwsJJqJkTeJoRySp
- HinzurO1DzA5ZMv0M9T8Cs2Q4ZRLBlLp49hdxPsJzlOfkFNSadIsUjHygZjj5LdkREfV
- 7M4Qve23AcohDC3MB0sk5GosCrYKa8ItcQDUx+RutHI+RT7E7HwPJG7rqIfBKEymp94j
- 8VdM7oUiIjZlp/NLmrFZkyt6bizXODKz1RP4j6a4PSZmjtMSeHBUOpPvB9sF3EpT5wPA
- AhBvRgFCsKxHk7Kea5YnKJoBtfb10Sk7nMdZ5OYcUwNLk520+S+JnXUh05+Mj5U9hFPu
- ALMw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/9u8KQqpTaGhG65zESAb7csdjaews2KP2jww12GzLF/TmkQlNjurweR45OpLAacLZATLT9ldEBLA==@nongnu.org
-X-Gm-Message-State: AOJu0Yzl/mF7hmePy9pfCz5gSCa1I3tHTHpRtTpZo5HO1Lerl4/7lP2S
- nxc5RN+3vwcI16suyvl6kM1hUrAU0h+NkM9vci5NiwOUIR5FMxSbW9Y1HIFWdoUDi2KxQkY0hVD
- rj8hVoK8pr8W9vawHXeDb2eoQiuJ4WUhJzkyB3w66s5O/ApRrsUSIqA==
-X-Gm-Gg: Acq92OEsKQsqD0WQdMRBbQtxOwhpDRGhReZE2nZEUfdN5qMBstrIpzZw06ekymPCrKs
- YTQmT22Z+XrRE2S41KhwUdB0RnvG4wSDZ6xkvDmjhFiI9nREvUIbIK/z/qNRzFkVdhH8VHuSNXt
- j05dHJ68tpF/OtNoLWdbQkbjowdupXJnSXftV0oJkQFhcXOFki6Jbh4HUFZayAJvCellAWrGKf7
- GcXaIzyJ59TZtgL32rVTZsyMd8F08cK2QR+pP4hzKqgsk1UPQdtdpM+wmdllTs/lh8NyZqoSDVa
- xKMwjRRSyKj3mXRykd0ebBzwxuvx2EZJy5Fg842raGi3L7SuUyLxsm6xBYZpvooO2mp7vzTUlgo
- B35ez8l8+W2BTPPEyro+LTnZtPXoS1/2XkD7qM8Ok4Go=
-X-Received: by 2002:a05:600c:354f:b0:490:d354:d151 with SMTP id
- 5b1f17b1804b1-490ec4fe7aamr232642545e9.18.1781587560174; 
- Mon, 15 Jun 2026 22:26:00 -0700 (PDT)
-X-Received: by 2002:a05:600c:354f:b0:490:d354:d151 with SMTP id
- 5b1f17b1804b1-490ec4fe7aamr232641975e9.18.1781587559601; 
- Mon, 15 Jun 2026 22:25:59 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4922fa47ce3sm53945275e9.6.2026.06.15.22.25.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Jun 2026 22:25:59 -0700 (PDT)
-Date: Tue, 16 Jun 2026 01:25:55 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, peterx@redhat.com, alex@shazbot.org,
+ bh=NStWUbsE6Tm5fos2QuYOYWDBvvnYvZHjRArlTMvyoTk=;
+ b=fI05ul1SOq53vk3fitE8nnBMQ4GVAWvKbfH0cbYLfcTiQ68el6++WkyqYyfYTtLO/dLGGz
+ xSwjoU9zlXD+5bHu/NGyEZvqbsklKAu+axAKT8fam5mADFh6SAT2l+0Cku4WcFa5CSNjcF
+ z6KcrsuMZzqEruuEbX8taZEX8RM0fQ8=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-562-9R7wwIRkMMSTDOxvvwuQUg-1; Tue,
+ 16 Jun 2026 01:26:23 -0400
+X-MC-Unique: 9R7wwIRkMMSTDOxvvwuQUg-1
+X-Mimecast-MFC-AGG-ID: 9R7wwIRkMMSTDOxvvwuQUg_1781587581
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 106BC195607A; Tue, 16 Jun 2026 05:26:21 +0000 (UTC)
+Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.2])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 91F191800586; Tue, 16 Jun 2026 05:26:12 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, mst@redhat.com, peterx@redhat.com, alex@shazbot.org,
+ richard.henderson@linaro.org, peter.maydell@linaro.org,
  berrange@redhat.com, philmd@oss.qualcomm.com, philmd@mailo.com,
- david@kernel.org, clg@redhat.com, pbonzini@redhat.com,
- phrdina@redhat.com, jugraham@redhat.com,
- liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, shan.gavin@gmail.com
-Subject: Re: [PATCH v2 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
- device region accessors
-Message-ID: <20260616011744-mutt-send-email-mst@kernel.org>
-References: <CAFEAcA9CT6E8dhEV7Ek6ruT_o2dKUf==2V+U-1WFDOLtYbgeeQ@mail.gmail.com>
- <20260615105556-mutt-send-email-mst@kernel.org>
- <CAFEAcA9Gi43qNZoZcGtq8ioffGwOc_XuhoFAjGx7-bt4U8qfxw@mail.gmail.com>
- <e399ceb9-bc4a-4ba6-8efd-ed2742d0853b@redhat.com>
- <20260615154054-mutt-send-email-mst@kernel.org>
- <22d55870-b521-4002-add7-791bce8ea96a@redhat.com>
- <20260615224658-mutt-send-email-mst@kernel.org>
- <0038f601-7647-4547-a67a-c6a17fae26ca@linaro.org>
- <20260616005429-mutt-send-email-mst@kernel.org>
- <081a9e18-6504-4a13-a3c6-47e94be63f7c@redhat.com>
+ david@kernel.org, clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com,
+ jugraham@redhat.com, liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn,
+ shan.gavin@gmail.com
+Subject: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy,
+ move}() in ram device region accessors
+Date: Tue, 16 Jun 2026 15:25:51 +1000
+Message-ID: <20260616052552.389021-2-gshan@redhat.com>
+In-Reply-To: <20260616052552.389021-1-gshan@redhat.com>
+References: <20260616052552.389021-1-gshan@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <081a9e18-6504-4a13-a3c6-47e94be63f7c@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: cF3D7IizkV-fdyZopDl9R-vbGkYbIarn_7sDfTJCNd8_1781587560
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: RgqE983yduJ8oPJyV6k30pbavGtSZfEaR_zNVk2xo6g_1781587581
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,60 +90,365 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jun 16, 2026 at 03:07:27PM +1000, Gavin Shan wrote:
-> On 6/16/26 2:59 PM, Michael S. Tsirkin wrote:
-> > On Mon, Jun 15, 2026 at 09:48:00PM -0700, Richard Henderson wrote:
-> > > On 6/15/26 21:23, Michael S. Tsirkin wrote:
-> > > > B. Also on x86, I do not see why we should not use memcpy for large
-> > > > accesses if we can. Better perf.
-> > > 
-> > > We have an example where memcpy writes to the same location 3 times.
-> > > This is not appropriate for any host.
-> > > 
-> > > 
-> > > r~
-> > 
-> > Ah, checked libc and sure enough, it does it. E.g. it uses 2 overlapping SSE
-> > stores to do a 17 byte write. Not sure how we get 3 but whatevs.
-> > 
-> > 
-> > But just to clarify, I am talking about DMA accesses, that are not
-> > initiated by the VCPU.  I am not so sure we care about multiple stores
-> > in this instance? Do we? We do care about speed, for sure.
-> > 
-> 
-> In current implementation, qemu_ram_copy/move are differentiated on x86
-> and other architectures. Do we need to unify the implementations (qemu_ram_copy/move)
-> on all architectures to avoid using memcpy() and memmove()?
+All ram device regions were turned to be indirectly accessible by commit
+4a2e242bbb ("memory: Don't use memcpy for ram_device regions"). This leads
+to guest hang on attempt to build 'cuda-samples' as reported by Julia. The
+guest is started by the following command lines, with GH100 GPU card passed
+from the host.
 
-I am not sure for anything outside 1,2,4,8 bytes the issues are not
-theoretical.
+   host$ lspci | grep GH100
+   0009:01:00.0 3D controller: NVIDIA Corporation GH100 [GH200 120GB / 480GB] (rev a1)
+   host$ /home/sandbox/gavin/qemu.main/build/qemu-system-aarch64            \
+         -machine virt,gic-version=host,ras=on,highmem-mmio-size=4T         \
+         -accel kvm -cpu host -smp cpus=48 -m size=8G                       \
+         -drive file=/home/gavin/sandbox/images/disk.qcow2,if=none,id=d0    \
+         -device virtio-blk-pci,id=vb0,bus=pcie.0,drive=d0,num-queues=4     \
+         -device vfio-pci-nohotplug,host=0009:01:00.0,bus=pcie.1.0
+           :
+   guest$ cd cuda-samples/build
+   guest$ make -j 20 clean
+   guest$ make -j 20
+           :
+   [ 54%] Linking CUDA executable graphMemoryNodes
+   [ 54%] Built target graphMemoryNodes
+   <no more output afterwards, guest becomes frozen here>
 
-I'd be care
+   guest$ qemu-system-aarch64: virtio: bogus descriptor or out of resources
+   [  555.814025] virtio_blk virtio0: [vda] new size: 268435456 512-byte logical blocks (137 GB/128 GiB)
 
-> Maybe it's time for me to post (v3) for a new round of discussions.
-> 
-> Thanks,
-> Gavin
+When the GPU's driver (NVidia open driver) is loaded on guest bootup,
+the memory blocks residing in the PCI BAR#4 of the GH100 GPU card can
+be presented to the guest through memory hot-add. The page cache can
+then be allocated from the hot added memory blocks when cuda-samples
+is being built. Afterwards, the page cache is sent to QEMU's virtio-blk
+device as part of the DMA request, the bounce buffer has to be used to
+accomodate the request as the corresponding memory region (MemoryRegion)
+is an indirectly accessible ram device region in qemu. However, the max
+bounce bufer size is only 4096 bytes by default and that is exhausted
+quickly, leading to a reset on the virtio-blk device and frozen guest
+eventually.
 
-maybe start a toppost with the list of issues and solutions first of
-all.
+  QEMU
+  ====
+  virtio_blk_handle_output
+    virtio_blk_handle_vq
+      virtio_blk_get_request
+        virtqueue_pop
+          virtqueue_split_pop
+            virtqueue_map_desc
+              address_space_map
+                memory_access_is_direct         # Return false
+                  memory_region_supports_direct_access
 
-Let's add more to the list:
+  (qemu) info mtree
+  memory-region: pci_bridge_pci
+    0000000000000000-ffffffffffffffff (prio 0, container): pci_bridge_pci
+      0000042000000000-0000043fffffffff (prio 1, i/o): 0009:01:00.0 base BAR 4
+        0000042000000000-0000043fffffffff (prio 0, i/o): 0009:01:00.0 BAR 4
+          0000042000000000-000004379fffffff (prio 0, ramd): 0009:01:00.0 BAR 4 mmaps[0]
 
+This adds qemu_ram_{copy, move}() and replaces {memcpy, memmove}() with
+them in the ram device memory region accessors, similar to what's done
+in commit 4a2e242bbb so that the issue (MMIO access instructions were
+optimized to SSE instructions) covered by that commit is fixed. This
+makes 'ram_device_mem_ops' redundant, paving the way to revert that
+commit to make ram device region directly accessible again in the next
+patch.
 
-10. on x86 memcpy will sometimes do multiple overlapping stores when
-size is not a power of 2. for example, a 15 byte write is done with
-2 8-byte stores. This is theoretically an issue
-if guest does something super clever with ordering,
-but does not seem to be in practice.
+Reported-by: Julia Graham <jugraham@redhat.com>
+Suggested-by: Michael S. Tsirkin <mst@redhat.com>
+Suggested-by: Peter Xu <peterx@redhat.com>
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+---
+v3: Documentation for qemu_ram_{copy, move}           (Peter/Michael)
+    Support qemu_ram_move() for overlapped src/dest   (Richard)
+    Use {memcpy, memmove} if step is 16-bytes or more (Michael)
+    Code improvements                                 (Richard/Michael)
+---
+ hw/remote/vfio-user-obj.c |   4 +-
+ include/system/memory.h   |  32 ++++++-
+ system/physmem.c          | 178 +++++++++++++++++++++++++++++++++++++-
+ 3 files changed, 207 insertions(+), 7 deletions(-)
 
-10. on non-x86 memcpy will do multiple overlapping stores even
-for single byte writes. E.g. it does it to avoid extra branches.
-This is causing issues in practice.
-
-
+diff --git a/hw/remote/vfio-user-obj.c b/hw/remote/vfio-user-obj.c
+index 87fa7b6572..97a6c88780 100644
+--- a/hw/remote/vfio-user-obj.c
++++ b/hw/remote/vfio-user-obj.c
+@@ -375,9 +375,9 @@ static int vfu_object_mr_rw(MemoryRegion *mr, uint8_t *buf, hwaddr offset,
+         ram_ptr = memory_region_get_ram_ptr(mr);
+ 
+         if (is_write) {
+-            memcpy((ram_ptr + offset), buf, size);
++            qemu_ram_copy(ram_ptr + offset, buf, size);
+         } else {
+-            memcpy(buf, (ram_ptr + offset), size);
++            qemu_ram_copy(buf, ram_ptr + offset, size);
+         }
+ 
+         return 0;
+diff --git a/include/system/memory.h b/include/system/memory.h
+index 1417132f6d..84203c312d 100644
+--- a/include/system/memory.h
++++ b/include/system/memory.h
+@@ -2897,6 +2897,36 @@ void address_space_register_map_client(AddressSpace *as, QEMUBH *bh);
+ void address_space_unregister_map_client(AddressSpace *as, QEMUBH *bh);
+ 
+ /* Internal functions, part of the implementation of address_space_read.  */
++
++/**
++ * qemu_ram_copy: copy data to ramblock
++ *
++ * @dst: destination where the data is copied to
++ * @src: source where the data is copied from
++ * @n: length of data to be copied
++ *
++ *
++ * Copy @n bytes from @src to @dst with the assumption that @src and @dst
++ * do not overlap. Handles special cases such as uncacheable ramblocks
++ * correctly. Use this for accessing ramblock in response to DMA/VCPU IO,
++ * in preference to memcpy().
++ */
++void qemu_ram_copy(void *dest, const void *src, size_t n);
++
++/**
++ * qemu_ram_move: move data to ramblock
++ *
++ * @dst: destination where the data is moved to
++ * @src: source where the data is moved from
++ * @n: length of data to be moved
++ *
++ * Move @n bytes from @src to @dst with the assumption that @src and @dst
++ * can overlap. Handles special cases such as uncacheable ramblocks
++ * correctly. Use this for accessing ramblock in response to DMA/VCPU IO,
++ * in preference to memmove().
++ */
++void qemu_ram_move(void *dest, const void *src, size_t n);
++
+ MemTxResult address_space_read_full(AddressSpace *as, hwaddr addr,
+                                     MemTxAttrs attrs, void *buf, hwaddr len);
+ MemTxResult flatview_read_continue(FlatView *fv, hwaddr addr,
+@@ -2970,7 +3000,7 @@ MemTxResult address_space_read(AddressSpace *as, hwaddr addr,
+             mr = flatview_translate(fv, addr, &addr1, &l, false, attrs);
+             if (len == l && memory_access_is_direct(mr, false, attrs)) {
+                 ptr = qemu_map_ram_ptr(mr->ram_block, addr1);
+-                memcpy(buf, ptr, len);
++                qemu_ram_copy(buf, ptr, len);
+             } else {
+                 result = flatview_read_continue(fv, addr, attrs, buf, len,
+                                                 addr1, l, mr);
+diff --git a/system/physmem.c b/system/physmem.c
+index 7bcbf87573..45a17cd580 100644
+--- a/system/physmem.c
++++ b/system/physmem.c
+@@ -3160,6 +3160,177 @@ void memory_region_flush_rom_device(MemoryRegion *mr, hwaddr addr, hwaddr size)
+     invalidate_and_set_dirty(mr, addr, size);
+ }
+ 
++static void qemu_ram_copy_aligned(void *dst, const void *src, size_t n)
++{
++    switch (n) {
++    case 1:
++        __builtin_memcpy(dst, src, 1);
++        break;
++    case 2:
++        __builtin_memcpy(dst, src, 2);
++        break;
++    case 4:
++        __builtin_memcpy(dst, src, 4);
++        break;
++    case 8:
++        __builtin_memcpy(dst, src, 8);
++        break;
++    default:
++        memcpy(dst, src, n);
++    }
++}
++
++static void qemu_ram_move_aligned(void *dst, const void *src, size_t n)
++{
++    switch (n) {
++    case 1:
++        __builtin_memmove(dst, src, 1);
++        break;
++    case 2:
++        __builtin_memmove(dst, src, 2);
++        break;
++    case 4:
++        __builtin_memmove(dst, src, 4);
++        break;
++    case 8:
++        __builtin_memmove(dst, src, 8);
++        break;
++    default:
++        memmove(dst, src, n);
++    }
++}
++
++static void qemu_ram_copy_unaligned(void *dst, const void *src,
++                                    size_t n, size_t max_step)
++{
++    uintptr_t test, step;
++
++    /* Aligned maximal step */
++    max_step = pow2floor(max_step);
++
++    while (n) {
++        test = (uintptr_t)src | (uintptr_t)dst | n | max_step;
++        step = test & -test;
++
++        switch (step) {
++        case 1:
++            qatomic_set((uint8_t *)dst, qatomic_read((uint8_t *)src));
++            src += 1;
++            dst += 1;
++            n -= 1;
++            break;
++        case 2:
++            qatomic_set((uint16_t *)dst, qatomic_read((uint16_t *)src));
++            src += 2;
++            dst += 2;
++            n -= 2;
++            break;
++        case 4:
++            qatomic_set((uint32_t *)dst, qatomic_read((uint32_t *)src));
++            src += 4;
++            dst += 4;
++            n -= 4;
++            break;
++        case 8:
++            qatomic_set((uint64_t *)dst, qatomic_read((uint64_t *)src));
++            src += 8;
++            dst += 8;
++            n -= 8;
++            break;
++        default:
++            memcpy(dst, src, step);
++            src += step;
++            dst += step;
++            n -= step;
++        }
++    }
++}
++
++static void qemu_ram_backwards_copy_unaligned(void *dst, const void *src,
++                                              size_t n, size_t max_step)
++{
++    uintptr_t test, step;
++
++    /* Aligned maximal step */
++    max_step = pow2floor(max_step);
++
++    /* End of the blocks */
++    src += n;
++    dst += n;
++
++    while (n) {
++        test = (uintptr_t)src | (uintptr_t)dst | n | max_step;
++        step = test & -test;
++
++        switch (step) {
++        case 1:
++            src -= 1;
++            dst -= 1;
++            n -= 1;
++            qatomic_set((uint8_t *)dst, qatomic_read((uint8_t *)src));
++            break;
++        case 2:
++            src -= 2;
++            dst -= 2;
++            n -= 2;
++            qatomic_set((uint16_t *)dst, qatomic_read((uint16_t *)src));
++            break;
++        case 4:
++            src -= 4;
++            dst -= 4;
++            n -= 4;
++            qatomic_set((uint32_t *)dst, qatomic_read((uint32_t *)src));
++            break;
++        case 8:
++            src -= 8;
++            dst -= 8;
++            n -= 8;
++            qatomic_set((uint64_t *)dst, qatomic_read((uint64_t *)src));
++            break;
++        default:
++            src -= step;
++            dst -= step;
++            n -= step;
++            memmove(dst, src, step);
++        }
++    }
++}
++
++/* x86 should work with __builtin_{memcpy, memmove}() for IO access */
++#if defined(__i386__) || defined(__x86_64__)
++#define HOST_UNALIGNED_MMIO_OK 1
++#else
++#define HOST_UNALIGNED_MMIO_OK 0
++#endif
++
++void qemu_ram_copy(void *dst, const void *src, size_t n)
++{
++    if (dst == src || n == 0) {
++        return;
++    }
++
++    if (HOST_UNALIGNED_MMIO_OK) {
++        qemu_ram_copy_aligned(dst, src, n);
++    } else {
++        qemu_ram_copy_unaligned(dst, src, n, 8);
++    }
++}
++
++void qemu_ram_move(void *dst, const void *src, size_t n)
++{
++    if (src == dst || n == 0) {
++        return;
++    }
++
++    if (HOST_UNALIGNED_MMIO_OK) {
++        qemu_ram_move_aligned(dst, src, n);
++    } else if (dst < src) {
++        qemu_ram_copy_unaligned(dst, src, n, src - dst);
++    } else {
++        qemu_ram_backwards_copy_unaligned(dst, src, n, dst - src);
++    }
++}
++
+ int memory_access_size(MemoryRegion *mr, unsigned l, hwaddr addr)
+ {
+     unsigned access_size_max = mr->ops->valid.max_access_size;
+@@ -3272,7 +3443,7 @@ static MemTxResult flatview_write_continue_step(MemTxAttrs attrs,
+         uint8_t *ram_ptr = qemu_ram_ptr_length(mr->ram_block, mr_addr, l,
+                                                false, true);
+ 
+-        memmove(ram_ptr, buf, *l);
++        qemu_ram_move(ram_ptr, buf, *l);
+         invalidate_and_set_dirty(mr, mr_addr, *l);
+ 
+         return MEMTX_OK;
+@@ -3365,7 +3536,7 @@ static MemTxResult flatview_read_continue_step(MemTxAttrs attrs, uint8_t *buf,
+         uint8_t *ram_ptr = qemu_ram_ptr_length(mr->ram_block, mr_addr, l,
+                                                false, false);
+ 
+-        memcpy(buf, ram_ptr, *l);
++        qemu_ram_copy(buf, ram_ptr, *l);
+ 
+         return MEMTX_OK;
+     }
+@@ -3503,8 +3674,7 @@ MemTxResult address_space_write_rom(AddressSpace *as, hwaddr addr,
+             l = memory_access_size(mr, l, addr1);
+         } else {
+             /* ROM/RAM case */
+-            void *ram_ptr = qemu_map_ram_ptr(mr->ram_block, addr1);
+-            memcpy(ram_ptr, buf, l);
++            qemu_ram_copy(qemu_map_ram_ptr(mr->ram_block, addr1), buf, l);
+             invalidate_and_set_dirty(mr, addr1, l);
+         }
+         len -= l;
 -- 
-MST
+2.54.0
 
 

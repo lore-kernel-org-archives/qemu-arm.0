@@ -4,52 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA3E4CD98E4
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Jun 2026 10:29:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E295CD98E4
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Jun 2026 10:30:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZnWS-0005KD-D2; Wed, 17 Jun 2026 06:29:28 -0400
+	id 1wZnWP-0005Gx-Uu; Wed, 17 Jun 2026 06:29:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=4628a4021f=eblot@meta.com>)
- id 1wZnUu-0004Hh-23; Wed, 17 Jun 2026 06:27:54 -0400
+ id 1wZnUl-0004Av-Hf; Wed, 17 Jun 2026 06:27:44 -0400
 Received: from mx0a-00082601.pphosted.com ([67.231.145.42])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=4628a4021f=eblot@meta.com>)
- id 1wZnUG-000824-9e; Wed, 17 Jun 2026 06:27:51 -0400
-Received: from pps.filterd (m0044012.ppops.net [127.0.0.1])
+ id 1wZnUG-00080Y-9j; Wed, 17 Jun 2026 06:27:43 -0400
+Received: from pps.filterd (m0148461.ppops.net [127.0.0.1])
  by mx0a-00082601.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 65H920He3475939; Wed, 17 Jun 2026 03:26:28 -0700
+ 65H92DRm3616862; Wed, 17 Jun 2026 03:26:38 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=meta.com; h=cc
- :content-transfer-encoding:content-type:date:from:message-id
- :mime-version:subject:to; s=s2048-2025-q2; bh=R9xjJjJhipe6E31H6B
- EFP/vi/faWFsfX5MGgKBw9Jyk=; b=BSGRNJ3L6RHZ/KOjl6gnwS5OXe+/Cuh0aR
- xpkc+qG3/ZGqnv5owzozEwcOyQtpzdJqXSQNRtGoiUASXV0fYPfFro+sFnGWQJq7
- sJ3Uisixdx0l/DmSXFXr8D7vb5LpzhLosNuDPrxudUCFhKmCRtj7+EK9VhBj2NjN
- k1f8VX6m8bVXTIdD0xDIrakSsFdXG6PDFLtIaaSJ4Meedvma3Hd8E9WzRqfJGWwb
- CXBqTFRAqtebdE+jbCcLCIv8EeO5JU/7/ccHCE6nWXlXcy0wGTIjAQ1GlT5nzxoI
- HoG/9QJCCGvki+xycr/jZkqwmh0QspMRkflCOw1aFtmAdX9AyoIA==
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=s2048-2025-q2;
+ bh=Ft9B13DmtIZN3rSeHDUU//9lFFJnQLAjLhD4LQNLrrs=; b=irwvAaSjmLSk
+ ODaesUHus57tttnBGo/yeEpwMJM8oXRC0Uauw7pOsuE/ABeye3gjKPfwLuHQPwMB
+ KMCsUH/zfjYgHj9UGJOzTFgBYflb+wu3S/+5tjmNu1d/okEUADj+LbVSb2p4YtN+
+ Z5oLOOqLcNXByx7tV01KysJOTYakw4RRp7uhdfOt+v4/soa8nNPyP3n2hKMD8reh
+ TeuSlyCIR2nbdDUl8q4m42w/obmoI1/pE/fOlXlstcxTkwDfRku1lJ8sTKU73Yos
+ k817FeAzkNhBo3nWyGje0DX4IFqENJ6RC+2+MwBma55DWGvDJymh49UxJvLVbtdq
+ A4FZGyv8tw==
 Received: from maileast.thefacebook.com ([163.114.135.16])
- by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 4euegxbeqf-2
+ by mx0a-00082601.pphosted.com (PPS) with ESMTPS id 4eueh13gbw-6
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Wed, 17 Jun 2026 03:26:28 -0700 (PDT)
-Received: from localhost (2620:10d:c0a8:1b::30) by mail.thefacebook.com
+ Wed, 17 Jun 2026 03:26:38 -0700 (PDT)
+Received: from localhost (2620:10d:c0a8:1c::1b) by mail.thefacebook.com
  (2620:10d:c0a9:6f::237c) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.2.2562.41; Wed, 17 Jun
- 2026 10:26:26 +0000
+ 2026 10:26:36 +0000
 From: Emmanuel Blot <eblot@meta.com>
-Subject: [PATCH v2 0/4] hw/sensor: Add new device emulation for TI ADC128D818
-Date: Wed, 17 Jun 2026 12:25:59 +0200
-Message-ID: <20260617-i2c-adc128d818-anacapa-v2-0-fd38764f0465@meta.com>
+Date: Wed, 17 Jun 2026 12:26:02 +0200
+Subject: [PATCH v2 3/4] hw/arm: anacapa: add ADC128D818 devices
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4WNTQ6CMBBGr0K6dkynkAquvIdhUaaDjAk/abHRE
- O4u4AFcvuR971tU5CAc1TVbVOAkUcZhA3PKFHVueDCI31gZbay2aEAMgfOEpvQlluAGR25ygDn
- ZnKtL23ittvEUuJX3Eb7XP46v5sk077Xd6CTOY/gczwl37+9JQtBQcWELTR5t0dx6nt2Zxl7V6
- 7p+AR23cNvNAAAA
-X-Change-ID: 20260612-i2c-adc128d818-anacapa-13c63e97fbd0
+Message-ID: <20260617-i2c-adc128d818-anacapa-v2-3-fd38764f0465@meta.com>
+References: <20260617-i2c-adc128d818-anacapa-v2-0-fd38764f0465@meta.com>
+In-Reply-To: <20260617-i2c-adc128d818-anacapa-v2-0-fd38764f0465@meta.com>
 To: <qemu-devel@nongnu.org>
 CC: Paolo Bonzini <pbonzini@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>, Fabiano Rosas
@@ -64,37 +62,33 @@ CC: Paolo Bonzini <pbonzini@redhat.com>,
  William de Abreu Pinho <williampinho@meta.com>, <qemu-arm@nongnu.org>,
  Emmanuel Blot <eblot@meta.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1781691985; l=2210;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1781691985; l=2857;
  i=eblot@meta.com; s=20260602; h=from:subject:message-id;
- bh=wMdbefKTRHYXgo0W7vVm6hO4iECas/to3amMtbgNOJE=;
- b=T4gNYubwPDNhuwGsKuakNOhWKTmeYVDC1HObo8X1CLjPpR+aTQPfIpmOAU7pUIp0unpDKDPIj
- v0ZhLdJCCWGA2TI4LAdWVPPDCzRrbXEOjpO3Qh0l/AEK4qQ6ZseVgqe
+ bh=ba+SGL39DSQnp4XkhtND2+kjLa/+DABvQWlL9O6paiE=;
+ b=OI1uXMGrCsRIgD7TEmRM1vtbNDjxZ9bFNQNpxr05IwyjcLTU7woIW/uzwGYgaSlNrArNTvuf/
+ /tIFPE9Ycm/CQVDEZVNlJQRW0HL2UCo6OM9Dn2+DJcOOHSuDPECdIE9
 X-Developer-Key: i=eblot@meta.com; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-X-Originating-IP: [2620:10d:c0a8:1b::30]
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNjE3MDA5NyBTYWx0ZWRfX5FnW/38eYNXY
- W2XkL7M8JdLvF9pZO04usLCMKvhtaGi5skXun7wq2j1XRU6f0q81CHE7lgtTasT8zsjYt8mSN/w
- 0PUoBLKl44qSS//tEA0bITd8qbUj+RI=
-X-Proofpoint-ORIG-GUID: j9f9SvKpIdADaF3zAVTSry0KOLLQk46a
-X-Proofpoint-GUID: j9f9SvKpIdADaF3zAVTSry0KOLLQk46a
-X-Authority-Analysis: v=2.4 cv=Xay5Co55 c=1 sm=1 tr=0 ts=6a327654 cx=c_pps
+X-Originating-IP: [2620:10d:c0a8:1c::1b]
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNjE3MDA5OCBTYWx0ZWRfX52/rCPq8I60I
+ UVsZghEqgkEa55QhekYuDKBnyJ7EtOXmmzeV+oWX/aXtiDQTecElf+Dk4ko0XxrgzKcBpdzJJW1
+ v98fnm4kEcAjtoG69jhYAEnfqWHXdYE=
+X-Proofpoint-GUID: GjmwVHEtuW19TcW8Es9NBvyoB_gzGJGV
+X-Authority-Analysis: v=2.4 cv=O6cJeh9W c=1 sm=1 tr=0 ts=6a32765e cx=c_pps
  a=MfjaFnPeirRr97d5FC5oHw==:117 a=MfjaFnPeirRr97d5FC5oHw==:17
  a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=7x6HtfJdh03M6CCDgxCd:22 a=PAz_-FQ8hEVmOPYdF0yf:22 a=sozttTNsAAAA:8
- a=VwQbUJbxAAAA:8 a=VabnemYjAAAA:8 a=69wJf7TsAAAA:8 a=20KFwNOVAAAA:8
- a=S56xvJB5AAAA:8 a=KKAkSRfTAAAA:8 a=aow-egSQAAAA:8 a=V2NxCb60AAAA:8
- a=pGLkceISAAAA:8 a=7KBfExy5AAAA:8 a=cdpHSlppZBiW_pgzB5YA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=gKebqoRLp9LExxC7YDUY:22 a=Fg1AiH1G6rFz08G2ETeA:22
- a=MH9Ivq0PDQRhlrFuIVvX:22 a=cvBusfyB2V15izCimMoJ:22 a=gFNbaldVC-z-bsjSTzMo:22
- a=3L6qF29SlnrayQqPM2jZ:22 a=eL7OMsOqQ-6kYQPn45L1:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjE3MDA5NyBTYWx0ZWRfXyLBtnZY8DmDK
- xdrHFz9d6V4gMkJ91TmbRjfPkVS5P1egDB1yD0hUzYqOg0MPlEahnnbx5HxJ9aYHC8wbRIMDHTF
- EWj5VjE0GNtDldLf+LLrWJZa8jTjyqo1Cck5uyOCXKff9A/LCZoxxQ1drNvyDnFcBTZYfoL9LTu
- AG3OsB2vwbdTpENPI/vv4fI5OsZsycsP/Im2iQC6H/6Tqi70B4VrgspTXYKUc1V0aZy+fHZg+gW
- ATmrKgPSitzzQCsDiYghMqD0poL4Fergq04UGPlIRfKKZeQLiAWk1HVZoZLXhuvrW8T3xlE1vl6
- gRmhRLQE9w/cni7B5J4A11vOM+K5Pc/p87AfMcM95HmQH/dbbuOaeQTiAmnBkQMfbTj8tdPx4Km
- +NmP7wIZFs6/Y7H5C2Xa4z+chshFHLtenlFxtBG5t3shAZOalYztckfsHsER/7FpGwbNtAcmVVo
- 95FVDes5hV8xRFpH+3w==
+ a=7x6HtfJdh03M6CCDgxCd:22 a=03ozwUkBphtHgyqjj1sw:22 a=VabnemYjAAAA:8
+ a=29MC50mZdBDcY4WmDOIA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=gKebqoRLp9LExxC7YDUY:22
+X-Proofpoint-ORIG-GUID: GjmwVHEtuW19TcW8Es9NBvyoB_gzGJGV
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjE3MDA5OCBTYWx0ZWRfX3MnLUelZrZya
+ ATKlI+euEDTcfKBRH6djjQu7Of5b8fJgzlMb2O0jxZEjAIZ/mWpff4YI/CU3jaEYY5ulH8XUHDL
+ ySa3k4sGho+4yNKVroBiUbTU9Zux0mkQuc4F9bOwhmsiJKeSaE1zv+/MMUe55HNXmFd6J+r7/PQ
+ bb4raV46Z2JNJNkJhRsDeVKNwNxbo9S2ba/kdiD1BHfYBIOY11ls+T+nvV72xr8E2C3ltFEssFN
+ eh756gBdX/9eT2zbRSAfJJCi/ogGaRZ1VfAVmUCJvqUnw91c7vHWNx8MjwyoEG+cUFHviI7iZha
+ WSEghInV18I5XpNFuGh0emLS+i8U94MvUFtsEUN6mT9lnYKQlVQN2o40JlT+AgfotOpQSPjgiON
+ l2QbSXEcUpSE2Fs533cdiKAx6+B2jbq6nTKcioGtnuFJSJjMRZ+Xge8QLERz35oXwZ8GXiRM+6Q
+ Se16nvInZ0Gb7HxnoVg==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
  definitions=2026-06-17_01,2026-06-16_02,2025-10-01_01
@@ -122,62 +116,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is a 12-bit, 8-channel ADC I2C device, which is used on several
-OpenBMC platforms.
-
-QOM properties can be used to change input ADC values and external VREF at
-run time.
-
-Add it to AST2600-based Anacapa machine, along with some functional tests
-that use QOM properties to inject voltage values into analog inputs.
-
-Datasheet: https://www.ti.com/lit/gpn/ADC128D818
+Wire up the two ADC128D818 instances that appear in the Anacapa DTS:
+one on i2c8 mux channel 0 and one on i2c13 mux channel 3.
 
 Signed-off-by: Emmanuel Blot <eblot@meta.com>
 ---
-Changes in v2:
-- Remove clang-format useless comment sections
-- Link to v1: https://lore.kernel.org/qemu-devel/20260612-i2c-adc128d818-anacapa-v1-0-9e4640cd164b@meta.com
+ hw/arm/Kconfig                  |  1 +
+ hw/arm/aspeed_ast2600_anacapa.c | 16 +++++++++++++---
+ 2 files changed, 14 insertions(+), 3 deletions(-)
 
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Philippe Mathieu-Daudé <philmd@mailo.com>
-Cc: Fabiano Rosas <farosas@suse.de>
-Cc: Laurent Vivier <lvivier@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Cédric Le Goater <clg@kaod.org>
-Cc: Steven Lee <steven_lee@aspeedtech.com>
-Cc: Troy Lee <leetroy@gmail.com>
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>
-Cc: Kane Chen <kane_chen@aspeedtech.com>
-Cc: Andrew Jeffery <andrew@codeconstruct.com.au>
-Cc: Joel Stanley <joel@jms.id.au>
-Cc: qemu-arm@nongnu.org
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index fb798ccbee..04ecf5d473 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -553,6 +553,7 @@ config ASPEED_SOC
+     select LED
+     select PMBUS
+     select MAX31785
++    select ADC128D818
+     select FSI_APB2OPB_ASPEED
+     select AT24C
+     select PCI_EXPRESS
+diff --git a/hw/arm/aspeed_ast2600_anacapa.c b/hw/arm/aspeed_ast2600_anacapa.c
+index a1c8111a93..8f94a830e5 100644
+--- a/hw/arm/aspeed_ast2600_anacapa.c
++++ b/hw/arm/aspeed_ast2600_anacapa.c
+@@ -8,6 +8,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
++#include "hw/sensor/adc128d818.h"
+ #include "hw/arm/machines-qom.h"
+ #include "hw/arm/aspeed.h"
+ #include "hw/arm/aspeed_soc.h"
+@@ -15,7 +16,6 @@
+ #include "hw/gpio/pca9552.h"
+ #include "hw/nvram/eeprom_at24c.h"
+ 
+-/* Anacapa hardware value */
+ #define ANACAPA_BMC_HW_STRAP1 0x00002002
+ #define ANACAPA_BMC_HW_STRAP2 0x00000000
+ #define ANACAPA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+@@ -221,6 +221,14 @@ static const uint8_t hpm_brd_id_eeprom[] = {
+ };
+ static const size_t hpm_brd_id_eeprom_len = sizeof(hpm_brd_id_eeprom);
+ 
++static void anacapa_add_adc128d818(I2CBus *bus, uint8_t addr,
++                                   const char *description)
++{
++    DeviceState *dev = DEVICE(i2c_slave_new(TYPE_ADC128D818, addr));
++    qdev_prop_set_string(dev, "description", description);
++    i2c_slave_realize_and_unref(I2C_SLAVE(dev), bus, &error_fatal);
++}
++
+ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     /* Reference: aspeed-bmc-facebook-anacapa.dts */
+@@ -259,7 +267,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_mux = i2c_slave_create_simple(i2c[8], TYPE_PCA9546, 0x72);
+ 
+     /* i2c8mux ch0 */
+-    /* adc128d818@1f — no model */
++    /* adc128d818@1f — R-PDB ADC (mode 1: 8 voltage channels) */
++    anacapa_add_adc128d818(pca954x_i2c_get_bus(i2c_mux, 0), 0x1f, "i2c8:0:1f");
+     /* pca9555@22 */
+     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0),
+                             TYPE_PCA9552, 0x22);
+@@ -320,7 +329,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_mux = i2c_slave_create_simple(i2c[13], TYPE_PCA9548, 0x70);
+ 
+     /* i2c13mux ch3 */
+-    /* adc128d818@1f - no model */
++    /* adc128d818@1f — MB ADC (mode 1: 8 voltage channels) */
++    anacapa_add_adc128d818(pca954x_i2c_get_bus(i2c_mux, 3), 0x1f, "i2c13:3:1f");
+ 
+     /* i2c13mux ch4 */
+     /* eeprom@51 */
 
----
-Emmanuel Blot (4):
-      hw/sensor: adc128d818: add 12-bit 8-channel ADC device
-      tests/qtest: adc128d818: add test suite
-      hw/arm: anacapa: add ADC128D818 devices
-      test/functional: anacapa: test ADC128D818
-
- hw/arm/Kconfig                              |   1 +
- hw/arm/aspeed_ast2600_anacapa.c             |  16 +-
- hw/sensor/Kconfig                           |   4 +
- hw/sensor/adc128d818.c                      | 695 +++++++++++++++++++++++
- hw/sensor/meson.build                       |   1 +
- hw/sensor/trace-events                      |   8 +
- include/hw/sensor/adc128d818.h              |  12 +
- tests/functional/arm/test_aspeed_anacapa.py |  92 ++-
- tests/qtest/adc128d818-test.c               | 849 ++++++++++++++++++++++++++++
- tests/qtest/meson.build                     |   1 +
- 10 files changed, 1670 insertions(+), 9 deletions(-)
----
-base-commit: 193963218accbcf65f28ab1efa773ac6d1cc634c
-change-id: 20260612-i2c-adc128d818-anacapa-13c63e97fbd0
-
-Best regards,
---  
-Emmanuel Blot <eblot@meta.com>
+-- 
+2.50.1
 
 

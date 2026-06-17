@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A27E1CD98F1
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Jun 2026 10:37:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C42CCD98E4
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Jun 2026 10:37:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZndX-0001fA-Rc; Wed, 17 Jun 2026 06:36:47 -0400
+	id 1wZndY-0001gG-AS; Wed, 17 Jun 2026 06:36:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wZncA-0001CV-36
- for qemu-arm@nongnu.org; Wed, 17 Jun 2026 06:35:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wZnca-0001GH-0p
+ for qemu-arm@nongnu.org; Wed, 17 Jun 2026 06:35:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wZnc8-0003Vh-If
- for qemu-arm@nongnu.org; Wed, 17 Jun 2026 06:35:21 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wZncW-0003Yk-8t
+ for qemu-arm@nongnu.org; Wed, 17 Jun 2026 06:35:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781692520;
+ s=mimecast20190719; t=1781692543;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=u6F6HBN2bu0MyiMsBoItFjZ3XJun8Rg5X5Tes6ZsPLc=;
- b=Zg37ipxTGFb5MFzuAaldVkQvvOfSAG1tEdLOH752Jqc0+ak8CpzQBXsKN4xRHGEmlogJ+i
- Ye67GLlp3CVhz8YQmE5p72GoDJndqwIknDq7gLULS22UvaJIi9sg3bgU2rOA/evGJ+nuX+
- VVp9EcHWzqnHEvka06K0nKen+pBBBvs=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=BQGck8ay24UjOHef8L5SjZJjvydrD8Bt7cLdVRObp0I=;
+ b=gfYnxj0GMEHxF6hG9YBoxW+esgwwAKPp8VCYM7BgX/Am2WUYG1ExeRTh44b9xAYUXl7W3g
+ onBOddpDZU4QoJt4chgxEdgmj2sgKahekvZrXshWb7p99mor+F7B8gUVssIMYjG9iODZAD
+ CDRNf6Ynx92ktDytCFxVvd2l/mRwcpM=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-572-kPP7fDO2MiSaVhejb1mgfw-1; Wed,
- 17 Jun 2026 06:35:15 -0400
-X-MC-Unique: kPP7fDO2MiSaVhejb1mgfw-1
-X-Mimecast-MFC-AGG-ID: kPP7fDO2MiSaVhejb1mgfw_1781692514
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-523-1iAueUNGP-6fzvNGcd9_pw-1; Wed,
+ 17 Jun 2026 06:35:39 -0400
+X-MC-Unique: 1iAueUNGP-6fzvNGcd9_pw-1
+X-Mimecast-MFC-AGG-ID: 1iAueUNGP-6fzvNGcd9_pw_1781692537
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 92EFC1805C17; Wed, 17 Jun 2026 10:35:13 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8986F1955F17; Wed, 17 Jun 2026 10:35:37 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.44.48.13])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 53C3D3008DC3; Wed, 17 Jun 2026 10:35:12 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 30B72414; Wed, 17 Jun 2026 10:35:36 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 1F7F3180194A; Wed, 17 Jun 2026 12:35:11 +0200 (CEST)
-Date: Wed, 17 Jun 2026 12:35:11 +0200
+ id 3201C180194A; Wed, 17 Jun 2026 12:35:35 +0200 (CEST)
+Date: Wed, 17 Jun 2026 12:35:35 +0200
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
 Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dave@treblig.org>, 
@@ -59,28 +59,30 @@ Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dave@treblig.org>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-ppc@nongnu.org,
  Thomas Huth <th.huth+qemu@posteo.eu>
-Subject: Re: [PATCH v2 03/22] hw/i386/vmmouse: convert to QemuInputHandler API
-Message-ID: <ajJ4S1yx57k4zYv9@sirius.home.kraxel.org>
+Subject: Re: [PATCH v2 04/22] hw/usb/dev-wacom: convert to modern
+ QemuInputHandler API
+Message-ID: <ajJ4YqArO_BjpUZg@sirius.home.kraxel.org>
 References: <20260610-ui-input-v2-0-f68452dd6a22@redhat.com>
- <20260610-ui-input-v2-3-f68452dd6a22@redhat.com>
- <CAJ+F1CLXwmdyksawoiarWARwxyt1AyRRTEbkq1Wi3=wSmeYTcw@mail.gmail.com>
+ <20260610-ui-input-v2-4-f68452dd6a22@redhat.com>
+ <CAJ+F1CLQbTf8tnJ5eJe2r3K7r0x1ZKatjopr0KYaU-RmdBqw-Q@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAJ+F1CLXwmdyksawoiarWARwxyt1AyRRTEbkq1Wi3=wSmeYTcw@mail.gmail.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: PW6YrDUMhl6t5SUnf5movXNcXbujaMbidfOld2agLWc_1781692514
+In-Reply-To: <CAJ+F1CLQbTf8tnJ5eJe2r3K7r0x1ZKatjopr0KYaU-RmdBqw-Q@mail.gmail.com>
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: 4k4GFfuGbDVgOT_1oEM6_KToGVBF5_PuQoQRlrkvKZU_1781692537
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,19 +98,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Jun 12, 2026 at 02:54:59PM +0400, Marc-André Lureau wrote:
+On Fri, Jun 12, 2026 at 02:56:32PM +0400, Marc-André Lureau wrote:
 > Hi
 > 
 > On Wed, Jun 10, 2026 at 2:58 PM Marc-André Lureau
 > <marcandre.lureau@redhat.com> wrote:
 > >
-> > Replace the legacy QEMUPutMouseEvent callback with a proper
-> > QemuInputHandler registration. This eliminates one of the two
-> > remaining users of the legacy input adapter in ui/input-legacy.c.
+> > Replace the legacy QEMUPutMouseEvent callbacks with a proper
+> > QemuInputHandler registration. The device now receives typed
+> > input events (BTN/ABS/REL) directly.
 > >
 > > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 > 
 > One of the 2 patches missing ack/review in this series,
+> 
 > thanks
 
 Acked-by: Gerd Hoffmann <kraxel@redhat.com>

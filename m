@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FCAFCD98E4
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Jun 2026 12:02:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33CE4CD98E4
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Jun 2026 12:02:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZoy5-0003oF-OV; Wed, 17 Jun 2026 08:02:05 -0400
+	id 1wZoy5-0003nS-6o; Wed, 17 Jun 2026 08:02:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wZorJ-0002Jg-Bw
- for qemu-arm@nongnu.org; Wed, 17 Jun 2026 07:55:05 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ id 1wZowJ-00033u-Fj
+ for qemu-arm@nongnu.org; Wed, 17 Jun 2026 08:00:15 -0400
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wZorH-0005z9-KR
- for qemu-arm@nongnu.org; Wed, 17 Jun 2026 07:55:05 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2c40397e3caso54817575ad.2
- for <qemu-arm@nongnu.org>; Wed, 17 Jun 2026 04:55:03 -0700 (PDT)
+ id 1wZowG-0008JE-FR
+ for qemu-arm@nongnu.org; Wed, 17 Jun 2026 08:00:15 -0400
+Received: by mail-pj1-x102d.google.com with SMTP id
+ 98e67ed59e1d1-36d98b68d68so3874214a91.2
+ for <qemu-arm@nongnu.org>; Wed, 17 Jun 2026 05:00:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1781697302; x=1782302102; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1781697610; x=1782302410; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=HuoZ1XF/SGtRMQNUv5o7lgVgKw3GW1pchp5QRRK8IPk=;
- b=Zr4yCHxfwQKuphQl9w5v0iw1P1Oebhg52X/S9tY/9ty663qA/73EhVo7tHrHWp6GiU
- EHHIpieQ+ymYPslVbYeCmO8pdHgS+nyqqq4+RvTGn8ZZhhSJuL0N1OBu25vDujZzlebX
- K/537d9lcJd5I+g6zq0E8A9oY6J+fm3RTSsj5ZfL27NVbKZrqOPXl4Sdba9Oq+Vb8Ggu
- nzTVe1xCm4K/j8Lxq1uJD3Hi3wjzOqauF4S01w1+I4lrjrfoWB/Q6m5cH3N2RuV6MOzy
- WjQAPTa7ROOCq2LKjiGEJA/TmqKRyPojmD7FmIkW1sLA/NoRFow7liQ7zlK+FukcfG7E
- 573w==
+ bh=DcM1fU4v1GVwSrrIPjg6LuptyJklzv35LiIaFMncmqI=;
+ b=OHo9YKBLDacoCXOGQjtXdi7fZIASFl2E+qUBuoKOFhsvlLLTesz6zaco6Fc5CR5WFt
+ //jMaFCE4bFjzbautzeSWR3odwCPt6eblM8+Oc/UND73gfAsWivmx/Az9Knampnn/tIb
+ YHUoUHeC8gr3KTRX6WGXD1+B9fudgHy70McDF4PyWptVtfSEgmxWbFP0i5gv2uBjunrw
+ 42mNNegs6kWW4i00p0SlggEom7rAbHos9Pv9/k+oMY8ozoJgXBBQH7YI2nz29zPxrh2F
+ 6ixC4tkmlmts9DRAg7buWYEQRNVNKkzYb4qJ0wkmXMCm7re6JYWg6rJt/Lgro2HxuiLv
+ 2cOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781697302; x=1782302102;
+ d=1e100.net; s=20251104; t=1781697610; x=1782302410;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HuoZ1XF/SGtRMQNUv5o7lgVgKw3GW1pchp5QRRK8IPk=;
- b=G5QwemSw8rKRBhSE/VJ1HhozJcHOdq0lPmtjgj5cL1p9mDOw7rAef8q0meNfW9D4Q6
- j9FlfBa8swvP89v/s0eMjVGRrBAdnmXAk5KgW5DUDW2IDmGBSLQwnX6lgyy29B4BsY+/
- e3keIYg6AYIXr+WV9wZ6g1CTTnO51ZEcueJpxN5kVG9NvWdKZ7YoWLpseFB3x2wDl7I6
- 6gRW8MMSydhPQgMwo/FFPwlf+1cESpele1ET8ZCxm4MM2TbkgAZHd3JEOHXkjGumvuNU
- LMZazqu3g9wkIy8BBoN4Afk6lvojv9pDyByIKXiQWgYrZE2ghTnEDIE6PTGAha8Phoma
- 6hNw==
+ bh=DcM1fU4v1GVwSrrIPjg6LuptyJklzv35LiIaFMncmqI=;
+ b=VRTsTIPMGLXAzwTlFnytyKwhtrfQ/bD9r4zfbfeFX4E5gb/EAYDQPlk+a5u31UZ4SO
+ oeXFOIt0lkwFzwqu9+XfDdeU8xMiKK1ZPhoDr8OCSSrTh3jB2ID6qnTntohFUil8RJ7H
+ sWkZhLLUaEOxxgOnjrnKykAI5mlkfq5LHPPdt8vnnTYs2BM4lJwD5tTosJAr8ggbG5rI
+ PtYQFZ3QQJuANK9EIKVNjOp4QXLGId0UyTszZ8F+7dvroE5yW7pjX+yjWVGMNuc8umqm
+ Zvwg29TbHQDklTHBpKK5WZjusAUJApMEe76FfNMKlhMKyrGeDTeAc0TARXy+dhuZ+RA7
+ nOYw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9iXc4sby02d7YbOuEEoeFLs+o9le0dnHIoApcPHEZiMTyaumvvYsyfWQqQ8wMxfKZr+GDW1/DBvQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy2DnfRuD3LmrJuuSLW4m180R+zIOtKsJ7iqW/3InIBHqPvLV4N
- X4XTGeoRdd8TgaWjjwX10+JsEGuOKyj0auaE1kiYu0rw3oBDmBRjODOk
-X-Gm-Gg: AfdE7cmu/Z7z+cIs6Ql/m3+w1kPGE0IO5RJfgEMLGhPQB6unFLtbCJVW+r4yeaEkZzd
- TvbdcKZ5JwCf8lIwjOX3vHHcnRZqFj1zOpH5YcLbEbMQacRGYPbRO6gtPf6vbEHR56COB6epUJ4
- KX5hr3skomyWeyJ8KOjrEFQQNkD/aq8z2D7VK9HWPF64U8GZPT5DfYdLBJvfBdNTP7BqDr5tOtF
- xe5wCCCy6G6IUxin+cN6vCZnpznHd9Jtl1HfHIPmkBpy9vDz37VEr3VG8LZn0Wuj/sSwUpAL4Hn
- er+b+aOhD2M2t+AJlc5hGG+ofOStOseI5r034+Jh4DzsQTIe9OBpCyKu7dVN4e+WRRuHKEu+pj+
- 2ciLTA9j6asbjphVjt+3a0e/c4q6WULZGqqIWSmFG9xkddpl5o6RbhWFsd1egfVdNPEo0o7Z3m3
- fHEobGoVqhcYTGYbS6oXH95EQ4
-X-Received: by 2002:a17:902:f609:b0:2c1:b8af:18ab with SMTP id
- d9443c01a7336-2c6bc20b7f0mr36324575ad.19.1781697301939; 
- Wed, 17 Jun 2026 04:55:01 -0700 (PDT)
+ AFNElJ/11DhQ7Rvyz9vOyJoBWXR3zPIrbxCyMXPh8mGXer1vmWxiJA1huWOf9wBI/SQJEoZuqQdvVgwX5Q==@nongnu.org
+X-Gm-Message-State: AOJu0Ywuh3UJtB9ox6yZ2bYYJjVsfBUUNCAJdkir2f9Df6KeEiR7+xnf
+ HaUshgJPYx76FWE4AUMRGEe53fHXJH56DCvfE6gwT5ljiFH65MHApDtt
+X-Gm-Gg: AfdE7ckAnRO8xlhes8pR0MEqtWUgtp/oX4LV2/eRKhq++/x+TAQwnnPE3WN2NTCkw/o
+ TKAsnn29w6x7sjLqtKZKom22uMjUdmAI7Ya9WgnCdmOqxjznlsIppv60unsNlWYPuWAuvJSe8Ve
+ OCfIJsaP+iruclVzTzYxevu4R3A6LZCauyA3ezR0v+fdlP+S4De/0T4DdauEuth0jN+ByA3f1bU
+ RSKlAxu5C62AvCMoyyOHkpcJpMkUBo8r+ZPKxS33c6+Htr7pTvji/FY/MxfNcudx80KZqtGXq1b
+ AvDHCwmngrOiJEi/ojqB5m5RiPkYSlKw8uXa1EaEs9VSX62Ekbis9Bu4QcmZy3BB3lunpFoxWWI
+ LOko8k3WgXh5PWvKwvLdjEBCyi8chC3TMaq4vVDHEEstdctLo6EWMY+Q7VFPdvFwC8aVVBpeDem
+ X/lALd7j5ZJwzVXkkN3DVgHA2t
+X-Received: by 2002:a17:90b:3805:b0:36b:71e6:3df1 with SMTP id
+ 98e67ed59e1d1-37c930e0adbmr3542661a91.3.1781697610391; 
+ Wed, 17 Jun 2026 05:00:10 -0700 (PDT)
 Received: from localhost.localdomain ([82.40.42.115])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2c42f1f1014sm163576605ad.16.2026.06.17.04.54.57
+ 98e67ed59e1d1-37c521ae039sm5912367a91.1.2026.06.17.05.00.05
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 17 Jun 2026 04:55:01 -0700 (PDT)
-From: jw_mac <163wangjack@gmail.com>
+ Wed, 17 Jun 2026 05:00:09 -0700 (PDT)
+From: Wang Yuxin <163wangjack@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-trivial@nongnu.org
 Cc: peter.maydell@linaro.org, mjt@tls.msk.ru, laurent@vivier.eu,
- jw_mac <77239050qq@gmail.com>, Wang <163wangjack@gamil.com>
-Subject: [PATCH trivial] Signed-off-by: jw_mac <163wangjack@gamil.com>
-Date: Wed, 17 Jun 2026 19:54:41 +0800
-Message-ID: <20260617115442.91715-1-163wangjack@gmail.com>
+ Wang Yuxin <163wangjack@gmail.com>
+Subject: [PATCH trivial v2] hw/timer/imx_epit: Replace DPRINTF with trace
+ events
+Date: Wed, 17 Jun 2026 19:59:49 +0800
+Message-ID: <20260617115949.93529-1-163wangjack@gmail.com>
 X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=163wangjack@gmail.com; helo=mail-pl1-x62f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=163wangjack@gmail.com; helo=mail-pj1-x102d.google.com
 X-Spam_score_int: -13
 X-Spam_score: -1.4
 X-Spam_bar: -
@@ -102,17 +103,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: jw_mac <77239050qq@gmail.com>
-
-hw/timer/imx_epit: Replace DPRINTF with trace events
-
 Clean up the codebase by removing the outdated DEBUG_IMX_EPIT
 and DPRINTF macros, replacing them with modern QEMU trace events.
 
 This also removes an empty and meaningless DPRINTF("\n") in the
 imx_epit_realize function.
 
-Signed-off-by: Wang <163wangjack@gamil.com>
+Signed-off-by: jw_mac <163wangjack@gmail.com>
+Signed-off-by: Wang Yuxin <163wangjack@gmail.com>
 ---
  hw/timer/imx_epit.c   | 25 +++++--------------------
  hw/timer/trace-events |  8 ++++++++

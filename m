@@ -4,120 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2805CD98EE
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Jun 2026 06:34:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA70FCD98F2
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Jun 2026 06:41:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZjrI-000149-2v; Wed, 17 Jun 2026 02:34:44 -0400
+	id 1wZjxr-00044T-BB; Wed, 17 Jun 2026 02:41:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1wZjrG-0000xD-P2; Wed, 17 Jun 2026 02:34:42 -0400
-Received: from smtpout5.mo538.mail-out.ovh.net ([51.210.91.34])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wZjxm-00043j-Tg
+ for qemu-arm@nongnu.org; Wed, 17 Jun 2026 02:41:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1wZjrE-0006VV-OF; Wed, 17 Jun 2026 02:34:42 -0400
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net [57.128.106.70])
- by mo538.mail-out.ovh.net (Postfix) with ESMTPS id 4ggDbv4XpWz5w44;
- Wed, 17 Jun 2026 06:34:35 +0000 (UTC)
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net. [127.0.0.1])
- by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alexander.hansen@9elements.com>; Wed, 17 Jun 2026 06:34:35 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.178.215])
- by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4ggDbv1xjSz7y6x; Wed, 17 Jun 2026 06:34:35 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.3])
- (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id DFB161B434AE;
- Wed, 17 Jun 2026 06:34:33 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-104R005412dbac3-c9ea-4443-9b6b-50215850a1d0,
- EB55872F2CD222A6031BC41A4E4DFBE49714FCD6) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <b241d959-2266-4193-9421-47d46d40b6f6@kaod.org>
-Date: Wed, 17 Jun 2026 08:34:33 +0200
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wZjxl-0007ps-Av
+ for qemu-arm@nongnu.org; Wed, 17 Jun 2026 02:41:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1781678482;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=JBpFjUflSjpTZIiB5JbQM2AoqPQYTsnx1PEDFL66A1I=;
+ b=cmLCGMpDkkd4KmGEwhj8D3jFpTcCG4aiMPRXpy9dbWoHzz3phSgwmbefoDuShsvlXlBv3+
+ xVXZLRcWLZM9st8GcLNu8jOKuUcQYjo83Ax3+7rRQ1+eXznBXLuRzJXX1/s7SF3aFjFtD+
+ B4UXMlOnoBoOpIeFBCRhs5hiNX0jW+8=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-302-Xp-dui4JPdSH60Sgf6W8mw-1; Wed, 17 Jun 2026 02:41:21 -0400
+X-MC-Unique: Xp-dui4JPdSH60Sgf6W8mw-1
+X-Mimecast-MFC-AGG-ID: Xp-dui4JPdSH60Sgf6W8mw_1781678480
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-490b79e6b94so50596315e9.2
+ for <qemu-arm@nongnu.org>; Tue, 16 Jun 2026 23:41:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1781678480; x=1782283280;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=JBpFjUflSjpTZIiB5JbQM2AoqPQYTsnx1PEDFL66A1I=;
+ b=bt/oa3mBxS4TICMrYRQepjGnVv9sP51KXjK4WUD8GJX+zCr7N1dfLqdWigdv6pd5CQ
+ 4y+eopJD77t8CPnCNk8CrU/qt1eKC1Id5QSdJwXbO0Un8YFCicz00nG63A2B+kqheESU
+ Qdu76Gi713cxMmmyQZsCH03Hcdu38kgxX7G/iZahdi7M8v/wnjdcxDV5GwRKsQRSuyq0
+ Zs8k3OZ9Kdm7CmBdz/d3skPlmQKjv4lm25TJosabLdnlBZu1pe75MK5ZzLvpuz3cFjPq
+ Sf0SOlOjY2qwaNJ5f4D7ZNI5G6AG2KOHaz4YR/guALg99GHrS+lQheHGJZM+HKkp7IGD
+ Wv4A==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/TxEGpDBefS92iytfnTiEnZ6plfCtHsok06PKinQg3mE+3wiLYKkgoNB0vj3HL+ga6lWgT1Yt8NA==@nongnu.org
+X-Gm-Message-State: AOJu0Yw9DnjqbYT8eJlCPbx8clX2tCEL8ZLwhhU1/I+GGmJlA80HdD82
+ cXlxsosvUXTClmctX6hsH4Ou3x6PGbemZEL+0h/Ke35HMfyTmkfAa/f1l49BCDQvwXk5lFZM4Dc
+ 8GOzn5x+JEUZBJMG4X3OYrnbS9i4Nu5NnIarhEuu1N+O7hJrYBxkSYw==
+X-Gm-Gg: Acq92OG9u8LebNpIEDuiGTgQupZYqYvsEQJstBDzBTCybokJbvfiY4QRIx3bWQTI2eQ
+ Y1P2iSJ7+Pjk+7KTNem4dnbi2HwkkJemjIYyrGpkqTlxcQoEPQBWt4eiFE99H0QAmrYyT40vhOZ
+ qWgLkjPUJOXptAbft6Na4Cg6nR/yGS12/K8Y1kWZy65o18YSle4iZwC1TAA8fa2vcV5tG94QsIr
+ QmudgIbTwza8MRZWJhHv9OiCJQcrrbt/Sp8JgcB8AZL42EYbPFSexrpFyUXDRB8kkaLaxjW1ybQ
+ I5l3SAlJxhNdSDUp6119VoNdyUffvUEoVGSDaTfyYUDrwiZOQYW5WmOPHTNUf5Y9R/DX87fDQT/
+ N+6Kpj7U=
+X-Received: by 2002:a05:600c:c113:b0:492:32f3:a344 with SMTP id
+ 5b1f17b1804b1-492333dd1efmr32618495e9.31.1781678480232; 
+ Tue, 16 Jun 2026 23:41:20 -0700 (PDT)
+X-Received: by 2002:a05:600c:c113:b0:492:32f3:a344 with SMTP id
+ 5b1f17b1804b1-492333dd1efmr32618035e9.31.1781678479822; 
+ Tue, 16 Jun 2026 23:41:19 -0700 (PDT)
+Received: from [192.168.0.9] ([47.64.114.89]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4922fa96f0esm147724455e9.12.2026.06.16.23.41.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 16 Jun 2026 23:41:19 -0700 (PDT)
+Message-ID: <183d0ed6-fc14-426f-95af-4767ea65c0b2@redhat.com>
+Date: Wed, 17 Jun 2026 08:41:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 2/5] ast2600: yosemite4 functional test
-To: Alexander Hansen <alexander.hansen@9elements.com>, qemu-devel@nongnu.org
-Cc: Titus Rwantare <titusr@google.com>,
- Peter Maydell <peter.maydell@linaro.org>,
+Subject: Re: [PATCH] tests/functional/aspeed: unify boot completion detection
+ on 'login:' prompt
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, kane_chen@aspeedtech.com,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- qemu-arm@nongnu.org
-References: <20260610122252.349321-1-alexander.hansen@9elements.com>
- <20260610122252.349321-3-alexander.hansen@9elements.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260610122252.349321-3-alexander.hansen@9elements.com>
+ Ed Tanous <etanous@nvidia.com>,
+ William de Abreu Pinho <williamdapinho@gmail.com>
+References: <20260617042718.2883655-1-clg@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20260617042718.2883655-1-clg@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: yb-MZq4H1J6Bjwv3AWBicYig0MsULWvrLo6uXEXm_Rk_1781678480
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 4610278645044194315
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGLGTMNMN+0oYZIin2NqfPH0lSHtFAiHMk/e0NrjPZQxFECbX8e2fLnGXAL8usi4o6bjVP8KFsvsf8TskZQ8Wp4kkQlfO3PDnhuUegfijqrnSNRTrq9QxOZbr4xQMjCcylnXnjLloLRas0RdLvx9ujrrPy4EV8XhMQFZe4d4TMY2dUxfW7Xnxcy52vjJyfXCKUWppY+GtpS2OcRntZkOeYhBgT+3cPNa5+CeS/j/V7A/FcnMK6A14xT/4mayH/eBEc/8fNBT0vnfCgjTmsYvSHSTFOhSUPbG/nP5ynaEoJNy16m2UPuAdfShjNgktHuUIuJpLD1rECYiC8KlvBMsGAzRoHacazAyyoowuSKe+ozhywzGGxSdFOTznnGXM7I8YnA3iTJuTmhpLvBGYv7zkWmqiUUyby5BlRlNL1r3Kxla/ev9DYsw1M2WZN1cGlBKS83GBCLkqJpwpYt85G0CpojASV/El1nTfb/IyRnp9FAxB1VpM8hKTJfUOzB+4qDTwPxPjn5a+u44Czqs4XCQUY+r9T5FumHyswV4WfVumqvkEUjA4ICGsTarRYHHRmRmelBpHZBWemuk2dLW2Pz+e76mKAwfi6qhJE1oqGp3s6JWPr6vcFk68hsOWv2D99ItR4CGtJX1QaMhbx+TNufkrv52u1LAKgSiZ9f4xQrkYcRWw
-DKIM-Signature: a=rsa-sha256; bh=Cdw9jkBLSD+gwSz4cWwETzAuy3b5mQQmTN4J0gV0oTY=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1781678077; v=1;
- b=uDZ69PVuagSrSFtE3NHbeqjDZSg7xFkz+yhTytYKMMyHjoAPBdTuZU8N8wS4g/9FSZjG1/Ex
- ph7ssElo1+o0B8/wnkqNYk+VowaDqLj9tQwufLjKZuwgXjiJR3CpeVScvXYG/EZsym5/LIHe1fl
- igUIWJqrauWyaMNE4nMVXkRYfOCfKAI1fIEJU+DHvHCJFigN7x+IwrRdMURZpGDCcO9PVvkEGgW
- nWEqCCnIFBbh3w+IKBizquI8FAwpPDrm/bbeVDvtkA7NsYyacRm0NK6K2kOQRJ+2afUkM1Bj7Hu
- GKMfplA7Cnj3V9EIZr8+1ts8GD/G5TrlJURq7DYIPz0bA==
-Received-SPF: pass client-ip=51.210.91.34; envelope-from=clg@kaod.org;
- helo=smtpout5.mo538.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,111 +160,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 6/10/26 14:20, Alexander Hansen wrote:
-> Add a functional test for the Yosemite V4 (fby4-bmc) machine
-> that validates:
-> - U-Boot initialization and kernel boot sequence
+On 17/06/2026 06.27, Cédric Le Goater wrote:
+> The boot completion check in AspeedTest waits for the systemd
+> "Hostname set to" message, which occasionally causes intermittent test
+> timeouts, e.g. on ast2500 SoC machines. The root cause seems to be
+> console output interleaving of both systemd and the getty login
+> process. This results in the expected pattern string being broken up.
 > 
-> The test uses an OpenBMC image built for the yosemite4 board and
-> validates console output through the boot process.
+> Unify and simplify all boot completion checks by looking for the
+> generic 'login:' substring in AspeedTest.wait_for_boot_complete().
+> With the override gone, remove the redundant FacebookAspeedTest class
+> and update the Anacapa, Bletchley, and Catalina tests to inherit
+> directly from AspeedTest. Also drop the now-dead image_hostname
+> parameter from do_test_arm_aspeed_openbmc().
 > 
-> Cc: Titus Rwantare <titusr@google.com>
-> Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
-> Cc: Peter Maydell <peter.maydell@linaro.org> (maintainer:ASPEED BMCs)
-> Cc: Steven Lee <steven_lee@aspeedtech.com> (reviewer:ASPEED BMCs)
-> Cc: Troy Lee <leetroy@gmail.com> (reviewer:ASPEED BMCs)
-> Cc: Jamin Lin <jamin_lin@aspeedtech.com> (reviewer:ASPEED BMCs)
-> Cc: Kane Chen <kane_chen@aspeedtech.com> (reviewer:ASPEED BMCs)
-> Cc: Andrew Jeffery <andrew@codeconstruct.com.au> (reviewer:ASPEED BMCs)
-> Cc: Joel Stanley <joel@jms.id.au> (reviewer:ASPEED BMCs)
-> Cc: qemu-arm@nongnu.org (open list:ASPEED BMCs)
-> Cc: qemu-devel@nongnu.org (open list:All patches CC here)
-> Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
-
-
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3117
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
 > ---
->   tests/functional/arm/meson.build         |  2 ++
->   tests/functional/arm/test_aspeed_fby4.py | 45 ++++++++++++++++++++++++
->   2 files changed, 47 insertions(+)
->   create mode 100755 tests/functional/arm/test_aspeed_fby4.py
-> 
-> diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
-> index 61b00932db..19331b3f16 100644
-> --- a/tests/functional/arm/meson.build
-> +++ b/tests/functional/arm/meson.build
-> @@ -15,6 +15,7 @@ test_arm_timeouts = {
->     'aspeed_anacapa' : 480,
->     'aspeed_bletchley' : 480,
->     'aspeed_catalina' : 480,
-> +  'aspeed_fby4': 480,
->     'aspeed_gb200nvl_bmc' : 480,
->     'aspeed_rainier' : 480,
->     'bpim2u' : 500,
-> @@ -50,6 +51,7 @@ tests_arm_system_thorough = [
->     'aspeed_anacapa',
->     'aspeed_bletchley',
->     'aspeed_catalina',
-> +  'aspeed_fby4',
->     'aspeed_gb200nvl_bmc',
->     'aspeed_rainier',
->     'bpim2u',
-> diff --git a/tests/functional/arm/test_aspeed_fby4.py b/tests/functional/arm/test_aspeed_fby4.py
-> new file mode 100755
-> index 0000000000..a521834f79
-> --- /dev/null
-> +++ b/tests/functional/arm/test_aspeed_fby4.py
-> @@ -0,0 +1,45 @@
-> +#!/usr/bin/env python3
-> +#
-> +# Functional test that boots the ASPEED machines
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> +from qemu_test import Asset
-> +from qemu_test import wait_for_console_pattern
-> +from aspeed import AspeedTest
-> +
-> +
-> +class YosemiteV4Machine(AspeedTest):
-> +
-> +    ASSET_YOSEMITE_V4_FLASH = Asset(
-> +        'https://github.com/legoater/qemu-aspeed-boot/raw/refs/heads/master/images/yosemite4-bmc/openbmc-20260505132843/obmc-phosphor-image-yosemite4-20260505132843.static.mtd.xz',
-> +        'dff6946363b41f952b15cfc3156482b89fcfc1b0ecfc3ec8b3ed496a5f001ef9')
-> +
-> +    def do_test_arm_aspeed_openbmc_no_network(self, machine, image, uboot,
-> +                                   cpu_id, soc):
-> +
-> +        self.set_machine(machine)
-> +        self.vm.set_console()
-> +        self.vm.add_args('-drive', f'file={image},if=mtd,format=raw',
-> +                         '-snapshot')
-> +        self.vm.launch()
-> +
-> +        self.wait_for_console_pattern(f'U-Boot {uboot}')
-> +        self.wait_for_console_pattern('## Loading kernel from FIT Image')
-> +        self.wait_for_console_pattern('Starting kernel ...')
-> +        self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
-> +        self.wait_for_console_pattern(f'ASPEED {soc}')
-> +        self.wait_for_console_pattern('/init as init process')
-> +        # yosemite v4 does not emit the hostname log which is
-> +        # different from the other machines.
-> +        self.wait_for_console_pattern('yosemite4 login:')
-> +
-> +    def test_arm_ast2600_yosemitev4_openbmc(self):
-> +        image_path = self.uncompress(self.ASSET_YOSEMITE_V4_FLASH)
-> +
-> +        self.do_test_arm_aspeed_openbmc_no_network('fby4-bmc', image=image_path,
-> +                                        uboot='2019.04', cpu_id='0xf00',
-> +                                        soc='AST2600 rev A3')
-> +
-> +if __name__ == '__main__':
-> +    AspeedTest.main()
+>   tests/functional/arm/test_aspeed_anacapa.py   |  6 +++---
+>   tests/functional/arm/test_aspeed_bletchley.py |  6 +++---
+>   tests/functional/arm/test_aspeed_catalina.py  |  6 +++---
+>   .../arm/test_aspeed_gb200nvl_bmc.py           |  3 +--
+>   tests/functional/aspeed.py                    | 21 ++++---------------
+>   5 files changed, 14 insertions(+), 28 deletions(-)
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 

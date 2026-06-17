@@ -4,105 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D36ECD98E2
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Jun 2026 07:27:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55AC4CD98EE
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Jun 2026 08:41:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZkgX-0007V2-AW; Wed, 17 Jun 2026 03:27:41 -0400
+	id 1wZlq3-0006j2-19; Wed, 17 Jun 2026 04:41:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZkgR-0007Ua-H6
- for qemu-arm@nongnu.org; Wed, 17 Jun 2026 03:27:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wZlq1-0006ig-AR; Wed, 17 Jun 2026 04:41:33 -0400
+Received: from mail-eastus2azlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c110::1] helo=BN1PR04CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wZkgP-00009X-9W
- for qemu-arm@nongnu.org; Wed, 17 Jun 2026 03:27:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781681251;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=DzZqM/JHTroZwaroo8DN1xvCqQvgQr0ZC3Pe+0bufMk=;
- b=cSNGG4kMSAMR3sEOvIwq13BKcWrV3j6c0rkHqH3St5NgVORivCvD9XwJXxE049OFkmddQw
- /rE2mP0FKVm8SJ2dlw7+f11dpmeU/JddCFH1tL5clhYBRyxDiWLzLC+Bixq7A7uRYf056j
- qKOTCFiqWO9uyw3sVquQrJxzBIg5AzU=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-453-IJ9aN8UGN6qaJFLHDW1C4g-1; Wed, 17 Jun 2026 03:27:30 -0400
-X-MC-Unique: IJ9aN8UGN6qaJFLHDW1C4g-1
-X-Mimecast-MFC-AGG-ID: IJ9aN8UGN6qaJFLHDW1C4g_1781681249
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-462d8ccf553so163786f8f.1
- for <qemu-arm@nongnu.org>; Wed, 17 Jun 2026 00:27:29 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781681249; x=1782286049;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=DzZqM/JHTroZwaroo8DN1xvCqQvgQr0ZC3Pe+0bufMk=;
- b=o4plG5DDJUr8n1jdKGf+k25lje0Ayd/kz1Oj/9vC8ta+B6+Es96CYTp3wHanhPxfPl
- YTDJeZz+3Q486gKu6sXcMWTB7NEEx9GYU+qcQgAuti51rRXcgq2GaQOPO3Q3gWq+iRsE
- uefUKL6KrpSOxr3sZSeYnzJwxUwvevKr3bpaupk4ihHFJw3RXmDpAbfsejoSSpVY4SYi
- yYNRZXg5MQET6/Dt3enexp0vlcDfgigdPhnI+MCSRc859+Za49xOO37w6s/uiOZkL3DS
- cSi4W+uLI0zw2uFPbSJJhYagBgB5YVNwoljEMvuVY5QduyhN2/d5X6Q7Q4BQFAvBqsmr
- ZgeA==
-X-Gm-Message-State: AOJu0Yw9Bf5Bok4dNSq0/vb8IAZbTF1koiZxJHpP7ag6erVhl+KkEUtB
- u/Fd+IVufnWm+XCSiHcuen4SK30s7ZYBctjW7HplXHGTHeKVxs3LfCXsxWtlP8A05Kfw29UzD4/
- TEr+8kgBVBgg3xseqFceyU4dOJ96E4lWUsr1/W5V95iJfzyqCm72vpA==
-X-Gm-Gg: AfdE7cnEJDdiCMj6hox9aJ8fMfLrPgRc3Dn3jPa8zgv8OqvCmji0EvRmZeV8Q6YqQ/C
- VagIaaC9/+4mmMijtnkoY7gpfSKEPhOz72ysWzH9llGQMwYdQMfrfSga2Bxww/8PAr/r2ot0UQI
- FGRftssVdInIJdz5yQw8r8YHffQTMfRen3dYSgPR13U3xIZbN0MaTIlfzpnRQdwTijFnC56jYh9
- gaR92Lhoi9yUSxofKAqDd+kIhM8UtACd1WhaEJq6csKf9C+q575ytEux/RPG28GD2WgZ9DGquIi
- iy0fUppFSmIe8DbhANzTWVeMgh+SRwR7O8NxfmT+QzabChZHMEEUkHP0MVTcJ2C0mZTsRbxzNig
- S0uPPqPBP4DzH4SPgcQwaumCmDHJoNyP4
-X-Received: by 2002:a5d:588d:0:b0:43f:dbbf:6d93 with SMTP id
- ffacd0b85a97d-462410d3c5bmr4025570f8f.27.1781681248665; 
- Wed, 17 Jun 2026 00:27:28 -0700 (PDT)
-X-Received: by 2002:a5d:588d:0:b0:43f:dbbf:6d93 with SMTP id
- ffacd0b85a97d-462410d3c5bmr4025519f8f.27.1781681248004; 
- Wed, 17 Jun 2026 00:27:28 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4606f2cf5d9sm45077915f8f.32.2026.06.17.00.27.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Jun 2026 00:27:27 -0700 (PDT)
-Date: Wed, 17 Jun 2026 03:27:23 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peterx@redhat.com,
- alex@shazbot.org, richard.henderson@linaro.org,
- peter.maydell@linaro.org, berrange@redhat.com,
- philmd@oss.qualcomm.com, philmd@mailo.com, david@kernel.org,
- clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com,
- jugraham@redhat.com, liugang24219@sangfor.com.cn,
- dinghui@sangfor.com.cn, shan.gavin@gmail.com
-Subject: Re: [PATCH v3 0/2] system/memory: Make ram device region directly
- accessible
-Message-ID: <20260617031443-mutt-send-email-mst@kernel.org>
-References: <20260616052552.389021-1-gshan@redhat.com>
- <ae17b5a6-eed8-4d4c-a798-cb92ffa6c915@redhat.com>
- <20260616014419-mutt-send-email-mst@kernel.org>
- <2015405e-7839-4ab9-b5a0-712b644da3c8@redhat.com>
- <20260617013709-mutt-send-email-mst@kernel.org>
- <ee0280dc-0c21-44df-a1cb-94c580140491@redhat.com>
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wZlpz-0002Ma-5U; Wed, 17 Jun 2026 04:41:33 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=vK1lKKAh/k3Em3vIHx/22TM6NXzyMVD3y+nSnepPgTCNNEbNGdIV/Gddo7v8t8d2PY3sDM6Kk+Cvd+uwqTACktKVcl4pHCr/snlevNze+GzyslKSb+ZEUKvPIk1Q5oSRm28NxKHafgmRBqbR7QjYwxPLJ9KW6kSv14bbXhOeX0lKgtYGz/aOHJFDusetY7ieaY4a2qztNWJ3zY/R1K19V1qrtZbOYKBdElWD/JJIgpAuW6Gvj/kG0vcLko+cyhzbsDPmEYlj+EW+AWmUzGB7/aRPzomna5LEEYEnRHGm0P4t4AezLuGo9zkW0u/G2I/Y7LAuq/BTYD78FbB4x2ksjA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=iv4GIIBx+ZCf9SM9PKCl2G3If9w7rfVwlSZBmKY9T4A=;
+ b=GdX1Aws9/b6qlvKqfN5x3oidgfy5f7OmdtBRLSEnffFKd6eCU8szq4VUkc9dc1fwqusM92pXT1mTcdtab1PAp84RHcMGY2AV4LR5uRtHFSnj/MClzIMtldg6pp+RzZBVfDllFtj8kCNcz+eyD7Xckod63IL8LdpmZny0NWXeBFYgnmlsTC7DPLj2qhxnMlF0dBIO6gYr13nKZmkROQmiFk7DhGoWpJ9fP8qI714T6pzDhTV5a9WIfRVcyig0zLJ/bThdypg1fkSpo6Qdj38MFbKk9lL98t54cPIVx4BR9HQEMoGlhwcwZgILoWtcQvAtLKepXLiEa8luQuRRjFBUJg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=iv4GIIBx+ZCf9SM9PKCl2G3If9w7rfVwlSZBmKY9T4A=;
+ b=Mgd0U7eRMZxHt2U25wVzJvmDWPoWXAXxI3fetuJOonKSvYK2kURjdjGeOpd7ye6UII910MNQfoyEXuMuypqgvSgZM9yMXJk4s88mI5+43yz6/G2A0SOL1sm50sEJRxyTowWfy5GkAZ5e8tQG46fLh4WNJnNvgl/sMlhRJ94KhJ2XJjmljAfCq1L6/MrWXJmRoIhAfIPfBelbwAOHWL8tiqoSMqgkL4yE9tVfrVTjtsDJ+uSAT157p6cK7F59LZyYbahUBIDMKAlwE7vGdKjJCuESbvDeLLynWhpz81kYXvTaaSTqnfrMKKCzDWE/nltucHK4FZxocj4IYnMGcDkdOQ==
+Received: from SJ0PR12MB8614.namprd12.prod.outlook.com (2603:10b6:a03:47d::17)
+ by MN0PR12MB5955.namprd12.prod.outlook.com (2603:10b6:208:37e::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.18; Wed, 17 Jun
+ 2026 08:41:23 +0000
+Received: from SJ0PR12MB8614.namprd12.prod.outlook.com
+ ([fe80::fe0a:6e6a:fe60:a43b]) by SJ0PR12MB8614.namprd12.prod.outlook.com
+ ([fe80::fe0a:6e6a:fe60:a43b%3]) with mapi id 15.21.0113.015; Wed, 17 Jun 2026
+ 08:41:23 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
+ Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt
+ Ochs <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, Jason Gunthorpe
+ <jgg@nvidia.com>, "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>, "phrdina@redhat.com"
+ <phrdina@redhat.com>
+Subject: RE: [PATCH v7 00/31] hw/arm/virt: Introduce Tegra241 CMDQV support
+ for accelerated SMMUv3
+Thread-Topic: [PATCH v7 00/31] hw/arm/virt: Introduce Tegra241 CMDQV support
+ for accelerated SMMUv3
+Thread-Index: AQHc+ALmli4k4ZogXUCjb3NnLXqt/rZBl3mAgADcHOA=
+Date: Wed, 17 Jun 2026 08:41:23 +0000
+Message-ID: <SJ0PR12MB8614017E64CA7822CE44DA95ABE42@SJ0PR12MB8614.namprd12.prod.outlook.com>
+References: <20260609112552.378999-1-skolothumtho@nvidia.com>
+ <CAFEAcA_c_g+Kw_vz7A4D8oQV5fwvcg00gagQ9Ph4_S1dntBFwA@mail.gmail.com>
+In-Reply-To: <CAFEAcA_c_g+Kw_vz7A4D8oQV5fwvcg00gagQ9Ph4_S1dntBFwA@mail.gmail.com>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR12MB8614:EE_|MN0PR12MB5955:EE_
+x-ms-office365-filtering-correlation-id: 47e378ee-b6e6-4cf5-e07b-08decc4c3671
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|23010399003|1800799024|376014|366016|56012099006|5023799004|4133799003|11063799006|4143699003|38070700021|22082099003|18002099003;
+x-microsoft-antispam-message-info: 2+TeOfKjiHo0YE6q67flcu+y4+MGM/LoXfgg+iwviFkgc9E3aclv67viSBAGOHdUY9obvScA8M/0b49feSF1WWQLVzoG8l7yQQVmmvOvBUeyiewbYoKVGbZx9H55qYk/AC18ck6tbfNFaXVpN/nDXcsZXdJgm6slqIDc5/hOgIOPAJBy3XU3tfosf5LS3mk/jvGDI0FSU3CYNQH+ro84vtv9hVvopo9cTyHtp7ZjxfdOCtjwC/OFHQwgRUGMlyQXar135z1YhbBjTb2nmPsf2WZWbBG25MOGqQ0CRGeYYSYltqqpH3tbeUhEwx2RoLWhKz0pS0c7E6MPTgR0oWsjwXdst04aEAdJNpqPfb1ZfMD4ceHvxeT0EG37YeLXMpRo2HQAzWClRWGEyTuK3dJPhIEDjYj8KJU0LyrKM+1MZfKe7lT4SQ/mAz8hxc640rFdJXWyqzt+PG073HVSvi52IaVUbBaL3h2KL5IOuFiYxXc0Kv3YQgAO1OIMZovr2hVbpwSNgzwSyOP+oDcdlHnjbN5heGU+d1XeESPRi6jr1oduz9rhGm2Bf63q0855Z29orEGxDjkpq25b9iBVTJmC0B6IoT2NTljTMKTHG0RPcfCOPCnkOUnIFkPAD9oZ0f4xjZL4BPbxXjCtKXeYRpnavNG4B0GMp4TU7e2n6CY3fJbK1OkQ/2W2XMIDyDl1eG2rw7Lzi8QGOXItLL4X8kXLR+7gGkPyheEg/kv40ty0/m4lqLEac8EjdGtC5ciAzavW
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR12MB8614.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(23010399003)(1800799024)(376014)(366016)(56012099006)(5023799004)(4133799003)(11063799006)(4143699003)(38070700021)(22082099003)(18002099003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?PnX+k3aEa5s6nAeV8Z/hcBUzSoJYx1pSik01ufxuyEvlZbM1pDLo4trMzQjV?=
+ =?us-ascii?Q?IQHIk6sEyzSQpi2DVprDq5wIXZLFXH680Z0Sn6zVu9YLDEv+kiWN84ZEws/r?=
+ =?us-ascii?Q?CKn4z4BwK8zI/6xGOukOtx8lARksIKUH/o83ceATLg9I9mKViJFgeu49YsKU?=
+ =?us-ascii?Q?tQMB7qMy5v3h/PEPy2G6tDOnizOqnJ/E+ifykMmU7iF4Rbk51VnsxWZu5hl1?=
+ =?us-ascii?Q?fp0Q2O+0xjRdn8Rd6zGiMF6uGguW9Kpu1o6DmCLEiW4otQSrUpzKEOlbhARL?=
+ =?us-ascii?Q?TLHAitoR9RwKo4c8KB5+8BcoSuxILT58fuvDdgUWTIe5xQVNagqiQvUBo1PM?=
+ =?us-ascii?Q?lNvp2mNo7uRNIo9bvQfiiqtVbGnfbUsGZxlXVfCfew3AQkvPDMNrWjgJ4Kuj?=
+ =?us-ascii?Q?csDhpUfR2BtzRGdeMxuEK83LMAyYbh2oV3oLZrgCgaCALWgl3cQM69aBW1br?=
+ =?us-ascii?Q?Jt4GxLoyK6AIzOtAmBTIqLPzLS6kBJ/+kDXHjyEFmHf1gIOpC3xjj/Y6YiHH?=
+ =?us-ascii?Q?RdQcnRzBzdx9wQP+A2VdOn8VL+6XdEC2DGfoXLywe7Exdv6a5kkjKLZuUc8L?=
+ =?us-ascii?Q?U72n/InAcytIlDAGWgoDlmpf6rodRh7wwedNEKgl55hBFz36/L2lp1mpEsXA?=
+ =?us-ascii?Q?Vas0vmjteV15HxBzKawDN6NwCCA6+yvPU0BggD5RoYE6ms2AtmjIWrgKh54z?=
+ =?us-ascii?Q?IlAWTmm924AiezBkK0+7NbRcSfBDQ+xiTDunpIy/Y9STxfEN0phuR9Meb+nW?=
+ =?us-ascii?Q?1kaBJYjheNf4s76YMDPnL0HBU9vpAbcu8rEV93BAonbeCElha9vJR0V1Os/S?=
+ =?us-ascii?Q?R1bi2otCTMZB1zI5LOIeJ17DncnCwId1oH/1JkPYjchkqd71/e7jTskmurjs?=
+ =?us-ascii?Q?ZC18sFXV+c8ki7OxzjbDPjafv2kjQo0+ocaQVe8P/ChZoGzL19bPT/4jlwCu?=
+ =?us-ascii?Q?DFa2GKK23Oe3y4vYUEsoGDyrFkYtIkm1/BmYrA7D5g1QJgkmmFCFiNrPSLQ3?=
+ =?us-ascii?Q?1r35wC5drLQp22G82g+MlH4mMJb+vJ3mWTBORfZNCvA1nNv0WwzbLNaRbE8b?=
+ =?us-ascii?Q?jTEh3fP270zyAjG5gKHvfCCJhquzA28LDlG0FxCcqTthT5JYF35YDIY1W8qS?=
+ =?us-ascii?Q?iG4oGjBbnNS2AAggYFDj7IOw4Q2o+xrCieP5pAZruN+S35ysf08Xkz9WXlnx?=
+ =?us-ascii?Q?nMMarEXgxz+6yRrKpBlwZmw5chR2WjjTPqjDX9w9TEyoPNaTn31Zj9p9dj8y?=
+ =?us-ascii?Q?775oSbZ0/5kZzoauh87k3UOx5adwNz438B2CWrwB8OH3kfDBnpUHC67d0QRm?=
+ =?us-ascii?Q?bNAhH4uEXzkEJ1iBstCupcpYF8TXPB+jpxKgBj7M1/hutGsLIb3ZIVIIJGP8?=
+ =?us-ascii?Q?SCwkTb9ZDUb9SKMa8LydIoMPlivRZv+qxRlQ2UeTb7DiEk+w3ksC/rfzVpAW?=
+ =?us-ascii?Q?vJmv5DFtJIjWslOvhXXLH0e0sAQAc+dZ7laceKylwRNlqNef2cwx/jmqZkjq?=
+ =?us-ascii?Q?l7P7IWedNdSO9mcPmlkEhruqi3J/hHKfy1C5pO/93GxwVs49lI4+ykPZZyx2?=
+ =?us-ascii?Q?gSS0pxSwNzbChgs+RmXHd36NpFZfDhX70d/WmzVedrAtk5tWIvYkFL7vR8B6?=
+ =?us-ascii?Q?SUg1E2qbyGJwSXSYJKZw+Kur51xt+aTtq4+7KzD7u11yQQ3dqvhiSSGKAEKC?=
+ =?us-ascii?Q?u1PzvxRngO369S75TaGkE9gsxhN7pewFOdPlnhkaZWQZWW2XcqN+hActoiAr?=
+ =?us-ascii?Q?zWittqmxdg=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-In-Reply-To: <ee0280dc-0c21-44df-a1cb-94c580140491@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Zcr85T5yzEfVrg0lPZTK3-_OTTBGxgFg9JwU6iwx5pE_1781681249
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR12MB8614.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 47e378ee-b6e6-4cf5-e07b-08decc4c3671
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jun 2026 08:41:23.5899 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: DgXViGnm2JsVXlexWJ2jA8sU63SkYQcmw2w4uP7VAzFDBN8q+COI4eVPYx0X9XqayFkUdORO3uo+LDlkhXgzVA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB5955
+Received-SPF: permerror client-ip=2a01:111:f403:c110::1;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=BN1PR04CU002.outbound.protection.outlook.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,108 +150,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Jun 17, 2026 at 05:00:45PM +1000, Gavin Shan wrote:
-> Hi Michael,
-> 
-> On 6/17/26 3:52 PM, Michael S. Tsirkin wrote:
-> > On Wed, Jun 17, 2026 at 12:35:00PM +1000, Gavin Shan wrote:
-> > > On 6/16/26 3:44 PM, Michael S. Tsirkin wrote:
-> > > > On Tue, Jun 16, 2026 at 03:40:34PM +1000, Gavin Shan wrote:
-> > > > > On 6/16/26 3:25 PM, Gavin Shan wrote:
-> > > > > > All ram device regions was turned to be indirectly accessible by commit
-> > > > > > 4a2e242bbb ("memory: Don't use memcpy for ram_device regions"). This leads
-> > > > > > to a hanged guest where a NVidia GH100 GPU is passed from host. The memory
-> > > > > > in its PCI BAR#4 can be allocated as DMA target buffer. qemu has to take
-> > > > > > DMA bounce buffer in address_space_map() to cover the DMA request. However,
-> > > > > > the bounce buffer size is 4096 bytes and we're overrunning it easily when
-> > > > > > the guest has significant disk activities on compiling 'cuda-samples'.
-> > > > > > The full log and problem description can be found from PATCH[1/2]'s commit
-> > > > > > log.
-> > > > > > 
-> > > > > > Try to fix the issue handled in commit 4a2e242bbb by replacing memcopy()/
-> > > > > > memmove() with newly added helpers qemu_ram_{copy, move}() that works on
-> > > > > > top of __builtin_{memcpy, memmove} or unaligned access friendly memory
-> > > > > > movement in the accessors to the ram device regions. With this, we can
-> > > > > > basically revert that commit to make ram device region directly accessible
-> > > > > > again and bypass the bounce buffer in address_space_map() where the guest
-> > > > > > hang is caused.
-> > > > > > 
-> > > > > > PATCH[1] uses qemu_ram_{copy, move}() in ram device region accessors
-> > > > > > PATCH[2] makes ram device region directly accessible again
-> > > > > > 
-> > > > > Michael asked to include below context in the cover letter in v3, but I
-> > > > > didn't noticed that before I sent v3 series, appended with them.
-> > > > > 
-> > > 
-> > > Looking at the list of issues (questions) raised by Michael, I don't understand
-> > > every one
-> > 
-> > Gavin, I doubt one should make memory.c changes without understanding the issues
-> > it is trying to address.
-> > 
-> > What is unclear? Ask away.
-> > 
-> 
-> Yeah, absolutely. I need some time to understand all questions or suggestions
-> by digging the code a bit, before I'm able to come back to you, but not very
-> soon though :-)
-> 
-> > 
-> > > before I'm able to put more time to dig, but I feel this series has
-> > > too ambitious goal to cover accesses to all the directly accessible regions
-> > > with the newly introduced qemu_ram_{copy, move}. It causes too many behavior
-> > > changes and concerns, making this series impossible to land.
-> > > 
-> > > I would suggest to break down the goal and step back to apply the newly introduced
-> > > qemu_ram_{copy, move} to the ram device regions only? It's actually something
-> > > proposed by Peter Xu in the earlier replies. Taking address_space_write() as an
-> > > example, the indirectly accessible regions are covered by memory_region_dispatch_write()
-> > > in (1), the ram device region is covered by qemu_ram_move() in (2), and all other
-> > > directly accessible regions are covered by memmove() in (3).
-> > > 
-> > >    address_space_write
-> > >      flatview_write
-> > >        flatview_write_continue
-> > >          flatview_write_continue_step
-> > >            memory_access_size             // (1) indirectly accessible region
-> > >            memory_region_dispatch_write
-> > >              access_with_adjusted_size
-> > >                memory_region_write_accessor
-> > >                  mr->ops->write
-> > >            qemu_ram_move                  // (2) ram device region
-> > >            memmove                        // (3) all other directly accessible regions
-> > > 
-> > > With the limitation, only the ram device regions in (2) are affected. We're
-> > > basically moving the accesses to the ram device region from (1) to (2). No
-> > > changes introduced to other types of regions. The goal is to make the ram device
-> > > region accessible so that the bounce buffer can be bypassed in DMA path.
-> > 
-> > Esthetics aside - ram device regions have all the same issues.
-> > 
-> > Maybe you can limit the scope of the changes,
-> > but I doubt you can get out understanding)
-> > 
-> 
-> Yes. Limited to the scope of VFIO and PCI BARs, it depends on how the PCI BARs
-> are mapped, pgprot_noncached or pgprot_writecombine. The listed problems and
-> concerns are existing on the ram device region exposed with pgprot_noncached.
-> However, everything should be just fine if the region is exposed with pgprot_writecombine.
-> Am I understanding this correctly?
-
-Not everything)
-
-We have issues around guest RAM access, too.
-
-But yes you can then mostly access device RAM as guest RAM on
-arm and x86. I am not sure about power. for power pgprot_writecombine
-is cache inhibited and I am not sure e.g. vector instructions
-with misaligned addresses behave the same.
 
 
+> -----Original Message-----
+> From: Peter Maydell <peter.maydell@linaro.org>
+> Sent: 16 June 2026 20:10
+> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> eric.auger@redhat.com; clg@redhat.com; alex@shazbot.org; Nicolin Chen
+> <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
+> <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
+> <jgg@nvidia.com>; zhenzhong.duan@intel.com; Krishnakant Jaju
+> <kjaju@nvidia.com>; phrdina@redhat.com
+> Subject: Re: [PATCH v7 00/31] hw/arm/virt: Introduce Tegra241 CMDQV
+> support for accelerated SMMUv3
+>=20
+> External email: Use caution opening links or attachments
+>=20
+>=20
+> On Tue, 9 Jun 2026 at 12:27, Shameer Kolothum
+> <skolothumtho@nvidia.com> wrote:
+> >
+> > Hi,
+> >
+> > Changes from v6:
+> >
+> https://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flore.
+> kernel.org%2Fqemu-devel%2F20260601114221.457995-1-
+> skolothumtho%40nvidia.com%2F&data=3D05%7C02%7Cskolothumtho%40nvi
+> dia.com%7C85054cd29a1d4722ba0908decbdaea61%7C43083d15727340c
+> 1b7db39efd9ccc17a%7C0%7C0%7C639172338322799010%7CUnknown%
+> 7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAi
+> OiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdat
+> a=3DL73ziLGdAYoHaufzjyIBUBafyDdhNnIE9EyaJbzJWjo%3D&reserved=3D0
+> >
+> >  - Addressed v6 feedback and picked up R-by/T-by tags. Thanks!
+> >  - mmap the host VINTF Page0 at IOMMU_VIOMMU_ALLOC instead of on
+> VINTF
+> >    enable (patch #14)
+> >  - Reset the per-VCMDQ Page0 cache when a queue is freed (patch #19)
+> >  - Distributed the reset teardown into the patches that introduce each
+> >    resource (patches #18, #21)
+> >  - Added a VCMDQ readiness helper and renamed the Page0 backing-pointer
+> >    helper to vintf_lvcmdq_ptr() (patches #18, #19)
+> >  - Trace the VCMDQ Page0 backing, hw vs cache (patch #19)
+> >  - Renamed patch #24 to reflect the changes accurately
+> >  - Updated the design and lifecycle documentation (patch #30)
+> >  - Based on top of Nathan's "Resolve AUTO properties" v6 series [0].
+> >
+> > Please find the complete branch here:
+> >
+> https://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fgith
+> ub.com%2Fshamiali2008%2Fqemu-master%2Ftree%2Fmaster-vcmdq-v7-
+> ext&data=3D05%7C02%7Cskolothumtho%40nvidia.com%7C85054cd29a1d47
+> 22ba0908decbdaea61%7C43083d15727340c1b7db39efd9ccc17a%7C0%7C
+> 0%7C639172338322871287%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU
+> 1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIs
+> IldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=3DuHKbMM0Gxk6t%2Bw7gRw
+> M%2FiTcx9xuDNFKeaDDFZ48qfZA%3D&reserved=3D0
+> >
+> > Sanity tested on NVIDIA Grace. Further testing in progress.
+> >
+> > Feedback and testing are very welcome.
+>=20
+>=20
+>=20
+> >  hw/arm/smmuv3-accel.h         |   48 ++
+> >  hw/arm/tegra241-cmdqv.h       |  384 +++++++++++
+> >  include/hw/arm/smmuv3.h       |    3 +
+> >  include/hw/arm/virt.h         |    1 +
+> >  include/system/iommufd.h      |   17 +-
+> >  include/system/memory.h       |   21 +
+> >  backends/iommufd.c            |   64 ++
+> >  hw/arm/smmuv3-accel-stubs.c   |   12 +
+> >  hw/arm/smmuv3-accel.c         |  194 ++++--
+> >  hw/arm/smmuv3.c               |   10 +
+> >  hw/arm/tegra241-cmdqv-stubs.c |   16 +
+> >  hw/arm/tegra241-cmdqv.c       | 1119
+> +++++++++++++++++++++++++++++++++
+> >  hw/arm/virt-acpi-build.c      |  127 ++--
+> >  hw/arm/virt.c                 |   37 ++
+> >  hw/vfio/iommufd.c             |    4 +-
+> >  hw/vfio/listener.c            |    6 +
+> >  system/memory.c               |   10 +
+> >  backends/trace-events         |    4 +-
+> >  hw/arm/Kconfig                |    5 +
+> >  hw/arm/meson.build            |    2 +
+> >  hw/arm/trace-events           |   11 +
+> >  hw/vfio/trace-events          |    1 +
+> >  qemu-options.hx               |    8 +
+> >  23 files changed, 2024 insertions(+), 80 deletions(-)
+> >  create mode 100644 hw/arm/tegra241-cmdqv.h
+> >  create mode 100644 hw/arm/tegra241-cmdqv-stubs.c
+> >  create mode 100644 hw/arm/tegra241-cmdqv.c
+>=20
+> Hi -- I just noticed looking at this diffstat that it does not
+> make any updates to the documentation to describe this
+> new feature. Please could you add something (e.g. to
+> docs/system/arm/virt.rst, or elsewhere if more appropriate)
+> that describes whatever this new thing is and how to use it,
+> in terms that make sense to somebody who isn't deeply immersed in
+> the SMMU and this Nvidia specific bit of hardware ?
+> You can do this as a followup patch, as I've already queued
+> this series.
 
-> [...]
-> 
-> Thanks,
-> Gavin
+Thanks. We have this in qemu-options.hx(patch #31)
 
++    ``cmdqv=3Don|off|auto`` (default: auto)
++        Enable hardware Command Queue Virtualization (CMDQV) for the
++        SMMUv3 command queue. Currently only the NVIDIA Tegra241 CMDQV
++        implementation is supported.
+
+We could add a subsection under "User-creatable SMMUv3 devices" in virt.rst
+to add a bit more detail. I will send out a patch.
+
+> Also, a bullet point for the Changelog giving the short
+> summary of what the new thing is would be nice. This
+> cover letter was too cryptic for me to be able to guess :-)
+
+Maybe something like:
+
+NVIDIA Tegra241 Hardware Command Queue Virtualisation (CMDQV) support is
+now available via "-device arm-smmuv3,accel=3Don,cmdqv=3Don", giving each V=
+M
+dedicated hardware SMMUv3 command queues, improving performance.
+
+Thanks,
+Shameer
 

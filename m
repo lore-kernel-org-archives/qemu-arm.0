@@ -4,93 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA082CD98E4
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Jun 2026 12:28:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADFCBCD98E2
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Jun 2026 16:15:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZpNN-0004gO-VD; Wed, 17 Jun 2026 08:28:14 -0400
+	id 1wZsuN-0008QM-5H; Wed, 17 Jun 2026 12:14:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wZpNL-0004fG-LN
- for qemu-arm@nongnu.org; Wed, 17 Jun 2026 08:28:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wZpNJ-0004OO-PK
- for qemu-arm@nongnu.org; Wed, 17 Jun 2026 08:28:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781699288;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Wkx7IKr2LZHevlID2SJLarBz4rC12MFYWjtRT76vzu0=;
- b=TYRTXcvyjGX6IUVIV+PlIpYYBUhKsBj0LgABYjxlw+NbWj54sC17+BcUPNosqUPZ4UjYXp
- Zh+UqEPXES7Y9ZpFG2UzXF3smgyDTxBaDvn0Kdry6qgXHyWzeIa5PcKgTXpvFNlWyYhTJk
- pPT3eJtIyGzInsPSFq8rPCFMuLR1hC0=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-318-Y3d6oo6gNnC-b-K-mH6znQ-1; Wed,
- 17 Jun 2026 08:28:05 -0400
-X-MC-Unique: Y3d6oo6gNnC-b-K-mH6znQ-1
-X-Mimecast-MFC-AGG-ID: Y3d6oo6gNnC-b-K-mH6znQ_1781699283
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F3B8019560AD; Wed, 17 Jun 2026 12:28:02 +0000 (UTC)
-Received: from redhat.com (unknown [10.44.48.201])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0A5121955BC2; Wed, 17 Jun 2026 12:27:54 +0000 (UTC)
-Date: Wed, 17 Jun 2026 13:27:51 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Fabiano Rosas <farosas@suse.de>
-Cc: Peter Xu <peterx@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Dr . David Alan Gilbert" <dave@treblig.org>,
- Eric Blake <eblake@redhat.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Sana Sharma <sansshar@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Juraj Marcin <jmarcin@redhat.com>, qemu-rust@nongnu.org,
- Markus Armbruster <armbru@redhat.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Subject: Re: [PATCH v2 05/10] qom: Create object-property-ptr.[ch]
-Message-ID: <ajKSxy1sLHvK8wsW@redhat.com>
-References: <20260609172514.2037645-1-peterx@redhat.com>
- <20260609172514.2037645-6-peterx@redhat.com>
- <aimNv51iMZ_yEgDG@redhat.com> <aimvTYDsv_-Xsboy@x1.local>
- <aiq9g60bOnvsOQOy@redhat.com> <87h5n94001.fsf@suse.de>
- <airI3UKeVVRUdQHq@redhat.com> <ajG54jNEs4JDBRJP@x1.local>
- <87wlvx5p6w.fsf@suse.de>
+ (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
+ id 1wZsuK-0008PC-UC
+ for qemu-arm@nongnu.org; Wed, 17 Jun 2026 12:14:28 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
+ id 1wZsuI-0003t9-KF
+ for qemu-arm@nongnu.org; Wed, 17 Jun 2026 12:14:28 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-84226d0f1d2so3877578b3a.1
+ for <qemu-arm@nongnu.org>; Wed, 17 Jun 2026 09:14:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1781712865; x=1782317665; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=227EW3L/59hcD2Q03G8dQiLU/RR2N6DLxA0E9gs88jY=;
+ b=mSHC2nobkId7LmT2pTZGC5rqijv4iwJSaEl4/QNiYNCo9QBG/BX5TCeAlYCLwM6Urp
+ KoGQBFY4H3LV7F7S49IF112fwOdCgzlLfiSpl4wcjNCOiNgK/5SuNuA1pkfSgk6Tyh9R
+ RRsUYhk5mKWO6DeGTJPNqTArFm8fCHK3MlSV5IgoDwOOrzxVXAzDlvXu+MMSqD2TA7X3
+ ynvqc3BZ8jDpfFP27DO9s6GdVu1hq/WbfkPT/CqSybh2ZWm/8IlBZJITUm0b2R3gnivM
+ PEzs4gPYw9NwBOQserHZZ0GALIqFiljfgxbMhDSj3Izc+tglN8wB1Np0shRlPZeIzWal
+ Bwuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1781712865; x=1782317665;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=227EW3L/59hcD2Q03G8dQiLU/RR2N6DLxA0E9gs88jY=;
+ b=JXxW189QFnkP1lV6xZeEnqFu4ji8KztP1U4YQ+wwXPI3G+kj6TcBDPvPxvoTyktUoE
+ qoAKTUgoEXLbH2LkILY+Gc2XuHUtpt2FFAjFvku25FjJCh4J4N9v6P6pjT95njfrwEn3
+ qYx2tyVlrNSUKSuW3fUcQdkMNzgy/0Lb8puYwenkmUo2VyHMtRKSfsDo8G4Sqgpr/wdN
+ 1Fs672FY0bRlz24V1m9eQEtbhSDeP90pLUy5dqBE6OaWO/MTbYcJa8dn2zPgSsNJNjWZ
+ m20qhqzU1A5mSju9yBR3FH11ZhbhC32iFzAmilvfK3JtNzJg02OB9CUpSfP+Ly4IBWfN
+ OcFA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ9Ux3IaHEFl9ktscmKHRO86jRY5b7BUa0sNSEn9TCW2HeObkd1S945qs/x+tGiVodv77EZNZ2JUtQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxYNbF5Si/WVOrT2gPPAUlHFb+ErvN3V8weCZ3Ppjac0VE+Zcwm
+ i5ynEuTE5tBBmG+D0mPVRrG6uagKo5MwO80FYJkFf1Mxh0E1JcqWQ6lk
+X-Gm-Gg: AfdE7ckVGQaX7K8rSRcaO5lFvyPLZcD+G1ovg71eBpnVPQvVoPPni68MspH6MQkCGEE
+ /MojnjfQzycZpCpDbXuPaSX3y9YhIhbBZDzVNW3FLF+lpTNkficYDd9mEqlxsOqfRCUEScMzom7
+ sQXo9ioKjWu85CutYfKj7+EWSIQG/IEli9bfh8SXjxOPy8aSWEu3HA3eJuc1ArEKBCY4tKoQlCL
+ W0F5eudWxDLXaOsb1wZ6iFgr5Ay39eNRCr2+2WvB0tGPeO3WRHw3Xydnipq9CEQBli8/oocWljP
+ j35tP6hZpV3//osux2Ana36mM4j+r4KPhofBwH4AQ7Pl2A3uC14B4o7Au9YYyyZMYo+LkE3WSmL
+ w0CingAKs6oV2Olnigo+r0ia+sekWLPMsUXPeG3gZWhJo0e/gOSPsI2kE50obq2aBbVkHM261MT
+ phAN6kAyPQCX640T7OmmbyJZkHKvlK6LC8PHTk7Q==
+X-Received: by 2002:a05:6a00:1907:b0:824:374a:1407 with SMTP id
+ d2e1a72fcca58-84524480f94mr4809339b3a.16.1781712864975; 
+ Wed, 17 Jun 2026 09:14:24 -0700 (PDT)
+Received: from localhost.localdomain ([212.135.211.99])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-8434afc825csm16342800b3a.36.2026.06.17.09.14.21
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 17 Jun 2026 09:14:24 -0700 (PDT)
+From: jack wang <163wangjack@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: peter.maydell@linaro.org, mjt@tls.msk.ru, laurent@vivier.eu,
+ jack wang <163wangjack@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: [PATCH v5] hw/timer/imx_epit: Replace DPRINTF with trace events
+Date: Thu, 18 Jun 2026 00:14:06 +0800
+Message-ID: <20260617161406.14705-1-163wangjack@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-In-Reply-To: <87wlvx5p6w.fsf@suse.de>
-User-Agent: Mutt/2.3.2 (2026-04-26)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: xfSyUVr32yKeE9oNdvH3EBw8OCQw6tebQmWMbpuujQ4_1781699283
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=163wangjack@gmail.com; helo=mail-pf1-x42a.google.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FROM_STARTS_WITH_NUMS=0.738, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -104,52 +100,110 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Jun 17, 2026 at 09:25:27AM -0300, Fabiano Rosas wrote:
-> Peter Xu <peterx@redhat.com> writes:
-> 
-> > On Thu, Jun 11, 2026 at 03:40:29PM +0100, Daniel P. Berrangé wrote:
-> >> There's nothing standard in QOM, but in patch 10 in this series
-> >> Peter has a DEFINE_TLS_PROP_HELPERS() which macro-ized the
-> >> repetitive getters/setters for the TLS string properties. The
-> >> duplicate code still exists in the binary of course, just hidden
-> >> from the source.
-> >
-> > I believe we have the standard, which is qdev-properties.. which is (1)
-> > class properties, (2) allow variable bindings so no setter/getter needed,
-> > remembering them with pointer offsets.
-> >
-> > It goes back to last version where the question becomes: whether we want to
-> > make qdev-properties to be official QOM API, by removing qdev specific
-> > changes and move them over to qom/.  Then make qdev only add its special
-> > things on top.
-> >
-> > Said that, considering if we want to make all things qom-set-able to
-> > migration in the future, another option is directly go with getter/setter
-> > that will do the property checks one by one. One benefit of that is we can
-> > then get rid of migrate_params_check() and migrate_caps_check() altogether.
-> >
-> > Maybe I should go with the latter, and forget qdev?
-> 
-> I think it's a good idea. For caps that depend on one another do you
-> intend to check once in each setter? The _check functions exist is
-> because we want to validate the total state of params/caps, not just a
-> single param. Just pointing it out, it's not necessarily an issue.
+Clean up the codebase by removing the outdated DEBUG_IMX_EPIT
+and DPRINTF macros, replacing them with modern QEMU trace events.
 
-The user-creatable interface has a "complete" method which is called
-once all props have been set. So if there are semantics you can't
-validate against individual props in isolation, you can leave that
-validation until "complete".
+This also removes an empty and meaningless DPRINTF("\n") in the
+imx_epit_realize function.
 
+Signed-off-by: jack wang <163wangjack@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+---
+ hw/timer/imx_epit.c   | 25 +++++--------------------
+ hw/timer/trace-events |  8 ++++++++
+ 2 files changed, 13 insertions(+), 20 deletions(-)
 
-With regards,
-Daniel
+diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
+index c67a39f10c..374ec7d324 100644
+--- a/hw/timer/imx_epit.c
++++ b/hw/timer/imx_epit.c
+@@ -20,18 +20,7 @@
+ #include "hw/misc/imx_ccm.h"
+ #include "qemu/module.h"
+ #include "qemu/log.h"
+-
+-#ifndef DEBUG_IMX_EPIT
+-#define DEBUG_IMX_EPIT 0
+-#endif
+-
+-#define DPRINTF(fmt, args...) \
+-    do { \
+-        if (DEBUG_IMX_EPIT) { \
+-            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_EPIT, \
+-                                             __func__, ##args); \
+-        } \
+-    } while (0)
++#include "trace.h"
+ 
+ static const char *imx_epit_reg_name(uint32_t reg)
+ {
+@@ -80,7 +69,7 @@ static uint32_t imx_epit_get_freq(IMXEPITState *s)
+     uint32_t prescaler = 1 + extract32(s->cr, CR_PRESCALE_SHIFT, CR_PRESCALE_BITS);
+     uint32_t f_in = imx_ccm_get_clock_frequency(s->ccm, imx_epit_clocks[clksrc]);
+     uint32_t freq = f_in / prescaler;
+-    DPRINTF("ptimer frequency is %u\n", freq);
++    trace_imx_epit_get_freq(freq);
+     return freq;
+ }
+ 
+@@ -146,8 +135,7 @@ static uint64_t imx_epit_read(void *opaque, hwaddr offset, unsigned size)
+                       HWADDR_PRIx "\n", TYPE_IMX_EPIT, __func__, offset);
+         break;
+     }
+-
+-    DPRINTF("(%s) = 0x%08x\n", imx_epit_reg_name(offset >> 2), reg_value);
++    trace_imx_epit_read(imx_epit_reg_name(offset >> 2), reg_value);
+ 
+     return reg_value;
+ }
+@@ -328,8 +316,7 @@ static void imx_epit_write(void *opaque, hwaddr offset, uint64_t value,
+ {
+     IMXEPITState *s = IMX_EPIT(opaque);
+ 
+-    DPRINTF("(%s, value = 0x%08x)\n", imx_epit_reg_name(offset >> 2),
+-            (uint32_t)value);
++    trace_imx_epit_write(imx_epit_reg_name(offset >> 2), value);
+ 
+     switch (offset >> 2) {
+     case 0: /* CR */
+@@ -362,7 +349,7 @@ static void imx_epit_cmp(void *opaque)
+     /* The cmp ptimer can't be running when the peripheral is disabled */
+     assert(s->cr & CR_EN);
+ 
+-    DPRINTF("sr was %d\n", s->sr);
++    trace_imx_epit_cmp(s->sr);
+     /* Set interrupt status bit SR.OCIF and update the interrupt state */
+     s->sr |= SR_OCIF;
+     imx_epit_update_int(s);
+@@ -399,8 +386,6 @@ static void imx_epit_realize(DeviceState *dev, Error **errp)
+     IMXEPITState *s = IMX_EPIT(dev);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+ 
+-    DPRINTF("\n");
+-
+     sysbus_init_irq(sbd, &s->irq);
+     memory_region_init_io(&s->iomem, OBJECT(s), &imx_epit_ops, s, TYPE_IMX_EPIT,
+                           0x00001000);
+diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+index ac5afe84e8..cd83adb03d 100644
+--- a/hw/timer/trace-events
++++ b/hw/timer/trace-events
+@@ -122,3 +122,11 @@ hpet_ram_write_tn_cmp(uint8_t reg_off) "hpet_ram_writel HPET_TN_CMP + %" PRIu8
+ hpet_ram_write_invalid_tn_cmp(void) "invalid HPET_TN_CMP + 4 write"
+ hpet_ram_write_invalid(void) "invalid hpet_ram_writel"
+ hpet_ram_write_counter_write_while_enabled(void) "Writing counter while HPET enabled!"
++
++# imx_epit.c
++imx_epit_get_freq(uint32_t freq) "ptimer frequency is %u"
++imx_epit_read(const char *name, uint32_t value) "(%s) = 0x%08x"
++imx_epit_write(const char *name, uint64_t value) "(%s, value = 0x%08" PRIx64 ")"
++imx_epit_cmp(uint32_t sr) "sr was %d"
++
++
 -- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+2.53.0
 
 

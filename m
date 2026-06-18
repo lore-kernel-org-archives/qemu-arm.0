@@ -4,90 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADFCBCD98E2
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Jun 2026 16:15:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3B75CD98DE
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Jun 2026 03:50:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wZsuN-0008QM-5H; Wed, 17 Jun 2026 12:14:31 -0400
+	id 1wa3kZ-0004sZ-Ag; Wed, 17 Jun 2026 23:49:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wZsuK-0008PC-UC
- for qemu-arm@nongnu.org; Wed, 17 Jun 2026 12:14:28 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wZsuI-0003t9-KF
- for qemu-arm@nongnu.org; Wed, 17 Jun 2026 12:14:28 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-84226d0f1d2so3877578b3a.1
- for <qemu-arm@nongnu.org>; Wed, 17 Jun 2026 09:14:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1781712865; x=1782317665; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=227EW3L/59hcD2Q03G8dQiLU/RR2N6DLxA0E9gs88jY=;
- b=mSHC2nobkId7LmT2pTZGC5rqijv4iwJSaEl4/QNiYNCo9QBG/BX5TCeAlYCLwM6Urp
- KoGQBFY4H3LV7F7S49IF112fwOdCgzlLfiSpl4wcjNCOiNgK/5SuNuA1pkfSgk6Tyh9R
- RRsUYhk5mKWO6DeGTJPNqTArFm8fCHK3MlSV5IgoDwOOrzxVXAzDlvXu+MMSqD2TA7X3
- ynvqc3BZ8jDpfFP27DO9s6GdVu1hq/WbfkPT/CqSybh2ZWm/8IlBZJITUm0b2R3gnivM
- PEzs4gPYw9NwBOQserHZZ0GALIqFiljfgxbMhDSj3Izc+tglN8wB1Np0shRlPZeIzWal
- Bwuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781712865; x=1782317665;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=227EW3L/59hcD2Q03G8dQiLU/RR2N6DLxA0E9gs88jY=;
- b=JXxW189QFnkP1lV6xZeEnqFu4ji8KztP1U4YQ+wwXPI3G+kj6TcBDPvPxvoTyktUoE
- qoAKTUgoEXLbH2LkILY+Gc2XuHUtpt2FFAjFvku25FjJCh4J4N9v6P6pjT95njfrwEn3
- qYx2tyVlrNSUKSuW3fUcQdkMNzgy/0Lb8puYwenkmUo2VyHMtRKSfsDo8G4Sqgpr/wdN
- 1Fs672FY0bRlz24V1m9eQEtbhSDeP90pLUy5dqBE6OaWO/MTbYcJa8dn2zPgSsNJNjWZ
- m20qhqzU1A5mSju9yBR3FH11ZhbhC32iFzAmilvfK3JtNzJg02OB9CUpSfP+Ly4IBWfN
- OcFA==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9Ux3IaHEFl9ktscmKHRO86jRY5b7BUa0sNSEn9TCW2HeObkd1S945qs/x+tGiVodv77EZNZ2JUtQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxYNbF5Si/WVOrT2gPPAUlHFb+ErvN3V8weCZ3Ppjac0VE+Zcwm
- i5ynEuTE5tBBmG+D0mPVRrG6uagKo5MwO80FYJkFf1Mxh0E1JcqWQ6lk
-X-Gm-Gg: AfdE7ckVGQaX7K8rSRcaO5lFvyPLZcD+G1ovg71eBpnVPQvVoPPni68MspH6MQkCGEE
- /MojnjfQzycZpCpDbXuPaSX3y9YhIhbBZDzVNW3FLF+lpTNkficYDd9mEqlxsOqfRCUEScMzom7
- sQXo9ioKjWu85CutYfKj7+EWSIQG/IEli9bfh8SXjxOPy8aSWEu3HA3eJuc1ArEKBCY4tKoQlCL
- W0F5eudWxDLXaOsb1wZ6iFgr5Ay39eNRCr2+2WvB0tGPeO3WRHw3Xydnipq9CEQBli8/oocWljP
- j35tP6hZpV3//osux2Ana36mM4j+r4KPhofBwH4AQ7Pl2A3uC14B4o7Au9YYyyZMYo+LkE3WSmL
- w0CingAKs6oV2Olnigo+r0ia+sekWLPMsUXPeG3gZWhJo0e/gOSPsI2kE50obq2aBbVkHM261MT
- phAN6kAyPQCX640T7OmmbyJZkHKvlK6LC8PHTk7Q==
-X-Received: by 2002:a05:6a00:1907:b0:824:374a:1407 with SMTP id
- d2e1a72fcca58-84524480f94mr4809339b3a.16.1781712864975; 
- Wed, 17 Jun 2026 09:14:24 -0700 (PDT)
-Received: from localhost.localdomain ([212.135.211.99])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-8434afc825csm16342800b3a.36.2026.06.17.09.14.21
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 17 Jun 2026 09:14:24 -0700 (PDT)
-From: jack wang <163wangjack@gmail.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: peter.maydell@linaro.org, mjt@tls.msk.ru, laurent@vivier.eu,
- jack wang <163wangjack@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH v5] hw/timer/imx_epit: Replace DPRINTF with trace events
-Date: Thu, 18 Jun 2026 00:14:06 +0800
-Message-ID: <20260617161406.14705-1-163wangjack@gmail.com>
-X-Mailer: git-send-email 2.53.0
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1wa3kY-0004sI-Kt; Wed, 17 Jun 2026 23:49:06 -0400
+Received: from mgamail.intel.com ([198.175.65.16])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1wa3kW-0008Ok-Op; Wed, 17 Jun 2026 23:49:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1781754545; x=1813290545;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=1W5Ny9u8ZAzpK6G0mIReOsANN5rXzwZDbaRuyTggaYw=;
+ b=J+fCAy3pJ4KFSmvtCarsA/e/rTAf+fM0NOCimnHuZKH22JKb2xU/osjr
+ wvaDtZcCADvwIYQIJr8JrFmMm6PyJ/RKfuO+xIyTeR9ilNnq6SXD4FLbG
+ qBXM7a65vuSAGLPVfCZpNQs484Viq4pDAcvraI8O1VdZdV4LYcPefQK5Q
+ zcinIxJ3tlzlM1dDAUMecQDFHDESkIP/13DiwrO8a3om0ctKwZuPXUYKL
+ LyXFR0r74tlg/LN0DTtOGLRH4QkJRl7DCeLywGEA+iRK/1TgmKhQHiKzS
+ lrTj3WvQ8DZLcjmxQ1gWd97ZulbdQqtKMBS4D9gHnUCxid2E+8xwZi4In Q==;
+X-CSE-ConnectionGUID: q2nWGg0tSA6uiHdWRyBe7w==
+X-CSE-MsgGUID: 6o6s0tUOT5WG9mpxVofo7Q==
+X-IronPort-AV: E=McAfee;i="6800,10657,11820"; a="82776835"
+X-IronPort-AV: E=Sophos;i="6.24,210,1774335600"; d="scan'208";a="82776835"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jun 2026 20:49:03 -0700
+X-CSE-ConnectionGUID: /TRYG5W3T9yMbxu1evljVA==
+X-CSE-MsgGUID: w2lbVb+jT86p8IstVYWB8A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,210,1774335600"; d="scan'208";a="253352613"
+Received: from unknown (HELO gnr-sp-2s-612.sh.intel.com) ([10.112.230.229])
+ by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jun 2026 20:48:59 -0700
+From: Zhenzhong Duan <zhenzhong.duan@intel.com>
+To: qemu-devel@nongnu.org
+Cc: alex@shazbot.org, clg@redhat.com, eric.auger@redhat.com, mst@redhat.com,
+ jasowang@redhat.com, jgg@nvidia.com, nicolinc@nvidia.com,
+ skolothumtho@nvidia.com, joao.m.martins@oracle.com,
+ clement.mathieu--drif@bull.com, kevin.tian@intel.com, yi.l.liu@intel.com,
+ xudong.hao@intel.com, Zhenzhong Duan <zhenzhong.duan@intel.com>,
+ qemu-arm@nongnu.org
+Subject: [PATCH v2 2/5] backends/iommufd: Extend iommufd_backend_alloc_hwpt()
+ with fault_id
+Date: Wed, 17 Jun 2026 23:48:40 -0400
+Message-ID: <20260618034844.618011-3-zhenzhong.duan@intel.com>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20260618034844.618011-1-zhenzhong.duan@intel.com>
+References: <20260618034844.618011-1-zhenzhong.duan@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=163wangjack@gmail.com; helo=mail-pf1-x42a.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FROM_STARTS_WITH_NUMS=0.738, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=198.175.65.16;
+ envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -47
+X-Spam_score: -4.8
+X-Spam_bar: ----
+X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,107 +85,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Clean up the codebase by removing the outdated DEBUG_IMX_EPIT
-and DPRINTF macros, replacing them with modern QEMU trace events.
+We should set flags IOMMU_HWPT_FAULT_ID_VALID when pass in a fault
+object id in the caller.
 
-This also removes an empty and meaningless DPRINTF("\n") in the
-imx_epit_realize function.
-
-Signed-off-by: jack wang <163wangjack@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+Tested-by: Xudong Hao <xudong.hao@intel.com>
 ---
- hw/timer/imx_epit.c   | 25 +++++--------------------
- hw/timer/trace-events |  8 ++++++++
- 2 files changed, 13 insertions(+), 20 deletions(-)
+ include/system/iommufd.h    | 4 ++--
+ backends/iommufd.c          | 7 ++++---
+ hw/arm/smmuv3-accel.c       | 6 +++---
+ hw/i386/intel_iommu_accel.c | 2 +-
+ hw/vfio/iommufd.c           | 2 +-
+ backends/trace-events       | 2 +-
+ 6 files changed, 12 insertions(+), 11 deletions(-)
 
-diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
-index c67a39f10c..374ec7d324 100644
---- a/hw/timer/imx_epit.c
-+++ b/hw/timer/imx_epit.c
-@@ -20,18 +20,7 @@
- #include "hw/misc/imx_ccm.h"
- #include "qemu/module.h"
- #include "qemu/log.h"
--
--#ifndef DEBUG_IMX_EPIT
--#define DEBUG_IMX_EPIT 0
--#endif
--
--#define DPRINTF(fmt, args...) \
--    do { \
--        if (DEBUG_IMX_EPIT) { \
--            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_EPIT, \
--                                             __func__, ##args); \
--        } \
--    } while (0)
-+#include "trace.h"
- 
- static const char *imx_epit_reg_name(uint32_t reg)
+diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+index c287767b11..924129d7f9 100644
+--- a/include/system/iommufd.h
++++ b/include/system/iommufd.h
+@@ -90,8 +90,8 @@ bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
+ bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
+                                 uint32_t pt_id, uint32_t flags,
+                                 uint32_t data_type, uint32_t data_len,
+-                                void *data_ptr, uint32_t *out_hwpt,
+-                                Error **errp);
++                                void *data_ptr, uint32_t fault_id,
++                                uint32_t *out_hwpt, Error **errp);
+ bool iommufd_backend_alloc_viommu(IOMMUFDBackend *be, uint32_t dev_id,
+                                   uint32_t viommu_type, uint32_t hwpt_id,
+                                   void *data_ptr, uint32_t data_len,
+diff --git a/backends/iommufd.c b/backends/iommufd.c
+index 9c56a7bcd6..3a8b587225 100644
+--- a/backends/iommufd.c
++++ b/backends/iommufd.c
+@@ -310,8 +310,8 @@ int iommufd_backend_unmap_dma(IOMMUFDBackend *be, uint32_t ioas_id,
+ bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
+                                 uint32_t pt_id, uint32_t flags,
+                                 uint32_t data_type, uint32_t data_len,
+-                                void *data_ptr, uint32_t *out_hwpt,
+-                                Error **errp)
++                                void *data_ptr, uint32_t fault_id,
++                                uint32_t *out_hwpt, Error **errp)
  {
-@@ -80,7 +69,7 @@ static uint32_t imx_epit_get_freq(IMXEPITState *s)
-     uint32_t prescaler = 1 + extract32(s->cr, CR_PRESCALE_SHIFT, CR_PRESCALE_BITS);
-     uint32_t f_in = imx_ccm_get_clock_frequency(s->ccm, imx_epit_clocks[clksrc]);
-     uint32_t freq = f_in / prescaler;
--    DPRINTF("ptimer frequency is %u\n", freq);
-+    trace_imx_epit_get_freq(freq);
-     return freq;
- }
+     int ret, fd = be->fd;
+     struct iommu_hwpt_alloc alloc_hwpt = {
+@@ -322,11 +322,12 @@ bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
+         .data_type = data_type,
+         .data_len = data_len,
+         .data_uptr = (uintptr_t)data_ptr,
++        .fault_id = fault_id,
+     };
  
-@@ -146,8 +135,7 @@ static uint64_t imx_epit_read(void *opaque, hwaddr offset, unsigned size)
-                       HWADDR_PRIx "\n", TYPE_IMX_EPIT, __func__, offset);
-         break;
+     ret = ioctl(fd, IOMMU_HWPT_ALLOC, &alloc_hwpt);
+     trace_iommufd_backend_alloc_hwpt(fd, dev_id, pt_id, flags, data_type,
+-                                     data_len, (uintptr_t)data_ptr,
++                                     data_len, (uintptr_t)data_ptr, fault_id,
+                                      alloc_hwpt.out_hwpt_id, ret);
+     if (ret) {
+         error_setg_errno(errp, errno, "Failed to allocate hwpt");
+diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+index 5e83dbd8ee..fe57ba5aef 100644
+--- a/hw/arm/smmuv3-accel.c
++++ b/hw/arm/smmuv3-accel.c
+@@ -268,7 +268,7 @@ smmuv3_accel_dev_alloc_translate(SMMUv3AccelDevice *accel_dev, STE *ste,
+                                     accel->viommu->viommu_id, flags,
+                                     IOMMU_HWPT_DATA_ARM_SMMUV3,
+                                     sizeof(nested_data), &nested_data,
+-                                    &hwpt_id, errp)) {
++                                    0, &hwpt_id, errp)) {
+             return NULL;
      }
--
--    DPRINTF("(%s) = 0x%08x\n", imx_epit_reg_name(offset >> 2), reg_value);
-+    trace_imx_epit_read(imx_epit_reg_name(offset >> 2), reg_value);
  
-     return reg_value;
+@@ -622,14 +622,14 @@ smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *hiodi,
+     if (!iommufd_backend_alloc_hwpt(hiodi->iommufd, hiodi->devid, viommu_id,
+                                     0, IOMMU_HWPT_DATA_ARM_SMMUV3,
+                                     sizeof(abort_data), &abort_data,
+-                                    &accel->abort_hwpt_id, errp)) {
++                                    0, &accel->abort_hwpt_id, errp)) {
+         goto free_viommu;
+     }
+ 
+     if (!iommufd_backend_alloc_hwpt(hiodi->iommufd, hiodi->devid, viommu_id,
+                                     0, IOMMU_HWPT_DATA_ARM_SMMUV3,
+                                     sizeof(bypass_data), &bypass_data,
+-                                    &accel->bypass_hwpt_id, errp)) {
++                                    0, &accel->bypass_hwpt_id, errp)) {
+         goto free_abort_hwpt;
+     }
+ 
+diff --git a/hw/i386/intel_iommu_accel.c b/hw/i386/intel_iommu_accel.c
+index c03435f8a2..d2f41f18f1 100644
+--- a/hw/i386/intel_iommu_accel.c
++++ b/hw/i386/intel_iommu_accel.c
+@@ -94,7 +94,7 @@ static bool vtd_create_fs_hwpt(VTDHostIOMMUDevice *vtd_hiod,
+     return iommufd_backend_alloc_hwpt(hiodi->iommufd, hiodi->devid,
+                                       hiodi->hwpt_id, flags,
+                                       IOMMU_HWPT_DATA_VTD_S1, sizeof(vtd), &vtd,
+-                                      fs_hwpt_id, errp);
++                                      0, fs_hwpt_id, errp);
  }
-@@ -328,8 +316,7 @@ static void imx_epit_write(void *opaque, hwaddr offset, uint64_t value,
- {
-     IMXEPITState *s = IMX_EPIT(opaque);
  
--    DPRINTF("(%s, value = 0x%08x)\n", imx_epit_reg_name(offset >> 2),
--            (uint32_t)value);
-+    trace_imx_epit_write(imx_epit_reg_name(offset >> 2), value);
+ static void vtd_destroy_old_fs_hwpt(VTDAccelPASIDCacheEntry *vtd_pce)
+diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
+index 68f2ae6f9f..24c4948b8c 100644
+--- a/hw/vfio/iommufd.c
++++ b/hw/vfio/iommufd.c
+@@ -451,7 +451,7 @@ static bool iommufd_cdev_autodomains_get(VFIODevice *vbasedev,
+     if (!iommufd_backend_alloc_hwpt(iommufd, vbasedev->devid,
+                                     container->ioas_id, flags,
+                                     IOMMU_HWPT_DATA_NONE, 0, NULL,
+-                                    &hwpt_id, errp)) {
++                                    0, &hwpt_id, errp)) {
+         return false;
+     }
  
-     switch (offset >> 2) {
-     case 0: /* CR */
-@@ -362,7 +349,7 @@ static void imx_epit_cmp(void *opaque)
-     /* The cmp ptimer can't be running when the peripheral is disabled */
-     assert(s->cr & CR_EN);
- 
--    DPRINTF("sr was %d\n", s->sr);
-+    trace_imx_epit_cmp(s->sr);
-     /* Set interrupt status bit SR.OCIF and update the interrupt state */
-     s->sr |= SR_OCIF;
-     imx_epit_update_int(s);
-@@ -399,8 +386,6 @@ static void imx_epit_realize(DeviceState *dev, Error **errp)
-     IMXEPITState *s = IMX_EPIT(dev);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
- 
--    DPRINTF("\n");
--
-     sysbus_init_irq(sbd, &s->irq);
-     memory_region_init_io(&s->iomem, OBJECT(s), &imx_epit_ops, s, TYPE_IMX_EPIT,
-                           0x00001000);
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index ac5afe84e8..cd83adb03d 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -122,3 +122,11 @@ hpet_ram_write_tn_cmp(uint8_t reg_off) "hpet_ram_writel HPET_TN_CMP + %" PRIu8
- hpet_ram_write_invalid_tn_cmp(void) "invalid HPET_TN_CMP + 4 write"
- hpet_ram_write_invalid(void) "invalid hpet_ram_writel"
- hpet_ram_write_counter_write_while_enabled(void) "Writing counter while HPET enabled!"
-+
-+# imx_epit.c
-+imx_epit_get_freq(uint32_t freq) "ptimer frequency is %u"
-+imx_epit_read(const char *name, uint32_t value) "(%s) = 0x%08x"
-+imx_epit_write(const char *name, uint64_t value) "(%s, value = 0x%08" PRIx64 ")"
-+imx_epit_cmp(uint32_t sr) "sr was %d"
-+
-+
+diff --git a/backends/trace-events b/backends/trace-events
+index 1df3efb353..6ef7a9fee8 100644
+--- a/backends/trace-events
++++ b/backends/trace-events
+@@ -16,7 +16,7 @@ iommufd_backend_map_file_dma(int iommufd, uint32_t ioas, uint64_t iova, uint64_t
+ iommufd_backend_unmap_dma_non_exist(int iommufd, uint32_t ioas, uint64_t iova, uint64_t size, int ret) " Unmap nonexistent mapping: iommufd=%d ioas=%d iova=0x%"PRIx64" size=0x%"PRIx64" (%d)"
+ iommufd_backend_unmap_dma(int iommufd, uint32_t ioas, uint64_t iova, uint64_t size, int ret) " iommufd=%d ioas=%d iova=0x%"PRIx64" size=0x%"PRIx64" (%d)"
+ iommufd_backend_alloc_ioas(int iommufd, uint32_t ioas) " iommufd=%d ioas=%d"
+-iommufd_backend_alloc_hwpt(int iommufd, uint32_t dev_id, uint32_t pt_id, uint32_t flags, uint32_t hwpt_type, uint32_t len, uint64_t data_ptr, uint32_t out_hwpt_id, int ret) " iommufd=%d dev_id=%u pt_id=%u flags=0x%x hwpt_type=%u len=%u data_ptr=0x%"PRIx64" out_hwpt=%u (%d)"
++iommufd_backend_alloc_hwpt(int iommufd, uint32_t dev_id, uint32_t pt_id, uint32_t flags, uint32_t hwpt_type, uint32_t len, uint64_t data_ptr, uint32_t fault_id, uint32_t out_hwpt_id, int ret) " iommufd=%d dev_id=%u pt_id=%u flags=0x%x hwpt_type=%u len=%u data_ptr=0x%"PRIx64" fault_id=%u out_hwpt=%u (%d)"
+ iommufd_backend_alloc_faultq(int iommufd, uint32_t fault_id, int fault_fd, int ret) " iommufd=%d fault_id=%u fault_fd=%d (%d)"
+ iommufd_backend_free_id(int iommufd, uint32_t id, int ret) " iommufd=%d id=%d (%d)"
+ iommufd_backend_set_dirty(int iommufd, uint32_t hwpt_id, bool start, int ret) " iommufd=%d hwpt=%u enable=%d (%d)"
 -- 
-2.53.0
+2.52.0
 
 

@@ -4,106 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0244CD98F2
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Jun 2026 14:59:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74B07CD98F2
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Jun 2026 16:33:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1waECl-0004Qn-4R; Thu, 18 Jun 2026 10:58:55 -0400
+	id 1waFg6-0006gK-0T; Thu, 18 Jun 2026 12:33:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1waECj-0004QC-O1
- for qemu-arm@nongnu.org; Thu, 18 Jun 2026 10:58:53 -0400
-Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1waFg4-0006dS-DT
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2026 12:33:16 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1waECi-0001Mr-8b
- for qemu-arm@nongnu.org; Thu, 18 Jun 2026 10:58:53 -0400
-Received: by mail-yx1-xb12d.google.com with SMTP id
- 956f58d0204a3-662e7fed068so517839d50.0
- for <qemu-arm@nongnu.org>; Thu, 18 Jun 2026 07:58:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781794731; cv=none;
- d=google.com; s=arc-20240605;
- b=TXTmCJU76HpL1uga2N2jvtaLTNZzUZAg856m51I3LVGKO0YBl1xW+wA9ty7YoeUTCw
- vxhzwYyb6WXAsPDfDjh2ejC5qXGwumXiCwc4UjtkuyAIF1msTeDwD+G5uwTL130iUaAa
- 5ki6Cm5dWAtHYLiJkl88kGU4FNXQOaJ97HOsDWq8KUGkGDsR5pe08KRYIHb3qHqwMzjO
- Hf8wO/WwqCzIO6PXmoNccFHZOi2bco58jqZzjLy5PvCeXzgLklWEaSAI0PaVVhoZiDyc
- 9YQk0e4Dem94AifwSPKGfAZor/MBEZ5sNuvRQrphdNiMntovj/0HKEfMnI95oPbaQjMR
- 42jg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=tUPIscPmndmx5i525GhyoosCIvCSVXyRVhSDHgGvlUg=;
- fh=KgvV5cCn82ffxtCQlh2UZxVvXgvULRIeKj9IeVaQSl4=;
- b=W6+1wAsE2cE6QSuO5wEwBtpt2sRy4gVpPMn/91AFkWNITcFGBON6KDLUw9TT5NSdFs
- oku7gi8lFFM6qU6hfzPVvY0/Ofvf6eFOJWuzGOCqGwderiwgOXkpS1vn/tgsTQ7pgGQQ
- I0+z3Cz2lper8dMXLswfvj26zorLeJkfvDxhaJD6o46m/BXc2pS8Jy80xvHKZrpTyyaD
- H59WzYCjWbWMRW3MhdsQCS4Tj1cgBhmWvX676wSPk5wat1z23C7L0wVxxOtyy2imaa/h
- vnniQFe/7gPxIoElwc0NEE7mQmVA+y+gQMGyw3zm3+snaFZSpXO7zTVf3NaluIR6jmyq
- dVXg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1waFg2-0006Lq-Nc
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2026 12:33:16 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-45eeba68948so892306f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 18 Jun 2026 09:33:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781794731; x=1782399531; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=tUPIscPmndmx5i525GhyoosCIvCSVXyRVhSDHgGvlUg=;
- b=hfzxlS6KG5KQ4TkbN9cgQwJhQHXckX1MSVN0LAD5AS/xfoorsTItScABG82xdJ+/Dt
- 0Pf3bgSqx10oAOf0MFY20FCYKsmXJ02NYrAAiH8URIVNRTqhcjnCkjPvs0YsXTG9G9Zv
- DPu+gGF4PVpI0zCEri00GH5h5INU0+e61uGhdAkC7TTNJQv7+XWMUDovczt0TmYb5ZoA
- tiXBWLwFjCQfdrtGseZnotZscmGtgYSFtoHKxSFVSeJQlVXfWIE3/nLl/R8m4iYHXrkJ
- OzrGRp4Iwu9vBqInpGTuAO7F2BJYw1sjzMNGY8dbKJ+DkzX7+Zr86a9MG8SoOibSV9/N
- uPTw==
+ d=linaro.org; s=google; t=1781800393; x=1782405193; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=kea4dc/isoBx6rpEUTWsbHn6iNysu9QKjGPmvqVX+qw=;
+ b=yoDeb5v3OUKQfkubIRHaH244Ch5UYQeqgScWNgtQTMdrGlaEXUyfJkJDt97G9Vtpq1
+ zaxwofOKSOFRNln+L+4imwLaFTwuZaI+lJxRukHR5w3uW6m98KXfMHr9fqi7LuqHT3We
+ foTbMCPGOUXGEOwLukqTH0IGgbvKayWnLrr6vQpdLus5OhjSx1HVJaMlWL2inWbTymsy
+ MrERgHKAGUWopEImBRT3K+xNygmUssCiTfpu04g6OqfpuW029+c6dLtnO3ovspAkzrfF
+ ptUkIYG+Va23pQQonDI9s1hbUhu1c9Pz9IypkA2T8ta3NAXsvjevpU8Xeb73hK1MC9dN
+ OYSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781794731; x=1782399531;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=tUPIscPmndmx5i525GhyoosCIvCSVXyRVhSDHgGvlUg=;
- b=oX0XfRtlddkPkZCv6Yo0Q5Rrp3zEGIw5yhPzPSyKVEIlT7oSLIQKPHkf7ri0i2e9ws
- te5tqWDmgBBON8MPfdmoUZS0+nKQR003pWwg5XbdvLSfwyMCPD47YAHaCbisMgD09yer
- Fj+wpyz/y2nkhe0G2k7MxbfzPXZ9VVSDEbP2SmfAJ5RqLuUpAX2M2Ja/U63xhRIEiSPG
- XPQ3E+hPBqd7ABjtbiy5mtVfPlujXu/9nM/DsHvHVaYHFF5XdpECawTFtYT790GUbfar
- a74XdUpTKyQG0VCzDc0oLvj0UzHoz9CdbpfUcVSAq+6ficXJcwqxQslAtkt3GWz3bNay
- +WyQ==
+ d=1e100.net; s=20251104; t=1781800393; x=1782405193;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=kea4dc/isoBx6rpEUTWsbHn6iNysu9QKjGPmvqVX+qw=;
+ b=ayGz7xK7tq6bNqtc8ARKCZexoCSlKfdWNZ0EzlL9Q1wDySjnIzY8DNruVKJzkiPiLv
+ 4oWqz7epeOXAo3c3RhY3ut9Ojj9J2LExKUVRMJkS/qDXrsvZS0sUsrPNJ+0qrcqao0Vj
+ i7YYXiawWHL2JO+AsvuhbSgP0utNOKuywIZqoawBtziLW9eBmsGQ07ouRFZZEu+5ONWg
+ GJ6w3uFbNid5sYNrSoampqNVEzuK0M4MOBWPUAXkLMxdRryTz9/T2MRpRP//RIIxpvpZ
+ dDGf7pVS1N9OdOLrV9dUZGC0K/CJ4/N6npy/fOVqdWEfd6mtLCKzYKyGMjCTm2fID5L9
+ jklg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8WFT1mhZFUdbdtPgyiSfVoG+1nKIn4DVFSfk/22cWIBUez3x6yU2SzQ7GhOCmb6U4UTSJ/VcbGUQ==@nongnu.org
-X-Gm-Message-State: AOJu0YygsFXu116kp86ItohM9b61Oek+hDogw3HPQjR+ttM4Tr3stzuy
- MwKGB1P9/MLJ5MeO28PwML7bp54BdFXy0ouLWNaB28Z8FNupvy7ZM/Hq/ItUU5OXmGBlk8yxt7t
- RRUgxUqDZGL5bW7x9Wg8BvqtnDJX37G77HbKKjiwkHg==
-X-Gm-Gg: AfdE7cmqgrmBaOyGpcESPxhz0x6b5sXSJv7CTuge2kS/MgapN2VfA/LHztDAcvgL1yM
- MEvML8N3vsx61MjE7VYARabqVxa+bEAyP0EXf6ymIY77hC5hEXtzmNRLwKrAfvOdIHAgxlNKuFO
- 24mAalXUVx1A6bzXp+HN9p72BZ07z366VpAPj3JLTH4KufLe3awxZx+1xsoh7SDqrPGmT7Rt9s9
- lwT25c6jFFWB33no78nsk9kB8BPQLEX4klLKyh6Uh4SeLkJsgnE5PBzeLPwZZ7qnpVIF8SJgNOx
- Vzs13njpFQYS/ROqu4Q4ntRDmQ9JOgpEn080iXNVqIEehx4BWu2rEaKn
-X-Received: by 2002:a53:c091:0:b0:662:bd61:f818 with SMTP id
- 956f58d0204a3-662cbd2263bmr6648189d50.52.1781794730707; Thu, 18 Jun 2026
- 07:58:50 -0700 (PDT)
+ AFNElJ/Nnw+D21W/n5Uo5WzcPdQOhXfRHeFjvX7sfTsVqeHe/RhWFyOHeJvXtsoeKA71RphP/hLy0Bcsng==@nongnu.org
+X-Gm-Message-State: AOJu0YzafHsgFAI7MWDsq8yHIcwyYEpM423IcDaMRab4hO3JmmqJCyZm
+ J3ACpB1Qi522wMrmTtkf0vYZnwSsxVgadNkez2cyR0JOnH73er+5NUHSvZoaHoOThZY=
+X-Gm-Gg: AfdE7cno2+NEegroYfJBav3PNyLj7TceZt//vmV07jV0P48QZDrLXYafZLYInwsOfUK
+ 5KCTNNRWnunkaIoMKKfJnUAbkaXQicNUck1ndjnehhqKse+3CY7l00fBQqXCQ8WkShNxdCARynM
+ Zzfs8t+V/0c9U84Z3J6WHvcXsxXx4l4jbgh/Jkl9Zo9WE0TyTPtCcOu91X0Ar8hSh0dEW5MK706
+ 9Uvy99pUts0YiWJQ7h0VHzZIrkgnPSW7W/5RsWA113+vmcV8w9W8t4CtWuqHByY/S7X9KjlE0/3
+ wRxyn1fre7QkoBIh7DDdFS2XrCfgu38i2Iz4BJoJs7S0lIs//8aA18FpteobFRCdmZnsrvOw/Aj
+ m5/oej1az1EfQs+aSPdmzbw2nwIsB5XWpqGdN2mTS2gQxv51v9UmGE/ksMNFO5M7vcfxEzJoWgp
+ 3sE087vOjoP/GWzw==
+X-Received: by 2002:a5d:5f82:0:b0:45e:f2bd:2b17 with SMTP id
+ ffacd0b85a97d-4650853517amr133653f8f.21.1781800392723; 
+ Thu, 18 Jun 2026 09:33:12 -0700 (PDT)
+Received: from [127.0.1.1] ([2a10:d582:31e:0:b52:6a9:569d:e33e])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4650bc426e1sm26942f8f.29.2026.06.18.09.33.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Jun 2026 09:33:12 -0700 (PDT)
+From: Jim MacArthur <jim.macarthur@linaro.org>
+Date: Thu, 18 Jun 2026 17:33:05 +0100
+Subject: [PATCH v3 2/6] target/arm: Setup new registers for GPC3
 MIME-Version: 1.0
-References: <20260303092532.2410177-1-imammedo@redhat.com>
- <20260303092532.2410177-8-imammedo@redhat.com>
-In-Reply-To: <20260303092532.2410177-8-imammedo@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 18 Jun 2026 15:58:38 +0100
-X-Gm-Features: AVVi8CePXzKJX-IjgBl9ocCe6xzRqZ5o2_2oIUuWx0lOKwgI1zZN8DzP69qeu6E
-Message-ID: <CAFEAcA_KjOEBduVcop_T6-aH_DKy_4=QwTKa04kvKR51S79UQw@mail.gmail.com>
-Subject: Re: [PATCH v2 07/21] arm: sbsa_gwdt: fixup default "clock-frequency"
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: qemu-devel@nongnu.org, mst@redhat.com, anisinha@redhat.com, 
- pbonzini@redhat.com, shannon.zhaosl@gmail.com, philmd@linaro.org, 
- zhao1.liu@intel.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com, 
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260618-jmac-gpc3b-v3-2-353e546067e7@linaro.org>
+References: <20260618-jmac-gpc3b-v3-0-353e546067e7@linaro.org>
+In-Reply-To: <20260618-jmac-gpc3b-v3-0-353e546067e7@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Jim MacArthur <jim.macarthur@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>
+X-Mailer: b4 0.13.0
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,32 +103,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 3 Mar 2026 at 09:26, Igor Mammedov <imammedo@redhat.com> wrote:
->
-> Comment about keeping legacy freq, is wrong to begin with
-> (should be 62.5MHz), but that value also doesn't make
-> sense anymore as the watchdog is used only by un-versioned
-> SBSA board and the later has hard-coded it to 1GHz.
->
-> Other potential user (arm/virt) also has system clock at 1GHz.
+Adds GPCBW_EL3. A custom write function is necessary to flush TLBs
+when this register is written. Also allows write to the GPCBW bit of
+GPCCR_EL3.
 
-It's not quite that simple. We use the back-compat 62.5MHz:
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
+---
+ target/arm/cpu.h    |  7 +++++++
+ target/arm/helper.c | 19 +++++++++++++++++++
+ 2 files changed, 26 insertions(+)
 
-   *  - for QEMU CPU types added before we standardized on 1GHz
-   *  - for versioned machine types with a version of 9.0 or earlier
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 31a5567c95..84d33e87dc 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -559,6 +559,7 @@ typedef struct CPUArchState {
+         /* RME registers */
+         uint64_t gpccr_el3;
+         uint64_t gptbr_el3;
++        uint64_t gpcbw_el3;
+         uint64_t mfar_el3;
+ 
+         /* NV2 register */
+@@ -1244,6 +1245,8 @@ void arm_v7m_cpu_do_interrupt(CPUState *cpu);
+ typedef struct ARMGranuleProtectionConfig {
+     /* GPCCR_EL3 */
+     uint64_t gpccr;
++    /* GPCBW_EL3 */
++    uint64_t gpcbw;
+     /* GPTBR_EL3 */
+     uint64_t gptbr;
+     /* ID_AA64MMFR0_EL1.PARange */
+@@ -2116,6 +2119,10 @@ FIELD(GPCCR, NA6, 27, 1)
+ FIELD(GPCCR, NA7, 28, 1)
+ FIELD(GPCCR, GPCBW, 29, 1)
+ 
++FIELD(GPCBW, BWSIZE, 37, 2)
++FIELD(GPCBW, BWSTRIDE, 32, 5)
++FIELD(GPCBW, BWADDR, 0, 25)
++
+ FIELD(MFAR, FPA, 12, 40)
+ FIELD(MFAR, NSE, 62, 1)
+ FIELD(MFAR, NS, 63, 1)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 22e71a2804..8538a28ce6 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -5001,6 +5001,10 @@ static void gpccr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                    R_GPCCR_SPAD_MASK | R_GPCCR_NSPAD_MASK | R_GPCCR_RLPAD_MASK;
+     }
+ 
++    if (cpu_isar_feature(aa64_rme_gpc3, env_archcpu(env))) {
++        rw_mask |= R_GPCCR_GPCBW_MASK;
++    }
++
+     env->cp15.gpccr_el3 = (value & rw_mask) | (env->cp15.gpccr_el3 & ~rw_mask);
+ }
+ 
+@@ -5010,11 +5014,26 @@ static void gpccr_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+                                      env_archcpu(env)->reset_l0gptsz);
+ }
+ 
++static void gpcbw_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                        uint64_t value)
++{
++    uint64_t rw_mask = R_GPCBW_BWADDR_MASK | R_GPCBW_BWSTRIDE_MASK |
++                       R_GPCBW_BWSIZE_MASK;
++    ARMCPU *cpu = env_archcpu(env);
++
++    tlb_flush(CPU(cpu));
++    env->cp15.gpcbw_el3 = (value & rw_mask);
++}
++
+ static const ARMCPRegInfo rme_reginfo[] = {
+     { .name = "GPCCR_EL3", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 1, .opc2 = 6,
+       .access = PL3_RW, .writefn = gpccr_write, .resetfn = gpccr_reset,
+       .fieldoffset = offsetof(CPUARMState, cp15.gpccr_el3) },
++    { .name = "GPCBW_EL3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 1, .opc2 = 5,
++      .access = PL3_RW, .writefn = gpcbw_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.gpcbw_el3) },
+     { .name = "GPTBR_EL3", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 1, .opc2 = 4,
+       .access = PL3_RW, .fieldoffset = offsetof(CPUARMState, cp15.gptbr_el3) },
 
-sbsa-ref sets the same 1GHz frequency on both the wdt device
-and also on the CPU objects it creates (because it doesn't have
-to care about back-compat, so we were able to update it).
-The virt board doesn't set the cpu cntfrq property, so it gets
-62.5MHz in the above situations.
+-- 
+2.43.0
 
-Changing the default value here is fine, though.
-
-(I haven't checked whether the subsequent patches in this
-set make sure that when the virt board creates a watchdog
-that it sets the clock-frequency here to match what the
-CPU is is using.)
-
--- PMM
 

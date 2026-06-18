@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BA88CD98DE
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Jun 2026 04:07:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F197CCD98DE
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Jun 2026 04:07:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wa42M-0000tV-Am; Thu, 18 Jun 2026 00:07:30 -0400
+	id 1wa42P-0000yF-U0; Thu, 18 Jun 2026 00:07:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wa42H-0000r8-Jb
- for qemu-arm@nongnu.org; Thu, 18 Jun 2026 00:07:27 -0400
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+ id 1wa42J-0000s6-Rf
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2026 00:07:29 -0400
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wa42F-000451-R3
- for qemu-arm@nongnu.org; Thu, 18 Jun 2026 00:07:25 -0400
-Received: by mail-pj1-x1033.google.com with SMTP id
- 98e67ed59e1d1-36d5fd50d20so273253a91.1
- for <qemu-arm@nongnu.org>; Wed, 17 Jun 2026 21:07:23 -0700 (PDT)
+ id 1wa42H-00045V-H0
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2026 00:07:27 -0400
+Received: by mail-pj1-x1030.google.com with SMTP id
+ 98e67ed59e1d1-36ba285e98bso529607a91.2
+ for <qemu-arm@nongnu.org>; Wed, 17 Jun 2026 21:07:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781755642; x=1782360442; darn=nongnu.org;
+ d=linaro.org; s=google; t=1781755644; x=1782360444; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KJNYyxkPZZLm2j4qOnGcl3pJUfyQigIuYwn5g7Qoayk=;
- b=DMQ9X44ldnmHzoouFtPp6Om/DBM3jOig/TMPZPIgyEMILA5av3O411KGJ2dfZ0cdX+
- 1irOz//qALFOAJtPQH+FyA4cAe+jZfFdKogyWprECAg/VBhNzontjfov3KFCksdgoyio
- nxToqWK/oAtNkF4UrSof2cqCO6Af/Fm1UnIwcIVnayBSI/RIfJevKUNQh2QA5bIXG1Su
- IOOkUCDNyw74hqjtoXGov2x6kuebcj2A30rdia0Nna1O3yBkgcbwrHqHoMGy3HlnC0cy
- BR3Q67zNWHLQLaqhpBPWW87ICjlIge05lKMg31hnfTKnvxs5e6acA594F1mO9kBAqaCw
- 1KDA==
+ bh=iKE+K4ONkFnKt67fOnUjNENJCavXPLh6g/eMW2WZm30=;
+ b=rvrNyZ74pw9hCYHQVk52dO/T7OlU4wOEuNHyL05vJ6IoLay8GvTAbuwjUmfAsBYluS
+ /XcERJIu6MD4hBs+GtjA1zIIL4/NUKoeBcQsOar209Uu3BogLvuEb9CWtAtnnNFuBScF
+ JNODionqa3l+r8doe+D3WG5A7XBLkn540wdXHZg7TmZa3+B/t+5ZbfzqCUDk+YjPtMS6
+ v3qV3+LnqpxqIx2nG7eHKezNeRTbacqgzF5JyWEzLzfGk36bezeUNA0CyZuAivZ62a6u
+ 2n1l8VnCm6h8UklIqOGEgDb1LNhjmlRIw3ASS1f0cZxajmPhdmjz9h0fKlp7DFOo7mQx
+ S0Pg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781755642; x=1782360442;
+ d=1e100.net; s=20251104; t=1781755644; x=1782360444;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=KJNYyxkPZZLm2j4qOnGcl3pJUfyQigIuYwn5g7Qoayk=;
- b=oLwjTlZI8E5V2MlYNSQZeYmIvTWjLEdIhO1uoPJyNqO1qJHnZZIP8/B2JF24YHoGqP
- zZNgbuaSNqcqN2TD5K/A+tATxY99sbM5AlSmb1kzkaZQAoHSG64OFwnBgCJurMfaxxsK
- apqsomXq4EFZtFtdipHgUu0o3v4ZwhxMOBdsSwXCY1ASJMeXEFWjac65Xcwj6cMz9MwO
- 2CwgfkeHZ7zZ6Y6Wx93YuwCmVN2x5eCDr64ytz8hZ5I+rSjtUk1Qgg1eUUa1rTpp7/Fk
- Vu4Pt8vSQYZs4UmiMk3QZAqZ/yNkpg5gOH28U4S+1ZUGUh1bq8nOiz1MEqpyOeZRp1mT
- vzHQ==
-X-Gm-Message-State: AOJu0YyaHxIcy3qnBGzAAUvuoL0T4zfi2Qx6N3aCHxTJVjHSaUpcF2gq
- rtRIRZ46SW08wGswym65DrUWUnonRm32BO+kEuiWiiXLge8rwwLtvtHpoPBSRfd3/HSopvND8wc
- qqFeI
-X-Gm-Gg: AfdE7ckXhEDcJRl2JXRi9/EC7PCsH7LYGbtJjf3LEdF5ZVe6CA/Bsfsz7ezUsqp77qU
- ajpIixoyCPJ/+Dv2bjRQsL0e6ujHq6gHqvB9QIg7CtAltXVJqmXeZvJl+FdfJlyXhMA+GjK/jxk
- eX/4QI7fmJN2/cVKRI5MKy3rAHUegnyQetqURELWD7Iw9wxVddNe8HpTe3hzigxTZ/jxzbSBUtb
- nBshU3ynIHcaPXaNCHybJEtEKdfN2DgC9E3YXAMzbtvMN9veLeAKQS3sCHvzPxBvYb355EbHP8p
- DcBjOg41+3e06nNQxYFWYpAaPDizPJmD7Mw8hlVWQUePSl3dJ5hR8EOUdHMhKChYOLsJOFB7MbD
- hFIwlrtUL5IxW3ABzjwelF4cTQDp1V6KGJCS4c8xD7ar9XCjzSuMSMPnx/PT3yRX/StGZjhwtlU
- 9gilQ/tYTZ/Zq2LF616vAjb7wqPRl1NPrU16jUDLytzF/isDhCzA==
-X-Received: by 2002:a17:90b:584b:b0:36a:8ce7:b879 with SMTP id
- 98e67ed59e1d1-37c9da9a091mr5889490a91.5.1781755642267; 
- Wed, 17 Jun 2026 21:07:22 -0700 (PDT)
+ bh=iKE+K4ONkFnKt67fOnUjNENJCavXPLh6g/eMW2WZm30=;
+ b=sSPaM+BwqHC488ejVrsuPTV4O20N6iEk2Q99EqrrVd0yZN23xC+UHGdtNxxu86iTKu
+ kA6yd4GOMZ/tFW+gAjD99Az1e2G282cd5sHTQ2eLu/Gt+AfyIQDZKrdBlSXiYftzAm30
+ PgADKwfdYHfUDP9GsjCQ8fbNoTTpzYmHcWKcVS+z6F3jsGmL+TtWREXa3zb1MRw9la8W
+ Je3eopIBKALXTuOKLyTwgeQenROrFWEfUU7USh3k//90u1h14AKMNZu6RRMT0MlVqduA
+ buyF0vn/X58Fqw0EUMbQ+gO1HyW7bvjfaQ9ZlzBri+UNfkJvWGbGgF26ExTI1AETJ7tT
+ 45Dg==
+X-Gm-Message-State: AOJu0YxeKQwPvqryonoh/cM+lnGTAPICVgZpx8tFIu0SI09X5Ye/0Kcp
+ ydjvcROpkgfHah9Txiv5cyKIsGDFlTZXv48kTGucwXeCBKP3Tu802AcsWSL0o5vt45c6Axs4iID
+ IIus9
+X-Gm-Gg: AfdE7ckBneTaKBUa5YETAT3fuBeyFzNDs9k79z0jma1ZYQwVgefYIZFygjuq2Wr2NJ5
+ TMfu0GnAZFFEPveFav1sOoCZGWDVi161Zqwrh1YhwfIJHI0aXHMT7vsJ3Aer/xcjrjF15BBqIW3
+ CnSaw7L7+eVTPSl+GPlSBEN7KNlIwq/ef+kPMmydeNJGeGMY4U6b/i4FP0Jj/R2OkS1p157VflV
+ oKN4CBxV/88iDK9vUyon7g8lQiz7QHeU8ZyWwEbFIPP2op8cWGSO4orXZGWS76grMxlfdUVduHj
+ 7RLdyTvEDUyy0/2uaOJkxMBuW8XFlX9KF0JIBfx2TEDLg/oSzw3G61y80k0WuMAf1COAmAHN1yE
+ K6AaFXtxgDD2Fea9VzzeMiNNlFzQ9EjBKQD6aBcHlVrpv/TZghHUFgHz8rQBGnvAYbE10dsWICB
+ ImqMLV+BF0vi4oW7O/WfL7UJPVQQeEZV15EwUg93NPRSxEaxxj0g==
+X-Received: by 2002:a17:90a:ec87:b0:36d:ae6a:22f0 with SMTP id
+ 98e67ed59e1d1-37c9e9c8c71mr5971052a91.14.1781755644000; 
+ Wed, 17 Jun 2026 21:07:24 -0700 (PDT)
 Received: from stoup.. (174-21-129-215.tukw.qwest.net. [174.21.129.215])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-37c5222e042sm8830476a91.16.2026.06.17.21.07.21
+ 98e67ed59e1d1-37c5222e042sm8830476a91.16.2026.06.17.21.07.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Jun 2026 21:07:21 -0700 (PDT)
+ Wed, 17 Jun 2026 21:07:23 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 2/8] target/arm: Implement EXPAND
-Date: Wed, 17 Jun 2026 21:07:12 -0700
-Message-ID: <20260618040718.572950-3-richard.henderson@linaro.org>
+Subject: [PATCH v2 4/8] target/arm: Implement COMPACT for byte/halfword
+Date: Wed, 17 Jun 2026 21:07:14 -0700
+Message-ID: <20260618040718.572950-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260618040718.572950-1-richard.henderson@linaro.org>
 References: <20260618040718.572950-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,93 +104,83 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/helper-sve-defs.h |  5 +++++
- target/arm/tcg/sve_helper.c      | 26 ++++++++++++++++++++++++++
- target/arm/tcg/translate-sve.c   |  7 +++++++
- target/arm/tcg/sve.decode        |  2 ++
- 4 files changed, 40 insertions(+)
+ target/arm/tcg/helper-sve-defs.h |  2 ++
+ target/arm/tcg/sve_helper.c      |  2 ++
+ target/arm/tcg/translate-sve.c   | 22 +++++++++++++++++-----
+ target/arm/tcg/sve.decode        |  1 -
+ 4 files changed, 21 insertions(+), 6 deletions(-)
 
 diff --git a/target/arm/tcg/helper-sve-defs.h b/target/arm/tcg/helper-sve-defs.h
-index de2254bb19..1d9066dcbb 100644
+index 1d9066dcbb..b64a0faa19 100644
 --- a/target/arm/tcg/helper-sve-defs.h
 +++ b/target/arm/tcg/helper-sve-defs.h
-@@ -3203,3 +3203,8 @@ DEF_HELPER_FLAGS_6(sve2_famin_s, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, fpst, i32)
- DEF_HELPER_FLAGS_6(sve2_famin_d, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, fpst, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_expand_b, TCG_CALL_NO_WG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_expand_h, TCG_CALL_NO_WG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_expand_s, TCG_CALL_NO_WG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_expand_d, TCG_CALL_NO_WG, void, ptr, ptr, ptr, i32)
+@@ -733,6 +733,8 @@ DEF_HELPER_FLAGS_4(sve_trn_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve_trn_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve2_trn_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ 
++DEF_HELPER_FLAGS_4(sve_compact_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_compact_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve_compact_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve_compact_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ 
 diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
-index a0a189eb1e..2517362189 100644
+index 9b45b0d331..bd8fa2da7e 100644
 --- a/target/arm/tcg/sve_helper.c
 +++ b/target/arm/tcg/sve_helper.c
-@@ -3671,6 +3671,32 @@ void HELPER(sve_compact_d)(void *vd, void *vn, void *vg, uint32_t desc)
-     }
+@@ -3657,6 +3657,8 @@ void HELPER(NAME)(void *vd, void *vn, void *vg, uint32_t desc)        \
+     }                                                                 \
  }
  
-+#define DO_EXPAND(NAME, TYPE, H)                                      \
-+void HELPER(NAME)(void *vd, void *vn, void *vg, uint32_t desc)        \
-+{                                                                     \
-+    intptr_t oprsz = simd_oprsz(desc);                                \
-+    ARMVectorReg tmp_n = *(ARMVectorReg *)vn;                         \
-+    for (intptr_t i = 0, j = 0; i < oprsz; ) {                        \
-+        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));               \
-+        do {                                                          \
-+            TYPE nn = 0;                                              \
-+            if (pg & 1) {                                             \
-+                nn = *(TYPE *)((void *)&tmp_n + H(j));                \
-+                j += sizeof(TYPE);                                    \
-+            }                                                         \
-+            *(TYPE *)(vd + H(i)) = nn;                                \
-+            i += sizeof(TYPE);                                        \
-+            pg >>= sizeof(TYPE);                                      \
-+        } while (i & 15);                                             \
-+    }                                                                 \
-+}
-+
-+DO_EXPAND(sve_expand_b, uint8_t, H1)
-+DO_EXPAND(sve_expand_h, uint16_t, H1_2)
-+DO_EXPAND(sve_expand_s, uint32_t, H1_4)
-+DO_EXPAND(sve_expand_d, uint64_t, H1_8)
-+
-+#undef DO_EXPAND
- /* Similar to the ARM LastActiveElement pseudocode function, except the
-  * result is multiplied by the element size.  This includes the not found
-  * indication; e.g. not found for esz=3 is -8.
++DO_COMPACT(sve_compact_b, uint8_t, H1)
++DO_COMPACT(sve_compact_h, uint16_t, H1_2)
+ DO_COMPACT(sve_compact_s, uint32_t, H1_4)
+ DO_COMPACT(sve_compact_d, uint64_t, H1_8)
+ 
 diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index 9a72e03513..57c21a13e8 100644
+index 57c21a13e8..01199dbd78 100644
 --- a/target/arm/tcg/translate-sve.c
 +++ b/target/arm/tcg/translate-sve.c
-@@ -6956,6 +6956,13 @@ static gen_helper_gvec_3 * const sqneg_fns[4] = {
- TRANS_FEAT(SQNEG_m, aa64_sme_or_sve2, gen_gvec_ool_arg_zpz, sqneg_fns[a->esz], a, 0)
- TRANS_FEAT(SQNEG_z, aa64_sme2p2_or_sve2p2, gen_gvec_ool_arg_zpz, sqneg_fns[a->esz], a, 1)
+@@ -2769,11 +2769,23 @@ TRANS_FEAT_NONSTREAMING(TRN2_q, aa64_sve_f64mm, do_interleave_q,
+  *** SVE Permute Vector - Predicated Group
+  */
  
-+static gen_helper_gvec_3 * const expand_fns[4] = {
-+    gen_helper_sve_expand_b, gen_helper_sve_expand_h,
-+    gen_helper_sve_expand_s, gen_helper_sve_expand_d,
-+};
-+TRANS_FEAT_STREAMING_IF(EXPAND, aa64_sme2p2_or_sve2p2, aa64_sme2p2,
-+                        gen_gvec_ool_arg_zpz, expand_fns[a->esz], a, 0)
+-static gen_helper_gvec_3 * const compact_fns[4] = {
+-    NULL, NULL, gen_helper_sve_compact_s, gen_helper_sve_compact_d
+-};
+-TRANS_FEAT_NONSTREAMING(COMPACT, aa64_sve, gen_gvec_ool_arg_zpz,
+-                        compact_fns[a->esz], a, 0)
++static bool trans_COMPACT(DisasContext *s, arg_COMPACT *a)
++{
++    static gen_helper_gvec_3 * const fns[4] = {
++        gen_helper_sve_compact_b, gen_helper_sve_compact_h,
++        gen_helper_sve_compact_s, gen_helper_sve_compact_d
++    };
 +
- DO_ZPZZ(SQSHL, aa64_sme_or_sve2, sve2_sqshl)
- DO_ZPZZ(SQRSHL, aa64_sme_or_sve2, sve2_sqrshl)
- DO_ZPZZ(SRSHL, aa64_sme_or_sve2, sve2_srshl)
++    if (!dc_isar_feature(aa64_sme2p2, s)) {
++        if (!(a->esz >= MO_32
++              ? dc_isar_feature(aa64_sve, s)
++              : dc_isar_feature(aa64_sve2p2, s))) {
++            return false;
++        }
++        s->is_nonstreaming = true;
++    }
++    return gen_gvec_ool_arg_zpz(s, fns[a->esz], a, 0);
++}
+ 
+ /* Call the helper that computes the ARM LastActiveElement pseudocode
+  * function, scaled by the element size.  This includes the not found
 diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
-index 2795c2ec7f..5ec1d420c2 100644
+index 5ec1d420c2..a3eefd60e5 100644
 --- a/target/arm/tcg/sve.decode
 +++ b/target/arm/tcg/sve.decode
-@@ -742,6 +742,8 @@ SPLICE          00000101 .. 101 100 100 ... ..... .....         @rdn_pg_rm
- # SVE2 vector splice (predicated, constructive)
- SPLICE_sve2     00000101 .. 101 101 100 ... ..... .....         @rd_pg_rn
+@@ -693,7 +693,6 @@ TBXQ            00000101 .. 1 ..... 001 101 ..... .....         @rd_rn_rm
+ ### SVE Permute - Predicated Group
  
-+EXPAND          00000101 .. 110 001 100 ... ..... .....         @rd_pg_rn
-+
- ### SVE Select Vectors Group
+ # SVE compress active elements
+-# Note esz >= 2
+ COMPACT         00000101 .. 100001 100 ... ..... .....          @rd_pg_rn
  
- # SVE select vector elements (predicated)
+ # SVE conditionally broadcast element to vector
 -- 
 2.43.0
 

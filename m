@@ -4,79 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFEDCCD98F9
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Jun 2026 04:17:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE509CD98DE
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Jun 2026 05:25:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wa4Ap-0005xH-NY; Thu, 18 Jun 2026 00:16:15 -0400
+	id 1wa5FX-0002g4-T6; Thu, 18 Jun 2026 01:25:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wa4AB-0005Wd-Q6
- for qemu-arm@nongnu.org; Thu, 18 Jun 2026 00:15:37 -0400
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wa4AA-0005dR-98
- for qemu-arm@nongnu.org; Thu, 18 Jun 2026 00:15:35 -0400
-Received: by mail-pg1-x52c.google.com with SMTP id
- 41be03b00d2f7-c88b59bfba7so183705a12.1
- for <qemu-arm@nongnu.org>; Wed, 17 Jun 2026 21:15:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781756132; x=1782360932; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=QUNjCEnZVPJxl7l4Mb3NlRKiXdWTuIzMooDXzb9Pf7o=;
- b=tXH/W5RbgPnZWS4urOh8SxqJRuwHyCf1je+UrQhoiGabopdR/5k8zSW5m73OyzZVcQ
- 6T1h5XExbzLAFPm2GjGP3Bz64g7XlVL3blkrz02/860cjtDzmdNsOcKCcYxw6yOpsNrI
- l9EOYzPPAZuIJ2u1ZCyCPM86wZXsAWMBSns41Lm/kh3khNMhQoYLlJDkhKp+NS3gJvnX
- 9mMINJCXBqJxndNpCaeRuEqb+N7993pobk3M4eoSSktbpM5gK5AeHEEZk58yA8ANXazR
- e1Wb5ngpornUF2grCAdfjMMycycMoX5HtR75KaxHDMSgY4M2tWmY0Ev7/109uJSmbw9x
- BVjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781756132; x=1782360932;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=QUNjCEnZVPJxl7l4Mb3NlRKiXdWTuIzMooDXzb9Pf7o=;
- b=bboujZntOLrxxGhgkopQYBjdpWZJ2HZt4LDSJ5VUHcdwAEiMUQHgTh6mRpUvnz86GA
- /eT3J9fXWcS9atwD+CcM1kel7BGuUgli51y1n5Dl4PV0pZ2CkAHh2owLBOHro3MJD0PR
- u4ZomzRtzH452yUhgJU7C4Mfnxub2K9ZpgYoWoZbSIbGBGy+yf97iaEVWPrDkUyXn/oU
- kW9rDmv5n7RxLu/hxu6vyjpgk9+r/bKmoYfOygfHtCT+SkrXa5ovVrwLrMxbsXioFg/Y
- va7MhVCoPz0txdTZc45fr1J3fRsawemKl6KZiGL4xNfVcAUmVFUUdchoNWOkQJU5DAaV
- 56gA==
-X-Gm-Message-State: AOJu0YwU5u2AlSSIdwrazL95bgEFi31BWzyFQ4JXBJHw2w86VD3sJEuo
- 13riBUWnhlcwtoS4ArgnfUi3gbgclPZ4cY/BFOxN9JnALIS5VWssedE78xjrYdcIbQo=
-X-Gm-Gg: Acq92OGlRwa6wD8cwvKsLhMt5wpHBxzTifiRt3pqNpgCMX47CgC+y7DUI+7taVv02u+
- kEyDZnuLWPUiOc51Po13Se8UL9LM4Eya1EczVgNnqs0UBouHDwJyQW4HhYtAdUOCQhMpey9gPtO
- 9xG8Vd2OWx3cXHyrnWaNwS9XzB5iBYcUrOCZ5xgU5V7iFIQTNr63OHV7VntafKfhHVEAXFRx10I
- jZ2mgrtFqdWq+3WUZVCnMbmh5vJ5lndGJxobrGAaaVUmFa37ud3KGC7WwLpPdChXQEHdKMi7wMv
- wNYmE+WqO8HkOosN9ewZu8bCKbdt6xrQC9fOspIctlrflkL5iwVmFnWHl8zR/9Hgew9gufoE5ow
- rO1Ed9IPiYb6pVHXWfLSUCa+2P/vdUeHRROsVEBeVCEEwE3xQB1Q7SF8fr9SJupnaNSlgLRugRb
- gprJPVCQDdz39wBW1rfSmrg5mVgdFAsouxMVRW2Vfg4CQadT2y4Q==
-X-Received: by 2002:a17:902:ced0:b0:2c0:c625:400d with SMTP id
- d9443c01a7336-2c6e52debf1mr18166045ad.37.1781756131763; 
- Wed, 17 Jun 2026 21:15:31 -0700 (PDT)
-Received: from stoup.. (174-21-129-215.tukw.qwest.net. [174.21.129.215])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2c42f2e535csm173905935ad.6.2026.06.17.21.15.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Jun 2026 21:15:31 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 10/10] target/arm: Enable FEAT_SME_F8F32 for -cpu max
-Date: Wed, 17 Jun 2026 21:15:17 -0700
-Message-ID: <20260618041517.573469-11-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260618041517.573469-1-richard.henderson@linaro.org>
-References: <20260618041517.573469-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wa5FW-0002W5-2L
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2026 01:25:10 -0400
+Received: from smtpout7.mo537.mail-out.ovh.net ([51.210.91.26])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wa5FS-00078w-SA
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2026 01:25:09 -0400
+Received: from director6.derp.mail-out.ovh.net
+ (director6.derp.mail-out.ovh.net [51.255.22.22])
+ by mo537.mail-out.ovh.net (Postfix) with ESMTPS id 4ggq186vJzz3xmW;
+ Thu, 18 Jun 2026 05:25:00 +0000 (UTC)
+Received: from director6.derp.mail-out.ovh.net
+ (director6.derp.mail-out.ovh.net. [127.0.0.1])
+ by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <alexander.hansen@9elements.com>; Thu, 18 Jun 2026 05:25:00 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.43.206])
+ by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4ggq185LhNz7vWx; Thu, 18 Jun 2026 05:25:00 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.2])
+ (Authenticated sender: clg@kaod.org)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 7DA002034A7; 
+ Thu, 18 Jun 2026 05:24:58 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-112S0066aaaeced-1467-4585-9c5d-eb1df4597e0e,
+ A2996BA223552B7951DE2AB9C59D4C10FAA35807) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <10230516-a8a9-4f3e-8a1c-64604717a11a@kaod.org>
+Date: Thu, 18 Jun 2026 07:24:57 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/4] hw/arm: anacapa: add ADC128D818 devices
+To: Emmanuel Blot <eblot@meta.com>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alexander Hansen <alexander.hansen@9elements.com>,
+ William de Abreu Pinho <williampinho@meta.com>, qemu-arm@nongnu.org
+References: <20260617-i2c-adc128d818-anacapa-v2-0-fd38764f0465@meta.com>
+ <20260617-i2c-adc128d818-anacapa-v2-3-fd38764f0465@meta.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260617-i2c-adc128d818-anacapa-v2-3-fd38764f0465@meta.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52c.google.com
+x-ovh-tracer-id: 9307814529988602925
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGjFvOGqlvdSMWx7Y+2FWRnK53InxcVwxk8Elb1GoSakkRd7JT3R1OTco9gX9LFjR19iJ0mMw77AuUKKd2jRqSL/gPRHtfvtsBQLT6iDGx8B2+4dJMhyM42zdmmEw8a3664YzsK7AszeFiXsFFR19Wj7IbtGcHpbbgTj+MFugeFvV4L6EMfBZWmnG4epsNPmGDZ+iT6RxDhGOxP+i0MjrPYLKLMPBD+B1+a3P2SEvWdxUdr2TcuzCgyQ2jDo9G93HscaHef8eWXvqzC0IAvxuVtT2Cmld498fuSy2rHDw4lYyMGqoE2y1qyKziI0hL6bM1SEF/orbLjWF9s8lze9MR9EhfaPsKdrzoiPWEpyJ8hdI4uQNiRYhOfafY1BvySAaZ4JT2Vbt49ZrJbeTSAsbAfTz/VYdbq+bGlWaSDiuLS5aQQxbgQEk06RQS9P38Q7EndZEc/UPMGwbqG5IcifwkMrPCVzg0As/A4qxNKcRc1FhHrlToD6/okTnT/M4UW9V4Kt+JnILaFGAOkoipXntOMvxPSuVEQFjnKLoiOm+W4Sq7j3PDwgBMcPBi/nUBaWIivvfSgvxcIsq5Cmuk7CDunsrv1yPVpIviwvfroGZUb72YTzzKif5TYmEs4UPNOjpuQjS5jMKi467Eno2AKi1tCNGkYgGXfP/cIOC0NUPSOnQ
+DKIM-Signature: a=rsa-sha256; bh=QXFocXO3NVMu+r8FKU13vE6he08ESGvNbZMkjTiiTaY=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1781760303; v=1;
+ b=HgK6E3ifOeC1IRV/vg0b3VmWCHWquPemgxXmw1Jm+u2z+8795U2jDwYm8Qm+8rc9PNnl0Iqr
+ EliIkFvujzIOlvGACJuPiZvcb25hFxXRlMoB5uhh+MONtM8he6vwVCoHDsw3H8/F2GkqCvPFBCn
+ fgqUOvYA4QQofdMKcztVsE1QYwRu020HXd97/lrrztzgxXnl69Ip/CJJXrGW7udaVE2wvVLiccf
+ RMmY/06BCEnSIRYMlxr1i1v0iws59RQcqSj0bZZCbv3pk49IE0l2HV/iMhqKVRAQtbjjMc7taB+
+ uk5pllV1CRNCc+yiJ65gJV71VtQGGog2GVMwSqAv4G38Q==
+Received-SPF: pass client-ip=51.210.91.26; envelope-from=clg@kaod.org;
+ helo=smtpout7.mo537.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,50 +137,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- linux-user/aarch64/elfload.c  | 1 +
- target/arm/tcg/cpu64.c        | 1 +
- docs/system/arm/emulation.rst | 1 +
- 3 files changed, 3 insertions(+)
+On 6/17/26 12:26, Emmanuel Blot wrote:
+> Wire up the two ADC128D818 instances that appear in the Anacapa DTS:
+> one on i2c8 mux channel 0 and one on i2c13 mux channel 3.
+> 
+> Signed-off-by: Emmanuel Blot <eblot@meta.com>
+> ---
+>   hw/arm/Kconfig                  |  1 +
+>   hw/arm/aspeed_ast2600_anacapa.c | 16 +++++++++++++---
+>   2 files changed, 14 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index fb798ccbee..04ecf5d473 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -553,6 +553,7 @@ config ASPEED_SOC
+>       select LED
+>       select PMBUS
+>       select MAX31785
+> +    select ADC128D818
+>       select FSI_APB2OPB_ASPEED
+>       select AT24C
+>       select PCI_EXPRESS
+> diff --git a/hw/arm/aspeed_ast2600_anacapa.c b/hw/arm/aspeed_ast2600_anacapa.c
+> index a1c8111a93..8f94a830e5 100644
+> --- a/hw/arm/aspeed_ast2600_anacapa.c
+> +++ b/hw/arm/aspeed_ast2600_anacapa.c
+> @@ -8,6 +8,7 @@
+>   
+>   #include "qemu/osdep.h"
+>   #include "qapi/error.h"
+> +#include "hw/sensor/adc128d818.h"
+>   #include "hw/arm/machines-qom.h"
+>   #include "hw/arm/aspeed.h"
+>   #include "hw/arm/aspeed_soc.h"
+> @@ -15,7 +16,6 @@
+>   #include "hw/gpio/pca9552.h"
+>   #include "hw/nvram/eeprom_at24c.h"
+>   
+> -/* Anacapa hardware value */
+>   #define ANACAPA_BMC_HW_STRAP1 0x00002002
+>   #define ANACAPA_BMC_HW_STRAP2 0x00000000
+>   #define ANACAPA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+> @@ -221,6 +221,14 @@ static const uint8_t hpm_brd_id_eeprom[] = {
+>   };
+>   static const size_t hpm_brd_id_eeprom_len = sizeof(hpm_brd_id_eeprom);
+>   
+> +static void anacapa_add_adc128d818(I2CBus *bus, uint8_t addr,
+> +                                   const char *description)
+> +{
+> +    DeviceState *dev = DEVICE(i2c_slave_new(TYPE_ADC128D818, addr));
+> +    qdev_prop_set_string(dev, "description", description);
+> +    i2c_slave_realize_and_unref(I2C_SLAVE(dev), bus, &error_fatal);
+> +}
+> +
+>   static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+>   {
+>       /* Reference: aspeed-bmc-facebook-anacapa.dts */
+> @@ -259,7 +267,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+>       i2c_mux = i2c_slave_create_simple(i2c[8], TYPE_PCA9546, 0x72);
+>   
+>       /* i2c8mux ch0 */
+> -    /* adc128d818@1f — no model */
+> +    /* adc128d818@1f — R-PDB ADC (mode 1: 8 voltage channels) */
+> +    anacapa_add_adc128d818(pca954x_i2c_get_bus(i2c_mux, 0), 0x1f, "i2c8:0:1f");
+>       /* pca9555@22 */
+>       i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0),
+>                               TYPE_PCA9552, 0x22);
+> @@ -320,7 +329,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+>       i2c_mux = i2c_slave_create_simple(i2c[13], TYPE_PCA9548, 0x70);
+>   
+>       /* i2c13mux ch3 */
+> -    /* adc128d818@1f - no model */
+> +    /* adc128d818@1f — MB ADC (mode 1: 8 voltage channels) */
+> +    anacapa_add_adc128d818(pca954x_i2c_get_bus(i2c_mux, 3), 0x1f, "i2c13:3:1f");
+>   
+>       /* i2c13mux ch4 */
+>       /* eeprom@51 */
+> 
 
-diff --git a/linux-user/aarch64/elfload.c b/linux-user/aarch64/elfload.c
-index 0f96bbe70b..20b9838520 100644
---- a/linux-user/aarch64/elfload.c
-+++ b/linux-user/aarch64/elfload.c
-@@ -235,6 +235,7 @@ abi_ulong get_elf_hwcap2(CPUState *cs)
-     GET_FEATURE_ID(aa64_ssve_f8fma, ARM_HWCAP2_A64_SME_SF8FMA);
-     GET_FEATURE_ID(aa64_ssve_f8dp4, ARM_HWCAP2_A64_SME_SF8DP4);
-     GET_FEATURE_ID(aa64_ssve_f8dp2, ARM_HWCAP2_A64_SME_SF8DP2);
-+    GET_FEATURE_ID(aa64_sme_f8f32, ARM_HWCAP2_A64_SME_F8F32);
- 
-     return hwcaps;
- }
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index e4a8d7a2f6..e9eda8fbf1 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1392,6 +1392,7 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64SMFR0, B16F32, 1);   /* FEAT_SME */
-     t = FIELD_DP64(t, ID_AA64SMFR0, F16F32, 1);   /* FEAT_SME */
-     t = FIELD_DP64(t, ID_AA64SMFR0, I8I32, 0xf);  /* FEAT_SME */
-+    t = FIELD_DP64(t, ID_AA64SMFR0, F8F32, 1);    /* FEAT_SME_F8F32 */
-     t = FIELD_DP64(t, ID_AA64SMFR0, F16F16, 1);   /* FEAT_SME_F16F16 */
-     t = FIELD_DP64(t, ID_AA64SMFR0, B16B16, 1);   /* FEAT_SME_B16B16 */
-     t = FIELD_DP64(t, ID_AA64SMFR0, I16I32, 5);   /* FEAT_SME2 */
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 0b4623139a..a3a1607ff9 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -169,6 +169,7 @@ the following architecture extensions:
- - FEAT_SME_FA64 (Full A64 instruction set in Streaming SVE mode)
- - FEAT_SME_F16F16 (Non-widening half-precision FP16 arithmetic for SME2)
- - FEAT_SME_F64F64 (Double-precision floating-point outer product instructions)
-+- FEAT_SME_F8F32 (SME2 ZA-targeting FP8 multiply-accumulate, dot product, and outer product to single-precision instructions)
- - FEAT_SME_I16I64 (16-bit to 64-bit integer widening outer product instructions)
- - FEAT_SME_LUTv2 (Lookup table instructions with 4-bit indices and 8-bit elements)
- - FEAT_SSVE_AES (Streaming SVE Mode Advanced Encryption Standard and 128-bit polynomial multiply long instructions)
--- 
-2.43.0
+Emmanuel,
+
+Please keep the submitted code-review trailers from the previous
+versions of the series.
+
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
 
 

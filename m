@@ -4,90 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74B07CD98F2
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F410CD98ED
 	for <qemu-arm@archiver.kernel.org>; Thu, 18 Jun 2026 16:33:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1waFg6-0006gK-0T; Thu, 18 Jun 2026 12:33:19 -0400
+	id 1waFg5-0006eq-G3; Thu, 18 Jun 2026 12:33:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1waFg4-0006dS-DT
- for qemu-arm@nongnu.org; Thu, 18 Jun 2026 12:33:16 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ id 1waFg2-0006cj-Nf
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2026 12:33:15 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1waFg2-0006Lq-Nc
- for qemu-arm@nongnu.org; Thu, 18 Jun 2026 12:33:16 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-45eeba68948so892306f8f.1
- for <qemu-arm@nongnu.org>; Thu, 18 Jun 2026 09:33:14 -0700 (PDT)
+ id 1waFg0-0006Kt-WD
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2026 12:33:14 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-490b1bbcf3aso7452395e9.1
+ for <qemu-arm@nongnu.org>; Thu, 18 Jun 2026 09:33:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781800393; x=1782405193; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=kea4dc/isoBx6rpEUTWsbHn6iNysu9QKjGPmvqVX+qw=;
- b=yoDeb5v3OUKQfkubIRHaH244Ch5UYQeqgScWNgtQTMdrGlaEXUyfJkJDt97G9Vtpq1
- zaxwofOKSOFRNln+L+4imwLaFTwuZaI+lJxRukHR5w3uW6m98KXfMHr9fqi7LuqHT3We
- foTbMCPGOUXGEOwLukqTH0IGgbvKayWnLrr6vQpdLus5OhjSx1HVJaMlWL2inWbTymsy
- MrERgHKAGUWopEImBRT3K+xNygmUssCiTfpu04g6OqfpuW029+c6dLtnO3ovspAkzrfF
- ptUkIYG+Va23pQQonDI9s1hbUhu1c9Pz9IypkA2T8ta3NAXsvjevpU8Xeb73hK1MC9dN
- OYSg==
+ d=linaro.org; s=google; t=1781800391; x=1782405191; darn=nongnu.org;
+ h=cc:to:content-transfer-encoding:mime-version:message-id:date
+ :subject:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=qRghoEzzaqnT/q55wrmtp243bhaPoBJCEWZUBRS8v6M=;
+ b=hQ+th3iNhKwTMtfQeZi9OnR3+/VuXKl7kijG0EJAu252BP0/Km0J1D8qiZgFdE1ddj
+ ziWhh2qIHvGOQ5N0SJ9i2VE5yvHfB3E2MBx7MUbauZmJVa8nViPgs41GWRGZaqqJf+4U
+ sIYCF3XEEU10GuKw9WG15Siro85AnzHG8yCZZuWdQx6G4f/AYdbuTTGXHTfxSZ4Dg+2t
+ LsaPisRukLaI1s0S+4cQMSHrZEa01tvSHugsh+XAh4dAZ6BXPm1zv5e+nlUauhWXavg0
+ jtiK/UdmS+gIBHgGMVAZ8KG7Kts1pstkh5w161PpYn5MYjvY+ZJr+kjArHKeLn0fZ6aE
+ I+vQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781800393; x=1782405193;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=kea4dc/isoBx6rpEUTWsbHn6iNysu9QKjGPmvqVX+qw=;
- b=ayGz7xK7tq6bNqtc8ARKCZexoCSlKfdWNZ0EzlL9Q1wDySjnIzY8DNruVKJzkiPiLv
- 4oWqz7epeOXAo3c3RhY3ut9Ojj9J2LExKUVRMJkS/qDXrsvZS0sUsrPNJ+0qrcqao0Vj
- i7YYXiawWHL2JO+AsvuhbSgP0utNOKuywIZqoawBtziLW9eBmsGQ07ouRFZZEu+5ONWg
- GJ6w3uFbNid5sYNrSoampqNVEzuK0M4MOBWPUAXkLMxdRryTz9/T2MRpRP//RIIxpvpZ
- dDGf7pVS1N9OdOLrV9dUZGC0K/CJ4/N6npy/fOVqdWEfd6mtLCKzYKyGMjCTm2fID5L9
- jklg==
+ d=1e100.net; s=20251104; t=1781800391; x=1782405191;
+ h=cc:to:content-transfer-encoding:mime-version:message-id:date
+ :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=qRghoEzzaqnT/q55wrmtp243bhaPoBJCEWZUBRS8v6M=;
+ b=cEYZUxncHnx9wdJCyu9CccrH4LkC9vI5zyX8UCrsbQ8WvSj3Z/yxJnaZ0CCsjc9qmQ
+ xsuX6QGuBQgAPWhKqG7XERwBIWrW1CIWLav/98MLjGGZdUWJQuqSA29xZtSzz5CXEmSq
+ GT9xwm0DpgYdSl+9ySy/+MvHjhMWH1VZdemQ/CGyHdxz+UwTEdPEDwz/I4M2FiARTuLd
+ u7BtSeuRmXHC2XvtzFj4To0/NwoakReJlDW3YjLrmqrWLVVZHltHTxGKQS7a3SPKu1IP
+ ilnIAGocOlZcfyK2KhSlqM1EY0t6FoKbwkDpHNg4DpdHl2B+p4m98FP0LJ3PnKXlvfKQ
+ KrhQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/Nnw+D21W/n5Uo5WzcPdQOhXfRHeFjvX7sfTsVqeHe/RhWFyOHeJvXtsoeKA71RphP/hLy0Bcsng==@nongnu.org
-X-Gm-Message-State: AOJu0YzafHsgFAI7MWDsq8yHIcwyYEpM423IcDaMRab4hO3JmmqJCyZm
- J3ACpB1Qi522wMrmTtkf0vYZnwSsxVgadNkez2cyR0JOnH73er+5NUHSvZoaHoOThZY=
-X-Gm-Gg: AfdE7cno2+NEegroYfJBav3PNyLj7TceZt//vmV07jV0P48QZDrLXYafZLYInwsOfUK
- 5KCTNNRWnunkaIoMKKfJnUAbkaXQicNUck1ndjnehhqKse+3CY7l00fBQqXCQ8WkShNxdCARynM
- Zzfs8t+V/0c9U84Z3J6WHvcXsxXx4l4jbgh/Jkl9Zo9WE0TyTPtCcOu91X0Ar8hSh0dEW5MK706
- 9Uvy99pUts0YiWJQ7h0VHzZIrkgnPSW7W/5RsWA113+vmcV8w9W8t4CtWuqHByY/S7X9KjlE0/3
- wRxyn1fre7QkoBIh7DDdFS2XrCfgu38i2Iz4BJoJs7S0lIs//8aA18FpteobFRCdmZnsrvOw/Aj
- m5/oej1az1EfQs+aSPdmzbw2nwIsB5XWpqGdN2mTS2gQxv51v9UmGE/ksMNFO5M7vcfxEzJoWgp
- 3sE087vOjoP/GWzw==
-X-Received: by 2002:a5d:5f82:0:b0:45e:f2bd:2b17 with SMTP id
- ffacd0b85a97d-4650853517amr133653f8f.21.1781800392723; 
- Thu, 18 Jun 2026 09:33:12 -0700 (PDT)
+ AFNElJ+Z4CzmdxtNk1vRfntGOlCZUGR84CofJyXG7lSjii+g63M/PE/Ou5EqoIQkJ3mdZL2oJ65UVovnlw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx9YVjSzK4FtUgjuWp754FUyZx+eS7vb5TDKfJyfBe8H2HA7RnF
+ WUxLAgcxZJzyLk6Sg9cRv/nS+WPkFy9I/8etPhMjD7mFNMz+z9hhXZv4XS142DZ+lkc=
+X-Gm-Gg: AfdE7ck99/BHXG2w+3BnerQ+Be4i+D3bD1pXGcUKyZTbIlkMCiVZGbhBUXiwlB0n9x6
+ rbbDKKun3zPQG3uXkE0iZNIb/fb9lTEWDMgNEbsnYEN/CXC6FUC0/R+HWK/U4HoZYWdz1SG6AhR
+ o/QvMcr+HPgwTigZk6g+EUS0v84Qg0fA225HvuxTDPDhNsH81UjAaPMUQqLb/IkDq/FUCHMNJ7X
+ EnZSEEgvkV4jaPLmvbGBRjhMnI96LlFVqFE+LATfTXYG5tH/p1hBV3P36pnscDNTR9qJt42DISi
+ J72LhXgtEoCHBmSzmzDbljMjakZYZ8WQXKdJscLsLrYPKSfSJx45lUPiGssTi3y19zMC3EFF7dw
+ aP2XnZ55cdG1ZaJ1tMkH2F8wQILHloigI9PRAqspAkgCEisDcFt9MkRAoLXTyeTyTb+1/1fB099
+ Bznd8dEOwaIXYxrQ==
+X-Received: by 2002:a05:600c:19ca:b0:492:324d:e93f with SMTP id
+ 5b1f17b1804b1-4923fc77b19mr2072525e9.36.1781800391210; 
+ Thu, 18 Jun 2026 09:33:11 -0700 (PDT)
 Received: from [127.0.1.1] ([2a10:d582:31e:0:b52:6a9:569d:e33e])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4650bc426e1sm26942f8f.29.2026.06.18.09.33.12
+ ffacd0b85a97d-4650bc426e1sm26942f8f.29.2026.06.18.09.33.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Jun 2026 09:33:12 -0700 (PDT)
+ Thu, 18 Jun 2026 09:33:10 -0700 (PDT)
 From: Jim MacArthur <jim.macarthur@linaro.org>
-Date: Thu, 18 Jun 2026 17:33:05 +0100
-Subject: [PATCH v3 2/6] target/arm: Setup new registers for GPC3
+Subject: [PATCH v3 0/6] target/arm: Add aarch64 GPC3 bypass windows
+Date: Thu, 18 Jun 2026 17:33:03 +0100
+Message-Id: <20260618-jmac-gpc3b-v3-0-353e546067e7@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260618-jmac-gpc3b-v3-2-353e546067e7@linaro.org>
-References: <20260618-jmac-gpc3b-v3-0-353e546067e7@linaro.org>
-In-Reply-To: <20260618-jmac-gpc3b-v3-0-353e546067e7@linaro.org>
+X-B4-Tracking: v=1; b=H4sIAL8dNGoC/23MSw6CMBSF4a2QO7amD1qoI/dhHOBtCzVKSWsaD
+ WHvFiaGxOE5yffPkGz0NsGpmiHa7JMPYxniUAEO3dhb4k3ZwClXVPKW3J8dkn5CcSOsbZw2DTp
+ qDBQwRev8e4tdrmUPPr1C/GztzNb3byYzQokRNdYKJVXanR9+7GI4htjD2sn8ZxUVO8uLZUyiZ
+ FoorfjOLsvyBRF5El3hAAAA
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  Jim MacArthur <jim.macarthur@linaro.org>, 
  Richard Henderson <richard.henderson@linaro.org>
 X-Mailer: b4 0.13.0
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,93 +105,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Adds GPCBW_EL3. A custom write function is necessary to flush TLBs
-when this register is written. Also allows write to the GPCBW bit of
-GPCCR_EL3.
+Adds the GPC bypass windows defined in D9.2 of the Arm ARM. D9.8 (the 
+APAS instruction) is not implemented yet.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+A large part of this is testing. To test GPC effectively, we need to
+check that memory accesses are causing exceptions, or not causing exceptions
+as appropriate. For some tests, boot.S is altered to record certain
+exceptions and continue executing the test. An alternative would be
+to use gdbstub to break on locations inside the vector table and continue,
+but this requires significant coordination between the C test binary and
+Python test driver, so has been avoided for now.
+
 Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 ---
- target/arm/cpu.h    |  7 +++++++
- target/arm/helper.c | 19 +++++++++++++++++++
- 2 files changed, 26 insertions(+)
+Changes in v3:
+- ptw.c: Simplified GPC address checks
+- boot.S: Renamed 'ALT' to 'LOGGING' to better reflect its intended use,
+  types and sizes for exported symbols
+- A few formatting fixes
+- Link to v2: https://lore.kernel.org/qemu-devel/20260603-jmac-gpc3b-v2-0-115c51936962@linaro.org
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 31a5567c95..84d33e87dc 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -559,6 +559,7 @@ typedef struct CPUArchState {
-         /* RME registers */
-         uint64_t gpccr_el3;
-         uint64_t gptbr_el3;
-+        uint64_t gpcbw_el3;
-         uint64_t mfar_el3;
- 
-         /* NV2 register */
-@@ -1244,6 +1245,8 @@ void arm_v7m_cpu_do_interrupt(CPUState *cpu);
- typedef struct ARMGranuleProtectionConfig {
-     /* GPCCR_EL3 */
-     uint64_t gpccr;
-+    /* GPCBW_EL3 */
-+    uint64_t gpcbw;
-     /* GPTBR_EL3 */
-     uint64_t gptbr;
-     /* ID_AA64MMFR0_EL1.PARange */
-@@ -2116,6 +2119,10 @@ FIELD(GPCCR, NA6, 27, 1)
- FIELD(GPCCR, NA7, 28, 1)
- FIELD(GPCCR, GPCBW, 29, 1)
- 
-+FIELD(GPCBW, BWSIZE, 37, 2)
-+FIELD(GPCBW, BWSTRIDE, 32, 5)
-+FIELD(GPCBW, BWADDR, 0, 25)
-+
- FIELD(MFAR, FPA, 12, 40)
- FIELD(MFAR, NSE, 62, 1)
- FIELD(MFAR, NS, 63, 1)
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 22e71a2804..8538a28ce6 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5001,6 +5001,10 @@ static void gpccr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                    R_GPCCR_SPAD_MASK | R_GPCCR_NSPAD_MASK | R_GPCCR_RLPAD_MASK;
-     }
- 
-+    if (cpu_isar_feature(aa64_rme_gpc3, env_archcpu(env))) {
-+        rw_mask |= R_GPCCR_GPCBW_MASK;
-+    }
-+
-     env->cp15.gpccr_el3 = (value & rw_mask) | (env->cp15.gpccr_el3 & ~rw_mask);
- }
- 
-@@ -5010,11 +5014,26 @@ static void gpccr_reset(CPUARMState *env, const ARMCPRegInfo *ri)
-                                      env_archcpu(env)->reset_l0gptsz);
- }
- 
-+static void gpcbw_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                        uint64_t value)
-+{
-+    uint64_t rw_mask = R_GPCBW_BWADDR_MASK | R_GPCBW_BWSTRIDE_MASK |
-+                       R_GPCBW_BWSIZE_MASK;
-+    ARMCPU *cpu = env_archcpu(env);
-+
-+    tlb_flush(CPU(cpu));
-+    env->cp15.gpcbw_el3 = (value & rw_mask);
-+}
-+
- static const ARMCPRegInfo rme_reginfo[] = {
-     { .name = "GPCCR_EL3", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 1, .opc2 = 6,
-       .access = PL3_RW, .writefn = gpccr_write, .resetfn = gpccr_reset,
-       .fieldoffset = offsetof(CPUARMState, cp15.gpccr_el3) },
-+    { .name = "GPCBW_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 1, .opc2 = 5,
-+      .access = PL3_RW, .writefn = gpcbw_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.gpcbw_el3) },
-     { .name = "GPTBR_EL3", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 1, .opc2 = 4,
-       .access = PL3_RW, .fieldoffset = offsetof(CPUARMState, cp15.gptbr_el3) },
+Changes in v2:
+- ptw.c changes have been rewritten after a number of faults were found
+- boot.S: Align exception_log to page
+- target/arm/helper.c: flush all caches and remove redundant mask
+- Switch on of GPC3 moved after feature implementation
+- Link to v1: https://lore.kernel.org/qemu-devel/20260528-jmac-gpc3b-v1-0-d34c46c5069f@linaro.org
 
+---
+Jim MacArthur (6):
+      target/arm/tcg/cpu64.c: Extra test for GPC3.
+      target/arm: Setup new registers for GPC3
+      target/arm/ptw.c: Add Granule Bypass Windows
+      target/arm/cpu-features.h: x-rme now means GPC3
+      tests/tcg/aarch64/system: Alternative boot object for exception logging
+      tests/tcg/aarch64/system/gpc-test.c: Basic test for granule protection check
+
+ target/arm/cpu-features.h                 |   5 +
+ target/arm/cpu.h                          |   7 ++
+ target/arm/helper.c                       |  19 ++++
+ target/arm/ptw.c                          |  77 ++++++++++++++
+ target/arm/tcg/cpu64.c                    |   4 +-
+ tests/tcg/aarch64/Makefile.softmmu-target |  22 +++-
+ tests/tcg/aarch64/system/boot.S           |  65 ++++++++++++
+ tests/tcg/aarch64/system/boot.h           |  14 +++
+ tests/tcg/aarch64/system/gpc-test.c       | 165 ++++++++++++++++++++++++++++++
+ 9 files changed, 371 insertions(+), 7 deletions(-)
+---
+base-commit: b0df6e2f2c6c45df8d4d286933799c623e124d98
+change-id: 20260528-jmac-gpc3b-187f9d7cf0dd
+
+Best regards,
 -- 
-2.43.0
+Jim MacArthur <jim.macarthur@linaro.org>
 
 

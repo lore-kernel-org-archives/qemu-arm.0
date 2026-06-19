@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55702CD98F2
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Jun 2026 13:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0961CCD98F2
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Jun 2026 13:07:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1waYup-0003wp-5r; Fri, 19 Jun 2026 09:05:47 -0400
+	id 1waYuq-0003y0-9r; Fri, 19 Jun 2026 09:05:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1waYun-0003ul-DS
- for qemu-arm@nongnu.org; Fri, 19 Jun 2026 09:05:45 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ id 1waYuo-0003wB-Ol
+ for qemu-arm@nongnu.org; Fri, 19 Jun 2026 09:05:46 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1waYuj-0003P1-EZ
- for qemu-arm@nongnu.org; Fri, 19 Jun 2026 09:05:45 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-4633193af19so1588176f8f.2
+ id 1waYuk-0003PN-Bq
+ for qemu-arm@nongnu.org; Fri, 19 Jun 2026 09:05:46 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-45ef779c1c2so1621305f8f.1
  for <qemu-arm@nongnu.org>; Fri, 19 Jun 2026 06:05:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781874340; x=1782479140; darn=nongnu.org;
+ d=linaro.org; s=google; t=1781874341; x=1782479141; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=by9u5EKjsb+5+gHbsiBm0Rf3TJxywMdtV+jmRIHAyvY=;
- b=o4E/u+gm/m+liIc/OrKFcYVWYEEdQq53Me03HhmE8FZMB6MDsO6qAdU9PxrupOxGMc
- DMCT3EcJXJlcwIYP9AWtZzunT1K3N9QqHh1NaNBcTFOpr44H54rn80B7ClQTox4dHl3w
- bsBMwhLLrt70np0SzBXiSHgyxXS7T1IxagcTPuwaxutgFpsUPc5TRzK/QKtvAj14UGYj
- r+wUB8W6W9Goo8G54VEElrt3JWUeCK0RqHapGiDFyHjL1iEZoRt6mg9HUJZJGcoLduID
- joZrh/TfD0g/4xffpzoK6wo6W1Euqy6950pse5Jy9UVMj8IPTuimSFYhfKyYPubSwHtQ
- tVLA==
+ bh=Il5WY7QfACzZ93YAvZWGe3XWn3xPIGhu97enE1XxJnA=;
+ b=ZLIbRfbg3aaP2+iuGlC8wsCnw7rQRyaXotxuWfrlcXrVLZIv/rxiACn7kQIIlbQzFD
+ RjT4JdVJPXJQqV9CbNmYSpRHEBal7DwmAozLQh3udn/RQPfPSnXwY1sZYmaaaAXBB41Y
+ tGoSRGTVDHSzg3zvfC6RhgERuAHa46Ogvn7wSIwGXRNgDhzYRa9Zz+Y5zHvfbNtJ6phB
+ UomThOgnJzpRhJPatLBBZx0Rj4LY45m6OLCaJNnaZDMwXcswBI8EGbMDxxpPJqS7eCMO
+ r/llr+eKdgoSpTJBNquqTdCVR3xmHqA+H1O10zQcNaMS/wOaDvOwvyNNoYIdSRg9ILsL
+ adRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781874340; x=1782479140;
+ d=1e100.net; s=20251104; t=1781874341; x=1782479141;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=by9u5EKjsb+5+gHbsiBm0Rf3TJxywMdtV+jmRIHAyvY=;
- b=cznVW8gZ1DGqqo8P4SHwcysTFru8HS7pYULaINNsIfa911wlaTSiM4hpU9ZsKMi1FT
- fFOrLueKF2BOS7Ht2caGutHhKh2AN467nkCfgzW6adC8A2E9NOongtxdUmAoxCHoQWGS
- /eNIlCcwnoOVn122NJxCePrpi2UuSpx22FxuDIBBLxYazbxmDtkwBZBnrDRHtvdIYLRW
- NKjHMjGp9l0I4T3rdlkL9hGK7OFS3QiChTELh5THZIdwM1x+aDxF0xcyUVlOzqts7Geo
- MM9TjZ1XRUrnU06KIYbG6RZB61f8BqQWBJaiU01vYdH4mqZqxQ6R6sgk0Ks/GWvaCXmq
- 7uwQ==
+ bh=Il5WY7QfACzZ93YAvZWGe3XWn3xPIGhu97enE1XxJnA=;
+ b=mwY8bHb/Sg/UuraheLtfgLie7W/ULt+5Yj6bQQl7UVCoUviowXn20PRh2Mme9HTVPo
+ NyfiPr+ryk4iyM9MT61zw85w8IWnJ+YHSao7XR4kxdK97+vt8kOPZqF49gycKAjw0kmh
+ Mqix2HSAEqhtyTHFKbQHftBPyCv1TmlexX53KItIcz/72fdebL4rdTERhaO6UFvBEPrB
+ da+RJ50khOAe2FSg7RitTAnRvTAgZkqoXCsXA908LgpiZFRHExP9hSQAwI793itHGhfW
+ Ws9ASQ3s4efa6pb8c2j7Q8UCzpxLGfpYe564G4vC6p80E5IK6/ZZGgy2PHGNsDPScNcz
+ /DXA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/lTRrf/PkNR6JnwVmbYa6NE9wrG+8o9creE41NNaFDHXz6nwx952d8u3lg4M6+DV3y+5YCYEe0PQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxeNPLo6dwX15hcK5pzy90egdnbpp3XjKZON0k5X/legkSSqll1
- eThK8aoNki8HSJCbV4uPJNU0WQEu0TjkE0NLyPmgWH1bSLv7M49LLuEndahbBUrslYA=
-X-Gm-Gg: AfdE7cn4L520KQjUqfltMBdW+bm/xbM0eTDyEMKB8bwmoDnA3Ij7Qfi8sRr4h/C7DHu
- 3LH8i+9KHB640eRVsSHZEX+sYuNkol9LQQ4sBnJMPK7xRZD4LqYCnu5DwJ/3iJqYED/NH5/ecmM
- T5Lt6+oIoFHHd5qE9jxsCgP0FAQhOs3rOG0mtTprpcFnk43rbtbcdeMndCKI4LpiQG4wbDsKfdo
- Hz++RbZc3GdjrgIFFNjpWftrAQllCBLNBccFhHfpQbdGO29WT9W3cFm4GuiVkvhZnt3GxkFsOS9
- 78WNTJLcm5KPWxhbSIegXUalPOvOQEbtE1jGCz7mTwItXsutjyx2N/Mpl91sTTIX4u4kNHxCSY7
- 2ZFHvgA6GhbDAGpyPfltAb3DKMBsGX3yX4ktjx5cy+axjHFrWMZNEpbtvGynla0kB/0WafcXTIB
- l5vpU0SsxJxx1B1ROG/upk0Dc=
-X-Received: by 2002:a05:600c:c088:b0:490:c2a2:e91f with SMTP id
- 5b1f17b1804b1-4923f59f2c7mr60670475e9.35.1781874339752; 
- Fri, 19 Jun 2026 06:05:39 -0700 (PDT)
+ AFNElJ/m/fEyX2wBrcIfjmaO2WtjBAPmpCpOunsUurSqERQ1ZNGhYGjVSBsSACLUmeloyIWiIbaXDDyXSQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzYdNCjklbmvrMNEiEIvGqpvmfL4xn9+M2DgSlRvW7l9iyffcx2
+ dCeSqO19irfVFkaShKp9o4BaleHJqpCh3kGz/9X6tVoyPBHbzYL073+3SlXB8gcB8pc=
+X-Gm-Gg: AfdE7ck+87Ri7J1S7W6KU9JPAnqKRFcswIUzC7Duso6by7vY7EjARqUCEkQaZFbouib
+ kI4MuG/2CjWtTYWEqBvrXlDZfwrXHR0nKACgabsZxDBhrHqaSiZJsUg8L1YRqp40NCrrBrDkPlD
+ hu3XLHvrPq2uDUcAk6dr0eD07Ch6ALqqWW0rzdSl55dKSb6EFuZ0c0KgJEnd3jshHJWSDHYP5gv
+ VrHharfdifK7ObFG3AtbXo2sl5hcRJlvl+b1/s87rAYRgXKtuhhsNJqUHWQN/vlgAOtlJBVU652
+ Pu9UKEkQ9HukqWfkrRk5ExKwxfbdfRpc9duTZvX9PSFKY1aXHgt3Ed30fa7k6ZrFOzadMwFA60V
+ E+KLddVGsdtK+c0GOY7j5qjG9wAcAp7Mf3ZmDDUDxAyluJWmD9NZFoP1+o6ujTYkWgkM5ftVwEk
+ GSqA8C6yAI38XR
+X-Received: by 2002:a05:600d:4448:20b0:490:da12:f1fa with SMTP id
+ 5b1f17b1804b1-49240ea7f99mr46236105e9.31.1781874340737; 
+ Fri, 19 Jun 2026 06:05:40 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49245711032sm23657165e9.0.2026.06.19.06.05.38
+ 5b1f17b1804b1-49240efc160sm54997235e9.2.2026.06.19.06.05.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Fri, 19 Jun 2026 06:05:38 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 71C7B5F917;
+ by draig.lan (Postfix) with ESMTP id 8B58F5F946;
  Fri, 19 Jun 2026 14:05:37 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -83,19 +83,19 @@ Cc: Alexander Graf <agraf@csgraf.de>,
  Kane Chen <kane_chen@aspeedtech.com>, Tyrone Ting <kfting@nuvoton.com>,
  Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
  Hao Wu <wuhaotsh@google.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v8 2/7] tests/functional: update anacapa-bmc image
-Date: Fri, 19 Jun 2026 14:05:31 +0100
-Message-ID: <20260619130537.820184-3-alex.bennee@linaro.org>
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v8 3/7] target/arm: do not clear halting reason in has_work
+ helper
+Date: Fri, 19 Jun 2026 14:05:32 +0100
+Message-ID: <20260619130537.820184-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260619130537.820184-1-alex.bennee@linaro.org>
 References: <20260619130537.820184-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,32 +118,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The initial version had the wrong DTB which caused issues with image
-corruption [1]. Update to the latest version.
+The helper will be called multiple times as we exit a loop and until
+we actually restart (via arm_cpu_exec_halt) we should leave the
+condition the same.
 
-[1] https://github.com/legoater/qemu-aspeed-boot/pull/7
-
-Suggested-by: Cédric Le Goater <clg@redhat.com>
+Fixes: 6fd2fcdc61b (target/arm: teach arm_cpu_has_work about halting reasons)
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/functional/arm/test_aspeed_anacapa.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ include/hw/core/sysemu-cpu-ops.h | 3 +++
+ target/arm/cpu.c                 | 4 ++--
+ 2 files changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/tests/functional/arm/test_aspeed_anacapa.py b/tests/functional/arm/test_aspeed_anacapa.py
-index 27f8bd8b56a..b16c6035c95 100644
---- a/tests/functional/arm/test_aspeed_anacapa.py
-+++ b/tests/functional/arm/test_aspeed_anacapa.py
-@@ -11,8 +11,8 @@
- class AnacapaMachine(FacebookAspeedTest):
+diff --git a/include/hw/core/sysemu-cpu-ops.h b/include/hw/core/sysemu-cpu-ops.h
+index 8be6a84bd54..9a45596169a 100644
+--- a/include/hw/core/sysemu-cpu-ops.h
++++ b/include/hw/core/sysemu-cpu-ops.h
+@@ -18,6 +18,9 @@
+ typedef struct SysemuCPUOps {
+     /**
+      * @has_work: Callback for checking if there is work to do.
++     *
++     * This function should be idempotent (i.e. not change state) as
++     * it will likely be queried multiple times before a CPU resumes.
+      */
+     bool (*has_work)(CPUState *cpu); /* MANDATORY NON-NULL */
+     /**
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 86aae36ae55..597e0626e7f 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -158,7 +158,6 @@ static bool arm_cpu_has_work(CPUState *cs)
+      * A wake-up event should only wake us if we are halted on a WFE
+      */
+     if (cpu->env.halt_reason == HALT_WFE && cpu->env.event_register) {
+-        cpu->env.halt_reason = NOT_HALTED;
+         return true;
+     }
  
-     ASSET_ANACAPA_FLASH = Asset(
--        'https://github.com/legoater/qemu-aspeed-boot/raw/3fa3212827b04be4034d43b5adeef57c27d6ab18/images/anacapa-bmc/openbmc-20260512025228/obmc-phosphor-image-anacapa-20260512025228.static.mtd.xz',
--        '2232e241abcfb6d4f6b82cb6c378ce5ce05e364aac6d118785c2b6cc33fe43f3')
-+        'https://github.com/legoater/qemu-aspeed-boot/raw/refs/heads/master/images/anacapa-bmc/openbmc-20260616025349/obmc-phosphor-image-anacapa-20260616025349.static.mtd.xz',
-+        'de3841fb6ed3085aec6424358ee6efc4b8ee85688361e5aa1987fd1acb7d3fb4')
+@@ -170,7 +169,6 @@ static bool arm_cpu_has_work(CPUState *cs)
+                            | CPU_INTERRUPT_NMI | CPU_INTERRUPT_VINMI | CPU_INTERRUPT_VFNMI
+                            | CPU_INTERRUPT_VFIQ | CPU_INTERRUPT_VIRQ | CPU_INTERRUPT_VSERR
+                            | CPU_INTERRUPT_EXITTB)) {
+-        cpu->env.halt_reason = NOT_HALTED;
+         return true;
+     }
  
-     def test_arm_ast2600_anacapa_openbmc(self):
-         image_path = self.uncompress(self.ASSET_ANACAPA_FLASH)
+@@ -878,6 +876,8 @@ bool arm_cpu_exec_halt(CPUState *cs)
+         if (cpu->wfxt_timer) {
+             timer_del(cpu->wfxt_timer);
+         }
++        /* clear the halt reason */
++        cpu->env.halt_reason = NOT_HALTED;
+     }
+     return leave_halt;
+ }
 -- 
 2.47.3
 

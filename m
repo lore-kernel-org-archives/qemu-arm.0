@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BF0ECDB46B
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Jun 2026 15:58:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED2C4CD98F2
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Jun 2026 15:58:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wabaf-0007JT-1x; Fri, 19 Jun 2026 11:57:09 -0400
+	id 1wabae-0007J7-7n; Fri, 19 Jun 2026 11:57:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wabae-0007J6-7l
- for qemu-arm@nongnu.org; Fri, 19 Jun 2026 11:57:08 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1wabac-0007Gm-Gn
+ for qemu-arm@nongnu.org; Fri, 19 Jun 2026 11:57:06 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wabac-0001IS-Bv
- for qemu-arm@nongnu.org; Fri, 19 Jun 2026 11:57:07 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-464192ab2e1so1386445f8f.0
- for <qemu-arm@nongnu.org>; Fri, 19 Jun 2026 08:57:06 -0700 (PDT)
+ id 1wabaa-0001HZ-VL
+ for qemu-arm@nongnu.org; Fri, 19 Jun 2026 11:57:06 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-45ef56d9b67so1866826f8f.2
+ for <qemu-arm@nongnu.org>; Fri, 19 Jun 2026 08:57:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781884625; x=1782489425; darn=nongnu.org;
+ d=linaro.org; s=google; t=1781884623; x=1782489423; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=I/w0e+35WQwMdGgvrVQ6ookznor3U6z7jkLjp6mxTL4=;
- b=vv9imfEg57W6W6txRvKo/H9znBFvFob83k5e7vbZheFc2WPnX5EyJVf9br+U2yxD0H
- MB2FVODoBu4g0Cbndg9CrQIjB60U+pSZQkReZOoVIV5yPr+fOSGWOQR1NGJJ2WehyWRf
- WJ2aMq2+hN/GYouZTfp4y50qm7XFEz0XCxaXQDusYWBPNxzfCr0Z+PZEU9EdfT/U1zuf
- qs2/6GySGxUPXrdrgCWiGjMJ+VYTXA8AqfVYAeLf9a9RhlrO+pZHK4QNCpUohp+cQDzD
- sqZ/c6lk7D+jCW6Lg5+mkcDR1nyI61p6os1nDqk+uzMJmyqUJkRj2ftyDe77PuGoE4LZ
- +Q/Q==
+ bh=WQ0mCK9OBs7IJHUAjQclNgTtgQfnuHREMin9AW2vkCY=;
+ b=l+qYL8kialigA/wgqVFu5cio0RdrbvPq0qZ2DiOEuvMkyHjRA5MlhAmH/tS+nNEkK0
+ 4Hjo7oI4KJG8w1IYBrxYp2CA83odsEcLo/7HxJKShCs6miVAldkHtHxi0GR/4t+RdZxF
+ NQ9PYi3MR/HyhPFkpQFHB1XhC2gSGYdCl8Vvibpr90DGEbtl1YHu2nrHQSpZmA4RPngL
+ s21PM1CBvdtBq1G03A7eQp3HFwxHl3BpVDWMVlJ900X7LBnBAVYfVbMK5jZS+DvAyXUb
+ ixTX2rpnFCKWk2PDLSjkHVXn+f8Gk2NLhY67ZjIhfjrJEkzKCaijeUlSpPOaBbN2Ob26
+ Du0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781884625; x=1782489425;
+ d=1e100.net; s=20251104; t=1781884623; x=1782489423;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=I/w0e+35WQwMdGgvrVQ6ookznor3U6z7jkLjp6mxTL4=;
- b=M8vKV549yz/oTEze8hnZmtP1mtXQyDjjGlH6+neLGNLwKUgTRF5z9WNW4pcT/iGwcQ
- RxCAkWpHpx8m777qJ0gRpK8vw4+COY5nQOd48zsRMOfzaJuUhHKC8pjfNw9PGBOqqkld
- 4NbGCZ2dQAPCPH/yJW+5j+8EEf4ZaqNHR54WlKtsHiZRV0IXP8/2UJTLO7h0KyvFXRf+
- DhvQSOwJltbXZQzEJMKgQ/Xe3LM1o7I5XH1RuU7c7Be1Wu0MvuIA+OiDIc+FXTELyFa2
- O3a5cOPZ0v3J616eT34la0/E0tuwst2IIy8Ts53UBHtlnbCkiB2ajp4addwOhwxg2Eyr
- EPOA==
+ bh=WQ0mCK9OBs7IJHUAjQclNgTtgQfnuHREMin9AW2vkCY=;
+ b=bMjmdOOo3sRA9UsTnp2v15VfJZ2GLqq2iqU7jyF0WZwcQ6LIUsZUV+EDffKFXUm7wJ
+ RgDy0BX77Fht5mD8eR5sDB/u3KEZSxtDPWz1D3HWJ3fSIX1wCTSY/fPGK8oq2xUBgGgz
+ AGgTtatAT22iGuBaU6tMiNsU7QOuE3AR8LNXodJaaJS7cd20WG6IPh+X4nWS6JfHvUP1
+ 2Ru8YZQcpjA/bJzpgG0260OZIlmBDAqhM8e9q5AdJdckcnnCYx40GDSlJyAnKBQbJk65
+ B7fo9Et4UTEckyWXPbH7XTJze9GHxc3Kqwn20kh7ftzXG22xEN6Rlj2VpwMfKP1PiuNt
+ 31lQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8PPTwv60K7QlZMQOgWY3pISL+ly7TH+E/AN9enEkwoMkVqOwvlr316mY8gQPov6lNSKrtmWrfu4Q==@nongnu.org
-X-Gm-Message-State: AOJu0YxcoEzfNSV/HOapA+Sjtb1M7Fwc5Xq3HM/uEpgi5vvYXrDz9usi
- bLA6d3niy8c4Hza10I0wzjKha+7Zf9NqaJLL15YbAgEiEas787lKcdxyoMxWeG8Pjpg=
-X-Gm-Gg: AfdE7ckMxx6QUPEdo7AzHj3x2UnBUy7aiCcGIVmxxbmjF+7atmWRt1EzW9Wd63d+Wgm
- U9I/ElrYPYV2g/ylNGHTnoJIrkLh+NKWgq7IVBIGjpoOyZjUzek7iDfXVfVgyYuN4zXOTZ3yKN/
- icax6IN1aRgUIMyKjJ4XlqYT1/id/ah5r4RRs/bGDRlXPaD/sRiuEhJ3jlm5nbFnpdR2gtF6TNw
- qKc0wLAhJcA6oLAMDQzkTF/4odGNq1zynd+HT5gcTAoYJtpHSs/3aTu4ksCHDLmcF2WVgd7/Os9
- hjAzIaBodL09JGQDGldaLWrW/xw8t+mQ5TzoiWj8kqSxWsGlNZQ8s+hJOg1MnMtjBCehnQx7QJx
- NK+wE/EjTjfny4ZUaXKKDr0FvORvbL/4QOv8QolmdQNrttq6GM/DvSoACyNrbkn8ZJ+amMHNr1a
- 7N5Xqp+u7E1GRv
-X-Received: by 2002:a5d:5249:0:b0:45e:f5b6:7bf9 with SMTP id
- ffacd0b85a97d-465024021d2mr6422512f8f.31.1781884624716; 
- Fri, 19 Jun 2026 08:57:04 -0700 (PDT)
+ AFNElJ9CCg+YLaeINTwC+OuH/S0KjYFMpq5YEYHo0aJONvkwDPeo7TUQj0qCJlImb/zvdACPU2tamJak6A==@nongnu.org
+X-Gm-Message-State: AOJu0YyHKD8VXlDGSkjAcOT2EvzYNUKaggfVwkKML03Sq7DRh8NV2aUS
+ hUqHBC6ah1AkWNtYtaD5kg/Z4K0ROPGzQfEuVJgCHwQ7k6zDYieYe5e3Oso3Z1yFTXw=
+X-Gm-Gg: AfdE7cnI/YwG8VrOGfOxDZHA/hoP/9F3XW5vDAVOpoSrcdGmCmJo+XM7Ew32lmZWVsC
+ +GBDroFCmMeh2j/Fp8F1KTrGukhtUUv0lP/cBkFyZAOUfxdXIEedxYnHm8ej6+te3hKZTLCIPcS
+ QqIJrwwMqLmUvlcpRyebWn5nY7BPwEVh6EQjGJHh71I+hTK4Gwk3jKY29uE6EB3bHX1pseqw7yO
+ DHH8EaJldJl1+wzmNnFJwQmX36YtX+CeUlhRpVvh+JLrCP8LyrLSf5lkxmvHy0VdNCazwAlJESL
+ HI9g5cVOwLWz7nTNdqEwSzKZAm1XhzkX4LeEgXDzP1+gVc11avAhT5nJXRXrsyZPFVLhPZbWkYJ
+ +yaHFBSAH1DsFk7dD1bWN4LPr0KD/J4HNkWcGk7V69k84VHWBZs4snw9Ae2KSIhw2WIY2tiuKWl
+ rPPujP/S/EQ95E
+X-Received: by 2002:a5d:5885:0:b0:464:7fc2:d9f0 with SMTP id
+ ffacd0b85a97d-464fff62bd4mr7465486f8f.3.1781884623528; 
+ Fri, 19 Jun 2026 08:57:03 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-466643f4e3esm66531f8f.8.2026.06.19.08.57.00
+ ffacd0b85a97d-466648c5413sm63989f8f.11.2026.06.19.08.57.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Fri, 19 Jun 2026 08:57:02 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id C0CDF5FAF9;
+ by draig.lan (Postfix) with ESMTP id D6F9D6000E;
  Fri, 19 Jun 2026 16:56:57 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -84,25 +84,24 @@ Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
  Brad Smith <brad@comstyle.com>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  Song Gao <gaosong@loongson.cn>
-Subject: [PATCH 5/7] gitlab: ensure "check-XXX' jobs capture functional test
- logs
-Date: Fri, 19 Jun 2026 16:56:54 +0100
-Message-ID: <20260619155657.944220-6-alex.bennee@linaro.org>
+Subject: [PATCH 6/7] gitlab: remove build target hacks
+Date: Fri, 19 Jun 2026 16:56:55 +0100
+Message-ID: <20260619155657.944220-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260619155657.944220-1-alex.bennee@linaro.org>
 References: <20260619155657.944220-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,58 +117,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+Since eef29e060dc (meson: build macOS signed binary as part of the
+default target) we should be able to do a plain build and everything
+just work.
 
-A small subset of functional tests are run by default with
-'make check', and so run in the context of 'check-XXX' CI
-jobs, rather than 'functional-XXX' CI jobs.  Thus we need
-to capture the functional test logs unconditionally for all
-test jobs.
-
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Message-ID: <20260610121254.2870259-1-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/buildtest-template.yml | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ .gitlab-ci.d/macos.yml | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/.gitlab-ci.d/buildtest-template.yml b/.gitlab-ci.d/buildtest-template.yml
-index 005058625eb..3b003abc999 100644
---- a/.gitlab-ci.d/buildtest-template.yml
-+++ b/.gitlab-ci.d/buildtest-template.yml
-@@ -78,6 +78,15 @@
-   extends: .meson_job_template
-   stage: test
-   image: $CI_REGISTRY_IMAGE/qemu/$IMAGE:$QEMU_CI_CONTAINER_TAG
-+  artifacts:
-+    name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
-+    when: always
-+    expire_in: 7 days
-+    paths:
-+      - build/meson-logs
-+      - build/tests/functional/*/*/*.log
-+    reports:
-+      junit: build/meson-logs/*.junit.xml
-   script:
-     - source scripts/ci/gitlab-ci-section
-     - section_start buildenv "Setting up to run tests"
-@@ -111,15 +120,6 @@
-     paths:
-       - ${CI_PROJECT_DIR}/functional-cache
-     policy: pull-push
--  artifacts:
--    name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
--    when: always
--    expire_in: 7 days
--    paths:
--      - build/meson-logs
--      - build/tests/functional/*/*/*.log
--    reports:
--      junit: build/meson-logs/*.junit.xml
-   before_script:
-     - export QEMU_TEST_ALLOW_UNTRUSTED_CODE=1
-     - export QEMU_TEST_CACHE_DIR=${CI_PROJECT_DIR}/functional-cache
+diff --git a/.gitlab-ci.d/macos.yml b/.gitlab-ci.d/macos.yml
+index 8366b4ad564..efa0fb666e2 100644
+--- a/.gitlab-ci.d/macos.yml
++++ b/.gitlab-ci.d/macos.yml
+@@ -29,7 +29,6 @@
+     - cd build
+     - ../configure --enable-werror $CONFIGURE_ARGS || { cat config.log meson-logs/meson-log.txt; exit 1; }
+     - $MAKE -j$(sysctl -n hw.ncpu)
+-    - for TARGET in $TEST_BINARIES ; do $MAKE $TARGET ; done
+     - for TARGET in $TEST_TARGETS ; do $MAKE $TARGET ; done
+ 
+ aarch64-macos-15-build:
+@@ -45,8 +44,7 @@ aarch64-macos-15-build:
+         --cross-prefix-i386=i686-elf-
+         --cross-prefix-x86_64=x86_64-elf-
+         --disable-plugins
+-    TEST_BINARIES: qemu-system-aarch64 qemu-system-i386 qemu-system-x86_64
+-    TEST_TARGETS: check-unit run-tcg-tests-aarch64-softmmu run-tcg-tests-i386-softmmu run-tcg-tests-x86_64-softmmu
++    TEST_TARGETS: check-unit check-tcg
+ 
+ aarch64-macos-26-build:
+   extends: .macos_job_template
+@@ -62,5 +60,4 @@ aarch64-macos-26-build:
+         --cross-prefix-i386=i686-elf-
+         --cross-prefix-x86_64=x86_64-elf-
+         --disable-plugins
+-    TEST_BINARIES: qemu-system-aarch64 qemu-system-i386 qemu-system-x86_64
+-    TEST_TARGETS: check-unit run-tcg-tests-aarch64-softmmu run-tcg-tests-i386-softmmu run-tcg-tests-x86_64-softmmu
++    TEST_TARGETS: check-unit check-tcg
 -- 
 2.47.3
 

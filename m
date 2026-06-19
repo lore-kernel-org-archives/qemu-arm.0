@@ -4,94 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2972DCD98F6
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Jun 2026 10:49:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F5BBCD4F26
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Jun 2026 11:08:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1waWm5-0005M7-8p; Fri, 19 Jun 2026 06:48:37 -0400
+	id 1waX4u-0003q0-Qp; Fri, 19 Jun 2026 07:08:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1waWm4-0005Lz-0z
- for qemu-arm@nongnu.org; Fri, 19 Jun 2026 06:48:36 -0400
+ (Exim 4.90_1) (envelope-from <abologna@redhat.com>)
+ id 1waX4u-0003pd-1a
+ for qemu-arm@nongnu.org; Fri, 19 Jun 2026 07:08:04 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1waWm1-0001BO-6Q
- for qemu-arm@nongnu.org; Fri, 19 Jun 2026 06:48:35 -0400
+ (Exim 4.90_1) (envelope-from <abologna@redhat.com>)
+ id 1waX4s-0007sc-Lc
+ for qemu-arm@nongnu.org; Fri, 19 Jun 2026 07:08:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781866111;
+ s=mimecast20190719; t=1781867281;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=SWO9Dg46ALBmVD2XtES7OHDK6JaUY/hPfOJamYNrkpA=;
- b=LM4EBYJmjl/sKG2Lsh97c8iJbP9HlCCCH8/Hb568zKLhsa8D7DShOKnOXfyOQ3RfYRd+Ib
- aTYN5L3LUgofQrQEFAkSOnfLc0hK34RrM46Lfoe7LYtqP9RneixUdQqSoYZpEllcjANta7
- MrzUedYIAeYl9+m8pQx+EqOyoXtBurU=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=6Ftuz/YeU1BrVwtz+GOmCT6y76opWKn1nUdh59yxKwg=;
+ b=hordkYLx4oJ8Sgod22JBsukjt2pEnvH0LLyX05ESoHGTiBisyzc7zQDUWemErPTmbWbsbO
+ YJYZZ7ikfv4ho5Tzr6Bx+2ch66g1rdUr0+a62P8UPvsNtOeGes09lp/+deBSF8X8laP6Ll
+ 0OUd2bB2LTh2NerI/aFN/rQQ7Ixfw1Q=
+Received: from mail-dy1-f198.google.com (mail-dy1-f198.google.com
+ [74.125.82.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-543-7_WSsovpMx26261pa1WUjA-1; Fri, 19 Jun 2026 06:48:30 -0400
-X-MC-Unique: 7_WSsovpMx26261pa1WUjA-1
-X-Mimecast-MFC-AGG-ID: 7_WSsovpMx26261pa1WUjA_1781866109
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-4625b4f54c6so1616709f8f.0
- for <qemu-arm@nongnu.org>; Fri, 19 Jun 2026 03:48:29 -0700 (PDT)
+ us-mta-653-3CeElVLlP8aK16CAXJsAPA-1; Fri, 19 Jun 2026 07:06:41 -0400
+X-MC-Unique: 3CeElVLlP8aK16CAXJsAPA-1
+X-Mimecast-MFC-AGG-ID: 3CeElVLlP8aK16CAXJsAPA_1781867200
+Received: by mail-dy1-f198.google.com with SMTP id
+ 5a478bee46e88-30bc5f826f2so3718122eec.1
+ for <qemu-arm@nongnu.org>; Fri, 19 Jun 2026 04:06:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781866109; x=1782470909;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=EVm5vVmGIbcBHr2idmmVDbtXaxhF6smWpo0QcqzwyPI=;
- b=qXw7Gc+b/J/2cVWVfMdT0eucbD9w8tXqHcfzZAcatvKFQD8d5v8NP15vhfm2xEEHcR
- 5eBfnfn1imugXutIhePY/hYGCCR5Z8ABzs0KBsEGX8jlRF1nd2ni0XZRJxuWNQoj62t1
- zcDTikYsyFGlm1P9LgxanrThENa+zSr6W3y/Dg5Wq1b9UDP3iODsz33mQq/IyPVa1qSW
- dpwQmh1U7T4T7Qj8LDf3ZTMUKT/oE0DzXNvtgWpdU9KCOFllJv3PJPyOMulrMMV7WBxC
- b0OFttNxMrLN542LmyRRwHAfn1BC7pQ/uOz6R/dizaMbJ9wZzSnr8KxWqYn2Eg8Iy/BS
- xN5g==
+ d=1e100.net; s=20251104; t=1781867200; x=1782472000;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:in-reply-to
+ :mime-version:references:from:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=6Ftuz/YeU1BrVwtz+GOmCT6y76opWKn1nUdh59yxKwg=;
+ b=q8wSltj5SSz7xhqDfoir7V0jtY6+SSLaoXjBgChWCmYwtXrW/FyS1PDZHugbeqlcTw
+ Y1vQ7UhTLBBQOtyqHBLG0ybKlHaoZcvciab8goFyjonT7LtygLGz/rYG7YsouF2OVe8n
+ iuubX8Lnqs2RCWhvcXmv8x1h2cO+qMalOkKZFnwepuynhshObbIH2a9GPriESDEh5LdW
+ 4DdVssOL1mUD3BZavSsPOjrnfHMLevOYoynDrG85zv+4EbYb3HZ33/2Jxu0rDeDRLXNr
+ 0Cbug2bXGSC4aUasAwelguQ9DQuOeTyo6IAjT6mns92w0cd8B9db3kqKNqR4SOhEZg2U
+ Lh1w==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8LDO3XN5TiA76LUfnm0M6lPyOllnjFgHlaJTzx7kk5o2lFnZR68yqIij82Umf97FHoVbd99kHouQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz20Yjol/i7iOAhgXCHw5dZTlrUZnCyVALEs8pHgMVTrIvi8iif
- otnMUT6x+FtAgdNzIi1gTx0uXINpw/s1NI8wEMAIaQo0rSMNfQhWtauUrVA7H3uSJ72Eb7SGZzT
- Ete49skNoiH86vxCbx4TWm8hP+SBo9aUEFMRy9Xv7UQcbbwytgk1Esw==
-X-Gm-Gg: AfdE7cknpiriFBOEvSHfc6uHyS4f6tT6tOhxzL6A5oxQWTzOvq3tB3gUiGmLSwPW3bR
- dkYNv4Oabf8ISY16S+HsKRdTqmahvkaqFbbDJ84wXZRi8ZhQVMMZErC+GYDs78zjk390+PbhhMR
- NzkcmDp1hTu7liEa8kLxJlu3Bb/77e6NJmPbSyClpY0bCW7LEvBjUFTN9tdCMnqrwoWqAo5Y6zt
- 1DJMM9X+kOclpYJF9TEfO9bqIPJ36XfcCg8aKDrStohs44N4hdzGsqZo9auyw3DNj6+bTUyV/U9
- PF0pWdPmBois5ji2Bl78a6K/b0A/J+ikjgC+4Ddk0jti2sTrGqRxDYg1hQ+Vi7URP11UjfI=
-X-Received: by 2002:a05:6000:23ca:b0:460:3234:293d with SMTP id
- ffacd0b85a97d-465091bc9demr3794318f8f.40.1781866108680; 
- Fri, 19 Jun 2026 03:48:28 -0700 (PDT)
-X-Received: by 2002:a05:6000:23ca:b0:460:3234:293d with SMTP id
- ffacd0b85a97d-465091bc9demr3794261f8f.40.1781866108169; 
- Fri, 19 Jun 2026 03:48:28 -0700 (PDT)
-Received: from imammedo ([213.175.46.86]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4650b67a253sm7082977f8f.23.2026.06.19.03.48.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Jun 2026 03:48:27 -0700 (PDT)
-Date: Fri, 19 Jun 2026 12:48:25 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eric Auger <eauger@redhat.com>
-Cc: qemu-devel@nongnu.org, mst@redhat.com, anisinha@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
- philmd@linaro.org, zhao1.liu@intel.com, rad@semihalf.com,
- leif.lindholm@oss.qualcomm.com, qemu-arm@nongnu.org
-Subject: Re: [PATCH v2 11/21] arm: virt: add support for WDAT based watchdog
-Message-ID: <20260619124825.420e57f8@imammedo>
-In-Reply-To: <94f63b27-59b2-4f65-99dc-ec3a88780e0c@redhat.com>
-References: <20260303092532.2410177-1-imammedo@redhat.com>
- <20260303092532.2410177-12-imammedo@redhat.com>
- <94f63b27-59b2-4f65-99dc-ec3a88780e0c@redhat.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
+ AFNElJ/MZlVe7WpC2+b/zUViurhBKj/02Xf3vNm9NDSAR+kdL9EtavWOAycH0wJtPYN0YibSDMqatBieBg==@nongnu.org
+X-Gm-Message-State: AOJu0YzfQhjNZpOL3hZD6aHtPtQkSkR8KNQW6SkKX8UKbFXzPPVL85+f
+ T1AXYwsjc3MKhCoLMOUpYqEnMXHVDNGgbgvbm6oGwrblOXgUaOe0c5BVYk/HGu9gmJfdb6IDZhO
+ Ctr/mTkxlun2+i/voCYIsjru3/KPueCz4AkFzQ73dmcvX6nyekG644ScNQmn4/N/CBwAjHtSvmQ
+ shaVlKpYFpcHqNmJGOJnIKUP6TGxi5
+X-Gm-Gg: AfdE7cmCdSvmXNclR4Sw77OcwolzBZu7j2/bnQWTn527T/NLtbmF30NsKIeIiZPWGgR
+ Q5EydM1kfKHs/QMAGCoC4ZhbTeBlZLMvDb8RD9RX3w1kgo177786HVBanK6kalVw9uzP0JB2x0R
+ YAqTPa7WgxNJ2P4SwtqIRjbqn4y2Jjr3nJYgbPbSjJnF1Kd7UOXitMkCd10a2L97xN
+X-Received: by 2002:a05:7300:6c84:b0:304:e587:5063 with SMTP id
+ 5a478bee46e88-30c0cff485dmr989877eec.12.1781867200315; 
+ Fri, 19 Jun 2026 04:06:40 -0700 (PDT)
+X-Received: by 2002:a05:7300:6c84:b0:304:e587:5063 with SMTP id
+ 5a478bee46e88-30c0cff485dmr989854eec.12.1781867199837; Fri, 19 Jun 2026
+ 04:06:39 -0700 (PDT)
+Received: from 744723338238 named unknown by gmailapi.google.com with
+ HTTPREST; Fri, 19 Jun 2026 04:06:37 -0700
+Received: from 744723338238 named unknown by gmailapi.google.com with
+ HTTPREST; Fri, 19 Jun 2026 04:06:37 -0700
+From: Andrea Bolognani <abologna@redhat.com>
+References: <20260605083358.1320563-1-khushit.shah@nutanix.com>
+ <20260605083358.1320563-24-khushit.shah@nutanix.com>
+ <ajURCGaS94gwV_px@redhat.com>
 MIME-Version: 1.0
+In-Reply-To: <ajURCGaS94gwV_px@redhat.com>
+Date: Fri, 19 Jun 2026 04:06:37 -0700
+X-Gm-Features: AVVi8CcvxopmE1LAhLJ_P5FoKxGosYvlKzKbEpZomnc1BklIe0Caltb9vqbh-Ec
+Message-ID: <CABJz62PatHBE1pvgqw=asZgugOE3L5oMsEgj==Qp4ZnyHWhLkw@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 23/29] target/arm/qmp: add query-arm-cpu-props-info
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Khushit Shah <khushit.shah@nutanix.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, 
+ kvmarm@lists.linux.dev, Eric Auger <eric.auger@redhat.com>, 
+ Cornelia Huck <cohuck@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>, Marc Zyngier <maz@kernel.org>,
+ Oliver Upton <oliver.upton@linux.dev>, Jiri Denemark <jdenemar@redhat.com>, 
+ Gavin Shan <gshan@redhat.com>, Shameer Kolothum <skolothumtho@nvidia.com>, 
+ Sebastian Ott <sebott@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Jinqian Yang <yangjinqian1@huawei.com>,
+ Shaju Abraham <shaju.abraham@nutanix.com>, 
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: BkKLHznqRgbxeZ-6NRBiwAE3ohkjcIDu6D0MPLj0L48_1781866109
+X-Mimecast-MFC-PROC-ID: yMo4jNDynDTL0bECk1L0sQnwRUupMu1Som7Xt6C-O3U_1781867200
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=abologna@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
@@ -115,430 +122,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 8 Jun 2026 19:07:20 +0200
-Eric Auger <eauger@redhat.com> wrote:
+On Fri, Jun 19, 2026 at 10:51:04AM +0100, Daniel P. Berrang=C3=A9 wrote:
+> On Fri, Jun 05, 2026 at 08:33:52AM +0000, Khushit Shah wrote:
+> > Introduce 'query-arm-cpu-props-info' QMP command. This command returns
+> > information about ARM CPU model properties, including their name, type,
+> > supported values on the given host, and composite parent if any.
+>
+> Do we have to make this ARM only ?
+>
+> x86 has named CPU properties too. They are all basically
+> booleans so this API offers a superset of functionality
+> needed for x86, and thus I'd expect x86 to be folded into
+> this new API too.
 
-> On 3/3/26 10:25 AM, Igor Mammedov wrote:
-> > And generate WDAT table tailored for sbsa_gwdt and disable
-> > watchdog entry in GTDT ACPI table if WDAT is enabled,
-> > since they are mutualy exclusive due to different
-> > timer resolution of sbsa_gwdt.
-> >=20
-> > To enable use "-device sbsa-gwdt,wdat=3Don" option
-> >=20
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> >  include/hw/acpi/wdat-gwdt.h | 19 ++++++++
-> >  hw/acpi/meson.build         |  2 +
-> >  hw/acpi/wdat-gwdt-stub.c    | 16 +++++++
-> >  hw/acpi/wdat-gwdt.c         | 92 +++++++++++++++++++++++++++++++++++++
-> >  hw/arm/virt-acpi-build.c    | 58 +++++++++++++++++------
-> >  5 files changed, 172 insertions(+), 15 deletions(-)
-> >  create mode 100644 include/hw/acpi/wdat-gwdt.h
-> >  create mode 100644 hw/acpi/wdat-gwdt-stub.c
-> >  create mode 100644 hw/acpi/wdat-gwdt.c
-> >=20
-> > diff --git a/include/hw/acpi/wdat-gwdt.h b/include/hw/acpi/wdat-gwdt.h
-> > new file mode 100644
-> > index 0000000000..42339e031e
-> > --- /dev/null
-> > +++ b/include/hw/acpi/wdat-gwdt.h
-> > @@ -0,0 +1,19 @@
-> > +/*
-> > + * GWDT Watchdog Action Table (WDAT) definition
-> > + *
-> > + * Copyright Red Hat, Inc. 2026
-> > + * Author(s): Igor Mammedov <imammedo@redhat.com>
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + */
-> > +#ifndef QEMU_HW_ACPI_WDAT_GWDT_H
-> > +#define QEMU_HW_ACPI_WDAT_GWDT_H
-> > +
-> > +#include "hw/acpi/aml-build.h"
-> > +#include "hw/watchdog/sbsa_gwdt.h"
-> > +
-> > +void build_gwdt_wdat(GArray *table_data, BIOSLinker *linker, const cha=
-r *oem_id,
-> > +                     const char *oem_table_id, uint64_t rbase, uint64_=
-t cbase,
-> > +                     uint64_t freq);
-> > +
-> > +#endif /* QEMU_HW_ACPI_WDAT_GWDT_H */
-> > diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
-> > index 22290ca835..189bbb0257 100644
-> > --- a/hw/acpi/meson.build
-> > +++ b/hw/acpi/meson.build
-> > @@ -28,12 +28,14 @@ acpi_ss.add(when: 'CONFIG_ACPI_ICH9', if_true: file=
-s('ich9.c', 'ich9_tco.c', 'ic
-> >  acpi_ss.add(when: 'CONFIG_ACPI_ERST', if_true: files('erst.c'))
-> >  acpi_ss.add(when: 'CONFIG_IPMI', if_true: files('ipmi.c'), if_false: f=
-iles('ipmi-stub.c'))
-> >  acpi_ss.add(when: 'CONFIG_PC', if_false: files('acpi-x86-stub.c'))
-> > +acpi_ss.add(when: 'CONFIG_WDT_SBSA', if_true: files('wdat-gwdt.c'))
-> >  if have_tpm
-> >    acpi_ss.add(files('tpm.c'))
-> >  endif
-> >  system_ss.add(when: 'CONFIG_ACPI', if_false: files('acpi-stub.c', 'aml=
--build-stub.c', 'ghes-stub.c', 'acpi_interface.c'))
-> >  system_ss.add(when: 'CONFIG_ACPI_PCI_BRIDGE', if_false: files('pci-bri=
-dge-stub.c'))
-> >  system_ss.add(when: 'CONFIG_ACPI_ICH9', if_false: files('wdat-ich9-stu=
-b.c'))
-> > +system_ss.add(when: 'CONFIG_WDT_SBSA', if_false: files('wdat-gwdt-stub=
-.c'))
-> >  system_ss.add_all(when: 'CONFIG_ACPI', if_true: acpi_ss)
-> >  system_ss.add(when: 'CONFIG_GHES_CPER', if_true: files('ghes_cper.c'))
-> >  system_ss.add(when: 'CONFIG_GHES_CPER', if_false: files('ghes_cper_stu=
-b.c'))
-> > diff --git a/hw/acpi/wdat-gwdt-stub.c b/hw/acpi/wdat-gwdt-stub.c
-> > new file mode 100644
-> > index 0000000000..4d43783f70
-> > --- /dev/null
-> > +++ b/hw/acpi/wdat-gwdt-stub.c
-> > @@ -0,0 +1,16 @@
-> > +/*
-> > + * Copyright Red Hat, Inc. 2026
-> > + * Author(s): Igor Mammedov <imammedo@redhat.com>
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "hw/acpi/wdat-gwdt.h"
-> > +
-> > +void build_gwdt_wdat(GArray *table_data, BIOSLinker *linker, const cha=
-r *oem_id,
-> > +                     const char *oem_table_id, uint64_t rbase, uint64_=
-t cbase,
-> > +                     uint64_t freq)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
-> > diff --git a/hw/acpi/wdat-gwdt.c b/hw/acpi/wdat-gwdt.c
-> > new file mode 100644
-> > index 0000000000..226ba3f01e
-> > --- /dev/null
-> > +++ b/hw/acpi/wdat-gwdt.c
-> > @@ -0,0 +1,92 @@
-> > +/*
-> > + * SBSA GWDT Watchdog Action Table (WDAT)
-> > + *
-> > + * Copyright Red Hat, Inc. 2026
-> > + * Author(s): Igor Mammedov <imammedo@redhat.com>
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "hw/acpi/aml-build.h"
-> > +#include "hw/acpi/wdat-gwdt.h"
-> > +#include "hw/acpi/wdat.h"
-> > +#include "hw/watchdog/sbsa_gwdt.h"
-> > +
-> > +#define GWDT_REG(base, reg_offset, reg_width) { \
-> > +                 .space_id =3D AML_AS_SYSTEM_MEMORY, \
-> > +                 .address =3D base + reg_offset, .bit_width =3D reg_wi=
-dth, \
-> > +                 .access_width =3D AML_DWORD_ACC };
-> > +
-> > +/*
-> > + *   "Hardware Watchdog Timers Design=C2=A0Specification"
-> > + *       https://uefi.org/acpi 'Watchdog Action Table (WDAT)'
-> > + */
-> > +void build_gwdt_wdat(GArray *table_data, BIOSLinker *linker, const cha=
-r *oem_id,
-> > +                     const char *oem_table_id, uint64_t rbase, uint64_=
-t cbase,
-> > +                     uint64_t freq)
-> > +{
-> > +    AcpiTable table =3D { .sig =3D "WDAT", .rev =3D 1, .oem_id =3D oem=
-_id,
-> > +                        .oem_table_id =3D oem_table_id };
-> > +
-> > +    struct AcpiGenericAddress wrr =3D  GWDT_REG(rbase, 0x0, 32);
-> > +    struct AcpiGenericAddress wor_l =3D  GWDT_REG(cbase, SBSA_GWDT_WOR=
-, 32);
-> > +    struct AcpiGenericAddress wcs =3D  GWDT_REG(cbase, SBSA_GWDT_WCS, =
-32);
-> > +
-> > +    acpi_table_begin(&table, table_data);
-> > +    build_append_int_noprefix(table_data, 0x20, 4); /* Watchdog Header=
- Length */ =20
-> you can add a comment that 0xff must be set for following 3 fields as
-> not a PCI device.
-> > +    build_append_int_noprefix(table_data, 0xff, 2); /* PCI Segment */
-> > +    build_append_int_noprefix(table_data, 0xff, 1); /* PCI Bus Number =
-*/
-> > +    build_append_int_noprefix(table_data, 0xff, 1); /* PCI Device Numb=
-er */
-> > +    build_append_int_noprefix(table_data, 0xff, 1); /* PCI Function Nu=
-mber */
-> > +    build_append_int_noprefix(table_data, 0, 3);    /* Reserved */
-> > +    /*
-> > +     * WDAT spec suports only 1KHz or more coarse watchdog timer,
-> > +     * Set resolution to minimum supported 1ms.
-> > +     * Before starting watchdog Windows set countdown value to 5min.
-> > +     */
-> > +    g_assert(freq <=3D 1000);
-> > +    build_append_int_noprefix(table_data, 1, 4);/* Timer Period, ms */=
- =20
-> it is a bit weird to hardcode the freq while it is passed as parameter.
-> Why don't you propagate it in the table?
-> > +    /*
-> > +     * Needs to be more than 4min, otherwise Windows 11 won't start wa=
-tchdog. =20
-> spec says:
-> "
-> The time-out period before the WDT fires is recommended to be at least 5
-> minutes and is required to be less than 4,294,967,296 count intervals.
-> "
-> where does the 4 min come from?
+riscv64 will certainly need something like this too in due time.
+So +1 to making it architecture-agnostic.
 
-it documents (empirical) lower Windows limit vs recommended one,
-so later on someone wouldn't step on that same rake.
-
-> > +     * Set max to limits to arbitrary max 10min and min to 5sec.
-> > +     */
-> > +    build_append_int_noprefix(table_data, 600 * freq, 4);/* Maximum Co=
-unt */ =20
-> spec says this is in count interval and not in ms, no?
-
-yep, and that's what it is here (or maybe I misread question)
-
-> > +    build_append_int_noprefix(table_data, 5 * freq, 4);  /* Minimum Co=
-unt */ =20
-> same
-> > +    /*
-> > +     * WATCHDOG_ENABLED =20
-> and stopped in sleep state?
-> > +     */
-> > +    build_append_int_noprefix(table_data, 0x81, 1); /* Watchdog Flags =
-*/
-> > +    build_append_int_noprefix(table_data, 0, 3);    /* Reserved */
-> > +    /*
-> > +     * watchdog instruction entries
-> > +     */
-> > +    build_append_int_noprefix(table_data, 8, 4);
-> > +    /* Action table */
-> > +    build_append_wdat_ins(table_data, WDAT_ACTION_QUERY_RUNNING_STATE,
-> > +        WDAT_INS_READ_VALUE,
-> > +        wcs, 0x1, 0x1);
-> > +    build_append_wdat_ins(table_data, WDAT_ACTION_RESET,
-> > +        WDAT_INS_WRITE_VALUE,
-> > +        wrr, 0x1, 0x7); =20
-> why 0x7? where did you get that mask value from
->=20
-> in DEN0094E_BSA_1.2.pdf
->=20
-> "0x000-0x003 WRR Watchdog refresh register. A write to this location
-> causes the watchdog to refresh and start a new
-> watch period. A read has no effect and returns 0."
-> > +    build_append_wdat_ins(table_data, WDAT_ACTION_SET_COUNTDOWN_PERIOD=
-,
-> > +        WDAT_INS_WRITE_COUNTDOWN,
-> > +        wor_l, 0, 0xffffffff); =20
-> How does the above intrustuction work? How the countdown period is
-> passed? what does the 0 mean in that case?
-
-the countdown period comes from the OS at runtime, not from the WDAT table,
-the value here is ignored.
-
-
->=20
-> I would rather group instructions on wcs and then instructions using wor
-> or wrr
-> > +    build_append_wdat_ins(table_data, WDAT_ACTION_SET_RUNNING_STATE,
-> > +        WDAT_INS_WRITE_VALUE | WDAT_INS_PRESERVE_REGISTER,
-> > +        wcs, 1, 0x00000001);
-> > +    build_append_wdat_ins(table_data, WDAT_ACTION_QUERY_STOPPED_STATE,
-> > +        WDAT_INS_READ_VALUE,
-> > +        wcs, 0x0, 0x00000001);
-> > +    build_append_wdat_ins(table_data, WDAT_ACTION_SET_STOPPED_STATE,
-> > +        WDAT_INS_WRITE_VALUE | WDAT_INS_PRESERVE_REGISTER,
-> > +        wcs, 0x0, 0x00000001);
-> > +    build_append_wdat_ins(table_data, WDAT_ACTION_QUERY_WATCHDOG_STATU=
-S,
-> > +        WDAT_INS_READ_VALUE,
-> > +        wcs, 0x4, 0x00000004); =20
-> reflects the status of WS1 only (and not WS0). Can you explain why this
-> is what we want?
-spec says:
-
-  "Determines if the current boot was caused by the watchdog firing.
-  The boot status is required to be set if the watchdog fired and caused a =
-reboot."
-
-WS1 is the event we are after, WS0 is not that by any means.
-
-> > +    build_append_wdat_ins(table_data, WDAT_ACTION_SET_WATCHDOG_STATUS,
-> > +        WDAT_INS_WRITE_VALUE | WDAT_INS_PRESERVE_REGISTER,
-> > +        wrr, 0x4, 0x4); =20
->=20
-> > +
-> > +    acpi_table_end(linker, &table);
-> > +}
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index 9c14b1d4d5..e9670b1a2b 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -65,6 +65,7 @@
-> >  #include "target/arm/cpu.h"
-> >  #include "target/arm/multiprocessing.h"
-> >  #include "hw/watchdog/sbsa_gwdt.h"
-> > +#include "hw/acpi/wdat-gwdt.h"
-> > =20
-> >  #define ARM_SPI_BASE 32
-> > =20
-> > @@ -849,12 +850,25 @@ build_srat(GArray *table_data, BIOSLinker *linker=
-, VirtMachineState *vms)
-> >      acpi_table_end(linker, &table);
-> >  }
-> > =20
-> > +static void virt_get_wdt_options(VirtMachineState *vms, Object *wdt,
-> > +                                 hwaddr *rbase, hwaddr *cbase, int *ir=
-q)
-> > +{
-> > +    PlatformBusDevice *pbus =3D PLATFORM_BUS_DEVICE(vms->platform_bus_=
-dev);
-> > +    SysBusDevice *sd =3D SYS_BUS_DEVICE(wdt);
-> > +    hwaddr mmio_base =3D vms->memmap[VIRT_PLATFORM_BUS].base;
-> > +    *rbase =3D mmio_base + platform_bus_get_mmio_addr(pbus, sd, 0);
-> > +    *cbase =3D mmio_base + platform_bus_get_mmio_addr(pbus, sd, 1);
-> > +    *irq =3D ARM_SPI_BASE + vms->irqmap[VIRT_PLATFORM_BUS] +
-> > +           platform_bus_get_irqn(pbus, sd, 0);
-> > +}
-> > +
-> >  /*
-> >   * ACPI spec, Revision 6.5
-> >   * 5.2.25 Generic Timer Description Table (GTDT)
-> >   */
-> >  static void
-> > -build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *v=
-ms)
-> > +build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *v=
-ms,
-> > +           Object *wdt, bool add_watchdog)
-> >  {
-> >      /*
-> >       * Table 5-117 Flag Definitions
-> > @@ -865,7 +879,6 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, =
-VirtMachineState *vms)
-> >      AcpiTable table =3D { .sig =3D "GTDT", .rev =3D 3, .oem_id =3D vms=
-->oem_id,
-> >                          .oem_table_id =3D vms->oem_table_id };
-> >      uint32_t gtdt_start =3D table_data->len;
-> > -    Object *wdt =3D object_resolve_type_unambiguous(TYPE_WDT_SBSA, NUL=
-L);
-> > =20
-> >      acpi_table_begin(&table, table_data);
-> > =20
-> > @@ -898,12 +911,12 @@ build_gtdt(GArray *table_data, BIOSLinker *linker=
-, VirtMachineState *vms)
-> >      build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
-> > =20
-> >      /* Platform Timer Count */
-> > -    build_append_int_noprefix(table_data,  wdt ? 1 : 0, 4);
-> > +    build_append_int_noprefix(table_data,  add_watchdog ? 1 : 0, 4);
-> >      /* Platform Timer Offset */
-> >      build_append_int_noprefix(table_data,
-> > -        wdt ? (table_data->len - gtdt_start) +
-> > -              4 + 4 + 4 /* len of this & following 2 fields to skip */
-> > -            : 0, 4);
-> > +        add_watchdog ? (table_data->len - gtdt_start) + =20
-> this patch is big. You could easily move the add_wathdog +
-> virt_get_wdt_options() helper in a different patch
-
-I'll split off acpi part (wdat table itself) into as a preceding patch
-(albeit without  immediate user ) and remainder in the second patch
-would use it.
-Should make it easier to follow.
-
-> > +                       4 + 4 + 4 /* len of this & following 2 fields t=
-o skip */
-> > +                     : 0, 4);
-> > =20
-> >      if (vms->ns_el2_virt_timer_irq) {
-> >          /* Virtual EL2 Timer GSIV */
-> > @@ -916,14 +929,10 @@ build_gtdt(GArray *table_data, BIOSLinker *linker=
-, VirtMachineState *vms)
-> >      }
-> > =20
-> >      /* ACPI 6.5 spec: 5.2.25.2 ARM Generic Watchdog Structure (Table 5=
--124) */
-> > -    if (wdt) {
-> > -        PlatformBusDevice *pbus =3D PLATFORM_BUS_DEVICE(vms->platform_=
-bus_dev);
-> > -        SysBusDevice *sd =3D SYS_BUS_DEVICE(wdt);
-> > -        hwaddr mmio_base =3D vms->memmap[VIRT_PLATFORM_BUS].base;
-> > -        hwaddr rbase =3D mmio_base + platform_bus_get_mmio_addr(pbus, =
-sd, 0);
-> > -        hwaddr cbase =3D mmio_base + platform_bus_get_mmio_addr(pbus, =
-sd, 1);
-> > -        int irq =3D ARM_SPI_BASE + vms->irqmap[VIRT_PLATFORM_BUS] +
-> > -                  platform_bus_get_irqn(pbus, sd, 0);
-> > +    if (add_watchdog) {
-> > +        int irq;
-> > +        hwaddr rbase, cbase;
-> > +        virt_get_wdt_options(vms, wdt, &rbase, &cbase, &irq);
-> > =20
-> >          build_append_int_noprefix(table_data, 1 /* Type: Watchdog GT *=
-/, 1);
-> >          build_append_int_noprefix(table_data, 28 /* Length */, 2);
-> > @@ -1282,8 +1291,14 @@ void virt_acpi_build(VirtMachineState *vms, Acpi=
-BuildTables *tables)
-> >      VirtMachineClass *vmc =3D VIRT_MACHINE_GET_CLASS(vms);
-> >      GArray *table_offsets;
-> >      unsigned dsdt, xsdt;
-> > +    bool has_wdat =3D false;
-> >      GArray *tables_blob =3D tables->table_data;
-> >      MachineState *ms =3D MACHINE(vms);
-> > +    Object *wdt =3D object_resolve_type_unambiguous(TYPE_WDT_SBSA, NUL=
-L);
-> > +
-> > +    if (wdt) {
-> > +        has_wdat =3D object_property_get_bool(wdt, "wdat", &error_abor=
-t);
-> > +    }
-> > =20
-> >      table_offsets =3D g_array_new(false, true /* clear */,
-> >                                          sizeof(uint32_t));
-> > @@ -1303,6 +1318,19 @@ void virt_acpi_build(VirtMachineState *vms, Acpi=
-BuildTables *tables)
-> >      acpi_add_table(table_offsets, tables_blob);
-> >      build_madt(tables_blob, tables->linker, vms);
-> > =20
-> > +    acpi_add_table(table_offsets, tables_blob);
-> > +    if (wdt && has_wdat) {
-> > +        int irq;
-> > +        hwaddr rbase, cbase;
-> > +        uint64_t freq =3D object_property_get_uint(wdt, "clock-frequen=
-cy",
-> > +                                                 &error_abort);
-> > +        virt_get_wdt_options(vms, wdt, &rbase, &cbase, &irq);
-> > +
-> > +        build_gwdt_wdat(tables_blob, tables->linker,
-> > +                        vms->oem_id, vms->oem_table_id,
-> > +                        rbase, cbase, freq);
-> > +    }
-> > +
-> >      if (!vmc->no_cpu_topology) {
-> >          acpi_add_table(table_offsets, tables_blob);
-> >          build_pptt(tables_blob, tables->linker, ms,
-> > @@ -1310,7 +1338,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiB=
-uildTables *tables)
-> >      }
-> > =20
-> >      acpi_add_table(table_offsets, tables_blob);
-> > -    build_gtdt(tables_blob, tables->linker, vms);
-> > +    build_gtdt(tables_blob, tables->linker, vms, wdt, wdt && !has_wdat=
-);
-> > =20
-> >      acpi_add_table(table_offsets, tables_blob);
-> >      { =20
-> Thanks
->=20
-> Eric
->=20
+--=20
+Andrea Bolognani / Red Hat / Virtualization
 
 

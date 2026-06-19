@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6107CD4F26
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Jun 2026 15:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0217CD98F2
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Jun 2026 15:57:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wabac-0007Gq-Fs; Fri, 19 Jun 2026 11:57:06 -0400
+	id 1wabab-0007GR-Op; Fri, 19 Jun 2026 11:57:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wabaZ-0007EL-OG
+ id 1wabaZ-0007EW-V5
  for qemu-arm@nongnu.org; Fri, 19 Jun 2026 11:57:03 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wabaX-0001Fe-KD
+ id 1wabaY-0001Fu-6i
  for qemu-arm@nongnu.org; Fri, 19 Jun 2026 11:57:03 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4923fb1f095so11414315e9.1
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-4624a44e152so1888926f8f.2
  for <qemu-arm@nongnu.org>; Fri, 19 Jun 2026 08:57:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781884620; x=1782489420; darn=nongnu.org;
+ d=linaro.org; s=google; t=1781884621; x=1782489421; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XAcK458fLut29YrBXX4JA0FS5UqQPCx1uFviFFxfcaE=;
- b=ujhe+ROWrYTNwX0zPu+PKHVBOGsES+p7j29ltjalzel3080gGkHTPiCHt5+ulhOUoM
- p2pj/irap0x/Zjk34lkf9Fpwl+ow1jzuEgM8Gc6iMGloDrQfkoIa5wTCvnvbpj4jaObp
- 0rUSyzK5g4iiAIPxvv7InlDilHTsy7VJ6gW9WOQ7uJdJcoGBppxL4pfEUXbh8bRTDEpa
- eLxS98ssO8tZp7h+lnZD47AViZJZ1uFspMLvU6GxeykCMmX/KG/WJRysK3pbdiKNvTQj
- 5N4F/XlPpY9x+JdVUuSM58KFPlLdJ1GsoIPR68oRK2hSi5qB880QCAiRERBZnqrH5JSr
- 20Cw==
+ bh=iMMNTERO31F+8kCv4Mg7Yr6Pae5QtEx8Xzxb3fKzqfI=;
+ b=pgXrVUk8Jd5yJDML9xGNnOgQ54g3rMrnVXtlnRRF7ibCrBJ1gcuv6h1UAqi9X5e070
+ 2jEwlibqBI9zDGpGpVCvNwMa9CxmwIYHv9sXKSCJNXO2/XA0jvGsPK3YU3GWYSthi8CH
+ BECxWbLU3uGX6Dd5pvSChUPyLXf5dPrlQbrTccYGXZ7R25dI0QV17Asuee900r6zwzad
+ isVPXzMQfhj9S17UKjjgaFCt1/5rqXGqocNCSIFxQSlVaK/B/bOcDzinlRR4vv4qPh9Q
+ GkkgbDWW8N0DfjmsjCONisDSfGXfH+UGyLXpknX1icinU8hFadzdAi9iNTwzFCsseA81
+ +J6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781884620; x=1782489420;
+ d=1e100.net; s=20251104; t=1781884621; x=1782489421;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=XAcK458fLut29YrBXX4JA0FS5UqQPCx1uFviFFxfcaE=;
- b=AGtSd7lXiCpCWP4Tc6NdLKOxYziPxPgJ2jRk2ioceXtW9A0m9NUQx2T+mbVErCXVzD
- R1e1whRKXKHIxc9EjbULvjz9gEc0LE2v56pnM/nyRBYiaj2yMR/8KnljBq/OR5M3ycR3
- p8DroFH7xgwC+8NnC/4poQsssOPa9D3qK3CrGvakM2LUiRNsyiAgDEd10hx3o5NKy8wu
- B39m7P8IBd/K0MkPIMD870rXi/ck9kFohZZDqgDe2R7ntJiHwaE3aC17vvKURPG2oZQG
- Cbk0kKd7/ttJRP0bagvLOXl0wD23ps7RkxX2Q1W5o/PDnjyZwwxbIAAXZWh4u2nCnMKc
- 90PA==
+ bh=iMMNTERO31F+8kCv4Mg7Yr6Pae5QtEx8Xzxb3fKzqfI=;
+ b=sF2nG/pNjSB/epgRr+7hQ/ZssB6GtTd03Bcyox2gdeB3lWl73YCNX7yjgcTMkjpmmE
+ Muqn6MHrzfnzTDq0bAguk6K1XiJIY1VUQ+jkCjgR0KkZx47inPKtWbvE1KzcBlHykoUI
+ zarpetzNcrHCsWRnEJNlwmkb3byJVsItE/HkI6df6N94Z+C5sLZnokXFYw0/PlHZgW0r
+ ygCz6xbtko8q7UOvC7N58K5Q3QVRXNx/1QbneiHXaNzq2N+otDX8N6vGnDYt4o9hpO+2
+ MJZZxh94C/RjfxzEeOIRvX7s2KToRc87NkL8nXqSw7ItjTp51yO71MnOm234ZYDBtrH6
+ 8oyA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+L3erXzSuajP3gHIUtzpg6jDVHpscTVEFj5Er3CWQlzvqdapYHvH3fGie09g8aYovQRRU/X1ymrQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyEApygnjrr3bwqYiuPumSOqJA21ExjBlI5e2/LTqT5dMK3Rjro
- C8aVIWJoZ2Kad8MgTr5/l0mngAPiMhHbbUf/bLBmbBDzR5elK+/LDAfEsgezaBwVANk=
-X-Gm-Gg: AfdE7ckAcXxVkrMAbd6V6UfsXHgGWpWkbbWAgl/1lWkgbNx0YvFq9wH0WwPNp1QfrHE
- v6Ew2FK93w2NJIDN3QxC/L/Mj13zR0aPfrBVncltS1xfCAfn7/NIAkt4FGJcVkRylK7U6S1HGcy
- fbNgcBdlJSZJI8DFQN00RtLOI1qdt9aznBjSRky/nbsFMyq2sm3eae+edDRvFCGBdnVG6IYGQKe
- zy+oabmMl7xTblzUbseNr31+gZmOhlMIh/q6oaFTfPxGOm9SFlHMjKwdtQhkHIapvowHgAPU2iu
- FPjwCRo/pgHB4AGQltsxMLVToD8mcoVwYR/nwRhCoj/iE3OGgVFWg/88PmAmM7Bn9XEjrbil9nC
- UNAt2gTz5Q3mkz5w/Udr1U/da0pTXmwOt/N0+pwZEeO6tS7ae3KbRFaPW1GCeFAAA9LApMWKdvv
- uXgakX/26maDfF
-X-Received: by 2002:a05:600c:a07:b0:492:2c87:3d34 with SMTP id
- 5b1f17b1804b1-4924233ef9dmr50085455e9.15.1781884620009; 
+ AFNElJ+LjY6nokuJIH7hHjvGszyQiaQxMxPrf2KOIy2A7ferY7tdg+f5/qDVMBfvoh9S/5iK3otAXQRAew==@nongnu.org
+X-Gm-Message-State: AOJu0YxzUTjKxAvyke+VlE3YSF2wSrbkNZx1+41Pn9r917fdiTceOfqL
+ Pa/LnG6GMg0bhmYCvSOLa68KlCTfZhs+ONATqVdGiI4HIDRxbjCrc0vjQ+XG5vE4CWo=
+X-Gm-Gg: AfdE7clsl78FLjna+OhBZ0xh/c0l1w8EpBYVXu8+W2czskN4tCmpVbF5dJqDzDOTc9w
+ yhB4Mvogd+Ikpzt6Q2Iz/8O1hcP2a5lIHwMbX57UA0bDAwk3jSpJuFYlnzbhy9r6k3Va4eYD1b4
+ W2G3wtvxyesBrd0+qKRsihCvlBo4rkvd/NmFLkXwOnjgSlRZYPXCdyvVjor3/IMF7PE7qRUR3YZ
+ koC5xwdX3f7ux7pwupE5HVb9x3iIlncUgyoPqKO5nSBLWE754I4rPCiewtZK2AVeyKuEbIR6uDS
+ HCnimsjys3KQPLJau9crbAbQ1Ozx7xxvgn1/+AT+HkZGGBkc0NJhIdPW+H6koIayK4p5mwUlIkt
+ lrTv0Nsxp+wclNm4M6QyKDFFeUpDo5wfK6oFohjYcBLSpYcBE0MfwltdMYiA9GkSqU3VuTPsrDb
+ QrLpsEWsJTpKKqZIcJvk6b0SA=
+X-Received: by 2002:adf:e3c1:0:b0:460:18cc:dcfe with SMTP id
+ ffacd0b85a97d-46508afa647mr6460257f8f.34.1781884620553; 
  Fri, 19 Jun 2026 08:57:00 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4923fce9590sm80114075e9.4.2026.06.19.08.56.58
+ ffacd0b85a97d-46666c57a0esm2723f8f.27.2026.06.19.08.56.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Fri, 19 Jun 2026 08:56:58 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id AB1425F94E;
+ by draig.lan (Postfix) with ESMTP id 819AF5F917;
  Fri, 19 Jun 2026 16:56:57 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -83,18 +83,20 @@ Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Warner Losh <imp@bsdimp.com>,
  Brad Smith <brad@comstyle.com>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
- Song Gao <gaosong@loongson.cn>, Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 4/7] tests/functional: tell pylint not to check c-modules
-Date: Fri, 19 Jun 2026 16:56:53 +0100
-Message-ID: <20260619155657.944220-5-alex.bennee@linaro.org>
+ Song Gao <gaosong@loongson.cn>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PATCH 2/7] python/qemu: split console from harness args
+Date: Fri, 19 Jun 2026 16:56:51 +0100
+Message-ID: <20260619155657.944220-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260619155657.944220-1-alex.bennee@linaro.org>
 References: <20260619155657.944220-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,35 +119,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-To fix:
+Before we mess with the console output lets create a new helper just
+for that.
 
-  qemu-test.test_pylint "/home/alex/lsrc/qemu.git/tests/functional/arm/test_integratorcp.py:83: I1101: Module 'cv2' has no 'imread' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)"
-
-Manually running python3 showed I could indeed import cv2 and call
-those functions. Rather than allowing pylint to introspect lets just
-tell it to skip c modules.
-
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-ID: <20260612140531.3530387-1-alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-ID: <20260614100902.885698-5-alex.bennee@linaro.org>
+Message-ID: <20260614100902.885698-3-alex.bennee@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/functional/pylintrc | 1 +
- 1 file changed, 1 insertion(+)
+ python/qemu/machine/machine.py | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/tests/functional/pylintrc b/tests/functional/pylintrc
-index 049c3e76f12..949bea611fe 100644
---- a/tests/functional/pylintrc
-+++ b/tests/functional/pylintrc
-@@ -58,6 +58,7 @@ confidence=HIGH,
- # no Warning level messages displayed, use "--disable=all --enable=classes
- # --disable=W".
- disable=bad-inline-option,
-+        c-extension-no-member,
-         consider-using-f-string,
-         file-ignored,
-         fixme,
+diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
+index e8973a87394..18ee5ec0147 100644
+--- a/python/qemu/machine/machine.py
++++ b/python/qemu/machine/machine.py
+@@ -306,7 +306,11 @@ def _harness_args(self) -> List[str]:
+                 moncdev = f"socket,id=mon,path={self._monitor_address}"
+             args.extend(['-chardev', moncdev, '-mon',
+                          'chardev=mon,mode=control'])
++        return args
+ 
++    @property
++    def _console_args(self) -> List[str]:
++        args: List[str] = []
+         for _ in range(self._console_index):
+             args.extend(['-serial', 'null'])
+         if self._console_set:
+@@ -372,6 +376,7 @@ def _pre_launch(self) -> None:
+             self._wrapper,
+             [self._binary],
+             self._harness_args,
++            self._console_args,
+             self._base_args,
+             self._args
+         ))
 -- 
 2.47.3
 

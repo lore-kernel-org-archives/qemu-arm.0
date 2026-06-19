@@ -4,87 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE259CD98F6
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Jun 2026 11:56:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 217D4CD98F2
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Jun 2026 11:56:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1waXpN-0003u8-JV; Fri, 19 Jun 2026 07:56:05 -0400
+	id 1waXpD-0003pt-9z; Fri, 19 Jun 2026 07:55:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1waXpK-0003re-HX
- for qemu-arm@nongnu.org; Fri, 19 Jun 2026 07:56:02 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1waXpC-0003pT-5r
+ for qemu-arm@nongnu.org; Fri, 19 Jun 2026 07:55:54 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1waXpH-0007QK-Gy
- for qemu-arm@nongnu.org; Fri, 19 Jun 2026 07:56:02 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-491b390f9e9so17934475e9.0
- for <qemu-arm@nongnu.org>; Fri, 19 Jun 2026 04:55:59 -0700 (PDT)
+ id 1waXp9-0007IW-6f
+ for qemu-arm@nongnu.org; Fri, 19 Jun 2026 07:55:53 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-490b613a17bso16029835e9.3
+ for <qemu-arm@nongnu.org>; Fri, 19 Jun 2026 04:55:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=9elements.com; s=google; t=1781870158; x=1782474958; darn=nongnu.org;
+ d=9elements.com; s=google; t=1781870149; x=1782474949; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PS/TuhXlvJSi58VgikiiV4TNJ+qf4mDFo/4hF9rtwac=;
- b=QWoAT/19tmxqkI6K+hLinSjwDyl0lwWdg9aVhEIkuiiUm/IIxlV03D7xgyCUWMaRQQ
- f+IWQdwpZRQl97RgviAWfBTI6CSoQ/otmmNLta+duA5L1F2906QoZef2klJCU0nDmoZv
- x0e6eimzqESiOUL0p8gEt0jwMHFeQXrqIwZB6n6GtGizXRjWi/6C4T6pv7awU+wI/BFN
- VfECUKno1T7cvv7cRFuzjxFRylBHPw4q9xq2LDljD6R/bVdMVtOu47080F4iiQj5HTHY
- tyxFUUrSgI4ec/lGsC0EfXAJb+v8RjFAaKbP1r9tJgzbx7Ep8XmLH01pC7Dl+UUnQ8Ji
- 6B5A==
+ bh=yJRSrxahRkdWIZv2lvX2AZotDoi8WuISiQJyi/g5p1U=;
+ b=H0dQMIDOuhhuYlIgxItyhTtE3KY5BESGkqGBO8d9p1YV1CN4QwyZsnA2FjMiCiyoFQ
+ oN4EHdK0+436mM+6T2ht2YazRHvk2KmFwLsanFqeRaZkjTwZFW2WufssrwSIFhFLte4e
+ upiW7Bn2pE3rKmEqyrM3VWhXojwqnK6nlkTxvmB6uOVvW6OrdmWUgclHdj4I06LBc0PR
+ t8+GrYCuL7zKzlES1QWDlDw4zTZWFHdBFhjadbLqjjrNgv79V/1op8CQotv3hdzSXmiQ
+ EGTVZO2Y+ZIbYGuKReYhnj/WOk5XeZrbUfXaloG1n4wanhA0QYHAWSzinuVuQjy/Zh3Z
+ QXNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781870158; x=1782474958;
+ d=1e100.net; s=20251104; t=1781870149; x=1782474949;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=PS/TuhXlvJSi58VgikiiV4TNJ+qf4mDFo/4hF9rtwac=;
- b=mXhMr9rqCk+j56m6nG3J6gGTesj2KF0YlVDh/2b6XpYkIsFUNx/XhmuEumI30VOIP8
- dNoi7mlu+dO8GeECKFW8k/++Z9I4es/swyh8XkIw0zersUkDyJkBs+4jcSkDw0Zmq/aA
- g0RSccTTnPLCJ4lPglhLu7TItmI9f6AuD9cLTdpBu/ipTX7V0dMm+xJGN7PlbiCddKVC
- Kr7zeSNXv5HHshlEKp2xyzU/H+kWshL2cL83vg0yeeYFsAxL1Ojt/SHmEJP4PHdAx2C3
- pW73XRIAMXGttcGROW0bRTBxXZu7OdA6NzVhdJcPTdY8oWSHDaZQmqLKX2mJzyM4t0Gn
- eZUw==
+ bh=yJRSrxahRkdWIZv2lvX2AZotDoi8WuISiQJyi/g5p1U=;
+ b=JoCcSpagZUIIODzcH92I/YTdW0lTocJybsadqoXlMYui/YWX7KUYN1aEbT22Jic35x
+ pZFHkyyi8VJi5j3PcH6I2MkTSBucWkmhjnMcjW7Jmabfp+fRn5s2jrzX1Xjy3jfmbrRQ
+ dJqafMOGmEm5QcRYyLOZ93BcBCQ7owq2pI3XLNdcgPNimM1YhAWp+BAn0cYg+ZBz1wCA
+ INsXq3bA6qNWY0BGEvhKKoZZEo+MeOzCRwJ5YUAlr9UYscL4EixmbQSNlq30rOpsUr/u
+ HovvOT1MGxNuy3lnY13mCYycZb6Dall8E4G8tx3QrURmwIJXVoMZCjS7bIfX9x1NnFvY
+ ttZw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/fpiLxP6WmqiRvXcZG4AHkW1E73oBEJtj3Lb8lPamAlk3KMLYOpxBsAzZU8Rp8SY66oVj9nZ8GUg==@nongnu.org
-X-Gm-Message-State: AOJu0YyrigxPVUY9i5lOdV3xsui93d+885JbWtsx7MwBp6rFptowbfGA
- pFRvTBG7h+/OdqFfJ9wqh0J1kx2KP0E9V0HHaFK8GmeZrrQwc/zrf/1/zz3Uq25mgpY=
-X-Gm-Gg: AfdE7ckC6SVJhuQmT5v7aBjFLqsK1/nmZESWZ0TtgJAEF9zsRKotQoVY0Ph1wQjlXuJ
- +o2w3gjEvBBLmUwi52NrYBfIuiF0fKIpNISGewk6t/9x7VHJ67p5l2/W2eupFzEXKkUPniPpdzm
- aI16cv6Jxvt6ch8CvIIkM9su/a1pnxjlXI4Nq8fGu5Ce5ybusJYbRyo08W02IcFTl/eDTgaSYQP
- Q44gawypWEtlwX/hUKS7QoL1rYFEykA5viTMzLRGANMc3qI5/y2W4Xs1XtLYaueV9CSZdAGLsbd
- m6f/qTyv+oGbcV1hMLo0rYqEy81No5D6de6AvAsd/e1IPiZtPa0WxPMdO6/XOpcDGB/FS+sm69n
- yLrNrUEfaRr2WVEvMszsOcxVYAZ/lsxDmOD7Lf1/7M3tbLwywxDYad1mjlnODi/9nxaUv3s5L9t
- +j9ujpeDQ4p45p9O+DyUqmd/cRWeCKwWpxCrRmjw==
-X-Received: by 2002:a05:600c:e555:10b0:490:e5c1:b8c6 with SMTP id
- 5b1f17b1804b1-49240dfd165mr37917745e9.8.1781870158034; 
- Fri, 19 Jun 2026 04:55:58 -0700 (PDT)
+ AFNElJ/vcQP1gvOS+1+R5S31ZeE77MHHanJUafYXkAt70NzV3EZ7EdqJOKVyvnfr1O939TOyHmNlg8zM0A==@nongnu.org
+X-Gm-Message-State: AOJu0YyWXxJH8PuHm1Tf0PEZIxwpd1YY3RIXzOBrafqswxOX4Em7ocUw
+ +TCNIZp8+mNtrh1WK4XVMlBTClbZaksg21PlpWJVO9u/Xt2wooyH17ASxZGZPp5gneA=
+X-Gm-Gg: AfdE7clM4ROqlJbbLEi+qLzEaPhLJgnfXAPXQKVXwJp4JwSbRRXxJQBDS27xI39DNEX
+ vIa0OcrOYFXPUqYE0zbYsN739Qu76Ef5GpiocLUGj7CT5CjaRtVb/igD/Ow1u9R3RGuFkWV9B06
+ Hf4h4bZvWsB3jgoJayovCKiWzBSSklbD9LCIUupqQdtkPZL7VoT+buSaucLpxDLYzrWA2bnwp3g
+ An1YdsaQKp9FxMs3US51/YyiOrdVl5KtAcd0OEXmlpO6ygH+gpJE+MBstzoJmUpWRn3dwOJfgFG
+ AhtHMXRPMPj4605JlchUmgakLHXUOt7D0jHh7mdG1HMGnyApXZBL7FzZ1u+OK5XejBbFTqJk/yS
+ jbpAuH1f+i4YE3LKzDqgYBF6OGysjqJ7FRmxChCu2hyIS67fLW2IOHIjddDg++8X6Ev99P8+rxY
+ XL1ZJ3kHTEIxGzeoK1usZU5k5OyoTjPtouxiqRLA==
+X-Received: by 2002:a05:600c:8b52:b0:492:379c:32ee with SMTP id
+ 5b1f17b1804b1-4923ef4c629mr66848015e9.6.1781870149259; 
+ Fri, 19 Jun 2026 04:55:49 -0700 (PDT)
 Received: from localhost.localdomain ([188.111.3.154])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4923ff821aasm64439975e9.12.2026.06.19.04.55.57
+ 5b1f17b1804b1-4923ff821aasm64439975e9.12.2026.06.19.04.55.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Jun 2026 04:55:57 -0700 (PDT)
+ Fri, 19 Jun 2026 04:55:48 -0700 (PDT)
 From: <alexander.hansen@9elements.com>
 To: qemu-devel@nongnu.org
 Cc: eblot@meta.com, titusr@google.com, clg@kaod.org,
  Alexander Hansen <alexander.hansen@9elements.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v7 4/4] hw/sensor: support MAX11615
-Date: Fri, 19 Jun 2026 13:55:33 +0200
-Message-ID: <20260619115533.5664-5-alexander.hansen@9elements.com>
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v7 1/4] ast2600: yosemite4 initial support
+Date: Fri, 19 Jun 2026 13:55:30 +0200
+Message-ID: <20260619115533.5664-2-alexander.hansen@9elements.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260619115533.5664-1-alexander.hansen@9elements.com>
 References: <20260619115533.5664-1-alexander.hansen@9elements.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=alexander.hansen@9elements.com; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=alexander.hansen@9elements.com; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,530 +111,353 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Alexander Hansen <alexander.hansen@9elements.com>
 
-Product: [1]
-Datasheet: [2]
+Initial patch based on [1] to support yosemite v4 bmc emulation.
 
-Sensor readings can be provided upon creation of the device. In case no
-readings are provided the ADC reads a pre-defined arbitrary value.
+The goal of this machine support is to support OpenBMC development.
 
-root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/name
-max11615
-root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage0_raw
-1922
-root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage_scale
-0.500000000
+Reference linux devicetree from openbmc linux is [2].
 
-trace:
-less /tmp/qemu-trace.log | grep -i max116
-max11615_realize i2c_addr: 0x33
-max11615_realize i2c_addr: 0x33
-max11615_event i2c_addr: 0x33, event: 0x01
-max11615_write_setup i2c_addr: 0x33, data: 0xd2
-max11615_write_config i2c_addr: 0x33, data: 0x0f
-max11615_event i2c_addr: 0x33, event: 0x03
-max11615_event i2c_addr: 0x33, event: 0x01
-max11615_write_setup i2c_addr: 0x33, data: 0xd2
-max11615_write_config i2c_addr: 0x33, data: 0x0f
-max11615_event i2c_addr: 0x33, event: 0x03
-max11615_event i2c_addr: 0x33, event: 0x01
-max11615_write_setup i2c_addr: 0x33, data: 0xd2
-max11615_write_config i2c_addr: 0x33, data: 0x61
-max11615_event i2c_addr: 0x33, event: 0x03
-max11615_event i2c_addr: 0x33, event: 0x00
-max11615_recv i2c_addr: 0x33, reg_addr: 0x00
-max11615_recv_return i2c_addr: 0x33, returns: 0xfa
-max11615_recv i2c_addr: 0x33, reg_addr: 0x00
-max11615_recv_return i2c_addr: 0x33, returns: 0xd2
-max11615_event i2c_addr: 0x33, event: 0x04
-max11615_event i2c_addr: 0x33, event: 0x03
+Status:
+- Enclosure FRU:         showing up
+- Management Board FRU:  showing up
+- Blade Board FRU:       showing up
+- Blade Board sensors:   not implemented
+- Blade Chassis FRU:     showing up
+- Fan Board FRU:         both showing up
+- Fan Board sensors:     supported
+
+Overall the emulation is incomplete but already helpful in development
+and testing.
+
+The focus of this initial support is on the FRU eeproms and fanboard
+sensors.
+
+Tested: booted an OpenBMC image for yosemite4 target.
 
 References:
-[1] https://www.analog.com/en/products/MAX11615.html
-[2] https://www.analog.com/media/en/technical-documentation/data-sheets/MAX11612-MAX11617.pdf
+[1] https://github.com/9elements/qemu/commit/32139f913c2bd0ebe4bd26c46765861f6f9f2d49
+[2] arch/arm/boot/dts/aspeed/aspeed-bmc-facebook-yosemite4.dts
+[3] https://github.com/legoater/qemu-aspeed-boot/pull/5
 
 Cc: Emmanuel Blot <eblot@meta.com>
 Cc: Titus Rwantare <titusr@google.com>
 Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
-Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-Cc: "Philippe Mathieu-Daudé" <philmd@linaro.org> (odd fixer:Overall sensors)
-Cc: Paolo Bonzini <pbonzini@redhat.com> (maintainer:Kconfig)
-Cc: Peter Maydell <peter.maydell@linaro.org> (supporter:ARM TCG CPUs)
+Cc: Peter Maydell <peter.maydell@linaro.org> (maintainer:ASPEED BMCs)
+Cc: Steven Lee <steven_lee@aspeedtech.com> (reviewer:ASPEED BMCs)
+Cc: Troy Lee <leetroy@gmail.com> (reviewer:ASPEED BMCs)
+Cc: Jamin Lin <jamin_lin@aspeedtech.com> (reviewer:ASPEED BMCs)
+Cc: Kane Chen <kane_chen@aspeedtech.com> (reviewer:ASPEED BMCs)
+Cc: Andrew Jeffery <andrew@codeconstruct.com.au> (reviewer:ASPEED BMCs)
+Cc: Joel Stanley <joel@jms.id.au> (reviewer:ASPEED BMCs)
+Cc: qemu-arm@nongnu.org (open list:ASPEED BMCs)
 Cc: qemu-devel@nongnu.org (open list:All patches CC here)
-Cc: qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
 ---
- MAINTAINERS                              |   1 +
- hw/arm/Kconfig                           |   1 +
- hw/arm/aspeed_ast2600_fby4.c             |   8 +-
- hw/sensor/Kconfig                        |   4 +
- hw/sensor/max11615.c                     | 320 +++++++++++++++++++++++
- hw/sensor/meson.build                    |   1 +
- hw/sensor/trace-events                   |   9 +
- include/hw/sensor/max11615.h             |  19 ++
- tests/functional/arm/test_aspeed_fby4.py |   9 +
- 9 files changed, 371 insertions(+), 1 deletion(-)
- create mode 100644 hw/sensor/max11615.c
- create mode 100644 include/hw/sensor/max11615.h
+ docs/system/arm/aspeed.rst   |   5 +-
+ hw/arm/aspeed_ast2600_fby4.c | 260 +++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build           |   1 +
+ 3 files changed, 264 insertions(+), 2 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast2600_fby4.c
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e3df75f7bb..4b5c8cc65a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3993,6 +3993,7 @@ S: Maintained
- F: hw/i2c/pmbus_device.c
- F: hw/sensor/adm1272.c
- F: hw/sensor/isl_pmbus_vr.c
-+F: hw/sensor/max11615.c
- F: hw/sensor/max31790.c
- F: hw/sensor/max34451.c
- F: include/hw/i2c/pmbus_device.h
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 43e96a671b..19259bc2e2 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -554,6 +554,7 @@ config ASPEED_SOC
-     select PMBUS
-     select MAX31785
-     select MAX31790
-+    select MAX11615
-     select FSI_APB2OPB_ASPEED
-     select AT24C
-     select PCI_EXPRESS
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 2d51ceeb84..f719a5cebb 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -1,5 +1,5 @@
+-Aspeed family boards (``anacapa-bmc``, ``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
+-===============================================================================================================================================================================================================================================================================================================================================
++Aspeed family boards (``anacapa-bmc``, ``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fby4-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
++=============================================================================================================================================================================================================================================================================================================================================================
+ 
+ The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
+ Aspeed evaluation boards. They are based on different releases of the
+@@ -33,6 +33,7 @@ AST2600 SoC based machines :
+ - ``fuji-bmc``             Facebook Fuji BMC
+ - ``bletchley-bmc``        Facebook Bletchley BMC
+ - ``fby35-bmc``            Facebook fby35 BMC
++- ``fby4-bmc``             Facebook fby4 BMC
+ - ``anacapa-bmc``          Facebook Anacapa BMC
+ - ``gb200nvl-bmc``         Nvidia GB200nvl BMC
+ 
 diff --git a/hw/arm/aspeed_ast2600_fby4.c b/hw/arm/aspeed_ast2600_fby4.c
-index 8feb31bc44..dd84839c65 100644
---- a/hw/arm/aspeed_ast2600_fby4.c
-+++ b/hw/arm/aspeed_ast2600_fby4.c
-@@ -11,6 +11,7 @@
- #include "hw/arm/aspeed.h"
- #include "hw/arm/aspeed_soc.h"
- #include "hw/nvram/eeprom_at24c.h"
-+#include "hw/sensor/max11615.h"
- #include "hw/i2c/i2c_mux_pca954x.h"
- #include "hw/gpio/pca9552.h"
- 
-@@ -185,7 +186,12 @@ static void fby4_i2c_init_fanboard(I2CSlave *fan_mux, size_t eepromSize)
-         i2c_slave_create_simple(bus, "max31790", 0x2f);
- 
-         /* maxim,max11615 @ 0x33   (adc) */
--        /* TODO */
-+        static const uint16_t adc_values[8] = {
-+            1922, 1000,
-+            1922, 1000,
-+            1922, 1000,
-+            1922, 1000};
-+        max11615_init_with_values(bus, 0x33, adc_values, 8);
- 
-         at24c_eeprom_init_rom(
-             bus, 0x52, eepromSize,
-diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
-index 767f198e92..441bee7604 100644
---- a/hw/sensor/Kconfig
-+++ b/hw/sensor/Kconfig
-@@ -47,3 +47,7 @@ config MAX31785
- config MAX31790
-     bool
-     depends on I2C
-+
-+config MAX11615
-+    bool
-+    depends on I2C
-diff --git a/hw/sensor/max11615.c b/hw/sensor/max11615.c
 new file mode 100644
-index 0000000000..ac2ccda4fa
+index 0000000000..03f54d4393
 --- /dev/null
-+++ b/hw/sensor/max11615.c
-@@ -0,0 +1,320 @@
++++ b/hw/arm/aspeed_ast2600_fby4.c
+@@ -0,0 +1,260 @@
 +/*
-+ * Maxim MAX11615 Low-Power 12 bit ADC
-+ * Models MAX11612,MAX11613,MAX11614,MAX11615,MAX11616,MAX11617
++ * Facebook Yosemite V4
 + *
-+ * Datasheet:
-+ * https://www.analog.com/media/en/technical-documentation/data-sheets/MAX11612-MAX11617.pdf
-+ *
-+ * Copyright 2026 9elements
++ * Copyright 2026 9elements.
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
 +#include "qemu/osdep.h"
-+#include "hw/sensor/max11615.h"
-+#include "hw/i2c/i2c.h"
-+#include "migration/vmstate.h"
-+#include "qapi/error.h"
-+#include "qapi/visitor.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "trace.h"
-+
-+#define MAX11615_NUM_CHANNELS 8
-+
-+struct MAX11615State {
-+    I2CSlave i2c;
-+
-+    /* true: single-ended mode, false: differential mode */
-+    bool single_ended;
-+
-+    /*
-+     * Output data coding for the MAX11612–MAX11617 is
-+     * binary in unipolar mode and two’s complement in bipolar mode
-+     */
-+    bool bipolar;
-+
-+    /* The MAX11613/MAX11615/MAX11617 feature a 2.048V internal reference */
-+    uint16_t vref;
-+
-+    uint16_t channels[MAX11615_NUM_CHANNELS];
-+
-+    /* output buffer */
-+    uint8_t outlen;
-+    uint8_t outbuf[2];
-+
-+    /* selected channel for read/write operation */
-+    uint8_t pointer;
-+};
-+
-+struct MAX11615Class {
-+    I2CSlaveClass parent_class;
-+};
-+
-+OBJECT_DECLARE_TYPE(MAX11615State, MAX11615Class, MAX11615)
-+
-+static void max11615_set_outbuf(MAX11615State *s, uint16_t value)
-+{
-+    uint8_t msb = value >> 8;
-+    uint8_t lsb = value & 0xff;
-+    s->outbuf[0] = 0xf0 | (msb & 0xf);
-+    s->outbuf[1] = lsb;
-+}
-+
-+static void max11615_read_single_ended(MAX11615State *s)
-+{
-+    /* Table 3. Channel Selection in Single-Ended Mode */
-+    /* read an ADC channel, first 4 bits must be high */
-+    uint16_t value = s->channels[s->pointer];
-+    /*
-+     * In single-ended mode, the MAX11612–MAX11617 always
-+     * operates in unipolar mode irrespective of BIP/UNI.
-+     */
-+    if (value > s->vref) {
-+        value = 0xfff;
-+    }
-+    max11615_set_outbuf(s, value);
-+}
-+
-+static int16_t max11615_differential_value(MAX11615State *s)
-+{
-+    /* Table 4. Channel Selection in Differential Mode */
-+    size_t i1 = s->pointer;
-+    size_t i2 = (s->pointer % 2 == 0) ? s->pointer + 1 : s->pointer - 1;
-+
-+    const int16_t ch1 = s->channels[i1];
-+    const int16_t ch2 = s->channels[i2];
-+    return ch1 - ch2;
-+}
-+
-+static void max11615_read_differential(MAX11615State *s)
-+{
-+    const int16_t value = max11615_differential_value(s);
-+    uint16_t vu = value;
-+
-+    /* full-scale transition: Figure 12, Figure 13 */
-+    if (s->bipolar) {
-+        const uint16_t fs = s->vref / 2;
-+        if (value < -fs) {
-+            vu = 0x800;
-+        }
-+        if (value > fs) {
-+            vu = 0x7ff;
-+        }
-+    } else {
-+        /*
-+         * A negative differential analog input in unipolar mode causes the
-+         * digital output code to be zero
-+         */
-+        if (value < 0) {
-+            vu = 0;
-+        }
-+    }
-+
-+    max11615_set_outbuf(s, vu);
-+}
-+
-+static void max11615_read(MAX11615State *s)
-+{
-+    if (s->single_ended) {
-+        max11615_read_single_ended(s);
-+    } else {
-+        max11615_read_differential(s);
-+    }
-+}
-+
-+static void max11615_write_config_byte(MAX11615State *s, uint8_t data)
-+{
-+    trace_max11615_write_config(s->i2c.address, data);
-+
-+    uint8_t scan_select = (data >> 5) & 0x3;
-+
-+    if (scan_select != 0x3) {
-+        qemu_log_mask(LOG_UNIMP, "%s: unimplemented scan select\n", __func__);
-+    }
-+
-+    uint8_t channel_select = (data >> 1) & 0xf;
-+
-+    /* Table 3. Channel Selection */
-+    if (channel_select >= MAX11615_NUM_CHANNELS) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid channel select\n",
-+                      __func__);
-+        channel_select = MAX11615_NUM_CHANNELS - 1;
-+    }
-+    s->pointer = channel_select;
-+    s->single_ended = data & 0x1;
-+}
-+
-+static void max11615_write_setup_byte(MAX11615State *s, uint8_t data)
-+{
-+    trace_max11615_write_setup(s->i2c.address, data);
-+    /* we ignore the setup byte, not implemented */
-+
-+    /* 1 = no action, 0 = resets the configuration register to default */
-+    const bool rst = ((data >> 1) & 0x1) == 0x0;
-+
-+    if (rst) {
-+        s->single_ended = true;
-+        s->pointer = 0;
-+    }
-+
-+    s->bipolar = ((data >> 2) & 0x1) == 0x1;
-+
-+    /* Table 6. Reference Voltage */
-+    const uint8_t sel = (data >> 4) & 0x7;
-+
-+    if (sel == 0x2 || sel == 0x3) {
-+        qemu_log_mask(LOG_UNIMP, "%s: unsupported: external vref\n", __func__);
-+    }
-+}
-+
-+static int max11615_send(I2CSlave *i2c, uint8_t data)
-+{
-+    MAX11615State *s = MAX11615(i2c);
-+    const uint8_t msb = (data >> 7) & 0x1;
-+
-+    if (msb) {
-+        max11615_write_setup_byte(s, data);
-+    } else {
-+        max11615_write_config_byte(s, data);
-+    }
-+
-+    s->outlen = 0;
-+    return 0;
-+}
-+
-+static uint8_t max11615_recv(I2CSlave *i2c)
-+{
-+    MAX11615State *s = MAX11615(i2c);
-+    trace_max11615_recv(s->i2c.address, s->pointer);
-+
-+    if (s->outlen >= 2) {
-+        /* MAX11615 supports multichannel scan with wraparound */
-+        /* see datasheet page 17 */
-+
-+        s->outlen = 0;
-+
-+        s->pointer++;
-+        if (s->pointer >= MAX11615_NUM_CHANNELS) {
-+            s->pointer = 0;
-+        }
-+    }
-+
-+    max11615_read(s);
-+
-+    const uint8_t data = s->outbuf[s->outlen++];
-+
-+    trace_max11615_recv_return(s->i2c.address, data);
-+    return data;
-+}
-+
-+static int max11615_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    MAX11615State *s = MAX11615(i2c);
-+
-+    trace_max11615_event(s->i2c.address, event);
-+
-+    switch (event) {
-+    case I2C_START_RECV:
-+        s->outlen = 0;
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_max11615 = {
-+    .name = TYPE_MAX11615,
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .fields =
-+        (const VMStateField[]){ VMSTATE_BOOL(single_ended, MAX11615State),
-+                                VMSTATE_BOOL(bipolar, MAX11615State),
-+                                VMSTATE_UINT16(vref, MAX11615State),
-+                                VMSTATE_UINT16_ARRAY(channels, MAX11615State,
-+                                                     MAX11615_NUM_CHANNELS),
-+                                VMSTATE_UINT8(outlen, MAX11615State),
-+                                VMSTATE_UINT8_ARRAY(outbuf, MAX11615State, 2),
-+                                VMSTATE_UINT8(pointer, MAX11615State),
-+                                VMSTATE_I2C_SLAVE(i2c, MAX11615State),
-+                                VMSTATE_END_OF_LIST() }
-+};
-+
-+I2CSlave *max11615_init_with_values(I2CBus *bus, uint8_t address,
-+                                    const uint16_t *init_values,
-+                                    uint32_t init_values_size)
-+{
-+    MAX11615State *s;
-+
-+    s = MAX11615(i2c_slave_new(TYPE_MAX11615, address));
-+
-+    i2c_slave_realize_and_unref(I2C_SLAVE(s), bus, &error_abort);
-+
-+    for (int i = 0; i < MAX11615_NUM_CHANNELS; i++) {
-+        /* arbitrary value if there is no data*/
-+        s->channels[i] = i < init_values_size ? init_values[i] : 0x2d2;
-+    }
-+
-+    return I2C_SLAVE(s);
-+}
-+
-+static void max11615_reset_enter(MAX11615State *s)
-+{
-+    trace_max11615_reset_enter(s->i2c.address);
-+
-+    s->single_ended = true;
-+    s->bipolar = false;
-+    s->vref = 2048;
-+    s->pointer = 0;
-+    s->outlen = 0;
-+
-+    for (int i = 0; i < MAX11615_NUM_CHANNELS; i++) {
-+        s->channels[i] = 0x2d2;
-+    }
-+}
-+
-+static void max11615_reset(Object *obj, ResetType type)
-+{
-+    MAX11615State *s = MAX11615(obj);
-+
-+    max11615_reset_enter(s);
-+}
-+
-+static void max11615_realize(DeviceState *dev, Error **errp)
-+{
-+    MAX11615State *s = MAX11615(dev);
-+
-+    trace_max11615_realize(s->i2c.address);
-+}
-+
-+static void max11615_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+
-+    dc->realize = max11615_realize;
-+    dc->desc = "Maxim MAX11615 12-bit ADC";
-+    dc->vmsd = &vmstate_max11615;
-+    rc->phases.hold = max11615_reset;
-+    k->event = max11615_event;
-+    k->recv = max11615_recv;
-+    k->send = max11615_send;
-+}
-+
-+static const TypeInfo max11615_info = {
-+    .name = TYPE_MAX11615,
-+    .parent = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(MAX11615State),
-+    .class_size = sizeof(MAX11615Class),
-+    .class_init = max11615_class_init,
-+};
-+
-+static void max11615_register_types(void)
-+{
-+    type_register_static(&max11615_info);
-+}
-+
-+type_init(max11615_register_types)
-diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
-index 4987c3b253..a1e26604fa 100644
---- a/hw/sensor/meson.build
-+++ b/hw/sensor/meson.build
-@@ -9,3 +9,4 @@ system_ss.add(when: 'CONFIG_LSM303DLHC_MAG', if_true: files('lsm303dlhc_mag.c'))
- system_ss.add(when: 'CONFIG_ISL_PMBUS_VR', if_true: files('isl_pmbus_vr.c'))
- system_ss.add(when: 'CONFIG_MAX31785', if_true: files('max31785.c'))
- system_ss.add(when: 'CONFIG_MAX31790', if_true: files('max31790.c'))
-+system_ss.add(when: 'CONFIG_MAX11615', if_true: files('max11615.c'))
-diff --git a/hw/sensor/trace-events b/hw/sensor/trace-events
-index 35c30b985c..1512819354 100644
---- a/hw/sensor/trace-events
-+++ b/hw/sensor/trace-events
-@@ -17,3 +17,12 @@ max31790_fan_dynamics_read(uint8_t i2c_addr, size_t channel, uint8_t value) "i2c
- max31790_fan_dynamics_write(uint8_t i2c_addr, size_t channel, uint8_t value) "i2c_addr: 0x%02x, channel: %zu, value: 0x%02x"
- max31790_fan_config_read(uint8_t i2c_addr, size_t channel, uint8_t value) "i2c_addr: 0x%02x, channel: %zu, value: 0x%02x"
- max31790_fan_config_write(uint8_t i2c_addr, size_t channel, uint8_t value) "i2c_addr: 0x%02x, channel: %zu, value: 0x%02x"
-+
-+# max11615.c
-+max11615_write_setup(uint8_t i2c_addr, uint8_t send) "i2c_addr: 0x%02x, data: 0x%02x"
-+max11615_write_config(uint8_t i2c_addr, uint8_t send) "i2c_addr: 0x%02x, data: 0x%02x"
-+max11615_recv(uint8_t i2c_addr, uint8_t reg_addr) "i2c_addr: 0x%02x, reg_addr: 0x%02x"
-+max11615_recv_return(uint8_t i2c_addr, uint8_t data) "i2c_addr: 0x%02x, returns: 0x%02x"
-+max11615_event(uint8_t i2c_addr, uint8_t event) "i2c_addr: 0x%02x, event: 0x%02x"
-+max11615_realize(uint8_t i2c_addr) "i2c_addr: 0x%02x"
-+max11615_reset_enter(uint8_t i2c_addr) "i2c_addr: 0x%02x"
-diff --git a/include/hw/sensor/max11615.h b/include/hw/sensor/max11615.h
-new file mode 100644
-index 0000000000..647ef62ef1
---- /dev/null
-+++ b/include/hw/sensor/max11615.h
-@@ -0,0 +1,19 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+#ifndef QEMU_MAX11615_H
-+#define QEMU_MAX11615_H
-+
-+#include "hw/i2c/i2c.h"
-+
-+#define TYPE_MAX11615 "max11615"
++#include "hw/arm/machines-qom.h"
++#include "hw/arm/aspeed.h"
++#include "hw/arm/aspeed_soc.h"
++#include "hw/nvram/eeprom_at24c.h"
++#include "hw/i2c/i2c_mux_pca954x.h"
++#include "hw/gpio/pca9552.h"
++
++#define FBY4_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
++
++/* START OF EEPROM CONTENTS */
 +
 +/*
-+ * Create and realize a MAX11615 ADC with constant caller-supplied readings
-+ * @bus: I2C bus to put it on
-+ * @address: I2C address
-+ * @init_values: array of readings for each ADC channel
-+ * @init_values_size: Size of @init_values, can be less than the number of channels
++ *./frugen -s board.mfg="Wiwynn" \
++ * --set board.pname="Fan Board FSC-MAX ADC-TI LED-NXP EFUSE-MAX" \
++ * --set text:board.pn="BRD-PN-345" \
++ * --board-date "10/1/2017 12:58:00" \
++ * --set board.serial="123456" \
++ * --set product.pname="Yosemite V4" \
++ * --set product.mfg="Wiwynn" \
++ * --set product.ver="v1.1" \
++ * --set product.serial="123456" \
++ * --set product.atag="PLACEHOLDER" \
++ * --set product.custom="Fanboard Custom1" \
++ * --set product.custom.1="Fanboard Custom2" \
++ * --set text:product.pn="PN-345" \
++ * fru-yv4-fanboard.bin
 + */
-+I2CSlave *max11615_init_with_values(I2CBus *bus, uint8_t address,
-+                                    const uint16_t *init_values, uint32_t init_values_size);
++/* EM Config: yosemite4_fanboard_fsc_max_adc_ti_led_nxp_ons_efuse_max.json */
++/* Yosemite4 fan board */
++static const uint8_t fru_yv4_fanboard_bin[] = {
++  0x01, 0x00, 0x00, 0x01, 0x0b, 0x00, 0x00, 0xf3, 0x01, 0x0a, 0x19, 0xce,
++  0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xea, 0x46, 0x61,
++  0x6e, 0x20, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x20, 0x46, 0x53, 0x43, 0x2d,
++  0x4d, 0x41, 0x58, 0x20, 0x41, 0x44, 0x43, 0x2d, 0x54, 0x49, 0x20, 0x4c,
++  0x45, 0x44, 0x2d, 0x4e, 0x58, 0x50, 0x20, 0x45, 0x46, 0x55, 0x53, 0x45,
++  0x2d, 0x4d, 0x41, 0x58, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0xca, 0x42,
++  0x52, 0x44, 0x2d, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc0, 0xc1, 0x00,
++  0x00, 0x00, 0x00, 0xdb, 0x01, 0x09, 0x19, 0xc6, 0x57, 0x69, 0x77, 0x79,
++  0x6e, 0x6e, 0xcb, 0x59, 0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65, 0x20,
++  0x56, 0x34, 0xc6, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc4, 0x76, 0x31,
++  0x2e, 0x31, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0x89, 0x30, 0x1b, 0x8e,
++  0x25, 0xfa, 0xb2, 0x64, 0x29, 0x03, 0xc0, 0xd0, 0x46, 0x61, 0x6e, 0x62,
++  0x6f, 0x61, 0x72, 0x64, 0x20, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x32,
++  0xc1, 0x00, 0x00, 0x9d
++};
++static const size_t fru_yv4_fanboard_bin_len = sizeof(fru_yv4_fanboard_bin);
 +
-+#endif
-diff --git a/tests/functional/arm/test_aspeed_fby4.py b/tests/functional/arm/test_aspeed_fby4.py
-index f344413fe4..98223e3ab1 100755
---- a/tests/functional/arm/test_aspeed_fby4.py
-+++ b/tests/functional/arm/test_aspeed_fby4.py
-@@ -81,6 +81,15 @@ def do_test_arm_aspeed_openbmc_no_network(self, machine, image, uboot,
-         exec_command_and_wait_for_pattern(self,
-             "cat /sys/class/hwmon/hwmon2/fan1_input", "10347");
- 
-+        # MAX11615 test
-+        exec_command_and_wait_for_pattern(self,
-+            "cat /sys/bus/i2c/devices/30-0033/iio:device*/name", "max11615");
-+        # read the value configured in the machine emulation
-+        exec_command_and_wait_for_pattern(self,
-+            "cat /sys/bus/i2c/devices/30-0033/iio:device*/in_voltage0_raw", "1922");
-+        exec_command_and_wait_for_pattern(self,
-+            "cat /sys/bus/i2c/devices/30-0033/iio:device*/in_voltage_scale", "0.500000000");
++/*
++ *./frugen -s board.mfg="Wiwynn" \
++ * --set board.pname="Sentinel Dome without Retimer" \
++ * --set text:board.pn="BRD-PN-345" \
++ * --board-date "10/1/2017 12:58:00" \
++ * --set board.serial="123456" \
++ * --set product.pname="Yosemite V4" \
++ * --set product.mfg="Wiwynn" \
++ * --set product.ver="v1.1" \
++ * --set product.serial="123456" \
++ * --set product.atag="PLACEHOLDER" \
++ * --set product.custom="Yosemite V4 T1" \
++ * --set product.custom.1="Yosemite V4 T1" \
++ * --set text:product.pn="PN-345" \
++ * fru-yv4-sentineldome-board.bin
++ */
++/* product.cust maps to PRODUCT_INFO_AM2 */
++/* EM Config: yosemite4_sentineldome_t1.json */
++/* Yosemite4 Sentinel Dome without Retimer Boards */
++static const uint8_t fru_yv4_sentineldome_board_bin[] = {
++  0x01, 0x00, 0x00, 0x01, 0x09, 0x00, 0x00, 0xf5, 0x01, 0x08, 0x19, 0xce,
++  0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xdd, 0x53, 0x65,
++  0x6e, 0x74, 0x69, 0x6e, 0x65, 0x6c, 0x20, 0x44, 0x6f, 0x6d, 0x65, 0x20,
++  0x77, 0x69, 0x74, 0x68, 0x6f, 0x75, 0x74, 0x20, 0x52, 0x65, 0x74, 0x69,
++  0x6d, 0x65, 0x72, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0xca, 0x42, 0x52,
++  0x44, 0x2d, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc0, 0xc1, 0x00, 0x78,
++  0x01, 0x09, 0x19, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xcb, 0x59,
++  0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65, 0x20, 0x56, 0x34, 0xc6, 0x50,
++  0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc4, 0x76, 0x31, 0x2e, 0x31, 0x85, 0x91,
++  0x34, 0x51, 0x95, 0x05, 0x89, 0x30, 0x1b, 0x8e, 0x25, 0xfa, 0xb2, 0x64,
++  0x29, 0x03, 0xc0, 0xce, 0x59, 0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65,
++  0x20, 0x56, 0x34, 0x20, 0x54, 0x31, 0xc1, 0x00, 0x00, 0x00, 0x00, 0xeb
++};
++static const size_t fru_yv4_sentineldome_board_bin_len =
++    sizeof(fru_yv4_sentineldome_board_bin);
 +
-     def test_arm_ast2600_yosemitev4_openbmc(self):
-         image_path = self.uncompress(self.ASSET_YOSEMITE_V4_FLASH)
- 
++/*
++ *./frugen -s board.mfg="Wiwynn" \
++ * --set board.pname="Sentinel Dome" \
++ * --set text:board.pn="BRD-PN-345" \
++ * --board-date "10/1/2017 12:58:00" \
++ * --set board.serial="123456" \
++ * --set product.pname="Yosemite V4" \
++ * --set product.mfg="Wiwynn" \
++ * --set product.ver="v1.1" \
++ * --set product.serial="123456" \
++ * --set product.atag="PLACEHOLDER" \
++ * --set text:product.pn="PN-345" \
++ * fru-yv4-sentineldome-chassis.bin
++ */
++/* EM Config: yosemite4_sentineldome_chassis.json */
++/* Yosemite 4 Sentinel Dome Chassis FRU */
++static const uint8_t fru_yv4_sentineldome_chassis_bin[] = {
++  0x01, 0x00, 0x00, 0x01, 0x07, 0x00, 0x00, 0xf7, 0x01, 0x06, 0x19, 0xce,
++  0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xcd, 0x53, 0x65,
++  0x6e, 0x74, 0x69, 0x6e, 0x65, 0x6c, 0x20, 0x44, 0x6f, 0x6d, 0x65, 0x85,
++  0x91, 0x34, 0x51, 0x95, 0x05, 0xca, 0x42, 0x52, 0x44, 0x2d, 0x50, 0x4e,
++  0x2d, 0x33, 0x34, 0x35, 0xc0, 0xc1, 0x00, 0xb6, 0x01, 0x07, 0x19, 0xc6,
++  0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xcb, 0x59, 0x6f, 0x73, 0x65, 0x6d,
++  0x69, 0x74, 0x65, 0x20, 0x56, 0x34, 0xc6, 0x50, 0x4e, 0x2d, 0x33, 0x34,
++  0x35, 0xc4, 0x76, 0x31, 0x2e, 0x31, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05,
++  0x89, 0x30, 0x1b, 0x8e, 0x25, 0xfa, 0xb2, 0x64, 0x29, 0x03, 0xc0, 0xc1,
++  0x00, 0x00, 0x00, 0x59
++};
++static const size_t fru_yv4_sentineldome_chassis_bin_len =
++    sizeof(fru_yv4_sentineldome_chassis_bin);
++
++/*
++ *./frugen -s board.mfg="Wiwynn" \
++ * --set board.pname="Management Board wBMC" \
++ * --set text:board.pn="BRD-PN-345" \
++ * --board-date "10/1/2017 12:58:00" \
++ * --set board.serial="123456" \
++ * --set product.pname="Yosemite V4" \
++ * --set product.mfg="Wiwynn" \
++ * --set product.ver="v1.1" \
++ * --set product.serial="123456" \
++ * --set product.atag="PLACEHOLDER" \
++ * --set text:product.pn="PN-345" \
++ * fru-yv4-eclosure.bin
++ */
++/* EM Config: yosemite4_chassis.json, yosemite4.json */
++/* Yosemite 4 Sentinel Dome Enclosure FRU */
++static const uint8_t fru_yv4_eclosure_bin[] = {
++  0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0xce,
++  0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xd5, 0x4d, 0x61,
++  0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x42, 0x6f, 0x61,
++  0x72, 0x64, 0x20, 0x77, 0x42, 0x4d, 0x43, 0x85, 0x91, 0x34, 0x51, 0x95,
++  0x05, 0xca, 0x42, 0x52, 0x44, 0x2d, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35,
++  0xc0, 0xc1, 0x00, 0x26, 0x01, 0x07, 0x19, 0xc6, 0x57, 0x69, 0x77, 0x79,
++  0x6e, 0x6e, 0xcb, 0x59, 0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65, 0x20,
++  0x56, 0x34, 0xc6, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc4, 0x76, 0x31,
++  0x2e, 0x31, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0x89, 0x30, 0x1b, 0x8e,
++  0x25, 0xfa, 0xb2, 0x64, 0x29, 0x03, 0xc0, 0xc1, 0x00, 0x00, 0x00, 0x59
++};
++static const size_t fru_yv4_eclosure_bin_len = sizeof(fru_yv4_eclosure_bin);
++
++/* END OF EEPROM CONTENTS */
++
++static void fby4_i2c_init_fanboard(I2CSlave *fan_mux, size_t eepromSize)
++{
++    /* 2 fan boards */
++    for (int i = 0; i <= 1; i++) {
++        /* downstream bus */
++        I2CBus *bus = pca954x_i2c_get_bus(fan_mux, i);
++
++        /* ti,adc128d818 @ 0x1f    (adc) */
++        /* TODO */
++
++        /* maxim,max31790 @ 0x20   (pwm) */
++        /* TODO */
++
++        /*
++         * ti,tca6424 @ 0x22       (gpio)
++         * linux handles tca6424 with PCA953X_TYPE, same as pca9535
++         * { "pca9535", 16 | PCA953X_TYPE | PCA_INT, },
++         * { "tca6424", 24 | PCA953X_TYPE | PCA_INT, },
++         * so we _could_ be fine here unless more than 16 gpios are used
++         */
++        i2c_slave_create_simple(bus, TYPE_PCA9535, 0x22);
++
++        /*
++         * NOTE: above works and could use for gpio presence:
++         * $ gpioget gpiochip2 2
++         * 1
++         */
++
++        /* maxim,max31790 @ 0x2f   (pwm) */
++        /* TODO */
++
++        /* maxim,max11615 @ 0x33   (adc) */
++        /* TODO */
++
++        at24c_eeprom_init_rom(
++            bus, 0x52, eepromSize,
++            fru_yv4_fanboard_bin,
++            fru_yv4_fanboard_bin_len);
++
++        /* LED blink driver / gpio expander */
++        /* nxp,pca9552 @ 0x61   (gpio) */
++        i2c_slave_create_simple(bus, TYPE_PCA9552, 0x61);
++    }
++}
++
++static void fby4_i2c_init_blade_chassis(I2CBus *bus, size_t eepromSize)
++{
++    /* Sentinel Dome Blade EEPROMS */
++
++    /* Board */
++    at24c_eeprom_init_rom(bus, 0x54, eepromSize,
++        fru_yv4_sentineldome_board_bin, fru_yv4_sentineldome_board_bin_len);
++
++    /* Chassis */
++   at24c_eeprom_init_rom(bus, 0x55, eepromSize,
++       fru_yv4_sentineldome_chassis_bin, fru_yv4_sentineldome_chassis_bin_len);
++}
++
++static void fby4_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = bmc->soc;
++    I2CBus *i2c[16];
++
++    for (int i = 0; i < 16; i++) {
++        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
++    }
++
++    /* Enclosure (EM Config: yosemite4_chassis.json, yosemite4.json) */
++    at24c_eeprom_init_rom(i2c[1], 0x51, 128 * KiB,
++        fru_yv4_eclosure_bin, fru_yv4_eclosure_bin_len);
++
++    /* there is 8 blade chassis, but we only emulate 2 for performance reason */
++    fby4_i2c_init_blade_chassis(i2c[1], 128 * KiB);
++    fby4_i2c_init_blade_chassis(i2c[2], 128 * KiB);
++
++    /* Yv4 fanboard connection */
++    I2CSlave *fan_mux = i2c_slave_create_simple(i2c[14], TYPE_PCA9546, 0x74);
++
++    fby4_i2c_init_fanboard(fan_mux, 128 * KiB);
++}
++
++static void aspeed_machine_fby4_class_init(ObjectClass *oc, const void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Facebook fby4 BMC (Cortex-A7)";
++    amc->fmc_model = "mx66l1g45g";
++    amc->num_cs    = 2;
++    amc->macs_mask = ASPEED_MAC3_ON;
++    amc->i2c_init  = fby4_i2c_init;
++    mc->default_ram_size = FBY4_BMC_RAM_SIZE;
++    aspeed_machine_class_init_cpus_defaults(mc);
++}
++
++static const TypeInfo aspeed_ast2600_fby4_types[] = {
++    {
++        .name          = MACHINE_TYPE_NAME("fby4-bmc"),
++        .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
++        .class_init    = aspeed_machine_fby4_class_init,
++        .interfaces    = arm_machine_interfaces,
++    }
++};
++
++DEFINE_TYPES(aspeed_ast2600_fby4_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 4233a800be..64c399c0e8 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -62,6 +62,7 @@ arm_common_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_ast2600_catalina.c',
+   'aspeed_ast2600_evb.c',
+   'aspeed_ast2600_fby35.c',
++  'aspeed_ast2600_fby4.c',
+   'aspeed_ast2600_fuji.c',
+   'aspeed_ast2600_gb200nvl.c',
+   'aspeed_ast2600_rainier.c',
 -- 
 2.54.0
 

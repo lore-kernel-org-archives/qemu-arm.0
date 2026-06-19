@@ -4,86 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5E9ACD4F26
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Jun 2026 15:51:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6107CD4F26
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Jun 2026 15:57:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wabUp-0005VM-Vg; Fri, 19 Jun 2026 11:51:08 -0400
+	id 1wabac-0007Gq-Fs; Fri, 19 Jun 2026 11:57:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wabUo-0005Uj-D2
- for qemu-arm@nongnu.org; Fri, 19 Jun 2026 11:51:06 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wabaZ-0007EL-OG
+ for qemu-arm@nongnu.org; Fri, 19 Jun 2026 11:57:03 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wabUm-0007EX-Ur
- for qemu-arm@nongnu.org; Fri, 19 Jun 2026 11:51:06 -0400
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-84532e3dbf7so1362596b3a.1
- for <qemu-arm@nongnu.org>; Fri, 19 Jun 2026 08:51:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wabaX-0001Fe-KD
+ for qemu-arm@nongnu.org; Fri, 19 Jun 2026 11:57:03 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4923fb1f095so11414315e9.1
+ for <qemu-arm@nongnu.org>; Fri, 19 Jun 2026 08:57:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781884263; x=1782489063; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=K/drO9pGnXreGVKeGJ1egyIXtLTEMK/m3v6zLvc5Crg=;
- b=T/bG8L9LLL5bpKAu64ZUaTqA90z54CxWtArKw+WdK5q4GLBxbYIO8goXXOso1NVj18
- REsYM5Mt9kEVfiXYroE28abip6+JH/FwEwnFDe81xLZgFS2U8+SirIrndaIgn4LUIPd3
- gEDsry9ZOLt+0M9dNSKZvmOFzNF3BxE/3gqurGiqLXo06EErWy4Xdl6C0Zxv/a/qYe5d
- savof4jEa/qgQIga8HK1cQph92MuKBtPNWMOL8V6SZByUbGyYaGsS9M/T/h/lFMGxmFg
- K4pSRxpysT2RsmSC6YWYe+lUURj2B2B+nnGJdWDulm1qAk+FEE6QYC5WErkqfXKDWtTH
- IkOw==
+ d=linaro.org; s=google; t=1781884620; x=1782489420; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=XAcK458fLut29YrBXX4JA0FS5UqQPCx1uFviFFxfcaE=;
+ b=ujhe+ROWrYTNwX0zPu+PKHVBOGsES+p7j29ltjalzel3080gGkHTPiCHt5+ulhOUoM
+ p2pj/irap0x/Zjk34lkf9Fpwl+ow1jzuEgM8Gc6iMGloDrQfkoIa5wTCvnvbpj4jaObp
+ 0rUSyzK5g4iiAIPxvv7InlDilHTsy7VJ6gW9WOQ7uJdJcoGBppxL4pfEUXbh8bRTDEpa
+ eLxS98ssO8tZp7h+lnZD47AViZJZ1uFspMLvU6GxeykCMmX/KG/WJRysK3pbdiKNvTQj
+ 5N4F/XlPpY9x+JdVUuSM58KFPlLdJ1GsoIPR68oRK2hSi5qB880QCAiRERBZnqrH5JSr
+ 20Cw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781884263; x=1782489063;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=K/drO9pGnXreGVKeGJ1egyIXtLTEMK/m3v6zLvc5Crg=;
- b=V8Ata5OAid9D8PZC+hkr18S8Wwo9vSNhMUNHOiSIzQL6CLt49EEqUps5eVWORs64U3
- GF0GvChC8ylicOA0nQzfsQXS6n2BVKSsZwstgbKFfNELEi12Vh1lVwfGsueHiWo4HFwW
- vlMqSSGDxsLOlhepvZBaMOTlPgdxg/aMv2lg2WHXfwGWGagUxM+aN5RSGcZ8JJGszrWU
- Q3wD3HxHu9TvGb0WySB3x+JxBgfa6Fo9PxOmBQOXBeP56Ipd4a+VLyMkqI1PNGwNcfPp
- sqg4/iXx1kw6D+j5Thk1b89+Q3qmjyjlqwkUcTPU2zswbdZSuOzyyy1i9wqobCPmEehF
- YLFg==
+ d=1e100.net; s=20251104; t=1781884620; x=1782489420;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=XAcK458fLut29YrBXX4JA0FS5UqQPCx1uFviFFxfcaE=;
+ b=AGtSd7lXiCpCWP4Tc6NdLKOxYziPxPgJ2jRk2ioceXtW9A0m9NUQx2T+mbVErCXVzD
+ R1e1whRKXKHIxc9EjbULvjz9gEc0LE2v56pnM/nyRBYiaj2yMR/8KnljBq/OR5M3ycR3
+ p8DroFH7xgwC+8NnC/4poQsssOPa9D3qK3CrGvakM2LUiRNsyiAgDEd10hx3o5NKy8wu
+ B39m7P8IBd/K0MkPIMD870rXi/ck9kFohZZDqgDe2R7ntJiHwaE3aC17vvKURPG2oZQG
+ Cbk0kKd7/ttJRP0bagvLOXl0wD23ps7RkxX2Q1W5o/PDnjyZwwxbIAAXZWh4u2nCnMKc
+ 90PA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/bgo2lnlxpAYr5CWJO2z4Gb9go1J2mNsbJNKeAdnYSQWE6MEIOnAaxXW8HCYAqghYwRifbnjZYQA==@nongnu.org
-X-Gm-Message-State: AOJu0YzYcqk9ms3O9ZlOxEWkAoXdeWjlBQBnKBtTfoS0W+mm6l/9HUAW
- d7OegS0vVFUnFf2YwH8Xb044tXxQlYUhze4Qlt7Xiar3Vd29WICpOdLoYC7wGpfPND4=
-X-Gm-Gg: AfdE7cnjw6BfqR5sKaoOzUqk9Mwvbt0fzzSHHXH5pSY3CCpJ/5xyYKDb3rBjHBtRyVQ
- 3L2d5pDGiK2JPPNzAQGM0DgbTfy2HXoGB7zrcVGmtkrFa81mazGLcpBY+zVjHQahe2bamB5vRIH
- cI/j4lggLoEutuymbaIsZ8UcIvTZryQcQUjY75js6KAMgPn6Mr4uHK4jph3B4DV3FlZ+npjjK3A
- RJcBsnHBHa8EweSumV3Ci/EXFDXM0lAvVUnRmQe4v1NtgxvqK5F3A90Fs26R8eXvPO5KRFEs8Ps
- dqbEnYh7kbRDQ9x1czKPv8KsQoi4uEyMQCjJwXWqWcWqKXI2uVv8wNbHj0Ni4ilUiihLNk8e3rv
- 7Q0791V700AOqn0/t/im8oQl53EaoPh1KeD8/McHAUFxk4W1ZdDQotjqYgYmTsQjfC4xzThQX9/
- VfWtdOScZV2XbpYgEjbW+qBcZs/QI7FCPwjA+JXDlhmhLUxUMs1R3rFh7TbA==
-X-Received: by 2002:a05:6a00:339a:b0:842:83d1:ee6d with SMTP id
- d2e1a72fcca58-84550aff364mr4294744b3a.45.1781884262628; 
- Fri, 19 Jun 2026 08:51:02 -0700 (PDT)
-Received: from [192.168.0.4] (174-21-129-215.tukw.qwest.net. [174.21.129.215])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-8455384df1csm2733091b3a.52.2026.06.19.08.51.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 19 Jun 2026 08:51:00 -0700 (PDT)
-Message-ID: <f818fd19-93c3-4d43-bcc3-fa11ea92947d@linaro.org>
-Date: Fri, 19 Jun 2026 08:50:57 -0700
+ AFNElJ+L3erXzSuajP3gHIUtzpg6jDVHpscTVEFj5Er3CWQlzvqdapYHvH3fGie09g8aYovQRRU/X1ymrQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyEApygnjrr3bwqYiuPumSOqJA21ExjBlI5e2/LTqT5dMK3Rjro
+ C8aVIWJoZ2Kad8MgTr5/l0mngAPiMhHbbUf/bLBmbBDzR5elK+/LDAfEsgezaBwVANk=
+X-Gm-Gg: AfdE7ckAcXxVkrMAbd6V6UfsXHgGWpWkbbWAgl/1lWkgbNx0YvFq9wH0WwPNp1QfrHE
+ v6Ew2FK93w2NJIDN3QxC/L/Mj13zR0aPfrBVncltS1xfCAfn7/NIAkt4FGJcVkRylK7U6S1HGcy
+ fbNgcBdlJSZJI8DFQN00RtLOI1qdt9aznBjSRky/nbsFMyq2sm3eae+edDRvFCGBdnVG6IYGQKe
+ zy+oabmMl7xTblzUbseNr31+gZmOhlMIh/q6oaFTfPxGOm9SFlHMjKwdtQhkHIapvowHgAPU2iu
+ FPjwCRo/pgHB4AGQltsxMLVToD8mcoVwYR/nwRhCoj/iE3OGgVFWg/88PmAmM7Bn9XEjrbil9nC
+ UNAt2gTz5Q3mkz5w/Udr1U/da0pTXmwOt/N0+pwZEeO6tS7ae3KbRFaPW1GCeFAAA9LApMWKdvv
+ uXgakX/26maDfF
+X-Received: by 2002:a05:600c:a07:b0:492:2c87:3d34 with SMTP id
+ 5b1f17b1804b1-4924233ef9dmr50085455e9.15.1781884620009; 
+ Fri, 19 Jun 2026 08:57:00 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4923fce9590sm80114075e9.4.2026.06.19.08.56.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 19 Jun 2026 08:56:58 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id AB1425F94E;
+ Fri, 19 Jun 2026 16:56:57 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ John Snow <jsnow@redhat.com>, Thomas Huth <th.huth+qemu@posteo.eu>,
+ Cleber Rosa <crosa@redhat.com>, Kyle Evans <kevans@freebsd.org>,
+ Fabiano Rosas <farosas@suse.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Warner Losh <imp@bsdimp.com>,
+ Brad Smith <brad@comstyle.com>, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Song Gao <gaosong@loongson.cn>, Thomas Huth <thuth@redhat.com>
+Subject: [PATCH 4/7] tests/functional: tell pylint not to check c-modules
+Date: Fri, 19 Jun 2026 16:56:53 +0100
+Message-ID: <20260619155657.944220-5-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260619155657.944220-1-alex.bennee@linaro.org>
+References: <20260619155657.944220-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 10/10] target/arm: Enable FEAT_SME_F8F32 for -cpu max
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20260618041517.573469-1-richard.henderson@linaro.org>
- <20260618041517.573469-11-richard.henderson@linaro.org>
- <CAFEAcA_K8C4x7jCy3afb-NFH==38a7-KoiwmwDTAUXY8qxfeJQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <CAFEAcA_K8C4x7jCy3afb-NFH==38a7-KoiwmwDTAUXY8qxfeJQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,21 +117,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 6/19/26 06:54, Peter Maydell wrote:
-> On Thu, 18 Jun 2026 at 05:16, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
-> 
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> 
-> Are you going to do SME_F8F16 next? That seems to be something
-> of a pair with SME_F8F32: each feature implies the presence
-> of the other.
+To fix:
 
-Yes.
+  qemu-test.test_pylint "/home/alex/lsrc/qemu.git/tests/functional/arm/test_integratorcp.py:83: I1101: Module 'cv2' has no 'imread' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)"
 
+Manually running python3 showed I could indeed import cv2 and call
+those functions. Rather than allowing pylint to introspect lets just
+tell it to skip c modules.
 
-r~
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Message-ID: <20260612140531.3530387-1-alex.bennee@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-ID: <20260614100902.885698-5-alex.bennee@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/functional/pylintrc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/functional/pylintrc b/tests/functional/pylintrc
+index 049c3e76f12..949bea611fe 100644
+--- a/tests/functional/pylintrc
++++ b/tests/functional/pylintrc
+@@ -58,6 +58,7 @@ confidence=HIGH,
+ # no Warning level messages displayed, use "--disable=all --enable=classes
+ # --disable=W".
+ disable=bad-inline-option,
++        c-extension-no-member,
+         consider-using-f-string,
+         file-ignored,
+         fixme,
+-- 
+2.47.3
+
 

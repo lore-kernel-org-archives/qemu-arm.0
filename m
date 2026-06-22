@@ -4,77 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18E87CDB46F
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Jun 2026 15:43:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D243ACDB46F
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Jun 2026 16:07:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wbgnd-0005eo-B6; Mon, 22 Jun 2026 11:43:04 -0400
+	id 1wbhBY-00066U-8w; Mon, 22 Jun 2026 12:07:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yisooan.dev@gmail.com>)
- id 1wbfrS-0006ej-SY
- for qemu-arm@nongnu.org; Mon, 22 Jun 2026 10:42:54 -0400
-Received: from mail-pl1-f171.google.com ([209.85.214.171])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wbhBV-000662-Ig
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2026 12:07:41 -0400
+Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <yisooan.dev@gmail.com>)
- id 1wbfrR-0002W9-FB
- for qemu-arm@nongnu.org; Mon, 22 Jun 2026 10:42:54 -0400
-Received: by mail-pl1-f171.google.com with SMTP id
- d9443c01a7336-2c0aa420401so28023715ad.3
- for <qemu-arm@nongnu.org>; Mon, 22 Jun 2026 07:42:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wbhBU-0006Ip-5o
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2026 12:07:41 -0400
+Received: by mail-yx1-xb12a.google.com with SMTP id
+ 956f58d0204a3-662bb8b1f93so4423395d50.1
+ for <qemu-arm@nongnu.org>; Mon, 22 Jun 2026 09:07:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782144459; cv=none;
+ d=google.com; s=arc-20240605;
+ b=FI3PNVN7agb2DJVla/7cgZ/APx7xfGcYcSRIDe0WqHDC+BqwAdyydxS6COvaodKDp+
+ hfBxeC0PsW+un9Mugjsa+j/h1CbcoBXPY0bH0PqNGkGp3x5LrhC+HLXz1lADUlIzgWsr
+ LZEEkCUHw+xLFvMmP4+OKci7S2DvyJPjCbGVv5m9ePgEtKSyFKcr8i57Skt5CvCmagzB
+ Pqcnf2m+L0tcHLwOLvWgSEBosAmGiYX+vHWO6dctx+ruJV+stBmUsliPVb5Wu69vbbIs
+ 328dQHtNNF/HP683JwVr95k71GmFb6tJH4SmuvS7Xq+MlHl4wbpV6T6QojlLegvU24Vd
+ fTQQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=XFXBYQvR1B9AsvIycYAgg9wXLkRe3WQ47h1nYEBLwjM=;
+ fh=nr54sUBo34v0Tw8LFx0E4ZVk9iqntZVK3SjJhuWBszU=;
+ b=UMLAqGaKj2zGkNhrb0bl6JOtqh/XTaLHfpjoMw0CHfPIW26jyb2XHtSUL9EYDmnfNk
+ JiotrckYeu7deUu5JLNDVBq/BtE1RtzlZpGVBpoCKEepl/5MegVe8jeSZJGRAdDMsUsq
+ e/89diEQ7mIDrod/sWSpBNUkqAxhtLGNbLBXvnB1B5biC7zZY+s9luap0qcBo/d2Aq5u
+ l9vQVqel0sUMh/PDnHTVucxzU4CrgAv+3njeqr5xELO8ce21zYEJahX+HG/J41kCzB7V
+ uG97qRORuphk5E/clNcN4mMiPG0XCBifDoTW0DVXn5heSfGUl+Fc3i0NkGXjmaJoss8e
+ FdDQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1782144459; x=1782749259; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=XFXBYQvR1B9AsvIycYAgg9wXLkRe3WQ47h1nYEBLwjM=;
+ b=QUcAq8FKhWKW85D3x/l7KQAymnl4BKaCLEVBlREBXyJpou3q7D7NN6p5ejhPirijtD
+ 2Tfd0FJwDcF0Ao+ALDlbnd7Bl9Kn0iAoMZy/3WLMf7WnIwReqLiVu6XpM0Rye2WALDJS
+ Lq9G/QWyisAjRI4/4J/iLwkBwStP7yHvzFiWKiZRxMsxCasNPiJQ0U7QsO/II07zUF/z
+ 4/xUCi1RnFVafvRqDXhLIaH74ZbrDTjWljmWuqAFDTNHRO5rkqUhfTX+3wdBrZj4bTqX
+ wq4zRv9LpnQ/lsit7N2l+3NfI0Ktr/nSxhS9MzYq/DNfBfDxrXB1uf2klu7bfb7QlAZe
+ TYrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782139372; x=1782744172;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1782144459; x=1782749259;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=yLCOumI8xlezF9WytHpWj4JZYwGJnn+HP3QxVV+wd00=;
- b=epp3E0egUmXVQhtJPGbLJn9Vf9+qIVYXEsFi5OK0rx5GmIi4yzW7XDRhSE3n33MaKh
- kUsUPU+Jh0lt6cAuXOet0Dul2saj2EidoVlAyR8rSBO0Nbsi1KffVdhrX3fBCESX9a8k
- 5w/nj16b34mq7+11gzgGTdgN7rx+Y+vFUKAItFLq9mfZSl+X7LJx8wQFIzfSHRvYrak2
- eAMU9+ra1l7Pgi4yzPoOshR4envOpq6ProNwf6mroEusbrIH0Ul7PxSK4eD2Ay4eb/u+
- jVX3+yQ9eo8RjUzhg2wrRrAKt5cI3kpvDlm52ahYI8bngr8CC433lc0wdjS+Rr0clWck
- UX1g==
-X-Gm-Message-State: AOJu0Yxq73R6HZpIQgbh30OW6YqpWS4Hd/IyIxsGnPt4QLare5PkSh6F
- SXq5OP35u74ZOEA+U1Jafkf/cLoSmLck51SWujyuHd+0zPvliear5MJU
-X-Gm-Gg: AfdE7cl7oo/orjpbs9R4wkzQl81gQLp1TwpDpjzHBCUIjUM+/pKAejRvFBZd58V0C3y
- yGm4Nbynt4AL2Wb8hdskicHc51XEGNclzUUyGz67n/MjoJDvzSPVS39yepDuZIYa5FPGljiSZlc
- ypin8V773pYvxwzml2p9bHk0beEwEUOsHjxjfcKfYCVbGAaCITBBPPtCnpLM48F5lA6F9q3PHis
- ioXLXY/kxVNdWHN63Ill29eV///xnKL28m/QneuyUmAObqmweLrPsNqLxTG2ZarecAv1A3DY1oh
- ii2RC0IzfL3aW/xa0yUEyUDMjyzwrlPB1iOye7Ybx9Ibvd3iI2IO2H/tB2+SySjo90sM85FGPg9
- GmbNyq+7L9t0nHbhWVrbsgJYZzd8XyjPE+J7dKKaXewIf0W9d81hFyLR/sv56EB4Bb9Qd+4hpuI
- YbHj6qnya1VUHe1hDGE7xM3t1yGiHnSYdCUSn+h8dqgTVQtg==
-X-Received: by 2002:a17:903:ac7:b0:2c7:9b17:668d with SMTP id
- d9443c01a7336-2c79b176c3cmr39962755ad.2.1782139372004; 
- Mon, 22 Jun 2026 07:42:52 -0700 (PDT)
-Received: from localhost.localdomain ([1.213.237.162])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2c7439f8cfbsm78955285ad.45.2026.06.22.07.42.49
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 22 Jun 2026 07:42:51 -0700 (PDT)
-From: Leesoo Ahn <lsahn@ooseel.net>
-To: agraf@csgraf.de,
-	peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Leesoo Ahn <lsahn@ooseel.net>
-Subject: [PATCH] arm/hvf: panic the guest if an unhandled exception occurs in
- el1
-Date: Mon, 22 Jun 2026 23:42:45 +0900
-Message-ID: <20260622144245.55013-1-lsahn@ooseel.net>
-X-Mailer: git-send-email 2.50.1
+ bh=XFXBYQvR1B9AsvIycYAgg9wXLkRe3WQ47h1nYEBLwjM=;
+ b=dkISBsAk5cd19jDaodbyWyoa9rBio63NiTb3opVB5LTInJcGsslLWOnhzN+flaL9DN
+ urHZoPa43Cs1xq+2+5ODLm9U2x3ZFpuvYHO/RurrUR1g8mqvofcCOo2tGVGqQE/0rznz
+ pLiUUPus0C5lHEzszx1JHzZFO1Fx+euYAZ42Dc3Q/QTfAmUcS1QK+V5T2PYilz7M5lah
+ kj9/RDTu7pOj8LSmcz0mEZFOSQS6acptCjmxpnSHWqJI2n6zkgPdddXECA9ITXHbeOsz
+ KyedUJbiBigNdCEXLOeceaB+kwtTSGLhfjjW56LZj1Oof1RnqusS5P3RGlLYrfn4hjdi
+ pveg==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RrCYUuAH5g88BObckV/ytMIxcQ89PHryWtfln2lV/xvVSSYEWL+vC1xJXOFNOlBS9FZlYkFNdmcng==@nongnu.org
+X-Gm-Message-State: AOJu0Ywcx5eemB9+l6+Rro/iy5cm3KMF2r55403foBbbhU5Qya25IBfa
+ xNI3uiNOgd6lQ8P7cR1aaHktyX+3ctQRkVQFLf+dM1ntYeIhCENVTGsTl6T45yikkSOUNC8jPOa
+ 8FTiR3yGH5pLrA5dji4cYBk+aOeUlAbJQVUcZVQqB/A==
+X-Gm-Gg: AfdE7clhzTmKXbfiUGsKtYBxpO9Yi/Hbh/oiFxTCcLGESMCJnKQ2ceYEspsp5kdxuPF
+ 0dydlDljEKOCASHbD5c+aodWHdr/paUlGDKIJlyE0JYsepF/GCuaZH14kFOOUyXuBMWf7qH2KrU
+ ca9k/2en4Ry2oXMzsvdGDBm5LRLszbdA/LHskmN6jlLSsCeO6HZ2MKcT7KESwWCOAatC401WMui
+ xmVUM5eNZSkcKGMeyswh/r3l6wJ9TgGbUVl5V6xw1LZ1d3wI1IdNQ8tlHdztnLpaUuyVhovm2cy
+ h4pdUdWzU1GUwPaqPsXxiFQEUw6YG0w9+our2NTRma9YN9D7kN0Ydzwd
+X-Received: by 2002:a05:690e:e81:b0:662:dcac:7a52 with SMTP id
+ 956f58d0204a3-663032f5ee5mr12483256d50.39.1782144458590; Mon, 22 Jun 2026
+ 09:07:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=209.85.214.171;
- envelope-from=yisooan.dev@gmail.com; helo=mail-pl1-f171.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260529-feat-mte4-v7-0-ccbd3c14eb3c@gmail.com>
+In-Reply-To: <20260529-feat-mte4-v7-0-ccbd3c14eb3c@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 22 Jun 2026 17:07:26 +0100
+X-Gm-Features: AVVi8CdQFZcZe9qHP4nGo_qucpQD1VPolgeNGwX947UE4Cv122fXpI5UTm5dl_4
+Message-ID: <CAFEAcA8R1RXrGo2xov-4gKLQXX=FTVKoK1rGuxuYmBo9e8SN_g@mail.gmail.com>
+Subject: Re: [PATCH v7 00/15] target/arm: add support for MTE4
+To: Gabriel Brookman <brookmangabriel@gmail.com>
+Cc: qemu-devel@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
+ Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 22 Jun 2026 11:42:54 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,30 +118,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-It's better to clean up any resources that the guest taking and quit
-if an exception in el1 could not be resolved.
+On Fri, 29 May 2026 at 20:52, Gabriel Brookman
+<brookmangabriel@gmail.com> wrote:
+>
+> This series implements ARM's Enhanced Memory Tagging Extension
+> (MTE4). MTE4 implies the presence of several subfeatures:
+> FEAT_MTE_CANONICAL_TAGS, FEAT_MTE_TAGGED_FAR, FEAT_MTE_STORE_ONLY,
+> FEAT_MTE_NO_ADDRESS_TAGS, and FEAT_MTE_PERM, none of which are
+> currently implemented in QEMU. This patch implements all five.
 
-Otherwise, the guest would get in the infinite-loop black-hole by
-unmodified pc.
+I just noticed that this patchset didn't add FEAT_MTE4 to the
+list of implemented features in docs/system/arm/emulation.rst.
+Are we missing anything to be able to call MTE4 complete
+and close https://gitlab.com/qemu-project/qemu/-/work_items/3116 ?
 
-Signed-off-by: Leesoo Ahn <lsahn@ooseel.net>
----
- target/arm/hvf/hvf.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 8b902c6882..4358cf90e8 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -2533,6 +2533,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
-         cpu_synchronize_state(cpu);
-         trace_hvf_exit(syndrome, ec, env->pc);
-         error_report("0x%llx: unhandled exception ec=0x%x", env->pc, ec);
-+        qemu_system_guest_panicked(cpu_get_crash_info(cpu));
-     }
- 
-     /* flush any changed cpu state back to HVF */
--- 
-2.50.1 (Apple Git-155)
-
+thanks
+-- PMM
 

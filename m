@@ -4,92 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D7C4CDB471
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Jun 2026 16:10:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86368CDB46F
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Jun 2026 22:16:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wbhDN-0007Fn-2c; Mon, 22 Jun 2026 12:09:37 -0400
+	id 1wbmwL-0001Jc-Mn; Mon, 22 Jun 2026 18:16:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
- id 1wbhCN-0006OH-GZ
- for qemu-arm@nongnu.org; Mon, 22 Jun 2026 12:08:36 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <imaginos32@gmail.com>)
+ id 1wbmw6-0001Ik-EG
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2026 18:16:14 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
- id 1wbhCL-0006lu-VV
- for qemu-arm@nongnu.org; Mon, 22 Jun 2026 12:08:35 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-49249707788so16494305e9.2
- for <qemu-arm@nongnu.org>; Mon, 22 Jun 2026 09:08:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imaginos32@gmail.com>)
+ id 1wbmw2-0000Ae-VY
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2026 18:16:09 -0400
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-c0be5e548a4so429702966b.3
+ for <qemu-arm@nongnu.org>; Mon, 22 Jun 2026 15:16:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782166563; cv=none;
+ d=google.com; s=arc-20240605;
+ b=iD0x6imDzlEe1zIGq36aLW+idG5agaTwvkQl3fou8XgyfyLHGuWiCcJC12cQ4anQsa
+ VneMte6lRIQBz5ZjOylNNRubhsUaBUMFX463QlNqnv9zqzIXbnfvIZVAqUxgcyzWBZD3
+ sL/NxMEfT3AZZlzAh3S2XtCXSPPIX/b4447hFsspgFdWz0wMMETL9OSLX+dpYd7m34NJ
+ JnwQTLBkqo/ZNzl1DxiHljJXftwivhNrZLueMC6fXSppxHotjIJaZNHIPUVlBlCZI1eH
+ Nyo/azVXccZbeU7LnwT8HUJNs4lwlKghYCYdKdUBKZfTh94PMUIfiSU15UF9o71i71i2
+ 0NHQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=OQXbCbpfsYPqXGbCWEVREiTQC3eFwyHDe4DLtDdCi4s=;
+ fh=Y0e+zEoJWFixHp26KYezDr0HAwPIKh/2vIxfc9Nk0gE=;
+ b=eoP5PopX68fXWJix6oQ+BSodOCNA0gsIIZlc7VnCwtgs1myjfq4lNV8jAa+fCldLT3
+ JgwJ5R8dC8DjK4A1mo1DzwH9yiu1GjT6q3jC7xhAO1IKuY/8r/eYySzBjxAgj8wlyqmW
+ PHDd29o+EbNSqfzWHLuxW7n4l95gppk4tz2i+MeP18mj/ZnYxMDMdblvptA9Ljk3BIz6
+ FWMvTKyHZajdA88NdzKd8jFxNUNrgYMuJQPJbdlrJz45RVqBwter5qvWXQqYcsYtUpeW
+ tTzQRak164aESyHZGqmv+iOsRRymcbnFvo1sGcZ9T09y69hAwivcpa4K0gSx2xi9GXta
+ sddw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1782144512; x=1782749312; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=iVoIwb+vhh8sM7msaYY87Ws0rtfErG1nVoKxO5ce55k=;
- b=iKu4NqaUliNxaCbaz3EhFC1jSt2Ss9A+qyFSwqMrtnAkML65qZVi84f/FNdGw2kPTL
- I2D93AaLtEwF+PcHVyxCMNRWoKo3GFszPtQaLlEt+8sX861KIJXGsh0K/c/wF9iklFpj
- WJG8TyCt1MaLUQy0wg5V0oAclqgJQxungu80yKwc5XCMSmvwkgvrcBjqGkDehYye3P+L
- Cdq5ui3N3Odzx1UIHuVYq8NyiWaNwmtbHqfYzLiGvaxoNnUXjPyvunXvTx+yZM0mOIlM
- 5xDHaGr9Ol1ALEjrEQBqXe94mLVBQdSpwT3EnPHV/heto6At0w0m7if67fTDG/cCAV1I
- eMSQ==
+ d=gmail.com; s=20251104; t=1782166563; x=1782771363; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=OQXbCbpfsYPqXGbCWEVREiTQC3eFwyHDe4DLtDdCi4s=;
+ b=Uj86YpBAPwW2jxo6XPLeTWDXe+pAr5xwWYQesUi8Ha409xhQ2/6Hz/xphHK0bcMFRV
+ OSrfhVGJcr3gtjQSFtysgjGocKTdHC9EG+iqk+YqHenjU1+nI+diy2k7zQ6dSoMoSetF
+ caToXCqnQPOY0J834/kI/zqKNKAyT6+GZCxfADX3HrXoPwDecxyRa0tFWbO90qSypph+
+ 7wk1Ab4eqF3uoe77BSddyCiRJuW2GvcSbeGXeZOrrMtIYnvJ2ublmZzRdLipLZpjpw9A
+ Jzb4N3ShfXqVcU3tcrDi8J8YMMisiFxpJdfJKbKJjMm/rzNUU7VyfJHTex/d4QzLDhWQ
+ /fyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782144512; x=1782749312;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=iVoIwb+vhh8sM7msaYY87Ws0rtfErG1nVoKxO5ce55k=;
- b=a7l6rPdrbLhe0mf58h19CMfqhV4HxuFQwEMYg6OMXC2b9ixHwhfViRLptAFeDFJyyz
- nmNI/b5/NgyGk8470p37Mo7ZYZ2NhBe6DH1SfvYF3EZBioMuRPGY1S4KfczNilQ28ZX7
- kWaaZcbxaqx3ve8CULnAFA+lNgZ8+iUjcu3Yy3EVj+DRR3ZK50fJYT22dDtFnuR6HdCw
- Fvj1BkmynEw5g4ASzCMXQcbQ/b6u8E+HGqW03ku3w9sX1rqJ1rLNQ5HxueDPdUdcpzxc
- 26E76oKyvkQx6n3fBzJ0D8UXyujkgriBlGXMFeC4GCKLfSxrs46L8dfyNJYZiEK+IUuy
- VYkg==
-X-Gm-Message-State: AOJu0YyC5DGzRUJbVlnabjQMjfXRIDBV7hU6JYOo30N1ODGy6KVDpmrw
- ibnm32CH9reF9z5j/T3u10DyTSqWGyIKBUPmLYM70jF6RS1A8w+kHVAo
-X-Gm-Gg: AfdE7cnm3Y8vMLpw1dQPg7BZwIQ0zwHAlEHF1YwV4YPXGuenzQ4Hk+up4pi6puxEMgq
- /aKq6oa3EzK0QA5DlnPMQlipX8mn6fajzKDznzdl0AzUR3TxdnAaBJIdTnm2ndxxgBZMsDBWlXs
- vHYP647ea4hfOpcD1wXB7J6K6nrrV3BdP1qkTCxxb+6eY7hJcZpQ/ZqhraA1IqyOcyMcpeZC1lH
- Jl2/9+aefDQPPr8rA+ki1M1+UnJVQTcKApNkjjTLOnNTwI3NoXLejxeqPSVa/PKcHbYU5bhQagX
- ZfvSmlaXoR50NDSZ0pF4WqO4orPm/6i9yxl7pBcL3wlP2m53jraRc/dt9nDX63Rbjr8hFw9lsSi
- Wb23SxJ8ud4PQqk7iYHorbOikb8BkPEx/M2jppgrJ1QycgGBJir5PDkR2cohZddnR9M0/VmtEU0
- AGQAQG0B9t6XvhL0SFJpHDg23BRyrCi9INZXrBdoQ2Akk=
-X-Received: by 2002:a05:600c:8b38:b0:492:40df:d49c with SMTP id
- 5b1f17b1804b1-492490a7783mr178804885e9.23.1782144512480; 
- Mon, 22 Jun 2026 09:08:32 -0700 (PDT)
-Received: from acidburn.pod.cvut.cz (acidburn.pod.cvut.cz. [147.32.90.2])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-492494496d8sm225062545e9.9.2026.06.22.09.08.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Jun 2026 09:08:31 -0700 (PDT)
-From: =?UTF-8?q?Maty=C3=A1=C5=A1=20Bobek?= <matyas.bobek@gmail.com>
-To: qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
- Pavel Pisa <pisa@fel.cvut.cz>, Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-arm@nongnu.org, Marc Kleine-Budde <mkl@pengutronix.de>,
- Oliver Hartkopp <socketcan@hartkopp.net>,
- Nikita Ostrenkov <n.ostrenkov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrey Volkov <andrey@volkov.fr>,
- =?UTF-8?q?Maty=C3=A1=C5=A1=20Bobek?= <matyas.bobek@gmail.com>
-Subject: [PATCH v6 7/7] docs/arm/sabrelite: Mention FlexCAN support
-Date: Mon, 22 Jun 2026 18:08:12 +0200
-Message-ID: <19407fc30bdf6b264d1c093a82903609e9cfee48.1782140438.git.matyas.bobek@gmail.com>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <cover.1782140438.git.matyas.bobek@gmail.com>
-References: <cover.1782140438.git.matyas.bobek@gmail.com>
+ d=1e100.net; s=20251104; t=1782166563; x=1782771363;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=OQXbCbpfsYPqXGbCWEVREiTQC3eFwyHDe4DLtDdCi4s=;
+ b=sHmMky+UV7dndZR6ae7aPD4x90VyDDCS9MQIuP9HAsJfVEwoQlE4fdhJR4jjJJQG/B
+ r2lkcYwAGobCfzGtzz9bXCJAhYkpQqBf+4RCT4P9+TzAm1jX0B1F9dEK6gqxbb2ufph8
+ 5Ptfm5cTWYqU7VzIJ2Ay9TZ1uZAqOvxcL+cqdVSfwiXbaBTUWa8NH++dqaxvbtz3O8JB
+ cIZAh8pc+GXOAOILFw0sjA2aAaUH7+d4KmcjSgS1bRKq24WH3HLD5AWA9aMRp/BF/BrY
+ iMDXOC3UF2XOAlFit8VxBiZPzy0WCKmlEGT0RYMTGzo5vnB3TjcPH2xXV0yqN2rMlyG5
+ 1Ofw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/Jjdbc3s8pQsmDoWKEyr5bC17C/DNwKL0QYkNOuccsFVyPiys8S/lBcQ34+UxX0OzPo7fcQKCUrg==@nongnu.org
+X-Gm-Message-State: AOJu0Yx9C/iAc17rSjc+b+EyVbIFmAuK93JS5nm4RzlJb2iRr8mmxbGy
+ hn5Af6X9uJnVg9WkcUjUQdI8UHb8RYkqHlDBEjx4Sz7GAXmb1WCfaaKAnVqiA+QEaZK/ym73WFt
+ RccahEiBVj7QKNFa3WxaxAmnO5qe/f3o=
+X-Gm-Gg: AfdE7cnQX+WNFUVbHrha6NOoi0cKitZMAx7HmyLNFjaahpjK7vB0yFABbDQAGx2By85
+ Z2/a+Ul0yuZDvZZVGm5fDHpmVQDYKEuJ+YwvzeSF9jameO1FbRamcsXhxn7s94pFiPRI3St704h
+ CYoz+EIWxfFPV5VyTv1ZT4zJi05aBi4QmdY/Yab+/x7G870pYpfTqhmtVX51askn1mJpS1BGCBp
+ itHbDhYpmeLrlsTQI30F2mCVLOCq3u31woN9gjAoOWeg3vbAE7ErQUgcMC8XV3xML9/ZiotBg==
+X-Received: by 2002:a17:907:c445:b0:c07:6950:4490 with SMTP id
+ a640c23a62f3a-c097caca21amr761497366b.42.1782166563117; Mon, 22 Jun 2026
+ 15:16:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=matyas.bobek@gmail.com; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20260614222131.5795-1-imaginos32@gmail.com>
+ <CAFEAcA-GGP6aALn4Az5By31q1R3d75Mm+p_YXN0y=tO3GxDYrg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-GGP6aALn4Az5By31q1R3d75Mm+p_YXN0y=tO3GxDYrg@mail.gmail.com>
+From: Imaginos <imaginos32@gmail.com>
+Date: Tue, 23 Jun 2026 00:15:51 +0200
+X-Gm-Features: AVVi8CeSouwMjmSuFc9S2hvR2Vz7Z8NRL9AV9-5KAy1BtimiO21yR_S64c1T5xs
+Message-ID: <CAFxqGk98dEmAhebozRPMhZGwv9RRC7Yt4=rOeKPq2R95bXtDXg@mail.gmail.com>
+Subject: Re: [PATCH] hw/i2c: pmbus: NUL-terminate strings received via block
+ write
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Titus Rwantare <titusr@google.com>, 
+ Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@mailo.com>, 
+ qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000ecdd9c0654defcdf"
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=imaginos32@gmail.com; helo=mail-ej1-x636.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_KAM_HTML_FONT_INVALID=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,67 +120,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Also added example command line usage of the Sabrelite board
-with FlexCAN controllers.
+--000000000000ecdd9c0654defcdf
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Matyáš Bobek <matyas.bobek@gmail.com>
-Signed-off-by: Pavel Pisa <pisa@fel.cvut.cz>
-Tested-by: Pavel Pisa <pisa@fel.cvut.cz>
-Reviewed-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Pavel Pisa <pisa@fel.cvut.cz>
----
- docs/system/arm/sabrelite.rst |  1 +
- docs/system/devices/can.rst   | 24 ++++++++++++++++++++++++
- 2 files changed, 25 insertions(+)
+Thanks for catching that. I went through the repro myself and arrived at
+the same root cause,
+but I missed that the original report's description of it was inaccurate
+and should have flagged that.
+Thanks for the review, I appreciate you taking the time to look into it.
 
-diff --git a/docs/system/arm/sabrelite.rst b/docs/system/arm/sabrelite.rst
-index 4ccb0560af..d3a3c01dd6 100644
---- a/docs/system/arm/sabrelite.rst
-+++ b/docs/system/arm/sabrelite.rst
-@@ -24,6 +24,7 @@ The SABRE Lite machine supports the following devices:
-  * 4 SDHC storage controllers
-  * 4 USB 2.0 host controllers
-  * 5 ECSPI controllers
-+ * 2 FlexCAN CAN controllers
-  * 1 SST 25VF016B flash
- 
- Please note above list is a complete superset the QEMU SABRE Lite machine can
-diff --git a/docs/system/devices/can.rst b/docs/system/devices/can.rst
-index 09121836fd..622f898952 100644
---- a/docs/system/devices/can.rst
-+++ b/docs/system/devices/can.rst
-@@ -173,6 +173,30 @@ The test can also be run the other way around, generating messages in the
- guest system and capturing them in the host system. Other combinations are
- also possible.
- 
-+Examples on how to use CAN emulation for FlexCAN on SabreLite board
-+-------------------------------------------------------------------
-+FlexCANs are connected to QEMU CAN buses by passing the bus IDs as machine
-+properties:
-+
-+* property ``canbus0`` for connecting ``flexcan1``
-+* property ``canbus1`` for connecting ``flexcan2``
-+
-+Note that upstream Linux SabreLite DTs have only a single FlexCAN (``flexcan1``)
-+enabled.
-+
-+An example command to run QEMU emulating a Sabrelite development board
-+with both FlexCANs connected to a single QEMU CAN bus (called ``qcan0``),
-+bridged to host system ``can0`` interface::
-+
-+  qemu-system-arm -M sabrelite -smp 4 -m 1G \
-+    -object can-bus,id=qcan0 \
-+    -machine canbus0=qcan0 -machine canbus1=qcan0 \
-+    -object can-host-socketcan,if=can0,canbus=qcan0,id=qcan0-socketcan \
-+    -kernel ... -dtb ... -initrd ...
-+
-+Note that in the Linux guest, bitrate for the FlexCAN device is ignored,
-+but needs to be set via the ``ip`` command.
-+
- Links to other resources
- ------------------------
- 
--- 
-2.54.0
+=D0=BF=D0=BE=D0=BD, 22. =D1=98=D1=83=D0=BD 2026. =D1=83 12:18 Peter Maydell=
+ <peter.maydell@linaro.org> =D1=98=D0=B5
+=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
 
+> On Sun, 14 Jun 2026 at 23:22, imaginos <imaginos32@gmail.com> wrote:
+> >
+> > The PMBus string registers (e.g. MFR_MODEL on the ADM1266) are writable
+> > by the guest. pmbus_receive_block() can fill the destination field
+> > completely, leaving no NUL terminator. When the value is later read bac=
+k,
+> > pmbus_send_string() calls strlen() on it, which reads past the end of t=
+he
+> > array and returns a length that trips
+> >
+> >     g_assert(len + pmdev->out_buf_len < SMBUS_DATA_MAX_LEN);
+> >
+> > aborting QEMU. This is guest-triggerable.
+> >
+> > Add pmbus_receive_string(), the write-side mirror of pmbus_send_string(=
+),
+> > which reserves the last byte of the destination so the stored value is
+> > always NUL-terminated, and use it for the ADM1266 MFR string registers.
+> >
+> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3388
+> > Signed-off-by: imaginos <imaginos32@gmail.com>
+>
+> Thanks for looking at this. Notably, the bug report in #3388 makes
+> a completely incorrect claim about what its repro case is actually
+> doing. The repro case does the "write 32 bytes to trash the NUL
+> terminator, then try to read back", which is what this patch addresses.
+>
+> I'll let the pmbus maintainers review the patch from a technical
+> point of view.
+>
+> -- PMM
+>
+
+--000000000000ecdd9c0654defcdf
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Thanks for catching that.=C2=A0<span style=3D"background-c=
+olor:transparent">I went through the repro myself and arrived at the same r=
+oot cause</span><span style=3D"background-color:transparent">,=C2=A0</span>=
+<div><span style=3D"background-color:transparent">but I missed that the ori=
+ginal report&#39;s description of it was inaccurate and should have flagged=
+ that.=C2=A0</span></div><div><span style=3D"background-color:transparent">=
+Thanks for the review, I appreciate you taking the time to look into it.</s=
+pan></div></div><br><div class=3D"gmail_quote gmail_quote_container"><div d=
+ir=3D"ltr" class=3D"gmail_attr">=D0=BF=D0=BE=D0=BD, 22. =D1=98=D1=83=D0=BD =
+2026. =D1=83 12:18 Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro=
+.org">peter.maydell@linaro.org</a>&gt; =D1=98=D0=B5 =D0=BD=D0=B0=D0=BF=D0=
+=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:<br></div><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
+);padding-left:1ex">On Sun, 14 Jun 2026 at 23:22, imaginos &lt;<a href=3D"m=
+ailto:imaginos32@gmail.com" target=3D"_blank">imaginos32@gmail.com</a>&gt; =
+wrote:<br>
+&gt;<br>
+&gt; The PMBus string registers (e.g. MFR_MODEL on the ADM1266) are writabl=
+e<br>
+&gt; by the guest. pmbus_receive_block() can fill the destination field<br>
+&gt; completely, leaving no NUL terminator. When the value is later read ba=
+ck,<br>
+&gt; pmbus_send_string() calls strlen() on it, which reads past the end of =
+the<br>
+&gt; array and returns a length that trips<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0g_assert(len + pmdev-&gt;out_buf_len &lt; SMBUS_DAT=
+A_MAX_LEN);<br>
+&gt;<br>
+&gt; aborting QEMU. This is guest-triggerable.<br>
+&gt;<br>
+&gt; Add pmbus_receive_string(), the write-side mirror of pmbus_send_string=
+(),<br>
+&gt; which reserves the last byte of the destination so the stored value is=
+<br>
+&gt; always NUL-terminated, and use it for the ADM1266 MFR string registers=
+.<br>
+&gt;<br>
+&gt; Resolves: <a href=3D"https://gitlab.com/qemu-project/qemu/-/issues/338=
+8" rel=3D"noreferrer" target=3D"_blank">https://gitlab.com/qemu-project/qem=
+u/-/issues/3388</a><br>
+&gt; Signed-off-by: imaginos &lt;<a href=3D"mailto:imaginos32@gmail.com" ta=
+rget=3D"_blank">imaginos32@gmail.com</a>&gt;<br>
+<br>
+Thanks for looking at this. Notably, the bug report in #3388 makes<br>
+a completely incorrect claim about what its repro case is actually<br>
+doing. The repro case does the &quot;write 32 bytes to trash the NUL<br>
+terminator, then try to read back&quot;, which is what this patch addresses=
+.<br>
+<br>
+I&#39;ll let the pmbus maintainers review the patch from a technical<br>
+point of view.<br>
+<br>
+-- PMM<br>
+</blockquote></div>
+
+--000000000000ecdd9c0654defcdf--
 

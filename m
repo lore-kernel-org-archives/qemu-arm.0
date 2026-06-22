@@ -4,105 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D243ACDB46F
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Jun 2026 16:07:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 280A5CDB46F
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Jun 2026 16:08:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wbhBY-00066U-8w; Mon, 22 Jun 2026 12:07:44 -0400
+	id 1wbhCL-0006N0-7B; Mon, 22 Jun 2026 12:08:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wbhBV-000662-Ig
- for qemu-arm@nongnu.org; Mon, 22 Jun 2026 12:07:41 -0400
-Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
+ (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
+ id 1wbhCH-0006Ga-QE
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2026 12:08:30 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wbhBU-0006Ip-5o
- for qemu-arm@nongnu.org; Mon, 22 Jun 2026 12:07:41 -0400
-Received: by mail-yx1-xb12a.google.com with SMTP id
- 956f58d0204a3-662bb8b1f93so4423395d50.1
- for <qemu-arm@nongnu.org>; Mon, 22 Jun 2026 09:07:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1782144459; cv=none;
- d=google.com; s=arc-20240605;
- b=FI3PNVN7agb2DJVla/7cgZ/APx7xfGcYcSRIDe0WqHDC+BqwAdyydxS6COvaodKDp+
- hfBxeC0PsW+un9Mugjsa+j/h1CbcoBXPY0bH0PqNGkGp3x5LrhC+HLXz1lADUlIzgWsr
- LZEEkCUHw+xLFvMmP4+OKci7S2DvyJPjCbGVv5m9ePgEtKSyFKcr8i57Skt5CvCmagzB
- Pqcnf2m+L0tcHLwOLvWgSEBosAmGiYX+vHWO6dctx+ruJV+stBmUsliPVb5Wu69vbbIs
- 328dQHtNNF/HP683JwVr95k71GmFb6tJH4SmuvS7Xq+MlHl4wbpV6T6QojlLegvU24Vd
- fTQQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=XFXBYQvR1B9AsvIycYAgg9wXLkRe3WQ47h1nYEBLwjM=;
- fh=nr54sUBo34v0Tw8LFx0E4ZVk9iqntZVK3SjJhuWBszU=;
- b=UMLAqGaKj2zGkNhrb0bl6JOtqh/XTaLHfpjoMw0CHfPIW26jyb2XHtSUL9EYDmnfNk
- JiotrckYeu7deUu5JLNDVBq/BtE1RtzlZpGVBpoCKEepl/5MegVe8jeSZJGRAdDMsUsq
- e/89diEQ7mIDrod/sWSpBNUkqAxhtLGNbLBXvnB1B5biC7zZY+s9luap0qcBo/d2Aq5u
- l9vQVqel0sUMh/PDnHTVucxzU4CrgAv+3njeqr5xELO8ce21zYEJahX+HG/J41kCzB7V
- uG97qRORuphk5E/clNcN4mMiPG0XCBifDoTW0DVXn5heSfGUl+Fc3i0NkGXjmaJoss8e
- FdDQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
+ id 1wbhCF-0006ib-MU
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2026 12:08:29 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-49241896317so16609835e9.3
+ for <qemu-arm@nongnu.org>; Mon, 22 Jun 2026 09:08:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782144459; x=1782749259; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=XFXBYQvR1B9AsvIycYAgg9wXLkRe3WQ47h1nYEBLwjM=;
- b=QUcAq8FKhWKW85D3x/l7KQAymnl4BKaCLEVBlREBXyJpou3q7D7NN6p5ejhPirijtD
- 2Tfd0FJwDcF0Ao+ALDlbnd7Bl9Kn0iAoMZy/3WLMf7WnIwReqLiVu6XpM0Rye2WALDJS
- Lq9G/QWyisAjRI4/4J/iLwkBwStP7yHvzFiWKiZRxMsxCasNPiJQ0U7QsO/II07zUF/z
- 4/xUCi1RnFVafvRqDXhLIaH74ZbrDTjWljmWuqAFDTNHRO5rkqUhfTX+3wdBrZj4bTqX
- wq4zRv9LpnQ/lsit7N2l+3NfI0Ktr/nSxhS9MzYq/DNfBfDxrXB1uf2klu7bfb7QlAZe
- TYrA==
+ d=gmail.com; s=20251104; t=1782144503; x=1782749303; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=J0EfpXJQfGVoHw5LHOqoFn3S99dQ8UghOoxA1O/4SRM=;
+ b=LPkwQiKbfRD5v7gCmMqC5+iBFxjSeCGwNwuHBU3HRxf+WSq0aSnIoy6Q10L18SgZWa
+ xsc5wyDJk5+4jgB7JAMXCawqCOcYggBdgjSfAMzlhq2KTlVm2SGcVjYC+Oege0+EftNk
+ ZzVcr/9me3SaygyXKTgR9qSGTa5Clq7aMQayUiZ4ikNIlckpteeIdZFkftQZqY6yRTGy
+ urVvihMjl1/cggSG+jGGly4vxEsDm+tjRw/2t04jmVW93Hy/qaBF/L1TsK7cPSY+4rsq
+ 3CNiuAe5C05oUKHbLTaO1W4YoRz9GLad1CsZJ+3/Z9m4HWlW+sayVYPpeDWVtxCq2Xi8
+ lTuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782144459; x=1782749259;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1782144503; x=1782749303;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XFXBYQvR1B9AsvIycYAgg9wXLkRe3WQ47h1nYEBLwjM=;
- b=dkISBsAk5cd19jDaodbyWyoa9rBio63NiTb3opVB5LTInJcGsslLWOnhzN+flaL9DN
- urHZoPa43Cs1xq+2+5ODLm9U2x3ZFpuvYHO/RurrUR1g8mqvofcCOo2tGVGqQE/0rznz
- pLiUUPus0C5lHEzszx1JHzZFO1Fx+euYAZ42Dc3Q/QTfAmUcS1QK+V5T2PYilz7M5lah
- kj9/RDTu7pOj8LSmcz0mEZFOSQS6acptCjmxpnSHWqJI2n6zkgPdddXECA9ITXHbeOsz
- KyedUJbiBigNdCEXLOeceaB+kwtTSGLhfjjW56LZj1Oof1RnqusS5P3RGlLYrfn4hjdi
- pveg==
-X-Forwarded-Encrypted: i=1;
- AHgh+RrCYUuAH5g88BObckV/ytMIxcQ89PHryWtfln2lV/xvVSSYEWL+vC1xJXOFNOlBS9FZlYkFNdmcng==@nongnu.org
-X-Gm-Message-State: AOJu0Ywcx5eemB9+l6+Rro/iy5cm3KMF2r55403foBbbhU5Qya25IBfa
- xNI3uiNOgd6lQ8P7cR1aaHktyX+3ctQRkVQFLf+dM1ntYeIhCENVTGsTl6T45yikkSOUNC8jPOa
- 8FTiR3yGH5pLrA5dji4cYBk+aOeUlAbJQVUcZVQqB/A==
-X-Gm-Gg: AfdE7clhzTmKXbfiUGsKtYBxpO9Yi/Hbh/oiFxTCcLGESMCJnKQ2ceYEspsp5kdxuPF
- 0dydlDljEKOCASHbD5c+aodWHdr/paUlGDKIJlyE0JYsepF/GCuaZH14kFOOUyXuBMWf7qH2KrU
- ca9k/2en4Ry2oXMzsvdGDBm5LRLszbdA/LHskmN6jlLSsCeO6HZ2MKcT7KESwWCOAatC401WMui
- xmVUM5eNZSkcKGMeyswh/r3l6wJ9TgGbUVl5V6xw1LZ1d3wI1IdNQ8tlHdztnLpaUuyVhovm2cy
- h4pdUdWzU1GUwPaqPsXxiFQEUw6YG0w9+our2NTRma9YN9D7kN0Ydzwd
-X-Received: by 2002:a05:690e:e81:b0:662:dcac:7a52 with SMTP id
- 956f58d0204a3-663032f5ee5mr12483256d50.39.1782144458590; Mon, 22 Jun 2026
- 09:07:38 -0700 (PDT)
+ bh=J0EfpXJQfGVoHw5LHOqoFn3S99dQ8UghOoxA1O/4SRM=;
+ b=qWWcZ6v9aGzURXhVsEp4RWmbVhhG0bJxyD7gkA87PD+A9omJj1/8mBlKRhk0YoHe7f
+ /OkkeAS2rgNZW09+zSFhXomFowff+MWklf5Tw+CZvVI4NoB0CjscdHWbRo671V8H6Drs
+ aOfzt9d6+rPM8KVGmtpARXSxs9+CI18ouwm2uAhRkWcO9VNjUfC/ETbC3aMrdu0zU8XO
+ S/wxY99R0odGMjfw6rU8KFP1sB2GnzfHP6qo1V+fj2/K7fIr7Ik3Do+mmQNc/yQYwLah
+ 2gwcq2TGZa3FRoQAFn3jnN3hHGgXHEPcXGm8+XHVW3xIgnOj3RCCWLIjayI0Ght2dD44
+ dBcw==
+X-Gm-Message-State: AOJu0Yzkf2TO4mk6vXmnzvuB9UfRVsSabdXtxmz0XdqKyMGsy7+3ECLD
+ XVNrfVR5JlO56h9/7bMoWPk/TNF4Z354o+XEQVqnTXv+3TeUxFr8Z19Q
+X-Gm-Gg: AfdE7cn3mxKfbFyCDulu6m0cD/62dl+mnrHqFDzKihZgBYCkQNKaZM2U0eCUzDBaQOy
+ oGGc5wM8hYelz4JsY5957bmobZHeN0YFNS8O4L7itnMYh6Bx0o9Q3Bzlikhas1VJh2a+mBGyz5I
+ l3X2xYNjle49hFRKK8KdeRCSvewvG0daryCgLuBc2GozLtn34X21Op9eLLmSXIfZRrrcEPuhn1Q
+ 2reCsEWRi96dA4RBQxRVasFwaGMylgtcIEbnMqD7GzZrfG6ezJD58YsXrIkRdjw8rN5v+xSDHKN
+ 6ATTvZ1abh0CtZWH4WB8bfON5F1zuX7lqAgxlfeLBFxWMLpq8dFCIyJ8ye0WTtgOZ10hkpQ5oFD
+ H3nGBdoireeaNwjp4/gleeDKzZJlN0TB3hLvV+MB2kVAe/rtgw4Wxzc9vLotnTNzLG/9MJleYq0
+ 2oO7OFd098aUEYXpQb2/F3js5IVajfN3UNb65nLw304vwUzNPG+ss6MA==
+X-Received: by 2002:a05:600c:4f53:b0:490:6e12:542d with SMTP id
+ 5b1f17b1804b1-4923f572d60mr243139625e9.19.1782144503181; 
+ Mon, 22 Jun 2026 09:08:23 -0700 (PDT)
+Received: from acidburn.pod.cvut.cz (acidburn.pod.cvut.cz. [147.32.90.2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-492494496d8sm225062545e9.9.2026.06.22.09.08.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 22 Jun 2026 09:08:21 -0700 (PDT)
+From: =?UTF-8?q?Maty=C3=A1=C5=A1=20Bobek?= <matyas.bobek@gmail.com>
+To: qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
+ Pavel Pisa <pisa@fel.cvut.cz>, Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-arm@nongnu.org, Marc Kleine-Budde <mkl@pengutronix.de>,
+ Oliver Hartkopp <socketcan@hartkopp.net>,
+ Nikita Ostrenkov <n.ostrenkov@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrey Volkov <andrey@volkov.fr>,
+ =?UTF-8?q?Maty=C3=A1=C5=A1=20Bobek?= <matyas.bobek@gmail.com>
+Subject: [PATCH v6 0/7] hw/arm/sabrelite: Add FlexCAN support
+Date: Mon, 22 Jun 2026 18:08:05 +0200
+Message-ID: <cover.1782140438.git.matyas.bobek@gmail.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-References: <20260529-feat-mte4-v7-0-ccbd3c14eb3c@gmail.com>
-In-Reply-To: <20260529-feat-mte4-v7-0-ccbd3c14eb3c@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 22 Jun 2026 17:07:26 +0100
-X-Gm-Features: AVVi8CdQFZcZe9qHP4nGo_qucpQD1VPolgeNGwX947UE4Cv122fXpI5UTm5dl_4
-Message-ID: <CAFEAcA8R1RXrGo2xov-4gKLQXX=FTVKoK1rGuxuYmBo9e8SN_g@mail.gmail.com>
-Subject: Re: [PATCH v7 00/15] target/arm: add support for MTE4
-To: Gabriel Brookman <brookmangabriel@gmail.com>
-Cc: qemu-devel@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
- Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=matyas.bobek@gmail.com; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,20 +102,101 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 29 May 2026 at 20:52, Gabriel Brookman
-<brookmangabriel@gmail.com> wrote:
->
-> This series implements ARM's Enhanced Memory Tagging Extension
-> (MTE4). MTE4 implies the presence of several subfeatures:
-> FEAT_MTE_CANONICAL_TAGS, FEAT_MTE_TAGGED_FAR, FEAT_MTE_STORE_ONLY,
-> FEAT_MTE_NO_ADDRESS_TAGS, and FEAT_MTE_PERM, none of which are
-> currently implemented in QEMU. This patch implements all five.
+This series adds emulation of the FlexCAN CAN controller, version 2,
+found in NXP i.MX6 series SoCs. The controller is integrated into
+fsl-imx6 and the Sabrelite ARM board.
 
-I just noticed that this patchset didn't add FEAT_MTE4 to the
-list of implemented features in docs/system/arm/emulation.rst.
-Are we missing anything to be able to call MTE4 complete
-and close https://gitlab.com/qemu-project/qemu/-/work_items/3116 ?
+The chip has two FlexCAN controllers, but the Linux Sabrelite
+device tree enables only one by default. Linux kernel with both
+controllers enabled has been tested to work properly (using a custom
+device tree).
+See docs/system/devices/can.rst for an example of QEMU command line
+invocation.
 
-thanks
--- PMM
+More information about the implementation can be found in my bachelor
+thesis [1].
+
+Changes from v5:
+- fixed buffer overflow due to unchecked input in
+  flexcan_enabled_mailbox_count
+- rebased onto latest master
+- Link to v5: https://lore.kernel.org/qemu-devel/cover.1781111270.git.matyas.bobek@gmail.com/
+
+Changes from v4 to v5:
+- renamed can in fsl-imx6 to flexcan
+- corrected attribution for definitions borrowed from the Linux kernel
+- rebased onto latest master
+- Link to v4: https://lore.kernel.org/qemu-devel/cover.1779986496.git.matyas.bobek@gmail.com/
+
+Changes from v3 to v4:
+- corrected attribution for definitions borrowed from the Linux kernel
+- rebased onto latest master
+- Link to v3: https://lore.kernel.org/qemu-devel/cover.1777571962.git.matyas.bobek@gmail.com/
+
+Changes from v2 to v3:
+- moved variable declarations to the top-of-the-block
+- cleanup
+- removed redundant license boilerplate
+- rebased onto latest master
+- Link to v2: https://lore.kernel.org/qemu-devel/cover.1773866323.git.matyas.bobek@gmail.com/
+
+Changes from v1 to v2:
+- removed DPRINTF (turned into traces or guest errors)
+- removed gotos and unnecessary continues
+- register memory region shortened to actual length w/o padding
+- make flexcan_* fns private
+- used DEVICE(s)->canonical_path instead of allocating new strings
+- changed DEVICE_NATIVE_ENDIAN to DEVICE_LITTLE_ENDIAN
+- removed ugly USE macro
+- used enums instead of define sequences in flexcan.c
+- fixed FlexCAN KConfig conf (fixes build on non-arm-softmmu)
+- fixed style and other issues from Bernhard's review
+- better wording in docs
+- rebased onto latest master
+- Link to v1: https://lore.kernel.org/qemu-devel/cover.1765826753.git.matyas.bobek@gmail.com
+
+Thanks Bernhard Beschow for the review and his patience.
+I borrowed some fixes from his flexcan branch at [2].
+
+[1] http://dspace.cvut.cz/bitstream/handle/10467/122654/F3-BP-2025-Bobek-Matyas-BP_Bobek_FlexCAN_final_4.pdf
+[2] https://github.com/shentok/qemu/tree/flexcan
+
+
+Matyáš Bobek (7):
+  hw/arm/sabrelite: Open code DEFINE_MACHINE_ARM
+  hw/arm/sabrelite: Introduce class SabreliteMachineState
+  hw/misc/imx6_ccm: Add PLL3 and CAN clock
+  hw/net/can/flexcan: NXP FlexCAN core emulation
+  hw/arm: Plug FlexCAN into FSL_IMX6 and Sabrelite
+  tests: Add qtests for FlexCAN
+  docs/arm/sabrelite: Mention FlexCAN support
+
+ MAINTAINERS                   |    9 +
+ docs/system/arm/sabrelite.rst |    1 +
+ docs/system/devices/can.rst   |   24 +
+ hw/arm/Kconfig                |    1 +
+ hw/arm/fsl-imx6.c             |   29 +
+ hw/arm/sabrelite.c            |   68 +-
+ hw/misc/imx6_ccm.c            |   24 +
+ hw/misc/trace-events          |    2 +
+ hw/net/Kconfig                |    5 +
+ hw/net/can/flexcan.c          | 1396 +++++++++++++++++++++++++++++++++
+ hw/net/can/flexcan_regs.h     |  197 +++++
+ hw/net/can/meson.build        |    1 +
+ hw/net/can/trace-events       |   18 +
+ include/hw/arm/fsl-imx6.h     |    6 +
+ include/hw/misc/imx6_ccm.h    |    4 +
+ include/hw/misc/imx_ccm.h     |    1 +
+ include/hw/net/flexcan.h      |  145 ++++
+ tests/qtest/flexcan-test.c    |  421 ++++++++++
+ tests/qtest/meson.build       |    1 +
+ 19 files changed, 2343 insertions(+), 10 deletions(-)
+ create mode 100644 hw/net/can/flexcan.c
+ create mode 100644 hw/net/can/flexcan_regs.h
+ create mode 100644 include/hw/net/flexcan.h
+ create mode 100644 tests/qtest/flexcan-test.c
+
+-- 
+2.54.0
+
 

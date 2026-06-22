@@ -4,166 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 881ECCDB46F
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Jun 2026 11:26:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42651CDB46F
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Jun 2026 11:42:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wbclr-0004Kv-2A; Mon, 22 Jun 2026 07:24:55 -0400
+	id 1wbd2Y-0003Md-Rj; Mon, 22 Jun 2026 07:42:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.caveayland@nutanix.com>)
- id 1wbclh-0004Ii-RC; Mon, 22 Jun 2026 07:24:46 -0400
-Received: from mx0b-002c1b01.pphosted.com ([148.163.155.12])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wbd2X-0003MI-TF
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2026 07:42:09 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.caveayland@nutanix.com>)
- id 1wbclO-0001R5-FT; Mon, 22 Jun 2026 07:24:28 -0400
-Received: from pps.filterd (m0127842.ppops.net [127.0.0.1])
- by mx0b-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 65MAoDqo810657; Mon, 22 Jun 2026 04:24:15 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
- content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=
- proofpoint20171006; bh=uSQDPBrTTZj8Yb13NZCcgb0ZWJkLymTvIEAP5u/Wm
- bw=; b=0rx2wokBSE47YV4pCIjQORXSFfTMEjJ5p3F4SnltGa9uSORpGAnRabA4i
- pslE2tU+M5ZodkLi+H47HC6OBts2r4VdD3EfLUHMYNMkl1F4mnHjRWyWhSXpTqic
- FN3WeFrU+PFoPfWqJkRm9a3MR/BHl/AiiEOkgRElKeI9QH+umwdq7HPKhOupkBxE
- 2l15haGQS6L69t2E1JWeh/DaFS6ZIACqiFHJKzE8cWjH0S/OugMQYZtxRF1+zoCI
- Q7e1BxgOKu6nuaAegmuVSCyOeZUqtNENlFRZFC4csbHAWi7JF9xoagsBoQ/zkWH3
- RNUykYamIlvwB5gt/YPyIPcKCkI0A==
-Received: from bl2pr02cu003.outbound.protection.outlook.com
- (mail-eastusazon11021106.outbound.protection.outlook.com [52.101.52.106])
- by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 4ewt6d3fhf-1
- (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Mon, 22 Jun 2026 04:24:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Q3FAVrCIiN2WRByJrw0s38GjmwhXnEDhUEZpsOu1xrwE31XNpxw0Up98ekiSMKp0H1g2l3bBsizcxLNTT9pwulQ1T4zk/+/WAr6jXs3mw8o10Bjw8/JdVvd/jYz4Zn1P2OT024ZHGyujrrgqv/uDoCv8lJFGft6DYGQnL1Mh3MNZjefOXArq1kGDcR2jViX24LSANYpqZFFpaMY2ImrmK7h7Ki2xsTJwFI2UnxTSQ00gfLQLgtUn5eqcNJLikOZyNIrZEkC07wmCRHxltWeVpCUGYpZ1goAynx1qnGRiBk/WIkNDCsGXgdHJ5oPC6PnbIQry+BHZNa2sprqzi/wIzw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=uSQDPBrTTZj8Yb13NZCcgb0ZWJkLymTvIEAP5u/Wmbw=;
- b=XhCU8uk2Fxm3N9W2WqecKjFo7TaNgzlQm1kahwzsH38tT9AtdZ8TqzOh/tWP2Zy67kBf+ydKhw8BpiSToplb4/JYjYJlYThALcmgisafkVmFOVhMYLNdUOfuC5WRidQTHrWN1/Vwsvy4YUyfw1nIKYVQR6EsC1ta9hvyjCe77IhEjxGRFQGuP5/ho7qnSiBmJKMo0SGR8zJD7d/3s/bmJ9JVWyrRzmIG/0AjpuvNOJNyyfmFa4xZn9ZFC2GwIF7eCAlfAH2PU/Lxlxe5/woMSEmoSEbWQpaHtsRR9468FLPKJU5XH/R1onCnmXReWytUPBqcs9amYkoWfVkrIR8HFg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
- dkim=pass header.d=nutanix.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uSQDPBrTTZj8Yb13NZCcgb0ZWJkLymTvIEAP5u/Wmbw=;
- b=bBvwSn7eG1ldJK7SxlRdYg1aZl17Fu3/85d+/A1vaWaTVFKbHn68SwZMb8nGqMDi4esPeyAgc4qEQYRRX9VqEtnsnXhAeUpfch8GGYjan7G1KT5cYHhGOUT/c1tqVbGZSiQPATEvPgWysja+E819uNg8hvMBY3++VzHnDIVYvTNB/m16lqx5R2i08zYiDeE8YOPtKsnAh0xQV0vyFyURZni60VpSLxycwmykmyEu6FHx3KbDTZOvocno2ZtNoLWBI8KNcNn+np0x6P4xPmTG+zBZCZIwn7EAogB1mhOyq5+f9meHNboj7b4rxGboo6lUcKHw0Y3ijYRO5Qnh0XCMWA==
-Received: from PH0PR02MB7159.namprd02.prod.outlook.com (2603:10b6:510:16::8)
- by DS0PR02MB10661.namprd02.prod.outlook.com (2603:10b6:8:1f8::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.139.20; Mon, 22 Jun
- 2026 11:24:14 +0000
-Received: from PH0PR02MB7159.namprd02.prod.outlook.com
- ([fe80::8e97:bc32:822c:b250]) by PH0PR02MB7159.namprd02.prod.outlook.com
- ([fe80::8e97:bc32:822c:b250%3]) with mapi id 15.21.0139.009; Mon, 22 Jun 2026
- 11:24:14 +0000
-From: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-To: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com, philmd@mailo.com,
- aurelien@aurel32.net, peter.maydell@linaro.org, pbonzini@redhat.com,
- richard.henderson@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: [PATCH 2/7] hw/isa/lpc_ich9.c: convert ich9_lpc_initfn() object props
- to class props
-Date: Mon, 22 Jun 2026 12:22:34 +0100
-Message-ID: <20260622112403.928954-3-mark.caveayland@nutanix.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260622112403.928954-1-mark.caveayland@nutanix.com>
-References: <20260622112403.928954-1-mark.caveayland@nutanix.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: CYZPR14CA0024.namprd14.prod.outlook.com
- (2603:10b6:930:8f::14) To PH0PR02MB7159.namprd02.prod.outlook.com
- (2603:10b6:510:16::8)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wbd2U-0006SE-1w
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2026 07:42:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1782128523;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=RlKy5Ai6j7cdpDzKssulwncnGrArHM2xInh+ohpaA4o=;
+ b=iv/JBIJ2p/7/agNr/ZlUZIrXSTPn4WuKqKweUxdeMnxUrGwlgtepBH2t3V8zlG/PaenL/j
+ Ir4m5dER2pLBtsRTvcObNyv0RL+mNrmxKjIkBfYs4EAgIGf1aEyyfXA9atx1ryF9QOkk20
+ wg0RgfILS6VdfXBrdzmxI1vR0i37i8M=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-583-THOE9ubROLaQu0UKfTibjg-1; Mon, 22 Jun 2026 07:42:01 -0400
+X-MC-Unique: THOE9ubROLaQu0UKfTibjg-1
+X-Mimecast-MFC-AGG-ID: THOE9ubROLaQu0UKfTibjg_1782128520
+Received: by mail-ej1-f72.google.com with SMTP id
+ a640c23a62f3a-c0840dc2849so314951366b.3
+ for <qemu-arm@nongnu.org>; Mon, 22 Jun 2026 04:42:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782128520; x=1782733320;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=RlKy5Ai6j7cdpDzKssulwncnGrArHM2xInh+ohpaA4o=;
+ b=YgpiKTHPtDEJWla67tuXuNTQCWnyK2GVntkWobOfHTk4I0hJ5Z7qBpptsQZ2Gc3BBE
+ 7gI4e5uljAyuZfkgwQYKhfmj39TQIfBAzwfOrAH+Xp6kvtQOfXYFeAYNdmde9eX+LcRO
+ yiaVcQlrZ3sSRGqJ+s9oaCETWDLPBUPO7owvJ0Fy8nV4ObtSqJOB3hDMM3yN4qBhpDIs
+ U/935wf1VAxZVRMjwEe2f5BBAIJuHT2sWV1FETyIpbr/fvHFOZFW8NjQ2o3utnnXDDkd
+ g/jZhP7Dm7AlsLyv/tyd9XnEPgJfFON2s2AAWFqjoL2tq/IdbJUIpfsAwEGm+PYmaHyC
+ k9vA==
+X-Gm-Message-State: AOJu0YzEPPIXKoATzId6UNs+ZJ+Mysp3/cdYFHrS+ZxrtNGOIWUAog8R
+ wZg3QPHvwnhoTcFy73P3uCrZfCF04ufaC0TCyPM2H65TrVeTZAH6EHvTtYRK6S1idbB4upcMAAk
+ 9KGgrlWknFlV28g7gvVn9UiU+BFygcJ8A1kYf2D4xitgjpvo49X8+Uw==
+X-Gm-Gg: AfdE7cmkf6s9zLiTCzmfqhgP5EFjD7vbJoN9ROVSD19SevqaxcAC6dkr8Csbz/vfPrU
+ lnBVaSDk/T+ArQGw/MuOG6N2HvPTV125B9R+/Mq86XQMnetoAIKBgn3QN4SXH8iTxaflS+N4Q99
+ HtM3Tm84Kxzm0AWqaNDCLsqtRvvRBlclsJs+gvAxcDlEqHJcp/vvlfehKuvoCBfRV/qCzhOU9NW
+ G1CSlUu/h/PhTWgK4pQtXEyXV2+KaSsE4J0r3Jj2lg+EtGuRPR4YndaAtVZLL0ZU9iziaaTiPkv
+ zrEAwtLJfaTX+uw8PXLHay+t2e4ZXOgtQOA1aZOQcxBRqwxoRIf/R+rhxs+1Gi0fzV1PvG+Va8P
+ edyeZG4KxDhZ98YIvEJRlQcPRf1TS43cT
+X-Received: by 2002:a17:907:da1:b0:c07:fcdd:7043 with SMTP id
+ a640c23a62f3a-c0b605fd663mr633362166b.16.1782128519983; 
+ Mon, 22 Jun 2026 04:41:59 -0700 (PDT)
+X-Received: by 2002:a17:907:da1:b0:c07:fcdd:7043 with SMTP id
+ a640c23a62f3a-c0b605fd663mr633359766b.16.1782128519190; 
+ Mon, 22 Jun 2026 04:41:59 -0700 (PDT)
+Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
+ by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-6977b82f79bsm2762900a12.1.2026.06.22.04.41.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 22 Jun 2026 04:41:58 -0700 (PDT)
+Date: Mon, 22 Jun 2026 07:41:54 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peterx@redhat.com,
+ alex@shazbot.org, richard.henderson@linaro.org,
+ peter.maydell@linaro.org, berrange@redhat.com,
+ philmd@oss.qualcomm.com, philmd@mailo.com, david@kernel.org,
+ clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com,
+ jugraham@redhat.com, liugang24219@sangfor.com.cn,
+ dinghui@sangfor.com.cn, shan.gavin@gmail.com
+Subject: Re: list of memory/memcpy access issues
+Message-ID: <20260622022601-mutt-send-email-mst@kernel.org>
+References: <20260617022330-mutt-send-email-mst@kernel.org>
+ <3f58de99-74a2-4ccc-b800-d254bbd40931@redhat.com>
+ <20260619004237-mutt-send-email-mst@kernel.org>
+ <829e6103-7f82-4884-9892-86cfb7b743bb@redhat.com>
+ <20260621031129-mutt-send-email-mst@kernel.org>
+ <c5fb78d9-1023-406c-8057-7506a41c47fd@redhat.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR02MB7159:EE_|DS0PR02MB10661:EE_
-X-MS-Office365-Filtering-Correlation-Id: 144c1b85-bb1c-4295-7893-08ded050ca1c
-x-proofpoint-crosstenant: true
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|7416014|376014|23010399003|1800799024|22082099003|18002099003|56012099006|921020;
-X-Microsoft-Antispam-Message-Info: Q9SgPFP+xq1B2rNa+o80PYDrc87A+XEBx4tY5Eb1DivFqGjmcoA+WE1wFiLxpZrsadlgsUzfrelpXPpBEIzhIlT6rJMbpSM43IHX+4KWxH2SZEmBS6DIKRC17g2/yxlTwdD+U+AsN1VCsXOPklrEmn+KBxNwhtqW3Mp97wtyXbF0U2CeiJmJ1riOaKDS/xDr03FTyLu7K+W1MoGIbAt+3BcLaerlX0bQPqL5/r3MpV7isZtwgKZEDDawc8g8QNrXbElaaq5UzxCyHM2NFecCPA2u+DLRReXfK0X0K3DNRXBbRlko2OHgX3RROYQ9q/LsiCjN204sS+A9oLhPpAIZ4IQVm7B19rQ/xXI09KrW2WQBOm7NnXDrYh8KrM3uPKiJ1GRK+sMXnUt8nDyVjqW0Y7nNG3BzZnnc4GrIw6cP13De4xEK7I5VJy3pdSTEZF83xOGAqFT8DJxqOMjmKIduDMygkX7B9pm7h/e7gHK0OpqUbteuK2qUsi3F+U3Cf6vo0hWEjzYXNicWbvv+Ifo9FYvjTsYULB7I63xWoDYNRXYM7JaOGRkvRrY7rdKy53QV5jARRUgv2JXk9+kSgbLB2tYbzhf7H4HYJ+I8FeBafco7t3pi2LnQUz/vOBPbtxj50iq/jxzlFgGK8tmbbNlAEyTx/MaoZh1dY8jYA7MUrdp0JcV72gZYPBRqgJu71F1bPC2mDrFPaQX9fS0SAVXQJA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR02MB7159.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(7416014)(376014)(23010399003)(1800799024)(22082099003)(18002099003)(56012099006)(921020);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?9i9phkaNKJXstDGcqxlNoLdmkw6UxiMuIlUuj0FjmgLDJ+Gy01aWJTHAQf3O?=
- =?us-ascii?Q?KDy49GtXhgkGLddT/4qJPr4mEWH7IYY6sjkISWaST5R3X4giqtnQIHNYlpQt?=
- =?us-ascii?Q?9/+cemLu3jkVFGzw7vieiEa/Be5yI4X5FDGhz3ViPREfaT06jX+8tWkmX7ky?=
- =?us-ascii?Q?5jEp1iYoStMDKPR1lNFIEWCgxhASG+bITGyGfJY4tnM2sY10iSv9JrvxaSzB?=
- =?us-ascii?Q?PkmaP7yBYdstqTEG63I5Pmk5Q1Cdr5tiv3bxOHWBb2mmDwhF0XNNATTcWRbB?=
- =?us-ascii?Q?XvCCwLww033j5eGM+0I5kquswsrTVOMokOAqG2GEcsFDtfP2Y8Yknn4zIMfz?=
- =?us-ascii?Q?8U1TCoIXf4dOj/hZRn4dIp8Q0JZ6NPiG9hf0s5DwgjLQIQ7G25nlaqxP0qwb?=
- =?us-ascii?Q?BV4hhotpZJ4QLUEtah60/p7HlCdIDsM1JtXsajlZ7SUjILW8SwhNxmE7YtdN?=
- =?us-ascii?Q?M/rvu4YSZ/7rtAGu8BVanaADVE5omVrXkvMm+WhmbqX4Ek7mz5s1xSJksY5b?=
- =?us-ascii?Q?xhFH3xGnK1+2Fpiiy1AwU5CEb2xgpECge1VXR+4Odk9LqAXF6JQK5MMX+7mL?=
- =?us-ascii?Q?VPhXzv9pgTTHChY4c7gEroLK8e/AJ/3/8flHgXiCSon6bS2QEONDTd7STlte?=
- =?us-ascii?Q?OtevPJKNdP5QvLz9XfxRnrQhyPscSFdLEEUzT6+C3PCJk69XK5G0rkmcAuN9?=
- =?us-ascii?Q?IsGRpDKIp8m7PfKgwKWtJ1JY+340iX9T17OhXT1L1EoDqVECxAgKVq5p3FA0?=
- =?us-ascii?Q?kGrfkAFaE5IWrkO+yAptoT2e4ICCvEmbHAuMdUClS9y5KHblcHcEmKdKxnqU?=
- =?us-ascii?Q?JBZLrcQ+3zWo4de5O9IHUgASIWiz/hdhs9ys2gSWwNR1g6s05DdspnfFr9oj?=
- =?us-ascii?Q?2kdVAmpY+q+HfiTaOMjeNiU14sY1BiPqLQ0wEhDb7ZoErpEZaI89vwZTmD5W?=
- =?us-ascii?Q?ZMtKYNxRM94wJHXluq3C9ZO9Ah3+wSdH5RJSfC8l/whwqqbnLUDtZeOAHJOc?=
- =?us-ascii?Q?nL6N6Rf+WzwWdC9xwl4T++1fkL+B3qgYcJohZK/zuL0DkbWc0xt0WOprd6JD?=
- =?us-ascii?Q?2+9OV0sI4Kkwc9MKxoWnq2GuhZwKspjW9Rp2fqZvin+yyl194UZWFIV7oN4R?=
- =?us-ascii?Q?gmkp/qsRcBILnw5AvbqxxVS4w3yqseRly6omrrEoaptA/W9IT/UuhXtndmhM?=
- =?us-ascii?Q?1WxfpJ36S77gtPib0150E/ONr8QA54UkHAs3agfpJ+Gp1AD5+Fxx11p8qVSx?=
- =?us-ascii?Q?v9P/zaGOGzrWMxIyG4jdp4yT5hqcu7wH55ZE5/PXAevR9/9El8meQp+TZUgb?=
- =?us-ascii?Q?YsnQd7zwimGgq4WmPi7+KjiBq9wT57mWJGUYddoGhThmvwrXMW4e3tFC6Dzc?=
- =?us-ascii?Q?QMBQhWSR746yujC+19X0leSwoKfew7cteeuorVDrAXoRIKuXWqoAdzofAfko?=
- =?us-ascii?Q?18Rbogli7Ljj2WgIwv66arFymluEEBlxS8WkBvmJ2ko9dFpYxtrpwczSj1bO?=
- =?us-ascii?Q?QbBgV+xj6sdTHg1yTUXApQUES0L4CG9Q2gyCFeVNhppctm8ffKDaobL80PoU?=
- =?us-ascii?Q?JwmOLlO2za5V7MTQ/42bFD02vOy7mdYQLssEY73/J3iAj3kgcKkRwnHCIxPW?=
- =?us-ascii?Q?eLKS9tCnvymd/4snqx51KBqS9DPFUbhUINbNcyvLmMQiTH/g4QVwuzthOm4c?=
- =?us-ascii?Q?+fYJCd7RPY/pehXB+wRBzpn/gRz+me2LRVL2/AjJRelewrmy3gy6wpeyTBEp?=
- =?us-ascii?Q?/uibgM0D0CVHggcPuIZalFX+F8CFvxU=3D?=
-X-Exchange-RoutingPolicyChecked: OLXL7TAxhy+orXHoKGe6VnflJKjIzxUbWvghiTwZMnxjakRC+8n52kr6rZ2tX1NVLt8rilywXSNBMUVYdwz7fix33Jbo4BB1npANeEOP9RjAGkmDDvBMd/Mbsh8h94Yxnf+HFpQoMrdZ1FSZNzdEu2mkKMf1OC4ceTWJl/D60zpknQT6YB/yO0BuvNueoG22B1gzTnkrQdwWNQ7tKw7aMJqjCN7iXWOJtotgNhkauuhyMKbuvUHxrc6LtGReAqLqDqXBRqarqjuAmUVXJ4OjXxXNsr+7EsULybK2CKfUOFBlrFDs2gG9Fl70izOJDQWM4LcKVgbg/x3ygRvMnpdOtQ==
-X-OriginatorOrg: nutanix.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 144c1b85-bb1c-4295-7893-08ded050ca1c
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR02MB7159.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Jun 2026 11:24:14.4166 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: bb047546-786f-4de1-bd75-24e5b6f79043
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: I0uV1lavPHXcOmHsq7A0HzIaL8D3psAi5DzfKaTX4BI+yFeRv5yZ7Y67DIZQp1HUd5IrUd+FpHvHDANOfQYqPuFaOd6VXx9n4DlqlQr6WRM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR02MB10661
-X-Authority-Analysis: v=2.4 cv=T/S8ifKQ c=1 sm=1 tr=0 ts=6a391b5f cx=c_pps
- a=8AR2Or5FcovIRbB7TUUKGA==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
- a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
- a=xqWC_Br6kY4A:10 a=FelO9ux0wxsA:10 a=0kUYKlekyDsA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=VUi8bpU7OL1Oj2-RSIOF:22
- a=64Cc0HZtAAAA:8 a=1677IaiEuyO47b-9faYA:9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjIyMDExMiBTYWx0ZWRfX876b1rceoc0l
- qdPAuIClA9U7wMRjHV/4nyn13X4wqoIxgd7NUnfH0EQ1UafG53lRfPisbopPeXCibLtNKY6VgdP
- 8dYVNk6L14MgqB8TGXEBGEe9GfcA7yR4GR8gwyTpVCuhTeXNwgbwH+rdm7my/pxanqsxbXpwFLq
- gi5p1N60AMsfOmNrevFmy6Jdins/XJi2ycYMP/S/gJPTi2ikNJnHQRq+Mmazs5GbnSqFDgPbDyl
- 33d3QvHTtxwtw1svKc1vlH6t+bjUD9dwsPbkhy9mYZLFk9L7unzdpaXs5aS2gPtQcvoEciJ58TZ
- FHerL1F9bSAk50tLgQG5nFhx9jeZxuh3DJFx+2cV4iXbT1lU9ODrpb0RyljvajK8dIq+4rJ1BQn
- nFy2PCdwLP2SU0Icul4K//96Mt4TuNWbmkyqHc1pFFx5Y4EVx0wvqvd+tLMurYeDcICO0cNsosY
- 2AAzya1QX2T3oshvr7g==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNjIyMDExMiBTYWx0ZWRfX6vySq6SMwtXv
- Iy5EApp5ufIcnoxULWLLNT2VI+oTuML2OowjYbYNEP/Y6T001nKPrvKiilwT91SV2IPL5Cv1A9T
- p1dnw8sSOJhoZb9Qm475euKxQbpMKqk=
-X-Proofpoint-ORIG-GUID: 6_xKJarlTzRfRL5cuLeIOBUeaKb60QES
-X-Proofpoint-GUID: 6_xKJarlTzRfRL5cuLeIOBUeaKb60QES
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-06-22_02,2026-06-18_03,2025-10-01_01
-X-Proofpoint-Spam-Reason: safe
-Received-SPF: pass client-ip=148.163.155.12;
- envelope-from=mark.caveayland@nutanix.com; helo=mx0b-002c1b01.pphosted.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+In-Reply-To: <c5fb78d9-1023-406c-8057-7506a41c47fd@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: OewM4NzjxnrL0CXzLiZ-x6wpzjyVfdDk_6bt9PAw-vY_1782128520
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -179,113 +117,664 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
----
- hw/isa/lpc_ich9.c | 64 +++++++++++++++++++++++++++++++++++++----------
- 1 file changed, 51 insertions(+), 13 deletions(-)
+On Mon, Jun 22, 2026 at 02:44:16PM +1000, Gavin Shan wrote:
+> On 6/21/26 10:52 PM, Michael S. Tsirkin wrote:
+> > On Sun, Jun 21, 2026 at 04:51:55PM +1000, Gavin Shan wrote:
+> > > On 6/19/26 3:33 PM, Michael S. Tsirkin wrote:
+> > > > On Fri, Jun 19, 2026 at 10:44:17AM +1000, Gavin Shan wrote:
+> > > > > On 6/17/26 5:14 PM, Michael S. Tsirkin wrote:> This is a top post attempting to summarize some findings related to
+> > > > > > emulating DMA and MMIO existing in QEMU memory core
+> > > > > > using memcpy/memmove.
+> > > > > > 
+> > > > > > Hopefully, this will help inform discussion about multiple
+> > > > > > changes currently proposed for QEMU.
+> > > > > > 
+> > > > > > At a high level, and in a variety of configurations, QEMU gets
+> > > > > > DMA requests from a virtual device, or MMIO requests from
+> > > > > > a VCPU, and wants to execute them either on guest ram or
+> > > > > > passhtrough device memory.
+> > > > > > 
+> > > > > > Down the road this almost always (virtio ring implementation seems to be
+> > > > > > a notable exception) translates to memcpy/memmove calls
+> > > > > > (glibc e.g. on x86 currently implements memcpy through memmove).
+> > > > > > 
+> > > > > > However, memcpy's signature is:
+> > > > > >           void *memcpy(void *dest, const void *src, size_t n);
+> > > > > > note how neither src not more importantly dest are volatile.
+> > > > > > Thus it was never designed either for a concurrent access
+> > > > > > by another CPU, or for accessing devices.
+> > > > > > (Mis)using it for that gives good performance but has issues,
+> > > > > > some of which I am trying to enumerate below.
+> > > > > > 
+> > > > > > In the below I say memcpy but same applies to memmove just as well.
+> > > > > > 
+> > > > > 
+> > > > > Firstly, thanks to Michael for the summary and helps to lead the discussions.
+> > > > > 
+> > > > > I went through the listed questions and suggestions, but I'm not sure if
+> > > > > I understood every question and suggestion.
+> > > > > 
+> > > > > Figured out that we probably
+> > > > > need to something as below. Please take a look when you get a chance to
+> > > > > check if there are any gaps.
+> > > > > 
+> > > > > S1: New field MemoryRegion::cache_mode to indicate how it has been mapped
+> > > > >       for those directly accessible regions: cache_{normal, writecombine, no}
+> > > > >       corrresponding to pgprot_{normal, writecombine, noncached}.
+> > > > > 
+> > > > >       S1.1 MemoryRegion::cache_mode is meaningful to those directly accessible
+> > > > >            regions like ram, ram device and rom device regions
+> > > > >       S1.2 MemoryRegion::cache_mode should be set when those directly accessible
+> > > > >            regions are created
+> > > > >       S1.3 Only cache_{normal, writecombine} regions can be directly accessible
+> > > > 
+> > > > What is "directly accessible" here? That all memory ops thinkable work?
+> > > > E.g. on power8 not all ops work on pgprot_writecombine, either (and glibc memcopy
+> > > > uses these).
+> > > > I am not 100% sure that's a sane userspace API. It's an internal kernel one.
+> > > > If we are mirroring kernel, we need to include pgprot_device - the CDX vfio
+> > > > driver uses it.
+> > > > 
+> > > > But if you want to know what memory instructions work from userspace, there is
+> > > > a lot of detail and pgprot_ macros do not cover all of them.
+> > > > 
+> > > 
+> > > A region is 'directly accessible' when memory_access_is_direct() returns true
+> > > for it. The accesses to the directly accessible regions are turned into memcpy()
+> > > and memmove()
+> > 
+> > This is unlikely to *generally* be safe for any memory that can be concurrently
+> > accessed by guest. Not device memory, nor guest memory.
+> > But, it might be safe for specific architectures, devices, and lengths.
+> > A heuristic similar to "memcpy/memmove for specific lengths" might
+> > practically work, though.
+> > 
+> 
+> What do you mean by "nor guest memory"? :-)
 
-diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-index edf9783ec8..c6d31a3957 100644
---- a/hw/isa/lpc_ich9.c
-+++ b/hw/isa/lpc_ich9.c
-@@ -683,24 +683,11 @@ static void ich9_lpc_initfn(Object *obj)
- {
-     ICH9LPCState *lpc = ICH9_LPC_DEVICE(obj);
- 
--    static const uint8_t acpi_enable_cmd = ICH9_APM_ACPI_ENABLE;
--    static const uint8_t acpi_disable_cmd = ICH9_APM_ACPI_DISABLE;
--
-     object_initialize_child(obj, "rtc", &lpc->rtc, TYPE_MC146818_RTC);
- 
-     qdev_init_gpio_out_named(DEVICE(lpc), lpc->gsi, ICH9_GPIO_GSI,
-                              IOAPIC_NUM_PINS);
- 
--    object_property_add_uint8_ptr(obj, ACPI_PM_PROP_SCI_INT,
--                                  &lpc->sci_gsi, OBJ_PROP_FLAG_READ);
--    object_property_add_uint8_ptr(OBJECT(lpc), ACPI_PM_PROP_ACPI_ENABLE_CMD,
--                                  &acpi_enable_cmd, OBJ_PROP_FLAG_READ);
--    object_property_add_uint8_ptr(OBJECT(lpc), ACPI_PM_PROP_ACPI_DISABLE_CMD,
--                                  &acpi_disable_cmd, OBJ_PROP_FLAG_READ);
--    object_property_add_uint64_ptr(obj, ICH9_LPC_SMI_NEGOTIATED_FEAT_PROP,
--                                   &lpc->smi_negotiated_features,
--                                   OBJ_PROP_FLAG_READ);
--
-     ich9_pm_reset_properties(&lpc->pm);
-     ich9_pm_add_properties(obj, &lpc->pm);
- }
-@@ -880,6 +867,40 @@ static void build_ich9_isa_aml(AcpiDevAmlIf *adev, Aml *scope)
-     qbus_build_aml(bus, scope);
- }
- 
-+static void ich9_lpc_get_sci_int(Object *obj, Visitor *v,
-+                                 const char *name, void *opaque,
-+                                 Error **errp)
-+{
-+    ICH9LPCState *lpc = ICH9_LPC_DEVICE(obj);
-+    uint8_t sci_gsi = lpc->sci_gsi;
-+
-+    visit_type_uint8(v, name, &sci_gsi, errp);
-+}
-+
-+static void ich9_lpc_get_smi_negotiated_feat(Object *obj, Visitor *v,
-+                                             const char *name, void *opaque,
-+                                             Error **errp)
-+{
-+    ICH9LPCState *lpc = ICH9_LPC_DEVICE(obj);
-+    uint64_t smi_negotiated_features = lpc->smi_negotiated_features;
-+
-+    visit_type_uint64(v, name, &smi_negotiated_features, errp);
-+}
-+
-+static void ich9_lpc_set_smi_negotiated_feat(Object *obj, Visitor *v,
-+                                             const char *name, void *opaque,
-+                                             Error **errp)
-+{
-+    ICH9LPCState *lpc = ICH9_LPC_DEVICE(obj);
-+    uint64_t smi_negotiated_features = lpc->smi_negotiated_features;
-+
-+    if (!visit_type_uint64(v, name,  &smi_negotiated_features, errp)) {
-+        return;
-+    }
-+
-+    lpc->smi_negotiated_features = smi_negotiated_features;
-+}
-+
- static void ich9_lpc_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -888,6 +909,9 @@ static void ich9_lpc_class_init(ObjectClass *klass, const void *data)
-     AcpiDeviceIfClass *adevc = ACPI_DEVICE_IF_CLASS(klass);
-     AcpiDevAmlIfClass *amldevc = ACPI_DEV_AML_IF_CLASS(klass);
- 
-+    static const uint8_t acpi_enable_cmd = ICH9_APM_ACPI_ENABLE;
-+    static const uint8_t acpi_disable_cmd = ICH9_APM_ACPI_DISABLE;
-+
-     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     device_class_set_legacy_reset(dc, ich9_lpc_reset);
-     k->realize = ich9_lpc_realize;
-@@ -912,6 +936,20 @@ static void ich9_lpc_class_init(ObjectClass *klass, const void *data)
-     adevc->ospm_status = ich9_pm_ospm_status;
-     adevc->send_event = ich9_send_gpe;
-     amldevc->build_dev_aml = build_ich9_isa_aml;
-+
-+    object_class_property_add(klass, ACPI_PM_PROP_SCI_INT, "uint8",
-+                              ich9_lpc_get_sci_int,
-+                              NULL,
-+                              NULL, NULL);
-+    object_class_property_add_uint8_ptr(klass, ACPI_PM_PROP_ACPI_ENABLE_CMD,
-+                                        &acpi_enable_cmd, OBJ_PROP_FLAG_READ);
-+    object_class_property_add_uint8_ptr(klass, ACPI_PM_PROP_ACPI_DISABLE_CMD,
-+                                        &acpi_disable_cmd, OBJ_PROP_FLAG_READ);
-+    object_class_property_add(klass, ICH9_LPC_SMI_NEGOTIATED_FEAT_PROP,
-+                              "uint64",
-+                              ich9_lpc_get_smi_negotiated_feat,
-+                              ich9_lpc_set_smi_negotiated_feat,
-+                              NULL, NULL);
- }
- 
- static const TypeInfo ich9_lpc_info = {
--- 
-2.43.0
+Regular RAM, like most memory.
+
+For example, if a device writes into a buffer with a single
+PCI write, data is observed in the buffer in order, from
+1st to last byte. This matters for some devices and some
+accesses. glibc's memcpy simply never guarantees this
+for arbitrary addresses and lengths.
+
+
+> Device memory except GH100's PCI BAR#4 is indirectly accessible and the access to
+> them should be handled by MemoryRegion::ops. For example, the accesses to the device
+> memory should be handled by memory_region_dispatch_write() in flatview_write_continue_step(),
+> and the access is eventually handled by MemoryRegionOps::write().
+
+I keep saying that device memory isn't special wrt ordering, and
+directly accessible/indirectly accessible just isn't
+the right abstraction if you want to model it completely.
+Instead, we have different ordering and caching characteristics
+for reads and writes.
+
+> > 
+> > > in flatview_{read, write}_continue_step(), or {ldm, stm}_p() in
+> > > address_space_{ldm, stm}_internal(). Currently, the mmapable VFIO PCI BARs are
+> > > exposed as ram device regions, which are indirectly accessible. One of our goals
+> > > is to make part of the mappable VFIO PCI BARs (not all of them) directly accessible,
+> > > so that the DMA bounce buffer is bypassed when the DMA target buffer resides in
+> > > the BAR (region).
+> > > 
+> > > Yes, I don't know if pgprot_xxx is adequate or not, but it's just the thought. We
+> > > probably need more information like the combination (host_arch, guest_arch, pgprot_xxx).
+> > > The idea is to have more information fed to MemoryRegion and our private accessing
+> > > functions, which are mentioned in S2 to replace the standard memcpy() and
+> > > memmove(), know which instructions are safe to use, if vector instructions can
+> > > be used, and whatever else.
+> > > 
+> > > I don't think we can do everything in one shot. Initially, we probably just provide
+> > > a sustainable design (or inrastructure) for long-term evolving. From there, we can
+> > > extend it to other architectures and cases step by step.
+> > > 
+> > >      #if defined(__x86_64__) || defined(__aarch64__)
+> > >      #define RAM_DEVICE_REGION_CAN_BE_DIRECTLY_ACCESSIBLE  1
+> > >      #define USE_OUR_OWN_MEMCPY_AND_MEMMOVE                1
+> > >      #else
+> > >      #define RAM_DEVICE_REGION_CAN_BE_DIRECTLY_ACCESSIBLE  0
+> > >      #define USE_OUR_OWN_MEMCPY_AND_MEMMOVE                0
+> > >      #endif
+> > > 
+> > > we also can put more constraints to S1.3 so that only cache_normal
+> > > MMIO region can be directly accessible.
+> > 
+> > The idea that anything at all is "directly accessible" is kinda flawed.
+> > memcpy can easily be broken for a specific use and it does not
+> > then matter how the memory is mapped.
+> > 
+> 
+> No, we're not putting anything to 'directly accessible'. Instead, we're just
+> moving one specific VFIO PCI BAR from indirectly accessible to directly accessible
+> category. In my specific case related to GH100, only the PCI BAR-4 is turned
+> from indirectly accessible to directly accessible because pgprot_normal is used
+> when this BAR is mmaped.
+> 
+> 
+> > >      S1.3 Only cache_normal regions can be directly accessible. The question
+> > >           is the cache_normal MMIO region is tolerant to unaligned and vectored
+> > >           access on all architectures?
+> > > 
+> > > > 
+> > > > > S2: qemu_ram_{copy, move}() which are our private implementations of memcpy()
+> > > > >       and memmove(). They're going to replace memcpy/memove() in the memory
+> > > > >       region directly access paths like flatview_{read, write}_continue_step()
+> > > > > 
+> > > > >       S2.1 Small fixed length (1/2/4/8 bytes) accesses shouldn't be either
+> > > > >            split or reordered
+> > > > >       S2.2 Arcitectural optimization based on the MemoryRegion::cache_mode,
+> > > > >            unaligned accesses and vector instructions may be allowed
+> > > > 
+> > > > hmm. meaning what exactly?
+> > > > 
+> > > 
+> > > glibc::{memcopy, memmove}() aren't reliable. There are several related bugs,
+> > > as you listed. For [1], where one-byte-store is translated to triple stores
+> > > to same location. it seems we have to bypass glibc::memcopy(), at least for
+> > > some cases? If so, we need our own (well-behaved) memcpy/memmove(), and
+> > > qemu_ram_{copy, move}() are our own implementations to replace memcpy/memmove()
+> > > in the direct access paths.
+> > > 
+> > >      [1] example of a bug caused by memcpy as result of DMA
+> > >          https://lore.kernel.org/qemu-devel/20260527091711.3901-1-liugang24219@sangfor.com.cn
+> > >      [2] an attempt to fix bugs caused by memcpy to device memory in response to
+> > >          MMIO. 4a2e242bbb "memory: Don't use memcpy for ram_device regions"
+> > >          https://lists.gnu.org/archive/html/qemu-devel/2016-10/msg08129.html
+> > 
+> > But note the ordering issues (of which multiple stores are one example)
+> > are distinct from ISA issues, and they apply universally for any memory.
+> > 
+> 
+> Strictly speaking, those two issues happen only when the standard memcpy/memmove()
+> are used, correct? We're paying for the optimization enforced by the standard
+> memcpy/memmove(). "qatomic_set((uint8_t *)dst, qatomic_read((uint8_t *)src))"
+> can avoid the issues.
+
+For a single byte, yes.
+
+> > 
+> > 
+> > > > > 
+> > > > > S3: Support VFIO_REGION_INFO_CAP_MMAP_CACHE_MODE where cache_{normal,
+> > > > >       writecombine, no} is provided for every mmapable region or all
+> > > > >       sparse mmaps on the region
+> > > > 
+> > > > seems like you are trying to drive the cache mode from userspace?
+> > > > but how will userspace know what to set?
+> > > > I'd expect, instead, to just have VFIO report how it is mapped.
+> > > > 
+> > > 
+> > > No, the capability should be reported by host's VFIO PCI driver. For my GH100
+> > > specific case, it's nvgrace_gpu_vfio_pci driver where this capability is reported.
+> > 
+> > good
+> > 
+> > > > > 
+> > > > >       S2.1 The capability is only meaningful when VFIO_REGION_INFO_FLAG_MMAP
+> > > > >            is absent
+> > > > >       S2.2 All sparse mmaps for one specific region should have unified cache
+> > > > >            mode
+> > > > 
+> > > > you can not trust userspace to do that.
+> > > > 
+> > > 
+> > > See above explanation. We don't trust userspace to do it. Instead, the host's
+> > > VFIO PCI driver needs to report it.
+> > 
+> > good
+> > 
+> > > > > 
+> > > > > > 
+> > > > > > ------------------
+> > > > > > 
+> > > > > > 1. On x86, memcpy is different from __builtin_memcpy if
+> > > > > > one uses old 1.0 force-headers from 2019. Thus, QEMU
+> > > > > > sometimes uses __builtin sometimes it does not, inconsitently.
+> > > > > > Likely no longer relevant and should be cleaned up.
+> > > > > > 
+> > > > > 
+> > > > > S2. old 1.0 force-headers won't be used with S2?
+> > > > > 
+> > > > > > 
+> > > > > > 2. variable length memcpy can translate 2,4,8 byte guest access
+> > > > > > into multiple byte accesses. doing this for mmio is
+> > > > > > guaranteed to break devices.
+> > > > > > 
+> > > > > 
+> > > > > S2.1. However, is it still a problem when the MMIO region is mapped with
+> > > > > pgprot_{normal, writecombine}?
+> > > > 
+> > > > MMIO as pgprot_{normal, writecombine} will break devices whatever
+> > > > userspace does.
+> > > > 
+> > > 
+> > > If we're going to introduce something similar to linux-kernel::readl/writel(),
+> > > and use them to access MMIO region, it should be fine then?
+> > > 
+> > 
+> > For aligned memory. Unaligned accesses seems to be generally unfixable
+> > unless host and guest are x86. We can split them up and hope for the
+> > best, given we always did.
+> > 
+> 
+> Yes, it seems we have no choice and splitting the unaligned access may
+> be the best way.
+> 
+> > > > 
+> > > > > > 
+> > > > > > 3. (theoretical concern) also on x86, unaligned accesses are possible on guest and host,
+> > > > > > so converting an unaligned access to a series of aligned ones can
+> > > > > > in theory break devices.
+> > > > > > 
+> > > > > 
+> > > > > S1.3, the directly accessible regions have attribute cache_{normal, writecombine}
+> > > > > where unaligned access is allowed. The question is unaligned access on those
+> > > > > regions are always safe on all architectures?
+> > > > 
+> > > > Define "directly accessible regions". Or better, avoid even thinking
+> > > > in these terms.
+> > > > 
+> > > 
+> > > Please see my explanation above.
+> > > 
+> > > > 
+> > > > > > 4. also on x86, vector instructions for large (>16 byte) writes
+> > > > > > into pgprot_noncached memory are safe and faster than multiple 8 byte
+> > > > > > ones.
+> > > > > > 
+> > > > > 
+> > > > > S1.3, region with pgprot_noncached is indirectly accessible.
+> > > > > 
+> > > > > > 5. also on x86 it so happens that if you write a fixed-size memcpy this
+> > > > > > gets optimized to a single store/load and it works for aligned and
+> > > > > > unaligned addresses on that architecture. How to ensure this keeps being
+> > > > > > correct is left as an excerise for the reader. But qemu already relies
+> > > > > > on this and did for years.
+> > > > > > 
+> > > > > 
+> > > > > Sorry, Not fully understood.
+> > > > 
+> > > > 
+> > > > what is unclear? on x86, and some others, glibc will see size 1,2,4 and
+> > > > maybe 8 of 64 and inline memcpy and it happens to do exactly a single
+> > > > load/store.  and code in bswap.h relies on this to mirror guest MMIO on
+> > > > the host. So assuming that is it least not regressing too much.
+> > > > 
+> > > 
+> > > Ok. So you're saying that __builtin_{memcpy, memmove}() aren't safe for MMIO
+> > > accesses?
+> > 
+> > 
+> > No, I am saying 1,2,4 byte __builtin_{memcpy, memmove} on x86 hosts
+> > are currently translated to single 1,2,4 byte stores/loads,
+> > and they work for unaligned accesses, which is nice.
+> > I am also saying there's no difference between them and memcpy/memmove
+> > on modern systems.
+> > 
+> 
+> Ok, Gotcha now.
+> 
+> > 
+> > > All the functions in bswap.h, based on __builtin_{memcpy, memmove}(),
+> > > are only safe to RAM accesses, but unsafe to MMIO accesses?
+> > > 
+> > > Currently, ram_device_mem_ops::memory_region_ram_device_write() runs into
+> > > stn_he_p() and then __builtin_memcpy(), which aren't safe to access to VFIO PCI
+> > > BARs. This path wasn't considered in the proposed design and something needs
+> > > to be considered in the revised design. For this, I'm going add the following
+> > > context to the design.
+> > > 
+> > > S1: A new set of functions added to include/qemu/io.h, similar to linux/
+> > >      include/asm/io.h::{read,write}{b, w, l q}() to access MMIO region
+> > > 
+> > >      S1.1 Those new fuctions will be used to access MMIO region
+> > >           S1.1.1 Directly access paths in address_space_{ldm, stm}_internal(),
+> > >                  to replace {ldm, stm}_p().
+> > >           S1.1.2 Directly access paths in flatview_{read, write}_continue_step()
+> > >                  to replace memcpy() and memmove().
+> > >           S1.1.3 Indirectly access paths where MemoryRegionOps is invoked, to
+> > >                  replace {ldn, stn}_he_p() or their RAM access variants if the
+> > >                  region is a MMIO region.
+> > > 
+> > > > 
+> > > > 
+> > > > > It's perhaps covered by S2 if we're talking
+> > > > > about address_space_{read,write}. If we're talking about address_space_{ldl, stl}(),
+> > > > > we perhaps need to replace __builtin_{memcpy, memmove}() with those private
+> > > > > functions introduced in S2.
+> > > > 
+> > > > Not sure what "covered" means.
+> > > > 
+> > > 
+> > > Ok, it's not important now since the paths invokved by those functions in bswap.h,
+> > > which target a MMIO region, aren't considered in the proposed design.
+> > > 
+> > > > 
+> > > > > 
+> > > > > > 6. on non-x86 both unaligned accesses and vector instructions
+> > > > > > for accessing  UC memory are illegal.
+> > > > > > 
+> > > > > 
+> > > > > Assume UC is equivalent to pgprot_noncached. In that case, it's true on aarch64
+> > > > > at least. With S1.3 applied, this kind of region becomes indirectly accessible.
+> > > > > 
+> > > > > > 7. standard vfio gives KVM VM_ALLOW_ANY_UNCACHED, so even on non x86
+> > > > > > guest can
+> > > > > > map the memory as as pgprot_noncached/ioremap or pgprot_writecombine/ioremap_uc.
+> > > > > > If it does the second then it can use unaligned or vector for access.
+> > > > > > This is why normal passthrough tends to work - it never traps to qemu at
+> > > > > > all.
+> > > > > > 
+> > > > > > 
+> > > > > > But for qemu, vfio uses  pgprot_noncached unconditionally so qemu
+> > > > > > can't use unaligned or vector instructions on non-x86.
+> > > > > > 
+> > > > > 
+> > > > > VM_ALLOW_ANY_UNCACHED is exclusively to arm64 since commit 8c47ce3e1d2c ("KVM:
+> > > > > arm64: Set io memory s2 pte as normalnc for vfio pci device). After that, all
+> > > > > VFIO PCI BARs have pgprot_writecombine attribute on arm64, thus unaligned or
+> > > > > vector accesses are safe on those BARs from guest POV instead of host.
+> > > > 
+> > > > But not e.g. on power8, sadly.
+> > > > 
+> > > 
+> > > Ok. With more constraints applied to S1.3 as I mentioned above, only cache_normal
+> > > regions can be directly accessible, I guess power8 will be happy with unaligned
+> > > and vector access?
+> > > 
+> > >      S1.3 Only cache_normal regions can be directly accessible. The question
+> > >           is the cache_normal MMIO region is tolerant to unaligned and vectored
+> > >           access on all architectures?
+> > 
+> > I assume you mean pgprot_normal?
+> > 
+> > For unaligned access there - generally no, but of major ones qemu cares
+> > about, I think only sparc and maybe riscv don't support unaligned memory
+> > accesses for pgprot_normal. Of others, I think mips doesn't.
+> > 
+> 
+> Yes, cache_normal == pgprot_normal
+> 
+> Ok, we still need to classify the CPU architectures. Initially, we probably
+> have two categories as below.
+> 
+> #if defined(__x86_64__)
+> #define MEMCPY_UNALIGNED_OK			1
+> #else
+> #define MEMCPY_UNALIGNED_OK			0
+> #endif
+> 
+> #ifdef MEMCPY_UNALIGNED_OK
+> void qemu_ram_copy_unsafe(void *dst, const void *src, size_t len);
+> #else
+> void qemu_ram_copy_safe(void *dst, const void *src, size_t len);
+> #endif
+> 
+> 
+> > And I am not sure what do you call "MMIO region".
+> > 
+> 
+> I meant "VFIO PCI BAR" by "MMIO region". For GH100 card, there are 3 PCI BARs:
+> BAR#0, BAR#2, BAR#4. Different pgprot_xxx are used when they're mmaped by
+> nvgrace_gpu_vfio_pci driver: BAR#0 and BAR#2 has pgprot_nocached and
+> pgprot_device. BAR#4 has pgprot_normal. So BAR#4 is a MMIO region from PCI POV,
+> but it's a regular RAM stick since the coherence to CPU L1/L2 cache and system
+> level L3 cache is also guaranteed for this BAR#4.
+> 
+> I have a bpftrace script dumping 'struct vm_area_struct::vm_page_prot', combined
+> with 'cat /proc/<qemu-pid>/smaps' | grep -B 25 pf'.
+> 
+>   ffdbc0000000-fff360000000 rw-s 40000000000 00:07 652                     /dev/vfio/devices/vfio0
+>     Size:    99090432 kB
+>     VmFlags: rd wr sh mr mw me ms pf io dc de dd hg
+>     vma::vm_page_prot   0x0068000000000fc3   -> pgprot_normal
+> 
+>   fffc00000000-fffc44f00000 rw-s 20000000000 00:07 652                     /dev/vfio/devices/vfio0
+>     Size:    1129472 kB
+>     VmFlags: rd wr sh mr mw me ms pf io dc de dd hg ??
+>     vma::vm_page_prot   0x0068000000000fcb   -> pgprot_nocached
+> 
+>   fffcc5000000-fffcc6000000 rw-s 00000000 00:07 652                        /dev/vfio/devices/vfio0
+>     Size:    16384 kB
+>     VmFlags: rd wr sh mr mw me ms pf io dc de dd hg ??
+>     vma::vm_page_prot   0x0068000000000fcf   -> pgprot_device
+> 
+> > 
+> > > > > I maybe
+> > > > > wrong and Alex can correct me.
+> > > > > 
+> > > > > S1.3 only cache_{normal, writecombine} regions can be directly accessible.
+> > > > > A region with pgprot_noncached attribute is indirectly accessible.
+> > > > > 
+> > > > > > 
+> > > > > > 8. But for nvgrace RAM, vfio has a driver that uses pgprot_writecombine/ioremap_uc.
+> > > > > > so qemu could safely use unaligned/vector instructioons even on non-x86.
+> > > > > > 
+> > > > > 
+> > > > > For my specific case related to GH100 card, Region-0/2 have pgprot_writecombine
+> > > > > while Region-4 has pgprot_normal attribute.
+> > > > > 
+> > > > >     Region 0: Memory at 44080000000 (64-bit, prefetchable) [size=16M]
+> > > > >     Region 2: Memory at 44000000000 (64-bit, prefetchable) [size=2G]
+> > > > >     Region 4: Memory at 42000000000 (64-bit, prefetchable) [size=128G]
+> > > > > 
+> > > > > 
+> > > > > > 9. Except sadly, vfio currently does not tell qemu how it maps
+> > > > > > the memory, so qemu can not know what is safe on non-x86.
+> > > > > > 
+> > > > > 
+> > > > > S3. Host VFIO driver needs ABI changes to expose the cache mode.
+> > > > > 
+> > > > > > 10. on x86 memcpy will sometimes do multiple overlapping stores when
+> > > > > > size is not a power of 2. for example, a 15 byte write is done with
+> > > > > > 2 8-byte stores. This is theoretically an issue
+> > > > > > if guest does something super clever with ordering,
+> > > > > > but does not seem to be in practice.
+> > > > > > 
+> > > > > 
+> > > > > S2. This should be avoided in qemu_ram_{copy, move}() which are going to replace
+> > > > > the standard memcpy() and memmove().
+> > > > > 
+> > > > > 
+> > > > > > 11. on non-x86 memcpy will do multiple overlapping stores even
+> > > > > > for single byte writes. E.g. it does it to avoid extra branches.
+> > > > > > This is causing issues in practice.
+> > > > > > 
+> > > > > 
+> > > > > S2, This should be avoided in qemu_ram_{copy, move}().
+> > > > > 
+> > > > > 
+> > > > > > 12. PCI writes are in order, last byte is written last.
+> > > > > > memmove especially writes last byte first sometimes.
+> > > > > > Violating that theoretically can break guests.
+> > > > > > 
+> > > > > 
+> > > > > S2, the reordering should be avoided in qemu_ram_{copy, move}(). However,
+> > > > > I would think this region becomes indirectly accessible with S1.3 applied?
+> > > > > 
+> > > > > 
+> > > > > > 13. but if we are copying between 2 addresses that are overlapping,
+> > > > > > the standard trick (used by memmove) is to compare dst and src and copy
+> > > > > > backwards if dst < src, so last byte is written first.
+> > > > > > 
+> > > > > 
+> > > > > Backwards copying happens on (dst > src) not on (dst < src). We potentially
+> > > > > convert this to a forwards copying by moving the data in the overlapped area
+> > > > > to somewhere else, and then take that as the src in the subsequent forwards
+> > > > > copying.
+> > > > 
+> > > > Not that simple. Issue is, the size of the overlap is not really limited.
+> > > > Maybe make last X bytes go through the buffer, the rest copy backwards and hope for the best?
+> > > > 
+> > > 
+> > > I guess it would work with luck. Alternative, it can be converted to two
+> > > forwards copying. The source buffer is split into two parts, the second
+> > > part of the source buffer is copied before the first part.
+> > 
+> > I'm not sure I see it:
+> > 
+> > Imagine: src 0 to 2G, dst 1G to 3G
+> > 
+> > 
+> > SRC:
+> > 1G ------ 1G ------- 2G
+> > 
+> > DST:
+> >            1G ------- 2G ------ 3G
+> > 
+> > 
+> > if you want to emulate pci ordering exactly, DST has to be over-written
+> > in exactly address order.
+> > 
+> > I don't yet see how it can be done without buffering 1G data.
+> > 
+> 
+> It's split into two forwards copys: [1G 2G] to [2G 3G], [0 1G] to [1G 2G].
+
+If a device issues multiple writes to do these copies, then
+this would violate PCI ordering rules (writes are observed in address order). Whether
+any guest relies on this for such large writes, or even issues
+such large writes, is anyone's guess. Historically virtio and
+qemu in general did not observe such ordering so there's some hope that at
+least for devices qemu emulates, the answer is no.
+
+On the other hand, it is not clear it's a real life issue, or can be.
+PCI does not really support "memory copy", after all.
+
+
+> > 
+> > 
+> > 
+> > > > 
+> > > > > I think it's unliekly to be a directly accessible region with S1.3 applied.
+> > > > 
+> > > > No, this does not have much to do with how the region is mapped.
+> > > > If guest or device write bytes 1 to X in order and you decide to
+> > > > write them X to 1, you have broken some drivers, unless you know
+> > > > exactly how the device and driver are supposed to work.
+> > > > 
+> > > 
+> > > Ideally, we should disallow data movement between two overlapped MMIO regions.
+> > 
+> > Sadly, devices use exactly this for DMA, this is why qemu switched to
+> > memmove.
+> > 
+> 
+> Yeah. More information can be found from commit 4a73aee881 ("softmmu: Use memmove
+> in flatview_write_continue").
+
+
+Exactly what I had in mind. However, the fact remains that this is
+not a real life scenario. It was found by a fuzzer. The cost was
+very low (on x86 - zero) so we went ahead and fixed it.
+
+
+> > > In APIs of linux kernel like readl/writel, one of the operand always resides
+> > > in RAM, the source/destination are never overlapped.
+> > 
+> > 
+> > 
+> > > > 
+> > > > > 
+> > > > > > -------------
+> > > > > > 
+> > > > > > 
+> > > > > > 
+> > > > > > Some conclusions:
+> > > > > > 
+> > > > > > A. on x86, we must avoid converting 2,4,8 byte accesses into byte accesses.
+> > > > > > At least for aligned, perferably for unaligned accesses too.
+> > > > > > Fixed width memcpy seems to work for this. Whether we should bother with
+> > > > > > __builtin to work around broken old fortify headers, I donnu.
+> > > > > > I do not have any answer how to check that compiler does this correctly.
+> > > > > > If anyone is motivated enough, adding a GCC builtin could be possible.
+> > > > > > Given qemu did this for years, I think we can leave solving this for
+> > > > > > another day.
+> > > > > > 
+> > > > > 
+> > > > > Covered by S2.1
+> > > > > 
+> > > > > > B. Also on many architectures, memcpy is much faster for large transfers
+> > > > > > than iterating over 8 byte chunks in C.
+> > > > > > When we can get away with doing that (e.g. for emulated devices where
+> > > > > > we know the concurrency rules, writing into guest RAM), we should.
+> > > > > > 
+> > > > > 
+> > > > > S2.2, something related to performance optimization for the future
+> > > > > 
+> > > > > > C. on non-x86, we currently must not memcpy into host devices
+> > > > > > since we do not know if it is pgprot_noncached. yes, performance will be
+> > > > > > bad for DMA into device RAM.
+> > > > > > 
+> > > > > 
+> > > > > S1.3. This specific region becomes indirectly accessible after S1.3 is applied.
+> > > > > 
+> > > > > > 
+> > > > > > D.  It goes without saying that casting an unaligned address to unint32_t
+> > > > > > (be it for qatomic_set or whatever) is undefined behaviour in C
+> > > > > > and so a bad idea on any architecture.
+> > > > > > 
+> > > > > 
+> > > > > S1.3. The directly accessible region always have cache_{normal, writecombine}
+> > > > > attribute.
+> > > > > 
+> > > > > > 
+> > > > > > E. also for non-x86, we really should teach vfio to tell qemu whether
+> > > > > > it maps device pgprot_noncached or pgprot_writecombine.
+> > > > > > we will then be able to do things like use vector ops
+> > > > > > (through memcpy or not) for >8 accesses.
+> > > > > > 
+> > > > > 
+> > > > > S3. pgprot_normal is also needed. In my case related to GH100 card, the PCI
+> > > > > BAR-4 is mapped with pgprot_normal.
+> > > > > 
+> > > > > Yes, with those information fed to MemoryRegion::cache_mode in S1, it's
+> > > > > possible to optimize qemu_ram_{copy, move}() in S2.2 for the performance sake.
+> > > > > 
+> > > > > 
+> > > > > > F. Arbitrary device passthrough with drivers doing unalined accesses and
+> > > > > > when working cross architectures basically is a best effort thing.  It
+> > > > > > can't be 100% perfect for all devices.
+> > > > > > 
+> > > > > 
+> > > > > Yes. For the first step, we perhaps need to gurantee the directly accessible region
+> > > > > have pgprot_{normal, writecombine} in S1.3 if you agree.
+> > > > 
+> > > > I do not know what "directly accessible" is and I feel we should get
+> > > > out of the habit of thinking in these terms.
+> > > > VFIO likely DTRT mapping already, and userspace really has no
+> > > > business overriding it.
+> > > > 
+> > > 
+> > > Sorry that I didn't explain 'directly accessible', which has been explained at
+> > > the beginning of this reply.
+> > > 
+> > > > 
+> > > > > > 
+> > > > > > --------------------
+> > > > > > 
+> > > > > > Links:
+> > > > > > 
+> > > > > > 
+> > > > > > example of a fix for a bug caused by memcpy to overlapping addresses:
+> > > > > > 4a73aee881 - "softmmu: Use memmove in flatview_write_continue"
+> > > > > > https://lore.kernel.org/qemu-devel/20230131030155.18932-1-akihiko.odaki@daynix.com
+> > > > > > 
+> > > > > > 
+> > > > > > example of a bug caused by memcpy as result of DMA:
+> > > > > > https://lore.kernel.org/qemu-devel/20260527091711.3901-1-liugang24219@sangfor.com.cn
+> > > > > > 
+> > > > > > an attempt to fix bugs caused by memcpy to device memory in response to
+> > > > > > MMIO:
+> > > > > > 4a2e242bbb "memory: Don't use memcpy for ram_device regions"
+> > > > > > https://lists.gnu.org/archive/html/qemu-devel/2016-10/msg08129.html
+> > > > > > 
+> > > > > 
+> 
+> Thanks,
+> Gavin
 
 

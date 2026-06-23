@@ -4,117 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B6EBCDB46F
-	for <qemu-arm@archiver.kernel.org>; Tue, 23 Jun 2026 10:41:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99049CDB47C
+	for <qemu-arm@archiver.kernel.org>; Tue, 23 Jun 2026 11:03:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wbyZD-0000cf-Qv; Tue, 23 Jun 2026 06:41:19 -0400
+	id 1wbytv-0006jn-Je; Tue, 23 Jun 2026 07:02:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wbyZC-0000cO-F6; Tue, 23 Jun 2026 06:41:18 -0400
-Received: from mail-westusazlp170100005.outbound.protection.outlook.com
- ([2a01:111:f403:c001::5] helo=BYAPR05CU005.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wbytg-0006eN-7r
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2026 07:02:30 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wbyZA-0002Bi-Rc; Tue, 23 Jun 2026 06:41:18 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=huZmNNyNwntW9NYj67eWZ+o3AuZle+I+e4GMvF5Xmcv+rHtQarJxmWdNMub7txUiOIQcq45RCIerXMVlwWUqUNTA4lmHafqAH1FL3w9KXq/1JUD4OSGvPlJYfCEQJVeH2CxgLtXcp7D+rKmnye5tmnYhDD7TmLz6PUBMYDY2V7B9ASg7dKgEFTat6f6qVwu/AbER0oZ6tOU25djrhnwsmcxgwp/ViUNf/85MBxhKpnwe+sx11T4NnhgE9f76hQtmr2AHrZcdJZKNbNThMfG3Gb3FBv+T++O5h8vtfuQLyMuNH0Tu8FQ4lCbeHY1zDN5eMZRAbXuQitZiUsteC2RlVg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=mlvvTZUpSZ8jXhDh/gXFsvCKXG2Yp3XFRtU5TGjygUM=;
- b=Rd1/XnIsqTfWlvBMxMOml1SFce713jnK5hLYajWVFnfMdjfJam/X6N56gjK2PByob3jI4OMtxfIVMw3aY/cSn+QJeGx3J2Y3sv5+XPFEe7z5YUTkVOGaAZeGsI/6Ze3ES8EWO/3R4w9dscoSmBm+oYir23VPKsQFrw6eUjAubCB2AWyqNHuZH3Sisv3HCyIvltNHao/JP2joch3QvqKuengyUqiEJG9XD2NZ0lq2KW5EoFMQF/xEztis8S/Lgpkd9SO3XP/W4esoQ/ajKnVJb5Ni1F9kGeiU5Tw/xl1/d1h1HxMpU33toTr1i3MlTJvboB4dXQZuVyx+BVEfw38zEQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mlvvTZUpSZ8jXhDh/gXFsvCKXG2Yp3XFRtU5TGjygUM=;
- b=qOHk4i2l6Y4Nq7yZkxQ8EtJxXTPXHrxDXOy9O+KEkyxmh+nZdwe1ZG1Fp3tKQF6P3jJJH6chFlPDRTN31NKzwC/uTzQrv2eZj1ocOgcRFPCUXUw58ByqUIpe6mAGVG6z/6y7rDyxOfZ7hnPQrQOofegDdnjQ0oUhKd0OL9f36STrRxtwXJ12S+9MIUs9twPrKdjujoDeM6ht3foZKbRRL0Td7pYvZxiDcE7zFV+CitOgxKaUaLJ8puFXsZIPhZ+zDb2K+jtJO9+5/bzusRAvy8wpWoWPJ4yT6f62MVjsCCKy3/15MycDRRdNxn7Ek5KpxnJk0dTN3VHtKe96vW2oZQ==
-Received: from BN9PR03CA0296.namprd03.prod.outlook.com (2603:10b6:408:f5::31)
- by MW4PR12MB7261.namprd12.prod.outlook.com (2603:10b6:303:229::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.159.12; Tue, 23 Jun
- 2026 10:41:09 +0000
-Received: from BN2PEPF00004FBE.namprd04.prod.outlook.com
- (2603:10b6:408:f5:cafe::38) by BN9PR03CA0296.outlook.office365.com
- (2603:10b6:408:f5::31) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.139.20 via Frontend Transport; Tue,
- 23 Jun 2026 10:41:09 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- BN2PEPF00004FBE.mail.protection.outlook.com (10.167.243.184) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.159.10 via Frontend Transport; Tue, 23 Jun 2026 10:41:08 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 23 Jun
- 2026 03:40:53 -0700
-Received: from NV-2Y5XW94.nvidia.com (10.126.231.37) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 23 Jun
- 2026 03:40:50 -0700
-From: Shameer Kolothum <skolothumtho@nvidia.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
- <nicolinc@nvidia.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
- <jan@nvidia.com>, <skolothumtho@nvidia.com>
-Subject: [PATCH] docs/system/arm/virt: Document accelerated SMMUv3 and
- Tegra241 CMDQV
-Date: Tue, 23 Jun 2026 11:40:03 +0100
-Message-ID: <20260623104003.36590-1-skolothumtho@nvidia.com>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wbyte-00067H-GX
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2026 07:02:27 -0400
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 65NAsk2j4152326
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 11:02:25 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ e7ujTj25beCliYcHaN6vgRmeikjh8fOvjTThSDgD3Oo=; b=T6XdZVd3Cle+j51j
+ fEehUceP4dVQ+gWSB/2E5H9I5r0VOWG7Qs1Faa5SZP5Ski0vcY7UekiIbtyjyMPZ
+ 6xYixoI999MRwv2Opldx2AaYtAlwQhNjC3s4clQvwFsAtJdd05pDG1mVlg+kmOD3
+ 9MZL8eqTd5ecc1iVoiChSARgPLsMb3VqBRo/nPQWmQbZ294BOxzEBNUO6FjP7jak
+ yuAn1CwZWRe6AG6bZbiB1cPBpTdNs7KmqCMVhRCIat2oaGeu7IxsfvR9bIDidpP6
+ L+1R+tqRJ8XGgVvzkkWtIIcVpCfzuDuNuL9iUAazxRdZARbHsrTiH+0jFBKqbhC0
+ fYCVjg==
+Received: from mail-oi1-f198.google.com (mail-oi1-f198.google.com
+ [209.85.167.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ey5n44ean-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 11:02:25 +0000 (GMT)
+Received: by mail-oi1-f198.google.com with SMTP id
+ 5614622812f47-48e2ce64834so1787711b6e.3
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 04:02:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1782212545; x=1782817345; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=e7ujTj25beCliYcHaN6vgRmeikjh8fOvjTThSDgD3Oo=;
+ b=iNpM4Inbloqv9wXA/OA1cFY9eDNeI+UJ9LfxUFSxdV80Umxck1iAjCkYzqp/qTmn/+
+ kNUYRMpFgmZeH+l3nwE3oMQmcOyvK9EoHO4MfeKvpfqsQ6oafbNIYBelIpynEnMYgF6o
+ zp+X6oECt3Y/otIw6G+AW9EryqVqfqwl+j1blM3zMYWeK2yYati8ngLryNepDrj+Xq4x
+ upp8+cHat1xsVTpcrzMW9CsC/yyJah7gS1MLdnCyrrtcUyznjC2Yn2nLv5wf39avpA1w
+ nvk0h8nn6RuhvzcIRdpKWEfBDG2+BpUpgy2Kd5fntXdzRuWRCseZB1/uvxc6pjz1z6qn
+ QgJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782212545; x=1782817345;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=e7ujTj25beCliYcHaN6vgRmeikjh8fOvjTThSDgD3Oo=;
+ b=qUeS5M0sAnh+Y+t/iyaVF5kbS6e0ueHgnRJthhAD1HktvYkXDVwdYsPl5q064vcHkR
+ RMnCb8XLVawhebDy/U8WCwafjhdToe9cSFg0cI0W4aESwIdLNnMrpfFrj07vy0mgUUf5
+ E7iX2eZwZBwQVPP7WhPnSdHiW1RCn8rWwbOz+14ejcREqVv1YsKj7IB8jpLT0pgHSzEV
+ 8XeQ9eorZ6xOnrmCb4kUub0J+KDee0wNpojxAFGDiJfKTBTGQFhbkHFJ0HtPDJDKT3+3
+ uzYQvgq+Xq3vUDI9ALFmKBT7QLM2cRRgK88gwq00Shmfq0bfuype+IzdGxeoKKKQxg2S
+ Fo3w==
+X-Gm-Message-State: AOJu0YwPheVt881AYiI/F771HDwbx+fHIwxw09TGU5jTQukpYjRGsxBD
+ PSEsFAFs1+o0dBYQrJncMASLPLuKU4gGLWYd0uF4ynvD79qkh5PT7TzV8CoMsb2l0mzbZ0LHJDM
+ Z1jDXWJCLgenY0G4cUs1P/AssPvkjO5N/DG9kDUc8C1V7q359KX7uwrI=
+X-Gm-Gg: AfdE7ckMAKVs+nD72+vcLupliowcWWp/qWAC9kDQou6ghhcbfzuCwAf5oUNF2PXK5bQ
+ Wy1ewnhVosf03AWZtR9FPGaYyZqoIvK0ya1tnncf7EcMSXtbY3PyYMWVSwumwxCgUrf309XEC3K
+ P+vbFT6Kia+l8UZlAw/GRPcK0TVmCjdslHDprdUBTnYvRnOo3tLm5MxO+DSxiYzss9Wm67QAFF9
+ t1gQWPeF4pAZgl0wIhVsqxs9NKLkqNM2T+V9XeZfTofJ5x7pccle8VX7LbTmgo/rabk8vKvusse
+ ijxOaXwYSXGR1IvzQilPmX4NZoVsehVkwlOrVcmLaqO7KG6us0gl3ucHwSiicSV58aNh1o6RUfa
+ vBWVq2aE+VOE2z39bfFM7p+6uZfOdzklzm1IIdHLuDBj+hgw7AhO2hYDUXpS4RJJw6+ZI
+X-Received: by 2002:a05:6808:4f25:b0:489:6c24:9d26 with SMTP id
+ 5614622812f47-48f6210a3b3mr1058408b6e.27.1782212543998; 
+ Tue, 23 Jun 2026 04:02:23 -0700 (PDT)
+X-Received: by 2002:a05:6808:4f25:b0:489:6c24:9d26 with SMTP id
+ 5614622812f47-48f6210a3b3mr1058344b6e.27.1782212543522; 
+ Tue, 23 Jun 2026 04:02:23 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4923fd1f886sm344100705e9.4.2026.06.23.04.02.21
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 23 Jun 2026 04:02:22 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Song Gao <gaosong@loongson.cn>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>
+Subject: [RFC PATCH v2 1/4] target/tcg: Rename bitswap() helpers
+Date: Tue, 23 Jun 2026 13:02:05 +0200
+Message-ID: <20260623110209.26861-2-philmd@oss.qualcomm.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260623110209.26861-1-philmd@oss.qualcomm.com>
+References: <20260623110209.26861-1-philmd@oss.qualcomm.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.126.231.37]
-X-ClientProxiedBy: rnnvmail201.nvidia.com (10.129.68.8) To
- rnnvmail201.nvidia.com (10.129.68.8)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN2PEPF00004FBE:EE_|MW4PR12MB7261:EE_
-X-MS-Office365-Filtering-Correlation-Id: 16ad6906-385c-4dfa-7197-08ded113efd6
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|82310400026|1800799024|23010399003|36860700016|18002099003|3023799007|6133799003|11063799006|56012099006;
-X-Microsoft-Antispam-Message-Info: 5Pb6aKHX8HviB+W+cnORLJRILW3hLKqelbGrZEWtK9lkDQrilrUx4qbKCf7iFojAY5Yy1T7daoXJ+STmiTPKYRuMgM6/75FaRKPMvpWf3eioFbi/+lOlhM8WD8awmCT9vzJOutjap+93O4VV1SzrwnpKSHBher9bgBWhN0QlTHWCY18ARfqfuTBUWWbltzI7UNhtjeSIOKajcmXMvX+aPlFh3alcCrpkRg9ShRrBTH450QOusHjY9k75vcE8M6qYi/I3aS7yE471kEKMnpwZu5jFhpfjqNHx4Fmi08nYyb276Ie7cXHkJbrOLKMFpOST8Jb2ygQCAr2amrv7FLq5XakJZqbikRzsdMEkqMD54/Bx8aHVmtf9h59IMGR4z4U1MIWwtbfIOsPKTB7Ty8H0lAuaEe48cyGeTve3wXtZCucjO5oXiU6F1w5b0mVIFLfdOhKKPX/jrVuiUF+7zdt8Ira+Fzm2tHLuODPa23ij3EvQDap+ubKfEsWCFoe4hfaHOuGLVTwxDE4jcTKoyBLfXa5xRMlVCJTb6YjxXMz1u2SyN2rIy7adv7MUV+AjbSRqFe8+dxqc7a+aeG1W3omqcPS8A2NPiOpl4GSxtaxGlilrxG/DqXOgZDq5YhW9L9MDqok6aLHGqztRrtRstZ8OpXOYiFUK49VCm3hJ6TiGVx2aB4cMEw07kVGUpyz9/YeI851uIjXAdavaMJQrkQTOJA==
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(376014)(82310400026)(1800799024)(23010399003)(36860700016)(18002099003)(3023799007)(6133799003)(11063799006)(56012099006);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: nFrE9xsS2uuEQeM6in8Si6Qa57GY3nmuvxkFQM09PLn1nRS4lW1tCtSIpkQh3dYhRz0XV2o2Y/0osq/6j48KPe2rNL6263adhREIMJCQHCcVdwgH3+cPtkkCgvMLiCxdkPZsETTC6rTPOZN9oMCGqnPlT9SxPiK+R97LNdKMogrTFf4omkPMCToPCrj+CDYHwHCtDbv/4AZx/HUmSxKGb11j/GtoNeGsHhhN6FL3ePnVbo3ZAofj9ayIlQ2fls9e4TpHHYCJ9zvGT785MnMrn4Cp7WsIQU2yLI5MIIW0qMRxeYvj3fg+zZYGk1b3NM1lX1jup/Bf/9Wo7Yq0WhoRrnWLIodrgbyenED4fwRaVJOCWtuBne8c112zVaW79kXrYf+PvPsmEmx5qgnL1kHLVUj/eyuXJEf4AJRIFIO0h0evtkRMQXFimq36VcfUXHk1
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jun 2026 10:41:08.9590 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 16ad6906-385c-4dfa-7197-08ded113efd6
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN2PEPF00004FBE.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB7261
-Received-SPF: permerror client-ip=2a01:111:f403:c001::5;
- envelope-from=skolothumtho@nvidia.com;
- helo=BYAPR05CU005.outbound.protection.outlook.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001, WEIRD_QUOTING=0.001 autolearn=no autolearn_force=no
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNjIzMDA4OSBTYWx0ZWRfX9HEMpOWCeb1k
+ bf2d53wv+sChhYrezpPowN+Z7irubD9AzqLxMh7B7h9DVVhLVX+gybEU5m+kMgsIQRkzECxjMnQ
+ 7gKTF+BeKw8zzvUOUqFbaPEDc5xSLIA=
+X-Authority-Analysis: v=2.4 cv=R8Uz39RX c=1 sm=1 tr=0 ts=6a3a67c1 cx=c_pps
+ a=4ztaESFFfuz8Af0l9swBwA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
+ a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=Vq8-Eo_8D2-Y-oFXv_MA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=TPnrazJqx2CeVZ-ItzZ-:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: GgvjExUrbFUlpl3kb4unnsyrttIF-faz
+X-Proofpoint-GUID: GgvjExUrbFUlpl3kb4unnsyrttIF-faz
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjIzMDA4OSBTYWx0ZWRfX20M7EZiKZfQC
+ QH7nSs0OF6ExUAQmktPp96kpd+WrzovU/1OLGx21DTEwBDeFAiK2sKghDg02qThJW6LDK75rjP1
+ wiu8Io4udKzKBFS56o0ER0VhPR7lLAshpZPLxjOasu9rvXkfk3ojw2k2wbIk7tou2AuXJ6LlCB4
+ KCIWiGO56eKeVZt0hAS6vi5FIBHIHNo4HXTp6NTnMJQC2a1OHQ+qGkC3UNpGwHXh79sS5JqCOYa
+ 0ARLVyk6znouygGphaiTAQpyTP1+7cNzL6GTjvH8lbWjDVyIzlAXWDMzvw4Nwb3lR0IC30xq+SI
+ NpzE5Z/cmUQKddKax0es2CMtKeiBvGBZstdYara4AVhEVE7bz1cCHjp3oYoB139sbd9THI4qUMo
+ SAl44Esw4eoF3/dm1O2D8t9v5F78O6Cm3Pculc/r432ye/Qg38CVdqg2MKyN+2UtCytZejFNtCs
+ 0U4oAcW1xlJgFx8Bd4g==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
+ definitions=2026-06-23_02,2026-06-23_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 clxscore=1015 impostorscore=0 priorityscore=1501
+ lowpriorityscore=0 bulkscore=0 suspectscore=0 adultscore=0 malwarescore=0
+ phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2606230089
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,53 +159,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add subsections for accel=on (nested Stage-1/Stage-2 translation) and
-cmdqv (Tegra241 CMDQV hardware command queues) under "User-creatable
-SMMUv3 devices".
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+In order to avoid symbol name clash when building
+a single binary, rename TCG helpers prefixing with
+the target name.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Brian Cain <brian.cain@oss.qualcomm.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- docs/system/arm/virt.rst | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ target/loongarch/tcg/helper.h                   | 2 +-
+ target/mips/helper.h                            | 2 +-
+ target/loongarch/tcg/op_helper.c                | 2 +-
+ target/mips/tcg/op_helper.c                     | 2 +-
+ target/mips/tcg/translate.c                     | 2 +-
+ target/loongarch/tcg/insn_trans/trans_bit.c.inc | 4 ++--
+ 6 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index f811e662d6..ae0be35d57 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -288,6 +288,32 @@ User-creatable SMMUv3 devices
-       -device pxb-pcie,id=pcie.1,numa_node=1
-       -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.1
+diff --git a/target/loongarch/tcg/helper.h b/target/loongarch/tcg/helper.h
+index 8a6c62f1161..e36dd2f5de3 100644
+--- a/target/loongarch/tcg/helper.h
++++ b/target/loongarch/tcg/helper.h
+@@ -7,7 +7,7 @@ DEF_HELPER_2(raise_exception, noreturn, env, i32)
  
-+  *Accelerated SMMUv3 (nested translation)*
-+
-+  The ``accel=on`` option enables hardware-accelerated nested translation
-+  for vfio-pci passthrough devices. In this mode the guest SMMU driver
-+  programs its own Stage-1 page tables, with the host SMMUv3 handling both
-+  Stage-1 (guest) and Stage-2 (host) translations in hardware. The host
-+  SMMUv3 must support nested translation. This mode requires the iommufd
-+  backend and is only supported when booting with ACPI (not device tree).
-+
-+  When ``accel=on``, QEMU automatically derives the values for the
-+  ``ril``, ``ats``, ``oas``, ``ssidsize`` and ``cmdqv`` sub-options
-+  from the host SMMUv3 capabilities unless they are set explicitly.
-+
-+  Example::
-+
-+      -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0,accel=on
-+
-+  *Accelerated SMMUv3 command queues (Tegra241 CMDQV)*
-+
-+  The ``cmdqv`` sub-option enables NVIDIA Tegra241 Command Queue
-+  Virtualization (CMDQV) on supported hosts. With CMDQV, each accelerated
-+  ``arm-smmuv3`` device gets dedicated hardware command queues and the
-+  guest issues SMMU invalidation commands directly to real hardware,
-+  bypassing QEMU and improving throughput for workloads that issue many
-+  invalidations. Without it, every invalidation command traps into QEMU.
-+
- Linux guest kernel configuration
- """"""""""""""""""""""""""""""""
+ DEF_HELPER_FLAGS_1(bitrev_w, TCG_CALL_NO_RWG_SE, tl, tl)
+ DEF_HELPER_FLAGS_1(bitrev_d, TCG_CALL_NO_RWG_SE, tl, tl)
+-DEF_HELPER_FLAGS_1(bitswap, TCG_CALL_NO_RWG_SE, tl, tl)
++DEF_HELPER_FLAGS_1(loongarch_bitswap, TCG_CALL_NO_RWG_SE, tl, tl)
  
+ DEF_HELPER_FLAGS_3(asrtle_d, TCG_CALL_NO_WG, void, env, tl, tl)
+ DEF_HELPER_FLAGS_3(asrtgt_d, TCG_CALL_NO_WG, void, env, tl, tl)
+diff --git a/target/mips/helper.h b/target/mips/helper.h
+index e2b83a1d19d..f3d459982cf 100644
+--- a/target/mips/helper.h
++++ b/target/mips/helper.h
+@@ -16,7 +16,7 @@ DEF_HELPER_3(lld, tl, env, tl, i32)
+ #endif
+ #endif
+ 
+-DEF_HELPER_FLAGS_1(bitswap, TCG_CALL_NO_RWG_SE, tl, tl)
++DEF_HELPER_FLAGS_1(mips_bitswap, TCG_CALL_NO_RWG_SE, tl, tl)
+ #ifdef TARGET_MIPS64
+ DEF_HELPER_FLAGS_1(dbitswap, TCG_CALL_NO_RWG_SE, tl, tl)
+ #endif
+diff --git a/target/loongarch/tcg/op_helper.c b/target/loongarch/tcg/op_helper.c
+index e63ac66daae..35f331ca52c 100644
+--- a/target/loongarch/tcg/op_helper.c
++++ b/target/loongarch/tcg/op_helper.c
+@@ -32,7 +32,7 @@ target_ulong helper_bitrev_d(target_ulong rj)
+     return revbit64(rj);
+ }
+ 
+-target_ulong helper_bitswap(target_ulong v)
++target_ulong helper_loongarch_bitswap(target_ulong v)
+ {
+     v = ((v >> 1) & (target_ulong)0x5555555555555555ULL) |
+         ((v & (target_ulong)0x5555555555555555ULL) << 1);
+diff --git a/target/mips/tcg/op_helper.c b/target/mips/tcg/op_helper.c
+index 4502ae2b5be..83c340e38e0 100644
+--- a/target/mips/tcg/op_helper.c
++++ b/target/mips/tcg/op_helper.c
+@@ -45,7 +45,7 @@ target_ulong helper_dbitswap(target_ulong rt)
+ }
+ #endif
+ 
+-target_ulong helper_bitswap(target_ulong rt)
++target_ulong helper_mips_bitswap(target_ulong rt)
+ {
+     return (int32_t)bitswap(rt);
+ }
+diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
+index 123d2c89c3d..811492364a3 100644
+--- a/target/mips/tcg/translate.c
++++ b/target/mips/tcg/translate.c
+@@ -4842,7 +4842,7 @@ static void gen_bitswap(DisasContext *ctx, int opc, int rd, int rt)
+     gen_load_gpr(t0, rt);
+     switch (opc) {
+     case OPC_BITSWAP:
+-        gen_helper_bitswap(cpu_gpr[rd], t0);
++        gen_helper_mips_bitswap(cpu_gpr[rd], t0);
+         break;
+ #if defined(TARGET_MIPS64)
+     case OPC_DBITSWAP:
+diff --git a/target/loongarch/tcg/insn_trans/trans_bit.c.inc b/target/loongarch/tcg/insn_trans/trans_bit.c.inc
+index ee5fa003ce0..76d6ba742d5 100644
+--- a/target/loongarch/tcg/insn_trans/trans_bit.c.inc
++++ b/target/loongarch/tcg/insn_trans/trans_bit.c.inc
+@@ -194,8 +194,8 @@ TRANS(revb_2w, 64, gen_rr, EXT_NONE, EXT_NONE, gen_revb_2w)
+ TRANS(revb_d, 64, gen_rr, EXT_NONE, EXT_NONE, tcg_gen_bswap64_i64)
+ TRANS(revh_2w, 64, gen_rr, EXT_NONE, EXT_NONE, gen_revh_2w)
+ TRANS(revh_d, 64, gen_rr, EXT_NONE, EXT_NONE, gen_revh_d)
+-TRANS(bitrev_4b, ALL, gen_rr, EXT_ZERO, EXT_SIGN, gen_helper_bitswap)
+-TRANS(bitrev_8b, 64, gen_rr, EXT_NONE, EXT_NONE, gen_helper_bitswap)
++TRANS(bitrev_4b, ALL, gen_rr, EXT_ZERO, EXT_SIGN, gen_helper_loongarch_bitswap)
++TRANS(bitrev_8b, 64, gen_rr, EXT_NONE, EXT_NONE, gen_helper_loongarch_bitswap)
+ TRANS(bitrev_w, ALL, gen_rr, EXT_NONE, EXT_SIGN, gen_helper_bitrev_w)
+ TRANS(bitrev_d, 64, gen_rr, EXT_NONE, EXT_NONE, gen_helper_bitrev_d)
+ TRANS(maskeqz, ALL, gen_rrr, EXT_NONE, EXT_NONE, EXT_NONE, gen_maskeqz)
 -- 
-2.43.0
+2.53.0
 
 

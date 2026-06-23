@@ -4,85 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDCAFCDB479
-	for <qemu-arm@archiver.kernel.org>; Tue, 23 Jun 2026 12:56:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2886ECDB471
+	for <qemu-arm@archiver.kernel.org>; Tue, 23 Jun 2026 15:19:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wc0gL-0004aO-D2; Tue, 23 Jun 2026 08:56:49 -0400
+	id 1wc2tf-0003o0-Fc; Tue, 23 Jun 2026 11:18:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yisooan.dev@gmail.com>)
- id 1wc0gH-0004Zh-Rq
- for qemu-arm@nongnu.org; Tue, 23 Jun 2026 08:56:46 -0400
-Received: from mail-pj1-f47.google.com ([209.85.216.47])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wc2td-0003nS-OZ
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2026 11:18:41 -0400
+Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <yisooan.dev@gmail.com>)
- id 1wc0gG-0008WM-9E
- for qemu-arm@nongnu.org; Tue, 23 Jun 2026 08:56:45 -0400
-Received: by mail-pj1-f47.google.com with SMTP id
- 98e67ed59e1d1-37d70036426so1571745a91.3
- for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 05:56:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wc2tc-0001p9-B0
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2026 11:18:41 -0400
+Received: by mail-yx1-xb12b.google.com with SMTP id
+ 956f58d0204a3-662df6a4fe4so7139944d50.2
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 08:18:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782227919; cv=none;
+ d=google.com; s=arc-20240605;
+ b=i5N7PpjdL0Um7/oEBxVoi+ElgYOjhwMmdqNteehj42kvKcafD1ITmATRBZJDQLGvgJ
+ +RkUEAxJbAf9qNHzxquWsRd/cr6DA6xVLOjYZ5i/RE7/elfRS8T/uynN+jMz++mWX1hu
+ FHZYwjVtPw3UCmwf8BFSZhXgExSwrFalpVtbYRbtDjlENyFBT0gonOel4eOQIXKNnZJU
+ 7oYfL1UGXUfBHWx+jn4ccVNQdHUAYdT//tXm46GVA5HWHn2lPXYEoqzH8UHh8Xm9Rc/j
+ W9D9mriz5hA4US5iR+9nKhrH6t85UWvnJ+jImWHz2vymQWiH0YNi/RKSqUgglHKrdLRW
+ chyQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=1HikhzCygbcSREMbSxKDYoUjkFnj0CYVYDR0dfelPlI=;
+ fh=OLFutRwhRL6PNsYPJuv6hiQfsMU8bPw6cL879n4eW9k=;
+ b=Mg+e1sJc2Zm7e+b1a7BSXXUGE2K+omEtIB2wwf1NC3+DkbNP6KL62LLmD417XuGnlo
+ fGpCIiP3uoU2GYDphO/lTZrTxVosHi7rfU8Z4J2S0eBds1k1FOXMFp5n6eLq6IhM+tW4
+ s4l87thvGRLbVSL6WKPtUnte1ppJOy8plEGSuGpLgmKW+OKhxSmwmoeDnSE2+HhwDy4c
+ SyO4yYSJyU+8UIp7Rz6DQSq+5nQihM3C8RsskdjsgMGnZhdfoWfFcHbd1EK0WTofjPAT
+ FRuNWYYCP7l+t4YtnnnlMUuJEBh4Ki7AqCv/yLA0iAwbWJ6bQ5Z/bUF3+q3V2S43PmrK
+ BeGg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1782227919; x=1782832719; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=1HikhzCygbcSREMbSxKDYoUjkFnj0CYVYDR0dfelPlI=;
+ b=wb+GuBjhy59gGxleYleuBzzwTAchkfENSv6Ou64zouSkpaLDCCpbtbv6MZ0+Y/6Gm+
+ h93pPpWnU287xyJiMilAzClTiMeuPz4GHj0/hvCxyJjH/e6Qlwkm+AT1VZXC+P33Z6YE
+ DwA8ir6W73j3+yLjIeHz9LwZYs2TeHDqZ+zwUq8xGaQGf7ZhkwJyVog/KSdBoCaE7/tE
+ fkrVtx7J2B3OKyYDXaZfEtVSmHuvcUxSS927AM/9ht6ieVPb8kkb4JsppH2MmKBDGl88
+ 6kC+BhLky+MDFefN3bsIA3KlOc7H2eCt5GfMHpSW/0HPCKWregmXAYlLJRg3AAQc2A+v
+ wTQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782219402; x=1782824202;
- h=cc:to:message-id:content-transfer-encoding:mime-version:subject
- :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1782227919; x=1782832719;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=6swxASzh/shRJLEp7Pk/oVO3/j140Xn0WoM0mhZf7Uc=;
- b=ndA9po1oo572FovtT5DndsIgOQQGI+GIvQwePwKpm1OsjuFAl+4Q/NnJ+CxUzr78P/
- dnKTcuiO7joyhonHnk+KxxUcK7ajguIhjJ6/Ba4AwQJQlBJcfnTdm+XU34cGp9RVp8jC
- W/NnVc9hgsYNOlqo0jz64cpl1uIWqWPJSyxS2vNWryFL+aKE/ezZpftVJt0Zi6fmB4L8
- DHdfeWMkk2pgAQB8K0QnkOg82mV3yeO0t1jjtu9QXYREJPOFjFrNG9/vAPNWEruUgBDm
- 9Ipw00yheJiTWW8ipChkZcwrzcgYYD5vv5dPelqdOGlaMQ97gLc02ljBk+pMTFmvJCun
- hzPQ==
+ bh=1HikhzCygbcSREMbSxKDYoUjkFnj0CYVYDR0dfelPlI=;
+ b=J+fw6jjuluQZH/D3/UpIvgV3BF9R9G5hEsCWrvKf6OsLKEdEQehDXPxEFKPo+DeW6K
+ tNqWm40PC7DtEvbOnR0pwz8k6FQRZQ84GzgkSSOJOyctUP6QuXn1Sd2ZVQTYFgm4FdiC
+ nq225pX1PHJYWk8MGuvYjfj2CNpIfG1IadEIRfqeio6VWPXTPY6T9y8B7VDL1igvMBQD
+ LIT8xLn4yIholZ4XnF6riJUnx8076XFYi+drMdhimDE6th30zPSiZydBN8aI4qPZq+Q3
+ lBE5XFwhij1ngVJr48FAbI8EHiXP8sziqQTPwzsWhzBKLrQjT5G/1Z2OqTRebF/MFyj1
+ K80w==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoWeeFIgoWdMX2EHey2T/9cM+bK+JDTa6klnBWG3ql1R8eem8cbMSw/CNXI1xgOWY5VQ1s7GnmWRQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyE2z3axp1mzs9a26aFllP7C1fulXqHfOyKc2bNQgqkmdmVJSpC
- RMAmbf5dQhbrvJ7s7XnFoAQDrsUTtYFRrprUNVxcUa7f75jYEKewKNo0CUMM0A==
-X-Gm-Gg: AfdE7cnG+F7xBW9gwpayT+pweKwSqQDdGtuDcMz5mRtk3h9hKddF+4oO8jSU57jqiLS
- DYfpdfDtHv7Uytpcp+6mFwOptE+59BZs84S18aiRrBEU5t6hywjXM1eGNaaHcWGKweixGJz0Fao
- KcFvXXmYUb7+9GaNQTpsePDicpmb4IzaxhHYQQfPS+5wLrcVF0PxIELGw9IyTtid41w2z2vLa/B
- WH5cxTvRQ9RxiOz8P2C9qQRUYZP4VMWwOdejhmgP4aG97mtvbbD61d8TMZ+klKuxtjadCo6rZoz
- j+RB4/HseXDEyTJLi+rAgt4ZAeSQj6zrmFX2BTmo9UT+b7s6mJRGa2aQG/q2iC/GWvTi4ZnD61r
- mBPyEuuN5KsMFCzjL/WF+jiI5PatVANUhee12tmnvn15t6eo/branVzAw0gZ7JCSVWAF5YB5ORi
- qBWHcz/tEtQrY3+vhQF17iv+hQp/Bx2mb1amrF5fdAg3MZ61+vTuTyDuWEMUIAy1f5FCRR9llpD
- 6AgHm3u9woQsuA4RObpGBZ++3ND4R4=
-X-Received: by 2002:a17:903:46c7:b0:2c6:b87c:e5a3 with SMTP id
- d9443c01a7336-2c718ed74e6mr194294015ad.15.1782219402494; 
- Tue, 23 Jun 2026 05:56:42 -0700 (PDT)
-Received: from
- 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa
- ([1.213.237.162]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2c7436af310sm110579705ad.2.2026.06.23.05.56.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jun 2026 05:56:41 -0700 (PDT)
-From: Leesoo Ahn <lsahn@ooseel.net>
-Date: Tue, 23 Jun 2026 21:56:35 +0900
-Subject: [PATCH] target/arm/hvf: panic the guest if an unhandled exception
- occurs
+ AHgh+RquiK1m83AXf91lmgV7es9pVvXxDP+gviBNmkUQicvL7sLQdmMI8q3MeyXWwB/f+5mMxoJ3FN62GQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yw/pp7v0hP2LR6BuZdwmafrIHVnhcC/RhRh3FtskIem0hgiLvpf
+ aE1+u5kpfSu00DmCvM8Lo+tMWzH8U6tbTHG8v26e3Mp8NQoO9hzfpWDODwlSv3NFbeTshbJTkQ2
+ KpOboAH1ioHhhdyAupAXhFMpb5citF1hkCRFaV1tCDA==
+X-Gm-Gg: AfdE7cl/kziiT/+HwKQLHNijF2l0VbKd0dcH7aw5znpQSNSPj30drIZbF9mfN23anJM
+ Xqor8Hsw5tbl6Nog/g0b3uMvw5azrHO/2U/ERsMRbFEdpTR0fyZXS8BSJvTivl9MWa0tWqSwap0
+ gmh34+Gw+SiwKV+4FIivAWdTuHsufZf3G6u8QKu8mtK7tA32IOkUCf6eKpcfviKDSLn9EyzmJg6
+ vKUSESYHE6PaRN9lfteI4svS69OYj37Y7ZOXvKCA+nWLVOP0vKWiGkMrBQ98P4FCsrCRjz1P0rD
+ k32J+QUI7fH68Ol4tvGkscp5Ri1+pNKJpTXeeuPjNOsCnPS6Z7kHAsGn
+X-Received: by 2002:a05:690e:128e:b0:65e:1d95:29da with SMTP id
+ 956f58d0204a3-6635a026a1cmr2997845d50.32.1782227918435; Tue, 23 Jun 2026
+ 08:18:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260623-guest-panic-unhandle-v1-1-6adfb6d4221e@ooseel.net>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMywqDQAyF4VeRrBvQKAP2VUoXc4kaKVOZOKUgv
- rujLj84599AOQkrPKsNEv9E5RsLmkcFfrJxZJRQDFSTqQ21OGbWFRcbxWOOZRI+jF1PTSBrTT8
- 4KNcl8SD/K/t639bsZvbr2YJ9PwAFGjwMeAAAAA==
-X-Change-ID: 20260623-guest-panic-unhandle-4921d2aa69fb
-To: qemu-devel@nongnu.org
-Cc: Alexander Graf <agraf@csgraf.de>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Leesoo Ahn <lsahn@ooseel.net>
-X-Mailer: b4 0.15.2
-Received-SPF: pass client-ip=209.85.216.47; envelope-from=yisooan.dev@gmail.com;
- helo=mail-pj1-f47.google.com
-X-Spam_score_int: 17
-X-Spam_score: 1.7
-X-Spam_bar: +
-X-Spam_report: (1.7 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260618-jmac-gpc3b-v3-0-353e546067e7@linaro.org>
+In-Reply-To: <20260618-jmac-gpc3b-v3-0-353e546067e7@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 23 Jun 2026 16:18:26 +0100
+X-Gm-Features: AVVi8Cex_iyqwGUpp_Ts8y0P6KkIZbqVIGOEv73-UmYxjupz8zTiA8P-I4SYa6U
+Message-ID: <CAFEAcA_4w9SHZDwptYYnfGhgpWOeynZQ43fjuvNZo0VDV3WuHg@mail.gmail.com>
+Subject: Re: [PATCH v3 0/6] target/arm: Add aarch64 GPC3 bypass windows
+To: Jim MacArthur <jim.macarthur@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,36 +116,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-It's worth cleaning up all resources that the guest taking and to quit
-if an exception in el1 could not be resolved.
+On Thu, 18 Jun 2026 at 17:33, Jim MacArthur <jim.macarthur@linaro.org> wrote:
+>
+> Adds the GPC bypass windows defined in D9.2 of the Arm ARM. D9.8 (the
+> APAS instruction) is not implemented yet.
+>
+> A large part of this is testing. To test GPC effectively, we need to
+> check that memory accesses are causing exceptions, or not causing exceptions
+> as appropriate. For some tests, boot.S is altered to record certain
+> exceptions and continue executing the test. An alternative would be
+> to use gdbstub to break on locations inside the vector table and continue,
+> but this requires significant coordination between the C test binary and
+> Python test driver, so has been avoided for now.
+>
+> Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 
-Otherwise, the guest will get in the infinite black-hole by
-unmodified pc.
 
-Signed-off-by: Leesoo Ahn <lsahn@ooseel.net>
----
- target/arm/hvf/hvf.c | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 8b902c6882..4358cf90e8 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -2533,6 +2533,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
-         cpu_synchronize_state(cpu);
-         trace_hvf_exit(syndrome, ec, env->pc);
-         error_report("0x%llx: unhandled exception ec=0x%x", env->pc, ec);
-+        qemu_system_guest_panicked(cpu_get_crash_info(cpu));
-     }
- 
-     /* flush any changed cpu state back to HVF */
+Applied to target-arm.next, thanks.
 
----
-base-commit: b83371668192a705b878e909c5ae9c1233cbd5fb
-change-id: 20260623-guest-panic-unhandle-4921d2aa69fb
-
-Best regards,
---  
-Leesoo Ahn <lsahn@ooseel.net>
-
+-- PMM
 

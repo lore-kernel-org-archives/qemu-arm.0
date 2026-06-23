@@ -4,137 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFE74CDB46F
-	for <qemu-arm@archiver.kernel.org>; Tue, 23 Jun 2026 11:04:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCCF7CDB479
+	for <qemu-arm@archiver.kernel.org>; Tue, 23 Jun 2026 11:04:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wbyvA-0007lW-CM; Tue, 23 Jun 2026 07:04:00 -0400
+	id 1wbytt-0006iL-U1; Tue, 23 Jun 2026 07:02:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wbyu7-0006r8-6S
- for qemu-arm@nongnu.org; Tue, 23 Jun 2026 07:02:56 -0400
+ id 1wbyta-0006dd-PY
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2026 07:02:25 -0400
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wbyu3-0006B4-5f
- for qemu-arm@nongnu.org; Tue, 23 Jun 2026 07:02:54 -0400
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+ id 1wbytW-00066H-Fz
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2026 07:02:21 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 65NAse6F3664121
- for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 11:02:49 GMT
+ 65NAsFVc2218882
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 11:02:16 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- mt9hRNNgJk3i3fz5G9OTtCem7Hb8V5YHSbytsOw4E2c=; b=llxsYowWciF6bg1p
- 0isXQgKIXHdev3o+jsELTOgXbOWEE/LEHy+gf3AEB1n/9O2INAVPgXcrwc4ceIav
- QEsS3K4mTzMK6LaxH1zrQXUGq4KhR5Eb5u/2WfoRZzQEGYxR1f2pcunQ4J+tamy6
- V/7qzJrB+Lm8bqHQ4MdexXLomwkvo4HEgmFcw83AHdq80LOEBD/9H8fG9VHoky/5
- ai8SMIEyPJo5ffTenIZTVd3wWL5TGYhHnoys9egTD0s+HdR+n9tMAOuhn55UmdtI
- Bst0XUK4hhLg8ebJ6gRPJ+AMmIr1FTx0ZlZcZSJuUtvH6gYnAF/MRdm5HnV1ta0m
- lsYnKw==
-Received: from mail-oi1-f199.google.com (mail-oi1-f199.google.com
- [209.85.167.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4eyp29gt7n-1
+ cc:content-transfer-encoding:content-type:date:from:message-id
+ :mime-version:subject:to; s=qcppdkim1; bh=VTGkAAqPBzGluCPiab/B5v
+ MxXekWkb9qKi/y3skYJ+E=; b=hfD5MwmRrq5FuO7EEDoa+gFf4MHU5e6FHygclk
+ rIf4TqPN/taFTpGXW8H8i1/MQABYFm7A8XceCRuuVEACMFvxqhozyJDXAXOfBF0V
+ prhxV948cmfRoGqfUas613wUDeQDaLjlsHELr6tmjrD0V8NegovO7EVZyvG6Iokq
+ VAloAK29uPN3GKxc78LhE0y+E5Gk2wOwyat7Ob3AEXO80hK6tDb87TA+SiuWdHKG
+ xyaPvA27IRFAOn825xuFZK4HKScKgvB9wiOqR8agy8kfmQyjpxvE3z/8ZW2XcyJf
+ nghbi/vsKu/tvIBvyuusmVSeyqkzIWoYWAGX+xhDkEBkH0aQ==
+Received: from mail-ot1-f70.google.com (mail-ot1-f70.google.com
+ [209.85.210.70])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4eyp1grt59-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 11:02:49 +0000 (GMT)
-Received: by mail-oi1-f199.google.com with SMTP id
- 5614622812f47-48e77e6a63bso1577945b6e.0
- for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 04:02:49 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 11:02:16 +0000 (GMT)
+Received: by mail-ot1-f70.google.com with SMTP id
+ 46e09a7af769-7e92c443b82so5756031a34.2
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 04:02:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1782212568; x=1782817368; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=mt9hRNNgJk3i3fz5G9OTtCem7Hb8V5YHSbytsOw4E2c=;
- b=VTcRHL9Vxd7JobhuUID2DVLo2gAiu6WNMftPN73p4H0Q59BcrD7MRgtScSEEy9jl/F
- TLF4Dxu+u9yKTw/8g4YdHwKSxW4zI9Uz4bLwGlfs3rquc2gfn3cJFETA+E26LxnovuL3
- BgCBYR0VWPMBBtUFGzUmOun5bmcpCRAzYCjOeKQKcEFXKH9YkkfCWC0KtHnau10jc6Bc
- Dol+ENDUSifCisBNdOGGQUh6gbQDoeDprfV1wRQlrPZ3GMDmE5ptn91gV2B5FOH3ZlNM
- w4H9Xq5/L0Mu1nfQkoDevNh+JygaRixEcd5EgJhMaLuBucWtJaO2yyR5gmcbaKXrlC1S
- OVJA==
+ d=oss.qualcomm.com; s=google; t=1782212535; x=1782817335; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=VTGkAAqPBzGluCPiab/B5vMxXekWkb9qKi/y3skYJ+E=;
+ b=BUxpwoQnUJUzLke1Ob//3VlVC/MqVU/LJ5W2TCZRNzgFMR3YlGmznt1Kj04m8qysG7
+ U2nDaszmgHJcUb2T/173CHK6JRduHsAZ795yoYiCQ2Hi1Emyn6SlcX3TE/dF7mrb5Oir
+ zfvAGxR0GSYaF19oJQI16y4VEF1+VIO34DA7IJ0cdDH/8CJJGX5wEXASuA0AerYBig7S
+ gOAFe8LFeOsL6OH5whDapC6ZCm+PiCOYCg2E7P04OA8dDPTqePmYnTuudZ1hxJ1jJmSq
+ xcbsXvBJOaVWQPbBzSILWXsoXMaGvbsjYA2omojb3PbzR3qOkrBjpsJIbFV1I6tkHf5y
+ RaGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782212568; x=1782817368;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=mt9hRNNgJk3i3fz5G9OTtCem7Hb8V5YHSbytsOw4E2c=;
- b=sE8WEPx5GQevJOMlpjwmm2zM2U4UMsfF4UwRGNrlSutmkVVHweHfwuWJQdCYZ104p2
- 1ksDKkTamWIwaN8+YGH5/bRRSROWsO1oaidGA7jZmxiDZ93vO9Q5AR/hLePn0Nc3Uoo4
- 9m1ig66ieGBhN1Z+sXMTiX+1frZ5ryWhaaHRzgBE0tFi/367xkke6iyffjD6iwlqEvcu
- PlfgcomPQzMsAVP09LNM9kd6ALs4ScpwayWKq+Ho5p/d7aPZ2jt1hdVCpUIkDCyWyXpS
- Xli2yJpeWBAprM6TnsHufByWXXgATh2+rSPLs6tokRU0lPAS8PaBkYOM//FHduOTtRFU
- WVkg==
-X-Gm-Message-State: AOJu0YwfQfknKlup6aNSnHGGbqbzDl3ybhU0YSTAiIheVyRmfUEK7eO/
- spcwYmaf/C8jwWDIpCshw8YVLOupwuXJCRcwYej5A1xgpnFvdxM14O0MU9lBsk3aWXh3kAhmZQm
- WFr4/mtxkFYw2JgGbjtG/noXGMR5r8IanQ6GqFIXghdDjE3w9z6wYDvw=
-X-Gm-Gg: AfdE7cm9MvtxunF5wGbw2To8ov6JXa+dJzUR4E5teA8Q6jSEUbMTXhl5jlmIdImn5wa
- fzSEikQe0uEO09ArB+GCV64ZKGx8Fwn5N7oQQybTv3EtuqQcnikO/cKHeRJoVjtxFsyCzqUaemS
- L+SrN/sI7CbmSFFdzbAPj83HBUGoFwlIDrqVYlKipGiTeKaZP0LByWLmn3hoOBzXLTSZCT7A6Rd
- BDGM+otbJyUWhLi8xrym6pQsnCz5dmKkW9Rgzk0Mgeb/2TFWNh9zvwSo0hLh5CUK5s7t1grjhDZ
- qu1KOwWTEflPB3zmmQlUc0VRI5PdzHDD+K6gFhKy+cPZvzAy7OgL8WyHPy6oACMntj7Rw3A9xRo
- F2mXT8sm+q3sGlI2GDFpsqAL0grS8YTbq7suaKYjQA/TYMooTktyqLRLRnLCn+jylqRMv
-X-Received: by 2002:a05:6808:318a:b0:485:50e:5899 with SMTP id
- 5614622812f47-48ee2d407fdmr1892581b6e.2.1782212568465; 
- Tue, 23 Jun 2026 04:02:48 -0700 (PDT)
-X-Received: by 2002:a05:6808:318a:b0:485:50e:5899 with SMTP id
- 5614622812f47-48ee2d407fdmr1892556b6e.2.1782212568019; 
- Tue, 23 Jun 2026 04:02:48 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49245a69f81sm345689225e9.1.2026.06.23.04.02.46
+ d=1e100.net; s=20251104; t=1782212535; x=1782817335;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=VTGkAAqPBzGluCPiab/B5vMxXekWkb9qKi/y3skYJ+E=;
+ b=c+JykaooB6k0A2VCin/P5BG15aCk439BpdIKRZfqUO8gyS/mTu5QKqmkAXiuurweGS
+ uAcXQn8RvT5OWKyW6Srb0y0sqnBjuaj2eas3ZtlBfaKKRaY5qnb1oJo7YvpGBab5mq/r
+ Si1+7QEdoBydyy9t1joNbIVy5jtzreS74VUiNQcveT5gJ2UWHB+BK5PdM95h10FVl8P+
+ pts8ES8Zpr6OsWyZ00K31eY21OIaJdzygDUvsb5ilyzqBRHxJHkVqs/YQcRg5nKNXFnM
+ +Uip2C+T/1dxRSAS1zdZun4c+nZUW+MhjrPR+FpnOtE9EZEl1vpl2wxm0TCgI5jX2+zy
+ Nodw==
+X-Gm-Message-State: AOJu0YweMSKxVIaWd2/bBmpmnra++N5zr4sys8yKEfKVBl4gJhVApgb/
+ wtdISMgTBZKC6Iu2XqUqHCkZFsSD3VVFB0+M4METt472U3sOUQB9y2sMZE8rIgN4YHqSUN8xkK4
+ 7cZCw1M6AFemUc5fDacWJCpSvlCM/H/soHyT1UU6UuT+fZzjqWEB7uU8=
+X-Gm-Gg: AfdE7ckTxSac5ohwGzyxkYLEch7NBhhIaFSwm/XK+26GphU1ivvlGgFk7yqN5U6+ECC
+ oAVJdb2g4dbE3qVXuDzx6oeXD7y2QRPyIxp48+Fkc97P8EdL6ukiSQ2DbxYXbMKpRfjAvdcQRz/
+ QFtw57rAYz6lxNGzF0DZEJXLxpPRaXXYIF0Z1zuXonaOhHsS/Xd+2C14Kxq5TO46BsqOwlGtMoj
+ fZB1XDmsJMDaAutgdy18RTvXGxRf0Wi2rkBDtC8ogSdM71CUbpcz3wUltmC1x5hYGdEV28aP7MS
+ gnDPXJgi58VPzHImyVaSuIxF098TM6LWYmuMfvwu+3f1zUHjDAgXtdTzmiVndiXP+urOHk7qcZH
+ JDYj/fk8zUq4l81ZOCQjn+pb8wDPZ0OVvQti7/Q==
+X-Received: by 2002:a05:6830:6d05:b0:7dc:d587:af3 with SMTP id
+ 46e09a7af769-7e97998fc31mr1514667a34.23.1782212535479; 
+ Tue, 23 Jun 2026 04:02:15 -0700 (PDT)
+X-Received: by 2002:a05:6830:6d05:b0:7dc:d587:af3 with SMTP id
+ 46e09a7af769-7e97998fc31mr1514610a34.23.1782212535002; 
+ Tue, 23 Jun 2026 04:02:15 -0700 (PDT)
+Received: from localhost.localdomain ([88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-466648c5ddbsm36315212f8f.12.2026.06.23.04.02.12
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 23 Jun 2026 04:02:47 -0700 (PDT)
+ Tue, 23 Jun 2026 04:02:13 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Brian Cain <brian.cain@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Song Gao <gaosong@loongson.cn>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu.zevorn@gmail.com>
-Subject: [RFC PATCH v2 4/4] target/tcg: Rename set_rounding_mode() helpers
-Date: Tue, 23 Jun 2026 13:02:08 +0200
-Message-ID: <20260623110209.26861-5-philmd@oss.qualcomm.com>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: [RFC PATCH v2 0/4] target/tcg: Rename some helpers common to various
+ targets
+Date: Tue, 23 Jun 2026 13:02:04 +0200
+Message-ID: <20260623110209.26861-1-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260623110209.26861-1-philmd@oss.qualcomm.com>
-References: <20260623110209.26861-1-philmd@oss.qualcomm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=LdAMLDfi c=1 sm=1 tr=0 ts=6a3a67d9 cx=c_pps
- a=yymyAM/LQ7lj/HqAiIiKTw==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Proofpoint-ORIG-GUID: mMtExrpo4okyUW5yghFaFK5OY1PwnuTn
+X-Proofpoint-GUID: mMtExrpo4okyUW5yghFaFK5OY1PwnuTn
+X-Authority-Analysis: v=2.4 cv=QJhYgALL c=1 sm=1 tr=0 ts=6a3a67b8 cx=c_pps
+ a=7uPEO8VhqeOX8vTJ3z8K6Q==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=wXBZP43g33z9UTFG2cIA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=efpaJB4zofY2dbm2aIRb:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: 7RCoCDVjSjxQeHBxEAuPf0ad-QvKLRFi
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNjIzMDA4OSBTYWx0ZWRfX+bABrOUlEUw+
- 5Ih+aMqCYpGH0xHgEtyrETl9O9UhjVBzNGF6XrEM6agvghn7qBmc5phiwyoNaJZWN3BLoKmqIDp
- 2FvkMPzTWckNHrsg37etqaisw4tSM/A=
-X-Proofpoint-ORIG-GUID: 7RCoCDVjSjxQeHBxEAuPf0ad-QvKLRFi
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjIzMDA4OSBTYWx0ZWRfX3kE6eehulapK
- tgguZYkpkYZucf1y8kf6BcVGreoIl5eqZmwp3odL+0DDjMPaBIhMw4tt0bKNxSZoiuzzUGYLzAy
- psm/Gq7tvWkFFnUn3crYil7QaT+W9IBY+L9e+DFrVkFcIW1OAFXjS6S4EpLZqhC/Fut6OtATzlv
- gZ+cxy3spSfLf32BHWpI5hK/9B0NyVuGgs6d1hx2WIjCC526Y6DuyYTU77PKd/ZlzTRqUEF5CDv
- gk61qFoA5tWnRljSJKLKq1IEkLwul0duHncYUw2My0sRpXXdjcvILuGH0PQp4S3g/VfAuxpYqU4
- nLpoIwE9FUDY6k0cutIDktkDtRy4X/dnKyBpjUT68m7anLpQ7AyxM4jKVkbbckzGe86+WpFs2r4
- i9z5Kdww1+O6/Fy+rdvrpmTc8MAkiyMp/sb+bWcAPb+unpQgv3uC575ROqkd6u0ySoFdiKqtzbR
- Jru7uOOW/Ke/t6aXJNw==
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=gCilnUSdiZWjTjviJ0MA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=EXS-LbY8YePsIyqnH6vw:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNjIzMDA4OSBTYWx0ZWRfX2GiFIrLDEFHc
+ CXGxo2g7bO2zPf+PL8p4Cbs/XoZuFPSJ/E1CwJ5b8Q+8snXHlXUq4TaaFn5WQ2sjJcnqUdqulLK
+ vykw0JqD1C1IvvUyCcHs6ccD43dFKSY=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjIzMDA4OSBTYWx0ZWRfX/JxOLAORtWKk
+ qWITa8hMA9njoI0c46iWuwEsiSzE/CrCflE+LurSZJCEOo6/Uq7UL3kvqx6S/sp5l7ts8qQlKzI
+ NscUtHaF2zlSXQd3DVf7KsyHJrBjrbiTDNu9RbKzjsQTekgBsCbrUjkvtCrJO7Ot3SINvADh7zt
+ tlk62wWfACh1uoNDdMVFSMx7x+UZ72VMCunfze0BTS4mTjy0tim7J9gKJXaqlCJr2akvyQEQGnl
+ +DUtRGvHPnWjA2qbnEvbdsuRvQ4nDMSWkJf8lwpw6UfIKDUP46phlxidiqDlYv5yk9m2oqHY6wj
+ FZgsIq9lzzP4Ye7hWZV52F0xTnE4Qr21LoM6TA2axDKuswAYiGTHT3vbP8UDMJNYw1O1CsATFQb
+ 205tO6nLKtV6soK5wEXzWdwNwKe8s+ESsHUNErnTmagl+ZqaC6JxD+Ij9DMaLrJoBiei2ICSeXP
+ 8X2geEniUeBMgHdKp4g==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
  definitions=2026-06-23_02,2026-06-23_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 priorityscore=1501 impostorscore=0 lowpriorityscore=0
- suspectscore=0 malwarescore=0 clxscore=1015 spamscore=0 phishscore=0
- bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ spamscore=0 impostorscore=0 bulkscore=0 adultscore=0 suspectscore=0
+ lowpriorityscore=0 phishscore=0 malwarescore=0 priorityscore=1501
+ clxscore=1015 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
  definitions=main-2606230089
 Received-SPF: pass client-ip=205.220.168.131;
  envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
@@ -160,103 +148,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+TCG helpers are declared using the DEF_HELPER*() macros
+which imply global symbol scope. Unfortunately when building
+a single binary (containing multiple TCG 'target' frontends)
+these symbols clash.
 
-In order to avoid symbol name clash when building
-a single binary, rename TCG helpers prefixing with
-the target name.
+This series takes the dumbest approach, renaming the symbols.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Brian Cain <brian.cain@oss.qualcomm.com>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
----
- target/loongarch/tcg/helper.h                    | 2 +-
- target/riscv/helper.h                            | 2 +-
- target/loongarch/tcg/fpu_helper.c                | 2 +-
- target/riscv/fpu_helper.c                        | 2 +-
- target/riscv/translate.c                         | 2 +-
- target/loongarch/tcg/insn_trans/trans_fmov.c.inc | 2 +-
- 6 files changed, 6 insertions(+), 6 deletions(-)
+There are still around 20 symbol clashes (usually FPU helpers),
+but this series is good for my proof-of-concept.
 
-diff --git a/target/loongarch/tcg/helper.h b/target/loongarch/tcg/helper.h
-index 35b055eb3bc..154e70c0191 100644
---- a/target/loongarch/tcg/helper.h
-+++ b/target/loongarch/tcg/helper.h
-@@ -91,7 +91,7 @@ DEF_HELPER_2(ftint_w_d, i64, env, i64)
- DEF_HELPER_2(frint_s, i64, env, i64)
- DEF_HELPER_2(frint_d, i64, env, i64)
- 
--DEF_HELPER_FLAGS_1(set_rounding_mode, TCG_CALL_NO_RWG, void, env)
-+DEF_HELPER_FLAGS_1(loongarch_set_rounding_mode, TCG_CALL_NO_RWG, void, env)
- 
- DEF_HELPER_1(rdtime_d, i64, env)
- 
-diff --git a/target/riscv/helper.h b/target/riscv/helper.h
-index 542b7c264fc..6f46e0d91d4 100644
---- a/target/riscv/helper.h
-+++ b/target/riscv/helper.h
-@@ -2,7 +2,7 @@
- DEF_HELPER_2(raise_exception, noreturn, env, i32)
- 
- /* Floating Point - rounding mode */
--DEF_HELPER_FLAGS_2(set_rounding_mode, TCG_CALL_NO_WG, void, env, i32)
-+DEF_HELPER_FLAGS_2(riscv_set_rounding_mode, TCG_CALL_NO_WG, void, env, i32)
- DEF_HELPER_FLAGS_2(set_rounding_mode_chkfrm, TCG_CALL_NO_WG, void, env, i32)
- 
- /* Floating Point - fused */
-diff --git a/target/loongarch/tcg/fpu_helper.c b/target/loongarch/tcg/fpu_helper.c
-index fc9c64c20a8..265f608cddd 100644
---- a/target/loongarch/tcg/fpu_helper.c
-+++ b/target/loongarch/tcg/fpu_helper.c
-@@ -878,7 +878,7 @@ uint64_t helper_ftint_w_d(CPULoongArchState *env, uint64_t fj)
-     return fd;
- }
- 
--void helper_set_rounding_mode(CPULoongArchState *env)
-+void helper_loongarch_set_rounding_mode(CPULoongArchState *env)
- {
-     set_float_rounding_mode(ieee_rm[(env->fcsr0 >> FCSR0_RM) & 0x3],
-                             &env->fp_status);
-diff --git a/target/riscv/fpu_helper.c b/target/riscv/fpu_helper.c
-index db1475271b6..88261b223cc 100644
---- a/target/riscv/fpu_helper.c
-+++ b/target/riscv/fpu_helper.c
-@@ -66,7 +66,7 @@ void riscv_cpu_check_fflags(CPURISCVState *env,
-                             FloatExceptionFlags pre_fflag) {}
- #endif
- 
--void helper_set_rounding_mode(CPURISCVState *env, uint32_t rm)
-+void helper_riscv_set_rounding_mode(CPURISCVState *env, uint32_t rm)
- {
-     FloatRoundMode softrm;
- 
-diff --git a/target/riscv/translate.c b/target/riscv/translate.c
-index 9684dbe7528..d5c3366fd94 100644
---- a/target/riscv/translate.c
-+++ b/target/riscv/translate.c
-@@ -759,7 +759,7 @@ static void gen_set_rm(DisasContext *ctx, uint8_t rm)
- 
-     /* The helper may raise ILLEGAL_INSN -- record binv for unwind. */
-     decode_save_opc(ctx, 0);
--    gen_helper_set_rounding_mode(tcg_env, tcg_constant_i32(rm));
-+    gen_helper_riscv_set_rounding_mode(tcg_env, tcg_constant_i32(rm));
- }
- 
- static void gen_set_rm_chkfrm(DisasContext *ctx, uint8_t rm)
-diff --git a/target/loongarch/tcg/insn_trans/trans_fmov.c.inc b/target/loongarch/tcg/insn_trans/trans_fmov.c.inc
-index 5cbd9d3f347..c4c4c2000f7 100644
---- a/target/loongarch/tcg/insn_trans/trans_fmov.c.inc
-+++ b/target/loongarch/tcg/insn_trans/trans_fmov.c.inc
-@@ -112,7 +112,7 @@ static bool trans_movgr2fcsr(DisasContext *ctx, arg_movgr2fcsr *a)
-      * Note that FCSR3 is exactly the rounding mode field.
-      */
-     if (mask & FCSR0_M3) {
--        gen_helper_set_rounding_mode(tcg_env);
-+        gen_helper_loongarch_set_rounding_mode(tcg_env);
-     }
-     return true;
- }
+Since v1:
+- rebased on b0df6e2f2c6c45df8d4d286933799c623e124d98
+  (Merge tag 'pull-riscv-to-apply-20260616')
+
+Philippe Mathieu-Daudé (4):
+  target/tcg: Rename bitswap() helpers
+  target/tcg: Rename crc32*() helpers
+  target/tcg: Rename raise_exception() helpers
+  target/tcg: Rename set_rounding_mode() helpers
+
+ target/arm/tcg/helper-defs.h                     |  4 ++--
+ target/hexagon/gen_tcg.h                         |  2 +-
+ target/hexagon/helper.h                          |  2 +-
+ target/i386/helper.h                             |  2 +-
+ target/i386/ops_sse.h                            |  2 +-
+ target/loongarch/tcg/helper.h                    |  8 ++++----
+ target/m68k/helper.h                             |  2 +-
+ target/microblaze/helper.h                       |  2 +-
+ target/mips/helper.h                             |  6 +++---
+ target/ppc/helper.h                              |  2 +-
+ target/riscv/helper.h                            |  2 +-
+ target/sparc/helper.h                            |  2 +-
+ target/i386/tcg/ops_sse_header.h.inc             |  2 +-
+ target/arm/tcg/arith_helper.c                    |  4 ++--
+ target/arm/tcg/translate.c                       |  4 ++--
+ target/hexagon/op_helper.c                       |  2 +-
+ target/hexagon/translate.c                       |  2 +-
+ target/i386/tcg/excp_helper.c                    |  2 +-
+ target/i386/tcg/translate.c                      |  2 +-
+ target/loongarch/tcg/fpu_helper.c                |  2 +-
+ target/loongarch/tcg/op_helper.c                 |  6 +++---
+ target/m68k/op_helper.c                          |  2 +-
+ target/m68k/translate.c                          |  2 +-
+ target/microblaze/op_helper.c                    |  2 +-
+ target/microblaze/translate.c                    |  2 +-
+ target/mips/tcg/op_helper.c                      |  6 +++---
+ target/mips/tcg/translate.c                      |  6 +++---
+ target/ppc/tcg-excp_helper.c                     |  2 +-
+ target/ppc/translate.c                           |  6 +++---
+ target/riscv/fpu_helper.c                        |  2 +-
+ target/riscv/translate.c                         |  2 +-
+ target/sparc/helper.c                            |  2 +-
+ target/sparc/translate.c                         |  6 +++---
+ target/i386/tcg/emit.c.inc                       |  2 +-
+ target/loongarch/tcg/insn_trans/trans_bit.c.inc  |  4 ++--
+ .../loongarch/tcg/insn_trans/trans_extra.c.inc   | 16 ++++++++--------
+ target/loongarch/tcg/insn_trans/trans_fmov.c.inc |  2 +-
+ 37 files changed, 63 insertions(+), 63 deletions(-)
+
 -- 
 2.53.0
 

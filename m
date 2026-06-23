@@ -4,148 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E846ACDB46F
-	for <qemu-arm@archiver.kernel.org>; Tue, 23 Jun 2026 12:04:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDCAFCDB479
+	for <qemu-arm@archiver.kernel.org>; Tue, 23 Jun 2026 12:56:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wbzrj-0007Ux-98; Tue, 23 Jun 2026 08:04:31 -0400
+	id 1wc0gL-0004aO-D2; Tue, 23 Jun 2026 08:56:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <daniel.barboza@oss.qualcomm.com>)
- id 1wbzXY-0000Sp-E3
- for qemu-arm@nongnu.org; Tue, 23 Jun 2026 07:43:40 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <daniel.barboza@oss.qualcomm.com>)
- id 1wbzXW-00018C-Ho
- for qemu-arm@nongnu.org; Tue, 23 Jun 2026 07:43:40 -0400
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 65NBXVtE3744709
- for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 11:43:36 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- i7DPPuFl4ODusIQXB36pqSHZwTBVXE1kLjVym/Btkdc=; b=h+ZBGkgPzKwN3QSL
- c+0GE/z/BkbcJx2+tOyjY6GQVStrDYvDCz0GtbuD7d67Nd4F8Jx2R41TjvgzMhfn
- WYv4F2pnK1qmCXLPac74ZQLX6Cc9NEMPurJpIIi3YMkLkpUhRCtXdrMbItt2+91A
- J6dESjF26DO3rvqvee3ugLqDt3dsxm+Q75B6i6Sf3gNnmvxMQKgkdln3Y55R4P5f
- +q6pz0YfY7+VdfO7ADHY2M9QbJhyv/Hrf3S0vgCdqARs+kFbHSjqzmwSNL8jSr/W
- 620wj3KGBXeM5hH6wEmdg7U/XN7b0RKk0+e1EEOvlDIXef06jLj97Lr3ldbEnnyr
- Kmf1Rg==
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4eypx38rh8-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 11:43:35 +0000 (GMT)
-Received: by mail-qt1-f198.google.com with SMTP id
- d75a77b69052e-517e054fe07so131380121cf.1
- for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 04:43:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1782215014; x=1782819814; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=i7DPPuFl4ODusIQXB36pqSHZwTBVXE1kLjVym/Btkdc=;
- b=XLxBDNVxWKbcPrSe3m8R3noetiy2Cpqy7sTQlbhnmGgZcxWWPuXM+XSB69Dve61ISU
- z/3QyY4Q8m14pn1g/0xYXznqYCl+owsnPfdPu0l/KaN+yeuQHHvQHizpM9Rm59eYRApu
- krBebGYIAMLFO1z/w5WTlBa8SEoUYwJuIwJdij1HjqT2o+24NW8eUDdZy9DKnPGJKQPv
- kE5nXbuXDAmXwC4MIWe8V6L9RmeE1WyZdJoj96d2SNgeEL1ur/YP1f0ttO0NyvnUXDe6
- JfvXl8oGvPSpJgVcDtmTrwbqbR1MFPBhtkPSK1EWwYaBnrQaiylLn3RHqGMP8GCQMl/5
- ZCIA==
+ (Exim 4.90_1) (envelope-from <yisooan.dev@gmail.com>)
+ id 1wc0gH-0004Zh-Rq
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2026 08:56:46 -0400
+Received: from mail-pj1-f47.google.com ([209.85.216.47])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <yisooan.dev@gmail.com>)
+ id 1wc0gG-0008WM-9E
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2026 08:56:45 -0400
+Received: by mail-pj1-f47.google.com with SMTP id
+ 98e67ed59e1d1-37d70036426so1571745a91.3
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 05:56:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782215014; x=1782819814;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=i7DPPuFl4ODusIQXB36pqSHZwTBVXE1kLjVym/Btkdc=;
- b=KfqqGDbwOR9b5q51xFFmvdBAyc6bOAAua42PQGz9AEtg0xitxI1rHsgHJ21q+nvq3h
- XVDWJltUDk6eTCwXMng/l+hDtIaodj7g1qUJW83xFtw/oBB1ZtrpltF0A3hoRyH5q8bT
- D5rvTLOJd3QeNIQ2tDDui75xih+ChnweZzjack/SlWxvbFG9/VUlYkLkKbNYew8/mMtC
- 9K5En14V/4NpMZxlU4t/cm8vKOO8PDn7gNYY+D+pcpkMd29eKzIca/ZJBvN6+UgjLZsm
- coUrnKzLPYwhWyn6NLmOUUjaUqBb9U/wDW5bph4XsKq0hWvYg7t/9NycTSgAm3Z7PXBU
- oPxQ==
-X-Gm-Message-State: AOJu0YwI+TVgHI/AQ2D5OCCAFJN3bVuJXuy+u7ee/Rzky+fv4Jfddw3G
- awU4qndoQcvaVdj8PCuUXWuJ/jHTLTdRvZgpdUaV3XvIvNlssC4Ns4A0PNVD9N842z6Jr6m+lkS
- nrvKiiAr8q/3vEjcZdAvzQ1kzQt47E3jDKCSAeqSVCvNL+LrOAr5GPOM=
-X-Gm-Gg: AfdE7ckPDyByRsBmznsLRT+ohMVCh6BLUljqfRqEcogcYs2vRUpYIxzBbqiA4O1s3ej
- fE87T6HcWZRKE5fIfGyOV6uDf3ZEuYrtOKdJjKG1Ed29VBilB2s/bgoNJaSsD3ukesIBqVnZGBQ
- 5FoCqK9fFKPkXxKxQvPlilzcRGpHjY97GeOum1gWOUQNdFW7RP9KJT6I80Z66rLWLxLFonQXhI4
- sES8ovYP29C+TxttI0IeLyp0a0uYvvLzwlKq43WpNCJajy8Io2P8V4YrmX2ba17KuIgMcwY2Kuy
- GKvMESvIu8hy7Rv+z45IHUKQ7NT7SxZ9B7o5tFY89hSfPGkNYEQA6ezKrtN1s6NHWpo7PTSTbiv
- aoH5OBQeA4pgL2P51zjwiBGf3QqguvV+d5tRq32CEEcVV
-X-Received: by 2002:ac8:5cd2:0:b0:517:9407:5c35 with SMTP id
- d75a77b69052e-51a56257cc1mr27608681cf.47.1782215008125; 
- Tue, 23 Jun 2026 04:43:28 -0700 (PDT)
-X-Received: by 2002:ac8:5cd2:0:b0:517:9407:5c35 with SMTP id
- d75a77b69052e-51a56257cc1mr27597381cf.47.1782214992810; 
- Tue, 23 Jun 2026 04:43:12 -0700 (PDT)
-Received: from [192.168.15.10] ([187.35.50.240])
- by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-51a514b5128sm21156581cf.6.2026.06.23.04.43.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 23 Jun 2026 04:43:12 -0700 (PDT)
-Message-ID: <eb05e157-a661-455a-a7aa-4f2e37d51033@oss.qualcomm.com>
-Date: Tue, 23 Jun 2026 08:43:08 -0300
+ d=1e100.net; s=20251104; t=1782219402; x=1782824202;
+ h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+ :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=6swxASzh/shRJLEp7Pk/oVO3/j140Xn0WoM0mhZf7Uc=;
+ b=ndA9po1oo572FovtT5DndsIgOQQGI+GIvQwePwKpm1OsjuFAl+4Q/NnJ+CxUzr78P/
+ dnKTcuiO7joyhonHnk+KxxUcK7ajguIhjJ6/Ba4AwQJQlBJcfnTdm+XU34cGp9RVp8jC
+ W/NnVc9hgsYNOlqo0jz64cpl1uIWqWPJSyxS2vNWryFL+aKE/ezZpftVJt0Zi6fmB4L8
+ DHdfeWMkk2pgAQB8K0QnkOg82mV3yeO0t1jjtu9QXYREJPOFjFrNG9/vAPNWEruUgBDm
+ 9Ipw00yheJiTWW8ipChkZcwrzcgYYD5vv5dPelqdOGlaMQ97gLc02ljBk+pMTFmvJCun
+ hzPQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RoWeeFIgoWdMX2EHey2T/9cM+bK+JDTa6klnBWG3ql1R8eem8cbMSw/CNXI1xgOWY5VQ1s7GnmWRQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyE2z3axp1mzs9a26aFllP7C1fulXqHfOyKc2bNQgqkmdmVJSpC
+ RMAmbf5dQhbrvJ7s7XnFoAQDrsUTtYFRrprUNVxcUa7f75jYEKewKNo0CUMM0A==
+X-Gm-Gg: AfdE7cnG+F7xBW9gwpayT+pweKwSqQDdGtuDcMz5mRtk3h9hKddF+4oO8jSU57jqiLS
+ DYfpdfDtHv7Uytpcp+6mFwOptE+59BZs84S18aiRrBEU5t6hywjXM1eGNaaHcWGKweixGJz0Fao
+ KcFvXXmYUb7+9GaNQTpsePDicpmb4IzaxhHYQQfPS+5wLrcVF0PxIELGw9IyTtid41w2z2vLa/B
+ WH5cxTvRQ9RxiOz8P2C9qQRUYZP4VMWwOdejhmgP4aG97mtvbbD61d8TMZ+klKuxtjadCo6rZoz
+ j+RB4/HseXDEyTJLi+rAgt4ZAeSQj6zrmFX2BTmo9UT+b7s6mJRGa2aQG/q2iC/GWvTi4ZnD61r
+ mBPyEuuN5KsMFCzjL/WF+jiI5PatVANUhee12tmnvn15t6eo/branVzAw0gZ7JCSVWAF5YB5ORi
+ qBWHcz/tEtQrY3+vhQF17iv+hQp/Bx2mb1amrF5fdAg3MZ61+vTuTyDuWEMUIAy1f5FCRR9llpD
+ 6AgHm3u9woQsuA4RObpGBZ++3ND4R4=
+X-Received: by 2002:a17:903:46c7:b0:2c6:b87c:e5a3 with SMTP id
+ d9443c01a7336-2c718ed74e6mr194294015ad.15.1782219402494; 
+ Tue, 23 Jun 2026 05:56:42 -0700 (PDT)
+Received: from
+ 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa
+ ([1.213.237.162]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2c7436af310sm110579705ad.2.2026.06.23.05.56.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 23 Jun 2026 05:56:41 -0700 (PDT)
+From: Leesoo Ahn <lsahn@ooseel.net>
+Date: Tue, 23 Jun 2026 21:56:35 +0900
+Subject: [PATCH] target/arm/hvf: panic the guest if an unhandled exception
+ occurs
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v2 4/4] target/tcg: Rename set_rounding_mode() helpers
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Brian Cain <brian.cain@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Song Gao <gaosong@loongson.cn>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
- <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu.zevorn@gmail.com>
-References: <20260623110209.26861-1-philmd@oss.qualcomm.com>
- <20260623110209.26861-5-philmd@oss.qualcomm.com>
-From: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20260623110209.26861-5-philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=EsfiaycA c=1 sm=1 tr=0 ts=6a3a7167 cx=c_pps
- a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=4zNbLBpji/9weHA2+kqC8A==:17
- a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=anpdLP3TX50KqTV9x4gA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=dawVfQjAaf238kedN5IG:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: k7hjURZU1yWb9-mN6mNxLXsDPkVNzvhQ
-X-Proofpoint-GUID: k7hjURZU1yWb9-mN6mNxLXsDPkVNzvhQ
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNjIzMDA5NiBTYWx0ZWRfXyBceg/oRhBFj
- timlYzgOqboiv/zv56KE4BLxRps55l39Nr+acd9TM6AXA/eHnktxDK8tRoL6ZmS1Dfq+g0ktrPz
- gQvbWLUdcUdW6LNcTzOARU2xICzsDYs=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjIzMDA5NiBTYWx0ZWRfX9/TIkNoJQvRZ
- R8uDfnASbPNG46eKw197lr516uuK7eZ7Of63yOZQR/mX0LTqUaJXg6KXVJeLP3+joPypWpflvXH
- Bj9iGmPYPkqrFnXJ2gqbzHTVyeVc//QLVu2Qz0Qu+Vdk71cLg9OsjulrSG5WL+1LZnxycZbI2qn
- 9wS3ZnzWx1VtyF2jLUeAY1ih2j9g13zsNmS6AMXOVoCpHF4F9Wh/bF2MAq4TGCaD5N16ZxSFJlO
- uuLmb7tY3gUQ+lK7+3tH132HMou+dWDNzKbqVdwx8j5VMFp9TFpFQJ5L8FTEX1G/3QxFbkkAcQv
- HZPQSMdUnA2+Y52aoWdfArOGqPZwlPicNjRlVjfY+OJfIV7mWZI836CpDScpdneHV9H9Qmpff1U
- gf2sVGurbfH3K5cpt6Happy8K26GTg==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-06-23_03,2026-06-23_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 lowpriorityscore=0 malwarescore=0 suspectscore=0 spamscore=0
- adultscore=0 phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2606230096
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=daniel.barboza@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260623-guest-panic-unhandle-v1-1-6adfb6d4221e@ooseel.net>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMywqDQAyF4VeRrBvQKAP2VUoXc4kaKVOZOKUgv
+ rujLj84599AOQkrPKsNEv9E5RsLmkcFfrJxZJRQDFSTqQ21OGbWFRcbxWOOZRI+jF1PTSBrTT8
+ 4KNcl8SD/K/t639bsZvbr2YJ9PwAFGjwMeAAAAA==
+X-Change-ID: 20260623-guest-panic-unhandle-4921d2aa69fb
+To: qemu-devel@nongnu.org
+Cc: Alexander Graf <agraf@csgraf.de>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Leesoo Ahn <lsahn@ooseel.net>
+X-Mailer: b4 0.15.2
+Received-SPF: pass client-ip=209.85.216.47; envelope-from=yisooan.dev@gmail.com;
+ helo=mail-pj1-f47.google.com
+X-Spam_score_int: 17
+X-Spam_score: 1.7
+X-Spam_bar: +
+X-Spam_report: (1.7 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 23 Jun 2026 08:04:26 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -160,108 +98,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+It's worth cleaning up all resources that the guest taking and to quit
+if an exception in el1 could not be resolved.
 
+Otherwise, the guest will get in the infinite black-hole by
+unmodified pc.
 
-On 6/23/2026 8:02 AM, Philippe Mathieu-Daudé wrote:
-> From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> 
-> In order to avoid symbol name clash when building
-> a single binary, rename TCG helpers prefixing with
-> the target name.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Reviewed-by: Brian Cain <brian.cain@oss.qualcomm.com>
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Signed-off-by: Leesoo Ahn <lsahn@ooseel.net>
+---
+ target/arm/hvf/hvf.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Reviewed-by: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 8b902c6882..4358cf90e8 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -2533,6 +2533,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
+         cpu_synchronize_state(cpu);
+         trace_hvf_exit(syndrome, ec, env->pc);
+         error_report("0x%llx: unhandled exception ec=0x%x", env->pc, ec);
++        qemu_system_guest_panicked(cpu_get_crash_info(cpu));
+     }
+ 
+     /* flush any changed cpu state back to HVF */
 
-> ---
->   target/loongarch/tcg/helper.h                    | 2 +-
->   target/riscv/helper.h                            | 2 +-
->   target/loongarch/tcg/fpu_helper.c                | 2 +-
->   target/riscv/fpu_helper.c                        | 2 +-
->   target/riscv/translate.c                         | 2 +-
->   target/loongarch/tcg/insn_trans/trans_fmov.c.inc | 2 +-
->   6 files changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/target/loongarch/tcg/helper.h b/target/loongarch/tcg/helper.h
-> index 35b055eb3bc..154e70c0191 100644
-> --- a/target/loongarch/tcg/helper.h
-> +++ b/target/loongarch/tcg/helper.h
-> @@ -91,7 +91,7 @@ DEF_HELPER_2(ftint_w_d, i64, env, i64)
->   DEF_HELPER_2(frint_s, i64, env, i64)
->   DEF_HELPER_2(frint_d, i64, env, i64)
->   
-> -DEF_HELPER_FLAGS_1(set_rounding_mode, TCG_CALL_NO_RWG, void, env)
-> +DEF_HELPER_FLAGS_1(loongarch_set_rounding_mode, TCG_CALL_NO_RWG, void, env)
->   
->   DEF_HELPER_1(rdtime_d, i64, env)
->   
-> diff --git a/target/riscv/helper.h b/target/riscv/helper.h
-> index 542b7c264fc..6f46e0d91d4 100644
-> --- a/target/riscv/helper.h
-> +++ b/target/riscv/helper.h
-> @@ -2,7 +2,7 @@
->   DEF_HELPER_2(raise_exception, noreturn, env, i32)
->   
->   /* Floating Point - rounding mode */
-> -DEF_HELPER_FLAGS_2(set_rounding_mode, TCG_CALL_NO_WG, void, env, i32)
-> +DEF_HELPER_FLAGS_2(riscv_set_rounding_mode, TCG_CALL_NO_WG, void, env, i32)
->   DEF_HELPER_FLAGS_2(set_rounding_mode_chkfrm, TCG_CALL_NO_WG, void, env, i32)
->   
->   /* Floating Point - fused */
-> diff --git a/target/loongarch/tcg/fpu_helper.c b/target/loongarch/tcg/fpu_helper.c
-> index fc9c64c20a8..265f608cddd 100644
-> --- a/target/loongarch/tcg/fpu_helper.c
-> +++ b/target/loongarch/tcg/fpu_helper.c
-> @@ -878,7 +878,7 @@ uint64_t helper_ftint_w_d(CPULoongArchState *env, uint64_t fj)
->       return fd;
->   }
->   
-> -void helper_set_rounding_mode(CPULoongArchState *env)
-> +void helper_loongarch_set_rounding_mode(CPULoongArchState *env)
->   {
->       set_float_rounding_mode(ieee_rm[(env->fcsr0 >> FCSR0_RM) & 0x3],
->                               &env->fp_status);
-> diff --git a/target/riscv/fpu_helper.c b/target/riscv/fpu_helper.c
-> index db1475271b6..88261b223cc 100644
-> --- a/target/riscv/fpu_helper.c
-> +++ b/target/riscv/fpu_helper.c
-> @@ -66,7 +66,7 @@ void riscv_cpu_check_fflags(CPURISCVState *env,
->                               FloatExceptionFlags pre_fflag) {}
->   #endif
->   
-> -void helper_set_rounding_mode(CPURISCVState *env, uint32_t rm)
-> +void helper_riscv_set_rounding_mode(CPURISCVState *env, uint32_t rm)
->   {
->       FloatRoundMode softrm;
->   
-> diff --git a/target/riscv/translate.c b/target/riscv/translate.c
-> index 9684dbe7528..d5c3366fd94 100644
-> --- a/target/riscv/translate.c
-> +++ b/target/riscv/translate.c
-> @@ -759,7 +759,7 @@ static void gen_set_rm(DisasContext *ctx, uint8_t rm)
->   
->       /* The helper may raise ILLEGAL_INSN -- record binv for unwind. */
->       decode_save_opc(ctx, 0);
-> -    gen_helper_set_rounding_mode(tcg_env, tcg_constant_i32(rm));
-> +    gen_helper_riscv_set_rounding_mode(tcg_env, tcg_constant_i32(rm));
->   }
->   
->   static void gen_set_rm_chkfrm(DisasContext *ctx, uint8_t rm)
-> diff --git a/target/loongarch/tcg/insn_trans/trans_fmov.c.inc b/target/loongarch/tcg/insn_trans/trans_fmov.c.inc
-> index 5cbd9d3f347..c4c4c2000f7 100644
-> --- a/target/loongarch/tcg/insn_trans/trans_fmov.c.inc
-> +++ b/target/loongarch/tcg/insn_trans/trans_fmov.c.inc
-> @@ -112,7 +112,7 @@ static bool trans_movgr2fcsr(DisasContext *ctx, arg_movgr2fcsr *a)
->        * Note that FCSR3 is exactly the rounding mode field.
->        */
->       if (mask & FCSR0_M3) {
-> -        gen_helper_set_rounding_mode(tcg_env);
-> +        gen_helper_loongarch_set_rounding_mode(tcg_env);
->       }
->       return true;
->   }
+---
+base-commit: b83371668192a705b878e909c5ae9c1233cbd5fb
+change-id: 20260623-guest-panic-unhandle-4921d2aa69fb
+
+Best regards,
+--  
+Leesoo Ahn <lsahn@ooseel.net>
 
 

@@ -4,117 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D8E6CD4F26
-	for <qemu-arm@archiver.kernel.org>; Tue, 23 Jun 2026 07:52:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43DBCCDB471
+	for <qemu-arm@archiver.kernel.org>; Tue, 23 Jun 2026 08:27:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wbvvX-0006zl-AV; Tue, 23 Jun 2026 03:52:11 -0400
+	id 1wbwTw-0000ro-UZ; Tue, 23 Jun 2026 04:27:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wbvvW-0006yF-9y; Tue, 23 Jun 2026 03:52:10 -0400
-Received: from mail-westusazlp170100005.outbound.protection.outlook.com
- ([2a01:111:f403:c001::5] helo=BYAPR05CU005.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wbwTv-0000rM-3Q
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2026 04:27:43 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wbvvU-0000l7-NU; Tue, 23 Jun 2026 03:52:10 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=qv7F6rElwbMqTVXzrP/9bDiCqOFeo0mzX70kY1RtshLRAhslI3Ooc1glSrIYQqJBnKo9rJHfCc1FDRBx5YGEIiQKCmFT/2h4q58Ry31HOpLPLOGyn203flIpwH4F7iRNKjKZhvbsY1CEE73fBfpjNWdJUaorjvV3Nq68Yhlw8KR5V+v1NybJCudwL2/Z6tuRRyFri/SjrBSQjFyrnM437j/jCWDnAGNF3AxTQqWL52AyVbFhe9V2+95JurqrlB65VLi8opMH370rHHDc1HdYIOz6EvfcqRfPVg7lNvUfuSjxLfF0XMm55ArG/kDGy+4GHqLMSPufDJTvixUuugdIHA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=NfoaHq4ARm4a6D3x52FnR2TZQi+GHQsYO9BeAx+YLo8=;
- b=tUGs+C7nfs9IfCOjXsizztsABeRquYAwUKAu2YsnYCIEhsXUB7pmpdkrXXaZjSnY1WXGBN12/15FgKHk1qw04olrb6w87Vrlm769ova9+Q40QgF6in+sYL8GFgndWnVYepVz5t8tnPMfyUXWoqHJN4NEPylXSf+A79vQ5gKxuQ8rU5Q/Iw69GQMO48ehou3SAjg8JZgw4zaBRitOU0n+tGfWepwXKvpzRVaAqunUwn8qu9NvPvsne5Yw5FPM73t/AqElwAw+Be04Mqt57HS09oJr8tKKf8gAJT/sQM8mlDHierjW3U4EGdfIrJUX6uJNIhu3hCLSZ/GPTLHptPSbJw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NfoaHq4ARm4a6D3x52FnR2TZQi+GHQsYO9BeAx+YLo8=;
- b=cM0MzJpG/ctoioIWGOUopVyH/dDPrP9qQeg+SuUOG0w+nGiyNk9LPA+LLPV12MWsnou4eXtLd3VUrwKzZboRVPePMBPoenF9V2svdNUt3/I/F48UXBMv7Mf44vlHIi4MSU96N57PUxm+399vTbFP6lkgoZVmy1GOFyNtvaGJUv7jFYWWwXEXEWF2GPdmyjOtjx8Hu+SjMe8uMcDzxGjEcFQkRfmasfmqtCnZ6WEHFJ6juoMGEosV1v5ihpBUi9oyjWxS3MvicU+AgWHWlv90JcwGs0AsXq4743DKS+bghL5QvVtu0Ws/JXVfddGdxAxOkvEuZ/sYraEB9Qn3Cl8EhQ==
-Received: from SA9P221CA0002.NAMP221.PROD.OUTLOOK.COM (2603:10b6:806:25::7) by
- BL1PR12MB5850.namprd12.prod.outlook.com (2603:10b6:208:395::6) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.139.20; Tue, 23 Jun 2026 07:52:02 +0000
-Received: from SA2PEPF00003F68.namprd04.prod.outlook.com
- (2603:10b6:806:25:cafe::2b) by SA9P221CA0002.outlook.office365.com
- (2603:10b6:806:25::7) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.139.20 via Frontend Transport; Tue,
- 23 Jun 2026 07:52:02 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- SA2PEPF00003F68.mail.protection.outlook.com (10.167.248.43) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.139.8 via Frontend Transport; Tue, 23 Jun 2026 07:52:01 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 23 Jun
- 2026 00:51:45 -0700
-Received: from NV-2Y5XW94.nvidia.com (10.126.231.37) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 23 Jun
- 2026 00:51:43 -0700
-From: Shameer Kolothum <skolothumtho@nvidia.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
- <nicolinc@nvidia.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
- <jan@nvidia.com>, <skolothumtho@nvidia.com>
-Subject: [PATCH] hw/arm/smmuv3-accel: Fix veventq read returning true on
- EAGAIN/EINTR
-Date: Tue, 23 Jun 2026 08:51:01 +0100
-Message-ID: <20260623075101.17770-1-skolothumtho@nvidia.com>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wbwTs-0008Ob-Ty
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2026 04:27:42 -0400
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 65N6cfE42992374
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 08:27:38 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ G4i09EF2TLT0F1h9qznqtyVTHK3uGMpJiTsH1WY03kw=; b=RkFo6U54jc4izb63
+ /yzJVorwUiYk5+DyUQvlLxOkX5UhXV6lI5WUIrrIZByZUjy4YqrORewGZj81UcFK
+ uBr/c6uM22Azr5cqK4wNNSYjku336GI/59PPc7TSuXWGMt1tpUpbJ/uN1T0avaZ4
+ BLC44JAeb5xAl+9jOdoWkkYJQtZXRAocCZ5SX5QOZ/TDXDramg8rvzmecaOfg/t2
+ i3uUaWCOJIJ2aslGa7ulntrST1Aq25wfG+ZRBrR1mTkKwfMEq7vmixaBelhvC26o
+ NV8onXcVJiMSpkHu2d3DtNQTg/cc/HNH3e0iV3pk+wjtA4Pj87W2nHBkcU1xKiTl
+ EdHOhw==
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ey729udhv-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 08:27:37 +0000 (GMT)
+Received: by mail-qk1-f198.google.com with SMTP id
+ af79cd13be357-91598ab3a1aso671718685a.3
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2026 01:27:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1782203257; x=1782808057; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=G4i09EF2TLT0F1h9qznqtyVTHK3uGMpJiTsH1WY03kw=;
+ b=N541uPJ851949Y/RZcBF6FygxxjdFI5qfJHP+1lZUBwrW2A/8xcnzB1LL3GDU1WsP+
+ A7Lhd49ItgGw99mDQZP+5HhCc4JhodX+7bAiloiEEdSI7EmDWPtsxVMNqKDTiaQR478J
+ bWWENvUZf8dMCJBEvjBjyqXTGN1AoU3Mr245aGnYtGbzGnTDOoCnWBAzKvZEvSGkYkks
+ A0QswxuYL6GXwwJrPH4KWfgMPOMrGMEkcP6Zg+f7W0QvxCsptfDeKB94d4dfK9AdwLoo
+ Y/32VeBtLePihUuz90lFqx4HB7gvfCgDLrU2IUmNGDfeUH2dRwF53j33mPMEHoOuyFI2
+ S44A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782203257; x=1782808057;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=G4i09EF2TLT0F1h9qznqtyVTHK3uGMpJiTsH1WY03kw=;
+ b=NMIH579DbIpaMsYszN3hKG9DA1X6pw9eAJPlmsGxl9BAprqUSoKTt44Fz6TJyqDaV0
+ m20ZrvnFhJdSqQxtZs9T7Xb71Ggr7YWpr5EaXv0EHYCFr88H8Fh9TSH0ZhzOmkOG75Z5
+ SR1KAUE8E9eeWZ3KSPfT22TCPu267+g+DdrGgiLcTYmeADkAuYDVCbEvY0FnINO4EF6Z
+ Shz1QJcJyLo9jAlA9pxQ44kisdtYn6zpEMLnuHuJRk6LyyVH6u9Stbj2A3S/H+kU4emz
+ AkvTmNJeHa2eW9Fo/HgYisjdJ32mGFOYO9rqemVYdGKwBJ3QVyowB2apBAA6d1ZAcrMY
+ E87g==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/GDjEacHr0HIGK6yOXZpOxoAzqtJRdMREcLNr6x0psQk3Ylg2ZpLnhZuacvrvLm9sBvNmRBFfN9Q==@nongnu.org
+X-Gm-Message-State: AOJu0YyQ7Wfxs5+LQ4X0jM7rLlB6zwICoIndvEGfmxR5+L0wRWZDewTU
+ 1AYuY1NOxGv/1xTkFZmw7HF8s/8gBoGS7vejjBafl5Eni4SxFsOelRFA/eNLe8FkfFzhvYwFQGC
+ i9fm5LKeDi9AV94IDzOHrHfVs9Jm0awEkoDpRNefwohiPhJCvVa3qnww=
+X-Gm-Gg: AfdE7ck/C2VZqXhqk3BrnlOBSQetouv9Qq+JWz8AhOSR81NFG0Jr8Y9fgFESN9rDVsh
+ TsL1C5dUrWpOd9i8F2cCNDPqaHXug0kV0YFy2NPJPhINAunvg2d4o5R972uaV9C8sqNM7SwYgsg
+ N3cSuhIdl4Xz56T0MuTdty3+DAYDwq29FDL0Lo3UZtHe440EW88haRFjT58mSQ+dToyCrxL6PQG
+ cCkQDc92hUEjrZgqTbdbL2r4g8iFMwm7BMuYKCEvciDzkdRnmE1pIvh6M/HsaEnY0gvgtOfvp8S
+ /HyA/iyVVNBXCWiMBHXBG6tTs+MQCwejGm/enXBf6V2vMrz3dZj7ik1/YUgde7mDXgHefb9b7JT
+ lvG6Nt+vofeJCqO5QgnG0mv5QpYrvRH8+1cemgyZPGSseUBD4lVCTe5jAxbcGgA==
+X-Received: by 2002:a05:620a:444b:b0:91e:e613:9c5f with SMTP id
+ af79cd13be357-9264771b20amr336192685a.26.1782203256873; 
+ Tue, 23 Jun 2026 01:27:36 -0700 (PDT)
+X-Received: by 2002:a05:620a:444b:b0:91e:e613:9c5f with SMTP id
+ af79cd13be357-9264771b20amr336188985a.26.1782203256292; 
+ Tue, 23 Jun 2026 01:27:36 -0700 (PDT)
+Received: from [192.168.69.212] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49249238900sm263405635e9.4.2026.06.23.01.27.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 23 Jun 2026 01:27:35 -0700 (PDT)
+Message-ID: <4e00be29-25b4-479b-ad6f-b79beed78dd1@oss.qualcomm.com>
+Date: Tue, 23 Jun 2026 10:27:34 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.126.231.37]
-X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
- rnnvmail201.nvidia.com (10.129.68.8)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SA2PEPF00003F68:EE_|BL1PR12MB5850:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5a42f686-aaff-47c1-af3c-08ded0fc4fbe
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|23010399003|376014|82310400026|1800799024|36860700016|18002099003|11063799006|56012099006;
-X-Microsoft-Antispam-Message-Info: /1akjiU58M+bCsrQFfHdq0kMy38qfaSZIIFSBCHgIOXvq1KvOjaOJ+LPQBzJyHEg9LYBAPV3iQY9kPJiQN43d+oU434/W6wV3j6sYRUqozPvjmxXS5zDr5f8ES5K7R7l/3YJH5DJk0gUHAab+0TsyDTfz1Jb0expd+y3mo9kVoaVZbkGNYobfWRDIHvbhVlxV2Wzq+veN9NCjnuZyUSJaSZF11NIJR/eY2TjZOZ3JtBMf22sa7WeKPo4yJlG9/koBlJBhzGdCNHGwGh15HvrIfQ1aHa3PlYjCxRm5e7NCp8mszvZUbn/4zDTbFYFGThnuglsyXaSoGJRjRSzaBgjXvd4yPDbSZjSCsWQXUjsB8rE5jEKroSCOPHMm1MNAduHvNh2O4y6TKOXtlT7Gatn7V8K0t9QF8goiSo8ej7ykxNK5yeSGsu255nAFKk/OgOLO8MNyN0ydKWZed3+gl6y9JZf6q6INtVInG0EDcZ+gSJRzQyXP+IkMi1jlzwM1g67aHaVhspdMlVPrpuvisBCDrgxMNsg0hiSwtFTPalzd33e6hzB9zUBPN8f63WKGmO8nj+Dm/nPsNBU18+GY2nWItNyBXYNlFTYTanFEu0U5rJY9zEulAyVDtFumFi+U2hnxdMAt1NGRh8IFras8cwAuIODqkhUmMlHai+hw7p4JuBYeoIbsvo/0a714VU+0LzWS8Vy04itao+3lZzozBl9Vw==
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(23010399003)(376014)(82310400026)(1800799024)(36860700016)(18002099003)(11063799006)(56012099006);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: jn8jW/0D+XripOCiPSJfPBczTZD1Gp/KanWx21xidMMrvAiqQczX+0btVQNNQfFST5fszWW2ESB3Tq0zJ2ASv7mcS7mz+paprkfl7wbmaQqt2+68Cp/rdCLsehQK0t+3BRdhz6hl6t6xLVewZa4MN93t2YTysBncyDTkhUhUPAc/sIMjT598HTFG0LIak/5/16Yy/D5PVsIjMbj2Ha1utroo+k6M2oN7etsIIZ0mj1dS0PbUHiWguDvn1VQUJucsq0IC0eNcjDPoqg8BqIAZ8etj6JSrDK5kL90FgqorpcGFmdsoPABze1iixmwqaX9aBldRaWf1yjeeiVi5u8Cv6EslgUO6/a4sP7LpE6RLEHGqfTsXcTqxaIomOc/ISAo9kUEIsnWCWaed7p0liKnrl1xTN2akKNMbtPRu+29I7nsaJ+hkWogArUf2Kdw+ttRH
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jun 2026 07:52:01.9932 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5a42f686-aaff-47c1-af3c-08ded0fc4fbe
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SA2PEPF00003F68.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5850
-Received-SPF: permerror client-ip=2a01:111:f403:c001::5;
- envelope-from=skolothumtho@nvidia.com;
- helo=BYAPR05CU005.outbound.protection.outlook.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm/hvf: manually sync ID_AA64ISAR0_EL1 on vCPU
+ init
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>,
+ "Jason L. Wright'" <wrigjl@proton.me>
+Cc: agraf@csgraf.de, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ zenghui.yu@linux.dev, richard.henderson@linaro.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+References: <20260529114723.42040-1-peter.maydell@linaro.org>
+ <20260529114723.42040-18-peter.maydell@linaro.org>
+ <745e66c7-2a9b-4185-bae7-77e10623332b@linux.dev>
+ <20260607182221.4357-1-wrigjl@proton.me>
+ <CAFEAcA-xEaA2LM=17Q1pKOF6L=rHhaDimXeSmLe=BtDqeaBeFA@mail.gmail.com>
+ <aibmIdorcTobj2yo@Jasons-MacBook-Pro.local>
+ <CAFEAcA85HahxFXoDVW_xBZEtG2SUd_3PseYLrpUXE6P_Hb_5mA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <CAFEAcA85HahxFXoDVW_xBZEtG2SUd_3PseYLrpUXE6P_Hb_5mA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNjIzMDA2NyBTYWx0ZWRfX1I8dk4h3R78Y
+ SqudMRO8fR9CVG/HQSKZlTwfvVIGh8L3ny0G8O4CUGYPEPfuScNqJRP5Caq/QiCdc09uxGRCPc4
+ dS+7P76UnIKL4m6I8/+0kjpAvfqnyzI=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjIzMDA2NyBTYWx0ZWRfX1JxBLO8u7MF/
+ SYRnH673TuklaELWuvcGZtrxBgQdWmmkUMXB2ACNY0Gxke7VWLEK1clFvbGYsjEm2GUVAWaRvGa
+ AjQnMYAnUsn/R/Kuw2cwKGzNRbOIyGXYlBE9/0o4cW5k3x8T0cqACMBw07dJqT9epBIEJVsyNLn
+ Ym7ew7jnBShm2atUJwlg4rQaX4dBfXHIQfMXvV+Kvs2MucKg1cIlGHM5B3SZcr53jaL6lkqLB1j
+ tTfno3A3cwnvGCyM1yvi/n9oM5/l7Bbq1tMXZrJKkUnxV0SfuLOMuh5CnpZDCuCxtxOH/gYzrDt
+ /Psy2RDcYQQMeA0/jNkeJtOynQm4X95TRFAc6A2EXPh0tnSSQFmf7emG9ou8qOaSdA6V5Wkbpy+
+ YKw7CdVrV8QhFnlI7CThdGJ9y7AjB23gq+YIHZoWiFSsj1fg606fHBACzcKujGti+VhrWxwQC8J
+ RWHl/d1MP173a03v6IQ==
+X-Proofpoint-ORIG-GUID: cfL3fd5bxAVjbabRDUdqnBsSTScCvzk8
+X-Proofpoint-GUID: cfL3fd5bxAVjbabRDUdqnBsSTScCvzk8
+X-Authority-Analysis: v=2.4 cv=eN0jSnp1 c=1 sm=1 tr=0 ts=6a3a4379 cx=c_pps
+ a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
+ a=bDdhxBF-3-ZmLf7kk0gA:9 a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
+ definitions=2026-06-23_02,2026-06-22_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 lowpriorityscore=0 malwarescore=0 suspectscore=0 bulkscore=0
+ clxscore=1015 priorityscore=1501 impostorscore=0 phishscore=0 adultscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2606230067
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,60 +162,130 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-smmuv3_accel_event_read_validate() returns true for EAGAIN/EINTR, but
-no data has been read into the buffer. Callers treat true as success and
-proceed to use the uninitialized buffer. Return false instead and guard
-warn_report_err_once() against NULL Error in both callers.
+Hi,
 
-Resolves: Coverity CID 1660057
-Fixes: d4aea0f75b ("hw/arm/smmuv3-accel: Introduce common helper for veventq read")
-Reported-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
----
- hw/arm/smmuv3-accel.c   | 6 ++++--
- hw/arm/tegra241-cmdqv.c | 4 +++-
- 2 files changed, 7 insertions(+), 3 deletions(-)
+On 8/6/26 18:05, Peter Maydell wrote:
+> On Mon, 8 Jun 2026 at 16:56, Jason L. Wright' <wrigjl@proton.me> wrote:
+>>
+>> On Mon, Jun 08, 2026 at 02:07:03PM +0100, Peter Maydell wrote:
+>>> On Sun, 7 Jun 2026 at 19:22, Jason Wright <wrigjl@proton.me> wrote:
+>>>>
+>>>> Commit 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
+>>>> gave ID_AA64ISAR0_EL1 a readfn so the RNDR field can reflect SCR_EL3.TRNDR
+>>>> at read time, and marked the cpreg ARM_CP_NO_RAW in the system-emulation
+>>>> path.  HVF then trips its hvf_arch_init_vcpu() assertion that no ID
+>>>> register in hvf_sreg_list[] is NO_RAW, aborting on boot on Apple Silicon:
+>>>>
+>>>>    Assertion failed: (!(ri->type & ARM_CP_NO_RAW)),
+>>>>    function hvf_arch_init_vcpu, file hvf.c, line 1442.
+>>>>
+>>>> Reproduce with:
+>>>>
+>>>>    qemu-system-aarch64 -M virt,accel=hvf -cpu host \
+>>>>                        -nographic -display none -bios /dev/null
+>>>>
+>>>> Mirror the existing treatment of ID_AA64PFR0_EL1: move
+>>>> HV_SYS_REG_ID_AA64ISAR0_EL1 into the SYNC_NO_RAW_REGS block in
+>>>> sysreg.c.inc so the assert loop skips it, and push QEMU's view of the
+>>>> register to the vCPU at init time.  HVF does not expose EL3, so
+>>>> SCR_EL3.TRNDR is never set and the readfn is functionally static there.
+>>>>
+>>>> Reported-by: Zenghui Yu <zenghui.yu@linux.dev>
+>>>> Fixes: 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
+>>>> Signed-off-by: Jason Wright <wrigjl@proton.me>
+>>>> ---
+>>>>   target/arm/hvf/hvf.c        | 4 ++++
+>>>>   target/arm/hvf/sysreg.c.inc | 2 +-
+>>>>   2 files changed, 5 insertions(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+>>>> index d88cbe7c82..afa1120c8a 100644
+>>>> --- a/target/arm/hvf/hvf.c
+>>>> +++ b/target/arm/hvf/hvf.c
+>>>> @@ -1485,6 +1485,10 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+>>>>       ret = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64PFR0_EL1, pfr);
+>>>>       assert_hvf_ok(ret);
+>>>>
+>>>> +    ret = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64ISAR0_EL1,
+>>>> +                              GET_IDREG(&arm_cpu->isar, ID_AA64ISAR0));
+>>>> +    assert_hvf_ok(ret);
+>>>> +
+>>>
+>>> For ID_AA64PFR0_EL1, we do "read the value from hvf, update it,
+>>> write it back", and we do not either read or write the isar.idregs[]
+>>> entry for it.
+>>>
+>>> For ID_AA64MMFR0_EL1, we read the hvf value into the isar.idregs[]
+>>> array entry, update it there, and write it back to hvf.
+>>>
+>>> For ID_AA64ISAR0_EL1, we write whatever is in the isar.idregs[]
+>>> array entry into hvf.
+>>>
+>>> Why do we do three different things for these three registers ?
+>>>
+>> I think it's each call doing the minimum work required for that
+>> register.
+>>
+>> MIDR_EL1 / MPIDR_EL1 are QEMU-defined identity values; HVF has
+>> nothing useful to contribute, so we just write.
+> 
+> These don't have isar.idregs[] entries either, so it makes sense
+> that they're not quite the same.
+> 
+>> ID_AA64PFR0_EL1 needs HVF's value as the base (host feature set)
+>> and then ORs in the GIC sysreg-iface bit, which depends on
+>> env->gicv3state runtime overlay, hence the get/modify/set.
+> 
+> But why do we not update isar.idregs[] to match ?
+> 
+>> ID_AA64MMFR0_EL1 also needs HVF's value as the base, and the
+>> modification (clamping PARANGE to the configured IPA size)
+>> consults isar.idregs[], so we read into idregs[] before clamping
+>> and then write back.
+> 
+> But why does the modification consult isar.idregs[] rather than
+> taking a value that it's passed in as an argument ?
+> 
+>> ID_AA64ISAR0_EL1 in this patch has no runtime overlay on the HVF
+>> path: SCR_EL3.TRNDR is permanently 0 since HVF does not expose
+>> EL3, so the readfn is a constant equal to
+>> isar.idregs[ID_AA64ISAR0_EL1_IDX], which was already seeded from
+>> the host during realize.
+> 
+> But if the values in isar.idregs[] are seeded from HVF during
+> realize, why do we not trust the isar.idregs[] value when we're
+> handling ID_AA64PFR0_EL1?
+> 
+>> The three methods track different requirements, so I matched
+>> the closest existing pattern for ID_AA64ISAR0_EL1 and left
+>> the others alone.
+> 
+> It seems to me that you've added a third thing that's different
+> from either of the ways that we handle existing ID registers
+> with an isar.idregs[] field.
+> 
+> I think we need to figure out:
 
-diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-index 80900c2521..6d402d2ba6 100644
---- a/hw/arm/smmuv3-accel.c
-+++ b/hw/arm/smmuv3-accel.c
-@@ -451,7 +451,7 @@ bool smmuv3_accel_event_read_validate(IOMMUFDVeventq *veventq, uint32_t type,
-     bytes = read(veventq->veventq_fd, buf, size);
-     if (bytes <= 0) {
-         if (errno == EAGAIN || errno == EINTR) {
--            return true;
-+            return false;
-         }
-         error_setg(errp, "vEVENTQ(type %u id %u): read failed (%m)", type, id);
-         return false;
-@@ -491,7 +491,9 @@ static void smmuv3_accel_event_read(void *opaque)
-     if (!smmuv3_accel_event_read_validate(veventq,
-                                           IOMMU_VEVENTQ_TYPE_ARM_SMMUV3, &buf,
-                                           sizeof(buf), &local_err)) {
--        warn_report_err_once(local_err);
-+        if (local_err) {
-+            warn_report_err_once(local_err);
-+        }
-         return;
-     }
-     smmuv3_propagate_event(s, (Evt *)&buf.vevent);
-diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
-index 29c488e0e4..bb0b417e90 100644
---- a/hw/arm/tegra241-cmdqv.c
-+++ b/hw/arm/tegra241-cmdqv.c
-@@ -845,7 +845,9 @@ static void tegra241_cmdqv_event_read(void *opaque)
-     if (!smmuv3_accel_event_read_validate(veventq,
-                                           IOMMU_VEVENTQ_TYPE_TEGRA241_CMDQV,
-                                           &buf, sizeof(buf), &local_err)) {
--        warn_report_err_once(local_err);
-+        if (local_err) {
-+            warn_report_err_once(local_err);
-+        }
-         return;
-     }
- 
--- 
-2.43.0
+Should we revert the commit until this is figured out?
+
+> 
+> (1) can we trust that the isar.idregs[] values at this point
+> are the ones that hvf uses? If so we don't need to re-read
+> the hvf values. If we can't trust them we should consistently
+> read the hvf values.
+> 
+> (2) do we need to update the isar.idregs[] values when we
+> modify the values to write back to hvf? If so, we should
+> do it consistently for all these regs. If not, we should
+> not update any of them.
+> 
+> Currently ID_AA64PFR0_EL1 neither trusts isar.idregs[] nor
+> updates it; ID_AA64MMFR0_EL1 does not trust isar.idregs[]
+> but does update it; and ID_AA64ISAR0_EL1 trusts isar.idregs[]
+> and has no need to update it.
+> 
+> thanks
+> -- PMM
+> 
 
 

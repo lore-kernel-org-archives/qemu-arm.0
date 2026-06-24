@@ -4,95 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B74C3CDE001
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 15:42:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E534BCDB479
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 15:50:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcPjd-0002Xo-I6; Wed, 24 Jun 2026 11:41:53 -0400
+	id 1wcPrr-0004ZQ-4h; Wed, 24 Jun 2026 11:50:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wcPjd-0002XY-11
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 11:41:53 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wcPrq-0004Yc-BZ
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 11:50:22 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wcPjb-0007SB-JP
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 11:41:52 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-8456005a6c4so839915b3a.2
- for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 08:41:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wcPro-0000Eb-Ik
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 11:50:22 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4926046fbc5so91225e9.0
+ for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 08:50:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782315710; x=1782920510; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=/0/noeunPNKExcuuv73UsPWuQhRxVACnWNF4xhGWwYc=;
- b=XHXfHkGBUbmnI0nCaPypNgDcttu400wvJRA9pi13TE/6EVYBqkrLLkxkp1y+jhYVOi
- vh6Xw1tmgeQkl4c8eUZIKIBnytkd6/XwLIHt7+eCxa+am7goidnga91/A7M4YR4/tyx+
- wH5OnKuG7rrSbAueZ9Z28dNIWqRlpM5YpzXTBFnh/RmnuVB0wMFJ+lMfU/N3foZUh9Zo
- 8R0X0vSLoo9LUa92fvrZKs/wG+EGkcOhqH2MRCR0cm3UFZi+0tYQS6M4Slg0SVqTOO4n
- cnecEa+Xui9/EB0wT154+hfBk7MVOwrkzxAfyiitvYEgQrDHmqU/3SCTrI4TvSx8NGlz
- iRWA==
+ d=linaro.org; s=google; t=1782316218; x=1782921018; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=G2H2ri/oSMaHNxjWTJsX+4cgbNnxXsBrVDobbD4DnQA=;
+ b=tahuueV5ki2r/IN0F5+01gcNsBWXCq0KKJYhS27WLRQsIQNfL1Bl8VvkmI25OUowP8
+ KxK4NmQw7hT0VW3/SXVI2+bePibSusTqo4MaMSpICrKXQi83CjfKbt/3WqJxF+GeDFn4
+ P116NzrswJFlBpVaLOH9XoHY2EPdkel2la5VG37KPECes9tYX3bD0z/nYINsXJ7thNvs
+ oTZvo7TThrTyqcKRW4RTnZjeICHMMsJjdECUh9WQKlvZnHORgbAEwiHPK3PS69Usx8aH
+ C9ThJqd95ZFqxJNYeR7REtocCjwC3T5YJ2IEfC79LPYU6T/AcYecwCRmBT6buMYbiJ6X
+ VYjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782315710; x=1782920510;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=/0/noeunPNKExcuuv73UsPWuQhRxVACnWNF4xhGWwYc=;
- b=J+sjsuVSivRkLGqeKBw5HdNzBfn+LC4mxsO4YLkvHlAl3eheZsrtl4gGftw0+tNpWo
- N0AsZY6r3DievJU5xa5Aj0gfvEA+zDoWQpptHLwxifpScSnYO5pdYocD9kxhkr/n6DVK
- qplshPLE4bfBPGr6fMIG1w4iILdgrmhrUGN54wYpSDIR+Iq8cAPDVXVG44X5mGNbKxJ7
- +fpX2MJk+MDN15vPoEFxd+ocOEQI/CK1J86IohfWBLCX3vBIJfVfBZCXx31lAWaS3cY4
- 05C+6vIt8M8akAQjEw60CuzjV95AS53JEsxYFv0VdLh6bWQYWxPkw8j44HaK6vJsPHeD
- svfQ==
+ d=1e100.net; s=20251104; t=1782316218; x=1782921018;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=G2H2ri/oSMaHNxjWTJsX+4cgbNnxXsBrVDobbD4DnQA=;
+ b=fAFZjABanCA30C/ly0VnDtRihJRv4PwWceRZNOBqL6RcW/3cdTFbasSUoaeeGeb1zn
+ A1XucGyX8L8YOGyIykN6SlNeS7tUOZDk/yia+4BKUYW1py42vGHLXycFrdGYXY4GiZ6P
+ UmIJHWmc3/9WipAyjRvIresLkcZG8yIEinU00pR4bfg+oRjEsq+cYTuWjWfhiG/TTQRg
+ 4KvahSMQfGvZiWvU6y5FCyczZsrZtTdqLcFFsGuZMELmqDCLTtoheZ37idtuu0ZpVT00
+ BA9Kv/zfdY+GMKw7+XfgzSxKBD6x2HfLlFY1SK3rDCfPgVhgZBnNiTFaOBVWBMB04nYL
+ Eg1w==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rq1nORCkUa5LLPYgIEb3dDHqZWXjozh+/8vzJzj9T1sOD3LHIjeBlbN2i3fTKifjS4iNuVrGtZYhg==@nongnu.org
-X-Gm-Message-State: AOJu0YzhLIY3/lWgySD6uPQaMtJpoXmhI3AVZxKfUq5jDFQW3pAQ6/N8
- UUm0gMPEfn/GSs5WhYTvFaRvqheEqTL7wAktjt2f7wlFgczKiJ6XcDkY5Wmjota1dOY=
-X-Gm-Gg: AfdE7ck3cjHk+unoeQZVTTdkvYE1+IpI/UHBSu0rpcwAXUwXkLio6Tzj5KXdc9i+6rb
- Q6XqmdoOfe9NWBOZI6P7AR20T9wqOoK5TcXPc1O31l9LxgBgO3GcUu4zI5vBNuEzn27Bo+0zL4K
- nSR+rwx9xBS3Yf1/GdLb3IwaodssespCF97hyG9GBPB8p3Ex17UoHi4aBT7RhvXgplgTU+yGx3Y
- 3p+ybhPct1frv2SXP3Grxq8nwsNxuTWgz8XMCMUbfnEAjmAQlZCX1azqzfQcXWJnwBYxfBhFYku
- wvR3sSXs86jQZKrbJD9bU4H5mu3Z1FCzMi6Acg4ZjmZJSIU2tnEnhN2w6LfMSjg+2kIJhEvyoae
- ya4JWEtmpfT/i1s5FRnCfIznnoo6OHQ32JlGHbHE2gbYVHp71lOd8hT1rz8K1gihO4Hk3ora84B
- 85yQ/cWVb9goa+psurRTxcouw494/UG2bxqrbuIJWhksbLfFdwmL1HHVOkng==
-X-Received: by 2002:a05:6a00:2e26:b0:845:2ff5:b66d with SMTP id
- d2e1a72fcca58-845a2c58858mr5156153b3a.35.1782315709753; 
- Wed, 24 Jun 2026 08:41:49 -0700 (PDT)
-Received: from [192.168.0.4] (174-21-129-215.tukw.qwest.net. [174.21.129.215])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-845a40f54bfsm2411291b3a.46.2026.06.24.08.41.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 24 Jun 2026 08:41:49 -0700 (PDT)
-Message-ID: <48f20592-0df4-49e3-a2c5-2934d2f27d52@linaro.org>
-Date: Wed, 24 Jun 2026 08:41:47 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/6] target/arm: gate check on scr_el3 behind
- ARM_FEATURE_EL3 check
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
+ AFNElJ978X/dOb8cjuf8CqTeoEleJw1+nK08I6+WLnly7PoV+hvSA778LSyNxan3kNR5010zlLsUaECaUQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzr3UiwJslPuD9FfarNyYFOp/DlDujA2nrWVOulqAlbydj+CJRg
+ HZRocc9tLlYrgIvNCx0WEfDG08MRiMgCMwKWJMgAbau4fqagMshDWOFQPWcDyUo4Jf0=
+X-Gm-Gg: AfdE7cm0+VFSp8c/CxhaQENrNlJcOqwGzx4THqH9mYf68amby2jODio55c5qcnj9de5
+ o4obZXZKlrKwVmliWtofBGAPD+D/1PzJ6C9jg5cdh8hLZcyU1PlKTN7IB58PNr7vaBit+t499sP
+ J6TTOtLvYXYkRphYv7jqA7xjgOs6oGn36buwYzDumSgq4ygCQK7idqkAdaxHYsFR4zsXL9cnkY2
+ BmPxQVFTMGabhUX+GuBkhjVThfgNLL5gxVzr4JCKt1vji5PK+StaVczXzHzMO6JKSmHyKCSyijS
+ ACVWLnHxErDVUqG+gwHtN3XFGUKU8kamloPIx6faVvJj0tESZC1kReXQ7wlRr5dc7nzljFMYgtT
+ v65eJ4yHQoWg1+DQvr+Wa0ev7h4T9P+yQldTCLZ05GFHi6s4nOrJ+B7G7tNBIw2cItcFprKyhpL
+ aKWlD5yEXb5h0P
+X-Received: by 2002:a05:600c:4f82:b0:48f:e230:29f5 with SMTP id
+ 5b1f17b1804b1-492632b6eccmr14212025e9.16.1782316218457; 
+ Wed, 24 Jun 2026 08:50:18 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49264023b18sm1547555e9.4.2026.06.24.08.50.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 24 Jun 2026 08:50:17 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id DB2905F807;
+ Wed, 24 Jun 2026 16:50:16 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20260624124527.1018912-1-alex.bennee@linaro.org>
- <20260624124527.1018912-5-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20260624124527.1018912-5-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+ qemu-devel@nongnu.org,  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  =?utf-8?Q?Daniel_P_=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,  Alexandre Iooss
+ <erdnaxe@crans.org>,  Peter Maydell <peter.maydell@linaro.org>,  Gustavo
+ Romero <gustavo.romero@linaro.org>
+Subject: Re: [PATCH 06/27] tests/tcg/meson.build: introduce test_name
+In-Reply-To: <tgemmc.ymcxyhiodn9w@linaro.org> (Manos Pitsidianakis's message
+ of "Wed, 10 Jun 2026 10:08:21 +0300")
+References: <20260609214745.772536-1-pierrick.bouvier@oss.qualcomm.com>
+ <20260609214745.772536-7-pierrick.bouvier@oss.qualcomm.com>
+ <tgemmc.ymcxyhiodn9w@linaro.org>
+User-Agent: mu4e 1.14.2; emacs 30.1
+Date: Wed, 24 Jun 2026 16:50:16 +0100
+Message-ID: <87jyroj5tz.fsf@draig.linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,21 +115,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 6/24/26 05:45, Alex Bennée wrote:
-> We shouldn't be reading SCR_EL3 unless ARM_FEATURE_EL3 is enabled, if
-> it is then we check SCR_ECVEN allows tweaking the offset.
-> 
-> Suggested-by: Richard Henderson<richard.henderson@linaro.org>
-> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
-> 
-> ---
-> v2
->    - don't bail early - if there is no EL3 we still honour CNTHCTL_EL2
-> ---
->   target/arm/helper.c | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
+Manos Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> On Wed, 10 Jun 2026 00:47, Pierrick Bouvier <pierrick.bouvier@oss.qualcom=
+m.com> wrote:
+>>We add possibility to duplicate a test for a given src. This allows to
+>>declare several tests that still share the same executable, thus saving
+>>space and compile time.
+>>
+>>A side note to mention that meson perfectly supports declaring several
+>>tests with the same name. However, we prevent that to force dev to
+>>clarify what is the intent of each individual test.
+>>
+>>Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+>>---
+>> tests/tcg/meson.build | 14 ++++++++++----
+>> 1 file changed, 10 insertions(+), 4 deletions(-)
+>>
+>>diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
+>>index 2c6d85c586a..bb0184732fd 100644
+>>--- a/tests/tcg/meson.build
+>>+++ b/tests/tcg/meson.build
+>>@@ -12,6 +12,7 @@ tcg_tests =3D {}
+>> #       {
+>> #         'src_file': {
+>> #           'exe_name': ['provide an alternative binary name'],
+>>+#           'test_name': ['provide an alternative test name'],
+>> #         }
+>> #       },
+>> #       ...
+>>@@ -21,8 +22,8 @@ tcg_tests =3D {}
+>> #
+>> # Every test executable, identified by 'exe_name' is built only once.
+>> # Tests for a given src use the same executable by default, and their de=
+finition
+>>-# is guaranteed to be unique also.
+>>-# Default name is derived from src if 'exe_name' is omitted.
+>>+# is guaranteed to be unique also. They can be duplicated by setting 'te=
+st_name'.
+>
+> While it's clear in the patch description, it might be a good idea to
+> explain that "duplication" means using the same executable here, for
+> clarity, if you respin this series.
 
-r~
+additional versions of the test can be added by setting 'test_name'?
+
+>
+>>+# Default name is derived from src if 'exe_name' and 'test_name' are omi=
+tted.
+>> # plugins come first, as we need to build the list
+>> subdir('plugins')
+>>@@ -51,7 +52,7 @@ foreach target, plan: tcg_tests
+>>       # return a clear error if user mispell a setup entry
+>>       foreach key, _ : setup
+>>         if key not in [
+>>-                       'exe_name',
+>>+                       'exe_name', 'test_name',
+>>                        ]
+>>           error('unknown tcg setup entry \'' + key + '\' for test ' + sr=
+c)
+>
+>
+> Unrelated to this patch, but you could refactor the ['exe_name',
+> 'test_name'] etc key set outside and print the list of valid keys in
+> the error message as well for UX.
+>
+>>         endif
+>>@@ -66,8 +67,13 @@ foreach target, plan: tcg_tests
+>>         exe_name =3D setup['exe_name']
+>>       endif
+>> -      exe_name =3D target + '-' + exe_name
+>>       test_name =3D exe_name
+>>+      if 'test_name' in setup
+>>+        test_name =3D setup['test_name']
+>>+      endif
+>>+
+>>+      exe_name =3D target + '-' + exe_name
+>>+      test_name =3D target + '-' + test_name
+>>       if test_name in added_tests
+>>         error('test ' + test_name + ' was already added: ' +
+>> -- 2.43.0
+>>
+>
+>
+> LGTM (feel free to ignore the comments)
+>
+> Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

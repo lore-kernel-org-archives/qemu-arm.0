@@ -4,99 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0EBACDE001
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 15:53:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48DB7CDB47F
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 15:56:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcPui-0007gH-2H; Wed, 24 Jun 2026 11:53:20 -0400
+	id 1wcPxp-00019c-2c; Wed, 24 Jun 2026 11:56:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcPuf-0007fg-SR
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 11:53:17 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcPue-0000bB-1p
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 11:53:17 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-46255b269c2so839481f8f.3
- for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 08:53:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wcPxh-00019A-NF
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 11:56:27 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wcPxf-00019z-Vf
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 11:56:25 -0400
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 65OFf9qB3844596
+ for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 15:56:22 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ FVNkk2krXTfsL59fYbCMYRzONLbzYXEbb1/AnCkaF5g=; b=XgWL2IguXHGJshWu
+ hdYE9oZrKS2Zu2KpAdBKyNhjhvdq/QTnxz00hzUeR5l2/S9LvTSuhxzD/Bx2hzfd
+ mHyemXdobJ1DpoCnXhh3pN0RVnhG7cyPglmFj5FOJcV3zd4Y0OQ6JH1WIK61mbXW
+ XUbcu/3nB2wlrA1B7txtbRe8XZZQbGYSfvlQOZdbAmaE/FpBSHG0v6GrB7yFuIJH
+ ZsPL9qzML9MyJUDGm8yJ5Z2xae1N0KCNsjdgh+9zshHZoXHyKEUYBzCmDNdhGrtq
+ jpOetp7sIqe8U9rV2TThtoLjQm3Fg1fl/bgcRJj0gIzvXb3OsjqabmvqtErcu0U5
+ h2tdhA==
+Received: from mail-vs1-f71.google.com (mail-vs1-f71.google.com
+ [209.85.217.71])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f05ajk3tt-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 15:56:21 +0000 (GMT)
+Received: by mail-vs1-f71.google.com with SMTP id
+ ada2fe7eead31-6c5794db0eeso1178969137.2
+ for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 08:56:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782316394; x=1782921194; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=3ZpPczxO2onEBhX7cgVjiZzCd0z2iIMUj2syRzJFcOg=;
- b=sENbT2Jc2taxV5KluMTmoS59mGmKN6pHnVh/HTHe+K/+wKOBhk+BQH4FGePj4htWgr
- Se236diSAW4+/vhi8t13JPIOSv0t6YoIKO6pUh0ot1d8VzLmSer4TWxbVSumT+UM80Ne
- Q8ZaR9evQf2TDBHq6E8b3ZPq1tqcH97Uadr4LUeR3PtXYBTL7qN1A+4ygki/WNFuxD88
- B0uJp6GbpIX7dUZ+bbRm4S+EBo21ewxmKXTYVJtiU4pPGHO9DpPjuiFfb2OyNytBPWni
- tVtArOCyRMDYQUGn6dVE46fQ6sB1kUSSo5WvI6/H6kNHk/kXbFdgNi/ul/xJbO1AmA3i
- 2+6w==
+ d=oss.qualcomm.com; s=google; t=1782316581; x=1782921381; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=FVNkk2krXTfsL59fYbCMYRzONLbzYXEbb1/AnCkaF5g=;
+ b=LRfaSjcObsPlNZYynTy4d89C4XK5KUeLFDDazQWFJx/GtIQnSk4f6l8GBnj+lp+Bmr
+ e7SoWR67Q2jbrAq3FNkuz+O1PrC+xdkJoD1mhEv3BWTASEtECbN+m0jxCsZhiktmTh/+
+ NCzzaBdW5Iv5iMwVIrFXBsKSDwsZgYjc0lXlTip7G7J+WfuPkgl170gUx/SHp2WUfiia
+ 0mCXfIKmr7H/GxJhKmx56gY9a7m9OCH9RNXmd6/G+ZgWRmgL50gZxo4GmOS0D87WVkBZ
+ UAxquSBCWyw5W15xChEowuGQ6QnkX3gipv0Viwgff7RTfOVirleW2wqLNS5BxBdXNcGc
+ am/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782316394; x=1782921194;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=3ZpPczxO2onEBhX7cgVjiZzCd0z2iIMUj2syRzJFcOg=;
- b=TL5pGtZ/C55EIKNdNzF3OW/6WM0VeNdi9bcZNrCm3070qoqbGddIqP0/x0c/OWeqVM
- m3CaSCtjqGrCb/hPoUHEnQ2+M5O277SxUnK2f5XdpTYAyV+yJI51BfMyV1BoCnoul7Mx
- YH0vCHR9Vt4zFsWiTyY1iHzO4cUtDTYKIM8ALLeMZYlPsdAmX0DCq7M/nHloseUILgZa
- 40p+dLtiybCuxNEhATRE/iwR5u0JfeeBDH2sbRnUDseHLg36TArK2wMtIfmfHMe40Oj0
- 8mOk+u65hkSPswg+XhS9BuMTRcZGIqkQTCcXZSP7DbxzFbhSExoNL63JA+A9ak0+yu5c
- j7ag==
+ d=1e100.net; s=20251104; t=1782316581; x=1782921381;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=FVNkk2krXTfsL59fYbCMYRzONLbzYXEbb1/AnCkaF5g=;
+ b=da/UPnGNKjY+ckVTrVOrvPIHrgf8DJPyWO0JiwY05WghXTzZl0WpPBFSi9B2++C2Wb
+ ru2IXOsZIgkkxlasQPZb56Myd7UTZq/QjrFEKJcYUMCJhm9Io2cV8ri5rh69ztaEMLb9
+ pl3c9BuS7w8ydY2OIeJoLBJG1rWJXmc9s9LcrOraxgPREVff/0VQInCG+GmV1PS2if7v
+ +R/CdD1eYIoScoOo6gsKsLpq2Ramy+Wi+gMUzMYfqw/+K5+BtyG7G3EwVzr9cdmoITwL
+ ZB4novxqWz+D+NbqEVsajhIsCD7My3KbFjSyK/vv0R/lRRTM8K5VF/9WUV3y7ovQiha1
+ lb0A==
 X-Forwarded-Encrypted: i=1;
- AHgh+Ro9qHl8OHmOj4LCmvE6KCS8ct91p4atfEnK6/jp9/JlYb/H39lC34+WoUbXs2pXYZ8pfOzXb0rW8Q==@nongnu.org
-X-Gm-Message-State: AOJu0YwNB/AKozgIimTzRzmRVKSL2LgXF3tzabNm68AmLUmqw27rlzEW
- A5C8Aq0kmnBYzhpcqF4a3Chp+/Y1oQ3dguFniPmCNuaycd69C04K3qspgVHVaG8pxXk=
-X-Gm-Gg: AfdE7cnJPZTs040hVMYxJBf+AWJxf9tq5uq3hgPaTlTeSA7LpiTB/ycYPfoqVwGcTSP
- qh0dCxx6NQJvhA+MP603+zCkSZzW2YoWUjKnG4W/pc8ziWPeE0vYmQTkJIxg7A+iyD2Bp3KTlo7
- ig5aaYan8vUmuFiBYP9+6Hxv3JPMwtUblhjhb9T0B+2eqrkWNnJbjTGTHO1EvEytlbxHostJLDt
- Q0hCTC0Kc65vbIbOEjW0Sz+I1ufOR1FH8sbn3rRAOpBUaTepKux966TUnwr22vk0JtVipLF39HG
- vNiWBvBFMEo6Gm/GP/CXnQEF+dfN7GQypcv2aSuGXemleemR6cEF2wl8zSLe6cmvxcYq3EwHkvP
- vZv3WXRM57AWSBJ9Q/RamavwGrtxpnFCl87asiXeMLX9Ne3n93dhXEizqwd1bZ5QbmqiKl42hw9
- RU6jr//STrpqqh
-X-Received: by 2002:a05:6000:44d7:b0:460:2ee5:67b8 with SMTP id
- ffacd0b85a97d-46c07569d64mr4593194f8f.36.1782316393381; 
- Wed, 24 Jun 2026 08:53:13 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-46c1ee01c3bsm8633576f8f.10.2026.06.24.08.53.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Jun 2026 08:53:12 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id E43CD5F807;
- Wed, 24 Jun 2026 16:53:11 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org,  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Manos Pitsidianakis
- <manos.pitsidianakis@linaro.org>,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,
- qemu-arm@nongnu.org,  Richard Henderson <richard.henderson@linaro.org>,
- Alexandre Iooss <erdnaxe@crans.org>,  Peter Maydell
- <peter.maydell@linaro.org>,  Gustavo Romero <gustavo.romero@linaro.org>
-Subject: Re: [PATCH 07/27] tests/tcg/meson.build: introduce cflags
-In-Reply-To: <20260609214745.772536-8-pierrick.bouvier@oss.qualcomm.com>
- (Pierrick Bouvier's message of "Tue, 9 Jun 2026 14:47:25 -0700")
-References: <20260609214745.772536-1-pierrick.bouvier@oss.qualcomm.com>
- <20260609214745.772536-8-pierrick.bouvier@oss.qualcomm.com>
-User-Agent: mu4e 1.14.2; emacs 30.1
-Date: Wed, 24 Jun 2026 16:53:11 +0100
-Message-ID: <87echwj5p4.fsf@draig.linaro.org>
+ AHgh+RoKMaCZi++Tbd7aCNz8qorClq2LpMzEjPVttAT+0yfZSj05d4ktnbyaiuMWQJvhbcuxitTFoxzGEg==@nongnu.org
+X-Gm-Message-State: AOJu0Yx3L6lgndMmrBhyCpyv315fEsnXt0Ix0Sp5+7pghM+g0qPjrvLh
+ lblLiiT6/1eZS8sxkFTS7dQTbFg4YdLKmGTuE3/wwBvncQk+9zSaXNfvPgH1sxHTbciqYwFXimB
+ DF2JPlpxHuEKSUKrjUXK84LYQlvQytbJJwyjziTWkTp+z0BOelIEjct0=
+X-Gm-Gg: AfdE7cngIvqR6X+/4KouFpiOmAq36SNgpNOJptQgt/sbcbndyqd7kLOJ/8O4G05WAe7
+ lU3HD17MEETE1KQRlG7q4MnejMdi4PHdpultxR1AH92UGjO5H4j0eMYksy3Y1H9y/ghJ3zbc26S
+ +WFu22cIeM6sO8O96rOPGStkGzAbsSwXMlgMYO8n7YQUmfCrfhiuIy2kNdmv0eVcAbuhBblV/Hl
+ YSYVY+H1p2+8AI0c8WaSvUd4nlIeWZNOczl185x9S+5UQPEGr1QxDl5Sm3Rlhg+21EPPQhqFCLX
+ Bk75yMudgGFO2aQnIbjVvLmZ8Clfxu5whsfUh46GX6YmC8Hq3j7d+3Nk+OzlR5emAPsBtk2rQSw
+ 6wJ53IuUyuV00JBgN1iWeUCSvIryIrDKajvCWXVPEGgHcIu/dwlTgWGZUY1QHNA==
+X-Received: by 2002:a05:6102:5124:b0:631:4580:6a33 with SMTP id
+ ada2fe7eead31-7311552ef6amr2235790137.21.1782316581242; 
+ Wed, 24 Jun 2026 08:56:21 -0700 (PDT)
+X-Received: by 2002:a05:6102:5124:b0:631:4580:6a33 with SMTP id
+ ada2fe7eead31-7311552ef6amr2235767137.21.1782316580861; 
+ Wed, 24 Jun 2026 08:56:20 -0700 (PDT)
+Received: from [192.168.69.212] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-46c225b2988sm7414995f8f.25.2026.06.24.08.56.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 24 Jun 2026 08:56:20 -0700 (PDT)
+Message-ID: <e954e6c5-0a93-4fd1-94fa-5014fffd2ef5@oss.qualcomm.com>
+Date: Wed, 24 Jun 2026 17:56:18 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/27] tests/tcg/multiarch/system/memory.c: remove unused
+ variable
+Content-Language: en-US
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Gustavo Romero <gustavo.romero@linaro.org>
+References: <20260609214745.772536-1-pierrick.bouvier@oss.qualcomm.com>
+ <20260609214745.772536-2-pierrick.bouvier@oss.qualcomm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260609214745.772536-2-pierrick.bouvier@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNjI0MDEzNCBTYWx0ZWRfX/TG6dPdHLmtY
+ k/grz6w6BESBAzh0pWv52g5FLp8UlMkwt1lPjo12bvxsSxyhPJR0BNLzMP2Awg2ZZ/vjlKtfX/v
+ ZtzOSOJc4Fp2kjZ/yYzSw9RQDIRRtMI=
+X-Proofpoint-GUID: DYsaT3SwKIjeKfWOp6RAEDyMt0jEudss
+X-Proofpoint-ORIG-GUID: DYsaT3SwKIjeKfWOp6RAEDyMt0jEudss
+X-Authority-Analysis: v=2.4 cv=DbUnbPtW c=1 sm=1 tr=0 ts=6a3bfe25 cx=c_pps
+ a=P2rfLEam3zuxRRdjJWA2cw==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
+ a=EUspDBNiAAAA:8 a=LfsA7Cq2GQzuzbZ-N0YA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=ODZdjJIeia2B_SHc_B0f:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjI0MDEzNCBTYWx0ZWRfXy1yKTT7Wp6Wi
+ 8NETVnm3QC977sDW5osxkxj2INWxMQ89UtaLSTwXUzDF9az6BLlPiD9Pbuv+MRqTfMl8TLlifOr
+ 8H+P9FKZ2EGEuimJXqtdsIMl0zAAXv+2Jq+NRsOCufYLZrSoqhcPuW2ac83fI15WeTwJYUx+DXr
+ jn2zQ/ZZuZZBCF9wQE1G/wQBbk8uuIgXM60OZGLviROZvipaW/QyIgftmav4YFG/J8DNJTyEBUu
+ vxJ1XU5hdBOt8oNjLeQay7OmAPWHQU9p9Nb48Gjfa3oexDFIkqc5hfxzGN0rUQYG9icofIxjZHU
+ xs5bDV4wOldpTJarC1b7ZH6oGLVhxV6uh4h3bFrTqf+zDJBUIOnE36gExrw3JNHmockt6gydjLz
+ +du0icWmIIzs52V99JbjGyGYCgkGZaEYkZ0gnq2ksCYMg0lFBktJb11jVpdtyj7Q90NL94h8ZCY
+ idkO/vmFljBiC7roD9w==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
+ definitions=2026-06-24_03,2026-06-24_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 bulkscore=0 phishscore=0 priorityscore=1501 spamscore=0
+ lowpriorityscore=0 suspectscore=0 malwarescore=0 impostorscore=0
+ clxscore=1015 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2606240134
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -113,88 +163,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
-
-> We add possibility to declare cflags for a given test. Since we want to
-> preserve the uniqueness of test binaries, we prevent repeating those
-> cflags later, for an existing binary.
->
-> This ensures one executable =3D=3D one set of cflags, and if dev needs
-> duplication, they can use a custom 'exe_name' to override this.
->
+On 9/6/26 23:47, Pierrick Bouvier wrote:
+> Caught this since by compiling this file with -Wall, -Werror.
+> 
+> ../tests/tcg/aarch64/system/../../multiarch/system/memory.c: In function ‘init_test_data_s8’:
+> ../tests/tcg/aarch64/system/../../multiarch/system/memory.c:97:18: error: unused variable ‘bottom’ [-Werror=unused-variable]
+>     97 |     uint8_t top, bottom, *ptr = &test_data[0];
+>        |                  ^~~~~~
+> ../tests/tcg/aarch64/system/../../multiarch/system/memory.c:97:13: error: unused variable ‘top’ [-Werror=unused-variable]
+>     97 |     uint8_t top, bottom, *ptr = &test_data[0];
+>        |             ^~~
+> ../tests/tcg/aarch64/system/../../multiarch/system/memory.c: In function ‘read_test_data_s8’:
+> ../tests/tcg/aarch64/system/../../multiarch/system/memory.c:384:14: error: unused variable ‘ok’ [-Werror=unused-variable]
+>    384 |         bool ok;
+>        |
+> 
 > Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 > ---
->  tests/tcg/meson.build | 17 ++++++++++++++---
->  1 file changed, 14 insertions(+), 3 deletions(-)
->
-> diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
-> index bb0184732fd..ad56fdf4ab5 100644
-> --- a/tests/tcg/meson.build
-> +++ b/tests/tcg/meson.build
-> @@ -13,6 +13,7 @@ tcg_tests =3D {}
->  #         'src_file': {
->  #           'exe_name': ['provide an alternative binary name'],
->  #           'test_name': ['provide an alternative test name'],
-> +#           'cflags': ['cflags to compile test', ...],
+>   tests/tcg/multiarch/system/memory.c | 3 +--
+>   1 file changed, 1 insertion(+), 2 deletions(-)
 
-additional cflags to compile test?
-
->  #         }
->  #       },
->  #       ...
-> @@ -20,7 +21,8 @@ tcg_tests =3D {}
->  #   }
->  # }
->  #
-> -# Every test executable, identified by 'exe_name' is built only once.
-> +# Every test executable, identified by 'exe_name' is built only once, an=
-d we
-> +# ensure cflags are specified only once, on first declaration.
->  # Tests for a given src use the same executable by default, and their de=
-finition
->  # is guaranteed to be unique also. They can be duplicated by setting 'te=
-st_name'.
->  # Default name is derived from src if 'exe_name' and 'test_name' are omi=
-tted.
-> @@ -51,7 +53,7 @@ foreach target, plan: tcg_tests
->      foreach src, setup: t
->        # return a clear error if user mispell a setup entry
->        foreach key, _ : setup
-> -        if key not in [
-> +        if key not in ['cflags',
->                         'exe_name', 'test_name',
->                         ]
->            error('unknown tcg setup entry \'' + key + '\' for test ' + sr=
-c)
-> @@ -80,6 +82,15 @@ foreach target, plan: tcg_tests
->                'specify a different \'test_name\'')
->        endif
->=20=20
-> +      cflags =3D []
-> +      if 'cflags' in setup
-> +        if exe_name in built_tests
-> +          error('test ' + exe_name + ' was already built with cflags: ' +
-> +                'remove cflags or set \'exe_name\' (if cflags are differ=
-ent)')
-> +        endif
-> +        cflags =3D setup['cflags']
-> +      endif
-> +
->        # build executable if needed
->        if exe_name not in built_tests
->          exe =3D custom_target(exe_name,
-> @@ -89,7 +100,7 @@ foreach target, plan: tcg_tests
->                                        '-MMD', '-MF', '@DEPFILE@',
->                                        '-Wall', '-Werror',
->                                        '-O0', '-g', '-fno-strict-aliasing=
-',
-> -                                      ],
-> +                                      cflags],
->                              depfile: exe_name + '.d',
->                              output: exe_name + '.test',
->                              build_by_default: false)
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 

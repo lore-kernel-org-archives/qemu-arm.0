@@ -4,91 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12C67CDE004
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 13:47:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53216CDB479
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 13:48:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcNoG-00020m-VZ; Wed, 24 Jun 2026 09:38:38 -0400
+	id 1wcNoU-0002Dw-2O; Wed, 24 Jun 2026 09:38:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wcNnW-0001gv-Up
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 09:37:48 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ id 1wcNnP-0001YY-Qo
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 09:37:40 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wcNnV-00017Q-3q
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 09:37:46 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-460166910e6so683040f8f.2
- for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 06:37:44 -0700 (PDT)
+ id 1wcNnO-00015L-4y
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 09:37:39 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-490b613a17bso10116935e9.3
+ for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 06:37:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782308264; x=1782913064; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=2NDL9GgJTskgV85Mg/cUiyt7YaGnfBnRCfyqg2zl2uk=;
- b=IDk3Xwv9lhnZNSZB7BIGmChY9S62o7arNEWU25sR9gCVU0UlnlnFEIKpe2J2QIHhfs
- v1UxuE7MYI3RsHuTKqcchracEt566slnDuQ1qeNObgd5lZiBhrLverL4Q0lk5F0WlmKH
- DcfN7PBMNyYPFmiS7a0vyAS6Amjm01hSuRWNk0cdXQEDtnrH4fW59Irzn5ynYwU1LAdo
- LXADIN3uVnx0tZQkdxqk80xQSaOo8BMTrh+WNVC6LtmeqqvXRTgHa//7cZerwY4serHo
- 2/2OFbG8qKz7h5KwhPWE82TPR1WmX6zd6n/nmHdG/0vRJ5Kisq7v9ie/QkNJi7R2D0Ru
- 20KQ==
+ d=linaro.org; s=google; t=1782308256; x=1782913056; darn=nongnu.org;
+ h=cc:to:content-transfer-encoding:mime-version:message-id:date
+ :subject:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Igs2cWS9/DjzYb7edb7nIBFIUBT7Wl+0MlW/qg0nhh4=;
+ b=YkQQ7Ozcd4HrpgdItR3ppIMjoaN2y7koD1r/S9ZtsC0ScT9y8FcgAXNZLz2wSJfAdU
+ u4pq+y5hGF2emMv+uPDLxdcQtEcsdYMTVspGgJffhfbVCSVOnVls/QCTeOEbCChjAkCS
+ 8zw4nqCIGiI8sC8seaED5xdPbzrbzS1BXtUVXlqe9N/UYHiU3Wejx31l6jd8+nqKVU7V
+ mkPyXCoUTyEEwNut560Jtglg32C9Xcedt4jmRHwiuPmr+4TXREjsQxVzrzfwYP5y7ylR
+ hdmGYKe0hD+OXrA61fk7xxIF0EttUsHW4Iucn9y5crdDekCfUzmqjOz9XiUm5KIIr40l
+ +7dA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782308264; x=1782913064;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=2NDL9GgJTskgV85Mg/cUiyt7YaGnfBnRCfyqg2zl2uk=;
- b=We2JuymjsR/VsMDscWeiBOFFvvCTS+G5onKc0V/uwLw36z7HgaibZsgFMajTAlRA3j
- IAmMSoAtDzB5S5MN7DnmfHIyj1WNGqEYIdiQRRycaojhBveTcW2DLIFSv0mNMl3ogevC
- TptlM5A0HV7wNigOslSAjbIyZISKdBuYNZ5DbR89fdijua7eCQcc4EE+3t5UP8NVwKn1
- /0NxMuo5xWk23wmbwc7imwKjOEcI9D6X96kx2sfOKwdjuBIL6JNQScKBg1yXKmphvWTD
- WWvX4iGXRf/nYvyEiYp0uug1cYXo7ZzoES4Y55vjTvdPAXxDWTdGUCNDez8qpatDlTo9
- HyqQ==
+ d=1e100.net; s=20251104; t=1782308256; x=1782913056;
+ h=cc:to:content-transfer-encoding:mime-version:message-id:date
+ :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Igs2cWS9/DjzYb7edb7nIBFIUBT7Wl+0MlW/qg0nhh4=;
+ b=QwX4SHfPCg/YDHcH46WnDPR/f17OELSgb2q9szqltPUMNyDLeU2zQwuZ1np8q1F8K4
+ uEizZDmcL9HaaldwLlqdYSHNeOTMlyiHq0d49wiOyBDbqcyU03sJiWwpNDmsg53MaZpJ
+ 7eMVVAHvjyfwPUAcKEiXXjnj3pSeR9247u5xOzeqlr45GIPTvj/5PVJhroDGBfzzcsky
+ Oxf5TmCL8IwOSbUTt3mAhXQ3Wdnopryj9r1j9HDlwPb1MdLyS4yfv/18A+hRHfMaDNRK
+ 1vZ2dVDEUw6AfjqrMtz5oErorJPAiyq553RjwIWm8tRMxRa2I0psCSCWfVmBY03XbeKO
+ w2rw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoL107txTty33XvyLvOc8UdsYZnP4zSShEcBqThPVPT0XwKFRh3o68aBpxUvIN6SpIK5qQtPaKWpg==@nongnu.org
-X-Gm-Message-State: AOJu0YzxGKD1UmxhLZA/aJTkKRizj3jQ1RXCceq4l/Csi4cjc1/qdPPo
- E9NeSbXfh9Nh4a9rlc/hMZUcLuilO5h6CYUFJ9RI55uWCYJ+qTSxgqj6ZJBkgpfznlk=
-X-Gm-Gg: AfdE7claXbKqNEkx8an7R242qch1eHfYmZOmrXWurcpP+mjUFJuyU9BlyjRnGuoSpfx
- Sc22lFHW7zvaJiineptef+KwxyMYOf6+Qc729mL7iwk04LciJcYTYN+CJkHumql5RPI0BmRQ62p
- 2c93xJxzRXSIZEkuFdW1q6gmAxA2FQxEADdv1HbB53+FAJ0WRbrdcksZr8zxlQMP85iS58KxbVO
- b32XgF41I4hDROntGUJK5OrsW6t9KtFxIDokYrw/iVb7hKGJmvJ/HiuT/sMXHr5WhWTfRd9SVZR
- Isn+lPZ28NPyx6iWeSNVmjVZe3QA2TpK6Ub6Sx7ycHVFoo2lqO/+076W3DrH9jq1l5GCR68rzWy
- J5D4wW1RvPrSlRg7JbFF/7eJRQxEgWycdtVVJ2lmTcvYsTysGlAfra9c8QeoeNBUY5qwwcGqvQD
- AarbKJv5k9i6k1dhopgyv5VVqsoQ==
-X-Received: by 2002:a5d:63c8:0:b0:460:70ff:fe14 with SMTP id
- ffacd0b85a97d-46c0af15c37mr4130065f8f.42.1782308263725; 
- Wed, 24 Jun 2026 06:37:43 -0700 (PDT)
+ AFNElJ8Sl2pkSbga3ZlF0GIMiFmM1DCnoBz6/9Wkesv0OXGpysLnD1Kcr491rm+nFrqfDJHcFX07AzJZhg==@nongnu.org
+X-Gm-Message-State: AOJu0Yz8Pp1Lj12agelEctXNdRGEd7v4bJCHG069dFxVYECuRMyFJhXZ
+ FaPUc7k9d9XbHM1FVDcWevRtNcUQcGgQA54mrY0ANZIW1O5Mwz9a4bo+KAi3rGi/M1w=
+X-Gm-Gg: AfdE7cm0lRNCSy6HF7BoVzQyF/93lxq1wJkn5r51IeQMxzr2Bt83SY1XXvuSMmCDRwO
+ n6FQr12TY5W1WghTRMMBGDjRi5DcSRjTYOhXuacuhUyQVSo0W/Ne0jU5chYJS7zEqazlhd6yFgH
+ 5G89rDvcb5jj/YZodE6e+lNT7gedggRwN/I3c7TT6CyH8ReMTHtE1EMmK6YH09Je3rST6E2hO4X
+ wA8Bu3E7zVhOx+IVqo1waDdrM8pq+uH6obURWQQ7QfUBZEXAqGYUTt+2Nt69/1jHgc7s2+KxFr0
+ qSFuG25ytdzEJvMqBC9cmV5zoUsD0Dgjld4pTLLAQe+DYUmhrjJ+kymwhV5Vr9u9ukQv6kSlax4
+ +Ew6R34O+8gHyXjnvI9xl4OKtsHheipVhbuea6BLWAPcM/8OJGucsOoxHsb9cEGopDbVAiYd0ea
+ rHqDXLVMIVqNQPVV8=
+X-Received: by 2002:a05:600c:81c5:b0:492:408b:86e9 with SMTP id
+ 5b1f17b1804b1-492490b7e7fmr268504365e9.34.1782308256142; 
+ Wed, 24 Jun 2026 06:37:36 -0700 (PDT)
 Received: from [127.0.1.1] ([2a10:d582:31e:0:2e21:1ee8:260f:9a76])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-46c1e840efdsm6646334f8f.5.2026.06.24.06.37.42
+ ffacd0b85a97d-46c1e840efdsm6646334f8f.5.2026.06.24.06.37.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Jun 2026 06:37:43 -0700 (PDT)
+ Wed, 24 Jun 2026 06:37:35 -0700 (PDT)
 From: Jim MacArthur <jim.macarthur@linaro.org>
-Date: Wed, 24 Jun 2026 14:37:30 +0100
-Subject: [PATCH v2 6/6] tests/tcg/arm: Tests for new FPRCVT instructions
+Subject: [PATCH v2 0/6] Implement FEAT_FPRCVT in cpu_max
+Date: Wed, 24 Jun 2026 14:37:24 +0100
+Message-Id: <20260624-jmac-fprcvt-v2-0-dc6cf8e512b6@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260624-jmac-fprcvt-v2-6-dc6cf8e512b6@linaro.org>
-References: <20260624-jmac-fprcvt-v2-0-dc6cf8e512b6@linaro.org>
-In-Reply-To: <20260624-jmac-fprcvt-v2-0-dc6cf8e512b6@linaro.org>
+X-B4-Tracking: v=1; b=H4sIAJTdO2oC/23MQQ7CIBCF4as0sxYDBCpx5T1MF0ChHaOlGRqia
+ bi72LXL/yXv2yEHwpDh2u1AoWDGtLSQpw78bJcpMBxbg+Sy570w7PGynsWVfNmY0FqNyhvuvIH
+ 2WClEfB/afWg9Y94SfQ68iN/63ymCcSacUhftrI9a3J64WErnRBMMtdYveGx4xqcAAAA=
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  Richard Henderson <richard.henderson@linaro.org>, 
  Alex Bennee <alex.bennee@linaro.org>, 
  Jim MacArthur <jim.macarthur@linaro.org>
 X-Mailer: b4 0.13.0
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,79 +105,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We autodetect the presence of FPRCVT in the test cross compiler,
-which is a recent feature in GCC and not supported by many distros
-yet. If this is in place, we compile the existing fcvt.c test with
-an extra compiler flag which uses the new SIMD instructions; the
-output from the test is unchanged.
-
-The existing [US]CVTF instructions do not have a test, so no new
-tests are added for the SIMD versions. They have been tested manually
-to check the new SIMD versions produce the same numerical results as
-the existing versions.
+This introduces new forms of FCVTXX instructions which convert floating
+point to integer but place the results in SIMD & FP registers, and
+forms of the [SU]CVTF instructions which convert from integer to FP
+with a source in SIMD & FP registers. The logic for conversion and test
+values are otherwise the same as the versions which use general-purpose
+registers.
 
 Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 ---
- tests/tcg/aarch64/Makefile.target | 14 +++++++++++++-
- tests/tcg/arm/fcvt.c              |  7 +++++++
- 2 files changed, 20 insertions(+), 1 deletion(-)
+Changes in v2:
+- New instructions are gated on FPRCVT flag
+- do_cvtf_simd removed; changes folded into do_cvtf_f
+- Some vector forms of instructions are now allowed in streaming mode (new patch)
+- Tests restructured to avoid the duplication of fcvt.ref
+- docs/system/arm/emulation.rst updated to indicate FPRCVT support
+- linux-user/aarch64/elfload.c now reports FPRCVT
+- Link to v1: https://lore.kernel.org/qemu-devel/20260618-jmac-fprcvt-v1-0-1b4475bacf51@linaro.org
 
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 6203ac9b51..32f2689273 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -28,9 +28,21 @@ config-cc.mak: Makefile
- 	    $(call cc-option,-march=armv8.5-a,              CROSS_CC_HAS_ARMV8_5); \
- 	    $(call cc-option,-mbranch-protection=standard,  CROSS_CC_HAS_ARMV8_BTI); \
- 	    $(call cc-option,-march=armv8.5-a+memtag,       CROSS_CC_HAS_ARMV8_MTE); \
--	    $(call cc-option,-Wa$(COMMA)-march=armv9-a+sme $$fnia, CROSS_AS_HAS_ARMV9_SME)) 3> config-cc.mak
-+	    $(call cc-option,-Wa$(COMMA)-march=armv9-a+sme $$fnia, CROSS_AS_HAS_ARMV9_SME); \
-+	    $(call cc-option,-march=armv9-a+fprcvt,         CROSS_CC_HAS_ARMV9_FPRCVT)) 3> config-cc.mak
- -include config-cc.mak
- 
-+ifneq ($(CROSS_CC_HAS_ARMV9_FPRCVT),)
-+AARCH64_TESTS += fcvt-fprcvt
-+fcvt-fprcvt: LDFLAGS += -lm
-+fcvt-fprcvt: CFLAGS += $(CROSS_CC_HAS_ARMV9_FPRCVT) -DFPRCVT
-+fcvt-fprcvt: fcvt.c
-+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
-+run-fcvt-fprcvt: fcvt-fprcvt
-+	$(call run-test,$<,$(QEMU) $<)
-+	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
-+endif
-+
- ifneq ($(CROSS_CC_HAS_ARMV8_2),)
- AARCH64_TESTS += dcpop
- dcpop: CFLAGS += $(CROSS_CC_HAS_ARMV8_2)
-diff --git a/tests/tcg/arm/fcvt.c b/tests/tcg/arm/fcvt.c
-index ecebbb0247..7c0cc4367e 100644
---- a/tests/tcg/arm/fcvt.c
-+++ b/tests/tcg/arm/fcvt.c
-@@ -171,8 +171,14 @@ static void convert_single_to_integer(void)
- #if defined(__arm__)
-         /* asm("vcvt.s32.f32 %s0, %s1" : "=t" (output) : "t" (input)); */
-         output = input;
-+#else
-+#ifdef FPRCVT
-+        asm("fcvtzs d0, %s1\r\n"
-+            "fmov %0, d0" :
-+            "=r" (output) : "w" (input));
- #else
-         asm("fcvtzs %0, %s1" : "=r" (output) : "w" (input));
-+#endif
- #endif
-         print_int64(i, output);
-     }
-@@ -425,6 +431,7 @@ int main(int argc, char *argv[argc])
-     convert_double_to_integer();
-     convert_half_to_integer();
- 
-+
-     /* And now with ARM alternative FP16 */
- #if defined(__arm__)
-     asm("vmrs r1, fpscr\n\t"
+---
+Jim MacArthur (6):
+      target/arm/tcg: Implement new instructions for FPRCVT
+      target/arm/tcg: Allow vector FP conversions with FPRCVT
+      target/arm/tcg/cpu64.c: Add FEAT_FPRCVT to cpu_max
+      linux-user/aarch64/elfload.c: Add FPRCVT
+      docs/system/arm: Add FEAT_FPRCVT to A-profile support
+      tests/tcg/arm: Tests for new FPRCVT instructions
 
+ docs/system/arm/emulation.rst     |  1 +
+ linux-user/aarch64/elfload.c      |  1 +
+ target/arm/cpu-features.h         |  5 +++
+ target/arm/tcg/a64.decode         | 15 +++++++
+ target/arm/tcg/cpu64.c            |  1 +
+ target/arm/tcg/translate-a64.c    | 89 ++++++++++++++++++++++++++++++++++-----
+ tests/tcg/aarch64/Makefile.target | 14 +++++-
+ tests/tcg/arm/fcvt.c              |  7 +++
+ 8 files changed, 122 insertions(+), 11 deletions(-)
+---
+base-commit: b83371668192a705b878e909c5ae9c1233cbd5fb
+change-id: 20260618-jmac-fprcvt-1554d4c80bc8
+
+Best regards,
 -- 
-2.43.0
+Jim MacArthur <jim.macarthur@linaro.org>
 
 

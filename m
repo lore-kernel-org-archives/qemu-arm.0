@@ -4,76 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FE4ECDE000
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 10:31:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDCB3CDB479
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 10:32:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcKrH-00077G-Ii; Wed, 24 Jun 2026 06:29:29 -0400
+	id 1wcKtC-0002pU-VX; Wed, 24 Jun 2026 06:31:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wcKrD-00075B-KO
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:29:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wcKrB-0007Gv-JD
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:29:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1782296960;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uPHPJEflTJSX9W8Tr7SbmiMKyZuqzu4vD1amQlm5twU=;
- b=ehJmFVwHOgsvBkc2QXxgLeR0CiVxHyjBSWyxx3EkvzSP/DtgM1jTS+CfwefRhtvK0gRUN0
- J9HVs6LOvNxWMEvX3l6vwZo1nnltL5zrPgeQd7NSw+P232jZpB3OsiA+TC9moKFs/K+vJf
- iBUx7IaA2jjF9K9rhzo9NHiStCGmCWw=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-15-_IXHDuHON72hCXGL3Hvs0w-1; Wed,
- 24 Jun 2026 06:29:17 -0400
-X-MC-Unique: _IXHDuHON72hCXGL3Hvs0w-1
-X-Mimecast-MFC-AGG-ID: _IXHDuHON72hCXGL3Hvs0w_1782296956
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1D2DF19560A5; Wed, 24 Jun 2026 10:29:16 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq2.redhat.com
- (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2FEB430001A7; Wed, 24 Jun 2026 10:29:14 +0000 (UTC)
-From: Igor Mammedov <imammedo@redhat.com>
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wcKsi-0002Xk-Md
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:31:00 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wcKsf-0007gR-Ca
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:30:54 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-49241dbf9c1so7057535e9.2
+ for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 03:30:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1782297051; x=1782901851; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=4foWnUUsHoQzNgijWabhWw8cNCRzvy2qg6qho+Kaiqs=;
+ b=jcjHjekwTNRlJfyv9kt0wKt7Ojjh9kmZEOIDoCzhghr8FRIShg//zJse2o4TwHIvKu
+ HCtVXWLICgD4C17OF6FDkEqkzvu8cTHDpOse9+71px1/2oV4iyhPYX4NfGGG/8ORdmC6
+ 7K6oWlbI2e9z9GHh2AYlWq6BSNEfEDdyqRhnlIcd0w+EBlRIDQsjU56nb/Xy1INjLjHt
+ OlTWB/Tg5FFGkPr9qEF0gPWteFWiJctiHwiwftOqEXotJDkbl4O0laY3uRLRFreIjPEr
+ KeWncvv8ePgkJgrRc8+oaTViJ7hepSICAi2aXklfRhFnE6ft3O0uXHr71wz/R96vG6Np
+ AbJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782297051; x=1782901851;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=4foWnUUsHoQzNgijWabhWw8cNCRzvy2qg6qho+Kaiqs=;
+ b=dXRpmfuqBKUO5GRqkOCDQA7Orhp8SHHMbP/kFAYA8s5lx7AtPkwotL9+zy+hCg8G7W
+ 0WHGoFMG7M3hcrk5tLSdmMscfbbljIpr6L4LUptn/Y3ua/SAIFBBmvCGVdjveSv2xWfu
+ jxJXSH/o7Tu4AlihQaC5Fuy7yQrmIjq1G1eYpyr1syim9MlToPQO9R7pJcwRy5bnbxil
+ str9/YUUrRH40jR4Cv1W00QP12lSXELef4V5kixCJcl81ylj8bPCKiCKAkErUo0A2C1P
+ 0WYz3NqHUL6fYUwzycjy2IiJ4E94uMa+AcnNHkNz3BWRKxfPwBm5QucK4niOMr+/Z09y
+ CJsA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+xiJqSTcpdREsNJaHRJSDdhBbIaEBy7GsGDyac8a2x4gk1ODVrcPjZtYXrDUtryRAhUJ+Hb0zhGw==@nongnu.org
+X-Gm-Message-State: AOJu0YyjqQeA/gCqsS6BgpaP8aoTFJStOQILJEMTvmLy1B/auRDe+fnU
+ febe9QQlZS9tlScOOSxYRzv/QwKhqyj+YSXeFbduTNAfOAzsLE2t6nNJBtKs8QxbYO8=
+X-Gm-Gg: AfdE7ckZVBC8auuCRRFTNpB8/v2xCWZVWq2a6WFiCYDNLw9oRxcdx4RaEW/JATt02Lw
+ KfiEezejtAyuy31h4oFiEwuVss0jTDZUJAN/S3kqLDbcjp2Aa156LyxIj/BGWgD4Hantp98TQEj
+ tAgSRRDvO8TVJcqF1iKGt+CGK7Z1OI4aami5Tr5u6HsqyonuaUMwWJA2teZGbcbHJeQOi9oEk3n
+ hgUPw+XEnTPx97JKIAMMgXPGIMaFzFI1/gAyT6V5U4hZlvYycF5lxtAG1yUU+4PCzoJTELjtTHr
+ UUF9Jwr4l7ebCBT7pfU+VQ90Psn2HYA3Jt295D8992tAl8jknRUWFe1CnP3CAzpI+sBL90gPGls
+ 5ewg2xaQoP81jxGInU0zFaaemRx7ZR9imTKsf0wcdz41/m2izvHjO9aRV0FA+/uvupZSSM/KFBX
+ Gu4TjrTnGRu/TE
+X-Received: by 2002:a05:600c:6097:b0:492:4a56:68fa with SMTP id
+ 5b1f17b1804b1-49260872e27mr37291705e9.24.1782297051210; 
+ Wed, 24 Jun 2026 03:30:51 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-492494496d8sm360072015e9.9.2026.06.24.03.30.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 24 Jun 2026 03:30:50 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id B262C5F803;
+ Wed, 24 Jun 2026 11:30:49 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: mst@redhat.com, eauger@redhat.com, peter.maydell@linaro.org,
- shannon.zhaosl@gmail.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com,
- qemu-arm@nongnu.org
-Subject: [PATCH v3 16/17] sbsa-gwdt: reschedule timer on direct WCV load
-Date: Wed, 24 Jun 2026 12:28:29 +0200
-Message-ID: <20260624102830.1355552-17-imammedo@redhat.com>
-In-Reply-To: <20260624102830.1355552-1-imammedo@redhat.com>
-References: <20260624102830.1355552-1-imammedo@redhat.com>
+Cc: kvm@vger.kernel.org, Troy Lee <leetroy@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v9 0/7] target/arm: fully model WFxT instructions for A-profile
+Date: Wed, 24 Jun 2026 11:30:42 +0100
+Message-ID: <20260624103049.884930-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: bcrkyNKZMQTqntYNhgH2syVd26MNOLGISgR6GNZpdf0_1782296956
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,63 +112,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-According to spec[1]:
+This series fully models the behaviour of WFxT instructions. We
+already had support for WFE for M-profile but we left off A-profile as
+it has more potential sources of wake-ups. The main one is the event
+stream which includes events from significant bits of the timer
+ticking over.
 
- "The compare value can either be loaded directly or indirectly on an
-  explicit refresh or timeout refresh"
+The refactoring from the previous iterations of the patch have now
+been merged.
 
-QEMU accepts writes to WCV but doesn't reschedule the timer,
-which it should per the spec pseudo code:
+I've dropped trying to fully model the global monitor in favour of
+taking advantage of the architectural flexibility to have an IMPDEF
+event wake up for any reason. We treat the setting of exclusive_addr
+as such a reason because it indicates the current vCPU is in a ldstx
+exclusive region and we don't want the guest to deadlock. This does mean
+the system won't sleep on WFE enabled locks but people shouldn't be
+relying on QEMU to model real world sleep patterns anyway given the
+efficiency of emulation compared to real HW.
 
- "TimeoutRefresh = ( SystemCounter [63:0] > CompareValue [63:0])"
+I've written a test case using kvm-unit-tests:
 
-Fix it by updating the timer on WCV write.
+  Message-ID: <20260527111822.1563679-1-alex.bennee@linaro.org>
+  Date: Wed, 27 May 2026 12:18:21 +0100
+  Subject: [kvm-unit-tests PATCH v2] arm: add wfx test case
+  From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 
-Fixes Windows in GTDT mode, which never issues a WRR refresh.
-Instead, it programs WOR to ~4 sec, enables WCS, and immediately
-writes a large absolute value into WCV to push the timeout far
-into the future. Without this fix, QEMU ignores the WCV write,
-the short WOR expires, and the guest reboots unexpectedly.
+The only remaining unreviewed patch is:
 
-1) Arm® Server Base System Architecture 6.0
-   Platform Design Document
-   DEN0029D 6.0
-   "A.2 Watchdog Operation"
+  target/arm: ensure we create the wxft_timer for all modes
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
- hw/watchdog/sbsa_gwdt.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+v9
+  - add more r-b's
+  - only test arm_feature(env, ARM_FEATURE_V6K)
 
-diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
-index 5ee0e06af5..fb67db9672 100644
---- a/hw/watchdog/sbsa_gwdt.c
-+++ b/hw/watchdog/sbsa_gwdt.c
-@@ -44,6 +44,7 @@ static const VMStateDescription vmstate_sbsa_gwdt = {
- typedef enum WdtRefreshType {
-     EXPLICIT_REFRESH = 0,
-     TIMEOUT_REFRESH = 1,
-+    WCV_LOAD = 2,
- } WdtRefreshType;
- 
- static uint64_t sbsa_gwdt_rread(void *opaque, hwaddr addr, unsigned int size)
-@@ -167,10 +168,16 @@ static void sbsa_gwdt_write(void *opaque, hwaddr offset, uint64_t data,
- 
-     case SBSA_GWDT_WCV:
-         s->wcvl = data;
-+        if (s->wcs & SBSA_GWDT_WCS_EN) {
-+            sbsa_gwdt_update_timer(s, WCV_LOAD);
-+        }
-         break;
- 
-     case SBSA_GWDT_WCVU:
-         s->wcvu = data;
-+        if (s->wcs & SBSA_GWDT_WCS_EN) {
-+            sbsa_gwdt_update_timer(s, WCV_LOAD);
-+        }
-         break;
- 
-     default:
+v8
+  - Fixed quanta-gsj model SEV errata failure
+  - Update the aspeed_anacapa test case
+  - Ensure wake up events for V6K/V7 and plain V8
+  - merged trap with implementation
+
+v7
+  - more r-b's
+  - extended comment for typo fix
+v6
+  - add typo fix
+  - addressed rth's comments
+
+v5
+  - addressed rth's comments
+  - all but one patch now reviewed
+
+v4
+  - precursor refactor patches now merged
+  - dropped global monitor emulation
+  - addressed other comments
+  - tested with check-tcg and kvm-unit-test wfx tests
+
+v3
+  - fixed the WFE exception handling
+
+v2
+  - I've kept the tests separate, see:
+
+    Message-ID: <20260417164328.1009132-1-alex.bennee@linaro.org>
+    Date: Fri, 17 Apr 2026 17:43:20 +0100
+    Subject: [PATCH 0/7] tests/tcg: more capabilities for aarch64-softmmu tests
+    From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+
+  - tweaks to global monitor behaviour
+  - STLR/STL will also trigger events to avoid deadlocks
+  - see under the --- in the patches for details
+
+Alex.
+
+Alex Bennée (7):
+  hw/arm: use cortex-a9 mpcore base for CBAR on npcm7xx machines
+  tests/functional: update anacapa-bmc image
+  target/arm: do not clear halting reason in has_work helper
+  target/arm: ensure we create the wxft_timer for all modes
+  target/arm: implements SEV/SEVL for all modes
+  target/arm: enable WFE sleeping for A-profile
+  target/arm: implement WFET
+
+ include/hw/core/sysemu-cpu-ops.h            |   3 +
+ target/arm/cpu.h                            |   2 +-
+ target/arm/tcg/helper-defs.h                |   3 +-
+ target/arm/tcg/translate.h                  |  18 ++
+ target/arm/tcg/a32.decode                   |   5 +-
+ target/arm/tcg/a64.decode                   |   5 +-
+ target/arm/tcg/t16.decode                   |   4 +-
+ target/arm/tcg/t32.decode                   |   4 +-
+ hw/arm/npcm7xx.c                            |   2 +-
+ target/arm/cpu.c                            |  23 +-
+ target/arm/tcg/op_helper.c                  | 252 ++++++++++++++++++--
+ target/arm/tcg/translate-a64.c              |  42 ++--
+ target/arm/tcg/translate.c                  |  34 +--
+ tests/functional/arm/test_aspeed_anacapa.py |   4 +-
+ 14 files changed, 328 insertions(+), 73 deletions(-)
+
 -- 
 2.47.3
 

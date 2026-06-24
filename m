@@ -4,103 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D65FCDB47C
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 10:32:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13CDACDB47C
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 10:32:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcKtE-0002yU-Fl; Wed, 24 Jun 2026 06:31:28 -0400
+	id 1wcKqu-0006uY-Fk; Wed, 24 Jun 2026 06:29:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcKsm-0002a6-Jf
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:31:04 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcKsg-0007h4-BP
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:30:58 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-490ac357c55so7837965e9.1
- for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 03:30:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782297053; x=1782901853; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=jjZZZ37o2qWFDzuAadl19N3XteHI/O+LzeoigkNZWL0=;
- b=ShLh1ARe67mf4Bc7UPdj4RAwlE5XfGGZOAaNIM9NrWTN7ebcDPQ3qi9bSMphPIXkzO
- tuVBNrFJNtaZ9OweEqdPppP03bWow9AJXgPAb8nRbqKMRIgCd4p1a4+nGmbudXwD20S/
- KYXdEuk3HlE531b0iaRSv+SACyV7FyVtTX7QLtm8MwUxR/+LMB0p3C3ITyqiz7udn7r/
- WH3jifwG2xhxcAaO1tzOQnSOmxBY6C48iZDkLkzcOljRvySP7ME4kaj3aTUf9jc1ecfq
- cRzrby4K4RYxQ1YHYmqMWVisQc/BUrPk7KDp9iCP5KL7/bmscKIcTQs/ba4ub7xk56n4
- mK/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782297053; x=1782901853;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=jjZZZ37o2qWFDzuAadl19N3XteHI/O+LzeoigkNZWL0=;
- b=ft4jG0TnzYNr1fwGFZeuJHxG9sIn1PnfmVsX5MR/p+nArzjSdhZgF4fdCB96+WmxWj
- bFqptBvQ71hhSMVQnhdaZnTCeECLpYcAAUCaXmblY50ebQF6dxCaGbF8u8SQp40bZ9Ux
- U8GpborVi0w4dT16m9B3N3agP4RA+SlicjrHXamIC1l/yNYv++DqPE7A5T/8U9Szx5hK
- d8RpRUAIT55imrq8S07BAIzCBi5svnwaxpRJMGWWl5oSpqNyqIN8bfpsoI8L/j9HiWtr
- U8lj7NY9ACB0udVo5zMYfX1awtTTMtOA6RUb7eObPn3q6/5m7/ip9gaiiw1eNP3Y6WLb
- wqqQ==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+9SeFF437iQRGAFONAnsbN84mHd115vXZnc+JCKnNR5IfJhEzm78m98e5XLU7EXwGaAbK0D8qDEg==@nongnu.org
-X-Gm-Message-State: AOJu0YxVgx4jRpGvBFZP8H/6G13UQC/bmsOJ0igP+kWrBAb1DFLT7t3O
- Xl8fIA2zbo/HOQmvQ824VjiOPk88R35cPSt8kslESIFanlt6Cz1IUlJqP8ESSgwsCOM=
-X-Gm-Gg: AfdE7ckKrr9LqpjKqKny556wPlQkSkPhAWOqTIuZ8FIBdvlNkDUzltnEjGshM+6eZpF
- I9pYM2SINc+eqUt1FB23dvVDcS0r24Pao4ix2LfHC8FyDtBIrYBXF2imtCZgHyd3U8aJ3xRcOpN
- MrG/Gmex+/ZnCQ8qXeJaPkdpCZzNvbruQFx/CXraVeCRXtFLcCTikFubpnAdvvmQP4NKHudL8TX
- cOCLLWsUzSWgqhFXtF5uzW+67IoPob+/p3Suzeu8LehHv1KQaJclQ4yHQb5iFIuAjHQRHHij6oh
- SjfcbdLvCB65CmdgYx17aeLzr56fS4IlbgLA65hEa7icnxxLdj8G5J4xgakYJAvAamY6H6g6FOY
- emRXJDhZEe7PNXB5UqrveJShP6vY4Oh1YCC6dGwqSIKmbgMhbivCrJ4sUy0oGKXQoqFBy5yPCjP
- vysA0AK4VbzqkJUgrtccGSCDs=
-X-Received: by 2002:a05:600c:138e:b0:48f:d612:3c59 with SMTP id
- 5b1f17b1804b1-492608473c9mr39793925e9.9.1782297052531; 
- Wed, 24 Jun 2026 03:30:52 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-492494496d8sm360072245e9.9.2026.06.24.03.30.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Jun 2026 03:30:51 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 189955F9D4;
- Wed, 24 Jun 2026 11:30:50 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wcKqt-0006tH-HY
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:29:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wcKqr-0007Cz-Nc
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:29:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1782296941;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wujx3idx78Myx2EqeDpbTah++59X09/APupYTbYNwh8=;
+ b=D+Fxj+KL/04gsY8waLdTMVnty0raEM3Fc22pr/M9IKXu+O37nDs+ZprUg7y5pQv9glOM5Z
+ 6fdpKo5nM58mViif+y9Ci+fLQOFFAe78WjYVT0/1n4vtaWgz+5okfZ6aMvQV912wL3b72z
+ WXw3kTzfP/htszqMozE0y6rcr/+fTiE=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-187-8AMjT5awMnyA42ZiBx8-ig-1; Wed,
+ 24 Jun 2026 06:28:57 -0400
+X-MC-Unique: 8AMjT5awMnyA42ZiBx8-ig-1
+X-Mimecast-MFC-AGG-ID: 8AMjT5awMnyA42ZiBx8-ig_1782296936
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9133218052D6; Wed, 24 Jun 2026 10:28:56 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq2.redhat.com
+ (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 3FC5C30001A7; Wed, 24 Jun 2026 10:28:54 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org, Troy Lee <leetroy@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v9 4/7] target/arm: ensure we create the wxft_timer for all
- modes
-Date: Wed, 24 Jun 2026 11:30:46 +0100
-Message-ID: <20260624103049.884930-5-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260624103049.884930-1-alex.bennee@linaro.org>
-References: <20260624103049.884930-1-alex.bennee@linaro.org>
+Cc: mst@redhat.com, eauger@redhat.com, peter.maydell@linaro.org,
+ shannon.zhaosl@gmail.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com,
+ qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>
+Subject: [PATCH v3 08/17] tests: acpi: arm/virt: whitelist new WDAT table
+Date: Wed, 24 Jun 2026 12:28:21 +0200
+Message-ID: <20260624102830.1355552-9-imammedo@redhat.com>
+In-Reply-To: <20260624102830.1355552-1-imammedo@redhat.com>
+References: <20260624102830.1355552-1-imammedo@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: DvxakrIG6x_fSOQXNwFFEEoEFkeDL6Q7MNOlACvNUF0_1782296936
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,53 +88,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We don't want to just use it for timeouts as we will calculate which
-will comes first. Remove the wxft feature test in favour of the
-broader architecture checks.
-
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
-v9
-  - we only need to check ARM_FEATURE_V6K as V7 and V8 imply it thanks
-  to arm_cpu_propagate_feature_implications
-v8
-  - new commit
----
- target/arm/cpu.h | 2 +-
- target/arm/cpu.c | 6 +++++-
- 2 files changed, 6 insertions(+), 2 deletions(-)
+ tests/qtest/bios-tables-test-allowed-diff.h | 1 +
+ tests/data/acpi/aarch64/virt/WDAT.wdat      | 0
+ 2 files changed, 1 insertion(+)
+ create mode 100644 tests/data/acpi/aarch64/virt/WDAT.wdat
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 31a5567c951..8aa7437a397 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -966,7 +966,7 @@ struct ArchCPU {
-      * pmu_op_finish() - it does not need other handling during migration
-      */
-     QEMUTimer *pmu_timer;
--    /* Timer used for WFxT timeouts */
-+    /* Timer used for WFxT timeouts OR event stream events */
-     QEMUTimer *wfxt_timer;
- 
-     /* GPIO outputs for generic timer */
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 597e0626e7f..4b49f8c43ec 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2269,7 +2269,11 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     }
- 
- #ifndef CONFIG_USER_ONLY
--    if (tcg_enabled() && cpu_isar_feature(aa64_wfxt, cpu)) {
-+    /*
-+     * We use the wfxt_timer for timeouts and event stream so we
-+     * enable from V6K up. There is no event stream on M-profile.
-+     */
-+    if (tcg_enabled() && arm_feature(env, ARM_FEATURE_V6K)) {
-         cpu->wfxt_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
-                                        arm_wfxt_timer_cb, cpu);
-     }
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..135186b40b 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,2 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/aarch64/virt/WDAT.wdat",
+diff --git a/tests/data/acpi/aarch64/virt/WDAT.wdat b/tests/data/acpi/aarch64/virt/WDAT.wdat
+new file mode 100644
+index 0000000000..e69de29bb2
 -- 
 2.47.3
 

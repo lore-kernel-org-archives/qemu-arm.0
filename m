@@ -4,103 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD36DCDB47C
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 10:32:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85DACCDB479
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 10:32:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcKtG-00038I-Dg; Wed, 24 Jun 2026 06:31:30 -0400
+	id 1wcKqu-0006uT-8H; Wed, 24 Jun 2026 06:29:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcKsm-0002aB-LV
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:31:07 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcKsi-0007hD-B5
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:30:59 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-45fd461e4a5so732370f8f.0
- for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 03:30:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782297053; x=1782901853; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=MVIHfgvOBO+ct2EhyE9pq49O4xVF2moDOiCD7HY29ss=;
- b=potKPxtFHVcgengPH1VskApl+xR4htp5C4KQk1BRxqARrgOr6r6u8JS8qiJzq6MEYT
- abTFxipFfzxmCWBjG3momN93DqJ6v2QjF9HhKKNgReVatWJipr0pzBbADkXaMbpDDbPK
- tPMf1BMUsSiO2f4YsIqIl3ZwF8JuDz3hWAaz/ZKibXcUbVkuPaLHx/kyhETqewY6GufX
- eCDP/WHFG0KjNmeuN0JzEvbaG9i00oHK50tW+kFGf40dzgHfM0cV1fNDMkWhCCNz2KrF
- u0A6XrwcnSvMXCRVRQUxv1oBPt5D+/brpw1xBRVBymTYn1B1iFNTifyWOcuuupCLsyeE
- F42w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782297053; x=1782901853;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=MVIHfgvOBO+ct2EhyE9pq49O4xVF2moDOiCD7HY29ss=;
- b=Esv2z4ujiXxwqwXa9gTmMqLizQ+3spKkrR6dIdx2a0M+bqGzOF8SqQUwAcKcIn43Ow
- izzNXZMTUjAanvOYcmww8PKOJF3ZHc4SLPqmkJGfnS7oZNQLcQzFHzJ47lFW5Xo+CHvT
- 6is/aOmxWp41qca8Qz6dHvLj0zqIPkG+zird62kK19Em36GkEplU3MfGeeuInE8gnJty
- JcsvMdvZZXo0tmaUDZvHFZODL8QBmszbYGuC7I8sWtFSzC47TMaojEkI9bK/3TEkHifd
- 20VwN72gTtoly9gqXKs1DLZE0JF9Hi141Tz+xfZowiSUu/5RBUAZ4mP8Ut4chHlItVEA
- r/lg==
-X-Forwarded-Encrypted: i=1;
- AHgh+RoVdR99TkkYGyfk8KxtJLwGVEKDmhEzEcK0QKvqoSgvJ88j+2dvs8llGKyYkYYFf4y7Ig9KT+Lq6w==@nongnu.org
-X-Gm-Message-State: AOJu0YzjagTuzbr+UiVgwzdyvou1cKu8LKn2xro2rhjO4lB4yjL1J2PT
- JWIJtP6AvwZgh+NKwhBj6aBSkInom4frQ0iq2iMrP60GZTSl/cQzBHqbAe1ugryNk2g=
-X-Gm-Gg: AfdE7cmA6g5Q/tgEZj60X/QbIWwBunN6krX4yYh/iWBQ0vFY0WFgQuXUX4EwKjQvdiF
- FZ62GNB4tFKWAN/Bd/wBVqbyoVNmD15aVKgxmXfc5NpaMDCn7LPe0mpK7q888t/vkbmGYOrOFDq
- vOrvzCwhx6Mekq28Mn3BTZDEM3+Bun624bcPXp9gwpcGlkDYfAnfPyxfdpr5bSdxbLVTPEug0Y+
- 7E7401cs6WbW8Khj8699jGlaiefsHGc73z0QdTe1ReLNgGDg7TSqfb2GoLqQNyXUMG36NQrKpLd
- iAWXMZZ3b4Jv7v1rBsZd1uManPjdRgPBbH2hKExFYc9otROcet62nLkruOOED6lpdgDL1NQp5IF
- 4TCPkl8kj457LcoAwKFElLPYo24EbLaR81XCC94Fk1TUgSjf9KPQEqRujIKNgU+4wyRl4s53WFL
- sTQkZPQxQqaS21
-X-Received: by 2002:a05:6000:40e0:b0:461:d2ee:2fcc with SMTP id
- ffacd0b85a97d-46adb587753mr11075293f8f.43.1782297053119; 
- Wed, 24 Jun 2026 03:30:53 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-46c22c680fasm5593358f8f.34.2026.06.24.03.30.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Jun 2026 03:30:52 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 374115FA5C;
- Wed, 24 Jun 2026 11:30:50 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wcKqs-0006s6-LU
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:29:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wcKqp-0007CP-Ar
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:29:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1782296938;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Mm48+Ix2espphnUYjw02/IvBMQ0pd4071xogvguQjgc=;
+ b=HPkQjMZx4QPSaTkhIukXtWY9R/l8+2Nx16DO4jo1gyepDE6WE4z0vQysnN3GR6sWU1KNNn
+ AUup8h5KI5ywTTBFm87RYP8SLLCThT3ng7DAUYKqTY3CJLmMNeIEJ+n5qASqJRVr4iF5ns
+ fHME+dV2SBBvgdJ8vvIujlkgT2lPv1s=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-85-L0ZJKFhxNEKg6H44Y_W9qA-1; Wed,
+ 24 Jun 2026 06:28:55 -0400
+X-MC-Unique: L0ZJKFhxNEKg6H44Y_W9qA-1
+X-Mimecast-MFC-AGG-ID: L0ZJKFhxNEKg6H44Y_W9qA_1782296934
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DCC2318052DD; Wed, 24 Jun 2026 10:28:53 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq2.redhat.com
+ (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id D11393000B55; Wed, 24 Jun 2026 10:28:51 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org, Troy Lee <leetroy@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v9 5/7] target/arm: implements SEV/SEVL for all modes
-Date: Wed, 24 Jun 2026 11:30:47 +0100
-Message-ID: <20260624103049.884930-6-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260624103049.884930-1-alex.bennee@linaro.org>
-References: <20260624103049.884930-1-alex.bennee@linaro.org>
+Cc: mst@redhat.com, eauger@redhat.com, peter.maydell@linaro.org,
+ shannon.zhaosl@gmail.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com,
+ qemu-arm@nongnu.org
+Subject: [PATCH v3 07/17] arm: virt: add support for WDAT based watchdog
+Date: Wed, 24 Jun 2026 12:28:20 +0200
+Message-ID: <20260624102830.1355552-8-imammedo@redhat.com>
+In-Reply-To: <20260624102830.1355552-1-imammedo@redhat.com>
+References: <20260624102830.1355552-1-imammedo@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: lKq6h6fK55veBdLyoNSbvBiypKY8GL-S2_OP9wOFCeg_1782296934
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,207 +88,160 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Remove the restrictions that make this a M-profile only operation and
-enable the instructions for all Arm profiles.
+Add WDAT handling for sbsa-gwdt on arm/virt machine.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+WDAT mode is enabled by 'wdat' option: ex: "-device sbsa-gwdt,wdat=on"
 
+When WDAT is enabled:
+ - Build the WDAT ACPI table instead of the GTDT watchdog entry,
+   since they are mutually exclusive due to different timer
+   resolution (WDAT uses 1 kHz vs GTDT's system counter frequency).
+ - Skip FDT watchdog node creation, as the DT-based Linux driver
+   would use the system counter frequency which doesn't match the
+   WDAT-mode 1 kHz clock.
+
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
-v3
-  - restrict SEV to M profile plus
-  - restrict SEVL to V8
-v2
-  - fix alignment in a32.decode
-  - set bool directly, defend with QEMU_BUILD_BUG_ON
-  - s/instructions/profiles/
-  - share get_event_reg between translate/translate-a64
+v3:
+   - Skip FDT watchdog node creation in wdat mode
+   (Eric)
+     - wiring part of larger '[PATCH v2 11/21] arm: virt: add support for WDAT based watchdog'
 ---
- target/arm/tcg/translate.h     | 18 ++++++++++++++++++
- target/arm/tcg/a32.decode      |  5 ++---
- target/arm/tcg/a64.decode      |  5 ++---
- target/arm/tcg/t16.decode      |  4 +---
- target/arm/tcg/t32.decode      |  4 +---
- target/arm/tcg/op_helper.c     |  4 +---
- target/arm/tcg/translate-a64.c | 17 +++++++++++++++++
- target/arm/tcg/translate.c     | 20 +++++++++++++++++---
- 8 files changed, 59 insertions(+), 18 deletions(-)
+ hw/arm/virt-acpi-build.c | 34 ++++++++++++++++++++++++++--------
+ hw/arm/virt.c            | 10 ++++++----
+ 2 files changed, 32 insertions(+), 12 deletions(-)
 
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index 462d4c1c74f..83b413ee368 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -860,6 +860,24 @@ static inline void gen_restore_rmode(TCGv_i32 old, TCGv_ptr fpst)
-     gen_helper_set_rmode(old, old, fpst);
- }
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index f5b3b4ce48..71706b98e6 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -65,6 +65,7 @@
+ #include "target/arm/cpu.h"
+ #include "target/arm/multiprocessing.h"
+ #include "hw/watchdog/sbsa_gwdt.h"
++#include "hw/acpi/wdat-gwdt.h"
  
-+/*
-+ * Event Register signalling.
-+ *
-+ * A bunch of activities trigger events, we just need to latch on to
-+ * true. The event eventually gets consumed by WFE/WFET.
-+ *
-+ * user-mode treats these as NOPs.
-+ */
-+
-+static inline void gen_event_reg(void)
-+{
-+#ifndef CONFIG_USER_ONLY
-+    TCGv_i32 set_event = tcg_constant_i32(1);
-+    QEMU_BUILD_BUG_ON(sizeof_field(CPUARMState, event_register) != 1);
-+    tcg_gen_st8_i32(set_event, tcg_env, offsetof(CPUARMState, event_register));
-+#endif
-+}
-+
- /*
-  * Helpers for implementing sets of trans_* functions.
-  * Defer the implementation of NAME to FUNC, with optional extra arguments.
-diff --git a/target/arm/tcg/a32.decode b/target/arm/tcg/a32.decode
-index f2ca4809495..547aa2b1490 100644
---- a/target/arm/tcg/a32.decode
-+++ b/target/arm/tcg/a32.decode
-@@ -192,9 +192,8 @@ SMULTT           .... 0001 0110 .... 0000 .... 1110 ....      @rd0mn
-       WFE        ---- 0011 0010 0000 1111 ---- 0000 0010
-       WFI        ---- 0011 0010 0000 1111 ---- 0000 0011
- 
--      # TODO: Implement SEV, SEVL; may help SMP performance.
--      # SEV      ---- 0011 0010 0000 1111 ---- 0000 0100
--      # SEVL     ---- 0011 0010 0000 1111 ---- 0000 0101
-+      SEV        ---- 0011 0010 0000 1111 ---- 0000 0100
-+      SEVL       ---- 0011 0010 0000 1111 ---- 0000 0101
- 
-       ESB        ---- 0011 0010 0000 1111 ---- 0001 0000
-     ]
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 28cd1faf61a..81070dac0a6 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -250,9 +250,8 @@ ERETA           1101011 0100 11111 00001 m:1 11111 11111 &reta  # ERETAA, ERETAB
-     YIELD       1101 0101 0000 0011 0010 0000 001 11111
-     WFE         1101 0101 0000 0011 0010 0000 010 11111
-     WFI         1101 0101 0000 0011 0010 0000 011 11111
--    # We implement WFE to never block, so our SEV/SEVL are NOPs
--    # SEV       1101 0101 0000 0011 0010 0000 100 11111
--    # SEVL      1101 0101 0000 0011 0010 0000 101 11111
-+    SEV         1101 0101 0000 0011 0010 0000 100 11111
-+    SEVL        1101 0101 0000 0011 0010 0000 101 11111
-     # Our DGL is a NOP because we don't merge memory accesses anyway.
-     # DGL       1101 0101 0000 0011 0010 0000 110 11111
-     XPACLRI     1101 0101 0000 0011 0010 0000 111 11111
-diff --git a/target/arm/tcg/t16.decode b/target/arm/tcg/t16.decode
-index 778fbf16275..9a8f89538ac 100644
---- a/target/arm/tcg/t16.decode
-+++ b/target/arm/tcg/t16.decode
-@@ -228,10 +228,8 @@ REVSH           1011 1010 11 ... ...            @rdm
-     WFE         1011 1111 0010 0000
-     WFI         1011 1111 0011 0000
- 
--    # M-profile SEV is implemented.
--    # TODO: Implement SEV for other profiles, and SEVL for all profiles; may help SMP performance.
-     SEV         1011 1111 0100 0000
--    # SEVL      1011 1111 0101 0000
-+    SEVL        1011 1111 0101 0000
- 
-     # The canonical nop has the second nibble as 0000, but the whole of the
-     # rest of the space is a reserved hint, behaves as nop.
-diff --git a/target/arm/tcg/t32.decode b/target/arm/tcg/t32.decode
-index 49b8d0037ec..8ae277fe112 100644
---- a/target/arm/tcg/t32.decode
-+++ b/target/arm/tcg/t32.decode
-@@ -369,10 +369,8 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
-         WFE      1111 0011 1010 1111 1000 0000 0000 0010
-         WFI      1111 0011 1010 1111 1000 0000 0000 0011
- 
--        # M-profile SEV is implemented.
--        # TODO: Implement SEV for other profiles, and SEVL for all profiles; may help SMP performance.
-         SEV      1111 0011 1010 1111 1000 0000 0000 0100
--        # SEVL   1111 0011 1010 1111 1000 0000 0000 0101
-+        SEVL     1111 0011 1010 1111 1000 0000 0000 0101
- 
-         ESB      1111 0011 1010 1111 1000 0000 0001 0000
-       ]
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index 9f9ea39be5a..d15062e155f 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -477,9 +477,7 @@ void HELPER(sev)(CPUARMState *env)
-     CPUState *cs = env_cpu(env);
-     CPU_FOREACH(cs) {
-         ARMCPU *target_cpu = ARM_CPU(cs);
--        if (arm_feature(&target_cpu->env, ARM_FEATURE_M)) {
--            target_cpu->env.event_register = true;
--        }
-+        target_cpu->env.event_register = true;
-         if (!qemu_cpu_is_self(cs)) {
-             qemu_cpu_kick(cs);
-         }
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 227719ef25b..df5bac22acd 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2142,6 +2142,23 @@ static bool trans_WFI(DisasContext *s, arg_WFI *a)
-     return true;
- }
- 
-+static bool trans_SEV(DisasContext *s, arg_SEV *a)
-+{
-+    /*
-+     * SEV is a NOP for user-mode emulation.
-+     */
-+#ifndef CONFIG_USER_ONLY
-+    gen_helper_sev(tcg_env);
-+#endif
-+    return true;
-+}
-+
-+static bool trans_SEVL(DisasContext *s, arg_SEV *a)
-+{
-+    gen_event_reg();
-+    return true;
-+}
-+
- static bool trans_WFE(DisasContext *s, arg_WFI *a)
+ #include "smmuv3-accel.h"
+ #include "tegra241-cmdqv.h"
+@@ -859,7 +860,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+  * 5.2.25 Generic Timer Description Table (GTDT)
+  */
+ static void
+-build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
++build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms,
++           Object *wdt, bool add_watchdog)
  {
      /*
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index c744b163453..9079458a297 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -3246,17 +3246,31 @@ static bool trans_YIELD(DisasContext *s, arg_YIELD *a)
- static bool trans_SEV(DisasContext *s, arg_SEV *a)
- {
-     /*
--     * Currently SEV is a NOP for non-M-profile and in user-mode emulation.
--     * For system-mode M-profile, it sets the event register.
-+     * SEV is a NOP for user-mode emulation. For v6T2 and earlier
-+     * non-M-profile cores this encoding is a NOP hint.
-      */
- #ifndef CONFIG_USER_ONLY
--    if (arm_dc_feature(s, ARM_FEATURE_M)) {
-+    if (arm_dc_feature(s, ARM_FEATURE_M) ||
-+        arm_dc_feature(s, ARM_FEATURE_V7)) {
-         gen_helper_sev(tcg_env);
+      * Table 5-117 Flag Definitions
+@@ -870,7 +872,6 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     AcpiTable table = { .sig = "GTDT", .rev = 3, .oem_id = vms->oem_id,
+                         .oem_table_id = vms->oem_table_id };
+     uint32_t gtdt_start = table_data->len;
+-    Object *wdt = object_resolve_type_unambiguous(TYPE_WDT_SBSA, NULL);
+ 
+     acpi_table_begin(&table, table_data);
+ 
+@@ -903,12 +904,12 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
+ 
+     /* Platform Timer Count */
+-    build_append_int_noprefix(table_data,  wdt ? 1 : 0, 4);
++    build_append_int_noprefix(table_data,  add_watchdog ? 1 : 0, 4);
+     /* Platform Timer Offset */
+     build_append_int_noprefix(table_data,
+-        wdt ? (table_data->len - gtdt_start) +
+-              4 + 4 + 4 /* len of this & following 2 fields to skip */
+-            : 0, 4);
++        add_watchdog ? (table_data->len - gtdt_start) +
++                       4 + 4 + 4 /* len of this & following 2 fields to skip */
++                     : 0, 4);
+ 
+     if (vms->ns_el2_virt_timer_irq) {
+         /* Virtual EL2 Timer GSIV */
+@@ -921,7 +922,7 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
      }
- #endif
-     return true;
- }
  
-+static bool trans_SEVL(DisasContext *s, arg_SEV *a)
-+{
-+    /*
-+     * SEVL only exists for v8A; for M-profile and v7A and earlier
-+     * this encoding is an unallocated must-NOP hint.
-+     */
-+    if (!arm_dc_feature(s, ARM_FEATURE_M) &&
-+        arm_dc_feature(s, ARM_FEATURE_V8)) {
-+        gen_event_reg();
+     /* ACPI 6.5 spec: 5.2.25.2 ARM Generic Watchdog Structure (Table 5-124) */
+-    if (wdt) {
++    if (add_watchdog) {
+         hwaddr rbase = vms->memmap[VIRT_GWDT_REFRESH].base;
+         hwaddr cbase = vms->memmap[VIRT_GWDT_CONTROL].base;
+         int irq = ARM_SPI_BASE + vms->irqmap[VIRT_GWDT_WS0];
+@@ -1332,13 +1333,19 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+     GArray *table_offsets;
+     unsigned dsdt, xsdt;
++    bool has_wdat = false;
+     GArray *tables_blob = tables->table_data;
+     MachineState *ms = MACHINE(vms);
+     CPUCoreCaches caches[CPU_MAX_CACHES];
+     unsigned int num_caches;
++    Object *wdt = object_resolve_type_unambiguous(TYPE_WDT_SBSA, NULL);
+ 
+     num_caches = virt_get_caches(vms, caches);
+ 
++    if (wdt) {
++        has_wdat = object_property_get_bool(wdt, "wdat", &error_abort);
 +    }
-+    return true;
-+}
 +
- static bool trans_WFE(DisasContext *s, arg_WFE *a)
- {
-     /*
+     table_offsets = g_array_new(false, true /* clear */,
+                                         sizeof(uint32_t));
+ 
+@@ -1357,6 +1364,17 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_madt(tables_blob, tables->linker, vms);
+ 
++    acpi_add_table(table_offsets, tables_blob);
++    if (wdt && has_wdat) {
++        uint64_t freq = object_property_get_uint(wdt, "clock-frequency",
++                                                 &error_abort);
++        build_gwdt_wdat(tables_blob, tables->linker,
++                        vms->oem_id, vms->oem_table_id,
++                        vms->memmap[VIRT_GWDT_REFRESH].base,
++                        vms->memmap[VIRT_GWDT_CONTROL].base,
++                        freq);
++    }
++
+     if (!vmc->no_cpu_topology) {
+         acpi_add_table(table_offsets, tables_blob);
+         build_pptt(tables_blob, tables->linker, ms, vms->oem_id,
+@@ -1364,7 +1382,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     }
+ 
+     acpi_add_table(table_offsets, tables_blob);
+-    build_gtdt(tables_blob, tables->linker, vms);
++    build_gtdt(tables_blob, tables->linker, vms, wdt, wdt && !has_wdat);
+ 
+     acpi_add_table(table_offsets, tables_blob);
+     {
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index aacf9b7251..35ded6d1d4 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -3825,9 +3825,11 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+         qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
+         g_free(resv_prop_str);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_WDT_SBSA)) {
+-        uint64_t cntfrq = object_property_get_int(OBJECT(qemu_get_cpu(0)),
+-                                                  "cntfrq", &error_abort);
+-        qdev_prop_set_uint64(dev, "clock-frequency", cntfrq);
++        if (!object_property_get_bool(OBJECT(dev), "wdat", &error_abort)) {
++            uint64_t cntfrq = object_property_get_int(OBJECT(qemu_get_cpu(0)),
++                                                      "cntfrq", &error_abort);
++            qdev_prop_set_uint64(dev, "clock-frequency", cntfrq);
++        }
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3)) {
+         if (vms->legacy_smmuv3_present || vms->iommu == VIRT_IOMMU_VIRTIO) {
+             error_setg(errp, "virt machine already has %s set. "
+@@ -3890,7 +3892,7 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+         sysbus_mmio_map(s, 1, cbase);
+         sysbus_connect_irq(s, 0, qdev_get_gpio_in(vms->gic, irq));
+ 
+-        {
++        if (!object_property_get_bool(OBJECT(dev), "wdat", &error_abort)) {
+             char *nodename = g_strdup_printf("/watchdog@%" PRIx64, cbase);
+ 
+             qemu_fdt_add_subnode(ms->fdt, nodename);
 -- 
 2.47.3
 

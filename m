@@ -4,84 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70448CDB481
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 12:47:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36083CDB47F
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 12:48:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcMzQ-0003Na-6P; Wed, 24 Jun 2026 08:46:00 -0400
+	id 1wcMzR-0003Qg-8s; Wed, 24 Jun 2026 08:46:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcMz1-000386-VE
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 08:45:37 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ id 1wcMz4-00038U-QX
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 08:45:54 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcMyx-0006Mj-F0
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 08:45:34 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-463b2f6fc9dso1134994f8f.2
- for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 05:45:30 -0700 (PDT)
+ id 1wcMz1-0006O8-Ke
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 08:45:36 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-49249072f03so5757415e9.0
+ for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 05:45:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782305130; x=1782909930; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=E51fzciGP16X57K6+5mbVdSS6Z/a61UsdP0TMTQdK3U=;
- b=yTpfNqpd1w+UbPpGCcbteBRLCE2mkyaeUtB7R9P9YPAel/thM09P2QheItJ77XJFV1
- EkvNvAtq+BjSSwwd3x+184tuV5K9JPj/t0ScEno9O+aJxWk5lwH+FofcSlTJ5uUEon3M
- ujJwix1A3ENff7kzDAWbrhlOwayz3aOnMxNe1XF1uMf9qgTGbDI/cCB/p+ZnCARGba8b
- KD+MEFzvGXOsBKqyZ5HFhmeBfVOtyPBBqu/DkUyqCBGFuz89fCw5mrLNqDLJNuyemoRa
- ZZyc1pA9e96pEmgdqHxUBXnUZlH57ShjjGEoW5IxqCb9MMXbkxwWGfVu/qeg5FBcDnmD
- TT/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782305130; x=1782909930;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1782305133; x=1782909933; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=E51fzciGP16X57K6+5mbVdSS6Z/a61UsdP0TMTQdK3U=;
- b=gObeTtLleNPGAhhXk8HPvL18oTKdwpfDgLmys7W6vK6+NwzhBdI/Zj4GWQI3yf9VA+
- Uo38T1hCb21BmUz4qGFY1azwy/q3Yu27gk0JNkDE4q3p/B5vrRPhf8xbwr4w2Y8dHODh
- t34qz2qSyI1b4ivP97KGI2MVhn321nmzYv+85bTZQl8frq72SD88W2h/xLg1u4/tQb5a
- 3thAeEaQiH80bZWBtciX+UzHNQSZQ7hUhHT6jmjDNav2EXn0Yp8MRXXpakCdLLxmJihW
- vqkUYdR94NfUyEhAVVW1EJzncnkj4+HzKSfqN3w2RISp6KkF5LKVDflJm5zeZ7S7b1CY
- CJNg==
+ bh=HGo6vKVJEYEOj+aiq6rUlEcybCfYIVgnGO/BD7j/21A=;
+ b=DNOxWnSS5d2NjHCbIuPgOEJ6R9ppgjqi34IcNLxulYOQp1YnfPjlJsubE9LWAdb1OQ
+ w3VHk1JdlokCa5Re0ZyZXaG+l9paAvsT9S/HX4bJJBEr7/G/wNmlEmsgFZ45lssjVcU+
+ 9vsc2ljGjH5Ujl1z738mklxRDo+r5GtCEVK5aokQW2SHi3vFt8r42FGpTROoutyHrUME
+ g9RM/j0u/hDNEsR05ZbkD60ln1AV36xiQmqk9gI+l0ruQ7Tg6EsXSpH4VKhlKzxSp0Nl
+ LBHQ9VxDgKh81lRI+ps9kW0RG3Z9IpuJJe4/BHKosHldXL+Hewxf7yCiS5nyU6Ny6PPY
+ Nh6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782305133; x=1782909933;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=HGo6vKVJEYEOj+aiq6rUlEcybCfYIVgnGO/BD7j/21A=;
+ b=SvlDH6JhevISndykYRFfD1CQWt9lNnHpDeE9InzNZkk3D7+bmkdPI+yV8rNd4k9JWy
+ 7+IkAKPm7hne4pDV2JUTYxQE8Nkndd5Mn/5YtwJ+PzSnRB794n9Ie1ja6c2D6xuQn3YM
+ KX6Z3lI/fZ7rNdCCC2tLQd+dVoYOres7b9AS7M1DFPFcVN6lAtDtX4+zG1L9+YlR2BF5
+ OQLgXtpOad+wPV948gaPBUpDSNlpYVI+tT/gVPeitdJWMgCwFp7tPcDzRoidGH4OdIe9
+ h93cUh30XH9xfSCOiVL76s9H4EHdn1yynNhM5O26K3qIrp8GNA4WjWjuNQ7wizbHBS0a
+ B8Kg==
 X-Forwarded-Encrypted: i=1;
- AHgh+Ro7kqJIOriWcZ4gPn7XJ+V9TiPc8MlWBP+HfereRUT4xnxR8QNLdKMhgwiMTnxjRJ6V1WodVOQwYw==@nongnu.org
-X-Gm-Message-State: AOJu0Yx6ar4kT991yoEhM5adew+9mHVXfciWTBkg8RRtzf+UOZuhFEnb
- HJTuV+6OV2f28TsGFvbWuVChALyPQUeGbL93DPYOyYzIV7qlBVAP0is1+AGPTLccsUw=
-X-Gm-Gg: AfdE7cmQr3Q2PkPUkj4lzEsrTaxFtch5Ik1zdhJujShMQ9IlYr5Ah+FK+JBkG2xLYRA
- UO6NhWDOWezn2VEWjAqnWWSueLKfjRH9TbDZAcZGTQjM85GURkUdq6jnkro1EanYXprHho0sXsL
- uAnRx0jzwNE8FzMYhexO0vJqiijR0b9D1T7jVxIMRVGEmppMx5s6VM63ZWsnta5GEAqmSdwD598
- Gu2JlZR2CRgMa1y7cY+FNmfP3TzYvzagZK0eVtABSMezOPy+Em1FUXzj1GznQxD7UU5hR7FxShL
- q2XzFrQFPv7S37WN8LkS5alio/GRBLsn4AnO07uBulPylQ2eQBeYcTz3HM0ORihZfTrmfcumELu
- 7IWqjbGjEryFDcBCTX9FuwP7N7RLUfKNgGXFVDE/0wofkER1Z5d/yo+aFisFZMd92KjHSW76cMc
- WLaRO1BG9UvQrL
-X-Received: by 2002:a5d:6242:0:b0:469:3bd0:fa7d with SMTP id
- ffacd0b85a97d-46c0c346abbmr3829203f8f.41.1782305129539; 
- Wed, 24 Jun 2026 05:45:29 -0700 (PDT)
+ AFNElJ+RuVFTs/ApPAjzXh6Bj2Ua1J0UnN91DWiBv2vKx289sA2hliXI1au//GfQN0UWjmQPWZ5WnRhKfQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy7dLrJT1iWAT9KS4mm8PqTaLnFHkv5ruitZ54qR/Jzb5LcE8dC
+ XVWCinVLLWGuP/OLYo+LQHuwCsHeGNYkfbI4FPxbJVe5a6b0O1tDSby1P3NOE6nORmM=
+X-Gm-Gg: AfdE7clsYaEfv12Gc6CkjPaZJb/D4oTNf0/f4pUmh9Yogr0DvEoTQZRSDEoTGIn1u5V
+ ikk9hN+B/SoXdMkVNOISm7jYJOpmDgqMJFLQBdA1/dO5q12yMUHqc4WBpynzWn0BGMYpVkmghMN
+ gMBoKNniPGZNMhGawG/XhqoRB2j8SbXQA1YQpZcgyWbsF4KBPp+v40IVy5gtcmpGcDebxJkPi/Z
+ pw0YUOFb3QSkgS+jnuppxDREZoHTMiTUrFtX73mv1eF7QXNm/pzH7rivLGKVmbXdL8h7GpRfI+t
+ 6CMTg7/v2iL9Yl43ZOkMyAR4X5NJBr2fviyhvXxHxAHrraPtqnmdtSvjET9iKLTJjreuwwrI2Mk
+ IuDhlBox2EBlMnDRHLFWN747DoNKy4wocoV1gMIXnlwQbxZBoTMsbLFJhnfZvmLjLHJAGZwcF7w
+ PSJbH3yoGFHdkn
+X-Received: by 2002:a05:600d:8443:20b0:492:1e36:85dd with SMTP id
+ 5b1f17b1804b1-4926088044bmr32603205e9.37.1782305132781; 
+ Wed, 24 Jun 2026 05:45:32 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-46c1e840f4bsm6848246f8f.4.2026.06.24.05.45.28
+ ffacd0b85a97d-46c1ee01d46sm5782310f8f.13.2026.06.24.05.45.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Jun 2026 05:45:29 -0700 (PDT)
+ Wed, 24 Jun 2026 05:45:32 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 0F93D5F803;
+ by draig.lan (Postfix) with ESMTP id 7C35D5FA5C;
  Wed, 24 Jun 2026 13:45:28 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 0/6] target/arm: a few timer fixes while checking
- FEAT_ECV_POFF
-Date: Wed, 24 Jun 2026 13:45:21 +0100
-Message-ID: <20260624124527.1018912-1-alex.bennee@linaro.org>
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v3 5/6] target/arm: trigger timer recalc on HCR:(E2H|TGE)
+ changes
+Date: Wed, 24 Jun 2026 13:45:26 +0100
+Message-ID: <20260624124527.1018912-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260624124527.1018912-1-alex.bennee@linaro.org>
+References: <20260624124527.1018912-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,35 +108,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-While I was checking what was needed for FEAT_ECV_POFF I discovered a
-few potential correctness issues. We had actually already done the
-work for the feature so the final patch is just documentation.
+Toggling the HCR state affects the offset calculated in
+gt_phys_raw_cnt_offset so we should trigger a re-calculation on its
+change.
 
-v3
-  - tweaked the FEATURE_EL3 check per Richard
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
+---
 v2
-  - added target/arm: gate check on scr_el3 behind ARM_FEATURE_EL3 check
-  - ensure gt_recalc_timer has updated hcr_el2
+  - defer calling gt_recalc_timer until after we set hcr_el2
+---
+ target/arm/helper.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-The following still need review:
-
- target/arm: gate check on scr_el3 behind ARM_FEATURE_EL3 check
-
-Alex.
-
-Alex Bennée (6):
-  target/arm: split evaluation of CNTHCTL timer IRQ masks
-  target/arm: trigger timer recalculation when toggling CNTHCTL:ECV
-  target/arm: trigger timer recalc on SCR:ECVEN change
-  target/arm: gate check on scr_el3 behind ARM_FEATURE_EL3 check
-  target/arm: trigger timer recalc on HCR:(E2H|TGE) changes
-  docs/system: add FEAT_ECV_POFF to the emulation list
-
- docs/system/arm/emulation.rst |  1 +
- target/arm/helper.c           | 33 ++++++++++++++++++++++++++++-----
- 2 files changed, 29 insertions(+), 5 deletions(-)
-
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 4273e3c5395..b163dc5764f 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -3716,6 +3716,7 @@ static const ARMCPRegInfo v8_aa32_el1_reginfo[] = {
+ static void do_hcr_write(CPUARMState *env, uint64_t value, uint64_t valid_mask)
+ {
+     ARMCPU *cpu = env_archcpu(env);
++    bool hcr_change_timer;
+ 
+     if (arm_feature(env, ARM_FEATURE_V8)) {
+         valid_mask |= MAKE_64BIT_MASK(0, 34);  /* ARMv8.0 */
+@@ -3807,6 +3808,10 @@ static void do_hcr_write(CPUARMState *env, uint64_t value, uint64_t valid_mask)
+         (HCR_VM | HCR_PTW | HCR_DC | HCR_DCT | HCR_FWB | HCR_NV | HCR_NV1)) {
+         tlb_flush(CPU(cpu));
+     }
++    hcr_change_timer = (env->cp15.hcr_el2 ^ value) &
++                       (HCR_E2H | HCR_TGE);
++
++    /* update */
+     env->cp15.hcr_el2 = value;
+ 
+     /*
+@@ -3828,6 +3833,11 @@ static void do_hcr_write(CPUARMState *env, uint64_t value, uint64_t valid_mask)
+         arm_cpu_update_vinmi(cpu);
+         arm_cpu_update_vfnmi(cpu);
+     }
++    if (hcr_change_timer) {
++#ifndef CONFIG_USER_ONLY
++        gt_recalc_timer(cpu, GTIMER_PHYS);
++#endif
++    }
+ }
+ 
+ static void hcr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
 -- 
 2.47.3
 

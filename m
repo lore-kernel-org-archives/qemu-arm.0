@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91568CDE000
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 10:31:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE848CDB47C
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 10:31:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcKr4-00071F-Cj; Wed, 24 Jun 2026 06:29:14 -0400
+	id 1wcKqo-0006oO-By; Wed, 24 Jun 2026 06:28:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wcKr3-00070l-8k
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:29:13 -0400
+ id 1wcKqm-0006nf-To
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:28:56 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wcKr1-0007FM-Uo
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:29:13 -0400
+ id 1wcKql-0007Bk-HY
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:28:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1782296951;
+ s=mimecast20190719; t=1782296934;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=1q90WPkRUZ7wuR6JvKufex+5QOAiX2MNCSlX3ENKcGo=;
- b=SFC0+7XfwBmqkIy2nDGyzYsiKJU+UYcOtC3y6UmifyO7MmBt2CzGWRcc1p+qd6LDiecENr
- 2jCO0xVsDdIVgaL1JkWB2cym43WFeHvcHRPNJoSoClkNF+ZlEtYwZLbKP7PEn6jJlaUZi4
- h7vV9+7v4/01ZgwzrssQ4PU9b6wH+MU=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=WjFTpdwQIaE79YV3syPDPnn+JV1JhF7PJ2yrcTZS4iY=;
+ b=fxG06gKUv4DHcpjRkrWggi23mASelqTCCsn9J/rKoQXLQHLEoLGmS18JHC2uhz1++5J1LS
+ +AKv4HRqaM58xTX4UPqEwibn7GxxowMXbmaIv+z8SV8B4h5hIKSZuJKbs8FznqB/ytUTsR
+ xLsw6a0mwlB6zBlNL3aiU3E92fcb4DU=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-32-Wtrgxq3mN8unh96EDdoy8A-1; Wed,
- 24 Jun 2026 06:29:05 -0400
-X-MC-Unique: Wtrgxq3mN8unh96EDdoy8A-1
-X-Mimecast-MFC-AGG-ID: Wtrgxq3mN8unh96EDdoy8A_1782296944
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-168-nrokYGKBOpKlVxVCdo0b3Q-1; Wed,
+ 24 Jun 2026 06:28:50 -0400
+X-MC-Unique: nrokYGKBOpKlVxVCdo0b3Q-1
+X-Mimecast-MFC-AGG-ID: nrokYGKBOpKlVxVCdo0b3Q_1782296929
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D12EC18052DD; Wed, 24 Jun 2026 10:29:03 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 22F4219560B4; Wed, 24 Jun 2026 10:28:49 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq2.redhat.com
  (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A84593000B56; Wed, 24 Jun 2026 10:29:01 +0000 (UTC)
+ id E5B3330001A7; Wed, 24 Jun 2026 10:28:46 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: mst@redhat.com, eauger@redhat.com, peter.maydell@linaro.org,
  shannon.zhaosl@gmail.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com,
  qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v3 11/17] tests: acpi: arm/virt: whitelist GTDT table
-Date: Wed, 24 Jun 2026 12:28:24 +0200
-Message-ID: <20260624102830.1355552-12-imammedo@redhat.com>
+Subject: [PATCH v3 05/17] arm: sbsa-gwdt: add 'wdat' option
+Date: Wed, 24 Jun 2026 12:28:18 +0200
+Message-ID: <20260624102830.1355552-6-imammedo@redhat.com>
 In-Reply-To: <20260624102830.1355552-1-imammedo@redhat.com>
 References: <20260624102830.1355552-1-imammedo@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: CWl24dYbp5m6rdxwyLBIZ-BArKcVAZr1B1c5u7AILMs_1782296944
+X-Mimecast-MFC-PROC-ID: TxDIAppJumpEEsWWSzO5ippGBt8MJYcf6bT9XNdNfwE_1782296929
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,19 +89,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+it will be used by arm/virt board, to pick WDAT compatible watchdog impl.
+and act as switch over to WDAT ACPI table vesus default GTDT ACPI table.
+
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
- tests/qtest/bios-tables-test-allowed-diff.h | 1 +
- 1 file changed, 1 insertion(+)
+ include/hw/watchdog/sbsa_gwdt.h | 1 +
+ hw/watchdog/sbsa_gwdt.c         | 9 +++++++++
+ 2 files changed, 10 insertions(+)
 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..3e9be28cc4 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,2 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/aarch64/virt/GTDT",
+diff --git a/include/hw/watchdog/sbsa_gwdt.h b/include/hw/watchdog/sbsa_gwdt.h
+index 8941dcff9e..5ad7c7a798 100644
+--- a/include/hw/watchdog/sbsa_gwdt.h
++++ b/include/hw/watchdog/sbsa_gwdt.h
+@@ -73,6 +73,7 @@ typedef struct SBSA_GWDTState {
+     uint32_t woru;
+     uint32_t wcvl;
+     uint32_t wcvu;
++    bool wdat;
+ } SBSA_GWDTState;
+ 
+ #endif /* WDT_SBSA_GWDT_H */
+diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
+index c4dd8005b7..1678ab85db 100644
+--- a/hw/watchdog/sbsa_gwdt.c
++++ b/hw/watchdog/sbsa_gwdt.c
+@@ -265,6 +265,14 @@ static void wdt_sbsa_gwdt_realize(DeviceState *dev, Error **errp)
+ 
+     sysbus_init_irq(sbd, &s->irq);
+ 
++    /*
++     * WDAT spec: "The clock interval that the WDT uses must be
++     * greater than or equal to 1 millisecond."
++     */
++    if (s->wdat) {
++        s->freq = 1000;
++    }
++
+     s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sbsa_gwdt_timer_sysinterrupt,
+                 dev);
+ }
+@@ -276,6 +284,7 @@ static const Property wdt_sbsa_gwdt_props[] = {
+      */
+     DEFINE_PROP_UINT64("clock-frequency", struct SBSA_GWDTState, freq,
+                        1000000000),
++    DEFINE_PROP_BOOL("wdat", struct SBSA_GWDTState, wdat, false),
+ };
+ 
+ static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, const void *data)
 -- 
 2.47.3
 

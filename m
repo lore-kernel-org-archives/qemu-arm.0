@@ -4,103 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C136CDE000
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 10:32:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 677D8CDE002
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 10:32:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcKtG-00037G-3O; Wed, 24 Jun 2026 06:31:30 -0400
+	id 1wcKqj-0006m0-Ho; Wed, 24 Jun 2026 06:28:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcKsm-0002a7-Jo
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:31:07 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcKsf-0007gl-O7
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:30:58 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-460166910e6so539533f8f.2
- for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 03:30:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782297052; x=1782901852; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=JcUw6dVic7iy+SWHCEsbAuTBlDckpX0jLlbUXwwqlgE=;
- b=OflgeGwOul8KzEpstnsoUCL7wtYgLf/Z/rqIUzxNf9mmqXHU86tcq11MfhyUCubB+n
- nMo4ZGVMUcfzIbqTrp6MAuT/JPufp8Glf+V/XaAzBu1wNNYnKaj6osakNwLwkvTfldgZ
- bxh2RpjsfjWAjI1n4MlxO0lFDA8Y/jFNParsoeX7Htu/8wqcvOs8AowQeU3Z+DGRKQFw
- EB+2SQVwcJTjn3LEVm6CBBlPMDdSOABJbI4PR6XQ4O8ps2MeDFTCmE9oCayjzBp2UNnG
- dSCbqD3Aez7+PyZSJKpUxlIL4AqiYBfs9bS+5ea0W7399e9CZ9YWR+h4N1SoyS5IWnEs
- q+2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782297052; x=1782901852;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=JcUw6dVic7iy+SWHCEsbAuTBlDckpX0jLlbUXwwqlgE=;
- b=DZU2kgK/jUINBQPATWqCY2AbSGO56C8flAo8BORuIF2QHZVERrM4J+GTMl8hayk/s1
- dMPlTWYUJj29TRM/kyvOgWiiiG+SDbRyGQc4k7sqKbObiyBJT2xPfZ6cqjtvZcvICGLn
- pkUW8eU4Y5F/3wqs5ADwQJ8EdJFsQdonHqiU1hjV8aTsEFriFtLDyiO+luNsthIPG05N
- wrZTbfYMDVhp9Ki/iAlzLrFfkR44hOLdIjwyzk8pa7QrlemAL6ZeJuWK4JBb1tcbwb+Z
- qmTlUbAfXk4jTG9tXSQ+3fkE9dYuvFcF4vYsr1f31+ejuN6jH3j+8k1DVDvIzGy2n+IO
- nheg==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rrq49pdGaTzVD551gPYAArbXyR5e4DIRLWsVJZt2BFac6aRyGZuRuf/trzidn7grM85ZBukIyrRNQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yw3xUctD6HJiz+l62Be+BkEjae+GU2AgEtwYdaXFaGpJDaPKahc
- efnKDb8d0RyHH5Y6fOH6UOqrVZMC4hf0/+kv/WCTIyhOdmfCjbGFK4TZgnF9swh9g08=
-X-Gm-Gg: AfdE7cmEh9notPoD2TsvsKFcMMM09YU+QEcu4vjQIlByjSF/WcBBYwfu9YG1fMYcVmz
- mBArsZtdnS6Ro5lubfhLO3cZkTQgMf+RGMhduX238zzegXn+7qy3bz3T3ymFJqvnDVxp9YvhujY
- mw7kuODzJ5A6GHVf09i+se/+RsjS6Xox6DeQ2N3xKXQBEa5liKagLu1Z/cfy0TanXkHjEfoXvfn
- VSqnv7TEbhpiAYiy3lG5HBl4ZynUiNw71nL9pGyzb3kTBjqM9ZP7k2R0zTEuBwn3N85YCdzhX5W
- YD3Ey8z44/UohxLgPN6anfjbCUoRr1n+gWy02ocJ9/bnjcx5taKWZOQAnvWxZ0gsu9CEabYVhfI
- bn1oAugGp94jZl4Xz0q6TxWqOGxE71+JQrrj8631Ml2DtLFHvvtiaWt7xf1l4aDOnCTHNGOTbyz
- skoRbnkaskVLN7
-X-Received: by 2002:a05:6000:1789:b0:46c:dc80:7627 with SMTP id
- ffacd0b85a97d-46cdc8077admr574890f8f.26.1782297052187; 
- Wed, 24 Jun 2026 03:30:52 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-46c1ee0189esm5827376f8f.9.2026.06.24.03.30.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Jun 2026 03:30:50 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id DE8655F8E5;
- Wed, 24 Jun 2026 11:30:49 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wcKqh-0006lb-R6
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:28:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1wcKqf-0007Ah-Us
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 06:28:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1782296929;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=dAUdgD4/ItHFDoK/4MgWc6Zxs6DyQymODNzJ6MhQdUg=;
+ b=f0m1q4P+VGzLCAAXwT7QtVjtAPIR7N7S4W66Sk8HgYTPcDv9BNRMra0BlotKIYOChG/N6t
+ XMAN65SUsQh1/cIhnKNS9CquqKQ5b11DZ7vZiYAVSr3MEjByxFi9VntjbXqOVL869k216/
+ kHwltpeHe2tPV4jvyhF58f/pGT/7Nek=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-80-ZVOaTUhzMQqneSp4ndXFWA-1; Wed,
+ 24 Jun 2026 06:28:48 -0400
+X-MC-Unique: ZVOaTUhzMQqneSp4ndXFWA-1
+X-Mimecast-MFC-AGG-ID: ZVOaTUhzMQqneSp4ndXFWA_1782296926
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8FB841955F03; Wed, 24 Jun 2026 10:28:46 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq2.redhat.com
+ (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 4D5C230001A7; Wed, 24 Jun 2026 10:28:44 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org, Troy Lee <leetroy@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v9 2/7] tests/functional: update anacapa-bmc image
-Date: Wed, 24 Jun 2026 11:30:44 +0100
-Message-ID: <20260624103049.884930-3-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260624103049.884930-1-alex.bennee@linaro.org>
-References: <20260624103049.884930-1-alex.bennee@linaro.org>
+Cc: mst@redhat.com, eauger@redhat.com, peter.maydell@linaro.org,
+ shannon.zhaosl@gmail.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com,
+ qemu-arm@nongnu.org
+Subject: [PATCH v3 04/17] arm: virt: create sbsa-gwdt watchdog
+Date: Wed, 24 Jun 2026 12:28:17 +0200
+Message-ID: <20260624102830.1355552-5-imammedo@redhat.com>
+In-Reply-To: <20260624102830.1355552-1-imammedo@redhat.com>
+References: <20260624102830.1355552-1-imammedo@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: AjK5LxcdET-LHXjkT0FGsYiN_to1se-ZXsa5_tbBDbo_1782296926
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,33 +89,250 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The initial version had the wrong DTB which caused issues with image
-corruption [1]. Update to the latest version.
+Allow to use SBSA generic watchdog with virt machine type.
+(includes conditional generation of corresponding FDT and
+ACPI GTDT descriptors)
 
-[1] https://github.com/legoater/qemu-aspeed-boot/pull/7
+Use '-device sbsa-gwdt' to command line to enable it.
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Suggested-by: Cédric Le Goater <clg@redhat.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Instead of using dynamic sysbus infra to wire up MMIO/IRQ/FDT,
+statically assign resources in machine's mem/irq maps and wire
+them up at device (pre_)plug handlers. It's similar to dynamic
+sysbus wiring, modulo resources are nailed down statically,
+and wiring is limited to virt machine only.
+(Benefit is that tests don't break anymore on rebase due to
+address being stable)
+
+Tested with Fedora 43:
+  FDT: -M virt,acpi=off -device sbsa-gwdt
+  ACPI: -M virt -device sbsa-gwdt
+
+Note:
+Windows sees GTDT, initializes watchdog but instead pinging WRR
+it sets/advances WOR to way too large value, so it's never going
+to trigger watchdog reboot (it's Windows driver issue though).
+
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
- tests/functional/arm/test_aspeed_anacapa.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+v3:
+  - (Eric) assign MMIO/IRQ statically and abandon most of
+     dynamic sysbus machinery.
+  - (Peter) set watchdog freq to system clock explicitly,
+    machine version compat won't work in case host is not runing
+    1GHz clock. (Tested on Jetson machine)
+---
+ include/hw/arm/virt.h    |  3 +++
+ hw/arm/Kconfig           |  1 +
+ hw/arm/virt-acpi-build.c | 29 +++++++++++++++++++++++++++--
+ hw/arm/virt.c            | 37 +++++++++++++++++++++++++++++++++++++
+ hw/core/sysbus-fdt.c     |  2 ++
+ hw/watchdog/sbsa_gwdt.c  |  1 +
+ 6 files changed, 71 insertions(+), 2 deletions(-)
 
-diff --git a/tests/functional/arm/test_aspeed_anacapa.py b/tests/functional/arm/test_aspeed_anacapa.py
-index 27f8bd8b56a..b16c6035c95 100644
---- a/tests/functional/arm/test_aspeed_anacapa.py
-+++ b/tests/functional/arm/test_aspeed_anacapa.py
-@@ -11,8 +11,8 @@
- class AnacapaMachine(FacebookAspeedTest):
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 171d44c644..22e66d1a11 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -97,6 +97,9 @@ enum {
+     VIRT_NVDIMM_ACPI,
+     VIRT_PVTIME,
+     VIRT_ACPI_PCIHP,
++    VIRT_GWDT_WS0,
++    VIRT_GWDT_REFRESH,
++    VIRT_GWDT_CONTROL,
+     VIRT_LOWMEMMAP_LAST,
+ };
  
-     ASSET_ANACAPA_FLASH = Asset(
--        'https://github.com/legoater/qemu-aspeed-boot/raw/3fa3212827b04be4034d43b5adeef57c27d6ab18/images/anacapa-bmc/openbmc-20260512025228/obmc-phosphor-image-anacapa-20260512025228.static.mtd.xz',
--        '2232e241abcfb6d4f6b82cb6c378ce5ce05e364aac6d118785c2b6cc33fe43f3')
-+        'https://github.com/legoater/qemu-aspeed-boot/raw/refs/heads/master/images/anacapa-bmc/openbmc-20260616025349/obmc-phosphor-image-anacapa-20260616025349.static.mtd.xz',
-+        'de3841fb6ed3085aec6424358ee6efc4b8ee85688361e5aa1987fd1acb7d3fb4')
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 500bfdfe2a..962a39247c 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -36,6 +36,7 @@ config ARM_VIRT
+     select VIRTIO_MEM_SUPPORTED
+     select ACPI_CXL
+     select ACPI_HMAT
++    select WDT_SBSA
  
-     def test_arm_ast2600_anacapa_openbmc(self):
-         image_path = self.uncompress(self.ASSET_ANACAPA_FLASH)
+ config CUBIEBOARD
+     bool
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 99490aa7b1..f5b3b4ce48 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -64,6 +64,7 @@
+ #include "hw/virtio/virtio-acpi.h"
+ #include "target/arm/cpu.h"
+ #include "target/arm/multiprocessing.h"
++#include "hw/watchdog/sbsa_gwdt.h"
+ 
+ #include "smmuv3-accel.h"
+ #include "tegra241-cmdqv.h"
+@@ -868,6 +869,8 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     const uint32_t irqflags = 0;  /* Interrupt is Level triggered  */
+     AcpiTable table = { .sig = "GTDT", .rev = 3, .oem_id = vms->oem_id,
+                         .oem_table_id = vms->oem_table_id };
++    uint32_t gtdt_start = table_data->len;
++    Object *wdt = object_resolve_type_unambiguous(TYPE_WDT_SBSA, NULL);
+ 
+     acpi_table_begin(&table, table_data);
+ 
+@@ -898,10 +901,15 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_append_int_noprefix(table_data, irqflags, 4);
+     /* CntReadBase Physical address */
+     build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
++
+     /* Platform Timer Count */
+-    build_append_int_noprefix(table_data, 0, 4);
++    build_append_int_noprefix(table_data,  wdt ? 1 : 0, 4);
+     /* Platform Timer Offset */
+-    build_append_int_noprefix(table_data, 0, 4);
++    build_append_int_noprefix(table_data,
++        wdt ? (table_data->len - gtdt_start) +
++              4 + 4 + 4 /* len of this & following 2 fields to skip */
++            : 0, 4);
++
+     if (vms->ns_el2_virt_timer_irq) {
+         /* Virtual EL2 Timer GSIV */
+         build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL2_VIRT_IRQ, 4);
+@@ -911,6 +919,23 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         build_append_int_noprefix(table_data, 0, 4);
+         build_append_int_noprefix(table_data, 0, 4);
+     }
++
++    /* ACPI 6.5 spec: 5.2.25.2 ARM Generic Watchdog Structure (Table 5-124) */
++    if (wdt) {
++        hwaddr rbase = vms->memmap[VIRT_GWDT_REFRESH].base;
++        hwaddr cbase = vms->memmap[VIRT_GWDT_CONTROL].base;
++        int irq = ARM_SPI_BASE + vms->irqmap[VIRT_GWDT_WS0];
++
++        build_append_int_noprefix(table_data, 1 /* Type: Watchdog GT */, 1);
++        build_append_int_noprefix(table_data, 28 /* Length */, 2);
++        build_append_int_noprefix(table_data, 0, 1);  /* Reserved */
++        /* RefreshFrame Physical Address */
++        build_append_int_noprefix(table_data, rbase, 8);
++        /* WatchdogControlFrame Physical Address */
++        build_append_int_noprefix(table_data, cbase, 8);
++        build_append_int_noprefix(table_data, irq, 4); /* Watchdog Timer GSIV */
++        build_append_int_noprefix(table_data, 0, 4); /* Watchdog Timer Flags */
++    }
+     acpi_table_end(linker, &table);
+ }
+ 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index d8d27f2ef6..aacf9b7251 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -95,6 +95,7 @@
+ #include "hw/cxl/cxl.h"
+ #include "hw/cxl/cxl_host.h"
+ #include "qemu/guest-random.h"
++#include "hw/watchdog/sbsa_gwdt.h"
+ 
+ static GlobalProperty arm_virt_compat_defaults[] = {
+     { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
+@@ -214,6 +215,8 @@ static const MemMapEntry base_memmap[] = {
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+     [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
++    [VIRT_GWDT_REFRESH] =       { 0x0f000000, 0x00001000 },
++    [VIRT_GWDT_CONTROL] =       { 0x0f001000, 0x00001000 },
+     [VIRT_PCIE_MMIO] =          { 0x10000000, 0x2eff0000 },
+     [VIRT_PCIE_PIO] =           { 0x3eff0000, 0x00010000 },
+     [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
+@@ -267,6 +270,7 @@ static const int a15irqmap[] = {
+     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+     [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
++    [VIRT_GWDT_WS0] = 10,
+     [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+ };
+ 
+@@ -3820,6 +3824,10 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+         qlist_append_str(reserved_regions, resv_prop_str);
+         qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
+         g_free(resv_prop_str);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_WDT_SBSA)) {
++        uint64_t cntfrq = object_property_get_int(OBJECT(qemu_get_cpu(0)),
++                                                  "cntfrq", &error_abort);
++        qdev_prop_set_uint64(dev, "clock-frequency", cntfrq);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3)) {
+         if (vms->legacy_smmuv3_present || vms->iommu == VIRT_IOMMU_VIRTIO) {
+             error_setg(errp, "virt machine already has %s set. "
+@@ -3871,6 +3879,34 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+ {
+     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+ 
++    if (object_dynamic_cast(OBJECT(dev), TYPE_WDT_SBSA)) {
++        SysBusDevice *s = SYS_BUS_DEVICE(dev);
++        MachineState *ms = MACHINE(vms);
++        hwaddr rbase = vms->memmap[VIRT_GWDT_REFRESH].base;
++        hwaddr cbase = vms->memmap[VIRT_GWDT_CONTROL].base;
++        int irq = vms->irqmap[VIRT_GWDT_WS0];
++
++        sysbus_mmio_map(s, 0, rbase);
++        sysbus_mmio_map(s, 1, cbase);
++        sysbus_connect_irq(s, 0, qdev_get_gpio_in(vms->gic, irq));
++
++        {
++            char *nodename = g_strdup_printf("/watchdog@%" PRIx64, cbase);
++
++            qemu_fdt_add_subnode(ms->fdt, nodename);
++            qemu_fdt_setprop_string(ms->fdt, nodename,
++                                    "compatible", "arm,sbsa-gwdt");
++            qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
++                                         2, cbase, 2, SBSA_GWDT_CMMIO_SIZE,
++                                         2, rbase, 2, SBSA_GWDT_RMMIO_SIZE);
++            qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
++                                   GIC_FDT_IRQ_TYPE_SPI, irq,
++                                   GIC_FDT_IRQ_FLAGS_LEVEL_HI);
++            qemu_fdt_setprop_cell(ms->fdt, nodename, "timeout-sec", 30);
++            g_free(nodename);
++        }
++    }
++
+     if (vms->platform_bus_dev) {
+         MachineClass *mc = MACHINE_GET_CLASS(vms);
+ 
+@@ -4123,6 +4159,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_UEFI_VARS_SYSBUS);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3);
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_WDT_SBSA);
+ #ifdef CONFIG_TPM
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+ #endif
+diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+index 89d0c46445..12238570b5 100644
+--- a/hw/core/sysbus-fdt.c
++++ b/hw/core/sysbus-fdt.c
+@@ -36,6 +36,7 @@
+ #include "hw/display/ramfb.h"
+ #include "hw/uefi/var-service-api.h"
+ #include "hw/arm/fdt.h"
++#include "hw/watchdog/sbsa_gwdt.h"
+ 
+ /*
+  * internal struct that contains the information to create dynamic
+@@ -140,6 +141,7 @@ static const BindingEntry bindings[] = {
+     TYPE_BINDING(TYPE_ARM_SMMUV3, no_fdt_node),
+     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
+     TYPE_BINDING(TYPE_UEFI_VARS_SYSBUS, add_uefi_vars_node),
++    TYPE_BINDING(TYPE_WDT_SBSA, no_fdt_node),
+     TYPE_BINDING("", NULL), /* last element */
+ };
+ 
+diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
+index acb970e8b3..c4dd8005b7 100644
+--- a/hw/watchdog/sbsa_gwdt.c
++++ b/hw/watchdog/sbsa_gwdt.c
+@@ -285,6 +285,7 @@ static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, const void *data)
+     dc->realize = wdt_sbsa_gwdt_realize;
+     device_class_set_legacy_reset(dc, wdt_sbsa_gwdt_reset);
+     dc->hotpluggable = false;
++    dc->user_creatable = true;
+     set_bit(DEVICE_CATEGORY_WATCHDOG, dc->categories);
+     dc->vmsd = &vmstate_sbsa_gwdt;
+     dc->desc = "SBSA-compliant generic watchdog device";
 -- 
 2.47.3
 

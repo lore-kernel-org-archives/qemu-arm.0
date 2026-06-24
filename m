@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36083CDB47F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A91ECDE002
 	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 12:48:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcMzR-0003Qg-8s; Wed, 24 Jun 2026 08:46:01 -0400
+	id 1wcMzQ-0003NU-5T; Wed, 24 Jun 2026 08:46:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcMz4-00038U-QX
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 08:45:54 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ id 1wcMz1-000388-VU
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 08:45:38 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcMz1-0006O8-Ke
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 08:45:36 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-49249072f03so5757415e9.0
- for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 05:45:34 -0700 (PDT)
+ id 1wcMyy-0006My-U1
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 08:45:35 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4903d730b1fso10907005e9.2
+ for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 05:45:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782305133; x=1782909933; darn=nongnu.org;
+ d=linaro.org; s=google; t=1782305130; x=1782909930; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HGo6vKVJEYEOj+aiq6rUlEcybCfYIVgnGO/BD7j/21A=;
- b=DNOxWnSS5d2NjHCbIuPgOEJ6R9ppgjqi34IcNLxulYOQp1YnfPjlJsubE9LWAdb1OQ
- w3VHk1JdlokCa5Re0ZyZXaG+l9paAvsT9S/HX4bJJBEr7/G/wNmlEmsgFZ45lssjVcU+
- 9vsc2ljGjH5Ujl1z738mklxRDo+r5GtCEVK5aokQW2SHi3vFt8r42FGpTROoutyHrUME
- g9RM/j0u/hDNEsR05ZbkD60ln1AV36xiQmqk9gI+l0ruQ7Tg6EsXSpH4VKhlKzxSp0Nl
- LBHQ9VxDgKh81lRI+ps9kW0RG3Z9IpuJJe4/BHKosHldXL+Hewxf7yCiS5nyU6Ny6PPY
- Nh6Q==
+ bh=pq3pVOWs5xUz0luOR7Gba+BoRAVEKlJAiyWE6ZD8t04=;
+ b=dqX6vjSWf8zgMx4A/ItossrMA1ASCoiPnMxLqfnI1t8+vGJkRh/4U2qKw9SnprxAdH
+ 2fgLYMjhgujmeRltX1AsrxOjUej6yWwSfiCBkaB8KcmlvDgfPqincsbhleNp+noeMW3p
+ kig++Ab8PRHTgY3tcZZqJzevbGJ8dKDFJIIW51KcgE+nTGtNwVwowm6KpeDz7ACSQ4IN
+ 9TLLBVCNE2LgJAdmTFH39/WWalsh6mjQrfWO5Lkhb9Qa7lLsRFZGmUzmBFHXz/DpfR1q
+ BAjNSlGzt1ki+YNhZW9mkCMb/v8VJeqzOOH97JV5qjkrYGSYw7t9OKeiMi9EJxPZ08Hg
+ mjVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782305133; x=1782909933;
+ d=1e100.net; s=20251104; t=1782305130; x=1782909930;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=HGo6vKVJEYEOj+aiq6rUlEcybCfYIVgnGO/BD7j/21A=;
- b=SvlDH6JhevISndykYRFfD1CQWt9lNnHpDeE9InzNZkk3D7+bmkdPI+yV8rNd4k9JWy
- 7+IkAKPm7hne4pDV2JUTYxQE8Nkndd5Mn/5YtwJ+PzSnRB794n9Ie1ja6c2D6xuQn3YM
- KX6Z3lI/fZ7rNdCCC2tLQd+dVoYOres7b9AS7M1DFPFcVN6lAtDtX4+zG1L9+YlR2BF5
- OQLgXtpOad+wPV948gaPBUpDSNlpYVI+tT/gVPeitdJWMgCwFp7tPcDzRoidGH4OdIe9
- h93cUh30XH9xfSCOiVL76s9H4EHdn1yynNhM5O26K3qIrp8GNA4WjWjuNQ7wizbHBS0a
- B8Kg==
+ bh=pq3pVOWs5xUz0luOR7Gba+BoRAVEKlJAiyWE6ZD8t04=;
+ b=sm31Z1GrprdBvbKgJuC0N3u7AvTfw8SoN+G3abmYpFvyAbEcwSzqzgIsmuohiZp2cU
+ eunT6h6M309a55tELwyz0fvyl9/W978OPCMVXFR7v6U4tHOUf9WTSKsBzOQEN2qC4IZs
+ +UWXQZwDNQOz8D0OdEHlGET7GAZj2YP5I/K16r7NRbqxMClpjmDS4TM6hK7Q8Dv/B+RQ
+ IHvK0KTVQZU+UQHQ2BbAKN9YWaCZr6/7M1mIl94pWx/dptzq9ZW/FPDFKXPyulJxQnqo
+ tG5ID8o7ybxYwm/FQGFqcDf7/TR9Nhdnl2yTmeBl453f+jLgSWCC3DZch0PpQGz0MsKy
+ vhpA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+RuVFTs/ApPAjzXh6Bj2Ua1J0UnN91DWiBv2vKx289sA2hliXI1au//GfQN0UWjmQPWZ5WnRhKfQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy7dLrJT1iWAT9KS4mm8PqTaLnFHkv5ruitZ54qR/Jzb5LcE8dC
- XVWCinVLLWGuP/OLYo+LQHuwCsHeGNYkfbI4FPxbJVe5a6b0O1tDSby1P3NOE6nORmM=
-X-Gm-Gg: AfdE7clsYaEfv12Gc6CkjPaZJb/D4oTNf0/f4pUmh9Yogr0DvEoTQZRSDEoTGIn1u5V
- ikk9hN+B/SoXdMkVNOISm7jYJOpmDgqMJFLQBdA1/dO5q12yMUHqc4WBpynzWn0BGMYpVkmghMN
- gMBoKNniPGZNMhGawG/XhqoRB2j8SbXQA1YQpZcgyWbsF4KBPp+v40IVy5gtcmpGcDebxJkPi/Z
- pw0YUOFb3QSkgS+jnuppxDREZoHTMiTUrFtX73mv1eF7QXNm/pzH7rivLGKVmbXdL8h7GpRfI+t
- 6CMTg7/v2iL9Yl43ZOkMyAR4X5NJBr2fviyhvXxHxAHrraPtqnmdtSvjET9iKLTJjreuwwrI2Mk
- IuDhlBox2EBlMnDRHLFWN747DoNKy4wocoV1gMIXnlwQbxZBoTMsbLFJhnfZvmLjLHJAGZwcF7w
- PSJbH3yoGFHdkn
-X-Received: by 2002:a05:600d:8443:20b0:492:1e36:85dd with SMTP id
- 5b1f17b1804b1-4926088044bmr32603205e9.37.1782305132781; 
- Wed, 24 Jun 2026 05:45:32 -0700 (PDT)
+ AFNElJ+KnbBx7e0a8XSUuYVMNg8JZTaGUWv8ogNUtXMbPXA0BOF2rM6nUm8rYThEkzR4UOlnH4aiY9eEjw==@nongnu.org
+X-Gm-Message-State: AOJu0Yw5uD4mTMdImUXnqDEXBJpQ78MyzOWxtrGNM0Ff0Cg7MKQ48CBL
+ eJqGJ/ramgzfHgl4AUw/6Gm2uNqkayQ0EvSyTHTICynuydw1IvOz36lLSQVmS8i8N+M=
+X-Gm-Gg: AfdE7cmGbYx+f6AruG3rtgrI5Z6Xxki0rEcmwHfapHLofMhrXm4Yss/fsKU8hm9TPwE
+ 4PCwJfGu6QqHxg9yPKHpUrEaIyxN2t5NtLR706vQ3aOVxpttTE71I3mraYi390Ed2EonwyFmhtQ
+ aO7PlFwb5dvPJqOaCBqJ9oOuAu19bW1qamRYQPLM1PuK35d2w9McfQsmEOZmgZASp5PjBzv0vCW
+ 3ZSFeDfbDK27MmbkxjXyazutisbR7r86JgkdLvyH5Ga5c/ilomp4HjrRHwQkGEQkVzun8oJMsWh
+ HiO6kdNdqstfaXzmCLD4f+GXBvWNExOIrUFbKUkv4njQb6tokbIlVyIz1jfr/Zb5IGMwNUTWcyj
+ WgmxkR1JDX+rRacxKf9H/+TtQ1zf+waVKhuKsOWkQc9yqQP38jUsrenQF7Dgr0vqoKnW1Iulw2t
+ 7v4AeVUnSgeycA
+X-Received: by 2002:a05:600c:1d1e:b0:48a:906b:14ca with SMTP id
+ 5b1f17b1804b1-49260873781mr43398815e9.20.1782305130246; 
+ Wed, 24 Jun 2026 05:45:30 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-46c1ee01d46sm5782310f8f.13.2026.06.24.05.45.30
+ 5b1f17b1804b1-4924923c862sm349689185e9.7.2026.06.24.05.45.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Jun 2026 05:45:32 -0700 (PDT)
+ Wed, 24 Jun 2026 05:45:29 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 7C35D5FA5C;
+ by draig.lan (Postfix) with ESMTP id 3845F5F8E5;
  Wed, 24 Jun 2026 13:45:28 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -74,18 +74,18 @@ Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v3 5/6] target/arm: trigger timer recalc on HCR:(E2H|TGE)
- changes
-Date: Wed, 24 Jun 2026 13:45:26 +0100
-Message-ID: <20260624124527.1018912-6-alex.bennee@linaro.org>
+Subject: [PATCH v3 2/6] target/arm: trigger timer recalculation when toggling
+ CNTHCTL:ECV
+Date: Wed, 24 Jun 2026 13:45:23 +0100
+Message-ID: <20260624124527.1018912-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260624124527.1018912-1-alex.bennee@linaro.org>
 References: <20260624124527.1018912-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,55 +108,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Toggling the HCR state affects the offset calculated in
-gt_phys_raw_cnt_offset so we should trigger a re-calculation on its
-change.
+When toggling the state of ECV we affect the offset applied to timers.
+As a result we should trigger a recalculation of the timer value to
+take into account the new offset.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - defer calling gt_recalc_timer until after we set hcr_el2
----
- target/arm/helper.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ target/arm/helper.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 4273e3c5395..b163dc5764f 100644
+index 3d52cdc4a5e..3f0707126b5 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -3716,6 +3716,7 @@ static const ARMCPRegInfo v8_aa32_el1_reginfo[] = {
- static void do_hcr_write(CPUARMState *env, uint64_t value, uint64_t valid_mask)
- {
-     ARMCPU *cpu = env_archcpu(env);
-+    bool hcr_change_timer;
- 
-     if (arm_feature(env, ARM_FEATURE_V8)) {
-         valid_mask |= MAKE_64BIT_MASK(0, 34);  /* ARMv8.0 */
-@@ -3807,6 +3808,10 @@ static void do_hcr_write(CPUARMState *env, uint64_t value, uint64_t valid_mask)
-         (HCR_VM | HCR_PTW | HCR_DC | HCR_DCT | HCR_FWB | HCR_NV | HCR_NV1)) {
-         tlb_flush(CPU(cpu));
+@@ -1806,6 +1806,9 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     if ((oldval ^ value) & R_CNTHCTL_CNTPMASK_MASK) {
+         gt_update_irq(cpu, GTIMER_PHYS);
      }
-+    hcr_change_timer = (env->cp15.hcr_el2 ^ value) &
-+                       (HCR_E2H | HCR_TGE);
-+
-+    /* update */
-     env->cp15.hcr_el2 = value;
- 
-     /*
-@@ -3828,6 +3833,11 @@ static void do_hcr_write(CPUARMState *env, uint64_t value, uint64_t valid_mask)
-         arm_cpu_update_vinmi(cpu);
-         arm_cpu_update_vfnmi(cpu);
-     }
-+    if (hcr_change_timer) {
-+#ifndef CONFIG_USER_ONLY
++    if ((oldval ^ value) & R_CNTHCTL_ECV_MASK) {
 +        gt_recalc_timer(cpu, GTIMER_PHYS);
-+#endif
 +    }
  }
  
- static void hcr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+ static void gt_cntvoff_write(CPUARMState *env, const ARMCPRegInfo *ri,
 -- 
 2.47.3
 

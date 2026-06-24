@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23ED5CDB479
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 13:49:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A8E1CDB481
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Jun 2026 13:51:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcNoU-0002Ly-Oi; Wed, 24 Jun 2026 09:38:47 -0400
+	id 1wcNo9-0001x6-MD; Wed, 24 Jun 2026 09:38:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wcNnT-0001es-K9
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 09:37:45 -0400
+ id 1wcNnS-0001d0-JY
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 09:37:44 -0400
 Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wcNnS-00016H-3L
- for qemu-arm@nongnu.org; Wed, 24 Jun 2026 09:37:43 -0400
+ id 1wcNnR-000160-5D
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2026 09:37:42 -0400
 Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-4624c1409c9so919946f8f.3
- for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 06:37:41 -0700 (PDT)
+ ffacd0b85a97d-46066e640easo711170f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 24 Jun 2026 06:37:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782308261; x=1782913061; darn=nongnu.org;
+ d=linaro.org; s=google; t=1782308259; x=1782913059; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=Dbmh3RMHWGextp8wn1iIt5XsGX3XsKMosrBI26uzcks=;
- b=VNeVEvXkaZP6985Otz+EEPnFTKLfdvU3WtAGbpTgsAj0VK/QMMLxejKLiRDIUWko+n
- 1y3BX15Xqio43zmNHysqUFiI2V2MjhqP6Xa2DRtrheSC7TYRE0EtKTxKsLENB/WVscgL
- FyZfZ8bjW/P3Cz1uAib0UvdiIpy7A+1EkMsvotYwcMlH8ims9lFiijvNEms5mzaZAdWQ
- RjB7CYkKckkSQaio+GTApngtwDmLr82Dh9VjgptvGGKsZ+KC4eLIn4Fby5Aw0VUV49G1
- x3i7kI5qQicSN/hHNKc2BT3LibSvbwao52fx9+XRxt+PBqY5rIlKzp49CGeQPfx0Oqmi
- uuxA==
+ :reply-to; bh=KKSPSnAl7FDN6Zt0DqKlBArO4lCMgimmNAk89edFtyE=;
+ b=Q5VWBu5CuR8JHUu4GqcoUsZj1zRU0EYPHEidA1qqU970o5mr5q2EQaDd0TdR7mrW7C
+ 5kCp3+q4bmSy+iwPintqKEQRkJsz7G9a86dWNE8FiJ9UZ9cIT5/Jr8N+eJmwUMgX6M+I
+ 7O6or87iNI/TuTzdbnW7hcgFBAnW39jOquWSc53GmVj8figv8BBk8lYjNDrwMmlZkrBF
+ iqIFt7XGbLj5fSgD0HwyscDD58keLPSpbHo5UyFBsGmeJvvBSqm93hEBx4afIu7dhsn+
+ mSaXivi2n5kevKO2EFzEEL8TVSd6Rcb7l8wCUnvQXv8ZLFo5dEYyTwrydYFhyi0ptVM3
+ jmmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782308261; x=1782913061;
+ d=1e100.net; s=20251104; t=1782308259; x=1782913059;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=Dbmh3RMHWGextp8wn1iIt5XsGX3XsKMosrBI26uzcks=;
- b=Os+b3pFk0Y8xOKnU218XhgqGXTkHpKLB1n5MGH27gQPgMSqCwcifh3ZWA0/xXczMJM
- Im6CV0N5ZnOHAg0mvWZc8qqcdGfkdG2wOE/PVKuHK4xcP13WJL/pv8t4deLlaeh4B0tB
- it6ZTlCCVZ59e5FPednAk7pTqvFJafnuXYp/BwgvCvH3PPqOfcqU2QWVI/J1sKL89J3K
- eB9xZXrQ5cj3VpP8fUgj1U9hd1Qmh8FpofsM9xHlHop0twHcmFzCYNaskf1LP/ab7769
- fcus3bjfZLblH94tSPc+s0wH3b2z9GbOCI73dW/bf3kqRROe44iq0x392SdG9Ne6Fk4d
- pBkA==
+ bh=KKSPSnAl7FDN6Zt0DqKlBArO4lCMgimmNAk89edFtyE=;
+ b=oJSpi7mLT+s6HLqolKAM3s80CqyvVDtJctSKuNYBTufn4WWP0K0nGc/DYjF7dcfXUl
+ jI3KKvZLa7ruDpiMatIW3Q7Z14haXSQYY1ro8QO9d66AVTyzJVR30TigrHSzq70TfcD5
+ iykwmqbRV74fRIeaukG1K5YQcQM7Sy6F0yxWiPQteM4Z0PWKulmnilv12h20CCs4iaML
+ 4LDsbHoR0SuhwhIGwYWPu+sZeMse51eZv1qSmok7n1CTZ2T0P4+NWHhWDXKWdQmVOo4r
+ 6/7/x9iuAVxi2lDgQ+lta6kMR0P8gKeUi8t/3H4sDmEWmPmLU3Ous8/ZXXEvt33W80Ps
+ QBfw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqA8KD1NL9+yuk6wN5uMf+jjy/2X7SOPjMdaY8adpQamXSiIWUGZYmcxS6uWdG0k1zwVxLswQnj0g==@nongnu.org
-X-Gm-Message-State: AOJu0Yydn3rOpuEV9MTY0m8fAlpu6W+JbAYzd/v/4WlD5NoPRZiOW5sz
- nNsqVSndWYqwaV2j7GBp714KXDYJEq7sMd5gG8eWXMnmn51a/+iVZ7nFmy2YqG3GKTo=
-X-Gm-Gg: AfdE7cmekL3FdFYXnnPq2HgY0ApEZxM3XDSbtOT4AUucfTAe2jMCmuU/Amk8SNt7zjj
- o+Uj8oPSxr0Cogo+FOWiJ6wv5Rqf1DENC4DmkaKEPj2MLW+sqNK0Gp2QXnrANEXon3j4RNwPtaJ
- aNP0kVyVuQOOqHQGBKleClgnR/NpF3ffaZNAcjQyX6OypfA55nhefzGO3SX26R7E5I8EoFfqCaJ
- phUq9K5WlArFrN79nz7F+l/ZmJ5URMlrKDK6aKxWdtk5iNyU12ue8MJ5hjhwlXZmOYqN/2zjPjZ
- iFJOJECEhvN7N9D9uPTtIs6lznGx86sdRBLKGKi4jJ+XHiiL38vVbJ8Ciut3Ougpdq3NrZaPckl
- WdrAPtlLgD44JfATEjVWJ7uq7IBk2EZ7kvgelVgCzrXGkfe/TdvGTLWTx5BVO4CJGOzbgcbVvms
- K3kcs8ujjHu+j/AoVVyBP+0DlUAg==
-X-Received: by 2002:a05:6000:2c04:b0:46d:32:3340 with SMTP id
- ffacd0b85a97d-46d0032353dmr966946f8f.36.1782308260654; 
- Wed, 24 Jun 2026 06:37:40 -0700 (PDT)
+ AHgh+Rql4vDxFNpxOhJLPcyjgZkh3jKxNUGcYqhnG4h1Yl/aYKQtpRCE1RFUoPZX+pjRoWszK8vQ/yLPYg==@nongnu.org
+X-Gm-Message-State: AOJu0Yz9r45L93IDakwxnYmA6zsPKLSCKbvETlRxV1DBaEW28/Fj9vSO
+ lucs2WeNN3IZoUyLi8rCljS9yRB4p7cS1fzqNXNAam/76BQqt6nwAh2lc72D7t8Crlo=
+X-Gm-Gg: AfdE7cnyFA1FoNe5GRXZL7Oy/Fi+7d4BP1dkDryO9Co9fsGWdATpEDolGZNEyNYTk70
+ 3Z8FSmv65Pju6Ui/0eQZa888EEV2D0yIqvRG0Y/aX8EWFLi2wvy9oa9ye54umR55dZ6SMChhDSE
+ 3D/X3H5+ES1+O17D94S5H0koxHh6MU4RdDoO5r6xOt8ip/tqoEjh7sqq1NQ7FpJU9ILm2HulCK9
+ URQp0NPHOJtgqwmpXH0AB3ptX5LN7wcnUCeQs/zwrkBRyiOZ+rrrEgUGfKA1SXIQg6zR05KDyia
+ jV5I7c4ovy9p5iay0cujzyT45r5MNyt5UP7GrvU9K8vRthYwitVD3jBbJvMx9Tt8tAmwYLWSiB/
+ gm5EjljBOFJwBxhiLt6YMT6nEeY+0J10DZ54hBMfzlvhfoK0USuoH6qXae6ATWyprSgl/YMUczs
+ 7WpSDleY5qv9WzkrU=
+X-Received: by 2002:a05:6000:400e:b0:468:6ce0:ef1a with SMTP id
+ ffacd0b85a97d-46c0a3936e3mr6136409f8f.11.1782308259573; 
+ Wed, 24 Jun 2026 06:37:39 -0700 (PDT)
 Received: from [127.0.1.1] ([2a10:d582:31e:0:2e21:1ee8:260f:9a76])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-46c1e840efdsm6646334f8f.5.2026.06.24.06.37.39
+ ffacd0b85a97d-46c1e840efdsm6646334f8f.5.2026.06.24.06.37.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Jun 2026 06:37:40 -0700 (PDT)
+ Wed, 24 Jun 2026 06:37:38 -0700 (PDT)
 From: Jim MacArthur <jim.macarthur@linaro.org>
-Date: Wed, 24 Jun 2026 14:37:28 +0100
-Subject: [PATCH v2 4/6] linux-user/aarch64/elfload.c: Add FPRCVT
+Date: Wed, 24 Jun 2026 14:37:27 +0100
+Subject: [PATCH v2 3/6] target/arm/tcg/cpu64.c: Add FEAT_FPRCVT to cpu_max
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260624-jmac-fprcvt-v2-4-dc6cf8e512b6@linaro.org>
+Message-Id: <20260624-jmac-fprcvt-v2-3-dc6cf8e512b6@linaro.org>
 References: <20260624-jmac-fprcvt-v2-0-dc6cf8e512b6@linaro.org>
 In-Reply-To: <20260624-jmac-fprcvt-v2-0-dc6cf8e512b6@linaro.org>
 To: qemu-devel@nongnu.org
@@ -88,7 +88,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,21 +106,21 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 ---
- linux-user/aarch64/elfload.c | 1 +
+ target/arm/tcg/cpu64.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/linux-user/aarch64/elfload.c b/linux-user/aarch64/elfload.c
-index 4887a3a7b7..4487d047bb 100644
---- a/linux-user/aarch64/elfload.c
-+++ b/linux-user/aarch64/elfload.c
-@@ -173,6 +173,7 @@ abi_ulong get_elf_hwcap(CPUState *cs)
-     GET_FEATURE_ID(aa64_cmpbr, ARM_HWCAP_A64_CMPBR);
-     GET_FEATURE_ID(aa64_f8mm8, ARM_HWCAP_A64_F8MM8);
-     GET_FEATURE_ID(aa64_f8mm4, ARM_HWCAP_A64_F8MM4);
-+    GET_FEATURE_ID(aa64_fprcvt, ARM_HWCAP_A64_FPRCVT);
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index f7a920a202..f259e82dd3 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -1269,6 +1269,7 @@ void aarch64_max_tcg_initfn(Object *obj)
  
-     return hwcaps;
- }
+     t = GET_IDREG(isar, ID_AA64ISAR3);
+     t = FIELD_DP64(t, ID_AA64ISAR3, FAMINMAX, 1); /* FEAT_FAMINMAX */
++    t = FIELD_DP64(t, ID_AA64ISAR3, FPRCVT, 1);   /* FEAT_FPRCVT */
+     SET_IDREG(isar, ID_AA64ISAR3, t);
+ 
+     t = GET_IDREG(isar, ID_AA64PFR0);
 
 -- 
 2.43.0

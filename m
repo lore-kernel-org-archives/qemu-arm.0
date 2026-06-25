@@ -4,110 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82F97CDE009
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 18:41:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D720CDE00B
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 22:35:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcp0M-0003ll-9c; Thu, 25 Jun 2026 14:40:50 -0400
+	id 1wcseq-0004Yf-Sm; Thu, 25 Jun 2026 18:34:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wcp0K-0003l7-9k
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 14:40:48 -0400
-Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wcsed-0004Vq-RL
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 18:34:40 -0400
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wcp0I-0005lY-G2
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 14:40:48 -0400
-Received: by mail-yx1-xb12d.google.com with SMTP id
- 956f58d0204a3-662dc3879acso256220d50.0
- for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 11:40:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1782412842; cv=none;
- d=google.com; s=arc-20260327;
- b=h6L5lUmkLCdUSxooWUigj4iESkiYVl2o32s7pgwZ0O6nTM8Nxo5zFO/c13C+1EE/3m
- UM3G+w1PU4hXHWHbuVYEDRpH5jcLca2ebqbFNRQRBayw1V89S7Rw+iQvLVzAHl2gRphq
- XwX/+HT+pCzFIR9WsVq9YvysUSSQod4G3ickE9wy9iKudcRMa9Rfrdt21pay08Yk1Jf6
- tbrIHKULuEbObD9BskJYo8zHT0bMrUpLDuNbqNEFxqiiodR4LASOgZvctVfouYh4OT7v
- VHVy3ZfETKPkq2AHk9o/McwViAuhd9xIb5bKPxLk9xpXQKsMYZ6xHsvSyaT9LwtZUa7g
- TC1Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=1//dkdkVyo3lk9F7xtNTKOwcUnSX+MrMrUozB81hdj8=;
- fh=zQ+1/WZxyJNphePpMJP3pTLNDk/eCXAp/EVj6lSxnzQ=;
- b=fsn0EfkEwSz1CmFTGKAT9fzh6W+5BWyAS0g7QhkO3upvOQPW/69EIRykgesCPzx+XZ
- GWxR0aaE+PXsifzoc+jT4pwTzUvLhPNZH0T5JQn1Jwqt8koHDzur6OTX+qoA5LjyI2zS
- A9bdTkGrayAyb5yA4O1HjWlaUbsTX5kRA31G6foMGjyOtVdVckqRf/5ncFR0OnTKVTCp
- f0Onm/UoQLrEzhlWVV8a+b1wBiyJZGvubhIXhNLKn0rGfV+KQm7Ia13tRf8pDDur6FA7
- 1U9Ug2nbv7YQl8fWAQ3hlHG7AsjZtrQoD9dU4nH61WrYnL5dGd4c945HqYBdTRAhhjNt
- 6WSQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wcseZ-0002Ki-Ff
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 18:34:38 -0400
+Received: by mail-pg1-x52b.google.com with SMTP id
+ 41be03b00d2f7-c891d27b10eso216995a12.0
+ for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 15:33:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782412842; x=1783017642; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=1//dkdkVyo3lk9F7xtNTKOwcUnSX+MrMrUozB81hdj8=;
- b=Vh6FzyGn0jhMag99f4QZsT5buhoAsX+8tClfCYY9C4yZfJNJW94td63AeSUQNUrpj+
- onH8MQ7Mn1iWrFIQg1eEQOsC3zJTwcBsPk79JP1EhoaUFkW4WI5R9OpHQLsvCln+tEIg
- hEwSbgIOMhJW1gmgqvl7/NRsxjkCocq3+kcpnhi6b8uNLEUiDjmj4ogggb5jmnkEe/M5
- 4hVq4U8DjIXWryXJHfCLPGGOf9kKOMMwaSSyWTFUmGIQYgqOxL+ebvnB7kXUFYKC1/BJ
- o/hGo6fwASF0St9w4gvX0qYpVUeGEkdhoxMEClZxBN+YX+8Wet4TY44MsxROytPuioLA
- 0Ppw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782412842; x=1783017642;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1782426730; x=1783031530; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1//dkdkVyo3lk9F7xtNTKOwcUnSX+MrMrUozB81hdj8=;
- b=PjDFqqSE1lmRtWuiAxnaGPz1RLLm9MVuFDJL7MbjLbZzFjApNCstg75TBia0YsTVLu
- Qro/MtDbtCZ5C4e3gKiNjlyWnkV4mN9OD5QhWJj6SfMr3iWDStvPKs+q1TRsoDdDPHvp
- 284yGs9x6vY429CVcEbfxBkS8IPLhgcHb39gCZPLXliZzUVou6rKOdENRYdoXR2ceQIT
- xnTyn5o9B9rqShuhTqtBMEiAunzkYgehj00n0C6xa1k93dge0OESZhtgE3ZKAtXUfqpQ
- huksGJcxVxR/kd6bk79DscQVAxZGAz0h+d5p64xq/1kO9rRFsLLJCTK70+BWw8LMot/h
- hm9w==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpQpcP4xO7ghBGMB3n27wpYXH652ixPuFMVcdfrITtU5341vtZPmUy6vBd7QeAnrviJmWGGmVz5Gg==@nongnu.org
-X-Gm-Message-State: AOJu0YyLWgwy23P0FiWxkMu4wkWV2Jxx3DpiRuZe+S9+WDnvyP9gD6Hu
- 5lqYTYwtiR8JcsJPAaghBCFGVoTLs/G0/nuzHtbOVFjEMZoVt0mIXk88QwXtoEBb/fE0KHaFi6F
- cAZAQBmzC+4oo+aWlIxV4v2TS+DcpQjfkxJFbzs2+Vg==
-X-Gm-Gg: AfdE7cn0mwSS3ddmY/zjW3r+NjwmUwR7qBu+TTMPiFwGrIdxLDRK8jvMBi9j3Y7p1FE
- STq+ZQyYQ8cgv9DFc5VV3wbfJEe2t8WOzwmMCOignsEuytZlzLwiMn5CQyXOXOkpWVojmylk1BZ
- 3X+/iUu89nSS8COV/3IiM2YIQzjyN/9ituO0bwAG5JXOvzW/XuXOIDb94s5Vm3km1FxE9li66Iq
- ACxHoNwekEJ1FnkYC5+UfbxV/u3GEoCsaa162cW9RUtqjr11jFvVqMFmYd6berBfkxo8ZjFNhbt
- 9mfTopB2rKVQXK0r5FyRP7FS6VJ0XLBxQJcRA1wsa6jPZ8NbGaoL0uYy
-X-Received: by 2002:a05:690e:1c09:b0:662:e7e4:fe6f with SMTP id
- 956f58d0204a3-66487e682edmr2718511d50.21.1782412841502; Thu, 25 Jun 2026
- 11:40:41 -0700 (PDT)
+ bh=OX1DXUHDs3wRzE3fBNAvapThfwP0ojuzDB2f/jYyfIY=;
+ b=NxqvBJKLsZN+OicgwP4s1mWY6Apk13mxEEqwKTxXS1AHJ2GNAj4tClNLHAiWhOhp0f
+ 74mQyRZUgv7YChEqlxnBuwx0CyaueEfHWHjCdgGAGjCpgmrKrY1p+VGvxbxhEdgKQvIo
+ rWXR8KntkhxMfTK4WlbVM6KviK3CW7TG1qRSMhIQ89Ccw9Mg/8QGhJ7+ncZjULNbaDWv
+ JlE1la1TtH+DrXlJnOSbuTJKZukoLXD+TJfSaC6Oxd1olmujt05GLrlBQrPHCL3bnDQJ
+ gAgl0E2kAGAku3UundkUyzt9PtGXyfH1wPc0BuIWS3I0guOwGlPGKoaPwaSYK28J2Bko
+ /iLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782426730; x=1783031530;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=OX1DXUHDs3wRzE3fBNAvapThfwP0ojuzDB2f/jYyfIY=;
+ b=Pi8Iw3qA37bGpEUiKK1zgg4ush2Qdf30aFub3CxGBDqMPpvgDK/brFE+uOtakErvpD
+ OXJ08OhwnkbKaLBCuWFCODlkLYs1INcqwZEWwPPf3+XqZ7E/UAKzP2jutIE9OI494QHo
+ OqrlijyUdrlmDWXXmTKLZfZC9uy4N6UZQy+oEfCesg83K5L3I8tFc9ZY9mEeTE1tOk93
+ t0qEA85IHRYC7xgvmo2JnO2hT+ck6uopxpYc/+PEEGNo4sd1epvN/44Zdxo+/qGAy/6a
+ pnPC7gCR5FDf9f+aRbXuhEuxDZe/jOSrLr+xJ+NN4U3ueJPx3GyDamOMPCwN96Ncjaxb
+ tvEg==
+X-Gm-Message-State: AOJu0YyhhxB+pn0xuLktts9OQksvqY7nwOkLMAmgcNIdEbjWetzT0MUa
+ OptC4HEv8pHx5rBqa2UnztltU8m2nN4+gp1Mq1G79ErL2qvFVE8lvtjPDVBJI2nGLYPacrmklun
+ +Ld9p
+X-Gm-Gg: AfdE7cm6CU0kBviRDpz26Z6GWSE3qHQAnpwJ54BfQAe8vSua4BBzxFL6drwKLXiTvMs
+ rf/w0mQ89Lu38sCdM8HNxW0H20ZFZ8jT+0kyr5gWTsDATd6pv9mXPxBZDN9mmAkSAtjoF0b9/Tk
+ kL/D3Z5r+uFkLk9j/slxie3hTC85DlOflQl30YBOC4fUkGso93RbIjO39fhFdKkoxlGhlIfOGaG
+ VRTnH81MjGgPE08Ny6esZrHhSx8ro6uXe3oVuWi51k/xLN4tr3xwjhQFJDxMChRi+v3GpWX5Wdo
+ e6udXQnAQxSbPpLdZ7LyqeMLWsbczyxpoeIEZu86FhoITl8Ej/lRc/AvlSWK5eOQYdgtPEjBcsU
+ m+UNLxaSVuy3vr3jlcQMWwk7kQl39g7YpniH4e4jud3vBm/khi3QtUOBEWWMuv/NRxJ8WjCcu8D
+ VS7UKJ2D/MFcdTLbF0gDjuFPsx+n6JDPRl9H81/uWZs7rJ5sL8iA==
+X-Received: by 2002:a05:6a20:7fa1:b0:3b4:b259:6965 with SMTP id
+ adf61e73a8af0-3bd4acd3453mr5015384637.11.1782426729580; 
+ Thu, 25 Jun 2026 15:32:09 -0700 (PDT)
+Received: from stoup.. (174-21-129-215.tukw.qwest.net. [174.21.129.215])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-845a412e5e9sm5450139b3a.54.2026.06.25.15.32.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 25 Jun 2026 15:32:09 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 11/15] target/arm: Implement SUMOP4[AS]
+Date: Thu, 25 Jun 2026 15:31:56 -0700
+Message-ID: <20260625223200.763198-12-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260625223200.763198-1-richard.henderson@linaro.org>
+References: <20260625223200.763198-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-References: <20260616052552.389021-1-gshan@redhat.com>
- <20260616052552.389021-2-gshan@redhat.com>
- <CAFEAcA-mf14=jpRFHarAbN6AbQwvW=Yu6WB1JiNMsECEdaxD3A@mail.gmail.com>
- <20260625070551-mutt-send-email-mst@kernel.org>
- <CAFEAcA8YJZq9TqrUd0zTnewAdVDm5y6UV7BJQZ0C60TZ=RT98Q@mail.gmail.com>
- <20260625091334-mutt-send-email-mst@kernel.org>
- <CAFEAcA8xK+t3-prEphtkq-o9UY2mgS6cowhs880GOaxL9dKSGw@mail.gmail.com>
- <20260625101817-mutt-send-email-mst@kernel.org>
- <CAFEAcA8-Un+Q1yBDqLWCLPRwtgTA_VhJqGobgZChrFhAeVfG8A@mail.gmail.com>
- <20260625123119-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20260625123119-mutt-send-email-mst@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Jun 2026 19:40:29 +0100
-X-Gm-Features: AVVi8CcIN6O95iU7xBQuCQgAwOgN2fhwHOqWingqGxZG58bh6oBQyKNS2oH6J-4
-Message-ID: <CAFEAcA8UjtXgmPC27fOKMwbaWs2piwGYudtwCNWQHuu3E_7A-A@mail.gmail.com>
-Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
- device region accessors
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- peterx@redhat.com, alex@shazbot.org, richard.henderson@linaro.org, 
- berrange@redhat.com, philmd@oss.qualcomm.com, philmd@mailo.com, 
- david@kernel.org, clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com, 
- jugraham@redhat.com, liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, 
- shan.gavin@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,114 +100,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 25 Jun 2026 at 17:47, Michael S. Tsirkin <mst@redhat.com> wrote:
->
-> On Thu, Jun 25, 2026 at 04:23:47PM +0100, Peter Maydell wrote:
-> > On Thu, 25 Jun 2026 at 15:52, Michael S. Tsirkin <mst@redhat.com> wrote:
-> > > I think there is exactly 1 kinda reasonable case. A 2 byte read/write at
-> > > offset 0x1 within a dword. This maps nicely to even classical PCI byte
-> > > enable mechanism and so yes it works if your CPU can initiate these
-> > > things, and it's atomic.
-> > >
-> > > I tried reading LEDCTL on e1000e:
-> > >
-> > >        byte  @ 0xe00: 0x64
-> > >        byte  @ 0xe01: 0x2a
-> > >        byte  @ 0xe02: 0x00
-> > >        byte  @ 0xe03: 0x00
-> > >        word  @ 0xe00: 0x2a64
-> > >        word  @ 0xe01: 0x002a
-> > >
-> > > Works fine.
-> >
-> > The e1000e datasheet actually documents what it does in this
-> > case (slightly surprising, since hardware engineers love to
-> > leave this kind of corner case undocumented):
-> >
-> > # For registers that should be accessed as 32-bit double words,
-> > # partial writes (less than a 32-bit double word) does not take
-> > # effect (such as, the write is ignored).
-> > # Partial reads
-> > # return all 32 bits of data regardless of the byte enables.
-> > #
-> > # Note: Partial reads to clear-by-read registers (such as, ICR)
-> > # can have unexpected results since all 32 bits are actually read
-> > # regardless of the byte enables. Partial reads should not be done.
-> >
-> > So for this specific device that access is out-of-spec.
->
-> You mean that access to clear by read should not be done, right?
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/helper-sme-defs.h | 5 +++++
+ target/arm/tcg/sme_helper.c      | 5 +++++
+ target/arm/tcg/translate-sme.c   | 5 +++++
+ target/arm/tcg/sme.decode        | 3 +++
+ 4 files changed, 18 insertions(+)
 
-The datasheet is ambiguous about whether "Partial reads should
-not be done" is meant to apply generally or only to clear-by-read
-registers.
+diff --git a/target/arm/tcg/helper-sme-defs.h b/target/arm/tcg/helper-sme-defs.h
+index 070a1a2c1d..3da40d9f33 100644
+--- a/target/arm/tcg/helper-sme-defs.h
++++ b/target/arm/tcg/helper-sme-defs.h
+@@ -386,3 +386,8 @@ DEF_HELPER_FLAGS_4(sme_smop4a_sb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sme_smop4s_sb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sme_smop4a_dh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sme_smop4s_dh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sme_sumop4a_sb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sme_sumop4s_sb, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sme_sumop4a_dh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sme_sumop4s_dh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+index 11d9d509ec..5a9e3b8398 100644
+--- a/target/arm/tcg/sme_helper.c
++++ b/target/arm/tcg/sme_helper.c
+@@ -2972,4 +2972,9 @@ IMOP4_4WAY(smop4s_sb, -, int32_t, int8_t, int8_t)
+ IMOP4_4WAY(smop4a_dh, +, int64_t, int16_t, int16_t)
+ IMOP4_4WAY(smop4s_dh, -, int64_t, int16_t, int16_t)
+ 
++IMOP4_4WAY(sumop4a_sb, +, int32_t, int8_t, uint8_t)
++IMOP4_4WAY(sumop4s_sb, -, int32_t, int8_t, uint8_t)
++IMOP4_4WAY(sumop4a_dh, +, int64_t, int16_t, uint16_t)
++IMOP4_4WAY(sumop4s_dh, -, int64_t, int16_t, uint16_t)
++
+ #undef IMOP4_4WAY
+diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
+index 6f3806f4de..fce07b2565 100644
+--- a/target/arm/tcg/translate-sme.c
++++ b/target/arm/tcg/translate-sme.c
+@@ -2114,3 +2114,8 @@ TRANS_FEAT(SMOP4_sb, aa64_sme_mop4, do_mop4_int, a, MO_32,
+            a->s ? gen_helper_sme_smop4s_sb : gen_helper_sme_smop4a_sb)
+ TRANS_FEAT(SMOP4_dh, aa64_sme_mop4_i16i64, do_mop4_int, a, MO_64,
+            a->s ? gen_helper_sme_smop4s_dh : gen_helper_sme_smop4a_dh)
++
++TRANS_FEAT(SUMOP4_sb, aa64_sme_mop4, do_mop4_int, a, MO_32,
++           a->s ? gen_helper_sme_sumop4s_sb : gen_helper_sme_sumop4a_sb)
++TRANS_FEAT(SUMOP4_dh, aa64_sme_mop4_i16i64, do_mop4_int, a, MO_64,
++           a->s ? gen_helper_sme_sumop4s_dh : gen_helper_sme_sumop4a_dh)
+diff --git a/target/arm/tcg/sme.decode b/target/arm/tcg/sme.decode
+index 6fdf79c7b6..e3ba15bad8 100644
+--- a/target/arm/tcg/sme.decode
++++ b/target/arm/tcg/sme.decode
+@@ -1120,3 +1120,6 @@ FMOP4A_hb       1000 0000 001. ...0 0000 00.. ..00 100.         @mop4_o1_s0
+ SMOP4_sh        1000 0000 000. ...0 1000 00.. ..0. 10..         @mop4_o2
+ SMOP4_sb        1000 0000 000. ...0 1000 00.. ..0. 00..         @mop4_o2
+ SMOP4_dh        1010 0000 110. ...0 0000 00.. ..0. 1...         @mop4_o3
++
++SUMOP4_sb       1000 0000 001. ...0 1000 00.. ..0. 00..         @mop4_o2
++SUMOP4_dh       1010 0000 111. ...0 0000 00.. ..0. 1...         @mop4_o3
+-- 
+2.43.0
 
-> > I guess what I'm wondering is: can we just have code
-> > that does an aligned exact-width access in the 1/2/4/8
-> > byte aligned case, and the host's best approximation to
-> > an unaligned exact-width access for the 2/4/8 byte
-> > unaligned case?
->
-> That's my idea, too.
->
-> > (so on sparc you get multiple smaller
-> > accesses, and on most archs including x86 and arm you
-> > get an unaligned load).
->
-> I thought unaligned load from uncacheable on arm is
-> also a fault?
-
-For Arm the distinction is not cacheable/uncacheable
-but Normal vs Device. (Device is essentially for things
-which are not RAM; Normal is for RAM and RAM-like things,
-and includes all of Normal Non-cacheable, Normal WT-Cacheable
-and Normal WB-Cacheable.) Things mapped as Normal memory
-don't generate unaligned faults (unless the guest turned them
-on deliberately). For Device memory, it is IMPLEMENTATION
-DEFINED whether you get an alignment fault or not if you
-map something as Device that could have handled unaligned
-accesses if you had mapped it as Normal.
-
-> > That would mean the guest could
-> > potentially provoke a fault on the load/store on an
-> > access to a passthrough device, but if you give the
-> > guest passthrough access it can very likely provoke
-> > a fault anyway, depending on exactly what the device is.
-> >
-> > I think the most likely reason for an unaligned access
-> > in this codepath is "it's actually RAM, either really
-> > host RAM or else something memory-like in a BAR", and
-> > either way if the guest does a 4-byte unaligned access
-> > then doing a 4-byte unaligned access seems better than
-> > second-guessing it, even on non-x86.
-
-> Right though remember: whether it's RAM doesn't matter. What matters is
-> how we map it.  qemu might fault because it maps NC but guest maps
-> cacheable and it's ok.
-
-If QEMU and the guest disagree about the memory attributes
-on Arm then we have already lost, because the architecture
-says that memory attribute mismatches result in a variety of
-undesirable effects including things like loss of cache coherency
-(i.e. read and writes via QEMU's NC mapping disagree with ones
-via the guest's cacheable mapping because the latter are hitting
-in the cache and the former are bypassing it).
-
-> But, all this in theory. At a high level, I personally think going with
-> what you propose as a 1st approximation is entirely reasonable, except
-> for one thing: we really should not crash qemu, since access can be from
-> guest userspace.
-
-You can't prevent faults entirely, though -- if the device
-being mapped has e.g. behaviour that says "unaligned accesses
-will fault" and then the x86 guest does an unaligned access,
-then the device will trigger a fault, and the fault is what
-you want because it's what the guest would see on real h/w.
-Unfortunately we don't have a convenient way to feed the
-fault back to the guest. At some level if you pass through
-host hardware you're relying on the guest to not do totally
-stupid things.
-
-thanks
--- PMM
 

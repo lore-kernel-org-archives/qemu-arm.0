@@ -4,81 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC061CDB479
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 14:01:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C552ACDB479
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 14:03:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcke6-0002td-SJ; Thu, 25 Jun 2026 10:01:34 -0400
+	id 1wckfV-0003hB-F5; Thu, 25 Jun 2026 10:03:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wckdz-0002jN-Qy
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:01:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wckdx-0005rr-Hf
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:01:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1782396084;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wkrL62b63LzC8VZEhuZSNJLUQp4kCXFtIEMFdYpfBVY=;
- b=iyHlnwg1mCmkLd0ueRcvEWi5tIIRbOeKbsZB4j8qkoRREWc/weadqxSytyT7nLnRU+kAsE
- 6enhy15JghjR8VN98kpuiWFIDqyXkTvQaBjBcdUoY1DZIWYcDOnvu5huRjtwEU3akl0LzI
- nhofMh26Q5eAV4PDVp+mmF/NtKvdvHs=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-543-RwmsAu6aMWWAgvAOCjiUZQ-1; Thu,
- 25 Jun 2026 10:01:16 -0400
-X-MC-Unique: RwmsAu6aMWWAgvAOCjiUZQ-1
-X-Mimecast-MFC-AGG-ID: RwmsAu6aMWWAgvAOCjiUZQ_1782396075
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2922D1944DE3; Thu, 25 Jun 2026 14:01:15 +0000 (UTC)
-Received: from redhat.com (unknown [10.44.50.5])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7EAF23000715; Thu, 25 Jun 2026 14:01:11 +0000 (UTC)
-Date: Thu, 25 Jun 2026 15:01:07 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
- philmd@mailo.com, aurelien@aurel32.net, peter.maydell@linaro.org,
- pbonzini@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH 7/7] hw/acpi/piix4.c: convert object props in PIIX4_PM to
- class props
-Message-ID: <aj00ow9ytj8rQAcI@redhat.com>
-References: <20260622112403.928954-1-mark.caveayland@nutanix.com>
- <20260622112403.928954-8-mark.caveayland@nutanix.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wckfT-0003gf-1x
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:02:59 -0400
+Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wckfR-0006AC-0m
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:02:58 -0400
+Received: by mail-yx1-xb12f.google.com with SMTP id
+ 956f58d0204a3-662dc3879acso2185013d50.0
+ for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 07:02:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782396175; cv=none;
+ d=google.com; s=arc-20260327;
+ b=siynYCaNw4+3/5PWq/SiuqCfrvzDXWhbNqQpmKb/gxejl/0110Szs8th35U280hdO+
+ MoeK06rek6GjQ+oakGV3umOmX1fl58jNbgs/U0YA+32luqvNJ/Xly7Zlnn4KwGPH1mLz
+ HRG3Sag8sK7r3M2U8LH4ltuo8cjzfKdRirWALATMdjDz8lLwCh8NLmtHuorzBp8e+Jme
+ PnLGNEBZaI6jW528snwmvlqSCw98qY8AMzZ7lOXnrcc10JkRybUNaIG7AC/z3SnTs12Z
+ FMByeB1XD15dI2iWy3SwcdkNNxbaFBaYsv169yOE/rcxkfaJ3ziyxdNNIxx04pVakIeM
+ ocFA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=DYEqZxqgzUw2voQpVHyMaVq9iZjwv3lkabsgdLeERQ0=;
+ fh=eMRUwjgAiJiEWJOr5pGxOvk2i+PTvY6QdiTsqz5ybDY=;
+ b=SgbpjKDJbequWCs2KPZ3dEqhPK3XPS1EVKHwXoeuplHBOkEP1zwgZMKeDHkavbBN56
+ TKuINwAMj1bkQczTzCmA2TD8ukTIakdT3zmC/FF6LZPhqSYMe9FIspzHA/ADpXG6qBMc
+ 0FvsfX5ZPIALqM+frYMZPCfRMo2x+pldytHZz2VV9+x2TlLUMQteFvrJVjAAHOd4wR1d
+ mLSqliSGVeiSZ81VJu5RJwZwI2YxLesm4e9ysId9i/aNCeZj06rOBMHfXz4FKFl/r+1j
+ Gfx5XB+mjsLRGBCP1lEmK13OmwP60LzqdWjo60nqE6hPvji33K4rMFSBUI4xj+GPV/pb
+ uVIQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1782396175; x=1783000975; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=DYEqZxqgzUw2voQpVHyMaVq9iZjwv3lkabsgdLeERQ0=;
+ b=bINEAo5DoVartzyUheJmywUqsBDi/QgjW+G/i+fED1S1d1xm5vGRI2DiKOABmf2iKi
+ kZ9vo0SGmWeog9VaAJaHQ+vl1CD/RKKyR+iMIXZVkpN3sTNT27qYGG/IN3rTfEVs5aqk
+ yq//jytUyhmy1YEranON+hM05fgHW7ixg3JsZgM+nKhh+TR4gZboBCbhJYIlNpyOmwTC
+ TqkTs3YKYqAvnqguqLQPXkl4wAegL7T0LqGeTU3bU8t7bUdoKGMzBDGFei2e8+D8H07H
+ SLtHFjARjc+bqacz8h5aLebw9Zs2kAOka+evbwG+5ofNVPBpCcxGBgsLSrDs2Q27wnfd
+ pXVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782396175; x=1783000975;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=DYEqZxqgzUw2voQpVHyMaVq9iZjwv3lkabsgdLeERQ0=;
+ b=csEY+XPfcxheTMbh/2hN25KULsps8MPRYFcQ0+lVpczRSo/xU/a/dfosARBIyM5xJ5
+ KvLqpg5VWu1Oy3Tmfk6t3kmVgenWsNaX1194ErXXEHwuhyoRFfUZDqtfWyHJDrbH9ndV
+ i0NOaOf3eYy/cXTAwXYGN7qaxq+LNLHMUo3/dj2vf267qSMzu8pfcsfvRkQquSP+0Dyt
+ TobsHgUrS0tqYsPNnvpw+2cAf2B2fxQq4/y4q2WOwJXr2YM1iOGj1w+Yp9jIgAqJolVC
+ 3z/uXDFVhLWqapuvROXvn9ezP7Gr4+kP61ih8FzvHTGzUofWL5DoGGK118VurNMRqjqs
+ x0pQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RqNnnYSud6ExMQ/pbmY5j4NQ7ZcJ9Cgztx9ONJsURxCcNpaElaXWxrxH1fgL/LKTKPZyXuCBcbKVg==@nongnu.org
+X-Gm-Message-State: AOJu0YwVVx0eHGPqk95r4YAHfNFF5soylV9czdJKoYUJpsO3vPTWpusD
+ WdWWDcPglGnvfLOO7sesaYfD2TPSoJX/sgZsg3E8QLvcWaGUKJcNFdI8VxlfqAznYAusgPYqEGK
+ tDHeS9req85p5MaM3i3I9KtgY04CSpUXWFu99TfWbYg==
+X-Gm-Gg: AfdE7cmwpFeBMm4koRxinQkUMlFL5H7Xb44JCya3G7o/RMLPa3UnM02EpuAmMefu6KX
+ 9CI5LtiDCO/a4lJFfqqs3nxd8nmex/0q+jmktDWsfIjnUQ8Y+/w/GUF8gmKMPIYnOSguEffdklB
+ /dP2WVGSL4ydybNRuf6XhmSkxdJY95hjAyLXp3NJSechyU7NNTpggKTQGTjkoqvEV9V4Vfz/fP3
+ mtTXAmwhzbX8WH3L7rPqiqAb+XP8da51KFN6DqmrKJy9mQ1GqTj0A08b5/SkfXZn4Hz8wX387Da
+ ASqRHhDkhDPLy4Hfdnd+HdsWrN+Sd0x5+wZ9swHqEmCJ2b+Jj6KcDei/
+X-Received: by 2002:a05:690e:1443:b0:664:8e4e:6709 with SMTP id
+ 956f58d0204a3-6648e4e6a65mr1121989d50.7.1782396174493; Thu, 25 Jun 2026
+ 07:02:54 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20260622112403.928954-8-mark.caveayland@nutanix.com>
-User-Agent: Mutt/2.3.2 (2026-04-26)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: _0mzlv8eR_vFOXXZdY72F1tZ4_d2mu_vEDwWvHzWXKk_1782396075
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260616052552.389021-1-gshan@redhat.com>
+ <20260616052552.389021-2-gshan@redhat.com>
+ <CAFEAcA-mf14=jpRFHarAbN6AbQwvW=Yu6WB1JiNMsECEdaxD3A@mail.gmail.com>
+ <20260625070551-mutt-send-email-mst@kernel.org>
+ <CAFEAcA8YJZq9TqrUd0zTnewAdVDm5y6UV7BJQZ0C60TZ=RT98Q@mail.gmail.com>
+ <20260625091334-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20260625091334-mutt-send-email-mst@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 25 Jun 2026 15:02:42 +0100
+X-Gm-Features: AVVi8CeDStepglKbBtTEBQFKemwSayNCNcWYPpFnhlOw47hiL4XCycHAGem_uaQ
+Message-ID: <CAFEAcA8xK+t3-prEphtkq-o9UY2mgS6cowhs880GOaxL9dKSGw@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
+ device region accessors
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ peterx@redhat.com, alex@shazbot.org, richard.henderson@linaro.org, 
+ berrange@redhat.com, philmd@oss.qualcomm.com, philmd@mailo.com, 
+ david@kernel.org, clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com, 
+ jugraham@redhat.com, liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, 
+ shan.gavin@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,24 +123,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Jun 22, 2026 at 12:22:39PM +0100, Mark Cave-Ayland wrote:
-> Signed-off-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-> ---
->  hw/acpi/piix4.c | 42 +++++++++++++++++++++++++++---------------
->  1 file changed, 27 insertions(+), 15 deletions(-)
+On Thu, 25 Jun 2026 at 14:23, Michael S. Tsirkin <mst@redhat.com> wrote:
+>
+> On Thu, Jun 25, 2026 at 01:48:11PM +0100, Peter Maydell wrote:
+> > On Thu, 25 Jun 2026 at 12:07, Michael S. Tsirkin <mst@redhat.com> wrote:
+> > >
+> > > On Thu, Jun 25, 2026 at 11:09:26AM +0100, Peter Maydell wrote:
+> > > > This is still wrong. We should not have "x86 magically works
+> > > > and all other hosts do something different" ifdefs. Define what
+> > > > semantics you need and then we can figure out how to
+> > > > implement them.
+> > > >
+> > > > My current thought is that we need to handle accesses of
+> > > > 1, 2, 4 and 8 bytes that are naturally aligned by ensuring that we
+> > > > do exactly one host load/store of that type, and that anything else
+> > > > is "the guest isn't relying on specific semantics here, we can just
+> > > > assume it's plain old RAM and do whatever". That would not
+> > > > require any architecture specific ifdefs.
+> >
+> > > Well. X86 is special, as usual. It allows unaligned mmio so
+> > > we really have no way to know an x86 guest does not intend
+> > > just that. That can only be emulated perfectly on x86
+> > > which is sad but I see no reason to actively break it.
+> >
+> > What actual hardware will rely on unaligned accesses
+> > appearing to it as single unaligned accesses?
+>
+> /me shrugs
+> any hardware that was only tested under windows?
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+I seriously doubt any hardware designer implements
+registers that are not aligned, especially on PCI devices.
+"Only tested under Windows" doesn't imply "hardware
+designer did something nuts".
 
+> > And if we do need this, we need to specify:
+> > - what are the semantics we need to provide?
+>
+> match what happens on bare metal
 
-With regards,
-Daniel
--- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+This is too vague. We need to write down what we mean,
+in enough specifics that we can then say "OK, we can
+do this this way", or "we can do this this way on
+some hosts, and these corner cases are not covered
+on other hosts".
 
+> > - what is the use case that relies on these?
+> > Then we can see how closely we can match that.
+>
+> passhtrough of weird devices, first of all.
+
+This isn't a use case, it's a vague hypothetical.
+
+> > There's a lot of extra complexity added in here for
+> > something it I don't think is ever going to matter,
+> > and having the most common host architecture take a
+> > totally different codepath from everything else is
+> > a recipe for that other codepath breaking.
+
+> Not sure we have to be pedantic. We have arch specific code and the
+> world did not end.  It's not a lot of code, it's just for unaligned
+> accesses on MMIO, which might or might not be broken anyway.
+> And it worked already, so it's more about going back to what we
+> did earlier.
+
+But we should not have arch specific code unless we
+have a reason to do it. And if we have a reason to do
+it then we should say what that reason is and what the
+cases the host has to cover are, so that when we can
+implement it correctly we do that.
+
+-- PMM
 

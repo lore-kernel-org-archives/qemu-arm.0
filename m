@@ -4,98 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F3CBCDB479
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 14:59:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2EE3CDE001
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 15:00:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wclYC-0001iE-P3; Thu, 25 Jun 2026 10:59:33 -0400
+	id 1wclZG-0002yF-0u; Thu, 25 Jun 2026 11:00:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wclY6-0001eG-Mn
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:59:26 -0400
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+ id 1wclZ6-0002lm-6f
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 11:00:28 -0400
+Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wclY5-0003y4-2G
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:59:26 -0400
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-6647c26a4a3so1510449d50.1
- for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 07:59:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1782399564; cv=none;
+ id 1wclZ4-0004KZ-Ek
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 11:00:27 -0400
+Received: by mail-yx1-xb131.google.com with SMTP id
+ 956f58d0204a3-66493875766so384037d50.0
+ for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 08:00:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782399625; cv=none;
  d=google.com; s=arc-20260327;
- b=OBv/Tqji1MjJq+3D2gAw6XPPv+Fr+AQS3/EPS93IhbK7lThjDATPNPj5t26pELkF+l
- kvvt1RctmWEflbYIKSLmoqX1NPdWeyaEOskdSz+yi7QxvcAifSG2HSrpPhY3pQv6rAWQ
- iIp5sW7BQR5CK/GfXc0cLvyRVbgOrVGlaZ0HzgeTHCZch/+76R841kAcZbNNLmT/hKxW
- IEFU7a+Lmpy5cmjMJCQ/Wh/4ygnExzS8ejspab6qqCmRlbppShVVPJprMJyqi0klyGpu
- c344CCVH41vu0QTWwQaMA50SskUefWiC62sDDdn1V9xToCmn5YO+V3IKKeEiuNa3r0iD
- dhTg==
+ b=Qd5KDKhwjYoNn3XCSvbTWEGPV3e0utT/xlFxGqs72FM4BGMBerhx2GDif6iUBDVr3U
+ 5wSFRZhsBnOAXvQg39/wFHX0NSk8QSjV040VsQnV6S33rdO5MxUDtDVyfxGMx/n26kBE
+ Bf8I39JO6p9+HfhWSwWGo5CYmhowgnblGtqxM67s+DSdHANk3oTV1tswVn/kXs0RXjhR
+ l+1dlMl/JZPOK2st6yBqPRkvQz099P1L/ffXi9QvxNBqMZJ0gA5ZCKRWnRaMkrptl3zL
+ mMrtW4jfAo3pNe+T0PQoRbU19KyC6dzeGWwdPH3UdOd1+eFfTuC/gNaE7vcPeIYVzhfh
+ ZeFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=HzdtMgVwHzlp/WK8F9dbK0OiTLbLnYpCESvD8iz7rCw=;
- fh=HJHDFGVH+3zlZOOgMC3dO5e/RlpZt5SZ/grr9hCr0nw=;
- b=qGYLt9nkWnMjc4KZc/DqLrB69S9mQypMs2/ShjWFxMBI/31k1geeeex17o6LptomFi
- NxvnhD9Q+Xzs0KumcOLX/qwNauPee3xLMVDqPTRz+5UcJQd2x11w5/e31K0G0JHQqPJR
- XTm/8Q1mlBUnaKZsWe7Tj6EoaNVum+d2shaNL9sDIMgYGL5V3ibbnW7p+K6rcc7k86gX
- DHpnb5uYHYlJRnvlEqVQK01Pw0Yty6ZNMNC2/sNKTKwXxecOD4hHYDSsOnOdgOQQMCGL
- oy+jc3Q00gOm7oADJ8nbhGccdJf9QR1cY7tG/mlUWW8I381LSOiNJ11cNdoaluCjb5lF
- OO9w==; darn=nongnu.org
+ bh=dfgXG61S4y9QZs5MmI0UQgo4J1SUZuJMXX7wQ0cwHYI=;
+ fh=Sgf8qKu0VqB7kv2mGeJ0iAa/muC2L2c94xonZv8KB6M=;
+ b=SiqS9dMhhA2jS9YWHSItG0P43QqXzzoMYPTN6HEwjArx65JYvtW/I+b08Pgzr9sfRI
+ GmKXSn6tzxDen6segxgsRNVMI25fhBDleiyEBmmGjTNU4MuRDlJ9ubmZG+rqHKSSFRe4
+ PpDRRSvtDmv549HJxA+Keb2IZlT/0lfum8LlhrGMn/TYj1qqI7ipp5AUQOkhsTOxdxZA
+ NMxghjUmLZdB1c0Jjsi3uRQsD8Jztu+X/Dd65640oJmwTb2YfKXHQqKdh819HlUn7C2b
+ SlLSBDix2YWYU7yjIpoif1n4i33xGQXGQFBBCNTtEpL65PdhFFrC+wc2V846076rYivS
+ rxcQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782399564; x=1783004364; darn=nongnu.org;
+ d=linaro.org; s=google; t=1782399625; x=1783004425; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=HzdtMgVwHzlp/WK8F9dbK0OiTLbLnYpCESvD8iz7rCw=;
- b=SU754vQmGoh0iy53qcCGbBJXZPf4vMfYtIeUVK829/ZQzzw4/JTRFAiP1ljbj1IHTo
- UHThxp1pXlmj3wWTAUlkxQFEit83CKfcxhmSkvle+NaPKQq0Vb32Eq/V5obL/ScQFgUr
- WegUWiB6Z5eoCyDhUFVz2j0elSy8ptsnD3gOTdplNaERLQjVV4r5HLuWr/T5Ry7RoVcr
- 4LfIC+rL8lGN1tmTkLkdDd8GugORtnl5QlyHdAJnbREki2F7LWhrZLaqbiD8YelA+tWR
- anowsumTkJx4T5WVhsLWbeSIhFjhZ57PwMSUl3iK6uLTOo4Jq2AYZ2HU8rKekPYMFU3p
- unug==
+ bh=dfgXG61S4y9QZs5MmI0UQgo4J1SUZuJMXX7wQ0cwHYI=;
+ b=hHtHLtlyY4ZsIiu1OT2SDtn/eti7qbleLD4Xb4b7VfsUtL5Wq00bUkWV4wapGzLCFm
+ rZ2apb/xFUG8Ggmq4XqU7JOPPwQl3lR3wetIhfX6UkmqSXGZvyG18Xh9OTCTEQRnGEEi
+ Sut+YdKGjH5Yq9KRCZE3VqPz78FlsxSg0FrzfqNnY66xK5TZFiC8sjyaq00gYn3t6kHh
+ CWDSV1mdXfaPzvTgtFXkil0k0rwRnnYYlHLJtNev12qSG82O2Zv4RfnlXtggv8l2XdD+
+ d26LHdtF058Kuw0vP219quwbSIbdZXvp/TVTSN8zn8DH1VTwqOzY3Bhghy74ka5qbE64
+ semg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782399564; x=1783004364;
+ d=1e100.net; s=20251104; t=1782399625; x=1783004425;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HzdtMgVwHzlp/WK8F9dbK0OiTLbLnYpCESvD8iz7rCw=;
- b=WJWPw/2QhVkBGcDYwlu+zNaEJ6tTFwtde4+6WVLYmmKoTEDBTEXh/tCdVOd2wAAhLW
- qNKYXRV3iAr0nTvznNkYtSTwzCJACZdKcYGVZLUAReUw0v+KRV7v4VyvXHKCbrr6NWy7
- kXanOBjGGCBomWDTU+dackj8dfCZc9QmHWjui71tc7RSagA6N01IFJeZO2GMK9y7tF3l
- sKbe4dIhWg5OKYUa/oD6OOBHO5aES4fvDP7xPEwLMz2yszSbHH7zOA/Qvjzo7ZGTzxgm
- 8lfH5HbuVwDNCcFvImSonc+4Q0v8svTr/BdI49TJa+tnLFj9573EHjItc5P6r8uSSgy4
- ahtQ==
+ bh=dfgXG61S4y9QZs5MmI0UQgo4J1SUZuJMXX7wQ0cwHYI=;
+ b=dGMjv77aaPZAVet/CmtNfljVaRVJ+H/ibyngyIcmp+wEjWMinYtwN9G59kunQMi/yq
+ m1Mp98Cqq7FQN5ZpGnFMqCHsQl1Wgs5c20MfrQZS/o5wZobkZDqwPtc9p3yKNuSUBKf2
+ Eo2q4a9uIhBBbOf/cN43qW88RM4yIHBVXiDPSY0Nw/36/rrv7A/Oj1s9jdt3N3YbmsUL
+ WXjwqa6wqaP9sqsIEJ5gQfXBXA+wPUZNL3gTQdhMsfLov6z1Grmk5OBZlLGEe+POfpDJ
+ ufdglRGfPLIhqk9vjigG65sdlaepmzmNnQLE3bdk6KJ2KQSiGL82i1r/ZoccL/EfKxOc
+ OWPQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpZXUF9KAzq35tJg9wD8CkyYDJt95iAm2BLEOAU3LMau2W3PQ1Qyb6X1pNTdLT59eMneSxp5+iREg==@nongnu.org
-X-Gm-Message-State: AOJu0YyYHjhHLe8GhyR02lEC50LQ/ZJ4Er3k6wUSq3p74j4ay8+c7VgD
- fBIu8bvBZl0rUKDdilxN1N3VynEntgH1i1InT4xGZWklwcyxlgMHj5F0JfOJtA0xHkHji8+B8cS
- IqS61TTBhxGmVkdrMflGUKl/LE0H+6wc0GnCF6xQ/WQ==
-X-Gm-Gg: AfdE7ck73yD6VuHeZcKRjrvSHMcdj6Ex3OWcaEVZBB9XvhpRjRr9hoTLEZhuNjcVBPN
- 1T7L+0M2MiK3Y79lWd8FOT20IZE0XP9GZCqmA5wAX0nWlgshPxVPnh67tb8MPlDI/zuyATS+EfA
- JuyB3dEF0E2CwVlO43wjPEgyh1lMu+VXpqZ528iodxRrmDouLtntDLPf2Ds1iBGX7T3oNlCYHN+
- J436K+2RFTaQbRBkgKLHsyXEf2iWTloG5pW3Ih8HFDb/WE/G0juOPK40/6/mFDLB/kIpK4Hlf84
- 7GaWtCFPsM4BMaFa8J1ROj2dMAgLhiWbmA36bc3IRA4cfy9qozGZOvT07p6Lz8q9sco=
-X-Received: by 2002:a05:690e:4386:b0:662:8a91:f034 with SMTP id
- 956f58d0204a3-66487d83b10mr1656826d50.38.1782399563852; Thu, 25 Jun 2026
- 07:59:23 -0700 (PDT)
+ AHgh+Rr5/KpuLDHkoj+IvOUjW2elcbSkuU7onEF3HbjHjTgHaN/2Liae5aCuCiiduQyX+/c648KkKAjpFw==@nongnu.org
+X-Gm-Message-State: AOJu0YzJh+vuz5X/QDc1cDJpKes0grGnVgxSD+rYcpGCyvV+hBgbISdz
+ xqhRMzjXt3ogDsh7hzxbva57SRqlFfW/wufZ+0ZMsKeUBvhKfO+DuxHCJTnuRGH+LYyJIdKWJHv
+ xl6uoNXLLgCxJDnnrirNOS686utraA+7oN/iOn4idmGRzXSn32q7+UB+rsqyH
+X-Gm-Gg: AfdE7ckdPMgas6rcjr/d2ydZg+G1oKS6Uio3BODz7h6xmpt9Jvf83DNT5it1XeRlsQU
+ lwkxbOZC+CCCJFaz5dYY4JFt3KMcLh6Td3QsTH7ASEZEyANzh4ZaoOP03ndG5KI0LLY2LqpPFs3
+ wB2wmEqdfe+yIo+3hgJh8oO5/ZtKuDaJgLjAHSMtFm7K5wXB2eZsiW249uYzXszhoTHPbqskXFP
+ o3ZKsO49u5cEiKNq6qavMaPP3twI2GWL5gNZ1afOIPhUpBxK4Lm5yXXRQsM6DjiSahGplL1l/gE
+ pIAdZgFfMMok8kbgMZWXaEeu/Edf4Tu4GEopvwO1WstcrrfgErw1c5/Z
+X-Received: by 2002:a05:690e:12c6:b0:65c:6dbc:39c4 with SMTP id
+ 956f58d0204a3-664883cf072mr2064803d50.51.1782399624698; Thu, 25 Jun 2026
+ 08:00:24 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260623170354.43981-1-163wangjack@gmail.com>
- <20260623170354.43981-3-163wangjack@gmail.com>
-In-Reply-To: <20260623170354.43981-3-163wangjack@gmail.com>
+ <20260623170354.43981-4-163wangjack@gmail.com>
+In-Reply-To: <20260623170354.43981-4-163wangjack@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Jun 2026 15:59:12 +0100
-X-Gm-Features: AVVi8CcAN68-jUD6W6jP4xsWl5dBErSXJVYSI8N79sP_1tddjMvjBV9yVsO1IIY
-Message-ID: <CAFEAcA-XeUSW5h9ATR196uTMXVr6OXtfgXjpCFNv5p3yArtcUw@mail.gmail.com>
-Subject: Re: [PATCH 2/3] hw/misc/imx25_ccm: Replace DPRINTF with trace events
+Date: Thu, 25 Jun 2026 16:00:12 +0100
+X-Gm-Features: AVVi8Cd-jtKXwO_oqqYC44dGW1pgj8FSZMSOD21cEwgjob0sns7mLlNEW4K18PY
+Message-ID: <CAFEAcA-ALs7TtxySitahcYk_P=99uh5078Ux7==Kh4ER+EQPRA@mail.gmail.com>
+Subject: Re: [PATCH 3/3] hw/misc/imx31_ccm: Replace DPRINTF with trace events
 To: jack wang <163wangjack@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- "open list:i.MX25 PDK" <qemu-arm@nongnu.org>
+ "open list:i.MX31 (kzm)" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,24 +120,12 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On Tue, 23 Jun 2026 at 18:04, jack wang <163wangjack@gmail.com> wrote:
 >
 > ---
->  hw/misc/imx25_ccm.c  | 34 ++++++++++------------------------
->  hw/misc/trace-events |  9 +++++++++
->  2 files changed, 19 insertions(+), 24 deletions(-)
+>  hw/misc/imx31_ccm.c  | 33 ++++++++++-----------------------
+>  hw/misc/trace-events | 10 ++++++++++
+>  2 files changed, 20 insertions(+), 23 deletions(-)
 
-This patch and patch 3 are missing your Signed-off-by:
-line; we can't take them without it.
+Other than the missing signed-off-by line,
 
-
-> -    DPRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx25_ccm_reg_name(offset >> 2),
-> -            (uint32_t)value);
-> +    trace_imx25_ccm_write(imx25_ccm_reg_name(offset >> 2), (uint32_t)value);
-
-You can drop the uint32_t cast here. We needed it with DPRINTF
-because that's a variadic function. But the trace version
-is a normal function and because the argument's type there
-is uint32_t C will do the conversion for us automatically.
-
-Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

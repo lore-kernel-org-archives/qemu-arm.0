@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D08EDCDE001
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 16:03:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7EFDCDE002
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 16:03:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcmWu-0007aS-Oa; Thu, 25 Jun 2026 12:02:16 -0400
+	id 1wcmWr-0007Rm-7b; Thu, 25 Jun 2026 12:02:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wcmWs-0007T8-7C
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 12:02:14 -0400
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+ id 1wcmWo-0007LB-Np
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 12:02:10 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wcmWq-0006Ys-CL
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 12:02:13 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id
- 41be03b00d2f7-c8857a27041so17419a12.1
- for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 09:02:11 -0700 (PDT)
+ id 1wcmWn-0006YB-10
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 12:02:10 -0400
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-c85c531d4a9so11364a12.2
+ for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 09:02:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1782403331; x=1783008131; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1782403327; x=1783008127; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=MYqeGOOKD55RKQc/1pd1ELcCZGaTrj86Fmjnba5w4Eo=;
- b=nf7zWj4AHH9VVnewtzO0LnSnFD5wunpOqolNw6JQwlaujJ3WpT3XsT72sgTLfZlciR
- hY/t3DZWKg5BbDVE+7j+Ej61ArM9PC22qnUm2D0vt3VPt93Up5kSiEjn1PVqqZeGHO86
- yzD9Z+jUqfhm90Xmw0DvFqD3inDCmpW9+tOiAqV3zb9wA9pO7EzPG18Jk5eKJhuKdbzK
- t+GN7/7wHW9c4zeYquwjTnY0oJWHfcrc714fdHTPNm3KUccGpPneHOsjHskpoub3OSqA
- Akl30QQaCdzK6z+Gz1d1eyb9XYLffgNglqyo0ku+La1ELcBuPnR1iDvQmDTW0hg/28BH
- 0QGQ==
+ bh=PDhXOI1Vjxfmo7Q3X1FJCZ1/5NbFYlpsfWgi5kj/YBk=;
+ b=RelxD403XNqJO1BdahJAWVqHUEsCrmcjiDX1cOFy5aMY6xCqCeK1x31gKI144Wjo7i
+ xpH7rak5fVZMLxRGKRqjqMNbEp35V1gQlav3lWxGxuiLDtvwTo+W/YivYeDjHikH991p
+ vn50hdHtSJUWn7netd8+eDVh6knKygYwmJNZ5I77ETuDLhhfm93Ip1udgFf84GazP0Gr
+ jaMKtJERwbKScI6/c8lF2F3OnONEEB46OKQXE2HVcWvpY2y68u/2dsg5kE50cKs0txhp
+ 02Zk6AfYsQBvHfB/niUDNES8qE4iqzRRbtN7AehyeAOPxF1NuUyRTvzQzSxKjOujVdgK
+ Xbwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782403331; x=1783008131;
+ d=1e100.net; s=20251104; t=1782403327; x=1783008127;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=MYqeGOOKD55RKQc/1pd1ELcCZGaTrj86Fmjnba5w4Eo=;
- b=fgebGbmPp0vL665Rz8NhM4YPY77F2GOyE7LyPFiJVIrZ8CU/+67wxv9TmzpqFr6tLV
- LVxkvPhphkdrHVPCbGeiJ2I3f519vfl0EZMFZo1ScCETEJ9c778Y1JdrxxdoriQMQCvw
- LPUDXPNv53FvdjrEvam1yBR5mrlBqkhQ9SkyTJjTuljNb2EDowUOWUsGQ1ZUAbv7dfXa
- 7GkWBmdS0/MIwWeSmYu3nugPeIWCF8LRgHjdX+ATQ5E5mqyWS9/B8cdxHxc09Vs6K3Jt
- is2KwAie7J1b8ikV+tH/I2PqXWB92JwCSJbfmwR4IQvyDvtqWj92hN6ARq1WHG4QY1tP
- xoyA==
+ bh=PDhXOI1Vjxfmo7Q3X1FJCZ1/5NbFYlpsfWgi5kj/YBk=;
+ b=D8OpvMmQaViBO9qCat2Yqh4DarmP+QVH+OxwT7MakbmHmJwHis+ooEf84S8blJ2NZQ
+ GXkGjUoky907hNIJwbyTw0wHlLcLaMzINjdQG6xtD/Nng+UHCRGU0tgm3YHz+mnn2r3C
+ DYgpJ4EF8Ls0tz+FUELBGzHoR3WmGWO3THeA9e0OIF0h9FK+YcscEEaHfd5lpCb1WoLA
+ YjSu1kp8BUYVLkvqDItEqPjKZ/32MgXRVGbY5udz3ahrnDFDyn4pg0tofzMTo/U4VgoC
+ Lxpn/wYaWGdsJ/+Qyh9uiUJxIA2qnwXZv8hsVpWNiRaNCk01U8u0F/bo9t1UO1BfHzSZ
+ jFzA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/Vb/ohdrxnVebfOFV0Jf4ucIM8A/R0IEmqcNlb1eCQwf5JRjVzAhKxpuXMPn3IF32KLS93nfE5UA==@nongnu.org
-X-Gm-Message-State: AOJu0YxNjzUKhBqsQMcq3WEeMVaS0/OJevhXvwpekgnGh92tXI1NLRCC
- y/rYXn2ACSYMNI3KQMnyos6OKQT+VhK1pnzavUsxxAk446/a7/rbbL9W
-X-Gm-Gg: AfdE7cmA0SsBLeSk0/cs+EgIEF2gSqvFEdGkAMV5VZT+POzD8cCrG7TpdXCkRj7Am1B
- uXOCu59BQzGmZWAf0lWLCADXkUABPME883ARzLdFuwqVxZsz/nJsFR3U7/cDbZGrk0zRczukh5T
- WeEG/OVm5bVhmQObiPoNForNhkeWJx6fvYRiw/pYVV0S2dUBEbyxIpfdkwNM3dRLysH3sCIYORu
- vq5LvsLzYK7H+YkTZT4QS4XGWxtrI+HMLl2mO88kUkBgifmdCFopTgy/AsxPCxvJNc5bDzQzUHS
- 6wIwfklTzcJ2UcfRR9jrPlkkbMEyiv1wbwujBfeINz4avit6PIm4BXGrG22+LiReNnC0F9FffvY
- pb1EIJvpssvI7NeHC1QT62aUN+SOqdpa1oKq1P56G8YA81pXvUf3m1beqm+aBljfZnk2x0PAOTy
- 2JUNtuk2EdPe+yf+p/YUHiIazI868=
-X-Received: by 2002:a05:6a20:734c:b0:3b4:65ac:e2e6 with SMTP id
- adf61e73a8af0-3bd4b239a52mr3736512637.36.1782403330185; 
- Thu, 25 Jun 2026 09:02:10 -0700 (PDT)
+ AFNElJ/oyJvyKVFMDaD99xhgOL3poHbSn64HS5QwVo7C7pHes48pWUGVLpWMvyurakOzauU+8t4l/oO5/g==@nongnu.org
+X-Gm-Message-State: AOJu0YyaO6Oe2Ai1rr9LGl3hkspV2RUwaEmdOc0up1EV8XoHRoq2Ypvx
+ atITmn9ZRuIGnfl8/ksuABV9r6lzWcVxUd6XCnruQAKYnDZT8Kta3T+I
+X-Gm-Gg: AfdE7ckb64rLHXNu2DvUdIMvWvjzLgo1p4zo/froK1EOYmnX0N5zbPS18tiQWvlHoSK
+ tDN5kwRsFvPWDz7XV5ivzlB3uaEPU5zk5Bn1g4wt7Sjf7YZxaUA9fOyZY5H0ITQm7VFEB4c+yqv
+ 6T6Ez+Yq7HYb9Nbll3ehWbDn/MJYYsa07Z/SyFGc6R50hvGG/5VWnBskKzzkmJIRHw716BRGW2f
+ OKYcAxtaVJVRstO30LE2YZ6nOH/7+VvrzVPRPlbEYrBktZf7Vfgyy8ofJWdEk5HZoFB7W12c+Mf
+ KgSiweGBnR3MRKZiRq85LqYoCmwRnF990cNA2rFUPIUnqlIVnnUv4Xzoqa1ZThRjB/T32CIEz+d
+ tMjW782vucc/MuU8StpDNbezhCRF6YtQJOUVLms+iGa3dRchAx1RyyDK0hnUAyzsmNdMAJmdpla
+ I+FwPOVOGr6RPs8IJh2kSIYFwQ0E4=
+X-Received: by 2002:a05:6a20:e613:b0:3b4:b276:c5dc with SMTP id
+ adf61e73a8af0-3bd4ac817e3mr3980706637.3.1782403326602; 
+ Thu, 25 Jun 2026 09:02:06 -0700 (PDT)
 Received: from localhost.localdomain ([212.135.211.99])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c92bcb9c14asm1924522a12.24.2026.06.25.09.02.07
+ 41be03b00d2f7-c92bcb9c14asm1924522a12.24.2026.06.25.09.02.04
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 25 Jun 2026 09:02:09 -0700 (PDT)
+ Thu, 25 Jun 2026 09:02:06 -0700 (PDT)
 From: jack wang <163wangjack@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: jack wang <163wangjack@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- qemu-arm@nongnu.org (open list:i.MX25 PDK)
-Subject: [PATCH v2 2/3] hw/misc/imx25_ccm: Replace DPRINTF with trace events
-Date: Fri, 26 Jun 2026 00:01:43 +0800
-Message-ID: <20260625160144.94565-3-163wangjack@gmail.com>
+ qemu-arm@nongnu.org (open list:i.MX31 (kzm))
+Subject: [PATCH v2 1/3] hw/misc/imx_ccm: Replace DPRINTF with trace events
+Date: Fri, 26 Jun 2026 00:01:42 +0800
+Message-ID: <20260625160144.94565-2-163wangjack@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260625160144.94565-1-163wangjack@gmail.com>
 References: <20260625160144.94565-1-163wangjack@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=163wangjack@gmail.com; helo=mail-pg1-x52b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=163wangjack@gmail.com; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -13
 X-Spam_score: -1.4
 X-Spam_bar: -
@@ -106,143 +105,68 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: jack wang <163wangjack@gmail.com>
 ---
- hw/misc/imx25_ccm.c  | 34 ++++++++++------------------------
- hw/misc/trace-events |  9 +++++++++
- 2 files changed, 19 insertions(+), 24 deletions(-)
+ hw/misc/imx_ccm.c    | 18 +++---------------
+ hw/misc/trace-events |  4 ++++
+ 2 files changed, 7 insertions(+), 15 deletions(-)
 
-diff --git a/hw/misc/imx25_ccm.c b/hw/misc/imx25_ccm.c
-index a6665d5535..d051e8a2d1 100644
---- a/hw/misc/imx25_ccm.c
-+++ b/hw/misc/imx25_ccm.c
-@@ -16,18 +16,8 @@
- #include "migration/vmstate.h"
- #include "qemu/log.h"
+diff --git a/hw/misc/imx_ccm.c b/hw/misc/imx_ccm.c
+index 9403c5daa3..b77e9561bb 100644
+--- a/hw/misc/imx_ccm.c
++++ b/hw/misc/imx_ccm.c
+@@ -14,18 +14,7 @@
+ #include "qemu/osdep.h"
+ #include "hw/misc/imx_ccm.h"
  #include "qemu/module.h"
-+#include "hw/misc/trace.h"
- 
--#ifndef DEBUG_IMX25_CCM
--#define DEBUG_IMX25_CCM 0
+-
+-#ifndef DEBUG_IMX_CCM
+-#define DEBUG_IMX_CCM 0
 -#endif
 -
 -#define DPRINTF(fmt, args...) \
 -    do { \
--        if (DEBUG_IMX25_CCM) { \
--            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX25_CCM, \
+-        if (DEBUG_IMX_CCM) { \
+-            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_CCM, \
 -                                             __func__, ##args); \
 -        } \
 -    } while (0)
++#include "hw/misc/trace.h"
  
- static const char *imx25_ccm_reg_name(uint32_t reg)
- {
-@@ -118,12 +108,12 @@ static uint32_t imx25_ccm_get_mpll_clk(IMXCCMState *dev)
-         freq = imx_ccm_calc_pll(s->reg[IMX25_CCM_MPCTL_REG], CKIH_FREQ);
+ 
+ uint32_t imx_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
+@@ -37,7 +26,7 @@ uint32_t imx_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
+         freq = klass->get_clock_frequency(dev, clock);
      }
  
--    DPRINTF("freq = %u\n", freq);
-+    trace_imx25_ccm_get_mpll_clk(freq);
+-    DPRINTF("(clock = %d) = %u\n", clock, freq);
++    trace_imx_ccm_get_clock_frequency(clock, freq);
  
      return freq;
  }
+@@ -64,8 +53,7 @@ uint32_t imx_ccm_calc_pll(uint32_t pllreg, uint32_t base_freq)
+     freq = ((2 * (base_freq >> 10) * (mfi * mfd + mfn)) /
+             (mfd * pd)) << 10;
  
--static uint32_t imx25_ccm_get_mcu_clk(IMXCCMState *dev)
-+static uint32_t imx25_ccm_get_mcu_clk(IMX25CCMState *dev)
- {
-     uint32_t freq;
-     IMX25CCMState *s = IMX25_CCM(dev);
-@@ -136,7 +126,7 @@ static uint32_t imx25_ccm_get_mcu_clk(IMXCCMState *dev)
- 
-     freq = freq / (1 + EXTRACT(s->reg[IMX25_CCM_CCTL_REG], ARM_CLK_DIV));
- 
--    DPRINTF("freq = %u\n", freq);
-+    trace_imx25_ccm_get_mcu_clk(freq);
+-    DPRINTF("(pllreg = 0x%08x, base_freq = %u) = %d\n", pllreg, base_freq,
+-            freq);
++    trace_imx_ccm_calc_pll(pllreg, base_freq, freq);
  
      return freq;
  }
-@@ -149,7 +139,7 @@ static uint32_t imx25_ccm_get_ahb_clk(IMXCCMState *dev)
-     freq = imx25_ccm_get_mcu_clk(dev)
-            / (1 + EXTRACT(s->reg[IMX25_CCM_CCTL_REG], AHB_CLK_DIV));
- 
--    DPRINTF("freq = %u\n", freq);
-+    trace_imx25_ccm_get_ahb_clk(freq);
- 
-     return freq;
- }
-@@ -160,7 +150,7 @@ static uint32_t imx25_ccm_get_ipg_clk(IMXCCMState *dev)
- 
-     freq = imx25_ccm_get_ahb_clk(dev) / 2;
- 
--    DPRINTF("freq = %u\n", freq);
-+    trace_imx25_ccm_get_ipg_clk(freq);
- 
-     return freq;
- }
-@@ -168,7 +158,7 @@ static uint32_t imx25_ccm_get_ipg_clk(IMXCCMState *dev)
- static uint32_t imx25_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
- {
-     uint32_t freq = 0;
--    DPRINTF("Clock = %d)\n", clock);
-+    trace_imx25_ccm_get_clock_frequency(clock, freq);
- 
-     switch (clock) {
-     case CLK_NONE:
-@@ -186,7 +176,7 @@ static uint32_t imx25_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
-         break;
-     }
- 
--    DPRINTF("Clock = %d) = %u\n", clock, freq);
-+    trace_imx25_ccm_get_clock_frequency(clock, freq);
- 
-     return freq;
- }
-@@ -195,8 +185,6 @@ static void imx25_ccm_reset(DeviceState *dev)
- {
-     IMX25CCMState *s = IMX25_CCM(dev);
- 
--    DPRINTF("\n");
--
-     memset(s->reg, 0, IMX25_CCM_MAX_REG * sizeof(uint32_t));
-     s->reg[IMX25_CCM_MPCTL_REG] = 0x800b2c01;
-     s->reg[IMX25_CCM_UPCTL_REG] = 0x84042800;
-@@ -238,8 +226,7 @@ static uint64_t imx25_ccm_read(void *opaque, hwaddr offset, unsigned size)
-                       HWADDR_PRIx "\n", TYPE_IMX25_CCM, __func__, offset);
-     }
- 
--    DPRINTF("reg[%s] => 0x%" PRIx32 "\n", imx25_ccm_reg_name(offset >> 2),
--            value);
-+    trace_imx25_ccm_read(imx25_ccm_reg_name(offset >> 2), value);
- 
-     return value;
- }
-@@ -249,8 +236,7 @@ static void imx25_ccm_write(void *opaque, hwaddr offset, uint64_t value,
- {
-     IMX25CCMState *s = (IMX25CCMState *)opaque;
- 
--    DPRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx25_ccm_reg_name(offset >> 2),
--            (uint32_t)value);
-+    trace_imx25_ccm_write(imx25_ccm_reg_name(offset >> 2), value);
- 
-     if (offset < 0x70) {
-         /*
 diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index fdb4844045..ebe9b4fb22 100644
+index b88accc437..fdb4844045 100644
 --- a/hw/misc/trace-events
 +++ b/hw/misc/trace-events
-@@ -273,6 +273,15 @@ imx6_src_reset(void) ""
- imx7_src_read(const char *reg_name, uint32_t value) "reg[%s] => 0x%" PRIx32
- imx7_src_write(const char *reg_name, uint32_t value) "reg[%s] <= 0x%" PRIx32
+@@ -237,6 +237,10 @@ iotkit_secctl_s_write(uint32_t offset, uint64_t data, unsigned size) "IoTKit Sec
+ iotkit_secctl_ns_read(uint32_t offset, uint64_t data, unsigned size) "IoTKit SecCtl NS regs read: offset 0x%x data 0x%" PRIx64 " size %u"
+ iotkit_secctl_ns_write(uint32_t offset, uint64_t data, unsigned size) "IoTKit SecCtl NS regs write: offset 0x%x data 0x%" PRIx64 " size %u"
  
-+# imx25_ccm.c
-+imx25_ccm_get_mpll_clk(uint32_t freq) "freq = %u"
-+imx25_ccm_get_mcu_clk(uint32_t freq) "freq = %u"
-+imx25_ccm_get_ahb_clk(uint32_t freq) "freq = %u"
-+imx25_ccm_get_ipg_clk(uint32_t freq) "freq = %u"
-+imx25_ccm_get_clock_frequency(unsigned clock, uint32_t freq) "(clock = %d) = %u"
-+imx25_ccm_read(const char *reg, uint32_t value) "reg[%s] => 0x%" PRIx32
-+imx25_ccm_write(const char *reg, uint32_t value) "reg[%s] <= 0x%" PRIx32
++# imx_ccm.c
++imx_ccm_get_clock_frequency(uint32_t clock, uint32_t freq) "(clock = %u) = %u"
++imx_ccm_calc_pll(uint32_t pllreq, uint32_t base_freq, uint32_t freq) "(pllreg = 0x%08x, base_freq = %u) = %u"
 +
- # iotkit-sysinfo.c
- iotkit_sysinfo_read(uint64_t offset, uint64_t data, unsigned size) "IoTKit SysInfo read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- iotkit_sysinfo_write(uint64_t offset, uint64_t data, unsigned size) "IoTKit SysInfo write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+ # imx6_ccm.c
+ imx6_analog_get_periph_clk(uint32_t freq) "freq = %u Hz"
+ imx6_analog_get_pll2_clk(uint32_t freq) "freq = %u Hz"
 -- 
 2.53.0
 

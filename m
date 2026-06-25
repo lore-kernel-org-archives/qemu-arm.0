@@ -4,106 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A51FCDE000
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 13:24:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C395CCDE000
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 13:44:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wck3O-0005sQ-1X; Thu, 25 Jun 2026 09:23:38 -0400
+	id 1wckNF-00048k-R5; Thu, 25 Jun 2026 09:44:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wck3M-0005s0-E2
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 09:23:36 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wckNE-00048B-0q
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 09:44:08 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wck3K-0003Sc-BJ
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 09:23:36 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wckNC-00037v-EW
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 09:44:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1782393813;
+ s=mimecast20190719; t=1782395045;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=wMY9lMDBnjSffkY0dB2lI6teviTlM5DqXq9Zm4u/Fio=;
- b=XYLHLWAz2C4XNimNXNHu3eSIhFR+Agg3+jGV16rbTKcB5akCOsLeD7weR+NDKRhzDFVZQJ
- Q6JpE/45XLq0sD0bHscuXGVY2YmqGti+fnj/P6cnFrXX4CgeugPfcZgUvdc55HwxAvMJdB
- zdB2g2aI7r+Ejim/D4gTXWw3DDPiAP8=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-692-7MGzMBNcNhe0RP7NPRk9hw-1; Thu, 25 Jun 2026 09:23:32 -0400
-X-MC-Unique: 7MGzMBNcNhe0RP7NPRk9hw-1
-X-Mimecast-MFC-AGG-ID: 7MGzMBNcNhe0RP7NPRk9hw_1782393811
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-46dc84ca717so461026f8f.3
- for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 06:23:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782393811; x=1782998611;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=wMY9lMDBnjSffkY0dB2lI6teviTlM5DqXq9Zm4u/Fio=;
- b=AX/NbSpvdmx0mPPgDz4Eab8SQYN5XTecHY6Xm1cHaGME2yT46EXwfr6BgESxbH6oyc
- QqGji/jlB1Bc5W7TO32zWE4ChI+XMOT1kFeuZx5n9pvTUjwv+89dMBXEP2ZdbK25xchU
- /0SxREQjxhQpMXiZHBjDvgS/H3AG07AMZsMCl9sLiOYQPEmsIGtX6EeVIpPmG+57ju6+
- xsmFg/NEJtUF7a0hGKATEZOa8rTHSwx7BEiB0wNShjm2TLE4sq1sk2OFQBPtB6kW2py3
- cxWPmkbXPlVTn1sLCeC0Rilx+zu2qDH4Xzr2vUMpe1A9Inr0OPpLhVGWSJIFQb21+iWL
- DTpA==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpR3VexqlVC5G9DEPk9yyJ0GAvy8GyAK78JqmLD4tWdcugV0gv681x8sNcX+3lL9XxcPzieQFGdHg==@nongnu.org
-X-Gm-Message-State: AOJu0Yzbx3e32uiD4AnYac6qJucwSrlIbomA4cap+Dkv0GqT5i5YlCUj
- bblNnOAYsk2fMzNKgkADBcN2CNEnLo/jw2Sst0XNnlILN7Rp9Leup66E6JU9q4vriGSQQCyT/Q9
- WRrUgeZtcYIGpeyfIjQu3WBmieix5JIBpGY2X9p723wFCLsM6KXA4Bg==
-X-Gm-Gg: AfdE7ck5ejFKVKruO1WAKS3Gh0c6r2b97Jp+okaW5q9oIO2oZ3XRuwIKn5tdZrsYsp4
- F0QjTOn/D3eNssKLCq2TAWuWrnwCtCIJCFK/TZr3vH+V3MuVQR1+Zg7M+eWORSznT/91FPVP7FV
- 1FkpH7jhvWBanif4B6RsWhHZs6gMY3LUP156c4zzmkNdrA4O+kWPnv63IGTPff6Ore2VQDPpoaD
- JqImIUYyp7CMmYQUg/M3KD4xvB7PnxR96ExU2eyVjctJN07qalq5AuP5Q1HOGHLoAouDHvDGOhv
- g0zZKORTDmgYGD5Q6jG4U5ySzY1o9qW9ZCtYJdneCq7XIXMwNIOLg+fDUvkuAwjt14M+tN0wW5S
- ofH1m1E72oJPynMubUzY+4fVCtyOr/8UQ
-X-Received: by 2002:a5d:5f56:0:b0:460:3a90:b2b6 with SMTP id
- ffacd0b85a97d-46dbf1199e5mr4556884f8f.11.1782393811127; 
- Thu, 25 Jun 2026 06:23:31 -0700 (PDT)
-X-Received: by 2002:a5d:5f56:0:b0:460:3a90:b2b6 with SMTP id
- ffacd0b85a97d-46dbf1199e5mr4556811f8f.11.1782393810507; 
- Thu, 25 Jun 2026 06:23:30 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-46c22c68239sm18940073f8f.36.2026.06.25.06.23.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jun 2026 06:23:29 -0700 (PDT)
-Date: Thu, 25 Jun 2026 09:23:26 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, peterx@redhat.com, alex@shazbot.org,
- richard.henderson@linaro.org, berrange@redhat.com,
- philmd@oss.qualcomm.com, philmd@mailo.com, david@kernel.org,
- clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com,
- jugraham@redhat.com, liugang24219@sangfor.com.cn,
- dinghui@sangfor.com.cn, shan.gavin@gmail.com
-Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
- device region accessors
-Message-ID: <20260625091334-mutt-send-email-mst@kernel.org>
-References: <20260616052552.389021-1-gshan@redhat.com>
- <20260616052552.389021-2-gshan@redhat.com>
- <CAFEAcA-mf14=jpRFHarAbN6AbQwvW=Yu6WB1JiNMsECEdaxD3A@mail.gmail.com>
- <20260625070551-mutt-send-email-mst@kernel.org>
- <CAFEAcA8YJZq9TqrUd0zTnewAdVDm5y6UV7BJQZ0C60TZ=RT98Q@mail.gmail.com>
+ content-transfer-encoding:content-transfer-encoding;
+ bh=TPpgC5O15P2LULte+WpODwIChg0PcMWR6JGALM56068=;
+ b=hOt0f4ySZTBGipJ3cKnOSOaeIaFXwYOH+fmh8RnyRh+1R2x75vN3URz3Ba67GIi1PPDNol
+ VmGtzBdpZtMR+TfmDd4V/Wlp32iLYYn1kUiCsSpBXQAt+9tEbnoMNQ6lhtvKIaJ/e1Dtmq
+ KIWS+A80kpF8CKHxrQx7gi4GX4rHAP8=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-578-VOnd8YdKPC-fQ0XZnTE7wA-1; Thu,
+ 25 Jun 2026 09:44:01 -0400
+X-MC-Unique: VOnd8YdKPC-fQ0XZnTE7wA-1
+X-Mimecast-MFC-AGG-ID: VOnd8YdKPC-fQ0XZnTE7wA_1782395039
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B0B4719772EB; Thu, 25 Jun 2026 13:43:58 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.44.32.83])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 39ED51956041; Thu, 25 Jun 2026 13:43:54 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: Yi Liu <yi.l.liu@intel.com>,
+ Giovannio Cabiddu <giovanni.cabiddu@intel.com>,
+ Alex Williamson <alex@shazbot.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Zhenzhong Duan <zhenzhong.duan@intel.com>
+Subject: [PATCH] vfio/listener: Fix translated_addr for non-identity-mapped
+ RAM sections
+Date: Thu, 25 Jun 2026 15:43:51 +0200
+Message-ID: <20260625134352.3122572-1-clg@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8YJZq9TqrUd0zTnewAdVDm5y6UV7BJQZ0C60TZ=RT98Q@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: FeP2ERHXL6LOGu-YtjGsdHXynndvqh2-_01YM66PgjA_1782393811
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: 0G-xH_EzwwtNEq6-Lnex_joCH_Sz5FslTOZ0JHS5OwY_1782395039
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,59 +87,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Jun 25, 2026 at 01:48:11PM +0100, Peter Maydell wrote:
-> On Thu, 25 Jun 2026 at 12:07, Michael S. Tsirkin <mst@redhat.com> wrote:
-> >
-> > On Thu, Jun 25, 2026 at 11:09:26AM +0100, Peter Maydell wrote:
-> > > This is still wrong. We should not have "x86 magically works
-> > > and all other hosts do something different" ifdefs. Define what
-> > > semantics you need and then we can figure out how to
-> > > implement them.
-> > >
-> > > My current thought is that we need to handle accesses of
-> > > 1, 2, 4 and 8 bytes that are naturally aligned by ensuring that we
-> > > do exactly one host load/store of that type, and that anything else
-> > > is "the guest isn't relying on specific semantics here, we can just
-> > > assume it's plain old RAM and do whatever". That would not
-> > > require any architecture specific ifdefs.
-> 
-> > Well. X86 is special, as usual. It allows unaligned mmio so
-> > we really have no way to know an x86 guest does not intend
-> > just that. That can only be emulated perfectly on x86
-> > which is sad but I see no reason to actively break it.
-> 
-> What actual hardware will rely on unaligned accesses
-> appearing to it as single unaligned accesses?
+In vfio_listener_region_del(), when dirty tracking is active and a
+writable RAM section is deleted, a synthetic IOMMUTLBEntry is built to
+flush dirty pages. Setting translated_addr to the IOVA (GPA) is only
+correct for identity-mapped regions where GPA == ram_addr_t.
 
-/me shrugs
-any hardware that was only tested under windows?
+For RAM sections with GPA far above main RAM (e.g., nested VT-d interrupt
+remapping table at 58 TB), translated_addr is too large, causing a crash
+in physical_memory_set_dirty_lebitmap() when indexing beyond the allocated
+dirty memory blocks array :
 
-> And if we do need this, we need to specify:
-> - what are the semantics we need to provide?
+  bitmap_set_atomic(map=NULL, start=1, nr=1)
+  physical_memory_set_dirty_range(start=0x380004040000, length=4096)
+  physical_memory_set_dirty_lebitmap(start=0x380004040000, pages=3)
+  vfio_container_query_dirty_bitmap(translated_addr=0x380004040000)
+  vfio_legacy_dma_unmap_one(iova=0x380004040000, size=12288)
+  vfio_listener_region_del()
 
-match what happens on bare metal
+Fix this by setting translated_addr to the ram_addr_t of the section, which
+is consistent with other vfio dirty tracking code:
 
-> - what is the use case that relies on these?
-> Then we can see how closely we can match that.
+  translated_addr = memory_region_get_ram_addr(section->mr) +
+                    section->offset_within_region;
 
-passhtrough of weird devices, first of all.
+Cc: Zhenzhong Duan <zhenzhong.duan@intel.com>
+Fixes: 6e360c06176c ("vfio/listener: Add missing dirty tracking in region_del")
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ hw/vfio/listener.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-> 
-> There's a lot of extra complexity added in here for
-> something it I don't think is ever going to matter,
-> and having the most common host architecture take a
-> totally different codepath from everything else is
-> a recipe for that other codepath breaking.
-> 
-> -- PMM
-
-Not sure we have to be pedantic. We have arch specific code and the
-world did not end.  It's not a lot of code, it's just for unaligned
-accesses on MMIO, which might or might not be broken anyway.
-And it worked already, so it's more about going back to what we
-did earlier.
-
+diff --git a/hw/vfio/listener.c b/hw/vfio/listener.c
+index 14cca678aea788c23ea5c6ed4a3aceec5fe21484..785a6eef8d812123fcecf82e3716f5577d7c61e1 100644
+--- a/hw/vfio/listener.c
++++ b/hw/vfio/listener.c
+@@ -731,7 +731,7 @@ static void vfio_listener_region_del(MemoryListener *listener,
+         }
+ 
+         /*
+-         * Fake an IOTLB entry for writable identity mapping which is needed
++         * Fake an IOTLB entry for writable RAM sections which is needed
+          * by dirty tracking when switch out of PT domain. In fact, in
+          * unmap_bitmap, only translated_addr field is used to set dirty
+          * bitmap.
+@@ -746,7 +746,8 @@ static void vfio_listener_region_del(MemoryListener *listener,
+         if (global_dirty_tracking && memory_region_is_ram(section->mr) &&
+             !section->readonly) {
+             entry.iova = iova;
+-            entry.translated_addr = iova;
++            entry.translated_addr = memory_region_get_ram_addr(section->mr) +
++                                    section->offset_within_region;
+             iotlb = &entry;
+         }
+ 
 -- 
-MST
+2.54.0
 
 

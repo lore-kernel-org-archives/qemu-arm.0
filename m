@@ -4,97 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3AB8CDB479
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 14:57:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F3CBCDB479
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 14:59:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wclVe-0000ep-To; Thu, 25 Jun 2026 10:56:54 -0400
+	id 1wclYC-0001iE-P3; Thu, 25 Jun 2026 10:59:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wclVd-0000eI-H8
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:56:53 -0400
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+ id 1wclY6-0001eG-Mn
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:59:26 -0400
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wclVc-0003F8-4G
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:56:53 -0400
-Received: by mail-yx1-xb130.google.com with SMTP id
- 956f58d0204a3-662b95934dcso2709334d50.3
- for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 07:56:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1782399411; cv=none;
+ id 1wclY5-0003y4-2G
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:59:26 -0400
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-6647c26a4a3so1510449d50.1
+ for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 07:59:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782399564; cv=none;
  d=google.com; s=arc-20260327;
- b=F6mHS8tbvhUHudqJFEUimEUwHyf6EomnP0hJ+bBQV8eogAmwytIwCcdsrfVfynmAQ0
- egHzW/xFXb8qanE5b/r46Pj/84c4B414zgVGihrMC98WVKU2I/RGF3ZaeASD7NRtztVW
- yG6sPGul8tvgrQl6yPdUEL5YtyITY0GGHQG60IweL6uj3KXeOEYod8IfGKdmCnRHVizf
- GvItZqLgbVG6w4EMGchzUHu3zoV73lW8x8JZMO/UHNI0hcx+eq/gRyNt/b5h4qVlEThr
- zh/U7snTq2TTDa57Pzt/f3aEGZKLkEIyy1fHsyeCnAwPtjh/NdoaDqrEJ1HUNy5yYOHb
- LKog==
+ b=OBv/Tqji1MjJq+3D2gAw6XPPv+Fr+AQS3/EPS93IhbK7lThjDATPNPj5t26pELkF+l
+ kvvt1RctmWEflbYIKSLmoqX1NPdWeyaEOskdSz+yi7QxvcAifSG2HSrpPhY3pQv6rAWQ
+ iIp5sW7BQR5CK/GfXc0cLvyRVbgOrVGlaZ0HzgeTHCZch/+76R841kAcZbNNLmT/hKxW
+ IEFU7a+Lmpy5cmjMJCQ/Wh/4ygnExzS8ejspab6qqCmRlbppShVVPJprMJyqi0klyGpu
+ c344CCVH41vu0QTWwQaMA50SskUefWiC62sDDdn1V9xToCmn5YO+V3IKKeEiuNa3r0iD
+ dhTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=i/zCXl+P6RPAZgR9hjF7z+0cuHq30SL+nR/NueNuT6E=;
- fh=/XQDj6PrjHn+fEnc1dFLAU/F3kXOIzQL6Kh9ftIwIY4=;
- b=VkqZxm+cG+r4DZPNp2SAUv9SOyCYNJPYTBL6LEZL0bqjIspBs3iRw4OKFdiWJQ8H9F
- 1zGhIhjyMQ8PHLTZ444Vqg1OSDMu0w7sJ0oDAbT7fVyqftTHCn7AqXXQRZpSzN9CBrRB
- PMs6CBNMNMhtcPUVVVCWerzlt2bnjWHy+gvZMGTmc1dR5/FaQs9rqtgmY2be4Ocv8kjF
- BRR0xlBGTf98dIp0fbaNy1dByY7fhQGnuf/Hv1xDcSvt5NlHNVtpPyXgZ6eurYQ8b5km
- Fd/eWhXOFYOYKG2Mwc0UBLzzC/LaIzJsKZfUL6HEYpIWqBheFSszVPBDAUJs9ojsXUMN
- 9ucg==; darn=nongnu.org
+ bh=HzdtMgVwHzlp/WK8F9dbK0OiTLbLnYpCESvD8iz7rCw=;
+ fh=HJHDFGVH+3zlZOOgMC3dO5e/RlpZt5SZ/grr9hCr0nw=;
+ b=qGYLt9nkWnMjc4KZc/DqLrB69S9mQypMs2/ShjWFxMBI/31k1geeeex17o6LptomFi
+ NxvnhD9Q+Xzs0KumcOLX/qwNauPee3xLMVDqPTRz+5UcJQd2x11w5/e31K0G0JHQqPJR
+ XTm/8Q1mlBUnaKZsWe7Tj6EoaNVum+d2shaNL9sDIMgYGL5V3ibbnW7p+K6rcc7k86gX
+ DHpnb5uYHYlJRnvlEqVQK01Pw0Yty6ZNMNC2/sNKTKwXxecOD4hHYDSsOnOdgOQQMCGL
+ oy+jc3Q00gOm7oADJ8nbhGccdJf9QR1cY7tG/mlUWW8I381LSOiNJ11cNdoaluCjb5lF
+ OO9w==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782399411; x=1783004211; darn=nongnu.org;
+ d=linaro.org; s=google; t=1782399564; x=1783004364; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=i/zCXl+P6RPAZgR9hjF7z+0cuHq30SL+nR/NueNuT6E=;
- b=pK/gQQN8fDxAhZyyPkVEF2JQboL2qad1F2wtlFq8STeoXW5FLOo7Pl1q9UWc/ziy2Z
- g0LGSrfZtheai5yGEhRUqwhDuTG3cQKIYxs+J1gV0CXAb+huKMs4hbNIToVIF0ag3TOp
- YJp9e51XQAgY/H84PE8n0NBGOnHz0nC/v0G/YQ21Rsi0siRPRAdtU8cstvgWNde6uveJ
- q4xsBBF+4UVVVdEuEQjCeH2WmH4FILNkW3MLPvHobOvmgU8JTTrQcWToZgFlZZz8TGgl
- PVYIFJsNt/joRK1dN10et8i7oVaJcczgmebR/ot5aG9qSkI+SLfKZSq64fy8r5AolbFO
- kOpQ==
+ bh=HzdtMgVwHzlp/WK8F9dbK0OiTLbLnYpCESvD8iz7rCw=;
+ b=SU754vQmGoh0iy53qcCGbBJXZPf4vMfYtIeUVK829/ZQzzw4/JTRFAiP1ljbj1IHTo
+ UHThxp1pXlmj3wWTAUlkxQFEit83CKfcxhmSkvle+NaPKQq0Vb32Eq/V5obL/ScQFgUr
+ WegUWiB6Z5eoCyDhUFVz2j0elSy8ptsnD3gOTdplNaERLQjVV4r5HLuWr/T5Ry7RoVcr
+ 4LfIC+rL8lGN1tmTkLkdDd8GugORtnl5QlyHdAJnbREki2F7LWhrZLaqbiD8YelA+tWR
+ anowsumTkJx4T5WVhsLWbeSIhFjhZ57PwMSUl3iK6uLTOo4Jq2AYZ2HU8rKekPYMFU3p
+ unug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782399411; x=1783004211;
+ d=1e100.net; s=20251104; t=1782399564; x=1783004364;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=i/zCXl+P6RPAZgR9hjF7z+0cuHq30SL+nR/NueNuT6E=;
- b=EupHr/X6iZyo6mpjDmIXJvoA8zOBUJtERE/y7KkVoonskx5B/VUzFTtE7tvmM0KcLs
- yupQ1+cnMpxLWhVkWyq25DLTAVB3Prwmba1iXcx/Dgw9VRjau1DYqs8oUlrNDRzCzwqu
- 0iscWN2m7mRbtCFyAwdLAI/fetVuNePAzVPHv2XurX1FEo9kUxZU01XTMY1frL2ajFVm
- mUC60DM33GKG1z5Nthe9FCgqZ8YKa0sZvhCjPLuFfir6vjVyXm87dROsx7Jzl+lzhJRo
- 21N/Og0E7LuBZpY7Prm0540ETPMUFtFlg1SvZ17gkZn8z7fa2r09SYYwdEZomAyjdM0T
- 7jCg==
+ bh=HzdtMgVwHzlp/WK8F9dbK0OiTLbLnYpCESvD8iz7rCw=;
+ b=WJWPw/2QhVkBGcDYwlu+zNaEJ6tTFwtde4+6WVLYmmKoTEDBTEXh/tCdVOd2wAAhLW
+ qNKYXRV3iAr0nTvznNkYtSTwzCJACZdKcYGVZLUAReUw0v+KRV7v4VyvXHKCbrr6NWy7
+ kXanOBjGGCBomWDTU+dackj8dfCZc9QmHWjui71tc7RSagA6N01IFJeZO2GMK9y7tF3l
+ sKbe4dIhWg5OKYUa/oD6OOBHO5aES4fvDP7xPEwLMz2yszSbHH7zOA/Qvjzo7ZGTzxgm
+ 8lfH5HbuVwDNCcFvImSonc+4Q0v8svTr/BdI49TJa+tnLFj9573EHjItc5P6r8uSSgy4
+ ahtQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rr5t+X+jfF/u2ami9gW/IC2LFbz06W/eoHM5JGxPL3u+2dubXjvvlk1rd0Sxv/m9HXyL2FPT1RW/A==@nongnu.org
-X-Gm-Message-State: AOJu0YzKt5jXNpiqo/xrLkhXZPV/czNKjUMQQjmpLVLY0U9lxY9Y24ZQ
- aX1Hw42hm6qxWSbIByvXuI2GjZjAyyAeVmD3saG2bztmJ1tkbUQUGivevICiBW9xfYmn66ZU65q
- T4ZK66ix8hv5jXMAgL0oY7shyi5I1Z+bfntMLmMsPSw==
-X-Gm-Gg: AfdE7cnNgScwC9Pl+97gVo7sTFbdHcMu3QCJQyJnSEOWY6VfV7TaNkqymFelKHswCTX
- rcoltCJ/RbPgvzSlzuPgWvLo8C6ALN9WA4lUwyjdnHFk2yQ28axIayQtdNnYXiRKz2XJCAR/2Db
- J5Bfv6XevxJnBWvkPvLKyzjmHVeMerHSVj6gJZwxzu5Alc70uYWIyMJ4i6PgApWaSa+Zh1Zu4Zr
- 7ZGOlrl6bd0U7hzqBoQUn/paGaLpKWDsheemBp8EQQzDjpOEmNLpcczA3ichxlsMroffBss/M9J
- hkl5EVtbHxx4V30pwBrlmIvOyi7J36WU77vWD/57JmJ3iF6rubOCFr2f
-X-Received: by 2002:a05:690e:bc6:b0:662:cf48:c1b2 with SMTP id
- 956f58d0204a3-66487dd13ccmr2185702d50.36.1782399410875; Thu, 25 Jun 2026
- 07:56:50 -0700 (PDT)
+ AHgh+RpZXUF9KAzq35tJg9wD8CkyYDJt95iAm2BLEOAU3LMau2W3PQ1Qyb6X1pNTdLT59eMneSxp5+iREg==@nongnu.org
+X-Gm-Message-State: AOJu0YyYHjhHLe8GhyR02lEC50LQ/ZJ4Er3k6wUSq3p74j4ay8+c7VgD
+ fBIu8bvBZl0rUKDdilxN1N3VynEntgH1i1InT4xGZWklwcyxlgMHj5F0JfOJtA0xHkHji8+B8cS
+ IqS61TTBhxGmVkdrMflGUKl/LE0H+6wc0GnCF6xQ/WQ==
+X-Gm-Gg: AfdE7ck73yD6VuHeZcKRjrvSHMcdj6Ex3OWcaEVZBB9XvhpRjRr9hoTLEZhuNjcVBPN
+ 1T7L+0M2MiK3Y79lWd8FOT20IZE0XP9GZCqmA5wAX0nWlgshPxVPnh67tb8MPlDI/zuyATS+EfA
+ JuyB3dEF0E2CwVlO43wjPEgyh1lMu+VXpqZ528iodxRrmDouLtntDLPf2Ds1iBGX7T3oNlCYHN+
+ J436K+2RFTaQbRBkgKLHsyXEf2iWTloG5pW3Ih8HFDb/WE/G0juOPK40/6/mFDLB/kIpK4Hlf84
+ 7GaWtCFPsM4BMaFa8J1ROj2dMAgLhiWbmA36bc3IRA4cfy9qozGZOvT07p6Lz8q9sco=
+X-Received: by 2002:a05:690e:4386:b0:662:8a91:f034 with SMTP id
+ 956f58d0204a3-66487d83b10mr1656826d50.38.1782399563852; Thu, 25 Jun 2026
+ 07:59:23 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260623170354.43981-1-163wangjack@gmail.com>
- <20260623170354.43981-2-163wangjack@gmail.com>
-In-Reply-To: <20260623170354.43981-2-163wangjack@gmail.com>
+ <20260623170354.43981-3-163wangjack@gmail.com>
+In-Reply-To: <20260623170354.43981-3-163wangjack@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Jun 2026 15:56:39 +0100
-X-Gm-Features: AVVi8Cf0SnjwXIQ1CTkOCAcv4qg3CRrPYKhZ3pvioTVadpdCugm7dlv0EnTdG9g
-Message-ID: <CAFEAcA9fS9v-=BTSVM+BJg8V3hbFf7q9xaP3MMVFC04cFJ7HVw@mail.gmail.com>
-Subject: Re: [PATCH 1/3] hw/misc/imx_ccm: Replace DPRINTF with trace events
+Date: Thu, 25 Jun 2026 15:59:12 +0100
+X-Gm-Features: AVVi8CcAN68-jUD6W6jP4xsWl5dBErSXJVYSI8N79sP_1tddjMvjBV9yVsO1IIY
+Message-ID: <CAFEAcA-XeUSW5h9ATR196uTMXVr6OXtfgXjpCFNv5p3yArtcUw@mail.gmail.com>
+Subject: Re: [PATCH 2/3] hw/misc/imx25_ccm: Replace DPRINTF with trace events
 To: jack wang <163wangjack@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- "open list:i.MX31 (kzm)" <qemu-arm@nongnu.org>
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ "open list:i.MX25 PDK" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,22 +121,22 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On Tue, 23 Jun 2026 at 18:04, jack wang <163wangjack@gmail.com> wrote:
 >
 > ---
->  hw/misc/imx_ccm.c    | 18 +++---------------
->  hw/misc/trace-events |  4 ++++
->  2 files changed, 7 insertions(+), 15 deletions(-)
+>  hw/misc/imx25_ccm.c  | 34 ++++++++++------------------------
+>  hw/misc/trace-events |  9 +++++++++
+>  2 files changed, 19 insertions(+), 24 deletions(-)
 
->  uint32_t imx_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
-> @@ -37,7 +26,7 @@ uint32_t imx_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
->          freq = klass->get_clock_frequency(dev, clock);
->      }
->
-> -    DPRINTF("(clock = %d) = %u\n", clock, freq);
-> +    trace_imx_ccm_get_clock_frequency(clock,freq);
+This patch and patch 3 are missing your Signed-off-by:
+line; we can't take them without it.
 
-Our coding style wants a space after this comma.
-(Running your patches through scripts/checkpatch.pl can
-catch this kind of style nit, though it sometimes has
-false positives.)
+
+> -    DPRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx25_ccm_reg_name(offset >> 2),
+> -            (uint32_t)value);
+> +    trace_imx25_ccm_write(imx25_ccm_reg_name(offset >> 2), (uint32_t)value);
+
+You can drop the uint32_t cast here. We needed it with DPRINTF
+because that's a variadic function. But the trace version
+is a normal function and because the argument's type there
+is uint32_t C will do the conversion for us automatically.
 
 Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>

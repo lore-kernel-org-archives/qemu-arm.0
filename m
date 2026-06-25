@@ -4,95 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CCFBCDE00D
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 16:20:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29362CDE000
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 16:47:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcmo4-0005q0-Sg; Thu, 25 Jun 2026 12:20:00 -0400
+	id 1wcnEd-00014z-NT; Thu, 25 Jun 2026 12:47:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcmo3-0005pQ-HJ
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 12:19:59 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wcmo1-0003qn-Hm
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 12:19:59 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-463b2f6fc9dso2705890f8f.2
- for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 09:19:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782404395; x=1783009195; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Bj7X5I6CCUGv3cEHugrfroZPva44IefEq//8zcmRGsA=;
- b=zAqsaSChpIK6QL3SC9rGcTHyAWqUEFaxFWlpl8o9ccA8uk+S4q8xNBLOfyBDwAIOfa
- AN0fFVFXB5YfPw2OvE0zLlixLd0y8yJaAOq/Ej66bRdEHOlFDEQSDPDaHtXFWBDjgizf
- MPSQ4eC2xsVZnISEbuubVEoeGf/QqmN5hTCIgYGt5SfbEURSOuPAYPi9zi6qXIYuknmT
- SoGzfyziicOryoQAfEXIhHyNKZyKGecYV8d0YGF4ywn6kxLPRads7wyQetQLRargMaCi
- ri7B3/zkC6WWtrTY/s271BHA3Vn84zxN7gx/ZLrRInteCHpWU/JoKNjuZhuMqvU6r+5w
- cr1w==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wcnEW-000148-Df
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 12:47:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wcnES-0007ux-As
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 12:47:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1782406034;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=mv2e/saDz5F/Jj5ghuxYree2ZuUFNTyvAA+473uasE4=;
+ b=HiFWosKh/Biq9tBWgl/MM8g8wmJgnCSFbwdbskF194L9JI3Igb0l+GOfASpYwX327isVWB
+ c1+rw7zzvx+N1YxgxQiSmRz6qbpfcAHw1/z+ChF2FnSv+2xLm794n994kpFQruybphthf3
+ ELObmQEgrekaSgtdSSN0RwtwP430n4M=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-581-MHJc84qHNF29bXUAEtn4FA-1; Thu, 25 Jun 2026 12:47:13 -0400
+X-MC-Unique: MHJc84qHNF29bXUAEtn4FA-1
+X-Mimecast-MFC-AGG-ID: MHJc84qHNF29bXUAEtn4FA_1782406032
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-490aadb1386so7733485e9.0
+ for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 09:47:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782404395; x=1783009195;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Bj7X5I6CCUGv3cEHugrfroZPva44IefEq//8zcmRGsA=;
- b=DtRFW4dtdjZuxPw6kdMtr9lS9A2DI9zFKHc9iK1rt0aXDI7yE+ZfEfsVsSDX6/aT39
- cdSQ5TUCI46rJW01U1gMRgXH4aiqQinNekTTphQb/msj4Sq2zA3AWDDOeERN0EhZfP/U
- AYrgV47KV0wV6UZilHIMg4w6DG/KP7bFXjM6eZGsBwyv5mWmzykuNYx2zhzJ+CCpmeZr
- GbUQLFwnRRyaA+FXLqUlQ/bMU8lmVenrrofS30AdmFOe4AiINeEYnHamuTDH1VLNPBw1
- aplY9t/TPqO7T2w2iMKQsaECzA+UGw0FMbiYxrNxy9AuGQdh/Q7Rva9/wMbE+HmBCLTd
- 7f5w==
+ d=1e100.net; s=20251104; t=1782406032; x=1783010832;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=mv2e/saDz5F/Jj5ghuxYree2ZuUFNTyvAA+473uasE4=;
+ b=WGYDHy9vVxnBb0UmLLQlMI5yb3qmCQgo2CwOzkDzsEXmSIrl+tJdMRvb3m1h/6FyZM
+ IU4vjUH2stwzsM55mfzcl5239IViPYmYDCWTMjIboSGcj1Qp1FZzUPClnem53dVGk3mE
+ ti1/1sxr5185NPN2RkX0wPfAnMbtP2KtnncBdMFqUyZAkpQuTTual4hgmSOs5SKu2q3F
+ +2+iNbdd+5/B8Pyl5q8sbNS0cRZyYEMvT9u0gEtVBkviJ+qYdM58Bk9KW0GpmviM6YZg
+ LIl/SRYIAaV7uPxHyNEupM7VWCbJRamjbTS691HzOf8UMY7h0CrK3fJN1NJm5JwtW3Kd
+ VAyg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RonFYOi8ir0vwcFP7ymTG9YPBCfnGJoTIGWo5m1TZSqLmlEWczZdzk3mLT6JEgDtiEn/ML3SvKPTg==@nongnu.org
-X-Gm-Message-State: AOJu0YwyyRFwmAyuAmBHm2R/BwCsq0v+7Yo+t1IPrx4YajDltvkPnFBU
- +lYzOHf3t8UFZYHv0+SD66aKyVZigFq8HB/ZYNhTKEf6HJ/kUKppcy7Abc81BDJLGhU=
-X-Gm-Gg: AfdE7cmWg4a7sy1R1D6+sUaK+rG1mbXJ3QfETgP3Z8ZnkTmVrFQWA6zK+Ksp9h6j0O9
- NI2uRhbzBUCO9korpj42f+XtfatBUOWFYkA/uD199adfuuLQ2bEuFP/Ct0IKrcxHnNJRRaJevi6
- vjw+hw6TT6qMqWx0ovFVkZc+V6z4maBHzW+q0MheJY3QIEN6GpTpGR1bC2mswAV/9Za0CmQCSZY
- JwOb10nH8rsHVFr+X3G75v7fnjabDBrUAhhaIRg6Y9mXTFKwbGombCfSaXcqxvKR1zEV/am67xf
- ikRggQqHtH/3WtvkuHQYNybCk6+Bx1cmRGYmhoX09WMPVqk99wxxRPOEE6mkibFdGUJ0CIsaw2s
- JSZn3Dpiy4kKqRs3AwWZO1513aadHziVfkkElguuc83SN4f0UaVob2C1E1Tz1aWUtNJNGKVRGCo
- l9urY94GnSP2Gp
-X-Received: by 2002:a05:6000:461a:b0:46d:a16b:d21 with SMTP id
- ffacd0b85a97d-46dc1aa69b1mr4572281f8f.39.1782404395481; 
- Thu, 25 Jun 2026 09:19:55 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-46dc10e8f3bsm7721356f8f.2.2026.06.25.09.19.54
+ AFNElJ8ZfzE2ZuwAoGC3u4OLukXA4MtPpuQ7hiJRtGkO1f0LIzyuPxegdDfStOG6hN73c4MrjmKBeGTpMQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyfE0eHbudfSMqHUJZOBHXlplPhsapnMBaY6LROnBxUPKr5yheE
+ lsO6T7e6Pii/ZRTsGsljNoXbmJ7yyZFEBu9gjyXWVmpNxfubgyrUrJF1MSL2qZQSPUnL3XSUBUl
+ zhUtZR8XNUOHxt888bmsYFO6M8q70U+oolhLp88RnSxvNCF7T0vXpzQ==
+X-Gm-Gg: AfdE7clWi9ogrp627LVDGaNS61ocP54Uo1lsB7DgVie5dPEKnEPkVsxqNB+mECML8WN
+ S4yRGGF0Q54EDZx682cglQyt0IacIH6wyxP0xiyWAu9i/PivKMGrr4fwTjVgVT6fEfLJlBx5aJh
+ tSF6Sor157dqUDhKiTg+3pAaT7hufzoTkphVRsY5n/1oU6PLAPVcb/NRrHLU6dWMuOmxljU3CX1
+ 6pfO7x0vVwYFWz+TSJjioTEvcJF0RPXi2nrl9VRS7guHJgDAOBUzjBP4HP9zcaZk5Ik8qXWsx/V
+ yjUyGNV/169AGl8vcB0nKqnd3Oofzpx16egHO/wrhgAZZ2LfOI/Q1Dn+4GhW3u/K+o5LEFcv/ba
+ gLVDNfvv8Pib/3a6uf5V5K2uMlTDSijvY
+X-Received: by 2002:a05:600c:5756:b0:492:690e:9fb8 with SMTP id
+ 5b1f17b1804b1-492690ea0b0mr5458355e9.15.1782406031822; 
+ Thu, 25 Jun 2026 09:47:11 -0700 (PDT)
+X-Received: by 2002:a05:600c:5756:b0:492:690e:9fb8 with SMTP id
+ 5b1f17b1804b1-492690ea0b0mr5457955e9.15.1782406031191; 
+ Thu, 25 Jun 2026 09:47:11 -0700 (PDT)
+Received: from redhat.com (IGLD-80-230-85-71.inter.net.il. [80.230.85.71])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-46dd5f9da4fsm7012260f8f.23.2026.06.25.09.47.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jun 2026 09:19:54 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id C85BF5F8E5;
- Thu, 25 Jun 2026 17:19:53 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Jim MacArthur <jim.macarthur@linaro.org>
-Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org,  Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH v2 1/6] target/arm/tcg: Implement new instructions for
- FPRCVT
-In-Reply-To: <20260624-jmac-fprcvt-v2-1-dc6cf8e512b6@linaro.org> (Jim
- MacArthur's message of "Wed, 24 Jun 2026 14:37:25 +0100")
-References: <20260624-jmac-fprcvt-v2-0-dc6cf8e512b6@linaro.org>
- <20260624-jmac-fprcvt-v2-1-dc6cf8e512b6@linaro.org>
-User-Agent: mu4e 1.14.2; emacs 30.1
-Date: Thu, 25 Jun 2026 17:19:53 +0100
-Message-ID: <87y0g2h9sm.fsf@draig.linaro.org>
+ Thu, 25 Jun 2026 09:47:10 -0700 (PDT)
+Date: Thu, 25 Jun 2026 12:47:06 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, peterx@redhat.com, alex@shazbot.org,
+ richard.henderson@linaro.org, berrange@redhat.com,
+ philmd@oss.qualcomm.com, philmd@mailo.com, david@kernel.org,
+ clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com,
+ jugraham@redhat.com, liugang24219@sangfor.com.cn,
+ dinghui@sangfor.com.cn, shan.gavin@gmail.com
+Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
+ device region accessors
+Message-ID: <20260625123119-mutt-send-email-mst@kernel.org>
+References: <20260616052552.389021-1-gshan@redhat.com>
+ <20260616052552.389021-2-gshan@redhat.com>
+ <CAFEAcA-mf14=jpRFHarAbN6AbQwvW=Yu6WB1JiNMsECEdaxD3A@mail.gmail.com>
+ <20260625070551-mutt-send-email-mst@kernel.org>
+ <CAFEAcA8YJZq9TqrUd0zTnewAdVDm5y6UV7BJQZ0C60TZ=RT98Q@mail.gmail.com>
+ <20260625091334-mutt-send-email-mst@kernel.org>
+ <CAFEAcA8xK+t3-prEphtkq-o9UY2mgS6cowhs880GOaxL9dKSGw@mail.gmail.com>
+ <20260625101817-mutt-send-email-mst@kernel.org>
+ <CAFEAcA8-Un+Q1yBDqLWCLPRwtgTA_VhJqGobgZChrFhAeVfG8A@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <CAFEAcA8-Un+Q1yBDqLWCLPRwtgTA_VhJqGobgZChrFhAeVfG8A@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: rGExHuE1U6i62Uxwr5hmFpPe-cYL7mOTmLZaRZ5zzJ0_1782406032
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,192 +123,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Jim MacArthur <jim.macarthur@linaro.org> writes:
+On Thu, Jun 25, 2026 at 04:23:47PM +0100, Peter Maydell wrote:
+> On Thu, 25 Jun 2026 at 15:52, Michael S. Tsirkin <mst@redhat.com> wrote:
+> > I think there is exactly 1 kinda reasonable case. A 2 byte read/write at
+> > offset 0x1 within a dword. This maps nicely to even classical PCI byte
+> > enable mechanism and so yes it works if your CPU can initiate these
+> > things, and it's atomic.
+> >
+> > I tried reading LEDCTL on e1000e:
+> >
+> >        byte  @ 0xe00: 0x64
+> >        byte  @ 0xe01: 0x2a
+> >        byte  @ 0xe02: 0x00
+> >        byte  @ 0xe03: 0x00
+> >        word  @ 0xe00: 0x2a64
+> >        word  @ 0xe01: 0x002a
+> >
+> > Works fine.
+> 
+> The e1000e datasheet actually documents what it does in this
+> case (slightly surprising, since hardware engineers love to
+> leave this kind of corner case undocumented):
+> 
+> # For registers that should be accessed as 32-bit double words,
+> # partial writes (less than a 32-bit double word) does not take
+> # effect (such as, the write is ignored).
+> # Partial reads
+> # return all 32 bits of data regardless of the byte enables.
+> #
+> # Note: Partial reads to clear-by-read registers (such as, ICR)
+> # can have unexpected results since all 32 bits are actually read
+> # regardless of the byte enables. Partial reads should not be done.
+> 
+> So for this specific device that access is out-of-spec.
 
-> Adds the opcode format for the SIMD versions of FCVTXX and [US]CVTF.
-> These use very similar logic to the FP-to-general and general-to-FP
-> register versions which exist, but use another SIMD/FP register
-> as source or destination. The source and destination size rules are
-> slightly different.
->
-> Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
-> ---
->  target/arm/cpu-features.h      |  5 +++
->  target/arm/tcg/a64.decode      | 15 +++++++++
->  target/arm/tcg/translate-a64.c | 71 ++++++++++++++++++++++++++++++++++++=
-+-----
->  3 files changed, 83 insertions(+), 8 deletions(-)
->
-> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-> index a80b251589..aba95f4253 100644
-> --- a/target/arm/cpu-features.h
-> +++ b/target/arm/cpu-features.h
-> @@ -1665,6 +1665,11 @@ static inline bool isar_feature_aa64_f8mm4(const A=
-RMISARegisters *id)
->      return FIELD_EX64_IDREG(id, ID_AA64FPFR0, F8MM4);
->  }
->=20=20
-> +static inline bool isar_feature_aa64_fprcvt(const ARMISARegisters *id)
-> +{
-> +    return FIELD_EX64_IDREG(id, ID_AA64ISAR3, FPRCVT);
-> +}
-> +
->  /*
->   * Combinations of feature tests, for ease of use with TRANS_FEAT.
->   */
-> diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-> index 28cd1faf61..5b6f156d08 100644
-> --- a/target/arm/tcg/a64.decode
-> +++ b/target/arm/tcg/a64.decode
-> @@ -1456,6 +1456,21 @@ FCVTZU_g        . 0011110 .. 111001 000000 ..... .=
-....  @icvt
->  FCVTAS_g        . 0011110 .. 100100 000000 ..... .....  @icvt
->  FCVTAU_g        . 0011110 .. 100101 000000 ..... .....  @icvt
->=20=20
-> +# Conversion between floating-point and integer (SIMD & FP)
-> +SCVTF_simd      . 0011110 .. 111100 000000 ..... .....  @icvt
-> +UCVTF_simd      . 0011110 .. 111101 000000 ..... .....  @icvt
-> +
-> +FCVTAS_g_simd   . 0011110 .. 111010 000000 ..... .....  @icvt
-> +FCVTAU_g_simd   . 0011110 .. 111011 000000 ..... .....  @icvt
-> +FCVTMS_g_simd   . 0011110 .. 110100 000000 ..... .....  @icvt
-> +FCVTMU_g_simd   . 0011110 .. 110101 000000 ..... .....  @icvt
-> +FCVTNS_g_simd   . 0011110 .. 101010 000000 ..... .....  @icvt
-> +FCVTNU_g_simd   . 0011110 .. 101011 000000 ..... .....  @icvt
-> +FCVTPS_g_simd   . 0011110 .. 110010 000000 ..... .....  @icvt
-> +FCVTPU_g_simd   . 0011110 .. 110011 000000 ..... .....  @icvt
-> +FCVTZS_g_simd   . 0011110 .. 110110 000000 ..... .....  @icvt
-> +FCVTZU_g_simd   . 0011110 .. 110111 000000 ..... .....  @icvt
-> +
->  FJCVTZS         0 0011110 01 111110 000000 ..... .....  @rr
->=20=20
->  FMOV_ws         0 0011110 00 100110 000000 ..... .....  @rr
-> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a6=
-4.c
-> index 227719ef25..07f985a5f0 100644
-> --- a/target/arm/tcg/translate-a64.c
-> +++ b/target/arm/tcg/translate-a64.c
-> @@ -9905,12 +9905,14 @@ TRANS(SCVTF_g, do_cvtf_g, a, true)
->  TRANS(UCVTF_g, do_cvtf_g, a, false)
->=20=20
->  /*
-> - * [US]CVTF (vector), scalar version.
-> - * Which sounds weird, but really just means input from fp register
-> + * [US]CVTF (vector), scalar or SIMD version.
-> + * Which sounds weird, but really just means input from FP/SIMD register
->   * instead of input from general register.  Input and output element
-> - * size are always equal.
-> + * size are always equal for the scalar version and different for the
-> + * SIMD version.
->   */
-> -static bool do_cvtf_f(DisasContext *s, arg_fcvt *a, bool is_signed)
-> +static bool do_cvtf_f(DisasContext *s, arg_fcvt *a, MemOp src_mop_int,
-> +                      bool is_signed)
->  {
->      TCGv_i64 tcg_int;
->      int check =3D fp_access_check_scalar_hsd(s, a->esz);
-> @@ -9918,14 +9920,18 @@ static bool do_cvtf_f(DisasContext *s, arg_fcvt *=
-a, bool is_signed)
->      if (check <=3D 0) {
->          return check =3D=3D 0;
->      }
-> -
->      tcg_int =3D tcg_temp_new_i64();
-> -    read_vec_element(s, tcg_int, a->rn, 0, a->esz | (is_signed ? MO_SIGN=
- : 0));
-> +    read_vec_element(s, tcg_int, a->rn, 0,
-> +                     src_mop_int | (is_signed ? MO_SIGN : 0));
->      return do_cvtf_scalar(s, a->esz, a->rd, a->shift, tcg_int, is_signed=
-);
->  }
->=20=20
-> -TRANS(SCVTF_f, do_cvtf_f, a, true)
-> -TRANS(UCVTF_f, do_cvtf_f, a, false)
-> +TRANS(SCVTF_f, do_cvtf_f, a, a->esz, true)
-> +TRANS(UCVTF_f, do_cvtf_f, a, a->esz, false)
-> +TRANS_FEAT(SCVTF_simd, aa64_fprcvt, do_cvtf_f, a,
-> +           a->sf ? MO_64 : MO_32, true)
-> +TRANS_FEAT(UCVTF_simd, aa64_fprcvt, do_cvtf_f, a,
-> +           a->sf ? MO_64 : MO_32, false)
->=20=20
->  static void do_fcvt_scalar(DisasContext *s, MemOp out, MemOp esz,
->                             TCGv_i64 tcg_out, int shift, int rn,
-> @@ -10044,6 +10050,34 @@ static bool do_fcvt_g(DisasContext *s, arg_fcvt =
-*a,
->      return true;
->  }
->=20=20
-> +/*
-> + * Floating point to int conversion, but puts the result
-> + * in a SIMD register.
-> + */
-> +static bool do_fcvt_simd(DisasContext *s, arg_fcvt *a,
-> +                      ARMFPRounding rmode, bool is_signed)
-> +{
-> +    TCGv_i64 tcg_int;
-> +    int check =3D fp_access_check_scalar_hsd(s, a->esz);
-> +
+You mean that access to clear by read should not be done, right?
 
-I did test with:
+> I guess what I'm wondering is: can we just have code
+> that does an aligned exact-width access in the 1/2/4/8
+> byte aligned case, and the host's best approximation to
+> an unaligned exact-width access for the 2/4/8 byte
+> unaligned case?
 
-  g_assert(s->is_nonstreaming =3D=3D false);
+That's my idea, too.
 
-which shows trans_FAIL or aarch64_tr_translate_insn setting had done
-whatever it was supposed to.
+> (so on sparc you get multiple smaller
+> accesses, and on most archs including x86 and arm you
+> get an unaligned load).
 
-> +    if (check <=3D 0) {
-> +        return check =3D=3D 0;
-> +    }
-> +    /*
-> +     * a->sf should specify destination size (64 bit or 32 bit)
-> +     * a->esz specifies source size
-> +     */
-> +    tcg_int =3D tcg_temp_new_i64();
-> +    do_fcvt_scalar(s, (a->sf ? MO_64 : MO_32) | (is_signed ? MO_SIGN : 0=
-),
-> +                   a->esz, tcg_int, a->shift, a->rn, rmode);
-> +
-> +    if (!s->fpcr_nep) {
-> +        clear_vec(s, a->rd);
-> +    }
-> +    write_vec_element(s, tcg_int, a->rd, 0, (a->sf ? MO_64 : MO_32));
-> +    return true;
-> +}
-> +
->  TRANS(FCVTNS_g, do_fcvt_g, a, FPROUNDING_TIEEVEN, true)
->  TRANS(FCVTNU_g, do_fcvt_g, a, FPROUNDING_TIEEVEN, false)
->  TRANS(FCVTPS_g, do_fcvt_g, a, FPROUNDING_POSINF, true)
-> @@ -10055,6 +10089,27 @@ TRANS(FCVTZU_g, do_fcvt_g, a, FPROUNDING_ZERO, f=
-alse)
->  TRANS(FCVTAS_g, do_fcvt_g, a, FPROUNDING_TIEAWAY, true)
->  TRANS(FCVTAU_g, do_fcvt_g, a, FPROUNDING_TIEAWAY, false)
->=20=20
-> +TRANS_FEAT(FCVTNS_g_simd, aa64_fprcvt, do_fcvt_simd, a,
-> +           FPROUNDING_TIEEVEN, true)
-> +TRANS_FEAT(FCVTNU_g_simd, aa64_fprcvt, do_fcvt_simd, a,
-> +           FPROUNDING_TIEEVEN, false)
-> +TRANS_FEAT(FCVTPS_g_simd, aa64_fprcvt, do_fcvt_simd, a,
-> +           FPROUNDING_POSINF, true)
-> +TRANS_FEAT(FCVTPU_g_simd, aa64_fprcvt, do_fcvt_simd, a,
-> +           FPROUNDING_POSINF, false)
-> +TRANS_FEAT(FCVTMS_g_simd, aa64_fprcvt, do_fcvt_simd, a,
-> +           FPROUNDING_NEGINF, true)
-> +TRANS_FEAT(FCVTMU_g_simd, aa64_fprcvt, do_fcvt_simd, a,
-> +           FPROUNDING_NEGINF, false)
-> +TRANS_FEAT(FCVTZS_g_simd, aa64_fprcvt, do_fcvt_simd, a,
-> +           FPROUNDING_ZERO, true)
-> +TRANS_FEAT(FCVTZU_g_simd, aa64_fprcvt, do_fcvt_simd, a,
-> +           FPROUNDING_ZERO, false)
-> +TRANS_FEAT(FCVTAS_g_simd, aa64_fprcvt, do_fcvt_simd, a,
-> +           FPROUNDING_TIEAWAY, true)
-> +TRANS_FEAT(FCVTAU_g_simd, aa64_fprcvt, do_fcvt_simd, a,
-> +           FPROUNDING_TIEAWAY, false)
-> +
->  /*
->   * FCVT* (vector), scalar version.
->   * Which sounds weird, but really just means output to fp register
+I thought unaligned load from uncacheable on arm is
+also a fault?
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+> That would mean the guest could
+> potentially provoke a fault on the load/store on an
+> access to a passthrough device, but if you give the
+> guest passthrough access it can very likely provoke
+> a fault anyway, depending on exactly what the device is.
+> 
+> I think the most likely reason for an unaligned access
+> in this codepath is "it's actually RAM, either really
+> host RAM or else something memory-like in a BAR", and
+> either way if the guest does a 4-byte unaligned access
+> then doing a 4-byte unaligned access seems better than
+> second-guessing it, even on non-x86.
+> 
+> -- PMM
+
+Right though remember: whether it's RAM doesn't matter. What matters is
+how we map it.  qemu might fault because it maps NC but guest maps
+cacheable and it's ok.
+
+But, all this in theory. At a high level, I personally think going with
+what you propose as a 1st approximation is entirely reasonable, except
+for one thing: we really should not crash qemu, since access can be from
+guest userspace.
+
+qemu should know how things are mapped, and predict it will fault.
+Approximating by splitting in that case sounds reasonable.
+
+
+
+-- 
+MST
+
 

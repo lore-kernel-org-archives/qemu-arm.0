@@ -4,113 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C552ACDB479
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 14:03:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67A61CDE001
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 14:50:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wckfV-0003hB-F5; Thu, 25 Jun 2026 10:03:01 -0400
+	id 1wclOY-0005u2-Gf; Thu, 25 Jun 2026 10:49:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wckfT-0003gf-1x
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:02:59 -0400
-Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
+ id 1wclOX-0005pR-Jc
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:49:33 -0400
+Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wckfR-0006AC-0m
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:02:58 -0400
-Received: by mail-yx1-xb12f.google.com with SMTP id
- 956f58d0204a3-662dc3879acso2185013d50.0
- for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 07:02:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1782396175; cv=none;
+ id 1wclOW-0000Sq-0K
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 10:49:33 -0400
+Received: by mail-yx1-xb12b.google.com with SMTP id
+ 956f58d0204a3-664345f8645so1894426d50.3
+ for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 07:49:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782398971; cv=none;
  d=google.com; s=arc-20260327;
- b=siynYCaNw4+3/5PWq/SiuqCfrvzDXWhbNqQpmKb/gxejl/0110Szs8th35U280hdO+
- MoeK06rek6GjQ+oakGV3umOmX1fl58jNbgs/U0YA+32luqvNJ/Xly7Zlnn4KwGPH1mLz
- HRG3Sag8sK7r3M2U8LH4ltuo8cjzfKdRirWALATMdjDz8lLwCh8NLmtHuorzBp8e+Jme
- PnLGNEBZaI6jW528snwmvlqSCw98qY8AMzZ7lOXnrcc10JkRybUNaIG7AC/z3SnTs12Z
- FMByeB1XD15dI2iWy3SwcdkNNxbaFBaYsv169yOE/rcxkfaJ3ziyxdNNIxx04pVakIeM
- ocFA==
+ b=CVfI7iFuJ0kr+EJGgd+iPPLdXb0cgMMOnI2177h9MAJLIqqnKkseHV/29c3eZ9G/co
+ 4rv2GBHoY2bj/7zf80KrytRyWqD7cTiTN0hDITHeB/ti7jd3Ljawr67aY+1UqhroH+x9
+ /8Uy/QZk2bPGG1oc1ki24/JH+XIj9GI66kbz7Q/Fzo6wTzfEgWef36pxg4E1jX3tQ+68
+ 51mjCZ+p0BgINUKTwjnYjxMylyoqEjLLRZ6x9WKqVfx1oJUTsefCg8PfDBBHxB0IXy40
+ FFvZW9M9k9fsgdR4KGLaTbtO2relq28WvLbrV+FKUVXAzl0QdUt0TO2lmvABlNQzc5hy
+ DJCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=DYEqZxqgzUw2voQpVHyMaVq9iZjwv3lkabsgdLeERQ0=;
- fh=eMRUwjgAiJiEWJOr5pGxOvk2i+PTvY6QdiTsqz5ybDY=;
- b=SgbpjKDJbequWCs2KPZ3dEqhPK3XPS1EVKHwXoeuplHBOkEP1zwgZMKeDHkavbBN56
- TKuINwAMj1bkQczTzCmA2TD8ukTIakdT3zmC/FF6LZPhqSYMe9FIspzHA/ADpXG6qBMc
- 0FvsfX5ZPIALqM+frYMZPCfRMo2x+pldytHZz2VV9+x2TlLUMQteFvrJVjAAHOd4wR1d
- mLSqliSGVeiSZ81VJu5RJwZwI2YxLesm4e9ysId9i/aNCeZj06rOBMHfXz4FKFl/r+1j
- Gfx5XB+mjsLRGBCP1lEmK13OmwP60LzqdWjo60nqE6hPvji33K4rMFSBUI4xj+GPV/pb
- uVIQ==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=Rw0HfhI7BJOD+4UVug9ahXXlWhekFk0Jzb2lruLBVeM=;
+ fh=4uhLsYvq/DrayIcsRK1+rC5+ZAu7AIAX+Whpe0VboGY=;
+ b=P3eXFbjtwdIoddvnFuTeBBNLmyo+kehSTGVUZtP/LflMdj8wqlmqmxZbXNaq2C3vca
+ bC/KryW/eV1WJooma11O7IcWgcpJduviOxZT1C36UC3Utl2BCGKWei4VGZiX+XPII0Vi
+ nhrsNP4FpZAopAOnLSGE4hv6qgi7drPs2/ua5v+L1Q/oP1hWjBoNOwkcdOKRe93VXRmx
+ IP8Fg2euOw6TptUjrlTWHeU5oYi+BUlqsLBTkPjIS7P+8mgpVBa/7M/x4+KviDBzOIrK
+ Qi6ncIY6wreDsyRJ2Pm1SoRGzKtqUYgdQED+tbf6oEbAW3ax0TnDw80BvK7LrllAVfiA
+ Ux9Q==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782396175; x=1783000975; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=DYEqZxqgzUw2voQpVHyMaVq9iZjwv3lkabsgdLeERQ0=;
- b=bINEAo5DoVartzyUheJmywUqsBDi/QgjW+G/i+fED1S1d1xm5vGRI2DiKOABmf2iKi
- kZ9vo0SGmWeog9VaAJaHQ+vl1CD/RKKyR+iMIXZVkpN3sTNT27qYGG/IN3rTfEVs5aqk
- yq//jytUyhmy1YEranON+hM05fgHW7ixg3JsZgM+nKhh+TR4gZboBCbhJYIlNpyOmwTC
- TqkTs3YKYqAvnqguqLQPXkl4wAegL7T0LqGeTU3bU8t7bUdoKGMzBDGFei2e8+D8H07H
- SLtHFjARjc+bqacz8h5aLebw9Zs2kAOka+evbwG+5ofNVPBpCcxGBgsLSrDs2Q27wnfd
- pXVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782396175; x=1783000975;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1782398971; x=1783003771; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=DYEqZxqgzUw2voQpVHyMaVq9iZjwv3lkabsgdLeERQ0=;
- b=csEY+XPfcxheTMbh/2hN25KULsps8MPRYFcQ0+lVpczRSo/xU/a/dfosARBIyM5xJ5
- KvLqpg5VWu1Oy3Tmfk6t3kmVgenWsNaX1194ErXXEHwuhyoRFfUZDqtfWyHJDrbH9ndV
- i0NOaOf3eYy/cXTAwXYGN7qaxq+LNLHMUo3/dj2vf267qSMzu8pfcsfvRkQquSP+0Dyt
- TobsHgUrS0tqYsPNnvpw+2cAf2B2fxQq4/y4q2WOwJXr2YM1iOGj1w+Yp9jIgAqJolVC
- 3z/uXDFVhLWqapuvROXvn9ezP7Gr4+kP61ih8FzvHTGzUofWL5DoGGK118VurNMRqjqs
- x0pQ==
+ bh=Rw0HfhI7BJOD+4UVug9ahXXlWhekFk0Jzb2lruLBVeM=;
+ b=CGI5nKud5zkJLghvEknCZZUPVyskefk+khJccaOKsSS1dsQoH9Y7Lp4Oh9C/Ez8Hf1
+ 2aPFe16iH+RcempJX9MTN5Ipqk9o2hIpQxI91OQS3jCt+7zg3qKzS8FnT/bqOWME9e3K
+ MJVrqUV3b7ikmVLhKKQupeLwbGAV3CG85lMSkuB/9LLbBq0nDyKbVhg9oZvkFYABVMtT
+ uBWlypu2Gksh8CAkeO1DIOtC+RSaaaEDRZPWX8URAqJJhIBuA9q9seIlHoZfVOE2tgWH
+ ItbYOJS/WnAyz7HdCNO0TCJxvgtBFWuY62ND21xih38HzmtF1uQ5eY7OLCLcSgcG8O78
+ 6QhQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782398971; x=1783003771;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=Rw0HfhI7BJOD+4UVug9ahXXlWhekFk0Jzb2lruLBVeM=;
+ b=MghqAgcAxyjhpqn++ijww3km4+mBXtJjgyaG8Oaeh72CnbMDAUYj2UwTp0ejCmmvY5
+ sJo5jrr9UtVbQYHPw58nbOUurWAU1u1ZqOFwg2aXnJwxPTnORIo+N1+wzIxR+s6PjAyg
+ kRPU/6zQaueyXYFXz90LCMKdiW7jgXVAhlCF45ZkfapLueFCkGhwmFceOtEVUf3m0GqP
+ u424MXGYWaMMwyuaeUqhQUeGW+Q92frGn02P+ptGu4geoF9NoiFgQUvDkV79MwBfEg6b
+ KkO2eZlXi3nZ7FURTHX2iSo7A9+uKMXvpyP/3eqQU43G/WSdCerfa0VtNtKq3hyrz8HW
+ p+ng==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqNnnYSud6ExMQ/pbmY5j4NQ7ZcJ9Cgztx9ONJsURxCcNpaElaXWxrxH1fgL/LKTKPZyXuCBcbKVg==@nongnu.org
-X-Gm-Message-State: AOJu0YwVVx0eHGPqk95r4YAHfNFF5soylV9czdJKoYUJpsO3vPTWpusD
- WdWWDcPglGnvfLOO7sesaYfD2TPSoJX/sgZsg3E8QLvcWaGUKJcNFdI8VxlfqAznYAusgPYqEGK
- tDHeS9req85p5MaM3i3I9KtgY04CSpUXWFu99TfWbYg==
-X-Gm-Gg: AfdE7cmwpFeBMm4koRxinQkUMlFL5H7Xb44JCya3G7o/RMLPa3UnM02EpuAmMefu6KX
- 9CI5LtiDCO/a4lJFfqqs3nxd8nmex/0q+jmktDWsfIjnUQ8Y+/w/GUF8gmKMPIYnOSguEffdklB
- /dP2WVGSL4ydybNRuf6XhmSkxdJY95hjAyLXp3NJSechyU7NNTpggKTQGTjkoqvEV9V4Vfz/fP3
- mtTXAmwhzbX8WH3L7rPqiqAb+XP8da51KFN6DqmrKJy9mQ1GqTj0A08b5/SkfXZn4Hz8wX387Da
- ASqRHhDkhDPLy4Hfdnd+HdsWrN+Sd0x5+wZ9swHqEmCJ2b+Jj6KcDei/
-X-Received: by 2002:a05:690e:1443:b0:664:8e4e:6709 with SMTP id
- 956f58d0204a3-6648e4e6a65mr1121989d50.7.1782396174493; Thu, 25 Jun 2026
- 07:02:54 -0700 (PDT)
+ AHgh+Rp30X+ZTlVlK7YTrvnzX7VlipnoBhJACwnZZU+tN4rIEcl1SWQxCMJpJYe200zS9SjvO5EqSnZy1w==@nongnu.org
+X-Gm-Message-State: AOJu0Yz0Ay+fA1SwN7rxUr4nNuQh4MvfZxEfbFdeP9/V2edXOI+w3MNJ
+ 8YPlMUdnVM0cFNzYuJ/xpYdXXD7BsGdyKaJiLEHvXje7hh6QpK0rmZLygZ2GiruV1k0xhM8RygP
+ JZP55nxA1LN0J4ORDtJwSNNlCw7nTMRJ4cvOe0FAhVw==
+X-Gm-Gg: AfdE7cnzt8rwHydQCuWV4brmpE3cznuqJu+NFtbWqxAFgeKSFkyPdlp/KXhzuWDpPa4
+ aofCz1oLlGmNQ0xItCX55hEAHNeSGvAVzk7A3nJisH2TwAKLF3Bpqb8wbhDge8BeL+mznnNgHko
+ gB6gM7dW4deu83UBFqlicEhoms3p+2A4n0BJgRX1PgoTAabViztnTAQt8EMWjAki+M4VzkTWI4B
+ b7Rs+dKIfg6jrM6MacJmgdv1kx7DGXFDv6YPmjIH4vmanYh40kr5HXSqPkhttcQfENSOngegjcq
+ kx5vQKia+o0+WaFVWc5z49PkssZd56uwPTftC6jV17yntcrbNWxvlwZ6
+X-Received: by 2002:a05:690e:1686:b0:662:c587:4351 with SMTP id
+ 956f58d0204a3-66487e02aa3mr1957554d50.55.1782398970624; Thu, 25 Jun 2026
+ 07:49:30 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260616052552.389021-1-gshan@redhat.com>
- <20260616052552.389021-2-gshan@redhat.com>
- <CAFEAcA-mf14=jpRFHarAbN6AbQwvW=Yu6WB1JiNMsECEdaxD3A@mail.gmail.com>
- <20260625070551-mutt-send-email-mst@kernel.org>
- <CAFEAcA8YJZq9TqrUd0zTnewAdVDm5y6UV7BJQZ0C60TZ=RT98Q@mail.gmail.com>
- <20260625091334-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20260625091334-mutt-send-email-mst@kernel.org>
+References: <cover.1782140438.git.matyas.bobek@gmail.com>
+In-Reply-To: <cover.1782140438.git.matyas.bobek@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Jun 2026 15:02:42 +0100
-X-Gm-Features: AVVi8CeDStepglKbBtTEBQFKemwSayNCNcWYPpFnhlOw47hiL4XCycHAGem_uaQ
-Message-ID: <CAFEAcA8xK+t3-prEphtkq-o9UY2mgS6cowhs880GOaxL9dKSGw@mail.gmail.com>
-Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
- device region accessors
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- peterx@redhat.com, alex@shazbot.org, richard.henderson@linaro.org, 
- berrange@redhat.com, philmd@oss.qualcomm.com, philmd@mailo.com, 
- david@kernel.org, clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com, 
- jugraham@redhat.com, liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, 
- shan.gavin@gmail.com
+Date: Thu, 25 Jun 2026 15:49:19 +0100
+X-Gm-Features: AVVi8CemKf_lxAexYgtSsYH1dl92XnW4W0vQgF5o42uyydlYUN3ajK12BHWnobQ
+Message-ID: <CAFEAcA8NPX2uARh-OriY8geKB-a67A_yc3LGCLB7G=-NWDG+WA@mail.gmail.com>
+Subject: Re: [PATCH v6 0/7] hw/arm/sabrelite: Add FlexCAN support
+To: =?UTF-8?B?TWF0ecOhxaEgQm9iZWs=?= <matyas.bobek@gmail.com>
+Cc: qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>, 
+ Pavel Pisa <pisa@fel.cvut.cz>, Bernhard Beschow <shentey@gmail.com>,
+ qemu-arm@nongnu.org, Marc Kleine-Budde <mkl@pengutronix.de>,
+ Oliver Hartkopp <socketcan@hartkopp.net>, 
+ Nikita Ostrenkov <n.ostrenkov@gmail.com>, Andrey Volkov <andrey@volkov.fr>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,75 +121,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 25 Jun 2026 at 14:23, Michael S. Tsirkin <mst@redhat.com> wrote:
+On Mon, 22 Jun 2026 at 17:08, Maty=C3=A1=C5=A1 Bobek <matyas.bobek@gmail.co=
+m> wrote:
 >
-> On Thu, Jun 25, 2026 at 01:48:11PM +0100, Peter Maydell wrote:
-> > On Thu, 25 Jun 2026 at 12:07, Michael S. Tsirkin <mst@redhat.com> wrote:
-> > >
-> > > On Thu, Jun 25, 2026 at 11:09:26AM +0100, Peter Maydell wrote:
-> > > > This is still wrong. We should not have "x86 magically works
-> > > > and all other hosts do something different" ifdefs. Define what
-> > > > semantics you need and then we can figure out how to
-> > > > implement them.
-> > > >
-> > > > My current thought is that we need to handle accesses of
-> > > > 1, 2, 4 and 8 bytes that are naturally aligned by ensuring that we
-> > > > do exactly one host load/store of that type, and that anything else
-> > > > is "the guest isn't relying on specific semantics here, we can just
-> > > > assume it's plain old RAM and do whatever". That would not
-> > > > require any architecture specific ifdefs.
-> >
-> > > Well. X86 is special, as usual. It allows unaligned mmio so
-> > > we really have no way to know an x86 guest does not intend
-> > > just that. That can only be emulated perfectly on x86
-> > > which is sad but I see no reason to actively break it.
-> >
-> > What actual hardware will rely on unaligned accesses
-> > appearing to it as single unaligned accesses?
+> This series adds emulation of the FlexCAN CAN controller, version 2,
+> found in NXP i.MX6 series SoCs. The controller is integrated into
+> fsl-imx6 and the Sabrelite ARM board.
 >
-> /me shrugs
-> any hardware that was only tested under windows?
-
-I seriously doubt any hardware designer implements
-registers that are not aligned, especially on PCI devices.
-"Only tested under Windows" doesn't imply "hardware
-designer did something nuts".
-
-> > And if we do need this, we need to specify:
-> > - what are the semantics we need to provide?
+> The chip has two FlexCAN controllers, but the Linux Sabrelite
+> device tree enables only one by default. Linux kernel with both
+> controllers enabled has been tested to work properly (using a custom
+> device tree).
+> See docs/system/devices/can.rst for an example of QEMU command line
+> invocation.
 >
-> match what happens on bare metal
-
-This is too vague. We need to write down what we mean,
-in enough specifics that we can then say "OK, we can
-do this this way", or "we can do this this way on
-some hosts, and these corner cases are not covered
-on other hosts".
-
-> > - what is the use case that relies on these?
-> > Then we can see how closely we can match that.
+> More information about the implementation can be found in my bachelor
+> thesis [1].
 >
-> passhtrough of weird devices, first of all.
+> Changes from v5:
+> - fixed buffer overflow due to unchecked input in
+>   flexcan_enabled_mailbox_count
+> - rebased onto latest master
+> - Link to v5: https://lore.kernel.org/qemu-devel/cover.1781111270.git.mat=
+yas.bobek@gmail.com/
 
-This isn't a use case, it's a vague hypothetical.
 
-> > There's a lot of extra complexity added in here for
-> > something it I don't think is ever going to matter,
-> > and having the most common host architecture take a
-> > totally different codepath from everything else is
-> > a recipe for that other codepath breaking.
-
-> Not sure we have to be pedantic. We have arch specific code and the
-> world did not end.  It's not a lot of code, it's just for unaligned
-> accesses on MMIO, which might or might not be broken anyway.
-> And it worked already, so it's more about going back to what we
-> did earlier.
-
-But we should not have arch specific code unless we
-have a reason to do it. And if we have a reason to do
-it then we should say what that reason is and what the
-cases the host has to cover are, so that when we can
-implement it correctly we do that.
+Applied to target-arm.next, thanks.
 
 -- PMM
 

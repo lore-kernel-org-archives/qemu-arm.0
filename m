@@ -4,147 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8F10C43458
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Jun 2026 18:44:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95087C43458
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Jun 2026 20:54:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wdBXL-00055f-8P; Fri, 26 Jun 2026 14:44:23 -0400
+	id 1wdDZM-0000vx-MW; Fri, 26 Jun 2026 16:54:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wdBXB-0004x9-Vt
- for qemu-arm@nongnu.org; Fri, 26 Jun 2026 14:44:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <oupton@kernel.org>)
+ id 1wdDIB-0006pM-VT; Fri, 26 Jun 2026 16:36:54 -0400
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wdBXA-0003Ed-BF
- for qemu-arm@nongnu.org; Fri, 26 Jun 2026 14:44:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1782499451;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=ghj/xOg/E0yHFDgkCHpp4r2601tf0dBSnaAs4XEnKzE=;
- b=SxhC8ziC3THz1iQFTy3E1CayYJv5CweHT2IuPxOapeYbwX0Fqhbder/u8i/eFWlvRsM6gL
- 90ErBZD/xefAMsqRXptK9Ak4bczzAxLq9nk6k+XYs57wRh6okn1DCtjam5lgOb2w0Wk7SZ
- EzxYAQ6eELJ9khZ5xhCJsW1zGVrf1l0=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-532-WlNY2zc8NcOGbULphBuVsA-1; Fri, 26 Jun 2026 14:44:10 -0400
-X-MC-Unique: WlNY2zc8NcOGbULphBuVsA-1
-X-Mimecast-MFC-AGG-ID: WlNY2zc8NcOGbULphBuVsA_1782499449
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-460153ce644so777760f8f.0
- for <qemu-arm@nongnu.org>; Fri, 26 Jun 2026 11:44:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782499449; x=1783104249;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ghj/xOg/E0yHFDgkCHpp4r2601tf0dBSnaAs4XEnKzE=;
- b=ozXCEmxXjy0zMelh3SDO/hUjG1VJhsWmWWqSeEU/zlSEi1kvUURFOhT9oXXWZpHa6q
- N+TxVhwKJI9b8s2gHSN2NkXlcpSSVcHsB+M2TCry9zgznGvdxRhPOAvfcauB2ST2IaO/
- jliIEL6utUjvWL2KlGYZRdrhxMGIBVFle/Kt0H0uteyHvl417jcvZeeavP68hF/cJm0H
- diaTRD0sqV06L/5joSmtRivJQWybEPoLo1pye0N6UJP9d5eUYJ6BHHA+5TlSlbOaQgYz
- lVGYcZJkWignA26pLwRHGu5lTJCBxovkSEhTE9UFGUNoLoZENYsz9oqjsLvpaPxMg8Dd
- ivSg==
-X-Forwarded-Encrypted: i=1;
- AHgh+RqiVOLYJJXTmEvtGdNQnfww0dG/zDvWAvdAsjbCQEOFcpud7PIYN0f3Zqo/m2S9xLElwSSeer0uJA==@nongnu.org
-X-Gm-Message-State: AOJu0Yx/UezPRM2lfUZfK241Wbscytx9zulYhU9Zt+QplOEymJt3b3JP
- 8hau72+m9ABlAgukEacCpSJpbhaWf5rJ38FGExovlu9sIKnG0f3Ov/I3InilTrzGapcyIJn2fUB
- nxMSjufKh5a95pm568YuiWGiV0XJkdz1joQH4EzTW74aO1LTme6N1cA==
-X-Gm-Gg: AfdE7cmPdGhI9r9woMz/F8prhie6heC5Xf9GMzypBgfOJVBiaJwhgRr4ZS4ywrd/G6m
- fzs6RzYbpdY1vxH1L2PBe+i4h9X/IB9Zk8v+iuGqovSQh1MdUVBcjxNRqFUSnvo2U6htMAC4dPz
- QkZVBzZn2vUTDHFzY1Q4ZeN1hsb5ECw0D9M4K06f/zVZVFCtrvYDqEl5zxXGm709+uXyX4oFjis
- aYtm4jquaUytL220x/0N3F5M1HVK+3jQgE6OAAzw/QNjPemuVcqW7cEX3DpCvKDvuQ6IKHMOu5q
- mLJ7HBk3LmbXLOaOXmuczsX8oawFS+ftxqpdHNx6bWtcciEf35ly+mBePkSDcpksPcheI77qPz4
- lopAHP/RD1qw6FykT9AVHQJdyr2r4fz/sgaWtlqIsWlWblDLnuCfA
-X-Received: by 2002:a05:6000:460d:b0:462:e086:35f with SMTP id
- ffacd0b85a97d-46dc2075df6mr12576832f8f.21.1782499448736; 
- Fri, 26 Jun 2026 11:44:08 -0700 (PDT)
-X-Received: by 2002:a05:6000:460d:b0:462:e086:35f with SMTP id
- ffacd0b85a97d-46dc2075df6mr12576805f8f.21.1782499448248; 
- Fri, 26 Jun 2026 11:44:08 -0700 (PDT)
-Received: from ?IPV6:2a01:cb19:8426:ae00:a924:b4e0:1ee:f5c5?
- ([2a01:cb19:8426:ae00:a924:b4e0:1ee:f5c5])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-46c1ee0189esm28102155f8f.9.2026.06.26.11.44.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 26 Jun 2026 11:44:07 -0700 (PDT)
-Message-ID: <bdd7da0a-27e3-432d-935e-e3f435f19b4c@redhat.com>
-Date: Fri, 26 Jun 2026 20:44:06 +0200
+ (Exim 4.90_1) (envelope-from <oupton@kernel.org>)
+ id 1wdDI9-0005Ap-OB; Fri, 26 Jun 2026 16:36:51 -0400
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+ by tor.source.kernel.org (Postfix) with ESMTP id 14E35600AA;
+ Fri, 26 Jun 2026 20:36:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A41F31F000E9;
+ Fri, 26 Jun 2026 20:36:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+ s=k20260515; t=1782506205;
+ bh=E+xeZBd97/MILfl6vVEnz7x35bdQO+xqAW2g7gNyAeM=;
+ h=From:To:Cc:Subject:Date;
+ b=hLAdqnHJtO4wcIkLHpudkx39cmR+UiYJS/dp+6Ak2RD8B2MgYd6dVMD6OTWk/v/MX
+ tGf9Z/b/AD5IcfqasBDAE896CNs8FqnYtlk2diN0AjxPyH35Zp83juRDgSLISJFQHN
+ 65VK7rTIs4AevzTV8NcHOYIKtC4Wt1AVYpzz2gZBXm0MSBOE/lcFRNKagXDD3DhNIM
+ yME1/LYBa0Fr/tb8RFa4q2rfzQIpwexFu69qSmxlVXMICEcFdwDO68A0/eFfZMZ4da
+ x6KWWLNE9ib2qJO6Or2xb3QdTzHmeeprIbiOQgcxiaPyPVU+fUxlA3fLQZTdroChsf
+ y/IjnJVwSYjwg==
+From: Oliver Upton <oupton@kernel.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Oliver Upton <oupton@kernel.org>
+Subject: [PATCH] target/arm: Only evaluate SCR_EL3.PIEN if ARM_FEATURE_EL3 is
+ present
+Date: Fri, 26 Jun 2026 13:36:39 -0700
+Message-ID: <20260626203639.431191-1-oupton@kernel.org>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] vfio/listener: Fix translated_addr for
- non-identity-mapped RAM sections
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Yi Liu <yi.l.liu@intel.com>,
- Giovannio Cabiddu <giovanni.cabiddu@intel.com>,
- Alex Williamson <alex@shazbot.org>, Zhenzhong Duan <zhenzhong.duan@intel.com>
-References: <20260625134352.3122572-1-clg@redhat.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260625134352.3122572-1-clg@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: U-BqgqxsbK9ukEorfzCKUyJFW1y8i-lYu-8TzXsGLDI_1782499449
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2600:3c04:e001:324:0:1991:8:25;
+ envelope-from=oupton@kernel.org; helo=tor.source.kernel.org
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 26 Jun 2026 16:54:34 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -159,68 +68,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 6/25/26 15:43, Cédric Le Goater wrote:
-> In vfio_listener_region_del(), when dirty tracking is active and a
-> writable RAM section is deleted, a synthetic IOMMUTLBEntry is built to
-> flush dirty pages. Setting translated_addr to the IOVA (GPA) is only
-> correct for identity-mapped regions where GPA == ram_addr_t.
-> 
-> For RAM sections with GPA far above main RAM (e.g., nested VT-d interrupt
-> remapping table at 58 TB), translated_addr is too large, causing a crash
-> in physical_memory_set_dirty_lebitmap() when indexing beyond the allocated
-> dirty memory blocks array :
-> 
->    bitmap_set_atomic(map=NULL, start=1, nr=1)
->    physical_memory_set_dirty_range(start=0x380004040000, length=4096)
->    physical_memory_set_dirty_lebitmap(start=0x380004040000, pages=3)
->    vfio_container_query_dirty_bitmap(translated_addr=0x380004040000)
->    vfio_legacy_dma_unmap_one(iova=0x380004040000, size=12288)
->    vfio_listener_region_del()
-> 
-> Fix this by setting translated_addr to the ram_addr_t of the section, which
-> is consistent with other vfio dirty tracking code:
-> 
->    translated_addr = memory_region_get_ram_addr(section->mr) +
->                      section->offset_within_region;
-> 
-> Cc: Zhenzhong Duan <zhenzhong.duan@intel.com>
-> Fixes: 6e360c06176c ("vfio/listener: Add missing dirty tracking in region_del")
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
-> ---
->   hw/vfio/listener.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/vfio/listener.c b/hw/vfio/listener.c
-> index 14cca678aea788c23ea5c6ed4a3aceec5fe21484..785a6eef8d812123fcecf82e3716f5577d7c61e1 100644
-> --- a/hw/vfio/listener.c
-> +++ b/hw/vfio/listener.c
-> @@ -731,7 +731,7 @@ static void vfio_listener_region_del(MemoryListener *listener,
->           }
->   
->           /*
-> -         * Fake an IOTLB entry for writable identity mapping which is needed
-> +         * Fake an IOTLB entry for writable RAM sections which is needed
->            * by dirty tracking when switch out of PT domain. In fact, in
->            * unmap_bitmap, only translated_addr field is used to set dirty
->            * bitmap.
-> @@ -746,7 +746,8 @@ static void vfio_listener_region_del(MemoryListener *listener,
->           if (global_dirty_tracking && memory_region_is_ram(section->mr) &&
->               !section->readonly) {
->               entry.iova = iova;
-> -            entry.translated_addr = iova;
-> +            entry.translated_addr = memory_region_get_ram_addr(section->mr) +
-> +                                    section->offset_within_region;
->               iotlb = &entry;
->           }
->   
+Running KVM with (as of writing, out-of-tree) support for FEAT_S2PIE
+on -cpu max gets stuck in an infinite loop of stage-2 permission faults
+due to the PTW incorrectly using an effective value of 0 for S2PIR_EL2.
 
+Similar to how S1PIE is handled, only use the IMPLEMENTATION SPECIFIC
+value of 0 for S2PIR_EL2 if EL3 is implemented and PIEN=0.
 
-Applied to
+Fixes: a811c5dafb ("target/arm: Implement get_S2prot_indirect")
+Signed-off-by: Oliver Upton <oupton@kernel.org>
+---
+ target/arm/ptw.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-     https://github.com/legoater/qemu vfio-next
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 1470de3010..4a7aeb140c 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -1414,9 +1414,13 @@ static int get_S2prot_indirect(CPUARMState *env, GetPhysAddrResult *result,
+                   PAGE_READ | PAGE_WRITE },
+     };
+ 
+-    uint64_t pir = (env->cp15.scr_el3 & SCR_PIEN ? env->cp15.s2pir_el2 : 0);
+-    int s2pi = extract64(pir, pi_index * 4, 4);
++    uint64_t pir = env->cp15.s2pir_el2;
++    int s2pi;
+ 
++    if (arm_feature(env, ARM_FEATURE_EL3) && !(env->cp15.scr_el3 & SCR_PIEN))
++	pir = 0;
++
++    s2pi = extract64(pir, pi_index * 4, 4);
+     result->f.prot = perm_table[s2pi][2];
+     return perm_table[s2pi][s1_is_el0];
+ }
 
-Thanks,
-
-C.
+base-commit: 8f1d3b586f1265023f75ea9c227c35d463321aef
+-- 
+2.47.3
 
 

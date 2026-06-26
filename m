@@ -4,97 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B93EBCDE008
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Jun 2026 09:23:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36F38CDE008
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Jun 2026 09:27:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wd2mQ-000153-2q; Fri, 26 Jun 2026 05:23:22 -0400
+	id 1wd2qX-0002QR-TT; Fri, 26 Jun 2026 05:27:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wd2mN-000147-MG
- for qemu-arm@nongnu.org; Fri, 26 Jun 2026 05:23:19 -0400
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+ id 1wd2qW-0002Po-Gl
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2026 05:27:36 -0400
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wd2mJ-0006Sp-JN
- for qemu-arm@nongnu.org; Fri, 26 Jun 2026 05:23:19 -0400
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-80b0cd40dafso9872087b3.0
- for <qemu-arm@nongnu.org>; Fri, 26 Jun 2026 02:22:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1782465776; cv=none;
+ id 1wd2qV-0007yP-1b
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2026 05:27:36 -0400
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-662ccb916c5so860071d50.1
+ for <qemu-arm@nongnu.org>; Fri, 26 Jun 2026 02:27:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782466053; cv=none;
  d=google.com; s=arc-20260327;
- b=Kly/uDBH4pPCx+pu+knnXNEE82K9n8vLiZpj9xspk+i/53ztu5PM66y65RNGs+GL1/
- bJzTZVMDRZYo9mHcJUdhu3g2zKccF6e0Z9VI1tRyr3btlLZEy9Z2Q4gryDWkJ49YFh75
- 312wBI4nGUDp4HdCZmY78eGq5NP4zFWka2EQCp3JXV/HIv9/32ECMGTpibmGVTKEFtXr
- nkzN8LQeFKWR4YoZfZBC5c4nD3RKxLxCUdw96XucGlqisoOYpDm2XnCTfneZPBDZYabB
- WvWvnIyQsYS5lLzu2BKS6hI/KkJFOJQIFtkENcgIG7TYgRtiVu/GzrQwApyPsBhCDMBF
- +CGQ==
+ b=XGv+3K2i2TPHalSXTsvpOw+cauJV3F4cRV2OUSObbRSOwFUjqQFCJYojPGGXpIzKwN
+ dvVf1OlRRRLs9bCGELFewCtOK+5YLNcCKUt/K2T4hmyZj5gZ62SbyptBJHx8rUksy1WH
+ 9GE+QsEsBZVJXU9eXpMxYc/RhsIdVqARDc2NXu2OqzCk1P/4yU7LFOsZg8S6Qfek5Pj3
+ HPtTmW09G0l2TH6ANS0CKVf5Jb5VgRe85JX6Hauw0eHCwj0HlTguK7GiW1sHYYjWZawg
+ cJ6pSGtARRIrzPjzWw3cYo0K+mSzJZRcmjoTpQ+0yQTaORbYfEVZTBccz5sirUdIy/iv
+ H86A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=9tLL+7ob/JynzaazS6VpHSTWl1dz7nv1yrlIIWQlAJ4=;
- fh=7WGrIe/7wOtMwhRQuXmy+McVH51xapUghcImyQiL6Jk=;
- b=rUkJpxLA5t+jbbSOPtg6r7CSVaqmbQLnom+1D9is8xBhnrfCkYs6r0RloR9y0C7pzA
- rAf5/S6xPVCb2pg7VZz6aFy2/kDXH5Eboo/2KADS7l8bR9R9ydz+J5Zt7dQGxbFHmrxG
- iq5Ce7/M4PMliQ+gz/yFMZxuzoBJQYR25sMW7IVq/xAcm5zmykP668eb54Tro1Deoemg
- 98kHG2bjqUF2h4xQbCtMnPe+A0XwIYt8gKlgd7vTGGqdAfZ/9FUmTP24wUrrP3H0Z8aJ
- wGBVksB0RtyE/eGBcQ1kAD5c6iZMuyY19+kCFI8ksZVU+AGxwIUSpaM0AeUJpLhl/neV
- cFCA==; darn=nongnu.org
+ bh=OUgQ6nAi7TmyblBMSHspSxW6cQX1avDCKZhMweBV8Lw=;
+ fh=LBMlQ4ILYDt8pZiR8E4Lfmo17Wg69tYj631DqVxdmCo=;
+ b=jPzsvYv+vJq0nlDg2brMDMwUyFrdOp7jLJdLJRndU1djrK0RrMDocKmd9rV9YAlsgK
+ ju7aN45Siy7SXxcSDrI6JGhpAPEgHWU+EnCTfcRTotiAGDQs4AMPSm8E/CWYziLXCfV/
+ ntX1U00zi5DH1cSFAVMycEcbGpWA3ewyQlrNBKa6nV1F3JSIlbLrL9oEPgXHGMInLU3+
+ ut+aayfLxoZaQ3QoajwjLajDxywJyrH4yvYAimyUFWbpMaM4sNfl99vD7cMlJEMpyOby
+ QBaNAAI4m19iBJp2v9xPPEUmZV3cLYTN6JOOdYJRYjFsK8BLK3a2xUwMJ1s0c4IWBCQF
+ 8lnQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782465776; x=1783070576; darn=nongnu.org;
+ d=linaro.org; s=google; t=1782466053; x=1783070853; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=9tLL+7ob/JynzaazS6VpHSTWl1dz7nv1yrlIIWQlAJ4=;
- b=BlgepWeouCvJIc3GFSO6LMaKzuVziVfIdM47QO5mXOCrwsyCRWsJlH70H5DNLXfq5Q
- KMWsDEw/SsBczqj5pD7+2gf+UQERIFW12GJy8eW1Q6MMIr9EKbUFOZNkh4qm8NvRZg0k
- YxvMzrAIQa9z9LwnbnSNTjbBlUDr4xyWFyO5tpqQPuMc2rjEuPzmS7kWi9JNa4d+dcG5
- cjBk7DFG1BalmxJs+qOfq4KQOSgv5LrGP/rloVW/DK6dG8V4OAQkqhrwMJQ8yHcaJKFR
- Axrp2U4SLjWuTICQfvoDELd1laJSrdbS6QSIwfQ18NFR+8G3VCjFCkCKtFh7vNjH5RMQ
- tW3g==
+ bh=OUgQ6nAi7TmyblBMSHspSxW6cQX1avDCKZhMweBV8Lw=;
+ b=Y4Aqu8vxQGlUDWGmXYRtO/IZtjRdGvZpsQ+NI+V+ayIJn+Wx55Z1hREDNyEX7hapGR
+ u/66BM5nDE1txdZ3Pp81yIy+5i7UA/skOfJ8U46u6sr2fXIEm/XayPjW+yWM23rK0Tyf
+ TjEL8nS/3yd7h1fpJu0Y02EZS+JIsOwx3H8rSFrmT+gtKII2paK1f6t+VoXX30EwI8Lv
+ YheeqB6qc7sv7n2GT67iPwDrrM+SUk7SnBXgqgMGB0jVuG8Q4FFtzyPnu58ncJw+14Hk
+ iI6AbN54SBw1OuImwwh8T+xwRcanEVCSlE1jMozQ0doCN7N18mGOEkyoN2CJr/MHWFJP
+ H2PQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782465776; x=1783070576;
+ d=1e100.net; s=20251104; t=1782466053; x=1783070853;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9tLL+7ob/JynzaazS6VpHSTWl1dz7nv1yrlIIWQlAJ4=;
- b=e8jjVYL9gragayqz4r2j4kUCoedKW/m7QBWf8xdhn9sXKHy6oQokB8WW0nM1M7/KES
- dZWiPYvmDceVNa3UiEWv+GyuSoozmNZNT7dcdO9pX1X1Oj/WrExM0E2qGM49eSeaEYcu
- 4130Qza3tGZmL9V31m1glMXY7rtpmwjiFQIIQJkERYmNlOrecL5a8D6Oa9s5zEI8zYkr
- 8Mj+Uf08ncjTSxxyy9DOu6pO9vYZMAYHtA80e1IEPssKNBe+6IW2KmepiZUsDBb/qIXZ
- x/QCAySyE5R+qDfU2ZMAMgQ6ieiBgXBXnGCxxfT8JYrEIg7n7V/G2iO7YMXxSxkAj9/9
- dT1w==
+ bh=OUgQ6nAi7TmyblBMSHspSxW6cQX1avDCKZhMweBV8Lw=;
+ b=MoU/ahuJm1DjnfT15gUXMzhoxjc9xzBVA+wdj6tFChJsoSe66qIYB8vNNSGETTFSsK
+ Lr6LDB5L+UCWVYQEM/fs3gVayh0avIJ8dWiXaRG/ld8KvC2V5DHMh2sppKMEaJ0wjsBq
+ 4roXKQ/FwOZpVXHffj3rGZfn4EVxD9RODj41eK8W0Gyt3xCe93CIwh3qxvhOBGszRj1M
+ FT8F1Zytrjof3sXvy+yIRRH+k4vcYFeQkMAsBNH8xoqCDmitxSj4s6BcmS68WEQwmhD7
+ Dvi5MbvZoNglhyhm6rRaZVHYfKeW+bddr4qF6UDRrllSiKKM81YwUqBMt7jIAvCSJW5U
+ 2k8Q==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rrxjzs6YmNtuf0WGGglSQfeDtXVfmxvX6/qKCwzkBfiiNuKcdg5Fdv+2ZeBPEWgQiZ9Wi7HL+Pbhg==@nongnu.org
-X-Gm-Message-State: AOJu0YwkDPrfhlolycWr31rOXGnCOxqEIXY4gRKNILHKeYZUp7BYZwlU
- 9jlgagJM5jriJCc4LaHk1vr8vtRPasiOxfAPQrd1T3GzazB+GO4SPG5qFEqnd4PBazAWhQwwArl
- qP9f/42V8DzkA3tlWnohldAH3Ab7yGFD0Ba+Ky8aTIQ==
-X-Gm-Gg: AfdE7ck8mgCVKR/ldPN4quEsdzDEzLm5Uo52GOyJLeoyCmd4Spi2FVbm8Lslbo2Ffet
- 1DUEtudqX3qz3GCsqprL+U2COAYPyrwiAY2yMwb3efcFyKe7UCdZs0XtZ7GC6MEYUfpeKidNEEJ
- l9zxhQJrqDm5sRwzIGUBdx8wG4N5DZ1cFo5hvi6O859LGTaKO5+JnXozwMgAtujtD0wxAcBnEFQ
- Y/45dj/vdxrC05vtcfuXcPu+mrSHztkvLp1RvDrtzbR/G/hmcSTHGfj9Z21YsnYs5wn08eO2rge
- em4fWy3AC+XMx5cm1GuC6paHY1DVPwn94V2TTVGgJz+4tDgcBDTQi9sGTMfhWG7gXzM=
-X-Received: by 2002:a53:ac8e:0:b0:662:c6f9:946b with SMTP id
- 956f58d0204a3-663556cd2fcmr11967703d50.35.1782465775575; Fri, 26 Jun 2026
- 02:22:55 -0700 (PDT)
+ AHgh+RpOrKN2Zfwr6QBVxSYRZ/Kx722zbAvrRmztj+fX0O1lLuxFNTJWLZ9conxJj3J+zjmTq7nu5w59VA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz4noyuG45J3BOJTIm4sJqObhhZnU6ySfpOtbjyqct1QqIgZcrJ
+ bFUuI9QEkQzXkjP8zL0fPEI8NF+hLpgTJgmCdYnVGAKzg7/yojewIwTeHTFIooJJ9xW6w8m/sp8
+ JOobAEiQMsJT4Ve+5oDAN1o+BSIDBtHCH1rBHgNgwuw==
+X-Gm-Gg: AfdE7cnuvp5VdcWGEQC8jwFOpCsaNdEGE3nqgSY+Q22OoFIRIppEajOuuv2eEmbPM5H
+ qA8ZgYpSXBuzEjwDtgQPtbzckEZSOF46yI4mSoq822V85p7rEKasIfwygNYgnecx1u0Fyl1IK8O
+ AsV2PHJWJkwZQOffMoguOqUmXJMw9PlXFdwwpVZDY3u4b8/JlgWGSSv7iDz81UWJ3wmnfr6F1xr
+ E3q3A4wnyfvYoDn7InXSowuwtw9C9Ys8sYzuaMOQQDbrHsaIQ2YyrhTm4UNUI/iO31iDRbHUcPQ
+ fIGbKidaXXjL5sIrAbnm1F49hmukhfKe4z68XCdKGy2GWoiVcyI/tCfp5qiT4S0r95k=
+X-Received: by 2002:a05:690e:124a:b0:660:a41d:d175 with SMTP id
+ 956f58d0204a3-66488421e8dmr4682356d50.55.1782466053525; Fri, 26 Jun 2026
+ 02:27:33 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260625015159.719300-1-richard.henderson@linaro.org>
- <20260625015159.719300-8-richard.henderson@linaro.org>
-In-Reply-To: <20260625015159.719300-8-richard.henderson@linaro.org>
+ <20260625015159.719300-10-richard.henderson@linaro.org>
+In-Reply-To: <20260625015159.719300-10-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 26 Jun 2026 10:22:42 +0100
-X-Gm-Features: AVVi8Cel5PaYX8UaCIQqlH3RY5N2a4-ISyzVFZaRRezfPQopaVrNFCZ29WJnSSI
-Message-ID: <CAFEAcA_iMcGA57sYvAToG_gaW1jFoi81z22EHcQvjj_v+bYWYA@mail.gmail.com>
-Subject: Re: [PATCH 07/10] target/arm: Implement FMOPA (widening, 2-way, FP8
- to FP16)
+Date: Fri, 26 Jun 2026 10:27:21 +0100
+X-Gm-Features: AVVi8CdIy8r5rigL9uFH2h9P7Yadb6IFq6Fyr1EikIj61wYl_7wcHOQnDQOmcYU
+Message-ID: <CAFEAcA9fCEyLoDvYA2JR30+7ZGaN_t_taRK01gb9y4k4NNe8HA@mail.gmail.com>
+Subject: Re: [PATCH 09/10] target/arm: Implement FVDOT (FP8 to FP16)
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,12 +116,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 25 Jun 2026 at 02:54, Richard Henderson
+On Thu, 25 Jun 2026 at 02:52, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
 
+> +void HELPER(sme_fvdot_idx_hb)(void *vd, void *vn, void *vm,
+> +                              CPUARMState *env, uint32_t desc)
+> +{
+> +    FP8MulContext ctx = fp8_mul_start(env, 0xf);
+> +    intptr_t oprsz = simd_maxsz(desc);
+> +    intptr_t elements = oprsz / sizeof(float32);
+
+Shouldn't this be sizeof(float16) since the output elements
+are halfprec ?
+
+> +    int idx_n = extract32(desc, SIMD_DATA_SHIFT, 1);
+> +    int idx_m = extract32(desc, SIMD_DATA_SHIFT + 1, 3);
+> +    float16 *d = vd;
+> +    uint8_t *n0 = vn;
+> +    uint8_t *n1 = vn + sizeof(ARMVectorReg);
+> +    uint16_t *m = vm;
+> +    intptr_t i = 0;
+> +
+> +    do {
+> +        uint16_t mm = m[H2(2 * i + idx_m)];
+> +        do {
+> +            uint16_t nn = n0[H1(4 * i + idx_n)] | (n1[H1(4 * i + idx_n)] << 8);
+> +            d[H2(i)] = f8dotadd_h(nn, mm, 2, d[H2(i)], &ctx);
+> +        } while (++i & 7);
+> +    } while (i < elements);
+> +}
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

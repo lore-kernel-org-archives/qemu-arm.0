@@ -4,84 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71033CDE00B
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Jun 2026 22:48:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BF41CDE00B
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Jun 2026 00:08:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wcsr7-0006eP-2Q; Thu, 25 Jun 2026 18:47:34 -0400
+	id 1wcu7G-0001iC-5c; Thu, 25 Jun 2026 20:08:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wcsr2-0006a2-HX
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 18:47:30 -0400
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wcsr0-0005zr-Q0
- for qemu-arm@nongnu.org; Thu, 25 Jun 2026 18:47:28 -0400
-Received: by mail-pj1-x1034.google.com with SMTP id
- 98e67ed59e1d1-37deb2d3a28so285679a91.2
- for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 15:47:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782427645; x=1783032445; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=xAFphcdMcc4nMg6ZvlPlH0PadArCbX+n0WGGKJ8VtZY=;
- b=eLSBnmSfFftejt4DwznZ9PxpilUpKdvktQa7H3JqdnbOuZe3LfoVgwjhkWvV59sU7M
- TotslOJeSki6zhHu2M0pk8qk2MYeTn4545jfFDrx9tH1I7CwdBfU3zOjj8FkdCxtK+db
- EA3kGXmRk9UHXpYsFON9oVzdJWlCtitY4w36TK3Ke4/LTKJHhvWMi6Loj168ZwRHyw7A
- hXknD9QdcK+lhCA6I5TCStPFVpQpjNdif468/gz5lYBobnr9jS/X/hWlkUkqXoOVBF2W
- Hrm5wiU5FPkrOB6+AaFU36skmJgHU3+q++z5umZjsE65Os7cdOLkBWhwgwFNfEmx6J6f
- 7tzw==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wcu6n-0001fE-Ew
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 20:07:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wcu6k-0004f4-WE
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2026 20:07:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1782432462;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Gj1W+0lqyRN4J7ZxNfJAeu1ygse+y7aL7B1zHf72hdQ=;
+ b=MFYLYwbTdV9XEubdbsnRzn6Yktdu/EEfXQffALsqIip6ZPGBrC9JX+qZSj24Jm3k71KHBd
+ 4c49jpGii0KTE0jjO59TrR0HGouEkuygYvNvB+X3Z2bleyqXyAdPizW3x542bBklc017nM
+ BNmbhipFYdPkpcMkJ0dlx24+yB+e50M=
+Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
+ [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-393-x5q3QTuRNjyxmfaKBCQ7rg-1; Thu, 25 Jun 2026 20:07:41 -0400
+X-MC-Unique: x5q3QTuRNjyxmfaKBCQ7rg-1
+X-Mimecast-MFC-AGG-ID: x5q3QTuRNjyxmfaKBCQ7rg_1782432460
+Received: by mail-pl1-f199.google.com with SMTP id
+ d9443c01a7336-2c7cfa17fe6so5580095ad.3
+ for <qemu-arm@nongnu.org>; Thu, 25 Jun 2026 17:07:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782427645; x=1783032445;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=xAFphcdMcc4nMg6ZvlPlH0PadArCbX+n0WGGKJ8VtZY=;
- b=nVkPUmn5dZmf6YkA/GIQt3bCdRwTJV59UTiZheMiRTCHMqBwwY0QBSXgsNXqvB+/zx
- bTFypw3Tv3kYDmvtuveEL08fKWUdRaPmInhWBEexE56QKcz/SfWJP3ng56775uaXogUl
- 0VkAtZrii8vk8nfywR79C3c7RxznPwSmzPmcEMolAm8CDgTLpDAoNm0gD9dQfa1Lx7oQ
- z5GHxePDT+n2y8Zwu+SN+e24wtq1FNZDAUYWy4gPWUEJe2Jplf1bDdJWQADpAeWhwm9M
- RHrGnnnFN6d3IDGi+TRcKhGPEyVzsgyy4pdWhvbo0cd7vmvls39zUW5fj7SYuN/cDcSc
- s1mw==
-X-Gm-Message-State: AOJu0Yxe6OQsHa+5UNQ0ZbqQdDeb/GGX4svJSozI5Uw+g/yLtcnPRVrR
- R0EmzQH4JUkW5xP9yMiPZTYDtPd6laydtqL+BY4MNaZfRBJ50AF/AS4GTyJVo9VxZnDr4u8FLis
- /h614
-X-Gm-Gg: AfdE7ckFWEshKh93zwvZghc4CqzIN3KvCOzuX/eGt8CG5wCTAOmY6jnAxpVUUZpXmxb
- Fa9MtGLJdSEnYroXKAmP10GV9YGwRiCIvbmRHowGLzP+DI3CWgEg88P7D/vJcXQYwV1IsS3Lrhv
- Xrn87GhF5P0KgRXbBUAaMKaZ2TBufKA8wc2Ch7VVxIU1/o9z1DHkBv6w4cwCAyajm+DxK30xkPm
- ePu81SA+hqbB14fWQ3fY/bivESUW8zYaYRHyKnz4eudjRLVdvMwK4SUElqF3JhY5qRfdr+yUIl1
- gac9uEeiDqzOyOBgbqlGfV9ZVWqQjuwcD41S7Uum//Y4UhvNiO0YuNMU//ntS/MlhDjUaQl8kQ0
- xF589FU09i2h5j6e5g0PvkuJIQTj9W7UpQ+Imde9exsmH6/tZchXUj1VJ8gTMfIJs/OUZCpPJFO
- cToJISK6S0Z0lPqZNkry1ArzfgmBbUnyM3ES791ngzPZ2nXqESbQ==
-X-Received: by 2002:a17:90b:1fc4:b0:36d:63cb:cf63 with SMTP id
- 98e67ed59e1d1-37dfa2551b9mr4278523a91.20.1782427644959; 
- Thu, 25 Jun 2026 15:47:24 -0700 (PDT)
-Received: from stoup.. (174-21-129-215.tukw.qwest.net. [174.21.129.215])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-37df400ba0bsm2762834a91.15.2026.06.25.15.47.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jun 2026 15:47:24 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH] target/arm: Implement and enable FEAT_SSVE_FEXPA for -cpu max
-Date: Thu, 25 Jun 2026 15:47:23 -0700
-Message-ID: <20260625224723.766270-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ d=1e100.net; s=20251104; t=1782432460; x=1783037260;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Gj1W+0lqyRN4J7ZxNfJAeu1ygse+y7aL7B1zHf72hdQ=;
+ b=X7XI5Bw3fIc5N4i4vOj2VfvU/W/upmUKc7Uq5+QaYz22iswTT6WkF7Web7xYlGLk1j
+ 5PHSiDx7w6VJ6JGe/uePw0iyvZGAbPQ+ZQo4UrAzoeJuvks7aoranncz85M/QfbnZx4A
+ xx3K3Vwd24Lrplq2UgQO5V+kmN2HtIt5C5X93/3KuRmnW+gsCeNdf0LIKilP8aeA7/Z3
+ /3n4s6kWtap0S//TKRhOdqfzmjNYOPSgMgXGKS1Fjbkixa96+ktIxzM9DmnvecCrzksj
+ riRF/UJBbX68xqBuS3opJn6BJ84uxCQAoyCNgTnu80wyR+5CX8KlwuvbVOToPNcFk4CX
+ VWTQ==
+X-Gm-Message-State: AOJu0Yyoqbokdt580ageSvdPp/2yHAshFZ90dYcPGpsUUA7YatraDGsP
+ W0hUHsJebvyv6Ky0z6wc+eBXhZvl2AyXVFhiHDsM407yRaZ6ZEqzHnqkl1upz6RLVFclZveuO2o
+ TxfK8LX3oIZP6uJsI4+2cISLbv2aPx/gLvmOP1gCVES6wCMiZ6D6VpQ==
+X-Gm-Gg: AfdE7cnmMzDhdMpBLPmNf6BFsgKwA4GhpKlbdebhB2pyQ9C3/tiiEnYyisJ3p0ERFq9
+ GcWltBXi7dwfALmMuKfEoOxpR8YO4VZcRcxtIs0bHQxIhuiz6vSie09dJhPc8LmFjgg//GhS0Yj
+ FdmXgCDsWMW9nbGPINNDfEm0oCmHucPAU3ZgxMxJdLEsmdsISfKb+Uh4+vQ3ZZ+yshk6P1mowUa
+ lNW4td2F24w4FAtZ2/KXcub11WsRJAdOH9SJOouRGqbxhfiIpb1RD5RxPjPvbzbP3HjdiQh4sUs
+ tvWDoon4Sj8ZqiYKBC+e7TJj+z2Cf1l5n+N8E3dzzl0ffk679TGDgH/WeeknjdZ5PlvGCs8ZW+h
+ tx17SiFlN1OHoV9u7LVOXCODl/FyleovYW9GTtGxJ+3x2MYKmMxzu3A==
+X-Received: by 2002:a17:903:1448:b0:2c0:db23:4c4 with SMTP id
+ d9443c01a7336-2c7fc6db0admr46530545ad.16.1782432460305; 
+ Thu, 25 Jun 2026 17:07:40 -0700 (PDT)
+X-Received: by 2002:a17:903:1448:b0:2c0:db23:4c4 with SMTP id
+ d9443c01a7336-2c7fc6db0admr46530165ad.16.1782432459778; 
+ Thu, 25 Jun 2026 17:07:39 -0700 (PDT)
+Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
+ [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2c7f5b04be8sm28390995ad.35.2026.06.25.17.07.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 25 Jun 2026 17:07:39 -0700 (PDT)
+Message-ID: <5faf04b9-d596-4a1d-9fe3-5e9ad5f0a99a@redhat.com>
+Date: Fri, 26 Jun 2026 10:07:30 +1000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
+ device region accessors
+To: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peterx@redhat.com,
+ alex@shazbot.org, richard.henderson@linaro.org, berrange@redhat.com,
+ philmd@oss.qualcomm.com, philmd@mailo.com, david@kernel.org, clg@redhat.com,
+ pbonzini@redhat.com, phrdina@redhat.com, jugraham@redhat.com,
+ liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, shan.gavin@gmail.com
+References: <20260616052552.389021-1-gshan@redhat.com>
+ <20260616052552.389021-2-gshan@redhat.com>
+ <CAFEAcA-mf14=jpRFHarAbN6AbQwvW=Yu6WB1JiNMsECEdaxD3A@mail.gmail.com>
+ <20260625070551-mutt-send-email-mst@kernel.org>
+ <CAFEAcA8YJZq9TqrUd0zTnewAdVDm5y6UV7BJQZ0C60TZ=RT98Q@mail.gmail.com>
+ <20260625091334-mutt-send-email-mst@kernel.org>
+ <CAFEAcA8xK+t3-prEphtkq-o9UY2mgS6cowhs880GOaxL9dKSGw@mail.gmail.com>
+ <20260625101817-mutt-send-email-mst@kernel.org>
+ <CAFEAcA8-Un+Q1yBDqLWCLPRwtgTA_VhJqGobgZChrFhAeVfG8A@mail.gmail.com>
+ <20260625123119-mutt-send-email-mst@kernel.org>
+ <CAFEAcA8UjtXgmPC27fOKMwbaWs2piwGYudtwCNWQHuu3E_7A-A@mail.gmail.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <CAFEAcA8UjtXgmPC27fOKMwbaWs2piwGYudtwCNWQHuu3E_7A-A@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: wo7xmyCkcUEBrqWGTIygh6OriyXR0hQsht8Q9_p4cf8_1782432460
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,81 +126,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu-features.h      | 5 +++++
- linux-user/aarch64/elfload.c   | 1 +
- target/arm/tcg/cpu64.c         | 1 +
- target/arm/tcg/translate-sve.c | 2 +-
- docs/system/arm/emulation.rst  | 1 +
- 5 files changed, 9 insertions(+), 1 deletion(-)
+On 6/26/26 4:40 AM, Peter Maydell wrote:
+> On Thu, 25 Jun 2026 at 17:47, Michael S. Tsirkin <mst@redhat.com> wrote:
+>>
+>> On Thu, Jun 25, 2026 at 04:23:47PM +0100, Peter Maydell wrote:
+>>> On Thu, 25 Jun 2026 at 15:52, Michael S. Tsirkin <mst@redhat.com> wrote:
+>>>> I think there is exactly 1 kinda reasonable case. A 2 byte read/write at
+>>>> offset 0x1 within a dword. This maps nicely to even classical PCI byte
+>>>> enable mechanism and so yes it works if your CPU can initiate these
+>>>> things, and it's atomic.
+>>>>
+>>>> I tried reading LEDCTL on e1000e:
+>>>>
+>>>>         byte  @ 0xe00: 0x64
+>>>>         byte  @ 0xe01: 0x2a
+>>>>         byte  @ 0xe02: 0x00
+>>>>         byte  @ 0xe03: 0x00
+>>>>         word  @ 0xe00: 0x2a64
+>>>>         word  @ 0xe01: 0x002a
+>>>>
+>>>> Works fine.
+>>>
+>>> The e1000e datasheet actually documents what it does in this
+>>> case (slightly surprising, since hardware engineers love to
+>>> leave this kind of corner case undocumented):
+>>>
+>>> # For registers that should be accessed as 32-bit double words,
+>>> # partial writes (less than a 32-bit double word) does not take
+>>> # effect (such as, the write is ignored).
+>>> # Partial reads
+>>> # return all 32 bits of data regardless of the byte enables.
+>>> #
+>>> # Note: Partial reads to clear-by-read registers (such as, ICR)
+>>> # can have unexpected results since all 32 bits are actually read
+>>> # regardless of the byte enables. Partial reads should not be done.
+>>>
+>>> So for this specific device that access is out-of-spec.
+>>
+>> You mean that access to clear by read should not be done, right?
+> 
+> The datasheet is ambiguous about whether "Partial reads should
+> not be done" is meant to apply generally or only to clear-by-read
+> registers.
+> 
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index c3eeecbea9..bdeb72bd77 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1580,6 +1580,11 @@ static inline bool isar_feature_aa64_sme_mop4(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64SMFR0, SMOP4);
- }
- 
-+static inline bool isar_feature_aa64_ssve_fexpa(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64SMFR0, SFEXPA);
-+}
-+
- static inline bool isar_feature_aa64_ssve_aes(const ARMISARegisters *id)
- {
-     return FIELD_EX64_IDREG(id, ID_AA64SMFR0, AES);
-diff --git a/linux-user/aarch64/elfload.c b/linux-user/aarch64/elfload.c
-index 9b93969850..cea286cce0 100644
---- a/linux-user/aarch64/elfload.c
-+++ b/linux-user/aarch64/elfload.c
-@@ -174,6 +174,7 @@ abi_ulong get_elf_hwcap(CPUState *cs)
-     GET_FEATURE_ID(aa64_f8mm8, ARM_HWCAP_A64_F8MM8);
-     GET_FEATURE_ID(aa64_f8mm4, ARM_HWCAP_A64_F8MM4);
-     GET_FEATURE_ID(aa64_ssve_aes, ARM_HWCAP_A64_SME_AES);
-+    GET_FEATURE_ID(aa64_ssve_fexpa, ARM_HWCAP_A64_SME_SFEXPA);
-     GET_FEATURE_ID(aa64_sme_mop4, ARM_HWCAP_A64_SME_SMOP4);
-     GET_FEATURE_ID(aa64_sve2p2, ARM_HWCAP_A64_SVE2P2);
- 
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 2cf335c956..7151c509f9 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1384,6 +1384,7 @@ void aarch64_max_tcg_initfn(Object *obj)
- 
-     t = GET_IDREG(isar, ID_AA64SMFR0);
-     t = FIELD_DP64(t, ID_AA64SMFR0, SMOP4, 1);    /* FEAT_SME_MOP4 */
-+    t = FIELD_DP64(t, ID_AA64SMFR0, SFEXPA, 1);   /* FEAT_SSVE_FEXPA */
-     t = FIELD_DP64(t, ID_AA64SMFR0, AES, 1);      /* FEAT_SSVE_AES */
-     t = FIELD_DP64(t, ID_AA64SMFR0, SF8DP2, 1);   /* FEAT_SSVE_FP8DOT2 */
-     t = FIELD_DP64(t, ID_AA64SMFR0, SF8DP4, 1);   /* FEAT_SSVE_FP8DOT4 */
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index 79e8e16b24..5de9ee7d4f 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -1373,7 +1373,7 @@ static gen_helper_gvec_2 * const fexpa_fns[4] = {
-     NULL,                   gen_helper_sve_fexpa_h,
-     gen_helper_sve_fexpa_s, gen_helper_sve_fexpa_d,
- };
--TRANS_FEAT_NONSTREAMING(FEXPA, aa64_sve, gen_gvec_ool_zz,
-+TRANS_FEAT_STREAMING_IF(FEXPA, aa64_sve, aa64_ssve_fexpa, gen_gvec_ool_zz,
-                         fexpa_fns[a->esz], a->rd, a->rn, s->fpcr_ah)
- 
- static gen_helper_gvec_3 * const ftssel_fns[4] = {
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 3ef5b53e8a..a12471aafe 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -175,6 +175,7 @@ the following architecture extensions:
- - FEAT_SME_LUTv2 (Lookup table instructions with 4-bit indices and 8-bit elements)
- - FEAT_SME_MOP4 (Quarter-tile outer product instructions)
- - FEAT_SSVE_AES (Streaming SVE Mode Advanced Encryption Standard and 128-bit polynomial multiply long instructions)
-+- FEAT_SSVE_FEXPA (Streaming FEXPA instruction)
- - FEAT_SSVE_FP8DOT2 (SVE2 FP8 2-way dot product to half-precision instructions in Streaming SVE mode)
- - FEAT_SSVE_FP8DOT4 (SVE2 FP8 4-way dot product to single-precision instructions in Streaming SVE mode)
- - FEAT_SSVE_FP8FMA (SVE2 FP8 multiply-accumulate to half-precision and single-precision instructions in Streaming SVE mode)
--- 
-2.43.0
+I think the document intends to say: the partial reads shouldn't be issued to
+the clear-by-read registers. Those partial reads on no-read-side-affect registers
+would be fine.
+
+>>> I guess what I'm wondering is: can we just have code
+>>> that does an aligned exact-width access in the 1/2/4/8
+>>> byte aligned case, and the host's best approximation to
+>>> an unaligned exact-width access for the 2/4/8 byte
+>>> unaligned case?
+>>
+>> That's my idea, too.
+>>
+
+I assume this the conclusion of our discussions? If so, we just need to have
+unified function where __builtin_{memcpy, memmove}() are used for 1/2/4/8 bytes
+access no matter if the address is aligned, and fall back to {memcpy, memmove}()
+for other cases?
+
+>>> (so on sparc you get multiple smaller
+>>> accesses, and on most archs including x86 and arm you
+>>> get an unaligned load).
+>>
+>> I thought unaligned load from uncacheable on arm is
+>> also a fault?
+> 
+> For Arm the distinction is not cacheable/uncacheable
+> but Normal vs Device. (Device is essentially for things
+> which are not RAM; Normal is for RAM and RAM-like things,
+> and includes all of Normal Non-cacheable, Normal WT-Cacheable
+> and Normal WB-Cacheable.) Things mapped as Normal memory
+> don't generate unaligned faults (unless the guest turned them
+> on deliberately). For Device memory, it is IMPLEMENTATION
+> DEFINED whether you get an alignment fault or not if you
+> map something as Device that could have handled unaligned
+> accesses if you had mapped it as Normal.
+> 
+>>> That would mean the guest could
+>>> potentially provoke a fault on the load/store on an
+>>> access to a passthrough device, but if you give the
+>>> guest passthrough access it can very likely provoke
+>>> a fault anyway, depending on exactly what the device is.
+>>>
+>>> I think the most likely reason for an unaligned access
+>>> in this codepath is "it's actually RAM, either really
+>>> host RAM or else something memory-like in a BAR", and
+>>> either way if the guest does a 4-byte unaligned access
+>>> then doing a 4-byte unaligned access seems better than
+>>> second-guessing it, even on non-x86.
+> 
+>> Right though remember: whether it's RAM doesn't matter. What matters is
+>> how we map it.  qemu might fault because it maps NC but guest maps
+>> cacheable and it's ok.
+> 
+> If QEMU and the guest disagree about the memory attributes
+> on Arm then we have already lost, because the architecture
+> says that memory attribute mismatches result in a variety of
+> undesirable effects including things like loss of cache coherency
+> (i.e. read and writes via QEMU's NC mapping disagree with ones
+> via the guest's cacheable mapping because the latter are hitting
+> in the cache and the former are bypassing it).
+> 
+>> But, all this in theory. At a high level, I personally think going with
+>> what you propose as a 1st approximation is entirely reasonable, except
+>> for one thing: we really should not crash qemu, since access can be from
+>> guest userspace.
+> 
+> You can't prevent faults entirely, though -- if the device
+> being mapped has e.g. behaviour that says "unaligned accesses
+> will fault" and then the x86 guest does an unaligned access,
+> then the device will trigger a fault, and the fault is what
+> you want because it's what the guest would see on real h/w.
+> Unfortunately we don't have a convenient way to feed the
+> fault back to the guest. At some level if you pass through
+> host hardware you're relying on the guest to not do totally
+> stupid things.
+> 
+> thanks
+> -- PMM
+> 
+
+Thanks,
+Gavin
 
 

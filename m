@@ -4,85 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6482CC43458
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Jun 2026 16:48:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8F10C43458
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Jun 2026 18:44:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wd9jH-0003Ev-9C; Fri, 26 Jun 2026 12:48:36 -0400
+	id 1wdBXL-00055f-8P; Fri, 26 Jun 2026 14:44:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wd9jA-00038j-Qf
- for qemu-arm@nongnu.org; Fri, 26 Jun 2026 12:48:30 -0400
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wd9j5-00086B-2T
- for qemu-arm@nongnu.org; Fri, 26 Jun 2026 12:48:26 -0400
-Received: by mail-pj1-x1029.google.com with SMTP id
- 98e67ed59e1d1-37d7c265ca5so1026051a91.2
- for <qemu-arm@nongnu.org>; Fri, 26 Jun 2026 09:48:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782492501; x=1783097301; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=bbeQ4XtAXcgQ2gdqbNRCKayzWt8LQO4Nyk9/MULghts=;
- b=If7W0xp1JHrsk+ITrBRLyaOM2BDK4daU/UascCCLR0RNBhW9rpBvmhoexE2zJMcUoP
- o6xjBK60JAHrLuj4Twy++iG2RfGysac1aZNk/8Pdt3FQvlZAjVnxOmtZQj/V/PAhBqXS
- Ir8sY4357GBvjWVeYUee1//Q9YgzEte4fMrF2R9Z0bc8y/HU+VhfWYTgHwj9uVNGrUzq
- FTYozrBEBbHn/VLRRfTzJpbfFDU737DDVLvcQ1NUykVKyjd4lvDjdW7SnG6Lo1BCNcj9
- jUswZau2ek4vviiH63+5UOPduBGxNF+9Tn1y+L/K9XhN/P0IkRsU8JM38WjUK272fxdp
- OqRQ==
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wdBXB-0004x9-Vt
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2026 14:44:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wdBXA-0003Ed-BF
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2026 14:44:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1782499451;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=ghj/xOg/E0yHFDgkCHpp4r2601tf0dBSnaAs4XEnKzE=;
+ b=SxhC8ziC3THz1iQFTy3E1CayYJv5CweHT2IuPxOapeYbwX0Fqhbder/u8i/eFWlvRsM6gL
+ 90ErBZD/xefAMsqRXptK9Ak4bczzAxLq9nk6k+XYs57wRh6okn1DCtjam5lgOb2w0Wk7SZ
+ EzxYAQ6eELJ9khZ5xhCJsW1zGVrf1l0=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-532-WlNY2zc8NcOGbULphBuVsA-1; Fri, 26 Jun 2026 14:44:10 -0400
+X-MC-Unique: WlNY2zc8NcOGbULphBuVsA-1
+X-Mimecast-MFC-AGG-ID: WlNY2zc8NcOGbULphBuVsA_1782499449
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-460153ce644so777760f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 26 Jun 2026 11:44:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782492501; x=1783097301;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1782499449; x=1783104249;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=bbeQ4XtAXcgQ2gdqbNRCKayzWt8LQO4Nyk9/MULghts=;
- b=PLqnWTiPDXyhH/pFi1FnTHxe9fTK655c4nOE3xnuaWcEo3sUYG5N39a5GLQGY7OCR+
- MXTCLmTpz5E8h9FO2SghNtz+CVaVbVA+nOQKMVpfZhdjzWFA1oIVONtQ1q9poxEqkCFd
- aGoGH0rDP/sUTgXKSmbojZbzQKsaZljLNbdwRvIfIHY5qzm8+FDGsOOhsKGV+mD+xBae
- +lmllNL28qlynps52Y2QMTHxBdfke4aq6YyKg6BwvjajI7LV2IOIBVac2hgCo/IlU/l8
- BruQYQ9uSAf9IW7xfKGmKVXfbwbYzSqbb8cSNzvIImEcSRATzeQ2hPVfZGobNouezFxA
- iq7g==
-X-Gm-Message-State: AOJu0YzKAXwQ6mItaPlqxa9Baj9wzQ/VKPwCabRR4R5FQcEpb5fbjjGM
- YeDzBc/ibiIZEFdBcqbTufP8DJWq9XhF4VnoHZBS9h+wPbnSZngWV/ZL6+yKgKW3S5bu/tnf2RK
- U40hX
-X-Gm-Gg: AfdE7cmehpa8so8N+yEoQt0zX2Uy8IDSC1C9mMG6TwLZgHU0dh4To4s1a8BsjXyTEwY
- FKcf3BDz2Nr6WxJjHPkArR3MjVleO+IxHarYRrrl/oTWcJvsu1TdfXE1/znHllGfhcVc5a4mKwZ
- jIgxNNGN5Hv9SwnA8ZtFyv8WXR2yrArrSXENXPGirFIjnBOTHZpOFAJfXDpczlCyeu2ANAKAars
- 2QfC0DsRQZYUm83l45OQDDQufIVVPGL7Iwq2zOs2MWrvf0dy6kAohp9EDylhShNVdgMK1WGGEDg
- D7+QAz0vLdUZnRIsDBbuy2Qu0f7ObNVBAifIkW1kUUZmuW4700g6P8As5XmOiJMek4JqjSEJccF
- leaYsQoD6cRrZldls8294uKtgQ2esFGXEuA+zaRq51fZX6wnkpXn22YkNeqxucpqYiicDl2UfNm
- n8xDDAbbPY0JzwgzGj8KBnLmtnk/K8xb0/WhKQkBizFViI/YewHIUyXNHrstde
-X-Received: by 2002:a17:90a:9f89:b0:37f:9ce1:cdaa with SMTP id
- 98e67ed59e1d1-37f9ce22201mr572541a91.32.1782492500924; 
- Fri, 26 Jun 2026 09:48:20 -0700 (PDT)
-Received: from stoup.. (174-21-129-215.tukw.qwest.net. [174.21.129.215])
+ bh=ghj/xOg/E0yHFDgkCHpp4r2601tf0dBSnaAs4XEnKzE=;
+ b=ozXCEmxXjy0zMelh3SDO/hUjG1VJhsWmWWqSeEU/zlSEi1kvUURFOhT9oXXWZpHa6q
+ N+TxVhwKJI9b8s2gHSN2NkXlcpSSVcHsB+M2TCry9zgznGvdxRhPOAvfcauB2ST2IaO/
+ jliIEL6utUjvWL2KlGYZRdrhxMGIBVFle/Kt0H0uteyHvl417jcvZeeavP68hF/cJm0H
+ diaTRD0sqV06L/5joSmtRivJQWybEPoLo1pye0N6UJP9d5eUYJ6BHHA+5TlSlbOaQgYz
+ lVGYcZJkWignA26pLwRHGu5lTJCBxovkSEhTE9UFGUNoLoZENYsz9oqjsLvpaPxMg8Dd
+ ivSg==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RqiVOLYJJXTmEvtGdNQnfww0dG/zDvWAvdAsjbCQEOFcpud7PIYN0f3Zqo/m2S9xLElwSSeer0uJA==@nongnu.org
+X-Gm-Message-State: AOJu0Yx/UezPRM2lfUZfK241Wbscytx9zulYhU9Zt+QplOEymJt3b3JP
+ 8hau72+m9ABlAgukEacCpSJpbhaWf5rJ38FGExovlu9sIKnG0f3Ov/I3InilTrzGapcyIJn2fUB
+ nxMSjufKh5a95pm568YuiWGiV0XJkdz1joQH4EzTW74aO1LTme6N1cA==
+X-Gm-Gg: AfdE7cmPdGhI9r9woMz/F8prhie6heC5Xf9GMzypBgfOJVBiaJwhgRr4ZS4ywrd/G6m
+ fzs6RzYbpdY1vxH1L2PBe+i4h9X/IB9Zk8v+iuGqovSQh1MdUVBcjxNRqFUSnvo2U6htMAC4dPz
+ QkZVBzZn2vUTDHFzY1Q4ZeN1hsb5ECw0D9M4K06f/zVZVFCtrvYDqEl5zxXGm709+uXyX4oFjis
+ aYtm4jquaUytL220x/0N3F5M1HVK+3jQgE6OAAzw/QNjPemuVcqW7cEX3DpCvKDvuQ6IKHMOu5q
+ mLJ7HBk3LmbXLOaOXmuczsX8oawFS+ftxqpdHNx6bWtcciEf35ly+mBePkSDcpksPcheI77qPz4
+ lopAHP/RD1qw6FykT9AVHQJdyr2r4fz/sgaWtlqIsWlWblDLnuCfA
+X-Received: by 2002:a05:6000:460d:b0:462:e086:35f with SMTP id
+ ffacd0b85a97d-46dc2075df6mr12576832f8f.21.1782499448736; 
+ Fri, 26 Jun 2026 11:44:08 -0700 (PDT)
+X-Received: by 2002:a05:6000:460d:b0:462:e086:35f with SMTP id
+ ffacd0b85a97d-46dc2075df6mr12576805f8f.21.1782499448248; 
+ Fri, 26 Jun 2026 11:44:08 -0700 (PDT)
+Received: from ?IPV6:2a01:cb19:8426:ae00:a924:b4e0:1ee:f5c5?
+ ([2a01:cb19:8426:ae00:a924:b4e0:1ee:f5c5])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-37e1c93272fsm1138520a91.14.2026.06.26.09.48.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Jun 2026 09:48:20 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v2] target/arm: Implement and enable FEAT_SSVE_FEXPA for -cpu
- max
-Date: Fri, 26 Jun 2026 09:48:19 -0700
-Message-ID: <20260626164819.770787-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ ffacd0b85a97d-46c1ee0189esm28102155f8f.9.2026.06.26.11.44.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 26 Jun 2026 11:44:07 -0700 (PDT)
+Message-ID: <bdd7da0a-27e3-432d-935e-e3f435f19b4c@redhat.com>
+Date: Fri, 26 Jun 2026 20:44:06 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] vfio/listener: Fix translated_addr for
+ non-identity-mapped RAM sections
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: Yi Liu <yi.l.liu@intel.com>,
+ Giovannio Cabiddu <giovanni.cabiddu@intel.com>,
+ Alex Williamson <alex@shazbot.org>, Zhenzhong Duan <zhenzhong.duan@intel.com>
+References: <20260625134352.3122572-1-clg@redhat.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
+ 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
+ yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
+ 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
+ ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
+ RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
+ gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
+ 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
+ Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
+ tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSJDw6lkcmljIExl
+ IEdvYXRlciA8Y2xnQHJlZGhhdC5jb20+wsGRBBMBCAA7FiEEoPZlSPBIlev+awtgUaNDx8/7
+ 7KEFAmTLlVECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AACgkQUaNDx8/77KG0eg//
+ S0zIzTcxkrwJ/9XgdcvVTnXLVF9V4/tZPfB7sCp8rpDCEseU6O0TkOVFoGWM39sEMiQBSvyY
+ lHrP7p7E/JYQNNLh441MfaX8RJ5Ul3btluLapm8oHp/vbHKV2IhLcpNCfAqaQKdfk8yazYhh
+ EdxTBlzxPcu+78uE5fF4wusmtutK0JG0sAgq0mHFZX7qKG6LIbdLdaQalZ8CCFMKUhLptW71
+ xe+aNrn7hScBoOj2kTDRgf9CE7svmjGToJzUxgeh9mIkxAxTu7XU+8lmL28j2L5uNuDOq9vl
+ hM30OT+pfHmyPLtLK8+GXfFDxjea5hZLF+2yolE/ATQFt9AmOmXC+YayrcO2ZvdnKExZS1o8
+ VUKpZgRnkwMUUReaF/mTauRQGLuS4lDcI4DrARPyLGNbvYlpmJWnGRWCDguQ/LBPpbG7djoy
+ k3NlvoeA757c4DgCzggViqLm0Bae320qEc6z9o0X0ePqSU2f7vcuWN49Uhox5kM5L86DzjEQ
+ RHXndoJkeL8LmHx8DM+kx4aZt0zVfCHwmKTkSTQoAQakLpLte7tWXIio9ZKhUGPv/eHxXEoS
+ 0rOOAZ6np1U/xNR82QbF9qr9TrTVI3GtVe7Vxmff+qoSAxJiZQCo5kt0YlWwti2fFI4xvkOi
+ V7lyhOA3+/3oRKpZYQ86Frlo61HU3r6d9wzOwU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhW
+ pOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNLSoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZ
+ KXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVUcP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwp
+ bV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6
+ TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFU
+ CSLB2AE4wXQkJbApye48qnZ09zc929df5gU6hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iS
+ YBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616dtb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6g
+ LxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7
+ JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1cOY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0Sdu
+ jWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/Jx
+ IqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k
+ 8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoXywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjK
+ yKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9j
+ hQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Tad2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yop
+ s302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it+OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/p
+ LHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1nHzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBU
+ wYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVISl73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lU
+ XOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfA
+ HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
+ izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20260625134352.3122572-1-clg@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: U-BqgqxsbK9ukEorfzCKUyJFW1y8i-lYu-8TzXsGLDI_1782499449
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,109 +159,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
+On 6/25/26 15:43, Cédric Le Goater wrote:
+> In vfio_listener_region_del(), when dirty tracking is active and a
+> writable RAM section is deleted, a synthetic IOMMUTLBEntry is built to
+> flush dirty pages. Setting translated_addr to the IOVA (GPA) is only
+> correct for identity-mapped regions where GPA == ram_addr_t.
+> 
+> For RAM sections with GPA far above main RAM (e.g., nested VT-d interrupt
+> remapping table at 58 TB), translated_addr is too large, causing a crash
+> in physical_memory_set_dirty_lebitmap() when indexing beyond the allocated
+> dirty memory blocks array :
+> 
+>    bitmap_set_atomic(map=NULL, start=1, nr=1)
+>    physical_memory_set_dirty_range(start=0x380004040000, length=4096)
+>    physical_memory_set_dirty_lebitmap(start=0x380004040000, pages=3)
+>    vfio_container_query_dirty_bitmap(translated_addr=0x380004040000)
+>    vfio_legacy_dma_unmap_one(iova=0x380004040000, size=12288)
+>    vfio_listener_region_del()
+> 
+> Fix this by setting translated_addr to the ram_addr_t of the section, which
+> is consistent with other vfio dirty tracking code:
+> 
+>    translated_addr = memory_region_get_ram_addr(section->mr) +
+>                      section->offset_within_region;
+> 
+> Cc: Zhenzhong Duan <zhenzhong.duan@intel.com>
+> Fixes: 6e360c06176c ("vfio/listener: Add missing dirty tracking in region_del")
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> ---
+>   hw/vfio/listener.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/vfio/listener.c b/hw/vfio/listener.c
+> index 14cca678aea788c23ea5c6ed4a3aceec5fe21484..785a6eef8d812123fcecf82e3716f5577d7c61e1 100644
+> --- a/hw/vfio/listener.c
+> +++ b/hw/vfio/listener.c
+> @@ -731,7 +731,7 @@ static void vfio_listener_region_del(MemoryListener *listener,
+>           }
+>   
+>           /*
+> -         * Fake an IOTLB entry for writable identity mapping which is needed
+> +         * Fake an IOTLB entry for writable RAM sections which is needed
+>            * by dirty tracking when switch out of PT domain. In fact, in
+>            * unmap_bitmap, only translated_addr field is used to set dirty
+>            * bitmap.
+> @@ -746,7 +746,8 @@ static void vfio_listener_region_del(MemoryListener *listener,
+>           if (global_dirty_tracking && memory_region_is_ram(section->mr) &&
+>               !section->readonly) {
+>               entry.iova = iova;
+> -            entry.translated_addr = iova;
+> +            entry.translated_addr = memory_region_get_ram_addr(section->mr) +
+> +                                    section->offset_within_region;
+>               iotlb = &entry;
+>           }
+>   
 
-v2: The enable test for this is (FEAT_SVE || FEAT_SSVE_FEXPA).
-    I thought maybe writing it all out like this is clearer than using
-    TRANS_FEAT_STREAMING_IF with a one-off combination feature test.
 
+Applied to
 
-r~
+     https://github.com/legoater/qemu vfio-next
 
----
- target/arm/cpu-features.h      |  5 +++++
- linux-user/aarch64/elfload.c   |  1 +
- target/arm/tcg/cpu64.c         |  1 +
- target/arm/tcg/translate-sve.c | 21 +++++++++++++++------
- docs/system/arm/emulation.rst  |  1 +
- 5 files changed, 23 insertions(+), 6 deletions(-)
+Thanks,
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index c3eeecbea9..bdeb72bd77 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1580,6 +1580,11 @@ static inline bool isar_feature_aa64_sme_mop4(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64SMFR0, SMOP4);
- }
- 
-+static inline bool isar_feature_aa64_ssve_fexpa(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64SMFR0, SFEXPA);
-+}
-+
- static inline bool isar_feature_aa64_ssve_aes(const ARMISARegisters *id)
- {
-     return FIELD_EX64_IDREG(id, ID_AA64SMFR0, AES);
-diff --git a/linux-user/aarch64/elfload.c b/linux-user/aarch64/elfload.c
-index 9b93969850..cea286cce0 100644
---- a/linux-user/aarch64/elfload.c
-+++ b/linux-user/aarch64/elfload.c
-@@ -174,6 +174,7 @@ abi_ulong get_elf_hwcap(CPUState *cs)
-     GET_FEATURE_ID(aa64_f8mm8, ARM_HWCAP_A64_F8MM8);
-     GET_FEATURE_ID(aa64_f8mm4, ARM_HWCAP_A64_F8MM4);
-     GET_FEATURE_ID(aa64_ssve_aes, ARM_HWCAP_A64_SME_AES);
-+    GET_FEATURE_ID(aa64_ssve_fexpa, ARM_HWCAP_A64_SME_SFEXPA);
-     GET_FEATURE_ID(aa64_sme_mop4, ARM_HWCAP_A64_SME_SMOP4);
-     GET_FEATURE_ID(aa64_sve2p2, ARM_HWCAP_A64_SVE2P2);
- 
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 2cf335c956..7151c509f9 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1384,6 +1384,7 @@ void aarch64_max_tcg_initfn(Object *obj)
- 
-     t = GET_IDREG(isar, ID_AA64SMFR0);
-     t = FIELD_DP64(t, ID_AA64SMFR0, SMOP4, 1);    /* FEAT_SME_MOP4 */
-+    t = FIELD_DP64(t, ID_AA64SMFR0, SFEXPA, 1);   /* FEAT_SSVE_FEXPA */
-     t = FIELD_DP64(t, ID_AA64SMFR0, AES, 1);      /* FEAT_SSVE_AES */
-     t = FIELD_DP64(t, ID_AA64SMFR0, SF8DP2, 1);   /* FEAT_SSVE_FP8DOT2 */
-     t = FIELD_DP64(t, ID_AA64SMFR0, SF8DP4, 1);   /* FEAT_SSVE_FP8DOT4 */
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index 79e8e16b24..fc4cc8c479 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -1369,12 +1369,21 @@ TRANS_FEAT_NONSTREAMING(ADR_u32, aa64_sve, do_adr, a, gen_helper_sve_adr_u32)
-  *** SVE Integer Misc - Unpredicated Group
-  */
- 
--static gen_helper_gvec_2 * const fexpa_fns[4] = {
--    NULL,                   gen_helper_sve_fexpa_h,
--    gen_helper_sve_fexpa_s, gen_helper_sve_fexpa_d,
--};
--TRANS_FEAT_NONSTREAMING(FEXPA, aa64_sve, gen_gvec_ool_zz,
--                        fexpa_fns[a->esz], a->rd, a->rn, s->fpcr_ah)
-+static bool trans_FEXPA(DisasContext *s, arg_FEXPA *a)
-+{
-+    static gen_helper_gvec_2 * const fexpa_fns[4] = {
-+        NULL,                   gen_helper_sve_fexpa_h,
-+        gen_helper_sve_fexpa_s, gen_helper_sve_fexpa_d,
-+    };
-+
-+    if (!dc_isar_feature(aa64_ssve_fexpa, s)) {
-+        if (!dc_isar_feature(aa64_sve, s)) {
-+            return false;
-+        }
-+        s->is_nonstreaming = true;
-+    }
-+    return gen_gvec_ool_zz(s, fexpa_fns[a->esz], a->rd, a->rn, s->fpcr_ah);
-+}
- 
- static gen_helper_gvec_3 * const ftssel_fns[4] = {
-     NULL,                    gen_helper_sve_ftssel_h,
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 3ef5b53e8a..a12471aafe 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -175,6 +175,7 @@ the following architecture extensions:
- - FEAT_SME_LUTv2 (Lookup table instructions with 4-bit indices and 8-bit elements)
- - FEAT_SME_MOP4 (Quarter-tile outer product instructions)
- - FEAT_SSVE_AES (Streaming SVE Mode Advanced Encryption Standard and 128-bit polynomial multiply long instructions)
-+- FEAT_SSVE_FEXPA (Streaming FEXPA instruction)
- - FEAT_SSVE_FP8DOT2 (SVE2 FP8 2-way dot product to half-precision instructions in Streaming SVE mode)
- - FEAT_SSVE_FP8DOT4 (SVE2 FP8 4-way dot product to single-precision instructions in Streaming SVE mode)
- - FEAT_SSVE_FP8FMA (SVE2 FP8 multiply-accumulate to half-precision and single-precision instructions in Streaming SVE mode)
--- 
-2.43.0
+C.
 
 

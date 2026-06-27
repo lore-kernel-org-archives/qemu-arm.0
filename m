@@ -4,88 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48FDAC43458
-	for <qemu-arm@archiver.kernel.org>; Sat, 27 Jun 2026 05:59:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35587C43458
+	for <qemu-arm@archiver.kernel.org>; Sat, 27 Jun 2026 12:11:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wdM4H-0002xj-Ag; Sat, 27 Jun 2026 01:59:06 -0400
+	id 1wdRsL-000493-H0; Sat, 27 Jun 2026 08:11:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1wdM4A-0002xG-Cr
- for qemu-arm@nongnu.org; Sat, 27 Jun 2026 01:58:58 -0400
-Received: from mail-dy1-x132b.google.com ([2607:f8b0:4864:20::132b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1wdM47-0000Gd-3v
- for qemu-arm@nongnu.org; Sat, 27 Jun 2026 01:58:58 -0400
-Received: by mail-dy1-x132b.google.com with SMTP id
- 5a478bee46e88-30ca1b4b278so1796427eec.0
- for <qemu-arm@nongnu.org>; Fri, 26 Jun 2026 22:58:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1782539933; x=1783144733; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1wdMal-0003f2-OT; Sat, 27 Jun 2026 02:32:40 -0400
+Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
+ ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1wdMaj-0000vV-MU; Sat, 27 Jun 2026 02:32:39 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=OP8qO/iFY0abvGhHEjZ+txYoAGRmEn1B21AN6EitbBlGahaOT+xOI60fSMXN9tuD4iq6NeQQVaRvLQ3Za7plC0Ey18d7rtxqqrtwn6uub5FrCM9HxnM78wGsLam/vFuDE49RVzsF34QvAK7yxIuh9eODZQB25GrU/VSP7ObCQnjqbXUdbmOG+TmJSam95OAbPzRQ/Y8i4RXP+Oh6XkW8WgmDn8Nlnn9CrzSzFxbryKB5ccqx/8+VROrhr3EmXxq3OkiE5uEMIMJfWtp7pt3KokYofMzpH8+gHf/+qWpWNN5lxvtHmPIqPKlQcfYTzDdQNzacaE8MRerWT0wwGVtCYg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
  bh=ZcR8L0WC/Ee3sh1/HeRViPr1GzlOHSGGVXj0ax8e8Dc=;
- b=sdcNJS/sAKBt34XB827GXL8saM9mEJ1ChuDkhwqnCNTFU2+m+qlgR9vAzielnjKRw+
- R+D4uu/tCrRRGd1r5NYV41IOUvmwFKOfpKrLBAY8ywX+FJ3Ag+zB12/KKgtn/WrmUSdx
- 7ymygwj/2Ftuju+4CZc1PMNkVSCcA1eLgGJ1vlBmx4MAYc8cgYcsMSWdHlsMCePplU7u
- EGk+DdQxD2EuFJQltAolDWR4pkwuI0NznfQ2yBtZ5P+HZjcY0IlULnzXfLQBHuoPuwLl
- ie8g16fjtG9MQd8ckl8fDmv+mqqLTBqD6pnKxqTYTrwlbC5qzYTnZunePJ0UjxO+yAGT
- SLfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782539933; x=1783144733;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
+ b=DDzLSuXzSbutvSFZV3cl2pGgZfTOwtrpVHukHIlS14ekQv1tQRgZ3QdC3kaVy3imkC9DmwQxaComL0PNd7RM5eMyjR+/eFGNBI/usAE8j7D8pMuq/uI8Nut2cZ1mfNDEIeosK62llbdBqe3r89J34VrZud7Ysm4FZU5ke6cjJB+nlbOad/9QHQMaJguQXl5/7VbcW1RjIKI+Fb009Pi4iZbD229moDqFGcsSvwBs/ynoiB/aEmAGchM7WJauuNJkYDunC38ArZfrZ9NmIOckVuVTzxFldC4NRno8ibbx2CWE8hDslX2rUDPUOxU7y4b+aq8ZGtmRSwfbRrEpKcUOWw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=processmission.com; dmarc=pass action=none
+ header.from=processmission.com; dkim=pass header.d=processmission.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=ZcR8L0WC/Ee3sh1/HeRViPr1GzlOHSGGVXj0ax8e8Dc=;
- b=nGxmPFU0kEFzOzLve9Q7kcACathqEYKN7iOSk8yMk5hPGmwRk5IVC9p3qelvrWv+wQ
- KI1aOvMsG0ylkfUVQzYlDifuEo9hdxYjAqLtyG1rItL4B9M+WId+0A78q8mGQiBTjETR
- 8RQoM5XmhLE/1BBcubnp4Or8kS8cRxI8E0C6C/txJoDVBHi7nFy4448xsesmYhmfLBB9
- 5ULMlKwJiUyy9i8YJiBSJcPgo8aEHrzq2dC2x2tAEOer+OuZaJDndDVx0z3TjEHwe5C+
- H2RNVuf7BWQ9zRas/RYVNTiOvb6HnSLogR8G3ouDzgwy4YaZK9+bLqmP8yM/vKI0kPzv
- nH4g==
-X-Forwarded-Encrypted: i=1;
- AHgh+RrFDNbG/RTLANfn1Dw8GR3ow74djCbRzW4Bz3fIFDnITg6YxWqXJL6mil34rYylTMkY0TObPvjaeg==@nongnu.org
-X-Gm-Message-State: AOJu0YxzyOPMvZqIRSpq0/43iU9avg51DCtJELkyPxAtHVaFtGiDS3Q/
- JhNbbvAQKXkK0noN6RxRjtvB+B1mmgdFzRq+GcCfj5NpCJ7lX/qIEzOr
-X-Gm-Gg: AfdE7clVBfWWBCtZzhtxHwQ7U2hB0l9UuNnA1GcmzjiyBQejnneofO3t2xe9OveZIdl
- FEMJp9MhBuZY84XwkJlNV26UXDXXI3Dqepm3nab7q56MnJQb8zKl3ADoIkmAhq8l7ZqHBA+Y2AR
- dBEiV/zWz2tfetoCn3+nx3ENvsmOI8Q7rmH8Of3/B3qVzmXsHVThluN1uRih6ixR8J81gv9dok4
- dxWOrjXNhGIhMGRCoFYfx2vTi3e+Y3MkI4zxtKHj0QCRx6Y+4J0Z06mWaGEUQnh4B1/BX7xAvyr
- xdcSPPLrASGEOSDm4IJ192ORgjuSrvHTNSRH71XB4UEsspgy3DDLqNCM5Uq8nnMRWY1bVEBja4C
- MCfQvc1xcTwP5bDQM5Z3SDy7XUp8hKkYWErYrk07w2vP+mbWsKngI6Gr0hHRwiVAGXvcyoX048b
- n8VrYTKuPZ5xy2otiPrw==
-X-Received: by 2002:a05:7300:3207:b0:30c:ab4d:382d with SMTP id
- 5a478bee46e88-30cab4d3bf1mr2601077eec.36.1782539932543; 
- Fri, 26 Jun 2026 22:58:52 -0700 (PDT)
-Received: from ubuntu.. ([111.196.134.99]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-30c7ca438ddsm23462629eec.23.2026.06.26.22.58.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Jun 2026 22:58:52 -0700 (PDT)
-From: Bin Meng <bmeng.cn@gmail.com>
-X-Google-Original-From: Bin Meng <bin.meng@processmission.com>
+ b=M1GmuYT0OksQA2gsEqGfM0bCVVH7zblMrIXBaquDWGGD2jIfZUoKZV/fYsFi1CfjuPNKplckJ4Qp1zRTlGDpc4cUVg76Uy1GoMq6poSuovLIzAWuzFZt6Uxg/x+73VmNrmlDnPTHnOZkDMIWB4oAwSPjSawVHchu2wAOrVLeE68+h4FBhUoOhIkc3oonBrCgZS5F1YryGzpcIKyjpzplVh4meYs8RpcjZtj8+ilHl9l4iW7HZLM2wu2lYUu0bUVMGVYuvNVFt3+pTSIOG1ekZxnOZWrReRwb6oUW/5uCtuOMOJBnnxnhgxtpPa4hBb+W9WQhKi/1/lbv18gdb97Img==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=processmission.com;
+Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
+ by PUZPR02MB6234.apcprd02.prod.outlook.com (2603:1096:301:f6::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.159.18; Sat, 27 Jun
+ 2026 06:32:29 +0000
+Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
+ ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
+ ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0159.018; Sat, 27 Jun 2026
+ 06:32:28 +0000
+From: Bin Meng <bin.meng@processmission.com>
 To: qemu-devel@nongnu.org
 Cc: Hao Wu <wuhaotsh@google.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org
-Subject: [PATCH] docs(arm): Update Nuvoton OpenBMC image guidance
-Date: Sat, 27 Jun 2026 13:58:47 +0800
-Message-Id: <20260627055848.28279-1-bin.meng@processmission.com>
+Subject: [PATCH] docs/system/arm: Update Nuvoton OpenBMC image guidance
+Date: Sat, 27 Jun 2026 14:32:08 +0800
+Message-Id: <20260627063208.33642-1-bin.meng@processmission.com>
 X-Mailer: git-send-email 2.34.1
-MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::132b;
- envelope-from=bmeng.cn@gmail.com; helo=mail-dy1-x132b.google.com
+Content-Type: text/plain
+X-ClientProxiedBy: TYCP286CA0066.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:400:31a::10) To KL1PR02MB4977.apcprd02.prod.outlook.com
+ (2603:1096:820:71::8)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|PUZPR02MB6234:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6df396c5-c1ce-4ba4-85a7-08ded415dbf0
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|23010399003|1800799024|34096008|376014|586017|366016|56012099006|6133799003|18002099003;
+X-Microsoft-Antispam-Message-Info: H39gWi6ijmOKVxrmzu8fRN+5TThL5bDR1G7Qg5hzjY47L/68YVVRDAbnRMxkylLwGhVP68PlczXeO83Z13bQ0hl3LKAVKUwMGew4bC2k/HWlG+ECOP57bG33Ea2fqvt9X5aK8mkwdwSnxUQOpzoOfRHNm5ayVP3ZpG8cOjKZhnET32QWervwws58S60USyK3mkRmvo/bwyE9luWVc9YPTFoctimd/wWDpOWVNsPVHyFwHoZ1zAn15HrUu7Ml5q/iQQIcAJifSNBHolSaGwZXieZOuHwMeNCKMpBo9ljyCxiipOK5gP7I7Qs9dgIbBqlsb8etEKQloyybURdxuPdEcdEuL52LMgzpUbZDkiS5GtNSEoLsVDgUPgLR0SsDj0xubNHoJvSGueyhKNhirIe0AO9HrWztwWA1BqC/pnS31YN7hX0wR2GmLX/k7I3I0A55fFlyoQ99Qb0FK5ruKiyAiB/HdDjK/ITTgnqCBPoLCCvR1CrGCN6oboQlKbR/0SqkxtnYXPEURSXnEUM45lIE4S8Trm47kiQ6GzdJ1vAYZNLiqfgLEVdUXAQTXKvl/xcjvF3YxVDBN3eOOMwO92/lYm0qBzkqv9PqhmiZa3KZS5U=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(23010399003)(1800799024)(34096008)(376014)(586017)(366016)(56012099006)(6133799003)(18002099003);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?k5DEmbgc/N/XoAI4wh7OatrntD4kQw+lQkKe2T+IuWOEG1jr4ECflTeEDFv2?=
+ =?us-ascii?Q?Se/LSYPrZe2tXXm2STSA5uwR8yyxawaj/XqX0ovKj09uL+84OHHgEdj0/u4F?=
+ =?us-ascii?Q?59KKEWc8Ri5J6AFc7XsALBaqKIKxhoxVXcAekNOSzLVUI9yhyi7lJ/F6xZhs?=
+ =?us-ascii?Q?LejuA/EVimCeZmZazcAuDiZHa2HSwu6RGm0PIOOf7iKdnKBLZRSWrxti8cO2?=
+ =?us-ascii?Q?M9ognQc64WsobyGqPs3PrnflINnv6v50k7kKDV2KGrtRmnksUyo7ZW/ywqLY?=
+ =?us-ascii?Q?IoGB5RKnjDvgftPYiSkj+NPTjrN+Wuh7v1evNEKmfonQftGvxB4JUFgxrx1d?=
+ =?us-ascii?Q?eK7MrVknt57q163QPhHjwGT5JLF/HJo9fUb969ki4/P95B/Of1YitTSEr5Uy?=
+ =?us-ascii?Q?Y3I5Waxj32t3Ab/PJ1vc0V6yTarm4pStuFvag2jnjOf44x42hbmtiqssjmqf?=
+ =?us-ascii?Q?oM6NawOn/yW9fuyQjkfgT8fKT8Wv7O45KgGoM0JoF5V2hicJu7ata9BEHQiG?=
+ =?us-ascii?Q?wLzW3GW8TR8TlsH8o/2a6ew5sVaW+SniDeJWaHfMH1gaYoRYrL4+z1N8jUEI?=
+ =?us-ascii?Q?teTXDWgm0i4OqxHMd0Qc1xRwu6ZLh7rMaIpFIBeOadzhgs0Ihrxo2cnY7U9c?=
+ =?us-ascii?Q?vaWiuN6l0OFGLonQ8ORKAdbc9mWyR5SR8LAQ/btwainlrBzSO4dQMm1WMQri?=
+ =?us-ascii?Q?VDE8Up3kE0ae6DSycIVM8DNAj5yE9D9LqviVv5Q8frT/98E3i3R9uIYnmDow?=
+ =?us-ascii?Q?9bmlUahDVeqEsAP1NT0DDwz8e+M8E/ulejDsU1qDfoxww5t58Jt0MfPLcFEr?=
+ =?us-ascii?Q?lvqOUayVFrrhOy8LXHUz1cTkg0VjasHqziRXHnd4qqmte+lTD7ep7dDlqsD2?=
+ =?us-ascii?Q?rBj19IZV4Voo9poUgYgbwTMkFKkkyrbV941aVDmtRxqsU7y1Jf2r9vinWh84?=
+ =?us-ascii?Q?+iydGz1U56mFQosBdOmZh0wnMenr+8xrXGCqYgGW06WdIa4me/am3v2aLjWU?=
+ =?us-ascii?Q?0ya9hWNzHVh2OQTSGtPMyukgAMcEgh+7GkOg3SVdzZl4f5fgO8uU+mdK2ms6?=
+ =?us-ascii?Q?jMroCR4M7x26mWL2T1Xcf8R/nzoCaPQ8a9huXSWeAoUCvtd26neAAzWXn+85?=
+ =?us-ascii?Q?siOmhprfoiYJv2Pva54Vrd9L2rwwgsfOM3eZXIjzqWTN4YR6yLjXNYtsABIB?=
+ =?us-ascii?Q?ijsLVxjcV3amgRpzkssHo9woVNyAHTxXacKd89IGTCmId2RDzUn3gZL3Qvw9?=
+ =?us-ascii?Q?M447in2+StzQUR2KA05ClWA3MsYuVoZW1pwncPjdpf268VBgToLn+KjCAa3z?=
+ =?us-ascii?Q?7ZDWwlcc3M8vlWPRAxeLWLIAakFzZ79Phje/6FgniVk1KiSaYfgR9fXeA8JP?=
+ =?us-ascii?Q?QBUVr+N1T5PkUDaod16RxrwhxsuTtcKbwTcOl7gzdw+h1igcX1ZTblf5QXOz?=
+ =?us-ascii?Q?MElw/d8ZtCsG+ajf6CSn1YDAMi4rSTLrmmC77LY/Y4nM0kI8+t0NhHIksBo2?=
+ =?us-ascii?Q?G0zPJlKVz3gNSr7i7AVQGjmmMqRH1a0v0vqaVK1d66zQ1/fQG6GfGH/x72nD?=
+ =?us-ascii?Q?t/S9aSYTGzbNDFYccNCnXMK5KyC2dgOgfK2teWQAYc/LMYkLDju8R9zDeeDj?=
+ =?us-ascii?Q?PHsNV1pjd4aPDdPLOaDJTSW1i/vlPjLn/q1EMuUh5y01LYBZ6WVfAQXaoWR6?=
+ =?us-ascii?Q?4nHgI8isWXCwJnewIBkYhhIMCjg=3D?=
+X-OriginatorOrg: processmission.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6df396c5-c1ce-4ba4-85a7-08ded415dbf0
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jun 2026 06:32:28.7193 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: eZDsJuNXEPLLfY/+zP406JAcFiequ6UVVqA+dcGfH0rURRt8Hjj0i71T1fKRFGN8KZ1Qd0Tf4QfCMHT0E305kosVuShC9O83FoW3wKx21+0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR02MB6234
+Received-SPF: pass client-ip=2a01:111:f403:c406::3;
+ envelope-from=bin.meng@processmission.com;
+ helo=OS8PR02CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 27 Jun 2026 08:11:02 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list

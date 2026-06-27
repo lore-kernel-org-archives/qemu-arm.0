@@ -4,149 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF54AC43458
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Jun 2026 23:44:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48FDAC43458
+	for <qemu-arm@archiver.kernel.org>; Sat, 27 Jun 2026 05:59:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wdG9M-0003VB-3e; Fri, 26 Jun 2026 19:39:56 -0400
+	id 1wdM4H-0002xj-Ag; Sat, 27 Jun 2026 01:59:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wdG9K-0003UK-Jj
- for qemu-arm@nongnu.org; Fri, 26 Jun 2026 19:39:54 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wdG9I-000418-1r
- for qemu-arm@nongnu.org; Fri, 26 Jun 2026 19:39:54 -0400
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 65QMxdmB796672
- for <qemu-arm@nongnu.org>; Fri, 26 Jun 2026 23:39:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:date:from:in-reply-to:message-id
- :mime-version:references:subject:to; s=qcppdkim1; bh=bPqU+LtYmF/
- NbMSheb6pj/3JEw1F6yfgTjgly7EwQtc=; b=B/48uO9NNRwtLIsdlpikQQ5Rno4
- IrNQU52c4W2mF2ICQsVxE6KM6qwa70o60R/EyxkC5s0xaeF6neOOVtnA7r34S7KG
- Pi2XT1AFY3TntYDKvwZe8oZ9oMoXJ3o9boAQ2Efiij+uC3O84mlfN4nIX6dYorp2
- E2txv3Qfwt41hjAB3qFY+8zlOtkzDPJ9FGJQEj9l8iqaKHjNc35aRQVgJYyf5T8L
- c838eBvWbk8aiJPq1nS77zc3MzRdDq3D441UItrFGeSyt7d9+W0PfJaS+Sw4fBda
- P7icv+e/dKPq0r6yL6soXM/b/2syUKvSvvVBoqqbKxiSLPBzclGMaqmWfWw==
-Received: from mail-dy1-f200.google.com (mail-dy1-f200.google.com
- [74.125.82.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f1ups9kk1-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Fri, 26 Jun 2026 23:39:40 +0000 (GMT)
-Received: by mail-dy1-f200.google.com with SMTP id
- 5a478bee46e88-30c9bd8b9c7so1586597eec.0
- for <qemu-arm@nongnu.org>; Fri, 26 Jun 2026 16:39:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1wdM4A-0002xG-Cr
+ for qemu-arm@nongnu.org; Sat, 27 Jun 2026 01:58:58 -0400
+Received: from mail-dy1-x132b.google.com ([2607:f8b0:4864:20::132b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1wdM47-0000Gd-3v
+ for qemu-arm@nongnu.org; Sat, 27 Jun 2026 01:58:58 -0400
+Received: by mail-dy1-x132b.google.com with SMTP id
+ 5a478bee46e88-30ca1b4b278so1796427eec.0
+ for <qemu-arm@nongnu.org>; Fri, 26 Jun 2026 22:58:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1782517180; x=1783121980; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=bPqU+LtYmF/NbMSheb6pj/3JEw1F6yfgTjgly7EwQtc=;
- b=ambVrU8LSUyHPu7rIdZm42meLOdBxDEplyOVwlB4Q4le0LHxApvZLR06ifxySTmcVd
- +Ck4ahHnhs+VXM2BGmDMASamNQ6Xn/Y+Vt5yYPgKK/naBaCQ93roc+oeZSEOwVbr9gHC
- +Zgbsn+Y9TE+5YDKCizLD7VtTEtZp6VYDfgO3ymn+otKkqZNgh/45M6abmNC2NGkH1Ch
- Hkrpj2LIsT7zGOw/iuFGHYEsWUMDzfzGrr0ryFY6VEA6ldtu0lhhdSDoit0zQtqvqZrV
- BCJRPZvY7P5ocXjfWGJMZqPjF3prPeq1tNQ4s0fLG9SD+rmjShqaxxyUbIRWYVauOEvV
- kAkA==
+ d=gmail.com; s=20251104; t=1782539933; x=1783144733; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZcR8L0WC/Ee3sh1/HeRViPr1GzlOHSGGVXj0ax8e8Dc=;
+ b=sdcNJS/sAKBt34XB827GXL8saM9mEJ1ChuDkhwqnCNTFU2+m+qlgR9vAzielnjKRw+
+ R+D4uu/tCrRRGd1r5NYV41IOUvmwFKOfpKrLBAY8ywX+FJ3Ag+zB12/KKgtn/WrmUSdx
+ 7ymygwj/2Ftuju+4CZc1PMNkVSCcA1eLgGJ1vlBmx4MAYc8cgYcsMSWdHlsMCePplU7u
+ EGk+DdQxD2EuFJQltAolDWR4pkwuI0NznfQ2yBtZ5P+HZjcY0IlULnzXfLQBHuoPuwLl
+ ie8g16fjtG9MQd8ckl8fDmv+mqqLTBqD6pnKxqTYTrwlbC5qzYTnZunePJ0UjxO+yAGT
+ SLfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782517180; x=1783121980;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=bPqU+LtYmF/NbMSheb6pj/3JEw1F6yfgTjgly7EwQtc=;
- b=aZmVt2k3Wcx6lNNz2kezrc38ARd7T082BVzHiEOUb1WpPRwUjKLPw2Ki6Ji1b5rgRQ
- GI8zksY9PnlmBK8RaxjW7SK4DRkLr9Z++6tbz67Cd4fSjd552Yqbojd2QzM3xL40JYbu
- tV2MD6fKX2wJgBvg3r0dQ7SylRVlZxk7rFhnbt0HI8qD0QWJ3RnbifFsPRu8FHTRb8st
- wXBsGRcr3I3Bb+u9k2qymmrh8P1ZA9XkSVOI4m4EW0Z0AB5Qlfgxh17Xh/YR6KwWUHP4
- HeRHWIHDaohCs9BkxHIgLsQH9ZL7e2zQLzgY+QM8ugQYD9L3hsrd4gANu1OVPDnMXEjr
- dTaw==
+ d=1e100.net; s=20251104; t=1782539933; x=1783144733;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ZcR8L0WC/Ee3sh1/HeRViPr1GzlOHSGGVXj0ax8e8Dc=;
+ b=nGxmPFU0kEFzOzLve9Q7kcACathqEYKN7iOSk8yMk5hPGmwRk5IVC9p3qelvrWv+wQ
+ KI1aOvMsG0ylkfUVQzYlDifuEo9hdxYjAqLtyG1rItL4B9M+WId+0A78q8mGQiBTjETR
+ 8RQoM5XmhLE/1BBcubnp4Or8kS8cRxI8E0C6C/txJoDVBHi7nFy4448xsesmYhmfLBB9
+ 5ULMlKwJiUyy9i8YJiBSJcPgo8aEHrzq2dC2x2tAEOer+OuZaJDndDVx0z3TjEHwe5C+
+ H2RNVuf7BWQ9zRas/RYVNTiOvb6HnSLogR8G3ouDzgwy4YaZK9+bLqmP8yM/vKI0kPzv
+ nH4g==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoMK1jIUg1y/d+CoHqglxR0uEozdL3bVaE2Zuz4sSXNerxzoLniW9VH5zsRVrtM5EUZXoRDDFd8Sg==@nongnu.org
-X-Gm-Message-State: AOJu0YwXYpiBhpFn/5uroW9sTVBu4sdR4NOb3t6c61+mBmG3bv4AN5ZU
- 1lYutnOH83V9JfoFSsnwqaaVPdUzUdTZAZBPaWf6phULsZNEIJGJLXs0Lu/8fnxaDgi3USOmhWG
- etq/0uNJDO8wDYQuvwLwll8hPVZ2j7UtgvP8/Fb3G4XYH5AEsbGBLZ8Y=
-X-Gm-Gg: AfdE7cnNDxOOjxSzi+DIjmobzzeeplkffgl36wfq06zqbzcS4+Os4aqJ6KRdhuuzrJf
- N4TicUApRF3fMXwPj/Ke/m1IPd9IU90RuY77ZWDVkfXs+3V4vE6JBmRJIPa9PoRDjQi9GfJkqlJ
- 1EE7395XqLgnRHu9TNEvpYEMN4OFCKYdYUDtsO7pZ0jIUXY5QgM65KTPOCCek3qNozW+zwHITZk
- QTNKEL9Lb1BpCzQj9pm0jJz3vpjukr9D0KTDfuQNtHiufCrxcftVvbR1X4yK6IQPD3hXMwFg0uC
- Fmvtq/pTapNWYsd5WT6+LbgY9BWuoVjrqM0lZpeQvLeyjs7w98uVWgRzw5Jup1SxLGW4bWwd4hR
- qpzA9Y6voeM8YTvNWuuZnKyfSpgCVtae3maMp9P+2Vm9jgVg6avULh0/EMxZx9v99/QE9gjoghl
- aQFttUDQ==
-X-Received: by 2002:a05:7300:4342:b0:30c:2d3d:7838 with SMTP id
- 5a478bee46e88-30c850a51f2mr7293789eec.31.1782517179923; 
- Fri, 26 Jun 2026 16:39:39 -0700 (PDT)
-X-Received: by 2002:a05:7300:4342:b0:30c:2d3d:7838 with SMTP id
- 5a478bee46e88-30c850a51f2mr7293757eec.31.1782517179320; 
- Fri, 26 Jun 2026 16:39:39 -0700 (PDT)
-Received: from QCOM-qjMf8PBlDw.qualcomm.com (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-30c7c52c591sm29369756eec.7.2026.06.26.16.39.37
+ AHgh+RrFDNbG/RTLANfn1Dw8GR3ow74djCbRzW4Bz3fIFDnITg6YxWqXJL6mil34rYylTMkY0TObPvjaeg==@nongnu.org
+X-Gm-Message-State: AOJu0YxzyOPMvZqIRSpq0/43iU9avg51DCtJELkyPxAtHVaFtGiDS3Q/
+ JhNbbvAQKXkK0noN6RxRjtvB+B1mmgdFzRq+GcCfj5NpCJ7lX/qIEzOr
+X-Gm-Gg: AfdE7clVBfWWBCtZzhtxHwQ7U2hB0l9UuNnA1GcmzjiyBQejnneofO3t2xe9OveZIdl
+ FEMJp9MhBuZY84XwkJlNV26UXDXXI3Dqepm3nab7q56MnJQb8zKl3ADoIkmAhq8l7ZqHBA+Y2AR
+ dBEiV/zWz2tfetoCn3+nx3ENvsmOI8Q7rmH8Of3/B3qVzmXsHVThluN1uRih6ixR8J81gv9dok4
+ dxWOrjXNhGIhMGRCoFYfx2vTi3e+Y3MkI4zxtKHj0QCRx6Y+4J0Z06mWaGEUQnh4B1/BX7xAvyr
+ xdcSPPLrASGEOSDm4IJ192ORgjuSrvHTNSRH71XB4UEsspgy3DDLqNCM5Uq8nnMRWY1bVEBja4C
+ MCfQvc1xcTwP5bDQM5Z3SDy7XUp8hKkYWErYrk07w2vP+mbWsKngI6Gr0hHRwiVAGXvcyoX048b
+ n8VrYTKuPZ5xy2otiPrw==
+X-Received: by 2002:a05:7300:3207:b0:30c:ab4d:382d with SMTP id
+ 5a478bee46e88-30cab4d3bf1mr2601077eec.36.1782539932543; 
+ Fri, 26 Jun 2026 22:58:52 -0700 (PDT)
+Received: from ubuntu.. ([111.196.134.99]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-30c7ca438ddsm23462629eec.23.2026.06.26.22.58.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Jun 2026 16:39:38 -0700 (PDT)
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+ Fri, 26 Jun 2026 22:58:52 -0700 (PDT)
+From: Bin Meng <bmeng.cn@gmail.com>
+X-Google-Original-From: Bin Meng <bin.meng@processmission.com>
 To: qemu-devel@nongnu.org
-Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Thomas Huth <thuth@redhat.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Alexandre Iooss <erdnaxe@crans.org>
-Subject: [PATCH v2 12/37] tests/tcg/meson.build: test gdb support and
- introduce gdb_arch
-Date: Fri, 26 Jun 2026 16:38:53 -0700
-Message-ID: <20260626233918.158740-13-pierrick.bouvier@oss.qualcomm.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260626233918.158740-1-pierrick.bouvier@oss.qualcomm.com>
-References: <20260626233918.158740-1-pierrick.bouvier@oss.qualcomm.com>
+Cc: Hao Wu <wuhaotsh@google.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org
+Subject: [PATCH] docs(arm): Update Nuvoton OpenBMC image guidance
+Date: Sat, 27 Jun 2026 13:58:47 +0800
+Message-Id: <20260627055848.28279-1-bin.meng@processmission.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjI2MDE5NyBTYWx0ZWRfX+fDHK1/lbQf+
- Q9WqdNmiBDqnbOVWMcFL7zonKr+ZyHHwOwMfC30UGR71Qo8yy/bvU+i9yKnJ8RLdGe4qC+k0KzY
- mpDi/ZxcCJhZCaHC8+eYpDVEZrXkA0HBtT6NXP2YdNNwch2dkrYHt6L9eraUhN0TjNxX8HsZ5bX
- 9WOfwbwBK/xo9W5jJoEogSAQZCPDUz+tJOS1MjFgK5mRrk3L97yibItbUC2HaJ1wIBfwObPCxAq
- 5vmBNUG4DWG0woUG/f9FM0SuLF+dVJKiYERePeLQNShuFDZKjYHdK0iDc5ZvhA6PUU91//wHs7C
- uXpvqYgaxll/l4PcggsiVEHXLO8O67WPHV+mEsccqpZ2pSKT+abV4UjuYZXPMO3/jG4NoUHE5qD
- fAG0I1zGrkgYGsXXmsZOzBrSYmAVEDCIfHxtOI0seXVeya5/St/TIDjHj00nL6fyXAfBo5v8NdQ
- iNrvYhgySsJceSlsEuA==
-X-Proofpoint-GUID: qJ9F-dOyAfj_R3LTKYKIdNRVvTUtG34U
-X-Proofpoint-ORIG-GUID: qJ9F-dOyAfj_R3LTKYKIdNRVvTUtG34U
-X-Authority-Analysis: v=2.4 cv=R6kz39RX c=1 sm=1 tr=0 ts=6a3f0dbc cx=c_pps
- a=PfFC4Oe2JQzmKTvty2cRDw==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
- a=FelO9ux0wxsA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22 a=KKAkSRfTAAAA:8
- a=EUspDBNiAAAA:8 a=EVhyENkjGFIjn4asmzEA:9 a=6Ab_bkdmUrQuMsNx7PHu:22
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNjI2MDE5NyBTYWx0ZWRfX2eroUlAlSqc/
- GwBtQROQbrkQTWlxHudU3rwG0/KMnY/lEragw0HR7D13MKuukfs2pQ2RtKQ+MeszzZ2auyApmJO
- Z0EvyZB73+bLa/OKUdKZ/lptzlvQatc=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-06-26_06,2026-06-26_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 clxscore=1015 priorityscore=1501 malwarescore=0
- lowpriorityscore=0 adultscore=0 spamscore=0 impostorscore=0 suspectscore=0
- bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2606260197
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132b;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-dy1-x132b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -163,77 +100,89 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-A given target can now declare which gdb architecture it requires.
-Also, we add the code to check gdb capabilities, and version.
-Tests can use gdb_version.version_compare('>=X.Y') to test this.
+Describe the current OpenBMC target naming and release status for
+Nuvoton machines. The latest 2.18.0 release no longer includes GSJ,
+so point users at older 2.14.0 sources and explain how to find
+Jenkins MTD artifacts.
 
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Signed-off-by: Bin Meng <bin.meng@processmission.com>
+
 ---
- tests/tcg/meson.build | 22 +++++++++++++++++++++-
- 1 file changed, 21 insertions(+), 1 deletion(-)
 
-diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
-index 8419520d9ff..2a2e619e363 100644
---- a/tests/tcg/meson.build
-+++ b/tests/tcg/meson.build
-@@ -1,5 +1,11 @@
- env = find_program('env')
+ docs/system/arm/nuvoton.rst | 54 +++++++++++++++++++++++++++++++++----
+ 1 file changed, 49 insertions(+), 5 deletions(-)
+
+diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
+index e4827fb43a..51d36b2bc0 100644
+--- a/docs/system/arm/nuvoton.rst
++++ b/docs/system/arm/nuvoton.rst
+@@ -94,16 +94,60 @@ Boot options
+ ------------
  
-+gdb_progs = ['gdb-multiarch', 'gdb']
-+if config_host.has_key('GDB')
-+  gdb_progs = [config_host['GDB'], gdb_progs]
-+endif
-+gdb = find_program(gdb_progs, required: false)
+ The Nuvoton machines can boot from an OpenBMC firmware image, or directly into
+-a kernel using the ``-kernel`` option. OpenBMC images for ``quanta-gsj`` and
+-possibly others can be downloaded from the OpenBMC jenkins :
++a kernel using the ``-kernel`` option. OpenBMC machine names do not always
++match QEMU machine names. Check the OpenBMC supported-machine list and Jenkins
++for currently available source and pre-built images.
 +
- tcg_tests = {}
- # tcg_tests is a dictionary with following structure:
- #
-@@ -7,6 +13,7 @@ tcg_tests = {}
- #   'name_of_target': {
- #     'cc': cross_compiler,
- #     'folder': 'folder_for_test_src_files',
-+#     'gdb_arch': 'gdb architecture requirement',
- #     'qemu': emulators['qemu-...'],
- #     'tests': [
- #       {
-@@ -34,6 +41,18 @@ tcg_tests = {}
- # declared using 'test_name'.
- # Default name is derived from src if 'exe_name' and 'test_name' are omitted.
- 
-+gdb_arch_supported = {}
-+gdb_version = '0'
-+if gdb.found()
-+  gdb_version = gdb.version()
-+  gdb_arch = run_command(python, files('../../scripts/probe-gdb-support.py'),
-+                           gdb,
-+                           check: true)
-+  foreach arch: gdb_arch.stdout().split()
-+    gdb_arch_supported += {arch: true}
-+  endforeach
-+endif
++Known OpenBMC (v2.18.0) target names for QEMU Nuvoton machines per:
 +
- # plugins come first, as we need to build the list
- test_plugins = {}
- subdir('plugins')
-@@ -47,7 +66,7 @@ foreach target, plan: tcg_tests
++   https://github.com/openbmc/openbmc/blob/2.18.0/meta-phosphor/docs/supported-machines.md
++
++.. list-table::
++   :header-rows: 1
++
++   * - QEMU machine
++     - OpenBMC machine
++   * - ``npcm750-evb``
++     - ``evb-npcm750``
++   * - ``npcm845-evb``
++     - ``evb-npcm845``
++   * - ``quanta-gbs-bmc``
++     - ``gbs``
++   * - ``kudo-bmc``
++     - ``kudo``
++   * - ``mori-bmc``
++     - ``mori``
++
++As of June 2026, the latest OpenBMC release, ``2.18.0``, no longer lists a
++``gsj`` machine. To build an image for QEMU's ``quanta-gsj`` machine, use an
++older OpenBMC release that still contains ``meta-quanta/meta-gsj``. The
++``2.14.0`` release contains the ``gsj`` machine:
++
++   https://github.com/openbmc/openbmc/tree/2.14.0/meta-quanta/meta-gsj
++
++Some pre-built OpenBMC images for QEMU Nuvoton machines may be available on
++Jenkins:
  
-   # return a clear error if user misspell a target entry
-   foreach key, _ : plan
--    allowed = ['cc', 'folder', 'qemu', 'tests']
-+    allowed = ['cc', 'folder', 'gdb_arch', 'qemu', 'tests']
-     if key not in allowed
-       error('unknown tcg test plan entry \'' + key + '\' for target ' + target +
-             ' (possible: [' + ', '.join(allowed) + '])')
-@@ -56,6 +75,7 @@ foreach target, plan: tcg_tests
+    https://jenkins.openbmc.org/
  
-   cc = plan['cc']
-   folder = plan['folder']
-+  gdb_arch = plan['gdb_arch']
-   qemu = plan['qemu']
-   tests = plan['tests']
+-The firmware image should be attached as an MTD drive. Example :
++To find a pre-built MTD image on Jenkins, start from the Jenkins home page and
++open the ``latest-master`` job. Select the matrix configuration whose
++``target`` matches the OpenBMC machine name, for example
++``label=docker-builder,target=gbs``, then open its latest successful build's
++artifacts. The MTD image is usually published under
++``openbmc/build/tmp/deploy/images/<machine>/`` as
++``obmc-phosphor-image-<machine>-<timestamp>.static.mtd``. If Jenkins does not
++list a matching target, or the build artifacts do not include an MTD image,
++there is no current pre-built MTD image for that machine.
++
++The firmware image should be attached as an MTD drive. Example:
  
+ .. code-block:: bash
+ 
+-  $ qemu-system-arm -machine quanta-gsj -nographic \
+-      -drive file=image-bmc,if=mtd,bus=0,unit=0,format=raw
++  $ qemu-system-arm -machine quanta-gbs-bmc -nographic \
++      -drive file=obmc-phosphor-image-gbs-xxxxxx.static.mtd,if=mtd,bus=0,unit=0,format=raw
+ 
+ The default root password for test images is usually ``0penBmc``.
++
++For other machines that don't have pre-built images on Jenkins, build an image
++from source by following the OpenBMC build documentation.
 -- 
-2.47.3
+2.34.1
 
 

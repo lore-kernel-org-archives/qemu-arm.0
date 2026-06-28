@@ -4,126 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA42C43458
-	for <qemu-arm@archiver.kernel.org>; Sat, 27 Jun 2026 15:48:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49C12C43458
+	for <qemu-arm@archiver.kernel.org>; Sun, 28 Jun 2026 01:53:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wdVGA-0007Bg-Mk; Sat, 27 Jun 2026 11:47:58 -0400
+	id 1wdei3-0001Yq-MA; Sat, 27 Jun 2026 21:53:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1wdVG5-0007Ax-5J; Sat, 27 Jun 2026 11:47:54 -0400
-Received: from mail-japaneastazon11023096.outbound.protection.outlook.com
- ([52.101.127.96] helo=TYDPR03CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1wdVG3-0006ta-ER; Sat, 27 Jun 2026 11:47:52 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vczRgXiqFfVdkFvRtjJwo4hAzx2tVtcldLYeGGyMSjxwOy2cQ7NsvQ2lXYNht0B8khhFT6PjOl5tjBkz24bmI50mfutL4yUuXH7Dew0G3evXneFQ0ZCB3+jXolQkSV4mB4slB0sS/NZp7d/KAtLhQNQSUN9ta0jklad40yC+VKv6I9+3c4uvZG5V38hB2TuswIs4CfbPe2/3errR+zPDFG57uBMbs0IpHdwBUBAINAoX2b3l9W0Qx8qk0y0ZnpOx5QfAwEPciroUd1Ft57+A97nPGPYvHsDH1ERw1jybRAf8LRfNShIBAkzqOg5Lb4VXXQY4Z1W3AqpXChS6QyfYDA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Y1A6ooFDxDsmDBVl7x4X1GLMztYUV7EixW2j1kKSpqM=;
- b=TelS9Hq+p/r7GLzjd0wM4iwaPt1+JzNS+F2fbVSiN4Y1cELByWfYYpHcNdEAo9pJvB+5RKn73edTix7rGoz3UgQMMrAvHM9oo9f5OWN28Mn5GTeBt1Yo9Z4UQWd/9+Lxi4Rz6noKZ0yDJEn8eGGGdqV8CsrrWZwxwgHVqLuZ6lEejUknmqRSx+ZjeB2rxi6ts40Q75XhD+NskZr1Gp9WRRMRbHvpN+BRqVpIfiuL+Iy03AiUD+1l7cPxf/Th5so2YsHahIop/0KNe5gJhbePCQ+M4jfFM7JU5+FsmWGE/Tss1IAAJ9VleQHnTlzxBc9tT79jNFkhMW+5A1l4U3xkLw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=processmission.com; dmarc=pass action=none
- header.from=processmission.com; dkim=pass header.d=processmission.com;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Y1A6ooFDxDsmDBVl7x4X1GLMztYUV7EixW2j1kKSpqM=;
- b=mXsiX+jp83rlbHhKqHwjxXvjhwukWFDnDbveotMCynwIPBbdc7+0jhMn1QMBaYCA0F6n7o+vY4XbpNxiv65rJInpsvhXqtehaNe9W1SqRSqZfoSm7759/Dd0p02IKV/ng4cuNHeZcmfs/Q+Vmv8dsChN8uC0wDdsFsGZD6FibhzDYtn0AsEsnxz5OL0FrsPQ/9faVrvqMacPaD2vOlrbnTCaRAuf/BybwPKI9EpUu23yhw6fb7x/Rg78TFLAuhanhb08Knd4C5tS2ufTiNJy99MtaUTBtjxwyPT3iGfaunaugArt41gFwtwnGWG8qz2woRuILWhdnsprU6dE0AuokQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=processmission.com;
-Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
- by OSQPR02MB8797.apcprd02.prod.outlook.com (2603:1096:604:429::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.159.18; Sat, 27 Jun
- 2026 15:42:43 +0000
-Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
- ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
- ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0159.018; Sat, 27 Jun 2026
- 15:42:42 +0000
-From: Bin Meng <bin.meng@processmission.com>
-To: QEMU <qemu-devel@nongnu.org>
-Cc: Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org
-Subject: [PATCH 0/1] hw/arm: Make xlnx-zcu102 direct Linux boot usable
-Date: Sat, 27 Jun 2026 23:42:24 +0800
-Message-Id: <20260627154225.863984-1-bin.meng@processmission.com>
-X-Mailer: git-send-email 2.34.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SI3PR03CA0014.apcprd03.prod.outlook.com
- (2603:1096:4:297::15) To KL1PR02MB4977.apcprd02.prod.outlook.com
- (2603:1096:820:71::8)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1wdei2-0001YI-0j
+ for qemu-arm@nongnu.org; Sat, 27 Jun 2026 21:53:22 -0400
+Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1wdei0-00048s-GT
+ for qemu-arm@nongnu.org; Sat, 27 Jun 2026 21:53:21 -0400
+Received: by mail-yx1-xb12b.google.com with SMTP id
+ 956f58d0204a3-664a2c7b579so1750499d50.3
+ for <qemu-arm@nongnu.org>; Sat, 27 Jun 2026 18:53:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782611599; cv=none;
+ d=google.com; s=arc-20260327;
+ b=OZLhSyIl7EB+Qf8MvMX7aCFY2hIsnWGvTzxXy/qOkDWsaagLcDp97/p0MvpbYWLK2s
+ G1N8nI2ub8hssUkQp1K/qd7Nr30unJI+RT03NtP3FIbpfkSZKiLpLFq/w4yJV98a3wsO
+ tu5L4qC1G3iuoKp+fhDm6wPOf0P0P1mk5+dvN8sXDmQYGfZkL/jstbyl9hYb3l4N4cYN
+ z6fo1ZLwX1oMDYzf4SBUGeRK/3TtVrexsRYzVuhjFZzdH3wvsbm5VNC4TULHrGqds1Qv
+ lJw7lXwkoH4TRlidW4ivuOeHorRFXEcI0GJB8bmmLYOfpfjizXzB1F/Y2mvv6AGcb5J9
+ 8lEw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=oa3EY445Xm3vq1WBLUQ1mJJXFbKUlHgKxrRyZUE2BaQ=;
+ fh=Evjs5buq6dBDWz1LVk04TEKq7LSymW0u9cdaV6oJyOk=;
+ b=LQ0A0CySK7WxtbCqyB/dkBpOV2pAm+Zl1cVuKcqqigiIGgLlcuOUuwgvv9rF1WV9md
+ 9PHGvBYNmOmfRBEWX/ESuZ0XDoitL/xAD7kAR0AnauXh25L+ouyp1pgk/GElJ5LknNY0
+ 66IfTVSkZq3Jocp66+pCarScAVWf+jP1nXqjJCr7uoyMqLiE1Rc4jfJYY7NtPyewTPMH
+ 8CAsHeOuXWf2CnSe+nSd5ysDYT8AEoIOXBjuvwl/jyDgGZEF6nvZ+slTxRYKU0PyG9t/
+ OwQjpCDbpB587jXv105k3MMq57WIS5rXDp8THMFTBE9qllxonIHB9kdFIh03/6gxc9/o
+ IwlQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1782611599; x=1783216399; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=oa3EY445Xm3vq1WBLUQ1mJJXFbKUlHgKxrRyZUE2BaQ=;
+ b=g9moiV1xIhVNJNF72zY+34kVvKI8i7YmI7lDDEI6X8uo2I17RhhrbBFV7tlyCOzpbK
+ 4BKT5p2QdEGNCtnDkgDQGrK6dv8XtUKcrjZz+oQLmDF/J4poT72JjyX61bE94h6MnNkJ
+ r8YkiNRNJPeo0LlpkE9J11F7g9HrNVCE7gZVYu7t0DmS6xYlYrad0ZlY1pLT5sZR4fqd
+ HUViIvc8yGBbPXKpxnzee2W1uSlEr+gtHfhTH18ghzBWrk7uel7LU/1boai4NjMbAMiL
+ LcE3Ysvl9N5GbC0LGZpTVqAKjWvVvjRpNZOUehBkTA0onbUq5P0HFLDtvmdtWVGNx/QT
+ DCTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782611599; x=1783216399;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=oa3EY445Xm3vq1WBLUQ1mJJXFbKUlHgKxrRyZUE2BaQ=;
+ b=ajvEUMDzit1LU/ypOAmA0bODZST76W6p4qOg5ipfYBuUvdnK7p9rb8EMJ2xNbSIiRr
+ femMLy8OgG1DdyTxbbdPLpMtbXU+JLpkF/vs+ShFpt+7GrsB6w5hlGrd0SvVd+fg4sjV
+ wRPIoQoolyzX73Ga25Q4XRijePcSkiawgEoKTp4k7jLRSkrc2n/owtL++f9hRqnS9aVq
+ 7M4TY7vnBybQzeC1m1xAdt3a2z8YOgjjuqgbzPLEkYhxfgeYNbLquZybg0L47oltuaAC
+ lDQsfvETtoD9UURvsDAkV08KH1Y8sl5TAaboZ1i3QGwJh21N0gBHSa4lLsj9OVjHse8H
+ cErg==
+X-Forwarded-Encrypted: i=1;
+ AHgh+Rou8S099mX4pJAPpfuN+94XkL9FnKQn7Y3HFm3iAqhp58yyqgZm8P1bigjdgUU+Ax4ziwGIsl5wnA==@nongnu.org
+X-Gm-Message-State: AOJu0YwuwB1EXtiG3fOq1lFiEK1HF/rzndpeLh3CuNsAX2ZZoizT/En/
+ wwxzmI1N9TVVk6YAY1JykKQqAZBtCsuENXHcpHiTNKQ+kK8DCUo0TYDoKNxmkC1kajufGzbQFxy
+ SdhiwxOcYlLXk4tffumvT7oK0FmqzLvM=
+X-Gm-Gg: AfdE7ckgZqnHUFu23cE2KzOPtHEG1bshkXk+IEPyNkUGYn7uiHbV5OVThAsss4XuWgX
+ iRE0VNq2NljkcAWiIJsCfleNTtneADx/FPjKeSqN9RriZuZTceEvgrYCesRHZQrorpffTgImlo1
+ 5bh8TCXvpL8YgoBZNaiVbg2/aqp8IFowWY1Yfv0nDdaqzvjydcdtvKC2oXFn8wOdpl2rwt1Q6Kn
+ xZILTQSHogEPFInLZK+b+iOZdev91ZwTpYTOWlRDeiGxPdAXGc0DHqBPKJ9nhLcaLo3pdtCn+rr
+ 7o/j95xbZg==
+X-Received: by 2002:a05:690e:419b:b0:660:eff5:e8e3 with SMTP id
+ 956f58d0204a3-66487f419camr10401712d50.2.1782611598076; Sat, 27 Jun 2026
+ 18:53:18 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|OSQPR02MB8797:EE_
-X-MS-Office365-Filtering-Correlation-Id: b6b6110c-8c48-4ee3-ad91-08ded462b98d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|34096008|1800799024|23010399003|366016|586017|376014|56012099006|18002099003;
-X-Microsoft-Antispam-Message-Info: PdD8XZBwJEyrnVV0fP5g6CyF4HypNi5oO2904ziDffaoi2Mehy8k5BRX/UZMIPlpwY50+8CPbGygJjEaQNcY+mbViZvlPiHipJI5eECTrrYjMf5Sg3r+ZUlUpkgWA0DHW3BxX3r7DmX6L3V98mOYzYfgZFvJfA+UpK3LGU8ggmURaZyfoenmfNfioZDPq7ciquMr1Ejl/AIN7uAScdNS4kyar4Fw0+imffRKGljHfd7odsvxqwNooCNC1Y7fQiIjL+2E8kGFoyJb5Tfx1yxpyL7lgomc7fkfibGGSBNIqJcF+Pu9q8OYpUJ7TB/zxiI/Ltq5urUpgBAJKPNxlCFbo18epOOc9z/Gl7yjnmjTWeIpZ5REg6XEsYQHX+/RqrlBBmtqACgaNWXAWIpBs2+W4pd2YsxQlsKLu6gOpjE8xz0eLXbeSFXF+wNgs1cNX7ArJ1G8KadDFohWMX8l8lHF2ua8ufEKMySHMVqwwr2BVelWwnWpr3pXWvlk9PMx91/4ANPkVWXAipvhdw7TjPJzN+bPUryMNp/jFOYreqIxK6J3BVxB9akCFGjgUy4X3Licn1lNRmjvDAWEH/F4UCiqaU1NTMGZfDwcAb4JZW54I+9A/zw/70Uj0peTVrNRmU5Nr1YlzVrXEVePGFAANyJopq7H2M3GLr/G9u/U7FeC5go=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(34096008)(1800799024)(23010399003)(366016)(586017)(376014)(56012099006)(18002099003);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Z67VScpOS/ogUXAqR7qxjp/Q5uK2TOhjyJq0JPbuJnYLrGKalWfSrRFGL5Ob?=
- =?us-ascii?Q?yHJDrtduJ1RtfzWYsW9Vgn0WCuBzX/UntPHxFYzxgRFpvVr9ECXCYGWxevbq?=
- =?us-ascii?Q?qav/hRN2niA0K9rlz/VGFjgwR8+xzH7QSdQyyINu5f1ckUlcMsdq79d3X5yB?=
- =?us-ascii?Q?13/UI3YvMziAOCRxqfyp3Lp6+ZRl6gjvAaWOHgk+16o8bHld9Qdf3lYqJ9tq?=
- =?us-ascii?Q?tGquXAiSc/QF53J1Qq6G96tJKjuJySKf6w+BMq17RRaUiH8osxuU0opcsjbj?=
- =?us-ascii?Q?BAkQJ/ymAlJB/mFpMx7IkIhO60R7J3wCuoho6ohHKxxOZI9O7P0gpY0uA40r?=
- =?us-ascii?Q?F1+tXDR/QKcKWFoUsSCMsk4NX66nNHdQQf4zhKxxCe4KtKnR1y9EkLJVFQeP?=
- =?us-ascii?Q?7S1V32EtnO07eH79WsEGdsSRYcU/7iARziCGNSk9FO3GXLkC9fRqYWhTHr3B?=
- =?us-ascii?Q?tdLqjA084nmIjgkAa60TqaA7kFz0mZkVSDCuIL2DbcU3eMCzXoZ6ysoVqUSC?=
- =?us-ascii?Q?zEmf0YvZ3rOCGFzWqXMp4tlGWS0CHituv79NX9I6AeGA72FgEAUeOatz2HaZ?=
- =?us-ascii?Q?TSq4FiNrSoDFk9lkxJLR4Mh5MazoSZKUWHqkfoGooeJcJTYJCyptTSdu3ZBl?=
- =?us-ascii?Q?TvmFWidkZ14vXe9pB4QB7VtBUtuYu6k/lA4raaK7uZYpiV07yVY0aUw2C3SQ?=
- =?us-ascii?Q?AVYIwxqwMPJNCERRKRbgYqq6h1/6XLCBt9WBT1S/9Fc7HeItUoauEySgtflr?=
- =?us-ascii?Q?3uq1po/lHST4c0DHSRNTONEfZA2E9AMR+fOLB5tv1WT4H2hKERiRZL3HceZf?=
- =?us-ascii?Q?viI3cH7rPNVyv4vNxu17NMrTLFa1vkqqf+mrnBjBxAw3hn2RpLlil9mEMpPe?=
- =?us-ascii?Q?/0xhHTzX+UGwr8R+WYtq5XXmXCBitAPO8T8ONZVR5qCzoMIEZn7DuoCMBjAz?=
- =?us-ascii?Q?n8oM8D1/d5tGM+jNRNO1y+BavuhEbsGtkHWoEFUTWtelaxplurWxurpX4IBa?=
- =?us-ascii?Q?uL2SAtRxNOjBHh7pbq9+LXbSPz23Jjdizmgy2Rg8pAY42cpK0M3L1S8roIxd?=
- =?us-ascii?Q?9hDiYLKeKx8juEm2UkWLzNwHbQoprhAzG0V7NleNJCPI2cE50xTZhnpziAoj?=
- =?us-ascii?Q?hT2AgwJNaQJwAf2oz3i9no3k1CCE6DEnHjVc9IFd+BZOv2NnLZ4m1oP3PxmT?=
- =?us-ascii?Q?cXknbC62DnytTm1aFCYDLfTAp/eL3RhQn2Gn0+PBVM0cR+AijOY5pyL07e0M?=
- =?us-ascii?Q?ZdedRTAVGrambrbPdHewpwogSi7pLVuJugGs4qtJbxcaD37wVVqZCi0S07I0?=
- =?us-ascii?Q?HE8jdIbIfiYANAkfvCPTW4W+Q5X/eURAjFXMCIW9ktdsL/a8d0R2SACSyxn3?=
- =?us-ascii?Q?30uG6QLgIDviaY2JqhS/rbI5qT+nECTlNNYZnDes5/0twCeZuU4UXSMvJxgY?=
- =?us-ascii?Q?po58fQ3bo+qNIBmU51w/nz33BLJ+IAHint8mg1V0j3n2jEqC8ys4Hp13pJCa?=
- =?us-ascii?Q?ZkhttjegfKu9WUu9x3GbZBVDdz3BHHIQ1313Qu0/Jl2pd9V5mR7DOPCPccGM?=
- =?us-ascii?Q?JNbIaMPMvfxkJHwZ43stmFXzbp3lUOkifo1sJFOLZCDQ4kpa5WeMLLonR+wu?=
- =?us-ascii?Q?VoqbqWxI1RBmSuB3yDgKCFZgazLPScp9Lw8KqrLR+9kFh27eH5bp6FRwh5Fh?=
- =?us-ascii?Q?+JLISj23cyamzOV1994IrFs3ytz7vZCB895nk+3MCkzBMTm5CAia0DjC9KAT?=
- =?us-ascii?Q?UAxhr6gWbzBfNQGGvclqvWxT6QAMT94=3D?=
-X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b6b6110c-8c48-4ee3-ad91-08ded462b98d
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jun 2026 15:42:42.0425 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: EL//lI56zX255o4F4GfE5FIWuVlrsBrMDRf9CiglV2a/GjSfhu8u9d0c32cuurWKLjPn/sHH3UmPlPjCV/OL77Dinxjfx1NOdQrZC1YmX3w=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSQPR02MB8797
-Received-SPF: pass client-ip=52.101.127.96;
- envelope-from=bin.meng@processmission.com;
- helo=TYDPR03CU002.outbound.protection.outlook.com
+References: <20260627055848.28279-1-bin.meng@processmission.com>
+In-Reply-To: <20260627055848.28279-1-bin.meng@processmission.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Sun, 28 Jun 2026 09:53:06 +0800
+X-Gm-Features: AVVi8Cd6KHeCx2COg5v5AYAlEBqCqyNTdt8HlRudpD7ymvk3KME45mdGtlgxK8g
+Message-ID: <CAEUhbmUPpS6VBiCncdKDgr2T+22L2u8Ldz8zVtzDRTBQODeeVw@mail.gmail.com>
+Subject: Re: [PATCH] docs(arm): Update Nuvoton OpenBMC image guidance
+To: qemu-devel@nongnu.org
+Cc: Hao Wu <wuhaotsh@google.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yx1-xb12b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -140,47 +119,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Sat, Jun 27, 2026 at 1:58=E2=80=AFPM Bin Meng <bmeng.cn@gmail.com> wrote=
+:
+>
+> Describe the current OpenBMC target naming and release status for
+> Nuvoton machines. The latest 2.18.0 release no longer includes GSJ,
+> so point users at older 2.14.0 sources and explain how to find
+> Jenkins MTD artifacts.
+>
+> Signed-off-by: Bin Meng <bin.meng@processmission.com>
+>
+> ---
+>
+>  docs/system/arm/nuvoton.rst | 54 +++++++++++++++++++++++++++++++++----
+>  1 file changed, 49 insertions(+), 5 deletions(-)
+>
 
-The current xlnx-zcu102 system documentation does not provide a practical
-way to boot a real Linux image on the machine. That makes the board hard
-to use as a regression target, especially for changes in devices that are
-already modelled by QEMU but normally depend on the ZynqMP firmware stack
-when described by a real-board DTB.
-
-This patch documents a direct Linux boot flow using Buildroot's ZCU102
-defconfig, the generated kernel Image, the generated real-board DTB, an
-SD root filesystem image, and an optional QSPI flash image. It also adds
-a small DTB fix-up for direct kernel boot so that the boot-critical UART,
-SDHCI, and GQSPI nodes do not require the runtime ZynqMP PM firmware
-providers for clocks, resets, power domains, or pin control.
-
-The main motivation is to have a reproducible way to validate future
-changes to the ZynqMP GQSPI model. With this flow, Linux can probe the
-GQSPI controller and discover the SPI NOR flash and its fixed partitions
-without requiring a full FSBL/PMUFW/TF-A/U-Boot boot chain. The same
-boot also verifies that the UART console and SD root filesystem path still
-work with the real-board DTB.
-
-This is intentionally not a complete emulation of the ZynqMP firmware
-environment. Non-boot devices in the ZCU102 DTB may still depend on
-board peripherals, external clock chips, firmware services, or power and
-pin-control providers that QEMU does not model. The fix-up is limited to
-the devices needed for the documented direct boot and GQSPI validation
-path.
-
-Tested with Buildroot 2026.05 release. The guest reaches the Buildroot
-login prompt, probes the SD root filesystem, and detects the GQSPI SPI
-NOR flash and its fixed partitions.
-
-
-Bin Meng (1):
-  hw/arm: xlnx-zcu102: Fix up DTB for direct Linux boot
-
- docs/system/arm/xlnx-zcu102.rst | 139 +++++++++++++++++++++++++++++++-
- hw/arm/xlnx-zcu102.c            | 109 +++++++++++++++++++++++++
- 2 files changed, 247 insertions(+), 1 deletion(-)
-
--- 
-2.34.1
-
+Superceded by https://lore.kernel.org/qemu-devel/20260627063208.33642-1-bin=
+.meng@processmission.com/T/#u
 

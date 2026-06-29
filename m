@@ -4,58 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1F5EC43458
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Jun 2026 09:36:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66B6EC43458
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Jun 2026 09:39:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1we8PD-0004v0-Ol; Mon, 29 Jun 2026 05:35:55 -0400
+	id 1we8Sg-0006II-16; Mon, 29 Jun 2026 05:39:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1we8PC-0004uT-GA
- for qemu-arm@nongnu.org; Mon, 29 Jun 2026 05:35:54 -0400
-Received: from smtpout10.mo536.mail-out.ovh.net ([51.210.91.19])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1we8Sa-0006G9-WF
+ for qemu-arm@nongnu.org; Mon, 29 Jun 2026 05:39:25 -0400
+Received: from smtpout4.mo537.mail-out.ovh.net ([51.210.91.23])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1we8PA-0005BC-DQ
- for qemu-arm@nongnu.org; Mon, 29 Jun 2026 05:35:54 -0400
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net [51.210.158.128])
- by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4gph3H0SMnz81CC;
- Mon, 29 Jun 2026 09:35:39 +0000 (UTC)
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net. [127.0.0.1])
- by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alexander.hansen@9elements.com>; Mon, 29 Jun 2026 09:35:38 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.113.54])
- by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gph3G4WYRz60Mk; Mon, 29 Jun 2026 09:35:38 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.7])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1we8SZ-0006pL-ED
+ for qemu-arm@nongnu.org; Mon, 29 Jun 2026 05:39:24 -0400
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net [152.228.215.222])
+ by mo537.mail-out.ovh.net (Postfix) with ESMTPS id 4gph7X5ltKz49Zs;
+ Mon, 29 Jun 2026 09:39:20 +0000 (UTC)
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net. [127.0.0.1])
+ by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <yujun@kylinos.cn>; Mon, 29 Jun 2026 09:39:20 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.118.85])
+ by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gph7X0mgjz5x96; Mon, 29 Jun 2026 09:39:20 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.2])
  (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id D6B3A1B43D06;
- Mon, 29 Jun 2026 09:35:35 +0000 (UTC)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 85F491B43D14;
+ Mon, 29 Jun 2026 09:39:19 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-114S0081e96d43e-79c2-43b2-8694-97fe3bd2a629,
+ (GARM-102R0043c2c4c38-78b6-4144-bafb-31ca0c51d823,
  1EEB315DF7D19D59129F6169D62007CD6D44ED18) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <6ba66ab5-d9ac-46de-9e3d-54de92dcd8d3@kaod.org>
-Date: Mon, 29 Jun 2026 11:35:35 +0200
+Message-ID: <8a638ded-8578-414b-8680-0dc9c61e5305@kaod.org>
+Date: Mon, 29 Jun 2026 11:39:18 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/5] hw/sensor: Add new device emulation for TI
- ADC128D818
-To: Emmanuel Blot <eblot@meta.com>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alexander Hansen <alexander.hansen@9elements.com>,
- William de Abreu Pinho <williampinho@meta.com>, qemu-arm@nongnu.org,
- Corey Minyard <cminyard@mvista.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>
-References: <20260627-i2c-adc128d818-anacapa-v3-0-cfb94270a980@meta.com>
+Subject: Re: [PATCH] hw/gpio/pca9552: fix off-by-one in QOM led index
+ validation
+To: yujun <yujun@kylinos.cn>, Glenn Miles <milesg@linux.ibm.com>
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20260629074133.187549-1-yujun@kylinos.cn>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -100,30 +90,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260627-i2c-adc128d818-anacapa-v3-0-cfb94270a980@meta.com>
+In-Reply-To: <20260629074133.187549-1-yujun@kylinos.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 4353291989961976877
+x-ovh-tracer-id: 4415779437036612705
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEKfvedjo5fWm2CInTjKBenPQLpFi019PMVbHnovKieikKo+QWqablbfYmh0ZXvrCm0SwZHdwJHGOaufDexF1iDEQqXREIcR4vUwVhOLLEPj/63kJO7a6FYJ8jp4Iqtyuiw89La/MpSFp136UIN8yWO2NYwQXOr4f1HxZ5X9oAhI5hAhrVDv8cFVm31p19Rok0jMEQuJoTMuE1N9w07zuixrDVANDbcjLuQ4PyH6XmFnhFtAb6aEKNy3Rn2aCSwHY/699Gey6OHh4ar+9wHdSoHsVGm3ZysXIY+nO6VjV4x8OrvF8BLOeThjYIquxzvNwZNiGy8k8kCjEtNgnrZ4IDYUtdAx1vTUxOdls7W15aN21MfQcLmLOPy4jll/xSNyrIvzvRnp03/0MKCBwCyWPCpAT7xc6WqVf/eTGEx+7Vnz1YNwzZ7VFK0u1oKJFmCwMEzOnsv8LZhzHeDlkK0IcGitTOleXchMBANB9wYWGctA3zM1Pxbj1XEGsPYA00kJW1SW55sLe/7+1T59Xr4YVHo3KB501fhQKpnjpdevrEq2eD2KfLZcBXmZ9uvNpdlWweEvFyU0WTskCWPcf6qXZ8nS+canmfyFpu+uiyHw7JI6fCMOmavdPIuCIuBg7SW/LPA29+w+gJfCzGd5vm4lhrOohCv5KdBV0NUIddZauWbzg
-DKIM-Signature: a=rsa-sha256; bh=gsLzg2rLqQFE8e9PYGjX56+Qlmzd4Z9SrTxem++TFrE=; 
+X-VR-SPAMCAUSE: dmFkZTGaaUsA2lKLNwv6V0WgsXAtC5sIf24AiEL1z76m1rqOxBUI9eOfX035HG+eDTO5dcAU4TJVFYKeqtzvOQI1A5BoLigOKcXEYpu0c/qSqZds7RiF8Hgu0yTofkiSiv58ORAIOHy76SqC5jyY19Bg45muioIKtEZCG3soPdulC2QLsD9bMourj56Cu300pASEvp4suAaowSofLS3rukTfUp5qvMRwxDFG3ftin+XUS8luz+ouq/b8l79ylFzH3jmJTXt3N9jWc2qb0tYPRCOP5WWlq1YHyP06o2Q5Za+1mOGudxonEWiGqPRneT4/HMFfzYvL18RSD86u+CULsn662gbJfPIlWTcA2In3GUHrtZdjZ3c61Oz17Fpwb5SRJpXn5BLLNBVDmAwye8q7q1FSp8tKiILob6rITBXUrMiG7e8ciYd3doi8MfSxLOTjhu8pTNKq6NIUZb8B0EZOxt/pfBtaqrBL7zlyr/SfH4Zvx5I+tQowLfYkdVrrm9ONTdBEjYPof+4id+xrRdqwJ8TeNzzVRDCKU7dyTB8lf4XDtGbmTm32exzGrbNT00EDzsR9vyfvG9u4+mBCraojAWLrZ1D1gkMHMcGrWYjO6I1RjeWdhlzouKAnf22HGufrusgDeshXzdhAiplDXoePS9eh7zWzsxA1O9jJz7Cv7ro6+UAG0Q
+DKIM-Signature: a=rsa-sha256; bh=TUQk/s7vB4j9PDWFD6J5Tw7RgBpvFqV9x69upVELpRM=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1782725741; v=1;
- b=S6vM81yq2QxmjH6jLMiTq7r627hTGpvra/zflBtvk5wpjX8dE2U8Bk1V9E2TIZxOmPtQrvcN
- qfXYz+PsAtQhf/YdgMK2KTY+CjRvXoSBZIYWF1KZWQg1tH7FagAYEtKtwnULNZVBjoZ5+xjzNk4
- E3sMhM3kTL03FlbIOTSUGhewRp7IoXsRFa+/ZhvTEl1Ls1YbAEorr6j0bIH+975enuu7QKhSITF
- PZEubyB6bUnQL2AMnDWfcL3u1dTcgNTwQ5suHqDAJVtL6vVEHp8qcM8Miq77uokA3EkFT4KyUrD
- XyhD75KOdpdWPvA8jryII4lYTZSYPFOPv+fYpDwDNRZ2A==
-Received-SPF: pass client-ip=51.210.91.19; envelope-from=clg@kaod.org;
- helo=smtpout10.mo536.mail-out.ovh.net
+ t=1782725961; v=1;
+ b=sHqRK4GBGpIOZEmdzZuRiB8nttSQN0JJLc/NEInchwJNOFLFNZbFlcwxiKfZ5vH7E78PWq+Y
+ 5L5KMT01uBea0hWEFecsHKgaqa3yzD8hsJi/HPHX3MZFNYnVVDtvmKlN3sbfvPC5wDKMvK9tBvv
+ nF2JdnfUK5QC2Cr+zAtaGYa0z3mfkcxdlHSAWUKAgw9H/sK6U1TYljdDMTjuHIG2mXJGH10Qn1E
+ gi+02tBvPB3jrC2E1OMMfE+odBLsO0MUW4g+XddgKQ9bCimkIV/fV3QNTUzIQ6XBwWrhhUKYsza
+ bxuAat7Qrypeov5LoDFWqlE7GemEE+2RSnQfb6wP4lgcw==
+Received-SPF: pass client-ip=51.210.91.23; envelope-from=clg@kaod.org;
+ helo=smtpout4.mo537.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,36 +129,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello,
+Glenn,
 
-On 6/28/26 02:45, Emmanuel Blot wrote:
-> This is a 12-bit, 8-channel ADC I2C device, which is used on several
-> OpenBMC platforms.
-> 
-> QOM properties can be used to change input ADC values and external VREF at
-> run time.
-> 
-> Add it to AST2600-based Anacapa machine, along with some functional tests
-> that use QOM properties to inject voltage values into analog inputs.
-> 
-> Datasheet: https://www.ti.com/lit/gpn/ADC128D818
-> 
-> Signed-off-by: Emmanuel Blot <eblot@meta.com>
-> ---
-> Changes in v3:
-> - Update anacapa test image with proper DTB
-> - Make I2C device in i2c_slave_create_simple a child of the I2C bus
-> - Simplify tests/functional/arm/test_aspeed_anacapa.py
-> - Use g_test_message rather than fprintf
-> - Keep review trailers
-> - Link to v2: https://lore.kernel.org/qemu-devel/20260617-i2c-adc128d818-anacapa-v2-0-fd38764f0465@meta.com
-
-
-v3 hasn't reached https://lore.kernel.org/qemu-devel/ yet.
-
-Any visible errors on your side ?
+Cc: me if you ack this change. I can take it through the aspeed queue.
 
 Thanks,
 
 C.
+
+
+On 6/29/26 09:41, yujun wrote:
+> pca955x_get_led() and pca955x_set_led() accept led indices equal to
+> pin_count, but valid indices are 0..pin_count-1.  For a 16-pin device,
+> led16 passes the current check and then accesses an LS register past
+> max_reg.
+> 
+> Use the same >= pin_count bounds check as pca9554_set_pin() and the
+> gpio input handler assert in this file.
+> 
+> Fixes: a90d8f84674 ("misc/pca9552: Add qom set and get")
+> Signed-off-by: yujun <yujun@kylinos.cn>
+> ---
+>   hw/gpio/pca9552.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
+> index 472d8ad957..b13ac9fd9c 100644
+> --- a/hw/gpio/pca9552.c
+> +++ b/hw/gpio/pca9552.c
+> @@ -311,8 +311,8 @@ static void pca955x_get_led(Object *obj, Visitor *v, const char *name,
+>           error_setg(errp, "%s: error reading %s", __func__, name);
+>           return;
+>       }
+> -    if (led < 0 || led > k->pin_count) {
+> -        error_setg(errp, "%s invalid led %s", __func__, name);
+> +    if (led < 0 || led >= k->pin_count) {
+> +        error_setg(errp, "%s: invalid led %s", __func__, name);
+>           return;
+>       }
+>       /*
+> @@ -352,8 +352,8 @@ static void pca955x_set_led(Object *obj, Visitor *v, const char *name,
+>           error_setg(errp, "%s: error reading %s", __func__, name);
+>           return;
+>       }
+> -    if (led < 0 || led > k->pin_count) {
+> -        error_setg(errp, "%s invalid led %s", __func__, name);
+> +    if (led < 0 || led >= k->pin_count) {
+> +        error_setg(errp, "%s: invalid led %s", __func__, name);
+>           return;
+>       }
+>   
+
 

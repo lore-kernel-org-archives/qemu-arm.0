@@ -4,102 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28C61C43458
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Jun 2026 14:09:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7219EC43458
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Jun 2026 14:11:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1weCfD-0007Yb-7E; Mon, 29 Jun 2026 10:08:44 -0400
+	id 1weCh4-0008KG-5Q; Mon, 29 Jun 2026 10:10:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1weCfA-0007Y8-B3
- for qemu-arm@nongnu.org; Mon, 29 Jun 2026 10:08:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1weCh2-0008Jw-Ix
+ for qemu-arm@nongnu.org; Mon, 29 Jun 2026 10:10:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1weCf8-0003a3-0k
- for qemu-arm@nongnu.org; Mon, 29 Jun 2026 10:08:40 -0400
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1weCgu-0004Zt-EZ
+ for qemu-arm@nongnu.org; Mon, 29 Jun 2026 10:10:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1782742115;
+ s=mimecast20190719; t=1782742226;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YWU3w74Uw6TNjG9FtCdjy2t1znpl7sxW4LG0tlPOhw0=;
- b=ePm/hSGktb2Dp8E/c1hXGciToMdbWCO/nttFtURN7SPFLI8NRPP+De2GvCvkcQX1SphZV1
- V7EmOIyRHHukw2v4UKjhT3sEVh+wW1BFUnAXH77kEe3+K560ZHyBaSrF44nTmeyjHWhnPA
- P0+2Og564f1HT8U3jVKfyQpygWWavTo=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Hxr0qwFhyr0guedTxOpnX9RnfhjYWP5gUpLhCe45JHk=;
+ b=ApLaOEMLKqRnZD7PC2+teVFLB6qbZhh0p3Sy9zVpTnz48z0rKdYwvzejlrPpig7ytc93Ml
+ 3vg/ybqR/5GjJ2RvZ6kh92nbtUCS/2BOZgHeMXiQurCSPeRWVjh4lpEgYVTCKoSMSfUcVA
+ VPN0MvbopJ5SEoxv8pOa9dqJkimPmGU=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-144-xo-ZFeg1NDCqx_wnjo9wcA-1; Mon, 29 Jun 2026 10:08:31 -0400
-X-MC-Unique: xo-ZFeg1NDCqx_wnjo9wcA-1
-X-Mimecast-MFC-AGG-ID: xo-ZFeg1NDCqx_wnjo9wcA_1782742110
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-474170b59dfso407786f8f.3
- for <qemu-arm@nongnu.org>; Mon, 29 Jun 2026 07:08:31 -0700 (PDT)
+ us-mta-483-qaxaq8bwO-unKw6dsOZgrw-1; Mon, 29 Jun 2026 10:10:25 -0400
+X-MC-Unique: qaxaq8bwO-unKw6dsOZgrw-1
+X-Mimecast-MFC-AGG-ID: qaxaq8bwO-unKw6dsOZgrw_1782742224
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-493a6135742so17393965e9.1
+ for <qemu-arm@nongnu.org>; Mon, 29 Jun 2026 07:10:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782742110; x=1783346910;
+ d=1e100.net; s=20251104; t=1782742224; x=1783347024;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=YWU3w74Uw6TNjG9FtCdjy2t1znpl7sxW4LG0tlPOhw0=;
- b=i5Vz58Xcb24wWYOsGI3GCca9AEkXLY5nJs1gLQmA56lGQ2dnM0YJnmjOy4Kn8dfMOj
- 6CdJnALjkvyT4jOJuuOZBSWG/CxynpH79pDxNLT23erF02YBBtQ4ivz9wHaesRYXOn7d
- 9tkj/0W3S/mbg9XDTSpQR52eXy1T7+MYegbQjxRycxP3QIjNS72qTASIDyNtQh5Y8k5E
- zCoyCXdBd01H9zCGzSAC3auAlzC+Z4zSozrwkRBYJplN1LvCRbBbcXWjS9ijIXtnWEYF
- Fbq2nRLXC6gRjPo1M9kSrGuOlLDX6ASsdj8iya+rgZGG5l64jXGcEiHdkXEOrsK7fXsz
- M+7w==
+ bh=Hxr0qwFhyr0guedTxOpnX9RnfhjYWP5gUpLhCe45JHk=;
+ b=GTtn5GoS+lbRdkhgSBtCRtD0vSkaMuPuu1s9Aw6R5oLBDeL1xII3C/TtxbUYAczKcX
+ vBZTV2GqYR+hVcHvCXkrhm43obCRAM1DXhhXakAG1aaKPdijxUJL+1KqEuhAf/9nS6m9
+ 4hZbiJD8m7GfPuDLzBRmNnMtzHWTox/D9lC3Yrlf3NywbjGM9JLEVdiN9B+ny6Ypoxmx
+ X1I9WXKTaDudAKfuZNYEKEqgXDksQc1RFw3RsUsIjHtf1QqG66xCx2NmiYo/p87Ny8Gg
+ F0ZfDv4LN3AY+wcgIb2BX61vjbekIXNLnCKaMP77apo/MuKkiiEN1DWlYbMGMT9ZcNFY
+ 2ivQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rqx4e/w93M5e3su1nBkXIIGtTk7+9uD46fSzFCoZjFkyTBrD9P9zv0jn0rES0ZkPEUIAFjRw+oBVQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yyoj7Ps5mrl66me3n5UElR1e0CrDUXewK7gU65xdnxdw6QoF+87
- ZXUQ109Ex92yDUfEiuNGTVOEMyo95N+BO2dxng7Niwqqvq2B5tfRAY2ULUIEzsDLDdFsir9A7tK
- qk0HUfW4w+WhbURlPG5LEpqh0LY8949dMLy1P/dRBOKRyK5qpgRMZDg==
-X-Gm-Gg: AfdE7clBJqws7beGEEv3CkGBTq+2wPDBt09/8AcmB9hz9OUpD1XkUbKlCtfs1lSkDjF
- 5t1fLnSn7IstnU74NB0YaW9tvSGkSOX5yv3Waln+tQH/CVn0am2/hclyXu9ehEqfypy7+BiDBbB
- 51FzaBPj0qnsNROTiwadDZdEspbew1GspnJqZGtD6nmfCRp3mZa9Nkmd9qm43x4W9RZXrQK6Fky
- LyG24QaoFGZrKLAJjGkEreGFcjmFCyD+RgJsPMq/pOmkEHA2MqmsjpsNaVDt+1ncY7GQ8nClDCN
- DhSttk0ddOBtYi2Exc0BNe1u90fcN+ye50HUCpzgYTMAVGSXgNx1AVoa0fOMQ7fALRLx42dFhsb
- 0hE2pgOS7nhf/TLfnVbUusAZBXk/t1je5sfGmSjbhRRRZJSyUK2mu4A==
-X-Received: by 2002:a05:6000:2307:b0:471:f180:86d7 with SMTP id
- ffacd0b85a97d-471f1808813mr11795295f8f.41.1782742110433; 
- Mon, 29 Jun 2026 07:08:30 -0700 (PDT)
-X-Received: by 2002:a05:6000:2307:b0:471:f180:86d7 with SMTP id
- ffacd0b85a97d-471f1808813mr11795242f8f.41.1782742109959; 
- Mon, 29 Jun 2026 07:08:29 -0700 (PDT)
+ AFNElJ/HgKBTlSm/8VmC7svFE5CflLxsR8U1iK29UdEoSfdSFNs/79ygH6RmOrn8isQP7eaqnUSde33wyw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy+MnV+FCouCnXZ4XfIFiI6G0sfFejpFqsho13McIzppsP97xd0
+ 8+7CpyN4i7W1fpgsgf44x808uO9gucK6JlIJyMDcAGNL3XLlZd4ySTWr7gxwjeMcFVvAgmlVNAW
+ wZQ4czZBPV+qQOioSbvDKetLLMu3l0afk8kvY2pyAwKehjfYE5FYXuw==
+X-Gm-Gg: AfdE7cm/PCQRBkcF07leYjyDQVUqPpsK0SpqvPp++4BzoRBzreqGzK8PdnIu/RnRGxt
+ TE9tBSNKJxlIDtrgE3fK8c9K7UQ2aCODxU2hfceDUVUvTLH0HK+zh56IsyYxcNmQMzZX3ON837d
+ oV1IVoX7tXtrDvJIe+pjqaAFS0FqLgg3yW2CKCQXtS0bZjFiLZKY4jYpcrVQj0xMqH0sQuDwmWu
+ YFuEFBlddlHyILtCEO8relzEl0Ry5p8mB2z//ieApkZ74zRsIWMjag7+ROrMjHcdkBkh6jAlDMd
+ hr+LADQQGRrjm/96dUNYz3N+onmH99pzr32b98GULqUl8a8TxaVrkF+fG4pPCxyn+qJ6+AhTNgi
+ PP08VSjCcbFXLkqUVxTsVtCO37WIMNciNiTugMPp2R14BlORoykuNRw==
+X-Received: by 2002:a05:600c:8b83:b0:493:b499:3ef2 with SMTP id
+ 5b1f17b1804b1-493b499407emr39319825e9.37.1782742224164; 
+ Mon, 29 Jun 2026 07:10:24 -0700 (PDT)
+X-Received: by 2002:a05:600c:8b83:b0:493:b499:3ef2 with SMTP id
+ 5b1f17b1804b1-493b499407emr39319225e9.37.1782742223726; 
+ Mon, 29 Jun 2026 07:10:23 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4721c88bfcasm21180785f8f.10.2026.06.29.07.08.28
+ ffacd0b85a97d-46fc2ff9aaesm27764057f8f.26.2026.06.29.07.10.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Jun 2026 07:08:29 -0700 (PDT)
-Message-ID: <dc356f8a-0ec3-40c2-90ce-a411210b73d3@redhat.com>
-Date: Mon, 29 Jun 2026 16:08:28 +0200
+ Mon, 29 Jun 2026 07:10:23 -0700 (PDT)
+Message-ID: <31c9c54c-0e27-4a68-91a6-d94ff4d8586a@redhat.com>
+Date: Mon, 29 Jun 2026 16:10:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 16/17] sbsa-gwdt: reschedule timer on direct WCV load
+Subject: Re: [PATCH v3 17/17] sbsa-gwdt: limit compare_value to INT64_MAX
 To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
 Cc: mst@redhat.com, peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
  rad@semihalf.com, leif.lindholm@oss.qualcomm.com, qemu-arm@nongnu.org
 References: <20260624102830.1355552-1-imammedo@redhat.com>
- <20260624102830.1355552-17-imammedo@redhat.com>
+ <20260624102830.1355552-18-imammedo@redhat.com>
 From: Eric Auger <eauger@redhat.com>
-In-Reply-To: <20260624102830.1355552-17-imammedo@redhat.com>
+In-Reply-To: <20260624102830.1355552-18-imammedo@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: oOR32j24gr1On8vi_FkRiKB-j11mgvyR7toaHwhmFVE_1782742110
+X-Mimecast-MFC-PROC-ID: MM9xjXXmqPzPQsKtqHGlAna5w7VVmqNs7LmYsuROFbU_1782742224
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=eauger@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=eauger@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,69 +118,75 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 On 6/24/26 12:28 PM, Igor Mammedov wrote:
-> According to spec[1]:
+> QEMU timer subsystem uses int64_t, so WCV values with bit 63 set
+> overflow and cause the timer to fire immediately. The SBSA spec
+> defines WCV as an unsigned 64-bit compare value, so such values
+> are valid per spec and represent far-future deadlines (however
+> unpractical).
 > 
->  "The compare value can either be loaded directly or indirectly on an
->   explicit refresh or timeout refresh"
+> Windows in GTDT mode writes WCV in two 32-bit halves while the
+> watchdog is running:
 > 
-> QEMU accepts writes to WCV but doesn't reschedule the timer,
-> which it should per the spec pseudo code:
+>  sbsa-gwdt_control_write [0x8]  <- 0xffffffff    # WOR (~4 sec)
+>  sbsa-gwdt_control_write [0x0]  <- 0x1           # WCS enable
+>  sbsa-gwdt_control_write [0x14] <- 0xffffffff    # WCVU (intermediate)
+>  sbsa-gwdt_control_write [0x10] <- 0xa906ca28    # WCVL
+>  sbsa-gwdt_control_write [0x14] <- 0xecb1        # WCVU (final)
 > 
->  "TimeoutRefresh = ( SystemCounter [63:0] > CompareValue [63:0])"
+> The intermediate WCVU write (0xffffffff) creates a WCV above
+> INT64_MAX, which overflows QEMU's signed timer and fires
+> immediately — triggering WS0 => WS1 => reboot before the final
+> WCVU write lands.
 > 
-> Fix it by updating the timer on WCV write.
+> Clamp WCV to INT64_MAX to avoid timer API overflow.
 > 
-> Fixes Windows in GTDT mode, which never issues a WRR refresh.
-> Instead, it programs WOR to ~4 sec, enables WCS, and immediately
-> writes a large absolute value into WCV to push the timeout far
-> into the future. Without this fix, QEMU ignores the WCV write,
-> the short WOR expires, and the guest reboots unexpectedly.
-> 
-> 1) Arm® Server Base System Architecture 6.0
->    Platform Design Document
->    DEN0029D 6.0
->    "A.2 Watchdog Operation"
+> Note: Windows' GTDT watchdog usage is also fragile under
+> virtualization. It programs a short WOR (~4 sec), enables WCS,
+> and relies on a subsequent WCV write to push the deadline far
+> into the future — never using WRR for explicit refresh. On bare
+> metal the WCS=>WCV gap is negligible, but in a VM the vCPU can
+> be preempted between MMIO accesses while the clock keeps
+> ticking, potentially expiring the short WOR timeout before the
+> WCV override lands.
 > 
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->  hw/watchdog/sbsa_gwdt.c | 7 +++++++
->  1 file changed, 7 insertions(+)
+>  hw/watchdog/sbsa_gwdt.c        | 2 ++
+>  tests/qtest/bios-tables-test.c | 2 +-
+>  2 files changed, 3 insertions(+), 1 deletion(-)
 > 
 > diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
-> index 5ee0e06af5..fb67db9672 100644
+> index fb67db9672..ff7adbcb0f 100644
 > --- a/hw/watchdog/sbsa_gwdt.c
 > +++ b/hw/watchdog/sbsa_gwdt.c
-> @@ -44,6 +44,7 @@ static const VMStateDescription vmstate_sbsa_gwdt = {
->  typedef enum WdtRefreshType {
->      EXPLICIT_REFRESH = 0,
->      TIMEOUT_REFRESH = 1,
-> +    WCV_LOAD = 2,
->  } WdtRefreshType;
+> @@ -122,6 +122,8 @@ static void sbsa_gwdt_update_timer(SBSA_GWDTState *s, WdtRefreshType rtype)
+>      }
 >  
->  static uint64_t sbsa_gwdt_rread(void *opaque, hwaddr addr, unsigned int size)
-> @@ -167,10 +168,16 @@ static void sbsa_gwdt_write(void *opaque, hwaddr offset, uint64_t data,
+>      timeout = (uint64_t)s->wcvu << 32 | s->wcvl;
+> +    /* clamp timeout to INT64_MAX to avoid timer overflow */
+> +    timeout &= INT64_MAX;
+>      timer_mod(s->timer, timeout);
+>  }
 >  
->      case SBSA_GWDT_WCV:
->          s->wcvl = data;
-> +        if (s->wcs & SBSA_GWDT_WCS_EN) {
-> +            sbsa_gwdt_update_timer(s, WCV_LOAD);
-regarding my comment on previous patch, you could add a WCV_LOAD check
-in sbsa_gwdt_update_timer now.
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> index 94fc95c8e1..370b0fd2e6 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -2308,7 +2308,7 @@ static void test_acpi_aarch64_virt_tcg_gtdt_wd(void)
+>          .scan_len = 128ULL * MiB,
+>      };
+>  
+> -    test_acpi_one("-cpu cortex-a57 " "-device sbsa-gwdt", &data);
+> +    test_acpi_one("-cpu cortex-a57 -device sbsa-gwdt", &data);
+looks unrelated to this patch.
 
-In the previous patch it is not obvious that the code is identical to
-the original code in default path (hence my previous comment)
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-Eric
-> +        }
->          break;
+Besides
+
+
+>      free_test_data(&data);
+>  }
 >  
->      case SBSA_GWDT_WCVU:
->          s->wcvu = data;
-> +        if (s->wcs & SBSA_GWDT_WCS_EN) {
-> +            sbsa_gwdt_update_timer(s, WCV_LOAD);
-> +        }
->          break;
->  
->      default:
 
 

@@ -4,66 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A76C1C43458
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Jun 2026 17:48:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CAD7C43458
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Jun 2026 20:52:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1weG5y-0001eo-29; Mon, 29 Jun 2026 13:48:34 -0400
+	id 1weIy9-0007cu-5W; Mon, 29 Jun 2026 16:52:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wrigjl@proton.me>)
- id 1weG5v-0001eN-Bp; Mon, 29 Jun 2026 13:48:31 -0400
-Received: from mail-24416.protonmail.ch ([109.224.244.16])
+ (Exim 4.90_1) (envelope-from <wrigjl@proton.me>) id 1weIy6-0007cL-CD
+ for qemu-arm@nongnu.org; Mon, 29 Jun 2026 16:52:38 -0400
+Received: from mail-06.mail-europe.com ([85.9.210.45])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wrigjl@proton.me>)
- id 1weG5q-0001lJ-QN; Mon, 29 Jun 2026 13:48:31 -0400
+ (Exim 4.90_1) (envelope-from <wrigjl@proton.me>) id 1weIy3-0003mE-8y
+ for qemu-arm@nongnu.org; Mon, 29 Jun 2026 16:52:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
- s=protonmail; t=1782755296; x=1783014496;
- bh=4bMsr+d6qKHi9UY58BKRSqlmhDSxaAAyPCYk+jzAkyU=;
+ s=protonmail; t=1782766348; x=1783025548;
+ bh=cYZuK3L4fb+u9YkmTSUeayMNWrYv9vEAXHix1FDvTJE=;
  h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
  Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
  Message-ID:BIMI-Selector;
- b=KsckYbRnAkdpH9QuP96AjyIcJGKz8TVPIIlqO5u6R7Y8o0e/fd/twZEAE/wyM2njS
- R6b6ERlrmVyIwhizj9Nilq1lOYj2bqjslc8cj+43olZzVHorN7aGZVno3qZFNgPZ6e
- pnLNeEFJN826CvRmNWH0B/UByOR7NnhaTBh9u1FQ7GRAh3V+uuuM6eba0BxdgzD8ro
- 0gwBJIK9hbeEolAX1ntUk96n/bxzxyavl3L8ZjgJgfC5t1URc4XfW+f3T1vn1SlIU/
- yfM0Su2XtC660ZUfGShFhJ7Lc0Bft1eoCTbGeZz+XCvsUx3HpIYWJYegc1CtpuMs5c
- J46V+LabQ4SuA==
-Date: Mon, 29 Jun 2026 17:48:11 +0000
-To: Peter Maydell <peter.maydell@linaro.org>
-From: "Jason L. Wright'" <wrigjl@proton.me>
-Cc: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- agraf@csgraf.de, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- zenghui.yu@linux.dev, richard.henderson@linaro.org,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: Re: [PATCH] target/arm/hvf: manually sync ID_AA64ISAR0_EL1 on vCPU
- init
-Message-ID: <akKv1Ntig5cpwl9y@Jasons-MacBook-Pro.local>
-In-Reply-To: <CAFEAcA_XPGPLeH6DtcKDv-o7AkrX4dEFwLX4L+tSQ4wJA=Xnhw@mail.gmail.com>
+ b=AQ3BnLTDxemHjjuM01I3Bc2bndVazBb+y0XiKyUCy9n9sHJ/anoQWbX4skiB8SA4i
+ 58I504xY7vgR5lsX2sKExFe9uGR2wDNzDTB1APwjhIURyd34yruj79mQfltYjp2gEd
+ KopI/eVrghn8VaS+a0JIZgVcdOApre5cTEjot/DVbAqzcF2mth7Y8QeyY0ybAiPZ1F
+ fmGhRg/wdRSVAdgJYyskXmpxpVPlIDs8goJjZqLYaf+YH9Pk3jZh2M64eXRSaQSKQe
+ oALqPkhWBdA1lyc0FjydnKOsBHdGp6lXhn1weeKCIxSIMns7Kyp+HwQ5l1rRv4AEFJ
+ EJybXLJGUkm2w==
+Date: Mon, 29 Jun 2026 20:52:20 +0000
+To: agraf@csgraf.de, peter.maydell@linaro.org
+From: Jason Wright <wrigjl@proton.me>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, zenghui.yu@linux.dev,
+ richard.henderson@linaro.org, philmd@oss.qualcomm.com
+Subject: [PATCH v2] target/arm/hvf: seed NO_RAW ID registers from
+ isar.idregs[] on vCPU init
+Message-ID: <20260629205213.82391-1-wrigjl@proton.me>
+In-Reply-To: <20260607182221.4357-1-wrigjl@proton.me>
 References: <20260529114723.42040-1-peter.maydell@linaro.org>
  <20260529114723.42040-18-peter.maydell@linaro.org>
  <745e66c7-2a9b-4185-bae7-77e10623332b@linux.dev>
  <20260607182221.4357-1-wrigjl@proton.me>
- <CAFEAcA-xEaA2LM=17Q1pKOF6L=rHhaDimXeSmLe=BtDqeaBeFA@mail.gmail.com>
- <aibmIdorcTobj2yo@Jasons-MacBook-Pro.local>
- <CAFEAcA85HahxFXoDVW_xBZEtG2SUd_3PseYLrpUXE6P_Hb_5mA@mail.gmail.com>
- <4e00be29-25b4-479b-ad6f-b79beed78dd1@oss.qualcomm.com>
- <CAFEAcA_XPGPLeH6DtcKDv-o7AkrX4dEFwLX4L+tSQ4wJA=Xnhw@mail.gmail.com>
 Feedback-ID: 198029889:user:proton
-X-Pm-Message-ID: 8814fd8cb8fa00f06fcf32fb22c89a27be47cff4
+X-Pm-Message-ID: ee5992eac7c9bbebde04f132a034bf80ddc9c0e4
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=109.224.244.16; envelope-from=wrigjl@proton.me;
- helo=mail-24416.protonmail.ch
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=85.9.210.45; envelope-from=wrigjl@proton.me;
+ helo=mail-06.mail-europe.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,35 +71,158 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jun 23, 2026 at 09:42:47AM +0100, Peter Maydell wrote:
-> On Tue, 23 Jun 2026 at 09:27, Philippe Mathieu-Daud=C3=A9
-> <philmd@oss.qualcomm.com> wrote:
-> >
-> > Hi,
-> >
-> > On 8/6/26 18:05, Peter Maydell wrote:
-> > > On Mon, 8 Jun 2026 at 16:56, Jason L. Wright' <wrigjl@proton.me> wrot=
-e:
-> > >> The three methods track different requirements, so I matched
-> > >> the closest existing pattern for ID_AA64ISAR0_EL1 and left
-> > >> the others alone.
-> > >
-> > > It seems to me that you've added a third thing that's different
-> > > from either of the ways that we handle existing ID registers
-> > > with an isar.idregs[] field.
-> > >
-> > > I think we need to figure out:
-> >
-> > Should we revert the commit until this is figured out
->=20
-> I don't think it's difficult. Somebody who cares about hvf
-> should just do it, and submit this patch with whatever the right
-> approach is.
->=20
-I'll have another look at it this week. I think we can unify the
-approaches, but I need to make sure I understand the other registers
-better (PFR0 and MMFR0).
+Commit 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
+gave ID_AA64ISAR0_EL1 a readfn so the RNDR field can reflect SCR_EL3.TRNDR
+at read time, and marked the cpreg ARM_CP_NO_RAW in the system-emulation
+path.  HVF then trips its hvf_arch_init_vcpu() assertion that no ID
+register in hvf_sreg_list[] is NO_RAW, aborting on boot on Apple Silicon:
 
---Jason Wright
+  Assertion failed: (!(ri->type & ARM_CP_NO_RAW)),
+  function hvf_arch_init_vcpu, file hvf.c, line 1441.
+
+Reproduce with:
+
+  qemu-system-aarch64 -M virt,accel=3Dhvf -cpu host \
+                      -nographic -display none -bios /dev/null
+
+Fix it the same way ID_AA64PFR0_EL1 already is: list
+HV_SYS_REG_ID_AA64ISAR0_EL1 in the SYNC_NO_RAW_REGS block in sysreg.c.inc
+so the assert loop skips it, and seed the vCPU's copy at init time.
+
+While here, unify how the three isar.idregs[]-backed ID registers are
+seeded.  isar.idregs[] already holds QEMU's intended value for each (the
+host caps, probed once at realize via hv_vcpu_config_get_feature_reg(),
+plus any QEMU adjustment), so there is no need to read each register back
+from the vCPU first.  Seed PFR0, ISAR0 and MMFR0 directly from
+isar.idregs[], dropping the two per-vCPU hv_vcpu_get_sys_reg() reads:
+
+  - PFR0: take the GIC sysreg-interface bit from env->gicv3state, as the
+    id_aa64pfr0_read() readfn does.  Identical to the previous code
+    whenever a GICv3 sysreg interface is present (the configuration HVF
+    runs in practice); it differs only in that a vCPU with no GICv3 now
+    reports ID_AA64PFR0_EL1.GIC =3D=3D 0 instead of inheriting the host's
+    value, which matches the field's meaning.
+  - ISAR0: no overlay is needed; HVF does not expose EL3, so
+    SCR_EL3.TRNDR is never set and the readfn is constant.
+  - MMFR0: still clamp PARANGE to the chosen IPA size, updating
+    isar.idregs[] in place because the page-table walker and the
+    ID_AA64MMFR0_EL1 cpreg resetvalue read PARANGE back from there.
+
+Reported-by: Zenghui Yu <zenghui.yu@linux.dev>
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Fixes: 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
+Signed-off-by: Jason Wright <wrigjl@proton.me>
+---
+v1 of this fix-up added a third way of seeding an ID register into the
+vCPU at init, and Peter asked why hvf_arch_init_vcpu() should now have
+three different shapes for the isar.idregs[]-backed registers, and whether
+the existing per-register hv_vcpu_get_sys_reg() re-reads are needed at all.
+
+v2 unifies the three.  isar.idregs[] is seeded once at realize from
+hv_vcpu_config_get_feature_reg() (plus QEMU's own adjustments), so it
+already holds the value we want to push; the init-time re-reads of PFR0
+and MMFR0 are redundant.  v2 drops both and seeds PFR0, ISAR0 and MMFR0
+directly from isar.idregs[].
+
+I confirmed the re-reads are redundant by logging, at init, the seeded
+isar.idregs[] value against hv_vcpu_get_sys_reg() for each register on an
+Apple Silicon host (-cpu host):
+
+  PFR0  seed=3D1101000010110011 live=3D1101000011110011  (differ in GIC onl=
+y)
+  MMFR0 seed=3D000010000f100022 live=3D000010000f100022  (identical)
+  ISAR0 seed=3D0221100110212120 live=3D0221100110212120  (identical)
+
+PFR0 differs only in the GIC field [27:24], which QEMU already overlays
+from env->gicv3state in id_aa64pfr0_read(); MMFR0 and ISAR0 are identical.
+
+Two things worth flagging:
+
+  - PFR0 now takes the GIC bit purely from env->gicv3state rather than
+    OR-ing it onto the host's value.  Identical for any guest with a GICv3
+    sysreg interface (what HVF runs in practice); it only changes a vCPU
+    with no GICv3, which now reports ID_AA64PFR0_EL1.GIC =3D=3D 0 instead o=
+f
+    inheriting the host bit -- arguably the correct value.
+
+  - MMFR0 still clamps PARANGE to the chosen IPA size and writes it back
+    into isar.idregs[], because the page-table walker and the
+    ID_AA64MMFR0_EL1 cpreg resetvalue read PARANGE from there.  It is the
+    one register that still updates isar.idregs[]; that tracks a real
+    consumer, not an inconsistency.
+
+Tested on macOS arm64 (Darwin 25.5.0), master 20553466cc:
+  - HVF -cpu host vCPU init: no assertion (was SIGABRT before).
+  - meson test --suite qtest-aarch64: 29/29 pass (3 skipped).
+  - checkpatch clean.
+
+v2:
+  - Unify PFR0/ISAR0/MMFR0 seeding; drop the redundant
+    hv_vcpu_get_sys_reg() re-reads for PFR0 and MMFR0 (Peter Maydell).
+  - Take PFR0.GIC from env->gicv3state directly.
+  - Reword the subject and commit message accordingly.
+
+ target/arm/hvf/hvf.c        | 10 ++++------
+ target/arm/hvf/sysreg.c.inc |  2 +-
+ 2 files changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 8b902c6882..6310cfaf3e 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1478,20 +1478,18 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+                               arm_cpu->mp_affinity);
+     assert_hvf_ok(ret);
+=20
+-    ret =3D hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64PFR0_EL1=
+, &pfr);
+-    assert_hvf_ok(ret);
++    pfr =3D GET_IDREG(&arm_cpu->isar, ID_AA64PFR0);
+     pfr |=3D env->gicv3state ? (1 << 24) : 0;
+     ret =3D hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64PFR0_EL1=
+, pfr);
+     assert_hvf_ok(ret);
+=20
+-    /* We're limited to underlying hardware caps, override internal versio=
+ns */
+-    ret =3D hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64MMFR0_EL=
+1,
+-                              &arm_cpu->isar.idregs[ID_AA64MMFR0_EL1_IDX])=
+;
++    ret =3D hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64ISAR0_EL=
+1,
++                              GET_IDREG(&arm_cpu->isar, ID_AA64ISAR0));
+     assert_hvf_ok(ret);
+=20
+     clamp_id_aa64mmfr0_parange_to_ipa_size(&arm_cpu->isar);
+     ret =3D hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64MMFR0_EL=
+1,
+-                              arm_cpu->isar.idregs[ID_AA64MMFR0_EL1_IDX]);
++                              GET_IDREG(&arm_cpu->isar, ID_AA64MMFR0));
+     assert_hvf_ok(ret);
+=20
+     if (!hvf_irqchip_in_kernel()) {
+diff --git a/target/arm/hvf/sysreg.c.inc b/target/arm/hvf/sysreg.c.inc
+index c11dbf274e..acd5a41364 100644
+--- a/target/arm/hvf/sysreg.c.inc
++++ b/target/arm/hvf/sysreg.c.inc
+@@ -89,13 +89,13 @@ DEF_SYSREG(HV_SYS_REG_MDCCINT_EL1, 2, 0, 0, 2, 0)
+ DEF_SYSREG(HV_SYS_REG_MIDR_EL1, 3, 0, 0, 0, 0)
+ DEF_SYSREG(HV_SYS_REG_MPIDR_EL1, 3, 0, 0, 0, 5)
+ DEF_SYSREG(HV_SYS_REG_ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
++DEF_SYSREG(HV_SYS_REG_ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
+ #endif
+=20
+ DEF_SYSREG(HV_SYS_REG_ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
+ /* Add ID_AA64PFR2_EL1 here when HVF supports it */
+ DEF_SYSREG(HV_SYS_REG_ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
+ DEF_SYSREG(HV_SYS_REG_ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
+-DEF_SYSREG(HV_SYS_REG_ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
+ DEF_SYSREG(HV_SYS_REG_ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
+=20
+ #ifdef SYNC_NO_MMFR0
+--=20
+2.50.1 (Apple Git-155)
+
 
 

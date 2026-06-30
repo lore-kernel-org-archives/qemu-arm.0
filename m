@@ -4,111 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E2E0C43458
-	for <qemu-arm@archiver.kernel.org>; Tue, 30 Jun 2026 15:46:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B0F5C43458
+	for <qemu-arm@archiver.kernel.org>; Tue, 30 Jun 2026 17:17:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1weaeq-0005Q7-RH; Tue, 30 Jun 2026 11:45:58 -0400
+	id 1wec4a-0001B7-TW; Tue, 30 Jun 2026 13:16:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1weaeP-0005L4-Op
- for qemu-arm@nongnu.org; Tue, 30 Jun 2026 11:45:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1weaeK-0003mQ-UL
- for qemu-arm@nongnu.org; Tue, 30 Jun 2026 11:45:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1782834323;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=PTIG68u+RKN829e8+UvspXHyVMwJkLzjPyf3W2fXnSg=;
- b=IwQO5H9UE9+h8lzj1KIFRQZ04fNqPZmnebs267Bl+AL6z53gO9I8WF4BqZzhWPmCvFt7h2
- /qBZs/qDR7TWe5lz2K+0aeBqDE7sEZaHVVIZmcO1ZDfDRv/j9MKv+zWQp3CbwtqB2PTxRM
- lgAfSV//HUnRGW6vPs5B0fB2sqAKo9k=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-304-y3sijLhPM0KjoHUlE7oSWg-1; Tue, 30 Jun 2026 11:45:21 -0400
-X-MC-Unique: y3sijLhPM0KjoHUlE7oSWg-1
-X-Mimecast-MFC-AGG-ID: y3sijLhPM0KjoHUlE7oSWg_1782834320
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-490bae3a39bso32260755e9.1
- for <qemu-arm@nongnu.org>; Tue, 30 Jun 2026 08:45:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wec4Y-0001AF-Jd
+ for qemu-arm@nongnu.org; Tue, 30 Jun 2026 13:16:34 -0400
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wec4X-0004Ab-5m
+ for qemu-arm@nongnu.org; Tue, 30 Jun 2026 13:16:34 -0400
+Received: by mail-pg1-x532.google.com with SMTP id
+ 41be03b00d2f7-c8b49639fbaso3020742a12.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Jun 2026 10:16:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1782839792; x=1783444592; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=6W4I20UPxqNeXaKpYptGY6h3bqMXPS1EFmGWlS7RNjI=;
+ b=tI+JAW3RcHMD79ZbehiFymVpHNUS4FNiJzD9RUgfhzizdAUUq8Y65EdXf4iFw6P9ZI
+ upXVI1LsHKjjH0BuhXc3/A9j06RK/GfwSvzQxXg0e8K1IlNJD26Mit6A5HqnSVe84XEP
+ /qN5CNQOVG33UG5TYN48ZBF1f8RJG/TYA9VzOio1d8sBZ9KSiPaHqCnrRohyfcGPbd6R
+ 2ZqZ6lF7X5/ilcj3aWI5llL6Gx+PDbW6+2r7cbf/cx0knWphYYoR95zrFozeGAtXAsf3
+ 2HW6NgFb4d7Af1eYSb4aRxL5uI61WyGKjlcDh1dXMes7l2J43UDk103+ghhmVxuO6KeL
+ iXEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782834320; x=1783439120;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=PTIG68u+RKN829e8+UvspXHyVMwJkLzjPyf3W2fXnSg=;
- b=p/QrJdD0cr3EC6TvyruhkmwzXEnX61lRSVvnFJieY6rUhcriTodhcbNl7He1fCHaAe
- +7b+A4USLTDccGzRqcv1Gq7W1jJYZX6wojfO/yFLFJBsfErke19cXqSu43Ic2o4NlEXI
- pxwFDDVojhrZibIhp9Uprv2TxmWAeBjfaDX34r9kGO7sBdE6yN0VyHsLFnKF4V7eZPOw
- nlbw6HrLjJFMhpQGz+AJcyxIkHhDISgAYPFG+jRKyGrUtw+XPgzMPM9uZgWNuxzvi+h7
- AfFbqlXQ2z78SRKVasKGFLP4tE/Zu9LO7n4m3LxW3r1IYzmmHnkcXxd10+fBl/W9eRXt
- K29A==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/m/WNG2gZH6FKJjVXybkM/6J2Henr30RXVJgHXr1GlAF9QlhPQCPXD6QWhRTs+g4FvzcK+EAE6Cg==@nongnu.org
-X-Gm-Message-State: AOJu0Yy8NgxcJJq6y6xLZ66CU0UllTDih7tNM20cIExEssnxyaF+vq1K
- gjJ94kEODtFI8OiSQVI+VvaGlSPcqU/e+DayY4WVlYbMVyZh6ZzZN419JCo+GhTZxAV1hHAhCT/
- 6YmSaqrIvyk6CxSuJ6RBbON3NP5MBJd1ze5zIUFZVm8TymJ5ckUHvMg==
-X-Gm-Gg: AfdE7ckdXOIfD1pVLM8zE0XqdvhDZuj13RhCnhUxjNNW450lsq6L+TYAGUBO/CGwLF0
- V2sXNtng37NMLk+1lKD+29A55Pisg1yfSasaIVELaRWvKQ54uv0I/u1/1FLddGkS842ItnUqvgc
- 7PYHirjDUBVi8i4U5FiImFHjVChimtx4kirrRrstTtDQVhQxmFyVOfcZUCruVv0NBLD+gYKV453
- iZK9j1mVX+kZWbbe/0unzascSZf67RdneguhQnGwRYOMslpjA7fK+kW2SM5aoOivehRGlIr7Wd5
- zKqcRcCIbJse4hIz1WVWn+QF0THXHGtsLi/b7yfdXWoYvNz2HQ261LxUsuxZx/tFyiyCp0R0wPY
- N75cmOOKGCnF0z4yh83BUzhFbAlpIg5zvwmGWqDo06tfgF51HhRliC9suY+Q=
-X-Received: by 2002:a05:600c:a43:b0:493:b2c1:b2f9 with SMTP id
- 5b1f17b1804b1-493b827ed93mr65790795e9.8.1782834319942; 
- Tue, 30 Jun 2026 08:45:19 -0700 (PDT)
-X-Received: by 2002:a05:600c:a43:b0:493:b2c1:b2f9 with SMTP id
- 5b1f17b1804b1-493b827ed93mr65790275e9.8.1782834319469; 
- Tue, 30 Jun 2026 08:45:19 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ d=1e100.net; s=20251104; t=1782839792; x=1783444592;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=6W4I20UPxqNeXaKpYptGY6h3bqMXPS1EFmGWlS7RNjI=;
+ b=iueg7AsbXY2IwJhgdk4VTK+ppsc4pqk+ObP1elM8qn8gu++wTmd4pvRh0nTv+UKN2g
+ I6FIk2WHkfDO8tCihKPrIrfTuBy7l0BgLxJXZ6lgU6Ng49AvHoY3nsSSJ6ObkXig/Uvr
+ haGM/UhA3eayzHURByysRuAB3MJLzNIu30pmDoAHpis3hlGeY8wFM05a/14Ha1Jw+h8T
+ sH39t9cSkXGUPVWugmiZLPaKqasN8Dt01HsKaPRtC5H+BbyqPM9uBBpHifJIv9V+PpEb
+ B67EUEIJFdx4xiuAJ8Hpss7nVp0IUTNZfSUa3JFXhW4j5MVuJbdr6bh17+zWK0CHsizQ
+ rqcw==
+X-Gm-Message-State: AOJu0Yy7hRPd8nFNo0dMOS7LGLVkbsl+8D5J+QFwtRbaurrgDHyb5t6V
+ RH8W1pm6l7I9etwSDB9BLiVBo1XQGtZtZUyzQgtQpMC3YSDyxaibLbaMCvUFDTWbooM=
+X-Gm-Gg: AfdE7cmpA0dls7Avo++uafuPNS1B4hi3hcgh9dnkZK3m1Z7w6TNhrmzxU7x9/DSOwz8
+ ZHeoHdkjVkrO5Qz7AURIny9/WY9pUbOxHmpauZBaSgsLFK/Elj4i34jG4/LIJp3Sj9IOsaEtDU+
+ MQHNkJVcmDUOv6AMkmCqgmaqQ3kKyITkYCvXOVVLC9UJwc7bUF4xyqAcwhPlVKq9J7zpfliTsFc
+ nX64leb7QuLTSlxOvDFkv4qf+Dthv2pL2c69c3Hs0EHm2qHet0qCMtzKOKsuRPrscduWbbQKzWO
+ jF0DQV/LrEDURqrXt6i6AjGKYQbVkaGDNxI/I08XHh/StBZZ58PPDWMLxQoDGFHwhBfDmcOzAIx
+ s/VkXXWupHvZGMmLjrZbASkyUWVjBqHHs4oD3ycljhKhK7afrpbaeJ+08+y7vQVb2rokVjMp333
+ 40TFBTO2QwRK1oB2LIXv/DYPevAdImaur4QF7k1rHhwqnE+TXCpvk2ujkPlg==
+X-Received: by 2002:a05:6a21:138f:b0:3b4:b340:411d with SMTP id
+ adf61e73a8af0-3bfc50e7854mr4111243637.24.1782839791153; 
+ Tue, 30 Jun 2026 10:16:31 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-129-215.tukw.qwest.net. [174.21.129.215])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493be810be8sm3104665e9.9.2026.06.30.08.45.17
+ 41be03b00d2f7-c9bc011254bsm2028027a12.24.2026.06.30.10.16.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Jun 2026 08:45:18 -0700 (PDT)
-Message-ID: <0cfb0e2e-d390-4159-be78-257c188b5c18@redhat.com>
-Date: Tue, 30 Jun 2026 17:45:16 +0200
+ Tue, 30 Jun 2026 10:16:30 -0700 (PDT)
+Message-ID: <d7f02bdb-4096-4f29-b479-dc10e119aab6@linaro.org>
+Date: Tue, 30 Jun 2026 10:16:29 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] hw/arm/smmuv3: Sanitize
- SMMU_S_STRTAB_BASE_CFG.LOG2SIZE
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "berrange@redhat.com" <berrange@redhat.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>
-References: <20260630083042.2692392-1-eric.auger@redhat.com>
- <20260630083042.2692392-3-eric.auger@redhat.com>
- <SJ0PR12MB8614797527766BD0AFDE5717ABF72@SJ0PR12MB8614.namprd12.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <SJ0PR12MB8614797527766BD0AFDE5717ABF72@SJ0PR12MB8614.namprd12.prod.outlook.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Yux-o6M9-5dOP1emCUD-nztF8thEY4Yya6bbtstpCr0_1782834320
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH 07/15] target/arm: Implement FMOP4 (widening, 4-way fp8 to
+ fp32)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20260625223200.763198-1-richard.henderson@linaro.org>
+ <20260625223200.763198-8-richard.henderson@linaro.org>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+In-Reply-To: <20260625223200.763198-8-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,112 +100,16 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
+On 6/25/26 15:31, Richard Henderson wrote:
+> +FMOP4A_sb       1000 0000 011. ...0 0000 00.. ..00 00..         @mop4_o2_s0
 
-On 6/30/26 11:43 AM, Shameer Kolothum Thodi wrote:
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 30 June 2026 09:30
->> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
->> devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org;
->> berrange@redhat.com; Shameer Kolothum Thodi
->> <skolothumtho@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>; Nathan
->> Chen <nathanc@nvidia.com>
->> Subject: [PATCH 2/2] hw/arm/smmuv3: Sanitize
->> SMMU_S_STRTAB_BASE_CFG.LOG2SIZE
->>
->> External email: Use caution opening links or attachments
->>
->>
->> STRTAB_BASE_CFG.LOG2SIZE is programmed by the guest through the
->> emulated SMMUv3 MMIO register interface. Currently the value is
->> not checked.
->>
->> The SMMU spec says: "Except for readback of a written value, the
->> effective LOG2SIZE is <= SMMU_IDR1.SIDSIZE for the purposes of
->> input StreamID range checking and upper/lower/linear Stream table
->> index address calculation."
->>
->> So for STE lookup make sure log2size is capped at SMMU_IDR1.SIDSIZE.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>  hw/arm/smmuv3.c | 9 +++++++++
->>  1 file changed, 9 insertions(+)
->>
->> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index 0a8d2fbb6a7..db5aca26ec0 100644
->> --- a/hw/arm/smmuv3.c
->> +++ b/hw/arm/smmuv3.c
->> @@ -672,6 +672,15 @@ int smmu_find_ste(SMMUv3State *s, uint32_t sid,
->> STE *ste, SMMUEventInfo *event)
->>      /*
->>       * Check SID range against both guest-configured and implementation limits
->>       */
->> +    if (log2size > SMMU_IDR1_SIDSIZE) {
->> +        /*
->> +         * spec says: Except for readback of a written value, the effective
->> +         * LOG2SIZE is <= SMMU_IDR1.SIDSIZE for the purposes of input
->> StreamID
->> +         * range checking and upper/lower/linear Stream table index address
->> +         * calculation.
->> +         */
->> +        log2size = SMMU_IDR1_SIDSIZE;
-> We are now limiting the log2size here and later in the code we use
-> this for strtab_size_shift calculation.
->
-> However, spec says(6.3.24):
->
-> "The alignment of ADDR is affected by the literal value of the respective
-> SMMU_STRTAB_BASE_CFG.LOG2SIZE field and is not limited by SIDSIZE."
->
-> So this will change the behaviour now. Please check.
+                              101
 
-You right, there is this statement  + the existing comment in the code +
-the additional note: "Note: This means that configuring a table that is
-larger than required by the incoming StreamID span results
-in some entries being unreachable, but the table is still aligned to the
-configured size."
-
-and then there is
-
-"../.. the effective LOG2SIZE is <= SMMU_IDR1.SIDSIZE for the purposes of input
-StreamID range checking and upper/lower/linear Stream table index address
-calculation.
-"
-
-This sounds contradictory to me.
-
-On the other hand who is going to program an LOG2SIZE greater than the SIDSIZE?
-
-There is no further info about log2size limit and with some of its values spec ADDR alignment computations cannot apply
-
-ADDR[LOG2SIZE + 5:0] = 0.
-ADDR[MAX(5, (LOG2SIZE - SPLIT - 1 + 3)):0] = 0.
+Oops.
 
 
-Adding to that, the code currently does not consider SPLIT >= LOG2SIZE case and also the ignores aligment computation of L2PTR according to span.
-
-I will do my best to rework that ...
-
-Thanks
-
-Eric
-
-
->
->> +    }
->>      if (sid >= (1 << MIN(log2size, SMMU_IDR1_SIDSIZE))) {
-> This MIN check now is redundant here, right?
-Yes it is
->
-> Thanks,
-> Shameer
->
-
+r~
 

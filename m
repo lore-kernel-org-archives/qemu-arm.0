@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83611C43458
-	for <qemu-arm@archiver.kernel.org>; Tue, 30 Jun 2026 13:58:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A751C43458
+	for <qemu-arm@archiver.kernel.org>; Tue, 30 Jun 2026 13:59:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1weYya-0001zh-VZ; Tue, 30 Jun 2026 09:58:12 -0400
+	id 1weYym-00022S-CS; Tue, 30 Jun 2026 09:58:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1weYyW-0001yW-2W; Tue, 30 Jun 2026 09:58:08 -0400
+ id 1weYyj-00021w-7W; Tue, 30 Jun 2026 09:58:21 -0400
 Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
  ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1weYyT-0003om-NN; Tue, 30 Jun 2026 09:58:07 -0400
+ id 1weYyh-0003om-PI; Tue, 30 Jun 2026 09:58:20 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=i02G3m/urKCvxHD1LB+mgBBNZLBShCkycB/d7L+aoScFtWz5XHu5II/9njJl1S2ONLSAJ1sRV81FoMKcZxajagEJgeFqmDfSVEniXMte2VKWUpdiVyfSqW75qgqGjrq2M5qf16xepu7IOxbdxoz6gEkr2ecW3kENvAVxJlUZbptuQV7zfMP2/Xkn5sJC7qls1glEn6FlaXVLA68/iEI/qh0w7PaoMfg3mILBDRg9f4F7mrXkStr62syFCXR/mqxV9V7LjSewSLLzIbw7SdF4rY7ua3XfVw539fL6MrtLmSsUFOBGJcTI3md0ZUMSP3JMXknN+R/n0C5V7HgSJzJowg==
+ b=PDEtARkobSzhErl+EkiQTNQTp1sl+Kn4uFF3pDBF+JjF+bUxIhVnNYSk/VZ2IWCP9ksZG7LOSR5Jzgfu5S8xaB4Ol8+4XVe5qcH1Z3WM7yoCfPuFUHcI1sXYqvSZhHfChFZ96eqxekVgcyao3+QX1//Mq7TVePj3eKspgwrr6r1A6Vh3TRhYz0QqwwbnpfaOa5Cv1wx61YFYgWvlUacd+g6+qcUY1PLpCH6NgbmUG8Vvfj0yhOWrN9OCZ7qeTvmFaULbLsyYp9BkZ6JjQMajkhTcwLePzOszX0Lz9wObbpyCa00tJ7UKW6bHuUIet9KSECKe7PqZzPEwUcZopadktA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kBK1Kmo+gi0n+THBppLY9O1YnOm/fUT9Y6rxGBcdq/I=;
- b=ugwXRcL3wSdFAQCHm/5yZ6cPFZ/HNjCJb80LBmfoXzZ0wmPkxx0HGRe1kN9L1Eyn1IR2rihoU8oz6MiFcDBRo5sp2iIQgzkdX3rkKT1Qog0/6mOmumL/KuijjFccuykZNOn2w+8eYDoKI4fC43OXJ57opMfxmV57bp5vyI1KljJQInsPh3mECDXCCe+Komdjo+gqHA11iz02VW25Y/qLKq0daleXRwuNsweqGgNV5vsR5r0HSCz4W6Q4xWTJMRTZ/EP76NpHoXi8J+PVLT+B167ZvuBy2SohytWAzvi2OTrIURFAh8/P1FXBt3i87/zVa/mxrJcb2b4zHWMU5K4Yzg==
+ bh=JGmPDBWqCwiArwDhd8Rn3QymfbMVCqJHdwEpowZbNxs=;
+ b=GrQuxbbdzfbxVelxRNcGgTDAN5EwdFfQK/PyWmBDKju7W1apFatMkS4jT8XhmDEevuiCV8sU9BcNfBfcGxq/ubqG2chRJebhJHoc59QpgpI48q+oZBLv8rgH4Er9JS6QYgW/f9rcpM2j5H+sVpb29DjPLUkkfwSEICnT6DUKcNoetxKBjfrgkXKNR59zm5C+1KY1sPhswprXRu8olsXdtS5eAZmtZxX6Y0E5j5CVOAgpmo7DaVqXR1gHbIFgRk0H9bM9LTUm/3sOGkNJOKcJxiU6XboNUbyH2lBXfgbcPEHrR9mIWPOz0KE4pJDbMxYlCyQhWSfRfeYPsRo9eKHu+g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=processmission.com; dmarc=pass action=none
  header.from=processmission.com; dkim=pass header.d=processmission.com;
@@ -33,105 +33,88 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kBK1Kmo+gi0n+THBppLY9O1YnOm/fUT9Y6rxGBcdq/I=;
- b=bDbY5f1t9UKy5tYJ7fXRxFBLaZytEdIQNQRzdMQFtm2WDGpy4b9JAW6gv6yOAlkG7sf4JdTiL2cjeEowFxQk2r2UruKKVZNVR8W+pzJLLpjw2O44+2qyYx0fcmxEmBNBg5WJxb0daGB6ZcjqPjEH7YcLMqGaVeOl5tiNl9ckBbxXhzhhszUwSu9yumTG9wdvMPHqNL9ldFQoeys76WRaeVoeykweXm5zv98zbpt6ZeL0LB0bz+5V4OXhVC8DwSnNmxd9Jv+QES+GXm9LMiWEsx/8Ft9AIHmjPseK5Q95fBjB6kW6d8BYwn2byfg7dqCb6QjIknNurhnz3JVqORYNVg==
+ bh=JGmPDBWqCwiArwDhd8Rn3QymfbMVCqJHdwEpowZbNxs=;
+ b=CeAl0XAMajMCz2oz9PtAwe0/p2zVIRd5/t9oGV4hcgwL26fnNYpCWnpMtGzNb28jB7ZxS7bgWD0XgK/itEwpXfRBWBknYh5fih5RDqSWDTg3Pn+HU9Z7i6pQX7Lm5GQ3pdwQPz9AD1XwJMeXnDZO+41iKaBQrWelHARuXUdLATvBwFigj4eJPgtPVXoEAWGpbIVRWCUWmXk9P7nGOOSTevjbsiDkpXWPsRvdCqtoz2UGzWzhpXadi23ajQlTIcAwVK/Ws7rWXnB8DfzxEPSmJbiNvr7cX42NJisW4N2WKb8Ijrjlj7K8meg2F7Q/KHAWzgGb7RpBOBMpuvFjMuSgkg==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=processmission.com;
 Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
  by TYPPR02MB8959.apcprd02.prod.outlook.com (2603:1096:405:382::13) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.159.19; Tue, 30 Jun
- 2026 13:57:56 +0000
+ 2026 13:58:06 +0000
 Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
  ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
  ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0159.018; Tue, 30 Jun 2026
- 13:57:53 +0000
+ 13:58:06 +0000
 From: Bin Meng <bin.meng@processmission.com>
 To: QEMU <qemu-devel@nongnu.org>
-Cc: Alistair Francis <alistair@alistair23.me>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Hanna Reitz <hreitz@redhat.com>, Hao Wu <wuhaotsh@google.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- Kane Chen <kane_chen@aspeedtech.com>, Kevin Wolf <kwolf@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org,
- qemu-block@nongnu.org
-Subject: [PATCH 00/10] hw/{block,ssi}: Fix spi-nor flash dummy byte handling
-Date: Tue, 30 Jun 2026 21:57:19 +0800
-Message-Id: <20260630135729.466264-1-bin.meng@processmission.com>
+Cc: Alistair Francis <alistair@alistair23.me>, Hao Wu <wuhaotsh@google.com>,
+ Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org
+Subject: [PATCH 05/10] hw/ssi: npcm7xx_fiu: Correct the dummy cycle emulation
+ logic
+Date: Tue, 30 Jun 2026 21:57:24 +0800
+Message-Id: <20260630135729.466264-6-bin.meng@processmission.com>
 X-Mailer: git-send-email 2.34.1
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20260630135729.466264-1-bin.meng@processmission.com>
+References: <20260630135729.466264-1-bin.meng@processmission.com>
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-ClientProxiedBy: SE2P216CA0161.KORP216.PROD.OUTLOOK.COM
  (2603:1096:101:2cb::15) To KL1PR02MB4977.apcprd02.prod.outlook.com
  (2603:1096:820:71::8)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|TYPPR02MB8959:EE_
-X-MS-Office365-Filtering-Correlation-Id: ce8dd496-6d37-42e2-d31e-08ded6af919f
+X-MS-Office365-Filtering-Correlation-Id: 13435999-98eb-4686-02d3-08ded6af9c6a
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|1800799024|366016|34096008|23010399003|7416014|3023799007|6133799003|18002099003|56012099006;
-X-Microsoft-Antispam-Message-Info: y+IsV0XvBrmMNieGhhUcVLS+zux7jeOcYcvLSyDGM2lLc63bcSqcVAqDId57WuNq6axP51yFY773FiqHSpYb9xe4pnMbyT/wWUVl0A0XK4FZt/dDws43tv5+2TypYJPWgvZYH9fFsT38F3QWeYrf9HjqXco+GoMIbW0sQnTZnp1HENbwaOxwrSp+ffwwfPy3qL86pmmWRpYM+2MoHiCB+ZHgrCg9Eo5tPDnhDWAtjvRtdLXFEF/PmqU1FvtW8FgawBOeb3YHFpX9ebKKwdUlpGrEcqvCyPWdlG5dMl2NzzScJOy+ZWbDR9dcjovBmkqV316PgiXdNYym5fbU+JkrXzDaA+QkeMgMjsoLu4V9w53hpV3Froe9JjQ82IFCpMUDVdxkN8pEtkTosbxbRpBcQzvRPWsXZmobk+vAe3KlklHbW4i6+0lxR2rOJpOA+G8xcv2fN4sZm1ZiNPsQqHPeKMZ3sPG7NHpnaL426qrhqD6WorzJjrnCNsrcHkjYEwzvNxh4HV9a2ZagaEf0xFHfnvyf6kF8NqZ3yuwL2WGp7/1PHEPrDolBSOGlxrw513w/u/zDDTBUFPFSosP11Dz+ppDWK+2KPwC/Jjql2rQ/Mz9GXzbW9zJOqWLz8buvS6f8msgdtSGZAanpdxwCRSIDbJMTN2MNdG7iMXDngaCtW0M=
+ ARA:13230040|376014|1800799024|366016|34096008|23010399003|22082099003|18002099003|56012099006;
+X-Microsoft-Antispam-Message-Info: ku6VAmU0GyN+U0PZYnmQOluAfeUbILWLgfrspmzNiOv17K2X7/XHjopPA2Qe0gZDWJOKYKa6HjpQ1Uog4Lr/T1Kd/cSID/+R+R2DhQAGfgt+fuWlwoXIZKss1/Cl30ksMNnSEKV6Pjg7Tq0NGsXIAT/70r8XvxrZHXzG8ENCefMm7teIOG1i67rYprVph0c8ekl7yW8SLWjXROg0YVdMejpr0j/UE9MQEAUGwRmk4JRLH+vLl9SS2idRT08GBcTI7zdLxKEFmDxTI0uwyeFcannGQF4iOGRWCTZzdS/HkS97l7qmRLFpk/3wlNzS/a7oVjo6PQNAccowjgZoAgcr8Us+DCCYb1CD6r9emTlHrwpFlnaS8KFI5KNg+z2Vjy2xNkHfJd3JRL3zZwq5bHuquSLyT9+FV/EMHmZBLQKlVWFOK4drDRRLBhEX+aXvVkaRt8Rp97MaCo01Uqy6WjcMoaSrfF7Z+lF7foECm7iAbdK4OOZcbALIhLNsqsno8jk0DnTPSFAQl81280MuguMJJTCAlHPaHHM4SlsO/5heboOXtkfCEu6lEXn9ruvvnCFYvO1zMobWcWeIrmH6hAKORB4lp/RXhFeAz8DeWje5pqDDJJ/DPrgcC+s0zTEETYiztZtSlOYzXEErczdNw8Vhy7KfkvVdV+Ul8pxtPDV9tjQ=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016)(34096008)(23010399003)(7416014)(3023799007)(6133799003)(18002099003)(56012099006);
+ SFS:(13230040)(376014)(1800799024)(366016)(34096008)(23010399003)(22082099003)(18002099003)(56012099006);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?V3o0YjhrTE9hMlNnWWFDUE1vOXhwRFRqVG9nYUcvc0o5N09nKzBxT1cybFYz?=
- =?utf-8?B?SFZSaW1xLzdLTk5Ld2FGaG1xZFFCR1c3dUhtSlFFQ2VkcE5BS3RKamI1MTd5?=
- =?utf-8?B?NmhrNnBQbGNjalNrMGZ4R2FEUWdVUm11Z1lySlFrTzErd0xSNW82OXR1ZCtu?=
- =?utf-8?B?YUNDZ2NpY2NxY1czZzZkcEZBY1g3c0lYa1RSWEd2b2pNR3BBSHQ1blVzOHJr?=
- =?utf-8?B?bXg5OXEza0h2aWhmb1MvZlhkaUc2V3BRamdzVzh4ZzRhSEkrOW5GeGROckhQ?=
- =?utf-8?B?S1Q4a2ZvVGVHMFJJd2tzdHZqcnNVOTJ5eU1VSGNPMHl1enI4bEJqMnlsdUE1?=
- =?utf-8?B?ZlVUclN4OVZsRjFzL3phR1N6a2p2YXFTVUp6MHBDZzNmOWhVNllDYzduWnZL?=
- =?utf-8?B?ODhyazBaZHFoZldTNElraWx3WWoyTHVoZkFBbGtBRDF6T2FhQ2RGaTFGMjha?=
- =?utf-8?B?d1NIQ25nYTBMZGtkR09HL1ptaDJBOFJoMXBXUDZqMHhNazV6VDZQQXhaeFgv?=
- =?utf-8?B?WUpXWk5kSW1Od00wd3k5clErcDlSb0lOZUVoeFBNRnRwSGdxMjljQ0kwOWRv?=
- =?utf-8?B?eWNqbmlqTFBGV3dwM3Bod1JZVDQveEhDaWdBNVg4a3o1QXMwNkJiZ1l0cU1u?=
- =?utf-8?B?eWZCeGpHQTZVajdONWRPRkJnMnpRU3QvdDFxbjY2QlZ6R1JBSXdCQk1qWVM0?=
- =?utf-8?B?eVdYMjJ4UVJxL2JGaEpQZFBHU1VtSHBtcy9Ea3hjTkpZVHB5dHBFRnJuNU1u?=
- =?utf-8?B?dkkwMEhXMWJqczU2enZsbXNtL0xFbVl4WmtydHp0c2xPZG9sNFcwWFJvRGFW?=
- =?utf-8?B?MjAyQzdXeTNEakY0SkhHUlVMYld5MXhkVDVIWE5TcFlpUXpzMUtpMFBiRnhG?=
- =?utf-8?B?REs1K3hkYTRxTjVxZ1h4K25TN2x6VGhVeVJBNCtQZFF1dkhkWTY5UHptRU1I?=
- =?utf-8?B?Znc4c3VJVHVsREQ5YVkxY2VPUlVwblhNaWlQaFFIWnM3MFNIbmV5alhubFUr?=
- =?utf-8?B?bWtjZUlLcmxQeWcvRnlBVUhEcWVNSmFvekd6U3RvMHlHQWUwdjRhcU5VRnk3?=
- =?utf-8?B?VGF6RElrcDZwV2pEVXBlNmV4MzgvYlN2UndwSEUrYXhueFpXU3NXNklvS050?=
- =?utf-8?B?SUtKK3lzcEZWcWphbkxWS1JuczRGbHF3VFRwMERMc0xPRlk0OW9Oc08yOXcr?=
- =?utf-8?B?M0NWdVBPYlFOUFVhNVl4SGZ5UXNpcUlNVnZMQjlwVnQ2RTQxSkF0VnRNOFk5?=
- =?utf-8?B?bkxOMEFuVDFnMVZUQ2tmRWFBRVV2ZTFSMS9Iak1QWkM4ZXVRYmVLNFJyN1ZN?=
- =?utf-8?B?L3REUE9Bczc0QjhMREY1azJYVjIva1J2WnJibGhFUm5wb2YvOGgvVlpIU3BG?=
- =?utf-8?B?VWN2NmdFYlZLYUJHT09Yek54cEJqcFBEbVVIMEJLWUswWlJkQXArVFJjQXkz?=
- =?utf-8?B?OElnbU52d0ZjVEIvalZoTUVwYS85QkpYTVlITTRpdlpUV0gzelhHeisvRTkz?=
- =?utf-8?B?cXhnWVFHbWx3ZFhteWV5dXFjTUwvaDIvcW9ZTlRDRlRvcmJOdTNHV0VTWXda?=
- =?utf-8?B?Y2I5d1JaWSswTXRWRk12Z2UyU3NuQkFUWXdVamFKYnV5ZUppV1hFNzk0d21R?=
- =?utf-8?B?ZTN6TjYxWkNMMktONFk5K3ZRM2tmMEtDVnBPZDNGYjJHY3NVWHR0R3lYa3JC?=
- =?utf-8?B?QUpia3dqaEpyUFpkdWl2MWtXQUxNUDdrVEN6TUROTktMbGhSSzI4Q1lORUtY?=
- =?utf-8?B?anRnUUROK2ZUaVRXQnhuSTczam5HeU8vN0JTL1hGNlNNZkVNWmtGRFMzU0xx?=
- =?utf-8?B?bXlqV1dVK0ZsczJ1VUk0MTdSN1ZGL3kwUjBURzFNeW9TV1NzZEFRY21IOW5Z?=
- =?utf-8?B?b1dzam54d0RWUHpES3NWTmJrNWNmMi92SFdqS21lTyt4SzRYY01YNUlNTG5n?=
- =?utf-8?B?MUNidlVoNk5vc21tRWZUY2tRVEc0c1R5VGIyU0xjMHdQRjJBZ3hDUmc2K3RH?=
- =?utf-8?B?VmpjZnkxd2FvYTQxaXVlTHdmQ1pVaERpNUxaTVlFTkFKVVNJUjdIcDFLSUJS?=
- =?utf-8?B?ZEgrMEhCMHByTC9jQXZERDlXUkxXdTVYeGFKWWlGcVJ0QmtkZ0FnLzd5cngz?=
- =?utf-8?B?UG1jbUVHRTBFQXc3TzVsbXBuWmh1OWJOZ3VNRXE2MGFYT3p4eE5BOXZNc2FZ?=
- =?utf-8?B?TG1zTXhPRGxBTklHYkpvdG1ZMjkrSUdFemNwcFMrMUtXVlZTNWZicVVzU3VB?=
- =?utf-8?B?Um5qVU9QbzdydDlCU3BRc0tHNUhGZDJCS0xKcXVlNm5xSWdCeUloazFHamgz?=
- =?utf-8?B?U1l3aG14SWwweHM4TlUzNFQveHRzWU1ZalFleTh1MmFLMGlSWkt1dzhVTzA0?=
- =?utf-8?Q?zwH4GspEglNiwerU=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?06ZNM4lZX+ByFPLic26kIfhWVTFzD8/NK8SSaXDbW0c33ssHW6FO65W18mMM?=
+ =?us-ascii?Q?a5S8jXcTfu5cVsbluLQ/G7zOPUU19wGqVpL4dMmdNe57nFClxY5am8FtdacT?=
+ =?us-ascii?Q?5ZNVTSA59EJhw8sejrM0hhXbzTlBlb0PvpxXRw5/mGlWG9NtZpTH1r0sKEC7?=
+ =?us-ascii?Q?bNI1HuUKb5I2dgNUjizKKbBdvs145WqrGW2aLU65+gMAXnZUSB3n8u2hEmxa?=
+ =?us-ascii?Q?649uurxK1XygSoa8z8ExBRXhSxtnl/ArBC70neWazwNmHtMqjWjQPLT1j80X?=
+ =?us-ascii?Q?caqab3+qvT2BYOeH0Z6J0m1JwXRrN0unrClAatjZBbNosxHcjVrT1htlheUa?=
+ =?us-ascii?Q?ueSBE6W5HwA1mAew76D1zHo6+JXRNmCqVjsH6ayAo+eRGiC4kBxXR+VJIz30?=
+ =?us-ascii?Q?BfmoVCzDKYqAgtes02nNA+yzS2TtpRtBJ+d+jevCXHXq90Yba8fDj91pfRec?=
+ =?us-ascii?Q?aOJCRZ1rfKnah/K1/8G4tpxr8e+MZ5qoAZ+6k8Frz5+UV5I0jogEzikbXqxC?=
+ =?us-ascii?Q?vZw/ZYCWXyMbkQ/ib7p+uPUwm9s9Fcv5/1ZjgST/9UsoRqPKXsbB6HEI7CT+?=
+ =?us-ascii?Q?PB688M8H1aORMTIAkiq7V6YMnvMu3k87FekFz9r0m5T7z5qWKmSSqx0qRP+9?=
+ =?us-ascii?Q?myuYE1GX2sejETz63F7h633IL6Q0wZpT4Ruh/1pacnZl5ksMNMcOYR0s9/hB?=
+ =?us-ascii?Q?ZkHTXWYgFR9KLdfZO405JOjQJYZDTo9QP64dcKj9h4HE3dfZDcqMoNLMTwFL?=
+ =?us-ascii?Q?P1Eza56kvQ/4/nkG5ksduKoLBCQ4CjMsC31KGBIoXeI8b8aLK/6ZGHRIcY9P?=
+ =?us-ascii?Q?1OzkxOKrdjIE5Nc2FqTcX3b+Dz3n+7GhgJtcqwVhiPEqEnHsl8euIYbzbhNz?=
+ =?us-ascii?Q?gaCFqV1+3wpH1dWMFSo/SnjhAoLmtVeRwroFNLUkgkE0yQQtie3Av6I6arKz?=
+ =?us-ascii?Q?Je61voQ/s5msV8EEJv5zzjqAAgAaQHvqtoFYPXyOe9TWzPjlYIjSLRcUkLPU?=
+ =?us-ascii?Q?J3ui2keQeCrxApj5jO1vIWY0IyeE4sjnMiP387hRBUOIBGXb0TJ/3Iy5xkeo?=
+ =?us-ascii?Q?j4Fj57tIqfzb1bDtG4nTJTexpD3WBffLRfsLeL+Y251/7pdQHdaEuBE2yLFN?=
+ =?us-ascii?Q?RttY4Rq54Mndgv1UPcjTuQN/yKZYDX6NjYzUwdDQllsH9lDwED0KcBirZDhq?=
+ =?us-ascii?Q?vcMnaeiuhv/mO+JMEHuog9+9mjMumngzgAMio1oAvoEWweiYZ5d9rELTVdio?=
+ =?us-ascii?Q?r4/g6er2naa3re+bkQSZ1t68FMNsRA0vui729brDtm/6cKqDaGFBMjk78j4S?=
+ =?us-ascii?Q?xZJJj7ZLURu4EwQwbLRLmLQcC2KOys+9rxruWdfXXIFdPFz9bxah5oTiKCuh?=
+ =?us-ascii?Q?5Nl0+DcR6ETfobjAma428ZgORD9wgh2dME+HkkgsmKNqSYSu0a/UpbEQdbum?=
+ =?us-ascii?Q?7RxYHGQNWO++BkT3JMMZEix0Na/MsqTC78E4F7YoeEZU1vv0Jvf+/J1WlUqN?=
+ =?us-ascii?Q?3AxQF6AvlIJ84n9nG06MyQKjsxw2/zscSfVabtn2sZozJEAdIT6jA3+oSWbw?=
+ =?us-ascii?Q?hbSJfgFQOnMfrV/4h3f8GClfeOmZyyIjVX0DxipF+lfQK4NldQIm6C0z9Pch?=
+ =?us-ascii?Q?aSYLMs5IIQcjDFAm4PPJmaj0wlPXoJekb+j08d/3ijFWw3ZKcTsvFLde+8Ld?=
+ =?us-ascii?Q?8E60XyDCHJkY2LLZ9B5H8HY4BTrVa7CSzsK/cObcPOJUjj9H2j0YOtgawB3h?=
+ =?us-ascii?Q?BAb23WQEufSfVe/CF3gr7EHrYB4mWTo=3D?=
 X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ce8dd496-6d37-42e2-d31e-08ded6af919f
+X-MS-Exchange-CrossTenant-Network-Message-Id: 13435999-98eb-4686-02d3-08ded6af9c6a
 X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jun 2026 13:57:52.5338 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jun 2026 13:58:06.6391 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: de/msWd5Y3UtgPyDeC+Rt1Qa6H9b6EsLZ1u9vqIcs0n2oYYLU1LPMsgFsL3ZjholqcyrYGA6N3xepbj9WDEP6uUfDpGoBwriOYthYn8qozw=
+X-MS-Exchange-CrossTenant-UserPrincipalName: e5HUi3VnCTflhR9PjQ0/OfsEiwLOphqB2hyxJg+mgQyKQHsNghh9QlN8uotPBNsNDNUPy0dx2wVc9sA3d4n9p5KMScVU7CyFQ6mxGaHzPso=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYPPR02MB8959
 Received-SPF: pass client-ip=2a01:111:f403:c405::5;
  envelope-from=bin.meng@processmission.com;
@@ -158,79 +141,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Change send_dummy_bits() to send_dummy_bytes() as the FIU register
+fields are programmed from spi_mem_op.dummy.nbytes, so they already
+describe byte transfers.
 
-This series fixes dummy-cycle accounting for SPI NOR fast-read
-operations across the m25p80 flash model and several SSI controller
-models.
+Verified the changes by booting OpenBMC image on `gbs` machine all
+the way to the Linux login shell:
 
-The root problem is that the affected code paths mixed two different
-units. Flash datasheets and controller registers often describe
-fast-read dummy phases in clock cycles, while the SSI bus interface used
-by these models transfers byte-sized words to the flash. As a result,
-some paths treated cycle counts as byte counts directly, and other paths
-compensated in controller-specific ways that duplicated flash command
-semantics.
+$ qemu-system-arm -machine quanta-gbs-bmc -nographic \
+      -drive file=image.mtd,if=mtd,bus=0,unit=0,format=raw
 
-The first four patches fix the flash side. They make m25p80 keep
-`needed_bytes` as a byte count and convert manufacturer-specific
-dummy-cycle requirements to dummy byte transfers for Winbond,
-Numonyx/Micron, Macronix, and Spansion flashes. The Numonyx/Micron
-change also handles the standard-mode case where the dummy phase follows
-the address bus width for output fast-read commands.
+Fixes: b821242c7b3b ("hw/ssi: NPCM7xx Flash Interface Unit device model")
+Signed-off-by: Bin Meng <bin.meng@processmission.com>
+---
 
-The next patches fix controller-generated dummy phases. NPCM7xx FIU
-and Xilinx ZynqMP GQSPI now convert programmed dummy-cycle fields to
-SSI byte transfers using the bus width selected for the dummy phase.
-The ASPEED SMC direct-read path is updated the same way. The two ASPEED
-reverts then remove older workarounds that either hard-coded FAST_READ_4
-dummy behavior or snooped manual user-mode SPI streams to inject extra
-dummy cycles. With m25p80 accounting fixed, user-mode byte streams
-should be forwarded as supplied by the guest.
+ hw/ssi/npcm7xx_fiu.c | 25 ++++++++-----------------
+ 1 file changed, 8 insertions(+), 17 deletions(-)
 
-The final patch documents the intended ownership boundary: flash models
-own command semantics and dummy-byte consumption, while controller
-models own hardware-generated dummy phases and cycle-to-byte conversion.
-
-Some background:
-
-While recently working on some device modeling, I hit this issue
-again. I then realized that I had sent a fix series for it more than
-five years ago, but it never made it upstream.
-
-This series picks up that old work, refreshes it against the current
-tree, and fixes several issues in the SPI controller models. The original
-series is available at [1]. I have tried to verify all the SPI controller
-changes by booting real-world guest software to ensure the change does
-not break anything.
-
-[1] https://lore.kernel.org/qemu-devel/20210114150902.11515-1-bmeng.cn@gmail.com/
-
-
-Bin Meng (10):
-  hw/block: m25p80: Fix dummy byte handling for Winbond flash
-  hw/block: m25p80: Fix dummy byte handling for Numonyx/Micron flash
-  hw/block: m25p80: Fix dummy byte handling for Macronix flash
-  hw/block: m25p80: Fix dummy byte handling for Spansion flash
-  hw/ssi: npcm7xx_fiu: Correct the dummy cycle emulation logic
-  hw/ssi: xilinx_spips: Fix dummy phase handling
-  hw/ssi: aspeed_smc: Fix direct-read dummy bytes
-  Revert "aspeed/smc: Fix number of dummy cycles for FAST_READ_4
-    command"
-  Revert "aspeed/smc: snoop SPI transfers to fake dummy cycles"
-  docs/devel: Document SSI dummy-cycle ownership
-
- docs/devel/index-internals.rst |   1 +
- docs/devel/ssi.rst             | 132 +++++++++++++++++++++++++++++
- include/hw/ssi/aspeed_smc.h    |   2 -
- include/hw/ssi/xilinx_spips.h  |   2 +-
- hw/block/m25p80.c              | 146 ++++++++++++++++++++++-----------
- hw/ssi/aspeed_smc.c            | 135 ++++--------------------------
- hw/ssi/npcm7xx_fiu.c           |  25 ++----
- hw/ssi/xilinx_spips.c          | 120 +++++++++++++++++++--------
- hw/ssi/trace-events            |   1 -
- 9 files changed, 345 insertions(+), 219 deletions(-)
- create mode 100644 docs/devel/ssi.rst
-
+diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
+index 2d5bed005a..31900bbb68 100644
+--- a/hw/ssi/npcm7xx_fiu.c
++++ b/hw/ssi/npcm7xx_fiu.c
+@@ -150,7 +150,7 @@ static uint64_t npcm7xx_fiu_flash_read(void *opaque, hwaddr addr,
+     NPCM7xxFIUState *fiu = f->fiu;
+     uint64_t value = 0;
+     uint32_t drd_cfg;
+-    int dummy_cycles;
++    int dummy_bytes;
+     int i;
+ 
+     if (fiu->active_cs != -1) {
+@@ -180,10 +180,8 @@ static uint64_t npcm7xx_fiu_flash_read(void *opaque, hwaddr addr,
+         break;
+     }
+ 
+-    /* Flash chip model expects one transfer per dummy bit, not byte */
+-    dummy_cycles =
+-        (FIU_DRD_CFG_DBW(drd_cfg) * 8) >> FIU_DRD_CFG_ACCTYPE(drd_cfg);
+-    for (i = 0; i < dummy_cycles; i++) {
++    dummy_bytes = FIU_DRD_CFG_DBW(drd_cfg);
++    for (i = 0; i < dummy_bytes; i++) {
+         ssi_transfer(fiu->spi, 0);
+     }
+ 
+@@ -305,20 +303,13 @@ static void send_address(SSIBus *spi, unsigned int addsiz, uint32_t addr)
+     }
+ }
+ 
+-/* Send the number of dummy bits specified in the UMA config register. */
+-static void send_dummy_bits(SSIBus *spi, uint32_t uma_cfg, uint32_t uma_cmd)
++/* Send the number of dummy bytes specified in the UMA config register. */
++static void send_dummy_bytes(SSIBus *spi, uint32_t uma_cfg)
+ {
+-    unsigned int bits_per_clock = 1U << FIU_UMA_CFG_DBPCK(uma_cfg);
+     unsigned int i;
+ 
+     for (i = 0; i < FIU_UMA_CFG_DBSIZ(uma_cfg); i++) {
+-        /* Use bytes 0 and 1 first, then keep repeating byte 2 */
+-        unsigned int field = (i < 2) ? ((i + 1) * 8) : 24;
+-        unsigned int j;
+-
+-        for (j = 0; j < 8; j += bits_per_clock) {
+-            ssi_transfer(spi, extract32(uma_cmd, field + j, bits_per_clock));
+-        }
++        ssi_transfer(spi, 0);
+     }
+ }
+ 
+@@ -354,8 +345,8 @@ static void npcm7xx_fiu_uma_transaction(NPCM7xxFIUState *s)
+         ssi_transfer(s->spi, extract32(s->regs[reg], field, 8));
+     }
+ 
+-    /* Send dummy bits, if present. */
+-    send_dummy_bits(s->spi, uma_cfg, s->regs[NPCM7XX_FIU_UMA_CMD]);
++    /* Send dummy bytes, if present. */
++    send_dummy_bytes(s->spi, uma_cfg);
+ 
+     /* Read data, if present. */
+     for (i = 0; i < FIU_UMA_CFG_RDATSIZ(uma_cfg); i++) {
 -- 
 2.34.1
 

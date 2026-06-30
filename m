@@ -4,58 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CAD7C43458
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Jun 2026 20:52:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E251BC43458
+	for <qemu-arm@archiver.kernel.org>; Tue, 30 Jun 2026 03:50:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1weIy9-0007cu-5W; Mon, 29 Jun 2026 16:52:42 -0400
+	id 1wePUc-0000XK-JH; Mon, 29 Jun 2026 23:50:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wrigjl@proton.me>) id 1weIy6-0007cL-CD
- for qemu-arm@nongnu.org; Mon, 29 Jun 2026 16:52:38 -0400
-Received: from mail-06.mail-europe.com ([85.9.210.45])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wePUa-0000Wl-2k
+ for qemu-arm@nongnu.org; Mon, 29 Jun 2026 23:50:36 -0400
+Received: from smtpout4.mo539.mail-out.ovh.net ([51.210.91.43])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wrigjl@proton.me>) id 1weIy3-0003mE-8y
- for qemu-arm@nongnu.org; Mon, 29 Jun 2026 16:52:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
- s=protonmail; t=1782766348; x=1783025548;
- bh=cYZuK3L4fb+u9YkmTSUeayMNWrYv9vEAXHix1FDvTJE=;
- h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
- Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
- Message-ID:BIMI-Selector;
- b=AQ3BnLTDxemHjjuM01I3Bc2bndVazBb+y0XiKyUCy9n9sHJ/anoQWbX4skiB8SA4i
- 58I504xY7vgR5lsX2sKExFe9uGR2wDNzDTB1APwjhIURyd34yruj79mQfltYjp2gEd
- KopI/eVrghn8VaS+a0JIZgVcdOApre5cTEjot/DVbAqzcF2mth7Y8QeyY0ybAiPZ1F
- fmGhRg/wdRSVAdgJYyskXmpxpVPlIDs8goJjZqLYaf+YH9Pk3jZh2M64eXRSaQSKQe
- oALqPkhWBdA1lyc0FjydnKOsBHdGp6lXhn1weeKCIxSIMns7Kyp+HwQ5l1rRv4AEFJ
- EJybXLJGUkm2w==
-Date: Mon, 29 Jun 2026 20:52:20 +0000
-To: agraf@csgraf.de, peter.maydell@linaro.org
-From: Jason Wright <wrigjl@proton.me>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, zenghui.yu@linux.dev,
- richard.henderson@linaro.org, philmd@oss.qualcomm.com
-Subject: [PATCH v2] target/arm/hvf: seed NO_RAW ID registers from
- isar.idregs[] on vCPU init
-Message-ID: <20260629205213.82391-1-wrigjl@proton.me>
-In-Reply-To: <20260607182221.4357-1-wrigjl@proton.me>
-References: <20260529114723.42040-1-peter.maydell@linaro.org>
- <20260529114723.42040-18-peter.maydell@linaro.org>
- <745e66c7-2a9b-4185-bae7-77e10623332b@linux.dev>
- <20260607182221.4357-1-wrigjl@proton.me>
-Feedback-ID: 198029889:user:proton
-X-Pm-Message-ID: ee5992eac7c9bbebde04f132a034bf80ddc9c0e4
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wePUW-0008VM-HU
+ for qemu-arm@nongnu.org; Mon, 29 Jun 2026 23:50:34 -0400
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net [79.137.60.37])
+ by mo539.mail-out.ovh.net (Postfix) with ESMTPS id 4gq8LS4YFhz46tm;
+ Tue, 30 Jun 2026 03:50:24 +0000 (UTC)
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net. [127.0.0.1])
+ by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Tue, 30 Jun 2026 03:50:23 +0000 (UTC)
+Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.168.213])
+ by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gq8LR6SvJz1xpK; Tue, 30 Jun 2026 03:50:23 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.6])
+ (Authenticated sender: clg@kaod.org)
+ by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 8E999941911; 
+ Tue, 30 Jun 2026 03:50:22 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-101G004d12d8363-88de-49e2-998a-89ea31c4feb1,
+ C9F07EB534A46111D337A1875201B4A1724CF27E) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <2cce4512-a223-4821-96c3-77d13942c58f@kaod.org>
+Date: Tue, 30 Jun 2026 05:50:22 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=85.9.210.45; envelope-from=wrigjl@proton.me;
- helo=mail-06.mail-europe.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/intc/aspeed: Drop stale pending interrupts
+To: Jian Zhang <zhangjian.3032@bytedance.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20260612060857.1842819-1-zhangjian.3032@bytedance.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260612060857.1842819-1-zhangjian.3032@bytedance.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 4395231762908883979
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTF4MqoRfwo5ZBUlMv64NkhJEVqkU03kdRcOceAzit+hbGigv22RHLEzTisTNkR7OZTmxsziJSfmo0PCKH+qRv0sGx4ht7UTQCAqUzhn5Te7qKLq6TjcS+ZaKwXxVGMqmErT8INdNPb/JlwuncX0ra6qoMbEHMucQuNWwIKKx/speLe5hgpMC9rDYLxXAWWn8/XoN8d2WWitwsoEBk/sm4ivrycBH4Bocl+42uhTM9AS/871T0idcZwoZeptFwoHQlKiUW16QlK15OGP11Q/WKRZf7Qoy8cAwd34yKLd3Z2USTRfTtYQ7wZFDaG6lC1pxTGVm2ZzA5eMKL2I8/CzVDEEO4vIGyRfRg/4QFwBCihET5ZuJ05eiQ9IS5lgL4cpaBWhBcLEI3KGb8bKfXKO5Lyd+8vGXAC50iiX3V19asTcQ6MAdSXXaE7/AjivElP35Z2TFCVKy9YbJf+JQ5XQqLxYJOVrLHe1Sv9aO6nTMlVu72EJFb5qzYMKGLi45Aja1Yil2pHEYggMh65aDNM8w3Mskqz+/zRpBOJrnE87H4oStsXUf1NtkLKiKofhXU2lOK9+VX+2GZlJe4aPQ1fil+SR9WJHR3rDbZaBVMbh+zGJnM+q4tgPoYzTl0eYPeP2qbA+lCqwn1m9HQPqtnmAoGuCcVKR9/IwGxXHL9Kh8EoznQ
+DKIM-Signature: a=rsa-sha256; bh=bJS1X0Z9NZuLmMWvBbxplkX8AKkcx/lOcKcPARktfOw=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1782791425; v=1;
+ b=UxUB2TRD6B/tyAbplNz3H0Q0dPJkVXdJzmBXtCuSbQeJqKt4jQ2Ngf+wkYtpSgiLjz4KcNDr
+ hDNRLP0kh5c9abWj0iZfcwh2OV6KfxprJ+0qTZNdnH+PBEGtsgOO2y4cmI6kIwi6G3u/Ll3vR2e
+ YCSQzjJWB9J2s5JGtPT7l4Z1Asnn6u5CXKnP+vaERRVcaVhXf45k2FlFaF9S71J4Qx9PZXzhspk
+ subFdslje6ElUBCZ0uCva+13mB+wglTWqZlY+uEz+zulVTPT1xqCF8fGk4Nn7t0Ak3WFFxdiiE3
+ 6zAoQdOXP9SZlBe1A9TNb7eyBw9MvaJtXyaz+zbnxvNGg==
+Received-SPF: pass client-ip=51.210.91.43; envelope-from=clg@kaod.org;
+ helo=smtpout4.mo539.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -71,158 +131,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Commit 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
-gave ID_AA64ISAR0_EL1 a readfn so the RNDR field can reflect SCR_EL3.TRNDR
-at read time, and marked the cpreg ARM_CP_NO_RAW in the system-emulation
-path.  HVF then trips its hvf_arch_init_vcpu() assertion that no ID
-register in hvf_sreg_list[] is NO_RAW, aborting on boot on Apple Silicon:
 
-  Assertion failed: (!(ri->type & ARM_CP_NO_RAW)),
-  function hvf_arch_init_vcpu, file hvf.c, line 1441.
+On 6/12/26 08:08, Jian Zhang wrote:
+> The Aspeed INTC records an interrupt source in the pending bitmap when
+> the source is masked or another status bit is still being handled.  When
+> the guest later clears the status register, the model promotes all saved
+> pending bits back to status unconditionally.
+> 
+> This is not correct for level-triggered sources.  A source can deassert
+> while another source connected to the same OR gate keeps the aggregated
+> INTC line asserted.  Promoting the stale bit later makes the guest demux
+> a child interrupt whose device status has already been cleared.
+> 
+> This is visible on AST2700 I2C, where the I2C buses are aggregated
+> through INTCIO GICINT194 before reaching the GIC.  A stale I2C source bit
+> can be promoted back to the INTCIO status register, causing Linux to run
+> the corresponding I2C ISR with an empty I2C interrupt status register.
+> For example, the Linux aspeed-i2c debug ring shows a transfer that first
+> receives a valid status interrupt, then receives a spurious ISR with both
+> isr and raw status equal to zero.  The zero-status ISR clears the saved
+> command error and the transfer completes with ret=0:
+> 
+>    event=start isr=0x00000000 raw=0x00000000 cmd_err=0 msgs_idx=0
+>    event=isr   isr=0x00010011 raw=0x00010011 cmd_err=0 msgs_idx=0
+>    event=isr   isr=0x00000000 raw=0x00000000 cmd_err=1 msgs_idx=1
+>    event=complete ret=0 cmd_err=0 msgs_idx=1
+> 
+> A normal command can then be reported as zero transferred messages, which
+> is converted to -EIO by Linux i2c_smbus_xfer_emulated().  The race is
+> more likely when multiple I2C buses are accessed concurrently.
+> 
+> Drop pending bits that no longer correspond to an asserted and enabled
+> source before they can be promoted back to status.
+> 
+> Signed-off-by: Jian Zhang <zhangjian.3032@bytedance.com>
 
-Reproduce with:
 
-  qemu-system-aarch64 -M virt,accel=3Dhvf -cpu host \
-                      -nographic -display none -bios /dev/null
+This looks correct to me.
 
-Fix it the same way ID_AA64PFR0_EL1 already is: list
-HV_SYS_REG_ID_AA64ISAR0_EL1 in the SYNC_NO_RAW_REGS block in sysreg.c.inc
-so the assert loop skips it, and seed the vCPU's copy at init time.
+Jamin, could you take a look please ?
 
-While here, unify how the three isar.idregs[]-backed ID registers are
-seeded.  isar.idregs[] already holds QEMU's intended value for each (the
-host caps, probed once at realize via hv_vcpu_config_get_feature_reg(),
-plus any QEMU adjustment), so there is no need to read each register back
-from the vCPU first.  Seed PFR0, ISAR0 and MMFR0 directly from
-isar.idregs[], dropping the two per-vCPU hv_vcpu_get_sys_reg() reads:
+Thanks,
 
-  - PFR0: take the GIC sysreg-interface bit from env->gicv3state, as the
-    id_aa64pfr0_read() readfn does.  Identical to the previous code
-    whenever a GICv3 sysreg interface is present (the configuration HVF
-    runs in practice); it differs only in that a vCPU with no GICv3 now
-    reports ID_AA64PFR0_EL1.GIC =3D=3D 0 instead of inheriting the host's
-    value, which matches the field's meaning.
-  - ISAR0: no overlay is needed; HVF does not expose EL3, so
-    SCR_EL3.TRNDR is never set and the readfn is constant.
-  - MMFR0: still clamp PARANGE to the chosen IPA size, updating
-    isar.idregs[] in place because the page-table walker and the
-    ID_AA64MMFR0_EL1 cpreg resetvalue read PARANGE back from there.
+C.
 
-Reported-by: Zenghui Yu <zenghui.yu@linux.dev>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Fixes: 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
-Signed-off-by: Jason Wright <wrigjl@proton.me>
----
-v1 of this fix-up added a third way of seeding an ID register into the
-vCPU at init, and Peter asked why hvf_arch_init_vcpu() should now have
-three different shapes for the isar.idregs[]-backed registers, and whether
-the existing per-register hv_vcpu_get_sys_reg() re-reads are needed at all.
 
-v2 unifies the three.  isar.idregs[] is seeded once at realize from
-hv_vcpu_config_get_feature_reg() (plus QEMU's own adjustments), so it
-already holds the value we want to push; the init-time re-reads of PFR0
-and MMFR0 are redundant.  v2 drops both and seeds PFR0, ISAR0 and MMFR0
-directly from isar.idregs[].
 
-I confirmed the re-reads are redundant by logging, at init, the seeded
-isar.idregs[] value against hv_vcpu_get_sys_reg() for each register on an
-Apple Silicon host (-cpu host):
-
-  PFR0  seed=3D1101000010110011 live=3D1101000011110011  (differ in GIC onl=
-y)
-  MMFR0 seed=3D000010000f100022 live=3D000010000f100022  (identical)
-  ISAR0 seed=3D0221100110212120 live=3D0221100110212120  (identical)
-
-PFR0 differs only in the GIC field [27:24], which QEMU already overlays
-from env->gicv3state in id_aa64pfr0_read(); MMFR0 and ISAR0 are identical.
-
-Two things worth flagging:
-
-  - PFR0 now takes the GIC bit purely from env->gicv3state rather than
-    OR-ing it onto the host's value.  Identical for any guest with a GICv3
-    sysreg interface (what HVF runs in practice); it only changes a vCPU
-    with no GICv3, which now reports ID_AA64PFR0_EL1.GIC =3D=3D 0 instead o=
-f
-    inheriting the host bit -- arguably the correct value.
-
-  - MMFR0 still clamps PARANGE to the chosen IPA size and writes it back
-    into isar.idregs[], because the page-table walker and the
-    ID_AA64MMFR0_EL1 cpreg resetvalue read PARANGE from there.  It is the
-    one register that still updates isar.idregs[]; that tracks a real
-    consumer, not an inconsistency.
-
-Tested on macOS arm64 (Darwin 25.5.0), master 20553466cc:
-  - HVF -cpu host vCPU init: no assertion (was SIGABRT before).
-  - meson test --suite qtest-aarch64: 29/29 pass (3 skipped).
-  - checkpatch clean.
-
-v2:
-  - Unify PFR0/ISAR0/MMFR0 seeding; drop the redundant
-    hv_vcpu_get_sys_reg() re-reads for PFR0 and MMFR0 (Peter Maydell).
-  - Take PFR0.GIC from env->gicv3state directly.
-  - Reword the subject and commit message accordingly.
-
- target/arm/hvf/hvf.c        | 10 ++++------
- target/arm/hvf/sysreg.c.inc |  2 +-
- 2 files changed, 5 insertions(+), 7 deletions(-)
-
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 8b902c6882..6310cfaf3e 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1478,20 +1478,18 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-                               arm_cpu->mp_affinity);
-     assert_hvf_ok(ret);
-=20
--    ret =3D hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64PFR0_EL1=
-, &pfr);
--    assert_hvf_ok(ret);
-+    pfr =3D GET_IDREG(&arm_cpu->isar, ID_AA64PFR0);
-     pfr |=3D env->gicv3state ? (1 << 24) : 0;
-     ret =3D hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64PFR0_EL1=
-, pfr);
-     assert_hvf_ok(ret);
-=20
--    /* We're limited to underlying hardware caps, override internal versio=
-ns */
--    ret =3D hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64MMFR0_EL=
-1,
--                              &arm_cpu->isar.idregs[ID_AA64MMFR0_EL1_IDX])=
-;
-+    ret =3D hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64ISAR0_EL=
-1,
-+                              GET_IDREG(&arm_cpu->isar, ID_AA64ISAR0));
-     assert_hvf_ok(ret);
-=20
-     clamp_id_aa64mmfr0_parange_to_ipa_size(&arm_cpu->isar);
-     ret =3D hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64MMFR0_EL=
-1,
--                              arm_cpu->isar.idregs[ID_AA64MMFR0_EL1_IDX]);
-+                              GET_IDREG(&arm_cpu->isar, ID_AA64MMFR0));
-     assert_hvf_ok(ret);
-=20
-     if (!hvf_irqchip_in_kernel()) {
-diff --git a/target/arm/hvf/sysreg.c.inc b/target/arm/hvf/sysreg.c.inc
-index c11dbf274e..acd5a41364 100644
---- a/target/arm/hvf/sysreg.c.inc
-+++ b/target/arm/hvf/sysreg.c.inc
-@@ -89,13 +89,13 @@ DEF_SYSREG(HV_SYS_REG_MDCCINT_EL1, 2, 0, 0, 2, 0)
- DEF_SYSREG(HV_SYS_REG_MIDR_EL1, 3, 0, 0, 0, 0)
- DEF_SYSREG(HV_SYS_REG_MPIDR_EL1, 3, 0, 0, 0, 5)
- DEF_SYSREG(HV_SYS_REG_ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
-+DEF_SYSREG(HV_SYS_REG_ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
- #endif
-=20
- DEF_SYSREG(HV_SYS_REG_ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
- /* Add ID_AA64PFR2_EL1 here when HVF supports it */
- DEF_SYSREG(HV_SYS_REG_ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
- DEF_SYSREG(HV_SYS_REG_ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
--DEF_SYSREG(HV_SYS_REG_ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
- DEF_SYSREG(HV_SYS_REG_ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
-=20
- #ifdef SYNC_NO_MMFR0
---=20
-2.50.1 (Apple Git-155)
-
+> ---
+>   hw/intc/aspeed_intc.c | 25 +++++++++++++++++++++++++
+>   1 file changed, 25 insertions(+)
+> 
+> diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+> index 5a36fff5204..ab80c239bc1 100644
+> --- a/hw/intc/aspeed_intc.c
+> +++ b/hw/intc/aspeed_intc.c
+> @@ -107,6 +107,27 @@ static const AspeedINTCIRQ *aspeed_intc_get_irq(AspeedINTCClass *aic,
+>       g_assert_not_reached();
+>   }
+>   
+> +static uint32_t aspeed_intc_orgate_levels(AspeedINTCState *s, int inpin_idx)
+> +{
+> +    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+> +    uint32_t levels = 0;
+> +    int i;
+> +
+> +    for (i = 0; i < aic->num_lines && i < 32; i++) {
+> +        if (s->orgates[inpin_idx].levels[i]) {
+> +            levels |= BIT(i);
+> +        }
+> +    }
+> +
+> +    return levels;
+> +}
+> +
+> +static void aspeed_intc_drop_stale_pending(AspeedINTCState *s, int inpin_idx)
+> +{
+> +    s->pending[inpin_idx] &= aspeed_intc_orgate_levels(s, inpin_idx) &
+> +                             s->enable[inpin_idx];
+> +}
+> +
+>   /*
+>    * Update the state of an interrupt controller pin by setting
+>    * the specified output pin to the given level.
+> @@ -231,6 +252,8 @@ static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+>       trace_aspeed_intc_set_irq(name, inpin_idx, level);
+>       enable = s->enable[inpin_idx];
+>   
+> +    aspeed_intc_drop_stale_pending(s, inpin_idx);
+> +
+>       if (!level) {
+>           return;
+>       }
+> @@ -343,6 +366,7 @@ static void aspeed_intc_status_handler(AspeedINTCState *s, hwaddr offset,
+>       /* All source ISR execution are done */
+>       if (!s->regs[reg]) {
+>           trace_aspeed_intc_all_isr_done(name, inpin_idx);
+> +        aspeed_intc_drop_stale_pending(s, inpin_idx);
+>           if (s->pending[inpin_idx]) {
+>               /*
+>                * handle pending source interrupt
+> @@ -402,6 +426,7 @@ static void aspeed_intc_status_handler_multi_outpins(AspeedINTCState *s,
+>           /* All source ISR executions are done from a specific bit */
+>           if (data & BIT(i)) {
+>               trace_aspeed_intc_all_isr_done_bit(name, inpin_idx, i);
+> +            aspeed_intc_drop_stale_pending(s, inpin_idx);
+>               if (s->pending[inpin_idx] & BIT(i)) {
+>                   /*
+>                    * Handle pending source interrupt.
 
 

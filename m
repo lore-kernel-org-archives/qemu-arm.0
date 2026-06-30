@@ -4,133 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CE98C43327
-	for <qemu-arm@archiver.kernel.org>; Tue, 30 Jun 2026 14:00:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B803C43458
+	for <qemu-arm@archiver.kernel.org>; Tue, 30 Jun 2026 14:32:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1weYz7-00026O-BX; Tue, 30 Jun 2026 09:58:45 -0400
+	id 1weZUd-0000dh-2v; Tue, 30 Jun 2026 10:31:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1weYyq-00023J-55; Tue, 30 Jun 2026 09:58:29 -0400
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1weYyo-0003om-3R; Tue, 30 Jun 2026 09:58:27 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=KcipN/9xtKNariXQMn6PXO/RsFBwJbmkWA0EylTbqPpLayZ4JDe9yp2s30ZrS5DaEEN5QK4amZeq3cfDVaMIk6YGZ3L3rUsws3Tjv5kUUZe+J+FAVz112idtG5FaHIs19SvOfK2bPZV9Ea1O6aWEnHrRnFRtcRFfjf9F8vWQfoNDUW7If8A+iGcgX7Hy7/SEJzztvDYqLl5pvPryrE7VaZJTS59afMF3+ALy2Ejx09rjvexENV1W76ps0OpTP01ml9sbiBFeQTCBVrUqzqpIfhPmaPzrEwiM3C7sAYnKxgXCneyqDrm3lhgmDS4Skv0wH/phgaeoqS2HdluR1eJlyw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Y1sjayF5ObqNguGjmSLOK+Ap0DWobwdKEGhwAIhaR6w=;
- b=NVqiBc1ZYvaKl0s3+xJ9BpX99Uu6wPIOje5M2JBhw9mIW8mkDBsE/7M1bsEJVq83tDhx+tkI7qt6TUhVX8Ju/LJBG6d7xLs6KFJGRWTcC84tHdUNc9cep79sYs6EPq90wVG7Fe0xyek9NZwcZXVEJ0Ai48yc/YXa3tRFeHBLD44Ov9RqFYjtr/QYTrbdbShHFfh87HJqQWwjVGs2NjvCovubLYordcR5hDv1psGExVpzROKLsEDJpPSGacrZqSCzS55AMlwZ7rIA6QYONHFpqIrYYuOy9uO4mcubPyPEhWJnhnSpO6RH0ZvVeh2I/VycPmiek7A5ghyOodzPUdRL+g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=processmission.com; dmarc=pass action=none
- header.from=processmission.com; dkim=pass header.d=processmission.com;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Y1sjayF5ObqNguGjmSLOK+Ap0DWobwdKEGhwAIhaR6w=;
- b=bw9KggLoVcZOKM0GJkVQeoqmHPXFNq2PZItvjm6IHDQLZtJxizgVivoI+WITZ2tVXeR2B1xutQL1kQgGsQjy4aF1i+QS6y0w4lNWOItXMVfIfzaSDpdZouG4d/5fEtmX8l55MAreDLeNrEo5QaqHm8RtOusj0ULBF2cxJglvfoMGk4zK5munYqpSxEOqht9UhrGWL2tg5+lcoJXEpmUUUUcE+bwtu76XQD0Vpwq4EP63qbYwI+jovBv9CDk4Qj+4mUKoJ60lKNLzhWQVnd4wMEqLDcgNtVPujYgtttOZp/rUiuhmNBFt31OrT/IJ5NO9egv+ItrasIIv0OfpuhDISg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=processmission.com;
-Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
- by TYPPR02MB8959.apcprd02.prod.outlook.com (2603:1096:405:382::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.159.19; Tue, 30 Jun
- 2026 13:58:14 +0000
-Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
- ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
- ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0159.018; Tue, 30 Jun 2026
- 13:58:14 +0000
-From: Bin Meng <bin.meng@processmission.com>
-To: QEMU <qemu-devel@nongnu.org>
-Cc: Alistair Francis <alistair@alistair23.me>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- qemu-arm@nongnu.org
-Subject: [PATCH 08/10] Revert "aspeed/smc: Fix number of dummy cycles for
- FAST_READ_4 command"
-Date: Tue, 30 Jun 2026 21:57:27 +0800
-Message-Id: <20260630135729.466264-9-bin.meng@processmission.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260630135729.466264-1-bin.meng@processmission.com>
-References: <20260630135729.466264-1-bin.meng@processmission.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SE2P216CA0161.KORP216.PROD.OUTLOOK.COM
- (2603:1096:101:2cb::15) To KL1PR02MB4977.apcprd02.prod.outlook.com
- (2603:1096:820:71::8)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1weZUa-0000d9-Ik
+ for qemu-arm@nongnu.org; Tue, 30 Jun 2026 10:31:16 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1weZUY-0000lU-4l
+ for qemu-arm@nongnu.org; Tue, 30 Jun 2026 10:31:16 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id
+ d9443c01a7336-2c95a0c0aa2so31751535ad.3
+ for <qemu-arm@nongnu.org>; Tue, 30 Jun 2026 07:31:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1782829871; x=1783434671; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=4SYKXqQbYYwS3K02zbSGADcDZzlKLU+Sb2cmDV+qFjE=;
+ b=JWlErBFYjBq5Ko3WYgh6T1wXGCfQxjDrom1j2KcuRstbahbrUm6rJ7VWWASikJfOTd
+ watiwgaZO/+9DMXI8IAumCrlLcRmYGJJ8eEnswq7k9HKks7dXOMzraABdRfbpy0at2oP
+ q9DO6ISzdwq9j6krlQiwekDWEfCCXv3+b/Rcx6Uc/zJSiGWrD6Haorng+kKxydC8utsR
+ d7BcVYf74LAKajL3NIFX1A39c66hqvC5IM/KhIuxy6BEnXZ9Obn9MQCugMRrTaokhOhK
+ kctf5ApIVuW/8KaQ4UhC+f0kUupyGME9NOP8oQWq7hZrlfy015LlxUsEgqYtINAMBldA
+ N15w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782829871; x=1783434671;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=4SYKXqQbYYwS3K02zbSGADcDZzlKLU+Sb2cmDV+qFjE=;
+ b=lhx7wJ9T60gqkzcfG8dJksoiQUdDlsg3WDkaUlc2TMSBi1+RXmxvPllvH0ZCiomI7U
+ 50RNh1La/8KfDWQoCDXWnSNmYXQr5G8T7TFawXAhhGmPVuTOA9JsGcMvSnIt7gVD3ryF
+ U+91tpaRML2UjR/58h4qsdklm0Z4QQbAzD1viKd5CPpy6Kt/mP7tHivpMgyYpXERZ6An
+ 7DGwgPyyQYcZ3ybgbJCzHwihFhmXPcxOC5/5pORNp4ALYKj/FQyjhQ8yXN3ypCJ+eN19
+ SNK0rL4m1qVOoGO1aWaIcoxfZojXinKswkBmQiK5INLKIAeGb6Q0ZuVIUB/ZqdvK2uvq
+ RsZA==
+X-Gm-Message-State: AOJu0YzM+aVvvMwF9oVS2I7145bRMVeL3ipV51XemwFf52I0muRCoZ8C
+ w9C5SltpYyf7nqQrb2YciIudqH1dN9ZRCsLAn/iWfKSqCopBueUr6ivfRlsJxmWN5SA=
+X-Gm-Gg: AfdE7cl3KFC44LfkuJhlkIXVcZo4rO9sresKQMUD5YXah65BclrOU38MKY4YVjcXuv1
+ UgM9QZ85RTnVoxDnqtckY0oLp4dEwkFMuc3+3dCkpLc9gA282vOQOscK2q9N5XoixAFdwkYFYjL
+ R6GeIks8G3LO6/IsHQ1jEbq6IcFZJNjkdcH4hDdW0C+rouTQQm5Pt33DegO3lFML5O/jGMYqXNj
+ K+OXQozm3M3dYBcLMxSQtumVel8+7NX7IlVzChEvLYAZA3lTPWcMCEt5rCj8bdJQUT7vheOHIL4
+ cKt/LFTYhbSp9JjdXUhxSUJiwk5UapllxeT+zc6ENvFO3gXdpYL0fy+x+hR5OGWzJ8YJed2z7wA
+ wvbCt6cSzFh3OqIvoO/ZjiZRqwfqIcHvvug67mOYXtaS6CnIlvnpLe6xJ1ahXBdtnOMW64SUJXH
+ xdaVePRvSovhChJMQQPjZNJIpzuiLvgciNFR1sM+so7l7yDctDuHwubBNjHSYDrBfeXEVD
+X-Received: by 2002:a17:902:d2c1:b0:2c9:9a19:10c with SMTP id
+ d9443c01a7336-2ca2ea2393emr32291045ad.40.1782829871361; 
+ Tue, 30 Jun 2026 07:31:11 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-129-215.tukw.qwest.net. [174.21.129.215])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2ca382c5c48sm15185045ad.78.2026.06.30.07.31.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 30 Jun 2026 07:31:10 -0700 (PDT)
+Message-ID: <f0662290-e441-43a0-81b5-a9210f90096d@linaro.org>
+Date: Tue, 30 Jun 2026 07:31:08 -0700
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|TYPPR02MB8959:EE_
-X-MS-Office365-Filtering-Correlation-Id: 99aa5c7e-2028-4203-e093-08ded6afa0ea
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|1800799024|366016|34096008|23010399003|7416014|22082099003|18002099003|56012099006;
-X-Microsoft-Antispam-Message-Info: XZrAF0ktr5RB9PHUyAxV+md3IQZqaQ7/joqH9MYxPSQoZBqjOTkYaFRr0JaOzXbN4UUSro2h22BeYEqXqvTRYOKFAtnSrYYNCtbv+OSUC5VjP0TuioG0kdIfWgCn2ZJTsfgo9FCInt4Nxy+CxjTbjVXr3CVoOscSF2fNybfXc2wqTE9XtAWBkr65jLUKlubQ43BENEywquM3rlsm43d/N2G5b9qAMBgUKZqffZLezD8xgywG68cKBPYnYIf2TSKPIyRsF7wDn+nMnDt+l79bK7HYkhce+YuhwoyIHMkxuJ7mUdBd7colq2VDZWQ1ydrEJ5y6Kpn+y3qiYwxNvOnkVSuLB/nSc5xyL/kTjXs6V+LtvwHmSuJI306+DiovQv2GPG2I408rlNJ3rL9rPfvggtRJLa0UCQ+5dUZvDEsDY0venMD3uwdPQ0K8iqmqbtlf/lDrAMY8MvaMdG2U6NOyqMIW9y7qT+HN+fBzwQ0h0C9aP2N80EBDHPrrxRyKuUBbXHfCLmQx/UWGb5gIRiMHgYFYDuo435i2/peofZ3lmn9HXVSLl5aiG7AMQcrpgTg7Um8JnyG4pVpLQBJoUrYMB0BgZ/fW+Mc8U82u2uoxeT4lJ/gO0SBS9OkaTPsQJmgNcAmA1C+gMDrplp2VYHBqwQS4xemVRUKdHx+zNer60j0=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016)(34096008)(23010399003)(7416014)(22082099003)(18002099003)(56012099006);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?+4Eclop7N7Ldj62+fFnnfOBsxifv5HN9z1vSexnjyQ4++O/Ch2Fyxa906b9s?=
- =?us-ascii?Q?CgAwUd5/NkVCiSa/bsmBniOCz4FkolLyuhLBJesWctqo3TrgoxFNe1jtchvq?=
- =?us-ascii?Q?A1SUnWkIkrlC0HvBvFD6mSfWav7U566mExpGGEkyajV3yqoYMc/NUSgIXxdm?=
- =?us-ascii?Q?oSYYi/6kJjnS7hIwfVmSuMsBwoDs8H/10v+rt2QHrBQFjwDOV+sbzrsfSh5m?=
- =?us-ascii?Q?C76nmaGhmNWPnsxcuxtC5gnSTKo1ee/RBZFuda8JxK86ILmS4qfy+DM+97+T?=
- =?us-ascii?Q?eYIHA9KKMcbJ4yOHWzIoljThdKigrijo1w/3Lwqta4sBVT/AkBfXj3u8Dx0w?=
- =?us-ascii?Q?9tp/wIM2JjewfY68sIXqqJZ+GT6YDraSl7JSVEUeLPhJvYY708dC+xm8H9mw?=
- =?us-ascii?Q?joOrQ4uox4Nz8rd+g54944eorbVy589z79YuJqQRoNv6ymXXvnZ93ji7o46b?=
- =?us-ascii?Q?j03xDmmCSaHzgx3qkwAP8pejD3yv5VFqiBK26BTRpvDk4BOU0BFqo3FB7fnz?=
- =?us-ascii?Q?9KQWtf4rv81JP3ce+hPwkF5PCmg9126vNUE6LSjIQtN8o7DQm8U34qArG7U5?=
- =?us-ascii?Q?krxEuC2nLqxF+KHOhTyFN1S7v5rmDAoimGglbyDKT0tz1YXftIdPBQf2hXMG?=
- =?us-ascii?Q?gPKsgh4/YGtWqPtceX9oStu1tT4crHJIhpubPNRlKSR8YOl/dtr3sBG7Jgwd?=
- =?us-ascii?Q?MKBQoDDJTD3mtwfcZnznTRC1f/roChzrZe7Rj41agUwSl7swio8jHfsvt16M?=
- =?us-ascii?Q?Sfk+67dvgJ2LGlTjxN2zC3y4muAYca9+Q3kAzAWsyUPKRYGdTTySSe2/4S+h?=
- =?us-ascii?Q?jPH4mDLHqnZFtRdlS0qwg/jKCPSSf3hvBm2UnGJajvWyl12jtosb6SaavBvy?=
- =?us-ascii?Q?hdV4dn72f5Nj5aFXHS01mg3MgU7FMNV0O+swKzPc2Ohf3r6iD1Bp5EQrJ4cH?=
- =?us-ascii?Q?ScaT6YfIAVWVMWNQ68udIWM/Tv6kzg5mDI8XxddS18eIS+8yitpfewxHpAeX?=
- =?us-ascii?Q?AUcZrRNhDSUzFJvUNpU9GthB5MxUk6MIlmmMhItTgpQbDGAd6oWo26f7WJyV?=
- =?us-ascii?Q?YL9iJGSPuUbaJlkeAwkpHKDlR01oVqdu11QoBXWAmlCeMXNy4mYMievKM7Fj?=
- =?us-ascii?Q?0lL6azvCBvHA3QF0nhpHCtEvMl7N40hDgo4tdyqQo28XHvE/4KLUm16hdD4D?=
- =?us-ascii?Q?MUTPxoaPfwXDzlfJ5jwo1dBi0leVHkjQpyE9DaiRi6TqVRfewepBVVrDf1ex?=
- =?us-ascii?Q?Zj7YIjRCuWF0Rk2XCo0CIBeNm2my9eB+PPj/GsWVl/tNMOwNXX7dnvuF2ymP?=
- =?us-ascii?Q?00ErnbFpv91wTKP8aEp/QoKLi3rT7kBI8O4C2WqN/vWhHZaortCqAh3aRTCy?=
- =?us-ascii?Q?9cRrOCTSpNKvy020KZkkk7lLo35J4WEkJQMRiAijm+fQVhw93Td7KTkz8Afj?=
- =?us-ascii?Q?DsunBud3qVeIfRk6AmvMK3oCcCoNV9Djm9d1LppSJVrnAzYRvT8uPXS+/Dbr?=
- =?us-ascii?Q?CdJB6tWpBn/OGsv77N6IWtQWTNZyXCM1iLIT3cUhfw3rwWfUYhn0zu9N2c6n?=
- =?us-ascii?Q?VflH4jOwfYBhY5Pry8wYRQuvDmI5GFwwrLhbeI5soTswrTXuVWBV8Bb77AMB?=
- =?us-ascii?Q?DxUBzIuTMMd3qmVm+EjGaT9VinDDWwk1B8hZabVKruFTuuPdAneOfbYfofUn?=
- =?us-ascii?Q?0nCzLEx+b4OyO6u7z2lIbWLcrYGxeS8j86UeRbtvRtd3UT6SbD2yYRTu87wI?=
- =?us-ascii?Q?IBpvXPdD9CL/+lESEDcHzZzQKFR5KlY=3D?=
-X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 99aa5c7e-2028-4203-e093-08ded6afa0ea
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jun 2026 13:58:14.2431 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: XEy7hlT5phWgejCFbQcv0BE5sHQByN73pNY4/Ygl42NPzc/Ud9ZMlmbf732YkJkeEvPnzszLEdSF8QAAD6dwyaU8AxW2JkNqypGxoGg+mIs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYPPR02MB8959
-Received-SPF: pass client-ip=2a01:111:f403:c405::5;
- envelope-from=bin.meng@processmission.com;
- helo=TYPPR03CU001.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] target/arm/hvf: seed NO_RAW ID registers from
+ isar.idregs[] on vCPU init
+To: Jason Wright <wrigjl@proton.me>, agraf@csgraf.de, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, zenghui.yu@linux.dev,
+ philmd@oss.qualcomm.com
+References: <20260529114723.42040-1-peter.maydell@linaro.org>
+ <20260529114723.42040-18-peter.maydell@linaro.org>
+ <745e66c7-2a9b-4185-bae7-77e10623332b@linux.dev>
+ <20260607182221.4357-1-wrigjl@proton.me>
+ <20260629205213.82391-1-wrigjl@proton.me>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260629205213.82391-1-wrigjl@proton.me>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -147,35 +108,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This reverts commit 7faf6f1790dddf9f3acf6ddd95f7bbc1b4a755d0.
+On 6/29/26 13:52, Jason Wright wrote:
+> Commit 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
+> gave ID_AA64ISAR0_EL1 a readfn so the RNDR field can reflect SCR_EL3.TRNDR
+> at read time, and marked the cpreg ARM_CP_NO_RAW in the system-emulation
+> path.  HVF then trips its hvf_arch_init_vcpu() assertion that no ID
+> register in hvf_sreg_list[] is NO_RAW, aborting on boot on Apple Silicon:
+> 
+>    Assertion failed: (!(ri->type & ARM_CP_NO_RAW)),
+>    function hvf_arch_init_vcpu, file hvf.c, line 1441.
+> 
+> Reproduce with:
+> 
+>    qemu-system-aarch64 -M virt,accel=hvf -cpu host \
+>                        -nographic -display none -bios /dev/null
+> 
+> Fix it the same way ID_AA64PFR0_EL1 already is: list
+> HV_SYS_REG_ID_AA64ISAR0_EL1 in the SYNC_NO_RAW_REGS block in sysreg.c.inc
+> so the assert loop skips it, and seed the vCPU's copy at init time.
+> 
+> While here, unify how the three isar.idregs[]-backed ID registers are
+> seeded.  isar.idregs[] already holds QEMU's intended value for each (the
+> host caps, probed once at realize via hv_vcpu_config_get_feature_reg(),
+> plus any QEMU adjustment), so there is no need to read each register back
+> from the vCPU first.  Seed PFR0, ISAR0 and MMFR0 directly from
+> isar.idregs[], dropping the two per-vCPU hv_vcpu_get_sys_reg() reads:
+> 
+>    - PFR0: take the GIC sysreg-interface bit from env->gicv3state, as the
+>      id_aa64pfr0_read() readfn does.  Identical to the previous code
+>      whenever a GICv3 sysreg interface is present (the configuration HVF
+>      runs in practice); it differs only in that a vCPU with no GICv3 now
+>      reports ID_AA64PFR0_EL1.GIC == 0 instead of inheriting the host's
+>      value, which matches the field's meaning.
+>    - ISAR0: no overlay is needed; HVF does not expose EL3, so
+>      SCR_EL3.TRNDR is never set and the readfn is constant.
+>    - MMFR0: still clamp PARANGE to the chosen IPA size, updating
+>      isar.idregs[] in place because the page-table walker and the
+>      ID_AA64MMFR0_EL1 cpreg resetvalue read PARANGE back from there.
+> 
+> Reported-by: Zenghui Yu<zenghui.yu@linux.dev>
+> Suggested-by: Peter Maydell<peter.maydell@linaro.org>
+> Fixes: 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
+> Signed-off-by: Jason Wright<wrigjl@proton.me>
+> ---
 
-The incorrect implementation of dummy cycles in m25p80 model is now
-corrected. Revert this commit.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: Bin Meng <bin.meng@processmission.com>
----
-
- hw/ssi/aspeed_smc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index f5abc9fcc9..c2a732664b 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -568,11 +568,11 @@ static int aspeed_smc_num_dummies(uint8_t command)
-     case FAST_READ:
-     case DOR:
-     case QOR:
--    case FAST_READ_4:
-     case DOR_4:
-     case QOR_4:
-         return 1;
-     case DIOR:
-+    case FAST_READ_4:
-     case DIOR_4:
-         return 2;
-     case QIOR:
--- 
-2.34.1
-
+r~
 

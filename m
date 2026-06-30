@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B803C43458
-	for <qemu-arm@archiver.kernel.org>; Tue, 30 Jun 2026 14:32:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49BC7C43458
+	for <qemu-arm@archiver.kernel.org>; Tue, 30 Jun 2026 14:44:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1weZUd-0000dh-2v; Tue, 30 Jun 2026 10:31:20 -0400
+	id 1weZhN-0003gk-MR; Tue, 30 Jun 2026 10:44:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1weZUa-0000d9-Ik
- for qemu-arm@nongnu.org; Tue, 30 Jun 2026 10:31:16 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ id 1weZhL-0003e7-Si
+ for qemu-arm@nongnu.org; Tue, 30 Jun 2026 10:44:27 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1weZUY-0000lU-4l
- for qemu-arm@nongnu.org; Tue, 30 Jun 2026 10:31:16 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-2c95a0c0aa2so31751535ad.3
- for <qemu-arm@nongnu.org>; Tue, 30 Jun 2026 07:31:13 -0700 (PDT)
+ id 1weZhK-0005WT-GA
+ for qemu-arm@nongnu.org; Tue, 30 Jun 2026 10:44:27 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-36b9d265355so2388622a91.2
+ for <qemu-arm@nongnu.org>; Tue, 30 Jun 2026 07:44:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782829871; x=1783434671; darn=nongnu.org;
+ d=linaro.org; s=google; t=1782830665; x=1783435465; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=4SYKXqQbYYwS3K02zbSGADcDZzlKLU+Sb2cmDV+qFjE=;
- b=JWlErBFYjBq5Ko3WYgh6T1wXGCfQxjDrom1j2KcuRstbahbrUm6rJ7VWWASikJfOTd
- watiwgaZO/+9DMXI8IAumCrlLcRmYGJJ8eEnswq7k9HKks7dXOMzraABdRfbpy0at2oP
- q9DO6ISzdwq9j6krlQiwekDWEfCCXv3+b/Rcx6Uc/zJSiGWrD6Haorng+kKxydC8utsR
- d7BcVYf74LAKajL3NIFX1A39c66hqvC5IM/KhIuxy6BEnXZ9Obn9MQCugMRrTaokhOhK
- kctf5ApIVuW/8KaQ4UhC+f0kUupyGME9NOP8oQWq7hZrlfy015LlxUsEgqYtINAMBldA
- N15w==
+ bh=1oaq69YHpeBKD8kDAPf/6A0v+jb3TVwS2/YK35XUKhY=;
+ b=ZBXLmCQv9xjZJBzGzNG0+fFqqe48QrFnjrw05k+GzT71UqS13mxEccwBq091pghb2Y
+ gKiw3hF0oQfW9A4l2CBbKBN1dDXG4calEziCbW1ztGRD/OgPeyLG924dzeZQyXXwMgK7
+ cAi8sFFE/SmvAY6bDiDHUnDVS6uBmUL107x+9xCBpV3MErN8Ypz8uprsxN0zsxf9o4GF
+ BKBioTwfLTMp4jbQpfJyaBzkhwLzWEKDLCsBt1ilTfznhIootuLPot+cpnw7CQsCnvMd
+ mxi4pli1q1za5CrhOZUp9U3Cf8uR4AEx6Mc7jdk3WBM9MxRvmSZWASGv7egm5AkdnaRO
+ TGSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782829871; x=1783434671;
+ d=1e100.net; s=20251104; t=1782830665; x=1783435465;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=4SYKXqQbYYwS3K02zbSGADcDZzlKLU+Sb2cmDV+qFjE=;
- b=lhx7wJ9T60gqkzcfG8dJksoiQUdDlsg3WDkaUlc2TMSBi1+RXmxvPllvH0ZCiomI7U
- 50RNh1La/8KfDWQoCDXWnSNmYXQr5G8T7TFawXAhhGmPVuTOA9JsGcMvSnIt7gVD3ryF
- U+91tpaRML2UjR/58h4qsdklm0Z4QQbAzD1viKd5CPpy6Kt/mP7tHivpMgyYpXERZ6An
- 7DGwgPyyQYcZ3ybgbJCzHwihFhmXPcxOC5/5pORNp4ALYKj/FQyjhQ8yXN3ypCJ+eN19
- SNK0rL4m1qVOoGO1aWaIcoxfZojXinKswkBmQiK5INLKIAeGb6Q0ZuVIUB/ZqdvK2uvq
- RsZA==
-X-Gm-Message-State: AOJu0YzM+aVvvMwF9oVS2I7145bRMVeL3ipV51XemwFf52I0muRCoZ8C
- w9C5SltpYyf7nqQrb2YciIudqH1dN9ZRCsLAn/iWfKSqCopBueUr6ivfRlsJxmWN5SA=
-X-Gm-Gg: AfdE7cl3KFC44LfkuJhlkIXVcZo4rO9sresKQMUD5YXah65BclrOU38MKY4YVjcXuv1
- UgM9QZ85RTnVoxDnqtckY0oLp4dEwkFMuc3+3dCkpLc9gA282vOQOscK2q9N5XoixAFdwkYFYjL
- R6GeIks8G3LO6/IsHQ1jEbq6IcFZJNjkdcH4hDdW0C+rouTQQm5Pt33DegO3lFML5O/jGMYqXNj
- K+OXQozm3M3dYBcLMxSQtumVel8+7NX7IlVzChEvLYAZA3lTPWcMCEt5rCj8bdJQUT7vheOHIL4
- cKt/LFTYhbSp9JjdXUhxSUJiwk5UapllxeT+zc6ENvFO3gXdpYL0fy+x+hR5OGWzJ8YJed2z7wA
- wvbCt6cSzFh3OqIvoO/ZjiZRqwfqIcHvvug67mOYXtaS6CnIlvnpLe6xJ1ahXBdtnOMW64SUJXH
- xdaVePRvSovhChJMQQPjZNJIpzuiLvgciNFR1sM+so7l7yDctDuHwubBNjHSYDrBfeXEVD
-X-Received: by 2002:a17:902:d2c1:b0:2c9:9a19:10c with SMTP id
- d9443c01a7336-2ca2ea2393emr32291045ad.40.1782829871361; 
- Tue, 30 Jun 2026 07:31:11 -0700 (PDT)
+ bh=1oaq69YHpeBKD8kDAPf/6A0v+jb3TVwS2/YK35XUKhY=;
+ b=HDh2X9/4JJtBX8QFAB5hi1xICjYFY7NncG51ix9tth1gwQ9QHB5r0yBy+0jxK7vic3
+ IqgH35uR4iWrxdULYaADPoAovgVbE+UpuMqeuHIY1/gC53ALSWNujkXPWglW1AcIlanG
+ 8iPWEVhf9ZlbJ9U5abbu8CT1uK8eFdphn6oVtDXjNIkCfPSi/HigYHCmHYAKkNEcrGwc
+ qIcD9FRVWT9E0k+qt4wmYlhWc7x+tQBiLXE+KU+p8bke9pS/UESkjZM/JFbK048j/PZr
+ elUYtz/r805OCHFgYJr0Vxzn9wy0E9LKyBE40ceJbJ/d0sqeFj2vbtrUjvmtn/GwRmty
+ XVXw==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RooT8SpBzajpiWirhvzShXOHFmZrAS4GhXDN8OwoshVJq77rUoZOHaDXysmX34f4T8mHmbFKSAWSA==@nongnu.org
+X-Gm-Message-State: AOJu0YyN1CYpZ5Yky9B9nt2DzBFTgDq5bEUVZjzX0cUUs482akxYbbcu
+ 3omVc3+TGibDfG4tEqZialGCI5ZvMYxgscOiUsbOpCb+DTpOQXTnK9fC/NeLgD7T/u8=
+X-Gm-Gg: AfdE7clZDSxCRBCD7bZ2PdPVZ9CVFlZ5Lm5uCv9pW7tpaMJ1S6v2vnebkkzkzl0LWQb
+ d95GqcbRFsQcgV1HnLlWHeQ/mec5gxUjdqA66iiLGkcq9jxRhkY0DdSoz+BPFi3rZa+ZqXcHWae
+ esL0GN7bF7EOOAh0VKIpueTDtTgITJmcbxx4askxD68Yl0f3xX6VsCo/StUqIqgELr9idod9Mps
+ 1e3+xEiHHB1l8EXzT5w4Skgi/QWqbgSZi0HxlXXDfgg10GwVZojkPXi8WmT2xGMwm49/zPoiiYd
+ jwfdwfddEnvF1yFrVQg/2Dl+trR18vBpjpSjfwg2S0MIM6kKA3ozX3U9MNIs0emvoy/X5XmchQn
+ qT8rCV80dvvNP7jZ9DyaDT7CukCN6BAaCuTjoSgBV50bdNQYnxLNQpZ20x74q/ILRuLEGXK5EhQ
+ n9KlZVW2Gmfl/g71O3jbNnLeCsxxDsgrAmxFHRKpzLcdPanr94sbZ0WnDG3w==
+X-Received: by 2002:a17:90b:3cc7:b0:37f:d27f:5186 with SMTP id
+ 98e67ed59e1d1-38052758d53mr2938853a91.25.1782830664651; 
+ Tue, 30 Jun 2026 07:44:24 -0700 (PDT)
 Received: from [192.168.0.4] (174-21-129-215.tukw.qwest.net. [174.21.129.215])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2ca382c5c48sm15185045ad.78.2026.06.30.07.31.10
+ 98e67ed59e1d1-38095d29965sm1249a91.1.2026.06.30.07.44.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Jun 2026 07:31:10 -0700 (PDT)
-Message-ID: <f0662290-e441-43a0-81b5-a9210f90096d@linaro.org>
-Date: Tue, 30 Jun 2026 07:31:08 -0700
+ Tue, 30 Jun 2026 07:44:24 -0700 (PDT)
+Message-ID: <09e8110a-0d39-4333-85f0-908ccc64c92f@linaro.org>
+Date: Tue, 30 Jun 2026 07:44:22 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] target/arm/hvf: seed NO_RAW ID registers from
- isar.idregs[] on vCPU init
-To: Jason Wright <wrigjl@proton.me>, agraf@csgraf.de, peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, zenghui.yu@linux.dev,
- philmd@oss.qualcomm.com
-References: <20260529114723.42040-1-peter.maydell@linaro.org>
- <20260529114723.42040-18-peter.maydell@linaro.org>
- <745e66c7-2a9b-4185-bae7-77e10623332b@linux.dev>
- <20260607182221.4357-1-wrigjl@proton.me>
- <20260629205213.82391-1-wrigjl@proton.me>
+Subject: Re: [PATCH v3 1/6] target/arm/tcg: Implement new instructions for
+ FPRCVT
+To: Jim MacArthur <jim.macarthur@linaro.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Alex Bennee <alex.bennee@linaro.org>
+References: <20260630-jmac-fprcvt-v3-0-f4840d5e0a7f@linaro.org>
+ <20260630-jmac-fprcvt-v3-1-f4840d5e0a7f@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260629205213.82391-1-wrigjl@proton.me>
+In-Reply-To: <20260630-jmac-fprcvt-v3-1-f4840d5e0a7f@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,49 +107,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 6/29/26 13:52, Jason Wright wrote:
-> Commit 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
-> gave ID_AA64ISAR0_EL1 a readfn so the RNDR field can reflect SCR_EL3.TRNDR
-> at read time, and marked the cpreg ARM_CP_NO_RAW in the system-emulation
-> path.  HVF then trips its hvf_arch_init_vcpu() assertion that no ID
-> register in hvf_sreg_list[] is NO_RAW, aborting on boot on Apple Silicon:
+On 6/30/26 06:16, Jim MacArthur wrote:
+> Adds the opcode format for the SIMD versions of FCVTXX and [US]CVTF.
+> These use very similar logic to the FP-to-general and general-to-FP
+> register versions which exist, but use another SIMD/FP register
+> as source or destination. The source and destination size rules are
+> slightly different.
 > 
->    Assertion failed: (!(ri->type & ARM_CP_NO_RAW)),
->    function hvf_arch_init_vcpu, file hvf.c, line 1441.
-> 
-> Reproduce with:
-> 
->    qemu-system-aarch64 -M virt,accel=hvf -cpu host \
->                        -nographic -display none -bios /dev/null
-> 
-> Fix it the same way ID_AA64PFR0_EL1 already is: list
-> HV_SYS_REG_ID_AA64ISAR0_EL1 in the SYNC_NO_RAW_REGS block in sysreg.c.inc
-> so the assert loop skips it, and seed the vCPU's copy at init time.
-> 
-> While here, unify how the three isar.idregs[]-backed ID registers are
-> seeded.  isar.idregs[] already holds QEMU's intended value for each (the
-> host caps, probed once at realize via hv_vcpu_config_get_feature_reg(),
-> plus any QEMU adjustment), so there is no need to read each register back
-> from the vCPU first.  Seed PFR0, ISAR0 and MMFR0 directly from
-> isar.idregs[], dropping the two per-vCPU hv_vcpu_get_sys_reg() reads:
-> 
->    - PFR0: take the GIC sysreg-interface bit from env->gicv3state, as the
->      id_aa64pfr0_read() readfn does.  Identical to the previous code
->      whenever a GICv3 sysreg interface is present (the configuration HVF
->      runs in practice); it differs only in that a vCPU with no GICv3 now
->      reports ID_AA64PFR0_EL1.GIC == 0 instead of inheriting the host's
->      value, which matches the field's meaning.
->    - ISAR0: no overlay is needed; HVF does not expose EL3, so
->      SCR_EL3.TRNDR is never set and the readfn is constant.
->    - MMFR0: still clamp PARANGE to the chosen IPA size, updating
->      isar.idregs[] in place because the page-table walker and the
->      ID_AA64MMFR0_EL1 cpreg resetvalue read PARANGE back from there.
-> 
-> Reported-by: Zenghui Yu<zenghui.yu@linux.dev>
-> Suggested-by: Peter Maydell<peter.maydell@linaro.org>
-> Fixes: 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
-> Signed-off-by: Jason Wright<wrigjl@proton.me>
+> Signed-off-by: Jim MacArthur<jim.macarthur@linaro.org>
 > ---
+>   target/arm/cpu-features.h      |  5 +++
+>   target/arm/tcg/a64.decode      | 15 ++++++++
+>   target/arm/tcg/translate-a64.c | 83 ++++++++++++++++++++++++++++--------------
+>   3 files changed, 76 insertions(+), 27 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

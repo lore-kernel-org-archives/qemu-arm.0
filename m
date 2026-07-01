@@ -4,89 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 165ACC43602
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 03:09:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DC62C43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 05:39:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1welGA-0005zE-9F; Tue, 30 Jun 2026 23:05:10 -0400
+	id 1wenf7-0008Tb-RU; Wed, 01 Jul 2026 01:39:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1welG2-0005lA-4v
- for qemu-arm@nongnu.org; Tue, 30 Jun 2026 23:05:02 -0400
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+ (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
+ id 1wenf5-0008TD-95
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 01:39:03 -0400
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1welFy-0002tK-Bw
- for qemu-arm@nongnu.org; Tue, 30 Jun 2026 23:05:01 -0400
-Received: by mail-pl1-x62d.google.com with SMTP id
- d9443c01a7336-2c9cb97e178so1749795ad.3
- for <qemu-arm@nongnu.org>; Tue, 30 Jun 2026 20:04:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
+ id 1wenf2-0004IE-VY
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 01:39:02 -0400
+Received: by mail-pf1-x42f.google.com with SMTP id
+ d2e1a72fcca58-84347ad88edso297700b3a.1
+ for <qemu-arm@nongnu.org>; Tue, 30 Jun 2026 22:38:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782884337; cv=none;
+ d=google.com; s=arc-20260327;
+ b=B5Mlmi6HFTk/UQhiDRS97C5SAUyhElrpxv6jM2lGML9KRfK72lrZrH7UbkGiR5GygM
+ KVTNx/56wa6VwpGlJd6vigEY6Osg0VG2KiU+yRxUc6CHAZyu1PGIDhUQcnrf6gEm8aGd
+ GPJFAEeK8GEk0Wqr2ISDho82ZmJeEWoYemjkPyWkMgxLKKlIgdibg/xc1sa7UUUDoJMT
+ FMJhinI9j7OnB12NmrZf330AehvO+wIwaJYhvw9NkNYKV5bN7lxyZxnlCMGg2r+6KUeX
+ 0qUgzgdtSFpQBNGOJ+DcXwOtQQrNN4K7BZp9SwoUfh65Ohs38FxEMwChgJnH5ZNNG5GK
+ w6mw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=2tGjOoVjR/8nFMMUnv40ozYvFgs90qmTPu5OwPCZMig=;
+ fh=cg1m4uTcsBD2d5lLOztoNkAzswLL6AwUByUEXbZcbK8=;
+ b=BLtyLiObfe/mafUoM7j3fRcqrRj0E/UiVnm3zdh5lKdb7EyG+JjGiLEwB0xSKSc0hN
+ fqvOlTSUEBTrgccAM5ny052FHvTVg7lDaSt3OaE2Y0+ct1d6PMXWvtcTU6P6FW8T4HYW
+ onJfdr7FfSxFrT4i2kKg/gW3jBqEfuajNuek1AIS19z0V0RJ3YC906rYs+drIGgXGQlD
+ 2Eds7+VG9lgE+wVjFXSfmCu7lMbM+wkdLKbXnzxvFxEFFcTZ3fRP6Nh5cLchKX0CfRQW
+ BMb+i78Y8rgx03E+Prb36jDiO/xvfY3su6lIAE46ZzHl11lKRXzcHpJNr4tipaS794uL
+ l+ww==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782875097; x=1783479897; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1zAEykkLSsC6j7cjQi/1RKg/0+TkxhmA7YPc2ShnuVM=;
- b=CG2VhnFmNR4lMkL0aIDo4kriL3iIsH47yEfv26np4XIpu86U7MTbEa4QcmLdQPjJhC
- iuSgNrcX4qi5QnFJMXZl9wlVxeI+XLC1Ffzx0BlCEAQpK8WSSP8Q8a9iZljAOHhYpMz1
- sXahTcZ26iLLmrzSykDV7V0jweUZH0I2D+b2493Vg5umoMeoV8CVHW8AhupErEu28gpO
- OumEYkYcL/XitXZLDyEaSPdR8at1x0Dxvjont1scTWojFag8Zb/K5QvDdkWrd+YUXwqo
- LtOTiE66DB+760mKvIPdoS8aUwxZjyduwHJP8E870PxETgEXtJXvjBSw+0bM5W0FbjGV
- JxFg==
+ d=gmail.com; s=20251104; t=1782884337; x=1783489137; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=2tGjOoVjR/8nFMMUnv40ozYvFgs90qmTPu5OwPCZMig=;
+ b=b0anI8ir0qXZ7Knb+cBEcqcrw56rmJmKpY2QI7gFI1urRuc+4JXJOPAv+EqW9/WMfd
+ S/lTuhMGTxO1V7Mo289mT24JuIei5wlKN/L26j/QtDyYxcoVl6BPniMi/BdKS3razn/Q
+ 0oT+4uy5QEAeNlSu5B4hTAEaguCh8JDHAc/ByzSExRKUlvOCMPjuDXpvzpTetjJm1X+D
+ JHSQz93pvxH5uNg7hzpJMrEiZKJ4/sWJfZz4Djkg5ePW5vGWjbijgFe9BlZNVat2N8c9
+ WL27JxsxnJfi0jz3Uv8lfVMA5Ow8PK5Z18GcL5sTNETxN/eoGreCOHyu0+w9BTmrkKaB
+ 5G1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782875097; x=1783479897;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=1zAEykkLSsC6j7cjQi/1RKg/0+TkxhmA7YPc2ShnuVM=;
- b=L8wPQgBnILLBXBI0pSpVsNoYqOfEPMxr3xPO2p+QgXw8Py+XrRdsfhljHwZu0hAact
- DUm1J7/ilnkvpHorbYs1X1yzIKTxtJkoYFv07mgJO8MkIjtMqO30dGcY+HI/PYN8yNnS
- Q0SXKbEK/EjneU8Uow8UMKnyJA2luAdjeQDYwcn2KuuVJ7u328GPUfaNPv5+e+bY4p+E
- iy3LFG539TMUarCdLev95pY5VIgbrq6VyedFeqAovHdixP8ldyF27TDkWlGo7ZHb+l55
- ONYNM34GbX0492MBj3r8Prjye0VxPHA68jpkwJ43t88ZDQ5FqbFBeou4EloaH4XQzg1i
- FcPg==
+ d=1e100.net; s=20251104; t=1782884337; x=1783489137;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=2tGjOoVjR/8nFMMUnv40ozYvFgs90qmTPu5OwPCZMig=;
+ b=Q8JZIRs56xSjqw6murivhqguHkiGOYw9kNPjTHQg86PHebzVHudEBsBgUPdyPfW2+5
+ 3FGnZZH7fflDPV4E1Co35aiYnXYxf554n2w7ga/9QQ5SeNclDY/qpV4Nz+17WqASQAX2
+ N+AlpdgcRXkYnaVHBXlz5C7JU8TasOMs02dwZDfU3tjNhlm+f19SjNfDx8tMOHSGc4nn
+ CsBmBSerR9w6FCsqK6o4wMEnya7DQaEKUDlMq7eLPM37ck+I1at0q6zjgHuRfLK/rQiJ
+ 3XV7b7lCKlBHFUFSsz7esfsNaPNjxZ562z7aLGXMr6QTKek96vKo8VX8QDgTfGSVPzsJ
+ POQg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrhAchyhg4ta6t/HJ8Fwafki7/P7ht0xNURBPaMGCnlsGwUAM2QoUPYGrVC71EVW7d/TmIb0gA7kw==@nongnu.org
-X-Gm-Message-State: AOJu0Yw2DSbDBAoUoOKNaLmk2Mx6TxpFiccBh2le4YLHqKDLXRFS+ha6
- szICvdtkiIJLIXn7Bl7OrTLB0QrqMfclqzrVCe3th8pTh+dX6KjjiONFRBSaI5xn3kA=
-X-Gm-Gg: AfdE7clQNmgulFzyOsg1aM3o9R1aWp8SW8dSH5rczBeYEOWlFo956jzZtonfBVtwxKA
- AZpTsmuZaIcgAbYXhtPEzNNkncurzHdX2YHU7rSXjWzEb75cirrILrci6ZK1A435DPdvJFuxvJM
- cU4802dNA7KzhPxAVDjzIn3PAYSoQXMD4EGFFDNtmqWVdmD6BAYX4RFdixc8XVYT+eXob+UYKei
- QrQw/DubV+MIkMY+hX7ziz3w8/v7Qwub+X9n9RaObeWx6SFgVsolJqSVPwL4LXIIMZbUyKqbnd+
- dIv6QhSO2dONa31CUAJJIkmRTCkK7GFT6zFYPPKTUruxUIkIt3b0mkSxl3plCPPx8oULlqdJO7n
- 5WotrYOfMDc/xaMdcG4wCdA/aGVcHU2cMlss4nQRJRonpjRVruWqL31/PwAnx8SxPryFY1GW/S1
- K/5uOR0TJee9ZelQ6VWNB3p9ATfJu2d2nqvJBKngQfwf0BgE16WQ==
-X-Received: by 2002:a17:903:3b83:b0:2bd:c925:3a16 with SMTP id
- d9443c01a7336-2ca2d52b188mr56311105ad.2.1782875096903; 
- Tue, 30 Jun 2026 20:04:56 -0700 (PDT)
-Received: from stoup.. (174-21-129-215.tukw.qwest.net. [174.21.129.215])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2ca37c74261sm23758085ad.22.2026.06.30.20.04.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Jun 2026 20:04:56 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: shivangu@linux.ibm.com,
-	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org
-Subject: [PATCH 15/17] target/riscv: Use bp argument in
- riscv_cpu_debug_check_watchpoint
-Date: Tue, 30 Jun 2026 20:04:41 -0700
-Message-ID: <20260701030443.1382447-16-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260701030443.1382447-1-richard.henderson@linaro.org>
-References: <20260701030443.1382447-1-richard.henderson@linaro.org>
+ AHgh+Rr+S8IZokO5AnIjFmHCNcoxqMTq3y6QyULC26gD8JaEQ//M1PLugmDDga9/tsrwmCNClcknPJHsmw==@nongnu.org
+X-Gm-Message-State: AOJu0YwhT+P5vXJ4C5yHk94gaPOutdcDZvC8jw07PCaOCFJbaiQJ3aD2
+ yf45hccPgjteihn/0cYnF9WE9GJLM87oYnit6Y3ICFzGmsHSEzIpBiN35qSpxOq2E3Z14w/d+mZ
+ GcG3EUG3jMaXMLFcE7GttbY8d+EhsQFM=
+X-Gm-Gg: AfdE7cn32eIX+pLM7hlv6nwNc/AM+QllFqaAS/+DPsAflROoHzbDRMDBHp0W+AQXpXM
+ huIsvFgrGeaAbSoCDS3vw3WpWTFuJsFACKglEmlrgMxnt3Y06hoFP1NZhXS4smz6HHk7eS2vmnx
+ e9DHGLUez6ruNpuFDPqg6XuyZJppHU7h1Xm8PdDQfdAk4TK03BgqyHgGrmq1kA6R33W4s16QLS+
+ nuwRVrzH2uRIYG2CKGCpIRHsB/jlVTBlnyg/Yu8JvJgTi2agj0JwaO+/pNCFxQR/W3WyGXtNG0m
+ +6FEKdPDtP8=
+X-Received: by 2002:a05:6a00:2a0e:b0:82f:9407:d167 with SMTP id
+ d2e1a72fcca58-847c09c8386mr129950b3a.38.1782884336637; Tue, 30 Jun 2026
+ 22:38:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
+References: <20260529-feat-mte4-v7-0-ccbd3c14eb3c@gmail.com>
+ <CAFEAcA8R1RXrGo2xov-4gKLQXX=FTVKoK1rGuxuYmBo9e8SN_g@mail.gmail.com>
+In-Reply-To: <CAFEAcA8R1RXrGo2xov-4gKLQXX=FTVKoK1rGuxuYmBo9e8SN_g@mail.gmail.com>
+From: Gabriel Brookman <brookmangabriel@gmail.com>
+Date: Tue, 30 Jun 2026 22:38:45 -0700
+X-Gm-Features: AVVi8CeOBtZJTvsljiabzMR8Fo81rmvNVpq8-chsg7c0ssTUY6z7FEJUK5wsM14
+Message-ID: <CA+1f7BD2pVP2ByBRbwbHBRWNNuZHKdM_7xSVSmPztEWw1BbVbw@mail.gmail.com>
+Subject: Re: [PATCH v7 00/15] target/arm: add support for MTE4
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
+ Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-pf1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -104,85 +119,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Use the ID of the watchpoint instead of a loop over all.
+Sorry, repeating as I forgot to include the mailing list:
 
-This fixes a bug in which addr was compared against wp->vaddr,
-so that we never recognized watchpoints that didn't trigger at
-the start of the region.
+Hello,
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/riscv/debug.c | 55 +++-----------------------------------------
- 1 file changed, 3 insertions(+), 52 deletions(-)
+According to ARM developer, FEAT_MTE4 only implies the existence of
+its 4 subfeatures, plus FEAT_MTE2, and MTE_PERM, all of which are now
+implemented. There are no features that MTE4 guarantees that aren't
+either already present or introduced by my series. This means that we
+can now claim to implement FEAT_MTE4, and close the issue.
 
-diff --git a/target/riscv/debug.c b/target/riscv/debug.c
-index f6ffc62f1a..433050bd94 100644
---- a/target/riscv/debug.c
-+++ b/target/riscv/debug.c
-@@ -973,59 +973,10 @@ bool riscv_cpu_debug_check_watchpoint(CPUState *cs, const CPUWatchpoint *wp)
- {
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
--    target_ulong ctrl;
--    target_ulong addr;
--    int trigger_type;
--    int flags;
--    int i;
-+    int i = wp->flags >> BP_CPU_ID_SHIFT;
-+    trigger_type_t trigger_type = get_trigger_type(env, i);
- 
--    for (i = 0; i < RV_MAX_TRIGGERS; i++) {
--        trigger_type = get_trigger_type(env, i);
--
--        if (!trigger_common_match(env, trigger_type, i)) {
--            continue;
--        }
--
--        switch (trigger_type) {
--        case TRIGGER_TYPE_AD_MATCH:
--            ctrl = env->tdata1[i];
--            addr = env->tdata2[i];
--            flags = 0;
--
--            if (ctrl & TYPE2_LOAD) {
--                flags |= BP_MEM_READ;
--            }
--            if (ctrl & TYPE2_STORE) {
--                flags |= BP_MEM_WRITE;
--            }
--
--            if ((wp->flags & flags) && (wp->vaddr == addr)) {
--                return true;
--            }
--            break;
--        case TRIGGER_TYPE_AD_MATCH6:
--            ctrl = env->tdata1[i];
--            addr = env->tdata2[i];
--            flags = 0;
--
--            if (ctrl & TYPE6_LOAD) {
--                flags |= BP_MEM_READ;
--            }
--            if (ctrl & TYPE6_STORE) {
--                flags |= BP_MEM_WRITE;
--            }
--
--            if ((wp->flags & flags) && (wp->vaddr == addr)) {
--                return true;
--            }
--            break;
--        default:
--            /* other trigger types are not supported */
--            break;
--        }
--    }
--
--    return false;
-+    return trigger_common_match(env, trigger_type, i);
- }
- 
- void riscv_trigger_realize(CPURISCVState *env)
--- 
-2.43.0
+We can also add it to emulation.rst. My apologies -- I can't do that
+right now because of my current role, but it should be a trivial
+one-liner for whoever picks it up.
 
+Thanks,
+Gabriel
 

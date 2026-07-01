@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21214C43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 22:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A09FC43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 22:49:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wf3ii-0001jM-75; Wed, 01 Jul 2026 18:47:52 -0400
+	id 1wf3id-0001g2-Uu; Wed, 01 Jul 2026 18:47:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wf3ih-0001ia-0d
- for qemu-arm@nongnu.org; Wed, 01 Jul 2026 18:47:51 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wf3ic-0001f5-PN
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 18:47:46 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wf3ie-0002bA-Ql
- for qemu-arm@nongnu.org; Wed, 01 Jul 2026 18:47:50 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-4728c12ba97so762425f8f.0
- for <qemu-arm@nongnu.org>; Wed, 01 Jul 2026 15:47:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wf3ia-0002Zy-VR
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 18:47:46 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-473dc4cf238so739553f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 01 Jul 2026 15:47:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1782946067; x=1783550867; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1782946063; x=1783550863; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Jr7fpk6r8PJKqJlH40O3F6Precy1BYqv9tpDnBOG2xY=;
- b=b11vwGvVJ9J7YA66xJR5UvVsT6nsnRVj6mQ8iC6O4CNDjgZt5r8yvg93nEL10rDUH0
- DpKyW2ulQa4+RSIBaI2FN+uJEmSSSuVre1XbOd9C0ZDK6K28c1l3Dkiu9yD4yoBjVmgp
- 3HSKDMI/SzlTzZS4hkzotfrTkSLdJWF593a6dU3kHJn5JWm8KtDVZa63qqf/MCX6yH0O
- RN8UyvPu42cb9Co62wIgVScp4ytsU8U71E1U6QzTQ6gR1DthieLEPOL0zNjzbAHYI8o5
- dlD4b01pUF8CeVTO86ShfHbY55A0fI0UBO6bMCc8/ejP2BNxrl2Z0+HbS9LBKKGAoGur
- RF6A==
+ bh=KjFztGb7C9MEWIW5wBfGcj8wgciULOA+rIFwIPLrLuI=;
+ b=Sk4I5xNxk+yz8P1zxSEc9wszfMTLRdSjgqIrq8sTjqr0OsfMvZq5wAcPI64i1B0IPx
+ e1iVaeZq/7MoyB+l36Xey9s1vJM5OwYAD29GXKiZH4p8qE8WIrQuJp1IKIeM4FXYNnFn
+ fypyGh5+NPAXqly7Bp863J0XkZ3+eZchU+5B1QV3bxlM85X07ag04GA1CHRM+CgEdm+K
+ R6SX8XRLsS+P1LQ+loS7JMerc9dLSB3j4wYuamW15ncHGNAuxOiOv/4KLSHzJRh4MS4x
+ 02BQc/wqVC8PCHen5CLvNwiJwF9zLbJ2Sx8fEr1KD/jm+SIPj/w+8LZye72dxDUK8EHB
+ cknw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782946067; x=1783550867;
+ d=1e100.net; s=20251104; t=1782946063; x=1783550863;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Jr7fpk6r8PJKqJlH40O3F6Precy1BYqv9tpDnBOG2xY=;
- b=EKfX7lGiHFyKiVXUDmh0ZQdekGVdq8yKSJn9QHSqyt0W9zl4f6Gtr6klFIpVqP6yXI
- epPQQxn24mX0SjZuRtqP0iiiid1rM3s79bLXRQpdz8a5yjCQbJrD9P31IXKsz9OgJknG
- kYQmWmqfSB3Xh9oHMlxfTod13lG41P8Rh6eOUTXX/xhE/nhnBwT9qSPtOHfLeOOUarJq
- HKBDsl3HVD5BsF+ldvhMhjU7dc8exnoxwGe+EMdM4I+YeI8VtJcKUUhLQH0b3OSjNZTd
- GdSTONKPTNkF8/bh5iTNfjKLLaJT8g4YMFsZc+5iSSV+6uWLvT3ys0JR9AUAn5J5efgi
- amhQ==
+ bh=KjFztGb7C9MEWIW5wBfGcj8wgciULOA+rIFwIPLrLuI=;
+ b=VZVuaG3peqFF0Hmwzl6uNOGST/sd89B7butwr9rPWk5ULpBJTlm/cOMJEZl0iu5fVN
+ qgI3cp6oZGTpsqSs3zk4ROh78RmeoY3GjWSdTiDasl9R1qRZ/gVm074q1gsmbphW7LVm
+ IQBfc97DONvR4VyQR2xkp1H8FdGLjShBEW4Dkfwb44ewwqn1e/J5onzmKy44q7bAcDEJ
+ V9DAejBiq5GWMY6kkXBEtoXOBjlHFLTbqMmMfau3ecg+TfxFlC5EsXcofUv1RE2jibbR
+ 9M65UxTp8Wvak+shzf75+WKr4qxegP0nXBypa2I9JatmZt8NhuQHN3dQLs5MCdXFSmee
+ K7Hg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoIHFgaHX8bgnc5CC6km89ptbfAk8CVK4H8dAhjjyfOFWW8xQjQRss08ji38M0FHYRzc8xnagna3A==@nongnu.org
-X-Gm-Message-State: AOJu0YynW+nAsbxk95p57EQLqfwD1IpdjCdoEneod934CJ5pTbfEBTM8
- vmB8xawUvqgk0fQ9vGLbAypVM+5vgrBW3VRIVb4ZBEDZfha1eQ7wEY7U
-X-Gm-Gg: AfdE7cnpGudwbLNYywP4u9KeXnzJiVmRBzLONX0IDjy0dzyprREA4dEWR+gGAFP1LeG
- k4B5C4TCUe6XxUPLTf3lC7ibcNyapj30f6JmE30qZbdUzu2f7hmS0ixt4wJILN5YIpiUj60GNRf
- QFP0u3f2q4iViYtZ1fys43t4dfQTCvN7TfGDF8gzlThe9HRXOhDUM7L20DKKZmXtn50NCizymm0
- Xpjjtqy5kn/WgIDjAoz6rhb9x0eHBx1KFIx81ttTpyRuFNx956Drqf7EpwXyvFFSNuFNqgrtnsy
- Fqy7qkJxiK6H47dMMdPqfn1/WKZ7R0Cxjsaj7oh9tHveigpPhYH6Hh3EllqqjGuVRjH1s2nfk1u
- xHD9yhOUPGLRfqGv2nZ4p/49Sb3awCYKSjGyIzSYBquAmfMjGQ72wNVIr99x1tYnRLW06SOdmZd
- x8nmDJpYDNpa3uILNLXB0I71O18+fKnyNvfzJ+uL952K0kegcR++BUfK853ub9VjjdxvjJBtpXu
- dbUudgD/aoL28dW+TeUWfeBgizzER9sx2uN
-X-Received: by 2002:a05:6000:4305:b0:471:f180:86d7 with SMTP id
- ffacd0b85a97d-47759568468mr5544177f8f.41.1782946067231; 
- Wed, 01 Jul 2026 15:47:47 -0700 (PDT)
+ AHgh+RqnldqYERm9He8zyTjlids/aDthnWtuoh0XKd1wAw+EQAiGX6FC2mZfbEvQVhV7LmTLPITJq+7iAg==@nongnu.org
+X-Gm-Message-State: AOJu0YxLxuh9gcD/cjFX6EnORv6RLebgeJWnG9iaHTeQ7+R5gulf/z87
+ xijA58be7TXMb35Y+o14M4uMa7n/cP7Mf/fYO8ali5yIK6b5BRTeG1+h
+X-Gm-Gg: AfdE7ckrMipzgtUeBMQueQl4uvk1Rd7UF9709NoaeTjcJmB5tmC/YD3tKTlJJargo1T
+ ubx2wmYFlx1K8FG3FHXYRlvBI6iLijawJofoOb4xvU6j82uro+gKki4Kq77TxtllsyI20k4ynUX
+ fsds6U/wHTfk4riSsd+cUOOP0cZEcmLApMONCjVft+IC+7B28VrWxF3E+3GAPqV+u6KCKLS0Eya
+ MQXVwBt6Ic/pP4CHglNWQdCgGPU6S0h0ipTJFJ4BUjw4zagXSzvETP7u6Es2Kpy/u1adStUb53d
+ xF6f9GGvjHwy3nJMw7cifxZOa3+TF16/WH6G6wzCkIbrmwJDittjHkeqzerosaStKqoj6KOKCNj
+ 5YwxD8n8ozoPQyNN9o/2O1z37B6/CBZk6Th+ntlEMyP/nu3NNPppfou0d7X1jaco4VfOpdgEvzo
+ kDAd00CmBpaBiAIVILJzFz/AU2CJInP8M925up2Okj+3AC1yda7nSUZJfzgtq25ABZ71VkC40Qh
+ J6niXhZ4laUiCHdVBa7CIqwK5a9RJJow3Sa1IvkbNSvVcc=
+X-Received: by 2002:adf:fc08:0:b0:475:cb71:a344 with SMTP id
+ ffacd0b85a97d-4775a0fe280mr4531259f8f.37.1782946063237; 
+ Wed, 01 Jul 2026 15:47:43 -0700 (PDT)
 Received: from Provence.localdomain
  (dynamic-2a02-3100-2d44-b300-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:2d44:b300:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-477db3dba0esm3178614f8f.7.2026.07.01.15.47.46
+ ffacd0b85a97d-477db3dba0esm3178614f8f.7.2026.07.01.15.47.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 01 Jul 2026 15:47:46 -0700 (PDT)
+ Wed, 01 Jul 2026 15:47:42 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>,
@@ -79,24 +79,23 @@ Cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>,
  Vikram Garhwal <vikram.garhwal@bytedance.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH 4/4] hw/arm: Add basic FlexCAN3 support to TYPE_FSL_IMX8MP and
- imx8mp-evk
-Date: Thu,  2 Jul 2026 00:46:12 +0200
-Message-ID: <20260701224612.48342-5-shentey@gmail.com>
+Subject: [PATCH 1/4] hw/net/can/flexcan: Subclass TYPE_CAN_FLEXCAN
+Date: Thu,  2 Jul 2026 00:46:09 +0200
+Message-ID: <20260701224612.48342-2-shentey@gmail.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260701224612.48342-1-shentey@gmail.com>
 References: <20260701224612.48342-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x436.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,224 +111,144 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Real hardware supports CAN FD which is missing in the emulation and is
-considered future work. Still, CAN communication already works under Linux.
+Subclass TYPE_CAN_FLEXCAN, yielding TYPE_CAN_FLEXCAN2 and TYPE_CAN_FLEXCAN3.
+Since TYPE_CAN_FLEXCAN is now abstract, TYPE_FSL_IMX6 needs to use
+TYPE_CAN_FLEXCAN2. TYPE_CAN_FLEXCAN3 will be used in TYPE_FSL_IMX8MP.
+
+Note that Linux performs 8 byte accesses on the i.MX8M Plus, therefore
+.max_access_size has to be adjusted. Otherwise this results in bus errors.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- docs/system/arm/imx8m.rst   |  1 +
- include/hw/arm/fsl-imx8mp.h |  8 ++++++++
- hw/arm/fsl-imx8mp.c         | 37 +++++++++++++++++++++++++++++++++++++
- hw/arm/imx8mp-evk.c         | 21 +++++++++++++++++++++
- hw/misc/imx8mp_ccm.c        |  3 +++
- hw/arm/Kconfig              |  1 +
- 6 files changed, 71 insertions(+)
+ include/hw/net/flexcan.h |  4 ++-
+ hw/arm/fsl-imx6.c        |  2 +-
+ hw/net/can/flexcan.c     | 61 +++++++++++++++++++++++++++++++---------
+ 3 files changed, 51 insertions(+), 16 deletions(-)
 
-diff --git a/docs/system/arm/imx8m.rst b/docs/system/arm/imx8m.rst
-index afbc33b2f4..1bcb8255be 100644
---- a/docs/system/arm/imx8m.rst
-+++ b/docs/system/arm/imx8m.rst
-@@ -18,6 +18,7 @@ following devices:
-  * 1 Designware PCI Express Controller
-  * 1 Ethernet Controller
-  * 2 Designware USB 3 Controllers
-+ * 2 FlexCAN 3 CAN Controllers (``imx8mp-evk`` only)
-  * 5 GPIO Controllers
-  * 6 I2C Controllers
-  * 3 SPI Controllers
-diff --git a/include/hw/arm/fsl-imx8mp.h b/include/hw/arm/fsl-imx8mp.h
-index 3b6183ed1d..2be3c51af5 100644
---- a/include/hw/arm/fsl-imx8mp.h
-+++ b/include/hw/arm/fsl-imx8mp.h
-@@ -17,6 +17,7 @@
- #include "hw/misc/imx7_snvs.h"
- #include "hw/misc/imx8mp_analog.h"
- #include "hw/misc/imx8mp_ccm.h"
-+#include "hw/net/flexcan.h"
- #include "hw/net/imx_fec.h"
- #include "hw/core/or-irq.h"
- #include "hw/pci-host/designware.h"
-@@ -37,6 +38,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(FslImx8mpState, FSL_IMX8MP)
- #define FSL_IMX8MP_RAM_SIZE_MAX     (8 * GiB)
+diff --git a/include/hw/net/flexcan.h b/include/hw/net/flexcan.h
+index 153afc1e03..32de7b904a 100644
+--- a/include/hw/net/flexcan.h
++++ b/include/hw/net/flexcan.h
+@@ -139,7 +139,9 @@ typedef struct FlexcanState {
+ } FlexcanState;
  
- enum FslImx8mpConfiguration {
-+    FSL_IMX8MP_NUM_CANS         = 2,
-     FSL_IMX8MP_NUM_CPUS         = 4,
-     FSL_IMX8MP_NUM_ECSPIS       = 3,
-     FSL_IMX8MP_NUM_GPIOS        = 5,
-@@ -68,11 +70,14 @@ struct FslImx8mpState {
-     USBDWC3            usb[FSL_IMX8MP_NUM_USBS];
-     DesignwarePCIEHost pcie;
-     FslImx8mPciePhyState   pcie_phy;
-+    FlexcanState       flexcan[FSL_IMX8MP_NUM_CANS];
-     OrIRQState         gpt5_gpt6_irq;
-     MemoryRegion       ocram;
+ #define TYPE_CAN_FLEXCAN "flexcan"
+-
+ OBJECT_DECLARE_SIMPLE_TYPE(FlexcanState, CAN_FLEXCAN);
  
-     uint32_t           phy_num;
-     bool               phy_connected;
++#define TYPE_CAN_FLEXCAN2 "flexcan2"
++#define TYPE_CAN_FLEXCAN3 "flexcan3"
 +
-+    CanBusState       *canbus[FSL_IMX8MP_NUM_CANS];
- };
- 
- enum FslImx8mpMemoryRegions {
-@@ -279,6 +284,9 @@ enum FslImx8mpIrqs {
-     FSL_IMX8MP_PCI_INTC_IRQ = 124,
-     FSL_IMX8MP_PCI_INTD_IRQ = 123,
-     FSL_IMX8MP_PCI_MSI_IRQ  = 140,
-+
-+    FSL_IMX8MP_FLEXCAN1_IRQ  = 142,
-+    FSL_IMX8MP_FLEXCAN2_IRQ  = 144,
- };
- 
- #endif /* FSL_IMX8MP_H */
-diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
-index 7c03ed3c34..c7ce30a17d 100644
---- a/hw/arm/fsl-imx8mp.c
-+++ b/hw/arm/fsl-imx8mp.c
-@@ -246,6 +246,11 @@ static void fsl_imx8mp_init(Object *obj)
-         object_initialize_child(obj, name, &s->wdt[i], TYPE_IMX2_WDT);
+ #endif
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index bf106a9063..57cdde971c 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -92,7 +92,7 @@ static void fsl_imx6_init(Object *obj)
      }
- 
-+    for (i = 0; i < FSL_IMX8MP_NUM_CANS; i++) {
-+        g_autofree char *name = g_strdup_printf("flexcan%d", i);
-+        object_initialize_child(obj, name, &s->flexcan[i], TYPE_CAN_FLEXCAN3);
-+    }
-+
-     object_initialize_child(obj, "eth0", &s->enet, TYPE_IMX_ENET);
- 
-     object_initialize_child(obj, "pcie", &s->pcie, TYPE_DESIGNWARE_PCIE_HOST);
-@@ -669,6 +674,33 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->pcie_phy), 0,
-                     fsl_imx8mp_memmap[FSL_IMX8MP_PCIE_PHY1].addr);
- 
-+    /* FLEXCANs */
-+    for (i = 0; i < FSL_IMX8MP_NUM_CANS; i++) {
-+        static const struct {
-+            hwaddr addr;
-+            unsigned int irq;
-+        } flexcan_table[FSL_IMX8MP_NUM_CANS] = {
-+            {
-+                fsl_imx8mp_memmap[FSL_IMX8MP_FLEXCAN1].addr,
-+                FSL_IMX8MP_FLEXCAN1_IRQ
-+            }, {
-+                fsl_imx8mp_memmap[FSL_IMX8MP_FLEXCAN2].addr,
-+                FSL_IMX8MP_FLEXCAN2_IRQ
-+            },
-+        };
-+
-+        s->flexcan[i].ccm = IMX_CCM(&s->ccm);
-+        object_property_set_link(OBJECT(&s->flexcan[i]), "canbus",
-+                                 OBJECT(s->canbus[i]), &error_abort);
-+
-+        sysbus_realize(SYS_BUS_DEVICE(&s->flexcan[i]), &error_abort);
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->flexcan[i]), 0,
-+                        flexcan_table[i].addr);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->flexcan[i]), 0,
-+                           qdev_get_gpio_in(gicdev, flexcan_table[i].irq));
-+    }
-+
-     /* On-Chip RAM */
-     if (!memory_region_init_ram(&s->ocram, OBJECT(dev), "imx8mp.ocram",
-                                 fsl_imx8mp_memmap[FSL_IMX8MP_OCRAM].size,
-@@ -684,6 +716,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
-         switch (i) {
-         case FSL_IMX8MP_ANA_PLL:
-         case FSL_IMX8MP_CCM:
-+        case FSL_IMX8MP_FLEXCAN1 ... FSL_IMX8MP_FLEXCAN2:
-         case FSL_IMX8MP_GIC_DIST:
-         case FSL_IMX8MP_GIC_REDIST:
-         case FSL_IMX8MP_GPIO1 ... FSL_IMX8MP_GPIO5:
-@@ -715,6 +748,10 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
- static const Property fsl_imx8mp_properties[] = {
-     DEFINE_PROP_UINT32("fec1-phy-num", FslImx8mpState, phy_num, 0),
-     DEFINE_PROP_BOOL("fec1-phy-connected", FslImx8mpState, phy_connected, true),
-+    DEFINE_PROP_LINK("canbus0", FslImx8mpState, canbus[0], TYPE_CAN_BUS,
-+                     CanBusState *),
-+    DEFINE_PROP_LINK("canbus1", FslImx8mpState, canbus[1], TYPE_CAN_BUS,
-+                     CanBusState *),
- };
- 
- static void fsl_imx8mp_class_init(ObjectClass *oc, const void *data)
-diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
-index ca0ee2d3f2..16e9722d14 100644
---- a/hw/arm/imx8mp-evk.c
-+++ b/hw/arm/imx8mp-evk.c
-@@ -26,6 +26,7 @@ struct FslImx8mpEvkState {
-     MachineState parent_obj;
- 
-     FslImx8mpState soc;
-+    CanBusState *canbus[FSL_IMX8MP_NUM_CANS];
- 
-     struct arm_boot_info boot_info;
- };
-@@ -86,6 +87,12 @@ static void imx8mp_evk_init(MachineState *machine)
- 
-     object_initialize_child(OBJECT(machine), "soc", &s->soc, TYPE_FSL_IMX8MP);
-     object_property_set_uint(OBJECT(&s->soc), "fec1-phy-num", 1, &error_fatal);
-+    for (int i = 0; i < FSL_IMX8MP_NUM_CANS; i++) {
-+        g_autofree char *bus_name = g_strdup_printf("canbus%d", i);
-+
-+        object_property_set_link(OBJECT(&s->soc), bus_name,
-+                                 OBJECT(s->canbus[i]), &error_fatal);
-+    }
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(&s->soc), &error_fatal);
- 
-     memory_region_add_subregion(get_system_memory(), FSL_IMX8MP_RAM_START,
-@@ -122,6 +129,19 @@ static const char *imx8mp_evk_get_default_cpu_type(const MachineState *ms)
-     return ARM_CPU_TYPE_NAME("cortex-a53");
+     for (i = 0; i < FSL_IMX6_NUM_CANS; i++) {
+         snprintf(name, NAME_SIZE, "flexcan%d", i + 1);
+-        object_initialize_child(obj, name, &s->flexcan[i], TYPE_CAN_FLEXCAN);
++        object_initialize_child(obj, name, &s->flexcan[i], TYPE_CAN_FLEXCAN2);
+     }
+     for (i = 0; i < FSL_IMX6_NUM_WDTS; i++) {
+         snprintf(name, NAME_SIZE, "wdt%d", i);
+diff --git a/hw/net/can/flexcan.c b/hw/net/can/flexcan.c
+index 1ea459d9f6..d6a76c28ab 100644
+--- a/hw/net/can/flexcan.c
++++ b/hw/net/can/flexcan.c
+@@ -1298,7 +1298,7 @@ static const struct MemoryRegionOps flexcan_ops = {
+     .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 1,
+-        .max_access_size = 4,
++        .max_access_size = 8,
+         .unaligned = true,
+         .accepts = flexcan_mem_accepts
+     },
+@@ -1324,16 +1324,26 @@ static int flexcan_connect_to_bus(FlexcanState *s, CanBusState *bus)
+     return 0;
  }
  
-+static void imx8mp_evk_machine_init(Object *obj)
+-static void flexcan_init(Object *obj)
++static void flexcan2_init(Object *obj)
+ {
+     FlexcanState *s = CAN_FLEXCAN(obj);
+ 
+     memory_region_init_io(
+-        &s->iomem, obj, &flexcan_ops, s, TYPE_CAN_FLEXCAN,
++        &s->iomem, obj, &flexcan_ops, s, TYPE_CAN_FLEXCAN2,
+         offsetof(FlexcanRegs, _reserved6)
+     );
+ }
+ 
++static void flexcan3_init(Object *obj)
 +{
-+    FslImx8mpEvkState *s = IMX8MPEVK_MACHINE(obj);
++    FlexcanState *s = CAN_FLEXCAN(obj);
 +
-+    object_property_add_link(obj, "canbus0", TYPE_CAN_BUS,
-+                             (Object **)&s->canbus[0],
-+                             object_property_allow_set_link, 0);
-+
-+    object_property_add_link(obj, "canbus1", TYPE_CAN_BUS,
-+                             (Object **)&s->canbus[1],
-+                             object_property_allow_set_link, 0);
++    memory_region_init_io(
++        &s->iomem, obj, &flexcan_ops, s, TYPE_CAN_FLEXCAN3,
++        sizeof(FlexcanRegs)
++    );
 +}
 +
- static void imx8mp_evk_machine_class_init(ObjectClass *oc, const void *data)
+ static void flexcan_realize(DeviceState *dev, Error **errp)
  {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -140,6 +160,7 @@ static const TypeInfo imx8mp_evk_machine_types[] = {
-         .name = TYPE_IMX8MPEVK_MACHINE,
-         .parent = TYPE_MACHINE,
-         .class_init = imx8mp_evk_machine_class_init,
-+        .instance_init = imx8mp_evk_machine_init,
-         .instance_size = sizeof(FslImx8mpEvkState),
-         .interfaces = aarch64_machine_interfaces,
-     },
-diff --git a/hw/misc/imx8mp_ccm.c b/hw/misc/imx8mp_ccm.c
-index 911911ed86..97d363e79d 100644
---- a/hw/misc/imx8mp_ccm.c
-+++ b/hw/misc/imx8mp_ccm.c
-@@ -129,6 +129,9 @@ static uint32_t imx8mp_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
-     case CLK_HIGH:
-         freq = CKIH_FREQ;
-         break;
-+    case CLK_CAN:
-+        freq = 40000000; /* 40Mhz, taken from device tree */
-+        break;
-     case CLK_IPG:
-     case CLK_IPG_HIGH:
-         /*
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 5f5c4899ad..0416ba823c 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -600,6 +600,7 @@ config FSL_IMX8MP
-     imply I2C_DEVICES
-     imply PCI_DEVICES
-     select ARM_GIC
-+    select CAN_FLEXCAN
-     select FSL_IMX8MP_ANALOG
-     select FSL_IMX8MP_CCM
-     select IMX
+     FlexcanState *s = CAN_FLEXCAN(dev);
+@@ -1378,19 +1388,42 @@ static void flexcan_class_init(ObjectClass *klass, const void *data)
+     dc->realize = flexcan_realize;
+     device_class_set_props(dc, flexcan_properties);
+     dc->vmsd = &vmstate_can;
+-    dc->desc = "i.MX FLEXCAN Controller";
+ }
+ 
+-static const TypeInfo flexcan_info = {
+-    .name          = TYPE_CAN_FLEXCAN,
+-    .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(FlexcanState),
+-    .class_init    = flexcan_class_init,
+-    .instance_init = flexcan_init,
+-};
++static void flexcan2_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+-static void can_register_types(void)
++    dc->desc = "i.MX FlexCAN 2 Controller";
++}
++
++static void flexcan3_class_init(ObjectClass *klass, const void *data)
+ {
+-    type_register_static(&flexcan_info);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->desc = "i.MX FlexCAN 3 Controller";
+ }
+-type_init(can_register_types)
++
++static const TypeInfo flexcan_types[] = {
++    {
++        .name          = TYPE_CAN_FLEXCAN,
++        .parent        = TYPE_SYS_BUS_DEVICE,
++        .instance_size = sizeof(FlexcanState),
++        .class_init    = flexcan_class_init,
++        .abstract      = true,
++    },
++    {
++        .name          = TYPE_CAN_FLEXCAN2,
++        .parent        = TYPE_CAN_FLEXCAN,
++        .class_init    = flexcan2_class_init,
++        .instance_init = flexcan2_init,
++    },
++    {
++        .name          = TYPE_CAN_FLEXCAN3,
++        .parent        = TYPE_CAN_FLEXCAN,
++        .class_init    = flexcan3_class_init,
++        .instance_init = flexcan3_init,
++    },
++};
++
++DEFINE_TYPES(flexcan_types)
 -- 
 2.54.0
 

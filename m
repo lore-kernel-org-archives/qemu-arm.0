@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AABA3C43602
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 20:09:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC002C43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 20:09:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wf1Ex-0001l9-PY; Wed, 01 Jul 2026 16:09:00 -0400
+	id 1wf1Ex-0001ky-KJ; Wed, 01 Jul 2026 16:09:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
- id 1weyks-00080K-TO; Wed, 01 Jul 2026 13:29:46 -0400
-Received: from smtp2-g21.free.fr ([212.27.42.2])
+ id 1weymr-00009S-Al; Wed, 01 Jul 2026 13:31:56 -0400
+Received: from smtp2-g21.free.fr ([2a01:e0c:1:1599::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
- id 1weykq-0006O6-Qg; Wed, 01 Jul 2026 13:29:46 -0400
+ id 1weymp-0007N2-75; Wed, 01 Jul 2026 13:31:48 -0400
 Received: from localhost (unknown [89.92.102.124])
  (Authenticated sender: emmanuel.blot@free.fr)
- by smtp2-g21.free.fr (Postfix) with ESMTPSA id 36B7220039E;
- Wed,  1 Jul 2026 19:29:23 +0200 (CEST)
+ by smtp2-g21.free.fr (Postfix) with ESMTPSA id 9C5262003C6;
+ Wed,  1 Jul 2026 19:31:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
- s=smtp-20201208; t=1782926982;
- bh=Ouee2Ps/oTe0Wc/KxKCavPPjCwx8Kr2JVkVu0ezh1R4=;
+ s=smtp-20201208; t=1782927105;
+ bh=WvcsUh32DCWpKfKABADNif+d9+Y8576yIkWIMEnm4os=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=G8iKTdq67gYU94fGQuhuEixzaRFbQdn5eEU5/5UUiV0eIeIf0oXw+Rrp8v39riBLo
- ROO8/FFnyHsDf87oDbaN9dL1XMj3q1LjMtSVfLHNISvcrelrgHYktHQBfhq9TZp0ET
- 6LATsFI7IYbvCgzqADfwJWwC46twBGlAhfqN6+0NdP7SCFnsn3LdE2hG9BL1No19fo
- 6bYFpJoWTnyPrAInc++LTbke4DBTcgtSK9K6US/GNoag3KsQQcJGChika00x45qJpE
- /0sn1FYAh2A/V0DK+pnMQl+tllwejQ9tUHh0pySCtsYi98W4tEfevB6JCDmb5xnP8G
- z5cLmSTmtcY3Q==
+ b=JwpvvXrYMCc3wsf50cV+EVbgDy7YC/c1LILC/NPsUXmnSElFjR0yt7LaFbV4cHlTW
+ WVVM5RL7yge6e40aA7gYBGC1rBSZ8d89GYSn9zmeftViGCgTfV4os282j5NQL1p1V6
+ yYguq/e+9spWdG75V4rd2K8WRFxBjsQCJKm6YTZp7TgmfCxBhZg9sNXrvBUAIN64IV
+ 4yaJlGNMM8cHcnC2888avNixiGFVemWarb87mC1rgKm/gQZXn/XlRpmuOkLLNBl3qv
+ DZt4WMrZ0mBq59EC0x7K5IrI1uI71A8tkQt0pgD99mRem4i6+Nh9PT3o1S8910APRG
+ dTDwVP1ux7Tdw==
 From: Emmanuel Blot <emmanuel.blot@free.fr>
-Date: Wed, 01 Jul 2026 19:28:32 +0200
-Subject: [PATCH v5 2/8] tests/qtest: adc128d818: add test harness and
- register access
+Date: Wed, 01 Jul 2026 19:28:38 +0200
+Subject: [PATCH v5 8/8] test/functional: anacapa: test ADC128D818
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260701-i2c-adc128d818-anacapa-v5-2-fe8292d86b38@free.fr>
+Message-Id: <20260701-i2c-adc128d818-anacapa-v5-8-fe8292d86b38@free.fr>
 References: <20260701-i2c-adc128d818-anacapa-v5-0-fe8292d86b38@free.fr>
 In-Reply-To: <20260701-i2c-adc128d818-anacapa-v5-0-fe8292d86b38@free.fr>
 To: qemu-devel@nongnu.org
@@ -56,22 +55,22 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Emmanuel Blot <eblot@meta.com>, qemu-arm@nongnu.org, 
  Emmanuel Blot <emmanuel.blot@free.fr>, Corey Minyard <cminyard@mvista.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1782926919; l=6947;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1782926919; l=4381;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=Ouee2Ps/oTe0Wc/KxKCavPPjCwx8Kr2JVkVu0ezh1R4=;
- b=fL3qxsFOENd5XFnepIyQSn1772ZC//9IqWkLNVv5vlttZL6fIvOcsAGSDgB9Vgz76/2P7NRwR
- wGCJQe66d+nC0vrHLZqtkx5kwe0CWeAHVFbhoUlm6dSuGszibcxfPON
+ bh=WvcsUh32DCWpKfKABADNif+d9+Y8576yIkWIMEnm4os=;
+ b=37rA/MpbaXR9yDxdbj6j8SQbKtD3sdw4PXcHboyyoNqeZG/tlVN7Swevu1+p92UWcQZCskyO/
+ R5RHi7Cjm2lCaWOG3unoPxvjhj/H0+tCVlI2btI+8FBmCcMtvTsPT7P
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=212.27.42.2; envelope-from=emmanuel.blot@free.fr;
- helo=smtp2-g21.free.fr
+Received-SPF: pass client-ip=2a01:e0c:1:1599::11;
+ envelope-from=emmanuel.blot@free.fr; helo=smtp2-g21.free.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Wed, 01 Jul 2026 16:08:58 -0400
 X-BeenThere: qemu-arm@nongnu.org
@@ -88,204 +87,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce the QOS test node and QMP property helpers for the
-ADC128D818, and cover basic register access: manufacturer and
-revision IDs, power-on-reset defaults, software reset, and the
-ain and temperature property readback.
+Verify the ADC128D818 on the Anacapa R-PDB (i2c8 mux channel 0): two
+channels are driven with distinct voltages and each is checked to be
+reported back independently through the kernel hwmon interface, and the
+channel 0 limit registers are validated.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/adc128d818-test.c | 169 ++++++++++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build       |   1 +
- 2 files changed, 170 insertions(+)
+ tests/functional/arm/test_aspeed_anacapa.py | 69 ++++++++++++++++++++++++++---
+ 1 file changed, 63 insertions(+), 6 deletions(-)
 
-diff --git a/tests/qtest/adc128d818-test.c b/tests/qtest/adc128d818-test.c
-new file mode 100644
-index 0000000000..9a8811256f
---- /dev/null
-+++ b/tests/qtest/adc128d818-test.c
-@@ -0,0 +1,169 @@
-+/*
-+ * QTest testcase for the ADC128D818 ADC
-+ *
-+ * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
+diff --git a/tests/functional/arm/test_aspeed_anacapa.py b/tests/functional/arm/test_aspeed_anacapa.py
+index 2b72e46b0e..49fab7ad09 100644
+--- a/tests/functional/arm/test_aspeed_anacapa.py
++++ b/tests/functional/arm/test_aspeed_anacapa.py
+@@ -2,24 +2,81 @@
+ #
+ # Functional test that boots the ASPEED machines
+ #
++# Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
++#
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
++import re
++import time
 +
-+#include "qemu/osdep.h"
-+#include "qemu/bitops.h"
-+#include "libqos/i2c.h"
-+#include "libqos/qgraph.h"
-+#include "libqtest-single.h"
-+#include "qobject/qdict.h"
+ from qemu_test import Asset
++from qemu_test import exec_command_and_wait_for_pattern
+ from aspeed import FacebookAspeedTest
+ 
+ 
+ class AnacapaMachine(FacebookAspeedTest):
+ 
+     ASSET_ANACAPA_FLASH = Asset(
+-        'https://github.com/legoater/qemu-aspeed-boot/raw/c5f585f9f57843c0dc95e3865a57d92ec39cbb0b/images/anacapa-bmc/openbmc-20260616025349/obmc-phosphor-image-anacapa-20260616025349.static.mtd.xz',
+-        'de3841fb6ed3085aec6424358ee6efc4b8ee85688361e5aa1987fd1acb7d3fb4')
++        "https://github.com/legoater/qemu-aspeed-boot/raw/c5f585f9f57843c0dc95e3865a57d92ec39cbb0b/images/anacapa-bmc/openbmc-20260616025349/obmc-phosphor-image-anacapa-20260616025349.static.mtd.xz",
++        "de3841fb6ed3085aec6424358ee6efc4b8ee85688361e5aa1987fd1acb7d3fb4",
++    )
 +
-+#define ADC128D818_TEST_ID      "adc128d818-test"
-+#define ADC128D818_TEST_ADDR    0x1f
++    ADC128D818_QOM_PATH = \
++        "/machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0x72/i2c.0/0x1f"
++    ADC128D818_MUX_CHANNEL = "/sys/bus/i2c/devices/8-0072/channel-0"
++    PROMPT = "root@anacapa:~#"
+ 
+     def test_arm_ast2600_anacapa_openbmc(self):
+         image_path = self.uncompress(self.ASSET_ANACAPA_FLASH)
+ 
+-        self.do_test_arm_aspeed_openbmc('anacapa-bmc', image=image_path,
+-                                        uboot='2019.04', cpu_id='0xf00',
+-                                        soc='AST2600 rev A3')
++        self.do_test_arm_aspeed_openbmc(
++            "anacapa-bmc",
++            image=image_path,
++            uboot="2019.04",
++            cpu_id="0xf00",
++            soc="AST2600 rev A3",
++        )
+ 
+-if __name__ == '__main__':
++        exec_command_and_wait_for_pattern(self, "root", "Password:")
++        exec_command_and_wait_for_pattern(self, "0penBmc", "#")
 +
-+/* Register addresses */
-+#define REG_CONFIG              0x00
-+#define REG_INT_STATUS          0x01
-+#define REG_INT_MASK            0x03
-+#define REG_CONV_RATE           0x07
-+#define REG_CH_DISABLE          0x08
-+#define REG_ONE_SHOT            0x09
-+#define REG_DEEP_SHUTDOWN       0x0a
-+#define REG_ADV_CONFIG          0x0b
-+#define REG_BUSY_STATUS         0x0c
++        self.adc_hwmon = self.resolve_adc128d818_hwmon()
++        self.assertIn(b"adc128d818", self.read_adc128d818("name"))
 +
-+/* Channel Reading Registers (16-bit, read-only) */
-+#define REG_CH_READING_BASE     0x20
++        adc = self.ADC128D818_QOM_PATH
++        for ch0_mv, ch1_mv in ((108, 2000), (1280, 500)):
++            self.vm.cmd("qom-set", path=adc, property="ain0", value=ch0_mv)
++            self.vm.cmd("qom-set", path=adc, property="ain1", value=ch1_mv)
++            self.wait_adc128d818_value("in0_input", ch0_mv)
++            self.wait_adc128d818_value("in1_input", ch1_mv)
 +
-+/* Limit Registers (8-bit, read/write) */
-+#define REG_LIMIT_BASE          0x2a
++        self.assertIn(b"2551", self.read_adc128d818("in0_max"))
++        self.assertRegex(self.read_adc128d818("in0_min"), rb"(?m)^0\r*$")
 +
-+/* ID Registers (read-only) */
-+#define REG_MANUFACTURER_ID     0x3e
-+#define REG_REVISION_ID         0x3f
++    def resolve_adc128d818_hwmon(self):
++        out = self.read_adc128d818_console(
++            f"basename $(readlink {self.ADC128D818_MUX_CHANNEL})"
++        )
++        match = re.search(rb"i2c-(\d+)", out)
++        self.assertIsNotNone(match, "could not resolve ADC128D818 i2c bus")
++        bus = int(match.group(1))
++        return f"/sys/bus/i2c/devices/{bus}-001f/hwmon/hwmon*"
 +
-+/* Configuration Register (0x00) bitfields */
-+#define CONFIG_START            BIT(0)
-+#define CONFIG_INT_ENABLE       BIT(1)
-+#define CONFIG_INT_CLEAR        BIT(3)
-+#define CONFIG_INITIALIZATION   BIT(7)
++    def read_adc128d818_console(self, command):
++        return exec_command_and_wait_for_pattern(self, command, self.PROMPT)
 +
-+/* Advanced Configuration Register (0x0b) bitfields */
-+#define ADV_CONFIG_EXT_REF_EN   BIT(0)
-+#define ADV_CONFIG_MODE_1       (1 << 1)
-+#define ADV_CONFIG_MODE_2       (2 << 1)
-+#define ADV_CONFIG_MODE_3       (3 << 1)
++    def read_adc128d818(self, attr):
++        return self.read_adc128d818_console(f"cat {self.adc_hwmon}/{attr}")
 +
-+/* Number of channels */
-+#define NUM_CHANNELS            8
++    def wait_adc128d818_value(self, attr, expected, timeout=20):
++        needle = str(expected).encode()
++        deadline = time.monotonic() + timeout
++        while time.monotonic() < deadline:
++            if needle in self.read_adc128d818(attr):
++                return
++            time.sleep(2)
++        self.fail(f"{attr} did not reach {expected}")
 +
-+/* Internal VREF in mV */
-+#define INTERNAL_VREF_MV        2560
 +
-+/* QMP helpers for setting device properties */
-+
-+static void qmp_adc128d818_set(const char *property, int value)
-+{
-+    QDict *resp;
-+
-+    resp = qmp("{ 'execute': 'qom-set', 'arguments':"
-+               " { 'path': %s, 'property': %s, 'value': %d } }",
-+               ADC128D818_TEST_ID, property, value);
-+    g_assert(qdict_haskey(resp, "return"));
-+    qobject_unref(resp);
-+}
-+
-+static int qmp_adc128d818_get(const char *property)
-+{
-+    QDict *resp;
-+    int ret;
-+
-+    resp = qmp("{ 'execute': 'qom-get', 'arguments':"
-+               " { 'path': %s, 'property': %s } }",
-+               ADC128D818_TEST_ID, property);
-+    g_assert(qdict_haskey(resp, "return"));
-+    ret = qdict_get_int(resp, "return");
-+    qobject_unref(resp);
-+    return ret;
-+}
-+
-+/* Manufacturer and Revision ID registers */
-+static void test_id_registers(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    g_assert_cmphex(i2c_get8(dev, REG_MANUFACTURER_ID), ==, 0x01);
-+    g_assert_cmphex(i2c_get8(dev, REG_REVISION_ID), ==, 0x09);
-+}
-+
-+/* Power-on-reset default values */
-+static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+    unsigned ch;
-+
-+    g_assert_cmphex(i2c_get8(dev, REG_CONFIG), ==, 0x08);
-+    g_assert_cmphex(i2c_get8(dev, REG_INT_STATUS), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, REG_INT_MASK), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, REG_CONV_RATE), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, REG_CH_DISABLE), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, REG_DEEP_SHUTDOWN), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, REG_ADV_CONFIG), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, REG_BUSY_STATUS), ==, 0x02);
-+
-+    for (ch = 0u; ch < NUM_CHANNELS; ch++) {
-+        g_assert_cmphex(i2c_get8(dev, REG_LIMIT_BASE + ch * 2u), ==, 0xFF);
-+        g_assert_cmphex(i2c_get8(dev, REG_LIMIT_BASE + ch * 2u + 1u), ==, 0x00);
-+    }
-+}
-+
-+/* Software reset via INITIALIZATION bit */
-+static void test_soft_reset(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    i2c_set8(dev, REG_INT_MASK, 0xAA);
-+    i2c_set8(dev, REG_CH_DISABLE, 0x55);
-+    i2c_set8(dev, REG_LIMIT_BASE, 0x42);
-+
-+    g_assert_cmphex(i2c_get8(dev, REG_INT_MASK), ==, 0xAA);
-+    g_assert_cmphex(i2c_get8(dev, REG_CH_DISABLE), ==, 0x55);
-+    g_assert_cmphex(i2c_get8(dev, REG_LIMIT_BASE), ==, 0x42);
-+
-+    i2c_set8(dev, REG_CONFIG, CONFIG_INITIALIZATION);
-+
-+    g_assert_cmphex(i2c_get8(dev, REG_CONFIG), ==, 0x08);
-+    g_assert_cmphex(i2c_get8(dev, REG_INT_MASK), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, REG_CH_DISABLE), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, REG_LIMIT_BASE), ==, 0xFF);
-+    g_assert_cmphex(i2c_get8(dev, REG_BUSY_STATUS), ==, 0x02);
-+}
-+
-+/* Verify ain property readback via QMP */
-+static void test_ain_property(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    int value;
-+
-+    qmp_adc128d818_set("ain3", 1500);
-+    value = qmp_adc128d818_get("ain3");
-+    g_test_message("Set ain3 = 1500 mV, readback = %d mV", value);
-+    g_assert_cmpint(value, ==, 1500);
-+
-+    qmp_adc128d818_set("temperature", 37500);
-+    value = qmp_adc128d818_get("temperature");
-+    g_test_message("Set temperature = 37500 mC, readback = %d mC", value);
-+    g_assert_cmpint(value, ==, 37500);
-+}
-+
-+static void adc128d818_register_nodes(void)
-+{
-+    QOSGraphEdgeOptions opts = {
-+        .extra_device_opts = "id=" ADC128D818_TEST_ID
-+                             ",address=0x1f"
-+    };
-+    add_qi2c_address(&opts, &(QI2CAddress) { ADC128D818_TEST_ADDR });
-+
-+    qos_node_create_driver("adc128d818", i2c_device_create);
-+    qos_node_consumes("adc128d818", "i2c-bus", &opts);
-+
-+    qos_add_test("id-registers", "adc128d818", test_id_registers, NULL);
-+    qos_add_test("defaults", "adc128d818", test_defaults, NULL);
-+    qos_add_test("soft-reset", "adc128d818", test_soft_reset, NULL);
-+    qos_add_test("ain-property", "adc128d818", test_ain_property, NULL);
-+}
-+libqos_init(adc128d818_register_nodes);
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 45ea497fa5..defa0d9941 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -296,6 +296,7 @@ qtests_riscv64 = ['riscv-csr-test'] + \
- qos_test_ss = ss.source_set()
- qos_test_ss.add(
-   'ac97-test.c',
-+  'adc128d818-test.c',
-   'adm1272-test.c',
-   'adm1266-test.c',
-   'ds1338-test.c',
++if __name__ == "__main__":
+     FacebookAspeedTest.main()
 
 -- 
 2.50.1

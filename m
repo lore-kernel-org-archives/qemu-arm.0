@@ -4,111 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66214C43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 09:19:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 572C1C43327
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 10:25:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wer6n-00062H-I7; Wed, 01 Jul 2026 05:19:53 -0400
+	id 1wes8O-0005vh-Ur; Wed, 01 Jul 2026 06:25:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shivangu@linux.ibm.com>)
- id 1weqVg-0000qG-Un; Wed, 01 Jul 2026 04:41:33 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shivangu@linux.ibm.com>)
- id 1weqVc-0008Ud-2k; Wed, 01 Jul 2026 04:41:32 -0400
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6618IrI8195455; Wed, 1 Jul 2026 08:41:23 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=pp1; bh=hmhty5
- /4biwvmUDqRXBuLPtRgvVRow+cjNFCtObiWd4=; b=n9nxevcFBhBkivL7LZOcyp
- YlJ0ZTrQuQwxGd/2tEXXjLMwc5+tYpGw2z2i4BflgqS8GRNECjSnr+j6aT/Gwxsz
- GijH87bik+55mCFqdkgkFqgItgoDG81o/1Zpj4T/cxwI7mYicJPM0q1BMjtVB+ie
- R3PJx3kaJvkhUhpFRahKEvO7OC6czVS7UeN+qMdSWltTPqc1ok0CGjczbSskrhEg
- FrjeWgxktNsuoch6xNMsaxT6+uqn5rWvsvHkH5pN+KC4/bTTr+eg8bUtvv1v1Rc4
- SxxYDL14qa4jXQ4On/pE5a57siNC6CeaRccyqoU8QVItgHdxZIIosEPw7Xybk8vg
- ==
-Received: from ppma12.dal12v.mail.ibm.com
- (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4f26mju5xw-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 01 Jul 2026 08:41:22 +0000 (GMT)
-Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
- by ppma12.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 6618YhqB017226;
- Wed, 1 Jul 2026 08:41:22 GMT
-Received: from smtprelay04.fra02v.mail.ibm.com ([9.218.2.228])
- by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 4f2ruqemkn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 01 Jul 2026 08:41:21 +0000 (GMT)
-Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com
- [10.20.54.106])
- by smtprelay04.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 6618fKee30016014
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 1 Jul 2026 08:41:20 GMT
-Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 283D02004B;
- Wed,  1 Jul 2026 08:41:20 +0000 (GMT)
-Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 310D320040;
- Wed,  1 Jul 2026 08:41:19 +0000 (GMT)
-Received: from shivang.upadyay (unknown [9.123.12.247])
- by smtpav07.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Wed,  1 Jul 2026 08:41:18 +0000 (GMT)
-Message-ID: <ea947f1ec44ed4b513545ae1d5be1fc455233064.camel@linux.ibm.com>
-Subject: Re: [PATCH 17/17] cpu: Use interval-tree for CPUBreakpoint
-From: Shivang Upadhyay <shivangu@linux.ibm.com>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org
-Date: Wed, 01 Jul 2026 14:11:18 +0530
-In-Reply-To: <20260701030443.1382447-18-richard.henderson@linaro.org>
-References: <20260701030443.1382447-1-richard.henderson@linaro.org>
- <20260701030443.1382447-18-richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wes85-0005sL-67
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 06:25:17 -0400
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wes82-0007tk-EP
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 06:25:16 -0400
+Received: by mail-yx1-xb12e.google.com with SMTP id
+ 956f58d0204a3-664cdeab266so566531d50.3
+ for <qemu-arm@nongnu.org>; Wed, 01 Jul 2026 03:25:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782901512; cv=none;
+ d=google.com; s=arc-20260327;
+ b=PjUxOEov6LLOITz0WyThZYjZS5zLpNsfa26gM6A+eIGzQ3vBYFlFTstd/atTWJJlMV
+ KuVcc6AtMDRLftmS1/b7UKjM6TROeKG/XYlodiHRFZK6TOpsRKwYDTEx2tGkgdHAd51P
+ P+dg9bUc7TLncMvi5VWUn41HKgOT2qZXMtXon/SgGsDLJ9+Kfao18urNwoiZjONu+Hej
+ vQjblti5j2KgbVZOwcLI60MDgZ2lXdxNO9BtXQXA2/r51/0uazgFfgBD+HmND2Whslkr
+ 3vxgpI4HaOfwJAmgq93Jzw293duEmNlAB36vtsLNV1hPBEpQorakwonp4+xuaRCoCc+X
+ FDkA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=xQLo0hDIXulcD756hs4Oy93bwjo27YDw5J1dssXn4vc=;
+ fh=1+qml7kvhMDv2qneF0Mntl1vOkos7CJf6Sx+R5c70tI=;
+ b=EpD2cF7QyOGZtmq26oGpYcJg1xeZSXB3WJ+3eCV97wL69kMWl9QCPmi+XEY0A6owOq
+ Al6X1ktY4gN5fdDKrKZGt09A7AbfHt/J5kx+yI+MHCSQUVhhWNvKhBZtAnF55AYBSfOk
+ 8CotPQfOavdr+Hi9a15ED3m8Ibj5ofZ3JThlhcR3VYqwyny7TdVyjGTW451rdhZ2lHte
+ 7j7XJU+3ZjyeiswPqGXsqc8xuTcFt6Tbee3J41HyExm/zHxCoZd2jf5boM1EUKkG+rdB
+ jeS4we3NVDqIFkpttAr9q4INiJTKDN0od4tkBBiZ1GTRZEVZmmuyUgkxpFMtLFpx8sJ/
+ Zhbw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1782901512; x=1783506312; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=xQLo0hDIXulcD756hs4Oy93bwjo27YDw5J1dssXn4vc=;
+ b=mFOWpexko/mmf+dNF0wmni1onGf2XXzkM/cb5YzthvFsYMY5K92bOtHsdcnPr3jtSh
+ P0iA8IMvFfiPY7aKlApXCBFypi7JUme3rkkNtWYiq4I52qThfPoiOAf+Yx+pPfFUjO1t
+ soisR4/wKqTNt42i/timXlhJ5QXXXuUD2ekVZ+PjaKw3CL6F/EmeklQkKKPHRnz/Yubt
+ 7czZ7QQsYKySM1KXYb55FfJ4KIgrjYCSPSIoB2GwN8+6fmvg05Y5LaqwlmwdmpdE0D/T
+ BNwHBglyPTWMhiFP63V13Ifx6EiVth1b5m5gBaIzkhHT2EnIqKE115sFpzgLKing1bs5
+ V3IA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782901512; x=1783506312;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=xQLo0hDIXulcD756hs4Oy93bwjo27YDw5J1dssXn4vc=;
+ b=c68vj6v4CbtRYZrOQqpW4wNRE5FBZTG0PaBXdvVVAykTcMPw8u3GOegHy4l95cM/Wz
+ HT3psDQHT+IWdOSsrUcWmapdhNMToDgOWGERxz6j8HlgKJDWSH9phLWZyBY76/5RaGBc
+ 6UGqcW59/10YPb2EkrouSJtUAK+HRcr6IRJiwioGuSYBiDLq1NV/9sXVpXicqjdcaPSQ
+ q7HKRO4WfanoX9SefAf39XEkjZzgSHImiee0GwKqtUJjHAi4/FpjX6/1ZxxUyGoUEssF
+ WKjXjFaFplTi6I4+ydNuUOVF9FG8k1TEMxilhwanhod2OWpEFSaMY/zaXQjxVjyIap3n
+ RoDg==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RoGr8LTby1VO/eNgFxwCucfbJ9ry1NhrYy5SWxpUKZEm39EeRQDaPVw2MjehvO+7iurKl2zJszyEg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy0nZvDZ2BYZEUlhb0ln6eEhB1voY4irKrX5zAxEDDHVLMFWbs+
+ UB+KCaeUZods7Cse0Ait4AcQJWaDrB8mHJ277WPHRnjgAZuimwAmb9bzvHXwumjaRRHiQeWBFCf
+ dS6piN6Ic/RXJH+G4V19EqxI6f1wnRTl0f4AMA8PMcw==
+X-Gm-Gg: AfdE7ckCC7z4NgMh16KRMmoly+kn4Qyxgc6GlTKC/6rgricyl6Cxr4ZkibNN2slp1Fa
+ Z/SAVadPmgEpT3MRkS4l5mzPVFv09VnZOi+Yw4hQJAaPjZEwyzMcY5qj/iHv+M4iR9S7SnEUImT
+ kq2ikxE2r+SUJzrWbJjDd8mNoERYEHPfoG9SOCWxuCCCrH9j22sNyNCb/Hk39x9bgcdDahrIaqj
+ nbDEOaITjSZkkp0gaBClCSS9la/Ss/wyUuwdqCoj6YMeq8IlsHoeXBZpDdEhXuvm1XfflDW/Ypw
+ K+GVlY4avgaxz4wa4CVDqBzSwE65LkLl2fD9V9MYVobPdqg4JJwLGKcN
+X-Received: by 2002:a05:690e:1915:b0:664:c7dc:64fb with SMTP id
+ 956f58d0204a3-66521a39e2emr991083d50.29.1782901511951; Wed, 01 Jul 2026
+ 03:25:11 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAxMDA4NCBTYWx0ZWRfX/EIIr5GMkDOt
- u7AGW/OGc3anShRmf0qlHaP+TooZCvszQ1KTN70Kkj0jrpC40Z67G8rj60v/4nrT9r7t/qczq9K
- C8Qx46X4VxrYZ93G5HNTPWVfHujpQxwMTv1LiLyob621s4fthZpWqiVJAQaj70oN0eRJVQnRdgl
- LwAJf4xUJNO8WT35QvYarG5dTWRwDf2o4wxywcHUeSjDPhdmSeo5FmvF0cwR0SaECKxOvbvzaL2
- rYbpEMwcKWR92adxgDhBdOkrRbcy8PLhbD9E80WZeevZW4JXL7PhogaX4VtmApNKFA/x5E8onfD
- Fyma3kWALWnFTx6iRi8QcBvhB/7tzFjf2nOiRSCu9rRUz2924tXay1mjVTesX6mbAyNfpqr8XGn
- hxifgRZ7VQTraib3YMSn76/HDnRgfZq1Q62uz7wPB/uL6HUyaHjtgannECO598RzHbdqPrn0FRY
- z2UvVjFFiZX+x3jl82Q==
-X-Proofpoint-GUID: QbfCVw2IhVtcfXqOvHQF8n1N7EGihEPQ
-X-Authority-Analysis: v=2.4 cv=Z8bc2nRA c=1 sm=1 tr=0 ts=6a44d2b2 cx=c_pps
- a=bLidbwmWQ0KltjZqbj+ezA==:117 a=bLidbwmWQ0KltjZqbj+ezA==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=RzCfie-kr_QcCd8fBx8p:22 a=l4yQKMJeipP3SqVgYxcA:9
- a=QEXdDO2ut3YA:10
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAxMDA4NCBTYWx0ZWRfX0AMMUIJGbsFV
- SHixAF4JsiFZF5VUmJfkqmI91xPMgUjk6Ft3eYclxmwQ56dLxg0/g2/TLUasAdRi6doVGVhzwah
- 4wQaaYv40sH+UzyjFcLavgqtcczZmkM=
-X-Proofpoint-ORIG-GUID: QbfCVw2IhVtcfXqOvHQF8n1N7EGihEPQ
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-07-01_02,2026-06-26_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1011 adultscore=0 spamscore=0 priorityscore=1501 impostorscore=0
- malwarescore=0 phishscore=0 bulkscore=0 lowpriorityscore=0 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607010084
-Received-SPF: pass client-ip=148.163.158.5;
- envelope-from=shivangu@linux.ibm.com; helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+References: <20260630173245.2070268-1-clg@redhat.com>
+ <CAFEAcA8G2sti8T=u_Sa5HSSNXAJfJMmbv14PVD0y6yn1wDEaHw@mail.gmail.com>
+ <25ee74ac-1ccf-4f91-9ed1-3c9ca42a92ce@redhat.com>
+In-Reply-To: <25ee74ac-1ccf-4f91-9ed1-3c9ca42a92ce@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 1 Jul 2026 11:25:00 +0100
+X-Gm-Features: AVVi8CccGoavJup1zzY5tow22AQySYZjXFjjSjPi7UhlB1Y-BGtxW4ctnFLjKhU
+Message-ID: <CAFEAcA_6ZLF=gnM+LB-Ep57ZZi41zuXb8MfYFKn-rrVndFGuLw@mail.gmail.com>
+Subject: Re: [PATCH] platform-bus: Align MMIO regions to host page size
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Stefan Berger <stefanb@linux.ibm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 01 Jul 2026 05:19:52 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,16 +124,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-T24gVHVlLCAyMDI2LTA2LTMwIGF0IDIwOjA0IC0wNzAwLCBSaWNoYXJkIEhlbmRlcnNvbiB3cm90
-ZToKPiAtwqDCoMKgIGlmIChtYXRjaF9wYWdlKSB7Cj4gK8KgwqDCoCBuID0gaW50ZXJ2YWxfdHJl
-ZV9pdGVyX2ZpcnN0KCZjcHUtPmJyZWFrcG9pbnRzLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHBjICYgVEFSR0VUX1BB
-R0VfTUFTSywKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCBwYyB8IH5UQVJHRVRfUEFHRV9NQVNLKTsKPiArwqDCoMKgIGlm
-IChuKSB7ClRoaXMgbG9naWMgc2VlbXMgZ3JlYXQuIEkgdGVzdGVkIHRoaXMgcGF0Y2ggc2VyaWVz
-LCBvbiB0aGUgcHBjIGtlcm5lbApicmVha3BvaW50cyB1c2VjYXNlLiBJdCBzZWVtcyB0byBwZXJm
-b3JtIHNsaWdodGx5IGJldHRlciB0aGFuIEdUcmVlCmltcGxlbWVudGF0aW9uLgoKTWF5YmUgdGhp
-cyBjYW4gb3BlbiB0aGUgd2F5IHRvIGhhdmUgYGJyZWFrLXJhbmdlYCBzdXBwb3J0IGZyb20gZ2Ri
-PwoKVGhhbmtzCn5TaGl2YW5nCg==
+On Wed, 1 Jul 2026 at 08:34, C=C3=A9dric Le Goater <clg@redhat.com> wrote:
+>
+> On 6/30/26 22:03, Peter Maydell wrote:
+> > On Tue, 30 Jun 2026 at 18:33, C=C3=A9dric Le Goater <clg@redhat.com> wr=
+ote:
+> >>
+> >> On aarch64 hosts with 64K pages, the platform bus MMIO allocator can
+> >> place device regions (such as the 1KB "tpm-ppi" region) at offsets
+> >> that are not aligned to the host page size. This causes unnecessary
+> >> and noisy VFIO IOMMU warnings when starting VMs configured with
+> >> passed-through PCI devices:
+> >>
+> >>    vfio_listener_valid_section received unaligned region tpm-ppi
+> >>      iova=3D0xc005000 offset_within_region=3D0x0
+> >>      qemu_real_host_page_size=3D0x10000
+> >
+> > Why does vfio care about the tpm-ppi region? I thought vfio
+> > was only for passthrough devices, not for normal ones.
+>
+> It's caught by the VFIO listener which doesn't filer per device, it
+> covers the entire address space.
+>
+> This is a benign address mis-alignment warning of the tpm-ppi memory
+> region and VFIO simply skips the region.
 
+That sounds like the problem then is that VFIO is warning about
+things that are not in any way going to cause an issue. We should
+stop it from doing that, not change the rest of the platform
+because its warnings are over-broad.
+
+> OK. Let's extend vfio_known_safe_misalignment() instead as done
+> by commit 851d6d1a0ff2 ("vfio/common: remove spurious tpm-crb-cmd
+> misalignment warning").
+
+That seems like vfio is gradually accumulating a very
+specific list of "we know this thing is misaligned" every
+time. That is clearly wrong -- any device anywhere on the
+board is allowed to have a non-aligned memory region. Those
+are totally normal.
+
+I think the vfio code needs to change so that it's only checking
+the stuff that's actually vfio related. Drop the "we have a
+whitelist" approach, please.
+
+-- PMM
 

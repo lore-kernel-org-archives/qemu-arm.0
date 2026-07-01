@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 419C4C43327
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 20:10:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8161AC43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 20:10:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wf1Ey-0001lE-Dm; Wed, 01 Jul 2026 16:09:00 -0400
+	id 1wf1Ez-0001mT-PI; Wed, 01 Jul 2026 16:09:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
- id 1weylX-0008Kj-Q2; Wed, 01 Jul 2026 13:30:29 -0400
-Received: from smtp2-g21.free.fr ([212.27.42.2])
+ id 1weyma-0008WJ-8y; Wed, 01 Jul 2026 13:31:32 -0400
+Received: from smtp2-g21.free.fr ([2a01:e0c:1:1599::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
- id 1weylW-0006wb-2m; Wed, 01 Jul 2026 13:30:27 -0400
+ id 1weymW-00079t-4R; Wed, 01 Jul 2026 13:31:30 -0400
 Received: from localhost (unknown [89.92.102.124])
  (Authenticated sender: emmanuel.blot@free.fr)
- by smtp2-g21.free.fr (Postfix) with ESMTPSA id 60B662003CA;
- Wed,  1 Jul 2026 19:30:03 +0200 (CEST)
+ by smtp2-g21.free.fr (Postfix) with ESMTPSA id 5F4FD2003EF;
+ Wed,  1 Jul 2026 19:31:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
- s=smtp-20201208; t=1782927023;
- bh=rtgoa2ZXcKYJ0bC3r8HA9NmSZpy9z/77OldWyHbsVvE=;
+ s=smtp-20201208; t=1782927085;
+ bh=d2xU5ugaq0WYvWO+htoe62DpMagP1np2F5de6Z3kIPE=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=ZQumOsZax7vdWPvRJ32hhSg0xDG9QXmhY1S2eKemUOxuZN42JfEGA060eoDhKiB7N
- G4BvMli+FqC6dK6rFUlNYQZi1Jp6FqFz6DGjOXrFqHk6slUICI1PcqeOT2LHvwREJS
- 2J0o1IpT1AYDAsY5QlvcZ4YUjlpIh2uQM0aZWK6IBYfuHNUjZJRVL26tyQ5SEyO7AF
- Tf7JbdMWva2FxnSwn9ySwynamVf1A1teWucRzzmHOtfRx+HKvAwH1pA/juFAGBPuJI
- 6FoJGJ3W2YHG2t+QcUSYINucgjzAhRwB0Fuvnu2xq8Lj5gHfe78/u1TOzJH0mRG1fx
- HENQKhShMqzYA==
+ b=jgtMba+BGQzvNbdokQlvOv43yndpDuD9hMraeqs4CK9nvBINyPnKSL7WjewFBKhXJ
+ t7HZW2jYi8mL8P10Jol5zxWASqSdGX8cqbZxOiFvS53JMBQ0fbTPRUkFlq00Rt+j2a
+ iBSTTnahOANj+rQ5z5y1sERF5MXOzxdbn1G7u6qBP6Cuce0Sw0Tr7QbsUyH2MaLJhx
+ IQQIjSysmopnAj4R3VhsJpaPXh11q9CypO+iYtwRbunXGEbqMXtcPtwddk/+gSfNso
+ /fJESRNq+hEbJbNrIzvP+aA1H6CltAyDFokpel0+6RdVXf3PpWiTI2M2Q1EAk67tRT
+ jkcM2GJFeHgqg==
 From: Emmanuel Blot <emmanuel.blot@free.fr>
-Date: Wed, 01 Jul 2026 19:28:34 +0200
-Subject: [PATCH v5 4/8] tests/qtest: adc128d818: test limit interrupts
+Date: Wed, 01 Jul 2026 19:28:37 +0200
+Subject: [PATCH v5 7/8] hw/arm: anacapa: add ADC128D818 devices
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260701-i2c-adc128d818-anacapa-v5-4-fe8292d86b38@free.fr>
+Content-Transfer-Encoding: 8bit
+Message-Id: <20260701-i2c-adc128d818-anacapa-v5-7-fe8292d86b38@free.fr>
 References: <20260701-i2c-adc128d818-anacapa-v5-0-fe8292d86b38@free.fr>
 In-Reply-To: <20260701-i2c-adc128d818-anacapa-v5-0-fe8292d86b38@free.fr>
 To: qemu-devel@nongnu.org
@@ -53,24 +53,25 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Alexander Hansen <alexander.hansen@9elements.com>, 
  William de Abreu Pinho <williampinho@meta.com>, 
  Emmanuel Blot <eblot@meta.com>, qemu-arm@nongnu.org, 
- Emmanuel Blot <emmanuel.blot@free.fr>, Corey Minyard <cminyard@mvista.com>
+ Emmanuel Blot <emmanuel.blot@free.fr>, Corey Minyard <cminyard@mvista.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1782926919; l=5773;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1782926919; l=3268;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=rtgoa2ZXcKYJ0bC3r8HA9NmSZpy9z/77OldWyHbsVvE=;
- b=bY6T7JWadDl4YiQ/uUPuGHUY6ebWgYtN8SLw3fy3YctIltLEFO9o1CtmmHsjwjiMEa67fiNjv
- ecpKxoF9Nj7AZKiaNoSq0RaYXtycGHvaFa5JrJmpHL+Sf6ineaSvvai
+ bh=d2xU5ugaq0WYvWO+htoe62DpMagP1np2F5de6Z3kIPE=;
+ b=G2f9UbP78E3/mm4inv3n5CAYgd2cWd0wg5TGMKQkpapZb2fSs+Fx0xh4uiV4TT3HMp49mwKj1
+ 3k6r3XSVIBLCYDIlryOSewDARS8guROYNXgmkaK9ywYLVoCgiZwxCcz
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=212.27.42.2; envelope-from=emmanuel.blot@free.fr;
- helo=smtp2-g21.free.fr
+Received-SPF: pass client-ip=2a01:e0c:1:1599::11;
+ envelope-from=emmanuel.blot@free.fr; helo=smtp2-g21.free.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Wed, 01 Jul 2026 16:08:58 -0400
 X-BeenThere: qemu-arm@nongnu.org
@@ -87,153 +88,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Cover per-channel high- and low-limit interrupt status, the
-INT_CLEAR bit gating the monitoring loop, and the temperature
-high-limit alarm with hysteresis.
+Wire up the two ADC128D818 instances that appear in the Anacapa DTS:
+one on i2c8 mux channel 0 and one on i2c13 mux channel 3.
 
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/adc128d818-test.c | 121 ++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 121 insertions(+)
+ hw/arm/Kconfig                  |  1 +
+ hw/arm/aspeed_ast2600_anacapa.c | 21 +++++++++++++++++----
+ 2 files changed, 18 insertions(+), 4 deletions(-)
 
-diff --git a/tests/qtest/adc128d818-test.c b/tests/qtest/adc128d818-test.c
-index 891189f0bd..3e3fabb8d9 100644
---- a/tests/qtest/adc128d818-test.c
-+++ b/tests/qtest/adc128d818-test.c
-@@ -330,6 +330,123 @@ static void test_ext_vref(void *obj, void *data, QGuestAllocator *alloc)
-     g_assert_cmphex(reading, ==, 0x8000);
- }
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index fb798ccbee..04ecf5d473 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -553,6 +553,7 @@ config ASPEED_SOC
+     select LED
+     select PMBUS
+     select MAX31785
++    select ADC128D818
+     select FSI_APB2OPB_ASPEED
+     select AT24C
+     select PCI_EXPRESS
+diff --git a/hw/arm/aspeed_ast2600_anacapa.c b/hw/arm/aspeed_ast2600_anacapa.c
+index a1c8111a93..18f759f5f8 100644
+--- a/hw/arm/aspeed_ast2600_anacapa.c
++++ b/hw/arm/aspeed_ast2600_anacapa.c
+@@ -1,13 +1,14 @@
+ /*
+  * Facebook Anacapa
+  *
+- * Copyright (c) Meta Platforms, Inc. and affiliates.
++ * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
+  *
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
  
-+/* Interrupt status set on limit violation; persists while fault remains */
-+static void test_interrupt_status(void *obj, void *data, QGuestAllocator *alloc)
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
++#include "hw/sensor/adc128d818.h"
+ #include "hw/arm/machines-qom.h"
+ #include "hw/arm/aspeed.h"
+ #include "hw/arm/aspeed_soc.h"
+@@ -15,7 +16,6 @@
+ #include "hw/gpio/pca9552.h"
+ #include "hw/nvram/eeprom_at24c.h"
+ 
+-/* Anacapa hardware value */
+ #define ANACAPA_BMC_HW_STRAP1 0x00002002
+ #define ANACAPA_BMC_HW_STRAP2 0x00000000
+ #define ANACAPA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+@@ -221,6 +221,17 @@ static const uint8_t hpm_brd_id_eeprom[] = {
+ };
+ static const size_t hpm_brd_id_eeprom_len = sizeof(hpm_brd_id_eeprom);
+ 
++static void anacapa_add_adc128d818(I2CBus *bus, uint8_t addr,
++                                   const char *description)
 +{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+    uint8_t status;
++    DeviceState *dev = DEVICE(i2c_slave_new(TYPE_ADC128D818, addr));
++    g_autofree char *childname = g_strdup_printf("0x%02x", addr);
 +
-+    i2c_set8(dev, REG_LIMIT_BASE, 0x10);
-+    g_test_message("Set ch0 high limit = 0x10");
-+
-+    qmp_adc128d818_set("ain0", 2560);
-+    g_test_message("Injected ain0 = 2560 mV (exceeds limit)");
-+
-+    i2c_set8(dev, REG_CONFIG, CONFIG_START | CONFIG_INT_ENABLE);
-+
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("INT_STATUS = 0x%02x (expect bit 0 set)", status);
-+    g_assert_cmphex(status & 0x01u, ==, 0x01);
-+
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("INT_STATUS after re-read = 0x%02x (expect bit 0 still set)",
-+             status);
-+    g_assert_cmphex(status & 0x01u, ==, 0x01);
-+
-+    qmp_adc128d818_set("ain0", 80);
-+    g_test_message("Injected ain0 = 80 mV (within limit)");
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("INT_STATUS after fault cleared = 0x%02x "
-+                   "(expect bit 0 clear)", status);
-+    g_assert_cmphex(status & 0x01u, ==, 0x00);
++    qdev_prop_set_string(dev, "description", description);
++    object_property_add_child(OBJECT(bus), childname, OBJECT(dev));
++    i2c_slave_realize_and_unref(I2C_SLAVE(dev), bus, &error_fatal);
 +}
 +
-+/* INT_CLEAR stops the round-robin monitoring loop */
-+static void test_int_clear(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+    uint8_t status;
-+
-+    i2c_set8(dev, REG_LIMIT_BASE, 0x10);
-+    qmp_adc128d818_set("ain0", 2560);
-+
-+    i2c_set8(dev, REG_CONFIG,
-+             CONFIG_START | CONFIG_INT_ENABLE | CONFIG_INT_CLEAR);
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("INT_STATUS with INT_CLEAR set = 0x%02x (expect 0x00)",
-+                   status);
-+    g_assert_cmphex(status, ==, 0x00);
-+
-+    i2c_set8(dev, REG_CONFIG, CONFIG_START | CONFIG_INT_ENABLE);
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("INT_STATUS after INT_CLEAR cleared = 0x%02x (expect bit 0)",
-+             status);
-+    g_assert_cmphex(status & 0x01u, ==, 0x01);
-+}
-+
-+/* Low-limit interrupt triggers correctly */
-+static void test_low_limit(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+    uint8_t status;
-+
-+    i2c_set8(dev, REG_CONFIG, CONFIG_INITIALIZATION);
-+
-+    i2c_set8(dev, REG_LIMIT_BASE + 3u, 0x80);
-+    g_test_message("Set ch1 low limit = 0x80");
-+
-+    i2c_set8(dev, REG_LIMIT_BASE + 5u, 0x80);
-+    g_test_message("Set ch2 low limit = 0x80");
-+
-+    qmp_adc128d818_set("ain1", 640);
-+    qmp_adc128d818_set("ain2", 1280);
-+    qmp_adc128d818_set("ain0", 1280);
-+    i2c_set8(dev, REG_CONFIG, CONFIG_START | CONFIG_INT_ENABLE);
-+
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("INT_STATUS = 0x%02x (expect bits 1 and 2 set)", status);
-+    g_assert_cmphex(status & 0x02u, ==, 0x02);
-+    g_assert_cmphex(status & 0x04u, ==, 0x04);
-+
-+    g_assert_cmphex(status & 0x01u, ==, 0x00);
-+}
-+
-+/* Temperature high-limit interrupt with hysteresis */
-+static void test_temp_hysteresis(void *obj, void *data,
-+                                 QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+    uint8_t status;
-+
-+    i2c_set8(dev, REG_CONFIG, CONFIG_INITIALIZATION);
-+
-+    i2c_set8(dev, REG_LIMIT_BASE + 7u * 2u, 0x32);
-+    i2c_set8(dev, REG_LIMIT_BASE + 7u * 2u + 1u, 0x28);
-+
-+    qmp_adc128d818_set("temperature", 25000);
-+    i2c_set8(dev, REG_CONFIG, CONFIG_START);
-+
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("25 C: INT_STATUS = 0x%02x (temp bit expect clear)", status);
-+    g_assert_cmphex(status & 0x80u, ==, 0x00);
-+
-+    qmp_adc128d818_set("temperature", 55000);
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("55 C: INT_STATUS = 0x%02x (temp bit expect set)", status);
-+    g_assert_cmphex(status & 0x80u, ==, 0x80);
-+
-+    qmp_adc128d818_set("temperature", 45000);
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("45 C (hysteresis): INT_STATUS = 0x%02x "
-+                   "(temp bit expect set)", status);
-+    g_assert_cmphex(status & 0x80u, ==, 0x80);
-+
-+    qmp_adc128d818_set("temperature", 35000);
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("35 C: INT_STATUS = 0x%02x (temp bit expect clear)", status);
-+    g_assert_cmphex(status & 0x80u, ==, 0x00);
-+}
-+
- static void adc128d818_register_nodes(void)
+ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
  {
-     QOSGraphEdgeOptions opts = {
-@@ -354,5 +471,9 @@ static void adc128d818_register_nodes(void)
-     qos_add_test("temperature-edges", "adc128d818", test_temperature_edges,
-                  NULL);
-     qos_add_test("ext-vref", "adc128d818", test_ext_vref, NULL);
-+    qos_add_test("interrupt-status", "adc128d818", test_interrupt_status, NULL);
-+    qos_add_test("int-clear", "adc128d818", test_int_clear, NULL);
-+    qos_add_test("low-limit", "adc128d818", test_low_limit, NULL);
-+    qos_add_test("temp-hysteresis", "adc128d818", test_temp_hysteresis, NULL);
- }
- libqos_init(adc128d818_register_nodes);
+     /* Reference: aspeed-bmc-facebook-anacapa.dts */
+@@ -259,7 +270,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_mux = i2c_slave_create_simple(i2c[8], TYPE_PCA9546, 0x72);
+ 
+     /* i2c8mux ch0 */
+-    /* adc128d818@1f — no model */
++    /* adc128d818@1f — R-PDB ADC (mode 1: 8 voltage channels) */
++    anacapa_add_adc128d818(pca954x_i2c_get_bus(i2c_mux, 0), 0x1f, "i2c8:0:1f");
+     /* pca9555@22 */
+     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0),
+                             TYPE_PCA9552, 0x22);
+@@ -320,7 +332,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_mux = i2c_slave_create_simple(i2c[13], TYPE_PCA9548, 0x70);
+ 
+     /* i2c13mux ch3 */
+-    /* adc128d818@1f - no model */
++    /* adc128d818@1f — MB ADC (mode 1: 8 voltage channels) */
++    anacapa_add_adc128d818(pca954x_i2c_get_bus(i2c_mux, 3), 0x1f, "i2c13:3:1f");
+ 
+     /* i2c13mux ch4 */
+     /* eeprom@51 */
 
 -- 
 2.50.1

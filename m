@@ -4,143 +4,152 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60BAFC43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 06:20:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD73CC43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 06:29:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1weoIW-0000J8-LA; Wed, 01 Jul 2026 02:19:48 -0400
+	id 1weoS1-0002QM-Li; Wed, 01 Jul 2026 02:29:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1weoIU-0000HI-Cz
- for qemu-arm@nongnu.org; Wed, 01 Jul 2026 02:19:46 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ id 1weoRx-0002Pw-1L
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 02:29:33 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1weoIS-0007LW-J1
- for qemu-arm@nongnu.org; Wed, 01 Jul 2026 02:19:46 -0400
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+ id 1weoRv-00010i-BQ
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 02:29:32 -0400
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6615lIMs138712
- for <qemu-arm@nongnu.org>; Wed, 1 Jul 2026 06:19:42 GMT
+ 6615lXhi137155
+ for <qemu-arm@nongnu.org>; Wed, 1 Jul 2026 06:29:29 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- unj+myK7kWvzNi+xjrja/5YPEXPwzazrjsdj5mHR4ds=; b=RkflwARdVyxQrKpU
- xlUgR7WCZ2E04vrFKIJKCG4HMIR/O8CiMSARBIjjKpTKTN8avtSmhYguYxGDK0kL
- IJCJuaO5+5nTfTPY1JTtFch7yZ3N/C6zrf1DrcnrSkkKPE0JOev9SqzCgqorGhEb
- c4S1+SntNqnYYnb/6c2rNNccvWfkmFYIbPgZGzVzYUG8yWha6HxRnbu09D1HA/x8
- ulZrmQ3snBRLYHAeR6li3gqA6WlrZyZT1ICMzBT+Tr/v1z2gNITpnshDaNmC7UOY
- Jd+WZ2tNrxbmaC6XmyagFSe05/8OUGRVMxumlV/tjWOsZTGeY9+KxDuaEQateO1j
- s7GtJA==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f4kgw2bbg-1
+ qwxl5RCReUJATLJ+UxFybnZqLF/+nAtoHGo0MLbc6xE=; b=eGxo9DwI8PjIsHZY
+ ktvJchJBABJezNmaBoqEgcfjQibtgx6QPt6zcqAJ2fpPoVOiKwCA33lrKTOmIwGu
+ AP9eZe00YaJSOXL+tZz1wwiqKJND+wv0yUUj8Dcz1R/2R/aQ18tPmaY0X5UgnCUl
+ 2Y/stghCBVzjqYqVeKvwzse6sQm66+CRKcqVfehgalhV4Aly10F76Hfu/lGnzjRw
+ +DSESz1/4cOys+BjwPgMq78KBz0B+KKH6JuXue4rcq7U6T3lzal4K9DxPL54TqxN
+ aQFj76FVO6hMnqe0NIe294u0xuzNgqAMduh/wxh8YwWDND4gdBYszL43Adp9hB3k
+ Tax9BA==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f4h0au5h1-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 01 Jul 2026 06:19:42 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-915f6ff639aso63582985a.1
- for <qemu-arm@nongnu.org>; Tue, 30 Jun 2026 23:19:42 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Wed, 01 Jul 2026 06:29:29 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-92e663c29f2so37597085a.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Jun 2026 23:29:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1782886781; x=1783491581; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=oss.qualcomm.com; s=google; t=1782887369; x=1783492169; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=unj+myK7kWvzNi+xjrja/5YPEXPwzazrjsdj5mHR4ds=;
- b=cQLiazVrm4i9rNlFlXB95Hf4PxOfFDaEwGkL7UDUbYQn9wDvMti1hRfnNbUV0iXFy+
- t1Ar3vRHcSIXGgBlzabF7IQIfnPOkFByBvQC7NA3CwBRUuuAXMGVpHICiZYTQu1qrlsz
- rxdgtRlkYQf8uH40m2L0SP5XKi6Xvat3+kwnzku5WotjZLl16VSiT9lYjUIkjJRx2S5+
- EBpRvJCLfIf8X0hzIHBjNy5N+yINsoc/am1c0H1n5bBBe7Ht0Xtndiv6hIvQHvW4f11q
- wa81Lp4gJdyK/HONv/VbzCwpG8Rrq8uOrikTZ5G7s6PI5S9CNug2a5qGqBQvvcMyZ82D
- EsyA==
+ bh=qwxl5RCReUJATLJ+UxFybnZqLF/+nAtoHGo0MLbc6xE=;
+ b=SRqo4rKfnLcqiycmyoBw+RXS0+zIxvzfcqsy371sx0a8Ag6rJ0J8JFELnTAUBgh8hn
+ Im3cplzGwpNyrAXzdsfIm1OkkJvEcA2vzuq2Q4BqukQlFS6f7jiMy7CnR9DyDBrglSvs
+ 6knvtv6wL1wOUvR7+hO/j2400LRDzwz5/4v6BhemKSAynEQOgfAAArwHvqtSFERCer/v
+ bvPgXztqHct9CGOVfAFjPxNje084uhdQUUBKHhCt+kqEW0H50wMNb2U5tT4u2WnXbC1E
+ yo8Z2ZRNOCHZ4jsfhAfq8qS1av6dh7iB3AJj/tZ2zy3FLrN9v+yrcrFQioaK0RsZ2Tp/
+ vs2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782886781; x=1783491581;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=1e100.net; s=20251104; t=1782887369; x=1783492169;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=unj+myK7kWvzNi+xjrja/5YPEXPwzazrjsdj5mHR4ds=;
- b=fX+KzBMy+3rHDghQ8NVZdu3l9weIk+IHFguiSQEvFJ3TKfF6+j4TEV3yuyDJVjFvx7
- ZspFKDxBvgTmFaebdoZO8wbNAl2K80o6t1oheOqODVfOb28WXOxDQnEGKeHGxi7KxgLo
- XMknzg01G4YvKWXcP/6Ws19GIaCr8SjRMUHnl/3xvGC6G2MtP+kXj4Tj95DIJNYVpM+l
- G0UKOBbQekLhRd/3B5VDcT6GGecJvUvIuKBNkLd5b4d0NDZR8SQFpPTMu8LQyfDGgVw+
- edgWGzggN7kOAmrg2ku2BQ38zYoHEqQ8EG2wa2/Mvc7DL+ESzwZorH8lSXNDQ3Hj+qr1
- 9x5w==
+ bh=qwxl5RCReUJATLJ+UxFybnZqLF/+nAtoHGo0MLbc6xE=;
+ b=K5lVfZoDMclYXGOZriwTYpj2z38LMwxFxWUgYRrt9B8Yq/U+Zt8Z7JSaKX8Q7qMwRg
+ HdlFh3gLspxs+nT9FZqpB8QIb4rjPNYsyolsq4g4EfxpyqIBMNeP9HFhGS/zDWcjF7pB
+ CfJwipungIaGbBiIFWAKoeVbWRo8o028Fd8ktEiAzpvmpak6r3NanbFtdiQan016ExSc
+ +qbqlnMMbpkm22lMuvZ3Ml/+fmyykN7UaZo7b+41YWXL1DPjl9qeh/+n60y3SfdcGAcL
+ bH/mzA1g5A5QtGwutpMcmxoI/tUKcLL5BqzIf2nD1nTWTcqMj3xRUGoP2cfYXWwSZC4x
+ NWSw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8Jys4lMedpBFvNs84GMGEXOItNc7YcUZ4bowZxTOQYe93m3wGa9qD7hHgf2OGy+D4yREEk1molXA==@nongnu.org
-X-Gm-Message-State: AOJu0YwXFbJXdFwDnDDbysxerFF5T4eUkd0MTQ0Ny+pev65E5EAuH3WQ
- rHX2aHB3n1AIxSYToX2tQJ1ZwjCUThvak1tGz9RVCfzeqyGRQpyBCh9FEGERaONRlzcE4imdPg4
- PRwZaacZePcGGvrgD8pBRTs4gEy8KCX7cHdZnzXVoWr1kLBxF7XekRtk=
-X-Gm-Gg: AfdE7cl9vU0/1W0Fu08EmK4b8S3rJqwDUpc2NmNJTJT6x1U0badp7x4n/CmNslCOBEe
- /ulQUhBXDZLd2Z+vRx5sPNi5UpNS8HFdqNgXIlZr/8MDXLSqrq8tZhUAjjikgvvJKBmVDsp/EpR
- gQ88dDQNNtm+8MS68smK4dWI+SRQO1rQIU0HhMWd9Tud2Z7E5jEO40+pdQbtNRj35SLjSNwY09s
- HB8TnNU/rceRlcQZ32gulEi35Bcn57Ar2f6ymwKg2aanGsKPChjDDM0HSUHtIAKSNLhxKmhd1X5
- 658kom0eAY/D9uI7dCQsxGDjSuHdQLgC3eEQVp0dYXYmRCAuH7OubNpz9CDzdvdpTrlYX+T2VLc
- nsMFB5LNGwxIGyLpUBCDpgq7C8WW/5Fb96bKh+z1Z5HcS8k69kYX2+tMRAiQZZg==
-X-Received: by 2002:a05:620a:404b:b0:915:efa6:d718 with SMTP id
- af79cd13be357-92e784cc16dmr43870785a.47.1782886781525; 
- Tue, 30 Jun 2026 23:19:41 -0700 (PDT)
-X-Received: by 2002:a05:620a:404b:b0:915:efa6:d718 with SMTP id
- af79cd13be357-92e784cc16dmr43869485a.47.1782886781138; 
- Tue, 30 Jun 2026 23:19:41 -0700 (PDT)
+ AFNElJ8Kd3zfaBv44V2xb0YpSaSRqIPzqL9qAaZbTDl4CG+6x1ql5/lQBqUJDGuhvc0AW82/iwVv9FYnkw==@nongnu.org
+X-Gm-Message-State: AOJu0YxDIZ4EMfSFnHJkvpMhlBKpr7Fch/xdWKtJ5Km6Xeq3u6bRz4J4
+ 3IzCPCCfZtXYACQRES+znfb0pD3MvI+gW13Kvx3iGFCGfsCg/GqsoezwCqWMvBliAffKtMnGUHP
+ Yr0WTkzRfp6Q0U2t26XiK6egWvwBmA3UQl5LjgBsZIM4DhVZiG9F1FYI=
+X-Gm-Gg: AfdE7cl6xetssXgLByTppV6zPdN88SJw0eTxw4my5IrbxEhAGKeTcdFK68tnSTcbsMM
+ CWbGvXDg6SmkYHhOlqxB/r/Wn4quLlLAAOcZB7na0KXboO2F7T4wy1R7BVs7xXyDYHLCQBee+Vt
+ RLY3Hgd1o6icebc7IYV1VUEHuTsWaTND1mpemMCdMYkTpeZ9erifd1ANVDOF9T1TP6BJoFjFduj
+ pG6JoYH34tg9vR1GwOBro+85PZM1LiqtiIv1vWQv1X0bV04bCZNo8qoSsuN1hYzE3+QeNVToPW0
+ RliI0JXtkK12J7vDhnvD2wJubzeaSG7Fc/gF/QfZ+462fSpwgKVKQFQwFHDPCoC+KGsghBlc4dn
+ BKNU6nCdlKhCstlyeYDgOklQF3lU4UyUCXuBRHT2BZjwy71HUmEkQMbemX0ywDA==
+X-Received: by 2002:a05:620a:8086:b0:915:fc16:2ae0 with SMTP id
+ af79cd13be357-92e697b4331mr626179685a.25.1782887368889; 
+ Tue, 30 Jun 2026 23:29:28 -0700 (PDT)
+X-Received: by 2002:a05:620a:8086:b0:915:fc16:2ae0 with SMTP id
+ af79cd13be357-92e697b4331mr626176585a.25.1782887368451; 
+ Tue, 30 Jun 2026 23:29:28 -0700 (PDT)
 Received: from [192.168.69.212] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493be81df2asm89069585e9.12.2026.06.30.23.19.39
+ ffacd0b85a97d-47563d195a7sm13864748f8f.7.2026.06.30.23.29.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Jun 2026 23:19:40 -0700 (PDT)
-Message-ID: <6d52bca8-c748-4b27-a46d-a9de9dc2b782@oss.qualcomm.com>
-Date: Wed, 1 Jul 2026 08:19:38 +0200
+ Tue, 30 Jun 2026 23:29:27 -0700 (PDT)
+Message-ID: <dc92984a-5c25-419e-b4ad-f5b79efbaeea@oss.qualcomm.com>
+Date: Wed, 1 Jul 2026 08:29:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/17] exec/breakpoint: Introduce BP_CPU_ID_SHIFT
+Subject: Re: [PATCH v3 3/5] hw/i2c: parent slaves created with
+ i2c_slave_create_simple
 Content-Language: en-US
+To: Emmanuel Blot <eblot@meta.com>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ Alexander Hansen <alexander.hansen@9elements.com>,
+ William de Abreu Pinho <williampinho@meta.com>, qemu-arm@nongnu.org,
+ Corey Minyard <cminyard@mvista.com>, Markus Armbruster <armbru@redhat.com>
+References: <20260627-i2c-adc128d818-anacapa-v3-0-cfb94270a980@meta.com>
+ <20260627-i2c-adc128d818-anacapa-v3-3-cfb94270a980@meta.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: shivangu@linux.ibm.com, qemu-arm@nongnu.org, qemu-riscv@nongnu.org
-References: <20260701030443.1382447-1-richard.henderson@linaro.org>
- <20260701030443.1382447-9-richard.henderson@linaro.org>
- <a5d3aa14-4b74-4e0a-a514-a8dc23890813@oss.qualcomm.com>
-In-Reply-To: <a5d3aa14-4b74-4e0a-a514-a8dc23890813@oss.qualcomm.com>
+In-Reply-To: <20260627-i2c-adc128d818-anacapa-v3-3-cfb94270a980@meta.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=Co2PtH4D c=1 sm=1 tr=0 ts=6a44b17e cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+Content-Transfer-Encoding: 7bit
+X-Authority-Analysis: v=2.4 cv=OuF/DS/t c=1 sm=1 tr=0 ts=6a44b3c9 cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
- a=VwQbUJbxAAAA:8 a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=uRcIMZw2FUk9YvzEzAQA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: Hyrjl4wLGv6FpKSSarvXflpb5stMrkpZ
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAxMDA2MyBTYWx0ZWRfX9GUUG5o/m//I
- fzr234dIAQMQ5Gna7U+qM3Z7hBqwAhOCT7m3HXCIdTRyF75BkM/3o7s6xj0DqNtVxvxTahAlr0/
- mGGx5Ubnfhp5XO5V2Ov+rXpF8pnYKoM=
-X-Proofpoint-GUID: Hyrjl4wLGv6FpKSSarvXflpb5stMrkpZ
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAxMDA2MyBTYWx0ZWRfX+4nqxjc90sis
- 8geqqF7R/ID1hLMXDmieElTKo/zt/kp+GIJYvw/48tJEhRIppF58jTei1clVOQseWhKH75+S7Zu
- zSLRq+2iUClecKUnj9PdyKC91ozeA/JNYV+rrRstljMplYb0r2sQYCA6PRKr3N7AiZAF0GpgDAJ
- IbbOimhXToHUSj2Ec/MF2sBUMzJ+2ORUCtpLDNcfK5TKAOCyIoMJ4QN8aJqFwlGg6Y3MwFlwGzc
- /qaBLtTupdUyaURbEmi6xGeZqvhIB6cPsiSJYzZK4ja3Kgju95668OF8RsdhD/TUrWh+O5H2kkQ
- +Thzqd0eZ4pIKvYeqooWMk9/BkajcgY1jMNCT3rIIgw18TnI3H7OKHeBd+sGzM9S4EhVb2z8HQK
- yXeSe4HIJTH7o5xKpUvH3vHbAJVnjxbu+pajncObHGi2hzta/bx232bPVRF455eMcXAny9RZP9T
- 2zGvIRAxmNQXcnZ5reQ==
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
+ a=VabnemYjAAAA:8 a=aQtDwRUkSMaHxJ_vRUgA:9 a=0nuxaduDBj0oWwsgcO0V3IwwSFQ=:19
+ a=QEXdDO2ut3YA:10 a=IoWCM6iH3mJn3m4BftBB:22 a=gKebqoRLp9LExxC7YDUY:22
+X-Proofpoint-ORIG-GUID: YQ0QpS_JoYvTD4JC8R1RZ8bJpMYEE9p4
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAxMDA2NSBTYWx0ZWRfX9dvL0kOviTRI
+ ZWdK/PGjMNlwYslFSZIgh+IcV8VUpd0dRZl7jAyh1EOmCA4/ShWUUHlawaOGpvagI3zLspo2OqJ
+ AF2dg66jaMC0KJkfi4VGoy6lHLN7aBo=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAxMDA2NSBTYWx0ZWRfXyBNv3lM4+CqT
+ D4epA2LBc5xDq8+upKMV2h3rfVO05vjNSar4HK98dDT6JEhS6AjG8uphiQk0zs24VAwR1oVGU3J
+ gJ6YLccs9bXosQLTR2lS8TB/wpwbSMzG3Nm0EWFLVdhFcg+FCVpJOUx+GFjqvqxe3smHtGZ6UpO
+ +Iqj3rYbN3dMfKxnOwinM1tlu70IkIPEfnWTedO5ZoW1uhky0MTy1FzD6pjV4KRxEptLdWtivRK
+ 8rThny9AyQazRDCN3SdgRoiPK+OdEh9EYFucYLSkxTA8Lq4wwVHtqgCcquZuKfJbvCaP6eDTQLm
+ ZvDG7hrMVAH6HWBmLkdepjcObPR0LaR7e0aFySiKWFVhSSmngzeCVG6aJLsBooayWskH/+FNNYQ
+ zuEFXXzqnHPn8+fbFyQLgyeqdw9VvgFMolG2ifOpUHmppwhZ42FzwSrudZmvDkYqYPeLljQ9l+z
+ 5EUN6SHQriCwYS4ybpg==
+X-Proofpoint-GUID: YQ0QpS_JoYvTD4JC8R1RZ8bJpMYEE9p4
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
  definitions=2026-07-01_01,2026-06-26_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 clxscore=1015 bulkscore=0 suspectscore=0 phishscore=0
- spamscore=0 lowpriorityscore=0 adultscore=0 impostorscore=0 malwarescore=0
+ phishscore=0 suspectscore=0 spamscore=0 lowpriorityscore=0 bulkscore=0
+ impostorscore=0 clxscore=1015 adultscore=0 priorityscore=1501 malwarescore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607010063
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607010065
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,56 +165,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Richard,
+On 28/6/26 02:45, Emmanuel Blot wrote:
+> Slaves created with i2c_slave_create_simple() were left unparented and
+> showed up under /machine/unattached with no stable QOM path. Add each
+> slave as a QOM child of its bus, named after its I2C address, so it has
+> a deterministic and addressable QOM path.
 
-On 1/7/26 08:10, Philippe Mathieu-DaudÃ© wrote:
-> On 1/7/26 05:04, Richard Henderson wrote:
->> Allow the target to store an identifier with
->> breakpoints and watchpoints.  Change "flags" to
->> use uint32_t instead of "int".
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   include/exec/breakpoint.h | 10 ++++++----
->>   cpu-common.c              |  4 ++--
->>   2 files changed, 8 insertions(+), 6 deletions(-)
->>
->> diff --git a/include/exec/breakpoint.h b/include/exec/breakpoint.h
->> index fc91343875..93876f3304 100644
->> --- a/include/exec/breakpoint.h
->> +++ b/include/exec/breakpoint.h
->> @@ -25,10 +25,12 @@
->>   #define BP_WATCHPOINT_HIT_READ  (BP_MEM_READ << BP_HIT_SHIFT)
->>   #define BP_WATCHPOINT_HIT_WRITE (BP_MEM_WRITE << BP_HIT_SHIFT)
->>   #define BP_WATCHPOINT_HIT       (BP_MEM_ACCESS << BP_HIT_SHIFT)
->> +/* Bits [31:16] are reserved as an identifier for BP_CPU. */
->> +#define BP_CPU_ID_SHIFT       16
++Markus
 
-While I understand the benefits of storing the ID in the structure,
-I'm not keen in having it packed with the BP flags, it hinders the
-code logic. Since there is no point in optimizing this, lets simply
-add an index field. And convert the API introducing _by_index()
-helpers. I suppose you plan to remove cpu_breakpoint_remove_by_ref()
-at the end.
+Personally I never liked the idea of having buses being parents
+of the devices attached to them, but maybe it is simpler this way.
 
->>   struct CPUBreakpoint {
->>       vaddr pc;
->> -    int flags; /* BP_* */
->> +    uint32_t flags; /* BP_* */
->>       QTAILQ_ENTRY(CPUBreakpoint) entry;
->>   };
->> @@ -37,13 +39,13 @@ struct CPUWatchpoint {
->>       vaddr len;
->>       vaddr hitaddr;
->>       MemTxAttrs hitattrs;
->> -    int flags; /* BP_* */
->> +    uint32_t flags; /* BP_* */
->>       QTAILQ_ENTRY(CPUWatchpoint) entry;
->>   };
+> Signed-off-by: Emmanuel Blot <eblot@meta.com>
+> ---
+>   hw/i2c/core.c        | 3 +++
+>   include/hw/i2c/i2c.h | 7 +++++--
+>   2 files changed, 8 insertions(+), 2 deletions(-)
 > 
-> See https://lore.kernel.org/qemu-devel/20260630220100.1289-19- 
-> philmd@oss.qualcomm.com/ ;)
-> 
+> diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+> index 54f6bdca88..0bbce45d48 100644
+> --- a/hw/i2c/core.c
+> +++ b/hw/i2c/core.c
+> @@ -382,6 +382,9 @@ I2CSlave *i2c_slave_create_simple(I2CBus *bus, const char *name, uint8_t addr)
+>   {
+>       I2CSlave *dev = i2c_slave_new(name, addr);
+>   
+> +    g_autofree char *childname = g_strdup_printf("0x%02x", addr);
+> +    object_property_add_child(OBJECT(bus), childname, OBJECT(dev));
+> +
+>       i2c_slave_realize_and_unref(dev, bus, &error_abort);
+>   
+>       return dev;
+> diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+> index dd5930f4b5..dc557bbf3f 100644
+> --- a/include/hw/i2c/i2c.h
+> +++ b/include/hw/i2c/i2c.h
+> @@ -166,13 +166,16 @@ bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
+>   I2CSlave *i2c_slave_new(const char *name, uint8_t addr);
+>   
+>   /**
+> - * Create and realize an I2C slave device on the heap.
+> + * Create and realize an I2C slave device on the heap, add the device as a
+> + * child of its parent bus.
+> + *
+>    * @bus: I2C bus to put it on
+>    * @name: I2C slave device type name
+>    * @addr: I2C address of the slave when put on a bus
+>    *
+>    * Create the device state structure, initialize it, put it on the
+> - * specified @bus, and drop the reference to it (the device is realized).
+> + * specified @bus, parent it, and drop the reference to it (the device is
+> + * realized).
+>    */
+>   I2CSlave *i2c_slave_create_simple(I2CBus *bus, const char *name, uint8_t addr);
+>   
 > 
 
 

@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4A71C43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 09:15:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FB27C43602
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 09:16:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wer0e-0001Cc-W6; Wed, 01 Jul 2026 05:13:33 -0400
+	id 1wer0D-00014L-1c; Wed, 01 Jul 2026 05:13:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1weqzi-0000rY-Ka
- for qemu-arm@nongnu.org; Wed, 01 Jul 2026 05:12:35 -0400
+ id 1weqzf-0000qb-Fb
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 05:12:34 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1weqzg-0007MS-JC
- for qemu-arm@nongnu.org; Wed, 01 Jul 2026 05:12:33 -0400
+ id 1weqzd-0007Lv-81
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 05:12:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1782897151;
+ s=mimecast20190719; t=1782897148;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=SeybQdIIWmF3pMhGkURLVzPRIuE7Bsif8FAumNRhLgY=;
- b=O7D4vcvCyU8vREeENOWvN1ibwryhWAr4FTXqdGv7hPERqZ+HdqdyVzR9iPGX0M5MLAaPQC
- gNFBy+/SKT2tGr37KXt3BLw9Dl7/DW88RVdtiE3vM+wdYUhn1zEZMEXjlcbYQd8Wz7GriD
- p7cQN/Nd6/20nU9VbZPf1vjvC602/xo=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=I7HeEaZfUnANcE9Fkz/SCoaMXVCKDowNd0wSbY9G/+Y=;
+ b=Z1xc2A8cfHi7J7N+mHUPCB5+JToOMdkSwOmsmBSfePIWfNI9u0c3J53ZX9n3CP8Vh4wYYg
+ +QIV8M0t79wZWSsx14o7A7AhtMvQk0TXhodf4FZssmd1jaZ1dYBmprirMziT41w3ByF0Nf
+ XmN6kNXxpxiowCO17epU6HZohf0QRs8=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-388-cN0DoPIVPeOia7H8uVDJEA-1; Wed,
- 01 Jul 2026 05:12:28 -0400
-X-MC-Unique: cN0DoPIVPeOia7H8uVDJEA-1
-X-Mimecast-MFC-AGG-ID: cN0DoPIVPeOia7H8uVDJEA_1782897147
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-554-xg6NS3GKMrqxs9HAEjMuBQ-1; Wed,
+ 01 Jul 2026 05:12:25 -0400
+X-MC-Unique: xg6NS3GKMrqxs9HAEjMuBQ-1
+X-Mimecast-MFC-AGG-ID: xg6NS3GKMrqxs9HAEjMuBQ_1782897144
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4878B1945106; Wed,  1 Jul 2026 09:12:27 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 08AA918E6A51; Wed,  1 Jul 2026 09:12:24 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.33.117])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7F215180060F; Wed,  1 Jul 2026 09:12:24 +0000 (UTC)
+ id 01FE31800586; Wed,  1 Jul 2026 09:12:20 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, berrange@redhat.com,
  skolothumtho@nvidia.com, nicolinc@nvidia.com, nathanc@nvidia.com
-Subject: [PATCH v2 3/5] hw/arm/smmuv3: Sanitize SMMU_S_STRTAB_BASE_CFG.LOG2SIZE
-Date: Wed,  1 Jul 2026 11:11:40 +0200
-Message-ID: <20260701091209.2860306-4-eric.auger@redhat.com>
+Subject: [PATCH v2 2/5] hw/arm/smmuv3: Sanitize SMMU_S_STRTAB_BASE_CFG.SPLIT
+Date: Wed,  1 Jul 2026 11:11:39 +0200
+Message-ID: <20260701091209.2860306-3-eric.auger@redhat.com>
 In-Reply-To: <20260701091209.2860306-1-eric.auger@redhat.com>
 References: <20260701091209.2860306-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: aogeUDMSK2kbg02Fq6e0aTd21zzEEbqPuTFMxh8gwes_1782897147
+X-Mimecast-MFC-PROC-ID: cEhlrdsW6xsFHWZEnd54nhDFu0WNtJgPLfut2lT6jLw_1782897144
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -87,41 +87,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-STRTAB_BASE_CFG.LOG2SIZE is programmed by the guest through the
-emulated SMMUv3 MMIO register interface. Currently the value is
-not checked and used directly in smmu_find_ste() for strtab_base
-alignment computation with risk that MAKE_64BIT_MASK() runs out
-of bounds. On FMT==1 the strtab_size cannot be greater than 64 after
-the SPLIT being at minimum 6 (log2size is max 64).
-
-However on FMT=0 path, strtab_size= log2size + 6 can potentially
-exceed 64. Let's abort in that case.
+Currently the guest value for the SPLIT field is not checked.
+Also the spec says that values different from 6, 8, 10, respectively
+meaning 4KB, 16kB and 64kB leaf tables are reserved and behave as 6.
 
 Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3632
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Shameer Kolothum <skolothumtho@nvidia.com>
 ---
- hw/arm/smmuv3.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ hw/arm/smmuv3.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 285e6164a07..5ec3700d0d5 100644
+index 38aba9c0af9..285e6164a07 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -1696,6 +1696,14 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-                 s->sid_split = 6;
-             }
-             s->features |= SMMU_FEATURE_2LVL_STE;
-+        } else {
-+            uint32_t log2size = FIELD_EX32(data, STRTAB_BASE_CFG, LOG2SIZE);
-+
-+            if (log2size + 6 > 64) {
+@@ -1688,6 +1688,13 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+         s->strtab_base_cfg = data;
+         if (FIELD_EX32(data, STRTAB_BASE_CFG, FMT) == 1) {
+             s->sid_split = FIELD_EX32(data, STRTAB_BASE_CFG, SPLIT);
++            if (s->sid_split != 6 && s->sid_split != 8 && s->sid_split != 10) {
++                /* Other values are reserved, behave as 6 */
 +                qemu_log_mask(LOG_GUEST_ERROR,
-+                              "Invalid STRTAB_BASE_CFG.LOG2SIZE: %d", log2size);
-+                g_assert_not_reached();
++                              "Invalid STRTAB_BASE_CFG.SPLIT=%u, use 6 instead\n",
++                              s->sid_split);
++                s->sid_split = 6;
 +            }
+             s->features |= SMMU_FEATURE_2LVL_STE;
          }
          break;
-     case A_CMDQ_BASE: /* 64b */
 -- 
 2.53.0
 

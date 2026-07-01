@@ -4,89 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 366E1C43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 14:16:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77787C43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 14:17:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wevjK-0005Rm-0M; Wed, 01 Jul 2026 10:15:58 -0400
+	id 1wevl3-0007Hs-P0; Wed, 01 Jul 2026 10:17:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wevjI-0005RH-9d
- for qemu-arm@nongnu.org; Wed, 01 Jul 2026 10:15:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1wevl2-0007HP-B4
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 10:17:44 -0400
+Received: from out-180.mta1.migadu.com ([2001:41d0:203:375::b4])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wevjG-0007md-Ds
- for qemu-arm@nongnu.org; Wed, 01 Jul 2026 10:15:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1782915353;
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1wevl0-000172-30
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 10:17:43 -0400
+Message-ID: <10c554a8-3602-4ab0-a3df-796d8f7c2268@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+ t=1782915449;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=L9TpchyD0oH5lX1oqWBrp5EL9pmjGpMnTwog+p205Q0=;
- b=W7+4+MBAOctYCeScPtFRic8rx9JYTMMP7LxidGwmX8aoMx5wbQ3Q55jRkj6QwV1XrwRa3c
- +9lm9CJAMrQ5W9KR8dUFHJlWZmRr6Zne7kg3Kqj+PBMrGmpcJf5/9niI7pAYuz5QSkaq5N
- yJ4Le1ozlSrPm/EbJo8JHkFDKPzExEo=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-194-PrrlC1DIOg29c11_00a7eg-1; Wed,
- 01 Jul 2026 10:15:48 -0400
-X-MC-Unique: PrrlC1DIOg29c11_00a7eg-1
-X-Mimecast-MFC-AGG-ID: PrrlC1DIOg29c11_00a7eg_1782915346
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 00C04188E6DA; Wed,  1 Jul 2026 14:15:45 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 20B561800610; Wed,  1 Jul 2026 14:15:42 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 89A6121E6920; Wed, 01 Jul 2026 16:15:40 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Emmanuel Blot <eblot@meta.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,  Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
- <clg@kaod.org>,  Steven Lee
- <steven_lee@aspeedtech.com>,  Troy Lee <leetroy@gmail.com>,  Jamin Lin
- <jamin_lin@aspeedtech.com>,  Kane Chen <kane_chen@aspeedtech.com>,  Andrew
- Jeffery <andrew@codeconstruct.com.au>,  Joel Stanley <joel@jms.id.au>,
- Alexander Hansen <alexander.hansen@9elements.com>,  William de Abreu
- Pinho <williampinho@meta.com>,  qemu-arm@nongnu.org,  Corey Minyard
- <cminyard@mvista.com>
-Subject: Re: [PATCH v3 3/5] hw/i2c: parent slaves created with
- i2c_slave_create_simple
-In-Reply-To: <dc92984a-5c25-419e-b4ad-f5b79efbaeea@oss.qualcomm.com>
- ("Philippe =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Wed, 1 Jul 2026
- 08:29:26 +0200")
-References: <20260627-i2c-adc128d818-anacapa-v3-0-cfb94270a980@meta.com>
- <20260627-i2c-adc128d818-anacapa-v3-3-cfb94270a980@meta.com>
- <dc92984a-5c25-419e-b4ad-f5b79efbaeea@oss.qualcomm.com>
-Date: Wed, 01 Jul 2026 16:15:40 +0200
-Message-ID: <87echm4wz7.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ bh=OaMwduoRAKIjOQFP6y0wArUDt0qzWVZ7mzAnUdjLbwk=;
+ b=cZbX/UyaNevAnUvBUCl4WO70LDUwOQXwphNRAr+EBOaidIT3xAE3BI+w23QJ4idBcL3BFw
+ hTawdAzXWMtgqXoG52uIjiR5sJjv2HAJT+1BHjluL0v0TGktiK2OM+0MZnWW+ipNSIwOhg
+ ipPnYErUMuDE+IFuOvxPwSex8RWcN3M=
+Date: Wed, 1 Jul 2026 22:17:14 +0800
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: iRnv-aSZmR_UWmsO5bmmYR1a1OLSA_ueLZxUvlmJBQE_1782915346
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Subject: Re: [PATCH v2] target/arm/hvf: seed NO_RAW ID registers from
+ isar.idregs[] on vCPU init
+To: Jason Wright <wrigjl@proton.me>
+Cc: agraf@csgraf.de, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, richard.henderson@linaro.org, philmd@oss.qualcomm.com
+References: <20260529114723.42040-1-peter.maydell@linaro.org>
+ <20260529114723.42040-18-peter.maydell@linaro.org>
+ <745e66c7-2a9b-4185-bae7-77e10623332b@linux.dev>
+ <20260607182221.4357-1-wrigjl@proton.me>
+ <20260629205213.82391-1-wrigjl@proton.me>
+Content-Language: en-US
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+From: Zenghui Yu <zenghui.yu@linux.dev>
+In-Reply-To: <20260629205213.82391-1-wrigjl@proton.me>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Migadu-Flow: FLOW_OUT
+Received-SPF: pass client-ip=2001:41d0:203:375::b4;
+ envelope-from=zenghui.yu@linux.dev; helo=out-180.mta1.migadu.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,22 +74,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com> writes:
+On 6/30/26 4:52 AM, Jason Wright wrote:
+> Commit 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
+> gave ID_AA64ISAR0_EL1 a readfn so the RNDR field can reflect SCR_EL3.TRNDR
+> at read time, and marked the cpreg ARM_CP_NO_RAW in the system-emulation
+> path.  HVF then trips its hvf_arch_init_vcpu() assertion that no ID
+> register in hvf_sreg_list[] is NO_RAW, aborting on boot on Apple Silicon:
+> 
+>   Assertion failed: (!(ri->type & ARM_CP_NO_RAW)),
+>   function hvf_arch_init_vcpu, file hvf.c, line 1441.
+> 
+> Reproduce with:
+> 
+>   qemu-system-aarch64 -M virt,accel=hvf -cpu host \
+>                       -nographic -display none -bios /dev/null
+> 
+> Fix it the same way ID_AA64PFR0_EL1 already is: list
+> HV_SYS_REG_ID_AA64ISAR0_EL1 in the SYNC_NO_RAW_REGS block in sysreg.c.inc
+> so the assert loop skips it, and seed the vCPU's copy at init time.
+> 
+> While here, unify how the three isar.idregs[]-backed ID registers are
+> seeded.  isar.idregs[] already holds QEMU's intended value for each (the
+> host caps, probed once at realize via hv_vcpu_config_get_feature_reg(),
+> plus any QEMU adjustment), so there is no need to read each register back
+> from the vCPU first.  Seed PFR0, ISAR0 and MMFR0 directly from
+> isar.idregs[], dropping the two per-vCPU hv_vcpu_get_sys_reg() reads:
+> 
+>   - PFR0: take the GIC sysreg-interface bit from env->gicv3state, as the
+>     id_aa64pfr0_read() readfn does.  Identical to the previous code
+>     whenever a GICv3 sysreg interface is present (the configuration HVF
+>     runs in practice); it differs only in that a vCPU with no GICv3 now
+>     reports ID_AA64PFR0_EL1.GIC == 0 instead of inheriting the host's
+>     value, which matches the field's meaning.
+>   - ISAR0: no overlay is needed; HVF does not expose EL3, so
+>     SCR_EL3.TRNDR is never set and the readfn is constant.
+>   - MMFR0: still clamp PARANGE to the chosen IPA size, updating
+>     isar.idregs[] in place because the page-table walker and the
+>     ID_AA64MMFR0_EL1 cpreg resetvalue read PARANGE back from there.
+> 
+> Reported-by: Zenghui Yu <zenghui.yu@linux.dev>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Fixes: 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
+> Signed-off-by: Jason Wright <wrigjl@proton.me>
 
-> On 28/6/26 02:45, Emmanuel Blot wrote:
->> Slaves created with i2c_slave_create_simple() were left unparented and
->> showed up under /machine/unattached with no stable QOM path. Add each
->> slave as a QOM child of its bus, named after its I2C address, so it has
->> a deterministic and addressable QOM path.
->
-> +Markus
->
-> Personally I never liked the idea of having buses being parents
-> of the devices attached to them, but maybe it is simpler this way.
->
->> Signed-off-by: Emmanuel Blot <eblot@meta.com>
+Tested-by: Zenghui Yu <zenghui.yu@linux.dev>
 
-Patches haven't reached the list as far as I can tell.  I need them to
-contribute to the discussion.  Emmanuel, please resend them.
+Thank you for the fix!
 
+Zenghui
 

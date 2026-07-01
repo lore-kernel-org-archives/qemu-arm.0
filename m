@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77787C43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 14:17:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AABA3C43602
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 20:09:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wevl3-0007Hs-P0; Wed, 01 Jul 2026 10:17:45 -0400
+	id 1wf1Ex-0001l9-PY; Wed, 01 Jul 2026 16:09:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
- id 1wevl2-0007HP-B4
- for qemu-arm@nongnu.org; Wed, 01 Jul 2026 10:17:44 -0400
-Received: from out-180.mta1.migadu.com ([2001:41d0:203:375::b4])
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1weyks-00080K-TO; Wed, 01 Jul 2026 13:29:46 -0400
+Received: from smtp2-g21.free.fr ([212.27.42.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
- id 1wevl0-000172-30
- for qemu-arm@nongnu.org; Wed, 01 Jul 2026 10:17:43 -0400
-Message-ID: <10c554a8-3602-4ab0-a3df-796d8f7c2268@linux.dev>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
- t=1782915449;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=OaMwduoRAKIjOQFP6y0wArUDt0qzWVZ7mzAnUdjLbwk=;
- b=cZbX/UyaNevAnUvBUCl4WO70LDUwOQXwphNRAr+EBOaidIT3xAE3BI+w23QJ4idBcL3BFw
- hTawdAzXWMtgqXoG52uIjiR5sJjv2HAJT+1BHjluL0v0TGktiK2OM+0MZnWW+ipNSIwOhg
- ipPnYErUMuDE+IFuOvxPwSex8RWcN3M=
-Date: Wed, 1 Jul 2026 22:17:14 +0800
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1weykq-0006O6-Qg; Wed, 01 Jul 2026 13:29:46 -0400
+Received: from localhost (unknown [89.92.102.124])
+ (Authenticated sender: emmanuel.blot@free.fr)
+ by smtp2-g21.free.fr (Postfix) with ESMTPSA id 36B7220039E;
+ Wed,  1 Jul 2026 19:29:23 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
+ s=smtp-20201208; t=1782926982;
+ bh=Ouee2Ps/oTe0Wc/KxKCavPPjCwx8Kr2JVkVu0ezh1R4=;
+ h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+ b=G8iKTdq67gYU94fGQuhuEixzaRFbQdn5eEU5/5UUiV0eIeIf0oXw+Rrp8v39riBLo
+ ROO8/FFnyHsDf87oDbaN9dL1XMj3q1LjMtSVfLHNISvcrelrgHYktHQBfhq9TZp0ET
+ 6LATsFI7IYbvCgzqADfwJWwC46twBGlAhfqN6+0NdP7SCFnsn3LdE2hG9BL1No19fo
+ 6bYFpJoWTnyPrAInc++LTbke4DBTcgtSK9K6US/GNoag3KsQQcJGChika00x45qJpE
+ /0sn1FYAh2A/V0DK+pnMQl+tllwejQ9tUHh0pySCtsYi98W4tEfevB6JCDmb5xnP8G
+ z5cLmSTmtcY3Q==
+From: Emmanuel Blot <emmanuel.blot@free.fr>
+Date: Wed, 01 Jul 2026 19:28:32 +0200
+Subject: [PATCH v5 2/8] tests/qtest: adc128d818: add test harness and
+ register access
 MIME-Version: 1.0
-Subject: Re: [PATCH v2] target/arm/hvf: seed NO_RAW ID registers from
- isar.idregs[] on vCPU init
-To: Jason Wright <wrigjl@proton.me>
-Cc: agraf@csgraf.de, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, richard.henderson@linaro.org, philmd@oss.qualcomm.com
-References: <20260529114723.42040-1-peter.maydell@linaro.org>
- <20260529114723.42040-18-peter.maydell@linaro.org>
- <745e66c7-2a9b-4185-bae7-77e10623332b@linux.dev>
- <20260607182221.4357-1-wrigjl@proton.me>
- <20260629205213.82391-1-wrigjl@proton.me>
-Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Zenghui Yu <zenghui.yu@linux.dev>
-In-Reply-To: <20260629205213.82391-1-wrigjl@proton.me>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
-Received-SPF: pass client-ip=2001:41d0:203:375::b4;
- envelope-from=zenghui.yu@linux.dev; helo=out-180.mta1.migadu.com
+Message-Id: <20260701-i2c-adc128d818-anacapa-v5-2-fe8292d86b38@free.fr>
+References: <20260701-i2c-adc128d818-anacapa-v5-0-fe8292d86b38@free.fr>
+In-Reply-To: <20260701-i2c-adc128d818-anacapa-v5-0-fe8292d86b38@free.fr>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>, 
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ Alexander Hansen <alexander.hansen@9elements.com>, 
+ William de Abreu Pinho <williampinho@meta.com>, 
+ Emmanuel Blot <eblot@meta.com>, qemu-arm@nongnu.org, 
+ Emmanuel Blot <emmanuel.blot@free.fr>, Corey Minyard <cminyard@mvista.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1782926919; l=6947;
+ i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
+ bh=Ouee2Ps/oTe0Wc/KxKCavPPjCwx8Kr2JVkVu0ezh1R4=;
+ b=fL3qxsFOENd5XFnepIyQSn1772ZC//9IqWkLNVv5vlttZL6fIvOcsAGSDgB9Vgz76/2P7NRwR
+ wGCJQe66d+nC0vrHLZqtkx5kwe0CWeAHVFbhoUlm6dSuGszibcxfPON
+X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
+ pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
+Received-SPF: pass client-ip=212.27.42.2; envelope-from=emmanuel.blot@free.fr;
+ helo=smtp2-g21.free.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 01 Jul 2026 16:08:58 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,52 +88,206 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 6/30/26 4:52 AM, Jason Wright wrote:
-> Commit 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
-> gave ID_AA64ISAR0_EL1 a readfn so the RNDR field can reflect SCR_EL3.TRNDR
-> at read time, and marked the cpreg ARM_CP_NO_RAW in the system-emulation
-> path.  HVF then trips its hvf_arch_init_vcpu() assertion that no ID
-> register in hvf_sreg_list[] is NO_RAW, aborting on boot on Apple Silicon:
-> 
->   Assertion failed: (!(ri->type & ARM_CP_NO_RAW)),
->   function hvf_arch_init_vcpu, file hvf.c, line 1441.
-> 
-> Reproduce with:
-> 
->   qemu-system-aarch64 -M virt,accel=hvf -cpu host \
->                       -nographic -display none -bios /dev/null
-> 
-> Fix it the same way ID_AA64PFR0_EL1 already is: list
-> HV_SYS_REG_ID_AA64ISAR0_EL1 in the SYNC_NO_RAW_REGS block in sysreg.c.inc
-> so the assert loop skips it, and seed the vCPU's copy at init time.
-> 
-> While here, unify how the three isar.idregs[]-backed ID registers are
-> seeded.  isar.idregs[] already holds QEMU's intended value for each (the
-> host caps, probed once at realize via hv_vcpu_config_get_feature_reg(),
-> plus any QEMU adjustment), so there is no need to read each register back
-> from the vCPU first.  Seed PFR0, ISAR0 and MMFR0 directly from
-> isar.idregs[], dropping the two per-vCPU hv_vcpu_get_sys_reg() reads:
-> 
->   - PFR0: take the GIC sysreg-interface bit from env->gicv3state, as the
->     id_aa64pfr0_read() readfn does.  Identical to the previous code
->     whenever a GICv3 sysreg interface is present (the configuration HVF
->     runs in practice); it differs only in that a vCPU with no GICv3 now
->     reports ID_AA64PFR0_EL1.GIC == 0 instead of inheriting the host's
->     value, which matches the field's meaning.
->   - ISAR0: no overlay is needed; HVF does not expose EL3, so
->     SCR_EL3.TRNDR is never set and the readfn is constant.
->   - MMFR0: still clamp PARANGE to the chosen IPA size, updating
->     isar.idregs[] in place because the page-table walker and the
->     ID_AA64MMFR0_EL1 cpreg resetvalue read PARANGE back from there.
-> 
-> Reported-by: Zenghui Yu <zenghui.yu@linux.dev>
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Fixes: 887eaa8a29 ("target/arm: implement FEAT_RNG_TRAP for RNDR/RNDRRS")
-> Signed-off-by: Jason Wright <wrigjl@proton.me>
+Introduce the QOS test node and QMP property helpers for the
+ADC128D818, and cover basic register access: manufacturer and
+revision IDs, power-on-reset defaults, software reset, and the
+ain and temperature property readback.
 
-Tested-by: Zenghui Yu <zenghui.yu@linux.dev>
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+---
+ tests/qtest/adc128d818-test.c | 169 ++++++++++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build       |   1 +
+ 2 files changed, 170 insertions(+)
 
-Thank you for the fix!
+diff --git a/tests/qtest/adc128d818-test.c b/tests/qtest/adc128d818-test.c
+new file mode 100644
+index 0000000000..9a8811256f
+--- /dev/null
++++ b/tests/qtest/adc128d818-test.c
+@@ -0,0 +1,169 @@
++/*
++ * QTest testcase for the ADC128D818 ADC
++ *
++ * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/bitops.h"
++#include "libqos/i2c.h"
++#include "libqos/qgraph.h"
++#include "libqtest-single.h"
++#include "qobject/qdict.h"
++
++#define ADC128D818_TEST_ID      "adc128d818-test"
++#define ADC128D818_TEST_ADDR    0x1f
++
++/* Register addresses */
++#define REG_CONFIG              0x00
++#define REG_INT_STATUS          0x01
++#define REG_INT_MASK            0x03
++#define REG_CONV_RATE           0x07
++#define REG_CH_DISABLE          0x08
++#define REG_ONE_SHOT            0x09
++#define REG_DEEP_SHUTDOWN       0x0a
++#define REG_ADV_CONFIG          0x0b
++#define REG_BUSY_STATUS         0x0c
++
++/* Channel Reading Registers (16-bit, read-only) */
++#define REG_CH_READING_BASE     0x20
++
++/* Limit Registers (8-bit, read/write) */
++#define REG_LIMIT_BASE          0x2a
++
++/* ID Registers (read-only) */
++#define REG_MANUFACTURER_ID     0x3e
++#define REG_REVISION_ID         0x3f
++
++/* Configuration Register (0x00) bitfields */
++#define CONFIG_START            BIT(0)
++#define CONFIG_INT_ENABLE       BIT(1)
++#define CONFIG_INT_CLEAR        BIT(3)
++#define CONFIG_INITIALIZATION   BIT(7)
++
++/* Advanced Configuration Register (0x0b) bitfields */
++#define ADV_CONFIG_EXT_REF_EN   BIT(0)
++#define ADV_CONFIG_MODE_1       (1 << 1)
++#define ADV_CONFIG_MODE_2       (2 << 1)
++#define ADV_CONFIG_MODE_3       (3 << 1)
++
++/* Number of channels */
++#define NUM_CHANNELS            8
++
++/* Internal VREF in mV */
++#define INTERNAL_VREF_MV        2560
++
++/* QMP helpers for setting device properties */
++
++static void qmp_adc128d818_set(const char *property, int value)
++{
++    QDict *resp;
++
++    resp = qmp("{ 'execute': 'qom-set', 'arguments':"
++               " { 'path': %s, 'property': %s, 'value': %d } }",
++               ADC128D818_TEST_ID, property, value);
++    g_assert(qdict_haskey(resp, "return"));
++    qobject_unref(resp);
++}
++
++static int qmp_adc128d818_get(const char *property)
++{
++    QDict *resp;
++    int ret;
++
++    resp = qmp("{ 'execute': 'qom-get', 'arguments':"
++               " { 'path': %s, 'property': %s } }",
++               ADC128D818_TEST_ID, property);
++    g_assert(qdict_haskey(resp, "return"));
++    ret = qdict_get_int(resp, "return");
++    qobject_unref(resp);
++    return ret;
++}
++
++/* Manufacturer and Revision ID registers */
++static void test_id_registers(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    g_assert_cmphex(i2c_get8(dev, REG_MANUFACTURER_ID), ==, 0x01);
++    g_assert_cmphex(i2c_get8(dev, REG_REVISION_ID), ==, 0x09);
++}
++
++/* Power-on-reset default values */
++static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++    unsigned ch;
++
++    g_assert_cmphex(i2c_get8(dev, REG_CONFIG), ==, 0x08);
++    g_assert_cmphex(i2c_get8(dev, REG_INT_STATUS), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_INT_MASK), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_CONV_RATE), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_CH_DISABLE), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_DEEP_SHUTDOWN), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_ADV_CONFIG), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_BUSY_STATUS), ==, 0x02);
++
++    for (ch = 0u; ch < NUM_CHANNELS; ch++) {
++        g_assert_cmphex(i2c_get8(dev, REG_LIMIT_BASE + ch * 2u), ==, 0xFF);
++        g_assert_cmphex(i2c_get8(dev, REG_LIMIT_BASE + ch * 2u + 1u), ==, 0x00);
++    }
++}
++
++/* Software reset via INITIALIZATION bit */
++static void test_soft_reset(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    i2c_set8(dev, REG_INT_MASK, 0xAA);
++    i2c_set8(dev, REG_CH_DISABLE, 0x55);
++    i2c_set8(dev, REG_LIMIT_BASE, 0x42);
++
++    g_assert_cmphex(i2c_get8(dev, REG_INT_MASK), ==, 0xAA);
++    g_assert_cmphex(i2c_get8(dev, REG_CH_DISABLE), ==, 0x55);
++    g_assert_cmphex(i2c_get8(dev, REG_LIMIT_BASE), ==, 0x42);
++
++    i2c_set8(dev, REG_CONFIG, CONFIG_INITIALIZATION);
++
++    g_assert_cmphex(i2c_get8(dev, REG_CONFIG), ==, 0x08);
++    g_assert_cmphex(i2c_get8(dev, REG_INT_MASK), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_CH_DISABLE), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_LIMIT_BASE), ==, 0xFF);
++    g_assert_cmphex(i2c_get8(dev, REG_BUSY_STATUS), ==, 0x02);
++}
++
++/* Verify ain property readback via QMP */
++static void test_ain_property(void *obj, void *data, QGuestAllocator *alloc)
++{
++    int value;
++
++    qmp_adc128d818_set("ain3", 1500);
++    value = qmp_adc128d818_get("ain3");
++    g_test_message("Set ain3 = 1500 mV, readback = %d mV", value);
++    g_assert_cmpint(value, ==, 1500);
++
++    qmp_adc128d818_set("temperature", 37500);
++    value = qmp_adc128d818_get("temperature");
++    g_test_message("Set temperature = 37500 mC, readback = %d mC", value);
++    g_assert_cmpint(value, ==, 37500);
++}
++
++static void adc128d818_register_nodes(void)
++{
++    QOSGraphEdgeOptions opts = {
++        .extra_device_opts = "id=" ADC128D818_TEST_ID
++                             ",address=0x1f"
++    };
++    add_qi2c_address(&opts, &(QI2CAddress) { ADC128D818_TEST_ADDR });
++
++    qos_node_create_driver("adc128d818", i2c_device_create);
++    qos_node_consumes("adc128d818", "i2c-bus", &opts);
++
++    qos_add_test("id-registers", "adc128d818", test_id_registers, NULL);
++    qos_add_test("defaults", "adc128d818", test_defaults, NULL);
++    qos_add_test("soft-reset", "adc128d818", test_soft_reset, NULL);
++    qos_add_test("ain-property", "adc128d818", test_ain_property, NULL);
++}
++libqos_init(adc128d818_register_nodes);
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 45ea497fa5..defa0d9941 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -296,6 +296,7 @@ qtests_riscv64 = ['riscv-csr-test'] + \
+ qos_test_ss = ss.source_set()
+ qos_test_ss.add(
+   'ac97-test.c',
++  'adc128d818-test.c',
+   'adm1272-test.c',
+   'adm1266-test.c',
+   'ds1338-test.c',
 
-Zenghui
+-- 
+2.50.1
+
 

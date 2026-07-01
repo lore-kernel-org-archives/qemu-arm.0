@@ -4,143 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10108C43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 06:34:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98DC9C43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Jul 2026 07:34:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1weoWY-00040l-UW; Wed, 01 Jul 2026 02:34:18 -0400
+	id 1wepSS-0005m5-7q; Wed, 01 Jul 2026 03:34:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1weoWS-0003zD-Hw
- for qemu-arm@nongnu.org; Wed, 01 Jul 2026 02:34:13 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wepSQ-0005ld-GN
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 03:34:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1weoWR-0002FR-2d
- for qemu-arm@nongnu.org; Wed, 01 Jul 2026 02:34:12 -0400
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6615lWqs066035
- for <qemu-arm@nongnu.org>; Wed, 1 Jul 2026 06:34:09 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- d0pnVWhEsVq7YT/Qga9RXWsjPnzzjQIBkMTUUnigOOw=; b=Vp7ebSsisCuihsCT
- F97oMhSplnxQndpDjUg5kbyCbCWDDsaAKLG5lY4OoWw+DQ0xFcGpB4FgAdShA/I1
- IfeMjYoF2cEcOuEaCvnvCvL9tTRMrf6XKvEfDd7exzQbaC+BAtwzuL8fPPb8ZEKl
- Paljf9B1YS5AkvrsS95AG4W5Lz7oYrGqfSou4sxBND0VNFShm3aIQ8TKQOA20FOX
- yJQUGd6BJ1g2JMdWads6oVPoSRijVKxjjALF/o9+Cbtbl4vEWqnqGGKRt8caScLF
- TQPYvg9Vwc22wvoxdiRydg4W0yRO5IRV7/gn7o7uKorMv/m5xg8PrXiHgjUhAHKT
- bLBxRQ==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f4jtqjm8p-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 01 Jul 2026 06:34:09 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-9203d077d77so58668385a.2
- for <qemu-arm@nongnu.org>; Tue, 30 Jun 2026 23:34:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1782887649; x=1783492449; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=d0pnVWhEsVq7YT/Qga9RXWsjPnzzjQIBkMTUUnigOOw=;
- b=HhmZRD8Y/+0M6CZvldoRSwytPFbfmsjCH+BLZNAFpjsgoPpPwTx9YiWp9IqPC5G9KJ
- 0A9QaUWPxAgBfo9m8DPb10mvxZUGW5iYKpYphC8g0m7WQnnAvB++U9yve3f6XCfE27Nl
- zVkmSppHIrHBU6ejwtfKDbipaxecTSvR9leD3sUowaZ3wZkmTKxZjBvAo0nBDBxBFLYN
- vEpgDIghPuMTaxroKRJE+D8fMMNoQc7t80Hj2bl174aF39VpQq58nRsenHH867i20gkW
- kbyMHVKJraFc7zVgNCif1h3By7OX1NycsfbNItjn1Ij2fsOpjm01so98XkjUuwn0bCgb
- vPvA==
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wepSO-0000MM-R9
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2026 03:34:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1782891243;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=DHvVX9r7XG0ikk4EZa9QYwjLuFgzLrZXiCIURWzxJfs=;
+ b=hnIQcV+d8DUNEiLWlkn9x4QcaaprjyxINXbQ1t5aY4Rga5XRYmrHKkZDg4yYADYuiU+xb3
+ OyqfZO6e7JmUP4JixYnz8FL33r11dC9gwa+MZN7YiVRIKw8/yjvkSWI9X4OfqNSmm+ef/6
+ ZOyK5U6B9m6vT2DPaDQLan4qoDwiT/w=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-378-wIXLSXZIOc2nl10X288MIg-1; Wed, 01 Jul 2026 03:34:02 -0400
+X-MC-Unique: wIXLSXZIOc2nl10X288MIg-1
+X-Mimecast-MFC-AGG-ID: wIXLSXZIOc2nl10X288MIg_1782891241
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-476608a9fefso105065f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 01 Jul 2026 00:34:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782887649; x=1783492449;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=d0pnVWhEsVq7YT/Qga9RXWsjPnzzjQIBkMTUUnigOOw=;
- b=pLW73FL9Sq2cSc6iDXtvibtZbIpGX4u05Pp0LhOMxeCJUr7VkQ7PyyBCGezt3SSfva
- X9Ra0nd767lMwKI7RKU4RH5Rz+kdU1MztIzBGHOTf9E2+U9H46pza7wdpsUUi8Qltpfn
- UoPPlJYM7q7LfOXpzQgQidJeMaEBf3wnbQ7B3s5Wp4iwF0dJ3+xZC3TkGI787h4xcasd
- B1OfVp3Lpuu5BttiQbDYzAQLEO7WQsgr0cqQuWYSZopNwwQD7XVLC6xOVwt9dnvYrZf5
- d07jzUNM7DSzXFcMAt0B3dHl0rplzg3I0dzn7N1dlDoimmML72WZf+xzuvZetZc12Kyn
- RnNA==
+ d=1e100.net; s=20251104; t=1782891241; x=1783496041;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=DHvVX9r7XG0ikk4EZa9QYwjLuFgzLrZXiCIURWzxJfs=;
+ b=g138r4TP91GrNCmjYEZ45NoTX7wg0ONcHyEGPe6RRkwkw42GaHVcT5lujzDmgC+bvq
+ N8gekUp0rHlOzwID1LZdHgbPP3UlBbWnHhZENpo85ah3ZEj6twjj8G3taxgMLTjXxRNZ
+ ZTvel5EjOQvMCQ/QErYsSWzgWkVgm+8Ho0mdPkib8zsjqIRzcOOMP5oLQ5lpJXKhE3Uz
+ DH+XGmmjocdUyJvKgB9o+z9b5DOtPY6xvrMpqU43Wt3BHW726SU3LCsbukh74ugSsTyJ
+ LK/8WBFzZSJc3l+BilhSB8fdnl67nc9ZJ/xGg1U7SEM0kQ+ydwfjJ4Fj11bkJc/L6RTs
+ Vh0g==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/J9YPMbXdDFzDdUXEIbtaNTBbbsAPaHO4SckTspyATQJOIRC6sa9eIGJXhs+m/4CwdRGddWbYlsQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyoqO07+9Ra0NMlGayLazNx5au4EIqlocFeMRn38xhwhcke+v+4
- 4ZwaHmb6oShKSVXXUiNieb83JrVaMwJqUzSESIJCsTX8EYJA/tKiwZOhaE7TNRVXH1H11IJyrBH
- UXoZjhpaMiDUbiUSisH/ZSD/ElqNU10MopBirruosAQkx86iagJgQ7sMCw+rbVvA=
-X-Gm-Gg: AfdE7ckwpl0twJEjXrSepbu0BJBmdRwKhwRjP/TK9kcEbIqtHtgjqybdbM+C0rB49tW
- KKxjh0I2DEeKg+9Z+n2SArycdVM3qdugiZzDmMdcAka/5mvbB5C0gEojSaioHM3i98ecwdSFSZX
- TOVgtTFm8L4Udpkrs5sxNWQaBMtnZbZI8KZ9yAkUDaPmb1bb27EY7HfRwNVHFQPGsjZ+vvmk4l8
- jEUfgLcxaLUESnlQMMye2KYjgXo4iu9DmAGQcowRGKwEopLA4Clevph5IXcfEcRtK7onZrqlatA
- YgW80dOlAbDJFevsv4e9DOLAqVIEHY/nV3B/CSHFb4FqBqcF90MQZIguymxpxdPusZ29VwkfsQG
- 9LII5FyBWs7U1NCWMneIE1jUIfaazCVPYBOR3OXIrGYs2ya5SlwadhuDVUNtw2w==
-X-Received: by 2002:a05:620a:410c:b0:92b:6805:917f with SMTP id
- af79cd13be357-92e785438d6mr48673885a.71.1782887648848; 
- Tue, 30 Jun 2026 23:34:08 -0700 (PDT)
-X-Received: by 2002:a05:620a:410c:b0:92b:6805:917f with SMTP id
- af79cd13be357-92e785438d6mr48671985a.71.1782887648408; 
- Tue, 30 Jun 2026 23:34:08 -0700 (PDT)
-Received: from [192.168.69.212] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493bfc32992sm39108355e9.11.2026.06.30.23.34.07
+ AHgh+Rr2mpu/RhRBeImJKBBbBednbqGXouJIkwP0KJrjTWP7Hk15A8p+o3Ei6x1znbnkZXuvYUUcV2B29w==@nongnu.org
+X-Gm-Message-State: AOJu0Ywkp6mhM4csQ2YBZxy2xVCVjeGcKunCEth/jJ2uABfgUcpVk9Vo
+ Phv5nVUhOHCoF/gwZpXjV0ArCri/jeIK0GWrlBGaxadg6MEut0E49I7crRo+ldy0TDz9TTtSXdA
+ pnmOW5mQXevPxGXVi0zocciMx3epAEz9FW+l9VZJKA/bfM0liW5ddrg==
+X-Gm-Gg: AfdE7ckZ7xxR/v5SnNIEQOKjrl0gYz0oer16sQ1/ODOicx2ZAikHRk3sZxCW2+DICai
+ oWRxXhMYmNXtMj7MVL9gezUIrEJQi/V1iuXqU7GLXucNiOZbUxh7XRJ/5yXFCVuk8piMCMw7Mcs
+ zNWv4Axmo1OTheMaWcGhAOmhRweuURoQPAXxN1ZthbW2IGrhNMcRXADHCbXO31Yks+PfVQPT3Jv
+ Z1rvY8ycGHl84REjVTNJMd81w0ooqn2DlZr0t1uC7dULFvEdJtLuKY5NLvENR2JkACpzogYR6bA
+ TwqFltOeA+DFkZTaVoP9jkQRoshBfAFkurNPMTeIk6+jgrmab93EBVz5YAeppMS77TLNun4VTTc
+ c2RxHyH60eFMhGS7XQH+29BZ5i7xLMdF0p+fd21zdt3oiHDnwaQ==
+X-Received: by 2002:adf:e18e:0:b0:460:d18:865c with SMTP id
+ ffacd0b85a97d-475de07c91bmr9619051f8f.1.1782891241034; 
+ Wed, 01 Jul 2026 00:34:01 -0700 (PDT)
+X-Received: by 2002:adf:e18e:0:b0:460:d18:865c with SMTP id
+ ffacd0b85a97d-475de07c91bmr9619002f8f.1.1782891240597; 
+ Wed, 01 Jul 2026 00:34:00 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
+ ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-475641e4618sm15093237f8f.9.2026.07.01.00.33.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Jun 2026 23:34:07 -0700 (PDT)
-Message-ID: <16e61e6c-79d7-4764-b418-2a0f1bd482ce@oss.qualcomm.com>
-Date: Wed, 1 Jul 2026 08:34:06 +0200
+ Wed, 01 Jul 2026 00:34:00 -0700 (PDT)
+Message-ID: <25ee74ac-1ccf-4f91-9ed1-3c9ca42a92ce@redhat.com>
+Date: Wed, 1 Jul 2026 09:33:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 02/17] accel/tcg: Constify CPUWatchpoint for
- debug_check_watchpoint
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: shivangu@linux.ibm.com, qemu-arm@nongnu.org, qemu-riscv@nongnu.org
-References: <20260701030443.1382447-1-richard.henderson@linaro.org>
- <20260701030443.1382447-3-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260701030443.1382447-3-richard.henderson@linaro.org>
+Subject: Re: [PATCH] platform-bus: Align MMIO regions to host page size
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Stefan Berger <stefanb@linux.ibm.com>
+References: <20260630173245.2070268-1-clg@redhat.com>
+ <CAFEAcA8G2sti8T=u_Sa5HSSNXAJfJMmbv14PVD0y6yn1wDEaHw@mail.gmail.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <CAFEAcA8G2sti8T=u_Sa5HSSNXAJfJMmbv14PVD0y6yn1wDEaHw@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: o_qMseidRisXF4Uh4WWWqUUwSkrNUAWzKS9L8_O3S6Y_1782891241
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: kNKSxeXVm38MsWgS6fAdE2tlAK36DGNe
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAxMDA2NiBTYWx0ZWRfX7FEqCwcppBYE
- RDKXA6i6A31GQq+bnJFhZBN0yFFaMmzG6ucMcWf6+nuC8SnJd3Eoj55A7FAnOSr2kQSZArXhDoA
- /PT1wWTZo9WKceySLYy8zYGjopTh8H8783H+R4n9VrCec2H7DeBvLG3ZslyPQAne+b5gRIL1iQ+
- j0IHaG2DeokRQDaxN1JfSO5lq3tttAUqDRMQS7QrF0kQgEybIVeFXwal+UkkwLy9oGVLxd7R1yU
- D0aecZ5ZNI3OwNa7a/jrJ5RkTBDef6AOcYaf7SR/KSeWpxn/bkemMJE6likNp1aHKwo8aXZacxi
- 2PIHjvyc0lCMfgCSXDqeJ7x0L8rP6T7ng/6Co0tl3ikjlUHq121C3e3HVSuC8mj2aPjEXHRkp2t
- ML0w4DiHHCKClJf+4zTJOnOas9IF1xkEcuem1dEMkENCQmxQRg3BgEJ4ZQhbGIsmM7V3TdpAlLn
- B6w4rJcnf6pmTiaMvgA==
-X-Proofpoint-GUID: kNKSxeXVm38MsWgS6fAdE2tlAK36DGNe
-X-Authority-Analysis: v=2.4 cv=LIZWhpW9 c=1 sm=1 tr=0 ts=6a44b4e1 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAxMDA2NiBTYWx0ZWRfX0bku+wxuoJ1b
- Qm6M9F89JbnyHeHSbA3gsKKZcHzTzNjKxLk26Zc6N83BULtnLAlKy0+uk0wqSsPuuOuHat3jw5q
- 5HixeJ7RQas6qWegyuo7/hL5uIbaJ44=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-07-01_01,2026-06-26_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 priorityscore=1501 phishscore=0 lowpriorityscore=0
- clxscore=1015 malwarescore=0 bulkscore=0 adultscore=0 impostorscore=0
- spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2607010066
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,17 +162,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/7/26 05:04, Richard Henderson wrote:
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   include/accel/tcg/cpu-ops.h  | 2 +-
->   target/arm/internals.h       | 2 +-
->   target/ppc/internal.h        | 2 +-
->   target/riscv/debug.h         | 2 +-
->   target/arm/tcg/debug.c       | 2 +-
->   target/ppc/tcg-excp_helper.c | 2 +-
->   target/riscv/debug.c         | 2 +-
->   7 files changed, 7 insertions(+), 7 deletions(-)
+On 6/30/26 22:03, Peter Maydell wrote:
+> On Tue, 30 Jun 2026 at 18:33, Cédric Le Goater <clg@redhat.com> wrote:
+>>
+>> On aarch64 hosts with 64K pages, the platform bus MMIO allocator can
+>> place device regions (such as the 1KB "tpm-ppi" region) at offsets
+>> that are not aligned to the host page size. This causes unnecessary
+>> and noisy VFIO IOMMU warnings when starting VMs configured with
+>> passed-through PCI devices:
+>>
+>>    vfio_listener_valid_section received unaligned region tpm-ppi
+>>      iova=0xc005000 offset_within_region=0x0
+>>      qemu_real_host_page_size=0x10000
+> 
+> Why does vfio care about the tpm-ppi region? I thought vfio
+> was only for passthrough devices, not for normal ones.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+It's caught by the VFIO listener which doesn't filer per device, it
+covers the entire address space.
+
+This is a benign address mis-alignment warning of the tpm-ppi memory
+region and VFIO simply skips the region.
+
+> 
+>> Fix this by ensuring the alignment used by the platform bus allocator
+>> is at least qemu_real_host_page_size().
+>>
+>> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+>> ---
+>>   hw/core/platform-bus.c | 7 +++++++
+>>   1 file changed, 7 insertions(+)
+>>
+>> diff --git a/hw/core/platform-bus.c b/hw/core/platform-bus.c
+>> index a2217a2deec7ab0f49b211c6658db02d13c319df..a17a38c1ba5491e2001fec5a29c188de67e93d11 100644
+>> --- a/hw/core/platform-bus.c
+>> +++ b/hw/core/platform-bus.c
+>> @@ -140,6 +140,13 @@ static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
+>>           return;
+>>       }
+>>
+>> +    /*
+>> +     * Ensure alignment is at least the host page size so that IOMMU
+>> +     * mappings (e.g. VFIO) work on hosts with large pages such as
+>> +     * aarch64 with 64K pages.
+>> +     */
+>> +    alignment = MAX(alignment, qemu_real_host_page_size());
+> 
+> Do we need to tie this to machine versions? Otherwise I think
+> the memory layout can change underfoot which would break a
+> guest migrated from an old QEMU to new.
+
+OK. Let's extend vfio_known_safe_misalignment() instead as done
+by commit 851d6d1a0ff2 ("vfio/common: remove spurious tpm-crb-cmd
+misalignment warning").
+
+
+Thanks,
+
+C.
+
+
 

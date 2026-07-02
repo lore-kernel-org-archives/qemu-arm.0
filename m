@@ -4,97 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7593C43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 12:42:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E562C43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 12:45:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfGjj-0007Tb-Jy; Thu, 02 Jul 2026 08:41:47 -0400
+	id 1wfGnU-0000EP-Up; Thu, 02 Jul 2026 08:45:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wfGji-0007TK-7f
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 08:41:46 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ id 1wfGnM-0000Ch-Nf
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 08:45:34 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wfGjf-0001UI-Q7
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 08:41:46 -0400
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+ id 1wfGnK-00049d-FT
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 08:45:32 -0400
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 662BoUt3360676
- for <qemu-arm@nongnu.org>; Thu, 2 Jul 2026 12:41:42 GMT
+ 6628OXYn3049474
+ for <qemu-arm@nongnu.org>; Thu, 2 Jul 2026 12:45:28 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- HmeWTMY5baCvBxoj9fBfK3yr4ylXRxPCjo0b9RdInrU=; b=kXZ51t0jrbEBGVvr
- qhsBH80zRlbZkfTe3PQh9pGuYhbv+OK+vucOZ8efVQyZZuMC612wBFcXwkeTvnJm
- jTrhFrGIRhVbupg4vUvDds7IyfvfbCR1zR1KybLs+qNV0XU6Gsof1FerqLECIJ3w
- tdH6JKf5+T3AoTzDFM8jsiYyOuGb4UoaGY0bOb8RI4Vv82KOsYV+7sfBWd+thz0R
- OVPKr1RClsLHP7g2Ojcu6khgeF7WdemL5YWX3cSdsD2n2Jq3g7Xa3ZqSLf2NpEB8
- /a+STRe8CjMFTInDKaB+5zUMuT3oFQsEh5VG4ZbS+pMZvQ9MvrhDQ90jp8uYeXEg
- diZQlA==
+ ixdZVsdJ2GcN1L4f30GQMNQ+c3pd1exfg5thJFhT3oY=; b=dVSJtzqwcB/euYD4
+ gWfqygySScvZUm/ZlVeqavvPsoMPiLCBqvmEnMXa86k0YZ/b2pZlMRd9eYDb/exa
+ mjwzQw/RghS2HIb6fwBWQNHL1qcIAt239z8FNVJOlo0i+tUUAEmNjOeFvP5hngwF
+ Ctl7aFKEPlFwqD+7ba2RbryZLAy+ApF4HBmRBoh66ldgmFUYvLpwWlgPBvZne8SX
+ 3LSPP26yUKzdx/k90GmRJtk7hgWAOeYdJjXNZKOke00DFsL2MCFLvZ1p3tjQyPYF
+ WGO8/9A9lLXnCzatIt/hxiOOnxsal6RZ23fwAHbfmSIFBZk6z/atNjcr64rPNJHK
+ n3Cvnw==
 Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
  [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f5qfc06gs-1
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f5541vrt9-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 12:41:41 +0000 (GMT)
+ for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 12:45:28 +0000 (GMT)
 Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-92e56b2b350so327025685a.3
- for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 05:41:41 -0700 (PDT)
+ af79cd13be357-92e5e38fbc5so208309685a.2
+ for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 05:45:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1782996101; x=1783600901; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1782996327; x=1783601127; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=HmeWTMY5baCvBxoj9fBfK3yr4ylXRxPCjo0b9RdInrU=;
- b=jIMqbYbZKy1VojCqmatlXNSNwHqgboRo9u6mwR+G17/u/rcVcr3lRZGjXOyuCl3TRS
- dknvY4bqN5mE40133WD7ztI6y+Qp0QO2KtP+o4Ybl8EW8OgF9qC8+z70DKzoJGmFvGpW
- D7JzHdWNpuDbigrB3ZJuCqdvow/jZoJsmRNvZYZCQ0L7FaYM+tcGsX6ndvlo2Xe93JYU
- 1ZTVeaeJKImoXhmLtV///4mVxxRPIkEul52IYgPPZhF7+qhXX1XwetY5iDn50A6uPWZa
- cdZiQImlGMePSkqnm8bHxPqz0dzF1uMyL+Wsc4S79xmTPVtX4LQehGWm+LsQvFGJxCF7
- D1LA==
+ bh=ixdZVsdJ2GcN1L4f30GQMNQ+c3pd1exfg5thJFhT3oY=;
+ b=OkCF/8ehlbOJalGHt93VjMIVKdnRvWIfM4jZUvKl3mk0y3RP2Xheuq2H12Jfsql4rb
+ p0uGy8S45hSl41V8nnJPGobFMn8Xg9DIouvp6GMK1I7+swDaMZDusMiyIoYZ+8On2L7S
+ RZBUzDGOQyQexyVVbqdX2Mc0rLm3/D3ONAAW9P0Fj0MYuX8BwZCwhDBKoY+2HGAj0tSd
+ lGNCsJ9/Ku+oWmtoEwj0CYQ9vERkfXjHJ7N9NrMryzaXfbLbtH4p0xnT4ryCOya456fW
+ NcQDrm0s6ikygfX1hTP74ai/0NjSOWob4VRY0KknuPxeRU4RUeZSAaVvVq3EQQdMqC7z
+ i2/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782996101; x=1783600901;
+ d=1e100.net; s=20251104; t=1782996327; x=1783601127;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=HmeWTMY5baCvBxoj9fBfK3yr4ylXRxPCjo0b9RdInrU=;
- b=RQnYecs1uoJ1R7AHCJ/kp3uaF3pMSuBxvnQgtcYn6T360p3i1SdPfj1bn1odgDSqdE
- hV/EmvgZDfpkQb9it6M/VHbtOktKjwuhI/GFybcGSzKMsv04oTB/LdZkSX8jXH0A1rPr
- nBGUut3nwuaBg+GLChG/Ov8j3Zej3kdAuL6sZtWtUHZQkLv6XCTIPB5OgDOvNqfyHTto
- uZ/s/0vxCcdFrEwNujd5QOs6g/s+ECxisYFRykisx+plLuw2DniCzsd9iLVOVw4+nRsr
- WSijptu7nGsD6q7Vue1u2UkR9yOLcEeI2MkMAo4c5T+rXIv7cSE5OJWiT1Yemi2LNmYQ
- baPg==
+ bh=ixdZVsdJ2GcN1L4f30GQMNQ+c3pd1exfg5thJFhT3oY=;
+ b=l4KbCfASOZ+hf7m/Csh/9KJXaV0MCxp9FoFh8rgZO3ldLJGZ/JiWxvAATzLLT1cILT
+ AnKRcGsh9+s7Kco/khE0Zv0ttozoY9cN8IYTjXcQistl0YnsGNMfC7rLAhJdbPp+SBdk
+ gI2QRDzT76FNWRqbDiOAaW3VaaWsNSLT+IHW49OaU6O1a123eDWNCDT9tGoix3tlt1na
+ xzssPlvyALPYKjW9WhJ163XhDCF+JTmdR66cQlBALlJXV+ZMAgbnkHF0OEsjkyKAfiPW
+ gdlqqv6CHlMZJ/9MAZG7Zsif7fNddr6V2XwVLJSiudhZy5LQdzpsFKwLkGuIszNHYt+x
+ wTKg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8LQR4m/7QatgxB5sf01RkYsqD+c8W+ljvEziMpSn3FKp/E2PxYrhXkUVJKVD1ldMCW/rySW8PAog==@nongnu.org
-X-Gm-Message-State: AOJu0YwIY3jOBjSZGQDMpeXM1iEVNIKwRr3L44W4lP1r0cOAP/X/5rH+
- E/BF8KENtZTg7FYRP4l5cbfaeiRteqMRWc6lII93mBAvrLYphqogAE7UH0EZHI4e4CVPbXOVNbH
- MNIXbyyUd1royT+EV/YFeVKxRZZH5ttOJyXzfZffOxZyqJUrn8GGbfWE=
-X-Gm-Gg: AfdE7cnGb2wdDQFBxw17qSR7TEGydDdaaEaynUNpMivyuE8YOeiOWhkcrd2Qq7YRojS
- gHT4wrQXO5FEEm7mlos2AoDEdVmVU3q/YN2vhw4KeFT1YqrV/6tGDoPjyCrqtKAdBX7PLDvkXz7
- o0OQOqBbbc+NRSjGm3XARKf8wtPuMMpioGlayw5c6qO5wPo8nkZ608TIGmoJbk1KBKOuSWnO3uH
- 5CIZJPB9O5h8+9C5iMiMRp6BJLVZnRTmVHMAagQb3zzksXZadDH26yGfHz57qz+eNJk/2EqBXgy
- +hVDRmyR65u1iyMJWaU6ebf3j79E7rhpnqv1eVAS5QO9E7+98vZVcbriLl15lJyDnlIMtO8Fd+w
- rTPKkSoFXZAacMnyCblJxFtXF72GCLHYmRKR/1utULECk26NYgz7dEbIhLhKkMA==
-X-Received: by 2002:a05:620a:1d0b:b0:915:ba3c:8c2b with SMTP id
- af79cd13be357-92e782055b9mr786420285a.19.1782996100970; 
- Thu, 02 Jul 2026 05:41:40 -0700 (PDT)
-X-Received: by 2002:a05:620a:1d0b:b0:915:ba3c:8c2b with SMTP id
- af79cd13be357-92e782055b9mr786414885a.19.1782996100311; 
- Thu, 02 Jul 2026 05:41:40 -0700 (PDT)
+ AFNElJ/x0EuVBxo3odw37G05xFTjY4dKw7igWY4LaVRF3ROzPsSTjcmMaTXl7CxhdZdHhM93Zkg/QQkhQw==@nongnu.org
+X-Gm-Message-State: AOJu0YxRM6F9MJc8fwmGHSse5LuL+7WUHe+mwP6wwfeGZRH25Wlr8OVK
+ VUEvqY67sVx4wT3E9EL2xTC+Qpy1wIedTSxiLV2N5jXjvO4Lmzin5ijCBpik/fDcKPMfJ1eWxKU
+ +ZzoMFjiPM0jzUhRDVB5J+2Ne9Q7VSWmDEe6LjES7OUcGFKe7aX+wZ7c=
+X-Gm-Gg: AfdE7clsnj4tyTtjEnsjQZYG3WnE7ZWT7syOSumQCqec30X0UBnzhZY5NcKWH5A8wsU
+ ZF0hmaoGqOk2eUlxzl+hSVn/Ao1hOMhA3T+yxjDMq4qJh5dYIzPuaR+mJTid16jfbujPB4n+IyT
+ NlDtTszKevqDyEhbzzs4PiNSmGGE2CPG8j/z6bLxUmKCKEE5vGyDESXxfTuTVl6U/mLZ1EVZ/c1
+ u7Pq/zbKmhRvtiVsE+PU9gKOyifgAwUZJkOxN0BO7jPXTcEE/syzHt3ZnIMbYoGvSFWRm0aN6xl
+ GO9DZzx3PbjVu1bP7VkHE+ASkTd4kk7iKV+gUwKWM4sCAKdwIswJf+Xd26ltYhtfyJ0D7G8HZay
+ u3oEIebylPndCfSz1KuUcn1YUkuzG9na82uktnYDG38TttNi+2U4JfhgpqzGp3Q==
+X-Received: by 2002:a05:620a:25cc:b0:92e:68b9:6b50 with SMTP id
+ af79cd13be357-92e785062ebmr788583985a.57.1782996327351; 
+ Thu, 02 Jul 2026 05:45:27 -0700 (PDT)
+X-Received: by 2002:a05:620a:25cc:b0:92e:68b9:6b50 with SMTP id
+ af79cd13be357-92e785062ebmr788577885a.57.1782996326778; 
+ Thu, 02 Jul 2026 05:45:26 -0700 (PDT)
 Received: from [192.168.69.212] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-477de3dd53fsm8524669f8f.37.2026.07.02.05.41.38
+ a640c23a62f3a-c12b6059e4csm124660166b.1.2026.07.02.05.45.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 Jul 2026 05:41:39 -0700 (PDT)
-Message-ID: <01f8f321-bf1d-4cd2-989a-17ff8e2bb998@oss.qualcomm.com>
-Date: Thu, 2 Jul 2026 14:41:38 +0200
+ Thu, 02 Jul 2026 05:45:26 -0700 (PDT)
+Message-ID: <b7ba6659-9fec-4bb4-a9ab-6c009081357f@oss.qualcomm.com>
+Date: Thu, 2 Jul 2026 14:45:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] hw/arm: Add basic FlexCAN3 support to TYPE_FSL_IMX8MP
- and imx8mp-evk
+Subject: Re: [PATCH 1/4] hw/net/can/flexcan: Subclass TYPE_CAN_FLEXCAN
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>,
@@ -107,40 +106,40 @@ Cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 References: <20260701224612.48342-1-shentey@gmail.com>
- <20260701224612.48342-5-shentey@gmail.com>
+ <20260701224612.48342-2-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260701224612.48342-5-shentey@gmail.com>
+In-Reply-To: <20260701224612.48342-2-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: BgJ4gV9CBs1jKoiN2zqYHakSEuBc9YbG
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAyMDEzMyBTYWx0ZWRfX0xAx0AtFKSlQ
- kjIhHD6HijNWUC4d/xWorOp6t38UKm2z1jCUyPWuHMnBaCjVM6pdGK3hM9Fcvm0CiKIjNgnkMmr
- TLRD4KHq+Wedpq936hP7bsYGaCNrRRBR5/s9oapmqIY5OnX3kzrNHvwtimTq3vOIlbdDcz5mqW+
- R8P4qRbgADwSlhVODvLDYcftADf7APikvl0ogiB5PCvymLuh/OKHagFx9AFrKNcGCGw5flccIsA
- XOOdPQ1akIKbOh55EcwdyJhzc56YYtRZE6I0RASWfnSKYNYDA4dWgJj89mSZFsZoO5ShU/B7XyG
- QT0Ofx7R9tx0SZnWKy4bn8mPw4bN5NCpLVk6m6dGI4z2O/zSJAdgmV5f49Op5AC8uoE8TmYd7on
- ulwd2Qs12R2jJe4qvnbVTPnVlwZs25700OEH+vw2/af64iSl33h0qy1kd72OVg24XdxX6sh/51e
- 0wUmW/vHDnBr92gzQgA==
-X-Authority-Analysis: v=2.4 cv=dvXrzVg4 c=1 sm=1 tr=0 ts=6a465c86 cx=c_pps
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-GUID: onFk1q8Oj_alfRbLt5VLXBDPWzzMBdwr
+X-Proofpoint-ORIG-GUID: onFk1q8Oj_alfRbLt5VLXBDPWzzMBdwr
+X-Authority-Analysis: v=2.4 cv=Xbm5Co55 c=1 sm=1 tr=0 ts=6a465d68 cx=c_pps
  a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
- a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=pGLkceISAAAA:8 a=_2WZOeEKI9IBzgM_DNAA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22
-X-Proofpoint-GUID: BgJ4gV9CBs1jKoiN2zqYHakSEuBc9YbG
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAyMDEzMyBTYWx0ZWRfX8sOYVtRffpef
- L+mttmMDzXorM35Z+I1wk0YMCkpmeuHKFZxHe8IXbk6sH9k4uM3pXmvsuATUYSf9LsjhDNeBzIn
- VJ8PHsgu0kObG/A9Y82a+337kUB1LJM=
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
+ a=pGLkceISAAAA:8 a=muYP95uDBPSA-3iXPLIA:9 a=QEXdDO2ut3YA:10
+ a=NFOGd7dJGGMPyQGDc5-O:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAyMDEzMyBTYWx0ZWRfX/Q1wK+CCRFO6
+ dcaXnYcTK+1l8OEXhl0e/8MV8QlDbjQN+/rFvATnN2n4HD5Pr5jTkJ54j3tKAvJ4RtTmkv+2Lap
+ n08WwNmUBpxSyQvMvtBQcUv3Jk4ZYS5OmPc2A6xUJE2EIbj4CcMRkfRF51hqNc3Sbljv43KuBgA
+ OshlCgpKpJgN0lunrs8+AmYbUfoBRm+TPE7VbmrCksTV9mySDNQuWN9ZjoQCAgWzRkwb7OzMtjc
+ l5pdNbjTtPdvgmnSQrCnLC2LoIYNTJj2/ww3l4Zjo0TV8NJutn5Gc3jMfn2QS/3yG5xg/oo1827
+ 5SYMKWD5TfHlJAGVIN/NkaD3WGOQdNKj/baku8Ma3FwVeOtEVQhtutTuJfdhKouB8Z+vKPRLT0W
+ 1IuylLAzeZafEEXfzgmHgIZQl3s21938/dCr60CYrAcUjxgb1DpfoHd1RoGgDe3TuGHDlrRxQCm
+ r+SSIqQM4HpdQGvWpmw==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAyMDEzMyBTYWx0ZWRfX+Ti7AyyN0f4Y
+ 7LVYrYbC3G5MPeNRgQVJ8jwZpj9wPIHhO/O4XXqZExsf+ijXrxVCs2jnVxktXhqu7cFy8RRpfeP
+ NOWrK7VvIWbKKYd/KdKmE24CXzhjB7c=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
  definitions=2026-07-02_01,2026-06-26_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 phishscore=0 priorityscore=1501 adultscore=0 impostorscore=0
- bulkscore=0 lowpriorityscore=0 clxscore=1015 suspectscore=0 spamscore=0
+ suspectscore=0 bulkscore=0 malwarescore=0 lowpriorityscore=0 spamscore=0
+ adultscore=0 phishscore=0 priorityscore=1501 impostorscore=0 clxscore=1015
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607020133
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -163,52 +162,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Bernhard,
+
 On 2/7/26 00:46, Bernhard Beschow wrote:
-> Real hardware supports CAN FD which is missing in the emulation and is
-> considered future work. Still, CAN communication already works under Linux.
+> Subclass TYPE_CAN_FLEXCAN, yielding TYPE_CAN_FLEXCAN2 and TYPE_CAN_FLEXCAN3.
+> Since TYPE_CAN_FLEXCAN is now abstract, TYPE_FSL_IMX6 needs to use
+> TYPE_CAN_FLEXCAN2. TYPE_CAN_FLEXCAN3 will be used in TYPE_FSL_IMX8MP.
+> 
+> Note that Linux performs 8 byte accesses on the i.MX8M Plus, therefore
+> .max_access_size has to be adjusted. Otherwise this results in bus errors.
 > 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   docs/system/arm/imx8m.rst   |  1 +
->   include/hw/arm/fsl-imx8mp.h |  8 ++++++++
->   hw/arm/fsl-imx8mp.c         | 37 +++++++++++++++++++++++++++++++++++++
->   hw/arm/imx8mp-evk.c         | 21 +++++++++++++++++++++
->   hw/misc/imx8mp_ccm.c        |  3 +++
->   hw/arm/Kconfig              |  1 +
->   6 files changed, 71 insertions(+)
+>   include/hw/net/flexcan.h |  4 ++-
+>   hw/arm/fsl-imx6.c        |  2 +-
+>   hw/net/can/flexcan.c     | 61 +++++++++++++++++++++++++++++++---------
+>   3 files changed, 51 insertions(+), 16 deletions(-)
+> 
+> diff --git a/include/hw/net/flexcan.h b/include/hw/net/flexcan.h
+> index 153afc1e03..32de7b904a 100644
+> --- a/include/hw/net/flexcan.h
+> +++ b/include/hw/net/flexcan.h
+> @@ -139,7 +139,9 @@ typedef struct FlexcanState {
+>   } FlexcanState;
+>   
+>   #define TYPE_CAN_FLEXCAN "flexcan"
+> -
+>   OBJECT_DECLARE_SIMPLE_TYPE(FlexcanState, CAN_FLEXCAN);
+>   
+> +#define TYPE_CAN_FLEXCAN2 "flexcan2"
+> +#define TYPE_CAN_FLEXCAN3 "flexcan3"
 
+> diff --git a/hw/net/can/flexcan.c b/hw/net/can/flexcan.c
+> index 1ea459d9f6..d6a76c28ab 100644
+> --- a/hw/net/can/flexcan.c
+> +++ b/hw/net/can/flexcan.c
+> @@ -1298,7 +1298,7 @@ static const struct MemoryRegionOps flexcan_ops = {
+>       .endianness = DEVICE_LITTLE_ENDIAN,
+>       .valid = {
+>           .min_access_size = 1,
+> -        .max_access_size = 4,
+> +        .max_access_size = 8,
 
-> +    /* FLEXCANs */
-> +    for (i = 0; i < FSL_IMX8MP_NUM_CANS; i++) {
-> +        static const struct {
-> +            hwaddr addr;
-> +            unsigned int irq;
-> +        } flexcan_table[FSL_IMX8MP_NUM_CANS] = {
-> +            {
-> +                fsl_imx8mp_memmap[FSL_IMX8MP_FLEXCAN1].addr,
-> +                FSL_IMX8MP_FLEXCAN1_IRQ
-> +            }, {
-> +                fsl_imx8mp_memmap[FSL_IMX8MP_FLEXCAN2].addr,
-> +                FSL_IMX8MP_FLEXCAN2_IRQ
-> +            },
-> +        };
+Isn't it better to keep 32-bit renaming as flexcan2_ops and widen to
+64-bit for Plus version in a new flexcan8_ops struct?
+
+>           .unaligned = true,
+>           .accepts = flexcan_mem_accepts
+>       },
+> @@ -1324,16 +1324,26 @@ static int flexcan_connect_to_bus(FlexcanState *s, CanBusState *bus)
+>       return 0;
+>   }
+>   
+> -static void flexcan_init(Object *obj)
+> +static void flexcan2_init(Object *obj)
+>   {
+>       FlexcanState *s = CAN_FLEXCAN(obj);
+>   
+>       memory_region_init_io(
+> -        &s->iomem, obj, &flexcan_ops, s, TYPE_CAN_FLEXCAN,
+> +        &s->iomem, obj, &flexcan_ops, s, TYPE_CAN_FLEXCAN2,
+>           offsetof(FlexcanRegs, _reserved6)
+>       );
+>   }
+>   
+> +static void flexcan3_init(Object *obj)
+> +{
+> +    FlexcanState *s = CAN_FLEXCAN(obj);
 > +
-> +        s->flexcan[i].ccm = IMX_CCM(&s->ccm);
-
-Conditional to setting this using object_property_set_link(), see
-https://lore.kernel.org/qemu-devel/77d5891c-de12-467e-8746-02fe43121e3e@oss.qualcomm.com/, 
-then:
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-
-> +        object_property_set_link(OBJECT(&s->flexcan[i]), "canbus",
-> +                                 OBJECT(s->canbus[i]), &error_abort);
-> +
-> +        sysbus_realize(SYS_BUS_DEVICE(&s->flexcan[i]), &error_abort);
-> +
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->flexcan[i]), 0,
-> +                        flexcan_table[i].addr);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->flexcan[i]), 0,
-> +                           qdev_get_gpio_in(gicdev, flexcan_table[i].irq));
-> +    }
+> +    memory_region_init_io(
+> +        &s->iomem, obj, &flexcan_ops, s, TYPE_CAN_FLEXCAN3,
+> +        sizeof(FlexcanRegs)
+> +    );
+> +}
 

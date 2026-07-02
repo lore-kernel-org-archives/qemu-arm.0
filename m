@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2AFBC43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 13:36:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E863C43602
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 13:37:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfHaa-00087Q-9d; Thu, 02 Jul 2026 09:36:24 -0400
+	id 1wfHaX-00085w-Lq; Thu, 02 Jul 2026 09:36:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wfHaX-000861-UD
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 09:36:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wfHaW-00084h-4D
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 09:36:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wfHaV-00017n-S6
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 09:36:21 -0400
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wfHaT-00015c-CQ
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 09:36:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1782999378;
+ s=mimecast20190719; t=1782999376;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6HITbRUTeXA1wLotn5EvEHiy6VVopLkZs61O7SoCF+I=;
- b=bb6wWASFGDDtGwpQwdsUJOEBHetNNtoZi2vP1OCwVFP3fNE0EF28wZ4XOFJOmHlK9YWa5u
- YyHNaUnR/BAYIiog1pMFN9ZBvBi96alfaY5c+QFeYRxrrmOXOGs/gRUDQCexziBD3jDMjQ
- lNG+M+wO9Xx5l+Gpg7qvtv5kBQQ5jlA=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=1rR3wOaCqir41NboczA76GKl3LF8SZvplqqP5ybbjVs=;
+ b=RyCBsBRMtZIqs3mXIyE24OXaTaw8b1/QxhkJsnvSXYWYneKRki2NNIv+ybDQr8tWN0NrhY
+ Ad6ZjUmpFIsgOZudSTPhyRUWYqwbrPm9vc37lK+dojO5XO2HOKSxaNfSVQXeVSJk/o9EsV
+ X4MhUG5I2J462PaSes6CytV3iySRNg8=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-237-n5jAZu3EOJK4bOyz5Bgsdw-1; Thu, 02 Jul 2026 09:36:16 -0400
-X-MC-Unique: n5jAZu3EOJK4bOyz5Bgsdw-1
-X-Mimecast-MFC-AGG-ID: n5jAZu3EOJK4bOyz5Bgsdw_1782999375
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-493b786d550so18973935e9.0
- for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 06:36:16 -0700 (PDT)
+ us-mta-536-WjZ4va_3PdGrCeOO4L6Z1A-1; Thu, 02 Jul 2026 09:36:15 -0400
+X-MC-Unique: WjZ4va_3PdGrCeOO4L6Z1A-1
+X-Mimecast-MFC-AGG-ID: WjZ4va_3PdGrCeOO4L6Z1A_1782999373
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-476608a9fefso477106f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 06:36:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782999375; x=1783604175;
+ d=1e100.net; s=20251104; t=1782999373; x=1783604173;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=6HITbRUTeXA1wLotn5EvEHiy6VVopLkZs61O7SoCF+I=;
- b=d5DUaIy3YqeY6snrkb25pumCbUCpgJb6hU2XXrPs9ldmdbzMhtzCWNjM6zy+nS2M1f
- V2j5csEQoG+lZh25efP93cJRbQpfrnIYsANXpcmUTRQjNSKXyJk7bzLOBylnLDXPBcS9
- IbCO9B8b3INGcPVabNzQZvXz5FfSb9gxE7Ak5wnK0k0kZZHfVn47Doin0oDw7gXlgL4e
- umWSpzHFhkqoBU5aJBdUbDB5owtS8v1gE941y7WFBfbZxpY7/Tx6muD8h9uquCgiboEY
- QIkvc45wfvgXRLClghCqPonFTupdCGrhGH8SgzLqvKFlUf6erzWY5jby8tu6xTMtjSMr
- Fx5A==
-X-Gm-Message-State: AOJu0YxAtOLdeLFW06fZukFawIi8CCxAWnXKXozdpLdk35CUoHU9zDvw
- FpxuTLWwLJZTgs/xMKxWlZsvumJQlFcZMzQ1J02reB9TP4pTDFihQJXvw3sBiasIs2IhWCWhMxb
- /xFlaxpEtQUVl9+F3ztdS9PP+msgAf/ZjzkNj79sGoJJ8IqBJt9oI4g==
-X-Gm-Gg: AfdE7cn6xqVaVf6dOku9qnFQeIXxiZQpX03WrxpjJio03bgPriH6cWc1KJanL7ViS/U
- sM1RZg6Mk31GZgG4K6JQCdcQhSmr0cAC1Z5ks4h9MtVhSZFgyiqK+fd5IgvG+4rjk191GiLOPbb
- ADkFDT7xnuSxPju5UKtRQSzS0D1Gb6XexzvxQsJ1HRXeHBB1ZZBCF6T1jyfg8V/bLJdWRq8QJQ0
- I4v9DEXrGXQlZdG6iAFvhXZWkeSymc4/rYUpkZnXII/ZGfKN1XY98EIIUytQ73i85Xg94q69hLP
- G48dHhwXm/ssbfa8wF3jXMFOkQzpVe3Qz/j2uLSCpzKlHVDhIFeEolWHi1/Ayue2obBjqmQSTAH
- KwiYeamHmZ0G1WNx4iQSCaLQRyU93pGuw+e90XsMmHj0CfJ95Y3deToHkwBA3JV+9hyJ/fKGcHw
+ bh=1rR3wOaCqir41NboczA76GKl3LF8SZvplqqP5ybbjVs=;
+ b=dkSZTjcXaomlcuUOiURzUKAIHmUsWbFJA0Cs0KU805StQ76jRxN3Dszne82GoV8Y+S
+ fd9ryn269x6NgfMoIn+MydU+T7oF5Q7518wJCtMRoBgaQHnzjgvYFRQNCcvCIWLZd3IQ
+ ypOE5mtChaNJHVG5qI7NyuP5ZMGNe7q5LrXe+ORDK0SUs476jiPp5sbkCwIH33uDPPd7
+ lvxBTauBuINCpEUDCEPUi/19mXwjHPfQx+dr+m2NrbFTelSeEQ3QQx77sMhHfk57G6rD
+ 0DQJeblOmGnSg06lVjd+EEypS6YKJ9nRQG0ACQDa5O5nE81vfd8yu7SohzgDWqpVjp2v
+ aG1g==
+X-Gm-Message-State: AOJu0YxyIK+4WHMfBjhEC+/nzX8jhe5bcTxyALEHr0+kT0DTiZJ+1rsu
+ 3BIJDPzG0/T/bld82vWv7rqA9cJm7DYzwzOGfcek8/qLYMGwRIJQMGOPMwKsWV55rtswNHZarqN
+ OaoJDYX9Z+t1/8583Fd7t2hhxPD5UApze8YVn6/24J+Hb+dYQoc5Tfw==
+X-Gm-Gg: AfdE7cmH07w+4bcVicxFiJ6nYYl6pMObLZPJPMAbTFlYBffJ9YwMez47S7Cr5zcm4Oj
+ k3D3YUgk1jtGU8/9AnXv2V0gV1Z+CXE0owTZ86WNHrE8jf4kBvTmB7BRRvvmDAUoztIDcQZWkJX
+ FkZcvZeQSaOVBZAUF88AoOFTBUsiNK7qgpyRabVIIB67o68m83ZX8+zTmkRFdSSNdIt/W/N+4A0
+ qNmK0QW+lllX2XwkEqbrobwX2nzsfGgiIJ4uE3BEx8PWaJIerX9TQqaS82INFXDZ8IuLR+zaTLb
+ ycUHrMDibNteVV4hPpJJ6jK3TA8TrdY5FVKQt8Z05X+aOerpRMZIDaOK6yB4OW4tbCnPa9XJN+l
+ xnN+W1CypzY7WOhx0ZIwc2UmFLHr327rd6aEuuPdqTg0BSjsLFj6rhUy9zEgXSaA0B+BFzaR+cQ
  ==
-X-Received: by 2002:a05:600c:820d:b0:490:b00c:8e6a with SMTP id
- 5b1f17b1804b1-493c83a5b92mr16574205e9.28.1782999375446; 
- Thu, 02 Jul 2026 06:36:15 -0700 (PDT)
-X-Received: by 2002:a05:600c:820d:b0:490:b00c:8e6a with SMTP id
- 5b1f17b1804b1-493c83a5b92mr16573725e9.28.1782999375055; 
- Thu, 02 Jul 2026 06:36:15 -0700 (PDT)
+X-Received: by 2002:a05:6000:26d3:b0:475:f0c2:75af with SMTP id
+ ffacd0b85a97d-4774643eac5mr8474693f8f.26.1782999373256; 
+ Thu, 02 Jul 2026 06:36:13 -0700 (PDT)
+X-Received: by 2002:a05:6000:26d3:b0:475:f0c2:75af with SMTP id
+ ffacd0b85a97d-4774643eac5mr8474641f8f.26.1782999372790; 
+ Thu, 02 Jul 2026 06:36:12 -0700 (PDT)
 Received: from rh.fritz.box
  (p200300f6af2a6100f239e076bbd76784.dip0.t-ipconnect.de.
  [2003:f6:af2a:6100:f239:e076:bbd7:6784])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-477db3dbb01sm9135980f8f.1.2026.07.02.06.36.14
+ ffacd0b85a97d-477db3dbb01sm9135980f8f.1.2026.07.02.06.36.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2026 06:36:14 -0700 (PDT)
+ Thu, 02 Jul 2026 06:36:12 -0700 (PDT)
 From: Sebastian Ott <sebott@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>, Eric Auger <eauger@redhat.com>,
  Jonathan Cameron <jonathan.cameron@huawei.com>,
@@ -79,27 +79,27 @@ To: Peter Maydell <peter.maydell@linaro.org>, Eric Auger <eauger@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Cornelia Huck <cohuck@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Sebastian Ott <sebott@redhat.com>
-Subject: [PATCH v4 3/3] arm/kvm: get demuxed ID registers from kvm
-Date: Thu,  2 Jul 2026 15:36:06 +0200
-Message-ID: <20260702133606.34529-4-sebott@redhat.com>
+ Eric Auger <eric.auger@redhat.com>, Sebastian Ott <sebott@redhat.com>
+Subject: [PATCH v4 1/3] arm: handle demuxed ID registers
+Date: Thu,  2 Jul 2026 15:36:04 +0200
+Message-ID: <20260702133606.34529-2-sebott@redhat.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260702133606.34529-1-sebott@redhat.com>
 References: <20260702133606.34529-1-sebott@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: A05JTThMU_yuZi0p_QylNKvD1pWFi8WThOl1NeUQk9o_1782999375
+X-Mimecast-MFC-PROC-ID: yU_Az1gGUfVlRTM7a-SLvpsrAfCpy2X_ABCL4z6F5bE_1782999373
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=sebott@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,65 +118,116 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Cornelia Huck <cohuck@redhat.com>
 
-We now have the infrastructure in place to handle demuxed ID registers
-from kvm. Use it to get the values that kvm emulates for CCSIDR_EL1.
+For some registers, we do not have a single ID register, but actually
+an array of values (e.g. CCSIDR_EL1, where the actual value is
+determined by whatever CSSELR_EL1 points to.) If we want to avoid
+using a different way to handle registers like that for every
+instance, we should provide some kind of infrastructure. Therefore,
+add accessors {GET,SET}_IDREG_DEMUX that are similar to the accessors
+we already use for regular ID registers.
 
 Tested-by: Alireza Sanaee <alireza.sanaee@huawei.com>
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 Signed-off-by: Sebastian Ott <sebott@redhat.com>
 ---
- target/arm/kvm.c | 31 +++++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+ target/arm/cpu-sysregs.h |  9 +++++++++
+ target/arm/cpu.h         | 12 ++++++++++++
+ target/arm/cpu64.c       |  8 ++++++++
+ 3 files changed, 29 insertions(+)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index a54ef51ec2..f57e86b441 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -244,6 +244,33 @@ static int get_host_cpu_reg(int fd, ARMHostCPUFeatures *ahcf,
-     return ret;
+diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
+index 7877a3b06a..a4b9621a7e 100644
+--- a/target/arm/cpu-sysregs.h
++++ b/target/arm/cpu-sysregs.h
+@@ -20,20 +20,29 @@
+ 
+ #define DEF(NAME, OP0, OP1, CRN, CRM, OP2) NAME##_IDX,
+ 
++#define DEF_MUX(NAME, OP0, OP1, CRN, CRM, OP2, NUM)     \
++    NAME##_IDX,                                         \
++    NAME##_IDX_LAST = NAME##_IDX + NUM - 1,
++
+ typedef enum ARMIDRegisterIdx {
+ #include "cpu-sysregs.h.inc"
+     NUM_ID_IDX,
+ } ARMIDRegisterIdx;
+ 
+ #undef DEF
++#undef DEF_MUX
+ #define DEF(NAME, OP0, OP1, CRN, CRM, OP2) \
+     SYS_##NAME = ENCODE_ID_REG(OP0, OP1, CRN, CRM, OP2),
+ 
++#define DEF_MUX(NAME, OP0, OP1, CRN, CRM, OP2, NUM)     \
++    DEF(NAME, OP0, OP1, CRN, CRM, OP2)
++
+ typedef enum ARMSysRegs {
+ #include "cpu-sysregs.h.inc"
+ } ARMSysRegs;
+ 
+ #undef DEF
++#undef DEF_MUX
+ 
+ extern const uint32_t id_register_sysreg[NUM_ID_IDX];
+ 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 84d33e87dc..5668deee4c 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -920,6 +920,18 @@ typedef struct {
+         i_->idregs[REG ## _EL1_IDX];                                    \
+     })
+ 
++#define SET_IDREG_DEMUX(ISAR, REG, INDEX, VALUE)                        \
++    ({                                                                  \
++        ARMISARegisters *i_ = (ISAR);                                   \
++        i_->idregs[REG ## _IDX + INDEX] = VALUE;                        \
++    })
++
++#define GET_IDREG_DEMUX(ISAR, REG, INDEX)                               \
++    ({                                                                  \
++        ARMISARegisters *i_ = (ISAR);                                   \
++        i_->idregs[REG ## _IDX + INDEX];                                \
++    })
++
+ /**
+  * ARMCPU:
+  * @env: #CPUARMState
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 2816735577..48a0421674 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -42,14 +42,21 @@
+ #define DEF(NAME, OP0, OP1, CRN, CRM, OP2)      \
+     [NAME##_IDX] = SYS_##NAME,
+ 
++#define DEF_MUX(NAME, OP0, OP1, CRN, CRM, OP2, NUM)     \
++    DEF(NAME, OP0, OP1, CRN, CRM, OP2)
++
+ const uint32_t id_register_sysreg[NUM_ID_IDX] = {
+ #include "cpu-sysregs.h.inc"
+ };
+ 
+ #undef DEF
++#undef DEF_MUX
+ #define DEF(NAME, OP0, OP1, CRN, CRM, OP2) \
+     case SYS_##NAME: return NAME##_IDX;
+ 
++#define DEF_MUX(NAME, OP0, OP1, CRN, CRM, OP2, NUM)     \
++    DEF(NAME, OP0, OP1, CRN, CRM, OP2)
++
+ int get_sysreg_idx(ARMSysRegs sysreg)
+ {
+     switch (sysreg) {
+@@ -59,6 +66,7 @@ int get_sysreg_idx(ARMSysRegs sysreg)
  }
  
-+
-+/* CSSELR values supported by kvm; used to index KVM_REG_ARM_DEMUX_ID_CCSIDR */
-+#define CSSELR_MAX 14
-+
-+static int get_host_cpu_reg_demux(int fd, ARMHostCPUFeatures *ahcf,
-+                                  ARMIDRegisterIdx index, int subindex)
-+{
-+
-+    struct kvm_one_reg one_reg = {
-+        .id = KVM_REG_ARM64 | KVM_REG_SIZE_U32 | KVM_REG_ARM_DEMUX,
-+    };
-+
-+    switch (index) {
-+    case CCSIDR_EL1_IDX:
-+        if (subindex >= CSSELR_MAX) {
-+            return -EINVAL;
-+        }
-+        one_reg.id |= KVM_REG_ARM_DEMUX_ID_CCSIDR | subindex;
-+        one_reg.addr = (uintptr_t)&ahcf->isar.idregs[index + subindex];
-+        break;
-+    default:
-+        return -EINVAL;
-+    }
-+
-+    return ioctl(fd, KVM_GET_ONE_REG, &one_reg);
-+}
-+
- static uint32_t kvm_arm_sve_get_vls(int fd)
- {
-     uint64_t vls[KVM_ARM64_SVE_VLS_WORDS];
-@@ -454,6 +481,10 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-             /* Read the set of supported vector lengths. */
-             arm_host_cpu_features.sve_vq_supported = kvm_arm_sve_get_vls(fd);
-         }
-+        /* Grab demuxed registers. */
-+        for (int i = 0; i < CSSELR_MAX; i++) {
-+            err |= get_host_cpu_reg_demux(fd, ahcf, CCSIDR_EL1_IDX, i);
-+        }
-     }
+ #undef DEF
++#undef DEF_MUX
  
-     kvm_arm_destroy_scratch_host_vcpu(fdarray);
+ void aarch64_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+ {
 -- 
 2.54.0
 

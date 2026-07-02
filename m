@@ -4,83 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04CF4C43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 18:41:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9D29C43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 18:41:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfMKn-0006zd-Pw; Thu, 02 Jul 2026 14:40:26 -0400
+	id 1wfMLT-0007rv-Cd; Thu, 02 Jul 2026 14:41:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wfMKm-0006z9-By
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 14:40:24 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wfMLL-0007MW-MU
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 14:40:59 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wfMKk-0005KF-KR
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 14:40:23 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-47488efcf30so1329540f8f.3
- for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 11:40:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wfMLF-0005Ws-FA
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 14:40:59 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-493ba701891so14441835e9.3
+ for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 11:40:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783017621; x=1783622421; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=iDcqTMrFmkLoqrrgt4P/XEoC/b0P+9HKI5m9xYzf55M=;
- b=a2PMM9x5iV83zW1ace4ali1Ui3U4ouzbeHx/ZQ9Zlg5wfiT7q6a8hK5nqZma7h2/hf
- MUTvBLwKOjOQg8kqwsChWyttaTx6HY+1zgNWauRBJyE/cb45hAYG6JptziraBBKHhS3d
- hEdaELGovuRAr+Kq+dxxe5VAEo0R2IlpKvYs6nz7B4edciHRhoF5W09sFBRf+cgrKKN+
- k8O8iwmKHH2M+OWXL1tQVgeibeUaeIISip67Gcro3hbAHbhPeu4lezrzyuDC20HAcRFc
- R7zhfgLXIt7QpQp373PgryF/bs7S7aZShIoWucqsLRxMky2Mamoou8abYYiMbxn/QZ7+
- Y8cA==
+ d=gmail.com; s=20251104; t=1783017652; x=1783622452; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=OwV5rRTMWe4Omy4mwhdJpkwhc6qPEwhj2gk7idJkQvU=;
+ b=UcnosZKxD40ha815hu+E8A0p5LLy6pXylksFfirjHZrwOcGlb56/NWmiVHZtB4RNTb
+ t5657Ch6cQCB4rpzhEZ+Me5mDbC2y7JxuxD3Srw+QnQk6bJOTg+Fkfj2briiqg1gLNIS
+ ljhDxq4sMQaVaO+03EO/y5BWQw1Qb4PPEPYE0LRxHd06xYkNUY0CSyvIXFd17apQYv+t
+ ZU0FUKuF5EAo8wGiwoRNI4wVuo9lvjVcLO50CpQwLvYoBy+IqIgtrCcbKhWq9G8/vOIk
+ K4EYyTWE8E6t9uJX6BvvVhM/HqVsD9jXlj/rDetKMT29Bx2g81fY5+uoXOTfY+77a9tq
+ 9ryw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783017621; x=1783622421;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=iDcqTMrFmkLoqrrgt4P/XEoC/b0P+9HKI5m9xYzf55M=;
- b=BS6sU/tHFNEEWVpNUwwqRa7AR9EDgGaQt8C+Ef9n1rs0hAkpj3+AD06nyDDs02CfFQ
- Hk5WhDQ4nK5bAFT00K4cSrNTe5dvYv4qdZbqfepnpHFTLqqhTUJS+uFgGxuUVEG6CZlj
- d0PP3H8mz1l5VOLBXUL0ZbCoxryfIAZ4mOG9DLwayFge0AFFqw6zuP/9XeBUSOKMYSYc
- 3Y5u9g5wAyAmPUUbt58+dHKeukw3ohcn/Mw9ZD7QhniGBmxhMPAzsQ3I12WlXenGADK6
- sMAmVhAYL/us9nwu5ivb62r+Q3E/y/orFfOO5XYTSD5OCVqiOrrR2FMt9ZrWTUUHIVNU
- XUSA==
-X-Gm-Message-State: AOJu0YxST2PYe2e3acSZDJqtG/pbzytJix+h883R012NjHB3rIkSSByx
- oMkYgNJ++pOxrIlwkxiYv4aVWfIo82dk0vXe4tvuZo97QaKq8l6t/w7dIwegt6HwxsglMnIVMS/
- Dxn5+3um0nw==
-X-Gm-Gg: AfdE7cm9TVnL80QW0ntj2cYa6FW4PyXnyI9Uqq/72H6S6siU59kGDD5YaNE4vmfRFop
- bl6Id2p9lkYGX8gIu9UnkERdVPOxrPtmXKFduTDZ4dPLxKjunpGunRqx5PC7bcsG2+Uq2IZVPe6
- WiJkZb9MhGGMz79p84NHVxlyjy5iR/KDDbhIqRo3RpzIF0RAcPgsV58LH1aUMEbcC/fvyEyMSI4
- 4XXZbW1487F6UW8CMtd1d75QlVOYJ8o4UdE8FT/edFODkKsNQTV9XN1ID2q3JCugfhmsRIYF/I3
- C/QGf0yfariob34JndkztJU6Y+vjkF6RAC8c9lsjDTdtcAircy47w6FKCJWkK8yxm1UjPpjfa8o
- nJgqAJ24PJMPQbJKzpNWnJwq+FVJp5QCn3qj5+0TEqHawyRkg2X6raqBoPMxxStrHgyyZFxSa6y
- Og2Bn++XuRF+akO8MWWeYHJWrAAeRcNgTCy9ASXfoKrylWzccOo1MBUMma6/CbN3A88qdEXQ2ni
- kmvKGfcER9einzwSuHNcMyNxWKkIkXW
-X-Received: by 2002:a05:6000:41f8:b0:475:f0f0:9ef6 with SMTP id
- ffacd0b85a97d-4775b7447f7mr12157033f8f.59.1783017620826; 
- Thu, 02 Jul 2026 11:40:20 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ d=1e100.net; s=20251104; t=1783017652; x=1783622452;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=OwV5rRTMWe4Omy4mwhdJpkwhc6qPEwhj2gk7idJkQvU=;
+ b=lEsX7VVpZBbw/gQ9BPdhUZqIOLr14QyNPtY+a1WZBVAQRAxtPO8AeRwY8gqTAc27Vv
+ uVyH+viInbHZQWAVmwmitzqFUh28F8mfSNuufgnhyef6lXuCplg0VI3q4lckGvILPq+8
+ LD9SoRE1IlFEwvjFzq4eAxCyp5ZJ0H1bDF5v50r+3Ec9g9W8QrGB2L4RATRMXN7cN2a0
+ ZB30iaOFBBZYkGseyE4YJNIavaAyKjwSgvMILgjEvQvkUMfrxmI3Tqli/86EOYLFPM1S
+ KdYbvQYnxKXk4wmpdH+/KJopvdqlvC7+H3N9cr3phno5XPoKE1tsYTVHfdc+vqdj3pRm
+ /GRw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ86PTBrO/xizrHjkgFMYERy17rGngRTtMOHh9lazrwnEmnxhanZvFf0MkVfN/Dvw7+5c6x4YwwtUA==@nongnu.org
+X-Gm-Message-State: AOJu0YzpMwDzcHzcY002vl9re8blSxXFMR9oJs3+URDKEt9utE3YL5sp
+ jVpuaOhmvzHxMlG7bFG+LsfbRXbuUNofHqDnBfvVQERTWMDWyITUqdn8
+X-Gm-Gg: AfdE7cmSIKFJMec1dRoZHb40Ji1ImtsGWp4leFC07UI8KY9Cf7jHDVafLn27WdegB0c
+ NvOf8eNu3Qo9+suVgKbEq4MXQpaIgAbACGV8iKpDgDdjLBw0+VGdf6j07WDlJA3FUvb6aSFpsHj
+ oQ2bfS1oTcZ6uFMufWAaptQeOHMBQ+ugMKnq/mWYoK7t1256cjeSJGOCtr80C2mDrL/cKaQ8mPn
+ eM1OqxJr6nH1A7twpAZ7WiPBJr2L+B2/ovMNzyX4vrRijCI6mn8Jvo9mQoqKBObia/um/AhOexF
+ qJ95ArWTXvcF4Dhe+5fsMR+Iku3kbVcd2662z6gYJLQsK6d+94X440nCNxi+YnMjynPxuSvOMAe
+ I/YslcWbsix3Oi++x8fTILVgoa3EARpCu4f0OuOChltc5Wrf7XeGfJ0mn3GAPUyE1pJSMTsJdq8
+ ZMRsGQHSjeNnSZarNp3fe6lLamwwNTtMJOJlyx0qK9MJ+5AztqkdHScglD/6hVtZJKzUfLCUmbq
+ wmRqkRPXBrXPqO0qcm6YGGumjyKogCwqlyYrVCYw6QZqAI=
+X-Received: by 2002:a05:600c:34c8:b0:493:92c9:1e6d with SMTP id
+ 5b1f17b1804b1-493c3cfb237mr95034735e9.33.1783017651334; 
+ Thu, 02 Jul 2026 11:40:51 -0700 (PDT)
+Received: from Provence.localdomain
+ (dynamic-2a02-3100-25c8-8a00-0219-99ff-feb2-2458.310.pool.telefonica.de.
+ [2a02:3100:25c8:8a00:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-477db8a4a09sm11628213f8f.13.2026.07.02.11.40.19
+ 5b1f17b1804b1-493bef1807asm120271225e9.1.2026.07.02.11.40.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2026 11:40:20 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 00/11] target/arm: Fix some Neon trapping corner cases
-Date: Thu,  2 Jul 2026 19:40:08 +0100
-Message-ID: <20260702184019.3431139-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ Thu, 02 Jul 2026 11:40:50 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Matyas Bobek <matyas.bobek@gmail.com>,
+ Vikram Garhwal <vikram.garhwal@bytedance.com>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
+ Jason Wang <jasowangio@gmail.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Jason Wang <jasowang@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Francisco Iglesias <francisco.iglesias@amd.com>
+Subject: [PATCH v2 2/5] hw/net/can/flexcan: Subclass TYPE_CAN_FLEXCAN
+Date: Thu,  2 Jul 2026 20:40:35 +0200
+Message-ID: <20260702184038.178196-3-shentey@gmail.com>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260702184038.178196-1-shentey@gmail.com>
+References: <20260702184038.178196-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -98,64 +112,167 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-There are a couple of corner cases in trapping of A32 Neon insns that
-have been kicking around as issues in the bug tracker for ages; I
-got round to fixing them today. They're related in that they both
-need us to distinguish Neon from VFP insns at the point of checking
-for traps.
+Subclass TYPE_CAN_FLEXCAN, yielding TYPE_CAN_FLEXCAN2 and
+TYPE_CAN_FLEXCAN3.
+Since TYPE_CAN_FLEXCAN is now abstract, TYPE_FSL_IMX6 needs to use
+TYPE_CAN_FLEXCAN2. TYPE_CAN_FLEXCAN3 will be used in TYPE_FSL_IMX8MP.
 
-The first one is a bug, where we aren't reporting the correct syndrome
-information for A32 VFP and Neon insns that are trapped to AArch32
-EL2. These have COPROC and TA fields in the syndrome which we weren't
-filling in correctly. (When the trap goes to AArch64 EL2, the fields
-are RES0, which we do get right.) It's pretty obscure, though, and I
-know of no guest software which might actually care about distinguishing
-Neon from VFP insns in the hyp trap handler, so I don't think it worth
-backporting to stable.
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ include/hw/net/flexcan.h |  4 ++-
+ hw/arm/fsl-imx6.c        |  2 +-
+ hw/net/can/flexcan.c     | 78 ++++++++++++++++++++++++++++++++--------
+ 3 files changed, 68 insertions(+), 16 deletions(-)
 
-The second one is a missing optional feature: there is a CPACR.ASEDIS
-bit that lets software force Neon insns to UNDEF, and also a hyp trap
-bit HCPTR.TACE that lets the hypervisor force Neon insns to trap to
-it. These are architecturally optional but in practice implemented on
-all CPUs except for the Cortex-A8.
-
-The third one is another missing optional feature: CPACR.D32DIS lets
-software force VFP (not Neon) insns that use D16..D31 to trap. This
-is rather obscure as it goes away in v8A, and of the CPUs we implement
-it's only present in the Cortex-A7 and Cortex-A9.
-
--- PMM
-
-Peter Maydell (11):
-  target/arm: Separate out Neon from VFP access checks
-  target/arm: Separate syndrome functions for A32 and A64
-  target/arm: Report correct syndrome to AArch32 EL2 for trapped
-    Neon/VFP insns
-  target/arm: Define fields for NSACR
-  target/arm: Handle NSACR.NSASEDIS in CPACR accesses
-  target/arm: Handle NSACR.NSASEDIS in HCPTR accesses
-  target/arm: Update confusing comment in cpacr_write()
-  target/arm: Add new feature ARM_FEATURE_NO_NEON_TRAPS
-  target/arm: Implement CPACR.ASEDIS and HCPTR.TASE
-  target/arm: Pull VFP "can we use D16-D31" checks out into a function
-  target/arm: Implement CPACR.D32DIS
-
- target/arm/cpu.c                |   2 +-
- target/arm/cpu.h                |  16 ++++
- target/arm/helper.c             |  93 +++++++++++++++++++----
- target/arm/internals.h          |   8 ++
- target/arm/syndrome.h           |  28 +++++--
- target/arm/tcg/cpu32-system.c   |   4 +
- target/arm/tcg/hflags.c         |  93 +++++++++++++++++++++++
- target/arm/tcg/translate-a32.h  |   1 +
- target/arm/tcg/translate-a64.c  |   2 +-
- target/arm/tcg/translate-neon.c |  74 +++++++++---------
- target/arm/tcg/translate-vfp.c  | 131 +++++++++++++++++++++-----------
- target/arm/tcg/translate.c      |   2 +
- target/arm/tcg/translate.h      |   2 +
- 13 files changed, 351 insertions(+), 105 deletions(-)
-
+diff --git a/include/hw/net/flexcan.h b/include/hw/net/flexcan.h
+index 153afc1e03..32de7b904a 100644
+--- a/include/hw/net/flexcan.h
++++ b/include/hw/net/flexcan.h
+@@ -139,7 +139,9 @@ typedef struct FlexcanState {
+ } FlexcanState;
+ 
+ #define TYPE_CAN_FLEXCAN "flexcan"
+-
+ OBJECT_DECLARE_SIMPLE_TYPE(FlexcanState, CAN_FLEXCAN);
+ 
++#define TYPE_CAN_FLEXCAN2 "flexcan2"
++#define TYPE_CAN_FLEXCAN3 "flexcan3"
++
+ #endif
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 585c935b89..eec9673c6f 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -92,7 +92,7 @@ static void fsl_imx6_init(Object *obj)
+     }
+     for (i = 0; i < FSL_IMX6_NUM_CANS; i++) {
+         snprintf(name, NAME_SIZE, "flexcan%d", i + 1);
+-        object_initialize_child(obj, name, &s->flexcan[i], TYPE_CAN_FLEXCAN);
++        object_initialize_child(obj, name, &s->flexcan[i], TYPE_CAN_FLEXCAN2);
+     }
+     for (i = 0; i < FSL_IMX6_NUM_WDTS; i++) {
+         snprintf(name, NAME_SIZE, "wdt%d", i);
+diff --git a/hw/net/can/flexcan.c b/hw/net/can/flexcan.c
+index 8f3f066ef5..da36d10bd3 100644
+--- a/hw/net/can/flexcan.c
++++ b/hw/net/can/flexcan.c
+@@ -1290,7 +1290,7 @@ static bool flexcan_mem_accepts(void *opaque, hwaddr addr,
+     return true;
+ }
+ 
+-static const struct MemoryRegionOps flexcan_ops = {
++static const struct MemoryRegionOps flexcan2_ops = {
+     .read = flexcan_mem_read,
+     .write = flexcan_mem_write,
+     .endianness = DEVICE_LITTLE_ENDIAN,
+@@ -1307,6 +1307,23 @@ static const struct MemoryRegionOps flexcan_ops = {
+     },
+ };
+ 
++static const struct MemoryRegionOps flexcan3_ops = {
++    .read = flexcan_mem_read,
++    .write = flexcan_mem_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 1,
++        .max_access_size = 8,
++        .unaligned = true,
++        .accepts = flexcan_mem_accepts
++    },
++    .impl = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++        .unaligned = false
++    },
++};
++
+ static CanBusClientInfo flexcan_bus_client_info = {
+     .can_receive = flexcan_can_receive,
+     .receive = flexcan_receive,
+@@ -1322,16 +1339,26 @@ static int flexcan_connect_to_bus(FlexcanState *s, CanBusState *bus)
+     return 0;
+ }
+ 
+-static void flexcan_init(Object *obj)
++static void flexcan2_init(Object *obj)
+ {
+     FlexcanState *s = CAN_FLEXCAN(obj);
+ 
+     memory_region_init_io(
+-        &s->iomem, obj, &flexcan_ops, s, TYPE_CAN_FLEXCAN,
++        &s->iomem, obj, &flexcan2_ops, s, TYPE_CAN_FLEXCAN2,
+         offsetof(FlexcanRegs, _reserved6)
+     );
+ }
+ 
++static void flexcan3_init(Object *obj)
++{
++    FlexcanState *s = CAN_FLEXCAN(obj);
++
++    memory_region_init_io(
++        &s->iomem, obj, &flexcan3_ops, s, TYPE_CAN_FLEXCAN3,
++        sizeof(FlexcanRegs)
++    );
++}
++
+ static void flexcan_realize(DeviceState *dev, Error **errp)
+ {
+     FlexcanState *s = CAN_FLEXCAN(dev);
+@@ -1384,19 +1411,42 @@ static void flexcan_class_init(ObjectClass *klass, const void *data)
+     dc->realize = flexcan_realize;
+     device_class_set_props(dc, flexcan_properties);
+     dc->vmsd = &vmstate_can;
+-    dc->desc = "i.MX FLEXCAN Controller";
+ }
+ 
+-static const TypeInfo flexcan_info = {
+-    .name          = TYPE_CAN_FLEXCAN,
+-    .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(FlexcanState),
+-    .class_init    = flexcan_class_init,
+-    .instance_init = flexcan_init,
+-};
++static void flexcan2_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->desc = "i.MX FlexCAN 2 Controller";
++}
+ 
+-static void can_register_types(void)
++static void flexcan3_class_init(ObjectClass *klass, const void *data)
+ {
+-    type_register_static(&flexcan_info);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->desc = "i.MX FlexCAN 3 Controller";
+ }
+-type_init(can_register_types)
++
++static const TypeInfo flexcan_types[] = {
++    {
++        .name          = TYPE_CAN_FLEXCAN,
++        .parent        = TYPE_SYS_BUS_DEVICE,
++        .instance_size = sizeof(FlexcanState),
++        .class_init    = flexcan_class_init,
++        .abstract      = true,
++    },
++    {
++        .name          = TYPE_CAN_FLEXCAN2,
++        .parent        = TYPE_CAN_FLEXCAN,
++        .class_init    = flexcan2_class_init,
++        .instance_init = flexcan2_init,
++    },
++    {
++        .name          = TYPE_CAN_FLEXCAN3,
++        .parent        = TYPE_CAN_FLEXCAN,
++        .class_init    = flexcan3_class_init,
++        .instance_init = flexcan3_init,
++    },
++};
++
++DEFINE_TYPES(flexcan_types)
 -- 
-2.43.0
+2.55.0
 
 

@@ -4,99 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB3F6C43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 17:28:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF03CC43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 18:40:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfLCI-0005wh-U1; Thu, 02 Jul 2026 13:27:34 -0400
+	id 1wfMKu-00072I-4L; Thu, 02 Jul 2026 14:40:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wfLCH-0005w4-P3
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 13:27:33 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wfMKp-00070a-K2
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 14:40:28 -0400
+Received: from mail-wm2-x02.google.com ([2a00:1450:4864:31::2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wfLCB-0007HP-3x
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 13:27:33 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-474303f3c72so1346125f8f.0
- for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 10:27:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wfMKn-0005LE-KN
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 14:40:27 -0400
+Received: by mail-wm2-x02.google.com with SMTP id
+ 5b1f17b1804b1-493b7dd83e8so3748105e9.1
+ for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 11:40:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1783013246; x=1783618046; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=gDWLf3Imu3AeNQYGp84KvudlW5v8ha0NJcq4upYNVCc=;
- b=auuiejcNiYU8/8UQVzzWOzRyNVXZa3L6pnnB+TsRZk138gGqo9QV47pJs90X27Hwgt
- AlrGyIczlDu6JAb2cRi3I3Us56fO0bpvzKqbagyFix70w+kcMC9kCZqZsiuSZKSjxeLN
- QVR+KJykrfoeNhS4wT/MlafT2m8tAKoGwUcJ+TXVdYraV7cbHIwHjkSunY0pqIiSlSdU
- 58wFOYnnZhRucRaVc0iU8aNh/wIZxIqmVoU94Yj2tcVBUAMhpzS8B+IV17DWapbVsVhi
- CHdJkA9CoiT3Nvzz0UFYo9FNb12Hca30vbYS/w2vJeW3UYa+1vzJQmE5GWq6WAc8U7M/
- DxIQ==
+ d=linaro.org; s=google; t=1783017624; x=1783622424; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=/smHpawLC6pjs6R1RHEYZB+tbgVHOzf/9JVxHNkNUWQ=;
+ b=cjjsJ6rG+DzpIB0mMDRWcq6lyICZzpKMtyf/UdaWODcFOUSjzY4BV4lfuI78Rpv6LJ
+ kZ/vM3oyYevgf9T1GhJJql2GSIM8mTmcMK7OpTvKPPqwQI1PZL13Fz1YFVqUb/mi0UW7
+ /GC1/G+NmA4ye9lbGFf1I5KkhnMw/AU7H7iWJbTaq0oNSIfbc0/ruLYtlvQecuIMCabx
+ 972VpeMw7zUQ5tx8WsUGadkK7rrR3yCMXbxYkJHKcGFlG3j3VRpUV7JtqYxS95ZkShIO
+ IRnsuD2kUFMmYcuwJufaNDZ076RvegeWJqIEgvgWepNTdXbOLBYQbeeAiRwbKmRUwIle
+ NIEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783013246; x=1783618046;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=gDWLf3Imu3AeNQYGp84KvudlW5v8ha0NJcq4upYNVCc=;
- b=MbPVcbn6PaII/CKyOJZHyWsR65YzJOR5gOykr/nSuYg+mldij1mBq77OYEsgJUCF2+
- I0rD8OwNEF9/Z5Esq5R9cEAS1GR7mbwzE50/RveAzrpwRAC83gk927bQ8930nowZHHOw
- dNj85gZ26Kd0v6IRPveJyZdhWsml1mHgsneaQInKyxRwaPKTklNYtkGYUGyCOuI9MccG
- Kp6ci11JWQbpBkE4FhQUDGCFaT8KpAl2J6vXY/ptlQ8dxQvRRVh0c4mexvZpTeGmXdti
- 0uiV/p6/mrcOGVzscKINKryGQl5isXZ9UiBF75hCheg4KqLNjfqaLijT6UsaSd5PXpAt
- b8mg==
-X-Forwarded-Encrypted: i=1;
- AHgh+RrzvXxnwuO58d51F83hyNSB390X8X3RNde9ZysHoQKW4R+dKOu48jddUZiL+TKoDykm3beYIdNcIQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy1FslLRkdZTRLRXDAisBlPGtB5gcHmhItHL7tCYlMhGRPxM9u2
- /VA+zj5E4Ud+4Sdx3CNpj/Q7ScbnjmDMhIjQTZLnVVezMUxeespzBVCb
-X-Gm-Gg: AfdE7cnmvIN339BV0RfgZU66aEEnZH7n747f5fGaGMi+O8nsgVODvEdMUfMk6yDDVmd
- sD6gMKU1uqVKEjKv9+850slCZAeb5cALgYn68EjcoIo5IWm5V40QEKXo99eMayEgvk03HcmRxAS
- FGBckBXEWcwkZMFvtFaAzsNPhevRSXO31re4BhS9e1EnjdggZ2/YUay6M1Eh+nXNQcL/5tQuWTe
- Ci7BxjaQR3T1gb8TofcBndsb1c77Al5P+YnLJfcJ5IX93BRXZ0gJlcD78Eyd7Yl8plSRirxrsnp
- KgtVyuDsPrVL7Zk+9UjvrVcW6TKWeuEvC3LhR2NcmAvcbG5K//BS7MlZF/YeQCBOsXtI1a4QDbj
- lvkOW0WR+xA+T0w0ltnGmE/kVuSiS5NbtUriirmiOJLpHvoArfhs3+0UwQkKAVDVz00tRJCfw1C
- gAV8xI2JoLKTOc1Rs3KIE=
-X-Received: by 2002:a5d:64e9:0:b0:475:f100:360d with SMTP id
- ffacd0b85a97d-4775a7cdd03mr10954419f8f.60.1783013245450; 
- Thu, 02 Jul 2026 10:27:25 -0700 (PDT)
-Received: from ehlo.thunderbird.net ([185.238.219.31])
+ d=1e100.net; s=20251104; t=1783017624; x=1783622424;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=/smHpawLC6pjs6R1RHEYZB+tbgVHOzf/9JVxHNkNUWQ=;
+ b=WBKn/musL77H5EpYfKJNv+3wHj8+2TIPmzqzV8OmERr2JYF4IxvQHln0cSQnFqOZql
+ zhXUxJFVexg/IFGiJFUOg8sr9tXtnAqh0/v97+klXgn9A7Q9y1U1E4NGa54c2rv5mVWJ
+ JaPsajquqL5FGtXgcAc1HSfoNslN88gWfvSNgrwDNXLo1lVut6XbrAJP0QSkiOpylqAC
+ 1A6BJP5ieUvhSKRKLXtLr6BNv1sCWmalkh94krcAcuy4LJOs9JPnRhLTC+Nl8Re99pMW
+ 4i5AqEMQvpV3+eZkNPdLK0vzYREfInidy6039XeEDhMruf3PpnMExGa0Ve130e/0E+T/
+ bo2w==
+X-Gm-Message-State: AOJu0YyxJFUZ+91kikCqnJBgEx8JOPZCRkgc+FO+jXnzc7Zq4RUg2J8/
+ pFg6Ven0oBdNEWLcTJaKvCEYbNIObpePQHRLATW70KY4BlbT6dwXoq1PRhvkx+fB6eHMh7mm7s8
+ YHr6F/jHAdNFe
+X-Gm-Gg: AfdE7ck++VlzCUtLTh5EZleHBVEgZl901kqi7rz9Q4+wslneU/7yRBAjdwCGOnMztXd
+ oA3iDOe+o/T8i3FFCz+A2OE/RpKGsMh7gpdDkCCuA6wgWJ+bRncsQ/f2CjogEDhufAY6dcGk/KQ
+ PVbjxbAXXypzHaHtXeS9/Gh020TxA+JprlK7B88IjBAWMQBtUw4E11U9dhv9fqTOZGWTg3/xCa9
+ pDBreOX6IVEzs1o7qTE1VUY2/t8Vli4J9PTU/nG1ym5RXq5TtQKMQA7DtrsK1pDzXA3JV2UEf/m
+ fZN+9aq6SZly8VRzx6ezuL5avh1mZ/vq/XdsaqJ+IfYyDgBsf+/hkvC4ZaCfL1+feIt1+v1OIB7
+ IPIgjeqseV+lTzVor7Wp8bwGvzKpgk+lxSlXrGS7vFN/0g61MFerofvOtL7TRGJxXt2GacsSCj+
+ ohDB5Is5Qg3Ro1PJdF8YaOEk2pwJuDtwj2ZxuVM+Uzbq8KFNFPKbXlJQo43WxVeVLvLMaW33eR4
+ 6xOFYj0H8q6LRMdlMc/Wg==
+X-Received: by 2002:a05:600c:5292:b0:492:3754:15f2 with SMTP id
+ 5b1f17b1804b1-493c3cfbc7amr97187185e9.32.1783017623783; 
+ Thu, 02 Jul 2026 11:40:23 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-477db3dbc75sm11541859f8f.5.2026.07.02.10.27.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 Jul 2026 10:27:24 -0700 (PDT)
-Date: Thu, 02 Jul 2026 16:58:46 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
-CC: Gaurav Sharma <gaurav.sharma_7@nxp.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Jason Wang <jasowang@redhat.com>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Matyas Bobek <matyas.bobek@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Vikram Garhwal <vikram.garhwal@bytedance.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: Re: [PATCH 1/4] hw/net/can/flexcan: Subclass TYPE_CAN_FLEXCAN
-In-Reply-To: <b7ba6659-9fec-4bb4-a9ab-6c009081357f@oss.qualcomm.com>
-References: <20260701224612.48342-1-shentey@gmail.com>
- <20260701224612.48342-2-shentey@gmail.com>
- <b7ba6659-9fec-4bb4-a9ab-6c009081357f@oss.qualcomm.com>
-Message-ID: <8359B14D-E5CF-42E7-8CD0-8C0B34AEC31F@gmail.com>
+ ffacd0b85a97d-477db8a4a09sm11628213f8f.13.2026.07.02.11.40.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 02 Jul 2026 11:40:23 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 03/11] target/arm: Report correct syndrome to AArch32 EL2 for
+ trapped Neon/VFP insns
+Date: Thu,  2 Jul 2026 19:40:11 +0100
+Message-ID: <20260702184019.3431139-4-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260702184019.3431139-1-peter.maydell@linaro.org>
+References: <20260702184019.3431139-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: 22
-X-Spam_score: 2.2
-X-Spam_bar: ++
-X-Spam_report: (2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
- FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:31::2;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm2-x02.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,89 +101,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+When an AArch32 Neon or VFP insn is trapped to AArch64 EL2, bits
+[19:0] of the syndrome in ESR_EL2 are RES0.  However, when it is
+trapped to AArch32 EL2, the HSR syndrome information defines some
+extra fields:
+ [5] : TA
+ [3:0] : coproc
 
+where the TA bit is 1 for a trapped Neon insn and 0 for a trapped
+VFP insn, and the coproc field is 0b1010 when TA is 0, and 0 when
+TA is 1.
 
-Am 2=2E Juli 2026 12:45:24 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <phil=
-md@oss=2Equalcomm=2Ecom>:
->Hi Bernhard,
->
->On 2/7/26 00:46, Bernhard Beschow wrote:
->> Subclass TYPE_CAN_FLEXCAN, yielding TYPE_CAN_FLEXCAN2 and TYPE_CAN_FLEX=
-CAN3=2E
->> Since TYPE_CAN_FLEXCAN is now abstract, TYPE_FSL_IMX6 needs to use
->> TYPE_CAN_FLEXCAN2=2E TYPE_CAN_FLEXCAN3 will be used in TYPE_FSL_IMX8MP=
-=2E
->>=20
->> Note that Linux performs 8 byte accesses on the i=2EMX8M Plus, therefor=
-e
->> =2Emax_access_size has to be adjusted=2E Otherwise this results in bus =
-errors=2E
->>=20
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> ---
->>   include/hw/net/flexcan=2Eh |  4 ++-
->>   hw/arm/fsl-imx6=2Ec        |  2 +-
->>   hw/net/can/flexcan=2Ec     | 61 +++++++++++++++++++++++++++++++------=
+We attempted to address this in commit fa33eead ("target/arm: Add
+coproc parameter to syn_fp_access_trap"), but got it wrong: we
+thought the RES0 condition was "is v8A" rather than "is EL2 AArch32",
+and we made all insns be TA=0 coproc = 0b1010 rather than only the
+VFP ones.  Correct the condition we use to decide the coproc and TA
+fields.  We set these fields unconditionally; later on in
+arm_cpu_do_interrupt_aarch64() we will squash them to zero if we are
+taking the exception to AArch64.
+
+NB: there is some disagreement between different revisions of the
+Arm ARM about the exact handling of 'coproc':
+ * the v8A Arm ARM text says coproc is 0b1010 when TA is 1
+ * the v8A Arm ARM pseudocode in AArch32_CheckFPAdvSIMDTrap()
+   sets coproc to 0b1010 when TA is 0
+ * the v7A Arm ARM text says coproc is 0b1010 when TA is 0
+ * the v7A Arm ARM pseudocode sets coproc to 0b1010 when TA is 0
+
+The v7A Arm ARM pseudocode also disagrees with the v7A text, v8A text
+and v8A pseudocode in only setting TA to 1 for traps caused by
+HCPTR.TASE; the others set Ta for all trapped AdvSIMD insns
+(i.e. including traps caused by HCPTR.TCP10).
+
+We assume that the v8A pseudocode is incorrect about coproc (as it is
+the odd one out) and that the v7A pseudocode is incorrect about when
+TA is set (again, as it is the odd one out).
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/1153
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
->>   3 files changed, 51 insertions(+), 16 deletions(-)
->>=20
->> diff --git a/include/hw/net/flexcan=2Eh b/include/hw/net/flexcan=2Eh
->> index 153afc1e03=2E=2E32de7b904a 100644
->> --- a/include/hw/net/flexcan=2Eh
->> +++ b/include/hw/net/flexcan=2Eh
->> @@ -139,7 +139,9 @@ typedef struct FlexcanState {
->>   } FlexcanState;
->>     #define TYPE_CAN_FLEXCAN "flexcan"
->> -
->>   OBJECT_DECLARE_SIMPLE_TYPE(FlexcanState, CAN_FLEXCAN);
->>   +#define TYPE_CAN_FLEXCAN2 "flexcan2"
->> +#define TYPE_CAN_FLEXCAN3 "flexcan3"
->
->> diff --git a/hw/net/can/flexcan=2Ec b/hw/net/can/flexcan=2Ec
->> index 1ea459d9f6=2E=2Ed6a76c28ab 100644
->> --- a/hw/net/can/flexcan=2Ec
->> +++ b/hw/net/can/flexcan=2Ec
->> @@ -1298,7 +1298,7 @@ static const struct MemoryRegionOps flexcan_ops =
-=3D {
->>       =2Eendianness =3D DEVICE_LITTLE_ENDIAN,
->>       =2Evalid =3D {
->>           =2Emin_access_size =3D 1,
->> -        =2Emax_access_size =3D 4,
->> +        =2Emax_access_size =3D 8,
->
->Isn't it better to keep 32-bit renaming as flexcan2_ops and widen to
->64-bit for Plus version in a new flexcan8_ops struct?
+ target/arm/tcg/translate-vfp.c | 29 +++++++++++++++++------------
+ 1 file changed, 17 insertions(+), 12 deletions(-)
 
-I agree=2E Will do in v2=2E
+diff --git a/target/arm/tcg/translate-vfp.c b/target/arm/tcg/translate-vfp.c
+index 7474973952..6e944a0322 100644
+--- a/target/arm/tcg/translate-vfp.c
++++ b/target/arm/tcg/translate-vfp.c
+@@ -216,19 +216,20 @@ static void gen_update_fp_context(DisasContext *s)
+  * whether VFP is enabled via FPEXC.EN: this should be true for FMXR/FMRX
+  * accesses to FPSID, FPEXC, MVFR0, MVFR1, MVFR2, and false for all other insns.
+  */
+-static bool vfp_access_check_a(DisasContext *s, bool ignore_vfp_enabled)
++static bool vfp_access_check_a(DisasContext *s, bool ignore_vfp_enabled,
++                               bool is_neon)
+ {
+     if (s->fp_excp_el) {
+         /*
+-         * The full syndrome is only used for HSR when HCPTR traps:
+-         * For v8, when TA==0, coproc is RES0.
+-         * For v7, any use of a Floating-point instruction or access
+-         * to a Floating-point Extension register that is trapped to
+-         * Hyp mode because of a trap configured in the HCPTR sets
+-         * this field to 0xA.
++         * The full syndrome is only used for HSR when HCPTR traps.
++         * When trapping to AArch64, the TA and coproc fields are RES0
++         * (we will squash them in arm_cpu_do_interrupt_aarch64()).
++         * When trapping to AArch32:
++         *  - for VFP insns, TA=0 and coproc = 0b1010
++         *  - for Neon insns, TA=1 and coproc = 0
+          */
+-        int coproc = arm_dc_feature(s, ARM_FEATURE_V8) ? 0 : 0xa;
+-        uint32_t syn = syn_a32_fp_access_trap(1, 0xe, 0, coproc);
++        int coproc = is_neon ? 0 : 0xa;
++        uint32_t syn = syn_a32_fp_access_trap(1, 0xe, is_neon, coproc);
+ 
+         gen_exception_insn_el(s, 0, EXCP_UDEF, syn, s->fp_excp_el);
+         return false;
+@@ -299,7 +300,7 @@ bool vfp_access_check(DisasContext *s)
+     if (arm_dc_feature(s, ARM_FEATURE_M)) {
+         return vfp_access_check_m(s, false);
+     } else {
+-        return vfp_access_check_a(s, false);
++        return vfp_access_check_a(s, false, false);
+     }
+ }
+ 
+@@ -311,7 +312,11 @@ bool vfp_access_check(DisasContext *s)
+  */
+ bool neon_access_check(DisasContext *s)
+ {
+-    return vfp_access_check(s);
++    if (arm_dc_feature(s, ARM_FEATURE_M)) {
++        return vfp_access_check_m(s, false);
++    } else {
++        return vfp_access_check_a(s, false, true);
++    }
+ }
+ 
+ static bool trans_VSEL(DisasContext *s, arg_VSEL *a)
+@@ -822,7 +827,7 @@ static bool trans_VMSR_VMRS(DisasContext *s, arg_VMSR_VMRS *a)
+      * Call vfp_access_check_a() directly, because we need to tell
+      * it to ignore FPEXC.EN for some register accesses.
+      */
+-    if (!vfp_access_check_a(s, ignore_vfp_enabled)) {
++    if (!vfp_access_check_a(s, ignore_vfp_enabled, false)) {
+         return true;
+     }
+ 
+-- 
+2.43.0
 
-Best regards,
-Bernhard
-
->
->>           =2Eunaligned =3D true,
->>           =2Eaccepts =3D flexcan_mem_accepts
->>       },
->> @@ -1324,16 +1324,26 @@ static int flexcan_connect_to_bus(FlexcanState =
-*s, CanBusState *bus)
->>       return 0;
->>   }
->>   -static void flexcan_init(Object *obj)
->> +static void flexcan2_init(Object *obj)
->>   {
->>       FlexcanState *s =3D CAN_FLEXCAN(obj);
->>         memory_region_init_io(
->> -        &s->iomem, obj, &flexcan_ops, s, TYPE_CAN_FLEXCAN,
->> +        &s->iomem, obj, &flexcan_ops, s, TYPE_CAN_FLEXCAN2,
->>           offsetof(FlexcanRegs, _reserved6)
->>       );
->>   }
->>   +static void flexcan3_init(Object *obj)
->> +{
->> +    FlexcanState *s =3D CAN_FLEXCAN(obj);
->> +
->> +    memory_region_init_io(
->> +        &s->iomem, obj, &flexcan_ops, s, TYPE_CAN_FLEXCAN3,
->> +        sizeof(FlexcanRegs)
->> +    );
->> +}
 

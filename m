@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2B31C43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 18:41:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A315C43327
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 18:41:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfMKq-00071C-JM; Thu, 02 Jul 2026 14:40:29 -0400
+	id 1wfMKz-00073r-8U; Thu, 02 Jul 2026 14:40:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wfMKo-0006zf-9u
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 14:40:26 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1wfMKq-00070c-1G
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 14:40:28 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wfMKl-0005KV-7A
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 14:40:26 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-493b786d6c0so11251365e9.2
- for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 11:40:22 -0700 (PDT)
+ id 1wfMKo-0005LV-5B
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 14:40:27 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-493c59f740cso6889785e9.3
+ for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 11:40:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783017622; x=1783622422; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783017625; x=1783622425; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=lpwBOWPVMATfbpndlLRvz9T6HcOtZn2wa3F6Vcr3xJ0=;
- b=yQxj0Y8647pI+FVvSaBw3TywVXTlV8FBZxHA/65FMidLjKDxoFmsPBgZcngrUYoMRn
- Gg+jebs+Vua1gU7/MhQDXif1XfBu+NeorHtRjtQgbr3BTmPqRFuB4Kd+hwhjLwV6U0wj
- V+W4fo3Xc0Ytl9NuaaTBfojsxlfUDENe1HLHq9qEuD2oIyW+ei4heGmZN0+D+4JQG1WO
- bHyfx15n+SrEySHDN7FH7NAMyx0gFxF8YjvZ1Vrk9AAMVmhUevyzlty28k2SCfgco+Sk
- cOM+bD8bjewPApgRaa/lI38j0MG/I4+4K+i+LwdUdBjIfIaZbAv0E45b8ve0IwdfP147
- 06wQ==
+ :reply-to; bh=YFqJvpFQHOGI/dLuR6HhX7nMZqellpP4I0RPKcZ6D1k=;
+ b=KAyaI72+OYWHxrZJG1T2Dpj+MzLzqmRBRGV+gWYlN94liHZ1ihH6lYi4G3v7gphyFY
+ 9ZHVOmx9bb8ZwpFQvA1HB32obp+BSspNsshDPqx/TUH3bLjsx7g9q16jmjK4tm/Yr5H3
+ QsWvntXdCaB+m4lfMneP2TIE24NnDhJENRH7S5Q4vp3yNVywrq5yCJSyavETiMqtMK+J
+ KRfITfMyOgNzCkj+yeHfQ9XVPeyhtU7hNIX7HKvWNvzurV4aWvnGG6MQ1jML27kCFlFE
+ oHAr4t8usb+sLFwRqJtWB3SCR/NALnH0youbIMyALhH45f3Ys/6wK43G50aw7vYEb8hE
+ 5KRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783017622; x=1783622422;
+ d=1e100.net; s=20251104; t=1783017625; x=1783622425;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to:content-type;
- bh=lpwBOWPVMATfbpndlLRvz9T6HcOtZn2wa3F6Vcr3xJ0=;
- b=KB1xugtGiMRzewM4efm5mReIAzCVtliVPg9V+/fKqLK0UdoI3ifDtJDyH+cNj/SAdK
- mkvp7qnISuzgSDGEMza+Lb/IqrzY6Wu5DfY2IfaNGFBFymTPtXuyAVPMoJWyTTV2lps4
- xu51GxaBuWye6C76QmgpaoYEGNU1ve2jl+OHWrQcLZ4Amwh0/jeGzFS7m8vhBzoTluGv
- BoXfsFv7IvsmYmeisqcQ61Qo30MvLiaETeYaI8icPssRDUE1G9LQ+wJAY1IxdjD9e2qW
- FE5dFezE3TBwiZ8AvKhCwrs/5oxgG7IK38lWPxJWftxAV+zBOjqI2fExRkk7Kth+J5Z2
- XVLQ==
-X-Gm-Message-State: AOJu0YySQyebQk2T9VVz7qRGT47RzlVkbQQGs0c3c/i/6IFkba5ObxIs
- 8YvbjBtyWrLMLML/qgVMzCNtxmZ7GcdPF4OFmR1/B3knyo4yvD5K9vPo9K04C/TTfMHkyQkYpVr
- WJKyeRSmF9g==
-X-Gm-Gg: AfdE7ckKmUizuUIdNUA7LF47IuHUtU+5SFHG7aJi3HMKkdn9KGa4O8hqqcsZLuldyAp
- G0PBcBXDw8apdsQS+EsDwVmQW7Cp6dkOrSHm/8oyMRamQU/TW1bhkEhcYj5V11/Ik4UPBdptWmA
- xK5Fwxc1Ch0IDQcKb1LYE+UOujq1M84puQKLxH31Frpsm+q2PIjLtTgCB/qOKvAFCx3lnxe+kVn
- 4azfAkj2UYCoBZUy876Pnu/7uXFzmK2CXnZzDncy5mceTq5L9TvrJ9t/UM3gIgAZdP4zjBOgii+
- gjSwHwkUMQXEyvc3USEy92DzNgIepX/VBE6RookwfvfZ5iJHx5BjTyArppzdnhtpHa95NFS9t2L
- dizJonzYVWYehQ8McoPyLQdQZ3Vrs4TvVL3vTFZQa1hmOoP9X1IiEMsq0Rmm5SB93Fp1w/UC3aY
- ItkAmAk/mXZj+SUSP5lrZUOtz6/YXy+s7m3ya3X9+t2P+CnEl5RztlUVdBHlAuyYSWx/Yl+37WQ
- EDdVv7bRyKuC5zRB4hggA==
-X-Received: by 2002:a05:600c:8590:b0:492:4e1c:120 with SMTP id
- 5b1f17b1804b1-493c2ba4360mr86893615e9.32.1783017621648; 
- Thu, 02 Jul 2026 11:40:21 -0700 (PDT)
+ :cc:subject:date:message-id:reply-to;
+ bh=YFqJvpFQHOGI/dLuR6HhX7nMZqellpP4I0RPKcZ6D1k=;
+ b=iMJXWrlpIqKV4dzMnhn7EpY83Xy1GBK1SLVj96a0rKasMo1uJW2qDcBTypffG4UoqQ
+ F59tQdfCorrLUynOSZ7AIs/RzIb+aG9toKPDqWLEwE+a30lpIExNZM9mFuFpcbTqY1bZ
+ RKcqM6n2ItCACDF4egy6N3l20XJktoHexnW+fB0ro7BssJNzB76hbLPgmR3ltm0sO53+
+ sPuReXrfV+tzTyX4tokIu40reqIfeEcUZ23tB1eaMdYaEt+VJaYMetRwxI7reQQrxkFg
+ DyV2vNeZRu3rE/RU7Yw513eCL6ahC4wsUdg8DcaVCFjYWEyICD87A+pa3PbN9+4k1uXS
+ M5iA==
+X-Gm-Message-State: AOJu0YzVF/BX6q+8kERGwmz4l9Jh9eOFMkvQhBmLO1h0qxtspT0Eu+UC
+ SwXZ/7ZFlT5Ru7wA/1lm4Ku1CW1cuRnhQ7fsmU3njMxv/fjDTCrhFHUKrbqqLhUsXt/RysnNVkh
+ dxuJFBPzcHw==
+X-Gm-Gg: AfdE7ck5Z8Z+h0UUwXsJtWkD+imXcY+Lom9N8Tivi+QMXiU2myfseHjuWOZuadMgPSi
+ waKLa5cROBxfgWI2QLOCaX6SmNIAjms7Liym2piJPYLwjxBKrK1ubBiqlS0Smlp+PS3x03t/COP
+ +hYZwZiHflTIpPq7r47BehtmBiE2DpOhhTOd113qaUNH/56iKFan0ojmEAcX5xZu5uNsCWXCB5e
+ jZwgXs/H9qDA/OMRUqG4B2GUeGQxI4Wk6qTw4L8RCXl/WnWUqCSrv+Y4gnb6Z2C/SgKfQnD4a3Y
+ GEoMpzD7IJy4Oc7FCvpZedux0im3ptUb/nm7Ziw49RkKkgx9rbJPgoQ0mrqLadkPtZtL4aONquI
+ 8d6eFGdi2JyOTexTDpMO5ll9KZA79+GAejXL3kFUZecvq5FG7YsecDpWLgCYRDn59fixE9vwL1A
+ ZdkkVfV+F5rW9HSNS/z7x4M9P7d2lzDMF4T3taIQ89m6x7i9HexhWXoM9j1+oDcTVZPa1mNiCuO
+ s0hc4iNZub/mWUd8o3O8fktN54+GXFV
+X-Received: by 2002:a05:600c:6d14:b0:492:3763:aeb9 with SMTP id
+ 5b1f17b1804b1-493c2b7cb1cmr79691755e9.21.1783017624667; 
+ Thu, 02 Jul 2026 11:40:24 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-477db8a4a09sm11628213f8f.13.2026.07.02.11.40.20
+ ffacd0b85a97d-477db8a4a09sm11628213f8f.13.2026.07.02.11.40.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2026 11:40:21 -0700 (PDT)
+ Thu, 02 Jul 2026 11:40:24 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 01/11] target/arm: Separate out Neon from VFP access checks
-Date: Thu,  2 Jul 2026 19:40:09 +0100
-Message-ID: <20260702184019.3431139-2-peter.maydell@linaro.org>
+Subject: [PATCH 04/11] target/arm: Define fields for NSACR
+Date: Thu,  2 Jul 2026 19:40:12 +0100
+Message-ID: <20260702184019.3431139-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260702184019.3431139-1-peter.maydell@linaro.org>
 References: <20260702184019.3431139-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,473 +100,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently we use vfp_access_check() for AArch32 VFP and Neon
-instructions.  This is not quite right:
- * there are optional CPACR.ASEDIS and HCPTR.TASE controls that allow
-   trapping of just the Neon and not VFP instructions
- * Neon instructions are supposed to report a slightly different
-   syndrome in HCR when they trap to AArch32 EL2
-
-As a preliminary refactor so we have somewhere we can make this
-distinction, separate out Neon access checks into a separate
-neon_access_check(), which initially just calls vfp_access_check().
-
-The set of insns this needs to cover are those described in section
-E1.3.9 of the DDI0487M.b Arm ARM.  For us this corresponds to
-everything in neon-dp.decode and neon-ls.decode and thus in
-translate-neon.c, plus three insns that we handle in translate-vfp.c:
- - VDUP (general-purpose register)
- - VMOV (general-purpose register to scalar) byte and halfword
- - VMOV (scalar to general-purpose register) byte and halfword
-(which are the ones in that file with ARM_FEATURE_NEON checks).
+Currently we handle cp15.nsacr with raw bit numbers in the few places
+we need to work with it.  We're about to add some more uses of this
+field, so define its fields with the FIELD macro and use the macros
+in the places that were previously using bit numbers.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/translate-a32.h  |  1 +
- target/arm/tcg/translate-neon.c | 74 ++++++++++++++++-----------------
- target/arm/tcg/translate-vfp.c  | 33 +++++++++++----
- 3 files changed, 62 insertions(+), 46 deletions(-)
+ target/arm/cpu.c       |  2 +-
+ target/arm/helper.c    | 10 +++++-----
+ target/arm/internals.h |  8 ++++++++
+ 3 files changed, 14 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/tcg/translate-a32.h b/target/arm/tcg/translate-a32.h
-index a8df364171..1023cddab5 100644
---- a/target/arm/tcg/translate-a32.h
-+++ b/target/arm/tcg/translate-a32.h
-@@ -33,6 +33,7 @@ void load_reg_var(DisasContext *s, TCGv_i32 var, int reg);
- void arm_gen_condlabel(DisasContext *s);
- bool vfp_access_check(DisasContext *s);
- bool vfp_access_check_m(DisasContext *s, bool skip_context_update);
-+bool neon_access_check(DisasContext *s);
- void read_neon_element32(TCGv_i32 dest, int reg, int ele, MemOp memop);
- void read_neon_element64(TCGv_i64 dest, int reg, int ele, MemOp memop);
- void write_neon_element32(TCGv_i32 src, int reg, int ele, MemOp memop);
-diff --git a/target/arm/tcg/translate-neon.c b/target/arm/tcg/translate-neon.c
-index e3c7d9217b..50a44511d9 100644
---- a/target/arm/tcg/translate-neon.c
-+++ b/target/arm/tcg/translate-neon.c
-@@ -135,7 +135,7 @@ static bool do_neon_ddda(DisasContext *s, int q, int vd, int vn, int vm,
-         return false;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 86aae36ae5..35360d0c0e 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -777,7 +777,7 @@ void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
+         /* Put CPU into non-secure state */
+         env->cp15.scr_el3 |= SCR_NS;
+         /* Set NSACR.{CP11,CP10} so NS can access the FPU */
+-        env->cp15.nsacr |= 3 << 10;
++        env->cp15.nsacr |= R_NSACR_CP10_MASK | R_NSACR_CP11_MASK;
      }
  
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
+     if (have_el2 && target_el < 2) {
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index a234aa031c..af98bda3f5 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -587,7 +587,7 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+      * is 0 then CPACR.{CP11,CP10} ignore writes and read as 0b00.
+      */
+     if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
+-        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
++        !arm_is_secure(env) && !FIELD_EX32(env->cp15.nsacr, NSACR, CP10)) {
+         mask = R_CPACR_CP11_MASK | R_CPACR_CP10_MASK;
+         value = (value & ~mask) | (env->cp15.cpacr_el1 & mask);
      }
+@@ -604,7 +604,7 @@ static uint64_t cpacr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     uint64_t value = env->cp15.cpacr_el1;
  
-@@ -165,7 +165,7 @@ static bool do_neon_ddda_env(DisasContext *s, int q, int vd, int vn, int vm,
-         return false;
+     if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
+-        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
++        !arm_is_secure(env) && !FIELD_EX32(env->cp15.nsacr, NSACR, CP10)) {
+         value = ~(R_CPACR_CP11_MASK | R_CPACR_CP10_MASK);
      }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
+     return value;
+@@ -4082,7 +4082,7 @@ static void cptr_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
+      * is 0 then HCPTR.{TCP11,TCP10} ignore writes and read as 1.
+      */
+     if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
+-        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
++        !arm_is_secure(env) && !FIELD_EX32(env->cp15.nsacr, NSACR, CP10)) {
+         uint64_t mask = R_HCPTR_TCP11_MASK | R_HCPTR_TCP10_MASK;
+         value = (value & ~mask) | (env->cp15.cptr_el[2] & mask);
      }
+@@ -4098,7 +4098,7 @@ static uint64_t cptr_el2_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     uint64_t value = env->cp15.cptr_el[2];
  
-@@ -197,7 +197,7 @@ static bool do_neon_ddda_fpst(DisasContext *s, int q, int vd, int vn, int vm,
-         return false;
+     if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
+-        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
++        !arm_is_secure(env) && !FIELD_EX32(env->cp15.nsacr, NSACR, CP10)) {
+         value |= R_HCPTR_TCP11_MASK | R_HCPTR_TCP10_MASK;
      }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -249,7 +249,7 @@ static bool trans_VCADD(DisasContext *s, arg_VCADD *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -319,7 +319,7 @@ static bool trans_VFML(DisasContext *s, arg_VFML *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -413,7 +413,7 @@ static bool trans_VFML_scalar(DisasContext *s, arg_VFML_scalar *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -506,7 +506,7 @@ static bool trans_VLDST_multiple(DisasContext *s, arg_VLDST_multiple *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -617,7 +617,7 @@ static bool trans_VLD_all_lanes(DisasContext *s, arg_VLD_all_lanes *a)
+     return value;
+@@ -10033,7 +10033,7 @@ int fp_exception_el(CPUARMState *env, int cur_el)
+      */
+     if ((arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
+          cur_el <= 2 && !arm_is_secure_below_el3(env))) {
+-        if (!extract32(env->cp15.nsacr, 10, 1)) {
++        if (!FIELD_EX32(env->cp15.nsacr, NSACR, CP10)) {
+             /* FP insns act as UNDEF */
+             return cur_el == 2 ? 2 : 1;
          }
-     }
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index fcce3804f3..a50290383d 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -135,6 +135,14 @@ FIELD(CPACR_EL1, FPEN, 20, 2)
+ FIELD(CPACR_EL1, SMEN, 24, 2)
+ FIELD(CPACR_EL1, TTA, 28, 1)   /* matches CPACR.TRCDIS */
  
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -714,7 +714,7 @@ static bool trans_VLDST_single(DisasContext *s, arg_VLDST_single *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -798,7 +798,7 @@ static bool do_3same(DisasContext *s, arg_3same *a, GVecGen3Fn fn)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -1076,7 +1076,7 @@ static bool do_vector_2sh(DisasContext *s, arg_2reg_shift *a, GVecGen2iFn *fn)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -1126,7 +1126,7 @@ static bool do_2shift_narrow_64(DisasContext *s, arg_2reg_shift *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -1177,7 +1177,7 @@ static bool do_2shift_narrow_32(DisasContext *s, arg_2reg_shift *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -1302,7 +1302,7 @@ static bool do_vshll_2sh(DisasContext *s, arg_2reg_shift *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -1392,7 +1392,7 @@ static bool do_fp_2sh(DisasContext *s, arg_2reg_shift *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -1436,7 +1436,7 @@ static bool do_1reg_imm(DisasContext *s, arg_1reg_imm *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -1499,7 +1499,7 @@ static bool do_prewiden_3d(DisasContext *s, arg_3diff *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -1606,7 +1606,7 @@ static bool do_narrow_3d(DisasContext *s, arg_3diff *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -1696,7 +1696,7 @@ static bool do_long_3d(DisasContext *s, arg_3diff *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -1967,7 +1967,7 @@ static bool trans_VMULL_P_3d(DisasContext *s, arg_3diff *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2041,7 +2041,7 @@ static bool do_2scalar(DisasContext *s, arg_2scalar *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2139,7 +2139,7 @@ static bool do_2scalar_fp_vec(DisasContext *s, arg_2scalar *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2236,7 +2236,7 @@ static bool do_vqrdmlah_2sc(DisasContext *s, arg_2scalar *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2307,7 +2307,7 @@ static bool do_2scalar_long(DisasContext *s, arg_2scalar *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2451,7 +2451,7 @@ static bool trans_VEXT(DisasContext *s, arg_VEXT *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2520,7 +2520,7 @@ static bool trans_VTBL(DisasContext *s, arg_VTBL *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2555,7 +2555,7 @@ static bool trans_VDUP_scalar(DisasContext *s, arg_VDUP_scalar *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2591,7 +2591,7 @@ static bool do_zip_uzp(DisasContext *s, arg_2misc *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2660,7 +2660,7 @@ static bool do_vmovn(DisasContext *s, arg_2misc *a,
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2724,7 +2724,7 @@ static bool trans_VSHLL(DisasContext *s, arg_2misc *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2764,7 +2764,7 @@ static bool trans_VCVT_B16_F32(DisasContext *s, arg_2misc *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2804,7 +2804,7 @@ static bool trans_VCVT_F16_F32(DisasContext *s, arg_2misc *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2850,7 +2850,7 @@ static bool trans_VCVT_F32_F16(DisasContext *s, arg_2misc *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -2900,7 +2900,7 @@ static bool do_2misc_vec(DisasContext *s, arg_2misc *a, GVecGen2Fn *fn)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -3028,7 +3028,7 @@ static bool do_2misc(DisasContext *s, arg_2misc *a, NeonGenOneOpFn *fn)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -3232,7 +3232,7 @@ static bool trans_VSWP(DisasContext *s, arg_2misc *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-@@ -3305,7 +3305,7 @@ static bool trans_VTRN(DisasContext *s, arg_2misc *a)
-         return false;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
-diff --git a/target/arm/tcg/translate-vfp.c b/target/arm/tcg/translate-vfp.c
-index 8d9d1ab877..6f6b234c9a 100644
---- a/target/arm/tcg/translate-vfp.c
-+++ b/target/arm/tcg/translate-vfp.c
-@@ -303,6 +303,17 @@ bool vfp_access_check(DisasContext *s)
-     }
- }
- 
-+/*
-+ * Access check for Neon; this is for instructions which can be
-+ * trapped by CPACR.ASEDIS and HCPTR.TASE. Support for those traps
-+ * is optional and we currently do not implement them, so this
-+ * is identical to a VFP access check for now.
-+ */
-+bool neon_access_check(DisasContext *s)
-+{
-+    return vfp_access_check(s);
-+}
++/* Bit definitions for NSACR (AArch32 only) */
++FIELD(NSACR, CP10, 10, 1)
++FIELD(NSACR, CP11, 11, 1)
++FIELD(NSACR, NSD32DIS, 14, 1)  /* v7; RES0 in v8 */
++FIELD(NSACR, NSASEDIS, 15, 1)
++FIELD(NSACR, RFR, 19, 1)       /* v7; RES0 in v8 */
++FIELD(NSACR, NSTRCDIS, 20, 1)
 +
- static bool trans_VSEL(DisasContext *s, arg_VSEL *a)
- {
-     uint32_t rd, rn, rm;
-@@ -620,15 +631,17 @@ static bool trans_VMOV_to_gp(DisasContext *s, arg_VMOV_to_gp *a)
- {
-     /* VMOV scalar to general purpose register */
-     TCGv_i32 tmp;
-+    bool insn_is_neon = false;
- 
-     /*
-      * SIZE == MO_32 is a VFP instruction; otherwise NEON. MVE has
-      * all sizes, whether the CPU has fp or not.
-      */
-     if (!dc_isar_feature(aa32_mve, s)) {
--        if (a->size == MO_32
--            ? !dc_isar_feature(aa32_fpsp_v2, s)
--            : !arm_dc_feature(s, ARM_FEATURE_NEON)) {
-+        insn_is_neon = a->size != MO_32;
-+        if (insn_is_neon
-+            ? !arm_dc_feature(s, ARM_FEATURE_NEON)
-+            : !dc_isar_feature(aa32_fpsp_v2, s)) {
-             return false;
-         }
-     }
-@@ -644,7 +657,7 @@ static bool trans_VMOV_to_gp(DisasContext *s, arg_VMOV_to_gp *a)
-         }
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!(insn_is_neon ? neon_access_check(s) : vfp_access_check(s))) {
-         return true;
-     }
- 
-@@ -665,15 +678,17 @@ static bool trans_VMOV_from_gp(DisasContext *s, arg_VMOV_from_gp *a)
- {
-     /* VMOV general purpose register to scalar */
-     TCGv_i32 tmp;
-+    bool insn_is_neon = false;
- 
-     /*
-      * SIZE == MO_32 is a VFP instruction; otherwise NEON. MVE has
-      * all sizes, whether the CPU has fp or not.
-      */
-     if (!dc_isar_feature(aa32_mve, s)) {
--        if (a->size == MO_32
--            ? !dc_isar_feature(aa32_fpsp_v2, s)
--            : !arm_dc_feature(s, ARM_FEATURE_NEON)) {
-+        insn_is_neon = a->size != MO_32;
-+        if (insn_is_neon
-+            ? !arm_dc_feature(s, ARM_FEATURE_NEON)
-+            : !dc_isar_feature(aa32_fpsp_v2, s)) {
-             return false;
-         }
-     }
-@@ -689,7 +704,7 @@ static bool trans_VMOV_from_gp(DisasContext *s, arg_VMOV_from_gp *a)
-         }
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!(insn_is_neon ? neon_access_check(s) : vfp_access_check(s))) {
-         return true;
-     }
- 
-@@ -736,7 +751,7 @@ static bool trans_VDUP(DisasContext *s, arg_VDUP *a)
-         size = 2;
-     }
- 
--    if (!vfp_access_check(s)) {
-+    if (!neon_access_check(s)) {
-         return true;
-     }
- 
+ /* Bit definitions for HCPTR (AArch32 only) */
+ FIELD(HCPTR, TCP10, 10, 1)
+ FIELD(HCPTR, TCP11, 11, 1)
 -- 
 2.43.0
 

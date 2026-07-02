@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83204C43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 15:00:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F937C43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 15:00:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfIt9-0005Z4-GG; Thu, 02 Jul 2026 10:59:39 -0400
+	id 1wfIsl-00052h-K9; Thu, 02 Jul 2026 10:59:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wfIt8-0005WQ-Lr
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:38 -0400
+ id 1wfIsi-00051d-6r
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:13 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wfIt7-0004Sh-6A
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:38 -0400
+ id 1wfIsf-0004MD-U0
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783004376;
+ s=mimecast20190719; t=1783004349;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=k4iQ/5rn+WmQNXMNztjv9K91ycXFphWBg9nehTmrLyM=;
- b=YKvASojClEboYfHuwL2w1xNjRN5LeapfjKBy3oiKyqpyXTzs38XM2PJipsq5XItjZ5ACpf
- 27n/ZoQsHvjX8P8suMxURPoJyCnIkca2CJFQUbviRdgQbdG9uJu7rvkye8WdQRbP8TTr4/
- p2VwdI5yr6HsxqL/YG0QL9HsxuMAWfM=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=wBQRWE3oHz4dQwe/0gi4IuXipiKYKp8N64q0brpREPc=;
+ b=A9nu6ZfNsBPH9QB2sng5A06RT8sK94PQH0vlAlB53tc9jJXgT3qUU7XYRp6q25nlmrHwKc
+ XcLw5vaMLt6w+XCJRcCRiyox11irMqe/mpt9bYu8T1+WfxN1VZjVL/yQTBRUu+CEoiqiHc
+ fNYyRPwA71PP+4jDiILfXo49eC2F/I0=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-14-vwrwqU-5MDyVqTJAI8mDGw-1; Thu,
- 02 Jul 2026 10:59:33 -0400
-X-MC-Unique: vwrwqU-5MDyVqTJAI8mDGw-1
-X-Mimecast-MFC-AGG-ID: vwrwqU-5MDyVqTJAI8mDGw_1783004372
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-58-_CSd_xcOORmlpz1-lWi4KQ-1; Thu,
+ 02 Jul 2026 10:59:08 -0400
+X-MC-Unique: _CSd_xcOORmlpz1-lWi4KQ-1
+X-Mimecast-MFC-AGG-ID: _CSd_xcOORmlpz1-lWi4KQ_1783004347
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3F7A31944A85; Thu,  2 Jul 2026 14:59:32 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id ABCBB1944F10; Thu,  2 Jul 2026 14:59:06 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq2.redhat.com
  (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 526D1180056E; Thu,  2 Jul 2026 14:59:30 +0000 (UTC)
+ id 63C29180056E; Thu,  2 Jul 2026 14:59:04 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: mst@redhat.com, eauger@redhat.com, peter.maydell@linaro.org,
  shannon.zhaosl@gmail.com, leif.lindholm@oss.qualcomm.com,
- qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v4 13/13] tests: acpi: arm/virt: update expected GTDT blob
-Date: Thu,  2 Jul 2026 16:58:56 +0200
-Message-ID: <20260702145856.1539572-14-imammedo@redhat.com>
+ qemu-arm@nongnu.org, Ani Sinha <anisinha@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>
+Subject: [PATCH v4 02/13] arm: add tracing events to sbsa_gwdt
+Date: Thu,  2 Jul 2026 16:58:45 +0200
+Message-ID: <20260702145856.1539572-3-imammedo@redhat.com>
 In-Reply-To: <20260702145856.1539572-1-imammedo@redhat.com>
 References: <20260702145856.1539572-1-imammedo@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: NCw3vH6lmfdqqGQn8ZucsvzmcuZq6_xYKd5lLx2o97s_1783004372
+X-Mimecast-MFC-PROC-ID: LRstgKyODPBc7OFw_25MekKuvZL6dOxvk7JqmVDHtdE_1783004347
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -89,69 +90,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Expected diff from base GTDT is an addition of watchdog
-timer block:
-
-   [000h 0000 004h]                   Signature : "GTDT"    [Generic Timer Description Table]
-  -[004h 0004 004h]                Table Length : 00000068
-  +[004h 0004 004h]                Table Length : 00000084
-   [008h 0008 001h]                    Revision : 03
-  -[009h 0009 001h]                    Checksum : 93
-  +[009h 0009 001h]                    Checksum : 39
-   [00Ah 0010 006h]                      Oem ID : "BOCHS "
-   [010h 0016 008h]                Oem Table ID : "BXPC    "
-   [018h 0024 004h]                Oem Revision : 00000001
-  @@ -48,17 +48,30 @@
-                                      Always On : 0
-   [050h 0080 008h]  Counter Read Block Address : FFFFFFFFFFFFFFFF
-
-  -[058h 0088 004h]        Platform Timer Count : 00000000
-  -[05Ch 0092 004h]       Platform Timer Offset : 00000000
-  +[058h 0088 004h]        Platform Timer Count : 00000001
-  +[05Ch 0092 004h]       Platform Timer Offset : 00000068
-   [060h 0096 004h]      Virtual EL2 Timer GSIV : 00000000
-   [064h 0100 004h]     Virtual EL2 Timer Flags : 00000000
-
-  -Raw Table Data: Length 104 (0x68)
-  +[068h 0104 001h]               Subtable Type : 01 [Generic Watchdog Timer]
-  +[069h 0105 002h]                      Length : 001C
-  +[06Bh 0107 001h]                    Reserved : 00
-  +[06Ch 0108 008h]       Refresh Frame Address : 000000000C000000
-  +[074h 0116 008h]       Control Frame Address : 000000000C001000
-  +[07Ch 0124 004h]             Timer Interrupt : 00000090
-  +[080h 0128 004h] Timer Flags (decoded below) : 00000000
-  +                                Trigger Mode : 0
-  +                                    Polarity : 0
-  +                                    Security : 0
-  +
-  +Raw Table Data: Length 132 (0x84)
-
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Ani Sinha <anisinha@redhat.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
- tests/qtest/bios-tables-test-allowed-diff.h |   1 -
- tests/data/acpi/aarch64/virt/GTDT.gwdt      | Bin 0 -> 132 bytes
- 2 files changed, 1 deletion(-)
- create mode 100644 tests/data/acpi/aarch64/virt/GTDT.gwdt
+ hw/watchdog/sbsa_gwdt.c  | 8 ++++++++
+ hw/watchdog/trace-events | 9 +++++++++
+ 2 files changed, 17 insertions(+)
 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index 3e9be28cc4..dfb8523c8b 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,2 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/aarch64/virt/GTDT",
-diff --git a/tests/data/acpi/aarch64/virt/GTDT.gwdt b/tests/data/acpi/aarch64/virt/GTDT.gwdt
-new file mode 100644
-index 0000000000000000000000000000000000000000..44e6f2b18d2848f595a8c69bdb54a59e1becaffd
-GIT binary patch
-literal 132
-zcmXwwyA6Oq3`5@udZ_s+HDlZ%K?f37Fam?H1k-{Nf(yUca^^hc3n=cmre&9SY)M2U
-h0D3DQ7eKED3_uCAo*U=C)xXm_Rp<<rdHr#;057;f7y$qP
-
-literal 0
-HcmV?d00001
-
+diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
+index b739a3ce3c..acb970e8b3 100644
+--- a/hw/watchdog/sbsa_gwdt.c
++++ b/hw/watchdog/sbsa_gwdt.c
+@@ -24,6 +24,7 @@
+ #include "migration/vmstate.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "trace.h"
+ 
+ static const VMStateDescription vmstate_sbsa_gwdt = {
+     .name = "sbsa-gwdt",
+@@ -62,6 +63,7 @@ static uint64_t sbsa_gwdt_rread(void *opaque, hwaddr addr, unsigned int size)
+         qemu_log_mask(LOG_GUEST_ERROR, "bad address in refresh frame read :"
+                         " 0x%x\n", (int)addr);
+     }
++    trace_sbsa_gwdt_refresh_read(addr, ret);
+     return ret;
+ }
+ 
+@@ -93,6 +95,7 @@ static uint64_t sbsa_gwdt_read(void *opaque, hwaddr addr, unsigned int size)
+         qemu_log_mask(LOG_GUEST_ERROR, "bad address in control frame read :"
+                         " 0x%x\n", (int)addr);
+     }
++    trace_sbsa_gwdt_control_read(addr, ret);
+     return ret;
+ }
+ 
+@@ -127,6 +130,7 @@ static void sbsa_gwdt_rwrite(void *opaque, hwaddr offset, uint64_t data,
+                              unsigned size) {
+     SBSA_GWDTState *s = SBSA_GWDT(opaque);
+ 
++    trace_sbsa_gwdt_refresh_write(offset, data);
+     if (offset == SBSA_GWDT_WRR) {
+         s->wcs &= ~(SBSA_GWDT_WCS_WS0 | SBSA_GWDT_WCS_WS1);
+ 
+@@ -141,6 +145,7 @@ static void sbsa_gwdt_write(void *opaque, hwaddr offset, uint64_t data,
+                              unsigned size) {
+     SBSA_GWDTState *s = SBSA_GWDT(opaque);
+ 
++    trace_sbsa_gwdt_control_write(offset, data);
+     switch (offset) {
+     case SBSA_GWDT_WCS:
+         s->wcs = data & SBSA_GWDT_WCS_EN;
+@@ -180,6 +185,7 @@ static void wdt_sbsa_gwdt_reset(DeviceState *dev)
+ {
+     SBSA_GWDTState *s = SBSA_GWDT(dev);
+ 
++    trace_sbsa_gwdt_reset();
+     timer_del(s->timer);
+ 
+     s->wcs  = 0;
+@@ -196,10 +202,12 @@ static void sbsa_gwdt_timer_sysinterrupt(void *opaque)
+ 
+     if (!(s->wcs & SBSA_GWDT_WCS_WS0)) {
+         s->wcs |= SBSA_GWDT_WCS_WS0;
++        trace_sbsa_gwdt_ws0_asserted();
+         sbsa_gwdt_update_timer(s, TIMEOUT_REFRESH);
+         qemu_set_irq(s->irq, 1);
+     } else {
+         s->wcs |= SBSA_GWDT_WCS_WS1;
++        trace_sbsa_gwdt_ws1_asserted();
+         qemu_log_mask(CPU_LOG_RESET, "Watchdog timer expired.\n");
+         /*
+          * Reset the watchdog only if the guest gets notified about
+diff --git a/hw/watchdog/trace-events b/hw/watchdog/trace-events
+index d85b3ca769..b388f7b250 100644
+--- a/hw/watchdog/trace-events
++++ b/hw/watchdog/trace-events
+@@ -42,3 +42,12 @@ k230_wdt_interrupt(void) "K230 WDT interrupt"
+ k230_wdt_reset(void) "K230 WDT system reset"
+ k230_wdt_restart(void) "K230 WDT restart"
+ k230_wdt_reset_device(void) "K230 WDT device reset"
++
++#sbsa_gwdt.c
++sbsa_gwdt_refresh_read(uint64_t addr, uint32_t value) "[0x%" PRIx64 "] -> 0x%" PRIx32
++sbsa_gwdt_refresh_write(uint64_t addr, uint64_t value) "[0x%" PRIx64 "] <- 0x%" PRIx64
++sbsa_gwdt_control_read(uint64_t addr, uint32_t value) "[0x%" PRIx64 "] -> 0x%" PRIx32
++sbsa_gwdt_control_write(uint64_t addr, uint64_t value) "[0x%" PRIx64 "] <- 0x%" PRIx64
++sbsa_gwdt_ws0_asserted(void) "WS0 signal is asserted"
++sbsa_gwdt_ws1_asserted(void) "WS1 signal is asserted"
++sbsa_gwdt_reset(void) "reset watchdog to default state"
 -- 
 2.47.3
 

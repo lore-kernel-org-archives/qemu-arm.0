@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09FA7C44500
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 18:42:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AA9CC43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 18:42:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfMLJ-0007Hq-Qc; Thu, 02 Jul 2026 14:40:57 -0400
+	id 1wfMLI-0007DB-Gp; Thu, 02 Jul 2026 14:40:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wfMLA-00078n-6A
+ id 1wfMLA-00078m-5n
  for qemu-arm@nongnu.org; Thu, 02 Jul 2026 14:40:49 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wfMKo-0005Ln-UT
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 14:40:38 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-476d8e647e9so1957174f8f.0
- for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 11:40:26 -0700 (PDT)
+ id 1wfMKp-0005MK-Pt
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 14:40:46 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-4938d5f86f3so7696975e9.1
+ for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 11:40:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783017625; x=1783622425; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783017626; x=1783622426; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=BEiz57/0Jb31Qqloy6OCt2ozPhVLxchX7ERpV61dg1s=;
- b=uhxmu3sfWuA3H9ZtSfQKWWEItY7cWLkydccpJNjx+jOcu0n4CFaVdvUqlvwkA660zC
- eZQLRRyZKcJPiGiZsotwQZd5MdJ1doosiUxf8R60p6/PKWg1OXBWiQpFZcN85ZDJVEA1
- oArGP6HQAy1JE7ZvCw5EWoGNep/MI2CyT7bN8oUIBGGdmxZbJohHBev7nLqZT85I/F1i
- dqZiEiNVZxzFXkV1KEwBUcNXuapWHe33DwXot2UCqFgUzJ/RvGkHWwqHdUnZ6noCMwqQ
- NIngk38t0QcqcWKe9J4Saej54+yYoJeuifH419ZLqNeOhtrXlKtkY/bRsiCs9LF8YMt6
- 9RTg==
+ :reply-to; bh=mkoXpIbTWhp23z0tfD91aY5yZBlUpXNBZ010xFJTbHA=;
+ b=uSz9G05bc32/nGTqv7CG00N9umNwy3p8EwMMv1+IhHV3XndopjZFuyAFFO392sQl+z
+ /4j4rA6eNcl6J1oLWVQjIGXO5vvv3v2JBHo8pLaKJ/iKIJo2eX/F0NYUtCGKWn5vbTbp
+ XSOKFe/yNlwUtFa0c12tKwBsffCigyBvABtQcbaVPJ4aQ5rBGUl6vJXX/QNf7BDjURD8
+ gs4eE7JMw1yTVYjtIJn3QRrvyHAdvb2kDAcUXE8Djdsbhj8gbc/j8tMdCJKyTmjko90Z
+ mr/aI/SsvnRRGwAkSJ6sBGa4vua+re6KgNU2GO8pUqkOY7CO9tH/lLgrvRXhInZc1yrh
+ HCug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783017625; x=1783622425;
+ d=1e100.net; s=20251104; t=1783017626; x=1783622426;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=BEiz57/0Jb31Qqloy6OCt2ozPhVLxchX7ERpV61dg1s=;
- b=KJFqL0+KrVzSQICYtbVMrl5g1yOQpCIM3f5NU2xXMB69MHjPfXcU7lCRbIn++38/JY
- Jf+W7gA80tz17uOp1VBjO1kPFzvJiuBbIIrYT9jWuaLryk4bKLI4JksXZbMfAZIbKETy
- WFKkdFCHIh5qBnQBrhOb/2xEvXst0QMfvr17HkJDhMNWE1wjcEXbTTRc3II7YdzKLzWC
- kutTam6LGxZ0SXwxj9hTHlgB395+LXXyZ4FG309/nhxa6LZ7aM5/pxw4swWvIFmzgsj6
- q5dapdA+biWDXwJaBPZwRYo+LBq6E0VRK7gnj6r0Gl1KMqGWhjL9NhNMVnvC3J7ly3gs
- R6XQ==
-X-Gm-Message-State: AOJu0YymhIJw9s75aEJrUUpi1A6GscthmWtNVIVMJlJzZm/o1B/PjYKi
- FYehD373+kVGzAg2gAidPuejz9TyVWa0J2Pri5hZwybvQRUydptFYogLUkOw9c9mY9+8TWzLVtp
- d9DmOVeTgWw==
-X-Gm-Gg: AfdE7clHIX5YbYsIe7mKSyyUq2DOyWH2Zv8pHm2Ncwu8x4pIoEpd/4g8Kbff4kQKo1g
- p6su58hyrEDZsovh7sH46bg7bAJHo1b9jSDItEm1bthaYsLDCas1Oy0Xv6iUe76mjtt4XHG0O29
- DOh8jNvZHUl/a0wqdp6mEKLvns5GAz4raAXubRjxo6Qr3noN79iEG+SUrOjp++9vNgpeoCfgD+2
- Wwr/2FQr0ORphA+prj34PqfSZ3V1mx099SNmDE2HXWjIsJKt4AsP3aUVIk/Taqq01ohlBjiOHTh
- tgFRNnu4U1zo0Nt/CXucimEqnlueE1JPOFGJwD6wGVATBz08fJPfvb+h8PC+BhpDzOR+jbUY4K/
- BcNLxBh1MhlBsomsMo1HzyN0cectjfUUy+gW8Nj0Xb3sBbs8xah7U8BdFPQ655UPZ7IUSTvnfpW
- HJbBT0nf4jcK+i9sAtXyuuqnsQ8vlUE0h8b4tvSJqWpqBo0lArwC7xukY4a9sHrh6xrb+6NInCY
- OhUMt8qaeXRzeCLTIBISQ==
-X-Received: by 2002:a05:6000:27c8:b0:472:ec66:274a with SMTP id
- ffacd0b85a97d-47759d1ade0mr8173188f8f.7.1783017625493; 
- Thu, 02 Jul 2026 11:40:25 -0700 (PDT)
+ bh=mkoXpIbTWhp23z0tfD91aY5yZBlUpXNBZ010xFJTbHA=;
+ b=W9Kx15qX5WA2d9IE/Vrzd7SGAM0AkT+mQ7ASW/i5PvSuKJREy+Lu1Js+T9Cm+n2xs7
+ APpyy9ZeFlu41L4tFlB1dWXKCuLnw+87B8JLiIG+nSLV9EkXog/1CB1L5TXOKiNuzB7q
+ J6sAMxv44AOXKzh075KtBJhAoJyTSe/wIbwaGTqgR5m4wJ5plVcJzTk9PLRTccdsoZor
+ jUCZsIa1DdA8t5x3D9NbI8scdIKrwt5G9XH5UxOy7Vtpl39f66mGS4pCI6of8V1Rjntb
+ ZxLcJZGVvmWQuAgTsEoLE1DX+ocFGoSM+PIZd5kwKpmsvbUf8JB5XLzzNHSxDILDWxqx
+ 2goA==
+X-Gm-Message-State: AOJu0Yx6MkUEq3LIUEkw9MD2P/PjaLIT5TMmX01G6AmqZDbt8u+VVg4K
+ Z/A02AlgcoZKX4pTmW9SfBcQdQ/M80gOgvRDK1u1TOeL+niTJw6KH6/DsgQD5FeayHK9ihSX0CS
+ M4WlD9Og+fQ==
+X-Gm-Gg: AfdE7cltR5ykh8W6CsiaUquSwZ/Aa4ZEJNsPZgTZfBbRDmJ2fKSN7TBHsZaR2+4+Cfm
+ aPYaoAosSmURL2MFTSrG6xtcFTthccTSELpHR5FStriV+fGxA//Swg9kHPlzvic3R/vOEyACGCs
+ uGnqvcGo3ojAfQIAH0fKY9E2nRmaeP4nHv7iQEgdAmq7Vb61KgdUOHRs2/uthGfg4o1QqVRNIsS
+ BCvknjZh/3eQ9MeoGJdO//vh+JAJPUZJx7ZT4NWxqyUOPcpZsMVKMfzRf7A7uQshTIljPaZc/ym
+ faTsaQItobF71uOpZElAuvXG21kIcnDjFt+2sxDDVy45VVEmi24OEg8IahiR7W/Zbx18Fp1AOsz
+ FnFMl9GlZM9Hd4kUDdCHRf60uzqit6QP7cFuNGJAthU1gqVVQdvzdIBROUNZXaud8+d0NKoWAP2
+ rOUp1uG1nvTTDZ92sJKup4NypRDWFl8L42w5ucgfQM3bST/WxM6acmgkI2pTFy697mhPs34dBWC
+ V5CdL0rRHQsSEoVg3wCNw==
+X-Received: by 2002:a05:600c:3b2a:b0:492:6f5c:fd8c with SMTP id
+ 5b1f17b1804b1-493c9b62894mr14907795e9.15.1783017626304; 
+ Thu, 02 Jul 2026 11:40:26 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-477db8a4a09sm11628213f8f.13.2026.07.02.11.40.24
+ ffacd0b85a97d-477db8a4a09sm11628213f8f.13.2026.07.02.11.40.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2026 11:40:24 -0700 (PDT)
+ Thu, 02 Jul 2026 11:40:25 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 05/11] target/arm: Handle NSACR.NSASEDIS in CPACR accesses
-Date: Thu,  2 Jul 2026 19:40:13 +0100
-Message-ID: <20260702184019.3431139-6-peter.maydell@linaro.org>
+Subject: [PATCH 06/11] target/arm: Handle NSACR.NSASEDIS in HCPTR accesses
+Date: Thu,  2 Jul 2026 19:40:14 +0100
+Message-ID: <20260702184019.3431139-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260702184019.3431139-1-peter.maydell@linaro.org>
 References: <20260702184019.3431139-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,64 +100,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In cpacr_read() and cpacr_write() we have code that implements the
-"CPACR.{cp10,cp11} behave as RAZ/WI from NonSecure when NSACR.cp10 is
-0" behaviour.  There is a similar requirement for CPACR.ASEDIS: if
+In cptr_el2_read() and cptr_el2_write()  we have code that implements the
+"HCPTR.{TCP10,TCP11} behave as RAO/WI from NonSecure when NSACR.cp10 is
+0" behaviour.  There is a similar requirement for HCPTR.TASE: if
 NSACR.NSASEDIS is 1 then CPACR.ASEDIS behaves as RAO/WI in NS.
 
 This doesn't matter to us yet because we don't currently implement
 ASEDIS or NSASEDIS. But we're about to do that, so add the handling
-to cpacr_read() and cpacr_write().
+to cptr_el2_read() and cptr_el2_write().
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 24 +++++++++++++++++++-----
- 1 file changed, 19 insertions(+), 5 deletions(-)
+ target/arm/helper.c | 23 ++++++++++++++++++-----
+ 1 file changed, 18 insertions(+), 5 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index af98bda3f5..926c9ed516 100644
+index 926c9ed516..f645860e4f 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -585,11 +585,19 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -4094,11 +4094,18 @@ static void cptr_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
      /*
-      * For A-profile AArch32 EL3 (but not M-profile secure mode), if NSACR.CP10
-      * is 0 then CPACR.{CP11,CP10} ignore writes and read as 0b00.
-+     * Similarly, if NSACR.NSASEDIS is 1 then CPACR.ASEDIS ignores writes
-+     * and reads as 1.
+      * For A-profile AArch32 EL3, if NSACR.CP10
+      * is 0 then HCPTR.{TCP11,TCP10} ignore writes and read as 1.
++     * Similarly, if NSACR.NSASEDIS is 1 then HCPTR.TASE behaves as RAO/WI.
       */
      if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
 -        !arm_is_secure(env) && !FIELD_EX32(env->cp15.nsacr, NSACR, CP10)) {
--        mask = R_CPACR_CP11_MASK | R_CPACR_CP10_MASK;
--        value = (value & ~mask) | (env->cp15.cpacr_el1 & mask);
+-        uint64_t mask = R_HCPTR_TCP11_MASK | R_HCPTR_TCP10_MASK;
+-        value = (value & ~mask) | (env->cp15.cptr_el[2] & mask);
 +        !arm_is_secure(env)) {
 +        if (!FIELD_EX32(env->cp15.nsacr, NSACR, CP10)) {
-+            mask = R_CPACR_CP11_MASK | R_CPACR_CP10_MASK;
-+            value = (value & ~mask) | (env->cp15.cpacr_el1 & mask);
++            uint64_t mask = R_HCPTR_TCP11_MASK | R_HCPTR_TCP10_MASK;
++            value = (value & ~mask) | (env->cp15.cptr_el[2] & mask);
 +        }
 +        if (FIELD_EX32(env->cp15.nsacr, NSACR, NSASEDIS)) {
-+            mask = R_CPACR_ASEDIS_MASK;
-+            value = (value & ~mask) | (env->cp15.cpacr_el1 & mask);
++            uint64_t mask = R_HCPTR_TASE_MASK;
++            value = (value & ~mask) | (env->cp15.cptr_el[2] & mask);
 +        }
      }
- 
-     env->cp15.cpacr_el1 = value;
-@@ -600,12 +608,18 @@ static uint64_t cpacr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     env->cp15.cptr_el[2] = value;
+ }
+@@ -4108,12 +4115,18 @@ static uint64_t cptr_el2_read(CPUARMState *env, const ARMCPRegInfo *ri)
      /*
-      * For A-profile AArch32 EL3 (but not M-profile secure mode), if NSACR.CP10
-      * is 0 then CPACR.{CP11,CP10} ignore writes and read as 0b00.
-+     * Similarly NSACR.NSASEDIS makes CPACR.ASEDIS read as 1.
+      * For A-profile AArch32 EL3, if NSACR.CP10
+      * is 0 then HCPTR.{TCP11,TCP10} ignore writes and read as 1.
++     * Similarly, if NSACR.NSASEDIS is 1 then HCPTR.TASE behaves as RAO/WI.
       */
-     uint64_t value = env->cp15.cpacr_el1;
+     uint64_t value = env->cp15.cptr_el[2];
  
      if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
 -        !arm_is_secure(env) && !FIELD_EX32(env->cp15.nsacr, NSACR, CP10)) {
--        value = ~(R_CPACR_CP11_MASK | R_CPACR_CP10_MASK);
+-        value |= R_HCPTR_TCP11_MASK | R_HCPTR_TCP10_MASK;
 +        !arm_is_secure(env)) {
 +        if (!FIELD_EX32(env->cp15.nsacr, NSACR, CP10)) {
-+            value = ~(R_CPACR_CP11_MASK | R_CPACR_CP10_MASK);
++            value |= R_HCPTR_TCP11_MASK | R_HCPTR_TCP10_MASK;
 +        }
-+        if (FIELD_EX32(env->cp15.nsacr, NSACR, NSASEDIS)) {
-+            value |= R_CPACR_ASEDIS_MASK;
++        if (!FIELD_EX32(env->cp15.nsacr, NSACR, NSASEDIS)) {
++            value |= R_HCPTR_TASE_MASK;
 +        }
      }
      return value;

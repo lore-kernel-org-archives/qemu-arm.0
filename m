@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 659A9C43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 15:01:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4779CC43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 15:01:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfIsv-000592-K1; Thu, 02 Jul 2026 10:59:25 -0400
+	id 1wfIsv-000593-OE; Thu, 02 Jul 2026 10:59:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wfIss-00054x-BH
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:23 -0400
+ id 1wfIsu-00056v-9E
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:24 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wfIsq-0004P3-B5
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:22 -0400
+ id 1wfIsr-0004PM-Gy
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783004359;
+ s=mimecast20190719; t=1783004361;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cbZHTIk5UbO/UyIb4eAjqwut2ghOA3IaUY+xIza4IpA=;
- b=NUIhxXfhFFzhhnyeY9dqtpJwYjWGF8T7F/J49Q4/Yy5ZdLDwB3yRTS3egqg+SjLawwNEHZ
- u7aGJrY3zxlUaPkFZlt5KttxCfLsp2CO5JpzWZItu08jbZcIL9f7ZWfoyH7P4tuEPKaNNW
- +q3P0cvOYQ+hWYT5fkCbGMvhyTfRgTk=
+ bh=vPtLXtDs1quwQoKW3oUgsV/vU6Ks6Nz7WqQkGI+WJLA=;
+ b=O6WmV2CjyXM3Vqr6hbduTmVgxE1b+q42TmP9XcqVe1L7aVThF4+p+TO5OgvGVW7+fhXrO+
+ PeYER+eQweThOmVNihzKhdZQtzu5exY9Ik1u/XvS5+VrFfHIslgu8bgByUM2wFVksAdy7b
+ CYm3ALOpculZyK8xYrGB5x0HXFgnX7A=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-682-GRmNmX4VNWONJSWG8N9jxQ-1; Thu,
- 02 Jul 2026 10:59:16 -0400
-X-MC-Unique: GRmNmX4VNWONJSWG8N9jxQ-1
-X-Mimecast-MFC-AGG-ID: GRmNmX4VNWONJSWG8N9jxQ_1783004355
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-426-8nwYI2MqNF21xdPQY120pA-1; Thu,
+ 02 Jul 2026 10:59:19 -0400
+X-MC-Unique: 8nwYI2MqNF21xdPQY120pA-1
+X-Mimecast-MFC-AGG-ID: 8nwYI2MqNF21xdPQY120pA_1783004358
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BFB0F1873128; Thu,  2 Jul 2026 14:59:15 +0000 (UTC)
+ id 3437F18333A6; Thu,  2 Jul 2026 14:59:18 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq2.redhat.com
  (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D0B2F180056E; Thu,  2 Jul 2026 14:59:13 +0000 (UTC)
+ id 23281180058D; Thu,  2 Jul 2026 14:59:15 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: mst@redhat.com, eauger@redhat.com, peter.maydell@linaro.org,
  shannon.zhaosl@gmail.com, leif.lindholm@oss.qualcomm.com,
  qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v4 06/13] acpi: introduce WDAT table for  GWDT
-Date: Thu,  2 Jul 2026 16:58:49 +0200
-Message-ID: <20260702145856.1539572-7-imammedo@redhat.com>
+Subject: [PATCH v4 07/13] arm: virt: add support for WDAT based watchdog
+Date: Thu,  2 Jul 2026 16:58:50 +0200
+Message-ID: <20260702145856.1539572-8-imammedo@redhat.com>
 In-Reply-To: <20260702145856.1539572-1-imammedo@redhat.com>
 References: <20260702145856.1539572-1-imammedo@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: yIPjIG_ab3jaKFskQAyi49WgXRsMv2N8e5Nj1ZlpknE_1783004355
+X-Mimecast-MFC-PROC-ID: 5pux7NroCHcuuoKH33k9QX7VxIMpIV2h_3gWEixb-64_1783004358
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -72,7 +72,8 @@ X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,202 +89,195 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add build_gwdt_wdat() to generate a Watchdog Action Table
-designed for SBSA Generic Watchdog Timer.
+Add WDAT handling for sbsa-gwdt on arm/virt machine.
+
+WDAT mode is enabled by 'wdat' option: ex: "-device sbsa-gwdt,wdat=on"
+
+When WDAT is enabled:
+ - Build the WDAT ACPI table instead of the GTDT watchdog entry,
+   since they are mutually exclusive due to different timer
+   resolution (WDAT uses 1 kHz vs GTDT's system counter frequency).
+ - Skip FDT watchdog node creation, as the DT-based Linux driver
+   would use the system counter frequency which doesn't match the
+   WDAT-mode 1 kHz clock.
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
 v4:
-  (Eric) fix comment alignment
-v3:
   (Eric)
-    - split '[PATCH v2 11/21] arm: virt: add support for WDAT based watchdog'
-      on smaller chunks.
-    - add/improve  comments where requested
-    - actualy use 'freq' argument passed down by caller
-    - simplify magic val on WRR write and add comment
-    - group table records by used register
+    - remove unused 'wdt' parameter from build_gtdt()
+    - add Native/WDAT modes documentation to docs/system/arm/virt.rst
+v3:
+   - Skip FDT watchdog node creation in wdat mode
+   (Eric)
+     - wiring part of larger '[PATCH v2 11/21] arm: virt: add support for WDAT based watchdog'
 ---
- include/hw/acpi/wdat-gwdt.h | 19 +++++++
- hw/acpi/meson.build         |  2 +
- hw/acpi/wdat-gwdt-stub.c    | 16 ++++++
- hw/acpi/wdat-gwdt.c         | 99 +++++++++++++++++++++++++++++++++++++
- 4 files changed, 136 insertions(+)
- create mode 100644 include/hw/acpi/wdat-gwdt.h
- create mode 100644 hw/acpi/wdat-gwdt-stub.c
- create mode 100644 hw/acpi/wdat-gwdt.c
+ docs/system/arm/virt.rst | 15 +++++++++++++++
+ hw/arm/virt-acpi-build.c | 34 ++++++++++++++++++++++++++--------
+ hw/arm/virt.c            | 12 ++++++++----
+ 3 files changed, 49 insertions(+), 12 deletions(-)
 
-diff --git a/include/hw/acpi/wdat-gwdt.h b/include/hw/acpi/wdat-gwdt.h
-new file mode 100644
-index 0000000000..42339e031e
---- /dev/null
-+++ b/include/hw/acpi/wdat-gwdt.h
-@@ -0,0 +1,19 @@
-+/*
-+ * GWDT Watchdog Action Table (WDAT) definition
-+ *
-+ * Copyright Red Hat, Inc. 2026
-+ * Author(s): Igor Mammedov <imammedo@redhat.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#ifndef QEMU_HW_ACPI_WDAT_GWDT_H
-+#define QEMU_HW_ACPI_WDAT_GWDT_H
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index bf5a9c8f6c..5f6dd17978 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -323,6 +323,21 @@ using ``-device sbsa-gwdt``. It is only supported on the virt machine,
+ which wires up statically assigned MMIO regions and IRQs via
+ machine-specific plug handlers.
+ 
++Two modes are available:
 +
-+#include "hw/acpi/aml-build.h"
-+#include "hw/watchdog/sbsa_gwdt.h"
++Native mode (default)
++  The watchdog is described via the ACPI GTDT table and FDT, using
++  the system counter frequency. Example::
 +
-+void build_gwdt_wdat(GArray *table_data, BIOSLinker *linker, const char *oem_id,
-+                     const char *oem_table_id, uint64_t rbase, uint64_t cbase,
-+                     uint64_t freq);
++    -device sbsa-gwdt
 +
-+#endif /* QEMU_HW_ACPI_WDAT_GWDT_H */
-diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
-index 0c7bfb278a..09ad488a04 100644
---- a/hw/acpi/meson.build
-+++ b/hw/acpi/meson.build
-@@ -31,11 +31,13 @@ acpi_ss.add(when: 'CONFIG_ACPI_ERST', if_true: files('erst.c'))
- acpi_ss.add(when: 'CONFIG_IPMI', if_true: files('ipmi.c'))
- stub_ss.add(files('ipmi-stub.c'))
- stub_ss.add(files('acpi-x86-stub.c'))
-+acpi_ss.add(when: 'CONFIG_WDT_SBSA', if_true: files('wdat-gwdt.c'))
- if have_tpm
-   acpi_ss.add(files('tpm.c'))
- endif
- stub_ss.add(files('acpi-stub.c', 'aml-build-stub.c', 'ghes-stub.c'))
- stub_ss.add(files('pci-bridge-stub.c'))
-+stub_ss.add(files('wdat-gwdt-stub.c'))
- system_ss.add_all(when: 'CONFIG_ACPI', if_true: acpi_ss)
- system_ss.add(when: 'CONFIG_GHES_CPER', if_true: files('ghes_cper.c'))
- stub_ss.add(files('ghes_cper_stub.c'))
-diff --git a/hw/acpi/wdat-gwdt-stub.c b/hw/acpi/wdat-gwdt-stub.c
-new file mode 100644
-index 0000000000..4d43783f70
---- /dev/null
-+++ b/hw/acpi/wdat-gwdt-stub.c
-@@ -0,0 +1,16 @@
-+/*
-+ * Copyright Red Hat, Inc. 2026
-+ * Author(s): Igor Mammedov <imammedo@redhat.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
++WDAT mode
++  The watchdog is described via the ACPI WDAT table (no FDT node),
++  using a 1 kHz timer frequency. WDAT and GTDT watchdog entries are
++  mutually exclusive. Example::
 +
-+#include "qemu/osdep.h"
++    -device sbsa-gwdt,wdat=on
++
+ Linux guest kernel configuration
+ """"""""""""""""""""""""""""""""
+ 
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index f5b3b4ce48..f6386088b6 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -65,6 +65,7 @@
+ #include "target/arm/cpu.h"
+ #include "target/arm/multiprocessing.h"
+ #include "hw/watchdog/sbsa_gwdt.h"
 +#include "hw/acpi/wdat-gwdt.h"
+ 
+ #include "smmuv3-accel.h"
+ #include "tegra241-cmdqv.h"
+@@ -859,7 +860,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+  * 5.2.25 Generic Timer Description Table (GTDT)
+  */
+ static void
+-build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
++build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms,
++           bool add_watchdog)
+ {
+     /*
+      * Table 5-117 Flag Definitions
+@@ -870,7 +872,6 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     AcpiTable table = { .sig = "GTDT", .rev = 3, .oem_id = vms->oem_id,
+                         .oem_table_id = vms->oem_table_id };
+     uint32_t gtdt_start = table_data->len;
+-    Object *wdt = object_resolve_type_unambiguous(TYPE_WDT_SBSA, NULL);
+ 
+     acpi_table_begin(&table, table_data);
+ 
+@@ -903,12 +904,12 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
+ 
+     /* Platform Timer Count */
+-    build_append_int_noprefix(table_data,  wdt ? 1 : 0, 4);
++    build_append_int_noprefix(table_data,  add_watchdog ? 1 : 0, 4);
+     /* Platform Timer Offset */
+     build_append_int_noprefix(table_data,
+-        wdt ? (table_data->len - gtdt_start) +
+-              4 + 4 + 4 /* len of this & following 2 fields to skip */
+-            : 0, 4);
++        add_watchdog ? (table_data->len - gtdt_start) +
++                       4 + 4 + 4 /* len of this & following 2 fields to skip */
++                     : 0, 4);
+ 
+     if (vms->ns_el2_virt_timer_irq) {
+         /* Virtual EL2 Timer GSIV */
+@@ -921,7 +922,7 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     }
+ 
+     /* ACPI 6.5 spec: 5.2.25.2 ARM Generic Watchdog Structure (Table 5-124) */
+-    if (wdt) {
++    if (add_watchdog) {
+         hwaddr rbase = vms->memmap[VIRT_GWDT_REFRESH].base;
+         hwaddr cbase = vms->memmap[VIRT_GWDT_CONTROL].base;
+         int irq = ARM_SPI_BASE + vms->irqmap[VIRT_GWDT_WS0];
+@@ -1332,13 +1333,19 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+     GArray *table_offsets;
+     unsigned dsdt, xsdt;
++    bool has_wdat = false;
+     GArray *tables_blob = tables->table_data;
+     MachineState *ms = MACHINE(vms);
+     CPUCoreCaches caches[CPU_MAX_CACHES];
+     unsigned int num_caches;
++    Object *wdt = object_resolve_type_unambiguous(TYPE_WDT_SBSA, NULL);
+ 
+     num_caches = virt_get_caches(vms, caches);
+ 
++    if (wdt) {
++        has_wdat = object_property_get_bool(wdt, "wdat", &error_abort);
++    }
 +
-+void build_gwdt_wdat(GArray *table_data, BIOSLinker *linker, const char *oem_id,
-+                     const char *oem_table_id, uint64_t rbase, uint64_t cbase,
-+                     uint64_t freq)
-+{
-+    g_assert_not_reached();
-+}
-diff --git a/hw/acpi/wdat-gwdt.c b/hw/acpi/wdat-gwdt.c
-new file mode 100644
-index 0000000000..b30566ef6a
---- /dev/null
-+++ b/hw/acpi/wdat-gwdt.c
-@@ -0,0 +1,99 @@
-+/*
-+ * SBSA GWDT Watchdog Action Table (WDAT)
-+ *
-+ * Copyright Red Hat, Inc. 2026
-+ * Author(s): Igor Mammedov <imammedo@redhat.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
+     table_offsets = g_array_new(false, true /* clear */,
+                                         sizeof(uint32_t));
+ 
+@@ -1357,6 +1364,17 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_madt(tables_blob, tables->linker, vms);
+ 
++    acpi_add_table(table_offsets, tables_blob);
++    if (wdt && has_wdat) {
++        uint64_t freq = object_property_get_uint(wdt, "clock-frequency",
++                                                 &error_abort);
++        build_gwdt_wdat(tables_blob, tables->linker,
++                        vms->oem_id, vms->oem_table_id,
++                        vms->memmap[VIRT_GWDT_REFRESH].base,
++                        vms->memmap[VIRT_GWDT_CONTROL].base,
++                        freq);
++    }
 +
-+#include "qemu/osdep.h"
-+#include "hw/acpi/aml-build.h"
-+#include "hw/acpi/wdat-gwdt.h"
-+#include "hw/acpi/wdat.h"
-+#include "hw/watchdog/sbsa_gwdt.h"
-+
-+#define GWDT_REG(base, reg_offset, reg_width) { \
-+                 .space_id = AML_AS_SYSTEM_MEMORY, \
-+                 .address = base + reg_offset, .bit_width = reg_width, \
-+                 .access_width = AML_DWORD_ACC };
-+
-+/*
-+ *   "Hardware Watchdog Timers Design Specification"
-+ *       https://uefi.org/acpi 'Watchdog Action Table (WDAT)'
-+ */
-+void build_gwdt_wdat(GArray *table_data, BIOSLinker *linker, const char *oem_id,
-+                     const char *oem_table_id, uint64_t rbase, uint64_t cbase,
-+                     uint64_t freq)
-+{
-+    AcpiTable table = { .sig = "WDAT", .rev = 1, .oem_id = oem_id,
-+                        .oem_table_id = oem_table_id };
-+
-+    struct AcpiGenericAddress wrr =  GWDT_REG(rbase, 0x0, 32);
-+    struct AcpiGenericAddress wor_l =  GWDT_REG(cbase, SBSA_GWDT_WOR, 32);
-+    struct AcpiGenericAddress wcs =  GWDT_REG(cbase, SBSA_GWDT_WCS, 32);
-+
-+    acpi_table_begin(&table, table_data);
-+    build_append_int_noprefix(table_data, 0x20, 4); /* Watchdog Header Length */
-+    /*
-+     * PCI location fields are set to 0xff to indicate
-+     * that the watchdog is not a PCI device.
-+     */
-+    build_append_int_noprefix(table_data, 0xff, 2); /* PCI Segment */
-+    build_append_int_noprefix(table_data, 0xff, 1); /* PCI Bus Number */
-+    build_append_int_noprefix(table_data, 0xff, 1); /* PCI Device Number */
-+    build_append_int_noprefix(table_data, 0xff, 1); /* PCI Function Number */
-+    build_append_int_noprefix(table_data, 0, 3);    /* Reserved */
-+    /*
-+     * WDAT spec: "The clock interval that the WDT uses must be
-+     * greater than or equal to 1 millisecond."
-+     */
-+    g_assert(freq <= 1000);
-+    /* Timer Period, ms */
-+    build_append_int_noprefix(table_data, 1000 / freq, 4);
-+    /*
-+     * WDAT spec: "The time-out period before the WDT fires is recommended
-+     * to be at least 5 minutes."
-+     * Set max count to 10min and min count to 5sec.
-+     */
-+    build_append_int_noprefix(table_data, 600 * freq, 4); /* Maximum Count */
-+    build_append_int_noprefix(table_data, 5 * freq, 4);   /* Minimum Count */
-+    /*
-+     * WATCHDOG_ENABLED | WATCHDOG_STOPPED_IN_SLEEP_STATE
-+     */
-+    build_append_int_noprefix(table_data, 0x81, 1); /* Watchdog Flags */
-+    build_append_int_noprefix(table_data, 0, 3);    /* Reserved */
-+    /*
-+     * watchdog instruction entries
-+     */
-+    build_append_int_noprefix(table_data, 8, 4);
-+    /* Action table: WCS (control/status) register actions */
-+    build_append_wdat_ins(table_data, WDAT_ACTION_QUERY_RUNNING_STATE,
-+        WDAT_INS_READ_VALUE,
-+        wcs, 0x1, 0x1);
-+    build_append_wdat_ins(table_data, WDAT_ACTION_SET_RUNNING_STATE,
-+        WDAT_INS_WRITE_VALUE | WDAT_INS_PRESERVE_REGISTER,
-+        wcs, 1, 0x00000001);
-+    build_append_wdat_ins(table_data, WDAT_ACTION_QUERY_STOPPED_STATE,
-+        WDAT_INS_READ_VALUE,
-+        wcs, 0x0, 0x00000001);
-+    build_append_wdat_ins(table_data, WDAT_ACTION_SET_STOPPED_STATE,
-+        WDAT_INS_WRITE_VALUE | WDAT_INS_PRESERVE_REGISTER,
-+        wcs, 0x0, 0x00000001);
-+    build_append_wdat_ins(table_data, WDAT_ACTION_QUERY_WATCHDOG_STATUS,
-+        WDAT_INS_READ_VALUE,
-+        wcs, 0x4, 0x00000004);
-+    /* WOR (offset) and WRR (refresh) register actions */
-+    build_append_wdat_ins(table_data, WDAT_ACTION_SET_COUNTDOWN_PERIOD,
-+        WDAT_INS_WRITE_COUNTDOWN,
-+        wor_l, 0, 0xffffffff);
-+    /* WRR: any write refreshes the watchdog, value is ignored */
-+    build_append_wdat_ins(table_data, WDAT_ACTION_RESET,
-+        WDAT_INS_WRITE_VALUE,
-+        wrr, 0x1, 0x1);
-+    build_append_wdat_ins(table_data, WDAT_ACTION_SET_WATCHDOG_STATUS,
-+        WDAT_INS_WRITE_VALUE | WDAT_INS_PRESERVE_REGISTER,
-+        wrr, 0x4, 0x4);
-+
-+    acpi_table_end(linker, &table);
-+}
+     if (!vmc->no_cpu_topology) {
+         acpi_add_table(table_offsets, tables_blob);
+         build_pptt(tables_blob, tables->linker, ms, vms->oem_id,
+@@ -1364,7 +1382,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     }
+ 
+     acpi_add_table(table_offsets, tables_blob);
+-    build_gtdt(tables_blob, tables->linker, vms);
++    build_gtdt(tables_blob, tables->linker, vms, wdt && !has_wdat);
+ 
+     acpi_add_table(table_offsets, tables_blob);
+     {
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index eabc5274d5..fb916c341b 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -3846,10 +3846,12 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+         qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
+         g_free(resv_prop_str);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_WDT_SBSA)) {
+-        uint64_t cntfrq = object_property_get_int(OBJECT(qemu_get_cpu(0)),
+-                                                  "cntfrq", &error_abort);
++        if (!object_property_get_bool(OBJECT(dev), "wdat", &error_abort)) {
++            uint64_t cntfrq = object_property_get_int(OBJECT(qemu_get_cpu(0)),
++                                                      "cntfrq", &error_abort);
+ 
+-        qdev_prop_set_uint64(dev, "clock-frequency", cntfrq);
++            qdev_prop_set_uint64(dev, "clock-frequency", cntfrq);
++        }
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3)) {
+         if (vms->legacy_smmuv3_present || vms->iommu == VIRT_IOMMU_VIRTIO) {
+             error_setg(errp, "virt machine already has %s set. "
+@@ -3911,7 +3913,9 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+         sysbus_mmio_map(s, 1, cbase);
+         sysbus_connect_irq(s, 0, qdev_get_gpio_in(vms->gic, irq));
+ 
+-        create_gwdt_dt_bindings(vms);
++        if (!object_property_get_bool(OBJECT(dev), "wdat", &error_abort)) {
++            create_gwdt_dt_bindings(vms);
++        }
+     }
+ 
+     if (vms->platform_bus_dev) {
 -- 
 2.47.3
 

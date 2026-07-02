@@ -4,60 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1913C43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 14:59:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83204C43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 15:00:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfIsj-00051l-Fe; Thu, 02 Jul 2026 10:59:13 -0400
+	id 1wfIt9-0005Z4-GG; Thu, 02 Jul 2026 10:59:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wfIsf-00050W-OK
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:09 -0400
+ id 1wfIt8-0005WQ-Lr
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:38 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wfIsd-0004LJ-Rl
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:09 -0400
+ id 1wfIt7-0004Sh-6A
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783004345;
+ s=mimecast20190719; t=1783004376;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=LePsrV+8XqgFWFk6Ks4IlF3PBwYKARa22uIvzbLpuss=;
- b=UKGxrcCPanwqMVxPtlXbmEmg85BSAAoztAClw3PulVYlPiqEf0e19fc348/mWIAQ8ARc8g
- GQxmJ4vw2v8YC/Dv+fWL7Iv+ETx3xIT3MLvoQv4lNV3U5OSeYCPnujPjrF4UKbtYkm0oCn
- zbk3ZtiH56rxy4ZeB2d6yFPglTadcL4=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=k4iQ/5rn+WmQNXMNztjv9K91ycXFphWBg9nehTmrLyM=;
+ b=YKvASojClEboYfHuwL2w1xNjRN5LeapfjKBy3oiKyqpyXTzs38XM2PJipsq5XItjZ5ACpf
+ 27n/ZoQsHvjX8P8suMxURPoJyCnIkca2CJFQUbviRdgQbdG9uJu7rvkye8WdQRbP8TTr4/
+ p2VwdI5yr6HsxqL/YG0QL9HsxuMAWfM=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-582-Mvb-HVMROl6NpPnG5siCZg-1; Thu,
- 02 Jul 2026 10:59:02 -0400
-X-MC-Unique: Mvb-HVMROl6NpPnG5siCZg-1
-X-Mimecast-MFC-AGG-ID: Mvb-HVMROl6NpPnG5siCZg_1783004341
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-14-vwrwqU-5MDyVqTJAI8mDGw-1; Thu,
+ 02 Jul 2026 10:59:33 -0400
+X-MC-Unique: vwrwqU-5MDyVqTJAI8mDGw-1
+X-Mimecast-MFC-AGG-ID: vwrwqU-5MDyVqTJAI8mDGw_1783004372
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 34CED1944B32; Thu,  2 Jul 2026 14:59:01 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3F7A31944A85; Thu,  2 Jul 2026 14:59:32 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq2.redhat.com
  (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 29EA8180058D; Thu,  2 Jul 2026 14:58:58 +0000 (UTC)
+ id 526D1180056E; Thu,  2 Jul 2026 14:59:30 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: mst@redhat.com, eauger@redhat.com, peter.maydell@linaro.org,
  shannon.zhaosl@gmail.com, leif.lindholm@oss.qualcomm.com,
- qemu-arm@nongnu.org
-Subject: [PATCH v4 00/13] Add watchdog support to arm/virt board
-Date: Thu,  2 Jul 2026 16:58:43 +0200
-Message-ID: <20260702145856.1539572-1-imammedo@redhat.com>
+ qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>
+Subject: [PATCH v4 13/13] tests: acpi: arm/virt: update expected GTDT blob
+Date: Thu,  2 Jul 2026 16:58:56 +0200
+Message-ID: <20260702145856.1539572-14-imammedo@redhat.com>
+In-Reply-To: <20260702145856.1539572-1-imammedo@redhat.com>
+References: <20260702145856.1539572-1-imammedo@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: E8ZtQyM3CLfN_ume3d69E8INUP6z7LnG975qIVZUOfc_1783004341
+X-Mimecast-MFC-PROC-ID: NCw3vH6lmfdqqGQn8ZucsvzmcuZq6_xYKd5lLx2o97s_1783004372
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -86,135 +89,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series adds SBSA GWDT to the arm/virt machine with a WDAT table
-designed for it and necessary tweaks to make it usable with the
-WDAT driver.
+Expected diff from base GTDT is an addition of watchdog
+timer block:
 
-In addition to WDAT, it also adds a native variant with GWDT
-described in FDT and GTDT.
+   [000h 0000 004h]                   Signature : "GTDT"    [Generic Timer Description Table]
+  -[004h 0004 004h]                Table Length : 00000068
+  +[004h 0004 004h]                Table Length : 00000084
+   [008h 0008 001h]                    Revision : 03
+  -[009h 0009 001h]                    Checksum : 93
+  +[009h 0009 001h]                    Checksum : 39
+   [00Ah 0010 006h]                      Oem ID : "BOCHS "
+   [010h 0016 008h]                Oem Table ID : "BXPC    "
+   [018h 0024 004h]                Oem Revision : 00000001
+  @@ -48,17 +48,30 @@
+                                      Always On : 0
+   [050h 0080 008h]  Counter Read Block Address : FFFFFFFFFFFFFFFF
 
-One can test it launching VM with:
-    -device sbsa-gwdt,wdat=on
+  -[058h 0088 004h]        Platform Timer Count : 00000000
+  -[05Ch 0092 004h]       Platform Timer Offset : 00000000
+  +[058h 0088 004h]        Platform Timer Count : 00000001
+  +[05Ch 0092 004h]       Platform Timer Offset : 00000068
+   [060h 0096 004h]      Virtual EL2 Timer GSIV : 00000000
+   [064h 0100 004h]     Virtual EL2 Timer Flags : 00000000
 
-to trace access to GWDT registers add:
-    -trace "sbsa_gwdt*"
+  -Raw Table Data: Length 104 (0x68)
+  +[068h 0104 001h]               Subtable Type : 01 [Generic Watchdog Timer]
+  +[069h 0105 002h]                      Length : 001C
+  +[06Bh 0107 001h]                    Reserved : 00
+  +[06Ch 0108 008h]       Refresh Frame Address : 000000000C000000
+  +[074h 0116 008h]       Control Frame Address : 000000000C001000
+  +[07Ch 0124 004h]             Timer Interrupt : 00000090
+  +[080h 0128 004h] Timer Flags (decoded below) : 00000000
+  +                                Trigger Mode : 0
+  +                                    Polarity : 0
+  +                                    Security : 0
+  +
+  +Raw Table Data: Length 132 (0x84)
 
-To verify the guest uses watchdog use following steps to trigger
-watchdog reboot:
-  * on Linux: enable watchdog service, check with wdctl, then:
-      echo c > /proc/sysrq-trigger
-  * on Windows: kill svchost in admin mode 'cmd' shell:
-      taskkill /f /im svchost.exe
-
-Tested with Fedora 43 & Windows 11 (aarch64, KVM on Jetson)
-
-git tree: https://gitlab.com/imammedo/qemu/-/commits/gwdt_v4
-
-1) http://msdn.microsoft.com/en-us/windows/hardware/gg463320.aspx
-
-Changelog:
-  v4:
-    * drop independed patches 14-17 for a separate spin-off
-      (sbsa-gwdt fixes for WCV register writes)
-    * arm: sbsa_gwdt: rename device type to sbsa-gwdt (patch 3):
-      - collect Reviewed-by from Eric
-    * arm: virt: create sbsa-gwdt watchdog (patch 4):
-      (Eric)
-        - reorder [VIRT_GWDT_WS0] in irqmap after [VIRT_ACPI_GED]
-        - add missing blank line in pre_plug handler
-        - extract FDT node creation into create_gwdt_dt_bindings() helper
-        - add watchdog documentation to docs/system/arm/virt.rst
-        - add comment above dc->user_creatable about requiring
-          machine-specific wiring
-    * acpi: introduce WDAT table for GWDT (patch 6):
-      (Eric)
-        - fix comment alignment
-        - collect Reviewed-by
-    * arm: virt: add support for WDAT based watchdog (patch 7):
-      (Eric)
-        - remove unused 'wdt' parameter from build_gtdt()
-        - add Native/WDAT modes documentation to docs/system/arm/virt.rst
-        - collect Reviewed-by
-    * tests: acpi: arm/virt: update expected WDAT blob (patch 10):
-      - collect Reviewed-by from Eric
-    * tests: acpi: arm/virt: add GTDT watchdog table test case (patch 12):
-      (Eric) fix whitespace in test command string (moved from patch 17)
-
-  v3:
-    * drop x86 patches (already merged)
-    * (Eric) rename device type from sbsa_gwdt to sbsa-gwdt (new patch 3)
-    * arm: virt: create sbsa-gwdt watchdog (patch 4):
-      - (Eric) assign MMIO/IRQ statically, drop dynamic sysbus machinery
-      - (Peter) set watchdog freq to system counter clock explicitly
-    * arm: sbsa-gwdt: add 'wdat' option (patch 5):
-      - split out from v2's monolithic patch 11
-    * acpi: introduce WDAT table for GWDT (patch 6):
-      - (Eric) split out from v2's patch 11
-      - add/improve comments
-      - use 'freq' argument passed down by caller
-      - simplify magic val on WRR write and add comment
-      - group table records by used register
-    * arm: virt: add support for WDAT based watchdog (patch 7):
-      - (Eric) split out from v2's patch 11
-      - skip FDT watchdog node creation in wdat mode
-      - skip setting cntfrq clock-frequency in wdat mode
-    * sbsa-gwdt: reschedule timer on direct WCV load (patch 16):
-      - improved commit message with spec references and
-        description of Windows GTDT-mode behavior
-    * sbsa-gwdt: limit compare_value to INT64_MAX (patch 17):
-      - rewritten commit message: document QEMU timer API
-        limitation vs spec, Windows write sequence, and
-        vCPU preemption fragility under virtualization
-
-  v2:
-    * ditch generic '-machine acpi-watchdog' option in favor of
-      board specific: arm/virt: -device sbsa_gwdt,wdat={on|off}
-    * arm/virt: add FDT and GTDT ACPI entries for GWDT
-    * arm/virt: add test case for GTDT
-    * optional GWDT cleanup/fixes for WCV register update
-
-  previous revisions:
-    v3: https://patchew.org/QEMU/20260624102830.1355552-1-imammedo@redhat.com/
-    v2: https://patchew.org/QEMU/20260303092532.2410177-1-imammedo@redhat.com/
-    v1: https://patchew.org/QEMU/20260206131438.1857182-1-imammedo@redhat.com/
-
-Igor Mammedov (13):
-  arm: sbsa_gwdt: fixup default "clock-frequency"
-  arm: add tracing events to sbsa_gwdt
-  arm: sbsa_gwdt: rename device type to sbsa-gwdt
-  arm: virt: create sbsa-gwdt watchdog
-  arm: sbsa-gwdt: add 'wdat' option
-  acpi: introduce WDAT table for  GWDT
-  arm: virt: add support for WDAT based watchdog
-  tests: acpi: arm/virt: whitelist new WDAT table
-  tests: acpi: arm/virt: add WDAT table test case
-  tests: acpi: arm/virt: update expected WDAT blob
-  tests: acpi: arm/virt: whitelist GTDT table
-  tests: acpi: arm/virt: add GTDT watchdog table test case
-  tests: acpi: arm/virt: update expected GTDT blob
-
- include/hw/acpi/wdat-gwdt.h            |  19 +++++
- include/hw/arm/virt.h                  |   3 +
- include/hw/watchdog/sbsa_gwdt.h        |   3 +-
- docs/system/arm/virt.rst               |  24 ++++++
- hw/acpi/meson.build                    |   2 +
- hw/acpi/wdat-gwdt-stub.c               |  16 ++++
- hw/acpi/wdat-gwdt.c                    |  99 +++++++++++++++++++++++++
- hw/arm/Kconfig                         |   1 +
- hw/arm/virt-acpi-build.c               |  51 ++++++++++++-
- hw/arm/virt.c                          |  48 ++++++++++++
- hw/core/sysbus-fdt.c                   |   2 +
- hw/watchdog/sbsa_gwdt.c                |  24 +++++-
- hw/watchdog/trace-events               |   9 +++
- tests/data/acpi/aarch64/virt/GTDT.gwdt | Bin 0 -> 132 bytes
- tests/data/acpi/aarch64/virt/WDAT.wdat | Bin 0 -> 260 bytes
- tests/qtest/bios-tables-test.c         |  41 ++++++++++
- 16 files changed, 334 insertions(+), 8 deletions(-)
- create mode 100644 include/hw/acpi/wdat-gwdt.h
- create mode 100644 hw/acpi/wdat-gwdt-stub.c
- create mode 100644 hw/acpi/wdat-gwdt.c
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+---
+ tests/qtest/bios-tables-test-allowed-diff.h |   1 -
+ tests/data/acpi/aarch64/virt/GTDT.gwdt      | Bin 0 -> 132 bytes
+ 2 files changed, 1 deletion(-)
  create mode 100644 tests/data/acpi/aarch64/virt/GTDT.gwdt
- create mode 100644 tests/data/acpi/aarch64/virt/WDAT.wdat
+
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index 3e9be28cc4..dfb8523c8b 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,2 +1 @@
+ /* List of comma-separated changed AML files to ignore */
+-"tests/data/acpi/aarch64/virt/GTDT",
+diff --git a/tests/data/acpi/aarch64/virt/GTDT.gwdt b/tests/data/acpi/aarch64/virt/GTDT.gwdt
+new file mode 100644
+index 0000000000000000000000000000000000000000..44e6f2b18d2848f595a8c69bdb54a59e1becaffd
+GIT binary patch
+literal 132
+zcmXwwyA6Oq3`5@udZ_s+HDlZ%K?f37Fam?H1k-{Nf(yUca^^hc3n=cmre&9SY)M2U
+h0D3DQ7eKED3_uCAo*U=C)xXm_Rp<<rdHr#;057;f7y$qP
+
+literal 0
+HcmV?d00001
 
 -- 
 2.47.3

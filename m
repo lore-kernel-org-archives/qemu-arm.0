@@ -4,100 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9BA1C43327
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 13:37:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEF5FC43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 14:46:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfHaX-00085v-Fk; Thu, 02 Jul 2026 09:36:21 -0400
+	id 1wfIg1-0001BF-Ca; Thu, 02 Jul 2026 10:46:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wfHaW-00084i-4S
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 09:36:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wfHaT-00015T-IU
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 09:36:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1782999376;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=utgm0XcZH1OQFlYYcbnG8kYHRsMRZSLs/jw2MKeR8kE=;
- b=BNVMME5gLBcMB8r14kyQ/fpRkjWJqDsbwqWNLZ1z5EJRRMif+INvGgnQY7lUpOssuOzH+O
- NJd6zOYVRN5nc5pAzZdSUkOPOZJ+uzL81qG3kLUuPeAY3h34svToXMf5LJOesnfNL+HlV8
- ED+nXDuScaA1lL7l+4XnPHFwh2j6kl8=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-647-l4NhsW5MN7m4Xg9JakDNmw-1; Thu, 02 Jul 2026 09:36:13 -0400
-X-MC-Unique: l4NhsW5MN7m4Xg9JakDNmw-1
-X-Mimecast-MFC-AGG-ID: l4NhsW5MN7m4Xg9JakDNmw_1782999372
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-493b0a5e636so18745195e9.3
- for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 06:36:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wfIg0-0001Ap-MF
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:46:04 -0400
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wfIfz-0008U8-Cp
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:46:04 -0400
+Received: by mail-yx1-xb134.google.com with SMTP id
+ 956f58d0204a3-664ee752958so2632341d50.1
+ for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 07:46:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783003562; cv=none;
+ d=google.com; s=arc-20260327;
+ b=hKnIy2HiVWqcGXj97PVH4oma/V7aJkApMF2zk/qItwZAZvaJsFXfova411zj9xoNBM
+ P+BiuFcH3K+hlyLxqQ2XnlU65R+wgM2KwZcue6u0zUaqvtlAHgmhDGUeZOvtQUjjvZh+
+ qU5EYZJM637rHl54omQMMN2jkgmKqmiWc16DnYFqSEMCKrJWfbmU0XlmGqhGbiKXYUnI
+ rbJamiW3yJ/FZALc5P9vP7qJyFtlJqLrHqFrJljnbiRze1qjBKU2TACKfp1FjVnV6lkI
+ f2hIZeMlUy98ZAkYfnbZJB8bzSmXiYdTmiVdlPzMDCBVR9I3mJxp8jrCOyAAoDvmj9ko
+ WWtw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=V/XuN+kAuWIj2q7usufUAWom2uprrhjVLsVtB5cdVaw=;
+ fh=QUX21auvWr1hhkdCam3xUCT9zcm7ObFn6aiRwLiAM6c=;
+ b=bmJ0Ld5ojh/BAKMqZN7hDNYPr/q5aMXXYFddTHHhGs2zCC/UXmaPid+ms+uG1Ydrzl
+ YmpA/mwyok/dU6ETmPiVD7TmdKsweKIF51f95gB5gRqFwd/hKd3DkUgscUA5ZxujdIPQ
+ 8h2D05FWmfuiJgn0TYqCuHm0zZiRK8/YgRp2zAkPfUCi2O+elARlVSl5s8Ik0Z0au6sT
+ Bimd2/s4dFAkbZfHs4rFfp0gM8EFnMlJV/mLazc0FZvLHOdqt/fuWHKyzJyM2yLWsnbE
+ JNrIEzCBLg1UN2mHy/DAr4jDto7uchUtUIwGpTTO6JbJzPAg1qVcekZdM1k4edxoDSDG
+ kqlg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1783003562; x=1783608362; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=V/XuN+kAuWIj2q7usufUAWom2uprrhjVLsVtB5cdVaw=;
+ b=kD8CuzUDUBdRPh4k1ldJ4UvxQNnZGXEB5f1kKyOCj4XSQuUXIr8aHbl/5FNR5IoYFp
+ vH5XEQHi/xTBaPr8ztdjU9DRZCLONZpyTxlsYeTunFH2w3GaZ0WeK+j23Cxd7kXws0jg
+ 5WSah/iwprUdU5c7mmm6vxElzbqpMHSxwoDAb7QtdYnh+x4adLbzdwx5z3M+Pu2bLsXG
+ ZU5Tv4glhmSUreDOn7mI6Na+ioTblYOZe5y12baqh7lGESmBUN5M2oHCUTWCoSFp3j6H
+ nRH9qUbh4URl7qb8wIl1WH2xrS4nDt5CJzvwfX76h2bY7AzEbsOjHDzFnbejtE/S5nIL
+ 6Ksg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782999372; x=1783604172;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1783003562; x=1783608362;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=utgm0XcZH1OQFlYYcbnG8kYHRsMRZSLs/jw2MKeR8kE=;
- b=LWXoR9iJT02uqPBsudUZOzPpzB6PsW/KdmrmkvD+vY1GQPfxPVgJnTLjXbOBT7g0aQ
- PQVbPyG5EYGYnxYmsHO794sX0T6tICm0u6BBo+jJmW5FqLpKt9kIyRbCicrYqK1l+xPP
- TQZzAGBOcf9xgjK0YU72OYJVG72rNr8gglgURqQjn4GaiTFboL3YHP8LjmYp0b82pLgE
- 3nIeEI4vS9ruy/K4WIjdZmEObJ3jsbdCMgn+QfqrVd8MRGbB+7q0XnuJNbO+EKFsW494
- n9ozbtD/DjJ5OdfejhkkQBBG1RgN8LiRQ9RyDMPQlEXgrZnvU52pGmh1YGecMSWwG+3u
- rB5A==
-X-Gm-Message-State: AOJu0YxZ5L5FR2UcGuEyKOP6HwosmRJYgds8PZ1MtlMTr9yafL0vdNhh
- dKJyzFeVn9h4pMzROu4Y2oP63dA2C/P/B79DjV+0RZmYtv00vKaT8gUCNhZQPA8+W8gZ4RXk9uq
- lLFEJN5LEGNRR2gG/vP0zCrCU4jqMaRzkN9Y7hDgfGTLd24wmgaQ3fg==
-X-Gm-Gg: AfdE7cmcYbOUP/lSr+0GcKac2/EEwvNT6zmJfM02cY2xYkAGJ5koeTm37nGzsXtpQwE
- X2wvF8cbd/K86rYzz/ePYN6XdGf/6uPxgSAjsFxQp1TbPWha69/WaBSp8OdSbsyoRXzRlFjYeCk
- y2Kvzu6XuU+M7Nye/XHXghoop0vCCl2EV90FmEALkw9ub2GbiJwZSTxnVKjik6XP8/bIf59bQ+D
- Wi28hp9668EogWjx6R9Y+0bVZAWix+mJhQTvB0kjwPtZeCoQlJRSD9KxUsKus1TnbR7ruvzxCuf
- qJJNf4uUQa6H7aU2RseogrYG9XIVr2F7b8P2D8/74DiVcNkTgy2B7iqd7wtdAVturFjf/mYFRc/
- j7ViG/gk18/SlkUEOmYoxywzCQrB/VI7UbhpOlm3ku6uSHhDeHxzQqsTBkYp5LkjjGNysE2c2EQ
- ==
-X-Received: by 2002:a05:600d:111:b0:493:b243:8ffc with SMTP id
- 5b1f17b1804b1-493c2ba5556mr72547835e9.35.1782999372001; 
- Thu, 02 Jul 2026 06:36:12 -0700 (PDT)
-X-Received: by 2002:a05:600d:111:b0:493:b243:8ffc with SMTP id
- 5b1f17b1804b1-493c2ba5556mr72547405e9.35.1782999371682; 
- Thu, 02 Jul 2026 06:36:11 -0700 (PDT)
-Received: from rh.fritz.box
- (p200300f6af2a6100f239e076bbd76784.dip0.t-ipconnect.de.
- [2003:f6:af2a:6100:f239:e076:bbd7:6784])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-477db3dbb01sm9135980f8f.1.2026.07.02.06.36.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2026 06:36:11 -0700 (PDT)
-From: Sebastian Ott <sebott@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Eric Auger <eauger@redhat.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- Alireza Sanaee <alireza.sanaee@huawei.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cornelia Huck <cohuck@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Sebastian Ott <sebott@redhat.com>
-Subject: [PATCH v4 0/3] arm: demuxed ID registers (CCSIDR_EL1)
-Date: Thu,  2 Jul 2026 15:36:03 +0200
-Message-ID: <20260702133606.34529-1-sebott@redhat.com>
-X-Mailer: git-send-email 2.54.0
+ bh=V/XuN+kAuWIj2q7usufUAWom2uprrhjVLsVtB5cdVaw=;
+ b=Vjc+POWyv+lsgekOf1rcpXA5coObCSrqyXXYcnM2D3xtqWZtGLlZmuRYzL+8UkX6Bn
+ Ki8OS/VflPV0YKJSKacEL6lJF9gNxsehitfhQj1/o54U4WFILjPQcuadwUXEuhGSppc9
+ KFpvIUOXqYcpeEpyNHkdw9LfUgW4JQeG/kkMl7V0bmGypAiaHLylYISXbCt5K4/6+Tf7
+ GaYuYPUiiDEsUQuR9WtXdub8lfotHF6n1ZtdrMZVK0ySwaYxBgPOQCpDrijs245LDasr
+ JDlYPR63XKdnCWgpavbFXi8UUyVeEMBdhOjbwb1qzwRGjP9lCIGdXBp6cowh7zsoLoVF
+ 25tA==
+X-Forwarded-Encrypted: i=1;
+ AHgh+Rrbvi+z6WdXvx8axNByXmvTmAv5woyx/oRED0zdNuWKgndMiEbrBZTeTYVX9giezA2lhblq1caeRg==@nongnu.org
+X-Gm-Message-State: AOJu0YxchzD7vs2az3ELJB31zt1glMAs+XSLQQmP10iQGlBlDSgAYJbo
+ HdK92XBOE9UMsFLjt3Ss28gEharV4AcI9rF0/6a2W7Ba9DcAvsBumVrA9Rz2kAuLaSiVv4dQb+Y
+ RSijTmAePEQpdRzROq8CpQsehW+S9KBsX7SzTEO+neQ==
+X-Gm-Gg: AfdE7clDkOrPASknV0CG33Nlsjmt3eajStmmHKmjWFMGbTmBakSp1ANAA71G8ylwa1w
+ RoC7CV8s7KtzDmJwJLWn4ViHc1mz8tI3I33REbLQ0KAZiPtjSTXgct8QwGMTfejfn65FWxp5j09
+ rg0qZ6o7LMMeL7ZtKw7Go8Q56dWtY9XOeQ3Cv+p76D0MKMw/NwbgUq6kajFoQu86U4Ednnd2O/n
+ gT+ZcVAuZvtAJiQ8sBEFPMOY4HxH9hw8bxrcyXr75/F5NL3SVk044P639UXpaUfdMHpKcP9XTFf
+ X6sesofqTwyIi91Qwm7ZgIHbGb3iq46/LemheyUpfUv7EFBDFmbAuXZ4
+X-Received: by 2002:a05:690e:12c4:b0:665:2100:990 with SMTP id
+ 956f58d0204a3-66521a1eed0mr7183330d50.28.1783003561829; Thu, 02 Jul 2026
+ 07:46:01 -0700 (PDT)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: PEjNOQRZLwP1qUWoiU2UbhQh5Q0B43ofRsVDApstHEE_1782999372
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+References: <20260529-feat-mte4-v7-0-ccbd3c14eb3c@gmail.com>
+ <CAFEAcA8R1RXrGo2xov-4gKLQXX=FTVKoK1rGuxuYmBo9e8SN_g@mail.gmail.com>
+ <CA+1f7BD2pVP2ByBRbwbHBRWNNuZHKdM_7xSVSmPztEWw1BbVbw@mail.gmail.com>
+In-Reply-To: <CA+1f7BD2pVP2ByBRbwbHBRWNNuZHKdM_7xSVSmPztEWw1BbVbw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 2 Jul 2026 15:45:49 +0100
+X-Gm-Features: AVVi8Ceh5Mi6Q21hlZwgPuzVtjkrapNMI0dwIIC9hQk1MNU62sEJ_UrwgxYaUk8
+Message-ID: <CAFEAcA_jkzy4evQOefKz3B+=wzcVULWr+swVP4=zKkcbcE44pA@mail.gmail.com>
+Subject: Re: [PATCH v7 00/15] target/arm: add support for MTE4
+To: Gabriel Brookman <brookmangabriel@gmail.com>
+Cc: qemu-devel@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
+ Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,33 +120,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Handle the demuxed ID register CCSIDR_EL1 as part of the
-idregs array. V3 of this series was posted here:
-https://lore.kernel.org/qemu-devel/20260622135627.40573-1-sebott@redhat.com/
+On Wed, 1 Jul 2026 at 06:38, Gabriel Brookman <brookmangabriel@gmail.com> wrote:
+>
+> Sorry, repeating as I forgot to include the mailing list:
+>
+> Hello,
+>
+> According to ARM developer, FEAT_MTE4 only implies the existence of
+> its 4 subfeatures, plus FEAT_MTE2, and MTE_PERM, all of which are now
+> implemented. There are no features that MTE4 guarantees that aren't
+> either already present or introduced by my series. This means that we
+> can now claim to implement FEAT_MTE4, and close the issue.
+>
+> We can also add it to emulation.rst. My apologies -- I can't do that
+> right now because of my current role, but it should be a trivial
+> one-liner for whoever picks it up.
 
-Changes V3->V4:
-* added R-B from Eric
-* incorporated suggestions from Eric
+Great, thanks. I'll send out a patch which updates the docs,
+and close the issue.
 
-Cornelia Huck (3):
-  arm: handle demuxed ID registers
-  arm: handle CCSIDR_EL1 as a demuxed register
-  arm/kvm: get demuxed ID registers from kvm
-
- hw/arm/virt.c                 | 19 ++++------
- hw/intc/armv7m_nvic.c         |  2 +-
- target/arm/cpu-max.c          |  6 ++--
- target/arm/cpu-sysregs.h      |  9 +++++
- target/arm/cpu-sysregs.h.inc  |  1 +
- target/arm/cpu.h              | 18 ++++++----
- target/arm/cpu64.c            | 14 ++++++--
- target/arm/helper.c           |  2 +-
- target/arm/kvm.c              | 31 ++++++++++++++++
- target/arm/tcg/cpu32-system.c | 26 +++++++-------
- target/arm/tcg/cpu64.c        | 68 +++++++++++++++++------------------
- 11 files changed, 123 insertions(+), 73 deletions(-)
-
--- 
-2.54.0
-
+-- PMM
 

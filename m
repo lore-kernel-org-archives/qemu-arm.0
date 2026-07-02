@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1DB6C43327
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 15:01:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5761DC44500
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 15:01:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfIsk-000522-21; Thu, 02 Jul 2026 10:59:14 -0400
+	id 1wfIt8-0005TH-0P; Thu, 02 Jul 2026 10:59:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wfIsg-00050t-UV
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1wfIt6-0005Lb-EE
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:36 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1wfIsf-0004M4-HA
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:10 -0400
+ id 1wfIt4-0004S3-Tm
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 10:59:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783004348;
+ s=mimecast20190719; t=1783004374;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YcreBT6yOPwaacOWLfu2u1EniV6qHpkGam79kBzQUp0=;
- b=co83jpMAktMj+Fx2VLwMf681iSOZg3DlwdYcuVi/xt+5w9Hl8ZwMEYft6IairR/4gywfAg
- ljeUccBtJgjEQaTrhnskhk7dOowtLI4PI+W0T2knJ7GYBWunMn/c1PXwt6rXmewbPkl9+k
- RZEKfHFqWUgi7oGcMmSDvEo+YVXa7WQ=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=CBasb7EkPrdG0C+1L4IVe74kwpgLLK4+TSfKUTbxgSc=;
+ b=FwDO2fNmyMBPvNtt8JgzoXaa1LMRJhy6gcjb203NCfX/afwibhSqP1p11uRoy1kX3w6V/J
+ Kd3HNzrPHsskqZWBYrB1lJgEdxLURdltbkqJrskHxf4BrLF4FXkh2HwoHUk3kQfsZskGV2
+ vlWmTErqGL1ot+rXGRNpqsiBikGvbiE=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-35-i3ipPYGpOQCgYRM_4oqLTw-1; Thu,
- 02 Jul 2026 10:59:05 -0400
-X-MC-Unique: i3ipPYGpOQCgYRM_4oqLTw-1
-X-Mimecast-MFC-AGG-ID: i3ipPYGpOQCgYRM_4oqLTw_1783004344
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-396-Lnc1AmavNEWA8J0C8-4yvA-1; Thu,
+ 02 Jul 2026 10:59:31 -0400
+X-MC-Unique: Lnc1AmavNEWA8J0C8-4yvA-1
+X-Mimecast-MFC-AGG-ID: Lnc1AmavNEWA8J0C8-4yvA_1783004370
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E0A1A18CC49C; Thu,  2 Jul 2026 14:59:03 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id EEB0B1944CF9; Thu,  2 Jul 2026 14:59:29 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq2.redhat.com
  (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 866F6180056E; Thu,  2 Jul 2026 14:59:01 +0000 (UTC)
+ id 0D8EB1800605; Thu,  2 Jul 2026 14:59:27 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: mst@redhat.com, eauger@redhat.com, peter.maydell@linaro.org,
  shannon.zhaosl@gmail.com, leif.lindholm@oss.qualcomm.com,
  qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v4 01/13] arm: sbsa_gwdt: fixup default "clock-frequency"
-Date: Thu,  2 Jul 2026 16:58:44 +0200
-Message-ID: <20260702145856.1539572-2-imammedo@redhat.com>
+Subject: [PATCH v4 12/13] tests: acpi: arm/virt: add GTDT watchdog table test
+ case
+Date: Thu,  2 Jul 2026 16:58:55 +0200
+Message-ID: <20260702145856.1539572-13-imammedo@redhat.com>
 In-Reply-To: <20260702145856.1539572-1-imammedo@redhat.com>
 References: <20260702145856.1539572-1-imammedo@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: yMTG7zX48ie-595xrZvkLU7YxpwVmIflxuK06i2UVXM_1783004344
+X-Mimecast-MFC-PROC-ID: 1GO4ib86VD4ccx9xUA50DgSRJZmk4UL3EbcuHKyyAsU_1783004370
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,41 +90,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Comment about keeping legacy freq, is wrong to begin with
-(should be 62.5MHz), but that value also doesn't make
-sense anymore as the watchdog is used only by un-versioned
-SBSA board and the later has hard-coded it to 1GHz.
-
-Other potential user (arm/virt) also has system clock at 1GHz.
-
-Drop misleading comment about legacy and set default to 1GHz
-to match both boards. (not that it does matter, since users are
-setting frequency to match CPU's one explicitly)
-
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/watchdog/sbsa_gwdt.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+v4:
+  (Eric) fix whitespace in test command string (moved from patch 17)
+---
+ tests/qtest/bios-tables-test.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
-index 7ade5c6f18..b739a3ce3c 100644
---- a/hw/watchdog/sbsa_gwdt.c
-+++ b/hw/watchdog/sbsa_gwdt.c
-@@ -264,11 +264,10 @@ static void wdt_sbsa_gwdt_realize(DeviceState *dev, Error **errp)
- static const Property wdt_sbsa_gwdt_props[] = {
-     /*
-      * Timer frequency in Hz. This must match the frequency used by
--     * the CPU's generic timer. Default 62.5Hz matches QEMU's legacy
--     * CPU timer frequency default.
-+     * the CPU's generic timer.
-      */
-     DEFINE_PROP_UINT64("clock-frequency", struct SBSA_GWDTState, freq,
--                       62500000),
-+                       1000000000),
- };
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index 5440aab2f8..370b0fd2e6 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -2294,6 +2294,24 @@ static void test_acpi_aarch64_virt_tcg_wdat(void)
+     free_test_data(&data);
+ }
  
- static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, const void *data)
++static void test_acpi_aarch64_virt_tcg_gtdt_wd(void)
++{
++    test_data data = {
++        .machine = "virt",
++        .arch = "aarch64",
++        .variant = ".gwdt",
++        .tcg_only = true,
++        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
++        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
++        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
++        .ram_start = 0x40000000ULL,
++        .scan_len = 128ULL * MiB,
++    };
++
++    test_acpi_one("-cpu cortex-a57 -device sbsa-gwdt", &data);
++    free_test_data(&data);
++}
++
+ static void test_acpi_q35_viot(void)
+ {
+     test_data data = {
+@@ -2914,6 +2932,8 @@ int main(int argc, char *argv[])
+             }
+             qtest_add_func("acpi/virt/acpi-watchdog",
+                            test_acpi_aarch64_virt_tcg_wdat);
++            qtest_add_func("acpi/virt/gwdt-watchdog",
++                           test_acpi_aarch64_virt_tcg_gtdt_wd);
+         }
+     } else if (strcmp(arch, "riscv64") == 0) {
+         if (has_tcg && qtest_has_device("virtio-blk-pci")) {
 -- 
 2.47.3
 

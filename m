@@ -4,76 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB37BC43327
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 09:45:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D36FC43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 12:23:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfDz8-0002Xt-QU; Thu, 02 Jul 2026 05:45:30 -0400
+	id 1wfGRw-0008CH-PS; Thu, 02 Jul 2026 08:23:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wfDz7-0002XL-4P
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 05:45:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wfGRv-00087a-23
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 08:23:23 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wfDz0-0001ex-IH
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 05:45:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1782985519;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=kDK2H5MscANXyIowrtMGjf4oB2dvPD2DsRpX/EhkRUc=;
- b=MQDzZtrV2iUCQYobUBlHd4YhGtCZ2F/v7fVVqMa8OPRIz1CYn14Eiw1Wh4hzcMPOygm8q3
- Emihz0djv3AYYTZMUff/VhCnRrL6BptM1idmX1YC4Ra+CUUlGpfCFD13zlCcXM6LDca1/9
- gxnSvV9kQRLQPrUxMu+HmguEZbMB+sQ=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-183-jYmj_5GiNbedyqesCnm1eg-1; Thu,
- 02 Jul 2026 05:45:14 -0400
-X-MC-Unique: jYmj_5GiNbedyqesCnm1eg-1
-X-Mimecast-MFC-AGG-ID: jYmj_5GiNbedyqesCnm1eg_1782985513
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 522C91944F07; Thu,  2 Jul 2026 09:45:13 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.44.48.8])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8103E36F05; Thu,  2 Jul 2026 09:45:12 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 651E81800846; Thu, 02 Jul 2026 11:45:11 +0200 (CEST)
-Date: Thu, 2 Jul 2026 11:45:11 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, 
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH 0/3] hw/arm: add support for shim loading
-Message-ID: <akYylBa-3xSn-qTB@sirius.home.kraxel.org>
-References: <20260521112806.504961-1-kraxel@redhat.com>
- <CAFEAcA8hbObntY8Tp+kOV7btb-io92O9GW99-6SPxigPJUjPrw@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wfGRr-0008DT-PH
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 08:23:22 -0400
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 662AkDSH3592277
+ for <qemu-arm@nongnu.org>; Thu, 2 Jul 2026 12:23:10 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ TdOWjJrFhcfu0N9QuPSG7Xh70uZuGgsGTqHGVrVvIFc=; b=efuMBwhp8VOAY04Z
+ RDNkSWOkSPfyA3bCFONY5iRXYnKdRGOo+WMEeQTA2Iyp/k6apw9Z6jSxfVIz/Map
+ SuZwpug7LUSUkJ4euZuLpg9R9GyFwSiWSvXxT98nPaP1cbR8iZVcthDDvzT7qjik
+ DRpfx7ykVT022c/DqNs4RC/CYf8DoWtbKYzbk8K4RRHV8k5SI+SwDtkZn+NE+JuK
+ 5fi3uH3ZTS68xGB4YytIFC/kwq3fa77xqxne1zfaGIfSZBsHzJmDNIoDMOHSnX0T
+ FXbuupFTf0afWuZyZP7SWicosuQhQvYme1NiOBqOix3lgRz7BAJfxvA3lNOMNAqb
+ 5lzEbA==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f5h7n9nuf-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 12:23:09 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-92e6ed4fe99so317607485a.0
+ for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 05:23:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1782994989; x=1783599789; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=TdOWjJrFhcfu0N9QuPSG7Xh70uZuGgsGTqHGVrVvIFc=;
+ b=h7kxsk0VH+8+WFKIC/VaGFzgwB3e0btcFk3LRPs5WqC4+xyELi2bcUqPlrsfwqYCu6
+ DeOk+F1f5Id787/RkmtIndJntPzMdmnPcK8xq/H8bUJt0hz2mdm5246jzEwJKt/w65wG
+ nnseFFKv26Z56hzx+6wOFJgOdbByuuEqCKeWVBMk1z/O/8MkziYxPZLmQ8hp9GmZsrsH
+ qsYYryjFk3BZ/WqYQEifTQuHkO8W2OVTvC1pbVvELb638Z39mK0wPNKWnkpMUc9y+inT
+ NiifHy3o+9KUfXni6xDXBIPZpUBm3nkaX6CXHyeTeX2JiLkdkplCDWdiVUrvzwyg86gl
+ zqRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782994989; x=1783599789;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=TdOWjJrFhcfu0N9QuPSG7Xh70uZuGgsGTqHGVrVvIFc=;
+ b=qkN3O+VlUa4nBux/fJzCLJGXG3JigQd5Xn+KcUuHaR42QSAogpwqQSBU4EEURo1xek
+ +9rjm42Q3lwH7+k74sHB4YpZ0bH0GKqXhzmNQxjvugbbeYQATvRWOvlawbP5DgRAtU72
+ ho9pDNGVMnVToJ+bd1jQnllLYoLZ8rhTAUqxVuw5W7DPISm4V7x7gmPloSVv62uNETis
+ srJZX2w8HQQl+dJDVGJLUaXBIpDCebfyTOgF4WwgJN87viQ/x6ROEocL1NOAeXeehyse
+ 4M7yYyFgFBtP8glp+fWSmPGLTjdLvMhJo5Xq2RSyBibgzbric9ZijANMM3ef7VQXKQcz
+ StBg==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/83IJ8fiEEZwWHCTx+PGaxsiUIB0URfq6l22gOXwBWRNyQAdqYshYaV245mX7jj9DG7limDclbkA==@nongnu.org
+X-Gm-Message-State: AOJu0Yw/3+ycvkqL7MqAE0EMT4VSfJ0cb4bUJYlPQGinilYgA8vPUymQ
+ DpdhKLVlzgfOmg7+tdWWGUzsZ7rQ59ioAWpX6XA7Yp/mkExaUbuud/Kha+vA4Y5ZXOzltcGB8Uq
+ oqtSkG+ujJS3YNSv5PMZ6he/aoY90caDqLGycm0j5t0mtQhN0aBTieig=
+X-Gm-Gg: AfdE7cnygSrPLhQ3/xrQ2USA4FQqOD0Uaw1LHdOlHIWBhbIz64R5UfQfllD5dvBXy9o
+ rzAdi6XQCXkO7HbYppCMJdImVZhTCy0/AauYpwkuIoUKaN/r/p4yM1/YtO1TPaUu5gxXQfe9Se5
+ nTwj8uBJrZqwXa0D4DP1aSAAf+tt3do+IO5s201ues/tfIt6i2oi8mT0yR0LA1EylFttVADe9gm
+ HC6vpTyLnIo2vqlKzHkIXSYTHarG5FPANCywFxu3vfKweqA6AU6To/wzGeiseEglKgNDeIl1+6y
+ FjczhPMlUk+YjaPk+oKCfPE9ZE4vTuN1nnCmKveSbKDgjs8Ebz3cYCPbQs7Bozs5cMzKoRq6KJf
+ qI2rofrG5Z0YYO1ZtuEi1iIVeaLAjwqwhxezQWmcvDYXClxU6mQ5WYBkEdRaubw==
+X-Received: by 2002:a05:620a:40cc:b0:92e:5ce3:ba2e with SMTP id
+ af79cd13be357-92e7825b26cmr866249685a.25.1782994988968; 
+ Thu, 02 Jul 2026 05:23:08 -0700 (PDT)
+X-Received: by 2002:a05:620a:40cc:b0:92e:5ce3:ba2e with SMTP id
+ af79cd13be357-92e7825b26cmr866242085a.25.1782994988287; 
+ Thu, 02 Jul 2026 05:23:08 -0700 (PDT)
+Received: from [192.168.69.212] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-493c63ba971sm67339325e9.13.2026.07.02.05.23.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 02 Jul 2026 05:23:07 -0700 (PDT)
+Message-ID: <c38b14d7-2a14-4d2a-815c-b4fdebc6576e@oss.qualcomm.com>
+Date: Thu, 2 Jul 2026 14:23:06 +0200
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8hbObntY8Tp+kOV7btb-io92O9GW99-6SPxigPJUjPrw@mail.gmail.com>
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: IVr6Ckc8XC_yPXplausIBJ0DwG_HM8GUU--5NjZfNVw_1782985513
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] hw/arm/imx8mp-evk: Open code DEFINE_MACHINE_AARCH64
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ Pavel Pisa <pisa@cmp.felk.cvut.cz>, Jason Wang <jasowang@redhat.com>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Matyas Bobek <matyas.bobek@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Vikram Garhwal <vikram.garhwal@bytedance.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+References: <20260701224612.48342-1-shentey@gmail.com>
+ <20260701224612.48342-3-shentey@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260701224612.48342-3-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAyMDEzMCBTYWx0ZWRfXzWnXa+2dmBRw
+ h+RMxG5aIzPji9wcAmi0YS6iSSGbUjDePgcIzgzUVXQlTtSk7ROhAZTW91U2MusIuFdI7PkvBTE
+ CqlzTG6QyOZ1y9ZeiT5xC3M72ivROYUiUuWv/pBcZOnCnYRzYQa6jMvK+aNbBB36jtctfRCEqXW
+ I4N0rblJm8XUyP+VE6+WOfs2PEszZjZgMOVcjVF6gQgA4yWWPtWoUztOfnWy2EXFYh236+QBvVU
+ b+jeat53At5SOI0xtqQICswkrcT9xKGCVHBBCwCynHWl3wyeNqTafpk4FSg4m8speoVn+ujQucu
+ vgMIWM6OTtcNs7obAYJZ6ssgqSBYbQ3RBHWWFuiFfodZfGVrmFVT/1qrWrYe1Cd4T6DSNd9iWj2
+ LHn0rRsbFXdC+s183QRbOf7CK16tqikfttbpsjqnV0g/W7MYDuwPByv5VubyaQA6Ld5wvhw92XL
+ 8a1Ks/tvULu3XTcrCCA==
+X-Proofpoint-ORIG-GUID: H2DToRxhiu2WJ4sz4xi627mJupLBRqxg
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAyMDEzMCBTYWx0ZWRfX8C/8OJYMJ7FJ
+ 2S0VHE3IWYZ6lDTmcNEsQnp7OSfRdiB/uLjCyk4CRxymkmRxOEph842Em7Ygb32KwpRroYWxa36
+ sw4F5+EgwTtPPOzpI4vZfLTSoqiJP2Y=
+X-Proofpoint-GUID: H2DToRxhiu2WJ4sz4xi627mJupLBRqxg
+X-Authority-Analysis: v=2.4 cv=WMBPmHsR c=1 sm=1 tr=0 ts=6a46582d cx=c_pps
+ a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
+ a=pGLkceISAAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=PEH46H7Ffwr30OY-TuGO:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
+ definitions=2026-07-02_01,2026-06-26_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 phishscore=0 suspectscore=0 lowpriorityscore=0 bulkscore=0
+ spamscore=0 priorityscore=1501 adultscore=0 impostorscore=0 malwarescore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607020130
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,26 +162,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, May 28, 2026 at 03:28:05PM +0100, Peter Maydell wrote:
-> On Thu, 21 May 2026 at 12:28, Gerd Hoffmann <kraxel@redhat.com> wrote:
-> >
-> > Also little refactoring in preparation
-> > to avoid code duplication.
-> >
-> > Gerd Hoffmann (3):
-> >   hw/nvram: add load_image_to_fw_cfg_file()
-> >   hw/i386: switch shim loading to load_image_to_fw_cfg_file
-> >   hw/arm: add support for shim loading
+On 2/7/26 00:46, Bernhard Beschow wrote:
+> Open code the DEFINE_MACHINE_AARCH64 macro in preparation of creating
+> FslImx8mpEvkState class, needed for FlexCAN emulation.
 > 
-> Any chance of some information on what this is?
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   hw/arm/imx8mp-evk.c | 15 +++++++++++++--
+>   1 file changed, 13 insertions(+), 2 deletions(-)
 
-Ping.  The doc update with additional info is merged,
-this isn't yet.
-
-Do you want take this through the arm queue?
-Alternatively I can merge this via firmware queue.
-
-thanks,
-  Gerd
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 

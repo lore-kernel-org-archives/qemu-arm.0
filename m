@@ -4,89 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06DF5C43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 07:05:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF8A9C43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 09:06:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfBUX-0006sF-QI; Thu, 02 Jul 2026 03:05:45 -0400
+	id 1wfDN3-0007DQ-F4; Thu, 02 Jul 2026 05:06:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wfBUV-0006rc-Pk
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 03:05:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wfBUT-0001Dl-In
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 03:05:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1782975938;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7KGoKWZjSP39lf55sBvvfsvr7sK43N3NfM6M31TYElg=;
- b=GhAyMjsejHyAZMPzifXDBPgrduJC/ttCJZ8E286QB0SOz8+cjrn/nOZ6D73Lxy+1rGOuNv
- 8XiARAWOrSqDRAnVFMuLEBT+jghZSlbCPBBXYeRU1caDGEUo/sED0JdtfD7Q+UCshLyPoI
- cazdyXUHmXO+Qxe4JYelcpGbweEh5MU=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-135-zIwRYsetPo2C17YE8GUuDw-1; Thu,
- 02 Jul 2026 03:05:34 -0400
-X-MC-Unique: zIwRYsetPo2C17YE8GUuDw-1
-X-Mimecast-MFC-AGG-ID: zIwRYsetPo2C17YE8GUuDw_1782975932
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 98C621955D79; Thu,  2 Jul 2026 07:05:30 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C15423001449; Thu,  2 Jul 2026 07:05:28 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 39CE421E6920; Thu, 02 Jul 2026 09:05:26 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Emmanuel Blot <eblot@meta.com>,  qemu-devel@nongnu.org,  Paolo Bonzini
- <pbonzini@redhat.com>,  Fabiano Rosas <farosas@suse.de>,  Laurent Vivier
- <lvivier@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  Steven
- Lee <steven_lee@aspeedtech.com>,  Troy Lee <leetroy@gmail.com>,  Jamin Lin
- <jamin_lin@aspeedtech.com>,  Kane Chen <kane_chen@aspeedtech.com>,  Andrew
- Jeffery <andrew@codeconstruct.com.au>,  Joel Stanley <joel@jms.id.au>,
- Alexander Hansen <alexander.hansen@9elements.com>,  William de Abreu
- Pinho <williampinho@meta.com>,  qemu-arm@nongnu.org,  Corey Minyard
- <cminyard@mvista.com>
-Subject: Re: [PATCH v3 3/5] hw/i2c: parent slaves created with
- i2c_slave_create_simple
-In-Reply-To: <03dbf5a7-68c7-4cdd-895d-178088421f9b@kaod.org>
- (=?utf-8?Q?=22C=C3=A9dric?= Le
- Goater"'s message of "Wed, 1 Jul 2026 14:39:27 +0200")
-References: <20260627-i2c-adc128d818-anacapa-v3-0-cfb94270a980@meta.com>
- <20260627-i2c-adc128d818-anacapa-v3-3-cfb94270a980@meta.com>
- <dc92984a-5c25-419e-b4ad-f5b79efbaeea@oss.qualcomm.com>
- <03dbf5a7-68c7-4cdd-895d-178088421f9b@kaod.org>
-Date: Thu, 02 Jul 2026 09:05:26 +0200
-Message-ID: <87fr213m89.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wfDN2-0007Bl-Fm
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 05:06:08 -0400
+Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wfDN0-0007Ob-T0
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 05:06:08 -0400
+Received: by mail-yx1-xb130.google.com with SMTP id
+ 956f58d0204a3-664f0a76a74so2030283d50.1
+ for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 02:06:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782983165; cv=none;
+ d=google.com; s=arc-20260327;
+ b=Y6/GhI59DEWYCIJWOIiIlY/okKCSk4QTYhgFKtyezxj/Q8ZE2T78ORaCjcDZiBlN1x
+ bycpyZGnmefY7stdMP0OJsi7rb7/25KbWesd6+smx8U/Tb7HM3vqMYQgX5Gn7SNdd6kP
+ j+WtC1gb0VVuNuXhtddmDx3icLtotcXTWl19LVyv1rjelaDFpKbZvvBSFRZu4ojEZ4/4
+ HdMGBOjI2rFm2eAYMaALb4xBcwD2C1fuULWWie3f0REb0kEtpwPhSRN32RyZHxG6Whs6
+ ZDWCgEQ8OeNzwxL734y9x7oFPGddlh7GqGS0h/AXKJ95rtZCwEIEEc1ioomWWWI8Qq/b
+ IviA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=9cEOkumq398N7Qdu+51eDUcOf7lxn3XziNGH2X2hLww=;
+ fh=8maI3F1Cd09aWmtypVpVpUSWt88Ar/ZdVxpXkWQVVeM=;
+ b=EQc6pu6qxtFBXT7aD0wtHQHpNr2d5r9ag3f1q0P78ImiXBaPi1qjUQAv3EGPfedlrT
+ E5r2a+aBv1C7Cjh+WQbhboAhCTuk7cp4gCDDMvD6DLSHHUoPzlH+62JFdVw+qDu8+qmf
+ rMq/Kj5j3TgAQJFG+IWKKz8PgzeR9H2fW/8SvANDiLNEPxE7VjlcQiBgJwfXZVeLW9Z3
+ kMSeTbf8TjsU2dwgzz0UY9CH67C+74Eb7x5MsCd0dkMoqnukQ3yctrCMQUslOOrGgtnt
+ qX5dZxVePpL6QM53Bs1P+cj+pUepu3iXOpmqIkXigGFI74H/1pXaivMvX3y98E/5LBH6
+ O5cQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1782983165; x=1783587965; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=9cEOkumq398N7Qdu+51eDUcOf7lxn3XziNGH2X2hLww=;
+ b=tAe6NTgNpe9fHHYEM9ynMzBYvzBzN+Vjf4Wo/UgHOx93c6hLKK2Af7+9q/FwW679G5
+ 4wi65h1IAV5PFldojNAOsNhc/nwWa9Xs5n80uc9FNqTi7/nI7Xk1mgAnMVMMU02AJoju
+ fQ1KBc+XTDPH4q1Fpo07lBdAYf2572ajyuD1x+seakfvfibjZDq5qSn/ayd4HIaeDuFh
+ VcO5c84ebWV7CNlJ3vRGnjXh2/fTxb8kBpVjNGaOzM0JO/7Y4uxRBPY4zLzqfgbTUyeV
+ 9rTQ9awFxfXsRnfdDTEKVtXByyKyuRi6j6LQeSluGFrSofEqLdtCDDGjvUjGdJsuq5rV
+ I/4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782983165; x=1783587965;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=9cEOkumq398N7Qdu+51eDUcOf7lxn3XziNGH2X2hLww=;
+ b=ZfVD8Zq6mmzWwp97qPLzN+Q/Dtlam5JlM3L8GhOgeYI4gNC58XDe7kjwSbzPnFWrKa
+ imZUDNPsc8YGQkfIfJSauvzUoPaifs4/eJTCahZHHuNfP3z1G465tOHJbZ4dVhdXqfN4
+ jFPN+uSLkiUes+RYC9YgeYNJC3jheB/pFP8qDQzhHM3jIDkeV53hk7KYprlgZ6bEj1gU
+ UZAb6lylZFTnwvHKwE5Vuk17xzxl9TtK4J4jk3VUi/vTybd+UNbjK/TKztUKLhWGrdr7
+ lcVikjiClrvqxHTyyFbTRVAl5jwCIdP3ESAd8nhtm0nSGztlLwONokigomtFei2pVAhk
+ zMxg==
+X-Gm-Message-State: AOJu0YxaDBmBhK0dNXN0Ra4eUvE2gZTZ1gUHpz32qesKNpaHFNvFfN+X
+ E5GLbtoAV+EMMvcvSs77Y9CRge6otOC9OsBEWBIfG3RcBzC4xw8RtStqNnCkZqxJzl7nH+AeFyH
+ 0mmvWrLzllDiE0N7gut/ZfMpqD0kcPCvL+df6GDR5s147shJ7ydjQ
+X-Gm-Gg: AfdE7cnanBYmWzhRhfniBaBu24RLcZqluGKw+pdofZ0rn9OujM3qsu6O6B9UQORBvBG
+ Zx2O6IXwSZYvc4kc53zVr5qasT+iJrO7yvI9DbsF49jiey81DPs+kc++tKQog/09X67i0UKpIfm
+ lVetZ0AjLg/dhrO8mksVlXBQ7BPgj3t0dlEuEef8jRipoTOK/sNJPPJklhZazwQUrL7e85y54wx
+ DO/J/Pb54fY1Um4UQA4unxIJs5Gkz3pCs2bcElT/gniIb4eFCSmyjBPFNHRuJYTaaOuEydEaeLo
+ 7En2m+UO18vkLL+eja3+Koda6XvGgSkhMPkkH9b+/HP+A/yYaUz6dHRS
+X-Received: by 2002:a53:ac96:0:b0:664:ca89:3f3 with SMTP id
+ 956f58d0204a3-66521b3c867mr6305916d50.40.1782983165543; Thu, 02 Jul 2026
+ 02:06:05 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 0KHmq3wY1-poeT7bry8FER2B_3pTAyZF_miUU2l5mIw_1782975932
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260701231224.106850-1-heinrich.schuchardt@canonical.com>
+In-Reply-To: <20260701231224.106850-1-heinrich.schuchardt@canonical.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 2 Jul 2026 10:05:53 +0100
+X-Gm-Features: AVVi8CcFQ3Et8fmL6ZbMi6P-Fxy-dqB9fkmbkd-hkXDogb5P3YbAFgAT6RHyHz8
+Message-ID: <CAFEAcA9Y1Mfsdn=tQXA=QJqa14JbjhnexPhnem1oi9vyeDPVpQ@mail.gmail.com>
+Subject: Re: [PATCH 1/1] hw/arm/virt: define initial aarch64 TCG CPU
+To: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,106 +113,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-C=C3=A9dric Le Goater <clg@kaod.org> writes:
-
-> On 7/1/26 08:29, Philippe Mathieu-Daud=C3=A9 wrote:
->> On 28/6/26 02:45, Emmanuel Blot wrote:
->>> Slaves created with i2c_slave_create_simple() were left unparented and
->>> showed up under /machine/unattached with no stable QOM path. Add each
->>> slave as a QOM child of its bus, named after its I2C address, so it has
->>> a deterministic and addressable QOM path.
->>
->> +Markus
->>
->> Personally I never liked the idea of having buses being parents
->> of the devices attached to them,=20
+On Thu, 2 Jul 2026 at 00:12, Heinrich Schuchardt
+<heinrich.schuchardt@canonical.com> wrote:
 >
-> What was the problem ?
+> Function virt_get_default_cpu_type() is meant to return the default CPU
+> type. But for aarch64 TCG it returns cortex-a15 which is a 32-bit CPU.
+> This results in failures to boot if no specific CPU is required by
+> the command line.
 >
->> but maybe it is simpler this way.
->
-> It is much simpler for functional tests when looking for board
-> devices which don't have ids.
+> Return neoverse-v1 as default aarch64 TCG CPU. This is the aarch64 CPU
+> with richest feature set.
 
-A QOM object must be the child of exactly one parent.  This defines the
-QOM composition tree.  The link from parent to child is a property of
-the parent, and therefore has a name that is unique within its parent.
-An object's canonical QOM path is these names on the path from root to
-object in the QOM composition tree separated by '/'.
+The default CPU type for the "virt" board is the way it is
+for command line backwards compatibility: people may have
+existing command lines that this change would break.
 
-For devices:
+I agree that for most people "cortex-a15" is not what they want;
+the underlying principle we were trying to follow at the time was
+"any command line that works with qemu-system-arm should work and
+do the same thing under qemu-system-aarch64". So the virt board
+has the same default CPU for both qemu-system-arm and qemu-system-aarch64.
 
-* If a device is plugged in with -device / device_add, and it has an ID,
-  we make it a child of /machine/peripheral/ with name ID.  If it
-  doesn't have an ID, we make it a child of /machine/peripheral-anon/
-  with name device[N], where N counts up from zero.  The canonical QOM
-  path /machine/peripheral/ID is stable.  The canonical QOM path
-  /machine/peripheral-anon/device[N] isn't: it depends on the number of
-  devices already there.
+If we were going to change the default, I would probably suggest
+using "max". Picking any particular fixed CPU model name is a bad
+idea, because (a) it won't work with KVM and (b) in five years
+time that particular CPU model will be an old and out of date one,
+and we'll find we still need to tell people "you should specify
+a CPU type because the default doesn't have XYZ features".
 
-* If a device is part of another device, it should be its child.  The
-  child's canonical QOM path is the parent's plus '/CHILD-NAME'.  Stable
-  as long as the parent's path and the child name are.
-
-* "Should" because we have a lot of code that fails to pick the parent.
-  When such a device gets realized, we make it a child of
-  /machine/unattached/ orphanage with name device[N], where N counts up
-  from zero.  The canonical QOM path /machine/unattached/device[N]
-  depends on the number of children already in the orphanage, which
-  makes it unstable.
-
-  Letting code get away with not picking a parent was a mistake.  I
-  guess it "saved" us some thinking about what's part of what when
-  converting existing devices to QOM.  In other words, it enabled sloppy
-  hardware modeling.  We've been "saving" thinking ever since.
-
-  I want /machine/unattached/ to be empty.  If an onboard device isn't
-  part of another device, put it into /machine/ with a sensible name.
-
-  Whether a device plugged into a bus is part of the device providing
-  the bus is a hardware modeling question.
-
-Now to the patch in question.  I understand it makes
-i2c_slave_create_simple() pick a parent.  Many machines and devices use
-that.  I examined its effect for machine anacapa-bmc with v5 of this
-series using "info qom-tree".
-
-The patch moves a bunch of devices from /machine/unattached to
-
-    /machine/soc/i2c/bus[0]/aspeed.i2c.bus.0/0x70 (pca9546)
-    /machine/soc/i2c/bus[0]/aspeed.i2c.bus.0/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[1]/aspeed.i2c.bus.1/0x70 (pca9546)
-    /machine/soc/i2c/bus[1]/aspeed.i2c.bus.1/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[2]/aspeed.i2c.bus.2/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[3]/aspeed.i2c.bus.3/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[4]/aspeed.i2c.bus.4/0x70 (pca9548)
-    /machine/soc/i2c/bus[4]/aspeed.i2c.bus.4/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[5]/aspeed.i2c.bus.5/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[6]/aspeed.i2c.bus.6/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[7]/aspeed.i2c.bus.7/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0x72 (pca9546)
-    /machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0x72/i2c.0/0x22 (pca9552)
-    /machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0x72/i2c.0/0x24 (pca9552)
-    /machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0x72/i2c.1/0x22 (pca9552)
-    /machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0x72/i2c.1/0x24 (pca9552)
-    /machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[9]/aspeed.i2c.bus.9/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[10]/aspeed.i2c.bus.10/0x71 (pca9548)
-    /machine/soc/i2c/bus[10]/aspeed.i2c.bus.10/0x71/i2c.5/0x22 (pca9552)
-    /machine/soc/i2c/bus[10]/aspeed.i2c.bus.10/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[11]/aspeed.i2c.bus.11/0x71 (pca9548)
-    /machine/soc/i2c/bus[11]/aspeed.i2c.bus.11/0x71/i2c.5/0x22 (pca9552)
-    /machine/soc/i2c/bus[11]/aspeed.i2c.bus.11/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[12]/aspeed.i2c.bus.12/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[13]/aspeed.i2c.bus.13/0x70 (pca9548)
-    /machine/soc/i2c/bus[13]/aspeed.i2c.bus.13/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[14]/aspeed.i2c.bus.14/0xff (aspeed.i2c.slave)
-    /machine/soc/i2c/bus[15]/aspeed.i2c.bus.15/0xff (aspeed.i2c.slave)
-
-Is this a reasonable way to model the hardware?  I can't tell; I don't
-know the hardware.  But it sure feels less unreasonable than the
-/unattached/ crap!
-
-[...]
-
+thanks
+-- PMM
 

@@ -4,80 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CA32C44500
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 20:46:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C109CC43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Jul 2026 22:33:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfOG8-0006n1-5M; Thu, 02 Jul 2026 16:43:44 -0400
+	id 1wfPy3-0001wW-T9; Thu, 02 Jul 2026 18:33:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wfOFs-0006dY-IV
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 16:43:29 -0400
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+ id 1wfPy1-0001v4-U1
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 18:33:09 -0400
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wfOFm-0000Sg-Q4
- for qemu-arm@nongnu.org; Thu, 02 Jul 2026 16:43:26 -0400
-Received: by mail-pg1-x532.google.com with SMTP id
- 41be03b00d2f7-c9cf07d2df6so1211234a12.2
- for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 13:43:20 -0700 (PDT)
+ id 1wfPy0-0006n6-88
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2026 18:33:09 -0400
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-2cab973140bso10599245ad.3
+ for <qemu-arm@nongnu.org>; Thu, 02 Jul 2026 15:33:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783025000; x=1783629800; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=qC9d/JZO7rR/aPLRmeFmvqNLEA1uWo25k4cs3csovVc=;
- b=RYhfF537p3BvdR9LF67qVFQ2TMvTJHG7XzT6IhKSs6UXhwl39bk5yau8C5d4ck06Vr
- uwtShWjfBO/uE0Mt4wFCAE7glonsH4GKU4VZK/TWNmVMNl95wbBJjKDjLLw0+WQQ65A5
- 9eiL6o4UVqh67iwDAvi57TH/J8YRcxmUl5zkb+pdTUv3cEo2L0DpMj8/uiPlvsZo7jI7
- 1Q4T0KiGE+hpZP1qFev2QoNMredwxfGZD0tQFpqP42yGO0LZg/t3gNyspQxNrDSjClEk
- pPNYDO541Elqm35E9Ei9L9PMZRiUY9iE1xKk7JyTPJ2eH51XvFvmhh65+C3lcXMjgHFN
- bB7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783025000; x=1783629800;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ d=linaro.org; s=google; t=1783031586; x=1783636386; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:to:subject:user-agent:mime-version:date:message-id:from
  :to:cc:subject:date:message-id:reply-to;
- bh=qC9d/JZO7rR/aPLRmeFmvqNLEA1uWo25k4cs3csovVc=;
- b=MWFs+oZe9d5Z69Kh/zF6geaPJ7FnoFDmRHxhYZI7Vafbmm4fDGhCFqnvZWPeBSofvQ
- RIR/NV6yrKzQWhrHhiWBr/5YcqwHzam8lkHAcJTDbknSAm4EFaC4PGdsIMzIEruHMSgy
- +MMgkhgEe2shOWU23KeEK+c6At4R2+fHHP+nxU73ejhZveDctJL1HzBR2xcs9ETuQmVZ
- KvfBixs3mVW1SqZSpkMEpKPJGrIgkzArNAk7H8+QbPkuYUEihsFOy2oqDHTTcNpJUHdo
- X0vhcxagHmUsZ5wTPF6+I1YBDBD5icf8q9Fmekr0rizrVMVyFdECqiQCeMX1zgNCPU0a
- jhNg==
-X-Gm-Message-State: AOJu0YwVdD7RThLkdMZcvI+xZSY46eLXXG5Y7gUYlbs5bHL8fwsiWDkl
- eFmV5GqpweG6SJ+JqtKydJN8rdhyViuZB7cm8gGk7oU6Cl8MJV481TpNIbR0R37tqi0=
-X-Gm-Gg: AfdE7cnWNl4tSFiTPtT6VWARPXl7rWDZnx0Lfv3UoQaDgWAJ51SQsWBt3jmXC9Ypy5j
- FfGHVdWTtbJY2MFBToYWNkMz1obZUbi6SIwFL1rjXcE40pgcjGld6qnTj4Yxh7DhHt69LaZbavw
- C1g0qLjbfcE0RakbYzf58cTS7zvqV2EEBY8aW3pAV4FZTbDWnOBcgJlaq8nO/kUuF5npZzzgspY
- iqdlYHWjJndAohQ+c7SzRhtDX1d6FZkz/hnhhz2vfCHOoQRYPwRQ31SCw6TpuioAFJUPCZgt7st
- tI0+s1hK/EznfC69MvqG0BZY0mG27KuQb2HVfa6g64IbmhTnwGlq5PhJEGYckYv2HvmTUq6bEAp
- q2QbjsVUk81DDty6bGRSo28SBH5VDubnFQMmztS2IF02cIeMybc68LiUMNExRXGA8PmzTkGirMR
- OUwc+V1GSW6UGw0ldaIPRrMmYA0B08TLkR8I2d7nRAct/YwlcoSA==
-X-Received: by 2002:a05:6a20:c997:b0:3bc:5284:4859 with SMTP id
- adf61e73a8af0-3bfed237941mr8541031637.13.1783024999465; 
- Thu, 02 Jul 2026 13:43:19 -0700 (PDT)
-Received: from stoup.. (174-21-129-215.tukw.qwest.net. [174.21.129.215])
+ bh=wjtzt6622TmlKL2+S/5LJwuIq5VNHw3Gnueyp4reLWk=;
+ b=ttlWIkG40vrurl+wBhX+qsyZIz8JwnTykl97azSHgHjekT4VXNtb7hhL6/pR+O/n2s
+ WQoIWPTrN8xfN93FdQbHGG4ICd7JwyF45UyHFXiGHve8msqwqR0SP2AA2MMs4uELnqHh
+ iLg5qBrX5zLl/lwVM2rz0aSt4ZmtflXWFx7/GCKdVi0Gibi0yNAozhCcNbrtHu9JsK7n
+ wC1FZfjDtEAUwBUfiaE+K8x5um8y7/m0TycYpW6S6t9vVISI/vs7fHj7wpWxf1LIqqYy
+ cuRjsc97UPqQj0DrDJNHLZJ89irr1km9WIi7z4uGxx41BhlWrMTXiltfBBOOZokC/F57
+ KR5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1783031586; x=1783636386;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=wjtzt6622TmlKL2+S/5LJwuIq5VNHw3Gnueyp4reLWk=;
+ b=b9CaLre60jMahnQtcz4UaadsxbYWUHtbfzixk7sdEoYAkvxawj5T0CJiDcD/zaKUHh
+ lffeODoR4fGj0k7UatUXfHRElM6LERpLhGNikF0Vx3yYa2XyPp4jBHf+/OyATQFseFYF
+ 55k+RUPhIHWNsf39L7h48rzNVjiDRei+mv1fHqFXfXwUog92vuY6PDDrqz8vtP+DpXvO
+ 5wPLwM8uaMwhMFX/sMjFx+I+p9rQx2DxAu4kbtb6EFg6pdhVWwMo7bgy+jSj3BBlEtvA
+ 4mN4rgJlXhQq78CBV+s3DynT4Mm4pf6xKvZ6R2XWA+zEKxguzt18xGkynslQESzx8bq4
+ SsGQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RrCxTMWGOttK/4chiJA4UyQFuApYKvzk66y2egFuwJorZhYXO7t5dVBugRl3wHcUcUK9zLr/7Ldnw==@nongnu.org
+X-Gm-Message-State: AOJu0YwWpvvCuuojCKieyZ5VG2J6V12zIJ2JKl5/0QHosxzdsXTbFl9u
+ nbuabBD2OL9S5JGSN5ajtDnvuoX/rumJMLnJmAVQkn7wyHE5lZ2wZ0Qkphur1CThaA4=
+X-Gm-Gg: AfdE7cnuG4r1+3NlSCA5zChKFM8bxk4TvuRM4wpYR3q8FY9g5wAGa836RZrvrlCZAHX
+ zQn1U9qM7Y49tC75HxOIHdAVVd8XBVbqGX6QZ18jRHm4GdUukXvQYYkemskIvkHakuPZ+zozvtf
+ +cgvYVY6a5qMNzyCfqrvPXkwk/dYYv9/i+uA/LOUT5bBNyMaG+rEjO5mI2I0tq9cuvPxcgklHPL
+ kY5fmHFk2MAPxQOJQWu/o2BsHMwlQwpA/CPwlo9UIoRCjhoyJu1srBLWoljB3vpMnAgc9tj1qzM
+ PE4AEa1a1JaCS/uJynnl+hVgQrV874SQO4qnY1PVmD4+moeSig3CVOcr2ZOjj0DAFMf/BGffUHs
+ awXwPRoa1s02Utsz4AVZc90xMYWtDlE2rJ0XDJ1HaVrKI/ozVE++1haVEk+yxk5k8n/riVv8YP9
+ JeJu9v+ATUfpJ2F4yObLTL6pdutRM/Mk+zbWMFFgVKTnClU8cEl7ByaJALdg==
+X-Received: by 2002:a17:902:fc43:b0:2c6:9f14:c50c with SMTP id
+ d9443c01a7336-2ca7e6a0e95mr86171705ad.13.1783031586196; 
+ Thu, 02 Jul 2026 15:33:06 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-129-215.tukw.qwest.net. [174.21.129.215])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c9e921cd139sm1678941a12.23.2026.07.02.13.43.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2026 13:43:19 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 04/15] target/arm: Implement BFMOP4 (non-widening)
-Date: Thu,  2 Jul 2026 13:43:03 -0700
-Message-ID: <20260702204314.79224-5-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260702204314.79224-1-richard.henderson@linaro.org>
-References: <20260702204314.79224-1-richard.henderson@linaro.org>
+ d9443c01a7336-2ca9a8dadd7sm19081125ad.6.2026.07.02.15.33.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 02 Jul 2026 15:33:05 -0700 (PDT)
+Message-ID: <8ea31c58-09ef-434d-a522-b743ece14c41@linaro.org>
+Date: Thu, 2 Jul 2026 15:33:04 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 09/11] target/arm: Implement CPACR.ASEDIS and HCPTR.TASE
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20260702184019.3431139-1-peter.maydell@linaro.org>
+ <20260702184019.3431139-10-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260702184019.3431139-10-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,126 +105,125 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu-features.h        |  5 ++++
- target/arm/tcg/helper-sme-defs.h |  4 +++
- target/arm/tcg/sme_helper.c      | 42 ++++++++++++++++++++++++++++++++
- target/arm/tcg/translate-sme.c   |  8 ++++++
- target/arm/tcg/sme.decode        |  1 +
- 5 files changed, 60 insertions(+)
+On 7/2/26 11:40, Peter Maydell wrote:
+> +static int neon_exception_el(CPUARMState *env, int cur_el)
+> +{
+> +    /*
+> +     * Return the EL to trap to for A32 Neon specific traps
+> +     * (CPACR.ASEDIS and HCPTR.TASE). In the pseudocode these
+> +     * are checked in the same function as the more general trap
+> +     * bits that we handle in fp_exception_el(). Fortunately it
+> +     * is always the case that if the trap/enable bits specify
+> +     * taking an exception to different ELs for the Neon-specific
+> +     * insns and the general fp insns then the trap to the lower
+> +     * of the two ELs has priority, so we can calculate the two
+> +     * target ELs separately and pick the right destination later.
+> +     * Compare AArch32_CheckAdvSIMDOrFPEnabled().
+> +     */
+> +    uint64_t hcr_el2 = arm_hcr_el2_eff(env);
+> +    bool cpacr_asedis = FIELD_EX64(env->cp15.cpacr_el1, CPACR, ASEDIS);
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 579a99122b..d8e0dcd0f8 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1797,6 +1797,11 @@ isar_feature_aa64_sme_f16f16_or_f8f16(const ARMISARegisters *id)
-     return isar_feature_aa64_sme_f16f16(id) || isar_feature_aa64_sme_f8f16(id);
- }
- 
-+static inline bool isar_feature_aa64_sme_mop4_b16b16(const ARMISARegisters *id)
-+{
-+    return isar_feature_aa64_sme_mop4(id) && isar_feature_aa64_sme_b16b16(id);
-+}
-+
- static inline bool isar_feature_aa64_sme_mop4_f16f16(const ARMISARegisters *id)
- {
-     return isar_feature_aa64_sme_mop4(id) && isar_feature_aa64_sme_f16f16(id);
-diff --git a/target/arm/tcg/helper-sme-defs.h b/target/arm/tcg/helper-sme-defs.h
-index 8a2ff88d49..05ccb0d1e2 100644
---- a/target/arm/tcg/helper-sme-defs.h
-+++ b/target/arm/tcg/helper-sme-defs.h
-@@ -367,3 +367,7 @@ DEF_HELPER_FLAGS_5(sme_ah_fmop4s_ss, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst,
- DEF_HELPER_FLAGS_5(sme_fmop4a_dd, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
- DEF_HELPER_FLAGS_5(sme_fmop4s_dd, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
- DEF_HELPER_FLAGS_5(sme_ah_fmop4s_dd, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
-+
-+DEF_HELPER_FLAGS_5(sme_bfmop4a_hh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
-+DEF_HELPER_FLAGS_5(sme_bfmop4s_hh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
-+DEF_HELPER_FLAGS_5(sme_ah_bfmop4s_hh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
-diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
-index 81ec7ccfa1..0de7dd84e5 100644
---- a/target/arm/tcg/sme_helper.c
-+++ b/target/arm/tcg/sme_helper.c
-@@ -2761,3 +2761,45 @@ void HELPER(sme_ah_fmop4s_dd)(void *vza, void *vzn, void *vzm,
- {
-     sme_mop4(vza, vzn, vzm, fpst, desc, sizeof(float64), inner_ah_fmop4s_dd);
- }
-+
-+static void inner_bfmop4a_hh(void *vd, void *vn, void *vm, void *vinfo)
-+{
-+    bfloat16 *d = vd, *n = vn, *m = vm;
-+    float_status *fpst = vinfo;
-+
-+    *d = bfloat16_muladd(*n, *m, *d, 0, fpst);
-+}
-+
-+void HELPER(sme_bfmop4a_hh)(void *vza, void *vzn, void *vzm,
-+                            float_status *fpst, uint32_t desc)
-+{
-+    sme_mop4(vza, vzn, vzm, fpst, desc, sizeof(bfloat16), inner_bfmop4a_hh);
-+}
-+
-+static void inner_bfmop4s_hh(void *vd, void *vn, void *vm, void *vinfo)
-+{
-+    bfloat16 *d = vd, *n = vn, *m = vm;
-+    float_status *fpst = vinfo;
-+
-+    *d = bfloat16_muladd(bfloat16_chs(*n), *m, *d, 0, fpst);
-+}
-+
-+void HELPER(sme_bfmop4s_hh)(void *vza, void *vzn, void *vzm,
-+                            float_status *fpst, uint32_t desc)
-+{
-+    sme_mop4(vza, vzn, vzm, fpst, desc, sizeof(bfloat16), inner_bfmop4s_hh);
-+}
-+
-+static void inner_ah_bfmop4s_hh(void *vd, void *vn, void *vm, void *vinfo)
-+{
-+    bfloat16 *d = vd, *n = vn, *m = vm;
-+    float_status *fpst = vinfo;
-+
-+    *d = bfloat16_muladd(*n, *m, *d, float_muladd_negate_product, fpst);
-+}
-+
-+void HELPER(sme_ah_bfmop4s_hh)(void *vza, void *vzn, void *vzm,
-+                               float_status *fpst, uint32_t desc)
-+{
-+    sme_mop4(vza, vzn, vzm, fpst, desc, sizeof(bfloat16), inner_ah_bfmop4s_hh);
-+}
-diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
-index b6c49b9993..f833975875 100644
---- a/target/arm/tcg/translate-sme.c
-+++ b/target/arm/tcg/translate-sme.c
-@@ -2025,6 +2025,14 @@ static bool do_mop4_fp(DisasContext *s, arg_mop4 *a, MemOp esz,
-     return true;
- }
- 
-+static gen_helper_gvec_3_ptr * const bfmop4_hh[3] = {
-+    gen_helper_sme_bfmop4a_hh,
-+    gen_helper_sme_bfmop4s_hh,
-+    gen_helper_sme_ah_bfmop4s_hh
-+};
-+TRANS_FEAT(BFMOP4_hh, aa64_sme_mop4_b16b16,
-+           do_mop4_fp, a, MO_16, FPST_ZA, bfmop4_hh)
-+
- static gen_helper_gvec_3_ptr * const fmop4_hh[3] = {
-     gen_helper_sme_fmop4a_hh,
-     gen_helper_sme_fmop4s_hh,
-diff --git a/target/arm/tcg/sme.decode b/target/arm/tcg/sme.decode
-index 3b7d8e9430..6021803ca0 100644
---- a/target/arm/tcg/sme.decode
-+++ b/target/arm/tcg/sme.decode
-@@ -1101,6 +1101,7 @@ LUTI4_s_4b      1100 0000 1001 101     1 00 00 00 ....0 zd:5    \
- @mop4_o3        .... .... ... m:1 .... .... .. n:1 ... . s:1 . zad:3 \
-                 &mop4 zm=%mop4_zm zn=%mop4_zn
- 
-+BFMOP4_hh       1000 0001 001. ...0 0000 00.. ..0. 100.         @mop4_o1
- FMOP4_hh        1000 0001 000. ...0 0000 00.. ..0. 100.         @mop4_o1
- FMOP4_ss        1000 0000 000. ...0 0000 00.. ..0. 00..         @mop4_o2
- FMOP4_dd        1000 0000 110. ...0 0000 00.. ..0. 1...         @mop4_o3
--- 
-2.43.0
+CPACR.AESDIS overlaps CPACR_EL1.TCPAC, so we're missing a
+check for arm_el_is_aa64(env, 1), when cur_el == 0.
 
+> +    bool hcptr_tase = FIELD_EX64(env->cp15.cptr_el[2], HCPTR, TASE);
+> +
+> +    if (arm_feature(env, ARM_FEATURE_NO_NEON_TRAPS)) {
+> +        /* This CPU doesn't implement the trap bits (Cortex-A8) */
+> +        return 0;
+> +    }
+> +
+> +    /*
+> +     * CPACR doesn't exist before v6, but neither does Neon, so we can
+> +     * assume that if we're testing this then the trap exists.
+> +     */
+> +
+> +    if (arm_feature(env, ARM_FEATURE_EL2) && arm_el_is_aa64(env, 2)) {
+> +        /*
+> +         * The AArch64 CPTR_EL2 has no equivalent to HCPTR.TASE; only
+> +         * an AArch32 EL2 can trap Neon specifically.
+> +         */
+> +        hcptr_tase = false;
+> +    }
+> +
+> +    /*
+> +     * NSACR.NSASEDIS makes the effective values of HCPTR.TASE and
+> +     * CPACR.ASEDIS be 1 in NonSecure state. NSACR has no
+> +     * effect unless EL3 exists and is AArch32.
+> +     */
+> +    if ((arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
+> +         cur_el <= 2 && !arm_is_secure_below_el3(env))) {
+
+Note extra ().
+
+> +        if (FIELD_EX32(env->cp15.nsacr, NSACR, NSASEDIS)) {
+> +            cpacr_asedis = true;
+> +            hcptr_tase = true;
+> +        }
+> +    }
+> +
+> +    /* CPACR is ignored if E2H+TGE are both set */
+> +    if ((hcr_el2 & (HCR_E2H | HCR_TGE)) != (HCR_E2H | HCR_TGE)) {
+> +        if (cpacr_asedis) {
+> +            if (!arm_el_is_aa64(env, 3)
+> +                && (cur_el == 3 || arm_is_secure_below_el3(env))) {
+> +                /* Trap from Secure PL0 or PL1 to Secure PL1 */
+> +                return 3;
+> +            }
+> +            if (cur_el <= 1) {
+> +                /* trap from EL0 or EL1 to EL1 */
+> +                return 1;
+> +            }
+> +        }
+> +    }
+
+I wonder if some reorg is in order.
+
+     bool cpacr_aesdis = FIELD_EX64(...);
+     bool hcptr_tase = FIELD_EX64(...);
+
+     if (arm_el_is_aa64(env, 3)) {
+         if (arm_el_is_aa64(env, 2)) {
+             /* CPTR_EL2 has no equivalent to HCPTR.TASE */
+             hcptr_tase = false;
+         }
+         if (arm_el_is_aa64(env, 1)) {
+             /* CPACR_EL1 has no equivalent to CPACR.AESDIS */
+             cpacr_aesdis = false;
+         }
+     } else if (cur_el == 3 || arm_is_secure_below_el3(env)) {
+         if (cpacr_aesdis) {
+             /* Trap from Secure PL0 or PL1 to Secure PL1 */
+             return 3;
+         }
+     } else if (arm_feature(env, ARM_FEATURE_EL3)) {
+         if (FIELD_EX32(env->cp15.nsacr, NSACR, NSASEDIS)) {
+             cpacr_asedis = true;
+             hcptr_tase = true;
+         }
+     }
+
+     if (cur_el <= 1 && cpacr_asedis) {
+         return 1;
+     }
+     if (cur_el <= 2 && hcptr_tase) {
+         return 2;
+     }
+     return 0;
+
+     /* TODO since arm_el_is_aa64 is non-trivial, perhaps */
+
+     switch (arm_min_aa64_el(env)) {
+     case 1:
+         cpacr_aesdis = false;
+         /* fall through */
+     case 2:
+         hcptr_tase = false;
+         break;
+     case -1: /* !arm_feature(ARM_FEATURE_AARCH64) */
+         ...
+     }
+
+
+r~
 

@@ -4,154 +4,167 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0A1FC43458
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Jul 2026 13:57:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68911C43458
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Jul 2026 14:11:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfeNP-0002dO-UR; Fri, 03 Jul 2026 09:56:19 -0400
+	id 1wfebR-0004S3-O5; Fri, 03 Jul 2026 10:10:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.caveayland@nutanix.com>)
- id 1wfeNL-0002ak-FU; Fri, 03 Jul 2026 09:56:17 -0400
+ id 1wfebQ-0004Rm-Lz; Fri, 03 Jul 2026 10:10:48 -0400
 Received: from mx0a-002c1b01.pphosted.com ([148.163.151.68])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.caveayland@nutanix.com>)
- id 1wfeNJ-0006gH-0n; Fri, 03 Jul 2026 09:56:15 -0400
-Received: from pps.filterd (m0127837.ppops.net [127.0.0.1])
+ id 1wfebO-0002du-HX; Fri, 03 Jul 2026 10:10:48 -0400
+Received: from pps.filterd (m0127839.ppops.net [127.0.0.1])
  by mx0a-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6635utX41961896; Fri, 3 Jul 2026 06:55:57 -0700
+ 6636sFtL2069494; Fri, 3 Jul 2026 07:10:36 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
- content-transfer-encoding:content-type:date:from:in-reply-to
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=
- proofpoint20171006; bh=rK4f1RkjvmrhQirHky5BmpR49gENDcoCIecVi0nja
- pk=; b=qRiIxwcCmcaadi1bDrPizJkySiopc9Rn2bYOuiUSPxmm0V7Em23rXqjMG
- gaRu5yQvCtYhmlabo/eomXlqBtOD3LnFRSjqqPMTp1UQF3kPMAHZrx0dNCtE7msP
- 0xQCvXFTnzXzzJp/Hm9q3iWvvV5MkZHUQG+KJ79shYwhODbrv7/47Ffh7h7VyBUP
- MkQD2nJrBDsWMBeJr1s78SsTLSsxINk8z9e/18/MaHMrdxx04f7+EwnNO4OqU0xr
- Tpjr33h6xNPh5DNgGcwnkI6M3n/43iZZo+mXdD7FYApLE8Pbe/jPmc9JXTtcun08
- 5ydIj5qXvBWmnNJN4LcJCdwCCfBpw==
-Received: from dm1pr04cu001.outbound.protection.outlook.com
- (mail-centralusazon11020133.outbound.protection.outlook.com [52.101.61.133])
- by mx0a-002c1b01.pphosted.com (PPS) with ESMTPS id 4f57ebdr0r-2
+ proofpoint20171006; bh=pDCGHeyNc4UNkJ1/2bM6/ZAyr1INWb/pNlWQQhIFa
+ nQ=; b=bsCa9fOQa1qd2eLzHAQ6fL7XtHx6nFwfwdNB/KwG6rsCPMJWfMfdJyCm/
+ PNDfedX7c/J4krDbxlXQ9ioIkgpkmW/q9+xGod2m1p+KvyQzguPiv9QF/3cZ0XKS
+ kLp6pgPkLsOBqTSfvMMRMu6rfHJF4yXdzM6V82qGZoEIDqyqmmwGJzYU4JZmEaMO
+ ZJWKW6jBJUXz5ARUhCZvGXUnYBhVMmge+xjCNKrP8zx5luCSp8p+d/241fy+4slu
+ MTplZHHzFGr3bzTI/Aus1C8T6LKRTKoWOtfapTmYxlkEK+lMZvBjQDsCvSHGRT41
+ Na0I7j0c1ULIuSamUxDQJYp1SAqeQ==
+Received: from bl2pr02cu003.outbound.protection.outlook.com
+ (mail-eastusazon11021114.outbound.protection.outlook.com [52.101.52.114])
+ by mx0a-002c1b01.pphosted.com (PPS) with ESMTPS id 4f687k0ufp-1
  (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Fri, 03 Jul 2026 06:55:57 -0700 (PDT)
+ Fri, 03 Jul 2026 07:10:36 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=PNmE9CDq9bF1kTNURu3AvG+twkWe/Ok+umEfiC5gtS3q/2iOGk6Bp9UQQnKMHsw8p+ZKMF11uoZnm91D/Oxn6GsQ9uaw2qiw2hsdNJeU+oPRtxdpTsyZfgYkPGJn7BHK0ovT93DGYGkP9XKhxWiIn4Dt4YKMU0UyBv08YLqtd7I8Rge+WWtvIcAF29dP4xOfzySTSp19Q7nnx+y2z81alQfYE66ir37MCfYEkdadBOlGSa9wSM4aJHiFwPmb4n+DYxC0TyBuilL1ylAj28n3OvqKQNicXmwYI8x3y8XyDuYcfEJo31RKwDuDO7qbRhn/U19xkATBz8Tx4K71+MYsYg==
+ b=JeMw96BsXqfQrHbj7Gjb4GBJlA1lqKcDKLziH7Pc7jZiR0ci2Xd5EZySeFAkkKmdTtITho6Yk9aEp+FK/06JDxHdLeN03o5SmX65x9BCPfRPgoWy3RJRBjlmMIUhXIv7qUJYi/qme+cQEFevHmKw92I5Rq8Jy0obaiP5//wvJ8CLm9U+LqnRUMwFlr5GjsiWHRvsUf3pzOsufw9OAAdqTGzJ63YGJoCFYmQtZAXPJRDQVHOwfQ6ZJrTjdcv2jzzxOxJF4A3t7T4AM7bjJzn96oDzJuFMiCvIyQhUQtdRUBRCd9x2YjVt6GKnotWyHPjR+x4TMR6U5XjnwYMAPglR6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=rK4f1RkjvmrhQirHky5BmpR49gENDcoCIecVi0njapk=;
- b=Fwl9/2adgrx2IYfBZ+iBdpnuJDsi1748c4CB+U46GVkFVct3VwP31KfVJrVdCGThWpFmejA6ExwC3yPnoUPT6ESNNO3H0GbCvbv0cExzqUXk+rgLiwHCOhzD4gOyg5p9JfQTvd95c1XIufO/jp8iGUs+xXzMZBG631xdPUW7S1gx1S3YJD2pIEwWxN3KU0wmtQrvzuq7TcqrzZIwXLXNFGmw/ibRM9UQ+IFi3/LO5fsGzv7OQFVzjV4nu9ZNtjFtmfhIY0Y00fg404xD6ISJLsyktiMEKmBATju0U56H+H5qQzi6u8cMvg44tcOBnjV4knfNeXUfQr+aAUAfhLBCGw==
+ bh=pDCGHeyNc4UNkJ1/2bM6/ZAyr1INWb/pNlWQQhIFanQ=;
+ b=bQCFHyhy1Q3UrajPzLT30+cqUyYqvozL6IJVgFHyCCZDrdQxKLGQMF0iNCm8oCwsVGuCHk2D5Jy+gjPvaRX6quj+mU5GnKgiPpu1meoQF07H284Hcvu5dJis+OseertKCrrkjG/skjli0CkmIjbeP1frUv5RZxIoiXJsWwC9OrHeFQMhyecPV56uO3UxLoNIUBCePnEONVwEkMbJ2O0Z3CiI0oXfzz/1IRXu3SD0JgBns0VVQPaKHMWHaLVKsFdqBa20xaZ4eAdekBtlknq0x5WS1rSWfsuZL21NH9pX+zk50gbAKQuO7IUcFUdcX6VczTpMzgv0RAd5RwnEl1zYcw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
  dkim=pass header.d=nutanix.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rK4f1RkjvmrhQirHky5BmpR49gENDcoCIecVi0njapk=;
- b=sqJ7LZuTNuwfdgjEgVOBqrsDIjNVfd9HEEQMvdU0fYmFatX5q5j/DS4xdfrRafpx1Zk8o9snGfzVk6NAL5rGuC65WSjs2CJXS7w/RgUfQR/NXNk0rzFW7TyxnQuFj+dMahYLUrsyauagqHG+H/13wD+llQvS/f87i9dQAy/UuRylCbRwLFomWmDqxOTxmmF6UMn7QbCkvyVT4b81SfuMpCeK2/X6aX1gR/RQ747yOEC1gJcBq5WuqAgqtIRapbLNfkLmtOtQZ6yfRLKXOPuhK7+g/KkL51PiUCxsc6+9BxQyG7kZj2MWBoK272eleGiknfCHeq7kFfIZA211rUjmWg==
+ bh=pDCGHeyNc4UNkJ1/2bM6/ZAyr1INWb/pNlWQQhIFanQ=;
+ b=qAYjE5KrLn41tAA73wNv7U4TBK78vB4mzjA13AcwllPozqQAexr510lXj1e3KFQhmTDhrgwr6TGM0kqh5mkO6DrwNtl0k9GWhiSgL7XNd3QL9qW6x0+saXJPhu0DRV7Onc9riBUioQ3kCh4RZNYWGma0usvqvhBMR6rNWvHt/Bz8Xdu0+exfAMQkrigGDjEDcJMEdmU9C/A7dIqNjej1yIYJ3fIDx7OIKJbhroDRQbhmghqAz+Vt2ppo3qyaSLeAD9sgIW60p2h+T8CCHz53S1/UeffIJ7Cxka9N00ybsLozRKH7FBNPsNcU+aYrbwmzUgMpeDkZen6v2C0Np65hTA==
 Received: from PH0PR02MB7159.namprd02.prod.outlook.com (2603:10b6:510:16::8)
- by CY5PR02MB9016.namprd02.prod.outlook.com (2603:10b6:930:34::18) with
+ by BL0PR02MB6483.namprd02.prod.outlook.com (2603:10b6:208:1cb::19) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.159.19; Fri, 3 Jul
- 2026 13:55:54 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.11; Fri, 3 Jul
+ 2026 14:10:34 +0000
 Received: from PH0PR02MB7159.namprd02.prod.outlook.com
  ([fe80::8e97:bc32:822c:b250]) by PH0PR02MB7159.namprd02.prod.outlook.com
  ([fe80::8e97:bc32:822c:b250%3]) with mapi id 15.21.0181.010; Fri, 3 Jul 2026
- 13:55:54 +0000
+ 14:10:33 +0000
+Message-ID: <faaad8c7-e879-474f-8b32-a17d3af060cf@nutanix.com>
+Date: Fri, 3 Jul 2026 15:10:29 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/1] hw/adc/npcm7xx_adc.c: convert NPCM7XX_ADC object
+ props to class props
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: kfting@nuvoton.com, wuhaotsh@google.com, alistair@alistair23.me,
+ berrange@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20260625111201.1645847-1-mark.caveayland@nutanix.com>
+ <20260625111201.1645847-2-mark.caveayland@nutanix.com>
+ <CAFEAcA8or7xgrNvP2G_in3Y7TF_N4s4mxHoU+mPkS5-OsZLMug@mail.gmail.com>
+Content-Language: en-US
 From: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-To: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com, philmd@mailo.com,
- aurelien@aurel32.net, peter.maydell@linaro.org, pbonzini@redhat.com,
- richard.henderson@linaro.org, berrange@redhat.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: [PATCH v2 11/12] hw/acpi/pcihp.c: convert ACPI_PCIHP_PROP_BSEL from
- object prop to class prop
-Date: Fri,  3 Jul 2026 14:53:13 +0100
-Message-ID: <20260703135512.3213964-12-mark.caveayland@nutanix.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260703135512.3213964-1-mark.caveayland@nutanix.com>
-References: <20260703135512.3213964-1-mark.caveayland@nutanix.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: PA7P264CA0120.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:102:34c::18) To PH0PR02MB7159.namprd02.prod.outlook.com
+In-Reply-To: <CAFEAcA8or7xgrNvP2G_in3Y7TF_N4s4mxHoU+mPkS5-OsZLMug@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: LO4P265CA0083.GBRP265.PROD.OUTLOOK.COM
+ (2603:10a6:600:2bd::20) To PH0PR02MB7159.namprd02.prod.outlook.com
  (2603:10b6:510:16::8)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR02MB7159:EE_|CY5PR02MB9016:EE_
-X-MS-Office365-Filtering-Correlation-Id: 24575a20-be4c-4fc4-44b2-08ded90acc30
+X-MS-TrafficTypeDiagnostic: PH0PR02MB7159:EE_|BL0PR02MB6483:EE_
+X-MS-Office365-Filtering-Correlation-Id: 8b54cc4c-ebfd-4497-35a7-08ded90cd91b
 x-proofpoint-crosstenant: true
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|7416014|1800799024|376014|23010399003|56012099006|22082099003|18002099003|921020;
-X-Microsoft-Antispam-Message-Info: UAziUngrsJ2giVknq9IYBwJvTXmrKq8vonc3NdRWX7tK48SpuoIIzJfZDAYAtaZTESyNBqZRbr9N8DVGDCzk6hRemknJ1GN4bVF2jhuvRG0xO0unkgNdLUwm/PafANwMkFCvEly8RcrTKHmYfFabNRF/GhvjO0K3mcK0DeBTyiFxKyR1ZMVNbKd7rMTa4c3LXeBWfU+/BY/wjrY/HHSqzE3u5Ch7yncq9oqJcDvzNzhJv7zUIb2BnCqz+4RBQopFsg9WOI8nncsq5gotsWL4GQEIQllGNqtRoMk+w77It78l1zL6xYpXWs8yrYdWyefIySoGpEcbBA0P05JiNARWutpwbJ+grXxOC7JkTkfncqVLPKOtUVxelCmKxJOGCCtqH6bCEYfu+7loUFNxzn9A0LVkwD6LOJphULZKKnsGleIdWCVGwCFh9jzsIoRDrlsYnJ9mDNmdkI4fWOOlBFtWOOvslXVYMJgFwW0VR9FXF/wJOz291FFVMcnROS/iy79zgUkt2tXtb28M8qtnMHpBdRQsua/rX0A/p6s3p2v1MBu5S8sik8Aw8EkB5ymNANu9SIQ2qgek5knEaVJV4z+K389w8U25XmUYWI8v1oOQRxw06YwXhjEW9wTCdPg43r3TzQthfRFDCTXWf9rULec4V8rEkWh9JuwR4WjsptjlMdJSEaydVEiatBqbqxaiGAGyotr4buICweZsSvAXMNC47w==
+ ARA:13230040|1800799024|366016|23010399003|376014|22082099003|18002099003|6133799003|56012099006|4143699003;
+X-Microsoft-Antispam-Message-Info: +J0aTa05ubCHydJRnREqClk7ZLHR+Oo5qqS82JO/yhX1JNrO+pit3wzq6FvgPQA/qOsZNzjfel+GGhZWNCT1IlpFGnIBylWiuzSv9Uh4zHJkzQAq8yRx/ou7Is2BMOj8CM4tuY75blQU4a09OdfRvw/XoOG8ssrwj/L2JSsv9cWBQJCV4F9GLp83qquBVV19BSXm5CaRJrCnXV2WGxdh3iuicegt6Fj63YmdYwLL7EWs53qusnGE+k+npoY08dI/2fh8SnZpzGVcjpcYEt9JIQj7+aFo8CdaQnrZnVmjMfyXQLL6uHASDi6FXn5OYwXn4B04RcENXzxaObEEyDobLF+F3/VpNOcQ2nI5bOe13vZx8Anv6nKComnyQ8ievMPw3SS/JkVgLxBeZy4346qTIGZXtbqcoYfmH3rxyZn1R+432czTOuJn7gS18gfSlesD1XNc5i5l1bhJSpCU2FnKVDkuymWnW6ZTCdXq/nrvzHT6xiJnYRG8zIY/Fy4jcZpg/phY6tE8AtjDn0u9c/7ivj06QQ9MJmZQs9kUzuHcIeY1UkCCjlqrwFzO6Igxe6bYvLanX7bMB6XCE1E9k0FNkavJ/FCNw5LY4k8je0Ue5NY=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:PH0PR02MB7159.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(7416014)(1800799024)(376014)(23010399003)(56012099006)(22082099003)(18002099003)(921020);
+ SFS:(13230040)(1800799024)(366016)(23010399003)(376014)(22082099003)(18002099003)(6133799003)(56012099006)(4143699003);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?fh6MTL6og39lM/IaQu2VgL1ISKKwoafUsS+QVt7wA2hwlH3uxOT6vqIzDckh?=
- =?us-ascii?Q?u+Ju1b29Bqcb/i67/FzDmH8aVKbJGiYi9Iaz8fdM2tCWw2vY6QN0vb6ISKHu?=
- =?us-ascii?Q?gjgmb/R9eaBu/OqaICZWWMYfP2214lU2W9jZuSmn2RK0N5dWvrgEv2F6pfcS?=
- =?us-ascii?Q?H+a0FiXPKZJhL3zA6E+gCPza2F90+a8U5A9IEeFzpFCJ5KnJDaq37xMpAkbg?=
- =?us-ascii?Q?TdpIw8hz5tu1pZm9WBkhNqK1UCVv7n00AXsuCb6s48NHmv9Ls6Rik50B5U6w?=
- =?us-ascii?Q?CxCwc+xYemfh7GedT+YoixGGUrp8AZG59AoU96EBdDoIAWzzivUMB5rSnwTf?=
- =?us-ascii?Q?42F3wB9K6fQzmUvZFVBDnrtUHoGKEqet3vtjWWCzaR1KmgV/9NZR0kaqwLUg?=
- =?us-ascii?Q?DrAzw6JJYPkL2LygHQXhGJA9m7P1fCedjO8cEA3tNfQDRDdAc4Q85uMdvY0D?=
- =?us-ascii?Q?o+vYaDtdulj/i68rCusendAA6rVGFV0N2ul4+GFJbjH7WjntusBIfU3bd/qe?=
- =?us-ascii?Q?MjK328GoxxGmyl2X4AzKYpduE19ddQdJVfUtEFaTKkTBw+urFuefSEmooLZy?=
- =?us-ascii?Q?0GkFMRJ/dZpNNmPw1NN6yNGBag4XBkdFPC5o05St3wrGYxsbA3Dqp1Imx8NH?=
- =?us-ascii?Q?IqAmi9bHDjeAYfRC71Oh8hLcgWGbvJ05YpxajCCdl0976Qo1j4taAdZ+RlGb?=
- =?us-ascii?Q?zQF0U18Y7r6iuwqgraLA25cLXshtHRa3igK1I8UQQFa1JpEI40Vigj+whnmx?=
- =?us-ascii?Q?i4E0XnoCK4W0GkqVp8qjRHzs1qfs44k6f8sWAmyANw1i/ar6qK0TKIBe/0aq?=
- =?us-ascii?Q?ebeRVxOohkflGXIW9CpQ4NpobYIzQdoTaxD9I+z3ue4x/R67lxs2D1zKPPtA?=
- =?us-ascii?Q?V2wKsoGX5UPWmFxIHyPYZ3BvhOcZy6aSacfc5BL6cdgF/lM0PighX6M0s1Fd?=
- =?us-ascii?Q?b0JU4vEA+qTlbq6CT4r6PwrX1ebjlDSBSJA5F9nOBlsk6HYsnGNK4Ezhrk6m?=
- =?us-ascii?Q?VGITsxPp4AjJr5ghbZ0QBlCv+kPHOSOv6jtYcnVdsN0H3v+1oo9wP9YuAtnv?=
- =?us-ascii?Q?co5AvsG3aUE+syl+eHl43FKrA4Gfa5iK00ZP/Hy5kLeEX2qNsAiXlnH/qEBQ?=
- =?us-ascii?Q?qnMAdIlJ6hI7GqqiBsNQgIiQrlVQOymo9GOLZMNcFy4VGi4U4p1ptfSn7G+6?=
- =?us-ascii?Q?oDS/y0SPTL4cBMakDxAWork3uvKIR5SPJ7kMu/NKggEuHtfncYgh9bv0mRdC?=
- =?us-ascii?Q?+qzhwrA6UqYWOkrrFo/f8IEXTEi3R0YQ92xGTurNiyYuh3PU1IYjQSpNKE82?=
- =?us-ascii?Q?1EcTt2hex7b0vzNUAdvH/pb+Pu08NcWUtjuK5aDKq3d4A4kGP05wbg4Z7zzB?=
- =?us-ascii?Q?lLQ7JyjzSF/pJxyc0uMYVNYDIueIVY0/HpWFaOPoH6aV5NhzbS3t8SvxZBfC?=
- =?us-ascii?Q?J+TlQ9P1x9AIvPmAezLVRTasKrYF3RxRVapxzxRcgzsbQB/b9Z5mzXCkRePz?=
- =?us-ascii?Q?+YUBvVVSllE9Jvt5t9GApJ6TCBa85mkgBJ6psO5AVoid3wgr5p77x7HyAOyQ?=
- =?us-ascii?Q?jSPR8JgqSJLftDJepzcOjFNluYn9/nFX3CexWQuGiIbwfKp3P8oUTQiFg6nG?=
- =?us-ascii?Q?zszNkEYgKhtMCtBZk3IPNKw/bDQoPfSEcUl4MV5elPiytE2ekfEqifHflunp?=
- =?us-ascii?Q?B1eJ18x5CRJ/dStLYsr1jxyRctQowE5gxUy8JMOZ8zqXqp3dxY8FJRB9amRe?=
- =?us-ascii?Q?eiDfc7prxejioClbN61XbEIaKyf082Y=3D?=
-X-Exchange-RoutingPolicyChecked: poki/QHeOFrARDw5dZ6LoqsMddJp/qr8Qyx93LrjTL4xUI3Rh6puXTgs45tXt9QYjMWKHs298/RgNFzX/kQdKptXH1Bq2eJXqygtQxmVYVTkVzViUjxXT9MC+X3OC3cTARu9Ng7QlTJQtWfEfn9McOTdLdJWGB/HAAIXaRwctHX62FFz61RJoNDcDn1+qaTOos/T07I4ZIfC11RVay3RRASIvfmhhrMY3EmMWGOzfW9mnUi4JipwYyJZoKjYqnnkBp9YPrPCRQD2tYKUUFSB9blAsL+GvFq13wfSTd0x5fxY4USe+IYHhyiUo2jVqtdbCKLo1SsAhZiUpFFhvVvWsA==
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RkZGREwyM3dFK3JuMGs1dGgvRFFNZjFOVEtNUXJoN0Zrbm96cWNxTEF6NHVW?=
+ =?utf-8?B?b2lsOWN5UUlhWVFkUkc2VzdhdjJzZGtBbSs0aXhBenI1SXV4K2o1Ums1T1Fu?=
+ =?utf-8?B?Zm1reEdWQlNucloydnJXa3FuMFZ4WjNsTkNxTWVyU0ozd0kydEZZUTkzR1g0?=
+ =?utf-8?B?UTlxR1pLekMvcmFGUkh2R1JRb3c5aHhuTEd3RG9GVDdaaUd1Mm80NDBLMkVK?=
+ =?utf-8?B?Nm1jS2hyalRYMXcxZDVYQ0dtWEJKZlV6Yi9XYzZ0QzJlanUvbXptcXJWOUlN?=
+ =?utf-8?B?eDhCRnQySENyQUtuZWZwZWZwRWpTMFJhK204ekR3cHV3WVZmdXZzV1NaZ0F3?=
+ =?utf-8?B?N0tGeSttbnNzMmZORWl3ajdSTmRXSG1RemF6ZjJaZ09uNDRrSFlGRkZkV3lv?=
+ =?utf-8?B?TUhCL0pnREx3K2YzSFc1dk5scXhwLzMvSFJHbnRJSXQrMGhLVW1EbkR1RjVq?=
+ =?utf-8?B?VzFJOGtwcm8xbHVmRGxFV3hialdQVzRiK0VjR1VDMHNCRWZaaVIwYm1naTdK?=
+ =?utf-8?B?SGYySWF5TDhwRHNFK2h6Mk1hNm90amtaUFo4d0FCMVhMM29FWnFSRkJqL080?=
+ =?utf-8?B?YWpNdUgxV04rbktRWDV4bHZlV0NhUU12bWZmWVhpb2VheVJRaERtUmtPdWJB?=
+ =?utf-8?B?M2ptbGMxaEovM2tNc0JuWXgraDdYT2l6TFAxY2t5cm0wMWpNakJlYWlMMUh5?=
+ =?utf-8?B?OFZEU3U5Sk9uUnlXeGhhekpnNUkzUlY0djZESDVLVWZqZEFXVmpPT2hpVWd4?=
+ =?utf-8?B?N2srdGg3MFRmVjRoZFdDbDRwOU5sOUdod0czVG5rK2pVVTExMjVFZUovUmtw?=
+ =?utf-8?B?S0Y5TmNZUUpqRkZVUFVsdEtVNEE3WWVoWlFwRlVONnZOUWNsQ2RKRjJoa2JH?=
+ =?utf-8?B?eHRpdjFoUXBSYUNWR3FRT05VcGY3WWJuMWVuaXUwV3Fzck9GdTBSdW00RGtQ?=
+ =?utf-8?B?eHpWbE85cW1Jam5NV0UvZ29ZQS80S3R0MlpITzZ3dTBtdUNqRzg5d2o1a1ZE?=
+ =?utf-8?B?cXVwMytRamQ4V094bm1jTEhVczF5ZkZMWEQvUSthNHh5RGI0a3pGckhEblhR?=
+ =?utf-8?B?cS80YTF5Q09kWHp4b1NtSjA3ZEEvU1RlbzFNMW91dGdoQlVNMDdZbzNsVXpB?=
+ =?utf-8?B?R01VSGRZUWNoVDN6bmFTd2pBVmlHbUphS1BraXkwYzhyRnd2ZFhjSW41Z3NP?=
+ =?utf-8?B?V0xPQ1hhUk1iY29sR3R1K2dzanJYeFFwMDdkMUNNTGQzZCs3MjljYjhOM2Rq?=
+ =?utf-8?B?Y1BXMHdhdWRKcnkyYTVRUzk2WkVTNVVETk9vaWtrcksvUnJmTllUYytpZXRu?=
+ =?utf-8?B?S215SmFGZitMNzFTZHRXWGhlYTBIc2VWMmozaE5PNkNIZ3dZSjYzOUYxLzlK?=
+ =?utf-8?B?aitUd1VRQmFLaUloRFdZbU9yeFlBUG5iK3NFN0FXUlBxOVAxVW9ldzBSenpF?=
+ =?utf-8?B?czdIM3JvTzlNVEprNk1JejF6OFIxdkZCWFRhaEpFcTVZdEJNbGdyWitHcHRX?=
+ =?utf-8?B?NnJwSHZOWElJN241UHM0TlhoalhRYXcyZmZHQUlGZ1NQZ2svSldIaU5PQzdL?=
+ =?utf-8?B?R2x5V3pkWGZkZGlROVVKUFY4TGt1cm5XcUxYdTBPdlNGYkdyb1J6Y2I5NExD?=
+ =?utf-8?B?YWtpa2JFTE5PRW1Ea3g5MWZMbkZiS3J5VnJHVGE2SkNCNFNyUmZGSXB4Rkd4?=
+ =?utf-8?B?a2pmZmNsdlFXSXhrQ25NcXZ4WTlYUStRODVNd0k2c3I3aDEyMzJoWWkyNHJv?=
+ =?utf-8?B?SThEWFBWemZGN1FoQTdlVCtDY0pDV0R5NHBiZFk4dEZPek91RXl3ai9xOGFw?=
+ =?utf-8?B?K1VGODNCcll5SVdDQ0NMZFZERCtzd3NzVFZmSjlUcjZBejNlemR2VTFEOFRS?=
+ =?utf-8?B?c0tuNUFRZDJLYlJJNDhGSENyenE0UnppbFVUWXNHenE1V3I1azBBTjBOaDdK?=
+ =?utf-8?B?ZHRhTE9rdGRVcXlzakRWVzFXZzVjam9RSS9uTDFSTlJ0RWpVcEVTN1c4S3Fl?=
+ =?utf-8?B?Z2x0Tllzd1c2SGhNQmluL1A2dEhRWEl1VlJVQ1BNQ2NGbXh0RHp1cWdpNkJT?=
+ =?utf-8?B?Z21abFFDVWlYd1FnQUk4UzBXSGZvRDN2NUVaZm5DbUFMYXlJVCtwSklMeTlF?=
+ =?utf-8?B?VngzeEVQV2cwTGI2UVdhS205ay8zYlVwY3VQVmVzZVgrb3lISGtINGpVS01Z?=
+ =?utf-8?B?LzNNMk5hTjhtUjdvOXJCOGluZlV6eVNRYU5qRWc5RHhFbXBWLy9Xa0pFOXU3?=
+ =?utf-8?B?NTJLYzE2MTRVN2dVWjJkRjlTVnVWVWZWL20wcldKREx3dEIzRU5wQy8wL01N?=
+ =?utf-8?B?ek84SnJCdUU3cm5YVWVxTVJEUzR4UnQ2RmM4d3JtdXUrYlB2M1RFUkxoakIx?=
+ =?utf-8?Q?z8U9GOPZ0b/uAzbQ=3D?=
+X-Exchange-RoutingPolicyChecked: K/KzAe0hZHMSzSW//6HRfJ6ulpLkYA8GiicScDWe9AdsKI7gSKZ5xo1VmvTW2jqSQImmGSRZpzxDaPWXtBKieAKcFBUBPZy70Qr8O5GDtoJttM5YJWPXeww+dUZdfRpEImaUpSXb2cvYeLoGN3b2sudYxRrgyadBPftunDWZTyymlvp+Bgo/avRLQjORJyKLQJBWfIAQHeioAVp0MbTU4FBK0FWNJSTkeKhYTdApZdupaD1dBipsDcbp1d+mJIkNdYsDmTCcrykLzwQho+C71bsN3abHlH0J8KkqHCq7xtYTx+tH+V9x9Zl9/0GS7Y1bdGXizFHkJ0Vt74LUo8fQDA==
 X-OriginatorOrg: nutanix.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 24575a20-be4c-4fc4-44b2-08ded90acc30
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8b54cc4c-ebfd-4497-35a7-08ded90cd91b
 X-MS-Exchange-CrossTenant-AuthSource: PH0PR02MB7159.namprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Jul 2026 13:55:53.2871 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Jul 2026 14:10:33.9113 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: bb047546-786f-4de1-bd75-24e5b6f79043
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: NXi+2f0AHnsuY+1XUlNiLuXc8p7excjPESywbL1S3iCLolz22a39uwfPfCJIQ5kUs0zI5dPEkhqDH5gu0lP0XSlP/Q6ZsJRZc55T9kFZKl4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR02MB9016
-X-Proofpoint-GUID: aYDnSt-MRXKqppiv6Pq44Lx_ghzmIcUk
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAzMDEzNyBTYWx0ZWRfX4eL86/8sYjZJ
- NeKUQ6WQ4j+rbN5AZ+F0euIp7Tm6H5tcaDZPaVr1q6PD8KA0BPkNEw5HAqkp+EkpQtQ5U+PUQun
- jf0n21anUgIBH/d2hBfZM4KIjX/2DbFYrr+SsWcwQ2QJgjCceET1yVi5vRc5ZRxTZgVruxt/H/g
- MpvlvpZBRCExNy6Et21Ei11uh5HOOG3O/KdqjUZhzblynlStqi2rHbV4Wz1yY1mC5Uuod1yjRon
- /kZ4AMfmzCk+sy3UT7SWEVPMfRVy2OLBl7SoUkm3Zfk1ERBPFzGni/eLlXceV/PNYik83Qt8sq5
- wUiHMrPIoZgUghmaPPjjjBTbNYMda8N2DpqBSpQf8KDNWnEQw8z5pMWTAKmNawBzjhVqGLGWfRi
- 8igBMHg7wzmsQKCcNCWcSi5GAKbUG1QpsDtFb3KNtIWJSaLg7QFw8PviZxuuW6/8dIxyDU+j4a+
- tLhlIFH8Ohxs7hmZGlg==
-X-Authority-Analysis: v=2.4 cv=HeokiCE8 c=1 sm=1 tr=0 ts=6a47bf6d cx=c_pps
- a=3l++41Tsbfu3Vy6U+n14cA==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+X-MS-Exchange-CrossTenant-UserPrincipalName: 1QNF97p/I7qn+QxArjPsn8RHtrJbRisGUMKX2DL6X6FXLvTHhfSTDtE4O1cGsMqGwDbIkux2skodCMGNFcKQVHgKV4xiWhEfqv9zAIh+AHI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR02MB6483
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAzMDEzOCBTYWx0ZWRfX41BodrYJmJCh
+ aRuKMc+syc3TS5+ry8JDeY6GDb3Bkj6cGAgFKg4rP5UUf0D1Ogen7ue55LUSSePwmcIfK38S7/K
+ vkCL6321yZ/HMkQ59uYcUTW0NMazUxJr3YKNBc8523s/wB8uX5xBX2v9zuJmfXm2r6/b+WTqRyf
+ mZ/ccpyFvndh/LFiYnCbrqUBg2wuZKBBxK12RJmKLSZvjiBW08pz1m4KOVYcpe+bp26MNUo5rTj
+ iJY8labUdJ3zZSEHHf9/+mNP9Y/S6A6DxgKrxAoj0sJKAjh3f5FF+1tM1mMahgjrOtBAIqGBfNT
+ 6qW3ZthQ3SWusrw1lsrbw9yq1k+ttynIx8OOO5eAeAJ1vlQX2c3oUSUgoxL7k8JOJMwai0b8rjm
+ jn07QKATjQc+uTvfWvkDIB4N8uIViwj3jTGpkjemct7HL7uC+Eve8iweGJTKXNePyTa7d4FsC+m
+ rwOw9b6tRTWZIcxPl3w==
+X-Authority-Analysis: v=2.4 cv=EZz4hvmC c=1 sm=1 tr=0 ts=6a47c2dc cx=c_pps
+ a=iJ0/73tnBOJCmN8OdmQeBQ==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
  a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
- a=xqWC_Br6kY4A:10 a=RAioF0-LDSMA:10 a=0kUYKlekyDsA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=Ap8k9tRZuQ82DLYWQqG7:22
- a=64Cc0HZtAAAA:8 a=P6pLB9acsiBn3nJIo08A:9
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAzMDEzNyBTYWx0ZWRfXxqzX+9hwzyCy
- gn2fhFxQkI1zJpTZauzuDk9ItGr++XXbzDJJKGizqDjy/32dCMwhEuhvIsHVEcJYLK8UVtETJTh
- YkVwHyZq/NDJqs3ussZVZa1hgCrMYlU=
-X-Proofpoint-ORIG-GUID: aYDnSt-MRXKqppiv6Pq44Lx_ghzmIcUk
+ a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=0kUYKlekyDsA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=y4UcunY2MAxhM4LwGdWI:22
+ a=GaQpPoNlAAAA:8 a=64Cc0HZtAAAA:8 a=hd8VEaDZGaa4IoOSaKAA:9 a=QEXdDO2ut3YA:10
+ a=xF5q_uoM5gZT5J3czcBi:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAzMDEzOCBTYWx0ZWRfX31gpBufZxRoo
+ mp+n5LX7w6ImrvJAhi4vRWXz2aWvHAkaOoBayTWPYHIaO/lvs5q2+MZf5+iSevpuh9E3540Z4IM
+ 3Yn/ZhSOPgt3U/3lNpLCUOH74kI0cNY=
+X-Proofpoint-ORIG-GUID: 8HcOWkCEtkYrEqf26HjjyzwE1pY8SjDH
+X-Proofpoint-GUID: 8HcOWkCEtkYrEqf26HjjyzwE1pY8SjDH
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
  definitions=2026-07-03_02,2026-06-26_01,2025-10-01_01
@@ -180,254 +193,145 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Move the ACPI_PCIHP_PROP_BSEL property to the PCIBus object and update all
-callers accordingly.
+On 30/06/2026 09:26, Peter Maydell wrote:
 
-Since the existing logic checks for the existence of the ACPI_PCIHP_PROP_BSEL
-property to enable the relevant ACPI changes, set the type of the underlying
-variable to int32_t with a default value of -1 indicating that the property
-has not been set.
+> On Thu, 25 Jun 2026 at 12:12, Mark Cave-Ayland
+> <mark.caveayland@nutanix.com> wrote:
+>>
+>> Signed-off-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+>> ---
+>>   hw/adc/npcm7xx_adc.c | 77 ++++++++++++++++++++++++++++++++++++++++----
+>>   1 file changed, 70 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/hw/adc/npcm7xx_adc.c b/hw/adc/npcm7xx_adc.c
+>> index 3584c27c75..833e01a913 100644
+>> --- a/hw/adc/npcm7xx_adc.c
+>> +++ b/hw/adc/npcm7xx_adc.c
+>> @@ -20,6 +20,8 @@
+>>   #include "hw/core/qdev-properties.h"
+>>   #include "hw/core/registerfields.h"
+>>   #include "migration/vmstate.h"
+>> +#include "qapi/error.h"
+>> +#include "qapi/visitor.h"
+>>   #include "qemu/log.h"
+>>   #include "qemu/module.h"
+>>   #include "qemu/timer.h"
+>> @@ -229,7 +231,6 @@ static void npcm7xx_adc_init(Object *obj)
+>>   {
+>>       NPCM7xxADCState *s = NPCM7XX_ADC(obj);
+>>       SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+>> -    int i;
+>>
+>>       sysbus_init_irq(sbd, &s->irq);
+>>
+>> @@ -240,15 +241,63 @@ static void npcm7xx_adc_init(Object *obj)
+>>       sysbus_init_mmio(sbd, &s->iomem);
+>>       s->clock = qdev_init_clock_in(DEVICE(s), "clock", NULL, NULL, 0);
+>>
+>> -    for (i = 0; i < NPCM7XX_ADC_NUM_INPUTS; ++i) {
+>> -        object_property_add_uint32_ptr(obj, "adci[*]",
+>> -                &s->adci[i], OBJ_PROP_FLAG_READWRITE);
+>> -    }
+> 
+> In the old style we get to use "adci[*]", which avoids the
+> boilerplate of creating and managing the string for the
+> name with the substituted-in integer value:
+> 
+>          g_autofree char *adciprop = g_strdup_printf("adci[%u]", i);
+> 
+> Is there a way of keeping that with the new setup?
 
-Signed-off-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
----
- include/hw/pci/pci_bus.h |  2 ++
- hw/acpi/pci-bridge.c     |  9 ++++++++-
- hw/acpi/pcihp.c          | 32 +++++++++++++++-----------------
- hw/arm/virt-acpi-build.c |  7 ++++++-
- hw/i386/acpi-build.c     |  7 ++++++-
- hw/pci/pci.c             | 32 ++++++++++++++++++++++++++++++++
- 6 files changed, 69 insertions(+), 20 deletions(-)
+I did include this functionality in v1 (see 
+patchew.org/QEMU/20260624153322.1470576-1-mark.caveayland@nutanix.com/20260624153322.1470576-2-mark.caveayland@nutanix.com/) 
+however Daniel suggested that we should discourage its use and so I 
+removed it for v2.
 
-diff --git a/include/hw/pci/pci_bus.h b/include/hw/pci/pci_bus.h
-index c738446788..186a157dbc 100644
---- a/include/hw/pci/pci_bus.h
-+++ b/include/hw/pci/pci_bus.h
-@@ -56,6 +56,8 @@ struct PCIBus {
-     int *irq_count;
- 
-     Notifier machine_done;
-+
-+    int32_t acpi_pcihp_bsel_val;
- };
- 
- static inline bool pci_bus_is_cxl(PCIBus *bus)
-diff --git a/hw/acpi/pci-bridge.c b/hw/acpi/pci-bridge.c
-index 394a919479..9af939363c 100644
---- a/hw/acpi/pci-bridge.c
-+++ b/hw/acpi/pci-bridge.c
-@@ -23,6 +23,8 @@ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope)
- 
-     if (!DEVICE(br)->hotplugged) {
-         PCIBus *sec_bus = pci_bridge_get_sec_bus(br);
-+        Error *local_err = NULL;
-+        int32_t bsel;
- 
-         build_append_pci_bus_devices(scope, sec_bus);
- 
-@@ -30,9 +32,14 @@ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope)
-          * generate hotplug slots descriptors if
-          * bridge has ACPI PCI hotplug attached,
-          */
--        if (object_property_find(OBJECT(sec_bus), ACPI_PCIHP_PROP_BSEL)) {
-+        bsel = object_property_get_int(OBJECT(sec_bus), ACPI_PCIHP_PROP_BSEL,
-+                                       &local_err);
-+
-+        if (local_err == NULL && bsel >= 0) {
-             build_append_pcihp_slots(scope, sec_bus);
-         }
-+
-+        error_free(local_err);
-     }
- }
- 
-diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-index a91f523c93..31822f6310 100644
---- a/hw/acpi/pcihp.c
-+++ b/hw/acpi/pcihp.c
-@@ -58,8 +58,8 @@ typedef struct AcpiPciHpFind {
- static int acpi_pcihp_get_bsel(PCIBus *bus)
- {
-     Error *local_err = NULL;
--    uint64_t bsel = object_property_get_uint(OBJECT(bus), ACPI_PCIHP_PROP_BSEL,
--                                             &local_err);
-+    int32_t bsel = object_property_get_int(OBJECT(bus), ACPI_PCIHP_PROP_BSEL,
-+                                           &local_err);
- 
-     if (local_err || bsel >= ACPI_PCIHP_MAX_HOTPLUG_BUS) {
-         error_free(local_err);
-@@ -78,18 +78,14 @@ typedef struct {
- static void *acpi_set_bsel(PCIBus *bus, void *opaque)
- {
-     BSELInfo *info = opaque;
--    unsigned *bus_bsel;
-     DeviceState *br = bus->qbus.parent;
-     bool is_bridge = IS_PCI_BRIDGE(br);
- 
-     /* hotplugged bridges can't be described in ACPI ignore them */
-     if (qbus_is_hotpluggable(BUS(bus))) {
-         if (!is_bridge || (!br->hotplugged && info->has_bridge_hotplug)) {
--            bus_bsel = g_malloc(sizeof *bus_bsel);
--
--            *bus_bsel = info->bsel_alloc++;
--            object_property_add_uint32_ptr(OBJECT(bus), ACPI_PCIHP_PROP_BSEL,
--                                           bus_bsel, OBJ_PROP_FLAG_READ);
-+            object_property_set_int(OBJECT(bus), ACPI_PCIHP_PROP_BSEL,
-+                                    info->bsel_alloc++, NULL);
-         }
-     }
- 
-@@ -730,14 +726,16 @@ bool build_append_notification_callback(Aml *parent_scope, const PCIBus *bus)
-     /* If bus supports hotplug select it and notify about local events */
-     bsel = object_property_get_qobject(OBJECT(bus), ACPI_PCIHP_PROP_BSEL, NULL);
-     if (bsel) {
--        uint64_t bsel_val = qnum_get_uint(qobject_to(QNum, bsel));
--
--        aml_append(method, aml_store(aml_int(bsel_val), aml_name("BNUM")));
--        aml_append(method, aml_call2("DVNT", aml_name("PCIU"),
--                                     aml_int(1))); /* Device Check */
--        aml_append(method, aml_call2("DVNT", aml_name("PCID"),
--                                     aml_int(3))); /* Eject Request */
--        nr_notifiers++;
-+        int32_t bsel_val = qnum_get_int(qobject_to(QNum, bsel));
-+
-+        if (bsel_val >= 0) {
-+            aml_append(method, aml_store(aml_int(bsel_val), aml_name("BNUM")));
-+            aml_append(method, aml_call2("DVNT", aml_name("PCIU"),
-+                                         aml_int(1))); /* Device Check */
-+            aml_append(method, aml_call2("DVNT", aml_name("PCID"),
-+                                         aml_int(3))); /* Eject Request */
-+            nr_notifiers++;
-+        }
-     }
- 
-     /* Notify about child bus events in any case */
-@@ -848,7 +846,7 @@ void build_append_pcihp_slots(Aml *parent_scope, PCIBus *bus)
-     Aml *dev, *notify_method = NULL, *method;
-     QObject *bsel = object_property_get_qobject(OBJECT(bus),
-                         ACPI_PCIHP_PROP_BSEL, NULL);
--    uint64_t bsel_val = qnum_get_uint(qobject_to(QNum, bsel));
-+    int32_t bsel_val = qnum_get_int(qobject_to(QNum, bsel));
-     qobject_unref(bsel);
- 
-     aml_append(parent_scope, aml_name_decl("BSEL", aml_int(bsel_val)));
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 99490aa7b1..f6e1776ad0 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -1181,6 +1181,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     AcpiTable table = { .sig = "DSDT", .rev = 2, .oem_id = vms->oem_id,
-                         .oem_table_id = vms->oem_table_id };
-     Aml *pci0_scope;
-+    Error *local_err = NULL;
-+    int32_t bsel;
- 
-     acpi_table_begin(&table, table_data);
-     dsdt = init_aml_allocator();
-@@ -1243,9 +1245,12 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- 
-     aml_append(pci0_scope, build_pci_bridge_edsm());
-     build_append_pci_bus_devices(pci0_scope, vms->bus);
--    if (object_property_find(OBJECT(vms->bus), ACPI_PCIHP_PROP_BSEL)) {
-+    bsel = object_property_get_int(OBJECT(vms->bus), ACPI_PCIHP_PROP_BSEL,
-+                                   &local_err);
-+    if (local_err == NULL && bsel >= 0) {
-         build_append_pcihp_slots(pci0_scope, vms->bus);
-     }
-+    error_free(local_err);
- 
-     if (vms->acpi_dev) {
-         bool acpi_pcihp;
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 2ee061558c..de196f2f4a 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -1197,15 +1197,20 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-     sb_scope = aml_scope("\\_SB");
-     {
-         Object *pci_host = acpi_get_i386_pci_host();
-+        Error *local_err = NULL;
-+        int32_t bsel;
- 
-         if (pci_host) {
-             PCIBus *pbus = PCI_HOST_BRIDGE(pci_host)->bus;
-             Aml *ascope = aml_scope("PCI0");
-             /* Scan all PCI buses. Generate tables to support hotplug. */
-             build_append_pci_bus_devices(ascope, pbus);
--            if (object_property_find(OBJECT(pbus), ACPI_PCIHP_PROP_BSEL)) {
-+            bsel = object_property_get_int(OBJECT(pbus), ACPI_PCIHP_PROP_BSEL,
-+                                           &local_err);
-+            if (local_err == NULL && bsel >= 0) {
-                 build_append_pcihp_slots(ascope, pbus);
-             }
-+            error_free(local_err);
-             aml_append(sb_scope, ascope);
-         }
-     }
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index d3191609e2..1521f37658 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -25,6 +25,7 @@
- #include "qemu/osdep.h"
- #include "qemu/datadir.h"
- #include "qemu/units.h"
-+#include "hw/acpi/pcihp.h"
- #include "hw/core/irq.h"
- #include "hw/pci/pci.h"
- #include "hw/pci/pci_bridge.h"
-@@ -187,6 +188,8 @@ static void pci_bus_realize(BusState *qbus, Error **errp)
-     bus->machine_done.notify = pcibus_machine_done;
-     qemu_add_machine_init_done_notifier(&bus->machine_done);
- 
-+    bus->acpi_pcihp_bsel_val = -1;
-+
-     vmstate_register_any(NULL, &vmstate_pcibus, bus);
- }
- 
-@@ -283,6 +286,30 @@ static GByteArray *pci_bus_fw_cfg_gen_data(Object *obj, Error **errp)
-     return byte_array;
- }
- 
-+static void pci_bus_get_acpi_pcihp_bsel_val(Object *obj, Visitor *v,
-+                                            const char *name, void *opaque,
-+                                            Error **errp)
-+{
-+    PCIBus *bus = PCI_BUS(obj);
-+    int32_t bsel_val = bus->acpi_pcihp_bsel_val;
-+
-+    visit_type_int32(v, name, &bsel_val, errp);
-+}
-+
-+static void pci_bus_set_acpi_pcihp_bsel_val(Object *obj, Visitor *v,
-+                                            const char *name, void *opaque,
-+                                            Error **errp)
-+{
-+    PCIBus *bus = PCI_BUS(obj);
-+    int32_t bsel_val = bus->acpi_pcihp_bsel_val;
-+
-+    if (!visit_type_int32(v, name,  &bsel_val, errp)) {
-+        return;
-+    }
-+
-+    bus->acpi_pcihp_bsel_val = bsel_val;
-+}
-+
- static void pci_bus_class_init(ObjectClass *klass, const void *data)
- {
-     BusClass *k = BUS_CLASS(klass);
-@@ -302,6 +329,11 @@ static void pci_bus_class_init(ObjectClass *klass, const void *data)
-     pbc->numa_node = pcibus_numa_node;
- 
-     fwgc->get_data = pci_bus_fw_cfg_gen_data;
-+
-+    object_class_property_add(klass, ACPI_PCIHP_PROP_BSEL, "int32",
-+                              pci_bus_get_acpi_pcihp_bsel_val,
-+                              pci_bus_set_acpi_pcihp_bsel_val,
-+                              NULL, NULL);
- }
- 
- static const TypeInfo pci_bus_info = {
--- 
-2.43.0
+Are there any known places where we are adding properties where we don't 
+have any loop variable available?
+
+>> -    object_property_add_uint32_ptr(obj, "vref",
+>> -            &s->vref, OBJ_PROP_FLAG_WRITE);
+>>       npcm7xx_adc_calibrate(s);
+>>   }
+>>
+>> +static void npcm7xx_adc_get_input(Object *obj, Visitor *v,
+>> +                                  const char *name, void *opaque,
+>> +                                  Error **errp)
+>> +{
+>> +    NPCM7xxADCState *s = NPCM7XX_ADC(obj);
+>> +    uint32_t idx, val;
+>> +    int res;
+>> +
+>> +    res = sscanf(name, "adci[%u]", &idx);
+>> +    if (res == EOF || res != 1) {
+>> +        error_setg(errp, "unable to parse index from %s", name);
+>> +        return;
+>> +    }
+>> +
+>> +    val = s->adci[idx];
+>> +    visit_type_uint32(v, name, &val, errp);
+>> +}
+>> +
+>> +static void npcm7xx_adc_set_input(Object *obj, Visitor *v,
+>> +                                  const char *name, void *opaque,
+>> +                                  Error **errp)
+>> +{
+>> +    NPCM7xxADCState *s = NPCM7XX_ADC(obj);
+>> +    uint32_t idx, val;
+>> +    int res;
+>> +
+>> +    res = sscanf(name, "adci[%u]", &idx);
+>> +    if (res == EOF || res != 1) {
+>> +        error_setg(errp, "unable to parse index from %s", name);
+>> +        return;
+>> +    }
+>> +
+>> +    val = s->adci[idx];
+>> +    if (!visit_type_uint32(v, name, &val, errp)) {
+>> +        return;
+>> +    }
+>> +
+>> +    s->adci[idx] = val;
+>> +}
+>> +
+>> +static void npcm7xx_adc_set_vref(Object *obj, Visitor *v,
+>> +                                 const char *name, void *opaque,
+>> +                                 Error **errp)
+>> +{
+>> +    NPCM7xxADCState *s = NPCM7XX_ADC(obj);
+>> +    uint32_t vref = s->vref;
+>> +
+>> +    if (!visit_type_uint32(v, name, &vref, errp)) {
+>> +        return;
+>> +    }
+>> +
+>> +    s->vref = vref;
+>> +}
+> 
+> In the old code, we say "I want a uint32 property", and we get
+> one. In the new code we have to have a lot of code here that's
+> manually calling sscanf and doing visitor pattern stuff.
+> Is there a way to say "give me a uint32 property" and have
+> the implementation be done in common for the new style ?
+> 
+>>   1 file changed, 70 insertions(+), 7 deletions(-)
+> 
+> This diffstat makes me want to say we haven't got the
+> APIs for doing this right yet.
+
+Thanks for your feedback. Thinking about this more I've decided that 
+what we really need is direct object_class_property_add_*_ptr() 
+equivalents to the existing object_property_add_*_ptr() functions to 
+help developers easily convert object props to class props.
+
+I've just posted the initial series at 
+https://patchew.org/QEMU/20260703135512.3213964-1-mark.caveayland@nutanix.com/ 
+so I'll re-send this patch with a "Based-on" tag for this series to show 
+the difference in the conversion.
+
+
+ATB,
+
+Mark.
 
 

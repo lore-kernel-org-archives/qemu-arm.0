@@ -4,97 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB416C43458
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Jul 2026 09:28:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6FDCC43458
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Jul 2026 09:31:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfaBt-0004pl-Lb; Fri, 03 Jul 2026 05:28:09 -0400
+	id 1wfaEj-0005Wq-2k; Fri, 03 Jul 2026 05:31:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wfaBr-0004or-ME
- for qemu-arm@nongnu.org; Fri, 03 Jul 2026 05:28:07 -0400
-Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
+ id 1wfaEi-0005WZ-B4
+ for qemu-arm@nongnu.org; Fri, 03 Jul 2026 05:31:04 -0400
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wfaBq-0007fB-7V
- for qemu-arm@nongnu.org; Fri, 03 Jul 2026 05:28:07 -0400
-Received: by mail-yx1-xb132.google.com with SMTP id
- 956f58d0204a3-664b84118d5so547004d50.3
- for <qemu-arm@nongnu.org>; Fri, 03 Jul 2026 02:28:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783070885; cv=none;
+ id 1wfaEg-0000Lh-Qy
+ for qemu-arm@nongnu.org; Fri, 03 Jul 2026 05:31:04 -0400
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-80e4455ba39so2289227b3.1
+ for <qemu-arm@nongnu.org>; Fri, 03 Jul 2026 02:31:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783071061; cv=none;
  d=google.com; s=arc-20260327;
- b=MW0XU4byKdOeyuvMXt3qr5eEpQMgqx/nKji6ZbXI7Hlx3QF1NUs4GmYCiXb9Xqtj4w
- DkkMvlhvrfLpcoB9+QjQlCL0vu3IFXTYxAd7i6tVIdqUw7eiS8EIyIdYR6lMQ+ihFFQy
- 1YRxichxCiwiRrFq47Zrs4q4BGuoaOCSyqPSa3Kzu+Suk0CtLUUnuKbL+IuemRLjaZNM
- wgxLX2OMKkZ6jFWHCNW+h9r4sbrMr6bcN2c9OcQE/UV8RSfETwXEYvgpgLO8Wg/p8nzM
- xDAAXbCQg+uUoJCCbIrR5Y1uj9sQwjTDf0c6bWwMbwXJ/MJ1wka5LBo5U+/aLG2eNfRH
- XzKg==
+ b=EOLj1Z1EZdzCL+2hseCEtwIdKREqZemQqyuN9dnh9s7liK+1uB9R5Xx12JWCPG4lGQ
+ apIr1HMjGaWs6m4xrTu7b2bA1xUUeeJxwVkx9GHYLtxr5aYy5OmLMK7aXxReY0rvjK1A
+ GbV/123I6TukjC9Ht8OknUXK1A8qdOEwAkUZNmFkeAc81fP7k9DZmwxR5XJ+QJ3elseK
+ b+K85v0KxapwWbQycgHcuXXhq9L39o1yFHW+XV2QGWP4zNJmxGZJpZ31BqIKwPNcUbHC
+ NnvmHBGMel1PLcgpsv4E+6BmScMeJlXD3zrqoLuoifXUhyXVEG0LBqtGiYdfuUazWjZg
+ RIxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=VIeqffjGpU/iFP8bZYqFwZot2E/hD0BF0vHSKPooctM=;
- fh=mYFVYZB1KIwKuh2kAWF7ya+xydkgIRG6K2WrcjDol/U=;
- b=XfHae8FhtCTdzmBH089kSiENYhamqYLfrMkbHRkU4ngRQUuZYVUG6Ug/9S7T6azUAW
- WojgZEGMuUpPAO84nIJ2bkQdMX6eK9QB1H1grpluu9bKTKplC+pcHQsS3chDCEvSrJYb
- OM0DO3oO7lEUxXh/h/hqbCh6Mh8nGzdv4eDsD2Np99UQI+HQTP467jmUJyzxZKAMpl11
- A64TkQRPgWdVRNZww4Cno579f787LzcPvpPAXQErp0Pdy/5T5FVYT8Y3Yog7n6LdmrI8
- sC+KqcX5dJimSoEtTO3rr3Kn0uOCquScc5HbY5HGh+9YPwvS6ll9CwwwjtLoJdYkkMIV
- mX+w==; darn=nongnu.org
+ bh=FdWBZixmBsP+1di166ud9LMtZpPssKVltwTPsHp1lng=;
+ fh=HHHz/BVXaUzGzW3x64tCvn/MHAjdtnS252Junw1X1o4=;
+ b=jvcGevLG6QssSyycA84IiWnNs4Vd/+mTQ2aRfUeQYa8VXiBMw4V18cmg+xxRVgaAR6
+ vaVox9O4smacMicqucGzHRCtYIfNuUQZwjLs5M9Di0jan6Kx70djATd3Uc37/WCNYh3n
+ gWLsM7iIuJkTR4sosdU8Qzjb+q94w2bJSxudI7eSk4yXCrqgXFCbNomECmzDI2E+CP36
+ sfI9UF7IMV7f1Hzc68zegf026jLOEC6azuhrzgzcKL2dL7z3C4l9BzKpicgwv+EBWvfW
+ kJN2Ft2K4KSS57TAmRyzBbmYDraNszTKD3g8wPZ7rZI8jKbPCesFw19xSkIOPSe807pF
+ z5fA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783070885; x=1783675685; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783071061; x=1783675861; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=VIeqffjGpU/iFP8bZYqFwZot2E/hD0BF0vHSKPooctM=;
- b=Xg93E9KpXWYeT7qL178d+mDBX4OtIlkSh6tCMVfoTpqqDgbD/6CAmAxlkm3ZxCke6F
- VOrGjK9P5MMoo15iJQKNBcgng6EEmEsvYATGJb/BTGbZKb5AwOdI31dmz5/cvJ7rRsGc
- YwgMbZJdaxuH36WO5rdcbHYlvGzABI6qJVnE8O5XZ/DcOfUu8aUS8OeY8vdE7RRNhy8R
- smtezRcC0MUH3+B6r866/ewLcOT2jP7lu/xHVIVqiNGHpRBSr4eJoPf2qgbLuDRVGPsx
- OU14r91W1SGDRioC9/aX7E3e/K08gYzgVj7SGYMszTwAeyRWjnFmcF/07wP+eGWl467Y
- WB8Q==
+ bh=FdWBZixmBsP+1di166ud9LMtZpPssKVltwTPsHp1lng=;
+ b=PU4f+YZ8/Iyyj9mwrEW94Q00hUsSHZ3PU8Tj/SnfqEUHv2hAD1/a0xxKytXGbhpzIN
+ 3qSGp1p0J1YUN4Hp47fqSONQjCWScDGimjcrHUroIT1TUEUtm2bcd55TuC497sXajBrT
+ Js4svWyRXrUjikWs6ITjsQwgT0mCQ7pvvlH5sQi5BjMdCMhD93sGs589+pseAnUsDazL
+ YohNVrblycOKQhhh2Y4Ck0GwQyxoIMSAJ+WP3JLTWm/srW4uP9P5JObKmr+mBShQaEy6
+ 4KICHIRqLIpCUtkSuUjuWVy35uI7/KgCTLe+I7bLTi+B52rZ6wiGuM8Ea0IwcLFpFniA
+ E14A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783070885; x=1783675685;
+ d=1e100.net; s=20251104; t=1783071061; x=1783675861;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VIeqffjGpU/iFP8bZYqFwZot2E/hD0BF0vHSKPooctM=;
- b=egf1ApSOnjN7upRoVR66P1fOCj9/5t/zDmoGVYM9gGyYI3wagMAsRh8iiv4GWsqnCP
- YYAB6NRwAKpTJtjQTNggzMy6//tcvbYJhFZTg4kEyHN2kmKgPskVB3r1sAlK6n3M5VFd
- HUq6BP/MertedGp4ZKGIQz5mqyVh812t2qTv2TRCNeMSZYRBRusNo+/Cw+NYiN018Jtp
- Ms752gjsQ37Ozg4j8mAQI5gf4avJ3LnvgKGqEzPdtMa6SHt7X27lFQy4RFLZt95POWGS
- KUHg4bO3k4+Gr3U+ApZWEVp7rvniuLNloU31s+BFmxso5pV47YtLQLPJlWQnspApVW4J
- 39Ug==
+ bh=FdWBZixmBsP+1di166ud9LMtZpPssKVltwTPsHp1lng=;
+ b=PRbsIZyZP6VWN9SfVHA9Lt3O5lz5waUUv8K1lHnc47Tb/l31fGjsVAVCEAu8htL5y3
+ eQ5Kb3MOQh9/qdkpZYqV6LgVNECjWguRCthRsGNTtmAnuD0r+siO0GN5f8XkUJlEQ0nO
+ PGoLXiXjGCFMdk3rE17GuHPTvrD3ohttKvENdDuk4R+XjqyINJd6FXgrectyKfcTrPdf
+ hz8DC1EzKBbxOmtpdEsHfWgwzKc5oAA7M6ddrLPP1FMM6WoRr4UiiCtOGHXaEIVvYNPt
+ P3DTfPOiMwQzpL9Vg79fTBLYVmo9s2mrvXMW9AmyQa0WFcwO96ycAr6ZyC40khmeg/G5
+ MrEg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrpIbe5m0UgoFpUtwVm/VmIZ0RpygMU8qd4uG4JARBKw1/Pk7t9ZISms184rlgVn+NddPQF0Nutxw==@nongnu.org
-X-Gm-Message-State: AOJu0YyyJv/ECDJljOoIcP0BlvrlhgiFF6RiK6T3FWgLIs7rjlD34ShG
- jUWqW8p/Hy5rqmc/eNOiNgtG1w6WxYmY7E+DIT+RlAb4FNuPLrUVQvvtPyEhvTL2U0RsgSCJ9v2
- CkXoXr+1MzgrMA/hMUqPxb7nGk7N5SmAMtJDz72ZQrA==
-X-Gm-Gg: AfdE7cl8B8w+SUXaXpnHCvUp1WRBbDwdPW9WrGz8E+2aiyC53Hp2ISY7ohFT14R/QRe
- 7t47PdSP8tH9MhCjEOjgGqegFuYJBeXqcgzoua2/yHw2wInGcqdnEL3O82WC5S/AJIACRax5yHX
- tY9DrmSQAVIqsVYIXf4k7mDetRl1TAaSubS42z1qb+f+PO+gbzFBzJ7eBG60H/0ApPq7DetEP8X
- uSOQvdyNS/DkJIRi9avoECrYBWJgkxcN3Iyl1y1yBeGtz9ktA6jdRo+hKnAxvL2uhIKY4icHsvd
- oz0cMUIHyrDU4chDDARSxwDtrjJblh4vriy0QJIBn9VFUtXuGa86pJuL
-X-Received: by 2002:a05:690e:191c:b0:664:aa85:a7e2 with SMTP id
- 956f58d0204a3-665219b9badmr9431449d50.28.1783070884686; Fri, 03 Jul 2026
- 02:28:04 -0700 (PDT)
+ AHgh+RrqXXbZnl7ZVVb1yow/o8AcaWuvTh201cKqXZ0cdtcpjpsENVLPwwmjpLTK1tWs4jD+xGrnyQTN4g==@nongnu.org
+X-Gm-Message-State: AOJu0YwKesl+UqKbF0f+JOzbS3nKHeWUF7luuOJEppjAd1KLIJTBztvA
+ ISbva2rXI2BwrZSioISAOz0SAqoLogsj2GQ6X/CHh//lBHSQGrF1lw1Lm9VfNL5ojFQ4iqfwjmO
+ DaetjdP6upIqHxnx3++9S6S+OMkp5iX37eANyxduTNA==
+X-Gm-Gg: AfdE7cn+HbIog6rfw/gNmMvhbfSIkVqDE39c49+JF1r44XJkKXZGRis9ACfwiKyEM0K
+ 8CstlsXifSjvUl8HN3uevk19NTVjdxIQ61Qq7GHRlj7JnOm4cZwZiLkrunPqv6gLpw3swpGwTMB
+ tsdBKREVt6TGs7Hn2PYNA6//cINYS+rAd2Ag68dY5bIq8if1IX4HDc2gW5OQeeCIT+HFoyDiZFs
+ xcirG0N77/M1OwD9K4KFYIterY13lYvWlV7DHo+0OEyoaMg4vmsHNBZgga7e0XrPZJGZsyG7kgj
+ FhpKXQmLku9r+Nd8uOaNZp/kDcEn6ISTZaYM9R0LJgVvqhDZYIqGBhFc
+X-Received: by 2002:a05:690c:e184:10b0:7bd:9a25:f39f with SMTP id
+ 00721157ae682-815ba02e8edmr23346737b3.4.1783071061378; Fri, 03 Jul 2026
+ 02:31:01 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260626231738.947317-1-oupton@kernel.org>
-In-Reply-To: <20260626231738.947317-1-oupton@kernel.org>
+References: <20260630-jmac-fprcvt-v3-0-f4840d5e0a7f@linaro.org>
+In-Reply-To: <20260630-jmac-fprcvt-v3-0-f4840d5e0a7f@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Jul 2026 10:27:52 +0100
-X-Gm-Features: AVVi8CdrAH9hTW7Uw_FFbG2yd6d1M-n2ipw5SzsSLISmeK-a9z-qtPnyupq1Vxs
-Message-ID: <CAFEAcA8ry3ZZp0DrjcTwacf+znjrvv7d_bmF4iC0pTrhYSX3bw@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm: Only evaluate SCR_EL3.PIEN if
- ARM_FEATURE_EL3 is present
-To: Oliver Upton <oupton@kernel.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org
+Date: Fri, 3 Jul 2026 10:30:49 +0100
+X-Gm-Features: AVVi8Ccm8X6K1aFq9aJg0bdFYb5jpL4O8FdxN80N3AY33csxKl9lfoI0z3Q95jE
+Message-ID: <CAFEAcA86JezGW8ZDD3snWcM=7nRnJPj=vhcBRrxXCa0TRELB8Q@mail.gmail.com>
+Subject: Re: [PATCH v3 0/6] Implement FEAT_FPRCVT in cpu_max
+To: Jim MacArthur <jim.macarthur@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Alex Bennee <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,51 +117,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, 27 Jun 2026 at 00:17, Oliver Upton <oupton@kernel.org> wrote:
+On Tue, 30 Jun 2026 at 14:17, Jim MacArthur <jim.macarthur@linaro.org> wrote:
 >
-> Running KVM with (as of writing, out-of-tree) support for FEAT_S2PIE
-> on -cpu max gets stuck in an infinite loop of stage-2 permission faults
-> due to the PTW incorrectly using an effective value of 0 for S2PIR_EL2.
+> This introduces new forms of FCVTXX instructions which convert floating
+> point to integer but place the results in SIMD & FP registers, and
+> forms of the [SU]CVTF instructions which convert from integer to FP
+> with a source in SIMD & FP registers. The logic for conversion and test
+> values are otherwise the same as the versions which use general-purpose
+> registers.
 >
-> Similar to how S1PIE is handled, only use the IMPLEMENTATION SPECIFIC
-> value of 0 for S2PIR_EL2 if EL3 is implemented and PIEN=0.
->
-> Fixes: a811c5dafb ("target/arm: Implement get_S2prot_indirect")
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Oliver Upton <oupton@kernel.org>
-> ---
->  target/arm/ptw.c | 9 +++++++--
->  1 file changed, 7 insertions(+), 2 deletions(-)
->
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index 1470de3010..51affba0bf 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -1414,9 +1414,14 @@ static int get_S2prot_indirect(CPUARMState *env, GetPhysAddrResult *result,
->                    PAGE_READ | PAGE_WRITE },
->      };
->
-> -    uint64_t pir = (env->cp15.scr_el3 & SCR_PIEN ? env->cp15.s2pir_el2 : 0);
-> -    int s2pi = extract64(pir, pi_index * 4, 4);
-> +    uint64_t pir = env->cp15.s2pir_el2;
-> +    int s2pi;
->
-> +    if (arm_feature(env, ARM_FEATURE_EL3) && !(env->cp15.scr_el3 & SCR_PIEN)) {
-> +       pir = 0;
-
-There's a hardcoded tab lurking here. checkpatch.pl will
-warn you about those.
-
-> +    }
-> +
-> +    s2pi = extract64(pir, pi_index * 4, 4);
->      result->f.prot = perm_table[s2pi][2];
->      return perm_table[s2pi][s1_is_el0];
->  }
+> Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 
 
-Applied to target-arm.next, thanks. I added a Cc:stable tag
-so we backport it to the stable branches later.
+
+Applied to target-arm.next, thanks.
 
 -- PMM
 

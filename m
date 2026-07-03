@@ -4,133 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74EDCC43602
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Jul 2026 09:38:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C06DC43458
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Jul 2026 09:49:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfaLV-0008Ow-Jx; Fri, 03 Jul 2026 05:38:05 -0400
+	id 1wfaWQ-0003xs-HJ; Fri, 03 Jul 2026 05:49:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wfaLT-0008OW-TH; Fri, 03 Jul 2026 05:38:03 -0400
-Received: from mail-westusazlp170120002.outbound.protection.outlook.com
- ([2a01:111:f403:c001::2] helo=SJ2PR03CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wfaWO-0003x8-OS; Fri, 03 Jul 2026 05:49:20 -0400
+Received: from smtpout1.mo2.mail-out.ovh.net ([79.137.123.219])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wfaLS-00058v-Cm; Fri, 03 Jul 2026 05:38:03 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=uaz+o1bfhCAS6fFZ+boiwoWv4Hy1PA2XCx0wkdK4PFxLP4nHqsqS/dO5tovtNhpWjtCrNZh1bSa35nkqwsOfbvlJY3C1Um1037qSYwe9UR1qm0gSJLP3s5g1Tb2u36RiXT/55gJIBCYkukdrgkoXyoERSy/9YKqZEAcATVH9UdxVBv3xJfQCFIWGZ/CzjSHotz4iyKFfoYX8LBiWtFIMBd4aTV8DsNtSJUDBMjhmUr1pUu5KODb7yXil5M8gCNf0nJPqtQuQOg00R/yDTgDZ4dapj1c4/KSbjfNHBPCUideyR4L0bOYXleehTdrTR/mWILuNUqsPbaV+3kjgEnFfEg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6vs86aFFrWBBuzxawuVWmzMD7XvkPkPNXvjuXcfQO+A=;
- b=aDXHIj8Q7T1EWzYafA5/hKsVSzM75xt30VM7HqDs0wZXUV7vLfxGXf85KOQZCtNC1WxY9Abcj23p7xTlTvY0iycfIj2qZEQxMgX9rU6zXEq0Qh1GEsLfVfkU3BBlPhCx1RW1gCnOWn+Wd7nGhM+21dT9tj26zKzIFzTZOFVuIe6K+ibTpEBbLMyWCyxBMp1aDQc0OQcSNxwMKgDlAW7XyvfScEXYggmixmcTPWSYnTzbjtgU7CYE+cYfIFLPBLfBGEILQrLEYaMUV87wZw1ZNurH4+qO8TjoZ5ES30ezl6IYcSRtDV0Z/vzx/CiQwYBWCVl06kJB9oHXzDxbRZVtkA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6vs86aFFrWBBuzxawuVWmzMD7XvkPkPNXvjuXcfQO+A=;
- b=UzQF+pBjmFqhZR60TcCh1SSd2VVSgQLpOwRFZbXa7Qvs4LyUYvGELOPhWifcXCj1tQRmrZQ6DEsQCNNE9LUij+1A9spozEIdeGJWD82cIfbRaqwTM+IL/QfJ9CGuQJ0J72rUI+fnBtyQlqt0/Qo0s03yzu2JI/zdmbfQeeuKyimb4LlJFg91kM1JyJ/LdCy4vZNVPKp8EBKxKfoISwXq2FRy9++LrjHToEfHf+gLUYP0uCl1sLbFQYcu1cp4ztuCUdn0j1yPW7Z9CaainqrFHKvCNVgzi+TWWneE1O9p4yG4vrljQ+hjox614eot0aAMSJFPGtoFPVNTgp8cQIpRMw==
-Received: from SJ0PR12MB8614.namprd12.prod.outlook.com (2603:10b6:a03:47d::17)
- by LV2PR12MB5725.namprd12.prod.outlook.com (2603:10b6:408:14c::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.8; Fri, 3 Jul 2026
- 09:37:55 +0000
-Received: from SJ0PR12MB8614.namprd12.prod.outlook.com
- ([fe80::fe0a:6e6a:fe60:a43b]) by SJ0PR12MB8614.namprd12.prod.outlook.com
- ([fe80::fe0a:6e6a:fe60:a43b%3]) with mapi id 15.21.0181.009; Fri, 3 Jul 2026
- 09:37:55 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "berrange@redhat.com" <berrange@redhat.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>
-Subject: RE: [PATCH v2 5/5] hw/arm/smmuv3: Enforce alignment of L2Ptr
- according to the span
-Thread-Topic: [PATCH v2 5/5] hw/arm/smmuv3: Enforce alignment of L2Ptr
- according to the span
-Thread-Index: AQHdCTnFQjgYzPXkkUuRTyYodqpLzLZbjKag
-Date: Fri, 3 Jul 2026 09:37:55 +0000
-Message-ID: <SJ0PR12MB86149DC172C5F4F34DEAA1C5ABF42@SJ0PR12MB8614.namprd12.prod.outlook.com>
-References: <20260701091209.2860306-1-eric.auger@redhat.com>
- <20260701091209.2860306-6-eric.auger@redhat.com>
-In-Reply-To: <20260701091209.2860306-6-eric.auger@redhat.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ0PR12MB8614:EE_|LV2PR12MB5725:EE_
-x-ms-office365-filtering-correlation-id: ececa953-d773-46d2-0d23-08ded8e6c2d5
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|1800799024|23010399003|366016|18002099003|22082099003|38070700021|11063799006|4143699003|56012099006;
-x-microsoft-antispam-message-info: etw7Bvh9/5lbvBTOf91aIEppxaOqGu9x/10v2Hw745nEM1/qgZ9lTJCgP2eS92EgPAuj4arrdxdW2lVFkWR3Hhx5CS4lxuA4J1YP6etKWe0umZidYHDAiGnZQLQS1c3wJgtcZIK91qgJXkleEURude05sx3r0Awh08w/iCvvSqlhbDXTtQaeVkpTVAIQ3Cfy4KVepGRBlPxYozrSK8gaTvyhmRq5MK5qstIpBe7C/38FlB5DRW3anLCM/zsAAmermpdCQKgntYEvtzmxgjlZM6zSj1VkqOHdDw/owWM3nyXt+WrX0/3J9KWdD8MJ+x1Psh5XRIFRcTmXphH70Cz6ZkGnv0GRxObwMprZ0n1Ow0ao5yW70JyKr9Nz80qBo6vWpkJw3GyEIDTW3N4iMjEnINOKFEURd8fuh78fM58a+yjGFwQgb+i1j7F3OX3OOBFReqw+NGmGM0GaIBOvAgwf4G6joVChZunyM+BgKC5hIq4ci1t/s9J6Zd4MHCfR3+dMJPK/RFRsuaUCbwLUIBa51vuyNXG/9DXcy0oPewRp+GTUi9lw/IRMEC7r6oCr37WFJiHItNi1flraaPQ9npsF0ZspcVAaBa5dpacWGqOfj4f/FVOebb4Vp/SfKv+Qm4UCgBcV4jrMo7I8O/5qpnYBPPG4HDtfWlcUAy9dwosijmHL0GkHisj3eXqeUMbkjFE0jl3RcnFGJfjz7jkZ/zC90C3g7W6OhfLpjoFkSMn0q4g=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR12MB8614.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(23010399003)(366016)(18002099003)(22082099003)(38070700021)(11063799006)(4143699003)(56012099006);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?ThYBZSbld6NNs/vkuqTmmRlG8x9TBR0MPPUHOv4eUucHCwpt+Q9/2VoA9hOp?=
- =?us-ascii?Q?1z/wxQs1sknyY75Nuzup7yZbRNBvdJeQQtn/e+rRyfJWQAfQZr/Jfd4PIANb?=
- =?us-ascii?Q?V083iZOuB6QJ2/pd4sGD3csKqr7GTggBvvK47o0eUrIkiq+Ifj/ZvipNOwhS?=
- =?us-ascii?Q?hdkqgoSn+6T333DOPPsUugsRObaeulEOdz1IcDYCQCdTtIe3bFxdWp6eNShA?=
- =?us-ascii?Q?wCl9Fn0qaBDvHQc5MuP4/NdDOMY9gk4lKkWL/CSet7+YrdlXBaf03Jfk5Zmg?=
- =?us-ascii?Q?EklOT3oUFV3WTqK+yQvEeoNjwxMiKM2im+BkLHiBUpVUHLdsB37rGpaMFpqG?=
- =?us-ascii?Q?oZAWd+5f9Iqge5AhG3OKAigALbOziVnVul+OraQEbg0tEqqTEKgWKkbLmf5+?=
- =?us-ascii?Q?w9/BCSFfgxvQzjSfszaNRCHCBdM9Hmqnoq3e5NjmByT7PBBaE4H0z/bYXOED?=
- =?us-ascii?Q?JBMO/EsZ/xGglw0QkYqZL4rrcghBEb3+7cX16ZVbnfAknReHZgocWvW7JSlE?=
- =?us-ascii?Q?3+nCdRBL/JAONOm7ScpnWdkWaD/K09rSmkdywJc7J3GXlSCHd4Hr8FPhZTW0?=
- =?us-ascii?Q?/8VooS5JyZBEffZJVYdK4QeTn/QlSOsm+VqWUy/jCxXP+i0bJJeJHm6Bf6f8?=
- =?us-ascii?Q?StcwCsKl4SHehUyulqF/QzmJV6JOf207ld6OxOnWkl7mwDKKcwoKLS7JyX8b?=
- =?us-ascii?Q?t5ANTysOF0mpNiALxcWDijqZzfGygZtFd6aW/MxhxWMT0K/xpsZnmyevO4IN?=
- =?us-ascii?Q?d/X70ZXIyTzJ+j5uPpNkHBdllVTobx9hiu08cxiXvV6iWMYRRp8PV7JusyYz?=
- =?us-ascii?Q?WCFLOLk7El93XVpFoA/J3Aqz5hVlIv/8A8vZcSl/xMPw0LtA3rjow46TY+pC?=
- =?us-ascii?Q?/dfCw2lzfghsTqUJ6QEpGV8HMgd7ar9hvbeUuvCbJkFf9RvSx1nlDAbsNshi?=
- =?us-ascii?Q?Z6lZwE6UblppJ+tNYD1KVbyVEDjDOaiG4N5A885W4ynwph8psSP24B7C4sgA?=
- =?us-ascii?Q?EaQbWI7VjG3Wmn0xGUQVE0fSBTPOkzYcdeTil+htA0JUJONEf+AODr6Xn9Wn?=
- =?us-ascii?Q?wLJvwflspQ/L2xezWwrBKwrAZxfjzM7EVJCi5qlM1bgjV1hG11BUEJCXXtxi?=
- =?us-ascii?Q?mtLCCIOabCYxlsD32U6SFurUtxiyuKICjAzJtJTg8dZXliDxhx+JNxDu948G?=
- =?us-ascii?Q?fDOhQ4lvc0xZjiXB5L8CruMYxrmZYvADXIvl+oBi08wxZyxIvQd+7rmjgnCf?=
- =?us-ascii?Q?YQpJF3mUDq2chdcrR3NGB3meG89nPpMEZlHvzScGIUVTgA2nuxveqYvebfkH?=
- =?us-ascii?Q?d2KQ7nAxc3IjIsJ21wVkSadPCJU996Jb7JIQe4S+YMEMtADxJb7LHeyiP9Ir?=
- =?us-ascii?Q?gob3cAqf1T4aFckS5bygA2n4S29fjJgew9FZaN6/bSccb0BUV6lZ5yEBPKvJ?=
- =?us-ascii?Q?E6p/ddCV652GAJU0EdcxmEVieAJBaJNt7r0uhkOnUHPjRa6yD/V7KE7OsfyU?=
- =?us-ascii?Q?dgPQimQpShyoJB/KOosYgPLZrd8KpDRbBaFDIZbRWEOVLwETZpEOl0dWSn5H?=
- =?us-ascii?Q?ECiNdjOzFgTGsQUGrtzeQBAqGi+rCKfBn210EprBytyhtCUZWzjDaMwRoK2j?=
- =?us-ascii?Q?vjavwDaVnIsIth4c8b+PNIxVo6Sg/JvfV5Pgk3db3p8cMaR8bVqy0ICZNKVi?=
- =?us-ascii?Q?bB5ni/3CD7HDarYtcqfLBbIHvt11Bc8G91xd8gT2vvTQrFcC0uknOwGNWwkd?=
- =?us-ascii?Q?9YSxTKa2hA=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wfaWL-0002Bi-NK; Fri, 03 Jul 2026 05:49:20 -0400
+Received: from director1.derp.mail-out.ovh.net
+ (director1.derp.mail-out.ovh.net [51.210.158.128])
+ by mo2.mail-out.ovh.net (Postfix) with ESMTPS id 4gs88v5Cq2z3x2s;
+ Fri,  3 Jul 2026 09:49:03 +0000 (UTC)
+Received: from director1.derp.mail-out.ovh.net
+ (director1.derp.mail-out.ovh.net. [127.0.0.1])
+ by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <alexander.hansen@9elements.com>; Fri,  3 Jul 2026 09:49:03 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.226])
+ by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gs88v2Qtxz60Mh; Fri,  3 Jul 2026 09:49:03 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.4])
+ (Authenticated sender: clg@kaod.org)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 9C077203D39; 
+ Fri,  3 Jul 2026 09:49:00 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-98R002513ba408-9442-4f3d-ac51-f6d38745d995,
+ 14A058C55D6A6F230EBDD70A449A090D8A18B59A) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <5a1a6a39-a333-49c5-bf99-1d482a839f5a@kaod.org>
+Date: Fri, 3 Jul 2026 11:48:54 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR12MB8614.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ececa953-d773-46d2-0d23-08ded8e6c2d5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Jul 2026 09:37:55.5841 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Hv4/21hzEJfTDOSY1pgKB6YGb8TTH51jTINdoxjQrC1MmHBQHFcYyBkft1FmEAIuB9g7lyAklg/qtPgcoNgPGA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR12MB5725
-Received-SPF: permerror client-ip=2a01:111:f403:c001::2;
- envelope-from=skolothumtho@nvidia.com;
- helo=SJ2PR03CU001.outbound.protection.outlook.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 3/5] hw/i2c: parent slaves created with
+ i2c_slave_create_simple
+To: Markus Armbruster <armbru@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Emmanuel Blot <eblot@meta.com>, qemu-devel@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alexander Hansen <alexander.hansen@9elements.com>,
+ William de Abreu Pinho <williampinho@meta.com>, qemu-arm@nongnu.org,
+ Corey Minyard <cminyard@mvista.com>
+References: <20260627-i2c-adc128d818-anacapa-v3-0-cfb94270a980@meta.com>
+ <20260627-i2c-adc128d818-anacapa-v3-3-cfb94270a980@meta.com>
+ <dc92984a-5c25-419e-b4ad-f5b79efbaeea@oss.qualcomm.com>
+ <03dbf5a7-68c7-4cdd-895d-178088421f9b@kaod.org> <87fr213m89.fsf@pond.sub.org>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <87fr213m89.fsf@pond.sub.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+x-ovh-tracer-id: 9623910929165495341
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEeedfJhFyUE0/Hv4MLGWOFt9b5rx509g5FDtYO+C1+05GYljJB9U7iOiTGZ2Gd8aBpnUa3NxqIb6ip1594thit68+0uYC8CeZkpiZ60Tzvy3wonOzTd96Fsbf1nP1i2KxPEeGRH1BUxe8eTcsBDl1JjPqhsgm7gkfOxkhOiD497Pu6/FmDQ/j44pcGmwKzDZKH6ZdO+P3gBRHK6Y/1vppRBuWclB5Y5eOqa6yMBIrJ1z36gCHR4vuQp32pjh8dYPWyWApaxsNgt/G30FQ7WXJgea9CHNwgFpx45eDcErotwnoTSsP7qrdvP4RiwwaGtuAzOt841lAwiiVW8ZNxertTEfd9hPfRyOc+2re8T7ju1U8SWGBUptl8+vJkK8q38qTGROX1C4+9xH5QGvYwGNlHTwC9Opk6RJ+YzAZxWQeVqrQCTb9Pdg3+Aa9B7cfKV8MqXkDAmTCllNTaHrxSenesJOtHtHIRo5GSxXe1SRjLXi1IoWsCtx5LyejjDudZyBZdDy07Icgpd4Ri36W3FoLjYNSQ5fLytirDDAVO/eoBif84nbjYxZnwdrOVs4MTr3JJKDdpUD40onsdiDuH1OsOaHYmCwFFYF0LAFpWC4aZPPM6pYi/WbfFPIEq6dZp+xGkbovULMszITxovq4+7AlD3co8Tpjjl28maOp9EJluVQ
+DKIM-Signature: a=rsa-sha256; bh=zJ2jJVBQ41jUzca14IuL3D2+R3XFMbt3FNBj5ISM8aA=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1783072146; v=1;
+ b=jux3FXNyrIdviZzM0/bHzgBllxCL/puJwDEvb8cPY7CRhjgBjEl0Q9iiOCsnX6/gyX24ka3l
+ KEtsMHo7QCYxKYz73N2gvRw58R+K4KR0yqjfvM83piDpHb9CG2Ciqz7rqnnTr2goYK9OF27eh6y
+ eYTAyE3kPdl5wCZeDvVnc7nHG/RAxIz2eD5bULbyXK/jQFjIujVgE9GX4C2PHeLXPIFvV1aBOii
+ fChe5WCc3MdMdNMpJFL0R7O4pjB240ke9MTkHnEnJPuRkfHODKst8aB7oH0Lnf1PQ+67wih/+y+
+ uAsSdU1oVDydbIviXPMd+8XIFw0pg3zMjFTxeWYB0keVA==
+Received-SPF: pass client-ip=79.137.123.219; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo2.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -146,54 +142,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 7/2/26 09:05, Markus Armbruster wrote:
+> Cédric Le Goater <clg@kaod.org> writes:
+> 
+>> On 7/1/26 08:29, Philippe Mathieu-Daudé wrote:
+>>> On 28/6/26 02:45, Emmanuel Blot wrote:
+>>>> Slaves created with i2c_slave_create_simple() were left unparented and
+>>>> showed up under /machine/unattached with no stable QOM path. Add each
+>>>> slave as a QOM child of its bus, named after its I2C address, so it has
+>>>> a deterministic and addressable QOM path.
+>>>
+>>> +Markus
+>>>
+>>> Personally I never liked the idea of having buses being parents
+>>> of the devices attached to them,
+>>
+>> What was the problem ?
+>>
+>>> but maybe it is simpler this way.
+>>
+>> It is much simpler for functional tests when looking for board
+>> devices which don't have ids.
+> 
+> A QOM object must be the child of exactly one parent.  This defines the
+> QOM composition tree.  The link from parent to child is a property of
+> the parent, and therefore has a name that is unique within its parent.
+> An object's canonical QOM path is these names on the path from root to
+> object in the QOM composition tree separated by '/'.
+> 
+> For devices:
+> 
+> * If a device is plugged in with -device / device_add, and it has an ID,
+>    we make it a child of /machine/peripheral/ with name ID.  If it
+>    doesn't have an ID, we make it a child of /machine/peripheral-anon/
+>    with name device[N], where N counts up from zero.  The canonical QOM
+>    path /machine/peripheral/ID is stable.  The canonical QOM path
+>    /machine/peripheral-anon/device[N] isn't: it depends on the number of
+>    devices already there.
+> 
+> * If a device is part of another device, it should be its child.  The
+>    child's canonical QOM path is the parent's plus '/CHILD-NAME'.  Stable
+>    as long as the parent's path and the child name are.
+> 
+> * "Should" because we have a lot of code that fails to pick the parent.
+>    When such a device gets realized, we make it a child of
+>    /machine/unattached/ orphanage with name device[N], where N counts up
+>    from zero.  The canonical QOM path /machine/unattached/device[N]
+>    depends on the number of children already in the orphanage, which
+>    makes it unstable.
+> 
+>    Letting code get away with not picking a parent was a mistake.  I
+>    guess it "saved" us some thinking about what's part of what when
+>    converting existing devices to QOM.  In other words, it enabled sloppy
+>    hardware modeling.  We've been "saving" thinking ever since.
+> 
+>    I want /machine/unattached/ to be empty.  If an onboard device isn't
+>    part of another device, put it into /machine/ with a sensible name.
+> 
+>    Whether a device plugged into a bus is part of the device providing
+>    the bus is a hardware modeling question.
+> 
+> Now to the patch in question.  I understand it makes
+> i2c_slave_create_simple() pick a parent.  Many machines and devices use
+> that.  I examined its effect for machine anacapa-bmc with v5 of this
+> series using "info qom-tree".
+> 
+> The patch moves a bunch of devices from /machine/unattached to
+> 
+>      /machine/soc/i2c/bus[0]/aspeed.i2c.bus.0/0x70 (pca9546)
+>      /machine/soc/i2c/bus[0]/aspeed.i2c.bus.0/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[1]/aspeed.i2c.bus.1/0x70 (pca9546)
+>      /machine/soc/i2c/bus[1]/aspeed.i2c.bus.1/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[2]/aspeed.i2c.bus.2/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[3]/aspeed.i2c.bus.3/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[4]/aspeed.i2c.bus.4/0x70 (pca9548)
+>      /machine/soc/i2c/bus[4]/aspeed.i2c.bus.4/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[5]/aspeed.i2c.bus.5/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[6]/aspeed.i2c.bus.6/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[7]/aspeed.i2c.bus.7/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0x72 (pca9546)
+>      /machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0x72/i2c.0/0x22 (pca9552)
+>      /machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0x72/i2c.0/0x24 (pca9552)
+>      /machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0x72/i2c.1/0x22 (pca9552)
+>      /machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0x72/i2c.1/0x24 (pca9552)
+>      /machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[9]/aspeed.i2c.bus.9/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[10]/aspeed.i2c.bus.10/0x71 (pca9548)
+>      /machine/soc/i2c/bus[10]/aspeed.i2c.bus.10/0x71/i2c.5/0x22 (pca9552)
+>      /machine/soc/i2c/bus[10]/aspeed.i2c.bus.10/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[11]/aspeed.i2c.bus.11/0x71 (pca9548)
+>      /machine/soc/i2c/bus[11]/aspeed.i2c.bus.11/0x71/i2c.5/0x22 (pca9552)
+>      /machine/soc/i2c/bus[11]/aspeed.i2c.bus.11/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[12]/aspeed.i2c.bus.12/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[13]/aspeed.i2c.bus.13/0x70 (pca9548)
+>      /machine/soc/i2c/bus[13]/aspeed.i2c.bus.13/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[14]/aspeed.i2c.bus.14/0xff (aspeed.i2c.slave)
+>      /machine/soc/i2c/bus[15]/aspeed.i2c.bus.15/0xff (aspeed.i2c.slave)
 
 
-> -----Original Message-----
-> From: Eric Auger <eric.auger@redhat.com>
-> Sent: 01 July 2026 10:12
-> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
-> devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org;
-> berrange@redhat.com; Shameer Kolothum Thodi
-> <skolothumtho@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>; Nathan
-> Chen <nathanc@nvidia.com>
-> Subject: [PATCH v2 5/5] hw/arm/smmuv3: Enforce alignment of L2Ptr
-> according to the span
->=20
-> External email: Use caution opening links or attachments
->=20
->=20
-> Spec says: Bits L2Ptr[N:0] are treated as 0 by the SMMU, where N =3D=3D 5=
- + (Span
-> - 1).
->=20
-> Let's enforce this alignment.
->=20
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+it "matches" what can be found under /sys/bus/i2c/devices
 
-Reviewed-by: Shameer Kolothum <skolothumtho@nvidia.com>
+Thanks for taking the time to run some test.
 
-Thanks,
-Shameer
+> Is this a reasonable way to model the hardware?  I can't tell; I don't
+> know the hardware.  But it sure feels less unreasonable than the
+> /unattached/ crap!
 
-> ---
->  hw/arm/smmuv3.c | 2 ++
->  1 file changed, 2 insertions(+)
->=20
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c index
-> f694f832598..7eb2c59d9eb 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -728,6 +728,8 @@ int smmu_find_ste(SMMUv3State *s, uint32_t sid,
-> STE *ste, SMMUEventInfo *event)
->=20
->          max_l2_ste =3D (1 << span) - 1;
->          l2ptr =3D l1std_l2ptr(&l1std);
-> +
-> +        l2ptr &=3D ~MAKE_64BIT_MASK(0, 6 + (span - 1));
->          trace_smmuv3_find_ste_2lvl(s->strtab_base, l1ptr, l1_ste_offset,
->                                     l2ptr, l2_ste_offset, max_l2_ste);
->          if (l2_ste_offset > max_l2_ste) {
-> --
-> 2.53.0
+Hey :)
+
+I have always tried to find a QOM parent to avoid orphans objects.
+I2C ans SPI devices are the leftovers on Aspeed machines.
+
+
+C.
+
 
 

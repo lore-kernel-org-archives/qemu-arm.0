@@ -4,133 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53E0FC43602
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Jul 2026 09:09:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59936C43458
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Jul 2026 09:21:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfZte-0001g6-RD; Fri, 03 Jul 2026 05:09:18 -0400
+	id 1wfa4i-0000gj-HC; Fri, 03 Jul 2026 05:20:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wfZtc-0001eW-Lu; Fri, 03 Jul 2026 05:09:16 -0400
-Received: from mail-northcentralusazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c105::5] helo=CH5PR02CU005.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wfa4h-0000gO-Ad
+ for qemu-arm@nongnu.org; Fri, 03 Jul 2026 05:20:43 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wfZta-0008G2-Vx; Fri, 03 Jul 2026 05:09:16 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=kMYL2iQ/2w3CLqQw8faOlM30pV9GNbknzPU3ZFN0JNfEx8xuk5Ha6vIQxbbZNHpNul0CN6nTL1PlU3qwLK7y48BrqY+WhJfDRd8sSFaUgPYPXySyZ7aoQWwuS8Kz+yKYoMhGaMWULj/UsdxTH2CShn3pYmNbQoV0dHCcefdIiBjS8Z6CpOxb5FxjV78YHySMkJNrP8A4gb9Z54H9XLgs5syoICgdi4879M70t0x13YUvaiQI2eYHjRLKSkWA6AxHkm4U+akQwRqHXnOSxEjTDA/nARwDMxnfJEkXrEMFcHKx1zS8y0Ejx4mVtm+l/qMgaByxF5VZ0WOFU3Qmz6naSA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=J5043Nn0xn7/k8ExBA7jxtosdKB/Ybg9v1gg7G2GFpg=;
- b=IoAmRUG76hlZ2NSsSpIL7dIIiqHUcD4uW+jGqXpvReNmpnF95KsEdgOUZm8RRkYNSwy4uTmW6opnUk0G1vcJn9ElxWuSuB0WQTsC3jPjiXQyA2n6gZ5YV703JKRt3TC1ZCaMPCslG5kjggQL674C46KCUFmaUNp6SIX5EbbTh/2bpZqdahx0U71yK4DlGrkLzw2BM/qCG0Ri+j8VXYXmOeTy5VqJvg+SQNs1TojWryUzCn+xqZqAdcg//fObYF1zTieYk7C028Xy5D95cEGlVB0KlzHdZZwho6iJZdpEkywKPvTS1W5Dv3LBo+CdJKvALw4CNNzi8SQpFDOTzRH2xQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=J5043Nn0xn7/k8ExBA7jxtosdKB/Ybg9v1gg7G2GFpg=;
- b=m8oYsPz3JbgIGj4eXqfJYp1rh3Uenbk1l9BYAEyAqQNrVK1MjW6ZQlCTSuJL8xgUmQrodXAyblZvF3ImgOogeANtvH+gbOwfquRaHmc/okWqHIZrmv5mlP1B2nWsZI+RT9NLveOSebJtNPInRP76OOPxgss/LBtwwFvx2VeVPGALqF5RJKTJ6UxNryepIpc+fF6/+R7vjdGdnNp1U6ksWinPK4PLow/T0WJMfU9NAqh5qSYqUA0x9mVIkhewjhORMzOxyAPiMU6mlnUTXFFaQBDF0EhKrq8zAISHy0yGAyjZ6UXAOitSdgvViXZngGIoaDGzmBJNhxZMqXCe/XvOCw==
-Received: from SJ0PR12MB8614.namprd12.prod.outlook.com (2603:10b6:a03:47d::17)
- by BL3PR12MB6428.namprd12.prod.outlook.com (2603:10b6:208:3b7::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.10; Fri, 3 Jul
- 2026 09:09:06 +0000
-Received: from SJ0PR12MB8614.namprd12.prod.outlook.com
- ([fe80::fe0a:6e6a:fe60:a43b]) by SJ0PR12MB8614.namprd12.prod.outlook.com
- ([fe80::fe0a:6e6a:fe60:a43b%3]) with mapi id 15.21.0181.009; Fri, 3 Jul 2026
- 09:09:05 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "berrange@redhat.com" <berrange@redhat.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>
-Subject: RE: [PATCH v2 1/5] hw/arm/smmuv3: Fix off-by-one bug in alignment
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wfa4e-0004nM-LX
+ for qemu-arm@nongnu.org; Fri, 03 Jul 2026 05:20:43 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 6639BoVG3694367
+ for <qemu-arm@nongnu.org>; Fri, 3 Jul 2026 09:20:38 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ lTRce2leYMpaLM7LPXBL6Q6414ZzO7xEoxmkUcr0Zr8=; b=JkPKv7Zq+TA/1ud1
+ fhrR3Lt0ZEapPRS8zTnmYyWtL6GoZHDWDsj2CiaPYdUk2PR8/m2bckUCoMQRSrRi
+ uVw/njIIAkF9XN/4U1LwcNHcoW6iwm/7g6qhbkjeMMq3cRoQrHXhiZmVodWOcKMN
+ /S/BDJcgp6D0qr095et4FBYaIC4cXA9qfnCH6UtpE2VOypNyXzcJpEs0aBqXJV0H
+ fjlanHfOTKL0Fr1f6WV56L7C9vFBfdxFnUTFq9qUgvPPm7VbjBvj/jFsX4LA5SLL
+ qS34feFx1cJKZ9smXipUqIPWiEbDA9FpDt37V26rrLhcD4AGTeca8nVxp7/Ccccj
+ GsfRIg==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f6a848123-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Fri, 03 Jul 2026 09:20:38 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-92e82060977so38835585a.1
+ for <qemu-arm@nongnu.org>; Fri, 03 Jul 2026 02:20:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1783070437; x=1783675237; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=lTRce2leYMpaLM7LPXBL6Q6414ZzO7xEoxmkUcr0Zr8=;
+ b=OOnGRY94nbCrbDLiySP2zxfiSylVEWEEnNimY/rVzaLPgz2avIzZ1vcqh6U2vydHCm
+ gCiFbfkB/pRZAMlExuiv6rbnFySkzV59wXqN9AYpj7lbjGfMKxM9vwdCyyufOOBwAwZO
+ 3HESgulo3/nLuFMNFPoMepKZnvfsnl6lx8m3P/nflvwvS6jRWCBDAzJ/NuueXTQIKh/u
+ w6yZSDLJHjoMVk2tKf3K5T4EgS/myw3uTz3chIY+9JvU+qmbceVgwRhPZHLJb8GOrd19
+ +9DASQLZ1Kcs+XHPTnlp8wZGVcFbMWk1CFgEq1lTcUvYN4l/+OzSepk+9Hw7HPi3Yc8+
+ ghNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1783070437; x=1783675237;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=lTRce2leYMpaLM7LPXBL6Q6414ZzO7xEoxmkUcr0Zr8=;
+ b=XtZA5po/w6rRfKXNK6Ofv4GC9tUXuDzEwAT8HzTO3UCe+78vez1Akgeqn600CDyUgk
+ elIsWkbxXkDSSmlqMKqptKPST4dnJ1rut1Elj8HAnaO5cOwUDO/qxkzF5hbpf0A+Ipq4
+ bcdr6X7iUqHPa3uL6TQydLr3NAoVEO/iKxrFM8//YE0ZIOB6mJ2emlRqaMIFuDjzSLdY
+ kSalVi/eTRBmh05BwZSAGqLBBXHfqGskXbvPRdANHq2/jthjpoK7RUA8mH4irpTx/swq
+ hAEKQGkC1yhDN9qTRPVxzGpiQoCaAoSFy0tGLuNo9yweOG/qzuIeoOI4F12JodTqM0OW
+ zGTQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8tea48U7c3xj7uD2Mqgq/fj77MX3bYYhV7z35hkRmo3l+nQlcHY/OS+lUDzRKTMKYK2CTxK+Iu9g==@nongnu.org
+X-Gm-Message-State: AOJu0Yw9BfxtpKZr0N8nucinIu+Nbg7z3Q5lya2DUqBaWtj4Uqefnlm3
+ 9MFlnBjyZhvkAuekKHmR0FLbzApz8PZM27wugwkC+HBtDHMYqAAhE/14iKaJnQcAPx87Xz7hlRx
+ 08zOeRWsojFliHunn2WngtbAGSBYbC3T48mQV8csrbLEJ3iefw8JcmLA=
+X-Gm-Gg: AfdE7clHawBIgmV0+F9uleSWLiaddTD1nw/FJ2oC6FGeEFHWlkcwFW2BkBtPNjZlAX4
+ RKEKfavuAKBEQXFuNfYDOBrNraSD6g6GPvx/Rr6GkP4CfB1X90/Y3DLVeLu4t0ltgZKP6CMTLkI
+ vSgKOspzNzd+m2imi1gVriMd4xozfWP+Lv+7ut6knjxwm9M5iCZglfI7Pa0O6XH9vp8UuELF8iW
+ F4BgzfzAnoHy085wQmjwJCp6HynweEuno+3oDQ3tbFUDYl16JZ87bXCWNQGtY/PbYgaQuu3dWaH
+ enyz0lvAcB3tLq+3FtNe6qjg4bftlvuVpWi3iBQ0XwCAu2/G1OFbUlOMR3fiJ2QcNc+1Z71D3kb
+ U88UWh6Pq/OwLXc340M7ZcmJo+HAQ795ZAE+v55JSyzbq7+774BicEQFDmPCDTQ==
+X-Received: by 2002:a05:620a:2b94:b0:92e:65d0:1cc4 with SMTP id
+ af79cd13be357-92e8b543ba1mr401425785a.30.1783070437353; 
+ Fri, 03 Jul 2026 02:20:37 -0700 (PDT)
+X-Received: by 2002:a05:620a:2b94:b0:92e:65d0:1cc4 with SMTP id
+ af79cd13be357-92e8b543ba1mr401422685a.30.1783070436850; 
+ Fri, 03 Jul 2026 02:20:36 -0700 (PDT)
+Received: from [192.168.69.212] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-698acf25f4dsm2091281a12.8.2026.07.03.02.20.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 03 Jul 2026 02:20:36 -0700 (PDT)
+Message-ID: <dc90bd46-3740-48c0-b484-0ec2bf322923@oss.qualcomm.com>
+Date: Fri, 3 Jul 2026 11:20:34 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/5] hw/arm/smmuv3: Fix off-by-one bug in alignment
  strtab mask
-Thread-Topic: [PATCH v2 1/5] hw/arm/smmuv3: Fix off-by-one bug in alignment
- strtab mask
-Thread-Index: AQHdCTm+4HPwCweQB0eNn1elXjz3LbZbgvrg
-Date: Fri, 3 Jul 2026 09:09:05 +0000
-Message-ID: <SJ0PR12MB861457EF468B2B8DA5BE605AABF42@SJ0PR12MB8614.namprd12.prod.outlook.com>
+Content-Language: en-US
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ berrange@redhat.com, skolothumtho@nvidia.com, nicolinc@nvidia.com,
+ nathanc@nvidia.com
 References: <20260701091209.2860306-1-eric.auger@redhat.com>
  <20260701091209.2860306-2-eric.auger@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 In-Reply-To: <20260701091209.2860306-2-eric.auger@redhat.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ0PR12MB8614:EE_|BL3PR12MB6428:EE_
-x-ms-office365-filtering-correlation-id: 692e77a4-f64c-4853-87e1-08ded8e2bbb8
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|1800799024|23010399003|366016|38070700021|22082099003|18002099003|4143699003|56012099006|11063799006;
-x-microsoft-antispam-message-info: BbCOkPUYkw4lBCwUXHQ+e3yQFTqJwAs1T9CqKVRbLfeMRHHmwDV+DeeurTIVUw+2+ZJBkrgRIHz+DMdcDsWNUpRGEcMxUsTYXuCl1TeWo4jJls2xeEuv6pzKKsq6q/CCSC0F+eIESSWHq3EQPgkLM7eLrwBmTKexfTHssHyfeWyE7TPjTY6dJbM+Q0JoeLhtV+rcasY308DXYZfJrOPWe/ksDlC5vipBxfP01rflzR9L5XCK0wKaEu08HfeonYpvus1gmRRTh/VtOA6cmfy3Xs8CwpG9+ytq9o0cpVx9wTK/ub4qjPlRXjQyfFlLzCbxNLM0ov3sR3X/TBRw1VN2t69NN8fJHiVyGg4vweQvyKo7lOWuGmaprLsKO8vLV/TF5JBIRW7KsJZPUWb7gFuijT9gRANPwlQ9kNxw8s0XgHnPfAKcJD4b+fn8Aj5Kz4Kg93i8BcKDB11P9VcWA8i0+6LDAL3mdVsZ98/uAFmEtmORUJW42iSG/Ubahk5LEmGRqN32b4pspWz26hWBWYXYjBcyO4ahLejgPw/Dz5PtW8oi540VAD8IqgpmulAvZNq9rGvQYMs/vz2m7pml06G0kus+4HE6bo9rqvA3mTPBB1NPyVpwgW6BG85yJ1/JbJLPV69NguoJCQg9Jbf6/KZkek/RI+WfETG2b1Zw7ebOMXIvIJqURgms/gGbT4J8IZeKO/qiSO6+WeiS6flBHxEE4snyDGEteB8by9jNMjXEl8I=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR12MB8614.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(23010399003)(366016)(38070700021)(22082099003)(18002099003)(4143699003)(56012099006)(11063799006);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?g0O1sqAwElPi4yPBGeBuk8B5WUtUZB74VT6Qi2+NsgRmgIz+TyISthqC9lO5?=
- =?us-ascii?Q?Xnqp0YwQKU3qPY4gB4rjy3gqAI/c4m0I7JdK1TOqkxsWt/2adD5EuDGQ/6kY?=
- =?us-ascii?Q?KFZFKHfo0q2IvFtncVzL3cvJACNtkusJ6oCNSci/Kuodf5qbpCA06kre3vUx?=
- =?us-ascii?Q?lty7U+d+eG4P8YwCPG4/M2tcK1kVY6mNLxawb+/yLQC3aPj33chqlM0/3B10?=
- =?us-ascii?Q?G6+9DtF0burWYUtl6+7fhD0YQYpqKtDaEN4xEG2IeU/Js333oEmLzrA4Ht7r?=
- =?us-ascii?Q?OOCTIC8xU7JyDHY8lyDuCMq0+uTJnOLVdj1AOuBdvAeBJqSfZOwnArKpuILJ?=
- =?us-ascii?Q?c9kOE2ibJa/zPUupWhG0DCy6j99DA6XcRnsQbsFnp/rDaGL/IcUqLJNQgzm+?=
- =?us-ascii?Q?48Oa/6tN87kV18wTEdX80DJdWC/FqpzJcWcxlVn/UjG1eqEHE1HE9Zpf2e92?=
- =?us-ascii?Q?k2VpmdnZhFV490dY6y/0zYjs+Ige8y1E7pJ0jIse4dipxMI6pe1zfeNO7MCr?=
- =?us-ascii?Q?3e0n7kWgwDsgWDyEB2OV9BhKLre/y8WwBwvi0diAQZc9A+mF0d5YeOUJ/uYb?=
- =?us-ascii?Q?5CAggz373juZRul2kZQijssRogOjwsO7WeKeUUQKts01bXOx7Kl4zJGl2vOc?=
- =?us-ascii?Q?9WhZnUo7s2v4VJOeDUpXMhxkGBWRs3RwoJdyxX9LqXCI5yo9J/RY1kQXqIzL?=
- =?us-ascii?Q?cUPize5l4bxjQdNYI3pCoBxY30aiSmfdKiryOmrQO0S+k4Ar5O7nU5xmd0lE?=
- =?us-ascii?Q?Lm+0pTTYc2zmglo3iVGxasjN1Z7bsbptxNZd6jrFFRrNPAnQAf+iH76iV5Ia?=
- =?us-ascii?Q?tFxNHxSTSLy1KBhmCZOahqjBez++1RIoS28b9XxFKnNOOajqWp1Z3C9J5BFz?=
- =?us-ascii?Q?G1LOhyv9ExV5/7aJXtt7EQWgOUZ/yPU3OQLcrMfX2VO9iFsS1Pn1UQZVIKsu?=
- =?us-ascii?Q?kU1uF8fFMLICzs0jQB/dQrIGP2v8xCtf5imGwPp4m9SZPENhZQQ1xKH7I5rl?=
- =?us-ascii?Q?hisH01NRkbnyg9OmnyhsJLiS6uEp0Byl61Q/uL/8lKGAtWQkQe5xi3dklZWf?=
- =?us-ascii?Q?kCNMUnJXK1NbhBueH2YEoBWpprP2wfLTCkKgs5LleUwEHZ1i+SlsnqGKEW1h?=
- =?us-ascii?Q?wXdDmvB/ngfQj733rRuu2nyUo2KJs1dzp2oFqfniem57Q5v24moE8PO3oycN?=
- =?us-ascii?Q?c8V3nJyBpcTsc5TrnGZsYa2pMOlSHtuz3LJzQyRaGQLGj9XpF/e75r7if3Wh?=
- =?us-ascii?Q?2nu7ZZcISrWzcJTbGG1luLZEML7cQtdxKVbLerSdnUJ1eaibOXjagcEZp56d?=
- =?us-ascii?Q?EGX4EbGAkV7FYgZn62pXdBs+R1tvw7uwnGjPScpWyzX45K9CoNSQcQRgAduC?=
- =?us-ascii?Q?b8HfnreUYCgDQEv6I7vQ/MiUcx2oU96xzxIdvm2sLFQvG7XvekptfDa+VykK?=
- =?us-ascii?Q?JzX4RWvJ6FTYoPkkHyE9W0C+ehLITXKfVoOggSSqPSqcJajwvnwQjPhkQ2oJ?=
- =?us-ascii?Q?VTigMiLCyPCmtGIm7cxVIMhz74oMgHjjiVwAQXSv58C3GrsrZUeHRHAvrokG?=
- =?us-ascii?Q?Rd1cXpvDIAdrCSVGd4pTjkmfkDUgp5xjZ4gY56kXJPUCicfdXaXvE7/CdGEX?=
- =?us-ascii?Q?dEK3FO9d4UkcDiRGVSMl6YVvXs8lvxNxBo4LcYZwh8JFmJee/J5n2VNrJwR6?=
- =?us-ascii?Q?ihwswFe/XfXxevQTKXULJNzwv3OTE8BzbqdM/nU99EqLySd64JitL0uUBgt/?=
- =?us-ascii?Q?gq2igCsJbw=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR12MB8614.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 692e77a4-f64c-4853-87e1-08ded8e2bbb8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Jul 2026 09:09:05.6799 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: BDal4tA0J35n2SUBAov/AyTVhCpftJ4+Zc8h7gI8AtUoZomHd5VvwRxIDoLjHpivNNCpBZ5FpsCgWViw1Rf5hA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL3PR12MB6428
-Received-SPF: permerror client-ip=2a01:111:f403:c105::5;
- envelope-from=skolothumtho@nvidia.com;
- helo=CH5PR02CU005.outbound.protection.outlook.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-GUID: KSICxX67o6NcecQCsfi2E5C5ET4ggDv5
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAzMDA4OCBTYWx0ZWRfX+A/C7wivWaBA
+ 8EmS0Dc3uV5U51gzTBhDHWeU7baUGNMIFYMBd00FXPpVuoqr17Pp2W4X6iIgSibq2ItfMwo9ZdC
+ Ce/ysHBsruoB0rZmcBKK4CiIYa79jzo=
+X-Authority-Analysis: v=2.4 cv=a6QAM0SF c=1 sm=1 tr=0 ts=6a477ee6 cx=c_pps
+ a=HLyN3IcIa5EE8TELMZ618Q==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=20KFwNOVAAAA:8 a=Kcw0qKp_e-QNtmgwFuYA:9 a=QEXdDO2ut3YA:10
+ a=bTQJ7kPSJx9SKPbeHEYW:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAzMDA4OCBTYWx0ZWRfX5Gwt/I3T3eyH
+ cPIZUR6eblKkZg4+5LzSjzXrFMaIqKbqXaKH1aldGiz9MIpj4sTiiFfnrL4soT8ekquZ2jC5+0h
+ KqpOgDgExwxO4uH0WBhRohoSOX4Kp1QP6joE3BnqWa5G3tYCiwDAeAxAwAWkTRzNSwL90toHZ0T
+ uCU0FZ+PKYUt6WwjRievLuPXvQr9my1MTvmu78zzcramFLkwasm39YZ4lgQVNIIf8egLJ9YnA4V
+ 7uXHj+QVoIFQF/T4fudjBsb6Wv18bnxlp3EHtw5jVbbjnGj2T71CLYKOnIqsPDXzGsKE6WXdxM/
+ zT7JXeOD0uMTNFhEyHeNwc5PF0WN7Pg6uNuozP5VDQZoID63lne73GOW0KPKSUs5D80tSIkkTCK
+ k1CyX5n5LgSe+HuTzRJNhrQb7QKh2du14/XYeE0m7T2CvrLIuz0MFKvT92U06u71V6SqqNCRA/w
+ fb1/nncUfV7CWePEOTQ==
+X-Proofpoint-ORIG-GUID: KSICxX67o6NcecQCsfi2E5C5ET4ggDv5
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
+ definitions=2026-07-03_02,2026-06-26_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 suspectscore=0 malwarescore=0 lowpriorityscore=0 adultscore=0
+ bulkscore=0 impostorscore=0 phishscore=0 spamscore=0 priorityscore=1501
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607030088
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -146,84 +157,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Eric,
 
-
-> -----Original Message-----
-> From: Eric Auger <eric.auger@redhat.com>
-> Sent: 01 July 2026 10:12
-> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
-> devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org;
-> berrange@redhat.com; Shameer Kolothum Thodi
-> <skolothumtho@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>; Nathan
-> Chen <nathanc@nvidia.com>
-> Subject: [PATCH v2 1/5] hw/arm/smmuv3: Fix off-by-one bug in alignment
-> strtab mask
->=20
-> External email: Use caution opening links or attachments
->=20
->=20
+On 1/7/26 11:11, Eric Auger wrote:
 > The stream table base address needs to be aligned to its size.
->=20
-> With FMT =3D=3D 0, the spec says the linear stream table base address
-> musst have ADDR[LOG2SIZE + 5:0] =3D 0. STE are 64B
->=20
-> With FMT =3D=3D 1, ADDR[MAX(5, (LOG2SIZE - SPLIT - 1 + 3)):0] =3D 0.
+> 
+> With FMT == 0, the spec says the linear stream table base address
+> musst have ADDR[LOG2SIZE + 5:0] = 0. STE are 64B
+> 
+> With FMT == 1, ADDR[MAX(5, (LOG2SIZE - SPLIT - 1 + 3)):0] = 0.
 > L1 descriptors are 8B.
->=20
+> 
 > MAKE_64BIT_MASK() second argument is a size and not a shift, so
 > there is an off-by-one computation.
->=20
+> 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
->  hw/arm/smmuv3.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
->=20
+>   hw/arm/smmuv3.c | 10 +++++-----
+>   1 file changed, 5 insertions(+), 5 deletions(-)
+> 
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
 > index 5e5a6a960c9..38aba9c0af9 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -664,7 +664,7 @@ int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE
-> *ste, SMMUEventInfo *event)
->  {
->      dma_addr_t addr, strtab_base;
->      uint32_t log2size;
+> @@ -664,7 +664,7 @@ int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste, SMMUEventInfo *event)
+>   {
+>       dma_addr_t addr, strtab_base;
+>       uint32_t log2size;
 > -    int strtab_size_shift;
 > +    int strtab_size;
->      int ret;
->=20
->      trace_smmuv3_find_ste(sid, s->features, s->sid_split);
-> @@ -685,9 +685,9 @@ int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE
-> *ste, SMMUEventInfo *event)
->           * Align strtab base address to table size. For this purpose, as=
-sume it
->           * is not bounded by SMMU_IDR1_SIDSIZE.
->           */
-> -        strtab_size_shift =3D MAX(5, (int)log2size - s->sid_split - 1 + =
-3);
-> +        strtab_size =3D MAX(6, (int)log2size - s->sid_split + 3);
->          strtab_base =3D s->strtab_base & SMMU_BASE_ADDR_MASK &
+>       int ret;
+>   
+>       trace_smmuv3_find_ste(sid, s->features, s->sid_split);
+> @@ -685,9 +685,9 @@ int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste, SMMUEventInfo *event)
+>            * Align strtab base address to table size. For this purpose, assume it
+>            * is not bounded by SMMU_IDR1_SIDSIZE.
+>            */
+> -        strtab_size_shift = MAX(5, (int)log2size - s->sid_split - 1 + 3);
+> +        strtab_size = MAX(6, (int)log2size - s->sid_split + 3);
+>           strtab_base = s->strtab_base & SMMU_BASE_ADDR_MASK &
 > -                      ~MAKE_64BIT_MASK(0, strtab_size_shift);
 > +                      ~MAKE_64BIT_MASK(0, strtab_size);
->          l1_ste_offset =3D sid >> s->sid_split;
->          l2_ste_offset =3D sid & ((1 << s->sid_split) - 1);
->          l1ptr =3D (dma_addr_t)(strtab_base + l1_ste_offset * sizeof(l1st=
-d));
-> @@ -729,9 +729,9 @@ int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE
-> *ste, SMMUEventInfo *event)
->          }
->          addr =3D l2ptr + l2_ste_offset * sizeof(*ste);
->      } else {
-> -        strtab_size_shift =3D log2size + 5;
-> +        strtab_size =3D log2size + 6;
->          strtab_base =3D s->strtab_base & SMMU_BASE_ADDR_MASK &
+>           l1_ste_offset = sid >> s->sid_split;
+>           l2_ste_offset = sid & ((1 << s->sid_split) - 1);
+>           l1ptr = (dma_addr_t)(strtab_base + l1_ste_offset * sizeof(l1std));
+> @@ -729,9 +729,9 @@ int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste, SMMUEventInfo *event)
+>           }
+>           addr = l2ptr + l2_ste_offset * sizeof(*ste);
+>       } else {
+> -        strtab_size_shift = log2size + 5;
+> +        strtab_size = log2size + 6;
+>           strtab_base = s->strtab_base & SMMU_BASE_ADDR_MASK &
 > -                      ~MAKE_64BIT_MASK(0, strtab_size_shift);
 > +                      ~MAKE_64BIT_MASK(0, strtab_size);
+>           addr = strtab_base + sid * sizeof(*ste);
+>       }
+>   
 
-Should we cap the strtab_size to 64 here?=20
-
-A log2size=3D59 will make strtab_size=3D65 and MAKE_64BIT_MASK
-may return invalid in that case.
-
-Thanks,
-Shameer
+Maybe in a preliminary patch extract this magic '5' value to a
+self-describing #definition?
 

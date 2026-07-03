@@ -4,101 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96917C43458
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Jul 2026 12:32:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DE6FC43458
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Jul 2026 12:55:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wfd3v-0007eR-Dm; Fri, 03 Jul 2026 08:32:07 -0400
+	id 1wfdQA-0004bd-Qb; Fri, 03 Jul 2026 08:55:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wfd3t-0007e9-O1
- for qemu-arm@nongnu.org; Fri, 03 Jul 2026 08:32:05 -0400
-Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ id 1wfdQ7-0004aw-UA
+ for qemu-arm@nongnu.org; Fri, 03 Jul 2026 08:55:03 -0400
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wfd3e-00006f-Cb
- for qemu-arm@nongnu.org; Fri, 03 Jul 2026 08:32:05 -0400
-Received: by mail-yx1-xb12d.google.com with SMTP id
- 956f58d0204a3-664d78637f8so704937d50.3
- for <qemu-arm@nongnu.org>; Fri, 03 Jul 2026 05:31:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783081908; cv=none;
+ id 1wfdQ5-0000ky-OK
+ for qemu-arm@nongnu.org; Fri, 03 Jul 2026 08:55:03 -0400
+Received: by mail-yx1-xb136.google.com with SMTP id
+ 956f58d0204a3-664c1406f91so654732d50.0
+ for <qemu-arm@nongnu.org>; Fri, 03 Jul 2026 05:55:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783083300; cv=none;
  d=google.com; s=arc-20260327;
- b=T9COXIRzhh44i7R8qVfIcCelMKzIHHgV9jyEr8DS5fX/74y6crGE+W38pA8hx08UyE
- v+oDBEgGY+FDatCvpdaEHPZwuwDxBClT2KlR6hxUMcearqXkSt6kw/xyIoU+VNw7I8vw
- dL/2GBVPyyxZozwvlzyChgL5ByHFhL6qWKwY2A7gucJu0YMwepVZ08NckED10qjPvUde
- 0ylqn9LsBC1SME2qc3ElPcds+ZzNou7pNChesa3H6SDi7Rcrb/DhZxVv3SIdrbWXdXc+
- tI/lYewS4LFLg2/CfOsNDKuL+q3pXj5tVg9fv/ewhSZU2LCmPGkzZTVSwp3WWXowhcf3
- EODA==
+ b=gFw49tPHExmzbr64WAU1b8JZapSN0ZAT/4o7dyYKcnuOoDpnl4nKfXSHhDHZcXDBYW
+ bT9OEh5e2xuhi96hPSW0nkaIYyNbM0nrCny8b5f/tAOsBG8RWVM0aCHUCeEAsfXGDBV6
+ Vk4uHwIWP45f0SZSWL8RGngK1che17zKdXk1VIusImaGSBLUkXUaagGiKLUzaSfpLwgE
+ 2LmRkBFupwEHYffNVTAUNEkG3lD2JmsrWNVJovSFQtVHdRmVW9NlqnWMDCbslf0j6MIy
+ d1Fs3jecQ2R0/mEay+DafXbpGykgIlj24EmSbDyW6HQrQtJmY7gbZKNYjsUEP+25soW4
+ eMtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=cH5pEr5Aa42QpwXY8XBAi9u/QJ7yeOm7vvinpj3m4hc=;
- fh=8IY67QzJRZK5Q6xHpco5ZsLKCOku7G50Z5/ShSSac9g=;
- b=cwTtsHT8uFhM2iIU1QUxRKjBEvQXpSu/OKmLUMs3QGWl1SRkiQWQGjNne4XJHfk3km
- 8OLKbSB7uAamAa6mj26UlVcJLt+5LvAadlcG0NYnSH6i+4KPhFhMiJV96uDQcL6xI8Ro
- llrC42YPASzWR/WNc1ugNdnwYOyYhRV5LdslWVFahdhRENUyJ/n1/gn0tY/cpuoU6K3A
- OlhjoamDvs4NO01FnbL4RfHB1L6RqZ73zq5mODCCWjhfOO3wwfqhew1x/TKWNXQq3amF
- pPn7/8ScOwiyVzY/GK2z10PrscNxHOUg3pwDY0yVnmrV00JjvLGN4rUGmESnbUoXTFVo
- Gf+g==; darn=nongnu.org
+ bh=1u2thVlVFjL87EGSVIuQ3xHSUXLpj4VbnSIDZ2PwELc=;
+ fh=kMHrFYL3sx1v/hfikDZkkTxZ8TwK0jboUI6aEUQ4cFk=;
+ b=q3mIPjmL3w8xMTiU9lQ7umKWklONyIaWWyuqQcwa9Cse92HKNnApGK6tmqp71sm0FQ
+ NomGOxpL+lulzfcabOJgUS5Le0WO2HMtqQTOc7e2pG2wQ8CXp0QXBSMjyVqu2OcBmeWP
+ 5KGcK9R51LXAV7sWQQv/+dU+V/tMYuDwfBhZQRgYKsdNUomIL7T1AOCebN3UyG0CbGIT
+ CojMF9KtWEGvO9cmAR9hemBonfFYIdYvnSursPNmewr3/79KTBRozT8lMU8+tAPcWS4m
+ JedfsHBCPlc5/wWUnOOcJ8OdOEQp+1vpA59KVT/37wZ20+FrIji8l/yUj3J8/+blYPad
+ vELw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783081908; x=1783686708; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783083300; x=1783688100; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=cH5pEr5Aa42QpwXY8XBAi9u/QJ7yeOm7vvinpj3m4hc=;
- b=xFdsog0nKBGSNrEDrSoEHpxniUeVRT2ldqreGy+tDn3QTdoGkioG2FwPczF1mqShYz
- 1QBIW0jNRTshl+Odvv74i+h/FQ3RgsNVYHbA98XtR40QGkDTF3YSCE11UtqqdaXxrOoV
- H82e0QBIHt/VKdR2fmqTuxmZmAFPenEX2X1IyFl3QBLLI0zmVyJLKMhVctTUt15sMp68
- B2UnUDp+h8WG/GZqh7AjSQnT3a/Tf7nbm2lp66m/7BOSk9tknRBAnr9o/cZcPTBNP8Kq
- KrdXSB1dO9YfaBUPt4Mz2CmmQM9tRWaxDXb6zrcPk3pq3LsP5tdMm27BbkyYr2sptWSQ
- CM+Q==
+ bh=1u2thVlVFjL87EGSVIuQ3xHSUXLpj4VbnSIDZ2PwELc=;
+ b=tZyuw/UCPppN/HVKscY586oOpwXHu/39DbDCVzyUiechMGJzy2n9g0DD4WxIlgr6/y
+ tuzAuMhL1RuWIe1gZZ8FJLqFMokcgvemjsin7qT6yF9UEkQAMXcqFcC+sh8XKXZULhfV
+ LpPkskoJWDq2DwVCKGkgoyWYmEO/yMWyeRQ3MuFE/I31yfiHYpcvhVAgW462TyLuWCTL
+ +TjV2rxnLz6FrmH+CYRF9yH/ckjkcIvU5HD3Pjmw2xNby+tFkKWb8plmzG/Y19hVdWdP
+ FWb4zAQ430K2dy4dzNSzGurnMGocnQJN3GhZ0ZWRZq+lLAzCsQ4PL1rJ8nvX4m2lS8eD
+ OkVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783081908; x=1783686708;
+ d=1e100.net; s=20251104; t=1783083300; x=1783688100;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=cH5pEr5Aa42QpwXY8XBAi9u/QJ7yeOm7vvinpj3m4hc=;
- b=n7lWg1ckIdn91tffIiuWNNemz4ctnQvPTOZA5aLro1c2AI4F1RKLHOQ6HkSdWPO3cJ
- FxxAX99Tgv5DxSkyA+Zz5v8d2vArVE6vifok9bPJRxnqnedf0SnvtP+RORkz8L8qz5mc
- ZHE3SpJVrnCloGyc2iQ6KEU3JU0XTD+JdZn20WLZYODFL8YtFJ9mBriKsuRNqJMsSwdN
- +j2JlAytsqJLVevtTNBHZmayRDdlO9nIdun9GWIn7muYLHAm5dguc7AEDW5rt7NI7tcV
- qrHMGnWG39iztbfYoXA9Rd1Y7aAaaOl68cPbqGRPBGjfRTZjohc3h69LXcjLBdOJas0B
- Dmsg==
+ bh=1u2thVlVFjL87EGSVIuQ3xHSUXLpj4VbnSIDZ2PwELc=;
+ b=QjYD5J/EUu2Fx14urdgHoZRKsHpz4sI2xMA4DPuwsujSNfCfozY+imC82OagZoylAS
+ ist1nZ4DWc8IWC+X6moCZkwO5NZd4TD0eQ8VoQUGftSeBu+g42062Ga9jYlL/T9+qjzl
+ VMh+JYwZWXCbzGcnAGYPf8K+L+mPwKAjcNuiTiZL+Dav1hiY5C8FmzBtTvSug67Mgurf
+ +VJLy/JV/XLFFx7VUEkSkRK+MYcW8Daq1A33oPKpPfSGzxAGbdd0vE1O18aZXunfMwpM
+ 71YIIyLKFvTs4QDpeIikfp07S6ev7abMp7QxvFXnLWCS+J7f+SxKEgE4omTyExxVpER9
+ i3sA==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rp7SQrQ174S0/xcBOjRnDXepuqUvmi9Czo/Dgp5SOyxH0zBOih1jcwSJrkxYxtPkiPlD6KDZjLHFw==@nongnu.org
-X-Gm-Message-State: AOJu0Yx3TBuudXfndPFC5ZB2z1UKs3al1sFz+kCoeTyh1QwklCo/zeNG
- zuqmOep6cbuALkjZ3C0PpdgOV4zTEu0Z0N40teL6tIVIccFb8/r3eVrC+XbRk7rOCGEphgSbQjP
- XS6DK8vKCE1n2YAS5NaV26j+rMeVNCZUOkEpCZBR3+A==
-X-Gm-Gg: AfdE7cli0MBG2ZytCAhNcO+1UKOy04Dgycfnqe2RqtR++Aaaild4Vh+B25AWXwR3tcR
- s9MmY20eHpnQmRRaVCLQC6WuLZjbQTr9IIDred3AVRpk9Alu8K0+s1muUBwMuuPLT0FMRX2tali
- 3okC7egH+YfYUYG4ET99cGAhzkdGgWej2S7RrSeJV8w7KOLyq3AXQJHPSbyWsjN5H04CsFWJYY6
- WVMayNdYxpRI6wlsuQ7LqkSrphhbcmDsB61v6X+CqLH36SqrmpJM80OpIemnV/IHT8ORajopT4r
- H5ElpqhzlAF4TLIMKIbzgUDIdIx2HVl3T7hUMy4pcNsSk7ju5sL9KpzTyB20krDD5tk=
-X-Received: by 2002:a05:690e:d50:b0:664:b3c0:6546 with SMTP id
- 956f58d0204a3-66521d485b4mr8860949d50.57.1783081908321; Fri, 03 Jul 2026
- 05:31:48 -0700 (PDT)
+ AHgh+Rpewbr+mQm+tZhkIt/lHFTr0jZQIrYGOUZTIst3t085dP4xYO0QdsOM/vlHQW4I2FOWuVh2KaEobQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yw/IkriYbSp9U1rbfUYX332Yx+EvbBNQ2IZKMeBpwxWYh2z2nt2
+ oCbuF/vIkofqu2CcczdUyWbsU/HioMLUNxPKGPwvv7zWUCmTwQJvGF10OlP0gtKXsWiu3gW5zxN
+ T9Axik6YYGUoZ6mPuxdnBmi9hqOSoyrTAbm18BOiZpw==
+X-Gm-Gg: AfdE7cmgQbBIiR6x/iMCyRucDC4XpQhLNsUKKP5aJOjbDfi4DXTpEcJUu2bZuT0nTUC
+ jEfwS+gdl8J+Qmp0slY9M8fyH3s90p73jNrwTa7MYudfTzxU4da+2IAy9p6h90ExRGd4zEub9A1
+ lQ1tUdZI4y8Q6D0Q5SLM25azJwZIlfDdTauVVoW9kP750MD50RiUvmionD8SXg5e+SHccjP97ON
+ WVzl04cC+o0HYvkwak7MiCg9bPDr2LVBKwj/AXnQt0tR/O4q4JEKRdGD8SaqiR5Btbc/JevS22P
+ oQWR+WIvU5HVCE4yvmXYBurCeCp76aX33faG9M9+WLFYysoWVEjd/EUU
+X-Received: by 2002:a05:690e:1918:b0:664:eac2:b394 with SMTP id
+ 956f58d0204a3-66521ceff4fmr9105449d50.65.1783083300316; Fri, 03 Jul 2026
+ 05:55:00 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260702204314.79224-1-richard.henderson@linaro.org>
-In-Reply-To: <20260702204314.79224-1-richard.henderson@linaro.org>
+References: <20260701091209.2860306-1-eric.auger@redhat.com>
+ <20260701091209.2860306-4-eric.auger@redhat.com>
+In-Reply-To: <20260701091209.2860306-4-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Jul 2026 13:31:36 +0100
-X-Gm-Features: AVVi8CeVLa5RC2aLQpvW1fcbYz-IRiGWH1aknUzhSpBFj_yPRYFsTHJwwnG4gV8
-Message-ID: <CAFEAcA_50HH6P=0+T-ESvaY=9FOs8LHtC1t3SdxR=Tg2-TkntQ@mail.gmail.com>
-Subject: Re: [PATCH v2 00/15] target/arm: Implement FEAT_SME_MOP4
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Date: Fri, 3 Jul 2026 13:54:48 +0100
+X-Gm-Features: AVVi8CcRuAFalwoMTAbI7ZQ4dYf1E7O6ETSL-m--vFfkn3jGqWaNHIWsmkUOOlw
+Message-ID: <CAFEAcA8kHPouGSrxb7+NkTRonEoJiub4JNuThSJBr6hncrX0vA@mail.gmail.com>
+Subject: Re: [PATCH v2 3/5] hw/arm/smmuv3: Sanitize
+ SMMU_S_STRTAB_BASE_CFG.LOG2SIZE
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ berrange@redhat.com, skolothumtho@nvidia.com, nicolinc@nvidia.com, 
+ nathanc@nvidia.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,19 +119,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 2 Jul 2026 at 21:44, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Wed, 1 Jul 2026 at 10:12, Eric Auger <eric.auger@redhat.com> wrote:
 >
-> Changes for v2:
->   - Rebased on master,
->   - Two typos fixed,
->   - All patches reviewed.
+> STRTAB_BASE_CFG.LOG2SIZE is programmed by the guest through the
+> emulated SMMUv3 MMIO register interface. Currently the value is
+> not checked and used directly in smmu_find_ste() for strtab_base
+> alignment computation with risk that MAKE_64BIT_MASK() runs out
+> of bounds. On FMT==1 the strtab_size cannot be greater than 64 after
+> the SPLIT being at minimum 6 (log2size is max 64).
 >
-> r~
+> However on FMT=0 path, strtab_size= log2size + 6 can potentially
+> exceed 64. Let's abort in that case.
+>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3632
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  hw/arm/smmuv3.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 285e6164a07..5ec3700d0d5 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -1696,6 +1696,14 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+>                  s->sid_split = 6;
+>              }
+>              s->features |= SMMU_FEATURE_2LVL_STE;
+> +        } else {
+> +            uint32_t log2size = FIELD_EX32(data, STRTAB_BASE_CFG, LOG2SIZE);
+> +
+> +            if (log2size + 6 > 64) {
+> +                qemu_log_mask(LOG_GUEST_ERROR,
+> +                              "Invalid STRTAB_BASE_CFG.LOG2SIZE: %d", log2size);
+> +                g_assert_not_reached();
 
+This doesn't look right. Either:
+ (a) the guest can do something silly that gets us to this code path:
+     in that case we mustn't assert, but must continue (doing whatever
+     the spec permits and that is reasonably straightforward to implement)
+ (b) we can't actually get here in practice: in that case the logging
+     isn't needed and we could just assert(log2size + 6 <= 64);
 
+It sounds like we're in case (a) here.
 
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM
 

@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A5C8C43458
-	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 04:48:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE36BC43602
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 04:48:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgEfD-0003XX-7D; Sun, 05 Jul 2026 00:41:07 -0400
+	id 1wgEfH-0003nr-8R; Sun, 05 Jul 2026 00:41:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wgEfA-0003Ji-Q8
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:41:04 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+ id 1wgEfE-0003fC-Rf
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:41:08 -0400
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wgEf9-0006KI-5P
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:41:04 -0400
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-84794e800f4so967413b3a.0
- for <qemu-arm@nongnu.org>; Sat, 04 Jul 2026 21:41:02 -0700 (PDT)
+ id 1wgEfC-0006NN-Dt
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:41:08 -0400
+Received: by mail-pf1-x434.google.com with SMTP id
+ d2e1a72fcca58-846970f0acaso1755697b3a.3
+ for <qemu-arm@nongnu.org>; Sat, 04 Jul 2026 21:41:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783226462; x=1783831262; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783226465; x=1783831265; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Lp+19HN1hDJRD/nyQTZDKaLa3PwvYZGSdAI5w9aXD2A=;
- b=Tm/77rzeuVGtDOkeLoJjHRKT6uVoS9K8GJo8roiNq2X58+jSwHxQBHo4l1TyzqYmLX
- CblQEANpICtc4qAnryaTKH4+uPPWhVd7Zc6SdVgrZPOC6DdQy1TQWd03h/ak7i/l/oI2
- 3MVbdcmKrqQ7YGL+01iZFCXBV2BdjX7dwWozK4UBkPfUQptog2SJPyXW6tv9hDt4WZ27
- Z/Ei8umF+M5RMM5vMhM7xpIsD3i/E8z8YGHat+Bx3Hypq45BJarMTv9y62fw9DjGj828
- WEQ/5IlMkJCwgDo2nC1IyN8P+LjYpGH5Z1A7UyyXRUAZMDDblezWEH8HQjpkDVyg6dwg
- JZKw==
+ bh=Oi77c4t6mTRvDij0KOLon4zdhMhjLviMYDkRz5tIy7Q=;
+ b=Dq1lPD3spGmIiYLdk8bMry+DuQEqWSZSXqSDfKDHjHwHm49qihOCKGOXNadu+mIqAv
+ AQdixeji5oSCpIYgGYqFY9qHPnZTFUapygPQDuXDq2d5yyXYJyPixMvOqzNdUEOFAuqu
+ rqN6d558Kkr7n77gKcxsMJsxi+2u1Nz1wwGJNqfLEz1qshYY5m2xuYoWkbWUYHEAC2JD
+ lzLbaDCxfHT+UZ/xIes2V/+0jpN42HaGVTN60g7d6eJJHcwbND3aiWXh4Euz0IPf2CP/
+ NuTlOzGZbRfO9MY5FXlK9C8OhdTzOEW+clWKbk8vMUZ8S7iVISlGJvqd5/YX3/ZOc4WC
+ i73g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783226462; x=1783831262;
+ d=1e100.net; s=20251104; t=1783226465; x=1783831265;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Lp+19HN1hDJRD/nyQTZDKaLa3PwvYZGSdAI5w9aXD2A=;
- b=WYMSJUuRwKFFYKdPtvUvJPmS1yLiffLu+PQ1ylVoq7qA++yvY0TV0wG5PfOGxj4NyY
- YG+q53W9beegPFZObcHH2etWkTruNKCQQSHAAhmMAeKSa3S5cvITohi/381iTPkCAR8R
- gA/adQky5tq3LwnWras3TGegAZVBsbsvYNI8H1aApIaCNo2iJjJ0f7YNimHHF91elvsW
- PbQjTDFpmKwtCno9KcCfNVrs9Z+BLxZ8TvEitmpNOAzZLHD0alxKkCxeSGtupmaoNmig
- vo0ziQ4JRiWM8KNS8G56JtIu9SS+gzb5Mpb3MSvZI8f5PPt5tS5VbCNbMyDftkCaZ+P8
- pGog==
-X-Gm-Message-State: AOJu0Yy6NxRpxWlFWrHkZgU8DASlEn/DpmTHqdl4i+8xPf1s1VHAYQaL
- 1cr8WZvcKoOCBwD1Hd+PwLTt7+fvuOOr1fNQJlkpMiw/BE9Fk2VgxB+C12XzIUWQBiY=
-X-Gm-Gg: AfdE7ckWueV9E3mEWmvvcbzk+2rEKabUBubaFNtqLRU3/cXC2LhNGMSaLMuj8gPRthv
- yIZPlv8PoQb9ABMk54O25Sv/4lFuw8DYHaBq98WP8gvyKxXxlZ2n1OCjX66xETmAK45nKuMtmqg
- /gscuKTJ7rG7h/IEw5Pvd60sTvUVvJ+I2aBoTBbZ/SxQaDV+QsFDGDx9HRwntjnMiKp8wF6q3Ij
- //ExS1BPkan2+xnyaVenMHJSHgMvWk5gkCeBbKKEpRnQeuyWGICPD62nGsPZhQOp2DaK/sN18qH
- yfAsKqdVqVBuqEG9WEsgmxbCwB9G0jjtfq/MWrka4cAkNGj0pKVYqtjT0zlp5p4v83AHCLLwncq
- 8agGXJc6nsT5S2CNzLdMA+vqMk5THNJ5v3yQzPyQw9m0hVMlwP+VBpG3ewRJXEXgzpW6uBzAD8g
- AClP2wJk2L/mKgLXRKNYS6h57A8ZEgqIuut2RjFeVtphXEsb4Ycth2EnuRtA==
-X-Received: by 2002:a05:6a00:a383:b0:847:871a:94d3 with SMTP id
- d2e1a72fcca58-847f6f369e1mr4758980b3a.44.1783226461531; 
- Sat, 04 Jul 2026 21:41:01 -0700 (PDT)
+ bh=Oi77c4t6mTRvDij0KOLon4zdhMhjLviMYDkRz5tIy7Q=;
+ b=AkkgebS0hIJr8Gd8ZHpMZzalt71bn1imJQT61/Rq+DRC/RLcHdHSHVXaHjrL0FirVF
+ NcKA+mxRogTOp3nVMRAIkxSDJMJXyuOCWYks1ls+A0Flb3WH/6qgH2sdmyyL2HurBIaQ
+ ExtGIPmy28M62JQuNjQ8zKMiSqFSrz1wB1iGNnYxpKAjc68/nYMB1Z9bBGdOxKAtsG1b
+ bStdNopzKbOe1muxUmWGBhuQlRJjkDvUb2REbVO7Q6oF9S9QzoBGzYKh9RXAp8gHXZfa
+ nTwlMVT7SHLEKCO48/0+XzBr2Pr/H/jKOfyFytILZFwD1fKygh3IKYOzd/yQ+UhAoLOO
+ /sMQ==
+X-Gm-Message-State: AOJu0YwQQ1DlcCLQ8fsRO0mbhaAQjLQU7TG8BUCwcdDmg9WQReDX7FGV
+ LYWz2rQl0R/B+nAOF3r34kEqzRx0OXG77EpoRgoBn5rrto+SfGO23MAdIw15NxjmIac=
+X-Gm-Gg: AfdE7ckC8aUqD1G25BkMPDek3k+ImlA5/nSxWhmJKrc79UbplomvOUbgE4sMDHe4cU5
+ QJ4nMKNdHJAhbXS+V6KmyZgksDUYmX8Zc3KFkxLllJWUKPhBCd1pBtWQFk/Hejmw0n2XEav/hmU
+ R2IrxV2a5L8b2dLyyOWjhPeGZcVBzk/hlGL8BVNEi/fPk9Q/qFN13HbeGoKFErUV4mFW3VnqnCF
+ c2lYPMSgib2XMx1ByEP56W5mElT+GKVKr7XD14us29+QD4sG4xV54Kes4X8lH+4tZUBPGiOyqsL
+ pUOKuMdn3m8tO7WYiBQwuTiHWbFbtB1tcWE57ZgnJgC+ruEnlmRZOGGXs0wellzA2OK6y3tgpkW
+ 8C8rILQIlrz+9FGh6ptfIMrvfNzs+hFYNQ/bC01XAaqca0t4cWTXaaum66rt2yDp8GrJEqeI87R
+ yvmb5+dvYWaPJMvogqwJC6LcNUoGDb2pOQbqR42jzkT4t2vbo=
+X-Received: by 2002:a05:6a00:4f83:b0:846:bc60:5bf8 with SMTP id
+ d2e1a72fcca58-847f6d5b738mr4440975b3a.5.1783226464787; 
+ Sat, 04 Jul 2026 21:41:04 -0700 (PDT)
 Received: from stoup.. (71-212-39-188.tukw.qwest.net. [71.212.39.188])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-847f6952a0dsm1952615b3a.0.2026.07.04.21.41.00
+ d2e1a72fcca58-847f6952a0dsm1952615b3a.0.2026.07.04.21.41.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Jul 2026 21:41:01 -0700 (PDT)
+ Sat, 04 Jul 2026 21:41:03 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, philmd@oss.qualcomm.com
-Subject: [PATCH v2 40/46] target/riscv: Set badaddr in
- riscv_cpu_debug_excp_handler
-Date: Sat,  4 Jul 2026 21:37:19 -0700
-Message-ID: <20260705043725.1373137-41-richard.henderson@linaro.org>
+Subject: [PATCH v2 42/46] target/xtensa: Restrict xtensa_breakpoint_handler to
+ system mode
+Date: Sat,  4 Jul 2026 21:37:21 -0700
+Message-ID: <20260705043725.1373137-43-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260705043725.1373137-1-richard.henderson@linaro.org>
 References: <20260705043725.1373137-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x431.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
 X-Spam_score_int: 4
 X-Spam_score: 0.4
 X-Spam_bar: /
@@ -101,57 +101,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Setting badaddr in riscv_cpu_debug_check_breakpoint was a minor
-buglet as that function should only be testing if the breakpoint
-should trigger.
-
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/riscv/cpu_helper.c | 4 ----
- target/riscv/debug.c      | 8 ++------
- 2 files changed, 2 insertions(+), 10 deletions(-)
+ target/xtensa/cpu.h    | 2 +-
+ target/xtensa/cpu.c    | 2 +-
+ target/xtensa/helper.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-index c318dcd633..f9556c04a5 100644
---- a/target/riscv/cpu_helper.c
-+++ b/target/riscv/cpu_helper.c
-@@ -2373,10 +2373,6 @@ void riscv_cpu_do_interrupt(CPUState *cs)
-             break;
-         case RISCV_EXCP_BREAKPOINT:
-             tval = env->badaddr;
--            if (cs->watchpoint_hit) {
--                tval = cs->watchpoint_hit->hitaddr;
--                cs->watchpoint_hit = NULL;
--            }
-             break;
-         case RISCV_EXCP_SW_CHECK:
-             tval = env->sw_check_code;
-diff --git a/target/riscv/debug.c b/target/riscv/debug.c
-index 994a77fd31..f4689519d8 100644
---- a/target/riscv/debug.c
-+++ b/target/riscv/debug.c
-@@ -919,6 +919,7 @@ void riscv_cpu_debug_excp_handler(CPUState *cs, CPUBreakpoint *hit)
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
+diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+index 663ee23dc4..119a0b8187 100644
+--- a/target/xtensa/cpu.h
++++ b/target/xtensa/cpu.h
+@@ -592,6 +592,7 @@ void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
+                                       MemTxResult response, uintptr_t retaddr);
+ hwaddr xtensa_cpu_get_phys_addr_debug(CPUState *cpu, vaddr addr);
+ bool xtensa_debug_check_breakpoint(CPUState *cs, CPUBreakpoint *bp);
++void xtensa_breakpoint_handler(CPUState *cs, CPUBreakpoint *hit);
+ #endif
+ void xtensa_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+ void xtensa_count_regs(const XtensaConfig *config,
+@@ -621,7 +622,6 @@ void xtensa_translate_init(void);
+ void xtensa_translate_code(CPUState *cs, TranslationBlock *tb,
+                            int *max_insns, vaddr pc, void *host_pc);
+ void **xtensa_get_regfile_by_name(const char *name, int entries, int bits);
+-void xtensa_breakpoint_handler(CPUState *cs, CPUBreakpoint *hit);
+ void xtensa_register_core(XtensaConfigList *node);
+ void xtensa_sim_open_console(Chardev *chr);
+ void check_interrupts(CPUXtensaState *s);
+diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+index 2015a4e3d0..eb6758b694 100644
+--- a/target/xtensa/cpu.c
++++ b/target/xtensa/cpu.c
+@@ -316,7 +316,6 @@ static const TCGCPUOps xtensa_tcg_ops = {
  
-+    env->badaddr = hit->hitaddr;
-     do_trigger_action(env, DBG_ACTION_BP);
+     .initialize = xtensa_translate_init,
+     .translate_code = xtensa_translate_code,
+-    .debug_excp_handler = xtensa_breakpoint_handler,
+     .get_tb_cpu_state = xtensa_get_tb_cpu_state,
+     .restore_state_to_opc = xtensa_restore_state_to_opc,
+     .mmu_index = xtensa_cpu_mmu_index,
+@@ -331,6 +330,7 @@ static const TCGCPUOps xtensa_tcg_ops = {
+     .do_transaction_failed = xtensa_cpu_do_transaction_failed,
+     .do_unaligned_access = xtensa_cpu_do_unaligned_access,
+     .debug_check_breakpoint = xtensa_debug_check_breakpoint,
++    .debug_excp_handler = xtensa_breakpoint_handler,
+ #endif /* !CONFIG_USER_ONLY */
+ };
+ 
+diff --git a/target/xtensa/helper.c b/target/xtensa/helper.c
+index 02627ada7c..aa012068de 100644
+--- a/target/xtensa/helper.c
++++ b/target/xtensa/helper.c
+@@ -206,6 +206,7 @@ void xtensa_register_core(XtensaConfigList *node)
+     g_free((gpointer)type.name);
  }
  
-@@ -929,12 +930,7 @@ bool riscv_cpu_debug_check_breakpoint(CPUState *cs, CPUBreakpoint *bp)
-     int i = bp->id;
-     trigger_type_t trigger_type = get_trigger_type(env, i);
- 
--    if (trigger_common_match(env, trigger_type, i)) {
--        env->badaddr = env->tdata2[i];
--        return true;
--    }
--
--    return false;
-+    return trigger_common_match(env, trigger_type, i);
++#ifndef CONFIG_USER_ONLY
+ static uint32_t check_hw_breakpoints(CPUXtensaState *env)
+ {
+     unsigned i;
+@@ -249,7 +250,6 @@ void xtensa_breakpoint_handler(CPUState *cs, CPUBreakpoint *hit)
+     }
  }
  
- bool riscv_cpu_debug_check_watchpoint(CPUState *cs, CPUBreakpoint *wp)
+-#ifndef CONFIG_USER_ONLY
+ void xtensa_cpu_do_unaligned_access(CPUState *cs,
+                                     vaddr addr, MMUAccessType access_type,
+                                     int mmu_idx, uintptr_t retaddr)
 -- 
 2.43.0
 

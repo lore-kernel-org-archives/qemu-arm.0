@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49DEBC44500
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6526DC44501
 	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 22:29:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgVJp-0006ig-0y; Sun, 05 Jul 2026 18:28:09 -0400
+	id 1wgVJp-0006je-J7; Sun, 05 Jul 2026 18:28:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1wgUwM-0002HN-Vy; Sun, 05 Jul 2026 18:03:55 -0400
+ id 1wgUwu-0002M5-5z; Sun, 05 Jul 2026 18:04:28 -0400
 Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1wgUwJ-0001w0-4e; Sun, 05 Jul 2026 18:03:54 -0400
+ id 1wgUwp-00024x-8K; Sun, 05 Jul 2026 18:04:27 -0400
 Received: from smtp02.univ-lille.fr (smtp02.univ-lille.fr [194.254.129.96])
- by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4gthMG2NnGz85Xk;
- Mon,  6 Jul 2026 00:03:22 +0200 (CEST)
+ by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4gthMH0W69z85Y9;
+ Mon,  6 Jul 2026 00:03:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
- s=dkim; t=1783289002;
- bh=Gm90oyUNlaNPGf2wnyQvIDxJ66fFR4rAlPCuC1y0eMY=;
+ s=dkim; t=1783289003;
+ bh=OSguJ2MZHcJvX+sOIaneNSiE1GwVJO2D8ODtTYZVbr0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=UIH6JcBWkw9ThGAqy9QbQ6K1H+IGMTm1EPtWgCW0L5iYLE+4rv1059F2mqFSF8PRw
- xi3jMdiXAzmm81PuOs/qQBXTt8dstny5C7Aq/MxcLBQaFSymtZBLqUxNRGIWhO0z78
- wY3lWuNokr/VhSW3c7PiBsRCFaiQz2hdTkVxIZPFQFgi5UouZIz9vHHCzt0gdZGoTu
- GWg1QBR5ZIPB3pKjKUpaOyYq5Nq5rBecARlAooL/w/WbGZkag+Md/f1tDCHi10qMND
- Ubj9L6234iT+yF5+DlrOrDLEfGRhqgPQCIbIE1xR8vg+SMaQLx3vWivesl0Usi3uud
- SKn2wYq9oao+g==
+ b=r8nChRzdDMLqf3UdyCd1r8pdkOYXTJEI5Wk4gEQdWxFcztEBiQ5OX2sNVq7haFCfP
+ x1RSLy1T852rx//G42eKSIm+6HmuFi2s7hOFOUIUP75aVnDlM9wqq9IkhUCTM+56FE
+ kX2kgbcAN/AaEATd9fQgsXjqEXCwZjCYBSfuVlcGhyyMbIpv9rSHsyUUHwBb1guZpp
+ 4Gq3Iv3hE9i0bGiAbdqTp8DxOP4aeT5RP/ji8JAe5P6dJLgYAP4QpP6lpeeDrCVDVn
+ AWM1I2vXzASIXdjSdLFepJ3PdiljolZhsbka2/hBKkYMdTjNZgh5cG7kuTPasxmbIl
+ zT0xHuzYAVrDg==
 Received: from mac.home (lfbn-lil-1-243-101.w90-45.abo.wanadoo.fr
  [90.45.87.101]) (Authenticated sender: gilles.grimaud)
- by smtp02.univ-lille.fr (Postfix) with ESMTPSA id 4gthMG1BJnz6tBv;
+ by smtp02.univ-lille.fr (Postfix) with ESMTPSA id 4gthMG6SgHz6sT6;
  Mon,  6 Jul 2026 00:03:22 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Gilles Grimaud <gilles.grimaud@univ-lille.fr>
-Subject: [PATCH RFC v1 3/9] hw/dma: add RP2040 DMA controller
-Date: Mon,  6 Jul 2026 00:03:14 +0200
-Message-ID: <20260705220320.90395-4-gilles.grimaud@univ-lille.fr>
+Subject: [PATCH RFC v1 8/9] tests/functional: add Raspberry Pi Pico tests
+Date: Mon,  6 Jul 2026 00:03:19 +0200
+Message-ID: <20260705220320.90395-9-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260705220320.90395-1-gilles.grimaud@univ-lille.fr>
 References: <20260705220320.90395-1-gilles.grimaud@univ-lille.fr>
@@ -72,1163 +72,1330 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a functional RP2040 DMA controller with channel registers, interrupts, chaining, ring wrapping, sniff checksums, abort status, DREQ plumbing and AHB error reporting suitable for Pico SDK workloads.
-
-The model favours deterministic functional behaviour over detailed bus-cycle timing.
+Add functional Raspberry Pi Pico tests covering synthetic ROM startup, UART output, flash persistence, UF2 loading, DMA/UART paths, dual-core startup, flash helper shortcuts, random source configuration and selected Pico SDK-style workloads.
 
 Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 ---
- hw/dma/Kconfig              |    3 +
- hw/dma/meson.build          |    1 +
- hw/dma/rp2040_dma.c         | 1032 +++++++++++++++++++++++++++++++++++
- include/hw/dma/rp2040_dma.h |   77 +++
- 4 files changed, 1113 insertions(+)
- create mode 100644 hw/dma/rp2040_dma.c
- create mode 100644 include/hw/dma/rp2040_dma.h
+ tests/functional/arm/meson.build        |    2 +
+ tests/functional/arm/test_raspi_pico.py | 1289 +++++++++++++++++++++++
+ 2 files changed, 1291 insertions(+)
+ create mode 100644 tests/functional/arm/test_raspi_pico.py
 
-diff --git a/hw/dma/Kconfig b/hw/dma/Kconfig
-index 98fbb1bb04..d91fb53f71 100644
---- a/hw/dma/Kconfig
-+++ b/hw/dma/Kconfig
-@@ -30,3 +30,6 @@ config SIFIVE_PDMA
- config XLNX_CSU_DMA
-     bool
-     select REGISTER
-+
-+config RP2040_DMA
-+    bool
-diff --git a/hw/dma/meson.build b/hw/dma/meson.build
-index cc7810beb8..11437b15f9 100644
---- a/hw/dma/meson.build
-+++ b/hw/dma/meson.build
-@@ -10,5 +10,6 @@ system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx_dpdma.c'))
- system_ss.add(when: 'CONFIG_XLNX_ZDMA', if_true: files('xlnx-zdma.c'))
- system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_dma.c', 'soc_dma.c'))
- system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_dma.c'))
-+system_ss.add(when: 'CONFIG_RP2040_DMA', if_true: files('rp2040_dma.c'))
- system_ss.add(when: 'CONFIG_SIFIVE_PDMA', if_true: files('sifive_pdma.c'))
- system_ss.add(when: 'CONFIG_XLNX_CSU_DMA', if_true: files('xlnx_csu_dma.c'))
-diff --git a/hw/dma/rp2040_dma.c b/hw/dma/rp2040_dma.c
+diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
+index 61b00932db..0e3bebd5dc 100644
+--- a/tests/functional/arm/meson.build
++++ b/tests/functional/arm/meson.build
+@@ -22,6 +22,7 @@ test_arm_timeouts = {
+   'cubieboard' : 360,
+   'orangepi' : 540,
+   'quanta_gsj' : 240,
++  'raspi_pico' : 30,
+   'raspi2' : 120,
+   'replay' : 240,
+   'tuxrun' : 240,
+@@ -30,6 +31,7 @@ test_arm_timeouts = {
+ 
+ tests_arm_system_quick = [
+   'migration',
++  'raspi_pico',
+ ]
+ 
+ tests_arm_system_thorough = [
+diff --git a/tests/functional/arm/test_raspi_pico.py b/tests/functional/arm/test_raspi_pico.py
 new file mode 100644
-index 0000000000..5a3f720207
+index 0000000000..c0ddc018b8
 --- /dev/null
-+++ b/hw/dma/rp2040_dma.c
-@@ -0,0 +1,1032 @@
-+/*
-+ * RP2040 DMA emulation
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/core/irq.h"
-+#include "hw/core/qdev-properties.h"
-+#include "hw/dma/rp2040_dma.h"
-+#include "hw/misc/rp2040_nyi.h"
-+#include "migration/vmstate.h"
-+#include "qemu/bitops.h"
-+#include "qemu/host-utils.h"
-+#include "qemu/log.h"
-+#include "qemu/main-loop.h"
-+#include "qemu/module.h"
-+#include "qemu/timer.h"
-+
-+#define DMA_CH_SIZE              0x40
-+#define DMA_CH_READ_ADDR         0x00
-+#define DMA_CH_WRITE_ADDR        0x04
-+#define DMA_CH_TRANS_COUNT       0x08
-+#define DMA_CH_CTRL_TRIG         0x0c
-+#define DMA_CH_AL1_CTRL          0x10
-+#define DMA_CH_AL1_READ_ADDR     0x14
-+#define DMA_CH_AL1_WRITE_ADDR    0x18
-+#define DMA_CH_AL1_TRANS_COUNT   0x1c
-+#define DMA_CH_AL2_CTRL          0x20
-+#define DMA_CH_AL2_TRANS_COUNT   0x24
-+#define DMA_CH_AL2_READ_ADDR     0x28
-+#define DMA_CH_AL2_WRITE_ADDR    0x2c
-+#define DMA_CH_AL3_CTRL          0x30
-+#define DMA_CH_AL3_WRITE_ADDR    0x34
-+#define DMA_CH_AL3_TRANS_COUNT   0x38
-+#define DMA_CH_AL3_READ_ADDR     0x3c
-+
-+#define DMA_INTR                 0x400
-+#define DMA_INTE0                0x404
-+#define DMA_INTF0                0x408
-+#define DMA_INTS0                0x40c
-+#define DMA_INTE1                0x414
-+#define DMA_INTF1                0x418
-+#define DMA_INTS1                0x41c
-+#define DMA_TIMER0               0x420
-+#define DMA_MULTI_CHAN_TRIGGER   0x430
-+#define DMA_SNIFF_CTRL           0x434
-+#define DMA_SNIFF_DATA           0x438
-+#define DMA_FIFO_LEVELS          0x440
-+#define DMA_CHAN_ABORT           0x444
-+
-+#define DMA_CTRL_AHB_ERROR       BIT(31)
-+#define DMA_CTRL_READ_ERROR      BIT(30)
-+#define DMA_CTRL_WRITE_ERROR     BIT(29)
-+#define DMA_CTRL_BUSY            BIT(24)
-+#define DMA_CTRL_SNIFF_EN        BIT(23)
-+#define DMA_CTRL_BSWAP           BIT(22)
-+#define DMA_CTRL_IRQ_QUIET       BIT(21)
-+#define DMA_CTRL_TREQ_SEL_SHIFT  15
-+#define DMA_CTRL_TREQ_SEL_MASK   (0x3f << DMA_CTRL_TREQ_SEL_SHIFT)
-+#define DMA_CTRL_CHAIN_TO_SHIFT  11
-+#define DMA_CTRL_CHAIN_TO_MASK   (0xf << DMA_CTRL_CHAIN_TO_SHIFT)
-+#define DMA_CTRL_RING_SEL        BIT(10)
-+#define DMA_CTRL_RING_SIZE_SHIFT 6
-+#define DMA_CTRL_RING_SIZE_MASK  (0xf << 6)
-+#define DMA_CTRL_INCR_WRITE      BIT(5)
-+#define DMA_CTRL_INCR_READ       BIT(4)
-+#define DMA_CTRL_DATA_SIZE_SHIFT 2
-+#define DMA_CTRL_DATA_SIZE_MASK  (0x3 << DMA_CTRL_DATA_SIZE_SHIFT)
-+#define DMA_CTRL_EN              BIT(0)
-+#define DMA_CTRL_ERROR_MASK      (DMA_CTRL_AHB_ERROR | \
-+                                  DMA_CTRL_READ_ERROR | \
-+                                  DMA_CTRL_WRITE_ERROR)
-+
-+#define DMA_SNIFF_CTRL_OUT_INV   BIT(11)
-+#define DMA_SNIFF_CTRL_OUT_REV   BIT(10)
-+#define DMA_SNIFF_CTRL_BSWAP     BIT(9)
-+#define DMA_SNIFF_CTRL_CALC_SHIFT 5
-+#define DMA_SNIFF_CTRL_CALC_MASK  (0xf << DMA_SNIFF_CTRL_CALC_SHIFT)
-+#define DMA_SNIFF_CTRL_DMACH_SHIFT 1
-+#define DMA_SNIFF_CTRL_DMACH_MASK (0xf << DMA_SNIFF_CTRL_DMACH_SHIFT)
-+#define DMA_SNIFF_CTRL_EN        BIT(0)
-+#define DMA_SNIFF_CTRL_MASK      0xfff
-+
-+#define DMA_SNIFF_CALC_CRC32     0x0
-+#define DMA_SNIFF_CALC_CRC32R    0x1
-+#define DMA_SNIFF_CALC_CRC16     0x2
-+#define DMA_SNIFF_CALC_CRC16R    0x3
-+#define DMA_SNIFF_CALC_EVEN      0xe
-+#define DMA_SNIFF_CALC_SUM       0xf
-+
-+#define DMA_CTRL_WRITABLE_MASK   (DMA_CTRL_SNIFF_EN | DMA_CTRL_BSWAP | \
-+                                  DMA_CTRL_IRQ_QUIET | \
-+                                  DMA_CTRL_TREQ_SEL_MASK | \
-+                                  DMA_CTRL_CHAIN_TO_MASK | \
-+                                  DMA_CTRL_RING_SEL | \
-+                                  DMA_CTRL_RING_SIZE_MASK | \
-+                                  DMA_CTRL_INCR_WRITE | \
-+                                  DMA_CTRL_INCR_READ | \
-+                                  DMA_CTRL_DATA_SIZE_MASK | \
-+                                  BIT(1) | DMA_CTRL_EN)
-+#define DMA_CHANNEL_MASK         ((1u << RP2040_DMA_NUM_CHANNELS) - 1)
-+#define DMA_PACING_SYSCLK_HZ     125000000ULL
-+#define DMA_PACING_SYSCLK_NS     8ULL
-+
-+#define ATOMIC_ALIAS_MASK        0x3000
-+#define ATOMIC_XOR               0x1000
-+#define ATOMIC_SET               0x2000
-+#define ATOMIC_CLR               0x3000
-+
-+static uint32_t rp2040_dma_apply_alias(uint32_t old, uint32_t value,
-+                                       hwaddr alias)
-+{
-+    switch (alias) {
-+    case ATOMIC_XOR:
-+        return old ^ value;
-+    case ATOMIC_SET:
-+        return old | value;
-+    case ATOMIC_CLR:
-+        return old & ~value;
-+    default:
-+        return value;
-+    }
-+}
-+
-+static uint32_t rp2040_dma_ints(RP2040DmaState *s, unsigned irq)
-+{
-+    return ((s->intr & s->inte[irq]) | s->intf[irq]) & DMA_CHANNEL_MASK;
-+}
-+
-+static void rp2040_dma_update_irq(RP2040DmaState *s)
-+{
-+    int i;
-+
-+    for (i = 0; i < RP2040_DMA_NUM_IRQS; i++) {
-+        qemu_set_irq(s->irq[i], rp2040_dma_ints(s, i) != 0);
-+    }
-+}
-+
-+static unsigned rp2040_dma_transfer_size(RP2040DmaChannel *ch)
-+{
-+    switch ((ch->ctrl & DMA_CTRL_DATA_SIZE_MASK) >> DMA_CTRL_DATA_SIZE_SHIFT) {
-+    case 0:
-+        return 1;
-+    case 1:
-+        return 2;
-+    case 2:
-+        return 4;
-+    default:
-+        return 4;
-+    }
-+}
-+
-+static void rp2040_dma_request_start(RP2040DmaState *s, unsigned index);
-+static void rp2040_dma_dreq(void *opaque, int n, int level);
-+static void rp2040_dma_dreq_pulse(RP2040DmaState *s, uint32_t dreq);
-+static void rp2040_dma_dreq_bh(void *opaque);
-+static bool rp2040_dma_dreq_has_busy_channel(RP2040DmaState *s, uint32_t dreq,
-+                                             unsigned except);
-+static void rp2040_dma_write_reg(RP2040DmaState *s, hwaddr addr,
-+                                 uint64_t value64, unsigned size);
-+
-+static uint32_t rp2040_dma_treq(RP2040DmaChannel *ch)
-+{
-+    return (ch->ctrl & DMA_CTRL_TREQ_SEL_MASK) >> DMA_CTRL_TREQ_SEL_SHIFT;
-+}
-+
-+static bool rp2040_dma_treq_is_ready_sink(uint32_t treq)
-+{
-+    /*
-+     * The current XIP/SSI TX model does not have a finite TX FIFO: writes to
-+     * its data register are accepted immediately.
-+     */
-+    return treq == RP2040_DREQ_XIP_SSITX;
-+}
-+
-+static bool rp2040_dma_treq_is_connected_level(uint32_t treq)
-+{
-+    return treq == RP2040_DREQ_UART0_TX || treq == RP2040_DREQ_UART0_RX ||
-+           treq == RP2040_DREQ_UART1_TX || treq == RP2040_DREQ_UART1_RX ||
-+           treq == RP2040_DREQ_XIP_STREAM;
-+}
-+
-+static bool rp2040_dma_treq_is_timer(uint32_t treq)
-+{
-+    return treq >= RP2040_DREQ_DMA_TIMER0 &&
-+           treq <= RP2040_DREQ_DMA_TIMER3;
-+}
-+
-+static uint64_t rp2040_dma_timer_period_ns(uint32_t value)
-+{
-+    uint32_t x = value >> 16;
-+    uint32_t y = value & 0xffff;
-+    uint64_t period;
-+
-+    if (x == 0 || y == 0) {
-+        return 0;
-+    }
-+
-+    /*
-+     * The RP2040 fractional timer emits TREQs at (X/Y) * sys_clk, capped
-+     * at one TREQ per sys_clk. Use the Pico's nominal 125 MHz system clock
-+     * as the virtual pacing source.
-+     */
-+    if (x >= y) {
-+        return DMA_PACING_SYSCLK_NS;
-+    }
-+
-+    period = DIV_ROUND_UP((uint64_t)y * NANOSECONDS_PER_SECOND,
-+                          (uint64_t)x * DMA_PACING_SYSCLK_HZ);
-+    return MAX(period, 1);
-+}
-+
-+static void rp2040_dma_timer_update(RP2040DmaState *s, unsigned index)
-+{
-+    RP2040DmaPacingTimer *pt = &s->pacing_timer[index];
-+
-+    pt->period_ns = rp2040_dma_timer_period_ns(s->timer[index]);
-+    if (pt->period_ns == 0) {
-+        timer_del(pt->timer);
-+        return;
-+    }
-+
-+    timer_mod(pt->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-+              pt->period_ns);
-+}
-+
-+static void rp2040_dma_timer_cb(void *opaque)
-+{
-+    RP2040DmaPacingTimer *pt = opaque;
-+    RP2040DmaState *s = pt->dma;
-+    uint32_t dreq = RP2040_DREQ_DMA_TIMER0 + pt->index;
-+
-+    if (rp2040_dma_dreq_has_busy_channel(s, dreq, RP2040_DMA_NUM_CHANNELS)) {
-+        rp2040_dma_dreq_pulse(s, dreq);
-+    }
-+    if (pt->period_ns != 0) {
-+        timer_mod(pt->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-+                  pt->period_ns);
-+    }
-+}
-+
-+static uint32_t rp2040_dma_next_addr(RP2040DmaChannel *ch, uint32_t addr,
-+                                     unsigned width, bool write)
-+{
-+    uint32_t ring_size;
-+    bool ring_write;
-+    uint32_t mask;
-+
-+    if (!(ch->ctrl & (write ? DMA_CTRL_INCR_WRITE : DMA_CTRL_INCR_READ))) {
-+        return addr;
-+    }
-+
-+    ring_size = (ch->ctrl & DMA_CTRL_RING_SIZE_MASK) >>
-+                DMA_CTRL_RING_SIZE_SHIFT;
-+    ring_write = ch->ctrl & DMA_CTRL_RING_SEL;
-+    if (ring_size == 0 || ring_write != write) {
-+        return addr + width;
-+    }
-+
-+    mask = (1u << ring_size) - 1;
-+    return (addr & ~mask) | ((addr + width) & mask);
-+}
-+
-+static uint32_t rp2040_dma_sniff_word(const uint8_t *buf, unsigned width)
-+{
-+    uint32_t value = buf[0];
-+
-+    if (width >= 2) {
-+        value |= (uint32_t)buf[1] << 8;
-+    }
-+    if (width >= 4) {
-+        value |= (uint32_t)buf[2] << 16;
-+        value |= (uint32_t)buf[3] << 24;
-+    }
-+    return value;
-+}
-+
-+static void rp2040_dma_sniff_bswap(uint8_t *buf, unsigned width)
-+{
-+    if (width == 2) {
-+        uint8_t t = buf[0];
-+        buf[0] = buf[1];
-+        buf[1] = t;
-+    } else if (width == 4) {
-+        uint8_t t = buf[0];
-+        buf[0] = buf[3];
-+        buf[3] = t;
-+        t = buf[1];
-+        buf[1] = buf[2];
-+        buf[2] = t;
-+    }
-+}
-+
-+static uint32_t rp2040_dma_sniff_crc32(uint32_t crc, const uint8_t *buf,
-+                                       unsigned width, bool reverse)
-+{
-+    int i;
-+    int bit;
-+
-+    for (i = 0; i < width; i++) {
-+        uint8_t byte = reverse ? revbit8(buf[i]) : buf[i];
-+
-+        crc ^= (uint32_t)byte << 24;
-+        for (bit = 0; bit < 8; bit++) {
-+            crc = (crc & BIT(31)) ? (crc << 1) ^ 0x04c11db7 : crc << 1;
-+        }
-+    }
-+    return crc;
-+}
-+
-+static uint32_t rp2040_dma_sniff_crc16(uint32_t crc, const uint8_t *buf,
-+                                       unsigned width, bool reverse)
-+{
-+    uint16_t crc16 = crc;
-+    int i;
-+    int bit;
-+
-+    for (i = 0; i < width; i++) {
-+        uint8_t byte = reverse ? revbit8(buf[i]) : buf[i];
-+
-+        crc16 ^= (uint16_t)byte << 8;
-+        for (bit = 0; bit < 8; bit++) {
-+            crc16 = (crc16 & BIT(15)) ? (crc16 << 1) ^ 0x1021 : crc16 << 1;
-+        }
-+    }
-+    return (crc & 0xffff0000) | crc16;
-+}
-+
-+static void rp2040_dma_sniff_update(RP2040DmaState *s, unsigned index,
-+                                    const uint8_t *buf, unsigned width)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+    uint8_t sniff_buf[4] = { 0 };
-+    uint32_t channel;
-+    uint32_t calc;
-+    uint32_t value;
-+
-+    if (!(s->sniff_ctrl & DMA_SNIFF_CTRL_EN) ||
-+        !(ch->ctrl & DMA_CTRL_SNIFF_EN)) {
-+        return;
-+    }
-+
-+    channel = (s->sniff_ctrl & DMA_SNIFF_CTRL_DMACH_MASK) >>
-+              DMA_SNIFF_CTRL_DMACH_SHIFT;
-+    if (channel != index) {
-+        return;
-+    }
-+
-+    memcpy(sniff_buf, buf, width);
-+    if (s->sniff_ctrl & DMA_SNIFF_CTRL_BSWAP) {
-+        rp2040_dma_sniff_bswap(sniff_buf, width);
-+    }
-+
-+    calc = (s->sniff_ctrl & DMA_SNIFF_CTRL_CALC_MASK) >>
-+           DMA_SNIFF_CTRL_CALC_SHIFT;
-+    switch (calc) {
-+    case DMA_SNIFF_CALC_CRC32:
-+        s->sniff_data = rp2040_dma_sniff_crc32(s->sniff_data, sniff_buf,
-+                                               width, false);
-+        break;
-+    case DMA_SNIFF_CALC_CRC32R:
-+        s->sniff_data = rp2040_dma_sniff_crc32(s->sniff_data, sniff_buf,
-+                                               width, true);
-+        break;
-+    case DMA_SNIFF_CALC_CRC16:
-+        s->sniff_data = rp2040_dma_sniff_crc16(s->sniff_data, sniff_buf,
-+                                               width, false);
-+        break;
-+    case DMA_SNIFF_CALC_CRC16R:
-+        s->sniff_data = rp2040_dma_sniff_crc16(s->sniff_data, sniff_buf,
-+                                               width, true);
-+        break;
-+    case DMA_SNIFF_CALC_EVEN:
-+        value = rp2040_dma_sniff_word(sniff_buf, width);
-+        s->sniff_data = (s->sniff_data ^ ctpop32(value)) & 1;
-+        break;
-+    case DMA_SNIFF_CALC_SUM:
-+        s->sniff_data += rp2040_dma_sniff_word(sniff_buf, width);
-+        break;
-+    default:
-+        break;
-+    }
-+}
-+
-+static uint32_t rp2040_dma_sniff_read_data(RP2040DmaState *s)
-+{
-+    uint32_t value = s->sniff_data;
-+
-+    if (s->sniff_ctrl & DMA_SNIFF_CTRL_OUT_REV) {
-+        value = revbit32(value);
-+    }
-+    if (s->sniff_ctrl & DMA_SNIFF_CTRL_OUT_INV) {
-+        value = ~value;
-+    }
-+    return value;
-+}
-+
-+static void rp2040_dma_finish_channel(RP2040DmaState *s, unsigned index)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+    uint32_t chain_to;
-+
-+    ch->ctrl &= ~DMA_CTRL_BUSY;
-+    if (!(ch->ctrl & DMA_CTRL_IRQ_QUIET)) {
-+        s->intr |= BIT(index);
-+        rp2040_dma_update_irq(s);
-+    }
-+
-+    chain_to = (ch->ctrl & DMA_CTRL_CHAIN_TO_MASK) >> DMA_CTRL_CHAIN_TO_SHIFT;
-+    if (!(ch->ctrl & DMA_CTRL_ERROR_MASK) &&
-+        chain_to < RP2040_DMA_NUM_CHANNELS && chain_to != index) {
-+        rp2040_dma_request_start(s, chain_to);
-+    }
-+}
-+
-+static void rp2040_dma_run_beats(RP2040DmaState *s, unsigned index,
-+                                 uint32_t beats)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+    uint32_t count;
-+    unsigned width;
-+
-+    if (!(ch->ctrl & DMA_CTRL_EN) || ch->trans_count == 0) {
-+        return;
-+    }
-+
-+    width = rp2040_dma_transfer_size(ch);
-+    count = MIN(ch->trans_count, beats);
-+
-+    while (count--) {
-+        uint8_t buf[4] = { 0 };
-+        MemTxResult result;
-+
-+        result = address_space_rw(&s->dma_as, ch->read_addr,
-+                                  MEMTXATTRS_UNSPECIFIED, buf, width, false);
-+        if (result != MEMTX_OK) {
-+            ch->ctrl |= DMA_CTRL_READ_ERROR | DMA_CTRL_AHB_ERROR;
-+            break;
-+        }
-+
-+        if (ch->ctrl & DMA_CTRL_BSWAP) {
-+            if (width == 2) {
-+                uint8_t t = buf[0];
-+                buf[0] = buf[1];
-+                buf[1] = t;
-+            } else if (width == 4) {
-+                uint8_t t = buf[0];
-+                buf[0] = buf[3];
-+                buf[3] = t;
-+                t = buf[1];
-+                buf[1] = buf[2];
-+                buf[2] = t;
-+            }
-+        }
-+        rp2040_dma_sniff_update(s, index, buf, width);
-+
-+        if (ch->write_addr >= RP2040_DMA_BASE &&
-+            ch->write_addr < RP2040_DMA_BASE + RP2040_DMA_SIZE) {
-+            if (width == 4) {
-+                rp2040_dma_write_reg(s, ch->write_addr - RP2040_DMA_BASE,
-+                                     ldl_le_p(buf), width);
-+                result = MEMTX_OK;
-+            } else {
-+                result = MEMTX_ERROR;
-+            }
-+        } else {
-+            result = address_space_rw(&s->dma_as, ch->write_addr,
-+                                      MEMTXATTRS_UNSPECIFIED, buf, width,
-+                                      true);
-+        }
-+        if (result != MEMTX_OK) {
-+            ch->ctrl |= DMA_CTRL_WRITE_ERROR | DMA_CTRL_AHB_ERROR;
-+            break;
-+        }
-+
-+        ch->trans_count--;
-+        ch->read_addr = rp2040_dma_next_addr(ch, ch->read_addr, width, false);
-+        ch->write_addr = rp2040_dma_next_addr(ch, ch->write_addr, width, true);
-+    }
-+
-+    if ((ch->ctrl & DMA_CTRL_ERROR_MASK) || ch->trans_count == 0) {
-+        rp2040_dma_finish_channel(s, index);
-+    }
-+}
-+
-+static void rp2040_dma_start_channel(RP2040DmaState *s, unsigned index)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+    uint32_t treq;
-+
-+    if (!(ch->ctrl & DMA_CTRL_EN)) {
-+        return;
-+    }
-+
-+    if (ch->trans_count == 0 && ch->reload_count != 0) {
-+        ch->trans_count = ch->reload_count;
-+    }
-+
-+    if (ch->trans_count == 0) {
-+        if (ch->ctrl & DMA_CTRL_IRQ_QUIET) {
-+            s->intr |= BIT(index);
-+            rp2040_dma_update_irq(s);
-+        }
-+        return;
-+    }
-+
-+    ch->ctrl |= DMA_CTRL_BUSY;
-+    ch->ctrl &= ~DMA_CTRL_ERROR_MASK;
-+    ch->paced_nyi_logged = false;
-+
-+    treq = rp2040_dma_treq(ch);
-+    if (treq == RP2040_DREQ_FORCE || rp2040_dma_treq_is_ready_sink(treq)) {
-+        rp2040_dma_run_beats(s, index, UINT32_MAX);
-+    } else if ((rp2040_dma_treq_is_connected_level(treq) ||
-+                treq == RP2040_DREQ_XIP_SSIRX) && s->dreq_level[treq]) {
-+        rp2040_dma_dreq_pulse(s, treq);
-+    } else if (treq != RP2040_DREQ_XIP_SSIRX &&
-+               !rp2040_dma_treq_is_connected_level(treq) &&
-+               !rp2040_dma_treq_is_timer(treq) &&
-+               !ch->paced_nyi_logged) {
-+        rp2040_log_nyi("dma", "paced transfer",
-+                       "DREQ source is not connected yet");
-+        ch->paced_nyi_logged = true;
-+    }
-+}
-+
-+static void rp2040_dma_drain_starts(RP2040DmaState *s)
-+{
-+    if (s->engine_active) {
-+        return;
-+    }
-+
-+    s->engine_active = true;
-+    while (s->pending_start) {
-+        unsigned index = ctz32(s->pending_start);
-+
-+        s->pending_start &= ~BIT(index);
-+        rp2040_dma_start_channel(s, index);
-+    }
-+    s->engine_active = false;
-+}
-+
-+static void rp2040_dma_request_start(RP2040DmaState *s, unsigned index)
-+{
-+    if (index >= RP2040_DMA_NUM_CHANNELS) {
-+        return;
-+    }
-+
-+    s->pending_start |= BIT(index);
-+    rp2040_dma_drain_starts(s);
-+}
-+
-+static void rp2040_dma_dreq_pulse(RP2040DmaState *s, uint32_t dreq)
-+{
-+    if (dreq >= RP2040_DMA_NUM_DREQS) {
-+        return;
-+    }
-+
-+    if (s->pending_dreq[dreq] != UINT32_MAX) {
-+        s->pending_dreq[dreq]++;
-+    }
-+    qemu_bh_schedule(s->dreq_bh);
-+}
-+
-+static void rp2040_dma_dreq(void *opaque, int n, int level)
-+{
-+    RP2040DmaState *s = opaque;
-+
-+    if (n < 0 || n >= RP2040_DMA_NUM_DREQS) {
-+        return;
-+    }
-+
-+    s->dreq_level[n] = level;
-+    if (level) {
-+        rp2040_dma_dreq_pulse(s, n);
-+        if (rp2040_dma_treq_is_connected_level(n)) {
-+            rp2040_dma_dreq_bh(s);
-+        }
-+    }
-+}
-+
-+static void rp2040_dma_dreq_bh(void *opaque)
-+{
-+    RP2040DmaState *s = opaque;
-+    int i;
-+    int dreq;
-+
-+    if (s->dreq_servicing) {
-+        return;
-+    }
-+
-+    s->dreq_servicing = true;
-+    for (dreq = 0; dreq < RP2040_DMA_NUM_DREQS; dreq++) {
-+        while (s->pending_dreq[dreq] > 0) {
-+            s->pending_dreq[dreq]--;
-+            for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
-+                RP2040DmaChannel *ch = &s->chan[i];
-+
-+                if ((ch->ctrl & DMA_CTRL_BUSY) && rp2040_dma_treq(ch) == dreq) {
-+                    s->engine_active = true;
-+                    rp2040_dma_run_beats(s, i, 1);
-+                    s->engine_active = false;
-+                    rp2040_dma_drain_starts(s);
-+                }
-+            }
-+            if (s->dreq_level[dreq] &&
-+                rp2040_dma_dreq_has_busy_channel(s, dreq,
-+                                                 RP2040_DMA_NUM_CHANNELS)) {
-+                rp2040_dma_dreq_pulse(s, dreq);
-+            }
-+        }
-+    }
-+    s->dreq_servicing = false;
-+}
-+
-+static bool rp2040_dma_dreq_has_busy_channel(RP2040DmaState *s, uint32_t dreq,
-+                                             unsigned except)
-+{
-+    int i;
-+
-+    for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
-+        RP2040DmaChannel *ch = &s->chan[i];
-+
-+        if (i != except && (ch->ctrl & DMA_CTRL_BUSY) &&
-+            rp2040_dma_treq(ch) == dreq) {
-+            return true;
-+        }
-+    }
-+    return false;
-+}
-+
-+static void rp2040_dma_abort_channel(RP2040DmaState *s, unsigned index)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+    uint32_t treq = rp2040_dma_treq(ch);
-+
-+    /*
-+     * RP2040 CHAN_ABORT clears the transfer counter and leaves the channel
-+     * inactive. QEMU does not model in-flight bus-transfer latency, so the
-+     * abort status bit is clear as soon as the write completes.
-+     */
-+    ch->ctrl &= ~DMA_CTRL_BUSY;
-+    ch->trans_count = 0;
-+    if (treq < RP2040_DMA_NUM_DREQS &&
-+        !rp2040_dma_dreq_has_busy_channel(s, treq, index)) {
-+        s->pending_dreq[treq] = 0;
-+    }
-+}
-+
-+static uint32_t rp2040_dma_read_channel(RP2040DmaState *s, unsigned index,
-+                                        hwaddr offset)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+
-+    switch (offset) {
-+    case DMA_CH_READ_ADDR:
-+    case DMA_CH_AL1_READ_ADDR:
-+    case DMA_CH_AL2_READ_ADDR:
-+    case DMA_CH_AL3_READ_ADDR:
-+        return ch->read_addr;
-+    case DMA_CH_WRITE_ADDR:
-+    case DMA_CH_AL1_WRITE_ADDR:
-+    case DMA_CH_AL2_WRITE_ADDR:
-+    case DMA_CH_AL3_WRITE_ADDR:
-+        return ch->write_addr;
-+    case DMA_CH_TRANS_COUNT:
-+    case DMA_CH_AL1_TRANS_COUNT:
-+    case DMA_CH_AL2_TRANS_COUNT:
-+    case DMA_CH_AL3_TRANS_COUNT:
-+        return ch->trans_count;
-+    case DMA_CH_CTRL_TRIG:
-+    case DMA_CH_AL1_CTRL:
-+    case DMA_CH_AL2_CTRL:
-+    case DMA_CH_AL3_CTRL:
-+        return ch->ctrl;
-+    default:
-+        return 0;
-+    }
-+}
-+
-+static void rp2040_dma_write_ctrl(RP2040DmaState *s, unsigned index,
-+                                  uint32_t value, bool trigger)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+    uint32_t errors = ch->ctrl & DMA_CTRL_ERROR_MASK;
-+
-+    errors &= ~(value & (DMA_CTRL_READ_ERROR | DMA_CTRL_WRITE_ERROR));
-+    if (errors & (DMA_CTRL_READ_ERROR | DMA_CTRL_WRITE_ERROR)) {
-+        errors |= DMA_CTRL_AHB_ERROR;
-+    } else {
-+        errors &= ~DMA_CTRL_AHB_ERROR;
-+    }
-+    ch->ctrl = (value & DMA_CTRL_WRITABLE_MASK) | errors;
-+    if (trigger) {
-+        rp2040_dma_request_start(s, index);
-+    }
-+}
-+
-+static void rp2040_dma_write_channel(RP2040DmaState *s, unsigned index,
-+                                     hwaddr offset, uint32_t value)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+
-+    switch (offset) {
-+    case DMA_CH_READ_ADDR:
-+    case DMA_CH_AL1_READ_ADDR:
-+    case DMA_CH_AL2_READ_ADDR:
-+        ch->read_addr = value;
-+        break;
-+    case DMA_CH_AL3_READ_ADDR:
-+        ch->read_addr = value;
-+        rp2040_dma_request_start(s, index);
-+        break;
-+    case DMA_CH_WRITE_ADDR:
-+    case DMA_CH_AL1_WRITE_ADDR:
-+    case DMA_CH_AL3_WRITE_ADDR:
-+        ch->write_addr = value;
-+        break;
-+    case DMA_CH_AL2_WRITE_ADDR:
-+        ch->write_addr = value;
-+        rp2040_dma_request_start(s, index);
-+        break;
-+    case DMA_CH_TRANS_COUNT:
-+    case DMA_CH_AL2_TRANS_COUNT:
-+    case DMA_CH_AL3_TRANS_COUNT:
-+        ch->trans_count = value;
-+        ch->reload_count = value;
-+        break;
-+    case DMA_CH_AL1_TRANS_COUNT:
-+        ch->trans_count = value;
-+        ch->reload_count = value;
-+        rp2040_dma_request_start(s, index);
-+        break;
-+    case DMA_CH_CTRL_TRIG:
-+        rp2040_dma_write_ctrl(s, index, value, true);
-+        break;
-+    case DMA_CH_AL1_CTRL:
-+    case DMA_CH_AL2_CTRL:
-+    case DMA_CH_AL3_CTRL:
-+        rp2040_dma_write_ctrl(s, index, value, false);
-+        break;
-+    default:
-+        break;
-+    }
-+}
-+
-+static uint64_t rp2040_dma_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    RP2040DmaState *s = opaque;
-+    hwaddr offset = addr & 0xfff;
-+    uint32_t value;
-+
-+    if (offset < RP2040_DMA_NUM_CHANNELS * DMA_CH_SIZE) {
-+        value = rp2040_dma_read_channel(s, offset / DMA_CH_SIZE,
-+                                        offset % DMA_CH_SIZE);
-+    } else {
-+        switch (offset) {
-+        case DMA_INTR:
-+            value = s->intr;
-+            break;
-+        case DMA_INTE0:
-+            value = s->inte[0];
-+            break;
-+        case DMA_INTF0:
-+            value = s->intf[0];
-+            break;
-+        case DMA_INTS0:
-+            value = rp2040_dma_ints(s, 0);
-+            break;
-+        case DMA_INTE1:
-+            value = s->inte[1];
-+            break;
-+        case DMA_INTF1:
-+            value = s->intf[1];
-+            break;
-+        case DMA_INTS1:
-+            value = rp2040_dma_ints(s, 1);
-+            break;
-+        case DMA_TIMER0 ... DMA_TIMER0 + 3 * sizeof(uint32_t):
-+            value = s->timer[(offset - DMA_TIMER0) / sizeof(uint32_t)];
-+            break;
-+        case DMA_SNIFF_CTRL:
-+            value = s->sniff_ctrl;
-+            break;
-+        case DMA_SNIFF_DATA:
-+            value = rp2040_dma_sniff_read_data(s);
-+            break;
-+        case DMA_FIFO_LEVELS:
-+            value = 0;
-+            break;
-+        case DMA_CHAN_ABORT:
-+            value = 0;
-+            break;
-+        default:
-+            value = 0;
-+            qemu_log_mask(LOG_UNIMP, "rp2040.dma: unimplemented read  "
-+                          "(size %d, addr 0x%08" HWADDR_PRIx
-+                          ", offset 0x%04" HWADDR_PRIx
-+                          ") -> 0x%0*" PRIx32 "\n",
-+                          size, RP2040_DMA_BASE + addr, offset,
-+                          size << 1, value);
-+            break;
-+        }
-+    }
-+
-+    return value;
-+}
-+
-+static void rp2040_dma_write_reg(RP2040DmaState *s, hwaddr addr,
-+                                 uint64_t value64, unsigned size)
-+{
-+    hwaddr alias = addr & ATOMIC_ALIAS_MASK;
-+    hwaddr offset = addr & 0xfff;
-+    uint32_t value = value64;
-+    uint32_t old;
-+    int i;
-+
-+    if (offset < RP2040_DMA_NUM_CHANNELS * DMA_CH_SIZE) {
-+        rp2040_dma_write_channel(s, offset / DMA_CH_SIZE,
-+                                 offset % DMA_CH_SIZE, value);
-+    } else {
-+        switch (offset) {
-+        case DMA_INTR:
-+            s->intr &= ~(value & DMA_CHANNEL_MASK);
-+            rp2040_dma_update_irq(s);
-+            break;
-+        case DMA_INTE0:
-+            s->inte[0] = rp2040_dma_apply_alias(s->inte[0], value, alias) &
-+                         DMA_CHANNEL_MASK;
-+            rp2040_dma_update_irq(s);
-+            break;
-+        case DMA_INTF0:
-+            s->intf[0] = rp2040_dma_apply_alias(s->intf[0], value, alias) &
-+                         DMA_CHANNEL_MASK;
-+            rp2040_dma_update_irq(s);
-+            break;
-+        case DMA_INTS0:
-+            s->intr &= ~(value & DMA_CHANNEL_MASK);
-+            rp2040_dma_update_irq(s);
-+            break;
-+        case DMA_INTE1:
-+            s->inte[1] = rp2040_dma_apply_alias(s->inte[1], value, alias) &
-+                         DMA_CHANNEL_MASK;
-+            rp2040_dma_update_irq(s);
-+            break;
-+        case DMA_INTF1:
-+            s->intf[1] = rp2040_dma_apply_alias(s->intf[1], value, alias) &
-+                         DMA_CHANNEL_MASK;
-+            rp2040_dma_update_irq(s);
-+            break;
-+        case DMA_INTS1:
-+            s->intr &= ~(value & DMA_CHANNEL_MASK);
-+            rp2040_dma_update_irq(s);
-+            break;
-+        case DMA_TIMER0 ... DMA_TIMER0 + 3 * sizeof(uint32_t):
-+            i = (offset - DMA_TIMER0) / sizeof(uint32_t);
-+            s->timer[i] = rp2040_dma_apply_alias(s->timer[i], value, alias);
-+            rp2040_dma_timer_update(s, i);
-+            break;
-+        case DMA_MULTI_CHAN_TRIGGER:
-+            value &= DMA_CHANNEL_MASK;
-+            for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
-+                if (value & BIT(i)) {
-+                    rp2040_dma_request_start(s, i);
-+                }
-+            }
-+            break;
-+        case DMA_SNIFF_CTRL:
-+            old = s->sniff_ctrl;
-+            s->sniff_ctrl = rp2040_dma_apply_alias(old, value, alias) &
-+                            DMA_SNIFF_CTRL_MASK;
-+            break;
-+        case DMA_SNIFF_DATA:
-+            s->sniff_data = rp2040_dma_apply_alias(s->sniff_data, value,
-+                                                   alias);
-+            break;
-+        case DMA_CHAN_ABORT:
-+            value &= DMA_CHANNEL_MASK;
-+            for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
-+                if (value & BIT(i)) {
-+                    rp2040_dma_abort_channel(s, i);
-+                }
-+            }
-+            break;
-+        default:
-+            qemu_log_mask(LOG_UNIMP, "rp2040.dma: unimplemented write "
-+                          "(size %d, addr 0x%08" HWADDR_PRIx
-+                          ", offset 0x%04" HWADDR_PRIx
-+                          ", value 0x%0*" PRIx64 ")\n",
-+                          size, RP2040_DMA_BASE + addr, offset, size << 1,
-+                          value64);
-+            break;
-+        }
-+    }
-+}
-+
-+static void rp2040_dma_write(void *opaque, hwaddr addr, uint64_t value64,
-+                             unsigned size)
-+{
-+    rp2040_dma_write_reg(opaque, addr, value64, size);
-+}
-+
-+static const MemoryRegionOps rp2040_dma_ops = {
-+    .read = rp2040_dma_read,
-+    .write = rp2040_dma_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void rp2040_dma_reset(DeviceState *dev)
-+{
-+    RP2040DmaState *s = RP2040_DMA(dev);
-+    int i;
-+
-+    for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
-+        s->chan[i].read_addr = 0;
-+        s->chan[i].write_addr = 0;
-+        s->chan[i].trans_count = 0;
-+        s->chan[i].reload_count = 0;
-+        s->chan[i].ctrl = i << DMA_CTRL_CHAIN_TO_SHIFT;
-+        s->chan[i].paced_nyi_logged = false;
-+    }
-+    s->intr = 0;
-+    s->inte[0] = 0;
-+    s->inte[1] = 0;
-+    s->intf[0] = 0;
-+    s->intf[1] = 0;
-+    memset(s->timer, 0, sizeof(s->timer));
-+    for (i = 0; i < RP2040_DMA_NUM_TIMERS; i++) {
-+        s->pacing_timer[i].period_ns = 0;
-+        timer_del(s->pacing_timer[i].timer);
-+    }
-+    memset(s->dreq_level, 0, sizeof(s->dreq_level));
-+    memset(s->pending_dreq, 0, sizeof(s->pending_dreq));
-+    qemu_bh_cancel(s->dreq_bh);
-+    s->engine_active = false;
-+    s->pending_start = 0;
-+    s->sniff_ctrl = 0;
-+    s->sniff_data = 0;
-+    rp2040_dma_update_irq(s);
-+}
-+
-+static void rp2040_dma_init(Object *obj)
-+{
-+    RP2040DmaState *s = RP2040_DMA(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    int i;
-+
-+    memory_region_init_io(&s->iomem, obj, &rp2040_dma_ops, s,
-+                          TYPE_RP2040_DMA, RP2040_DMA_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    for (i = 0; i < RP2040_DMA_NUM_IRQS; i++) {
-+        sysbus_init_irq(sbd, &s->irq[i]);
-+    }
-+    s->dreq_bh = qemu_bh_new(rp2040_dma_dreq_bh, s);
-+    qdev_init_gpio_in_named(DEVICE(obj), rp2040_dma_dreq, "dreq",
-+                            RP2040_DMA_NUM_DREQS);
-+    for (i = 0; i < RP2040_DMA_NUM_TIMERS; i++) {
-+        s->pacing_timer[i].dma = s;
-+        s->pacing_timer[i].index = i;
-+        s->pacing_timer[i].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
-+                                                rp2040_dma_timer_cb,
-+                                                &s->pacing_timer[i]);
-+    }
-+}
-+
-+static void rp2040_dma_finalize(Object *obj)
-+{
-+    RP2040DmaState *s = RP2040_DMA(obj);
-+    int i;
-+
-+    for (i = 0; i < RP2040_DMA_NUM_TIMERS; i++) {
-+        timer_free(s->pacing_timer[i].timer);
-+    }
-+    qemu_bh_delete(s->dreq_bh);
-+}
-+
-+static void rp2040_dma_realize(DeviceState *dev, Error **errp)
-+{
-+    RP2040DmaState *s = RP2040_DMA(dev);
-+
-+    if (!s->dma_mr) {
-+        error_setg(errp, "memory property was not set");
-+        return;
-+    }
-+
-+    address_space_init(&s->dma_as, s->dma_mr, "rp2040-dma-memory");
-+}
-+
-+static const VMStateDescription rp2040_dma_vmstate = {
-+    .name = TYPE_RP2040_DMA,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static const Property rp2040_dma_properties[] = {
-+    DEFINE_PROP_LINK("memory", RP2040DmaState, dma_mr, TYPE_MEMORY_REGION,
-+                     MemoryRegion *),
-+};
-+
-+static void rp2040_dma_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = rp2040_dma_realize;
-+    device_class_set_legacy_reset(dc, rp2040_dma_reset);
-+    dc->vmsd = &rp2040_dma_vmstate;
-+    device_class_set_props(dc, rp2040_dma_properties);
-+}
-+
-+static const TypeInfo rp2040_dma_info = {
-+    .name          = TYPE_RP2040_DMA,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(RP2040DmaState),
-+    .instance_init = rp2040_dma_init,
-+    .instance_finalize = rp2040_dma_finalize,
-+    .class_init    = rp2040_dma_class_init,
-+};
-+
-+static void rp2040_dma_register_types(void)
-+{
-+    type_register_static(&rp2040_dma_info);
-+}
-+type_init(rp2040_dma_register_types)
-diff --git a/include/hw/dma/rp2040_dma.h b/include/hw/dma/rp2040_dma.h
-new file mode 100644
-index 0000000000..4b4dae4097
---- /dev/null
-+++ b/include/hw/dma/rp2040_dma.h
-@@ -0,0 +1,77 @@
-+/*
-+ * RP2040 DMA emulation
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef HW_DMA_RP2040_DMA_H
-+#define HW_DMA_RP2040_DMA_H
-+
-+#include "hw/core/sysbus.h"
-+#include "system/memory.h"
-+#include "qom/object.h"
-+
-+#define TYPE_RP2040_DMA "rp2040-dma"
-+OBJECT_DECLARE_SIMPLE_TYPE(RP2040DmaState, RP2040_DMA)
-+
-+#define RP2040_DMA_BASE 0x50000000
-+#define RP2040_DMA_SIZE 0x4000
-+#define RP2040_DMA_NUM_CHANNELS 12
-+#define RP2040_DMA_NUM_IRQS 2
-+#define RP2040_DMA_NUM_DREQS 64
-+#define RP2040_DMA_NUM_TIMERS 4
-+
-+#define RP2040_DREQ_UART0_TX 20
-+#define RP2040_DREQ_UART0_RX 21
-+#define RP2040_DREQ_UART1_TX 22
-+#define RP2040_DREQ_UART1_RX 23
-+#define RP2040_DREQ_XIP_STREAM 37
-+#define RP2040_DREQ_XIP_SSITX 38
-+#define RP2040_DREQ_XIP_SSIRX 39
-+#define RP2040_DREQ_DMA_TIMER0 59
-+#define RP2040_DREQ_DMA_TIMER1 60
-+#define RP2040_DREQ_DMA_TIMER2 61
-+#define RP2040_DREQ_DMA_TIMER3 62
-+#define RP2040_DREQ_FORCE 63
-+
-+typedef struct RP2040DmaChannel {
-+    uint32_t read_addr;
-+    uint32_t write_addr;
-+    uint32_t trans_count;
-+    uint32_t reload_count;
-+    uint32_t ctrl;
-+    bool paced_nyi_logged;
-+} RP2040DmaChannel;
-+
-+typedef struct RP2040DmaPacingTimer {
-+    void *dma;
-+    QEMUTimer *timer;
-+    uint64_t period_ns;
-+    unsigned index;
-+} RP2040DmaPacingTimer;
-+
-+struct RP2040DmaState {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem;
-+    MemoryRegion *dma_mr;
-+    AddressSpace dma_as;
-+    qemu_irq irq[RP2040_DMA_NUM_IRQS];
-+
-+    RP2040DmaChannel chan[RP2040_DMA_NUM_CHANNELS];
-+    uint32_t intr;
-+    uint32_t inte[RP2040_DMA_NUM_IRQS];
-+    uint32_t intf[RP2040_DMA_NUM_IRQS];
-+    uint32_t timer[RP2040_DMA_NUM_TIMERS];
-+    RP2040DmaPacingTimer pacing_timer[RP2040_DMA_NUM_TIMERS];
-+    uint32_t sniff_ctrl;
-+    uint32_t sniff_data;
-+    QEMUBH *dreq_bh;
-+    bool dreq_servicing;
-+    bool engine_active;
-+    uint32_t pending_start;
-+    bool dreq_level[RP2040_DMA_NUM_DREQS];
-+    uint32_t pending_dreq[RP2040_DMA_NUM_DREQS];
-+};
-+
-+#endif
++++ b/tests/functional/arm/test_raspi_pico.py
+@@ -0,0 +1,1289 @@
++#!/usr/bin/env python3
++#
++# Functional test that checks the Raspberry Pi Pico machine.
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import os
++import socket
++import struct
++import subprocess
++import time
++
++from qemu_test import QemuSystemTest, wait_for_console_pattern
++
++
++class RaspiPicoMachine(QemuSystemTest):
++
++    UF2_MAGIC_START0 = 0x0A324655
++    UF2_MAGIC_START1 = 0x9E5D5157
++    UF2_MAGIC_END = 0x0AB16F30
++    UF2_FLAG_FAMILY_ID_PRESENT = 0x00002000
++    RP2040_FAMILY_ID = 0xE48BFF56
++
++    def set_direct_uart_machine(self):
++        self.set_machine('raspi-pico')
++        self.vm.set_machine('raspi-pico,strict-uart-pins=off')
++
++    def pipico_rom(self):
++        rom = os.getenv('QEMU_TEST_PIPICO_ROM')
++        if rom:
++            if os.path.exists(rom):
++                return rom
++            self.skipTest(f'QEMU_TEST_PIPICO_ROM does not exist: {rom}')
++
++        rom = os.path.join(os.getcwd(), 'pc-bios', 'pipico.rom')
++        if os.path.exists(rom):
++            return rom
++
++        self.skipTest('pipico.rom not available; set QEMU_TEST_PIPICO_ROM')
++
++    # Minimal Cortex-M0+ raw image linked for XIP at 0x10000000. It contains a
++    # vector table and writes "PICO UART OK\n" to UART0 at 0x40034000.
++    UART_TEST_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x09, 0x00, 0x00, 0x10,
++        0x07, 0x48, 0x08, 0x4a, 0x11, 0x78, 0x00, 0x29,
++        0x02, 0xd0, 0x01, 0x60, 0x01, 0x32, 0xf9, 0xe7,
++        0xfe, 0xe7, 0x50, 0x49, 0x43, 0x4f, 0x20, 0x55,
++        0x41, 0x52, 0x54, 0x20, 0x4f, 0x4b, 0x0a, 0x00,
++        0x00, 0x40, 0x03, 0x40, 0x1a, 0x00, 0x00, 0x10,
++    ])
++
++    # Arms TIMER alarm 0, waits for the NVIC IRQ0 handler to run, then writes
++    # "TIMER OK\n" to UART0.
++    TIMER_ALARM_TEST_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x45, 0x00, 0x00, 0x10,
++        0x6d, 0x00, 0x00, 0x10, 0x6d, 0x00, 0x00, 0x10,
++        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++        0x6f, 0x00, 0x00, 0x10,
++        0x14, 0x48, 0x00, 0x21, 0x01, 0x60, 0x14, 0x48,
++        0x01, 0x21, 0x01, 0x60, 0x13, 0x4c, 0x61, 0x63,
++        0xa1, 0x63, 0xa2, 0x6a, 0x64, 0x23, 0xd2, 0x18,
++        0x22, 0x61, 0x0e, 0x48, 0x01, 0x68, 0x00, 0x29,
++        0xfb, 0xd0, 0x0f, 0x48, 0x00, 0xf0, 0x07, 0xf8,
++        0xfe, 0xe7, 0x0c, 0x48, 0x01, 0x21, 0x41, 0x63,
++        0x08, 0x48, 0x01, 0x60, 0x70, 0x47, 0x0b, 0x4a,
++        0x01, 0x78, 0x00, 0x29, 0x02, 0xd0, 0x11, 0x60,
++        0x01, 0x30, 0xf9, 0xe7, 0x70, 0x47, 0xc0, 0x46,
++        0x54, 0x49, 0x4d, 0x45, 0x52, 0x20, 0x4f, 0x4b,
++        0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20,
++        0x00, 0xe1,
++        0x00, 0xe0, 0x00, 0x40, 0x05, 0x40, 0x8c, 0x00,
++        0x00, 0x10, 0x00, 0x40, 0x03, 0x40,
++    ])
++
++    # Verifies the RP2040 SIO view seen from core 0: CPUID, FIFO ready bit,
++    # read-on-empty sticky flag and write-one-to-clear behavior.
++    SIO_FIFO_TEST_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x11, 0x00, 0x00, 0x10,
++        0x3b, 0x00, 0x00, 0x10, 0x3b, 0x00, 0x00, 0x10,
++        0x18, 0x4c, 0x20, 0x68, 0x00, 0x28, 0x10, 0xd1,
++        0x20, 0x6d, 0x02, 0x21, 0x08, 0x42, 0x0c, 0xd0,
++        0xa0, 0x6d, 0x20, 0x6d, 0x08, 0x21, 0x08, 0x42,
++        0x07, 0xd0, 0x21, 0x65, 0x20, 0x6d, 0x08, 0x42,
++        0x03, 0xd1, 0x11, 0x48, 0x00, 0xf0, 0x05, 0xf8,
++        0xfe, 0xe7, 0x10, 0x48, 0x00, 0xf0, 0x01, 0xf8,
++        0xfe, 0xe7, 0x0f, 0x4a, 0x01, 0x78, 0x00, 0x29,
++        0x02, 0xd0, 0x11, 0x60, 0x01, 0x30, 0xf9, 0xe7,
++        0x70, 0x47, 0xc0, 0x46, 0x53, 0x49, 0x4f, 0x20,
++        0x43, 0x4f, 0x52, 0x45, 0x30, 0x20, 0x4f, 0x4b,
++        0x0a, 0x00, 0x53, 0x49, 0x4f, 0x20, 0x43, 0x4f,
++        0x52, 0x45, 0x30, 0x20, 0x46, 0x41, 0x49, 0x4c,
++        0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0,
++        0x54, 0x00, 0x00, 0x10, 0x62, 0x00, 0x00, 0x10,
++        0x00, 0x40, 0x03, 0x40,
++    ])
++
++    # Verifies the RP2040 SIO hardware divider: unsigned and signed division,
++    # division by zero, result save/restore writes, and CSR READY/DIRTY.
++    SIO_DIVIDER_TEST_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x09, 0x00, 0x00, 0x10,
++        0x37, 0x4c, 0x64, 0x20, 0x20, 0x66, 0x07, 0x20,
++        0x60, 0x66, 0xa0, 0x6f, 0x35, 0x4a, 0x90, 0x42,
++        0x00, 0xd0, 0x4b, 0xe0, 0x60, 0x6f, 0x34, 0x4a,
++        0x90, 0x42, 0x00, 0xd0, 0x46, 0xe0, 0xa0, 0x6f,
++        0x30, 0x4a, 0x90, 0x42, 0x00, 0xd0, 0x41, 0xe0,
++        0x20, 0x6f, 0x30, 0x4a, 0x90, 0x42, 0x00, 0xd0,
++        0x3c, 0xe0, 0xa0, 0x6f, 0x2e, 0x4a, 0x90, 0x42,
++        0x00, 0xd0, 0x37, 0xe0, 0x2d, 0x48, 0xa0, 0x66,
++        0x07, 0x20, 0xe0, 0x66, 0x60, 0x6f, 0x2c, 0x4a,
++        0x90, 0x42, 0x00, 0xd0, 0x2e, 0xe0, 0x20, 0x6f,
++        0x2a, 0x4a, 0x90, 0x42, 0x00, 0xd0, 0x29, 0xe0,
++        0x29, 0x48, 0x20, 0x66, 0x00, 0x20, 0x60, 0x66,
++        0x60, 0x6f, 0x27, 0x4a, 0x90, 0x42, 0x00, 0xd0,
++        0x20, 0xe0, 0x20, 0x6f, 0x25, 0x4a, 0x90, 0x42,
++        0x00, 0xd0, 0x1b, 0xe0, 0x24, 0x48, 0x60, 0x67,
++        0x24, 0x48, 0x20, 0x67, 0xa0, 0x6f, 0x19, 0x4a,
++        0x90, 0x42, 0x00, 0xd0, 0x12, 0xe0, 0x60, 0x6f,
++        0x1f, 0x4a, 0x90, 0x42, 0x00, 0xd0, 0x0d, 0xe0,
++        0x20, 0x6f, 0x1e, 0x4a, 0x90, 0x42, 0x00, 0xd0,
++        0x08, 0xe0, 0xa0, 0x6f, 0x14, 0x4a, 0x90, 0x42,
++        0x00, 0xd0, 0x03, 0xe0, 0x1a, 0x48, 0x00, 0xf0,
++        0x05, 0xf8, 0xfe, 0xe7, 0x19, 0x48, 0x00, 0xf0,
++        0x01, 0xf8, 0xfe, 0xe7, 0x18, 0x4a, 0x01, 0x78,
++        0x00, 0x29, 0x02, 0xd0, 0x11, 0x60, 0x01, 0x30,
++        0xf9, 0xe7, 0x70, 0x47, 0x53, 0x49, 0x4f, 0x20,
++        0x44, 0x49, 0x56, 0x20, 0x4f, 0x4b, 0x0a, 0x00,
++        0x53, 0x49, 0x4f, 0x20, 0x44, 0x49, 0x56, 0x20,
++        0x46, 0x41, 0x49, 0x4c, 0x0a, 0x00, 0x00, 0x00,
++        0x00, 0x00, 0x00, 0xd0, 0x03, 0x00, 0x00, 0x00,
++        0x02, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x00, 0x00,
++        0x01, 0x00, 0x00, 0x00, 0x9c, 0xff, 0xff, 0xff,
++        0xfe, 0xff, 0xff, 0xff, 0xf2, 0xff, 0xff, 0xff,
++        0x34, 0x12, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff,
++        0xdd, 0xcc, 0xbb, 0xaa, 0x44, 0x33, 0x22, 0x11,
++        0xcc, 0x00, 0x00, 0x10, 0xd8, 0x00, 0x00, 0x10,
++        0x00, 0x40, 0x03, 0x40,
++    ])
++
++    # Verifies the initial PSM PROC1 force-off state, the derived DONE bit,
++    # and the RP2040 atomic SET/CLR aliases used by the Pico SDK.
++    PSM_PROC1_TEST_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x11, 0x00, 0x00, 0x10,
++        0x4b, 0x00, 0x00, 0x10, 0x4b, 0x00, 0x00, 0x10,
++        0x19, 0x4c, 0x1a, 0x4d, 0x1a, 0x4e, 0x20, 0x68,
++        0x28, 0x42, 0x16, 0xd1, 0x30, 0x68, 0x28, 0x42,
++        0x13, 0xd0, 0x18, 0x49, 0x0d, 0x60, 0x20, 0x68,
++        0x28, 0x42, 0x0e, 0xd0, 0x30, 0x68, 0x28, 0x42,
++        0x0b, 0xd1, 0x15, 0x49, 0x0d, 0x60, 0x20, 0x68,
++        0x28, 0x42, 0x06, 0xd1, 0x30, 0x68, 0x28, 0x42,
++        0x03, 0xd0, 0x12, 0x48, 0x00, 0xf0, 0x05, 0xf8,
++        0xfe, 0xe7, 0x11, 0x48, 0x00, 0xf0, 0x01, 0xf8,
++        0xfe, 0xe7, 0x10, 0x4a, 0x01, 0x78, 0x00, 0x29,
++        0x02, 0xd0, 0x11, 0x60, 0x01, 0x30, 0xf9, 0xe7,
++        0x70, 0x47, 0xc0, 0x46, 0x50, 0x53, 0x4d, 0x20,
++        0x4f, 0x4b, 0x0a, 0x00, 0x50, 0x53, 0x4d, 0x20,
++        0x46, 0x41, 0x49, 0x4c, 0x0a, 0x00, 0x00, 0x00,
++        0x04, 0x00, 0x01, 0x40, 0x00, 0x00, 0x01, 0x00,
++        0x0c, 0x00, 0x01, 0x40, 0x04, 0x20, 0x01, 0x40,
++        0x04, 0x30, 0x01, 0x40, 0x64, 0x00, 0x00, 0x10,
++        0x6c, 0x00, 0x00, 0x10, 0x00, 0x40, 0x03, 0x40,
++    ])
++
++    # Core 0 sends the Pico SDK multicore_launch_core1_raw() FIFO sequence to
++    # synthetic ROM on core 1. Core 1 echoes the sequence, jumps to the
++    # supplied entry point, calls send_ack() using the supplied stack, and
++    # sends 0xd01e back through FIFO.
++    CORE1_WORKING_TEST_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x11, 0x00, 0x00, 0x10,
++        0x55, 0x00, 0x00, 0x10, 0x55, 0x00, 0x00, 0x10,
++        0x2f, 0x4c, 0x00, 0x27, 0x06, 0x2f, 0x0b, 0xd0,
++        0xb8, 0x00, 0x2e, 0x4e, 0x36, 0x58, 0x30, 0x46,
++        0x00, 0xf0, 0x22, 0xf8, 0x00, 0xf0, 0x1a, 0xf8,
++        0xb0, 0x42, 0x13, 0xd1, 0x01, 0x37, 0xf1, 0xe7,
++        0x00, 0xf0, 0x14, 0xf8, 0x28, 0x49, 0x88, 0x42,
++        0x0c, 0xd1, 0x28, 0x48, 0x00, 0xf0, 0x1a, 0xf8,
++        0xfe, 0xe7, 0x00, 0xf0, 0x01, 0xf8, 0xfe, 0xe7,
++        0x00, 0xb5, 0x21, 0x4c, 0x22, 0x48, 0x00, 0xf0,
++        0x0b, 0xf8, 0x00, 0xbd, 0x22, 0x48, 0x00, 0xf0,
++        0x0d, 0xf8, 0xfe, 0xe7, 0x20, 0x6d, 0x01, 0x21,
++        0x08, 0x42, 0xfb, 0xd0, 0xa0, 0x6d, 0x70, 0x47,
++        0x21, 0x6d, 0x02, 0x22, 0x11, 0x42, 0xfb, 0xd0,
++        0x60, 0x65, 0x70, 0x47, 0x1b, 0x4a, 0x01, 0x78,
++        0x00, 0x29, 0x02, 0xd0, 0x11, 0x60, 0x01, 0x30,
++        0xf9, 0xe7, 0x70, 0x47,
++        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++        0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10,
++        0x00, 0x10, 0x04, 0x20, 0x43, 0x00, 0x00, 0x10,
++        0x63, 0x6f, 0x72, 0x65, 0x20, 0x30, 0x20, 0x61,
++        0x6e, 0x64, 0x20, 0x63, 0x6f, 0x72, 0x65, 0x20,
++        0x31, 0x20, 0x77, 0x6f, 0x72, 0x6b, 0x69, 0x6e,
++        0x67, 0x20, 0x21, 0x0a, 0x00, 0x43, 0x4f, 0x52,
++        0x45, 0x31, 0x20, 0x57, 0x4f, 0x52, 0x4b, 0x49,
++        0x4e, 0x47, 0x20, 0x46, 0x41, 0x49, 0x4c, 0x0a,
++        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0,
++        0x84, 0x00, 0x00, 0x10, 0x1e, 0xd0, 0x00, 0x00,
++        0x9c, 0x00, 0x00, 0x10, 0xb9, 0x00, 0x00, 0x10,
++        0x00, 0x40, 0x03, 0x40,
++    ])
++
++    # No-SDK regression derived from the Pico SDK flash_safe_execute smoke
++    # test. Core 0 launches core 1 through the synthetic ROM FIFO protocol,
++    # core 1 installs a FIFO IRQ lockout handler, core 0 takes a SIO spinlock,
++    # locks out core 1, calls the synthetic flash_range_erase/program helpers,
++    # verifies XIP contents and helper counters, then releases core 1.
++    FLASH_SAFE_MULTICORE_TEST_BIN = bytes.fromhex(
++        '00200420010100108b0200108b02001000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '4701001000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '00f03cf800f050f8704800f095f840bf6f4800f0aaf800f050f86e4800f08cf8'
++        '40bf6d4800f0a1f800f043f86b4800f0a3f8fee76a486b4901606b486b490160'
++        '62b620bffde71fb4744600f07df85f49884210d15e4800f06ff820bf6448016d'
++        '01200142f9d000f06ff85a49884202d1594800f061f80fbc01b0204730b55d4c'
++        '06252068002803d100f066f840bf206800f052f840bf00f057f82168884274d1'
++        '0434013dedd130bd5348016800296cd07047514800210160704770b54f480021'
++        '002201231b028154013101329a42fad14b4c4c48606001200003a0600020e060'
++        '202020614848206048480021002201231b02855cff26b54247d101329a42f8d1'
++        '404860603d48a06001200002e060404820603e480021002201231b02855c8d42'
++        '33d1013101329a42f8d1206d01282cd1606d012829d170bd0eb52d490a6d0223'
++        '1a42fbd048650ebd0eb529490a6d01231a42fbd0886d0ebd0fb525490a6d0123'
++        '1a4201d0886df9e70fbd10b50446fff7ebffa04209d110bd06b526490278002a'
++        '02d00a600130f9e706bd2348fff7f4fffee7c046000000000000000001000000'
++        '000000100010042035010010464c4153482053414645204f4b0a00464c415348'
++        '2053414645204641494c0a00edfecefa0100cefaefbecefa0200cefaac020010'
++        '08ed00e00000001000e100e000000100000000d094020010000100d000000020'
++        '0000ff5f0010100052450000001010105250000000400340bb020010'
++    )
++
++    # Similar to FLASH_SAFE_MULTICORE_TEST_BIN, but after locking out core 1
++    # in SRAM it starts a page program through the low-level SSI path and
++    # verifies that an XIP read while the flash is busy raises HardFault.
++    FLASH_BUSY_LOCKOUT_TEST_BIN = bytes.fromhex(
++        '0020042001010010e5010010e501001000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        'e501001000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '664800f066f800f027f800f00ff800f02ef8634800f03df840bf624800f052f8'
++        '614800f056f800f027f85be030b55f4c06252068002803d100f03bf840bf2068'
++        '00f027f840bf00f02cf82168884249d10434013dedd130bd55485649564a9042'
++        '04d203680b6004300431f8e7704753480168002936d0704751485249524a9042'
++        '04d203680b6004300431f8e74d48013000470eb54d490a6d02231a42fbd04865'
++        '0ebd0eb549490a6d01231a42fbd0886d0ebd0fb545490a6d01231a4201d0886d'
++        'f9e70fbd10b50446fff7ebffa04209d110bd06b53e490278002a02d00a600130'
++        'f9e706bd3b48fff7f4fffee73a483b490160002141603a49314a891a314a8918'
++        'c16038483449016037485a210160374c0120a060206106202066002020610120'
++        '2061022020661020206610202066002020665a202066002020612d4800782d48'
++        '1f49401a1f49401800f009f8fee72a481b49401a1b49401800f001f8fee71c49'
++        '0278002a02d00a600130f9e77047c046464c4153482042555359204c4f434b4f'
++        '5554204f4b0a00464c4153482042555359204e4f204641554c540a00c1040010'
++        'edfecefa0100cefad304001064040010fc0200100010002064040010000100d0'
++        'ec01001000010020fc020010000000d000400340930400100000002000200420'
++        '4f02001008ed00e0000200200000001800101010870200107002001000100420'
++        '0111002000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000013110020'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000000000000'
++        '0000000000000000000000000000000000000000000000000000000012481349'
++        '016013481349016062b620bffde71fb4744600f012f81049884204d10f4800f0'
++        '05f820bffde70fbc01b020470c490a6d02231a42fbd04865704709490a6d0123'
++        '1a42fbd0886d704708ed00e00010002000e100e000000100edfecefa0100cefa'
++        '000000d0000000000000000001000000001000200010042001110020464c4153'
++        '482042555359204c4f434b4f5554204f4b0a00464c4153482042555359204c4f'
++        '434b4f5554204641494c0a00464c4153482042555359204e4f204641554c540a'
++        '00464c41534820425553592053544152540a00464c4153482042555359204c4f'
++        '434b45440a00c046'
++    )
++
++    # Calls synthetic boot ROM helpers through the RP2040 rom_table_lookup()
++    # ABI and verifies bit, byte-memory, and word-memory helper results.
++    BOOTROM_HELPERS_TEST_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x09, 0x00, 0x00, 0x10,
++        0x00, 0xf0, 0x11, 0xf8, 0x00, 0x28, 0x03, 0xd1,
++        0x48, 0x48, 0x00, 0xf0, 0x70, 0xf8, 0xfe, 0xe7,
++        0x47, 0x48, 0x00, 0xf0, 0x6c, 0xf8, 0xfe, 0xe7,
++        0x10, 0xb5, 0x46, 0x48, 0x00, 0x88, 0x46, 0x4b,
++        0x1b, 0x88, 0x98, 0x47, 0x10, 0xbd, 0x30, 0xb5,
++        0x44, 0x49, 0xff, 0xf7, 0xf5, 0xff, 0x04, 0x46,
++        0x43, 0x48, 0xa0, 0x47, 0x10, 0x28, 0x58, 0xd1,
++        0x42, 0x49, 0xff, 0xf7, 0xed, 0xff, 0x04, 0x46,
++        0x41, 0x48, 0xa0, 0x47, 0x08, 0x28, 0x50, 0xd1,
++        0x40, 0x49, 0xff, 0xf7, 0xe5, 0xff, 0x04, 0x46,
++        0x3f, 0x48, 0xa0, 0x47, 0x0f, 0x28, 0x48, 0xd1,
++        0x3e, 0x49, 0xff, 0xf7, 0xdd, 0xff, 0x04, 0x46,
++        0x3d, 0x48, 0xa0, 0x47, 0x3c, 0x49, 0x88, 0x42,
++        0x3f, 0xd1, 0x3c, 0x49, 0xff, 0xf7, 0xd4, 0xff,
++        0x04, 0x46, 0x3b, 0x48, 0x5a, 0x21, 0x04, 0x22,
++        0xa0, 0x47, 0x39, 0x4d, 0x28, 0x78, 0x5a, 0x28,
++        0x33, 0xd1, 0xe8, 0x78, 0x5a, 0x28, 0x30, 0xd1,
++        0x36, 0x49, 0xff, 0xf7, 0xc5, 0xff, 0x04, 0x46,
++        0x35, 0x4d, 0x36, 0x48, 0x28, 0x60, 0x36, 0x48,
++        0x29, 0x46, 0x04, 0x22, 0xa0, 0x47, 0x33, 0x49,
++        0x00, 0x68, 0x88, 0x42, 0x21, 0xd1, 0x33, 0x49,
++        0xff, 0xf7, 0xb6, 0xff, 0x04, 0x46, 0x32, 0x48,
++        0x32, 0x49, 0x02, 0x22, 0xa0, 0x47, 0x30, 0x4d,
++        0x28, 0x68, 0x88, 0x42, 0x15, 0xd1, 0x68, 0x68,
++        0x88, 0x42, 0x12, 0xd1, 0x2e, 0x49, 0xff, 0xf7,
++        0xa7, 0xff, 0x04, 0x46, 0x2d, 0x4d, 0x2e, 0x48,
++        0x28, 0x60, 0x2e, 0x48, 0x68, 0x60, 0x2e, 0x48,
++        0x29, 0x46, 0x02, 0x22, 0xa0, 0x47, 0x2a, 0x49,
++        0x00, 0x68, 0x88, 0x42, 0x01, 0xd1, 0x00, 0x20,
++        0x30, 0xbd, 0x01, 0x20, 0x30, 0xbd, 0x29, 0x4a,
++        0x01, 0x78, 0x00, 0x29, 0x02, 0xd0, 0x11, 0x60,
++        0x01, 0x30, 0xf9, 0xe7, 0x70, 0x47, 0xc0, 0x46,
++        0x42, 0x4f, 0x4f, 0x54, 0x52, 0x4f, 0x4d, 0x20,
++        0x48, 0x45, 0x4c, 0x50, 0x45, 0x52, 0x53, 0x20,
++        0x4f, 0x4b, 0x0a, 0x00, 0x42, 0x4f, 0x4f, 0x54,
++        0x52, 0x4f, 0x4d, 0x20, 0x48, 0x45, 0x4c, 0x50,
++        0x45, 0x52, 0x53, 0x20, 0x46, 0x41, 0x49, 0x4c,
++        0x0a, 0x00, 0x00, 0x00, 0x08, 0x01, 0x00, 0x10,
++        0x1c, 0x01, 0x00, 0x10, 0x14, 0x00, 0x00, 0x00,
++        0x18, 0x00, 0x00, 0x00, 0x50, 0x33, 0x00, 0x00,
++        0x0f, 0xf0, 0xf0, 0xf0, 0x4c, 0x33, 0x00, 0x00,
++        0x00, 0x00, 0xf0, 0x00, 0x54, 0x33, 0x00, 0x00,
++        0x00, 0x80, 0x00, 0x00, 0x52, 0x33, 0x00, 0x00,
++        0x01, 0x00, 0x00, 0x80, 0x4d, 0x53, 0x00, 0x00,
++        0x00, 0x00, 0x00, 0x20, 0x4d, 0x43, 0x00, 0x00,
++        0x10, 0x00, 0x00, 0x20, 0x44, 0x33, 0x22, 0x11,
++        0x20, 0x00, 0x00, 0x20, 0x53, 0x34, 0x00, 0x00,
++        0x30, 0x00, 0x00, 0x20, 0x5a, 0x5a, 0xa5, 0xa5,
++        0x43, 0x34, 0x00, 0x00, 0x40, 0x00, 0x00, 0x20,
++        0x88, 0x77, 0x66, 0x55, 0xcc, 0xbb, 0xaa, 0x99,
++        0x50, 0x00, 0x00, 0x20, 0x00, 0x40, 0x03, 0x40,
++    ])
++
++    # Calls synthetic RP2040 boot ROM SF/SD table helpers directly and checks
++    # representative single/double arithmetic and conversion results.
++    BOOTROM_FLOAT_TEST_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x09, 0x00, 0x00, 0x10,
++        0x4a, 0x4c, 0x23, 0x78, 0x65, 0x78, 0x2d, 0x02,
++        0x2b, 0x43, 0xa5, 0x78, 0x2d, 0x04, 0x2b, 0x43,
++        0xe5, 0x78, 0x2d, 0x06, 0x2b, 0x43, 0x1c, 0x46,
++        0x45, 0x48, 0x46, 0x49, 0xa0, 0x47, 0x46, 0x4a,
++        0x90, 0x42, 0x62, 0xd1, 0x45, 0x4c, 0x23, 0x78,
++        0x65, 0x78, 0x2d, 0x02, 0x2b, 0x43, 0xa5, 0x78,
++        0x2d, 0x04, 0x2b, 0x43, 0xe5, 0x78, 0x2d, 0x06,
++        0x2b, 0x43, 0x1c, 0x46, 0x3e, 0x48, 0x40, 0x49,
++        0xa0, 0x47, 0x40, 0x4a, 0x90, 0x42, 0x50, 0xd1,
++        0x3f, 0x4c, 0x23, 0x78, 0x65, 0x78, 0x2d, 0x02,
++        0x2b, 0x43, 0xa5, 0x78, 0x2d, 0x04, 0x2b, 0x43,
++        0xe5, 0x78, 0x2d, 0x06, 0x2b, 0x43, 0x1c, 0x46,
++        0x38, 0x48, 0x3a, 0x49, 0xa0, 0x47, 0x33, 0x4a,
++        0x90, 0x42, 0x3e, 0xd1, 0x38, 0x4c, 0x23, 0x78,
++        0x65, 0x78, 0x2d, 0x02, 0x2b, 0x43, 0xa5, 0x78,
++        0x2d, 0x04, 0x2b, 0x43, 0xe5, 0x78, 0x2d, 0x06,
++        0x2b, 0x43, 0x1c, 0x46, 0x2a, 0x48, 0xa0, 0x47,
++        0x00, 0x28, 0x2e, 0xd1, 0x31, 0x4a, 0x91, 0x42,
++        0x2b, 0xd1, 0x31, 0x4c, 0x23, 0x78, 0x65, 0x78,
++        0x2d, 0x02, 0x2b, 0x43, 0xa5, 0x78, 0x2d, 0x04,
++        0x2b, 0x43, 0xe5, 0x78, 0x2d, 0x06, 0x2b, 0x43,
++        0x1c, 0x46, 0x00, 0x20, 0x2b, 0x49, 0x00, 0x22,
++        0x2b, 0x4b, 0xa0, 0x47, 0x00, 0x28, 0x18, 0xd1,
++        0x2a, 0x4a, 0x91, 0x42, 0x15, 0xd1, 0x2a, 0x4c,
++        0x23, 0x78, 0x65, 0x78, 0x2d, 0x02, 0x2b, 0x43,
++        0xa5, 0x78, 0x2d, 0x04, 0x2b, 0x43, 0xe5, 0x78,
++        0x2d, 0x06, 0x2b, 0x43, 0x1c, 0x46, 0x00, 0x20,
++        0x20, 0x49, 0xa0, 0x47, 0x23, 0x4a, 0x90, 0x42,
++        0x03, 0xd1, 0x23, 0x48, 0x00, 0xf0, 0x05, 0xf8,
++        0xfe, 0xe7, 0x22, 0x48, 0x00, 0xf0, 0x01, 0xf8,
++        0xfe, 0xe7, 0x21, 0x4a, 0x01, 0x78, 0x00, 0x29,
++        0x02, 0xd0, 0x11, 0x60, 0x01, 0x30, 0xf9, 0xe7,
++        0x70, 0x47, 0xc0, 0x46, 0x42, 0x4f, 0x4f, 0x54,
++        0x52, 0x4f, 0x4d, 0x20, 0x46, 0x4c, 0x4f, 0x41,
++        0x54, 0x20, 0x4f, 0x4b, 0x0a, 0x00, 0x42, 0x4f,
++        0x4f, 0x54, 0x52, 0x4f, 0x4d, 0x20, 0x46, 0x4c,
++        0x4f, 0x41, 0x54, 0x20, 0x46, 0x41, 0x49, 0x4c,
++        0x0a, 0x00, 0x00, 0x00, 0xc2, 0x03, 0x00, 0x00,
++        0x00, 0x00, 0xa0, 0x3f, 0x00, 0x00, 0x20, 0x40,
++        0x00, 0x00, 0x70, 0x40, 0xca, 0x03, 0x00, 0x00,
++        0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0xf0, 0x40,
++        0xce, 0x03, 0x00, 0x00, 0x00, 0x00, 0x40, 0x40,
++        0x3e, 0x04, 0x00, 0x00, 0x00, 0x00, 0xf4, 0x3f,
++        0x62, 0x04, 0x00, 0x00, 0x00, 0x00, 0xf8, 0x3f,
++        0x00, 0x00, 0x10, 0x40, 0x00, 0x00, 0x16, 0x40,
++        0xde, 0x04, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x3f,
++        0x0c, 0x01, 0x00, 0x10, 0x1e, 0x01, 0x00, 0x10,
++        0x00, 0x40, 0x03, 0x40,
++    ])
++
++    # Exercises DMA channel 0 as a synchronous memory copy engine, then as a
++    # fill engine by keeping READ_ADDR fixed and incrementing WRITE_ADDR.
++    DMA_TEST_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x11, 0x00, 0x00, 0x10,
++        0x95, 0x00, 0x00, 0x10, 0x95, 0x00, 0x00, 0x10,
++        0x2e, 0x4c, 0x2f, 0x4d, 0x01, 0x23, 0x9b, 0x02,
++        0x1b, 0x19, 0x2e, 0x48, 0x28, 0x60, 0x2e, 0x48,
++        0x68, 0x60, 0x01, 0x20, 0x00, 0x03, 0x18, 0x60,
++        0x25, 0x60, 0x10, 0x20, 0x40, 0x19, 0x60, 0x60,
++        0x02, 0x20, 0xa0, 0x60, 0x29, 0x48, 0xe0, 0x60,
++        0x28, 0x69, 0x26, 0x49, 0x88, 0x42, 0x25, 0xd1,
++        0x68, 0x69, 0x25, 0x49, 0x88, 0x42, 0x21, 0xd1,
++        0x18, 0x68, 0x01, 0x21, 0x08, 0x42, 0x1d, 0xd0,
++        0x19, 0x60, 0x18, 0x68, 0x08, 0x42, 0x19, 0xd1,
++        0x21, 0x48, 0x28, 0x62, 0x20, 0x20, 0x40, 0x19,
++        0x20, 0x60, 0x30, 0x20, 0x40, 0x19, 0x60, 0x60,
++        0x03, 0x20, 0xa0, 0x60, 0x1d, 0x48, 0xe0, 0x60,
++        0x1b, 0x49, 0x28, 0x6b, 0x88, 0x42, 0x09, 0xd1,
++        0x68, 0x6b, 0x88, 0x42, 0x06, 0xd1, 0xa8, 0x6b,
++        0x88, 0x42, 0x03, 0xd1, 0x18, 0x48, 0x00, 0xf0,
++        0x09, 0xf8, 0xfe, 0xe7, 0x17, 0x48, 0x00, 0xf0,
++        0x05, 0xf8, 0xfa, 0xe7, 0x16, 0x48, 0x00, 0xf0,
++        0x01, 0xf8, 0xf6, 0xe7, 0x15, 0x4a, 0x01, 0x78,
++        0x00, 0x29, 0x02, 0xd0, 0x11, 0x60, 0x01, 0x30,
++        0xf9, 0xe7, 0x70, 0x47, 0x44, 0x4d, 0x41, 0x20,
++        0x4f, 0x4b, 0x0a, 0x00, 0x44, 0x4d, 0x41, 0x20,
++        0x46, 0x41, 0x49, 0x4c, 0x0a, 0x00, 0x44, 0x4d,
++        0x41, 0x20, 0x46, 0x41, 0x55, 0x4c, 0x54, 0x0a,
++        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50,
++        0x00, 0x00, 0x00, 0x20, 0x44, 0x33, 0x22, 0x11,
++        0xdd, 0xcc, 0xbb, 0xaa, 0x39, 0x80, 0x1f, 0x00,
++        0xaa, 0x55, 0xaa, 0x55, 0x29, 0x80, 0x1f, 0x00,
++        0xac, 0x00, 0x00, 0x10, 0xb4, 0x00, 0x00, 0x10,
++        0xbe, 0x00, 0x00, 0x10, 0x00, 0x40, 0x03, 0x40,
++    ])
++
++    # Exercises UART0 paced DMA. Channel 0 first sends a trace string through
++    # UART0 TX DREQ and waits for DMA IRQ0. It then receives "HELLO" through
++    # UART0 RX DREQ, waits for DMA IRQ0 again, verifies the bytes in SRAM, and
++    # sends the success string through UART0 TX DREQ.
++    DMA_UART_TEST_BIN = bytes.fromhex(
++        '0020042071000010350100103501001000000000000000000000000000000000'
++        '0000000000000000000000003501001000000000000000003501001035010010'
++        '3501001035010010350100103501001035010010350100103501001035010010'
++        '3501001035010010350100102901001072b63d481021c1623c49016303218164'
++        '3b493c480022d24302603b4802603b48016062b63a480f2100f019f839480521'
++        '00f023f837483849052203780c78a34208d101300131013af7d134480c2100f0'
++        '06f837e032480e2100f001f832e010b50c4600f018f82f4a1060234b53609460'
++        '2d4bd36000f018f810bd10b50c4600f00af8284a1c4b136050609460274bd360'
++        '00f00af810bd264a00231360254a01231360254a13607047214a136801242342'
++        '01d130bff9d070471e48016801601c480160704730bffde7444d412055415254'
++        '2054524143450a48454c4c4f444d412055415254204f4b0a444d412055415254'
++        '204641494c0a000000400340010300000008000080e100e080e200e000e100e0'
++        '3801001010000020470100104c010010580100100000005011000a0021800a00'
++        '000000200004005004040050'
++    )
++
++    # Same UART paced DMA test as DMA_UART_TEST_BIN, but using UART1 at
++    # 0x40038000 and DREQ_UART1_TX/RX.
++    DMA_UART1_TEST_BIN = bytes.fromhex(
++        '0020042071000010350100103501001000000000000000000000000000000000'
++        '0000000000000000000000003501001000000000000000003501001035010010'
++        '3501001035010010350100103501001035010010350100103501001035010010'
++        '3501001035010010350100102901001072b63e481021c1623d49016303218164'
++        '3c493d480022d24302603c4802603c48016062b63b48102100f019f83a480521'
++        '00f023f838483949052203780c78a34208d101300131013af7d135480d2100f0'
++        '06f837e033480f2100f001f832e010b50c4600f018f8304a1060244b53609460'
++        '2e4bd36000f018f810bd10b50c4600f00af8294a1d4b136050609460284bd360'
++        '00f00af810bd274a00231360264a01231360264a13607047224a136801242342'
++        '01d130bff9d070471f48016801601d480160704730bffde7444d412055415254'
++        '312054524143450a48454c4c4f444d41205541525431204f4b0a444d41205541'
++        '525431204641494c0a00000000800340010300000008000080e100e080e200e0'
++        '00e100e03801001010000020480100104d0100105a0100100000005011000b00'
++        '21800b00000000200004005004040050'
++    )
++
++    BOOT2_W25Q080_BIN = bytes.fromhex(
++        '00b5324b212058609868022188439860'
++        'd860186158612e4b0021996002215961'
++        '0121f02299502b491960012199603520'
++        '00f044f80222904214d00621196600f0'
++        '34f8196e01211966002018661a6600f0'
++        '2cf8196e196e196e052000f02ff80121'
++        '0842f9d1002199601b49196000215960'
++        '1a491b48016001219960eb211966a021'
++        '196600f012f800219960164914480160'
++        '0121996001bc002800d0004712481349'
++        '086003c880f30888084703b5996a0420'
++        '0142fbd001200142f8d103bd02b51866'
++        '1866fff7f2ff186e186e02bd00000240'
++        '000000180000070000035f0021220000'
++        'f4000018222000a00001001008ed00e0'
++        '00000000000000000000000074b24e7a'
++    )
++
++    @staticmethod
++    def make_xip_elf(payload):
++        return RaspiPicoMachine.make_xip_elf_with_phdrs(payload, ())
++
++    @staticmethod
++    def make_xip_elf_with_phdrs(payload, extra_phdrs):
++        load_addr = 0x10000000
++        payload_off = 0x100
++        phnum = 1 + len(extra_phdrs)
++
++        elf_header = struct.pack(
++            '<16sHHIIIIIHHHHHH',
++            b'\x7fELF\x01\x01\x01' + b'\x00' * 9,
++            2,          # ET_EXEC
++            40,         # EM_ARM
++            1,          # EV_CURRENT
++            load_addr,
++            52,         # e_phoff
++            0,          # e_shoff
++            0x05000200, # EABI version 5, soft-float
++            52,         # e_ehsize
++            32,         # e_phentsize
++            phnum,
++            0,
++            0,
++            0,
++        )
++        phdr = struct.pack(
++            '<IIIIIIII',
++            1,          # PT_LOAD
++            payload_off,
++            load_addr,
++            load_addr,
++            len(payload),
++            len(payload),
++            5,          # PF_R | PF_X
++            4,
++        )
++
++        phdrs = phdr + b''.join(extra_phdrs)
++        padding = bytes(payload_off - 52 - len(phdrs))
++        return elf_header + phdrs + padding + payload
++
++    @classmethod
++    def make_xip_elf_with_empty_sram_load(cls, payload):
++        sram_phdr = struct.pack(
++            '<IIIIIIII',
++            1,          # PT_LOAD
++            0,          # p_offset is ignored when p_filesz is zero
++            0x20000000,
++            0x20000000,
++            0,
++            0x1000,
++            6,          # PF_R | PF_W
++            4,
++        )
++        return cls.make_xip_elf_with_phdrs(payload, (sram_phdr,))
++
++    @classmethod
++    def make_uf2(cls, payload, target=0x10000000):
++        payload_size = len(payload)
++        block = bytearray(512)
++
++        if payload_size > 476:
++            raise ValueError('single-block test UF2 payload is too large')
++
++        struct.pack_into(
++            '<IIIIIIII',
++            block,
++            0,
++            cls.UF2_MAGIC_START0,
++            cls.UF2_MAGIC_START1,
++            cls.UF2_FLAG_FAMILY_ID_PRESENT,
++            target,
++            payload_size,
++            0,
++            1,
++            cls.RP2040_FAMILY_ID,
++        )
++        block[32:32 + payload_size] = payload
++        struct.pack_into('<I', block, 512 - 4, cls.UF2_MAGIC_END)
++
++        return bytes(block)
++
++    @classmethod
++    def make_bootable_uart_uf2(cls):
++        return cls.make_uf2(cls.make_bootable_image(cls.UART_TEST_BIN))
++
++    @classmethod
++    def make_bootable_uart_elf(cls):
++        return cls.make_xip_elf(cls.make_bootable_image(cls.UART_TEST_BIN))
++
++    @staticmethod
++    def relocate_xip_payload(payload):
++        relocated = bytearray(payload)
++        payload_end = 0x10000000 + len(payload)
++
++        for off in range(0, len(relocated) - 3, 4):
++            value = struct.unpack_from('<I', relocated, off)[0]
++            if 0x10000000 <= value <= payload_end:
++                struct.pack_into('<I', relocated, off, value + 0x100)
++
++        return bytes(relocated)
++
++    @classmethod
++    def make_bootable_image(cls, payload):
++        return cls.BOOT2_W25Q080_BIN + cls.relocate_xip_payload(payload)
++
++    # Copies a small routine to SRAM, erases/programs flash through the SSI
++    # registers, polls status once, then verifies the programmed bytes via XIP.
++    FLASH_TEST_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x11, 0x00, 0x00, 0x10,
++        0x00, 0x00, 0x00, 0x00, 0x29, 0x00, 0x00, 0x10,
++        0x3c, 0x48, 0x3d, 0x49, 0x3d, 0x4a, 0x91, 0x42,
++        0x04, 0xd2, 0x0b, 0x68, 0x03, 0x60, 0x04, 0x31,
++        0x04, 0x30, 0xf8, 0xe7, 0x3a, 0x48, 0x00, 0x47,
++        0xfe, 0xe7, 0xc0, 0x46, 0x00, 0xf0, 0x44, 0xf8,
++        0x38, 0x4c, 0x39, 0x4d, 0x01, 0x20, 0x20, 0x60,
++        0x20, 0x20, 0x28, 0x60, 0x00, 0x20, 0x28, 0x60,
++        0x10, 0x20, 0x28, 0x60, 0x00, 0x20, 0x28, 0x60,
++        0x00, 0x20, 0x20, 0x60, 0x00, 0xf0, 0x3d, 0xf8,
++        0x00, 0xf0, 0x32, 0xf8, 0x2f, 0x4c, 0x30, 0x4d,
++        0x01, 0x20, 0x20, 0x60, 0x02, 0x20, 0x28, 0x60,
++        0x00, 0x20, 0x28, 0x60, 0x10, 0x20, 0x28, 0x60,
++        0x00, 0x20, 0x28, 0x60, 0x46, 0x20, 0x28, 0x60,
++        0x4c, 0x20, 0x28, 0x60, 0x41, 0x20, 0x28, 0x60,
++        0x53, 0x20, 0x28, 0x60, 0x48, 0x20, 0x28, 0x60,
++        0x00, 0x20, 0x20, 0x60, 0x00, 0xf0, 0x21, 0xf8,
++        0x24, 0x49, 0x08, 0x78, 0x46, 0x28, 0x0f, 0xd1,
++        0x48, 0x78, 0x4c, 0x28, 0x0c, 0xd1, 0x88, 0x78,
++        0x41, 0x28, 0x09, 0xd1, 0xc8, 0x78, 0x53, 0x28,
++        0x06, 0xd1, 0x08, 0x79, 0x48, 0x28, 0x03, 0xd1,
++        0x1d, 0x48, 0x00, 0xf0, 0x18, 0xf8, 0xfe, 0xe7,
++        0x1c, 0x48, 0x00, 0xf0, 0x14, 0xf8, 0xfe, 0xe7,
++        0x16, 0x4c, 0x17, 0x4d, 0x01, 0x20, 0x20, 0x60,
++        0x06, 0x20, 0x28, 0x60, 0x00, 0x20, 0x20, 0x60,
++        0x70, 0x47, 0x12, 0x4c, 0x12, 0x4d, 0x01, 0x20,
++        0x20, 0x60, 0x05, 0x20, 0x28, 0x60, 0x28, 0x68,
++        0x00, 0x20, 0x20, 0x60, 0x70, 0x47, 0x12, 0x4a,
++        0x01, 0x78, 0x00, 0x29, 0x02, 0xd0, 0x11, 0x60,
++        0x01, 0x30, 0xf9, 0xe7, 0x70, 0x47, 0x46, 0x4c,
++        0x41, 0x53, 0x48, 0x20, 0x4f, 0x4b, 0x0a, 0x00,
++        0x46, 0x4c, 0x41, 0x53, 0x48, 0x20, 0x46, 0x41,
++        0x49, 0x4c, 0x0a, 0x00, 0x00, 0x00, 0x00, 0x20,
++        0x2c, 0x00, 0x00, 0x10, 0x2c, 0x01, 0x00, 0x10,
++        0x01, 0x00, 0x00, 0x20, 0x10, 0x00, 0x00, 0x18,
++        0x60, 0x00, 0x00, 0x18, 0x00, 0x10, 0x00, 0x10,
++        0xee, 0x00, 0x00, 0x10, 0xf8, 0x00, 0x00, 0x10,
++        0x00, 0x40, 0x03, 0x40,
++    ])
++
++    # Copies a small routine to SRAM, then exercises the ROM-style flash
++    # command path: QSPI chip select is forced through IO_QSPI, bytes are
++    # exchanged through the XIP SSI data register, and the result is verified
++    # through the XIP flash window.
++    FLASH_IOQSPI_CS_TEST_BIN = bytes.fromhex(
++        '00200420090000104f485049504a914204d20b68036004310430f8e74a480130'
++        '0047c0464b4c002020604b4c4b4820604b4c01202060474c206000f047f800f0'
++        '5ff8202000f054f8002000f051f8102000f04ef8002000f04bf800f056f800f0'
++        '3ef800f033f800f04bf8022000f040f8002000f03df8102000f03af8002000f0'
++        '37f8512000f034f8532000f031f8502000f02ef8492000f02bf800f036f800f0'
++        '1ef83049087851280cd14878532809d18878502806d1c878492803d12a4800f0'
++        '29f8fee7294800f025f8fee700b500f017f8062000f00cf800f017f800bd00b5'
++        '00f00ef8052000f003f800f00ef800bd1f4a10601f4b18680028fcd010687047'
++        '1d4902200002086070471b490320000208607047194a0178002902d011600130'
++        'f9e77047494f5153504920464c415348204f4b0a00494f5153504920464c4153'
++        '48204641494c0a00000000202400001080010010080000180000001800000700'
++        '1000001800100010240100103501001060000018240000180c80014000400340'
++    )
++
++    # Attempts a page program without write enable, then verifies the target
++    # byte is still in the erased state.
++    FLASH_NO_WEL_TEST_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x11, 0x00, 0x00, 0x10,
++        0x00, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x10,
++        0x1e, 0x48, 0x1f, 0x49, 0x1f, 0x4a, 0x91, 0x42,
++        0x04, 0xd2, 0x0b, 0x68, 0x03, 0x60, 0x04, 0x31,
++        0x04, 0x30, 0xf8, 0xe7, 0x19, 0x48, 0x01, 0x30,
++        0x00, 0x47, 0xc0, 0x46, 0x1a, 0x4c, 0x1b, 0x4d,
++        0x01, 0x20, 0x20, 0x61, 0x02, 0x20, 0x28, 0x60,
++        0x00, 0x20, 0x28, 0x60, 0x10, 0x20, 0x28, 0x60,
++        0x00, 0x20, 0x28, 0x60, 0xa5, 0x20, 0x28, 0x60,
++        0x00, 0x20, 0x20, 0x61, 0x14, 0x49, 0x08, 0x78,
++        0xff, 0x28, 0x03, 0xd1, 0x13, 0x48, 0x00, 0xf0,
++        0x05, 0xf8, 0xfe, 0xe7, 0x12, 0x48, 0x00, 0xf0,
++        0x01, 0xf8, 0xfe, 0xe7, 0x11, 0x4a, 0x01, 0x78,
++        0x00, 0x29, 0x02, 0xd0, 0x11, 0x60, 0x01, 0x30,
++        0xf9, 0xe7, 0x70, 0x47, 0x4e, 0x4f, 0x20, 0x57,
++        0x45, 0x4c, 0x20, 0x4f, 0x4b, 0x0a, 0x00, 0x4e,
++        0x4f, 0x20, 0x57, 0x45, 0x4c, 0x20, 0x46, 0x41,
++        0x49, 0x4c, 0x0a, 0x00, 0x00, 0x00, 0x00, 0x20,
++        0x2c, 0x00, 0x00, 0x10, 0xb0, 0x00, 0x00, 0x10,
++        0x00, 0x00, 0x00, 0x18, 0x60, 0x00, 0x00, 0x18,
++        0x00, 0x10, 0x00, 0x10, 0x74, 0x00, 0x00, 0x10,
++        0x7f, 0x00, 0x00, 0x10, 0x00, 0x40, 0x03, 0x40,
++    ])
++
++    # Programs 0x00, then attempts to program 0xff without erase and verifies
++    # that NOR semantics preserve the old & new result.
++    FLASH_OLD_AND_NEW_TEST_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x11, 0x00, 0x00, 0x10,
++        0x00, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x10,
++        0x30, 0x48, 0x31, 0x49, 0x31, 0x4a, 0x91, 0x42,
++        0x04, 0xd2, 0x0b, 0x68, 0x03, 0x60, 0x04, 0x31,
++        0x04, 0x30, 0xf8, 0xe7, 0x2b, 0x48, 0x01, 0x30,
++        0x00, 0x47, 0xc0, 0x46, 0x00, 0xf0, 0x18, 0xf8,
++        0x00, 0x20, 0x00, 0xf0, 0x24, 0xf8, 0x00, 0xf0,
++        0x1a, 0xf8, 0x00, 0xf0, 0x11, 0xf8, 0xff, 0x20,
++        0x00, 0xf0, 0x1d, 0xf8, 0x00, 0xf0, 0x13, 0xf8,
++        0x25, 0x49, 0x08, 0x78, 0x00, 0x28, 0x03, 0xd1,
++        0x24, 0x48, 0x00, 0xf0, 0x25, 0xf8, 0xfe, 0xe7,
++        0x23, 0x48, 0x00, 0xf0, 0x21, 0xf8, 0xfe, 0xe7,
++        0x22, 0x4c, 0x23, 0x4d, 0x01, 0x20, 0x20, 0x61,
++        0x06, 0x20, 0x28, 0x60, 0x70, 0x47, 0x1f, 0x4c,
++        0x1f, 0x4d, 0x01, 0x20, 0x20, 0x61, 0x05, 0x20,
++        0x28, 0x60, 0x28, 0x68, 0x70, 0x47, 0x1b, 0x4c,
++        0x1b, 0x4d, 0x06, 0x46, 0x01, 0x20, 0x20, 0x61,
++        0x02, 0x20, 0x28, 0x60, 0x00, 0x20, 0x28, 0x60,
++        0x10, 0x20, 0x28, 0x60, 0x00, 0x20, 0x28, 0x60,
++        0x2e, 0x60, 0x00, 0x20, 0x20, 0x61, 0x70, 0x47,
++        0x14, 0x4a, 0x01, 0x78, 0x00, 0x29, 0x02, 0xd0,
++        0x11, 0x60, 0x01, 0x30, 0xf9, 0xe7, 0x70, 0x47,
++        0x4f, 0x4c, 0x44, 0x20, 0x41, 0x4e, 0x44, 0x20,
++        0x4e, 0x45, 0x57, 0x20, 0x4f, 0x4b, 0x0a, 0x00,
++        0x4f, 0x4c, 0x44, 0x20, 0x41, 0x4e, 0x44, 0x20,
++        0x4e, 0x45, 0x57, 0x20, 0x46, 0x41, 0x49, 0x4c,
++        0x0a, 0x00, 0xc0, 0x46, 0x00, 0x00, 0x00, 0x20,
++        0x2c, 0x00, 0x00, 0x10, 0xf8, 0x00, 0x00, 0x10,
++        0x00, 0x10, 0x00, 0x10, 0xb0, 0x00, 0x00, 0x10,
++        0xc0, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x18,
++        0x60, 0x00, 0x00, 0x18, 0x00, 0x40, 0x03, 0x40,
++    ])
++
++    FLASH_PERSIST_READER_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x11, 0x00, 0x00, 0x10,
++        0x00, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x10,
++        0x16, 0x49, 0x08, 0x78, 0x46, 0x28, 0x0f, 0xd1,
++        0x48, 0x78, 0x4c, 0x28, 0x0c, 0xd1, 0x88, 0x78,
++        0x41, 0x28, 0x09, 0xd1, 0xc8, 0x78, 0x53, 0x28,
++        0x06, 0xd1, 0x08, 0x79, 0x48, 0x28, 0x03, 0xd1,
++        0x0f, 0x48, 0x00, 0xf0, 0x05, 0xf8, 0xfe, 0xe7,
++        0x0e, 0x48, 0x00, 0xf0, 0x01, 0xf8, 0xfe, 0xe7,
++        0x0d, 0x4a, 0x01, 0x78, 0x00, 0x29, 0x02, 0xd0,
++        0x11, 0x60, 0x01, 0x30, 0xf9, 0xe7, 0x70, 0x47,
++        0x50, 0x45, 0x52, 0x53, 0x49, 0x53, 0x54, 0x20,
++        0x4f, 0x4b, 0x0a, 0x00, 0x50, 0x45, 0x52, 0x53,
++        0x49, 0x53, 0x54, 0x20, 0x46, 0x41, 0x49, 0x4c,
++        0x0a, 0x00, 0xc0, 0x46, 0x00, 0x10, 0x00, 0x10,
++        0x50, 0x00, 0x00, 0x10, 0x5c, 0x00, 0x00, 0x10,
++        0x00, 0x40, 0x03, 0x40,
++    ])
++
++    # Installs a vector table in SRAM, starts a page program, then performs
++    # an XIP read while the emulated flash is busy. The HardFault handler
++    # runs from SRAM and prints the expected message.
++    FLASH_BUSY_HARDFAULT_BIN = bytes([
++        0x00, 0x20, 0x04, 0x20, 0x11, 0x00, 0x00, 0x10,
++        0x00, 0x00, 0x00, 0x00, 0x29, 0x00, 0x00, 0x10,
++        0x2a, 0x48, 0x2b, 0x49, 0x2b, 0x4a, 0x91, 0x42,
++        0x04, 0xd2, 0x0b, 0x68, 0x03, 0x60, 0x04, 0x31,
++        0x04, 0x30, 0xf8, 0xe7, 0x28, 0x48, 0x00, 0x47,
++        0xfe, 0xe7, 0xc0, 0x46, 0x27, 0x48, 0x28, 0x49,
++        0x01, 0x60, 0x25, 0x49, 0x41, 0x60, 0x00, 0x21,
++        0x81, 0x60, 0x13, 0xa1, 0x01, 0x31, 0xc1, 0x60,
++        0x24, 0x4a, 0x10, 0x60, 0x00, 0xf0, 0x16, 0xf8,
++        0x23, 0x4c, 0x24, 0x4d, 0x01, 0x20, 0x20, 0x60,
++        0x02, 0x20, 0x28, 0x60, 0x00, 0x20, 0x28, 0x60,
++        0x10, 0x20, 0x28, 0x60, 0x00, 0x20, 0x28, 0x60,
++        0x58, 0x20, 0x28, 0x60, 0x00, 0x20, 0x20, 0x60,
++        0x1d, 0x49, 0x08, 0x78, 0x10, 0xa0, 0x00, 0xf0,
++        0x0f, 0xf8, 0xfe, 0xe7, 0x18, 0x4c, 0x19, 0x4d,
++        0x01, 0x20, 0x20, 0x60, 0x06, 0x20, 0x28, 0x60,
++        0x00, 0x20, 0x20, 0x60, 0x70, 0x47, 0xc0, 0x46,
++        0x05, 0xa0, 0x00, 0xf0, 0x01, 0xf8, 0xfe, 0xe7,
++        0x14, 0x4a, 0x01, 0x78, 0x00, 0x29, 0x02, 0xd0,
++        0x11, 0x60, 0x01, 0x30, 0xf9, 0xe7, 0x70, 0x47,
++        0x48, 0x41, 0x52, 0x44, 0x46, 0x41, 0x55, 0x4c,
++        0x54, 0x20, 0x4f, 0x4b, 0x0a, 0x00, 0xc0, 0x46,
++        0x4e, 0x4f, 0x20, 0x46, 0x41, 0x55, 0x4c, 0x54,
++        0x0a, 0x00, 0xc0, 0x46, 0x00, 0x00, 0x00, 0x20,
++        0x2c, 0x00, 0x00, 0x10, 0xe8, 0x00, 0x00, 0x10,
++        0x01, 0x00, 0x00, 0x20, 0x00, 0x01, 0x00, 0x20,
++        0x00, 0x20, 0x04, 0x20, 0x08, 0xed, 0x00, 0xe0,
++        0x10, 0x00, 0x00, 0x18, 0x60, 0x00, 0x00, 0x18,
++        0x00, 0x10, 0x00, 0x10, 0x00, 0x40, 0x03, 0x40,
++    ])
++
++    # Starts a page program from SRAM, leaves the flash busy, then branches
++    # back to XIP on core 0. The expected result is a core 0 HardFault handled
++    # by the SRAM vector table.
++    FLASH_BUSY_CORE0_XIP_FAULT_BIN = bytes.fromhex(
++        '002004200900001038483949394a914204d20b68036004310430f8e733480130'
++        '0047354800f044f8fee7c0462f483349016005a101314160002181601aa10131'
++        'c1602f4a1060c0462e4c002020602e4c2e4820602e4c012020602a4c206000f0'
++        '15f8022000f017f8002000f014f8202000f011f8002000f00ef85a2000f00bf8'
++        '234c0020206023480130004700b5062000f001f800bd204a1060204b18680028'
++        'fcd010687047c04605a000f001f8fee71b4a0178002902d011600130f9e77047'
++        '434f5245302058495020484152444641554c54204f4b0a00434f524530205849'
++        '50204e4f204641554c540a00000000202c00001024010010d800001000200420'
++        '08ed00e008000018000000180000070010000018220000106000001824000018'
++        '00400340'
++    )
++
++    # Launches core 1 into a small XIP loop through the synthetic ROM FIFO
++    # protocol. Core 0 then starts a page program from SRAM. The expected
++    # result is a core 1 HardFault handled by the shared SRAM vector table.
++    FLASH_BUSY_CORE1_XIP_FAULT_BIN = bytes.fromhex(
++        '002004200900001056485749574a914204d20b68036004310430f8e751480130'
++        '0047534800f001f8fee752490a6802231a42fbd0504908607047c04649484f49'
++        '016004a1013141600021816030a10131c160c046002000f017f8002000f014f8'
++        '012000f011f83f4800f00ef8444800f00bf8444800f008f800f017f83c498842'
++        '4ad100f01af8fee710b5044600f005f800f00bf8a0423fd110bd36490a680223'
++        '1a42fbd034490860704732490a6801231a42fbd034490868704700b5334c0020'
++        '2060334c33482060334c012020602f4c2060062000f013f8022000f010f80020'
++        '00f00df8302000f00af8002000f007f8a52000f004f8284c0020206000bd274a'
++        '1060274b18680028fcd010687047c04607a000f005f8fee70ba000f001f8fee7'
++        '204a0178002902d011600130f9e77047434f5245312058495020484152444641'
++        '554c54204f4b0a00434f5245312058495020484152444641554c54204641494c'
++        '0a00c046000000203c000010a801001001101ec0500000d0540000d000200420'
++        '0010042023000010580000d00800001800000018000007001000001860000018'
++        '2400001800400340'
++    )
++
++    def test_uart0(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('uart-test.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(self.UART_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'PICO UART OK')
++
++    def test_uart0_elf(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('uart-test.elf')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_uart_elf())
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'PICO UART OK')
++
++    def test_uart0_elf_with_empty_sram_load_segment(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('uart-test-empty-sram.elf')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_xip_elf_with_empty_sram_load(
++                self.make_bootable_image(self.UART_TEST_BIN)))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'PICO UART OK')
++
++    def test_timer_alarm_irq(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('timer-alarm-test.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.TIMER_ALARM_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'TIMER OK')
++
++    def test_sio_fifo_core0_status(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('sio-fifo-test.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.SIO_FIFO_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'SIO CORE0 OK')
++
++    def test_sio_divider(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('sio-divider-test.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.SIO_DIVIDER_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'SIO DIV OK')
++
++    def test_psm_proc1_force_off(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('psm-proc1-test.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.PSM_PROC1_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'PSM OK')
++
++    def test_core1_rom_launch_ack(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('core1-working-test.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.CORE1_WORKING_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'core 0 and core 1 working !')
++
++    def test_flash_safe_multicore_lockout(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('flash-safe-multicore-test.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.FLASH_SAFE_MULTICORE_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'FLASH SAFE OK')
++
++    def test_flash_busy_multicore_lockout_hardfault(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('flash-busy-lockout-test.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.FLASH_BUSY_LOCKOUT_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'FLASH BUSY LOCKOUT OK')
++
++    def test_synthetic_bootrom_helpers(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('bootrom-helpers-test.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.BOOTROM_HELPERS_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'BOOTROM HELPERS OK')
++
++    def test_synthetic_bootrom_float_helpers(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('bootrom-float-test.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.BOOTROM_FLOAT_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'BOOTROM FLOAT OK')
++
++    def test_dma_copy_and_fill(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('dma-test.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(self.DMA_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'DMA OK')
++
++    def test_dma_uart_tx_rx(self):
++        image = self.scratch_file('dma-uart-test.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(self.DMA_UART_TEST_BIN))
++
++        guest_sock, qemu_sock = socket.socketpair()
++        os.set_inheritable(qemu_sock.fileno(), True)
++        qemu = subprocess.Popen([
++            self.qemu_bin,
++            '-machine', 'raspi-pico,strict-uart-pins=off',
++            '-kernel', image,
++            '-chardev', f'socket,id=console,fd={qemu_sock.fileno()}',
++            '-serial', 'chardev:console',
++            '-display', 'none',
++        ], cwd=os.path.dirname(os.getenv('MESON_BUILD_ROOT')),
++           pass_fds=(qemu_sock.fileno(),))
++        qemu_sock.close()
++        guest_sock.settimeout(10)
++        data = b''
++        try:
++            while b'DMA UART TRACE' not in data:
++                data += guest_sock.recv(1)
++            time.sleep(5.0)
++            guest_sock.sendall(b'HELLO\r')
++            while b'DMA UART OK' not in data:
++                data += guest_sock.recv(1)
++        finally:
++            qemu.terminate()
++            qemu.wait(timeout=2)
++            guest_sock.close()
++        self.assertIn(b'DMA UART OK', data)
++
++    def test_dma_uart1_tx_rx(self):
++        image = self.scratch_file('dma-uart1-test.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(self.DMA_UART1_TEST_BIN))
++
++        guest_sock, qemu_sock = socket.socketpair()
++        os.set_inheritable(qemu_sock.fileno(), True)
++        qemu = subprocess.Popen([
++            self.qemu_bin,
++            '-machine', 'raspi-pico,strict-uart-pins=off',
++            '-kernel', image,
++            '-serial', 'null',
++            '-chardev', f'socket,id=uart1,fd={qemu_sock.fileno()}',
++            '-serial', 'chardev:uart1',
++            '-display', 'none',
++        ], cwd=os.path.dirname(os.getenv('MESON_BUILD_ROOT')),
++           pass_fds=(qemu_sock.fileno(),))
++        qemu_sock.close()
++        guest_sock.settimeout(10)
++        data = b''
++        try:
++            while b'DMA UART1 TRACE' not in data:
++                data += guest_sock.recv(1)
++            time.sleep(5.0)
++            guest_sock.sendall(b'HELLO\r')
++            while b'DMA UART1 OK' not in data:
++                data += guest_sock.recv(1)
++        finally:
++            qemu.terminate()
++            qemu.wait(timeout=2)
++            guest_sock.close()
++        self.assertIn(b'DMA UART1 OK', data)
++
++    def test_flash_file_uart0(self):
++        flash = self.scratch_file('flash.bin')
++        with open(flash, 'wb') as flash_file:
++            flash_file.write(self.make_bootable_image(self.UART_TEST_BIN))
++
++        self.set_direct_uart_machine()
++        self.vm.set_machine(
++            f'raspi-pico,strict-uart-pins=off,flash-file={flash}')
++        self.vm.set_console()
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'PICO UART OK')
++
++    def test_uart0_uf2(self):
++        uf2 = self.scratch_file('uart-test.uf2')
++
++        with open(uf2, 'wb') as uf2_file:
++            uf2_file.write(self.make_bootable_uart_uf2())
++
++        self.set_direct_uart_machine()
++        self.vm.set_console()
++        self.vm.add_args('-kernel', uf2)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'PICO UART OK')
++
++    def test_flash_file_uart0_overlayed_by_uf2_kernel(self):
++        uf2 = self.scratch_file('uart-test.uf2')
++        flash = self.scratch_file('flash.bin')
++
++        with open(uf2, 'wb') as uf2_file:
++            uf2_file.write(self.make_bootable_uart_uf2())
++        with open(flash, 'wb') as flash_file:
++            flash_file.write(bytes([0xff]) * 512)
++
++        self.set_direct_uart_machine()
++        self.vm.set_machine(
++            f'raspi-pico,strict-uart-pins=off,flash-file={flash}')
++        self.vm.set_console()
++        self.vm.add_args('-kernel', uf2)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'PICO UART OK')
++
++    def test_flash_program(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('flash-program.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(self.FLASH_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'FLASH OK')
++
++    def test_flash_program_with_ioqspi_cs(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('flash-ioqspi-cs.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.FLASH_IOQSPI_CS_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'IOQSPI FLASH OK')
++
++    def launch_flash_file(self, name, flash, pattern, kernel=None,
++                          extra_args=()):
++        vm = self.get_vm(name=name)
++
++        vm.set_machine(f'raspi-pico,strict-uart-pins=off,flash-file={flash}')
++        vm.set_console()
++        vm.add_args(*extra_args)
++        if kernel:
++            vm.add_args('-kernel', kernel)
++        vm.launch()
++        wait_for_console_pattern(self, pattern, vm=vm)
++        vm.shutdown()
++
++    def test_flash_file_kernel_overlay_persists(self):
++        uf2 = self.scratch_file('uart-test.uf2')
++        flash = self.scratch_file('flash.bin')
++
++        with open(uf2, 'wb') as uf2_file:
++            uf2_file.write(self.make_bootable_uart_uf2())
++        with open(flash, 'wb') as flash_file:
++            flash_file.write(bytes([0xff]) * 512)
++
++        self.set_direct_uart_machine()
++        self.launch_flash_file('overlay-write', flash, 'PICO UART OK', uf2)
++        self.launch_flash_file('overlay-read', flash, 'PICO UART OK')
++
++    def test_bootrom_uf2_kernel_without_flash_file(self):
++        uf2 = self.scratch_file('bootrom-uart-test.uf2')
++        rom = self.pipico_rom()
++
++        with open(uf2, 'wb') as uf2_file:
++            uf2_file.write(self.make_bootable_uart_uf2())
++
++        self.set_direct_uart_machine()
++        self.vm.set_console()
++        self.vm.add_args('-bios', rom, '-kernel', uf2)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'PICO UART OK')
++
++    def test_bootrom_elf_kernel_without_flash_file(self):
++        elf = self.scratch_file('bootrom-uart-test.elf')
++        rom = self.pipico_rom()
++
++        with open(elf, 'wb') as elf_file:
++            elf_file.write(self.make_bootable_uart_elf())
++
++        self.set_direct_uart_machine()
++        self.vm.set_console()
++        self.vm.add_args('-bios', rom, '-kernel', elf)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'PICO UART OK')
++
++    def test_bootrom_flash_file_uf2_kernel_persists(self):
++        uf2 = self.scratch_file('bootrom-uart-test.uf2')
++        flash = self.scratch_file('flash.bin')
++        rom = self.pipico_rom()
++
++        with open(uf2, 'wb') as uf2_file:
++            uf2_file.write(self.make_bootable_uart_uf2())
++        with open(flash, 'wb') as flash_file:
++            flash_file.write(bytes([0xff]) * 512)
++
++        self.set_direct_uart_machine()
++        self.launch_flash_file('bootrom-overlay-write', flash,
++                               'PICO UART OK', uf2,
++                               extra_args=('-bios', rom))
++        self.launch_flash_file('bootrom-overlay-read', flash,
++                               'PICO UART OK',
++                               extra_args=('-bios', rom))
++
++    def test_flash_file_guest_writes_persist(self):
++        flash = self.scratch_file('flash.bin')
++        program = self.scratch_file('flash-program.bin')
++        reader = self.scratch_file('flash-reader.bin')
++
++        with open(flash, 'wb') as flash_file:
++            flash_file.write(bytes([0xff]) * 512)
++        with open(program, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(self.FLASH_TEST_BIN))
++        with open(reader, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.FLASH_PERSIST_READER_BIN))
++
++        self.set_direct_uart_machine()
++        self.launch_flash_file('guest-write', flash, 'FLASH OK', program)
++        self.launch_flash_file('guest-read', flash, 'PERSIST OK', reader)
++
++    def test_flash_program_without_write_enable(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('flash-no-wel.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.FLASH_NO_WEL_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'NO WEL OK')
++
++    def test_flash_program_old_and_new(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('flash-old-and-new.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.FLASH_OLD_AND_NEW_TEST_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'OLD AND NEW OK')
++
++    def test_flash_busy_xip_hardfault(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('flash-hardfault.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.FLASH_BUSY_HARDFAULT_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'HARDFAULT OK')
++
++    def test_flash_busy_core0_xip_fetch_hardfault(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('flash-busy-core0-xip-fault.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.FLASH_BUSY_CORE0_XIP_FAULT_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'CORE0 XIP HARDFAULT OK')
++
++    def test_flash_busy_core1_xip_fetch_hardfault(self):
++        self.set_direct_uart_machine()
++
++        image = self.scratch_file('flash-busy-core1-xip-fault.bin')
++        with open(image, 'wb') as image_file:
++            image_file.write(self.make_bootable_image(
++                self.FLASH_BUSY_CORE1_XIP_FAULT_BIN))
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', image)
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'CORE1 XIP HARDFAULT OK')
++
++
++if __name__ == '__main__':
++    QemuSystemTest.main()
 -- 
 2.53.0
 

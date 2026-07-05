@@ -4,80 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 781B8C43602
-	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 04:41:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33FA6C43458
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 04:41:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgEdw-0008Uv-Pd; Sun, 05 Jul 2026 00:39:48 -0400
+	id 1wgEdq-0008AC-43; Sun, 05 Jul 2026 00:39:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wgEcX-0005KN-Vr
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:38:22 -0400
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ id 1wgEcK-00057E-WA
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:38:10 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wgEcC-0004I6-Kz
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:38:21 -0400
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-2c9b1edf2bdso19453935ad.1
- for <qemu-arm@nongnu.org>; Sat, 04 Jul 2026 21:37:50 -0700 (PDT)
+ id 1wgEc1-0004Gx-BB
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:38:08 -0400
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-2cacf197759so28986605ad.2
+ for <qemu-arm@nongnu.org>; Sat, 04 Jul 2026 21:37:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783226269; x=1783831069; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783226268; x=1783831068; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=FgdeNV+kSDtwWzzSUG7k6o21nzzJqi9iKyuHEyE17qI=;
- b=Nhnt3moBKGl9Biusc2l6zMQqGogOZDw681FOZ9fZxVu0svtf9RUyP5OkeWg842CM2Y
- AHqFubYUHM2uH79FmTO1PWQ2DV4uOmZpWpduZJiRcrd340RUZbQC7OKs51xoZOQ9lBC9
- +xJvqm/yHH3kAbqcvHu00fK0YnzLT4oKM8ROhXLtYk2DoUfZ5Mtj+Fiocc9nTrj8P0Q6
- yS17b/gCpYkWciqDVrx9g78jijPGbAYBG0haVgDdVgFOaKvxGksFYfLa8BpxPdtlmldd
- gwU70yOEp56AzYAG22lBe+hauNYruEPyDQRejXRykWcb8DdSWj6wyr14tNEY3aXl5bKe
- 0KoQ==
+ :message-id:reply-to:content-type;
+ bh=G80BIhmHv+bQcepwqHTSRclxi+Da20PNHFYyztrE4Ag=;
+ b=OPXd7n894wMc9G86nZH9X43zeGoYmSvwR/pWoInvilPNa9T3jom+XtozXNl+rGwFpE
+ YP+sJJUqeCnRI7RLyDWY8zoMPFf1SNZOGUrHr8WXx8dRtGaIxLm+K1E3Fg2fjlJElhJ2
+ jtOEAIF+TOgQ8G1sYLaqlOCUmVWDDCD1FnZJ0f52++hTxpu3ZW0DX34I0z2TsJHZUOqO
+ AMSLUCPtl4fB2dSJbepoU7DNrjLNgGaNoIOSj9yuHUABSGScIhPmk/tweEE5enL1cYd4
+ eQSRdPXX2gvj//sCykcmQ3uZJp5q0Pmj8gUzl21dzKr2P8QuSZNQtwcqHCU01MUt6Qb5
+ +IyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783226269; x=1783831069;
+ d=1e100.net; s=20251104; t=1783226268; x=1783831068;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=FgdeNV+kSDtwWzzSUG7k6o21nzzJqi9iKyuHEyE17qI=;
- b=V7UYSwtp9Ino21vASZLj8TuyPg25i9/thf+nH26QB1GsBEBqc+2qwVkv4SBUWXKywJ
- unh4t+u68YSytQPbyMk01ZBXCFwCoSxv1EOWgHGoLQGCvNc7+5w7vo9NmpUuWRKBEfc8
- 0IyuJyRbAcZGYRt2w6I/Fk03kgeBSgo3vOod1P7GqDmOsT957WM/Bvqb02A4QNahe6mT
- iyyrts4zMAYAefRG/K3qQ/ITnVXHY2P3Z1+mHzuBR2IVwQUMIE3iGCNTX8dYFp7BMI3L
- SCKf6fBK2aWQAuQeubShMtGef7K1N+qxvSVbIWC/lQp6mT3yNngTr4R930yDrg5Z+BQ+
- mIYA==
-X-Gm-Message-State: AOJu0YyYE1RLj02fW5xpgM7knsDmdWoZ58qbjmg4J+fcx5+fe9ZU2VxE
- 1Scc2f6Sxq0WRDQrjjy4n2dDTq5KnUItGDXTFv7jZ8UD0l0+oM6Z6yTEylcCb27Fa/A=
-X-Gm-Gg: AfdE7clkT9Et9hmJDEb6mIpvYDE0dn6qFwOuXJVwtyEZJdocKddQfqpljaez84Qpn97
- kh67+Z31sl+rgI7akdc6RWniu9ARVk2gk3U6uzqvRyFk2El3z9axhG1pc91H1zbGYFiY47rv6lg
- 1OnTZ28lQ0pBYubtz0AB30PF9vMQ0v7kANrtl5SwfCC/mIOYxmPAFSjZcYc5orC9xBzBO8MIqLY
- GFJodGe0XPks+dMRy/kQpNUWS/i0wa+eZXyLHFFBZ7HY3dQQ2pg5+THXOdOPb1K0CXIiz9nUZcp
- EyvhTGQhskvEm0C9LVtnw+akoa+VskYbOQpsW4ouxdd7AZOuTMfqW36i3CLSzo66y37ph14ka1n
- 0ZczLmPiuChpsJ7LwQ6Qxe68JvSYkULOzRNKBXrYvZtAsvVoHuH8xnnsJpXH50Z5h4fXHUfJOiS
- xFIqc8WOY+k7nI7sm9rk3Ax/hcXbHpl0ijBTJCp+PR28I1uEw=
-X-Received: by 2002:a17:903:3bcb:b0:2ca:e08e:9e70 with SMTP id
- d9443c01a7336-2cbb9f479a9mr54297515ad.46.1783226269175; 
- Sat, 04 Jul 2026 21:37:49 -0700 (PDT)
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=G80BIhmHv+bQcepwqHTSRclxi+Da20PNHFYyztrE4Ag=;
+ b=G/rRTJlR0Pr852vh+NckPtu/cJb3ZP8QnN/6SH3Z3Pjy+CbPy1fqEMlSb9YFoJdD7q
+ xycfXvei2sZJhgA4GQCKqx4jGvRFtM2nbKlFuMdX5ehkuz0vqd8x6Mcquh4keLHOTwGb
+ rA23Ctnj12Q6gYT4JxFuCdexkzknyIRblTZXBfdQ9Smi3+7XXsd+s6BZMHoEF4+8Uhu2
+ iij3X57ZX68MWT7bHN7qX0DjP1LUI59AlMSSFukbyVXJo+vTYV/+AWn/MFw+aNV1OqMM
+ O20lPKGtjHqNhBx9QTXFk4k0Z0BDBcmCFQhAjOMqtVxLEuaM7uRmpf8yXWizL+8F1Svq
+ eaEg==
+X-Gm-Message-State: AOJu0YyOYWg0RnSss8QZm97VWcKIoC4TITlfmNsH+VpNPDXxOTeuwglP
+ YmRy4RjQG1dNM48gkTLx0qT2M1T4l7DnpQEk+yqptgzP8TneQsxjkknFz8RMvAEfvSkXtJfNbph
+ AWo8P
+X-Gm-Gg: AfdE7clJb9ALK+zyRrFBPZ919lVZNFOS9a+QHNmlo+DcdaQLVi3Rp+A2u9xB5eEkk+Y
+ tMz2oeqU9qBnThS2z2aSxrHQTPH6m9+UlkCTTDWP6VMqnfbgTuizmWaUEqD21NFTe8ZcvqBnTna
+ S2ciLpoZUWEJH5R+lWq5E54zCzMMy0IpMvZb0S31r8y0IAMPMytqUVoJPw4ZA5Lp17Rw/XKoB72
+ 1wxNWWm/EncaHMzoCG8pVyos0eNSNB8QkPG3Y451iNouRNn9xfzQqsKusUugtm3k0qG2296B9kO
+ N3J4aaNTaWjnTgkmYcLwPn8LA5GEiuC0fPdssnRJ0e1UvrY4868mJdL56Pm1G5+0hq9BKTJEj3a
+ 4s9pTTl9OiNwNSApsRtFKSZG7muSqPxKkwkRLyaqngGf66O3eY1nMXOfJSE0x3v6BFjnU05hJ6N
+ gMH5FT4C+2qBSjzOCCJ6ogdci4dQZji/B+rqmdZ1oj4OXaCrg=
+X-Received: by 2002:a17:902:f78c:b0:2c9:c95e:5836 with SMTP id
+ d9443c01a7336-2cb97e42fedmr53057565ad.5.1783226267658; 
+ Sat, 04 Jul 2026 21:37:47 -0700 (PDT)
 Received: from stoup.. (71-212-39-188.tukw.qwest.net. [71.212.39.188])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2cad712ca17sm29863785ad.28.2026.07.04.21.37.48
+ d9443c01a7336-2cad712ca17sm29863785ad.28.2026.07.04.21.37.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Jul 2026 21:37:48 -0700 (PDT)
+ Sat, 04 Jul 2026 21:37:47 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, philmd@oss.qualcomm.com
-Subject: [PATCH v2 26/46] system: Validate flags in cpu_watchpoint_insert
-Date: Sat,  4 Jul 2026 21:37:05 -0700
-Message-ID: <20260705043725.1373137-27-richard.henderson@linaro.org>
+Subject: [PATCH v2 24/46] system: Remove cpu_watchpoint_insert error return
+ path
+Date: Sat,  4 Jul 2026 21:37:03 -0700
+Message-ID: <20260705043725.1373137-25-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260705043725.1373137-1-richard.henderson@linaro.org>
 References: <20260705043725.1373137-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
 X-Spam_score_int: 4
 X-Spam_score: 0.4
 X-Spam_bar: /
@@ -100,26 +102,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Flags must watch reads, writes, or both.
-Flags must specify GDB or CPU but not both.
-Flags must not contain extraneous bits.
+Move the validation of the address range to tcg_insert_breakpoint,
+which has to deal with gdbstub inputs.  Leave assertions behind
+in cpu_watchpoint_insert, but no error return path.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- system/watchpoint.c | 3 +++
- 1 file changed, 3 insertions(+)
+ accel/tcg/tcg-accel-ops.c | 3 +++
+ system/watchpoint.c       | 9 ++-------
+ 2 files changed, 5 insertions(+), 7 deletions(-)
 
+diff --git a/accel/tcg/tcg-accel-ops.c b/accel/tcg/tcg-accel-ops.c
+index 9d9ecf542c..8954514f24 100644
+--- a/accel/tcg/tcg-accel-ops.c
++++ b/accel/tcg/tcg-accel-ops.c
+@@ -147,6 +147,9 @@ static int tcg_insert_breakpoint(CPUState *cs, int type, vaddr addr, vaddr len)
+     case GDB_WATCHPOINT_WRITE:
+     case GDB_WATCHPOINT_READ:
+     case GDB_WATCHPOINT_ACCESS:
++        if (len == 0 || addr + (len - 1) < addr) {
++            return -EINVAL;
++        }
+         CPU_FOREACH(cpu) {
+             err = cpu_watchpoint_insert(cpu, addr, len,
+                                         xlat_gdb_type(cpu, type), 0, NULL);
 diff --git a/system/watchpoint.c b/system/watchpoint.c
-index 183b194403..fbaebba7cf 100644
+index ed505da403..01cf0f61a8 100644
 --- a/system/watchpoint.c
 +++ b/system/watchpoint.c
-@@ -33,6 +33,9 @@ CPUWatchpoint *cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
+@@ -18,7 +18,6 @@
+  */
  
-     assert(len != 0);
-     assert(last >= addr);
-+    assert(flags & BP_MEM_ACCESS);
-+    assert(ctpop32(flags & BP_ANY) == 1);
-+    assert(!(flags & ~(BP_ANY | BP_MEM_ACCESS | BP_STOP_BEFORE_ACCESS)));
+ #include "qemu/osdep.h"
+-#include "qemu/error-report.h"
+ #include "exec/cputlb.h"
+ #include "exec/target_page.h"
+ #include "exec/breakpoint.h"
+@@ -33,12 +32,8 @@ int cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
+     vaddr last = addr + len - 1;
+     vaddr in_page;
+ 
+-    /* forbid ranges which are empty or run off the end of the address space */
+-    if (len == 0 || last < addr) {
+-        error_report("tried to set invalid watchpoint at %"
+-                     VADDR_PRIx ", len=%" VADDR_PRIu, addr, len);
+-        return -EINVAL;
+-    }
++    assert(len != 0);
++    assert(last >= addr);
  
      wp = g_new0(CPUWatchpoint, 1);
  

@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F114C44500
-	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 04:47:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49224C44501
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 04:47:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgEdQ-0007AB-HO; Sun, 05 Jul 2026 00:39:18 -0400
+	id 1wgEeb-0000wi-9l; Sun, 05 Jul 2026 00:40:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wgEcE-00051z-Kp
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:38:03 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ id 1wgEcR-0005DH-It
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:38:16 -0400
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wgEby-0004F4-7V
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:38:02 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2ca1479dfe0so21656115ad.1
- for <qemu-arm@nongnu.org>; Sat, 04 Jul 2026 21:37:45 -0700 (PDT)
+ id 1wgEc6-0004Mq-TB
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:38:15 -0400
+Received: by mail-pg1-x529.google.com with SMTP id
+ 41be03b00d2f7-ca1328b8584so1151070a12.1
+ for <qemu-arm@nongnu.org>; Sat, 04 Jul 2026 21:37:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783226265; x=1783831065; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783226273; x=1783831073; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LWeC8sovUKFGxLFpRs93xUZHyuZOaYN5bdNXTrhkucI=;
- b=cC9q01OUBlRXqol6yGorabAnkYudCFr7BfXr78NWmn4JfsHKSBJDUX7RvvIKPV8TJG
- ztyUygPuVJfsqiyLp3JlGcw8TyII+YyXZcoW3V+fBYXI069r2Xk3X7zyNqmSskr0kc0T
- S069kHha9ZmWAnmVDRdGPOx7va3pyx36gAmnLOAZlIsrW/bwG60tigP9QOpD7x6vkhRa
- y4J39ISJfC33S5Oql0hHagmeeKUI1QVaJui7zQPSD8+FwP0dmhStyS5Ok2Qx6MGTtGRS
- xR6Vhqg9mBjM73AC1bOx29DB0Ny+t5EqSGmMeF+KiuTRhKVm5NVYOPKFkiY/GgjAdjXP
- NvOQ==
+ bh=cP494Rw8f0vgO7hsG8GqjbbSorQrWAAshXUTXMQVwCM=;
+ b=RoAQjyoiTAQIyAY1GI2sbDqJW8IGrYPJQ/k6+xwMdgSCOo3hOVR/Y56bim/adckbcj
+ 2FexexQgfACaHOk9AbL6y+KbXRNTZ6rXI2uKbdTphM7xq2xHMoNWS8bOICpIegumicE4
+ IV1w1UzquFxyfcfVT5MII/drmPYBS0VGwdbAW9Uqlg0rxi6y3rr5BrcO9srT4/BAR9SU
+ vr260SRnyV10QUvd6t3pv4RFlK4NREa4OHDJYVfj/Um15PF8g8Ri+a1PO1eGuBLKtWZ7
+ +L0an8K/NrTKXviq3L7IsAYQrRCAKrprcuRPN9IwXt8E1s3XQb+O8cT+25dckDqSY/hz
+ kJiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783226265; x=1783831065;
+ d=1e100.net; s=20251104; t=1783226273; x=1783831073;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=LWeC8sovUKFGxLFpRs93xUZHyuZOaYN5bdNXTrhkucI=;
- b=LgmnxXSDYGuSfSicTgzWNxjPTHFCAjZ35nOaZvGcAGNv5dj07xiBBhqQrPW9Kz4G27
- WUkZ1x0txbykpFGyHU4HHX8oqvKLIA4XrpZ92F1O3YOmMPwBDyPnS4aWsJuMyMSM48hM
- OxSJyy3R+3OZHVGc6ZzdGsrLlh2KFP4OgV46V1i4Lg2iuAAlsM0Q3dKb5UMg5r/UgvRp
- e8asLeiDA0YPXyW8yKMG9EruH1I9ozowCk+QOoPosG/s12UEDKLGEX8CO+ZyxCOb3UdY
- d6l52FfSLlPWvhvu9ZnFFg58GgPHGQFSxZrkW1OFbgxVutYEy8oP7LNCr/vtVhNoMgmt
- L1xg==
-X-Gm-Message-State: AOJu0Ywil+ba8DVH9CJUOXA3OLroJceMBAXIFvl/p+igXqXPagaHpn7w
- qPYHSXG6crqdGuc8S3Akozq1epmiTTNU9QDiG5vXdVYjm1/PXrSMYqythnzdgzOWH1oNL3DJuu3
- OEvkC
-X-Gm-Gg: AfdE7cnLGJlpshGlJ2KFRGu32qiSvJUb5MWsooBzaHk2Q5za1f/5xc1qo4Jtl+YmeZB
- 8pygB9HpnXuxx/ZGfXp9gKfFFxoVVhainVnZYdano66ClIEdB+0B//NJdKuDyvXb8W1DYM/raCf
- iSCBkujlYr0GLnR7XCka0whQvSpvBxKkY5UWOK7jOJnZSht+VtzN4QEPi56oZXTLxnn+omKXa00
- v4xIQVCmV/UsdkYAQXYpwcx4KdLEc0BA+i2asqDIErizR7+iSLBcs8DGDQS6Du0qk9nd0JxDHag
- wDsz5E4BZ3GvKU7SR5xY/vSzDWG8tdQmutpSxCanZYKpQ+DyrfPM2++RYwiBJBNzetxHgfw4iMl
- f/n8i6iURz/avQMctI63LVhFay/l0RPfAPhULetrMvxc1XXcXPW9wl3vrzZ/i/U2avZgmbhDonu
- 9m6y+tWys1K2rzXB1AVWNZaE74WeuVjr5CP/vN5HofFeqolyw=
-X-Received: by 2002:a17:902:d4c7:b0:2c9:e261:95ce with SMTP id
- d9443c01a7336-2cbb9ee3915mr50012645ad.30.1783226264680; 
- Sat, 04 Jul 2026 21:37:44 -0700 (PDT)
+ bh=cP494Rw8f0vgO7hsG8GqjbbSorQrWAAshXUTXMQVwCM=;
+ b=lXhJqE+9WMyh6T6Lhc4jrZA10vUdQAsUmbHAtVX+51wtTuFC2dRbGLjHExobSZFjse
+ /2pfSMnd7klnBwDZLtyKj0lz1SGHnXTZhdvU1dGcqrMSDwJr9OwPy7rrk1C8t2md7Fci
+ ezADz5SuVujQdx8slDklYhJ11H+KhXghSSLsfyKMzKTTuepXWtmruwOyQgvjYQrL6N78
+ LhpW4n90O13Glr1x9k5whV408MkbvusgI97f+9A36GaRHCgWo5XDOotYZpgd/b9G9K/N
+ ImVM0koZYbI5VbWjJTJGvFoe5kqJnFblp3uW8MxBu0Zx/FRfjCAHPrxX3C8Nmacs4Aqy
+ Mx1A==
+X-Gm-Message-State: AOJu0Yw0WLwYNz91rq4VAznMTnbiYhHdn8IjIpoCxX07QSfByqsfrr6n
+ 05tCnJQIp+JnxrHTEuDmsk4JQbyr6lOIylVNBj1kW7WPAyhfdjaL055jy+LFMj6rm6k=
+X-Gm-Gg: AfdE7clk3RZVKQy1iNwoQsWHuoCTe+lh2WjTDREydMVCTXPDwmFTDAQSgzeYbvT5KE5
+ 49dwSuymA2fU7KK+MaSCA8iJnJO5mLBpC72v8SbyfwDwWyhKwo/se2Man/WQXG/lGSO0+9wHxxd
+ KFHJIQ7PgWs2xeRSrRwa3Jeuq6TwEXRm1jpQ0YuMu0S8gPAN2a4RsSkE+yIgCY8xAC17y7GR1tf
+ r8cMj0TAc3PbAMfKbgIaSMWwmZnSaiQm4/YxeoN/oZbNU3fUgA5OACESN5kRLIc7vhH99sUTGRM
+ j3M2t9T3vixhd3blWbZ5lCaHNTia1qc5fVLQ5nKLDkwdtqwBQ+JBDq7JtaTI3pA2bQavYDvz4Ti
+ SptC0n7Mg62YPIufHZqqD/MDKExW/CO+Wle7AjUDI6Y1V4KudRfhQ+wo2P4vMk/WkwZGNxq3Exx
+ +kGgiXER3E6q9ESv1+rk4vXq4GCdwouv3OFkZ4Ft2L/EROOQ4=
+X-Received: by 2002:a17:902:e786:b0:2c9:ff83:41fa with SMTP id
+ d9443c01a7336-2cbb9ebb50dmr50629105ad.24.1783226273331; 
+ Sat, 04 Jul 2026 21:37:53 -0700 (PDT)
 Received: from stoup.. (71-212-39-188.tukw.qwest.net. [71.212.39.188])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2cad712ca17sm29863785ad.28.2026.07.04.21.37.44
+ d9443c01a7336-2cad712ca17sm29863785ad.28.2026.07.04.21.37.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Jul 2026 21:37:44 -0700 (PDT)
+ Sat, 04 Jul 2026 21:37:52 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, philmd@oss.qualcomm.com
-Subject: [PATCH v2 20/46] target/arm: Make check_watchpoint_in_range static
-Date: Sat,  4 Jul 2026 21:36:59 -0700
-Message-ID: <20260705043725.1373137-21-richard.henderson@linaro.org>
+Subject: [PATCH v2 31/46] accel/tcg: Pass breakpoint hit to debug_excp_handler
+Date: Sat,  4 Jul 2026 21:37:10 -0700
+Message-ID: <20260705043725.1373137-32-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260705043725.1373137-1-richard.henderson@linaro.org>
 References: <20260705043725.1373137-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x529.google.com
 X-Spam_score_int: 4
 X-Spam_score: 0.4
 X-Spam_bar: /
@@ -101,39 +100,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This function is not used outside hyp_gdbstub.c.
+Record the CPUBreakpoint in check_for_breakpoints_slow,
+into a new CPUState field, so that the as-yet unconverted
+target debug_excp_handler functions won't see it.
+
+Only call debug_excp_handler for BP_CPU, and clear the
+CPUState fields after the call.  This will allow these
+actions to be dropped from the target hook.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h   | 1 -
- target/arm/hyp_gdbstub.c | 2 +-
- 2 files changed, 1 insertion(+), 2 deletions(-)
+ include/hw/core/cpu.h |  1 +
+ accel/tcg/cpu-exec.c  | 32 +++++++++++++++++++++++---------
+ 2 files changed, 24 insertions(+), 9 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 370876851e..53091fc73e 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1966,7 +1966,6 @@ bool find_hw_breakpoint(CPUState *cpu, vaddr pc);
- int insert_hw_breakpoint(vaddr pc);
- int delete_hw_breakpoint(vaddr pc);
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 8d24aaff44..dc1c634258 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -526,6 +526,7 @@ struct CPUState {
+     /* ice debug support */
+     IntervalTreeRoot breakpoints;
+     IntervalTreeRoot watchpoints;
++    CPUBreakpoint *breakpoint_hit;
+     CPUBreakpoint *watchpoint_hit;
  
--bool check_watchpoint_in_range(int i, vaddr addr);
- CPUWatchpoint *find_hw_watchpoint(CPUState *cpu, vaddr addr);
- int insert_hw_watchpoint(vaddr addr, vaddr len, int type);
- int delete_hw_watchpoint(vaddr addr, vaddr len, int type);
-diff --git a/target/arm/hyp_gdbstub.c b/target/arm/hyp_gdbstub.c
-index bb5969720c..456a09e766 100644
---- a/target/arm/hyp_gdbstub.c
-+++ b/target/arm/hyp_gdbstub.c
-@@ -182,7 +182,7 @@ int insert_hw_watchpoint(vaddr addr, vaddr len, int type)
-     return 0;
+     void *opaque;
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index cca403ad62..bda6dd9e46 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -363,6 +363,10 @@ static bool check_for_breakpoints_slow(CPUState *cpu, vaddr pc,
+     return false;
+ 
+  found:
++    bp->hitaddr = pc;
++    bp->hitlast = pc;
++    bp->hitattrs = MEMTXATTRS_UNSPECIFIED;
++    cpu->breakpoint_hit = bp;
+     cpu->exception_index = EXCP_DEBUG;
+     return true;
+ }
+@@ -681,19 +685,29 @@ static inline bool cpu_handle_halt(CPUState *cpu)
+ 
+ static inline void cpu_handle_debug_exception(CPUState *cpu)
+ {
+-    const TCGCPUOps *tcg_ops = cpu->cc->tcg_ops;
+-    IntervalTreeNode *n;
++    CPUBreakpoint *hit = cpu->watchpoint_hit;
+ 
+-    for (n = interval_tree_iter_first(&cpu->watchpoints, 0, -1); n;
+-         n = interval_tree_iter_next(n, 0, -1)) {
+-        CPUBreakpoint *wp = container_of(n, CPUBreakpoint, itree);
+-        if (wp != cpu->watchpoint_hit) {
+-            wp->flags &= ~BP_WATCHPOINT_HIT;
++    if (hit) {
++        IntervalTreeNode *n;
++
++        for (n = interval_tree_iter_first(&cpu->watchpoints, 0, -1); n;
++             n = interval_tree_iter_next(n, 0, -1)) {
++            CPUBreakpoint *wp = container_of(n, CPUBreakpoint, itree);
++            if (wp != hit) {
++                wp->flags &= ~BP_WATCHPOINT_HIT;
++            }
++        }
++    } else {
++        hit = cpu->breakpoint_hit;
++        if (!hit) {
++            return;
+         }
+     }
+ 
+-    if (tcg_ops->debug_excp_handler) {
+-        tcg_ops->debug_excp_handler(cpu, cpu->watchpoint_hit);
++    if (hit->flags & BP_CPU) {
++        cpu->cc->tcg_ops->debug_excp_handler(cpu, hit);
++        cpu->watchpoint_hit = NULL;
++        cpu->breakpoint_hit = NULL;
+     }
  }
  
--bool check_watchpoint_in_range(int i, vaddr addr)
-+static bool check_watchpoint_in_range(int i, vaddr addr)
- {
-     HWWatchpoint *wp = get_hw_wp(i);
-     uint64_t addr_top, addr_bottom = wp->wvr;
 -- 
 2.43.0
 

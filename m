@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57BA7C43458
-	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 22:29:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47693C43458
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 22:29:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgVJp-0006jv-OV; Sun, 05 Jul 2026 18:28:09 -0400
+	id 1wgVJs-0006l9-F3; Sun, 05 Jul 2026 18:28:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1wgUwZ-0002Jx-6D; Sun, 05 Jul 2026 18:04:07 -0400
-Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
+ id 1wgUw7-0002EO-Ry; Sun, 05 Jul 2026 18:03:39 -0400
+Received: from smtp-out-1.univ-lille.fr ([194.254.129.82])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1wgUwU-0001xZ-4p; Sun, 05 Jul 2026 18:04:06 -0400
+ id 1wgUw2-0001h2-VP; Sun, 05 Jul 2026 18:03:39 -0400
 Received: from smtp02.univ-lille.fr (smtp02.univ-lille.fr [194.254.129.96])
- by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4gthMG4RKMz85Xr;
+ by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4gthMG6YMCzBt0f;
  Mon,  6 Jul 2026 00:03:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
  s=dkim; t=1783289002;
- bh=3xM0zJ+GpozPi5npm+blxQXFgeoVFlkVVTWOOD7uzhE=;
+ bh=Nb/7wEHJmJ7o7Wa887+QjUm87puhwT6uWKi1riPD/2Y=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=F79uyxxIsvFTfjM3zUeMluxSlCTs5Pg/SEPnBjBy11N0eTVEEfwiZDetp/R7mHxS1
- QYUtj8NFjsa/sSvz8aztotzCeIHR18CGbuRx5IeDh+hDZkT213e5YiFBBrywIQvtpu
- REBTsNQHul5W3hxjmDnVdZ2Qi0CG4CJgH7ugvIvm4so7OBMK8W/ofKPsrucbluqzfO
- +BMxxfuxpSgztQEx+4RNtiYJC0XE5kMuwZLTmDhtk72DpTjlyMJPoaWjLYDyXmygEb
- jbPP07y8IT02NUqxdgBjD+rNIWY1huBaihTaOc740aJO3PHiq7oBIUDpECjDyO5tZc
- Nb08qpnkauEEg==
+ b=ZaetCRI56RQnOsbEsc+7eKSGwa4VtrglNb3qlirgNuIvrEVumRgV0gHjZh7x04Rxw
+ EJ+Jfdyo5oTL7dLRWqY17H9yPxN0OmysjTRXuTCuljURCa+u6UbL+roqpfBIFkrTZn
+ 3Xyh3Zm0VNUHoLNLhp6Mk3IFTQ5rEoINlUAZWaZVxBKk84Q3dCi9b+B9loNkqi0Pe3
+ aTWVAr5G+18TuMC8GRA9jmDu3RGCtO9A9xG/cwem1ReLeAmtsk2ox3blCBoCubm+a7
+ e6Y+w6aN+L7+8K8QoBEYX1+FfI6Lymf68lQ7qLc79qPwqqMKDXhC2ev5vgccc6LYw5
+ GkTWS5QpsxzFA==
 Received: from mac.home (lfbn-lil-1-243-101.w90-45.abo.wanadoo.fr
  [90.45.87.101]) (Authenticated sender: gilles.grimaud)
- by smtp02.univ-lille.fr (Postfix) with ESMTPSA id 4gthMG3F2pz6tBv;
+ by smtp02.univ-lille.fr (Postfix) with ESMTPSA id 4gthMG5Mdbz6tBv;
  Mon,  6 Jul 2026 00:03:22 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Gilles Grimaud <gilles.grimaud@univ-lille.fr>
-Subject: [PATCH RFC v1 5/9] hw/arm: add Raspberry Pi Pico RP2040 machine
-Date: Mon,  6 Jul 2026 00:03:16 +0200
-Message-ID: <20260705220320.90395-6-gilles.grimaud@univ-lille.fr>
+Subject: [PATCH RFC v1 7/9] tests/qtest: add RP2040 peripheral tests
+Date: Mon,  6 Jul 2026 00:03:18 +0200
+Message-ID: <20260705220320.90395-8-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260705220320.90395-1-gilles.grimaud@univ-lille.fr>
 References: <20260705220320.90395-1-gilles.grimaud@univ-lille.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=194.254.129.106;
- envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-2.univ-lille.fr
+Received-SPF: pass client-ip=194.254.129.82;
+ envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-1.univ-lille.fr
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -73,2601 +72,1900 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add an RP2040 SoC model and a Raspberry Pi Pico board machine. The machine provides Cortex-M0+ cores, SRAM, XIP flash, UART0/UART1, DMA, a synthetic ROM boot path, optional external mask ROM loading through -bios, flash-file persistence, flash UID configuration, and -kernel loading for ELF, UF2 and raw images.
+Add qtests for RP2040 SIO, DMA, XIP/SSI, clocks, resets, watchdog, ROSC, SYSINFO/SYSCFG, VREG, IO_QSPI, TBMAN and BUSCTRL behaviour.
 
-The implementation follows the direction of Alex Bennée's 2022 RP2040/Pico RFC series while adapting the code to current QEMU APIs and the functional model developed here.
+The tests cover the functional contracts used by the Pico machine and the Pico SDK examples rather than cycle-level timing.
 
 Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 ---
- MAINTAINERS                             |   20 +
- configs/devices/arm-softmmu/default.mak |    1 +
- hw/arm/Kconfig                          |   32 +
- hw/arm/meson.build                      |    2 +
- hw/arm/raspi_pico.c                     |  265 +++
- hw/arm/rp2040.c                         | 2052 +++++++++++++++++++++++
- hw/arm/trace-events                     |    3 +
- include/hw/arm/rp2040.h                 |  122 ++
- 8 files changed, 2497 insertions(+)
- create mode 100644 hw/arm/raspi_pico.c
- create mode 100644 hw/arm/rp2040.c
- create mode 100644 include/hw/arm/rp2040.h
+ tests/qtest/meson.build                  |  12 +
+ tests/qtest/rp2040-busctrl-test.c        |  92 ++++++
+ tests/qtest/rp2040-clocks-test.c         | 107 +++++++
+ tests/qtest/rp2040-dma-test.c            | 374 +++++++++++++++++++++++
+ tests/qtest/rp2040-ioqspi-test.c         |  81 +++++
+ tests/qtest/rp2040-resets-test.c         |  84 +++++
+ tests/qtest/rp2040-rosc-test.c           | 146 +++++++++
+ tests/qtest/rp2040-sio-test.c            | 234 ++++++++++++++
+ tests/qtest/rp2040-sysinfo-syscfg-test.c | 177 +++++++++++
+ tests/qtest/rp2040-tbman-test.c          |  32 ++
+ tests/qtest/rp2040-vreg-test.c           |  79 +++++
+ tests/qtest/rp2040-watchdog-test.c       | 148 +++++++++
+ tests/qtest/rp2040-xip-test.c            | 212 +++++++++++++
+ 13 files changed, 1778 insertions(+)
+ create mode 100644 tests/qtest/rp2040-busctrl-test.c
+ create mode 100644 tests/qtest/rp2040-clocks-test.c
+ create mode 100644 tests/qtest/rp2040-dma-test.c
+ create mode 100644 tests/qtest/rp2040-ioqspi-test.c
+ create mode 100644 tests/qtest/rp2040-resets-test.c
+ create mode 100644 tests/qtest/rp2040-rosc-test.c
+ create mode 100644 tests/qtest/rp2040-sio-test.c
+ create mode 100644 tests/qtest/rp2040-sysinfo-syscfg-test.c
+ create mode 100644 tests/qtest/rp2040-tbman-test.c
+ create mode 100644 tests/qtest/rp2040-vreg-test.c
+ create mode 100644 tests/qtest/rp2040-watchdog-test.c
+ create mode 100644 tests/qtest/rp2040-xip-test.c
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 97dcc78ded..104c02ff76 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1023,6 +1023,26 @@ F: docs/system/arm/raspi.rst
- F: tests/functional/arm/test_raspi2.py
- F: tests/functional/aarch64/test_raspi*.py
- 
-+Raspberry Pi Pico / RP2040
-+M: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
-+R: Alex Bennée <alex.bennee@linaro.org>
-+L: qemu-arm@nongnu.org
-+S: Maintained
-+F: configs/devices/arm-softmmu/default.mak
-+F: docs/system/arm/raspi-pico.rst
-+F: hw/arm/raspi_pico.c
-+F: hw/arm/rp2040.c
-+F: hw/dma/rp2040_dma.c
-+F: hw/misc/rp2040_*.c
-+F: hw/ssi/rp2040_xip.c
-+F: include/hw/arm/rp2040.h
-+F: include/hw/dma/rp2040_dma.h
-+F: include/hw/misc/rp2040_*.h
-+F: include/hw/ssi/rp2040_xip.h
-+F: scripts/uf2-to-flash.py
-+F: tests/functional/arm/test_raspi_pico.py
-+F: tests/qtest/rp2040-*.c
-+
- Real View
- M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
-diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
-index 71cf164511..824d6ebfd9 100644
---- a/configs/devices/arm-softmmu/default.mak
-+++ b/configs/devices/arm-softmmu/default.mak
-@@ -33,6 +33,7 @@
- # CONFIG_OLIMEX_STM32_H405=n
- # CONFIG_MPS2=n
- # CONFIG_RASPI=n
-+# CONFIG_RASPI_PICO=n
- # CONFIG_DIGIC=n
- # CONFIG_SABRELITE=n
- # CONFIG_EMCRAFT_SF2=n
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 5f5c4899ad..125c36cc99 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -367,6 +367,38 @@ config RASPI
-     select BCM2835_SPI
-     select BCM2835_I2C
- 
-+config RASPI_PICO
-+    bool
-+    default y
-+    depends on TCG && ARM
-+    select RP2040
-+
-+config RP2040
-+    bool
-+    select ARM_V7M
-+    select PL011
-+    select RP2040_BUSCTRL
-+    select RP2040_CLOCKS
-+    select RP2040_DMA
-+    select RP2040_IOBANK0
-+    select RP2040_IOQSPI
-+    select RP2040_NYI
-+    select RP2040_PADS
-+    select RP2040_PLL
-+    select RP2040_PSM
-+    select RP2040_RESETS
-+    select RP2040_ROSC
-+    select RP2040_SIO
-+    select RP2040_SYSCFG
-+    select RP2040_SYSINFO
-+    select RP2040_TBMAN
-+    select RP2040_TIMER
-+    select RP2040_VREG
-+    select RP2040_WATCHDOG
-+    select RP2040_XIP
-+    select RP2040_XOSC
-+    select UNIMP
-+
- config STM32F100_SOC
-     bool
-     select ARM_V7M
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 4233a800be..0b79b9414a 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -11,6 +11,7 @@ arm_common_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true: files('netduinoplus2.c'
- arm_common_ss.add(when: 'CONFIG_OLIMEX_STM32_H405', if_true: files('olimex-stm32-h405.c'))
- arm_common_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c', 'npcm7xx_boards.c'))
- arm_common_ss.add(when: 'CONFIG_NPCM8XX', if_true: files('npcm8xx.c', 'npcm8xx_boards.c'))
-+arm_common_ss.add(when: 'CONFIG_RASPI_PICO', if_true: files('raspi_pico.c'))
- arm_common_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview.c'))
- arm_common_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa-ref.c'))
- arm_common_ss.add(when: 'CONFIG_STELLARIS', if_true: files('stellaris.c'))
-@@ -93,6 +94,7 @@ arm_common_ss.add(when: 'CONFIG_TEGRA241_CMDQV', if_true: files('tegra241-cmdqv.
- stub_ss.add(files('tegra241-cmdqv-stubs.c'))
- arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
- arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
-+arm_common_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040.c'))
- arm_common_ss.add(when: 'CONFIG_XEN', if_true: files(
-   'xen-stubs.c',
-   'xen-pvh.c',
-diff --git a/hw/arm/raspi_pico.c b/hw/arm/raspi_pico.c
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 5e18b947c7..12cc8a500d 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -250,6 +250,18 @@ qtests_arm = \
+   (config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test', 'tpm-tis-i2c-swtpm-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_VEXPRESS') ? ['test-arm-mptimer'] : []) + \
+   (config_all_devices.has_key('CONFIG_MICROBIT') ? ['microbit-test'] : []) + \
++  (config_all_devices.has_key('CONFIG_RASPI_PICO') ? ['rp2040-sysinfo-syscfg-test',
++                                                       'rp2040-busctrl-test',
++                                                       'rp2040-clocks-test',
++                                                       'rp2040-dma-test',
++                                                       'rp2040-ioqspi-test',
++                                                       'rp2040-resets-test',
++                                                       'rp2040-rosc-test',
++                                                       'rp2040-sio-test',
++                                                       'rp2040-tbman-test',
++                                                       'rp2040-vreg-test',
++                                                       'rp2040-watchdog-test',
++                                                       'rp2040-xip-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') ? qtests_stm32l4x5 : []) + \
+   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fsi-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_CAN_FLEXCAN') ? ['flexcan-test'] : []) + \
+diff --git a/tests/qtest/rp2040-busctrl-test.c b/tests/qtest/rp2040-busctrl-test.c
 new file mode 100644
-index 0000000000..ea229214b0
+index 0000000000..a86fd8a20e
 --- /dev/null
-+++ b/hw/arm/raspi_pico.c
-@@ -0,0 +1,265 @@
++++ b/tests/qtest/rp2040-busctrl-test.c
+@@ -0,0 +1,92 @@
 +/*
-+ * Raspberry Pi Pico machine
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
++ * QTest testcase for the RP2040 bus fabric control block.
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "qapi/error.h"
-+#include "hw/arm/boot.h"
-+#include "hw/arm/machines-qom.h"
-+#include "hw/arm/rp2040.h"
-+#include "hw/core/boards.h"
-+#include "hw/core/qdev-properties.h"
-+#include "qemu/cutils.h"
-+#include "system/address-spaces.h"
-+#include "system/system.h"
-+#include "qom/object.h"
++#include "libqtest.h"
 +
-+#define TYPE_RASPI_PICO_MACHINE MACHINE_TYPE_NAME("raspi-pico")
-+OBJECT_DECLARE_SIMPLE_TYPE(RaspiPicoMachineState, RASPI_PICO_MACHINE)
++#define BUSCTRL_BASE           0x40030000
++#define BUSCTRL_PRIORITY       0x00
++#define BUSCTRL_PRIORITY_ACK   0x04
++#define BUSCTRL_PERFCTR0       0x08
++#define BUSCTRL_PERFSEL0       0x0c
++#define BUSCTRL_PERFCTR1       0x10
++#define BUSCTRL_PERFSEL1       0x14
++#define BUSCTRL_PRIORITY_MASK  0x00001111
++#define BUSCTRL_PERFCTR_MASK   0x00ffffff
++#define BUSCTRL_PERFSEL_RESET  0x1f
++#define BUSCTRL_PERFSEL_SRAM5  0x05
 +
-+struct RaspiPicoMachineState {
-+    MachineState parent_obj;
-+
-+    RP2040State soc;
-+    char *flash_file;
-+    char *flash_uid;
-+    uint64_t flash_uid_value;
-+    bool flash_uid_set;
-+    char *rosc_random_seed;
-+    uint64_t rosc_random_seed_value;
-+    bool rosc_random_seed_set;
-+    bool strict_uart_pins;
-+};
-+
-+static char *raspi_pico_get_flash_file(Object *obj, Error **errp)
++static QTestState *rp2040_start(void)
 +{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
-+
-+    return g_strdup(s->flash_file ?: "");
++    return qtest_init("-machine raspi-pico");
 +}
 +
-+static void raspi_pico_set_flash_file(Object *obj, const char *value,
-+                                      Error **errp)
++static void test_busctrl_reset_values(void)
 +{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
++    QTestState *qts = rp2040_start();
 +
-+    g_free(s->flash_file);
-+    s->flash_file = g_strdup(value);
++    g_assert_cmphex(qtest_readl(qts, BUSCTRL_BASE + BUSCTRL_PRIORITY), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, BUSCTRL_BASE + BUSCTRL_PRIORITY_ACK),
++                    ==, 1);
++    g_assert_cmphex(qtest_readl(qts, BUSCTRL_BASE + BUSCTRL_PERFSEL0),
++                    ==, BUSCTRL_PERFSEL_RESET);
++    g_assert_cmphex(qtest_readl(qts, BUSCTRL_BASE + BUSCTRL_PERFSEL1),
++                    ==, BUSCTRL_PERFSEL_RESET);
++
++    qtest_quit(qts);
 +}
 +
-+static char *raspi_pico_get_flash_uid(Object *obj, Error **errp)
++static void test_busctrl_priority(void)
 +{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
++    QTestState *qts = rp2040_start();
 +
-+    return g_strdup(s->flash_uid ?: "");
++    qtest_writel(qts, BUSCTRL_BASE + BUSCTRL_PRIORITY, 0xffffffff);
++    g_assert_cmphex(qtest_readl(qts, BUSCTRL_BASE + BUSCTRL_PRIORITY),
++                    ==, BUSCTRL_PRIORITY_MASK);
++    g_assert_cmphex(qtest_readl(qts, BUSCTRL_BASE + BUSCTRL_PRIORITY_ACK),
++                    ==, 1);
++
++    qtest_quit(qts);
 +}
 +
-+static void raspi_pico_set_flash_uid(Object *obj, const char *value,
-+                                     Error **errp)
++static void test_busctrl_perf_counter(void)
 +{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
-+    const char *p;
-+    uint64_t uid;
-+    int i;
++    QTestState *qts = rp2040_start();
++    uint32_t first;
++    uint32_t second;
 +
-+    if (!value || !*value) {
-+        g_free(s->flash_uid);
-+        s->flash_uid = NULL;
-+        s->flash_uid_value = 0;
-+        s->flash_uid_set = false;
-+        return;
-+    }
++    g_assert_cmphex(qtest_readl(qts, BUSCTRL_BASE + BUSCTRL_PERFCTR0),
++                    ==, 0);
++    qtest_writel(qts, BUSCTRL_BASE + BUSCTRL_PERFSEL0,
++                 BUSCTRL_PERFSEL_SRAM5);
++    g_assert_cmphex(qtest_readl(qts, BUSCTRL_BASE + BUSCTRL_PERFSEL0),
++                    ==, BUSCTRL_PERFSEL_SRAM5);
 +
-+    p = g_str_has_prefix(value, "0x") || g_str_has_prefix(value, "0X") ?
-+        value + 2 : value;
-+    if (strlen(p) != 16) {
-+        error_setg(errp, "flash-uid must be exactly 16 hexadecimal digits");
-+        return;
-+    }
-+    for (i = 0; i < 16; i++) {
-+        if (!g_ascii_isxdigit(p[i])) {
-+            error_setg(errp, "invalid flash-uid '%s'", value);
-+            return;
-+        }
-+    }
-+    if (qemu_strtou64(p, NULL, 16, &uid) < 0) {
-+        error_setg(errp, "invalid flash-uid '%s'", value);
-+        return;
-+    }
++    first = qtest_readl(qts, BUSCTRL_BASE + BUSCTRL_PERFCTR0);
++    second = qtest_readl(qts, BUSCTRL_BASE + BUSCTRL_PERFCTR0);
++    g_assert_cmphex(first, ==, 1);
++    g_assert_cmphex(second, ==, 2);
 +
-+    g_free(s->flash_uid);
-+    s->flash_uid = g_strdup(value);
-+    s->flash_uid_value = uid;
-+    s->flash_uid_set = true;
++    qtest_writel(qts, BUSCTRL_BASE + BUSCTRL_PERFCTR0,
++                 BUSCTRL_PERFCTR_MASK);
++    g_assert_cmphex(qtest_readl(qts, BUSCTRL_BASE + BUSCTRL_PERFCTR0),
++                    ==, BUSCTRL_PERFCTR_MASK);
++
++    qtest_quit(qts);
 +}
 +
-+static char *raspi_pico_get_rosc_random_seed(Object *obj, Error **errp)
++int main(int argc, char **argv)
 +{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
++    g_test_init(&argc, &argv, NULL);
 +
-+    return g_strdup(s->rosc_random_seed ?: "");
++    qtest_add_func("/rp2040-busctrl/reset-values",
++                   test_busctrl_reset_values);
++    qtest_add_func("/rp2040-busctrl/priority", test_busctrl_priority);
++    qtest_add_func("/rp2040-busctrl/perf-counter",
++                   test_busctrl_perf_counter);
++
++    return g_test_run();
 +}
-+
-+static void raspi_pico_set_rosc_random_seed(Object *obj, const char *value,
-+                                            Error **errp)
-+{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
-+    uint64_t seed;
-+
-+    if (!value || !*value) {
-+        g_free(s->rosc_random_seed);
-+        s->rosc_random_seed = NULL;
-+        s->rosc_random_seed_value = 0;
-+        s->rosc_random_seed_set = false;
-+        return;
-+    }
-+
-+    if (qemu_strtou64(value, NULL, 0, &seed) < 0) {
-+        error_setg(errp, "invalid ROSC random seed '%s'", value);
-+        return;
-+    }
-+
-+    g_free(s->rosc_random_seed);
-+    s->rosc_random_seed = g_strdup(value);
-+    s->rosc_random_seed_value = seed;
-+    s->rosc_random_seed_set = true;
-+}
-+
-+static void raspi_pico_init(MachineState *machine)
-+{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(machine);
-+    MemoryRegion *system_memory = get_system_memory();
-+
-+    object_initialize_child(OBJECT(machine), "soc", &s->soc, TYPE_RP2040);
-+    qdev_prop_set_chr(DEVICE(&s->soc), "serial0", serial_hd(0));
-+    qdev_prop_set_chr(DEVICE(&s->soc), "serial1", serial_hd(1));
-+    qdev_prop_set_bit(DEVICE(&s->soc), "strict-uart-pins",
-+                      s->strict_uart_pins);
-+    qdev_prop_set_uint64(DEVICE(&s->soc.rosc), "random-seed",
-+                         s->rosc_random_seed_value);
-+    qdev_prop_set_bit(DEVICE(&s->soc.rosc), "random-seed-set",
-+                      s->rosc_random_seed_set);
-+    /*
-+     * BOOTSEL is not pressed by default on a Pico board, so the mask ROM sees
-+     * the QSPI SS input deasserted and tries to boot from external flash.
-+     */
-+    qdev_prop_set_uint32(DEVICE(&s->soc.sio), "gpio-hi-in", 1u << 1);
-+    if (s->flash_file) {
-+        qdev_prop_set_string(DEVICE(&s->soc.xip), "flash-file",
-+                             s->flash_file);
-+    }
-+    if (s->flash_uid_set) {
-+        qdev_prop_set_uint64(DEVICE(&s->soc.xip), "flash-uid",
-+                             s->flash_uid_value);
-+    }
-+    if (machine->firmware) {
-+        qdev_prop_set_string(DEVICE(&s->soc), "bootrom-file",
-+                             machine->firmware);
-+    }
-+    object_property_set_link(OBJECT(&s->soc), "memory",
-+                             OBJECT(system_memory), &error_fatal);
-+
-+    sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
-+
-+    /*
-+     * For now, -kernel images are loaded directly into the XIP window.
-+     * rp2040_xip_load_image() accepts ELF images first, then raw images.
-+     */
-+    rp2040_xip_load_image(&s->soc.xip, machine->kernel_filename,
-+                          &error_fatal);
-+    armv7m_load_kernel(s->soc.armv7m[0].cpu, NULL, RP2040_XIP_BASE, 2 * MiB);
-+    rp2040_xip_set_writable(&s->soc.xip, false);
-+}
-+
-+static void raspi_pico_machine_finalize(Object *obj)
-+{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
-+
-+    g_free(s->flash_file);
-+    g_free(s->flash_uid);
-+    g_free(s->rosc_random_seed);
-+}
-+
-+static bool raspi_pico_get_strict_uart_pins(Object *obj, Error **errp)
-+{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
-+
-+    return s->strict_uart_pins;
-+}
-+
-+static void raspi_pico_set_strict_uart_pins(Object *obj, bool value,
-+                                            Error **errp)
-+{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
-+
-+    s->strict_uart_pins = value;
-+}
-+
-+static void raspi_pico_machine_initfn(Object *obj)
-+{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
-+
-+    s->strict_uart_pins = true;
-+}
-+
-+static void raspi_pico_machine_class_init(ObjectClass *oc, const void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-+    mc->desc = "Raspberry Pi Pico (Cortex-M0+)";
-+    mc->init = raspi_pico_init;
-+    mc->default_cpus = RP2040_NUM_CORES;
-+    mc->min_cpus = RP2040_NUM_CORES;
-+    mc->max_cpus = RP2040_NUM_CORES;
-+    mc->no_parallel = 1;
-+    mc->no_floppy = 1;
-+    mc->no_cdrom = 1;
-+
-+    object_class_property_add_str(oc, "flash-file",
-+                                  raspi_pico_get_flash_file,
-+                                  raspi_pico_set_flash_file);
-+    object_class_property_set_description(oc, "flash-file",
-+                                          "Load initial XIP flash contents "
-+                                          "from a raw host file");
-+    object_class_property_add_str(oc, "flash-uid",
-+                                  raspi_pico_get_flash_uid,
-+                                  raspi_pico_set_flash_uid);
-+    object_class_property_set_description(oc, "flash-uid",
-+                                          "Set the emulated external flash "
-+                                          "64-bit unique ID as 16 hex digits");
-+    object_class_property_add_str(oc, "rosc-random-seed",
-+                                  raspi_pico_get_rosc_random_seed,
-+                                  raspi_pico_set_rosc_random_seed);
-+    object_class_property_set_description(oc, "rosc-random-seed",
-+                                          "Use a deterministic seed for the "
-+                                          "ROSC RANDOMBIT stream; if unset, "
-+                                          "QEMU guest entropy is used");
-+    object_class_property_add_bool(oc, "strict-uart-pins",
-+                                   raspi_pico_get_strict_uart_pins,
-+                                   raspi_pico_set_strict_uart_pins);
-+    object_class_property_set_description(oc, "strict-uart-pins",
-+                                          "Require GPIO0/GPIO1 IO_BANK0 "
-+                                          "FUNCSEL=UART before UART0 reaches "
-+                                          "the host serial backend");
-+}
-+
-+static const TypeInfo raspi_pico_machine_info = {
-+    .name = TYPE_RASPI_PICO_MACHINE,
-+    .parent = TYPE_MACHINE,
-+    .instance_size = sizeof(RaspiPicoMachineState),
-+    .instance_init = raspi_pico_machine_initfn,
-+    .class_init = raspi_pico_machine_class_init,
-+    .instance_finalize = raspi_pico_machine_finalize,
-+    .interfaces = arm_machine_interfaces,
-+};
-+
-+static void raspi_pico_machine_init(void)
-+{
-+    type_register_static(&raspi_pico_machine_info);
-+}
-+type_init(raspi_pico_machine_init)
-diff --git a/hw/arm/rp2040.c b/hw/arm/rp2040.c
+diff --git a/tests/qtest/rp2040-clocks-test.c b/tests/qtest/rp2040-clocks-test.c
 new file mode 100644
-index 0000000000..aecfb9284b
+index 0000000000..39e49eb57f
 --- /dev/null
-+++ b/hw/arm/rp2040.c
-@@ -0,0 +1,2052 @@
++++ b/tests/qtest/rp2040-clocks-test.c
+@@ -0,0 +1,107 @@
 +/*
-+ * RP2040 SoC emulation
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
++ * QTest testcase for the RP2040 clocks block.
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "qapi/error.h"
-+#include "hw/arm/rp2040.h"
-+#include "hw/core/qdev-clock.h"
-+#include "hw/core/qdev-properties.h"
-+#include "hw/core/loader.h"
-+#include "hw/misc/rp2040_nyi.h"
-+#include "hw/misc/unimp.h"
-+#include "fpu/softfloat.h"
-+#include "qemu/datadir.h"
-+#include "qemu/log.h"
-+#include "system/runstate.h"
-+#include "target/arm/cpu.h"
-+#include "target/arm/cpu-qom.h"
-+#include "trace.h"
++#include "libqtest.h"
++#include "qemu/bitops.h"
 +
-+#include <math.h>
++#define CLOCKS_BASE             0x40008000
++#define CLK_SYS_CTRL            0x3c
++#define CLK_SYS_DIV             0x40
++#define CLK_PERI_CTRL           0x48
++#define CLK_PERI_DIV            0x4c
++#define CLK_USB_CTRL            0x54
++#define CLK_USB_DIV             0x58
++#define CLK_ADC_CTRL            0x60
++#define CLK_ADC_DIV             0x64
++#define CLK_RTC_CTRL            0x6c
++#define CLK_RTC_DIV             0x70
++#define FC0_SRC                 0x94
++#define FC0_STATUS              0x98
++#define FC0_RESULT              0x9c
 +
-+#define RP2040_UART0_BASE 0x40034000
-+#define RP2040_UART0_IRQ  20
-+#define RP2040_UART1_BASE 0x40038000
-+#define RP2040_UART1_IRQ  21
-+#define RP2040_DMA_IRQ_0  11
-+#define RP2040_DMA_IRQ_1  12
-+#define RP2040_IO_IRQ_BANK0 13
-+#define RP2040_SIO_IRQ_PROC0 15
-+#define RP2040_SIO_IRQ_PROC1 16
-+#define RP2040_PROC1       1
++#define PLL_SYS_BASE            0x40028000
++#define PLL_USB_BASE            0x4002c000
++#define PLL_CS                  0x00
++#define PLL_PWR                 0x04
++#define PLL_FBDIV_INT           0x08
++#define PLL_PRIM                0x0c
 +
-+#define RP2040_BOOTROM_FUNC_TABLE_PTR_OFFSET 0x14
-+#define RP2040_BOOTROM_DATA_TABLE_PTR_OFFSET 0x16
-+#define RP2040_BOOTROM_TABLE_LOOKUP_PTR_OFFSET 0x18
-+#define RP2040_BOOTROM_LOOKUP_OFFSET 0x0100
-+#define RP2040_BOOTROM_STUBS_OFFSET 0x0120
-+#define RP2040_BOOTROM_FUNC_TABLE_OFFSET 0x0300
-+#define RP2040_BOOTROM_DATA_TABLE_OFFSET 0x0340
-+#define RP2040_BOOTROM_FLOAT_NYI_STUB_OFFSET 0x0360
-+#define RP2040_BOOTROM_DOUBLE_NYI_STUB_OFFSET 0x0380
-+#define RP2040_BOOTROM_FLOAT_TABLE_OFFSET 0x03c0
-+#define RP2040_BOOTROM_DOUBLE_TABLE_OFFSET 0x0460
-+#define RP2040_BOOTROM_FLOAT_STUBS_OFFSET 0x0600
-+#define RP2040_BOOTROM_DOUBLE_STUBS_OFFSET 0x0b00
-+#define RP2040_BOOTROM_FP_STUB_SIZE 36
-+#define RP2040_BOOTROM_HARDFAULT_EXIT_OFFSET 0x0f80
-+#define RP2040_BOOTROM_FUNC_TABLE_ENTRY_SIZE 4
-+#define RP2040_BOOTROM_DATA_TABLE_ENTRY_SIZE 4
-+#define RP2040_BOOTROM_NYI_CODE_LITERAL_OFFSET 20
-+#define RP2040_BOOTROM_HELPER_NOARG_CODE_LITERAL_OFFSET 8
-+#define RP2040_BOOTROM_HELPER_ARGS4_CODE_LITERAL_OFFSET 24
-+#define RP2040_BOOTROM_HELPER_ARGS3_CODE_LITERAL_OFFSET 20
-+#define RP2040_BOOTROM_FP_STUB_CODE_LITERAL_OFFSET 32
-+#define RP2040_BOOTROM_ROM_VERSION_OFFSET 0x13
-+#define RP2040_BOOTROM_SYNTHETIC_ROM_VERSION 2
-+#define RP2040_BOOTROM_FLOAT_TABLE_WORDS 32
++#define PLL_PWR_BITS            (BIT(5) | BIT(3) | BIT(2) | BIT(0))
++#define CLK_CTRL_ENABLE         BIT(11)
++#define FC0_STATUS_DONE         BIT(4)
 +
-+#define RP2040_SYNTHETIC_ROM_DBG_CMD  0x00
-+#define RP2040_SYNTHETIC_ROM_DBG_ARG0 0x04
-+#define RP2040_SYNTHETIC_ROM_DBG_ARG1 0x08
-+#define RP2040_SYNTHETIC_ROM_DBG_ARG2 0x0c
-+#define RP2040_SYNTHETIC_ROM_DBG_ARG3 0x10
-+#define RP2040_SYNTHETIC_ROM_DBG_RESULT0 0x14
-+#define RP2040_SYNTHETIC_ROM_DBG_RESULT1 0x18
-+#define RP2040_SYNTHETIC_ROM_DBG_RESULT2 0x1c
-+#define RP2040_SYNTHETIC_ROM_DBG_RESULT3 0x20
-+#define RP2040_SYNTHETIC_ROM_DBG_FLASH_COUNT0 0x40
-+
-+#define RP2040_SYNTHETIC_ROM_DBG_CMD_EXIT 0x54495845 /* "EXIT" */
-+
-+#define RP2040_SYNTHETIC_FP_CMD_MASK   0xffffff00
-+#define RP2040_SYNTHETIC_FP_CMD_FLOAT  0x80000000
-+#define RP2040_SYNTHETIC_FP_CMD_DOUBLE 0x80000100
-+
-+enum RP2040SyntheticFlashHelper {
-+    RP2040_SYNTHETIC_FLASH_CONNECT_INTERNAL_FLASH,
-+    RP2040_SYNTHETIC_FLASH_EXIT_XIP,
-+    RP2040_SYNTHETIC_FLASH_FLUSH_CACHE,
-+    RP2040_SYNTHETIC_FLASH_ENTER_CMD_XIP,
-+    RP2040_SYNTHETIC_FLASH_RANGE_ERASE,
-+    RP2040_SYNTHETIC_FLASH_RANGE_PROGRAM,
-+};
-+
-+#define RP2040_SF_TABLE_FADD            0x00
-+#define RP2040_SF_TABLE_FSUB            0x04
-+#define RP2040_SF_TABLE_FMUL            0x08
-+#define RP2040_SF_TABLE_FDIV            0x0c
-+#define RP2040_SF_TABLE_FCMP_FAST       0x10
-+#define RP2040_SF_TABLE_FCMP_FAST_FLAGS 0x14
-+#define RP2040_SF_TABLE_FSQRT           0x18
-+#define RP2040_SF_TABLE_FLOAT2INT       0x1c
-+#define RP2040_SF_TABLE_FLOAT2FIX       0x20
-+#define RP2040_SF_TABLE_FLOAT2UINT      0x24
-+#define RP2040_SF_TABLE_FLOAT2UFIX      0x28
-+#define RP2040_SF_TABLE_INT2FLOAT       0x2c
-+#define RP2040_SF_TABLE_FIX2FLOAT       0x30
-+#define RP2040_SF_TABLE_UINT2FLOAT      0x34
-+#define RP2040_SF_TABLE_UFIX2FLOAT      0x38
-+#define RP2040_SF_TABLE_FCOS            0x3c
-+#define RP2040_SF_TABLE_FSIN            0x40
-+#define RP2040_SF_TABLE_FTAN            0x44
-+#define RP2040_SF_TABLE_V3_FSINCOS      0x48
-+#define RP2040_SF_TABLE_FEXP            0x4c
-+#define RP2040_SF_TABLE_FLN             0x50
-+#define RP2040_SF_TABLE_FCMP_BASIC      0x54
-+#define RP2040_SF_TABLE_FATAN2          0x58
-+#define RP2040_SF_TABLE_INT642FLOAT     0x5c
-+#define RP2040_SF_TABLE_FIX642FLOAT     0x60
-+#define RP2040_SF_TABLE_UINT642FLOAT    0x64
-+#define RP2040_SF_TABLE_UFIX642FLOAT    0x68
-+#define RP2040_SF_TABLE_FLOAT2INT64     0x6c
-+#define RP2040_SF_TABLE_FLOAT2FIX64     0x70
-+#define RP2040_SF_TABLE_FLOAT2UINT64    0x74
-+#define RP2040_SF_TABLE_FLOAT2UFIX64    0x78
-+#define RP2040_SF_TABLE_FLOAT2DOUBLE    0x7c
-+
-+#define USBCTRL_ADDR_ENDP       0x00
-+#define USBCTRL_SIE_CTRL        0x4c
-+#define USBCTRL_SIE_STATUS      0x50
-+#define USBCTRL_INT_EP_CTRL     0x54
-+#define USBCTRL_BUFF_STATUS     0x58
-+#define USBCTRL_BUFF_CPU_HANDLE 0x5c
-+#define USBCTRL_EP_ABORT        0x60
-+#define USBCTRL_EP_ABORT_DONE   0x64
-+#define USBCTRL_EP_STALL_ARM    0x68
-+#define USBCTRL_NAK_POLL        0x6c
-+#define USBCTRL_EP_STATUS       0x70
-+#define USBCTRL_USB_MUXING      0x74
-+#define USBCTRL_USB_PWR         0x78
-+#define USBCTRL_USBPHY_DIRECT   0x7c
-+#define USBCTRL_USBPHY_TRIM     0x80
-+#define USBCTRL_INTR            0x8c
-+#define USBCTRL_INTE            0x90
-+#define USBCTRL_INTF            0x94
-+#define USBCTRL_INTS            0x98
-+
-+#define USBCTRL_SIE_STATUS_VBUS_DETECTED BIT(11)
-+
-+#define ATOMIC_ALIAS_MASK 0x3000
-+#define ATOMIC_XOR        0x1000
-+#define ATOMIC_SET        0x2000
-+#define ATOMIC_CLR        0x3000
-+
-+/*
-+ * Temporary boot ROM used until a faithful RP2040 boot ROM is requested.  It
-+ * uses SIO_CPUID to split core behavior: core 0 copies the 256-byte XIP
-+ * second-stage boot code into SRAM and branches to the SRAM copy; core 1 waits
-+ * in ROM for the Pico SDK launch FIFO sequence, echoes the received words,
-+ * installs VTOR/MSP, then branches to the received entry point.  Real RP2040
-+ * mask ROM performs more checks, but boot2 expects to run from SRAM while it
-+ * configures XIP.
-+ */
-+static const uint8_t rp2040_bootrom[] = {
-+    0x00, 0x20, 0x04, 0x20, /* initial SP: 0x20042000 */
-+    0x41, 0x00, 0x00, 0x00, /* reset handler: 0x00000041 */
-+    0xb3, 0x00, 0x00, 0x00, /* NMI handler: 0x000000b3 */
-+    0xb3, 0x00, 0x00, 0x00, /* HardFault handler: 0x000000b3 */
-+    0xb3, 0x00, 0x00, 0x00, /* reserved */
-+    0xb3, 0x00, 0x00, 0x00, /* reserved */
-+    0xb3, 0x00, 0x00, 0x00, /* reserved */
-+    0x00, 0x00, 0x00, 0x00, /* reserved */
-+    0x00, 0x00, 0x00, 0x00, /* reserved */
-+    0x00, 0x00, 0x00, 0x00, /* reserved */
-+    0x00, 0x00, 0x00, 0x00, /* reserved */
-+    0xb3, 0x00, 0x00, 0x00, /* SVC handler: 0x000000b3 */
-+    0x00, 0x00, 0x00, 0x00, /* reserved */
-+    0x00, 0x00, 0x00, 0x00, /* reserved */
-+    0xb3, 0x00, 0x00, 0x00, /* PendSV handler: 0x000000b3 */
-+    0xb3, 0x00, 0x00, 0x00, /* SysTick handler: 0x000000b3 */
-+    0x26, 0x4c,             /* ldr r4, [pc, #152] ; SIO_BASE */
-+    0x20, 0x68,             /* ldr r0, [r4] ; SIO_CPUID */
-+    0x00, 0x28,             /* cmp r0, #0 */
-+    0x13, 0xd1,             /* bne core1 path */
-+    0x25, 0x48,             /* ldr r0, [pc, #148] ; 0x10000000 */
-+    0x26, 0x49,             /* ldr r1, [pc, #152] ; 0x20041f00 */
-+    0x40, 0x22,             /* movs r2, #64 */
-+    0x03, 0x68,             /* ldr r3, [r0] */
-+    0x0b, 0x60,             /* str r3, [r1] */
-+    0x04, 0x30,             /* adds r0, #4 */
-+    0x04, 0x31,             /* adds r1, #4 */
-+    0x01, 0x3a,             /* subs r2, #1 */
-+    0xf9, 0xd1,             /* bne copy loop */
-+    0x23, 0x4b,             /* ldr r3, [pc, #140] ; launch entry */
-+    0x9e, 0x46,             /* mov lr, r3 */
-+    0x23, 0x48,             /* ldr r0, [pc, #140] ; 0x20041f01 */
-+    0x00, 0x47,             /* bx r0 */
-+    0x23, 0x48,             /* ldr r0, [pc, #140] ; 0x10000100 */
-+    0x23, 0x49,             /* ldr r1, [pc, #140] ; VTOR */
-+    0x08, 0x60,             /* str r0, [r1] */
-+    0x06, 0xc8,             /* ldm r0!, {r1, r2} */
-+    0x81, 0xf3, 0x08, 0x88, /* msr msp, r1 */
-+    0x10, 0x47,             /* bx r2 */
-+    0x21, 0x4d,             /* ldr r5, [pc, #132] ; sequence */
-+    0x00, 0x26,             /* movs r6, #0 */
-+    0x00, 0xf0, 0x1e, 0xf8, /* bl fifo_pop */
-+    0x03, 0x2e,             /* cmp r6, #3 */
-+    0x07, 0xd2,             /* bhs echo */
-+    0xb1, 0x00,             /* lsls r1, r6, #2 */
-+    0x6a, 0x58,             /* ldr r2, [r5, r1] */
-+    0x90, 0x42,             /* cmp r0, r2 */
-+    0x0c, 0xd0,             /* beq echo */
-+    0x00, 0x26,             /* movs r6, #0 */
-+    0x00, 0xf0, 0x1c, 0xf8, /* bl fifo_push */
-+    0xf3, 0xe7,             /* b core1 loop */
-+    0x03, 0x2e,             /* cmp r6, #3 */
-+    0x01, 0xd1,             /* bne maybe SP */
-+    0x07, 0x46,             /* mov r7, r0 */
-+    0x04, 0xe0,             /* b echo */
-+    0x04, 0x2e,             /* cmp r6, #4 */
-+    0x01, 0xd1,             /* bne save PC */
-+    0x03, 0x46,             /* mov r3, r0 */
-+    0x00, 0xe0,             /* b echo */
-+    0x05, 0x46,             /* mov r5, r0 */
-+    0x00, 0xf0, 0x10, 0xf8, /* bl fifo_push */
-+    0x01, 0x36,             /* adds r6, #1 */
-+    0x06, 0x2e,             /* cmp r6, #6 */
-+    0xe5, 0xd1,             /* bne core1 loop */
-+    0x12, 0x49,             /* ldr r1, [pc, #72] ; VTOR */
-+    0x0f, 0x60,             /* str r7, [r1] */
-+    0x83, 0xf3, 0x08, 0x88, /* msr msp, r3 */
-+    0x28, 0x47,             /* bx r5 */
-+    0xfe, 0xe7,             /* hang */
-+    0x09, 0x4c,             /* ldr r4, [pc, #36] ; SIO_BASE */
-+    0x20, 0x6d,             /* ldr r0, [r4, #0x50] */
-+    0x01, 0x21,             /* movs r1, #1 */
-+    0x08, 0x42,             /* tst r0, r1 */
-+    0xfb, 0xd0,             /* beq fifo_pop */
-+    0xa0, 0x6d,             /* ldr r0, [r4, #0x58] */
-+    0x70, 0x47,             /* bx lr */
-+    0x06, 0x4c,             /* ldr r4, [pc, #24] ; SIO_BASE */
-+    0x21, 0x6d,             /* ldr r1, [r4, #0x50] */
-+    0x02, 0x22,             /* movs r2, #2 */
-+    0x11, 0x42,             /* tst r1, r2 */
-+    0xfb, 0xd0,             /* beq fifo_push */
-+    0x60, 0x65,             /* str r0, [r4, #0x54] */
-+    0x70, 0x47,             /* bx lr */
-+    0x00, 0x00, 0x00, 0x00, /* core1 sequence[0] */
-+    0x00, 0x00, 0x00, 0x00, /* core1 sequence[1] */
-+    0x01, 0x00, 0x00, 0x00, /* core1 sequence[2] */
-+    0x00, 0x00, 0x00, 0xd0, /* SIO_BASE */
-+    0x00, 0x00, 0x00, 0x10, /* boot2 source: 0x10000000 */
-+    0x00, 0x1f, 0x04, 0x20, /* boot2 SRAM copy: 0x20041f00 */
-+    0x63, 0x00, 0x00, 0x00, /* post-boot2 launch entry: 0x00000063 */
-+    0x01, 0x1f, 0x04, 0x20, /* boot2 SRAM entry: 0x20041f01 */
-+    0x00, 0x01, 0x00, 0x10, /* application vectors: 0x10000100 */
-+    0x08, 0xed, 0x00, 0xe0, /* VTOR: 0xe000ed08 */
-+    0xd0, 0x00, 0x00, 0x00, /* core1 sequence table */
-+};
-+
-+static const struct {
-+    const char *name;
-+    hwaddr base;
-+    hwaddr size;
-+} rp2040_unimplemented[] = {
-+    { "rp2040.spi0",     0x4003c000, 0x4000 },
-+    { "rp2040.spi1",     0x40040000, 0x4000 },
-+    { "rp2040.i2c0",     0x40044000, 0x4000 },
-+    { "rp2040.i2c1",     0x40048000, 0x4000 },
-+    { "rp2040.adc",      0x4004c000, 0x4000 },
-+    { "rp2040.pwm",      0x40050000, 0x4000 },
-+    { "rp2040.rtc",      0x4005c000, 0x4000 },
-+    { "rp2040.pio0",     0x50200000, 0x10000 },
-+    { "rp2040.pio1",     0x50300000, 0x10000 },
-+};
-+
-+typedef struct RP2040BootromFunction {
-+    uint16_t code;
-+    const char *name;
-+    const uint8_t *impl;
-+    size_t impl_size;
-+    uint32_t code_literal_offset;
-+} RP2040BootromFunction;
-+
-+typedef struct RP2040BootromData {
-+    uint16_t code;
-+    uint16_t offset;
-+} RP2040BootromData;
-+
-+#define RP2040_ROM_TABLE_CODE(c1, c2) ((uint16_t)(c1) | ((uint16_t)(c2) << 8))
-+
-+static const uint8_t rp2040_bootrom_clz32[] = {
-+    0x00, 0x21, 0x00, 0x28, 0x01, 0xd1, 0x20, 0x20,
-+    0x70, 0x47, 0x00, 0x28, 0x02, 0xd4, 0x40, 0x00,
-+    0x01, 0x31, 0xfa, 0xe7, 0x08, 0x46, 0x70, 0x47,
-+};
-+
-+static const uint8_t rp2040_bootrom_ctz32[] = {
-+    0x00, 0x21, 0x00, 0x28, 0x01, 0xd1, 0x20, 0x20,
-+    0x70, 0x47, 0x01, 0x22, 0x10, 0x42, 0x02, 0xd1,
-+    0x40, 0x08, 0x01, 0x31, 0xf9, 0xe7, 0x08, 0x46,
-+    0x70, 0x47,
-+};
-+
-+static const uint8_t rp2040_bootrom_popcount32[] = {
-+    0x00, 0x21, 0x00, 0x28, 0x04, 0xd0, 0x01, 0x22,
-+    0x02, 0x40, 0x89, 0x18, 0x40, 0x08, 0xf8, 0xe7,
-+    0x08, 0x46, 0x70, 0x47,
-+};
-+
-+static const uint8_t rp2040_bootrom_reverse32[] = {
-+    0x00, 0x21, 0x20, 0x22, 0x49, 0x00, 0x01, 0x23,
-+    0x03, 0x40, 0x19, 0x43, 0x40, 0x08, 0x01, 0x3a,
-+    0xf8, 0xd1, 0x08, 0x46, 0x70, 0x47,
-+};
-+
-+static const uint8_t rp2040_bootrom_memcpy[] = {
-+    0x10, 0xb4, 0x03, 0x46, 0x00, 0x2a, 0x05, 0xd0,
-+    0x0c, 0x78, 0x04, 0x70, 0x01, 0x31, 0x01, 0x30,
-+    0x01, 0x3a, 0xf7, 0xe7, 0x18, 0x46, 0x10, 0xbc,
-+    0x70, 0x47,
-+};
-+
-+static const uint8_t rp2040_bootrom_memset[] = {
-+    0x03, 0x46, 0x00, 0x2a, 0x03, 0xd0, 0x01, 0x70,
-+    0x01, 0x30, 0x01, 0x3a, 0xf9, 0xe7, 0x18, 0x46,
-+    0x70, 0x47,
-+};
-+
-+static const uint8_t rp2040_bootrom_memcpy44[] = {
-+    0x10, 0xb4, 0x03, 0x46, 0x00, 0x2a, 0x05, 0xd0,
-+    0x0c, 0x68, 0x04, 0x60, 0x04, 0x31, 0x04, 0x30,
-+    0x01, 0x3a, 0xf7, 0xe7, 0x18, 0x46, 0x10, 0xbc,
-+    0x70, 0x47,
-+};
-+
-+static const uint8_t rp2040_bootrom_memset4[] = {
-+    0x03, 0x46, 0x00, 0x2a, 0x03, 0xd0, 0x01, 0x60,
-+    0x04, 0x30, 0x01, 0x3a, 0xf9, 0xe7, 0x18, 0x46,
-+    0x70, 0x47,
-+};
-+
-+static const uint8_t rp2040_bootrom_flash_noarg[] = {
-+    0x01, 0x49,             /* ldr r1, [pc, #4] ; function code */
-+    0x02, 0x48,             /* ldr r0, [pc, #8] ; debug base */
-+    0x01, 0x60,             /* str r1, [r0] */
-+    0x70, 0x47,             /* bx lr */
-+    0x00, 0x00, 0x00, 0x00, /* function code literal */
-+    0x00, 0x00, 0xff, 0x5f, /* 0x5fff0000 */
-+};
-+
-+static const uint8_t rp2040_bootrom_flash_args4[] = {
-+    0x10, 0xb5,             /* push {r4, lr} */
-+    0x04, 0x4c,             /* ldr r4, [pc, #16] ; debug base */
-+    0x60, 0x60,             /* str r0, [r4, #4] */
-+    0xa1, 0x60,             /* str r1, [r4, #8] */
-+    0xe2, 0x60,             /* str r2, [r4, #12] */
-+    0x23, 0x61,             /* str r3, [r4, #16] */
-+    0x02, 0x48,             /* ldr r0, [pc, #8] ; function code */
-+    0x20, 0x60,             /* str r0, [r4] */
-+    0x10, 0xbd,             /* pop {r4, pc} */
-+    0xc0, 0x46,             /* nop; align literal */
-+    0x00, 0x00, 0xff, 0x5f, /* 0x5fff0000 */
-+    0x00, 0x00, 0x00, 0x00, /* function code literal */
-+};
-+
-+static const uint8_t rp2040_bootrom_flash_args3[] = {
-+    0x10, 0xb5,             /* push {r4, lr} */
-+    0x03, 0x4c,             /* ldr r4, [pc, #12] ; debug base */
-+    0x60, 0x60,             /* str r0, [r4, #4] */
-+    0xa1, 0x60,             /* str r1, [r4, #8] */
-+    0xe2, 0x60,             /* str r2, [r4, #12] */
-+    0x02, 0x48,             /* ldr r0, [pc, #8] ; function code */
-+    0x20, 0x60,             /* str r0, [r4] */
-+    0x10, 0xbd,             /* pop {r4, pc} */
-+    0x00, 0x00, 0xff, 0x5f, /* 0x5fff0000 */
-+    0x00, 0x00, 0x00, 0x00, /* function code literal */
-+};
-+
-+static const uint8_t rp2040_bootrom_fp_stub[] = {
-+    0x10, 0xb5,             /* push {r4, lr} */
-+    0x06, 0x4c,             /* ldr r4, [pc, #24] ; debug base */
-+    0x60, 0x60,             /* str r0, [r4, #4] */
-+    0xa1, 0x60,             /* str r1, [r4, #8] */
-+    0xe2, 0x60,             /* str r2, [r4, #12] */
-+    0x23, 0x61,             /* str r3, [r4, #16] */
-+    0x04, 0x48,             /* ldr r0, [pc, #16] ; command */
-+    0x20, 0x60,             /* str r0, [r4] */
-+    0x60, 0x69,             /* ldr r0, [r4, #20] */
-+    0xa1, 0x69,             /* ldr r1, [r4, #24] */
-+    0xe2, 0x69,             /* ldr r2, [r4, #28] */
-+    0x23, 0x6a,             /* ldr r3, [r4, #32] */
-+    0x10, 0xbd,             /* pop {r4, pc} */
-+    0xc0, 0x46,             /* nop; align literal */
-+    0x00, 0x00, 0xff, 0x5f, /* 0x5fff0000 */
-+    0x00, 0x00, 0x00, 0x00, /* command literal */
-+};
-+
-+#define RP2040_BOOTROM_IMPL(_code, _name, _impl) \
-+    { _code, _name, _impl, sizeof(_impl), UINT32_MAX }
-+#define RP2040_BOOTROM_IMPL_CODE(_code, _name, _impl, _offset) \
-+    { _code, _name, _impl, sizeof(_impl), _offset }
-+#define RP2040_BOOTROM_NYI(_code, _name) \
-+    { _code, _name, NULL, 0, UINT32_MAX }
-+
-+static const RP2040BootromFunction rp2040_bootrom_functions[] = {
-+    RP2040_BOOTROM_IMPL_CODE(RP2040_ROM_TABLE_CODE('C', 'X'),
-+                             "flash_enter_cmd_xip",
-+                             rp2040_bootrom_flash_noarg,
-+                             RP2040_BOOTROM_HELPER_NOARG_CODE_LITERAL_OFFSET),
-+    RP2040_BOOTROM_IMPL_CODE(RP2040_ROM_TABLE_CODE('E', 'X'),
-+                             "flash_exit_xip",
-+                             rp2040_bootrom_flash_noarg,
-+                             RP2040_BOOTROM_HELPER_NOARG_CODE_LITERAL_OFFSET),
-+    RP2040_BOOTROM_IMPL_CODE(RP2040_ROM_TABLE_CODE('F', 'C'),
-+                             "flash_flush_cache",
-+                             rp2040_bootrom_flash_noarg,
-+                             RP2040_BOOTROM_HELPER_NOARG_CODE_LITERAL_OFFSET),
-+    RP2040_BOOTROM_IMPL_CODE(RP2040_ROM_TABLE_CODE('I', 'F'),
-+                             "connect_internal_flash",
-+                             rp2040_bootrom_flash_noarg,
-+                             RP2040_BOOTROM_HELPER_NOARG_CODE_LITERAL_OFFSET),
-+    RP2040_BOOTROM_IMPL_CODE(RP2040_ROM_TABLE_CODE('R', 'E'),
-+                             "flash_range_erase",
-+                             rp2040_bootrom_flash_args4,
-+                             RP2040_BOOTROM_HELPER_ARGS4_CODE_LITERAL_OFFSET),
-+    RP2040_BOOTROM_IMPL_CODE(RP2040_ROM_TABLE_CODE('R', 'P'),
-+                             "flash_range_program",
-+                             rp2040_bootrom_flash_args3,
-+                             RP2040_BOOTROM_HELPER_ARGS3_CODE_LITERAL_OFFSET),
-+    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('C', '4'), "memcpy44",
-+                        rp2040_bootrom_memcpy44),
-+    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('L', '3'), "clz32",
-+                        rp2040_bootrom_clz32),
-+    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('M', 'C'), "memcpy",
-+                        rp2040_bootrom_memcpy),
-+    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('M', 'S'), "memset",
-+                        rp2040_bootrom_memset),
-+    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('P', '3'), "popcount32",
-+                        rp2040_bootrom_popcount32),
-+    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('R', '3'), "reverse32",
-+                        rp2040_bootrom_reverse32),
-+    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('S', '4'), "memset4",
-+                        rp2040_bootrom_memset4),
-+    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('T', '3'), "ctz32",
-+                        rp2040_bootrom_ctz32),
-+    RP2040_BOOTROM_NYI(RP2040_ROM_TABLE_CODE('U', 'B'), "reset_usb_boot"),
-+};
-+
-+static const RP2040BootromData rp2040_bootrom_data[] = {
-+    { RP2040_ROM_TABLE_CODE('S', 'F'), RP2040_BOOTROM_FLOAT_TABLE_OFFSET + 2 },
-+    { RP2040_ROM_TABLE_CODE('S', 'D'), RP2040_BOOTROM_DOUBLE_TABLE_OFFSET + 2 },
-+};
-+
-+static const uint8_t rp2040_bootrom_lookup[] = {
-+    0x02, 0x88,             /* ldrh r2, [r0] */
-+    0x00, 0x2a,             /* cmp r2, #0 */
-+    0x05, 0xd0,             /* beq not_found */
-+    0x91, 0x42,             /* cmp r1, r2 */
-+    0x01, 0xd0,             /* beq found */
-+    0x04, 0x30,             /* adds r0, #4 */
-+    0xf8, 0xe7,             /* b loop */
-+    0x40, 0x88,             /* found: ldrh r0, [r0, #2] */
-+    0x70, 0x47,             /* bx lr */
-+    0x5f, 0x22,             /* not_found: movs r2, #0x5f */
-+    0x12, 0x06,             /* lsls r2, r2, #24 */
-+    0xff, 0x23,             /* movs r3, #0xff */
-+    0x1b, 0x04,             /* lsls r3, r3, #16 */
-+    0x1a, 0x43,             /* orrs r2, r3 ; 0x5fff0000 */
-+    0x11, 0x60,             /* str r1, [r2] */
-+    0x00, 0xbe,             /* bkpt #0 */
-+    0x00, 0x20,             /* movs r0, #0 */
-+    0x70, 0x47,             /* bx lr */
-+};
-+
-+static const uint8_t rp2040_bootrom_nyi_stub[] = {
-+    0x04, 0x49,             /* ldr r1, [pc, #16] ; function code */
-+    0x5f, 0x20,             /* movs r0, #0x5f */
-+    0x00, 0x06,             /* lsls r0, r0, #24 */
-+    0xff, 0x22,             /* movs r2, #0xff */
-+    0x12, 0x04,             /* lsls r2, r2, #16 */
-+    0x10, 0x43,             /* orrs r0, r2 ; 0x5fff0000 */
-+    0x01, 0x60,             /* str r1, [r0] */
-+    0x00, 0xbe,             /* bkpt #0 */
-+    0xfe, 0xe7,             /* b . */
-+    0xc0, 0x46,             /* nop; align literal */
-+    0x00, 0x00, 0x00, 0x00, /* function code literal */
-+};
-+
-+static const uint8_t rp2040_bootrom_hardfault_exit[] = {
-+    0xef, 0xf3, 0x08, 0x81, /* mrs r1, msp */
-+    0x8a, 0x69,             /* ldr r2, [r1, #24] ; stacked PC */
-+    0x13, 0x88,             /* ldrh r3, [r2] */
-+    0x04, 0x4c,             /* ldr r4, [pc, #16] ; 0xbe00 */
-+    0xa3, 0x42,             /* cmp r3, r4 */
-+    0x04, 0xd1,             /* bne hang */
-+    0x08, 0x68,             /* ldr r0, [r1] ; stacked R0/status */
-+    0x03, 0x4c,             /* ldr r4, [pc, #12] ; debug base */
-+    0x60, 0x60,             /* str r0, [r4, #4] */
-+    0x03, 0x48,             /* ldr r0, [pc, #12] ; EXIT command */
-+    0x20, 0x60,             /* str r0, [r4] */
-+    0xfe, 0xe7,             /* hang: b hang */
-+    0x00, 0x00,             /* align literal pool */
-+    0x00, 0xbe, 0x00, 0x00, /* 0xbe00 */
-+    0x00, 0x00, 0xff, 0x5f, /* 0x5fff0000 */
-+    0x45, 0x58, 0x49, 0x54, /* "EXIT" */
-+};
-+
-+static void rp2040_store_hword(uint8_t *rom, uint32_t offset, uint16_t value)
++static QTestState *rp2040_start(void)
 +{
-+    rom[offset] = value;
-+    rom[offset + 1] = value >> 8;
++    return qtest_init("-machine raspi-pico");
 +}
 +
-+static void rp2040_store_word(uint8_t *rom, uint32_t offset, uint32_t value)
++static void pll_configure(QTestState *qts, uint32_t base,
++                          uint32_t fbdiv, uint32_t postdiv1,
++                          uint32_t postdiv2)
 +{
-+    rom[offset] = value;
-+    rom[offset + 1] = value >> 8;
-+    rom[offset + 2] = value >> 16;
-+    rom[offset + 3] = value >> 24;
++    qtest_writel(qts, base + PLL_CS, 1);
++    qtest_writel(qts, base + PLL_FBDIV_INT, fbdiv);
++    qtest_writel(qts, base + PLL_PWR, 0);
++    qtest_writel(qts, base + PLL_PRIM, (postdiv1 << 16) | (postdiv2 << 12));
 +}
 +
-+static bool rp2040_bootrom_fp_supported(uint32_t offset)
++static uint32_t frequency_count_khz(QTestState *qts, uint32_t src)
 +{
-+    switch (offset) {
-+    case RP2040_SF_TABLE_FADD:
-+    case RP2040_SF_TABLE_FSUB:
-+    case RP2040_SF_TABLE_FMUL:
-+    case RP2040_SF_TABLE_FDIV:
-+    case RP2040_SF_TABLE_FCMP_FAST:
-+    case RP2040_SF_TABLE_FCMP_FAST_FLAGS:
-+    case RP2040_SF_TABLE_FSQRT:
-+    case RP2040_SF_TABLE_FLOAT2INT:
-+    case RP2040_SF_TABLE_FLOAT2FIX:
-+    case RP2040_SF_TABLE_FLOAT2UINT:
-+    case RP2040_SF_TABLE_FLOAT2UFIX:
-+    case RP2040_SF_TABLE_INT2FLOAT:
-+    case RP2040_SF_TABLE_FIX2FLOAT:
-+    case RP2040_SF_TABLE_UINT2FLOAT:
-+    case RP2040_SF_TABLE_UFIX2FLOAT:
-+    case RP2040_SF_TABLE_FCOS:
-+    case RP2040_SF_TABLE_FSIN:
-+    case RP2040_SF_TABLE_FTAN:
-+    case RP2040_SF_TABLE_V3_FSINCOS:
-+    case RP2040_SF_TABLE_FEXP:
-+    case RP2040_SF_TABLE_FLN:
-+    case RP2040_SF_TABLE_FCMP_BASIC:
-+    case RP2040_SF_TABLE_FATAN2:
-+    case RP2040_SF_TABLE_INT642FLOAT:
-+    case RP2040_SF_TABLE_FIX642FLOAT:
-+    case RP2040_SF_TABLE_UINT642FLOAT:
-+    case RP2040_SF_TABLE_UFIX642FLOAT:
-+    case RP2040_SF_TABLE_FLOAT2INT64:
-+    case RP2040_SF_TABLE_FLOAT2FIX64:
-+    case RP2040_SF_TABLE_FLOAT2UINT64:
-+    case RP2040_SF_TABLE_FLOAT2UFIX64:
-+    case RP2040_SF_TABLE_FLOAT2DOUBLE:
-+        return true;
-+    default:
-+        return false;
-+    }
++    qtest_writel(qts, CLOCKS_BASE + FC0_SRC, src);
++    g_assert_cmphex(qtest_readl(qts, CLOCKS_BASE + FC0_STATUS) &
++                    FC0_STATUS_DONE, ==, FC0_STATUS_DONE);
++    return qtest_readl(qts, CLOCKS_BASE + FC0_RESULT) >> 5;
 +}
 +
-+static void rp2040_install_bootrom_fp_stub(uint8_t *rom, uint32_t offset,
-+                                          uint32_t command)
++static void test_clock_mux_and_frequency_counter(void)
 +{
-+    memcpy(rom + offset, rp2040_bootrom_fp_stub,
-+           sizeof(rp2040_bootrom_fp_stub));
-+    rp2040_store_word(rom, offset + RP2040_BOOTROM_FP_STUB_CODE_LITERAL_OFFSET,
-+                      command);
++    QTestState *qts = rp2040_start();
++
++    pll_configure(qts, PLL_SYS_BASE, 125, 6, 2);
++    pll_configure(qts, PLL_USB_BASE, 100, 5, 5);
++
++    qtest_writel(qts, CLOCKS_BASE + CLK_SYS_DIV, 0x100);
++    qtest_writel(qts, CLOCKS_BASE + CLK_PERI_DIV, 0x100);
++    qtest_writel(qts, CLOCKS_BASE + CLK_USB_DIV, 0x100);
++    qtest_writel(qts, CLOCKS_BASE + CLK_ADC_DIV, 0x100);
++    qtest_writel(qts, CLOCKS_BASE + CLK_RTC_DIV, 0x400);
++
++    qtest_writel(qts, CLOCKS_BASE + CLK_SYS_CTRL, BIT(0));
++    qtest_writel(qts, CLOCKS_BASE + CLK_PERI_CTRL, CLK_CTRL_ENABLE);
++    qtest_writel(qts, CLOCKS_BASE + CLK_USB_CTRL, CLK_CTRL_ENABLE);
++    qtest_writel(qts, CLOCKS_BASE + CLK_ADC_CTRL, CLK_CTRL_ENABLE);
++    qtest_writel(qts, CLOCKS_BASE + CLK_RTC_CTRL,
++                 CLK_CTRL_ENABLE | (0x3 << 5));
++
++    g_assert_cmpuint(frequency_count_khz(qts, 0x01), ==, 125000);
++    g_assert_cmpuint(frequency_count_khz(qts, 0x02), ==, 48000);
++    g_assert_cmpuint(frequency_count_khz(qts, 0x03), ==, 6000);
++    g_assert_cmpuint(frequency_count_khz(qts, 0x09), ==, 125000);
++    g_assert_cmpuint(frequency_count_khz(qts, 0x0a), ==, 125000);
++    g_assert_cmpuint(frequency_count_khz(qts, 0x0b), ==, 48000);
++    g_assert_cmpuint(frequency_count_khz(qts, 0x0c), ==, 48000);
++    g_assert_cmpuint(frequency_count_khz(qts, 0x0d), ==, 3000);
++
++    qtest_writel(qts, CLOCKS_BASE + CLK_SYS_CTRL, BIT(0) | (0x1 << 5));
++    qtest_writel(qts, PLL_SYS_BASE + PLL_PWR, PLL_PWR_BITS);
++
++    g_assert_cmpuint(frequency_count_khz(qts, 0x01), ==, 0);
++    g_assert_cmpuint(frequency_count_khz(qts, 0x09), ==, 48000);
++    g_assert_cmpuint(frequency_count_khz(qts, 0x0a), ==, 48000);
++
++    qtest_quit(qts);
 +}
 +
-+static void rp2040_install_synthetic_bootrom(void)
++int main(int argc, char **argv)
 +{
-+    g_autofree uint8_t *rom = g_malloc0(RP2040_ROM_SIZE);
-+    uint32_t func_base = RP2040_BOOTROM_STUBS_OFFSET;
-+    uint32_t func_table = RP2040_BOOTROM_FUNC_TABLE_OFFSET;
-+    uint32_t data_table = RP2040_BOOTROM_DATA_TABLE_OFFSET;
-+    uint32_t float_nyi = RP2040_BOOTROM_FLOAT_NYI_STUB_OFFSET | 1;
-+    uint32_t double_nyi = RP2040_BOOTROM_DOUBLE_NYI_STUB_OFFSET | 1;
-+    int i;
++    g_test_init(&argc, &argv, NULL);
 +
-+    memcpy(rom, rp2040_bootrom, sizeof(rp2040_bootrom));
-+    memcpy(rom + RP2040_BOOTROM_HARDFAULT_EXIT_OFFSET,
-+           rp2040_bootrom_hardfault_exit,
-+           sizeof(rp2040_bootrom_hardfault_exit));
-+    rp2040_store_word(rom, 0x0c, RP2040_BOOTROM_HARDFAULT_EXIT_OFFSET | 1);
-+    rom[RP2040_BOOTROM_ROM_VERSION_OFFSET] =
-+        RP2040_BOOTROM_SYNTHETIC_ROM_VERSION;
-+    memcpy(rom + RP2040_BOOTROM_LOOKUP_OFFSET, rp2040_bootrom_lookup,
-+           sizeof(rp2040_bootrom_lookup));
++    qtest_add_func("/rp2040-clocks/mux-and-frequency-counter",
++                   test_clock_mux_and_frequency_counter);
 +
-+    rp2040_store_hword(rom, RP2040_BOOTROM_FUNC_TABLE_PTR_OFFSET,
-+                       RP2040_BOOTROM_FUNC_TABLE_OFFSET);
-+    rp2040_store_hword(rom, RP2040_BOOTROM_DATA_TABLE_PTR_OFFSET,
-+                       RP2040_BOOTROM_DATA_TABLE_OFFSET);
-+    rp2040_store_hword(rom, RP2040_BOOTROM_TABLE_LOOKUP_PTR_OFFSET,
-+                       RP2040_BOOTROM_LOOKUP_OFFSET | 1);
-+
-+    for (i = 0; i < ARRAY_SIZE(rp2040_bootrom_functions); i++) {
-+        const RP2040BootromFunction *func = &rp2040_bootrom_functions[i];
-+        uint32_t entry = func_base | 1;
-+
-+        if (func->impl) {
-+            memcpy(rom + func_base, func->impl, func->impl_size);
-+            if (func->code_literal_offset != UINT32_MAX) {
-+                rp2040_store_word(rom, func_base + func->code_literal_offset,
-+                                  func->code);
-+            }
-+            func_base += ROUND_UP(func->impl_size, 4);
-+        } else {
-+            memcpy(rom + func_base, rp2040_bootrom_nyi_stub,
-+                   sizeof(rp2040_bootrom_nyi_stub));
-+            rp2040_store_word(rom,
-+                              func_base +
-+                              RP2040_BOOTROM_NYI_CODE_LITERAL_OFFSET,
-+                              func->code);
-+            func_base += ROUND_UP(sizeof(rp2040_bootrom_nyi_stub), 4);
-+        }
-+
-+        rp2040_store_hword(rom, func_table +
-+                           i * RP2040_BOOTROM_FUNC_TABLE_ENTRY_SIZE,
-+                           func->code);
-+        rp2040_store_hword(rom, func_table +
-+                           i * RP2040_BOOTROM_FUNC_TABLE_ENTRY_SIZE + 2,
-+                           entry);
-+    }
-+
-+    memcpy(rom + RP2040_BOOTROM_FLOAT_NYI_STUB_OFFSET, rp2040_bootrom_nyi_stub,
-+           sizeof(rp2040_bootrom_nyi_stub));
-+    rp2040_store_word(rom, RP2040_BOOTROM_FLOAT_NYI_STUB_OFFSET +
-+                      RP2040_BOOTROM_NYI_CODE_LITERAL_OFFSET,
-+                      RP2040_ROM_TABLE_CODE('S', 'F'));
-+    memcpy(rom + RP2040_BOOTROM_DOUBLE_NYI_STUB_OFFSET, rp2040_bootrom_nyi_stub,
-+           sizeof(rp2040_bootrom_nyi_stub));
-+    rp2040_store_word(rom, RP2040_BOOTROM_DOUBLE_NYI_STUB_OFFSET +
-+                      RP2040_BOOTROM_NYI_CODE_LITERAL_OFFSET,
-+                      RP2040_ROM_TABLE_CODE('S', 'D'));
-+
-+    rom[RP2040_BOOTROM_FLOAT_TABLE_OFFSET] = RP2040_BOOTROM_FLOAT_TABLE_WORDS;
-+    rom[RP2040_BOOTROM_DOUBLE_TABLE_OFFSET] = RP2040_BOOTROM_FLOAT_TABLE_WORDS;
-+    for (i = 0; i < RP2040_BOOTROM_FLOAT_TABLE_WORDS; i++) {
-+        uint32_t table_offset = i * sizeof(uint32_t);
-+
-+        if (rp2040_bootrom_fp_supported(table_offset)) {
-+            uint32_t float_stub = RP2040_BOOTROM_FLOAT_STUBS_OFFSET +
-+                                  i * RP2040_BOOTROM_FP_STUB_SIZE;
-+            uint32_t double_stub = RP2040_BOOTROM_DOUBLE_STUBS_OFFSET +
-+                                   i * RP2040_BOOTROM_FP_STUB_SIZE;
-+
-+            rp2040_install_bootrom_fp_stub(rom, float_stub,
-+                                           RP2040_SYNTHETIC_FP_CMD_FLOAT |
-+                                           table_offset);
-+            rp2040_install_bootrom_fp_stub(rom, double_stub,
-+                                           RP2040_SYNTHETIC_FP_CMD_DOUBLE |
-+                                           table_offset);
-+            rp2040_store_word(rom, RP2040_BOOTROM_FLOAT_TABLE_OFFSET + 2 +
-+                              table_offset, float_stub | 1);
-+            rp2040_store_word(rom, RP2040_BOOTROM_DOUBLE_TABLE_OFFSET + 2 +
-+                              table_offset, double_stub | 1);
-+        } else {
-+            rp2040_store_word(rom, RP2040_BOOTROM_FLOAT_TABLE_OFFSET + 2 +
-+                              table_offset, float_nyi);
-+            rp2040_store_word(rom, RP2040_BOOTROM_DOUBLE_TABLE_OFFSET + 2 +
-+                              table_offset, double_nyi);
-+        }
-+    }
-+
-+    for (i = 0; i < ARRAY_SIZE(rp2040_bootrom_data); i++) {
-+        const RP2040BootromData *data = &rp2040_bootrom_data[i];
-+
-+        rp2040_store_hword(rom, data_table +
-+                           i * RP2040_BOOTROM_DATA_TABLE_ENTRY_SIZE,
-+                           data->code);
-+        rp2040_store_hword(rom, data_table +
-+                           i * RP2040_BOOTROM_DATA_TABLE_ENTRY_SIZE + 2,
-+                           data->offset);
-+    }
-+
-+    rom_add_blob_fixed("rp2040.bootrom", rom, RP2040_ROM_SIZE,
-+                       RP2040_ROM_BASE);
++    return g_test_run();
 +}
-+
-+static uint32_t rp2040_apply_atomic_alias(uint32_t old, uint32_t value,
-+                                          hwaddr alias)
-+{
-+    switch (alias) {
-+    case ATOMIC_XOR:
-+        return old ^ value;
-+    case ATOMIC_SET:
-+        return old | value;
-+    case ATOMIC_CLR:
-+        return old & ~value;
-+    default:
-+        return value;
-+    }
-+}
-+
-+static MemTxResult rp2040_powered_off_read(void *opaque, hwaddr addr,
-+                                           uint64_t *data, unsigned size,
-+                                           MemTxAttrs attrs)
-+{
-+    *data = 0;
-+    return MEMTX_ERROR;
-+}
-+
-+static MemTxResult rp2040_powered_off_write(void *opaque, hwaddr addr,
-+                                            uint64_t data, unsigned size,
-+                                            MemTxAttrs attrs)
-+{
-+    return MEMTX_ERROR;
-+}
-+
-+static const MemoryRegionOps rp2040_powered_off_ops = {
-+    .read_with_attrs = rp2040_powered_off_read,
-+    .write_with_attrs = rp2040_powered_off_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void rp2040_update_mempowerdown(RP2040State *s)
-+{
-+    uint32_t mempowerdown;
-+    int i;
-+
-+    if (!s->mempowerdown_ready) {
-+        return;
-+    }
-+
-+    mempowerdown = rp2040_syscfg_get_mempowerdown(&s->syscfg);
-+
-+    for (i = 0; i < ARRAY_SIZE(s->sram_poweroff); i++) {
-+        memory_region_set_enabled(&s->sram_poweroff[i],
-+                                  mempowerdown & BIT(i));
-+    }
-+
-+    memory_region_set_enabled(&s->usbctrl_dpram_poweroff,
-+                              mempowerdown & BIT(6));
-+    memory_region_set_enabled(&s->rom_poweroff, mempowerdown & BIT(7));
-+}
-+
-+static void rp2040_update_nmi(RP2040State *s)
-+{
-+    uint32_t nmi_mask = rp2040_syscfg_get_proc0_nmi_mask(&s->syscfg);
-+    bool nmi_level = false;
-+    int i;
-+
-+    for (i = 0; i < RP2040_NUM_IRQS; i++) {
-+        bool irq_level = s->irq_level[0][i];
-+        bool route_to_nmi = nmi_mask & BIT(i);
-+
-+        qemu_set_irq(s->cpu_irq[0][i], irq_level && !route_to_nmi);
-+        nmi_level |= irq_level && route_to_nmi;
-+    }
-+
-+    qemu_set_irq(s->nmi_irq[0], nmi_level);
-+}
-+
-+static void rp2040_syscfg_update(void *opaque)
-+{
-+    RP2040State *s = opaque;
-+
-+    rp2040_update_mempowerdown(s);
-+    rp2040_update_nmi(s);
-+}
-+
-+static void rp2040_start_core1_async_work(CPUState *cs, run_on_cpu_data data)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    cpu_reset(cs);
-+    cpu->power_state = PSCI_ON;
-+    env->halt_reason = NOT_HALTED;
-+    arm_rebuild_hflags(env);
-+    cs->halted = 0;
-+    cpu_resume(cs);
-+}
-+
-+static bool rp2040_core1_powered_off(RP2040State *s)
-+{
-+    ARMCPU *cpu = s->armv7m[RP2040_PROC1].cpu;
-+
-+    return !cpu || cpu->power_state == PSCI_OFF;
-+}
-+
-+static void rp2040_start_core1(RP2040State *s)
-+{
-+    if (!s->armv7m[RP2040_PROC1].cpu ||
-+        !rp2040_core1_powered_off(s)) {
-+        return;
-+    }
-+
-+    async_run_on_cpu(CPU(s->armv7m[RP2040_PROC1].cpu),
-+                     rp2040_start_core1_async_work,
-+                     RUN_ON_CPU_NULL);
-+}
-+
-+static void rp2040_stop_core1_async_work(CPUState *cs, run_on_cpu_data data)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+
-+    cpu->power_state = PSCI_OFF;
-+    cpu->env.halt_reason = HALT_PSCI;
-+    cs->halted = 1;
-+    cs->exception_index = EXCP_HLT;
-+}
-+
-+static void rp2040_stop_core1(RP2040State *s)
-+{
-+    if (!s->armv7m[RP2040_PROC1].cpu ||
-+        rp2040_core1_powered_off(s)) {
-+        return;
-+    }
-+
-+    async_run_on_cpu(CPU(s->armv7m[RP2040_PROC1].cpu),
-+                     rp2040_stop_core1_async_work,
-+                     RUN_ON_CPU_NULL);
-+}
-+
-+static void rp2040_psm_update(void *opaque)
-+{
-+    RP2040State *s = opaque;
-+    bool proc1_forced_off = rp2040_psm_get_frce_off(&s->psm) &
-+                            RP2040_PSM_PROC1;
-+
-+    if (proc1_forced_off) {
-+        rp2040_stop_core1(s);
-+    } else {
-+        rp2040_start_core1(s);
-+    }
-+}
-+
-+static const char *rp2040_bootrom_function_name(uint16_t code)
-+{
-+    int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(rp2040_bootrom_functions); i++) {
-+        if (rp2040_bootrom_functions[i].code == code) {
-+            return rp2040_bootrom_functions[i].name;
-+        }
-+    }
-+
-+    return NULL;
-+}
-+
-+static void rp2040_init_float_status(float_status *status)
-+{
-+    *status = (float_status) { 0 };
-+    set_float_rounding_mode(float_round_nearest_even, status);
-+}
-+
-+static void rp2040_synthetic_fp_nyi(bool is_double, uint32_t offset)
-+{
-+    g_autofree char *detail = g_strdup_printf("%s table offset 0x%02" PRIx32,
-+                                              is_double ? "double" : "float",
-+                                              offset);
-+
-+    rp2040_log_nyi("bootrom", "floating-point helper", detail);
-+}
-+
-+static float rp2040_u32_to_host_float(uint32_t value)
-+{
-+    union {
-+        uint32_t u;
-+        float f;
-+    } v = { .u = value };
-+
-+    return v.f;
-+}
-+
-+static uint32_t rp2040_host_float_to_u32(float value)
-+{
-+    union {
-+        float f;
-+        uint32_t u;
-+    } v = { .f = value };
-+
-+    return v.u;
-+}
-+
-+static double rp2040_u64_to_host_double(uint64_t value)
-+{
-+    union {
-+        uint64_t u;
-+        double d;
-+    } v = { .u = value };
-+
-+    return v.d;
-+}
-+
-+static uint64_t rp2040_host_double_to_u64(double value)
-+{
-+    union {
-+        double d;
-+        uint64_t u;
-+    } v = { .d = value };
-+
-+    return v.u;
-+}
-+
-+static uint32_t rp2040_synthetic_fp_compare(double a, double b)
-+{
-+    if (isnan(a) || isnan(b)) {
-+        return 1;
-+    }
-+    if (a < b) {
-+        return -1;
-+    }
-+    if (a > b) {
-+        return 1;
-+    }
-+    return 0;
-+}
-+
-+static int32_t rp2040_synthetic_double_to_i32(double value)
-+{
-+    if (isnan(value)) {
-+        return 0;
-+    }
-+    if (value >= INT32_MAX) {
-+        return INT32_MAX;
-+    }
-+    if (value <= INT32_MIN) {
-+        return INT32_MIN;
-+    }
-+    return value;
-+}
-+
-+static uint32_t rp2040_synthetic_double_to_u32(double value)
-+{
-+    if (isnan(value) || value <= 0) {
-+        return 0;
-+    }
-+    if (value >= UINT32_MAX) {
-+        return UINT32_MAX;
-+    }
-+    return value;
-+}
-+
-+static int64_t rp2040_synthetic_double_to_i64(double value)
-+{
-+    if (isnan(value)) {
-+        return 0;
-+    }
-+    if (value >= 0x1p63) {
-+        return INT64_MAX;
-+    }
-+    if (value <= -0x1p63) {
-+        return INT64_MIN;
-+    }
-+    return value;
-+}
-+
-+static uint64_t rp2040_synthetic_double_to_u64(double value)
-+{
-+    if (isnan(value) || value <= 0) {
-+        return 0;
-+    }
-+    if (value >= 0x1p64) {
-+        return UINT64_MAX;
-+    }
-+    return value;
-+}
-+
-+static void rp2040_synthetic_float_op(RP2040State *s, uint32_t offset)
-+{
-+    float_status status;
-+    float32 a = make_float32(s->synthetic_rom_dbg_arg[0]);
-+    float32 b = make_float32(s->synthetic_rom_dbg_arg[1]);
-+    float host_a = rp2040_u32_to_host_float(s->synthetic_rom_dbg_arg[0]);
-+    float host_b = rp2040_u32_to_host_float(s->synthetic_rom_dbg_arg[1]);
-+    float32 r32;
-+    float64 r64;
-+    uint64_t r;
-+    double scaled;
-+
-+    rp2040_init_float_status(&status);
-+    memset(s->synthetic_rom_dbg_result, 0, sizeof(s->synthetic_rom_dbg_result));
-+    s->synthetic_rom_dbg_result[1] = 0;
-+
-+    switch (offset) {
-+    case RP2040_SF_TABLE_FADD:
-+        s->synthetic_rom_dbg_result[0] =
-+            float32_val(float32_add(a, b, &status));
-+        break;
-+    case RP2040_SF_TABLE_FSUB:
-+        s->synthetic_rom_dbg_result[0] =
-+            float32_val(float32_sub(a, b, &status));
-+        break;
-+    case RP2040_SF_TABLE_FMUL:
-+        s->synthetic_rom_dbg_result[0] =
-+            float32_val(float32_mul(a, b, &status));
-+        break;
-+    case RP2040_SF_TABLE_FDIV:
-+        s->synthetic_rom_dbg_result[0] =
-+            float32_val(float32_div(a, b, &status));
-+        break;
-+    case RP2040_SF_TABLE_FCMP_FAST:
-+    case RP2040_SF_TABLE_FCMP_FAST_FLAGS:
-+    case RP2040_SF_TABLE_FCMP_BASIC:
-+        s->synthetic_rom_dbg_result[0] =
-+            rp2040_synthetic_fp_compare(host_a, host_b);
-+        break;
-+    case RP2040_SF_TABLE_FSQRT:
-+        s->synthetic_rom_dbg_result[0] =
-+            float32_val(float32_sqrt(a, &status));
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2INT:
-+        s->synthetic_rom_dbg_result[0] =
-+            float32_to_int32_round_to_zero(a, &status);
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2FIX:
-+        scaled = ldexp((double)host_a, s->synthetic_rom_dbg_arg[1] & 0xff);
-+        s->synthetic_rom_dbg_result[0] =
-+            rp2040_synthetic_double_to_i32(scaled);
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2UINT:
-+        s->synthetic_rom_dbg_result[0] =
-+            float32_to_uint32_round_to_zero(a, &status);
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2UFIX:
-+        scaled = ldexp((double)host_a, s->synthetic_rom_dbg_arg[1] & 0xff);
-+        s->synthetic_rom_dbg_result[0] =
-+            rp2040_synthetic_double_to_u32(scaled);
-+        break;
-+    case RP2040_SF_TABLE_INT2FLOAT:
-+        s->synthetic_rom_dbg_result[0] =
-+            float32_val(int32_to_float32(s->synthetic_rom_dbg_arg[0],
-+                                         &status));
-+        break;
-+    case RP2040_SF_TABLE_FIX2FLOAT:
-+        r32 = float64_to_float32(make_float64(rp2040_host_double_to_u64(
-+                                  ldexp((double)(int32_t)
-+                                        s->synthetic_rom_dbg_arg[0],
-+                                        -(int)(s->synthetic_rom_dbg_arg[1] &
-+                                               0xff)))),
-+                                 &status);
-+        s->synthetic_rom_dbg_result[0] = float32_val(r32);
-+        break;
-+    case RP2040_SF_TABLE_UINT2FLOAT:
-+        s->synthetic_rom_dbg_result[0] =
-+            float32_val(uint32_to_float32(s->synthetic_rom_dbg_arg[0],
-+                                          &status));
-+        break;
-+    case RP2040_SF_TABLE_UFIX2FLOAT:
-+        r32 = float64_to_float32(make_float64(rp2040_host_double_to_u64(
-+                                  ldexp((double)
-+                                        s->synthetic_rom_dbg_arg[0],
-+                                        -(int)(s->synthetic_rom_dbg_arg[1] &
-+                                               0xff)))),
-+                                 &status);
-+        s->synthetic_rom_dbg_result[0] = float32_val(r32);
-+        break;
-+    case RP2040_SF_TABLE_FCOS:
-+        s->synthetic_rom_dbg_result[0] =
-+            rp2040_host_float_to_u32(cosf(host_a));
-+        break;
-+    case RP2040_SF_TABLE_FSIN:
-+        s->synthetic_rom_dbg_result[0] =
-+            rp2040_host_float_to_u32(sinf(host_a));
-+        s->synthetic_rom_dbg_result[1] =
-+            rp2040_host_float_to_u32(cosf(host_a));
-+        break;
-+    case RP2040_SF_TABLE_FTAN:
-+        s->synthetic_rom_dbg_result[0] =
-+            rp2040_host_float_to_u32(tanf(host_a));
-+        break;
-+    case RP2040_SF_TABLE_V3_FSINCOS:
-+        s->synthetic_rom_dbg_result[0] =
-+            rp2040_host_float_to_u32(sinf(host_a));
-+        s->synthetic_rom_dbg_result[1] =
-+            rp2040_host_float_to_u32(cosf(host_a));
-+        break;
-+    case RP2040_SF_TABLE_FEXP:
-+        s->synthetic_rom_dbg_result[0] =
-+            rp2040_host_float_to_u32(expf(host_a));
-+        break;
-+    case RP2040_SF_TABLE_FLN:
-+        s->synthetic_rom_dbg_result[0] =
-+            rp2040_host_float_to_u32(logf(host_a));
-+        break;
-+    case RP2040_SF_TABLE_FATAN2:
-+        s->synthetic_rom_dbg_result[0] =
-+            rp2040_host_float_to_u32(atan2f(host_a, host_b));
-+        break;
-+    case RP2040_SF_TABLE_INT642FLOAT:
-+        r = deposit64(s->synthetic_rom_dbg_arg[0], 32, 32,
-+                      s->synthetic_rom_dbg_arg[1]);
-+        r32 = int64_to_float32((int64_t)r, &status);
-+        s->synthetic_rom_dbg_result[0] = float32_val(r32);
-+        break;
-+    case RP2040_SF_TABLE_FIX642FLOAT:
-+        r = deposit64(s->synthetic_rom_dbg_arg[0], 32, 32,
-+                      s->synthetic_rom_dbg_arg[1]);
-+        r32 = float64_to_float32(make_float64(rp2040_host_double_to_u64(
-+                                  ldexp((double)(int64_t)r,
-+                                        -(int)(s->synthetic_rom_dbg_arg[2] &
-+                                               0xff)))),
-+                                 &status);
-+        s->synthetic_rom_dbg_result[0] = float32_val(r32);
-+        break;
-+    case RP2040_SF_TABLE_UINT642FLOAT:
-+        r = deposit64(s->synthetic_rom_dbg_arg[0], 32, 32,
-+                      s->synthetic_rom_dbg_arg[1]);
-+        r32 = uint64_to_float32(r, &status);
-+        s->synthetic_rom_dbg_result[0] = float32_val(r32);
-+        break;
-+    case RP2040_SF_TABLE_UFIX642FLOAT:
-+        r = deposit64(s->synthetic_rom_dbg_arg[0], 32, 32,
-+                      s->synthetic_rom_dbg_arg[1]);
-+        r32 = float64_to_float32(make_float64(rp2040_host_double_to_u64(
-+                                  ldexp((double)r,
-+                                        -(int)(s->synthetic_rom_dbg_arg[2] &
-+                                               0xff)))),
-+                                 &status);
-+        s->synthetic_rom_dbg_result[0] = float32_val(r32);
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2INT64:
-+        r = float32_to_int64_round_to_zero(a, &status);
-+        s->synthetic_rom_dbg_result[0] = r;
-+        s->synthetic_rom_dbg_result[1] = r >> 32;
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2FIX64:
-+        scaled = ldexp((double)host_a, s->synthetic_rom_dbg_arg[1] & 0xff);
-+        r = rp2040_synthetic_double_to_i64(scaled);
-+        s->synthetic_rom_dbg_result[0] = r;
-+        s->synthetic_rom_dbg_result[1] = r >> 32;
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2UINT64:
-+        r = float32_to_uint64_round_to_zero(a, &status);
-+        s->synthetic_rom_dbg_result[0] = r;
-+        s->synthetic_rom_dbg_result[1] = r >> 32;
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2UFIX64:
-+        scaled = ldexp((double)host_a, s->synthetic_rom_dbg_arg[1] & 0xff);
-+        r = rp2040_synthetic_double_to_u64(scaled);
-+        s->synthetic_rom_dbg_result[0] = r;
-+        s->synthetic_rom_dbg_result[1] = r >> 32;
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2DOUBLE:
-+        r64 = float32_to_float64(a, &status);
-+        r = float64_val(r64);
-+        s->synthetic_rom_dbg_result[0] = r;
-+        s->synthetic_rom_dbg_result[1] = r >> 32;
-+        break;
-+    default:
-+        s->synthetic_rom_dbg_result[0] = 0;
-+        rp2040_synthetic_fp_nyi(false, offset);
-+        break;
-+    }
-+}
-+
-+static void rp2040_synthetic_double_op(RP2040State *s, uint32_t offset)
-+{
-+    float_status status;
-+    uint64_t av = deposit64(s->synthetic_rom_dbg_arg[0], 32, 32,
-+                            s->synthetic_rom_dbg_arg[1]);
-+    uint64_t bv = deposit64(s->synthetic_rom_dbg_arg[2], 32, 32,
-+                            s->synthetic_rom_dbg_arg[3]);
-+    float64 a = make_float64(av);
-+    float64 b = make_float64(bv);
-+    double host_a = rp2040_u64_to_host_double(av);
-+    double host_b = rp2040_u64_to_host_double(bv);
-+    float64 r64;
-+    float32 r32;
-+    uint64_t r;
-+    double scaled;
-+
-+    rp2040_init_float_status(&status);
-+    memset(s->synthetic_rom_dbg_result, 0, sizeof(s->synthetic_rom_dbg_result));
-+
-+    switch (offset) {
-+    case RP2040_SF_TABLE_FADD:
-+        r64 = float64_add(a, b, &status);
-+        goto return_double;
-+    case RP2040_SF_TABLE_FSUB:
-+        r64 = float64_sub(a, b, &status);
-+        goto return_double;
-+    case RP2040_SF_TABLE_FMUL:
-+        r64 = float64_mul(a, b, &status);
-+        goto return_double;
-+    case RP2040_SF_TABLE_FDIV:
-+        r64 = float64_div(a, b, &status);
-+        goto return_double;
-+    case RP2040_SF_TABLE_FCMP_FAST:
-+    case RP2040_SF_TABLE_FCMP_FAST_FLAGS:
-+    case RP2040_SF_TABLE_FCMP_BASIC:
-+        s->synthetic_rom_dbg_result[0] =
-+            rp2040_synthetic_fp_compare(host_a, host_b);
-+        s->synthetic_rom_dbg_result[1] = 0;
-+        break;
-+    case RP2040_SF_TABLE_FSQRT:
-+        r64 = float64_sqrt(a, &status);
-+        goto return_double;
-+    case RP2040_SF_TABLE_FLOAT2INT:
-+        s->synthetic_rom_dbg_result[0] =
-+            float64_to_int32_round_to_zero(a, &status);
-+        s->synthetic_rom_dbg_result[1] = 0;
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2FIX:
-+        scaled = ldexp(host_a, s->synthetic_rom_dbg_arg[2] & 0xff);
-+        s->synthetic_rom_dbg_result[0] =
-+            rp2040_synthetic_double_to_i32(scaled);
-+        s->synthetic_rom_dbg_result[1] = 0;
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2UINT:
-+        s->synthetic_rom_dbg_result[0] =
-+            float64_to_uint32_round_to_zero(a, &status);
-+        s->synthetic_rom_dbg_result[1] = 0;
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2UFIX:
-+        scaled = ldexp(host_a, s->synthetic_rom_dbg_arg[2] & 0xff);
-+        s->synthetic_rom_dbg_result[0] =
-+            rp2040_synthetic_double_to_u32(scaled);
-+        s->synthetic_rom_dbg_result[1] = 0;
-+        break;
-+    case RP2040_SF_TABLE_INT2FLOAT:
-+        r64 = int32_to_float64(s->synthetic_rom_dbg_arg[0], &status);
-+        goto return_double;
-+    case RP2040_SF_TABLE_FIX2FLOAT:
-+        r64 = make_float64(rp2040_host_double_to_u64(
-+              ldexp((double)(int32_t)s->synthetic_rom_dbg_arg[0],
-+                    -(int)(s->synthetic_rom_dbg_arg[1] & 0xff))));
-+        goto return_double;
-+    case RP2040_SF_TABLE_UINT2FLOAT:
-+        r64 = uint32_to_float64(s->synthetic_rom_dbg_arg[0], &status);
-+        goto return_double;
-+    case RP2040_SF_TABLE_UFIX2FLOAT:
-+        r64 = make_float64(rp2040_host_double_to_u64(
-+              ldexp((double)s->synthetic_rom_dbg_arg[0],
-+                    -(int)(s->synthetic_rom_dbg_arg[1] & 0xff))));
-+        goto return_double;
-+    case RP2040_SF_TABLE_FCOS:
-+        r64 = make_float64(rp2040_host_double_to_u64(cos(host_a)));
-+        goto return_double;
-+    case RP2040_SF_TABLE_FSIN:
-+        r64 = make_float64(rp2040_host_double_to_u64(sin(host_a)));
-+        goto return_double;
-+    case RP2040_SF_TABLE_FTAN:
-+        r64 = make_float64(rp2040_host_double_to_u64(tan(host_a)));
-+        goto return_double;
-+    case RP2040_SF_TABLE_V3_FSINCOS:
-+        r = rp2040_host_double_to_u64(sin(host_a));
-+        s->synthetic_rom_dbg_result[0] = r;
-+        s->synthetic_rom_dbg_result[1] = r >> 32;
-+        r = rp2040_host_double_to_u64(cos(host_a));
-+        s->synthetic_rom_dbg_result[2] = r;
-+        s->synthetic_rom_dbg_result[3] = r >> 32;
-+        break;
-+    case RP2040_SF_TABLE_FEXP:
-+        r64 = make_float64(rp2040_host_double_to_u64(exp(host_a)));
-+        goto return_double;
-+    case RP2040_SF_TABLE_FLN:
-+        r64 = make_float64(rp2040_host_double_to_u64(log(host_a)));
-+        goto return_double;
-+    case RP2040_SF_TABLE_FATAN2:
-+        r64 = make_float64(rp2040_host_double_to_u64(atan2(host_a, host_b)));
-+        goto return_double;
-+    case RP2040_SF_TABLE_INT642FLOAT:
-+        r64 = int64_to_float64((int64_t)av, &status);
-+        goto return_double;
-+    case RP2040_SF_TABLE_FIX642FLOAT:
-+        r64 = make_float64(rp2040_host_double_to_u64(
-+              ldexp((double)(int64_t)av,
-+                    -(int)(s->synthetic_rom_dbg_arg[2] & 0xff))));
-+        goto return_double;
-+    case RP2040_SF_TABLE_UINT642FLOAT:
-+        r64 = uint64_to_float64(av, &status);
-+        goto return_double;
-+    case RP2040_SF_TABLE_UFIX642FLOAT:
-+        r64 = make_float64(rp2040_host_double_to_u64(
-+              ldexp((double)av,
-+                    -(int)(s->synthetic_rom_dbg_arg[2] & 0xff))));
-+        goto return_double;
-+    case RP2040_SF_TABLE_FLOAT2INT64:
-+        r = float64_to_int64_round_to_zero(a, &status);
-+        s->synthetic_rom_dbg_result[0] = r;
-+        s->synthetic_rom_dbg_result[1] = r >> 32;
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2FIX64:
-+        scaled = ldexp(host_a, s->synthetic_rom_dbg_arg[2] & 0xff);
-+        r = rp2040_synthetic_double_to_i64(scaled);
-+        s->synthetic_rom_dbg_result[0] = r;
-+        s->synthetic_rom_dbg_result[1] = r >> 32;
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2UINT64:
-+        r = float64_to_uint64_round_to_zero(a, &status);
-+        s->synthetic_rom_dbg_result[0] = r;
-+        s->synthetic_rom_dbg_result[1] = r >> 32;
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2UFIX64:
-+        scaled = ldexp(host_a, s->synthetic_rom_dbg_arg[2] & 0xff);
-+        r = rp2040_synthetic_double_to_u64(scaled);
-+        s->synthetic_rom_dbg_result[0] = r;
-+        s->synthetic_rom_dbg_result[1] = r >> 32;
-+        break;
-+    case RP2040_SF_TABLE_FLOAT2DOUBLE:
-+        r32 = float64_to_float32(a, &status);
-+        s->synthetic_rom_dbg_result[0] = float32_val(r32);
-+        s->synthetic_rom_dbg_result[1] = 0;
-+        break;
-+    default:
-+        s->synthetic_rom_dbg_result[0] = 0;
-+        s->synthetic_rom_dbg_result[1] = 0;
-+        rp2040_synthetic_fp_nyi(true, offset);
-+        break;
-+    }
-+    return;
-+
-+return_double:
-+    r = float64_val(r64);
-+    s->synthetic_rom_dbg_result[0] = r;
-+    s->synthetic_rom_dbg_result[1] = r >> 32;
-+}
-+
-+static bool rp2040_synthetic_fp_op(RP2040State *s, uint32_t command)
-+{
-+    uint32_t offset = command & 0xff;
-+
-+    switch (command & RP2040_SYNTHETIC_FP_CMD_MASK) {
-+    case RP2040_SYNTHETIC_FP_CMD_FLOAT:
-+        rp2040_synthetic_float_op(s, offset);
-+        return true;
-+    case RP2040_SYNTHETIC_FP_CMD_DOUBLE:
-+        rp2040_synthetic_double_op(s, offset);
-+        return true;
-+    default:
-+        return false;
-+    }
-+}
-+
-+static void rp2040_synthetic_flash_helper_hit(RP2040State *s,
-+                                              unsigned int helper,
-+                                              const char *name)
-+{
-+    uint32_t count;
-+
-+    g_assert(helper < RP2040_SYNTHETIC_ROM_FLASH_HELPER_COUNT);
-+
-+    count = ++s->synthetic_rom_flash_helper_count[helper];
-+    trace_rp2040_synthetic_flash_helper(name, count);
-+}
-+
-+static void rp2040_synthetic_rom_dbg_write(void *opaque, hwaddr addr,
-+                                           uint64_t value, unsigned size)
-+{
-+    RP2040State *s = opaque;
-+    hwaddr offset = addr & 0xfff;
-+    uint32_t command = value;
-+    uint16_t code = value;
-+    const char *name = rp2040_bootrom_function_name(code);
-+    char feature[64];
-+    char detail[64];
-+    Error *local_err = NULL;
-+
-+    switch (offset) {
-+    case RP2040_SYNTHETIC_ROM_DBG_ARG0:
-+    case RP2040_SYNTHETIC_ROM_DBG_ARG1:
-+    case RP2040_SYNTHETIC_ROM_DBG_ARG2:
-+    case RP2040_SYNTHETIC_ROM_DBG_ARG3:
-+        s->synthetic_rom_dbg_arg[(offset - RP2040_SYNTHETIC_ROM_DBG_ARG0) /
-+                                 sizeof(uint32_t)] = value;
-+        return;
-+    case RP2040_SYNTHETIC_ROM_DBG_CMD:
-+        break;
-+    default:
-+        rp2040_log_nyi("bootrom", "synthetic diagnostic register write",
-+                       "unknown register");
-+        return;
-+    }
-+
-+    if (rp2040_synthetic_fp_op(s, command)) {
-+        return;
-+    }
-+
-+    if (command == RP2040_SYNTHETIC_ROM_DBG_CMD_EXIT) {
-+        qemu_system_shutdown_request_with_code(SHUTDOWN_CAUSE_GUEST_SHUTDOWN,
-+                                               s->synthetic_rom_dbg_arg[0]);
-+        return;
-+    }
-+
-+    switch (code) {
-+    case RP2040_ROM_TABLE_CODE('C', 'X'):
-+        rp2040_synthetic_flash_helper_hit(
-+            s, RP2040_SYNTHETIC_FLASH_ENTER_CMD_XIP,
-+            "flash_enter_cmd_xip");
-+        rp2040_log_nyi("bootrom", "flash_enter_cmd_xip",
-+                       "synthetic helper does not reconfigure SSI hardware");
-+        return;
-+    case RP2040_ROM_TABLE_CODE('E', 'X'):
-+        rp2040_synthetic_flash_helper_hit(
-+            s, RP2040_SYNTHETIC_FLASH_EXIT_XIP, "flash_exit_xip");
-+        rp2040_log_nyi("bootrom", "flash_exit_xip",
-+                       "synthetic helper does not send serial flash commands");
-+        return;
-+    case RP2040_ROM_TABLE_CODE('F', 'C'):
-+        rp2040_synthetic_flash_helper_hit(
-+            s, RP2040_SYNTHETIC_FLASH_FLUSH_CACHE, "flash_flush_cache");
-+        rp2040_log_nyi("bootrom", "flash_flush_cache",
-+                       "XIP cache is not modeled");
-+        return;
-+    case RP2040_ROM_TABLE_CODE('I', 'F'):
-+        rp2040_synthetic_flash_helper_hit(
-+            s, RP2040_SYNTHETIC_FLASH_CONNECT_INTERNAL_FLASH,
-+            "connect_internal_flash");
-+        rp2040_log_nyi("bootrom", "connect_internal_flash",
-+                       "synthetic helper assumes the QSPI flash is connected");
-+        return;
-+    case RP2040_ROM_TABLE_CODE('R', 'E'):
-+        rp2040_synthetic_flash_helper_hit(
-+            s, RP2040_SYNTHETIC_FLASH_RANGE_ERASE, "flash_range_erase");
-+        if (!rp2040_xip_flash_range_erase(&s->xip,
-+                                          s->synthetic_rom_dbg_arg[0],
-+                                          s->synthetic_rom_dbg_arg[1],
-+                                          s->synthetic_rom_dbg_arg[2],
-+                                          s->synthetic_rom_dbg_arg[3],
-+                                          &local_err)) {
-+            warn_report_err(local_err);
-+        }
-+        return;
-+    case RP2040_ROM_TABLE_CODE('R', 'P'):
-+        rp2040_synthetic_flash_helper_hit(
-+            s, RP2040_SYNTHETIC_FLASH_RANGE_PROGRAM, "flash_range_program");
-+        if (!rp2040_xip_flash_range_program(&s->xip,
-+                                            s->synthetic_rom_dbg_arg[0],
-+                                            s->synthetic_rom_dbg_arg[1],
-+                                            s->synthetic_rom_dbg_arg[2],
-+                                            &local_err)) {
-+            warn_report_err(local_err);
-+        }
-+        return;
-+    }
-+
-+    snprintf(feature, sizeof(feature), "boot ROM function '%c%c'",
-+             code & 0xff, (code >> 8) & 0xff);
-+    snprintf(detail, sizeof(detail), "%s%s%s",
-+             name ? "SDK name: " : "",
-+             name ? name : "unknown lookup code",
-+             name ? "" : "");
-+    rp2040_log_nyi("bootrom", feature, detail);
-+}
-+
-+static uint64_t rp2040_synthetic_rom_dbg_read(void *opaque, hwaddr addr,
-+                                              unsigned size)
-+{
-+    RP2040State *s = opaque;
-+    hwaddr offset = addr & 0xfff;
-+
-+    if (offset >= RP2040_SYNTHETIC_ROM_DBG_ARG0 &&
-+        offset <= RP2040_SYNTHETIC_ROM_DBG_ARG3 &&
-+        QEMU_IS_ALIGNED(offset, sizeof(uint32_t))) {
-+        return s->synthetic_rom_dbg_arg[(offset -
-+                                         RP2040_SYNTHETIC_ROM_DBG_ARG0) /
-+                                        sizeof(uint32_t)];
-+    }
-+    if (offset >= RP2040_SYNTHETIC_ROM_DBG_RESULT0 &&
-+        offset <= RP2040_SYNTHETIC_ROM_DBG_RESULT3 &&
-+        QEMU_IS_ALIGNED(offset, sizeof(uint32_t))) {
-+        return s->synthetic_rom_dbg_result[(offset -
-+                                            RP2040_SYNTHETIC_ROM_DBG_RESULT0) /
-+                                           sizeof(uint32_t)];
-+    }
-+    if (offset >= RP2040_SYNTHETIC_ROM_DBG_FLASH_COUNT0 &&
-+        offset < RP2040_SYNTHETIC_ROM_DBG_FLASH_COUNT0 +
-+                 sizeof(s->synthetic_rom_flash_helper_count) &&
-+        QEMU_IS_ALIGNED(offset, sizeof(uint32_t))) {
-+        return s->synthetic_rom_flash_helper_count[
-+            (offset - RP2040_SYNTHETIC_ROM_DBG_FLASH_COUNT0) /
-+            sizeof(uint32_t)];
-+    }
-+
-+    rp2040_log_nyi("bootrom", "synthetic diagnostic register read",
-+                   "unsupported register");
-+    return 0;
-+}
-+
-+static const MemoryRegionOps rp2040_synthetic_rom_dbg_ops = {
-+    .read = rp2040_synthetic_rom_dbg_read,
-+    .write = rp2040_synthetic_rom_dbg_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void rp2040_set_irq(void *opaque, int irq, int level)
-+{
-+    RP2040State *s = opaque;
-+
-+    assert(irq >= 0 && irq < RP2040_NUM_IRQS);
-+    s->irq_level[0][irq] = level;
-+    rp2040_update_nmi(s);
-+}
-+
-+static void rp2040_update_uart_pins(RP2040State *s)
-+{
-+    pl011_set_tx_connected(&s->uart0,
-+                           !s->strict_uart_pins ||
-+                           s->uart0_tx_pin_enabled);
-+    pl011_set_rx_connected(&s->uart0,
-+                           !s->strict_uart_pins ||
-+                           s->uart0_rx_pin_enabled);
-+    pl011_set_tx_connected(&s->uart1,
-+                           !s->strict_uart_pins ||
-+                           s->uart1_tx_pin_enabled);
-+    pl011_set_rx_connected(&s->uart1,
-+                           !s->strict_uart_pins ||
-+                           s->uart1_rx_pin_enabled);
-+}
-+
-+static void rp2040_set_uart_pin(void *opaque, int pin, int level)
-+{
-+    RP2040State *s = opaque;
-+
-+    switch (pin) {
-+    case 0:
-+        s->uart0_tx_pin_enabled = level;
-+        break;
-+    case 1:
-+        s->uart0_rx_pin_enabled = level;
-+        break;
-+    case 2:
-+        s->uart1_tx_pin_enabled = level;
-+        break;
-+    case 3:
-+        s->uart1_rx_pin_enabled = level;
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    rp2040_update_uart_pins(s);
-+}
-+
-+static uint64_t rp2040_usbctrl_regs_read(void *opaque, hwaddr addr,
-+                                         unsigned size)
-+{
-+    RP2040State *s = opaque;
-+    hwaddr offset = addr & 0xfff;
-+    uint64_t value;
-+
-+    switch (offset) {
-+    case USBCTRL_SIE_STATUS:
-+        value = s->usbctrl_reg[offset / sizeof(uint32_t)] |
-+                USBCTRL_SIE_STATUS_VBUS_DETECTED;
-+        break;
-+    case USBCTRL_BUFF_CPU_HANDLE:
-+    case USBCTRL_EP_ABORT_DONE:
-+    case USBCTRL_INTR:
-+        value = s->usbctrl_reg[offset / sizeof(uint32_t)];
-+        break;
-+    case USBCTRL_INTS:
-+        value = (s->usbctrl_reg[USBCTRL_INTR / sizeof(uint32_t)] |
-+                 s->usbctrl_reg[USBCTRL_INTF / sizeof(uint32_t)]) &
-+                s->usbctrl_reg[USBCTRL_INTE / sizeof(uint32_t)];
-+        break;
-+    default:
-+        if (offset < sizeof(s->usbctrl_reg)) {
-+            value = s->usbctrl_reg[offset / sizeof(uint32_t)];
-+        } else {
-+            value = 0;
-+            rp2040_log_unimplemented_read("usbctrl_regs", size,
-+                                          RP2040_USBCTRL_REGS_BASE + addr,
-+                                          offset, value);
-+        }
-+        break;
-+    }
-+
-+    return value;
-+}
-+
-+static void rp2040_usbctrl_regs_write(void *opaque, hwaddr addr,
-+                                      uint64_t value64, unsigned size)
-+{
-+    RP2040State *s = opaque;
-+    hwaddr alias = addr & ATOMIC_ALIAS_MASK;
-+    hwaddr offset = addr & 0xfff;
-+    uint32_t value = value64;
-+    uint32_t old;
-+
-+    if (offset < sizeof(s->usbctrl_reg)) {
-+        old = s->usbctrl_reg[offset / sizeof(uint32_t)];
-+        s->usbctrl_reg[offset / sizeof(uint32_t)] =
-+            rp2040_apply_atomic_alias(old, value, alias);
-+    } else {
-+        rp2040_log_unimplemented_write("usbctrl_regs", size,
-+                                       RP2040_USBCTRL_REGS_BASE + addr,
-+                                       offset, value64);
-+    }
-+}
-+
-+static const MemoryRegionOps rp2040_usbctrl_regs_ops = {
-+    .read = rp2040_usbctrl_regs_read,
-+    .write = rp2040_usbctrl_regs_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void rp2040_soc_init(Object *obj)
-+{
-+    RP2040State *s = RP2040(obj);
-+    int i;
-+
-+    for (i = 0; i < RP2040_NUM_CORES; i++) {
-+        g_autofree char *name = g_strdup_printf("proc%d", i);
-+
-+        object_initialize_child(obj, name, &s->armv7m[i], TYPE_ARMV7M);
-+        qdev_prop_set_string(DEVICE(&s->armv7m[i]), "cpu-type",
-+                             ARM_CPU_TYPE_NAME("cortex-m0"));
-+        qdev_prop_set_uint32(DEVICE(&s->armv7m[i]), "num-irq", 32);
-+    }
-+    object_initialize_child(obj, "uart0", &s->uart0, TYPE_PL011);
-+    object_property_add_alias(obj, "serial0", OBJECT(&s->uart0), "chardev");
-+    object_initialize_child(obj, "uart1", &s->uart1, TYPE_PL011);
-+    object_property_add_alias(obj, "serial1", OBJECT(&s->uart1), "chardev");
-+
-+    object_initialize_child(obj, "xip", &s->xip, TYPE_RP2040_XIP);
-+    object_initialize_child(obj, "busctrl", &s->busctrl, TYPE_RP2040_BUSCTRL);
-+    object_initialize_child(obj, "clocks", &s->clocks, TYPE_RP2040_CLOCKS);
-+    object_initialize_child(obj, "dma", &s->dma, TYPE_RP2040_DMA);
-+    object_initialize_child(obj, "iobank0", &s->iobank0,
-+                            TYPE_RP2040_IOBANK0);
-+    object_initialize_child(obj, "ioqspi", &s->ioqspi, TYPE_RP2040_IOQSPI);
-+    object_initialize_child(obj, "pads-bank0", &s->pads_bank0,
-+                            TYPE_RP2040_PADS_BANK0);
-+    object_initialize_child(obj, "pads-qspi", &s->pads_qspi,
-+                            TYPE_RP2040_PADS_QSPI);
-+    object_initialize_child(obj, "pll-sys", &s->pll_sys, TYPE_RP2040_PLL);
-+    qdev_prop_set_string(DEVICE(&s->pll_sys), "trace-name",
-+                         "rp2040.pll_sys");
-+    qdev_prop_set_uint32(DEVICE(&s->pll_sys), "base", RP2040_PLL_SYS_BASE);
-+    qdev_prop_set_uint32(DEVICE(&s->pll_sys), "fallback-hz", 125000000);
-+
-+    object_initialize_child(obj, "pll-usb", &s->pll_usb, TYPE_RP2040_PLL);
-+    qdev_prop_set_string(DEVICE(&s->pll_usb), "trace-name",
-+                         "rp2040.pll_usb");
-+    qdev_prop_set_uint32(DEVICE(&s->pll_usb), "base", RP2040_PLL_USB_BASE);
-+    qdev_prop_set_uint32(DEVICE(&s->pll_usb), "fallback-hz", 48000000);
-+
-+    object_initialize_child(obj, "psm", &s->psm, TYPE_RP2040_PSM);
-+    object_initialize_child(obj, "resets", &s->resets, TYPE_RP2040_RESETS);
-+    object_initialize_child(obj, "rosc", &s->rosc, TYPE_RP2040_ROSC);
-+    object_initialize_child(obj, "sio", &s->sio, TYPE_RP2040_SIO);
-+    object_initialize_child(obj, "syscfg", &s->syscfg, TYPE_RP2040_SYSCFG);
-+    object_initialize_child(obj, "sysinfo", &s->sysinfo, TYPE_RP2040_SYSINFO);
-+    object_initialize_child(obj, "tbman", &s->tbman, TYPE_RP2040_TBMAN);
-+    object_initialize_child(obj, "timer", &s->timer, TYPE_RP2040_TIMER);
-+    object_initialize_child(obj, "vreg", &s->vreg, TYPE_RP2040_VREG);
-+    object_initialize_child(obj, "watchdog", &s->watchdog,
-+                            TYPE_RP2040_WATCHDOG);
-+    object_initialize_child(obj, "xosc", &s->xosc, TYPE_RP2040_XOSC);
-+
-+    s->irq = qemu_allocate_irqs(rp2040_set_irq, s, RP2040_NUM_IRQS);
-+    s->sysclk = clock_new(obj, "sysclk");
-+}
-+
-+static void rp2040_soc_realize(DeviceState *dev, Error **errp)
-+{
-+    RP2040State *s = RP2040(dev);
-+    Error *err = NULL;
-+    g_autofree char *filename = NULL;
-+    ssize_t image_size;
-+    int i;
-+
-+    if (!s->board_memory) {
-+        error_setg(errp, "memory property was not set");
-+        return;
-+    }
-+    qdev_prop_set_bit(DEVICE(&s->armv7m[RP2040_PROC1]), "start-powered-off",
-+                      s->bootrom_file != NULL);
-+
-+    if (!memory_region_init_rom(&s->rom, OBJECT(dev), "rp2040.rom",
-+                                RP2040_ROM_SIZE, errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(s->board_memory, RP2040_ROM_BASE, &s->rom);
-+    memory_region_init_io(&s->rom_poweroff, OBJECT(dev),
-+                          &rp2040_powered_off_ops, s,
-+                          "rp2040.rom.poweroff", RP2040_ROM_SIZE);
-+    memory_region_add_subregion_overlap(s->board_memory, RP2040_ROM_BASE,
-+                                        &s->rom_poweroff, 1);
-+    memory_region_set_enabled(&s->rom_poweroff, false);
-+    memory_region_init_io(&s->synthetic_rom_dbg, OBJECT(dev),
-+                          &rp2040_synthetic_rom_dbg_ops, s,
-+                          "rp2040.synthetic-rom-dbg",
-+                          RP2040_SYNTHETIC_ROM_DBG_SIZE);
-+    memory_region_add_subregion(s->board_memory,
-+                                RP2040_SYNTHETIC_ROM_DBG_BASE,
-+                                &s->synthetic_rom_dbg);
-+
-+    if (s->bootrom_file) {
-+        filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, s->bootrom_file);
-+        if (!filename) {
-+            error_setg(errp, "could not find RP2040 boot ROM image '%s'",
-+                       s->bootrom_file);
-+            return;
-+        }
-+
-+        image_size = load_image_targphys(filename, RP2040_ROM_BASE,
-+                                         RP2040_ROM_SIZE, errp);
-+        if (image_size < 0) {
-+            return;
-+        }
-+    } else {
-+        rp2040_install_synthetic_bootrom();
-+    }
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->xip), errp)) {
-+        return;
-+    }
-+    if (!s->bootrom_file) {
-+        rp2040_xip_set_synthetic_hardfault_vector(
-+            &s->xip, RP2040_BOOTROM_HARDFAULT_EXIT_OFFSET | 1);
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->xip), 0, RP2040_XIP_BASE);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->xip), 1, RP2040_XIP_CTRL_BASE);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->xip), 2, RP2040_XIP_SSI_BASE);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->xip), 3, RP2040_XIP_AUX_BASE);
-+    memory_region_add_subregion(get_system_memory(), RP2040_XIP_NOALLOC_BASE,
-+                                &s->xip.xip_noalloc);
-+    memory_region_add_subregion(get_system_memory(), RP2040_XIP_NOCACHE_BASE,
-+                                &s->xip.xip_nocache);
-+    memory_region_add_subregion(get_system_memory(),
-+                                RP2040_XIP_NOCACHE_NOALLOC_BASE,
-+                                &s->xip.xip_nocache_noalloc);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->busctrl), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->busctrl), 0, RP2040_BUSCTRL_BASE);
-+
-+    object_property_set_link(OBJECT(&s->dma), "memory",
-+                             OBJECT(s->board_memory), &err);
-+    if (err != NULL) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->dma), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->dma), 0, RP2040_DMA_BASE);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->dma), 0, s->irq[RP2040_DMA_IRQ_0]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->dma), 1, s->irq[RP2040_DMA_IRQ_1]);
-+    qdev_connect_gpio_out_named(DEVICE(&s->xip), "dreq-rx", 0,
-+                                qdev_get_gpio_in_named(DEVICE(&s->dma),
-+                                                       "dreq",
-+                                                       RP2040_DREQ_XIP_SSIRX));
-+    qdev_connect_gpio_out_named(DEVICE(&s->xip), "dreq-stream", 0,
-+                                qdev_get_gpio_in_named(DEVICE(&s->dma),
-+                                                       "dreq",
-+                                                       RP2040_DREQ_XIP_STREAM));
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->iobank0), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->iobank0), 0, RP2040_IOBANK0_BASE);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->iobank0), 0,
-+                       s->irq[RP2040_IO_IRQ_BANK0]);
-+    qdev_connect_gpio_out_named(DEVICE(&s->iobank0), "uart0-pin", 0,
-+                                qemu_allocate_irq(rp2040_set_uart_pin, s, 0));
-+    qdev_connect_gpio_out_named(DEVICE(&s->iobank0), "uart0-pin", 1,
-+                                qemu_allocate_irq(rp2040_set_uart_pin, s, 1));
-+    qdev_connect_gpio_out_named(DEVICE(&s->iobank0), "uart1-pin", 0,
-+                                qemu_allocate_irq(rp2040_set_uart_pin, s, 2));
-+    qdev_connect_gpio_out_named(DEVICE(&s->iobank0), "uart1-pin", 1,
-+                                qemu_allocate_irq(rp2040_set_uart_pin, s, 3));
-+
-+    object_property_set_link(OBJECT(&s->ioqspi), "xip", OBJECT(&s->xip),
-+                             &error_abort);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ioqspi), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ioqspi), 0, RP2040_IOQSPI_BASE);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pads_bank0), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->pads_bank0), 0,
-+                    RP2040_PADS_BANK0_BASE);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pads_qspi), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->pads_qspi), 0,
-+                    RP2040_PADS_QSPI_BASE);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pll_sys), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->pll_sys), 0, RP2040_PLL_SYS_BASE);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pll_usb), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->pll_usb), 0, RP2040_PLL_USB_BASE);
-+
-+    qdev_connect_clock_in(DEVICE(&s->clocks), "pll-sys",
-+                          qdev_get_clock_out(DEVICE(&s->pll_sys), "clk"));
-+    qdev_connect_clock_in(DEVICE(&s->clocks), "pll-usb",
-+                          qdev_get_clock_out(DEVICE(&s->pll_usb), "clk"));
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->clocks), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->clocks), 0, RP2040_CLOCKS_BASE);
-+    clock_set_source(s->sysclk, qdev_get_clock_out(DEVICE(&s->clocks),
-+                                                   "clk-sys"));
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->psm), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->psm), 0, RP2040_PSM_BASE);
-+    rp2040_psm_set_update_callback(&s->psm, rp2040_psm_update, s);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->resets), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->resets), 0, RP2040_RESETS_BASE);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->rosc), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->rosc), 0, RP2040_ROSC_BASE);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sio), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sio), 0, RP2040_SIO_BASE);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->sio), 0,
-+                       s->irq[RP2040_SIO_IRQ_PROC0]);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->syscfg), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->syscfg), 0, RP2040_SYSCFG_BASE);
-+    rp2040_syscfg_set_update_callback(&s->syscfg, rp2040_syscfg_update, s);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sysinfo), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sysinfo), 0, RP2040_SYSINFO_BASE);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->tbman), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->tbman), 0, RP2040_TBMAN_BASE);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->timer), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timer), 0, RP2040_TIMER_BASE);
-+    for (i = 0; i < 4; i++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), i, s->irq[i]);
-+    }
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->vreg), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->vreg), 0, RP2040_VREG_BASE);
-+
-+    qdev_connect_clock_in(DEVICE(&s->watchdog), "clk-ref",
-+                          qdev_get_clock_out(DEVICE(&s->clocks), "clk-ref"));
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->watchdog), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->watchdog), 0, RP2040_WATCHDOG_BASE);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->xosc), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->xosc), 0, RP2040_XOSC_BASE);
-+
-+    for (i = 0; i < 4; i++) {
-+        g_autofree char *name = g_strdup_printf("rp2040.sram%d", i);
-+        g_autofree char *poweroff_name =
-+            g_strdup_printf("rp2040.sram%d.poweroff", i);
-+
-+        if (!memory_region_init_ram(&s->sram[i], OBJECT(dev), name,
-+                                    RP2040_SRAM_BANK_SIZE, errp)) {
-+            return;
-+        }
-+        memory_region_add_subregion(s->board_memory,
-+                                    RP2040_SRAM_BASE +
-+                                    i * RP2040_SRAM_BANK_SIZE,
-+                                    &s->sram[i]);
-+        memory_region_init_io(&s->sram_poweroff[i], OBJECT(dev),
-+                              &rp2040_powered_off_ops, s, poweroff_name,
-+                              RP2040_SRAM_BANK_SIZE);
-+        memory_region_add_subregion_overlap(s->board_memory,
-+                                            RP2040_SRAM_BASE +
-+                                            i * RP2040_SRAM_BANK_SIZE,
-+                                            &s->sram_poweroff[i], 1);
-+        memory_region_set_enabled(&s->sram_poweroff[i], false);
-+    }
-+
-+    if (!memory_region_init_ram(&s->sram[4], OBJECT(dev), "rp2040.sram4",
-+                                RP2040_SRAM_HI_SIZE, errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(s->board_memory, RP2040_SRAM4_BASE,
-+                                &s->sram[4]);
-+    memory_region_init_io(&s->sram_poweroff[4], OBJECT(dev),
-+                          &rp2040_powered_off_ops, s,
-+                          "rp2040.sram4.poweroff", RP2040_SRAM_HI_SIZE);
-+    memory_region_add_subregion_overlap(s->board_memory, RP2040_SRAM4_BASE,
-+                                        &s->sram_poweroff[4], 1);
-+    memory_region_set_enabled(&s->sram_poweroff[4], false);
-+
-+    if (!memory_region_init_ram(&s->sram[5], OBJECT(dev), "rp2040.sram5",
-+                                RP2040_SRAM_HI_SIZE, errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(s->board_memory, RP2040_SRAM5_BASE,
-+                                &s->sram[5]);
-+    memory_region_init_io(&s->sram_poweroff[5], OBJECT(dev),
-+                          &rp2040_powered_off_ops, s,
-+                          "rp2040.sram5.poweroff", RP2040_SRAM_HI_SIZE);
-+    memory_region_add_subregion_overlap(s->board_memory, RP2040_SRAM5_BASE,
-+                                        &s->sram_poweroff[5], 1);
-+    memory_region_set_enabled(&s->sram_poweroff[5], false);
-+
-+    if (!memory_region_init_ram(&s->usbctrl_dpram, OBJECT(dev),
-+                                "rp2040.usbctrl_dpram",
-+                                RP2040_USBCTRL_DPRAM_SIZE, errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(s->board_memory, RP2040_USBCTRL_DPRAM_BASE,
-+                                &s->usbctrl_dpram);
-+    memory_region_init_io(&s->usbctrl_dpram_poweroff, OBJECT(dev),
-+                          &rp2040_powered_off_ops, s,
-+                          "rp2040.usbctrl_dpram.poweroff",
-+                          RP2040_USBCTRL_DPRAM_SIZE);
-+    memory_region_add_subregion_overlap(s->board_memory,
-+                                        RP2040_USBCTRL_DPRAM_BASE,
-+                                        &s->usbctrl_dpram_poweroff, 1);
-+    memory_region_set_enabled(&s->usbctrl_dpram_poweroff, false);
-+
-+    s->mempowerdown_ready = true;
-+    rp2040_update_mempowerdown(s);
-+
-+    memory_region_init_io(&s->usbctrl_regs, OBJECT(dev),
-+                          &rp2040_usbctrl_regs_ops, s,
-+                          "rp2040.usbctrl_regs",
-+                          RP2040_USBCTRL_REGS_SIZE);
-+    memory_region_add_subregion(s->board_memory, RP2040_USBCTRL_REGS_BASE,
-+                                &s->usbctrl_regs);
-+
-+    for (i = 0; i < ARRAY_SIZE(rp2040_unimplemented); i++) {
-+        create_unimplemented_device(rp2040_unimplemented[i].name,
-+                                    rp2040_unimplemented[i].base,
-+                                    rp2040_unimplemented[i].size);
-+    }
-+
-+    for (i = 0; i < RP2040_NUM_CORES; i++) {
-+        int irq;
-+
-+        qdev_connect_clock_in(DEVICE(&s->armv7m[i]), "cpuclk", s->sysclk);
-+        g_autofree char *name = g_strdup_printf("rp2040.proc%d-memory", i);
-+
-+        memory_region_init_alias(&s->cpu_memory[i], OBJECT(dev), name,
-+                                 s->board_memory, 0,
-+                                 memory_region_size(s->board_memory));
-+        object_property_set_link(OBJECT(&s->armv7m[i]), "memory",
-+                                 OBJECT(&s->cpu_memory[i]), &err);
-+        if (err != NULL) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+
-+        if (!sysbus_realize(SYS_BUS_DEVICE(&s->armv7m[i]), errp)) {
-+            return;
-+        }
-+        for (irq = 0; irq < RP2040_NUM_IRQS; irq++) {
-+            s->cpu_irq[i][irq] = qdev_get_gpio_in(DEVICE(&s->armv7m[i]),
-+                                                  irq);
-+        }
-+        s->nmi_irq[i] = qdev_get_gpio_in_named(DEVICE(&s->armv7m[i]),
-+                                               "NMI", 0);
-+    }
-+    rp2040_update_nmi(s);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->iobank0), 1,
-+                       s->cpu_irq[RP2040_PROC1][RP2040_IO_IRQ_BANK0]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->sio), 1,
-+                       s->cpu_irq[RP2040_PROC1][RP2040_SIO_IRQ_PROC1]);
-+
-+    qdev_connect_clock_in(DEVICE(&s->uart0), "clk",
-+                          qdev_get_clock_out(DEVICE(&s->clocks), "clk-peri"));
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->uart0), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->uart0), 0, RP2040_UART0_BASE);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->uart0), 1, RP2040_UART0_BASE + 0x1000);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart0), 0, s->irq[RP2040_UART0_IRQ]);
-+    qdev_connect_gpio_out_named(DEVICE(&s->uart0), "dreq-tx", 0,
-+                                qdev_get_gpio_in_named(DEVICE(&s->dma),
-+                                                       "dreq",
-+                                                       RP2040_DREQ_UART0_TX));
-+    qdev_connect_gpio_out_named(DEVICE(&s->uart0), "dreq-rx", 0,
-+                                qdev_get_gpio_in_named(DEVICE(&s->dma),
-+                                                       "dreq",
-+                                                       RP2040_DREQ_UART0_RX));
-+
-+    qdev_connect_clock_in(DEVICE(&s->uart1), "clk",
-+                          qdev_get_clock_out(DEVICE(&s->clocks), "clk-peri"));
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->uart1), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->uart1), 0, RP2040_UART1_BASE);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->uart1), 1, RP2040_UART1_BASE + 0x1000);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart1), 0, s->irq[RP2040_UART1_IRQ]);
-+    qdev_connect_gpio_out_named(DEVICE(&s->uart1), "dreq-tx", 0,
-+                                qdev_get_gpio_in_named(DEVICE(&s->dma),
-+                                                       "dreq",
-+                                                       RP2040_DREQ_UART1_TX));
-+    qdev_connect_gpio_out_named(DEVICE(&s->uart1), "dreq-rx", 0,
-+                                qdev_get_gpio_in_named(DEVICE(&s->dma),
-+                                                       "dreq",
-+                                                       RP2040_DREQ_UART1_RX));
-+    rp2040_update_uart_pins(s);
-+}
-+
-+static const Property rp2040_soc_properties[] = {
-+    DEFINE_PROP_LINK("memory", RP2040State, board_memory, TYPE_MEMORY_REGION,
-+                     MemoryRegion *),
-+    DEFINE_PROP_STRING("bootrom-file", RP2040State, bootrom_file),
-+    DEFINE_PROP_BOOL("strict-uart-pins", RP2040State, strict_uart_pins, true),
-+};
-+
-+static void rp2040_soc_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = rp2040_soc_realize;
-+    device_class_set_props(dc, rp2040_soc_properties);
-+}
-+
-+static const TypeInfo rp2040_soc_info = {
-+    .name          = TYPE_RP2040,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(RP2040State),
-+    .instance_init = rp2040_soc_init,
-+    .class_init    = rp2040_soc_class_init,
-+};
-+
-+static void rp2040_soc_types(void)
-+{
-+    type_register_static(&rp2040_soc_info);
-+}
-+type_init(rp2040_soc_types)
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 1b16f710fe..a888466ca0 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -1,5 +1,8 @@
- # See docs/devel/tracing.rst for syntax documentation.
- 
-+# rp2040.c
-+rp2040_synthetic_flash_helper(const char *name, uint32_t count) "helper %s count %" PRIu32
-+
- # omap1.c
- omap1_pwl_clocking_scheme(const char *scheme) "omap1 CLKM: clocking scheme set to %s"
- omap1_pwl_backlight(int output) "omap1 PWL: backlight now at %d/256"
-diff --git a/include/hw/arm/rp2040.h b/include/hw/arm/rp2040.h
+diff --git a/tests/qtest/rp2040-dma-test.c b/tests/qtest/rp2040-dma-test.c
 new file mode 100644
-index 0000000000..90504264c7
+index 0000000000..61ad2fac40
 --- /dev/null
-+++ b/include/hw/arm/rp2040.h
-@@ -0,0 +1,122 @@
++++ b/tests/qtest/rp2040-dma-test.c
+@@ -0,0 +1,374 @@
 +/*
-+ * RP2040 SoC emulation
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
++ * QTest testcase for the RP2040 DMA block.
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
-+#ifndef HW_ARM_RP2040_H
-+#define HW_ARM_RP2040_H
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/bitops.h"
 +
-+#include "hw/arm/armv7m.h"
-+#include "hw/char/pl011.h"
-+#include "hw/core/clock.h"
-+#include "hw/core/irq.h"
-+#include "hw/core/sysbus.h"
-+#include "hw/dma/rp2040_dma.h"
-+#include "hw/misc/rp2040_busctrl.h"
-+#include "hw/misc/rp2040_clocks.h"
-+#include "hw/misc/rp2040_iobank0.h"
-+#include "hw/misc/rp2040_ioqspi.h"
-+#include "hw/misc/rp2040_pads.h"
-+#include "hw/misc/rp2040_pll.h"
-+#include "hw/misc/rp2040_psm.h"
-+#include "hw/misc/rp2040_resets.h"
-+#include "hw/misc/rp2040_rosc.h"
-+#include "hw/misc/rp2040_sio.h"
-+#include "hw/misc/rp2040_syscfg.h"
-+#include "hw/misc/rp2040_sysinfo.h"
-+#include "hw/misc/rp2040_tbman.h"
-+#include "hw/misc/rp2040_timer.h"
-+#include "hw/misc/rp2040_vreg.h"
-+#include "hw/misc/rp2040_watchdog.h"
-+#include "hw/misc/rp2040_xosc.h"
-+#include "hw/ssi/rp2040_xip.h"
-+#include "qom/object.h"
++#define DMA_BASE                0x50000000
++#define DMA_CH_READ_ADDR        0x00
++#define DMA_CH_WRITE_ADDR       0x04
++#define DMA_CH_TRANS_COUNT      0x08
++#define DMA_CH_CTRL_TRIG        0x0c
++#define DMA_CH_AL1_CTRL         0x10
++#define DMA_CH_AL3_TRANS_COUNT  0x38
++#define DMA_CH_AL3_READ_ADDR    0x3c
++#define DMA_CH_SIZE             0x40
++#define DMA_INTR                0x400
++#define DMA_INTE0               0x404
++#define DMA_INTS0               0x40c
++#define DMA_TIMER0              0x420
++#define DMA_SNIFF_CTRL          0x434
++#define DMA_SNIFF_DATA          0x438
++#define DMA_CHAN_ABORT          0x444
 +
-+#define TYPE_RP2040 "rp2040"
-+OBJECT_DECLARE_SIMPLE_TYPE(RP2040State, RP2040)
++#define DMA_CTRL_AHB_ERROR      BIT(31)
++#define DMA_CTRL_READ_ERROR     BIT(30)
++#define DMA_CTRL_WRITE_ERROR    BIT(29)
++#define DMA_CTRL_BUSY           BIT(24)
++#define DMA_CTRL_SNIFF_EN       BIT(23)
++#define DMA_CTRL_IRQ_QUIET      BIT(21)
++#define DMA_CTRL_TREQ_SEL_SHIFT 15
++#define DMA_CTRL_CHAIN_TO_SHIFT 11
++#define DMA_CTRL_RING_SEL       BIT(10)
++#define DMA_CTRL_RING_SIZE_SHIFT 6
++#define DMA_CTRL_INCR_WRITE     BIT(5)
++#define DMA_CTRL_INCR_READ      BIT(4)
++#define DMA_CTRL_DATA_SIZE_8    (0 << 2)
++#define DMA_CTRL_DATA_SIZE_32   (2 << 2)
++#define DMA_CTRL_EN             BIT(0)
 +
-+#define RP2040_ROM_BASE       0x00000000
-+#define RP2040_ROM_SIZE       (16 * KiB)
-+#define RP2040_XIP_BASE       0x10000000
-+#define RP2040_XIP_NOALLOC_BASE 0x11000000
-+#define RP2040_XIP_NOCACHE_BASE 0x12000000
-+#define RP2040_XIP_NOCACHE_NOALLOC_BASE 0x13000000
-+#define RP2040_SRAM_BASE      0x20000000
-+#define RP2040_SRAM_BANK_SIZE (64 * KiB)
-+#define RP2040_SRAM4_BASE     0x20040000
-+#define RP2040_SRAM5_BASE     0x20041000
-+#define RP2040_SRAM_LO_SIZE   (4 * RP2040_SRAM_BANK_SIZE)
-+#define RP2040_SRAM_HI_SIZE   (4 * KiB)
-+#define RP2040_USBCTRL_DPRAM_BASE 0x50100000
-+#define RP2040_USBCTRL_DPRAM_SIZE (4 * KiB)
-+#define RP2040_USBCTRL_REGS_BASE  0x50110000
-+#define RP2040_USBCTRL_REGS_SIZE  0x4000
-+#define RP2040_SYNTHETIC_ROM_DBG_BASE 0x5fff0000
-+#define RP2040_SYNTHETIC_ROM_DBG_SIZE 0x1000
-+#define RP2040_SYNTHETIC_ROM_FLASH_HELPER_COUNT 6
-+#define RP2040_NUM_CORES          2
-+#define RP2040_NUM_IRQS           32
++#define DMA_SNIFF_CTRL_OUT_INV  BIT(11)
++#define DMA_SNIFF_CTRL_OUT_REV  BIT(10)
++#define DMA_SNIFF_CTRL_CALC_SUM (0xf << 5)
++#define DMA_SNIFF_CTRL_EN       BIT(0)
 +
-+struct RP2040State {
-+    SysBusDevice parent_obj;
++#define DREQ_DMA_TIMER0         59
++#define DREQ_XIP_SSIRX          39
++#define DREQ_FORCE              63
 +
-+    ARMv7MState armv7m[RP2040_NUM_CORES];
-+    PL011State uart0;
-+    PL011State uart1;
-+    RP2040BusCtrlState busctrl;
-+    RP2040ClocksState clocks;
-+    RP2040DmaState dma;
-+    RP2040IoBank0State iobank0;
-+    RP2040IoQspiState ioqspi;
-+    RP2040PadsBank0State pads_bank0;
-+    RP2040PadsQspiState pads_qspi;
-+    RP2040PllState pll_sys;
-+    RP2040PllState pll_usb;
-+    RP2040PsmState psm;
-+    RP2040ResetsState resets;
-+    RP2040RoscState rosc;
-+    RP2040SioState sio;
-+    RP2040SysCfgState syscfg;
-+    RP2040SysInfoState sysinfo;
-+    RP2040TbmanState tbman;
-+    RP2040TimerState timer;
-+    RP2040VregState vreg;
-+    RP2040WatchdogState watchdog;
-+    RP2040XoscState xosc;
-+    RP2040XipState xip;
++#define XIP_SSI_BASE            0x18000000
++#define XIP_SSI_DR0             0x60
 +
-+    MemoryRegion *board_memory;
-+    MemoryRegion cpu_memory[RP2040_NUM_CORES];
-+    MemoryRegion rom;
-+    MemoryRegion rom_poweroff;
-+    MemoryRegion sram[6];
-+    MemoryRegion sram_poweroff[6];
-+    MemoryRegion usbctrl_dpram;
-+    MemoryRegion usbctrl_dpram_poweroff;
-+    MemoryRegion usbctrl_regs;
-+    MemoryRegion synthetic_rom_dbg;
-+    uint32_t usbctrl_reg[0x100 / sizeof(uint32_t)];
-+    char *bootrom_file;
++#define SRAM_BASE               0x20000000
++#define BAD_DMA_ADDR            0x60000000
 +
-+    qemu_irq *irq;
-+    qemu_irq cpu_irq[RP2040_NUM_CORES][RP2040_NUM_IRQS];
-+    qemu_irq nmi_irq[RP2040_NUM_CORES];
-+    bool irq_level[RP2040_NUM_CORES][RP2040_NUM_IRQS];
-+    bool mempowerdown_ready;
-+    bool strict_uart_pins;
-+    bool uart0_tx_pin_enabled;
-+    bool uart0_rx_pin_enabled;
-+    bool uart1_tx_pin_enabled;
-+    bool uart1_rx_pin_enabled;
-+    uint32_t synthetic_rom_dbg_arg[4];
-+    uint32_t synthetic_rom_dbg_result[4];
-+    uint32_t synthetic_rom_flash_helper_count[
-+        RP2040_SYNTHETIC_ROM_FLASH_HELPER_COUNT];
++static QTestState *rp2040_start(void)
++{
++    return qtest_init("-machine raspi-pico");
++}
 +
-+    Clock *sysclk;
-+};
++static void test_dma_xip_ssi_rx_dreq(void)
++{
++    QTestState *qts = rp2040_start();
++    uint32_t ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_WRITE | DMA_CTRL_DATA_SIZE_8 |
++                    (DREQ_XIP_SSIRX << DMA_CTRL_TREQ_SEL_SHIFT);
 +
-+#endif
++    qtest_writel(qts, SRAM_BASE, 0xffffffff);
++    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, XIP_SSI_BASE + XIP_SSI_DR0);
++    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, SRAM_BASE);
++    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, 4);
++    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
++
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
++                    DMA_CTRL_BUSY, ==, DMA_CTRL_BUSY);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 4);
++
++    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x03);
++    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x00);
++    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x00);
++    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x00);
++
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
++                    DMA_CTRL_BUSY, ==, 0);
++    g_assert_cmphex(qtest_readl(qts, SRAM_BASE), ==, 0);
++
++    qtest_quit(qts);
++}
++
++static void test_dma_write_ring_wrap(void)
++{
++    QTestState *qts = rp2040_start();
++    const uint8_t source[] = { 0x10, 0x11, 0x12, 0x13, 0x14, 0x15 };
++    const uint8_t initial[] = { 0xaa, 0xaa, 0xaa, 0xaa };
++    uint8_t dest[sizeof(initial)];
++    uint32_t read_addr = SRAM_BASE + 0x80;
++    uint32_t write_addr = SRAM_BASE + 0x100;
++    uint32_t ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_READ | DMA_CTRL_INCR_WRITE |
++                    DMA_CTRL_RING_SEL | DMA_CTRL_DATA_SIZE_8 |
++                    (2 << DMA_CTRL_RING_SIZE_SHIFT) |
++                    (DREQ_FORCE << DMA_CTRL_TREQ_SEL_SHIFT);
++
++    qtest_memwrite(qts, read_addr, source, sizeof(source));
++    qtest_memwrite(qts, write_addr, initial, sizeof(initial));
++    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, read_addr);
++    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, write_addr);
++    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, sizeof(source));
++    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
++
++    qtest_memread(qts, write_addr, dest, sizeof(dest));
++    g_assert_cmphex(dest[0], ==, 0x14);
++    g_assert_cmphex(dest[1], ==, 0x15);
++    g_assert_cmphex(dest[2], ==, 0x12);
++    g_assert_cmphex(dest[3], ==, 0x13);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_READ_ADDR), ==,
++                    read_addr + sizeof(source));
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_WRITE_ADDR), ==,
++                    write_addr + 2);
++
++    qtest_quit(qts);
++}
++
++static void test_dma_channel_abort(void)
++{
++    QTestState *qts = rp2040_start();
++    uint32_t ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_WRITE | DMA_CTRL_DATA_SIZE_8 |
++                    (DREQ_XIP_SSIRX << DMA_CTRL_TREQ_SEL_SHIFT);
++
++    qtest_writel(qts, SRAM_BASE, 0xffffffff);
++    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, XIP_SSI_BASE + XIP_SSI_DR0);
++    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, SRAM_BASE);
++    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, 4);
++    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
++
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
++                    DMA_CTRL_BUSY, ==, DMA_CTRL_BUSY);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 4);
++
++    qtest_writel(qts, DMA_BASE + DMA_CHAN_ABORT, BIT(0));
++
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CHAN_ABORT), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
++                    DMA_CTRL_BUSY, ==, 0);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 0);
++
++    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x03);
++    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x00);
++    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x00);
++    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x00);
++
++    g_assert_cmphex(qtest_readl(qts, SRAM_BASE), ==, 0xffffffff);
++
++    qtest_quit(qts);
++}
++
++static void test_dma_sniff_sum(void)
++{
++    QTestState *qts = rp2040_start();
++    const uint8_t source[] = { 1, 2, 3, 4 };
++    uint32_t read_addr = SRAM_BASE + 0x180;
++    uint32_t write_addr = SRAM_BASE + 0x190;
++    uint32_t ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_READ | DMA_CTRL_INCR_WRITE |
++                    DMA_CTRL_SNIFF_EN | DMA_CTRL_DATA_SIZE_8 |
++                    (DREQ_FORCE << DMA_CTRL_TREQ_SEL_SHIFT);
++
++    qtest_memwrite(qts, read_addr, source, sizeof(source));
++    qtest_writel(qts, DMA_BASE + DMA_SNIFF_DATA, 0x100);
++    qtest_writel(qts, DMA_BASE + DMA_SNIFF_CTRL,
++                 DMA_SNIFF_CTRL_EN | DMA_SNIFF_CTRL_CALC_SUM);
++    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, read_addr);
++    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, write_addr);
++    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, sizeof(source));
++    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
++
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_SNIFF_DATA), ==, 0x10a);
++
++    qtest_writel(qts, DMA_BASE + DMA_SNIFF_CTRL,
++                 DMA_SNIFF_CTRL_EN | DMA_SNIFF_CTRL_CALC_SUM |
++                 DMA_SNIFF_CTRL_OUT_REV);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_SNIFF_DATA), ==,
++                    0x50800000);
++
++    qtest_writel(qts, DMA_BASE + DMA_SNIFF_CTRL,
++                 DMA_SNIFF_CTRL_EN | DMA_SNIFF_CTRL_CALC_SUM |
++                 DMA_SNIFF_CTRL_OUT_INV);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_SNIFF_DATA), ==,
++                    0xfffffef5);
++
++    qtest_quit(qts);
++}
++
++static void test_dma_error_status(void)
++{
++    QTestState *qts = rp2040_start();
++    uint32_t ctrl = DMA_CTRL_EN | DMA_CTRL_DATA_SIZE_32 |
++                    (DREQ_FORCE << DMA_CTRL_TREQ_SEL_SHIFT);
++
++    qtest_writel(qts, SRAM_BASE, 0x12345678);
++    qtest_writel(qts, DMA_BASE + DMA_INTR, BIT(0));
++    qtest_writel(qts, DMA_BASE + DMA_INTE0, BIT(0));
++    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, BAD_DMA_ADDR);
++    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, SRAM_BASE + 4);
++    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, 1);
++    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
++
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
++                    (DMA_CTRL_AHB_ERROR | DMA_CTRL_READ_ERROR |
++                     DMA_CTRL_WRITE_ERROR | DMA_CTRL_BUSY), ==,
++                    DMA_CTRL_AHB_ERROR | DMA_CTRL_READ_ERROR);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 1);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTR), ==, BIT(0));
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTS0), ==, BIT(0));
++
++    qtest_writel(qts, DMA_BASE + DMA_INTS0, BIT(0));
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTR), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTS0), ==, 0);
++
++    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG,
++                 DMA_CTRL_READ_ERROR | DMA_CTRL_WRITE_ERROR);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
++                    (DMA_CTRL_AHB_ERROR | DMA_CTRL_READ_ERROR |
++                     DMA_CTRL_WRITE_ERROR), ==, 0);
++
++    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, SRAM_BASE);
++    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, BAD_DMA_ADDR);
++    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, 1);
++    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
++
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
++                    (DMA_CTRL_AHB_ERROR | DMA_CTRL_READ_ERROR |
++                     DMA_CTRL_WRITE_ERROR | DMA_CTRL_BUSY), ==,
++                    DMA_CTRL_AHB_ERROR | DMA_CTRL_WRITE_ERROR);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 1);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTR), ==, BIT(0));
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTS0), ==, BIT(0));
++
++    qtest_quit(qts);
++}
++
++static void test_dma_timer_dreq(void)
++{
++    QTestState *qts = rp2040_start();
++    const uint8_t source[] = { 0xa1, 0xb2, 0xc3 };
++    uint8_t dest[sizeof(source)];
++    uint32_t read_addr = SRAM_BASE + 0x280;
++    uint32_t write_addr = SRAM_BASE + 0x290;
++    uint32_t ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_READ | DMA_CTRL_INCR_WRITE |
++                    DMA_CTRL_DATA_SIZE_8 |
++                    (DREQ_DMA_TIMER0 << DMA_CTRL_TREQ_SEL_SHIFT);
++
++    qtest_memwrite(qts, read_addr, source, sizeof(source));
++    memset(dest, 0, sizeof(dest));
++    qtest_memwrite(qts, write_addr, dest, sizeof(dest));
++    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, read_addr);
++    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, write_addr);
++    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, sizeof(source));
++    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
++
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
++                    DMA_CTRL_BUSY, ==, DMA_CTRL_BUSY);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==,
++                    sizeof(source));
++
++    /*
++     * X/Y = 1/1000 on a nominal 125 MHz sys_clk gives one DREQ every
++     * 8000 ns of QEMU virtual time.
++     */
++    qtest_writel(qts, DMA_BASE + DMA_TIMER0, (1u << 16) | 1000u);
++    qtest_clock_step(qts, 7999);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==,
++                    sizeof(source));
++
++    qtest_clock_step(qts, 1);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 2);
++    g_assert_cmphex(qtest_readb(qts, write_addr), ==, source[0]);
++
++    qtest_clock_step(qts, 8000);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 1);
++    g_assert_cmphex(qtest_readb(qts, write_addr + 1), ==, source[1]);
++
++    qtest_clock_step(qts, 8000);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
++                    DMA_CTRL_BUSY, ==, 0);
++    qtest_memread(qts, write_addr, dest, sizeof(dest));
++    g_assert_cmpmem(dest, sizeof(dest), source, sizeof(source));
++
++    qtest_quit(qts);
++}
++
++static void test_dma_control_blocks(void)
++{
++    QTestState *qts = rp2040_start();
++    const uint8_t source[] = { 0x44, 0x4d, 0x41 };
++    uint8_t dest[sizeof(source)];
++    uint32_t blocks[] = {
++        sizeof(source), SRAM_BASE + 0x380,
++        0, 0,
++    };
++    uint32_t block_addr = SRAM_BASE + 0x300;
++    uint32_t read_addr = SRAM_BASE + 0x380;
++    uint32_t write_addr = SRAM_BASE + 0x390;
++    uint32_t chan1 = DMA_BASE + DMA_CH_SIZE;
++    uint32_t ctrl_chan_ctrl;
++    uint32_t data_chan_ctrl;
++
++    qtest_memwrite(qts, block_addr, blocks, sizeof(blocks));
++    qtest_memwrite(qts, read_addr, source, sizeof(source));
++
++    /*
++     * Channel 0 writes two 32-bit words into channel 1's alias 3
++     * TRANS_COUNT/READ_ADDR registers.  The second write triggers channel 1.
++     */
++    ctrl_chan_ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_READ |
++                     DMA_CTRL_INCR_WRITE | DMA_CTRL_RING_SEL |
++                     DMA_CTRL_DATA_SIZE_32 |
++                     (3 << DMA_CTRL_RING_SIZE_SHIFT) |
++                     (DREQ_FORCE << DMA_CTRL_TREQ_SEL_SHIFT);
++
++    /*
++     * Channel 1 copies the configured block and chains back to channel 0.
++     * The final zero-length control block sets channel 1's interrupt via
++     * IRQ_QUIET, matching the SDK control_blocks example's termination.
++     */
++    data_chan_ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_READ |
++                     DMA_CTRL_INCR_WRITE | DMA_CTRL_IRQ_QUIET |
++                     (DREQ_FORCE << DMA_CTRL_TREQ_SEL_SHIFT) |
++                     (0 << DMA_CTRL_CHAIN_TO_SHIFT);
++
++    qtest_writel(qts, chan1 + DMA_CH_WRITE_ADDR, write_addr);
++    qtest_writel(qts, chan1 + DMA_CH_AL1_CTRL, data_chan_ctrl);
++
++    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, block_addr);
++    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR,
++                 chan1 + DMA_CH_AL3_TRANS_COUNT);
++    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, 2);
++    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl_chan_ctrl);
++
++    qtest_memread(qts, write_addr, dest, sizeof(dest));
++    g_assert_cmpmem(dest, sizeof(dest), source, sizeof(source));
++    g_assert_cmphex(qtest_readl(qts, chan1 + DMA_CH_TRANS_COUNT), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, chan1 + DMA_CH_CTRL_TRIG) &
++                    DMA_CTRL_BUSY, ==, 0);
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTR) & BIT(1), ==,
++                    BIT(1));
++
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/rp2040-dma/xip-ssi-rx-dreq",
++                   test_dma_xip_ssi_rx_dreq);
++    qtest_add_func("/rp2040-dma/write-ring-wrap",
++                   test_dma_write_ring_wrap);
++    qtest_add_func("/rp2040-dma/channel-abort",
++                   test_dma_channel_abort);
++    qtest_add_func("/rp2040-dma/sniff-sum",
++                   test_dma_sniff_sum);
++    qtest_add_func("/rp2040-dma/error-status",
++                   test_dma_error_status);
++    qtest_add_func("/rp2040-dma/timer-dreq",
++                   test_dma_timer_dreq);
++    qtest_add_func("/rp2040-dma/control-blocks",
++                   test_dma_control_blocks);
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/rp2040-ioqspi-test.c b/tests/qtest/rp2040-ioqspi-test.c
+new file mode 100644
+index 0000000000..4f94b5f3a2
+--- /dev/null
++++ b/tests/qtest/rp2040-ioqspi-test.c
+@@ -0,0 +1,81 @@
++/*
++ * QTest testcase for the RP2040 QSPI IO bank block.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/bitops.h"
++
++#define IOQSPI_BASE             0x40018000
++#define IOQSPI_SCLK_STATUS      0x00
++#define IOQSPI_SCLK_CTRL        0x04
++#define IOQSPI_SD1_CTRL         0x1c
++#define IOQSPI_PROC0_INTE       0x34
++#define IOQSPI_PROC0_INTF       0x38
++#define IOQSPI_PROC0_INTS       0x3c
++
++#define IOQSPI_CTRL_RESET       0x1f
++#define IOQSPI_SD1_CTRL_SET     0x201c
++#define IOQSPI_SD1_CTRL_CLR     0x301c
++
++static QTestState *rp2040_start(void)
++{
++    return qtest_init("-machine raspi-pico");
++}
++
++static void test_ioqspi_reset_values(void)
++{
++    QTestState *qts = rp2040_start();
++
++    g_assert_cmphex(qtest_readl(qts, IOQSPI_BASE + IOQSPI_SCLK_STATUS), ==,
++                    0);
++    g_assert_cmphex(qtest_readl(qts, IOQSPI_BASE + IOQSPI_SCLK_CTRL), ==,
++                    IOQSPI_CTRL_RESET);
++    g_assert_cmphex(qtest_readl(qts, IOQSPI_BASE + IOQSPI_SD1_CTRL), ==,
++                    IOQSPI_CTRL_RESET);
++
++    qtest_quit(qts);
++}
++
++static void test_ioqspi_atomic_ctrl_aliases(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_SD1_CTRL, 0);
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_SD1_CTRL_SET, BIT(17));
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_SD1_CTRL_CLR, BIT(17));
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_SD1_CTRL_SET, BIT(9));
++
++    g_assert_cmphex(qtest_readl(qts, IOQSPI_BASE + IOQSPI_SD1_CTRL), ==,
++                    BIT(9));
++
++    qtest_quit(qts);
++}
++
++static void test_ioqspi_interrupt_force_status(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_PROC0_INTE, BIT(1));
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_PROC0_INTF, BIT(2));
++
++    g_assert_cmphex(qtest_readl(qts, IOQSPI_BASE + IOQSPI_PROC0_INTS), ==,
++                    BIT(2));
++
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/rp2040-ioqspi/reset-values", test_ioqspi_reset_values);
++    qtest_add_func("/rp2040-ioqspi/atomic-ctrl-aliases",
++                   test_ioqspi_atomic_ctrl_aliases);
++    qtest_add_func("/rp2040-ioqspi/interrupt-force-status",
++                   test_ioqspi_interrupt_force_status);
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/rp2040-resets-test.c b/tests/qtest/rp2040-resets-test.c
+new file mode 100644
+index 0000000000..f874a25571
+--- /dev/null
++++ b/tests/qtest/rp2040-resets-test.c
+@@ -0,0 +1,84 @@
++/*
++ * QTest testcase for the RP2040 reset controller block.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++
++#define RESETS_BASE        0x4000c000
++#define RESETS_RESET       0x00
++#define RESETS_WDSEL       0x04
++#define RESETS_RESET_DONE  0x08
++
++#define RESETS_VALID_MASK  0x01ffffff
++#define RESET_ADC          (1u << 0)
++#define RESET_PWM          (1u << 14)
++
++#define ATOMIC_SET         0x2000
++#define ATOMIC_CLR         0x3000
++
++static QTestState *rp2040_start(void)
++{
++    return qtest_init("-machine raspi-pico");
++}
++
++static void test_resets_reset_values(void)
++{
++    QTestState *qts = rp2040_start();
++
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET), ==,
++                    RESETS_VALID_MASK);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET_DONE), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_WDSEL), ==, 0);
++
++    qtest_quit(qts);
++}
++
++static void test_resets_set_clear_done(void)
++{
++    QTestState *qts = rp2040_start();
++    uint32_t mask = RESET_PWM | RESET_ADC;
++
++    qtest_writel(qts, RESETS_BASE + RESETS_RESET + ATOMIC_CLR, mask);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET) & mask,
++                    ==, 0);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET_DONE) & mask,
++                    ==, mask);
++
++    qtest_writel(qts, RESETS_BASE + RESETS_RESET + ATOMIC_SET, RESET_PWM);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET) & RESET_PWM,
++                    ==, RESET_PWM);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET_DONE) &
++                    RESET_PWM, ==, 0);
++
++    qtest_writel(qts, RESETS_BASE + RESETS_RESET + ATOMIC_CLR, RESET_PWM);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET_DONE) & mask,
++                    ==, mask);
++
++    qtest_quit(qts);
++}
++
++static void test_resets_wdsel(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, RESETS_BASE + RESETS_WDSEL, 0xffffffff);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_WDSEL), ==,
++                    RESETS_VALID_MASK);
++
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/rp2040-resets/reset-values", test_resets_reset_values);
++    qtest_add_func("/rp2040-resets/set-clear-done",
++                   test_resets_set_clear_done);
++    qtest_add_func("/rp2040-resets/wdsel", test_resets_wdsel);
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/rp2040-rosc-test.c b/tests/qtest/rp2040-rosc-test.c
+new file mode 100644
+index 0000000000..2f1fb96022
+--- /dev/null
++++ b/tests/qtest/rp2040-rosc-test.c
+@@ -0,0 +1,146 @@
++/*
++ * QTest testcase for the RP2040 ring oscillator block.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/bitops.h"
++
++#define ROSC_BASE              0x40060000
++#define ROSC_CTRL              0x00
++#define ROSC_FREQA             0x04
++#define ROSC_DORMANT           0x0c
++#define ROSC_DIV               0x10
++#define ROSC_PHASE             0x14
++#define ROSC_STATUS            0x18
++#define ROSC_RANDOMBIT         0x1c
++#define ROSC_COUNT             0x20
++
++#define ROSC_ENABLE_ENABLE     0xfab
++#define ROSC_ENABLE_DISABLE    0xd1e
++#define ROSC_FREQ_RANGE_LOW    0xfa4
++#define ROSC_WAKE_VALUE        0x77616b65
++#define ROSC_STATUS_STABLE     BIT(31)
++#define ROSC_STATUS_BADWRITE   BIT(24)
++#define ROSC_STATUS_DIV_RUNNING BIT(16)
++#define ROSC_STATUS_ENABLED    BIT(12)
++#define ROSC_STATUS_RUNNING \
++    (ROSC_STATUS_STABLE | ROSC_STATUS_DIV_RUNNING | ROSC_STATUS_ENABLED)
++
++static QTestState *rp2040_start(void)
++{
++    return qtest_init("-machine raspi-pico");
++}
++
++static uint32_t read_random_bits(QTestState *qts, unsigned count)
++{
++    uint32_t value = 0;
++    unsigned i;
++
++    for (i = 0; i < count; i++) {
++        value |= (qtest_readl(qts, ROSC_BASE + ROSC_RANDOMBIT) & BIT(0)) << i;
++    }
++
++    return value;
++}
++
++static void test_rosc_reset_values(void)
++{
++    QTestState *qts = rp2040_start();
++
++    g_assert_cmphex(qtest_readl(qts, ROSC_BASE + ROSC_CTRL), ==,
++                    (ROSC_ENABLE_ENABLE << 12) | ROSC_FREQ_RANGE_LOW);
++    g_assert_cmphex(qtest_readl(qts, ROSC_BASE + ROSC_DORMANT), ==,
++                    ROSC_WAKE_VALUE);
++    g_assert_cmphex(qtest_readl(qts, ROSC_BASE + ROSC_DIV), ==, 0x00000ab0);
++    g_assert_cmphex(qtest_readl(qts, ROSC_BASE + ROSC_STATUS), ==,
++                    ROSC_STATUS_RUNNING);
++
++    qtest_quit(qts);
++}
++
++static void test_rosc_badwrite_and_clear(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, ROSC_BASE + ROSC_FREQA, 0x00007777);
++    g_assert_cmphex(qtest_readl(qts, ROSC_BASE + ROSC_FREQA), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, ROSC_BASE + ROSC_STATUS) &
++                    ROSC_STATUS_BADWRITE, ==, ROSC_STATUS_BADWRITE);
++
++    qtest_writel(qts, ROSC_BASE + ROSC_STATUS, ROSC_STATUS_BADWRITE);
++    g_assert_cmphex(qtest_readl(qts, ROSC_BASE + ROSC_STATUS) &
++                    ROSC_STATUS_BADWRITE, ==, 0);
++
++    qtest_quit(qts);
++}
++
++static void test_rosc_count_reaches_zero(void)
++{
++    QTestState *qts = rp2040_start();
++    int i;
++
++    qtest_writel(qts, ROSC_BASE + ROSC_COUNT, 1);
++    for (i = 0; i < 16 && qtest_readl(qts, ROSC_BASE + ROSC_COUNT); i++) {
++        qtest_clock_step(qts, 1000);
++    }
++
++    g_assert_cmphex(qtest_readl(qts, ROSC_BASE + ROSC_COUNT), ==, 0);
++
++    qtest_quit(qts);
++}
++
++static void test_rosc_misc_values(void)
++{
++    QTestState *qts = rp2040_start();
++
++    g_assert_cmphex(qtest_readl(qts, ROSC_BASE + ROSC_RANDOMBIT) & ~BIT(0),
++                    ==, 0);
++    qtest_writel(qts, ROSC_BASE + ROSC_DIV, 0xaa1);
++    g_assert_cmphex(qtest_readl(qts, ROSC_BASE + ROSC_DIV), ==, 0xaa1);
++    qtest_writel(qts, ROSC_BASE + ROSC_PHASE, 0xaa8);
++    g_assert_cmphex(qtest_readl(qts, ROSC_BASE + ROSC_PHASE), ==, 0xaa8);
++
++    qtest_writel(qts, ROSC_BASE + ROSC_CTRL,
++                 (ROSC_ENABLE_DISABLE << 12) | ROSC_FREQ_RANGE_LOW);
++    g_assert_cmphex(qtest_readl(qts, ROSC_BASE + ROSC_STATUS) &
++                    ROSC_STATUS_ENABLED, ==, 0);
++
++    qtest_quit(qts);
++}
++
++static void test_rosc_seeded_randombit(void)
++{
++    QTestState *qts_a;
++    QTestState *qts_b;
++    uint32_t bits_a;
++    uint32_t bits_b;
++
++    qts_a = qtest_init("-machine raspi-pico,rosc-random-seed=0x1234");
++    bits_a = read_random_bits(qts_a, 32);
++    qtest_quit(qts_a);
++
++    qts_b = qtest_init("-machine raspi-pico,rosc-random-seed=0x1234");
++    bits_b = read_random_bits(qts_b, 32);
++    qtest_quit(qts_b);
++
++    g_assert_cmphex(bits_a, ==, bits_b);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/rp2040-rosc/reset-values", test_rosc_reset_values);
++    qtest_add_func("/rp2040-rosc/badwrite-and-clear",
++                   test_rosc_badwrite_and_clear);
++    qtest_add_func("/rp2040-rosc/count-reaches-zero",
++                   test_rosc_count_reaches_zero);
++    qtest_add_func("/rp2040-rosc/misc-values", test_rosc_misc_values);
++    qtest_add_func("/rp2040-rosc/seeded-randombit",
++                   test_rosc_seeded_randombit);
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/rp2040-sio-test.c b/tests/qtest/rp2040-sio-test.c
+new file mode 100644
+index 0000000000..8212497e28
+--- /dev/null
++++ b/tests/qtest/rp2040-sio-test.c
+@@ -0,0 +1,234 @@
++/*
++ * QTest testcase for the RP2040 SIO block.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/bitops.h"
++
++#define SIO_BASE                0xd0000000
++#define SIO_CPUID               0x000
++#define SIO_GPIO_IN             0x004
++#define SIO_GPIO_HI_IN          0x008
++#define SIO_GPIO_OUT            0x010
++#define SIO_GPIO_OUT_SET        0x014
++#define SIO_GPIO_OUT_CLR        0x018
++#define SIO_GPIO_OUT_XOR        0x01c
++#define SIO_GPIO_HI_OUT         0x030
++#define SIO_GPIO_HI_OUT_SET     0x034
++#define SIO_GPIO_HI_OUT_CLR     0x038
++#define SIO_GPIO_HI_OUT_XOR     0x03c
++#define SIO_FIFO_ST             0x050
++#define SIO_FIFO_RD             0x058
++#define SIO_SPINLOCK_ST         0x05c
++#define SIO_SPINLOCK0           0x100
++#define SIO_INTERP0_ACCUM0      0x080
++#define SIO_INTERP0_ACCUM1      0x084
++#define SIO_INTERP0_BASE0       0x088
++#define SIO_INTERP0_BASE1       0x08c
++#define SIO_INTERP0_POP_LANE1   0x098
++#define SIO_INTERP0_PEEK_LANE0  0x0a0
++#define SIO_INTERP0_PEEK_LANE1  0x0a4
++#define SIO_INTERP0_CTRL_LANE0  0x0ac
++#define SIO_INTERP0_CTRL_LANE1  0x0b0
++#define SIO_INTERP0_ACCUM0_ADD  0x0b4
++#define SIO_INTERP0_BASE_1AND0  0x0bc
++#define SIO_INTERP1_ACCUM0      0x0c0
++#define SIO_INTERP1_BASE0       0x0c8
++#define SIO_INTERP1_BASE1       0x0cc
++#define SIO_INTERP1_PEEK_LANE0  0x0e0
++#define SIO_INTERP1_CTRL_LANE0  0x0ec
++
++#define INTERP_CTRL_SHIFT(n)    (n)
++#define INTERP_CTRL_MASK(lsb, msb) (((lsb) << 5) | ((msb) << 10))
++#define INTERP_CTRL_SIGNED      BIT(15)
++#define INTERP_CTRL_CROSS_RESULT BIT(17)
++#define INTERP0_CTRL_BLEND      BIT(21)
++#define INTERP1_CTRL_CLAMP      BIT(22)
++
++static QTestState *rp2040_start(void)
++{
++    return qtest_init("-machine raspi-pico");
++}
++
++static void test_sio_reset_values(void)
++{
++    QTestState *qts = rp2040_start();
++
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_CPUID), ==, 0);
++    g_assert_cmphex(qtest_readb(qts, SIO_BASE + SIO_CPUID), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_GPIO_IN), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_GPIO_HI_IN), ==, BIT(1));
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_GPIO_OUT), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_GPIO_HI_OUT), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_FIFO_ST), ==, BIT(1));
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_SPINLOCK_ST), ==, 0);
++
++    qtest_quit(qts);
++}
++
++static void test_sio_gpio_alias_registers(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, SIO_BASE + SIO_GPIO_OUT, BIT(3));
++    qtest_writel(qts, SIO_BASE + SIO_GPIO_OUT_SET, BIT(5));
++    qtest_writel(qts, SIO_BASE + SIO_GPIO_OUT_CLR, BIT(3));
++    qtest_writel(qts, SIO_BASE + SIO_GPIO_OUT_XOR, BIT(7));
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_GPIO_OUT), ==,
++                    BIT(5) | BIT(7));
++
++    qtest_writel(qts, SIO_BASE + SIO_GPIO_HI_OUT, BIT(0));
++    qtest_writel(qts, SIO_BASE + SIO_GPIO_HI_OUT_SET, BIT(2));
++    qtest_writel(qts, SIO_BASE + SIO_GPIO_HI_OUT_CLR, BIT(0));
++    qtest_writel(qts, SIO_BASE + SIO_GPIO_HI_OUT_XOR, BIT(5));
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_GPIO_HI_OUT), ==,
++                    BIT(2) | BIT(5));
++
++    qtest_quit(qts);
++}
++
++static void test_sio_fifo_empty_read_sets_roe(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_readl(qts, SIO_BASE + SIO_FIFO_RD);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_FIFO_ST), ==,
++                    BIT(3) | BIT(1));
++
++    qtest_writel(qts, SIO_BASE + SIO_FIFO_ST, BIT(3));
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_FIFO_ST), ==, BIT(1));
++
++    qtest_quit(qts);
++}
++
++static void test_sio_spinlock_claim_release(void)
++{
++    QTestState *qts = rp2040_start();
++
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_SPINLOCK0), ==, BIT(0));
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_SPINLOCK0), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_SPINLOCK_ST), ==, BIT(0));
++
++    qtest_writel(qts, SIO_BASE + SIO_SPINLOCK0, 0);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_SPINLOCK_ST), ==, 0);
++
++    qtest_quit(qts);
++}
++
++static void test_sio_interp_mask_and_sign(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_ACCUM0, 0x1234abcd);
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_CTRL_LANE0,
++                 INTERP_CTRL_MASK(4, 7));
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_INTERP0_ACCUM0_ADD),
++                    ==, 0x000000c0);
++
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_CTRL_LANE0,
++                 INTERP_CTRL_MASK(4, 7) | INTERP_CTRL_SIGNED);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_INTERP0_ACCUM0_ADD),
++                    ==, 0xffffffc0);
++
++    qtest_quit(qts);
++}
++
++static void test_sio_interp_pop_cross_result(void)
++{
++    QTestState *qts = rp2040_start();
++    uint32_t full_mask = INTERP_CTRL_MASK(0, 31);
++
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_ACCUM0, 123);
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_ACCUM1, 456);
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_BASE0, 1);
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_BASE1, 0);
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_CTRL_LANE0,
++                 full_mask | INTERP_CTRL_CROSS_RESULT);
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_CTRL_LANE1,
++                 full_mask | INTERP_CTRL_CROSS_RESULT);
++
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_INTERP0_PEEK_LANE0),
++                    ==, 124);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_INTERP0_POP_LANE1),
++                    ==, 456);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_INTERP0_PEEK_LANE0),
++                    ==, 457);
++
++    qtest_quit(qts);
++}
++
++static void test_sio_interp_blend(void)
++{
++    QTestState *qts = rp2040_start();
++    uint32_t full_mask = INTERP_CTRL_MASK(0, 31);
++
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_CTRL_LANE0,
++                 full_mask | INTERP0_CTRL_BLEND);
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_CTRL_LANE1, full_mask);
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_ACCUM1, 128);
++
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_BASE_1AND0, 0x30005000);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_INTERP0_PEEK_LANE1),
++                    ==, 0x00004000);
++
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_BASE_1AND0, 0xe000f000);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_INTERP0_PEEK_LANE1),
++                    ==, 0x0000e800);
++
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_CTRL_LANE1,
++                 full_mask | INTERP_CTRL_SIGNED);
++    qtest_writel(qts, SIO_BASE + SIO_INTERP0_BASE_1AND0, 0xe000f000);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_INTERP0_PEEK_LANE1),
++                    ==, 0xffffe800);
++
++    qtest_quit(qts);
++}
++
++static void test_sio_interp_clamp(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, SIO_BASE + SIO_INTERP1_CTRL_LANE0,
++                 INTERP1_CTRL_CLAMP | INTERP_CTRL_SIGNED |
++                 INTERP_CTRL_SHIFT(2) | INTERP_CTRL_MASK(0, 29));
++    qtest_writel(qts, SIO_BASE + SIO_INTERP1_BASE0, 0);
++    qtest_writel(qts, SIO_BASE + SIO_INTERP1_BASE1, 255);
++
++    qtest_writel(qts, SIO_BASE + SIO_INTERP1_ACCUM0, -1024);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_INTERP1_PEEK_LANE0),
++                    ==, 0);
++
++    qtest_writel(qts, SIO_BASE + SIO_INTERP1_ACCUM0, 512);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_INTERP1_PEEK_LANE0),
++                    ==, 128);
++
++    qtest_writel(qts, SIO_BASE + SIO_INTERP1_ACCUM0, 1024);
++    g_assert_cmphex(qtest_readl(qts, SIO_BASE + SIO_INTERP1_PEEK_LANE0),
++                    ==, 255);
++
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/rp2040-sio/reset-values", test_sio_reset_values);
++    qtest_add_func("/rp2040-sio/gpio-alias-registers",
++                   test_sio_gpio_alias_registers);
++    qtest_add_func("/rp2040-sio/fifo-empty-read-sets-roe",
++                   test_sio_fifo_empty_read_sets_roe);
++    qtest_add_func("/rp2040-sio/spinlock-claim-release",
++                   test_sio_spinlock_claim_release);
++    qtest_add_func("/rp2040-sio/interp-mask-and-sign",
++                   test_sio_interp_mask_and_sign);
++    qtest_add_func("/rp2040-sio/interp-pop-cross-result",
++                   test_sio_interp_pop_cross_result);
++    qtest_add_func("/rp2040-sio/interp-blend", test_sio_interp_blend);
++    qtest_add_func("/rp2040-sio/interp-clamp", test_sio_interp_clamp);
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/rp2040-sysinfo-syscfg-test.c b/tests/qtest/rp2040-sysinfo-syscfg-test.c
+new file mode 100644
+index 0000000000..7440c3570b
+--- /dev/null
++++ b/tests/qtest/rp2040-sysinfo-syscfg-test.c
+@@ -0,0 +1,177 @@
++/*
++ * QTest testcase for the RP2040 sysinfo and syscfg blocks.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/bitops.h"
++
++#define SYSINFO_BASE                  0x40000000
++#define SYSINFO_CHIP_ID               0x00
++#define SYSINFO_PLATFORM              0x04
++#define SYSINFO_GITREF_RP2040         0x40
++
++#define SYSINFO_PLATFORM_ASIC         BIT(1)
++
++#define SYSCFG_BASE                   0x40004000
++#define SYSCFG_PROC0_NMI_MASK         0x00
++#define SYSCFG_PROC1_NMI_MASK         0x04
++#define SYSCFG_PROC_CONFIG            0x08
++#define SYSCFG_PROC_IN_SYNC_BYPASS    0x0c
++#define SYSCFG_PROC_IN_SYNC_BYPASS_HI 0x10
++#define SYSCFG_DBGFORCE               0x14
++#define SYSCFG_MEMPOWERDOWN           0x18
++
++#define SRAM0_BASE                    0x20000000
++#define UART0_BASE                    0x40034000
++#define UARTDR                        0x00
++#define UARTCR                        0x30
++#define UARTIMSC                      0x38
++#define UARTICR                       0x44
++#define UART_INT_TX                   BIT(5)
++#define UART0_IRQ                     20
++#define NVIC_ISPR                     0xe000e200
++#define NVIC_ICPR                     0xe000e280
++#define NVIC_ICSR                     0xe000ed04
++#define NVIC_ICSR_NMIPENDSET          BIT(31)
++
++#define PROC_CONFIG_RESET             0x10000000
++#define DBGFORCE_RESET                0x00000066
++
++#define ATOMIC_SET_ALIAS              0x2000
++#define ATOMIC_CLR_ALIAS              0x3000
++
++static QTestState *rp2040_start(void)
++{
++    return qtest_init("-machine raspi-pico");
++}
++
++static void test_sysinfo_read_values(void)
++{
++    QTestState *qts = rp2040_start();
++
++    g_assert_cmphex(qtest_readl(qts, SYSINFO_BASE + SYSINFO_CHIP_ID), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, SYSINFO_BASE + SYSINFO_PLATFORM), ==,
++                    SYSINFO_PLATFORM_ASIC);
++    g_assert_cmphex(qtest_readl(qts, SYSINFO_BASE + SYSINFO_GITREF_RP2040),
++                    ==, 0);
++
++    qtest_quit(qts);
++}
++
++static void test_syscfg_reset_values(void)
++{
++    QTestState *qts = rp2040_start();
++
++    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_PROC0_NMI_MASK),
++                    ==, 0);
++    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_PROC1_NMI_MASK),
++                    ==, 0);
++    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_PROC_CONFIG), ==,
++                    PROC_CONFIG_RESET);
++    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_DBGFORCE), ==,
++                    DBGFORCE_RESET);
++
++    qtest_quit(qts);
++}
++
++static void test_syscfg_rw_masks(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, SYSCFG_BASE + SYSCFG_PROC0_NMI_MASK, 0xa5a5a5a5);
++    qtest_writel(qts, SYSCFG_BASE + SYSCFG_PROC1_NMI_MASK, 0x5a5a5a5a);
++    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_PROC0_NMI_MASK),
++                    ==, 0xa5a5a5a5);
++    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_PROC1_NMI_MASK),
++                    ==, 0x5a5a5a5a);
++
++    qtest_writel(qts, SYSCFG_BASE + SYSCFG_PROC_IN_SYNC_BYPASS, 0xffffffff);
++    qtest_writel(qts, SYSCFG_BASE + SYSCFG_PROC_IN_SYNC_BYPASS_HI,
++                 0xffffffff);
++    qtest_writel(qts, SYSCFG_BASE + SYSCFG_MEMPOWERDOWN, 0xffffffff);
++    g_assert_cmphex(qtest_readl(qts,
++                                SYSCFG_BASE + SYSCFG_PROC_IN_SYNC_BYPASS),
++                    ==, 0x3fffffff);
++    g_assert_cmphex(qtest_readl(qts,
++                                SYSCFG_BASE + SYSCFG_PROC_IN_SYNC_BYPASS_HI),
++                    ==, 0x0000003f);
++    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_MEMPOWERDOWN), ==,
++                    0x000000ff);
++
++    qtest_quit(qts);
++}
++
++static void test_syscfg_atomic_aliases(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, SYSCFG_BASE + SYSCFG_PROC0_NMI_MASK, 0);
++    qtest_writel(qts, SYSCFG_BASE + ATOMIC_SET_ALIAS + SYSCFG_PROC0_NMI_MASK,
++                 0x0000000f);
++    qtest_writel(qts, SYSCFG_BASE + ATOMIC_CLR_ALIAS + SYSCFG_PROC0_NMI_MASK,
++                 0x00000003);
++    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_PROC0_NMI_MASK),
++                    ==, 0x0000000c);
++
++    qtest_quit(qts);
++}
++
++static void test_syscfg_mempowerdown_blocks_sram(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, SRAM0_BASE, 0x11223344);
++    g_assert_cmphex(qtest_readl(qts, SRAM0_BASE), ==, 0x11223344);
++
++    qtest_writel(qts, SYSCFG_BASE + SYSCFG_MEMPOWERDOWN, BIT(0));
++    qtest_writel(qts, SRAM0_BASE, 0xaabbccdd);
++    qtest_writel(qts, SYSCFG_BASE + SYSCFG_MEMPOWERDOWN, 0);
++
++    g_assert_cmphex(qtest_readl(qts, SRAM0_BASE), ==, 0x11223344);
++
++    qtest_quit(qts);
++}
++
++static void test_syscfg_nmi_mask_routes_uart0_irq(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, UART0_BASE + UARTCR, BIT(0) | BIT(8));
++    qtest_writel(qts, UART0_BASE + UARTIMSC, UART_INT_TX);
++
++    qtest_writel(qts, UART0_BASE + UARTICR, UART_INT_TX);
++    qtest_writel(qts, NVIC_ICPR, BIT(UART0_IRQ));
++    qtest_writel(qts, UART0_BASE + UARTDR, 'a');
++    g_assert_cmphex(qtest_readl(qts, NVIC_ISPR) & BIT(UART0_IRQ), ==,
++                    BIT(UART0_IRQ));
++
++    qtest_writel(qts, UART0_BASE + UARTICR, UART_INT_TX);
++    qtest_writel(qts, NVIC_ICPR, BIT(UART0_IRQ));
++    qtest_writel(qts, SYSCFG_BASE + SYSCFG_PROC0_NMI_MASK, BIT(UART0_IRQ));
++    qtest_writel(qts, UART0_BASE + UARTDR, 'b');
++    g_assert_cmphex(qtest_readl(qts, NVIC_ISPR) & BIT(UART0_IRQ), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, NVIC_ICSR) & NVIC_ICSR_NMIPENDSET, ==,
++                    NVIC_ICSR_NMIPENDSET);
++
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/rp2040-sysinfo/read-values", test_sysinfo_read_values);
++    qtest_add_func("/rp2040-syscfg/reset-values", test_syscfg_reset_values);
++    qtest_add_func("/rp2040-syscfg/rw-masks", test_syscfg_rw_masks);
++    qtest_add_func("/rp2040-syscfg/atomic-aliases",
++                   test_syscfg_atomic_aliases);
++    qtest_add_func("/rp2040-syscfg/mempowerdown-blocks-sram",
++                   test_syscfg_mempowerdown_blocks_sram);
++    qtest_add_func("/rp2040-syscfg/nmi-mask-routes-uart0-irq",
++                   test_syscfg_nmi_mask_routes_uart0_irq);
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/rp2040-tbman-test.c b/tests/qtest/rp2040-tbman-test.c
+new file mode 100644
+index 0000000000..a05eb3c3e2
+--- /dev/null
++++ b/tests/qtest/rp2040-tbman-test.c
+@@ -0,0 +1,32 @@
++/*
++ * QTest testcase for the RP2040 testbench manager block.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/bitops.h"
++
++#define TBMAN_BASE          0x4006c000
++#define TBMAN_PLATFORM      0x00
++#define TBMAN_PLATFORM_ASIC BIT(0)
++
++static void test_tbman_platform(void)
++{
++    QTestState *qts = qtest_init("-machine raspi-pico");
++
++    g_assert_cmphex(qtest_readl(qts, TBMAN_BASE + TBMAN_PLATFORM), ==,
++                    TBMAN_PLATFORM_ASIC);
++
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/rp2040-tbman/platform", test_tbman_platform);
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/rp2040-vreg-test.c b/tests/qtest/rp2040-vreg-test.c
+new file mode 100644
+index 0000000000..b08bb16765
+--- /dev/null
++++ b/tests/qtest/rp2040-vreg-test.c
+@@ -0,0 +1,79 @@
++/*
++ * QTest testcase for the RP2040 vreg_and_chip_reset block.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/bitops.h"
++
++#define VREG_BASE           0x40064000
++#define VREG_VREG           0x00
++#define VREG_BOD            0x04
++#define VREG_CHIP_RESET     0x08
++
++#define VREG_ROK            BIT(12)
++#define VREG_RESET          0x000000b1
++#define BOD_RESET           0x00000091
++#define CHIP_RESET_RESCUE   BIT(24)
++
++#define ATOMIC_SET_ALIAS    0x2000
++#define ATOMIC_CLR_ALIAS    0x3000
++
++static QTestState *rp2040_start(void)
++{
++    return qtest_init("-machine raspi-pico");
++}
++
++static void test_vreg_reset_values(void)
++{
++    QTestState *qts = rp2040_start();
++
++    g_assert_cmphex(qtest_readl(qts, VREG_BASE + VREG_VREG), ==,
++                    VREG_RESET | VREG_ROK);
++    g_assert_cmphex(qtest_readl(qts, VREG_BASE + VREG_BOD), ==, BOD_RESET);
++    g_assert_cmphex(qtest_readl(qts, VREG_BASE + VREG_CHIP_RESET), ==, 0);
++
++    qtest_quit(qts);
++}
++
++static void test_vreg_rw_masks(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, VREG_BASE + VREG_VREG, 0xffffffff);
++    qtest_writel(qts, VREG_BASE + VREG_BOD, 0xffffffff);
++    qtest_writel(qts, VREG_BASE + VREG_CHIP_RESET, 0xffffffff);
++
++    g_assert_cmphex(qtest_readl(qts, VREG_BASE + VREG_VREG), ==, 0x000000f3);
++    g_assert_cmphex(qtest_readl(qts, VREG_BASE + VREG_BOD), ==, 0x000000f1);
++    g_assert_cmphex(qtest_readl(qts, VREG_BASE + VREG_CHIP_RESET), ==,
++                    CHIP_RESET_RESCUE);
++
++    qtest_quit(qts);
++}
++
++static void test_vreg_atomic_aliases(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, VREG_BASE + VREG_BOD, 0);
++    qtest_writel(qts, VREG_BASE + ATOMIC_SET_ALIAS + VREG_BOD, 0x00000011);
++    qtest_writel(qts, VREG_BASE + ATOMIC_CLR_ALIAS + VREG_BOD, 0x00000010);
++
++    g_assert_cmphex(qtest_readl(qts, VREG_BASE + VREG_BOD), ==, 0x00000001);
++
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/rp2040-vreg/reset-values", test_vreg_reset_values);
++    qtest_add_func("/rp2040-vreg/rw-masks", test_vreg_rw_masks);
++    qtest_add_func("/rp2040-vreg/atomic-aliases", test_vreg_atomic_aliases);
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/rp2040-watchdog-test.c b/tests/qtest/rp2040-watchdog-test.c
+new file mode 100644
+index 0000000000..14b6f12f1a
+--- /dev/null
++++ b/tests/qtest/rp2040-watchdog-test.c
+@@ -0,0 +1,148 @@
++/*
++ * QTest testcase for the RP2040 watchdog.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/bitops.h"
++#include "qemu/timer.h"
++#include "qobject/qdict.h"
++
++#define WATCHDOG_BASE       0x40058000
++#define WATCHDOG_CTRL       0x00
++#define WATCHDOG_LOAD       0x04
++#define WATCHDOG_REASON     0x08
++#define WATCHDOG_SCRATCH0   0x0c
++#define WATCHDOG_TICK       0x2c
++
++#define CTRL_TRIGGER        BIT(31)
++#define CTRL_ENABLE         BIT(30)
++#define CTRL_PAUSE_DBG1     BIT(26)
++#define CTRL_PAUSE_DBG0     BIT(25)
++#define CTRL_PAUSE_JTAG     BIT(24)
++#define CTRL_TIME_MASK      0x00ffffff
++
++#define REASON_FORCE        BIT(1)
++#define REASON_TIMER        BIT(0)
++
++#define TICK_RUNNING        BIT(10)
++#define TICK_ENABLE         BIT(9)
++
++#define NS_PER_US           1000
++
++static QTestState *rp2040_watchdog_start(void)
++{
++    return qtest_init("-machine raspi-pico -watchdog-action none");
++}
++
++static void check_watchdog_event(QTestState *qts)
++{
++    QDict *event = qtest_qmp_eventwait_ref(qts, "WATCHDOG");
++    QDict *data = qdict_get_qdict(event, "data");
++
++    g_assert_cmpstr(qdict_get_str(data, "action"), ==, "none");
++    qobject_unref(event);
++}
++
++static void test_reset_values(void)
++{
++    QTestState *qts = rp2040_watchdog_start();
++
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_CTRL), ==,
++                    CTRL_PAUSE_DBG1 | CTRL_PAUSE_DBG0 | CTRL_PAUSE_JTAG);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_LOAD), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_REASON), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_TICK), ==,
++                    TICK_ENABLE);
++
++    qtest_quit(qts);
++}
++
++static void test_scratch_registers(void)
++{
++    QTestState *qts = rp2040_watchdog_start();
++
++    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0, 0x12345678);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
++                    0x12345678);
++
++    g_assert_cmphex(qtest_readb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
++                    0x78);
++    g_assert_cmphex(qtest_readb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0 + 1),
++                    ==, 0x56);
++    g_assert_cmphex(qtest_readb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0 + 2),
++                    ==, 0x34);
++    g_assert_cmphex(qtest_readb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0 + 3),
++                    ==, 0x12);
++
++    qtest_writeb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0, 0xa5);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
++                    0xa5a5a5a5);
++
++    qtest_writeb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0 + 1, 0x3c);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
++                    0x3c3c3c3c);
++
++    qtest_writew(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0, 0xf00d);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
++                    0xf00df00d);
++
++    qtest_quit(qts);
++}
++
++static void test_timer_expiry(void)
++{
++    QTestState *qts = rp2040_watchdog_start();
++    uint32_t ctrl;
++
++    /*
++     * The default clk_ref is 6 MHz. CYCLES=6 generates a 1 MHz watchdog
++     * tick; RP2040-E1 makes the counter decrement twice per tick.
++     */
++    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_TICK, TICK_ENABLE | 6);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_TICK) &
++                    (TICK_RUNNING | TICK_ENABLE), ==,
++                    TICK_RUNNING | TICK_ENABLE);
++
++    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_LOAD, 20);
++    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_CTRL, CTRL_ENABLE);
++
++    qtest_clock_step(qts, 5 * NS_PER_US);
++    ctrl = qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_CTRL);
++    g_assert_cmpuint(ctrl & CTRL_TIME_MASK, <, 20);
++    g_assert_cmpuint(ctrl & CTRL_TIME_MASK, >, 0);
++
++    qtest_clock_step(qts, 10 * NS_PER_US);
++    check_watchdog_event(qts);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_REASON), ==,
++                    REASON_TIMER);
++
++    qtest_quit(qts);
++}
++
++static void test_force_trigger(void)
++{
++    QTestState *qts = rp2040_watchdog_start();
++
++    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_CTRL, CTRL_TRIGGER);
++    check_watchdog_event(qts);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_REASON), ==,
++                    REASON_FORCE);
++
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/rp2040-watchdog/reset-values", test_reset_values);
++    qtest_add_func("/rp2040-watchdog/scratch-registers",
++                   test_scratch_registers);
++    qtest_add_func("/rp2040-watchdog/timer-expiry", test_timer_expiry);
++    qtest_add_func("/rp2040-watchdog/force-trigger", test_force_trigger);
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/rp2040-xip-test.c b/tests/qtest/rp2040-xip-test.c
+new file mode 100644
+index 0000000000..9de4d645b8
+--- /dev/null
++++ b/tests/qtest/rp2040-xip-test.c
+@@ -0,0 +1,212 @@
++/*
++ * QTest testcase for the RP2040 XIP/SSI block.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/bitops.h"
++
++#define XIP_BASE     0x10000000
++#define XIP_NOCACHE_NOALLOC_BASE 0x13000000
++#define XIP_CTRL_BASE 0x14000000
++#define XIP_AUX_BASE 0x50400000
++#define XIP_STAT     0x08
++#define XIP_STREAM_ADDR 0x14
++#define XIP_STREAM_CTR  0x18
++#define XIP_STREAM_FIFO 0x1c
++#define XIP_SSI_BASE 0x18000000
++#define SSI_CTRLR1   0x04
++#define SSI_SSIENR   0x08
++#define SSI_DR0      0x60
++#define SSI_SER      0x10
++#define SSI_DMACR    0x4c
++
++#define XIP_STAT_FIFO_FULL  BIT(2)
++#define XIP_STAT_FIFO_EMPTY BIT(1)
++#define XIP_STAT_FLUSH_READY BIT(0)
++
++#define DMA_BASE                0x50000000
++#define DMA_CH_READ_ADDR        0x00
++#define DMA_CH_WRITE_ADDR       0x04
++#define DMA_CH_TRANS_COUNT      0x08
++#define DMA_CH_CTRL_TRIG        0x0c
++#define DMA_CTRL_BUSY           BIT(24)
++#define DMA_CTRL_BSWAP          BIT(22)
++#define DMA_CTRL_TREQ_SEL_SHIFT 15
++#define DMA_CTRL_INCR_WRITE     BIT(5)
++#define DMA_CTRL_DATA_SIZE_32   (2 << 2)
++#define DMA_CTRL_EN             BIT(0)
++#define DREQ_XIP_STREAM         37
++#define DREQ_XIP_SSIRX          39
++#define SRAM_BASE               0x20000000
++
++static QTestState *rp2040_start(const char *machine_args)
++{
++    if (machine_args) {
++        return qtest_initf("-machine raspi-pico,%s", machine_args);
++    }
++    return qtest_init("-machine raspi-pico");
++}
++
++static void read_flash_uid(QTestState *qts, uint8_t *uid)
++{
++    int i;
++
++    qtest_writel(qts, XIP_SSI_BASE + SSI_DR0, 0x4b);
++    qtest_readl(qts, XIP_SSI_BASE + SSI_DR0);
++    for (i = 0; i < 4; i++) {
++        qtest_writel(qts, XIP_SSI_BASE + SSI_DR0, 0);
++        qtest_readl(qts, XIP_SSI_BASE + SSI_DR0);
++    }
++    for (i = 0; i < 8; i++) {
++        qtest_writel(qts, XIP_SSI_BASE + SSI_DR0, 0);
++        uid[i] = qtest_readl(qts, XIP_SSI_BASE + SSI_DR0);
++    }
++}
++
++static void program_flash_bytes(QTestState *qts, uint32_t off,
++                                const uint8_t *buf, size_t len)
++{
++    size_t i;
++
++    qtest_writel(qts, XIP_SSI_BASE + SSI_DR0, 0x06);
++
++    qtest_writel(qts, XIP_SSI_BASE + SSI_SER, 1);
++    qtest_writel(qts, XIP_SSI_BASE + SSI_DR0, 0x02);
++    qtest_writel(qts, XIP_SSI_BASE + SSI_DR0, extract32(off, 16, 8));
++    qtest_writel(qts, XIP_SSI_BASE + SSI_DR0, extract32(off, 8, 8));
++    qtest_writel(qts, XIP_SSI_BASE + SSI_DR0, extract32(off, 0, 8));
++    for (i = 0; i < len; i++) {
++        qtest_writel(qts, XIP_SSI_BASE + SSI_DR0, buf[i]);
++    }
++    qtest_writel(qts, XIP_SSI_BASE + SSI_SER, 0);
++
++    qtest_writel(qts, XIP_SSI_BASE + SSI_DR0, 0x05);
++    qtest_readl(qts, XIP_SSI_BASE + SSI_DR0);
++}
++
++static void test_flash_uid_default(void)
++{
++    static const uint8_t expected[] = {
++        0x3e, 0xb8, 0xa7, 0x49, 0x3f, 0xcc, 0x06, 0x08,
++    };
++    QTestState *qts = rp2040_start(NULL);
++    uint8_t uid[8];
++
++    read_flash_uid(qts, uid);
++    g_assert_cmpmem(uid, sizeof(uid), expected, sizeof(expected));
++
++    qtest_quit(qts);
++}
++
++static void test_flash_uid_machine_option(void)
++{
++    static const uint8_t expected[] = {
++        0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
++    };
++    QTestState *qts = rp2040_start("flash-uid=0011223344556677");
++    uint8_t uid[8];
++
++    read_flash_uid(qts, uid);
++    g_assert_cmpmem(uid, sizeof(uid), expected, sizeof(expected));
++
++    qtest_quit(qts);
++}
++
++static void test_stream_fifo_and_dma(void)
++{
++    static const uint32_t expected[] = {
++        0x03020100, 0x07060504, 0x0b0a0908, 0x0f0e0d0c,
++        0x13121110, 0x17161514,
++    };
++    QTestState *qts = rp2040_start(NULL);
++    uint32_t ctrl;
++    uint32_t buf[ARRAY_SIZE(expected)];
++
++    program_flash_bytes(qts, 0, (const uint8_t *)expected, sizeof(expected));
++
++    qtest_writel(qts, XIP_CTRL_BASE + XIP_STREAM_ADDR, XIP_BASE);
++    qtest_writel(qts, XIP_CTRL_BASE + XIP_STREAM_CTR, ARRAY_SIZE(expected));
++
++    g_assert_cmphex(qtest_readl(qts, XIP_CTRL_BASE + XIP_STAT) &
++                    (XIP_STAT_FLUSH_READY | XIP_STAT_FIFO_FULL), ==,
++                    XIP_STAT_FLUSH_READY | XIP_STAT_FIFO_FULL);
++    g_assert_cmphex(qtest_readl(qts, XIP_CTRL_BASE + XIP_STREAM_FIFO), ==,
++                    expected[0]);
++    g_assert_cmphex(qtest_readl(qts, XIP_CTRL_BASE + XIP_STREAM_FIFO), ==,
++                    expected[1]);
++
++    ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_WRITE | DMA_CTRL_DATA_SIZE_32 |
++           (DREQ_XIP_STREAM << DMA_CTRL_TREQ_SEL_SHIFT);
++    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, XIP_AUX_BASE);
++    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, SRAM_BASE);
++    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, ARRAY_SIZE(expected) - 2);
++    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
++
++    qtest_memread(qts, SRAM_BASE, buf,
++                  sizeof(buf[0]) * (ARRAY_SIZE(expected) - 2));
++    g_assert_cmpmem(buf, sizeof(buf[0]) * (ARRAY_SIZE(expected) - 2),
++                    expected + 2,
++                    sizeof(expected[0]) * (ARRAY_SIZE(expected) - 2));
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
++                    DMA_CTRL_BUSY, ==, 0);
++    g_assert_cmphex(qtest_readl(qts, XIP_CTRL_BASE + XIP_STREAM_CTR), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, XIP_CTRL_BASE + XIP_STAT) &
++                    XIP_STAT_FIFO_EMPTY, ==, XIP_STAT_FIFO_EMPTY);
++
++    qtest_quit(qts);
++}
++
++static void test_ssi_rx_dma_bulk_read(void)
++{
++    static const uint32_t expected[] = {
++        0x03020100, 0x07060504, 0x0b0a0908, 0x0f0e0d0c,
++        0x13121110, 0x17161514,
++    };
++    QTestState *qts = rp2040_start(NULL);
++    uint32_t ctrl;
++    uint32_t buf[ARRAY_SIZE(expected)];
++
++    program_flash_bytes(qts, 0, (const uint8_t *)expected, sizeof(expected));
++    g_assert_cmphex(qtest_readl(qts, XIP_NOCACHE_NOALLOC_BASE), ==,
++                    expected[0]);
++
++    qtest_writel(qts, XIP_SSI_BASE + SSI_SSIENR, 0);
++    qtest_writel(qts, XIP_SSI_BASE + SSI_CTRLR1, ARRAY_SIZE(expected) - 1);
++    qtest_writel(qts, XIP_SSI_BASE + SSI_DMACR, 3);
++    qtest_writel(qts, XIP_SSI_BASE + SSI_SSIENR, 1);
++
++    ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_WRITE | DMA_CTRL_DATA_SIZE_32 |
++           DMA_CTRL_BSWAP | (DREQ_XIP_SSIRX << DMA_CTRL_TREQ_SEL_SHIFT);
++    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, XIP_SSI_BASE + SSI_DR0);
++    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, SRAM_BASE);
++    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, ARRAY_SIZE(expected));
++    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
++
++    qtest_writel(qts, XIP_SSI_BASE + SSI_DR0, 0xa0);
++
++    qtest_memread(qts, SRAM_BASE, buf, sizeof(buf));
++    g_assert_cmpmem(buf, sizeof(buf), expected, sizeof(expected));
++    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
++                    DMA_CTRL_BUSY, ==, 0);
++
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/rp2040-xip/flash-uid-default",
++                   test_flash_uid_default);
++    qtest_add_func("/rp2040-xip/flash-uid-machine-option",
++                   test_flash_uid_machine_option);
++    qtest_add_func("/rp2040-xip/stream-fifo-and-dma",
++                   test_stream_fifo_and_dma);
++    qtest_add_func("/rp2040-xip/ssi-rx-dma-bulk-read",
++                   test_ssi_rx_dma_bulk_read);
++
++    return g_test_run();
++}
 -- 
 2.53.0
 

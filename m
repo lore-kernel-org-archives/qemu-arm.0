@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6B9AC43602
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1AAEC43458
 	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 04:49:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgEbn-0004gd-7F; Sun, 05 Jul 2026 00:37:35 -0400
+	id 1wgEcA-0004xj-6Y; Sun, 05 Jul 2026 00:37:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wgEbk-0004fG-Ri
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:37:32 -0400
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ id 1wgEbr-0004ju-Kp
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:37:40 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wgEbh-0003x3-I6
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:37:32 -0400
-Received: by mail-pl1-x631.google.com with SMTP id
- d9443c01a7336-2cc6dd436c6so4874895ad.2
- for <qemu-arm@nongnu.org>; Sat, 04 Jul 2026 21:37:29 -0700 (PDT)
+ id 1wgEbk-00040X-7E
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:37:38 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id
+ d9443c01a7336-2cc73e322dbso4899485ad.1
+ for <qemu-arm@nongnu.org>; Sat, 04 Jul 2026 21:37:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783226248; x=1783831048; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783226250; x=1783831050; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=E9ndt7/Xaf78gbnm5ds/w+OXU431kvwyAI4qL6QO88k=;
- b=wsMY2mNOYuPLulFUuO3Dlh4yKKS/tdt504sZLYOaeLl9TIu890GAthrvxB+JN7gyOj
- t1chpfmlpiwmXxQZtLy9u0tcZMlDd+jYQRLED8aXyC50pG1llinxt5HO1DNuYydzX8LS
- s97AuG9ngyltdyMpcjOoxPozEeRAhf6u7u4if6VKOGHJuU6AeL8pYwc+Y6mTGATMnZ5V
- c4SE95KaoscSwnIVwNYTr856W5Fns8TkCn+u72jWVT7E16yfIsrY5FC5ftO4unCFVC+1
- i66qsNwDHlIbDJKeI7RRNlIPabXYZzoxNVmKtwsLr3Hiibp/pfR0KlCQFQ7lwCE95r4Q
- Eagg==
+ bh=zZQKYJz7acBPOxECmB0e2sZSXiKoHybMCyGFRMtMCII=;
+ b=sqhNxoj8k+CLsjNrmNVmomtCDg5wmJjD2CKQh+ce1mjZJla67B/4bFMtHUZb7Urhn3
+ c2EtOsKi9nkylEIM9pgAGNqG+kjM27xu7mDalt8UOHLJLZBCY0uxzNpZXZHmDoemh+Y/
+ ZbtOYKqK6TsLFpfsT9Kw4FXIutsqxd6xU4yEutE6kLCiWUq9OC1epeOSE1sOp5FjxBJ7
+ fwfGpQRqX8TWEkL8M9AkkCTjpSeH0w6CCSQ17TJAe79BaaOsH5Uq7p+hCP+ZDgihBqw/
+ MXn+SBm4GmLvo5zVYryTJnDsezahqF8JuefSgr7Y6/hkpIwD2PXIMbVZXGTQ+E9LDxty
+ Pysw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783226248; x=1783831048;
+ d=1e100.net; s=20251104; t=1783226250; x=1783831050;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=E9ndt7/Xaf78gbnm5ds/w+OXU431kvwyAI4qL6QO88k=;
- b=IzehQvtFJRtEKaRmWsKoYXolnBTiV9GvLqcU/NcF6xwCUW/Jg0+w40E20JTWCfywvH
- c8uxL93D3D5TL6Jhkrj7FneoK17RURgFE707luWsD7etEMGSlU+Oy3Qv5l09cy+Fg9Qe
- TvF2mp7da6Cqs1caipD0gSrXaikHs3mJvdxTZnsvdq7dDOoupVk3NCkiwDzJSGTvA7om
- FU4ZkNGeVUTjPaAsNyzfDmS7i1rOXuvwIUgl9u5bhfwctNzMHLeNZbzzg4sUHTvRzoDA
- jvFcBzp5Arzd99Fmi10Q+YNmlyVtXcq592dwXC6WokzMNS1eZAeiVZGQF7YZD3k7WoGN
- EWbA==
-X-Gm-Message-State: AOJu0YycS7lUed25E5FWVQJecsDsOnwdjTgSZtoR9sphGFtwBkEt9GMQ
- gncUOQs5EKNSHIDc23AwZmdi4D1IxVAJNcXha/06u9qlw85eOE99CM9oepfDOy/QBzg=
-X-Gm-Gg: AfdE7cn/eo44/a8NSnnyEtRQpAE0uxHrNvVrGozlvi4p8kByvFllfnUWe/DdCatQCeV
- XCogeqalAr5OfLbHEt98EjRhQOnHwqzzDsV9XyfZocRVswOa9jyKUQahFjlpcVXmtnsZkSO1NHs
- Pzoryh1e8uoQcRhnai3nbTMatEsgJiIB8FX+wxB1bocV3BQpUbHfesPL3VPRECcHd517BQyKoUt
- 5aNNUu3Ga5BcBws+fapNOZOtLh9lNJXNvNlbf83SNE8WmJ4cn4RnsjzWH7VeSQbszr1oABLaDIY
- KDPGQmFeLCfxUzJ8WTtKt3cRNA/3G+iIju0IIyg17xPJK5YlVHbZJmldVolStgGt7Re6DLRWKTA
- R666JafkVAE19ywpd+RSUjFfjnHfD/9Et5YrbYUlJC6Lz1ozK7NxX9+OwdNr8qzT9Fa4ZoD0aWE
- FDqltEl0vbSaH3dkWS6RdG8oy+/Pz7bEGESMEx1G/CojZZEyiZk5MpzUnrQg==
-X-Received: by 2002:a17:902:db0b:b0:2ca:6514:9201 with SMTP id
- d9443c01a7336-2cbb9e2441amr46886065ad.15.1783226247981; 
- Sat, 04 Jul 2026 21:37:27 -0700 (PDT)
+ bh=zZQKYJz7acBPOxECmB0e2sZSXiKoHybMCyGFRMtMCII=;
+ b=Y67x2rZcLKYf4AojxveEHRuFOvlpoI8+EOPJmqntKbuSsnkIbKO8AtoAK88tBmfUgC
+ cTeaBKWAibVHhqJtSrYeoMpwqQ7eFKtCEa/t/1lxkCggehwMtqicTw8k29qB6y8kLShT
+ V22OTtddmhecaUQuBml/3JgmrBEXcw+FtiVJSliw3Ds1cgEx+3fZ4QAms721fXvFXcKB
+ pX1pOzmwsqehWb8MaUKih1Smsja8K/ATmahNa1iA4ka2FY0vBR0e8xKI7o2jn6AtoGiZ
+ /KUTt8zsEky344i63iTW4am0DIDC6HfNESNCakY2zDMZGvOD9oQ83NMX0lTe8ErIVhS0
+ JdJQ==
+X-Gm-Message-State: AOJu0Yw0lALOOXBpZGVLPXtxH84LmIMg+j0lSvQM/RY/KNvWZrwOiFyE
+ lhQ2F4fYdrVr8PA24CnVS6xT+lSfBPhk6SnWHikkk4hPuSP5OXCzduGSX6RZTFbsWVw=
+X-Gm-Gg: AfdE7cmAGKwfb+WQ3avzY0N/A10kmwJoPNzewVChH1/IkUvGJ4fjHDMDEsMGK/xGBPq
+ rDxUhsg5eIv8jfb51Lb0/yz/w296LzPLw2m2m9ObtRhZ2C0PxIZeVXOJ50504XJAKbFuex9T26D
+ Uk4sKzFejC7TxluRbaz9xkqhskSKkFcru0nkax/eWATMgQS/mbfWC5Q22nF4WKw1LfVjkYECO0d
+ M7KIVa3mcLO8tLatYqsqHiFbi86RHyS8zV4OOSspnKVcoePeVa6Dclny+gy2x5ehL0xroNd9pn8
+ 314twrAFkXVF7yrJMNrKTmcdfkEJoCfbf8YYcqoRLb+VlJc3SBrXcBPNdGlWqgArHGLyqn30Cwn
+ 8vF2NCRFflmQcGPAoioCrkyZEjxsvxxgmoapzuauEWaK2kszNw/e1ScKTpg6X/TXKtfyX4jJpVt
+ AI9ceyYI5xrtq6vM8A7Wae9L0+ISpesDIp1F3mqJgezdCoBtQ=
+X-Received: by 2002:a17:903:2cd:b0:2c9:97a7:b1eb with SMTP id
+ d9443c01a7336-2cbb9eeb474mr51328895ad.42.1783226250405; 
+ Sat, 04 Jul 2026 21:37:30 -0700 (PDT)
 Received: from stoup.. (71-212-39-188.tukw.qwest.net. [71.212.39.188])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2cad712ca17sm29863785ad.28.2026.07.04.21.37.27
+ d9443c01a7336-2cad712ca17sm29863785ad.28.2026.07.04.21.37.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Jul 2026 21:37:27 -0700 (PDT)
+ Sat, 04 Jul 2026 21:37:29 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, philmd@oss.qualcomm.com,
  Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
-Subject: [PATCH v2 01/46] cpu: Move BREAKPOINT definitions to
- 'exec/breakpoint.h'
-Date: Sat,  4 Jul 2026 21:36:40 -0700
-Message-ID: <20260705043725.1373137-2-richard.henderson@linaro.org>
+Subject: [PATCH v2 04/46] accel/tcg: Improve docstrings around
+ TCGCPUOps::*watchpoint* handlers
+Date: Sat,  4 Jul 2026 21:36:43 -0700
+Message-ID: <20260705043725.1373137-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260705043725.1373137-1-richard.henderson@linaro.org>
 References: <20260705043725.1373137-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,66 +105,40 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 
+Commit d5ee641cfc5 ("target/ppc: Implement watchpoint debug facility
+for v2.07S") also implemented TCGCPUOps::debug_check_watchpoint for
+PPC: make the comment generic.
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Reviewed-by: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <20260630220100.1289-18-philmd@oss.qualcomm.com>
+Message-ID: <20260630220100.1289-29-philmd@oss.qualcomm.com>
 ---
- include/exec/breakpoint.h | 14 ++++++++++++++
- include/hw/core/cpu.h     | 14 --------------
- 2 files changed, 14 insertions(+), 14 deletions(-)
+ include/accel/tcg/cpu-ops.h | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/include/exec/breakpoint.h b/include/exec/breakpoint.h
-index 95f0482e6d..cc6fedd09f 100644
---- a/include/exec/breakpoint.h
-+++ b/include/exec/breakpoint.h
-@@ -12,6 +12,20 @@
- #include "exec/vaddr.h"
- #include "exec/memattrs.h"
+diff --git a/include/accel/tcg/cpu-ops.h b/include/accel/tcg/cpu-ops.h
+index f64d94b2b5..568d82cdd3 100644
+--- a/include/accel/tcg/cpu-ops.h
++++ b/include/accel/tcg/cpu-ops.h
+@@ -250,14 +250,13 @@ struct TCGCPUOps {
+                                            int mmu_idx, uintptr_t retaddr);
  
-+/* Breakpoint/watchpoint flags */
-+#define BP_MEM_READ           0x01
-+#define BP_MEM_WRITE          0x02
-+#define BP_MEM_ACCESS         (BP_MEM_READ | BP_MEM_WRITE)
-+#define BP_STOP_BEFORE_ACCESS 0x04
-+/* 0x08 currently unused */
-+#define BP_GDB                0x10
-+#define BP_CPU                0x20
-+#define BP_ANY                (BP_GDB | BP_CPU)
-+#define BP_HIT_SHIFT          6
-+#define BP_WATCHPOINT_HIT_READ  (BP_MEM_READ << BP_HIT_SHIFT)
-+#define BP_WATCHPOINT_HIT_WRITE (BP_MEM_WRITE << BP_HIT_SHIFT)
-+#define BP_WATCHPOINT_HIT       (BP_MEM_ACCESS << BP_HIT_SHIFT)
-+
- typedef struct CPUBreakpoint {
-     vaddr pc;
-     int flags; /* BP_* */
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 59d601465b..c3959607df 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -1138,20 +1138,6 @@ void qemu_init_vcpu(CPUState *cpu);
-  */
- void cpu_single_step(CPUState *cpu, int enabled);
+     /**
+-     * @adjust_watchpoint_address: hack for cpu_check_watchpoint used by ARM
++     * @adjust_watchpoint_address: hack for cpu_check_watchpoint (used by ARM)
+      */
+     vaddr (*adjust_watchpoint_address)(CPUState *cpu, vaddr addr, int len);
  
--/* Breakpoint/watchpoint flags */
--#define BP_MEM_READ           0x01
--#define BP_MEM_WRITE          0x02
--#define BP_MEM_ACCESS         (BP_MEM_READ | BP_MEM_WRITE)
--#define BP_STOP_BEFORE_ACCESS 0x04
--/* 0x08 currently unused */
--#define BP_GDB                0x10
--#define BP_CPU                0x20
--#define BP_ANY                (BP_GDB | BP_CPU)
--#define BP_HIT_SHIFT          6
--#define BP_WATCHPOINT_HIT_READ  (BP_MEM_READ << BP_HIT_SHIFT)
--#define BP_WATCHPOINT_HIT_WRITE (BP_MEM_WRITE << BP_HIT_SHIFT)
--#define BP_WATCHPOINT_HIT       (BP_MEM_ACCESS << BP_HIT_SHIFT)
--
- int cpu_breakpoint_insert(CPUState *cpu, vaddr pc, int flags,
-                           CPUBreakpoint **breakpoint);
- int cpu_breakpoint_remove(CPUState *cpu, vaddr pc, int flags);
+     /**
+      * @debug_check_watchpoint: return true if the architectural
+-     * watchpoint whose address has matched should really fire, used by ARM
+-     * and RISC-V
++     * watchpoint whose address has matched should really fire.
+      */
+     bool (*debug_check_watchpoint)(CPUState *cpu, CPUWatchpoint *wp);
+ 
 -- 
 2.43.0
 

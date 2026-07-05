@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05ABEC44502
-	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 22:29:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49DEBC44500
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 22:29:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgVJp-0006kA-WA; Sun, 05 Jul 2026 18:28:10 -0400
+	id 1wgVJp-0006ig-0y; Sun, 05 Jul 2026 18:28:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1wgUwh-0002Kb-OT; Sun, 05 Jul 2026 18:04:15 -0400
+ id 1wgUwM-0002HN-Vy; Sun, 05 Jul 2026 18:03:55 -0400
 Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1wgUwf-00023z-B9; Sun, 05 Jul 2026 18:04:15 -0400
+ id 1wgUwJ-0001w0-4e; Sun, 05 Jul 2026 18:03:54 -0400
 Received: from smtp02.univ-lille.fr (smtp02.univ-lille.fr [194.254.129.96])
- by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4gthMG5SXNz85Y8;
+ by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4gthMG2NnGz85Xk;
  Mon,  6 Jul 2026 00:03:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
  s=dkim; t=1783289002;
- bh=I276WTA6G0GTG7SVq12SCXUkN5WyJYKylq0Yh4aKdhw=;
+ bh=Gm90oyUNlaNPGf2wnyQvIDxJ66fFR4rAlPCuC1y0eMY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=sdTftEEMyRhEhJyXXrNcxskUcjxuB4VetDQMOCXr57LKWiHklkhq2SOdFf7lAJhjL
- OIJ4gJfgCU2I40INosvrO3mzDSaePtHaOXbMbhTQSfYHIV6aAn7rFXtz1E7tndewJ8
- 7P4hSq2eB4vfaaEAXJYrdY4sU0ywUiFu3KttZbGaKp1OaPLEzuvxScIsCVbeCpL+Sc
- PPr8IpG4aaZJx+m6aXSh6s3J0WawRlAV2BuhJbxkJIbcnzc/n0P5/4QDnhSQIL395w
- ZiPG7PVbkfSxY8rlujml2Jo+bPILVDLjlPEjQHQUfti5GjTcp3nakuodW/94v8Mxr/
- VrFksDg3VePdw==
+ b=UIH6JcBWkw9ThGAqy9QbQ6K1H+IGMTm1EPtWgCW0L5iYLE+4rv1059F2mqFSF8PRw
+ xi3jMdiXAzmm81PuOs/qQBXTt8dstny5C7Aq/MxcLBQaFSymtZBLqUxNRGIWhO0z78
+ wY3lWuNokr/VhSW3c7PiBsRCFaiQz2hdTkVxIZPFQFgi5UouZIz9vHHCzt0gdZGoTu
+ GWg1QBR5ZIPB3pKjKUpaOyYq5Nq5rBecARlAooL/w/WbGZkag+Md/f1tDCHi10qMND
+ Ubj9L6234iT+yF5+DlrOrDLEfGRhqgPQCIbIE1xR8vg+SMaQLx3vWivesl0Usi3uud
+ SKn2wYq9oao+g==
 Received: from mac.home (lfbn-lil-1-243-101.w90-45.abo.wanadoo.fr
  [90.45.87.101]) (Authenticated sender: gilles.grimaud)
- by smtp02.univ-lille.fr (Postfix) with ESMTPSA id 4gthMG4LP5z6sT6;
+ by smtp02.univ-lille.fr (Postfix) with ESMTPSA id 4gthMG1BJnz6tBv;
  Mon,  6 Jul 2026 00:03:22 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Gilles Grimaud <gilles.grimaud@univ-lille.fr>
-Subject: [PATCH RFC v1 6/9] scripts: add UF2 to RP2040 flash image converter
-Date: Mon,  6 Jul 2026 00:03:17 +0200
-Message-ID: <20260705220320.90395-7-gilles.grimaud@univ-lille.fr>
+Subject: [PATCH RFC v1 3/9] hw/dma: add RP2040 DMA controller
+Date: Mon,  6 Jul 2026 00:03:14 +0200
+Message-ID: <20260705220320.90395-4-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260705220320.90395-1-gilles.grimaud@univ-lille.fr>
 References: <20260705220320.90395-1-gilles.grimaud@univ-lille.fr>
@@ -72,482 +72,1163 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a helper script that converts RP2040 UF2 payloads into raw flash images. This mirrors the machine's UF2 loading path and is useful when preparing persistent flash-file inputs outside QEMU.
+Add a functional RP2040 DMA controller with channel registers, interrupts, chaining, ring wrapping, sniff checksums, abort status, DREQ plumbing and AHB error reporting suitable for Pico SDK workloads.
+
+The model favours deterministic functional behaviour over detailed bus-cycle timing.
 
 Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 ---
- scripts/uf2-to-flash.py | 462 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 462 insertions(+)
- create mode 100755 scripts/uf2-to-flash.py
+ hw/dma/Kconfig              |    3 +
+ hw/dma/meson.build          |    1 +
+ hw/dma/rp2040_dma.c         | 1032 +++++++++++++++++++++++++++++++++++
+ include/hw/dma/rp2040_dma.h |   77 +++
+ 4 files changed, 1113 insertions(+)
+ create mode 100644 hw/dma/rp2040_dma.c
+ create mode 100644 include/hw/dma/rp2040_dma.h
 
-diff --git a/scripts/uf2-to-flash.py b/scripts/uf2-to-flash.py
-new file mode 100755
-index 0000000000..f1c0fcbbbb
+diff --git a/hw/dma/Kconfig b/hw/dma/Kconfig
+index 98fbb1bb04..d91fb53f71 100644
+--- a/hw/dma/Kconfig
++++ b/hw/dma/Kconfig
+@@ -30,3 +30,6 @@ config SIFIVE_PDMA
+ config XLNX_CSU_DMA
+     bool
+     select REGISTER
++
++config RP2040_DMA
++    bool
+diff --git a/hw/dma/meson.build b/hw/dma/meson.build
+index cc7810beb8..11437b15f9 100644
+--- a/hw/dma/meson.build
++++ b/hw/dma/meson.build
+@@ -10,5 +10,6 @@ system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx_dpdma.c'))
+ system_ss.add(when: 'CONFIG_XLNX_ZDMA', if_true: files('xlnx-zdma.c'))
+ system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_dma.c', 'soc_dma.c'))
+ system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_dma.c'))
++system_ss.add(when: 'CONFIG_RP2040_DMA', if_true: files('rp2040_dma.c'))
+ system_ss.add(when: 'CONFIG_SIFIVE_PDMA', if_true: files('sifive_pdma.c'))
+ system_ss.add(when: 'CONFIG_XLNX_CSU_DMA', if_true: files('xlnx_csu_dma.c'))
+diff --git a/hw/dma/rp2040_dma.c b/hw/dma/rp2040_dma.c
+new file mode 100644
+index 0000000000..5a3f720207
 --- /dev/null
-+++ b/scripts/uf2-to-flash.py
-@@ -0,0 +1,462 @@
-+#!/usr/bin/env python3
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
++++ b/hw/dma/rp2040_dma.c
+@@ -0,0 +1,1032 @@
++/*
++ * RP2040 DMA emulation
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+"""
-+uf2-to-flash.py
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/core/irq.h"
++#include "hw/core/qdev-properties.h"
++#include "hw/dma/rp2040_dma.h"
++#include "hw/misc/rp2040_nyi.h"
++#include "migration/vmstate.h"
++#include "qemu/bitops.h"
++#include "qemu/host-utils.h"
++#include "qemu/log.h"
++#include "qemu/main-loop.h"
++#include "qemu/module.h"
++#include "qemu/timer.h"
 +
-+Convert a Raspberry Pi Pico UF2 file into a raw flash image.
++#define DMA_CH_SIZE              0x40
++#define DMA_CH_READ_ADDR         0x00
++#define DMA_CH_WRITE_ADDR        0x04
++#define DMA_CH_TRANS_COUNT       0x08
++#define DMA_CH_CTRL_TRIG         0x0c
++#define DMA_CH_AL1_CTRL          0x10
++#define DMA_CH_AL1_READ_ADDR     0x14
++#define DMA_CH_AL1_WRITE_ADDR    0x18
++#define DMA_CH_AL1_TRANS_COUNT   0x1c
++#define DMA_CH_AL2_CTRL          0x20
++#define DMA_CH_AL2_TRANS_COUNT   0x24
++#define DMA_CH_AL2_READ_ADDR     0x28
++#define DMA_CH_AL2_WRITE_ADDR    0x2c
++#define DMA_CH_AL3_CTRL          0x30
++#define DMA_CH_AL3_WRITE_ADDR    0x34
++#define DMA_CH_AL3_TRANS_COUNT   0x38
++#define DMA_CH_AL3_READ_ADDR     0x3c
 +
-+This tool implements the simple and practical conversion model used for
-+QEMU-style emulation:
++#define DMA_INTR                 0x400
++#define DMA_INTE0                0x404
++#define DMA_INTF0                0x408
++#define DMA_INTS0                0x40c
++#define DMA_INTE1                0x414
++#define DMA_INTF1                0x418
++#define DMA_INTS1                0x41c
++#define DMA_TIMER0               0x420
++#define DMA_MULTI_CHAN_TRIGGER   0x430
++#define DMA_SNIFF_CTRL           0x434
++#define DMA_SNIFF_DATA           0x438
++#define DMA_FIFO_LEVELS          0x440
++#define DMA_CHAN_ABORT           0x444
 +
-+    UF2 target address 0x10000000 + offset  ->  flash image offset
++#define DMA_CTRL_AHB_ERROR       BIT(31)
++#define DMA_CTRL_READ_ERROR      BIT(30)
++#define DMA_CTRL_WRITE_ERROR     BIT(29)
++#define DMA_CTRL_BUSY            BIT(24)
++#define DMA_CTRL_SNIFF_EN        BIT(23)
++#define DMA_CTRL_BSWAP           BIT(22)
++#define DMA_CTRL_IRQ_QUIET       BIT(21)
++#define DMA_CTRL_TREQ_SEL_SHIFT  15
++#define DMA_CTRL_TREQ_SEL_MASK   (0x3f << DMA_CTRL_TREQ_SEL_SHIFT)
++#define DMA_CTRL_CHAIN_TO_SHIFT  11
++#define DMA_CTRL_CHAIN_TO_MASK   (0xf << DMA_CTRL_CHAIN_TO_SHIFT)
++#define DMA_CTRL_RING_SEL        BIT(10)
++#define DMA_CTRL_RING_SIZE_SHIFT 6
++#define DMA_CTRL_RING_SIZE_MASK  (0xf << 6)
++#define DMA_CTRL_INCR_WRITE      BIT(5)
++#define DMA_CTRL_INCR_READ       BIT(4)
++#define DMA_CTRL_DATA_SIZE_SHIFT 2
++#define DMA_CTRL_DATA_SIZE_MASK  (0x3 << DMA_CTRL_DATA_SIZE_SHIFT)
++#define DMA_CTRL_EN              BIT(0)
++#define DMA_CTRL_ERROR_MASK      (DMA_CTRL_AHB_ERROR | \
++                                  DMA_CTRL_READ_ERROR | \
++                                  DMA_CTRL_WRITE_ERROR)
 +
-+The output file is not a FAT image. It is a raw representation of the
-+external QSPI flash contents after UF2 programming.
++#define DMA_SNIFF_CTRL_OUT_INV   BIT(11)
++#define DMA_SNIFF_CTRL_OUT_REV   BIT(10)
++#define DMA_SNIFF_CTRL_BSWAP     BIT(9)
++#define DMA_SNIFF_CTRL_CALC_SHIFT 5
++#define DMA_SNIFF_CTRL_CALC_MASK  (0xf << DMA_SNIFF_CTRL_CALC_SHIFT)
++#define DMA_SNIFF_CTRL_DMACH_SHIFT 1
++#define DMA_SNIFF_CTRL_DMACH_MASK (0xf << DMA_SNIFF_CTRL_DMACH_SHIFT)
++#define DMA_SNIFF_CTRL_EN        BIT(0)
++#define DMA_SNIFF_CTRL_MASK      0xfff
 +
-+Supported input model:
-+    - RP2040 / Pico 1 UF2 files, family ID 0xE48BFF56.
-+    - RP2350 / Pico 2 UF2 files are detected and converted linearly,
-+      but RP2350 partition remapping is not implemented.
++#define DMA_SNIFF_CALC_CRC32     0x0
++#define DMA_SNIFF_CALC_CRC32R    0x1
++#define DMA_SNIFF_CALC_CRC16     0x2
++#define DMA_SNIFF_CALC_CRC16R    0x3
++#define DMA_SNIFF_CALC_EVEN      0xe
++#define DMA_SNIFF_CALC_SUM       0xf
 +
-+Usage:
-+    scripts/uf2-to-flash.py firmware.uf2 flash.img
-+    scripts/uf2-to-flash.py flash.img firmware.uf2
++#define DMA_CTRL_WRITABLE_MASK   (DMA_CTRL_SNIFF_EN | DMA_CTRL_BSWAP | \
++                                  DMA_CTRL_IRQ_QUIET | \
++                                  DMA_CTRL_TREQ_SEL_MASK | \
++                                  DMA_CTRL_CHAIN_TO_MASK | \
++                                  DMA_CTRL_RING_SEL | \
++                                  DMA_CTRL_RING_SIZE_MASK | \
++                                  DMA_CTRL_INCR_WRITE | \
++                                  DMA_CTRL_INCR_READ | \
++                                  DMA_CTRL_DATA_SIZE_MASK | \
++                                  BIT(1) | DMA_CTRL_EN)
++#define DMA_CHANNEL_MASK         ((1u << RP2040_DMA_NUM_CHANNELS) - 1)
++#define DMA_PACING_SYSCLK_HZ     125000000ULL
++#define DMA_PACING_SYSCLK_NS     8ULL
 +
-+If the two arguments are provided in reverse order, the .uf2 extension is
-+used to detect the input file.
-+"""
++#define ATOMIC_ALIAS_MASK        0x3000
++#define ATOMIC_XOR               0x1000
++#define ATOMIC_SET               0x2000
++#define ATOMIC_CLR               0x3000
 +
-+import os
-+import sys
-+import struct
-+
-+
-+UF2_MAGIC_START0 = 0x0A324655
-+UF2_MAGIC_START1 = 0x9E5D5157
-+UF2_MAGIC_END = 0x0AB16F30
-+
-+UF2_BLOCK_SIZE = 512
-+UF2_HEADER_SIZE = 32
-+
-+FLAG_NOT_MAIN_FLASH = 0x00000001
-+FLAG_FAMILY_ID_PRESENT = 0x00002000
-+
-+RP2040_FAMILY_ID = 0xE48BFF56
-+
-+# Usual RP2350 / Pico 2 family IDs.
-+# They are detected for diagnostics. This script does not implement
-+# RP2350 partition table remapping.
-+RP2350_FAMILY_IDS = {
-+    0xE48BFF58: "rp2350-arm-secure",
-+    0xE48BFF59: "rp2350-arm-nonsecure",
-+    0xE48BFF5A: "rp2350-riscv",
-+    0xE48BFF5B: "data-or-absolute",
++static uint32_t rp2040_dma_apply_alias(uint32_t old, uint32_t value,
++                                       hwaddr alias)
++{
++    switch (alias) {
++    case ATOMIC_XOR:
++        return old ^ value;
++    case ATOMIC_SET:
++        return old | value;
++    case ATOMIC_CLR:
++        return old & ~value;
++    default:
++        return value;
++    }
 +}
 +
-+XIP_BASE = 0x10000000
++static uint32_t rp2040_dma_ints(RP2040DmaState *s, unsigned irq)
++{
++    return ((s->intr & s->inte[irq]) | s->intf[irq]) & DMA_CHANNEL_MASK;
++}
 +
-+# RP2040 UF2 flash window: 0x10000000 .. 0x11000000
-+PICO1_FLASH_WINDOW_SIZE = 16 * 1024 * 1024
++static void rp2040_dma_update_irq(RP2040DmaState *s)
++{
++    int i;
 +
-+# RP2350 UF2 flash window: 0x10000000 .. 0x12000000
-+PICO2_FLASH_WINDOW_SIZE = 32 * 1024 * 1024
++    for (i = 0; i < RP2040_DMA_NUM_IRQS; i++) {
++        qemu_set_irq(s->irq[i], rp2040_dma_ints(s, i) != 0);
++    }
++}
 +
++static unsigned rp2040_dma_transfer_size(RP2040DmaChannel *ch)
++{
++    switch ((ch->ctrl & DMA_CTRL_DATA_SIZE_MASK) >> DMA_CTRL_DATA_SIZE_SHIFT) {
++    case 0:
++        return 1;
++    case 1:
++        return 2;
++    case 2:
++        return 4;
++    default:
++        return 4;
++    }
++}
 +
-+def print_help() -> None:
-+    """Print a minimal usage message."""
++static void rp2040_dma_request_start(RP2040DmaState *s, unsigned index);
++static void rp2040_dma_dreq(void *opaque, int n, int level);
++static void rp2040_dma_dreq_pulse(RP2040DmaState *s, uint32_t dreq);
++static void rp2040_dma_dreq_bh(void *opaque);
++static bool rp2040_dma_dreq_has_busy_channel(RP2040DmaState *s, uint32_t dreq,
++                                             unsigned except);
++static void rp2040_dma_write_reg(RP2040DmaState *s, hwaddr addr,
++                                 uint64_t value64, unsigned size);
 +
-+    program_name = os.path.basename(sys.argv[0])
++static uint32_t rp2040_dma_treq(RP2040DmaChannel *ch)
++{
++    return (ch->ctrl & DMA_CTRL_TREQ_SEL_MASK) >> DMA_CTRL_TREQ_SEL_SHIFT;
++}
 +
-+    print("Usage:")
-+    print(f"  {program_name} firmware.uf2 flash.img")
-+    print()
-+    print("Convert a Raspberry Pi Pico UF2 file into a raw flash image.")
-+    print("Exactly one argument must have the .uf2 extension, the other")
-+    print("is used as the raw flash output file.")
-+    print()
-+    print("Examples:")
-+    print(f"  {program_name} blink.uf2 flash.img")
-+    print(f"  {program_name} flash.raw blink.uf2")
++static bool rp2040_dma_treq_is_ready_sink(uint32_t treq)
++{
++    /*
++     * The current XIP/SSI TX model does not have a finite TX FIFO: writes to
++     * its data register are accepted immediately.
++     */
++    return treq == RP2040_DREQ_XIP_SSITX;
++}
 +
++static bool rp2040_dma_treq_is_connected_level(uint32_t treq)
++{
++    return treq == RP2040_DREQ_UART0_TX || treq == RP2040_DREQ_UART0_RX ||
++           treq == RP2040_DREQ_UART1_TX || treq == RP2040_DREQ_UART1_RX ||
++           treq == RP2040_DREQ_XIP_STREAM;
++}
 +
-+def get_extension(path: str) -> str:
-+    """Return the lowercase extension of a path."""
++static bool rp2040_dma_treq_is_timer(uint32_t treq)
++{
++    return treq >= RP2040_DREQ_DMA_TIMER0 &&
++           treq <= RP2040_DREQ_DMA_TIMER3;
++}
 +
-+    return os.path.splitext(path)[1].lower()
++static uint64_t rp2040_dma_timer_period_ns(uint32_t value)
++{
++    uint32_t x = value >> 16;
++    uint32_t y = value & 0xffff;
++    uint64_t period;
 +
-+
-+def detect_input_output(arguments: list[str]) -> tuple[str, str]:
-+    """
-+    Detect the UF2 input file and the raw image output file.
-+
-+    The arguments may be passed in either order, provided exactly one of them
-+    has the .uf2 extension.
-+    """
-+
-+    if len(arguments) != 2:
-+        print_help()
-+        sys.exit(2)
-+
-+    first_path, second_path = arguments
-+    first_ext = get_extension(first_path)
-+    second_ext = get_extension(second_path)
-+
-+    if first_ext == ".uf2" and second_ext != ".uf2":
-+        return first_path, second_path
-+
-+    if second_ext == ".uf2" and first_ext != ".uf2":
-+        print("Reversed arguments detected: using the .uf2 file as input.")
-+        return second_path, first_path
-+
-+    print("Error: unable to determine which file is the UF2 input.")
-+    print("Exactly one argument must have the .uf2 extension.")
-+    print()
-+    print_help()
-+    sys.exit(2)
-+
-+
-+def read_uf2_blocks(path: str):
-+    """
-+    Yield all 512-byte blocks from a UF2 file.
-+
-+    Raises ValueError if the file size is not a multiple of 512 bytes.
-+    """
-+
-+    file_size = os.path.getsize(path)
-+
-+    if file_size == 0:
-+        raise ValueError("empty file")
-+
-+    if file_size % UF2_BLOCK_SIZE != 0:
-+        raise ValueError(
-+            f"invalid UF2 file size: {file_size} bytes; "
-+            f"expected a multiple of {UF2_BLOCK_SIZE}"
-+        )
-+
-+    with open(path, "rb") as input_file:
-+        physical_block_index = 0
-+
-+        while True:
-+            block = input_file.read(UF2_BLOCK_SIZE)
-+
-+            if not block:
-+                break
-+
-+            physical_block_index += 1
-+
-+            if len(block) != UF2_BLOCK_SIZE:
-+                raise ValueError(
-+                    f"incomplete block at physical index {physical_block_index}"
-+                )
-+
-+            yield physical_block_index, block
-+
-+
-+def analyze_uf2(uf2_path: str) -> dict:
-+    """
-+    Analyze a UF2 file and extract main-flash pages.
-+
-+    Returns a dictionary containing:
-+        - pages: mapping from flash offset to payload bytes
-+        - family_ids: detected family IDs
-+        - warnings: non-fatal problems
-+        - errors: fatal format problems
-+        - min_offset / max_end_offset: occupied flash range
-+    """
-+
-+    pages: dict[int, bytes] = {}
-+    warnings: list[str] = []
-+    errors: list[str] = []
-+
-+    family_ids: set[int] = set()
-+    valid_block_count = 0
-+    non_uf2_block_count = 0
-+    ignored_not_main_flash_count = 0
-+
-+    min_offset = None
-+    max_end_offset = 0
-+
-+    announced_num_blocks = None
-+    seen_block_numbers: set[int] = set()
-+
-+    for physical_index, block in read_uf2_blocks(uf2_path):
-+        (
-+            magic_start0,
-+            magic_start1,
-+            flags,
-+            target_address,
-+            payload_size,
-+            block_number,
-+            num_blocks,
-+            family_or_file_size,
-+        ) = struct.unpack_from("<IIIIIIII", block, 0)
-+
-+        (magic_end,) = struct.unpack_from("<I", block, UF2_BLOCK_SIZE - 4)
-+
-+        if (
-+            magic_start0 != UF2_MAGIC_START0
-+            or magic_start1 != UF2_MAGIC_START1
-+            or magic_end != UF2_MAGIC_END
-+        ):
-+            non_uf2_block_count += 1
-+            errors.append(
-+                f"block {physical_index}: invalid UF2 magic values"
-+            )
-+            continue
-+
-+        valid_block_count += 1
-+
-+        if announced_num_blocks is None:
-+            announced_num_blocks = num_blocks
-+        elif num_blocks != announced_num_blocks:
-+            warnings.append(
-+                f"block {physical_index}: inconsistent numBlocks "
-+                f"({num_blocks}, expected {announced_num_blocks})"
-+            )
-+
-+        if block_number in seen_block_numbers:
-+            warnings.append(
-+                f"block {physical_index}: duplicated blockNo {block_number}"
-+            )
-+
-+        seen_block_numbers.add(block_number)
-+
-+        if flags & FLAG_NOT_MAIN_FLASH:
-+            ignored_not_main_flash_count += 1
-+            continue
-+
-+        if not (flags & FLAG_FAMILY_ID_PRESENT):
-+            errors.append(
-+                f"block {physical_index}: missing family ID; Pico boot ROM "
-+                f"expects a family ID"
-+            )
-+            continue
-+
-+        family_id = family_or_file_size
-+        family_ids.add(family_id)
-+
-+        if payload_size != 256:
-+            errors.append(
-+                f"block {physical_index}: payloadSize={payload_size}; "
-+                f"expected 256 for Pico UF2 files"
-+            )
-+            continue
-+
-+        if target_address % 256 != 0:
-+            errors.append(
-+                f"block {physical_index}: target address is not "
-+                f"256-byte aligned: 0x{target_address:08x}"
-+            )
-+            continue
-+
-+        pico2_window_end = XIP_BASE + PICO2_FLASH_WINDOW_SIZE
-+        if not (XIP_BASE <= target_address < pico2_window_end):
-+            errors.append(
-+                f"block {physical_index}: target address outside Pico "
-+                f"flash window: 0x{target_address:08x}"
-+            )
-+            continue
-+
-+        flash_offset = target_address - XIP_BASE
-+
-+        if flash_offset + payload_size > PICO2_FLASH_WINDOW_SIZE:
-+            errors.append(
-+                f"block {physical_index}: page exceeds Pico 2 flash window: "
-+                f"offset=0x{flash_offset:x}, size={payload_size}"
-+            )
-+            continue
-+
-+        if flash_offset in pages:
-+            warnings.append(
-+                f"block {physical_index}: duplicated flash page at offset "
-+                f"0x{flash_offset:x}; last occurrence wins"
-+            )
-+
-+        payload = block[UF2_HEADER_SIZE:UF2_HEADER_SIZE + payload_size]
-+        pages[flash_offset] = payload
-+
-+        if min_offset is None or flash_offset < min_offset:
-+            min_offset = flash_offset
-+
-+        if flash_offset + payload_size > max_end_offset:
-+            max_end_offset = flash_offset + payload_size
-+
-+    if valid_block_count == 0:
-+        errors.append("no valid UF2 block found")
-+
-+    if (announced_num_blocks is not None
-+            and len(seen_block_numbers) != announced_num_blocks):
-+        warnings.append(
-+            f"observed {len(seen_block_numbers)} distinct blockNo values, "
-+            f"but numBlocks announces {announced_num_blocks}"
-+        )
-+
-+    return {
-+        "pages": pages,
-+        "family_ids": family_ids,
-+        "warnings": warnings,
-+        "errors": errors,
-+        "valid_block_count": valid_block_count,
-+        "non_uf2_block_count": non_uf2_block_count,
-+        "ignored_not_main_flash_count": ignored_not_main_flash_count,
-+        "min_offset": min_offset,
-+        "max_end_offset": max_end_offset,
++    if (x == 0 || y == 0) {
++        return 0;
 +    }
 +
++    /*
++     * The RP2040 fractional timer emits TREQs at (X/Y) * sys_clk, capped
++     * at one TREQ per sys_clk. Use the Pico's nominal 125 MHz system clock
++     * as the virtual pacing source.
++     */
++    if (x >= y) {
++        return DMA_PACING_SYSCLK_NS;
++    }
 +
-+def diagnose_family_ids(
-+    family_ids: set[int],
-+    warnings: list[str],
-+    errors: list[str],
-+) -> None:
-+    """
-+    Diagnose UF2 family IDs with respect to Pico 1 and Pico 2.
++    period = DIV_ROUND_UP((uint64_t)y * NANOSECONDS_PER_SECOND,
++                          (uint64_t)x * DMA_PACING_SYSCLK_HZ);
++    return MAX(period, 1);
++}
 +
-+    RP2040 is accepted as the strict Pico 1 case.
-+    RP2350 IDs are accepted with a warning because partition remapping is not
-+    implemented.
-+    """
++static void rp2040_dma_timer_update(RP2040DmaState *s, unsigned index)
++{
++    RP2040DmaPacingTimer *pt = &s->pacing_timer[index];
 +
-+    if not family_ids:
-+        errors.append("no usable family ID found")
-+        return
++    pt->period_ns = rp2040_dma_timer_period_ns(s->timer[index]);
++    if (pt->period_ns == 0) {
++        timer_del(pt->timer);
++        return;
++    }
 +
-+    if len(family_ids) > 1:
-+        family_list = ", ".join(
-+            f"0x{value:08x}" for value in sorted(family_ids)
-+        )
-+        warnings.append(f"multiple family IDs found: {family_list}")
++    timer_mod(pt->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
++              pt->period_ns);
++}
 +
-+    for family_id in sorted(family_ids):
-+        if family_id == RP2040_FAMILY_ID:
-+            continue
++static void rp2040_dma_timer_cb(void *opaque)
++{
++    RP2040DmaPacingTimer *pt = opaque;
++    RP2040DmaState *s = pt->dma;
++    uint32_t dreq = RP2040_DREQ_DMA_TIMER0 + pt->index;
 +
-+        if family_id in RP2350_FAMILY_IDS:
-+            warnings.append(
-+                f"family ID 0x{family_id:08x} detected "
-+                f"({RP2350_FAMILY_IDS[family_id]}): this is probably a "
-+                f"Pico 2 / RP2350 UF2 file. Linear conversion is performed, "
-+                f"but RP2350 partition remapping is not implemented."
-+            )
-+        else:
-+            warnings.append(
-+                f"unknown or non-Pico family ID: 0x{family_id:08x}"
-+            )
++    if (rp2040_dma_dreq_has_busy_channel(s, dreq, RP2040_DMA_NUM_CHANNELS)) {
++        rp2040_dma_dreq_pulse(s, dreq);
++    }
++    if (pt->period_ns != 0) {
++        timer_mod(pt->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
++                  pt->period_ns);
++    }
++}
 +
-+    if RP2040_FAMILY_ID not in family_ids:
-+        warnings.append(
-+            "no RP2040 / Pico 1 family ID found (0xe48bff56); "
-+            "the output may not be a strict Pico 1 flash image."
-+        )
++static uint32_t rp2040_dma_next_addr(RP2040DmaChannel *ch, uint32_t addr,
++                                     unsigned width, bool write)
++{
++    uint32_t ring_size;
++    bool ring_write;
++    uint32_t mask;
 +
++    if (!(ch->ctrl & (write ? DMA_CTRL_INCR_WRITE : DMA_CTRL_INCR_READ))) {
++        return addr;
++    }
 +
-+def build_flash_image(pages: dict[int, bytes], occupied_size: int) -> bytearray:
-+    """
-+    Build a raw flash image initialized with erased flash bytes, 0xff.
++    ring_size = (ch->ctrl & DMA_CTRL_RING_SIZE_MASK) >>
++                DMA_CTRL_RING_SIZE_SHIFT;
++    ring_write = ch->ctrl & DMA_CTRL_RING_SEL;
++    if (ring_size == 0 || ring_write != write) {
++        return addr + width;
++    }
 +
-+    Only the occupied part is emitted:
-+        output size = highest written offset + payload size
-+    """
++    mask = (1u << ring_size) - 1;
++    return (addr & ~mask) | ((addr + width) & mask);
++}
 +
-+    image = bytearray([0xFF] * occupied_size)
++static uint32_t rp2040_dma_sniff_word(const uint8_t *buf, unsigned width)
++{
++    uint32_t value = buf[0];
 +
-+    for flash_offset, payload in pages.items():
-+        image[flash_offset:flash_offset + len(payload)] = payload
++    if (width >= 2) {
++        value |= (uint32_t)buf[1] << 8;
++    }
++    if (width >= 4) {
++        value |= (uint32_t)buf[2] << 16;
++        value |= (uint32_t)buf[3] << 24;
++    }
++    return value;
++}
 +
-+    return image
++static void rp2040_dma_sniff_bswap(uint8_t *buf, unsigned width)
++{
++    if (width == 2) {
++        uint8_t t = buf[0];
++        buf[0] = buf[1];
++        buf[1] = t;
++    } else if (width == 4) {
++        uint8_t t = buf[0];
++        buf[0] = buf[3];
++        buf[3] = t;
++        t = buf[1];
++        buf[1] = buf[2];
++        buf[2] = t;
++    }
++}
 +
++static uint32_t rp2040_dma_sniff_crc32(uint32_t crc, const uint8_t *buf,
++                                       unsigned width, bool reverse)
++{
++    int i;
++    int bit;
 +
-+def human_size(byte_count: int) -> str:
-+    """Return a human-readable size string."""
++    for (i = 0; i < width; i++) {
++        uint8_t byte = reverse ? revbit8(buf[i]) : buf[i];
 +
-+    if byte_count < 1024:
-+        return f"{byte_count} B"
++        crc ^= (uint32_t)byte << 24;
++        for (bit = 0; bit < 8; bit++) {
++            crc = (crc & BIT(31)) ? (crc << 1) ^ 0x04c11db7 : crc << 1;
++        }
++    }
++    return crc;
++}
 +
-+    if byte_count < 1024 * 1024:
-+        return f"{byte_count / 1024:.1f} KiB"
++static uint32_t rp2040_dma_sniff_crc16(uint32_t crc, const uint8_t *buf,
++                                       unsigned width, bool reverse)
++{
++    uint16_t crc16 = crc;
++    int i;
++    int bit;
 +
-+    return f"{byte_count / (1024 * 1024):.2f} MiB"
++    for (i = 0; i < width; i++) {
++        uint8_t byte = reverse ? revbit8(buf[i]) : buf[i];
 +
++        crc16 ^= (uint16_t)byte << 8;
++        for (bit = 0; bit < 8; bit++) {
++            crc16 = (crc16 & BIT(15)) ? (crc16 << 1) ^ 0x1021 : crc16 << 1;
++        }
++    }
++    return (crc & 0xffff0000) | crc16;
++}
 +
-+def main() -> None:
-+    """Program entry point."""
++static void rp2040_dma_sniff_update(RP2040DmaState *s, unsigned index,
++                                    const uint8_t *buf, unsigned width)
++{
++    RP2040DmaChannel *ch = &s->chan[index];
++    uint8_t sniff_buf[4] = { 0 };
++    uint32_t channel;
++    uint32_t calc;
++    uint32_t value;
 +
-+    uf2_path, image_path = detect_input_output(sys.argv[1:])
++    if (!(s->sniff_ctrl & DMA_SNIFF_CTRL_EN) ||
++        !(ch->ctrl & DMA_CTRL_SNIFF_EN)) {
++        return;
++    }
 +
-+    try:
-+        analysis = analyze_uf2(uf2_path)
-+    except OSError as error:
-+        print(f"UF2 file access error: {error}")
-+        sys.exit(1)
-+    except ValueError as error:
-+        print(f"UF2 format error: {error}")
-+        sys.exit(1)
++    channel = (s->sniff_ctrl & DMA_SNIFF_CTRL_DMACH_MASK) >>
++              DMA_SNIFF_CTRL_DMACH_SHIFT;
++    if (channel != index) {
++        return;
++    }
 +
-+    pages = analysis["pages"]
-+    family_ids = analysis["family_ids"]
-+    warnings = analysis["warnings"]
-+    errors = analysis["errors"]
++    memcpy(sniff_buf, buf, width);
++    if (s->sniff_ctrl & DMA_SNIFF_CTRL_BSWAP) {
++        rp2040_dma_sniff_bswap(sniff_buf, width);
++    }
 +
-+    diagnose_family_ids(family_ids, warnings, errors)
++    calc = (s->sniff_ctrl & DMA_SNIFF_CTRL_CALC_MASK) >>
++           DMA_SNIFF_CTRL_CALC_SHIFT;
++    switch (calc) {
++    case DMA_SNIFF_CALC_CRC32:
++        s->sniff_data = rp2040_dma_sniff_crc32(s->sniff_data, sniff_buf,
++                                               width, false);
++        break;
++    case DMA_SNIFF_CALC_CRC32R:
++        s->sniff_data = rp2040_dma_sniff_crc32(s->sniff_data, sniff_buf,
++                                               width, true);
++        break;
++    case DMA_SNIFF_CALC_CRC16:
++        s->sniff_data = rp2040_dma_sniff_crc16(s->sniff_data, sniff_buf,
++                                               width, false);
++        break;
++    case DMA_SNIFF_CALC_CRC16R:
++        s->sniff_data = rp2040_dma_sniff_crc16(s->sniff_data, sniff_buf,
++                                               width, true);
++        break;
++    case DMA_SNIFF_CALC_EVEN:
++        value = rp2040_dma_sniff_word(sniff_buf, width);
++        s->sniff_data = (s->sniff_data ^ ctpop32(value)) & 1;
++        break;
++    case DMA_SNIFF_CALC_SUM:
++        s->sniff_data += rp2040_dma_sniff_word(sniff_buf, width);
++        break;
++    default:
++        break;
++    }
++}
 +
-+    if not pages:
-+        errors.append("no main-flash page to write")
++static uint32_t rp2040_dma_sniff_read_data(RP2040DmaState *s)
++{
++    uint32_t value = s->sniff_data;
 +
-+    if analysis["max_end_offset"] > PICO1_FLASH_WINDOW_SIZE:
-+        warnings.append(
-+            "image exceeds the Pico 1 flash window "
-+            "0x10000000..0x11000000; it is not strict Pico 1 compatible"
-+        )
++    if (s->sniff_ctrl & DMA_SNIFF_CTRL_OUT_REV) {
++        value = revbit32(value);
++    }
++    if (s->sniff_ctrl & DMA_SNIFF_CTRL_OUT_INV) {
++        value = ~value;
++    }
++    return value;
++}
 +
-+    if errors:
-+        print("Conversion refused: UF2 format problems were found.")
-+        for error in errors:
-+            print(f"ERROR: {error}")
-+        for warning in warnings:
-+            print(f"WARNING: {warning}")
-+        sys.exit(1)
++static void rp2040_dma_finish_channel(RP2040DmaState *s, unsigned index)
++{
++    RP2040DmaChannel *ch = &s->chan[index];
++    uint32_t chain_to;
 +
-+    occupied_size = analysis["max_end_offset"]
-+    image = build_flash_image(pages, occupied_size)
++    ch->ctrl &= ~DMA_CTRL_BUSY;
++    if (!(ch->ctrl & DMA_CTRL_IRQ_QUIET)) {
++        s->intr |= BIT(index);
++        rp2040_dma_update_irq(s);
++    }
 +
-+    try:
-+        with open(image_path, "wb") as output_file:
-+            output_file.write(image)
-+    except OSError as error:
-+        print(f"Output image write error: {error}")
-+        sys.exit(1)
++    chain_to = (ch->ctrl & DMA_CTRL_CHAIN_TO_MASK) >> DMA_CTRL_CHAIN_TO_SHIFT;
++    if (!(ch->ctrl & DMA_CTRL_ERROR_MASK) &&
++        chain_to < RP2040_DMA_NUM_CHANNELS && chain_to != index) {
++        rp2040_dma_request_start(s, chain_to);
++    }
++}
 +
-+    programmed_size = sum(len(payload) for payload in pages.values())
++static void rp2040_dma_run_beats(RP2040DmaState *s, unsigned index,
++                                 uint32_t beats)
++{
++    RP2040DmaChannel *ch = &s->chan[index];
++    uint32_t count;
++    unsigned width;
 +
-+    print(f"UF2 input: {uf2_path}")
-+    print(f"Raw output: {image_path}")
-+    print(f"Valid UF2 blocks: {analysis['valid_block_count']}")
-+    print("Ignored NOT_MAIN_FLASH blocks: "
-+          f"{analysis['ignored_not_main_flash_count']}")
-+    print(f"Written flash pages: {len(pages)}")
-+    print(
-+        f"Actually programmed bytes: {programmed_size} "
-+        f"({human_size(programmed_size)})"
-+    )
-+    print(
-+        f"Occupied flash size: {occupied_size} "
-+        f"({human_size(occupied_size)})"
-+    )
++    if (!(ch->ctrl & DMA_CTRL_EN) || ch->trans_count == 0) {
++        return;
++    }
 +
-+    if family_ids:
-+        family_id_list = ", ".join(
-+            f"0x{value:08x}" for value in sorted(family_ids)
-+        )
-+        print(f"Family ID(s): {family_id_list}")
++    width = rp2040_dma_transfer_size(ch);
++    count = MIN(ch->trans_count, beats);
 +
-+    if warnings:
-+        print()
-+        print("Warnings:")
-+        for warning in warnings:
-+            print(f"- {warning}")
++    while (count--) {
++        uint8_t buf[4] = { 0 };
++        MemTxResult result;
 +
++        result = address_space_rw(&s->dma_as, ch->read_addr,
++                                  MEMTXATTRS_UNSPECIFIED, buf, width, false);
++        if (result != MEMTX_OK) {
++            ch->ctrl |= DMA_CTRL_READ_ERROR | DMA_CTRL_AHB_ERROR;
++            break;
++        }
 +
-+if __name__ == "__main__":
-+    main()
++        if (ch->ctrl & DMA_CTRL_BSWAP) {
++            if (width == 2) {
++                uint8_t t = buf[0];
++                buf[0] = buf[1];
++                buf[1] = t;
++            } else if (width == 4) {
++                uint8_t t = buf[0];
++                buf[0] = buf[3];
++                buf[3] = t;
++                t = buf[1];
++                buf[1] = buf[2];
++                buf[2] = t;
++            }
++        }
++        rp2040_dma_sniff_update(s, index, buf, width);
++
++        if (ch->write_addr >= RP2040_DMA_BASE &&
++            ch->write_addr < RP2040_DMA_BASE + RP2040_DMA_SIZE) {
++            if (width == 4) {
++                rp2040_dma_write_reg(s, ch->write_addr - RP2040_DMA_BASE,
++                                     ldl_le_p(buf), width);
++                result = MEMTX_OK;
++            } else {
++                result = MEMTX_ERROR;
++            }
++        } else {
++            result = address_space_rw(&s->dma_as, ch->write_addr,
++                                      MEMTXATTRS_UNSPECIFIED, buf, width,
++                                      true);
++        }
++        if (result != MEMTX_OK) {
++            ch->ctrl |= DMA_CTRL_WRITE_ERROR | DMA_CTRL_AHB_ERROR;
++            break;
++        }
++
++        ch->trans_count--;
++        ch->read_addr = rp2040_dma_next_addr(ch, ch->read_addr, width, false);
++        ch->write_addr = rp2040_dma_next_addr(ch, ch->write_addr, width, true);
++    }
++
++    if ((ch->ctrl & DMA_CTRL_ERROR_MASK) || ch->trans_count == 0) {
++        rp2040_dma_finish_channel(s, index);
++    }
++}
++
++static void rp2040_dma_start_channel(RP2040DmaState *s, unsigned index)
++{
++    RP2040DmaChannel *ch = &s->chan[index];
++    uint32_t treq;
++
++    if (!(ch->ctrl & DMA_CTRL_EN)) {
++        return;
++    }
++
++    if (ch->trans_count == 0 && ch->reload_count != 0) {
++        ch->trans_count = ch->reload_count;
++    }
++
++    if (ch->trans_count == 0) {
++        if (ch->ctrl & DMA_CTRL_IRQ_QUIET) {
++            s->intr |= BIT(index);
++            rp2040_dma_update_irq(s);
++        }
++        return;
++    }
++
++    ch->ctrl |= DMA_CTRL_BUSY;
++    ch->ctrl &= ~DMA_CTRL_ERROR_MASK;
++    ch->paced_nyi_logged = false;
++
++    treq = rp2040_dma_treq(ch);
++    if (treq == RP2040_DREQ_FORCE || rp2040_dma_treq_is_ready_sink(treq)) {
++        rp2040_dma_run_beats(s, index, UINT32_MAX);
++    } else if ((rp2040_dma_treq_is_connected_level(treq) ||
++                treq == RP2040_DREQ_XIP_SSIRX) && s->dreq_level[treq]) {
++        rp2040_dma_dreq_pulse(s, treq);
++    } else if (treq != RP2040_DREQ_XIP_SSIRX &&
++               !rp2040_dma_treq_is_connected_level(treq) &&
++               !rp2040_dma_treq_is_timer(treq) &&
++               !ch->paced_nyi_logged) {
++        rp2040_log_nyi("dma", "paced transfer",
++                       "DREQ source is not connected yet");
++        ch->paced_nyi_logged = true;
++    }
++}
++
++static void rp2040_dma_drain_starts(RP2040DmaState *s)
++{
++    if (s->engine_active) {
++        return;
++    }
++
++    s->engine_active = true;
++    while (s->pending_start) {
++        unsigned index = ctz32(s->pending_start);
++
++        s->pending_start &= ~BIT(index);
++        rp2040_dma_start_channel(s, index);
++    }
++    s->engine_active = false;
++}
++
++static void rp2040_dma_request_start(RP2040DmaState *s, unsigned index)
++{
++    if (index >= RP2040_DMA_NUM_CHANNELS) {
++        return;
++    }
++
++    s->pending_start |= BIT(index);
++    rp2040_dma_drain_starts(s);
++}
++
++static void rp2040_dma_dreq_pulse(RP2040DmaState *s, uint32_t dreq)
++{
++    if (dreq >= RP2040_DMA_NUM_DREQS) {
++        return;
++    }
++
++    if (s->pending_dreq[dreq] != UINT32_MAX) {
++        s->pending_dreq[dreq]++;
++    }
++    qemu_bh_schedule(s->dreq_bh);
++}
++
++static void rp2040_dma_dreq(void *opaque, int n, int level)
++{
++    RP2040DmaState *s = opaque;
++
++    if (n < 0 || n >= RP2040_DMA_NUM_DREQS) {
++        return;
++    }
++
++    s->dreq_level[n] = level;
++    if (level) {
++        rp2040_dma_dreq_pulse(s, n);
++        if (rp2040_dma_treq_is_connected_level(n)) {
++            rp2040_dma_dreq_bh(s);
++        }
++    }
++}
++
++static void rp2040_dma_dreq_bh(void *opaque)
++{
++    RP2040DmaState *s = opaque;
++    int i;
++    int dreq;
++
++    if (s->dreq_servicing) {
++        return;
++    }
++
++    s->dreq_servicing = true;
++    for (dreq = 0; dreq < RP2040_DMA_NUM_DREQS; dreq++) {
++        while (s->pending_dreq[dreq] > 0) {
++            s->pending_dreq[dreq]--;
++            for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
++                RP2040DmaChannel *ch = &s->chan[i];
++
++                if ((ch->ctrl & DMA_CTRL_BUSY) && rp2040_dma_treq(ch) == dreq) {
++                    s->engine_active = true;
++                    rp2040_dma_run_beats(s, i, 1);
++                    s->engine_active = false;
++                    rp2040_dma_drain_starts(s);
++                }
++            }
++            if (s->dreq_level[dreq] &&
++                rp2040_dma_dreq_has_busy_channel(s, dreq,
++                                                 RP2040_DMA_NUM_CHANNELS)) {
++                rp2040_dma_dreq_pulse(s, dreq);
++            }
++        }
++    }
++    s->dreq_servicing = false;
++}
++
++static bool rp2040_dma_dreq_has_busy_channel(RP2040DmaState *s, uint32_t dreq,
++                                             unsigned except)
++{
++    int i;
++
++    for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
++        RP2040DmaChannel *ch = &s->chan[i];
++
++        if (i != except && (ch->ctrl & DMA_CTRL_BUSY) &&
++            rp2040_dma_treq(ch) == dreq) {
++            return true;
++        }
++    }
++    return false;
++}
++
++static void rp2040_dma_abort_channel(RP2040DmaState *s, unsigned index)
++{
++    RP2040DmaChannel *ch = &s->chan[index];
++    uint32_t treq = rp2040_dma_treq(ch);
++
++    /*
++     * RP2040 CHAN_ABORT clears the transfer counter and leaves the channel
++     * inactive. QEMU does not model in-flight bus-transfer latency, so the
++     * abort status bit is clear as soon as the write completes.
++     */
++    ch->ctrl &= ~DMA_CTRL_BUSY;
++    ch->trans_count = 0;
++    if (treq < RP2040_DMA_NUM_DREQS &&
++        !rp2040_dma_dreq_has_busy_channel(s, treq, index)) {
++        s->pending_dreq[treq] = 0;
++    }
++}
++
++static uint32_t rp2040_dma_read_channel(RP2040DmaState *s, unsigned index,
++                                        hwaddr offset)
++{
++    RP2040DmaChannel *ch = &s->chan[index];
++
++    switch (offset) {
++    case DMA_CH_READ_ADDR:
++    case DMA_CH_AL1_READ_ADDR:
++    case DMA_CH_AL2_READ_ADDR:
++    case DMA_CH_AL3_READ_ADDR:
++        return ch->read_addr;
++    case DMA_CH_WRITE_ADDR:
++    case DMA_CH_AL1_WRITE_ADDR:
++    case DMA_CH_AL2_WRITE_ADDR:
++    case DMA_CH_AL3_WRITE_ADDR:
++        return ch->write_addr;
++    case DMA_CH_TRANS_COUNT:
++    case DMA_CH_AL1_TRANS_COUNT:
++    case DMA_CH_AL2_TRANS_COUNT:
++    case DMA_CH_AL3_TRANS_COUNT:
++        return ch->trans_count;
++    case DMA_CH_CTRL_TRIG:
++    case DMA_CH_AL1_CTRL:
++    case DMA_CH_AL2_CTRL:
++    case DMA_CH_AL3_CTRL:
++        return ch->ctrl;
++    default:
++        return 0;
++    }
++}
++
++static void rp2040_dma_write_ctrl(RP2040DmaState *s, unsigned index,
++                                  uint32_t value, bool trigger)
++{
++    RP2040DmaChannel *ch = &s->chan[index];
++    uint32_t errors = ch->ctrl & DMA_CTRL_ERROR_MASK;
++
++    errors &= ~(value & (DMA_CTRL_READ_ERROR | DMA_CTRL_WRITE_ERROR));
++    if (errors & (DMA_CTRL_READ_ERROR | DMA_CTRL_WRITE_ERROR)) {
++        errors |= DMA_CTRL_AHB_ERROR;
++    } else {
++        errors &= ~DMA_CTRL_AHB_ERROR;
++    }
++    ch->ctrl = (value & DMA_CTRL_WRITABLE_MASK) | errors;
++    if (trigger) {
++        rp2040_dma_request_start(s, index);
++    }
++}
++
++static void rp2040_dma_write_channel(RP2040DmaState *s, unsigned index,
++                                     hwaddr offset, uint32_t value)
++{
++    RP2040DmaChannel *ch = &s->chan[index];
++
++    switch (offset) {
++    case DMA_CH_READ_ADDR:
++    case DMA_CH_AL1_READ_ADDR:
++    case DMA_CH_AL2_READ_ADDR:
++        ch->read_addr = value;
++        break;
++    case DMA_CH_AL3_READ_ADDR:
++        ch->read_addr = value;
++        rp2040_dma_request_start(s, index);
++        break;
++    case DMA_CH_WRITE_ADDR:
++    case DMA_CH_AL1_WRITE_ADDR:
++    case DMA_CH_AL3_WRITE_ADDR:
++        ch->write_addr = value;
++        break;
++    case DMA_CH_AL2_WRITE_ADDR:
++        ch->write_addr = value;
++        rp2040_dma_request_start(s, index);
++        break;
++    case DMA_CH_TRANS_COUNT:
++    case DMA_CH_AL2_TRANS_COUNT:
++    case DMA_CH_AL3_TRANS_COUNT:
++        ch->trans_count = value;
++        ch->reload_count = value;
++        break;
++    case DMA_CH_AL1_TRANS_COUNT:
++        ch->trans_count = value;
++        ch->reload_count = value;
++        rp2040_dma_request_start(s, index);
++        break;
++    case DMA_CH_CTRL_TRIG:
++        rp2040_dma_write_ctrl(s, index, value, true);
++        break;
++    case DMA_CH_AL1_CTRL:
++    case DMA_CH_AL2_CTRL:
++    case DMA_CH_AL3_CTRL:
++        rp2040_dma_write_ctrl(s, index, value, false);
++        break;
++    default:
++        break;
++    }
++}
++
++static uint64_t rp2040_dma_read(void *opaque, hwaddr addr, unsigned size)
++{
++    RP2040DmaState *s = opaque;
++    hwaddr offset = addr & 0xfff;
++    uint32_t value;
++
++    if (offset < RP2040_DMA_NUM_CHANNELS * DMA_CH_SIZE) {
++        value = rp2040_dma_read_channel(s, offset / DMA_CH_SIZE,
++                                        offset % DMA_CH_SIZE);
++    } else {
++        switch (offset) {
++        case DMA_INTR:
++            value = s->intr;
++            break;
++        case DMA_INTE0:
++            value = s->inte[0];
++            break;
++        case DMA_INTF0:
++            value = s->intf[0];
++            break;
++        case DMA_INTS0:
++            value = rp2040_dma_ints(s, 0);
++            break;
++        case DMA_INTE1:
++            value = s->inte[1];
++            break;
++        case DMA_INTF1:
++            value = s->intf[1];
++            break;
++        case DMA_INTS1:
++            value = rp2040_dma_ints(s, 1);
++            break;
++        case DMA_TIMER0 ... DMA_TIMER0 + 3 * sizeof(uint32_t):
++            value = s->timer[(offset - DMA_TIMER0) / sizeof(uint32_t)];
++            break;
++        case DMA_SNIFF_CTRL:
++            value = s->sniff_ctrl;
++            break;
++        case DMA_SNIFF_DATA:
++            value = rp2040_dma_sniff_read_data(s);
++            break;
++        case DMA_FIFO_LEVELS:
++            value = 0;
++            break;
++        case DMA_CHAN_ABORT:
++            value = 0;
++            break;
++        default:
++            value = 0;
++            qemu_log_mask(LOG_UNIMP, "rp2040.dma: unimplemented read  "
++                          "(size %d, addr 0x%08" HWADDR_PRIx
++                          ", offset 0x%04" HWADDR_PRIx
++                          ") -> 0x%0*" PRIx32 "\n",
++                          size, RP2040_DMA_BASE + addr, offset,
++                          size << 1, value);
++            break;
++        }
++    }
++
++    return value;
++}
++
++static void rp2040_dma_write_reg(RP2040DmaState *s, hwaddr addr,
++                                 uint64_t value64, unsigned size)
++{
++    hwaddr alias = addr & ATOMIC_ALIAS_MASK;
++    hwaddr offset = addr & 0xfff;
++    uint32_t value = value64;
++    uint32_t old;
++    int i;
++
++    if (offset < RP2040_DMA_NUM_CHANNELS * DMA_CH_SIZE) {
++        rp2040_dma_write_channel(s, offset / DMA_CH_SIZE,
++                                 offset % DMA_CH_SIZE, value);
++    } else {
++        switch (offset) {
++        case DMA_INTR:
++            s->intr &= ~(value & DMA_CHANNEL_MASK);
++            rp2040_dma_update_irq(s);
++            break;
++        case DMA_INTE0:
++            s->inte[0] = rp2040_dma_apply_alias(s->inte[0], value, alias) &
++                         DMA_CHANNEL_MASK;
++            rp2040_dma_update_irq(s);
++            break;
++        case DMA_INTF0:
++            s->intf[0] = rp2040_dma_apply_alias(s->intf[0], value, alias) &
++                         DMA_CHANNEL_MASK;
++            rp2040_dma_update_irq(s);
++            break;
++        case DMA_INTS0:
++            s->intr &= ~(value & DMA_CHANNEL_MASK);
++            rp2040_dma_update_irq(s);
++            break;
++        case DMA_INTE1:
++            s->inte[1] = rp2040_dma_apply_alias(s->inte[1], value, alias) &
++                         DMA_CHANNEL_MASK;
++            rp2040_dma_update_irq(s);
++            break;
++        case DMA_INTF1:
++            s->intf[1] = rp2040_dma_apply_alias(s->intf[1], value, alias) &
++                         DMA_CHANNEL_MASK;
++            rp2040_dma_update_irq(s);
++            break;
++        case DMA_INTS1:
++            s->intr &= ~(value & DMA_CHANNEL_MASK);
++            rp2040_dma_update_irq(s);
++            break;
++        case DMA_TIMER0 ... DMA_TIMER0 + 3 * sizeof(uint32_t):
++            i = (offset - DMA_TIMER0) / sizeof(uint32_t);
++            s->timer[i] = rp2040_dma_apply_alias(s->timer[i], value, alias);
++            rp2040_dma_timer_update(s, i);
++            break;
++        case DMA_MULTI_CHAN_TRIGGER:
++            value &= DMA_CHANNEL_MASK;
++            for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
++                if (value & BIT(i)) {
++                    rp2040_dma_request_start(s, i);
++                }
++            }
++            break;
++        case DMA_SNIFF_CTRL:
++            old = s->sniff_ctrl;
++            s->sniff_ctrl = rp2040_dma_apply_alias(old, value, alias) &
++                            DMA_SNIFF_CTRL_MASK;
++            break;
++        case DMA_SNIFF_DATA:
++            s->sniff_data = rp2040_dma_apply_alias(s->sniff_data, value,
++                                                   alias);
++            break;
++        case DMA_CHAN_ABORT:
++            value &= DMA_CHANNEL_MASK;
++            for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
++                if (value & BIT(i)) {
++                    rp2040_dma_abort_channel(s, i);
++                }
++            }
++            break;
++        default:
++            qemu_log_mask(LOG_UNIMP, "rp2040.dma: unimplemented write "
++                          "(size %d, addr 0x%08" HWADDR_PRIx
++                          ", offset 0x%04" HWADDR_PRIx
++                          ", value 0x%0*" PRIx64 ")\n",
++                          size, RP2040_DMA_BASE + addr, offset, size << 1,
++                          value64);
++            break;
++        }
++    }
++}
++
++static void rp2040_dma_write(void *opaque, hwaddr addr, uint64_t value64,
++                             unsigned size)
++{
++    rp2040_dma_write_reg(opaque, addr, value64, size);
++}
++
++static const MemoryRegionOps rp2040_dma_ops = {
++    .read = rp2040_dma_read,
++    .write = rp2040_dma_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++};
++
++static void rp2040_dma_reset(DeviceState *dev)
++{
++    RP2040DmaState *s = RP2040_DMA(dev);
++    int i;
++
++    for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
++        s->chan[i].read_addr = 0;
++        s->chan[i].write_addr = 0;
++        s->chan[i].trans_count = 0;
++        s->chan[i].reload_count = 0;
++        s->chan[i].ctrl = i << DMA_CTRL_CHAIN_TO_SHIFT;
++        s->chan[i].paced_nyi_logged = false;
++    }
++    s->intr = 0;
++    s->inte[0] = 0;
++    s->inte[1] = 0;
++    s->intf[0] = 0;
++    s->intf[1] = 0;
++    memset(s->timer, 0, sizeof(s->timer));
++    for (i = 0; i < RP2040_DMA_NUM_TIMERS; i++) {
++        s->pacing_timer[i].period_ns = 0;
++        timer_del(s->pacing_timer[i].timer);
++    }
++    memset(s->dreq_level, 0, sizeof(s->dreq_level));
++    memset(s->pending_dreq, 0, sizeof(s->pending_dreq));
++    qemu_bh_cancel(s->dreq_bh);
++    s->engine_active = false;
++    s->pending_start = 0;
++    s->sniff_ctrl = 0;
++    s->sniff_data = 0;
++    rp2040_dma_update_irq(s);
++}
++
++static void rp2040_dma_init(Object *obj)
++{
++    RP2040DmaState *s = RP2040_DMA(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    int i;
++
++    memory_region_init_io(&s->iomem, obj, &rp2040_dma_ops, s,
++                          TYPE_RP2040_DMA, RP2040_DMA_SIZE);
++    sysbus_init_mmio(sbd, &s->iomem);
++    for (i = 0; i < RP2040_DMA_NUM_IRQS; i++) {
++        sysbus_init_irq(sbd, &s->irq[i]);
++    }
++    s->dreq_bh = qemu_bh_new(rp2040_dma_dreq_bh, s);
++    qdev_init_gpio_in_named(DEVICE(obj), rp2040_dma_dreq, "dreq",
++                            RP2040_DMA_NUM_DREQS);
++    for (i = 0; i < RP2040_DMA_NUM_TIMERS; i++) {
++        s->pacing_timer[i].dma = s;
++        s->pacing_timer[i].index = i;
++        s->pacing_timer[i].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
++                                                rp2040_dma_timer_cb,
++                                                &s->pacing_timer[i]);
++    }
++}
++
++static void rp2040_dma_finalize(Object *obj)
++{
++    RP2040DmaState *s = RP2040_DMA(obj);
++    int i;
++
++    for (i = 0; i < RP2040_DMA_NUM_TIMERS; i++) {
++        timer_free(s->pacing_timer[i].timer);
++    }
++    qemu_bh_delete(s->dreq_bh);
++}
++
++static void rp2040_dma_realize(DeviceState *dev, Error **errp)
++{
++    RP2040DmaState *s = RP2040_DMA(dev);
++
++    if (!s->dma_mr) {
++        error_setg(errp, "memory property was not set");
++        return;
++    }
++
++    address_space_init(&s->dma_as, s->dma_mr, "rp2040-dma-memory");
++}
++
++static const VMStateDescription rp2040_dma_vmstate = {
++    .name = TYPE_RP2040_DMA,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static const Property rp2040_dma_properties[] = {
++    DEFINE_PROP_LINK("memory", RP2040DmaState, dma_mr, TYPE_MEMORY_REGION,
++                     MemoryRegion *),
++};
++
++static void rp2040_dma_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = rp2040_dma_realize;
++    device_class_set_legacy_reset(dc, rp2040_dma_reset);
++    dc->vmsd = &rp2040_dma_vmstate;
++    device_class_set_props(dc, rp2040_dma_properties);
++}
++
++static const TypeInfo rp2040_dma_info = {
++    .name          = TYPE_RP2040_DMA,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(RP2040DmaState),
++    .instance_init = rp2040_dma_init,
++    .instance_finalize = rp2040_dma_finalize,
++    .class_init    = rp2040_dma_class_init,
++};
++
++static void rp2040_dma_register_types(void)
++{
++    type_register_static(&rp2040_dma_info);
++}
++type_init(rp2040_dma_register_types)
+diff --git a/include/hw/dma/rp2040_dma.h b/include/hw/dma/rp2040_dma.h
+new file mode 100644
+index 0000000000..4b4dae4097
+--- /dev/null
++++ b/include/hw/dma/rp2040_dma.h
+@@ -0,0 +1,77 @@
++/*
++ * RP2040 DMA emulation
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef HW_DMA_RP2040_DMA_H
++#define HW_DMA_RP2040_DMA_H
++
++#include "hw/core/sysbus.h"
++#include "system/memory.h"
++#include "qom/object.h"
++
++#define TYPE_RP2040_DMA "rp2040-dma"
++OBJECT_DECLARE_SIMPLE_TYPE(RP2040DmaState, RP2040_DMA)
++
++#define RP2040_DMA_BASE 0x50000000
++#define RP2040_DMA_SIZE 0x4000
++#define RP2040_DMA_NUM_CHANNELS 12
++#define RP2040_DMA_NUM_IRQS 2
++#define RP2040_DMA_NUM_DREQS 64
++#define RP2040_DMA_NUM_TIMERS 4
++
++#define RP2040_DREQ_UART0_TX 20
++#define RP2040_DREQ_UART0_RX 21
++#define RP2040_DREQ_UART1_TX 22
++#define RP2040_DREQ_UART1_RX 23
++#define RP2040_DREQ_XIP_STREAM 37
++#define RP2040_DREQ_XIP_SSITX 38
++#define RP2040_DREQ_XIP_SSIRX 39
++#define RP2040_DREQ_DMA_TIMER0 59
++#define RP2040_DREQ_DMA_TIMER1 60
++#define RP2040_DREQ_DMA_TIMER2 61
++#define RP2040_DREQ_DMA_TIMER3 62
++#define RP2040_DREQ_FORCE 63
++
++typedef struct RP2040DmaChannel {
++    uint32_t read_addr;
++    uint32_t write_addr;
++    uint32_t trans_count;
++    uint32_t reload_count;
++    uint32_t ctrl;
++    bool paced_nyi_logged;
++} RP2040DmaChannel;
++
++typedef struct RP2040DmaPacingTimer {
++    void *dma;
++    QEMUTimer *timer;
++    uint64_t period_ns;
++    unsigned index;
++} RP2040DmaPacingTimer;
++
++struct RP2040DmaState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion iomem;
++    MemoryRegion *dma_mr;
++    AddressSpace dma_as;
++    qemu_irq irq[RP2040_DMA_NUM_IRQS];
++
++    RP2040DmaChannel chan[RP2040_DMA_NUM_CHANNELS];
++    uint32_t intr;
++    uint32_t inte[RP2040_DMA_NUM_IRQS];
++    uint32_t intf[RP2040_DMA_NUM_IRQS];
++    uint32_t timer[RP2040_DMA_NUM_TIMERS];
++    RP2040DmaPacingTimer pacing_timer[RP2040_DMA_NUM_TIMERS];
++    uint32_t sniff_ctrl;
++    uint32_t sniff_data;
++    QEMUBH *dreq_bh;
++    bool dreq_servicing;
++    bool engine_active;
++    uint32_t pending_start;
++    bool dreq_level[RP2040_DMA_NUM_DREQS];
++    uint32_t pending_dreq[RP2040_DMA_NUM_DREQS];
++};
++
++#endif
 -- 
 2.53.0
 

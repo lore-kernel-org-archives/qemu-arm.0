@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24928C43458
-	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 14:42:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C00A4C43458
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 14:44:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgNws-0006FF-63; Sun, 05 Jul 2026 10:35:58 -0400
+	id 1wgNx0-0007Ir-II; Sun, 05 Jul 2026 10:36:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wgNwq-00067G-Do
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 10:35:56 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wgNwy-00074V-QZ
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 10:36:04 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wgNwo-0001SZ-Rs
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 10:35:56 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wgNww-0001TO-Hb
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 10:36:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783262154;
+ s=mimecast20190719; t=1783262161;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=BTnu3PjGzlRsbS7CoAoKXq3Veho6h75memFBiQUlhOk=;
- b=Sip9WtErnFBeufpazMVb85Y5F3ZPFeuZIq7yv2VPnFXlbUJbwpoU+/eAVQhGdHM0nyngfl
- wFoxhYAVjOAbHkFwFgHK+QXKVU9NU0KzQkeShnTWUtaS4XLnfgwVmMVYpewYm7nQk+5bRB
- fk8t4RWugijotQTvPL8LKdPJL3R4e7A=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=U3P010/LuXOaHyF7DjJ+zP16GwxhbB6+LYV7Vn8ZSCo=;
+ b=YwqNhTcKcc0P8k6pa49P5VD3eNzKdYdduNobVn1PxornByUQPjvN3CRVuSNlVIPDp7bMQW
+ VJ2xzjWM3cnUncDYdCeKLOE8FXGbUR3lAD2Yc9BL0Xs/+/b7OFo/bfwcq/Jxnjq8PtBiFA
+ p+j3zEwbCTY2QlyTkvycPtcFO6sSslc=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-578-sfP-HNDiN6OWs0uSu-ZKHw-1; Sun, 05 Jul 2026 10:35:53 -0400
-X-MC-Unique: sfP-HNDiN6OWs0uSu-ZKHw-1
-X-Mimecast-MFC-AGG-ID: sfP-HNDiN6OWs0uSu-ZKHw_1783262152
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-475b0b4e8d5so1525519f8f.1
- for <qemu-arm@nongnu.org>; Sun, 05 Jul 2026 07:35:52 -0700 (PDT)
+ us-mta-644-581nJ3yxNzuMDArWYKRtiQ-1; Sun, 05 Jul 2026 10:35:58 -0400
+X-MC-Unique: 581nJ3yxNzuMDArWYKRtiQ-1
+X-Mimecast-MFC-AGG-ID: 581nJ3yxNzuMDArWYKRtiQ_1783262157
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-472bdd6f529so1207055f8f.1
+ for <qemu-arm@nongnu.org>; Sun, 05 Jul 2026 07:35:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783262152; x=1783866952;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=BTnu3PjGzlRsbS7CoAoKXq3Veho6h75memFBiQUlhOk=;
- b=J4pgBauqu0MZ43zHHsTp9D5ANfGEOiKD1iObuyUnbaXUO/0PPROeqFNinEujQH3X8B
- fnAXp2FHQMHfS2Npz1ecczzYaivG6YwRU8Ia4csIJJUkdiLzHUtEGHKYJEItw8Cooxdw
- IJdZtsfFdgyFFhaSboFSFPKajfXkwbt/+AmFLC92J3TTdP9q2dIoW+MsN1JlKQEhpnFu
- SCln0LqIT+N2viFYqMEkkeA1OtJCcg5lGjMBL2iw8q7aRc0542imm3w4YgF7ia3PZtEP
- cpbbKuufRdTiEhWVp5cJuzzKU4G5F91wfqoasUuk/SxKS0TDaPL2E2dKA0xTpWvPKTsc
- HrgQ==
+ d=1e100.net; s=20251104; t=1783262157; x=1783866957;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=U3P010/LuXOaHyF7DjJ+zP16GwxhbB6+LYV7Vn8ZSCo=;
+ b=LA2y+H8A/enq7mh4vxsjCSmreJOfStikZb6v0TngrOex+zEIZYSs9Y/PfGupVArXsX
+ UpZLnZbXElKYNBo14yA3xb3iWVTH879MW6PjrnWH6jcQtDnKST+bRA6jrkXXClzUqkWT
+ +vWaa2SQgRf9el4bIqECW8fxAiy0P0BIMUxs8j9/jgccLrYueo9YpcXAMAi8ZM8j2/mI
+ /D20cf5F17mSpBSRLYlWFGpnQTIPF0tn3t60ZWr12wrH8HrwV+vOIEJI/FVOSUGLM/eo
+ lWmTJ4bTxDX7jAndhA1pRVP60EyFrrdGMrWF9zzonbhLUD9y9fp9+1v/oOfj++T0ZZ1X
+ ixwQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqsCqOl0/r+v9aQ5FTvzkuaU+M9IkC4lxj5R3b6TZbBWzCM9awBV49zzLzqq37Wm9ZnMz2QkJDW+Q==@nongnu.org
-X-Gm-Message-State: AOJu0YzSUZl/fkIweNLXghfVpIloqGKzA04pbi+Q/Qe7MOSDe4jhHhgB
- 2BUcFHZGlbkmMnLgKbHQDMgppPvbPk07VP+2joPiaM1mBxkYJ6xFRwBppG6/IbWk2SvU8Rjz7WT
- vUJi0zQEnfPDVJnaQ5ysoKsOWzcU9CabZmtmTbhkco6m1nK8ZcJ387g==
-X-Gm-Gg: AfdE7cne8b6cWGdCvxHvYpa3U0rK/cnvVwtz4WXCtp7ru401bzmHKoiOiUQUMeepj+H
- j4o9khJeCjd0VJMdRvcFeO/G8uX8/74CnmtkjBduH7PTD0qUCkuT9WWkEoBi8EqouFDSJQNOrcd
- HHuPKXP+Km9NU6PZujZEbS7c1yMoJ75d9gn0Gw8QTW0NWB+GlQMAYxDlgz8anZ3WfCaYUid2YdJ
- WIf222pd8uXXj7PFWVNbQzxf3WmjVTb5Yjc8xgFcG+z3LHVaOEypshbsw2YBajwV1KKIb2tIcHZ
- 1QCoFvWbr6MkQfcumdQ6Rjq5aw1mjkdfvn3svMmH3cAg3vmIgaQswq82HdwmUP2RdE2M6qc/zNG
- j9s4QbiLEZ2wWzDWsqvaUOlgnWtPa+xgF
-X-Received: by 2002:a5d:5509:0:b0:478:19e7:22a2 with SMTP id
- ffacd0b85a97d-47aac4eb421mr5845192f8f.25.1783262151732; 
- Sun, 05 Jul 2026 07:35:51 -0700 (PDT)
-X-Received: by 2002:a5d:5509:0:b0:478:19e7:22a2 with SMTP id
- ffacd0b85a97d-47aac4eb421mr5845165f8f.25.1783262151150; 
- Sun, 05 Jul 2026 07:35:51 -0700 (PDT)
+ AHgh+RpTa6F+7JMx5Kts/ELnMMwz4ZU6F/by0tojNChXHBi27N+18dbvpfMTGUvvoP4TjxUsCM8jR9U0CQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzHJObjZXvxnpL6ggiZWZdmKc00wOWTw7LjDFH+/KKkLAZKvfyS
+ wa4WuOMENwW2IykIqmNSMTaJOTAY1o/Jnmqv4/BAweCyHKpg+SudA170xGB2sd6lXJP3GsVnu9o
+ TNmE497h+l5pYWowHOJALLpUUuKpC7asnwN3xpXWDeFvQId5tn+1ClA==
+X-Gm-Gg: AfdE7cnaPW2kNxS0P4hh5mDPVrKdhOTXvMDaWok2kewh6rg9E0n0Ep5Jutq89Lt0Mo+
+ rbWeBxXrFVYbrPTAxY3Ep+ZMdTdqkn3DVCU4SyK/9nZ9ip1E5kLaATZWsJ+rMWeF0a9QK/NZ0f4
+ Hs0HqFhoLL/3g18Ggt2CmXFu4ODGlp8mAnvsta5jqodCGGNDjCFidid4QxQaGyisRhDkKcb3epI
+ 6LVgT8JdphSFZV7xVhYptVMhVcQ0Oxt8hmJYQ+Nltdkw8AwROyyeN3+W2vlSkU9B+4QBO88khrz
+ tA+BqwWdJohKHBMJKORKUkcVSPnW7Woq4TxJZZppi8Vy5DB/5ff/lyBSW1A65oc9dvXt75oDh+G
+ RY/SkW9a+KzT9cT4Lrfs91vNrk1vYUAgB
+X-Received: by 2002:a5d:6f0c:0:b0:475:e7f7:ef76 with SMTP id
+ ffacd0b85a97d-47aaaadf31emr7876229f8f.13.1783262156872; 
+ Sun, 05 Jul 2026 07:35:56 -0700 (PDT)
+X-Received: by 2002:a5d:6f0c:0:b0:475:e7f7:ef76 with SMTP id
+ ffacd0b85a97d-47aaaadf31emr7876205f8f.13.1783262156389; 
+ Sun, 05 Jul 2026 07:35:56 -0700 (PDT)
 Received: from redhat.com (IGLD-80-230-68-31.inter.net.il. [80.230.68.31])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47aa039afacsm15387892f8f.19.2026.07.05.07.35.49
+ ffacd0b85a97d-47a9de1d910sm16223943f8f.6.2026.07.05.07.35.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Jul 2026 07:35:50 -0700 (PDT)
-Date: Sun, 5 Jul 2026 10:35:49 -0400
+ Sun, 05 Jul 2026 07:35:55 -0700 (PDT)
+Date: Sun, 5 Jul 2026 10:35:54 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Ani Sinha <anisinha@redhat.com>,
  Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org
-Subject: [PULL 28/44] arm: add tracing events to sbsa_gwdt
-Message-ID: <88e1d327fdb73e22479c97139fb237dabf6788ff.1783261895.git.mst@redhat.com>
+Subject: [PULL 30/44] arm: virt: create sbsa-gwdt watchdog
+Message-ID: <2f27572eb5ca08c71cdd872d018ea5ad8791dce4.1783261895.git.mst@redhat.com>
 References: <cover.1783261895.git.mst@redhat.com>
 MIME-Version: 1.0
 In-Reply-To: <cover.1783261895.git.mst@redhat.com>
 X-Mailer: git-send-email 2.51.2.2891.g4157995a80.dirty
 X-Mutt-Fcc: =sent
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Th56HybBdm6T-5PAYIL4UypHrSogE-qA1hay-6ioKqA_1783262152
+X-Mimecast-MFC-PROC-ID: WxWvtNfuerlsTYip8b5c4wJlLM_ZwkSTUmB_ILH7Gic_1783262157
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -98,7 +98,8 @@ X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ WEIRD_QUOTING=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,99 +117,290 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Igor Mammedov <imammedo@redhat.com>
 
+Allow to use SBSA generic watchdog with virt machine type.
+(includes conditional generation of corresponding FDT and
+ACPI GTDT descriptors)
+
+Use '-device sbsa-gwdt' to command line to enable it.
+
+Instead of using dynamic sysbus infra to wire up MMIO/IRQ/FDT,
+statically assign resources in machine's mem/irq maps and wire
+them up at device (pre_)plug handlers. It's similar to dynamic
+sysbus wiring, modulo resources are nailed down statically,
+and wiring is limited to virt machine only.
+(Benefit is that tests don't break anymore on rebase due to
+address being stable)
+
+Tested with Fedora 43:
+  FDT: -M virt,acpi=off -device sbsa-gwdt
+  ACPI: -M virt -device sbsa-gwdt
+
+Note:
+Windows sees GTDT, initializes watchdog but instead pinging WRR
+it sets/advances WOR to way too large value, so it's never going
+to trigger watchdog reboot (it's Windows driver issue though).
+
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Ani Sinha <anisinha@redhat.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-Message-ID: <20260702145856.1539572-3-imammedo@redhat.com>
+Message-ID: <20260702145856.1539572-5-imammedo@redhat.com>
 ---
- hw/watchdog/sbsa_gwdt.c  | 8 ++++++++
- hw/watchdog/trace-events | 9 +++++++++
- 2 files changed, 17 insertions(+)
+ docs/system/arm/virt.rst |  9 ++++++++
+ include/hw/arm/virt.h    |  3 +++
+ hw/arm/virt-acpi-build.c | 29 ++++++++++++++++++++++++--
+ hw/arm/virt.c            | 44 ++++++++++++++++++++++++++++++++++++++++
+ hw/core/sysbus-fdt.c     |  2 ++
+ hw/watchdog/sbsa_gwdt.c  |  2 ++
+ hw/arm/Kconfig           |  1 +
+ 7 files changed, 88 insertions(+), 2 deletions(-)
 
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index ae0be35d57..bf5a9c8f6c 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -39,6 +39,7 @@ The virt board supports:
+ - A PL061 GPIO controller
+ - An optional machine-wide SMMUv3 IOMMU
+ - User-creatable SMMUv3 devices (see below for example)
++- An optional SBSA Generic Watchdog Timer (see below)
+ - hotpluggable DIMMs
+ - hotpluggable NVDIMMs
+ - An MSI controller (GICv2m or ITS).
+@@ -314,6 +315,14 @@ User-creatable SMMUv3 devices
+   bypassing QEMU and improving throughput for workloads that issue many
+   invalidations. Without it, every invalidation command traps into QEMU.
+ 
++SBSA Generic Watchdog
++"""""""""""""""""""""
++
++The SBSA Generic Watchdog Timer (GWDT) can be added to the virt machine
++using ``-device sbsa-gwdt``. It is only supported on the virt machine,
++which wires up statically assigned MMIO regions and IRQs via
++machine-specific plug handlers.
++
+ Linux guest kernel configuration
+ """"""""""""""""""""""""""""""""
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 171d44c644..22e66d1a11 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -97,6 +97,9 @@ enum {
+     VIRT_NVDIMM_ACPI,
+     VIRT_PVTIME,
+     VIRT_ACPI_PCIHP,
++    VIRT_GWDT_WS0,
++    VIRT_GWDT_REFRESH,
++    VIRT_GWDT_CONTROL,
+     VIRT_LOWMEMMAP_LAST,
+ };
+ 
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 99490aa7b1..f5b3b4ce48 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -64,6 +64,7 @@
+ #include "hw/virtio/virtio-acpi.h"
+ #include "target/arm/cpu.h"
+ #include "target/arm/multiprocessing.h"
++#include "hw/watchdog/sbsa_gwdt.h"
+ 
+ #include "smmuv3-accel.h"
+ #include "tegra241-cmdqv.h"
+@@ -868,6 +869,8 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     const uint32_t irqflags = 0;  /* Interrupt is Level triggered  */
+     AcpiTable table = { .sig = "GTDT", .rev = 3, .oem_id = vms->oem_id,
+                         .oem_table_id = vms->oem_table_id };
++    uint32_t gtdt_start = table_data->len;
++    Object *wdt = object_resolve_type_unambiguous(TYPE_WDT_SBSA, NULL);
+ 
+     acpi_table_begin(&table, table_data);
+ 
+@@ -898,10 +901,15 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_append_int_noprefix(table_data, irqflags, 4);
+     /* CntReadBase Physical address */
+     build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
++
+     /* Platform Timer Count */
+-    build_append_int_noprefix(table_data, 0, 4);
++    build_append_int_noprefix(table_data,  wdt ? 1 : 0, 4);
+     /* Platform Timer Offset */
+-    build_append_int_noprefix(table_data, 0, 4);
++    build_append_int_noprefix(table_data,
++        wdt ? (table_data->len - gtdt_start) +
++              4 + 4 + 4 /* len of this & following 2 fields to skip */
++            : 0, 4);
++
+     if (vms->ns_el2_virt_timer_irq) {
+         /* Virtual EL2 Timer GSIV */
+         build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL2_VIRT_IRQ, 4);
+@@ -911,6 +919,23 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         build_append_int_noprefix(table_data, 0, 4);
+         build_append_int_noprefix(table_data, 0, 4);
+     }
++
++    /* ACPI 6.5 spec: 5.2.25.2 ARM Generic Watchdog Structure (Table 5-124) */
++    if (wdt) {
++        hwaddr rbase = vms->memmap[VIRT_GWDT_REFRESH].base;
++        hwaddr cbase = vms->memmap[VIRT_GWDT_CONTROL].base;
++        int irq = ARM_SPI_BASE + vms->irqmap[VIRT_GWDT_WS0];
++
++        build_append_int_noprefix(table_data, 1 /* Type: Watchdog GT */, 1);
++        build_append_int_noprefix(table_data, 28 /* Length */, 2);
++        build_append_int_noprefix(table_data, 0, 1);  /* Reserved */
++        /* RefreshFrame Physical Address */
++        build_append_int_noprefix(table_data, rbase, 8);
++        /* WatchdogControlFrame Physical Address */
++        build_append_int_noprefix(table_data, cbase, 8);
++        build_append_int_noprefix(table_data, irq, 4); /* Watchdog Timer GSIV */
++        build_append_int_noprefix(table_data, 0, 4); /* Watchdog Timer Flags */
++    }
+     acpi_table_end(linker, &table);
+ }
+ 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index d8d27f2ef6..eabc5274d5 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -95,6 +95,7 @@
+ #include "hw/cxl/cxl.h"
+ #include "hw/cxl/cxl_host.h"
+ #include "qemu/guest-random.h"
++#include "hw/watchdog/sbsa_gwdt.h"
+ 
+ static GlobalProperty arm_virt_compat_defaults[] = {
+     { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
+@@ -214,6 +215,8 @@ static const MemMapEntry base_memmap[] = {
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+     [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
++    [VIRT_GWDT_REFRESH] =       { 0x0f000000, 0x00001000 },
++    [VIRT_GWDT_CONTROL] =       { 0x0f001000, 0x00001000 },
+     [VIRT_PCIE_MMIO] =          { 0x10000000, 0x2eff0000 },
+     [VIRT_PCIE_PIO] =           { 0x3eff0000, 0x00010000 },
+     [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
+@@ -264,6 +267,7 @@ static const int a15irqmap[] = {
+     [VIRT_GPIO] = 7,
+     [VIRT_UART1] = 8,
+     [VIRT_ACPI_GED] = 9,
++    [VIRT_GWDT_WS0] = 10,
+     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+     [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
+@@ -2085,6 +2089,27 @@ static void create_smmu(const VirtMachineState *vms, PCIBus *bus)
+     create_smmuv3_dt_bindings(vms, base, size, irq);
+ }
+ 
++static void create_gwdt_dt_bindings(VirtMachineState *vms)
++{
++    MachineState *ms = MACHINE(vms);
++    hwaddr rbase = vms->memmap[VIRT_GWDT_REFRESH].base;
++    hwaddr cbase = vms->memmap[VIRT_GWDT_CONTROL].base;
++    int irq = vms->irqmap[VIRT_GWDT_WS0];
++    char *nodename = g_strdup_printf("/watchdog@%" PRIx64, cbase);
++
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop_string(ms->fdt, nodename,
++                            "compatible", "arm,sbsa-gwdt");
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
++                                 2, cbase, 2, SBSA_GWDT_CMMIO_SIZE,
++                                 2, rbase, 2, SBSA_GWDT_RMMIO_SIZE);
++    qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
++                           GIC_FDT_IRQ_TYPE_SPI, irq,
++                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "timeout-sec", 30);
++    g_free(nodename);
++}
++
+ static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
+ {
+     const char compat[] = "virtio,pci-iommu\0pci1af4,1057";
+@@ -3820,6 +3845,11 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+         qlist_append_str(reserved_regions, resv_prop_str);
+         qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
+         g_free(resv_prop_str);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_WDT_SBSA)) {
++        uint64_t cntfrq = object_property_get_int(OBJECT(qemu_get_cpu(0)),
++                                                  "cntfrq", &error_abort);
++
++        qdev_prop_set_uint64(dev, "clock-frequency", cntfrq);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3)) {
+         if (vms->legacy_smmuv3_present || vms->iommu == VIRT_IOMMU_VIRTIO) {
+             error_setg(errp, "virt machine already has %s set. "
+@@ -3871,6 +3901,19 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+ {
+     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+ 
++    if (object_dynamic_cast(OBJECT(dev), TYPE_WDT_SBSA)) {
++        SysBusDevice *s = SYS_BUS_DEVICE(dev);
++        hwaddr rbase = vms->memmap[VIRT_GWDT_REFRESH].base;
++        hwaddr cbase = vms->memmap[VIRT_GWDT_CONTROL].base;
++        int irq = vms->irqmap[VIRT_GWDT_WS0];
++
++        sysbus_mmio_map(s, 0, rbase);
++        sysbus_mmio_map(s, 1, cbase);
++        sysbus_connect_irq(s, 0, qdev_get_gpio_in(vms->gic, irq));
++
++        create_gwdt_dt_bindings(vms);
++    }
++
+     if (vms->platform_bus_dev) {
+         MachineClass *mc = MACHINE_GET_CLASS(vms);
+ 
+@@ -4123,6 +4166,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_UEFI_VARS_SYSBUS);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3);
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_WDT_SBSA);
+ #ifdef CONFIG_TPM
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+ #endif
+diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+index 89d0c46445..12238570b5 100644
+--- a/hw/core/sysbus-fdt.c
++++ b/hw/core/sysbus-fdt.c
+@@ -36,6 +36,7 @@
+ #include "hw/display/ramfb.h"
+ #include "hw/uefi/var-service-api.h"
+ #include "hw/arm/fdt.h"
++#include "hw/watchdog/sbsa_gwdt.h"
+ 
+ /*
+  * internal struct that contains the information to create dynamic
+@@ -140,6 +141,7 @@ static const BindingEntry bindings[] = {
+     TYPE_BINDING(TYPE_ARM_SMMUV3, no_fdt_node),
+     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
+     TYPE_BINDING(TYPE_UEFI_VARS_SYSBUS, add_uefi_vars_node),
++    TYPE_BINDING(TYPE_WDT_SBSA, no_fdt_node),
+     TYPE_BINDING("", NULL), /* last element */
+ };
+ 
 diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
-index b739a3ce3c..acb970e8b3 100644
+index acb970e8b3..49fdd723c2 100644
 --- a/hw/watchdog/sbsa_gwdt.c
 +++ b/hw/watchdog/sbsa_gwdt.c
-@@ -24,6 +24,7 @@
- #include "migration/vmstate.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-+#include "trace.h"
+@@ -285,6 +285,8 @@ static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, const void *data)
+     dc->realize = wdt_sbsa_gwdt_realize;
+     device_class_set_legacy_reset(dc, wdt_sbsa_gwdt_reset);
+     dc->hotpluggable = false;
++    /* requires machine-specific wiring (MMIO/IRQ/FDT) at plug time */
++    dc->user_creatable = true;
+     set_bit(DEVICE_CATEGORY_WATCHDOG, dc->categories);
+     dc->vmsd = &vmstate_sbsa_gwdt;
+     dc->desc = "SBSA-compliant generic watchdog device";
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 5f5c4899ad..f9a225c19b 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -36,6 +36,7 @@ config ARM_VIRT
+     select VIRTIO_MEM_SUPPORTED
+     select ACPI_CXL
+     select ACPI_HMAT
++    select WDT_SBSA
  
- static const VMStateDescription vmstate_sbsa_gwdt = {
-     .name = "sbsa-gwdt",
-@@ -62,6 +63,7 @@ static uint64_t sbsa_gwdt_rread(void *opaque, hwaddr addr, unsigned int size)
-         qemu_log_mask(LOG_GUEST_ERROR, "bad address in refresh frame read :"
-                         " 0x%x\n", (int)addr);
-     }
-+    trace_sbsa_gwdt_refresh_read(addr, ret);
-     return ret;
- }
- 
-@@ -93,6 +95,7 @@ static uint64_t sbsa_gwdt_read(void *opaque, hwaddr addr, unsigned int size)
-         qemu_log_mask(LOG_GUEST_ERROR, "bad address in control frame read :"
-                         " 0x%x\n", (int)addr);
-     }
-+    trace_sbsa_gwdt_control_read(addr, ret);
-     return ret;
- }
- 
-@@ -127,6 +130,7 @@ static void sbsa_gwdt_rwrite(void *opaque, hwaddr offset, uint64_t data,
-                              unsigned size) {
-     SBSA_GWDTState *s = SBSA_GWDT(opaque);
- 
-+    trace_sbsa_gwdt_refresh_write(offset, data);
-     if (offset == SBSA_GWDT_WRR) {
-         s->wcs &= ~(SBSA_GWDT_WCS_WS0 | SBSA_GWDT_WCS_WS1);
- 
-@@ -141,6 +145,7 @@ static void sbsa_gwdt_write(void *opaque, hwaddr offset, uint64_t data,
-                              unsigned size) {
-     SBSA_GWDTState *s = SBSA_GWDT(opaque);
- 
-+    trace_sbsa_gwdt_control_write(offset, data);
-     switch (offset) {
-     case SBSA_GWDT_WCS:
-         s->wcs = data & SBSA_GWDT_WCS_EN;
-@@ -180,6 +185,7 @@ static void wdt_sbsa_gwdt_reset(DeviceState *dev)
- {
-     SBSA_GWDTState *s = SBSA_GWDT(dev);
- 
-+    trace_sbsa_gwdt_reset();
-     timer_del(s->timer);
- 
-     s->wcs  = 0;
-@@ -196,10 +202,12 @@ static void sbsa_gwdt_timer_sysinterrupt(void *opaque)
- 
-     if (!(s->wcs & SBSA_GWDT_WCS_WS0)) {
-         s->wcs |= SBSA_GWDT_WCS_WS0;
-+        trace_sbsa_gwdt_ws0_asserted();
-         sbsa_gwdt_update_timer(s, TIMEOUT_REFRESH);
-         qemu_set_irq(s->irq, 1);
-     } else {
-         s->wcs |= SBSA_GWDT_WCS_WS1;
-+        trace_sbsa_gwdt_ws1_asserted();
-         qemu_log_mask(CPU_LOG_RESET, "Watchdog timer expired.\n");
-         /*
-          * Reset the watchdog only if the guest gets notified about
-diff --git a/hw/watchdog/trace-events b/hw/watchdog/trace-events
-index d85b3ca769..b388f7b250 100644
---- a/hw/watchdog/trace-events
-+++ b/hw/watchdog/trace-events
-@@ -42,3 +42,12 @@ k230_wdt_interrupt(void) "K230 WDT interrupt"
- k230_wdt_reset(void) "K230 WDT system reset"
- k230_wdt_restart(void) "K230 WDT restart"
- k230_wdt_reset_device(void) "K230 WDT device reset"
-+
-+#sbsa_gwdt.c
-+sbsa_gwdt_refresh_read(uint64_t addr, uint32_t value) "[0x%" PRIx64 "] -> 0x%" PRIx32
-+sbsa_gwdt_refresh_write(uint64_t addr, uint64_t value) "[0x%" PRIx64 "] <- 0x%" PRIx64
-+sbsa_gwdt_control_read(uint64_t addr, uint32_t value) "[0x%" PRIx64 "] -> 0x%" PRIx32
-+sbsa_gwdt_control_write(uint64_t addr, uint64_t value) "[0x%" PRIx64 "] <- 0x%" PRIx64
-+sbsa_gwdt_ws0_asserted(void) "WS0 signal is asserted"
-+sbsa_gwdt_ws1_asserted(void) "WS1 signal is asserted"
-+sbsa_gwdt_reset(void) "reset watchdog to default state"
+ config CUBIEBOARD
+     bool
 -- 
 MST
 

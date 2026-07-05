@@ -4,87 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC761C43458
-	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 14:42:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D34FC43458
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 14:42:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgNww-0006gl-6d; Sun, 05 Jul 2026 10:36:02 -0400
+	id 1wgNx4-0007zE-AN; Sun, 05 Jul 2026 10:36:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wgNwv-0006Va-3f
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 10:36:01 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wgNx3-0007tZ-0g
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 10:36:09 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wgNwt-0001T1-N6
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 10:36:00 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wgNx0-0001U7-SS
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 10:36:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783262159;
+ s=mimecast20190719; t=1783262166;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=DNcvRMiitysJcmRtUZXzlgXLa0I8VMObuPV+Psg+jNU=;
- b=NSEI0HdKrBErJnH0CmICSZMc7rDV9Qys/ctmUnfLpC70blcuCCuVewTUUSRNnOmE+8yqAg
- c2rRGCBy4ePN+q8fpt/6/EQ96YOBOvW+lDMMds6XebIGRyCM0ogicF+kIyvLpTZr4Hcfhs
- d+Pb3Zd+Et73z+9FlaNRKYGa6JM+dDU=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=EowkyqYpt77ogpC25tBSGvHiPA9OIiKf4U4BzNArRJA=;
+ b=SZEjojyNFexMXwt9PmERZnu4FAguM1WyPCeeSaSC99oOVr/bDXReVdfGhiEbaQZOxkaBJ+
+ sTEjf4iDfN6Fs03aJ/QpC60SP0f62AZmPEIGlB8lujHRYRccVwpWa0iAvBo4bI6Kh7yv12
+ UwpQdBME8mKdgQq9XIGxnrNdrP10TDA=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-604-f7WqUemNOAalq9UyP4vnVg-1; Sun, 05 Jul 2026 10:35:55 -0400
-X-MC-Unique: f7WqUemNOAalq9UyP4vnVg-1
-X-Mimecast-MFC-AGG-ID: f7WqUemNOAalq9UyP4vnVg_1783262154
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-490a767c7dcso16875845e9.2
- for <qemu-arm@nongnu.org>; Sun, 05 Jul 2026 07:35:55 -0700 (PDT)
+ us-mta-682-plOPca1WOouhEUb_7h7WEA-1; Sun, 05 Jul 2026 10:36:05 -0400
+X-MC-Unique: plOPca1WOouhEUb_7h7WEA-1
+X-Mimecast-MFC-AGG-ID: plOPca1WOouhEUb_7h7WEA_1783262164
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-493bfc3b84aso8825585e9.0
+ for <qemu-arm@nongnu.org>; Sun, 05 Jul 2026 07:36:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783262154; x=1783866954;
+ d=1e100.net; s=20251104; t=1783262164; x=1783866964;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=DNcvRMiitysJcmRtUZXzlgXLa0I8VMObuPV+Psg+jNU=;
- b=tOpdubcwexUv9Mdjv4m2zmUoZO4W53PAGeZnfzCgOgo7LD26vmZhX0EBwDOai20pZJ
- Hn8TCs+zVYf0VmnYHDMbSgSJ78bQShwb7PMsTSDCCDb4Pf89qntXHLlAQgbtpJ4LWTTM
- JCMnnj5ir4lNQRIiTYJG1uludezRYoY7Fp24/1rPcHM6eqlf/qSb/ZeSzK84sQPhg2KG
- E4N/DET2Y3drW9Sm1OEUWFiyrF+tw2IgqRvN/n3JbnNku5xntspe13dnESCx3CITvn7d
- p55L+qKCPuoIc2IZ35x1XI08+KU58Rpl31TICx8ScTEgZAoJP9qlmWo0/TcDYskWK4Fl
- GbvQ==
+ bh=EowkyqYpt77ogpC25tBSGvHiPA9OIiKf4U4BzNArRJA=;
+ b=Q7e7MtfUY4BOwpRASf25UwL9pSeDjpX9NaLCooNtaPGvLulqNxye0gProhzdUhsbXl
+ jEeMgniGMGft9R5CFl80WM/mbNbZw5RcTxSOhGPpw8nKFpj52oG0L9UvOETB/bLccVzO
+ jEcun5TxwUqwT5j02hqcrE48MscubqLMpRBo0bVMQr8WvMT8lOqgsiSbwBToH9E6qwyw
+ 21u1YDb1rKFZaJuFVhC+ps+G85qCZEqWfNnfGyU3wnFCtTuwthyqADVpkTWFztuuG8Zf
+ L3Pyonc6OBZ7uFqibjZDi4p2BQW5EwaLS+cfLmWATvsH3AcGcR34KhemGY72zpQ5MSAD
+ etKQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/574H/ZhAShGDhZNtOS83FRNti5a+H3KHhlC1iTGYd5cdxAAbOjAmLGSC1jnS1i0XYgcOsMZl9rQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzeRc5pkn7uCs4wfHsUPQp67u98U5hLFnLxmC1z82vTlgVxXvGJ
- U2AQtXbj0LjeLMBqJIBzq/NoCzDxuv5XHZIjHwg1SlC2ZiXVugt2un5Hs/bKIADsbxKV2djQhGB
- La9/EPDJAIuT67/9yVOQkUFCPFrSBM6CS62X0WesqBWPqP6rXuoN3aA==
-X-Gm-Gg: AfdE7ckTYg9qPQ2xdRIhgsThm96Rs4sCbKrY1rev6RF8HEVMfyBszMMbjv6IAi5zznZ
- gB8ZWBbKs89CNNsUstPC8YlY3OujcVXTQKFb8d4Ws0ExvLYvpEg5iP/IOCBjKluc0xjQMiEEEro
- r3Xoryyb0Jwy7Eo/leg11QjZMIOBMVVq2OlM4lTRi6Div8zLlLtbDwRx/gofQf/GuzPkEMlU6N2
- rphCQlDWv9PyYs0bUs/DweNDvwJG9nTnhK+I5J909fAFyiqV0HkT2wrJNUfXzq2M6NfQwrDzhMV
- Gs1AtFcdvsZtxp4WTjjNNj1CT64W5Ye4gtxkZnXbhKr92zFSvdXksw8rB/4eDdU0CcDwU23u8MV
- 22ZksZ8piq0lmHwdGl4TlUZGLUsNxtDR3
-X-Received: by 2002:a05:600c:528c:b0:492:454c:347c with SMTP id
- 5b1f17b1804b1-493d11d3bc2mr84590495e9.7.1783262154419; 
- Sun, 05 Jul 2026 07:35:54 -0700 (PDT)
-X-Received: by 2002:a05:600c:528c:b0:492:454c:347c with SMTP id
- 5b1f17b1804b1-493d11d3bc2mr84590175e9.7.1783262153952; 
- Sun, 05 Jul 2026 07:35:53 -0700 (PDT)
+ AFNElJ9f7BTYXiufI+xTRYFfWviFWc9Gs4Sb6iiq5Bxil4W30aN0PI0lnLOBKnGD/FpikOsjj9XAHE4X+Q==@nongnu.org
+X-Gm-Message-State: AOJu0YyGvtGvwLYFlfSMI35Agm8vAPRKfWMzEnaK1Ljkcbx6JCNvoCFm
+ sLxcDaLH692wMdwmLNGV9RGaNWBhDaa+9qC3VgDUTLOwaQars63a4MjROVxgGhk8VMC9Dq0joBX
+ ViqMru7wkg4e8yK9z6r5Fw76hOdsgrC7AFYLPkbO7ouVGzs3AW7Thgw==
+X-Gm-Gg: AfdE7clphQnzhNMtnwWZVz/zenmhdAqR+NL+0LFHpNKQkPPS1ElT2wwc620pBzDUvGf
+ 9MHJ6rmJxSyMXOOIT5vC5r9v7CENe/up9bP4mFwi9tt8SsUl+NqRqplMfbSkkN3QSspPeifriGq
+ Oc6bsJ77iJn1+h8q1Nep8pcmBhlU68d8lyeBRQj0QbVcAYx/xT88CmCo7fYTICBWKur31bVTG5k
+ yoxMtaG4CNNy1ZW4NK7j+wZtMlfCOizcGToKWrnl3MpVCYDa8ZUfOLNBcDNJqu5pzg/2QXiSU0k
+ CUto3H72RcB3ECI8SCPangoz7JhZFCToJFG3iNq70pRyk9nuB7XwNw4IwCIx2jCvqkbKoaMID2F
+ A/d0n7Irg5+7G6utYAHS27r+pCHkzZtB0
+X-Received: by 2002:a05:600d:110:b0:493:b750:b565 with SMTP id
+ 5b1f17b1804b1-493d11fe310mr44790985e9.35.1783262163648; 
+ Sun, 05 Jul 2026 07:36:03 -0700 (PDT)
+X-Received: by 2002:a05:600d:110:b0:493:b750:b565 with SMTP id
+ 5b1f17b1804b1-493d11fe310mr44790815e9.35.1783262163135; 
+ Sun, 05 Jul 2026 07:36:03 -0700 (PDT)
 Received: from redhat.com (IGLD-80-230-68-31.inter.net.il. [80.230.68.31])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493bef183e7sm376987125e9.2.2026.07.05.07.35.52
+ 5b1f17b1804b1-493cce03fa1sm202542715e9.11.2026.07.05.07.36.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Jul 2026 07:35:53 -0700 (PDT)
-Date: Sun, 5 Jul 2026 10:35:51 -0400
+ Sun, 05 Jul 2026 07:36:02 -0700 (PDT)
+Date: Sun, 5 Jul 2026 10:36:00 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>, Eric Auger <eric.auger@redhat.com>,
- Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org
-Subject: [PULL 29/44] arm: sbsa_gwdt: rename device type to sbsa-gwdt
-Message-ID: <5cb6dfc12d36ede1f79deb58385e324e7dc1cce9.1783261895.git.mst@redhat.com>
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org
+Subject: [PULL 33/44] arm: virt: add support for WDAT based watchdog
+Message-ID: <285bc90d5b31775b7803e50822930a2914bf42de.1783261895.git.mst@redhat.com>
 References: <cover.1783261895.git.mst@redhat.com>
 MIME-Version: 1.0
 In-Reply-To: <cover.1783261895.git.mst@redhat.com>
 X-Mailer: git-send-email 2.51.2.2891.g4157995a80.dirty
 X-Mutt-Fcc: =sent
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: JxzNZSajgIcLpI2ET_DGruS-2blEfpIlRj3ZFfCoPdE_1783262154
+X-Mimecast-MFC-PROC-ID: hB5wTsfJlAOQsyI0o1WL7qG4rLFledfKNwpfcxGot-Y_1783262164
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -96,7 +97,8 @@ X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,32 +116,189 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Igor Mammedov <imammedo@redhat.com>
 
-Use hyphenated name to follow QEMU device naming convention.
-Migration compatibility is preserved since the vmstate name
-is already "sbsa-gwdt".
+Add WDAT handling for sbsa-gwdt on arm/virt machine.
+
+WDAT mode is enabled by 'wdat' option: ex: "-device sbsa-gwdt,wdat=on"
+
+When WDAT is enabled:
+ - Build the WDAT ACPI table instead of the GTDT watchdog entry,
+   since they are mutually exclusive due to different timer
+   resolution (WDAT uses 1 kHz vs GTDT's system counter frequency).
+ - Skip FDT watchdog node creation, as the DT-based Linux driver
+   would use the system counter frequency which doesn't match the
+   WDAT-mode 1 kHz clock.
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-Message-ID: <20260702145856.1539572-4-imammedo@redhat.com>
+Message-ID: <20260702145856.1539572-8-imammedo@redhat.com>
 ---
- include/hw/watchdog/sbsa_gwdt.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/system/arm/virt.rst | 15 +++++++++++++++
+ hw/arm/virt-acpi-build.c | 34 ++++++++++++++++++++++++++--------
+ hw/arm/virt.c            | 12 ++++++++----
+ 3 files changed, 49 insertions(+), 12 deletions(-)
 
-diff --git a/include/hw/watchdog/sbsa_gwdt.h b/include/hw/watchdog/sbsa_gwdt.h
-index 307a4f291a..8941dcff9e 100644
---- a/include/hw/watchdog/sbsa_gwdt.h
-+++ b/include/hw/watchdog/sbsa_gwdt.h
-@@ -16,7 +16,7 @@
- #include "hw/core/sysbus.h"
- #include "hw/core/irq.h"
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index bf5a9c8f6c..5f6dd17978 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -323,6 +323,21 @@ using ``-device sbsa-gwdt``. It is only supported on the virt machine,
+ which wires up statically assigned MMIO regions and IRQs via
+ machine-specific plug handlers.
  
--#define TYPE_WDT_SBSA "sbsa_gwdt"
-+#define TYPE_WDT_SBSA "sbsa-gwdt"
- #define SBSA_GWDT(obj) \
-     OBJECT_CHECK(SBSA_GWDTState, (obj), TYPE_WDT_SBSA)
- #define SBSA_GWDT_CLASS(klass) \
++Two modes are available:
++
++Native mode (default)
++  The watchdog is described via the ACPI GTDT table and FDT, using
++  the system counter frequency. Example::
++
++    -device sbsa-gwdt
++
++WDAT mode
++  The watchdog is described via the ACPI WDAT table (no FDT node),
++  using a 1 kHz timer frequency. WDAT and GTDT watchdog entries are
++  mutually exclusive. Example::
++
++    -device sbsa-gwdt,wdat=on
++
+ Linux guest kernel configuration
+ """"""""""""""""""""""""""""""""
+ 
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index f5b3b4ce48..f6386088b6 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -65,6 +65,7 @@
+ #include "target/arm/cpu.h"
+ #include "target/arm/multiprocessing.h"
+ #include "hw/watchdog/sbsa_gwdt.h"
++#include "hw/acpi/wdat-gwdt.h"
+ 
+ #include "smmuv3-accel.h"
+ #include "tegra241-cmdqv.h"
+@@ -859,7 +860,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+  * 5.2.25 Generic Timer Description Table (GTDT)
+  */
+ static void
+-build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
++build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms,
++           bool add_watchdog)
+ {
+     /*
+      * Table 5-117 Flag Definitions
+@@ -870,7 +872,6 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     AcpiTable table = { .sig = "GTDT", .rev = 3, .oem_id = vms->oem_id,
+                         .oem_table_id = vms->oem_table_id };
+     uint32_t gtdt_start = table_data->len;
+-    Object *wdt = object_resolve_type_unambiguous(TYPE_WDT_SBSA, NULL);
+ 
+     acpi_table_begin(&table, table_data);
+ 
+@@ -903,12 +904,12 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_append_int_noprefix(table_data, 0xFFFFFFFFFFFFFFFF, 8);
+ 
+     /* Platform Timer Count */
+-    build_append_int_noprefix(table_data,  wdt ? 1 : 0, 4);
++    build_append_int_noprefix(table_data,  add_watchdog ? 1 : 0, 4);
+     /* Platform Timer Offset */
+     build_append_int_noprefix(table_data,
+-        wdt ? (table_data->len - gtdt_start) +
+-              4 + 4 + 4 /* len of this & following 2 fields to skip */
+-            : 0, 4);
++        add_watchdog ? (table_data->len - gtdt_start) +
++                       4 + 4 + 4 /* len of this & following 2 fields to skip */
++                     : 0, 4);
+ 
+     if (vms->ns_el2_virt_timer_irq) {
+         /* Virtual EL2 Timer GSIV */
+@@ -921,7 +922,7 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     }
+ 
+     /* ACPI 6.5 spec: 5.2.25.2 ARM Generic Watchdog Structure (Table 5-124) */
+-    if (wdt) {
++    if (add_watchdog) {
+         hwaddr rbase = vms->memmap[VIRT_GWDT_REFRESH].base;
+         hwaddr cbase = vms->memmap[VIRT_GWDT_CONTROL].base;
+         int irq = ARM_SPI_BASE + vms->irqmap[VIRT_GWDT_WS0];
+@@ -1332,13 +1333,19 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+     GArray *table_offsets;
+     unsigned dsdt, xsdt;
++    bool has_wdat = false;
+     GArray *tables_blob = tables->table_data;
+     MachineState *ms = MACHINE(vms);
+     CPUCoreCaches caches[CPU_MAX_CACHES];
+     unsigned int num_caches;
++    Object *wdt = object_resolve_type_unambiguous(TYPE_WDT_SBSA, NULL);
+ 
+     num_caches = virt_get_caches(vms, caches);
+ 
++    if (wdt) {
++        has_wdat = object_property_get_bool(wdt, "wdat", &error_abort);
++    }
++
+     table_offsets = g_array_new(false, true /* clear */,
+                                         sizeof(uint32_t));
+ 
+@@ -1357,6 +1364,17 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_madt(tables_blob, tables->linker, vms);
+ 
++    acpi_add_table(table_offsets, tables_blob);
++    if (wdt && has_wdat) {
++        uint64_t freq = object_property_get_uint(wdt, "clock-frequency",
++                                                 &error_abort);
++        build_gwdt_wdat(tables_blob, tables->linker,
++                        vms->oem_id, vms->oem_table_id,
++                        vms->memmap[VIRT_GWDT_REFRESH].base,
++                        vms->memmap[VIRT_GWDT_CONTROL].base,
++                        freq);
++    }
++
+     if (!vmc->no_cpu_topology) {
+         acpi_add_table(table_offsets, tables_blob);
+         build_pptt(tables_blob, tables->linker, ms, vms->oem_id,
+@@ -1364,7 +1382,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     }
+ 
+     acpi_add_table(table_offsets, tables_blob);
+-    build_gtdt(tables_blob, tables->linker, vms);
++    build_gtdt(tables_blob, tables->linker, vms, wdt && !has_wdat);
+ 
+     acpi_add_table(table_offsets, tables_blob);
+     {
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index eabc5274d5..fb916c341b 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -3846,10 +3846,12 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+         qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
+         g_free(resv_prop_str);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_WDT_SBSA)) {
+-        uint64_t cntfrq = object_property_get_int(OBJECT(qemu_get_cpu(0)),
+-                                                  "cntfrq", &error_abort);
++        if (!object_property_get_bool(OBJECT(dev), "wdat", &error_abort)) {
++            uint64_t cntfrq = object_property_get_int(OBJECT(qemu_get_cpu(0)),
++                                                      "cntfrq", &error_abort);
+ 
+-        qdev_prop_set_uint64(dev, "clock-frequency", cntfrq);
++            qdev_prop_set_uint64(dev, "clock-frequency", cntfrq);
++        }
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3)) {
+         if (vms->legacy_smmuv3_present || vms->iommu == VIRT_IOMMU_VIRTIO) {
+             error_setg(errp, "virt machine already has %s set. "
+@@ -3911,7 +3913,9 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+         sysbus_mmio_map(s, 1, cbase);
+         sysbus_connect_irq(s, 0, qdev_get_gpio_in(vms->gic, irq));
+ 
+-        create_gwdt_dt_bindings(vms);
++        if (!object_property_get_bool(OBJECT(dev), "wdat", &error_abort)) {
++            create_gwdt_dt_bindings(vms);
++        }
+     }
+ 
+     if (vms->platform_bus_dev) {
 -- 
 MST
 

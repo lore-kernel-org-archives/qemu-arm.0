@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A65EC43458
-	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 14:41:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC761C43458
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 14:42:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgNwp-0005zA-UR; Sun, 05 Jul 2026 10:35:55 -0400
+	id 1wgNww-0006gl-6d; Sun, 05 Jul 2026 10:36:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wgNwo-0005xX-3Q
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 10:35:54 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wgNwv-0006Va-3f
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 10:36:01 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wgNwm-0001S9-L4
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 10:35:53 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wgNwt-0001T1-N6
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 10:36:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783262152;
+ s=mimecast20190719; t=1783262159;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=D9F4wIuw/hWCTmZxs9cVla3JXisKf8d26stym2rmfd4=;
- b=homFobUpgZj0GjPBot+Mp2WJVgbHvUGwm7dbffZrGrZLFnCr9IT4J1HhE9++eZb3RtusqH
- g8hiorSIRWTogDDFdV9nRUw7xgTdkTI81nSYTGzC9larrrQwR9v1pL92L3Mz61lijTGz+0
- fTHus+rvrjy6Z5YeJalZYf3g52nazmc=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=DNcvRMiitysJcmRtUZXzlgXLa0I8VMObuPV+Psg+jNU=;
+ b=NSEI0HdKrBErJnH0CmICSZMc7rDV9Qys/ctmUnfLpC70blcuCCuVewTUUSRNnOmE+8yqAg
+ c2rRGCBy4ePN+q8fpt/6/EQ96YOBOvW+lDMMds6XebIGRyCM0ogicF+kIyvLpTZr4Hcfhs
+ d+Pb3Zd+Et73z+9FlaNRKYGa6JM+dDU=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-622-UBtEPJjSP8Se0soVhQC4iQ-1; Sun, 05 Jul 2026 10:35:51 -0400
-X-MC-Unique: UBtEPJjSP8Se0soVhQC4iQ-1
-X-Mimecast-MFC-AGG-ID: UBtEPJjSP8Se0soVhQC4iQ_1783262150
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-473ac08a6a4so1173580f8f.0
- for <qemu-arm@nongnu.org>; Sun, 05 Jul 2026 07:35:50 -0700 (PDT)
+ us-mta-604-f7WqUemNOAalq9UyP4vnVg-1; Sun, 05 Jul 2026 10:35:55 -0400
+X-MC-Unique: f7WqUemNOAalq9UyP4vnVg-1
+X-Mimecast-MFC-AGG-ID: f7WqUemNOAalq9UyP4vnVg_1783262154
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-490a767c7dcso16875845e9.2
+ for <qemu-arm@nongnu.org>; Sun, 05 Jul 2026 07:35:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783262150; x=1783866950;
+ d=1e100.net; s=20251104; t=1783262154; x=1783866954;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=D9F4wIuw/hWCTmZxs9cVla3JXisKf8d26stym2rmfd4=;
- b=g6EMEJJvpszQ38XA27OMbJFO6wPwQeZ2kBMrEISO1cvTOty7x4Zjn4T7BR/aciopsQ
- oS8Wj7ZG1qh070KyXRQQZoA7nXCaL26vbDdVknfoJV8CN+pniN21f/w4YuxEq5hlfcDz
- fa4y0NdlPrQ5CbMdig6p889xhVDHPMATNqV0eOhDKpdcBWaBebYvQsAVUBI5lBqG01dk
- fr55nn1nCUJPMehHiLmgrGeEk5lhaYQfSpgP1JkhO2wHxgPj/tImJ9mO6m+sfBZtxHtP
- yFzu9dBE+rhApLcnG0EO8imQU8sER4SZKeqTh45ya1+gRqjUYEf9V46l95cfDUvoYEG5
- GhaA==
+ bh=DNcvRMiitysJcmRtUZXzlgXLa0I8VMObuPV+Psg+jNU=;
+ b=tOpdubcwexUv9Mdjv4m2zmUoZO4W53PAGeZnfzCgOgo7LD26vmZhX0EBwDOai20pZJ
+ Hn8TCs+zVYf0VmnYHDMbSgSJ78bQShwb7PMsTSDCCDb4Pf89qntXHLlAQgbtpJ4LWTTM
+ JCMnnj5ir4lNQRIiTYJG1uludezRYoY7Fp24/1rPcHM6eqlf/qSb/ZeSzK84sQPhg2KG
+ E4N/DET2Y3drW9Sm1OEUWFiyrF+tw2IgqRvN/n3JbnNku5xntspe13dnESCx3CITvn7d
+ p55L+qKCPuoIc2IZ35x1XI08+KU58Rpl31TICx8ScTEgZAoJP9qlmWo0/TcDYskWK4Fl
+ GbvQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rpf9m5o/CefoHo2m+iKv9vukjP+tvQQi4A5sUS6K7ZsaBt4+gAcNrLvuR1tUfLX7MLPUwy+hwGuWQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yya9ur9TRpWjqcYJ7tZk8+ro8nRTUYy/brfWMd6IQKDbl0FZZ9l
- 8jFl8F881rzo6DWgpyMnCpHM4uSf5H+4WF7T77Ghp2By4qIDzubB7AiId/CPhD/kl7BeczPqb+D
- PtiF8fXW7qV5iKvo/iyJ7LZrlygTu7UNgg89SCRM2ZDQcWW7aKB3U2A==
-X-Gm-Gg: AfdE7clO3Ljro49xt4o1MqhoKSddc04lT5DbYIdm8/gpWHnZAtFLv0AVDvvEgPKnJf1
- FRPA+lRWLSqnAUukWQPwCq5MDGj+F6MchxWu8W7gYUUficElbnehzKCrIlAdaNSTvZyXhUQ+ktE
- LXUiVz7Of50jY81Wrm4efyMf7wHuj/b4n+uHbrAiMY7ieK9Z3EDw1v4hckqO8mH2zSAxoe0dw1D
- 1pL83CSMZ4wsDYwN33smd19EiXnmc+Zn4g1vS3Z2fKfukn65Q7vyC9aiV5qisrHAnlXbAuO8E6T
- KpksVL0rtehjrROOslmhtGwKPbeKKlJLPCwUd356WIRpfvlCBtAdVbLo+H1DG8UaGuZUz/SnkLl
- DUtZWiYVUDiGGnDC+uivJPhxRkNx075nH
-X-Received: by 2002:a05:6000:4203:b0:464:8d68:618a with SMTP id
- ffacd0b85a97d-47aaaec0251mr7609431f8f.32.1783262149687; 
- Sun, 05 Jul 2026 07:35:49 -0700 (PDT)
-X-Received: by 2002:a05:6000:4203:b0:464:8d68:618a with SMTP id
- ffacd0b85a97d-47aaaec0251mr7609392f8f.32.1783262148931; 
- Sun, 05 Jul 2026 07:35:48 -0700 (PDT)
+ AFNElJ/574H/ZhAShGDhZNtOS83FRNti5a+H3KHhlC1iTGYd5cdxAAbOjAmLGSC1jnS1i0XYgcOsMZl9rQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzeRc5pkn7uCs4wfHsUPQp67u98U5hLFnLxmC1z82vTlgVxXvGJ
+ U2AQtXbj0LjeLMBqJIBzq/NoCzDxuv5XHZIjHwg1SlC2ZiXVugt2un5Hs/bKIADsbxKV2djQhGB
+ La9/EPDJAIuT67/9yVOQkUFCPFrSBM6CS62X0WesqBWPqP6rXuoN3aA==
+X-Gm-Gg: AfdE7ckTYg9qPQ2xdRIhgsThm96Rs4sCbKrY1rev6RF8HEVMfyBszMMbjv6IAi5zznZ
+ gB8ZWBbKs89CNNsUstPC8YlY3OujcVXTQKFb8d4Ws0ExvLYvpEg5iP/IOCBjKluc0xjQMiEEEro
+ r3Xoryyb0Jwy7Eo/leg11QjZMIOBMVVq2OlM4lTRi6Div8zLlLtbDwRx/gofQf/GuzPkEMlU6N2
+ rphCQlDWv9PyYs0bUs/DweNDvwJG9nTnhK+I5J909fAFyiqV0HkT2wrJNUfXzq2M6NfQwrDzhMV
+ Gs1AtFcdvsZtxp4WTjjNNj1CT64W5Ye4gtxkZnXbhKr92zFSvdXksw8rB/4eDdU0CcDwU23u8MV
+ 22ZksZ8piq0lmHwdGl4TlUZGLUsNxtDR3
+X-Received: by 2002:a05:600c:528c:b0:492:454c:347c with SMTP id
+ 5b1f17b1804b1-493d11d3bc2mr84590495e9.7.1783262154419; 
+ Sun, 05 Jul 2026 07:35:54 -0700 (PDT)
+X-Received: by 2002:a05:600c:528c:b0:492:454c:347c with SMTP id
+ 5b1f17b1804b1-493d11d3bc2mr84590175e9.7.1783262153952; 
+ Sun, 05 Jul 2026 07:35:53 -0700 (PDT)
 Received: from redhat.com (IGLD-80-230-68-31.inter.net.il. [80.230.68.31])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47aa0f21328sm16705681f8f.32.2026.07.05.07.35.47
+ 5b1f17b1804b1-493bef183e7sm376987125e9.2.2026.07.05.07.35.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Jul 2026 07:35:48 -0700 (PDT)
-Date: Sun, 5 Jul 2026 10:35:46 -0400
+ Sun, 05 Jul 2026 07:35:53 -0700 (PDT)
+Date: Sun, 5 Jul 2026 10:35:51 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>, Eric Auger <eric.auger@redhat.com>,
  Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org
-Subject: [PULL 27/44] arm: sbsa_gwdt: fixup default "clock-frequency"
-Message-ID: <8e1aee6db42122cd1f781bf6048103fc76436c41.1783261895.git.mst@redhat.com>
+Subject: [PULL 29/44] arm: sbsa_gwdt: rename device type to sbsa-gwdt
+Message-ID: <5cb6dfc12d36ede1f79deb58385e324e7dc1cce9.1783261895.git.mst@redhat.com>
 References: <cover.1783261895.git.mst@redhat.com>
 MIME-Version: 1.0
 In-Reply-To: <cover.1783261895.git.mst@redhat.com>
 X-Mailer: git-send-email 2.51.2.2891.g4157995a80.dirty
 X-Mutt-Fcc: =sent
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: iCyyBF6ipHlDAEk-83vAO5m3Z-m_52GsBIOp-SE-vYE_1783262150
+X-Mimecast-MFC-PROC-ID: JxzNZSajgIcLpI2ET_DGruS-2blEfpIlRj3ZFfCoPdE_1783262154
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -96,7 +96,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,44 +114,32 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Igor Mammedov <imammedo@redhat.com>
 
-Comment about keeping legacy freq, is wrong to begin with
-(should be 62.5MHz), but that value also doesn't make
-sense anymore as the watchdog is used only by un-versioned
-SBSA board and the later has hard-coded it to 1GHz.
-
-Other potential user (arm/virt) also has system clock at 1GHz.
-
-Drop misleading comment about legacy and set default to 1GHz
-to match both boards. (not that it does matter, since users are
-setting frequency to match CPU's one explicitly)
+Use hyphenated name to follow QEMU device naming convention.
+Migration compatibility is preserved since the vmstate name
+is already "sbsa-gwdt".
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-Message-ID: <20260702145856.1539572-2-imammedo@redhat.com>
+Message-ID: <20260702145856.1539572-4-imammedo@redhat.com>
 ---
- hw/watchdog/sbsa_gwdt.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ include/hw/watchdog/sbsa_gwdt.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
-index 7ade5c6f18..b739a3ce3c 100644
---- a/hw/watchdog/sbsa_gwdt.c
-+++ b/hw/watchdog/sbsa_gwdt.c
-@@ -264,11 +264,10 @@ static void wdt_sbsa_gwdt_realize(DeviceState *dev, Error **errp)
- static const Property wdt_sbsa_gwdt_props[] = {
-     /*
-      * Timer frequency in Hz. This must match the frequency used by
--     * the CPU's generic timer. Default 62.5Hz matches QEMU's legacy
--     * CPU timer frequency default.
-+     * the CPU's generic timer.
-      */
-     DEFINE_PROP_UINT64("clock-frequency", struct SBSA_GWDTState, freq,
--                       62500000),
-+                       1000000000),
- };
+diff --git a/include/hw/watchdog/sbsa_gwdt.h b/include/hw/watchdog/sbsa_gwdt.h
+index 307a4f291a..8941dcff9e 100644
+--- a/include/hw/watchdog/sbsa_gwdt.h
++++ b/include/hw/watchdog/sbsa_gwdt.h
+@@ -16,7 +16,7 @@
+ #include "hw/core/sysbus.h"
+ #include "hw/core/irq.h"
  
- static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, const void *data)
+-#define TYPE_WDT_SBSA "sbsa_gwdt"
++#define TYPE_WDT_SBSA "sbsa-gwdt"
+ #define SBSA_GWDT(obj) \
+     OBJECT_CHECK(SBSA_GWDTState, (obj), TYPE_WDT_SBSA)
+ #define SBSA_GWDT_CLASS(klass) \
 -- 
 MST
 

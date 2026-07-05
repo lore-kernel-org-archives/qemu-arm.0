@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E86CFC43458
-	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 04:44:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEA45C43458
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Jul 2026 04:44:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgEec-00017F-FA; Sun, 05 Jul 2026 00:40:30 -0400
+	id 1wgEd1-00069q-Fi; Sun, 05 Jul 2026 00:38:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wgEcV-0005Hl-NU
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:38:21 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ id 1wgEc5-0004tB-Nu
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:37:55 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wgEc9-0004Rn-W1
- for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:38:19 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2cc7e86e7aeso3366885ad.2
- for <qemu-arm@nongnu.org>; Sat, 04 Jul 2026 21:37:57 -0700 (PDT)
+ id 1wgEbs-00049U-G3
+ for qemu-arm@nongnu.org; Sun, 05 Jul 2026 00:37:53 -0400
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-2cc8e87f29bso217865ad.2
+ for <qemu-arm@nongnu.org>; Sat, 04 Jul 2026 21:37:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783226277; x=1783831077; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783226259; x=1783831059; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=HlU1WJhs/EKnxRmtpuuBgS8HV9oUIdhQMc6Ge3RayaI=;
- b=Dg8EUxH7r7kK1S7o1tH96qSvwjj8v83i5UzPuPZy650+p93amflzk6AqO9XBGLug5W
- OpDXVQ4c7mYRm9g5qvedOWiemcQCQY9lbkepnirREP9l2FC1rgNbrOYgOL0IVnkb6q2s
- 6GMWsiVkT6M7mSVrIqb+yOfdotr1wLOPDoqQJzjTzVyOe66T1oVd7zpo4gvhitY1y72R
- pOKgVbuba9+2Cf5iCzXwMnqVzCuaNhPbZYGAHm5J92EXQcTWQy1Fe/G5lNvBoIYaWXre
- bqnnqkYNNspNk0MkQ9BaG3az/2piJ7IxIrPXuwdFZGt1o8th3vbcN3/xAXhWclX6s8jW
- 7CCA==
+ :message-id:reply-to;
+ bh=w7mbi44ms/ED7IuWTQq/DSHUQAsdDGZrhybOFw4BdE8=;
+ b=iEKZLirlbx6EzYgwl0W8B/1/lWKXaiPAzjwJHFe/UR3eKdY/NSes7qgSqSeppOGKHp
+ j7YmAysDzpMZgoZc9rVodTbzl0EfR27B/QwcpJMxgac3jHQhTN9cKL5TeO/X1uk6cx7M
+ gbDjOUfsHEDYuV/TzepRSQom5XL4Kmzq7YZjdf1QAxDZDR+MkZqfZaZgDZLuoFEhrZW9
+ e7Rc2owe1ZS/bJWvJYBF01Xk49D0HWr1cF5rL7U4MRCs7Lme+nzxJr8sRrFhlRzK8aA6
+ pwVczkwWNpWOBkWZqw/6zJN481YfPF4nf+3SlPuiNYqLo4fuq+vEJ4hW9p6Rvecq9aTu
+ zl2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783226277; x=1783831077;
+ d=1e100.net; s=20251104; t=1783226259; x=1783831059;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=HlU1WJhs/EKnxRmtpuuBgS8HV9oUIdhQMc6Ge3RayaI=;
- b=ReAZePcXlV2s2L52MFcLiuw1If9JpFUSJEZpvByFkB00XXZVLycKOckdEdlKnYcNA/
- 30NEAz71p/h8BpUB3DP3Ry08shuPcoCjcrtca3HTdC+WONSqP6jcg5KAnQvd1uVoQSgz
- +kVNEnDqX/7lKLH+OJY+ezDAn6sVvA+feyS4W6yUKJVHV8I2IbuSt3sXci2RfBg1cyf+
- oP9NXaMjcmdqaO5yEgCDSrmzzNzPzBXe051x8ZpePQVOTP53TCPoqwMSPNJefEsxcIiz
- Avh9IzTvzJfcnf9tRpUfErEhdNgFRZGJ/DzMiprLaN7cvRXbzbTYIS/yW72gvOmJJXnB
- KScQ==
-X-Gm-Message-State: AOJu0Yye9d2b3jxK8h0sOyMY+I/vRS3QWFU/l4Cu67fh7vbkdoHUVNh2
- YFVXplHfTS9R4JLEdSGRpmLK7A/IRq5j+f2t3T4A8RtTLa1K18JHk+8jtnJeqmHxMaw=
-X-Gm-Gg: AfdE7cnsEDGZ907S28e/W1NMqPmEj5vdHV5VaOhh5d3IgvPutoQQwbwb3jD3olIZt7f
- dLXMHmi9hL+A9EARUZipcfZkrC/7DkvGp78s4eG+N/H07ivuQcIvLCDS+lHA96l15RF7SWJKtMG
- iGefm7M47ZRX2hj52QTyIBtNBmMlP2MpVPexpJ2BBHiUSDW5lBdH7kf3nH9NVxkzbUcaxh890Zf
- 0u6CCQxoLfL224FkliLM7fw7aQ9vEIBiHnUbbuII996TEKDpWdHPvYv2TSG3a+JHekg9NaNY4DP
- 1yTJdF/tgVAYdhfoIPK/6OHq3M6PDDonSlxalXaqvHr1oP9HNoUvXij6s7gBPLPk+oOeLqXjPxJ
- HhBmqFhOWC9aJWLfhFUBTjxEnSeLBsStzoB1Bq8avsdWnM3ylv0pizZsD4us918HAGCaOBGd5nh
- VT7fCPRBbzMl3Z4uEFmmWJJ3xeNLD1WjAmKbLNqS7F/EUX9qY=
-X-Received: by 2002:a17:903:26d0:b0:2c9:c083:cd50 with SMTP id
- d9443c01a7336-2cbb9e2e2admr50526815ad.17.1783226276557; 
- Sat, 04 Jul 2026 21:37:56 -0700 (PDT)
+ :to:cc:subject:date:message-id:reply-to;
+ bh=w7mbi44ms/ED7IuWTQq/DSHUQAsdDGZrhybOFw4BdE8=;
+ b=o8evJ3nvB8mF0pKsAHOkbugrPpwb6XKW0SQdIPdXB4R77S697hMho+AjM6xnfldx3W
+ oRleQoA/d0M20p8VmHZjstH2il05GljMjlGOoFSCF1Z58gALvnMsYuoUCB7BY6muYRNG
+ f+adT9KC79yDWN2ylEWmdOECmaHOb+kRr+FE52AN6JeLye7oaFr2UQ230+EZSS5fUIYK
+ KD4omgZiAAoMPtaCkbFdVCsuq2XKlX4aGG7X/9E0PrGWPqsjM8FaEDW+EYnj5rEOjjTI
+ TbfW+7p4MerfRE8oToRijKjEnHLDieDorC0mbB+IvMzY+A28SyJovXBY3rjMO8Pf8vmp
+ G5Dg==
+X-Gm-Message-State: AOJu0YwmROd/ti67cGg+WigXfTyumjSKcaAbWctsgqNPB4PnmGojiEta
+ h0T7+EjS+9+AcqkC3FpEFrU5w7XbANg2pVa4TTF1DLJCOy0+YI61lR+PiNQ9ibCn+/I=
+X-Gm-Gg: AfdE7clCwuaGcZE3YHGFWj/iiTEpLah1j0qWTDIkOvxHxylRPT2dLZusKa321K2LuB9
+ v5giqXgQMjD2Lpv3PPew48JhvJfIcRck9LRZf17W1gUEJ9XvlDj5zme86mZ4/GTiBI0ovHWVmP+
+ xtuqJjFFK5+x3BkCtjnr4R62jAnuqQJuFpZtdrCU/nU4LrJ/XhsLY/l37nfXKmsnKLyztEmmK4E
+ pcPpZZcOAbaKVBRNsFP257h9Wy8Q4XvoXtiJtfFM4R5twoGHrduagKUAzgQP/u/Z/MrLP1nuvvu
+ XXce9kG7U3oqrd0uNFMjFEh3zWC56iUQKMx4Mly0H/BmAflOtXxvsj6MyXln3/GGw3WUq7oEQQi
+ syd+DL20EIXnqDmpQDX3RyuKyvH40y8I8WXKCEMjjhawQaHDBQ+ulvddQsK6ayIjhVrvmGT63y9
+ q1SM4rI6C4uGBnqBkM1Lr6CWh0pqZWcFaH9+B+h9VT3YyCS0w=
+X-Received: by 2002:a17:903:230f:b0:2cc:7759:ffac with SMTP id
+ d9443c01a7336-2cc775a0dd7mr29035405ad.30.1783226258807; 
+ Sat, 04 Jul 2026 21:37:38 -0700 (PDT)
 Received: from stoup.. (71-212-39-188.tukw.qwest.net. [71.212.39.188])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2cad712ca17sm29863785ad.28.2026.07.04.21.37.56
+ d9443c01a7336-2cad712ca17sm29863785ad.28.2026.07.04.21.37.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Jul 2026 21:37:56 -0700 (PDT)
+ Sat, 04 Jul 2026 21:37:38 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, philmd@oss.qualcomm.com
-Subject: [PATCH v2 35/46] target/ppc: Use CPUBreakpoint arg in
- breakpoint_handler
-Date: Sat,  4 Jul 2026 21:37:14 -0700
-Message-ID: <20260705043725.1373137-36-richard.henderson@linaro.org>
+Subject: [PATCH v2 13/46] target/arm: Split is_wp out of bp_wp_matches
+Date: Sat,  4 Jul 2026 21:36:52 -0700
+Message-ID: <20260705043725.1373137-14-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260705043725.1373137-1-richard.henderson@linaro.org>
 References: <20260705043725.1373137-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
 X-Spam_score_int: 4
 X-Spam_score: 0.4
 X-Spam_bar: /
@@ -101,47 +100,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We don't need to check PPC_ISA207S, because that's already
-done starting with register_book3s_207_dbg_sprs().
-We no longer need to check BP_CPU or clear watchpoint_hit.
+This function is only called twice, once for each of
+breakpoint and watchpoint.  Hoist the separate bp/wp
+code into the respective callers.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/ppc/tcg-excp_helper.c | 21 ++++++++-------------
- 1 file changed, 8 insertions(+), 13 deletions(-)
+ target/arm/tcg/debug.c | 49 +++++++++++++++++-------------------------
+ 1 file changed, 20 insertions(+), 29 deletions(-)
 
-diff --git a/target/ppc/tcg-excp_helper.c b/target/ppc/tcg-excp_helper.c
-index 51358c901f..56ca66e7b5 100644
---- a/target/ppc/tcg-excp_helper.c
-+++ b/target/ppc/tcg-excp_helper.c
-@@ -314,19 +314,14 @@ void ppc_cpu_debug_excp_handler(CPUState *cs, CPUBreakpoint *hit)
- #if defined(TARGET_PPC64)
-     CPUPPCState *env = cpu_env(cs);
- 
--    if (env->insns_flags2 & PPC2_ISA207S) {
--        if (cs->watchpoint_hit) {
--            if (cs->watchpoint_hit->flags & BP_CPU) {
--                env->spr[SPR_DAR] = cs->watchpoint_hit->hitaddr;
--                env->spr[SPR_DSISR] = PPC_BIT(41);
--                cs->watchpoint_hit = NULL;
--                raise_exception(env, POWERPC_EXCP_DSI);
--            }
--            cs->watchpoint_hit = NULL;
--        } else if (cpu_breakpoint_test(cs, env->nip, BP_CPU)) {
--            raise_exception_err(env, POWERPC_EXCP_TRACE,
--                                PPC_BIT(33) | PPC_BIT(43));
--        }
-+    if (hit->flags & BP_MEM_ACCESS) {
-+        /* watchpoint */
-+        env->spr[SPR_DAR] = hit->hitaddr;
-+        env->spr[SPR_DSISR] = PPC_BIT(41);
-+        raise_exception(env, POWERPC_EXCP_DSI);
-+    } else {
-+        /* breakpoint */
-+        raise_exception_err(env, POWERPC_EXCP_TRACE, PPC_BIT(33) | PPC_BIT(43));
-     }
- #endif
+diff --git a/target/arm/tcg/debug.c b/target/arm/tcg/debug.c
+index 306106b7e8..519a06fbc7 100644
+--- a/target/arm/tcg/debug.c
++++ b/target/arm/tcg/debug.c
+@@ -252,41 +252,16 @@ static bool linked_bp_matches(ARMCPU *cpu, int lbn)
+     return contextidr == (uint32_t)env->cp15.dbgbvr[lbn];
  }
+ 
+-static bool bp_wp_matches(ARMCPU *cpu, int n, bool is_wp)
++static bool bp_wp_matches(ARMCPU *cpu, uint64_t cr, int access_el)
+ {
+     CPUARMState *env = &cpu->env;
+-    uint64_t cr;
+     int pac, hmc, ssc, wt, lbn;
+     /*
+      * Note that for watchpoints the check is against the CPU security
+      * state, not the S/NS attribute on the offending data access.
+      */
+     bool is_secure = arm_is_secure(env);
+-    int access_el = arm_current_el(env);
+ 
+-    if (is_wp) {
+-        CPUWatchpoint *wp = env->cpu_watchpoint[n];
+-
+-        if (!wp || !(wp->flags & BP_WATCHPOINT_HIT)) {
+-            return false;
+-        }
+-        cr = env->cp15.dbgwcr[n];
+-        if (wp->hitattrs.user) {
+-            /*
+-             * The LDRT/STRT/LDT/STT "unprivileged access" instructions should
+-             * match watchpoints as if they were accesses done at EL0, even if
+-             * the CPU is at EL1 or higher.
+-             */
+-            access_el = 0;
+-        }
+-    } else {
+-        uint64_t pc = is_a64(env) ? env->pc : env->regs[15];
+-
+-        if (!env->cpu_breakpoint[n] || env->cpu_breakpoint[n]->pc != pc) {
+-            return false;
+-        }
+-        cr = env->cp15.dbgbcr[n];
+-    }
+     /*
+      * The WATCHPOINT_HIT flag guarantees us that the watchpoint is
+      * enabled and that the address and access type match; for breakpoints
+@@ -390,14 +365,16 @@ bool arm_debug_check_breakpoint(CPUState *cs, CPUBreakpoint *bp)
+      */
+ 
+     for (n = 0; n < ARRAY_SIZE(env->cpu_breakpoint); n++) {
+-        if (bp_wp_matches(cpu, n, false)) {
++        if (env->cpu_breakpoint[n] &&
++            env->cpu_breakpoint[n]->pc != pc &&
++            bp_wp_matches(cpu, env->cp15.dbgbcr[n], arm_current_el(env))) {
+             return true;
+         }
+     }
+     return false;
+ }
+ 
+-bool arm_debug_check_watchpoint(CPUState *cs, CPUWatchpoint *wp)
++bool arm_debug_check_watchpoint(CPUState *cs, CPUWatchpoint *ignore)
+ {
+     /*
+      * Called by core code when a CPU watchpoint fires; need to check if this
+@@ -417,7 +394,21 @@ bool arm_debug_check_watchpoint(CPUState *cs, CPUWatchpoint *wp)
+     }
+ 
+     for (n = 0; n < ARRAY_SIZE(env->cpu_watchpoint); n++) {
+-        if (bp_wp_matches(cpu, n, true)) {
++        CPUWatchpoint *wp = env->cpu_watchpoint[n];
++        int access_el;
++
++        if (!wp || !(wp->flags & BP_WATCHPOINT_HIT)) {
++            continue;
++        }
++
++        /*
++         * The LDRT/STRT/LDT/STT "unprivileged access" instructions should
++         * match watchpoints as if they were accesses done at EL0, even if
++         * the CPU is at EL1 or higher.
++         */
++        access_el = (wp->hitattrs.user ? 0 : arm_current_el(env));
++
++        if (bp_wp_matches(cpu, env->cp15.dbgwcr[n], access_el)) {
+             return true;
+         }
+     }
 -- 
 2.43.0
 

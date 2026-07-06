@@ -4,126 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92CC5C43458
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 08:41:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE335C43602
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 08:47:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgetG-0002d7-Kf; Mon, 06 Jul 2026 04:41:28 -0400
+	id 1wgeyg-0004N4-7r; Mon, 06 Jul 2026 04:47:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wgesh-0002YM-8o
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 04:40:49 -0400
-Received: from smtpout5.mo540.mail-out.ovh.net ([51.210.91.54])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wgexh-0004H2-HH; Mon, 06 Jul 2026 04:46:03 -0400
+Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
+ ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wgesd-00039n-6X
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 04:40:46 -0400
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net [51.255.22.22])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4gtyVV1dscz4Q97;
- Mon,  6 Jul 2026 08:40:34 +0000 (UTC)
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net. [127.0.0.1])
- by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alistair@alistair23.me>; Mon,  6 Jul 2026 08:40:34 +0000 (UTC)
-Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.113.125])
- by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gtyVV01Njz7tLP; Mon,  6 Jul 2026 08:40:34 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.6])
- (Authenticated sender: clg@kaod.org)
- by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 2867A941946; 
- Mon,  6 Jul 2026 08:40:31 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-113S0079792e7d7-ffdf-442d-90a1-08781c22f518,
- 85E5B3372E37D114A8148E0C2423338A4BE4238A) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <0830c96b-9fde-4b0c-89ff-f6c0bed60725@kaod.org>
-Date: Mon, 6 Jul 2026 10:40:30 +0200
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wgexf-0004bJ-OA; Mon, 06 Jul 2026 04:45:57 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ZPx6pZZnbj4sxXhl2uCjPPxDof5NBwgZLx+nEnCwVAKL0D1KKn52zYcFYKgfC3LCBYiItnzTyw7NYopy/o3+gn4+RZKzqURusT/R9BXll4DItGV4Ykxq+BhdnbPDGOeMMqMLeyYkbFpcX9k4adP6Q3K5B3N4bsRNqFNhmVT6LsUGu+d0gftqJNIhhQhMZU7OFsZLALgTsqPVIYIv02/RX38AmB3LQMFWxYU7LRO0X8MbB9hUn1TNQCqDLwCeQ9CIg8zwXqXdUkbvG8fr/tSKQvqPIocP7VFK/KOpl7pbliZVTjtQcehiF1HJkwZasOKd6JyO2rZfgPjgPoWJZ5UVjQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=h/+q68TMkR9cYYOfNcbXTlZ0YPWQiqdzMUS7bfEGuok=;
+ b=rKAt0exlHJkg8z2oZpo9c+f77jGMD1O0OvAab/fSyKmutx00qhO+0iwPL7gcMvIo/YkKND4J5kpHT/4oEXwVwoXQ4dgWK/X4cruN7Zcn7d6OV5T0lEvmLK2A4+/0T5xGdoFmOZuEocVZcEtf3vT9BVMb8sxJ8+wGV+b/jx9XXtSv0JfVwqc19mSDBdDFX2/O6YiiVKHa9eweOPFCaF2b0mkYK8uBRlaJP8pE+ouerWO0QHZnPa2MK75alkc8hf2IC25621xKmReMijiadwQwWfgJRUOztlytU3bgMQHRTmYVksEYuTUty+v+pwGffVC+OQjOS5T6CYR27ggtSLh/cQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=h/+q68TMkR9cYYOfNcbXTlZ0YPWQiqdzMUS7bfEGuok=;
+ b=LVEWKjVwH/ExsvxViScSlLf3uDlFER/LDs4epyhC9QoSZCysVAoQX0PUEZ2tmMF5k7unecJQ5dSI7Ph3H9XyiuubVOEy/V9NZRGIh6YgCUtOLuMxnETuq4A2wi5Rdg6xEDBwER6kURZx744cAj3fTeRmstFU7zpIX4U4f7VJxrwrAyO+TaAVCw4yCwfv/cPz2ufRPIXdacRcfiKpufWr+tlGJSoDppIVVfhSQFekBdgimGklmcZwqlkoJyfsGciJV+S9OaEi8ECdFhvPR47q3DHQ4GX4jaPHmsUYNAazOWtou5nOgmjVIYGNlelbBUBAqZIlZlFLRGDoHm4SeJicWA==
+Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
+ by TYZPR06MB6639.apcprd06.prod.outlook.com (2603:1096:400:45b::9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.11; Mon, 6 Jul
+ 2026 08:45:41 +0000
+Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
+ ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
+ ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0181.010; Mon, 6 Jul 2026
+ 08:45:41 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
+Subject: [PATCH v1 0/4] Refactor AST2700 SCU preparation for coprocessors
+Thread-Topic: [PATCH v1 0/4] Refactor AST2700 SCU preparation for coprocessors
+Thread-Index: AQHdDSPTNeWdLxD24kereOpLPDH1vw==
+Date: Mon, 6 Jul 2026 08:45:41 +0000
+Message-ID: <20260706084540.1988785-1-jamin_lin@aspeedtech.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|TYZPR06MB6639:EE_
+x-ms-office365-filtering-correlation-id: c2c9e151-0184-4ad8-e4f5-08dedb3af600
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|23010399003|376014|366016|1800799024|38070700021|18002099003|56012099006;
+x-microsoft-antispam-message-info: aOnFcPVfqzIj6GaeAQFw3CaKkuMD5Q1mRCp1bWDav8rZcN/w76mK+DVD0AO+ST68N3Wd8sMFoSVBZ0vOoRxWupl4km+gcCTiLPW5J3v6Vz24aGccf5SaghdHDNKBdItyjcfM4A2VmcbpZ3JA/VP4qLL8c+GIt+XaDDeVUvYWP26iuXX59VwPUOJvjYxi7NhbyoaFZr8ZlKShp0D9rB8wZBzTquhqg7md3qRB0hTFvvfrqn1xTChAvQA5y6hcPLRJypQaQHk1ynZQrVUdJRd7VbXw700AKAPYmc9zYKDOPE18Pi9BwXZ70DTJ9nKVyjqGDP+gnO0HCRL/354G3cUueSns1416EpIw8de3f/sVzwpkiACFD9YJsItStYCGmVKkJHun9gzK/3H8BzyOs4yg3eTq0mKEnJfC5ZCXd+W+cdhh4l/2q3bxy9Lav75HzHJ3xDd4vqo6JFqwY4iI3R0xgAcYlFn0zt7FVb/BQDh4bt1RePuNqvba9t178Pa8KixJWOWJvQutuX5Ema0WmHNPZdrn4VuSEQjKE02tSURgskS3gZM3wqln0t0pdOxUK5ZlsC13lVdvdhnuwcUPV0NxBNDF/wqMgvXZUHC0iJ5AF5RDGkBu5XtJKxq5MpuyyRuH0y4GjWVZZzt5vxAnzItOeyeB9wDC6iJBvwZdljgF3AW3BOpM+aE9laAiT3F8zE7WgRVkU8aQriXn4BxUc0qgznknjtiyyccOsXKTJy+9B9Y=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(23010399003)(376014)(366016)(1800799024)(38070700021)(18002099003)(56012099006);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?wY/rtkvYzicHwgcP1L4+VXUNFNm1DWjJ6lx50A1rTHeuNGnVgygx+JV694?=
+ =?iso-8859-1?Q?b7vQtGEiwYWUzv7uuZHoV3+o95t/kGdulj/YfCyDMq4s0BG4/t/5aP34Jr?=
+ =?iso-8859-1?Q?0tcud++NkH/x/GjxB28RzsA3bIsavZlWxX38F9GXvRAMDMi5jFANomGWnt?=
+ =?iso-8859-1?Q?YpYSSDo2ylgNJGEaQsTO82AUKQrd/LdzWnefVt/VLyQ+V1KKdw0eK3ifkQ?=
+ =?iso-8859-1?Q?PbYP7EgyeWaPXYCmgVPXR5cXt4MB74uukAaGRK8IBTMcwhlYscyOq8WCYX?=
+ =?iso-8859-1?Q?XkAsUicDD71yZ+U6eCyTstOqvmIytC4nF5K3BLB5qjUsVK7HIxNstb/G9K?=
+ =?iso-8859-1?Q?guqOM7ibx3g/4ZMwGp26aX8dOw2WDP5vUiFlXW/+Anxg/RGpMUIcC7WoV6?=
+ =?iso-8859-1?Q?pqOwsUOZRMiO1pAC2xCefvAKpUFHxN+dRhFgQpy36tyYRCW91kk5jyhT4B?=
+ =?iso-8859-1?Q?qCwhQrOzAM15ZVpY+XsM+l6L1xMeNw3l2UVrIU1FphU4RktHIvAgIACslH?=
+ =?iso-8859-1?Q?G7J/hKAY8U0DrbnLLMwf51JX5v9jTcgEBhICsjtjNEJdi+HbFvt7/wU/Nz?=
+ =?iso-8859-1?Q?drSMQherG1CGccHXNcONn3em6zOgRClVtkyvzLxnbi/KuUlg6InHhceFdv?=
+ =?iso-8859-1?Q?kJPDT07Aj6ifOwdRgo3iIExjPr6LuQ+nG7kuH9BKYjLoFaIPZ/0eicOYRd?=
+ =?iso-8859-1?Q?qmoGzD2pqNAcv+jSsFLOK7+1exfNUOMfALbKQjSYxKSaQc4veESby1LmrY?=
+ =?iso-8859-1?Q?b/0Y9GEEFwvXZEnzDCBr1O/Iw8TS1j0RPJvBI1eNGU05QU5pbXZrPri1yp?=
+ =?iso-8859-1?Q?y2c9LwEqkh9ygOJVtXQuN0d2wiCxlAMaSZAz/5N7SQOLc7LYqDmixAbpX3?=
+ =?iso-8859-1?Q?9/ULt+bqInTT5Qfps+5inL6gF9FjBjXdmLnzHTuS+PLdmd8LjATFUisWXp?=
+ =?iso-8859-1?Q?KMAWSqiS/y9Lxxgkwaf0aSS4y/yuE6UYfEVt4Xf/C0g37cITBmjp4+Sfy/?=
+ =?iso-8859-1?Q?sIDgBNHNkiK283dmMKYKHmv5NzvsbGKAwe3W03eJuTRAOQOC9g4E/oy3jt?=
+ =?iso-8859-1?Q?C9v659NwruJ6IeTZvsXArg3RUAK43MdnNbnWKOfQTqpA1QklOftP0XpeUS?=
+ =?iso-8859-1?Q?H0Kx6d6q18JSeHFGXvRm8dYp0M4OG4a7Ro17LpFD/26Ogteh+O71GbRobo?=
+ =?iso-8859-1?Q?9at3SnyRs8S5XkyAbvmDgr1+RJzwfG5hszmHbZOWf3piCmejXoou89yU8A?=
+ =?iso-8859-1?Q?Z/VKb8O1nXs5EPytO4vz6wm9quHk6YdSnuBr5Wfv1LNaRLGOWHUbd80esX?=
+ =?iso-8859-1?Q?TuPEnuv+9lIVY49A3CzpmTCnp64+2iyxZsuiU5d2dGbHsv0CpK/Z/t/A3J?=
+ =?iso-8859-1?Q?VYKOoQMa6fKS6jU/0bDEHA6wEz/O4Z3wruShrdjeM4UvqkAoJj9ctCNnT7?=
+ =?iso-8859-1?Q?3dJKTquu2VVfTgSLcjnzT4pyIwIyMFOJh6t4g7SfgqOndVMFf1nO1aCIKw?=
+ =?iso-8859-1?Q?nNjH/CIog57B5AphdrxmTGLe5XQkdXxjo4MBrv5OapVkuzgkmy34xN2+j4?=
+ =?iso-8859-1?Q?7Pr4GRyOaFcvQLjCkzYut2ftNU5XcCXc2nLUVmwLKHw4UCJwKLkcnt00ke?=
+ =?iso-8859-1?Q?aAREhf32xeruzfUVTxSHtxg0BpMBrIcc6lFjPoKbqhJ6yac4Pcq+2Ihdvz?=
+ =?iso-8859-1?Q?JroSAPR0XH7XNOS3QLL3FJqaT9akwg9/29CvWiUQ2zH5ajB7bRYrD0POUd?=
+ =?iso-8859-1?Q?yyjM5tzLFUJf69nPhA5AmQijxl/NdvypKmlJDasChY6kbxVebwdZCvUNod?=
+ =?iso-8859-1?Q?6O91gDFh8Q=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/10] hw/{block,ssi}: Fix spi-nor flash dummy byte
- handling
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>
-Cc: Alistair Francis <alistair@alistair23.me>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Hanna Reitz <hreitz@redhat.com>, Hao Wu <wuhaotsh@google.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- Kane Chen <kane_chen@aspeedtech.com>, Kevin Wolf <kwolf@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org, qemu-block@nongnu.org
-References: <20260630135729.466264-1-bin.meng@processmission.com>
- <bb4b7240-ea2c-4738-80e1-83e259f3ef4b@oss.qualcomm.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <bb4b7240-ea2c-4738-80e1-83e259f3ef4b@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 7638667919626972299
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEQ+dPGPgId7szL2nG2ZqlIFkC95XUFd7limahSTuvhhpQrrYgzCJ3cDNjdNQBriXn4OoMzVl5i2Z0pk42xbW8z+0k04N9ro2QWJZAlDBmJHtzX1n1HiIOPcdfNXBtUz6FoDKMM80ZsF4IdR7MyE3GUPp0b+7e4/KF0dYee2mfTLV8m085AM42pgwC2mZfSBTBlO7RFGfoQtsLGRw4y6VlzwnnfT6zLfs009fZOZpdf7FgTsfm1MfYS3oKmLTXOMtL8+Qv5dUcTinrRdUMLauLfTio71miKuAtI9vkpW3ZTO7baPUyYunmgbxscNc2NSlG1K6uVnSE6uhwySJpRAFGhfNhl7zMHxwC291Bl2TH5puzChksC+JLQ83d+Ru1gpySEsMiZVqYGNWrckx6hIuPx3/l/J4CG2qAbLPZ3noh596gsQTOt3/anaMSMt1ocnpBjfG3SoHLGRxfi40MykpT2lCyOQkfhbYW16JvNuV4qeqEzuwYgZk9LcnxMeaGZwLNDzlK4M2PnMSFK67DrH2hGkhmZNpihJfKfJ/6PHaJN+DB5fQzlZDXIxwc5YM2whyui3beEUJ+CjKLQnUBoLTIgtJ64VhOGQc50GNrYmw39bG7/9vZQxRgELcyjJzlRJXFdVGOYZzOY2ejEZWFOoYl0+PljdLLo56PGW4jTCTB48A
-DKIM-Signature: a=rsa-sha256; bh=yp44Cy9h+Uno55W9GEpHgQYtMoGxLts1ydMSZPodMew=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1783327237; v=1;
- b=fHqKuDkpr3gG0I5f5QAzv2C8OxRACN8KtQ1QemlLJFcXbMcRYWGti06Xnw+o1N/l01VPyfdw
- kHNfCPwKBNPGlb58DYDJLWO8adpZEQrkaDye8PjeiA34SstJGnC2yO77rKRtLCmIK3zc/RhnR3I
- HCPTQkk73DZtRV2C1Bv29hlSRMmnBDuDwejoKZDkS1sQGOvfHTv/iVtnpeyYMrP+MWjL6gPhkAa
- IJMzQG21ntHf1+32fc8GXgS0X4ShvIOK8r1sMgikNrXk9H0LF3NeFdxpXa6TF1vmD3PmlwMch+C
- cuobfqjYTIv9WwLGsHuF1tkpIHYVDTkcYvQyA+87T2t4A==
-Received-SPF: pass client-ip=51.210.91.54; envelope-from=clg@kaod.org;
- helo=smtpout5.mo540.mail-out.ovh.net
+X-Exchange-RoutingPolicyChecked: IMzGKsqfNkW6cTquS3yESJWZSLyY+ECPF6plxLfIoKOh8K+9HuhZ52+671aFsoKPZ5K7q8zKllOw4MV4WnUvkNSsgSm50+kcp+xJ11DWXZIR2E/SZ5An3BveATS4ylcQJAeBXyphpzzlYjdsyQTH/wZx5mfRozEbBJri0QI2gR6mXRTV5FKNvPAylWv3z+0lbqQu3pw/OED0zPiIXjXF5joY5gyTW1MfX7jh3cP3c/5z237YexI32k4AymQbyu9wxkQuLz76rBzWzUcoO0m9lx7qi69H/zZ+xa0FzzCK83PjMpBZih7qiqKCrunhCrj1o1nv1i0l8pwHx1yx1rbk5g==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c2c9e151-0184-4ad8-e4f5-08dedb3af600
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jul 2026 08:45:41.4762 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Jpvh65kmKn4s1nCJsselwpN7MXXvokqxNhfyKgS1bau7jHdb6GGXPwQQ1qthjI4A+klN3e4UzS4QmC9KnDtUKdEV3Rg/Jj6VJ6HI6SyCH60=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB6639
+Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=SEYPR02CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,54 +144,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/6/26 10:19, Philippe Mathieu-Daudé wrote:
-> Hi Bin,
-> 
-> On 30/6/26 15:57, Bin Meng wrote:
->>
->> This series fixes dummy-cycle accounting for SPI NOR fast-read
->> operations across the m25p80 flash model and several SSI controller
->> models.
->>
->> The root problem is that the affected code paths mixed two different
->> units. Flash datasheets and controller registers often describe
->> fast-read dummy phases in clock cycles, while the SSI bus interface used
->> by these models transfers byte-sized words to the flash. As a result,
->> some paths treated cycle counts as byte counts directly, and other paths
->> compensated in controller-specific ways that duplicated flash command
->> semantics.
-> 
-> 
->> The final patch documents the intended ownership boundary: flash models
->> own command semantics and dummy-byte consumption, while controller
->> models own hardware-generated dummy phases and cycle-to-byte conversion.
-> 
-> I'd blame the API. I'd feel safer having the block/ layer use bit
-> cycles, and a core layer converting bits to bytes when calling the
-> SSI layer. Maybe too late to improve. The documentation you added
-> is helpful, but I'm pretty sure we'll introduce more regressions.
-> Anyway, thanks for your work :)
-> 
->> Some background:
->>
->> While recently working on some device modeling, I hit this issue
->> again. I then realized that I had sent a fix series for it more than
->> five years ago, but it never made it upstream.
->>
->> This series picks up that old work, refreshes it against the current
->> tree, and fixes several issues in the SPI controller models. The original
->> series is available at [1]. I have tried to verify all the SPI controller
->> changes by booting real-world guest software to ensure the change does
->> not break anything.
->>
->> [1] https://lore.kernel.org/qemu-devel/20210114150902.11515-1-bmeng.cn@gmail.com/
-> 
-> (Could we add this as a functional test?)
-
-Nearly all aspeed machines will test these changes when booting.
-
-Thanks,
-
-C.
-
+The original AST2700 FC support series [1] is fairly large, making it=0A=
+difficult to review all changes together.=0A=
+=0A=
+To help speed up the review process, this series extracts the SCU-related=
+=0A=
+refactoring into a standalone prerequisite series.=0A=
+=0A=
+Compared with the original series, the SCU preparation patch has been=0A=
+split into three smaller patches:=0A=
+=0A=
+Introduce Aspeed2700SCUState.=0A=
+Convert AST1700/AST27x0 users to the new SCU subclass.=0A=
+Move the SCU link property into the AST27x0-specific coprocessor=0A=
+implementation.=0A=
+=0A=
+In addition, the SCUIO reset handling has been separated into an=0A=
+independent patch.=0A=
+=0A=
+This series contains no functional changes. It is purely a refactoring=0A=
+to isolate AST2700-specific SCU support from the generic implementation=0A=
+and prepare for the subsequent AST2700 FC support.=0A=
+=0A=
+This series depends on:=0A=
+=0A=
+https://patchwork.ozlabs.org/project/qemu-devel/cover/20260706052701.114174=
+0-1-jamin_lin@aspeedtech.com/=0A=
+=0A=
+Supersedes the following patches from the original FC support series [1]:=
+=0A=
+=0A=
+Patch 1:=0A=
+https://patchwork.ozlabs.org/project/qemu-devel/patch/20260417032837.266412=
+2-2-jamin_lin@aspeedtech.com/=0A=
+=0A=
+Patch 2:=0A=
+https://patchwork.ozlabs.org/project/qemu-devel/patch/20260417032837.266412=
+2-3-jamin_lin@aspeedtech.com/=0A=
+=0A=
+[1] Original AST2700 FC support series:=0A=
+https://patchwork.ozlabs.org/project/qemu-devel/cover/20260417032837.266412=
+2-1-jamin_lin@aspeedtech.com/=0A=
+=0A=
+Jamin Lin (4):=0A=
+  hw/misc/aspeed_scu: Introduce Aspeed2700SCUState=0A=
+  hw/arm/aspeed: Use Aspeed2700SCUState for AST2700 users=0A=
+  hw/arm/aspeed_ast27x0: Move SCU link into AST27x0 coprocessors=0A=
+  hw/misc/aspeed_scu: Add separate reset handler for AST2700 SCUIO=0A=
+=0A=
+ include/hw/arm/aspeed_ast1700.h     |  2 +-=0A=
+ include/hw/arm/aspeed_coprocessor.h |  5 +++--=0A=
+ include/hw/arm/aspeed_soc.h         |  1 +=0A=
+ include/hw/misc/aspeed_scu.h        |  5 +++++=0A=
+ hw/arm/aspeed_ast27x0-fc.c          |  4 ++--=0A=
+ hw/arm/aspeed_ast27x0-ssp.c         | 19 +++++++++++++++----=0A=
+ hw/arm/aspeed_ast27x0-tsp.c         | 19 +++++++++++++++----=0A=
+ hw/arm/aspeed_ast27x0.c             | 16 ++++++++--------=0A=
+ hw/arm/aspeed_coprocessor_common.c  |  2 --=0A=
+ hw/misc/aspeed_scu.c                | 20 ++++++++++++++++++--=0A=
+ 10 files changed, 68 insertions(+), 25 deletions(-)=0A=
+=0A=
+-- =0A=
+2.43.0=0A=
 

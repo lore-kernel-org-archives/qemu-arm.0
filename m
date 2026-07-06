@@ -4,87 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5815C43458
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 17:33:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADE0BC43458
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 17:33:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgnCP-0007Fy-2q; Mon, 06 Jul 2026 13:33:41 -0400
+	id 1wgnCZ-0007MC-KN; Mon, 06 Jul 2026 13:33:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wgnCI-0007E8-Es
+ id 1wgnCH-0007Dy-8L
  for qemu-arm@nongnu.org; Mon, 06 Jul 2026 13:33:34 -0400
-Received: from mail-wm2-x01.google.com ([2a00:1450:4864:31::1])
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wgnCF-00046C-Id
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 13:33:34 -0400
-Received: by mail-wm2-x01.google.com with SMTP id
- 5b1f17b1804b1-493b567a019so5406485e9.1
- for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 10:33:31 -0700 (PDT)
+ id 1wgnCF-00045i-2j
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 13:33:32 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-493bb510ce4so25100245e9.1
+ for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 10:33:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783359210; x=1783964010; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783359207; x=1783964007; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=Pybcs5s0EJoZh0aRLv5GD/xzxrXejiSNkABytqAQThk=;
- b=pHs90fLrDAUlNQf8H/A88LkFz/ZJl0ZnSGEx5Ckma3XxnzN9syvTQQ0vDDW/IiVWTH
- 1COjk9aZLNy+6AsipDPH5cL5OZBYpLHW6yPeVvC8dds+h5AsmVXh6exbBkAj2KbIqMoi
- SuIlFJ79jCR3UKvy2RMDQNubNHyyQmJst2V7G7wptRaBJb/Fv0YA4uRjK1PUEVeKUd7o
- H11e80Ca0sFkBcnp4FWOz0dEavkqBXVuCQoX2SCLewARUGh+LQ++xM/Ms+x5eZA7LVIJ
- ZT87CSVKBYUvYxmgmpTYy3ISx57zc3OeWytmJ6W/AivD1oCYpTk2mZzzp9LSMu1llmDQ
- jyGw==
+ :reply-to; bh=kMkmNSdkpmxypOmCNIZ6s6HhJiiuCbTO1iVZOoCp2tM=;
+ b=Oi6qxnYlnpWFMffEzqo59RyqnVGAkn5sbBEce9IpVoKxga1m6dqY5KgSLeKx/nCJCO
+ Sk0IToeJi3NPBbnsv2PMWXmMXu74ut2MVJjBEG/DjrlRu13o7+05kHCPVdCveLjhJwIG
+ nQKzlLPm5iy/uaGqYmBpeLwQR1TjnuDflh9A6F/WZBuPpCWS0rNzfka8KgZeT2llBy0k
+ Ouk8kbAzkwMZG44cdaajRfQkrEhwcxVAlUZlGqICXhwJFyCw4pN8TeyxIDGDpagS3T3Q
+ lGiO4C8z1SQMbIKmAy1xO0l/BRjd4jI/CvQYnq2QkmL4pdUrzZ8mMPCsVx2mFe1ZxYJt
+ w5wQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783359210; x=1783964010;
+ d=1e100.net; s=20251104; t=1783359207; x=1783964007;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=Pybcs5s0EJoZh0aRLv5GD/xzxrXejiSNkABytqAQThk=;
- b=rXhnt59NKyQxQJOwE5fp3QOFs6p1y+aYFKfqUgGTGm4rLCfSBNOT/dB8dGgQEbT+vJ
- s7jgQBxmhMJAPvss9sg1mgvemEVg25sd9JjBBnGUBYaiifp398rbND2ow6GHxNu4MSz9
- evGjv4B8PWdsYJv2vW3z/vCR/skOdEE+i5YBmsB/dzBS5/wPaXiWP0NPfFqGxQirkr7W
- q/ALBkCLteDReK5fk/fSInhaP7JWU/cXvfL1EpeoxDpWbauOGvvfJRYTTj8tKqUvEv7t
- yXOEi3fv9mHhDxTw63qqc+Ndva48CQA3XJ0KniKcY1cgaa1gCZ6+TiAKWFKPHNhLnFCL
- 4lpQ==
-X-Gm-Message-State: AOJu0Yx+zvpGAOTky2nQNB8NAs5w8UhP+5IuXdRkSZZ8sst2RfDRc8Kj
- aHXLBm7XfR+lQ2kDvcHKIJyRlBE7PTl3VMeqGyfhdDyv0qalBV/OfI+z8P1YFvLeZT8IsM4YTpl
- Xq5pxhWEbo+Kj
-X-Gm-Gg: AfdE7cm2P08Jx4QOu3RdkZWYo16hCt/S6jua0XZG80yaOz8G8DIH9IiIlezYZ4K0RI6
- UFMOSd9GYcrglMjqn2qzV47FT8YBq7G75lcS5ROyo7IDj/Q9JSDqm8focklEgu7+Zl99XCUwLJz
- ZgW44ppazVgZPiAXigamVE2b/fBpxy5AQI4RZxnOmGE/Vtditu+OI8TZVudtmM8MwEDwTW7K9Ji
- X2X9fH35y0DGK9xHqK0EvLsb6JAgDCi6RoE3WMlWIjEzB8f1SidyOcwJ/+rqkHstqcNnEg7hA0q
- zgdNaZgfhkskuaEW18QY4AUHOwMHoNbppO2ptKbUEVLiD+Pqmr/S6DkI7txr1ZnH5gIs1ANToG/
- h+dwgg5C8pzHdB0D4BZRV62XpP1LcVOPhrz2fR4RRo+MTi4LrWJVsArJK+77rBS7YNxw0987b2N
- KgL3+ew8EESWhL9SagBv78Z26FUATUjxaYMx0iCrz3/TSsgN0oSBsvuX5M1uljkfP7w7pGseZvC
- Z1sagoN8w/3yVUATpY3Pg==
-X-Received: by 2002:a05:600c:3f14:b0:493:ad1b:b38d with SMTP id
- 5b1f17b1804b1-493df0a0891mr16650575e9.37.1783359209871; 
- Mon, 06 Jul 2026 10:33:29 -0700 (PDT)
+ bh=kMkmNSdkpmxypOmCNIZ6s6HhJiiuCbTO1iVZOoCp2tM=;
+ b=ojwHPB/5BSTFcKAOVF+u9KObiZ/OJpLOvHl83ohnCp3sRlve785YqZ4x0CTu5Po1Q6
+ QVVArYPhLHWyh6Teb0EKtc2snm04l6es+HZiy+R0vVu1+FWWURNRp9qWCRyg0Sl8FloN
+ qeWnA7FPAfbpbde3SgSWcQNYiAxz4Co96bIYaLMlVDUNhGjLZ2lgO07cn2Go/sxnBzG4
+ HCZ7hSqJIIg/q2vRK5UkMJ1kV4K2Lp4DQc3+Lby3pdxb+qqonBv2dMbIn9hAxuj/qPhb
+ +f7PEPjmiT+wSU5NzT/uVA+h1AmZAKxyXnicU3J3ws6iYaUU8MlXRZw3I5tNjKO4eVQH
+ eJ4Q==
+X-Gm-Message-State: AOJu0Yz37XyrKPNm+kyMDC5atXhUBYPsJndymZ/w/+yuxHRrXBzDTaw+
+ hwzLlSpkfTHBoui1sUb3L6On2gEOwoFqZ+VlkUfsIDTjosPlFoIaI/RqZqlbsa9RszLuN5g/se2
+ c6Yw9p1rG+Q==
+X-Gm-Gg: AfdE7ckvZlzMWeSkQBrj0bQt87uf8+idzqiUdlDzFkyOerJ9oL5+ihdCXqlGLPKHTzI
+ j9HYMWRQT4AwB9pjqZTJzNHfJV4yuc7YjOJhDMz1AfwhY+EoWoUG+Q/z9CB+GUBEjO1ufLEMaue
+ u/NaRm7LMwPHq5hL5R7FVe0e09qZSImuTs3lKEzs5szRfidSffhZwqLt0OwD712K3gAj5rz76hm
+ DDQFLguTllcyvAjtH665HDdfFClbZjK3wmfBK180XYX4WGa1k8EFkUTcL5jhvMtzaSnxm4fubEI
+ xEB19pl7V+HXpEtHbOPxuqJB4DjcJVCFky7FHUBiljQb6DztfhKHyZVoK1+bxiARK8ks/sikyZ5
+ qpdNV7JhmVMJJV8m425Onl5ZfHp7JDY7COzuHwrvNd+xY8fIv1YEX21T/JMoSZ0Ff8CQsR1bwR8
+ 5TwSbA5hi0P4kIF70DPjadWNChUXT6CnJRyEohk0YckNqIsi+fHW5E1A925pVoLvT713R9KM8ho
+ 4YpRLMBPhLbdD3iBLHJhA==
+X-Received: by 2002:a05:600c:37ce:b0:492:4363:e7d6 with SMTP id
+ 5b1f17b1804b1-493df0777bemr19584785e9.37.1783359207262; 
+ Mon, 06 Jul 2026 10:33:27 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493e006b6besm467365e9.2.2026.07.06.10.33.29
+ 5b1f17b1804b1-493e006b6besm467365e9.2.2026.07.06.10.33.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jul 2026 10:33:29 -0700 (PDT)
+ Mon, 06 Jul 2026 10:33:26 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 3/3] hw/display/exynos4210_fimd: Clamp windows to screen size
-Date: Mon,  6 Jul 2026 18:33:24 +0100
-Message-ID: <20260706173324.804340-4-peter.maydell@linaro.org>
+Subject: [PATCH 1/3] hw/display/exynos4210_fimd: Factor out finding screen
+ width/height
+Date: Mon,  6 Jul 2026 18:33:22 +0100
+Message-ID: <20260706173324.804340-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260706173324.804340-1-peter.maydell@linaro.org>
 References: <20260706173324.804340-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:31::1;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm2-x01.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,71 +101,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In exynos4210_fimd_update(), we iterate through the enabled windows,
-blitting them to the screen. We assume here that the guest has not
-programmed the window's coordinates to be outside the overall LCD
-screen resulation, but we never check this. This can result in the
-guest being able to cause us to access outside our allocated
-framebuffer backing memory.
+Currently we hard-code the expressions for getting the global screen
+width and height out of the VIDTCON2 register where we need them.
+Use functions instead.  Make the global_width variable in
+exynos4210_fimd_update() uint32_t for consistency.  (The values are
+clamped to well below INT_MAX, so there is no overflow risk here.)
 
-Since all the coordinates here are unsigned, they can't be off
-the left/top side of the screen, only the bottom/right. If
-the top left corner of the window is out of bounds, the whole
-window is invisible and we can skip it. If the bottom right
-corner is out of bounds, we clamp it to the screen size so that
-we only draw the visible part.
+
+Stable CC because this is a prerequisite for an upcoming bugfix
+commit.
 
 Cc: qemu-stable@nongnu.org
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3795
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/display/exynos4210_fimd.c | 18 +++++++++++++++---
- 1 file changed, 15 insertions(+), 3 deletions(-)
+ hw/display/exynos4210_fimd.c | 22 ++++++++++++++++------
+ 1 file changed, 16 insertions(+), 6 deletions(-)
 
 diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-index 52f2285cf5..6c062a28c0 100644
+index 7507e4fd3c..43ad5fa0b4 100644
 --- a/hw/display/exynos4210_fimd.c
 +++ b/hw/display/exynos4210_fimd.c
-@@ -1237,7 +1237,7 @@ static bool exynos4210_fimd_update(void *opaque)
+@@ -1195,15 +1195,25 @@ static void exynos4210_fimd_update_irq(Exynos4210fimdState *s)
+     }
+ }
+ 
++static uint32_t exynos4210_fimd_global_width(Exynos4210fimdState *s)
++{
++    return ((s->vidtcon[2] >> FIMD_VIDTCON2_HOR_SHIFT) &
++            FIMD_VIDTCON2_SIZE_MASK) + 1;
++}
++
++static uint32_t exynos4210_fimd_global_height(Exynos4210fimdState *s)
++{
++    return ((s->vidtcon[2] >> FIMD_VIDTCON2_VER_SHIFT) &
++            FIMD_VIDTCON2_SIZE_MASK) + 1;
++}
++
+ static void exynos4210_update_resolution(Exynos4210fimdState *s)
+ {
+     DisplaySurface *surface = qemu_console_surface(s->console);
+ 
+     /* LCD resolution is stored in VIDEO TIME CONTROL REGISTER 2 */
+-    uint32_t width = ((s->vidtcon[2] >> FIMD_VIDTCON2_HOR_SHIFT) &
+-            FIMD_VIDTCON2_SIZE_MASK) + 1;
+-    uint32_t height = ((s->vidtcon[2] >> FIMD_VIDTCON2_VER_SHIFT) &
+-            FIMD_VIDTCON2_SIZE_MASK) + 1;
++    uint32_t width = exynos4210_fimd_global_width(s);
++    uint32_t height = exynos4210_fimd_global_height(s);
+ 
+     if (s->ifb == NULL || surface_width(surface) != width ||
+             surface_height(surface) != height) {
+@@ -1229,14 +1239,14 @@ static bool exynos4210_fimd_update(void *opaque)
      bool blend = false;
      uint8_t *host_fb_addr;
      bool is_dirty = false;
--    uint32_t global_width;
-+    uint32_t global_width, global_height;
-     uint32_t window_width;
+-    int global_width;
++    uint32_t global_width;
  
      if (!s || !s->console || !s->enabled ||
-@@ -1246,16 +1246,28 @@ static bool exynos4210_fimd_update(void *opaque)
+         surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
+         return true;
      }
  
-     global_width = exynos4210_fimd_global_width(s);
-+    global_height = exynos4210_fimd_global_height(s);
+-    global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
++    global_width = exynos4210_fimd_global_width(s);
      exynos4210_update_resolution(s);
      surface = qemu_console_surface(s->console);
  
-     for (i = 0; i < NUM_OF_WINDOWS; i++) {
-         w = &s->window[i];
-         if ((w->wincon & FIMD_WINCON_ENWIN) && w->host_fb_addr) {
--            scrn_height = w->rightbot_y - w->lefttop_y + 1;
-+            uint32_t rightbot_x, rightbot_y;
-+
-+            if (w->lefttop_x >= global_width ||
-+                w->lefttop_y >= global_height) {
-+                /* Guest has put the window entirely offscreen: ignore */
-+                continue;
-+            }
-+
-+            /* Clamp right corner coords to be within the screen */
-+            rightbot_x = MIN(w->rightbot_x, global_width - 1);
-+            rightbot_y = MIN(w->rightbot_y, global_height - 1);
-+            scrn_height = rightbot_y - w->lefttop_y + 1;
-             scrn_width = w->virtpage_width;
-             /* Number of bytes to actually draw */
--            window_width = w->rightbot_x - w->lefttop_x + 1;
-+            window_width = rightbot_x - w->lefttop_x + 1;
-             /* Total width of virtual screen page in bytes */
-             inc_size = scrn_width + w->virtpage_offsize;
-             host_fb_addr = w->host_fb_addr;
 -- 
 2.43.0
 

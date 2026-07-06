@@ -4,146 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A92EDC43458
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 11:47:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45B30C43458
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 11:50:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wghmg-00063T-RW; Mon, 06 Jul 2026 07:46:51 -0400
+	id 1wghq3-0000lj-St; Mon, 06 Jul 2026 07:50:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wghmK-00061C-8L
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 07:46:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wghmH-0003hW-HC
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 07:46:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783338379;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=ZlwgE/kLAptfZ02Y9qDrhQ+GweU3O/Ib3qjuxBSPmiA=;
- b=W+qlQW9kZ5vP/PONVCpTjbCWHhtErdCitpNA/Cvj0FhnN67LvzYQd7R5Xizrovd2DQB5Pr
- 0l7T9h5dlTHmioPtBE5PRGbTRobXsSt7w4yeq5km87bAIzgmkczt35uV5PxhPl7UTtKm5v
- 0c329dhO+f/U9ibMK/oaSsCGnf3YLpk=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-83-kCVTEKW_Mq-FDj2IgZqo_w-1; Mon, 06 Jul 2026 07:46:18 -0400
-X-MC-Unique: kCVTEKW_Mq-FDj2IgZqo_w-1
-X-Mimecast-MFC-AGG-ID: kCVTEKW_Mq-FDj2IgZqo_w_1783338377
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-493c1bc7a70so26401015e9.1
- for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 04:46:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783338377; x=1783943177;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ZlwgE/kLAptfZ02Y9qDrhQ+GweU3O/Ib3qjuxBSPmiA=;
- b=Ad6VmRcPGVeuqp219EaQdnpACFwvxGZ2+umUMgPlXzJ7ZRpTjc3yyBTswVWysr0shx
- 5X2oRHoDSZUGDF12u19HiLEeUyLj94jTb8B7hOKU5JBjJnJiyKkRvqHKqusAX46cwyq/
- oUeK6vrOq4aLsXWsJV24p6CEser0klyrQjEtfy/ZZZQUXq+kzfsrAGqy1Fx2L40FcMWZ
- 1VeKM9naYKGN498CLsG8SuzkW0c+6cv+f7RH8XZAkxK4VcDAW1l1b7Jy9m+00LoKVU8z
- qPX5d6niNDbQqimhyHg25kS1juPZewzpWEoC2hTZBfszb/FtaDzTjLITsZPQHiFTHV3U
- itjQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+RowPzSL+WhcUnZQsVTX6UOLojJgMK9VyO206C6a1Wuyfdh5r/MmoNplE5lVBIuNAZAeydUs9B4csg==@nongnu.org
-X-Gm-Message-State: AOJu0YwfFlcBbnZTFB4ycqAoj4k7jvGp1R+0eblFGwW+JsibqomrdvuW
- 8c1unu4GTWS1N66SrMlhuDr9aMpDchRD+lSHXkHMEwoPTRhM04JPEa95vNnpejqFZNHFb7VTbQk
- l16nmnNNhZCCJ+K1LFA6sBEjLbK8EaCHO7kptyXAmg0MrYEGdiblrxQ==
-X-Gm-Gg: AfdE7clM6A+INAkhiwQAbbCWIKBJAB9JNGasquFt1iN62dO8byamSzz5Y4DFQkLW6AL
- e8D5YdBavqrBYgHsYkinORlzoZ3cK+H01KHvHQH6X6A5zI7oOFtpO1skfM+DbVTZaJiweJpd0B+
- MImL6F5zUkP6p8GRZs/IIfwCkibqFLIG5zEYyQFaCvBddsxBI30qIBEEzSLA5mLyy8eWEGd6ZcL
- mAfbL0pBjFzF5FnBCtaitvMt9fbBGxgSovZNNmGGcq/3WQL1YLhElXr+eSanlOqCADrKDUXxAaj
- 7W8osQms1zU7+SOVbfHac3XybG/KqbSRuLNzI3vDtqrwzBynlBDGJOCi1FgBkffVqY8sgiDNPCp
- foJREN0YQGjlASiJl2WHc0wQ2VUj7zuwyVcGnhzqo4r/7yWTQ7A==
-X-Received: by 2002:a05:600c:1d0a:b0:493:bed7:6d7c with SMTP id
- 5b1f17b1804b1-493df0a8eb6mr218675e9.25.1783338376795; 
- Mon, 06 Jul 2026 04:46:16 -0700 (PDT)
-X-Received: by 2002:a05:600c:1d0a:b0:493:bed7:6d7c with SMTP id
- 5b1f17b1804b1-493df0a8eb6mr218385e9.25.1783338376354; 
- Mon, 06 Jul 2026 04:46:16 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
- ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47a9e4d843csm23461405f8f.14.2026.07.06.04.46.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Jul 2026 04:46:15 -0700 (PDT)
-Message-ID: <cf072137-fd93-4149-befd-687df7046994@redhat.com>
-Date: Mon, 6 Jul 2026 13:46:14 +0200
+ (Exim 4.90_1) (envelope-from <pisa@fel.cvut.cz>)
+ id 1wghq2-0000k4-Kz; Mon, 06 Jul 2026 07:50:14 -0400
+Received: from smtpx.feld.cvut.cz ([2001:718:2:1516::210:153]
+ helo=smtpx.fel.cvut.cz)
+ by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_CHACHA20_POLY1305:256)
+ (Exim 4.90_1) (envelope-from <pisa@fel.cvut.cz>)
+ id 1wghpz-0004VP-Ax; Mon, 06 Jul 2026 07:50:14 -0400
+Received: from localhost (unknown [192.168.200.27])
+ by smtpx.fel.cvut.cz (Postfix) with ESMTP id 9313C1662B;
+ Mon, 06 Jul 2026 13:50:02 +0200 (CEST)
+X-Virus-Scanned: IMAP STYX AMAVIS
+Received: from smtpx.fel.cvut.cz ([192.168.200.2])
+ by localhost (cerokez-250.feld.cvut.cz [192.168.200.27]) (amavis, port 10060)
+ with ESMTP id RBYDT1sX9--Q; Mon,  6 Jul 2026 13:50:01 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fel.cvut.cz;
+ s=felmail; t=1783338256;
+ bh=CZwBV97eGUbAzqXmCYBT7gftrTK0/zgKDJ2ZFaLmZS4=;
+ h=From:To:Subject:Date:Cc:References:In-Reply-To:From;
+ b=s7CsxiVBWhFZtlGM0bHUkM4vxlzip36NgR2LgM/Ze4Sc6d1T9nZBDwdasC635Y9Og
+ WzzFkbDRLAPcuZvVigJM2TQNHHsMGdX/J1ykGTOEDM3lrtsk2zcSHAAuRyuzwrQf7L
+ DIJP6r02cUzf61XRseyBrh8u9WaZYgbbxUNxIkQjRi7baZFbynlHIJrgk8cddwFPsJ
+ I5sv+FliPyFqRGm1GrD3Yu0NTTtFbRnHooZ5aCuV7HswV4ZFgKf9uRiYor5qCkOihG
+ J3/d9oMlT0JxMGzXcoVmnHmyvdCZ47QlQJh7T6O3v0ZtzfzxNbL5rR+GpvUVe9jr5h
+ mOEL8Wxv1n3zQ==
+Received: from baree.pikron.com (static-84-242-78-234.bb.vodafone.cz
+ [84.242.78.234])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pisa)
+ by smtpx.fel.cvut.cz (Postfix) with ESMTPSA id 7560016462;
+ Mon, 06 Jul 2026 13:44:15 +0200 (CEST)
+From: Pavel Pisa <pisa@fel.cvut.cz>
+To: Bernhard Beschow <shentey@gmail.com>
+Subject: Re: [PATCH v2 0/5] hw/arm/fsl-imx8mp: Add inital FlexCAN support
+Date: Mon, 6 Jul 2026 13:44:14 +0200
+User-Agent: KMail/1.9.10
+Cc: qemu-devel@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ "Philippe =?utf-8?q?Mathieu-Daud=C3=A9?=" <philmd@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Matyas Bobek <matyas.bobek@gmail.com>,
+ Vikram Garhwal <vikram.garhwal@bytedance.com>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowangio@gmail.com>,
+ Jason Wang <jasowang@redhat.com>,
+ "Jean-Christophe Dubois" <jcd@tribudubois.net>,
+ Francisco Iglesias <francisco.iglesias@amd.com>
+References: <20260702184038.178196-1-shentey@gmail.com>
+In-Reply-To: <20260702184038.178196-1-shentey@gmail.com>
+X-KMail-QuotePrefix: > 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] vfio/listener: Only warn on misalignment for VFIO-owned
- regions
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Alex Williamson <alex@shazbot.org>, Eric Auger <eric.auger@redhat.com>,
- Stefan Berger <stefanb@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20260702160640.3875666-1-clg@redhat.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260702160640.3875666-1-clg@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: BACTr1skUt6NffC0h3GVDb7aqIa8dQZwlvDQnf3XVxA_1783338377
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: Text/Plain;
+  charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+Message-Id: <202607061344.14505.pisa@fel.cvut.cz>
+Received-SPF: pass client-ip=2001:718:2:1516::210:153;
+ envelope-from=pisa@fel.cvut.cz; helo=smtpx.fel.cvut.cz
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, NICE_REPLY_A=-2.97, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -159,129 +91,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello !
+Dear Bernhard,
 
-On 7/2/26 18:06, Cédric Le Goater wrote:
-> Any device on the board can have non-page-aligned memory regions. The
-> VFIO listener should not warn about misalignment for regions that are
-> not VFIO-related.
-> 
-> Replace the vfio_known_safe_misalignment() whitelist with a
-> vfio_get_vfio_device() ownership check: only warn when a VFIO device's
-> own region is misaligned. For all other regions, emit a trace event
-> and silently skip. Extract the misalignment test into a
-> vfio_section_misaligned() helper for readability.
-> 
-> Note: vfio_get_vfio_device() currently only covers VFIO PCI devices,
-> including vfio-user-pci.  Other VFIO backends (AP, CCW) don't expose
-> memory regions through this path so this is sufficient for now.
-> 
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
-> ---
->   hw/vfio/device.c     |  2 +-
->   hw/vfio/listener.c   | 33 +++++++++++++++------------------
->   hw/vfio/trace-events |  2 +-
->   3 files changed, 17 insertions(+), 20 deletions(-)
+On Thursday 02 of July 2026 20:40:33 Bernhard Beschow wrote:
+> Now that FlexCAN emulation has landed in master, let's add it to imx8mp-evk
+> as well. While the real i.MX8M Plus supports CAN FD which isn't emulated
+> yet, the non-FD mode works well under Linux: It is possible to use `cangen`
+> and `candump` either way on the host and on the guest, as described in
+> docs/system/devices/can.rst.
+>
+> This series consists of five patches where the first four are preparations.
+> The last patch integrates FlexCAN into the i.MX8M Plus SoC and EVK board.
+> The first preparation addresses the review comment from [1], and could be
+> applied independently.
+>
+> It would be nice if this series could make it into 11.1.
+>
+> Testing done:
+> * Start imx8mp-evk and run `cangen can0` there. Observe on the host that
+> `candump vcan0` prints the traffic.
+> * `make check`
+>
+> v2:
+> Thanks for the very helpful and super quick review, Phil! Here we go:
+> * Add patch "hw/net/can/flexcan: Wire clock control module via link
+> property" * Have separate MemoryRegionOps for 32 and 64 bit
+>
+> [1]
+> https://lore.kernel.org/qemu-devel/77d5891c-de12-467e-8746-02fe43121e3e@oss
+>.qualcomm.com/ ---
+> base-commit: a59157f98f0b69b0bbdb26bc15fbc4d6c8060799
+>
+> Bernhard Beschow (5):
+>   hw/net/can/flexcan: Wire clock control module via link property
+>   hw/net/can/flexcan: Subclass TYPE_CAN_FLEXCAN
+>   hw/arm/imx8mp-evk: Open code DEFINE_MACHINE_AARCH64
+>   hw/arm/imx8mp-evk: Introduce FslImx8mpEvkState
+>   hw/arm: Add basic FlexCAN3 support to TYPE_FSL_IMX8MP and imx8mp-evk
+>
+>  docs/system/arm/imx8m.rst   |  1 +
+>  include/hw/arm/fsl-imx8mp.h |  8 ++++
+>  include/hw/net/flexcan.h    |  4 +-
+>  hw/arm/fsl-imx6.c           |  5 ++-
+>  hw/arm/fsl-imx8mp.c         | 38 ++++++++++++++++
+>  hw/arm/imx8mp-evk.c         | 64 ++++++++++++++++++++++-----
+>  hw/misc/imx8mp_ccm.c        |  3 ++
+>  hw/net/can/flexcan.c        | 88 ++++++++++++++++++++++++++++++-------
+>  hw/arm/Kconfig              |  1 +
+>  9 files changed, 182 insertions(+), 30 deletions(-)
 
-Could someone please take a look and Ack this change (or not :) ?
+Thanks for the work. I have tested the series on the top
+of your imx8mp-flexcan branch, commit
 
-Thanks,
+  3b7289419cac5b712faeadf6b4a6203579d08f76
 
-C.
+with our test setup for iMX6
 
-> 
-> diff --git a/hw/vfio/device.c b/hw/vfio/device.c
-> index 1a7f8088aad9583ee96fc303be917fdb2f100df9..3a47109efb35c6dc28719dcc19acb85bef1d26cd 100644
-> --- a/hw/vfio/device.c
-> +++ b/hw/vfio/device.c
-> @@ -439,7 +439,7 @@ bool vfio_device_hiod_create_and_realize(VFIODevice *vbasedev,
->   
->   VFIODevice *vfio_get_vfio_device(Object *obj)
->   {
-> -    if (object_dynamic_cast(obj, TYPE_VFIO_PCI)) {
-> +    if (object_dynamic_cast(obj, TYPE_VFIO_PCI_DEVICE)) {
->           return &VFIO_PCI_DEVICE(obj)->vbasedev;
->       } else {
->           return NULL;
-> diff --git a/hw/vfio/listener.c b/hw/vfio/listener.c
-> index c19600e980a8d02217b5d9df4aca8f879ab2c5d5..76b9b02f8163f18d20994e4ec1f914a4d148fa92 100644
-> --- a/hw/vfio/listener.c
-> +++ b/hw/vfio/listener.c
-> @@ -40,7 +40,6 @@
->   #include "migration/misc.h"
->   #include "migration/qemu-file.h"
->   #include "system/tcg.h"
-> -#include "system/tpm.h"
->   #include "vfio-migration-internal.h"
->   #include "vfio-helpers.h"
->   #include "vfio-listener.h"
-> @@ -352,20 +351,10 @@ static void vfio_ram_discard_unregister_listener(VFIOContainer *bcontainer,
->       g_free(vrdl);
->   }
->   
-> -static bool vfio_known_safe_misalignment(MemoryRegionSection *section)
-> +static bool vfio_section_misaligned(MemoryRegionSection *section)
->   {
-> -    MemoryRegion *mr = section->mr;
-> -
-> -    if (!TPM_IS_CRB(mr->owner)) {
-> -        return false;
-> -    }
-> -
-> -    /* this is a known safe misaligned region, just trace for debug purpose */
-> -    trace_vfio_known_safe_misalignment(memory_region_name(mr),
-> -                                       section->offset_within_address_space,
-> -                                       section->offset_within_region,
-> -                                       qemu_real_host_page_size());
-> -    return true;
-> +    return (section->offset_within_address_space & ~qemu_real_host_page_mask()) !=
-> +           (section->offset_within_region & ~qemu_real_host_page_mask());
->   }
->   
->   static bool vfio_listener_valid_section(MemoryRegionSection *section,
-> @@ -379,10 +368,12 @@ static bool vfio_listener_valid_section(MemoryRegionSection *section,
->           return false;
->       }
->   
-> -    if (unlikely((section->offset_within_address_space &
-> -                  ~qemu_real_host_page_mask()) !=
-> -                 (section->offset_within_region & ~qemu_real_host_page_mask()))) {
-> -        if (!vfio_known_safe_misalignment(section)) {
-> +    if (unlikely(vfio_section_misaligned(section))) {
-> +        /*
-> +         * Only warn for VFIO device regions.  Other VFIO backends
-> +         * (AP, CCW) don't expose memory regions through this path.
-> +         */
-> +        if (vfio_get_vfio_device(memory_region_owner(section->mr))) {
->               error_report("%s received unaligned region %s iova=0x%"PRIx64
->                            " offset_within_region=0x%"PRIx64
->                            " qemu_real_host_page_size=0x%"PRIxPTR,
-> @@ -390,6 +381,12 @@ static bool vfio_listener_valid_section(MemoryRegionSection *section,
->                            section->offset_within_address_space,
->                            section->offset_within_region,
->                            qemu_real_host_page_size());
-> +        } else {
-> +            trace_vfio_listener_region_misaligned(
-> +                         memory_region_name(section->mr),
-> +                         section->offset_within_address_space,
-> +                         section->offset_within_region,
-> +                         qemu_real_host_page_size());
->           }
->           return false;
->       }
-> diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
-> index f71d0bbc0a5440e4ccd374fac4733af08438e7be..5056b9942027938cd6bc832198acc9809739399f 100644
-> --- a/hw/vfio/trace-events
-> +++ b/hw/vfio/trace-events
-> @@ -98,7 +98,7 @@ vfio_spapr_group_attach(int groupfd, int tablefd) "Attached groupfd %d to liobn
->   vfio_listener_region_add_iommu(const char* name, uint64_t start, uint64_t end) "region_add [iommu] %s 0x%"PRIx64" - 0x%"PRIx64
->   vfio_listener_region_del_iommu(const char *name) "region_del [iommu] %s"
->   vfio_listener_region_add_ram(uint64_t iova_start, uint64_t iova_end, void *vaddr) "region_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
-> -vfio_known_safe_misalignment(const char *name, uint64_t iova, uint64_t offset_within_region, uintptr_t page_size) "Region \"%s\" iova=0x%"PRIx64" offset_within_region=0x%"PRIx64" qemu_real_host_page_size=0x%"PRIxPTR
-> +vfio_listener_region_misaligned(const char *name, uint64_t iova, uint64_t offset_within_region, uintptr_t page_size) "Region \"%s\" iova=0x%"PRIx64" offset_within_region=0x%"PRIx64" qemu_real_host_page_size=0x%"PRIxPTR
->   vfio_listener_region_add_no_dma_map(const char *name, uint64_t iova, uint64_t size, uint64_t page_size) "Region \"%s\" 0x%"PRIx64" size=0x%"PRIx64" is not aligned to 0x%"PRIx64" and cannot be mapped for DMA"
->   vfio_listener_region_skip_dma_map(const char *name, uint64_t iova, uint64_t size) "Region \"%s\" 0x%"PRIx64" size=0x%"PRIx64" marked to skip IOMMU mapping"
->   vfio_listener_region_del(uint64_t start, uint64_t end) "region_del 0x%"PRIx64" - 0x%"PRIx64
+  qemu-system-arm -m 1G -M sabrelite -smp 4 ...
 
+and it worked as intended. I have looked at all patches
+from your series and I do not see anything problematic.
+
+You can add my confirmation to the series and or individual
+patches
+
+Acked-by: Pavel Pisa <pisa@fel.cvut.cz>
+Tested-by: Pavel Pisa <pisa@fel.cvut.cz>
+
+By the way, I have noticed your iMX53 branch. We have some
+old kits for this because we used it for yet another generation
+of medical infusion system prototypes/instruments fully
+functional demonstrators but before final HW design with
+safety.
+
+The fully realized and produced systems with iMX1 there
+https://www.pikron.com/pages/devel/medinst.html
+
+Functional demonstrators with iMX53 there
+https://onimed.cz/wp-content/uploads/2021/02/medicina.png
+
+Best wishes,
+
+                Pavel
+
+                Pavel Pisa
+    phone:      +420 603531357
+    e-mail:     pisa@cmp.felk.cvut.cz
+    Department of Control Engineering FEE CVUT
+    Karlovo namesti 13, 121 35, Prague 2
+    university: http://control.fel.cvut.cz/
+    personal:   http://cmp.felk.cvut.cz/~pisa
+    social:     https://social.kernel.org/ppisa
+    projects:   https://www.openhub.net/accounts/ppisa
+    CAN related:http://canbus.pages.fel.cvut.cz/
+    RISC-V education: https://comparch.edu.cvut.cz/
+    Open Technologies Research Education and Exchange Services
+    https://gitlab.fel.cvut.cz/otrees/org/-/wikis/home
 

@@ -4,95 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC5D7C43602
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 14:21:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16ED3C43458
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 15:12:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgkBU-00010c-8A; Mon, 06 Jul 2026 10:20:32 -0400
+	id 1wgkzZ-0001jg-EE; Mon, 06 Jul 2026 11:12:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex@shazbot.org>)
- id 1wgkBT-00010O-8I; Mon, 06 Jul 2026 10:20:31 -0400
-Received: from fhigh-a7-smtp.messagingengine.com ([103.168.172.158])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wgkzY-0001jY-El
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 11:12:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex@shazbot.org>)
- id 1wgkBR-0007XC-88; Mon, 06 Jul 2026 10:20:30 -0400
-Received: from phl-compute-10.internal (phl-compute-10.internal [10.202.2.50])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 730E214000F9;
- Mon,  6 Jul 2026 10:20:26 -0400 (EDT)
-Received: from phl-frontend-04 ([10.202.2.163])
- by phl-compute-10.internal (MEProxy); Mon, 06 Jul 2026 10:20:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=shazbot.org; h=
- cc:cc:content-transfer-encoding:content-type:content-type:date
- :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to; s=fm1; t=1783347626;
- x=1783434026; bh=YjnPuIv9+2JKVK3cMkWliR7IEeGGZEXVkq5SA1HLoic=; b=
- Re0iyRXmJvvJi1CAbVnYbYDlTPXQPqWrAM9WYhvLl5K1rcg5TNGYG123QYAEdUdy
- iKPq5xy1gfbap+waBPfT+Gh9jwpPT1A0l7avU+D2YFL2s/WcFWS+FIVYp35DJB63
- BBMKSfNGlvjOVjc7ugEPCdRQmXrkL2QTR0FjHOmILxnj/QSTe0XldpCQTAeVdydL
- aPb+QjZmy6ABGGxrPHj36olBVCurmdI4BvnLCuDinbbC1f+ZMHkWa3eiFQoj/JfE
- YXgxK0Nqy05pmOBBtEwwdzT0fA+tkoQ8JnW9zSk/sgenT20Bc/pYrMOtaJKNmpud
- E9nTukUP+BVTpxao9PuxPA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:content-type:date:date:feedback-id:feedback-id
- :from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1783347626; x=
- 1783434026; bh=YjnPuIv9+2JKVK3cMkWliR7IEeGGZEXVkq5SA1HLoic=; b=a
- xNH9+9kjS9MIWxm+Rp23LqfyGD6fUZEfC9bCM7ACO1Y1Yv+JkBzvCwb0kNwc8/WN
- L2lcgz/Osr8BfElLcUtcLxlwVNU2h4pWGzO1apilVTak7j7iXEBD529dzQdlg7Ds
- O8tuqT+xyMbb1vd3PPweULoPK60CrR7D96Pnlyu8CkrBCpROUZ5rUmlmS82D0MWk
- +1izZqDayHACIFngB/xhKKeCiOHgtILCkcLPbAiTEZDAJ34tfkjjuw26O8LH3Hqx
- jcetcmLAqwUthELm3EOXmoiWGhkoytg6JFsRwDMW/8/P3iyEIfgZVZcs0O8ejJum
- 5pcQGXNMa2N3cpRLfxmnQ==
-X-ME-Sender: <xms:qblLao3RJvTVdkM18TdvJI2dR9R3EOnHn8TEcRXDmBTiKzD3qLQQcg>
- <xme:qblLalXrlUdMCa_XJflVGHgEYt-5eY5AOASKnwW9m6r09B_uATazHotASipgnWwty
- wlsgkxXQRUtHGc31g9YStf1BDM3NV7sZ4aZXjouuBJ_J3_4YqYptw>
-X-ME-Received: <xmr:qblLajJt47_rw50NKRnvM2rvSKSdGOJM3Iq-BtXCyBQAxuH_3rbF98XND-o>
-X-ME-Proxy-Cause: dmFkZTF9/XpAPF1pnC+czCU49T3BT0nKcD41hOwjMkLvdjksB/Lz0UXNCRVAwGAXD+rgQW
- t2xPf9Hs2Ka78r6aaVA+Z4gFx32wpPEF+wp3dr1Dh6t4fW0tBSNruKtN5vnmwjQilfTZCQ
- Bft8zOrHWBhWj0n7KC56e5gycFLkv8xSm7hHS9HYYm7BcomNxvh0WC4AAcWk+VTWFPEUgo
- 3y/PhPwQVUeHFUt8t6I38xXh54gdsQYtqJAwYbPOQY9PW2cewzHkkKz9oUNIZMvMcABdN+
- t3K9qaMWynRiQP5XoqhI2JLIUsFa6xmtdcEB5i9OLCo8ieh7FYLB3MIqnTERTOhcRT+wDH
- J/mzGgq44IAeK5k56zcFVo3gklbrwMw94zgeKXX9zWwK8DsYoQ6ruDN6agR8X0Q4nfjgSN
- s1rWki0QLi+V/FieDLrouMZk0vLbGQKEvaUu9bkGaErb34ZG76zffKKDnOcc9XMSMxJkuj
- Kz/8VjoWe+iJbnfXSYCvqrM/l/CktjXR/wTrsOPsTWlORvBDwPRd3Od6KHsPztg18ILJSF
- 5/loBItf5/ZW6O0LvgP4MgMFGdGlc0pCMqp5hyH8pwRze5HXD9icMNASRewcnkkfUVLJ3B
- 0PO6asDbvf0sscB3SKYat5q+EnwyEmGIDxqK8bO9yzaumlPaJHrmdczKaNjw
-X-ME-Proxy: <xmx:qblLan3Yt5ynIx5CHcXvWG_lWVO_4ENc0Z_Xh_Aq4d64xEQGojpoew>
- <xmx:qblLap5PuCfltSSMrgZrFLrVsmGzliEDfEmMN0QfXnGDLYUqtvxWLA>
- <xmx:qblLag869zw9IDaCr481MQKiRHsolyodeK9bJe1-m3-pvPi1ikxJYQ>
- <xmx:qblLagWOGw-dtdkKLhX_i2tj3N6k2WPzoQN1Bh0aJPpEsz2EAcykHA>
- <xmx:qrlLalaMUmGD5SocPQD-HXgtnl02eyJ4ienbRmGzWqwjCcwmCxZ9yu8W>
-Feedback-ID: i03f14258:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 6 Jul 2026 10:20:25 -0400 (EDT)
-Date: Mon, 6 Jul 2026 08:20:23 -0600
-From: Alex Williamson <alex@shazbot.org>
-To: =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Eric Auger
- <eric.auger@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>, Peter
- Maydell <peter.maydell@linaro.org>, alex@shazbot.org
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wgkzW-0003sS-In
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 11:12:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1783350733;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=lFM0nb4PGuHgwA80Ouv9gZcmm1gluuVCfxg2B6eTyA8=;
+ b=bAYIJmvIm4nV2WxShaXM6dCrBgD+8+5DJ6h5a080/QPQhpo3aQEhvLiDS3R520naRAWTr+
+ pGWfZjmwBd1gLWBvq0Iej2nZsm6l9MjitaIUIKRoc+diUm6yg006nRB12bWGHjOxSo+vwk
+ fRD65/Ak3JAKkD4IYgFIEGY41uphEvQ=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-22-0QnzrntJN5SxdwpWvv8dyg-1; Mon, 06 Jul 2026 11:12:11 -0400
+X-MC-Unique: 0QnzrntJN5SxdwpWvv8dyg-1
+X-Mimecast-MFC-AGG-ID: 0QnzrntJN5SxdwpWvv8dyg_1783350730
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-493bfc3b84aso14552825e9.0
+ for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 08:12:10 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1783350730; x=1783955530;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=lFM0nb4PGuHgwA80Ouv9gZcmm1gluuVCfxg2B6eTyA8=;
+ b=bW0lxAph9+jghATQU9gUFX5C+Grqn+wU47w5wSC6WdSH8crwLAgU6oNnYRTO2S+iWu
+ 1nC7hgAwkAm5Fxi0xeYHROdW/1q8C/fKQl92YaQ15IydMWelSyVNNfIjqjndrS63MZB3
+ CFokkpo43rycWntu8knvKenfNiEZ2BrcrIH6UVCBusQW6fVv9rUr7gvxfBzicamZxaYe
+ oB26UwlXgVgUQCIpriEx//Bb7vkYhqVkwP/AuG+yQ/Dwn2Lxd3xNsd5PeM/CCvoFCm/Q
+ C0HyaEW/ert6hLQqsU64CxzvKrLNeYYHLYtqaH1TxwQCHvo2E8qtHYG5o9U0y7TxYIzt
+ T7jg==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RouybDmIGJFT11bvPhfYRiLMWLBBFB6ujTbQesR5Mr2bFXvkKfLC/deNHKH+z1cJO9gefqi1auyDg==@nongnu.org
+X-Gm-Message-State: AOJu0YwCS1fdvi5pdv3JO/VudnKmwZ7rwMyPqGMgcxlj4ZakvDXH68HR
+ KnljjxpkSEx7ZEsNujHedWa7N5/38tQxTe0A4SVeE0vQTHeOemBMcaiQu6AJHjpDEEPf8KUZ6LJ
+ TIaE6A5pfIQu0iDs7XywYmLJJzCDi8KLl/EOAKOJI5hzOjcrWCmD4Xg==
+X-Gm-Gg: AfdE7clotK337EwzDY924OJCfo9332L3abN3jGsZv5CREWsjhqdrYKOtwC+m5i1ZIyS
+ YeCPSrt63gI0tCzXGa/kB7+iNar+Z5zo73AfOTdJiq8MN5XmqFgLq10fJnUwB08BkBmAKt9sYSp
+ uAY8HUWtBkeLj7ocUsiLxEANj2WEisI/zwguvLfRrobjS4lNohd+ZP156xJOzVurte71+KHwK2o
+ Fbt4LKIDFdrKjrH6rvH+MvLD35XHlusq2PT0/H3RWoQqk42xskdwkHlW5U9h1ogF/osi46x0ZXu
+ mh/xzGPnHl4aBfE1F9pp+DQoNM02EtiI4SnhEJKWvqyvMuRMkvKgL7yXZ1ZFWhTsBbzTakomhXM
+ P8tW82q7lfnJpYKxOsTaZ7BO+cS96ZEIPenH8DZGw+t64iUsq7Q==
+X-Received: by 2002:a05:600c:4e8e:b0:493:c194:4e7a with SMTP id
+ 5b1f17b1804b1-493df0377e0mr10554415e9.3.1783350729686; 
+ Mon, 06 Jul 2026 08:12:09 -0700 (PDT)
+X-Received: by 2002:a05:600c:4e8e:b0:493:c194:4e7a with SMTP id
+ 5b1f17b1804b1-493df0377e0mr10553695e9.3.1783350729097; 
+ Mon, 06 Jul 2026 08:12:09 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
+ ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-493cce1947bsm290925805e9.14.2026.07.06.08.12.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 Jul 2026 08:12:08 -0700 (PDT)
+Message-ID: <3f799ad7-08a5-44c7-b6bf-b143da038593@redhat.com>
+Date: Mon, 6 Jul 2026 17:12:07 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] vfio/listener: Only warn on misalignment for VFIO-owned
  regions
-Message-ID: <20260706082023.7ee830b8@shazbot.org>
-In-Reply-To: <20260702160640.3875666-1-clg@redhat.com>
+To: Alex Williamson <alex@shazbot.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Eric Auger <eric.auger@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>
 References: <20260702160640.3875666-1-clg@redhat.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=103.168.172.158; envelope-from=alex@shazbot.org;
- helo=fhigh-a7-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ <20260706082023.7ee830b8@shazbot.org>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20260706082023.7ee830b8@shazbot.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: _gOqEXf4UQ8eyz7mjLjqCew9bA9rkVai5_5mhB2Ljig_1783350730
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,159 +160,159 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu,  2 Jul 2026 18:06:40 +0200
-C=C3=A9dric Le Goater <clg@redhat.com> wrote:
+On 7/6/26 16:20, Alex Williamson wrote:
+> On Thu,  2 Jul 2026 18:06:40 +0200
+> Cédric Le Goater <clg@redhat.com> wrote:
+> 
+>> Any device on the board can have non-page-aligned memory regions. The
+>> VFIO listener should not warn about misalignment for regions that are
+>> not VFIO-related.
+>>
+>> Replace the vfio_known_safe_misalignment() whitelist with a
+>> vfio_get_vfio_device() ownership check: only warn when a VFIO device's
+>> own region is misaligned. For all other regions, emit a trace event
+>> and silently skip. Extract the misalignment test into a
+>> vfio_section_misaligned() helper for readability.
+>>
+>> Note: vfio_get_vfio_device() currently only covers VFIO PCI devices,
+>> including vfio-user-pci.  Other VFIO backends (AP, CCW) don't expose
+>> memory regions through this path so this is sufficient for now.
+> 
+> I thought the whole point was to warn when there are non-vfio devices
+> that we cannot insert into the DMA map.  851d6d1a0ff2 added tpm-crb-cmd
+> to an ignore list because it's not a DMA target.  The intention of that
+> ignore list was to continue to evaluate devices that are misaligned
+> and either add them to the ignore list or determine they could be a
+> valid DMA target and correct the alignment.
 
-> Any device on the board can have non-page-aligned memory regions. The
-> VFIO listener should not warn about misalignment for regions that are
-> not VFIO-related.
->=20
-> Replace the vfio_known_safe_misalignment() whitelist with a
-> vfio_get_vfio_device() ownership check: only warn when a VFIO device's
-> own region is misaligned. For all other regions, emit a trace event
-> and silently skip. Extract the misalignment test into a
-> vfio_section_misaligned() helper for readability.
->=20
-> Note: vfio_get_vfio_device() currently only covers VFIO PCI devices,
-> including vfio-user-pci.  Other VFIO backends (AP, CCW) don't expose
-> memory regions through this path so this is sufficient for now.
+If the goal was to use the VFIO listener to catch all misaligned regions,
+and potentially fix them, we should reconsider that approach :
+  
+   https://lore.kernel.org/qemu-devel/20260701080843.2418461-1-clg@redhat.com/
 
-I thought the whole point was to warn when there are non-vfio devices
-that we cannot insert into the DMA map.  851d6d1a0ff2 added tpm-crb-cmd
-to an ignore list because it's not a DMA target.  The intention of that
-ignore list was to continue to evaluate devices that are misaligned
-and either add them to the ignore list or determine they could be a
-valid DMA target and correct the alignment.
+As Peter pointed out, regions that are not page-aligned regions are valid :
 
-Can this even legitimately trigger with a vfio-pci device?  Thanks,
+   https://lore.kernel.org/qemu-devel/CAFEAcA-QHJ=HaBc5WSLLap8NdDw+tty4EFfGt6cmmNOK6e_m7w@mail.gmail.com/
 
-Alex
+and aligning them would require a machine compat for migration.
+Not addressed in :
 
->=20
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: C=C3=A9dric Le Goater <clg@redhat.com>
-> ---
->  hw/vfio/device.c     |  2 +-
->  hw/vfio/listener.c   | 33 +++++++++++++++------------------
->  hw/vfio/trace-events |  2 +-
->  3 files changed, 17 insertions(+), 20 deletions(-)
->=20
-> diff --git a/hw/vfio/device.c b/hw/vfio/device.c
-> index 1a7f8088aad9583ee96fc303be917fdb2f100df9..3a47109efb35c6dc28719dcc1=
-9acb85bef1d26cd 100644
-> --- a/hw/vfio/device.c
-> +++ b/hw/vfio/device.c
-> @@ -439,7 +439,7 @@ bool vfio_device_hiod_create_and_realize(VFIODevice *=
-vbasedev,
-> =20
->  VFIODevice *vfio_get_vfio_device(Object *obj)
->  {
-> -    if (object_dynamic_cast(obj, TYPE_VFIO_PCI)) {
-> +    if (object_dynamic_cast(obj, TYPE_VFIO_PCI_DEVICE)) {
->          return &VFIO_PCI_DEVICE(obj)->vbasedev;
->      } else {
->          return NULL;
-> diff --git a/hw/vfio/listener.c b/hw/vfio/listener.c
-> index c19600e980a8d02217b5d9df4aca8f879ab2c5d5..76b9b02f8163f18d20994e4ec=
-1f914a4d148fa92 100644
-> --- a/hw/vfio/listener.c
-> +++ b/hw/vfio/listener.c
-> @@ -40,7 +40,6 @@
->  #include "migration/misc.h"
->  #include "migration/qemu-file.h"
->  #include "system/tcg.h"
-> -#include "system/tpm.h"
->  #include "vfio-migration-internal.h"
->  #include "vfio-helpers.h"
->  #include "vfio-listener.h"
-> @@ -352,20 +351,10 @@ static void vfio_ram_discard_unregister_listener(VF=
-IOContainer *bcontainer,
->      g_free(vrdl);
->  }
-> =20
-> -static bool vfio_known_safe_misalignment(MemoryRegionSection *section)
-> +static bool vfio_section_misaligned(MemoryRegionSection *section)
->  {
-> -    MemoryRegion *mr =3D section->mr;
-> -
-> -    if (!TPM_IS_CRB(mr->owner)) {
-> -        return false;
-> -    }
-> -
-> -    /* this is a known safe misaligned region, just trace for debug purp=
-ose */
-> -    trace_vfio_known_safe_misalignment(memory_region_name(mr),
-> -                                       section->offset_within_address_sp=
-ace,
-> -                                       section->offset_within_region,
-> -                                       qemu_real_host_page_size());
-> -    return true;
-> +    return (section->offset_within_address_space & ~qemu_real_host_page_=
-mask()) !=3D
-> +           (section->offset_within_region & ~qemu_real_host_page_mask());
->  }
-> =20
->  static bool vfio_listener_valid_section(MemoryRegionSection *section,
-> @@ -379,10 +368,12 @@ static bool vfio_listener_valid_section(MemoryRegio=
-nSection *section,
->          return false;
->      }
-> =20
-> -    if (unlikely((section->offset_within_address_space &
-> -                  ~qemu_real_host_page_mask()) !=3D
-> -                 (section->offset_within_region & ~qemu_real_host_page_m=
-ask()))) {
-> -        if (!vfio_known_safe_misalignment(section)) {
-> +    if (unlikely(vfio_section_misaligned(section))) {
-> +        /*
-> +         * Only warn for VFIO device regions.  Other VFIO backends
-> +         * (AP, CCW) don't expose memory regions through this path.
-> +         */
-> +        if (vfio_get_vfio_device(memory_region_owner(section->mr))) {
->              error_report("%s received unaligned region %s iova=3D0x%"PRI=
-x64
->                           " offset_within_region=3D0x%"PRIx64
->                           " qemu_real_host_page_size=3D0x%"PRIxPTR,
-> @@ -390,6 +381,12 @@ static bool vfio_listener_valid_section(MemoryRegion=
-Section *section,
->                           section->offset_within_address_space,
->                           section->offset_within_region,
->                           qemu_real_host_page_size());
-> +        } else {
-> +            trace_vfio_listener_region_misaligned(
-> +                         memory_region_name(section->mr),
-> +                         section->offset_within_address_space,
-> +                         section->offset_within_region,
-> +                         qemu_real_host_page_size());
->          }
->          return false;
->      }
-> diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
-> index f71d0bbc0a5440e4ccd374fac4733af08438e7be..5056b9942027938cd6bc83219=
-8acc9809739399f 100644
-> --- a/hw/vfio/trace-events
-> +++ b/hw/vfio/trace-events
-> @@ -98,7 +98,7 @@ vfio_spapr_group_attach(int groupfd, int tablefd) "Atta=
-ched groupfd %d to liobn
->  vfio_listener_region_add_iommu(const char* name, uint64_t start, uint64_=
-t end) "region_add [iommu] %s 0x%"PRIx64" - 0x%"PRIx64
->  vfio_listener_region_del_iommu(const char *name) "region_del [iommu] %s"
->  vfio_listener_region_add_ram(uint64_t iova_start, uint64_t iova_end, voi=
-d *vaddr) "region_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
-> -vfio_known_safe_misalignment(const char *name, uint64_t iova, uint64_t o=
-ffset_within_region, uintptr_t page_size) "Region \"%s\" iova=3D0x%"PRIx64"=
- offset_within_region=3D0x%"PRIx64" qemu_real_host_page_size=3D0x%"PRIxPTR
-> +vfio_listener_region_misaligned(const char *name, uint64_t iova, uint64_=
-t offset_within_region, uintptr_t page_size) "Region \"%s\" iova=3D0x%"PRIx=
-64" offset_within_region=3D0x%"PRIx64" qemu_real_host_page_size=3D0x%"PRIxP=
-TR
->  vfio_listener_region_add_no_dma_map(const char *name, uint64_t iova, uin=
-t64_t size, uint64_t page_size) "Region \"%s\" 0x%"PRIx64" size=3D0x%"PRIx6=
-4" is not aligned to 0x%"PRIx64" and cannot be mapped for DMA"
->  vfio_listener_region_skip_dma_map(const char *name, uint64_t iova, uint6=
-4_t size) "Region \"%s\" 0x%"PRIx64" size=3D0x%"PRIx64" marked to skip IOMM=
-U mapping"
->  vfio_listener_region_del(uint64_t start, uint64_t end) "region_del 0x%"P=
-RIx64" - 0x%"PRIx64
+   https://lore.kernel.org/qemu-devel/20260630173245.2070268-1-clg@redhat.com/
+
+> Can this even legitimately trigger with a vfio-pci device?  
+
+This would be a real error to report. Right ?
+
+Thanks,
+
+C.
+
+
+> Thanks,
+> 
+> Alex
+> 
+>>
+>> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+>> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+>> ---
+>>   hw/vfio/device.c     |  2 +-
+>>   hw/vfio/listener.c   | 33 +++++++++++++++------------------
+>>   hw/vfio/trace-events |  2 +-
+>>   3 files changed, 17 insertions(+), 20 deletions(-)
+>>
+>> diff --git a/hw/vfio/device.c b/hw/vfio/device.c
+>> index 1a7f8088aad9583ee96fc303be917fdb2f100df9..3a47109efb35c6dc28719dcc19acb85bef1d26cd 100644
+>> --- a/hw/vfio/device.c
+>> +++ b/hw/vfio/device.c
+>> @@ -439,7 +439,7 @@ bool vfio_device_hiod_create_and_realize(VFIODevice *vbasedev,
+>>   
+>>   VFIODevice *vfio_get_vfio_device(Object *obj)
+>>   {
+>> -    if (object_dynamic_cast(obj, TYPE_VFIO_PCI)) {
+>> +    if (object_dynamic_cast(obj, TYPE_VFIO_PCI_DEVICE)) {
+>>           return &VFIO_PCI_DEVICE(obj)->vbasedev;
+>>       } else {
+>>           return NULL;
+>> diff --git a/hw/vfio/listener.c b/hw/vfio/listener.c
+>> index c19600e980a8d02217b5d9df4aca8f879ab2c5d5..76b9b02f8163f18d20994e4ec1f914a4d148fa92 100644
+>> --- a/hw/vfio/listener.c
+>> +++ b/hw/vfio/listener.c
+>> @@ -40,7 +40,6 @@
+>>   #include "migration/misc.h"
+>>   #include "migration/qemu-file.h"
+>>   #include "system/tcg.h"
+>> -#include "system/tpm.h"
+>>   #include "vfio-migration-internal.h"
+>>   #include "vfio-helpers.h"
+>>   #include "vfio-listener.h"
+>> @@ -352,20 +351,10 @@ static void vfio_ram_discard_unregister_listener(VFIOContainer *bcontainer,
+>>       g_free(vrdl);
+>>   }
+>>   
+>> -static bool vfio_known_safe_misalignment(MemoryRegionSection *section)
+>> +static bool vfio_section_misaligned(MemoryRegionSection *section)
+>>   {
+>> -    MemoryRegion *mr = section->mr;
+>> -
+>> -    if (!TPM_IS_CRB(mr->owner)) {
+>> -        return false;
+>> -    }
+>> -
+>> -    /* this is a known safe misaligned region, just trace for debug purpose */
+>> -    trace_vfio_known_safe_misalignment(memory_region_name(mr),
+>> -                                       section->offset_within_address_space,
+>> -                                       section->offset_within_region,
+>> -                                       qemu_real_host_page_size());
+>> -    return true;
+>> +    return (section->offset_within_address_space & ~qemu_real_host_page_mask()) !=
+>> +           (section->offset_within_region & ~qemu_real_host_page_mask());
+>>   }
+>>   
+>>   static bool vfio_listener_valid_section(MemoryRegionSection *section,
+>> @@ -379,10 +368,12 @@ static bool vfio_listener_valid_section(MemoryRegionSection *section,
+>>           return false;
+>>       }
+>>   
+>> -    if (unlikely((section->offset_within_address_space &
+>> -                  ~qemu_real_host_page_mask()) !=
+>> -                 (section->offset_within_region & ~qemu_real_host_page_mask()))) {
+>> -        if (!vfio_known_safe_misalignment(section)) {
+>> +    if (unlikely(vfio_section_misaligned(section))) {
+>> +        /*
+>> +         * Only warn for VFIO device regions.  Other VFIO backends
+>> +         * (AP, CCW) don't expose memory regions through this path.
+>> +         */
+>> +        if (vfio_get_vfio_device(memory_region_owner(section->mr))) {
+>>               error_report("%s received unaligned region %s iova=0x%"PRIx64
+>>                            " offset_within_region=0x%"PRIx64
+>>                            " qemu_real_host_page_size=0x%"PRIxPTR,
+>> @@ -390,6 +381,12 @@ static bool vfio_listener_valid_section(MemoryRegionSection *section,
+>>                            section->offset_within_address_space,
+>>                            section->offset_within_region,
+>>                            qemu_real_host_page_size());
+>> +        } else {
+>> +            trace_vfio_listener_region_misaligned(
+>> +                         memory_region_name(section->mr),
+>> +                         section->offset_within_address_space,
+>> +                         section->offset_within_region,
+>> +                         qemu_real_host_page_size());
+>>           }
+>>           return false;
+>>       }
+>> diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+>> index f71d0bbc0a5440e4ccd374fac4733af08438e7be..5056b9942027938cd6bc832198acc9809739399f 100644
+>> --- a/hw/vfio/trace-events
+>> +++ b/hw/vfio/trace-events
+>> @@ -98,7 +98,7 @@ vfio_spapr_group_attach(int groupfd, int tablefd) "Attached groupfd %d to liobn
+>>   vfio_listener_region_add_iommu(const char* name, uint64_t start, uint64_t end) "region_add [iommu] %s 0x%"PRIx64" - 0x%"PRIx64
+>>   vfio_listener_region_del_iommu(const char *name) "region_del [iommu] %s"
+>>   vfio_listener_region_add_ram(uint64_t iova_start, uint64_t iova_end, void *vaddr) "region_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
+>> -vfio_known_safe_misalignment(const char *name, uint64_t iova, uint64_t offset_within_region, uintptr_t page_size) "Region \"%s\" iova=0x%"PRIx64" offset_within_region=0x%"PRIx64" qemu_real_host_page_size=0x%"PRIxPTR
+>> +vfio_listener_region_misaligned(const char *name, uint64_t iova, uint64_t offset_within_region, uintptr_t page_size) "Region \"%s\" iova=0x%"PRIx64" offset_within_region=0x%"PRIx64" qemu_real_host_page_size=0x%"PRIxPTR
+>>   vfio_listener_region_add_no_dma_map(const char *name, uint64_t iova, uint64_t size, uint64_t page_size) "Region \"%s\" 0x%"PRIx64" size=0x%"PRIx64" is not aligned to 0x%"PRIx64" and cannot be mapped for DMA"
+>>   vfio_listener_region_skip_dma_map(const char *name, uint64_t iova, uint64_t size) "Region \"%s\" 0x%"PRIx64" size=0x%"PRIx64" marked to skip IOMMU mapping"
+>>   vfio_listener_region_del(uint64_t start, uint64_t end) "region_del 0x%"PRIx64" - 0x%"PRIx64
+> 
 
 

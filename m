@@ -4,109 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A41EC43458
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 15:28:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EC6DC44500
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 15:35:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wglEn-00062y-W2; Mon, 06 Jul 2026 11:28:02 -0400
+	id 1wglLM-0007VT-UO; Mon, 06 Jul 2026 11:34:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wglEn-00062h-7e
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 11:28:01 -0400
-Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wglEl-00089k-MQ
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 11:28:00 -0400
-Received: by mail-yx1-xb131.google.com with SMTP id
- 956f58d0204a3-6663b4fe293so2412632d50.1
- for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 08:27:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783351678; cv=none;
- d=google.com; s=arc-20260327;
- b=IIDimr42syP55UDWES6G5XV/8AW8yAppqL8TnB5VmS81xHDHVXL2pxEcsgEDZvW0+6
- 0RipNPOYQbPfQ94tb5PEtXO8H4WUfVouZIwxspn63RrE85xt8XVM1kBrxDfMlKKlqTPy
- RjFOFISaFiJllmqKmDcbjZQbXYvgtPY5E8iEAKS8KJdIDzC/x+d0G5hu480nO4vgwLwU
- 0NocqWSwp4q9t9DatVmgDOOWxZGdkBGO4cRAzrH/vBw5TTN+008aZuvCxw0VLPn4oY+z
- OS8l7dMckfqtVDixsDlIg8ziC5qLxEIH+l9a7E85vdLB6oiRDH16AJGDpE8EkAwtOy+M
- 7/QA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=YKTcPxKxLRb5ojLf0eOsvN7SUhy86oPvFd+3G4Gph18=;
- fh=L3LL8k3qsee9h8l4r95GxPt4kLbxTtoSnfT8G2oMgC0=;
- b=meNtx2Fb8ZzmocwyHTgsu17bvc4C7unDZ+Vg2t0IYI5vYc1nNn/c7ef5l2MEzkz1Or
- ee0NicF5mN82AU2csYiAc9noqE/NOcNoyFQIUitY/DjMEz+FehaV8WPqZaZVLQrSmZBx
- M8wPQnMbPxix/DIf42u9JHYzH2vOQJ9GoAw5CgMAT1SPTQjKUE7d9p6D2R9NNHfVLrLp
- vldu2aJvZDASy2um5P1zu/xs9EsJM7iyFyKB0wZdO6RXqpCd//BM/YjZo8bjB2NWU8oW
- WUa115lTGHfY6NiMfNrkY7mgmm343y6dgLlZuMav+kqksA0WLqIh2BvMVReO3gpRTRJt
- qmiA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783351678; x=1783956478; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=YKTcPxKxLRb5ojLf0eOsvN7SUhy86oPvFd+3G4Gph18=;
- b=bj2E5De/0gSGzI52Z9dGJDJMVE68w3u2MVSN6G0PALcA/rK942LezBxnqGUKJyataf
- 3xXRyGGTNZ1sGFTvlQ0x0KdOwrWBpsbvEanPKJl1y46thmowyL29Z35A25+5ol/kDDnw
- 5ZTWZ7iFU2St77gNrfS9wXcVAuTi4Y65QSZveH4cb7CEPLkhzsWg6i5k3v6iM63hQ6YE
- +XCiXZELH/5spzaKHdKvIjj5dtO2346+AXX85YPMNjlNQS1Xn/Wl1xULuSvhQw3rDM97
- QZlDxk3cHN6LWcx/2R9uIz0+BwBjPlbfVzfrOg3HvgvNo7tftP+wwA6/s3iRVNSoCN85
- lHRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783351678; x=1783956478;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=YKTcPxKxLRb5ojLf0eOsvN7SUhy86oPvFd+3G4Gph18=;
- b=p72Fy55BN/xx32i7hP1o979ElwuulAyCu/ct/NhtvBoNsrA0VXzXvCohePRlcozdSp
- PD4rfHvK81enU5gFp4LB8LRM+DF09X8ldFVkYWK6t6Lp+5SrPIMDFeou/bRjxgL9tQMi
- OYbpFBwbJt+Uqxtj3q6rnTLxa8lv0FhAly/Kb+K9sdXngR+O2tlj9L/EyfFZot5+D7JT
- p3ejyvnIGwmxk5Wq1r191kHeyjYc3vJZadFfGOmnYcE8WBkyn1XCo/A1SoEBXdxwOyUv
- z0rNBiM54i362Ek+Iir/huOA/KSvKp5ao9owMYiAbQsciFu1eGHvoOpnziXfolGzPnFM
- acbQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rq97BC78lix0EI0JAtO4edOJ8O8aD6cwZ+noTbxfBcmpPegiRo05jgXehRrWWYwecEoaYnriTC15A==@nongnu.org
-X-Gm-Message-State: AOJu0YxnV6WOnsJCpJgIU9w7ZlbKDWelbQ4cemo5j2PneZ6s2gUNSLNa
- n2y7hFm5uvdbY6C0A8XyecXdkatlSxP46e9zwkChDyufag9cDiNkAcA7k7ag9heMOlYfwdRgJrG
- Jg8KCQ04lqZVnrcrBUjN6AfvzeodGb6pOfZ304y1U4Q==
-X-Gm-Gg: AfdE7cmIu4sKv+lou1iUtzVh0jwZ7dwJeISqhc9DUluG1XtzmIKQtO0FSQ5NwSDOYVm
- gPp0hYP8FIujHZYIvaquit/7OIBx3Y0HfEPfEDTbNl3Xf9wKQWr8GWprXlrfBGCthlrwAkeUy0w
- 1tNtokf/6sRLupYjx5GL1wkfwpCaonW+oH5+UpPR04Wt9h1pB705/7uZtatvKT5zKcsjDhqxwBA
- h+xOqsS2UYnxR40gtc/qf3T2G+thn9rEr+XoNHwfRVjN+6wNiCKJm7ZkyzY6ynwCwB2GQGnd0BH
- cCN0FG+EXmLM1CwJFJPhf8oEP9ezbyQV8wHZZKsfp1NWNQU99PndGk+k
-X-Received: by 2002:a05:690e:4594:10b0:666:b80f:8b06 with SMTP id
- 956f58d0204a3-6677fcd820bmr752507d50.68.1783351678212; Mon, 06 Jul 2026
- 08:27:58 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <alex@shazbot.org>)
+ id 1wglLH-0007Ut-SO; Mon, 06 Jul 2026 11:34:44 -0400
+Received: from fout-a3-smtp.messagingengine.com ([103.168.172.146])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex@shazbot.org>)
+ id 1wglLF-0001R3-P3; Mon, 06 Jul 2026 11:34:43 -0400
+Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
+ by mailfout.phl.internal (Postfix) with ESMTP id A8DA9EC00C0;
+ Mon,  6 Jul 2026 11:34:40 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+ by phl-compute-02.internal (MEProxy); Mon, 06 Jul 2026 11:34:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=shazbot.org; h=
+ cc:cc:content-transfer-encoding:content-type:content-type:date
+ :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to; s=fm1; t=1783352080;
+ x=1783438480; bh=eg2L72sAYQFyQ/5fUltSJJCd7RU9lNyZO0unZiBzKF0=; b=
+ HHUyvDIl3ZefqH+rrxTT4EYpt7rDSxQFlF3vTuh9vszPgHEHjwyQivEXezv+WLbm
+ kISG6U3mKDeGQI5taCdXSsgfYUtonkWRH+Cmup/bkn2sUt3pvb5hX2+iqtVeyE7V
+ 8qQO/LV1tV47wEmI1dSZRldJSm140waeLO+f9Ud29l5ocFiJxnvl+MhAcGCMkH78
+ olJi5yKyCkWVTWaojqUaY2PioEKHoR7rfD2xvmYeibXsvIpOyhHsgHy3KlkvsSYg
+ K+QxsZroFgn/xSyNps2p9Ov8OC/hR4lV8XCe9bWne9LaDo51R+8s9BtVIQY46R/5
+ vFL6ka/QJmOBuE3HxDCI0g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1783352080; x=
+ 1783438480; bh=eg2L72sAYQFyQ/5fUltSJJCd7RU9lNyZO0unZiBzKF0=; b=L
+ Y8kqxLeZhBOIdVkQuANcCqJ3kVcv8/8GwEd0ZrEKQPqkn51+jJEHquw4ziD7m+Fk
+ +7BCvBytzZaKEBGjss+dNCEl17RU3Is60f/2ooeOtSLBMa41/0ZCTTzJ1o75olwI
+ ZX4ipCss9HhpcM7h6wGezekKUyQRw+8NX4QE+YEzegTSg+yHfGKGp+796gWsaX8g
+ dn2xri1Oja6cmEr6vr6W9ep2UTXPJwZevnePT/cCsaYqD3tQyxrhsq7lbrGYGpvp
+ qOD69v1VGjwONYIQpOwF7iTu5Ku+hS+IZvF5rT7ip2DFSW8KgzR8KXZzghkZpyP2
+ RkuDlNsFZ+n0wB8rx6iEw==
+X-ME-Sender: <xms:EMtLasnXtoQwqOss0pDg2xK1BOJMy8QvcVykfKHUmlsW3IV-5CT8lw>
+ <xme:EMtLauF60gGPl9GAZhbSSeCuQjRyAuGsTqWVVTK3_FFf94aflTjh6ZIlLrNa84Ybk
+ h_zix6N4nae30e5ZU2igSEtJmlM1RlQbr6Mv2YuWvV9ZpuB1XqB6w>
+X-ME-Received: <xmr:EMtLas5TtDESYGFJdCvH4pZJoB5ArWzE9fqsVU6ZKXGue1t_-I2zTLtVRUU>
+X-ME-Proxy-Cause: dmFkZTGja22+aHzXlelTg6m3POKMiLfvo6ZnEtrd1CSFsHK6jqEPwWfQrMHQaSxy8qM9AP
+ DUhzp52W3A+oldvubqj9yiU1fxcnK5iKn+u247qQQZ5rD0Cabb6Be0zq+NoYdItB3mTul6
+ hMLgQrzM8EzGhyQGDURwrMzyrE+Qx5rfgl/FMAQLo6CNkUbAq3F8MMdnzI4y/AqIfeIJon
+ MsUaUP05LWbTFatVWu3qJvAiTQcFMatyG14z32LDsiYRWJM5R2KIEMS0d9Fe/I6P5csuX0
+ 0kKIlY8TOMqA8BKel75FEXd4MtwcLks8N4A+9/Mr2zlzlDGOCWaReagbudDX1isWGpKLp6
+ dvO2EggDXz8NxzTVWck5pllI4HkmG/TV+pMN/fjIkJsER5mLRC7a/1AiUutNbnA67rIJvO
+ KaHIrGNr8rz0PdiaabDydPilqqFnjL6ZFOV7qB5Fb4DzbBdHm5vxYEtKjq7Utt1tfvI2zh
+ A0JRyNZkg3NfAko37yVkI6aK2wvcNke6ooNXqw0g8hUpif4SP/5AicS4ep8LkZA5ki2H5b
+ +NKM6DJj++fDx6oB+qespYU5WDs0lk0jG1V3lIi93GGfmZ3nhSyq2DZewZ8QMlh8u5D3Nm
+ fPUgMutEG10sbH1sD1ba0ToGM0mVjX+IB2QExwfAKlYV1mjAzNfV0EQfTgfg
+X-ME-Proxy: <xmx:EMtLaukwqqF_81APiwiB4Xz9lR92Q02787f0xdl9zIVa_Zh_NV8Qgw>
+ <xmx:EMtLapr96CnfynJN7mx2uu0Q5g_havC_cXOPF6G05fz3DMWDtFEJPA>
+ <xmx:EMtLalu2UdTXWMe8d6z4pQA93uW5yAx47J4BXcdTbgcN-QgdMMZnRw>
+ <xmx:EMtLamHCXkqJZRV0SH5_BOpa_BsVqc-c4TnXWcKqzBvuS6CCJz4Uow>
+ <xmx:EMtLapKDrw-M6Y9hPVX0ZQuWrI9UxaqtvwdK8YOyEvTJnLzv76dLv5jW>
+Feedback-ID: i03f14258:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 6 Jul 2026 11:34:39 -0400 (EDT)
+Date: Mon, 6 Jul 2026 09:34:38 -0600
+From: Alex Williamson <alex@shazbot.org>
+To: =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Eric Auger
+ <eric.auger@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>, Peter
+ Maydell <peter.maydell@linaro.org>, alex@shazbot.org
+Subject: Re: [PATCH] vfio/listener: Only warn on misalignment for VFIO-owned
+ regions
+Message-ID: <20260706093438.1ea88aef@shazbot.org>
+In-Reply-To: <3f799ad7-08a5-44c7-b6bf-b143da038593@redhat.com>
 References: <20260702160640.3875666-1-clg@redhat.com>
  <20260706082023.7ee830b8@shazbot.org>
  <3f799ad7-08a5-44c7-b6bf-b143da038593@redhat.com>
-In-Reply-To: <3f799ad7-08a5-44c7-b6bf-b143da038593@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Jul 2026 16:27:46 +0100
-X-Gm-Features: AVVi8CcfqN8zfhXwBHOIZVd96rifEvBrVOKWyEvijgZ1RsgPBpxatr-OEJPZBqA
-Message-ID: <CAFEAcA9wOZhn41Twz9zzCBD4MAET2+gbF71kUKnr7r6TXfhjuw@mail.gmail.com>
-Subject: Re: [PATCH] vfio/listener: Only warn on misalignment for VFIO-owned
- regions
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Cc: Alex Williamson <alex@shazbot.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, 
- Eric Auger <eric.auger@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
-Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=103.168.172.146; envelope-from=alex@shazbot.org;
+ helo=fout-a3-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -123,12 +110,13 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 6 Jul 2026 at 16:12, C=C3=A9dric Le Goater <clg@redhat.com> wrote:
->
+On Mon, 6 Jul 2026 17:12:07 +0200
+C=C3=A9dric Le Goater <clg@redhat.com> wrote:
+
 > On 7/6/26 16:20, Alex Williamson wrote:
 > > On Thu,  2 Jul 2026 18:06:40 +0200
 > > C=C3=A9dric Le Goater <clg@redhat.com> wrote:
-> >
+> >  =20
 > >> Any device on the board can have non-page-aligned memory regions. The
 > >> VFIO listener should not warn about misalignment for regions that are
 > >> not VFIO-related.
@@ -141,38 +129,51 @@ On Mon, 6 Jul 2026 at 16:12, C=C3=A9dric Le Goater <clg@redhat.com> wrote:
 > >>
 > >> Note: vfio_get_vfio_device() currently only covers VFIO PCI devices,
 > >> including vfio-user-pci.  Other VFIO backends (AP, CCW) don't expose
-> >> memory regions through this path so this is sufficient for now.
-> >
+> >> memory regions through this path so this is sufficient for now. =20
+> >=20
 > > I thought the whole point was to warn when there are non-vfio devices
 > > that we cannot insert into the DMA map.  851d6d1a0ff2 added tpm-crb-cmd
 > > to an ignore list because it's not a DMA target.  The intention of that
 > > ignore list was to continue to evaluate devices that are misaligned
 > > and either add them to the ignore list or determine they could be a
-> > valid DMA target and correct the alignment.
->
+> > valid DMA target and correct the alignment. =20
+>=20
 > If the goal was to use the VFIO listener to catch all misaligned regions,
 > and potentially fix them, we should reconsider that approach :
->
+>  =20
 >    https://lore.kernel.org/qemu-devel/20260701080843.2418461-1-clg@redhat=
 .com/
->
+
+Arguably ok, likely no tpm device is a useful DMA target.
+=20
 > As Peter pointed out, regions that are not page-aligned regions are valid=
  :
->
+>=20
 >    https://lore.kernel.org/qemu-devel/CAFEAcA-QHJ=3DHaBc5WSLLap8NdDw+tty4=
 EFfGt6cmmNOK6e_m7w@mail.gmail.com/
->
+
+Yes, they are valid, no argument.  We're trying to DMA map things.  We
+can't DMA map things that aren't page-aligned and sized.  If it's not
+likely a DMA target, well, that's the purpose of the ignore list.  If
+it might be a DMA target, this is intended to log why the VM may not
+work correctly vs bare metal.
+=20
 > and aligning them would require a machine compat for migration.
+> Not addressed in :
+>=20
+>    https://lore.kernel.org/qemu-devel/20260630173245.2070268-1-clg@redhat=
+.com/
 
-It seems very unlikely that anything not page-aligned is going
-to be a sensible target for DMA ops from a device: the main
-reason to have a non-page-aligned or non-page-sized region is that
-it's the way we've chosen to implement a device, or it's some
-"RAM but not general-purpose RAM" thing. If there's a path to
-warn/error if it's actually used for a DMA op that would be worthwhile,
-but as it stands I think all this warning will ever cause us to
-do is add more entries to its whitelist every time it complains.
+Which I think highlights why we might rather see warnings than bury the
+issue in traces.
 
-thanks
--- PMM
+> > Can this even legitimately trigger with a vfio-pci device?   =20
+>=20
+> This would be a real error to report. Right ?
+
+I suspect it's not possible, so as proposed here we're turning a blind
+eye to the issue we intended to monitor and validate, and we replace it
+with likely dead code.  Thanks,
+
+Alex
 

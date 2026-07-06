@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0285EC44500
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 11:20:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A92EDC43458
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 11:47:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wghMi-0003IP-4y; Mon, 06 Jul 2026 07:19:56 -0400
+	id 1wghmg-00063T-RW; Mon, 06 Jul 2026 07:46:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wghMh-0003IG-9P
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 07:19:55 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wghmK-00061C-8L
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 07:46:31 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wghMf-0005bq-Jk
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 07:19:54 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wghmH-0003hW-HC
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 07:46:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783336792;
+ s=mimecast20190719; t=1783338379;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=TOYYYHcW4HvlYkKCkWv3vdVD2qGByTWBx92mCzRFrw4=;
- b=RY4cS+i1UKCz00ibGbWrdgxgwQFAzxzOWFsB+yLGmPPetkx8AAimpTwhLW49p/YnWPkuoa
- jA48JQO6hPOkJEOM5M4qroK5TJzBJsPLwRp/G6WOSuhb+80lWO6vY8Y62yFHA+DmmSPBVQ
- Hzaiwvad8oCBjuZ79UZVypQy0m0Pebw=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ZlwgE/kLAptfZ02Y9qDrhQ+GweU3O/Ib3qjuxBSPmiA=;
+ b=W+qlQW9kZ5vP/PONVCpTjbCWHhtErdCitpNA/Cvj0FhnN67LvzYQd7R5Xizrovd2DQB5Pr
+ 0l7T9h5dlTHmioPtBE5PRGbTRobXsSt7w4yeq5km87bAIzgmkczt35uV5PxhPl7UTtKm5v
+ 0c329dhO+f/U9ibMK/oaSsCGnf3YLpk=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-135-cVK7y0qiMZ6MpnTq-VDIGw-1; Mon, 06 Jul 2026 07:19:50 -0400
-X-MC-Unique: cVK7y0qiMZ6MpnTq-VDIGw-1
-X-Mimecast-MFC-AGG-ID: cVK7y0qiMZ6MpnTq-VDIGw_1783336789
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4926596eebcso18792945e9.3
- for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 04:19:50 -0700 (PDT)
+ us-mta-83-kCVTEKW_Mq-FDj2IgZqo_w-1; Mon, 06 Jul 2026 07:46:18 -0400
+X-MC-Unique: kCVTEKW_Mq-FDj2IgZqo_w-1
+X-Mimecast-MFC-AGG-ID: kCVTEKW_Mq-FDj2IgZqo_w_1783338377
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-493c1bc7a70so26401015e9.1
+ for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 04:46:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783336789; x=1783941589;
- h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
+ d=1e100.net; s=20251104; t=1783338377; x=1783943177;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=TOYYYHcW4HvlYkKCkWv3vdVD2qGByTWBx92mCzRFrw4=;
- b=jKZLC3PdDOknwnRPQDg1hwf6A3CBuXKW0s5C0rudExFALEq4Imr2Xkrm1lyDEo0KsA
- 9vWakgyi2o/EXEFDaKLzU4S+LaHCF9ibVHM7Z60/CRKHcbpkStHCstoEzAJJCFnrpm5t
- kqDVGbZBvx9SEF5hfSt/i0UOLYp9enWLUWlVQApKR2+fKTg6abTVRPxDOpXYQXmEU689
- WSbo3NjKbMuFVHJzFydKcORpHpUgiLCpcRCcmYUxo15dNNNByxoKI6NH5wK5S/yjGVvI
- X9FKx3Sv4WLLrbw19lcEoN/5WUJ/cYGAElJ66fWRFmqWKGE1/HNdH7RIPY6O145u0bdO
- l6Pg==
+ :message-id:reply-to;
+ bh=ZlwgE/kLAptfZ02Y9qDrhQ+GweU3O/Ib3qjuxBSPmiA=;
+ b=Ad6VmRcPGVeuqp219EaQdnpACFwvxGZ2+umUMgPlXzJ7ZRpTjc3yyBTswVWysr0shx
+ 5X2oRHoDSZUGDF12u19HiLEeUyLj94jTb8B7hOKU5JBjJnJiyKkRvqHKqusAX46cwyq/
+ oUeK6vrOq4aLsXWsJV24p6CEser0klyrQjEtfy/ZZZQUXq+kzfsrAGqy1Fx2L40FcMWZ
+ 1VeKM9naYKGN498CLsG8SuzkW0c+6cv+f7RH8XZAkxK4VcDAW1l1b7Jy9m+00LoKVU8z
+ qPX5d6niNDbQqimhyHg25kS1juPZewzpWEoC2hTZBfszb/FtaDzTjLITsZPQHiFTHV3U
+ itjQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrJea//xNga0BAqvm9qYSFrnLQXONHPlNRI36TYI2ynUJhpLYQexQLXrM/0XKZULVvllHLJ+zBU6Q==@nongnu.org
-X-Gm-Message-State: AOJu0Yx2bnWlvprxofiakWc00rBlqnLXn/jAOXcmO/15UmAc3ygd8Tl+
- lYj19Z1vx382c1DY52Tcv7OKzH26wSSsWkmn+4lF0HJ8FohA3OofI/rZVCTYeNVUcGQjMmc05t/
- 2+gVPBv4cQo3DuIy8ktg7dWFbzHihMqek7nE2oiuirTZGEHoRNrSqOA==
-X-Gm-Gg: AfdE7cno7F1gHFWJQayilrOHEdvr4vSGnN4KiRymy8YEQtqmeMhsJ42ICNCTXqe7Whw
- HsDxOnvdbzB9j0dAGEOAR49+MlBjAyXKTO/sgWOyv4wvld7eB//n6SZi+X8vzOLZhNZ+NoX7GZA
- VELf1H9A0alAcVfA8JFa4z3DKfEsK8Gc4g9Jf5mgE9jPt6sCLsRlf/ThUEgwgciPrBlzYA4HMtI
- xLTeLNkpouYqtc8NJzTn0Qb0XADcduNvEwqTDpdMZeUhzxiVSxourg3wAz/kXaxYGoXk8U+IBbn
- J3Il6e+DuDDiJDkA7/jia4ztiSGR34+2hAGbyR/yjYXWc5TmpGTiNPnc3/RhQc8tUTWXrL5Q1GJ
- 7e44V4/mV2/e08/qF8ACmh8pwjmYUvChdEFYhpI/50YIUk7kmYA==
-X-Received: by 2002:a05:600c:19d0:b0:493:b750:bd20 with SMTP id
- 5b1f17b1804b1-493d11d7df8mr103487335e9.15.1783336789482; 
- Mon, 06 Jul 2026 04:19:49 -0700 (PDT)
-X-Received: by 2002:a05:600c:19d0:b0:493:b750:bd20 with SMTP id
- 5b1f17b1804b1-493d11d7df8mr103486895e9.15.1783336789021; 
- Mon, 06 Jul 2026 04:19:49 -0700 (PDT)
+ AHgh+RowPzSL+WhcUnZQsVTX6UOLojJgMK9VyO206C6a1Wuyfdh5r/MmoNplE5lVBIuNAZAeydUs9B4csg==@nongnu.org
+X-Gm-Message-State: AOJu0YwfFlcBbnZTFB4ycqAoj4k7jvGp1R+0eblFGwW+JsibqomrdvuW
+ 8c1unu4GTWS1N66SrMlhuDr9aMpDchRD+lSHXkHMEwoPTRhM04JPEa95vNnpejqFZNHFb7VTbQk
+ l16nmnNNhZCCJ+K1LFA6sBEjLbK8EaCHO7kptyXAmg0MrYEGdiblrxQ==
+X-Gm-Gg: AfdE7clM6A+INAkhiwQAbbCWIKBJAB9JNGasquFt1iN62dO8byamSzz5Y4DFQkLW6AL
+ e8D5YdBavqrBYgHsYkinORlzoZ3cK+H01KHvHQH6X6A5zI7oOFtpO1skfM+DbVTZaJiweJpd0B+
+ MImL6F5zUkP6p8GRZs/IIfwCkibqFLIG5zEYyQFaCvBddsxBI30qIBEEzSLA5mLyy8eWEGd6ZcL
+ mAfbL0pBjFzF5FnBCtaitvMt9fbBGxgSovZNNmGGcq/3WQL1YLhElXr+eSanlOqCADrKDUXxAaj
+ 7W8osQms1zU7+SOVbfHac3XybG/KqbSRuLNzI3vDtqrwzBynlBDGJOCi1FgBkffVqY8sgiDNPCp
+ foJREN0YQGjlASiJl2WHc0wQ2VUj7zuwyVcGnhzqo4r/7yWTQ7A==
+X-Received: by 2002:a05:600c:1d0a:b0:493:bed7:6d7c with SMTP id
+ 5b1f17b1804b1-493df0a8eb6mr218675e9.25.1783338376795; 
+ Mon, 06 Jul 2026 04:46:16 -0700 (PDT)
+X-Received: by 2002:a05:600c:1d0a:b0:493:bed7:6d7c with SMTP id
+ 5b1f17b1804b1-493df0a8eb6mr218385e9.25.1783338376354; 
+ Mon, 06 Jul 2026 04:46:16 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
  ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493ccd9d620sm290252545e9.1.2026.07.06.04.19.48
+ ffacd0b85a97d-47a9e4d843csm23461405f8f.14.2026.07.06.04.46.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Jul 2026 04:19:48 -0700 (PDT)
-Message-ID: <948da227-22c5-4851-9584-433d5e6d5161@redhat.com>
-Date: Mon, 6 Jul 2026 13:19:47 +0200
+ Mon, 06 Jul 2026 04:46:15 -0700 (PDT)
+Message-ID: <cf072137-fd93-4149-befd-687df7046994@redhat.com>
+Date: Mon, 6 Jul 2026 13:46:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] backends/iommufd: Fix dev_id and type order in viommu
- trace
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: eric.auger@redhat.com, peter.maydell@linaro.org, nicolinc@nvidia.com,
- nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com
-References: <20260706103653.84243-1-skolothumtho@nvidia.com>
+Subject: Re: [PATCH] vfio/listener: Only warn on misalignment for VFIO-owned
+ regions
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: Alex Williamson <alex@shazbot.org>, Eric Auger <eric.auger@redhat.com>,
+ Stefan Berger <stefanb@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20260702160640.3875666-1-clg@redhat.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -128,9 +128,9 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260706103653.84243-1-skolothumtho@nvidia.com>
+In-Reply-To: <20260702160640.3875666-1-clg@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: GXaibC9UQxLKvRS81g_l12FUNa6z4A2iDQsHZ9SL4LI_1783336789
+X-Mimecast-MFC-PROC-ID: BACTr1skUt6NffC0h3GVDb7aqIa8dQZwlvDQnf3XVxA_1783338377
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -159,35 +159,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/6/26 12:36, Shameer Kolothum wrote:
-> The trace event receives dev_id before type, but its format string prints
-> them in the wrong order. Correct the order.
-> 
-> Fixes: f2d31df0d925 ("backends/iommufd: Introduce iommufd_backend_alloc_viommu")
-> Reported-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->   backends/trace-events | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/backends/trace-events b/backends/trace-events
-> index b63420b73e..009a25b0be 100644
-> --- a/backends/trace-events
-> +++ b/backends/trace-events
-> @@ -21,7 +21,7 @@ iommufd_backend_free_id(int iommufd, uint32_t id, int ret) " iommufd=%d id=%d (%
->   iommufd_backend_set_dirty(int iommufd, uint32_t hwpt_id, bool start, int ret) " iommufd=%d hwpt=%u enable=%d (%d)"
->   iommufd_backend_get_dirty_bitmap(int iommufd, uint32_t hwpt_id, uint64_t iova, uint64_t size, uint64_t flags, uint64_t page_size, int ret) " iommufd=%d hwpt=%u iova=0x%"PRIx64" size=0x%"PRIx64" flags=0x%"PRIx64" page_size=0x%"PRIx64" (%d)"
->   iommufd_backend_invalidate_cache(int iommufd, uint32_t id, uint32_t data_type, uint32_t entry_len, uint32_t entry_num, uint32_t done_num, uint64_t data_ptr, int ret) " iommufd=%d id=%u data_type=%u entry_len=%u entry_num=%u done_num=%u data_ptr=0x%"PRIx64" (%d)"
-> -iommufd_backend_alloc_viommu(int iommufd, uint32_t dev_id, uint32_t type, uint32_t hwpt_id, uint64_t data_ptr, uint32_t data_len, uint32_t viommu_id, int ret) " iommufd=%d type=%u dev_id=%u hwpt_id=%u data_ptr=0x%"PRIx64" data_len=0x%x viommu_id=%u (%d)"
-> +iommufd_backend_alloc_viommu(int iommufd, uint32_t dev_id, uint32_t type, uint32_t hwpt_id, uint64_t data_ptr, uint32_t data_len, uint32_t viommu_id, int ret) " iommufd=%d dev_id=%u type=%u hwpt_id=%u data_ptr=0x%"PRIx64" data_len=0x%x viommu_id=%u (%d)"
->   iommufd_backend_alloc_vdev(int iommufd, uint32_t dev_id, uint32_t viommu_id, uint64_t virt_id, uint32_t vdev_id, int ret) " iommufd=%d dev_id=%u viommu_id=%u virt_id=0x%"PRIx64" vdev_id=%u (%d)"
->   iommufd_viommu_alloc_eventq(int iommufd, uint32_t viommu_id, uint32_t type, uint32_t veventq_id, uint32_t veventq_fd, int ret) " iommufd=%d viommu_id=%u type=%u veventq_id=%u veventq_fd=%u (%d)"
->   iommufd_backend_alloc_hw_queue(int iommufd, uint32_t viommu_id, uint32_t queue_type, uint32_t index, uint64_t addr, uint64_t size, uint32_t queue_id, int ret) " iommufd=%d viommu_id=%u queue_type=%u index=%u addr=0x%"PRIx64" size=0x%"PRIx64" queue_id=%u (%d)"
+Hello !
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+On 7/2/26 18:06, Cédric Le Goater wrote:
+> Any device on the board can have non-page-aligned memory regions. The
+> VFIO listener should not warn about misalignment for regions that are
+> not VFIO-related.
+> 
+> Replace the vfio_known_safe_misalignment() whitelist with a
+> vfio_get_vfio_device() ownership check: only warn when a VFIO device's
+> own region is misaligned. For all other regions, emit a trace event
+> and silently skip. Extract the misalignment test into a
+> vfio_section_misaligned() helper for readability.
+> 
+> Note: vfio_get_vfio_device() currently only covers VFIO PCI devices,
+> including vfio-user-pci.  Other VFIO backends (AP, CCW) don't expose
+> memory regions through this path so this is sufficient for now.
+> 
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> ---
+>   hw/vfio/device.c     |  2 +-
+>   hw/vfio/listener.c   | 33 +++++++++++++++------------------
+>   hw/vfio/trace-events |  2 +-
+>   3 files changed, 17 insertions(+), 20 deletions(-)
+
+Could someone please take a look and Ack this change (or not :) ?
 
 Thanks,
 
 C.
+
+> 
+> diff --git a/hw/vfio/device.c b/hw/vfio/device.c
+> index 1a7f8088aad9583ee96fc303be917fdb2f100df9..3a47109efb35c6dc28719dcc19acb85bef1d26cd 100644
+> --- a/hw/vfio/device.c
+> +++ b/hw/vfio/device.c
+> @@ -439,7 +439,7 @@ bool vfio_device_hiod_create_and_realize(VFIODevice *vbasedev,
+>   
+>   VFIODevice *vfio_get_vfio_device(Object *obj)
+>   {
+> -    if (object_dynamic_cast(obj, TYPE_VFIO_PCI)) {
+> +    if (object_dynamic_cast(obj, TYPE_VFIO_PCI_DEVICE)) {
+>           return &VFIO_PCI_DEVICE(obj)->vbasedev;
+>       } else {
+>           return NULL;
+> diff --git a/hw/vfio/listener.c b/hw/vfio/listener.c
+> index c19600e980a8d02217b5d9df4aca8f879ab2c5d5..76b9b02f8163f18d20994e4ec1f914a4d148fa92 100644
+> --- a/hw/vfio/listener.c
+> +++ b/hw/vfio/listener.c
+> @@ -40,7 +40,6 @@
+>   #include "migration/misc.h"
+>   #include "migration/qemu-file.h"
+>   #include "system/tcg.h"
+> -#include "system/tpm.h"
+>   #include "vfio-migration-internal.h"
+>   #include "vfio-helpers.h"
+>   #include "vfio-listener.h"
+> @@ -352,20 +351,10 @@ static void vfio_ram_discard_unregister_listener(VFIOContainer *bcontainer,
+>       g_free(vrdl);
+>   }
+>   
+> -static bool vfio_known_safe_misalignment(MemoryRegionSection *section)
+> +static bool vfio_section_misaligned(MemoryRegionSection *section)
+>   {
+> -    MemoryRegion *mr = section->mr;
+> -
+> -    if (!TPM_IS_CRB(mr->owner)) {
+> -        return false;
+> -    }
+> -
+> -    /* this is a known safe misaligned region, just trace for debug purpose */
+> -    trace_vfio_known_safe_misalignment(memory_region_name(mr),
+> -                                       section->offset_within_address_space,
+> -                                       section->offset_within_region,
+> -                                       qemu_real_host_page_size());
+> -    return true;
+> +    return (section->offset_within_address_space & ~qemu_real_host_page_mask()) !=
+> +           (section->offset_within_region & ~qemu_real_host_page_mask());
+>   }
+>   
+>   static bool vfio_listener_valid_section(MemoryRegionSection *section,
+> @@ -379,10 +368,12 @@ static bool vfio_listener_valid_section(MemoryRegionSection *section,
+>           return false;
+>       }
+>   
+> -    if (unlikely((section->offset_within_address_space &
+> -                  ~qemu_real_host_page_mask()) !=
+> -                 (section->offset_within_region & ~qemu_real_host_page_mask()))) {
+> -        if (!vfio_known_safe_misalignment(section)) {
+> +    if (unlikely(vfio_section_misaligned(section))) {
+> +        /*
+> +         * Only warn for VFIO device regions.  Other VFIO backends
+> +         * (AP, CCW) don't expose memory regions through this path.
+> +         */
+> +        if (vfio_get_vfio_device(memory_region_owner(section->mr))) {
+>               error_report("%s received unaligned region %s iova=0x%"PRIx64
+>                            " offset_within_region=0x%"PRIx64
+>                            " qemu_real_host_page_size=0x%"PRIxPTR,
+> @@ -390,6 +381,12 @@ static bool vfio_listener_valid_section(MemoryRegionSection *section,
+>                            section->offset_within_address_space,
+>                            section->offset_within_region,
+>                            qemu_real_host_page_size());
+> +        } else {
+> +            trace_vfio_listener_region_misaligned(
+> +                         memory_region_name(section->mr),
+> +                         section->offset_within_address_space,
+> +                         section->offset_within_region,
+> +                         qemu_real_host_page_size());
+>           }
+>           return false;
+>       }
+> diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+> index f71d0bbc0a5440e4ccd374fac4733af08438e7be..5056b9942027938cd6bc832198acc9809739399f 100644
+> --- a/hw/vfio/trace-events
+> +++ b/hw/vfio/trace-events
+> @@ -98,7 +98,7 @@ vfio_spapr_group_attach(int groupfd, int tablefd) "Attached groupfd %d to liobn
+>   vfio_listener_region_add_iommu(const char* name, uint64_t start, uint64_t end) "region_add [iommu] %s 0x%"PRIx64" - 0x%"PRIx64
+>   vfio_listener_region_del_iommu(const char *name) "region_del [iommu] %s"
+>   vfio_listener_region_add_ram(uint64_t iova_start, uint64_t iova_end, void *vaddr) "region_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
+> -vfio_known_safe_misalignment(const char *name, uint64_t iova, uint64_t offset_within_region, uintptr_t page_size) "Region \"%s\" iova=0x%"PRIx64" offset_within_region=0x%"PRIx64" qemu_real_host_page_size=0x%"PRIxPTR
+> +vfio_listener_region_misaligned(const char *name, uint64_t iova, uint64_t offset_within_region, uintptr_t page_size) "Region \"%s\" iova=0x%"PRIx64" offset_within_region=0x%"PRIx64" qemu_real_host_page_size=0x%"PRIxPTR
+>   vfio_listener_region_add_no_dma_map(const char *name, uint64_t iova, uint64_t size, uint64_t page_size) "Region \"%s\" 0x%"PRIx64" size=0x%"PRIx64" is not aligned to 0x%"PRIx64" and cannot be mapped for DMA"
+>   vfio_listener_region_skip_dma_map(const char *name, uint64_t iova, uint64_t size) "Region \"%s\" 0x%"PRIx64" size=0x%"PRIx64" marked to skip IOMMU mapping"
+>   vfio_listener_region_del(uint64_t start, uint64_t end) "region_del 0x%"PRIx64" - 0x%"PRIx64
 
 

@@ -4,107 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA97BC43458
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 23:02:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EB2FC44500
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 23:02:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgsK0-0002Bj-8Z; Mon, 06 Jul 2026 19:01:52 -0400
+	id 1wgsJH-0001SG-BC; Mon, 06 Jul 2026 19:01:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1wgsJy-00026b-Oq
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 19:01:50 -0400
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+ (Exim 4.90_1) (envelope-from
+ <3rjNMagYKCJ8SHSTRQFNNFKD.BNLPDLT-9QLMNMFMT.NQF@flex--titusr.bounces.google.com>)
+ id 1wgsJG-0001R8-GA
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 19:01:06 -0400
+Received: from mail-pj1-x104a.google.com ([2607:f8b0:4864:20::104a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1wgsJw-0007ME-K2
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 19:01:50 -0400
-Received: by mail-lf1-x12e.google.com with SMTP id
- 2adb3069b0e04-5aeb6bdeaeaso944e87.0
- for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 16:01:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783378906; cv=none;
- d=google.com; s=arc-20260327;
- b=cZYWhdsP0A3pjT1k67/jdFIr6JBOq+jNkyue0P3DqWT2czhIH2l6RXhbXzvGDiclSe
- jaev54eel1EgdHVozcZi8f8mASoscEqx56UHrhpk+AmGMtc9vCJD8NyTV6UzH7tvM7uZ
- v/34EhCj9GlUkhfTYED28Rvmbz3gW4b2kSk+5xH4uYj0Lx/zYqakyWsnGZGowrPRjwAQ
- gV/0SOKc52WG48RYSqp7ZUyb00d6+D9anm+Ly2rUy4UbPdWlWRlI8r/p7/KXXHvPPmqF
- 3482NdjL2W03y5DVqIwuNjVaLLMXNlOMSqOZINZcZ2ciEHMqOKvq8upPBXqlUYHUGhq7
- kUiA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=wO2iLMvkV2w5S4S4Uow4ZdR28T9K7ZwbCl7ZUO9/KrQ=;
- fh=B5ygAomjRB3Qcja3UEAsNS0lbYuQN3gLWvIb3hYXtxM=;
- b=S3x/e8MPbai+EUiVvJX5V8niFv2PbuHODwiUoSA1Kl4cTzBTDAmxjXnW1PE0s+nPTU
- NXWX3qVuTFQSHBFjOb3AXTv9RqhLN3vpXu3PernBz5pYkGF1RMOfaClnUWPNUZlB4un5
- avhn7NBRJfpwVeTZkN306PZxETLsMJZrLJobwpjJlk9L2jY5QTcJs/24iPHsJjauLkS/
- iPjVx8fh9rx4jVbPJFVwpD3D0fOoCn+CfohwGvORKbY0syctk8FlvrfOSBkEAXfRbBcc
- 1jrXnj/f3Xdk0TQokDHdfmjOfPtkAYiUy6SLBP3Pq8zHiKEjlcdbHFXBkilJUEZkYNdS
- TC+Q==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from
+ <3rjNMagYKCJ8SHSTRQFNNFKD.BNLPDLT-9QLMNMFMT.NQF@flex--titusr.bounces.google.com>)
+ id 1wgsJE-00073k-Tv
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 19:01:06 -0400
+Received: by mail-pj1-x104a.google.com with SMTP id
+ 98e67ed59e1d1-381abcccbf4so2458418a91.3
+ for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 16:01:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20251104; t=1783378906; x=1783983706; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=wO2iLMvkV2w5S4S4Uow4ZdR28T9K7ZwbCl7ZUO9/KrQ=;
- b=jNGoT93UBE/anvNB7w5tpgyPVUxyqlb0GcfKhckAgei5zpP6usEw2mtfJ7gSsSwKtO
- NkoiAk3YYag/6Qz1oVKnSQCIqyh5Ko0nF5SAvcgO8660xzpoAEcjJMZhNQzdLF8MIkbR
- cSfDm7q6CBRwxrBlU+y96zqun0BhRJHEsGDh977N7fke5sCI+4NIFjOfIWBOt6Jk/uWM
- 3WTQqqL7W0vNgzwaDwdqxZw5YYrHDm118XUzIjhIG1L6enLKjeBQEhlFcav2JBSmYMTI
- 2OYFuqpSoLZ6ybbhbUvfDF8yNN1boF/C9veZmWJGCVIZohxHp4jMn2UsrY7+L7o4KctE
- A5xw==
+ d=google.com; s=20251104; t=1783378863; x=1783983663; darn=nongnu.org;
+ h=content-type:cc:to:from:subject:message-id:references:mime-version
+ :in-reply-to:date:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=hW0rGKNwKHNOYrweI11OJbXK2kFKxm3bSkURBVVUrfQ=;
+ b=TDf4fBvJPbNsq8fotjUQp+M93mQTBSurmNbQniiyX0Z3U+KJ5ib+hcWUO1z9iauRjh
+ nLTq7UV0ZgBr7qJBI1JhJUkW75jd4R3X22BeJe1TRhKH9bddU99RnDHL49NM+MEv7NRR
+ cUiMe5H/K1hYzRnrYPsMCqA7OaRxB4aRyxepYZPOh06eCxMf6oDOSdPIlAWssCQcSuy3
+ hL4V5FPUxQdZD6ol4zpJKNm4LYK++CqF+TJt5YeuDEKIa//CwxGG9Ar+w6p6wG8p4dOX
+ nsvVSXS21zxX5rnYjEBYQeVpGhPRzps7C68CODaIYGpg0mMtVhznR4uFl07QFID1qRcG
+ DGIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783378906; x=1783983706;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=wO2iLMvkV2w5S4S4Uow4ZdR28T9K7ZwbCl7ZUO9/KrQ=;
- b=tA5jwk2xHhZ/8EXTITL2eZYd6G4JTHkFuP/+lU8p/mwwSvEP8qJZDhHaKxOpWe40YW
- YNSfEVJlCzsq0d7UHmjKq3JBut80lI/PREmyvKE/iIaLU2b17VyDNZXYIYw6SNRn7OKE
- hvUZlV6SCJ0mT6R4vZl3vzO8zWh/xyMe3L9JB5K3J6a46U/vhDHatuLi4UFQ1cKAQL6u
- +wbqA3Sk+TpAF/3U5+ogrJJrTk+B+w8tCVowhxk5euQDN+prtYD8Pj8GJniAtQUuk+L0
- 6lgpUifB00pGLomJBTZs+99CQRFWlpQYm72JmhF5ci2m/JqhEYUq4cncz6+etcVPYTeq
- bp6A==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpbzVBsG8YlPQjCr0Qi5UpXlgmFVG7HChxLNHGt1sqNtRTEpKJsGrfeEsrJ1NbQZB+5f+FzzqKv6A==@nongnu.org
-X-Gm-Message-State: AOJu0YyuftJjSHhmT2lNQnT/W68aj2PRnBOSICAN7P3q47dUSkOpBpUr
- f5i8OCzqcKn6VqTXaPMZkl0Ehm0+uLO/nFFzGSkVjHQNvXxbawKLQ11eeqs4+hhLKQZnVViLtzV
- V1jw/NUHUELRxVCrJa4M4QBPYC0uM0sSnOlXqJ2Qf
-X-Gm-Gg: AfdE7ckypQ83AdqH+V8cv9gpPO1AeAw+PeIogjOncQfh2jx1fbSEZVl97aNXrrl+UEr
- Qy35PP7xIyFqNe2THS/cB0hhyp4zGAbpfjE80FLz1glju6dwBwQIDRkbpM0WT6dEIUeBaXtFJ6c
- kUGKblWlmQGwVJ/qxmwkw1v/gLokUDHnA3PwOiNtZ53QyrZsvCZoxQ+EjNhgDm6zMwnaxK/a8Nn
- g33mB/2khJnDByOt8ZZJsUhCdxupSsiIc8ljlEKa9SymyqxDN0Y38SNKamA+c7rnXscbsS0A4yg
- q4ohP6tkA2mo/sIKp8SRArwx8UXsCkVP7/T14Q==
-X-Received: by 2002:a05:6512:234b:b0:5ae:b59b:c65e with SMTP id
- 2adb3069b0e04-5b00ace6efemr21718e87.4.1783378905391; Mon, 06 Jul 2026
- 16:01:45 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260614222131.5795-1-imaginos32@gmail.com>
- <CAFEAcA-GGP6aALn4Az5By31q1R3d75Mm+p_YXN0y=tO3GxDYrg@mail.gmail.com>
- <CAFEAcA8zLzVLzTq-EJQ9+OpxytMdPuFkUbOF7xjmY0JrhPhYhA@mail.gmail.com>
-In-Reply-To: <CAFEAcA8zLzVLzTq-EJQ9+OpxytMdPuFkUbOF7xjmY0JrhPhYhA@mail.gmail.com>
+ d=1e100.net; s=20251104; t=1783378863; x=1783983663;
+ h=content-type:cc:to:from:subject:message-id:references:mime-version
+ :in-reply-to:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=hW0rGKNwKHNOYrweI11OJbXK2kFKxm3bSkURBVVUrfQ=;
+ b=Fv+rXNOA9aMWUmmNzmf+7Gc4OrkOx6J4qa9TY65I6lWv3/oJauQqJzHiOys1Xj21+y
+ JQicq8xPBydFqeIYbk0gaVt0m28FRTm0Aj55N9Skt4jIEwYe//k+tvev563ZiKaquKfB
+ M7++8SpfUrChQyghKHO6W8FJzH2P9WjeprsJrIzqnI6dN7aJmDrCF3VWTGb/NjPMUZar
+ 633w2PRnv5+oCOWIQ2J9i4Y+brUEmGtzVeS9LtgddqaNmo7uYREkkLLZN9lNZI3EI3IG
+ WMelA6DhP5biCOzudH6C+Cv2e/xsSsMVWdYus5NzIdRU4JC5JIMlMANApuOm+UPdgyb3
+ wY7A==
+X-Gm-Message-State: AOJu0YyrlAUumI8lLgR4snDxRI28hCH9wp9goYBF06vqDaswiu/4imOH
+ Uvl+HpDRKOva8mV8yL8bMALsWkPHIzA0qHD6g1QElr3IUV9bme6B+C4yEsHMslel+AiFuzGenyb
+ nP5fZZw==
+X-Received: from dycui10.prod.google.com
+ ([2002:a05:693c:600a:b0:311:525b:8fc9])
+ (user=titusr job=prod-delivery.src-stubby-dispatcher) by
+ 2002:a17:90b:562c:b0:37e:2005:6507
+ with SMTP id 98e67ed59e1d1-38755d3f07bmr2642826a91.15.1783378862518; Mon, 06
+ Jul 2026 16:01:02 -0700 (PDT)
+Date: Mon,  6 Jul 2026 23:00:52 +0000
+In-Reply-To: <20260706230056.1888992-1-titusr@google.com>
+Mime-Version: 1.0
+References: <20260706230056.1888992-1-titusr@google.com>
+X-Mailer: git-send-email 2.55.0.rc2.803.g1fd1e6609c-goog
+Message-ID: <20260706230056.1888992-4-titusr@google.com>
+Subject: [PATCH 3/5] hw/i2c: pmbus: clear output buffer on write
 From: Titus Rwantare <titusr@google.com>
-Date: Mon, 6 Jul 2026 16:01:08 -0700
-X-Gm-Features: AVVi8CdLqN8eY1LBzlLVKuOnYS6NtHDIMx0rBUqE6HslYAOblXlH1N4b8QB4PCE
-Message-ID: <CAMvPwGpaYiE0uwY6oVJjxdoVwGf8Mxr40o_m+PAhdZqqcShf1g@mail.gmail.com>
-Subject: Re: [PATCH] hw/i2c: pmbus: NUL-terminate strings received via block
- write
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: imaginos <imaginos32@gmail.com>, qemu-devel@nongnu.org, 
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@mailo.com>, 
- qemu-arm@nongnu.org
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
+ imaginos32@gmail.com, wuhaotsh@google.com, philmd@mailo.com, 
+ titusr <titusr@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
- envelope-from=titusr@google.com; helo=mail-lf1-x12e.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::104a;
+ envelope-from=3rjNMagYKCJ8SHSTRQFNNFKD.BNLPDLT-9QLMNMFMT.NQF@flex--titusr.bounces.google.com;
+ helo=mail-pj1-x104a.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,12 +95,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The adm1266 has a strange access pattern for the MFR_* registers, I'm
-creating a series with the patch that fixes it, but a quick summary:
-the data written to the register is the length of the data to be read
-back, the actual string contents are read only.
+From: titusr <titusr@google.com>
 
-I'm sending the patches that update SMBus and the adm1266 up.
+Generally we expect a PMBus sensor to issue writes after all pending
+reads have completed. If a data read needs to be resumed, this state can
+be tracked in the device model and the pending data placed in the output
+buffer.
 
--Titus
+Signed-off-by: Titus Rwantare <titusr@google.com>
+---
+ hw/i2c/pmbus_device.c      | 10 ++++++++++
+ tests/qtest/adm1266-test.c | 10 ++++++----
+ 2 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index e2e1e0e945..8befc27895 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -1284,6 +1284,16 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
+     pmdev->in_buf_len = len;
+     pmdev->in_buf = buf;
+ 
++    /* clear the output buffer on any new write transaction */
++    if (pmdev->out_buf_len != 0) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: previous read was not completed, %d bytes dropped\n",
++                      __func__, pmdev->out_buf_len);
++
++        pmdev->out_buf_len = 0;
++        memset(pmdev->out_buf, 0, sizeof(pmdev->out_buf));
++    }
++
+     pmdev->code = buf[0]; /* PMBus command code */
+ 
+     if (pmdev->code == PMBUS_CLEAR_FAULTS) {
+diff --git a/tests/qtest/adm1266-test.c b/tests/qtest/adm1266-test.c
+index 5ae8206234..726e475938 100644
+--- a/tests/qtest/adm1266-test.c
++++ b/tests/qtest/adm1266-test.c
+@@ -48,11 +48,13 @@
+ static void compare_string(QI2CDevice *i2cdev, uint8_t reg,
+                            const char *test_str)
+ {
+-    uint8_t len = i2c_get8(i2cdev, reg);
+-    char i2c_str[SMBUS_DATA_MAX_LEN] = {0};
++    uint8_t expected_len = strlen(test_str);
++    uint8_t resp[SMBUS_DATA_MAX_LEN] = {0};
+ 
+-    i2c_read_block(i2cdev, reg, (uint8_t *)i2c_str, len);
+-    g_assert_cmpstr(i2c_str, ==, test_str);
++    g_assert(expected_len + 1 < SMBUS_DATA_MAX_LEN);
++    i2c_read_block(i2cdev, reg, resp, expected_len + 1);
++    g_assert_cmpint(resp[0], ==, expected_len);
++    g_assert_cmpstr((char *)resp + 1, ==, test_str);
+ }
+ 
+ static void write_and_compare_string(QI2CDevice *i2cdev, uint8_t reg,
+-- 
+2.55.0.rc2.803.g1fd1e6609c-goog
+
 

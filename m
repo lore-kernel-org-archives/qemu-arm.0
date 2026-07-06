@@ -4,135 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7AE2C44500
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 08:48:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38225C43458
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 09:22:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgeys-0004Qp-IJ; Mon, 06 Jul 2026 04:47:10 -0400
+	id 1wgfWS-0005it-SB; Mon, 06 Jul 2026 05:21:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wgey2-0004J8-Ha; Mon, 06 Jul 2026 04:46:25 -0400
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wgexm-0004bJ-Mt; Mon, 06 Jul 2026 04:46:16 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=g5kdzznajawNa+/ZCylJL9H/gxtOsN6AugJtAnxwPi/JxSYYvy3i44Bg6F1pkpufqyUC6glaYzux8qnpEDROAy8TAw4ug6JEIcSEflzlxQzE0mhkAmVaXUUJN+D4vvRZfxvdDgMfRKUC9pwzxo/DFPw8fldylzsBSXFTf85S5Msb8WnNnXmjnoqUBlbzEiY+KqevgYOOEKOmWO1zEyqCuVZ/leV46yJaMf2YEExi/8QRv5ddrfve4TbGJBh2CseqV4C4pZo2B+Dg0XzgqrDQ/4klK0iht2LJu3EnaCAfwZNQVkpaMbaTbbQcDL3OtibwhITpSzHeqULoCeMSZh2syA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=7SJdgXrVVKGozOG1z6Gfjf/h3vp0XYDFmNqk/PxwYlM=;
- b=kiIxszkgjp1kBQnYefsRfkJqXtFguo4Dofnk0xbYq98aj04cMxxPZ2GbBTJnXIUqKc9sLBMGGK1pXlx4nFmdFujYlrk4ig/c/kLDrMwxn+9Lbw5xZyVai4gHN5GjVB5Wh/BojzxkRCcBFCUsdWz5kHtP8cMVorUPoAXeKfCDiFhRTh10CD7DaXwRrOg2j/+SZcX6I25XybpgIklVpW1tIsYeK792JQiIrpb+vY/EVcwu2vNsZfzoIR3l4ZzYZ472caBtH4izeA0oSsXmCjayV1hxcWXU7PUmfAJbCdhvrXxaFPRJy62y5EY/MOe6E31K199GY1GEG4sxCtNxz93ziQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7SJdgXrVVKGozOG1z6Gfjf/h3vp0XYDFmNqk/PxwYlM=;
- b=eXXQ1Z3GNvPORXJ2Zs2qFy/7NhkTlpxpSf8g5jWQ2EgAEH7ZF+LYoe6YBrTbADHlQlOvm5KcdNHmusU4hA7VShNeYNxTEWcqBP2xVD4dZVAj2zJmml5FjQMjV6tPJ7MsOoutBTz3Lv5gjFPeOkocPvQ+VgNpQ3EVQOabsYTnbMB/iM7pCJtfLV/NVCHDDLMCUahat9sUiArbSD5noC09sqe5T5IXapzxXNLHDM9tihet4VVh3EIxApYK/y0LNuGokc5BfVvxWIx9NLf6szTsosuWzDlrA/KohK4zwt3LTlUmXQoSgn+KDN/RcGHjkGOZlrDIP0xwvM+gcprKN5tmlA==
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
- by TYZPR06MB6639.apcprd06.prod.outlook.com (2603:1096:400:45b::9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.11; Mon, 6 Jul
- 2026 08:45:46 +0000
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0181.010; Mon, 6 Jul 2026
- 08:45:46 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 4/4] hw/misc/aspeed_scu: Add separate reset handler for
- AST2700 SCUIO
-Thread-Topic: [PATCH v1 4/4] hw/misc/aspeed_scu: Add separate reset handler
- for AST2700 SCUIO
-Thread-Index: AQHdDSPWrkZvoV9KiE+QvT9fW/hI7g==
-Date: Mon, 6 Jul 2026 08:45:45 +0000
-Message-ID: <20260706084540.1988785-5-jamin_lin@aspeedtech.com>
-References: <20260706084540.1988785-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20260706084540.1988785-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|TYZPR06MB6639:EE_
-x-ms-office365-filtering-correlation-id: 0388d37a-69c4-452a-fe35-08dedb3af8b2
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|376014|366016|1800799024|38070700021|18002099003|22082099003|56012099006;
-x-microsoft-antispam-message-info: Y/Ey27PKax4ckkWK2m0j7AEcXBZP4stNP02MxyJiQwNCrRYpLKsED6U227JZIzaamjUUs3ctOgya25hT/XflF5/U0IAritKYkM/1ipF10Sy/noKy5JbL/ClQ3HKd2Zt3Iu+pdSgscsWjfpot0rAK1PUAHiTe/FXlq+PM7wd/4NNwGavtftHZ8unUB+l+OdFaEmVpbHAH4433GMxF2j1E3eJ9fJKAxXokCDRpqe0NoKDzD6nuHT5+gl2C1Zt6Wk8HEhagm3nqpbxpzgCy7QSr6mq145DHsYiIo5iUn/owN1mg9BvRuifxVI3/5aabT5OfgXcvYPpyLZ7qbiJMumsqJzEglKKybwTV5TZ/VwWOV7wk9SPnfBByFYtdc3ssriKIF6Hhv12DHI2TkIlVXmZPGsOEs1hoxZhr9gui5yD/PhwKgHpzE38NthwqCCKe/qTgQ8F57vwd8Y3e36U4VY8q0hhSfyOJ3I0L3Dwlg74vLsLuTUCWdxw7A8Q5+bzs5OLcPZ0tBpdn0vTvHCt5i6A0oGljCpO7OoTGOvlPtMiwF4RA5n6IQ7wcQWLQFIFL7ArJXxPJNNb9ZT0kQsG9DBvjD5TwyAeDuzZvqo2Gg++CnQwPSl92j85lFAIs1Ev7By+I4SyakwhuQf2xVFMyvKJ1iTE9DdueIJDfboodjbjl4D37U+VJSapBjDOUvUSQ4gloIFxRBuGog/TKVe0jfycXisvoJeLKGSk64Rs1ol7/VfI=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(376014)(366016)(1800799024)(38070700021)(18002099003)(22082099003)(56012099006);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?RnL7RowHYea7wF9pFwnMvSnLBMKK2YgfZXoh4JNIoZy7lpSpD1bAt+b7NV?=
- =?iso-8859-1?Q?IBe18oIAoTlDaiYvKVgZswpzOUQE56ap+P9wLU6X3Z5dx4FWsLabQ6EUR6?=
- =?iso-8859-1?Q?X6ouTaVuO8v+VGhIdOIrk2aiHlGZqLAWY1YqhyzQGNT4QWvuEUlXiN0YAN?=
- =?iso-8859-1?Q?QXAeJTWK9c8R7zItRYcDnI1InC0RL9NUmsk7Wwxyvx0xJjtdXGgF+WayZj?=
- =?iso-8859-1?Q?+tw0K+Yh7e1vKHpONM2fUwttWGi1FIV/PqYfmBgyuzMcSNF2PIiqZzW0UR?=
- =?iso-8859-1?Q?XuYiowMJDzOjYQp6TGu5bw2H2tlqf2UnIGBqBLjG6H+X2TeQbpQlLKlgj/?=
- =?iso-8859-1?Q?uwdVHL1AA3S7xUeQDMAK3ZmW/1AdZsEpxQDABFNOArMkDS0/SsRlvnrS71?=
- =?iso-8859-1?Q?Fh8XvwRJ/keAG2wdFkYoxq0gh4a3axeJpEfs/kttI0FTEZAf9YMe6tHuYI?=
- =?iso-8859-1?Q?mlZq5d+8ppR4dmQpR7U0NhmWmobKAenlg9kzMBtUkrgUqviwD1dP8A88ry?=
- =?iso-8859-1?Q?PNi5D1r4rtfuC9hKabIHtgSQgMV9dTZN2+Q5+kj+UXywoZ7FM9I8Mar5h5?=
- =?iso-8859-1?Q?jserDHjbd80njU7YlDn5c8LJ7pWhbcdWmOpznEKSjPhOPjZYCcZXXU302c?=
- =?iso-8859-1?Q?qV9rEMXAtzCmpZrlGMLt1y9A2jwessnnFH0Gv3YVv4+iCeS+LOuyH7N5yO?=
- =?iso-8859-1?Q?/OusWxQtR794TsgNS5HPyGqj0L8p7rf8NLsaxRTN6eLPPu4YSsQrtH4sWB?=
- =?iso-8859-1?Q?oH66GbI8BSNBEaSYieBPdX8ozlI1AM5GFovqdEtukdEiXdil8HEfyOHRmg?=
- =?iso-8859-1?Q?tIw5QpsbH/miaNb+KajZKKMNPrLH0acRKQ23a36njVExYuzTgvmcvtSCvh?=
- =?iso-8859-1?Q?6Knc7Kp2xeNDNb1q+1rWuhrFfU5dMkEchkNwJqsXbKnPE0QL/TVdutQq2n?=
- =?iso-8859-1?Q?R5k7vx4e5ux37MJg7W07csIzaLQQ46lIdwfrnUQzJxBhNpTtSTA4gOZLB7?=
- =?iso-8859-1?Q?/Jf5+IIISimnJdH+BASVwFb0aIGEc4/qCu3oVXhNZpSK2/406oTb1Pb3SJ?=
- =?iso-8859-1?Q?FLMheqk7SGbxxSSzS+9r1NguejFYc7zotUhm1aqElQQXxrRJMkHOq+Roeo?=
- =?iso-8859-1?Q?SDkbTf6XKzO+fn3l7K8q+sgS9rxqNazvmw9XS/XVMTcmIXTW/JTKIcGfuc?=
- =?iso-8859-1?Q?sweaVUH0AwiPz9U/LAdYZoXn0WIXQfnQ+CvnuhVZ2ICq3NoZaAwOLzeGrI?=
- =?iso-8859-1?Q?g07RzWhqp5WJ5sKKOt9O+XSukBoxf1CVQa0T63E5XpiyJfP314dHzLamFT?=
- =?iso-8859-1?Q?ifWRFiGXb0PwGhx9b7W8FgskiR4gbQ1GW7d+dtZ47IKFXdcEaZ//un++p3?=
- =?iso-8859-1?Q?UpOmlbO8yJMyCBFAg2gGuPJ59obpXLkg3UGuQK7586mXdzQFglxZxeXVwT?=
- =?iso-8859-1?Q?O+0une+ksAGGF/druUR4cyMJ012dc26HVLbmXEj6u3eeAbNJ17R7iu7wrX?=
- =?iso-8859-1?Q?Yv9HygmEisP5CB7+tVxfdDVSq7t2cSHst+FlITscoqHTrkKpWnNbmUlJZi?=
- =?iso-8859-1?Q?DGQMjY2c3EIxXh4N5gU1YIqKyV0G+8AkPfx0t0du5aWwbVALi1r97iOtkv?=
- =?iso-8859-1?Q?XPRyEULfiGBUC57k8GVQCQpmHeBywqcFY4bWkO0NyvteuBv1MYMMlpfiBW?=
- =?iso-8859-1?Q?8JT50Ki5/UNhNRjoYB9tW5v2bR5qDLBex8oqTYLqILeAHAe9lCLVNJPKjg?=
- =?iso-8859-1?Q?/D2RbEG9cfJVbq7X6J/RN3rJ+Cc+9pNbOcgEzOSa+0MbdrJwKvuq9L1xnf?=
- =?iso-8859-1?Q?EVntooncww=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wgfWM-0005gK-Nw
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 05:21:48 -0400
+Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wgfWL-0006Ab-8I
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 05:21:46 -0400
+Received: by mail-yx1-xb12c.google.com with SMTP id
+ 956f58d0204a3-664d4478a64so3780938d50.3
+ for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 02:21:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783329704; cv=none;
+ d=google.com; s=arc-20260327;
+ b=nqltWnZ5PYlz76L9+937lGFBfCAmOIPeg0OkJRREElC5WGh9nzD5i2GYMllB3Wh/Wu
+ DKRMJeVra+MLPV1YUkuXu93YJt0K2LKBk17CB2mIIalMsWfB9WrTdTeadX+wtgA1IY5X
+ ynpPQDkqoNbsUWCzy1lHnrxxhuf6Yf1n3y0QH13yWYG1/SqTohqPYX414kgVJw2C+U/F
+ 2rqbvDg1+xPtyB66R7wb+QGmt4oDZMgG/4xlqSuA++7hvMdl8zUThw5uHHlWR9oCjwDw
+ QnXgoj4w9a6Sk8kusu6xcccYFb8Wu4RzbChzBnXUI4L0t/DpNvl7cJxUtImZ06kp0bkZ
+ SJvQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=R7x48NwT96HfzMiY0/kj8VUVqa2ageysyCYZFuhCntQ=;
+ fh=FTQ0RgukGTxzm7ou5p+0CYTXW/unOFVJZIAXHc1JOOQ=;
+ b=c3FwzmaRwzJJIwm4mh4+AOsHzzEbE9BcQ7zGEkge6o7SymBOmtH86QU2fR/GdFZPUw
+ bk3vEi1qFPYGjgludA5v7MaI/fUW1FAB2aP2ivLrg1CEIeOEjGkIAiNTMAB2wCJ3IHDQ
+ Wk4umtmWX8uyCdI+MoiH7AV3eiTcGolqcmTLDTTGsTOsd41DGtDlqM+bTrMm+LK2EfE+
+ zrRmAJYZ2DCVHg74FclEm17PInLwvPAk3LB8L1QP07hfbp7NIpBNT/Ml9NVZFnNAreFP
+ gNju90Uxx+21AhqZhSMNbXJ0yH4mou/t72TGCP0Ey5nadGqtNJmcujyL0AoWvz3PUSjl
+ Q2Hg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1783329704; x=1783934504; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=R7x48NwT96HfzMiY0/kj8VUVqa2ageysyCYZFuhCntQ=;
+ b=tnkgagL8XVXZ802wIlrTcC+4HQ55XUIRdpJhcLclHj79E6XhKhSq850f3BVAhSpHnn
+ YC5tnnr+3M39POTgBIEwc1tYYImZbPsjRkB5rMoj2br9oV9vgP7tOOR7lDBAeRWtqZ8Z
+ 6c6N+9nlqEukE0jrNGN76lefIhrj8C96X03+2H+0DYXYZB5ENN02y0fZBU0F26KmHqk0
+ NrDVIvzxd2LU9BGVDX9HG0EspfSvzUgCY3zQyzma/K9iXMWLvsz2pblZaKSNVfB/GJPa
+ ka2iyLn1oBqOMX4Zf1rVS2taEcNNbe0O+QgFElAotFJKYjugKJmhb4ByZmCJQU672ETw
+ 3Rcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1783329704; x=1783934504;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=R7x48NwT96HfzMiY0/kj8VUVqa2ageysyCYZFuhCntQ=;
+ b=e7uQhagNViPzlOpNdMuxcJ2E3rlBJ3eKS+o/MxX8FIsmsfTpnUvtcm7MF2syUyDVnE
+ KOZPy11S+KTSirq49F6t2pNWflk9YOoiM85sHzhVP3LltjZ/CZddpweVAorw7ZsGe89z
+ EKOrcG/eij/axdenqixNAIJJ6dZ47X9+scrYkcSGS3tGaQbS71hZWnQkcBcb+D62EM1S
+ GZO0BhSd8voAKknrfaRopEXXVIp62UT917O5p2QFpyZYWKCYrEYavtlR+k6SxZKl6Ipt
+ Mg6IjTFazt6ggnmqF8vPl+t4l/FwsJ6C171fic4scf39d6PXxfKSAPEIULtJbxAlDGpS
+ Ys3A==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RpP5X6NQG23L29dA5PX6Z4gH5VgCwx4C3BoPf2bSv8n7pOnHzBsBfPqKSRlH+DO4qElicmrgvh/bQ==@nongnu.org
+X-Gm-Message-State: AOJu0YystiSytPaQZcFgMzp+vMrvHZzsQLzKK+LI+/6YNGvjA2eBMPJ/
+ G9vje5rulN+HZNHRIeJQp5l9z4TnCi4L5wkgDAC5Lr2McMJU71N0pLrDCaEK1JTpyvu4IDx96YY
+ U0gbK4rhgGqo4+rtq64tuZPrB4sDFJxCEnDFzLJIh4g==
+X-Gm-Gg: AfdE7clBgBcmpZIljGJfWkrCUdQ4KmjKNLpgYZibEle980Gc1uPpWidLxY0rANNUQtt
+ 94ZQuVSSh+I6Vg2TomQZTKqN9iBOGpze6Ab/AtlrLZi6JTF36wWnbA+Tf4PPKGogLgggH7++C3c
+ be3s7hBm2BvLRu+rhHGPHpuOrSwtAsF/fwHfCDe98QoZ1eAZzn6jGfutYq3qCsJ5wf+TBdUDERv
+ Wc/3dmuMXxM4m2P1vzjDW3ckf6RAhz97gtkIYnkCMLF1XqJSicjWB5GEZ2EHpGuL0E2xKlEV+i7
+ zCh6DJbMNVv21amuCxxH0NAGj1FAJ5rzoI5B/xvnzg5JcIevG6F6ZJTj
+X-Received: by 2002:a05:690e:d5b:b0:664:cc3f:e2c with SMTP id
+ 956f58d0204a3-66652f08f03mr7431034d50.27.1783329703133; Mon, 06 Jul 2026
+ 02:21:43 -0700 (PDT)
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: eM1uxkpz9dJI54MFfuhkwG8K36NRkvaHySucWnJplHbTfDoud7riNClAmUk7uue15eqSDi5TGkVvq++AUtoizrw97qcQW69lOhswxSJhb8jgeO1JA4nj1dTyv3LeUgd/OtnCFNwak0QtpcOb/O5FZrA8t/cu/w6fPjioHLQvT7kbZot4cJeOpX7HFsWN+5xi0dY7WAj5y7XP19adYoqSxwQzK3KI1rdK7adavmfcUMfS1xAM4IFzcI0ECFwqGeqdVJTt5xsJN1wyO8DIlXuWwORFCtWvtiTvUBUI50a55GDxDolievIdjtRMQjCMXisfRdPJQZWhEwe0seBl/XXUbQ==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0388d37a-69c4-452a-fe35-08dedb3af8b2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jul 2026 08:45:45.9925 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: mtvi+804T7kvpCvhCASP2qCqoBC/F0KKdB201I4VxD40B563s/CeWPbpjRjCABeP6+Ktb8VkTX5af4NzeoGA1QwF/NuqxB0rJP7/btYTqVM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB6639
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+References: <20260705224407.32464-1-gilles.grimaud@univ-lille.fr>
+In-Reply-To: <20260705224407.32464-1-gilles.grimaud@univ-lille.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 6 Jul 2026 10:21:31 +0100
+X-Gm-Features: AVVi8CdKJKgFoJ21ehlGPs4Mpr22KcLrVTVui7lCW2N1WbKFJ-UvHJgKwV1X-nE
+Message-ID: <CAFEAcA9Heev=ydTzO2u3EzeF_2q7dytOF8=67qF8ZMMY6Ky2Tw@mail.gmail.com>
+Subject: Re: [RFC PATCH] target/arm: report M-profile BKPT to gdbstub when
+ attached
+To: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -148,59 +118,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce a dedicated reset handler for SCUIO.=0A=
-=0A=
-Previously, SCU and SCUIO shared the same reset handler. This no longer=0A=
-fits the AST2700 design, where SCU uses the Aspeed2700SCUState subclass=0A=
-and will handle coprocessor-related control in future changes.=0A=
-=0A=
-Since these controls are defined in SCU (not SCUIO), SCU and SCUIO=0A=
-should not share the same reset logic.=0A=
-=0A=
-This change gives SCUIO its own reset handler and prepares for upcoming=0A=
-SCU-specific functionality.=0A=
-=0A=
-No functional change.=0A=
-=0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
----=0A=
- hw/misc/aspeed_scu.c | 12 +++++++++++-=0A=
- 1 file changed, 11 insertions(+), 1 deletion(-)=0A=
-=0A=
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c=0A=
-index efe1d6315b..ca93c3699d 100644=0A=
---- a/hw/misc/aspeed_scu.c=0A=
-+++ b/hw/misc/aspeed_scu.c=0A=
-@@ -1069,6 +1069,16 @@ static const uint32_t ast2700_a0_resets_io[ASPEED_AS=
-T2700_SCU_NR_REGS] =3D {=0A=
-     [AST2700_SCUIO_FREQ_CNT_CTL]        =3D 0x00000080,=0A=
- };=0A=
- =0A=
-+static void aspeed_ast2700_scuio_reset_hold(Object *obj, ResetType type)=
-=0A=
-+{=0A=
-+    AspeedSCUState *s =3D ASPEED_SCU(obj);=0A=
-+    AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(obj);=0A=
-+=0A=
-+    memcpy(s->regs, asc->resets, asc->nr_regs * 4);=0A=
-+    s->regs[AST2700_SILICON_REV] =3D s->silicon_rev;=0A=
-+    s->regs[AST2700_HW_STRAP1] =3D s->hw_strap1;=0A=
-+}=0A=
-+=0A=
- static void aspeed_2700_scuio_class_init(ObjectClass *klass, const void *d=
-ata)=0A=
- {=0A=
-     DeviceClass *dc =3D DEVICE_CLASS(klass);=0A=
-@@ -1076,7 +1086,7 @@ static void aspeed_2700_scuio_class_init(ObjectClass =
-*klass, const void *data)=0A=
-     AspeedSCUClass *asc =3D ASPEED_SCU_CLASS(klass);=0A=
- =0A=
-     dc->desc =3D "ASPEED 2700 System Control Unit I/O";=0A=
--    rc->phases.hold =3D aspeed_ast2700_scu_reset_hold;=0A=
-+    rc->phases.hold =3D aspeed_ast2700_scuio_reset_hold;=0A=
-     asc->resets =3D ast2700_a0_resets_io;=0A=
-     asc->calc_hpll =3D aspeed_2600_scu_calc_hpll;=0A=
-     asc->get_apb =3D aspeed_2700_scuio_get_apb_freq;=0A=
--- =0A=
-2.43.0=0A=
+On Sun, 5 Jul 2026 at 23:44, Gilles Grimaud
+<gilles.grimaud@univ-lille.fr> wrote:
+>
+> While working on Raspberry Pi Pico/RP2040 support, I noticed that Pico SDK
+> programs deliberately execute BKPT from _exit(). On real hardware this is
+> useful when a debug probe is attached: returning from main() stops the
+> debugger at the program exit point.
+>
+> Under QEMU this currently does not behave like the debug-probe case. For
+> M-profile guests, the BKPT instruction is routed through the architectural
+> guest debug exception path. Without halting debug, that path should remain a
+> guest-visible DebugMonitor exception when DebugMonitor is enabled, or escalate
+> towards HardFault otherwise. This patch deliberately leaves that no-debugger
+> architectural path unchanged.
+>
+> The problem addressed here is the case where GDB is connected to QEMU's
+> gdbstub. In that situation, firmware that uses BKPT as a debugger stop point
+> should stop in the attached debugger. Instead, the M-profile guest currently
+> continues down the guest exception path and may end in HardFault/lockup rather
+> than reporting a clean trap to GDB.
+>
+> This is not specific to the RP2040 machine model. It is a generic
+> Cortex-M/gdbstub interaction: firmware that uses BKPT as a debugger stop point
+> should be reported to the attached debugger, while keeping the guest
+> architectural exception path when no debugger is attached.
+>
+> Expose a small gdbstub helper to test whether a CPU is visible to an attached
+> debugger. When an M-profile BKPT instruction is executed with such a debugger
+> attached, leave the translated block with EXCP_DEBUG so the existing gdbstub
+> stop path reports a trap to GDB.
+>
+> Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+> ---
+>  gdbstub/gdbstub.c      | 13 ++++++++++++-
+>  include/exec/gdbstub.h |  6 ++++++
+>  target/arm/tcg/debug.c |  9 +++++++++
+>  3 files changed, 27 insertions(+), 1 deletion(-)
+>
+> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+> index c3c944e965..9f259fc005 100644
+> --- a/gdbstub/gdbstub.c
+> +++ b/gdbstub/gdbstub.c
+> @@ -237,6 +237,18 @@ static GDBProcess *gdb_get_cpu_process(CPUState *cpu)
+>      return gdb_get_process(gdb_get_cpu_pid(cpu));
+>  }
+>
+> +bool gdb_cpu_is_attached(CPUState *cpu)
+> +{
+> +    GDBProcess *process;
+> +
+> +    if (!gdbserver_state.init || !cpu) {
+> +        return false;
+> +    }
+> +
+> +    process = gdb_get_cpu_process(cpu);
+> +    return process && process->attached;
+> +}
+
+No other architecture, CPU or board in QEMU needs to do this,
+so my instinct is to say that M-profile should not be special here.
+Richard, Alex: how do we usually handle breakpoint insns for the
+gdbstub ?
+
+-- PMM
 

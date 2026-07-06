@@ -4,120 +4,151 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22814C43458
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 17:49:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AF1DC43458
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 22:44:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgnRD-0002uf-6R; Mon, 06 Jul 2026 13:49:00 -0400
+	id 1wgs2s-0001PB-Os; Mon, 06 Jul 2026 18:44:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1wgnRA-0002nl-Q8; Mon, 06 Jul 2026 13:48:56 -0400
-Received: from mail-eastusazlp17011000f.outbound.protection.outlook.com
- ([2a01:111:f403:c100::f] helo=BL2PR02CU003.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wgs2s-0001Ou-7n
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 18:44:10 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1wgnR8-00071T-SM; Mon, 06 Jul 2026 13:48:56 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=QdtbVKAHoD5YMqo1gIUfsdYOIy5g3ftI9CVeIP5wfXirhttvr7cTNCeY2UpkF4fuIeDzFoEhhy24ZO3/HeXyyQj3ia40Enkojpqr2Hh01wu3MXV9jKRcwq01gsS5lUBdHajRPqbG3d2pYt54w5KUhTPnVBC1dodnT4FHkU9Ilrh0ohaFDAdYp2rudXFw74pjSM7aBYgIUVXMNRjlcrhwweqrOzaTJheNUgsOVtlHOsORchKS/JPZnwM1oe+wkNHl3v56Y6IwgMwsZAJrNBTgre65s36lZKMCRjHqgmxnapqOgkO50C2F7zXKldKl1ad8fO8h54s83oWUQ46nQk9e8w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=TQt2aKZWFhuqu4BjrKyiEv+qpClc4hn2K6Ghc9loGH0=;
- b=fC9llC8C0KQNRkIiAqG1mDkkLcpzavbNAC/1URdJJNDxByinSUaj2xabDpNjnVp7/r6F9tgvn4v6bF88Ery0q+RscZEGRvoQJkBYuRCtPJvS+u3nD9zuIqukoVXpN0D1CGT3mbjNG36trHJwpb0tVVGyyGc3VaIPsIBEMbwANbOcmW2gmjKkR1+G9n4jMg1f6EbvR0bFXWzApyX/YDm6n4Vb4t1IlCdHGojQGylxnS0WGF2I2KulxXOjOZU6Nmj4/FXArcHF5PfvxKuR+1HKboimUFsF08845LKhCNUJAiFkrJHRttM/XgIFneZIv9bwZ1lAVSX7TsmrqZuoOnf/Fg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.232) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TQt2aKZWFhuqu4BjrKyiEv+qpClc4hn2K6Ghc9loGH0=;
- b=J/urSKZtQ8FKuTjCSmzZ7Scf2f+UN2klSkwHwtB0G5ab/aeopMRxzopVYJOr7o1RA+TSZNqzaqzb+bTbhQX9nKjXu/+AGx43Yq0/jaBKZ9MeaYyT0ZFQtAzvxwS6GWa/7wOm8zKxULpOEcHmCEpeEkcX2Yrfp+nHwjSwzMKbRIIdRQR6pMUY6bY3j8Q9e3+B92DhDTtjOoo2a1UQRTwU+Mk7xWDoiZMJx3LCfsn+ZiXbRJ5iWXG+f5cjR8iSetSt4t9eYeoXGJ9Aw8w6+p5IKRyotamtGRSVzpW+Z6lxBAAAY4VuZKJom/RvfLpNVYNiN6YeJg3O5y5B56LrDpGU1Q==
-Received: from SA1PR04CA0014.namprd04.prod.outlook.com (2603:10b6:806:2ce::20)
- by MW3PR12MB4491.namprd12.prod.outlook.com (2603:10b6:303:5c::18)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.13; Mon, 6 Jul
- 2026 17:48:44 +0000
-Received: from SN1PEPF0002529D.namprd05.prod.outlook.com
- (2603:10b6:806:2ce:cafe::55) by SA1PR04CA0014.outlook.office365.com
- (2603:10b6:806:2ce::20) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.181.13 via Frontend Transport; Mon, 6
- Jul 2026 17:48:44 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.232) by
- SN1PEPF0002529D.mail.protection.outlook.com (10.167.242.4) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.181.6 via Frontend Transport; Mon, 6 Jul 2026 17:48:44 +0000
-Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
- (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.43; Mon, 6 Jul
- 2026 10:48:26 -0700
-Received: from drhqmail201.nvidia.com (10.126.190.180) by
- drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.20; Mon, 6 Jul 2026 10:48:25 -0700
-Received: from Asurada-Nvidia (10.127.8.10) by mail.nvidia.com
- (10.126.190.180) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
- Transport; Mon, 6 Jul 2026 10:48:25 -0700
-Date: Mon, 6 Jul 2026 10:48:23 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Shameer Kolothum <skolothumtho@nvidia.com>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
- <peter.maydell@linaro.org>, <clg@redhat.com>, <nathanc@nvidia.com>,
- <mochs@nvidia.com>, <jan@nvidia.com>
-Subject: Re: [PATCH] backends/iommufd: Fix dev_id and type order in viommu
- trace
-Message-ID: <akvqZ92ADt1biIZY@Asurada-Nvidia>
-References: <20260706103653.84243-1-skolothumtho@nvidia.com>
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wgs2q-0000oc-3c
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 18:44:09 -0400
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 666KE4MG1478223
+ for <qemu-arm@nongnu.org>; Mon, 6 Jul 2026 22:44:07 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ fZ66VI7tGRcrKslGsh/D/UErs7SdGdNUsf8wIezhHIw=; b=XoD480P22oIHrfcD
+ 0sWKT365rWb14lUCJDbaOeaLNGi6IMDvleCoiXrwV6KY6bapEKafwPr2k/XBQcLj
+ mQ69md5/h1RUqBrc9ZDOoBfMf6iEun0S54IMHN2uMT3ZdsLhBxY20RpQuwTBNgaC
+ /vBOyMWhOJhLd+YYXuvWuGBUob0fetSVVY9zJinbS3DzXAyc715bAMLzUHpTFtPJ
+ Xm7IfkDSqJ5/vZ2aQofMlpHhqisjV+3fg7Q0rgGl8O/uBQv9YIcwXz4sc+rq9vCs
+ CDqAB7NHTiJ6hmGLJZSL/SLOr2s0XQ9n2VFIkQcmzUhkxPz3aUn4klZ6Acyfepb0
+ cHDW3Q==
+Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
+ [209.85.216.71])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f88hsbn0t-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 22:44:06 +0000 (GMT)
+Received: by mail-pj1-f71.google.com with SMTP id
+ 98e67ed59e1d1-37fca5f21b1so65747a91.0
+ for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 15:44:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1783377846; x=1783982646; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=fZ66VI7tGRcrKslGsh/D/UErs7SdGdNUsf8wIezhHIw=;
+ b=YeWakYpJqtIWnpqlk/ATLKWa+Ndn98jh7LcsNeNW2iNjhI3dlHZrQnL0mU8z26hdSt
+ Vb0OWSIFtucHjgSdAxcIe2+uUWYCPEExI0Hrme6GpIdB9oZxmPsrUd7J07Ri89Ul0EEh
+ 5mKn+Lx8wzb7bug1ve5J5dZokGVsY7Ad6NQ01Ie7DgNN/BPOrPvWA/3TDCp0OdFGZH8x
+ /y+sgiYmo4oZvL22z1OdE39Bj60mF8AtxvIspXpGF/zc1rrDzi961JcjpzTUaIGGn/EB
+ 0iJ5o/eU/CfSuP5TZ2CjVTHUAvel0TwER7lY0IEB9Oa2UtY8XqozGR6X4H2OzxWm/RLt
+ y03w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1783377846; x=1783982646;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=fZ66VI7tGRcrKslGsh/D/UErs7SdGdNUsf8wIezhHIw=;
+ b=GCR3WnsFfHU773y2hD3SndpH3VL3o8u1bn5CKOpQqOobl19TPQE0qROqhoJBDexNRB
+ JSUZYGp27Csu7zf494DBpdiEhQnWNvb5atbi+akW30tUIFyRZMkl2WegEk8jrBui5Qhz
+ zz6kpS+hd9ef0wudyl4bt/q6P5HXkioLSeoWkaXV6m0QnO8GwVsw6PlIB/JvXiyq9xu3
+ sbXBFhlxEADRung0Oeeqvx1nV2TNJWHtuYd3vmDAJrHLKjFxKubjysavnWHTUpv8wroN
+ 7re0idzuKjUT7ciNvnd8xa2r0t9EFFDdVeAoXrDzI0gHo52nH4ZDrPaURaI1uD/i054v
+ 80AA==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RqnnzrB4jmO7Xcz8WCsAJ6GivLJEnCc77C6ADDpPJAtUD6HAubzZYWNcrFrBmd8QIPx0e2C8T4xgw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx3viRIgnRZgG4/99OVVYl6P7Mn8wO5QthQNCuypzbMljXhSGdD
+ mMzrgY2zLDKdStlld5mcCIElagSiOV2QAAIDFBSNyoKDToC53FEET3aCwWgnCRv/r999CUHev52
+ Cea4wTZLSXDNIen2gcCRNI1jNQNCLBuwj+B33s/pdipOF83KrXNsQgB0=
+X-Gm-Gg: AfdE7cnpjZND5CVGrmTnVx89k981djZ8p9q4Xf3kMx51gLa89lDHCM/TY4XArAQappj
+ fpLM97GcIj/M8E4IdKbDLaeL50ZL+duF1NyfcaZnSAUCx1AhB88hKtfVgPYXjmaSqCZwTLTWz99
+ x35eCRGpvA11xYahfzmQ0fkYEptRZ3YhoDDHwHeGJQBdIEeYGuaLG1S2zvQ5HDWsfZM91I4E0Mj
+ KVCX+53hLxJZjAa8LyZVXdoTelkLOl6mM6VTD54iajazHLUDkrd0WWyN+lUXZed+WYNlf2v6bVm
+ 9v8XRlks99EQDFdMn83a8vSeshNUY24Ha54B42VgIR08jcUhZ+t5gchwAX5zKTS1m6ZXE++Dv1k
+ xKRBcYa2224HzrTmckshRQAPEm8aUyrr4vM1ICYAyvWOcqyLU9VJhe6aQ6da6w4nkr/QfrFTycs
+ sqeG4=
+X-Received: by 2002:a17:90b:2dc8:b0:36b:4d63:4a93 with SMTP id
+ 98e67ed59e1d1-387d8dee0fcmr221545a91.13.1783377845819; 
+ Mon, 06 Jul 2026 15:44:05 -0700 (PDT)
+X-Received: by 2002:a17:90b:2dc8:b0:36b:4d63:4a93 with SMTP id
+ 98e67ed59e1d1-387d8dee0fcmr221504a91.13.1783377845233; 
+ Mon, 06 Jul 2026 15:44:05 -0700 (PDT)
+Received: from [192.168.1.170] (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-31174a583bcsm1131423eec.19.2026.07.06.15.44.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 Jul 2026 15:44:04 -0700 (PDT)
+Message-ID: <aa144aa5-1a3a-4b0d-bd4b-30c8924c1d3c@oss.qualcomm.com>
+Date: Mon, 6 Jul 2026 15:44:03 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20260706103653.84243-1-skolothumtho@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN1PEPF0002529D:EE_|MW3PR12MB4491:EE_
-X-MS-Office365-Filtering-Correlation-Id: 863469a9-0968-42a9-543f-08dedb86d2e6
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|36860700016|376014|23010399003|1800799024|82310400026|18002099003|22082099003|11063799006|56012099006;
-X-Microsoft-Antispam-Message-Info: LYkNmw3YXy50gsFgvV3MNFGg7U2Q5Bfg2YdE/bqMhXDN7mK2tB0QVKGYpXPQvsGWrzyr6ExtvNbU+iVS6/7WoN4B8ox8RiZhw7tbPiahPGk6rWKuJBZii3xVjjyUXEdCvmJYXMxSgUUfRZbiugh/fn0nQXFvuTUVey3oDqOTxeAfQUWNYgOPxs4XQEIMDUI/lvOdQuDhVAupaD9T8a9T94jcOuDrGXEDaBs3mDbIUNJNrF4RTRRk7gjq5EqUTDDRCU55a3iLCb/O5M4lHCrUyqq/O3mgKaYrNhw/pbL+z4BKPoBrKqB06ZE6UxOBHTd3atpEtBoilrLJO11Rc2Y8nsX6a+EQ8mWqf2M9e5PBbTj6WwzSR46EkXQ/NP/npPjHklogWMS7zwyDmTkUCcB54EoMV5pB8X2scwQV8CGjhoAGmzRtxsFH4wy6zPICdzODYDVSE8C0T9JTZAbnwoW3BfLpklapud4ZjOLKRZ1B+mjiLt6901i6p76DLrOC5fFDlNapl8ARQ+V798w24cGmJP5a0quNl5XJvNknfm9fU+whXpCALBtyfyHUyRd3QAMDgSksaglpTqHe/Pba8DzyAoVKlWFW7ZG3nUarMD0ZYYIoUSXCMFYQ657i3ZX/n/0di1BAG3i36ZmjwQNuKGvMX236Wta1jCIFjGopMbo5Aupeza3Ni/ry64oPMwkiFJcg
-X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(36860700016)(376014)(23010399003)(1800799024)(82310400026)(18002099003)(22082099003)(11063799006)(56012099006);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: IJU3md5lg2jwTmAu69nWfQ4CzUsnP9JlPVocQgNyVNVhQrMiuFnp96N/Q4FmGgG5n9MncpOz41JIuknXm+vq8QF4cPf1/RBJa4bnaqXfBbIjKmcb4rHYBhYPBi3VbF4+mVzdRXUBSnMk0ojx2CxkrkG6SDFu/aM2dgkIJER5hMnjzS5eJ3sVsM/C5YHuloR2A1NnMTf5fu/xEOm5iFqtZolanXwnn5hEvFCL8jyBFSymc5XJI1p4pQCYghLryeJnlrnQNw6i8SerjmNWVz4CSeT/63rE96xyPXoiSpv0jyYJPVu+5C/yWaLjh4EvOQ0rIfr87u4jMX56AZjn14gjzftHXCwypE7IH5j7psd4zIP7hqdXsRzzemC3EtpcbQi+8aGc+TaAd3VSJaZgZLJYy9eDkNJZLTU+qgMuvTEK55dTwxYlw5CkLEOiut05lYF7
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jul 2026 17:48:44.2638 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 863469a9-0968-42a9-543f-08dedb86d2e6
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SN1PEPF0002529D.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR12MB4491
-Received-SPF: permerror client-ip=2a01:111:f403:c100::f;
- envelope-from=nicolinc@nvidia.com;
- helo=BL2PR02CU003.outbound.protection.outlook.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 00/37] tests/tcg: run tests with meson
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Gustavo Romero <gustavo.romero@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org, Alexandre Iooss <erdnaxe@crans.org>
+References: <20260626233918.158740-1-pierrick.bouvier@oss.qualcomm.com>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <20260626233918.158740-1-pierrick.bouvier@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-ORIG-GUID: p97rVPP23oUNjWYJBB4eX5uO6i_nWreL
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA2MDIyOSBTYWx0ZWRfX72V3ondC8TAH
+ KPnIAOcfjLlu6yRJdro5z9B7YEEC7yPyJa5JQifod9JyCK4z5mBysGuzeTENvXXNbRXT3GN5RJ6
+ c0tdDQd/tCxWxnkQfy9bC6HwYaP9qVWgs67USBuPWN3EpxlCCwWzVjjYPU9XGzCAWenkKfwjE8I
+ faAa7/TThutzwL5W832RlGqM02CeZNm9PWBDURJfwZfMD9CmIIZ5G/W/WNyzE/iRor+H9gv8LeF
+ 1SRHmrnTQgJW0eVlRU/1cL3tcSZlCS1MklaCJ4yEfdtjCBVx1LayO6GYMW8IhU9N3YNbcTrbYyY
+ SbOWM8lwvmu3yj+xHw9jIWTMSEkFnE04vEvC3iQdpOnJopElOC0uV41PDxsAeWYM5NzdhqlO7dM
+ 1/viBViVCj1WliNCk5OM256u8xHhUuaa2QsBFT5Lk+aSdz480JaHF0Q+bVK0PrX32xEmMZxYEgZ
+ p7VYApIaCOx/Ic0jqkQ==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA2MDIyOSBTYWx0ZWRfX88rvbHkyK760
+ MqrerPmNTPh/qtNAChrzOFJJF2de9HBPbsRh4eXshpha1SAhiqPAFIzfVFfB/pFPlrV6umRinIy
+ 6mKcSCmxDMTeaQstsxQ+5Bgz8v7uwlo=
+X-Authority-Analysis: v=2.4 cv=XIwAjwhE c=1 sm=1 tr=0 ts=6a4c2fb6 cx=c_pps
+ a=UNFcQwm+pnOIJct1K4W+Mw==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
+ a=VwQbUJbxAAAA:8 a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=5xVL20QGa_1HK4rKbeQA:9
+ a=QEXdDO2ut3YA:10 a=uKXjsCUrEbL0IQVhDsJ9:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: p97rVPP23oUNjWYJBB4eX5uO6i_nWreL
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-06_03,2026-07-06_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 clxscore=1015 bulkscore=0 priorityscore=1501 impostorscore=0
+ malwarescore=0 lowpriorityscore=0 spamscore=0 phishscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607060229
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,13 +164,143 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Jul 06, 2026 at 11:36:52AM +0100, Shameer Kolothum wrote:
-> The trace event receives dev_id before type, but its format string prints
-> them in the wrong order. Correct the order.
+On 6/26/2026 4:38 PM, Pierrick Bouvier wrote:
+> This series is an experiment to replace TCG tests makefiles with meson, with the
+> goal of having something more readable and maintainable in the long term.
+> Also it closes the gap that tcg tests had with the rest of tests, by integrating
+> them with meson directly.
 > 
-> Fixes: f2d31df0d925 ("backends/iommufd: Introduce iommufd_backend_alloc_viommu")
-> Reported-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> It covers all existing tests for aarch64 architecture, including
+> user/system/multiarch-user/multiarch-system. I'll carry the effort to port all
+> other architectures once we agree on a base. We agreed with Alex to not merge
+> anything before all arch are covered.
+> 
+> It implements all requirements listed on original thread [1].
+> 
+> [1] https://lore.kernel.org/qemu-devel/87wlwfsay4.fsf@draig.linaro.org/
+> 
+> We also have for free:
+> - correct and complete dependencies for any test, including:
+>   scripts, c.inc, headers, reference files and binaries/plugins.
+> - catch test declaration issues at configure time vs test time.
+> - proper data types for variables instead of string expansion with make.
+> - we now build tests binaries by default with 'all' target.
+> - hopefully, better readability to your taste.
+> 
+> Main ideas for the current design are:
+> - make arch files as simple and explicit as possible. If it conflicts,
+>   always pick explicit, as long as we don't expose meson details.
+>   remove any kind of "skip, override, filter" logic.
+> - never expose custom_target and meson details in arch files.
+> - catch any spelling mistake on test or any dependency.
+> - keep complexity contained in tests/tcg/meson.build.
+> 
+> Usage:
+> 
+> ```
+> make check-tcg
+> make check-tcg-aarch64-linux-user
+> make check-tcg-aarch64-softmmu
+> make tcg-tests
+> 
+> from build folder:
+> ./pyvenv/bin/meson test --list --suite tcg
+> ninja clean
+> ./pyvenv/bin/meson test aarch64-softmmu-asid2 --verbose
+> ```
+> 
+> v2:
+> --
+> 
+> - s/mispell/misspell
+> - moved comment about why we remove 'lib' prefix for plugins
+> - if user declare a wrong entry in a dictionary, list possible keys
+> - build tests by default (with 'all' target), as long as cross compiler is
+>   natively installed, to avoid triggering a container build.
+> - reword some comments based on reviewers feedback
+> - always declare all tests and avoid "per config" errors (no 'if' in arch files)
+> - move compiler feature and gdb version checks directly in tests/tcg/meson.build
+> - add support for cross containers
+> - add top target 'tcg-tests' to rebuild all tests
+> 
+> Pierrick Bouvier (37):
+>   tests/tcg/multiarch/system/memory.c: remove unused variable
+>   tests/tcg/multiarch/plugin/check-plugin-output.sh: take test output as
+>     input
+>   tests/tcg/multiarch/plugin: rename check-plugin-output to
+>     regex-compare
+>   tests/tcg: introduce meson.build
+>   tests/tcg/meson.build: introduce exe_name
+>   tests/tcg/meson.build: introduce test_name
+>   tests/tcg/meson.build: introduce cflags
+>   tests/tcg/meson.build: introduce qemu_args
+>   tests/tcg/meson.build: introduce env_var
+>   tests/tcg/plugins: build list of test_plugins
+>   tests/tcg/meson.build: introduce plugin_test
+>   tests/tcg/meson.build: test gdb support and introduce gdb_arch
+>   tests/tcg/meson.build: introduce gdb_test
+>   tests/tcg/meson.build: add default flag for testing compiler support
+>   tests/tcg/meson.build: introduce wrapper
+>   tests/tcg/meson.build: introduce expected_output
+>   tests/tcg/meson.build: add wrapper run_and_check_forbidden_output
+>   tests/tcg/meson.build: add wrapper run_with_input
+>   tests/tcg/meson.build: add wrapper record_replay
+>   tests/tcg/meson.build: add wrapper check_plugin_output
+>   tests/tcg/aarch64: add user tests
+>   tests/tcg/aarch64: add system tests
+>   tests/tcg/multiarch: declare user tests
+>   tests/tcg/aarch64: add multiarch user tests
+>   tests/tcg/multiarch: declare system tests
+>   tests/tcg/aarch64: add multiarch system tests
+>   tests/tcg/meson.build: add generic plugin tests
+>   tests/tcg/meson.build: add logic to skip tests
+>   tests/tcg/meson.build: introduce cc_feat and cc_feat_cflags
+>   tests/tcg/meson.build: introduce gdb_feat and gdb_feat_version
+>   tests/tcg/meson.build: move gdb_arch support check
+>   tests/tcg/aarch64: delegate cc_feat and gdb_feat
+>   tests/tcg/meson.build: let test infrastructure detect compiler
+>   tests/docker/docker.py: return error code if probe fails
+>   tests/tcg/meson.build: introduce cc_dockerfile
+>   tests/tcg/aarch64: add container support
+>   tests/tcg/meson.build: add top-level 'tcg-tests' target
+> 
+>  tests/docker/docker.py                        |   1 +
+>  tests/meson.build                             |   2 +-
+>  tests/tcg/aarch64/meson.build                 | 193 +++++++++
+>  tests/tcg/aarch64/system/meson.build          | 101 +++++
+>  tests/tcg/meson.build                         | 402 ++++++++++++++++++
+>  tests/tcg/multiarch/Makefile.target           |   3 +-
+>  tests/tcg/multiarch/meson.build               | 149 +++++++
+>  .../multiarch/plugin/check-plugin-output.sh   |  36 --
+>  tests/tcg/multiarch/plugin/regex-compare.sh   |  28 ++
+>  tests/tcg/multiarch/sha1.ref                  |   1 +
+>  tests/tcg/multiarch/system/memory.c           |   3 +-
+>  tests/tcg/multiarch/system/meson.build        |  53 +++
+>  tests/tcg/plugins/meson.build                 |  11 +-
+>  tests/tcg/scripts/check_plugin_output.sh      |  19 +
+>  tests/tcg/scripts/record_replay.sh            |  16 +
+>  .../scripts/run_and_check_forbidden_output.sh |  19 +
+>  tests/tcg/scripts/run_and_diff.sh             |  15 +
+>  tests/tcg/scripts/run_with_input.sh           |  12 +
+>  18 files changed, 1019 insertions(+), 45 deletions(-)
+>  create mode 100644 tests/tcg/aarch64/meson.build
+>  create mode 100644 tests/tcg/aarch64/system/meson.build
+>  create mode 100644 tests/tcg/meson.build
+>  create mode 100644 tests/tcg/multiarch/meson.build
+>  delete mode 100755 tests/tcg/multiarch/plugin/check-plugin-output.sh
+>  create mode 100755 tests/tcg/multiarch/plugin/regex-compare.sh
+>  create mode 100644 tests/tcg/multiarch/sha1.ref
+>  create mode 100644 tests/tcg/multiarch/system/meson.build
+>  create mode 100755 tests/tcg/scripts/check_plugin_output.sh
+>  create mode 100755 tests/tcg/scripts/record_replay.sh
+>  create mode 100755 tests/tcg/scripts/run_and_check_forbidden_output.sh
+>  create mode 100755 tests/tcg/scripts/run_and_diff.sh
+>  create mode 100755 tests/tcg/scripts/run_with_input.sh
+> 
 
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+sent v3, with support for all architectures:
+https://lore.kernel.org/qemu-devel/20260706223343.988769-1-pierrick.bouvier@oss.qualcomm.com/T/#
+
+Regards,
+Pierrick
 

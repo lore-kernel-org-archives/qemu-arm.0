@@ -4,106 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A52D8C44500
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 09:30:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AF20C43458
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 09:55:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgff0-0002Ip-1v; Mon, 06 Jul 2026 05:30:45 -0400
+	id 1wgg2X-0005WD-C8; Mon, 06 Jul 2026 05:55:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wgfej-0002Bi-Kh
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 05:30:27 -0400
-Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wgfeh-0008AX-D1
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 05:30:24 -0400
-Received: by mail-yx1-xb12f.google.com with SMTP id
- 956f58d0204a3-664d35b4777so3948114d50.3
- for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 02:30:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783330222; cv=none;
- d=google.com; s=arc-20260327;
- b=e9NGLv9Do8n0zHCrzoX7bQrGV+NniMGj4khMMdrvgD4z1X17iUFRRAyP+eBdJO41D1
- Lu+hzjpDEKyRdnIfB4e9z70eLr+SIaLr/1AmfKJOzUBYzfgwtDCaSo+1NZTc5h0D7VBs
- ZHvyBuAgqPtv3Ww9V4ECS+OIBb1mghmIcvxLuQ+p32QOQHhTuj/YE1q6dGdScmmiXXMw
- MRVAxjKcYg0mFFU4n5sCCMhsKNbnp9gLtiGdvSlIySQa3vxpzw6hanBfsjW6JMWPPTkR
- S8dY2brVyrRjr0SUuegZwkvLjYYjTjAbgH+VbwHbl/pJQqf1l9WHS04OGGDvNS6ln+gi
- 9UvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=1laCnAkCmus+RdL3WBsb/PkScrDxrayjVQoHHNn4lhM=;
- fh=/uAYs5c7KNBEHbpyTPn38Dh44oglcXXvx9Tt1LUlB3M=;
- b=kFhuB9NFMLraBUrDa89WUZOjnxssHS3Ir6C8sO47OxBkJPJqmletGLn7VtVmXOfAcq
- DOs3rvTBBzH/BgvOyFPU+FT9Bo+X8Y5cVKH+m5aEQ0DU3ztOJLWfExRsZZzuA4fQWh/7
- bnwGSypIoG1pOU/V1VP6q5XU4Eh2tcoSpptophDkQEVeAks6WD/NYyCbKq3V9Rhv3uWJ
- y51sWUpAD/srbJfR/Y3zwYWxZobvt5PbIG9Tpy8PrfKsI9K8M19nnA6WgBSulmxOMb/V
- GE1QJujR5K2PSSlkdQHWwchwz7VJBl7xYduk1JJOIC+neIAGJk7Mx1+7SS1T6s/JzFst
- 2W3g==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wgg2I-0005UY-9u
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 05:54:47 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wgg2E-00072s-Ng
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 05:54:46 -0400
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 666944Fb4151700
+ for <qemu-arm@nongnu.org>; Mon, 6 Jul 2026 09:54:35 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ FItJHwZ8IcH0nmshCcvaLDrdFzmOxSnTwNdZjMgYL+o=; b=WlVYoBcnstWFi8+z
+ nc4QYub/roAFS8Kbumotp4MG6YsL15FPDTu3SkPwBaCJ9rRB7kaej+hoUIxkhLX/
+ 9J5lP0MckfB91nk2JzW1XL5BmoLPhP9DYBjRl782W+U4q5Eq41LfbI6XC5AOXLYn
+ k++tznNsBIXpfEX3hhAE+nIK2SMdp1pNJmpF17D8x+brjI1PiB4BA57X6MwBKI9T
+ 8YCWpKpwf9CQMWkjbt/yKtiFGyDCeIWyqEbo8hw+vhqos4qW75o5BSE+Ljj5i5YR
+ jueM7ri4Z/nq6nYfz26SkX8TptwWlVEXlCgxFXg8h7vmNLpAn6syAfGM8G92d08H
+ Kthifw==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f88hs8eya-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 09:54:35 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-92e63df032bso314873185a.0
+ for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 02:54:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783330222; x=1783935022; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=1laCnAkCmus+RdL3WBsb/PkScrDxrayjVQoHHNn4lhM=;
- b=kseKYH6cMu3hRvcinoffVnpu6t9eZyO5VrSU8kArRl8zVuWNaZKlVjW+TES0yzKvjn
- z5vfokhfhf2r5oyam6hO9JImuEpZ3V9RHuBnPjUfM1GfWhGlXlW1xt0HhgYo1adp4bT7
- Fma/H/gmNLyJDxqr8Y+PNJ9TTJvENjZrjkAhDw0TsDTTjyFCMjWAjSpORioCH5TrsWWM
- TqaAAeVIsXpSfyqj1dxjtnEyiFtBmIj6pQTVPgDLAfgYYp7aFtbrdc0rLpyD3TXN6szS
- SEMBBwxsHUGLTux6iJ2hNoljj5YQUUV3osmWNgzyml6NV0Im+ziHUNtF11na4Rxeiot/
- LprA==
+ d=oss.qualcomm.com; s=google; t=1783331675; x=1783936475; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=FItJHwZ8IcH0nmshCcvaLDrdFzmOxSnTwNdZjMgYL+o=;
+ b=XYx2wLyyT6Kpl4U1NgT3aOLUZiM2RT2OkhtaHy8E+fi3j3HK+iQ10CkZqmXVHryNPm
+ FWnqqSKTAYlWNXxZMk70r4LOlXat2WnqqI/OxdMQ9ARhthwSpc7N4SaQDZRGZTXMbJ1S
+ nke244vP8rDX4feVhfcwvgakfPgvt34+ISa4BrxL8JVQTR7pOPLNOB6XCE8O2nGliofo
+ 7l+6qITqIoqNJ7qr18eVFoWbupvQ8Yzf+Z8UAfnFcbW0x82y2NrsVUXFMke5E8u/ZJYP
+ 2qDQwfjQG4DVz26Fb1SCgDcT6VzWKBEo9eVP3SJBMOFeWWlq5QNgw9tAJg2SvjSzv++p
+ ocVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783330222; x=1783935022;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1laCnAkCmus+RdL3WBsb/PkScrDxrayjVQoHHNn4lhM=;
- b=Fa8lxd4ImO1402zARLsvL4AXA3Dl4CXP4PuTXtloBcsM//NGbfwzv2HdptZL0xy4MD
- bqP5l320V3v4WMi8rBUK5CycV/c/f8A+L8/Pvv/Pqf1MCri5s/Vu1WKdGSuZZHiZp9hk
- KptVN+BtbjdhSOO4Z1Og5z8duSVXOADXhR0NYcNjZQKu+4YFt/YdcgnK2mhHXMCZxb73
- 7QBmB/Qa0p4NGOC9/yybsDJYpjNLcGjPGpLDWhKhkda9/vTogAz+6nk/fhb9VZ4skAd6
- NEAS8hpScTnZeOqaoLofYBU0UOkMpu3mfPuJvYKod+JzKOOxHq6pfMXLlJ7AnVDW0gmw
- JWcA==
+ d=1e100.net; s=20251104; t=1783331675; x=1783936475;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=FItJHwZ8IcH0nmshCcvaLDrdFzmOxSnTwNdZjMgYL+o=;
+ b=YZNQPb7GJwmevsSndDR7+R2IKqpfrqdGmC3YZfA0m9P0KvMH1iXmkxAjERd6vQ2TFw
+ 0/tO6SbGuzjoriWo6G5S++mxQvm3/J9ySDCmlPkNi8WifWWg2F/sFu4gipEW1YJswXK8
+ CwASD9xOhIDiW8jFQZIyJN0C2h5meq78XlgP6TNoUovEM8DZScKIgZo6VAPNI2MeEu3/
+ 1qXR6XRziAU13Y5pdXNJ4Wnb4oCiP6WZDMUnTwx+3LDmtvVz5ods7MZXBVVeQxw2fkgA
+ ghChrzdB+aEGHilMNieKls+/qIGaj0C6TOmeBaMgBZde84oD32QLn5thqdhLovLW29Tf
+ 32JQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrcdCHqgT1qspl4QIDZnhnzfJRoYKrksmC8Mj0zdQPBqbR/Sm5PLBj/fEBrNo2P8ZFeR6MzfIad/Q==@nongnu.org
-X-Gm-Message-State: AOJu0YwlnL2T7ZmIo/7HqQmfVcIJAzh6UcFgVsa2yZXk62ETaFQoJ7CB
- LdXl1z0gkkPW8nnk8b2inv/jnvKmqmTPKQuydqEj7YhbjbiQnf2CSm2ttlne+8TQ5080MXK/VQe
- h+CrODZki46K1GsUaAjbINtI+tY0jv5SxLzfS0yfC2w==
-X-Gm-Gg: AfdE7cnWUIdTosPbxFRMjHm5AIQGXuDkO0sFBU3ye31DCOfsOTPc7Bbk3xwVRfseyIk
- cvke5jAsaiO+jGUWg8pNngcC7Z6qDX28GqOyZqm5vBJ9n6SYppINgtnIpJzF+Wp2s4AS3ExAyzL
- S2hkuEs3B5/yF8rrSEhePQKrWttzuessjmqPZEvT4OEBjAaylGhZMJpMPLKegrUy5CzZbsRJvoI
- gW8WpUB/Jep9H6LcyD4hpz2OI488M+GLGFpkme8Ad7L3+6t9JY+t8P807mX5QBZ4lia9h7JfYiM
- w6zpaGTD+n+P6yfSQ/yEjTpL/HH00UnWiqjktcIqmLPmUFJDPIRZjx8Hn5EK5KcQ4+E=
-X-Received: by 2002:a05:690e:4594:20b0:665:9b8:5511 with SMTP id
- 956f58d0204a3-66652f12b8cmr7455519d50.55.1783330221096; Mon, 06 Jul 2026
- 02:30:21 -0700 (PDT)
+ AHgh+RrD1qCAQ+iQPlN9pWVYNisDzDEaRptPmbW3RccuoRfvTDwkJqFCHBRCgibk0uxpdUEWcvWuzTF8zw==@nongnu.org
+X-Gm-Message-State: AOJu0Ywzad9EQMZYJUSZPv+3XcO7tDP3+N6cJqlNr8ON4IPTD/8s+vHF
+ nz5jfbN/t5l72/9hLypn8BwzAxfJY1OTdnGQTzO6di71L355ECScyA5RWQvnDjOMgPCH0JPMKOt
+ LgZ1xKbJSOho1RQE0hyN91vMbBOKKooZC0lT/yj+IiqNleRdQefv/wNY=
+X-Gm-Gg: AfdE7cnRaLscm+JQszMvv6gyL9KvLLXbMTB/InmwGdJ31DzMu9dFlaSvuWfTsmWhhYO
+ SQLiMgALGQcKzPULCJEQGZMcLJzMtU9AIoS9pcSqTB/IDNGlZCy4dFCG/GrcV6HRIHfIUPQ99W6
+ 0rF9Px3Sig137kc0v1JPwkizmdJosfIwOVjjiNIcubXTHftsM2pQjJobX3tcEgoYp/BqFFQ4wZZ
+ UAQ9krpqh46wm0yy03mS9oOA6HQD5/h+6frX4h//HNg68SAMAKcK6JxZ6vltUgeNwl9e29sgdyP
+ 3K2TBz8Z9bCZmScNtvVQtC4VST5nNRNthckjXCoThLqCtU+3QnZROLQMasbefpehFBGIGBeur7M
+ Z1JCVsP1YkeJ4s7qiJD7o7z1V4vo7InWYvLTa8UckVnjV7bqGoJHWZMX7gSpFVQ==
+X-Received: by 2002:a05:620a:8804:b0:918:7e9e:de74 with SMTP id
+ af79cd13be357-92e8b4ba8ddmr1035943885a.17.1783331674785; 
+ Mon, 06 Jul 2026 02:54:34 -0700 (PDT)
+X-Received: by 2002:a05:620a:8804:b0:918:7e9e:de74 with SMTP id
+ af79cd13be357-92e8b4ba8ddmr1035941485a.17.1783331674333; 
+ Mon, 06 Jul 2026 02:54:34 -0700 (PDT)
+Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-69a19d79906sm3904779a12.14.2026.07.06.02.54.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 Jul 2026 02:54:33 -0700 (PDT)
+Message-ID: <2412f8a1-84d7-4d23-bede-4cac49f6a412@oss.qualcomm.com>
+Date: Mon, 6 Jul 2026 11:54:32 +0200
 MIME-Version: 1.0
-References: <20260614222131.5795-1-imaginos32@gmail.com>
- <CAFEAcA-GGP6aALn4Az5By31q1R3d75Mm+p_YXN0y=tO3GxDYrg@mail.gmail.com>
-In-Reply-To: <CAFEAcA-GGP6aALn4Az5By31q1R3d75Mm+p_YXN0y=tO3GxDYrg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Jul 2026 10:30:09 +0100
-X-Gm-Features: AVVi8CcnHyWnWA_521BYg5tnYcX-wz5ImmOdHDjWlLfTsHur1pAt6keYnGyTYZU
-Message-ID: <CAFEAcA8zLzVLzTq-EJQ9+OpxytMdPuFkUbOF7xjmY0JrhPhYhA@mail.gmail.com>
-Subject: Re: [PATCH] hw/i2c: pmbus: NUL-terminate strings received via block
- write
-To: imaginos <imaginos32@gmail.com>
-Cc: qemu-devel@nongnu.org, Titus Rwantare <titusr@google.com>, 
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@mailo.com>, 
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 3/4] hw/arm/aspeed_ast27x0: Move SCU link into AST27x0
+ coprocessors
+Content-Language: en-US
+To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20260706084540.1988785-1-jamin_lin@aspeedtech.com>
+ <20260706084540.1988785-4-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260706084540.1988785-4-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-ORIG-GUID: 5dKDksRU5k4Tr28u8kktX3Imj3oPQisF
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA2MDEwMCBTYWx0ZWRfX+5yl1MXk51Q6
+ IReQOXIIEN9mjtHYm6+FdZRjGbquOtJICqlhYr5TsIYVytj+Nyck+dGG0T8XrTtAdBwJF8mzQLo
+ qoRnC8HFclZ7DH8/QZh1/bVcIT8Ub1nUIDHauP3gV2F7tbtKXus9e79jzxR+4isS+Dt3pdm8gA9
+ oRDWiXiSTMA4m6k9iX7sUJwxIXaEj98Sfpvbrh5VpAF8z4ZcltjxZjEZDuQKFCoMPcqd16elKxt
+ rSBdkNGC/KB1v8snyYwhqGecbv0yaxKFbOcWvjm09J5ZA1ZWAN7lmx8maeRb/oi50AHkN6kAPJP
+ mApv0kSZxvK2RqhdhP0NldI01H6utMqqDUl4qoYet480vmK0INCY40NY6PlBEjRa/wya8nKMyOL
+ pb7W3sRQ6EatUufT7BEC1iWK7X7BVlPg3/NK065Du0O7KhrR1xTwIv3qnzVFL8A2C9pqZ8c1FuQ
+ rABRCgOoyGIZcjNbR0g==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA2MDEwMCBTYWx0ZWRfX2BMXBYDmLwpw
+ PpcGrvHX2Fhr9b3Sn/dE4XlXSvn+xubwNOcVMpWUzojPZbrPVghVxRSkOAjbSSJxEjs8ULNl4iB
+ vgCNjbKSjT6jMEPdN7I1agtqaQ/3M7A=
+X-Authority-Analysis: v=2.4 cv=XIwAjwhE c=1 sm=1 tr=0 ts=6a4b7b5b cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
+ a=V2NxCb60AAAA:8 a=EUspDBNiAAAA:8 a=lYaixF1Ub9yBDHAr5aoA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=IoWCM6iH3mJn3m4BftBB:22 a=3L6qF29SlnrayQqPM2jZ:22
+X-Proofpoint-GUID: 5dKDksRU5k4Tr28u8kktX3Imj3oPQisF
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
+ definitions=2026-07-06_01,2026-07-03_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 clxscore=1015 bulkscore=0 priorityscore=1501 impostorscore=0
+ malwarescore=0 lowpriorityscore=0 spamscore=0 phishscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607060100
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -120,46 +162,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Ping: Titus, could you review this patch, please? It would be
-good to get a fix into the upcoming release.
+On 6/7/26 10:45, Jamin Lin wrote:
+> The SCU link is only needed by the AST27x0 SSP/TSP coprocessors for their
+> AST2700-specific SCU alias window.
+> 
+> Move the link property from the common AspeedCoprocessorState into
+> Aspeed27x0CoprocessorState, so the generic coprocessor model no longer
+> contains an AST2700-specific dependency.
+> 
+> Also validate that the SCU link has been provided during device realize
+> before accessing it.
+> 
+> No functional change.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   include/hw/arm/aspeed_coprocessor.h |  5 +++--
+>   hw/arm/aspeed_ast27x0-ssp.c         | 19 +++++++++++++++----
+>   hw/arm/aspeed_ast27x0-tsp.c         | 19 +++++++++++++++----
+>   hw/arm/aspeed_coprocessor_common.c  |  2 --
+>   4 files changed, 33 insertions(+), 12 deletions(-)
 
-I think on another thread you said also you had some patches
-to upstream to fix the "guest asks for data multiple times
-but never actually reads it" potential issue ?
-
-
-thanks
--- PMM
-
-
-On Mon, 22 Jun 2026 at 11:18, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Sun, 14 Jun 2026 at 23:22, imaginos <imaginos32@gmail.com> wrote:
-> >
-> > The PMBus string registers (e.g. MFR_MODEL on the ADM1266) are writable
-> > by the guest. pmbus_receive_block() can fill the destination field
-> > completely, leaving no NUL terminator. When the value is later read back,
-> > pmbus_send_string() calls strlen() on it, which reads past the end of the
-> > array and returns a length that trips
-> >
-> >     g_assert(len + pmdev->out_buf_len < SMBUS_DATA_MAX_LEN);
-> >
-> > aborting QEMU. This is guest-triggerable.
-> >
-> > Add pmbus_receive_string(), the write-side mirror of pmbus_send_string(),
-> > which reserves the last byte of the destination so the stored value is
-> > always NUL-terminated, and use it for the ADM1266 MFR string registers.
-> >
-> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3388
-> > Signed-off-by: imaginos <imaginos32@gmail.com>
->
-> Thanks for looking at this. Notably, the bug report in #3388 makes
-> a completely incorrect claim about what its repro case is actually
-> doing. The repro case does the "write 32 bytes to trash the NUL
-> terminator, then try to read back", which is what this patch addresses.
->
-> I'll let the pmbus maintainers review the patch from a technical
-> point of view.
->
-> -- PMM
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 

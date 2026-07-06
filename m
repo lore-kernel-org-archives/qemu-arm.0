@@ -4,125 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48362C43458
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 08:07:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E46FBC43458
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 08:10:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgeM4-0007Fc-OA; Mon, 06 Jul 2026 04:07:04 -0400
+	id 1wgePI-0008Fz-O1; Mon, 06 Jul 2026 04:10:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wgeM2-0007E1-T5
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 04:07:03 -0400
-Received: from smtpout2.mo536.mail-out.ovh.net ([51.210.91.11])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wgePH-0008DR-2r
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 04:10:23 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wgeLz-00026A-N9
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 04:07:02 -0400
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net [57.128.106.70])
- by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4gtxlf3VZDz826P;
- Mon,  6 Jul 2026 08:06:54 +0000 (UTC)
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net. [127.0.0.1])
- by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alexander.hansen@9elements.com>; Mon,  6 Jul 2026 08:06:54 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.101.74])
- by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gtxlf0Ksqz7t8l; Mon,  6 Jul 2026 08:06:54 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.0])
- (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 393361B436D6;
- Mon,  6 Jul 2026 08:06:51 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-110S00453dc6de7-f585-4933-9ae3-c9a8cdbae867,
- 85E5B3372E37D114A8148E0C2423338A4BE4238A) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <1ad9b0b5-e98f-4552-bc2d-6db76dfcd1ee@kaod.org>
-Date: Mon, 6 Jul 2026 10:06:49 +0200
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wgePE-0003GG-Qk
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 04:10:22 -0400
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 66641Swe3593989
+ for <qemu-arm@nongnu.org>; Mon, 6 Jul 2026 08:10:19 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ NCqjXVBAcphH6bgcVF/FSO75xoQ/plzIdNFfJIMVrsY=; b=eu3qy3rS5QeAtwpE
+ JfAPe8inwcPZ0eOYYFj3lJZ1Qzc9iIA4ELDEwSShdxqkq55zh4EQCQqI70sorDuD
+ gfvB/t6GSZco1640nw5Na1jq32rEt25qiUvwPrtDU2PC2yd3i8UXtNAoHN9kYVnR
+ SL/YdDLedbeG489oeKEFWYsAfTmZqHk9axfN3QnmYvbjD1QMeIjaf3a+/rc24UBy
+ a4to5ig9ii+b4AFJPjdvhhS0o9tR2otz6NQg01llcL5Uu5H74SSIW0dG/Hwnnpjr
+ YoE4WjYtSBbU84KTeB+bV33jsInfJCa+wQQaHAkCouVAgyCOqtnpAQtyOJbTraZI
+ 6XKcTA==
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f6qvgwhfd-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 08:10:18 +0000 (GMT)
+Received: by mail-qk1-f198.google.com with SMTP id
+ af79cd13be357-92e8004d60eso442775185a.1
+ for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 01:10:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1783325418; x=1783930218; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=NCqjXVBAcphH6bgcVF/FSO75xoQ/plzIdNFfJIMVrsY=;
+ b=P/GCTI/jYqj3O4DFLri/KG9db/0UuwviQ0Hkx6B4ChyqQrSFQBiUaRT8gN9P8Gm37r
+ OxSPTNVULEHWHIuVWOfe1UwygQtxuFLjWRfKBD7nv56a3/TTboonwVlBmVMQftG/ZHjZ
+ 8wRZgttcO1SZ7iDWGcFKENfpoy25WO+mx/HIoauont7ZG2lOjX/huLbvPVqsR15OY3gc
+ vcUZTygDiEHeShKXZERDl7cITX1opVwXKAixk/FyitEwMdqV06O3xWF8xdsOO2LFPBS5
+ cNNo5vwJ+LeGqMGX3t9lRkUI2IL6TMjKUfThC2j0KkQoKI+uChLbSKHyXs2Qbc5wPnk9
+ UlyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1783325418; x=1783930218;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=NCqjXVBAcphH6bgcVF/FSO75xoQ/plzIdNFfJIMVrsY=;
+ b=PAWfozoxo7vlV1laI/a7Z4jvPA+yLPCYOp+2F/En7pPhxSrRqAzCYJ0ZXC65fg1K3x
+ CcSbEgyUQWNyaQk0CQaVBsJwuf6VBhysrDMgXaOXNbI4r90cgpbDJjkBXrktA1OtFvYG
+ lhXbpCLn0ZmNdspHDm9NayZnDoi30SD3AidYsf+86qSaKY0vQhgUgxyThpQfZESxoXkV
+ 0/rx9j16y4CHNSymV6+q/1KXyi7qsf1gnJKlFI4TCM1nhotJtQDQYvnCLqxBZtiM+c88
+ kddiL9Pdzbj0FMMczgdMdtyx89ugnBfNO8N86TPEL9QjVAI5k5BcQJU2ct3vdYe02ie8
+ +M3w==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RpWddiI8xGYwlTnR9/P8mMDFt6avYSKktWTtqr1GyCcYKsomJ20+l8G6lJj9dl7sUG649Iun8RNDQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yyb0iHYEXbmQEsP85RmE3f+CM3OEukib9ZkHFAxG4uVgsW4UaCT
+ sxDLcgSNoUBcry13518xxUGAjX3silBBG0FQlWS5QBALaWODNtXe6LV3VVyk3Brf3br1G8SGwZM
+ h+PM3hSQXb3NpXPmAfl8DYXspgKdAtja6skFnhQYFCLEH+KIXK5DdBVo=
+X-Gm-Gg: AfdE7cladqVVSdFwxn4R/aCIBOtn8FPIAwcBH/Bklcm7+lBwlq+xT0ndmguG3rqUb0d
+ Z6HbffVaRQqFtStylQyqeogYDm+SqT7gw0RL2S4LJ1nkRo562LCJXvahhc6Caz+nNWESZq1WcFN
+ wUo8mLIL9M6Uv16ivGw9cbZvCE9PBjYgbrems11dtIyf5ZTkt1AcpVKBPW1fMfi+0+iHLZArKCE
+ IaXLXQGvo1DWyvtdQUheNZwIi8XEhwyOBbG9G/9tQ7+6JVUz6gG5UisG3GP/eoUEVdqGLM2fVCM
+ 7qstqJ5AEoNmJ8E1qzO0f4prd+XQK+Oxzm2xVTicLLVQqz/QLNw452mh1hprM2zIaWZQoH70nSC
+ eZQ8LgWL9tyH5KepWmb3wmAzZtWvIyxWDUQqr3z7QzA7j4IRlI1IM72amJ4JkUw==
+X-Received: by 2002:a05:620a:450f:b0:92e:8a8d:ec1f with SMTP id
+ af79cd13be357-92e9a350504mr1294561385a.24.1783325417891; 
+ Mon, 06 Jul 2026 01:10:17 -0700 (PDT)
+X-Received: by 2002:a05:620a:450f:b0:92e:8a8d:ec1f with SMTP id
+ af79cd13be357-92e9a350504mr1294558085a.24.1783325417409; 
+ Mon, 06 Jul 2026 01:10:17 -0700 (PDT)
+Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-c12b628d632sm682303466b.31.2026.07.06.01.10.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 Jul 2026 01:10:16 -0700 (PDT)
+Message-ID: <7410bfdc-e1b8-4cb7-8e55-5908104290de@oss.qualcomm.com>
+Date: Mon, 6 Jul 2026 10:10:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 8/8] test/functional: anacapa: test ADC128D818
-To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alexander Hansen <alexander.hansen@9elements.com>,
- William de Abreu Pinho <williampinho@meta.com>,
- Emmanuel Blot <eblot@meta.com>, qemu-arm@nongnu.org,
- Corey Minyard <cminyard@mvista.com>
-References: <20260701-i2c-adc128d818-anacapa-v5-0-fe8292d86b38@free.fr>
- <20260701-i2c-adc128d818-anacapa-v5-8-fe8292d86b38@free.fr>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
- BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
- M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
- 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
- jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
- TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
- neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
- VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
- QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
- ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
- WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
- wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
- SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
- cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
- S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
- 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
- hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
- tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
- t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
- OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
- KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
- o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
- ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
- IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
- d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
- +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
- HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
- l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
- 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
- ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
- KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260701-i2c-adc128d818-anacapa-v5-8-fe8292d86b38@free.fr>
+Subject: Re: [PATCH 06/10] hw/ssi: xilinx_spips: Fix dummy phase handling
+Content-Language: en-US
+To: Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+References: <20260630135729.466264-1-bin.meng@processmission.com>
+ <20260630135729.466264-7-bin.meng@processmission.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260630135729.466264-7-bin.meng@processmission.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 7070088465244859437
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFeh+gB3y7VoxEN0SzBgfPMPMnPkNg4RTltI45OCkWIVWWAP5nGfbrH8vlIrvQVC8fhOIinNTHY0c5Qgjragv0OG0g2NYTZfBkkcIzEIE4Cc3A7s6YzBShCKMovz7tDwv4tx67oa7LBbw8gN//w9MeI8HnPu7xfc4+bLtLyGE2Rh/dTmAsB64MR9wQ2Fao6Z7x/JxxnhEVBmhTN6ybVD5UW3k8ojHkScUp8l2BMHUvufxsC/TqTSKFDJ5r2q0QTXh+deilWn9IW0wqejuW5lOlCR3jp0rIP0a9PNs0wR238/EViNq6RCMfdWkD7+zs4+xQUb8OaJNe03h/gAPL49weBrHanbFCmAv8uB79ViYOgBNxegGavRihiySzFjtc4emhHue/OAnTDfkoznsrwAGZPB5V3Kspe3VpUofAalrVInbZt8Jr9fQ84eIdZ4S4QYJkWotr+IW1mzxtnFsIGyw+Hqw6FrwVDIPzwGQK9ihM4WJN1/6PuWoxNpZwvjkGlHCbZ9crsgOJBEOBtS9WW/vmInEbgq1YQQFHszp5HfTI88wbqFK9YYzhWB3icL6KTfs5WiNSqKGNNT6/f8/t6PQPbrJjCku3GJXDege/yLu1090I/UrsWkiU5imwyd106f8nRt7XOkGH422baaWbHli/yWJRI2ixtR5jfM6OdbACYaw
-DKIM-Signature: a=rsa-sha256; bh=WAjn3amkZVXFmC+tRxqujawMsxmiAYugBResNjLb4xA=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1783325216; v=1;
- b=MBUIaITTNCg4n7x4Zq7HGxhPmfQ5hVxb6uIGo7bKTFoG2A7B+hgpKcsC1H6I24rmkixfV3VM
- 7uSR5X0Ur4DY8GrruZ4UMFxgq3hyxrhzbeQbB99V92mz0I+8du+hctVa+xfUhW4cy5vS3F6OCdZ
- etwSrj1hQOaqmTSOdTVzWy0XnrK5wm6OCz5ULiJZl66ieOOLWOwBWEbADzfEHKuSrH5znq8G2He
- Kon0+Wtjxbd/aYBhY1yWO0OI8XUUQO4Lcgz9T1icmpV18/DKwHpVhIC1OQi4vXo91aop3/bR9yD
- 3/FO4hA/Hs+ePBd8H8rJ+N+mVUP00nvRldKpGg5vRLIcw==
-Received-SPF: pass client-ip=51.210.91.11; envelope-from=clg@kaod.org;
- helo=smtpout2.mo536.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-Authority-Analysis: v=2.4 cv=VvoTxe2n c=1 sm=1 tr=0 ts=6a4b62ea cx=c_pps
+ a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
+ a=Am4ss40yAAAA:8 a=FRSEYCzRAAAA:8 a=ZmCK42fXN8tGheKeWVsA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22 a=lf-hbUz_c89dky27wAWH:22
+ a=H4N_Y-AU75W7NKDNhZlT:22
+X-Proofpoint-ORIG-GUID: UG1PTXx1tZpvT4Wdky4e5V7Tx40uBoA8
+X-Proofpoint-GUID: UG1PTXx1tZpvT4Wdky4e5V7Tx40uBoA8
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA2MDA4MSBTYWx0ZWRfX7w1BnR012aCF
+ KmEOs+UGNBUQpPZ7heXTxHrsNnQVKgaVnO+7UlQ7ThH//SibCUs8dvRHACkcfmC7xRDnUf2McOI
+ l3Dqwmb0DPqS0pT+ame+ZYlxkpMYHPo=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA2MDA4MSBTYWx0ZWRfX/tKFJIq61CGD
+ VbixAhnrjpeun6kWJyUp7SwWSduxy2QkOlcbOueasW2eytXQdNXR9/sbC5o9aNd6nxm52H8FrKy
+ IKvu+2E3DBYYXr+H2sF/XIKS7U0YbAaST31Uun9TVd+iyRpil4aGbBbyCN5CkZjc9RMgVWD/uNi
+ rhw9b38eRJvLMA9TAJSElPy+wU8/bwvaIp+53jNBNkfbGdCfXmMFmHpKrf4VIij78jeeTZn/XxV
+ q3J13nMi+M//a2OWpftAy72fG1kkE1lPzQYiJSo9F5ij4Y1Xgq6JxOWfP0ACikLLcK1ANIixT5U
+ LwBebFoZgqToacDXncZ1mqSh+zqX7HvRmDJ7WL1EkjQATHoyVrRp09WvcqFpkzbL1YzF5J3Nftp
+ v2fklpMnmNabk+D3s8zLB4tmd0Y/KjHjgDCCPtXyQNj+pyaxh6lN/yfUGxlbXkV7+cqNwOjYPiN
+ MIk/4U2s4uLSS6KLvBQ==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
+ definitions=2026-07-05_02,2026-07-03_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 bulkscore=0 priorityscore=1501 lowpriorityscore=0 adultscore=0
+ suspectscore=0 impostorscore=0 clxscore=1015 malwarescore=0 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607060081
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -139,120 +157,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/1/26 19:28, Emmanuel Blot wrote:
-> Verify the ADC128D818 on the Anacapa R-PDB (i2c8 mux channel 0): two
-> channels are driven with distinct voltages and each is checked to be
-> reported back independently through the kernel hwmon interface, and the
-> channel 0 limit registers are validated.
+On 30/6/26 15:57, Bin Meng wrote:
+> The ZynqMP generic FIFO encodes dummy phases as a number of
+> dummy cycles. QEMU's SSI bus transfers whole bytes, so the
+> controller model must convert the programmed cycle count to the
+> number of SSI byte transfers needed for the selected SPI, dual SPI
+> or quad SPI mode.
 > 
-> Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+> The legacy Xilinx QSPI snoop paths had the opposite problem after
+> the m25p80 dummy handling was fixed. They still treated each dummy
+> byte queued through the FIFO as a request to generate several SSI
+> transfers based on the current link width. The flash model now
+> consumes dummy phases as byte counts, so the manual FIFO path should
+> forward one SSI transfer per dummy byte.
+> 
+> Update the Xilinx QSPI dummy accounting consistently for the generic
+> FIFO, manual FIFO and LQSPI direct-read paths. Also make the command
+> table report the dummy byte counts consumed by m25p80 for dual and
+> quad output reads, and account for the mode byte before LQSPI data
+> reads begin.
+> 
+> This matches the ZynqMP TRM (ug1085, v2.2 [1]) description of the
+> generic FIFO dummy cycle entry and keeps the controller side aligned
+> with the flash model's dummy byte ownership.
+> 
+> The description of the genenic command fifo register says:
+> 
+>    When [receive, transmit, data_xfer] = [0,0,1], the [immediate_data]
+>    field represents the number of dummy cycle sent on the SPI interface.
+> 
+> [1] https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf
+>      table 24‐22, an example of Generic FIFO Contents for Quad I/O Read Command (EBh)
+> 
+> Fixes: ef06ca3946e2 ("xilinx_spips: Add support for RX discard and RX drain")
+> Fixes: c95997a39de6 ("xilinx_spips: Add support for the ZynqMP Generic QSPI")
+> Signed-off-by: Bin Meng <bin.meng@processmission.com>
 > ---
->   tests/functional/arm/test_aspeed_anacapa.py | 69 ++++++++++++++++++++++++++---
->   1 file changed, 63 insertions(+), 6 deletions(-)
 > 
-> diff --git a/tests/functional/arm/test_aspeed_anacapa.py b/tests/functional/arm/test_aspeed_anacapa.py
-> index 2b72e46b0e..49fab7ad09 100644
-> --- a/tests/functional/arm/test_aspeed_anacapa.py
-> +++ b/tests/functional/arm/test_aspeed_anacapa.py
-> @@ -2,24 +2,81 @@
->   #
->   # Functional test that boots the ASPEED machines
->   #
-> +# Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
-> +#
->   # SPDX-License-Identifier: GPL-2.0-or-later
->   
-> +import re
-> +import time
-> +
->   from qemu_test import Asset
-> +from qemu_test import exec_command_and_wait_for_pattern
->   from aspeed import FacebookAspeedTest
->   
->   
->   class AnacapaMachine(FacebookAspeedTest):
->   
->       ASSET_ANACAPA_FLASH = Asset(
-> -        'https://github.com/legoater/qemu-aspeed-boot/raw/c5f585f9f57843c0dc95e3865a57d92ec39cbb0b/images/anacapa-bmc/openbmc-20260616025349/obmc-phosphor-image-anacapa-20260616025349.static.mtd.xz',
-> -        'de3841fb6ed3085aec6424358ee6efc4b8ee85688361e5aa1987fd1acb7d3fb4')
-> +        "https://github.com/legoater/qemu-aspeed-boot/raw/c5f585f9f57843c0dc95e3865a57d92ec39cbb0b/images/anacapa-bmc/openbmc-20260616025349/obmc-phosphor-image-anacapa-20260616025349.static.mtd.xz",
-> +        "de3841fb6ed3085aec6424358ee6efc4b8ee85688361e5aa1987fd1acb7d3fb4",
-> +    )
-> +
-> +    ADC128D818_QOM_PATH = \
-> +        "/machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0x72/i2c.0/0x1f"
-> +    ADC128D818_MUX_CHANNEL = "/sys/bus/i2c/devices/8-0072/channel-0"
-> +    PROMPT = "root@anacapa:~#"
->   
->       def test_arm_ast2600_anacapa_openbmc(self):
->           image_path = self.uncompress(self.ASSET_ANACAPA_FLASH)
->   
-> -        self.do_test_arm_aspeed_openbmc('anacapa-bmc', image=image_path,
-> -                                        uboot='2019.04', cpu_id='0xf00',
-> -                                        soc='AST2600 rev A3')
-> +        self.do_test_arm_aspeed_openbmc(
-> +            "anacapa-bmc",
-> +            image=image_path,
-> +            uboot="2019.04",
-> +            cpu_id="0xf00",
-> +            soc="AST2600 rev A3",
-> +        )
->   
-> -if __name__ == '__main__':
-> +        exec_command_and_wait_for_pattern(self, "root", "Password:")
-> +        exec_command_and_wait_for_pattern(self, "0penBmc", "#")
-> +
-> +        self.adc_hwmon = self.resolve_adc128d818_hwmon()
-> +        self.assertIn(b"adc128d818", self.read_adc128d818("name"))
-> +
-> +        adc = self.ADC128D818_QOM_PATH
-> +        for ch0_mv, ch1_mv in ((108, 2000), (1280, 500)):
-> +            self.vm.cmd("qom-set", path=adc, property="ain0", value=ch0_mv)
-> +            self.vm.cmd("qom-set", path=adc, property="ain1", value=ch1_mv)
-> +            self.wait_adc128d818_value("in0_input", ch0_mv)
-> +            self.wait_adc128d818_value("in1_input", ch1_mv)
-> +
-> +        self.assertIn(b"2551", self.read_adc128d818("in0_max"))
-> +        self.assertRegex(self.read_adc128d818("in0_min"), rb"(?m)^0\r*$")
-> +
-> +    def resolve_adc128d818_hwmon(self):
-> +        out = self.read_adc128d818_console(
-> +            f"basename $(readlink {self.ADC128D818_MUX_CHANNEL})"
-> +        )
-> +        match = re.search(rb"i2c-(\d+)", out)
-> +        self.assertIsNotNone(match, "could not resolve ADC128D818 i2c bus")
-> +        bus = int(match.group(1))
-> +        return f"/sys/bus/i2c/devices/{bus}-001f/hwmon/hwmon*"
-> +
-> +    def read_adc128d818_console(self, command):
-> +        return exec_command_and_wait_for_pattern(self, command, self.PROMPT)
-> +
-> +    def read_adc128d818(self, attr):
-> +        return self.read_adc128d818_console(f"cat {self.adc_hwmon}/{attr}")
-> +
-> +    def wait_adc128d818_value(self, attr, expected, timeout=20):
+>   include/hw/ssi/xilinx_spips.h |   2 +-
+>   hw/ssi/xilinx_spips.c         | 120 ++++++++++++++++++++++++----------
+>   2 files changed, 88 insertions(+), 34 deletions(-)
 
-20s ...
 
-> +        needle = str(expected).encode()
-> +        deadline = time.monotonic() + timeout
-> +        while time.monotonic() < deadline:
-> +            if needle in self.read_adc128d818(attr):
-> +                return
-> +            time.sleep(2)
+> diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
+> index f6e717bc01..fa98dc2dd8 100644
+> --- a/hw/ssi/xilinx_spips.c
+> +++ b/hw/ssi/xilinx_spips.c
+> @@ -192,6 +192,10 @@
+>       FIELD(GQSPI_GF_SNAPSHOT, EXPONENT, 9, 1)
+>       FIELD(GQSPI_GF_SNAPSHOT, DATA_XFER, 8, 1)
+>       FIELD(GQSPI_GF_SNAPSHOT, IMMEDIATE_DATA, 0, 8)
+> +#define GQSPI_GF_MODE_SPI     1
+> +#define GQSPI_GF_MODE_DSPI    2
+> +#define GQSPI_GF_MODE_QSPI    3
 
-The first read of hwmon should already trigger a fresh read. If a sleep
-is required, which I doubt, please do it once and then assert.
 
-Thanks,
-
-C.
-
-> +        self.fail(f"{attr} did not reach {expected}")
+> @@ -457,6 +461,7 @@ static void xlnx_zynqmp_qspips_flush_fifo_g(XlnxZynqMPQSPIPS *s)
+>           int i;
+>   
+>           if (!s->regs[R_GQSPI_DATA_STS]) {
+> +            uint32_t prev_gf_snapshot = s->regs[R_GQSPI_GF_SNAPSHOT];
+>               uint8_t imm;
+>   
+>               s->regs[R_GQSPI_GF_SNAPSHOT] = fifo32_pop(&s->fifo_g);
+> @@ -484,7 +489,54 @@ static void xlnx_zynqmp_qspips_flush_fifo_g(XlnxZynqMPQSPIPS *s)
+>                   }
+>                   s->regs[R_GQSPI_DATA_STS] = 1ul << imm;
+>               } else {
+> -                s->regs[R_GQSPI_DATA_STS] = imm;
+> +                /*
+> +                 * When [receive, transmit, data_xfer] = [0,0,1], it represents
+> +                 * the number of dummy cycle sent on the SPI interface. We need
+> +                 * to convert the number of dummy cycles to bytes according to
+> +                 * the SPI mode being used.
+> +                 *
+> +                 * Ref: ug1085 v2.2 (December 2020) table 24‐22, an example of
+> +                 *      Generic FIFO Contents for Quad I/O Read Command (EBh)
+> +                 */
+> +                if (!ARRAY_FIELD_EX32(s->regs, GQSPI_GF_SNAPSHOT, TRANSMIT) &&
+> +                    !ARRAY_FIELD_EX32(s->regs, GQSPI_GF_SNAPSHOT, RECIEVE)) {
+> +                    uint8_t spi_mode = ARRAY_FIELD_EX32(s->regs, GQSPI_GF_SNAPSHOT, SPI_MODE);
+> +                    /*
+> +                     * Some ZynqMP GQSPI drivers, such as Linux, use the data
+> +                     * bus width in the dummy GENFIFO entry only to configure
+> +                     * the controller mode. The immediate value is already
+> +                     * the number of dummy cycles for the dummy phase, which
+> +                     * follows the address bus width. Reuse the previous TX
+> +                     * phase mode to convert cycles to SSI bytes.
+> +                     *
+> +                     * This does not make the model Linux-only. U-Boot emits
+> +                     * the dummy entry with op->dummy.buswidth, so the entry
+> +                     * mode already matches the dummy phase. Its opcode and
+> +                     * address phases are immediate entries, not DATA_XFER TX
+> +                     * entries, so the override below is not taken for U-Boot.
+> +                     */
+> +                    if (FIELD_EX32(prev_gf_snapshot, GQSPI_GF_SNAPSHOT,
+> +                                   DATA_XFER) &&
+> +                        FIELD_EX32(prev_gf_snapshot, GQSPI_GF_SNAPSHOT,
+> +                                   TRANSMIT) &&
+> +                        !FIELD_EX32(prev_gf_snapshot, GQSPI_GF_SNAPSHOT,
+> +                                    RECIEVE)) {
+> +                        spi_mode = FIELD_EX32(prev_gf_snapshot,
+> +                                              GQSPI_GF_SNAPSHOT, SPI_MODE);
+> +                    }
 > +
-> +
-> +if __name__ == "__main__":
->       FacebookAspeedTest.main()
-> 
+> +                    if (spi_mode == GQSPI_GF_MODE_QSPI) {
+> +                        s->regs[R_GQSPI_DATA_STS] = ROUND_UP(imm * 4, 8) / 8;
+> +                    } else if (spi_mode == GQSPI_GF_MODE_DSPI) {
+> +                        s->regs[R_GQSPI_DATA_STS] = ROUND_UP(imm * 2, 8) / 8;
+> +                    } else if (spi_mode == GQSPI_GF_MODE_SPI) {
+> +                        s->regs[R_GQSPI_DATA_STS] = ROUND_UP(imm * 1, 8) / 8;
+> +                    } else {
+> +                        qemu_log_mask(LOG_GUEST_ERROR, "Unknown SPI MODE: 0x%x ", spi_mode);
 
+Is it safe to let the previous s->regs[R_GQSPI_DATA_STS] value?
+
+Alternatively simpler as:
+
+  if (spi_mode) {
+      s->regs[R_GQSPI_DATA_STS] = 2 * (spi_mode - 1) * imm;
+
+> +                    }
+> +                } else {
+> +                    s->regs[R_GQSPI_DATA_STS] = imm;
+> +                }
+>               }
+>           }
+>           /* Zero length transfer check */
+> @@ -550,7 +602,7 @@ static void xlnx_zynqmp_qspips_flush_fifo_g(XlnxZynqMPQSPIPS *s)
+>       }
+>   }
 

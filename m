@@ -4,137 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E46FBC43458
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 08:10:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D079BC43458
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Jul 2026 08:20:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wgePI-0008Fz-O1; Mon, 06 Jul 2026 04:10:24 -0400
+	id 1wgeYb-0002OY-B6; Mon, 06 Jul 2026 04:20:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wgePH-0008DR-2r
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 04:10:23 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ id 1wgeYM-0002Km-Eq
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 04:19:49 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wgePE-0003GG-Qk
- for qemu-arm@nongnu.org; Mon, 06 Jul 2026 04:10:22 -0400
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+ id 1wgeYK-0005oq-IF
+ for qemu-arm@nongnu.org; Mon, 06 Jul 2026 04:19:46 -0400
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66641Swe3593989
- for <qemu-arm@nongnu.org>; Mon, 6 Jul 2026 08:10:19 GMT
+ 66678ON23977007
+ for <qemu-arm@nongnu.org>; Mon, 6 Jul 2026 08:19:43 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- NCqjXVBAcphH6bgcVF/FSO75xoQ/plzIdNFfJIMVrsY=; b=eu3qy3rS5QeAtwpE
- JfAPe8inwcPZ0eOYYFj3lJZ1Qzc9iIA4ELDEwSShdxqkq55zh4EQCQqI70sorDuD
- gfvB/t6GSZco1640nw5Na1jq32rEt25qiUvwPrtDU2PC2yd3i8UXtNAoHN9kYVnR
- SL/YdDLedbeG489oeKEFWYsAfTmZqHk9axfN3QnmYvbjD1QMeIjaf3a+/rc24UBy
- a4to5ig9ii+b4AFJPjdvhhS0o9tR2otz6NQg01llcL5Uu5H74SSIW0dG/Hwnnpjr
- YoE4WjYtSBbU84KTeB+bV33jsInfJCa+wQQaHAkCouVAgyCOqtnpAQtyOJbTraZI
- 6XKcTA==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f6qvgwhfd-1
+ acUH6e5oOeBr+Cko9BRdr9TQwBnwFSwXZjhn4kQ3eWM=; b=GmrFM1XTYLxa8P2y
+ 3QimuoUXBb27lFeDFIwum+09NMX7oysMX89k4cmP2KJ0/1x45XTryPEeFgVgBxlv
+ H8cbIkehJQp5Fxs3hb+YJz4M4StfYh8COE0Grwkw1K4Gnv2dAGJJsNxg6neF1T3i
+ TWvGqhodWXkpuOGeVaN9gQCs9OrTIPjacqwKNNso04MyK10gA3kxfCFaCF7FePpE
+ lD4sn/UZUrA0B19RhJHLJu66VQz1hsjjox5ZCFDnWUTR3jpThvCGcCuEAO2d7HvK
+ y2VquXtHiYAu9wDq0t6BW2UkS7WBNJZJUAAAJlAG5CsE13tw7023e+cXISgMQy05
+ mRsQAg==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f87q7g8tp-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 08:10:18 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-92e8004d60eso442775185a.1
- for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 01:10:18 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 08:19:42 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-92e9a2b95b5so423998485a.2
+ for <qemu-arm@nongnu.org>; Mon, 06 Jul 2026 01:19:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1783325418; x=1783930218; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1783325982; x=1783930782; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=NCqjXVBAcphH6bgcVF/FSO75xoQ/plzIdNFfJIMVrsY=;
- b=P/GCTI/jYqj3O4DFLri/KG9db/0UuwviQ0Hkx6B4ChyqQrSFQBiUaRT8gN9P8Gm37r
- OxSPTNVULEHWHIuVWOfe1UwygQtxuFLjWRfKBD7nv56a3/TTboonwVlBmVMQftG/ZHjZ
- 8wRZgttcO1SZ7iDWGcFKENfpoy25WO+mx/HIoauont7ZG2lOjX/huLbvPVqsR15OY3gc
- vcUZTygDiEHeShKXZERDl7cITX1opVwXKAixk/FyitEwMdqV06O3xWF8xdsOO2LFPBS5
- cNNo5vwJ+LeGqMGX3t9lRkUI2IL6TMjKUfThC2j0KkQoKI+uChLbSKHyXs2Qbc5wPnk9
- UlyA==
+ bh=acUH6e5oOeBr+Cko9BRdr9TQwBnwFSwXZjhn4kQ3eWM=;
+ b=KIjNzcMOSpj9INz3tYCbqkNkLZTJTe/tNkPc2ON4482fACVOB3TxvDugoYzEorGJnn
+ au9OYlVJyVfKXKm0A9GxlCrsFyyjqAZV60BsvV0EtDQYCZKrHAAtmOKZoiGlUiHpjOCE
+ RYo6K8ay0JYzOAyE3q+RG8awLwe/j5+u4Pv3E7oGh/qao1KDNpm9KlMdmzJfelRDSXQb
+ ocgZaMAd8d8RdZlE1txMQTi/GiZwwUk8cPR+fpEFuLu6tFiL5Xbv4s2CV3yXRl5DcQ+1
+ TiDFGMYzUktD6x2+8SN9SqVIGVBvD6xEKnZUN7Ob6VJyDtOMIyXEzEnIg5VeZ7b2CRg3
+ tFZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783325418; x=1783930218;
+ d=1e100.net; s=20251104; t=1783325982; x=1783930782;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=NCqjXVBAcphH6bgcVF/FSO75xoQ/plzIdNFfJIMVrsY=;
- b=PAWfozoxo7vlV1laI/a7Z4jvPA+yLPCYOp+2F/En7pPhxSrRqAzCYJ0ZXC65fg1K3x
- CcSbEgyUQWNyaQk0CQaVBsJwuf6VBhysrDMgXaOXNbI4r90cgpbDJjkBXrktA1OtFvYG
- lhXbpCLn0ZmNdspHDm9NayZnDoi30SD3AidYsf+86qSaKY0vQhgUgxyThpQfZESxoXkV
- 0/rx9j16y4CHNSymV6+q/1KXyi7qsf1gnJKlFI4TCM1nhotJtQDQYvnCLqxBZtiM+c88
- kddiL9Pdzbj0FMMczgdMdtyx89ugnBfNO8N86TPEL9QjVAI5k5BcQJU2ct3vdYe02ie8
- +M3w==
+ bh=acUH6e5oOeBr+Cko9BRdr9TQwBnwFSwXZjhn4kQ3eWM=;
+ b=X43K9l4AkgNP9hQ7y+68IWah+UneduSPIsKK8DZIjshefGiP6I0Dv6dg1rqC28Zho8
+ H8K4r9v8Ij4kfHnZIBBuOsW8zDPMBkEB0jYgfvVhLa/sqnDkeOLAfUUNyugPaqC4aev9
+ FykzVCRfNGeMgT/rmbBbvRWA2IVgoYUiRjyJU7bI253SyI83oR/Mr6UhN0PZ3G0I8GFr
+ K1EJ5UyO3XpN782UejU78lQFAOXmzy1fcnWWY4HIn3tWSv70PlX6Ynsyan5mvz810c48
+ CdGYt91EmdO/IGKWC9FaT7MUx9dI/sfQuW9OWs2ZTBW7rcZzdxrC/VQi+uN/dS5WVL6T
+ KUAw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpWddiI8xGYwlTnR9/P8mMDFt6avYSKktWTtqr1GyCcYKsomJ20+l8G6lJj9dl7sUG649Iun8RNDQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yyb0iHYEXbmQEsP85RmE3f+CM3OEukib9ZkHFAxG4uVgsW4UaCT
- sxDLcgSNoUBcry13518xxUGAjX3silBBG0FQlWS5QBALaWODNtXe6LV3VVyk3Brf3br1G8SGwZM
- h+PM3hSQXb3NpXPmAfl8DYXspgKdAtja6skFnhQYFCLEH+KIXK5DdBVo=
-X-Gm-Gg: AfdE7cladqVVSdFwxn4R/aCIBOtn8FPIAwcBH/Bklcm7+lBwlq+xT0ndmguG3rqUb0d
- Z6HbffVaRQqFtStylQyqeogYDm+SqT7gw0RL2S4LJ1nkRo562LCJXvahhc6Caz+nNWESZq1WcFN
- wUo8mLIL9M6Uv16ivGw9cbZvCE9PBjYgbrems11dtIyf5ZTkt1AcpVKBPW1fMfi+0+iHLZArKCE
- IaXLXQGvo1DWyvtdQUheNZwIi8XEhwyOBbG9G/9tQ7+6JVUz6gG5UisG3GP/eoUEVdqGLM2fVCM
- 7qstqJ5AEoNmJ8E1qzO0f4prd+XQK+Oxzm2xVTicLLVQqz/QLNw452mh1hprM2zIaWZQoH70nSC
- eZQ8LgWL9tyH5KepWmb3wmAzZtWvIyxWDUQqr3z7QzA7j4IRlI1IM72amJ4JkUw==
-X-Received: by 2002:a05:620a:450f:b0:92e:8a8d:ec1f with SMTP id
- af79cd13be357-92e9a350504mr1294561385a.24.1783325417891; 
- Mon, 06 Jul 2026 01:10:17 -0700 (PDT)
-X-Received: by 2002:a05:620a:450f:b0:92e:8a8d:ec1f with SMTP id
- af79cd13be357-92e9a350504mr1294558085a.24.1783325417409; 
- Mon, 06 Jul 2026 01:10:17 -0700 (PDT)
+ AHgh+Rpo3XORIteBAC+G+wbDG2hnIyLdnyWfXs9PgC7CiBI++DHYj+29ZiO7qxS8s6ZKThE9Gjh0ggXlSg==@nongnu.org
+X-Gm-Message-State: AOJu0YzJVhaR1nxpwhvN6mmevFmC44blvdmogRob6AQIeBP/yZa8pbLx
+ HiGU8oVYsOLUyn96VELw0WsmMmqdhiQpJ9R5KXaKa49ECC+DtK+fJ45LWTuEtk7pvYUAtLPYqq4
+ SsO13vAFuaY3JxSw+iZlRR3Ta+vvTBdzstc7MPOA1rVWuXIbbaWgRfF8=
+X-Gm-Gg: AfdE7cn0arUHW3Ft9ojbn4pcTFSBYoGeYcGQ++7l2REeizjGdKyPV1cn5noeShp+NaH
+ Q3Nd1k5DuLQDylyXqHno+9zrF6AY5WFH0FMgnqS8L/PoPP0e3iB2Cai6TgtcxvzBl1rIcJKvG62
+ S03AySXqs2C+ZXKeTYeDfQGFcQqTWFptjA+AD3auhzrICanYXw7cCFN5Zw67EvV7mg2rHZCtOxh
+ IC1snkmVu1ylCTnT3rSuF+oGpxomNUwPUAM46lyac6Wa7wgg5g6wudpkbj1WrsUka0gSYSnBKFS
+ pdS+HvyK+01ebwvXHYX6P9gzIirUTMFuH9ybQarhEm2nQSE/YffnrVROIErrPCGGPm1xFVdVa04
+ OJWcVq7NqEh5LW0TUJyk2r2UvDzE7DIC2BBZys/wzzkAggNjatQbZL2TRbDrXnw==
+X-Received: by 2002:a05:620a:1a18:b0:915:6758:24d8 with SMTP id
+ af79cd13be357-92e9a41d6a9mr1190957985a.42.1783325982304; 
+ Mon, 06 Jul 2026 01:19:42 -0700 (PDT)
+X-Received: by 2002:a05:620a:1a18:b0:915:6758:24d8 with SMTP id
+ af79cd13be357-92e9a41d6a9mr1190952485a.42.1783325980772; 
+ Mon, 06 Jul 2026 01:19:40 -0700 (PDT)
 Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c12b628d632sm682303466b.31.2026.07.06.01.10.16
+ a640c23a62f3a-c12b62c2d37sm684884566b.42.2026.07.06.01.19.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Jul 2026 01:10:16 -0700 (PDT)
-Message-ID: <7410bfdc-e1b8-4cb7-8e55-5908104290de@oss.qualcomm.com>
-Date: Mon, 6 Jul 2026 10:10:15 +0200
+ Mon, 06 Jul 2026 01:19:40 -0700 (PDT)
+Message-ID: <bb4b7240-ea2c-4738-80e1-83e259f3ef4b@oss.qualcomm.com>
+Date: Mon, 6 Jul 2026 10:19:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 06/10] hw/ssi: xilinx_spips: Fix dummy phase handling
+Subject: Re: [PATCH 00/10] hw/{block,ssi}: Fix spi-nor flash dummy byte
+ handling
 Content-Language: en-US
 To: Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>
 Cc: Alistair Francis <alistair@alistair23.me>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goat?= =?UTF-8?Q?er?= <clg@kaod.org>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+ Hanna Reitz <hreitz@redhat.com>, Hao Wu <wuhaotsh@google.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
+ Kane Chen <kane_chen@aspeedtech.com>, Kevin Wolf <kwolf@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org
 References: <20260630135729.466264-1-bin.meng@processmission.com>
- <20260630135729.466264-7-bin.meng@processmission.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260630135729.466264-7-bin.meng@processmission.com>
+In-Reply-To: <20260630135729.466264-1-bin.meng@processmission.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=VvoTxe2n c=1 sm=1 tr=0 ts=6a4b62ea cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA2MDA4MiBTYWx0ZWRfXzO/XIHOC7TR/
+ gapELEWKwJV9+juBAyoys4hhBKfE3eq+hIY9HZB2GkyLmOsEEVRPVvseuSzJZi7RaQwf+ZsdRxM
+ ZerNxxBzrlI85Tbws+H9EozF4+8xDu5R2E5+WkWTt5HRc67DErEXFxY5qrSf5SbsTxa5aZfVT0B
+ eGWbtMpHIQS6AO2IxLEYXzuaLtRz3kjE1bMzgndgI9aiDv8am0AVKPDX+2SS9zxwXXs0nfaONeY
+ n3GVHep9x8sA0rVBSY3L70FyVszEaxUaoznwxpyALdnk3ZSrTHHLS7ps2P9sN1UC6R11jNnyPx5
+ tj1PjUOfGbJYDPK+4fhp6KB1ghXvRPXxrtrfD9QaxwTGk6SqjD0foyQU7PR6W3kifHIF2WJU56W
+ 2ck1H4oep7Dz/R3z4goWaRkKd0Kwi/H60weI0+bjCpjv+zu1gy/M2fMLN+aaQd5Vt1M3qbhR+qv
+ SfmVrFsGWYDqJeRDIFQ==
+X-Proofpoint-ORIG-GUID: uxoveM0_nG922YIPruIlrTjB5xkKcgxT
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA2MDA4MiBTYWx0ZWRfX6LAZsBhXd8uC
+ 8Q+Jz6EotSyDWEHomQBe1crBDJOYHeqQOwePVNe+EWxmi/BR0LLVBN48zYLbsNnt9gHfwvSLTLZ
+ CsGWB+iDjlej4noIzYssjKrIg0F5uXI=
+X-Proofpoint-GUID: uxoveM0_nG922YIPruIlrTjB5xkKcgxT
+X-Authority-Analysis: v=2.4 cv=f9N4wuyM c=1 sm=1 tr=0 ts=6a4b651e cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
- a=Am4ss40yAAAA:8 a=FRSEYCzRAAAA:8 a=ZmCK42fXN8tGheKeWVsA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22 a=lf-hbUz_c89dky27wAWH:22
- a=H4N_Y-AU75W7NKDNhZlT:22
-X-Proofpoint-ORIG-GUID: UG1PTXx1tZpvT4Wdky4e5V7Tx40uBoA8
-X-Proofpoint-GUID: UG1PTXx1tZpvT4Wdky4e5V7Tx40uBoA8
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA2MDA4MSBTYWx0ZWRfX7w1BnR012aCF
- KmEOs+UGNBUQpPZ7heXTxHrsNnQVKgaVnO+7UlQ7ThH//SibCUs8dvRHACkcfmC7xRDnUf2McOI
- l3Dqwmb0DPqS0pT+ame+ZYlxkpMYHPo=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA2MDA4MSBTYWx0ZWRfX/tKFJIq61CGD
- VbixAhnrjpeun6kWJyUp7SwWSduxy2QkOlcbOueasW2eytXQdNXR9/sbC5o9aNd6nxm52H8FrKy
- IKvu+2E3DBYYXr+H2sF/XIKS7U0YbAaST31Uun9TVd+iyRpil4aGbBbyCN5CkZjc9RMgVWD/uNi
- rhw9b38eRJvLMA9TAJSElPy+wU8/bwvaIp+53jNBNkfbGdCfXmMFmHpKrf4VIij78jeeTZn/XxV
- q3J13nMi+M//a2OWpftAy72fG1kkE1lPzQYiJSo9F5ij4Y1Xgq6JxOWfP0ACikLLcK1ANIixT5U
- LwBebFoZgqToacDXncZ1mqSh+zqX7HvRmDJ7WL1EkjQATHoyVrRp09WvcqFpkzbL1YzF5J3Nftp
- v2fklpMnmNabk+D3s8zLB4tmd0Y/KjHjgDCCPtXyQNj+pyaxh6lN/yfUGxlbXkV7+cqNwOjYPiN
- MIk/4U2s4uLSS6KLvBQ==
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
+ a=VwQbUJbxAAAA:8 a=pGLkceISAAAA:8 a=B6AAU58NjM16s_FHVf8A:9 a=QEXdDO2ut3YA:10
+ a=IoWCM6iH3mJn3m4BftBB:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
  definitions=2026-07-05_02,2026-07-03_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 bulkscore=0 priorityscore=1501 lowpriorityscore=0 adultscore=0
- suspectscore=0 impostorscore=0 clxscore=1015 malwarescore=0 phishscore=0
+ lowpriorityscore=0 adultscore=0 impostorscore=0 bulkscore=0 suspectscore=0
+ clxscore=1015 spamscore=0 phishscore=0 priorityscore=1501 malwarescore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607060081
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607060082
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -157,134 +165,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Bin,
+
 On 30/6/26 15:57, Bin Meng wrote:
-> The ZynqMP generic FIFO encodes dummy phases as a number of
-> dummy cycles. QEMU's SSI bus transfers whole bytes, so the
-> controller model must convert the programmed cycle count to the
-> number of SSI byte transfers needed for the selected SPI, dual SPI
-> or quad SPI mode.
 > 
-> The legacy Xilinx QSPI snoop paths had the opposite problem after
-> the m25p80 dummy handling was fixed. They still treated each dummy
-> byte queued through the FIFO as a request to generate several SSI
-> transfers based on the current link width. The flash model now
-> consumes dummy phases as byte counts, so the manual FIFO path should
-> forward one SSI transfer per dummy byte.
+> This series fixes dummy-cycle accounting for SPI NOR fast-read
+> operations across the m25p80 flash model and several SSI controller
+> models.
 > 
-> Update the Xilinx QSPI dummy accounting consistently for the generic
-> FIFO, manual FIFO and LQSPI direct-read paths. Also make the command
-> table report the dummy byte counts consumed by m25p80 for dual and
-> quad output reads, and account for the mode byte before LQSPI data
-> reads begin.
-> 
-> This matches the ZynqMP TRM (ug1085, v2.2 [1]) description of the
-> generic FIFO dummy cycle entry and keeps the controller side aligned
-> with the flash model's dummy byte ownership.
-> 
-> The description of the genenic command fifo register says:
-> 
->    When [receive, transmit, data_xfer] = [0,0,1], the [immediate_data]
->    field represents the number of dummy cycle sent on the SPI interface.
-> 
-> [1] https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf
->      table 24‐22, an example of Generic FIFO Contents for Quad I/O Read Command (EBh)
-> 
-> Fixes: ef06ca3946e2 ("xilinx_spips: Add support for RX discard and RX drain")
-> Fixes: c95997a39de6 ("xilinx_spips: Add support for the ZynqMP Generic QSPI")
-> Signed-off-by: Bin Meng <bin.meng@processmission.com>
-> ---
-> 
->   include/hw/ssi/xilinx_spips.h |   2 +-
->   hw/ssi/xilinx_spips.c         | 120 ++++++++++++++++++++++++----------
->   2 files changed, 88 insertions(+), 34 deletions(-)
+> The root problem is that the affected code paths mixed two different
+> units. Flash datasheets and controller registers often describe
+> fast-read dummy phases in clock cycles, while the SSI bus interface used
+> by these models transfers byte-sized words to the flash. As a result,
+> some paths treated cycle counts as byte counts directly, and other paths
+> compensated in controller-specific ways that duplicated flash command
+> semantics.
 
 
-> diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
-> index f6e717bc01..fa98dc2dd8 100644
-> --- a/hw/ssi/xilinx_spips.c
-> +++ b/hw/ssi/xilinx_spips.c
-> @@ -192,6 +192,10 @@
->       FIELD(GQSPI_GF_SNAPSHOT, EXPONENT, 9, 1)
->       FIELD(GQSPI_GF_SNAPSHOT, DATA_XFER, 8, 1)
->       FIELD(GQSPI_GF_SNAPSHOT, IMMEDIATE_DATA, 0, 8)
-> +#define GQSPI_GF_MODE_SPI     1
-> +#define GQSPI_GF_MODE_DSPI    2
-> +#define GQSPI_GF_MODE_QSPI    3
+> The final patch documents the intended ownership boundary: flash models
+> own command semantics and dummy-byte consumption, while controller
+> models own hardware-generated dummy phases and cycle-to-byte conversion.
 
+I'd blame the API. I'd feel safer having the block/ layer use bit
+cycles, and a core layer converting bits to bytes when calling the
+SSI layer. Maybe too late to improve. The documentation you added
+is helpful, but I'm pretty sure we'll introduce more regressions.
+Anyway, thanks for your work :)
 
-> @@ -457,6 +461,7 @@ static void xlnx_zynqmp_qspips_flush_fifo_g(XlnxZynqMPQSPIPS *s)
->           int i;
->   
->           if (!s->regs[R_GQSPI_DATA_STS]) {
-> +            uint32_t prev_gf_snapshot = s->regs[R_GQSPI_GF_SNAPSHOT];
->               uint8_t imm;
->   
->               s->regs[R_GQSPI_GF_SNAPSHOT] = fifo32_pop(&s->fifo_g);
-> @@ -484,7 +489,54 @@ static void xlnx_zynqmp_qspips_flush_fifo_g(XlnxZynqMPQSPIPS *s)
->                   }
->                   s->regs[R_GQSPI_DATA_STS] = 1ul << imm;
->               } else {
-> -                s->regs[R_GQSPI_DATA_STS] = imm;
-> +                /*
-> +                 * When [receive, transmit, data_xfer] = [0,0,1], it represents
-> +                 * the number of dummy cycle sent on the SPI interface. We need
-> +                 * to convert the number of dummy cycles to bytes according to
-> +                 * the SPI mode being used.
-> +                 *
-> +                 * Ref: ug1085 v2.2 (December 2020) table 24‐22, an example of
-> +                 *      Generic FIFO Contents for Quad I/O Read Command (EBh)
-> +                 */
-> +                if (!ARRAY_FIELD_EX32(s->regs, GQSPI_GF_SNAPSHOT, TRANSMIT) &&
-> +                    !ARRAY_FIELD_EX32(s->regs, GQSPI_GF_SNAPSHOT, RECIEVE)) {
-> +                    uint8_t spi_mode = ARRAY_FIELD_EX32(s->regs, GQSPI_GF_SNAPSHOT, SPI_MODE);
-> +                    /*
-> +                     * Some ZynqMP GQSPI drivers, such as Linux, use the data
-> +                     * bus width in the dummy GENFIFO entry only to configure
-> +                     * the controller mode. The immediate value is already
-> +                     * the number of dummy cycles for the dummy phase, which
-> +                     * follows the address bus width. Reuse the previous TX
-> +                     * phase mode to convert cycles to SSI bytes.
-> +                     *
-> +                     * This does not make the model Linux-only. U-Boot emits
-> +                     * the dummy entry with op->dummy.buswidth, so the entry
-> +                     * mode already matches the dummy phase. Its opcode and
-> +                     * address phases are immediate entries, not DATA_XFER TX
-> +                     * entries, so the override below is not taken for U-Boot.
-> +                     */
-> +                    if (FIELD_EX32(prev_gf_snapshot, GQSPI_GF_SNAPSHOT,
-> +                                   DATA_XFER) &&
-> +                        FIELD_EX32(prev_gf_snapshot, GQSPI_GF_SNAPSHOT,
-> +                                   TRANSMIT) &&
-> +                        !FIELD_EX32(prev_gf_snapshot, GQSPI_GF_SNAPSHOT,
-> +                                    RECIEVE)) {
-> +                        spi_mode = FIELD_EX32(prev_gf_snapshot,
-> +                                              GQSPI_GF_SNAPSHOT, SPI_MODE);
-> +                    }
-> +
-> +                    if (spi_mode == GQSPI_GF_MODE_QSPI) {
-> +                        s->regs[R_GQSPI_DATA_STS] = ROUND_UP(imm * 4, 8) / 8;
-> +                    } else if (spi_mode == GQSPI_GF_MODE_DSPI) {
-> +                        s->regs[R_GQSPI_DATA_STS] = ROUND_UP(imm * 2, 8) / 8;
-> +                    } else if (spi_mode == GQSPI_GF_MODE_SPI) {
-> +                        s->regs[R_GQSPI_DATA_STS] = ROUND_UP(imm * 1, 8) / 8;
-> +                    } else {
-> +                        qemu_log_mask(LOG_GUEST_ERROR, "Unknown SPI MODE: 0x%x ", spi_mode);
+> Some background:
+> 
+> While recently working on some device modeling, I hit this issue
+> again. I then realized that I had sent a fix series for it more than
+> five years ago, but it never made it upstream.
+> 
+> This series picks up that old work, refreshes it against the current
+> tree, and fixes several issues in the SPI controller models. The original
+> series is available at [1]. I have tried to verify all the SPI controller
+> changes by booting real-world guest software to ensure the change does
+> not break anything.
+> 
+> [1] https://lore.kernel.org/qemu-devel/20210114150902.11515-1-bmeng.cn@gmail.com/
 
-Is it safe to let the previous s->regs[R_GQSPI_DATA_STS] value?
-
-Alternatively simpler as:
-
-  if (spi_mode) {
-      s->regs[R_GQSPI_DATA_STS] = 2 * (spi_mode - 1) * imm;
-
-> +                    }
-> +                } else {
-> +                    s->regs[R_GQSPI_DATA_STS] = imm;
-> +                }
->               }
->           }
->           /* Zero length transfer check */
-> @@ -550,7 +602,7 @@ static void xlnx_zynqmp_qspips_flush_fifo_g(XlnxZynqMPQSPIPS *s)
->       }
->   }
+(Could we add this as a functional test?)
 

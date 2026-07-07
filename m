@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBFB5C44501
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 22:46:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8688EC43602
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 22:46:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whEWA-0001WD-JQ; Tue, 07 Jul 2026 18:43:54 -0400
+	id 1whEWE-0001af-Ub; Tue, 07 Jul 2026 18:43:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1whEW8-0001V8-IW
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 18:43:52 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ id 1whEWD-0001Xg-D4
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 18:43:57 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1whEW6-0004ES-Ue
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 18:43:52 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-2cc6ae3e7f1so577625ad.0
- for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 15:43:50 -0700 (PDT)
+ id 1whEWB-0004Fj-RP
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 18:43:57 -0400
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-2cad4170e8eso1053795ad.3
+ for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 15:43:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783464229; x=1784069029; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783464234; x=1784069034; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=O86QJm1XxClMyzD31RebPc3Pom31UHvgzzbgIM9gz34=;
- b=NtsQxGbU8QBnvDHome9b5+6rO+5HcNMRxjVbin6dcSl+DLevyJntxQ1xM5xj+drZ6A
- nJ2Et3C3pJ1Cdb+YWW2icSPp8iGypnk3tvqCoQmhglQioGCUKd8oo5fYCQh9Yu4CQUCo
- UNGE/mJTIywAwx8qNxRr9KUPaA+dNQzuJCJl0j0sRW3xy9xhwfZ0VUAP8dn0xcN3sAbh
- i6iQwB+yEYWbPEaV3W99stug7X1qtxFFjoEbTT+JDM71XJnUrYVwIcSc7dWSQebJjylF
- MvPtV3woL6Z9YegJl94pV10+dJTKTf9vrMz4wvMHmZ9ZZXFu25zD/2WsNckytd753uBM
- p9VQ==
+ :message-id:reply-to;
+ bh=EnMMO6XRJvcdXze8ZNpj726nr1qkqlMgc3hRmwu5zpY=;
+ b=Go0yhxWBWqFiJe4snu8lkvfxWh8FkYjMJoCzgDHU3gkzHlp8A9Cr6OlctPc0OhITD6
+ 71jWGcW4coz5EZVzCg7mSKedOKamcQAPpGqimZ48qQdChHei1D7E4NoSEcl1LlxJedTG
+ Vm+0wo+QWEcbu0zlnK0n4qBQjUQE0zsMjqQvzY2wIfTlvLItMMjzUUUMeHMhOt5uGoFx
+ /LvaLpjhoNJr1JCXtC6YNCL4014i4REcHOrHrejiBJOAUYAgRTZRZHUiCmbrnh1gDAou
+ IOTTkUUtDbSaAkUKXlADFTOQqSSDpRRg7sNoNQyu5Mw/v9kslyDCzkDsjKSOvnkeuMZN
+ Tr+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783464229; x=1784069029;
+ d=1e100.net; s=20251104; t=1783464234; x=1784069034;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=O86QJm1XxClMyzD31RebPc3Pom31UHvgzzbgIM9gz34=;
- b=cTY+U12CqOztdAG/ARr7D4MkkjBsExWMbtoOK48B0FWuFnX5xVpSz0jntPxP3q0EQD
- wzXDTPGj6XFPjy+I8EE9NyHziSBR96QzcPK+AvskjgR9D60msuZ02Fn/ylj8YY4D8HBE
- Jir9v+40WUvUmtmhKrdHguUIwEUSdjl5vtw90mgimwp7ecvvrL5BF7thx0IEulS/kYYk
- 7EbkT6jTblaQr2+wOw4KoxFmLmRzgroxpTwdoX210Y9YwHjoXFhCMKRXuS/HYKpYAvs+
- V343AoBEP8EjBG1RvxUSt+qw9Jnw8EokXCk9N/HPURtjvmT2O3TSpZPHjEzK79U0YIs/
- A3IA==
+ :to:cc:subject:date:message-id:reply-to;
+ bh=EnMMO6XRJvcdXze8ZNpj726nr1qkqlMgc3hRmwu5zpY=;
+ b=EeNj0wVSzq5bTlgxxm++FfwkYry4QVti+Xbv6zj5GBOu1HY1xGTtXpxWLRqqjaZ+Vd
+ gLWpZoL6g9Vu5hgcwf6CbthZ1gg5wxLU9/2QqpGvXxqOv9ROQVU8I4T3UQ814W2dTq0x
+ bTCKXFZwBxgsJ3mH2yZH94m7JDoj2xFPDzQKIryisoAIWREHIIeX3U99Hfw+Y60YBHZp
+ DWDP8VecqfSR4zczB5VaiudTypltsyixpr5JnpZKmJnc4a1AUNklY5f8hP9DzvzeSawx
+ eEXdaa5LPEd3r40M323J78QspGB2Dtspu6tPebHqxsk9c124wCpx2qfBM1VPxKRKi8uE
+ AOww==
 X-Forwarded-Encrypted: i=1;
- AHgh+Roaj4qEV2eNY7syrfcAmMFPGma2j4VYzXk9FaA27fLcnIC9Kvj3iX3sxY2ASwuyEF6bHZl7I2pG+g==@nongnu.org
-X-Gm-Message-State: AOJu0Yzw7TDzIQikCxZaUzSm/qYENUxXiQSne3k1nwKzhhWLZo0Wswcu
- ED51eBpkaGnCyqMqU3mw39ni3pfZOzMroqiZ5FlW7czpcJpMlEUntuzWNq+qmbCe9ns=
-X-Gm-Gg: AfdE7cnaHswEO7jrHu4mK8H+PK53rQLXkQ+yZZXxTzycE/ygE3AtDPMxuSpfWhaKThE
- W9ohXWXXXxo8ohn3MjJ274nJ0eIKxQvbFdajrcGYOhG7W0hRMmuaQx71PYmDrxBuJbdKofdyQmz
- GIgtxDIpGWDe3aYHvdythBh6iZ7E2CmShqu6WnONAQoaVUGXuIkUGaGHMxefpOalh5UGuQaJNlZ
- IaN7IwFg/0m47HO58iJJTb91ftJYFQnDykm2OTDu+eT1MJPM6nN2ObXlKibbm3dklN71pWkBSum
- 3wvhCGEvUczU//2B8QjidY5UfgoRONX3v+GDjB/c9kIUtgNNlBBVMTLGDyUNkcdiP6zO1F0YimL
- O9zGAus9TkzJlJ5chuSrY4+/lYUVmbbMTB0pNZxQ+3wSm3Xy3GH7oD4OG10ccCqzcO/Znqk3u5k
- yo7lTuPGTVO3xJuq3jlP+6FW2Klnoxq/ChB29O7ZM=
-X-Received: by 2002:a17:902:f789:b0:2ca:281:27f9 with SMTP id
- d9443c01a7336-2ccbed22936mr61406255ad.27.1783464229346; 
- Tue, 07 Jul 2026 15:43:49 -0700 (PDT)
+ AHgh+RpPHatcGs/NiPMOzW13AV0+VST2PKUz71AxZwLEEAKPvBiwucOI6AEBaaq1RKWf7PfZQqi/YsWyYA==@nongnu.org
+X-Gm-Message-State: AOJu0YyWUdqGhxysxILo618auFSI1jJCdakgzIGX1ZAX449yTS0hzC4K
+ KMktZLIQHjB7Xz9h8Rm22Isn4uWgVo2HyDUOcGm5+CEex9sz+DkL8soRvhkymM01wq0=
+X-Gm-Gg: AfdE7cluvMT8PZeiWHeUZw9+mVMFPLQUHnZT5QfFpmPVVwbeM4ADKnCJ2ghFowjP09v
+ zHmVPqL4sBKOT/64z/25U48YE20EYIhZNiHrr3KNteuj3D0RZKH6JMOmhqeEQI3IkcT3VIPLzMx
+ 1/LVHeklkv11B0/dNksIDUd5cchAutz9sz8E9MdD3kteze/84b3e0c7BRnuEL9F3GHed8dlBude
+ yQggS+ShNLEZg5KaO5J1G8/y1vtR0aL4jYgE8J9fu6EkhxCuju3qbQXlVimuRmZ/Du1Q099BIQ5
+ ottxR32fPKIV4xoft1IlZ9f2mUKXXRberN4bnqaaDxGzrb8ZKv9obvVl6TJk7IH0HFFyC2wZtrz
+ Vba6ijUWeF7Vb3w/1MioEzE2s8efg34CmtLRPG38rVHwftFotxR0062gGePUQJSPWkvY5GegtOp
+ W/pFJt8KfkrT83q9yaHCduWEiumCHc6EXyL54ceoM=
+X-Received: by 2002:a17:903:2344:b0:2c9:de53:f84f with SMTP id
+ d9443c01a7336-2ccbe728bb0mr63110775ad.19.1783464234442; 
+ Tue, 07 Jul 2026 15:43:54 -0700 (PDT)
 Received: from p14s.cg.shawcable.net
  ([2604:3d09:148c:c800:46c8:dda7:40fa:8958])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2ccc9d3bbaesm18183805ad.57.2026.07.07.15.43.47
+ d9443c01a7336-2ccc9d3bbaesm18183805ad.57.2026.07.07.15.43.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Jul 2026 15:43:48 -0700 (PDT)
+ Tue, 07 Jul 2026 15:43:53 -0700 (PDT)
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
 To: berrange@redhat.com, kchamart@redhat.com,
  pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
@@ -75,17 +75,17 @@ To: berrange@redhat.com, kchamart@redhat.com,
 Cc: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	kvm@vger.kernel.org
-Subject: [RFC v1 20/25] hw/arm/virt: Move virt_flash_create() to
- machvirt_init()
-Date: Tue,  7 Jul 2026 16:43:01 -0600
-Message-ID: <20260707224306.1202330-21-mathieu.poirier@linaro.org>
+Subject: [RFC v1 23/25] docs/interop/firmware.json: Add arm-rme firmware
+ feature
+Date: Tue,  7 Jul 2026 16:43:04 -0600
+Message-ID: <20260707224306.1202330-24-mathieu.poirier@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260707224306.1202330-1-mathieu.poirier@linaro.org>
 References: <20260707224306.1202330-1-mathieu.poirier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pl1-x62c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pl1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,40 +110,46 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-For confidential VMs we'll want to skip flash device creation.
-Unfortunately, in virt_instance_init() the machine->cgs member has not
-yet been initialized, so we cannot check whether confidential guest is
-enabled. Move virt_flash_create() to machvirt_init(), where we can
-access the machine->cgs member.
+Some distributions provide packages continaing firmware to be run under
+QEMU, such as "qemu-efi-aarch64" or "edk2-aarch64". Those packages also
+contain descriptors in /usr/share/qemu/firmware/*.json listing the
+firmware features, so that environments like libvirt can figure out
+which firmware they can load.
+
+Define an optional feature for arm64 firmware to indicate that a
+firmware supports running in a Realm. Firmware implementations need
+extra support for running in a Realm, in particular to distinguish
+shared from private guest memory.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 ---
- hw/arm/virt.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ docs/interop/firmware.json | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 0f104447e008..2e8e29244284 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2909,6 +2909,8 @@ static void machvirt_init(MachineState *machine)
-     unsigned int smp_cpus = machine->smp.cpus;
-     unsigned int max_cpus = machine->smp.max_cpus;
- 
-+    virt_flash_create(vms);
-+
-     possible_cpus = mc->possible_cpu_arch_ids(machine);
- 
-     /*
-@@ -4429,8 +4431,6 @@ static void virt_instance_init(Object *obj)
- 
-     vms->virtio_transports = NUM_VIRTIO_TRANSPORTS;
- 
--    virt_flash_create(vms);
--
-     vms->oem_id = g_strndup(ACPI_BUILD_APPNAME6, 6);
-     vms->oem_table_id = g_strndup(ACPI_BUILD_APPNAME8, 8);
-     cxl_machine_init(obj, &vms->cxl_devices_state);
+diff --git a/docs/interop/firmware.json b/docs/interop/firmware.json
+index 421bee0e5ed4..c68d7f5013f8 100644
+--- a/docs/interop/firmware.json
++++ b/docs/interop/firmware.json
+@@ -161,6 +161,9 @@
+ #     options related to this feature are documented in
+ #     "docs/system/i386/amd-memory-encryption.rst".
+ #
++# @arm-rme: The firmware supports running in a Realm, under the Arm Realm
++#           Management Extension (RME).
++#
+ # @intel-tdx: The firmware supports running under Intel Trust Domain
+ #     Extensions (TDX).
+ #
+@@ -229,7 +232,7 @@
+ { 'enum' : 'FirmwareFeature',
+   'data' : [ 'acpi-s3', 'acpi-s4',
+              'amd-sev', 'amd-sev-es', 'amd-sev-snp',
+-             'intel-tdx',
++             'arm-rme', 'intel-tdx',
+              'enrolled-keys', 'requires-smm',
+              'secure-boot', 'host-uefi-vars',
+              'verbose-dynamic', 'verbose-static' ] }
 -- 
 2.43.0
 

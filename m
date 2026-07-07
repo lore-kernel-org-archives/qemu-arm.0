@@ -4,149 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3CE6C43458
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 09:28:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27D9EC43458
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 09:45:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wh269-0004tg-1U; Tue, 07 Jul 2026 05:28:13 -0400
+	id 1wh2M5-0007hd-LK; Tue, 07 Jul 2026 05:44:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wh268-0004tE-2K
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 05:28:12 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1wh2M4-0007hM-Pf; Tue, 07 Jul 2026 05:44:40 -0400
+Received: from smtp2-g21.free.fr ([2a01:e0c:1:1599::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wh266-0006Fg-Jx
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 05:28:11 -0400
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6678DZjq3243036
- for <qemu-arm@nongnu.org>; Tue, 7 Jul 2026 09:28:09 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- kIjgJXGmQ4n6AbWq2OH31U2Cynm3Ogdoi0tvSJxpsHw=; b=f8TlnYNtq2noHlz+
- owN2aLCyfJR/lrbqS8jf4AuYtucaNFbUQVWaHS7hwM29CbFNpBJv4AM0R179zJiy
- 7CKOnsZgLT1nlNrWSbnuEiaRFB1nfcvXAJMt9A51Ru5A3bM2yvtt7CFtRME0rjej
- ytd2OCvzT5huvCzHt+bA+G4nSmOQPnIBVbJA5+nUXfqRCJqMdYJx9vCTF1Ay1XDs
- WtTzd+7pCKUhO2wH2TN0fB6M5lKriGyya9dLJYd3zJZdu3faucGSZziCTs+CFcEo
- c+8HHbqCc8zpVlOdBtz6PPC1HEPA+Bu/SGO8yTpV2FTij1A1ZCCn4kudEMpzaQ9f
- vAPiHA==
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f8w11rg39-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 09:28:09 +0000 (GMT)
-Received: by mail-qv1-f70.google.com with SMTP id
- 6a1803df08f44-8ea75996387so81873106d6.1
- for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 02:28:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1783416488; x=1784021288; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=kIjgJXGmQ4n6AbWq2OH31U2Cynm3Ogdoi0tvSJxpsHw=;
- b=YT49ZqQ8nQ3pnZk49tK3QNkvinv3ZB8+E/bNSTtXwW4pX4gIvCCqTdpFUF2Z+cWRgl
- xExF7JESjWpT7Hv6DJN5uO5anA65W03jiBr7YzN32Mo8mFWPELHnceLKrybRJtkhVjgn
- jijCnPfRcgpdFRiprftEpnR3iTlZh0jADHR1WVnEqiS4gCXgjB2YoyjTM1uDqZeTYmgy
- 6qqty2rK4lJrhlUgkW1qmSAcLcO7VFdgSXM754rUAWyP48vtkQrKiD2GOVQdDUbdClXL
- il1H9JWF8aP+ZEDtywjapv0+0swRSKnuBwuRemQU4yw/7K9HLHobTRIqRJy9v4NpS70k
- ppLw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783416488; x=1784021288;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=kIjgJXGmQ4n6AbWq2OH31U2Cynm3Ogdoi0tvSJxpsHw=;
- b=JbaRXNYw9x29AParl6ay+u7gn4+W1Fqk5RQkUAc2p+Q3qfXIVFAVyH3uEx8TW8YWyH
- p4ISmGWdu4mKmCa5jCYUreRhgcdDvK5A0s1cvp5ZWtVQa/Qevco0p/YSw0cIMifFT0uB
- yL131B55p6nvfwTPTJlkfrmJ/e3x5mkMwolkS/BDAS3N2aKegPeZ7Vslhpn9yEM75gfe
- ME5pysJRwNSe1eIg2gfXgrz/eduVBHYOJywTCzCFkCRgqNbvmrDLgeWEvhV9oXMxb2bn
- ZAfTbmTS6UPxk1nsY8k7Vt4mRjmUrF5+CxRsKtyFPhVMk1Bfmn/qnYBZyxz1BYGBC+U9
- gSMg==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rq6BzyrdPb/+8Y6AXqi7iLwQZ5bgZWnrSHb0U3pA6Nnc8BseH9meoA08YM0gis35dl0T0CH+p8iSA==@nongnu.org
-X-Gm-Message-State: AOJu0YxZvFhzdVklS21tXCQ6Ck0zIvGCRduPqu4vRhXF67jKBD6cyQ2u
- Pykz4f1D1orHP1ZID5/gtE+ytcG0jdO+FK/AQSIClsyYj/5xCQq2ZaAVjQ6DYrWbk4TrlMU7omx
- Q9ZqArsIA5oFxnkL+Txb+ghNi9bEg2tjpW8ZIMaZ4w9aArhdG+eqkGto=
-X-Gm-Gg: AfdE7clBgF+PXYAxVT7QfzJ/5Dy3lSHzR3yGqptLkM49J4g6Is88+++OoszByHgsnip
- jx87QTomKHan0SIDqtkICmq9UFszXxQ4BXlNRs1KX5rGvq0tNqexUH0iW4hrCTKhJRdvt/v8S0R
- N09G6wf9V3WFnE/g2sCsHduXql2/KRNUz7vgI05nt07Iny6aFrOlAsqz9XJ1QjJcoVyOYfOb26C
- 3E/OP9YEL0hU28/mEZrlbZwQxJR+lxJjB/qKqliLGpR0LlpN7RC6jpY2yD8VNRmzKdoRlp1jz7i
- iwrHy3dI8UNPt/opm0spOpUqbGbaOD490A8U1MFoVkToPxr/U/2QOpWwzURc5WdS8bor1aWb1Qw
- oydf+YVYWlZTUyDWGGeP3FsucRTFVD6BCrgvTBxrrVj/AkV9y8CtGOe8T6zz/zQ==
-X-Received: by 2002:ac8:59c8:0:b0:51b:ee11:e71e with SMTP id
- d75a77b69052e-51c747ae893mr44334591cf.1.1783416488373; 
- Tue, 07 Jul 2026 02:28:08 -0700 (PDT)
-X-Received: by 2002:ac8:59c8:0:b0:51b:ee11:e71e with SMTP id
- d75a77b69052e-51c747ae893mr44334361cf.1.1783416488016; 
- Tue, 07 Jul 2026 02:28:08 -0700 (PDT)
-Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c15ada023cesm90929866b.44.2026.07.07.02.28.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Jul 2026 02:28:07 -0700 (PDT)
-Message-ID: <f4570b7e-7f33-4e79-b4e3-1de40c41ce91@oss.qualcomm.com>
-Date: Tue, 7 Jul 2026 11:28:06 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/8] hw/arm/aspeed: Use Aspeed2700SCUState for AST2700
- users
-Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1wh2M2-0001Rd-KS; Tue, 07 Jul 2026 05:44:40 -0400
+Received: from localhost (unknown [89.92.102.124])
+ (Authenticated sender: emmanuel.blot@free.fr)
+ by smtp2-g21.free.fr (Postfix) with ESMTPSA id 6F7B32003D6;
+ Tue,  7 Jul 2026 11:44:18 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
+ s=smtp-20201208; t=1783417475;
+ bh=+s0jfhmr4jJMaus8t5p6JeG9DM2+JhTaa9oo6u5N0RY=;
+ h=From:To:Cc:Subject:Date:From;
+ b=OMyuNZpbx+pFDcMli4nxRxWeupsRUKdOEEnlzNTIANWB6hjQ2amxJ3yrz7Ck8Yd9p
+ J925Orw450nscwnFaB5/FGXPVqdzuwQutPt30NpS/KOubCwUvghxX8VFw+zjxhySCH
+ rhNE57j1BNMceS7FlK8OpW59tgriD+00nkMP431/FC3h+lRzRzAXKMS3HZos/meZwi
+ ky5hScX3LvRf3NVkNH/ZIeHPwV4MjDoWaTD/xuzikAYDGDklxEt6g2bHpmtQ7YqjZI
+ xE8rwfrX83In1Ph59fmbhGwWa4hkOadGhYGv2z7HdHtN1sxzEm55TgvwKtjKIAnpkM
+ xRkit0pMd8R/g==
+From: Emmanuel Blot <emmanuel.blot@free.fr>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260707060919.350637-1-jamin_lin@aspeedtech.com>
- <20260707060919.350637-3-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260707060919.350637-3-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ Joel Stanley <joel@jms.id.au>,
+ Alexander Hansen <alexander.hansen@9elements.com>,
+ William de Abreu Pinho <williampinho@meta.com>,
+ Emmanuel Blot <eblot@meta.com>, qemu-arm@nongnu.org
+Subject: [PATCH v6 9/9] test/functional: anacapa: test ADC128D818
+Date: Tue,  7 Jul 2026 11:44:13 +0200
+Message-ID: <20260707094413.17539-1-emmanuel.blot@free.fr>
+X-Mailer: git-send-email 2.50.1
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=DMe/JSNb c=1 sm=1 tr=0 ts=6a4cc6a9 cx=c_pps
- a=oc9J++0uMp73DTRD5QyR2A==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=V2NxCb60AAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=iYH6xdkBrDN1Jqds4HTS:22 a=3L6qF29SlnrayQqPM2jZ:22
-X-Proofpoint-GUID: XXv9tY8-lR4hfQ8UTgVpSHo1812GGHCP
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA3MDA5MSBTYWx0ZWRfX/lDgKqxo0ABm
- SE8ghNXSY0LuQ8Sepz7gs5HPC6PDVXd5cbaMCnvUhVdJuAttdarLzou+nm0VJADz9rgunj8G3tm
- Ougsk0JYOmDMqRgaAG60OXArDy4/QIM=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA3MDA5MSBTYWx0ZWRfX7RuqNFbW8DOe
- Q8YIOFoF6VhdvH8MXXvEsZZoddu9LMp8HndU9yDcBCyeZEvVrfuWtyCcz7xPATk1j/ZMYLye4js
- XwO9NI0CPtbB6oAdInqFlkWXj5OUV7vRiQ+/Za5t/AprOxnK3gLliTdKxbcMsn0SkW1usnWtP+J
- 45/z4f0LWoKX/Pi+SvtCcO9ViWJqbKPw6lcqwjfOuS2IGVXUzfbisV+RilVsxrBKdjX9Mtxtvzr
- Kd060Y79+sBWJLNo9oFfdTgqOSij4yaz6F+7sworfsztLJblm47BF8S6pBdHBMoPcGrsgwoaiZK
- 3IDX1k0BhkCgQszBH/fe+lpcPXPab/XUPIZboLO9Ebq1s1pqMRKU0Yx0K2ixpZ7w2tIJsma3hlp
- SgWDy+0Zgp0KyhWccqFi2aFmMWexpOL4ljcpF4Zo4BdYjAXva8O5Kp/sy5d+HrrqPAjiKs9sgCq
- dHWyyWTG/2sGCUE9HtQ==
-X-Proofpoint-ORIG-GUID: XXv9tY8-lR4hfQ8UTgVpSHo1812GGHCP
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-07_02,2026-07-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 impostorscore=0 suspectscore=0 phishscore=0 clxscore=1015
- spamscore=0 priorityscore=1501 bulkscore=0 adultscore=0 lowpriorityscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607070091
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2a01:e0c:1:1599::11;
+ envelope-from=emmanuel.blot@free.fr; helo=smtp2-g21.free.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -162,26 +76,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/7/26 08:09, Jamin Lin wrote:
-> Now that Aspeed2700SCUState has been introduced, update the AST1700 and
-> AST27x0 SoCs to instantiate the AST2700-specific SCU subclass instead of
-> the generic AspeedSCUState.
-> 
-> Also update the AST27x0 FC board to link the SSP/TSP coprocessors to the
-> AST2700 SCU instance.
-> 
-> This prepares the AST2700 platform for subsequent patches that move
-> AST2700-specific SCU functionality into the subclass.
-> 
-> No functional change.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   include/hw/arm/aspeed_ast1700.h |  2 +-
->   include/hw/arm/aspeed_soc.h     |  1 +
->   hw/arm/aspeed_ast27x0-fc.c      |  4 ++--
->   hw/arm/aspeed_ast27x0.c         | 16 ++++++++--------
->   4 files changed, 12 insertions(+), 11 deletions(-)
+Verify the ADC128D818 on the Anacapa R-PDB (i2c8 mux channel 0): two
+channels are driven with distinct voltages and each is checked to be
+reported back independently through the kernel hwmon interface, and the
+channel 0 limit registers are validated.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+---
+ tests/functional/arm/test_aspeed_anacapa.py | 68 +++++++++++++++++++--
+ 1 file changed, 62 insertions(+), 6 deletions(-)
+
+diff --git a/tests/functional/arm/test_aspeed_anacapa.py b/tests/functional/arm/test_aspeed_anacapa.py
+index 27f8bd8b56..bc227baa22 100644
+--- a/tests/functional/arm/test_aspeed_anacapa.py
++++ b/tests/functional/arm/test_aspeed_anacapa.py
+@@ -2,24 +2,80 @@
+ #
+ # Functional test that boots the ASPEED machines
+ #
++# Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
++#
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
++import re
++import time
++
+ from qemu_test import Asset
++from qemu_test import exec_command_and_wait_for_pattern
+ from aspeed import FacebookAspeedTest
+ 
+ 
+ class AnacapaMachine(FacebookAspeedTest):
+ 
+     ASSET_ANACAPA_FLASH = Asset(
+-        'https://github.com/legoater/qemu-aspeed-boot/raw/3fa3212827b04be4034d43b5adeef57c27d6ab18/images/anacapa-bmc/openbmc-20260512025228/obmc-phosphor-image-anacapa-20260512025228.static.mtd.xz',
+-        '2232e241abcfb6d4f6b82cb6c378ce5ce05e364aac6d118785c2b6cc33fe43f3')
++        "https://github.com/legoater/qemu-aspeed-boot/raw/c5f585f9f57843c0dc95e3865a57d92ec39cbb0b/images/anacapa-bmc/openbmc-20260616025349/obmc-phosphor-image-anacapa-20260616025349.static.mtd.xz",
++        "de3841fb6ed3085aec6424358ee6efc4b8ee85688361e5aa1987fd1acb7d3fb4",
++    )
++
++    ADC128D818_QOM_PATH = \
++        "/machine/soc/i2c/bus[8]/aspeed.i2c.bus.8/0x72/i2c.0/0x1f"
++    ADC128D818_MUX_CHANNEL = "/sys/bus/i2c/devices/8-0072/channel-0"
++    PROMPT = "root@anacapa:~#"
+ 
+     def test_arm_ast2600_anacapa_openbmc(self):
+         image_path = self.uncompress(self.ASSET_ANACAPA_FLASH)
+ 
+-        self.do_test_arm_aspeed_openbmc('anacapa-bmc', image=image_path,
+-                                        uboot='2019.04', cpu_id='0xf00',
+-                                        soc='AST2600 rev A3')
++        self.do_test_arm_aspeed_openbmc(
++            "anacapa-bmc",
++            image=image_path,
++            uboot="2019.04",
++            cpu_id="0xf00",
++            soc="AST2600 rev A3",
++        )
+ 
+-if __name__ == '__main__':
++        exec_command_and_wait_for_pattern(self, "root", "Password:")
++        exec_command_and_wait_for_pattern(self, "0penBmc", "#")
++
++        self.adc_hwmon = self.resolve_adc128d818_hwmon()
++        self.assertIn(b"adc128d818", self.read_adc128d818("name"))
++
++        adc = self.ADC128D818_QOM_PATH
++        for ch0_mv, ch1_mv in ((108, 2000), (1280, 500)):
++            self.vm.cmd("qom-set", path=adc, property="ain0", value=ch0_mv)
++            self.vm.cmd("qom-set", path=adc, property="ain1", value=ch1_mv)
++            self.wait_adc128d818_value("in0_input", ch0_mv)
++            self.wait_adc128d818_value("in1_input", ch1_mv)
++
++        self.assertIn(b"2551", self.read_adc128d818("in0_max"))
++        self.assertRegex(self.read_adc128d818("in0_min"), rb"(?m)^0\r*$")
++
++    def resolve_adc128d818_hwmon(self):
++        out = self.read_adc128d818_console(
++            f"basename $(readlink {self.ADC128D818_MUX_CHANNEL})"
++        )
++        match = re.search(rb"i2c-(\d+)", out)
++        self.assertIsNotNone(match, "could not resolve ADC128D818 i2c bus")
++        bus = int(match.group(1))
++        return f"/sys/bus/i2c/devices/{bus}-001f/hwmon/hwmon*"
++
++    def read_adc128d818_console(self, command):
++        return exec_command_and_wait_for_pattern(self, command, self.PROMPT)
++
++    def read_adc128d818(self, attr):
++        return self.read_adc128d818_console(f"cat {self.adc_hwmon}/{attr}")
++
++    def wait_adc128d818_value(self, attr, expected):
++        needle = str(expected).encode()
++        if needle in self.read_adc128d818(attr):
++            return
++        time.sleep(2)
++        if needle not in self.read_adc128d818(attr):
++            self.fail(f"{attr} did not reach {expected}")
++
++
++if __name__ == "__main__":
+     FacebookAspeedTest.main()
+-- 
+2.50.1
+
 

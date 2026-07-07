@@ -4,97 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C510C43458
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 11:00:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A1E2C43602
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 11:26:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wh3Wv-0000j7-9E; Tue, 07 Jul 2026 06:59:57 -0400
+	id 1wh3w3-0004PO-9P; Tue, 07 Jul 2026 07:25:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wh3Wt-0000iW-8u
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 06:59:55 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wh3Wr-00075h-8B
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 06:59:54 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-493b61b52b6so28681825e9.1
- for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 03:59:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1783421992; x=1784026792; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=Ppw2tC4bwbMwGZqKVSQhlyH0n0RuWFwIRAnfv3sWAxo=;
- b=E+BT9GVA+QkDi+0xg826LEt40xMdUr4WW2ZAbuFP84MleXW6gAnXTX/yNc6xR4IY+m
- JNIQ3d3bCdJnMQpYuREP5pn2KgnWP8SU9fS+BUJ7K6tsBCp23CSC53QeZ6p91U/3OIa8
- ELBwTv0ZAyqpGWUnsbM/ehJ3phQjybXxomAHMEeDvkJS4d81iu/6QPdyD5LWZMKQTK30
- rf+hOI6e29CoQGx/aj3QC8WSKI4jqzsJZB/u1sQxx5eMaP1khoAwsU3maosYAPGErAli
- 1m26gRorxbP7kqGnvnuXW06kq6L+0cNomJCAMDSFhLEQI5vH3hotx0sH5Xn+jWl818hm
- X/8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783421992; x=1784026792;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=Ppw2tC4bwbMwGZqKVSQhlyH0n0RuWFwIRAnfv3sWAxo=;
- b=VIxj10JihFSsAx9ZUNRQ8C1SbvManLQFLfdz7ChwW0DlBvELQbPbg13/+84RksxKKY
- dxdWsOd4RYQ/szDdF68/vmFS4CRLZf1enUvvdIjvfI5EsTYlO114mqTdZn3zvw+mF5Ch
- aC5r1/p5lPl/EOc5VpSxw3gYMYPZ9gSCPo/EsJEB6JGqRQkCk/npJCTFdi7pRkDiDPh9
- EB4NE/Im1mX1n7oNyyG3YhT3nRbr4R+J+FjHUG7xgRec5yaHPH7m7zbhBI5EeCBqAFOD
- ofprveMfEHfb8rz1yRwFty1XfB3T6tJ3je1QvoN+zMgThZJVYyUbaqyevP1hYzZMjBoF
- L5yQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpCn/yv3+mNYqkGbdAKONM/8b4W0HgQgCud0tlGFWDFTPOqmv92dUaT8O7ZaQncRPwcGQ4b0sRH0Q==@nongnu.org
-X-Gm-Message-State: AOJu0Yzkbx2+OW/ORS/l989hy8u8eBh+rARBIOXDRx4J9ol5PE4hKr5Y
- dCYKoOPPJEHYokz/lo2gLecch3t5XqO0xsoRJrF80o/Q6ewB3Wld+03R
-X-Gm-Gg: AfdE7cl2JElv2CNDx9TYlFObA24++KWhWtSFf871BUmmYGXpzwYlv7qEpRDRP2o0E/j
- vvpG4YC+Y/Yo00u5IR2Sjx+Ii3imltBlMpcjVWbi3V+102euUk6JkVw2KAjuXU/AXSKxRqS9dhZ
- Vc7NRITxOCVW7sBlbXIcstxAP4sdZRYWs7LjC+4kwATMeiaA7pQThHRvLUgFcbKzLu0yP2TasPU
- jh/B6p2BJM1YT8dpgbpLuZO7i5jk8XmzO5PIVkbYcbhRkYn2gNhjQG8J50UR/9t0doQNw5/kv6j
- 6IN7l126dx2Z0X8b1pbtVEujqd5Hiq9f8CNp4JmmLLd+zOMNFJQA5PQaRxoSMYAsjotSSu9LMBk
- WWQGWjaDAsfr9z0iL8oRHESOxDqezH8XEDFxvMzOQNfOdro+E7A7ILRFP/WQT6NDKW7z4FAlNHX
- h1ZwPtYYnbA2jAEwxRizc=
-X-Received: by 2002:a05:600c:638e:b0:493:dfc8:77d6 with SMTP id
- 5b1f17b1804b1-493e3adbb04mr9935855e9.12.1783421991595; 
- Tue, 07 Jul 2026 03:59:51 -0700 (PDT)
-Received: from ehlo.thunderbird.net ([185.238.219.17])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47a9e4d83bdsm33754645f8f.13.2026.07.07.03.59.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Jul 2026 03:59:51 -0700 (PDT)
-Date: Tue, 07 Jul 2026 10:48:02 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Pavel Pisa <pisa@fel.cvut.cz>
-CC: qemu-devel@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Matyas Bobek <matyas.bobek@gmail.com>,
- Vikram Garhwal <vikram.garhwal@bytedance.com>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Jason Wang <jasowangio@gmail.com>, Jason Wang <jasowang@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Francisco Iglesias <francisco.iglesias@amd.com>
-Subject: Re: [PATCH v2 0/5] hw/arm/fsl-imx8mp: Add inital FlexCAN support
-In-Reply-To: <202607061344.14505.pisa@fel.cvut.cz>
-References: <20260702184038.178196-1-shentey@gmail.com>
- <202607061344.14505.pisa@fel.cvut.cz>
-Message-ID: <341AB560-68B9-4965-917E-27E00E3A63DB@gmail.com>
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wh3w0-0004P1-RE; Tue, 07 Jul 2026 07:25:52 -0400
+Received: from mail-southcentralusazlp170120001.outbound.protection.outlook.com
+ ([2a01:111:f403:c10d::1] helo=SN4PR2101CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wh3vy-0003lI-E5; Tue, 07 Jul 2026 07:25:51 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=l/1EitT/11Hu6Ls0H2Er78cAgGVPTTe6n7h6NKo6tzZIi1Qxz4tvKCLiDed8Kzu/xxttL2UU7MIxmOOtattbQMRsEvP9ksocLltG7uKw0B4uVfJl2RjkPusYGFXM9LXOTKAcW7NrtGA6xHFJw+fniui0pELf8HGbuizFnz99BjY5OAm50Z9dFsrbp+gFKT67A3y9m/rlHfN/0c13cCMcAIw9KoGoiYa9AAcRle9enmuh097TvFyTvxDvZ4C2X1g73YzimvboJJ98JZaK8vayYsdJcjA33MJLcGUJu0amT3jfWFuUAYRwHvZvcXuHxCjVJrN29aFTvX7g1JuGJlIUYw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Ob5DSvitCiOldR6aDRNT5IDYoUCCopnSf9oAg6XhIgM=;
+ b=TBvU9VWAhlgFxn0riApkXd6/A1h92r3q1z+tKEd4gvX79OhxKkS5y1NyPaBCSd4hkTckngmVM1Gfw6fhtvP81j+Bef6I759SXWCwXEib9SaLB6+t/b7n/mWsPeh4dMU4UqvJY+LICWYDrJHSaahu08UBunO0KRPcqpdq3IXRoHwG4FCVLMZ4d268qbdyEgdf2ztv9fk491SqAttHXfYxQQ3OEIBn0LMhHYGByDMwUnf/jAjSScK1ivCrHJbCEHvLd4/Hz40FaSM1fHQdpAVMkK/bNQwYv/O5HBphcX4Y5iL+TxsqNA7Zr+lKzVrfbBK6uY3YT1s4nk+YdNOemO1ZYw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ob5DSvitCiOldR6aDRNT5IDYoUCCopnSf9oAg6XhIgM=;
+ b=P0SC3Hl8FWMqu5TSq89Tei1N42h0qPrf8KueROGD75Xffn6F4sNK1L2trAyFXPk/ncYxc8YM3TLoR2+IfEfFg0mi/9aj4mtf8PxPVcD9EbQbNXi48mgXmfQdwzWqEIwjOaUHdk/+Y7MYyebBbZ1CwhNgKwcYqNxWwtXtQ/o4LP5eJlBn7zIIBtj0HI1KQ3wW5kyCzXGAFCuhIpQky37QymxviFG7bI5iWMBGWXjXWm5Vpu6cj911WT19MMGTD5Qc1EAhU1gN0fSGjCtRoVF1Ssc5KzHH/WJ0BxIcbaVdjm/+QtUnpikHwkp2PvrnKHUwuDy86ssTWrle3O7y4uRMug==
+Received: from DS7PR03CA0266.namprd03.prod.outlook.com (2603:10b6:5:3b3::31)
+ by SJ0PR12MB6856.namprd12.prod.outlook.com (2603:10b6:a03:47f::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.10; Tue, 7 Jul
+ 2026 11:25:40 +0000
+Received: from CY4PEPF0000E9D6.namprd05.prod.outlook.com
+ (2603:10b6:5:3b3:cafe::85) by DS7PR03CA0266.outlook.office365.com
+ (2603:10b6:5:3b3::31) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.181.8 via Frontend Transport; Tue, 7
+ Jul 2026 11:25:40 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ CY4PEPF0000E9D6.mail.protection.outlook.com (10.167.241.69) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.181.6 via Frontend Transport; Tue, 7 Jul 2026 11:25:39 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 7 Jul
+ 2026 04:25:24 -0700
+Received: from NV-2Y5XW94.nvidia.com (10.126.231.37) by rnnvmail201.nvidia.com
+ (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 7 Jul
+ 2026 04:25:22 -0700
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
+ <nicolinc@nvidia.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <jan@nvidia.com>, <skolothumtho@nvidia.com>
+Subject: [PATCH] hw/arm/tegra241-cmdqv: Do not sync GERRORN on VCMDQ allocation
+Date: Tue, 7 Jul 2026 12:24:50 +0100
+Message-ID: <20260707112450.111178-1-skolothumtho@nvidia.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.126.231.37]
+X-ClientProxiedBy: rnnvmail201.nvidia.com (10.129.68.8) To
+ rnnvmail201.nvidia.com (10.129.68.8)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000E9D6:EE_|SJ0PR12MB6856:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3727d0cf-7e5c-43c7-4136-08dedc1a7966
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|23010399003|36860700016|82310400026|376014|18002099003|11063799006|56012099006;
+X-Microsoft-Antispam-Message-Info: tshgovm6GnwHzS8MNA/MfoBC+9JIGbzFCMG2a2vqBAeNfFk6yI1IZE8HNYKutEaCLw4+jHkGDHYktlGErY1KZa3m0aaWMzIBnXtle6IJeyWldU1i+leKogt4wROXQ2qc5kh6L0JlCyrO64IWF6f4O4sHRdt6rYP1WjUcciaJA9vhP/ANKiK2hhU1Z+yPAQ2Lico9ETBb0yIZWMe5rigzS2PSAY2DwoSFuAPzAFo/i9Ksz1nEiWEs6IL0SjI3NXwlaofD+fTmNiuer5yLNRXTfknhRfdwsFFOP9CB5fSuU5X0tGt3bqc8K6JkaF5s1gIPT8OWYblOZVoE57TnJn/9uHvUSM1mm2AATi5Qb2LryfSKAzY0eSDEcKNRzgHDhT1P2KLyVJBCg90w3cRtNvUxE/u53W40AWgIVOM1BVzhuqkB2jev5ss+qpGZNgYmt3G9NYZXH1LzN9IKBs4Syxk+Ro7mjsobqyHP/uTo+VVi91dhy8ozTCPknqf6inJe7KA+k/jb9yNnPnPHklDbK/bQKz4Pc1AF2zJLlZTAO0vUa9d39K4V6Qp3auIjKa1ly7LMybbGPgV5NtTlbbALmLAgqaJEpGkfwLO3YDh/poLIG85kt1Z0ne4trvDasrgy7OZZ879OHBKV4gHs4BELrgrF37zQE5PUCJmxgLx7rlb0yBCKQUnkAeGFEMjdm73OJyQ2NzTI0zxGDiGb1/1Fi/KYpw==
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(1800799024)(23010399003)(36860700016)(82310400026)(376014)(18002099003)(11063799006)(56012099006);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: AHTf0c26l4KotGnpfyRf7XvhEb9bFv1POJTXgoIdgX+yvuidVbsxyDfhQOYUyDOroaS/Hxr4KF4kLJkj/ShaLvF2laiao9rzFm8GJegn7qxflMWGP4seqbseWwzDn78owbrjrzTiXkuqbP0NXwFFfrrrxZ5fr/V/engJsSjPvNFKopMdcOzb7c+Ontty1oX8y9ff75wgyqGUZm+hfd8EkxdABzwXND5lYwCbLnpwDrWsq0jfzR3ENbzQFjzjOPrWMkvRlZ5FII3pEwRtQZs/jVnUv3wlkBK8sXdkB/fLnqVRHxbhhqH14NUdHmDXnNWURd6vZ1CKe4K1E3rd4czseDqNY9Dd8vW/QCSemtw9cPzJoJLBluFLZMxv3O8LSIHCOiIiuf6XaLTR0lQreASLNOoTNna+RFQ1v+E6pSa0xDf2NMrSxWNKEHK/sLHRnQbd
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jul 2026 11:25:39.5879 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3727d0cf-7e5c-43c7-4136-08dedc1a7966
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000E9D6.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB6856
+Received-SPF: permerror client-ip=2a01:111:f403:c10d::1;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=SN4PR2101CU001.outbound.protection.outlook.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,125 +129,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+When a guest hits a command error, the hardware sets GERROR and the guest
+acknowledges it by writing GERRORN to match. These registers use toggle
+semantics, and since GERROR is read-only, both GERROR and GERRORN may
+remain set after an error has been handled. As long as they stay equal
+there is no pending error, so a subsequent VM is unaffected.
 
+When a new VM starts, QEMU allocates the hardware VCMDQ and flushes its
+cached GERRORN of zero, while the hardware may still have both GERROR and
+GERRORN set from an error the previous guest acknowledged. This makes them
+differ again, so the hardware sees a pending error and stall the VCMDQ,
+leading to CMD_SYNC timeouts.
 
-Am 6=2E Juli 2026 11:44:14 UTC schrieb Pavel Pisa <pisa@fel=2Ecvut=2Ecz>:
->Dear Bernhard,
->
->On Thursday 02 of July 2026 20:40:33 Bernhard Beschow wrote:
->> Now that FlexCAN emulation has landed in master, let's add it to imx8mp=
--evk
->> as well=2E While the real i=2EMX8M Plus supports CAN FD which isn't emu=
-lated
->> yet, the non-FD mode works well under Linux: It is possible to use `can=
-gen`
->> and `candump` either way on the host and on the guest, as described in
->> docs/system/devices/can=2Erst=2E
->>
->> This series consists of five patches where the first four are preparati=
-ons=2E
->> The last patch integrates FlexCAN into the i=2EMX8M Plus SoC and EVK bo=
-ard=2E
->> The first preparation addresses the review comment from [1], and could =
-be
->> applied independently=2E
->>
->> It would be nice if this series could make it into 11=2E1=2E
->>
->> Testing done:
->> * Start imx8mp-evk and run `cangen can0` there=2E Observe on the host t=
-hat
->> `candump vcan0` prints the traffic=2E
->> * `make check`
->>
->> v2:
->> Thanks for the very helpful and super quick review, Phil! Here we go:
->> * Add patch "hw/net/can/flexcan: Wire clock control module via link
->> property" * Have separate MemoryRegionOps for 32 and 64 bit
->>
->> [1]
->> https://lore=2Ekernel=2Eorg/qemu-devel/77d5891c-de12-467e-8746-02fe4312=
-1e3e@oss
->>=2Equalcomm=2Ecom/ ---
->> base-commit: a59157f98f0b69b0bbdb26bc15fbc4d6c8060799
->>
->> Bernhard Beschow (5):
->>   hw/net/can/flexcan: Wire clock control module via link property
->>   hw/net/can/flexcan: Subclass TYPE_CAN_FLEXCAN
->>   hw/arm/imx8mp-evk: Open code DEFINE_MACHINE_AARCH64
->>   hw/arm/imx8mp-evk: Introduce FslImx8mpEvkState
->>   hw/arm: Add basic FlexCAN3 support to TYPE_FSL_IMX8MP and imx8mp-evk
->>
->>  docs/system/arm/imx8m=2Erst   |  1 +
->>  include/hw/arm/fsl-imx8mp=2Eh |  8 ++++
->>  include/hw/net/flexcan=2Eh    |  4 +-
->>  hw/arm/fsl-imx6=2Ec           |  5 ++-
->>  hw/arm/fsl-imx8mp=2Ec         | 38 ++++++++++++++++
->>  hw/arm/imx8mp-evk=2Ec         | 64 ++++++++++++++++++++++-----
->>  hw/misc/imx8mp_ccm=2Ec        |  3 ++
->>  hw/net/can/flexcan=2Ec        | 88 ++++++++++++++++++++++++++++++-----=
---
->>  hw/arm/Kconfig              |  1 +
->>  9 files changed, 182 insertions(+), 30 deletions(-)
->
->Thanks for the work=2E I have tested the series on the top
->of your imx8mp-flexcan branch, commit
->
->  3b7289419cac5b712faeadf6b4a6203579d08f76
->
->with our test setup for iMX6
->
->  qemu-system-arm -m 1G -M sabrelite -smp 4 =2E=2E=2E
->
->and it worked as intended=2E I have looked at all patches
->from your series and I do not see anything problematic=2E
->
->You can add my confirmation to the series and or individual
->patches
->
->Acked-by: Pavel Pisa <pisa@fel=2Ecvut=2Ecz>
->Tested-by: Pavel Pisa <pisa@fel=2Ecvut=2Ecz>
+Do not sync GERRORN when allocating a hardware VCMDQ.
 
-Thanks!
+Fixes: 1d0f77535417 ("hw/arm/tegra241-cmdqv: Route allocated VCMDQ Page0 accesses to the mmap'd host VINTF page0")
+Suggested-by: Nicolin Chen <nicolinc@nvidia.com>
+Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+---
+ hw/arm/tegra241-cmdqv.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
->
->By the way, I have noticed your iMX53 branch=2E
+diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
+index 29c488e0e4..fe88bec41f 100644
+--- a/hw/arm/tegra241-cmdqv.c
++++ b/hw/arm/tegra241-cmdqv.c
+@@ -212,7 +212,9 @@ static inline uint32_t *tegra241_cmdqv_vintf_lvcmdq_ptr(Tegra241CMDQV *cmdqv,
+ /*
+  * Flush cached register writes into the mmap'd host VINTF page0 after a
+  * successful HW_QUEUE_ALLOC, so the guest's earlier writes survive
+- * the cache-to-hardware transition.
++ * the cache-to-hardware transition. GERRORN is intentionally not synced,
++ * as overwriting it with the cached value could recreate a GERROR != GERRORN
++ * mismatch and stall the VCMDQ.
+  */
+ static void tegra241_cmdqv_sync_vcmdq(Tegra241CMDQV *cmdqv, int index)
+ {
+@@ -229,9 +231,6 @@ static void tegra241_cmdqv_sync_vcmdq(Tegra241CMDQV *cmdqv, int index)
+ 
+     ptr = tegra241_cmdqv_vintf_lvcmdq_ptr(cmdqv, index, A_VCMDQ0_CONFIG);
+     *ptr = cmdqv->vcmdq_config[index];
+-
+-    ptr = tegra241_cmdqv_vintf_lvcmdq_ptr(cmdqv, index, A_VCMDQ0_GERRORN);
+-    *ptr = cmdqv->vcmdq_gerrorn[index];
+ }
+ 
+ /*
+-- 
+2.43.0
 
-I haven't decided yet whether to upstream it because I wonder if anyone wo=
-uld be interested in this rather old but (IIUC) longterm SoC=2E For some re=
-ason I get file system corruption there which should be resolved before ups=
-treaming can be considered=2E
-
-Best regards,
-Bernhard
-
-> We have some
->old kits for this because we used it for yet another generation
->of medical infusion system prototypes/instruments fully
->functional demonstrators but before final HW design with
->safety=2E
->
->The fully realized and produced systems with iMX1 there
->https://www=2Epikron=2Ecom/pages/devel/medinst=2Ehtml
->
->Functional demonstrators with iMX53 there
->https://onimed=2Ecz/wp-content/uploads/2021/02/medicina=2Epng
->
->Best wishes,
->
->                Pavel
->
->                Pavel Pisa
->    phone:      +420 603531357
->    e-mail:     pisa@cmp=2Efelk=2Ecvut=2Ecz
->    Department of Control Engineering FEE CVUT
->    Karlovo namesti 13, 121 35, Prague 2
->    university: http://control=2Efel=2Ecvut=2Ecz/
->    personal:   http://cmp=2Efelk=2Ecvut=2Ecz/~pisa
->    social:     https://social=2Ekernel=2Eorg/ppisa
->    projects:   https://www=2Eopenhub=2Enet/accounts/ppisa
->    CAN related:http://canbus=2Epages=2Efel=2Ecvut=2Ecz/
->    RISC-V education: https://comparch=2Eedu=2Ecvut=2Ecz/
->    Open Technologies Research Education and Exchange Services
->    https://gitlab=2Efel=2Ecvut=2Ecz/otrees/org/-/wikis/home
 

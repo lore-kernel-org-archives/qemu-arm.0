@@ -4,97 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 192F4C43458
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 09:27:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ADF7C43602
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 09:27:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wh25V-00047P-Vl; Tue, 07 Jul 2026 05:27:34 -0400
+	id 1wh25k-00049K-Qu; Tue, 07 Jul 2026 05:27:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wh25U-000471-E0
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 05:27:32 -0400
+ id 1wh25j-000498-H5
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 05:27:47 -0400
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wh25S-000658-UU
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 05:27:32 -0400
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+ id 1wh25h-00069V-Vs
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 05:27:47 -0400
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6678DaXQ3219273
- for <qemu-arm@nongnu.org>; Tue, 7 Jul 2026 09:27:29 GMT
+ 6678DnQf3205863
+ for <qemu-arm@nongnu.org>; Tue, 7 Jul 2026 09:27:44 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- iBP1AxOYEH8JTa5JlqgsLzsFIYJ5VInnvZONiK9C3A4=; b=owId1Oqcui4QmW6R
- kE3kfQeBTIYjva0IYVszoX6weEaBQBKyYFE1GOPo97wBWPy36KGoyqCLFI+cxmBq
- fI0kPPJQuWubEq12Ngblr1WGlmV/kZZcTnPqEYQIWOGah3uRyK0ps7bg+AE7eCoH
- H9jVojqE1yprGDpQS2TknftX5YlKfr/AkVNt8+8QAXTOs5kSeEUfxzBCaKFfqSYB
- DptIwOf+93IxEBtVT7xeqo+ldOhxEyUl6+ThL1mFPW3yhnWP+gSCX/0Mrou9opFX
- oAhG7dEnj/Fc8CVGM3CL7XMAUpsq/qK6ErVn+kfUIQ4rc1bmSV0Qh5VdbAQQBDeV
- tDFUcQ==
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f8wep0dcr-1
+ 1mw9fziuvY+i1n9PBqkd3l3Av/XCqrdSX1isoJQ8am0=; b=X9SumCKV73U41inl
+ RDeX5/VOqc9u4WfchqjqPrVnx6BJff+5vN/MI+oO30F4E2V6DVHfogcliYVLW91M
+ awppJjk+xZ1Kk2X8sptd2NXiRU4E621eV6ieeZ74+WWlKbbIzVCyv72iyIsZCOXz
+ 6eJFO4m1ZZcdi4Dz2CC2UVQYX2r4cYrV7OFWFtbGFMWvl787tZ3GQuCQRkS70GYT
+ bON7tcavTQO2XzMMzIWNu+gxh0eefTC1lcQWLst5ibBuif9VLZWujJPPyhlyiudC
+ ZKecJ9U0ikqz62raYqq273PNT5/g5MbfC9Fbx2Cd23Xd6osVEm6Xxd61374yWWcV
+ /YxMGw==
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f8fdw3md8-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 09:27:29 +0000 (GMT)
-Received: by mail-qt1-f197.google.com with SMTP id
- d75a77b69052e-51a8c689b5fso40435351cf.0
- for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 02:27:29 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 09:27:44 +0000 (GMT)
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-8fc6b670b4bso15465516d6.1
+ for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 02:27:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1783416448; x=1784021248; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=iBP1AxOYEH8JTa5JlqgsLzsFIYJ5VInnvZONiK9C3A4=;
- b=Y047gdkKAK8SOBOxeZQJe2AjshTI/KI1MaQrt53gH7iDG41JV23aV+WbFHipuUA6Nn
- OFJWk3NH1mtQWu31SYHd8NP0/4DYpF1VQGTi3UgDeAcNuiZkKq4Xg77e8wte4ISKEkjY
- mGr0rIwK7EnWTCKMk8PPy6K+urSd6B7S4t5/dfp4qLwqprMDIsRr+v5YA/fT1M/nMF4v
- /4VJe5D9GJE7y24sDtusPatXcZ4PHHqaFG1MJxtTA2D3q4GXc+DwHT4K3y9SpSIFjv7J
- KF543pL7/mAOJkdkEtHlr6vViR+pwIySa6p5El3b3vAOYNrjIj9E12p6BntM4kcrFVoT
- b47w==
+ d=oss.qualcomm.com; s=google; t=1783416464; x=1784021264; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=1mw9fziuvY+i1n9PBqkd3l3Av/XCqrdSX1isoJQ8am0=;
+ b=Yc3zPe6Yn3WT7na+Q/fZ9MWyFPXVV8q2VWgtBx1LoeKMh21UQNogzBA7otszSL39sZ
+ rw43k8lQa8Gwh8yRyCgO0xbi1jq2hCxS24cbeEMF483b/ccPHLj2JQt+7taayruL4WdA
+ 29zrIhOesXhmAprPVp2BmOi/70tuEq/SJpA00tuQm27z6bQ5Y2WFShaZ/uRq4Hd1xvvy
+ 1HzGbdi9endJ1WSD8vJk40zE5t4kTVwQ7Tg08QAfQuLfYl2uVfp037TBXSORqtA36IWY
+ G/L861KI/hGgVFdOZyZTmCMYr0QwlB8k0Ne14dgBusqTKhkter1cCPpSDAFNxxrRvv5u
+ BOgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783416448; x=1784021248;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=iBP1AxOYEH8JTa5JlqgsLzsFIYJ5VInnvZONiK9C3A4=;
- b=rr3OJk/N6UYsBTzopq7xb9rpnTK3w1ezbNaQh1/GJf3qCiGOXBzClom7PMj/WaR98S
- kHsEsVdfD6DHuhawZOqqsz6ruG/2tUtOXnNQ3rzZ4yQnX/c3BL296i7x1ARfaBw0y58U
- 13GB5d9pvNGAs1ye2KNuI/AMcALcG2KTr5BEbJq5Ww1rbOvxSVmtp4+q1SgfnqW+4BR4
- NEZuYA+ZjfLokRrt9HePviK+hvrID8V15JUAA9jztEz3FJtztSt6TsJtLa17IQcJWuff
- +XGzSHY+50GPKGJ+LsnjfDN7Hz83+z5YmNu+0cLygvrCnEi2G7kN/UvlSJAyhlXS8lQ2
- 4Wvw==
+ d=1e100.net; s=20251104; t=1783416464; x=1784021264;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=1mw9fziuvY+i1n9PBqkd3l3Av/XCqrdSX1isoJQ8am0=;
+ b=PyZFeBYvG/R92RRnAQzk6k490iBo7V/mfsLI1hy7O8XdZJQFBlfWCttUaaJ6bbDHri
+ xptp2ATYZar1ZmsRp15/b8h9V+JkRtwN65PHI+I7XEJsW2+ePLM540U3Q8DcC87mYbyL
+ +EPjgtiAHC+Ra8DzQ6jfh4zUjGXWSw7ekyPiWiw5A4tcYAMFevbkB85N/cWQo8VYpWGI
+ KS+vOVvGIQcySciT8jdlIEvhNYt2ROCdkTjLxA4F2F59dCHecbLjY5w49govkpQe6sGf
+ C+eB3Fb2ao9gagtoWyE7hcLFUFXRFuy7lFNRlucfIV9xPXiktz3gP/QfoAoWTUltC8xL
+ ymLQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqhvsuOuFxqmJ7tfMLRGbGlcejJTydZBoeY55Nzwf5mCfuJf1bs0BTbY2IRN1zyIcWxtD4hVdeAwg==@nongnu.org
-X-Gm-Message-State: AOJu0YyezQ2B7wTVUJS10ORsu9EpAjtBOcLDrhJSGqSvpI6K4p00orFi
- 6jVLNwnBRqtYsh7aFo9lFjFMRaay46F2EQ2c1LUn3vtTPsl7J+9fPQOxlnyNDPStZelCXpEM7lW
- npEmTjw27auuDuX+CXRu00mmGmqUTtG9aeTXWiF62jEE5qtibaVfKMsSR+cRbGmI=
-X-Gm-Gg: AfdE7cnGH3m4E/flK33AHXO6ehfp6kyaj0ll0oMWd73mMUvv1uyOJhOVyTV9kOa/WB+
- bqO36WNiqE30TgEGIA0Wzt3sXbthjazKT1xiVBuNwKxC7t4+eF1dS9XQq9wCRrIvHU3vKXuYFFI
- cbZpuP/UJ0AVLnVsuknv396ossYgVpENeazDZ3/uKCmvMV2gOsorClwc8Qj40R3h8+LhIfsdd5i
- aIdZ5dfBmd6Na8lUIPa2bDYs2EJscUrJ5kwfegOcCY5NG+WQs2NDk+7F+DFX+itIEuIDOcnoQ5O
- herQTC3KGOlrYPsEhtf6eKIFNAyechBe8O16NS0+C+watUIhcrlCXe0Uipa13+m9Jb2Wha+xM9V
- cqX7mUVFDXu8n3of+EYYiJn2TBG/Gv9ZcjqCYIp3MKvOd8hJCBIulnOZA3CtdRw==
-X-Received: by 2002:a05:622a:180c:b0:51c:17cd:1fd4 with SMTP id
- d75a77b69052e-51c748b8011mr47337101cf.41.1783416448476; 
- Tue, 07 Jul 2026 02:27:28 -0700 (PDT)
-X-Received: by 2002:a05:622a:180c:b0:51c:17cd:1fd4 with SMTP id
- d75a77b69052e-51c748b8011mr47336861cf.41.1783416448064; 
- Tue, 07 Jul 2026 02:27:28 -0700 (PDT)
+ AHgh+RrcEhoCgu8HmA3xLEZfNvNTr7Dl64OTS9KPmIDR0/+FIEMd99y229OZK8RLMI1aJF3K3+FICjsC/A==@nongnu.org
+X-Gm-Message-State: AOJu0YwhdABuJfSOyWQIOs2VeMEJx48Ijc8mTAYvQA9hHhw6qMS1VpQw
+ wqkGsIJJKbirNxYaJMeO5++eF+rdsmsPYVNKwGWeISoN7qEgdeQ431XTMQsLHNPwmvyv9kOgSpb
+ iFjwsLQXyPEWGo2mj3hL7i3rMntgz0k1a32QyrDMrMYvQisnMF/KNGbo=
+X-Gm-Gg: AfdE7ckRG/KLpGxl6Ar4Kpf/98nyItT7khTUg79uTZXKCHgsBsehhCVjhbi1rioVye/
+ 2s7OyUu7cE8QxT7yDraiUMxdlAEB/MNuCN5DBdrY38QEf2pK3gteCH2ydsXX6nHvuhtyF7C6WcE
+ Ely2sqQC/nSLSmqU2C3+lm4sYkGaTMCAATxmvAMjwApPXdqynZ0piZqAG5RB6WVKF/ZVNWKtmmD
+ mbfnD/oSR1NFINFfHbCTUM7KB/zETQ5HoLiNILa5HsKbd4sTu5ZiWBKJgXNQvJLbgouM0FB5hq1
+ TChOwaIYsRRdQmDkNLF7TO2URL2VQ/+NaqyILrkUoJ1P3dAmZtX3gGCmwIwQnuhhXJcruO7UWne
+ 6y52SOwgiKfemvZxBv8/Krue3fClMR9lSezQ+33IS0B04HbSTP1dC6yawP6enEA==
+X-Received: by 2002:a05:622a:453:b0:51c:2685:2952 with SMTP id
+ d75a77b69052e-51c7487ff4dmr46542201cf.62.1783416463382; 
+ Tue, 07 Jul 2026 02:27:43 -0700 (PDT)
+X-Received: by 2002:a05:622a:453:b0:51c:2685:2952 with SMTP id
+ d75a77b69052e-51c7487ff4dmr46541951cf.62.1783416462757; 
+ Tue, 07 Jul 2026 02:27:42 -0700 (PDT)
 Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-69a19cf68f5sm5714948a12.13.2026.07.07.02.27.26
+ 4fb4d7f45d1cf-69a19dbef44sm5568723a12.31.2026.07.07.02.27.41
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Jul 2026 02:27:27 -0700 (PDT)
-Message-ID: <5d422df9-b70a-4c9e-8736-25b220c9a92f@oss.qualcomm.com>
-Date: Tue, 7 Jul 2026 11:27:25 +0200
+ Tue, 07 Jul 2026 02:27:41 -0700 (PDT)
+Message-ID: <9574ad25-c47c-46f2-8ccc-7c4b811c1cc7@oss.qualcomm.com>
+Date: Tue, 7 Jul 2026 11:27:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/8] hw/arm/aspeed_ast27x0: Pass realized PSP SoC to
- SSP/TSP initialization
+Subject: Re: [PATCH v2 1/8] hw/misc/aspeed_scu: Introduce Aspeed2700SCUState
 Content-Language: en-US
 To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
  <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
@@ -106,38 +105,38 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20260707060919.350637-1-jamin_lin@aspeedtech.com>
- <20260707060919.350637-6-jamin_lin@aspeedtech.com>
+ <20260707060919.350637-2-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260707060919.350637-6-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260707060919.350637-2-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: 3ynSCMviBhImzkoXqNplq7k5sujaeGwf
-X-Proofpoint-ORIG-GUID: 3ynSCMviBhImzkoXqNplq7k5sujaeGwf
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA3MDA5MCBTYWx0ZWRfX39cntruvkh3z
- v1cECYp2IMr07puGgWApt8DdAm1lw9FObjrlO+JMsQBIJWEc91BbqWyoNYpOobtI8YmfZOWN8Fi
- tQPLUj4USjGmO0khhbZMlalR1T/D4jCBZfQ/4RxqPnrgZW4yLFQHUzce5CUo/BuIzDbOe7/LqGX
- 0hRwABfEMy7hKAuahBEcX99GyKbeXDGkJs2xkc0kqSqkdum+NxqaOCnKy7ZJqvcIs7nXQML1ixJ
- e+OikbYLngaCPjjfE36aZbEYW4BGG1X4ly7e5YKWf4vIBnNBfrGxK++4IOfOgebHKkI5HC7hI62
- WLrYML1b/5CEsBLC6c0E76d49Y5bXRrW1z5v515hP0GPz6Y/4HqMTjx5UyAThkna6mMN/Fl+OLd
- Dl8mBMwAwTstNMASlWPr2RU34EQDkL8zP83NzNgZAr4X7KQsfu5T+Vs5mChjfLGp0aygmsjYRLk
- zIMFjh+yT1cnK4IJe8A==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA3MDA5MCBTYWx0ZWRfX/nBXrrlSiP6b
- I1ty5OJ6A/r5IPC5dTbeF42d/VIjtEI2hihVh9zElJwcopCT90ZY6LF7xetFpYz+fG8/FL8jERa
- r51WKMSOXQMzKwD8cTcte4d0y4Qq/Js=
-X-Authority-Analysis: v=2.4 cv=atSCzyZV c=1 sm=1 tr=0 ts=6a4cc681 cx=c_pps
- a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA3MDA5MCBTYWx0ZWRfX3JAc6xK7YUVD
+ 8v/diDJd587fYv7ew/EpTbwqQ+VoxL706UcTPAnp7uSVKTg/N9CDb0ARvVt+T8vnUX3f6a1T+aO
+ H2OfhHI2Wa+OurBA/k74mxewAZKEqyI=
+X-Proofpoint-ORIG-GUID: v7-SKyG39eb6nOJmw_MdLfImm8l4g2G3
+X-Authority-Analysis: v=2.4 cv=EtziaycA c=1 sm=1 tr=0 ts=6a4cc690 cx=c_pps
+ a=oc9J++0uMp73DTRD5QyR2A==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
  a=V2NxCb60AAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=a_PwQJl-kcHnX1M80qC6:22 a=3L6qF29SlnrayQqPM2jZ:22
+ a=QEXdDO2ut3YA:10 a=iYH6xdkBrDN1Jqds4HTS:22 a=3L6qF29SlnrayQqPM2jZ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA3MDA5MCBTYWx0ZWRfX9BS+S5pWLGwO
+ kXxstRyI43MFYMFlr6jo5ooLnv4k7qPgkApKlPmpHupMeB0cabRzPNvpdWVdJFhO4Gg1MRm/+cF
+ N+Fll/rlKOwajiAmcIIt9ubpI+jUAu+RMtBHBPAmyizisGSVn3U9GFFq5asJoqodwzmGHkYjCNz
+ q+DO2CHfI1S/6gsF1QeI0YMrGEk1OqLPC7eD8u26fezGj2b9XuO8j03SOm+15u5w5XjwOr6/kyt
+ ejdAgIPGeRvq5IXLRYr5pshMkJ3snGYOfODFAn1e/ourB53uXnppuiKCOtsg8QX+tz90gGBhFwu
+ HyIFZyfLXKaq2k6BG8KqbMKhjpKtl1H1gpCR3GHJy0ak9wDwLTG03NNN+9GSqygAxZdPqDftbni
+ d6Z1ZFJ7HKnsPWCOcSAli3wh2otGj/NlklXFKfPwnciONc3yzTt+Vj3Ak2ToUstoh2Nlx2klnIg
+ GGq7eN5CKuuHGldr1FQ==
+X-Proofpoint-GUID: v7-SKyG39eb6nOJmw_MdLfImm8l4g2G3
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-07_02,2026-07-06_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 phishscore=0 clxscore=1015 priorityscore=1501 spamscore=0
- suspectscore=0 lowpriorityscore=0 bulkscore=0 impostorscore=0 adultscore=0
+ priorityscore=1501 suspectscore=0 clxscore=1015 adultscore=0 phishscore=0
+ spamscore=0 lowpriorityscore=0 bulkscore=0 impostorscore=0 malwarescore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607070090
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607070091
 Received-SPF: pass client-ip=205.220.168.131;
  envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -27
@@ -163,20 +162,27 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 7/7/26 08:09, Jamin Lin wrote:
-> Pass the realized PSP SoC to the SSP/TSP initialization helpers instead
-> of retrieving it from the MachineState.
+> Introduce Aspeed2700SCUState as an AST2700-specific subclass of
+> AspeedSCUState.
 > 
-> This makes the dependency explicit, since the SSP and TSP coprocessors
-> use resources owned by the PSP SoC, including the UARTs, SRAM, SCU and
-> SCUIO. The PSP SoC must therefore be realized before the coprocessors
-> are initialized.
+> Currently, AST1700 and AST2700 reuse the generic AspeedSCUState.
+> However, AST2700 requires SCU functionality that is specific to the
+> platform, particularly for interactions with its coprocessors.
+> 
+> Introduce a dedicated Aspeed2700SCUState to provide an extension point
+> for AST2700-specific functionality while keeping the generic
+> AspeedSCUState unchanged.
+> 
+> Subsequent patches will migrate AST2700 users to the new subclass and
+> move AST2700-specific code into it.
 > 
 > No functional change.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/arm/aspeed_ast27x0-fc.c | 26 ++++++++++++++++----------
->   1 file changed, 16 insertions(+), 10 deletions(-)
+>   include/hw/misc/aspeed_scu.h | 5 +++++
+>   hw/misc/aspeed_scu.c         | 8 +++++++-
+>   2 files changed, 12 insertions(+), 1 deletion(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 

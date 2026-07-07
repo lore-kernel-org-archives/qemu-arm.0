@@ -4,117 +4,179 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDFE7C43458
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 13:09:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C080C43458
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 13:17:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wh5Xz-00074e-Ip; Tue, 07 Jul 2026 09:09:11 -0400
+	id 1wh5dW-00033L-VJ; Tue, 07 Jul 2026 09:15:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wh5Xx-000742-Rx
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 09:09:09 -0400
-Received: from smtpout2.mo537.mail-out.ovh.net ([51.210.91.21])
+ (Exim 4.90_1) (envelope-from <mark.caveayland@nutanix.com>)
+ id 1wh5cT-00020F-OK; Tue, 07 Jul 2026 09:13:59 -0400
+Received: from mx0a-002c1b01.pphosted.com ([148.163.151.68])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wh5Xu-0008UO-OJ
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 09:09:09 -0400
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net [51.255.22.22])
- by mo537.mail-out.ovh.net (Postfix) with ESMTPS id 4gvhPq1MYGz403F;
- Tue,  7 Jul 2026 13:09:03 +0000 (UTC)
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net. [127.0.0.1])
- by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alexander.hansen@9elements.com>; Tue,  7 Jul 2026 13:09:03 +0000 (UTC)
-Received: from mta10.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.168.94])
- by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gvhPp73WKz7tNN; Tue,  7 Jul 2026 13:09:02 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.7])
- (Authenticated sender: clg@kaod.org)
- by mta10.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- C91961923D2E; Tue,  7 Jul 2026 13:09:01 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-107S0019bd950ee-9dd2-4f06-81cd-279a0974c22e,
- 7260B8E4F09D2588E97168B383347FBEBF8FD1E0) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <6a129e5a-1953-4655-b631-ee61125a1012@kaod.org>
-Date: Tue, 7 Jul 2026 15:09:00 +0200
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <mark.caveayland@nutanix.com>)
+ id 1wh5cR-0000UJ-2L; Tue, 07 Jul 2026 09:13:49 -0400
+Received: from pps.filterd (m0127840.ppops.net [127.0.0.1])
+ by mx0a-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 667CBcfR2375199; Tue, 7 Jul 2026 06:13:32 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=
+ proofpoint20171006; bh=zSJJTtt+elD71UjpYEucNJ45CeKhcVgqM5RFnl6Nr
+ Hs=; b=inJ0Y/jucnSkWnzzskO9EzOy69Ji5GZPc4/zaPlLHlFdmiEeGY5lUsR+G
+ Ux9qSTP4lk+4QZb1iDul8khDKiEw2p24NpQ0Ui3rLGrfkLEqrsgncEFLnG/oZIfQ
+ soH1tGw9UhP76zj1YZEPEUHrRqUqVyDE4oEse77I333cSinxjRsBTmBZf8W0RwWP
+ t51DTeadPBYhuskyV3USH9q6AmzH+9Hybadfi8DFSxSJqBjOkQB6WbM3LDzNoe6b
+ rdOoU/pqOlozcw4LleQeltuYBMbAUJMpZNft2b/hJok/xosgqDF6olQin6ML+ATx
+ 4ZASZnzIXj1RpmZyauGY2/jvIIB9Q==
+Received: from co1pr03cu002.outbound.protection.outlook.com
+ (mail-westus2azon11020098.outbound.protection.outlook.com [52.101.46.98])
+ by mx0a-002c1b01.pphosted.com (PPS) with ESMTPS id 4f6xgsemhd-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Tue, 07 Jul 2026 06:13:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Hd8vdlnfmKAZhepf+G4E8Kvj0hCunPEGtckChex1q3HqzEWkVV6JOJtsiBwNQlFO4EkYi66eKaGuL99Ip4NyMvHS5InKZ++DhjXIJuFsJrWdP6wiv5cqRHVr69B3L4ORrBh+Z0Cz/bBLBMs+ofe2jChN1MVI/1hRFfwNF3QJQf5nh89oTAtDwvX1IIbiN9J140EzuTm9X4JMl9gDg35c8wES5wyKzREgAKSuz8VCByezZovNdZhh/zdT4UF1HvXpGwdRwztLjcckznOZMVPTr/oNUdqQBXsbiDvhBEqXEgyUJ7A0l8HO4zPJjyNlohwViVc2kMwU3tyys4X1qTutuQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zSJJTtt+elD71UjpYEucNJ45CeKhcVgqM5RFnl6NrHs=;
+ b=zNokGhUZQ131iow6wacBMRarnQHnbFJhu8lHE3mXME3L7lCtM+VPh3IzQl4Xt2AWK1RB2Uovy/7Bl7TwUO4FIiMfTjzeDRDGgB/+KhwD7cyxBY/phhMVs45XOFboS/fdlzGdXcf3XJOZB4Y5HjBgiUXFc2/HWtWwTzIqNBgaR4L+/Pmp7H6Bl7ZzHxib7ZjzSNKZ3kVUfGbXZFkIEIsfN4EQ4Q3Z7f/PkzisJUNg9CTiJsLZfG/lUMPGOS9+tKffHhp0FCMfbViWtynhuiXHzSbplZQcQ+l95vBTcYDOnkV9/TeB+UpNnBifvfce+i3TNmz67t3EEKty65kKsaL8gQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
+ dkim=pass header.d=nutanix.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zSJJTtt+elD71UjpYEucNJ45CeKhcVgqM5RFnl6NrHs=;
+ b=cwgYYauZ8JNtJuYfWkqweqYDz1CpatNseIqFJ8PAxsep8fd9fLkZZaLrws6VpPoIG2hA5wXSBTHL4C95XuChU3+C1gFcA7vlMCK2JrABMZtEJQIEMhm7ekAoDs0tw+gVjMflBj1HpNunSK+USTiRR6aRNonA4pcbNwU1cfILD8dHWconRbyXd9qeKumCELN+gUncIZ7qtEnIllsM42SR6Qv0I+ubvLbEPjFfERXdmztzMeZ3jDD/i9O82U+ZYde1qNGNJYdSv24/NN/Hn++F4bNcK9cD5Y7ttkqMOAx2v5JV7ned3Tqu2IS7HUfheh19SCeqxpFfiO+ukdEmI7fI+g==
+Received: from PH0PR02MB7159.namprd02.prod.outlook.com (2603:10b6:510:16::8)
+ by MW6PR02MB9765.namprd02.prod.outlook.com (2603:10b6:303:247::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.10; Tue, 7 Jul
+ 2026 13:13:30 +0000
+Received: from PH0PR02MB7159.namprd02.prod.outlook.com
+ ([fe80::8e97:bc32:822c:b250]) by PH0PR02MB7159.namprd02.prod.outlook.com
+ ([fe80::8e97:bc32:822c:b250%3]) with mapi id 15.21.0181.012; Tue, 7 Jul 2026
+ 13:13:29 +0000
+Message-ID: <84bf8ce3-5595-4b19-a156-180550d7fd4f@nutanix.com>
+Date: Tue, 7 Jul 2026 14:13:24 +0100
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 2/4] ast2600: yosemite4 functional test
-To: Alexander Hansen <alexander.hansen@9elements.com>, qemu-devel@nongnu.org, 
- Titus Rwantare <titusr@google.com>, Emmanuel Blot <eblot@meta.com>,
- "'qemu-arm@nongnu.org'" <qemu-arm@nongnu.org>, philmd@mailo.com
-References: <20260619115533.5664-1-alexander.hansen@9elements.com>
- <20260619115533.5664-3-alexander.hansen@9elements.com>
- <CAEr1sMs-Fwt_LbCU8KUnMRKgUaWuGrSX1EAz7KapXPGmSX4z6w@mail.gmail.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <CAEr1sMs-Fwt_LbCU8KUnMRKgUaWuGrSX1EAz7KapXPGmSX4z6w@mail.gmail.com>
+Subject: Re: [PATCH v2 02/12] qom/object.c: add
+ object_class_property_add_uint8_ptr()
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com, philmd@mailo.com,
+ aurelien@aurel32.net, peter.maydell@linaro.org, pbonzini@redhat.com,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20260703135512.3213964-1-mark.caveayland@nutanix.com>
+ <20260703135512.3213964-3-mark.caveayland@nutanix.com>
+ <akzuQ-YiaSmToNsg@redhat.com>
+Content-Language: en-US
+From: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+In-Reply-To: <akzuQ-YiaSmToNsg@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 18045642232318766091
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFhYisB267om4oy6+t4RUYA/NaE5jnp95XeLdYvPI0Wkm0BMZ0PhYGNlyki97WcU//Y25wpcg0xTeTLnaiZFLnh+2kqBLZNfBmDij8sCwi225IM5p84agZn+gVsyp+kjIHBoW69VxPbaHA7R0F9WmKvO7UE9uozrbp5F1ej+DllLhOQPxH6ZhwwCo/p4IM2BzHw/O8ZUJPF5f/CrGRYryhZgHZrX7Z6f/oFIJpeqeLVamIrTDFFpZwjVPUNVJ219rHXEaI3a6ic8X7Fuilbr4GklMgOtg0kaBJ99PUIzRohQkpdEpFW4gDNuAcP4sAyJtiz+ESXeCEStPfYxtq54w6fMpSBWf4iTRZd3GTwYiXoGPhR+gX1/PkfbI2MXag3/1O3pu0wgsU6+RbX0diPDxDcZz0KGILjavZkaO9e+o2sj0pT/6pmiIu1z/wHSE9aBMnX8PVXwpbQd6Ra9QrdWeFUaKH/zqkVVT/q5MqnUZaGZymHMnl7THm0DPCYS2WJ7cdIfMBWCMRtq7ShHdQsO9KymtET2HhTgHT12BEM3aNy9RsdBPIpRapWyWGinsH+AJmTEXuM0NnE5nNLGzDFvIeJPSVsCBFmX02qTJMce2yMNVcRtEAuU+dVUqd+n/RFh9q2EK1EbU01QvJVzPrkRVtKopZfEicX8pdpp4N4rGcs7g
-DKIM-Signature: a=rsa-sha256; bh=tQ0zIOirlFgCjC1joHE3kPPJ66A8hXB0Nb1v6XAtWMY=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1783429743; v=1;
- b=FiKfv/jC/qVUx05BzkoPSncFti9XDGUTlvFzV39RIjwg2+0gTPNhAQbeoxPViezt7CK7Iy/g
- Fvv9/3nBX+CD0pwV5LKSb/A7VDnTSclLBJSHxYJPejvS2tgyxgCpCBPguiJDr3GI0lFFfYTM8PX
- ILdC+tOjE1VERDYOdxRMKp7fSU5N/qGBRWymCbH0n/xyDv/Yn22J9kOJeL66B35zv7aiPDQDvn3
- 6d4Wn4b+/ni9cqrl9gUUd9yx9IlDCPG8cwJi05+kqKOxZJoq6gusay7Mk7ndYn4hDDBbnM8QT7n
- USH3El85Z64B+QPrtU7o3zqJNc5frUgK5WPwOzGMgEK0w==
-Received-SPF: pass client-ip=51.210.91.21; envelope-from=clg@kaod.org;
- helo=smtpout2.mo537.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-ClientProxiedBy: LO6P265CA0025.GBRP265.PROD.OUTLOOK.COM
+ (2603:10a6:600:2ff::18) To PH0PR02MB7159.namprd02.prod.outlook.com
+ (2603:10b6:510:16::8)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR02MB7159:EE_|MW6PR02MB9765:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6a697374-c6cd-4217-1338-08dedc2989e5
+x-proofpoint-crosstenant: true
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|366016|23010399003|7416014|376014|22082099003|18002099003|56012099006|4143699003;
+X-Microsoft-Antispam-Message-Info: w9OAw03a8mx7DpRhcem7gSrnNx7FCCspnNbXRVhwQX2PhM8XYhP2a+gROLqjqcUnkZ4xYasYS4C4Oi7sSH4EfS+gaWastZ8mta00blTEPSJZQ2KVKC1IhC4U+AAmit4C9091Omru0R0TIS7Ub9srFQvWSnV8fmOqkHjXPAUEYf742ZRZ1qlfJ8dc8FV4YmHnQtSjtb5glbkRCyDxFoHBylgdWNBFLg5vr6rs0pl3z791bPgWi3ss5MBaqm8sP8wU2+GuOF44KNBVzVyjehpjsQKAgcHdhoH5iG/NoQ67vhMv2WTc8vmlNv1pMKWa5iKsDSJ7hu14B348BL5yk2IshDX2wclr2taysrttL8p4zLioEVEUXUhfQfaOgbSCWHyC4dIOM+xokf93+hHC9y67Sa81Uva/YpEzJsjDsqWJVK/D9Xsc61i4+av1UNHoLVOy8USe6Wzk2LQQUL8CyN+8pvucxTTkmTGEC5L2Y2zOY4NA6OhrStfX86H7B2QCERsIWADB34byydCkksnxSCzDTqcGnfxmgumQHeKnjRqFr5lSXuQSMmjD1pBcuJtNbHde9akEhvYYLiWTzdD7j5Ax5O4n7cf6yoNL+zwlwG942ngBlPpS9qeXz9z1IOxPRUggGsJTWLUt4eAOKUhVDruUlx4pAo8i4TSt1MfgdhvqgXU=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR02MB7159.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(23010399003)(7416014)(376014)(22082099003)(18002099003)(56012099006)(4143699003);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?eGpUSmJIZHFBZzF2R1JwR25IRGE2R1pQSTNadWd6NVFhUUF0MlhERXBmUVVZ?=
+ =?utf-8?B?UW9ZczdvejhLY3dKOFJxUVd1RVZZR3N6c0pMQSsxbDhibyt5V2RiVzRhenE2?=
+ =?utf-8?B?UlV2NzMzbkVzWmd1VVEvalVkRS8rVEFHTGJZQU9EWWdQTTVIOC90Y3h2Qy85?=
+ =?utf-8?B?eGp0dW45aG1HclFHRG04S2pBcUY1SldWYkJ5a3BRUVNETTFHVG82aThLaUFP?=
+ =?utf-8?B?c3drS3orWFpLNjZ4dE5ydTJ2c3pFQXRHbzRWRGhuMm81cXNUMVAxZVNSM3hN?=
+ =?utf-8?B?dXY2bU5lcDZRdnZMRjRkOE9YTSsxOGhrOTdOMGFOYmZ4eVE2ZmtMemRPQ2hn?=
+ =?utf-8?B?dTAzMDJ6emFPd1JWODdpU1c2OFR3amNFU2JWMDBqQWRZdWUzSW5haSswbktx?=
+ =?utf-8?B?WGFhVmNjNm13elplZmVhdzJrTU5RTUZHWGN5S0pJK2NCaVVIbGJldURqWFY3?=
+ =?utf-8?B?ZEE5anpsSTZzV2RLTUJYUUdVcUJRNGQ0T21iY0M1d1R0Z2xHQzkycHpFVTRU?=
+ =?utf-8?B?aFFRUmVuc1Q4eVdycXBVbi9nR1JRcGIrS0FGVXhMcWdDdnFRenk0Tnc4VURX?=
+ =?utf-8?B?MjEwWWNsOHJUNWJUcDkzS05VNHAzbEdxS2pjckt3Q2E4QitTa2dqbHdyYVFu?=
+ =?utf-8?B?OU9LZ0o4dmVKSmpkbGlmY29IV3hVS0ZVYWI0VWx1NGxzWklQLzE4V1krSnVl?=
+ =?utf-8?B?aHRrVWVzQmtyT1J3bGZyYUUrOGc1QThsQkpXanlXNGhwT2xRMTZUT3o1ck1j?=
+ =?utf-8?B?a0JJV25KZVpjd25BOGFwd1pBaWxQMk5CYk9iRGN6KzkrOWwwdlAxcHZHVjNW?=
+ =?utf-8?B?TlJCak5sT3VKOTNFNWJBdU02dEJqYytjTEo3aUZpcmRqK0Q2NXpkZlBHdlZM?=
+ =?utf-8?B?RVB5N3FtV2hPUU5kYng4dk9ncUpUd1R5SklSbDdTNDRtODJYM2pZd3VyU002?=
+ =?utf-8?B?U0FYaGQzSjlDd3lRQWc0Q2J5L00wZEUwcEs5MHNrTkF4b0gzMkw2VHhTMCtL?=
+ =?utf-8?B?bUY0MTdhaTlnS0dpTTNWVE9TdlI2bS9HNkVxV2w2OVBud1lnd1d4aWpDUnkr?=
+ =?utf-8?B?ODRzTVlMcTRvbkZ6U0VnSjJwbDdwNkw2Q2VERm5hbkJNZTlOMVFvNzIweWJz?=
+ =?utf-8?B?K1ROWkY5bjREOG93RHBoaFcrR2tqSkJick0xNEJ2OENxbll6RldqTW40Ti9y?=
+ =?utf-8?B?OUFXTFAxNjRmYjNFTzRlaDhRL1RoVVhrQUhtQkJLaTJRalZ6cUszcDFxbldm?=
+ =?utf-8?B?eUt3QWVhTDN1ZEhpUEorQi9jVWtvRGtoQWVXclZWUlhuVVp3MTRvWXI4SUhX?=
+ =?utf-8?B?R3ZFcFdYaTlQUWx6blRGWHFpeXc4c0JCVjBSNDZxZnJwYUM2TjZWM2sxQ1Rr?=
+ =?utf-8?B?NmdoVmFrWGJMUTBwWC9SeE5Kb1JZelVQWGg4RkwrNHVLTUVETE9UZWtqdWhp?=
+ =?utf-8?B?Q3V1ZGl5aitrZXdteC9WQ3FLcmdMUFBEdnZYOFhHT3Vna2ovdmZsZTZxOFIz?=
+ =?utf-8?B?N1FSb2FySHV1YUo3dmZGMW1JRk00VUZJNnRPZ2tEQWhSSHlFSWpxT2NpWVAx?=
+ =?utf-8?B?VDNFZzFsZzlLN2lKdHV3Q29ydXk0Yi9FTFA3TEhYdUtxU2lYN1BhUlE5aFQ1?=
+ =?utf-8?B?OGRwQUxoemFXOU5rZ2dsbEdEaHJjenFyOXExdFMwdkhuMUU1RzdjQmhHSk1r?=
+ =?utf-8?B?ODEzUUJIYnZPQklRSzhWVUlRVGhJNUNpMFhBTFRLZ1lwZkFuNjExMDg3SC9u?=
+ =?utf-8?B?Vk03SjRCZkFmOFU5WDFEaGNrYmZ1ZENidVpJcDVHOC8zdzFJNFdQQyt1LzVU?=
+ =?utf-8?B?WEJvalpDOVJ6VDE4cTJoVXlWY3NtSHdlQUoyUGZIRGtIUFJKQWFvZHVVcjMx?=
+ =?utf-8?B?bDhNRTZjOTVKRUpqVHZtYVZvQ1RJOCsralN6bGR6RlBMd2VpYXVBQ1djTUFo?=
+ =?utf-8?B?Z2g2clh3UXUzK1VEeVR4bUtXTUNRcnA3b3BCZWN0NWswK3pPTHpOR2J5SThw?=
+ =?utf-8?B?U3pEYUpualJCYUw2YWFYSEJMaWlTaFNkZnViL2Mvck9iVVhza3lsa2RuVWNj?=
+ =?utf-8?B?eUh3ekVpVm8zZmxGS1h5SWY5UkhEc0hxdG1iZTRzRW9GTVA0UFJjNkZGb3hJ?=
+ =?utf-8?B?cEY4WnlGM25HVGJmV2paNmQ5TnJyakxOdmgxNHV3YVFBWGdNYVhYMGlScWNP?=
+ =?utf-8?B?Z1NYaU5QeUZNSGxSM3p3b3dCdFZZZUZ2UTVZQ2JiT2dva3p1aDg0WG4rdWFu?=
+ =?utf-8?B?V1QwK3RoYUl5REtoMEYyUFJKZ0hFU1FPZnpzWVVCMENlMng5c2l2cWtBRXd3?=
+ =?utf-8?B?bHg1cUFMMTRPM1ZDQSthaStLdGFPdUg3VXpNQUxhamcvWVVTMm5QMmtldy80?=
+ =?utf-8?Q?Fj+Dl1OhHu5+c8eg=3D?=
+X-Exchange-RoutingPolicyChecked: scMLGVLv1PY2nHAh/esYAeOrlqERjywcfAqaQnLYoz11hJcXhWMoEv5Gpvgebv1i4+avitW8aDw1ZK+xEdMtImhneC/yW9GhW34WL+4KaWBKGPLLilHT0OhSgxf7dVuBnSxmyxee6ex5uhE1GNqtaolBg3Z+KY9gxt9KXK2BHNSSJ9TFE7LOPx5MExR+AkE/sOuvGr05gqGNUVgndwrk3WlJIpZJUOGwxy32FvaYBeL2c9bTFKYKBXgQytEvCB5c8whAF2Wnt3K2cUuKqt7aDkewfHyzGeVKj02tXodeIuUXy0O2z/xFl4bErNZZRSpaDkFJmlpZVZgIwBtcSlfFfQ==
+X-OriginatorOrg: nutanix.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6a697374-c6cd-4217-1338-08dedc2989e5
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR02MB7159.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jul 2026 13:13:29.9112 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: bb047546-786f-4de1-bd75-24e5b6f79043
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: LcJc5wMOq3BCQdT9BwEEgD9F5YXcQW5OUPMNLjM98soBgEIm8wEOaMPBjUyVzOtwyn32nU+1PRa6En70/uo1gIUD6bVRSuZyPUcC3MshN7Y=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW6PR02MB9765
+X-Proofpoint-ORIG-GUID: 3NYtLR2cMgMB1Q6fKEtRkDVQyzUM4uNm
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA3MDEyOCBTYWx0ZWRfXwDzDYcyjZlqj
+ AUOY4AX5YGmQqyyO4duZ+BIR6OrqKBcyuC6hOSVZkCFu4w8f5ey257gHC6O/45rylIs6And5Y87
+ +k1EnQbDY3MwB3mRbNw1cZyrJCYQpv4=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA3MDEyOCBTYWx0ZWRfX/ngaSGoT51qG
+ qLvzfvDntrHQggQpZiZLDGqRyRKhgTKqK/K7FdIrPhoXCOOt6FsW6AWO+iJ36xbTZnqpY7ZHSn1
+ y872bUg2j4MF5rUTP7FfH8GW+Qx15xLydzuYayp02OBM9ahnLz2NHp1/dtfuGORKTgXLLYFv8Bg
+ 8/GyNHmGYbVrLwCWJIBqwgMiEvlBvKo70ZN3mD30TPtadhdjl/9hUPojTdmIHlRjjMtbxcajxUl
+ kuF9jBGCERQembwEBsRK0NxiGjW7j6k5dE23BdQxqbGD3yjGZixn/IX0UrxD0ipyzY3kRn37MHO
+ 6gEJjc61uswAsuV1eZq8lDL8qdUFnxVbrdcmhYGdGHhpBMYsh1qk26ixO85QTzPBaSWfB85CUd9
+ gmZaZRIPaVGxyWurKUVL6oCccF0MuQe/rilh8b/pFfz7ew0fefyKUmVEkQPls9cfGEZ5A2HSIrH
+ 2TOEDGeOSd+sd5MQeRQ==
+X-Authority-Analysis: v=2.4 cv=ENs2FVZC c=1 sm=1 tr=0 ts=6a4cfb7b cx=c_pps
+ a=jzpQLMhUvwWo5cn4Ul+sFQ==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+ a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
+ a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=0kUYKlekyDsA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=_-M8LpHI31CeLmyZm6wg:22
+ a=64Cc0HZtAAAA:8 a=14Cb58WfC2kDD8ILuuMA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: 3NYtLR2cMgMB1Q6fKEtRkDVQyzUM4uNm
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-07_03,2026-07-06_02,2025-10-01_01
+X-Proofpoint-Spam-Reason: safe
+Received-SPF: pass client-ip=148.163.151.68;
+ envelope-from=mark.caveayland@nutanix.com; helo=mx0a-002c1b01.pphosted.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -131,164 +193,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello,
+On 07/07/2026 13:17, Daniel P. Berrangé wrote:
 
-On 7/7/26 14:51, Alexander Hansen wrote:
-> Hi Cedric,
-> 
-> sorry to ping, since the
-> - (ast2600: yosemite4 initial support) and
-> - (ast2600: yosemite4 functional test)
-> 
-> also work by themselves, would you consider those two as ready or is
-> there something i need to fix there.
-
-These 2 patches are fine AFAIR.
-
-> Alternatively, do all patches of a series need to go in together?
-> Would it help if I pushed those 2 again separately.
-
-The Yosemite V4 machine is of limited interest without the sensor models
-required by the board. For the current use case, a user might as well
-use the ast2600-evb machine instead.
-
-More broadly, we should avoid adding with machine types that offer little
-functional differences. Each additional machine increases maintenance
-burden, so new machines should provide capabilities that cannot already
-be achieved with existing ones. That rationale has its limits, since devices
-can also be created from the command line. However, I'm fine with adding
-a standalone machine, provided it comes with the required device models and
-functional tests.
-
-
-I sent a few comments on the MAX* sensor models that should be addressed.
-Before I take the series through the Aspeed queue, I'd greatly appreciate
-an Ack from one of the sensor maintainers or a review from a developer
-familiar with those models.
-
-The same applies to the ADC128D818 model. It has already received a review.
-The merge is primarily gated by the review of the test cases.
-
-We have now reached the QEMU 11.1 soft freeze, so only bug fixes should be
-merged from this point onward.
-
-> 
-> Thanks again for taking the time reviewing those patches :)
-
-Let's make it happen in QEMU 11.2.
-
-Thanks,
-
-C.
-
-
-> 
-> Alexander
-> 
-> Am Fr., 19. Juni 2026 um 13:55 Uhr schrieb <alexander.hansen@9elements.com>:
+> On Fri, Jul 03, 2026 at 02:53:04PM +0100, Mark Cave-Ayland wrote:
+>> This adds a class property that references a uint8_t within the object instance
+>> and is intended to be a replacement for object_property_add_uint8_ptr().
 >>
->> From: Alexander Hansen <alexander.hansen@9elements.com>
->>
->> Add a functional test for the Yosemite V4 (fby4-bmc) machine
->> that validates:
->> - U-Boot initialization and kernel boot sequence
->>
->> The test uses an OpenBMC image built for the yosemite4 board and
->> validates console output through the boot process.
->>
->> Cc: Emmanuel Blot <eblot@meta.com>
->> Cc: Titus Rwantare <titusr@google.com>
->> Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
->> Cc: Peter Maydell <peter.maydell@linaro.org> (maintainer:ASPEED BMCs)
->> Cc: Steven Lee <steven_lee@aspeedtech.com> (reviewer:ASPEED BMCs)
->> Cc: Troy Lee <leetroy@gmail.com> (reviewer:ASPEED BMCs)
->> Cc: Jamin Lin <jamin_lin@aspeedtech.com> (reviewer:ASPEED BMCs)
->> Cc: Kane Chen <kane_chen@aspeedtech.com> (reviewer:ASPEED BMCs)
->> Cc: Andrew Jeffery <andrew@codeconstruct.com.au> (reviewer:ASPEED BMCs)
->> Cc: Joel Stanley <joel@jms.id.au> (reviewer:ASPEED BMCs)
->> Cc: qemu-arm@nongnu.org (open list:ASPEED BMCs)
->> Cc: qemu-devel@nongnu.org (open list:All patches CC here)
->> Reviewed-by: Cédric Le Goater <clg@redhat.com>
->> Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
+>> Signed-off-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 >> ---
->>   tests/functional/arm/meson.build         |  2 ++
->>   tests/functional/arm/test_aspeed_fby4.py | 45 ++++++++++++++++++++++++
->>   2 files changed, 47 insertions(+)
->>   create mode 100755 tests/functional/arm/test_aspeed_fby4.py
+>>   include/qom/object.h |  5 +++++
+>>   qom/object.c         | 52 ++++++++++++++++++++++++++++++++++++++++++++
+>>   2 files changed, 57 insertions(+)
 >>
->> diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
->> index 61b00932db..19331b3f16 100644
->> --- a/tests/functional/arm/meson.build
->> +++ b/tests/functional/arm/meson.build
->> @@ -15,6 +15,7 @@ test_arm_timeouts = {
->>     'aspeed_anacapa' : 480,
->>     'aspeed_bletchley' : 480,
->>     'aspeed_catalina' : 480,
->> +  'aspeed_fby4': 480,
->>     'aspeed_gb200nvl_bmc' : 480,
->>     'aspeed_rainier' : 480,
->>     'bpim2u' : 500,
->> @@ -50,6 +51,7 @@ tests_arm_system_thorough = [
->>     'aspeed_anacapa',
->>     'aspeed_bletchley',
->>     'aspeed_catalina',
->> +  'aspeed_fby4',
->>     'aspeed_gb200nvl_bmc',
->>     'aspeed_rainier',
->>     'bpim2u',
->> diff --git a/tests/functional/arm/test_aspeed_fby4.py b/tests/functional/arm/test_aspeed_fby4.py
->> new file mode 100755
->> index 0000000000..a521834f79
->> --- /dev/null
->> +++ b/tests/functional/arm/test_aspeed_fby4.py
->> @@ -0,0 +1,45 @@
->> +#!/usr/bin/env python3
->> +#
->> +# Functional test that boots the ASPEED machines
->> +#
->> +# SPDX-License-Identifier: GPL-2.0-or-later
+>> diff --git a/include/qom/object.h b/include/qom/object.h
+>> index 89c23d45ab..a55f9d0e97 100644
+>> --- a/include/qom/object.h
+>> +++ b/include/qom/object.h
+>> @@ -1956,6 +1956,11 @@ ObjectProperty *object_property_add_uint8_ptr(Object *obj, const char *name,
+>>                                                 const uint8_t *v,
+>>                                                 ObjectPropertyFlags flags);
+>>   
+>> +ObjectProperty *object_class_property_add_uint8_ptr(ObjectClass *klass,
+>> +                                                    const char *name,
+>> +                                                    ptrdiff_t v,
+>> +                                                    ObjectPropertyFlags flags);
 >> +
->> +from qemu_test import Asset
->> +from qemu_test import wait_for_console_pattern
->> +from aspeed import AspeedTest
+>>   ObjectProperty *object_class_static_property_add_uint8_ptr(ObjectClass *klass,
+>>                                            const char *name,
+>>                                            const uint8_t *v,
+>> diff --git a/qom/object.c b/qom/object.c
+>> index d10bf848c0..263c313cd2 100644
+>> --- a/qom/object.c
+>> +++ b/qom/object.c
+>> @@ -2741,6 +2741,38 @@ static void property_set_uint64_ptr(Object *obj, Visitor *v, const char *name,
+>>       *field = value;
+>>   }
+>>   
+>> +static void *object_class_prop_ptr(Object *obj, ptrdiff_t offset)
+>> +{
+>> +    void *ptr = obj;
+>> +    ptr += offset;
 >> +
+>> +    return ptr;
+>> +}
+> 
+> Perhaps just
+> 
+>   #define FIELD(obj, offset) ((void *)obj+(ptrdiff_t)offset)
+
+That could work.
+
 >> +
->> +class YosemiteV4Machine(AspeedTest):
+>> +static void property_class_get_uint8_ptr(Object *obj, Visitor *v,
+>> +                                         const char *name,
+>> +                                         void *opaque, Error **errp)
+>> +{
+>> +    uint8_t value = *(uint8_t *)object_class_prop_ptr(obj,
+>> +                                                      (ptrdiff_t)opaque);
+> 
+> Do we need this intermediate instead of now
+> 
+>> +    visit_type_uint8(v, name, &value, errp);
+> 
+>    visit_type_uint8(v, name, FIELD(obj, opaque), errp);
+
+Yes, I think that would be possible. I shall give it a test and report back.
+
+>> +}
 >> +
->> +    ASSET_YOSEMITE_V4_FLASH = Asset(
->> +        'https://github.com/legoater/qemu-aspeed-boot/raw/refs/heads/master/images/yosemite4-bmc/openbmc-20260505132843/obmc-phosphor-image-yosemite4-20260505132843.static.mtd.xz',
->> +        'dff6946363b41f952b15cfc3156482b89fcfc1b0ecfc3ec8b3ed496a5f001ef9')
+>> +static void property_class_set_uint8_ptr(Object *obj, Visitor *v,
+>> +                                         const char *name,
+>> +                                         void *opaque, Error **errp)
+>> +{
+>> +    uint8_t *field = (uint8_t *)object_class_prop_ptr(obj,
+>> +                                                      (ptrdiff_t)opaque);
+>> +    uint8_t value;
 >> +
->> +    def do_test_arm_aspeed_openbmc_no_network(self, machine, image, uboot,
->> +                                   cpu_id, soc):
+>> +    if (!visit_type_uint8(v, name, &value, errp)) {
+>> +        return;
+>> +    }
 >> +
->> +        self.set_machine(machine)
->> +        self.vm.set_console()
->> +        self.vm.add_args('-drive', f'file={image},if=mtd,format=raw',
->> +                         '-snapshot')
->> +        self.vm.launch()
+>> +    *field = value;
+> 
+> Instead of all this is it sufficient to do:
+> 
+>     visit_type_uint8(v, name, FIELD(obj, opaque), errp);
+> 
+> 
+> Also, since we'll be using this pattern for int8, int16, int32,
+> and many more, perhaps we could define a macro that can expand
+> to the getter/setter impl for any scalar type. so we can do
+> 
+>    DEFINE_SCALAR_PROP_CALLBACKS(uint8);
+>    DEFINE_SCALAR_PROP_CALLBACKS(uint16);
+>    DEFINE_SCALAR_PROP_CALLBACKS(uint32);
+>    DEFINE_SCALAR_PROP_CALLBACKS(uint64);
+>    DEFINE_SCALAR_PROP_CALLBACKS(bool);
+>    ..etc..
+
+That is something else that is possible: I've purposely avoided doing 
+this since it's not a pattern already in use within object.c. Do you 
+think this is worth doing as a separate exercise first?
+
+>> +}
 >> +
->> +        self.wait_for_console_pattern(f'U-Boot {uboot}')
->> +        self.wait_for_console_pattern('## Loading kernel from FIT Image')
->> +        self.wait_for_console_pattern('Starting kernel ...')
->> +        self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
->> +        self.wait_for_console_pattern(f'ASPEED {soc}')
->> +        self.wait_for_console_pattern('/init as init process')
->> +        # yosemite v4 does not emit the hostname log which is
->> +        # different from the other machines.
->> +        self.wait_for_console_pattern('yosemite4 login:')
->> +
->> +    def test_arm_ast2600_yosemitev4_openbmc(self):
->> +        image_path = self.uncompress(self.ASSET_YOSEMITE_V4_FLASH)
->> +
->> +        self.do_test_arm_aspeed_openbmc_no_network('fby4-bmc', image=image_path,
->> +                                        uboot='2019.04', cpu_id='0xf00',
->> +                                        soc='AST2600 rev A3')
->> +
->> +if __name__ == '__main__':
->> +    AspeedTest.main()
->> --
->> 2.54.0
->>
+>>   ObjectProperty *
+>>   object_property_add_uint8_ptr(Object *obj, const char *name,
+>>                                 const uint8_t *v,
+
+
+ATB,
+
+Mark.
 
 

@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DA65C43458
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBFB5C44501
 	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 22:46:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whEVi-0001HX-HF; Tue, 07 Jul 2026 18:43:26 -0400
+	id 1whEWA-0001WD-JQ; Tue, 07 Jul 2026 18:43:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1whEVg-0001Ea-Pf
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 18:43:24 -0400
+ id 1whEW8-0001V8-IW
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 18:43:52 -0400
 Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1whEVc-000452-Hm
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 18:43:24 -0400
+ id 1whEW6-0004ES-Ue
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 18:43:52 -0400
 Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-2c9b1edf2bdso1108195ad.1
- for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 15:43:16 -0700 (PDT)
+ d9443c01a7336-2cc6ae3e7f1so577625ad.0
+ for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 15:43:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783464196; x=1784068996; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783464229; x=1784069029; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=/EtuxP6qUgKAfe4TZdc89W+i3osoTftywciSv3aaq0s=;
- b=PUcAquOsanYQdx0KGMjkqnmiyUtmQe3HnB9TSMDsEX1H6chFwu5k5XAk66Ohw95D9V
- pa2afuhu3D/ox0WmZnRQwlvbnOgVs7964JFA3Pf69V+uY/7cfzwKr9QXuNJkKAlVtmKx
- p0O3yaPZpxEVkkMmsjIZYE2ftSrnEXg/Ub8/5E2HhhzPcBoCvLGYFE8HlQRETJq0pVK0
- vlZBcKc5m0NtJyXmyN+2UZcewWwNcX8xSBxJV7Ar6GAYuLgZFL53c99FT/YuDL5rv8uR
- 4BAhPw4xMXd4B7Sva/XpIVhZfWptnNL9Xuv5kMh1G8J1HftZvVxQ/GVXuVJtSK2JyhfX
- cn+Q==
+ bh=O86QJm1XxClMyzD31RebPc3Pom31UHvgzzbgIM9gz34=;
+ b=NtsQxGbU8QBnvDHome9b5+6rO+5HcNMRxjVbin6dcSl+DLevyJntxQ1xM5xj+drZ6A
+ nJ2Et3C3pJ1Cdb+YWW2icSPp8iGypnk3tvqCoQmhglQioGCUKd8oo5fYCQh9Yu4CQUCo
+ UNGE/mJTIywAwx8qNxRr9KUPaA+dNQzuJCJl0j0sRW3xy9xhwfZ0VUAP8dn0xcN3sAbh
+ i6iQwB+yEYWbPEaV3W99stug7X1qtxFFjoEbTT+JDM71XJnUrYVwIcSc7dWSQebJjylF
+ MvPtV3woL6Z9YegJl94pV10+dJTKTf9vrMz4wvMHmZ9ZZXFu25zD/2WsNckytd753uBM
+ p9VQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783464196; x=1784068996;
+ d=1e100.net; s=20251104; t=1783464229; x=1784069029;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=/EtuxP6qUgKAfe4TZdc89W+i3osoTftywciSv3aaq0s=;
- b=H/cJnOthhjfVQ3olByZV3EJdGMSXRvw1R8Wqcr/kNNai1Rurpg4mCXoT7nzUDCbtUy
- XXS+gi0q4JtOW7aUh+kzi7YWB5ifXM8HJT1PVP6RDH/MD401tr1wx+MYUE59e3szFwp8
- 1U0/pSX3Hsy+I4dOlH5OwfytpVdqYHpwcOMdT+d+ulGyKzxLqLMzHq6DMho3smO9AWQI
- h92Gwt1euubrhFexbBO8bydwN7dpR9fkj0jc9xM9sJNX8SvHTOOsQ4NP2Le/7InVRFQn
- 9CNY4WDfLTWKOoHnBe1is1dBjXtGCe+KI+UmzGn+wi9P8ll2T8TxBLzTAJ3jTMPWJuQ7
- w6ag==
+ bh=O86QJm1XxClMyzD31RebPc3Pom31UHvgzzbgIM9gz34=;
+ b=cTY+U12CqOztdAG/ARr7D4MkkjBsExWMbtoOK48B0FWuFnX5xVpSz0jntPxP3q0EQD
+ wzXDTPGj6XFPjy+I8EE9NyHziSBR96QzcPK+AvskjgR9D60msuZ02Fn/ylj8YY4D8HBE
+ Jir9v+40WUvUmtmhKrdHguUIwEUSdjl5vtw90mgimwp7ecvvrL5BF7thx0IEulS/kYYk
+ 7EbkT6jTblaQr2+wOw4KoxFmLmRzgroxpTwdoX210Y9YwHjoXFhCMKRXuS/HYKpYAvs+
+ V343AoBEP8EjBG1RvxUSt+qw9Jnw8EokXCk9N/HPURtjvmT2O3TSpZPHjEzK79U0YIs/
+ A3IA==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rq96vfXe+mDreg3WKOXb4ItaY4Iwtv5u/RLbR82l3tYLTgm+qexCYdzKWKIdOPMXXDhmorec46bdw==@nongnu.org
-X-Gm-Message-State: AOJu0YxAq9VOuRoY5cBEFKBg5PhWGd4+T+E1ZxObUR2CwSlS76Wm+5py
- z2czmjARU6XSLS5CLl1K8S5guTE0YifxWN2bu4sNInStB8a7OhjMS6R/QWFRXPWrguY=
-X-Gm-Gg: AfdE7clCekLOp5ook0F2WCS0zfP4wxpV3T4nujpdKfDliIbRz/WDz5SSb1ehNzRc5D/
- Pl54A/WVXnLMw6FUbHfknE7kFfj3Y7JPMsuuy+LVsyuMjMp2b2gHDeMXSryM5qTMSxcViAnLiZX
- BhXUzcZfU45HBKCX0BFpNCB9ZmNYrLkr4lud0xjfSd6LHlRHFd8md++7skm/SVX3pyUTaZqITyF
- QH70EVtxx3UqqoFIbonqV3MI/KtphEp2rvkBfqb2BuHDRd0f3/sAzGcxtsDdSbLYOO6LVmEs1To
- L22Sjl5gBTh1V+fm3nIShQscaPpBWLs+QmeOBlMzMfpxgqa9g2lpyVEQLKZCt8URzSmEmzINMeV
- j62rBpvwnFidpQTNonG3eyTZVqhhGbAx+jS4LGr8NQfhs9ugzcQsG+809qgkOw7bxfG15vEqocK
- ndADcFbl7gOFUqa4EPxlt7PKhsZLyv0olnjBG6GFc=
-X-Received: by 2002:a17:903:384c:b0:2cc:90aa:8787 with SMTP id
- d9443c01a7336-2ccbe724a21mr71744795ad.6.1783464195895; 
- Tue, 07 Jul 2026 15:43:15 -0700 (PDT)
+ AHgh+Roaj4qEV2eNY7syrfcAmMFPGma2j4VYzXk9FaA27fLcnIC9Kvj3iX3sxY2ASwuyEF6bHZl7I2pG+g==@nongnu.org
+X-Gm-Message-State: AOJu0Yzw7TDzIQikCxZaUzSm/qYENUxXiQSne3k1nwKzhhWLZo0Wswcu
+ ED51eBpkaGnCyqMqU3mw39ni3pfZOzMroqiZ5FlW7czpcJpMlEUntuzWNq+qmbCe9ns=
+X-Gm-Gg: AfdE7cnaHswEO7jrHu4mK8H+PK53rQLXkQ+yZZXxTzycE/ygE3AtDPMxuSpfWhaKThE
+ W9ohXWXXXxo8ohn3MjJ274nJ0eIKxQvbFdajrcGYOhG7W0hRMmuaQx71PYmDrxBuJbdKofdyQmz
+ GIgtxDIpGWDe3aYHvdythBh6iZ7E2CmShqu6WnONAQoaVUGXuIkUGaGHMxefpOalh5UGuQaJNlZ
+ IaN7IwFg/0m47HO58iJJTb91ftJYFQnDykm2OTDu+eT1MJPM6nN2ObXlKibbm3dklN71pWkBSum
+ 3wvhCGEvUczU//2B8QjidY5UfgoRONX3v+GDjB/c9kIUtgNNlBBVMTLGDyUNkcdiP6zO1F0YimL
+ O9zGAus9TkzJlJ5chuSrY4+/lYUVmbbMTB0pNZxQ+3wSm3Xy3GH7oD4OG10ccCqzcO/Znqk3u5k
+ yo7lTuPGTVO3xJuq3jlP+6FW2Klnoxq/ChB29O7ZM=
+X-Received: by 2002:a17:902:f789:b0:2ca:281:27f9 with SMTP id
+ d9443c01a7336-2ccbed22936mr61406255ad.27.1783464229346; 
+ Tue, 07 Jul 2026 15:43:49 -0700 (PDT)
 Received: from p14s.cg.shawcable.net
  ([2604:3d09:148c:c800:46c8:dda7:40fa:8958])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2ccc9d3bbaesm18183805ad.57.2026.07.07.15.43.14
+ d9443c01a7336-2ccc9d3bbaesm18183805ad.57.2026.07.07.15.43.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Jul 2026 15:43:15 -0700 (PDT)
+ Tue, 07 Jul 2026 15:43:48 -0700 (PDT)
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
 To: berrange@redhat.com, kchamart@redhat.com,
  pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
@@ -75,9 +75,10 @@ To: berrange@redhat.com, kchamart@redhat.com,
 Cc: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	kvm@vger.kernel.org
-Subject: [RFC v1 03/25] target/arm: Add confidential guest support
-Date: Tue,  7 Jul 2026 16:42:44 -0600
-Message-ID: <20260707224306.1202330-4-mathieu.poirier@linaro.org>
+Subject: [RFC v1 20/25] hw/arm/virt: Move virt_flash_create() to
+ machvirt_init()
+Date: Tue,  7 Jul 2026 16:43:01 -0600
+Message-ID: <20260707224306.1202330-21-mathieu.poirier@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260707224306.1202330-1-mathieu.poirier@linaro.org>
 References: <20260707224306.1202330-1-mathieu.poirier@linaro.org>
@@ -109,112 +110,40 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-Add a new RmeGuest object, inheriting from ConfidentialGuestSupport, to
-support the Arm Realm Management Extension (RME). It is instantiated by
-passing on the command-line:
-
-  -M virt,confidential-guest-support=<id>
-  -object rme-guest,id=<id>[,options...]
-
-This is only the skeleton. Support will be added in following patches.
+For confidential VMs we'll want to skip flash device creation.
+Unfortunately, in virt_instance_init() the machine->cgs member has not
+yet been initialized, so we cannot check whether confidential guest is
+enabled. Move virt_flash_create() to machvirt_init(), where we can
+access the machine->cgs member.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 ---
- docs/system/confidential-guest-support.rst |  1 +
- qapi/qom.json                              |  1 +
- target/arm/kvm-rme.c                       | 42 ++++++++++++++++++++++
- target/arm/meson.build                     |  5 ++-
- 4 files changed, 48 insertions(+), 1 deletion(-)
- create mode 100644 target/arm/kvm-rme.c
+ hw/arm/virt.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/docs/system/confidential-guest-support.rst b/docs/system/confidential-guest-support.rst
-index 562a7c3c2852..abb56923ad13 100644
---- a/docs/system/confidential-guest-support.rst
-+++ b/docs/system/confidential-guest-support.rst
-@@ -42,5 +42,6 @@ Currently supported confidential guest mechanisms are:
- * POWER Protected Execution Facility (PEF) (see :ref:`power-papr-protected-execution-facility-pef`)
- * s390x Protected Virtualization (PV) (see :doc:`s390x/protvirt`)
- * AWS Nitro Enclaves (see :doc:`nitro`)
-+* Arm Realm Management Extension (RME)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 0f104447e008..2e8e29244284 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2909,6 +2909,8 @@ static void machvirt_init(MachineState *machine)
+     unsigned int smp_cpus = machine->smp.cpus;
+     unsigned int max_cpus = machine->smp.max_cpus;
  
- Other mechanisms may be supported in future.
-diff --git a/qapi/qom.json b/qapi/qom.json
-index dd45ac1087c3..285d32c2cce3 100644
---- a/qapi/qom.json
-+++ b/qapi/qom.json
-@@ -1241,6 +1241,7 @@
-     { 'name': 'pr-manager-helper',
-       'if': 'CONFIG_LINUX' },
-     'qtest',
-+    'rme-guest',
-     'rng-builtin',
-     'rng-egd',
-     { 'name': 'rng-random',
-diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-new file mode 100644
-index 000000000000..42e1d1e7b859
---- /dev/null
-+++ b/target/arm/kvm-rme.c
-@@ -0,0 +1,42 @@
-+/*
-+ * QEMU Arm RME support
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Copyright Linaro 2026
-+ */
++    virt_flash_create(vms);
 +
-+#include "qemu/osdep.h"
-+
-+#include "hw/core/boards.h"
-+#include "hw/core/cpu.h"
-+#include "kvm_arm.h"
-+#include "migration/blocker.h"
-+#include "qapi/error.h"
-+#include "qom/object_interfaces.h"
-+#include "system/confidential-guest-support.h"
-+#include "system/kvm.h"
-+#include "system/runstate.h"
-+
-+#define TYPE_RME_GUEST "rme-guest"
-+OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
-+
-+struct RmeGuest {
-+    ConfidentialGuestSupport parent_obj;
-+};
-+
-+OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
-+                                          CONFIDENTIAL_GUEST_SUPPORT,
-+                                          { TYPE_USER_CREATABLE }, { })
-+
-+static void rme_guest_class_init(ObjectClass *oc, const void *data)
-+{
-+}
-+
-+static void rme_guest_init(Object *obj)
-+{
-+}
-+
-+static void rme_guest_finalize(Object *obj)
-+{
-+}
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 4412fde065f2..aff52a3f6eeb 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -31,7 +31,10 @@ arm_common_user_system_ss.add(when: 'TARGET_AARCH64', if_true: files(
- arm_common_system_ss.add(files(
-   'arm-qmp-cmds.c',
- ))
--arm_system_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c', 'kvm.c'))
-+arm_system_ss.add(when: 'CONFIG_KVM', if_true: files(
-+  'hyp_gdbstub.c',
-+  'kvm.c',
-+  'kvm-rme.c'))
- arm_system_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
+     possible_cpus = mc->possible_cpu_arch_ids(machine);
  
- arm_user_ss.add(files('cpu.c'))
+     /*
+@@ -4429,8 +4431,6 @@ static void virt_instance_init(Object *obj)
+ 
+     vms->virtio_transports = NUM_VIRTIO_TRANSPORTS;
+ 
+-    virt_flash_create(vms);
+-
+     vms->oem_id = g_strndup(ACPI_BUILD_APPNAME6, 6);
+     vms->oem_table_id = g_strndup(ACPI_BUILD_APPNAME8, 8);
+     cxl_machine_init(obj, &vms->cxl_devices_state);
 -- 
 2.43.0
 

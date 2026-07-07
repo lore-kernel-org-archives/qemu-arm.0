@@ -4,120 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD9E6C43458
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 17:17:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 291FAC43458
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 17:27:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wh9Pr-0002n6-Ha; Tue, 07 Jul 2026 13:17:03 -0400
+	id 1wh9Zu-00060s-ON; Tue, 07 Jul 2026 13:27:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1wh9Pq-0002kU-FX; Tue, 07 Jul 2026 13:17:02 -0400
-Received: from mail-northcentralusazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c105::5] helo=CH5PR02CU005.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1wh9Po-0006uJ-N7; Tue, 07 Jul 2026 13:17:02 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=b7zFTqgpYkateV4Hgoj3/pchOwe/Rx77AdO8XJ3P8zWYNh1uFvX/dnt3Dccf6n5RoCI+u5/7W7d9l+utIuNMFcPfGjevvxAvKUNai3KCfDo9TlPCpy46YnsYbM05H97ISsK1/mA3jazDQU4Z0r+1rFfETJo8E4Etij42HQqziMh7fPTj6cG8kaC65+hOOQOQuC/j5wdq7rZDo15jnUl1i6wAtqnSJprDRXPaIITPlc9TwguXDQmrLzFO4OO2iU2VSuNd5yeWCviZ1KpJmwAKyx0wuPi5g/TbEJbVn3l+rYilWTjnFpa45MIG2eSFUobZA7yZDxP8swqbvLU8UPfPHQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+ZTcPfZg9JNCG++IbB2kZMO3TdPMG/uSglXd5OWyVVI=;
- b=Qdty6xn0jR3A36htBniRdJ9NR3wYiarCcgYueCq0M87g4JgBlS+7TzSE2AuRORQAjStlwtd4JSYJkZW82lCuCiLY8fI+VSVj1haKMSXm8wtdSxzmzY0e7LXGPCZXbEidqWBcCZzmZp/cy+9ySw9UdlzEOtKX2BfDmBf1dCpqGTSYc/uWmk8/qotUZI2yUnwFByqPwQrHkYUQ0XqsPve6c20wchRbQf/U3S4FpKErnCFOFRFDILrtygNehS3Iygvh46HGmcd5qQwTnAIRT4Of9NiVvef2iohpYPMixs1ierqNWMiPcdEnG5ldZBatsmWqV4aitRcuErSlFJfxUgQMHw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.233) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+ZTcPfZg9JNCG++IbB2kZMO3TdPMG/uSglXd5OWyVVI=;
- b=SNAEcCe/I5X1Xpl+5W/nGnNbqnF4ZCc9R2PwBAsQg8g4pEOITuM6ltEneehOpKPGFY4EB++lTAFfIMOmeUkMadqZWW98X6uv2za1RmPTufSTMykq3Vxjml8gtZZs/AqI2vTptjffuAI86jP/G8E/qRnzNMXMp92sKjjX40cYquMgyvq9tghaIzYmdqehok0QqVfhDQ7n05U0pFXrP0S+vc/AW6aXlqvoQOLTTvCFVdisxU5Klv7eg5kUAwxmzH2WTOUso8/LRK1cGjntDHH2KoKeL5rcIRL4Sw2rN3hbV4BA+zR44JgjBS6fW8YvXAZOjfV7zsIoSyuJzG57VTD1Og==
-Received: from MW4P221CA0001.NAMP221.PROD.OUTLOOK.COM (2603:10b6:303:8b::6) by
- SN7PR12MB7105.namprd12.prod.outlook.com (2603:10b6:806:2a0::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.159.18; Tue, 7 Jul
- 2026 17:16:52 +0000
-Received: from MWH0EPF000C6189.namprd02.prod.outlook.com
- (2603:10b6:303:8b:cafe::85) by MW4P221CA0001.outlook.office365.com
- (2603:10b6:303:8b::6) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.181.9 via Frontend Transport; Tue, 7
- Jul 2026 17:16:50 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.233) by
- MWH0EPF000C6189.mail.protection.outlook.com (10.167.249.121) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.181.6 via Frontend Transport; Tue, 7 Jul 2026 17:16:49 +0000
-Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
- (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 7 Jul
- 2026 10:16:23 -0700
-Received: from drhqmail203.nvidia.com (10.126.190.182) by
- drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.20; Tue, 7 Jul 2026 10:16:22 -0700
-Received: from Asurada-Nvidia (10.127.8.10) by mail.nvidia.com
- (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
- Transport; Tue, 7 Jul 2026 10:16:22 -0700
-Date: Tue, 7 Jul 2026 10:16:21 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Shameer Kolothum <skolothumtho@nvidia.com>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
- <peter.maydell@linaro.org>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
- <jan@nvidia.com>
-Subject: Re: [PATCH] hw/arm/tegra241-cmdqv: Do not sync GERRORN on VCMDQ
- allocation
-Message-ID: <ak00ZY3SSti6z3JL@Asurada-Nvidia>
-References: <20260707112450.111178-1-skolothumtho@nvidia.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wh9Zt-00060a-Ab
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 13:27:25 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wh9Zq-0004mb-Fv
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 13:27:25 -0400
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-2cca24023edso34537055ad.1
+ for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 10:27:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1783445240; x=1784050040; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=W/Mw86EMifOutr48fRw4pUqE6lub5eryXGF8aL5mZBA=;
+ b=f8OHsXxRUaga2nkd4bWBWm3zgjzG9fmQUrAFuqZItwZBR+m0hpgaXBnEIW0PjBOw4A
+ fCNFVtj8uJXxwMxNRMnYMbUXwuvtZt4ReUe2yJxaaO/Ko6AmdPmrX/59woDCrHECyQnN
+ be3OJKEdU5vkYTVUYfKnDABOh30zlxoehHccaEuPjeZD7XkcE3jL1n9Thqpd3tIwU+mN
+ uuyy9ILLSfu1m3s1AJijLJ2Mm0TO4LJ02yic9iNiwUucJEKwXhaQ7sne5rwpdCa8UEAq
+ pAzOXQhUSgl67tA0wNjZz6wkY2XPnAkzgsVuPvLpn6SGfUhOjH9z7Up9ipZADQOBT57z
+ ApAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1783445240; x=1784050040;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=W/Mw86EMifOutr48fRw4pUqE6lub5eryXGF8aL5mZBA=;
+ b=Wl4RVBZf+lq0a1AEFpu5KfFbzBGbLBDvKIsq/fu5D6FrCVJWpwAtHcWMesXMW0NfEB
+ hNKAE9K8Nvzp4FWMEgQWmZgKzK9Xt66yVBuxeWe+3l+YjfsGIj5Kmk5eAN9ak6XiI4b2
+ Hn1bmuONj9KZRi8Wi0GTq4xVCPCC2Q45odW/iY1esTCfoAR95oaKvy7gQugXyOSkJVB3
+ loJgUWM/jWvoK5SejZfjG2eohh/RyZl1C8B4lg5v00j9d45rjhpcbH3OzbU7peANfQqy
+ AwRHCbMm8ABkDTmeY4D+C84kv4UlkdBMPKWkCUJrYbRgZxNujZjbTv5iT8YN8OjAChqZ
+ 3KKQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RqytPoqD29V48YoivZXmUVF3m+IFtwTIMZUILFmND1la9u4OQT6AQ5mGKpoz+UJk4Nhs93lKW3sHg==@nongnu.org
+X-Gm-Message-State: AOJu0Ywppqxn8Hb5y+hW9wVvU7yTHZWkSx1KBOHzMvklEr3pnjJe+FSw
+ CrAbFFJjXhCxweejGseff6C8VT5tIZFuuBh+GBO+xWuiIeSVxDkEcp68nF9WXlorUU8=
+X-Gm-Gg: AfdE7clPfR6mFCcdQ2YyoY7h7ZxShdZ7Xm3jsqZ/zO+DM5rqsY+1ILk4qJHfrci8mcT
+ i2Ai0u5Ky5AghI3MOpo0AqzqMpg8Naj3o+hZh+t0p6LKzY6BGOj42229zYIUgxj5FY9AfC0zZ6S
+ rZvnArY/Zk+5L+5uiGHtf7/LuzEDFd5IvLUKxoqwbG8qCVynhO340rbN2bUfb23WQ9fLQ59WEY1
+ q2uUHwH4NA/A6Q7kpT8yMMB4lcrP5S3GXBAes8h4nUdpQIgYnbdRze6Y9F5tDyGtnoIEfpemHfQ
+ iSftNugRdZOqg6BY8eundohjcZUwkxJRjrt0egJD12B4a3efNfTq1j1GITAr9/30AUVHEuGD3UY
+ SJg9Hk0HA0FPH80P6zMcJuLcO2aYOGyBsDDT+7bCS9grqKHng8f39IZ3Cb7i3sCx74oipkLz8v7
+ PFFbicXglJY+crJOHUTxEjbVCcEpXQD5jyOXxoVMlD7ooOzYh+8BDxzOqAe8XriDnT+A==
+X-Received: by 2002:a17:902:c405:b0:2ca:c68:caba with SMTP id
+ d9443c01a7336-2ccbf051d6bmr57068345ad.34.1783445240144; 
+ Tue, 07 Jul 2026 10:27:20 -0700 (PDT)
+Received: from [192.168.0.4] (71-212-39-188.tukw.qwest.net. [71.212.39.188])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2ccc9bf737bsm15480685ad.19.2026.07.07.10.27.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 07 Jul 2026 10:27:19 -0700 (PDT)
+Message-ID: <a14481eb-9eed-43c0-a29c-187798f7f769@linaro.org>
+Date: Tue, 7 Jul 2026 10:27:17 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20260707112450.111178-1-skolothumtho@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MWH0EPF000C6189:EE_|SN7PR12MB7105:EE_
-X-MS-Office365-Filtering-Correlation-Id: d96f88d6-7b70-4013-b645-08dedc4b883d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|36860700016|1800799024|23010399003|376014|18002099003|22082099003|56012099006|11063799006;
-X-Microsoft-Antispam-Message-Info: uMupEjyRljygKPXXmVGKwE75M4ooZvw74sO1uGcG1cgffRpvoxHH/BW54b4GSMykDMi41VzlDGOBZx0+Kx1NrhCetv4q1ub/JvtnIL/tIrE7LJNSMFdStQXWUwUkNt2qEWpGMH7cZB1TbDJB3YnoLHHQeiqNEtkgWV+32USUwM2K5c6mTAvD/G3pDIN/2NN2QaCZL+SMKtiQ1KUX0ldHwIjEVOMuqc8OpT0mWXim5J50NypC6ts8/lRKZKZ6yKe/Vhe2lLMvE0aNq2R6C5/NaJ4ThiglhWk+nO5zy5iGwsFpw41l1il1LLCue3IVz+BwBsR795EI7ti9ubty5h/RhiIv3Egj1REDxZ7YwIe/v2tSbn0EHCalhNac8KLxt2BoZwEO4s4oh6oC/XjuF4zww0eXVS2cu3wuDiXdRg2zvLwEEwZWvFnOgX05DtwZyDVnzXJoS7KRiCf8uG9CPBGd3y5Z4vcqq+Mu8nSea1s2U6TCOlE9J2jpfFvueIKx4MimMGRvNWpqRMCkSDmozNFl+qomNnXxJkqy1beLgJ9FrZrCJFgPdvWwkjK7/A8pTOW78ivsCOrveCuQ/fsRTnU5fPrgEuGUwo8ttZeNV7Y3JqLBcS2q0k0MGKtm3Nk35w9whyoHBDl3+KQa0j5iehoQmUW5b5ivh4l4rOYb9F2T/24FOBDnl55Jw4JYUAtQsmAgmW061In+Cl7OMxi4ZsJQGA==
-X-Forefront-Antispam-Report: CIP:216.228.118.233; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(82310400026)(36860700016)(1800799024)(23010399003)(376014)(18002099003)(22082099003)(56012099006)(11063799006);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: K9pvX8U+cYd3g+HRhZKQ/Saa1IGIHDdd5FSeVlgyCZn64Aqy9LKOwjTtLdEnQnBQw3hKFWhn6iPQ0xLcfDS8l1SdHLc6eGGa6dtttaLeq+Yr8/jT0TmhU9iEHtiTJET/TbWzpdlKFgusHnptjW0ZqoGA1nczysYjxeCDzl+VM25L/2DVACGvbF3cF6ZFhed2Foyo3Hq9yKtLMrxiz06N61eGdZI8r2nnYIevK+hneCG7b9xd8jZLt/2rbJeQIB4n6iPrLVgsC3sWzt58ov7KaiNSNJFRkwC+cdwi9BzxyoGD/UI+MhfdjxqhvIKnjPsN4q3tzEk6pV/e24l+ooUamt5lQJ1+zcf8uRtCOrEniYGDOAhvdEUzRMgaZELoyIuYYbs3/CAry3RoyMN2br404pyW7yiBgDEeEIUZELEbMBkXAdNcFsCwmJZtJxpuq9gC
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jul 2026 17:16:49.8575 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: d96f88d6-7b70-4013-b645-08dedc4b883d
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.233];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: MWH0EPF000C6189.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7105
-Received-SPF: permerror client-ip=2a01:111:f403:c105::5;
- envelope-from=nicolinc@nvidia.com;
- helo=CH5PR02CU005.outbound.protection.outlook.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH] target/arm: report M-profile BKPT to gdbstub when
+ attached
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+References: <20260705224407.32464-1-gilles.grimaud@univ-lille.fr>
+ <CAFEAcA9Heev=ydTzO2u3EzeF_2q7dytOF8=67qF8ZMMY6Ky2Tw@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <CAFEAcA9Heev=ydTzO2u3EzeF_2q7dytOF8=67qF8ZMMY6Ky2Tw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,25 +108,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jul 07, 2026 at 12:24:50PM +0100, Shameer Kolothum wrote:
-> When a guest hits a command error, the hardware sets GERROR and the guest
-> acknowledges it by writing GERRORN to match. These registers use toggle
-> semantics, and since GERROR is read-only, both GERROR and GERRORN may
-> remain set after an error has been handled. As long as they stay equal
-> there is no pending error, so a subsequent VM is unaffected.
+On 7/6/26 02:21, Peter Maydell wrote:
+> On Sun, 5 Jul 2026 at 23:44, Gilles Grimaud
+> <gilles.grimaud@univ-lille.fr> wrote:
+>>
+>> While working on Raspberry Pi Pico/RP2040 support, I noticed that Pico SDK
+>> programs deliberately execute BKPT from _exit(). On real hardware this is
+>> useful when a debug probe is attached: returning from main() stops the
+>> debugger at the program exit point.
+>>
+>> Under QEMU this currently does not behave like the debug-probe case. For
+>> M-profile guests, the BKPT instruction is routed through the architectural
+>> guest debug exception path. Without halting debug, that path should remain a
+>> guest-visible DebugMonitor exception when DebugMonitor is enabled, or escalate
+>> towards HardFault otherwise. This patch deliberately leaves that no-debugger
+>> architectural path unchanged.
+>>
+>> The problem addressed here is the case where GDB is connected to QEMU's
+>> gdbstub. In that situation, firmware that uses BKPT as a debugger stop point
+>> should stop in the attached debugger. Instead, the M-profile guest currently
+>> continues down the guest exception path and may end in HardFault/lockup rather
+>> than reporting a clean trap to GDB.
+>>
+>> This is not specific to the RP2040 machine model. It is a generic
+>> Cortex-M/gdbstub interaction: firmware that uses BKPT as a debugger stop point
+>> should be reported to the attached debugger, while keeping the guest
+>> architectural exception path when no debugger is attached.
+>>
+>> Expose a small gdbstub helper to test whether a CPU is visible to an attached
+>> debugger. When an M-profile BKPT instruction is executed with such a debugger
+>> attached, leave the translated block with EXCP_DEBUG so the existing gdbstub
+>> stop path reports a trap to GDB.
+>>
+>> Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+>> ---
+>>   gdbstub/gdbstub.c      | 13 ++++++++++++-
+>>   include/exec/gdbstub.h |  6 ++++++
+>>   target/arm/tcg/debug.c |  9 +++++++++
+>>   3 files changed, 27 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+>> index c3c944e965..9f259fc005 100644
+>> --- a/gdbstub/gdbstub.c
+>> +++ b/gdbstub/gdbstub.c
+>> @@ -237,6 +237,18 @@ static GDBProcess *gdb_get_cpu_process(CPUState *cpu)
+>>       return gdb_get_process(gdb_get_cpu_pid(cpu));
+>>   }
+>>
+>> +bool gdb_cpu_is_attached(CPUState *cpu)
+>> +{
+>> +    GDBProcess *process;
+>> +
+>> +    if (!gdbserver_state.init || !cpu) {
+>> +        return false;
+>> +    }
+>> +
+>> +    process = gdb_get_cpu_process(cpu);
+>> +    return process && process->attached;
+>> +}
 > 
-> When a new VM starts, QEMU allocates the hardware VCMDQ and flushes its
-> cached GERRORN of zero, while the hardware may still have both GERROR and
-> GERRORN set from an error the previous guest acknowledged. This makes them
-> differ again, so the hardware sees a pending error and stall the VCMDQ,
-> leading to CMD_SYNC timeouts.
-> 
-> Do not sync GERRORN when allocating a hardware VCMDQ.
-> 
-> Fixes: 1d0f77535417 ("hw/arm/tegra241-cmdqv: Route allocated VCMDQ Page0 accesses to the mmap'd host VINTF page0")
-> Suggested-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
- 
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> No other architecture, CPU or board in QEMU needs to do this,
+> so my instinct is to say that M-profile should not be special here.
+> Richard, Alex: how do we usually handle breakpoint insns for the
+> gdbstub ?
+
+We handle them via CPUBreakpoint structures; we never inject code changes.
+
+The patch description explains the confusion: this is attempting to replicate a feature of 
+the Raspberry Pi Pico SDK, wherein a guest BPKT really is trapped by an external debugger.
+
+The only question is whether we want to follow that, and I suspect the answer is no.
+
+
+r~
 

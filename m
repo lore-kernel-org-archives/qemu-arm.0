@@ -4,96 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27CABC43458
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 10:41:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BE62C43458
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 10:44:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wh3Ex-0004Tp-Ga; Tue, 07 Jul 2026 06:41:23 -0400
+	id 1wh3HT-00066V-Js; Tue, 07 Jul 2026 06:43:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wh3Ev-0004T9-KE
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 06:41:21 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wh3HS-000667-EZ
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 06:43:58 -0400
+Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wh3Et-0003rL-Qd
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 06:41:21 -0400
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-c029505b389so73215566b.1
- for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 03:41:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wh3HQ-000484-QK
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 06:43:58 -0400
+Received: by mail-yx1-xb132.google.com with SMTP id
+ 956f58d0204a3-66766d649fdso3208351d50.1
+ for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 03:43:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783421035; cv=none;
+ d=google.com; s=arc-20260327;
+ b=jYFLI2cd21FxFX3PgYzY5+i2Spkc/RcZgdIvKkgdEstmvrWOWpedSWfxJ5c1ZjBNsA
+ 95Dh7nLNZdNXeJ9sJWMjO4Js7Xd6vzgT2cbAUpYcsonGml9c6GROXljrGRKQXgA6XmMG
+ +ICrQ8dBypjBPVepuVgwB6jp5JMPEcIiWSUec7+gpTB/A2uoabgK8P+4cAqwtY541adS
+ QK6+x49VA6B6HsCCpsg1w6D/shtKyItDRHwxvFmfWV/FbMfEcgbw7hBcwsLNVY6m0dGW
+ 4ozXRpgrQtsE2/7rQRiO+pcbTHVwhYEUR7KQDbSnEzRxmxiytIIrmhLWpRbmx02cvdUc
+ Yu4A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=a4Za2vOUCu9/1r75AG6k691yxycMkdWuYMeptLr85R8=;
+ fh=lK5GpnBjedifYM6HSXaAbedhUzTQ/YSVdl5cTmXPIMc=;
+ b=mjIB0/YKDFDFoZbhvBbRBAfUyzK8i8jSrPIeyvD0LYJc6Sj0h+CLq+F+wx5JuMO0Eq
+ NWBsMPwQszEA97KFVZLveSn16y4hFZYLtKX/eFiooXFSQJ7IgwEtJ/1K+fJGZNKrbgff
+ pK2uzkvayG8T2RzH/kQr9mwcyXEztEVaVKgkqct+HCUyo+F3YQsj+fKUR4FL99LKQFLr
+ d6omMnHEdGR0e/DwggxIB2oZBPqsCEaWPoaah0HVGFV+x6/DNfeEcyv3nolCyS8dGuVU
+ PzG6YUz48Tg8TviYa+eiXjNp0ZehJZ9OkGqLyOrAg1tZGEuQfSuwVCmjEpuWo6YXrDEV
+ Yb5A==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1783420878; x=1784025678; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+tvOJFMQbr0WF0C5g9i+mdq40kbvleSRKXRNdDEzP2U=;
- b=Qb7ETC6kLEy571Idlfg8mDBud+X7FErltgYBemWfWPk3itKU6PBK/ZVy2mcC8UmXfs
- uZBgos/GvdPUERlUh9Av97KG+L2FKTDIn9lQedjfjd4FsA0LYkoSO6uM74MmYPbgfSAM
- H4XA7G5DFW/c/VgzlpRYvNK83XuWGh927hPafMHWiaDFVbK2zRa35w4dchbivpaAf3M6
- uLwdUxf8DepyCNUo7Nei6VPS/uthgU5q7neI3d5tI1LBIGIDBNe9bD2pWQpnhAmn+drX
- AxF9Yx9OuXvZWfgL3OudAixQiFFaOrWMHRKkp7jMVhAL7d72D17Yc5yCmFLTgYUS/gRP
- mGUw==
+ d=linaro.org; s=google; t=1783421035; x=1784025835; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=a4Za2vOUCu9/1r75AG6k691yxycMkdWuYMeptLr85R8=;
+ b=K96O6y85ackUjJVBCU6DQd89tZf3ihfGUPJfYiPYkbS7RIgY88oL8ibW0O3i/EQlX7
+ h5QQi2uc8APDtIqVRbwflUe7c0hXqU7uNHyK7gAGkuSQvy90gBFGLig960KgLIHxmNkY
+ ePNdwkanPzZ6y5K3vWrW0q8lldXOIRiEH3blBfvl5NdbPKwuz6h3y4WmC2JuwUV22B2R
+ 3su0k7heqwARBIwmxFs3CbEqSzAo4K4kjMktfL7zExqiQWusApMTX8kAY6hh/H5rHOnE
+ 17Px/UYP+6sUJA9wBtLp1JNe+tu1eyAcW1/wCOx9xy8KEIuf4zt0PYEOLoeKb5EAQ9xi
+ rLzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783420878; x=1784025678;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=+tvOJFMQbr0WF0C5g9i+mdq40kbvleSRKXRNdDEzP2U=;
- b=BLZuidj/DZ+qs6RVrxEWhVH7r3GR91rv7pRKLM4EjOn69yKx8nVyAqk2bP06yoxJYi
- nZSaBgzw+wTh/q66dbEhRGp6f1wxhqZUhve+ZsiR9HrA9zIv7Jelc1JyDb9j+7jaTy5M
- 1qi66i1Erh6PyEbn29htBk1QjLhd4Yf/0+4iqDc+/f89Fq/SIv5XETTX07arO1KQGO1o
- KMuO4tQFdg/mhghxdkbZfz+8TrBbtk8QuludzUN+ZIwrU9vM9soHKkjqfAIMZZ98APC2
- q3kXXzvOPPn8yekia8fq8lRtzV8svo1dnpnCW0W29fFX6Vu2ovzjI3h3vJ2YfInlU5Fe
- n7Nw==
+ d=1e100.net; s=20251104; t=1783421035; x=1784025835;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=a4Za2vOUCu9/1r75AG6k691yxycMkdWuYMeptLr85R8=;
+ b=bysIpuM4UYNWnUlSA0+q2mtL4TnYVpguSCc6YIPvDXvWHOaQ3eEXFxrQJeL0WVSMKy
+ UyDs8nHl0kZpK/sDGuw3hv8IYsqSZz1bVGTEQKpjqiAWxfJqdFlHJugxXgl53pk3XvR6
+ rcgWGs8IZLudSSveSUfLT2KF37V4gEvzqY7BKkDSsBvu0H+S2esVu/iYcZ1K05M6l+fN
+ YJshRBhoSkM48vLIlUBwFALMVhCegi8L8T3MQpCuUZ2AgNOVdRLZ7VD97mjRUb0G+0vk
+ k2lbIL0nV153iVU9EEamEwL+GwKzFNp9lh57nAkoqBJIymnfJpbSypNetQ1gy61f3Rui
+ v6bg==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rr4vE30Cp392cZ5Y/3atUwfaPfrCcFECoEmZAwUxxuFvKHCq6eEC0tCDkBOvZGOPYo6U6ikO4Ovxw==@nongnu.org
-X-Gm-Message-State: AOJu0YwBfx4mt0kIOHx1nBt57FhOB12J4uNmyglXGgYYy/n2/QEsKzuk
- qqctNVDCpVvoFJNNfUrg7sQFiFFPoKQ940J+QoKqHhxmdlsoNwOsPt5u
-X-Gm-Gg: AfdE7cnbi6D6N7Njv1Mm7hQ12p1UvarY8zIzKfFBn8ynsyQQrhCEY/7zEI4jwwZL/NG
- iPi/Ivq+5XGvO1u9Xqz/Ae37StkMOkLd0V/+p3VxGWyfEWVw3v8JWgMjFaUuGHUT8jZrxKKEanv
- 710y9mEkl22bNptx4Jf6aIqvB0ysCND7J1C9S78whQm0o2jjEFdnvVdtmQIn6MCMwa8pMIIqCvV
- HY3U75em4MKJYP2Oal2dGJWOm711xekyMpnrFL/W7v3hPMgDsWM14NRHHYXlmEVltf3prpNAqR5
- dMUfhr1ZTvLIAQ2jJL1UBMppwThBu4BhDMADRY0sSiMIkOi13d2Eqk0J6Kk174GXWKJYjce8U8N
- H/JkMFSAxInjRyovYYJjZpKS8//THY6UtxddWpEfAKpHjvQwXdaJ9E3ntqoHaXqoNwVEJguYYZC
- chOkZ2+ZcTkALGpSpOUw==
-X-Received: by 2002:a17:906:fe02:b0:c12:5dca:864a with SMTP id
- a640c23a62f3a-c15ae988144mr137835966b.5.1783420877823; 
- Tue, 07 Jul 2026 03:41:17 -0700 (PDT)
-Received: from ehlo.thunderbird.net ([62.214.191.67])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c15ad9bca17sm106985066b.32.2026.07.07.03.41.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Jul 2026 03:41:17 -0700 (PDT)
-Date: Tue, 07 Jul 2026 10:41:10 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-CC: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org, 
- Matyas Bobek <matyas.bobek@gmail.com>,
- Vikram Garhwal <vikram.garhwal@bytedance.com>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Jason Wang <jasowangio@gmail.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Jason Wang <jasowang@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Francisco Iglesias <francisco.iglesias@amd.com>
-Subject: Re: [PATCH v2 0/5] hw/arm/fsl-imx8mp: Add inital FlexCAN support
-In-Reply-To: <519f6e43-5273-4426-b673-71cff44daffa@oss.qualcomm.com>
+ AHgh+RrVs9vIUI0ny5TkjUaYblz3/ng1OZndIQSxvqxiBJ0vvhFOC3sPEB/3FQfB1BF7rwqwd930pcS1Ew==@nongnu.org
+X-Gm-Message-State: AOJu0Yy0s1lozV9MSoL/YhgFI1kW6jlhpeb56kKyaVbBSW17aPJE2/ln
+ ubUcBxKzdMdYDhWfkm8ir+wpLNfGls/ezb2znXbVFPpvrOB8DO7Ei6zg6FejXrCk2inR6mk4YCx
+ neIEbkom6nGKlPlpJQHnDrDsQzqs85G+uiJirWWSKqA==
+X-Gm-Gg: AfdE7ckUNwSOoJsnvpx4jO6znjGebSQep8ORrQGatCPPwiNBj9yQjBFjmxDwZJmmlgH
+ Uymsekx/k00XbpMqHGYz8ytwBSC1kywnwEieMXLOuWyMchuf7QNcIOf1RsC1d15zIhMtmVbmARm
+ MU/u8Dr+MF7VQ5FmwG/8xgv4UbG5GmRCxojwoiEakAR+HwnR73n7WVQmyOw6q2kftkBz3iOzKwh
+ jGf9PbddkWUmKcn+1IkGWt30hJmi96zibiSaSCLSUluUmBGARdACxdeHzpXKk1caSiDKU3VDLAf
+ fGTWn0o7qWffJcfviamkJA3BgxmFSIOuZ8lDKoibpWZ3r6ByxIiUs/f+
+X-Received: by 2002:a05:690e:4386:b0:667:6034:d273 with SMTP id
+ 956f58d0204a3-6677faedbb4mr2670410d50.5.1783421035511; Tue, 07 Jul 2026
+ 03:43:55 -0700 (PDT)
+MIME-Version: 1.0
 References: <20260702184038.178196-1-shentey@gmail.com>
  <519f6e43-5273-4426-b673-71cff44daffa@oss.qualcomm.com>
-Message-ID: <CEDCEA0C-26CF-402D-925C-3718644F9171@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+In-Reply-To: <519f6e43-5273-4426-b673-71cff44daffa@oss.qualcomm.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 7 Jul 2026 11:43:43 +0100
+X-Gm-Features: AVVi8CehRy-VKWeD7SVF3oAyi4pbiJkeSstNGWL2B8a6GGaZpHUITZLEXLddr50
+Message-ID: <CAFEAcA8aR6GPZWDphbTgPhVf3G=eoNrAFdb9QcLCGh9hdavkAA@mail.gmail.com>
+Subject: Re: [PATCH v2 0/5] hw/arm/fsl-imx8mp: Add inital FlexCAN support
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org, Bernhard Beschow <shentey@gmail.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org, 
+ Matyas Bobek <matyas.bobek@gmail.com>,
+ Vikram Garhwal <vikram.garhwal@bytedance.com>, 
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Jason Wang <jasowangio@gmail.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>, 
+ Jason Wang <jasowang@redhat.com>, Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Francisco Iglesias <francisco.iglesias@amd.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,63 +126,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-Am 6=2E Juli 2026 13:25:51 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <phil=
-md@oss=2Equalcomm=2Ecom>:
->On 2/7/26 20:40, Bernhard Beschow wrote:
->> Now that FlexCAN emulation has landed in master, let's add it to imx8mp=
--evk as
->> well=2E While the real i=2EMX8M Plus supports CAN FD which isn't emulat=
-ed yet, the
->> non-FD mode works well under Linux: It is possible to use `cangen` and =
-`candump`
->> either way on the host and on the guest, as described in
->> docs/system/devices/can=2Erst=2E
->>=20
->> This series consists of five patches where the first four are preparati=
-ons=2E
->> The last patch integrates FlexCAN into the i=2EMX8M Plus SoC and EVK bo=
-ard=2E The
->> first preparation addresses the review comment from [1], and could be a=
-pplied
->> independently=2E
->>=20
->> It would be nice if this series could make it into 11=2E1=2E
->>=20
->> Testing done:
->> * Start imx8mp-evk and run `cangen can0` there=2E Observe on the host t=
-hat
->> `candump vcan0` prints the traffic=2E
->> * `make check`
->>=20
->> v2:
->> Thanks for the very helpful and super quick review, Phil! Here we go:
->> * Add patch "hw/net/can/flexcan: Wire clock control module via link pro=
-perty"
->> * Have separate MemoryRegionOps for 32 and 64 bit
->>=20
->> [1] https://lore=2Ekernel=2Eorg/qemu-devel/77d5891c-de12-467e-8746-02fe=
-43121e3e@oss=2Equalcomm=2Ecom/
->> ---
->> base-commit: a59157f98f0b69b0bbdb26bc15fbc4d6c8060799
->>=20
->> Bernhard Beschow (5):
->>    hw/net/can/flexcan: Wire clock control module via link property
->>    hw/net/can/flexcan: Subclass TYPE_CAN_FLEXCAN
->>    hw/arm/imx8mp-evk: Open code DEFINE_MACHINE_AARCH64
->>    hw/arm/imx8mp-evk: Introduce FslImx8mpEvkState
->>    hw/arm: Add basic FlexCAN3 support to TYPE_FSL_IMX8MP and imx8mp-evk
+On Mon, 6 Jul 2026 at 14:25, Philippe Mathieu-Daud=C3=A9
+<philmd@oss.qualcomm.com> wrote:
 >
->Peter, you just sent your (IIUC) last target-arm PR=2E I'm about
->to post my hw-misc one, do you mind if you take this series which
->is fully reviewed/tested?
+> On 2/7/26 20:40, Bernhard Beschow wrote:
+> > Now that FlexCAN emulation has landed in master, let's add it to imx8mp=
+-evk as
+> > well. While the real i.MX8M Plus supports CAN FD which isn't emulated y=
+et, the
+> > non-FD mode works well under Linux: It is possible to use `cangen` and =
+`candump`
+> > either way on the host and on the guest, as described in
+> > docs/system/devices/can.rst.
+> >
+> > This series consists of five patches where the first four are preparati=
+ons.
+> > The last patch integrates FlexCAN into the i.MX8M Plus SoC and EVK boar=
+d. The
+> > first preparation addresses the review comment from [1], and could be a=
+pplied
+> > independently.
+> >
+> > It would be nice if this series could make it into 11.1.
+> >
+> > Testing done:
+> > * Start imx8mp-evk and run `cangen can0` there. Observe on the host tha=
+t
+> > `candump vcan0` prints the traffic.
+> > * `make check`
+> >
+> > v2:
+> > Thanks for the very helpful and super quick review, Phil! Here we go:
+> > * Add patch "hw/net/can/flexcan: Wire clock control module via link pro=
+perty"
+> > * Have separate MemoryRegionOps for 32 and 64 bit
+> >
+> > [1] https://lore.kernel.org/qemu-devel/77d5891c-de12-467e-8746-02fe4312=
+1e3e@oss.qualcomm.com/
+> > ---
+> > base-commit: a59157f98f0b69b0bbdb26bc15fbc4d6c8060799
+> >
+> > Bernhard Beschow (5):
+> >    hw/net/can/flexcan: Wire clock control module via link property
+> >    hw/net/can/flexcan: Subclass TYPE_CAN_FLEXCAN
+> >    hw/arm/imx8mp-evk: Open code DEFINE_MACHINE_AARCH64
+> >    hw/arm/imx8mp-evk: Introduce FslImx8mpEvkState
+> >    hw/arm: Add basic FlexCAN3 support to TYPE_FSL_IMX8MP and imx8mp-evk
+>
+> Peter, you just sent your (IIUC) last target-arm PR. I'm about
+> to post my hw-misc one, do you mind if you take this series which
+> is fully reviewed/tested?
 
-Thanks a lot Phil for your R-b's!
+As you note, I've already sent the last target-arm PR for pre-freeze
+yesterday; I'm not going to do another one. So from my POV this
+has just missed the deadline and will have to wait for 11.2.
 
-Any chance we can still get this series mergend for the upcoming release?
-
-Thanks,
-Bernhard
-
+thanks
+-- PMM
 

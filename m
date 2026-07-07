@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 580D1C43458
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 09:17:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97792C43458
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 09:17:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wh1vd-0008AF-QS; Tue, 07 Jul 2026 05:17:21 -0400
+	id 1wh1vu-0008JW-He; Tue, 07 Jul 2026 05:17:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
- id 1wh1vc-0008A1-T9
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 05:17:20 -0400
+ id 1wh1vs-0008Hi-VQ
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 05:17:36 -0400
 Received: from smtp2-g21.free.fr ([212.27.42.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
- id 1wh1vZ-0003db-Pe
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 05:17:20 -0400
+ id 1wh1vr-0003gC-2d
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 05:17:36 -0400
 Received: from localhost (unknown [89.92.102.124])
  (Authenticated sender: emmanuel.blot@free.fr)
- by smtp2-g21.free.fr (Postfix) with ESMTPSA id 43B9B2003C8;
- Tue,  7 Jul 2026 11:17:00 +0200 (CEST)
+ by smtp2-g21.free.fr (Postfix) with ESMTPSA id 244112003D0;
+ Tue,  7 Jul 2026 11:17:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
- s=smtp-20201208; t=1783415836;
- bh=AocjBZjav//S62Ti2RQlrpmzcG2fDTP6dOpgt4wDykI=;
+ s=smtp-20201208; t=1783415853;
+ bh=Hej78vcTkoAdQ/j+5wDk8cm73w9zfyMqMLcfHOUvhq8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=BVlNjgEZtdTqo4kJC2k8hAIwaAzs7SOmYHpBPmIlBSeHK1Z6yM5RtjunfHNmCMQHQ
- pXL8elzaaDF3ZjBo8Gd8nbz5UOWxLl+dUU0B2XoQu8hQh5BGoXYM8+tXtfr5/EJH5T
- 8uxj/OJlt9bpohNmMK+cppAws4K+GWmcqCfs3i8bHPypU7W3sdqxPxGGPPhZ5gjiTd
- nlKOog8f8TiEhDNNxxfQ3DoyeDT8ucWsb7U85n35ovo0XLEM081BepoVZtwgDeH/Tm
- d5FR0a9zhiBFXNaM7V6Ptm/JwGeH39a1mFCRpHaCFSLjuP/9lIeA/+qstVMUNjv6az
- Vbm3Dj46JPyzg==
+ b=FPvASWtKYaSfZTlO+RJCR/l5Ww1upi12cHV1a0FRpIhTE8zQ3bdh+Rd5ZY5xr86Qv
+ It9yVIuymeicj6wF7PWdNq6FPD2tpgyUlt4ENbDm/+C5n4kENwrXzYTx9P4WP0ZCfd
+ wrIUDmUEhAZOMfkrLro5pnZgqY9xLkAfGMlIA850qwAbGtdz3SFqlOgVV1583pigiE
+ 9Cgas4Aph00pLfEfkTfSFYOUKJ+mn7VxXDQf9IPMWYCWFK8d7PzZa91vct3TfmJyhp
+ oUiEXtfdPuZ/vy3VEm0V1xqmEaVaFduEBH8CnkKEmo7/tVuOBqHSrj7o5YLpWvcLhW
+ wEcSJCVlxkuqg==
 From: Emmanuel Blot <emmanuel.blot@free.fr>
 To: 
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -48,9 +48,10 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Alexander Hansen <alexander.hansen@9elements.com>,
  William de Abreu Pinho <williampinho@meta.com>,
  Emmanuel Blot <eblot@meta.com>, qemu-arm@nongnu.org
-Subject: [PATCH v6 1/9] hw/sensor: adc128d818: add 12-bit 8-channel ADC device
-Date: Tue,  7 Jul 2026 11:15:54 +0200
-Message-ID: <20260707091609.97759-2-emmanuel.blot@free.fr>
+Subject: [PATCH v6 2/9] tests/qtest: adc128d818: add test harness and register
+ access
+Date: Tue,  7 Jul 2026 11:15:55 +0200
+Message-ID: <20260707091609.97759-3-emmanuel.blot@free.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260707091609.97759-1-emmanuel.blot@free.fr>
 References: <20260707091609.97759-1-emmanuel.blot@free.fr>
@@ -80,52 +81,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The ADC128D818 is a TI 12-bit, 8-channel I2C ADC used on several
-OpenBMC platforms for voltage and temperature monitoring.
+Introduce the QOS test node and QMP property helpers for the
+ADC128D818, and cover basic register access: manufacturer and
+revision IDs, power-on-reset defaults, software reset, and the
+ain and temperature property readback.
 
-Implement the device with:
- - four operating modes
- - 12-bit voltage conversion from QOM inputs
- - 9-bit temperature conversion from milli-degree Celsius QOM inputs
- - switchable internal or external voltage reference
- - per-channel high/low limit registers
- - interrupt support
- - software reset
- - one-shot conversion support in shutdown mode
-
-Reviewed-by: Alexander Hansen <alexander.hansen@9elements.com>
-Tested-by: Alexander Hansen <alexander.hansen@9elements.com>
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- hw/sensor/Kconfig              |   4 +
- hw/sensor/adc128d818.c         | 696 +++++++++++++++++++++++++++++++++
- hw/sensor/meson.build          |   1 +
- hw/sensor/trace-events         |   8 +
- include/hw/sensor/adc128d818.h |  14 +
- 5 files changed, 723 insertions(+)
- create mode 100644 hw/sensor/adc128d818.c
- create mode 100644 include/hw/sensor/adc128d818.h
+ tests/qtest/adc128d818-test.c | 169 ++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build       |   1 +
+ 2 files changed, 170 insertions(+)
+ create mode 100644 tests/qtest/adc128d818-test.c
 
-diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
-index bc6331b4ab..b459ac2240 100644
---- a/hw/sensor/Kconfig
-+++ b/hw/sensor/Kconfig
-@@ -1,3 +1,7 @@
-+config ADC128D818
-+    bool
-+    depends on I2C
-+
- config TMP105
-     bool
-     depends on I2C
-diff --git a/hw/sensor/adc128d818.c b/hw/sensor/adc128d818.c
+diff --git a/tests/qtest/adc128d818-test.c b/tests/qtest/adc128d818-test.c
 new file mode 100644
-index 0000000000..c65508cba1
+index 0000000000..9a8811256f
 --- /dev/null
-+++ b/hw/sensor/adc128d818.c
-@@ -0,0 +1,696 @@
++++ b/tests/qtest/adc128d818-test.c
+@@ -0,0 +1,169 @@
 +/*
-+ * Texas Instruments ADC128D818 12-bit 8-channel ADC with I2C interface
++ * QTest testcase for the ADC128D818 ADC
 + *
 + * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
 + *
@@ -133,17 +108,14 @@ index 0000000000..c65508cba1
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qapi/error.h"
-+#include "qapi/visitor.h"
-+#include "qom/object.h"
-+#include "hw/sensor/adc128d818.h"
-+#include "hw/core/irq.h"
-+#include "hw/core/qdev-properties.h"
-+#include "hw/i2c/i2c.h"
-+#include "migration/vmstate.h"
-+#include "trace.h"
++#include "qemu/bitops.h"
++#include "libqos/i2c.h"
++#include "libqos/qgraph.h"
++#include "libqtest-single.h"
++#include "qobject/qdict.h"
 +
++#define ADC128D818_TEST_ID      "adc128d818-test"
++#define ADC128D818_TEST_ADDR    0x1f
 +
 +/* Register addresses */
 +#define REG_CONFIG              0x00
@@ -158,11 +130,9 @@ index 0000000000..c65508cba1
 +
 +/* Channel Reading Registers (16-bit, read-only) */
 +#define REG_CH_READING_BASE     0x20
-+#define REG_CH_READING_LAST     0x27
 +
 +/* Limit Registers (8-bit, read/write) */
 +#define REG_LIMIT_BASE          0x2a
-+#define REG_LIMIT_LAST          0x39
 +
 +/* ID Registers (read-only) */
 +#define REG_MANUFACTURER_ID     0x3e
@@ -173,700 +143,143 @@ index 0000000000..c65508cba1
 +#define CONFIG_INT_ENABLE       BIT(1)
 +#define CONFIG_INT_CLEAR        BIT(3)
 +#define CONFIG_INITIALIZATION   BIT(7)
-+#define CONFIG_WR_MASK \
-+    (CONFIG_START | CONFIG_INT_ENABLE | CONFIG_INT_CLEAR)
 +
-+/* Advanced Configuration Register (0x0B) bitfields */
++/* Advanced Configuration Register (0x0b) bitfields */
 +#define ADV_CONFIG_EXT_REF_EN   BIT(0)
-+#define ADV_CONFIG_MODE_SHIFT   1
-+#define ADV_CONFIG_MODE_MASK    (0x3 << ADV_CONFIG_MODE_SHIFT)
-+#define ADV_CONFIG_WR_MASK \
-+    (ADV_CONFIG_EXT_REF_EN | ADV_CONFIG_MODE_MASK)
++#define ADV_CONFIG_MODE_1       (1 << 1)
++#define ADV_CONFIG_MODE_2       (2 << 1)
++#define ADV_CONFIG_MODE_3       (3 << 1)
 +
-+/* Busy Status Register (0x0C) bitfields */
-+#define BUSY_STATUS_NOT_READY   BIT(1)
++/* Number of channels */
++#define NUM_CHANNELS            8
 +
-+/* Conversion Rate Register (0x07) bitfields */
-+#define CONV_RATE_MASK          0x01
++/* Internal VREF in mV */
++#define INTERNAL_VREF_MV        2560
 +
-+/* Deep Shutdown Register (0x0A) bitfields */
-+#define DEEP_SHUTDOWN_EN        0x01
++/* QMP helpers for setting device properties */
 +
-+/* Device constants */
-+#define ADC128D818_NUM_CHANNELS         8
-+#define ADC128D818_NUM_REGS             0x40
-+
-+#define ADC128D818_INTERNAL_VREF_MV     2560
-+#define ADC128D818_MAX_VDD_MV           5500
-+#define ADC128D818_MANUFACTURER_ID_VAL  0x01
-+#define ADC128D818_REVISION_ID_VAL      0x09
-+
-+/* ADC resolution */
-+#define ADC128D818_ADC_RESOLUTION       4096
-+#define ADC128D818_ADC_MAX              4095
-+
-+/* Temperature: 0.5 deg C per LSb = 500 milli-degrees per LSb */
-+#define ADC128D818_TEMP_LSB_MC          500
-+#define ADC128D818_TEMP_RAW_MIN         (-256)
-+#define ADC128D818_TEMP_RAW_MAX         255
-+
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(ADC128D818State, ADC128D818)
-+
-+struct ADC128D818State {
-+    I2CSlave parent_obj;
-+
-+    qemu_irq irq;
-+
-+    uint8_t len;
-+    uint8_t pointer;
-+    uint8_t rx_byte;
-+
-+    uint8_t regs[ADC128D818_NUM_REGS];
-+    uint16_t channel[ADC128D818_NUM_CHANNELS];
-+
-+    int16_t ain[ADC128D818_NUM_CHANNELS]; /* mV */
-+    int32_t temperature; /* milli-degrees Celsius */
-+    uint16_t ext_vref; /* mV, 0 means not connected */
-+    bool temp_alarm; /* temperature high-limit alarm latched */
-+
-+    char *description;
-+};
-+
-+static uint16_t adc128d818_get_vref(const ADC128D818State *s)
++static void qmp_adc128d818_set(const char *property, int value)
 +{
-+    if (s->regs[REG_ADV_CONFIG] & ADV_CONFIG_EXT_REF_EN) {
-+        if (s->ext_vref > 0u) {
-+            return s->ext_vref;
-+        }
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: %s: external VREF selected but not"
-+                      " connected, falling back to internal\n",
-+                      __func__, s->description);
-+    }
++    QDict *resp;
 +
-+    return ADC128D818_INTERNAL_VREF_MV;
++    resp = qmp("{ 'execute': 'qom-set', 'arguments':"
++               " { 'path': %s, 'property': %s, 'value': %d } }",
++               ADC128D818_TEST_ID, property, value);
++    g_assert(qdict_haskey(resp, "return"));
++    qobject_unref(resp);
 +}
 +
-+static uint8_t adc128d818_get_mode(const ADC128D818State *s)
++static int qmp_adc128d818_get(const char *property)
 +{
-+    return (s->regs[REG_ADV_CONFIG] & ADV_CONFIG_MODE_MASK) >>
-+           ADV_CONFIG_MODE_SHIFT;
++    QDict *resp;
++    int ret;
++
++    resp = qmp("{ 'execute': 'qom-get', 'arguments':"
++               " { 'path': %s, 'property': %s } }",
++               ADC128D818_TEST_ID, property);
++    g_assert(qdict_haskey(resp, "return"));
++    ret = qdict_get_int(resp, "return");
++    qobject_unref(resp);
++    return ret;
 +}
 +
-+static bool adc128d818_is_temp_channel(const ADC128D818State *s, unsigned ch)
++/* Manufacturer and Revision ID registers */
++static void test_id_registers(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    if (ch != 7u) {
-+        return false;
-+    }
++    QI2CDevice *dev = (QI2CDevice *)obj;
 +
-+    return adc128d818_get_mode(s) != 1u;
++    g_assert_cmphex(i2c_get8(dev, REG_MANUFACTURER_ID), ==, 0x01);
++    g_assert_cmphex(i2c_get8(dev, REG_REVISION_ID), ==, 0x09);
 +}
 +
-+static bool adc128d818_is_reserved_channel(const ADC128D818State *s,
-+                                           unsigned ch)
++/* Power-on-reset default values */
++static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    switch (adc128d818_get_mode(s)) {
-+    case 2u:
-+        return ch >= 4u && ch <= 6u;
-+    case 3u:
-+        return ch == 6u;
-+    default:
-+        return false;
++    QI2CDevice *dev = (QI2CDevice *)obj;
++    unsigned ch;
++
++    g_assert_cmphex(i2c_get8(dev, REG_CONFIG), ==, 0x08);
++    g_assert_cmphex(i2c_get8(dev, REG_INT_STATUS), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_INT_MASK), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_CONV_RATE), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_CH_DISABLE), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_DEEP_SHUTDOWN), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_ADV_CONFIG), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_BUSY_STATUS), ==, 0x02);
++
++    for (ch = 0u; ch < NUM_CHANNELS; ch++) {
++        g_assert_cmphex(i2c_get8(dev, REG_LIMIT_BASE + ch * 2u), ==, 0xFF);
++        g_assert_cmphex(i2c_get8(dev, REG_LIMIT_BASE + ch * 2u + 1u), ==, 0x00);
 +    }
 +}
 +
-+static int16_t adc128d818_channel_voltage(const ADC128D818State *s, unsigned ch)
++/* Software reset via INITIALIZATION bit */
++static void test_soft_reset(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    switch (adc128d818_get_mode(s)) {
-+    case 2u:
-+        switch (ch) {
-+        case 0u:
-+            return (int16_t)(s->ain[0] - s->ain[1]);
-+        case 1u:
-+            return (int16_t)(s->ain[3] - s->ain[2]);
-+        case 2u:
-+            return (int16_t)(s->ain[4] - s->ain[5]);
-+        case 3u:
-+            return (int16_t)(s->ain[7] - s->ain[6]);
-+        default:
-+            return 0;
-+        }
-+    case 3u:
-+        switch (ch) {
-+        case 4u:
-+            return (int16_t)(s->ain[4] - s->ain[5]);
-+        case 5u:
-+            return (int16_t)(s->ain[7] - s->ain[6]);
-+        default:
-+            return s->ain[ch];
-+        }
-+    default:
-+        return s->ain[ch];
-+    }
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    i2c_set8(dev, REG_INT_MASK, 0xAA);
++    i2c_set8(dev, REG_CH_DISABLE, 0x55);
++    i2c_set8(dev, REG_LIMIT_BASE, 0x42);
++
++    g_assert_cmphex(i2c_get8(dev, REG_INT_MASK), ==, 0xAA);
++    g_assert_cmphex(i2c_get8(dev, REG_CH_DISABLE), ==, 0x55);
++    g_assert_cmphex(i2c_get8(dev, REG_LIMIT_BASE), ==, 0x42);
++
++    i2c_set8(dev, REG_CONFIG, CONFIG_INITIALIZATION);
++
++    g_assert_cmphex(i2c_get8(dev, REG_CONFIG), ==, 0x08);
++    g_assert_cmphex(i2c_get8(dev, REG_INT_MASK), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_CH_DISABLE), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, REG_LIMIT_BASE), ==, 0xFF);
++    g_assert_cmphex(i2c_get8(dev, REG_BUSY_STATUS), ==, 0x02);
 +}
 +
-+static void adc128d818_update_irq(ADC128D818State *s)
++/* Verify ain property readback via QMP */
++static void test_ain_property(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    uint8_t cfg = s->regs[REG_CONFIG];
-+    uint8_t active;
-+    bool level;
++    int value;
 +
-+    active = s->regs[REG_INT_STATUS] & ~s->regs[REG_INT_MASK];
++    qmp_adc128d818_set("ain3", 1500);
++    value = qmp_adc128d818_get("ain3");
++    g_test_message("Set ain3 = 1500 mV, readback = %d mV", value);
++    g_assert_cmpint(value, ==, 1500);
 +
-+    /* INT pin is active-low */
-+    level = !((cfg & CONFIG_INT_ENABLE) && !(cfg & CONFIG_INT_CLEAR) &&
-+              (active != 0u));
-+
-+    trace_adc128d818_irq(s->description, level);
-+    qemu_set_irq(s->irq, level);
++    qmp_adc128d818_set("temperature", 37500);
++    value = qmp_adc128d818_get("temperature");
++    g_test_message("Set temperature = 37500 mC, readback = %d mC", value);
++    g_assert_cmpint(value, ==, 37500);
 +}
 +
-+static bool adc128d818_monitoring_active(const ADC128D818State *s)
++static void adc128d818_register_nodes(void)
 +{
-+    if (s->regs[REG_DEEP_SHUTDOWN] & DEEP_SHUTDOWN_EN) {
-+        return false;
-+    }
-+    if (!(s->regs[REG_CONFIG] & CONFIG_START)) {
-+        return false;
-+    }
-+    if (s->regs[REG_CONFIG] & CONFIG_INT_CLEAR) {
-+        return false;
-+    }
++    QOSGraphEdgeOptions opts = {
++        .extra_device_opts = "id=" ADC128D818_TEST_ID
++                             ",address=0x1f"
++    };
++    add_qi2c_address(&opts, &(QI2CAddress) { ADC128D818_TEST_ADDR });
 +
-+    return true;
++    qos_node_create_driver("adc128d818", i2c_device_create);
++    qos_node_consumes("adc128d818", "i2c-bus", &opts);
++
++    qos_add_test("id-registers", "adc128d818", test_id_registers, NULL);
++    qos_add_test("defaults", "adc128d818", test_defaults, NULL);
++    qos_add_test("soft-reset", "adc128d818", test_soft_reset, NULL);
++    qos_add_test("ain-property", "adc128d818", test_ain_property, NULL);
 +}
-+
-+static void adc128d818_check_limits(ADC128D818State *s)
-+{
-+    uint8_t disabled = s->regs[REG_CH_DISABLE];
-+    uint8_t int_status = 0u;
-+
-+    for (unsigned ch = 0u; ch < ADC128D818_NUM_CHANNELS; ch++) {
-+        if ((disabled & (1u << ch)) ||
-+            adc128d818_is_reserved_channel(s, ch)) {
-+            continue;
-+        }
-+
-+        if (adc128d818_is_temp_channel(s, ch)) {
-+            int raw = s->temperature / ADC128D818_TEMP_LSB_MC;
-+            int thot;
-+            int thyst;
-+
-+            raw = MAX(ADC128D818_TEMP_RAW_MIN,
-+                      MIN(ADC128D818_TEMP_RAW_MAX, raw));
-+            thot = (int)(int8_t)s->regs[REG_LIMIT_BASE + ch * 2u] * 2;
-+            thyst = (int)(int8_t)s->regs[REG_LIMIT_BASE + ch * 2u + 1u] * 2;
-+
-+            if (raw > thot) {
-+                s->temp_alarm = true;
-+            } else if (raw <= thyst) {
-+                s->temp_alarm = false;
-+            }
-+            if (s->temp_alarm) {
-+                int_status |= (1u << ch);
-+            }
-+        } else {
-+            uint8_t msb = (uint8_t)(s->channel[ch] >> 8u);
-+            uint8_t high_lim = s->regs[REG_LIMIT_BASE + ch * 2u];
-+            uint8_t low_lim = s->regs[REG_LIMIT_BASE + ch * 2u + 1u];
-+
-+            if (msb > high_lim || msb <= low_lim) {
-+                int_status |= (1u << ch);
-+            }
-+        }
-+    }
-+
-+    s->regs[REG_INT_STATUS] = int_status;
-+    adc128d818_update_irq(s);
-+}
-+
-+static void adc128d818_convert(ADC128D818State *s)
-+{
-+    uint8_t disabled;
-+    uint16_t vref;
-+
-+    disabled = s->regs[REG_CH_DISABLE];
-+    vref = adc128d818_get_vref(s);
-+
-+    for (unsigned ch = 0u; ch < ADC128D818_NUM_CHANNELS; ch++) {
-+        if ((disabled & (1u << ch)) ||
-+            adc128d818_is_reserved_channel(s, ch)) {
-+            continue;
-+        }
-+
-+        if (adc128d818_is_temp_channel(s, ch)) {
-+            int32_t raw = s->temperature / ADC128D818_TEMP_LSB_MC;
-+
-+            raw =
-+                MAX(ADC128D818_TEMP_RAW_MIN, MIN(ADC128D818_TEMP_RAW_MAX, raw));
-+            s->channel[ch] = (uint16_t)(((unsigned)raw & 0x1FFu) << 7u);
-+        } else {
-+            int16_t vin = adc128d818_channel_voltage(s, ch);
-+            int32_t dout;
-+
-+            dout = vin * (int32_t)ADC128D818_ADC_RESOLUTION / vref;
-+            dout = MAX(0, MIN((int32_t)ADC128D818_ADC_MAX, dout));
-+            s->channel[ch] = (uint16_t)(dout << 4u);
-+        }
-+
-+        trace_adc128d818_convert(s->description, ch, s->channel[ch]);
-+    }
-+
-+    s->regs[REG_BUSY_STATUS] &= ~BUSY_STATUS_NOT_READY;
-+
-+    adc128d818_check_limits(s);
-+}
-+
-+static uint8_t adc128d818_read_channel(ADC128D818State *s, unsigned ch)
-+{
-+    uint8_t val;
-+
-+    if (s->rx_byte == 0u) {
-+        val = (uint8_t)(s->channel[ch] >> 8u);
-+        trace_adc128d818_read_channel(s->description, ch, s->channel[ch]);
-+    } else {
-+        val = (uint8_t)(s->channel[ch] & 0xFFu);
-+    }
-+    s->rx_byte ^= 1u;
-+
-+    return val;
-+}
-+
-+static uint8_t adc128d818_read_reg(ADC128D818State *s, uint8_t reg)
-+{
-+    uint8_t val;
-+
-+    switch (reg) {
-+    case REG_INT_STATUS:
-+        val = s->regs[REG_INT_STATUS];
-+        s->regs[REG_INT_STATUS] = 0x00u;
-+        if (adc128d818_monitoring_active(s)) {
-+            adc128d818_check_limits(s);
-+        } else {
-+            adc128d818_update_irq(s);
-+        }
-+        trace_adc128d818_read(s->description, reg, val);
-+        return val;
-+    case REG_CONFIG:
-+    case REG_INT_MASK:
-+    case REG_CONV_RATE:
-+    case REG_CH_DISABLE:
-+    case REG_ONE_SHOT:
-+    case REG_DEEP_SHUTDOWN:
-+    case REG_ADV_CONFIG:
-+    case REG_BUSY_STATUS:
-+    case REG_LIMIT_BASE ... REG_LIMIT_LAST:
-+    case REG_MANUFACTURER_ID:
-+    case REG_REVISION_ID:
-+        trace_adc128d818_read(s->description, reg, s->regs[reg]);
-+        return s->regs[reg];
-+    case REG_CH_READING_BASE ... REG_CH_READING_LAST:
-+        return adc128d818_read_channel(s, reg - REG_CH_READING_BASE);
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: %s: read from undefined register 0x%02x\n",
-+                      __func__, s->description, reg);
-+        return 0x00u;
-+    }
-+}
-+
-+static void adc128d818_write_reg(ADC128D818State *s, uint8_t reg, uint8_t val);
-+
-+static void adc128d818_reset_regs(ADC128D818State *s)
-+{
-+    memset(s->regs, 0, sizeof(s->regs));
-+    memset(s->channel, 0, sizeof(s->channel));
-+    s->temp_alarm = false;
-+
-+    s->regs[REG_CONFIG] = 0x08u;
-+    s->regs[REG_BUSY_STATUS] = 0x02u;
-+    s->regs[REG_MANUFACTURER_ID] = ADC128D818_MANUFACTURER_ID_VAL;
-+    s->regs[REG_REVISION_ID] = ADC128D818_REVISION_ID_VAL;
-+
-+    for (unsigned ch = 0u; ch < ADC128D818_NUM_CHANNELS; ch++) {
-+        s->regs[REG_LIMIT_BASE + ch * 2u] = 0xFFu;
-+    }
-+
-+    s->pointer = 0x00u;
-+    s->len = 0u;
-+    s->rx_byte = 0u;
-+
-+    adc128d818_update_irq(s);
-+}
-+
-+static void adc128d818_write_reg(ADC128D818State *s, uint8_t reg, uint8_t val)
-+{
-+    trace_adc128d818_write(s->description, reg, val);
-+
-+    switch (reg) {
-+    case REG_CONFIG:
-+        if (val & CONFIG_INITIALIZATION) {
-+            trace_adc128d818_reset(s->description, "reg");
-+            adc128d818_reset_regs(s);
-+            break;
-+        }
-+        s->regs[REG_CONFIG] = val & CONFIG_WR_MASK;
-+        if ((val & CONFIG_START) && !(val & CONFIG_INT_CLEAR) &&
-+            !(s->regs[REG_DEEP_SHUTDOWN] & DEEP_SHUTDOWN_EN)) {
-+            adc128d818_convert(s);
-+        }
-+        adc128d818_update_irq(s);
-+        break;
-+    case REG_INT_MASK:
-+        s->regs[REG_INT_MASK] = val;
-+        adc128d818_update_irq(s);
-+        break;
-+    case REG_CONV_RATE:
-+        if (s->regs[REG_CONFIG] & CONFIG_START) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: %s: CONV_RATE written while running\n",
-+                          __func__, s->description);
-+            break;
-+        }
-+        s->regs[REG_CONV_RATE] = val & CONV_RATE_MASK;
-+        break;
-+    case REG_CH_DISABLE:
-+        if (s->regs[REG_CONFIG] & CONFIG_START) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: %s: CH_DISABLE written while running\n",
-+                          __func__, s->description);
-+            break;
-+        }
-+        s->regs[REG_CH_DISABLE] = val;
-+        memset(s->channel, 0, sizeof(s->channel));
-+        s->regs[REG_INT_STATUS] = 0x00u;
-+        s->temp_alarm = false;
-+        adc128d818_update_irq(s);
-+        break;
-+    case REG_ONE_SHOT:
-+        if (!(s->regs[REG_CONFIG] & CONFIG_START)) {
-+            adc128d818_convert(s);
-+        }
-+        break;
-+    case REG_DEEP_SHUTDOWN:
-+        if ((val & DEEP_SHUTDOWN_EN) && (s->regs[REG_CONFIG] & CONFIG_START)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: %s: DEEP_SHUTDOWN set while running\n",
-+                          __func__, s->description);
-+            break;
-+        }
-+        s->regs[REG_DEEP_SHUTDOWN] = val & DEEP_SHUTDOWN_EN;
-+        break;
-+    case REG_ADV_CONFIG:
-+        if (s->regs[REG_CONFIG] & CONFIG_START) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: %s: ADV_CONFIG written while running\n",
-+                          __func__, s->description);
-+            break;
-+        }
-+        s->regs[REG_ADV_CONFIG] = val & ADV_CONFIG_WR_MASK;
-+        memset(s->channel, 0, sizeof(s->channel));
-+        s->regs[REG_INT_STATUS] = 0x00u;
-+        s->temp_alarm = false;
-+        adc128d818_update_irq(s);
-+        break;
-+    case REG_LIMIT_BASE ... REG_LIMIT_LAST:
-+        s->regs[reg] = val;
-+        break;
-+    case REG_INT_STATUS:
-+    case REG_BUSY_STATUS:
-+    case REG_MANUFACTURER_ID:
-+    case REG_REVISION_ID:
-+    case REG_CH_READING_BASE ... REG_CH_READING_LAST:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: %s: write to read-only register 0x%02x\n",
-+                      __func__, s->description, reg);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: %s: write to undefined register 0x%02x\n",
-+                      __func__, s->description, reg);
-+        break;
-+    }
-+}
-+
-+static uint8_t adc128d818_recv(I2CSlave *i2c)
-+{
-+    ADC128D818State *s = ADC128D818(i2c);
-+
-+    return adc128d818_read_reg(s, s->pointer);
-+}
-+
-+static int adc128d818_send(I2CSlave *i2c, uint8_t data)
-+{
-+    ADC128D818State *s = ADC128D818(i2c);
-+
-+    if (s->len == 0u) {
-+        s->pointer = data;
-+        s->len++;
-+    } else {
-+        adc128d818_write_reg(s, s->pointer, data);
-+    }
-+
-+    return 0;
-+}
-+
-+static int adc128d818_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    ADC128D818State *s = ADC128D818(i2c);
-+
-+    s->len = 0u;
-+    s->rx_byte = 0u;
-+
-+    return 0;
-+}
-+
-+static void adc128d818_get_ain(Object *obj, Visitor *v, const char *name,
-+                               void *opaque, Error **errp)
-+{
-+    ADC128D818State *s = ADC128D818(obj);
-+    int64_t value;
-+    int ch_num;
-+    int rc;
-+
-+    rc = sscanf(name, "ain%d", &ch_num);
-+    if (rc != 1 || ch_num < 0 || ch_num >= (int)ADC128D818_NUM_CHANNELS) {
-+        error_setg(errp, "%s: %s: invalid channel '%s'", __func__,
-+                   s->description, name);
-+        return;
-+    }
-+
-+    value = s->ain[ch_num];
-+    visit_type_int(v, name, &value, errp);
-+}
-+
-+static void adc128d818_set_ain(Object *obj, Visitor *v, const char *name,
-+                               void *opaque, Error **errp)
-+{
-+    ADC128D818State *s = ADC128D818(obj);
-+    int64_t value;
-+    int ch_num;
-+    int rc;
-+
-+    if (!visit_type_int(v, name, &value, errp)) {
-+        return;
-+    }
-+
-+    rc = sscanf(name, "ain%d", &ch_num);
-+    if (rc != 1 || ch_num < 0 || ch_num >= (int)ADC128D818_NUM_CHANNELS) {
-+        error_setg(errp, "%s: %s: invalid channel '%s'", __func__,
-+                   s->description, name);
-+        return;
-+    }
-+
-+    if (value < INT16_MIN || value > INT16_MAX) {
-+        error_setg(errp, "%s: %s: value %" PRId64 " out of range for '%s'",
-+                   __func__, s->description, value, name);
-+        return;
-+    }
-+
-+    s->ain[ch_num] = (int16_t)value;
-+
-+    if (adc128d818_monitoring_active(s)) {
-+        adc128d818_convert(s);
-+    }
-+}
-+
-+static void adc128d818_get_temperature(
-+    Object *obj, Visitor *v, const char *name, void *opaque, Error **errp)
-+{
-+    ADC128D818State *s = ADC128D818(obj);
-+    int64_t value = s->temperature;
-+
-+    visit_type_int(v, name, &value, errp);
-+}
-+
-+static void adc128d818_set_temperature(
-+    Object *obj, Visitor *v, const char *name, void *opaque, Error **errp)
-+{
-+    ADC128D818State *s = ADC128D818(obj);
-+    int64_t value;
-+
-+    if (!visit_type_int(v, name, &value, errp)) {
-+        return;
-+    }
-+
-+    if (value < INT32_MIN || value > INT32_MAX) {
-+        error_setg(errp, "%s: %s: value %" PRId64 " out of range", __func__,
-+                   s->description, value);
-+        return;
-+    }
-+
-+    s->temperature = (int32_t)value;
-+
-+    if (adc128d818_monitoring_active(s)) {
-+        adc128d818_convert(s);
-+    }
-+}
-+
-+static const VMStateDescription adc128d818_vmstate = {
-+    .name = "ADC128D818",
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT8(len, ADC128D818State),
-+        VMSTATE_UINT8(pointer, ADC128D818State),
-+        VMSTATE_UINT8(rx_byte, ADC128D818State),
-+        VMSTATE_UINT8_ARRAY(regs, ADC128D818State,
-+                            ADC128D818_NUM_REGS),
-+        VMSTATE_UINT16_ARRAY(channel, ADC128D818State,
-+                             ADC128D818_NUM_CHANNELS),
-+        VMSTATE_INT16_ARRAY(ain, ADC128D818State,
-+                            ADC128D818_NUM_CHANNELS),
-+        VMSTATE_INT32(temperature, ADC128D818State),
-+        VMSTATE_UINT16(ext_vref, ADC128D818State),
-+        VMSTATE_BOOL(temp_alarm, ADC128D818State),
-+        VMSTATE_I2C_SLAVE(parent_obj, ADC128D818State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void adc128d818_reset_hold(Object *obj, ResetType type)
-+{
-+    ADC128D818State *s = ADC128D818(obj);
-+
-+    trace_adc128d818_reset(s->description, "hw");
-+    adc128d818_reset_regs(s);
-+}
-+
-+static void adc128d818_get_ext_vref(
-+    Object *obj, Visitor *v, const char *name, void *opaque, Error **errp)
-+{
-+    ADC128D818State *s = ADC128D818(obj);
-+    int64_t value = (int64_t)s->ext_vref;
-+
-+    visit_type_int(v, name, &value, errp);
-+}
-+
-+static void adc128d818_set_ext_vref(
-+    Object *obj, Visitor *v, const char *name, void *opaque, Error **errp)
-+{
-+    ADC128D818State *s = ADC128D818(obj);
-+    int64_t value;
-+
-+    if (!visit_type_int(v, name, &value, errp)) {
-+        return;
-+    }
-+
-+    if (value < 0 || value > ADC128D818_MAX_VDD_MV) {
-+        error_setg(errp,
-+                   "%s: %s: ext-vref-mv %" PRId64 " out of range (0..%u mV)",
-+                   __func__, s->description, value, ADC128D818_MAX_VDD_MV);
-+        return;
-+    }
-+
-+    s->ext_vref = (uint16_t)value;
-+
-+    if (adc128d818_monitoring_active(s)) {
-+        adc128d818_convert(s);
-+    }
-+}
-+
-+static void adc128d818_initfn(Object *obj)
-+{
-+    for (unsigned ch = 0u; ch < ADC128D818_NUM_CHANNELS; ch++) {
-+        char *name = g_strdup_printf("ain%u", ch);
-+
-+        object_property_add(obj, name, "int", adc128d818_get_ain,
-+                            adc128d818_set_ain, NULL, NULL);
-+        g_free(name);
-+    }
-+
-+    object_property_add(obj, "temperature", "int", adc128d818_get_temperature,
-+                        adc128d818_set_temperature, NULL, NULL);
-+    object_property_add(obj, "ext-vref-mv", "int", adc128d818_get_ext_vref,
-+                        adc128d818_set_ext_vref, NULL, NULL);
-+}
-+
-+static void adc128d818_realize(DeviceState *dev, Error **errp)
-+{
-+    ADC128D818State *s = ADC128D818(dev);
-+
-+    if (!s->description) {
-+        s->description = g_strdup(object_get_typename(OBJECT(dev)));
-+    }
-+
-+    qdev_init_gpio_out(dev, &s->irq, 1u);
-+}
-+
-+static const Property adc128d818_properties[] = {
-+    DEFINE_PROP_STRING("description", ADC128D818State, description),
-+};
-+
-+static void adc128d818_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    I2CSlaveClass *ic = I2C_SLAVE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+
-+    ic->event = adc128d818_event;
-+    ic->recv = adc128d818_recv;
-+    ic->send = adc128d818_send;
-+    dc->realize = adc128d818_realize;
-+    rc->phases.hold = adc128d818_reset_hold;
-+    dc->vmsd = &adc128d818_vmstate;
-+    device_class_set_props(dc, adc128d818_properties);
-+}
-+
-+static const TypeInfo adc128d818_types[] = {
-+    {
-+        .name          = TYPE_ADC128D818,
-+        .parent        = TYPE_I2C_SLAVE,
-+        .instance_init = adc128d818_initfn,
-+        .instance_size = sizeof(ADC128D818State),
-+        .class_init    = adc128d818_class_init,
-+    },
-+};
-+
-+DEFINE_TYPES(adc128d818_types)
-diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
-index 420fdc3359..fe36c9ef91 100644
---- a/hw/sensor/meson.build
-+++ b/hw/sensor/meson.build
-@@ -1,3 +1,4 @@
-+system_ss.add(when: 'CONFIG_ADC128D818', if_true: files('adc128d818.c'))
- system_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp105.c'))
- system_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
- system_ss.add(when: 'CONFIG_DPS310', if_true: files('dps310.c'))
-diff --git a/hw/sensor/trace-events b/hw/sensor/trace-events
-index a3fe54fa6d..5a3630f7bb 100644
---- a/hw/sensor/trace-events
-+++ b/hw/sensor/trace-events
-@@ -1,5 +1,13 @@
- # See docs/devel/tracing.rst for syntax documentation.
- 
-+# adc128d818.c
-+adc128d818_read(const char *id, uint8_t reg, uint8_t value) "%s reg 0x%02x val 0x%02x"
-+adc128d818_read_channel(const char *id, uint8_t channel, uint16_t value) "%s ch %u val 0x%04x"
-+adc128d818_write(const char *id, uint8_t reg, uint8_t value) "%s reg 0x%02x val 0x%02x"
-+adc128d818_convert(const char *id, uint8_t channel, uint16_t value) "%s ch %u val 0x%04x"
-+adc128d818_irq(const char *id, bool level) "%s level %u"
-+adc128d818_reset(const char *id, const char *source) "%s %s"
-+
- # tmp105.c
- tmp105_read(uint8_t dev, uint8_t addr) "device: 0x%02x, addr: 0x%02x"
- tmp105_write(uint8_t dev, uint8_t addr) "device: 0x%02x, addr 0x%02x"
-diff --git a/include/hw/sensor/adc128d818.h b/include/hw/sensor/adc128d818.h
-new file mode 100644
-index 0000000000..10c34b9646
---- /dev/null
-+++ b/include/hw/sensor/adc128d818.h
-@@ -0,0 +1,14 @@
-+/*
-+ * Texas Instruments ADC128D818 12-bit 8-channel ADC with I2C interface
-+ *
-+ * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef HW_SENSOR_ADC128D818_H
-+#define HW_SENSOR_ADC128D818_H
-+
-+#define TYPE_ADC128D818 "adc128d818"
-+
-+#endif
++libqos_init(adc128d818_register_nodes);
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 5e18b947c7..364458ab0b 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -303,6 +303,7 @@ qtests_hexagon = ['boot-serial-test']
+ qos_test_ss = ss.source_set()
+ qos_test_ss.add(
+   'ac97-test.c',
++  'adc128d818-test.c',
+   'adm1272-test.c',
+   'adm1266-test.c',
+   'ds1338-test.c',
 -- 
 2.50.1
 

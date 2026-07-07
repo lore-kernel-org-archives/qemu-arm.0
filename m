@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3708FC43458
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 12:06:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C40B9C43458
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Jul 2026 12:17:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wh4YK-0002I5-Dg; Tue, 07 Jul 2026 08:05:31 -0400
+	id 1wh4jr-0004WO-4K; Tue, 07 Jul 2026 08:17:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wh4YI-0002HC-1n
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 08:05:26 -0400
+ id 1wh4jq-0004U0-6j
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 08:17:22 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wh4Y7-0002xC-4F
- for qemu-arm@nongnu.org; Tue, 07 Jul 2026 08:05:17 -0400
+ id 1wh4jn-0004al-UU
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2026 08:17:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783425913;
+ s=mimecast20190719; t=1783426639;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=i9u+sHxyxHyeI6bZRhJIcZlmAvs8yo0w2vYaMQD4lqk=;
- b=A0WkJz66ur03teqSOQWCYGvl8rpSfENfnxhAkW4irTnSERMP8u1WfJS3V+5OoIUrAv3XwI
- qD+/cB3dX2c/dV5V7zB9Pia3xsbLRQK6ghRRZfAQe3rh5wpUlXCZ0UG6ECR0cCD0YWkphw
- SMByniGOY0Mm9NJm4KG6HmK0CJPAZjI=
+ bh=topAd8gfigeNm5ATkLuSoGde/QjWG1RNSihruxpvfXg=;
+ b=DYKdrIVMpTlTKcyk+VnT/yGBhebf0nC6gITUeN5Kjfwfpgt7/UAVgiTB1TipFaZ42FakTG
+ JTEkvqEikKKGfkJ93tkRBo2pM5gU9a7Kd5WnXrQm2WaphtkVnBpb7oRSOmU0Y8dGREIhUI
+ c0Mp2311sX7dwpscxAYYrguJTGxicx4=
 Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-161-9a0S1HNSNVC1t5-2Jro1ag-1; Tue,
- 07 Jul 2026 08:05:10 -0400
-X-MC-Unique: 9a0S1HNSNVC1t5-2Jro1ag-1
-X-Mimecast-MFC-AGG-ID: 9a0S1HNSNVC1t5-2Jro1ag_1783425908
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-303-UmyLUrZCNdGnkYdtkppcAw-1; Tue,
+ 07 Jul 2026 08:17:16 -0400
+X-MC-Unique: UmyLUrZCNdGnkYdtkppcAw-1
+X-Mimecast-MFC-AGG-ID: UmyLUrZCNdGnkYdtkppcAw_1783426635
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DF9EF1954120; Tue,  7 Jul 2026 12:05:07 +0000 (UTC)
+ id B470419540C3; Tue,  7 Jul 2026 12:17:14 +0000 (UTC)
 Received: from redhat.com (unknown [10.44.33.142])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7D70A180067C; Tue,  7 Jul 2026 12:05:03 +0000 (UTC)
-Date: Tue, 7 Jul 2026 13:05:00 +0100
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A25CC1955F7B; Tue,  7 Jul 2026 12:17:10 +0000 (UTC)
+Date: Tue, 7 Jul 2026 13:17:07 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
  philmd@mailo.com, aurelien@aurel32.net, peter.maydell@linaro.org,
  pbonzini@redhat.com, richard.henderson@linaro.org,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH v2 01/12] qom/object.c: rename
- object_class_property_uint*_ptr() to
- object_class_static_property_uint*_ptr()
-Message-ID: <akzrbOKbBwZAKK8D@redhat.com>
+Subject: Re: [PATCH v2 02/12] qom/object.c: add
+ object_class_property_add_uint8_ptr()
+Message-ID: <akzuQ-YiaSmToNsg@redhat.com>
 References: <20260703135512.3213964-1-mark.caveayland@nutanix.com>
- <20260703135512.3213964-2-mark.caveayland@nutanix.com>
+ <20260703135512.3213964-3-mark.caveayland@nutanix.com>
 MIME-Version: 1.0
-In-Reply-To: <20260703135512.3213964-2-mark.caveayland@nutanix.com>
+In-Reply-To: <20260703135512.3213964-3-mark.caveayland@nutanix.com>
 User-Agent: Mutt/2.3.2 (2026-04-26)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: vXP1MBAcgWd3rxsKwYUrp73aHVq9j78bRakZmF1CFGA_1783425908
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: ngIc9iy4X1hqo354c0X_s2UQS-YswEg18x3vuYKUA0k_1783426635
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
@@ -93,78 +92,104 @@ Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Jul 03, 2026 at 02:53:03PM +0100, Mark Cave-Ayland wrote:
-> This more accurately reflects that these properties are held within the class and
-> not the object.
+On Fri, Jul 03, 2026 at 02:53:04PM +0100, Mark Cave-Ayland wrote:
+> This adds a class property that references a uint8_t within the object instance
+> and is intended to be a replacement for object_property_add_uint8_ptr().
 > 
 > Signed-off-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 > ---
->  include/qom/object.h |  8 ++++----
->  hw/riscv/spike.c     |  5 +++--
->  qom/object.c         | 28 ++++++++++++++++------------
->  3 files changed, 23 insertions(+), 18 deletions(-)
+>  include/qom/object.h |  5 +++++
+>  qom/object.c         | 52 ++++++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 57 insertions(+)
 > 
 > diff --git a/include/qom/object.h b/include/qom/object.h
-> index 11f55613fc..89c23d45ab 100644
+> index 89c23d45ab..a55f9d0e97 100644
 > --- a/include/qom/object.h
 > +++ b/include/qom/object.h
-> @@ -1956,7 +1956,7 @@ ObjectProperty *object_property_add_uint8_ptr(Object *obj, const char *name,
+> @@ -1956,6 +1956,11 @@ ObjectProperty *object_property_add_uint8_ptr(Object *obj, const char *name,
 >                                                const uint8_t *v,
 >                                                ObjectPropertyFlags flags);
 >  
-> -ObjectProperty *object_class_property_add_uint8_ptr(ObjectClass *klass,
-> +ObjectProperty *object_class_static_property_add_uint8_ptr(ObjectClass *klass,
+> +ObjectProperty *object_class_property_add_uint8_ptr(ObjectClass *klass,
+> +                                                    const char *name,
+> +                                                    ptrdiff_t v,
+> +                                                    ObjectPropertyFlags flags);
+> +
+>  ObjectProperty *object_class_static_property_add_uint8_ptr(ObjectClass *klass,
 >                                           const char *name,
 >                                           const uint8_t *v,
->                                           ObjectPropertyFlags flags);
-> @@ -1977,7 +1977,7 @@ ObjectProperty *object_property_add_uint16_ptr(Object *obj, const char *name,
->                                      const uint16_t *v,
->                                      ObjectPropertyFlags flags);
+> diff --git a/qom/object.c b/qom/object.c
+> index d10bf848c0..263c313cd2 100644
+> --- a/qom/object.c
+> +++ b/qom/object.c
+> @@ -2741,6 +2741,38 @@ static void property_set_uint64_ptr(Object *obj, Visitor *v, const char *name,
+>      *field = value;
+>  }
 >  
-> -ObjectProperty *object_class_property_add_uint16_ptr(ObjectClass *klass,
-> +ObjectProperty *object_class_static_property_add_uint16_ptr(ObjectClass *klass,
->                                            const char *name,
->                                            const uint16_t *v,
->                                            ObjectPropertyFlags flags);
-> @@ -1998,7 +1998,7 @@ ObjectProperty *object_property_add_uint32_ptr(Object *obj, const char *name,
->                                      const uint32_t *v,
->                                      ObjectPropertyFlags flags);
->  
-> -ObjectProperty *object_class_property_add_uint32_ptr(ObjectClass *klass,
-> +ObjectProperty *object_class_static_property_add_uint32_ptr(ObjectClass *klass,
->                                            const char *name,
->                                            const uint32_t *v,
->                                            ObjectPropertyFlags flags);
-> @@ -2019,7 +2019,7 @@ ObjectProperty *object_property_add_uint64_ptr(Object *obj, const char *name,
->                                      const uint64_t *v,
->                                      ObjectPropertyFlags flags);
->  
-> -ObjectProperty *object_class_property_add_uint64_ptr(ObjectClass *klass,
-> +ObjectProperty *object_class_static_property_add_uint64_ptr(ObjectClass *klass,
->                                            const char *name,
->                                            const uint64_t *v,
->                                            ObjectPropertyFlags flags);
-> diff --git a/hw/riscv/spike.c b/hw/riscv/spike.c
-> index 9fde0faf39..630b65f569 100644
-> --- a/hw/riscv/spike.c
-> +++ b/hw/riscv/spike.c
-> @@ -278,8 +278,9 @@ static void spike_machine_class_init(ObjectClass *oc, const void *data)
->      object_class_property_add_str(oc, "signature", NULL, spike_set_signature);
->      object_class_property_set_description(oc, "signature",
->                                            "File to write ACT test signature");
-> -    object_class_property_add_uint8_ptr(oc, "signature-granularity",
-> -                                        &line_size, OBJ_PROP_FLAG_WRITE);
-> +    object_class_static_property_add_uint8_ptr(oc, "signature-granularity",
-> +                                               &line_size,
-> +                                               OBJ_PROP_FLAG_WRITE);
+> +static void *object_class_prop_ptr(Object *obj, ptrdiff_t offset)
+> +{
+> +    void *ptr = obj;
+> +    ptr += offset;
+> +
+> +    return ptr;
+> +}
 
-When we have just one use of these "static property" API in the code base,
-I wonder if we genuinely need these APIs ?
+Perhaps just
 
-I wonder why "line_size" isn't merely a field in the machine class ?
-External code ought to be able to fetch the current machine and read
-a line_size struct field, surely ?
+ #define FIELD(obj, offset) ((void *)obj+(ptrdiff_t)offset)
 
+> +
+> +static void property_class_get_uint8_ptr(Object *obj, Visitor *v,
+> +                                         const char *name,
+> +                                         void *opaque, Error **errp)
+> +{
+> +    uint8_t value = *(uint8_t *)object_class_prop_ptr(obj,
+> +                                                      (ptrdiff_t)opaque);
+
+Do we need this intermediate instead of now
+
+> +    visit_type_uint8(v, name, &value, errp);
+
+  visit_type_uint8(v, name, FIELD(obj, opaque), errp);
+
+
+> +}
+> +
+> +static void property_class_set_uint8_ptr(Object *obj, Visitor *v,
+> +                                         const char *name,
+> +                                         void *opaque, Error **errp)
+> +{
+> +    uint8_t *field = (uint8_t *)object_class_prop_ptr(obj,
+> +                                                      (ptrdiff_t)opaque);
+> +    uint8_t value;
+> +
+> +    if (!visit_type_uint8(v, name, &value, errp)) {
+> +        return;
+> +    }
+> +
+> +    *field = value;
+
+Instead of all this is it sufficient to do:
+
+   visit_type_uint8(v, name, FIELD(obj, opaque), errp);
+
+
+Also, since we'll be using this pattern for int8, int16, int32,
+and many more, perhaps we could define a macro that can expand
+to the getter/setter impl for any scalar type. so we can do
+
+  DEFINE_SCALAR_PROP_CALLBACKS(uint8);
+  DEFINE_SCALAR_PROP_CALLBACKS(uint16);
+  DEFINE_SCALAR_PROP_CALLBACKS(uint32);
+  DEFINE_SCALAR_PROP_CALLBACKS(uint64);
+  DEFINE_SCALAR_PROP_CALLBACKS(bool);
+  ..etc..
+
+> +}
+> +
+>  ObjectProperty *
+>  object_property_add_uint8_ptr(Object *obj, const char *name,
+>                                const uint8_t *v,
 
 With regards,
 Daniel

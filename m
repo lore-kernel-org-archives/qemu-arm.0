@@ -4,132 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90AE0C43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 22:59:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69C5DC43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 23:00:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whbEa-0000ou-6O; Wed, 08 Jul 2026 18:59:16 -0400
+	id 1whbFG-0001EL-M0; Wed, 08 Jul 2026 18:59:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1whbEY-0000oF-IQ
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:59:14 -0400
+ id 1whbFF-0001Dd-2A
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:59:57 -0400
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1whbEX-000175-10
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:59:14 -0400
+ id 1whbFD-0001E7-Fx
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:59:56 -0400
 Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 668KtLgX3990583
- for <qemu-arm@nongnu.org>; Wed, 8 Jul 2026 22:59:11 GMT
+ 668KtOnb3990620
+ for <qemu-arm@nongnu.org>; Wed, 8 Jul 2026 22:59:54 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 9ZHvPci+W5HxwrZGd5ljKFEhtiBL3xhWgwc/GNe40tI=; b=NNdoDRP446TjBMPD
- 5nPA247bTHe9h2yX14pyMacsQlbWVnRNA2qc0aigO5oavXq2ITjYhmISkAuStqgH
- ZdcaGECd2zZPfWpyGsBdMlAfsGRXrJLAQ8+hZ8DhX0bKRLHdBM8AGuoPMl+vC20R
- OEJauzeXxLvbNNkiVZD1SwkLXuYI++LlKwyRxDWLExV6GwhW+6BNq+MDdgb4TTln
- 0wFvHKiwpgFm1K3fLYMNSc6npTbxUVft/XrsgMWXyh3fJqurYI5vLuYft/D04/jB
- MU0dVGjZIfspPfOnh/qKvkrEKi+a6LtYrf1caTcIJiZl4Wi+qRlGDUGtXKs68uz9
- yGQLPA==
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f9v4vrqv8-1
+ clU9kC8b8erhmj+alIKj9MA0iQnWxmEXLf8F/F5FAuM=; b=eDYeD0b1YLeV8phI
+ Tpku/2Dri/YfT40NPZwLGNK90XQtQXcp3Kdn5c4o0204YS/TX9tl9cMklliTAb1W
+ mzZj5UiZH56WAt7ybKtIgAjx/xnvzeeYLC02NuDwioyoCBthGFXplo9aMMPXa2JW
+ p3yKocRgpZsH1EXy0X3CvlNNc5sXu1xaHHVGv2LeVW5t8IHs0VgUvI72Q//48zye
+ JhcirgtXQ0Z7jWi1z2SmP+4RhLK/rPaZiCa7la1vwxPF6n+BhxMtiB92bi/5fQ0C
+ vsUxJQ/pJ+KMZjney9paunpzonXKPVzQPx1tzLXbcm051u5hM852jXoy74TaK8Vt
+ GI0G9w==
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f9v4vrqxf-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 22:59:11 +0000 (GMT)
-Received: by mail-qt1-f200.google.com with SMTP id
- d75a77b69052e-51c0f0a0760so26960711cf.2
- for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 15:59:11 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 22:59:53 +0000 (GMT)
+Received: by mail-qt1-f197.google.com with SMTP id
+ d75a77b69052e-51c01ff996dso12120131cf.2
+ for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 15:59:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1783551550; x=1784156350; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1783551593; x=1784156393; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=9ZHvPci+W5HxwrZGd5ljKFEhtiBL3xhWgwc/GNe40tI=;
- b=JiKPCsynbPZqduaC+mWuTsIVU7sLj3W0DFx88qMDqmCURii8TKsI1OYNJoxyc0Y42T
- 8/phqwLpS/TeBbtmJvSlExfMxFTLnUYkaywfDJk+sQOuMJKOrpra/HhpmXCAZqA4D1JK
- wa819+ueCDbLSMCbVe/hfZE+uKvKRm/pX1/GNFBC8ZZfYkEXOl8JPn4CTQvvsLTF7TYY
- aLgJ1xN7ubUg47dLkQ/58fvAXptTY/xEHJG5GMejzzGbS7K4kw0jOg3V+2FJ82qw3Cce
- /5u9qZJ+Eq0QABcl3v3Ms/fBzh5BWlf3Gr70IohUd7yxZz3W2z4bFxTK8Edj7tDp3yTm
- jnCQ==
+ bh=clU9kC8b8erhmj+alIKj9MA0iQnWxmEXLf8F/F5FAuM=;
+ b=kcBM7sPasBtEIZdoQQ9pVRreI4PSnStJHBPg1swW21vKsfs8OPRixWhxzJnVrYWvkS
+ dlaQhxTkSxGbfH46gk8k+3iKkCtP5mYkOenmLydj5U9iRrL8QGJsPU0Wzdz4rj/Gtt/l
+ G8XnLeffJdYOeQEbBIBfoIazAdMiC/lMBVtMviVtYF1xSonm/sw2v81ABwavm7iPfidj
+ I8562nPwStm/ibTrJo1AyqqD/GGxOfeQs4ZmvMVB7o3Pc2B16EIWAMmme4Ov0EJ1VX1A
+ kz4yRlLl6BbVIyzrQC8QYSDFqJp5ydlMKqyXji69J0Ha7O2StyJDkZ+dTJB4FSfGgv28
+ 7dcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783551550; x=1784156350;
+ d=1e100.net; s=20251104; t=1783551593; x=1784156393;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=9ZHvPci+W5HxwrZGd5ljKFEhtiBL3xhWgwc/GNe40tI=;
- b=PFftngumMoao1tCXjlIywL/WjV02XbBeJ5f+jpTojylM78axXB8ydJQTMULhXPCWzN
- WI4RdYRTA4pyeDWpS3pe2iyZyINZc9zgHpvf7R+GGtGwlpTaSYErzjGtC+UJ5nCZ3ldL
- IZX/U/9qiL1iB+5tPKM6KBmLBvSyfsGav9I5VyEK5jqKDPN1qBasphbVjadsJq3XZnC4
- bfEyOZ4vzPD7OR92a/9q9TUWM1/L0k8Fu4lAxDRWyY5vasTviR5FXPERPcVYI0IBwGDg
- 55po1YAuUsHW/IVZQJKwOPpg4FenqNH+LE/HiFaurbVRluoDgYLtj0TfHTuTucF5EqTW
- bpNw==
+ bh=clU9kC8b8erhmj+alIKj9MA0iQnWxmEXLf8F/F5FAuM=;
+ b=puJUeazlzwOIGVj5vK3wINXDNYEK8J7IHT2L3waV8QnlfpX8tvdB/KpmMiHcZCm8tw
+ 6a3ObJsBnIvsDdasLhVgm+QBG6+M0eFa94CiiANkIorLASy7Sl8ofotlCOLAwtLa49wd
+ LfN9YBOGFVRtuYzHZQc8JbQMy3sJoP/1z9pzJoE9t3SkmnmVFpKooCuIwjEYXIvxRqvh
+ 1MmzyrX8mqWCEqouG9vXNVl206t2p/nfcbvQDm2o+leAe0g60ohNAJ05+oJ5THZ6zpKI
+ MsEU2peTVw4iqfQvqXddcdrIr9yQzltF1T2tSI1o7U/Eyk+eMs9KQ/tKsexrwFRDdShy
+ ANGw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpE0H5HREqCTRfa1J1IOARfujNLLg5uL8pITun2iufl4Vb0z2/4NmRN6gMmv+KKVIgv2NYDbd+1WA==@nongnu.org
-X-Gm-Message-State: AOJu0YyFiU6Tkhj0BaWtK5Cj0I/6WOr9HRpsR5h9mQFuKgUImLTjhCq1
- Frh0x4jvkiUmV4zIDpKy/+S4O1febqGyy5kJ1mMfos1cDA/0pxc1qnh+vg4rgriNFVuR3xsAGqK
- FgOapFpnMJRa1q4VuISKfsDvYfFOMItcFifQFi4tLdnx6re+aTwqy3AE=
-X-Gm-Gg: AfdE7clTOk7xHZIhc3y4ou3IIXD4JiFubDqZtgAn/AQ0tF3avCvu6wSpn7TejuWfaHl
- jeKGJWbq3rw61N1pXln+KPRMH6dg+1t3DOx/0rSTiCnCNl9XG+dB7tBwNKQczms7lbo54qbjsmh
- 5+bG/WIslGWMbyYw3LVKgGZSvsF+6H0oAsBFUxMKBsAHzq6DqvB8D0Lkf+EbT07G8JRszKZlkTv
- ST3M8Y9t1ZHnhcO+TVTC67dGPN3L7pBV40XcfqChem+QJUCx61t2eBIo3VJQhSlmeeDJMhmcp99
- 51jZDETe2vexMkvKexObbawnPDmchsakKtjpi268+kQwZCWZVKbijFI58a0o+dxMnBJK3XQl2qR
- cIu0dyYdZsY5AHM92xUpONdmQ1v5IC3qSozVDEDqhecsk8Ro/s/9k+k86Lg8FuA==
-X-Received: by 2002:a05:622a:38d:b0:51a:8c9a:8fb2 with SMTP id
- d75a77b69052e-51c8b4c751amr48472771cf.67.1783551550425; 
- Wed, 08 Jul 2026 15:59:10 -0700 (PDT)
-X-Received: by 2002:a05:622a:38d:b0:51a:8c9a:8fb2 with SMTP id
- d75a77b69052e-51c8b4c751amr48472451cf.67.1783551549825; 
- Wed, 08 Jul 2026 15:59:09 -0700 (PDT)
+ AHgh+Rrt2QGUIVyNdikVr+RItHgu8NF+0PjHotnutREIrdqDQclPuCulWKrtIY3FFZck0GQGEsI8Xp0KCw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy1RVGw3Jj/4tUaA+ZFsRVok497HwBCBf0DwroHJnNDyyZhvbRF
+ J9gRVf1aBSNlQsso6afJCMGs5sJcVqPFPxsyWwKGZ0fU2CcIjKfsNS4eqREl7baSLpbXBgkZDI3
+ x2xR9hd2AewQVa93dceHwnWMFeWLrh/YzNS2oXGb11Jn1NnnZDpPjIGc=
+X-Gm-Gg: AfdE7cn1KpaEmIa3HYgyUDYePf50UdSPCDdxO/f2fhGUHuNEZR9c5aNl/c0YleB1cXe
+ 8rZRwUB8+J0dbHASOeeIYY+9sR/+b58JRllG6AEWMxlcMX0FDBYGbhlrhl+7zsLbYt9ZyiFkDpD
+ MKD+2/NwsVI4fDtc2NyGK1gsYprCYS60sPtj7oilrHXm9zzBbwqt8QijtYw6kc7Gvo5EYsFsOJD
+ H8otwXT6gRKGqK5EZ3HFlYXYS0a7cCWhwPGnfebBT7AEaG8fnq6iK79rqsV251bjHmgThW1yxP5
+ x/RuZz1BK8qIX5iadtxqXJVwaDdxp7P/robLYSzOpDTyRmAL/cHeEhRtuLiwMwJI2K4g6pzpord
+ MhJatsFE6vEQM+UtsF/NSlaU+2UK6OF9QQ0ROyCD21X4B8McJltU4ZCL5RxnvRw==
+X-Received: by 2002:ac8:7e8d:0:b0:517:5e32:af1e with SMTP id
+ d75a77b69052e-51c8b2d54bdmr57548581cf.8.1783551592918; 
+ Wed, 08 Jul 2026 15:59:52 -0700 (PDT)
+X-Received: by 2002:ac8:7e8d:0:b0:517:5e32:af1e with SMTP id
+ d75a77b69052e-51c8b2d54bdmr57548201cf.8.1783551592493; 
+ Wed, 08 Jul 2026 15:59:52 -0700 (PDT)
 Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-69a19d7a375sm8443335a12.15.2026.07.08.15.59.07
+ 5b1f17b1804b1-493eb74835esm15699375e9.14.2026.07.08.15.59.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jul 2026 15:59:08 -0700 (PDT)
-Message-ID: <3d2d869c-d1a0-40d1-83c2-755c080bd17d@oss.qualcomm.com>
-Date: Thu, 9 Jul 2026 00:59:07 +0200
+ Wed, 08 Jul 2026 15:59:51 -0700 (PDT)
+Message-ID: <c7963a97-8e5a-4c01-ba31-45ce48091270@oss.qualcomm.com>
+Date: Thu, 9 Jul 2026 00:59:50 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 00/10] Add SSP/TSP power control and DRAM remap support
- for AST2700
+Subject: Re: [PATCH v2 0/8] Refactor AST2700 SCU preparation for coprocessors
 Content-Language: en-US
 To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
  <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Kane Chen <kane_chen@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260708092023.3826159-1-jamin_lin@aspeedtech.com>
+References: <20260707060919.350637-1-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260708092023.3826159-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260707060919.350637-1-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: Cq80EpTM455iMFeTaLDhoyCcxOZ624W-
-X-Proofpoint-ORIG-GUID: Cq80EpTM455iMFeTaLDhoyCcxOZ624W-
-X-Authority-Analysis: v=2.4 cv=GIg41ONK c=1 sm=1 tr=0 ts=6a4ed63f cx=c_pps
- a=JbAStetqSzwMeJznSMzCyw==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Proofpoint-GUID: EJx5_48mlIiAEEwRDmMXPIbXwrMNvu1I
+X-Proofpoint-ORIG-GUID: EJx5_48mlIiAEEwRDmMXPIbXwrMNvu1I
+X-Authority-Analysis: v=2.4 cv=GIg41ONK c=1 sm=1 tr=0 ts=6a4ed669 cx=c_pps
+ a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
  a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=EUspDBNiAAAA:8 a=E3A8Cuo5wui9a3iAGOgA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=uxP6HrT_eTzRwkO_Te1X:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA4MDIyNiBTYWx0ZWRfX41eBWpwu7bCO
- phiWuilj0YfF0gnkum6JlqhXZ+Yd49gs8OcV8+9Zg8Yupu1YtES4dVQs7AbbD4ez0z3LCRML6av
- XqCZP7ltVLd/WwbXJOnjR3OjiHT6b2EZffm4oGd42PneMYw5O/nPeYs7LS/tvBPJnop8yA4G7e7
- IA5agCp/HetsvmXMmTPrN8hlnAG1t9sSzIGs9kRRrMbpgpQRZUsy6FWtxxc76JIpO2C1cJVc/RD
- HVLVRrcMBjkAno7dL1ZTqjz3cS7Bz2dzcVfstMDJC1qL6zrDDlD/YBg4zIpDT8zgDsIW11U7h0+
- /PnppbJw+FRpoWpPlnsPpUuMC6QrbK6fy42ABQHDjYxH80y0ZEyVYDXZ9tvFplIenUPENOpO2Wr
- Y1AO+k1OFZyZUMil52U7w23woVef8agp6Cr6sh7wku4Dgluz8K2f+A2lazyB8nZw8ImD1EKvC2M
- J6rHDqIL6EkhzBIJ5fA==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA4MDIyNiBTYWx0ZWRfX2kgZ/1YvT3Nx
- JTPJhT63NI+4WFLpS8kPTOxnz0arWfoBiU+irGET9G5GOMffpdhaiFFR83IQkxh4NfTEgdstuqM
- uqXLpcVWbcU96QC+X4U0ADn5i2C4c4A=
+ a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=zZCYzV9kfG8A:10 a=a_PwQJl-kcHnX1M80qC6:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA4MDIyNiBTYWx0ZWRfX0MV4gFuBZdYX
+ hLTSMgKuw6yxVTvSmr7fbVYEMSFDbts6fwot4g+GzwviBIWv3pSqNMs3hwYCQECZz9DBORwaxlG
+ /0bA2EUGXkCheudzAzLFhsqP7IU5auQrNOfvXmQGcWQYrEOJVjRJbcwQ3SPp/omBC7H/P6snQny
+ BLEnORUzz+SSEs41h6bfK5+wT+bNJRq9KQc3C7Mvey83GkDZCDaubuWT6ekLSvv349u5f6ebR/U
+ WQ1AYpjjqna7+AzsG4YheRHZxJ0vQKNL541nvMEYpHPaPkDtU73FGJ5FJ6hQqmUfrm093VERQC2
+ cVanNztpned9Pz0uQhFp9AlFjyANEafE9Gp8JkF0ksZFwVJuODLMZSAuyzee0Lj7CMQGPz3zs0c
+ H0mNVXgg60FEZ/QSMmW/s+4dl03zzrovVloKbuBoNvi6Ky0UrQm4NkSy7z9BmzAO3h0f0U0L8wG
+ xuwlBAKkpKKEfIZWb4Q==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA4MDIyNiBTYWx0ZWRfX3Ejb71ppDS+e
+ F94ku/YMOkrtjUn0SJv51uLAMKVbu+AMqcdApYHt1isQD9Wfb/BK1j3P4y831FpXzSrM8plH5T2
+ mVTrxOR2vyVAx0hGg3lggDoLdvwMyXw=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-08_04,2026-07-08_01,2025-10-01_01
@@ -162,57 +160,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/7/26 11:20, Jamin Lin wrote:
-> This series improves AST2700 platform support by aligning SSP/TSP
-> power and reset behavior with hardware, and enabling DRAM remapping
-> required for proper firmware boot flow.
+On 7/7/26 08:09, Jamin Lin wrote:
+> The original AST2700 FC support series [1] is fairly large, making it
+> difficult to review all changes together.
 
 
-> Jamin Lin (10):
->    hw/arm/ast27x0: Start SSP in powered-off state to match hardware
->      behavior
->    hw/arm/ast27x0: Start TSP in powered-off state to match hardware
->      behavior
->    hw/arm/ast27x0: Add DRAM alias for SSP SDRAM remap
->    hw/arm/ast27x0: Add DRAM alias for TSP SDRAM remap
->    hw/misc/aspeed_scu: Implement SSP reset and power-on control via SCU
->      registers
->    hw/misc/aspeed_scu: Implement TSP reset and power-on control via SCU
->      registers
->    hw/misc/aspeed_scu: Add SCU support for SSP SDRAM remap
->    hw/misc/aspeed_scu: Add SCU support for TSP SDRAM remap
->    tests/functional/aarch64/test_aspeed_ast2700fc: Boot SSP/TSP via PSP
->      and load binaries from DRAM
->    docs: Add support vbootrom and update Manual boot for ast2700fc
+> Jamin Lin (8):
+>    hw/misc/aspeed_scu: Introduce Aspeed2700SCUState
+>    hw/arm/aspeed: Use Aspeed2700SCUState for AST2700 users
+>    hw/arm/aspeed_ast27x0: Move SCU link into AST27x0 coprocessors
+>    hw/misc/aspeed_scu: Add separate reset handler for AST2700 SCUIO
+>    hw/arm/aspeed_ast27x0: Pass realized PSP SoC to SSP/TSP initialization
+>    hw/arm/ast27x0: Share single SCUIO instance across PSP, SSP, and TSP
+>    hw/arm/ast27x0: Share FMC controller with SSP and TSP
+>    hw/ssi/aspeed_smc: Add Data FIFO-based flash access support for
+>      AST2700
 
 Series:
 Tested-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-
-2 notes:
-
-1/ I3C errors in dmesg:
-
-[    8.151230]  14c20000.i3c0: MIPI I3C HCI v0.0 r00
-[    8.151498]  14c20000.i3c0: unsupported HCI version
-[    8.151761] mipi-i3c-hci 14c20000.i3c0: probe with driver 
-mipi-i3c-hci failed with error -93
-[    8.152250]  14c21000.i3c1: MIPI I3C HCI v0.0 r00
-[    8.152518]  14c21000.i3c1: unsupported HCI version
-[    8.152779] mipi-i3c-hci 14c21000.i3c1: probe with driver 
-mipi-i3c-hci failed with error -93
-[    8.153322]  14c22000.i3c2: MIPI I3C HCI v0.0 r00
-[    8.153588]  14c22000.i3c2: unsupported HCI version
-[    8.153853] mipi-i3c-hci 14c22000.i3c2: probe with driver 
-mipi-i3c-hci failed with error -93
-...
-
-2/ shutdown not working
-
-[  246.405297] systemd-shutdown[1]: Entering exitrd...
-shutdown: poweroff --timeout=90000000us --log-level info 
---log-target=kmsg --log-color --exit-code=0
-/shutdown: line 97: poweroff: not found
-Execute poweroff -f if all unmounted ok, or exec /init
-shutdown-sh#
-
 

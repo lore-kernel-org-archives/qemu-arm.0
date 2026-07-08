@@ -4,127 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08BE6C43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 16:45:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3C07C43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 22:14:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whVOm-0007Jw-5m; Wed, 08 Jul 2026 12:45:24 -0400
+	id 1whaWa-0007LK-Jk; Wed, 08 Jul 2026 18:13:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1whVOi-0007F9-DT; Wed, 08 Jul 2026 12:45:20 -0400
-Received: from smtpout1.mo528.mail-out.ovh.net ([46.105.34.251])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1whaWZ-0007KW-F5
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:13:47 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1whVOe-0003Lr-4N; Wed, 08 Jul 2026 12:45:18 -0400
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net [51.210.158.128])
- by mo528.mail-out.ovh.net (Postfix) with ESMTPS id 4gwP8m2nvyz6V6v;
- Wed,  8 Jul 2026 16:45:12 +0000 (UTC)
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net. [127.0.0.1])
- by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alistair@alistair23.me>; Wed,  8 Jul 2026 16:45:12 +0000 (UTC)
-Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.54.155])
- by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gwP8l72S8z6KRW; Wed,  8 Jul 2026 16:45:11 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.3])
- (Authenticated sender: clg@kaod.org)
- by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id D14F7203D78; 
- Wed,  8 Jul 2026 16:45:09 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-111S005162a6c14-e86c-4a00-b644-c8d91a225d99,
- 2D223E717D9FA260C3726021AC4FE3AAA9F332FE) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <f7659f14-3961-4021-b936-8739a01a2d65@kaod.org>
-Date: Wed, 8 Jul 2026 18:45:08 +0200
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1whaWX-0003pX-I8
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:13:47 -0400
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 668KtkpA3948574
+ for <qemu-arm@nongnu.org>; Wed, 8 Jul 2026 22:13:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ bYX3KACLVoJS6QH6ugDFeTZ55tWn/+xOhRkcAwPj6Sk=; b=gDJd4DA8332pooo0
+ rf4PhX46FFFIdECh02M30mKrBCO+7EG0j9bbpIOyYEERXfDfR2ST2Z6l/JLEKz7W
+ YBcopWAcjSee6I2IP88l8Ft429osLVYOXfCzf/eUloPJ9YBTuF/gn+5M+TpYH6BC
+ QBuQO8v/SegKdR7jA4kpblZauBRV9cXxn5H7rVA9Aqxz8liznAWFlahF9PHvaLOJ
+ PxhFuen9WvjZGxKem5DjA6XZGtOO4RoSpV6rj2TgIgDzQR+gZdTzSqs5ZkPa8alS
+ Cs/dvP+7p03rFhONch/32PxNwXVyM3MKXfQa2GQmHpnh6MsYypjRLJ6wYB/MtfBb
+ xdcb4A==
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f9g7hkyth-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 22:13:43 +0000 (GMT)
+Received: by mail-qt1-f198.google.com with SMTP id
+ d75a77b69052e-51c1d7886cdso3508541cf.1
+ for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 15:13:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1783548822; x=1784153622; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=bYX3KACLVoJS6QH6ugDFeTZ55tWn/+xOhRkcAwPj6Sk=;
+ b=b68AaWDILT7JKSv1q4TO2C1yB4r6CCu0VN43Z+4T53OoRaN8IzGR3QavZrbJp1dVSD
+ zzp5xKnkpApiumvhsn4JAW8FrJecEtv8xSb85BdxZOMITy5uKGiD09v1/8qDktM/cwVz
+ ogLr5JzkKhXbQKfEvoO71+ulE7waCRbGUZl0ndcCyb+GUqsSd7lYMSc1zMaFcTXY6q7K
+ mjzTxR2D9sl0WyIgfHPzCK0i5gRisfvLBl4bux4JjDztr4cF3BaS8HRKwgi2EVg1MdO4
+ 6IyQkMldAy13GSwQJtLueZ6HddlRyoD53J+laNDWYCZdoM0M6Ri9AJwgQLDFiqobQGnv
+ Liww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1783548822; x=1784153622;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=bYX3KACLVoJS6QH6ugDFeTZ55tWn/+xOhRkcAwPj6Sk=;
+ b=jUStKgUcApVAZzlzyIpeYpYJvzPI1Z7Aw3V83ef9QPC+t3WKEjhXa19ph1d1V11PGX
+ oEYLs6XM1YvGHN91BTqph/pAh7qZDOCQz3o9g3U0TEFosvU0ovgfCNu/ZphjIoljy83h
+ GsYLNVZSCi5UN8aqr7As99wejpq8+2rLODhPI/FSXS/LSv+vywEljFeclD7UhHcDYB3m
+ i1W/TAgvMW/WvLA/l2qhwq40PAjHQXnCAoD1m+tL9N3sgk/Ml+DF01d84khLKxiS7rYp
+ zRUPoC8DK3KyuF1jSxwk2rb92/bvr2M/pyYZqUGo4b2FFsI9htWTYq5J76DZadWgbKN0
+ +zeg==
+X-Forwarded-Encrypted: i=1;
+ AHgh+Rpwd6oABmSLtGjKiixIztG+xL5pp0ds8g7UdKcriuZmTtE4SZgqI5Y7t6aeUBlgRnDj4obAjyiAGg==@nongnu.org
+X-Gm-Message-State: AOJu0YzP79A4V9aXT5dSLG8RkzatnBcSqu+aXWYMkMaZsD9iQxd9aJgj
+ Pi3FM+jUX8V0YUAkQh/mSgbVjC4KrIk6klHUOXTjnmaT321qPYGJRdIw9+1SpLJkaNe4xSEErzA
+ yY86iSR+A56IUd+QCnc9Cxxdo1YI98fjJ0Dv0yrpl2Je6Ah3kgSFO1fM=
+X-Gm-Gg: AfdE7cnL7doi7Je7NF+NOfdhd9On7tdnDxBSfffK+PGSf1MNa/Qt6eF2SwIXfW2AXke
+ PA8LfwX3CuVwng63fuk2CHl7HjDZMuXth3KcrT8I2oraiYcB9K8TjnA3ZgfqyuV6NO3i/BCnwss
+ 2zXQCGJQhcDuRpIZzbnICvMW36zQekUiOneJ0IErYn4I5RGyS9RVZSxyqyMwDvLNlkzusx3iZIT
+ RpkdF36MeABw7KOGSi2ODYXRdnjQq4WmxBQFs3Hjrpp97AuM94KrUG7g/LqIt6fgY3ertJ0FjGJ
+ gtChdMDfWBTQk3ioREd/Ki2Y0tQI3KeB/XpVED+bW0UHDxYBaC2/D4jc8YfPsbU1QhXFpc9yqrm
+ xntuRc9WYX/oHMRXX+VAEFWR22lejOybW/q8akQj76qHek9cSbZULfALuh9pJfg==
+X-Received: by 2002:ac8:7e8f:0:b0:51c:7b12:5fda with SMTP id
+ d75a77b69052e-51c8b438e93mr51306371cf.86.1783548821930; 
+ Wed, 08 Jul 2026 15:13:41 -0700 (PDT)
+X-Received: by 2002:ac8:7e8f:0:b0:51c:7b12:5fda with SMTP id
+ d75a77b69052e-51c8b438e93mr51305911cf.86.1783548821419; 
+ Wed, 08 Jul 2026 15:13:41 -0700 (PDT)
+Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-493e5a6240fsm65234225e9.2.2026.07.08.15.13.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 Jul 2026 15:13:40 -0700 (PDT)
+Message-ID: <7ba7afe0-1e89-480e-92f1-6a1682b56baf@oss.qualcomm.com>
+Date: Thu, 9 Jul 2026 00:13:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] tests/qtest: aspeed_smc: Add fast-read test coverage
-To: Bin Meng <bmeng.cn@gmail.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Bin Meng <bin.meng@processmission.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-References: <20260708111544.1440761-1-clg@redhat.com>
- <20260708111544.1440761-3-clg@redhat.com>
- <CAEUhbmWWmX9BKwS2m12vPk=rN_DxzCKqsm=h9g26QdHcX3gHqw@mail.gmail.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <CAEUhbmWWmX9BKwS2m12vPk=rN_DxzCKqsm=h9g26QdHcX3gHqw@mail.gmail.com>
+Subject: Re: [PATCH v4 01/23] accel/hvf: Create hvf_protect_clean_range,
+ hvf_unprotect_dirty_range
+Content-Language: en-US
+To: qemu-devel@nongnu.org
+Cc: Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Richard Henderson
+ <richard.henderson@linaro.org>, Akihiko Odaki
+ <odaki@rsg.ci.i.u-tokyo.ac.jp>, Peter Collingbourne <pcc@google.com>,
+ Cameron Esfahani <dirty@apple.com>, Mads Ynddal <mads@ynddal.dk>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+References: <20251103101034.59039-1-philmd@linaro.org>
+ <20251103101034.59039-2-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20251103101034.59039-2-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 9122041048619723821
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGszzCa6Plw9XuHTjPf67GSsxXG9dq6BPqMe7UIwYeG/RzQJ95XUz5jNa6UYUtqQn9bCg4lSCW0g42IYKKfpnZjrC8L53YD3oFzmV+0Yo29SEV6JYXBY8kRz5Y30/L84pJGrRJ7IpoUs1xrU8jRL/nNXPai4ABznUP4uiDv8Dq1KA9KO4rbrAPtJQcX62yxiCJVhR+ragqVmRwpBdhkFjPmPX81ejUrS+jk0fxy/QSmiMzKnBIO52DXvTQZmNNoM8AYUoLYmMjqMhO9hWyVwH9zTSva9ZGyp+NQoISlN60IsApmXsytqW3pqtB0qv3yYmS/i0UAt/GwWQCgVpk45mQGdgf5Fa3yVfayiRPN8YPu1W5/E5o+sVfvMHKawaAGqw4A0ftLI7O982XLPAxoywFrtM9G22eFW6RV/yMvdFk0HAxDsFdjRtxKPMx5wkKsebDHt1RTPljZ7n2my4ZVPjcXZtpIXAyNqJMZJYEEG5YpO4YdCrIpIrY+dL9SywEzCuO7i7XUmShUS+Ue3JgsYGmkMBPtEspy6HSD2YuS1D0pGzC0HByHg/aThL6CKzGjEbyA3ohfm1A17PinpmKbSqtEjexKT1AA/+YLuGIvpVbiZF67nc4a/MnJ7yb2in5g7LxSaO40VoJV9WaawMBaYCBR5Kk0qzDZfniXAKzMnd0+DA
-DKIM-Signature: a=rsa-sha256; bh=fLsC9SPir3DC5E0J4NqTpZebntcaUsb+9Zn0LmFgf88=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1783529113; v=1;
- b=mufjizid6Uqbfv41254LVRK9wZmYqCQB5nooAgxefrmt9T+UIT82IKqxDGoBNiHVgbpypEXF
- 7HoOfLMER24Lm+tIzllxRaTJGw9VgrsuNZO0FmOJEqVmNBjL1WzLpEhYs9scAjqzpEniLv/7SPr
- VNQTlvzhdFh2yxc4u85H3635kl552J1YyVWvYjo69lZeXA4q/6XW8TtYAHcYqWld5NDBw2729np
- eu+ZJI550V4yPFX47Gt4jhoUtAnT77LnFT7/T12bXTNZiWLNUSF9WedzGqqozWXisRboNHMDpXU
- TP219qpF2NAcUpr+fNfR7k9FIkAzSIgzvWAnDcL7Zuw7g==
-Received-SPF: pass client-ip=46.105.34.251; envelope-from=clg@kaod.org;
- helo=smtpout1.mo528.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA4MDIxOCBTYWx0ZWRfX83mGsUmYH2IR
+ oqToVygvi3elAHfjjkhi/XrTosVD2Pul1pFtl2J3R+l0i6j8+oGiEcO0uDgrSCXc7VSQxl4YYVU
+ neX1S/TWPYWpoxQ0LeQqvJpIWR48fxHgXvPgJD4zVbCrtrSd6UUINSdLi8nc+bOVp4jTxb/i5a2
+ +dwKy05v7UFm2yrWVFb1/cbmCbCo+MkxWzsKWo33jhJZ8SwQcpKAYAM4bH5nYcayx+aIAK+nF/s
+ sDf2taL5hBgyKcXWWSmoAgFrLFV9wM3gUoqfq/IAOxGdicXKQXj49R+CVLY/XXWoSbnYiBKjHBc
+ LYZl4effDAHQUvZZ7tFL2TTjKp4Cg8veE85axK9idRgVr1JJCSTfMKqmfwX0etXAI4yfMUqIwZU
+ tXoQuW2DYAXky8YgPJeAiUtDEr0k68DrmdlhimfL4WWDlPrzs7Zgviv/qWVmKfJBPoYMq6Qx5w4
+ +/VDwA7vY1TWyqXLLUQ==
+X-Proofpoint-GUID: eFsnasn9F2Bu-EW_6Pw4LLPIEsKKJcaC
+X-Authority-Analysis: v=2.4 cv=TMp1jVla c=1 sm=1 tr=0 ts=6a4ecb97 cx=c_pps
+ a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
+ a=KKAkSRfTAAAA:8 a=TsVdnq78nccsToMOntQA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=dawVfQjAaf238kedN5IG:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA4MDIxOCBTYWx0ZWRfX2LSlCBJTHNzW
+ y/4VYyMxIufJMEHK/9OTyHHZ1laol64N/D2BJNgFR5NpXRswGqm5w/lBIQ1JTJluwfBxRw0Ojxf
+ RKqwHtYPfOR83pYFnp2PAxSakzJhU0M=
+X-Proofpoint-ORIG-GUID: eFsnasn9F2Bu-EW_6Pw4LLPIEsKKJcaC
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-08_04,2026-07-08_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 priorityscore=1501 suspectscore=0 adultscore=0
+ lowpriorityscore=0 bulkscore=0 malwarescore=0 phishscore=0 spamscore=0
+ clxscore=1015 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2607080218
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,188 +163,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/8/26 17:29, Bin Meng wrote:
-> On Wed, Jul 8, 2026 at 7:17 PM Cédric Le Goater <clg@redhat.com> wrote:
->>
->> Add read_page_mem_fast_read (CTRL_FREADMODE with dummy byte) and
->> write_page_fast_read (user-mode FAST_READ) tests.
->>
->> Signed-off-by: Cedric Le Goater <clg@redhat.com>
->> ---
->>   tests/qtest/aspeed-smc-utils.h |  5 ++++
->>   tests/qtest/aspeed-smc-utils.c | 49 ++++++++++++++++++++++++++++++++++
->>   tests/qtest/aspeed_smc-test.c  | 21 +++++++++++++++
->>   tests/qtest/ast2700-smc-test.c |  4 +++
->>   4 files changed, 79 insertions(+)
->>
->> diff --git a/tests/qtest/aspeed-smc-utils.h b/tests/qtest/aspeed-smc-utils.h
->> index e2fd8ff1bd16..5a86514caf35 100644
->> --- a/tests/qtest/aspeed-smc-utils.h
->> +++ b/tests/qtest/aspeed-smc-utils.h
->> @@ -44,6 +44,8 @@
->>   #define   CTRL_FREADMODE       0x1
->>   #define   CTRL_WRITEMODE       0x2
->>   #define   CTRL_USERMODE        0x3
->> +#define   CTRL_DUMMY_LOW_SHIFT   6
->> +#define   CTRL_DUMMY_HIGH_SHIFT  14
->>   #define SR_WEL BIT(1)
->>
->>   /*
->> @@ -55,6 +57,7 @@ enum {
->>       WRDI = 0x4,
->>       BULK_ERASE = 0xc7,
->>       READ = 0x03,
->> +    FAST_READ = 0x0b,
->>       PP = 0x02,
->>       WRSR = 0x1,
->>       WREN = 0x6,
->> @@ -90,5 +93,7 @@ void aspeed_smc_test_status_reg_write_protection(const void *data);
->>   void aspeed_smc_test_write_block_protect(const void *data);
->>   void aspeed_smc_test_write_block_protect_bottom_bit(const void *data);
->>   void aspeed_smc_test_write_page_qpi(const void *data);
->> +void aspeed_smc_test_read_page_mem_fast_read(const void *data);
->> +void aspeed_smc_test_write_page_fast_read(const void *data);
->>
->>   #endif /* TESTS_ASPEED_SMC_UTILS_H */
->> diff --git a/tests/qtest/aspeed-smc-utils.c b/tests/qtest/aspeed-smc-utils.c
->> index ed125741eb36..9883ade0815c 100644
->> --- a/tests/qtest/aspeed-smc-utils.c
->> +++ b/tests/qtest/aspeed-smc-utils.c
->> @@ -697,3 +697,52 @@ void aspeed_smc_test_write_page_qpi(const void *data)
->>       flash_reset(test_data);
->>   }
->>
->> +static void read_page_mem_fast_read(const AspeedSMCTestData *data,
->> +                                uint32_t addr, uint32_t *page)
->> +{
->> +    uint32_t ctrl_reg = R_CTRL0 + data->cs * 4;
->> +    uint32_t ctrl = spi_readl(data, ctrl_reg);
->> +    int i;
->> +
->> +    /* Set FREADMODE with FAST_READ command and 1 dummy byte */
->> +    ctrl &= ~(CTRL_USERMODE | (0xff << 16) |
->> +              (0x3 << CTRL_DUMMY_LOW_SHIFT) |
->> +              (0x1 << CTRL_DUMMY_HIGH_SHIFT) |
->> +              CTRL_IO_MODE_MASK);
->> +    ctrl |= CTRL_FREADMODE | (FAST_READ << 16) |
->> +            (1 << CTRL_DUMMY_LOW_SHIFT);
->> +    spi_writel(data, ctrl_reg, ctrl);
+On 3/11/25 11:10, Philippe Mathieu-Daudé wrote:
+> From: Richard Henderson <richard.henderson@linaro.org>
 > 
-> Could just call spi_ctrl_set_fast_read()?
-
-Yeah. I could introduce a common helper if it's what you mean.
-
-Thanks,
-
-C.
-
-
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/system/hvf_int.h |  3 +++
+>   accel/hvf/hvf-all.c      | 25 +++++++++++++++++++++++++
+>   accel/hvf/trace-events   |  1 +
+>   3 files changed, 29 insertions(+)
 > 
->> +
->> +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
->> +        page[i] = make_be32(flash_readl(data, addr + i * 4));
->> +    }
->> +}
->> +
->> +void aspeed_smc_test_read_page_mem_fast_read(const void *data)
->> +{
->> +    test_read_page_mem(data, read_page_mem_fast_read);
->> +}
->> +
->> +static void read_page_fast_read(const AspeedSMCTestData *data,
->> +                                uint32_t addr, uint32_t *page)
->> +{
->> +    int i;
->> +
->> +    spi_ctrl_start_user(data);
->> +
->> +    flash_writeb(data, 0, EN_4BYTE_ADDR);
->> +    flash_writeb(data, 0, FAST_READ);
->> +    flash_writel(data, 0, make_be32(addr));
->> +    /* 1 dummy byte for standard SPI fast-read */
->> +    flash_writeb(data, 0, 0x00);
->> +
->> +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
->> +        page[i] = make_be32(flash_readl(data, 0));
->> +    }
->> +    spi_ctrl_stop_user(data);
->> +}
->> +
->> +void aspeed_smc_test_write_page_fast_read(const void *data)
->> +{
->> +    test_write_page(data, read_page_fast_read);
->> +}
->> diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
->> index 39af1df0ed75..bbda15ad17ea 100644
->> --- a/tests/qtest/aspeed_smc-test.c
->> +++ b/tests/qtest/aspeed_smc-test.c
->> @@ -68,6 +68,15 @@ static void test_palmetto_bmc(AspeedSMCTestData *data)
->>                           data, aspeed_smc_test_read_status_reg);
->>       qtest_add_data_func("/ast2400/smc/status_reg_write_protection",
->>                           data, aspeed_smc_test_status_reg_write_protection);
->> +    qtest_add_data_func("/ast2400/smc/read_page_mem_fast_read",
->> +                        data, aspeed_smc_test_read_page_mem_fast_read);
->> +    qtest_add_data_func("/ast2400/smc/write_page_fast_read",
->> +                        data, aspeed_smc_test_write_page_fast_read);
->> +    /*
->> +     * Block protect tests must be run last because the block protect
->> +     * state is not cleared by reset_memory() and silently prevents
->> +     * subsequent flash writes.
->> +     */
->>       qtest_add_data_func("/ast2400/smc/write_block_protect",
->>                           data, aspeed_smc_test_write_block_protect);
->>       qtest_add_data_func("/ast2400/smc/write_block_protect_bottom_bit",
->> @@ -115,6 +124,10 @@ static void test_ast2500_evb(AspeedSMCTestData *data)
->>                           data, aspeed_smc_test_read_status_reg);
->>       qtest_add_data_func("/ast2500/smc/write_page_qpi",
->>                           data, aspeed_smc_test_write_page_qpi);
->> +    qtest_add_data_func("/ast2500/smc/read_page_mem_fast_read",
->> +                        data, aspeed_smc_test_read_page_mem_fast_read);
->> +    qtest_add_data_func("/ast2500/smc/write_page_fast_read",
->> +                        data, aspeed_smc_test_write_page_fast_read);
->>   }
->>
->>   static void test_ast2600_evb(AspeedSMCTestData *data)
->> @@ -158,6 +171,10 @@ static void test_ast2600_evb(AspeedSMCTestData *data)
->>                           data, aspeed_smc_test_read_status_reg);
->>       qtest_add_data_func("/ast2600/smc/write_page_qpi",
->>                           data, aspeed_smc_test_write_page_qpi);
->> +    qtest_add_data_func("/ast2600/smc/read_page_mem_fast_read",
->> +                        data, aspeed_smc_test_read_page_mem_fast_read);
->> +    qtest_add_data_func("/ast2600/smc/write_page_fast_read",
->> +                        data, aspeed_smc_test_write_page_fast_read);
->>   }
->>
->>   static void test_ast1030_evb(AspeedSMCTestData *data)
->> @@ -201,6 +218,10 @@ static void test_ast1030_evb(AspeedSMCTestData *data)
->>                           data, aspeed_smc_test_read_status_reg);
->>       qtest_add_data_func("/ast1030/smc/write_page_qpi",
->>                           data, aspeed_smc_test_write_page_qpi);
->> +    qtest_add_data_func("/ast1030/smc/read_page_mem_fast_read",
->> +                        data, aspeed_smc_test_read_page_mem_fast_read);
->> +    qtest_add_data_func("/ast1030/smc/write_page_fast_read",
->> +                        data, aspeed_smc_test_write_page_fast_read);
->>   }
->>
->>   int main(int argc, char **argv)
->> diff --git a/tests/qtest/ast2700-smc-test.c b/tests/qtest/ast2700-smc-test.c
->> index 33fc47230ee5..9ad04b574c0d 100644
->> --- a/tests/qtest/ast2700-smc-test.c
->> +++ b/tests/qtest/ast2700-smc-test.c
->> @@ -52,6 +52,10 @@ static void test_ast2700_evb(AspeedSMCTestData *data)
->>                           data, aspeed_smc_test_read_status_reg);
->>       qtest_add_data_func("/ast2700/smc/write_page_qpi",
->>                           data, aspeed_smc_test_write_page_qpi);
->> +    qtest_add_data_func("/ast2700/smc/read_page_mem_fast_read",
->> +                        data, aspeed_smc_test_read_page_mem_fast_read);
->> +    qtest_add_data_func("/ast2700/smc/write_page_fast_read",
->> +                        data, aspeed_smc_test_write_page_fast_read);
->>   }
->>
->>   int main(int argc, char **argv)
-> 
-> Regards,
-> Bin
-> 
+> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
+> index 3d2be4092ef..5a57691885f 100644
+> --- a/include/system/hvf_int.h
+> +++ b/include/system/hvf_int.h
+> @@ -89,6 +89,9 @@ int hvf_arch_get_registers(CPUState *);
+>   /* Must be called by the owning thread */
+>   void hvf_arch_update_guest_debug(CPUState *cpu);
+>   
+> +void hvf_protect_clean_range(hwaddr addr, size_t size);
+> +void hvf_unprotect_dirty_range(hwaddr addr, size_t size);
+> +
+>   struct hvf_sw_breakpoint {
+>       vaddr pc;
+>       vaddr saved_insn;
+> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+> index 0a4b498e836..e13abddbd9c 100644
+> --- a/accel/hvf/hvf-all.c
+> +++ b/accel/hvf/hvf-all.c
+> @@ -58,6 +58,31 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *file, unsigned int line,
+>       abort();
+>   }
+>   
+> +static void do_hv_vm_protect(hwaddr start, size_t size,
+> +                             hv_memory_flags_t flags)
+> +{
+> +    hv_return_t ret;
+> +
+> +    trace_hvf_vm_protect(start, size, flags,
+> +                         flags & HV_MEMORY_READ  ? 'R' : '-',
+> +                         flags & HV_MEMORY_WRITE ? 'W' : '-',
+> +                         flags & HV_MEMORY_EXEC  ? 'X' : '-');
+> +
+> +    ret = hv_vm_protect(start, size, flags);
+> +    assert_hvf_ok(ret);
+
+Maybe this assertion is a bit aggressive toward users, since while
+we know the host limits, we don't know what the guest wants to do.
+
+I got:
+
+qemu-system-aarch64: Error: ret = HV_ERROR (0xfae94001, at 
+../../accel/hvf/hvf-all.c:77)
+
+Running with '-trace hvf_vm_map':
+
+hvf_vm_map paddr:0x0000000010000000 size:0x00020000 vaddr:0x104514000 
+flags:0x07/RWX
+hvf_vm_map paddr:0x0000000000000000 size:0x00020000 vaddr:0x104890000 
+flags:0x07/RWX
+hvf_vm_map paddr:0x0000000400000000 size:0x80000000 vaddr:0x380000000 
+flags:0x07/RWX
+hvf_vm_map paddr:0x0000000030bc0000 size:0x00040000 vaddr:0x1048b4000 
+flags:0x07/RWX
+hvf_vm_map paddr:0x0000000050bc0000 size:0x00040000 vaddr:0x1048f8000 
+flags:0x07/RWX
+hvf_vm_protect paddr:0x0000000430000000 size:0x00004000 flags:0x05/R-X
+hvf_vm_protect paddr:0x0000000030000000 size:0x00004000 flags:0x05/R-X
+qemu-system-aarch64: Error: ret = HV_ERROR (0xfae94001, at 
+../../accel/hvf/hvf-all.c:77)
+
+Should we propagate the error to upper layer?
+
+Are there cases we can safely ignore?
+
+> +}
+> +
+> +void hvf_protect_clean_range(hwaddr addr, size_t size)
+> +{
+> +    do_hv_vm_protect(addr, size, HV_MEMORY_READ | HV_MEMORY_EXEC);
+> +}
+> +
+> +void hvf_unprotect_dirty_range(hwaddr addr, size_t size)
+> +{
+> +    do_hv_vm_protect(addr, size,
+> +                     HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC);
+> +}
+> +
+>   static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
+>   {
+>       struct mac_slot *macslot;
+> diff --git a/accel/hvf/trace-events b/accel/hvf/trace-events
+> index 2fd3e127c74..f989da59492 100644
+> --- a/accel/hvf/trace-events
+> +++ b/accel/hvf/trace-events
+> @@ -5,3 +5,4 @@
+>   # hvf-accel-ops.c
+>   hvf_vm_map(uint64_t paddr, uint64_t size, void *vaddr, uint8_t flags, const char r, const char w, const char e) "paddr:0x%016"PRIx64" size:0x%08"PRIx64" vaddr:%p flags:0x%02x/%c%c%c"
+>   hvf_vm_unmap(uint64_t paddr, uint64_t size) "paddr:0x%016"PRIx64" size:0x%08"PRIx64
+> +hvf_vm_protect(uint64_t paddr, size_t size, uint8_t flags, const char r, const char w, const char e) "paddr:0x%016"PRIx64" size:0x%08zx flags:0x%02x/%c%c%c"
 
 

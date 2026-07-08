@@ -4,154 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62163C43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 22:56:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90AE0C43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 22:59:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whbBY-0000Cb-NI; Wed, 08 Jul 2026 18:56:08 -0400
+	id 1whbEa-0000ou-6O; Wed, 08 Jul 2026 18:59:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1whbBV-0000CD-2I
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:56:05 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ id 1whbEY-0000oF-IQ
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:59:14 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1whbBR-0000nw-Rf
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:56:03 -0400
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ id 1whbEX-000175-10
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:59:14 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 668KtjX83908068
- for <qemu-arm@nongnu.org>; Wed, 8 Jul 2026 22:55:59 GMT
+ 668KtLgX3990583
+ for <qemu-arm@nongnu.org>; Wed, 8 Jul 2026 22:59:11 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 0Uv2pZuL/Fh8jKalInzeeuhohX/Ms8fnM/HEgSoHQr8=; b=j+bae57juXvWfJRB
- oqCesX1tfF2usBvBDxEPkLib8uNe3jJbMQEWAHD9zcWMavC2MVRZsyQKLZc7nF+y
- Nd2/wNbgEmfxKvrMK7RycJbTwEbnMwXZhwBdRBy+oIocXF7p5F9ueKmEY9No3s9o
- I379XWcRv1c8sZYxbl37GIZ1r/QAo9aV5cXos+8i4ZZddHSweDCZNFVsANKgITp/
- rQk00cDwd7/ZBIIrgngpmFF82fjvICvZk6vztqXwhPK+OwoZQ/ASymSe0IJ3w3f6
- h4jWwOpMrYquMMdU7pOvOfI0/zytcWj31khh8HpjJ17v8iwdBZBKxa9X+zXkshGn
- Q6fc2A==
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f9rq31s64-1
+ 9ZHvPci+W5HxwrZGd5ljKFEhtiBL3xhWgwc/GNe40tI=; b=NNdoDRP446TjBMPD
+ 5nPA247bTHe9h2yX14pyMacsQlbWVnRNA2qc0aigO5oavXq2ITjYhmISkAuStqgH
+ ZdcaGECd2zZPfWpyGsBdMlAfsGRXrJLAQ8+hZ8DhX0bKRLHdBM8AGuoPMl+vC20R
+ OEJauzeXxLvbNNkiVZD1SwkLXuYI++LlKwyRxDWLExV6GwhW+6BNq+MDdgb4TTln
+ 0wFvHKiwpgFm1K3fLYMNSc6npTbxUVft/XrsgMWXyh3fJqurYI5vLuYft/D04/jB
+ MU0dVGjZIfspPfOnh/qKvkrEKi+a6LtYrf1caTcIJiZl4Wi+qRlGDUGtXKs68uz9
+ yGQLPA==
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f9v4vrqv8-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 22:55:59 +0000 (GMT)
-Received: by mail-qv1-f69.google.com with SMTP id
- 6a1803df08f44-8ec3314f65fso17693786d6.3
- for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 15:55:59 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 22:59:11 +0000 (GMT)
+Received: by mail-qt1-f200.google.com with SMTP id
+ d75a77b69052e-51c0f0a0760so26960711cf.2
+ for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 15:59:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1783551359; x=1784156159; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1783551550; x=1784156350; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=0Uv2pZuL/Fh8jKalInzeeuhohX/Ms8fnM/HEgSoHQr8=;
- b=T5X8PXiW+1STWo0k+N1p4jXNFnu/dwdVIbmvSZXESr2lUsiv+HFxNekg891XdHF3j8
- 8iY55zKiIwsb9FOxzvtMukFdBjMEcyt0rB6VkHUm1q5rjIAhaSaTEK7vLrY7QR6TKQeQ
- jQpknA1tqT6S+3CYJDnHi0xBxZeZnK8NAmeajQhCpW6+rIP8XCkjZqlslH55UIk6yaID
- Aj8T8OrwVzjGY3zEtwnAk8uoYiqgggI8bUPRBL0W3uWpSWFtWFAwrjteTyldf8SPLGFG
- DGMUa4ujJXMh1l5+zM1TbIkzTnSndZj0bHA22v1wp/CxHjIIq2wUevutI/b+WsJs3nps
- GplQ==
+ bh=9ZHvPci+W5HxwrZGd5ljKFEhtiBL3xhWgwc/GNe40tI=;
+ b=JiKPCsynbPZqduaC+mWuTsIVU7sLj3W0DFx88qMDqmCURii8TKsI1OYNJoxyc0Y42T
+ 8/phqwLpS/TeBbtmJvSlExfMxFTLnUYkaywfDJk+sQOuMJKOrpra/HhpmXCAZqA4D1JK
+ wa819+ueCDbLSMCbVe/hfZE+uKvKRm/pX1/GNFBC8ZZfYkEXOl8JPn4CTQvvsLTF7TYY
+ aLgJ1xN7ubUg47dLkQ/58fvAXptTY/xEHJG5GMejzzGbS7K4kw0jOg3V+2FJ82qw3Cce
+ /5u9qZJ+Eq0QABcl3v3Ms/fBzh5BWlf3Gr70IohUd7yxZz3W2z4bFxTK8Edj7tDp3yTm
+ jnCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783551359; x=1784156159;
+ d=1e100.net; s=20251104; t=1783551550; x=1784156350;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=0Uv2pZuL/Fh8jKalInzeeuhohX/Ms8fnM/HEgSoHQr8=;
- b=TtyHligBSrUr92pAoI7nQAFXIEWiNf0sRO8uSkhfweE/U0ZOcogMRgktpCeRD06exu
- m/jfXf0izozG9VvZgvemnG2cFmd9XswbH5jyIrYq7OzaD6OaVYXbyo/jcWTDOAy7GeJj
- L0niCXWBK26Q3Wy0Njb/2m8wnXP9YPEOwTAnZAOdZ2OlaAbHzfxXS8VdJS1rPWm/xkvi
- ibDhGGzBGb271UJeoym3I5jAset/5xZ0PALwXPsyjiQSeFaij25/xQ3if0c8dvFifV/v
- dO36KA9/G0FsQwEhqMKQuw39/eLIF3KKC3nvvQEDihaL9h/EggKiOeIg8ztmWgqrqV08
- 0rKg==
+ bh=9ZHvPci+W5HxwrZGd5ljKFEhtiBL3xhWgwc/GNe40tI=;
+ b=PFftngumMoao1tCXjlIywL/WjV02XbBeJ5f+jpTojylM78axXB8ydJQTMULhXPCWzN
+ WI4RdYRTA4pyeDWpS3pe2iyZyINZc9zgHpvf7R+GGtGwlpTaSYErzjGtC+UJ5nCZ3ldL
+ IZX/U/9qiL1iB+5tPKM6KBmLBvSyfsGav9I5VyEK5jqKDPN1qBasphbVjadsJq3XZnC4
+ bfEyOZ4vzPD7OR92a/9q9TUWM1/L0k8Fu4lAxDRWyY5vasTviR5FXPERPcVYI0IBwGDg
+ 55po1YAuUsHW/IVZQJKwOPpg4FenqNH+LE/HiFaurbVRluoDgYLtj0TfHTuTucF5EqTW
+ bpNw==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rp9KAMKHUi41614HgdfQ80vLs/XiEwsw73EnpIkKwTN1I8Exapx199kPfyIH3sgOjAaPO+/q/WIlA==@nongnu.org
-X-Gm-Message-State: AOJu0Ywnx+8II5rVrn0htzt1usJZYbYwd5AjR7i1k83InS7EMWLSiRxp
- 2vOEeNgq502+wQPa9PectE95x2zJfg90UM7iDI2QabbHK1xzg6YDQa66EY97o+oBpp4Lx9KLSHQ
- 55pw4Z2JoBixex6+6XgkqYWGMv+/HQWn8+EnPVslBICGUN+2OI6K3pzY=
-X-Gm-Gg: AfdE7cnZ52P063UWSNKB3K26MaBhbYaq3FGMtv/htBKQcnwFL9V6wg1ON0XbekCqkpv
- z0amBpfAJpNPIOvrV/dAMNfyXuX/sGpxEyeFedbqeqrmJZvCeuh/4ulL998gUsP0iF0Cxc9mMsQ
- yWnTw35hp+gpw89TrWBKnxroiR1tHZdRZcWh6gTb0dfFGsV0z2DQVFJq6BQ49PkuadD905/d294
- HiQXH6ccV6y1474BsstvorSZGVgFjY9QyCtcxoedn3NdTbWcShD8Cvtak55IuzDKV8bFxa6LiJ8
- IhPzQp3DTzow9a3EXk9Vlqk2NqbX4N9iqdKDr76tFE7Fz0GwzAnviwqSM5Wn+ltfK+dEs+xXwFT
- VuxOjE8bpQG0qooRPgOzkWJnkYO6rQHxBmI93DKacu7rTTLkjxu2lzGXXJzz99w==
-X-Received: by 2002:ac8:7f87:0:b0:51a:8c97:9391 with SMTP id
- d75a77b69052e-51c8b572217mr52220911cf.72.1783551358794; 
- Wed, 08 Jul 2026 15:55:58 -0700 (PDT)
-X-Received: by 2002:ac8:7f87:0:b0:51a:8c97:9391 with SMTP id
- d75a77b69052e-51c8b572217mr52220511cf.72.1783551358214; 
- Wed, 08 Jul 2026 15:55:58 -0700 (PDT)
+ AHgh+RpE0H5HREqCTRfa1J1IOARfujNLLg5uL8pITun2iufl4Vb0z2/4NmRN6gMmv+KKVIgv2NYDbd+1WA==@nongnu.org
+X-Gm-Message-State: AOJu0YyFiU6Tkhj0BaWtK5Cj0I/6WOr9HRpsR5h9mQFuKgUImLTjhCq1
+ Frh0x4jvkiUmV4zIDpKy/+S4O1febqGyy5kJ1mMfos1cDA/0pxc1qnh+vg4rgriNFVuR3xsAGqK
+ FgOapFpnMJRa1q4VuISKfsDvYfFOMItcFifQFi4tLdnx6re+aTwqy3AE=
+X-Gm-Gg: AfdE7clTOk7xHZIhc3y4ou3IIXD4JiFubDqZtgAn/AQ0tF3avCvu6wSpn7TejuWfaHl
+ jeKGJWbq3rw61N1pXln+KPRMH6dg+1t3DOx/0rSTiCnCNl9XG+dB7tBwNKQczms7lbo54qbjsmh
+ 5+bG/WIslGWMbyYw3LVKgGZSvsF+6H0oAsBFUxMKBsAHzq6DqvB8D0Lkf+EbT07G8JRszKZlkTv
+ ST3M8Y9t1ZHnhcO+TVTC67dGPN3L7pBV40XcfqChem+QJUCx61t2eBIo3VJQhSlmeeDJMhmcp99
+ 51jZDETe2vexMkvKexObbawnPDmchsakKtjpi268+kQwZCWZVKbijFI58a0o+dxMnBJK3XQl2qR
+ cIu0dyYdZsY5AHM92xUpONdmQ1v5IC3qSozVDEDqhecsk8Ro/s/9k+k86Lg8FuA==
+X-Received: by 2002:a05:622a:38d:b0:51a:8c9a:8fb2 with SMTP id
+ d75a77b69052e-51c8b4c751amr48472771cf.67.1783551550425; 
+ Wed, 08 Jul 2026 15:59:10 -0700 (PDT)
+X-Received: by 2002:a05:622a:38d:b0:51a:8c9a:8fb2 with SMTP id
+ d75a77b69052e-51c8b4c751amr48472451cf.67.1783551549825; 
+ Wed, 08 Jul 2026 15:59:09 -0700 (PDT)
 Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493eb6fb526sm13058095e9.15.2026.07.08.15.55.55
+ 4fb4d7f45d1cf-69a19d7a375sm8443335a12.15.2026.07.08.15.59.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jul 2026 15:55:57 -0700 (PDT)
-Message-ID: <2d7d578e-9187-4751-97ea-5a9b13ee84ad@oss.qualcomm.com>
-Date: Thu, 9 Jul 2026 00:55:55 +0200
+ Wed, 08 Jul 2026 15:59:08 -0700 (PDT)
+Message-ID: <3d2d869c-d1a0-40d1-83c2-755c080bd17d@oss.qualcomm.com>
+Date: Thu, 9 Jul 2026 00:59:07 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 10/10] docs: Add support vbootrom and update Manual
- boot for ast2700fc
+Subject: Re: [PATCH v5 00/10] Add SSP/TSP power control and DRAM remap support
+ for AST2700
 Content-Language: en-US
 To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Mark Burton <mburton@qti.qualcomm.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Alexander Graf <agraf@csgraf.de>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: Troy Lee <troy_lee@aspeedtech.com>, Steven Lee <steven_lee@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Kane Chen <kane_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Troy Lee <leetroy@gmail.com>
+ Joel Stanley <joel@jms.id.au>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20260708092023.3826159-1-jamin_lin@aspeedtech.com>
- <20260708092023.3826159-11-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260708092023.3826159-11-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260708092023.3826159-1-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: X_z8a6PMMuEeuEN7oqMAfWlGCJKMnpDy
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA4MDIyNSBTYWx0ZWRfX+SDD0aIrJ8ld
- rVikuii7z8kMWidE86zLbzZQfXkxkWGk99mj2ePKnkFdqC9/yb/ZrZ1bBPF8G86dKXbNqHYjwXq
- zYAPFVO6IjGyamTW2NGb1QC3D6KoqNqxrFxK6HHiDmVEcChQa2dLkybUxuhMm6Q8CQKHJSh2zKG
- IW4JtU0cfdGWfGID5JZBRfbmBbZVCPUlm+fpXcthNEBd/G6VarlANd8CobuqY+AN5jrU3Ktc4Gq
- stae6el2xus5EZqcov2RQwjwhMWcn+DWDve62FamjBql5ZMPuz2fgbnItj6b5qmzV50w1LR7pSG
- JaI0x2SgC/LB9kmmMHbqwrINlj3Zalnt+BWLdFGL9Fn0tMON7YP7EdspJcvTo2jtsPyzH06yLxJ
- pYqESEwYKpRM75uzwMxKxbWEu5R7Qu2ACUg/rtfWJyLnDDhQ18t3xJvzIJNWFSlmFFztWKLvEeW
- Q7+QWmAyhz1rzQBjxdw==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA4MDIyNSBTYWx0ZWRfX/GhkRqS/7Yqj
- 9oCb6BvLJm2wOQNDzkW3TK9P1p8Ef0Sb7VBt2FIUt9OOomyh8/Oc1wRfo6pT4HdW/8JiNhdsFdH
- Ol8TGsMMATko1LMi+QOPXJ874lMM2E0=
-X-Authority-Analysis: v=2.4 cv=PYPPQChd c=1 sm=1 tr=0 ts=6a4ed57f cx=c_pps
- a=wEM5vcRIz55oU/E2lInRtA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Proofpoint-GUID: Cq80EpTM455iMFeTaLDhoyCcxOZ624W-
+X-Proofpoint-ORIG-GUID: Cq80EpTM455iMFeTaLDhoyCcxOZ624W-
+X-Authority-Analysis: v=2.4 cv=GIg41ONK c=1 sm=1 tr=0 ts=6a4ed63f cx=c_pps
+ a=JbAStetqSzwMeJznSMzCyw==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=V2NxCb60AAAA:8 a=GyafrK3KZhnXGc5g8acA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=OIgjcC2v60KrkQgK7BGD:22 a=3L6qF29SlnrayQqPM2jZ:22
-X-Proofpoint-GUID: X_z8a6PMMuEeuEN7oqMAfWlGCJKMnpDy
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=EUspDBNiAAAA:8 a=E3A8Cuo5wui9a3iAGOgA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=uxP6HrT_eTzRwkO_Te1X:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA4MDIyNiBTYWx0ZWRfX41eBWpwu7bCO
+ phiWuilj0YfF0gnkum6JlqhXZ+Yd49gs8OcV8+9Zg8Yupu1YtES4dVQs7AbbD4ez0z3LCRML6av
+ XqCZP7ltVLd/WwbXJOnjR3OjiHT6b2EZffm4oGd42PneMYw5O/nPeYs7LS/tvBPJnop8yA4G7e7
+ IA5agCp/HetsvmXMmTPrN8hlnAG1t9sSzIGs9kRRrMbpgpQRZUsy6FWtxxc76JIpO2C1cJVc/RD
+ HVLVRrcMBjkAno7dL1ZTqjz3cS7Bz2dzcVfstMDJC1qL6zrDDlD/YBg4zIpDT8zgDsIW11U7h0+
+ /PnppbJw+FRpoWpPlnsPpUuMC6QrbK6fy42ABQHDjYxH80y0ZEyVYDXZ9tvFplIenUPENOpO2Wr
+ Y1AO+k1OFZyZUMil52U7w23woVef8agp6Cr6sh7wku4Dgluz8K2f+A2lazyB8nZw8ImD1EKvC2M
+ J6rHDqIL6EkhzBIJ5fA==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA4MDIyNiBTYWx0ZWRfX2kgZ/1YvT3Nx
+ JTPJhT63NI+4WFLpS8kPTOxnz0arWfoBiU+irGET9G5GOMffpdhaiFFR83IQkxh4NfTEgdstuqM
+ uqXLpcVWbcU96QC+X4U0ADn5i2C4c4A=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-08_04,2026-07-08_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 phishscore=0 lowpriorityscore=0 impostorscore=0
- malwarescore=0 adultscore=0 clxscore=1015 bulkscore=0 spamscore=0
- suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2607080225
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+ phishscore=0 clxscore=1015 suspectscore=0 adultscore=0 priorityscore=1501
+ spamscore=0 malwarescore=0 bulkscore=0 impostorscore=0 lowpriorityscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607080226
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -167,117 +162,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello,
-
 On 8/7/26 11:20, Jamin Lin wrote:
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   docs/system/arm/aspeed.rst | 42 +++++++++++++++++++++++++++++++-------
->   1 file changed, 35 insertions(+), 7 deletions(-)
-> 
-> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-> index 2d51ceeb84..b6dd757f6e 100644
-> --- a/docs/system/arm/aspeed.rst
-> +++ b/docs/system/arm/aspeed.rst
-> @@ -386,18 +386,25 @@ Booting the ast2700fc machine
->   AST2700 features four Cortex-A35 primary processors and two Cortex-M4 coprocessors.
->   **ast2700-evb** machine focuses on emulating the four Cortex-A35 primary processors,
->   **ast2700fc** machine extends **ast2700-evb** by adding support for the two Cortex-M4 coprocessors.
-> +There are two methods to boot the ast2700fc machine.
-> +
-> +Manual boot using ``-device loader``:
-> +
-> +In this approach, users manually load firmware and assign entry points via QEMU loader devices.
-> +By default, the PSP begins execution at address ``0x430000000``, the load address of the bl31
-> +firmware. The SSP and TSP start in the powered-off state and must be explicitly enabled by the
-> +PSP through writes to SCU registers.
->   
->   Steps to boot the AST2700fc machine:
->   
-> -1. Ensure you have the following AST2700A1 binaries available in a directory
-> +1. Ensure you have the following AST2700 binaries available in a directory
->   
-> - * u-boot-nodtb.bin
-> - * u-boot.dtb
-> + * u-boot.bin
->    * bl31.bin
->    * optee/tee-raw.bin
->    * image-bmc
-> - * zephyr-aspeed-ssp.elf (for SSP firmware, CPU 5)
-> - * zephyr-aspeed-tsp.elf (for TSP firmware, CPU 6)
-> + * zephyr-aspeed-ssp.bin (for SSP firmware, CPU 5)
-> + * zephyr-aspeed-tsp.bin (for TSP firmware, CPU 6)
->   
->   2. Execute the following command to start ``ast2700fc`` machine:
->   
-> @@ -407,6 +414,8 @@ Steps to boot the AST2700fc machine:
->   
->     $ qemu-system-aarch64 -M ast2700fc \
->          -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot.bin \
-> +       -device loader,force-raw=on,addr=0x42C000000,file=${IMGDIR}/zephyr-aspeed-ssp.bin \
-> +       -device loader,force-raw=on,addr=0x42E000000,file=${IMGDIR}/zephyr-aspeed-tsp.bin \
->          -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
->          -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
->          -device loader,cpu-num=0,addr=0x430000000 \
-Orthogonal to your work, I found this setup interesting to stress
-my work-in-progress 'split-accel' branch, running QEMU with HVF
-when possible, otherwise TCG.
+> This series improves AST2700 platform support by aligning SSP/TSP
+> power and reset behavior with hardware, and enabling DRAM remapping
+> required for proper firmware boot flow.
 
-I manually started the SSP & TSP first:
 
-=> mw 12c02204 40000000
-mw 12c02204 40000000
-=> mw 12c02120 1
-mw 12c02120 1
-=> mw 12c02224 00000200
-mw 12c02224 00000200
-=> mw 12c02160 1
-mw 12c02160 1
+> Jamin Lin (10):
+>    hw/arm/ast27x0: Start SSP in powered-off state to match hardware
+>      behavior
+>    hw/arm/ast27x0: Start TSP in powered-off state to match hardware
+>      behavior
+>    hw/arm/ast27x0: Add DRAM alias for SSP SDRAM remap
+>    hw/arm/ast27x0: Add DRAM alias for TSP SDRAM remap
+>    hw/misc/aspeed_scu: Implement SSP reset and power-on control via SCU
+>      registers
+>    hw/misc/aspeed_scu: Implement TSP reset and power-on control via SCU
+>      registers
+>    hw/misc/aspeed_scu: Add SCU support for SSP SDRAM remap
+>    hw/misc/aspeed_scu: Add SCU support for TSP SDRAM remap
+>    tests/functional/aarch64/test_aspeed_ast2700fc: Boot SSP/TSP via PSP
+>      and load binaries from DRAM
+>    docs: Add support vbootrom and update Manual boot for ast2700fc
 
-Surprisingly I could boot up to the guest login prompt spending
-most of the time using HVF
+Series:
+Tested-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 
-(qemu) info accel
-36 transitions, 10943 SW and 86815 HW executions
-Accelerator settings:
-one-insn-per-tb: off
+2 notes:
 
-Translation buffer state:
-gen code size       9098100/1072906240
-TB count            16086
-TB avg target size  14 max=468 bytes
-TB avg host size    230 bytes (expansion ratio: 15.8)
-cross page TB count 12 (0%)
-direct jump count   8371 (52%) (2 jumps=5949 36%)
-TB hash buckets     4813/8192 (58.75% head buckets used)
-TB hash occupancy   21.05% avg chain occ. Histogram: [0,10)%|█▁▇▁ 
-▃▁▁▁▁|[90,100]%
-TB hash avg chain   1.059 buckets. Histogram: 1|█▁|2
+1/ I3C errors in dmesg:
 
-Statistics:
-TB flush count      0
-TB invalidate count 8796
-TLB full flushes    0
-TLB partial flushes 268
-TLB elided flushes  53158
-CPU#0: cortex-a35
-HVF cumulative execution time: 7.020s
-CPU#1: cortex-a35
-HVF cumulative execution time: 6.000s
-CPU#2: cortex-a35
-HVF cumulative execution time: 6.805s
-CPU#3: cortex-a35
-HVF cumulative execution time: 7.656s
-CPU#4: cortex-m4
-HVF cumulative execution time: 0.000s
-CPU#5: cortex-m4
-HVF cumulative execution time: 0.000s
-(qemu)
+[    8.151230]  14c20000.i3c0: MIPI I3C HCI v0.0 r00
+[    8.151498]  14c20000.i3c0: unsupported HCI version
+[    8.151761] mipi-i3c-hci 14c20000.i3c0: probe with driver 
+mipi-i3c-hci failed with error -93
+[    8.152250]  14c21000.i3c1: MIPI I3C HCI v0.0 r00
+[    8.152518]  14c21000.i3c1: unsupported HCI version
+[    8.152779] mipi-i3c-hci 14c21000.i3c1: probe with driver 
+mipi-i3c-hci failed with error -93
+[    8.153322]  14c22000.i3c2: MIPI I3C HCI v0.0 r00
+[    8.153588]  14c22000.i3c2: unsupported HCI version
+[    8.153853] mipi-i3c-hci 14c22000.i3c2: probe with driver 
+mipi-i3c-hci failed with error -93
+...
 
-Over 10700 "SW executions" are the M-profiles running,
-only 162 correspond to A-profiles :)
+2/ shutdown not working
 
-Thanks for this motivating setup!
+[  246.405297] systemd-shutdown[1]: Entering exitrd...
+shutdown: poweroff --timeout=90000000us --log-level info 
+--log-target=kmsg --log-color --exit-code=0
+/shutdown: line 97: poweroff: not found
+Execute poweroff -f if all unmounted ok, or exec /init
+shutdown-sh#
 
-Phil.
 

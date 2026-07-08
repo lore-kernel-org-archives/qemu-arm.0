@@ -4,146 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7348C43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 05:16:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 103CEC43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 08:15:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whKdl-0000ox-HI; Wed, 08 Jul 2026 01:16:09 -0400
+	id 1whNQs-0008Cm-RZ; Wed, 08 Jul 2026 04:15:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1whKdj-0000o8-Od
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 01:16:07 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1whNQh-0007xm-Et
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 04:14:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1whKdi-0007Mk-CJ
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 01:16:07 -0400
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66842l031645147
- for <qemu-arm@nongnu.org>; Wed, 8 Jul 2026 05:16:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- DnE3EHzcAAB3wOGkpHX7qlXo6YZQIie9HvI/CCy0uxg=; b=XsdzWbKeTFvbSjDn
- jrLZKh6BLeZ2s9Lj7/fBqnC1I2jpokEFTkWNRGloNLCU1f6ph6yJqAn5zTP+uJLb
- MbjA3lwudur0pBFrdvkNj97vldBtH5EWeHDhX7ZnW8s7HGDRD/nR/J4ppiTjl6Lv
- QcuWvFhYjEBtMg9THqeQzN7Ztxrtv2U6mf8EaaEP0iJ2CpXMrlEkq67Yr/kD3A4b
- GNrzKXFTIflGNZgNsVakuPWFcBAbdLGaFG/DJ5+t6w/HE82urKz3FTiN/n8uLGJ2
- 8tyamKQYk2lq68bcv2dMK5jxwVPajPnn0+u9A7EQx96nimK25XZc9y0WhI4GvcCD
- ysIPUQ==
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f8ye0m8mn-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 05:16:04 +0000 (GMT)
-Received: by mail-qv1-f69.google.com with SMTP id
- 6a1803df08f44-8e9b9f30d65so3932076d6.0
- for <qemu-arm@nongnu.org>; Tue, 07 Jul 2026 22:16:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1783487764; x=1784092564; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=DnE3EHzcAAB3wOGkpHX7qlXo6YZQIie9HvI/CCy0uxg=;
- b=jBmLBHp1QCnDjFi51o6/JxZc7GjxBGMf8C5G6oYRsFRM7vawy8QYuB3s3zivgTYdHL
- MstgOx8MPlpYEjg0OWfXHR3TSRSFAY0vtq+u6RNdG5MNXCx1Y9GR/rI1r2ixXDL4HRq2
- 3rVy/4ONz1TPbbqCU01XzNjlbf/DsbxFsyHZzR8oce6xcUmO5MxRkzYAyBE9rGYaJuXs
- 43dRVS0IJ4KmN4rgOfyqt0tHbTimtUqObFTcgOVBE1WCOSMRvl4whdSHr5oJZ1Ut6+GP
- C34XL9Tq7L2Lo2QhcPetqpnWPMJxO+4GvwUQ7awC/X7zjZ8lB5KmisvwAneTNRIA8Wf2
- QyaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783487764; x=1784092564;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=DnE3EHzcAAB3wOGkpHX7qlXo6YZQIie9HvI/CCy0uxg=;
- b=oSWB1TVlRCRtrm/gp9XFt42y2zmzmvB4mwmJrAG8uVs6VUvc4KFcwGXVVxwr2kNMib
- 2iZdbK31vktMR2CDM0tkGVaPXHMjx9/i7AHJNQUmCHRiJMLJWs5vp/P3xdt1MDikPNuR
- ryiy4NjXTocY2VWSyF3yLCI1Oq3z4FS54d1Tt+eHSC4/SV9jt1QcQQGjjmScWG64M2sS
- CJKmojwxguW5D8OK9qjYW28Z56ZGRTWtPUWD9ya/8eb1TqGXmgAiJlRyUqYEoOydE6IC
- 2fvKBiXmxN1oUPlvFl3ZD9wekqyMhPhWl3as8lJbT7dKvDCr4VEfl/WahUMl5SKet6Q6
- tiww==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpKtu1Rs+5LlL/uLU/rXkbz7S2qR9tv4FRW/dNVAVorlZPKt/wbnulDgc+A3+c4c4DBh5AT5j2wsA==@nongnu.org
-X-Gm-Message-State: AOJu0YwHlJZf87D9GFg1iOdivOZe+hdwRL2JnflilCpIZfwug/IeUuEu
- zeQxQa8ZsetCJQoltLC3K9Snvs4lX5zVTW6h8ZtbJW8w0PkhUewGMYg7O6pHTKbta0s225HSkwu
- 2SUgMeKk3ZOxfhqEkNsIlBIZlm3LPSmrNCJIylEsSG0Yuzlw/cA09DEU=
-X-Gm-Gg: AfdE7cmg6EzUiLm8ppimfI7ubQASjjAGJT0Exoks8e6pZPPZXWqydCI+07I/nekdquG
- E/BJ97jQgE2kRMBtpdpxBM9UnKyFVu9PKbEWgTqQPK1D9NSvUeSU/w7XE1CCtxxgl2crORX43cp
- TNQYJLFBsnOuEoMcEPab3tow9gXaP3XsX7hk6IZFkIfrx185iwMq9RwSNt/NvKPXX6Qxqdu275e
- XhldugX5JgyGMRhOYXgdfrkUteaGE20dyBr6zfbUaBiAMMpqehZFveNzAz7xznVxYj+bUvbUdMR
- Oatq5ieah414UqQrgNpW9UNLNS/pEQFbQojlzlQgCpIrCW5KkqhIY58mRiD5OrdeiTsELWCl7TP
- Xeaa7KyvXLusFNRU1gvQ0JZk65nK5lk1MH0OcZwl1IcD17lz7zkUtnEnWRuVSQg==
-X-Received: by 2002:ac8:5750:0:b0:51c:7b12:5fe4 with SMTP id
- d75a77b69052e-51c8b4279f0mr11553111cf.80.1783487763976; 
- Tue, 07 Jul 2026 22:16:03 -0700 (PDT)
-X-Received: by 2002:ac8:5750:0:b0:51c:7b12:5fe4 with SMTP id
- d75a77b69052e-51c8b4279f0mr11552911cf.80.1783487763595; 
- Tue, 07 Jul 2026 22:16:03 -0700 (PDT)
-Received: from [192.168.69.209] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493e0f3676dsm113995715e9.5.2026.07.07.22.16.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Jul 2026 22:16:02 -0700 (PDT)
-Message-ID: <d14eec9b-d6d5-46fb-b808-e59dee5f8c7f@oss.qualcomm.com>
-Date: Wed, 8 Jul 2026 07:16:01 +0200
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1whNQf-0003cw-IP
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 04:14:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1783498487;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3jz5RarcF3NOcxaORcb5cuayrC3jlvsDkcwjHxXjyjw=;
+ b=UdG/BuU6F1aWwrQSv3ur+F/bMItJtvoyAyKZnDPS0W7nJjTSL6Y0qtYFKQLjQkAQ7GrcYc
+ z+m77wbs0pQ3KZdZNAhN319P0TTIyuhAHh7vBsoTD5Xa252oR8dVfK9V/Md7lOPONcld7s
+ eeKS7WdbJUUucrvkLgomm86tnpV2Bhw=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-595-ZacqDbhxO5aMtDXDHbWXeQ-1; Wed,
+ 08 Jul 2026 04:14:44 -0400
+X-MC-Unique: ZacqDbhxO5aMtDXDHbWXeQ-1
+X-Mimecast-MFC-AGG-ID: ZacqDbhxO5aMtDXDHbWXeQ_1783498483
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 63A2E1955F19; Wed,  8 Jul 2026 08:14:43 +0000 (UTC)
+Received: from localhost (unknown [10.2.16.35])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id C3C7F3000C10; Wed,  8 Jul 2026 08:14:42 +0000 (UTC)
+Date: Wed, 8 Jul 2026 07:53:59 +0200
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>
+Subject: Re: [PULL 0/8] aspeed queue
+Message-ID: <20260708055359.GA553641@fedora>
+References: <20260707124349.662198-1-clg@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v1 23/25] docs/interop/firmware.json: Add arm-rme firmware
- feature
-Content-Language: en-US
-To: Mathieu Poirier <mathieu.poirier@linaro.org>, berrange@redhat.com,
- kchamart@redhat.com, pierrick.bouvier@oss.qualcomm.com,
- peter.maydell@linaro.org, mst@redhat.com, cohuck@redhat.com,
- pbonzini@redhat.com, eblake@redhat.com, armbru@redhat.com,
- jpb@kernel.org, lorenzo.pieralisi@linaro.org
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
-References: <20260707224306.1202330-1-mathieu.poirier@linaro.org>
- <20260707224306.1202330-24-mathieu.poirier@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260707224306.1202330-24-mathieu.poirier@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: 7cT1v0VYDZ-W-0rWI6mm5ZxhTSv0gAp_
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA4MDA0NyBTYWx0ZWRfX8lgG3chzKVup
- G3A4E0FPrqk4eRS7AczWFNd/3HQrb/IYXcrYy4eFCxkonxD8U6qA8iwVSvxDCIFvFuAiWd66aOD
- Lx9OIP7ptgpc1EI/tTnmtEzzbfQnRz0=
-X-Authority-Analysis: v=2.4 cv=SZfHsPRu c=1 sm=1 tr=0 ts=6a4ddd14 cx=c_pps
- a=wEM5vcRIz55oU/E2lInRtA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=GSV3El1kC2elkkDfeLwA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=OIgjcC2v60KrkQgK7BGD:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: 7cT1v0VYDZ-W-0rWI6mm5ZxhTSv0gAp_
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA4MDA0NyBTYWx0ZWRfXykl2avExnhvf
- 9PySKUy+wimnei9dSPJJMwAErMleMzQLQtmvK92prZ3otO+vozpSDRApDZc3dl4dUbfcKMrQ3Q6
- 8gFeR2nmmwtGpehBwoTPArhPvgIogahAWx/v5wjZPGNG3GF1f/zOE1+e+J7hQrxj4Aw+U1F9w7m
- QURr0wgdJX/DvXyB7ImHBVbKhnkrisEoatEHzrov2+oVdt1BBfkUzpP25za2zq8qopqEZXv7dIn
- Fa1wkt5YbIuY4h7WXNA5ccWbrP3mp69Y/S0JCZdos5mlvqMiW5e0Re/Swk2ihfCbdXZfw8FQJn7
- x5dT0R82hU7BiyZi09rfBrBhfLRerYJ9KPj8TNnQN1cAqlTQaLWBCLQhbacBa3FVhj5IrlSDAZN
- 6ZU2y8J5ufwcXN4u79RnRvqLq4d1Evog2ovAWtU3kcUNTq5nx95obccrwugXW7a+hBne2Y48pYz
- 63fPsICMs3iw7qZLPMA==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-07_06,2026-07-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 impostorscore=0 malwarescore=0 bulkscore=0 spamscore=0
- adultscore=0 lowpriorityscore=0 phishscore=0 clxscore=1015 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607080047
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="+2Big6IGbfQRlCsc"
+Content-Disposition: inline
+In-Reply-To: <20260707124349.662198-1-clg@redhat.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -159,25 +85,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/7/26 00:43, Mathieu Poirier wrote:
-> From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> 
-> Some distributions provide packages continaing firmware to be run under
-> QEMU, such as "qemu-efi-aarch64" or "edk2-aarch64". Those packages also
-> contain descriptors in /usr/share/qemu/firmware/*.json listing the
-> firmware features, so that environments like libvirt can figure out
-> which firmware they can load.
-> 
-> Define an optional feature for arm64 firmware to indicate that a
-> firmware supports running in a Realm. Firmware implementations need
-> extra support for running in a Realm, in particular to distinguish
-> shared from private guest memory.
-> 
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
-> ---
->   docs/interop/firmware.json | 5 ++++-
->   1 file changed, 4 insertions(+), 1 deletion(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+--+2Big6IGbfQRlCsc
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/11.1 for any user-visible changes.
+
+--+2Big6IGbfQRlCsc
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCgAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmpN5fcACgkQnKSrs4Gr
+c8jh+wf/QQJlU17K2EOz7PFZpNxIUUJsdEURdGseMKeTWefHTxdtOgV7R79Inn3a
+P33NWe3bAMDPuBVIxYpe1EYgVF9MWORRH/51sK6nyNS9NHCI47GU4+ucFM0snvjM
+o9/ZYXzdtFWisiHZFROz6CRLgk3NDzXUaONEDozvXiKcGsC2E+jPP1YAWrNnxcTV
+bmKejYgpvRNysm2JfMM61SobU13U9WVJ1LzD7OaPTgPDdhQz1VEv10F6fks0c3XP
+u3Ewvuyk8xPrrpfeRw5wuXjR+/lYIVkRrg55gsNEuANUyb8Vus7PDHhLFTG8x5Rj
+5xKPfDl2pOc6mt2ZFsd1WzyUk4jxCA==
+=kVvb
+-----END PGP SIGNATURE-----
+
+--+2Big6IGbfQRlCsc--
+
 

@@ -4,146 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0B4DC43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 15:20:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39D2AC43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 15:29:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whU4U-0005K7-GQ; Wed, 08 Jul 2026 11:20:22 -0400
+	id 1whUDD-00016Y-NI; Wed, 08 Jul 2026 11:29:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1whU4S-0005Jm-13
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 11:20:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1whU4N-0007UP-7H
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 11:20:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783524013;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=Fo/sV5MUbwlVd+NTZQ1OtdFbABFEV/liJ/xV8wGClJg=;
- b=S/ReaJRSd5yBY1YtGVv9AJHBSmIQEn9ZTpUpQgzts0tsNmQGMiqrWlNb2sBI5CREihIsf/
- yc9b8/mXxjfgHYK6wJOU6K3i5r2SQ3v457d1HUwbAepZdg1EPjL2qeY0+Mp/bapTylAHeG
- lXOw3i8mQeSJD3vcRGDRRi/31HsPxAA=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-278-7suaOVq7Mta4WG437xCEaw-1; Wed, 08 Jul 2026 11:20:12 -0400
-X-MC-Unique: 7suaOVq7Mta4WG437xCEaw-1
-X-Mimecast-MFC-AGG-ID: 7suaOVq7Mta4WG437xCEaw_1783524011
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-472a798fc7cso644892f8f.1
- for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 08:20:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1whUDB-00015u-TR
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 11:29:21 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1whUD8-0001Yu-GH
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 11:29:21 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-47d70879764so613433f8f.2
+ for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 08:29:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783524556; cv=none;
+ d=google.com; s=arc-20260327;
+ b=KVv2OASFYRXJ04pbN00Wz2CpEanLA0BaaJrl+qRimbJv7gkawYnDTtfTNgutGaXygq
+ 6RSe9SKxuRjvKngHyuJANmvkBgGXgsdpm4YQe9KfesdCHAIMUPcCoHKB5zjGv9n8iZBt
+ pRyqtYQOuNMR1/D9lFkqjm512WvfFUmVJVhrKYexcpTuA+1dac5Fy7aazuq2d4g2JMFa
+ Hbfo50fSNaozgvEHpdXNTXtiyg+RMkbi05Iv3c4TjxM7FiqohTHY7JoZWwgE0SrlMzNL
+ 5WTTaJ/STxRCy9cF3saevcCJSWy61BIPpOHySeBROcnZNc2ZIrvQkiryidQwBiHfsyV+
+ vN2w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=HoMQvPMP4ny+19fgg1l8RqVDO/Mokzld/gdT8zr+FvU=;
+ fh=6Kuyu8SuMJsywhash19QU50VvXDtL5cbqn/7mXHASlM=;
+ b=jqAwVsDDnd+apzSA7TM6SJH6xMXIO/GiGBjIlBME6JAygKo/amImTCTLSAFS5kxryR
+ 0KQmAJHF6npFmizDV5MXnip94b3GIARcE4rRlNpr4IJROIOfcAHmzgRa7BDoEqpd5YAo
+ endyXtAZZZMppy94eCtXDe4R0UF6MVzJZxl4NEWOxQvUawZ+zzECy3nMWpsLfpSAO9gg
+ fdoYwHL1qGOR0gAZtWfTqd8qxqW0NUWl1waM8JuONOSUwn5R/+pJKxSp48pA98LcF5mG
+ Qk23+zeP8vSJZ1uJ6Wnb/H5smOoCCx+S0x7v13Bhk6E1fRPAYXUxZ3Y3aPptcFm4f3Gv
+ aDKg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1783524556; x=1784129356; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=HoMQvPMP4ny+19fgg1l8RqVDO/Mokzld/gdT8zr+FvU=;
+ b=LSdQqt49hzHgwmgRWcSyWnh4uKOe6Zx0pFRFhbI18paaoInAGYNbTEs+/YTYlocryt
+ xW6P/fYzRbWao+fGzjol9Pjy6nvtxbCMBim9h5z4ejEcixFRKfn5XkGYtXmnHxxRXlUf
+ VEZ+Yeze/f7LH0XGm/ICQA7rL8BziTfOKmytNI/MwSxuWk8zjDhoAjsp+28fokFJ/Iwc
+ Yrm74GP6QIJ/jJmfCJi85I9Z9Eis0XANF1ktsLvtUJH3rS3xtkSMksc+JqvQY7GdjlXA
+ z9WoZT0JsvYijjhS+ivtrJdQiuPs5xAWUisRa96ospnnCtfpM2jQdGgKE9p3aFfrsxmG
+ vZyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783524011; x=1784128811;
- h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=Fo/sV5MUbwlVd+NTZQ1OtdFbABFEV/liJ/xV8wGClJg=;
- b=q6xVhmKmBEZXQimFVUqwPFsi2IjDj9wC0KoD5Yrj+35NTiWT8A/Wmv7vp6dTuHXIPl
- RacPbH+mgBr1fJXR7Km4OH6vcIVHaQL67Om0mC9ohBWf3x2N4rupd4eB8LV11vdVm4rK
- w6dZCv9XyR5Ru1K6jF9/TVDSox3CSGCAA4f02n1q6g8vSuEoPga9A3+OyVQ0wXb10Zbf
- 3WzLKBn8Hu8yZDdm3e+uhZkbz4M68duv4YfM8m1k9G5+SGWN5JpO8Z6ZMUfbKfuQUnVf
- iWIrTbPM13yWImGYxN4e+l+W3Az3u0KsvoBlPjQzgpZ1xqg2jJoOPmE1MZGNlidGgPcS
- 1PuQ==
+ d=1e100.net; s=20251104; t=1783524556; x=1784129356;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=HoMQvPMP4ny+19fgg1l8RqVDO/Mokzld/gdT8zr+FvU=;
+ b=DO2scrVcOBTeHROggBpRxsiz5YuyWq7uGDSsD9tCubYEoyvC6hL1/P80oM5XqxqQtd
+ hKuXRG5VRqzen47a4edUMtA+byhst9lhgARWnJjMrydFmgfgIBPdx1m4HtH9lBJV0QYt
+ nJZCc51vkhOGSSkLQhvcjUqFOQfcLZN6OUZUKsSN1qnno+xalVkedoCKwhvWfLpiN3sh
+ NCrBMAeh/yEE03aUq0K8PGnbsGADT/XbKCBhsDZJbyxu9a0qUFRj+fY9jxlurU9bbNad
+ dbDVYHMfw8pt2Goii25w6g5B3vjjFWgpmuoVn3FzsawLhcPcnwfMOwLP25YZY9WWXnA8
+ MTTQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqpDfrPqhZyCKilI4BVUwVh+zwrPvPaOjE0cN6CuYhoosQoSen4EPKJ20q087xs1XXwpcjvYiZupA==@nongnu.org
-X-Gm-Message-State: AOJu0Yy5CWb3YP2G69Bl1loktd94ic4WNSVn/bxVxKEs2ogyyq1DZFuU
- TNnobWdV6NRFSX8QBS5UBwAj7pqiTyLShd3ZgIlKy0Qq2an0mbAA/kwaflA8Z2G7BjkwhDNwV7/
- MzBnTMTwwChCW2x9ZRqFcCi0TByrE5evUNfoKydYdbhCgJGzwoyrmvw==
-X-Gm-Gg: AfdE7ckqkYYQu3Ag7n0qzgyK7zrNBKszeN/CEEt7dL8irMKvyRlKQb0GU8pbxycLXsZ
- TTXwRUCZOiAGiMDUzCA2iC7dIgoN43HGlAQNp1TG+ilTMRDWEfYrAPIWzR30Juhhb9iCvGR8inP
- UUSIa6+Otmd/iG70SHFQgSK6ahDLG6N8O9grVwsBH68gY9nLY9y8P1OBquC7jnI5D0hpgvmNagh
- bT5HNOQwOBg8CmF4UPaJmIoEN8x5vXtINk8ymkmZUsfpBoW90ETRYVGALw4InPwCYKuU/93hdwo
- 8yUCt+H+5P+FcY51ubSgL7Owae4msKou9CssC0pwttqnx+eG5pT22dKB10sGKpZUWF6C/qgg2Qk
- V23rkMUTydy+2SBLciAwxyxvbOFnrSK1zQWAgJ6liogmKw2Jabw==
-X-Received: by 2002:a05:6000:1a8e:b0:45d:4a00:b927 with SMTP id
- ffacd0b85a97d-47df07ec6abmr3717202f8f.31.1783524011339; 
- Wed, 08 Jul 2026 08:20:11 -0700 (PDT)
-X-Received: by 2002:a05:6000:1a8e:b0:45d:4a00:b927 with SMTP id
- ffacd0b85a97d-47df07ec6abmr3717157f8f.31.1783524010876; 
- Wed, 08 Jul 2026 08:20:10 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
- ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47aa039ae44sm41781776f8f.23.2026.07.08.08.20.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jul 2026 08:20:10 -0700 (PDT)
-Message-ID: <9be0741b-ce3b-4c54-b4f5-8442ee9dbb9b@redhat.com>
-Date: Wed, 8 Jul 2026 17:20:09 +0200
+ AHgh+RpeOT2KNgmB7YOgYEXGj1mSvZyG3tyD8QyMlQpUwwtrkQUyJ74RwP9Z5zdN99AbnuKMilwcA5yk/g==@nongnu.org
+X-Gm-Message-State: AOJu0YyM3Gu+HeMsCt9wFBTKs7BwnAtqLAOotN8YQPgOnGFQXeh5J9iq
+ GVpfoaohRng8ErmlhC5Uhw5kd44u3+HSOhKYsUCa5H/vPob5/h7H2q3zAQKa05BLEZGRdLDk/vv
+ 1vk/LBz53VUG7MUv4AR0Q26F93Lf48zk=
+X-Gm-Gg: AfdE7cmnCd3vt14zDAePJKgEYPQelyj5zBU66KTVgNEKSqpg26vV2CqxeNqihONq7am
+ TO6xV4V9BdtZaepx8rBk2KAUHD1Zemgc5Fj/W0qMI8gOUsiGwvQ/Mzl3mf9xnxYziKHDMNuoiX0
+ tKQYBjolvKCINXinaZneSlsVmmo7IFS3cWhm8l1S29/Y9KK3TCmufeYfnxLGOI81YE5ddJVBgKX
+ yYmeWbwNwJm4fE0A52FO3HDixeLq0qUJyzmm2ChPVaMdQ1Zyzg9jBikh3SB24QfjZbchifd0tky
+ CSaka9uuVw==
+X-Received: by 2002:a05:6000:2911:b0:46f:9d18:bd3c with SMTP id
+ ffacd0b85a97d-47df07a959bmr3655604f8f.12.1783524555660; Wed, 08 Jul 2026
+ 08:29:15 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] vfio/listener: Replace misalignment whitelist with DMA
- capability check
-To: Alex Williamson <alex@shazbot.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Eric Auger <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-References: <20260708133604.1606448-1-clg@redhat.com>
- <20260708090650.2247755c@shazbot.org>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260708090650.2247755c@shazbot.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: agAFWoCwxLNWpQiIneg7OROx8HrzJc-X1cYYGb0RXcY_1783524011
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+References: <20260708111544.1440761-1-clg@redhat.com>
+ <20260708111544.1440761-3-clg@redhat.com>
+In-Reply-To: <20260708111544.1440761-3-clg@redhat.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Wed, 8 Jul 2026 23:29:03 +0800
+X-Gm-Features: AVVi8CeikI2FNQGUnCpq9U1LObkJgLcF5AXhFw6GOcBvGK0qomZmNccpaDR6djQ
+Message-ID: <CAEUhbmWWmX9BKwS2m12vPk=rN_DxzCKqsm=h9g26QdHcX3gHqw@mail.gmail.com>
+Subject: Re: [PATCH 2/4] tests/qtest: aspeed_smc: Add fast-read test coverage
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, 
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ Bin Meng <bin.meng@processmission.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -159,47 +129,188 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/8/26 17:06, Alex Williamson wrote:
-> On Wed,  8 Jul 2026 15:36:04 +0200
-> Cédric Le Goater <clg@redhat.com> wrote:
-> 
->> The vfio_known_safe_misalignment() whitelist (currently TPM CRB only)
->> requires a new entry every time a device exposes a non-page-aligned
->> region, which does not scale.
-> 
-> Arguable as we have exactly one class of device so far that's validated
-> as safe.
-> 
->> Replace it with a DMA capability check: a region that is not
->> page-aligned or is smaller than a host page can never be a valid DMA
->> target, so a page-offset mismatch is harmless and only traced. Only
->> warn for page-aligned, page-sized regions where the mismatch could
->> indicate a real mapping problem.
-> 
-> But it's the composition into the address space and how that address
-> space is defined to the guest that matters.  Imagine a minimum counter
-> example to the test presented here, a page-size range of RAM in the VM
-> is composed by a device as two contiguous sub-page MemoryRegions.  We
-> only see the individual MRs here, they're each sub-page, the shape
-> suggests they're not DMA targets, but together they map contiguously
-> into the VM address space.  KVM can trap and emulate them as normal
-> RAM.  QEMU emulated devices can DMA to them as RAM.  VFIO cannot map
-> them through the IOMMU.
-> 
-> That is what this test is meant to validate.  The judgment that the
-> control register range for a TPM device presented as a RAM MR is not a
-> meaningful DMA target for a vfio device is the thing that cannot be
-> determined based only on the shape of the MR.
+On Wed, Jul 8, 2026 at 7:17=E2=80=AFPM C=C3=A9dric Le Goater <clg@redhat.co=
+m> wrote:
+>
+> Add read_page_mem_fast_read (CTRL_FREADMODE with dummy byte) and
+> write_page_fast_read (user-mode FAST_READ) tests.
+>
+> Signed-off-by: Cedric Le Goater <clg@redhat.com>
+> ---
+>  tests/qtest/aspeed-smc-utils.h |  5 ++++
+>  tests/qtest/aspeed-smc-utils.c | 49 ++++++++++++++++++++++++++++++++++
+>  tests/qtest/aspeed_smc-test.c  | 21 +++++++++++++++
+>  tests/qtest/ast2700-smc-test.c |  4 +++
+>  4 files changed, 79 insertions(+)
+>
+> diff --git a/tests/qtest/aspeed-smc-utils.h b/tests/qtest/aspeed-smc-util=
+s.h
+> index e2fd8ff1bd16..5a86514caf35 100644
+> --- a/tests/qtest/aspeed-smc-utils.h
+> +++ b/tests/qtest/aspeed-smc-utils.h
+> @@ -44,6 +44,8 @@
+>  #define   CTRL_FREADMODE       0x1
+>  #define   CTRL_WRITEMODE       0x2
+>  #define   CTRL_USERMODE        0x3
+> +#define   CTRL_DUMMY_LOW_SHIFT   6
+> +#define   CTRL_DUMMY_HIGH_SHIFT  14
+>  #define SR_WEL BIT(1)
+>
+>  /*
+> @@ -55,6 +57,7 @@ enum {
+>      WRDI =3D 0x4,
+>      BULK_ERASE =3D 0xc7,
+>      READ =3D 0x03,
+> +    FAST_READ =3D 0x0b,
+>      PP =3D 0x02,
+>      WRSR =3D 0x1,
+>      WREN =3D 0x6,
+> @@ -90,5 +93,7 @@ void aspeed_smc_test_status_reg_write_protection(const =
+void *data);
+>  void aspeed_smc_test_write_block_protect(const void *data);
+>  void aspeed_smc_test_write_block_protect_bottom_bit(const void *data);
+>  void aspeed_smc_test_write_page_qpi(const void *data);
+> +void aspeed_smc_test_read_page_mem_fast_read(const void *data);
+> +void aspeed_smc_test_write_page_fast_read(const void *data);
+>
+>  #endif /* TESTS_ASPEED_SMC_UTILS_H */
+> diff --git a/tests/qtest/aspeed-smc-utils.c b/tests/qtest/aspeed-smc-util=
+s.c
+> index ed125741eb36..9883ade0815c 100644
+> --- a/tests/qtest/aspeed-smc-utils.c
+> +++ b/tests/qtest/aspeed-smc-utils.c
+> @@ -697,3 +697,52 @@ void aspeed_smc_test_write_page_qpi(const void *data=
+)
+>      flash_reset(test_data);
+>  }
+>
+> +static void read_page_mem_fast_read(const AspeedSMCTestData *data,
+> +                                uint32_t addr, uint32_t *page)
+> +{
+> +    uint32_t ctrl_reg =3D R_CTRL0 + data->cs * 4;
+> +    uint32_t ctrl =3D spi_readl(data, ctrl_reg);
+> +    int i;
+> +
+> +    /* Set FREADMODE with FAST_READ command and 1 dummy byte */
+> +    ctrl &=3D ~(CTRL_USERMODE | (0xff << 16) |
+> +              (0x3 << CTRL_DUMMY_LOW_SHIFT) |
+> +              (0x1 << CTRL_DUMMY_HIGH_SHIFT) |
+> +              CTRL_IO_MODE_MASK);
+> +    ctrl |=3D CTRL_FREADMODE | (FAST_READ << 16) |
+> +            (1 << CTRL_DUMMY_LOW_SHIFT);
+> +    spi_writel(data, ctrl_reg, ctrl);
 
-ok. I understand. this is difficult to address cleanly without a
-white list then. Which is what "Extend safe misalignment check to
-tpm-ppi region" proposes. I will let it cool down.
+Could just call spi_ctrl_set_fast_read()?
 
-This change is not critical. It is part of a broader effort to
-avoid giving users the wrong impression that the problem comes
-from VFIO when analyzing diagnostic logs with errors/warnings
-spread across the system. This is not the only VFIO message in
-this category.
-C.
+> +
+> +    for (i =3D 0; i < FLASH_PAGE_SIZE / 4; i++) {
+> +        page[i] =3D make_be32(flash_readl(data, addr + i * 4));
+> +    }
+> +}
+> +
+> +void aspeed_smc_test_read_page_mem_fast_read(const void *data)
+> +{
+> +    test_read_page_mem(data, read_page_mem_fast_read);
+> +}
+> +
+> +static void read_page_fast_read(const AspeedSMCTestData *data,
+> +                                uint32_t addr, uint32_t *page)
+> +{
+> +    int i;
+> +
+> +    spi_ctrl_start_user(data);
+> +
+> +    flash_writeb(data, 0, EN_4BYTE_ADDR);
+> +    flash_writeb(data, 0, FAST_READ);
+> +    flash_writel(data, 0, make_be32(addr));
+> +    /* 1 dummy byte for standard SPI fast-read */
+> +    flash_writeb(data, 0, 0x00);
+> +
+> +    for (i =3D 0; i < FLASH_PAGE_SIZE / 4; i++) {
+> +        page[i] =3D make_be32(flash_readl(data, 0));
+> +    }
+> +    spi_ctrl_stop_user(data);
+> +}
+> +
+> +void aspeed_smc_test_write_page_fast_read(const void *data)
+> +{
+> +    test_write_page(data, read_page_fast_read);
+> +}
+> diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.=
+c
+> index 39af1df0ed75..bbda15ad17ea 100644
+> --- a/tests/qtest/aspeed_smc-test.c
+> +++ b/tests/qtest/aspeed_smc-test.c
+> @@ -68,6 +68,15 @@ static void test_palmetto_bmc(AspeedSMCTestData *data)
+>                          data, aspeed_smc_test_read_status_reg);
+>      qtest_add_data_func("/ast2400/smc/status_reg_write_protection",
+>                          data, aspeed_smc_test_status_reg_write_protectio=
+n);
+> +    qtest_add_data_func("/ast2400/smc/read_page_mem_fast_read",
+> +                        data, aspeed_smc_test_read_page_mem_fast_read);
+> +    qtest_add_data_func("/ast2400/smc/write_page_fast_read",
+> +                        data, aspeed_smc_test_write_page_fast_read);
+> +    /*
+> +     * Block protect tests must be run last because the block protect
+> +     * state is not cleared by reset_memory() and silently prevents
+> +     * subsequent flash writes.
+> +     */
+>      qtest_add_data_func("/ast2400/smc/write_block_protect",
+>                          data, aspeed_smc_test_write_block_protect);
+>      qtest_add_data_func("/ast2400/smc/write_block_protect_bottom_bit",
+> @@ -115,6 +124,10 @@ static void test_ast2500_evb(AspeedSMCTestData *data=
+)
+>                          data, aspeed_smc_test_read_status_reg);
+>      qtest_add_data_func("/ast2500/smc/write_page_qpi",
+>                          data, aspeed_smc_test_write_page_qpi);
+> +    qtest_add_data_func("/ast2500/smc/read_page_mem_fast_read",
+> +                        data, aspeed_smc_test_read_page_mem_fast_read);
+> +    qtest_add_data_func("/ast2500/smc/write_page_fast_read",
+> +                        data, aspeed_smc_test_write_page_fast_read);
+>  }
+>
+>  static void test_ast2600_evb(AspeedSMCTestData *data)
+> @@ -158,6 +171,10 @@ static void test_ast2600_evb(AspeedSMCTestData *data=
+)
+>                          data, aspeed_smc_test_read_status_reg);
+>      qtest_add_data_func("/ast2600/smc/write_page_qpi",
+>                          data, aspeed_smc_test_write_page_qpi);
+> +    qtest_add_data_func("/ast2600/smc/read_page_mem_fast_read",
+> +                        data, aspeed_smc_test_read_page_mem_fast_read);
+> +    qtest_add_data_func("/ast2600/smc/write_page_fast_read",
+> +                        data, aspeed_smc_test_write_page_fast_read);
+>  }
+>
+>  static void test_ast1030_evb(AspeedSMCTestData *data)
+> @@ -201,6 +218,10 @@ static void test_ast1030_evb(AspeedSMCTestData *data=
+)
+>                          data, aspeed_smc_test_read_status_reg);
+>      qtest_add_data_func("/ast1030/smc/write_page_qpi",
+>                          data, aspeed_smc_test_write_page_qpi);
+> +    qtest_add_data_func("/ast1030/smc/read_page_mem_fast_read",
+> +                        data, aspeed_smc_test_read_page_mem_fast_read);
+> +    qtest_add_data_func("/ast1030/smc/write_page_fast_read",
+> +                        data, aspeed_smc_test_write_page_fast_read);
+>  }
+>
+>  int main(int argc, char **argv)
+> diff --git a/tests/qtest/ast2700-smc-test.c b/tests/qtest/ast2700-smc-tes=
+t.c
+> index 33fc47230ee5..9ad04b574c0d 100644
+> --- a/tests/qtest/ast2700-smc-test.c
+> +++ b/tests/qtest/ast2700-smc-test.c
+> @@ -52,6 +52,10 @@ static void test_ast2700_evb(AspeedSMCTestData *data)
+>                          data, aspeed_smc_test_read_status_reg);
+>      qtest_add_data_func("/ast2700/smc/write_page_qpi",
+>                          data, aspeed_smc_test_write_page_qpi);
+> +    qtest_add_data_func("/ast2700/smc/read_page_mem_fast_read",
+> +                        data, aspeed_smc_test_read_page_mem_fast_read);
+> +    qtest_add_data_func("/ast2700/smc/write_page_fast_read",
+> +                        data, aspeed_smc_test_write_page_fast_read);
+>  }
+>
+>  int main(int argc, char **argv)
 
+Regards,
+Bin
 

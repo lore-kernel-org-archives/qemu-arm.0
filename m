@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B604CC43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 11:16:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31700C43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 11:16:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whQGI-0007XF-39; Wed, 08 Jul 2026 07:16:18 -0400
+	id 1whQGD-0007WA-FW; Wed, 08 Jul 2026 07:16:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1whQGH-0007Wj-9w
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 07:16:17 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1whQGC-0007Vx-BT
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 07:16:12 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1whQGF-0003Hn-Kt
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 07:16:17 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1whQGA-0003HB-Ft
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 07:16:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783509375;
+ s=mimecast20190719; t=1783509369;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/Fbn+VK0OtQnpi0tsE230Ytk7RdN1mqvznePHHzJSW4=;
- b=W1Mxox2RPIHDdWhuxVfQuGa0jojqqtr3io9ZhXz3q0ZOuHQHwZEk+nJQl906tp58/M/riC
- AyWyWoE+zX3MzxLNW8k+DP0UXBU+GSrysjWe9BMig+g3G5vUFkvYgR+Us5hHbT8iwBycFB
- 3U/wO6lIvdRpmqDnNaim5Iqlyjf7MTc=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=k+HCTl3sSuz6R/8BnCQoBNl9aj44Prwz5Ig9Dn7I7cY=;
+ b=RowxJ7boJeE+/swnb1SYGDWfNfYP4ST00YboZn+V6JnqWaEGxWzztViCyMhxK9GYQdbOOG
+ mOdihwXIAT5DCM3BkmSRdRFiwcyl9w8EyX2BHU/o7Dyo9YOxoysl58MzkCwPHeYDeV/gkQ
+ dZftzfVEMRvPgac5thWzZaoihnojJDo=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-218-E13dc8oyOE2EusiDS5Ag_A-1; Wed,
- 08 Jul 2026 07:16:12 -0400
-X-MC-Unique: E13dc8oyOE2EusiDS5Ag_A-1
-X-Mimecast-MFC-AGG-ID: E13dc8oyOE2EusiDS5Ag_A_1783509370
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-418-w3Ks1PU7Np-69k6qiGsRnw-1; Wed,
+ 08 Jul 2026 07:16:06 -0400
+X-MC-Unique: w3Ks1PU7Np-69k6qiGsRnw-1
+X-Mimecast-MFC-AGG-ID: w3Ks1PU7Np-69k6qiGsRnw_1783509364
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 209A01955DC2; Wed,  8 Jul 2026 11:16:10 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 29BCD180063A; Wed,  8 Jul 2026 11:16:04 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.33.253])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9A1FC1955F43; Wed,  8 Jul 2026 11:16:04 +0000 (UTC)
+ id 6B19A1955F43; Wed,  8 Jul 2026 11:15:59 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
@@ -58,28 +58,26 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Bin Meng <bin.meng@processmission.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH 3/4] tests/qtest: aspeed_smc: Add Dual Output Read (DOR) test
- coverage
-Date: Wed,  8 Jul 2026 13:15:43 +0200
-Message-ID: <20260708111544.1440761-4-clg@redhat.com>
+Subject: [PATCH 2/4] tests/qtest: aspeed_smc: Add fast-read test coverage
+Date: Wed,  8 Jul 2026 13:15:42 +0200
+Message-ID: <20260708111544.1440761-3-clg@redhat.com>
 In-Reply-To: <20260708111544.1440761-1-clg@redhat.com>
 References: <20260708111544.1440761-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: HoBm2rmkFG-tznranl_jHwmZmq-vYapcPEI56VrD_mA_1783509370
+X-Mimecast-MFC-PROC-ID: aJZBlE3QjSsY4SumfngYgvOFEYUXMCt5SPHAHdxkzyU_1783509364
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,68 +93,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add read_page_mem_dor (CTRL_FREADMODE with DOR command and dual data
-IO mode) and write_page_dor (user-mode DOR) tests.
+Add read_page_mem_fast_read (CTRL_FREADMODE with dummy byte) and
+write_page_fast_read (user-mode FAST_READ) tests.
 
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
+Signed-off-by: Cedric Le Goater <clg@redhat.com>
 ---
- tests/qtest/aspeed-smc-utils.h |  4 +++
- tests/qtest/aspeed-smc-utils.c | 50 ++++++++++++++++++++++++++++++++++
- tests/qtest/aspeed_smc-test.c  | 16 +++++++++++
+ tests/qtest/aspeed-smc-utils.h |  5 ++++
+ tests/qtest/aspeed-smc-utils.c | 49 ++++++++++++++++++++++++++++++++++
+ tests/qtest/aspeed_smc-test.c  | 21 +++++++++++++++
  tests/qtest/ast2700-smc-test.c |  4 +++
- 4 files changed, 74 insertions(+)
+ 4 files changed, 79 insertions(+)
 
 diff --git a/tests/qtest/aspeed-smc-utils.h b/tests/qtest/aspeed-smc-utils.h
-index 5a86514caf35..fbfb94e831d8 100644
+index e2fd8ff1bd16..5a86514caf35 100644
 --- a/tests/qtest/aspeed-smc-utils.h
 +++ b/tests/qtest/aspeed-smc-utils.h
-@@ -44,6 +44,7 @@
+@@ -44,6 +44,8 @@
  #define   CTRL_FREADMODE       0x1
  #define   CTRL_WRITEMODE       0x2
  #define   CTRL_USERMODE        0x3
-+#define   CTRL_IO_DUAL_DATA     BIT(29)
- #define   CTRL_DUMMY_LOW_SHIFT   6
- #define   CTRL_DUMMY_HIGH_SHIFT  14
++#define   CTRL_DUMMY_LOW_SHIFT   6
++#define   CTRL_DUMMY_HIGH_SHIFT  14
  #define SR_WEL BIT(1)
-@@ -58,6 +59,7 @@ enum {
+ 
+ /*
+@@ -55,6 +57,7 @@ enum {
+     WRDI = 0x4,
      BULK_ERASE = 0xc7,
      READ = 0x03,
-     FAST_READ = 0x0b,
-+    DOR = 0x3b,
++    FAST_READ = 0x0b,
      PP = 0x02,
      WRSR = 0x1,
      WREN = 0x6,
-@@ -95,5 +97,7 @@ void aspeed_smc_test_write_block_protect_bottom_bit(const void *data);
+@@ -90,5 +93,7 @@ void aspeed_smc_test_status_reg_write_protection(const void *data);
+ void aspeed_smc_test_write_block_protect(const void *data);
+ void aspeed_smc_test_write_block_protect_bottom_bit(const void *data);
  void aspeed_smc_test_write_page_qpi(const void *data);
- void aspeed_smc_test_read_page_mem_fast_read(const void *data);
- void aspeed_smc_test_write_page_fast_read(const void *data);
-+void aspeed_smc_test_read_page_mem_dor(const void *data);
-+void aspeed_smc_test_write_page_dor(const void *data);
++void aspeed_smc_test_read_page_mem_fast_read(const void *data);
++void aspeed_smc_test_write_page_fast_read(const void *data);
  
  #endif /* TESTS_ASPEED_SMC_UTILS_H */
 diff --git a/tests/qtest/aspeed-smc-utils.c b/tests/qtest/aspeed-smc-utils.c
-index 9883ade0815c..25e3d28ec646 100644
+index ed125741eb36..9883ade0815c 100644
 --- a/tests/qtest/aspeed-smc-utils.c
 +++ b/tests/qtest/aspeed-smc-utils.c
-@@ -746,3 +746,53 @@ void aspeed_smc_test_write_page_fast_read(const void *data)
- {
-     test_write_page(data, read_page_fast_read);
+@@ -697,3 +697,52 @@ void aspeed_smc_test_write_page_qpi(const void *data)
+     flash_reset(test_data);
  }
-+
-+static void read_page_mem_dor(const AspeedSMCTestData *data,
-+                              uint32_t addr, uint32_t *page)
+ 
++static void read_page_mem_fast_read(const AspeedSMCTestData *data,
++                                uint32_t addr, uint32_t *page)
 +{
 +    uint32_t ctrl_reg = R_CTRL0 + data->cs * 4;
 +    uint32_t ctrl = spi_readl(data, ctrl_reg);
 +    int i;
 +
++    /* Set FREADMODE with FAST_READ command and 1 dummy byte */
 +    ctrl &= ~(CTRL_USERMODE | (0xff << 16) |
 +              (0x3 << CTRL_DUMMY_LOW_SHIFT) |
 +              (0x1 << CTRL_DUMMY_HIGH_SHIFT) |
 +              CTRL_IO_MODE_MASK);
-+    ctrl |= CTRL_FREADMODE | (DOR << 16) |
-+            (1 << CTRL_DUMMY_LOW_SHIFT) |
-+            CTRL_IO_DUAL_DATA;
++    ctrl |= CTRL_FREADMODE | (FAST_READ << 16) |
++            (1 << CTRL_DUMMY_LOW_SHIFT);
 +    spi_writel(data, ctrl_reg, ctrl);
 +
 +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
@@ -164,22 +162,22 @@ index 9883ade0815c..25e3d28ec646 100644
 +    }
 +}
 +
-+void aspeed_smc_test_read_page_mem_dor(const void *data)
++void aspeed_smc_test_read_page_mem_fast_read(const void *data)
 +{
-+    test_read_page_mem(data, read_page_mem_dor);
++    test_read_page_mem(data, read_page_mem_fast_read);
 +}
 +
-+static void read_page_dor(const AspeedSMCTestData *data,
-+                          uint32_t addr, uint32_t *page)
++static void read_page_fast_read(const AspeedSMCTestData *data,
++                                uint32_t addr, uint32_t *page)
 +{
 +    int i;
 +
 +    spi_ctrl_start_user(data);
 +
 +    flash_writeb(data, 0, EN_4BYTE_ADDR);
-+    flash_writeb(data, 0, DOR);
++    flash_writeb(data, 0, FAST_READ);
 +    flash_writel(data, 0, make_be32(addr));
-+    /* 1 dummy byte for standard SPI DOR */
++    /* 1 dummy byte for standard SPI fast-read */
 +    flash_writeb(data, 0, 0x00);
 +
 +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
@@ -188,70 +186,75 @@ index 9883ade0815c..25e3d28ec646 100644
 +    spi_ctrl_stop_user(data);
 +}
 +
-+void aspeed_smc_test_write_page_dor(const void *data)
++void aspeed_smc_test_write_page_fast_read(const void *data)
 +{
-+    test_write_page(data, read_page_dor);
++    test_write_page(data, read_page_fast_read);
 +}
 diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-index bbda15ad17ea..6d48444fd71b 100644
+index 39af1df0ed75..bbda15ad17ea 100644
 --- a/tests/qtest/aspeed_smc-test.c
 +++ b/tests/qtest/aspeed_smc-test.c
-@@ -72,6 +72,10 @@ static void test_palmetto_bmc(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_fast_read);
-     qtest_add_data_func("/ast2400/smc/write_page_fast_read",
-                         data, aspeed_smc_test_write_page_fast_read);
-+    qtest_add_data_func("/ast2400/smc/read_page_mem_dor",
-+                        data, aspeed_smc_test_read_page_mem_dor);
-+    qtest_add_data_func("/ast2400/smc/write_page_dor",
-+                        data, aspeed_smc_test_write_page_dor);
-     /*
-      * Block protect tests must be run last because the block protect
-      * state is not cleared by reset_memory() and silently prevents
-@@ -128,6 +132,10 @@ static void test_ast2500_evb(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_fast_read);
-     qtest_add_data_func("/ast2500/smc/write_page_fast_read",
-                         data, aspeed_smc_test_write_page_fast_read);
-+    qtest_add_data_func("/ast2500/smc/read_page_mem_dor",
-+                        data, aspeed_smc_test_read_page_mem_dor);
-+    qtest_add_data_func("/ast2500/smc/write_page_dor",
-+                        data, aspeed_smc_test_write_page_dor);
+@@ -68,6 +68,15 @@ static void test_palmetto_bmc(AspeedSMCTestData *data)
+                         data, aspeed_smc_test_read_status_reg);
+     qtest_add_data_func("/ast2400/smc/status_reg_write_protection",
+                         data, aspeed_smc_test_status_reg_write_protection);
++    qtest_add_data_func("/ast2400/smc/read_page_mem_fast_read",
++                        data, aspeed_smc_test_read_page_mem_fast_read);
++    qtest_add_data_func("/ast2400/smc/write_page_fast_read",
++                        data, aspeed_smc_test_write_page_fast_read);
++    /*
++     * Block protect tests must be run last because the block protect
++     * state is not cleared by reset_memory() and silently prevents
++     * subsequent flash writes.
++     */
+     qtest_add_data_func("/ast2400/smc/write_block_protect",
+                         data, aspeed_smc_test_write_block_protect);
+     qtest_add_data_func("/ast2400/smc/write_block_protect_bottom_bit",
+@@ -115,6 +124,10 @@ static void test_ast2500_evb(AspeedSMCTestData *data)
+                         data, aspeed_smc_test_read_status_reg);
+     qtest_add_data_func("/ast2500/smc/write_page_qpi",
+                         data, aspeed_smc_test_write_page_qpi);
++    qtest_add_data_func("/ast2500/smc/read_page_mem_fast_read",
++                        data, aspeed_smc_test_read_page_mem_fast_read);
++    qtest_add_data_func("/ast2500/smc/write_page_fast_read",
++                        data, aspeed_smc_test_write_page_fast_read);
  }
  
  static void test_ast2600_evb(AspeedSMCTestData *data)
-@@ -175,6 +183,10 @@ static void test_ast2600_evb(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_fast_read);
-     qtest_add_data_func("/ast2600/smc/write_page_fast_read",
-                         data, aspeed_smc_test_write_page_fast_read);
-+    qtest_add_data_func("/ast2600/smc/read_page_mem_dor",
-+                        data, aspeed_smc_test_read_page_mem_dor);
-+    qtest_add_data_func("/ast2600/smc/write_page_dor",
-+                        data, aspeed_smc_test_write_page_dor);
+@@ -158,6 +171,10 @@ static void test_ast2600_evb(AspeedSMCTestData *data)
+                         data, aspeed_smc_test_read_status_reg);
+     qtest_add_data_func("/ast2600/smc/write_page_qpi",
+                         data, aspeed_smc_test_write_page_qpi);
++    qtest_add_data_func("/ast2600/smc/read_page_mem_fast_read",
++                        data, aspeed_smc_test_read_page_mem_fast_read);
++    qtest_add_data_func("/ast2600/smc/write_page_fast_read",
++                        data, aspeed_smc_test_write_page_fast_read);
  }
  
  static void test_ast1030_evb(AspeedSMCTestData *data)
-@@ -222,6 +234,10 @@ static void test_ast1030_evb(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_fast_read);
-     qtest_add_data_func("/ast1030/smc/write_page_fast_read",
-                         data, aspeed_smc_test_write_page_fast_read);
-+    qtest_add_data_func("/ast1030/smc/read_page_mem_dor",
-+                        data, aspeed_smc_test_read_page_mem_dor);
-+    qtest_add_data_func("/ast1030/smc/write_page_dor",
-+                        data, aspeed_smc_test_write_page_dor);
+@@ -201,6 +218,10 @@ static void test_ast1030_evb(AspeedSMCTestData *data)
+                         data, aspeed_smc_test_read_status_reg);
+     qtest_add_data_func("/ast1030/smc/write_page_qpi",
+                         data, aspeed_smc_test_write_page_qpi);
++    qtest_add_data_func("/ast1030/smc/read_page_mem_fast_read",
++                        data, aspeed_smc_test_read_page_mem_fast_read);
++    qtest_add_data_func("/ast1030/smc/write_page_fast_read",
++                        data, aspeed_smc_test_write_page_fast_read);
  }
  
  int main(int argc, char **argv)
 diff --git a/tests/qtest/ast2700-smc-test.c b/tests/qtest/ast2700-smc-test.c
-index 9ad04b574c0d..bd9d3f7905b3 100644
+index 33fc47230ee5..9ad04b574c0d 100644
 --- a/tests/qtest/ast2700-smc-test.c
 +++ b/tests/qtest/ast2700-smc-test.c
-@@ -56,6 +56,10 @@ static void test_ast2700_evb(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_fast_read);
-     qtest_add_data_func("/ast2700/smc/write_page_fast_read",
-                         data, aspeed_smc_test_write_page_fast_read);
-+    qtest_add_data_func("/ast2700/smc/read_page_mem_dor",
-+                        data, aspeed_smc_test_read_page_mem_dor);
-+    qtest_add_data_func("/ast2700/smc/write_page_dor",
-+                        data, aspeed_smc_test_write_page_dor);
+@@ -52,6 +52,10 @@ static void test_ast2700_evb(AspeedSMCTestData *data)
+                         data, aspeed_smc_test_read_status_reg);
+     qtest_add_data_func("/ast2700/smc/write_page_qpi",
+                         data, aspeed_smc_test_write_page_qpi);
++    qtest_add_data_func("/ast2700/smc/read_page_mem_fast_read",
++                        data, aspeed_smc_test_read_page_mem_fast_read);
++    qtest_add_data_func("/ast2700/smc/write_page_fast_read",
++                        data, aspeed_smc_test_write_page_fast_read);
  }
  
  int main(int argc, char **argv)

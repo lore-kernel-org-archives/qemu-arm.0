@@ -4,99 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86B8DC43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 15:50:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48B38C43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 15:51:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whUX4-0006NM-Dr; Wed, 08 Jul 2026 11:49:54 -0400
+	id 1whUXv-0007qh-91; Wed, 08 Jul 2026 11:50:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1whUX1-0006Ez-LF
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 11:49:51 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ id 1whUXu-0007qE-RU
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 11:50:46 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1whUX0-00042F-85
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 11:49:51 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-47de008b020so468834f8f.1
- for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 08:49:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783525788; cv=none;
+ id 1whUXs-0004fS-Fz
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 11:50:46 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-47defd0c1c5so476834f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 08:50:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783525842; cv=none;
  d=google.com; s=arc-20260327;
- b=WvVlIRRvgXZjVwYxLArYkVUR3Hcynd0Mf0scHfACWIAlyplrtSX+0Ex3O8tjYqS3Ad
- J9QBy/FTvooEVFY2AFk11ltRZ6gefxEGDP/WXnWrTWooxA4cXYJ13L09Iy82ixnkVTQe
- cnzRJD/elYRqru+B4VbmOwuK5NFel8pK3WjDZlAyiS0cikbouLLQhwxU6StdcGiBUVle
- FiWKLmEBX3UxESJiochPux1SiiAmtRp+PDyc4fmDPWoXh9SYxgqkjNTwRKddMGzbMfVs
- JggAeOtJxxIoaXmabZmtZXHs7VBevnjVgWBQGEH/GrMOFCTgrnn+m+2O6ud4+lNrR56P
- C97Q==
+ b=orhexyv4YH63Br4A17Gb46/BAGN4u4lO/YBdwcsz2Ei/PRxalzxvDrcFSs5amRiYZ3
+ j/pVOgf+uMMFRoU2o27i9lrqKalguBgoq2ZAOQL2qd+w/hfVg6DHb3jWmsWmueaTU5Ae
+ vxnleodRmRsIW7e7GqvrDT2gTmZMi7BZTRGZGb1UopGf9+ZsyttLLrcY0JoWTSSKQZj+
+ 4lQjDSeTY+3fzD4CPZ1mb5OFecedfqid7nd1x2PANThPty0zN2PNM9Jv34foKd3Sw0RP
+ xTTWMMBbdYPK2b5Z8dfSOrrJqxWJwQCZ3ZmsHxlcf3r20+JtVn36s5atkTguNCY/LWnl
+ NzTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=Ks8sfeW0rVHmaUy0zC9BH8wSnlOUhz/l8SRZs+PMBzg=;
- fh=SOqkrjrfhBSe0nMzZ6OodpdVmPFVbdOYj6hvZqAa+nU=;
- b=L2Ok/Bzcc6FRYTjdBOUKWJyWHBcc5eYA5uMdNC1TP6S3yCgc4D98qaGFmuPicBsyxH
- UkRl7vPFgC+XUGKtrQlmkptYJvUb+IqThEJ8f34LzaahdpqlfAgHD2an++dfniCaHwox
- o2d6K/JfAMwKnJLJF3AvRg88bzkEOBn9AQ749VYmEioQreWEtUfWqAw+wS9LHi3qpp/b
- Frs1JbdI3gw5FQumrJgM6jZxOBIm3fQadJ8CnDIKc+fslSz9vmOTnP5KmiB7S0VVDsOl
- AIH6BdxYowjaR2p/nes0ikoZzGFfDgfI4M0Rhbd6ZEN3ORzr30RKPORLJN1Zu1ef4Cr0
- rKQA==; darn=nongnu.org
+ bh=s1OcXkWo3gi0kNRhczX4vcOTua6igMSJGEphn7JACdY=;
+ fh=tWuvinkNO6T0Oig6FnFK5OTZzAEWjZKJ6uQi/2IwVUU=;
+ b=h86hUXot51+qA0xykJS8tQB0Jk8D9zbdvC+kWRvDzfbYtLsadNIKWkCmeDh4HPMszo
+ JUMT2ruGyW5WxkojcJ2tlueZqjcMF4Tp9AW1b+UyetEj5xqzUgoRhAwFqJMy9syHvfRB
+ EjdpEIn8hBsWgdd0xOlplah0FcmUEiid/fXYFo/fLYpfcIRvWCUw/Ab9oQZeNTao5vpp
+ UDkroOH0hKPyP1a4os5Dy6ioMVHtm1isoXP3SiHX+GeWn+axkEJUAKUr5g84OIC4VmFX
+ 4HN5Hp+fcONpdWc2ZKP4SrORz1WVluC/nl0I2Wd445XTTjp2LSMOlLXiD8OtTZ2/Mz46
+ KpWA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1783525788; x=1784130588; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1783525842; x=1784130642; darn=nongnu.org;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=Ks8sfeW0rVHmaUy0zC9BH8wSnlOUhz/l8SRZs+PMBzg=;
- b=GZH4iN9ERyJpXNs72wlLY1AC2ZZEezoIDgffO7trGF5kcotXyfom3XZs91Y2GP7Yq9
- +o8+W3lj0qIStHNKaBwA8xkWDvk0EDhA3UKEg0Fawx3Cam+fy10qBEoNMkqJdWc1TcpF
- rq+77KeuLZKLqdt49ZqbpnA6t2lcDtMywJPosVn2SZmJ87sF0KuuVl4qTWjc1DL37q4H
- EiGtd8QAKlM0svJWEf26DY+6/FcSqV/1/uplhCTcrVkfhtSY6BUbay9GugQtGalWVTWf
- 9eakbdC8Hcq9Ck0Zo4VcqQpWR846Q6nKnXv7/p9Pb6y+hqqMe9SMnbuF1ZAyzt1Tme65
- f1Dg==
+ bh=s1OcXkWo3gi0kNRhczX4vcOTua6igMSJGEphn7JACdY=;
+ b=UidZbX7wsQxdndOGb77GaVZu6TWH84aQlYjy2eJmPSNXyceQnpKXlnpeNnOUT+Ddru
+ IjYoL9TS9bMjtsa3nA0kcGfpnc5nf2Ne4pkzftw9dBgVsoNcJfbZBcE6DXoC4muYQcGx
+ +doSiqACGs0D7lJeu0Iz3S/A2Yv2iJFQfIBLEEdmr9yZsciPPmCwQJkj5ShHF492YhYx
+ moiQ4eYY7G8a4CsbjD0SWOteOF179+sqgd2rrzLWb4XustYTEgQIfK0cPvE9jcg1tt5h
+ jO62LOYZuk7F+5JeCXhzH0HQcVR83oI5ZRJzb8Io59WBWjrudermieN6x/NbtzpqtMgc
+ 7IHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783525788; x=1784130588;
+ d=1e100.net; s=20251104; t=1783525842; x=1784130642;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=Ks8sfeW0rVHmaUy0zC9BH8wSnlOUhz/l8SRZs+PMBzg=;
- b=YXEvqwEG4p1l3pdfs9rf3TkxreWkYGd8kzMmDf97dRwzL5UOCKw2q3tSEPVfZZbmmk
- VxJJxZcjjOQxO3AsSFNPp+VDmv5+2iNLeqyJA+vMcpuhh7GxTjwLgJmX5hHStBiC5euG
- ugUOotYJkEF+MDHO2TtoRLpVdkbUQfhC68DyL8e8g1AD1fSTsMAGr+EIV0LGGauTZNaH
- B8K2M9L550QT3xbN91cv6zQf2hCralNcbWlz/l4y2KUBAHONoQya0UiMeoXfLSxw75ih
- Cd6sIIU9oIGbY1GPGNWhHC0CWs0BHfFg0kMcc2E12sodVEfi6wV8Slnv1BistpFvpH+3
- kRrQ==
+ bh=s1OcXkWo3gi0kNRhczX4vcOTua6igMSJGEphn7JACdY=;
+ b=Lx4MteNsa3JEd4P9CrbZdZgxDpWZoYvm/u9AxNj/OheX/inB0mM1oriGidIArUPIns
+ +sspwoKYxI5MFFQ6SIbZQbQLiBEAr4RSkUJweX/9tziKCobhXEbIUe3sPo2obUOnQrlA
+ WaQ0IqHHNTTXa/rYWvPaAOUmDKjDzERFuUa8wOo4QmFcvAq3TYjwW9tnfZC3EAHS+agd
+ h9VTbBxgJg5qFZmTugyLO9Vy6MOHMa13fiAs3qYrwUhWrczv7nDqqshxAERIDZkawrnh
+ 3EGJAAthtSZPaKZEEppkyS/KDRtOuW5ue9FyEE7OszuqeXSTg0UnW7xTP19VAK6fhR4n
+ EalA==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rok1Wk/Xa2mHbAWdGBpuJVll8zOSGaw1ZlKDJOh6jNmBsYVfUAuD+bl/BkQFNSyktnHvdOHFCSidw==@nongnu.org
-X-Gm-Message-State: AOJu0YzYiuFiKuJrRYwmcYqr+oM2E5yy8WHaLGVrZvrTU6T39EYqb3tE
- OpKB9bvJLYoLkaDEVSXhaQuSvOJ5qXjLQ7b4Ov7ru0KWk6fKsFY987nv1iCmH4Kjq90WdMvlHg6
- YZ1xRH2ZZB7ylMlKJe5KgynxJIGTM7D0=
-X-Gm-Gg: AfdE7clj34Z9kVg5Uq03/hjad7ZqH2Wpo8IUnnS5WDqcXWchWnvZ5r+4ikZKe5AzxSy
- G4QUuoQqqYkgodxadsAzOXwITSS5fgz5FmFSiyLfVo4+Pn+r4QW7z0UpVz+vnWK/ImXqHeSM+qQ
- C6q8q4/8dRR3QCvCoxqzfCZ1Byq0GQOYyxA497+hewBaezDPjoo0vVHx6kozMINBv/NbjzRk7Tr
- WtNY1ZF/czxQJp7KcD3Y0GGj2rIz6JrrwwgKG/4bWoA22F8s/vJE4Pv0v2k2AQwVvmCLc0AI4vU
-X-Received: by 2002:a05:6000:4025:b0:473:536b:5d1a with SMTP id
- ffacd0b85a97d-47df024a097mr4042991f8f.7.1783525788390; Wed, 08 Jul 2026
- 08:49:48 -0700 (PDT)
+ AHgh+RpEfS36HMM7+vsK7kzquJac0eXyQBNyzmEGZtekLFaQiks2OreQIdpE9aJyYRN+ypNaIIZ/aRt5ig==@nongnu.org
+X-Gm-Message-State: AOJu0Yz70OBfr5aXB6bUlumYpfAiD22a0HJcy365YKdN2gk64JI9vKGy
+ IAP/N5tVSnSSGAznf0J3sUuaDzBzHTSkUIup0JlLVcTRvt1XrZFMRXE8wa2MIWtsDLkz41H1moy
+ pD1YGZOnk65AafQsvsi+qOdO/XyZ8bXI=
+X-Gm-Gg: AfdE7cnkDE7mXUzymDjY3hgJemntEcO4Ml04TCgoJc2H5FbzIFGkSGUiwceG67tOdld
+ 9scs5gbrD+80OXL486jJwJL2tZ+rIei5qdcq74/yDqncpzy1FdEyom3FeSVNXM2U95kMnSnu71e
+ vXegS4F7NMD/mP/SAaqam+K47KjTi2TI+oLAIzwlLPzmXvZix6ygpC4zb610zVFElsdYHkUgsBd
+ sK08zLftZ4VTyafzU2LpPTTMrTTJOMOG4lXGkKwMgXaNa3qQMMk2zP9Huxn1qJRdkUI1T4pXhx6
+X-Received: by 2002:a05:6000:4705:b0:46f:7d90:8127 with SMTP id
+ ffacd0b85a97d-47df07ae289mr3654527f8f.13.1783525841974; Wed, 08 Jul 2026
+ 08:50:41 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260627063208.33642-1-bin.meng@processmission.com>
-In-Reply-To: <20260627063208.33642-1-bin.meng@processmission.com>
+References: <20260627154225.863984-1-bin.meng@processmission.com>
+ <20260627154225.863984-2-bin.meng@processmission.com>
+In-Reply-To: <20260627154225.863984-2-bin.meng@processmission.com>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Wed, 8 Jul 2026 23:49:34 +0800
-X-Gm-Features: AVVi8CdjG9rpeAMePP8uBpfBtTr70yAs1RvwTQpZqFAjRHEjrCDhVowJ-plYYo4
-Message-ID: <CAEUhbmV_BfLT9_F9OPH8VvwCZ_8Th+swHu833E0sjYCkj-k_=w@mail.gmail.com>
-Subject: Re: [PATCH] docs/system/arm: Update Nuvoton OpenBMC image guidance
+Date: Wed, 8 Jul 2026 23:50:27 +0800
+X-Gm-Features: AVVi8CclZ5Wbxc-qEhKBwJh8Ujz5Rbqgv4D1IXG_AtBheHkub999OV380tI7kSw
+Message-ID: <CAEUhbmXe=aJ+K8isdCpdFn9Y4LLTf9SARY7VaZoMo39SeYJAcQ@mail.gmail.com>
+Subject: Re: [PATCH 1/1] hw/arm: xlnx-zcu102: Fix up DTB for direct Linux boot
 To: Bin Meng <bin.meng@processmission.com>
-Cc: qemu-devel@nongnu.org, Hao Wu <wuhaotsh@google.com>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org
+Cc: QEMU <qemu-devel@nongnu.org>, Alistair Francis <alistair@alistair23.me>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=bmeng.cn@gmail.com; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,20 +121,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, Jun 27, 2026 at 8:12=E2=80=AFPM Bin Meng <bin.meng@processmission.c=
-om> wrote:
+On Sat, Jun 27, 2026 at 11:44=E2=80=AFPM Bin Meng <bin.meng@processmission.=
+com> wrote:
 >
-> Describe the current OpenBMC target naming and release status for
-> Nuvoton machines. The latest 2.18.0 release no longer includes GSJ,
-> so point users at older 2.14.0 sources and explain how to find
-> Jenkins MTD artifacts.
+> Real-board ZCU102 DTBs describe the UART, SDHCI and GQSPI nodes
+> in terms of ZynqMP PM firmware providers for clocks, resets, power
+> domains and pin control. QEMU does not model those runtime firmware
+> providers, so using such a DTB with -kernel currently requires users
+> to edit the DTB before Linux can probe the boot-critical devices.
+>
+> Add a board DTB fix-up for direct kernel boot that removes those
+> provider-only properties from the boot-critical nodes and rewrites
+> their clocks to fixed reference clocks already present in the DTB.
+> This keeps the user command line using the Buildroot-generated DTB
+> while limiting the compatibility adjustment to devices modeled by
+> QEMU.
+>
+> Document the direct boot flow, the SD and QSPI image layout details,
+> and the remaining firmware and real-board peripheral limitations.
 >
 > Signed-off-by: Bin Meng <bin.meng@processmission.com>
 >
 > ---
 >
->  docs/system/arm/nuvoton.rst | 54 +++++++++++++++++++++++++++++++++----
->  1 file changed, 49 insertions(+), 5 deletions(-)
+>  docs/system/arm/xlnx-zcu102.rst | 139 +++++++++++++++++++++++++++++++-
+>  hw/arm/xlnx-zcu102.c            | 109 +++++++++++++++++++++++++
+>  2 files changed, 247 insertions(+), 1 deletion(-)
 >
 
 Ping?

@@ -4,143 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3C07C43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 22:14:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62163C43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 22:56:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whaWa-0007LK-Jk; Wed, 08 Jul 2026 18:13:48 -0400
+	id 1whbBY-0000Cb-NI; Wed, 08 Jul 2026 18:56:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1whaWZ-0007KW-F5
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:13:47 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ id 1whbBV-0000CD-2I
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:56:05 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1whaWX-0003pX-I8
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:13:47 -0400
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+ id 1whbBR-0000nw-Rf
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 18:56:03 -0400
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 668KtkpA3948574
- for <qemu-arm@nongnu.org>; Wed, 8 Jul 2026 22:13:43 GMT
+ 668KtjX83908068
+ for <qemu-arm@nongnu.org>; Wed, 8 Jul 2026 22:55:59 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- bYX3KACLVoJS6QH6ugDFeTZ55tWn/+xOhRkcAwPj6Sk=; b=gDJd4DA8332pooo0
- rf4PhX46FFFIdECh02M30mKrBCO+7EG0j9bbpIOyYEERXfDfR2ST2Z6l/JLEKz7W
- YBcopWAcjSee6I2IP88l8Ft429osLVYOXfCzf/eUloPJ9YBTuF/gn+5M+TpYH6BC
- QBuQO8v/SegKdR7jA4kpblZauBRV9cXxn5H7rVA9Aqxz8liznAWFlahF9PHvaLOJ
- PxhFuen9WvjZGxKem5DjA6XZGtOO4RoSpV6rj2TgIgDzQR+gZdTzSqs5ZkPa8alS
- Cs/dvP+7p03rFhONch/32PxNwXVyM3MKXfQa2GQmHpnh6MsYypjRLJ6wYB/MtfBb
- xdcb4A==
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f9g7hkyth-1
+ 0Uv2pZuL/Fh8jKalInzeeuhohX/Ms8fnM/HEgSoHQr8=; b=j+bae57juXvWfJRB
+ oqCesX1tfF2usBvBDxEPkLib8uNe3jJbMQEWAHD9zcWMavC2MVRZsyQKLZc7nF+y
+ Nd2/wNbgEmfxKvrMK7RycJbTwEbnMwXZhwBdRBy+oIocXF7p5F9ueKmEY9No3s9o
+ I379XWcRv1c8sZYxbl37GIZ1r/QAo9aV5cXos+8i4ZZddHSweDCZNFVsANKgITp/
+ rQk00cDwd7/ZBIIrgngpmFF82fjvICvZk6vztqXwhPK+OwoZQ/ASymSe0IJ3w3f6
+ h4jWwOpMrYquMMdU7pOvOfI0/zytcWj31khh8HpjJ17v8iwdBZBKxa9X+zXkshGn
+ Q6fc2A==
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f9rq31s64-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 22:13:43 +0000 (GMT)
-Received: by mail-qt1-f198.google.com with SMTP id
- d75a77b69052e-51c1d7886cdso3508541cf.1
- for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 15:13:42 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 22:55:59 +0000 (GMT)
+Received: by mail-qv1-f69.google.com with SMTP id
+ 6a1803df08f44-8ec3314f65fso17693786d6.3
+ for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 15:55:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1783548822; x=1784153622; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1783551359; x=1784156159; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=bYX3KACLVoJS6QH6ugDFeTZ55tWn/+xOhRkcAwPj6Sk=;
- b=b68AaWDILT7JKSv1q4TO2C1yB4r6CCu0VN43Z+4T53OoRaN8IzGR3QavZrbJp1dVSD
- zzp5xKnkpApiumvhsn4JAW8FrJecEtv8xSb85BdxZOMITy5uKGiD09v1/8qDktM/cwVz
- ogLr5JzkKhXbQKfEvoO71+ulE7waCRbGUZl0ndcCyb+GUqsSd7lYMSc1zMaFcTXY6q7K
- mjzTxR2D9sl0WyIgfHPzCK0i5gRisfvLBl4bux4JjDztr4cF3BaS8HRKwgi2EVg1MdO4
- 6IyQkMldAy13GSwQJtLueZ6HddlRyoD53J+laNDWYCZdoM0M6Ri9AJwgQLDFiqobQGnv
- Liww==
+ bh=0Uv2pZuL/Fh8jKalInzeeuhohX/Ms8fnM/HEgSoHQr8=;
+ b=T5X8PXiW+1STWo0k+N1p4jXNFnu/dwdVIbmvSZXESr2lUsiv+HFxNekg891XdHF3j8
+ 8iY55zKiIwsb9FOxzvtMukFdBjMEcyt0rB6VkHUm1q5rjIAhaSaTEK7vLrY7QR6TKQeQ
+ jQpknA1tqT6S+3CYJDnHi0xBxZeZnK8NAmeajQhCpW6+rIP8XCkjZqlslH55UIk6yaID
+ Aj8T8OrwVzjGY3zEtwnAk8uoYiqgggI8bUPRBL0W3uWpSWFtWFAwrjteTyldf8SPLGFG
+ DGMUa4ujJXMh1l5+zM1TbIkzTnSndZj0bHA22v1wp/CxHjIIq2wUevutI/b+WsJs3nps
+ GplQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783548822; x=1784153622;
+ d=1e100.net; s=20251104; t=1783551359; x=1784156159;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=bYX3KACLVoJS6QH6ugDFeTZ55tWn/+xOhRkcAwPj6Sk=;
- b=jUStKgUcApVAZzlzyIpeYpYJvzPI1Z7Aw3V83ef9QPC+t3WKEjhXa19ph1d1V11PGX
- oEYLs6XM1YvGHN91BTqph/pAh7qZDOCQz3o9g3U0TEFosvU0ovgfCNu/ZphjIoljy83h
- GsYLNVZSCi5UN8aqr7As99wejpq8+2rLODhPI/FSXS/LSv+vywEljFeclD7UhHcDYB3m
- i1W/TAgvMW/WvLA/l2qhwq40PAjHQXnCAoD1m+tL9N3sgk/Ml+DF01d84khLKxiS7rYp
- zRUPoC8DK3KyuF1jSxwk2rb92/bvr2M/pyYZqUGo4b2FFsI9htWTYq5J76DZadWgbKN0
- +zeg==
+ bh=0Uv2pZuL/Fh8jKalInzeeuhohX/Ms8fnM/HEgSoHQr8=;
+ b=TtyHligBSrUr92pAoI7nQAFXIEWiNf0sRO8uSkhfweE/U0ZOcogMRgktpCeRD06exu
+ m/jfXf0izozG9VvZgvemnG2cFmd9XswbH5jyIrYq7OzaD6OaVYXbyo/jcWTDOAy7GeJj
+ L0niCXWBK26Q3Wy0Njb/2m8wnXP9YPEOwTAnZAOdZ2OlaAbHzfxXS8VdJS1rPWm/xkvi
+ ibDhGGzBGb271UJeoym3I5jAset/5xZ0PALwXPsyjiQSeFaij25/xQ3if0c8dvFifV/v
+ dO36KA9/G0FsQwEhqMKQuw39/eLIF3KKC3nvvQEDihaL9h/EggKiOeIg8ztmWgqrqV08
+ 0rKg==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rpwd6oABmSLtGjKiixIztG+xL5pp0ds8g7UdKcriuZmTtE4SZgqI5Y7t6aeUBlgRnDj4obAjyiAGg==@nongnu.org
-X-Gm-Message-State: AOJu0YzP79A4V9aXT5dSLG8RkzatnBcSqu+aXWYMkMaZsD9iQxd9aJgj
- Pi3FM+jUX8V0YUAkQh/mSgbVjC4KrIk6klHUOXTjnmaT321qPYGJRdIw9+1SpLJkaNe4xSEErzA
- yY86iSR+A56IUd+QCnc9Cxxdo1YI98fjJ0Dv0yrpl2Je6Ah3kgSFO1fM=
-X-Gm-Gg: AfdE7cnL7doi7Je7NF+NOfdhd9On7tdnDxBSfffK+PGSf1MNa/Qt6eF2SwIXfW2AXke
- PA8LfwX3CuVwng63fuk2CHl7HjDZMuXth3KcrT8I2oraiYcB9K8TjnA3ZgfqyuV6NO3i/BCnwss
- 2zXQCGJQhcDuRpIZzbnICvMW36zQekUiOneJ0IErYn4I5RGyS9RVZSxyqyMwDvLNlkzusx3iZIT
- RpkdF36MeABw7KOGSi2ODYXRdnjQq4WmxBQFs3Hjrpp97AuM94KrUG7g/LqIt6fgY3ertJ0FjGJ
- gtChdMDfWBTQk3ioREd/Ki2Y0tQI3KeB/XpVED+bW0UHDxYBaC2/D4jc8YfPsbU1QhXFpc9yqrm
- xntuRc9WYX/oHMRXX+VAEFWR22lejOybW/q8akQj76qHek9cSbZULfALuh9pJfg==
-X-Received: by 2002:ac8:7e8f:0:b0:51c:7b12:5fda with SMTP id
- d75a77b69052e-51c8b438e93mr51306371cf.86.1783548821930; 
- Wed, 08 Jul 2026 15:13:41 -0700 (PDT)
-X-Received: by 2002:ac8:7e8f:0:b0:51c:7b12:5fda with SMTP id
- d75a77b69052e-51c8b438e93mr51305911cf.86.1783548821419; 
- Wed, 08 Jul 2026 15:13:41 -0700 (PDT)
+ AHgh+Rp9KAMKHUi41614HgdfQ80vLs/XiEwsw73EnpIkKwTN1I8Exapx199kPfyIH3sgOjAaPO+/q/WIlA==@nongnu.org
+X-Gm-Message-State: AOJu0Ywnx+8II5rVrn0htzt1usJZYbYwd5AjR7i1k83InS7EMWLSiRxp
+ 2vOEeNgq502+wQPa9PectE95x2zJfg90UM7iDI2QabbHK1xzg6YDQa66EY97o+oBpp4Lx9KLSHQ
+ 55pw4Z2JoBixex6+6XgkqYWGMv+/HQWn8+EnPVslBICGUN+2OI6K3pzY=
+X-Gm-Gg: AfdE7cnZ52P063UWSNKB3K26MaBhbYaq3FGMtv/htBKQcnwFL9V6wg1ON0XbekCqkpv
+ z0amBpfAJpNPIOvrV/dAMNfyXuX/sGpxEyeFedbqeqrmJZvCeuh/4ulL998gUsP0iF0Cxc9mMsQ
+ yWnTw35hp+gpw89TrWBKnxroiR1tHZdRZcWh6gTb0dfFGsV0z2DQVFJq6BQ49PkuadD905/d294
+ HiQXH6ccV6y1474BsstvorSZGVgFjY9QyCtcxoedn3NdTbWcShD8Cvtak55IuzDKV8bFxa6LiJ8
+ IhPzQp3DTzow9a3EXk9Vlqk2NqbX4N9iqdKDr76tFE7Fz0GwzAnviwqSM5Wn+ltfK+dEs+xXwFT
+ VuxOjE8bpQG0qooRPgOzkWJnkYO6rQHxBmI93DKacu7rTTLkjxu2lzGXXJzz99w==
+X-Received: by 2002:ac8:7f87:0:b0:51a:8c97:9391 with SMTP id
+ d75a77b69052e-51c8b572217mr52220911cf.72.1783551358794; 
+ Wed, 08 Jul 2026 15:55:58 -0700 (PDT)
+X-Received: by 2002:ac8:7f87:0:b0:51a:8c97:9391 with SMTP id
+ d75a77b69052e-51c8b572217mr52220511cf.72.1783551358214; 
+ Wed, 08 Jul 2026 15:55:58 -0700 (PDT)
 Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493e5a6240fsm65234225e9.2.2026.07.08.15.13.39
+ 5b1f17b1804b1-493eb6fb526sm13058095e9.15.2026.07.08.15.55.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jul 2026 15:13:40 -0700 (PDT)
-Message-ID: <7ba7afe0-1e89-480e-92f1-6a1682b56baf@oss.qualcomm.com>
-Date: Thu, 9 Jul 2026 00:13:39 +0200
+ Wed, 08 Jul 2026 15:55:57 -0700 (PDT)
+Message-ID: <2d7d578e-9187-4751-97ea-5a9b13ee84ad@oss.qualcomm.com>
+Date: Thu, 9 Jul 2026 00:55:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 01/23] accel/hvf: Create hvf_protect_clean_range,
- hvf_unprotect_dirty_range
+Subject: Re: [PATCH v5 10/10] docs: Add support vbootrom and update Manual
+ boot for ast2700fc
 Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
- Phil Dennis-Jordan <phil@philjordan.eu>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Richard Henderson
- <richard.henderson@linaro.org>, Akihiko Odaki
- <odaki@rsg.ci.i.u-tokyo.ac.jp>, Peter Collingbourne <pcc@google.com>,
- Cameron Esfahani <dirty@apple.com>, Mads Ynddal <mads@ynddal.dk>,
+To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Mark Burton <mburton@qti.qualcomm.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Alexander Graf <agraf@csgraf.de>,
  Mohamed Mediouni <mohamed@unpredictable.fr>
-References: <20251103101034.59039-1-philmd@linaro.org>
- <20251103101034.59039-2-philmd@linaro.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>, Steven Lee <steven_lee@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Kane Chen <kane_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Troy Lee <leetroy@gmail.com>
+References: <20260708092023.3826159-1-jamin_lin@aspeedtech.com>
+ <20260708092023.3826159-11-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20251103101034.59039-2-philmd@linaro.org>
+In-Reply-To: <20260708092023.3826159-11-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA4MDIxOCBTYWx0ZWRfX83mGsUmYH2IR
- oqToVygvi3elAHfjjkhi/XrTosVD2Pul1pFtl2J3R+l0i6j8+oGiEcO0uDgrSCXc7VSQxl4YYVU
- neX1S/TWPYWpoxQ0LeQqvJpIWR48fxHgXvPgJD4zVbCrtrSd6UUINSdLi8nc+bOVp4jTxb/i5a2
- +dwKy05v7UFm2yrWVFb1/cbmCbCo+MkxWzsKWo33jhJZ8SwQcpKAYAM4bH5nYcayx+aIAK+nF/s
- sDf2taL5hBgyKcXWWSmoAgFrLFV9wM3gUoqfq/IAOxGdicXKQXj49R+CVLY/XXWoSbnYiBKjHBc
- LYZl4effDAHQUvZZ7tFL2TTjKp4Cg8veE85axK9idRgVr1JJCSTfMKqmfwX0etXAI4yfMUqIwZU
- tXoQuW2DYAXky8YgPJeAiUtDEr0k68DrmdlhimfL4WWDlPrzs7Zgviv/qWVmKfJBPoYMq6Qx5w4
- +/VDwA7vY1TWyqXLLUQ==
-X-Proofpoint-GUID: eFsnasn9F2Bu-EW_6Pw4LLPIEsKKJcaC
-X-Authority-Analysis: v=2.4 cv=TMp1jVla c=1 sm=1 tr=0 ts=6a4ecb97 cx=c_pps
- a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Proofpoint-ORIG-GUID: X_z8a6PMMuEeuEN7oqMAfWlGCJKMnpDy
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA4MDIyNSBTYWx0ZWRfX+SDD0aIrJ8ld
+ rVikuii7z8kMWidE86zLbzZQfXkxkWGk99mj2ePKnkFdqC9/yb/ZrZ1bBPF8G86dKXbNqHYjwXq
+ zYAPFVO6IjGyamTW2NGb1QC3D6KoqNqxrFxK6HHiDmVEcChQa2dLkybUxuhMm6Q8CQKHJSh2zKG
+ IW4JtU0cfdGWfGID5JZBRfbmBbZVCPUlm+fpXcthNEBd/G6VarlANd8CobuqY+AN5jrU3Ktc4Gq
+ stae6el2xus5EZqcov2RQwjwhMWcn+DWDve62FamjBql5ZMPuz2fgbnItj6b5qmzV50w1LR7pSG
+ JaI0x2SgC/LB9kmmMHbqwrINlj3Zalnt+BWLdFGL9Fn0tMON7YP7EdspJcvTo2jtsPyzH06yLxJ
+ pYqESEwYKpRM75uzwMxKxbWEu5R7Qu2ACUg/rtfWJyLnDDhQ18t3xJvzIJNWFSlmFFztWKLvEeW
+ Q7+QWmAyhz1rzQBjxdw==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA4MDIyNSBTYWx0ZWRfX/GhkRqS/7Yqj
+ 9oCb6BvLJm2wOQNDzkW3TK9P1p8Ef0Sb7VBt2FIUt9OOomyh8/Oc1wRfo6pT4HdW/8JiNhdsFdH
+ Ol8TGsMMATko1LMi+QOPXJ874lMM2E0=
+X-Authority-Analysis: v=2.4 cv=PYPPQChd c=1 sm=1 tr=0 ts=6a4ed57f cx=c_pps
+ a=wEM5vcRIz55oU/E2lInRtA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
- a=KKAkSRfTAAAA:8 a=TsVdnq78nccsToMOntQA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=dawVfQjAaf238kedN5IG:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA4MDIxOCBTYWx0ZWRfX2LSlCBJTHNzW
- y/4VYyMxIufJMEHK/9OTyHHZ1laol64N/D2BJNgFR5NpXRswGqm5w/lBIQ1JTJluwfBxRw0Ojxf
- RKqwHtYPfOR83pYFnp2PAxSakzJhU0M=
-X-Proofpoint-ORIG-GUID: eFsnasn9F2Bu-EW_6Pw4LLPIEsKKJcaC
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
+ a=V2NxCb60AAAA:8 a=GyafrK3KZhnXGc5g8acA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=OIgjcC2v60KrkQgK7BGD:22 a=3L6qF29SlnrayQqPM2jZ:22
+X-Proofpoint-GUID: X_z8a6PMMuEeuEN7oqMAfWlGCJKMnpDy
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-08_04,2026-07-08_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 priorityscore=1501 suspectscore=0 adultscore=0
- lowpriorityscore=0 bulkscore=0 malwarescore=0 phishscore=0 spamscore=0
- clxscore=1015 classifier=typeunknown authscore=0 authtc= authcc=
+ priorityscore=1501 phishscore=0 lowpriorityscore=0 impostorscore=0
+ malwarescore=0 adultscore=0 clxscore=1015 bulkscore=0 spamscore=0
+ suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
  route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2607080218
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+ definitions=main-2607080225
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -163,107 +167,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/11/25 11:10, Philippe Mathieu-Daudé wrote:
-> From: Richard Henderson <richard.henderson@linaro.org>
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Hello,
+
+On 8/7/26 11:20, Jamin Lin wrote:
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   include/system/hvf_int.h |  3 +++
->   accel/hvf/hvf-all.c      | 25 +++++++++++++++++++++++++
->   accel/hvf/trace-events   |  1 +
->   3 files changed, 29 insertions(+)
+>   docs/system/arm/aspeed.rst | 42 +++++++++++++++++++++++++++++++-------
+>   1 file changed, 35 insertions(+), 7 deletions(-)
 > 
-> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
-> index 3d2be4092ef..5a57691885f 100644
-> --- a/include/system/hvf_int.h
-> +++ b/include/system/hvf_int.h
-> @@ -89,6 +89,9 @@ int hvf_arch_get_registers(CPUState *);
->   /* Must be called by the owning thread */
->   void hvf_arch_update_guest_debug(CPUState *cpu);
+> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+> index 2d51ceeb84..b6dd757f6e 100644
+> --- a/docs/system/arm/aspeed.rst
+> +++ b/docs/system/arm/aspeed.rst
+> @@ -386,18 +386,25 @@ Booting the ast2700fc machine
+>   AST2700 features four Cortex-A35 primary processors and two Cortex-M4 coprocessors.
+>   **ast2700-evb** machine focuses on emulating the four Cortex-A35 primary processors,
+>   **ast2700fc** machine extends **ast2700-evb** by adding support for the two Cortex-M4 coprocessors.
+> +There are two methods to boot the ast2700fc machine.
+> +
+> +Manual boot using ``-device loader``:
+> +
+> +In this approach, users manually load firmware and assign entry points via QEMU loader devices.
+> +By default, the PSP begins execution at address ``0x430000000``, the load address of the bl31
+> +firmware. The SSP and TSP start in the powered-off state and must be explicitly enabled by the
+> +PSP through writes to SCU registers.
 >   
-> +void hvf_protect_clean_range(hwaddr addr, size_t size);
-> +void hvf_unprotect_dirty_range(hwaddr addr, size_t size);
-> +
->   struct hvf_sw_breakpoint {
->       vaddr pc;
->       vaddr saved_insn;
-> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
-> index 0a4b498e836..e13abddbd9c 100644
-> --- a/accel/hvf/hvf-all.c
-> +++ b/accel/hvf/hvf-all.c
-> @@ -58,6 +58,31 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *file, unsigned int line,
->       abort();
->   }
+>   Steps to boot the AST2700fc machine:
 >   
-> +static void do_hv_vm_protect(hwaddr start, size_t size,
-> +                             hv_memory_flags_t flags)
-> +{
-> +    hv_return_t ret;
-> +
-> +    trace_hvf_vm_protect(start, size, flags,
-> +                         flags & HV_MEMORY_READ  ? 'R' : '-',
-> +                         flags & HV_MEMORY_WRITE ? 'W' : '-',
-> +                         flags & HV_MEMORY_EXEC  ? 'X' : '-');
-> +
-> +    ret = hv_vm_protect(start, size, flags);
-> +    assert_hvf_ok(ret);
+> -1. Ensure you have the following AST2700A1 binaries available in a directory
+> +1. Ensure you have the following AST2700 binaries available in a directory
+>   
+> - * u-boot-nodtb.bin
+> - * u-boot.dtb
+> + * u-boot.bin
+>    * bl31.bin
+>    * optee/tee-raw.bin
+>    * image-bmc
+> - * zephyr-aspeed-ssp.elf (for SSP firmware, CPU 5)
+> - * zephyr-aspeed-tsp.elf (for TSP firmware, CPU 6)
+> + * zephyr-aspeed-ssp.bin (for SSP firmware, CPU 5)
+> + * zephyr-aspeed-tsp.bin (for TSP firmware, CPU 6)
+>   
+>   2. Execute the following command to start ``ast2700fc`` machine:
+>   
+> @@ -407,6 +414,8 @@ Steps to boot the AST2700fc machine:
+>   
+>     $ qemu-system-aarch64 -M ast2700fc \
+>          -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot.bin \
+> +       -device loader,force-raw=on,addr=0x42C000000,file=${IMGDIR}/zephyr-aspeed-ssp.bin \
+> +       -device loader,force-raw=on,addr=0x42E000000,file=${IMGDIR}/zephyr-aspeed-tsp.bin \
+>          -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
+>          -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
+>          -device loader,cpu-num=0,addr=0x430000000 \
+Orthogonal to your work, I found this setup interesting to stress
+my work-in-progress 'split-accel' branch, running QEMU with HVF
+when possible, otherwise TCG.
 
-Maybe this assertion is a bit aggressive toward users, since while
-we know the host limits, we don't know what the guest wants to do.
+I manually started the SSP & TSP first:
 
-I got:
+=> mw 12c02204 40000000
+mw 12c02204 40000000
+=> mw 12c02120 1
+mw 12c02120 1
+=> mw 12c02224 00000200
+mw 12c02224 00000200
+=> mw 12c02160 1
+mw 12c02160 1
 
-qemu-system-aarch64: Error: ret = HV_ERROR (0xfae94001, at 
-../../accel/hvf/hvf-all.c:77)
+Surprisingly I could boot up to the guest login prompt spending
+most of the time using HVF
 
-Running with '-trace hvf_vm_map':
+(qemu) info accel
+36 transitions, 10943 SW and 86815 HW executions
+Accelerator settings:
+one-insn-per-tb: off
 
-hvf_vm_map paddr:0x0000000010000000 size:0x00020000 vaddr:0x104514000 
-flags:0x07/RWX
-hvf_vm_map paddr:0x0000000000000000 size:0x00020000 vaddr:0x104890000 
-flags:0x07/RWX
-hvf_vm_map paddr:0x0000000400000000 size:0x80000000 vaddr:0x380000000 
-flags:0x07/RWX
-hvf_vm_map paddr:0x0000000030bc0000 size:0x00040000 vaddr:0x1048b4000 
-flags:0x07/RWX
-hvf_vm_map paddr:0x0000000050bc0000 size:0x00040000 vaddr:0x1048f8000 
-flags:0x07/RWX
-hvf_vm_protect paddr:0x0000000430000000 size:0x00004000 flags:0x05/R-X
-hvf_vm_protect paddr:0x0000000030000000 size:0x00004000 flags:0x05/R-X
-qemu-system-aarch64: Error: ret = HV_ERROR (0xfae94001, at 
-../../accel/hvf/hvf-all.c:77)
+Translation buffer state:
+gen code size       9098100/1072906240
+TB count            16086
+TB avg target size  14 max=468 bytes
+TB avg host size    230 bytes (expansion ratio: 15.8)
+cross page TB count 12 (0%)
+direct jump count   8371 (52%) (2 jumps=5949 36%)
+TB hash buckets     4813/8192 (58.75% head buckets used)
+TB hash occupancy   21.05% avg chain occ. Histogram: [0,10)%|█▁▇▁ 
+▃▁▁▁▁|[90,100]%
+TB hash avg chain   1.059 buckets. Histogram: 1|█▁|2
 
-Should we propagate the error to upper layer?
+Statistics:
+TB flush count      0
+TB invalidate count 8796
+TLB full flushes    0
+TLB partial flushes 268
+TLB elided flushes  53158
+CPU#0: cortex-a35
+HVF cumulative execution time: 7.020s
+CPU#1: cortex-a35
+HVF cumulative execution time: 6.000s
+CPU#2: cortex-a35
+HVF cumulative execution time: 6.805s
+CPU#3: cortex-a35
+HVF cumulative execution time: 7.656s
+CPU#4: cortex-m4
+HVF cumulative execution time: 0.000s
+CPU#5: cortex-m4
+HVF cumulative execution time: 0.000s
+(qemu)
 
-Are there cases we can safely ignore?
+Over 10700 "SW executions" are the M-profiles running,
+only 162 correspond to A-profiles :)
 
-> +}
-> +
-> +void hvf_protect_clean_range(hwaddr addr, size_t size)
-> +{
-> +    do_hv_vm_protect(addr, size, HV_MEMORY_READ | HV_MEMORY_EXEC);
-> +}
-> +
-> +void hvf_unprotect_dirty_range(hwaddr addr, size_t size)
-> +{
-> +    do_hv_vm_protect(addr, size,
-> +                     HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC);
-> +}
-> +
->   static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
->   {
->       struct mac_slot *macslot;
-> diff --git a/accel/hvf/trace-events b/accel/hvf/trace-events
-> index 2fd3e127c74..f989da59492 100644
-> --- a/accel/hvf/trace-events
-> +++ b/accel/hvf/trace-events
-> @@ -5,3 +5,4 @@
->   # hvf-accel-ops.c
->   hvf_vm_map(uint64_t paddr, uint64_t size, void *vaddr, uint8_t flags, const char r, const char w, const char e) "paddr:0x%016"PRIx64" size:0x%08"PRIx64" vaddr:%p flags:0x%02x/%c%c%c"
->   hvf_vm_unmap(uint64_t paddr, uint64_t size) "paddr:0x%016"PRIx64" size:0x%08"PRIx64
-> +hvf_vm_protect(uint64_t paddr, size_t size, uint8_t flags, const char r, const char w, const char e) "paddr:0x%016"PRIx64" size:0x%08zx flags:0x%02x/%c%c%c"
+Thanks for this motivating setup!
 
+Phil.
 

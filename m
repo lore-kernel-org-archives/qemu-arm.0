@@ -4,117 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD7F5C43458
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 15:12:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0B4DC43458
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Jul 2026 15:20:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whTwW-00040B-MQ; Wed, 08 Jul 2026 11:12:08 -0400
+	id 1whU4U-0005K7-GQ; Wed, 08 Jul 2026 11:20:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1whTwV-0003zp-V1
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 11:12:07 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1whTwU-0005HX-F1
- for qemu-arm@nongnu.org; Wed, 08 Jul 2026 11:12:07 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-47dec32798aso830690f8f.1
- for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 08:12:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783523524; cv=none;
- d=google.com; s=arc-20260327;
- b=IKdKtMFYVpIktAjCSFhiPSqCFHeN7M/BIFKvDk33r4d0LZvmqahjFJP03uvkToiIWw
- fUDYcukfxmJ8AGeKeCC3D88PdvuhuLyBemA7uFtQ2vfyhz6INsK6X6KPI4Yo9JrXa2Wz
- ulPBFQ1M87EiwklVrItVHAwYH9Zuu6RIQwA5c3x6nWzEFMY9Sfm2sp7SW0FG246PqST9
- t7d1k2/Yo2yOtjwTS5s0gvbQEungkRBujc2YLLPce5fZDsO0dNi02rV3BF0hw3iZyr2l
- CKwJ/lSu4o5BbMajDTF23jm7NsvpsZm+6OTeWpuwjhy9Hn5COxYRlTtaN0L3+4XRv7fK
- 0UgA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=3a1hWsoVamXx8LIAPUq012ps2y8ekTt6uWioV93hNlk=;
- fh=4Fnlp//Anbscs5yJSDyJdDsb5vQx/3zvaunsQfixbjk=;
- b=b9XaHp1tCxVM+vNpiwL2+HN2FyNny8l93HIkeVdq3If9DgYBznN6CpmiLNWk1mf7td
- PD41lBi1kJXsJmCqotNmQ9YjIEOKEmzjqnQ1MzBxkINnh3XesXzNiULE43NyarfQVdOy
- G7BA76u0ZWvBxQ3sWDztzzpfNlkvcsNFDmM78rWNm2+Oy0Uq8pblP/+OxmtqQeUbQ5oL
- SkHiwWZZCLx+QF0hBEEXvkLFQep/NFE6eRbKo2OTycO3jIxXelZe2SbPHG1D5yIK9OGI
- ZhMUX59Yr2mzfTTgb1EfinasIewks3WbcFDcAENYCtWP59skXV8gic3ZJJqECJB8ZT/R
- Nb/w==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1783523524; x=1784128324; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=3a1hWsoVamXx8LIAPUq012ps2y8ekTt6uWioV93hNlk=;
- b=eilNnxNKCwVtW3X1Rx2mNa+x6DZoPawlXJ417ghZ0gWuP3clAr8swCqPuGaJyUPMhP
- I6RCNr0xh2mn8ZoRw/kLBXHxdE2oY3f0B7PK2PHAqp6cb9gqxVGljLVawU0uDKXq0jw3
- zImG8COEtO1043dcRQXN7/ue3naNi2NAC17WSDP8dhCjpcXwmiaThaa4SFMHwXlsaO+w
- +ECKzKsbO/O4g9Z8Kr/BWyhR7kvPDLm0iBbWNnj3EafU9WY1Dmdqex9FMnfJcovhCYGy
- dKZxIuAeokTYyWRJboAhq9SQ9PLiibAo6l09Ej1xWiYCKxGrsEjJnObFxcJ/AA5dhL5T
- zpEQ==
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1whU4S-0005Jm-13
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 11:20:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1whU4N-0007UP-7H
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2026 11:20:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1783524013;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=Fo/sV5MUbwlVd+NTZQ1OtdFbABFEV/liJ/xV8wGClJg=;
+ b=S/ReaJRSd5yBY1YtGVv9AJHBSmIQEn9ZTpUpQgzts0tsNmQGMiqrWlNb2sBI5CREihIsf/
+ yc9b8/mXxjfgHYK6wJOU6K3i5r2SQ3v457d1HUwbAepZdg1EPjL2qeY0+Mp/bapTylAHeG
+ lXOw3i8mQeSJD3vcRGDRRi/31HsPxAA=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-278-7suaOVq7Mta4WG437xCEaw-1; Wed, 08 Jul 2026 11:20:12 -0400
+X-MC-Unique: 7suaOVq7Mta4WG437xCEaw-1
+X-Mimecast-MFC-AGG-ID: 7suaOVq7Mta4WG437xCEaw_1783524011
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-472a798fc7cso644892f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 08 Jul 2026 08:20:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783523524; x=1784128324;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=3a1hWsoVamXx8LIAPUq012ps2y8ekTt6uWioV93hNlk=;
- b=HTYK8wcv3q0Sg5jpG911H6i8qqdaaWcByrlZcFFxPtFrZb7AUj8HIEkbiG5NVdRASx
- 0V/QhYzS/t9lgEmeqP3psiMNo9Hb5qI5Ivy/zZSlSqtUBZXmDpQW4pgwLHmrexqbgxVJ
- TqoG/yjyu/93BocudHTiBLwYaHvM1j4Jxu9IHuFbtKHHFWe8hnkezI2rNnKYAYNIXG1R
- 7AXnJmkO0X4UQrTxQVXlzmwj80hW+mPLQVD1FzgMW5SySFUHhlhjCC8suI75A+0hnYvZ
- pJu7f2jznAULg4fD660GEZDdPwrx1Dx0fjDfcLMF8XHHh8TMGCXigp5MTNk1ReXXPy0W
- iYaQ==
+ d=1e100.net; s=20251104; t=1783524011; x=1784128811;
+ h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=Fo/sV5MUbwlVd+NTZQ1OtdFbABFEV/liJ/xV8wGClJg=;
+ b=q6xVhmKmBEZXQimFVUqwPFsi2IjDj9wC0KoD5Yrj+35NTiWT8A/Wmv7vp6dTuHXIPl
+ RacPbH+mgBr1fJXR7Km4OH6vcIVHaQL67Om0mC9ohBWf3x2N4rupd4eB8LV11vdVm4rK
+ w6dZCv9XyR5Ru1K6jF9/TVDSox3CSGCAA4f02n1q6g8vSuEoPga9A3+OyVQ0wXb10Zbf
+ 3WzLKBn8Hu8yZDdm3e+uhZkbz4M68duv4YfM8m1k9G5+SGWN5JpO8Z6ZMUfbKfuQUnVf
+ iWIrTbPM13yWImGYxN4e+l+W3Az3u0KsvoBlPjQzgpZ1xqg2jJoOPmE1MZGNlidGgPcS
+ 1PuQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpT+3jbdEAE2eBaD1V3Qpbotmdx+BAJv7CkGpqzztHEgB39u1lxpIKNYdsqLPUmbM/Qvypitu0qyQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxhQN5h6ZYzeGOAM1WMbspAYYbwRASj/K6Bmvnmd/LHJeU+uDRG
- G2CGBwtXnZCOEDM0Hmb5zXl4E5tRVXyJmzlgUj5Rc8i3vW3BwS7gwtzNiXIjyryURKYPtqJH7VQ
- AQG5XlifMj88JD9rPHWeIR4PTRo4E0n8=
-X-Gm-Gg: AfdE7ckBp/jJ/71JS7cMTwFbNC/TnUrqvGzQNF7se80GiVaODonAOlwdaNMuf92LOXY
- 6IsaSu7y4FsFilrO/XRG7n/LYqyMCRAqDZZjyIvY0g2uiBEGqIApyUdF0/b5aovMXBfl2lN3gvq
- cVFks49G6dO+rEJ361kMrC9KfjbY0uc86XxkQHgMYPmkqtEIcI1mdT2usFaffPt/aBCWjqkmK3M
- qeO9Vv4WnQbCdDAz3ttWxj7bUo8Ch6jEVxZls7GLyWh1aYQkDoBb0E3jiRD+OIaTJupGJfPB4JE
- fulT+4BjUQ==
-X-Received: by 2002:a05:6000:4028:b0:475:c578:b619 with SMTP id
- ffacd0b85a97d-47df0797e0bmr3537040f8f.30.1783523524102; Wed, 08 Jul 2026
- 08:12:04 -0700 (PDT)
+ AHgh+RqpDfrPqhZyCKilI4BVUwVh+zwrPvPaOjE0cN6CuYhoosQoSen4EPKJ20q087xs1XXwpcjvYiZupA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy5CWb3YP2G69Bl1loktd94ic4WNSVn/bxVxKEs2ogyyq1DZFuU
+ TNnobWdV6NRFSX8QBS5UBwAj7pqiTyLShd3ZgIlKy0Qq2an0mbAA/kwaflA8Z2G7BjkwhDNwV7/
+ MzBnTMTwwChCW2x9ZRqFcCi0TByrE5evUNfoKydYdbhCgJGzwoyrmvw==
+X-Gm-Gg: AfdE7ckqkYYQu3Ag7n0qzgyK7zrNBKszeN/CEEt7dL8irMKvyRlKQb0GU8pbxycLXsZ
+ TTXwRUCZOiAGiMDUzCA2iC7dIgoN43HGlAQNp1TG+ilTMRDWEfYrAPIWzR30Juhhb9iCvGR8inP
+ UUSIa6+Otmd/iG70SHFQgSK6ahDLG6N8O9grVwsBH68gY9nLY9y8P1OBquC7jnI5D0hpgvmNagh
+ bT5HNOQwOBg8CmF4UPaJmIoEN8x5vXtINk8ymkmZUsfpBoW90ETRYVGALw4InPwCYKuU/93hdwo
+ 8yUCt+H+5P+FcY51ubSgL7Owae4msKou9CssC0pwttqnx+eG5pT22dKB10sGKpZUWF6C/qgg2Qk
+ V23rkMUTydy+2SBLciAwxyxvbOFnrSK1zQWAgJ6liogmKw2Jabw==
+X-Received: by 2002:a05:6000:1a8e:b0:45d:4a00:b927 with SMTP id
+ ffacd0b85a97d-47df07ec6abmr3717202f8f.31.1783524011339; 
+ Wed, 08 Jul 2026 08:20:11 -0700 (PDT)
+X-Received: by 2002:a05:6000:1a8e:b0:45d:4a00:b927 with SMTP id
+ ffacd0b85a97d-47df07ec6abmr3717157f8f.31.1783524010876; 
+ Wed, 08 Jul 2026 08:20:10 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
+ ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-47aa039ae44sm41781776f8f.23.2026.07.08.08.20.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 Jul 2026 08:20:10 -0700 (PDT)
+Message-ID: <9be0741b-ce3b-4c54-b4f5-8442ee9dbb9b@redhat.com>
+Date: Wed, 8 Jul 2026 17:20:09 +0200
 MIME-Version: 1.0
-References: <20260708111544.1440761-1-clg@redhat.com>
- <20260708111544.1440761-2-clg@redhat.com>
-In-Reply-To: <20260708111544.1440761-2-clg@redhat.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Wed, 8 Jul 2026 23:11:48 +0800
-X-Gm-Features: AVVi8CfbYt3qSsXmCFYz__O7sq8kAHfp2j05SKOTq2DUih6oFmgKDry06GRsE1g
-Message-ID: <CAEUhbmXns11jBwfc5ySZkbYx=Ss3ytG3q5VAAG1D+yevXfKywg@mail.gmail.com>
-Subject: Re: [PATCH 1/4] tests/qtest: aspeed_smc: Introduce read_page_mem_fn
- for page read helpers
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, 
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- Bin Meng <bin.meng@processmission.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=bmeng.cn@gmail.com; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] vfio/listener: Replace misalignment whitelist with DMA
+ capability check
+To: Alex Williamson <alex@shazbot.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Eric Auger <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+References: <20260708133604.1606448-1-clg@redhat.com>
+ <20260708090650.2247755c@shazbot.org>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20260708090650.2247755c@shazbot.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: agAFWoCwxLNWpQiIneg7OROx8HrzJc-X1cYYGb0RXcY_1783524011
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,16 +159,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Jul 8, 2026 at 7:17=E2=80=AFPM C=C3=A9dric Le Goater <clg@redhat.co=
-m> wrote:
->
-> This to prepare for fast-read variants. No functional change.
->
-> Signed-off-by: Cedric Le Goater <clg@redhat.com>
-> ---
->  tests/qtest/aspeed-smc-utils.c | 29 +++++++++++++++++++++--------
->  1 file changed, 21 insertions(+), 8 deletions(-)
->
+On 7/8/26 17:06, Alex Williamson wrote:
+> On Wed,  8 Jul 2026 15:36:04 +0200
+> Cédric Le Goater <clg@redhat.com> wrote:
+> 
+>> The vfio_known_safe_misalignment() whitelist (currently TPM CRB only)
+>> requires a new entry every time a device exposes a non-page-aligned
+>> region, which does not scale.
+> 
+> Arguable as we have exactly one class of device so far that's validated
+> as safe.
+> 
+>> Replace it with a DMA capability check: a region that is not
+>> page-aligned or is smaller than a host page can never be a valid DMA
+>> target, so a page-offset mismatch is harmless and only traced. Only
+>> warn for page-aligned, page-sized regions where the mismatch could
+>> indicate a real mapping problem.
+> 
+> But it's the composition into the address space and how that address
+> space is defined to the guest that matters.  Imagine a minimum counter
+> example to the test presented here, a page-size range of RAM in the VM
+> is composed by a device as two contiguous sub-page MemoryRegions.  We
+> only see the individual MRs here, they're each sub-page, the shape
+> suggests they're not DMA targets, but together they map contiguously
+> into the VM address space.  KVM can trap and emulate them as normal
+> RAM.  QEMU emulated devices can DMA to them as RAM.  VFIO cannot map
+> them through the IOMMU.
+> 
+> That is what this test is meant to validate.  The judgment that the
+> control register range for a TPM device presented as a RAM MR is not a
+> meaningful DMA target for a vfio device is the thing that cannot be
+> determined based only on the shape of the MR.
 
-Reviewed-by: Bin Meng <bin.meng@processmission.com>
+ok. I understand. this is difficult to address cleanly without a
+white list then. Which is what "Extend safe misalignment check to
+tpm-ppi region" proposes. I will let it cool down.
+
+This change is not critical. It is part of a broader effort to
+avoid giving users the wrong impression that the problem comes
+from VFIO when analyzing diagnostic logs with errors/warnings
+spread across the system. This is not the only VFIO message in
+this category.
+C.
+
 

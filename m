@@ -4,73 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 842F9C43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 11:45:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D3D7C43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 13:02:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whnBC-0002Qs-QK; Thu, 09 Jul 2026 07:44:34 -0400
+	id 1whoOK-0002aZ-DN; Thu, 09 Jul 2026 09:02:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1whnBB-0002QO-Pa
- for qemu-arm@nongnu.org; Thu, 09 Jul 2026 07:44:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1whnB9-0006Va-Lb
- for qemu-arm@nongnu.org; Thu, 09 Jul 2026 07:44:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783597470;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type;
- bh=QwkulsDvfDoWX/rVwfo7ZsGXanw+41LqOYKrND7Mexc=;
- b=ejbVQTmXspyjh/tx5peW1Dk2Lz5oWEBjuFB+h/WOwyfzqtm2ithVIrWRJdtiPdojZueZOa
- j6mTJcRnHiDDsnHvWmJeGn/mhvISScPOtrsXAfhHRcyyI91JqOgFr3krZh/OJWddYxgmqg
- XnqTPlKW8IzMu242sYXBglUpkYDwwXM=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-674-OF0nRYYdOgWBZrXD3j5xNw-1; Thu,
- 09 Jul 2026 07:44:25 -0400
-X-MC-Unique: OF0nRYYdOgWBZrXD3j5xNw-1
-X-Mimecast-MFC-AGG-ID: OF0nRYYdOgWBZrXD3j5xNw_1783597464
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 452E91955F2D; Thu,  9 Jul 2026 11:44:23 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1F5BE3000C31; Thu,  9 Jul 2026 11:44:21 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 85E0F21E6920; Thu, 09 Jul 2026 13:44:19 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Jan Kiszka <jan.kiszka@siemens.com>, Peter Maydell
- <peter.maydell@linaro.org>, qemu-arm@nongnu.org, BALATON Zoltan
- <balaton@eik.bme.hu>, qemu-ppc@nongnu.org, Huacai Chen
- <chenhuacai@kernel.org>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@mailo.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>
-Subject: A few Machines crash when "no default audio driver available"
-Date: Thu, 09 Jul 2026 13:44:19 +0200
-Message-ID: <87o6gge6b0.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1whoNi-00026W-4L
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2026 09:01:41 -0400
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1whoNg-0000L5-Ii
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2026 09:01:33 -0400
+Received: by mail-yx1-xb12e.google.com with SMTP id
+ 956f58d0204a3-667627ae83aso2438135d50.0
+ for <qemu-arm@nongnu.org>; Thu, 09 Jul 2026 06:01:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783602090; cv=none;
+ d=google.com; s=arc-20260327;
+ b=SuHN5iGUQQ5ZO+DsqaQYWF2EhSGtbSbRMdxywa/1P84r0iADagJWjT0MVKVCXxGAG+
+ pMrxKjEwbDWERjq1g5cJn7UyXnj3NvNEIOLAMSaqgTNtH3aHGsJBGfFQy93wq4hygZvK
+ IxzGWWivCP3KdELcvk0wa7xaUfREtbtmFMAmDfDEMjrkRiyApCFUBAUnPvVYgjo1doWl
+ EY+k8f0HdYoNKjlNAtufxaLmNcU+AWW4n7iN/18iR1aEFdcJdNlKdBE28w0FDqjIrWdc
+ WxyNCs/lca5dIqXD2NYzkCAm22xT02uKeFS3P8ICG3i6bK3KUIgJ55iBp3kL1GCX9RK8
+ KW4g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=gOxFxPb0fXxfrOTgFJ55wT0DB+UjySCOyk8PXNaDbcw=;
+ fh=CdgY2PYPMq0lg/LIw3t8+bqwSu3BpjreZoZUQLr+Hs8=;
+ b=mKaC70aIYfkJ6qN+rz3SQfELfckkMVSLdvd6eXdWDkFmUqi1PPyS1HAQ0alrgyXxvv
+ f1IpGmg4qynndq1eMbySvHDhokmyIV9hTWVyrl9MXUdOGJnwHgLzB9LR7jxnATTiJfAd
+ 90hTSgpvR77exhAUDxqdqp9a8gQil4a123fp0/rSwyzjB+JPurYWPdV7LJ/bMZNgQlrj
+ AKuzfsgJUb+QGTnnpLoPN3VsKy1o4RVm9ofuJ+g89OmvmiNS0ggfHDaqwSOwWyixN+5p
+ 3IyWCEhrEVjplCxhUWC8SHaH7YV8Fl9gBgLWF7o2CbMpKE5iFBRPqvv/iiocJNoyb3Rq
+ 43/Q==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1783602090; x=1784206890; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=gOxFxPb0fXxfrOTgFJ55wT0DB+UjySCOyk8PXNaDbcw=;
+ b=ubR4gcJVtEOhI6JmN0lAB1+IMWo3Bgtyz5pl/t08C/I1hH8lwgtObmURtfeSuATr+G
+ hFcA19BREmXM7d4idqFbkkVi1VIM5ovvo1CTpMkrc269AP9VNjQH4a6UDownp145BReD
+ wqHmmFPbciY6HFBxH+1hrq5od69cljPICfJQ4KQ1ZDSM1cLQCW9IpRqoSWhyCj/9bEOT
+ UA9tFP81CK3n/LZwMZCJMKSnULglFT7hpvUGwkv0qRd3HriZ05bRxnNPWJ0AuxYxgqds
+ rWc7E+a9NzY68fXRAr6+k5f2L2NPxmR8IKBoqTnRc2O3bXm8sJPOfUmSlINbC5/iF6qZ
+ RUYA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1783602090; x=1784206890;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=gOxFxPb0fXxfrOTgFJ55wT0DB+UjySCOyk8PXNaDbcw=;
+ b=kYtxkRM+GEB7IgpwXmHaNSj4KZS3x4ktip9mRctrPZ4y9oM+hjDfSYIAHDFt2dtd24
+ xCIdV0FW2Ml+qWobwq3znJ8cR+IjLPfaOlZTWoleLeDoERn8+F1CVE5/UPs58Mxh1l6D
+ WqaZpnB1Oop/qXodn/AQErQVTt6J5K+rXQ+dZvDlsQdXFxNBSrVmpVnRwy7zGH+u6uS1
+ I3RlvHQ9WQjfL+zKboPQpvkn197t/BK8seXXxczbHx9+5VI8m3tS4d86vJyyQBBIJXOG
+ GjXXN8qNAubvSSwPN6dfOJFcM9JyQQ/VdaqzqfNobMt9bS9RH4Zq2/V66+6leK+eCRW/
+ 7Y6A==
+X-Forwarded-Encrypted: i=1;
+ AHgh+Rr2wG2KKENrTpA1UGL6jXFv3T1Kir/DgaV8f0kzJHwQ6mY9i1b1Fc4vgF+5eBkomG12uWn7CWVA8g==@nongnu.org
+X-Gm-Message-State: AOJu0YzxXTv+NSeFrXeuVB4pCTE6JuQErXhPPkHxxpeWcHqynF85qwyu
+ WGjO4l2MrJiit2+X/INowzYp3QSm1ie3ZuaFUKWDivzesJUH1bRzG3ehtjuj60t43h0ddWBQ5Wf
+ qImBBdNzGbg3xaItFLkodbICQwwnzzph0ObrzeAK5uA==
+X-Gm-Gg: AfdE7ckzDFG0bejHEVclg7/WNIYVl3arOlGAiUtEH2KtpZI/kkEal9sBPG4vYxHcMl7
+ N8QrDh5v2E66vAXZsIiC6eRVr8EzlaqVz6GowCqJG2T9aMB/kynTiQQIifbyGa95O12prucnALw
+ CIPayAk9muN5Ys2K5EWvyIJS9YhIiPT97gAcDIdvQ+4kScqNYZ364+GAvE8GRSbUZJXpSHyN7o0
+ 8JrIaK3XDW6GIfjdEMDYh12APofuUoB8KfG7Zb9HbloGmANs+o9iwfvlDall91rTNUoBOfON7ZQ
+ pBe8hU6l94aN2t0KASn2skD5MdhRklQInLNaixELS8GLR2DivjygMP/I
+X-Received: by 2002:a53:acc5:0:10b0:667:69c:123f with SMTP id
+ 956f58d0204a3-6679f1cc478mr4131147d50.79.1783602090048; Thu, 09 Jul 2026
+ 06:01:30 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: krRLD61JisExxpYEMcM8xIKrJYaIy-JzfDTYOtr_lJM_1783597464
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <87o6gge6b0.fsf@pond.sub.org>
+In-Reply-To: <87o6gge6b0.fsf@pond.sub.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 9 Jul 2026 14:01:19 +0100
+X-Gm-Features: AVVi8Cf7N4WCMoBs4AQXOtejW8Wa1_pSR1PM7ntg91TEXe548sunjdMksZ4l28w
+Message-ID: <CAFEAcA9goRQuxw3VD7AqUOHHTdOXu8MSfCxdQMBviE3QgGD58w@mail.gmail.com>
+Subject: Re: A few Machines crash when "no default audio driver available"
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
+ qemu-arm@nongnu.org, 
+ BALATON Zoltan <balaton@eik.bme.hu>, qemu-ppc@nongnu.org, 
+ Huacai Chen <chenhuacai@kernel.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@mailo.com>, 
+ Jiaxun Yang <jiaxun.yang@flygoat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,102 +120,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-I stumbled over ARM machine musicpal, PPC machines pegasos1, pegasos2,
-and MIPS machine fuloong2e crashes.
+On Thu, 9 Jul 2026 at 12:44, Markus Armbruster <armbru@redhat.com> wrote:
+>
+> I stumbled over ARM machine musicpal, PPC machines pegasos1, pegasos2,
+> and MIPS machine fuloong2e crashes.
+>
+> I run them like this:
+>
+> $ qemu-system-aarch64 -M musicpal -nodefaults -S -display none -monitor stdio
 
-I run them like this:
+> Died when device_set_realized() tried to propagate a "no default audio
+> driver available" error to &error_abort.
 
-$ qemu-system-aarch64 -M musicpal -nodefaults -S -display none -monitor stdio
+Is this something we want to have be a possibility the devices
+have to cope with? Can we have the "ignores all audio data"
+backend be always available instead?
 
-Backtrace:
+Otherwise every audio device needs to cope with "there is no
+audio backend available" and implement "do nothing with the
+audio data" itself.
 
-    #0  0x00007ffff4a5432c in __pthread_kill_implementation () at /lib64/libc.so.6
-    #1  0x00007ffff49fa15e in raise () at /lib64/libc.so.6
-    #2  0x00007ffff49e16d0 in abort () at /lib64/libc.so.6
-    #3  0x0000555555584ae9 in error_handle
-        (err=0x55555836e8a0, errp=0x5555579c55c8 <error_abort>)
-        at ../util/error.c:37
-    #4  0x0000555556055670 in error_handle
-        (errp=<optimized out>, err=<optimized out>) at ../util/error.c:301
-    #5  error_propagate (dst_errp=<optimized out>, local_err=<optimized out>)
-        at ../util/error.c:300
-    #6  0x0000555555dbc754 in device_set_realized
-        (obj=<optimized out>, value=<optimized out>, errp=0x5555579c55c8 <error_abort>) at ../hw/core/qdev.c:629
-    #7  0x0000555555dbf9e9 in property_set_bool
-        (obj=0x55555836eb50, v=<optimized out>, name=<optimized out>, opaque=0x555557b90f20, errp=0x5555579c55c8 <error_abort>) at ../qom/object.c:2484
-    #8  0x0000555555dc2ec9 in object_property_set
-        (obj=obj@entry=0x55555836eb50, name=name@entry=0x5555565a98c8 "realized", v=v@entry=0x555557b8faa0, errp=errp@entry=0x5555579c55c8 <error_abort>)
-        at ../qom/object.c:1548
-    #9  0x0000555555dc6ca1 in object_property_set_qobject
-        (obj=obj@entry=0x55555836eb50, name=name@entry=0x5555565a98c8 "realized", value=value@entry=0x55555836e9a0, errp=errp@entry=0x5555579c55c8 <error_abort>)
-        at ../qom/qom-qobject.c:28
-    #10 0x0000555555dc3666 in object_property_set_bool
-        (obj=0x55555836eb50, name=0x5555565a98c8 "realized", value=<optimized out>, errp=0x5555579c55c8 <error_abort>) at ../qom/object.c:1618
-    #11 0x0000555555dbbfde in qdev_realize_and_unref
-        (dev=dev@entry=0x55555836eb50, bus=bus@entry=0x55555834e0c0, errp=<optimized out>) at ../hw/core/qdev.c:284
-    #12 0x00005555557988d5 in i2c_slave_realize_and_unref
-        (dev=dev@entry=0x55555836eb50, bus=bus@entry=0x55555834e0c0, errp=<optimized out>) at ../hw/i2c/core.c:378
-    #13 0x0000555555b6fe1d in musicpal_init (machine=0x555557f21520)
-        at ../hw/arm/musicpal.c:1334
-    #14 0x000055555572d1d2 in machine_run_board_init
-        (machine=0x555557f21520, mem_path=<optimized out>, errp=<optimized out>)
-        at ../hw/core/machine.c:1696
-    #15 0x00005555559f9699 in qemu_init_board () at ../system/vl.c:2727
-    #16 qmp_x_exit_preconfig (errp=errp@entry=0x5555579c55c0 <error_fatal>)
-        at ../system/vl.c:2821
-    #17 0x00005555559fd3fc in qmp_x_exit_preconfig (errp=<optimized out>)
-        at ../system/vl.c:2816
-    #18 qemu_init (argc=<optimized out>, argv=<optimized out>)
-        at ../system/vl.c:3862
-    #19 0x000055555558d899 in main (argc=<optimized out>, argv=<optimized out>)
-        at ../system/main.c:71
-
-Died when device_set_realized() tried to propagate a "no default audio
-driver available" error to &error_abort.
-
-The error comes from audio_init().  Backtrace:
-
-    #0  error_setg_internal
-        (errp=errp@entry=0x7fffffffd730, src=src@entry=0x5555565cfd35 "../audio/audio.c", line=line@entry=106, func=func@entry=0x55555670a468 <__func__.3> "audio_init", fmt=fmt@entry=0x55555655ef38 "no default audio driver available")
-        at ../util/error.c:96
-    #1  0x0000555555ec18fc in audio_init
-        (dev=dev@entry=0x0, errp=errp@entry=0x7fffffffd730) at ../audio/audio.c:106
-    #2  0x0000555555ec1d36 in audio_get_default_audio_be
-        (errp=errp@entry=0x7fffffffd730) at ../audio/audio.c:130
-    #3  0x0000555555ec21c5 in audio_be_check
-        (be=be@entry=0x55555836ebf8, errp=errp@entry=0x7fffffffd730)
-        at ../audio/audio-be.c:15
-    #4  0x00005555556fc57a in wm8750_realize
-        (dev=<optimized out>, errp=0x7fffffffd730) at ../hw/audio/wm8750.c:628
-    #5  0x0000555555dbc7c7 in device_set_realized
-        (obj=<optimized out>, value=<optimized out>, errp=0x5555579c55c8 <error_abort>) at ../hw/core/qdev.c:514
-    #6  0x0000555555dbf9e9 in property_set_bool
-        (obj=0x55555836eb50, v=<optimized out>, name=<optimized out>, opaque=0x555557b90f20, errp=0x5555579c55c8 <error_abort>) at ../qom/object.c:2484
-    #7  0x0000555555dc2ec9 in object_property_set
-        (obj=obj@entry=0x55555836eb50, name=name@entry=0x5555565a98c8 "realized", v=v@entry=0x555557b8faa0, errp=errp@entry=0x5555579c55c8 <error_abort>)
-        at ../qom/object.c:1548
-    #8  0x0000555555dc6ca1 in object_property_set_qobject
-        (obj=obj@entry=0x55555836eb50, name=name@entry=0x5555565a98c8 "realized", value=value@entry=0x55555836e9a0, errp=errp@entry=0x5555579c55c8 <error_abort>)
-        at ../qom/qom-qobject.c:28
-    #9  0x0000555555dc3666 in object_property_set_bool
-        (obj=0x55555836eb50, name=0x5555565a98c8 "realized", value=<optimized out>, errp=0x5555579c55c8 <error_abort>) at ../qom/object.c:1618
-    #10 0x0000555555dbbfde in qdev_realize_and_unref
-        (dev=dev@entry=0x55555836eb50, bus=bus@entry=0x55555834e0c0, errp=<optimized out>) at ../hw/core/qdev.c:284
-    #11 0x00005555557988d5 in i2c_slave_realize_and_unref
-        (dev=dev@entry=0x55555836eb50, bus=bus@entry=0x55555834e0c0, errp=<optimized out>) at ../hw/i2c/core.c:378
-    #12 0x0000555555b6fe1d in musicpal_init (machine=0x555557f21520)
-        at ../hw/arm/musicpal.c:1334
-    #13 0x000055555572d1d2 in machine_run_board_init
-        (machine=0x555557f21520, mem_path=<optimized out>, errp=<optimized out>)
-        at ../hw/core/machine.c:1696
-    #14 0x00005555559f9699 in qemu_init_board () at ../system/vl.c:2727
-    #15 qmp_x_exit_preconfig (errp=errp@entry=0x5555579c55c0 <error_fatal>)
-        at ../system/vl.c:2821
-    #16 0x00005555559fd3fc in qmp_x_exit_preconfig (errp=<optimized out>)
-        at ../system/vl.c:2816
-    #17 qemu_init (argc=<optimized out>, argv=<optimized out>)
-        at ../system/vl.c:3862
-    #18 0x000055555558d899 in main (argc=<optimized out>, argv=<optimized out>)
-        at ../system/main.c:71
-
+thanks
+-- PMM
 

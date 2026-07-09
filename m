@@ -4,79 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3CA4C44501
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 10:48:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75865C43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 11:01:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whmJE-0007um-NR; Thu, 09 Jul 2026 06:48:50 -0400
+	id 1whmUa-0002TZ-M6; Thu, 09 Jul 2026 07:00:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1whmJ8-0007oY-JP
- for qemu-arm@nongnu.org; Thu, 09 Jul 2026 06:48:43 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1whmUZ-0002SW-Ei
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2026 07:00:31 -0400
+Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1whmJ3-0002nQ-MX
- for qemu-arm@nongnu.org; Thu, 09 Jul 2026 06:48:42 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-493e8d4f4dcso9123735e9.0
- for <qemu-arm@nongnu.org>; Thu, 09 Jul 2026 03:48:37 -0700 (PDT)
+ id 1whmUW-000547-WC
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2026 07:00:31 -0400
+Received: by mail-yx1-xb130.google.com with SMTP id
+ 956f58d0204a3-664d7863920so1539174d50.0
+ for <qemu-arm@nongnu.org>; Thu, 09 Jul 2026 04:00:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783594827; cv=none;
+ d=google.com; s=arc-20260327;
+ b=myOk65rNdCeOMs/kSrsUiBajXmS5B3wSpLB6PY71921CWYiWi1EIsq0sw4GqAXRhUz
+ 8mV7RtfLS0L7Hjk5JqpOgngAw6Ji84zNQtxJX5gi4JooLRzBOVUVf10pW0zZu0N4VmCM
+ /ngf4lgtT9jMoX+Xnc9JrSISvMwQeu88MSdhYpBtt+h6Ua5O3tOlxGB+2MhjlvCB2P7N
+ l80COem3bV+sBChT7vqtCIeEVwOIflpt4fbkhYlx+i3BmLOoJG1e+2vuT3vfH6JqnvUi
+ dNMW/t7jqA7MYnCIt98hpEm/NnrNs50UexTQRYsXIal3uYel9XFwIqKczYCE4ZfOmapC
+ C64w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=UcrkeuriwESCkax1tc2sXwJiv1kMdNza6yhe/5MRVQI=;
+ fh=ykr1JYkzNFh2c+CVgNwNkI4GY8RIoM8kz9w0pIC0lrM=;
+ b=TJuEhkdB/EFLIORvStabrh8j8zufKroqtgD0B43eKxxk0fZTz6C5jFsTNPxfBW4Ghl
+ R2FRGkv1II4IWureyPIAxtAbqrjhfOvoinhyAma+xMPoY/PKktl4upQTvI0TMZEZ0KnG
+ 48SSfdy/KJVohzDCXzuBlRETlfR4vkIeIQSgCliRkkuA1ftYiJJ7a35y/JUa34166kZq
+ s3cjYZaeEv64rf9o4m4gN1FAphWMSjFtwTCkzFcNHKGjgNse+yodlGfMf3UvOOHEnYV3
+ Im3mToVgnCCIQAp9kuPgBgN/LhNr03iq9YXw8fcQNnACiV3D05OE5+bkjFPEniDmNtmV
+ cONw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783594114; x=1784198914; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=rqtLfoBh3sPx8aGTGZbZdz7/c1WiWr68tf4T0IZ5WmM=;
- b=R0HKsArP50u+KP51BWKk0wb0cKzH52DF3vwX9srwxFwXOvMepHob3HyIuaDBa1PLnE
- I3zL1BHreQfTthQMYD9lN0ASzbTrezEiP1jtb1MmajUMmlx/EzDLFidLvcx3qvYrAi6x
- 1zOKBvHqps4MedTcYRDIow8BhTMVCvquYzpDxoRLIdxyeJnLfq46KthUPUsIHExKiZOL
- xWksRiaDMxo7vTV8jZUWgccme+03Bh4HOXeH7huJdIFUJxAX5NNoKweNuqigbC0XAuc1
- sAqkhnmA1quVgqCnAmL3e4Adv4JGmXJCWxTOZh1bpzjPcASCD/tmczor8B1ZsEMnIZig
- /r0w==
+ d=linaro.org; s=google; t=1783594827; x=1784199627; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=UcrkeuriwESCkax1tc2sXwJiv1kMdNza6yhe/5MRVQI=;
+ b=ZP2EkGDLmaQTUt6FyLK/vVQE1y61wogPKrI1FJevLDtOXxg8C/Tbt8LbaYD8UmjXdo
+ T9X32s29OHN0m2xpO7iRYEZfD9xutXXFvBY5Ff5hoDygNSxxWSWj7fpBNXD+Z5ACjHbl
+ CnLhF5/1tRrZF8o5YDWz1JgSK0MrZEIvG2sZd3rVVCxm+AbSKKrFIwdu6mv+Lq0RppQz
+ jU5roKjBjfjh5hrA05uW5etmpdosPNGN89UUCBfmf+piHC/6JKn8Nx/UNm+0DHlmFfe6
+ TdkHosF44EgpR03jNRtPKtO/A8qbF6ie9UsSu/i9sCEcTvI6XBdHxIUfI2PblUnfvHmx
+ CXSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783594114; x=1784198914;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=rqtLfoBh3sPx8aGTGZbZdz7/c1WiWr68tf4T0IZ5WmM=;
- b=OQ6YDMCK8M0cjiNyJvuBReGPs2Y3Ac8muJyFauUGXMGg08fo8TiCYqHGcm+c7gPTo5
- zf/MnJnMeYsIuuCHFcty0WqqPQ3XFodZ/zE9P5YhLK8CcbsmFKwFfqWB23pA5VJ4Z8VQ
- ZNJcaDs4XYD9e4qtYKBi4m1t3E5gNadKBm399Dyb7geGdxgC3OSEOrrc60UcGLglGbZl
- fvxJp5OpEUTAQ7LBkS9TVZc2kzjUZbsrd0MywEWjYM62UgbAJLw6GWgHx5IkB+5X1oFZ
- STKcq07UYGDQ1IbVkOtfiuPwc8y8tWZNOae0Gsf++szloGr0eRkGXYz6YhYhVsQsWi3Z
- ilvw==
-X-Gm-Message-State: AOJu0Yx7QUVLlohmitWbKP9o2mBs7mDbjOrRAxy/L9yBth9o5wAGHJIC
- UUJeOU/fujGyxzYcIV6sFr3QlgRVy0TLXdTLSF5otvEtMxX0sW3joXAh/hekF3VHWpaaNPNSzn5
- eOaXiISPrXQ==
-X-Gm-Gg: AfdE7cnJcUU2k5ASJMfgLWy1i/BbBYqgc24QpIB1G8M07F3LNnw2wphmCbb8Wguo+ja
- LCKf/ejzxI2ePwBeic/MobUgKdgSAW0DYcCQh8/tTaYRhTSpfaQ1nwaEwSqhKwCBuCcYNcFCoAJ
- U68nS0zN3cV9oR1hsB8yoznJSI0uruPwtphEfwmazI/s7zMTDK0mpfuaQQLj0QGu8t0em16YKIe
- qiCsPg56mwzdC56Fsn92DrE9ApRFtGqzzMRCMQdLsoXCYZk9gKcJOodz0kekUoHk9uaTWWqJXnQ
- H0ToY2kn/gWLRDX+zS7ffCr/g7lN8Bn1WOuVTJS8Gh6r3GRHmyAxHyj2xN40JHctRm18rtv5igF
- I9xPcbXr6O3up8Q+vrEOA2eHG0yA2b4pyeBAvLttn0GovMDtV77Rryul9s6PFcnSmHESGZm8oth
- aBpPGqPiPB/wgAGfe3DePtDdo0K3JLwUVEXzMbTStM/9GajOgwE/3uVvHCIHISPqG+E46MLKRoK
- jRDTxEZXPvxZDb2aPqD+A==
-X-Received: by 2002:a05:600c:3115:b0:493:c862:3f2d with SMTP id
- 5b1f17b1804b1-493ed78e5bfmr16231385e9.5.1783594113761; 
- Thu, 09 Jul 2026 03:48:33 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493eb6f373csm89325445e9.14.2026.07.09.03.48.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Jul 2026 03:48:32 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Alistair Francis <alistair@alistair23.me>
-Subject: [PATCH] hw/misc/stm32_rcc: Correct offset-to-irq calculation
-Date: Thu,  9 Jul 2026 11:48:32 +0100
-Message-ID: <20260709104832.1989240-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ d=1e100.net; s=20251104; t=1783594827; x=1784199627;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=UcrkeuriwESCkax1tc2sXwJiv1kMdNza6yhe/5MRVQI=;
+ b=Bm6IfUdwfmp4ckLs0UI1ZbiaohgLqUTrTZAcvm76pGq22FQjEZj2gBaWMojkp2mdpl
+ qwB1sP1RSsY5LqT7eksjQlbO35nK9Be8NjTRctnYhpv07EC8m2EP79HGLnzKG1ykZH/0
+ 6HPiU1xDdIqHPcW1f4lwZhVsOV4cI/rQz+yqsihZDYk0fJsNgW1LEBT5TTVHbdtPz0xz
+ 0KQ0gjWcbnzhXGO4SepWwEz5RkirCN4pdYl7kd9Y3MlC1HIzEXGfn9JDINP7rHgVbxru
+ 7GK2pcNtKkbYJKJPRXxb38te5+73g7FiVX0vwUx/MjIS50DXjdwmyKm/2qrAudGIqrHm
+ xFiw==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RoWKR4hgtgSD7WmQbNptW2+u5Dm4JOem8EYv64DydWmX1heeMWuGw6pd+WZSjFCYEtGjl+y1GMSSA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz62Dip2SZUuEfU+y2JylAAAPOiAOCfTzVwf8UDrJ0IprmX1KYf
+ L1gLEY6puZFmV4ZCv0GEa/yX+AmgRCvl9P+hTAfnk5aQAem8UAWrlfvC/UbKoeO0ygUtCEUEae8
+ QBZbljH5sTFhMHg2BNE7nTIkSnxTRye/gizqOiww1BA==
+X-Gm-Gg: AfdE7cn2MyuXysrz1Sgl9Qy0Yqb04nhWDB7w7ZB86JB/wPvod4iO+HiPNI4AhfU/kh6
+ ihBn/UBWyhr1pmzcnNzU0LzNbkUbHcqhahISkrSvy7YfZzTH51fL09UjRjJJBwlvTW5HMKF1Jtm
+ Q5GM+ak1WQR3xo8/JxvVIkG3j2u6RnmDwfYnNndbdstl9//I9P6m6TvKMcpMQ89T+O5m3w8imx9
+ tbJI0N9aDfwYrwGwjsuG+1+BtXEJvbITVHuu0gYH5KqBZ09EYKOCL4okuGSXGuEJXP2WmqgWg2m
+ gW/k2y3Sx/AaHh+zTJOXla7qZ5NpbVE72mVRqxwwrU3u0CfYTDj2I+OM
+X-Received: by 2002:a53:cac1:0:b0:664:ae69:230b with SMTP id
+ 956f58d0204a3-6679f28b918mr3997311d50.72.1783594827380; Thu, 09 Jul 2026
+ 04:00:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+References: <20260707145407.70287-1-corvin.koehne@gmail.com>
+In-Reply-To: <20260707145407.70287-1-corvin.koehne@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 9 Jul 2026 12:00:15 +0100
+X-Gm-Features: AVVi8CeotFHBKi58-Vligna6L6HXiUYDiOmZw-JiRgR4ZqG0i9hwZQs9X7YDQYk
+Message-ID: <CAFEAcA_nHT9qW7ofvay4M0Bo_LNXKDumEH5ntuYhXEcPYgzeTw@mail.gmail.com>
+Subject: Re: [PATCH] hw/misc/zynq_slcr.c: drop duplicate reset value for
+ DDRIOB_DCI_CTRL
+To: =?UTF-8?Q?Corvin_K=C3=B6hne?= <corvin.koehne@gmail.com>
+Cc: qemu-devel@nongnu.org, YannickV <Y.Vossen@beckhoff.com>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ =?UTF-8?Q?Corvin_K=C3=B6hne?= <c.koehne@beckhoff.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,112 +122,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the STM32 RCC, there is a block of 5 "enable" registers, each of
-which has 32 bits; each bit determines the level of one of the 5 * 32
-= 160 enable_irq output lines.  The code calculates the irq to be
-worked on using
-  irq_offset = ((addr - STM32_RCC_AHB1_ENR) / 4) * 32;
+On Tue, 7 Jul 2026 at 15:54, Corvin K=C3=B6hne <corvin.koehne@gmail.com> wr=
+ote:
+>
+> From: Corvin K=C3=B6hne <c.koehne@beckhoff.com>
+>
+> When adding a reset value for DDRIOB_DCI_CTRL in c8ba862dbfdc, we haven't
+> noticed that a reset value already exists. DDRIOB is a 32 bit register, s=
+o
+> incrementing it by 12 will access the DDRIOB_DCI_CTRL register. According=
+ to
+> the manual [1] the correct reset value is 0x00000020. Additionally,
+> c8ba862dbfdc won't work with a reset value of 0x00000021 because it tries=
+ to
+> detect a toggle of the reset bit (bit 0). Therefore, we drop the old rese=
+t
+> value and keep the new one introduced in c8ba862dbfdc.
+>
+> [1] https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/Register-slcr-DD=
+RIOB_DCI_CTRL
+>
+> Fixes: c8ba862dbfdc ("hw/misc/zynq_slcr: Add logic for DCI configuration"=
+)
+> Signed-off-by: Corvin K=C3=B6hne <c.koehne@beckhoff.com>
 
-This assumes that the registers are all consecutive; however, there
-is a gap between the AHB1/2/3 registers and the APB1/2 registers, so
-for the APB1/2 registers we calculate a number that is 32 too high
-and can index off the end of the enable_irq[] array.
 
-The handling of the reset registers has an identical bug.
 
-Adjust the calculation of irq_offset to cope with the gap, and fix
-the case labels so accesses to the gap fall into the default
-LOG_UNIMP rather than being treated as if they were an actual
-register.
+Applied to target-arm.next, thanks.
 
-Coverity CID: 1663683, 1663686
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/misc/stm32_rcc.c         | 31 +++++++++++++++++++++++++++----
- include/hw/misc/stm32_rcc.h |  6 +++++-
- 2 files changed, 32 insertions(+), 5 deletions(-)
-
-diff --git a/hw/misc/stm32_rcc.c b/hw/misc/stm32_rcc.c
-index 74ea29b156..5cfb39e560 100644
---- a/hw/misc/stm32_rcc.c
-+++ b/hw/misc/stm32_rcc.c
-@@ -53,6 +53,27 @@ static uint64_t stm32_rcc_read(void *opaque, hwaddr addr, unsigned int size)
-     return value;
- }
- 
-+static int reg_offset_to_irq_offset(hwaddr addr)
-+{
-+    /*
-+     * The reset and enable registers aren't all consecutive. In getting the
-+     * irq index from the register offset, we need to account for the gap
-+     * between the AHB regs and the APB regs.
-+     */
-+    switch (addr) {
-+    case STM32_RCC_AHB1_RSTR ... STM32_RCC_AHB3_RSTR:
-+        return ((addr - STM32_RCC_AHB1_RSTR) / 4) * 32;
-+    case STM32_RCC_APB1_RSTR ... STM32_RCC_APB2_RSTR:
-+        return ((addr - STM32_RCC_APB1_RSTR) / 4) * 32 + STM32_RCC_N_AHB_IRQS;
-+    case STM32_RCC_AHB1_ENR ... STM32_RCC_AHB3_ENR:
-+        return ((addr - STM32_RCC_AHB1_ENR) / 4) * 32;
-+    case STM32_RCC_APB1_ENR ... STM32_RCC_APB2_ENR:
-+        return ((addr - STM32_RCC_APB1_ENR) / 4) * 32 + STM32_RCC_N_AHB_IRQS;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
- static void stm32_rcc_write(void *opaque, hwaddr addr,
-                             uint64_t val64, unsigned int size)
- {
-@@ -69,11 +90,12 @@ static void stm32_rcc_write(void *opaque, hwaddr addr,
-     }
- 
-     switch (addr) {
--    case STM32_RCC_AHB1_RSTR...STM32_RCC_APB2_RSTR:
-+    case STM32_RCC_AHB1_RSTR ... STM32_RCC_AHB3_RSTR:
-+    case STM32_RCC_APB1_RSTR ... STM32_RCC_APB2_RSTR:
-         prev_value = s->regs[addr / 4];
-         s->regs[addr / 4] = value;
- 
--        irq_offset = ((addr - STM32_RCC_AHB1_RSTR) / 4) * 32;
-+        irq_offset = reg_offset_to_irq_offset(addr);
-         for (int i = 0; i < 32; i++) {
-             new_value = extract32(value, i, 1);
-             if (extract32(prev_value, i, 1) && !new_value) {
-@@ -82,11 +104,12 @@ static void stm32_rcc_write(void *opaque, hwaddr addr,
-             }
-         }
-         return;
--    case STM32_RCC_AHB1_ENR...STM32_RCC_APB2_ENR:
-+    case STM32_RCC_AHB1_ENR ... STM32_RCC_AHB3_ENR:
-+    case STM32_RCC_APB1_ENR ... STM32_RCC_APB2_ENR:
-         prev_value = s->regs[addr / 4];
-         s->regs[addr / 4] = value;
- 
--        irq_offset = ((addr - STM32_RCC_AHB1_ENR) / 4) * 32;
-+        irq_offset = reg_offset_to_irq_offset(addr);
-         for (int i = 0; i < 32; i++) {
-             new_value = extract32(value, i, 1);
-             if (!extract32(prev_value, i, 1) && new_value) {
-diff --git a/include/hw/misc/stm32_rcc.h b/include/hw/misc/stm32_rcc.h
-index 4dccacc2db..a94781bf34 100644
---- a/include/hw/misc/stm32_rcc.h
-+++ b/include/hw/misc/stm32_rcc.h
-@@ -65,7 +65,11 @@
- 
- #define STM32_RCC_NREGS ((STM32_RCC_DCKCFGR2 >> 2) + 1)
- #define STM32_RCC_PERIPHERAL_SIZE 0x400
--#define STM32_RCC_NIRQS (32 * 5) /* 32 bits per reg, 5 en/rst regs */
-+
-+/* 32 bits per reg, 3 AHB regs and 2 APB regs */
-+#define STM32_RCC_N_AHB_IRQS (32 * 3)
-+#define STM32_RCC_N_APB_IRQS (32 * 2)
-+#define STM32_RCC_NIRQS (STM32_RCC_N_AHB_IRQS + STM32_RCC_N_APB_IRQS)
- 
- #define STM32_RCC_GPIO_IRQ_OFFSET 0
- 
--- 
-2.43.0
-
+-- PMM
 

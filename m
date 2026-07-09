@@ -4,104 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0151C43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 11:06:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E956DC44501
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 11:10:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whma8-00058X-05; Thu, 09 Jul 2026 07:06:17 -0400
+	id 1whmdq-0006AT-4b; Thu, 09 Jul 2026 07:10:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1whma2-00055v-8x
- for qemu-arm@nongnu.org; Thu, 09 Jul 2026 07:06:10 -0400
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+ id 1whmdp-0006A4-8r
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2026 07:10:05 -0400
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1whmZy-0006SI-Vz
- for qemu-arm@nongnu.org; Thu, 09 Jul 2026 07:06:09 -0400
-Received: by mail-yx1-xb130.google.com with SMTP id
- 956f58d0204a3-664cdeab266so2537298d50.3
- for <qemu-arm@nongnu.org>; Thu, 09 Jul 2026 04:06:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783595165; cv=none;
+ id 1whmdn-0007CJ-Pf
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2026 07:10:05 -0400
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-66780d9d901so2266420d50.0
+ for <qemu-arm@nongnu.org>; Thu, 09 Jul 2026 04:10:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783595402; cv=none;
  d=google.com; s=arc-20260327;
- b=cBvUAobpULKZ3OhvHXs/CSh0uWUHXagbjogO70hv4CWjgjjOnIuuuxGQoeLxK+AqLy
- Co7yIHHvaKVu8LeNuaSmB3AFt0VWrbD9bN3pmvWQGhTPJi+NvV/hcrWtp/xrWWgxn3Kd
- W9lVvqp/0r0/1FRMFFfJnjDZ6oWD8SywRrZSE/AqGEXR7JiJzPPqo6EkX6daBiVHFEXL
- hfTEQkBYxMpv8hIXYPClES/HsBB9Q6ad1OlK10E/P3hMa2bV449VYClWZVJtQrXAMHe8
- 4MdUUPZldLUlEsnjgsvm+xX8erACo5uKqhBOvshyElYnNZqYUM3N19ELtDcRcP7LkzQy
- qq2w==
+ b=aBUg/v18rJzaQXaTsKnTvTIFZ6I0SyU/nhYf2bwIInlEFMOnrraJ/9qd2hQJWTfu/2
+ kTrw7vK2aNhxwMS8N6K8tnu3ztT8q2w4OIOFMy395rCMIrMG3jDp1dBbHJJ2i7DSL6F8
+ JL0F24qfP6aN/Uh9bPEmBUISIF8WWcL8/RZkPd4eyA0mfwuBJn6ldChB6MvvBl0A+rUu
+ IWX0IqLIcMvzg+ITOXYrEcxHaWQM21HPXtGJ34WAYcV1+fejo77DTTjhf8zXNUFy0URo
+ 3wsVpqhtV1nqV9ETD/eRxziZFqUCX7a0Fv4Xub2PWFphAcp1yiaIIxnIO4O5vdvjG5d2
+ ZpoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=mOSDUjw16rV2I/2vBm9luEKa0YvI0G/Jv3ltRP4yr0E=;
- fh=YJkt6vpRznjPmE6gR4ZF/nJzSrthtqdWKcz/QK8C4Is=;
- b=rlzaWwP1tv7g1sESJW0I+RgWXKQdUTuJ+8Y4bA2GIntvhdhp2BN6C5/0pWbTTe0LXm
- xeVNuRZjD9NHBAcEHk2uclbhMWLjoO/+tZk5D/oZE8L4/Gg82gqethQrDZf0U5nzgI1q
- BHCwgt5o0iDBcypFnjb09s2FZM1Jmombtmx+RtQeF/GQNffGbgtCudUVC9I/x/TQR+Jy
- TPVuhCnmihUk4zryopyZJLZQh8JdmqvwEYZKj6vitk7IC9ASa5gy/SRxzQnqbz6XhDfk
- AqicCxdQ6t9P0CcOXFBYOvpeKp8g1tHqReSM9rdxl/MeR7/Knrw+Rx+dgLzoAtNNKxfx
- av2w==; darn=nongnu.org
+ bh=2cy4r1aLv3+SqsukA9CdP+qIivEgu2ttcn+KdatcOc8=;
+ fh=oR7TsPg3OTmNosGgopAXF0ZXV9nY+FQmXuneIKe+VyU=;
+ b=SK5AngWfJAdORDr3Kndc9wTCqcQAoh/fUZ5K/50qRmt17w03/IllUbuLWcEpvkfSrV
+ tzUZTQEIedQE1vgpbqVXdEeumKOBDmNTrXTv8iKaT+Lutra+gkPB/ZhQWbWrzxqTkaYS
+ IBI6oKUw0HuNpUxpABCtdqYkq7necqjlJ3ax4K/g9a0arODSAneBce3E8lZe1zil4VhA
+ R5g0yr/1jyuyk8p8pjGZe/0V/MBnnwijkG7KRRX/+dgduRk2AV3QgBvc7aS6sivC9fPG
+ OZjoC5vSvTTlrRBHVohgyFX56lo5QirJWdsQ9yTzYO4VEgcYLSRGkOWG8zXOUuANJB/x
+ u3HA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783595165; x=1784199965; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783595402; x=1784200202; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=mOSDUjw16rV2I/2vBm9luEKa0YvI0G/Jv3ltRP4yr0E=;
- b=bGsmzhnKm16TF9Smm3BoAGPrkce58xtIXU9iiNIShMz/r6iYZb8ehZbIzSNw0N2DnY
- ZRRjVUA3LWpRnPZe1zvcZbJiDqMy1unjyBcNDo6Tvoj7Jz7Jk+2WhWvhbFxEk9F5sKM3
- ceVSMEioo3uD27ltkdcX0nrDx0Wlt/8QxFO6eReFlioB17j9bxov2WIVrlrWPQduWntw
- WpaQ7QAlOsBZG21d+TGR+ohM98wQIoCzgt4AV8BgyosMVx/ikY5Okwwu8oXzQJYEyhD0
- 8R6nI2S6zVCdeXV17A7rGCnwu/W7J45kpK2iFbuPSRJUO2IVd86IR1tTj3sX0dBTRfhV
- ZTeg==
+ :content-type; bh=2cy4r1aLv3+SqsukA9CdP+qIivEgu2ttcn+KdatcOc8=;
+ b=zgli7USEF6oM62iEB7pRKS1LtgfS+2G2h93RjinuInQBhLfhObUuwwQJznYhqxauLF
+ Gpz6mRnF3S78lF7IbWg5QMREFagjVAVW1YMNHpC9dFgMw+M/k364FNZ7l3dZbdIQmLjY
+ y4zzQv206W4iO13VEwjlXm0vFm/cl0Jkr4gqSVXr8oQ9igC1FGNSkHvcLv/mJ6DkShm+
+ wAs2nVeQ5EiS/ZO9QGuxpFxTNGfJyueIPzx5mV0eLlix5VeImvrpJDbt1XF/xFR3lXsC
+ ltM7qfBnynV+lipwQT1g+yc7JYiPBW7jfdhPiJ1GuV0kqEPfXXId3ue9jCUJd0gx73sb
+ 7S8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783595165; x=1784199965;
+ d=1e100.net; s=20251104; t=1783595402; x=1784200202;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=mOSDUjw16rV2I/2vBm9luEKa0YvI0G/Jv3ltRP4yr0E=;
- b=PjgOOwci41LnyD/hjKnxVBW+laP6gkoTpRV9ib6nrahgylVzlsHM5JCnh0owPciv8b
- f1juCRyI+UnT6qiYXdOdDPYW5bemj3MwOb5X8i6aBpriVxhgiDU33hSoRxxrdYCIVbje
- Wow+FL64a+RI3FmWjV+lXvvGiqAwpNhtpp+3al1jFLHCwC0EfWIuQ/Ni8wzfN/Lgs2wn
- zbFRky3PQzpmHG6GJ9mRboEJ04gnP3/SYaNgs94O4rpA8r7cTq6eJ4fGyzbQiCJFe/vy
- p5Lq0D/ubPUWann9tbU99lOJvkcvsGWKTOmUnx6+d5U1sE11ok7k518n+9b4Hke8PY7y
- LUwg==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpgLxfSWr2w5e2DRi+GxUQnqLNKy88sFTxi1FeJMtK2RjY6egYc0zB0CWPdRnnWbnyVX28m3YTKCQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz4fS1bFjx2qYDWA8WnsZ1M/Hw2R8cO+RR4Z8S0jAtnMceeE+sc
- O4mXdt8lWMJl6j9QWRhxBiaB8Ihs8zMR9OYT8YyyT2B0cbvb4WQeYFuK88/d4SU2Lxdhp6KQ1WJ
- TOI2pYg646h+lD+pWV5qXtdto6A0Z6As/CLcltH964w==
-X-Gm-Gg: AfdE7cmReLoUrOffEbDFgB2Lzx1Xly4fvqocYKIsvq+u2kBr9YaUvqtFRw4ohoEIaxJ
- zLfx3y7UMXYJCzT9PMxf8J3nZzmvqeXUXwGDSH3WcE7NGuyvU3qHq6CxakZsMFNUySIbvw+Qib8
- WmZgrym9MUVd+pnUvnUXYKPSasCCA7JFTChIAEsT2J16ntdSIbmsn7PDiP1rLisySioWF0aB8Up
- /YfWiGV5lyioNfE7pj6MzcRGdO0mBva3WULNyOe1m5vPg8pc/pxFtLvh/6qhML8lD2a2d5VEUkS
- L11BryqmIP7Ho1CY76zsNoeMxytrU5GzuxeZS1qkw+Kqqn5kfJBwXUK6
-X-Received: by 2002:a05:690e:c49:b0:664:ae68:33a2 with SMTP id
- 956f58d0204a3-6679f17d732mr4716060d50.67.1783595165490; Thu, 09 Jul 2026
- 04:06:05 -0700 (PDT)
+ bh=2cy4r1aLv3+SqsukA9CdP+qIivEgu2ttcn+KdatcOc8=;
+ b=hlg5sXU0MKFOx3EJNh2WCoqNa3AbcwYSGA3P+04Dr3B/85bgtVdy6NZFWLNuL/omGq
+ qbKiHHWi0PDwGnuwEDAPQFmhRA82yjGvGYGS010Ex2luLg8FBbRm9Kf734llaaa9XTHS
+ 3XJ36X2Qsbd7a15NchacFivvhC/RXg7q82v7MD1wCVamwoPdz0BHF6Jp/Q2xQS3ivz17
+ q8AC5lIJWWAFyMNsUrupUiLDtQgj4+JYwzsXtTPxmim7itC/eiwwHc92wVJ46gN5AJ6j
+ RZZDkv3LiyUJV+AZ1B2wxm4LoLdu1f00yCzjiSQdtGDkD7bMiztJyUAbw5E+qFY/xyDw
+ X+CQ==
+X-Gm-Message-State: AOJu0Ywf4HmC5YlHotNY+OCEZAopDCSKFn8pYObPnOFXPqmbX5f1vg2S
+ COGb625iygXsQsya5XIuJwDLyl3OAfVc0TOxu9mENslwxrL7MsGr70RwnSTuBbkWGWdq2b9318g
+ VTN4Q72KzwyzsJi4FyGkS970md7vbIF4oxGxQOKW4GA==
+X-Gm-Gg: AfdE7ck4CHhuluTA9VHHvW6j6Ef7/LP1fzTNnc9gszUAlNSCltuaLLpoi50cRwlx+B5
+ pGuvWyVjLrxHOBWZ1mVKKyxTL8l0/pZRB44gEECJZOwaxL1GYl+xnlZMfzW4z0MLkxSfZBNQzGF
+ rNNWGXH3ovhuPqqYXZI8tuZGBLt5tS/X6vLEFUVso8OJGTZKq2FYkt7SbCCiL3NXGoAcHEm/yyK
+ Y1YIPqPnAqPTFPOvdbkCvJ95E6ngw0lE7pO8Haxe4+4uw89p/lUXkt+R9LOKRdqYBLFyZB9ccrA
+ JHbGzN7bI3iPJJ9vLn1rFNA58JGPaoltHhzEkBVtcbCJWCi6KEzlkFHJ
+X-Received: by 2002:a05:690e:c4f:b0:664:b514:a086 with SMTP id
+ 956f58d0204a3-6679f140856mr5029775d50.52.1783595402209; Thu, 09 Jul 2026
+ 04:10:02 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260707085028.165557-1-eric.auger@redhat.com>
-In-Reply-To: <20260707085028.165557-1-eric.auger@redhat.com>
+References: <20260706230056.1888992-1-titusr@google.com>
+ <20260706230056.1888992-2-titusr@google.com>
+In-Reply-To: <20260706230056.1888992-2-titusr@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Jul 2026 12:05:53 +0100
-X-Gm-Features: AVVi8Ccb_jNGog6PhCMuqSu3Kw2eK3d0YM1oiUGP5asaYJe2olY7AhWifW1tg4s
-Message-ID: <CAFEAcA-6DfJJ_6oJdbYwwEDp6s4sqLKLMEUp7Cj0+6ozGq7UUQ@mail.gmail.com>
-Subject: Re: [PATCH v3 0/5] SMMUV3: STE lookup fixes
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- berrange@redhat.com, skolothumtho@nvidia.com, nicolinc@nvidia.com, 
- nathanc@nvidia.com, philmd@oss.qualcomm.com
+Date: Thu, 9 Jul 2026 12:09:50 +0100
+X-Gm-Features: AUfX_myERs1L9279KhurrylH9bbHwFfzyNfR2pwyiBgR0pjJvzaW3aewwEEuWT0
+Message-ID: <CAFEAcA9kmrEFCiWLfL1FSLv7W34hSqvFaY7=BpcT+h-WnpKC_Q@mail.gmail.com>
+Subject: Re: [PATCH 1/5] osdep: add DIV_ROUND_CLOSEST
+To: Titus Rwantare <titusr@google.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
+ imaginos32@gmail.com, wuhaotsh@google.com, philmd@mailo.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,33 +115,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 7 Jul 2026 at 09:50, Eric Auger <eric.auger@redhat.com> wrote:
+On Tue, 7 Jul 2026 at 00:01, Titus Rwantare <titusr@google.com> wrote:
 >
-> The current code fails to sanitize SMMU_S_STRTAB_BASE_CFG
-> LOG2SIZE and SPLIT which are used in the STE lookup. This
-> could potentially lead to wrong shifts/masks in
-> smmu_find_ste() and does not fully comply with the spec.
+> This is taken from linux/include/uapi/linux/const.h to match the driver
+> behaviour when reading sensor values.
 >
-> Also the series fixes different issues related to strtab base
-> address alignment computations: off-by-one mask, unchecked span,
-> missing L2ptr base address alignment. Those issues
-> were not visible because the guest kernel does what it should
-> but better comply with the spec.
+> Signed-off-by: Titus Rwantare <titusr@google.com>
+> ---
+>  include/qemu/osdep.h | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
 >
-> Best Regards
+> diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+> index 1ec5b42230..a6a40ab8df 100644
+> --- a/include/qemu/osdep.h
+> +++ b/include/qemu/osdep.h
+> @@ -522,6 +522,20 @@ void QEMU_ERROR("code path is reachable")
+>  #define DIV_ROUND_UP(n, d) (((n) + (d) - 1) / (d))
+>  #endif
 >
-> Eric
->
-> This series is available at:
-> https://github.com/eauger/qemu/tree/smmu_sanitize_v3
->
-> v2 -> v3:
-> - Introduced STE_SIZE and L1STD_SIZE
-> - Just cap strtab_size to 64
+> +#ifndef DIV_ROUND_CLOSEST
+> +#define DIV_ROUND_CLOSEST(n, d) \
+> +({ \
+> +    typeof(n) __n = n; \
+> +    typeof(d) __d = d; \
+> +    (((typeof(n))-1) > 0 || \
+> +     ((typeof(d))-1) > 0 || \
+> +     (((__n) > 0) == ((__d) > 0))) ? \
+> +        (((__n) + ((__d) / 2)) / (__d)) : \
+> +        (((__n) - ((__d) / 2)) / (__d)); \
+> +})
+> +#endif
 
+Can we also have the comment from the kernel header that
+tells us what it does, please?
 
-
-Applied to target-arm.next, thanks.
+/*
+ * Divide positive or negative dividend by positive or negative divisor
+ * and round to closest integer. Result is undefined for negative
+ * divisors if the dividend variable type is unsigned and for negative
+ * dividends if the divisor variable type is unsigned.
+ */
 
 -- PMM
 

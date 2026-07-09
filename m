@@ -4,142 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F16F5C43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 15:16:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0422FC43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 15:24:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whqTj-0005Vq-NS; Thu, 09 Jul 2026 11:16:00 -0400
+	id 1whqcB-0007qY-8j; Thu, 09 Jul 2026 11:24:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1whqTW-0005Nx-Um; Thu, 09 Jul 2026 11:15:46 -0400
-Received: from mail-southcentralusazlp170120001.outbound.protection.outlook.com
- ([2a01:111:f403:c10d::1] helo=SN4PR2101CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1whqc9-0007q3-7v; Thu, 09 Jul 2026 11:24:37 -0400
+Received: from smtp2-g21.free.fr ([212.27.42.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1whqTU-0005Fl-K8; Thu, 09 Jul 2026 11:15:42 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=eKv+mxh9OAtAR0ShR70RP4euFOZNlOSV/zcA2lPQixEKwHRZztodGmNEB7DDvUs9mzNpKkb+bhtOJDdK9zBH0GtGatCQghoPEvE8uHXg6bTGVSwBKq0J59Oj+EhlMgE5A7RlUBHdj/cssiJ0g3QA2eD9TZ7UbG/FTSzZwZtFZZXYFk3c1pyKxnuNiS+l7A/yAavrkf+RqLudV73wpZ7jAD8A014MQ8K8YgKrXhYls4LYqqiLVdcrnqOIYGkk2d9IWA5i1DMhmXmEkpa2TdO8zl3+SmCDFT6bAz3bpzk4r65ub0cBBhPxe7QKDgXe8sI8AqRi+d9lQWzukTTVJHD5Aw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2abgIj+9H2i3Vx8aIWRrFpQgLLn3AW3c7IJ6vP8cqhA=;
- b=Gup39DGT+U6ZsQR6IMJLajuaaUYiX2m2dZM7ajd1vMyyQKf+ytL9RSChtEDJZ0xVUUfB6kuwlih8rPm+LJWyVVWlSYg+owTETrnpk91c2oVKD2FdznY0yCQGa1JCI3R3INSlExh7ClUnkmDa+t8EOJJ4ZGQgghhr2lnhliZDJRO58iO9WAwpUi+ySUBy1IOh6Zm0XroudPcSchVEQxDeA1iEKb2f9Tw5CeQNW2Lq0Zufl9P9Nj5S2JsD9lg61UCkGW2mfxlrCLdetWf9Kp6uDZMq/W/2jLKf4qep7SxW1nceJ2E9TOG5KTLRX+USOK2UrjGHIxQf2LHHVxGQlqdfRA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2abgIj+9H2i3Vx8aIWRrFpQgLLn3AW3c7IJ6vP8cqhA=;
- b=ZABf+efN+l5A2gHJxI4EGv5844jSv1ajt38mQyv8WjdmZRUBMGVySvhRrUd5zJ62d89TZtS6P1OPtUJq99GOQaNO9mB6UO3YyqsHU0Q5lEoS4GfdR+rnQi2SvSaKCL7YNaElS0Es63vfBOpf9qGkHfxUWrm7Af7mQWkHyivHJu+lLUctsUnuAtkGpcaIIetHA3NT3I15xdejw8rI+Ae/Hd3c7olmdV4jkXIiRV2Fifu7qerotZ0Wk1OAqcba/l3VCZ6ADEFuQdmUTnCdxDEMA6UhdRVIlZoqY7BnxKqx8jxmR2ltagMEkkPFQtaah0on4vebARPJ2DEbKo5db383WQ==
-Received: from PH7PR12MB8593.namprd12.prod.outlook.com (2603:10b6:510:1b1::7)
- by SJ0PR12MB8616.namprd12.prod.outlook.com (2603:10b6:a03:485::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.10; Thu, 9 Jul
- 2026 15:15:23 +0000
-Received: from PH7PR12MB8593.namprd12.prod.outlook.com
- ([fe80::9c70:35c0:f8b2:8f77]) by PH7PR12MB8593.namprd12.prod.outlook.com
- ([fe80::9c70:35c0:f8b2:8f77%5]) with mapi id 15.21.0181.014; Thu, 9 Jul 2026
- 15:15:23 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Nicolin Chen
- <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
- <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>
-Subject: RE: [PATCH] hw/arm/tegra241-cmdqv: Do not sync GERRORN on VCMDQ
- allocation
-Thread-Topic: [PATCH] hw/arm/tegra241-cmdqv: Do not sync GERRORN on VCMDQ
- allocation
-Thread-Index: AQHdDgNZ5fJQ5WS14EWh3Rd+Y9q0v7ZlSKyAgAADvTA=
-Date: Thu, 9 Jul 2026 15:15:22 +0000
-Message-ID: <PH7PR12MB8593CB26D92493FE0EF0C3EEABFE2@PH7PR12MB8593.namprd12.prod.outlook.com>
-References: <20260707112450.111178-1-skolothumtho@nvidia.com>
- <5161e394-4f41-4fe4-af83-1c0993758442@redhat.com>
-In-Reply-To: <5161e394-4f41-4fe4-af83-1c0993758442@redhat.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PH7PR12MB8593:EE_|SJ0PR12MB8616:EE_
-x-ms-office365-filtering-correlation-id: 83ee5bea-cdb6-41ab-7fc8-08deddcce5b4
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|1800799024|376014|23010399003|56012099006|4143699003|18002099003|22082099003|11063799006|38070700021;
-x-microsoft-antispam-message-info: LvS4lfuFedA9VKRWWGtGODlPoAdCx7lQ1Exaoc43CVR7m142BfUBS+xIQKXhSvLJ9gsbll0KYjpvR9dX6IDonKLsLLb8Bh6lqIKntKdgOH8nfM1PQmX/1ziVrdmd3kw5N/NcMxQZTGpzqFWnWVJFyknk+w4WzDQiyN3NPVf6tQ1zIa6e8i1T0pNYTZOmkFMwHsIzvPqiidrQFAJqndtsRMazSN0mAGUmFFybxaG8aaGHxblFvbr9YNBhcicClih0YJVcq1r915Ak7ltz5X6cpqWiXoCbVG7Ib0CE1kiyVsrogjIR2XQChBENRy8qu7myctrGqcmxnVhRm6TID53Gdtxqubr3+88h+58Fr2WjqhQrfjfiSabZX1ZGJ6qWx73YROP5wc7Zf5y7KZ1kZwqAyOPmW8vYWKz4ztrqFg83yXWG2AReLq5ibdboZPHDZiB7FnQtz3aOCfK/6vsfsD2YiRAFkXxZq1E5pSmzQZAaV5/FFxkt/LviBDHrW2nwL4etSdHBZmoK4zb3l5S0O255HsCFiLO2Jeh9TTrkg2a16jgkE40p1UY4gs8A4tFpPCkD5f8oWSz+zw4x3plDM6i2fJsSGUD8v4LMiSq3kyD5cUoGI7M0CRq8zwn1l/8VNCMWmE1SNauG7OFJHNVnUcHKmVanzgoC/fSPao2RYGoT+vAGYPmB701N6kuoDihF4SelVdq0LAR6pr7oGARiUXry/poJQHtv3K2neiUmAPBYrRY=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH7PR12MB8593.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(376014)(23010399003)(56012099006)(4143699003)(18002099003)(22082099003)(11063799006)(38070700021);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dWJxQ0kzSTNwNU4xNU1TL3FUWlh2L2doS3ZJTE9RbGp4R1NLTmxSQklsc0Yw?=
- =?utf-8?B?TmJBdkMydTUxbm1nZURJcWg5ZGFWN2kxWXZhQUFyK3FYdTlWa3gvbDZHeGZV?=
- =?utf-8?B?REhKRDJhM2lITEV4Rk1hNFA5UVAzS2dXVFAybGNKTG51T2NwNTMrZzNwVTBC?=
- =?utf-8?B?YnJxNmFkTmZkODNrZmNkUmVEOWNYOVBnWXk0dXNrcmwvRDJ5MXZ2NmlxKzZF?=
- =?utf-8?B?YnJqOXd1WGNoS1pNQUVsdGNzdFBDd28vektrclUzUkF4WTVVWS92Z2JGRGVl?=
- =?utf-8?B?OFNhdVp1T1p3VXFYSUdKR2hIdUdFazEwR0FTRERULzJRUTVYK25leCthR2dT?=
- =?utf-8?B?TFJFUVF6MXRXcnFYNTUvdlhQL0dxWXh4T0ZXYWpiNkYrZ3lKdFV5UzFudzBo?=
- =?utf-8?B?SHFRQ0s5eWs3dHdXZ3FKWU5vRkVob0w2bHNSUDM2NFY5T25BRXFYclJDWk5E?=
- =?utf-8?B?SDhqaTMrS0lYYUszNXMvTytVeW83WFdpVWhFNFdvdDl0UmowZExmSGJjODE5?=
- =?utf-8?B?NFhvOEp6ZFJVb3Q1ZWxUdG1Pb3dKdEZTR3JNL3BHdUtIb09OVmJoSXRmMDBG?=
- =?utf-8?B?QzhzOWRXVWVFREN4Vy85VEhGVXdkMm15bTUwSnRTRnBuSWU3NHBWK2NaRDZX?=
- =?utf-8?B?eXB1bmNUaGVQSmNNWlUyeElQOWdCYml4eTRKTTNtRkJOcHhxWWdMY3NoOS9w?=
- =?utf-8?B?bnVyakhVRTFBa29GampJV1V4VjR0YzR6QlBhMDU4bDBQKzdrSm1CRHlId0J0?=
- =?utf-8?B?cjlXTlRubVVIN2hlQUNMUnFDbDFET1R5VVNXTVZNWjl0M3EySHI5ZTF5MWtR?=
- =?utf-8?B?V1hHbTZQanpQTU5HTU9wOVlMMXQvQ0dDL1M5MFd5T0F2MGxQQnl6SGM5Unov?=
- =?utf-8?B?Ym1VVS8zN1RpR0ZMa3lISnpRWkgwaW5jRVRkRTdPdmY1REpqU1pFODhocXIz?=
- =?utf-8?B?a2ZXTi81NVpjRGhFVE9BcVI2aUNmKzA4c3FndXdjeTlvMGtONHJvM3NsU0dG?=
- =?utf-8?B?elBSNUpGNnZ5UG1rRnB6MU1rT1FhWExQNzllUk8weGpEalM1YU82L1c4UE1R?=
- =?utf-8?B?Nm1JZE1DTFVRaFlFUk5FeFNYREdZRjdpQmc0dUxPZk9JelRhNmxkNytxenpU?=
- =?utf-8?B?alNpaklsQ1dNMXA2TzdpaSs2YVE1Unlia2c0UmtIY2dmQ2k5azBhUHNQMEtz?=
- =?utf-8?B?dGUzcTB4SW9jc2c0amNVR0xFT2s5RWNUanV4bzJZUmVGOGtwekpVVDgxYTEy?=
- =?utf-8?B?NzFxZllyek5XL0VoL1FlcU9jWnNFM3RvWVB0V25WRUw1d3czNklieGhEeVhB?=
- =?utf-8?B?ck9xdTRJbUdnTXlpS3poUnkxNnpnajJOWVVrV2w5aGhhYzJJcURTMUxjS2Jo?=
- =?utf-8?B?UkZ5cVVOY3ZWSTd1czFZVG9jazVOOTRsR0N0TWdRdVRvOFRhMitSVEpoSEZy?=
- =?utf-8?B?NHdyWkc0emVrYWpMWGZEU3lmV2VxcUJ1WFRrU2V6L21MQS85WG1JWG9RQWtn?=
- =?utf-8?B?MkUvZUR1ckFnWTVCWEw0TjZEWUNzaFhHc2RTWWVXcWNnMld4Zy94bTVyb09t?=
- =?utf-8?B?akdPdi9FVEk0ajZ3ZzREODJtMjgyZzQ1V3psVDMxR2lYRDdETjJIc3FHcXRo?=
- =?utf-8?B?eldsSUNXR051RE1XWStoZXZsdUMzZFhXblNkeTY3amlJYjVQWGg0ZENUUVIx?=
- =?utf-8?B?aEx5SG1Xamd0QnJUbS9RMmRhdkl6bU1UQkFnT2M4UGlJeFpGNjByUUloSG5V?=
- =?utf-8?B?U3l0Z0FxQjhLSzQ0VjdZWmhYc29pL2xkMDlDQU5ubWgyRlBEMHBJME9GS3Vj?=
- =?utf-8?B?VHFhNnhTdTJXY3gyWjZNUDlRR2VhYW5LQ0p3M0V6U0RWQVcwUmdwTDFCQm80?=
- =?utf-8?B?ZkJBRWJ1aGtyVTQzUG9xVmRoMGFlYUhuTDA0YjlCU0EvZmpURW95Z0s1NGts?=
- =?utf-8?B?cGMvWDMwUmxIVGpDdzRZV1R0UjR0WURPQ3dvc3BmcjJVQXNSMW94TUxiME1Y?=
- =?utf-8?B?dlhFQVBRL1ExV0tvOTFETjgvZDhNRXAxVHpaMWl1Z1M3c2NKZ2F4NkM0YlF2?=
- =?utf-8?B?R0hpZVd1NFFORmhsS1RZWWZBd1B4WUlYWjMwRy84ZWx1WkIyYlo2cGRleHpS?=
- =?utf-8?B?dnMxV2pHNGJ2MEs1QUVvbjVFbVFEYVNXQnMwK2MyZ1ZhR1pDMUxhTE1rcSs4?=
- =?utf-8?B?VmdzWGsrOGd3NmFEK09SRFpuUGhFUTIvM2h0ZzZBaDVON1lPQjQ3SWEwQ09v?=
- =?utf-8?B?R2JFWEFxY05ybFVURnFjS0hTNmRTZjZLRnBVOWs3NDlpYVp2ZEZiNitDSU81?=
- =?utf-8?B?VzkrQU9CMzZFdTVlYXl4d1pGSmFNU3pkVVhZMHY5cHBrTDdIV1JKZz09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1whqc7-00084O-1G; Thu, 09 Jul 2026 11:24:37 -0400
+Received: from localhost (unknown [89.92.102.124])
+ (Authenticated sender: emmanuel.blot@free.fr)
+ by smtp2-g21.free.fr (Postfix) with ESMTPSA id A09692003E3;
+ Thu,  9 Jul 2026 17:24:11 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
+ s=smtp-20201208; t=1783610670;
+ bh=CXVE3rlSgcDs2PF76Z4rgYZ5WHvy9/IeZPv8mWXj+kI=;
+ h=From:Subject:Date:To:Cc:From;
+ b=Wq98Gktr1eccdCyjJonxtLrtmNlHJ8fCG/LBZg2gj6prGceVmfjYP0hg+e/+/bFh0
+ fdFjkdBoMtjfvQL7OE8UjTGDlSSr9f6162C+We2evMsBZy8zBfVlWecp0mqtJsEi0J
+ lzeglGbfdZQYMWTX9JEFSLLGK0rx6KH5NAXyJEBPO0fgTF2BFeqOenzvUqNmADSRUI
+ fdya7m08l2FaeQh0gge3vi1jHjQ94S53hV1Ohd1qG7sufa8iNe0fYPxF1dYbSGnUZ+
+ XTIzhN5GJkATzzD3qiVBmOnwt3cJIqgUnfq0r1BIai5DQLYnN75JRISPIDlZY+gvNE
+ xDYfc/XbAZRdA==
+From: Emmanuel Blot <emmanuel.blot@free.fr>
+Subject: [PATCH 00/29] hw/arm: improve Aspeed Catalina BMC emulation
+Date: Thu, 09 Jul 2026 17:23:38 +0200
+Message-Id: <20260709-catalina-upgrade-v1-0-814575bc076b@free.fr>
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH7PR12MB8593.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 83ee5bea-cdb6-41ab-7fc8-08deddcce5b4
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Jul 2026 15:15:22.9890 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ZcPLL8h/c90A6qIhrbx/ChMQyVOM1bEA44l8YQL2uPo8axGFl2Tks0iBNQwA7F6ac0B9ji1v5J6KfoR1AZKawg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB8616
-Received-SPF: permerror client-ip=2a01:111:f403:c10d::1;
- envelope-from=skolothumtho@nvidia.com;
- helo=SN4PR2101CU001.outbound.protection.outlook.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQqDMBBG4avIrA2kEYx6leJimvy1I5JKolIQ7
+ 26qy2/x3k4JUZCoK3aK2CTJN2Q8yoLch8MAJT6bjDa1trpSjheeJLBa5yGyh6rAsL711jQt5Wy
+ OeMvvWj7722l9jXDL/0PHcQLVqDAFdAAAAA==
+X-Change-ID: 20260703-catalina-upgrade-3eae7d9d7289
+To: qemu-devel@nongnu.org
+Cc: Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
+ qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ Corey Minyard <cminyard@mvista.com>, Emmanuel Blot <emmanuel.blot@free.fr>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783610646; l=5193;
+ i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
+ bh=CXVE3rlSgcDs2PF76Z4rgYZ5WHvy9/IeZPv8mWXj+kI=;
+ b=Hih4jgE2aMzYX4zUI7WYfftehhNULRLjnj7GB9+vYIUd3xweC3FTcFKKW+5FWwlYYYMkd1rov
+ 2OYzXuTorlhATrfSqthKWCs5FQs+AxjW/2rCcGXFnPCxNSuWOvhng2u
+X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
+ pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
+Received-SPF: pass client-ip=212.27.42.2; envelope-from=emmanuel.blot@free.fr;
+ helo=smtp2-g21.free.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -155,43 +85,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBFcmljIEF1
-Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+IFNlbnQ6IDA5IEp1bHkgMjAyNiAxNTo1MQ0K
-PiBUbzogU2hhbWVlciBLb2xvdGh1bSBUaG9kaSA8c2tvbG90aHVtdGhvQG52aWRpYS5jb20+OyBx
-ZW11LQ0KPiBhcm1Abm9uZ251Lm9yZzsgcWVtdS1kZXZlbEBub25nbnUub3JnDQo+IENjOiBwZXRl
-ci5tYXlkZWxsQGxpbmFyby5vcmc7IE5pY29saW4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNvbT47
-IE5hdGhhbg0KPiBDaGVuIDxuYXRoYW5jQG52aWRpYS5jb20+OyBNYXR0IE9jaHMgPG1vY2hzQG52
-aWRpYS5jb20+OyBKaWFuZGkgQW4NCj4gPGphbkBudmlkaWEuY29tPg0KPiBTdWJqZWN0OiBSZTog
-W1BBVENIXSBody9hcm0vdGVncmEyNDEtY21kcXY6IERvIG5vdCBzeW5jIEdFUlJPUk4gb24NCj4g
-VkNNRFEgYWxsb2NhdGlvbg0KPiANCj4gRXh0ZXJuYWwgZW1haWw6IFVzZSBjYXV0aW9uIG9wZW5p
-bmcgbGlua3Mgb3IgYXR0YWNobWVudHMNCj4gDQo+IA0KPiBIaSBTaGFtZWVyLA0KPiANCj4gT24g
-Ny83LzI2IDE6MjQgUE0sIFNoYW1lZXIgS29sb3RodW0gd3JvdGU6DQo+ID4gV2hlbiBhIGd1ZXN0
-IGhpdHMgYSBjb21tYW5kIGVycm9yLCB0aGUgaGFyZHdhcmUgc2V0cyBHRVJST1IgYW5kIHRoZQ0K
-PiBndWVzdA0KPiA+IGFja25vd2xlZGdlcyBpdCBieSB3cml0aW5nIEdFUlJPUk4gdG8gbWF0Y2gu
-IFRoZXNlIHJlZ2lzdGVycyB1c2UgdG9nZ2xlDQo+ID4gc2VtYW50aWNzLCBhbmQgc2luY2UgR0VS
-Uk9SIGlzIHJlYWQtb25seSwgYm90aCBHRVJST1IgYW5kIEdFUlJPUk4gbWF5DQo+ID4gcmVtYWlu
-IHNldCBhZnRlciBhbiBlcnJvciBoYXMgYmVlbiBoYW5kbGVkLiBBcyBsb25nIGFzIHRoZXkgc3Rh
-eSBlcXVhbA0KPiA+IHRoZXJlIGlzIG5vIHBlbmRpbmcgZXJyb3IsIHNvIGEgc3Vic2VxdWVudCBW
-TSBpcyB1bmFmZmVjdGVkLg0KPiA+DQo+ID4gV2hlbiBhIG5ldyBWTSBzdGFydHMsIFFFTVUgYWxs
-b2NhdGVzIHRoZSBoYXJkd2FyZSBWQ01EUSBhbmQgZmx1c2hlcw0KPiBpdHMNCj4gPiBjYWNoZWQg
-R0VSUk9STiBvZiB6ZXJvLCB3aGlsZSB0aGUgaGFyZHdhcmUgbWF5IHN0aWxsIGhhdmUgYm90aCBH
-RVJST1INCj4gYW5kDQo+ID4gR0VSUk9STiBzZXQgZnJvbSBhbiBlcnJvciB0aGUgcHJldmlvdXMg
-Z3Vlc3QgYWNrbm93bGVkZ2VkLiBUaGlzIG1ha2VzDQo+IHRoZW0NCj4gPiBkaWZmZXIgYWdhaW4s
-IHNvIHRoZSBoYXJkd2FyZSBzZWVzIGEgcGVuZGluZyBlcnJvciBhbmQgc3RhbGwgdGhlIFZDTURR
-LA0KPiA+IGxlYWRpbmcgdG8gQ01EX1NZTkMgdGltZW91dHMuDQo+ID4NCj4gPiBEbyBub3Qgc3lu
-YyBHRVJST1JOIHdoZW4gYWxsb2NhdGluZyBhIGhhcmR3YXJlIFZDTURRLg0KPiANCj4gT25lIHF1
-ZXN0aW9uOiBJIHNlZSBjbWRxdi0+dmNtZHFfZ2Vycm9yW2luZGV4XSBpcyBsaWtlbHkgdG8gYmUg
-c2V0IGluDQo+IHRlZ3JhMjQxX2NtZHF2X3NldHVwX3ZjbWRxKCkuIERvbid0IHdlIGhhdmUgYSBy
-aXNrIHRvIHNpbGVuY2Ugb25lDQo+IHByZS1leGlzdGluZyBlcnJvcj8NCg0KSG1tLi5kb24ndCB0
-aGluayBzby4NCg0KdmNtZHFfZ2Vycm9yW2luZGV4XSBpcyBzZXQgb25seSB0byByZXBvcnQgQ01E
-UV9JTklUX0VSUiB3aGVuIGhhcmR3YXJlDQpxdWV1ZSBhbGxvY2F0aW9uIGZhaWxzLCBtZWFuaW5n
-IG5vIGhhcmR3YXJlIFZDTURRIGV4aXN0cyBhdCB0aGF0IHBvaW50Lg0KSXQgaXMgaW50ZW50aW9u
-YWxseSBjbGVhcmVkIGFmdGVyIGEgc3VjY2Vzc2Z1bCBhbGxvY2F0aW9uIGJlY2F1c2UgdGhlDQph
-bGxvY2F0aW9uIGVycm9yIG5vIGxvbmdlciBhcHBsaWVzLg0KDQpPbmNlIHRoZSBoYXJkd2FyZSBW
-Q01EUSBpcyBhbGxvY2F0ZWQsIEdFUlJPUiBhbmQgR0VSUk9STiBhY2Nlc3NlcyBhcmUNCmJhY2tl
-ZCBkaXJlY3RseSBieSBoYXJkd2FyZS4gU2luY2UgUUVNVSBubyBsb25nZXIgb3ZlcndyaXRlcyBH
-RVJST1JOLA0KYW55IHBlbmRpbmcgaGFyZHdhcmUgZXJyb3Igd2hlcmUgR0VSUk9SIGFuZCBHRVJS
-T1JOIGRpZmZlciByZW1haW5zDQp2aXNpYmxlIHRvIHRoZSBndWVzdC4NCg0KSSBjYW7igJl0IHRo
-aW5rIG9mIGFueSByZWxldmFudCBjb3JuZXIgY2FzZSBpc3N1ZSBoZXJlLCB0aG91Z2ggSSBtYXkg
-YmUgbWlzc2luZw0Kc29tZXRoaW5nLg0KDQpUaGFua3MsDQpTaGFtZWVyDQo=
+This series improves emulation of the Aspeed-based Catalina BMC machine,
+mostly around its I2C buses: the GPIO expanders the board relies on and
+the temperature sensors sitting next to them.
+
+The bulk of the work is on the PCA95xx I/O expander models. The existing
+PCA9552 and PCA9554 drivers only really covered the exact parts a couple
+of boards happened to use, and some of their register and pin behaviour
+did not match the datasheets. Catalina needs a few more variants and
+expects them to act like the real chips, so:
+
+ - the PCA9552 driver now provides proper PCA9555/PCA9535 types, applies
+   input polarity inversion on reads, and handles the command register
+   as the datasheet describes (auto-increment and wrapping);
+
+ - the PCA9554 driver gains the 4-bit PCA9536 variant, reflects
+push-pull
+   outputs back into the input register, and grows an opt-in mode that
+   honours the configured pin direction instead of forcing pins to
+   outputs;
+
+ - both drivers expose each line as a "pinN" QOM property, which lets an
+   external actor drive an input pin. The property also allows reading
+   the value driven onto an output-configured pin, which is the more
+   useful capability, but nothing exercises it yet.
+
+Along the way both models get a fair bit of cleanup (DEFINE_TYPES, the
+Resettable interface, state moved out of the headers, default
+descriptions derived from the instantiated type).
+
+On the machine itself, Catalina now instantiates its PCA9555 expanders
+as their own type, gains the NIC and FIO temperature sensors present on
+real hardware, and drives the pca9554 expander input pins from outside
+the guest.
+
+Finally, the register-level behaviour of both expanders is covered by
+new qtests, and the functional test that boots the OpenBMC image now
+exercises the expanders end to end, both through QOM and through the
+guest's gpio tooling.
+
+Note that the "hw/i2c: parent slaves created with
+i2c_slave_create_simple"
+patch is only a temporary dependency here: it already belongs to the
+separate ADC128D818 series currently under review, and will be dropped
+from this series before it is submitted for final review.
+
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+---
+Emmanuel Blot (29):
+      hw/gpio: pca9552: register types with DEFINE_TYPES()
+      hw/gpio: pca9552: move PCA955xState definition out of the header
+      hw/gpio: pca9552: rename I2CSlave member to parent_obj
+      hw/gpio: pca9552: default description to the instantiated type name
+      hw/gpio: pca9552: declare pca9555 device as an alias of pca9535 device
+      hw/gpio: pca9552: use the Resettable interface instead of legacy reset
+      hw/gpio: pca9552: apply input polarity inversion on read
+      hw/gpio: pca9552: conform GPIO command handling to the datasheet
+      hw/gpio: pca9552: expose GPIO pins as pin%d QOM properties
+      tests/qtest: add PCA9555 register access tests
+      tests/qtest: pca9555: test output-to-input reflection and pull-ups
+      tests/qtest: pca9555: test polarity inversion
+      tests/qtest: pca9555: test auto-increment and command wrapping
+      tests/qtest: pca9552: test behaviour specific to the LED variant
+      hw/gpio: pca9554: add PCA9536 support
+      hw/gpio: pca9554: add hw-dir property honoring the configured pin direction
+      hw/gpio: pca9554: reflect push-pull outputs in the input register
+      hw/gpio: pca9554: expose pin%d as a string property
+      tests/qtest: add PCA9554 register access tests
+      tests/qtest: pca9554: test output-to-input reflection and pull-ups
+      tests/qtest: pca9554: test polarity inversion
+      tests/qtest: pca9554: test absence of command auto-increment
+      tests/qtest: pca9554: test the PCA9536 4-bit variant
+      hw/arm: catalina: model PCA9555 IO expanders with their own type
+      hw/arm: catalina: add NIC and FIO temperature sensors
+      hw/i2c: parent slaves created with i2c_slave_create_simple
+      test/functional: catalina: test PCA9555 IO expander via QOM
+      hw/arm: catalina: drive pca9554 io expander input pins externally
+      test/functional: catalina: test PCA9554 IO expander via QOM
+
+ hw/arm/aspeed_ast2600_catalina.c             |  67 ++++---
+ hw/gpio/pca9552.c                            | 256 ++++++++++++++++++++-------
+ hw/gpio/pca9554.c                            | 175 ++++++++++--------
+ hw/i2c/core.c                                |   3 +
+ include/hw/gpio/pca9552.h                    |  31 +---
+ include/hw/gpio/pca9554.h                    |   3 +
+ include/hw/i2c/i2c.h                         |   7 +-
+ tests/functional/arm/test_aspeed_catalina.py |  81 +++++++++
+ tests/qtest/meson.build                      |   2 +
+ tests/qtest/pca9552-test.c                   |  76 ++++++++
+ tests/qtest/pca9554-test.c                   | 223 +++++++++++++++++++++++
+ tests/qtest/pca9555-test.c                   | 251 ++++++++++++++++++++++++++
+ 12 files changed, 994 insertions(+), 181 deletions(-)
+---
+base-commit: f893c46c3931b3684d235d221bf8b7844ddbf1d7
+change-id: 20260703-catalina-upgrade-3eae7d9d7289
+
+Best regards,
+--  
+Emmanuel Blot <emmanuel.blot@free.fr>
+
 

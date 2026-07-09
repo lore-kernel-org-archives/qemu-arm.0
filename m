@@ -4,104 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1268C43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 13:28:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E56F2C43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 13:32:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whonQ-0004SA-RA; Thu, 09 Jul 2026 09:28:08 -0400
+	id 1whorZ-0005dr-Sl; Thu, 09 Jul 2026 09:32:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1whonO-0004RV-IL
- for qemu-arm@nongnu.org; Thu, 09 Jul 2026 09:28:06 -0400
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1whonN-0008KT-1q
- for qemu-arm@nongnu.org; Thu, 09 Jul 2026 09:28:06 -0400
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-664d530fcfdso1323085d50.2
- for <qemu-arm@nongnu.org>; Thu, 09 Jul 2026 06:28:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783603683; cv=none;
- d=google.com; s=arc-20260327;
- b=elbjLkmo4WsyE5na08kn16SzHBsSCBWxYs4KbyD8sEGQZTcluQf9owQMT/UdRV3Iwv
- hyHku30Df44P6uRvcxKNtxrwd4QIYzqIFEjn9RZV4FvEJUVD50pkPya0Nucn+2KpG9h2
- lSCiI4AoNrmCoTcx5G+dRaPpioLLpqAFXCZrUFeVOyWZo8md30ywLWVpqjSqAfZoh866
- GZbxojVnh1n2xgFA87gQKua+T5KmoIKuiC9P6PrOQu9XrmOlFA5fQcv8XQAMRFPUSZ3x
- sYYpPyZ26hHsKUG0a5CcKZ34lW63PaQSsBdxthVyxQqP3XoG1qgX6dXSANWzbMKeHAEk
- Nsew==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=whJVHBLU8XN1bu29etXrqHdM1+t3RsWUdRcRhBEktyA=;
- fh=nS2trf6nL7oXkovbM7MTmVlGYKfhjECu3hLJlrcUZXA=;
- b=P7G+rl2WrU2sFLn5q9wxPkMC6TNOTKU7k9tQXEkB5juseD06ioTltgHNP7gjzfUswl
- mEreJCEVXvT6iZrsw7Ehw5+4e6lBCuEMZrqO7C4DjhgkGnhHL6VEYyL0B1rUKY9zA/4y
- WqjsmjGwUT95njl7zgRXAn0xDZ08dnchvouRKP4m5hkt9mbliQhsOQ2DGgwM06bjQF4i
- HDGy6M98IHTfow2vMU3fMtYSBq78AH8/WKMQcxmtcoumipRSpH9Q8A7xIPll5Ac+X/O+
- 6e1b8OkvFEX8d3xeDDQQGmf2T86pxruWA7cxGJYnf2ulqiZEMpWaGSDW8MMA4rr+I0s8
- NEoA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1783603683; x=1784208483; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=whJVHBLU8XN1bu29etXrqHdM1+t3RsWUdRcRhBEktyA=;
- b=ma/ko62fhBwcU98rRodsUYNydkYZONxAS/5VpmZWH+aKmlgsTva/ZSQS/Qc8ESqAYx
- tqJ9ouUhf8XWwc2uu3m/vhV7o0KLSX+d3UrwYQHa18NH/+65FSbZyqdHwhaipfI+xopH
- lqaUw/RNvjYYikpoYxrnRCOmJdpxG1DilP5M/A0HzPVwNcVG1HonSWIplIODgflmDpbh
- aqFbN3Y2QuCwjaokqAr73J0XomLl+nl0gzjJkQHauNuIJg5/mGWb6cjJ1KnkTKpDRwDC
- hBeQ3qwhD/XdsuNd22/elpuVRH8raQqJb9c+DLGGKNwIfiKmm7+Nd1cDz8NE1+4eD9By
- g7Zg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783603683; x=1784208483;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=whJVHBLU8XN1bu29etXrqHdM1+t3RsWUdRcRhBEktyA=;
- b=XbQRmOaDOG/iAzxr+37Fv95492L7Q/K06iHGjY6o4Z6Q9WqVkv5ZXB0xvdv4+jsEvn
- Si4HiRUQCc7yAoIosIK/YOgI8kwuVDz/rCHRgekeXeT5Fj8nLO+Tj4I9Ua+WjyZBKLr8
- tfxn27vmLODOYAqXmdmUM4FqFvflC3utGvCgXa1Y7l9hPm42+6jTidprvZ+1L6QbKdgr
- +wMQmtBcihTeJVz2eEuIQePIXID5Sa6GfcEKIfgRJR+wMM60Vw7A8q/2iItPKyNqnIW5
- S6rP71cT0bACP/2qUFsoEIOIGYSQ0RAHfwH9B2jCDoejZRlrM1QHYVr5tflhxhxLAklY
- YAeA==
-X-Forwarded-Encrypted: i=1;
- AHgh+RppPsr5wbdlR672/BXBlEwrXNINjn/PIGY5lOgx2ijLBx783HFTyVIfwwCmpsXZZKZllluExdGX9Q==@nongnu.org
-X-Gm-Message-State: AOJu0Yx5hRzygkArmY2a/8f7GlW8vaRznYVU+kOHjRf47hVPhDbaeB48
- PfwkWcJeQlVKbQUucvuRE1Z/OEbUT2+AtW8E+8oZZKbSEZXukNjgu0967iDfAkO5Fvck/Iruspa
- oKHI6tWlSmG12IRJgmLmczai5JmlHArM=
-X-Gm-Gg: AfdE7cmwVc14d4oxE55hxdKNNGkaOcCmSJ0PHm3ZQkJILQuRVxFudqM/qQqMx05Ehfo
- gUE8IZf+Zl4sn1sE86KdtjNem0iYG8kYRGGHjawlncNFtC0KycFVWBNbtzU99N2POdG0NnNXcrZ
- nJIBaKSRgGcxfI8d+q8ZKwmmArn0AGafynnPf/swSq+5nsjLwSEE4dEjAq8Aa2XpLPfl5lCMfEQ
- 67K8r4eCMKwn1BlLsAfAxtyRKS93JELUoJI1xN59bRs733SOGH8b+p4IoNKhJ7VKWfUceY=
-X-Received: by 2002:a05:690e:1289:b0:667:ae6e:1a18 with SMTP id
- 956f58d0204a3-667ae6e3271mr4116184d50.36.1783603683395; Thu, 09 Jul 2026
- 06:28:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1whorY-0005dC-Cq
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2026 09:32:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1whorV-0002Et-9K
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2026 09:32:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1783603940;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=Z2B0ey6QePN99dWe18NcPGr1fUj02GH2UjAxw3HoYuY=;
+ b=eiMHTkZtB0VemfYOk5M8n8ustOaUFQaufVKp52huTY2WJJ24oCTmFWxbIMcA8D/1Fw4wsT
+ mC2XWpDZFjsiAWQBWNXpBAP+jlxz+Kc0GCl4Nuqi5bjaveJK1VdW+0+Pk9XuzR9FpjLNHj
+ +Hh8xbyN6J/IWlKKa71w7FGyCbsw+Io=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-139-9Q-OJY0IMsWOQVuGelrUag-1; Thu,
+ 09 Jul 2026 09:32:16 -0400
+X-MC-Unique: 9Q-OJY0IMsWOQVuGelrUag-1
+X-Mimecast-MFC-AGG-ID: 9Q-OJY0IMsWOQVuGelrUag_1783603934
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1897818052E0; Thu,  9 Jul 2026 13:32:14 +0000 (UTC)
+Received: from redhat.com (unknown [10.44.49.59])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 220A83000C01; Thu,  9 Jul 2026 13:32:08 +0000 (UTC)
+Date: Thu, 9 Jul 2026 14:32:05 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ Jan Kiszka <jan.kiszka@siemens.com>, qemu-arm@nongnu.org,
+ BALATON Zoltan <balaton@eik.bme.hu>, qemu-ppc@nongnu.org,
+ Huacai Chen <chenhuacai@kernel.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
+Subject: Re: A few Machines crash when "no default audio driver available"
+Message-ID: <ak-i1dNY_RrGNHAM@redhat.com>
+References: <87o6gge6b0.fsf@pond.sub.org>
+ <CAFEAcA9goRQuxw3VD7AqUOHHTdOXu8MSfCxdQMBviE3QgGD58w@mail.gmail.com>
+ <87zf00cn7m.fsf@pond.sub.org>
 MIME-Version: 1.0
-References: <20260709104802.1989086-1-peter.maydell@linaro.org>
- <2726eb5e-61ae-4600-9c47-2ce9d764afc1@oss.qualcomm.com>
-In-Reply-To: <2726eb5e-61ae-4600-9c47-2ce9d764afc1@oss.qualcomm.com>
-From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Date: Thu, 9 Jul 2026 15:27:52 +0200
-X-Gm-Features: AVVi8Cc87T0UdhhurfCiVvN78WGsblq8ECfazO0Q34AhTx3QtKsEqKs9ArrzesM
-Message-ID: <CABtshVQdNbKF6ebTmu32h7L-zuLT-W2wzTXCWbop5PJ9qCvXyA@mail.gmail.com>
-Subject: Re: [PATCH] hw/misc/allwinner-r40-ccu.c: Correct handling of out of
- range accesses
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000f80b5706562d977c"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-yx1-xb133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <87zf00cn7m.fsf@pond.sub.org>
+User-Agent: Mutt/2.3.2 (2026-04-26)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: udQ1VWJ-jIW02vVneVXP4yYJxvWkgcHd7V9GbBZ4DOA_1783603934
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,81 +90,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000f80b5706562d977c
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Jul 9, 2026 at 1:03=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 <
-philmd@oss.qualcomm.com> wrote:
-
-> On 9/7/26 12:48, Peter Maydell wrote:
-> > In allwinner_r40_ccu_write() we handle writes to a MemoryRegion of
-> > size AW_R40_CCU_IOSIZE, and the register array is sized accordingly
-> > at (AW_R40_CCU_IOSIZE / sizeof(uint32_t)).  However, one of the cases
-> > in the switch is a range up to AW_R40_CCU_IOSIZE, which makes
-> > Coverity think we might index off the end of the array. We also
-> > have a similar case in the read function, but since that returns
-> > early it doesn't have the same issue.
+On Thu, Jul 09, 2026 at 03:22:05PM +0200, Markus Armbruster wrote:
+> Cc: mainainters for "Overall Audio backends"
+> Peter Maydell <peter.maydell@linaro.org> writes:
+> 
+> > On Thu, 9 Jul 2026 at 12:44, Markus Armbruster <armbru@redhat.com> wrote:
+> >>
+> >> I stumbled over ARM machine musicpal, PPC machines pegasos1, pegasos2,
+> >> and MIPS machine fuloong2e crashes.
+> >>
+> >> I run them like this:
+> >>
+> >> $ qemu-system-aarch64 -M musicpal -nodefaults -S -display none -monitor stdio
 > >
-> > Adjust the handling of out of range accesses:
-> >   - use AW_R40_CCU_IOSIZE - 4 as the upper bound, as this is the
-> >     largest value we will actually see
-> >   - return early in the write case, as we do in the read case
+> >> Died when device_set_realized() tried to propagate a "no default audio
+> >> driver available" error to &error_abort.
 > >
-> > Coverity CID: 1663687
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >   hw/misc/allwinner-r40-ccu.c | 6 +++---
-> >   1 file changed, 3 insertions(+), 3 deletions(-)
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
->
+> > Is this something we want to have be a possibility the devices
+> > have to cope with? Can we have the "ignores all audio data"
+> > backend be always available instead?
+> 
+> There's plenty of precedence for /dev/null-like backends.
+> 
+> > Otherwise every audio device needs to cope with "there is no
+> > audio backend available" and implement "do nothing with the
+> > audio data" itself.
+> 
+> Yes.
 
-Reviewed-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+We've got a bit of tension between "no defaults" and "builtin audio
+devices" here.
 
---000000000000f80b5706562d977c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Cnosider if I had instead done
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
-mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jul 9, =
-2026 at 1:03=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:p=
-hilmd@oss.qualcomm.com">philmd@oss.qualcomm.com</a>&gt; wrote:<br></div><bl=
-ockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-lef=
-t:1px solid rgb(204,204,204);padding-left:1ex">On 9/7/26 12:48, Peter Mayde=
-ll wrote:<br>
-&gt; In allwinner_r40_ccu_write() we handle writes to a MemoryRegion of<br>
-&gt; size AW_R40_CCU_IOSIZE, and the register array is sized accordingly<br=
->
-&gt; at (AW_R40_CCU_IOSIZE / sizeof(uint32_t)).=C2=A0 However, one of the c=
-ases<br>
-&gt; in the switch is a range up to AW_R40_CCU_IOSIZE, which makes<br>
-&gt; Coverity think we might index off the end of the array. We also<br>
-&gt; have a similar case in the read function, but since that returns<br>
-&gt; early it doesn&#39;t have the same issue.<br>
-&gt; <br>
-&gt; Adjust the handling of out of range accesses:<br>
-&gt;=C2=A0 =C2=A0- use AW_R40_CCU_IOSIZE - 4 as the upper bound, as this is=
- the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0largest value we will actually see<br>
-&gt;=C2=A0 =C2=A0- return early in the write case, as we do in the read cas=
-e<br>
-&gt; <br>
-&gt; Coverity CID: 1663687<br>
-&gt; Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linar=
-o.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0hw/misc/allwinner-r40-ccu.c | 6 +++---<br>
-&gt;=C2=A0 =C2=A01 file changed, 3 insertions(+), 3 deletions(-)<br>
-<br>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@oss.q=
-ualcomm.com" target=3D"_blank">philmd@oss.qualcomm.com</a>&gt;<br></blockqu=
-ote><div><br></div><div>Reviewed-by: Strahinja Jankovic &lt;<a href=3D"mail=
-to:strahinja.p.jankovic@gmail.com">strahinja.p.jankovic@gmail.com</a>&gt;=
-=C2=A0</div></div></div>
+  qemu-system-x86_64 -M pc -device ac97 -nodefaults
 
---000000000000f80b5706562d977c--
+It is not unreasonable to expect to see an error because you asked
+explicitly for 'ac97'  and forgot to wire up the required audio
+backend, and asked to NOT have any defaults.
+
+But with your 'musicpal' machine example, you never asked for the
+frontend device, so you should be forgiven for also not asking
+for a audio backend.
+
+If we guarantee a /dev/null audio backend always exists, we help
+the second case but degrade the first case
+
+So we must pick the lesser evil :-(
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+
 

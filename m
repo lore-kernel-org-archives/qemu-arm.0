@@ -4,106 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 300BCC44506
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 08:14:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98D0FC43458
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 08:28:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wi6NM-0002V9-Rk; Fri, 10 Jul 2026 04:14:24 -0400
+	id 1wi6ak-0005fc-17; Fri, 10 Jul 2026 04:28:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shivangu@linux.ibm.com>)
- id 1wi6NJ-0002Tz-7D; Fri, 10 Jul 2026 04:14:21 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1wi6ah-0005fL-Sq; Fri, 10 Jul 2026 04:28:11 -0400
+Received: from smtp2-g21.free.fr ([212.27.42.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shivangu@linux.ibm.com>)
- id 1wi6NH-0002m8-8f; Fri, 10 Jul 2026 04:14:20 -0400
-Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66A7mIck463349; Fri, 10 Jul 2026 08:14:15 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:date:from:message-id:mime-version
- :subject:to; s=pp1; bh=Ftl6dCsCYBFCfbAAwJuHFZIJKAhQc46Ndy87INLxK
- +g=; b=RjpHRkN6RMj0xAthDgfcs0DlXXR//aMqAKdcJZJQ3vAfvekDOxpkhcV6e
- UB9PxXME4+hfE2elXp2wxfxvRQ+5FEtCGPcPuP/winfDiSp8hURp2rPhGs6WwfB2
- yk1gvRdPUtdRA0bNrZ+TmpwPZPgEQBELUMAet33W06+aK010M1z5CedsTayr4JiR
- BsTE0mgmRMc8mQ1+fAvEy7ZVKm2STcT0Y/ohMmpYLZTIRKkDUmrsp+8/aSyFdzTm
- 0yDZ1lXejJDSlf/4PXkL1orrCSz0eCxJ6s652lmaprUCvdkXWiYWky7v6WTFH5Ls
- HPVWjiXOxvd4rgwXw9mPAh75oECRA==
-Received: from ppma22.wdc07v.mail.ibm.com
- (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fafh0ayks-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 10 Jul 2026 08:14:15 +0000 (GMT)
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma22.wdc07v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66A84bbY030115;
- Fri, 10 Jul 2026 08:14:14 GMT
-Received: from smtprelay06.fra02v.mail.ibm.com ([9.218.2.230])
- by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4f7cvwh99y-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 10 Jul 2026 08:14:13 +0000 (GMT)
-Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com
- [10.20.54.106])
- by smtprelay06.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 66A8EAFv23724388
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 10 Jul 2026 08:14:10 GMT
-Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E2DFE20043;
- Fri, 10 Jul 2026 08:14:09 +0000 (GMT)
-Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 1474A2004B;
- Fri, 10 Jul 2026 08:14:08 +0000 (GMT)
-Received: from shivang.bl1-in.ibm.com (unknown [9.123.12.247])
- by smtpav07.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Fri, 10 Jul 2026 08:14:07 +0000 (GMT)
-From: Shivang Upadhyay <shivangu@linux.ibm.com>
-To: qemu-devel@nongnu.org
-Cc: berrange@redhat.com, pierrick.bouvier@oss.qualcomm.com,
- peter.maydell@linaro.org, qemu-arm@nongnu.org, harshpb@linux.ibm.com,
- Shivang Upadhyay <shivangu@linux.ibm.com>
-Subject: [PATCH] docs: Update qmp scripts path
-Date: Fri, 10 Jul 2026 13:44:02 +0530
-Message-ID: <20260710081402.93045-1-shivangu@linux.ibm.com>
-X-Mailer: git-send-email 2.54.0
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1wi6ag-0008C7-0f; Fri, 10 Jul 2026 04:28:11 -0400
+Received: from localhost (unknown [89.92.102.124])
+ (Authenticated sender: emmanuel.blot@free.fr)
+ by smtp2-g21.free.fr (Postfix) with ESMTPSA id 072462003D0;
+ Fri, 10 Jul 2026 10:27:49 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
+ s=smtp-20201208; t=1783672087;
+ bh=hyBmI2Vm393pvvYJAsZ7U8knPDlelq2X+4zSmoussIM=;
+ h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+ b=ZCK27AYowhMS5QnlYAOWyvFFpIHx6QCI8ZOatv/mVbCN0XKDxNSkvWyqrjtxNR7Zq
+ T8XS51l12aH6NSRjruC7N/0MXwO3F6MH736CE0gtvzHVI6DlG370sM+FplWUslpm1K
+ yIlKwO9IzhwkIuLbj43ve1tUb0Ehd9urUyE5Ox3PjZH4eL1cnzFT0vLtv6u2wVvz0O
+ v99lr1dWAh/KuWbn+CijcDy9mRyayzYxvFeZoH64Cp0bF42Cx8qf3e7e/WbyWELPyW
+ 5MvbPdwF4VHLkHd50URxzi+Ts5BjhQBuWg5MDNJVL0UWgedC4v/cZqbV0tOZ39AHGH
+ uks0ovvxInv2g==
+From: Emmanuel Blot <emmanuel.blot@free.fr>
+Date: Thu, 09 Jul 2026 17:23:21 +0200
+Subject: [PATCH 29/29] test/functional: catalina: test PCA9554 IO expander
+ via QOM
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Authority-Analysis: v=2.4 cv=VebH+lp9 c=1 sm=1 tr=0 ts=6a50a9d7 cx=c_pps
- a=5BHTudwdYE3Te8bg5FgnPg==:117 a=5BHTudwdYE3Te8bg5FgnPg==:17
- a=RAioF0-LDSMA:10 a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22
- a=iQ6ETzBq9ecOQQE5vZCe:22 a=VnNF1IyMAAAA:8 a=0Xz6S3jdke2Nq1A_s-sA:9
-X-Proofpoint-GUID: W5UGbR6WSrchgrisCxTq7jcWEZ1LlQUE
-X-Proofpoint-ORIG-GUID: W5UGbR6WSrchgrisCxTq7jcWEZ1LlQUE
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzEwMDA3NCBTYWx0ZWRfX74saZSMn1Bdk
- fbao34fiVFgmM6qv3kdBmcV4NiGJebd7KXshjFHVavtI41YZA6VFGlNKGIBHBuJ4xHZbE2rKf+O
- ALoQ7Az0a/S1nPvv5ggbDbaNAcZQc48=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzEwMDA3NCBTYWx0ZWRfXxR4bFpe+ENzs
- D7POEFZrE3N6UqRVmJP4Hj5Y04H+bWNifQwRXpSpcVHicHnSQUiGGSGBZgzITYWmeLZ5OLNmtDI
- RZcLyslXcd8ueffm2s5nyHuhnVRR0FpMB3iDqqIssMyoDUlYCgGGia4adUE/iORofWqdY7Y/dEQ
- qudj/AFLbiV6KVJ1/Yx8HhQ0Ow8EGxsH2APj7gp9+OldameHn9EuloY4sVdXOoRhprhU9HHKDX9
- eYwSHPu0nEPsZnXe+fi8wR1NdeLgCxBfMSMRUpszZJpKPzn/LSTTkdtqfujJIxQeZOvr0QnUbwy
- oZkooOGMwysGMf8LWVa7xplFWfXA3Po/NRWzTOD+8KPOZyZ6YzaadAcDna/6PM0U8u0faMH6Mvv
- /3eB75EcePJyNyl0BuaBybWE7sgvtnHzASXgDrak2njj89V1BEchM1jjGQOiLIYVJEXiMoSX/Ld
- mvH9WjWjABCmqThvakg==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-10_02,2026-07-09_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 suspectscore=0 clxscore=1015 malwarescore=0
- impostorscore=0 phishscore=0 lowpriorityscore=0 adultscore=0 spamscore=0
- bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2607100074
-Received-SPF: pass client-ip=148.163.156.1;
- envelope-from=shivangu@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260709-catalina-upgrade-v1-29-82a63fead90c@free.fr>
+References: <20260709-catalina-upgrade-v1-0-82a63fead90c@free.fr>
+In-Reply-To: <20260709-catalina-upgrade-v1-0-82a63fead90c@free.fr>
+To: qemu-devel@nongnu.org
+Cc: Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
+ qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ Corey Minyard <cminyard@mvista.com>, Emmanuel Blot <emmanuel.blot@free.fr>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783610581; l=1727;
+ i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
+ bh=hyBmI2Vm393pvvYJAsZ7U8knPDlelq2X+4zSmoussIM=;
+ b=5KwcCBGm8H+8Wjjvy4SWEPoR/MhilYC419xnrqox0pz8rFbPnvF5DaTcICuTcHoPe927SsCN5
+ zFbHVOGBE3zC4cnRTmXDa36SttEDL2MUTm/e/XAcoA/uKyywKTKXWY/
+X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
+ pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
+Received-SPF: pass client-ip=212.27.42.2; envelope-from=emmanuel.blot@free.fr;
+ helo=smtp2-g21.free.fr
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,84 +85,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Qmp scripts are essentially removed from scripts directory as per commit
-b08e111b1e1 ("scripts: nudge users to use 'run' script for scripts that
-import qemu.qmp"). Scripts essentially redirect to run build/run script.
-Reflecting the same changes on docs.
+Cover io_expander5 (pca9554@27, behind pca9548@70 channel 6 on i2c1), an
+8-bit expander reached through the pca9548 mux.
 
-Signed-off-by: Shivang Upadhyay <shivangu@linux.ibm.com>
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- docs/devel/build-system.rst            |  2 +-
- docs/interop/live-block-operations.rst | 10 +++++-----
- docs/system/arm/cpu-features.rst       |  5 +++--
- docs/system/devices/usb.rst            |  2 +-
- 4 files changed, 10 insertions(+), 9 deletions(-)
+ tests/functional/arm/test_aspeed_catalina.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/docs/devel/build-system.rst b/docs/devel/build-system.rst
-index 71331e64ac..052eac7c51 100644
---- a/docs/devel/build-system.rst
-+++ b/docs/devel/build-system.rst
-@@ -521,7 +521,7 @@ Built by configure:
-   before running the requested command. Pass the command to run as
-   args, for example::
+diff --git a/tests/functional/arm/test_aspeed_catalina.py b/tests/functional/arm/test_aspeed_catalina.py
+index cf8a59bd2a..17391164c3 100755
+--- a/tests/functional/arm/test_aspeed_catalina.py
++++ b/tests/functional/arm/test_aspeed_catalina.py
+@@ -22,6 +22,11 @@ class CatalinaMachine(AspeedTest):
+     # io_expander0: pca9555@20 on i2c2, a 16-bit expander directly on the bus.
+     IOEXP0_QOM = "/machine/soc/i2c/bus[2]/aspeed.i2c.bus.2/0x20"
+     IOEXP0_GPIODETECT = r"\[2-0020\]"
++    # io_expander5: pca9554@27 behind pca9548@70 channel 6 on i2c1, an 8-bit
++    # expander. Another expander sits at address 0x27 (pca9555@27 on i2c2), so
++    # it is matched on both its address and its line count.
++    IOEXP5_QOM = "/machine/soc/i2c/bus[1]/aspeed.i2c.bus.1/0x70/i2c.6/0x27"
++    IOEXP5_GPIODETECT = r"-0027] \(8 lines\)"
  
--    $ ./build/run ./script/qmp/qmp-shell-wrap qemu-system-x86_64
-+    $ ./build/run qmp-shell-wrap qemu-system-x86_64
+     def test_arm_ast2600_catalina_openbmc(self):
+         image_path = self.uncompress(self.ASSET_CATALINA_FLASH)
+@@ -35,6 +40,8 @@ def test_arm_ast2600_catalina_openbmc(self):
  
-   will use the ``python3`` binary and site-packages from the local
-   venv to run ``qmp-shell-wrap`` and spawn the QEMU emulator from
-diff --git a/docs/interop/live-block-operations.rst b/docs/interop/live-block-operations.rst
-index 6b549ede7c..f8beb66275 100644
---- a/docs/interop/live-block-operations.rst
-+++ b/docs/interop/live-block-operations.rst
-@@ -152,12 +152,12 @@ of QEMU 2.9, accept ``node-name`` parameter) when performing various
- block operations.
+         # pca9555@20 spans two 8-bit ports (pins 0-7 and 8-15).
+         self.check_ioexp(self.IOEXP0_QOM, self.IOEXP0_GPIODETECT, (0, 7, 8, 15))
++        # pca9554@27 is a single 8-bit port.
++        self.check_ioexp(self.IOEXP5_QOM, self.IOEXP5_GPIODETECT, (0, 3, 7))
  
- To interact with the QEMU instance launched above, we will use the
--``qmp-shell`` utility (located at: ``qemu/scripts/qmp``, as part of the
--QEMU source directory), which takes key-value pairs for QMP commands.
--Invoke it as below (which will also print out the complete raw JSON
--syntax for reference -- examples in the following sections)::
-+``qmp-shell`` utility (available via the ``run`` script in the build
-+directory after running configure), which takes key-value pairs for QMP
-+commands.  Invoke it as below (which will also print out the complete raw
-+JSON syntax for reference -- examples in the following sections)::
- 
--    $ ./qmp-shell -v -p /tmp/qmp-sock
-+    $ $builddir/run qmp-shell -v -p /tmp/qmp-sock
-     (QEMU)
- 
- .. note::
-diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-index 10b0eff27e..c56f5fe208 100644
---- a/docs/system/arm/cpu-features.rst
-+++ b/docs/system/arm/cpu-features.rst
-@@ -36,8 +36,9 @@ CPU Feature Probing
- 
- Determining which CPU features are available and functional for a given
- CPU type is possible with the ``query-cpu-model-expansion`` QMP command.
--Below are some examples where ``scripts/qmp/qmp-shell`` (see the top comment
--block in the script for usage) is used to issue the QMP commands.
-+Below are some examples where ``qmp-shell`` (available via
-+``$builddir/run qmp-shell`` after running configure) is used to issue the
-+QMP commands.
- 
- 1. Determine which CPU features are available for the ``max`` CPU type
-    (Note, we started QEMU with qemu-system-aarch64, so ``max`` is
-diff --git a/docs/system/devices/usb.rst b/docs/system/devices/usb.rst
-index dc694d23c2..7e2a303f41 100644
---- a/docs/system/devices/usb.rst
-+++ b/docs/system/devices/usb.rst
-@@ -258,7 +258,7 @@ device visible to the guest. The workflow looks like this:
- #. ``device-add usb-bot,id=foo``
- #. ``device-add scsi-{hd,cd},bus=foo.0,lun=0``
- #. optionally add more devices (luns 1 ... 15)
--#. ``scripts/qmp/qom-set foo.attached = true``
-+#. ``$builddir/run qom-set foo.attached = true``
- 
- .. _host_005fusb_005fdevices:
- 
+     def check_ioexp(self, qom, gpiodetect, pins):
+         # The guest uses these expander lines as inputs (with pull-ups), so
+
 -- 
-2.54.0
+2.50.1
 
 

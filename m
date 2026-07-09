@@ -4,115 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37EC6C44507
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 06:28:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B23BC43458
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 06:28:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wi4gA-0007yS-M5; Fri, 10 Jul 2026 02:25:42 -0400
+	id 1wi4i2-0005n7-St; Fri, 10 Jul 2026 02:27:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wi4g0-0007ki-P2
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 02:25:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1wi4i1-0005lu-4I; Fri, 10 Jul 2026 02:27:37 -0400
+Received: from smtp2-g21.free.fr ([2a01:e0c:1:1599::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wi4fz-0005pF-8G
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 02:25:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783664730;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=v8q+3lUkMrowihgNvWTsOWIW9MlqhSBHDx1C+VszfsU=;
- b=Y8qxUmyI6hJK+pmkUoskHlceV58TFTMFR45ieC1huMTeDxs2CXIcLobsYvW1hqcNnkffdq
- O1vmwWMkWxEt0ze+otVlKvTGFWnwdJl0NtOybDXTVgq3tfgGGDrxYCWhOpuh1KNJ99ojtB
- /mGegdxouREKu2krz3Boodt253MKuFk=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-612-C-trBSPRMYWc0_bCbg-Gww-1; Fri,
- 10 Jul 2026 02:25:27 -0400
-X-MC-Unique: C-trBSPRMYWc0_bCbg-Gww-1
-X-Mimecast-MFC-AGG-ID: C-trBSPRMYWc0_bCbg-Gww_1783664721
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 370881955F76; Fri, 10 Jul 2026 06:25:19 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A8F05180058C; Fri, 10 Jul 2026 06:25:15 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 380D421E6920; Fri, 10 Jul 2026 08:25:13 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: "Graf (AWS), Alexander" <graf@amazon.de>
-Cc: BALATON Zoltan <balaton@eik.bme.hu>,  Markus Armbruster
- <armbru@redhat.com>,  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Aditya Gupta <adityag@linux.ibm.com>,  Alexandre Iooss
- <erdnaxe@crans.org>,  "Alexey Kardashevskiy" <aik@ozlabs.ru>,  Alistair
- Francis <Alistair.Francis@wdc.com>,  Alistair Francis
- <alistair@alistair23.me>,  Antony Pavlov <antonynpavlov@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,  "Bernhard Beschow"
- <shentey@gmail.com>,  Bibo Mao <maobibo@loongson.cn>,  Brian Cain
- <brian.cain@oss.qualcomm.com>,  Chao Liu <chao.liu@processmission.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,  =?utf-8?Q?Cl=C3=A9me?=
- =?utf-8?Q?nt?= Chigot
- <chigot@adacore.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Dorjoy Chowdhury
- <dorjoychy111@gmail.com>,  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Eric Farman <farman@linux.ibm.com>,  Farhan Ali <alifm@linux.ibm.com>,
- "Felipe Balbi" <balbi@kernel.org>,  Francisco Iglesias
- <francisco.iglesias@amd.com>,  Frederic Konrad <konrad.frederic@yahoo.fr>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>,  Gautam Gala
- <ggala@linux.ibm.com>,  Glenn Miles <milesg@linux.ibm.com>,  Halil Pasic
- <pasic@linux.ibm.com>,  Hao Wu <wuhaotsh@google.com>,  Harsh Prateek Bora
- <harshpb@linux.ibm.com>,  "Helge Deller" <deller@gmx.de>,  Hendrik
- Brueckner <brueckner@linux.ibm.com>,  =?utf-8?Q?Herv=C3=A9?= Poussineau
- <hpoussin@reactos.org>,  Huacai Chen <chenhuacai@kernel.org>,  Jan Kiszka
- <jan.kiszka@web.de>,  Jared Rossi <jrossi@linux.ibm.com>,  Joel Stanley
- <joel@jms.id.au>,  Laurent Vivier <laurent@vivier.eu>,  Manos
- Pitsidianakis <manos.pitsidianakis@linaro.org>,  Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>,  Matthew Rosato <mjrosato@linux.ibm.com>,
- Max Filippov <jcmvbkbc@gmail.com>,  Michael Rolnik <mrolnik@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,  Nicholas Piggin
- <npiggin@gmail.com>,  Niek Linnenbank <nieklinnenbank@gmail.com>,  "Palmer
- Dabbelt" <palmer@dabbelt.com>,  Paolo Bonzini <pbonzini@redhat.com>,
- "Peter Maydell" <peter.maydell@linaro.org>,  Philippe =?utf-8?Q?Mathieu-?=
- =?utf-8?Q?Daud=C3=A9?= <philmd@mailo.com>,  "Pierrick Bouvier"
- <pierrick.bouvier@oss.qualcomm.com>,  Ran Wang <wangran@bosc.ac.cn>,
- Richard Henderson <richard.henderson@linaro.org>,  Sai Pavan Boddu
- <sai.pavan.boddu@amd.com>,  Samuel Tardieu <sam@rfc1149.net>,  Sergio
- Lopez <slp@redhat.com>,  Song Gao <17746591750@163.com>,  Stafford Horne
- <shorne@gmail.com>,  Subbaraya Sundeep <sundeep.lkml@gmail.com>,  Thomas
- Huth <th.huth+qemu@posteo.eu>,  Tyrone Ting <kfting@nuvoton.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,  "qemu-ppc@nongnu.org"
- <qemu-ppc@nongnu.org>,  "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>
-Subject: Re: Call to clean up QOM onboard devices lacking a parent
-In-Reply-To: <fee18020-dcfe-4d91-8384-5cc5f8321ff7@amazon.com> (Graf
- Alexander's message of "Thu, 9 Jul 2026 16:45:42 +0000")
-References: <87se5scipx.fsf@pond.sub.org>
- <17c7f91b-8935-8ebf-a982-f91df755af81@eik.bme.hu>
- <fee18020-dcfe-4d91-8384-5cc5f8321ff7@amazon.com>
-Date: Fri, 10 Jul 2026 08:25:13 +0200
-Message-ID: <87h5m7xsxi.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1wi4hx-0006C6-PR; Fri, 10 Jul 2026 02:27:36 -0400
+Received: from localhost (unknown [89.92.102.124])
+ (Authenticated sender: emmanuel.blot@free.fr)
+ by smtp2-g21.free.fr (Postfix) with ESMTPSA id 430C12003D6;
+ Fri, 10 Jul 2026 08:27:12 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
+ s=smtp-20201208; t=1783664850;
+ bh=3FG9kKyoZTVeTCjPeTckm75zaMnjd5I57x1/8cmrneY=;
+ h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+ b=n+4gqvjW3peSCkTfhTgGQPKLAo/499PmexQfj16wQbh0XQGr8Olu+f4wBcMys4h4W
+ lK44WkICqBH2OhchtgV5q2m7EOQzj8S2bcgVVmeY8O///LmrsnS54eiZsE6Tb0TvdH
+ UXw/IghTZcS8y0597zY0KOiiIuKbSMeOkAeRF92mhjI0Cr5s2S8pdpZR8HLWzK5M71
+ guKGKjuC/A7VqIGy/XKpeOcaqcpRic8IgNfLCtDW7T3+DrCo5kdNco4hDNlWoQlbfB
+ fHtNOt+zhnR4eOYiybagSAMyQH3bQpPATfYkQnuSfGNeVxwbPFLuN62u/ovhWCcwkh
+ Y0BXRToFCFdAQ==
+From: Emmanuel Blot <emmanuel.blot@free.fr>
+Date: Thu, 09 Jul 2026 17:23:14 +0200
+Subject: [PATCH 22/29] tests/qtest: pca9554: test absence of command
+ auto-increment
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: l3CaQzhCeu20fL4xnEAHh2aD1gf_Q6Fo_rsYWyk_n34_1783664721
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260709-catalina-upgrade-v1-22-82a63fead90c@free.fr>
+References: <20260709-catalina-upgrade-v1-0-82a63fead90c@free.fr>
+In-Reply-To: <20260709-catalina-upgrade-v1-0-82a63fead90c@free.fr>
+To: qemu-devel@nongnu.org
+Cc: Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
+ qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ Corey Minyard <cminyard@mvista.com>, Emmanuel Blot <emmanuel.blot@free.fr>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783610580; l=2350;
+ i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
+ bh=3FG9kKyoZTVeTCjPeTckm75zaMnjd5I57x1/8cmrneY=;
+ b=NP2hZ7G+v5K1fQrla4PdQQHQYz2QxruqE1eexpvnp4cGa9evcKXNKTC62LwzGKu1yUI91rSNi
+ G2w7mq8UQIDDJHXXWjmI72ZAlJfd2pz+9Pwooqn8gb44jbtjfQevv8T
+X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
+ pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
+Received-SPF: pass client-ip=2a01:e0c:1:1599::11;
+ envelope-from=emmanuel.blot@free.fr; helo=smtp2-g21.free.fr
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,47 +84,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-"Graf (AWS), Alexander" <graf@amazon.de> writes:
+The PCA9554 selects one of its four registers with a single command byte
+and does not auto-increment the register pointer, so a multi-byte I2C
+transfer keeps addressing the register chosen by the command byte instead
+of walking through the register map.
 
-> Hi Markus,
+Add a test covering this: a two-byte read returns the addressed register
+twice, and a two-byte write updates only that register, leaving its
+neighbour untouched.
 
-[...]
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+---
+ tests/qtest/pca9554-test.c | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-> I'm also curious on whether there is anything that makes sysbus device 
-> spawns both easy (as they are today) and at the same time fully QOM 
-> parent compliant.
->
-> I had a quick look at the vmapple machine and most of the offenders are 
-> sysbus devices I spawn via qdev_new(). Would you want all of these to 
-> get their parent declared via object_property_add_child()? If that's the 
-> case, why don't we introduce a new qdev_new_child() which does that 
-> automatically?
+diff --git a/tests/qtest/pca9554-test.c b/tests/qtest/pca9554-test.c
+index 74237df611..0da1f3304b 100644
+--- a/tests/qtest/pca9554-test.c
++++ b/tests/qtest/pca9554-test.c
+@@ -102,6 +102,33 @@ static void test_polarity_with_output(void *obj, void *data,
+     g_assert_cmphex(i2c_get8(dev, PCA9554_OUTPUT), ==, 0xA5);
+ }
+ 
++/*
++ * The PCA9554 has no auto-increment: the command pointer never advances, so
++ * multi-byte reads and writes all target the addressed register.
++ */
++static void test_no_autoincrement(void *obj, void *data,
++                                  QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++    uint8_t buf[2];
++
++    /* Distinct values in adjacent registers. */
++    i2c_set8(dev, PCA9554_OUTPUT, 0xAA);
++    i2c_set8(dev, PCA9554_POLARITY, 0x33);
++
++    /* Two reads from OUTPUT return OUTPUT twice, not OUTPUT then POLARITY. */
++    i2c_read_block(dev, PCA9554_OUTPUT, buf, 2);
++    g_assert_cmphex(buf[0], ==, 0xAA);
++    g_assert_cmphex(buf[1], ==, 0xAA);
++
++    /* The second written byte overwrites OUTPUT; POLARITY is untouched. */
++    buf[0] = 0x12;
++    buf[1] = 0x34;
++    i2c_write_block(dev, PCA9554_OUTPUT, buf, 2);
++    g_assert_cmphex(i2c_get8(dev, PCA9554_OUTPUT), ==, 0x34);
++    g_assert_cmphex(i2c_get8(dev, PCA9554_POLARITY), ==, 0x33);
++}
++
+ static void pca9554_register_nodes(void)
+ {
+     QOSGraphEdgeOptions opts = {
+@@ -120,6 +147,7 @@ static void pca9554_register_nodes(void)
+                  NULL);
+     qos_add_test("polarity-with-output", "pca9554", test_polarity_with_output,
+                  NULL);
++    qos_add_test("no-autoincrement", "pca9554", test_no_autoincrement, NULL);
+ }
+ 
+ libqos_init(pca9554_register_nodes);
 
-We do have such convenience functions at the QOM layer: object_new() and
-object_property_add_child() etc., are basic building blocks, and
-object_new_with_props() etc. combine them in useful ways.
-
-We don't have such convenience functions at the qdev layer.  Can't see
-why we couldn't add them.
-
-Number of orphaned device types I see by bus_type:
-
-    69      busless
-    15      ISA
-    33      PCI
-    11      SSI
-    209     System
-    2       apple-desktop-bus
-    23      i2c-bus
-    2       sd-bus
-    1       spapr-vio-bus
-    2       usb-bus
-
-Again, not a problem with the device types, but the code that creates
-and realizes them.
-
-Bus types commonly provide a layer above qdev for that.  Perhaps these
-layers could also use convenience functions to more easily deal with
-setting the QOM parent.
+-- 
+2.50.1
 
 

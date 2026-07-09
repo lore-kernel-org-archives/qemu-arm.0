@@ -4,57 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F07A9C43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 15:52:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9BA1C44507
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 15:52:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whr2N-0002A0-G6; Thu, 09 Jul 2026 11:51:43 -0400
+	id 1whr2i-0002EV-Tw; Thu, 09 Jul 2026 11:52:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1whr2L-00029L-MO; Thu, 09 Jul 2026 11:51:41 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1whr2J-0000mT-LC; Thu, 09 Jul 2026 11:51:41 -0400
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id E92D2596746;
- Thu, 09 Jul 2026 17:51:34 +0200 (CEST)
-X-Virus-Scanned: amavis at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
- id NMthBM7um4Vw; Thu,  9 Jul 2026 17:51:32 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id CDA67596742; Thu, 09 Jul 2026 17:51:32 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id CBC09596741;
- Thu, 09 Jul 2026 17:51:32 +0200 (CEST)
-Date: Thu, 9 Jul 2026 17:51:32 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>
-cc: Markus Armbruster <armbru@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org, 
- Jan Kiszka <jan.kiszka@siemens.com>, qemu-arm@nongnu.org, 
- qemu-ppc@nongnu.org, Huacai Chen <chenhuacai@kernel.org>, 
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@mailo.com>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Gerd Hoffmann <kraxel@redhat.com>, 
- =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>
-Subject: Re: A few Machines crash when "no default audio driver available"
-In-Reply-To: <ak-i1dNY_RrGNHAM@redhat.com>
-Message-ID: <c3999e70-9dcb-5804-f7fc-600ab603c13c@eik.bme.hu>
-References: <87o6gge6b0.fsf@pond.sub.org>
- <CAFEAcA9goRQuxw3VD7AqUOHHTdOXu8MSfCxdQMBviE3QgGD58w@mail.gmail.com>
- <87zf00cn7m.fsf@pond.sub.org> <ak-i1dNY_RrGNHAM@redhat.com>
+ (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
+ id 1whr2h-0002DZ-9O
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2026 11:52:03 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
+ id 1whr2f-0000ra-Je
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2026 11:52:03 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-493b7612475so18247835e9.3
+ for <qemu-arm@nongnu.org>; Thu, 09 Jul 2026 08:52:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1783612320; x=1784217120; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=t/xmYhKZn0Bc7nNNZK3nmHGczU4Df7R8ARsnuvrZ+gI=;
+ b=EOGpvwi+a9R396CXyzeoor754NeWpV5NXWA/kLlln5kFHPHSKZ8yVHApB02k23Iu+V
+ 6Q1OKoAM0qW+am5RZPiHuUK9vgW4aWjfaDrFv0vfOxOFp2RUg90NepnLioRUPLQhPdUN
+ KurvtYnYkBGGCMgxVWVUodypVFY1hsKwaTBCfKXPCD+30B1LGOPEfAxu5kJZo+6H3KMa
+ e03pndfsdLULkISYPCZFUpeIorvl2bonHbIf2c5FaslpXiE9V9PtWzc+DLzSXAxMvdcT
+ wW7fMchE5osMpxaqXHC9D4S8jOv2iK31WjnG0PD9WSFC6qtKPX1x8sU3EjiwTeoeVWzG
+ J6ng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1783612320; x=1784217120;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=t/xmYhKZn0Bc7nNNZK3nmHGczU4Df7R8ARsnuvrZ+gI=;
+ b=YAZNGxPf1Ec/BTDO6fUhJenOd0dO6y1m/WpBUuWMdd/uvhMmSrcVU2XCVls33Ejvpn
+ nejfw9yOUWJ2uoA1i91BVty+322fACtc0v2DmqXRmO4vtoHXZBN5itLRXqC1/thk+o0G
+ 7F6VMEYjASGOI5LXQ/V2GtxGHHR22lPwrFwV0JpBr3faG7DA94SuHjX6K0VxHzA2oUDL
+ OkdKndMqkHddw4ALiz38sZp5S+42LB64Xifdl6awRxVCzltMQphzwrxoS7x4sBVZYNdM
+ feFpDaJ1m6KUBrZWmRiLWUu881EV+AwiggSuBtczAIfJntnW7oC3ONplUTu1vZgJChX6
+ d62A==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RpxSYQrcGwxmYM5VsymjAuORfTzdpu2BPQYhYjAxtbw42pc/6xomAnjU3a5GOrpf7i/V1xQ4Tmc4g==@nongnu.org
+X-Gm-Message-State: AOJu0Yzp779X5j/yasZAwp/VfGMEap6WEfCIHARQEovv3Ph3tiPAEb0b
+ yEIANgwL/QMaGwsOCxpwmeeCFHe9SQ4P9Z48eSNoyjFxhr+bJ84zrBOn
+X-Gm-Gg: AfdE7cmu8PnVfznaOQCp5LpgWc0gflAfpphnWtl54X3HoFOp7+xlqEea6O1eSA2NELq
+ TxyR8+QBwRz4sGjPEGtl6OugBaMQmNOebi9bJ8Pq2bNdOqDT7c9I0SJFckRZJYNsqOIPuleefYi
+ 4vLtBOIGrzqhgRQBOnShOdBYpBi3XHrJP9fyVtqL6Ptox2bcdStC1bi9LLCFr/1UxyF3NYlK91I
+ nnhTJzir4wVOntDpFXEd98e/2IE9BNtghcJYOJ+OZ3XZdQrqHmIZ5eDwlvpLcEq5ux1SKrRF9EK
+ RIZc6tHBB1PhZetHTFzFdvsVI2AdGItgAXwS+jp3B8gHXgiWKV43oZhlixN5ND7iDPsrKmxcyEM
+ 4EQCeXDz5EUHe5uX3DpxM+Md2h5OYX7tMM6fi1BvWuEjt3loFgCnYmoGLjGsPXTIPm4eyIisDPs
+ lHQiHJ7SFMnHbcIYsA+NTZ7E3Iu4sO0YpJ7vZxmwpzrPtyWJqWeXqQrTSEsX/0jO5wUAMDdg==
+X-Received: by 2002:a05:600c:c8a:b0:493:cfc8:12e7 with SMTP id
+ 5b1f17b1804b1-493e6874216mr79074565e9.25.1783612319436; 
+ Thu, 09 Jul 2026 08:51:59 -0700 (PDT)
+Received: from localhost (89-92-102-124.hfc.dyn.abo.bbox.fr. [89.92.102.124])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-493eb6d5055sm71160065e9.5.2026.07.09.08.51.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 09 Jul 2026 08:51:58 -0700 (PDT)
+From: Emmanuel Blot <eblot.ml@gmail.com>
+X-Google-Original-From: Emmanuel Blot <emmanuel.blot@free.fr>
+Date: Thu, 09 Jul 2026 17:23:03 +0200
+Subject: [PATCH 11/29] tests/qtest: pca9555: test output-to-input
+ reflection and pull-ups
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-1120708212-1783612292=:97021"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260709-catalina-upgrade-v1-11-82a63fead90c@free.fr>
+References: <20260709-catalina-upgrade-v1-0-82a63fead90c@free.fr>
+In-Reply-To: <20260709-catalina-upgrade-v1-0-82a63fead90c@free.fr>
+To: qemu-devel@nongnu.org
+Cc: Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
+ qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ Corey Minyard <cminyard@mvista.com>, Emmanuel Blot <emmanuel.blot@free.fr>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783610579; l=3988;
+ i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
+ bh=5Z31IGvHoQJpOOVUEtYuqMr4o0UKYDZH+6sdNVkwanU=;
+ b=5QLWQXaK+nrzCuL1diD0o7j1Kf/37bBcB+SHcAxAEFpHct+V6wChdTVXBc7CbeWq/6BxssqHa
+ VwNRWyp8BoeDadGn8eJpPYyo/QnG9FCrRyF1EkqyYpsP5lAtunkjoP+
+X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
+ pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=eblot.ml@gmail.com; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -71,63 +120,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Add tests covering the pin I/O semantics of the expander: output-driven
+pins reflected in the input register, the pull-up seen on input-configured
+pins, and the independence of the two 8-bit ports.
 
---3866299591-1120708212-1783612292=:97021
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+---
+ tests/qtest/pca9555-test.c | 75 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 75 insertions(+)
 
-On Thu, 9 Jul 2026, Daniel P. Berrangé wrote:
-> On Thu, Jul 09, 2026 at 03:22:05PM +0200, Markus Armbruster wrote:
->> Cc: mainainters for "Overall Audio backends"
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>
->>> On Thu, 9 Jul 2026 at 12:44, Markus Armbruster <armbru@redhat.com> wrote:
->>>>
->>>> I stumbled over ARM machine musicpal, PPC machines pegasos1, pegasos2,
->>>> and MIPS machine fuloong2e crashes.
->>>>
->>>> I run them like this:
->>>>
->>>> $ qemu-system-aarch64 -M musicpal -nodefaults -S -display none -monitor stdio
->>>
->>>> Died when device_set_realized() tried to propagate a "no default audio
->>>> driver available" error to &error_abort.
->>>
->>> Is this something we want to have be a possibility the devices
->>> have to cope with? Can we have the "ignores all audio data"
->>> backend be always available instead?
->>
->> There's plenty of precedence for /dev/null-like backends.
->>
->>> Otherwise every audio device needs to cope with "there is no
->>> audio backend available" and implement "do nothing with the
->>> audio data" itself.
->>
->> Yes.
->
-> We've got a bit of tension between "no defaults" and "builtin audio
-> devices" here.
->
-> Cnosider if I had instead done
->
->  qemu-system-x86_64 -M pc -device ac97 -nodefaults
->
-> It is not unreasonable to expect to see an error because you asked
-> explicitly for 'ac97'  and forgot to wire up the required audio
-> backend, and asked to NOT have any defaults.
->
-> But with your 'musicpal' machine example, you never asked for the
-> frontend device, so you should be forgiven for also not asking
-> for a audio backend.
+diff --git a/tests/qtest/pca9555-test.c b/tests/qtest/pca9555-test.c
+index 5945c3441e..6b085702c3 100644
+--- a/tests/qtest/pca9555-test.c
++++ b/tests/qtest/pca9555-test.c
+@@ -28,6 +28,77 @@ static void test_reset_defaults(void *obj, void *data, QGuestAllocator *alloc)
+     g_assert_cmphex(i2c_get8(dev, PCA9535_CONFIG1), ==, 0xFF);
+ }
+ 
++/*
++ * When a pin is configured as output and driven low (output=0, config=0),
++ * the input register should reflect 0 for that pin.
++ * When driven high (output=1, config=0), input should reflect 1.
++ * When configured as input (config=1), PCA5555 pull-up makes it read 1.
++ */
++static void test_output_drives_input(void *obj, void *data,
++                                     QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    i2c_set8(dev, PCA9535_CONFIG0, 0xF0);
++    i2c_set8(dev, PCA9535_OUTPUT0, 0xFA);
++
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xFA);
++
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT1), ==, 0xFF);
++
++    i2c_set8(dev, PCA9535_CONFIG0, 0x00);
++    i2c_set8(dev, PCA9535_OUTPUT0, 0x00);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0x00);
++
++    i2c_set8(dev, PCA9535_OUTPUT0, 0xFF);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xFF);
++}
++
++/*
++ * When all pins are inputs (config=0xFF) and no external driver,
++ * PCA9555 pull-ups should make the input register read all ones.
++ * Switching a pin to output mode with output=0 should drive it low.
++ */
++static void test_input_pullup(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xFF);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT1), ==, 0xFF);
++
++    i2c_set8(dev, PCA9535_OUTPUT0, 0x00);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xFF);
++
++    i2c_set8(dev, PCA9535_CONFIG0, 0x00);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0x00);
++}
++
++/*
++ * Test that both ports are independent: changing port 0 registers
++ * should not affect port 1 and vice versa.
++ */
++static void test_port_independence(void *obj, void *data,
++                                   QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    i2c_set8(dev, PCA9535_CONFIG0, 0x00);
++    i2c_set8(dev, PCA9535_OUTPUT0, 0x00);
++
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT1), ==, 0xFF);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_CONFIG1), ==, 0xFF);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT1), ==, 0xFF);
++
++    i2c_set8(dev, PCA9535_CONFIG1, 0x00);
++    i2c_set8(dev, PCA9535_OUTPUT1, 0xAA);
++
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT1), ==, 0xAA);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT0), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT1), ==, 0xAA);
++}
++
+ static void pca9555_register_nodes(void)
+ {
+     QOSGraphEdgeOptions opts = {
+@@ -39,6 +110,10 @@ static void pca9555_register_nodes(void)
+     qos_node_consumes("pca9555", "i2c-bus", &opts);
+ 
+     qos_add_test("reset-defaults", "pca9555", test_reset_defaults, NULL);
++    qos_add_test("output-drives-input", "pca9555", test_output_drives_input,
++                 NULL);
++    qos_add_test("input-pullup", "pca9555", test_input_pullup, NULL);
++    qos_add_test("port-independence", "pca9555", test_port_independence, NULL);
+ }
+ 
+ libqos_init(pca9555_register_nodes);
 
-These machines have an audio device on-board (for pegasos it's part of the 
-VIA south bridge) so nodefaults does not change that. I think it would be 
-enough to exit with an error message instead of crashing and let the user 
-correct the command.
+-- 
+2.50.1
 
-Regards,
-BALATON Zoltan
---3866299591-1120708212-1783612292=:97021--
 

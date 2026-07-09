@@ -4,112 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27FE8C43458
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 07:06:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F80BC43458
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 07:27:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wi5JR-0001cd-2S; Fri, 10 Jul 2026 03:06:17 -0400
+	id 1wi5dV-00067p-AH; Fri, 10 Jul 2026 03:27:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wi5JP-0001c1-LF
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 03:06:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1wi5dT-00067Z-Dk; Fri, 10 Jul 2026 03:27:00 -0400
+Received: from smtp2-g21.free.fr ([212.27.42.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wi5JN-0002n1-Gb
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 03:06:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783667172;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=BA3zZUPyelCMWKs4FcfDK0ObJLwr6OM7SdxtcjefBws=;
- b=Ge284WmExa0FbzGr1UkwjJTyWhDht2sdofga2rdCuGx3By8plHoc4KEcta78K/vT+xjHET
- FuBD8PD7HT4I4zj035eIwIny1j7eNTAurEEV0IX4tN0jZJH+kb6scdjtKy9wKMTTH0pEDF
- sMTx3k8QPQAAuIRzaBMnVh9ef9lcQMU=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-616-6nRvkKPhNkCrIGKJnm5cjA-1; Fri,
- 10 Jul 2026 03:06:06 -0400
-X-MC-Unique: 6nRvkKPhNkCrIGKJnm5cjA-1
-X-Mimecast-MFC-AGG-ID: 6nRvkKPhNkCrIGKJnm5cjA_1783667161
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 887111955D5E; Fri, 10 Jul 2026 07:05:59 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3723E180029C; Fri, 10 Jul 2026 07:05:56 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id C233521E6920; Fri, 10 Jul 2026 09:05:53 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org,  Aditya Gupta <adityag@linux.ibm.com>,  Alexander
- Graf <graf@amazon.com>,  Alexandre Iooss <erdnaxe@crans.org>,  Alexey
- Kardashevskiy <aik@ozlabs.ru>,  Alistair Francis
- <Alistair.Francis@wdc.com>,  Alistair Francis <alistair@alistair23.me>,
- Antony Pavlov <antonynpavlov@gmail.com>,  Artyom Tarasenko
- <atar4qemu@gmail.com>,  Bernhard Beschow <shentey@gmail.com>,  Bibo Mao
- <maobibo@loongson.cn>,  Brian Cain <brian.cain@oss.qualcomm.com>,  Chao
- Liu <chao.liu@processmission.com>,  Christian Borntraeger
- <borntraeger@linux.ibm.com>,  =?utf-8?Q?Cl=C3=A9ment?= Chigot
- <chigot@adacore.com>,  =?utf-8?Q?C=C3=A9dric?=
- Le Goater <clg@kaod.org>,  Dorjoy Chowdhury <dorjoychy111@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,  Eric Farman
- <farman@linux.ibm.com>,  Farhan Ali <alifm@linux.ibm.com>,  Felipe Balbi
- <balbi@kernel.org>,  Francisco Iglesias <francisco.iglesias@amd.com>,
- Frederic Konrad <konrad.frederic@yahoo.fr>,  Gaurav Sharma
- <gaurav.sharma_7@nxp.com>,  Gautam Gala <ggala@linux.ibm.com>,  Glenn
- Miles <milesg@linux.ibm.com>,  Halil Pasic <pasic@linux.ibm.com>,  Hao Wu
- <wuhaotsh@google.com>,  Harsh Prateek Bora <harshpb@linux.ibm.com>,  Helge
- Deller <deller@gmx.de>,  Hendrik Brueckner <brueckner@linux.ibm.com>,
- =?utf-8?Q?Herv=C3=A9?= Poussineau <hpoussin@reactos.org>,  Huacai Chen
- <chenhuacai@kernel.org>,  Jan Kiszka <jan.kiszka@web.de>,  Jared Rossi
- <jrossi@linux.ibm.com>,  Joel Stanley <joel@jms.id.au>,  Laurent Vivier
- <laurent@vivier.eu>,  Manos Pitsidianakis
- <manos.pitsidianakis@linaro.org>,  Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>,  Matthew Rosato <mjrosato@linux.ibm.com>,
- Max Filippov <jcmvbkbc@gmail.com>,  Michael Rolnik <mrolnik@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,  Nicholas Piggin
- <npiggin@gmail.com>,  Niek Linnenbank <nieklinnenbank@gmail.com>,  Palmer
- Dabbelt <palmer@dabbelt.com>,  Paolo Bonzini <pbonzini@redhat.com>,  Peter
- Maydell <peter.maydell@linaro.org>,  Philippe =?utf-8?Q?Mathieu-Daud?=
- =?utf-8?Q?=C3=A9?=
- <philmd@mailo.com>,  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Ran Wang <wangran@bosc.ac.cn>,  Richard Henderson
- <richard.henderson@linaro.org>,  Sai Pavan Boddu
- <sai.pavan.boddu@amd.com>,  Samuel Tardieu <sam@rfc1149.net>,  Sergio
- Lopez <slp@redhat.com>,  Song Gao <17746591750@163.com>,  Stafford Horne
- <shorne@gmail.com>,  Subbaraya Sundeep <sundeep.lkml@gmail.com>,  Thomas
- Huth <th.huth+qemu@posteo.eu>,  Tyrone Ting <kfting@nuvoton.com>,
- qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,  qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org
-Subject: Re: Call to clean up QOM onboard devices lacking a parent
-In-Reply-To: <17c7f91b-8935-8ebf-a982-f91df755af81@eik.bme.hu> (BALATON
- Zoltan's message of "Thu, 9 Jul 2026 18:02:58 +0200 (CEST)")
-References: <87se5scipx.fsf@pond.sub.org>
- <17c7f91b-8935-8ebf-a982-f91df755af81@eik.bme.hu>
-Date: Fri, 10 Jul 2026 09:05:53 +0200
-Message-ID: <87a4rzxr1q.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1wi5dR-0005oX-Bm; Fri, 10 Jul 2026 03:26:59 -0400
+Received: from localhost (unknown [89.92.102.124])
+ (Authenticated sender: emmanuel.blot@free.fr)
+ by smtp2-g21.free.fr (Postfix) with ESMTPSA id F1B192003C6;
+ Fri, 10 Jul 2026 09:26:36 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
+ s=smtp-20201208; t=1783668414;
+ bh=7+IEfH29HKzSg6MtCPwrf2NQfJyXfgZFiYTj8F7wswI=;
+ h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+ b=XmtXOTON16fLiul9xWsuGq7KlODWNbcHQzLLKTOfLkwWj2HG3EP4xsWzu62L09w/h
+ YWzdzr1C6hKRsjqZZs3nguQ2Q+C9Ek6EZxLJyD+BSFRwoYyow+86Y9lHLqW/S5+S6o
+ Tvspz7bl5rqwj7+AxdTRHLIjviPVZK++lowFI2HVPTWv1ic8YQaQt4D6Zf+/kMw6ka
+ gPtD9lWtk244uTI2ZMFV0xQyG8m+IcIHt0E465oOG7tcZlhe0TIs1PgFSa2DeZH0LJ
+ QTGk/G89reHkBVGrINB053Ht7kdxCKiE66yyaJrzJmQQVhvnPFE1Kj1bqozcGXWYFY
+ cpU5tYIMDc8Vg==
+From: Emmanuel Blot <emmanuel.blot@free.fr>
+Date: Thu, 09 Jul 2026 17:23:16 +0200
+Subject: [PATCH 24/29] hw/arm: catalina: model PCA9555 IO expanders with
+ their own type
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: fiQzSmXyM72FYYpqx_Q8DCKggAH45ootYXomIJcCRHk_1783667161
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260709-catalina-upgrade-v1-24-82a63fead90c@free.fr>
+References: <20260709-catalina-upgrade-v1-0-82a63fead90c@free.fr>
+In-Reply-To: <20260709-catalina-upgrade-v1-0-82a63fead90c@free.fr>
+To: qemu-devel@nongnu.org
+Cc: Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
+ qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ Corey Minyard <cminyard@mvista.com>, Emmanuel Blot <emmanuel.blot@free.fr>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783610580; l=3586;
+ i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
+ bh=7+IEfH29HKzSg6MtCPwrf2NQfJyXfgZFiYTj8F7wswI=;
+ b=G08CVt1cwOYrPH/b0Avt/M0R3/KP0wNa1Y2dTja8IwdmN4Bov99M+7eXFjFgeKd3cAIAYkolG
+ oJQqCVuWsrgARntsEn5IvYH5qDp9eerAJwhvSeN373Bt3ePTdvw4CYi
+X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
+ pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
+Received-SPF: pass client-ip=212.27.42.2; envelope-from=emmanuel.blot@free.fr;
+ helo=smtp2-g21.free.fr
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -126,84 +85,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-BALATON Zoltan <balaton@eik.bme.hu> writes:
+The Catalina BMC device tree describes several IO expanders as nxp,pca9555.
+These were previously instantiated as PCA9552 devices as no PCA9555 model
+existed. Now that a dedicated PCA9555 device is available, use it so the
+emulated IO expanders match the hardware.
 
-> On Thu, 9 Jul 2026, Markus Armbruster wrote:
->> A QOM object must be the child of exactly one parent.  This defines the
->> QOM composition tree.  The link from parent to child is a property of
->> the parent, and therefore has a name that is unique within its parent.
->> An object's canonical QOM path is these names on the path from root to
->> object in the QOM composition tree separated by '/'.
->>
->> For devices:
->>
->> * If a device is plugged in with -device / device_add, and it has an ID,
->>  we make it a child of /machine/peripheral/ with name ID.  If it
->>  doesn't have an ID, we make it a child of /machine/peripheral-anon/
->>  with name device[N], where N counts up from zero.  The canonical QOM
->>  path /machine/peripheral/ID is stable.  The canonical QOM path
->>  /machine/peripheral-anon/device[N] isn't: it depends on the number of
->>  devices already there.
->>
->> * If a device is part of another device, it should be its child.  The
->>  child's canonical QOM path is the parent's plus '/CHILD-NAME'.  Stable
->>  as long as the parent's path and the child name are.
->>
->> * "Should" because we have a lot of code that fails to pick the parent.
->>  When such a device gets realized, we make it a child of
->>  /machine/unattached/ orphanage with name device[N], where N counts up
->>  from zero.  The canonical QOM path /machine/unattached/device[N]
->>  depends on the number of children already in the orphanage, which
->>  makes it unstable.
->>
->>  Letting code get away with not picking a parent was a mistake.  I
->>  guess it "saved" us some thinking about what's part of what when
->>  converting existing devices to QOM.  In other words, it enabled sloppy
->>  hardware modeling.  We've been "saving" thinking ever since.
->>
->>  I want /machine/unattached/ to be empty.  If an onboard device isn't
->>  part of another device, put it into /machine/ with a sensible name.
->
-> The last time this came up I've asked a few questions but did not get an answer:
->
-> 1. What's the use of the QOM composition tree? I never needed it and apart from being able to admire it in info qom-tree I don't know if it's used for anything. For a long time I did not even know about info qom-tree because I only needed info qtree and info mtree and rarely if ever need to look at the qom-tree. If it has no real use I'm happy to not think about it.
->
-> 2. What is a QOM parent? There were proposals to parent devices to their bus if they have any, that's what qtree shows anyway. If it's something else it should be better defined somewhere.
->
-> Without getting answers for these questions I don't think I'm able to fix the machines I maintain.
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+---
+ hw/arm/aspeed_ast2600_catalina.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-Unfortunately, I don't have the time to teach a class on QOM basics
-today.  The text you quoted explains what QOM parent and canonical QOM
-path are, albeit briefly.  It also explains how to pick the QOM parent
-properly, what happens when you neglect to pick one, and why that's
-undesirable.  I'm going to elaborate a bit.
+diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
+index 65495a524ea..f3b22e9aa9a 100644
+--- a/hw/arm/aspeed_ast2600_catalina.c
++++ b/hw/arm/aspeed_ast2600_catalina.c
+@@ -533,7 +533,7 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+                             TYPE_PCA9554, 0x27);
+     /* io_expander6 - pca9555@25 */
+     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
+-                            TYPE_PCA9552, 0x25);
++                            TYPE_PCA9555, 0x25);
+     /* eeprom@51 */
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 6), 0x51, 8 * KiB,
+                           osfp_eeprom, osfp_eeprom_len);
+@@ -547,11 +547,11 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     /* &i2c2 */
+     /* io_expander0 - pca9555@20 */
+-    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x20);
++    i2c_slave_create_simple(i2c[2], TYPE_PCA9555, 0x20);
+     /* io_expander0 - pca9555@21 */
+-    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x21);
++    i2c_slave_create_simple(i2c[2], TYPE_PCA9555, 0x21);
+     /* io_expander0 - pca9555@27 */
+-    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x27);
++    i2c_slave_create_simple(i2c[2], TYPE_PCA9555, 0x27);
+     /* eeprom@50 */
+     at24c_eeprom_init(i2c[2], 0x50, 8 * KiB);
+     /* eeprom@51 */
+@@ -572,13 +572,13 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     /* &i2c6 */
+     /* io_expander3 - pca9555@21 */
+-    i2c_slave_create_simple(i2c[6], TYPE_PCA9552, 0x21);
++    i2c_slave_create_simple(i2c[6], TYPE_PCA9555, 0x21);
+     /* rtc@6f - nct3018y */
+     i2c_slave_create_simple(i2c[6], TYPE_DS1338, 0x6f);
+ 
+     /* &i2c9 */
+     /* io_expander4 - pca9555@4f */
+-    i2c_slave_create_simple(i2c[9], TYPE_PCA9552, 0x4f);
++    i2c_slave_create_simple(i2c[9], TYPE_PCA9555, 0x4f);
+     /* temperature-sensor@4b - tpm75 */
+     i2c_slave_create_simple(i2c[9], TYPE_TMP75, 0x4b);
+     /* eeprom@50 */
+@@ -615,17 +615,17 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     /* &i2c14 */
+     /* io_expander9 - pca9555@10 */
+-    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x10);
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9555, 0x10);
+     /* io_expander10 - pca9555@11 */
+-    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x11);
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9555, 0x11);
+     /* io_expander11 - pca9555@12 */
+-    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x12);
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9555, 0x12);
+     /* io_expander12 - pca9555@13 */
+-    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x13);
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9555, 0x13);
+     /* io_expander13 - pca9555@14 */
+-    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x14);
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9555, 0x14);
+     /* io_expander14 - pca9555@15 */
+-    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x15);
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9555, 0x15);
+ 
+     /* &i2c15 */
+     /* temperature-sensor@1f - tmp421 */
 
-A fully constructed QOM object is part of the QOM composition tree.
-This is a fundamental property of QOM's design.
-
-A QOM object can be composed of sub-objects.  Its sub-objects are its
-children in the composition tree.  That's why it's named *composition*
-tree.
-
-Canonical QOM paths are visible at external interfaces both as input and
-as output.  A few quick examples:
-
-* QMP command query-cpus-fast reports a CPU's canonical QOM path.  For
-  some machines, we get something like "/machine/unattached/device[0]".
-  Fine as long as the client treats it as an opaque handle.  For other
-  machines, we get something like "/machine/soc/cpu", which is clearly
-  better.
-
-* Error messages use canonical QOM paths to identify devices.  With
-  properly modeled hardware, these paths are actually helpful for
-  humans.  Something like "/machine/unattached/device[7]" not so much.
-
-* QMP command device-sync-config accepts a QOM path argument.  With
-  properly modeled hardware, you can use a stable canonical QOM path.
-  But when the device is in the /machine/unattached orphanage, its
-  canonical QOM path is unstable.  A client has to first search the
-  orphanage to find today's path.
-
-Further questions?
+-- 
+2.50.1
 
 

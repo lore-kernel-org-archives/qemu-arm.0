@@ -4,45 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0422FC43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 15:24:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25A2BC43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 15:24:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whqcB-0007qY-8j; Thu, 09 Jul 2026 11:24:39 -0400
+	id 1whqcO-0007uM-Sb; Thu, 09 Jul 2026 11:24:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
- id 1whqc9-0007q3-7v; Thu, 09 Jul 2026 11:24:37 -0400
-Received: from smtp2-g21.free.fr ([212.27.42.2])
+ id 1whqcO-0007u5-As; Thu, 09 Jul 2026 11:24:52 -0400
+Received: from smtp2-g21.free.fr ([2a01:e0c:1:1599::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
- id 1whqc7-00084O-1G; Thu, 09 Jul 2026 11:24:37 -0400
+ id 1whqcM-00085Y-RQ; Thu, 09 Jul 2026 11:24:52 -0400
 Received: from localhost (unknown [89.92.102.124])
  (Authenticated sender: emmanuel.blot@free.fr)
- by smtp2-g21.free.fr (Postfix) with ESMTPSA id A09692003E3;
- Thu,  9 Jul 2026 17:24:11 +0200 (CEST)
+ by smtp2-g21.free.fr (Postfix) with ESMTPSA id 0636B20039E;
+ Thu,  9 Jul 2026 17:24:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
- s=smtp-20201208; t=1783610670;
- bh=CXVE3rlSgcDs2PF76Z4rgYZ5WHvy9/IeZPv8mWXj+kI=;
- h=From:Subject:Date:To:Cc:From;
- b=Wq98Gktr1eccdCyjJonxtLrtmNlHJ8fCG/LBZg2gj6prGceVmfjYP0hg+e/+/bFh0
- fdFjkdBoMtjfvQL7OE8UjTGDlSSr9f6162C+We2evMsBZy8zBfVlWecp0mqtJsEi0J
- lzeglGbfdZQYMWTX9JEFSLLGK0rx6KH5NAXyJEBPO0fgTF2BFeqOenzvUqNmADSRUI
- fdya7m08l2FaeQh0gge3vi1jHjQ94S53hV1Ohd1qG7sufa8iNe0fYPxF1dYbSGnUZ+
- XTIzhN5GJkATzzD3qiVBmOnwt3cJIqgUnfq0r1BIai5DQLYnN75JRISPIDlZY+gvNE
- xDYfc/XbAZRdA==
+ s=smtp-20201208; t=1783610688;
+ bh=9lF6pkIIzE8I6ZmjQvePO4zXW8tA64q8RI6suNruPbA=;
+ h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+ b=CIjy/GlRSaQ59RyYmAFxFz2K3LY1mhYjvtQwkEcWU+edzirPsA60nLfKafe78CzVo
+ zcG+tXRh60bigdUmmGednIzhOiDhYHXKo6ZrBtlHEpLj/a7czV3vt8KicJ143o0SQ7
+ Pc9kCkSrfnxkf8wxIWnWgot/FUpps9F0mlrlcylsxn8CW0qlh3ZRRYnhONUw0qnfFf
+ xzKuj4r879IGUDLN7tj6indJq4SJVF8kOs1ub6kAW6QVRFJZd6NWFLowRep2y930S6
+ G3XUSI0k1k2+QcxlKzyIDpKFvojcIP5798lVPQhssWQ2zw1OfiPKHl6M6mAq8Tw9Qt
+ OtFU4an9WJS3A==
 From: Emmanuel Blot <emmanuel.blot@free.fr>
-Subject: [PATCH 00/29] hw/arm: improve Aspeed Catalina BMC emulation
-Date: Thu, 09 Jul 2026 17:23:38 +0200
-Message-Id: <20260709-catalina-upgrade-v1-0-814575bc076b@free.fr>
+Date: Thu, 09 Jul 2026 17:23:39 +0200
+Subject: [PATCH 01/29] hw/gpio: pca9552: register types with DEFINE_TYPES()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQqDMBBG4avIrA2kEYx6leJimvy1I5JKolIQ7
- 26qy2/x3k4JUZCoK3aK2CTJN2Q8yoLch8MAJT6bjDa1trpSjheeJLBa5yGyh6rAsL711jQt5Wy
- OeMvvWj7722l9jXDL/0PHcQLVqDAFdAAAAA==
-X-Change-ID: 20260703-catalina-upgrade-3eae7d9d7289
+Message-Id: <20260709-catalina-upgrade-v1-1-814575bc076b@free.fr>
+References: <20260709-catalina-upgrade-v1-0-814575bc076b@free.fr>
+In-Reply-To: <20260709-catalina-upgrade-v1-0-814575bc076b@free.fr>
 To: qemu-devel@nongnu.org
 Cc: Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
  qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
@@ -54,22 +52,22 @@ Cc: Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
  Corey Minyard <cminyard@mvista.com>, Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783610646; l=5193;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783610646; l=2548;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=CXVE3rlSgcDs2PF76Z4rgYZ5WHvy9/IeZPv8mWXj+kI=;
- b=Hih4jgE2aMzYX4zUI7WYfftehhNULRLjnj7GB9+vYIUd3xweC3FTcFKKW+5FWwlYYYMkd1rov
- 2OYzXuTorlhATrfSqthKWCs5FQs+AxjW/2rCcGXFnPCxNSuWOvhng2u
+ bh=9lF6pkIIzE8I6ZmjQvePO4zXW8tA64q8RI6suNruPbA=;
+ b=VKMzvtoM9qIBUXrZp2g/svKxToB76uW0rPC4HlYonkH1/Du6wNEeL2v39qe165s+j7Ps05r+D
+ 2GKYwddmtquC+vS/X36G2iax01sN9xncUnz7UJaAKoyO+CKrUYBJz6B
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=212.27.42.2; envelope-from=emmanuel.blot@free.fr;
- helo=smtp2-g21.free.fr
+Received-SPF: pass client-ip=2a01:e0c:1:1599::11;
+ envelope-from=emmanuel.blot@free.fr; helo=smtp2-g21.free.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,103 +83,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series improves emulation of the Aspeed-based Catalina BMC machine,
-mostly around its I2C buses: the GPIO expanders the board relies on and
-the temperature sensors sitting next to them.
+Replace the separate TypeInfo definitions and pca955x_register_types()
+registration function with a single type array registered through the
+DEFINE_TYPES() macro, to prepare addition of new PCA955x-derived devices.
 
-The bulk of the work is on the PCA95xx I/O expander models. The existing
-PCA9552 and PCA9554 drivers only really covered the exact parts a couple
-of boards happened to use, and some of their register and pin behaviour
-did not match the datasheets. Catalina needs a few more variants and
-expects them to act like the real chips, so:
-
- - the PCA9552 driver now provides proper PCA9555/PCA9535 types, applies
-   input polarity inversion on reads, and handles the command register
-   as the datasheet describes (auto-increment and wrapping);
-
- - the PCA9554 driver gains the 4-bit PCA9536 variant, reflects
-push-pull
-   outputs back into the input register, and grows an opt-in mode that
-   honours the configured pin direction instead of forcing pins to
-   outputs;
-
- - both drivers expose each line as a "pinN" QOM property, which lets an
-   external actor drive an input pin. The property also allows reading
-   the value driven onto an output-configured pin, which is the more
-   useful capability, but nothing exercises it yet.
-
-Along the way both models get a fair bit of cleanup (DEFINE_TYPES, the
-Resettable interface, state moved out of the headers, default
-descriptions derived from the instantiated type).
-
-On the machine itself, Catalina now instantiates its PCA9555 expanders
-as their own type, gains the NIC and FIO temperature sensors present on
-real hardware, and drives the pca9554 expander input pins from outside
-the guest.
-
-Finally, the register-level behaviour of both expanders is covered by
-new qtests, and the functional test that boots the OpenBMC image now
-exercises the expanders end to end, both through QOM and through the
-guest's gpio tooling.
-
-Note that the "hw/i2c: parent slaves created with
-i2c_slave_create_simple"
-patch is only a temporary dependency here: it already belongs to the
-separate ADC128D818 series currently under review, and will be dropped
-from this series before it is submitted for final review.
+No functional change.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
-Emmanuel Blot (29):
-      hw/gpio: pca9552: register types with DEFINE_TYPES()
-      hw/gpio: pca9552: move PCA955xState definition out of the header
-      hw/gpio: pca9552: rename I2CSlave member to parent_obj
-      hw/gpio: pca9552: default description to the instantiated type name
-      hw/gpio: pca9552: declare pca9555 device as an alias of pca9535 device
-      hw/gpio: pca9552: use the Resettable interface instead of legacy reset
-      hw/gpio: pca9552: apply input polarity inversion on read
-      hw/gpio: pca9552: conform GPIO command handling to the datasheet
-      hw/gpio: pca9552: expose GPIO pins as pin%d QOM properties
-      tests/qtest: add PCA9555 register access tests
-      tests/qtest: pca9555: test output-to-input reflection and pull-ups
-      tests/qtest: pca9555: test polarity inversion
-      tests/qtest: pca9555: test auto-increment and command wrapping
-      tests/qtest: pca9552: test behaviour specific to the LED variant
-      hw/gpio: pca9554: add PCA9536 support
-      hw/gpio: pca9554: add hw-dir property honoring the configured pin direction
-      hw/gpio: pca9554: reflect push-pull outputs in the input register
-      hw/gpio: pca9554: expose pin%d as a string property
-      tests/qtest: add PCA9554 register access tests
-      tests/qtest: pca9554: test output-to-input reflection and pull-ups
-      tests/qtest: pca9554: test polarity inversion
-      tests/qtest: pca9554: test absence of command auto-increment
-      tests/qtest: pca9554: test the PCA9536 4-bit variant
-      hw/arm: catalina: model PCA9555 IO expanders with their own type
-      hw/arm: catalina: add NIC and FIO temperature sensors
-      hw/i2c: parent slaves created with i2c_slave_create_simple
-      test/functional: catalina: test PCA9555 IO expander via QOM
-      hw/arm: catalina: drive pca9554 io expander input pins externally
-      test/functional: catalina: test PCA9554 IO expander via QOM
+ hw/gpio/pca9552.c | 49 +++++++++++++++++++++----------------------------
+ 1 file changed, 21 insertions(+), 28 deletions(-)
 
- hw/arm/aspeed_ast2600_catalina.c             |  67 ++++---
- hw/gpio/pca9552.c                            | 256 ++++++++++++++++++++-------
- hw/gpio/pca9554.c                            | 175 ++++++++++--------
- hw/i2c/core.c                                |   3 +
- include/hw/gpio/pca9552.h                    |  31 +---
- include/hw/gpio/pca9554.h                    |   3 +
- include/hw/i2c/i2c.h                         |   7 +-
- tests/functional/arm/test_aspeed_catalina.py |  81 +++++++++
- tests/qtest/meson.build                      |   2 +
- tests/qtest/pca9552-test.c                   |  76 ++++++++
- tests/qtest/pca9554-test.c                   | 223 +++++++++++++++++++++++
- tests/qtest/pca9555-test.c                   | 251 ++++++++++++++++++++++++++
- 12 files changed, 994 insertions(+), 181 deletions(-)
----
-base-commit: f893c46c3931b3684d235d221bf8b7844ddbf1d7
-change-id: 20260703-catalina-upgrade-3eae7d9d7289
+diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
+index b13ac9fd9c..50e868a6e9 100644
+--- a/hw/gpio/pca9552.c
++++ b/hw/gpio/pca9552.c
+@@ -492,16 +492,6 @@ static void pca955x_class_init(ObjectClass *klass, const void *data)
+     device_class_set_props(dc, pca955x_properties);
+ }
+ 
+-static const TypeInfo pca955x_info = {
+-    .name          = TYPE_PCA955X,
+-    .parent        = TYPE_I2C_SLAVE,
+-    .instance_init = pca955x_initfn,
+-    .instance_size = sizeof(PCA955xState),
+-    .class_init    = pca955x_class_init,
+-    .class_size    = sizeof(PCA955xClass),
+-    .abstract      = true,
+-};
+-
+ static void pca9552_class_init(ObjectClass *oc, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(oc);
+@@ -526,23 +516,26 @@ static void pca9535_class_init(ObjectClass *oc, const void *data)
+     pc->has_led_support = false;
+ }
+ 
+-static const TypeInfo pca9552_info = {
+-    .name          = TYPE_PCA9552,
+-    .parent        = TYPE_PCA955X,
+-    .class_init    = pca9552_class_init,
++static const TypeInfo pca955x_types[] = {
++    {
++        .name          = TYPE_PCA955X,
++        .parent        = TYPE_I2C_SLAVE,
++        .instance_init = pca955x_initfn,
++        .instance_size = sizeof(PCA955xState),
++        .class_init    = pca955x_class_init,
++        .class_size    = sizeof(PCA955xClass),
++        .abstract      = true,
++    },
++    {
++        .name          = TYPE_PCA9552,
++        .parent        = TYPE_PCA955X,
++        .class_init    = pca9552_class_init,
++    },
++    {
++        .name          = TYPE_PCA9535,
++        .parent        = TYPE_PCA955X,
++        .class_init    = pca9535_class_init,
++    }
+ };
+ 
+-static const TypeInfo pca9535_info = {
+-    .name          = TYPE_PCA9535,
+-    .parent        = TYPE_PCA955X,
+-    .class_init    = pca9535_class_init,
+-};
+-
+-static void pca955x_register_types(void)
+-{
+-    type_register_static(&pca955x_info);
+-    type_register_static(&pca9552_info);
+-    type_register_static(&pca9535_info);
+-}
+-
+-type_init(pca955x_register_types)
++DEFINE_TYPES(pca955x_types)
 
-Best regards,
---  
-Emmanuel Blot <emmanuel.blot@free.fr>
+-- 
+2.50.1
 
 

@@ -4,67 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8FCCC43458
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 05:08:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5579C43458
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Jul 2026 09:40:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1whgzE-0005s1-SC; Thu, 09 Jul 2026 01:07:49 -0400
+	id 1whlEc-00070F-Ag; Thu, 09 Jul 2026 05:39:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1whgzA-0005rX-1N; Thu, 09 Jul 2026 01:07:47 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1whlEa-0006zn-If; Thu, 09 Jul 2026 05:39:56 -0400
+Received: from mail-centralusazlp170100005.outbound.protection.outlook.com
+ ([2a01:111:f403:c111::5] helo=DM1PR04CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1whgz7-0005UK-2N; Thu, 09 Jul 2026 01:07:43 -0400
-Received: from [133.11.54.183] (h183.csg.ci.i.u-tokyo.ac.jp [133.11.54.183])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 669571Ab054934
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Thu, 9 Jul 2026 14:07:01 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=prkV+zkkcXJieAgpg1MT67O56TVYgVRbA/wIZKr4lVo=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Message-ID:To:Subject:Date;
- s=rs20250326; t=1783573621; v=1;
- b=gjOtYYfdn6vYB64lxQgbSMRleOgTv5sW5EcJ6sLTUGgILQyjDcNNbkFt8ThD9jBf
- nOvC7+gGjQtmq55ALWAh5dAlEgl9+Gx6DGXZ9tVimgZ+wOaUlp6bqn/idMmZEksy
- ZlOYZJhaiZ1Ym1IsCn/yq//QRECt0QwaIM66qn38jX0mxhgB0bzAjXiSXMR6J3Qs
- 1E4wk4arY7zANjtHCImbILIyygdRHzdYGsU+QNtpVc9JqkJwOmSHEMmn71rsVaGX
- vfp0trDEbJY30fIN31R/yNGnkRUoLE8BV8tGTdQqpal9fmIf4X/a2HvOlOEQFRpS
- k+t+OXFZ00LwNZZE+5WU2g==
-Message-ID: <8d0539a6-65aa-47d1-8885-daa3fa20fbe6@rsg.ci.i.u-tokyo.ac.jp>
-Date: Thu, 9 Jul 2026 14:07:00 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 01/23] accel/hvf: Create hvf_protect_clean_range,
- hvf_unprotect_dirty_range
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
-Cc: Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
- Phil Dennis-Jordan <phil@philjordan.eu>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Richard Henderson
- <richard.henderson@linaro.org>, Peter Collingbourne <pcc@google.com>,
- Cameron Esfahani <dirty@apple.com>, Mads Ynddal <mads@ynddal.dk>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-References: <20251103101034.59039-1-philmd@linaro.org>
- <20251103101034.59039-2-philmd@linaro.org>
- <7ba7afe0-1e89-480e-92f1-6a1682b56baf@oss.qualcomm.com>
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1whlEY-0006MQ-JQ; Thu, 09 Jul 2026 05:39:56 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=yamEWbQPcD5tCyLjkML7I5JYYBCUNEMsbmvpOvlN/ojACzAgnG+IgNC1GUgciB/IA017A6nkAJ2xd1zFERT3+7LWAel/Lg694O6W1zBX0g5x6g7pUiKxqQ1onwqOHBd7WDobdhw6JSI45uBQHTbIKaHhF79aYxENjl2Ng38v0kNYE3fWEi7iUvPHOv1Hq3QzdUUkmN4Di/i8nj7kLrNXA8wPzMXwv9vICpbkSD+evFXL+l6O6R1+RK4x/7bT6oFQZN3HmLCiJuYPWRpiYdC0aWx8RVmTeGFbPOP6spBXMEK5jA2tg1BSmuxX5LnSeWR0n2NWaqjtTaRQnkrQ9Q3p/g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=EYJqvJ7kJMJDxqvMHlEsitiduku4ENAIsTtS5eYu9/Q=;
+ b=kd5Lv4LRIbNYoBIC8RhIzZ5XwsSQnOKVTg4rIO5NDyp+udcB3R0PrQHjf2lpdYnMc/Kqohor4w7zrWW02QyziTc0yuU9BjXGMkwVdTyFSUOaBY9MD9UnMln3BdPesKmMy94WcIuBm5y66rvWV6EsfP4YNqzmSkXkwKH6G/Q8gaa/pl+2MyLLspMFWXFATos88VnUpVhJS5u0jkDioVdFXdUs9LVZ7+ws8AvgU9Zifj4zDWoLk9jbfjgnNjfHz5dl+zMxlzFM6Ns7ASfeioEzOhkhhgiiDlNsfWX/U9suSnWTAM3S6oXYYA47LW73x0jfg1yxce7vDAYR62dWAHKPLQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EYJqvJ7kJMJDxqvMHlEsitiduku4ENAIsTtS5eYu9/Q=;
+ b=WDCbqmC+7gW0Q/48LV6oNF4J109L9M0vfzpIQ/9nG5P6S9N41nFTR/ayzjOu3s74GnObpv6AaCJmuR/tRTFfToMQgFkUvY2X8NPKlIPbddxkfm2Eq9XjsUhL3W9sO53rsh41JAECLc4N8D3uewZrW7lWMSeJ4yTylwSsjeVpDmNQizEGDjRYChzecdRGL8ppKhMC1ZwPkKI8qVhN1GnBCr0d4VocQdhsFUjR8sx74KxjMAmvWAdJj/uVuts7Lupy05Q2laMqJa/pDbsic/AU2IMZwVXbjFpnIxci9bNi/lxnYwNmlJy7SJ2aRY3ICgCt3ccADElYJvp9XYsSLEjT+Q==
+Received: from SJ0PR12MB8614.namprd12.prod.outlook.com (2603:10b6:a03:47d::17)
+ by IA1PR12MB6020.namprd12.prod.outlook.com (2603:10b6:208:3d4::7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.16; Thu, 9 Jul
+ 2026 09:39:15 +0000
+Received: from SJ0PR12MB8614.namprd12.prod.outlook.com
+ ([fe80::fe0a:6e6a:fe60:a43b]) by SJ0PR12MB8614.namprd12.prod.outlook.com
+ ([fe80::fe0a:6e6a:fe60:a43b%3]) with mapi id 15.21.0181.009; Thu, 9 Jul 2026
+ 09:39:15 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
+ <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "berrange@redhat.com" <berrange@redhat.com>,
+ Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>,
+ "philmd@oss.qualcomm.com" <philmd@oss.qualcomm.com>
+Subject: RE: [PATCH v3 3/5] hw/arm/smmuv3: Fix possible overflow in
+ strtab_base computation
+Thread-Topic: [PATCH v3 3/5] hw/arm/smmuv3: Fix possible overflow in
+ strtab_base computation
+Thread-Index: AQHdDe29oc4vBfoQ1UO2PUdknqTBprZk8anA
+Date: Thu, 9 Jul 2026 09:39:14 +0000
+Message-ID: <SJ0PR12MB86143FBA92B23AEE25B20FBCABFE2@SJ0PR12MB8614.namprd12.prod.outlook.com>
+References: <20260707085028.165557-1-eric.auger@redhat.com>
+ <20260707085028.165557-4-eric.auger@redhat.com>
+In-Reply-To: <20260707085028.165557-4-eric.auger@redhat.com>
+Accept-Language: en-US, en-GB
 Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <7ba7afe0-1e89-480e-92f1-6a1682b56baf@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR12MB8614:EE_|IA1PR12MB6020:EE_
+x-ms-office365-filtering-correlation-id: e57cdda5-1d2a-48c9-1841-08dedd9df0ac
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|376014|1800799024|23010399003|56012099006|11063799006|4143699003|22082099003|18002099003|38070700021;
+x-microsoft-antispam-message-info: knMerYS+IiSiEfoIAx5RXjy5a5mIwVxK44b/8PTbuwBDqyMos1DQOygsBFj7+veP0i/oYSdo+Q/VcaWNvAmFgeEfuklva/dGR6FQRHqcICIVXf5sUt+oX+hDHbIly73l8KqGa/aNLjvN1cAPHLs0YiCh+mDkIr8Eb74ZLvz0m7W72q8TWuaLc8nLvRAzIs4it32Oo1JyoPDGj9M5V5YQUzZ1PWSdeKd0wLvFcnOF9/002/S1d+Lm/PY2HMZdvcaKz7ts+5yho9Nm8u2R6zXR6+T6QrbHOrQRKrkHPqYMwpbKWrYWWd6jgL6VnaZt5/XohFrd21kzJg1FwTZVIiIbL6Ib1mnc2hA6YI4Oc9Kms7P7DNOotoyhYRJvhe6ugR5EOXCMrBE2zUAjAAFlCnhOrXz9U1Dyhz1tlYhOFI2iR1DUS+FbIzSVf9Th+QzevS2tpz+Sbd+xy7hJtlQnPwiBNaW7u2Pgc8glyMvTBpdPVhY3Gu8mnMLm/X5eEab3ENDtSJjb4wcZZm073WIznHOgQnlM/fkF3Qum//j8gyNib8ofJpVq55pnv5zVqRMlRrf4xJsaZF5v2gkFGMnKjFI8GTrFb8+imi1vLEOc/c2IdYj73rfPxcx5HnzcLAvremEY3io0KpjQwRdYtzgRLKTlaTSTTa9QMnnwm87KdHVRM4Xw+++LBTgoBvGJnxjnk/X0LPvT3k6zs/jeCDkZ/5RAZY9SSt4yHMgKFY/5neD626k=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR12MB8614.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(376014)(1800799024)(23010399003)(56012099006)(11063799006)(4143699003)(22082099003)(18002099003)(38070700021);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?N3xYyzrbT85jhumhGVUaroa3Ak09A+8OB/S8JNaDdEtHJaFsvKauVBYmb3QN?=
+ =?us-ascii?Q?w0rj9iqlz5CAp+wxa4lV8G9hRdnFsmPDqszcU6ahEh6qgjCt90pvVzSR9wVk?=
+ =?us-ascii?Q?bU8FsMs2cU9UagPXvv5nof/9s+hpu9XXJetw/rVERdTXyHTHXEfLemYbXh62?=
+ =?us-ascii?Q?2YTzujmP31u6GL3RgnLNPOoBJnOS2oy167iej2x847B3+EwXA78lKau8igt7?=
+ =?us-ascii?Q?kfDlGYFgydqS8FO2xORspCQEKWFhBMrAP8pvBNFN/N4Gquh+rFwR5CI4VVN8?=
+ =?us-ascii?Q?zTIACc8TLyoXTQllsY0TYEIIR7iBNF6pu9gK6yZzzCiDPohYsRVji/n2pTvD?=
+ =?us-ascii?Q?WFCvwLNDTwxbwhmba0N4HTJTex6JUOSWDLiuhiy0ehPLDRyYiJ47U2yqVKzX?=
+ =?us-ascii?Q?b87pryjrxR/4gwzlEZbUOeEIPoxMchWzS4cXyT/4hXITWr1ygAoAxdFY9VDV?=
+ =?us-ascii?Q?jdNQkL70CSrD3rfYu9HIQf6kzdiZW5dOSxbwsei7BMzWT+K7LvxgGmebG1Ff?=
+ =?us-ascii?Q?8WjKvowsp9futT9ajBUfqFGjVXyjv/Mc9mVAhaNchypy1MKFETDcBRQtiAKo?=
+ =?us-ascii?Q?thyh4XWdHyuuHAirkE1W/qqrRHrWB0MVN7kjlt2YfBiyzjOK6xIa0Zgxutk/?=
+ =?us-ascii?Q?Jf2QqZn21V6Of7QlyL1ht81cqkIFBZp9CI7fVzlykfIflkNncILBILUV+4AB?=
+ =?us-ascii?Q?5gtT+oMbzjai03d64bUxR6drJ1XuLz0+N8KVJbwdYSXtcM5AxZAwQP2jWHCT?=
+ =?us-ascii?Q?a7+QzjYtlmcv3J/GAynjGc4np9gQHP8L+54hTav+2O08XEeQlosMD8+JbLcT?=
+ =?us-ascii?Q?SBeVqxS3jqeio6p9d1uOJswprrd1l5srzr4AA4LD92dXnEoBzJYqQ2iE18Mk?=
+ =?us-ascii?Q?Gu0TB20sflI2pqPp/bU5I7X13DXbdpKa/bOeSfVetXaZcQOVqHOUgX21ec0E?=
+ =?us-ascii?Q?geE1GWrUEmQMiPNH0lJENGQv80tWWty5EvtZFieWVE3kQdM45t6VmYY1FfHQ?=
+ =?us-ascii?Q?uQV2S1wfq4v2kicJKogS94AkaG8M+KazZvtqlDiwo9UZyOq2L7NpCGeFlK7n?=
+ =?us-ascii?Q?rnGj02hql7MdVkfZKy/GKY4wCeOku9oKdaUoKFwRb44qmEqWwt45TskqRn5v?=
+ =?us-ascii?Q?1Dhxd/g6JQt4MiU4fGFsEZwFCxtW/B4ierog0jqTcsbRMCnjY7cPvF358y94?=
+ =?us-ascii?Q?LWE+DS+KM9W3wsnosf3d0/DRZzfjMYLd3463L93heYTbACnzKXnazdJfUNve?=
+ =?us-ascii?Q?NppU4XRXqmTYwcAbuWNg2KY+Eey9IYhR/zp6lTKIqEX2z6zTV87InmYTVfaj?=
+ =?us-ascii?Q?1r94hco8B5/Dzkff7IcfpmcfcGquXjVWDnhyYrhUW5BBrKD4ib6IVx4P1yBT?=
+ =?us-ascii?Q?B44BqQvXq3sSoOB2uhWEpayALxLy8005bUBAFiHzuNeLiDQpZqRCYXmAeVA2?=
+ =?us-ascii?Q?LPtdSy5BtQHUctgIXV4oLjd2hjipPXSHcheoaLAaXp14T2387kHfm+WKfe+f?=
+ =?us-ascii?Q?H3oN844d79wXalXEwlvzn7/B8zcDK3LS5kk2FDtV4gjz8h0jgXdQ2bTYCnzQ?=
+ =?us-ascii?Q?tiYXJZ5zcj3nP0pNZcf6kOcdGIbT6w5CqqJjLUglYQjzrwRjy4vveFoyhkgC?=
+ =?us-ascii?Q?7NwvuJJwRZOIvfkWqNLVEqu4eBhdm15ET8ua8CWqBaPltgQQlgkt4Ke8VDTO?=
+ =?us-ascii?Q?pUsM4bhlCdc2NDqsz624TaO/BUxbmlqu/s6JsHQlLtNB8eyrQLVPKVNsfxDM?=
+ =?us-ascii?Q?KDiN542rSw=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR12MB8614.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e57cdda5-1d2a-48c9-1841-08dedd9df0ac
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Jul 2026 09:39:14.9457 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: JwmWp4gA5wIp62Paqb+052xTF6aU3/LkuF75yCjcLyejyR/mzjlEhrzVd2AsyruwnymAGcmlXGiyBrGvhOmYhQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6020
+Received-SPF: permerror client-ip=2a01:111:f403:c111::5;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=DM1PR04CU001.outbound.protection.outlook.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,100 +147,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2026/07/09 7:13, Philippe Mathieu-Daudé wrote:
-> On 3/11/25 11:10, Philippe Mathieu-Daudé wrote:
->> From: Richard Henderson <richard.henderson@linaro.org>
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   include/system/hvf_int.h |  3 +++
->>   accel/hvf/hvf-all.c      | 25 +++++++++++++++++++++++++
->>   accel/hvf/trace-events   |  1 +
->>   3 files changed, 29 insertions(+)
->>
->> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
->> index 3d2be4092ef..5a57691885f 100644
->> --- a/include/system/hvf_int.h
->> +++ b/include/system/hvf_int.h
->> @@ -89,6 +89,9 @@ int hvf_arch_get_registers(CPUState *);
->>   /* Must be called by the owning thread */
->>   void hvf_arch_update_guest_debug(CPUState *cpu);
->> +void hvf_protect_clean_range(hwaddr addr, size_t size);
->> +void hvf_unprotect_dirty_range(hwaddr addr, size_t size);
->> +
->>   struct hvf_sw_breakpoint {
->>       vaddr pc;
->>       vaddr saved_insn;
->> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
->> index 0a4b498e836..e13abddbd9c 100644
->> --- a/accel/hvf/hvf-all.c
->> +++ b/accel/hvf/hvf-all.c
->> @@ -58,6 +58,31 @@ void assert_hvf_ok_impl(hv_return_t ret, const char 
->> *file, unsigned int line,
->>       abort();
->>   }
->> +static void do_hv_vm_protect(hwaddr start, size_t size,
->> +                             hv_memory_flags_t flags)
->> +{
->> +    hv_return_t ret;
->> +
->> +    trace_hvf_vm_protect(start, size, flags,
->> +                         flags & HV_MEMORY_READ  ? 'R' : '-',
->> +                         flags & HV_MEMORY_WRITE ? 'W' : '-',
->> +                         flags & HV_MEMORY_EXEC  ? 'X' : '-');
->> +
->> +    ret = hv_vm_protect(start, size, flags);
->> +    assert_hvf_ok(ret);
-> 
-> Maybe this assertion is a bit aggressive toward users, since while
-> we know the host limits, we don't know what the guest wants to do.
-> 
-> I got:
-> 
-> qemu-system-aarch64: Error: ret = HV_ERROR (0xfae94001, at ../../accel/ 
-> hvf/hvf-all.c:77)
-> 
-> Running with '-trace hvf_vm_map':
-> 
-> hvf_vm_map paddr:0x0000000010000000 size:0x00020000 vaddr:0x104514000 
-> flags:0x07/RWX
-> hvf_vm_map paddr:0x0000000000000000 size:0x00020000 vaddr:0x104890000 
-> flags:0x07/RWX
-> hvf_vm_map paddr:0x0000000400000000 size:0x80000000 vaddr:0x380000000 
-> flags:0x07/RWX
-> hvf_vm_map paddr:0x0000000030bc0000 size:0x00040000 vaddr:0x1048b4000 
-> flags:0x07/RWX
-> hvf_vm_map paddr:0x0000000050bc0000 size:0x00040000 vaddr:0x1048f8000 
-> flags:0x07/RWX
-> hvf_vm_protect paddr:0x0000000430000000 size:0x00004000 flags:0x05/R-X
-> hvf_vm_protect paddr:0x0000000030000000 size:0x00004000 flags:0x05/R-X
-> qemu-system-aarch64: Error: ret = HV_ERROR (0xfae94001, at ../../accel/ 
-> hvf/hvf-all.c:77)
-> 
-> Should we propagate the error to upper layer?
-> 
-> Are there cases we can safely ignore?
-I don't think this should be propagated to the guest. In this case the 
-failing hv_vm_protect() is for a GPA that was not mapped into HVF in the 
-first place.
 
-The memory listener currently calls hvf_log_start() for every dirty-log 
-section, but hvf_set_phys_mem() intentionally skips some sections, for 
-example writable non-RAM regions where we want every access to trap. KVM 
-handles the equivalent case by looking up the matching slot and 
-returning if there is none.
 
-So I think we should only ignore/skip protect for ranges that we know do 
-not have an HVF mapping. We should not ignore arbitrary hv_vm_protect() 
-failures for mapped RAM, because then dirty logging can miss writes or 
-keep faulting forever.
+> -----Original Message-----
+> From: Eric Auger <eric.auger@redhat.com>
+> Sent: 07 July 2026 09:50
+> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
+> devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org;
+> berrange@redhat.com; Shameer Kolothum Thodi
+> <skolothumtho@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>; Nathan
+> Chen <nathanc@nvidia.com>; philmd@oss.qualcomm.com
+> Subject: [PATCH v3 3/5] hw/arm/smmuv3: Fix possible overflow in
+> strtab_base computation
+>=20
+> External email: Use caution opening links or attachments
+>=20
+>=20
+> In the linear stream table mode (FMT =3D 0), if the guest programs
+> SMMU_STRTAB_BASE_CFG.LOG2SIZE (8 bits) to something bigger than 58,
+> MAKE_64BIT_MASK() will overflow. So cap the mask length to 64. We
+> still comply with the spec ADDR alignment computation:
+>=20
+> ADDR[LOG2SIZE + 5:0] =3D 0.
+>=20
+> In the 2 level stream table mode (FMT =3D 1), we don't have this risk
+> anymore since SPLIT is sanitized and equals to 6 at minimum.
+>=20
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3632
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-A fix probably needs factoring the same mappable section test used by 
-hvf_set_phys_mem() and using it in log_start, log_stop and log_clear.
+Reviewed-by: Shameer Kolothum <skolothumtho@nvidia.com>
 
-Regards,
-Akihiko Odaki
+Thanks,
+Shameer
 

@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 364CBC44506
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 11:00:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B32BC43458
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 11:00:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wi8x1-0006Zn-EF; Fri, 10 Jul 2026 06:59:23 -0400
+	id 1wi8x1-0006a9-KD; Fri, 10 Jul 2026 06:59:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wi8wr-0006Ro-QI
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 06:59:14 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ id 1wi8wv-0006Sv-Fv
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 06:59:18 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wi8wp-0001NP-IM
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 06:59:13 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-493e4cccd8dso3177055e9.2
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 03:59:11 -0700 (PDT)
+ id 1wi8wt-0001Oi-O3
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 06:59:17 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-493c733f15aso7217625e9.0
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 03:59:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783681150; x=1784285950; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783681154; x=1784285954; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=OJcE8AaeGgme1cFyhW7S6XSzHys2rlqbG+8+Unty9dI=;
- b=OHPN2DSKcbVhO94QKPNnU6glmeNrI4ASFGnzX5zVXmsIj1OczKqW1oaPihgmt527Ui
- t6McKRX83Y69AiImKTpxD6jjYBx9r/urW2xYrlWQgjH7Wdt8UzulHad7yPPzAWKzfcot
- OOFrhm9OgniTBB6R+1vSex78gyRfOgk7P4FdzDWK0lL+gXUVP4vMVFxw03JMDQIjMG3b
- 565fRrdi06ddbIQyACng3omPqqkoIzGgBP/xTJxImFuKsdKfS8NhTdo7r0zG4RzdiOC5
- g5nglq91/6impBSbHQceAXYP0t0DvBR5ArguAmBA41lkEOqPTiMPNVS8AlEGn+9xwICp
- 1Llw==
+ bh=q4Zq1gOCVbComkFhvXEvZvtbK0wUtEYI9Jqh3pC5jWQ=;
+ b=QwJyHb0L7Nu2UOj+4YxK6WRBgwf7LzPUVqNAZA+zGunmluv1sFVOQav4f0vmgHeypg
+ X0KAyIUopQfv6lYBc/cTBJ3ZdAVyYXS0+uXZKfZ98lQyke5GSMN4VvjQVm1JFstunwGw
+ qGuu9tLHByC093OFF5MyzEUiJ4/8zDpV15SJl3jnmmUIF+qcmbYyaUClQi4d3Y/aLzWN
+ bsKppw6xB/KCbuMz5Z2Eavi6JNShX2zPRgs7n7EJLbfuR6ODGlcMvwE62ZGvdnZwUIf3
+ CayUSsilo17g3gWdbJvWuu8id61gG9Ff/lSe7HCtrVX4voOm604eD4PT5DOAHOnhWMxV
+ Czvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783681150; x=1784285950;
+ d=1e100.net; s=20251104; t=1783681154; x=1784285954;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=OJcE8AaeGgme1cFyhW7S6XSzHys2rlqbG+8+Unty9dI=;
- b=kmoVo1mt9h6rWsHYK7atNJ1b1uxHnvZVnBNUOpT98GVLE2nbN70+Kx9dA807r1ZF1Q
- JwZyvT75BQm2Z3gXTQV4mKAN+KQLPlDcB97Tn6yJHQCERpwXPjr9AyyGT+8sWgfOyn3f
- GbB8GicV7JMoPo2QYIoLKwfL76df75j02FRCxnGS7q98xZviM+Ei3/6B+3eDyeDG7Rrc
- fbOUMo4ufHLak9nfmnKPxeDM3H67ZQNl1nuBhoKxv5BZZtIPz4SByf3q9Xab6pR6Hf/k
- Mi6nxzIsJ3u0f8ZSEzBeEkARskTfh/Ku+Z0IYQF9bSwxU9iss4hthEh3OyZ9ZDTKaXyS
- 7wIw==
-X-Gm-Message-State: AOJu0YzBn9+7IhJsZsNCJ7KoyHGahQM9Y4v/h7/y5EArAwVi7HS7Ewk2
- TVzqqy+3lo5nl9Nz1RQqZZD28aEjBqgKrtMht2PjfTwcqVNHl7LmpgpM6jHdexn1LpGoIJ3wTuh
- ji6z1m5f1WA==
-X-Gm-Gg: AfdE7clyWR9dqL+2Djq21IpVcxavCTKEecO61OlQcr4ETfCx6d5vnIGYsyTakZnn+sL
- mCTQVQnXp326YBhH9X5X42Nr84kG8YlIBJD1oHg9JfCcg1+Qa9j0z2jbkc/HW78l1ZAoZnIqvwg
- IwZKnO+98Y0Wdmk219j0CgF3AI2S339UEGDbEyYz5B7UPdS4jcGqzH+yeG9Ijp5ht2fDqz4PNnQ
- ta6J66LNL3HEYM9jafHaX8outhOkThpTWWPxwmaK1h083NRVIaWpuLQlRCk4ozx7EWbIekSbX2H
- lH6jF8OkJ04dOsUIgurOcgSWJh9THFGhmzIXLVZLR9YbdUrF5nqhBU8OseWxOlp/FeTaEZiDTAN
- Q6+GlmSn7EyycJuhNIdLrX3CWUBHzUQzdt55FjMc1BrvTAo869KxY3uKUqQtAuaado1Cu/iKK1N
- riDSUoGkXUPVCuB05z0YHD2MG8/b7865JiEVRnCNGph35nyzOAWPExFMKZXK0zuBLes7Bq4se6L
- khtz+ohweqdKEmzV5vR+Q==
-X-Received: by 2002:a05:600c:1c18:b0:492:7101:3d88 with SMTP id
- 5b1f17b1804b1-493e68c4ab4mr113887195e9.24.1783681149959; 
- Fri, 10 Jul 2026 03:59:09 -0700 (PDT)
+ bh=q4Zq1gOCVbComkFhvXEvZvtbK0wUtEYI9Jqh3pC5jWQ=;
+ b=QCFdOtd0i0I2UTce+YzzBumaO2g6etoPImzSvgxf3tsnbNhrGAYwrRuRAgMO69v1o2
+ byMmflZVXzZ9msbCp48R7EbZLCPEIvrJBAs91SYW7P3BxhQQwCEutERY1CDqIrfJqgew
+ rW2LNjW6uFVV8LY0IE4mMuRagA8aKJnk+d07oHxq0Su64DCpDDSWxwCwUm/Fr3dYnnDg
+ wmBnfmwQmzveSfhYjcx9OMfRVzM2BI/h6BiZHmwnmwdrEYUiQKPhpZRrWSRleNb2z7zB
+ 8GuONkRzZi041hy10lJiCnALu6X6aBwNpEfFOIlI0izCdYc6Bkxw+pWi5t+bPiTxrVhG
+ wUtw==
+X-Gm-Message-State: AOJu0YyQAeVnWlS/3ZEzIjZ+wgEYEpD380neBCsJWlZWEXAlME4LPGkn
+ pGJdyApBJNa3m0dD7/Y/sPmSh37lsGugDBYxM114uXZNpQDjdbIORM2GRplvxIL82nrC//TmBAo
+ FFjq2D2HyiA==
+X-Gm-Gg: AfdE7ckQrgIym/CmFZLYFP4G11JLf7z6uMA2ZYR8A+bKZmTi97La3DhzTHOX3bCI/1T
+ U1u/ygG6FGvCKYthjgEwzyjWwjUkpb8O+Hi7RXXpx5uAa4LR8yrB+w3ngyr2k/cOWMC7J3I3dNk
+ hDpXkwEj3BaIMdik31Wo5r0IhB0TYw1MKmL4wM/yWttGNFp9k5vhPFGhr9kWttmEJL/J9iSRInC
+ Db7mtsWUFJ9vwMARupnBfFcd1HlNB78k2bwZVF0B1hNhO2nYdwop785Fh9jrLBjyIxzBg3I6ZBo
+ +zbKUvyi4oazzqzevOLb+f1vlzoRDoavxvqMOlleCgd6w+SHEJ4d8gakHodGl04w/zD1NBMp9QM
+ 6RLSkufGHxpifqk3iIwU1KQs+5Ovb16B0/ZjZXUqp9S5o2/CfGy2DRGXqOwYG81eXU2bx0vnZqe
+ X4VDAWofLwyLAKYZmK9kBVCRflLAdW/gzxsJYAf7X2gEIL4GewJF7vSLx1Bk9CjPD3Lirk4YCSJ
+ CerIt07SIdgmTux9+Uj9A==
+X-Received: by 2002:a05:600c:8284:b0:493:b243:8ffc with SMTP id
+ 5b1f17b1804b1-493e68ec789mr111497745e9.35.1783681154261; 
+ Fri, 10 Jul 2026 03:59:14 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493f2d88698sm51946175e9.1.2026.07.10.03.59.09
+ 5b1f17b1804b1-493f2d88698sm51946175e9.1.2026.07.10.03.59.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2026 03:59:09 -0700 (PDT)
+ Fri, 10 Jul 2026 03:59:13 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jim MacArthur <jim.macarthur@linaro.org>
-Subject: [PATCH 1/9] hw/dma/soc_dma: Remove soc_dma_port_fifo support
-Date: Fri, 10 Jul 2026 11:58:59 +0100
-Message-ID: <20260710105907.2570621-2-peter.maydell@linaro.org>
+Subject: [PATCH 5/9] hw/dma/soc_dma: dma bytes is uint64_t
+Date: Fri, 10 Jul 2026 11:59:03 +0100
+Message-ID: <20260710105907.2570621-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260710105907.2570621-1-peter.maydell@linaro.org>
 References: <20260710105907.2570621-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,238 +102,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Our current single OMAP SoC doesn't call the soc_dma_port_add_fifo(),
-soc_dma_port_add_fifo_in() or soc_dma_port_add_fifo_out() functions.
-Remove them, plus the soc_dma_port_fifo handling that only those
-functions needed.
-
-The motivation for this is that it removes a lot of code that is
-careless about the fact that the largest possible DMA transfer is
-more bits than will fit into an "int" variable, and which does direct
-accesses to host memory pointers into guest backing RAM without doing
-bounds checks.  Deleting this code means we don't have to audit and
-update it.
+The worst case number of DMA bytes that omap_dma will ask us to
+transfer is 0xffff * 0xffff * 4 == 0x3fff80004, which is slightly
+larger than fits into a uint32_t.  Move the byte count to uint64_t,
+and adjust code that passes it around to also use uint64_t.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/dma/soc_dma.c         | 105 +--------------------------------------
- include/hw/arm/soc_dma.h |  24 ++-------
- 2 files changed, 5 insertions(+), 124 deletions(-)
+ hw/dma/soc_dma.c         | 6 +++++-
+ include/hw/arm/soc_dma.h | 2 +-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/hw/dma/soc_dma.c b/hw/dma/soc_dma.c
-index d5c52b804f..8ba531feea 100644
+index bbcd2bdcd5..1b93aaf565 100644
 --- a/hw/dma/soc_dma.c
 +++ b/hw/dma/soc_dma.c
-@@ -29,33 +29,6 @@ static void transfer_mem2mem(struct soc_dma_ch_s *ch)
-     ch->paddr[1] += ch->bytes;
- }
- 
--static void transfer_mem2fifo(struct soc_dma_ch_s *ch)
--{
--    ch->io_fn[1](ch->io_opaque[1], ch->paddr[0], ch->bytes);
--    ch->paddr[0] += ch->bytes;
--}
--
--static void transfer_fifo2mem(struct soc_dma_ch_s *ch)
--{
--    ch->io_fn[0](ch->io_opaque[0], ch->paddr[1], ch->bytes);
--    ch->paddr[1] += ch->bytes;
--}
--
--/* This is further optimisable but isn't very important because often
-- * DMA peripherals forbid this kind of transfers and even when they don't,
-- * oprating systems may not need to use them.  */
--static void *fifo_buf;
--static int fifo_size;
--static void transfer_fifo2fifo(struct soc_dma_ch_s *ch)
--{
--    if (ch->bytes > fifo_size)
--        fifo_buf = g_realloc(fifo_buf, fifo_size = ch->bytes);
--
--    /* Implement as transfer_fifo2linear + transfer_linear2fifo.  */
--    ch->io_fn[0](ch->io_opaque[0], fifo_buf, ch->bytes);
--    ch->io_fn[1](ch->io_opaque[1], fifo_buf, ch->bytes);
--}
--
- struct dma_s {
-     struct soc_dma_s soc;
-     int chnum;
-@@ -67,11 +40,6 @@ struct dma_s {
-         enum soc_dma_port_type type;
-         hwaddr addr;
-         union {
--           struct {
--               void *opaque;
--               soc_dma_io_t fn;
--               int out;
--           } fifo;
-            struct {
-                void *base;
-                size_t size;
-@@ -129,20 +97,7 @@ static inline enum soc_dma_port_type soc_dma_ch_update_type(
-     struct dma_s *dma = (struct dma_s *) ch->dma;
-     struct memmap_entry_s *entry = soc_dma_lookup(dma, ch->vaddr[port]);
- 
--    if (entry->type == soc_dma_port_fifo) {
--        while (entry < dma->memmap + dma->memmap_size &&
--                        entry->u.fifo.out != port)
--            entry ++;
--        if (entry->addr != ch->vaddr[port] || entry->u.fifo.out != port)
--            return soc_dma_port_other;
--
--        if (ch->type[port] != soc_dma_access_const)
--            return soc_dma_port_other;
--
--        ch->io_fn[port] = entry->u.fifo.fn;
--        ch->io_opaque[port] = entry->u.fifo.opaque;
--        return soc_dma_port_fifo;
--    } else if (entry->type == soc_dma_port_mem) {
-+    if (entry->type == soc_dma_port_mem) {
-         if (entry->addr > ch->vaddr[port] ||
-                         entry->addr + entry->u.mem.size <= ch->vaddr[port])
-             return soc_dma_port_other;
-@@ -173,15 +128,8 @@ void soc_dma_ch_update(struct soc_dma_ch_s *ch)
-     }
-     dst = soc_dma_ch_update_type(ch, 1);
- 
--    /* TODO: use src and dst as array indices.  */
-     if (src == soc_dma_port_mem && dst == soc_dma_port_mem)
-         ch->transfer_fn = transfer_mem2mem;
--    else if (src == soc_dma_port_mem && dst == soc_dma_port_fifo)
--        ch->transfer_fn = transfer_mem2fifo;
--    else if (src == soc_dma_port_fifo && dst == soc_dma_port_mem)
--        ch->transfer_fn = transfer_fifo2mem;
--    else if (src == soc_dma_port_fifo && dst == soc_dma_port_fifo)
--        ch->transfer_fn = transfer_fifo2fifo;
-     else
-         ch->transfer_fn = ch->dma->transfer_fn;
- 
-@@ -251,61 +199,10 @@ struct soc_dma_s *soc_dma_init(int n)
-     }
- 
-     soc_dma_reset(&s->soc);
--    fifo_size = 0;
- 
-     return &s->soc;
- }
- 
--void soc_dma_port_add_fifo(struct soc_dma_s *soc, hwaddr virt_base,
--                soc_dma_io_t fn, void *opaque, int out)
--{
--    struct memmap_entry_s *entry;
--    struct dma_s *dma = (struct dma_s *) soc;
--
--    dma->memmap = g_realloc(dma->memmap, sizeof(*entry) *
--                    (dma->memmap_size + 1));
--    entry = soc_dma_lookup(dma, virt_base);
--
--    if (dma->memmap_size) {
--        if (entry->type == soc_dma_port_mem) {
--            if (entry->addr <= virt_base &&
--                            entry->addr + entry->u.mem.size > virt_base) {
--                error_report("%s: FIFO at %"PRIx64
--                             " collides with RAM region at %"PRIx64
--                             "-%"PRIx64, __func__,
--                             virt_base, entry->addr,
--                             (entry->addr + entry->u.mem.size));
--                exit(-1);
--            }
--
--            if (entry->addr <= virt_base)
--                entry ++;
--        } else
--            while (entry < dma->memmap + dma->memmap_size &&
--                            entry->addr <= virt_base) {
--                if (entry->addr == virt_base && entry->u.fifo.out == out) {
--                    error_report("%s: FIFO at %"PRIx64
--                                 " collides FIFO at %"PRIx64,
--                                 __func__, virt_base, entry->addr);
--                    exit(-1);
--                }
--
--                entry ++;
--            }
--
--        memmove(entry + 1, entry,
--                        (uint8_t *) (dma->memmap + dma->memmap_size ++) -
--                        (uint8_t *) entry);
--    } else
--        dma->memmap_size ++;
--
--    entry->addr          = virt_base;
--    entry->type          = soc_dma_port_fifo;
--    entry->u.fifo.fn     = fn;
--    entry->u.fifo.opaque = opaque;
--    entry->u.fifo.out    = out;
--}
--
- void soc_dma_port_add_mem(struct soc_dma_s *soc, uint8_t *phys_base,
-                 hwaddr virt_base, size_t size)
- {
-diff --git a/include/hw/arm/soc_dma.h b/include/hw/arm/soc_dma.h
-index bcdb91425a..e1d75bb3ba 100644
---- a/include/hw/arm/soc_dma.h
-+++ b/include/hw/arm/soc_dma.h
-@@ -25,12 +25,10 @@
- 
- struct soc_dma_s;
- struct soc_dma_ch_s;
--typedef void (*soc_dma_io_t)(void *opaque, uint8_t *buf, int len);
- typedef void (*soc_dma_transfer_t)(struct soc_dma_ch_s *ch);
- 
- enum soc_dma_port_type {
-     soc_dma_port_mem,
--    soc_dma_port_fifo,
-     soc_dma_port_other,
+@@ -49,11 +49,15 @@ struct dma_s {
+     struct soc_dma_ch_s ch[];
  };
  
-@@ -57,8 +55,6 @@ struct soc_dma_ch_s {
+-static void soc_dma_ch_schedule(struct soc_dma_ch_s *ch, int delay_bytes)
++static void soc_dma_ch_schedule(struct soc_dma_ch_s *ch, uint64_t delay_bytes)
+ {
+     int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+     struct dma_s *dma = (struct dma_s *) ch->dma;
+ 
++    /*
++     * Worst case delay bytes is only slightly larger than fits into
++     * a 32-bit integer, so this won't overflow.
++     */
+     timer_mod(ch->timer, now + delay_bytes / dma->channel_freq);
+ }
+ 
+diff --git a/include/hw/arm/soc_dma.h b/include/hw/arm/soc_dma.h
+index e1d75bb3ba..b5ad9743be 100644
+--- a/include/hw/arm/soc_dma.h
++++ b/include/hw/arm/soc_dma.h
+@@ -49,7 +49,7 @@ struct soc_dma_ch_s {
+     int update;
+ 
+     /* This should be set by dma->setup_fn().  */
+-    int bytes;
++    uint64_t bytes;
+     /* Initialised by the DMA module, call soc_dma_ch_update after writing.  */
+     enum soc_dma_access_type type[2];
      hwaddr vaddr[2];    /* Updated by .transfer_fn().  */
-     /* Private */
-     void *paddr[2];
--    soc_dma_io_t io_fn[2];
--    void *io_opaque[2];
- 
-     int running;
-     soc_dma_transfer_t transfer_fn;
-@@ -82,33 +78,21 @@ struct soc_dma_s {
- 
- /* Call to activate or stop a DMA channel.  */
- void soc_dma_set_request(struct soc_dma_ch_s *ch, int level);
--/* Call after every write to one of the following fields and before
-+/*
-+ * Call after every write to one of the following fields and before
-  * calling soc_dma_set_request(ch, 1):
-  *   ch->type[0...1],
-  *   ch->vaddr[0...1],
-  *   ch->paddr[0...1],
-- * or after a soc_dma_port_add_fifo() or soc_dma_port_add_mem().  */
-+ * or after a soc_dma_port_add_mem().
-+ */
- void soc_dma_ch_update(struct soc_dma_ch_s *ch);
- 
- /* The SoC should call this when the DMA module is being reset.  */
- void soc_dma_reset(struct soc_dma_s *s);
- struct soc_dma_s *soc_dma_init(int n);
- 
--void soc_dma_port_add_fifo(struct soc_dma_s *dma, hwaddr virt_base,
--                soc_dma_io_t fn, void *opaque, int out);
- void soc_dma_port_add_mem(struct soc_dma_s *dma, uint8_t *phys_base,
-                 hwaddr virt_base, size_t size);
- 
--static inline void soc_dma_port_add_fifo_in(struct soc_dma_s *dma,
--                hwaddr virt_base, soc_dma_io_t fn, void *opaque)
--{
--    return soc_dma_port_add_fifo(dma, virt_base, fn, opaque, 0);
--}
--
--static inline void soc_dma_port_add_fifo_out(struct soc_dma_s *dma,
--                hwaddr virt_base, soc_dma_io_t fn, void *opaque)
--{
--    return soc_dma_port_add_fifo(dma, virt_base, fn, opaque, 1);
--}
--
- #endif
 -- 
 2.43.0
 

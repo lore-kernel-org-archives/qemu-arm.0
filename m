@@ -4,80 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 225F4C44506
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:02:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4293C43458
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:02:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiIGc-00047K-3G; Fri, 10 Jul 2026 16:56:14 -0400
+	id 1wiIJg-0001IF-CB; Fri, 10 Jul 2026 16:59:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIFS-00028m-Qp
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:55:04 -0400
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+ id 1wiIIJ-0000jv-PV
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:57:59 -0400
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIFA-0000vc-QX
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:55:02 -0400
-Received: by mail-pf1-x42e.google.com with SMTP id
- d2e1a72fcca58-8485ef63b68so1226529b3a.1
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:54:34 -0700 (PDT)
+ id 1wiIIA-0001tL-13
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:57:59 -0400
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-2cacf197759so18904275ad.2
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:57:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783716873; x=1784321673; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783717068; x=1784321868; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=mes9xDUQ0Ck2g/+WTnUtzsbUXNthtYb/ogAdhSHGYlY=;
- b=D7uamCcbKptZF5/gWoDeMxTHveTlQYCOwvaB2wV+R0XYsjRioLNBj81mv0lXsCb8tu
- mBOiHoqXeIgr9G2jT2ZVt7mgnYA/D50C3MaMFAaoNyUgHD9tmSM+Rc/ERtg13Q+59JWf
- FZn1ha/2+jQmZyGDHfaTBCppjXz6HauXW6qZP+ponMw0frIah4ivLw+V/MIJ3DBqlcJB
- yOIcS9tML/QbjOPllTzY/UADUM7wmptO3acUD5IkFUuD6mgGtnUEoYILMC5J6Sm4Whao
- 6trghKSLWVUPGsL17IHmK86nJ4DWTSwKekva5pJeal6z0IJwe4nMisD3yA5cmiOoCHqt
- 9XWg==
+ bh=6DlcOURZ8Vq6FHB8e3m8GHkjsu8dVLmyFcRV/xT55GA=;
+ b=IlcDt8GypjmeRkoGkm1036T85xesu/lwtKMyumcYjc6DTn1rTP2kX/Yp85+bsV6r0I
+ XtTavvrzgGvNP6c2AquwR5wGk8TQCY+XbgLkTqjedRr9yLg4Thv0LXuehQ6ppasgGKfl
+ u8v3cJQ/mMtmw8cEnBNTp8vR9Pot0Zh8Nm42rlqT7QXvDwBhY7hjbheZGRz8dV9DuXB2
+ L8fU5clY6Yc+u3tdDYQlarQXW/SKSMH7Z7J0O2wSlbPOaQ9BKywslHL8RK62FmyfzUHV
+ IEJdPkplSuDLxNiIsDrjb10OBp5IRuWvzWnV17H/fWINCM1mF4WDuS7xaNKAcGEqogJH
+ DXWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783716873; x=1784321673;
+ d=1e100.net; s=20251104; t=1783717068; x=1784321868;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=mes9xDUQ0Ck2g/+WTnUtzsbUXNthtYb/ogAdhSHGYlY=;
- b=fQvsKxn+pD2Sh06P1QS/nYC3aIp+2ggUgQ3UE7GJTozuWMf5SKbXcpWUdPpO8n7ZAe
- olie8OfgYTGraYTRDbkn8ZMhHrL+rzCl7W7QbMyhXoBdGGx8osvyhEpLK6YsvXaovBiT
- zLtafymu9+Zc442Th/MILw1hPOkxlnzwUiV8SsYmFyvV/e1xwYaRD+RK34JO0THiIFer
- PpnoiGTa+ZlnOOFix/62JZu3I3c3p8gZFFGlYufdM0mJQWjyXFXOVttSLzZsfJS8neI/
- jevMhJdPEtFF541rhYwlhZ9/sv9+v25NWMETbT5pdRjJy5l7MA2qmDkobaLMmqtHYVQt
- dQjg==
-X-Gm-Message-State: AOJu0YxWyx5HSkMDWq9tbWlTD/gksE3HmpTpiLHJuoMfcH4Cr7yBn6W4
- HKAshijHbZiX8/sViwsBm6HlH4M/PJmdX0pohiy4y7IgaplNABRqlOu3lZRb8oIsvG4=
-X-Gm-Gg: AfdE7clrfe4sjXLEwBgUpQ6bbTNiFwI+fEL68pG0bFQ1z7HKCekMRKtedjELe0RN9d6
- nnV72QSMWhHh/JhbfWtEkHEGKX1IjVrP7a3WT+ce43ZyMALlUwZI2H9OEr74jpSTKvCW4ta844V
- f81pML6nOlKcsQRwikFcFFy613SmpU41rR0Ter73LG16JVoco33bys5cVBAw+RpoQzQRgJEuFRS
- gTK2Ax5mgjQCa3m4QffQrjdP0d2hg6cvVI9fAgICdmPG4ZiK12Ao+QzUmtXQXJHxKPrdHpau+hv
- iFoyo2PrH8xlHONZ80t2OfQxuB15blL+QitUxmMqUPIgqdiQbHF/bPA+wrTWfdMVTPhyn5Hwp/5
- cqeOBy9qgjHk5wnWwYSppR6AhAtfG4V3G6J0e0CgrI7MR+F+S5yOdQa8jU3YvRFNHODe3SUvZr6
- bzTzGiKFBgapw/VXEWK0KyCRz98mzs
-X-Received: by 2002:a05:6a00:14d1:b0:848:2f6e:e532 with SMTP id
- d2e1a72fcca58-848897cdcadmr473243b3a.70.1783716873368; 
- Fri, 10 Jul 2026 13:54:33 -0700 (PDT)
+ bh=6DlcOURZ8Vq6FHB8e3m8GHkjsu8dVLmyFcRV/xT55GA=;
+ b=jqUewpsNWTLI5oaWR63u7/sjHe/IXUhS+/VBW59rgxXFoBqfhPnKYoCQaXtqhZPeu5
+ /2Ht5vMI0lV3RPr70Kjn1t4FZ2+lIDkAxlx90UGUuYmjbXiAIyg4Z3aoirM5287jcy03
+ 3zR5idltt5Uy5tlPBZsJDwT8zQrATx5zrLj+Ltf7XUfCrpRPYe7lhFe5pOONaFgHJ/An
+ W5E2HDcsN+8MxCuSmHvlmSXlqAnWDHlj4xPznOY/tdBOCc4TV8s1pugS6zSsqMHGnhO9
+ woftRSeX5xP4ys9oN64WrtaHW74aHdCq8hFPtgOyw9pPnQSMS+9P6z4jT2gMs1i+7SfY
+ /WeA==
+X-Gm-Message-State: AOJu0Yw0cS4Xt7pIB0mKv0YpZpL9wldFwfvsc6jyvaiqDVC0z5fDZ/RM
+ 6aXwXYKMJ8SmrSqijogCs+PBS0obDoXG8W8PuEuhhwZmrlwgNIqiXU42ozyfFcvhkb8=
+X-Gm-Gg: AfdE7cnIp8tUk9URn33+Wjr3sh35DnTcxCoA24Uk5qAu7Pc4rzbVi9XSf7Tob/yZYAR
+ oiFEn2FXXLO+vANjck0KrD+R6j/Thi1S1xUMcaTqjq31m5HiMUk/BnP4RttX2mRNkpt3CyP3iY2
+ ccirZtySpsN+k3bprIOdxl9HPrirkTqyB1p6hFHi9t2JbJHEyuu9wJuo56UPVqjUIkn6fKVsUNO
+ qlUSb32/kdvYaiKKsBxJEY/sJqOMF+956OpIqCmqTBKg5x/gi6iSczy1zP+uJBAj82F6BwpT/d+
+ g4kAq/O4Xe7RFxZMKaSbz5eJh+pPCTCvf42igbJ31+iv76sa3/bEQ8LETIUjV9W2ybZM4now37I
+ 9V7taeqxke9AuPauSGB6OU9a9aSpVGPh5lqhMWb+MH6He94x+Tp4lYRq9Qcg6tYfQUXSxSIHFf/
+ rheXrCpV1aBICCyMloFg==
+X-Received: by 2002:a17:90b:3b89:b0:387:e0db:3fad with SMTP id
+ 98e67ed59e1d1-38dc7778aedmr450010a91.38.1783717068048; 
+ Fri, 10 Jul 2026 13:57:48 -0700 (PDT)
 Received: from stoup.. ([71.212.146.49]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-847f6d76106sm10780574b3a.40.2026.07.10.13.54.32
+ 98e67ed59e1d1-38a58792cdasm3256221a91.16.2026.07.10.13.57.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2026 13:54:33 -0700 (PDT)
+ Fri, 10 Jul 2026 13:57:47 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, jcmvbkbc@gmail.com
-Subject: [PATCH v3 28/51] target/arm: Use CPUBreakpoint arg in
- arm_debug_excp_handler
-Date: Fri, 10 Jul 2026 13:53:38 -0700
-Message-ID: <20260710205401.836304-29-richard.henderson@linaro.org>
+Subject: [PATCH v3 44/51] accel/tcg: Remove TCGCPUOps.adjust_watchpoint_address
+Date: Fri, 10 Jul 2026 13:53:54 -0700
+Message-ID: <20260710205401.836304-45-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260710205401.836304-1-richard.henderson@linaro.org>
 References: <20260710205401.836304-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
 X-Spam_score_int: 4
 X-Spam_score: 0.4
 X-Spam_bar: /
@@ -100,71 +99,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We no longer need to search for a matched breakpoint,
-test for BP_CPU, or clear watchpoint_hit.
-
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/debug.c | 35 ++++++++++-------------------------
- 1 file changed, 10 insertions(+), 25 deletions(-)
+ include/accel/tcg/cpu-ops.h | 5 -----
+ include/hw/core/cpu.h       | 2 --
+ accel/tcg/watchpoint.c      | 6 ------
+ 3 files changed, 13 deletions(-)
 
-diff --git a/target/arm/tcg/debug.c b/target/arm/tcg/debug.c
-index fe8513a5de..d705f7aef2 100644
---- a/target/arm/tcg/debug.c
-+++ b/target/arm/tcg/debug.c
-@@ -422,42 +422,27 @@ void arm_debug_excp_handler(CPUState *cs, CPUBreakpoint *hit)
-      */
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
--    CPUBreakpoint *wp_hit = cs->watchpoint_hit;
-+    uint32_t excp, syndrome;
+diff --git a/include/accel/tcg/cpu-ops.h b/include/accel/tcg/cpu-ops.h
+index 734bcd537b..a232288152 100644
+--- a/include/accel/tcg/cpu-ops.h
++++ b/include/accel/tcg/cpu-ops.h
+@@ -249,11 +249,6 @@ struct TCGCPUOps {
+                                            MMUAccessType access_type,
+                                            int mmu_idx, uintptr_t retaddr);
  
--    if (wp_hit) {
--        if (wp_hit->flags & BP_CPU) {
--            bool wnr = (wp_hit->flags & BP_WATCHPOINT_HIT_WRITE) != 0;
-+    if (hit->flags & BP_MEM_ACCESS) {
-+        bool wnr = hit->flags & BP_WATCHPOINT_HIT_WRITE;
-+        syndrome = syn_watchpoint(0, 0, wnr);
-+        excp = EXCP_DATA_ABORT;
- 
--            cs->watchpoint_hit = NULL;
+-    /**
+-     * @adjust_watchpoint_address: hack for cpu_check_watchpoint (used by ARM)
+-     */
+-    vaddr (*adjust_watchpoint_address)(CPUState *cpu, vaddr addr, int len);
 -
--            env->exception.fsr = arm_debug_exception_fsr(env);
--            env->exception.vaddress = wp_hit->hitaddr;
--            raise_exception_debug(env, EXCP_DATA_ABORT,
--                                  syn_watchpoint(0, 0, wnr));
--        }
-+        env->exception.vaddress = hit->hitaddr;
-     } else {
--        uint64_t pc = is_a64(env) ? env->pc : env->regs[15];
-+        syndrome = syn_breakpoint(0);
-+        excp = EXCP_PREFETCH_ABORT;
- 
--        /*
--         * (1) GDB breakpoints should be handled first.
--         * (2) Do not raise a CPU exception if no CPU breakpoint has fired,
--         * since singlestep is also done by generating a debug internal
--         * exception.
--         */
--        if (cpu_breakpoint_test(cs, pc, BP_GDB)
--            || !cpu_breakpoint_test(cs, pc, BP_CPU)) {
--            return;
--        }
--
--        env->exception.fsr = arm_debug_exception_fsr(env);
-         /*
-          * FAR is UNKNOWN: clear vaddress to avoid potentially exposing
-          * values to the guest that it shouldn't be able to see at its
-          * exception/security level.
-          */
-         env->exception.vaddress = 0;
--        raise_exception_debug(env, EXCP_PREFETCH_ABORT, syn_breakpoint(0));
+     /**
+      * @debug_check_watchpoint: return true if the architectural
+      * watchpoint whose address has matched should really fire.
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 5401d7c14b..c4c86b8595 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -139,8 +139,6 @@ struct SysemuCPUOps;
+  * to GDB. The returned value is expected to be a simple constant string:
+  * the caller will not g_free() it.
+  * @disas_set_info: Setup architecture specific components of disassembly info
+- * @adjust_watchpoint_address: Perform a target-specific adjustment to an
+- * address before attempting to match it against watchpoints.
+  * @deprecation_note: If this CPUClass is deprecated, this field provides
+  *                    related information.
+  * @max_as: Maximum valid index used to refer to the address spaces supported by
+diff --git a/accel/tcg/watchpoint.c b/accel/tcg/watchpoint.c
+index f96ffc018d..b8a49b7567 100644
+--- a/accel/tcg/watchpoint.c
++++ b/accel/tcg/watchpoint.c
+@@ -68,12 +68,6 @@ void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
+         return;
      }
-+    env->exception.fsr = arm_debug_exception_fsr(env);
-+    raise_exception_debug(env, excp, syndrome);
- }
  
- /*
+-    if (cpu->cc->tcg_ops->adjust_watchpoint_address) {
+-        /* this is currently used only by ARM BE32 */
+-        addr = cpu->cc->tcg_ops->adjust_watchpoint_address(cpu, addr, len);
+-        last = addr + len - 1;
+-    }
+-
+     assert((flags & ~BP_MEM_ACCESS) == 0);
+ 
+     for (n = interval_tree_iter_first(&cpu->watchpoints, addr, last); n;
 -- 
 2.43.0
 

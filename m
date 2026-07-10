@@ -4,102 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCCA1C43458
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 13:03:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99FEFC44501
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 13:15:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiAsI-0007F1-6c; Fri, 10 Jul 2026 09:02:38 -0400
+	id 1wiB52-0005ud-L7; Fri, 10 Jul 2026 09:15:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wiArO-00068q-JT
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 09:01:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wiArL-000636-5h
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 09:01:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783688498;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=8yrNmqM1rUndTJ0w8K8WVuBrkzlm+ae3LiH8cPhp8Mo=;
- b=PGiACDRBjM9kUVvLGTXJ60UkjRTRaVw0TUx0y+NOL2pCkrE3vDDkPXqeEN6Lii9jmoIsw3
- evXb9/hKnITiOnt/hPRvd0v745Ffw1xT+1CRDnb9u8YU0U9Z/sM/Vj9LoO+Rs/6Iv8UeKg
- YZ8T+Q3SHEzy1odO5osy4cXIbbu1zug=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-552-Vda-6MdMOeW1PNYrAKzQBQ-1; Fri, 10 Jul 2026 09:01:36 -0400
-X-MC-Unique: Vda-6MdMOeW1PNYrAKzQBQ-1
-X-Mimecast-MFC-AGG-ID: Vda-6MdMOeW1PNYrAKzQBQ_1783688496
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-475b0b4e8d5so898603f8f.1
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 06:01:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wiB4n-0005so-6t
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 09:15:36 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wiB4k-0008AL-4k
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 09:15:32 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-493bb510ce4so6649485e9.1
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 06:15:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1783689327; x=1784294127; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=gLSBGq58bejmiCRbB0BERo1JTcl6+BWisQrAiENcIRY=;
+ b=nQv6lECSqjU3CwFTcfXpGGI8u9q0QsC3ll0OobjFZdgtyB+rCDfnjnsNvDi4tJm+Jq
+ f6C5TEAbEqxEosKMOqA/IKGC4BU/nbaoWa6hqNoNOAVnRhTGWgzbUADnu3bLceFNgIHV
+ ABdMyTOzXQnuVaZlI0Mgjy17BkmzwDAJvDMBnbILP728eFq7YpEwTYvi8328uMERLotp
+ 7StvIEpT1EU/lKiBC2FWWNOMw+BFOcAOF+uJsaN+G3+y0uN2fxkk3yAriuD9cWVnmhCG
+ CJHxFhEDxzOtO4vci6wnnNRHImo7+JUBX/xicLcNt2wUukUbJbTpao3jyCfjyMhTAjnb
+ r7zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783688495; x=1784293295;
- h=content-type:mime-version:references:message-id:in-reply-to:subject
- :cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=8yrNmqM1rUndTJ0w8K8WVuBrkzlm+ae3LiH8cPhp8Mo=;
- b=S26tWuzxi+dsKHo70XzQgwmkAEjRVIvp0AQ4eEPRyQWXnbJ5mGkayHsW84DlIl1QZZ
- 9P6nEcjknGnlZNFNuI3uuDVQf0dmExs25wy1vZb0yLMmBEzomFjoxIKVh5TivYbnQgN/
- F1bQn45LbSlmWo3XVu+RvoyxPOW9JrCNOu905ajTs8CnQphahXy37szQcxFfrDuOeOR7
- 8jhU9pINWnB7SOB0vqDAgrvXn/3lcIyeHI4HWzIh2tDxSOapFFuMm8BSleq+RB2q8ymg
- yrA6oOC2ghCF56hs3flAehLpPCwY2+MKmb8yqmC/VmzCLMDeD9vBz4HHA+JWOPwULm04
- 8BJg==
+ d=1e100.net; s=20251104; t=1783689327; x=1784294127;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=gLSBGq58bejmiCRbB0BERo1JTcl6+BWisQrAiENcIRY=;
+ b=YPLLO6lOKUGKaTvm1ZGGc6DQ9z3NZ6eLUAUt9gQguf4GlTVm49xqihCK9AJLM4QcRK
+ BEPYfYA7+3iOaVDJ8rHsJlSDV5aVkgSl4q083EBb5dBro+CoaH8GfwOxlVroKsOh1jk0
+ QlIMGll4PyRI0o//9hKsCag3WEFHyhKdNO4jf7E8UMdOv52Kg7DwDPugivagCVYQLq3F
+ omhloS14D7iINYwlyQ5xk675Lm1Sgmmu6NFPbjADyrPBOSKs93ImKvM29+7D805ncrZW
+ xwDhKgT1TED4m1TwOUdmkuzdT/9F83nc68oy6DldqdQBbIN+qn/dUjFEXHVg3XT/xh7L
+ QTZg==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rrs89IhqIyOghd/UjfDus97e0210D/s4jxDv4NYlpKjVQMzt9h3EWO2JtAlMyvhBrxDoh4N5WcnWQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzocqqVoAuBBTcOfxDwacCuXtDmn5R7Pg6gSu5HVm4RzcxcTUHF
- 8eEzXu/HmXGVRHtlDvUtdpPg+6aZ3OrxEqlrYsXXiaCOpSLwyoppgdsL+PgVXkLeTUDMtmm8+V7
- McLByMq079J0LviYoaxBElvqNOT5CBW3mFHcx5D0vb5ANwvKjo3TRyQ==
-X-Gm-Gg: AfdE7cl1zQLdQgj/a9pNiokUwan3WiPpNwGRpylmy40aQ84oudggMiblP+ioeWXntP6
- WWPboCUvepCHFH5RoK0bv6bURXs75cpj69jHxaEQC77uoS6bfZdbl6flju74iwEWFJ7eeoaTHDE
- sioWy2ZLH7V1/Agx8IKM4FMg4h+c3FK2TXF0dPWiZ6Mt4O7fFqT1e2NjmxU11TLBW+Y25R3ZEVG
- UVq6m73PQLg3K1PWv7OF/VhxqsarB1x+f/841c6cT4gEtZJqGIxYbFmM4eXwkUzabb3qlX5HpO9
- iDqzw7TsquXOcdYSVP4BLCABZNX0Q1il2PO3/mChdpfMeFobbTGFrMRHXIJgctHzGd4hZaYbmgs
- bMm0akvpECMHkLY1vXk6DQMlvYVdJx0vhBGiQLKFEA6Ja7JEuRZ/Mj6JBAV99
-X-Received: by 2002:a05:6000:1861:b0:47d:edb2:a4ab with SMTP id
- ffacd0b85a97d-47df07670c6mr12539004f8f.43.1783688488233; 
- Fri, 10 Jul 2026 06:01:28 -0700 (PDT)
-X-Received: by 2002:a05:6000:1861:b0:47d:edb2:a4ab with SMTP id
- ffacd0b85a97d-47df07670c6mr12538420f8f.43.1783688482704; 
- Fri, 10 Jul 2026 06:01:22 -0700 (PDT)
-Received: from rh (p200300f6af371400309b667846b924fb.dip0.t-ipconnect.de.
- [2003:f6:af37:1400:309b:6678:46b9:24fb])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47a9de1e6ccsm60023847f8f.5.2026.07.10.06.01.21
+ AHgh+Rq3/cDGou+u+VsXjYWVoNNXmvEhQenxYzhmbpiJn5rg8qgnv65LaBB0YQZNRsIlR2ZkbTGGpdOZsw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy+04/YSEM5zkTFVo2UPdkUgdzaTfaUJJwxHVIgjplPI/iiQ9hM
+ 4sestttl4ff0NIGwlHLvoUhZLVAktkmThyOt1VIH9fJit75odSXqBJkhVrfCtC/l64U=
+X-Gm-Gg: AfdE7cl3YqDa+FwcGStyEaslPGlG+8MsCQFT8PRQN6J3nZm4HqjCGP7QF9P3uiHrZzs
+ DbS03EVAMsM4h4yvlX88/mBg1E0bvuuG8QIgLyzFk+GnWQU4HvY1vgdL16vXfnxztXcIh4etvkw
+ Ar2UyAk8ggHPsKRj0KOhdssARox91A80kqV7rRVunwNPbtaso2GBUduqHw0HQ5NB33nGUFABRSa
+ zHQIK69TpPQnb5af/YMdDRgNiP2onIsIzY1+ON5y1SEKrq/5TKi2W6DKJqtSLpevkJp+BT/d5nH
+ u/OTSzfhShHXEhSrCTwU/qLdt6dCz2qY6flma2T7/OCITirKn5UP/cYAWDQuWuls//vrooed28b
+ UZ0WZ0l3BXs8pK9QOIecF4F8SUHv71bQOv6Sl976LZMaejhhwmNNwWy44w5v4Krj2LZ82ERL2Io
+ bwZM27mKszSHFS
+X-Received: by 2002:a05:600c:528e:b0:492:4363:e7eb with SMTP id
+ 5b1f17b1804b1-493e68f03damr119628095e9.32.1783689327229; 
+ Fri, 10 Jul 2026 06:15:27 -0700 (PDT)
+Received: from draig.lan ([185.124.0.114]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-493eb6ff432sm133999465e9.4.2026.07.10.06.15.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2026 06:01:22 -0700 (PDT)
-Date: Fri, 10 Jul 2026 15:01:20 +0200 (CEST)
-From: Sebastian Ott <sebott@redhat.com>
-To: Eric Auger <eauger@redhat.com>
-cc: Peter Maydell <peter.maydell@linaro.org>, 
- Jonathan Cameron <jonathan.cameron@huawei.com>, 
- Alireza Sanaee <alireza.sanaee@huawei.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org
-Subject: Re: [PATCH v4 3/3] arm/kvm: get demuxed ID registers from kvm
-In-Reply-To: <7ab742c2-2354-4316-a727-a56175a321b9@redhat.com>
-Message-ID: <0a463fde-b206-cafb-8625-e03bb5d1ce58@redhat.com>
-References: <20260702133606.34529-1-sebott@redhat.com>
- <20260702133606.34529-4-sebott@redhat.com>
- <7ab742c2-2354-4316-a727-a56175a321b9@redhat.com>
+ Fri, 10 Jul 2026 06:15:26 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 9E5525F7C0;
+ Fri, 10 Jul 2026 14:15:25 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ qemu-arm@nongnu.org (open list:Raspberry Pi)
+Subject: [PATCH v2] hw/dma: don't allow weird transfer lengths for bcm2835
+Date: Fri, 10 Jul 2026 14:15:00 +0100
+Message-ID: <20260710131500.2323848-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: VmI3zxfzkD6x4OCv5ZZtujawKsORna3u82zFgQfXdm0_1783688496
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=sebott@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,30 +104,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hej Eric,
+The datasheet doesn't explicitly say that TXFR_LEN has to be word
+aligned but the fact there is a DMA_D_WIDTH flag to select between 32
+bit and 128 bit strongly implies that is how it works. The downstream
+rpi kernel also goes to efforts to not write sub-4 byte lengths so
+lets:
 
-On Tue, 7 Jul 2026, Eric Auger wrote:
-> On 7/2/26 3:36 PM, Sebastian Ott wrote:
->> From: Cornelia Huck <cohuck@redhat.com>
->>
->> We now have the infrastructure in place to handle demuxed ID registers
->> from kvm. Use it to get the values that kvm emulates for CCSIDR_EL1.
->
-> I wonder whether that patch is needed at this point. Were previous
-> ccsidr[i] initialized from KVM before? What is the actual motivation to
-> read them in this series. Doesn't it bring the risk to expose new values
-> to the guest?
->
-> For instance, in [RFC PATCH v6 11/17] arm/kvm: Initialize all writable
-> ID registers from host, I generalized the initialization of all writable
-> id regs and I noticed that the new initialization of CLIDR from KVM
-> broke the execution (which is not the case for the CCSIDR because I did
-> it a try) because CLIDR was previously uninitialized and null.
+  - fail when mis-programmed and report GUEST_ERROR
+  - catch setting D_WIDTH for 128 bit and report UNIMP
+  - add comments that the DEBUG register isn't a straight write
 
-The issue is holes in arm64_id_regs[] and we stumble over that in
-get_host_cpu_idregs(). Maybe we could skip the demuxed regs when we
-iterate over that array.
+Yodel did some digging into the specs (see discussion link):
 
-Sebastian
+{A} AMBA AXI Protocol Version: 2.0 Specification
+    https://documentation-service.arm.com/static/64256e84314e245d086bc88f
+
+{B} BCM2835 ARM Peripherals
+    https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf
+
+[1] {A} (p. 10-2)
+[2] {B} (p. 51)
+[3] {A} (p. 14-5)
+[4] {A} (p. 4-3)
+[5] {A} (p. 9-4)
+[6] {B} (p. 53)
+
+However was unable to come up with an unambiguous conclusion without
+testing on the real hardware. So in the absence of certainty and for
+the sake of addressing the DoS I suggest we merge as is for now.
+
+Link: https://lore.kernel.org/all/20251111105429.3993300-1-alex.bennee@linaro.org/
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3201
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+
+---
+v2
+  - remove test case
+  - expand commit message and link to discussion on RFC patch
+  - add TODO should anyone want to test on read HW
+  - drop the debug comment
+---
+ hw/dma/bcm2835_dma.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
+index d07459de2d0..b842aef4b74 100644
+--- a/hw/dma/bcm2835_dma.c
++++ b/hw/dma/bcm2835_dma.c
+@@ -86,6 +86,23 @@ static void bcm2835_dma_update(BCM2835DMAState *s, unsigned c)
+         }
+         xlen_td = xlen;
+ 
++        if (ch->ti & BCM2708_DMA_D_WIDTH) {
++            qemu_log_mask(LOG_UNIMP, "%s: 128bit transfers not yet supported", __func__);
++            ch->cs |= BCM2708_DMA_ERR;
++            break;
++        }
++
++        /*
++         * Datasheet implies 32bit or 128bit transfers only
++         *
++         * TODO: test on real HW and report back.
++         */
++        if (xlen & 0x3) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: bad transfer size\n", __func__);
++            ch->cs |= BCM2708_DMA_ERR;
++            break;
++        }
++
+         while (ylen != 0) {
+             /* Normal transfer mode */
+             while (xlen != 0) {
+-- 
+2.47.3
 
 

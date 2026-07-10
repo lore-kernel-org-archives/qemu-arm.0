@@ -4,90 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99FEFC44501
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 13:15:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9DB5C44501
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 13:38:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiB52-0005ud-L7; Fri, 10 Jul 2026 09:15:50 -0400
+	id 1wiBQ9-0003tY-8R; Fri, 10 Jul 2026 09:37:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wiB4n-0005so-6t
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 09:15:36 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wiB4k-0008AL-4k
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 09:15:32 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-493bb510ce4so6649485e9.1
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 06:15:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wiBQ2-0003t6-Bs
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 09:37:30 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wiBQ0-0005Qb-P6
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 09:37:30 -0400
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 66AD6QDQ874086
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:37:27 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ gTsW+0DajqGNV0WMB20q1y1f6fLmLWtEIcN+wk9ygf8=; b=cwfqRNkFwPiuWsYx
+ ej6mL+R0Aheycuka0R9ZifMEbpRAKt5r8D0oVfCvCWKrOx3bPfBiB369pqI8Rgs3
+ DFbMzxRNeNaZ0R8v4rYrPm8qcDOiuJvR5NceFHKhqO3X4QjXx6OQ/MFYx2VlxSdb
+ hQsmE5EZXtzAXZcUV3G5sQbHPfLo3QdCBXw81GS5cmqULVoz/aZ8zfU73vbYphTF
+ KRlVmpHn6+Z+deraiQpQnz4wk4vDlDpMsJOrnWWHwc/92h63LZnRTB6FCI+zA2gO
+ 98qDOfoNuufnZ6FDOglF0M1pOxKRVhY7W7PlLJw6H4SA4JDImqg8s7t3niFs3X0F
+ ViupaQ==
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fax5f8uv7-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:37:27 +0000 (GMT)
+Received: by mail-qt1-f199.google.com with SMTP id
+ d75a77b69052e-51c110a3b6aso12760871cf.1
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 06:37:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783689327; x=1784294127; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=gLSBGq58bejmiCRbB0BERo1JTcl6+BWisQrAiENcIRY=;
- b=nQv6lECSqjU3CwFTcfXpGGI8u9q0QsC3ll0OobjFZdgtyB+rCDfnjnsNvDi4tJm+Jq
- f6C5TEAbEqxEosKMOqA/IKGC4BU/nbaoWa6hqNoNOAVnRhTGWgzbUADnu3bLceFNgIHV
- ABdMyTOzXQnuVaZlI0Mgjy17BkmzwDAJvDMBnbILP728eFq7YpEwTYvi8328uMERLotp
- 7StvIEpT1EU/lKiBC2FWWNOMw+BFOcAOF+uJsaN+G3+y0uN2fxkk3yAriuD9cWVnmhCG
- CJHxFhEDxzOtO4vci6wnnNRHImo7+JUBX/xicLcNt2wUukUbJbTpao3jyCfjyMhTAjnb
- r7zg==
+ d=oss.qualcomm.com; s=google; t=1783690647; x=1784295447; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=gTsW+0DajqGNV0WMB20q1y1f6fLmLWtEIcN+wk9ygf8=;
+ b=WlzK2jAft8YGwyXYK/Td5L1RAHK9sE41q2rJhZadPF9v7T6YDlfKOG48TJL+4xYyz9
+ A7UjZYYhL+i8SVh3ubrDdGi6rQrARfVl+DQUT4ERey7k7M3H6UFdkQ+/k3k3hw8glZP6
+ 9sZBpXLlaZmlSIUrtaTW83qrmezdGMOJF/GRbEw1xynii+pI9Y8o6dQjoJx9B6OadMoY
+ dg7q+/fmMAC8mkbZiSS+3a82ggZ7ct43FbetrZx1Wq0WkYE6HiE4Gguffl3KNQ2WleZJ
+ I+5um7VN3HIoffz8E3yi4VzCd9eYA7QXSscN4f+1zGEDEqrzKcLPuCrR3PkdLZ0m8Ekd
+ iK0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783689327; x=1784294127;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=gLSBGq58bejmiCRbB0BERo1JTcl6+BWisQrAiENcIRY=;
- b=YPLLO6lOKUGKaTvm1ZGGc6DQ9z3NZ6eLUAUt9gQguf4GlTVm49xqihCK9AJLM4QcRK
- BEPYfYA7+3iOaVDJ8rHsJlSDV5aVkgSl4q083EBb5dBro+CoaH8GfwOxlVroKsOh1jk0
- QlIMGll4PyRI0o//9hKsCag3WEFHyhKdNO4jf7E8UMdOv52Kg7DwDPugivagCVYQLq3F
- omhloS14D7iINYwlyQ5xk675Lm1Sgmmu6NFPbjADyrPBOSKs93ImKvM29+7D805ncrZW
- xwDhKgT1TED4m1TwOUdmkuzdT/9F83nc68oy6DldqdQBbIN+qn/dUjFEXHVg3XT/xh7L
- QTZg==
+ d=1e100.net; s=20251104; t=1783690647; x=1784295447;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=gTsW+0DajqGNV0WMB20q1y1f6fLmLWtEIcN+wk9ygf8=;
+ b=MLfwG8OAHrolBeI+ZMz3POcEPuk3iXrUt5LQgrR2uRpYaDPLgDnNXxzEYaXV2aZoeU
+ xjg1EmmcvpJ/L11oo7x1Ww8LyFYmdv76LPuu/4b6AXDklq3rSG4XTNSV6VwOtSzEQTwH
+ BNkpj8ytEj6Eto16DvmQRdRO/HHFnBr31Tic8zHCXeeW3Hc+o0ePozTKjxp/fWu1N+RZ
+ yZ5m5yW/oniUCFMj2AOv9R9dCFntq5/rqq/yif7d6NhYT+uml/mzNAMndT9Z88W/YMZX
+ K10ah++4+pMSVDUL/jgt0mnby+A77P3je/E7iZRZX34aQW7A92aWYdR6dmUeLpKxhvCG
+ sFIg==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rq3/cDGou+u+VsXjYWVoNNXmvEhQenxYzhmbpiJn5rg8qgnv65LaBB0YQZNRsIlR2ZkbTGGpdOZsw==@nongnu.org
-X-Gm-Message-State: AOJu0Yy+04/YSEM5zkTFVo2UPdkUgdzaTfaUJJwxHVIgjplPI/iiQ9hM
- 4sestttl4ff0NIGwlHLvoUhZLVAktkmThyOt1VIH9fJit75odSXqBJkhVrfCtC/l64U=
-X-Gm-Gg: AfdE7cl3YqDa+FwcGStyEaslPGlG+8MsCQFT8PRQN6J3nZm4HqjCGP7QF9P3uiHrZzs
- DbS03EVAMsM4h4yvlX88/mBg1E0bvuuG8QIgLyzFk+GnWQU4HvY1vgdL16vXfnxztXcIh4etvkw
- Ar2UyAk8ggHPsKRj0KOhdssARox91A80kqV7rRVunwNPbtaso2GBUduqHw0HQ5NB33nGUFABRSa
- zHQIK69TpPQnb5af/YMdDRgNiP2onIsIzY1+ON5y1SEKrq/5TKi2W6DKJqtSLpevkJp+BT/d5nH
- u/OTSzfhShHXEhSrCTwU/qLdt6dCz2qY6flma2T7/OCITirKn5UP/cYAWDQuWuls//vrooed28b
- UZ0WZ0l3BXs8pK9QOIecF4F8SUHv71bQOv6Sl976LZMaejhhwmNNwWy44w5v4Krj2LZ82ERL2Io
- bwZM27mKszSHFS
-X-Received: by 2002:a05:600c:528e:b0:492:4363:e7eb with SMTP id
- 5b1f17b1804b1-493e68f03damr119628095e9.32.1783689327229; 
- Fri, 10 Jul 2026 06:15:27 -0700 (PDT)
-Received: from draig.lan ([185.124.0.114]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493eb6ff432sm133999465e9.4.2026.07.10.06.15.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2026 06:15:26 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 9E5525F7C0;
- Fri, 10 Jul 2026 14:15:25 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- qemu-arm@nongnu.org (open list:Raspberry Pi)
-Subject: [PATCH v2] hw/dma: don't allow weird transfer lengths for bcm2835
-Date: Fri, 10 Jul 2026 14:15:00 +0100
-Message-ID: <20260710131500.2323848-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
+ AHgh+RpHZSAqFiQ51NIFO+AGaUphN9gZtSs8ClImWKKph4t+ifG3ih9VPEs8NdCuzxC5h1kzXzwg2JxBzQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yz1ER1XDmDRc6ul5madcNt0MODuoov3I9bOB2+rr0SHkkKiKyij
+ CcGPJ865xc4PwDRexC+IaSU4/c+jlYH3kVP/dYGxA5GDgzVHG2ZyI/ECEaJEUx6odCxmKjHCNuL
+ hOOLhE0e/e0OU9+8hME4aMFbO65KanyySKdK2wWxYFpTjzFTZ36xdbtk=
+X-Gm-Gg: AfdE7cklo3hVfJ4zQmV2haqkQ9GIu5FoLU34oCZIE+9ISB+DJMSeVISBesaS+Gsbf8L
+ jQa0XQcy/xWFMISJcabNy1893Q1ni0HLt2gqbEJSu/ugW8Zc0h/PXIWkBk1nJxwejIbMUR+hQoD
+ Padzo4LOpB/GoPPtDBGQbarQZ4+62Ll4c1SKJeeHulrTNiV0kDdnsP88CF7dV19rPwfFkpc0Qhm
+ B8Giwz78MQ8XdGHuQ5JzxK6zeyvsxXBqXAdYvcSQP+eowwMeNRShZJcpWp4M91u++4LWFBdwcVJ
+ 81RPdFSXoIQOA0ynrCvCicD0hQRzj1GsRtPVOAF3pPhvvYl9+EAsMxoon0L8vMOedpFOpBGWlUg
+ cJrUtpiDgsHZmc5mP34GDt0DI1daZ9BNHYhghLRynsxBcnaINjzKfQSLf8vAHSQ==
+X-Received: by 2002:a05:622a:1811:b0:51c:15f2:4bd3 with SMTP id
+ d75a77b69052e-51c8b3d432emr123998101cf.22.1783690646755; 
+ Fri, 10 Jul 2026 06:37:26 -0700 (PDT)
+X-Received: by 2002:a05:622a:1811:b0:51c:15f2:4bd3 with SMTP id
+ d75a77b69052e-51c8b3d432emr123997781cf.22.1783690646332; 
+ Fri, 10 Jul 2026 06:37:26 -0700 (PDT)
+Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-47aa039af67sm67998785f8f.17.2026.07.10.06.37.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 10 Jul 2026 06:37:25 -0700 (PDT)
+Message-ID: <4162f17d-c91a-4e59-82e4-d4c1f590396c@oss.qualcomm.com>
+Date: Fri, 10 Jul 2026 15:37:24 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 8/9] include/hw/arm/omap_dma.h: Move to include/hw/dma
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Jim MacArthur <jim.macarthur@linaro.org>
+References: <20260710105907.2570621-1-peter.maydell@linaro.org>
+ <20260710105907.2570621-9-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260710105907.2570621-9-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Authority-Analysis: v=2.4 cv=Ab2B2XXG c=1 sm=1 tr=0 ts=6a50f597 cx=c_pps
+ a=WeENfcodrlLV9YRTxbY/uA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
+ a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=Aj_Y6IE_OcN_L7gj-gkA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=kacYvNCVWA4VmyqE58fU:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: PKlJrywoUh3SBPpHZcKyMEVaZSlGBVmB
+X-Proofpoint-GUID: PKlJrywoUh3SBPpHZcKyMEVaZSlGBVmB
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzEwMDEzNSBTYWx0ZWRfXx3AQUHsyCuRd
+ 8SZuMvbAiVun87FCSgtYeNYMcGyXOG4jd+UK1hIF6sUHOwQ6fFNsteJWGaB2migZVCOqC57VaQC
+ mW1VgEumW6M17ZJxmwzfe/FlcsrNP10=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzEwMDEzNSBTYWx0ZWRfXy5vY0QhQ3V4r
+ vSirridj8J0n1v/gOthc5tLcE7xfw3yKTUlBabH5OwBGUzwyjEcb63gpVSq7oPIXmdIN9+PNf8o
+ x+iWyzzACsCvsksn9pexbcdB0jhD6ZoPPnh2OC5rm1b6F4uUh48JOEzDmpjnTJVogkFyBIZx5a3
+ BzzA2+o8ZTUlXafwy3F73md4zfNf1bFtQ4NQb2o3JUVBIZGg0kNPMKmNKtbmiZyXwRBGortKNvJ
+ aYjDWyHY14Y11RM9UntNPD///3Gs+/tUDDYJCe2ccymUwAJw6l4y7zvt5TJUjeZbzbykX5bmUKD
+ 3Cs9v/sOzt6eEDc5ktkShbJrFF4u5hSZUJBs+DSX8Xi19v1Dq08Y27Sga3s7I02q8+Abl4iB0Yx
+ Gu8HuLcq1A+08h1k7nUENMotIaJIznitIrENncKNlMZceVGjyszbZ0s9MMuFl22jnjDINpo16Gw
+ Bbd0t4RLi6vU+oDtCXA==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-10_03,2026-07-10_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 clxscore=1015 malwarescore=0 phishscore=0 bulkscore=0
+ suspectscore=0 impostorscore=0 lowpriorityscore=0 priorityscore=1501
+ spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2607100135
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -104,78 +156,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The datasheet doesn't explicitly say that TXFR_LEN has to be word
-aligned but the fact there is a DMA_D_WIDTH flag to select between 32
-bit and 128 bit strongly implies that is how it works. The downstream
-rpi kernel also goes to efforts to not write sub-4 byte lengths so
-lets:
+On 10/7/26 12:59, Peter Maydell wrote:
+> omap_dma.h is the header file for hw/dma/omap_dma.c; it fits better
+> to put it in include/hw/dma/ to match where we have the .c file.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/arm/omap1.c                    | 2 +-
+>   hw/dma/omap_dma.c                 | 2 +-
+>   hw/dma/soc_dma.c                  | 2 +-
+>   include/hw/{arm => dma}/soc_dma.h | 0
+>   4 files changed, 3 insertions(+), 3 deletions(-)
+>   rename include/hw/{arm => dma}/soc_dma.h (100%)
 
-  - fail when mis-programmed and report GUEST_ERROR
-  - catch setting D_WIDTH for 128 bit and report UNIMP
-  - add comments that the DEBUG register isn't a straight write
+Per the cover letter, "The omap_dma device is the only user of
+the soc_dma code", then maybe take the rename opportunity to
+name as omap_dma.h? Anyhow:
 
-Yodel did some digging into the specs (see discussion link):
-
-{A} AMBA AXI Protocol Version: 2.0 Specification
-    https://documentation-service.arm.com/static/64256e84314e245d086bc88f
-
-{B} BCM2835 ARM Peripherals
-    https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf
-
-[1] {A} (p. 10-2)
-[2] {B} (p. 51)
-[3] {A} (p. 14-5)
-[4] {A} (p. 4-3)
-[5] {A} (p. 9-4)
-[6] {B} (p. 53)
-
-However was unable to come up with an unambiguous conclusion without
-testing on the real hardware. So in the absence of certainty and for
-the sake of addressing the DoS I suggest we merge as is for now.
-
-Link: https://lore.kernel.org/all/20251111105429.3993300-1-alex.bennee@linaro.org/
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3201
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
----
-v2
-  - remove test case
-  - expand commit message and link to discussion on RFC patch
-  - add TODO should anyone want to test on read HW
-  - drop the debug comment
----
- hw/dma/bcm2835_dma.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
-
-diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
-index d07459de2d0..b842aef4b74 100644
---- a/hw/dma/bcm2835_dma.c
-+++ b/hw/dma/bcm2835_dma.c
-@@ -86,6 +86,23 @@ static void bcm2835_dma_update(BCM2835DMAState *s, unsigned c)
-         }
-         xlen_td = xlen;
- 
-+        if (ch->ti & BCM2708_DMA_D_WIDTH) {
-+            qemu_log_mask(LOG_UNIMP, "%s: 128bit transfers not yet supported", __func__);
-+            ch->cs |= BCM2708_DMA_ERR;
-+            break;
-+        }
-+
-+        /*
-+         * Datasheet implies 32bit or 128bit transfers only
-+         *
-+         * TODO: test on real HW and report back.
-+         */
-+        if (xlen & 0x3) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: bad transfer size\n", __func__);
-+            ch->cs |= BCM2708_DMA_ERR;
-+            break;
-+        }
-+
-         while (ylen != 0) {
-             /* Normal transfer mode */
-             while (xlen != 0) {
--- 
-2.47.3
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 
 

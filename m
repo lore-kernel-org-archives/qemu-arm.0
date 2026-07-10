@@ -4,83 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9BE0C44501
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 10:59:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08493C43458
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 11:00:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wi8x0-0006Vl-02; Fri, 10 Jul 2026 06:59:22 -0400
+	id 1wi8x3-0006bf-Gn; Fri, 10 Jul 2026 06:59:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wi8wu-0006Ss-LK
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 06:59:18 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ id 1wi8x0-0006XD-8G
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 06:59:22 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wi8ws-0001OI-P3
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 06:59:16 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-493f738638fso526335e9.1
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 03:59:14 -0700 (PDT)
+ id 1wi8wx-0001Pu-Fv
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 06:59:21 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-493c7902f47so6857525e9.1
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 03:59:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783681153; x=1784285953; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783681158; x=1784285958; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=/ucYtSuy5GlYosuT4raxReezYE6ZXB4/gAcNEyJFOq4=;
- b=FX9UWjwjtf32+IdYg/UGroqy4kfKmE1zsqgVXF8x7bXH8FJH7pYdPPh+gaKFTy1UJh
- r3ag3X4xWUOfjg/cjsbxys7jq/xrR0FmI4HORdPfSsDdBgkqLrLABm+MPno6hzBccs3t
- WmeZp6B8bhaNWJHkWk2vIVn1ybfjAQjZPPkoQUUUYKNBH00wrmIZVawYDFSq1kL0dZXD
- mWn5CLChINbkcfAGX0rAS2icZwkbncizG8JzD7SQGWNs4a9bxlyjqAhiYBiM8puA9W6j
- 2ANCoGScncUfK80yv1rKvo3PzIlz11SBcwyUtGGJkANAmE9zapXq6zvTpuPEbDAFA4D/
- gBPQ==
+ bh=PzHxCXsIOILaIZXbiZCOtU/tN9ewAfAvcdvjSx7fAwY=;
+ b=Oz9p/VZ7GEk7IZcAViytVng484dusrcF27axUwgHcA2YjbOdumOGMUe2dEBe1U3FdT
+ rNhhMvrqPcE+0rqySJMqhPcUqVwmWUDv30s8FY8jLVAPPq0/2D9w7E3JqpCGLpZ7nOv9
+ adveexRBGA2SciDjbYa+4z3u3giZ/22/fhNXlApMAV1tFqDIrBq4f1lAbIWGrnoIuJzn
+ 5fM0l8zImqpq9uAcBYVZ9prEAM/1iJOAPHbpoAYG0oz8E2EhamZGEhVkETRCsUJk4+cE
+ Gg09f44+21wl7/1cA61Mi24FGbaRcLDZJtTjRZNJJX1CHM3G7DudJpAm1/P4zF2lC75U
+ 3KYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783681153; x=1784285953;
+ d=1e100.net; s=20251104; t=1783681158; x=1784285958;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=/ucYtSuy5GlYosuT4raxReezYE6ZXB4/gAcNEyJFOq4=;
- b=jD37b8mNckfxz98dskhA3TPYEdX9jODCEKhwVF6O2yyurTgfE9GGrDuHeft+wV2kfx
- H32unPKSBL5Wz6GAr552d56ueUu6Mz7GEtWOVAvbpO+NlPSIY/lmmXSIn+GtPDe6efBS
- Vkffm6bqLDi0uMjatIWsC9B6Oh+vepveQb+iqBTzj2Bjck5yptASRQVisVvBTLZYFEuq
- 2JadMrR4JBnCJvWTidYAiJO7imDlOVIHj680plIBA/gpdICLpmAbq/hbkqB6dKnVgDbV
- chrTjan2wd7mwN29YH0aN1LwXOHuibEkX4a1Ezjb5XTNbhBzSrM2aZDln5ICbSWqIj+V
- D9Mw==
-X-Gm-Message-State: AOJu0YyPBlGoNf44GGyo23YK7O2+XWgRGmA677dumlxVO9nrThIHZZ7p
- /GpGz+PCPbiS2tWQpeC4Blw+vQ8n7x3PiLrvD/16CbntIhZjPBOmvI13bH++Hrtr878X/YZUDbP
- K4BRtN5CT3g==
-X-Gm-Gg: AfdE7clZQ3Leu+GpG4Gz/oKy3qxS0PWO43b+ImS3fUBNArC0S5ilLul6Dbe4wUWcAEz
- VMpboI8I+wjyECBeL+mj32zJYhpLBuE8nA/P2b8Ic4CziG6fXad52qtGpIv06he3PGlEJhGyHbd
- zAK7mrMN1HPCFBL2ulkHkebxmm03LzpS2dhUNE9q7pvq4M1nSEF20qmuDUMC4pasoVlqTtX+yzr
- d2BZaQ/wi/0CiUdB7ckxiSyjVWjxXUZI3rMEQIwwUafZTEuPoIT5q/RK7mNFlzBGmfVILqkRABH
- Tgpqwsy3p8nqw4BWyHMHUpu2xGUu0+iKDLW+llD9CJT+wiOSmDv/19aiG5qSPXhfvOAvlZQ7K0Z
- ZKL7r0CoZVUtcbrtHtqbTara7kz7P1cLGH3zrg2IlQcesGwfWNuUpvjBU/ZThkOxQgRUpRwuBHV
- V9mmH8K+9FDAFhpV6kE+CHNotUVe7WwowDJPHEats3/adIvuQW0/c6N8nASFMGE5rvBqcWIEyY8
- FbPi8i8fZQmCHwROykYxw==
-X-Received: by 2002:a05:600c:8215:b0:493:f278:ba2f with SMTP id
- 5b1f17b1804b1-493f278c63fmr34038605e9.9.1783681153335; 
- Fri, 10 Jul 2026 03:59:13 -0700 (PDT)
+ bh=PzHxCXsIOILaIZXbiZCOtU/tN9ewAfAvcdvjSx7fAwY=;
+ b=lah3JLTHPuFhQvwZEt09w6DDGFRrwfTk3PTFOEjf9Fio/DsiVaSRjngj+8IAtP4dsT
+ VnbTKzJcqYqC52LYy1A+5gUmS66UYm8tQTEYvqTSyBUTPGdShPfGP8sWJZ1x7BryniAE
+ JUk7M+vv8LeZBUYeDIN6vxKJQsoDLTcDGTsJtFnTutgQSA6lSF1XSxJkTDpnOtkHv8Vj
+ 7ZlNos7l4vcQZTMuCuVQXPJ++0LsJkLmOGdikjMVxZD9fFBh4xntotKsjvQwk+tAsVmI
+ Fn5vjdTccMRsbLnAjtH4NQ+wcdfH9EXKgnLuK49ynUnUVR3lxoRCoYyX5MrO26LdKsWM
+ wvQA==
+X-Gm-Message-State: AOJu0YxZcMhXPdW/GD7LrTCoGKsHJ/L+vwxsaYidAJtmNBE6DmwzuN8e
+ RnXTuJNLoTk9Q2wQMrtdwQTQECARbsCOvGn9im7gfnDVFYpFXmU7/GKtFFSKXL+ez+Ji0qxKfHy
+ gmhj+oY4C9A==
+X-Gm-Gg: AfdE7clGnZujDlr3hVXKfqtcGyjVrRWh9bdMJldHa+oWpvDq61qBdom4F8saktvJzgn
+ 2ldiqceWIz0hQsZ2eNmLWGekWFBuM7KHBTiwYvl/zhhjPGWE39YtrscbBEjItwa8B15SgrAaGjb
+ NTWeLxx5RnwOXWy00ik9ei6wOq+pmj3MCDLG4N1n3QIP3NnRMXWT9fr/Q1tOscWPBQEmRkhqSxW
+ 8RxkEZDKmMB0/jUl8169y1RBkvTTg+VpTjDqlsR3ZJIlNwDk3PMALMIIsAnlPJPma9G5pAAkjxf
+ pj4bXnC5OHQ0PbxW5A+5tmPZrLetLzVo3oNb31qkeOEUWDc/NCyWK0XLjoM982AE+LPduH2DaIU
+ w3poYrtT7LsbsNuhccvVpGeWDW0IW6scYw+qo1r23dn3DM6c175fHV388+xQDmXB9B3mo1tGm3p
+ gr9trNPmUeebMRcE3EHBwMkGrN7lPbWbIJAASPz7vNA4Aa9peZgX8e0Y+khUgSAYvNg7hNmkeYS
+ aNF+QdUIk+rYSNqY4oSWQ==
+X-Received: by 2002:a05:600c:3b26:b0:493:e3e9:85fb with SMTP id
+ 5b1f17b1804b1-493e685f1f6mr113555855e9.20.1783681157419; 
+ Fri, 10 Jul 2026 03:59:17 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493f2d88698sm51946175e9.1.2026.07.10.03.59.12
+ 5b1f17b1804b1-493f2d88698sm51946175e9.1.2026.07.10.03.59.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2026 03:59:12 -0700 (PDT)
+ Fri, 10 Jul 2026 03:59:16 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jim MacArthur <jim.macarthur@linaro.org>
-Subject: [PATCH 4/9] hw/dma/omap_dma: Be more careful about overflow in
- transfer setup
-Date: Fri, 10 Jul 2026 11:59:02 +0100
-Message-ID: <20260710105907.2570621-5-peter.maydell@linaro.org>
+Subject: [PATCH 8/9] include/hw/arm/omap_dma.h: Move to include/hw/dma
+Date: Fri, 10 Jul 2026 11:59:06 +0100
+Message-ID: <20260710105907.2570621-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260710105907.2570621-1-peter.maydell@linaro.org>
 References: <20260710105907.2570621-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,111 +102,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In omap_dma_transfer_setup(), the maximum number of elements we can
-transfer is 0xffff * 0xffff == 0xfffe0001 (because the max frame
-count and max elements per frame are both 65535).  However, we store
-total element counts in 'int' variables, and use INT_MAX as a "bigger
-than any valid value" sentinel, and when performing arithmetic with
-the total count of transferred elements we are not careful about
-avoiding overflows. Fix these:
-
- - use uint32_t rather than int for the local variables tracking
-   various element and frame counts
- - use UINT_MAX as our sentinel
- - calculate new packet, element and frame counter values using
-   arithmetic on a local uint32_t, rather than doing it in-place
-   on local variables that are only 'int' because the actual
-   counter registers are 16 bits
- - use 64-bit arithmetic when calculating how much to advance the
-   source and dest pointers and the total dma->bytes transferred
-
-Note that since soc_dma_ch_s::bytes is only 'int' this can still
-overflow; we'll fix that in a subsequent patch.
+omap_dma.h is the header file for hw/dma/omap_dma.c; it fits better
+to put it in include/hw/dma/ to match where we have the .c file.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/dma/omap_dma.c | 30 ++++++++++++++++++++----------
- 1 file changed, 20 insertions(+), 10 deletions(-)
+ hw/arm/omap1.c                    | 2 +-
+ hw/dma/omap_dma.c                 | 2 +-
+ hw/dma/soc_dma.c                  | 2 +-
+ include/hw/{arm => dma}/soc_dma.h | 0
+ 4 files changed, 3 insertions(+), 3 deletions(-)
+ rename include/hw/{arm => dma}/soc_dma.h (100%)
 
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index 9e739a0712..0f78cbd410 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
+@@ -32,7 +32,7 @@
+ #include "hw/sd/sd.h"
+ #include "system/blockdev.h"
+ #include "system/system.h"
+-#include "hw/arm/soc_dma.h"
++#include "hw/dma/soc_dma.h"
+ #include "system/qtest.h"
+ #include "system/reset.h"
+ #include "system/runstate.h"
 diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
-index 77f1441498..14b310bf40 100644
+index 1a3ae74726..16575e73b7 100644
 --- a/hw/dma/omap_dma.c
 +++ b/hw/dma/omap_dma.c
-@@ -391,7 +391,7 @@ static void omap_dma_transfer_setup(struct soc_dma_ch_s *dma)
-     struct omap_dma_reg_set_s *a;
-     struct omap_dma_channel_s *ch = dma->opaque;
-     struct omap_dma_s *s = dma->dma->opaque;
--    int frames, min_elems, elements[__omap_dma_intr_last];
-+    uint32_t frames, min_elems, elements[__omap_dma_intr_last];
+@@ -22,7 +22,7 @@
+ #include "qemu/timer.h"
+ #include "hw/arm/omap.h"
+ #include "hw/core/irq.h"
+-#include "hw/arm/soc_dma.h"
++#include "hw/dma/soc_dma.h"
+ #include "system/physmem.h"
  
-     a = &ch->active_set;
+ struct omap_dma_channel_s {
+diff --git a/hw/dma/soc_dma.c b/hw/dma/soc_dma.c
+index ff890149ee..4feb22e6ea 100644
+--- a/hw/dma/soc_dma.c
++++ b/hw/dma/soc_dma.c
+@@ -22,7 +22,7 @@
+ #include "qemu/timer.h"
+ #include "qemu/log.h"
+ #include "system/physmem.h"
+-#include "hw/arm/soc_dma.h"
++#include "hw/dma/soc_dma.h"
  
-@@ -403,7 +403,14 @@ static void omap_dma_transfer_setup(struct soc_dma_ch_s *dma)
-                         __func__, dma->num);
-     }
- 
--    min_elems = INT_MAX;
-+    /*
-+     * The maximum frame count and maximum element count are both 0xffff,
-+     * so our worst case possible number of elements to transfer is
-+     * 0xffff * 0xffff == 0xfffe0001. We can therefore keep element
-+     * counts in a uint32_t and use UINT_MAX as a sentinel value for
-+     * "not set" / "condition does not occur".
-+     */
-+    min_elems = UINT_MAX;
- 
-     /* Check all the conditions that terminate the transfer starting
-      * with those that can occur the soonest.  */
-@@ -413,7 +420,7 @@ static void omap_dma_transfer_setup(struct soc_dma_ch_s *dma)
-         if (elements[id] < min_elems)   \
-             min_elems = elements[id];   \
-     } else              \
--        elements[id] = INT_MAX;
-+        elements[id] = UINT_MAX;
- 
-     /* Elements */
-     INTR_CHECK(
-@@ -465,7 +472,7 @@ static void omap_dma_transfer_setup(struct soc_dma_ch_s *dma)
-                     (a->frames - a->frame - 1) * a->elements +
-                     (a->elements - a->element))
- 
--    dma->bytes = min_elems * ch->data_type;
-+    dma->bytes = (uint64_t)min_elems * ch->data_type;
- 
-     /* Set appropriate interrupts and/or deactivate channels */
- 
-@@ -528,8 +535,9 @@ static void omap_dma_transfer_setup(struct soc_dma_ch_s *dma)
- 
-     /* Update packet number */
-     if (ch->fs && ch->bs) {
--        a->pck_element += min_elems;
--        a->pck_element %= a->pck_elements;
-+        /* Can't overflow: worst case min_elems 0xFFFE0001 + element 0xFFFF */
-+        uint32_t new_pck_element = a->pck_element + min_elems;
-+        a->pck_element = new_pck_element % a->pck_elements;
-     }
- 
-     /*
-@@ -537,13 +545,15 @@ static void omap_dma_transfer_setup(struct soc_dma_ch_s *dma)
-      * can skip part of this.
-      */
-     if (dma->update) {
-+        /* Can't overflow: worst case min_elems 0xFFFE0001 + element 0xFFFF */
-+        uint32_t new_element = a->element + min_elems;
-         a->element += min_elems;
- 
--        frames = a->element / a->elements;
--        a->element = a->element % a->elements;
-+        frames = new_element / a->elements;
-+        a->element = new_element % a->elements;
-         a->frame += frames;
--        a->src += min_elems * a->elem_delta[0] + frames * a->frame_delta[0];
--        a->dest += min_elems * a->elem_delta[1] + frames * a->frame_delta[1];
-+        a->src += (uint64_t)min_elems * a->elem_delta[0] + frames * a->frame_delta[0];
-+        a->dest += (uint64_t)min_elems * a->elem_delta[1] + frames * a->frame_delta[1];
- 
-         /* If the channel is async, update cpc */
-         if (!ch->sync && frames) {
+ static void transfer_mem2mem(struct soc_dma_ch_s *ch)
+ {
+diff --git a/include/hw/arm/soc_dma.h b/include/hw/dma/soc_dma.h
+similarity index 100%
+rename from include/hw/arm/soc_dma.h
+rename to include/hw/dma/soc_dma.h
 -- 
 2.43.0
 

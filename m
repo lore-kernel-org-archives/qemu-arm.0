@@ -4,69 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F9B9C43458
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 10:50:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48321C44506
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 10:59:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wi8nl-0004se-RH; Fri, 10 Jul 2026 06:49:50 -0400
+	id 1wi8ww-0006Sx-Dj; Fri, 10 Jul 2026 06:59:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wi8nj-0004rM-Pm; Fri, 10 Jul 2026 06:49:48 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wi8ng-00007R-Bw; Fri, 10 Jul 2026 06:49:47 -0400
-Received: from [133.11.54.183] (h183.csg.ci.i.u-tokyo.ac.jp [133.11.54.183])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 66AAmrCG016368
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Fri, 10 Jul 2026 19:48:54 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=NhzxIKMUh+ygvJz4y8qpQ0iUTP1E+GWE8TMxC+ExSnY=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Message-ID:To:Subject:Date;
- s=rs20250326; t=1783680534; v=1;
- b=XIs+b6WoGUzEJp1lR82Rw9DSUiJoZlUYCnZVYNQTWy8ABVdZcbLpuAOFjtvaFFe/
- MZh2ogQ5Tr82PgrsUFfJ+/fVubZED2/oCjrjdCA7OHGpKTM1w/H9G7MHty2G0HLR
- ItjgTAoQi1dHcIHJZttZorTVgEL2JpPrP06kmNk9G1n7+HoCo5JhSOgpFJYkLm4k
- QXGkS8jsfOiVCKlKRKlYCcNcr5AHrrcTsL89lT3ZFlq2XvWlV/KSNqKj9UJyXdI+
- B3IP8m3777w66G8kgkBuqsM6C9b+9Fxy7qRwM9TIZMiB9yT/bKQSHUmphWkPclhY
- gJ1otF5fDZa6fQYzGHgx6Q==
-Message-ID: <f1024475-b1e1-4c79-8ffa-74a59075b10c@rsg.ci.i.u-tokyo.ac.jp>
-Date: Fri, 10 Jul 2026 19:48:53 +0900
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wi8wr-0006Rb-Ai
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 06:59:13 -0400
+Received: from mail-wm2-x02.google.com ([2a00:1450:4864:31::2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wi8wo-0001NB-P8
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 06:59:13 -0400
+Received: by mail-wm2-x02.google.com with SMTP id
+ 5b1f17b1804b1-493b9643ab5so1696945e9.1
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 03:59:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1783681149; x=1784285949; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=WgXgLjcNB2sizCIRY4K8oa4Ca9Ff/wTtH9CTjHRjCJM=;
+ b=Oj79xJLlznaOtVyBg/ShyzvO8yxEcDxzXPmZQDry3sQElwi05QdvkxreRWWGXUxzDA
+ CoyYPnuAmnYkZRbMpcdsM+ClCWKdhbsXYcp34r9eGuAQ8EIPBzEMPsFC5PO82LrcsMYY
+ n2jwwBufyqg+PYK7NxxMj7Z6nYcAgGfgJh+/xflhiIXpnFmT3PNjDps4EJJb8Ir7pts4
+ sSTpYjn7O+XBXJ/MQgQrpNaTxUmvfx+UcZ1UzMQxR0MLXPdAMzmWsGW8L/n9/f+zd1nE
+ e4QCq4ppZiBg06AXv5f3/cwq54ACNXs5F1jLArgFaIkqM4voHsE3EBV3eYwrlU8bJig6
+ 3A+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1783681149; x=1784285949;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=WgXgLjcNB2sizCIRY4K8oa4Ca9Ff/wTtH9CTjHRjCJM=;
+ b=Ig5SOBLOV/pJQLqrvuncq0dlkhI1qEtoP7Shg6HwEeGFhZieNZqdEkgCNfmrIQkqlj
+ VTtb9uoRKidgf6+S5UfeCCQfV8qxOToX2Ry85A52QFSpLbTYrW8GkYHQFXEdGDFn4Til
+ zudR8jmQcm03676pWhoyU2zDGtC1PCOoTWBTnV/zdPfFYYsGnxyAzHwBU7aYHukrIu9Y
+ WUlUno/tdyoB4+tnfKu5txKu7PrJ4rvyBAqsf6PDDrgvDu4ISpr5HyDlD0FKEVn/wOd8
+ YUjLmYvqZ4uM/IpguvzSVZkfGu2ht9zfhtvONdMt5fg7brjZ5TUs2X9r2VQmNwZEV3N0
+ qo8w==
+X-Gm-Message-State: AOJu0YwyzrPgUbmZ3L6vLjpQuSYpZds4cKBJjZ/TGStullDSU7Cj+jFk
+ cbppRgd1aNer+nPuemVD4VajEEbX/+4p4HAQ+o+ns1mash99ZnoMQBbcnQQ8/MPfcTQ8PrL9MRd
+ CRkUjALcDESOv
+X-Gm-Gg: AfdE7clliF91+dvS99iPbHhr/fQr46VvxXlRR9ZdaVR5hi3faBNKshxpEjZGYRuTK4E
+ 7ESbQpTBNmK8DDB9gRJ3il3IjZAMqA0IvuNalXvR7+1S6eYEww4cdLajSOrydXAIuLTTUo/zVfZ
+ OW/pUl3SbtTwvKaE82n17REwwmaP/Q0rZ/GNXTDiJvr5ATAsJXVeCHaiR/quL9pG5Px2C97cL6a
+ CU3kzrzMDpP1+3qRx1gcn1B5lx1Oj6JEh2confsDzyNW0g8KvdeVMcaUgSZ6o528aCYDAD/b5xC
+ cS+HrfWfLBTkNZHXYLVud4FP3A/PcGKMiFb80a/0ygO5/YgVoCo/h+evyK9L/RHxOVMrmQ1KJT8
+ Ta0x8IwgQuShgsXpZFfnQlrY39Qj1mnIB+29Ee0KPvOQR5jrMYetR6xveqssgH2AgVmJUKoOJ8B
+ 6hZ9RNhC59HtmFy3GGmo4kBHoCCpLBZuxBYGh5rV1PlvHEZcQZQwums/uCDnQwQ5aW8stf1/7FF
+ eMLa9cgofU4wHLYGLhm7Q==
+X-Received: by 2002:a05:600c:310f:b0:493:d1e0:a4f1 with SMTP id
+ 5b1f17b1804b1-493e6c05de0mr98206315e9.0.1783681149018; 
+ Fri, 10 Jul 2026 03:59:09 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-493f2d88698sm51946175e9.1.2026.07.10.03.59.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 10 Jul 2026 03:59:08 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Jim MacArthur <jim.macarthur@linaro.org>
+Subject: [PATCH 0/9] omap_dma: avoid non-bounds-checked memcopy
+Date: Fri, 10 Jul 2026 11:58:58 +0100
+Message-ID: <20260710105907.2570621-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 01/23] accel/hvf: Create hvf_protect_clean_range,
- hvf_unprotect_dirty_range
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
-Cc: Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
- Phil Dennis-Jordan <phil@philjordan.eu>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Richard Henderson
- <richard.henderson@linaro.org>, Peter Collingbourne <pcc@google.com>,
- Cameron Esfahani <dirty@apple.com>, Mads Ynddal <mads@ynddal.dk>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-References: <20251103101034.59039-1-philmd@linaro.org>
- <20251103101034.59039-2-philmd@linaro.org>
- <7ba7afe0-1e89-480e-92f1-6a1682b56baf@oss.qualcomm.com>
- <8d0539a6-65aa-47d1-8885-daa3fa20fbe6@rsg.ci.i.u-tokyo.ac.jp>
- <ef853a76-c96f-44e1-ba6e-474d87a75518@oss.qualcomm.com>
-Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <ef853a76-c96f-44e1-ba6e-474d87a75518@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:31::2;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm2-x02.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,166 +99,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2026/07/09 23:36, Philippe Mathieu-Daudé wrote:
-> On 9/7/26 07:07, Akihiko Odaki wrote:
->> On 2026/07/09 7:13, Philippe Mathieu-Daudé wrote:
->>> On 3/11/25 11:10, Philippe Mathieu-Daudé wrote:
->>>> From: Richard Henderson <richard.henderson@linaro.org>
->>>>
->>>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->>>> Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>> ---
->>>>   include/system/hvf_int.h |  3 +++
->>>>   accel/hvf/hvf-all.c      | 25 +++++++++++++++++++++++++
->>>>   accel/hvf/trace-events   |  1 +
->>>>   3 files changed, 29 insertions(+)
->>>>
->>>> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
->>>> index 3d2be4092ef..5a57691885f 100644
->>>> --- a/include/system/hvf_int.h
->>>> +++ b/include/system/hvf_int.h
->>>> @@ -89,6 +89,9 @@ int hvf_arch_get_registers(CPUState *);
->>>>   /* Must be called by the owning thread */
->>>>   void hvf_arch_update_guest_debug(CPUState *cpu);
->>>> +void hvf_protect_clean_range(hwaddr addr, size_t size);
->>>> +void hvf_unprotect_dirty_range(hwaddr addr, size_t size);
->>>> +
->>>>   struct hvf_sw_breakpoint {
->>>>       vaddr pc;
->>>>       vaddr saved_insn;
->>>> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
->>>> index 0a4b498e836..e13abddbd9c 100644
->>>> --- a/accel/hvf/hvf-all.c
->>>> +++ b/accel/hvf/hvf-all.c
->>>> @@ -58,6 +58,31 @@ void assert_hvf_ok_impl(hv_return_t ret, const 
->>>> char *file, unsigned int line,
->>>>       abort();
->>>>   }
->>>> +static void do_hv_vm_protect(hwaddr start, size_t size,
->>>> +                             hv_memory_flags_t flags)
->>>> +{
->>>> +    hv_return_t ret;
->>>> +
->>>> +    trace_hvf_vm_protect(start, size, flags,
->>>> +                         flags & HV_MEMORY_READ  ? 'R' : '-',
->>>> +                         flags & HV_MEMORY_WRITE ? 'W' : '-',
->>>> +                         flags & HV_MEMORY_EXEC  ? 'X' : '-');
->>>> +
->>>> +    ret = hv_vm_protect(start, size, flags);
->>>> +    assert_hvf_ok(ret);
->>>
->>> Maybe this assertion is a bit aggressive toward users, since while
->>> we know the host limits, we don't know what the guest wants to do.
->>>
->>> I got:
->>>
->>> qemu-system-aarch64: Error: ret = HV_ERROR (0xfae94001, at ../../ 
->>> accel/ hvf/hvf-all.c:77)
->>>
->>> Running with '-trace hvf_vm_map':
->>>
->>> hvf_vm_map paddr:0x0000000010000000 size:0x00020000 vaddr:0x104514000 
->>> flags:0x07/RWX
->>> hvf_vm_map paddr:0x0000000000000000 size:0x00020000 vaddr:0x104890000 
->>> flags:0x07/RWX
->>> hvf_vm_map paddr:0x0000000400000000 size:0x80000000 vaddr:0x380000000 
->>> flags:0x07/RWX
->>> hvf_vm_map paddr:0x0000000030bc0000 size:0x00040000 vaddr:0x1048b4000 
->>> flags:0x07/RWX
->>> hvf_vm_map paddr:0x0000000050bc0000 size:0x00040000 vaddr:0x1048f8000 
->>> flags:0x07/RWX
->>> hvf_vm_protect paddr:0x0000000430000000 size:0x00004000 flags:0x05/R-X
->>> hvf_vm_protect paddr:0x0000000030000000 size:0x00004000 flags:0x05/R-X
->>> qemu-system-aarch64: Error: ret = HV_ERROR (0xfae94001, at ../../ 
->>> accel/ hvf/hvf-all.c:77)
->>>
->>> Should we propagate the error to upper layer?
->>>
->>> Are there cases we can safely ignore?
->> I don't think this should be propagated to the guest. In this case the 
->> failing hv_vm_protect() is for a GPA that was not mapped into HVF in 
->> the first place.
->>
->> The memory listener currently calls hvf_log_start() for every dirty- 
->> log section, but hvf_set_phys_mem() intentionally skips some sections, 
->> for example writable non-RAM regions where we want every access to 
->> trap. KVM handles the equivalent case by looking up the matching slot 
->> and returning if there is none.
->>
->> So I think we should only ignore/skip protect for ranges that we know 
->> do not have an HVF mapping. We should not ignore arbitrary 
->> hv_vm_protect() failures for mapped RAM, because then dirty logging 
->> can miss writes or keep faulting forever.
->>
->> A fix probably needs factoring the same mappable section test used by 
->> hvf_set_phys_mem() and using it in log_start, log_stop and log_clear.
-> 
-> Indeed, I am having a log_clear -> DIRTY_MEMORY_CODE call on a ROMD
-> device. In commit d1f4ba9d94c ("accel/hvf: Simplify hvf_set_phys_mem")
-> we removed this check:
-> 
->       bool writable = !area->readonly && !area->rom_device;
->       ...
-> -    if (area->readonly ||
-> -        (!memory_region_is_ram(area) && memory_region_is_romd(area))) {
-> -        flags = HV_MEMORY_READ | HV_MEMORY_EXEC;
-> -    } else {
-> -        flags = HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC;
-> -    }
-> +    flags = HV_MEMORY_READ | HV_MEMORY_EXEC | (writable ? 
-> HV_MEMORY_WRITE : 0);
+The omap_dma device is the only user of the soc_dma code.  This code
+has a fastpath for when DMA transfers are from RAM to RAM.  The
+current implementation of this has the caller of
+soc_dma_port_add_mem() pass the underlying host address of the RAM
+block that the DMA port is connected to (obtained via
+memory_region_get_ram_ptr()).  Then the actual transfer function does
+a simple memcpy().  This has several problems.
+    
+Most importantly, no bounds checking is done on the address and size
+passed by the guest, so the memcpy source and destination might be
+outside the backing host RAM entirely.  Secondly, because the DMA
+access is done via this back door, there is no updating of the dirty
+region when memory is written this way.
 
-DIRTY_MEMORY_CODE is TCG-only, so it does not enable logging under HVF. 
-physical_memory_test_and_clear_dirty() may still be called for that 
-bitmap, but memory_region_clear_dirty_bitmap() calls log_clear() 
-whenever any client is logging the region.
+The better way to handle memory-to-memory DMA is to use
+physical_memory_map(), because this will tell you if the address/size
+you asked for would run off the edge of the RAM block, and it handles
+updating dirty bits on write.
 
-The other clients are DIRTY_MEMORY_VGA and DIRTY_MEMORY_MIGRATION. 
-DIRTY_MEMORY_VGA is enabled per region by memory_region_set_log(), which 
-is not used for ROMD regions. Under HVF, DIRTY_MEMORY_MIGRATION can be 
-enabled by RAM migration or calc-dirty-rate in dirty-bitmap mode. If 
-neither was active, the region was probably not in ROMD mode.
+There are also various places where the omap_dma code is a bit
+cavalier about possible integer overflows if the guest sets a
+very high element and frame count for a transfer.
 
-The change in commit d1f4ba9d94c ("accel/hvf: Simplify 
-hvf_set_phys_mem") only simplified permissions for mapped sections; it 
-did not remove hvf_set_phys_mem()'s mapping checks.
+This series fixes both these problems, thus resolving
+https://gitlab.com/qemu-project/qemu/-/work_items/3204
+In the process it also simplifies the soc_dma code by removing
+the unused "FIFO port" handling, so we don't have to check or
+update that code.
 
-> 
-> Maybe we should use back one of this helpers instead of accessing
-> MemoryRegion internal fields?
-> 
-> 1473 static inline bool memory_region_is_romd(const MemoryRegion *mr)
-> 1474 {
-> 1475     return mr->rom_device && mr->romd_mode;
-> 1476 }
-> 
-> 1716 static inline bool memory_region_is_rom(const MemoryRegion *mr)
-> 1717 {
-> 1718     return mr->ram && mr->readonly;
-> 1719 }
-> 
-> 2697 static inline bool memory_access_is_direct(const MemoryRegion *mr,
-> 2698                                            bool is_write, 
-> MemTxAttrs attrs)
-> 2699 {
-> 2700     if (!memory_region_supports_direct_access(mr)) {
-> 2701         return false;
-> 2702     }
-> 2703     /* Debug access can write to ROM. */
-> 2704     if (is_write && !attrs.debug) {
-> 2705         return !mr->readonly && !mr->rom_device;
-> 2706     }
-> 2707     return true;
-> 2708 }
-> 
+thanks
+-- PMM
 
-For the dirty-log callbacks, none of these helpers alone captures the 
-complete mapping condition, including alignment. I think we should 
-factor the mappability check out of hvf_set_phys_mem() and reuse it in 
-hvf_log_start(), hvf_log_stop(), and hvf_log_clear().
+Peter Maydell (9):
+  hw/dma/soc_dma: Remove soc_dma_port_fifo support
+  hw/dma/soc_dma: Simplify soc_dma_ch_update()
+  hw/dma/soc_dma: Remove union from memmap_entry_s struct
+  hw/dma/omap_dma: Be more careful about overflow in transfer setup
+  hw/dma/soc_dma: dma bytes is uint64_t
+  hw/dma/soc_dma: Use physical_memory_map() for mem2mem transfers
+  hw/dma/soc_dma: Remove unused mem.base, paddr fields
+  include/hw/arm/omap_dma.h: Move to include/hw/dma
+  MAINTAINERS: Add soc_dma to OMAP section
 
-Regards,
-Akihiko Odaki
+ MAINTAINERS                       |   2 +
+ hw/arm/omap1.c                    |   8 +-
+ hw/dma/omap_dma.c                 |  37 +++---
+ hw/dma/soc_dma.c                  | 196 ++++++++++--------------------
+ include/hw/{arm => dma}/soc_dma.h |  33 ++---
+ 5 files changed, 97 insertions(+), 179 deletions(-)
+ rename include/hw/{arm => dma}/soc_dma.h (70%)
+
+-- 
+2.43.0
+
 

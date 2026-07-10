@@ -4,87 +4,141 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D236C43458
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:04:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77AB0C44501
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:48:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiIHE-0004vu-5a; Fri, 10 Jul 2026 16:56:52 -0400
+	id 1wiJ2x-00024b-Au; Fri, 10 Jul 2026 17:46:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIFO-00021V-0K
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:59 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIF7-0000z7-E9
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:57 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-8486ac3f347so1789385b3a.1
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:54:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wiJ2w-0001wv-13
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 17:46:10 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wiJ2t-00044K-7Y
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 17:46:09 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 66AK3OxB1894407
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 21:46:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ LU4qIQo/+FzXiuZJATdP9f/stxNyxbOIRRZc/MFDJZI=; b=okcKR4ceyee41Zg0
+ RYWbvHawjrSo14+MWBXtAfYCLX2O/vW16w6nwzeXVBPpkKH1Bv8M82bCbuTZ3B6r
+ 5imomVDhIIcPtvWSe2s7FumjrOt6SRjLRsEoe2dA/yd34TGaRGgnJmNT+E4COcSL
+ PCC0Rz5Nz8eIy4rtwK+DfOPKznS8i19w1G2Ojh3bK14zyihmbNAIuUlU7l8ZRY+J
+ drIRoSa9H7LCZHmpnHxWkKfRZ2bTGfKCTcWEgoez99WwWWqB2sHKi+Nj65AIG2Mf
+ +jR99L41zwJb1BDc7DxZkWRs4gVrqJ7Ttd00f9VmbXPID6ueuGWwbfqL6rlnlJ4W
+ gEQVCQ==
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fb3xvs2ur-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 21:46:05 +0000 (GMT)
+Received: by mail-qt1-f199.google.com with SMTP id
+ d75a77b69052e-5174a236220so14605561cf.3
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 14:46:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783716880; x=1784321680; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=AwlXkf93TRyaeETrOdNkI4UVA8dItVhEvL4JieLFr/A=;
- b=VDrOfR6D2i+eIk7vp+Dbwsxuh4eL3fbtmo9ATwalut4sf0eLBphzlPZORuFwBhBao8
- xAli11KIfiCkklQPUOBs41aGzh4SJAeVgBoGRNHjlJOAqCnpXyQDc6/FNv1ZZLOBJ1Xd
- yiPwQ83aKzF53STl9wq5Br2q64UB5R6DRjNX1nJ/I3HvCMOCZAH+UXKkjTp4WgZmqrKD
- j+Fy1iolNKgXtaNQ2sK0g1tX4i7Xd8ks+5C6OWGJ4wSXBhfx3EcQokKYZ6p4oIjqfNdg
- AfuVwPelNDDS+7OdFcmieqqGKcVOexdoMr2juS6nZCP4eTiJLLEODoiE19HlZgyaCN3b
- 186Q==
+ d=oss.qualcomm.com; s=google; t=1783719964; x=1784324764; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=LU4qIQo/+FzXiuZJATdP9f/stxNyxbOIRRZc/MFDJZI=;
+ b=injb/+ZDwTyu+qGp4YaqnnPMMTea2A+g/Wsw3LDqc+he+l082pb5mgLooqvzYP0JT1
+ zboaydHN15GzoZezSmA/9UjmHgaI4GSX6YMXhnCpMcW2gedb2K3Slf8I4fpfiV4moTQT
+ u5K/AyN3XAlVJ4YNq9KKVOHxMBE85Awe5MR/0SDYL9mSHwcP0hjlkqgJy8ZdMXiu9z7i
+ Isu1fmy4wrT3P0eEsiAA5/YOhvL8hsaxNFT1dGzDyiVYRqZ9v6QNjD61IZHHomgoVSRN
+ 7SThL7ycIZ7ibgHyoxu4poL/UfwRDPcZD27EGav1WN9e1eBT4CNxjBh1e6DGsfM56qZE
+ oS+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783716880; x=1784321680;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=AwlXkf93TRyaeETrOdNkI4UVA8dItVhEvL4JieLFr/A=;
- b=CmdCjxlgIiFld3SRPOEtXk6tS4zl+CzFSyVrus8zmA/a1OkT21Xh3Qac9cMXCASXCi
- 5PjDg2dfIVIw9esv9lRtlb8jgqdLNGphzNQQRNbDruM++x9Ys33f9N78K2vaeInS62Xf
- EsudnLJtdNUx9lg2F5S3Ya5M+k1CgLmVjnEC6RGlZdbCZpx2Rl35Mh+yjb1tEHold+5A
- +GIpSCvYxHMxhsNT/+utl9yLLF+LZSp1R7Srb+rVzTyzqOjrUQVN+TUZvVSfVV2K1jSF
- NCV8hU/ULNGBgva6hMIOX8KGi6Y8F1lRsuhnu3GYPqGnG/TB0amD2bGeP2+Rag3ssfOR
- 7Qkw==
-X-Gm-Message-State: AOJu0YybAzw2bamqEjavcn0cTqzne3SowED9DLVJNvgn46Y1RHs2nGyG
- pn/tQSL6uEKDdx7EtqJ3AeFgKzfdr61vVu7bHaN5UeCgbx22DNxf/OVrBunn8fVsz8c=
-X-Gm-Gg: AfdE7cmiztzXf3B6kYbhfUTKmqWrTlpg9+vSJZLK9eFfF7JOrjWy/CEXMh4J48QShrY
- 6dOARzriVcxu2UhN8NIuthDR2T0LYMG01dZ/QlIWBHJ/duDXhnhEShxyzNMV2vnx5KWs2cSgtQp
- iIsel/31bUihS2LuHOTMHljKFulidHWq1vvnr5rJ4SCsdycd6U2GiCfjI89YJh580L1q84+bZoi
- V7vOx0xF5OCsLAc5TkMzEsXnsk2ff0fWrxeCQ0DnDrtMZBwdWF6444KWEAXxCtFjvo+dvpf0A98
- BEMBGDxpe1EMcJL9fRVXqX7UUpLmaOy+oYxTktdEO0qZgJB3zpJ6v41+8qXNBbrwwpeUCFkzYov
- xYz62dZFxB8sEUP/SPowssvFf9ijGuAY7zO7jxbP5Fhc5FjY0+XLI6b+mAumuXKKp1km0Gh0oaU
- M9bRoTS1QbhHWJWPcUTA==
-X-Received: by 2002:a05:6a00:1990:b0:847:8c6d:2f14 with SMTP id
- d2e1a72fcca58-8487075aa21mr4562202b3a.31.1783716878973; 
- Fri, 10 Jul 2026 13:54:38 -0700 (PDT)
-Received: from stoup.. ([71.212.146.49]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-847f6d76106sm10780574b3a.40.2026.07.10.13.54.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2026 13:54:38 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
+ d=1e100.net; s=20251104; t=1783719964; x=1784324764;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=LU4qIQo/+FzXiuZJATdP9f/stxNyxbOIRRZc/MFDJZI=;
+ b=K1zVJlFDHpFSVn1qtuOvOJaJbb7HDLTE5VhCyaIzoc8JEbfCkcKlXRXtefZDwp5CTR
+ fDlLCgG6r3A/+A79wfdRB5UQ4BivS6uYH/r2hJQX+j1jdTq6Vx8ZjT/fViQO+58E80bu
+ pXUb2pmDgjgkox18WbJPIQqbrqmrO2tMNqbs5nWUOiV0hHH/69b17PLsqqAKno1C+LGW
+ UDV0EaPa8MN1HADm45y+HY8G8CVnF1DEsSFB+WzE5NK3J2aAVJPcPujulKt045Kj5bI0
+ 9Jej8keBFxgzuI/wxW87P0madsAvkvtXwecDuqx/XNsqWXjWgUCkqpMBbXjCR4RHSG5U
+ cecA==
+X-Gm-Message-State: AOJu0YwdB9D82dnKLGzz+dnh3SUlAr8vq85SMRKN9RcCP+2iphq48Jc/
+ 1fhPPLKDzfoOhJisKnzEwk5eCaDEYCR+v9l3b08Q3DsteSZliYQqdZ2dXHkxfRsehNQE1tayb1O
+ 037FnOdpsAFuuBZEJ7BxSgpPDQdv7FPIytpvnUTJ2qQADWaZ+9uweJ1o=
+X-Gm-Gg: AfdE7cmkL+vgcVfjjvVpDO55ibnO3+k8nlZgaT6qu3Y6Btq2hyE1h/SRagAdZl6tn5I
+ MPYCBIdBbVWmWC54SHtk/bXZdGU5UVO2B9KMTLYkcPZ0+twjsvu5isEUlWoDPcIPWozvYY5IU6w
+ +SmUneZbDLSfpso4GKYDbLRMNchxL7AiDQbQfdK9+ga5/daCbp+yqjFIvFxPN6ttOlOTSsResIZ
+ OdHVYGw/80wHz0NL3Bp1lMn5FtK67Gp0kxgpCn713c5qx9fpzT+H1SO3AQG63Fg95lkcJNI93wf
+ /uL92bKC2wKsKRZQjFpIS80Uh9z2QaBTUVRuo/XK7mER+Stg5ZFDv+vqPWIZsrofVrsYS9pmuDr
+ LHqiPHsUwu4Z7xbKAMJGSpb5F5Yanda0=
+X-Received: by 2002:a05:622a:1f19:b0:517:71d2:37d2 with SMTP id
+ d75a77b69052e-51cbed6d58bmr8436821cf.0.1783719964444; 
+ Fri, 10 Jul 2026 14:46:04 -0700 (PDT)
+X-Received: by 2002:a05:622a:1f19:b0:517:71d2:37d2 with SMTP id
+ d75a77b69052e-51cbed6d58bmr8436601cf.0.1783719963955; 
+ Fri, 10 Jul 2026 14:46:03 -0700 (PDT)
+Received: from [192.168.69.219] ([88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-493eb6ccdbbsm172404615e9.3.2026.07.10.14.46.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 10 Jul 2026 14:46:03 -0700 (PDT)
+Message-ID: <111e1ab9-dd7b-459e-836a-ecefc7ff0b74@oss.qualcomm.com>
+Date: Fri, 10 Jul 2026 23:45:59 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 04/51] qemu/typedefs: Declare CPUBreakpoint and
+ CPUWatchpoint globally
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, jcmvbkbc@gmail.com
-Subject: [PATCH v3 34/51] target/s390x: Use CPUBreakpoint arg in
- breakpoint_handler
-Date: Fri, 10 Jul 2026 13:53:44 -0700
-Message-ID: <20260710205401.836304-35-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260710205401.836304-1-richard.henderson@linaro.org>
 References: <20260710205401.836304-1-richard.henderson@linaro.org>
-MIME-Version: 1.0
+ <20260710205401.836304-5-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260710205401.836304-5-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
+X-Proofpoint-ORIG-GUID: HmNi8UDt4cUVvv6IyJHuKuDBvhhAPbDR
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzEwMDIxOCBTYWx0ZWRfX0fLkcoAVk7v4
+ Ad9nUYLUoG6eRkyD6ryic67Cp57AwZxT9vYrH5qU/YU7xrJunLZ7qMbWjVUpgF88kaGz1GShFGT
+ deie7PEvDlgJ33cz6FgoiF5GtniFO6n754fknK5CEa+2ifkQDZxkjMyjSwjTEW2TD/iRHVGmDDw
+ A2GIt/vDF4SdLWFtF8emwVduItHa4gR3732M9A/iDuW4n9Vlj11qmsnEs6Um23J5KBhdop3mh3i
+ dqWhbo2hTseF4aybiQmz3FBj2ATk5lu1RhhTFaiYwySDIh7L2nNIiub2IviakQCP5BJj/O4NBmE
+ kP4TCEQ9gckNUIa5VCVXM2ss4t3wt0ORWNKQzI6Nlj1K5VpZYAdimdOCzBwxLJ+QS2UtgGYbyHw
+ feOiA6/k3iKFJu6CYwwa/+1Di9VE/Q5U75S7X2z8d6JSSl87ay9EkA9A1LPNb0jp2O4exsnxKGm
+ 4nGlHgnlreIrDjZraMQ==
+X-Proofpoint-GUID: HmNi8UDt4cUVvv6IyJHuKuDBvhhAPbDR
+X-Authority-Analysis: v=2.4 cv=HInz0Itv c=1 sm=1 tr=0 ts=6a51681d cx=c_pps
+ a=WeENfcodrlLV9YRTxbY/uA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=kacYvNCVWA4VmyqE58fU:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzEwMDIxOCBTYWx0ZWRfXy1k/BPrKIdjn
+ 1/QyglcAMdYsoofBt4T18oXChysabRI3fZFgjCNatFSffhOjzr728fgxI2Vsh8k87ZhfjSZWvEt
+ sQsKboYMyXVqHcD5ztywOb21loDCtqM=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-10_06,2026-07-10_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 malwarescore=0 impostorscore=0 suspectscore=0 lowpriorityscore=0
+ bulkscore=0 phishscore=0 clxscore=1015 priorityscore=1501 adultscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607100218
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,38 +154,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We no longer need to test for BP_CPU, or clear watchpoint_hit.
+On 10/7/26 22:53, Richard Henderson wrote:
+> Adjust all uses of 'struct' in the uses of this type.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   include/exec/breakpoint.h | 8 ++++----
+>   include/hw/core/cpu.h     | 2 --
+>   include/qemu/typedefs.h   | 2 ++
+>   target/arm/cpu.h          | 4 ++--
+>   target/i386/cpu.h         | 4 ++--
+>   target/ppc/cpu.h          | 4 ++--
+>   target/riscv/cpu.h        | 4 ++--
+>   target/xtensa/cpu.h       | 4 ++--
+>   target/riscv/debug.c      | 4 ++--
+>   9 files changed, 18 insertions(+), 18 deletions(-)
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/s390x/tcg/debug.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/target/s390x/tcg/debug.c b/target/s390x/tcg/debug.c
-index 58d9cc6e79..ef0d953e01 100644
---- a/target/s390x/tcg/debug.c
-+++ b/target/s390x/tcg/debug.c
-@@ -52,9 +52,9 @@ void s390_cpu_recompute_watchpoints(CPUState *cs)
- void s390x_cpu_debug_excp_handler(CPUState *cs, CPUBreakpoint *hit)
- {
-     CPUS390XState *env = cpu_env(cs);
--    CPUBreakpoint *wp_hit = cs->watchpoint_hit;
- 
--    if (wp_hit && wp_hit->flags & BP_CPU) {
-+    if (hit->flags & BP_MEM_ACCESS) {
-+        /* watchpoint */
-         /*
-          * FIXME: When the storage-alteration-space control bit is set,
-          * the exception should only be triggered if the memory access
-@@ -62,7 +62,6 @@ void s390x_cpu_debug_excp_handler(CPUState *cs, CPUBreakpoint *hit)
-          * bit set.  We have no way to detect that with the current
-          * watchpoint code.
-          */
--        cs->watchpoint_hit = NULL;
- 
-         env->per_address = env->psw.addr;
-         env->per_perc_atmid |= PER_CODE_EVENT_STORE | get_per_atmid(env);
--- 
-2.43.0
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 

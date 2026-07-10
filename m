@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EFACC43458
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:01:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C48DC44506
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:01:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiIFI-0001rF-Ew; Fri, 10 Jul 2026 16:54:52 -0400
+	id 1wiIEw-0001Sn-P9; Fri, 10 Jul 2026 16:54:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIFA-0001ht-UG
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:44 -0400
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ id 1wiIEt-0001Mo-Ou
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:27 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIEu-0000oV-7V
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:42 -0400
-Received: by mail-pf1-x42c.google.com with SMTP id
- d2e1a72fcca58-84874b52eabso1574689b3a.0
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:54:27 -0700 (PDT)
+ id 1wiIEk-0000hg-3p
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:27 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-8485ef63b68so1226345b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:54:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783716867; x=1784321667; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783716857; x=1784321657; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=FgdeNV+kSDtwWzzSUG7k6o21nzzJqi9iKyuHEyE17qI=;
- b=wsQ5gUMkRhKZrcAVRFyM8sA0bqo/bh0We/ypT2qhV7AJsu2bjgkqek/92kC6ZWOtCz
- uaDgOxdeRXVUKnhLwFRNFYNO8JQr9FLJs53bouWZR9d8WSE9jUbMURkmpCVvei5whd3l
- lAdO4YFqOyyvrhGKYTW/5spAZyFp+sDepkH+LU36JsqCJeZn9QLgiERzNbdXA4JmUAA0
- fFJJdPtqj5LeUctC03bKC5m8BG9aZxTfdylycKMmUk8BX5wac8JmtZBdTDHsUR6DRUD+
- fhNh620W3BEAqZBriqjoenzDszHDMCFhyo/7gNMI6CpwcGHEIm78JSSTliv0YuLfl2N6
- uRBg==
+ bh=k40Ct/scLRA6POY4s+1/g3ylMfrjfxUVUANTHep1r88=;
+ b=FBeOsRyLde+iffSRs1nbHx263W5LfQKpNFzTdO+EoG6D5zDH0rLgK6WHdUpaXmG9xN
+ ZB4yy3qwYA+Lt+1iPQLXdKx+jJT8LMP7mob3imLKSmx4+v8t0AQuwBIebHuiwI3tNtZL
+ pqwtz+P5Voeb/bMhy1uIv8Ijfk5/FAWJXJ6tHYcqIwB1Yd0jltfehRgztjV0W8TYKs4n
+ SbZZnBH8WeEraOkuAWU+YUZzwHM8GHnCbSbx0x/YL03reyCq1nzrVjvB6v0s202EV8o4
+ ZFQb5Tu6A4YsjUHtRQADicZeEueaSqjAOAn9tLjXVc/mGVXYKUBa79HkqD0zy6VhSaWg
+ 1y9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783716867; x=1784321667;
+ d=1e100.net; s=20251104; t=1783716857; x=1784321657;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=FgdeNV+kSDtwWzzSUG7k6o21nzzJqi9iKyuHEyE17qI=;
- b=GAPMbUQWUT5YN7ojj0axzQpiys5NsNC+hIhJzu0oX+MYSgELaSFRGQCOyxWq2nYUK0
- eaOJs8cOVEbhxH+G1rbq10r79RZtkCbRlF4vBKmKxfNeWgOdeA4owiPLex+yY3L1sGjE
- Hj7RiN8iN4NUZVzBEqiINoC7fiT8qx9UdWsnnEvKwPm0XTiKRB0Ny3rLKHhvcx8m3E1N
- xYgOw7GDB3eswsaiMyEs/UAFiLLB3SIZZxGdZb0rw4oQwZs8O5TOy2P1+4JEm5W5Rird
- eCmVXWV88WgoEXfVCzbLjwHVi6RPygKg5HSIJqsoBNMZvLItOV1DUCYgV1d4oLDh8JRY
- 1YYQ==
-X-Gm-Message-State: AOJu0Yx72ybGXMcCqRQzbKmymYhJeHGEYIo/WbOe3Fm6H8tnr6hj9OQK
- /8usb1WXUYKS+xd6ruF0MXvlZLA4/ctJlIUcuukmcXMUoPNfyaNpliR/8UuXHKx7o4g=
-X-Gm-Gg: AfdE7cnyiYIzlrkVJRuEt9NF8WJu59pz8yA+BHf6OAGdDw0DyRQN/jTzHjhF6ygkkUf
- DyJ3YHEyV/0i6p4IGjf65SxQW99ctfILRrZlahwixKGAgEUmJkXYaVR/iwe5RodtEODYZ06BJLj
- pbj+jlkX5v1mxtq9nt+B81436trQT96jnPEAKmb8uTjMKe7ojEYOiAl7cBRlu0sQbl/FRU7iNsL
- NG1QHeJOAUS4BTbdS3y1gEHqMVoFZg/gnxP5x2ZCxxF0W2LX4Yb1fZ7nE6i2K6hblq989RYUkl6
- gZ8xRkBuaJifP+juGHGN09U7E2ZX7vNvp75TFgxC/FSuPBYN18jROfFDibsNEwCDvBESaqS4aep
- Pp4qrCaVa9DVYZfYxvoQNrzpe80UiQxPwWHyTIpLuxxrixyMOtHglijKatXEUDkkebSKEbuDBuc
- No0mJPgq9x9oDG1UOM7Q==
-X-Received: by 2002:a05:6a00:98c:b0:845:e432:e93 with SMTP id
- d2e1a72fcca58-8488970af5bmr490069b3a.48.1783716866766; 
- Fri, 10 Jul 2026 13:54:26 -0700 (PDT)
+ bh=k40Ct/scLRA6POY4s+1/g3ylMfrjfxUVUANTHep1r88=;
+ b=Cjoqdid2QwkS2ThjmpGCYyH+1EOiCiDgnAJHe6Yt6mV5vT66PKMKsS5+2pYuES2PUy
+ 8OYeB6CF+fS0WPUjAp+xZV2gbqTu+Oyakb94q4Y8ExNshm+y3rRxCel6IZ02hmh7jsez
+ F7HWL6b+Sr7oF94jj8H8vYtWi7gzsW16xR3AgGzbA0seVSSiKsAAENPc+c+IR/ksNMFe
+ sUGBy1ti9uaPqZpQ3gWKAd1bsXCNTtXmKUPCjD3y/hIW0/q2w4njCZR6aGffo0p5TeQn
+ iFvnL3IioAAK2UOsWEl4QGyGvlkp0qwqCJdcGKdMugCsZWlWA6xizMWugvFbo1MXbh94
+ Sxhg==
+X-Gm-Message-State: AOJu0Yzv8HT18GVjsXMEod8iDSpDm9O+5EEwWR/H200SBV4Pk4q68XmH
+ D6930F+FMrB7eVjcDu8/A/BQzas1GeiTK+55q2lagWNBeCOZNxVqTiwZZ7up+7ppSWU=
+X-Gm-Gg: AfdE7cme5BqBgbTCd/LcPWwEKiJ1kqriNWmVTDSeMxH9JtNgLMyiHsX72SPr9CUMYxe
+ wTmHITTbEqGVUfjjuucinmE0/tvyglKW+VeUiol1ZRyDLW5rB09wCOW4sXZ4/Nd6lbBBr/c1Erv
+ X/KX4ySuqIetzYwneGTkBvtXvZxS/xXmYoXpj5zCc2koA8p80monqPLwaqxiOOYIVo55ukSD86j
+ ROnG0tV6WvRdfCC3oelS7iJfMcRBEBXX69MwY4xYyd9UBvo0VI1YeWrN3tdWR6MI+EZDsQS1B8F
+ CI0LX4d9ynV/PQ9yLy8XbVGEM2Iu09zXm3uVFh2WAU5K9XDVMbLpMO9wXmlOgFuO0VIKi9Xe5oV
+ EkGkMx0IFXBZRkC3nqvi6JvIQcJwu7WNM8qz1+LlDt9xWPIBtIJngXMCSqBNtE8ItSl4VgCGqMW
+ XR6+R4U+W/X7nduT1I5A==
+X-Received: by 2002:a05:6a00:c84:b0:847:7ece:3426 with SMTP id
+ d2e1a72fcca58-8488979782emr487915b3a.58.1783716856628; 
+ Fri, 10 Jul 2026 13:54:16 -0700 (PDT)
 Received: from stoup.. ([71.212.146.49]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-847f6d76106sm10780574b3a.40.2026.07.10.13.54.26
+ d2e1a72fcca58-847f6d76106sm10780574b3a.40.2026.07.10.13.54.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2026 13:54:26 -0700 (PDT)
+ Fri, 10 Jul 2026 13:54:16 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, jcmvbkbc@gmail.com
-Subject: [PATCH v3 22/51] system: Validate flags in cpu_watchpoint_insert
-Date: Fri, 10 Jul 2026 13:53:32 -0700
-Message-ID: <20260710205401.836304-23-richard.henderson@linaro.org>
+Subject: [PATCH v3 12/51] target/riscv: Use bp argument in
+ riscv_cpu_debug_check_breakpoint
+Date: Fri, 10 Jul 2026 13:53:22 -0700
+Message-ID: <20260710205401.836304-13-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260710205401.836304-1-richard.henderson@linaro.org>
 References: <20260710205401.836304-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: 4
 X-Spam_score: 0.4
 X-Spam_bar: /
@@ -99,29 +100,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Flags must watch reads, writes, or both.
-Flags must specify GDB or CPU but not both.
-Flags must not contain extraneous bits.
+Use the ID of the breakpoint instead of a loop over all.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- system/watchpoint.c | 3 +++
- 1 file changed, 3 insertions(+)
+ target/riscv/debug.c | 44 ++++++--------------------------------------
+ 1 file changed, 6 insertions(+), 38 deletions(-)
 
-diff --git a/system/watchpoint.c b/system/watchpoint.c
-index 183b194403..fbaebba7cf 100644
---- a/system/watchpoint.c
-+++ b/system/watchpoint.c
-@@ -33,6 +33,9 @@ CPUWatchpoint *cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
+diff --git a/target/riscv/debug.c b/target/riscv/debug.c
+index 5c378dd2e8..511a69c28d 100644
+--- a/target/riscv/debug.c
++++ b/target/riscv/debug.c
+@@ -941,48 +941,16 @@ void riscv_cpu_debug_excp_handler(CPUState *cs)
+     }
+ }
  
-     assert(len != 0);
-     assert(last >= addr);
-+    assert(flags & BP_MEM_ACCESS);
-+    assert(ctpop32(flags & BP_ANY) == 1);
-+    assert(!(flags & ~(BP_ANY | BP_MEM_ACCESS | BP_STOP_BEFORE_ACCESS)));
+-bool riscv_cpu_debug_check_breakpoint(CPUState *cs, CPUBreakpoint *ignore)
++bool riscv_cpu_debug_check_breakpoint(CPUState *cs, CPUBreakpoint *bp)
+ {
+     RISCVCPU *cpu = RISCV_CPU(cs);
+     CPURISCVState *env = &cpu->env;
+-    CPUBreakpoint *bp;
+-    target_ulong ctrl;
+-    target_ulong pc;
+-    int trigger_type;
+-    int i;
++    int i = bp->id;
++    trigger_type_t trigger_type = get_trigger_type(env, i);
  
-     wp = g_new0(CPUWatchpoint, 1);
+-    QTAILQ_FOREACH(bp, &cs->breakpoints, entry) {
+-        for (i = 0; i < env->num_triggers; i++) {
+-            trigger_type = get_trigger_type(env, i);
+-
+-            if (!trigger_common_match(env, trigger_type, i)) {
+-                continue;
+-            }
+-
+-            switch (trigger_type) {
+-            case TRIGGER_TYPE_AD_MATCH:
+-                ctrl = env->tdata1[i];
+-                pc = env->tdata2[i];
+-
+-                if ((ctrl & TYPE2_EXEC) && (bp->pc == pc)) {
+-                    env->badaddr = pc;
+-                    return true;
+-                }
+-                break;
+-            case TRIGGER_TYPE_AD_MATCH6:
+-                ctrl = env->tdata1[i];
+-                pc = env->tdata2[i];
+-
+-                if ((ctrl & TYPE6_EXEC) && (bp->pc == pc)) {
+-                    env->badaddr = pc;
+-                    return true;
+-                }
+-                break;
+-            default:
+-                /* other trigger types are not supported or irrelevant */
+-                break;
+-            }
+-        }
++    if (trigger_common_match(env, trigger_type, i)) {
++        env->badaddr = env->tdata2[i];
++        return true;
+     }
  
+     return false;
 -- 
 2.43.0
 

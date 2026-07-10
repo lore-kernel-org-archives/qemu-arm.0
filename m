@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D5D3C44506
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:02:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F234CC44501
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:02:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiIJ6-00017p-7w; Fri, 10 Jul 2026 16:58:50 -0400
+	id 1wiIHP-0005zM-C8; Fri, 10 Jul 2026 16:57:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIIK-0000m2-JK
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:58:00 -0400
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+ id 1wiIFX-0002G4-83
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:55:08 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIIB-0001uj-0T
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:58:00 -0400
-Received: by mail-pj1-x102d.google.com with SMTP id
- 98e67ed59e1d1-384c94c9414so1422199a91.3
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:57:50 -0700 (PDT)
+ id 1wiIFH-0000y2-EE
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:55:06 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-8485fad302bso1373713b3a.3
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:54:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783717069; x=1784321869; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783716877; x=1784321677; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=dhJDN2Uvwx4DiZ1THGmdkn4VOYJT0oPXA9HE61gRL3Y=;
- b=h/QdwWBgz0GVG6hqf/NW0x1h07nI+8ldm/WOz15+TzZrBhDk0bgPJjqQVO88KWgJFV
- gYwUfjb3vNrCdu2igWekmAjPwNlNsyjQjK9r1/nMqZnR0deyEPNPzOlr0AnthhED5ohF
- pmh8KQNUGqFDlbrvwrJfMeTqgz6IIUN6pf8i2TngOTaskDpmc71xIt5RDILGWgwLlW2W
- dSf4OrUB4EAIgRbyRVAs0L4MsTOUbfsL9PwEEniUrSelJirfgNKTCXS4riLRTYZ1v3Ry
- FgPiKCfXpfHU02+B9mNRKBZrpjJ0GkxttlpiKCuMPrYbQa7HeNSR9oz7PMS02ub3iWG+
- lyzA==
+ bh=GnP83ngqbzOCaEyHZuWHVT2DEUxtaEIT/kVQUZ1VwBM=;
+ b=bNibhBOuXmppnR68sD7trHHPZhV4j5AQA7Kzb1A4Kdqa36+ioA052goYRxRpYKa4z0
+ nTDqPU18wNEc555riEoiORe/2eXBPi+48ptIwdmTA78WzDTMy7QGlRCiiAwFiHCkZ1+V
+ E9t1WbRZF5Q1uZfdTKrhGuwaKWCfGUMp+YUxFODC+gYXFX3Dxp4URnfVOLfT7YsQNJK9
+ HPPk7sVaFOIW9SGHe9iHJWL4ov6vl4DTVfKzAsUjhA4nzoNKAOOt2OjJ8+Wm3FxdXz99
+ nqG3rd6KV9pBDHUYDAAQf1NAWc/AlXp8ZELb+bX5sP2XJn0facaxZYIFlPq9wi92oCnf
+ hcDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783717069; x=1784321869;
+ d=1e100.net; s=20251104; t=1783716877; x=1784321677;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=dhJDN2Uvwx4DiZ1THGmdkn4VOYJT0oPXA9HE61gRL3Y=;
- b=hNSCd9k9huWb/wCcVg0Jrz0Y/+2fBU9YtpehuELyiJ3Cbgnwh47IKxLF2ANFeKHN90
- HYCAdlF4lqvyX0+340a1vLRv9ckPuARG7t3Br+zGCCZrnjIr+ewOxP02Fbj2Z+clFPgc
- pD5mlxdsFEhZOCEBMvpHx12JZ8yt7G04Wl/6b9eLlk62O/DzasfZQnfn0RJCnoDgQU74
- QndmDj2ZdGcKU0cdDky5BTBGWVqhtb5DFDhWwhifdH8A6i3nMDwL2aJ46OeqfbAz6qIF
- fAji3P71qPUEag5fNJnGQF5Q0hTpb/RhTcuo09b0C7oXS46Ht1A3V6gSg5Km/mtZAzHh
- a7IA==
-X-Gm-Message-State: AOJu0YwoI8YuZruyFU66UB5ClBcSsyKb5K/yvI/dneZz6vO6DpbfneqO
- kn5OagP+vqa3NIbvypaXSK65vJjbKMRgg0E/id+DlSfOM34oAxdNQUeVhofsT6vgdAw=
-X-Gm-Gg: AfdE7ckAS6dAdadvDFoSoLMAC5CxNtD11nVMnlbK5E4bonkseVjZ7O/2Tf6muP7Ml+l
- uRDg78sp5qi4tLkzNEsU4jaZCUpZ+fvLJojHp/mN3LqPIpzMeo3hIOuvPAhJUAYbc0mqB7CH70B
- sNB61ILfd/F/Qc82IfNdHWkNUZwHb7+K5J97gp+jDMuWfnwDEnQmhd881TSOAjt+18Migl4dwTR
- RyQEJNLmPGyU7bQqvTqzDZdaAFG7xCeCVsJIf1dT0u3hauPrGJHYMFI8rGMah1Vf+QV2dSDICsA
- C+mqxp5CAFKysXxrxOPWkpa/0cNyQYzXyrOVg0FZTwUHBFTlbzALEypH01+ldrFfgEYHyqV2T7E
- 2W+IA/hUBaLIk9BCNYJVZO/nfS6EvBk3fmxgjSxvziurE2O04i2PEO6wLMcWuf3zPVh2ePkWrqV
- KGFC43Db2QI3P0xoRopg==
-X-Received: by 2002:a17:90a:e7cb:b0:37e:2505:cde9 with SMTP id
- 98e67ed59e1d1-38dc75e6c75mr513578a91.13.1783717069354; 
- Fri, 10 Jul 2026 13:57:49 -0700 (PDT)
+ bh=GnP83ngqbzOCaEyHZuWHVT2DEUxtaEIT/kVQUZ1VwBM=;
+ b=JH6gXMvXB2TjY3BKXfR9T5FCIb0OAc6HcxpxEheYW6SyOtyw/zvlXABxElg4tVkmQa
+ Tx8rT115hy4zWi5Q55hUTGaJUtXfUBtfPPgiHj8FwxPjhWfRziOaly+RhYjLr9O+51Am
+ 43pA5US1q30ucplAmDHJ1ZSTh/7iLq95Jj5TBXAs8G7A9m30yQwidK/IrYUTGmB+SzQF
+ M+bwg+labUbtYxH66z/XzGaP8i4G9u8zSUL1zKzTcx0f1XeYFkTYvG/g6VVozw3kT2aq
+ /aESfYZNUZpvLnafQYBpeC2vVCkmABJBdIxNYMEe4mdlkoONQI++qZiBjEMXFKbQ9GAG
+ K07w==
+X-Gm-Message-State: AOJu0YxBEsVQsYZibfrLpsIDyJ5amQusRLiIJ8wvffP3/NzroBDLSQhN
+ n9Q+inEB+PfyNo74hMA6UYEDjBkbVLuD4y8F8wV4b46vOQIfMzOPiUstEjb2FWJb8mc=
+X-Gm-Gg: AfdE7ck/e2KR+P78kA0zve1buRcTgYV9+2/VC5c88Qx1f2/tS//xUgvKUdU+LmW43IL
+ y8eHIBUmULMM6eb/DQHRLkxsHhe6PDAuY+GFRdH39/ZnHlcDhDEIJwM7XgOf4uCHxLa0BfiecKm
+ /tC4OJAEv3QsNBbTZbKdEUzxf/NWBWh0qo4eX8zbcomRDUPzGTaaDQkcL5IIdRd5gpSjTu/9Jfg
+ pHsvzFoWTas70oyTqMEO6gvdmTO3e1dxQTgLypsNlUJyXbuaA6CycmJGm7SDSloRztWeaXmeby+
+ Sz+44rawcXuKfP85QEw4qADr/k+04acVyGXvzSTDBlq1mCI1GldM+oHrKaZPLAuVaYrdDk/GQpg
+ VEwExOAYJo6X91OblQ+YzGtevpSXyp1XzKJOR6C4Bwp7lRPg5gwGoOyRmn7WA2rjLPRwYzmlMMs
+ bsENS6F/DFh2bCDnjaDQ==
+X-Received: by 2002:a05:6a00:b50:b0:848:80ec:5d2 with SMTP id
+ d2e1a72fcca58-84889738aa8mr513964b3a.51.1783716877471; 
+ Fri, 10 Jul 2026 13:54:37 -0700 (PDT)
 Received: from stoup.. ([71.212.146.49]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-38a58792cdasm3256221a91.16.2026.07.10.13.57.48
+ d2e1a72fcca58-847f6d76106sm10780574b3a.40.2026.07.10.13.54.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2026 13:57:48 -0700 (PDT)
+ Fri, 10 Jul 2026 13:54:37 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, jcmvbkbc@gmail.com
-Subject: [PATCH v3 45/51] accel/tcg: Move ALL_MMUIDX_BITS to hw/core/cpu.h
-Date: Fri, 10 Jul 2026 13:53:55 -0700
-Message-ID: <20260710205401.836304-46-richard.henderson@linaro.org>
+Subject: [PATCH v3 32/51] target/ppc: Simplify ppc_cpu_debug_check_breakpoint
+Date: Fri, 10 Jul 2026 13:53:42 -0700
+Message-ID: <20260710205401.836304-33-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260710205401.836304-1-richard.henderson@linaro.org>
 References: <20260710205401.836304-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: 4
 X-Spam_score: 0.4
 X-Spam_bar: /
@@ -99,37 +99,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+We don't need to check PPC_ISA207S, because that's already
+done starting with register_book3s_207_dbg_sprs().
+Replace target_ulong with uint64_t, as we're under TARGET_PPC64.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/hw/core/cpu.h | 1 +
- accel/tcg/cputlb.c    | 2 --
- 2 files changed, 1 insertion(+), 2 deletions(-)
+ target/ppc/tcg-excp_helper.c | 28 ++++++++++++----------------
+ 1 file changed, 12 insertions(+), 16 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index c4c86b8595..3d48bc81f2 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -197,6 +197,7 @@ struct CPUClass {
-  * Current maximum is target/arm/.
-  */
- #define NB_MMU_MODES 22
-+#define ALL_MMUIDX_BITS ((1 << NB_MMU_MODES) - 1)
- typedef uint32_t MMUIdxMap;
- 
- /* Use a fully associative victim tlb of 8 entries. */
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index e2911e3aac..695476eef1 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -91,8 +91,6 @@
-  */
- QEMU_BUILD_BUG_ON(sizeof(vaddr) > sizeof(run_on_cpu_data));
- 
--#define ALL_MMUIDX_BITS ((1 << NB_MMU_MODES) - 1)
--
- static inline size_t tlb_n_entries(CPUTLBDescFast *fast)
+diff --git a/target/ppc/tcg-excp_helper.c b/target/ppc/tcg-excp_helper.c
+index 56ca66e7b5..99ffe4a820 100644
+--- a/target/ppc/tcg-excp_helper.c
++++ b/target/ppc/tcg-excp_helper.c
+@@ -330,23 +330,19 @@ bool ppc_cpu_debug_check_breakpoint(CPUState *cs, CPUBreakpoint *bp)
  {
-     return (fast->mask >> CPU_TLB_ENTRY_BITS) + 1;
+ #if defined(TARGET_PPC64)
+     CPUPPCState *env = cpu_env(cs);
++    uint64_t priv = env->spr[SPR_CIABR] & PPC_BITMASK(62, 63);
+ 
+-    if (env->insns_flags2 & PPC2_ISA207S) {
+-        target_ulong priv;
+-
+-        priv = env->spr[SPR_CIABR] & PPC_BITMASK(62, 63);
+-        switch (priv) {
+-        case 0x1: /* problem */
+-            return env->msr & ((target_ulong)1 << MSR_PR);
+-        case 0x2: /* supervisor */
+-            return (!(env->msr & ((target_ulong)1 << MSR_PR)) &&
+-                    !(env->msr & ((target_ulong)1 << MSR_HV)));
+-        case 0x3: /* hypervisor */
+-            return (!(env->msr & ((target_ulong)1 << MSR_PR)) &&
+-                     (env->msr & ((target_ulong)1 << MSR_HV)));
+-        default:
+-            g_assert_not_reached();
+-        }
++    switch (priv) {
++    case 0x1: /* problem */
++        return env->msr & (1ull << MSR_PR);
++    case 0x2: /* supervisor */
++        return (!(env->msr & (1ull << MSR_PR)) &&
++                !(env->msr & (1ull << MSR_HV)));
++    case 0x3: /* hypervisor */
++        return (!(env->msr & (1ull << MSR_PR)) &&
++                 (env->msr & (1ull << MSR_HV)));
++    default:
++        g_assert_not_reached();
+     }
+ #endif
+ 
 -- 
 2.43.0
 

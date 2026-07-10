@@ -4,80 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 977ACC43458
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:01:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EFACC43458
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:01:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiIHK-0005iN-4e; Fri, 10 Jul 2026 16:56:58 -0400
+	id 1wiIFI-0001rF-Ew; Fri, 10 Jul 2026 16:54:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIFU-0002BB-Sd
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:55:05 -0400
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+ id 1wiIFA-0001ht-UG
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:44 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIFD-0000ww-3B
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:55:04 -0400
-Received: by mail-pf1-x42e.google.com with SMTP id
- d2e1a72fcca58-8453427d3f4so1223337b3a.3
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:54:36 -0700 (PDT)
+ id 1wiIEu-0000oV-7V
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:42 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-84874b52eabso1574689b3a.0
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:54:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783716876; x=1784321676; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783716867; x=1784321667; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=+m7+GFqYgO2mGhurSu+ZocnMlHw4aq+wKZ/1FbPF0Jg=;
- b=k9BuvJNqRVPNMnAukEYi/4dD3JhPqrWIQdrhoSfsNGgiGRJFBE563nFX6mvAKpgfIr
- gabu9btlTZaebRqVV4M2Antc4gHDFJbBAx6F/m3RXA09pUqyrpjW98SodJ6+3Qeuh+27
- jn7KyCM1Yms5DJgtcD2EWzyOPKPJcrg7Vwmkd0ECvPbOOWg8T6IPj32Glvy+MWxRPqlO
- xFIX2tW9WCzQjVKE93BmmGjTsSrpT6WEKeNy8GoTUSRkXs5E6Rt/+gjqjSXP+BRdbFSB
- JXXAYbXVFahqKdYhC8Co0fW8BigXJhK699f84AxlHuZdmLRzm792Bb9W6UJIpXdBE9hY
- 8g4w==
+ bh=FgdeNV+kSDtwWzzSUG7k6o21nzzJqi9iKyuHEyE17qI=;
+ b=wsQ5gUMkRhKZrcAVRFyM8sA0bqo/bh0We/ypT2qhV7AJsu2bjgkqek/92kC6ZWOtCz
+ uaDgOxdeRXVUKnhLwFRNFYNO8JQr9FLJs53bouWZR9d8WSE9jUbMURkmpCVvei5whd3l
+ lAdO4YFqOyyvrhGKYTW/5spAZyFp+sDepkH+LU36JsqCJeZn9QLgiERzNbdXA4JmUAA0
+ fFJJdPtqj5LeUctC03bKC5m8BG9aZxTfdylycKMmUk8BX5wac8JmtZBdTDHsUR6DRUD+
+ fhNh620W3BEAqZBriqjoenzDszHDMCFhyo/7gNMI6CpwcGHEIm78JSSTliv0YuLfl2N6
+ uRBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783716876; x=1784321676;
+ d=1e100.net; s=20251104; t=1783716867; x=1784321667;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=+m7+GFqYgO2mGhurSu+ZocnMlHw4aq+wKZ/1FbPF0Jg=;
- b=EXkslNSWYq85SGZhNRc7gC6cayzPVqQ9cklv2eeDj5dApk/JoYFexk+wNcDUoUlKFF
- c12Y9JQ6hJoCxEfCvN6apikFxCJ+WFgcpDIXg25BdoJ+uXFjLxdl0JnirxjyplrzYpsU
- Tb4kgEMlgVOzYL96HenWiP8hivryKDVlpxnOGae5oPDq0JMYdCwJX0pGBBRLLWCNvoOt
- GJW/7AiFWUOuqZP3z8zWXhHn+0S7n/z0flBgEYOuHYxq5wUVKZVOG/p7aJQiHW1abTPh
- qrbXRTdDtr1Uk6joMuNruEiywJUCDHcFCdUuoid3iiX+UJWDa/N9uJy8e6kgEhTufG7R
- C5Rg==
-X-Gm-Message-State: AOJu0YyK6RzszIz8fXH9oe7O6jXRt8/MbkKKZKX0LHnuuS+V9Cv3Zbi9
- 8ByAta1vF3cPhv/z6Kf8yN4GOkyD9of9v+wQE97BHl75JZTKjDAI8dZUEkxlQDZWwHE=
-X-Gm-Gg: AfdE7cmsK9sa7kGKE0zXMd89/MOxLpPkYtwdFQ58RxnOVAxqNEMXBEs5rCh/ZRQz9kn
- St91XDJCyUwYI03eAcoX+66kGa9kiuNi7codR0Q4QHe7i9soS+bcnKEIVDCKeSaKmkgsD//Qe5J
- r2pDcmr0n05BfNSc+hcw8ONZgjdmfJTOLVP5QQmAxzR+fm3n9PYt7xnKqO0Y/j76rnTbAVgMgGj
- MAqSzOBgFl8A2AU/P+4bRtGx5KJMcSvniO6Rwba7hWSGrV0Z2qfxtXMMB6TKsyKSQipBDOo8vrL
- iWEVRo4Wt5f+IIjOfoovCg9TEnJvm+a9P46onik416cXRcCtelyMhcdDLWfBfN4Q+3P/QSgQHos
- 4XpEKv/N2wcm2uOEzlukV9zQpgc9ms++hzmCooWxquuUXgKraYTX7772sCtjtCdxC0xO4oCHug2
- 54IggGBzdyQA/JCrHuOA==
-X-Received: by 2002:a05:6a00:3d11:b0:848:55a6:fce with SMTP id
- d2e1a72fcca58-848897276d2mr531163b3a.62.1783716875574; 
- Fri, 10 Jul 2026 13:54:35 -0700 (PDT)
+ bh=FgdeNV+kSDtwWzzSUG7k6o21nzzJqi9iKyuHEyE17qI=;
+ b=GAPMbUQWUT5YN7ojj0axzQpiys5NsNC+hIhJzu0oX+MYSgELaSFRGQCOyxWq2nYUK0
+ eaOJs8cOVEbhxH+G1rbq10r79RZtkCbRlF4vBKmKxfNeWgOdeA4owiPLex+yY3L1sGjE
+ Hj7RiN8iN4NUZVzBEqiINoC7fiT8qx9UdWsnnEvKwPm0XTiKRB0Ny3rLKHhvcx8m3E1N
+ xYgOw7GDB3eswsaiMyEs/UAFiLLB3SIZZxGdZb0rw4oQwZs8O5TOy2P1+4JEm5W5Rird
+ eCmVXWV88WgoEXfVCzbLjwHVi6RPygKg5HSIJqsoBNMZvLItOV1DUCYgV1d4oLDh8JRY
+ 1YYQ==
+X-Gm-Message-State: AOJu0Yx72ybGXMcCqRQzbKmymYhJeHGEYIo/WbOe3Fm6H8tnr6hj9OQK
+ /8usb1WXUYKS+xd6ruF0MXvlZLA4/ctJlIUcuukmcXMUoPNfyaNpliR/8UuXHKx7o4g=
+X-Gm-Gg: AfdE7cnyiYIzlrkVJRuEt9NF8WJu59pz8yA+BHf6OAGdDw0DyRQN/jTzHjhF6ygkkUf
+ DyJ3YHEyV/0i6p4IGjf65SxQW99ctfILRrZlahwixKGAgEUmJkXYaVR/iwe5RodtEODYZ06BJLj
+ pbj+jlkX5v1mxtq9nt+B81436trQT96jnPEAKmb8uTjMKe7ojEYOiAl7cBRlu0sQbl/FRU7iNsL
+ NG1QHeJOAUS4BTbdS3y1gEHqMVoFZg/gnxP5x2ZCxxF0W2LX4Yb1fZ7nE6i2K6hblq989RYUkl6
+ gZ8xRkBuaJifP+juGHGN09U7E2ZX7vNvp75TFgxC/FSuPBYN18jROfFDibsNEwCDvBESaqS4aep
+ Pp4qrCaVa9DVYZfYxvoQNrzpe80UiQxPwWHyTIpLuxxrixyMOtHglijKatXEUDkkebSKEbuDBuc
+ No0mJPgq9x9oDG1UOM7Q==
+X-Received: by 2002:a05:6a00:98c:b0:845:e432:e93 with SMTP id
+ d2e1a72fcca58-8488970af5bmr490069b3a.48.1783716866766; 
+ Fri, 10 Jul 2026 13:54:26 -0700 (PDT)
 Received: from stoup.. ([71.212.146.49]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-847f6d76106sm10780574b3a.40.2026.07.10.13.54.35
+ d2e1a72fcca58-847f6d76106sm10780574b3a.40.2026.07.10.13.54.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2026 13:54:35 -0700 (PDT)
+ Fri, 10 Jul 2026 13:54:26 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, jcmvbkbc@gmail.com
-Subject: [PATCH v3 30/51] target/i386: Use CPUBreakpoint arg in
- breakpoint_handler
-Date: Fri, 10 Jul 2026 13:53:40 -0700
-Message-ID: <20260710205401.836304-31-richard.henderson@linaro.org>
+Subject: [PATCH v3 22/51] system: Validate flags in cpu_watchpoint_insert
+Date: Fri, 10 Jul 2026 13:53:32 -0700
+Message-ID: <20260710205401.836304-23-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260710205401.836304-1-richard.henderson@linaro.org>
 References: <20260710205401.836304-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
 X-Spam_score_int: 4
 X-Spam_score: 0.4
 X-Spam_bar: /
@@ -100,59 +99,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We no longer need to test for BP_CPU, or clear watchpoint_hit.
+Flags must watch reads, writes, or both.
+Flags must specify GDB or CPU but not both.
+Flags must not contain extraneous bits.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/i386/tcg/system/bpt_helper.c | 32 ++++++++++++-----------------
- 1 file changed, 13 insertions(+), 19 deletions(-)
+ system/watchpoint.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/target/i386/tcg/system/bpt_helper.c b/target/i386/tcg/system/bpt_helper.c
-index 5dab77b2c4..86562fc946 100644
---- a/target/i386/tcg/system/bpt_helper.c
-+++ b/target/i386/tcg/system/bpt_helper.c
-@@ -200,28 +200,22 @@ void breakpoint_handler(CPUState *cs, CPUBreakpoint *hit)
-     X86CPU *cpu = X86_CPU(cs);
-     CPUX86State *env = &cpu->env;
+diff --git a/system/watchpoint.c b/system/watchpoint.c
+index 183b194403..fbaebba7cf 100644
+--- a/system/watchpoint.c
++++ b/system/watchpoint.c
+@@ -33,6 +33,9 @@ CPUWatchpoint *cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
  
--    hit = cs->watchpoint_hit;
--    if (hit) {
--        if (hit->flags & BP_CPU) {
--            cs->watchpoint_hit = NULL;
--            if (check_hw_breakpoints(env, hit)) {
--                /*
--                 * FIXME: #DB should be delayed by one instruction if
--                 * INHIBIT_IRQ is set (STI cannot trigger a watchpoint).
--                 * The delayed #DB should also fuse with one generated
--                 * by ICEBP (aka INT1).
--                 */
--                raise_exception(env, EXCP01_DB);
--            } else {
--                cpu_loop_exit_noexc(cs);
--            }
-+    if (hit->flags & BP_MEM_ACCESS) {
-+        /* watchpoint */
-+        if (!check_hw_breakpoints(env, hit)) {
-+            cpu_loop_exit_noexc(cs);
-         }
-+        /*
-+         * FIXME: #DB should be delayed by one instruction if
-+         * INHIBIT_IRQ is set (STI cannot trigger a watchpoint).
-+         * The delayed #DB should also fuse with one generated
-+         * by ICEBP (aka INT1).
-+         */
-     } else {
--        if (cpu_breakpoint_test(cs, env->eip, BP_CPU)) {
--            check_hw_breakpoints(env, NULL);
--            raise_exception(env, EXCP01_DB);
--        }
-+        /* breakpoint */
-+        check_hw_breakpoints(env, NULL);
-     }
-+    raise_exception(env, EXCP01_DB);
- }
+     assert(len != 0);
+     assert(last >= addr);
++    assert(flags & BP_MEM_ACCESS);
++    assert(ctpop32(flags & BP_ANY) == 1);
++    assert(!(flags & ~(BP_ANY | BP_MEM_ACCESS | BP_STOP_BEFORE_ACCESS)));
  
- target_ulong helper_get_dr(CPUX86State *env, int reg)
+     wp = g_new0(CPUWatchpoint, 1);
+ 
 -- 
 2.43.0
 

@@ -4,106 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4B7DC43458
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 13:49:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C39CCC44501
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 14:52:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiBbz-0007xI-T9; Fri, 10 Jul 2026 09:49:52 -0400
+	id 1wiCaj-0004Dx-37; Fri, 10 Jul 2026 10:52:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wiBby-0007wN-Gx
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 09:49:50 -0400
-Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ (Exim 4.90_1) (envelope-from <yisooan.dev@gmail.com>)
+ id 1wiCah-0004De-NM
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 10:52:35 -0400
+Received: from mail-oi1-f179.google.com ([209.85.167.179])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wiBbw-00017W-6V
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 09:49:49 -0400
-Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-66493875766so1599629d50.0
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 06:49:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783691387; cv=none;
- d=google.com; s=arc-20260327;
- b=hiNZgd50tulMIFi+HbeefI5ZtqKvjfjlwthVC+C8h0i5nzNRAP1hvZ0EL7AX9uVfKH
- xkXh8rGFzOUIA7PEGrpC1I4DJ+L4D2LQWs9LbnhaEo0662KMkon/w6whsWK9maoDDzN0
- EP7wT2pyqKQWiB2yvDtXvmZKSU9ZCbZM0Pa7spGPCPfhIYyHUa6/LTSJ2o2ZI1J+C07X
- cS0Fpv+Eok7rl5g/drUDizwXFTT3qKaRg0DjEdNtIXMdDCQYRj02czXkvX8IOgJSwWZN
- 97oYLSko/H0ADbiim28eGNLKCJyAG7GYcVUoANSl2gOTc9X486D12WFUfhgE7AvV4xBl
- NDhg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=9FHEy95HDKrD+em7DRowOIijJMJSg06LQji/uBbaXOc=;
- fh=zA+5Zbmi/akDBB+uPFpOPu7mYWOjJ3rgIOEOCAifBIU=;
- b=a1/VV9tm9Oy10cMJ1Ij+ws/QsxShSw3xcbhSW5p782awAY1p89OR08BpfBRT/QXErY
- eQBXL433k2ad57YD6S5a9HdF4HsHcsrVkTfuHTNKYNlJfhjfu0Uy/GF6VqU5AlOxv7wK
- T9QwDIVSsREFtqUDfFM+xlDvvIPrNDUIMXvpLf28xRPOdrRVI4kV88vi8s1qF9OuEwWH
- SsklywyZHBqNH6F/zQYmHEg2/O6V0dlgOr90myRPkbKIcYjOl+aQ74Dp6A/DD/nSTwYG
- e7sJBXBkYuHMWEAB90ruP1SzEH53rENX8C4pcLMoLiTguvxGLmsbw+jOMa3H5wsokLXW
- zJPw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783691387; x=1784296187; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=9FHEy95HDKrD+em7DRowOIijJMJSg06LQji/uBbaXOc=;
- b=h6S0njRfdiIELRs0z712Bbf3P6g9QZsX4zH/Bciko/h0SBHz1coZ7tFotH8zBkAbiG
- 8gaV/z3n/Pu9KP7VVYsq557AUS0ViE8b+IgXQVn/GEKGu4vEyjyXfYaDSEIQPcHRjNBk
- hLn4KcLsS0kd78nKozva4GjsNtpz7Y5cNyTYAommsr/1AJcA4omzm1z/1QlgtoKQY21w
- CEfoL/aJW8vFSRTGF/Ab/gpVwQw8TqG/7XWFz5MOWRKQgHnNMPjen4pXJQh5IXn3jRFo
- 6xamWNtcpVI/kkfETzWHpbrReNEvIq7Z66gAgug75QaJG+XRYDRG88vtgv0VIC7v5E9x
- jrfw==
+ (Exim 4.90_1) (envelope-from <yisooan.dev@gmail.com>)
+ id 1wiCag-0007cE-DV
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 10:52:35 -0400
+Received: by mail-oi1-f179.google.com with SMTP id
+ 5614622812f47-491f5e6d564so529083b6e.1
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 07:52:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783691387; x=1784296187;
+ d=1e100.net; s=20251104; t=1783695153; x=1784299953;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=9FHEy95HDKrD+em7DRowOIijJMJSg06LQji/uBbaXOc=;
- b=rF5IMHNJGfzt3idAl9daJoQF/B4mWE1q5b+O3IUgYVgtDRZiRsR/V2r3dZb9cTo6lN
- 9xmn+A/LYp6rmvSBVbrVAJaiV83PgqUAX+8ibJx13LC3UX1QQwT1nWiIEGJb9e9L1JMg
- oXSRDozRKiJHjhlTR/N4VTdAXBEYcuTxx215b7X/7+vSwwL1nAjDdH9gIzqG7mag2pdO
- PJNDHl8kV2UhsyL4FNpGfkvwSa8MVtTzb0bAyMdpKi6LlCnp58nSp10vg8+CK5x8aAdr
- HopQXIyIoigpA5c+IsDRGQbKwpcrUsglq/pEJ0UHEAQnNTl6v1qkbyTKlZb+30wdvlD6
- 1RIQ==
-X-Gm-Message-State: AOJu0YzbEOEjegBsCTCTSR/mc7hnFPyJFuCgZVY/TSpugxMWXxP073HA
- 0ASLL8R0WZl0xh9RzHxcitpyUC5DYrDZAGMmNsk6KaD4qXVkSFyVuJX2+kMIHn9isOfxsttXlGs
- bFiYTkMffPo8Id92RvRrC+AMjPBlh2RkfSenUy73uniI0cVajTgzQT/k+9g==
-X-Gm-Gg: AfdE7clnlUwYd37OEtUVR0p/cwcrFMrJc1g5fEO6FHrKoIUXGDapLgACnMKlvILo08p
- qpfJZ2p58cXymhTGcJmqkAcQUQn1RSKtwErWOxxWM1ADmHQCZ+cEI5eU1NviWNeQF8OzGmW5ecw
- 27ELAkW2hdEodfT21y2POpTnkit9lZ92qjr+RgKHgI55i1hTUXsv+FKX6USV92675wPjn/s3yZ3
- 42DE3fatiU2SP6Qq79vbReYqdZ+9Yeg7XdWIK6YtH77fCJgxscC/A8mGyZOh+fy3xyi84nvtdBd
- 1nbdB/jOIvOWLbo1+Rol7PJmfX9HXZEcsnqEmTyPQUtms/MSR5pBGn2t
-X-Received: by 2002:a05:690e:43c2:b0:667:8a13:c3f with SMTP id
- 956f58d0204a3-6679f0c80c2mr6226539d50.42.1783691386827; Fri, 10 Jul 2026
- 06:49:46 -0700 (PDT)
+ bh=6K3++yYqtMVz+66TdVWG0CLOVt7auPHDlu9IMlBdkQk=;
+ b=cH7b9oGgG4GI0/TketmMF5Rzy29fHHmqTs1YioqubMQuDuwfi8daIWhqsS3wWPDkOr
+ iY9M4dv7hU7w6WEqtrhsqCr3pp3Zt5YZEe4BroniSprbPlyKKvVQjY/ZHcFV++IyBZER
+ ISaKWG/NcJgng2/uSaCt1aK1y5c0dFw6qUh1HOxNOWVxtbOrDBMFs/Cxl6XVNxBiZCWA
+ 9Aq82iwdwpQ1PtSwfseG74feH1scYfWXnCL6qmIheRW83jxgmKURXJZwiIAHQINfL2Fe
+ HpKP38DUMwmjqOJnQ27j9lQoUnvyN6uNx/52mpK1TxSSOK0ukATFUBJz6rBSevTz/RqN
+ POrw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ91CDLwmblKs5/n9DKp2pgfY1eFsxNeuVPMykArNPBuxWgBKUpZ3cqN68JIbAOjqxLL0+aVj710bg==@nongnu.org
+X-Gm-Message-State: AOJu0YwCdj2MOvNriMXDyOn6AVLBVB3VXC79gqK/GzIcDejOl44x23hj
+ 9wz9sxGI6mOBFmHMj1kdHiaRwdBxfQFRPVLWMJtSmnipZpbb9knCKF9cwjWjsR/iPNs=
+X-Gm-Gg: AfdE7clu5Tr1QU7brCrB9rhyuXfBYy4IAgzW10ghYGo5raph1hipnHNvODcyutnOLIl
+ sHFN5I5Xh/NgRRDxpp+94qGDvcNjtyd0I3czLk0jSrWsj7xf0RYfRLMAt6nPw8Q4Af4j0tS4iA1
+ 0tkkchVuSBwIWqDUBNU1eQeXLepVJA1NUzz6PrkeNhK6bs7I0pC8iQcKp8FXv5ivdABhXzXiYDa
+ earRNfiqlGzhMbfwV/R2eyDGBSYEnc5DTzrpP5PvOJoJMkAVxdXhR/oZd+GRj7OY+SCV4Xyizt8
+ jXfOAZ/5XYkU8aWenvU7E4Lsy1zjrLuRz/w4SxJ+0yW6YDWIcg5bORbdennjMFhIfjldiJwMF+3
+ uwLR8UZt+gmw1hNu1QtLgh7p/gwpicCH9fqfpYJj8yGiUXWySqs3NWXlbeLmwholdN4URHf3Ebf
+ 7Y1mx3k2zQvyTCK1R9lOpeqv0TMsUEN7N6VrOE72S7DbW0Dwza
+X-Received: by 2002:a05:6808:2205:b0:495:4a22:f29e with SMTP id
+ 5614622812f47-4a203dbfd0dmr8434026b6e.25.1783695152412; 
+ Fri, 10 Jul 2026 07:52:32 -0700 (PDT)
+Received: from mail-oi1-f174.google.com (mail-oi1-f174.google.com.
+ [209.85.167.174]) by smtp.gmail.com with ESMTPSA id
+ 5614622812f47-4a1afde6cffsm6341127b6e.11.2026.07.10.07.52.32
+ for <qemu-arm@nongnu.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 10 Jul 2026 07:52:32 -0700 (PDT)
+Received: by mail-oi1-f174.google.com with SMTP id
+ 5614622812f47-4a427e628a9so47791b6e.0
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 07:52:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/NoKiftajtyx19g/7wr6oXIWzByQ31n6pGYvoTsyz/hodZHXZytFMNNjwYpexY9uLwdPmv0AB17g==@nongnu.org
+X-Received: by 2002:a05:6808:c3f4:b0:496:11f1:f2b5 with SMTP id
+ 5614622812f47-4a202007753mr9756848b6e.10.1783695150115; Fri, 10 Jul 2026
+ 07:52:30 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260710105907.2570621-1-peter.maydell@linaro.org>
- <20260710105907.2570621-9-peter.maydell@linaro.org>
- <4162f17d-c91a-4e59-82e4-d4c1f590396c@oss.qualcomm.com>
-In-Reply-To: <4162f17d-c91a-4e59-82e4-d4c1f590396c@oss.qualcomm.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Jul 2026 14:49:33 +0100
-X-Gm-Features: AUfX_mw1QgM1LwR9N1Ooz8dtwW8YBTKUeBniwFqXXPqueOTEUJcG5uQg6VhsQJo
-Message-ID: <CAFEAcA8_wGzV60Z+8r8U3w5is7F=Vqn=He9xj7JNfqmi+qLNzQ@mail.gmail.com>
-Subject: Re: [PATCH 8/9] include/hw/arm/omap_dma.h: Move to include/hw/dma
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Jim MacArthur <jim.macarthur@linaro.org>
+References: <20260623-guest-panic-unhandle-v1-1-6adfb6d4221e@ooseel.net>
+In-Reply-To: <20260623-guest-panic-unhandle-v1-1-6adfb6d4221e@ooseel.net>
+From: Leesoo Ahn <lsahn@ooseel.net>
+Date: Fri, 10 Jul 2026 23:52:18 +0900
+X-Gmail-Original-Message-ID: <CANTT7qiAidmrEPD=S7F4s_JNvFYL4cY=CWLbbfuJgOM0syqMbQ@mail.gmail.com>
+X-Gm-Features: AUfX_mwSWH_Sd1f0Xuv3kZHDs_waThqZKSdJLzxJdpePxRaV9PhpOQLdXVn6g3U
+Message-ID: <CANTT7qiAidmrEPD=S7F4s_JNvFYL4cY=CWLbbfuJgOM0syqMbQ@mail.gmail.com>
+Subject: Re: [PATCH] target/arm/hvf: panic the guest if an unhandled exception
+ occurs
+To: qemu-devel@nongnu.org
+Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=209.85.167.179;
+ envelope-from=yisooan.dev@gmail.com; helo=mail-oi1-f179.google.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,28 +104,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 10 Jul 2026 at 14:37, Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
->
-> On 10/7/26 12:59, Peter Maydell wrote:
-> > omap_dma.h is the header file for hw/dma/omap_dma.c; it fits better
-> > to put it in include/hw/dma/ to match where we have the .c file.
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >   hw/arm/omap1.c                    | 2 +-
-> >   hw/dma/omap_dma.c                 | 2 +-
-> >   hw/dma/soc_dma.c                  | 2 +-
-> >   include/hw/{arm =3D> dma}/soc_dma.h | 0
-> >   4 files changed, 3 insertions(+), 3 deletions(-)
-> >   rename include/hw/{arm =3D> dma}/soc_dma.h (100%)
->
-> Per the cover letter, "The omap_dma device is the only user of
-> the soc_dma code", then maybe take the rename opportunity to
-> name as omap_dma.h?
+ping
 
-It's the only user but it is still a separate C file, so
-I think we should keep soc_dma.h to match the soc_dma.c filename.
-
--- PMM
+2026=EB=85=84 6=EC=9B=94 23=EC=9D=BC (=ED=99=94) =EC=98=A4=ED=9B=84 9:56, L=
+eesoo Ahn <lsahn@ooseel.net>=EB=8B=98=EC=9D=B4 =EC=9E=91=EC=84=B1:
+>
+> It's worth cleaning up all resources that the guest taking and to quit
+> if an exception in el1 could not be resolved.
+>
+> Otherwise, the guest will get in the infinite black-hole by
+> unmodified pc.
+>
+> Signed-off-by: Leesoo Ahn <lsahn@ooseel.net>
+> ---
+>  target/arm/hvf/hvf.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 8b902c6882..4358cf90e8 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -2533,6 +2533,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_v=
+cpu_exit_exception_t *excp)
+>          cpu_synchronize_state(cpu);
+>          trace_hvf_exit(syndrome, ec, env->pc);
+>          error_report("0x%llx: unhandled exception ec=3D0x%x", env->pc, e=
+c);
+> +        qemu_system_guest_panicked(cpu_get_crash_info(cpu));
+>      }
+>
+>      /* flush any changed cpu state back to HVF */
+>
+> ---
+> base-commit: b83371668192a705b878e909c5ae9c1233cbd5fb
+> change-id: 20260623-guest-panic-unhandle-4921d2aa69fb
+>
+> Best regards,
+> --
+> Leesoo Ahn <lsahn@ooseel.net>
+>
 

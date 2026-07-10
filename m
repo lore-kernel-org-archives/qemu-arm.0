@@ -4,120 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D205C43458
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 06:05:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37EC6C44507
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 06:28:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wi4Mz-0006Bx-3K; Fri, 10 Jul 2026 02:05:53 -0400
+	id 1wi4gA-0007yS-M5; Fri, 10 Jul 2026 02:25:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wi4Mx-0006BO-UF
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 02:05:51 -0400
-Received: from smtpout4.mo536.mail-out.ovh.net ([51.210.91.13])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wi4g0-0007ki-P2
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 02:25:35 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wi4Mu-0000dK-Ls
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 02:05:51 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4gxLsz2TvBz81x4;
- Fri, 10 Jul 2026 06:05:42 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Fri, 10 Jul 2026 06:05:42 +0000 (UTC)
-Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.0.99])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4gxLsy4lg2z1xpM;
- Fri, 10 Jul 2026 06:05:42 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.4])
- (Authenticated sender: clg@kaod.org)
- by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 625F212E3D94;
- Fri, 10 Jul 2026 06:05:41 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-100R0038260aed2-ee65-4476-b246-cf70298389ac,
- 1D89B3DEAFBB614AFFC0CDAF1342A6FFA73ECDCC) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <def828a5-4987-498c-9040-db105301a52b@kaod.org>
-Date: Fri, 10 Jul 2026 08:05:40 +0200
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wi4fz-0005pF-8G
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 02:25:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1783664730;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=v8q+3lUkMrowihgNvWTsOWIW9MlqhSBHDx1C+VszfsU=;
+ b=Y8qxUmyI6hJK+pmkUoskHlceV58TFTMFR45ieC1huMTeDxs2CXIcLobsYvW1hqcNnkffdq
+ O1vmwWMkWxEt0ze+otVlKvTGFWnwdJl0NtOybDXTVgq3tfgGGDrxYCWhOpuh1KNJ99ojtB
+ /mGegdxouREKu2krz3Boodt253MKuFk=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-612-C-trBSPRMYWc0_bCbg-Gww-1; Fri,
+ 10 Jul 2026 02:25:27 -0400
+X-MC-Unique: C-trBSPRMYWc0_bCbg-Gww-1
+X-Mimecast-MFC-AGG-ID: C-trBSPRMYWc0_bCbg-Gww_1783664721
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 370881955F76; Fri, 10 Jul 2026 06:25:19 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A8F05180058C; Fri, 10 Jul 2026 06:25:15 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 380D421E6920; Fri, 10 Jul 2026 08:25:13 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: "Graf (AWS), Alexander" <graf@amazon.de>
+Cc: BALATON Zoltan <balaton@eik.bme.hu>,  Markus Armbruster
+ <armbru@redhat.com>,  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Aditya Gupta <adityag@linux.ibm.com>,  Alexandre Iooss
+ <erdnaxe@crans.org>,  "Alexey Kardashevskiy" <aik@ozlabs.ru>,  Alistair
+ Francis <Alistair.Francis@wdc.com>,  Alistair Francis
+ <alistair@alistair23.me>,  Antony Pavlov <antonynpavlov@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,  "Bernhard Beschow"
+ <shentey@gmail.com>,  Bibo Mao <maobibo@loongson.cn>,  Brian Cain
+ <brian.cain@oss.qualcomm.com>,  Chao Liu <chao.liu@processmission.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,  =?utf-8?Q?Cl=C3=A9me?=
+ =?utf-8?Q?nt?= Chigot
+ <chigot@adacore.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Dorjoy Chowdhury
+ <dorjoychy111@gmail.com>,  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eric Farman <farman@linux.ibm.com>,  Farhan Ali <alifm@linux.ibm.com>,
+ "Felipe Balbi" <balbi@kernel.org>,  Francisco Iglesias
+ <francisco.iglesias@amd.com>,  Frederic Konrad <konrad.frederic@yahoo.fr>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>,  Gautam Gala
+ <ggala@linux.ibm.com>,  Glenn Miles <milesg@linux.ibm.com>,  Halil Pasic
+ <pasic@linux.ibm.com>,  Hao Wu <wuhaotsh@google.com>,  Harsh Prateek Bora
+ <harshpb@linux.ibm.com>,  "Helge Deller" <deller@gmx.de>,  Hendrik
+ Brueckner <brueckner@linux.ibm.com>,  =?utf-8?Q?Herv=C3=A9?= Poussineau
+ <hpoussin@reactos.org>,  Huacai Chen <chenhuacai@kernel.org>,  Jan Kiszka
+ <jan.kiszka@web.de>,  Jared Rossi <jrossi@linux.ibm.com>,  Joel Stanley
+ <joel@jms.id.au>,  Laurent Vivier <laurent@vivier.eu>,  Manos
+ Pitsidianakis <manos.pitsidianakis@linaro.org>,  Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>,  Matthew Rosato <mjrosato@linux.ibm.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,  Michael Rolnik <mrolnik@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,  Nicholas Piggin
+ <npiggin@gmail.com>,  Niek Linnenbank <nieklinnenbank@gmail.com>,  "Palmer
+ Dabbelt" <palmer@dabbelt.com>,  Paolo Bonzini <pbonzini@redhat.com>,
+ "Peter Maydell" <peter.maydell@linaro.org>,  Philippe =?utf-8?Q?Mathieu-?=
+ =?utf-8?Q?Daud=C3=A9?= <philmd@mailo.com>,  "Pierrick Bouvier"
+ <pierrick.bouvier@oss.qualcomm.com>,  Ran Wang <wangran@bosc.ac.cn>,
+ Richard Henderson <richard.henderson@linaro.org>,  Sai Pavan Boddu
+ <sai.pavan.boddu@amd.com>,  Samuel Tardieu <sam@rfc1149.net>,  Sergio
+ Lopez <slp@redhat.com>,  Song Gao <17746591750@163.com>,  Stafford Horne
+ <shorne@gmail.com>,  Subbaraya Sundeep <sundeep.lkml@gmail.com>,  Thomas
+ Huth <th.huth+qemu@posteo.eu>,  Tyrone Ting <kfting@nuvoton.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,  "qemu-ppc@nongnu.org"
+ <qemu-ppc@nongnu.org>,  "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>
+Subject: Re: Call to clean up QOM onboard devices lacking a parent
+In-Reply-To: <fee18020-dcfe-4d91-8384-5cc5f8321ff7@amazon.com> (Graf
+ Alexander's message of "Thu, 9 Jul 2026 16:45:42 +0000")
+References: <87se5scipx.fsf@pond.sub.org>
+ <17c7f91b-8935-8ebf-a982-f91df755af81@eik.bme.hu>
+ <fee18020-dcfe-4d91-8384-5cc5f8321ff7@amazon.com>
+Date: Fri, 10 Jul 2026 08:25:13 +0200
+Message-ID: <87h5m7xsxi.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] hw/arm/aspeed: Various Kconfig fixes
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Kane Chen <kane_chen@aspeedtech.com>
-References: <20260709164103.37614-1-philmd@oss.qualcomm.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260709164103.37614-1-philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 10067234019015699695
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFY+0BwnHt5GYh7dqboTMUOaKwr6zFeb2U6Wb6TfwPLpnGebb7+AhHpOsZYi0FU5G7FrTWv77FGHTvnc+Ty9jsXLozhxgTOOG27cNm1yrO/v+4znLT9j6ZK/okfig8PqtU0jF60VDTY/OiSZSTlcR3ygarao34EjxdObIPQ9QIXfkN4gBxsyQffi7OkFZLnkqkP87zD2HmQonG2TYT+mRKkJuV3Rh8+EAjkaNTdeczsEhlXmZwdhT8D+74iIjKCqlnS+qkuSYVIA2ZYBC4v0Fjy6zRQ9cjxiB5eH5tGJ0Y0Ugl3qtvDehJWJucGWN3vW2myqSQBrcFDfOefcqrGeagMIpa3vt0O7sb0iPgYJU9PyWq5HeLPWBL8rxwQQ7aem8nmIXLrphjRkigCckOBgNlfPbUCktupG3aj0zA5UnLqdgR3kMPw/uGlzdqn4DBlT5B6owI5OSV/StboH/FeqY5lPSCE8g+m7tZgk+Dl6w6fgXo2PPTay945KZZ7rizzPkB32NroIeLX8VO+iTUA+CdBJrNiyyR5g3Tdeifd3sqHOTDCGimLD/gVT5IZALVheuu9rnn61bQgN1osfWLNSw28hZK5xa5fjQfXNutoczU6Lfohu9yfol+msFy+UB45nDXvHFDiQ0x48mz84XRczWkGiDoUUmzK5h2qbZf56cwjhw
-DKIM-Signature: a=rsa-sha256; bh=4uM6bdS7mNHu98JCASmx3bj0ZygjrmOKWP3SRzB1Z1I=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1783663544; v=1;
- b=rVyyVEXgCBR+wdXqEyU1r4rTit6wM4s6OyjH79RJa+qYeNfHX/hLsNLKrF3b5rkqsfFGWHAV
- GogoM51sd4T6WyQPNynYeyvLJ9eRXV+pJy1gO/GIKHYGFe7Fh8qRN33dP5hcZLGRE5EBeWZ4jD8
- WsiksWURunaHxZJblpPYskLsyjdHbElzFnCu1pmEIWVIsIos3OXHWD1B1RmAJyUfJpuBpoSLe6O
- s22UA/PfGd+P4qdXiHLBP2xjESEle0lLtZ8WFg8igF9/+JgiTMHYdH+0P00ADAo0Yjx8LinFaay
- 80BtzhpicmxYtUgAaPj5ZBeOGPpZrBSVafXAGN1LsZ9zg==
-Received-SPF: pass client-ip=51.210.91.13; envelope-from=clg@kaod.org;
- helo=smtpout4.mo536.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: l3CaQzhCeu20fL4xnEAHh2aD1gf_Q6Fo_rsYWyk_n34_1783664721
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,32 +129,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/9/26 18:40, Philippe Mathieu-Daudé wrote:
-> Trivial fixes for binaries configured with:
-> 
->    $ echo CONFIG_ASPEED_SOC=y > configs/devices/aarch64-softmmu/aspeed.mak
->    $ ./configure --with-devices-aarch64=aspeed --without-default-devices
-> 
-> Philippe Mathieu-Daudé (3):
->    hw/arm/aspeed: Add missing PCI_EXPRESS -> PCIE_PORT Kconfig dependency
->    hw/arm/aspeed: Add missing Kconfig dependencies on required components
->    hw/arm/aspeed: Add missing Kconfig dependencies on optional components
-> 
->   hw/arm/Kconfig      | 6 +++++-
->   hw/pci-host/Kconfig | 1 +
->   2 files changed, 6 insertions(+), 1 deletion(-)
-> 
+"Graf (AWS), Alexander" <graf@amazon.de> writes:
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+> Hi Markus,
 
+[...]
 
+> I'm also curious on whether there is anything that makes sysbus device 
+> spawns both easy (as they are today) and at the same time fully QOM 
+> parent compliant.
+>
+> I had a quick look at the vmapple machine and most of the offenders are 
+> sysbus devices I spawn via qdev_new(). Would you want all of these to 
+> get their parent declared via object_property_add_child()? If that's the 
+> case, why don't we introduce a new qdev_new_child() which does that 
+> automatically?
 
-Applied to
+We do have such convenience functions at the QOM layer: object_new() and
+object_property_add_child() etc., are basic building blocks, and
+object_new_with_props() etc. combine them in useful ways.
 
-     https://github.com/legoater/qemu aspeed-next
+We don't have such convenience functions at the qdev layer.  Can't see
+why we couldn't add them.
 
-Thanks,
+Number of orphaned device types I see by bus_type:
 
-C.
+    69      busless
+    15      ISA
+    33      PCI
+    11      SSI
+    209     System
+    2       apple-desktop-bus
+    23      i2c-bus
+    2       sd-bus
+    1       spapr-vio-bus
+    2       usb-bus
+
+Again, not a problem with the device types, but the code that creates
+and realizes them.
+
+Bus types commonly provide a layer above qdev for that.  Perhaps these
+layers could also use convenience functions to more easily deal with
+setting the QOM parent.
 
 

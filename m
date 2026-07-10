@@ -4,80 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3476C44506
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:02:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFED0C43458
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:02:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiIF1-0001Ys-BS; Fri, 10 Jul 2026 16:54:35 -0400
+	id 1wiIK9-0002Up-SK; Fri, 10 Jul 2026 16:59:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIEy-0001VZ-O4
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:33 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1wiIIR-0000yL-6y
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:58:13 -0400
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIEm-0000ji-Uj
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:32 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-8487214ad2bso1789717b3a.1
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:54:20 -0700 (PDT)
+ id 1wiIIE-0001yG-1d
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:58:06 -0400
+Received: by mail-pj1-x102f.google.com with SMTP id
+ 98e67ed59e1d1-385ea3ce80dso1645912a91.2
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:57:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783716859; x=1784321659; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783717072; x=1784321872; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=AH60zWDle7diIfRrGmEWIKGfqDNGJU7oKLZ50WZchqw=;
- b=TDJuJF4lMoea6rieQL6LVztyxKK4cqYT252U7XZVhFKXoy3T2uImnMfmI6Wrczm6jE
- tAlmR/zxYmJQwPSTlKeSQV0fMUer0ptk0rpj4c4Lf1O8oVlv7Rryfft+zU7KCcGPtOF4
- +XCV2v7eNZJzbQAB5L/wqJTxFOEBzaiTO7d0tx72OoHhtS2jhoAOfOBwy0+J4WEzQ/xG
- TnqgRKWbRvebkNopbsX+ZXOzjqKvyT4YOXDtWZF2irkRtPhZCmPaZlKC7gyhfJtR9feY
- +m078IHKz48PIJun/o5F8X3j8inzYU581hoJJN2UadIC03UPUYMvfDWuFjpkwPbK1vYS
- Q8iA==
+ bh=KpnTdJpquXSGqeXOM/ODDLLKulghlNdrEhAgoBJAG/g=;
+ b=O4odXN0/2FJ2BI+krkEQzvAGSglPW4QlsfSykLmYMmLjnt0CoZ7ScRcI/kgFhQInIQ
+ 04OY0JmsXsoUY8+Wz5ze5ZTiEgFy7veAmgwkMp3aL5CD+1iVzmBuzZhjoML+e/4zKg4q
+ 9ajILiGTEFtCnX0yK89dBsKxowbQFLKaDKxDlVYnNHrerAb3OMc+/pk66dFNJrWKwXk0
+ bkW/ImIQkHDvNa/17rbtAKddFcZIg/5QAUMRa9abldb5x6RzrjxabduL7l0VwaPIxzTp
+ de+UJ6yofvcr/xNZAEeCJLrScp5mMGJveccugz3SEp9GItqgoQ7uvTV1b6Tf05lLLsVF
+ Xnzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783716859; x=1784321659;
+ d=1e100.net; s=20251104; t=1783717072; x=1784321872;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=AH60zWDle7diIfRrGmEWIKGfqDNGJU7oKLZ50WZchqw=;
- b=pwzS/g4rnhTgmgfGkds55c1ha+6lXqvJ4sbll+LiMyL5a4A72hAv5ltVeHaK6BXACk
- d5xFfdhD7TU/8jB0WEr+L0pSd8Rfh3gIp/yViJ+6C0yRlcGp1rZcsvNHYbiP7ToXX4Sx
- VeD4shG4wOe0IRcCyIHGwbVt9Y8qMUPetDOQ5QgcsMkFFYw/DzArFkD8Z3eDPpvs0RUM
- eb9PewL3JugvIh6bYFMZq1L1c6SozbCN5ORxKXHjukAax9NToO9vPIyibOeT0t5Gjpv8
- 2+kR05+n5ReaNUASR6hJIM1FxPs3dmbmty3GbLViU632ihB0zxtTMuXnurOTc22F9LDg
- OiTA==
-X-Gm-Message-State: AOJu0Ywl6F0aKXZdys9QVYFSwONzwmWN13nZkwg2uxDoKl1WjuTylkxV
- 4jtku45KlEk2sFQ5k1EeMapBvl/kN7/4k8myzV5Cgihlg1Ro31FMluYb+v2tMl1On2Zpm1R2hTB
- BVf7O
-X-Gm-Gg: AfdE7ckBYrtuaC1QrcTuFopL5Yi2GwWd06re3IPJYwCLVPD6IoFwO4emYfc8Ujh8XmP
- VTooc2m7tm9/e9lP+S98vcUjxpT85aqOBwbjWmCTlciDMu3KX45oYXrXPanQRi01gy8mWuO2UWH
- J3cquT918gVNX1C1r2FXyjL9m/Ml1eMQVIxLr4YrPsgeiJm2yOjynwPS0tY6ptG5Uz5i6o7jVZK
- FSuVDma4CSI5vArc1Aqdq4aDMLtqOXYhg2Q7RJsz8o4Fcs6uucx5GGRH2FWe12OMHsqW33CmYtt
- 5cVGlaQ1g840Cnvtl7fpqxjSGiYmSJbA4eq0qu+555kJ5ut/Z4B8Dr2J9xBJI8koo02bqfB+sLf
- vUYLCHH18KHfnR5cYXZ5+7cYR1HQouDRByRMPI0rw6+gMPwHZmknKQQLj3Xd5fVdAi5LUQC16S/
- Vs7DuR58UGInwC3o4jAA==
-X-Received: by 2002:a05:6a00:c88:b0:848:2f77:e2dd with SMTP id
- d2e1a72fcca58-848897a7553mr512136b3a.70.1783716859449; 
- Fri, 10 Jul 2026 13:54:19 -0700 (PDT)
+ bh=KpnTdJpquXSGqeXOM/ODDLLKulghlNdrEhAgoBJAG/g=;
+ b=KHw0Q8qA3xa8fYCZQF1aK0Au0kHdaKiFFET/rqzHbV70xXyysHqIIOXfqgaKODZeNN
+ 10yBMAhy4lElNSsaPubs4WvtwOXI71RfxOyHXgGOSbOu6Jo2P/Iz84CRwMx3ezQ5GeIA
+ 12+qDK0ha3zZoUK/6cNHYNRQR9UoMODaJJDEmqIwSmVlWpZ9XsgmqNmTaOXkrWhEQaW5
+ KlGNDDdglx3O3UKwOg+NMQGrwDBgVx81HowmBnUb8n6ed/lu24Eum23acQjm5yU6ZKTl
+ y/DbyYFlqVDuujLTlYhA1eHRWvmNqOy3VTqpN4v1PmmRQkO95QycEDfvubVi1mkfyaLb
+ 2cMg==
+X-Gm-Message-State: AOJu0Yw/Gf6b488nQYPVE8ogS+UHQDUJGQqU5SpsGIBH4WFTGxqmKq13
+ paaYHuEHGQu4DkQZtI6/fDUM4L7z3T5RI98KEP5UiIgEg8B3S0OEuCoWo0OFl5jGmZs=
+X-Gm-Gg: AfdE7cm/tDRGFFH33BfdSGGFTN45K65XDY4ymF+kjscDT842cr35IdydVgjlKPSnOMq
+ NQfETfDxxvTnwRj9TQgJAHPRCb5vSce9WiAfJHe+XT5/BTKvwshIEpyp348CeszoEqC4V0ntikM
+ uTaPCas8qyHMgx51M4M+ZJ2IlsnFhTXCWFz4W3iP6pI5YBdu7Pmy79X0GhjeHQ4HKMI13VGGioA
+ GBzc1p0kTC6YLgW1I1BpitZhXW8jdns6q+fRSxE9GZ6l6LA5KhcsM1A/M2S3SLJzwfI5N+tipUC
+ WZssBsBtqaXmWRnPJtsJdknYubJrvaIR+Z6cUaJrTf8TyydLV4oma2Sv9TkbCVZuHb02/uegClD
+ QO9PjLmR65YGu2gxn3gYQb5SpY87td/ilTEPu0chcLMAujLQJosmUZhNwp/7jHL7aY1kkql1W6N
+ 9NPT+0ZHXpugnTII/8cgr5qccPuGLp
+X-Received: by 2002:a17:90b:164b:b0:37f:ceed:e1d8 with SMTP id
+ 98e67ed59e1d1-38dc7730cbdmr483202a91.12.1783717072370; 
+ Fri, 10 Jul 2026 13:57:52 -0700 (PDT)
 Received: from stoup.. ([71.212.146.49]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-847f6d76106sm10780574b3a.40.2026.07.10.13.54.18
+ 98e67ed59e1d1-38a58792cdasm3256221a91.16.2026.07.10.13.57.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2026 13:54:19 -0700 (PDT)
+ Fri, 10 Jul 2026 13:57:51 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, jcmvbkbc@gmail.com
-Subject: [PATCH v3 15/51] cpu: Use interval-tree for CPUBreakpoint
-Date: Fri, 10 Jul 2026 13:53:25 -0700
-Message-ID: <20260710205401.836304-16-richard.henderson@linaro.org>
+Subject: [PATCH v3 49/51] accel/tcg: Change tlb_flush_range_* to use addr/last
+Date: Fri, 10 Jul 2026 13:53:59 -0700
+Message-ID: <20260710205401.836304-50-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260710205401.836304-1-richard.henderson@linaro.org>
 References: <20260710205401.836304-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
 X-Spam_score_int: 4
 X-Spam_score: 0.4
 X-Spam_bar: /
@@ -100,385 +99,253 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Use a balanced binary tree rather than a simple list for breakpoints.
-Using an interval tree makes it easy to probe for all breakpoints on
-a virtual page.
+Plugs a hole in the API by which one cannot flush the
+entire address space with one range.  There are only a
+few users, so it's easy to update them all at once.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/breakpoint.h   |  4 +--
- include/hw/core/cpu.h       |  3 +-
- accel/tcg/cpu-exec.c        | 58 +++++++++++++++++++++----------------
- accel/whpx/whpx-common.c    |  9 +++---
- cpu-common.c                | 46 +++++++++++++++--------------
- hw/core/cpu-common.c        |  1 -
- linux-user/main.c           | 14 ++++++---
- target/i386/whpx/whpx-all.c | 15 +++++-----
- 8 files changed, 84 insertions(+), 66 deletions(-)
+ include/exec/cputlb.h             | 12 ++++++------
+ accel/tcg/cputlb.c                | 27 ++++++++++++++++-----------
+ target/arm/tcg/tlb-insns.c        | 21 +++++++++++----------
+ target/hppa/mem_helper.c          |  3 +--
+ target/loongarch/tcg/tlb_helper.c |  5 +++--
+ target/ppc/mmu_helper.c           |  4 ++--
+ 6 files changed, 39 insertions(+), 33 deletions(-)
 
-diff --git a/include/exec/breakpoint.h b/include/exec/breakpoint.h
-index 6da8a007df..bb7cbc626d 100644
---- a/include/exec/breakpoint.h
-+++ b/include/exec/breakpoint.h
-@@ -8,6 +8,7 @@
- #ifndef EXEC_BREAKPOINT_H
- #define EXEC_BREAKPOINT_H
+diff --git a/include/exec/cputlb.h b/include/exec/cputlb.h
+index f7f7020382..30e1d1f93e 100644
+--- a/include/exec/cputlb.h
++++ b/include/exec/cputlb.h
+@@ -209,21 +209,21 @@ void tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *cpu, vaddr addr,
+  * tlb_flush_range_by_mmuidx
+  * @cpu: CPU whose TLB should be flushed
+  * @addr: virtual address of the start of the range to be flushed
+- * @len: length of range to be flushed
++ * @last: virtual address of the end of the range to be flushed, inclusive
+  * @idxmap: bitmap of mmu indexes to flush
+  * @bits: number of significant bits in address
+  *
+- * For each mmuidx in @idxmap, flush all pages within [@addr,@addr+@len),
++ * For each mmuidx in @idxmap, flush all pages within [@addr,@last]
+  * comparing only the low @bits worth of each virtual page.
+  */
+ void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
+-                               vaddr len, MMUIdxMap idxmap,
++                               vaddr last, MMUIdxMap idxmap,
+                                unsigned bits);
  
-+#include "qemu/interval-tree.h"
- #include "qemu/queue.h"
- #include "exec/vaddr.h"
- #include "exec/memattrs.h"
-@@ -29,10 +30,9 @@ typedef uint32_t BreakpointFlags;
- #define BP_WATCHPOINT_HIT       (BP_MEM_ACCESS << BP_HIT_SHIFT)
- 
- struct CPUBreakpoint {
--    vaddr pc;
-+    IntervalTreeNode itree;     /* start == last == pc */
-     BreakpointFlags flags;
-     unsigned id;
--    QTAILQ_ENTRY(CPUBreakpoint) entry;
- };
- 
- struct CPUWatchpoint {
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 5c01908f83..b8a1419860 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -30,6 +30,7 @@
- #include "qapi/qapi-types-machine.h"
- #include "qapi/qapi-types-run-state.h"
- #include "qemu/bitmap.h"
-+#include "qemu/interval-tree.h"
- #include "qemu/rcu_queue.h"
- #include "qemu/queue.h"
- #include "qemu/lockcnt.h"
-@@ -523,7 +524,7 @@ struct CPUState {
-     QTAILQ_ENTRY(CPUState) node;
- 
-     /* ice debug support */
--    QTAILQ_HEAD(, CPUBreakpoint) breakpoints;
-+    IntervalTreeRoot breakpoints;
- 
-     QTAILQ_HEAD(, CPUWatchpoint) watchpoints;
-     CPUWatchpoint *watchpoint_hit;
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 6547cc70c9..2762cf6705 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -296,8 +296,8 @@ static void log_cpu_exec(vaddr pc, CPUState *cpu,
- static bool check_for_breakpoints_slow(CPUState *cpu, vaddr pc,
-                                        uint32_t *cflags)
- {
-+    IntervalTreeNode *n;
-     CPUBreakpoint *bp;
--    bool match_page = false;
- 
-     /*
-      * Singlestep overrides breakpoints.
-@@ -312,33 +312,34 @@ static bool check_for_breakpoints_slow(CPUState *cpu, vaddr pc,
-         return false;
-     }
- 
--    QTAILQ_FOREACH(bp, &cpu->breakpoints, entry) {
--        /*
--         * If we have an exact pc match, trigger the breakpoint.
--         * Otherwise, note matches within the page.
--         */
--        if (pc == bp->pc) {
--            bool match_bp = false;
--
--            if (bp->flags & BP_GDB) {
--                match_bp = true;
--            } else if (bp->flags & BP_CPU) {
-+    n = interval_tree_iter_first(&cpu->breakpoints, pc, pc);
-+    if (n) {
- #ifdef CONFIG_USER_ONLY
--                g_assert_not_reached();
-+        bp = container_of(n, CPUBreakpoint, itree);
-+        assert(bp->flags & BP_GDB);
-+        goto found;
+ /* Similarly, with broadcast and syncing. */
+ void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *cpu,
+                                                vaddr addr,
+-                                               vaddr len,
++                                               vaddr last,
+                                                MMUIdxMap idxmap,
+                                                unsigned bits);
  #else
--                const TCGCPUOps *tcg_ops = cpu->cc->tcg_ops;
--                assert(tcg_ops->debug_check_breakpoint);
--                match_bp = tcg_ops->debug_check_breakpoint(cpu, bp);
--#endif
-+        /* Prefer GDB breakpoint over architectural breakpoint. */
-+        do {
-+            bp = container_of(n, CPUBreakpoint, itree);
-+            if (bp->flags & BP_GDB) {
-+                goto found;
-             }
-+            n = interval_tree_iter_next(n, pc, pc);
-+        } while (n);
- 
--            if (match_bp) {
--                cpu->exception_index = EXCP_DEBUG;
--                return true;
-+        const TCGCPUOps *tcg_ops = cpu->cc->tcg_ops;
-+        assert(tcg_ops->debug_check_breakpoint);
-+
-+        for (n = interval_tree_iter_first(&cpu->breakpoints, pc, pc); n;
-+             n = interval_tree_iter_next(n, pc, pc)) {
-+            bp = container_of(n, CPUBreakpoint, itree);
-+            if ((bp->flags & BP_CPU) &&
-+                tcg_ops->debug_check_breakpoint(cpu, bp)) {
-+                goto found;
-             }
--        } else if (((pc ^ bp->pc) & TARGET_PAGE_MASK) == 0) {
--            match_page = true;
-         }
-+#endif
-     }
- 
-     /*
-@@ -353,17 +354,24 @@ static bool check_for_breakpoints_slow(CPUState *cpu, vaddr pc,
-      * invalidated, nor would any TB need to be invalidated as
-      * breakpoints are removed.
-      */
--    if (match_page) {
-+    n = interval_tree_iter_first(&cpu->breakpoints,
-+                                 pc & TARGET_PAGE_MASK,
-+                                 pc | ~TARGET_PAGE_MASK);
-+    if (n) {
-         *cflags = (*cflags & ~CF_COUNT_MASK) | CF_NO_GOTO_TB | CF_BP_PAGE | 1;
-     }
-     return false;
-+
-+ found:
-+    cpu->exception_index = EXCP_DEBUG;
-+    return true;
+@@ -268,13 +268,13 @@ tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *cpu, vaddr addr,
+ {
+ }
+ static inline void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
+-                                             vaddr len, MMUIdxMap idxmap,
++                                             vaddr last, MMUIdxMap idxmap,
+                                              unsigned bits)
+ {
+ }
+ static inline void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *cpu,
+                                                              vaddr addr,
+-                                                             vaddr len,
++                                                             vaddr last,
+                                                              MMUIdxMap idxmap,
+                                                              unsigned bits)
+ {
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 2c0f7bed52..0a49b87bcb 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -761,13 +761,12 @@ static void tlb_flush_range_by_mmuidx_async_1(CPUState *cpu,
+     g_free(d);
  }
  
- static inline bool check_for_breakpoints(CPUState *cpu, vaddr pc,
-                                          uint32_t *cflags)
+-void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
+-                               vaddr len, MMUIdxMap idxmap,
+-                               unsigned bits)
++void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr, vaddr last,
++                               MMUIdxMap idxmap, unsigned bits)
  {
--    return unlikely(!QTAILQ_EMPTY(&cpu->breakpoints)) &&
--        check_for_breakpoints_slow(cpu, pc, cflags);
-+    return unlikely(!interval_tree_is_empty(&cpu->breakpoints)) &&
-+           check_for_breakpoints_slow(cpu, pc, cflags);
+     TLBFlushRangeData d = {
+         .addr = addr & TARGET_PAGE_MASK,
+-        .last = (addr + len - 1) & TARGET_PAGE_MASK,
++        .last = last & TARGET_PAGE_MASK,
+         .idxmap = idxmap,
+         .bits = bits,
+     };
+@@ -795,18 +794,20 @@ void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
+ void tlb_flush_page_bits_by_mmuidx(CPUState *cpu, vaddr addr,
+                                    MMUIdxMap idxmap, unsigned bits)
+ {
+-    tlb_flush_range_by_mmuidx(cpu, addr, TARGET_PAGE_SIZE, idxmap, bits);
++    /*
++     * The implementation above only cares about the page of @last,
++     * so we don't need to find the end of the page for @addr.
++     */
++    tlb_flush_range_by_mmuidx(cpu, addr, addr, idxmap, bits);
  }
  
- /**
-diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
-index 247e12db81..74113b1ec1 100644
---- a/accel/whpx/whpx-common.c
-+++ b/accel/whpx/whpx-common.c
-@@ -112,16 +112,17 @@ int whpx_first_vcpu_starting(CPUState *cpu)
- 
-     g_assert(bql_locked());
- 
--    if (!QTAILQ_EMPTY(&cpu->breakpoints) ||
-+    if (!interval_tree_is_empty(&cpu->breakpoints) ||
-             (whpx->breakpoints.breakpoints &&
-              whpx->breakpoints.breakpoints->used)) {
--        CPUBreakpoint *bp;
-+        IntervalTreeNode *n;
-         int i = 0;
-         bool update_pending = false;
- 
--        QTAILQ_FOREACH(bp, &cpu->breakpoints, entry) {
-+        for (n = interval_tree_iter_first(&cpu->breakpoints, 0, -1); n;
-+             n = interval_tree_iter_next(n, 0, -1)) {
-             if (i >= whpx->breakpoints.original_address_count ||
--                bp->pc != whpx->breakpoints.original_addresses[i]) {
-+                n->start != whpx->breakpoints.original_addresses[i]) {
-                 update_pending = true;
-             }
- 
-diff --git a/cpu-common.c b/cpu-common.c
-index 9476bb612a..0287022de4 100644
---- a/cpu-common.c
-+++ b/cpu-common.c
-@@ -392,13 +392,13 @@ void process_queued_cpu_work(CPUState *cpu)
- /* Return true if PC matches an installed breakpoint.  */
- bool cpu_breakpoint_test(CPUState *cpu, vaddr pc, BreakpointFlags mask)
+ void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
+-                                               vaddr addr,
+-                                               vaddr len,
+-                                               MMUIdxMap idxmap,
+-                                               unsigned bits)
++                                               vaddr addr, vaddr last,
++                                               MMUIdxMap idxmap, unsigned bits)
  {
--    CPUBreakpoint *bp;
-+    IntervalTreeNode *n;
- 
--    if (unlikely(!QTAILQ_EMPTY(&cpu->breakpoints))) {
--        QTAILQ_FOREACH(bp, &cpu->breakpoints, entry) {
--            if (bp->pc == pc && (bp->flags & mask)) {
--                return true;
--            }
-+    for (n = interval_tree_iter_first(&cpu->breakpoints, pc, pc); n;
-+         n = interval_tree_iter_next(n, pc, pc)) {
-+        CPUBreakpoint *bp = container_of(n, CPUBreakpoint, itree);
-+        if (bp->flags & mask) {
-+            return true;
-         }
-     }
-     return false;
-@@ -414,18 +414,14 @@ int cpu_breakpoint_insert(CPUState *cpu, vaddr pc, BreakpointFlags flags,
-         pc = cpu->cc->gdb_adjust_breakpoint(cpu, pc);
-     }
- 
--    bp = g_malloc(sizeof(*bp));
-+    bp = g_new0(CPUBreakpoint, 1);
- 
--    bp->pc = pc;
-+    bp->itree.start = pc;
-+    bp->itree.last = pc;
-     bp->flags = flags;
-     bp->id = id;
- 
--    /* keep all GDB-injected breakpoints in front */
--    if (flags & BP_GDB) {
--        QTAILQ_INSERT_HEAD(&cpu->breakpoints, bp, entry);
--    } else {
--        QTAILQ_INSERT_TAIL(&cpu->breakpoints, bp, entry);
--    }
-+    interval_tree_insert(&bp->itree, &cpu->breakpoints);
- 
-     if (breakpoint) {
-         *breakpoint = bp;
-@@ -438,36 +434,42 @@ int cpu_breakpoint_insert(CPUState *cpu, vaddr pc, BreakpointFlags flags,
- /* Remove a specific breakpoint.  */
- int cpu_breakpoint_remove(CPUState *cpu, vaddr pc, BreakpointFlags flags)
+     TLBFlushRangeData d = {
+         .addr = addr & TARGET_PAGE_MASK,
+-        .last = (addr + len - 1) & TARGET_PAGE_MASK,
++        .last = last & TARGET_PAGE_MASK,
+         .idxmap = idxmap,
+         .bits = bits,
+     };
+@@ -847,7 +848,11 @@ void tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
+                                                    MMUIdxMap idxmap,
+                                                    unsigned bits)
  {
--    CPUBreakpoint *bp;
-+    IntervalTreeNode *n;
- 
-     if (cpu->cc->gdb_adjust_breakpoint) {
-         pc = cpu->cc->gdb_adjust_breakpoint(cpu, pc);
-     }
- 
--    QTAILQ_FOREACH(bp, &cpu->breakpoints, entry) {
--        if (bp->pc == pc && bp->flags == flags) {
-+    for (n = interval_tree_iter_first(&cpu->breakpoints, pc, pc); n;
-+         n = interval_tree_iter_next(n, pc, pc)) {
-+        CPUBreakpoint *bp = container_of(n, CPUBreakpoint, itree);
-+        if (bp->flags == flags) {
-             cpu_breakpoint_remove_by_ref(cpu, bp);
-             return 0;
-         }
-     }
-+
-     return -ENOENT;
+-    tlb_flush_range_by_mmuidx_all_cpus_synced(src_cpu, addr, TARGET_PAGE_SIZE,
++    /*
++     * The implementation above only cares about the page of @last,
++     * so we don't need to find the end of the page for @addr.
++     */
++    tlb_flush_range_by_mmuidx_all_cpus_synced(src_cpu, addr, addr,
+                                               idxmap, bits);
  }
  
- /* Remove a specific breakpoint by reference.  */
- void cpu_breakpoint_remove_by_ref(CPUState *cpu, CPUBreakpoint *bp)
- {
--    QTAILQ_REMOVE(&cpu->breakpoints, bp, entry);
--
--    trace_breakpoint_remove(cpu->cpu_index, bp->pc, bp->flags);
-+    interval_tree_remove(&bp->itree, &cpu->breakpoints);
-+    trace_breakpoint_remove(cpu->cpu_index, bp->itree.start, bp->flags);
-     g_free(bp);
+diff --git a/target/arm/tcg/tlb-insns.c b/target/arm/tcg/tlb-insns.c
+index b24eb57788..cf1698941c 100644
+--- a/target/arm/tcg/tlb-insns.c
++++ b/target/arm/tcg/tlb-insns.c
+@@ -819,7 +819,7 @@ static const ARMCPRegInfo tlbi_el3_cp_reginfo[] = {
+ 
+ typedef struct {
+     uint64_t base;
+-    uint64_t length;
++    uint64_t last;
+ } TLBIRange;
+ 
+ static ARMGranuleSize tlbi_range_tg_to_gran_size(int tg)
+@@ -847,8 +847,8 @@ static TLBIRange tlbi_aa64_get_range(CPUARMState *env, ARMMMUIdx mmuidx,
+     /* Extract one bit to represent the va selector in use. */
+     uint64_t select = sextract64(value, 36, 1);
+     ARMVAParameters param = aa64_va_parameters(env, select, mmuidx, true, false);
+-    TLBIRange ret = { };
+     ARMGranuleSize gran;
++    uint64_t base, length;
+ 
+     page_size_granule = extract64(value, 46, 2);
+     gran = tlbi_range_tg_to_gran_size(page_size_granule);
+@@ -857,7 +857,8 @@ static TLBIRange tlbi_aa64_get_range(CPUARMState *env, ARMMMUIdx mmuidx,
+     if (gran != param.gran || gran == GranInvalid) {
+         qemu_log_mask(LOG_GUEST_ERROR, "Invalid tlbi page size granule %d\n",
+                       page_size_granule);
+-        return ret;
++        /* The behaviour of the insn is undefined. */
++        return (TLBIRange) { 0, 0 };
+     }
+ 
+     page_shift = arm_granule_bits(gran);
+@@ -865,12 +866,12 @@ static TLBIRange tlbi_aa64_get_range(CPUARMState *env, ARMMMUIdx mmuidx,
+     scale = extract64(value, 44, 2);
+     exponent = (5 * scale) + 1;
+ 
+-    ret.length = (num + 1) << (exponent + page_shift);
++    length = (num + 1) << (exponent + page_shift);
+ 
+     if (param.select) {
+-        ret.base = sextract64(value, 0, 37);
++        base = sextract64(value, 0, 37);
+     } else {
+-        ret.base = extract64(value, 0, 37);
++        base = extract64(value, 0, 37);
+     }
+     if (param.ds) {
+         /*
+@@ -880,9 +881,9 @@ static TLBIRange tlbi_aa64_get_range(CPUARMState *env, ARMMMUIdx mmuidx,
+          */
+         page_shift = 16;
+     }
+-    ret.base <<= page_shift;
++    base <<= page_shift;
+ 
+-    return ret;
++    return (TLBIRange){ .base = base, .last = base + length - 1 };
  }
  
- /* Remove all matching breakpoints. */
- void cpu_breakpoint_remove_all(CPUState *cpu, BreakpointFlags mask)
- {
--    CPUBreakpoint *bp, *next;
-+    IntervalTreeNode *n;
+ static void do_rvae_write(CPUARMState *env, uint64_t value,
+@@ -898,12 +899,12 @@ static void do_rvae_write(CPUARMState *env, uint64_t value,
+     if (synced) {
+         tlb_flush_range_by_mmuidx_all_cpus_synced(env_cpu(env),
+                                                   range.base,
+-                                                  range.length,
++                                                  range.last,
+                                                   idxmap,
+                                                   bits);
+     } else {
+         tlb_flush_range_by_mmuidx(env_cpu(env), range.base,
+-                                  range.length, idxmap, bits);
++                                  range.last, idxmap, bits);
+     }
+ }
  
--    QTAILQ_FOREACH_SAFE(bp, &cpu->breakpoints, entry, next) {
-+    n = interval_tree_iter_first(&cpu->breakpoints, 0, -1);
-+    while (n) {
-+        CPUBreakpoint *bp = container_of(n, CPUBreakpoint, itree);
-+
-+        n = interval_tree_iter_next(n, 0, -1);
-         if (bp->flags & mask) {
-             cpu_breakpoint_remove_by_ref(cpu, bp);
-         }
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index e314f916f8..5c2d7ed42c 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -322,7 +322,6 @@ static void cpu_common_initfn(Object *obj)
-     qemu_mutex_init(&cpu->work_mutex);
-     qemu_lockcnt_init(&cpu->in_ioctl_lock);
-     QSIMPLEQ_INIT(&cpu->work_list);
--    QTAILQ_INIT(&cpu->breakpoints);
-     QTAILQ_INIT(&cpu->watchpoints);
+diff --git a/target/hppa/mem_helper.c b/target/hppa/mem_helper.c
+index 01e6149c81..394e975533 100644
+--- a/target/hppa/mem_helper.c
++++ b/target/hppa/mem_helper.c
+@@ -106,8 +106,7 @@ static void hppa_flush_tlb_ent(CPUHPPAState *env, HPPATLBEntry *ent,
+     trace_hppa_tlb_flush_ent(env, ent, ent->itree.start,
+                              ent->itree.last, ent->pa);
  
-     cpu_exec_initfn(cpu);
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 83b9c88ac4..4372d0b5a6 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -239,7 +239,6 @@ CPUArchState *cpu_copy(CPUArchState *env)
-     CPUState *cpu = env_cpu(env);
-     CPUState *new_cpu = cpu_create(cpu_type);
-     CPUArchState *new_env = cpu_env(new_cpu);
--    CPUBreakpoint *bp;
+-    tlb_flush_range_by_mmuidx(cs, ent->itree.start,
+-                              ent->itree.last - ent->itree.start + 1,
++    tlb_flush_range_by_mmuidx(cs, ent->itree.start, ent->itree.last,
+                               HPPA_MMU_FLUSH_MASK, TARGET_LONG_BITS);
  
-     /* Reset non arch specific state */
-     cpu_reset(new_cpu);
-@@ -258,9 +257,16 @@ CPUArchState *cpu_copy(CPUArchState *env)
-     /* Clone all break/watchpoints.
-        Note: Once we support ptrace with hw-debug register access, make sure
-        BP_CPU break/watchpoints are handled correctly on clone. */
--    QTAILQ_INIT(&new_cpu->breakpoints);
--    QTAILQ_FOREACH(bp, &cpu->breakpoints, entry) {
--        cpu_breakpoint_insert(new_cpu, bp->pc, bp->flags, 0, NULL);
-+    if (!interval_tree_is_empty(&cpu->breakpoints)) {
-+        IntervalTreeNode *n;
-+
-+        memset(&new_cpu->breakpoints, 0, sizeof(new_cpu->breakpoints));
-+        for (n = interval_tree_iter_first(&cpu->breakpoints, 0, -1); n;
-+             n = interval_tree_iter_next(n, 0, -1)) {
-+            CPUBreakpoint *bp = container_of(n, CPUBreakpoint, itree);
-+            cpu_breakpoint_insert(new_cpu, bp->itree.start,
-+                                  bp->flags, bp->id, NULL);
-+        }
+     /* Never clear BTLBs, unless forced to do so. */
+diff --git a/target/loongarch/tcg/tlb_helper.c b/target/loongarch/tcg/tlb_helper.c
+index a4b90beca6..3a708ebf3a 100644
+--- a/target/loongarch/tcg/tlb_helper.c
++++ b/target/loongarch/tcg/tlb_helper.c
+@@ -130,13 +130,14 @@ static void invalidate_tlb_entry(CPULoongArchState *env, int index)
+ 
+     tlb_v = pte_present(env, tlb->tlb_entry0);
+     if (tlb_v) {
+-        tlb_flush_range_by_mmuidx(env_cpu(env), addr, pagesize,
++        tlb_flush_range_by_mmuidx(env_cpu(env), addr, addr + pagesize - 1,
+                                   idxmap, TARGET_LONG_BITS);
      }
  
-     return new_env;
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 634d542821..243413d94c 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -1688,8 +1688,8 @@ void whpx_translate_cpu_breakpoints(
-     CPUState *cpu,
-     int cpu_breakpoint_count)
- {
--    CPUBreakpoint *bp;
-     int cpu_bp_index = 0;
-+    IntervalTreeNode *n;
- 
-     breakpoints->original_addresses =
-         g_renew(vaddr, breakpoints->original_addresses, cpu_breakpoint_count);
-@@ -1721,14 +1721,15 @@ void whpx_translate_cpu_breakpoints(
+     tlb_v = pte_present(env, tlb->tlb_entry1);
+     if (tlb_v) {
+-        tlb_flush_range_by_mmuidx(env_cpu(env), addr + pagesize, pagesize,
++        tlb_flush_range_by_mmuidx(env_cpu(env), addr + pagesize,
++                                  addr + 2 * pagesize - 1,
+                                   idxmap, TARGET_LONG_BITS);
+     }
+ }
+diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
+index ac60705402..c881191749 100644
+--- a/target/ppc/mmu_helper.c
++++ b/target/ppc/mmu_helper.c
+@@ -734,8 +734,8 @@ static void ppcemb_tlb_flush(CPUState *cs, ppcemb_tlb_t *tlb)
+         mmu_idx <<= 2;
      }
  
-     /* 2. Map all CPU breakpoints to WHPX breakpoints */
--    QTAILQ_FOREACH(bp, &cpu->breakpoints, entry) {
--        int i;
-+    for (n = interval_tree_iter_first(&cpu->breakpoints, 0, -1); n;
-+         n = interval_tree_iter_next(n, 0, -1)) {
-+        vaddr pc = n->start;
-         bool found = false;
+-    tlb_flush_range_by_mmuidx(cs, tlb->EPN, tlb->size, mmu_idx,
+-                              TARGET_LONG_BITS);
++    tlb_flush_range_by_mmuidx(cs, tlb->EPN, tlb->EPN + tlb->size - 1,
++                              mmu_idx, TARGET_LONG_BITS);
+ }
  
-         /* This will be used to detect changed CPU breakpoints later. */
--        breakpoints->original_addresses[cpu_bp_index++] = bp->pc;
-+        breakpoints->original_addresses[cpu_bp_index++] = pc;
- 
--        for (i = 0; i < new_breakpoints->used; i++) {
-+        for (int i = 0; i < new_breakpoints->used; i++) {
-             /*
-              * WARNING: This loop has O(N^2) complexity, where N is the
-              * number of breakpoints. It should not be a bottleneck in
-@@ -1738,7 +1739,7 @@ void whpx_translate_cpu_breakpoints(
-              * high-level breakpoint objects in a tree or hash map.
-              */
- 
--            if (new_breakpoints->data[i].address == bp->pc) {
-+            if (new_breakpoints->data[i].address == pc) {
-                 /* There was already a breakpoint at this address. */
-                 if (new_breakpoints->data[i].state == WHPX_BP_CLEAR_PENDING) {
-                     new_breakpoints->data[i].state = WHPX_BP_SET;
-@@ -1753,7 +1754,7 @@ void whpx_translate_cpu_breakpoints(
- 
-         if (!found && new_breakpoints->used < new_breakpoints->allocated) {
-             /* No WHPX breakpoint at this address. Create one. */
--            new_breakpoints->data[new_breakpoints->used].address = bp->pc;
-+            new_breakpoints->data[new_breakpoints->used].address = pc;
-             new_breakpoints->data[new_breakpoints->used].state =
-                 WHPX_BP_SET_PENDING;
-             new_breakpoints->used++;
+ void helper_4xx_tlbwe_hi(CPUPPCState *env, target_ulong entry,
 -- 
 2.43.0
 

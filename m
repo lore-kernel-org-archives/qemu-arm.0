@@ -4,80 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C48DC44506
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 015CDC44508
 	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:01:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiIEw-0001Sn-P9; Fri, 10 Jul 2026 16:54:30 -0400
+	id 1wiIEd-00013B-Ca; Fri, 10 Jul 2026 16:54:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIEt-0001Mo-Ou
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:27 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1wiIEa-00011i-VK
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:08 -0400
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIEk-0000hg-3p
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:27 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-8485ef63b68so1226345b3a.1
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:54:17 -0700 (PDT)
+ id 1wiIEX-0000aq-BL
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:54:08 -0400
+Received: by mail-pf1-x432.google.com with SMTP id
+ d2e1a72fcca58-848643382fcso1373184b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:54:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783716857; x=1784321657; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=k40Ct/scLRA6POY4s+1/g3ylMfrjfxUVUANTHep1r88=;
- b=FBeOsRyLde+iffSRs1nbHx263W5LfQKpNFzTdO+EoG6D5zDH0rLgK6WHdUpaXmG9xN
- ZB4yy3qwYA+Lt+1iPQLXdKx+jJT8LMP7mob3imLKSmx4+v8t0AQuwBIebHuiwI3tNtZL
- pqwtz+P5Voeb/bMhy1uIv8Ijfk5/FAWJXJ6tHYcqIwB1Yd0jltfehRgztjV0W8TYKs4n
- SbZZnBH8WeEraOkuAWU+YUZzwHM8GHnCbSbx0x/YL03reyCq1nzrVjvB6v0s202EV8o4
- ZFQb5Tu6A4YsjUHtRQADicZeEueaSqjAOAn9tLjXVc/mGVXYKUBa79HkqD0zy6VhSaWg
- 1y9A==
+ d=linaro.org; s=google; t=1783716844; x=1784321644; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=fEZ0JdYQPiF4MtB15bZdOuQ7ReQG0VTLPTQcrU1J7Cc=;
+ b=gysxetSOvhfUCa9SJXAnasldheiJfNqY5h6Nblfgas6/N7GMWKx4Eue7v8KMOJTq9T
+ U+/whYnABGF5ylOpsp4Bs1yXf9mYjnfCTFPWig0tk7JoaCIca4qgeMlOZN/ZznPlX9ri
+ +VmJSkLjqi+AlE2wFfnpM1vl3rgkbKiuZ/p6slwL4J7n/b8soeLhEKseUqsRmhhHz2Al
+ UEJfbdi4+YlSDPLgdtvKhaHyTtQrI8sEQOD8h1pcaiuZECq906bcSHDK5Jo/ouJJIO5a
+ ly/2LbuKmetYWUMRcBQ980VNY18qHWdXS4EgN82i8BI3uGRtxDzt6OIVkHHULueLjOnJ
+ ogNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783716857; x=1784321657;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=k40Ct/scLRA6POY4s+1/g3ylMfrjfxUVUANTHep1r88=;
- b=Cjoqdid2QwkS2ThjmpGCYyH+1EOiCiDgnAJHe6Yt6mV5vT66PKMKsS5+2pYuES2PUy
- 8OYeB6CF+fS0WPUjAp+xZV2gbqTu+Oyakb94q4Y8ExNshm+y3rRxCel6IZ02hmh7jsez
- F7HWL6b+Sr7oF94jj8H8vYtWi7gzsW16xR3AgGzbA0seVSSiKsAAENPc+c+IR/ksNMFe
- sUGBy1ti9uaPqZpQ3gWKAd1bsXCNTtXmKUPCjD3y/hIW0/q2w4njCZR6aGffo0p5TeQn
- iFvnL3IioAAK2UOsWEl4QGyGvlkp0qwqCJdcGKdMugCsZWlWA6xizMWugvFbo1MXbh94
- Sxhg==
-X-Gm-Message-State: AOJu0Yzv8HT18GVjsXMEod8iDSpDm9O+5EEwWR/H200SBV4Pk4q68XmH
- D6930F+FMrB7eVjcDu8/A/BQzas1GeiTK+55q2lagWNBeCOZNxVqTiwZZ7up+7ppSWU=
-X-Gm-Gg: AfdE7cme5BqBgbTCd/LcPWwEKiJ1kqriNWmVTDSeMxH9JtNgLMyiHsX72SPr9CUMYxe
- wTmHITTbEqGVUfjjuucinmE0/tvyglKW+VeUiol1ZRyDLW5rB09wCOW4sXZ4/Nd6lbBBr/c1Erv
- X/KX4ySuqIetzYwneGTkBvtXvZxS/xXmYoXpj5zCc2koA8p80monqPLwaqxiOOYIVo55ukSD86j
- ROnG0tV6WvRdfCC3oelS7iJfMcRBEBXX69MwY4xYyd9UBvo0VI1YeWrN3tdWR6MI+EZDsQS1B8F
- CI0LX4d9ynV/PQ9yLy8XbVGEM2Iu09zXm3uVFh2WAU5K9XDVMbLpMO9wXmlOgFuO0VIKi9Xe5oV
- EkGkMx0IFXBZRkC3nqvi6JvIQcJwu7WNM8qz1+LlDt9xWPIBtIJngXMCSqBNtE8ItSl4VgCGqMW
- XR6+R4U+W/X7nduT1I5A==
-X-Received: by 2002:a05:6a00:c84:b0:847:7ece:3426 with SMTP id
- d2e1a72fcca58-8488979782emr487915b3a.58.1783716856628; 
- Fri, 10 Jul 2026 13:54:16 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1783716844; x=1784321644;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=fEZ0JdYQPiF4MtB15bZdOuQ7ReQG0VTLPTQcrU1J7Cc=;
+ b=BmubQX2SeuOR4gqT8idoCyu8NmulswmCX9jNmUz2o6fN8EyPDG0Kqjb9W+DApB1qx+
+ FTEa4hkxfmGEV7rZ//jnL2954nXohKQvOjXcYIYOtgnL14OlQ9Geaq4+MV97lpkRYXtj
+ d0S0X2LVPyz0WiI+4pE7sl7l4RF2lFMxG48cr+LXt5Dh6CUQ2nzKJpPJg14CEBOwjz+f
+ 7ohDwMkbPQZeVDCK9zOcUroF+XHylKJwkBclGgEqJZrCcmC0xI4YO/Zc2Fmeq48jcspC
+ Ksm9pogF0/y/XqFfjFOTwxHwbjOo8pwVAyu8kWEu6s4/GVUMQf4FcmLs/gSYI8nZxnYE
+ Zpzg==
+X-Gm-Message-State: AOJu0YyXL22ah/5v0pMBAWRtX6xi2w0YLneJm+23Ogok48kyEscj1s4i
+ HjZ2O0wHIoUo8OGEyBmnhPySEywJuAZVuKcJRJX1EAT89d/DRW1IKo+pK1QycyIsTR4=
+X-Gm-Gg: AfdE7cmQNHkrP98D+SfMLdyIbX5oidsiUvGIoPDWU4SLL5T8dAYbq/Q7XQjnTbiUQ10
+ P3ANaeRcPPRoXdeguHNun8SytetTXFtcMNGzzyyxZskAdB53TGivPL/GgyLLLoTyECXs1+AFu52
+ H7nmsrDM6YUgtYflKJ7HZNd2wbObsWx/DGJp+fAG/T2pzPnVDl5aDUxRIA0Xe9hYB3mo38aGuKX
+ YX2xSsNmY6TsxIEq3wej9xYn6cK9+VthzIkrRPiSgXJBvkkqMaU5IP9LGELV11yYZ1xspJePzcj
+ hp18IEFrqwTM+CEM9Ha/3NnuauXG4mCODCeKpfMj2gJru5Md3kxmXbdlqFP4/PSp25qBwk5fQeO
+ mK3N19nmsrF7vmmD+CxGCDjcb6Bp4Om1yXkV5nnfChK4SLKCRTi9qlv04VWtA/SLWYbWNvRTqoV
+ rZZjuaDnrQqz1Ug9H7EQ==
+X-Received: by 2002:a05:6a00:21cc:b0:848:7443:f2de with SMTP id
+ d2e1a72fcca58-8488961c141mr519521b3a.13.1783716843457; 
+ Fri, 10 Jul 2026 13:54:03 -0700 (PDT)
 Received: from stoup.. ([71.212.146.49]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-847f6d76106sm10780574b3a.40.2026.07.10.13.54.16
+ d2e1a72fcca58-847f6d76106sm10780574b3a.40.2026.07.10.13.54.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2026 13:54:16 -0700 (PDT)
+ Fri, 10 Jul 2026 13:54:02 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, jcmvbkbc@gmail.com
-Subject: [PATCH v3 12/51] target/riscv: Use bp argument in
- riscv_cpu_debug_check_breakpoint
-Date: Fri, 10 Jul 2026 13:53:22 -0700
-Message-ID: <20260710205401.836304-13-richard.henderson@linaro.org>
+Subject: [PATCH v3 00/51] accel/tcg: Use IntervalTree for breakpoints and
+ watchpoints
+Date: Fri, 10 Jul 2026 13:53:10 -0700
+Message-ID: <20260710205401.836304-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260710205401.836304-1-richard.henderson@linaro.org>
-References: <20260710205401.836304-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
 X-Spam_score_int: 4
 X-Spam_score: 0.4
 X-Spam_bar: /
@@ -100,72 +98,135 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Use the ID of the breakpoint instead of a loop over all.
+Changes for v3:
+  - Handle ARMv6 BE-32 within debug_check_watchpoint.
+  - Drop adjust_watchpoint_address.
+  - Change cpu_watchpoint_insert from addr+len to first+last.
+    - Change tlb_flush_range_by_mmuidx to use first+last.
+    - Use tlb_flush_range_by_mmuidx in cpu_watchpoint_insert.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/riscv/debug.c | 44 ++++++--------------------------------------
- 1 file changed, 6 insertions(+), 38 deletions(-)
 
-diff --git a/target/riscv/debug.c b/target/riscv/debug.c
-index 5c378dd2e8..511a69c28d 100644
---- a/target/riscv/debug.c
-+++ b/target/riscv/debug.c
-@@ -941,48 +941,16 @@ void riscv_cpu_debug_excp_handler(CPUState *cs)
-     }
- }
- 
--bool riscv_cpu_debug_check_breakpoint(CPUState *cs, CPUBreakpoint *ignore)
-+bool riscv_cpu_debug_check_breakpoint(CPUState *cs, CPUBreakpoint *bp)
- {
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
--    CPUBreakpoint *bp;
--    target_ulong ctrl;
--    target_ulong pc;
--    int trigger_type;
--    int i;
-+    int i = bp->id;
-+    trigger_type_t trigger_type = get_trigger_type(env, i);
- 
--    QTAILQ_FOREACH(bp, &cs->breakpoints, entry) {
--        for (i = 0; i < env->num_triggers; i++) {
--            trigger_type = get_trigger_type(env, i);
--
--            if (!trigger_common_match(env, trigger_type, i)) {
--                continue;
--            }
--
--            switch (trigger_type) {
--            case TRIGGER_TYPE_AD_MATCH:
--                ctrl = env->tdata1[i];
--                pc = env->tdata2[i];
--
--                if ((ctrl & TYPE2_EXEC) && (bp->pc == pc)) {
--                    env->badaddr = pc;
--                    return true;
--                }
--                break;
--            case TRIGGER_TYPE_AD_MATCH6:
--                ctrl = env->tdata1[i];
--                pc = env->tdata2[i];
--
--                if ((ctrl & TYPE6_EXEC) && (bp->pc == pc)) {
--                    env->badaddr = pc;
--                    return true;
--                }
--                break;
--            default:
--                /* other trigger types are not supported or irrelevant */
--                break;
--            }
--        }
-+    if (trigger_common_match(env, trigger_type, i)) {
-+        env->badaddr = env->tdata2[i];
-+        return true;
-     }
- 
-     return false;
+r~
+
+
+Philippe Mathieu-Daudé (1):
+  cpu: Define BreakpointFlags type
+
+Richard Henderson (50):
+  exec/breakpoint: Move BP declarations from hw/core/cpu.h
+  exec/breakpoint: Merge watchpoint.h
+  qemu/typedefs: Declare CPUBreakpoint and CPUWatchpoint globally
+  hw/core/cpu: Remove exec/breakpoint.h include
+  exec/breakpoint: Add CPUBreakpoint.id
+  exec/watchpoint: Add CPUWatchpoint.id
+  accel/tcg: Pass CPUBreakpoint to debug_check_breakpoint
+  target/arm: Split is_wp out of bp_wp_matches
+  target/arm: Use bp argument in arm_debug_check_breakpoint
+  target/arm: Use wp argument in arm_debug_check_watchpoint
+  target/riscv: Use bp argument in riscv_cpu_debug_check_breakpoint
+  target/riscv: Use bp argument in riscv_cpu_debug_check_watchpoint
+  target/xtensa: Use bp argument in xtensa_debug_check_breakpoint
+  cpu: Use interval-tree for CPUBreakpoint
+  target/arm: Make check_watchpoint_in_range static
+  gdbstub: Report actual watchpoint trigger address
+  cpu: Use interval-tree for CPUWatchpoint
+  exec/breakpoint: Return the new bp from cpu_breakpoint_insert
+  system: Remove cpu_watchpoint_insert error return path
+  exec/breakpoint: Return the new wp from cpu_watchpoint_insert
+  system: Validate flags in cpu_watchpoint_insert
+  cpu-common: Validate flags in cpu_breakpoint_insert
+  exec/breakpoint: Add CPUWatchpoint.hitlast
+  exec/breakpoint: Merge CPUBreakpoint and CPUWatchpoint
+  accel/tcg: Pass watchpoint hit to debug_excp_handler
+  accel/tcg: Pass breakpoint hit to debug_excp_handler
+  target/arm: Use CPUBreakpoint arg in arm_debug_excp_handler
+  target/i386: Pass wp_hit to check_hw_breakpoints
+  target/i386: Use CPUBreakpoint arg in breakpoint_handler
+  target/ppc: Use CPUBreakpoint arg in breakpoint_handler
+  target/ppc: Simplify ppc_cpu_debug_check_breakpoint
+  target/ppc: Simplify ppc_cpu_debug_check_watchpoint
+  target/s390x: Use CPUBreakpoint arg in breakpoint_handler
+  target/riscv: Simplify riscv_cpu_debug_excp_handler
+  target/riscv: Set badaddr in riscv_cpu_debug_excp_handler
+  target/riscv: Merge riscv_cpu_debug_check_{break,watch}point
+  target/xtensa: Restrict xtensa_breakpoint_handler to system mode
+  target/xtensa: Rename xtensa_breakpoint_handler
+  target/xtensa: Simplify xtensa_cpu_debug_excp_handler
+  accel/tcg: Clear BP_WATCHPOINT_HIT after use
+  accel/tcg: Merge CPUState.{break,watch}point_hit
+  target/arm: Simplify v6 watchpoints
+  accel/tcg: Remove TCGCPUOps.adjust_watchpoint_address
+  accel/tcg: Move ALL_MMUIDX_BITS to hw/core/cpu.h
+  accel/tcg: Drop stale assert for vaddr
+  accel/tcg: Use addr/last in tlb_flush_range_locked
+  target/arm: Be more defensive for invalid tlbi_aa64_get_range
+  accel/tcg: Change tlb_flush_range_* to use addr/last
+  system: Use tlb_flush_range_by_mmuidx in cpu_watchpoint_insert
+  accel/tcg: Change cpu_watchpoint_insert to use addr/last
+
+ include/accel/tcg/cpu-ops.h         |  17 +-
+ include/exec/breakpoint.h           |  36 ++--
+ include/exec/cputlb.h               |  12 +-
+ include/exec/watchpoint.h           |  18 --
+ include/hw/core/cpu.h               |  21 +--
+ include/qemu/typedefs.h             |   1 +
+ target/arm/cpu.h                    |   4 +-
+ target/arm/internals.h              |  18 +-
+ target/i386/cpu.h                   |   4 +-
+ target/i386/tcg/helper-tcg.h        |   4 +-
+ target/ppc/cpu.h                    |   4 +-
+ target/ppc/internal.h               |   6 +-
+ target/riscv/cpu.h                  |   4 +-
+ target/riscv/debug.h                |   5 +-
+ target/s390x/tcg/tcg_s390x.h        |   2 +-
+ target/xtensa/cpu.h                 |   8 +-
+ accel/tcg/cpu-exec.c                |  76 ++++----
+ accel/tcg/cputlb.c                  | 113 ++++++------
+ accel/tcg/tcg-accel-ops.c           |  37 ++--
+ accel/tcg/user-exec-stub.c          |  19 +-
+ accel/tcg/watchpoint.c              | 170 +++++++++---------
+ accel/whpx/whpx-common.c            |   9 +-
+ cpu-common.c                        |  68 +++----
+ gdbstub/system.c                    |  49 +++---
+ gdbstub/user.c                      |   9 +-
+ hw/core/cpu-common.c                |   2 -
+ linux-user/main.c                   |  14 +-
+ system/watchpoint.c                 |  80 ++++-----
+ target/arm/cpu.c                    |   1 -
+ target/arm/debug_helper.c           |  14 +-
+ target/arm/hvf/hvf.c                |   6 +-
+ target/arm/hyp_gdbstub.c            |   7 +-
+ target/arm/kvm.c                    |   5 +-
+ target/arm/tcg/cpu-v7m.c            |   1 -
+ target/arm/tcg/debug.c              | 263 +++++++++++++---------------
+ target/arm/tcg/mte_helper.c         |   3 +-
+ target/arm/tcg/tlb-insns.c          |  23 +--
+ target/hppa/mem_helper.c            |   3 +-
+ target/i386/cpu.c                   |   2 +-
+ target/i386/kvm/kvm.c               |  11 +-
+ target/i386/machine.c               |   2 +-
+ target/i386/tcg/bpt_helper.c        |   2 +-
+ target/i386/tcg/system/bpt_helper.c |  81 ++++-----
+ target/i386/tcg/tcg-cpu.c           |   2 +-
+ target/i386/whpx/whpx-all.c         |  15 +-
+ target/loongarch/tcg/tlb_helper.c   |   5 +-
+ target/ppc/cpu.c                    |   9 +-
+ target/ppc/cpu_init.c               |   2 +-
+ target/ppc/kvm.c                    |  14 +-
+ target/ppc/mmu_helper.c             |   4 +-
+ target/ppc/tcg-excp_helper.c        |  85 ++++-----
+ target/riscv/cpu_helper.c           |   6 +-
+ target/riscv/debug.c                | 159 +++--------------
+ target/riscv/tcg/tcg-cpu.c          |   4 +-
+ target/s390x/helper.c               |   1 -
+ target/s390x/kvm/kvm.c              |   7 +-
+ target/s390x/tcg/debug.c            |  28 +--
+ target/xtensa/cpu.c                 |   2 +-
+ target/xtensa/dbg_helper.c          |  31 ++--
+ target/xtensa/helper.c              |  46 ++---
+ 60 files changed, 732 insertions(+), 922 deletions(-)
+ delete mode 100644 include/exec/watchpoint.h
+
 -- 
 2.43.0
 

@@ -4,90 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C39CCC44501
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 14:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00B01C43458
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 15:26:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiCaj-0004Dx-37; Fri, 10 Jul 2026 10:52:37 -0400
+	id 1wiD74-0000sk-I9; Fri, 10 Jul 2026 11:26:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yisooan.dev@gmail.com>)
- id 1wiCah-0004De-NM
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 10:52:35 -0400
-Received: from mail-oi1-f179.google.com ([209.85.167.179])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <yisooan.dev@gmail.com>)
- id 1wiCag-0007cE-DV
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 10:52:35 -0400
-Received: by mail-oi1-f179.google.com with SMTP id
- 5614622812f47-491f5e6d564so529083b6e.1
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 07:52:34 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783695153; x=1784299953;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=6K3++yYqtMVz+66TdVWG0CLOVt7auPHDlu9IMlBdkQk=;
- b=cH7b9oGgG4GI0/TketmMF5Rzy29fHHmqTs1YioqubMQuDuwfi8daIWhqsS3wWPDkOr
- iY9M4dv7hU7w6WEqtrhsqCr3pp3Zt5YZEe4BroniSprbPlyKKvVQjY/ZHcFV++IyBZER
- ISaKWG/NcJgng2/uSaCt1aK1y5c0dFw6qUh1HOxNOWVxtbOrDBMFs/Cxl6XVNxBiZCWA
- 9Aq82iwdwpQ1PtSwfseG74feH1scYfWXnCL6qmIheRW83jxgmKURXJZwiIAHQINfL2Fe
- HpKP38DUMwmjqOJnQ27j9lQoUnvyN6uNx/52mpK1TxSSOK0ukATFUBJz6rBSevTz/RqN
- POrw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ91CDLwmblKs5/n9DKp2pgfY1eFsxNeuVPMykArNPBuxWgBKUpZ3cqN68JIbAOjqxLL0+aVj710bg==@nongnu.org
-X-Gm-Message-State: AOJu0YwCdj2MOvNriMXDyOn6AVLBVB3VXC79gqK/GzIcDejOl44x23hj
- 9wz9sxGI6mOBFmHMj1kdHiaRwdBxfQFRPVLWMJtSmnipZpbb9knCKF9cwjWjsR/iPNs=
-X-Gm-Gg: AfdE7clu5Tr1QU7brCrB9rhyuXfBYy4IAgzW10ghYGo5raph1hipnHNvODcyutnOLIl
- sHFN5I5Xh/NgRRDxpp+94qGDvcNjtyd0I3czLk0jSrWsj7xf0RYfRLMAt6nPw8Q4Af4j0tS4iA1
- 0tkkchVuSBwIWqDUBNU1eQeXLepVJA1NUzz6PrkeNhK6bs7I0pC8iQcKp8FXv5ivdABhXzXiYDa
- earRNfiqlGzhMbfwV/R2eyDGBSYEnc5DTzrpP5PvOJoJMkAVxdXhR/oZd+GRj7OY+SCV4Xyizt8
- jXfOAZ/5XYkU8aWenvU7E4Lsy1zjrLuRz/w4SxJ+0yW6YDWIcg5bORbdennjMFhIfjldiJwMF+3
- uwLR8UZt+gmw1hNu1QtLgh7p/gwpicCH9fqfpYJj8yGiUXWySqs3NWXlbeLmwholdN4URHf3Ebf
- 7Y1mx3k2zQvyTCK1R9lOpeqv0TMsUEN7N6VrOE72S7DbW0Dwza
-X-Received: by 2002:a05:6808:2205:b0:495:4a22:f29e with SMTP id
- 5614622812f47-4a203dbfd0dmr8434026b6e.25.1783695152412; 
- Fri, 10 Jul 2026 07:52:32 -0700 (PDT)
-Received: from mail-oi1-f174.google.com (mail-oi1-f174.google.com.
- [209.85.167.174]) by smtp.gmail.com with ESMTPSA id
- 5614622812f47-4a1afde6cffsm6341127b6e.11.2026.07.10.07.52.32
- for <qemu-arm@nongnu.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Jul 2026 07:52:32 -0700 (PDT)
-Received: by mail-oi1-f174.google.com with SMTP id
- 5614622812f47-4a427e628a9so47791b6e.0
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 07:52:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=1;
- AFNElJ/NoKiftajtyx19g/7wr6oXIWzByQ31n6pGYvoTsyz/hodZHXZytFMNNjwYpexY9uLwdPmv0AB17g==@nongnu.org
-X-Received: by 2002:a05:6808:c3f4:b0:496:11f1:f2b5 with SMTP id
- 5614622812f47-4a202007753mr9756848b6e.10.1783695150115; Fri, 10 Jul 2026
- 07:52:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wiD70-0000r0-Gz
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 11:25:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wiD6k-0003uO-V7
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 11:25:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1783697138;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=/9UJOclM0qjWuIqNTg3Kp+hUdS6wHGjNe0ibCsQIdXM=;
+ b=FQMuDZyJGVtiBq0s1JeSrM/yPbNjmum/HZaiAHNO5t6oV/ObHxxS3+b0LNrcVQ7xhoHY5q
+ FCJpj9R0zgDOv9VBLf3E/6WTMBqF8R0x1gEHJndWHfrGSDUX8s8SDLoyldNmPuRp8WVzKH
+ WjXggeIU5cRoXcI31X8c/whCdhPxhpY=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-410-owYi1dIKOqG1GOpIRlM19A-1; Fri,
+ 10 Jul 2026 11:25:35 -0400
+X-MC-Unique: owYi1dIKOqG1GOpIRlM19A-1
+X-Mimecast-MFC-AGG-ID: owYi1dIKOqG1GOpIRlM19A_1783697133
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C8DAF1956055; Fri, 10 Jul 2026 15:25:31 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2DB041956045; Fri, 10 Jul 2026 15:25:29 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 8913521E6920; Fri, 10 Jul 2026 17:25:26 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Emmanuel Blot <emmanuel.blot@free.fr>
+Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,  Fabiano Rosas
+ <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@kaod.org>,  Steven Lee
+ <steven_lee@aspeedtech.com>,  Troy Lee <leetroy@gmail.com>,  Jamin Lin
+ <jamin_lin@aspeedtech.com>,  Kane Chen <kane_chen@aspeedtech.com>,  Andrew
+ Jeffery <andrew@codeconstruct.com.au>,  Joel Stanley <joel@jms.id.au>,
+ Alexander Hansen <alexander.hansen@9elements.com>,  William de Abreu
+ Pinho <williampinho@meta.com>,  Emmanuel Blot <eblot@meta.com>,
+ qemu-arm@nongnu.org,  Corey Minyard <cminyard@mvista.com>
+Subject: Re: [PATCH v5 6/8] hw/i2c: parent slaves created with
+ i2c_slave_create_simple
+In-Reply-To: <20260701-i2c-adc128d818-anacapa-v5-6-fe8292d86b38@free.fr>
+ (Emmanuel Blot's message of "Wed, 01 Jul 2026 19:28:36 +0200")
+References: <20260701-i2c-adc128d818-anacapa-v5-0-fe8292d86b38@free.fr>
+ <20260701-i2c-adc128d818-anacapa-v5-6-fe8292d86b38@free.fr>
+Date: Fri, 10 Jul 2026 17:25:26 +0200
+Message-ID: <87pl0uyihl.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-References: <20260623-guest-panic-unhandle-v1-1-6adfb6d4221e@ooseel.net>
-In-Reply-To: <20260623-guest-panic-unhandle-v1-1-6adfb6d4221e@ooseel.net>
-From: Leesoo Ahn <lsahn@ooseel.net>
-Date: Fri, 10 Jul 2026 23:52:18 +0900
-X-Gmail-Original-Message-ID: <CANTT7qiAidmrEPD=S7F4s_JNvFYL4cY=CWLbbfuJgOM0syqMbQ@mail.gmail.com>
-X-Gm-Features: AUfX_mwSWH_Sd1f0Xuv3kZHDs_waThqZKSdJLzxJdpePxRaV9PhpOQLdXVn6g3U
-Message-ID: <CANTT7qiAidmrEPD=S7F4s_JNvFYL4cY=CWLbbfuJgOM0syqMbQ@mail.gmail.com>
-Subject: Re: [PATCH] target/arm/hvf: panic the guest if an unhandled exception
- occurs
-To: qemu-devel@nongnu.org
-Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.167.179;
- envelope-from=yisooan.dev@gmail.com; helo=mail-oi1-f179.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: Qjjcq93no_LBKZCOZqun6JvSPSFeS87IXJ5HK1trQDc_1783697133
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -104,43 +98,169 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-ping
+Emmanuel Blot <emmanuel.blot@free.fr> writes:
 
-2026=EB=85=84 6=EC=9B=94 23=EC=9D=BC (=ED=99=94) =EC=98=A4=ED=9B=84 9:56, L=
-eesoo Ahn <lsahn@ooseel.net>=EB=8B=98=EC=9D=B4 =EC=9E=91=EC=84=B1:
->
-> It's worth cleaning up all resources that the guest taking and to quit
-> if an exception in el1 could not be resolved.
->
-> Otherwise, the guest will get in the infinite black-hole by
-> unmodified pc.
->
-> Signed-off-by: Leesoo Ahn <lsahn@ooseel.net>
+> Slaves created with i2c_slave_create_simple() were left unparented and
+> showed up under /machine/unattached with no stable QOM path. Add each
+> slave as a QOM child of its bus, named after its I2C address, so it has
+> a deterministic and addressable QOM path.
+
+Could use an example.
+
+Doesn't tell which machines are affected.
+
+To find affected machines, I captured output of "info qom-tree" by running
+
+    $ echo -e 'info qom-tree\nq' | qemu-system-TARGET -M MACHINE -S -display none -monitor stdio
+
+for all targets and all their machine types.
+
+This fails on my box for a number of machines: misses some image file,
+needs Xen, ...  These are
+
+    an5206
+    boston
+    boston-aia
+    canon-a1100
+    leon3_generic
+    loongson3-virt
+    mcf5208evb
+    microchip-icicle-kit
+    niagara
+    nitro
+    q800
+    sx1
+    sx1-v1
+    xenfv-4.2
+    xenpv
+    xenpvh
+
+Testing them manually would be possible.  Not by me.
+
+Of the ones that run, output differs for
+
+    anacapa-bmc
+    ast1030-evb
+    ast1040-evb
+    ast1060-evb
+    ast2500-evb
+    ast2600-evb
+    ast2700a1-evb
+    ast2700a2-evb
+    ast2700fc
+    bletchley-bmc
+    bpim2u
+    catalina-bmc
+    cubieboard
+    fby35-bmc
+    fuji-bmc
+    g220a-bmc
+    gb200nvl-bmc
+    kudo-bmc
+    lm3s811evb
+    mpc8544ds
+    npcm750-evb
+    npcm845-evb
+    palmetto-bmc
+    powernv10-rainier
+    ppce500
+    quanta-gsj
+    quanta-q71l-bmc
+    rainier-bmc
+    realview-eb
+    realview-eb-mpcore
+    realview-pb-a8
+    realview-pbx-a9
+    romulus-bmc
+    sam460ex
+    supermicro-x11spi-bmc
+    supermicrox11-bmc
+    tiogapass-bmc
+    tt-atlantis
+    versatileab
+    versatilepb
+    vexpress-a15
+    vexpress-a9
+    witherspoon-bmc
+    yosemitev2-bmc
+
+Looking for one with a short diff, I found realview-eb:
+
+         /device[26] (versatile_i2c)
+           /arm_sbcon_i2c[0] (memory-region)
+           /i2c (i2c-bus)
+    -    /device[27] (ds1338)
+    +        /0x68 (ds1338)
+         /device[2] (realview_gic)
+           /gic (arm_gic)
+             /gic_cpu[0] (memory-region)
+
+The QOM path of this ds1338 device changes from
+
+    /machine/unattached/device[27]
+
+to
+
+   /machine/unattached/device[26]/0x68
+
+The new path still isn't stable, because the parent's path isn't.  This
+caveat should be noted in the commit message.
+
+An example of successful stabilization is tt-atlantis, where the QOM
+paths of ds1338 and tmp105 change from
+
+    /machine/unattached/device[21]
+    /machine/unattached/device[22]
+
+to
+
+    /machine/i2c[0]/i2c-bus/0x6f
+    /machine/i2c[4]/i2c-bus/0x48
+
+> Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 > ---
->  target/arm/hvf/hvf.c | 1 +
->  1 file changed, 1 insertion(+)
+>  hw/i2c/core.c        | 3 +++
+>  include/hw/i2c/i2c.h | 7 +++++--
+>  2 files changed, 8 insertions(+), 2 deletions(-)
 >
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 8b902c6882..4358cf90e8 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -2533,6 +2533,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_v=
-cpu_exit_exception_t *excp)
->          cpu_synchronize_state(cpu);
->          trace_hvf_exit(syndrome, ec, env->pc);
->          error_report("0x%llx: unhandled exception ec=3D0x%x", env->pc, e=
-c);
-> +        qemu_system_guest_panicked(cpu_get_crash_info(cpu));
->      }
->
->      /* flush any changed cpu state back to HVF */
->
-> ---
-> base-commit: b83371668192a705b878e909c5ae9c1233cbd5fb
-> change-id: 20260623-guest-panic-unhandle-4921d2aa69fb
->
-> Best regards,
-> --
-> Leesoo Ahn <lsahn@ooseel.net>
->
+> diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+> index 54f6bdca88..0bbce45d48 100644
+> --- a/hw/i2c/core.c
+> +++ b/hw/i2c/core.c
+> @@ -382,6 +382,9 @@ I2CSlave *i2c_slave_create_simple(I2CBus *bus, const char *name, uint8_t addr)
+>  {
+>      I2CSlave *dev = i2c_slave_new(name, addr);
+>  
+> +    g_autofree char *childname = g_strdup_printf("0x%02x", addr);
+
+Is the hex address a satisfactory child name?
+
+> +    object_property_add_child(OBJECT(bus), childname, OBJECT(dev));
+> +
+>      i2c_slave_realize_and_unref(dev, bus, &error_abort);
+>  
+>      return dev;
+> diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+> index dd5930f4b5..dc557bbf3f 100644
+> --- a/include/hw/i2c/i2c.h
+> +++ b/include/hw/i2c/i2c.h
+> @@ -166,13 +166,16 @@ bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
+>  I2CSlave *i2c_slave_new(const char *name, uint8_t addr);
+>  
+>  /**
+> - * Create and realize an I2C slave device on the heap.
+> + * Create and realize an I2C slave device on the heap, add the device as a
+> + * child of its parent bus.
+> + *
+>   * @bus: I2C bus to put it on
+>   * @name: I2C slave device type name
+>   * @addr: I2C address of the slave when put on a bus
+>   *
+>   * Create the device state structure, initialize it, put it on the
+> - * specified @bus, and drop the reference to it (the device is realized).
+> + * specified @bus, parent it, and drop the reference to it (the device is
+> + * realized).
+>   */
+>  I2CSlave *i2c_slave_create_simple(I2CBus *bus, const char *name, uint8_t addr);
+
 

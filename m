@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F3B6C44501
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:01:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06F06C43458
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 21:01:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiIK5-00027J-DS; Fri, 10 Jul 2026 16:59:49 -0400
+	id 1wiIIK-0000m6-Hm; Fri, 10 Jul 2026 16:58:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIIL-0000qX-PP
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:58:01 -0400
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+ id 1wiIIH-0000a9-8f
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:57:57 -0400
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wiIIB-0001vN-U5
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:58:01 -0400
-Received: by mail-pj1-x1029.google.com with SMTP id
- 98e67ed59e1d1-38511175ad3so1276277a91.2
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:57:51 -0700 (PDT)
+ id 1wiII8-0001sd-Ss
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 16:57:56 -0400
+Received: by mail-pj1-x1032.google.com with SMTP id
+ 98e67ed59e1d1-3817f800c8bso1256480a91.1
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 13:57:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783717070; x=1784321870; darn=nongnu.org;
+ d=linaro.org; s=google; t=1783717067; x=1784321867; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=wQlUvhVxYxUBBJ0TpgUPbHv3TSyy1Fi4wFktbhNSBoc=;
- b=sFiLLpEAbUq+7VZQrTOSdsRMd2vtmu5Y2sLEJYPiXxfXTpoEyyK1COEHZCb1FUnK9o
- swjl/bZ80RlFcCcin1Q2aTJTgftdUGOY5lg0KrYwv+ypInSF6xjVy7pGEnc/ULudU/4F
- dDrgbbsyZnY3mibrAXap8927f7IJ4Ui8eXxVY6VUJ5n2LzVDJqMwTY5rw37ugms+qRGI
- pB8I6XcwnzJWl/nkO+JYtlw3YNm482RXfg0l3rU3FsffsoDd5lq46ELBRq6QOAnH0oPP
- gkhEjyy8U3K2D4WDd2+TTBN1ZCNDA3l9o0VrOPXBpsfQ9k0sOAplRzL4i2CdaUAHLRN5
- fAIg==
+ bh=FJD0bozxsAaU8VxtEpxfjjLduhuIEtavECVR9Kha1MU=;
+ b=rRJfzR5dQgokgJH1nmNtVoZQ47y3BR3+qvWWHZvyGq45Dfmc+Yy3ohGUB8WQe+Z/vA
+ tHr3/3f7KgFC8GDrNUvHhZu0doHfO4HhvjIQ2rvMUU23BdPrKBSJldnkH10/oPb1bRcs
+ DxJcVDWseIEy8qiYpnZoiKhFzsu5ToG6gRxbISNWonEHG13X+ONc8fCELOzsoWzyzdnd
+ lRto5c039h5/dO3sGDd5u40vgwURganF/+dv+kvciByxyuEAC7VpZzYw6iSoQlyV8imY
+ CALmR673xGX/Dt2SBPU6Y++K+q0i8burVLbmf/rMQ6XsbIFYnS4r9RVWOX525ap7kmNq
+ wjAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783717070; x=1784321870;
+ d=1e100.net; s=20251104; t=1783717067; x=1784321867;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=wQlUvhVxYxUBBJ0TpgUPbHv3TSyy1Fi4wFktbhNSBoc=;
- b=XV6YJYvfxELq3Y4NtvOK0N0kVgrHCxCRjkkAG+Cy/zbJFm5aaxtv1g7DpNhNU4Rq86
- MV3xY/Xxdjagy7MTWEuYKBEqYCKGTqnkvIFavIkll7oi4ksTu0pkIex84n/ckXOOIUyr
- OwGR1zzRVkaOmF7FmjeTQRtfFCYniYAkTieA+uoWd1yskXFSSq5g4NKxd8EJcCBbweS+
- Q0vliZ06NVL7XBsOPDaV9BEveeCOZ6WgPPIk4HBqD0Nxm1fC+bcDR1z66dyxROjOcirr
- iA428mvhaEjetW2JTyuPdac+IjmxP51SlF7BbUkAKsq0uGUObhtcUGsLquV5V0RqVr13
- tc3g==
-X-Gm-Message-State: AOJu0Yw+DfMcR36/TXlUsm8qJ1d1KfaCo+dd6mnHQLEb5IJzWfIlEbWh
- ekfanne0eLZrYxBCQTSadxJtCMaAgOtKssenbSeBUgtfAFeIBAoQS/raWg+zG5ZKw04=
-X-Gm-Gg: AfdE7clc7v13dfeChTXG8VEK3tqr5H9gfRuSQUnj3iZv5an8qlt+yXf8yW4aXgHuCh/
- Zs5SMBLJb9zjcJmQ7dqgFmFKE3c0nOfQ0aTX7icsXjDzrRaT32koKp//RnliYqDeWVCdBp8VuYQ
- MUfukTYO7qKOc0nIbsdW5rEt5Qf8PE5JaYjgGbuQmjMAKoK/e8QjnQZ7Z3RpiYhxKDQebiQw1a6
- p2iip7CGVaNkK1gU0NAfxpqAkCmSIxpTfEnJoCKMN2ZmpOAeCPRjWMbl8U3K8+d9XrapMiSCS8H
- t8lPQ0KEmlQ8vyaLcJSWnMfwxzqoy6zRZAZMvnpPpKzW7Dgi31glinbAsF/bCitu2+xvuVAwybb
- fXjKZryDqYMaRQkREv+hyjnEN/8wTIgeQ6H3edKe9GMOQNSqOESs9y/tZleB3mmt0PxhgHd+0SE
- oM8lrRFxoAefBp6qyTsg==
-X-Received: by 2002:a17:90b:58ce:b0:381:152b:d596 with SMTP id
- 98e67ed59e1d1-38dc74cff62mr495341a91.11.1783717070129; 
- Fri, 10 Jul 2026 13:57:50 -0700 (PDT)
+ bh=FJD0bozxsAaU8VxtEpxfjjLduhuIEtavECVR9Kha1MU=;
+ b=tDT07i8cTVsdWY4QZfE+vJ5LtuDCmpBpO71RJiasGljIDRJ7icR7Hzdr/1Dg1BEU6X
+ fXOcTqsjQo3B5oxedCUJkKAP0Svvq1s8sT5esiuoiEA9eDL1THjXkWmwbp2sr+1783To
+ GTfJmoDp2Nv+R3LthBX/7HC3/3P7sxGuChhW3U+6xPmqVGE5pgJuMr/qFU8RfQ/eZBvv
+ 1sQoIAHOdO5scN2pOLvI9HbwLswPFN/iGaL9MtBh4/pqJl9WVtXlpDg2g8OqU6kdJeni
+ L/DFCQSBKYXIpGiaxaQTZIjdxO4NRAZqYH4WbmK75uibKaDnKmSukU1TDC55evFAWHs7
+ rJgA==
+X-Gm-Message-State: AOJu0Ywa9F/1PmbQBScoCkVSbAROlHDLf/PgLTThZJN6hg7fLyMGJyVq
+ Hr2SapV0uzynwddcZlzS+Dk46puwxn3k+VLfxcIRQcdwo7Y41dv0rhpj8MGY1J4jWqJi+zZtXE1
+ O7Qu5
+X-Gm-Gg: AfdE7ckPEStFc6RwLg68gOzGP+smbF8eZL71udJEWRgxota1vMhOX2Yc/nUp21KYURO
+ X5ohiqBI2ZmyaxuTpgQbotbjd5TkMYgE8iqKqnn4xvT36qj48HC5siVREZ/8gREBPDUD2wTymys
+ asPVxJElw8vwGicZHqvvHgyp8ktK9CoomIW1QBTMZCTqSFBwbIrO5QZgf7D5nwRzNfhrqQPGNqR
+ fj4WfEQExRylYUVRjmdZ51an9q9wnVxaVKZnWRL9HffHMfueD4AE+72oJgQ2RSHh7eow/bvFSMw
+ RnYIIDGw5f6xjzqSTO1H04TEPTc70oVbHn7oeoxLXx3+dlHfpNah3wVQj1GiLi/h7BlOUhIqo1T
+ pbL4E5+EQzIwtE8IWdbka8UWdpAeMEI+kOl81GC7qGLD4R+efKbwkP6dtfSTy49+xhHZV5P5BDH
+ 8q9gghsoj8VBmbTE0wAA==
+X-Received: by 2002:a17:90b:510f:b0:37e:a09:2640 with SMTP id
+ 98e67ed59e1d1-38dc761aba3mr531684a91.7.1783717067270; 
+ Fri, 10 Jul 2026 13:57:47 -0700 (PDT)
 Received: from stoup.. ([71.212.146.49]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-38a58792cdasm3256221a91.16.2026.07.10.13.57.49
+ 98e67ed59e1d1-38a58792cdasm3256221a91.16.2026.07.10.13.57.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2026 13:57:49 -0700 (PDT)
+ Fri, 10 Jul 2026 13:57:46 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, jcmvbkbc@gmail.com
-Subject: [PATCH v3 46/51] accel/tcg: Drop stale assert for vaddr
-Date: Fri, 10 Jul 2026 13:53:56 -0700
-Message-ID: <20260710205401.836304-47-richard.henderson@linaro.org>
+Subject: [PATCH v3 43/51] target/arm: Simplify v6 watchpoints
+Date: Fri, 10 Jul 2026 13:53:53 -0700
+Message-ID: <20260710205401.836304-44-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260710205401.836304-1-richard.henderson@linaro.org>
 References: <20260710205401.836304-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
 X-Spam_score_int: 4
 X-Spam_score: 0.4
 X-Spam_bar: /
@@ -99,29 +100,288 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We no longer support 32-bit hosts.
+Rather than use arm_adjust_watchpoint_address, delay the
+interpretation of BAS until the check_watchpoint hook so
+that we use the current value of SCTLR.B.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- accel/tcg/cputlb.c | 5 -----
- 1 file changed, 5 deletions(-)
+ target/arm/internals.h    |   5 --
+ target/arm/cpu.c          |   1 -
+ target/arm/debug_helper.c |  12 +++
+ target/arm/tcg/cpu-v7m.c  |   1 -
+ target/arm/tcg/debug.c    | 159 ++++++++++++++++++++++++--------------
+ 5 files changed, 114 insertions(+), 64 deletions(-)
 
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index 695476eef1..c8ba727859 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -86,11 +86,6 @@
-         }                                                         \
-     } while (0)
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 9deb7a6e22..4446adb896 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -694,11 +694,6 @@ bool arm_debug_check_breakpoint(CPUState *cs, CPUBreakpoint *bp);
+ /* Callback function for checking if a watchpoint should trigger. */
+ bool arm_debug_check_watchpoint(CPUState *cs, CPUBreakpoint *wp);
  
--/* run_on_cpu_data.target_ptr should always be big enough for a
-- * vaddr even on 32 bit builds
+-/* Adjust addresses (in BE32 mode) before testing against watchpoint
+- * addresses.
 - */
--QEMU_BUILD_BUG_ON(sizeof(vaddr) > sizeof(run_on_cpu_data));
+-vaddr arm_adjust_watchpoint_address(CPUState *cs, vaddr addr, int len);
 -
- static inline size_t tlb_n_entries(CPUTLBDescFast *fast)
+ /* Callback function for when a watchpoint or breakpoint triggers. */
+ void arm_debug_excp_handler(CPUState *cs, CPUBreakpoint *hit);
+ 
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 787e4dc7ab..e06fbb903a 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2609,7 +2609,6 @@ static const TCGCPUOps arm_tcg_ops = {
+     .do_interrupt = arm_cpu_do_interrupt,
+     .do_transaction_failed = arm_cpu_do_transaction_failed,
+     .do_unaligned_access = arm_cpu_do_unaligned_access,
+-    .adjust_watchpoint_address = arm_adjust_watchpoint_address,
+     .debug_check_watchpoint = arm_debug_check_watchpoint,
+     .debug_check_breakpoint = arm_debug_check_breakpoint,
+ #endif /* !CONFIG_USER_ONLY */
+diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
+index 2c3a56c7d5..086043cf5e 100644
+--- a/target/arm/debug_helper.c
++++ b/target/arm/debug_helper.c
+@@ -362,6 +362,18 @@ static void dbgwcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     ARMCPU *cpu = env_archcpu(env);
+     int i = ri->crm;
+ 
++    /*
++     * Bits [7:4] of BAS are RAZ/WI if an 8-bit field is not supported.
++     * This is always true of v6 debug.
++     * As an IMPLEMENTATION DEFINED choice, we always implement the 8-bit
++     * field with ARMv7 cpus.
++     * This is never true of v8 debug.
++     * The Linux kernel will probe for 4 or 8-bit by writing all 1's.
++     */
++    if (!arm_feature(env, ARM_FEATURE_V7)) {
++        value &= ~FIELD_DP64(0, DBGWCR, BAS, 0xf0);
++    }
++
+     raw_write(env, ri, value);
+     if (tcg_enabled()) {
+         hw_watchpoint_update(cpu, i);
+diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
+index dc249ce1f1..b7e5623c59 100644
+--- a/target/arm/tcg/cpu-v7m.c
++++ b/target/arm/tcg/cpu-v7m.c
+@@ -262,7 +262,6 @@ static const TCGCPUOps arm_v7m_tcg_ops = {
+     .do_interrupt = arm_v7m_cpu_do_interrupt,
+     .do_transaction_failed = arm_cpu_do_transaction_failed,
+     .do_unaligned_access = arm_cpu_do_unaligned_access,
+-    .adjust_watchpoint_address = arm_adjust_watchpoint_address,
+     .debug_check_watchpoint = arm_debug_check_watchpoint,
+     .debug_check_breakpoint = arm_debug_check_breakpoint,
+ #endif /* !CONFIG_USER_ONLY */
+diff --git a/target/arm/tcg/debug.c b/target/arm/tcg/debug.c
+index d705f7aef2..1dec39c0bf 100644
+--- a/target/arm/tcg/debug.c
++++ b/target/arm/tcg/debug.c
+@@ -365,6 +365,31 @@ bool arm_debug_check_breakpoint(CPUState *cs, CPUBreakpoint *bp)
+     return bp_wp_matches(cpu, env->cp15.dbgbcr[bp->id], arm_current_el(env));
+ }
+ 
++static bool arm_debug_check_watchpoint_v6(CPUARMState *env, CPUBreakpoint *wp)
++{
++    uint32_t wcr = env->cp15.dbgwcr[wp->id];
++    uint32_t bas = FIELD_EX64(wcr, DBGWCR, BAS) & 0xf;
++
++    /* Create a mask of the bytes touched by the access. */
++    uint32_t hitlen = wp->hitlast - wp->hitaddr + 1;
++    uint32_t hitmask = MAKE_64BIT_MASK(wp->hitaddr & 3, hitlen);
++
++    /* With BE-32, the interpretation of BAS is inverted.  */
++    if (arm_sctlr_b(env)) {
++        bas = revbit8(bas) >> 4;
++    }
++
++    hitmask &= bas;
++    if (!hitmask) {
++        return false;
++    }
++
++    /* Update hit to the first byte matched. */
++    wp->hitaddr = wp->itree.start + ctz32(hitmask);
++    wp->hitlast = wp->hitaddr;
++    return true;
++}
++
+ bool arm_debug_check_watchpoint(CPUState *cs, CPUBreakpoint *wp)
  {
-     return (fast->mask >> CPU_TLB_ENTRY_BITS) + 1;
+     /*
+@@ -380,7 +405,13 @@ bool arm_debug_check_watchpoint(CPUState *cs, CPUBreakpoint *wp)
+      */
+     int access_el = wp->hitattrs.user ? 0 : arm_current_el(env);
+ 
+-    return bp_wp_matches(cpu, env->cp15.dbgwcr[wp->id], access_el);
++    /*
++     * For ARM v6, we need to validate the address match.
++     * After that, everyone needs to validate linked watchpoints.
++     */
++    return ((arm_feature(env, ARM_FEATURE_V7) ||
++             arm_debug_check_watchpoint_v6(env, wp)) &&
++            bp_wp_matches(cpu, env->cp15.dbgwcr[wp->id], access_el));
+ }
+ 
+ /*
+@@ -481,46 +512,44 @@ void HELPER(exception_swstep)(CPUARMState *env, uint32_t syndrome)
+     raise_exception_debug(env, EXCP_UDEF, syndrome);
+ }
+ 
+-void hw_watchpoint_update(ARMCPU *cpu, int n)
++static void hw_watchpoint_update_v6(ARMCPU *cpu, int n, BreakpointFlags flags)
++{
++    /*
++     * With v6:
++     * - MASK does not exist,
++     * - BAS is 4 bits,
++     * - non-consecutive BAS bits are not yet deprecated,
++     * - BE-32 is supported, affecting interpretation of BAS.
++     * Install a 4 byte aligned watchpoint now and defer checking
++     * of the BAS bits until breakpoint hit.
++     */
++    CPUARMState *env = &cpu->env;
++    uint32_t wvr = env->cp15.dbgwvr[n] & ~3;
++    uint32_t wcr = env->cp15.dbgwcr[n];
++    uint32_t bas = FIELD_EX64(wcr, DBGWCR, BAS) & 0xf;
++
++    if (bas == 0) {
++        /* This must act as if the watchpoint is disabled */
++        return;
++    }
++
++    env->cpu_watchpoint[n] = cpu_watchpoint_insert(CPU(cpu), wvr, 4,
++                                                   flags, n);
++}
++
++static void hw_watchpoint_update_v7(ARMCPU *cpu, int n, BreakpointFlags flags)
+ {
+     CPUARMState *env = &cpu->env;
+     vaddr len = 0;
+     vaddr wvr = env->cp15.dbgwvr[n];
+     uint64_t wcr = env->cp15.dbgwcr[n];
+-    int mask;
+-    BreakpointFlags flags = BP_CPU | BP_STOP_BEFORE_ACCESS;
+-
+-    if (env->cpu_watchpoint[n]) {
+-        cpu_watchpoint_remove_by_ref(CPU(cpu), env->cpu_watchpoint[n]);
+-        env->cpu_watchpoint[n] = NULL;
+-    }
+-
+-    if (!FIELD_EX64(wcr, DBGWCR, E)) {
+-        /* E bit clear : watchpoint disabled */
+-        return;
+-    }
+-
+-    switch (FIELD_EX64(wcr, DBGWCR, LSC)) {
+-    case 0:
+-        /* LSC 00 is reserved and must behave as if the wp is disabled */
+-        return;
+-    case 1:
+-        flags |= BP_MEM_READ;
+-        break;
+-    case 2:
+-        flags |= BP_MEM_WRITE;
+-        break;
+-    case 3:
+-        flags |= BP_MEM_ACCESS;
+-        break;
+-    }
++    int mask = FIELD_EX64(wcr, DBGWCR, MASK);
+ 
+     /*
+      * Attempts to use both MASK and BAS fields simultaneously are
+      * CONSTRAINED UNPREDICTABLE; we opt to ignore BAS in this case,
+      * thus generating a watchpoint for every byte in the masked region.
+      */
+-    mask = FIELD_EX64(wcr, DBGWCR, MASK);
+     if (mask == 1 || mask == 2) {
+         /*
+          * Reserved values of MASK; we must act as if the mask value was
+@@ -570,6 +599,49 @@ void hw_watchpoint_update(ARMCPU *cpu, int n)
+                                                    flags, n);
+ }
+ 
++void hw_watchpoint_update(ARMCPU *cpu, int n)
++{
++    CPUARMState *env = &cpu->env;
++    uint64_t wcr = env->cp15.dbgwcr[n];
++    int flags = BP_CPU | BP_STOP_BEFORE_ACCESS;
++
++    if (env->cpu_watchpoint[n]) {
++        cpu_watchpoint_remove_by_ref(CPU(cpu), env->cpu_watchpoint[n]);
++        env->cpu_watchpoint[n] = NULL;
++    }
++
++    if (!FIELD_EX64(wcr, DBGWCR, E)) {
++        /* E bit clear : watchpoint disabled */
++        return;
++    }
++
++    switch (FIELD_EX64(wcr, DBGWCR, LSC)) {
++    case 0:
++        /* LSC 00 is reserved and must behave as if the wp is disabled */
++        return;
++    case 1:
++        flags |= BP_MEM_READ;
++        break;
++    case 2:
++        flags |= BP_MEM_WRITE;
++        break;
++    case 3:
++        flags |= BP_MEM_ACCESS;
++        break;
++    }
++
++    /*
++     * ARM v6 debug.  The AArch32 DBGDIDR register is deprecated
++     * under certain v8 conditions, and ID_DFR0 doesn't exist pre-v7.
++     * Cut the proverbial knot by checking cpu features.
++     */
++    if (arm_feature(env, ARM_FEATURE_V7)) {
++        hw_watchpoint_update_v7(cpu, n, flags);
++    } else {
++        hw_watchpoint_update_v6(cpu, n, flags);
++    }
++}
++
+ void hw_watchpoint_update_all(ARMCPU *cpu)
+ {
+     int i;
+@@ -689,30 +761,3 @@ void hw_breakpoint_update_all(ARMCPU *cpu)
+         hw_breakpoint_update(cpu, i);
+     }
+ }
+-
+-#if !defined(CONFIG_USER_ONLY)
+-
+-vaddr arm_adjust_watchpoint_address(CPUState *cs, vaddr addr, int len)
+-{
+-    ARMCPU *cpu = ARM_CPU(cs);
+-    CPUARMState *env = &cpu->env;
+-
+-    /*
+-     * In BE32 system mode, target memory is stored byteswapped (on a
+-     * little-endian host system), and by the time we reach here (via an
+-     * opcode helper) the addresses of subword accesses have been adjusted
+-     * to account for that, which means that watchpoints will not match.
+-     * Undo the adjustment here.
+-     */
+-    if (arm_sctlr_b(env)) {
+-        if (len == 1) {
+-            addr ^= 3;
+-        } else if (len == 2) {
+-            addr ^= 2;
+-        }
+-    }
+-
+-    return addr;
+-}
+-
+-#endif /* !CONFIG_USER_ONLY */
 -- 
 2.43.0
 

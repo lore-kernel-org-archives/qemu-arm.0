@@ -4,92 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01AFFC43458
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 12:52:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCCA1C43458
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 13:03:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiAib-0001kY-Dv; Fri, 10 Jul 2026 08:52:37 -0400
+	id 1wiAsI-0007F1-6c; Fri, 10 Jul 2026 09:02:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wiAiD-0001aX-Le
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 08:52:15 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wiAi9-0004e8-KW
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 08:52:12 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-47ddf7b09e5so887863f8f.1
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 05:52:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783687926; x=1784292726; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=7T185QuUf9dnbSb7cqeb9k97Cfq4BHic/plE9ShSkeE=;
- b=nEPVZdhwYc+j3I4zSeI25jDcwIMp2IKIrOLfkLJw49611rk3oiPhOjpQ9mWp8fwKoE
- Ca+3lIMDhkJlY1MF3GoU3gf5KqZtTsElE2lHwOFWI9t0FNNBWBkWBKejx1Mtwc/zrbIw
- zVzcTLMOUkyfAYCBYhuT5viO5nOHH1tKumgFtrFzMlPbjI1qai/fWYmHpfTeJWdSmw1a
- HXkp+dPMajJxyLwgKSFRNNVC1grbx7DbLdbCI5bDFidW7XUI7VTSrCsENQLqiDcYwa/z
- 6p09QF23GjzN4Vf1RTDhkkOa3knu+djcPBtALZqKOpiQv4F60MPVEZdQhgkw2dawnDO7
- l8Bg==
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wiArO-00068q-JT
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 09:01:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1wiArL-000636-5h
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2026 09:01:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1783688498;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=8yrNmqM1rUndTJ0w8K8WVuBrkzlm+ae3LiH8cPhp8Mo=;
+ b=PGiACDRBjM9kUVvLGTXJ60UkjRTRaVw0TUx0y+NOL2pCkrE3vDDkPXqeEN6Lii9jmoIsw3
+ evXb9/hKnITiOnt/hPRvd0v745Ffw1xT+1CRDnb9u8YU0U9Z/sM/Vj9LoO+Rs/6Iv8UeKg
+ YZ8T+Q3SHEzy1odO5osy4cXIbbu1zug=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-552-Vda-6MdMOeW1PNYrAKzQBQ-1; Fri, 10 Jul 2026 09:01:36 -0400
+X-MC-Unique: Vda-6MdMOeW1PNYrAKzQBQ-1
+X-Mimecast-MFC-AGG-ID: Vda-6MdMOeW1PNYrAKzQBQ_1783688496
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-475b0b4e8d5so898603f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 06:01:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783687926; x=1784292726;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=7T185QuUf9dnbSb7cqeb9k97Cfq4BHic/plE9ShSkeE=;
- b=hKj0vw2dl2/BR5oX6T4tSz+aM1UGEupKn6GrKcR+AySIKxp98QpkK38jDC+WBsK6NQ
- 321B2zHiHmX1XS9Fvh90AaIBo93ccAqeWim73pqEX4Q/60cHCSsalf2FpQAiv/DinuPY
- 1Ik4dfk7Sgoqa8xtkzQVnlAtc/BR3/v0bCL40DuaXuV9/oPGqa6/AMvJLgf/V/DwjqYn
- Yb37gg1aY7mdh03ldz24Voapu6L5aGPMCaDnb/Cq285YI9Vxkup/sL96E9GERAQudXCq
- 3lJctiaz8LlX+fmYJ6YKIfY61qZgAoyHjKbCwxdiMSy8VPjuyLR6fdLnB7X+T99erYh1
- VJfA==
+ d=1e100.net; s=20251104; t=1783688495; x=1784293295;
+ h=content-type:mime-version:references:message-id:in-reply-to:subject
+ :cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=8yrNmqM1rUndTJ0w8K8WVuBrkzlm+ae3LiH8cPhp8Mo=;
+ b=S26tWuzxi+dsKHo70XzQgwmkAEjRVIvp0AQ4eEPRyQWXnbJ5mGkayHsW84DlIl1QZZ
+ 9P6nEcjknGnlZNFNuI3uuDVQf0dmExs25wy1vZb0yLMmBEzomFjoxIKVh5TivYbnQgN/
+ F1bQn45LbSlmWo3XVu+RvoyxPOW9JrCNOu905ajTs8CnQphahXy37szQcxFfrDuOeOR7
+ 8jhU9pINWnB7SOB0vqDAgrvXn/3lcIyeHI4HWzIh2tDxSOapFFuMm8BSleq+RB2q8ymg
+ yrA6oOC2ghCF56hs3flAehLpPCwY2+MKmb8yqmC/VmzCLMDeD9vBz4HHA+JWOPwULm04
+ 8BJg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqX9nixzwQS7j1SVEMQxZgqj/NhEdFruoKvvkdh7jLLciCC3ocDe/SySYgz+Wau6lcomAfShQlgJQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwI5Q7G7/m9YKGJUAeOUXYX4K7y66DpdXt/QL7cgUbqR1PUsaJa
- bLJL7y1kKG3iwhRNvhq5xggyMtb1zsvhm3QXzv0caemdcYJHbVilc8XfzhDAKTQ0nC8=
-X-Gm-Gg: AfdE7cmRgtXMd7rHf48ZQsVWelRoKg1n9laNZiksNOFaPVYnEfML0Na0d4Yc3EiRX8Y
- kQ62piYu8r7nHSGa2TqnuDEcuHteN2+kKOd30+qG+if8GXfGY2P5Qbz8JGbSbR3iY+R9UAEYP5Q
- NdOQ4ULR7Khd8WWVjI7wCxfCquwjHOJFNaRM8BIlomprp0et9AGfSVdx2elS85GPyqv+FOG4tJR
- vzmAzhc7R6Rl/Zua884yCVBfF9AyOMSLxskkUHuqKf+kGJMo+cYgGle3Tk6zI8Dnu5oYnp09+be
- Xvj14aBOSo6GDfb5GSTOjM0PiwSnN49nyojrlE3nTeSpXXqACj2RlYZYy0f0kbFCtXUE2Ek7JhU
- BGR6qawYqH9Moe5bLZu84AifDqx7t4/CwPRUjsMlryIZsTR1tUzPjv1YldEpKfeYLrnKOo20Y+L
- FMi2jEZyEvTWWtVSsBzkUMeDnYLkESmne/eNLVAuDe2KeQoO/Usg==
-X-Received: by 2002:a5d:5f45:0:b0:475:f100:35f7 with SMTP id
- ffacd0b85a97d-47df0772506mr13520086f8f.52.1783687925704; 
- Fri, 10 Jul 2026 05:52:05 -0700 (PDT)
-Received: from linaro.org (82-132-237-191.dab.02.net. [82.132.237.191])
+ AHgh+Rrs89IhqIyOghd/UjfDus97e0210D/s4jxDv4NYlpKjVQMzt9h3EWO2JtAlMyvhBrxDoh4N5WcnWQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzocqqVoAuBBTcOfxDwacCuXtDmn5R7Pg6gSu5HVm4RzcxcTUHF
+ 8eEzXu/HmXGVRHtlDvUtdpPg+6aZ3OrxEqlrYsXXiaCOpSLwyoppgdsL+PgVXkLeTUDMtmm8+V7
+ McLByMq079J0LviYoaxBElvqNOT5CBW3mFHcx5D0vb5ANwvKjo3TRyQ==
+X-Gm-Gg: AfdE7cl1zQLdQgj/a9pNiokUwan3WiPpNwGRpylmy40aQ84oudggMiblP+ioeWXntP6
+ WWPboCUvepCHFH5RoK0bv6bURXs75cpj69jHxaEQC77uoS6bfZdbl6flju74iwEWFJ7eeoaTHDE
+ sioWy2ZLH7V1/Agx8IKM4FMg4h+c3FK2TXF0dPWiZ6Mt4O7fFqT1e2NjmxU11TLBW+Y25R3ZEVG
+ UVq6m73PQLg3K1PWv7OF/VhxqsarB1x+f/841c6cT4gEtZJqGIxYbFmM4eXwkUzabb3qlX5HpO9
+ iDqzw7TsquXOcdYSVP4BLCABZNX0Q1il2PO3/mChdpfMeFobbTGFrMRHXIJgctHzGd4hZaYbmgs
+ bMm0akvpECMHkLY1vXk6DQMlvYVdJx0vhBGiQLKFEA6Ja7JEuRZ/Mj6JBAV99
+X-Received: by 2002:a05:6000:1861:b0:47d:edb2:a4ab with SMTP id
+ ffacd0b85a97d-47df07670c6mr12539004f8f.43.1783688488233; 
+ Fri, 10 Jul 2026 06:01:28 -0700 (PDT)
+X-Received: by 2002:a05:6000:1861:b0:47d:edb2:a4ab with SMTP id
+ ffacd0b85a97d-47df07670c6mr12538420f8f.43.1783688482704; 
+ Fri, 10 Jul 2026 06:01:22 -0700 (PDT)
+Received: from rh (p200300f6af371400309b667846b924fb.dip0.t-ipconnect.de.
+ [2003:f6:af37:1400:309b:6678:46b9:24fb])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47aa039bcdasm62425706f8f.21.2026.07.10.05.52.04
+ ffacd0b85a97d-47a9de1e6ccsm60023847f8f.5.2026.07.10.06.01.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2026 05:52:05 -0700 (PDT)
-Date: Fri, 10 Jul 2026 13:52:02 +0100
-From: Jim MacArthur <jim.macarthur@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH v3 4/6] target/arm/cpu-features.h: x-rme now means GPC3
-Message-ID: <alDq8uq0QsaH2LLN@linaro.org>
-References: <20260618-jmac-gpc3b-v3-0-353e546067e7@linaro.org>
- <20260618-jmac-gpc3b-v3-4-353e546067e7@linaro.org>
- <CAFEAcA_M0Z770FApDyhNcYaP89JP3Q8MDj5bMjYKSpmONYrr7A@mail.gmail.com>
+ Fri, 10 Jul 2026 06:01:22 -0700 (PDT)
+Date: Fri, 10 Jul 2026 15:01:20 +0200 (CEST)
+From: Sebastian Ott <sebott@redhat.com>
+To: Eric Auger <eauger@redhat.com>
+cc: Peter Maydell <peter.maydell@linaro.org>, 
+ Jonathan Cameron <jonathan.cameron@huawei.com>, 
+ Alireza Sanaee <alireza.sanaee@huawei.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH v4 3/3] arm/kvm: get demuxed ID registers from kvm
+In-Reply-To: <7ab742c2-2354-4316-a727-a56175a321b9@redhat.com>
+Message-ID: <0a463fde-b206-cafb-8625-e03bb5d1ce58@redhat.com>
+References: <20260702133606.34529-1-sebott@redhat.com>
+ <20260702133606.34529-4-sebott@redhat.com>
+ <7ab742c2-2354-4316-a727-a56175a321b9@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_M0Z770FApDyhNcYaP89JP3Q8MDj5bMjYKSpmONYrr7A@mail.gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: VmI3zxfzkD6x4OCv5ZZtujawKsORna3u82zFgQfXdm0_1783688496
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,37 +115,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Jun 29, 2026 at 01:00:05PM +0100, Peter Maydell wrote:
-> On Thu, 18 Jun 2026 at 17:33, Jim MacArthur <jim.macarthur@linaro.org> wrote:
-> >
-> > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> > Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
-> > ---
-> >  target/arm/tcg/cpu64.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-> > index f7a920a202..75c2027900 100644
-> > --- a/target/arm/tcg/cpu64.c
-> > +++ b/target/arm/tcg/cpu64.c
-> > @@ -159,8 +159,8 @@ static void cpu_arm_set_rme(Object *obj, bool value, Error **errp)
-> >  {
-> >      ARMCPU *cpu = ARM_CPU(obj);
-> >
-> > -    /* Enable FEAT_RME_GPC2 */
-> > -    FIELD_DP64_IDREG(&cpu->isar, ID_AA64PFR0, RME, value ? 2 : 0);
-> > +    /* Enable FEAT_RME_GPC3 */
-> > +    FIELD_DP64_IDREG(&cpu->isar, ID_AA64PFR0, RME, value ? 3 : 0);
-> >  }
-> 
-> Just noticed this, but does this mean we should now list
-> FEAT_RME_GPC3 in docs/system/arm/emulation.rst ?
-> (If so, we can fix that as a followup patch.)
-> 
+Hej Eric,
 
-Looking at this again, we don't currently implement the APAS instruction which is a necessary part of FEAT_RME_GPC3, so probably shouldn't advertise that in the documentation yet.
-I'm unsure how to handle this instruction at the moment; it might be that we can simply decode it and ignore it, in which case I can easily make up another patch to complete FEAT_RME_GPC3, but if not I'll need to seek further advice.
+On Tue, 7 Jul 2026, Eric Auger wrote:
+> On 7/2/26 3:36 PM, Sebastian Ott wrote:
+>> From: Cornelia Huck <cohuck@redhat.com>
+>>
+>> We now have the infrastructure in place to handle demuxed ID registers
+>> from kvm. Use it to get the values that kvm emulates for CCSIDR_EL1.
+>
+> I wonder whether that patch is needed at this point. Were previous
+> ccsidr[i] initialized from KVM before? What is the actual motivation to
+> read them in this series. Doesn't it bring the risk to expose new values
+> to the guest?
+>
+> For instance, in [RFC PATCH v6 11/17] arm/kvm: Initialize all writable
+> ID registers from host, I generalized the initialization of all writable
+> id regs and I noticed that the new initialization of CLIDR from KVM
+> broke the execution (which is not the case for the CCSIDR because I did
+> it a try) because CLIDR was previously uninitialized and null.
 
-Jim
+The issue is holes in arm64_id_regs[] and we stumble over that in
+get_host_cpu_idregs(). Maybe we could skip the demuxed regs when we
+iterate over that array.
+
+Sebastian
 
 

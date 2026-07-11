@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E147C43458
-	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:41:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C010DC43458
+	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:41:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wigNT-0004ey-Pm; Sat, 11 Jul 2026 18:40:55 -0400
+	id 1wigNO-0004HF-FP; Sat, 11 Jul 2026 18:40:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigNQ-0004Q0-D4; Sat, 11 Jul 2026 18:40:52 -0400
-Received: from pdx-out-013.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([34.218.115.239])
+ id 1wigNJ-00043v-Hy; Sat, 11 Jul 2026 18:40:45 -0400
+Received: from pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([44.246.68.102])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigNO-0005os-AX; Sat, 11 Jul 2026 18:40:52 -0400
+ id 1wigNF-0005mg-Kr; Sat, 11 Jul 2026 18:40:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1783809650; x=1815345650;
+ t=1783809641; x=1815345641;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=ZLtpU6t0pkB0bJ724CMQihST0BRaAPM8GUkYNktSJgY=;
- b=aCFBKFS4xbAGNih85Hk9xnN0+ypOjafqjYpgvWmZcZ6WzIsrnPS3XMfX
- /5Kk5A0hF8V7dSKFn19Gh9oMWFtP9NSf8nCga+/hI43XC7j8lKVt9T/7U
- MI6YtBnRwuIgX/wdeNqHW2vSDyWk5Dz98fWalUvxEMTmwS6IsEJbZ/b5k
- Atn5bZoHrWGAz3oWXW3rmqoXvNtIPMw11LNhbhJwpV5CTIdwcKvGZ4cqE
- JiQ2MZp94P4jg8h57A9HTEs++9Eo6JMV/F4aHsaUOb9vfjy7Joi/isdCa
- H/SRttZFxHEdnDVuklKcSrrV6hcicMScOKoYa3teWWCW/LlK9a+eWWfZS g==;
-X-CSE-ConnectionGUID: wmjeqMWCR/CG0ag96zf8IA==
-X-CSE-MsgGUID: CBhn+ZQLROyDI1olWo342Q==
-X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23296563"
-Received: from ip-10-5-9-48.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.9.48])
- by internal-pdx-out-013.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:40:45 +0000
-Received: from EX19MTAUWA001.ant.amazon.com [205.251.233.182:20728]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.51.175:2525]
+ bh=8qB3yVqVzEHdcQcyvRloVub+hLfEuv5n21OR2C+g0CU=;
+ b=O0fVth1pzSzpLoc7etW0tmUqTjGXrcM138jUFYbinMQbgOOwLvxSUQxZ
+ ZY3DfRht/NlsfscN1cSwlNf+DggfU/YFhhiRqueRm+9r55X+Ue8XAdBm/
+ XtR9tJlFhX6U2kY7mGOBSDrA/wQFLYTksjVSYMo8yE4Zvi2NqjwyqzHHj
+ ZueazEIMyNawKmjzY8BmlTQv2A8NZlfrBjRyFK3PoUICyCsaCXi1/6ZRG
+ qUQQ7gKgd7BkWywR5OL+laZ11BVuL7s+HD/RwoObszmJbpyDJiKgUxqy1
+ ritI+gk5QbDHycyTtnZpbOmGCEwxi8qynTvTT+I/X3i6VGa+HM2lx+P0h w==;
+X-CSE-ConnectionGUID: mhBJrtIQR7GXKYwYvwUE/Q==
+X-CSE-MsgGUID: kUFf/vlYS06QlpXKX5gf7w==
+X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23517015"
+Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
+ by internal-pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:40:37 +0000
+Received: from EX19MTAUWC002.ant.amazon.com [205.251.233.111:8026]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.35.214:2525]
  with esmtp (Farcaster)
- id ceb96b90-fa1d-4111-9117-20fc3f6abbc4; Sat, 11 Jul 2026 22:40:45 +0000 (UTC)
-X-Farcaster-Flow-ID: ceb96b90-fa1d-4111-9117-20fc3f6abbc4
+ id b54a1bf2-3fb6-4c80-8bc5-1137b2e286ce; Sat, 11 Jul 2026 22:40:37 +0000 (UTC)
+X-Farcaster-Flow-ID: b54a1bf2-3fb6-4c80-8bc5-1137b2e286ce
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWA001.ant.amazon.com (10.250.64.217) with Microsoft SMTP Server
+ EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:40:45 +0000
+ Sat, 11 Jul 2026 22:40:36 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:40:36 +0000
+ Sat, 11 Jul 2026 22:40:28 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -91,9 +91,9 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  <th.huth+qemu@posteo.eu>, "Ran Wang" <wangran@bosc.ac.cn>, Hao Wu
  <wuhaotsh@google.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>
-Subject: [RFC PATCH 014/134] hw/nitro: Give onboard devices a QOM parent
-Date: Sat, 11 Jul 2026 22:35:07 +0000
-Message-ID: <20260711223707.42139-15-graf@amazon.com>
+Subject: [RFC PATCH 013/134] hw/alpha: Give onboard devices a QOM parent
+Date: Sat, 11 Jul 2026 22:35:06 +0000
+Message-ID: <20260711223707.42139-14-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260711223707.42139-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -103,9 +103,9 @@ Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
 X-ClientProxiedBy: EX19D031UWC004.ant.amazon.com (10.13.139.246) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=34.218.115.239;
+Received-SPF: pass client-ip=44.246.68.102;
  envelope-from=prvs=645f258d4=graf@amazon.de;
- helo=pdx-out-013.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -129,7 +129,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the *_orphan() device-creation calls in hw/nitro to the new
+Convert the *_orphan() device-creation calls in hw/alpha to the new
 parented API introduced earlier in this series, so every onboard
 device gets a stable path in the composition tree instead of landing
 in /machine/unattached with an unstable device[N] name.
@@ -140,47 +140,120 @@ composite children.  Names follow existing QOM conventions.
 
 Per-site rationale (reviewers: dispute the modeling here):
 
-  file:line              | parent          | name        | rationale
-  machine.c:200          | OBJECT(bridge)  | "heartbeat" | onboard heartbeat is a fixed child of the vsock bridge it plugs into; bridge owns its lifetime
-  machine.c:212          | OBJECT(bridge)  | "serial"    | debug-mode serial-over-vsock is a fixed child of the same bridge
-  nitro-vsock-bus.c:51   | ORPHAN-JUSTIFIED| -           | bridge is parented immediately after via qdev_set_id() to /machine/peripheral/nitro-vsock; keep the orphan creator here
+  file:line       | parent           | name         | rationale
+  dp264.c:68      | OBJECT(machine)  | "cpu[*]"     | SMP CPUs created by board init()
+  dp264.c:113     | OBJECT(machine)  | "isa-bridge" | i82378 PCI-ISA bridge is a fixed onboard device; the machine owns it
+  dp264.c:129     | OBJECT(machine)  | "sio"        | SMC37C669 Super-I/O is a fixed onboard device
+  dp264.c:132     | OBJECT(machine)  | "ide"        | CMD646 IDE controller is a fixed onboard device
+  typhoon.c:833   | OBJECT(machine)  | "typhoon"    | Typhoon PCI host bridge is a fixed chipset of the DP264 board; thread an Object *parent argument through typhoon_init() from clipper_init()
 
 Link: https://lore.kernel.org/qemu-devel/87jyr3w9tc.fsf@pond.sub.org/
 Assisted-by: Kiro
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/nitro/machine.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ hw/alpha/alpha_sys.h |  3 ++-
+ hw/alpha/dp264.c     | 12 +++++++-----
+ hw/alpha/typhoon.c   |  6 +++---
+ 3 files changed, 12 insertions(+), 9 deletions(-)
 
-diff --git a/hw/nitro/machine.c b/hw/nitro/machine.c
-index efcc2c8a3f..6b61de911f 100644
---- a/hw/nitro/machine.c
-+++ b/hw/nitro/machine.c
-@@ -195,10 +195,11 @@ static void nitro_machine_init(MachineState *machine)
+diff --git a/hw/alpha/alpha_sys.h b/hw/alpha/alpha_sys.h
+index 6e6691d116..f8aaf74933 100644
+--- a/hw/alpha/alpha_sys.h
++++ b/hw/alpha/alpha_sys.h
+@@ -9,7 +9,8 @@
+ #include "hw/intc/i8259.h"
  
-     if (defaults_enabled()) {
-         NitroVsockBridge *bridge = nitro_vsock_bridge_create();
-+        DeviceState *dev;
  
-         /* Nitro Enclaves require a heartbeat device. Provide one. */
--        qdev_realize(qdev_new_orphan(TYPE_NITRO_HEARTBEAT),
--                     BUS(&bridge->bus), &error_fatal);
-+        dev = qdev_new(OBJECT(bridge), "heartbeat", TYPE_NITRO_HEARTBEAT);
-+        qdev_realize(dev, BUS(&bridge->bus), &error_fatal);
+-PCIBus *typhoon_init(MemoryRegion *, qemu_irq *, qemu_irq *, AlphaCPU *[4],
++PCIBus *typhoon_init(Object *parent, MemoryRegion *,
++                     qemu_irq *, qemu_irq *, AlphaCPU *[4],
+                      pci_map_irq_fn, uint8_t devfn_min);
  
-         /*
-          * In debug mode, Nitro Enclaves expose the guest's serial output via
-@@ -209,8 +210,8 @@ static void nitro_machine_init(MachineState *machine)
-             Chardev *chr = serial_hd(0);
+ /* alpha_pci.c.  */
+diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
+index 512b270838..9cd448cff1 100644
+--- a/hw/alpha/dp264.c
++++ b/hw/alpha/dp264.c
+@@ -49,6 +49,7 @@ static void clipper_init(MachineState *machine)
+     const char *kernel_cmdline = machine->kernel_cmdline;
+     const char *initrd_filename = machine->initrd_filename;
+     MachineClass *mc = MACHINE_GET_CLASS(machine);
++    Object *mo = OBJECT(machine);
+     AlphaCPU *cpus[4];
+     PCIBus *pci_bus;
+     PCIDevice *pci_dev;
+@@ -65,7 +66,7 @@ static void clipper_init(MachineState *machine)
+     /* Create up to 4 cpus.  */
+     memset(cpus, 0, sizeof(cpus));
+     for (i = 0; i < smp_cpus; ++i) {
+-        cpus[i] = ALPHA_CPU(cpu_create_orphan(machine->cpu_type));
++        cpus[i] = ALPHA_CPU(cpu_create(mo, "cpu[*]", machine->cpu_type));
+     }
  
-             if (chr) {
--                DeviceState *dev = qdev_new_orphan(TYPE_NITRO_SERIAL_VSOCK);
--
-+                dev = qdev_new(OBJECT(bridge), "serial",
-+                               TYPE_NITRO_SERIAL_VSOCK);
-                 qdev_prop_set_chr(dev, "chardev", chr);
-                 qdev_realize(dev, BUS(&bridge->bus), &error_fatal);
-             }
+     /*
+@@ -86,7 +87,7 @@ static void clipper_init(MachineState *machine)
+      * Init the chipset.  Because we're using CLIPPER IRQ mappings,
+      * the minimum PCI device IdSel is 1.
+      */
+-    pci_bus = typhoon_init(machine->ram, &isa_irq, &rtc_irq, cpus,
++    pci_bus = typhoon_init(mo, machine->ram, &isa_irq, &rtc_irq, cpus,
+                            clipper_pci_map_irq, PCI_DEVFN(1, 0));
+ 
+     /*
+@@ -110,7 +111,8 @@ static void clipper_init(MachineState *machine)
+      * Importantly, we need to provide a PCI device node for it, otherwise
+      * some operating systems won't notice there's an ISA bus to configure.
+      */
+-    i82378_dev = DEVICE(pci_create_simple_orphan(pci_bus, PCI_DEVFN(7, 0), "i82378"));
++    i82378_dev = DEVICE(pci_create_simple(mo, "isa-bridge", pci_bus,
++                                          PCI_DEVFN(7, 0), "i82378"));
+     isa_bus = ISA_BUS(qdev_get_child_bus(i82378_dev, "isa.0"));
+ 
+     /* Connect the ISA PIC to the Typhoon IRQ used for ISA interrupts. */
+@@ -126,10 +128,10 @@ static void clipper_init(MachineState *machine)
+     pci_init_nic_devices(pci_bus, mc->default_nic);
+ 
+     /* Super I/O */
+-    isa_create_simple_orphan(isa_bus, TYPE_SMC37C669_SUPERIO);
++    isa_create_simple(mo, "sio", isa_bus, TYPE_SMC37C669_SUPERIO);
+ 
+     /* IDE disk setup.  */
+-    pci_dev = pci_create_simple_orphan(pci_bus, -1, "cmd646-ide");
++    pci_dev = pci_create_simple(mo, "ide", pci_bus, -1, "cmd646-ide");
+     pci_ide_create_devs(pci_dev);
+ 
+     /* Load PALcode.  Given that this is not "real" cpu palcode,
+diff --git a/hw/alpha/typhoon.c b/hw/alpha/typhoon.c
+index af40647ccd..af39f2659b 100644
+--- a/hw/alpha/typhoon.c
++++ b/hw/alpha/typhoon.c
+@@ -819,7 +819,7 @@ static void typhoon_alarm_timer(void *opaque)
+     cpu_interrupt(CPU(s->cchip.cpu[cpu]), CPU_INTERRUPT_TIMER);
+ }
+ 
+-PCIBus *typhoon_init(MemoryRegion *ram, qemu_irq *p_isa_irq,
++PCIBus *typhoon_init(Object *parent, MemoryRegion *ram, qemu_irq *p_isa_irq,
+                      qemu_irq *p_rtc_irq, AlphaCPU *cpus[4],
+                      pci_map_irq_fn sys_map_irq, uint8_t devfn_min)
+ {
+@@ -830,7 +830,7 @@ PCIBus *typhoon_init(MemoryRegion *ram, qemu_irq *p_isa_irq,
+     PCIBus *b;
+     int i;
+ 
+-    dev = qdev_new_orphan(TYPE_TYPHOON_PCI_HOST_BRIDGE);
++    dev = qdev_new(parent, "typhoon", TYPE_TYPHOON_PCI_HOST_BRIDGE);
+ 
+     s = TYPHOON_PCI_HOST_BRIDGE(dev);
+     phb = PCI_HOST_BRIDGE(dev);
+@@ -894,7 +894,7 @@ PCIBus *typhoon_init(MemoryRegion *ram, qemu_irq *p_isa_irq,
+                               &s->pchip.reg_mem, &s->pchip.reg_io,
+                               devfn_min, 64, TYPE_PCI_BUS);
+     phb->bus = b;
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+     /* Host memory as seen from the PCI side, via the IOMMU.  */
+     memory_region_init_iommu(&s->pchip.iommu, sizeof(s->pchip.iommu),
 -- 
 2.47.1
 

@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32F18C44501
-	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:54:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDBC9C44501
+	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:55:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wigaS-0005E7-KQ; Sat, 11 Jul 2026 18:54:20 -0400
+	id 1wigav-0005qs-G2; Sat, 11 Jul 2026 18:54:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigaQ-0005C7-EY; Sat, 11 Jul 2026 18:54:18 -0400
-Received: from pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.34.181.151])
+ id 1wigat-0005gj-4T; Sat, 11 Jul 2026 18:54:47 -0400
+Received: from pdx-out-015.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([50.112.246.219])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigaN-0000Th-51; Sat, 11 Jul 2026 18:54:18 -0400
+ id 1wigaq-0000Yy-Sr; Sat, 11 Jul 2026 18:54:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1783810455; x=1815346455;
+ t=1783810484; x=1815346484;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=iIPM+ob7e8V7G3dwYLSqkCDf+GYvnGAV46cu17rqTLY=;
- b=MKffReoQ2UNTf17VHlOzq+ZbhU25fegWmYb7EAg9NXqIa386EoXqgFU1
- fxlgaWlQc6Ov4Y9QMxEf4jCiPXeww6vNvvh21UMg9UDZsBrjyMA2g7X1w
- NA4fa+0543K8MONBBY+5L4RaSKuR0jKVSGoHd1ORcWawjopJf550lxT0x
- l7S4AagVjvBCFyrj/56t3dGkxl2IGTSbnfEeVT4YvJKnqsC1+RHqOw8Zo
- l/V7el94GIvhCiIwPHzyDa0H4+YcXHi802HS778Vu0WHApZSgG3cycmc8
- 5DmPB/zJYH4zLz0mI5Og09jXJTU4neNLJkqD9V+JXocsFVwrURk8msXmT A==;
-X-CSE-ConnectionGUID: ezwu5teCQYS8wfa/Pt2Mvg==
-X-CSE-MsgGUID: 97a7/2N2TCGvgs/XfyqolQ==
-X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23483473"
-Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
- by internal-pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:54:11 +0000
-Received: from EX19MTAUWC001.ant.amazon.com [205.251.233.53:25300]
+ bh=MW3P9SgTvFq9SPiktBatupfPQXymyENjuoN85Sn7L2I=;
+ b=iO3w87+qsUvF03k5bmOSZ7wK8JCCA4DFV7dpBvApXEGNWJ5SyoE+oScP
+ 9CcBIoypu/8477v25wnrjhhkVEvKutVSh/dAYNHvezj9B7S1cpNjugTE9
+ Qvd2umMS9Ul7nyzNAxdHRNZn595d/Fp5EVY5rUxu2xXdTemNaEozSvaPu
+ FAwMVkQXBD53/EZrZ9owCm+TeBQ3bTDyyo8PjbEviIZlN/6v/cGWQkiwK
+ sYr4kR6U2SCPb2gNtGs3YYKweZhURlpgK21riqdP4aNoOeVPe61odiap9
+ 10JkDyPCvDwujoNxxfDbxsWYs1yho6U099U8xymsWo+VEhNZ/PUfQf5eF A==;
+X-CSE-ConnectionGUID: E+fwtORxRiGv0nNW70y+aA==
+X-CSE-MsgGUID: qsBGwhy+TByDWhvbCgPXAg==
+X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23300053"
+Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
+ by internal-pdx-out-015.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:54:41 +0000
+Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.48:10476]
  by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.26.212:2525]
  with esmtp (Farcaster)
- id bf76de13-6d7a-4fd2-b7eb-d92baa2bb100; Sat, 11 Jul 2026 22:54:10 +0000 (UTC)
-X-Farcaster-Flow-ID: bf76de13-6d7a-4fd2-b7eb-d92baa2bb100
+ id 2627543e-87b6-4be6-86aa-138e48a26d60; Sat, 11 Jul 2026 22:54:41 +0000 (UTC)
+X-Farcaster-Flow-ID: 2627543e-87b6-4be6-86aa-138e48a26d60
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWC001.ant.amazon.com (10.250.64.174) with Microsoft SMTP Server
+ EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:54:10 +0000
+ Sat, 11 Jul 2026 22:54:41 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:54:02 +0000
+ Sat, 11 Jul 2026 22:54:32 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -91,10 +91,10 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  <th.huth+qemu@posteo.eu>, "Ran Wang" <wangran@bosc.ac.cn>, Hao Wu
  <wuhaotsh@google.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>
-Subject: [RFC PATCH 065/134] hw/arm/allwinner: Give onboard devices a QOM
+Subject: [RFC PATCH 066/134] hw/arm/strongarm: Give onboard devices a QOM
  parent
-Date: Sat, 11 Jul 2026 22:35:58 +0000
-Message-ID: <20260711223707.42139-66-graf@amazon.com>
+Date: Sat, 11 Jul 2026 22:35:59 +0000
+Message-ID: <20260711223707.42139-67-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260711223707.42139-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -102,11 +102,11 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D038UWB004.ant.amazon.com (10.13.139.177) To
+X-ClientProxiedBy: EX19D033UWC003.ant.amazon.com (10.13.139.217) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.34.181.151;
+Received-SPF: pass client-ip=50.112.246.219;
  envelope-from=prvs=645f258d4=graf@amazon.de;
- helo=pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-015.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -130,7 +130,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the *_orphan() device-creation calls in the hw/arm allwinner
+Convert the *_orphan() device-creation calls in the hw/arm strongarm
 board files to the new parented API introduced earlier in this
 series, so every onboard device gets a stable path in the
 composition tree instead of landing in /machine/unattached with an
@@ -142,146 +142,139 @@ composite children.  Names follow existing QOM conventions.
 
 Per-site rationale (reviewers: dispute the modeling here):
 
-hw/arm/allwinner-h3.c:382 | sysbus_create_simple | OBJECT(s) | "ehci[*]" | allwinner_h3_realize() SoC realize; 4 instances, auto-index.
-hw/arm/allwinner-h3.c:385 | sysbus_create_simple | OBJECT(s) | "ehci[*]" | SoC realize; auto-index.
-hw/arm/allwinner-h3.c:388 | sysbus_create_simple | OBJECT(s) | "ehci[*]" | SoC realize; auto-index.
-hw/arm/allwinner-h3.c:391 | sysbus_create_simple | OBJECT(s) | "ehci[*]" | SoC realize; auto-index.
-hw/arm/allwinner-h3.c:395 | sysbus_create_simple | OBJECT(s) | "ohci[*]" | SoC realize; 4 instances, auto-index.
-hw/arm/allwinner-h3.c:398 | sysbus_create_simple | OBJECT(s) | "ohci[*]" | SoC realize; auto-index.
-hw/arm/allwinner-h3.c:401 | sysbus_create_simple | OBJECT(s) | "ohci[*]" | SoC realize; auto-index.
-hw/arm/allwinner-h3.c:404 | sysbus_create_simple | OBJECT(s) | "ohci[*]" | SoC realize; auto-index.
-hw/arm/bananapi_m2u.c:53 | qdev_new | OBJECT(s) | "sd-card[*]" | mmc_attach_drive() helper receives AwR40State *s (SoC, itself child of machine); use it as parent. Multiple units -> auto-index. Paired qdev_realize_and_unref -> qdev_realize.
-hw/arm/bananapi_m2u.c:117 | i2c_slave_create_simple | OBJECT(machine) | "axp221" | Board init(); PMU is board-level peripheral on i2c bus.
-hw/arm/cubieboard.c:84 | i2c_slave_create_simple | OBJECT(machine) | "axp209" | Board init(); PMU is board-level peripheral.
-hw/arm/cubieboard.c:92 | qdev_new | OBJECT(machine) | "sd-card" | Board init(); single SD card. Paired qdev_realize_and_unref -> qdev_realize.
-hw/arm/orangepi.c:88 | qdev_new | OBJECT(machine) | "sd-card" | Board init(); single SD card. Paired qdev_realize_and_unref -> qdev_realize.
+hw/arm/collie.c:67 | sysbus_create_simple | OBJECT(machine) | "scoop" | Board .init(MachineState *machine); single instance.
+hw/arm/strongarm.c:649 | qdev_new | parent (threaded) | "gpio" | strongarm_gpio_init() static helper: added Object *parent as first arg, threaded from sa1110_init(). Paired sysbus_realize_and_unref -> sysbus_realize.
+hw/arm/strongarm.c:1623 | cpu_create | parent (threaded) | "cpu" | sa1110_init() has no parent-capable pointer; added Object *parent as first arg (prototype in strongarm.h updated), threaded from collie_init() with OBJECT(machine).
+hw/arm/strongarm.c:1625 | sysbus_create_varargs | parent | "pic" | sa1110_init(); single PIC.
+hw/arm/strongarm.c:1630 | sysbus_create_varargs | parent | "timer" | sa1110_init(); single timer.
+hw/arm/strongarm.c:1637 | sysbus_create_simple | parent | "rtc" | sa1110_init(); single RTC.
+hw/arm/strongarm.c:1642 | sysbus_create_varargs | parent | "ppc" | sa1110_init(); single PPC.
+hw/arm/strongarm.c:1645 | qdev_new | parent | "uart[*]" | sa1110_init(); loop over sa_serial[]. Paired sysbus_realize_and_unref -> sysbus_realize.
+hw/arm/strongarm.c:1654 | sysbus_create_varargs | parent | "ssp" | sa1110_init(); single SSP.
 
 Link: https://lore.kernel.org/qemu-devel/87jyr3w9tc.fsf@pond.sub.org/
 Assisted-by: Kiro
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/arm/allwinner-h3.c | 24 ++++++++++++++++--------
- hw/arm/bananapi_m2u.c |  6 +++---
- hw/arm/cubieboard.c   |  6 +++---
- hw/arm/orangepi.c     |  4 ++--
- 4 files changed, 24 insertions(+), 16 deletions(-)
+ hw/arm/collie.c    |  4 ++--
+ hw/arm/strongarm.c | 27 ++++++++++++++-------------
+ hw/arm/strongarm.h |  2 +-
+ 3 files changed, 17 insertions(+), 16 deletions(-)
 
-diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index ce716d1687..6f9a07610f 100644
---- a/hw/arm/allwinner-h3.c
-+++ b/hw/arm/allwinner-h3.c
-@@ -379,29 +379,37 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-                        qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_EMAC));
+diff --git a/hw/arm/collie.c b/hw/arm/collie.c
+index b3646daa3b..afd4e14315 100644
+--- a/hw/arm/collie.c
++++ b/hw/arm/collie.c
+@@ -52,7 +52,7 @@ static void collie_init(MachineState *machine)
+         exit(EXIT_FAILURE);
+     }
  
-     /* Universal Serial Bus */
--    sysbus_create_simple_orphan(TYPE_AW_H3_EHCI, s->memmap[AW_H3_DEV_EHCI0],
-+    sysbus_create_simple(OBJECT(s), "ehci[*]", TYPE_AW_H3_EHCI,
-+                         s->memmap[AW_H3_DEV_EHCI0],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-                                           AW_H3_GIC_SPI_EHCI0));
--    sysbus_create_simple_orphan(TYPE_AW_H3_EHCI, s->memmap[AW_H3_DEV_EHCI1],
-+    sysbus_create_simple(OBJECT(s), "ehci[*]", TYPE_AW_H3_EHCI,
-+                         s->memmap[AW_H3_DEV_EHCI1],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-                                           AW_H3_GIC_SPI_EHCI1));
--    sysbus_create_simple_orphan(TYPE_AW_H3_EHCI, s->memmap[AW_H3_DEV_EHCI2],
-+    sysbus_create_simple(OBJECT(s), "ehci[*]", TYPE_AW_H3_EHCI,
-+                         s->memmap[AW_H3_DEV_EHCI2],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-                                           AW_H3_GIC_SPI_EHCI2));
--    sysbus_create_simple_orphan(TYPE_AW_H3_EHCI, s->memmap[AW_H3_DEV_EHCI3],
-+    sysbus_create_simple(OBJECT(s), "ehci[*]", TYPE_AW_H3_EHCI,
-+                         s->memmap[AW_H3_DEV_EHCI3],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-                                           AW_H3_GIC_SPI_EHCI3));
+-    cms->sa1110 = sa1110_init(machine->cpu_type);
++    cms->sa1110 = sa1110_init(OBJECT(machine), machine->cpu_type);
  
--    sysbus_create_simple_orphan("sysbus-ohci", s->memmap[AW_H3_DEV_OHCI0],
-+    sysbus_create_simple(OBJECT(s), "ohci[*]", "sysbus-ohci",
-+                         s->memmap[AW_H3_DEV_OHCI0],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-                                           AW_H3_GIC_SPI_OHCI0));
--    sysbus_create_simple_orphan("sysbus-ohci", s->memmap[AW_H3_DEV_OHCI1],
-+    sysbus_create_simple(OBJECT(s), "ohci[*]", "sysbus-ohci",
-+                         s->memmap[AW_H3_DEV_OHCI1],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-                                           AW_H3_GIC_SPI_OHCI1));
--    sysbus_create_simple_orphan("sysbus-ohci", s->memmap[AW_H3_DEV_OHCI2],
-+    sysbus_create_simple(OBJECT(s), "ohci[*]", "sysbus-ohci",
-+                         s->memmap[AW_H3_DEV_OHCI2],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-                                           AW_H3_GIC_SPI_OHCI2));
--    sysbus_create_simple_orphan("sysbus-ohci", s->memmap[AW_H3_DEV_OHCI3],
-+    sysbus_create_simple(OBJECT(s), "ohci[*]", "sysbus-ohci",
-+                         s->memmap[AW_H3_DEV_OHCI3],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-                                           AW_H3_GIC_SPI_OHCI3));
+     memory_region_add_subregion(get_system_memory(), SA_SDCS0, machine->ram);
  
-diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
-index 809c8bbc43..ae2d8bd2f7 100644
---- a/hw/arm/bananapi_m2u.c
-+++ b/hw/arm/bananapi_m2u.c
-@@ -50,9 +50,9 @@ static void mmc_attach_drive(AwR40State *s, AwSdHostState *mmc, int unit,
+@@ -64,7 +64,7 @@ static void collie_init(MachineState *machine)
+                               FLASH_SECTOR_SIZE, 4, 0x00, 0x00, 0x00, 0x00, 0);
+     }
+ 
+-    sysbus_create_simple_orphan("scoop", 0x40800000, NULL);
++    sysbus_create_simple(OBJECT(machine), "scoop", "scoop", 0x40800000, NULL);
+ 
+     collie_binfo.board_id = 0x208;
+     arm_load_kernel(cms->sa1110->cpu, machine, &collie_binfo);
+diff --git a/hw/arm/strongarm.c b/hw/arm/strongarm.c
+index 1704db8baa..0b3b56218a 100644
+--- a/hw/arm/strongarm.c
++++ b/hw/arm/strongarm.c
+@@ -640,14 +640,14 @@ static const MemoryRegionOps strongarm_gpio_ops = {
+     .endianness = DEVICE_NATIVE_ENDIAN,
+ };
+ 
+-static DeviceState *strongarm_gpio_init(hwaddr base,
++static DeviceState *strongarm_gpio_init(Object *parent, hwaddr base,
+                 DeviceState *pic)
+ {
+     DeviceState *dev;
+     int i;
+ 
+-    dev = qdev_new_orphan(TYPE_STRONGARM_GPIO);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    dev = qdev_new(parent, "gpio", TYPE_STRONGARM_GPIO);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+     for (i = 0; i < 12; i++)
+@@ -1608,7 +1608,7 @@ static const TypeInfo strongarm_ssp_info = {
+ };
+ 
+ /* Main CPU functions */
+-StrongARMState *sa1110_init(const char *cpu_type)
++StrongARMState *sa1110_init(Object *parent, const char *cpu_type)
+ {
+     StrongARMState *s;
+     int i;
+@@ -1620,38 +1620,39 @@ StrongARMState *sa1110_init(const char *cpu_type)
          exit(1);
      }
  
--    carddev = qdev_new_orphan(TYPE_SD_CARD);
-+    carddev = qdev_new(OBJECT(s), "sd-card[*]", TYPE_SD_CARD);
-     qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
--    qdev_realize_and_unref(carddev, bus, &error_fatal);
-+    qdev_realize(carddev, bus, &error_fatal);
+-    s->cpu = ARM_CPU(cpu_create_orphan(cpu_type));
++    s->cpu = ARM_CPU(cpu_create(parent, "cpu", cpu_type));
  
-     if (load_bootroom && blk && blk_is_available(blk)) {
-         /* Use Boot ROM to copy data from SD card to SRAM */
-@@ -114,7 +114,7 @@ static void bpim2u_init(MachineState *machine)
+-    s->pic = sysbus_create_varargs_orphan("strongarm_pic", 0x90050000,
++    s->pic = sysbus_create_varargs(parent, "pic", "strongarm_pic", 0x90050000,
+                     qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ),
+                     qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_FIQ),
+                     NULL);
  
-     /* Connect AXP221 */
-     i2c = I2C_BUS(qdev_get_child_bus(DEVICE(&r40->i2c0), "i2c"));
--    i2c_slave_create_simple_orphan(i2c, "axp221_pmu", 0x34);
-+    i2c_slave_create_simple(OBJECT(machine), "axp221", i2c, "axp221_pmu", 0x34);
+-    sysbus_create_varargs_orphan("pxa25x-timer", 0x90000000,
++    sysbus_create_varargs(parent, "timer", "pxa25x-timer", 0x90000000,
+                     qdev_get_gpio_in(s->pic, SA_PIC_OSTC0),
+                     qdev_get_gpio_in(s->pic, SA_PIC_OSTC1),
+                     qdev_get_gpio_in(s->pic, SA_PIC_OSTC2),
+                     qdev_get_gpio_in(s->pic, SA_PIC_OSTC3),
+                     NULL);
  
-     /* SDRAM */
-     memory_region_add_subregion(get_system_memory(),
-diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-index 7ce5179345..fa5eaa5378 100644
---- a/hw/arm/cubieboard.c
-+++ b/hw/arm/cubieboard.c
-@@ -81,7 +81,7 @@ static void cubieboard_init(MachineState *machine)
+-    sysbus_create_simple_orphan(TYPE_STRONGARM_RTC, 0x90010000,
++    sysbus_create_simple(parent, "rtc", TYPE_STRONGARM_RTC, 0x90010000,
+                     qdev_get_gpio_in(s->pic, SA_PIC_RTC_ALARM));
  
-     /* Connect AXP 209 */
-     i2c = I2C_BUS(qdev_get_child_bus(DEVICE(&a10->i2c0), "i2c"));
--    i2c_slave_create_simple_orphan(i2c, "axp209_pmu", 0x34);
-+    i2c_slave_create_simple(OBJECT(machine), "axp209", i2c, "axp209_pmu", 0x34);
+-    s->gpio = strongarm_gpio_init(0x90040000, s->pic);
++    s->gpio = strongarm_gpio_init(parent, 0x90040000, s->pic);
  
-     /* Retrieve SD bus */
-     di = drive_get(IF_SD, 0, 0);
-@@ -89,9 +89,9 @@ static void cubieboard_init(MachineState *machine)
-     bus = qdev_get_child_bus(DEVICE(a10), "sd-bus");
+-    s->ppc = sysbus_create_varargs_orphan(TYPE_STRONGARM_PPC, 0x90060000, NULL);
++    s->ppc = sysbus_create_varargs(parent, "ppc", TYPE_STRONGARM_PPC,
++                                   0x90060000, NULL);
  
-     /* Plug in SD card */
--    carddev = qdev_new_orphan(TYPE_SD_CARD);
-+    carddev = qdev_new(OBJECT(machine), "sd-card", TYPE_SD_CARD);
-     qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
--    qdev_realize_and_unref(carddev, bus, &error_fatal);
-+    qdev_realize(carddev, bus, &error_fatal);
+     for (i = 0; sa_serial[i].io_base; i++) {
+-        DeviceState *dev = qdev_new_orphan(TYPE_STRONGARM_UART);
++        DeviceState *dev = qdev_new(parent, "uart[*]", TYPE_STRONGARM_UART);
+         qdev_prop_set_chr(dev, "chardev", serial_hd(i));
+-        sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++        sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+         sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0,
+                 sa_serial[i].io_base);
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0,
+                 qdev_get_gpio_in(s->pic, sa_serial[i].irq));
+     }
  
-     memory_region_add_subregion(get_system_memory(), AW_A10_SDRAM_BASE,
-                                 machine->ram);
-diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-index d705cc43b4..1a37c97eef 100644
---- a/hw/arm/orangepi.c
-+++ b/hw/arm/orangepi.c
-@@ -85,9 +85,9 @@ static void orangepi_init(MachineState *machine)
-     bus = qdev_get_child_bus(DEVICE(h3), "sd-bus");
+-    s->ssp = sysbus_create_varargs_orphan(TYPE_STRONGARM_SSP, 0x80070000,
++    s->ssp = sysbus_create_varargs(parent, "ssp", TYPE_STRONGARM_SSP, 0x80070000,
+                 qdev_get_gpio_in(s->pic, SA_PIC_SSP), NULL);
+     s->ssp_bus = (SSIBus *)qdev_get_child_bus(s->ssp, "ssi");
  
-     /* Plug in SD card */
--    carddev = qdev_new_orphan(TYPE_SD_CARD);
-+    carddev = qdev_new(OBJECT(machine), "sd-card", TYPE_SD_CARD);
-     qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
--    qdev_realize_and_unref(carddev, bus, &error_fatal);
-+    qdev_realize(carddev, bus, &error_fatal);
+diff --git a/hw/arm/strongarm.h b/hw/arm/strongarm.h
+index b11b3a3379..72bb9e075c 100644
+--- a/hw/arm/strongarm.h
++++ b/hw/arm/strongarm.h
+@@ -62,6 +62,6 @@ typedef struct {
+     SSIBus *ssp_bus;
+ } StrongARMState;
  
-     /* SDRAM */
-     memory_region_add_subregion(get_system_memory(), h3->memmap[AW_H3_DEV_SDRAM],
+-StrongARMState *sa1110_init(const char *cpu_type);
++StrongARMState *sa1110_init(Object *parent, const char *cpu_type);
+ 
+ #endif
 -- 
 2.47.1
 

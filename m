@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C351FC44506
-	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 23:03:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0B08C43458
+	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 23:04:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wigjT-0005mY-RZ; Sat, 11 Jul 2026 19:03:39 -0400
+	id 1wigjD-0005a8-4e; Sat, 11 Jul 2026 19:03:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigjR-0005lZ-RD; Sat, 11 Jul 2026 19:03:37 -0400
-Received: from pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.12.53.23])
+ id 1wigil-0005PW-6T; Sat, 11 Jul 2026 19:02:56 -0400
+Received: from pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.13.214.179])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigjP-0002hL-HW; Sat, 11 Jul 2026 19:03:37 -0400
+ id 1wigih-0002YQ-51; Sat, 11 Jul 2026 19:02:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1783811015; x=1815347015;
+ t=1783810971; x=1815346971;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=CXOxm0VQ3ug8i73JP92Gty/a5Axf9FdIYmMv6MEY07k=;
- b=bk9rXJ46IXtBVAVnBDWj1gPWPnGphi/OqnwDg8IUwNVMeIBWc2FPIksH
- o4WzxRd/BHeBQUcxiBKXEkF90O9FyUYQHFBCX86JgXTdOoooW/V5jg6JZ
- v424oUl0svyKU/nPRI4Yyhnuw5wqPJd9dgD2IMLaYNDIjatTCBdxYtNCw
- cNeK6TzdCfBkopGfK/IsyDY7i95X4umCWELXU+Qgp7D2ck/6wCMkYO2V/
- 2DMbgUocyqL2w+5Z2gVXhsRu9wTwRPG9aLbcSBZL8Xaq1/nOMvPQI9N+d
- jFZWi/QiI+KYgjzEgfPGQBd9DyYgOhtLYYHhu6UaT4K1pdmnsc7fZBBJd Q==;
-X-CSE-ConnectionGUID: YQViRy3tQXaepJdQIfyQ3A==
-X-CSE-MsgGUID: BgXdbXLFREOiUpzQ3XJoMQ==
-X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23370040"
+ bh=Gmd15+SAabzX07bY28nlbu8cJDEIsIgNIuco93iaCqQ=;
+ b=F88hCuDiu8RIudgXO4Y7Fs7+DqV7NZ+IB9NkB/SDb1xn2qMxZTzPxNT5
+ U6z/2/I6zvbRzyukDWLC3hsqmxzuNDHqo6DI46MmqaoRemqaqPU0mH1/2
+ BS61OlQsAiMjP1TOSHFdYLh0rmtCfE8Dd7tBLQCaj19qE29ZAWVdbbVMV
+ DH73aLFzuQKdPWu/+hvFHiCcxmWG5KazSShzDVsYIt7wW/DcAdobFsVmm
+ LDwBfRIx5OurB3fBh+U8oLeRVqy1JC2+5Qw8+QSaz+vULzlaX4igFIusa
+ HsEBBquRpLrAmKZTohYOZDge4nDAoMKomBuCcU5SqfWmCE/eOJI4qfKMq A==;
+X-CSE-ConnectionGUID: MeB5+qhvQF2Rr25YL0++zQ==
+X-CSE-MsgGUID: orOXU9YyQrWoBFg4QEyMuA==
+X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23479679"
 Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
  smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
- by internal-pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 23:03:32 +0000
-Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.48:13504]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.51.175:2525]
+ by internal-pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 23:02:35 +0000
+Received: from EX19MTAUWB001.ant.amazon.com [205.251.233.51:6838]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.58.33:2525]
  with esmtp (Farcaster)
- id 956b4a00-99b6-4257-9ef4-046b18028040; Sat, 11 Jul 2026 23:03:31 +0000 (UTC)
-X-Farcaster-Flow-ID: 956b4a00-99b6-4257-9ef4-046b18028040
+ id e319b4ac-40a7-4496-a248-a2413f3e68db; Sat, 11 Jul 2026 23:02:35 +0000 (UTC)
+X-Farcaster-Flow-ID: e319b4ac-40a7-4496-a248-a2413f3e68db
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
+ EX19MTAUWB001.ant.amazon.com (10.250.64.248) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 23:03:31 +0000
+ Sat, 11 Jul 2026 23:02:35 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 23:03:22 +0000
+ Sat, 11 Jul 2026 23:02:26 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -91,9 +91,9 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  <th.huth+qemu@posteo.eu>, "Ran Wang" <wangran@bosc.ac.cn>, Hao Wu
  <wuhaotsh@google.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>
-Subject: [RFC PATCH 100/134] hw/xtensa: Give memory regions an explicit owner
-Date: Sat, 11 Jul 2026 22:36:33 +0000
-Message-ID: <20260711223707.42139-101-graf@amazon.com>
+Subject: [RFC PATCH 096/134] hw/sh4: Give memory regions an explicit owner
+Date: Sat, 11 Jul 2026 22:36:29 +0000
+Message-ID: <20260711223707.42139-97-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260711223707.42139-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -101,11 +101,11 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D044UWB003.ant.amazon.com (10.13.139.168) To
+X-ClientProxiedBy: EX19D046UWA003.ant.amazon.com (10.13.139.18) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.12.53.23;
+Received-SPF: pass client-ip=52.13.214.179;
  envelope-from=prvs=645f258d4=graf@amazon.de;
- helo=pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -129,238 +129,272 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert memory_region_init*() calls that pass NULL owner to pass
-the enclosing machine or device instead.
+Convert memory_region_init*() calls in the SH7750 SoC model and
+its non-QOM sub-block helpers (tmu012_init, sh_intc_init,
+r2d_fpga_init) to pass an explicit owner instead of NULL.
 
-Thread Object *owner through xtensa_create_memory_regions(), xtensa_mx_pic_register_cpu() and the static xtfpga_fpga_init() helper. All callers are inside board init functions.
+Thread Object *owner as the first argument through tmu012_init(),
+sh_intc_init() and its static sh_intc_register() helper, and
+r2d_fpga_init(). sh7750_init() already carries an Object *parent
+from the earlier device conversion; pass it through.
 
 No functional change intended.
 
 Assisted-by: Kiro
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/xtensa/mx_pic.c         |  4 ++--
- hw/xtensa/sim.c            | 15 ++++++++-------
- hw/xtensa/xtensa_memory.c  |  5 +++--
- hw/xtensa/xtensa_memory.h  |  3 ++-
- hw/xtensa/xtfpga.c         | 30 ++++++++++++++++--------------
- include/hw/xtensa/mx_pic.h |  2 +-
- 6 files changed, 32 insertions(+), 27 deletions(-)
+ hw/intc/sh_intc.c         | 19 ++++++++++---------
+ hw/sh4/r2d.c              |  9 +++++----
+ hw/sh4/sh7750.c           | 22 +++++++++++-----------
+ hw/timer/sh_timer.c       |  9 +++++----
+ include/hw/sh4/sh_intc.h  |  3 ++-
+ include/hw/timer/tmu012.h |  3 ++-
+ 6 files changed, 35 insertions(+), 30 deletions(-)
 
-diff --git a/hw/xtensa/mx_pic.c b/hw/xtensa/mx_pic.c
-index 8ded3bc79b..f349fb125c 100644
---- a/hw/xtensa/mx_pic.c
-+++ b/hw/xtensa/mx_pic.c
-@@ -299,7 +299,7 @@ static const MemoryRegionOps xtensa_mx_pic_ops = {
-     },
- };
- 
--MemoryRegion *xtensa_mx_pic_register_cpu(XtensaMxPic *mx,
-+MemoryRegion *xtensa_mx_pic_register_cpu(Object *owner, XtensaMxPic *mx,
-                                          qemu_irq *irq,
-                                          qemu_irq runstall)
- {
-@@ -309,7 +309,7 @@ MemoryRegion *xtensa_mx_pic_register_cpu(XtensaMxPic *mx,
-     mx_cpu->irq = irq;
-     mx_cpu->runstall = runstall;
- 
--    memory_region_init_io(&mx_cpu->reg, NULL, &xtensa_mx_pic_ops, mx_cpu,
-+    memory_region_init_io(&mx_cpu->reg, owner, &xtensa_mx_pic_ops, mx_cpu,
-                           "mx_pic", 0x280);
- 
-     ++mx->n_cpu;
-diff --git a/hw/xtensa/sim.c b/hw/xtensa/sim.c
-index ad1439a0b4..e3cd69ceca 100644
---- a/hw/xtensa/sim.c
-+++ b/hw/xtensa/sim.c
-@@ -60,10 +60,11 @@ XtensaCPU *xtensa_sim_common_init(MachineState *machine)
-     XtensaCPU *cpu = NULL;
-     CPUXtensaState *env = NULL;
-     ram_addr_t ram_size = machine->ram_size;
-+    Object *mo = OBJECT(machine);
-     int n;
- 
-     for (n = 0; n < machine->smp.cpus; n++) {
--        cpu = XTENSA_CPU(cpu_create(OBJECT(machine), "cpu[*]", machine->cpu_type));
-+        cpu = XTENSA_CPU(cpu_create(mo, "cpu[*]", machine->cpu_type));
-         env = &cpu->env;
- 
-         env->sregs[PRID] = n;
-@@ -78,17 +79,17 @@ XtensaCPU *xtensa_sim_common_init(MachineState *machine)
-         XtensaMemory sysram = env->config->sysram;
- 
-         sysram.location[0].size = ram_size;
--        xtensa_create_memory_regions(&env->config->instrom, "xtensa.instrom",
-+        xtensa_create_memory_regions(mo, &env->config->instrom, "xtensa.instrom",
-                                      get_system_memory());
--        xtensa_create_memory_regions(&env->config->instram, "xtensa.instram",
-+        xtensa_create_memory_regions(mo, &env->config->instram, "xtensa.instram",
-                                      get_system_memory());
--        xtensa_create_memory_regions(&env->config->datarom, "xtensa.datarom",
-+        xtensa_create_memory_regions(mo, &env->config->datarom, "xtensa.datarom",
-                                      get_system_memory());
--        xtensa_create_memory_regions(&env->config->dataram, "xtensa.dataram",
-+        xtensa_create_memory_regions(mo, &env->config->dataram, "xtensa.dataram",
-                                      get_system_memory());
--        xtensa_create_memory_regions(&env->config->sysrom, "xtensa.sysrom",
-+        xtensa_create_memory_regions(mo, &env->config->sysrom, "xtensa.sysrom",
-                                      get_system_memory());
--        xtensa_create_memory_regions(&sysram, "xtensa.sysram",
-+        xtensa_create_memory_regions(mo, &sysram, "xtensa.sysram",
-                                      get_system_memory());
+diff --git a/hw/intc/sh_intc.c b/hw/intc/sh_intc.c
+index 0da82f9d5e..37feb6a813 100644
+--- a/hw/intc/sh_intc.c
++++ b/hw/intc/sh_intc.c
+@@ -349,7 +349,8 @@ void sh_intc_register_sources(struct intc_desc *desc,
      }
-     if (serial_hd(0)) {
-diff --git a/hw/xtensa/xtensa_memory.c b/hw/xtensa/xtensa_memory.c
-index 13a6077d86..4477eea0ad 100644
---- a/hw/xtensa/xtensa_memory.c
-+++ b/hw/xtensa/xtensa_memory.c
-@@ -31,7 +31,8 @@
- #include "qemu/error-report.h"
- #include "xtensa_memory.h"
+ }
  
--void xtensa_create_memory_regions(const XtensaMemory *memory,
-+void xtensa_create_memory_regions(Object *owner,
-+                                  const XtensaMemory *memory,
-                                   const char *name,
-                                   MemoryRegion *super)
- {
-@@ -43,7 +44,7 @@ void xtensa_create_memory_regions(const XtensaMemory *memory,
+-static unsigned int sh_intc_register(MemoryRegion *sysmem,
++static unsigned int sh_intc_register(Object *owner,
++                                     MemoryRegion *sysmem,
+                                      struct intc_desc *desc,
+                                      const unsigned long address,
+                                      const char *type,
+@@ -368,18 +369,18 @@ static unsigned int sh_intc_register(MemoryRegion *sysmem,
+     iomem_a7 = iomem_p4 + 1;
  
-         g_string_printf(num_name, "%s%u", name, i);
-         m = g_new(MemoryRegion, 1);
--        memory_region_init_ram(m, NULL, num_name->str,
-+        memory_region_init_ram(m, owner, num_name->str,
-                                memory->location[i].size, &error_fatal);
-         memory_region_add_subregion(super, memory->location[i].addr, m);
+     snprintf(name, sizeof(name), "intc-%s-%s-%s", type, action, "p4");
+-    memory_region_init_alias(iomem_p4, NULL, name, iomem, A7ADDR(address), 4);
++    memory_region_init_alias(iomem_p4, owner, name, iomem, A7ADDR(address), 4);
+     memory_region_add_subregion(sysmem, P4ADDR(address), iomem_p4);
+ 
+     snprintf(name, sizeof(name), "intc-%s-%s-%s", type, action, "a7");
+-    memory_region_init_alias(iomem_a7, NULL, name, iomem, A7ADDR(address), 4);
++    memory_region_init_alias(iomem_a7, owner, name, iomem, A7ADDR(address), 4);
+     memory_region_add_subregion(sysmem, A7ADDR(address), iomem_a7);
+ 
+     /* used to increment aliases index */
+     return 2;
+ }
+ 
+-int sh_intc_init(MemoryRegion *sysmem,
++int sh_intc_init(Object *owner, MemoryRegion *sysmem,
+                  struct intc_desc *desc,
+                  int nr_sources,
+                  struct intc_mask_reg *mask_regs,
+@@ -403,15 +404,15 @@ int sh_intc_init(MemoryRegion *sysmem,
+         desc->sources[i].parent = desc;
      }
-diff --git a/hw/xtensa/xtensa_memory.h b/hw/xtensa/xtensa_memory.h
-index c86ad06685..b8b2d4b8b4 100644
---- a/hw/xtensa/xtensa_memory.h
-+++ b/hw/xtensa/xtensa_memory.h
-@@ -30,7 +30,8 @@
+     desc->irqs = qemu_allocate_irqs(sh_intc_set_irq, desc, nr_sources);
+-    memory_region_init_io(&desc->iomem, NULL, &sh_intc_ops, desc, "intc",
++    memory_region_init_io(&desc->iomem, owner, &sh_intc_ops, desc, "intc",
+                           0x100000000ULL);
+     j = 0;
+     if (desc->mask_regs) {
+         for (i = 0; i < desc->nr_mask_regs; i++) {
+             struct intc_mask_reg *mr = &desc->mask_regs[i];
  
- #include "target/xtensa/cpu.h"
+-            j += sh_intc_register(sysmem, desc, mr->set_reg, "mask", "set", j);
+-            j += sh_intc_register(sysmem, desc, mr->clr_reg, "mask", "clr", j);
++            j += sh_intc_register(owner, sysmem, desc, mr->set_reg, "mask", "set", j);
++            j += sh_intc_register(owner, sysmem, desc, mr->clr_reg, "mask", "clr", j);
+         }
+     }
  
--void xtensa_create_memory_regions(const XtensaMemory *memory,
-+void xtensa_create_memory_regions(Object *owner,
-+                                  const XtensaMemory *memory,
-                                   const char *name,
-                                   MemoryRegion *super);
+@@ -419,8 +420,8 @@ int sh_intc_init(MemoryRegion *sysmem,
+         for (i = 0; i < desc->nr_prio_regs; i++) {
+             struct intc_prio_reg *pr = &desc->prio_regs[i];
  
-diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
-index 1c48283f5d..f0c21180a2 100644
---- a/hw/xtensa/xtfpga.c
-+++ b/hw/xtensa/xtfpga.c
-@@ -125,12 +125,13 @@ static const MemoryRegionOps xtfpga_fpga_ops = {
+-            j += sh_intc_register(sysmem, desc, pr->set_reg, "prio", "set", j);
+-            j += sh_intc_register(sysmem, desc, pr->clr_reg, "prio", "clr", j);
++            j += sh_intc_register(owner, sysmem, desc, pr->set_reg, "prio", "set", j);
++            j += sh_intc_register(owner, sysmem, desc, pr->clr_reg, "prio", "clr", j);
+         }
+     }
+ 
+diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+index 6154aed2c4..8deda6e5f4 100644
+--- a/hw/sh4/r2d.c
++++ b/hw/sh4/r2d.c
+@@ -187,7 +187,8 @@ static const MemoryRegionOps r2d_fpga_ops = {
      .endianness = DEVICE_NATIVE_ENDIAN,
  };
  
--static XtfpgaFpgaState *xtfpga_fpga_init(MemoryRegion *address_space,
-+static XtfpgaFpgaState *xtfpga_fpga_init(Object *owner,
-+                                         MemoryRegion *address_space,
-                                          hwaddr base, uint32_t freq)
+-static r2d_fpga_t *r2d_fpga_init(MemoryRegion *sysmem,
++static r2d_fpga_t *r2d_fpga_init(Object *owner,
++                                 MemoryRegion *sysmem,
+                                  hwaddr base, qemu_irq irl)
  {
-     XtfpgaFpgaState *s = g_new(XtfpgaFpgaState, 1);
+     r2d_fpga_t *s;
+@@ -196,7 +197,7 @@ static r2d_fpga_t *r2d_fpga_init(MemoryRegion *sysmem,
  
--    memory_region_init_io(&s->iomem, NULL, &xtfpga_fpga_ops, s,
-+    memory_region_init_io(&s->iomem, owner, &xtfpga_fpga_ops, s,
-                           "xtfpga.fpga", 0x10000);
-     memory_region_add_subregion(address_space, base, &s->iomem);
-     s->freq = freq;
-@@ -243,6 +244,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
-     uint32_t freq = 10000000;
-     int n;
-     unsigned int smp_cpus = machine->smp.cpus;
-+    Object *mo = OBJECT(machine);
+     s->irl = irl;
  
-     if (smp_cpus > 1) {
-         mx_pic = xtensa_mx_pic_init(31);
-@@ -262,7 +264,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
-         if (mx_pic) {
-             MemoryRegion *mx_eri;
+-    memory_region_init_io(&s->iomem, NULL, &r2d_fpga_ops, s, "r2d-fpga", 0x40);
++    memory_region_init_io(&s->iomem, owner, &r2d_fpga_ops, s, "r2d-fpga", 0x40);
+     memory_region_add_subregion(sysmem, base, &s->iomem);
  
--            mx_eri = xtensa_mx_pic_register_cpu(mx_pic,
-+            mx_eri = xtensa_mx_pic_register_cpu(OBJECT(machine), mx_pic,
-                                                 xtensa_get_extints(cenv),
-                                                 xtensa_get_runstall(cenv));
-             memory_region_add_subregion(xtensa_get_er_region(cenv),
-@@ -286,30 +288,30 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
-         XtensaMemory sysram = env->config->sysram;
+     qemu_init_irqs(s->irq, NR_IRQS, r2d_fpga_irq_set, s);
+@@ -261,11 +262,11 @@ static void r2d_init(MachineState *machine)
+     qemu_register_reset(main_cpu_reset, reset_info);
  
-         sysram.location[0].size = machine->ram_size;
--        xtensa_create_memory_regions(&env->config->instrom, "xtensa.instrom",
-+        xtensa_create_memory_regions(mo, &env->config->instrom, "xtensa.instrom",
-                                      system_memory);
--        xtensa_create_memory_regions(&env->config->instram, "xtensa.instram",
-+        xtensa_create_memory_regions(mo, &env->config->instram, "xtensa.instram",
-                                      system_memory);
--        xtensa_create_memory_regions(&env->config->datarom, "xtensa.datarom",
-+        xtensa_create_memory_regions(mo, &env->config->datarom, "xtensa.datarom",
-                                      system_memory);
--        xtensa_create_memory_regions(&env->config->dataram, "xtensa.dataram",
-+        xtensa_create_memory_regions(mo, &env->config->dataram, "xtensa.dataram",
-                                      system_memory);
--        xtensa_create_memory_regions(&sysram, "xtensa.sysram",
-+        xtensa_create_memory_regions(mo, &sysram, "xtensa.sysram",
-                                      system_memory);
+     /* Allocate memory space */
+-    memory_region_init_ram(sdram, NULL, "r2d.sdram", SDRAM_SIZE, &error_fatal);
++    memory_region_init_ram(sdram, OBJECT(machine), "r2d.sdram", SDRAM_SIZE, &error_fatal);
+     memory_region_add_subregion(address_space_mem, SDRAM_BASE, sdram);
+     /* Register peripherals */
+     s = sh7750_init(OBJECT(machine), cpu, address_space_mem);
+-    fpga = r2d_fpga_init(address_space_mem, 0x04000000, sh7750_irl(s));
++    fpga = r2d_fpga_init(OBJECT(machine), address_space_mem, 0x04000000, sh7750_irl(s));
+ 
+     dev = qdev_new(OBJECT(machine), "pci-host", "sh_pci");
+     busdev = SYS_BUS_DEVICE(dev);
+diff --git a/hw/sh4/sh7750.c b/hw/sh4/sh7750.c
+index ff9724fadf..ea55a3a9cc 100644
+--- a/hw/sh4/sh7750.c
++++ b/hw/sh4/sh7750.c
+@@ -721,38 +721,38 @@ SH7750State *sh7750_init(Object *parent, SuperHCPU *cpu,
+     s = g_new0(SH7750State, 1);
+     s->cpu = cpu;
+     s->periph_freq = 60000000; /* 60MHz */
+-    memory_region_init_io(&s->iomem, NULL, &sh7750_mem_ops, s,
++    memory_region_init_io(&s->iomem, parent, &sh7750_mem_ops, s,
+                           "memory", 0x1fc01000);
+ 
+-    memory_region_init_alias(&s->iomem_1f0, NULL, "memory-1f0",
++    memory_region_init_alias(&s->iomem_1f0, parent, "memory-1f0",
+                              &s->iomem, 0x1f000000, 0x1000);
+     memory_region_add_subregion(sysmem, 0x1f000000, &s->iomem_1f0);
+ 
+-    memory_region_init_alias(&s->iomem_ff0, NULL, "memory-ff0",
++    memory_region_init_alias(&s->iomem_ff0, parent, "memory-ff0",
+                              &s->iomem, 0x1f000000, 0x1000);
+     memory_region_add_subregion(sysmem, 0xff000000, &s->iomem_ff0);
+ 
+-    memory_region_init_alias(&s->iomem_1f8, NULL, "memory-1f8",
++    memory_region_init_alias(&s->iomem_1f8, parent, "memory-1f8",
+                              &s->iomem, 0x1f800000, 0x1000);
+     memory_region_add_subregion(sysmem, 0x1f800000, &s->iomem_1f8);
+ 
+-    memory_region_init_alias(&s->iomem_ff8, NULL, "memory-ff8",
++    memory_region_init_alias(&s->iomem_ff8, parent, "memory-ff8",
+                              &s->iomem, 0x1f800000, 0x1000);
+     memory_region_add_subregion(sysmem, 0xff800000, &s->iomem_ff8);
+ 
+-    memory_region_init_alias(&s->iomem_1fc, NULL, "memory-1fc",
++    memory_region_init_alias(&s->iomem_1fc, parent, "memory-1fc",
+                              &s->iomem, 0x1fc00000, 0x1000);
+     memory_region_add_subregion(sysmem, 0x1fc00000, &s->iomem_1fc);
+ 
+-    memory_region_init_alias(&s->iomem_ffc, NULL, "memory-ffc",
++    memory_region_init_alias(&s->iomem_ffc, parent, "memory-ffc",
+                              &s->iomem, 0x1fc00000, 0x1000);
+     memory_region_add_subregion(sysmem, 0xffc00000, &s->iomem_ffc);
+ 
+-    memory_region_init_io(&s->mmct_iomem, NULL, &sh7750_mmct_ops, s,
++    memory_region_init_io(&s->mmct_iomem, parent, &sh7750_mmct_ops, s,
+                           "cache-and-tlb", 0x08000000);
+     memory_region_add_subregion(sysmem, 0xf0000000, &s->mmct_iomem);
+ 
+-    sh_intc_init(sysmem, &s->intc, NR_SOURCES,
++    sh_intc_init(parent, sysmem, &s->intc, NR_SOURCES,
+                  _INTC_ARRAY(mask_registers),
+                  _INTC_ARRAY(prio_registers));
+ 
+@@ -797,7 +797,7 @@ SH7750State *sh7750_init(Object *parent, SuperHCPU *cpu,
+     qdev_connect_gpio_out_named(dev, "txi", 0, s->intc.irqs[SCIF_TXI]);
+     qdev_connect_gpio_out_named(dev, "bri", 0, s->intc.irqs[SCIF_BRI]);
+ 
+-    tmu012_init(sysmem, 0x1fd80000,
++    tmu012_init(parent, sysmem, 0x1fd80000,
+                 TMU012_FEAT_TOCR | TMU012_FEAT_3CHAN | TMU012_FEAT_EXTCLK,
+                 s->periph_freq,
+                 s->intc.irqs[TMU0],
+@@ -821,7 +821,7 @@ SH7750State *sh7750_init(Object *parent, SuperHCPU *cpu,
+         sh_intc_register_sources(&s->intc,
+                                  _INTC_ARRAY(vectors_tmu34),
+                                  NULL, 0);
+-        tmu012_init(sysmem, 0x1e100000, 0, s->periph_freq,
++        tmu012_init(parent, sysmem, 0x1e100000, 0, s->periph_freq,
+                     s->intc.irqs[TMU3],
+                     s->intc.irqs[TMU4],
+                     NULL, NULL);
+diff --git a/hw/timer/sh_timer.c b/hw/timer/sh_timer.c
+index 41ece9c613..ac71d11a0a 100644
+--- a/hw/timer/sh_timer.c
++++ b/hw/timer/sh_timer.c
+@@ -344,7 +344,8 @@ static const MemoryRegionOps tmu012_ops = {
+     .endianness = DEVICE_NATIVE_ENDIAN,
+ };
+ 
+-void tmu012_init(MemoryRegion *sysmem, hwaddr base, int feat, uint32_t freq,
++void tmu012_init(Object *owner, MemoryRegion *sysmem, hwaddr base,
++                 int feat, uint32_t freq,
+                  qemu_irq ch0_irq, qemu_irq ch1_irq,
+                  qemu_irq ch2_irq0, qemu_irq ch2_irq1)
+ {
+@@ -360,13 +361,13 @@ void tmu012_init(MemoryRegion *sysmem, hwaddr base, int feat, uint32_t freq,
+                                     ch2_irq0); /* ch2_irq1 not supported */
      }
  
-     system_io = g_malloc(sizeof(*system_io));
--    memory_region_init_io(system_io, NULL, &xtfpga_io_ops, NULL, "xtfpga.io",
-+    memory_region_init_io(system_io, OBJECT(machine), &xtfpga_io_ops, NULL, "xtfpga.io",
-                           system_io_size);
-     memory_region_add_subregion(system_memory, board->io[0], system_io);
-     if (board->io[1]) {
-         MemoryRegion *io = g_malloc(sizeof(*io));
+-    memory_region_init_io(&s->iomem, NULL, &tmu012_ops, s, "timer", 0x30);
++    memory_region_init_io(&s->iomem, owner, &tmu012_ops, s, "timer", 0x30);
  
--        memory_region_init_alias(io, NULL, "xtfpga.io.cached",
-+        memory_region_init_alias(io, OBJECT(machine), "xtfpga.io.cached",
-                                  system_io, 0, system_io_size);
-         memory_region_add_subregion(system_memory, board->io[1], io);
-     }
--    xtfpga_fpga_init(system_io, 0x0d020000, freq);
-+    xtfpga_fpga_init(OBJECT(machine), system_io, 0x0d020000, freq);
-     xtfpga_net_init(system_io, 0x0d030000, 0x0d030400, 0x0d800000, extints[1]);
+-    memory_region_init_alias(&s->iomem_p4, NULL, "timer-p4",
++    memory_region_init_alias(&s->iomem_p4, owner, "timer-p4",
+                              &s->iomem, 0, memory_region_size(&s->iomem));
+     memory_region_add_subregion(sysmem, P4ADDR(base), &s->iomem_p4);
  
-     serial_mm_init(OBJECT(machine), system_io, 0x0d050020, 2, extints[0],
-@@ -341,7 +343,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
-         lowmem_end += env->config->sysram.location[0].addr;
-         cur_lowmem += env->config->sysram.location[0].addr;
+-    memory_region_init_alias(&s->iomem_a7, NULL, "timer-a7",
++    memory_region_init_alias(&s->iomem_a7, owner, "timer-a7",
+                              &s->iomem, 0, memory_region_size(&s->iomem));
+     memory_region_add_subregion(sysmem, A7ADDR(base), &s->iomem_a7);
+     /* ??? Save/restore.  */
+diff --git a/include/hw/sh4/sh_intc.h b/include/hw/sh4/sh_intc.h
+index 94f183121e..d391710987 100644
+--- a/include/hw/sh4/sh_intc.h
++++ b/include/hw/sh4/sh_intc.h
+@@ -2,6 +2,7 @@
+ #define SH_INTC_H
  
--        xtensa_create_memory_regions(&env->config->sysrom, "xtensa.sysrom",
-+        xtensa_create_memory_regions(mo, &env->config->sysrom, "xtensa.sysrom",
-                                      system_memory);
+ #include "system/memory.h"
++#include "qom/object.h"
  
-         if (kernel_cmdline) {
-@@ -465,13 +467,13 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
-                 size = board->flash->size - board->flash->boot_base;
-             }
+ typedef unsigned char intc_enum;
  
--            memory_region_init_alias(flash_io, NULL, "xtfpga.flash",
-+            memory_region_init_alias(flash_io, OBJECT(machine), "xtfpga.flash",
-                                      flash_mr, board->flash->boot_base, size);
-             memory_region_add_subregion(system_memory,
-                                         env->config->sysrom.location[0].addr,
-                                         flash_io);
-         } else {
--            xtensa_create_memory_regions(&env->config->sysrom, "xtensa.sysrom",
-+            xtensa_create_memory_regions(mo, &env->config->sysrom, "xtensa.sysrom",
-                                          system_memory);
-         }
-     }
-diff --git a/include/hw/xtensa/mx_pic.h b/include/hw/xtensa/mx_pic.h
-index cd316d86eb..01d5ea884e 100644
---- a/include/hw/xtensa/mx_pic.h
-+++ b/include/hw/xtensa/mx_pic.h
-@@ -35,7 +35,7 @@ typedef struct XtensaMxPic XtensaMxPic;
+@@ -68,7 +69,7 @@ void sh_intc_register_sources(struct intc_desc *desc,
+                               struct intc_group *groups,
+                               int nr_groups);
  
- XtensaMxPic *xtensa_mx_pic_init(unsigned n_extint);
- void xtensa_mx_pic_reset(void *opaque);
--MemoryRegion *xtensa_mx_pic_register_cpu(XtensaMxPic *mx,
-+MemoryRegion *xtensa_mx_pic_register_cpu(Object *owner, XtensaMxPic *mx,
-                                          qemu_irq *irq,
-                                          qemu_irq runstall);
- qemu_irq *xtensa_mx_pic_get_extints(XtensaMxPic *mx);
+-int sh_intc_init(MemoryRegion *sysmem,
++int sh_intc_init(Object *owner, MemoryRegion *sysmem,
+                  struct intc_desc *desc,
+                  int nr_sources,
+                  struct intc_mask_reg *mask_regs,
+diff --git a/include/hw/timer/tmu012.h b/include/hw/timer/tmu012.h
+index 808ed8de1d..fb24c00d3b 100644
+--- a/include/hw/timer/tmu012.h
++++ b/include/hw/timer/tmu012.h
+@@ -10,12 +10,13 @@
+ #define HW_TIMER_TMU012_H
+ 
+ #include "exec/hwaddr.h"
++#include "qom/object.h"
+ 
+ #define TMU012_FEAT_TOCR   (1 << 0)
+ #define TMU012_FEAT_3CHAN  (1 << 1)
+ #define TMU012_FEAT_EXTCLK (1 << 2)
+ 
+-void tmu012_init(MemoryRegion *sysmem, hwaddr base,
++void tmu012_init(Object *owner, MemoryRegion *sysmem, hwaddr base,
+                  int feat, uint32_t freq,
+                  qemu_irq ch0_irq, qemu_irq ch1_irq,
+                  qemu_irq ch2_irq0, qemu_irq ch2_irq1);
 -- 
 2.47.1
 

@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD062C44501
-	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 23:01:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 663EBC43458
+	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 23:01:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiggQ-0000jV-B4; Sat, 11 Jul 2026 19:00:30 -0400
+	id 1wigh4-0002NT-QS; Sat, 11 Jul 2026 19:01:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wiggN-0000X3-Oc; Sat, 11 Jul 2026 19:00:27 -0400
-Received: from pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([44.246.77.92])
+ id 1wigh1-00026R-AA; Sat, 11 Jul 2026 19:01:07 -0400
+Received: from pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.12.53.23])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wiggL-00023V-O9; Sat, 11 Jul 2026 19:00:27 -0400
+ id 1wiggy-0002GP-7d; Sat, 11 Jul 2026 19:01:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1783810825; x=1815346825;
+ t=1783810864; x=1815346864;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=+NW1ede9jkU8iAzaiVlSKGRb2pU5g+Y9Xr/bJHaR448=;
- b=Rys3SkRwUoX0MoipnvTdznOY5Zzt50+QyEWhYEWo7sLCO8btHWHxr6cK
- 5/yj2iigetIxT2NtN/oUthA9Q6lT29XcFDNe5qMZe1eUiODxTQDEdMNr+
- pjoqMexrnUUCZFHb4Y/pXOSjmMJRKdB6AKn2tVuaVEShA+0sWKBe60Cfz
- ZsfnSlFQxjClfoRosbsumQFMvsUcpUKV4F0LXgZyKoIFoqRe5YfnvRSU4
- QCr8WVpw0xeoaHqhS/hDTJ8SZdUox/3iNHOtGu3zHyzJZKqDNkVynbdAd
- 040bMY+Qv4mUgh+hddxbXKCm5hh6hDCNHiDGwPkeuTOWJTZs//Wrftnlm g==;
-X-CSE-ConnectionGUID: eX6CSNs4Ququ9+xsBVz6eQ==
-X-CSE-MsgGUID: rgVFLvIETs6RKI+BR4UKzg==
-X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23493273"
-Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
- by internal-pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 23:00:21 +0000
-Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.48:8893]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.35.214:2525]
+ bh=ypBiWpzGyavDbl0zBI4me1c8vGtWWWLf22+dBxQXOKE=;
+ b=HHIw9GqZoE49iYyTqsYSnekxVLzckwCpmydVQ6/wm4Lp8IVW/KeCPgWI
+ eaXhrFyZLFFEkiUyb+eMc9W8zHjdtvB5Z65VSIux1N3RLcbVi9Iub8gfp
+ FL0XxD5DKjT37O4aE596+4jKFqHBfh/1t2e48YL8ptcOKdMZv2AJd4FT4
+ TRmLJhNZiiXFmclfx4MN2ktYV1NpMGdSyqN76NUconIMUEqV++7loPht/
+ PXS+3OCC7MjYa3sirO+B8Uv2pNmq04cG2Q63dltGUwd8LI4ll+OUJ+Trt
+ Hb8gzkopbyv6HCmfqY8NVqeXjxTqHngXBzp0n4T2yw7VHjr35yFodWg+x A==;
+X-CSE-ConnectionGUID: ghZBlo7uTiaLtfHYf5cEgg==
+X-CSE-MsgGUID: f41MG3aTS0+63hgvRLxMDA==
+X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23369985"
+Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
+ by internal-pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 23:01:00 +0000
+Received: from EX19MTAUWB001.ant.amazon.com [205.251.233.51:7180]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.11.115:2525]
  with esmtp (Farcaster)
- id 472d9e64-4c19-49da-9c5e-f3552fdb6959; Sat, 11 Jul 2026 23:00:21 +0000 (UTC)
-X-Farcaster-Flow-ID: 472d9e64-4c19-49da-9c5e-f3552fdb6959
+ id a1c8c1e9-6691-4697-99dc-98bb7d8658fb; Sat, 11 Jul 2026 23:01:00 +0000 (UTC)
+X-Farcaster-Flow-ID: a1c8c1e9-6691-4697-99dc-98bb7d8658fb
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
+ EX19MTAUWB001.ant.amazon.com (10.250.64.248) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 23:00:21 +0000
+ Sat, 11 Jul 2026 23:01:00 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 23:00:12 +0000
+ Sat, 11 Jul 2026 23:00:51 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -91,10 +91,10 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  <th.huth+qemu@posteo.eu>, "Ran Wang" <wangran@bosc.ac.cn>, Hao Wu
  <wuhaotsh@google.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>
-Subject: [RFC PATCH 088/134] qdev: Remove qdev_new_orphan() and
- qdev_try_new_orphan()
-Date: Sat, 11 Jul 2026 22:36:21 +0000
-Message-ID: <20260711223707.42139-89-graf@amazon.com>
+Subject: [RFC PATCH 090/134] hw/misc-boards: Give memory regions an explicit
+ owner
+Date: Sat, 11 Jul 2026 22:36:23 +0000
+Message-ID: <20260711223707.42139-91-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260711223707.42139-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -102,18 +102,18 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D037UWB004.ant.amazon.com (10.13.138.84) To
+X-ClientProxiedBy: EX19D032UWB002.ant.amazon.com (10.13.139.190) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=44.246.77.92;
+Received-SPF: pass client-ip=52.12.53.23;
  envelope-from=prvs=645f258d4=graf@amazon.de;
- helo=pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
+ SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
  UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -130,114 +130,414 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Every bus-layer *_orphan() wrapper is gone and the last direct
-caller, qdev_device_add_from_qdict(), now uses object_new() plus
-qdev_set_id() to place -device instances under
-/machine/peripheral{,-anon} as before.  There is no remaining
-legitimate way to create a device without picking its parent, so
-drop the transitional *_orphan() spellings and update the doc
-comments that still referenced them.
+memory_region_init*() takes an @owner argument that becomes the
+QOM parent of the MemoryRegion object. When NULL is passed the
+region is silently reparented under /machine/unattached, hiding
+its lifetime owner.
+
+Convert trivial owner==NULL sites in board init functions and
+device realize functions across small subdirectories. The owner
+is the enclosing machine or device in every case:
+
+  hw/hexagon    OBJECT(machine|ms|vms)  virt, hexagon_dsp
+  hw/hppa       parent, OBJECT(machine)
+  hw/ipmi       OBJECT(ii)              IPMIInterface implementations
+  hw/loongarch  OBJECT(machine)
+  hw/microblaze OBJECT(machine)
+  hw/or1k       OBJECT(machine)
+  hw/pci-host   OBJECT(dev)             bonito realize
+  hw/rtc        OBJECT(dev)             ls7a realize
+  hw/sparc      OBJECT(machine)
+  hw/sparc64    OBJECT(machine)
+  hw/vmapple    OBJECT(vms)
+  hw/xen        OBJECT(s)               xen-pvh-common ram init
+
+No functional change: memory_region_do_init() would have parented
+these under /machine/unattached; they now sit under their creator.
 
 Assisted-by: Kiro
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/core/qdev.c         | 13 -------------
- include/hw/core/qdev.h | 30 +++---------------------------
- system/qdev-monitor.c  |  2 +-
- 3 files changed, 4 insertions(+), 41 deletions(-)
+ hw/hexagon/hexagon_dsp.c                 |  4 ++--
+ hw/hexagon/virt.c                        |  8 ++++----
+ hw/hppa/machine.c                        |  6 +++---
+ hw/ipmi/ipmi_bt.c                        |  2 +-
+ hw/ipmi/ipmi_kcs.c                       |  2 +-
+ hw/loongarch/virt.c                      |  4 ++--
+ hw/microblaze/petalogix_ml605_mmu.c      |  4 ++--
+ hw/microblaze/petalogix_s3adsp1800_mmu.c |  4 ++--
+ hw/microblaze/xlnx-zynqmp-pmu.c          |  4 ++--
+ hw/or1k/or1k-sim.c                       |  2 +-
+ hw/or1k/virt.c                           |  2 +-
+ hw/pci-host/bonito.c                     |  4 ++--
+ hw/rtc/ls7a_rtc.c                        |  2 +-
+ hw/sparc/leon3.c                         |  2 +-
+ hw/sparc64/niagara.c                     | 13 +++++++------
+ hw/vmapple/vmapple.c                     |  2 +-
+ hw/xen/xen-pvh-common.c                  | 12 ++++++------
+ 17 files changed, 39 insertions(+), 38 deletions(-)
 
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index d2c89d0310..f7b512eb35 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -164,19 +164,6 @@ DeviceState *qdev_try_new(Object *parent, const char *id, const char *type)
-     return DEVICE(obj);
- }
+diff --git a/hw/hexagon/hexagon_dsp.c b/hw/hexagon/hexagon_dsp.c
+index ccd9a06f51..53dfe6741e 100644
+--- a/hw/hexagon/hexagon_dsp.c
++++ b/hw/hexagon/hexagon_dsp.c
+@@ -122,12 +122,12 @@ static void hexagon_common_init(MachineState *machine, Rev_t rev,
  
--DeviceState *qdev_new_orphan(const char *name)
--{
--    return DEVICE(object_new(name));
--}
--
--DeviceState *qdev_try_new_orphan(const char *name)
--{
--    ObjectClass *oc = module_object_class_by_name(name);
--    if (!oc) {
--        return NULL;
--    }
--    return DEVICE(object_new_with_class(oc));
--}
+     address_space = get_system_memory();
  
- static QTAILQ_HEAD(, DeviceListener) device_listeners
-     = QTAILQ_HEAD_INITIALIZER(device_listeners);
-diff --git a/include/hw/core/qdev.h b/include/hw/core/qdev.h
-index e692a1d48e..9220e9e3b1 100644
---- a/include/hw/core/qdev.h
-+++ b/include/hw/core/qdev.h
-@@ -440,30 +440,6 @@ DeviceState *qdev_new(Object *parent, const char *id, const char *type);
-  */
- DeviceState *qdev_try_new(Object *parent, const char *id, const char *type);
+-    memory_region_init_rom(&hms->cfgtable_rom, NULL, "config_table.rom",
++    memory_region_init_rom(&hms->cfgtable_rom, OBJECT(machine), "config_table.rom",
+                            sizeof(m_cfg->cfgtable), &error_fatal);
+     memory_region_add_subregion(address_space, m_cfg->cfgbase,
+                                 &hms->cfgtable_rom);
  
--/**
-- * qdev_new_orphan: Create a device on the heap
-- * @name: device type to create (we assert() that this type exists)
-- *
-- * This only allocates the memory and initializes the device state
-- * structure, ready for the caller to set properties if they wish.
-- * The device still needs to be realized.
-- *
-- * Return: a derived DeviceState object with a reference count of 1.
-- */
--DeviceState *qdev_new_orphan(const char *name);
--
--/**
-- * qdev_try_new_orphan: Try to create a device on the heap
-- * @name: device type to create
-- *
-- * This is like qdev_new_orphan(), except it returns %NULL when type @name
-- * does not exist, rather than asserting.
-- *
-- * Return: a derived DeviceState object with a reference count of 1 or
-- * NULL if type @name does not exist.
-- */
--DeviceState *qdev_try_new_orphan(const char *name);
--
- /**
-  * qdev_is_realized() - check if device is realized
-  * @dev: The device to check.
-@@ -488,8 +464,8 @@ static inline bool qdev_is_realized(DeviceState *dev)
-  * If @bus, plug @dev into @bus.  This takes a reference to @dev.
-  * If @dev has no QOM parent, make one up, taking another reference.
-  *
-- * If you created @dev using qdev_new_orphan(), you probably want to use
-- * qdev_realize_and_unref() instead.
-+ * If you created @dev via object_new() directly (holding a floating
-+ * reference), you probably want to use qdev_realize_and_unref() instead.
-  *
-  * Return: true on success, else false setting @errp with error
-  */
-@@ -506,7 +482,7 @@ bool qdev_realize(DeviceState *dev, BusState *bus, Error **errp);
-  * (private) reference, which is dropped on return regardless of
-  * success or failure.  Intended use::
-  *
-- *     dev = qdev_new_orphan();
-+ *     dev = DEVICE(object_new(TYPE_FOO));
-  *     [...]
-  *     qdev_realize_and_unref(dev, bus, errp);
-  *
-diff --git a/system/qdev-monitor.c b/system/qdev-monitor.c
-index adc37d6a89..0e13b1540c 100644
---- a/system/qdev-monitor.c
-+++ b/system/qdev-monitor.c
-@@ -707,7 +707,7 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
+-    memory_region_init_ram(&hms->ram, NULL, "ddr.ram",
++    memory_region_init_ram(&hms->ram, OBJECT(machine), "ddr.ram",
+                            machine->ram_size, &error_fatal);
+     memory_region_add_subregion(address_space, 0x0, &hms->ram);
+ 
+diff --git a/hw/hexagon/virt.c b/hw/hexagon/virt.c
+index 0619f06c41..fb23cda19f 100644
+--- a/hw/hexagon/virt.c
++++ b/hw/hexagon/virt.c
+@@ -74,7 +74,7 @@ static void fdt_add_hvx(HexagonVirtMachineState *vms,
+     const MachineState *ms = MACHINE(vms);
+     uint32_t vtcm_size_bytes = m_cfg->cfgtable.vtcm_size_kb * 1024;
+     if (vtcm_size_bytes > 0) {
+-        memory_region_init_ram(&vms->vtcm, NULL, "vtcm.ram", vtcm_size_bytes,
++        memory_region_init_ram(&vms->vtcm, OBJECT(vms), "vtcm.ram", vtcm_size_bytes,
+                                &error_fatal);
+         memory_region_add_subregion(vms->sys, m_cfg->cfgtable.vtcm_base << 16,
+                                     &vms->vtcm);
+@@ -250,18 +250,18 @@ static void virt_init(MachineState *ms)
+     vms->apb_clk = clock_new(OBJECT(ms), "apb-pclk");
+     clock_set_hz(vms->apb_clk, 24000000);
+ 
+-    memory_region_init_ram(&vms->parent_obj.ram, NULL, "ddr.ram",
++    memory_region_init_ram(&vms->parent_obj.ram, OBJECT(ms), "ddr.ram",
+                            ms->ram_size, &error_fatal);
+     memory_region_add_subregion(vms->sys, 0x0, &vms->parent_obj.ram);
+ 
+     if (m_cfg->l2tcm_size) {
+-        memory_region_init_ram(&vms->tcm, NULL, "tcm.ram", m_cfg->l2tcm_size,
++        memory_region_init_ram(&vms->tcm, OBJECT(ms), "tcm.ram", m_cfg->l2tcm_size,
+                                &error_fatal);
+         memory_region_add_subregion(vms->sys, m_cfg->cfgtable.l2tcm_base << 16,
+                                     &vms->tcm);
      }
  
-     /* create device */
--    dev = qdev_new_orphan(driver);
-+    dev = DEVICE(object_new(driver));
+-    memory_region_init_rom(&vms->parent_obj.cfgtable_rom, NULL,
++    memory_region_init_rom(&vms->parent_obj.cfgtable_rom, OBJECT(ms),
+                            "config_table.rom", sizeof(m_cfg->cfgtable),
+                            &error_fatal);
+     memory_region_add_subregion(vms->sys, m_cfg->cfgbase,
+diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
+index 4fcb3e5e37..233cf6318b 100644
+--- a/hw/hppa/machine.c
++++ b/hw/hppa/machine.c
+@@ -104,7 +104,7 @@ static ISABus *hppa_isa_bus(Object *parent, hwaddr addr)
+     MemoryRegion *isa_region;
  
-     /* Check whether the hotplug is allowed by the machine */
-     if (phase_check(PHASE_MACHINE_READY) &&
+     isa_region = g_new(MemoryRegion, 1);
+-    memory_region_init_io(isa_region, NULL, &hppa_pci_ignore_ops,
++    memory_region_init_io(isa_region, parent, &hppa_pci_ignore_ops,
+                           NULL, "isa-io", 0x800);
+     memory_region_add_subregion(get_system_memory(), addr, isa_region);
+ 
+@@ -337,7 +337,7 @@ static TranslateFn *machine_HP_common_init_cpus(MachineState *machine)
+          */
+         cflush_name = g_strdup_printf("cpu%u-T600-cacheflush", i);
+         cflush = g_new(MemoryRegion, 1);
+-        memory_region_init_io(cflush, NULL, &hppa_pci_ignore_ops,
++        memory_region_init_io(cflush, OBJECT(machine), &hppa_pci_ignore_ops,
+                               NULL, cflush_name, 4);
+         memory_region_add_subregion(addr_space,
+                               translate(NULL, CPU_HPA + i * 0x1000 + 0x500),
+@@ -498,7 +498,7 @@ static void machine_HP_common_init_tail(MachineState *machine, PCIBus *pci_bus,
+     }
+ 
+     rom_region = g_new(MemoryRegion, 1);
+-    memory_region_init_ram(rom_region, NULL, "firmware",
++    memory_region_init_ram(rom_region, OBJECT(machine), "firmware",
+                            (FIRMWARE_END - FIRMWARE_START), &error_fatal);
+     memory_region_add_subregion(addr_space,
+                                 translate(NULL, FIRMWARE_START), rom_region);
+diff --git a/hw/ipmi/ipmi_bt.c b/hw/ipmi/ipmi_bt.c
+index e01d02fe52..173e2e52c6 100644
+--- a/hw/ipmi/ipmi_bt.c
++++ b/hw/ipmi/ipmi_bt.c
+@@ -361,7 +361,7 @@ static void ipmi_bt_init(IPMIInterface *ii, unsigned int min_size, Error **errp)
+     ib->size_mask = min_size - 1;
+     ib->io_length = 3;
+ 
+-    memory_region_init_io(&ib->io, NULL, &ipmi_bt_io_ops, ii, "ipmi-bt",
++    memory_region_init_io(&ib->io, OBJECT(ii), &ipmi_bt_io_ops, ii, "ipmi-bt",
+                           min_size);
+ }
+ 
+diff --git a/hw/ipmi/ipmi_kcs.c b/hw/ipmi/ipmi_kcs.c
+index d5cfe6c068..9bd678e725 100644
+--- a/hw/ipmi/ipmi_kcs.c
++++ b/hw/ipmi/ipmi_kcs.c
+@@ -339,7 +339,7 @@ static void ipmi_kcs_init(IPMIInterface *ii, unsigned int min_size,
+     }
+     ik->size_mask = min_size - 1;
+     ik->io_length = 2;
+-    memory_region_init_io(&ik->io, NULL, &ipmi_kcs_io_ops, ii, "ipmi-kcs",
++    memory_region_init_io(&ik->io, OBJECT(ii), &ipmi_kcs_io_ops, ii, "ipmi-kcs",
+                           min_size);
+ }
+ 
+diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+index 8c6d2ad122..580ef0bb3e 100644
+--- a/hw/loongarch/virt.c
++++ b/hw/loongarch/virt.c
+@@ -966,13 +966,13 @@ static void virt_init(MachineState *machine)
+         size = VIRT_LOWMEM_SIZE;
+     }
+ 
+-    memory_region_init_alias(&lvms->lowmem, NULL, "loongarch.lowram",
++    memory_region_init_alias(&lvms->lowmem, OBJECT(machine), "loongarch.lowram",
+                               machine->ram, base, size);
+     memory_region_add_subregion(address_space_mem, base, &lvms->lowmem);
+     base += size;
+     if (ram_size - size) {
+         base = VIRT_HIGHMEM_BASE;
+-        memory_region_init_alias(&lvms->highmem, NULL, "loongarch.highram",
++        memory_region_init_alias(&lvms->highmem, OBJECT(machine), "loongarch.highram",
+                 machine->ram, VIRT_LOWMEM_BASE + size, ram_size - size);
+         memory_region_add_subregion(address_space_mem, base, &lvms->highmem);
+         base += ram_size - size;
+diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogix_ml605_mmu.c
+index 1dc34dc247..26470b0251 100644
+--- a/hw/microblaze/petalogix_ml605_mmu.c
++++ b/hw/microblaze/petalogix_ml605_mmu.c
+@@ -94,11 +94,11 @@ petalogix_ml605_init(MachineState *machine)
+     qdev_realize(DEVICE(cpu), NULL, &error_abort);
+ 
+     /* Attach emulated BRAM through the LMB.  */
+-    memory_region_init_ram(phys_lmb_bram, NULL, "petalogix_ml605.lmb_bram",
++    memory_region_init_ram(phys_lmb_bram, OBJECT(machine), "petalogix_ml605.lmb_bram",
+                            LMB_BRAM_SIZE, &error_fatal);
+     memory_region_add_subregion(address_space_mem, 0x00000000, phys_lmb_bram);
+ 
+-    memory_region_init_ram(phys_ram, NULL, "petalogix_ml605.ram", ram_size,
++    memory_region_init_ram(phys_ram, OBJECT(machine), "petalogix_ml605.ram", ram_size,
+                            &error_fatal);
+     memory_region_add_subregion(address_space_mem, MEMORY_BASEADDR, phys_ram);
+ 
+diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
+index 6986eb7732..83bf325b2b 100644
+--- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
++++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
+@@ -92,12 +92,12 @@ petalogix_s3adsp1800_init(MachineState *machine)
+     qdev_realize(DEVICE(cpu), NULL, &error_abort);
+ 
+     /* Attach emulated BRAM through the LMB.  */
+-    memory_region_init_ram(phys_lmb_bram, NULL,
++    memory_region_init_ram(phys_lmb_bram, OBJECT(machine),
+                            "petalogix_s3adsp1800.lmb_bram", LMB_BRAM_SIZE,
+                            &error_fatal);
+     memory_region_add_subregion(sysmem, 0x00000000, phys_lmb_bram);
+ 
+-    memory_region_init_ram(phys_ram, NULL, "petalogix_s3adsp1800.ram",
++    memory_region_init_ram(phys_ram, OBJECT(machine), "petalogix_s3adsp1800.ram",
+                            ram_size, &error_fatal);
+     memory_region_add_subregion(sysmem, ddr_base, phys_ram);
+ 
+diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-pmu.c
+index 00154236bf..cf9314f86c 100644
+--- a/hw/microblaze/xlnx-zynqmp-pmu.c
++++ b/hw/microblaze/xlnx-zynqmp-pmu.c
+@@ -155,13 +155,13 @@ static void xlnx_zynqmp_pmu_init(MachineState *machine)
+     MemoryRegion *pmu_ram = g_new(MemoryRegion, 1);
+ 
+     /* Create the ROM */
+-    memory_region_init_rom(pmu_rom, NULL, "xlnx-zynqmp-pmu.rom",
++    memory_region_init_rom(pmu_rom, OBJECT(machine), "xlnx-zynqmp-pmu.rom",
+                            XLNX_ZYNQMP_PMU_ROM_SIZE, &error_fatal);
+     memory_region_add_subregion(address_space_mem, XLNX_ZYNQMP_PMU_ROM_ADDR,
+                                 pmu_rom);
+ 
+     /* Create the RAM */
+-    memory_region_init_ram(pmu_ram, NULL, "xlnx-zynqmp-pmu.ram",
++    memory_region_init_ram(pmu_ram, OBJECT(machine), "xlnx-zynqmp-pmu.ram",
+                            machine->ram_size, &error_fatal);
+     memory_region_add_subregion(address_space_mem, XLNX_ZYNQMP_PMU_RAM_ADDR,
+                                 pmu_ram);
+diff --git a/hw/or1k/or1k-sim.c b/hw/or1k/or1k-sim.c
+index 293970f156..ca2852fa87 100644
+--- a/hw/or1k/or1k-sim.c
++++ b/hw/or1k/or1k-sim.c
+@@ -312,7 +312,7 @@ static void openrisc_sim_init(MachineState *machine)
+     }
+ 
+     ram = g_malloc(sizeof(*ram));
+-    memory_region_init_ram(ram, NULL, "openrisc.ram", ram_size, &error_fatal);
++    memory_region_init_ram(ram, OBJECT(machine), "openrisc.ram", ram_size, &error_fatal);
+     memory_region_add_subregion(get_system_memory(), 0, ram);
+ 
+     openrisc_create_fdt(state, or1ksim_memmap, smp_cpus, machine->ram_size,
+diff --git a/hw/or1k/virt.c b/hw/or1k/virt.c
+index c0e0e3c48b..8cd520b320 100644
+--- a/hw/or1k/virt.c
++++ b/hw/or1k/virt.c
+@@ -498,7 +498,7 @@ static void openrisc_virt_init(MachineState *machine)
+     }
+ 
+     ram = g_malloc(sizeof(*ram));
+-    memory_region_init_ram(ram, NULL, "openrisc.ram", ram_size, &error_fatal);
++    memory_region_init_ram(ram, OBJECT(machine), "openrisc.ram", ram_size, &error_fatal);
+     memory_region_add_subregion(get_system_memory(), 0, ram);
+ 
+     openrisc_create_fdt(state, virt_memmap, smp_cpus, machine->ram_size,
+diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
+index 7b4259c0e7..48135a7fc0 100644
+--- a/hw/pci-host/bonito.c
++++ b/hw/pci-host/bonito.c
+@@ -639,7 +639,7 @@ static void bonito_host_realize(DeviceState *dev, Error **errp)
+     for (size_t i = 0; i < 3; i++) {
+         char *name = g_strdup_printf("pci.lomem%zu", i);
+ 
+-        memory_region_init_alias(&pcimem_lo_alias[i], NULL, name,
++        memory_region_init_alias(&pcimem_lo_alias[i], OBJECT(dev), name,
+                                  &bs->pci_mem, i * 64 * MiB, 64 * MiB);
+         memory_region_add_subregion(get_system_memory(),
+                                     BONITO_PCILO_BASE + i * 64 * MiB,
+@@ -713,7 +713,7 @@ static void bonito_pci_realize(PCIDevice *dev, Error **errp)
+     create_unimplemented_device(OBJECT(dev), "IOCS[3]", BONITO_DEV_BASE + 3 * 256 * KiB,
+                                 256 * KiB);
+ 
+-    memory_region_init_alias(pcimem_alias, NULL, "pci.mem.alias",
++    memory_region_init_alias(pcimem_alias, OBJECT(dev), "pci.mem.alias",
+                              &bs->pci_mem, 0, BONITO_PCIHI_SIZE);
+     memory_region_add_subregion(host_mem, BONITO_PCIHI_BASE, pcimem_alias);
+     create_unimplemented_device(OBJECT(dev), "PCI_2",
+diff --git a/hw/rtc/ls7a_rtc.c b/hw/rtc/ls7a_rtc.c
+index 158c815505..77206b6636 100644
+--- a/hw/rtc/ls7a_rtc.c
++++ b/hw/rtc/ls7a_rtc.c
+@@ -388,7 +388,7 @@ static void ls7a_rtc_realize(DeviceState *dev, Error **errp)
+     int i;
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+     LS7ARtcState *d = LS7A_RTC(sbd);
+-    memory_region_init_io(&d->iomem, NULL, &ls7a_rtc_ops,
++    memory_region_init_io(&d->iomem, OBJECT(dev), &ls7a_rtc_ops,
+                          (void *)d, "ls7a_rtc", 0x100);
+ 
+     sysbus_init_irq(sbd, &d->irq);
+diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
+index a96ccca8e3..f9ef2758e1 100644
+--- a/hw/sparc/leon3.c
++++ b/hw/sparc/leon3.c
+@@ -345,7 +345,7 @@ static void leon3_generic_hw_init(MachineState *machine)
+ 
+     /* Allocate BIOS */
+     prom_size = 8 * MiB;
+-    memory_region_init_rom(prom, NULL, "Leon3.bios", prom_size, &error_fatal);
++    memory_region_init_rom(prom, OBJECT(machine), "Leon3.bios", prom_size, &error_fatal);
+     memory_region_add_subregion(address_space_mem, LEON3_PROM_OFFSET, prom);
+ 
+     /* Load boot prom */
+diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
+index 8fb9937127..58384e80da 100644
+--- a/hw/sparc64/niagara.c
++++ b/hw/sparc64/niagara.c
+@@ -106,23 +106,23 @@ static void niagara_init(MachineState *machine)
+     /* init CPUs */
+     sparc64_cpu_devinit(machine->cpu_type, NIAGARA_PROM_BASE);
+     /* set up devices */
+-    memory_region_init_ram(&s->hv_ram, NULL, "sun4v-hv.ram",
++    memory_region_init_ram(&s->hv_ram, OBJECT(machine), "sun4v-hv.ram",
+                            NIAGARA_HV_RAM_SIZE, &error_fatal);
+     memory_region_add_subregion(sysmem, NIAGARA_HV_RAM_BASE, &s->hv_ram);
+ 
+     memory_region_add_subregion(sysmem, NIAGARA_PARTITION_RAM_BASE,
+                                 machine->ram);
+ 
+-    memory_region_init_ram(&s->nvram, NULL, "sun4v.nvram", NIAGARA_NVRAM_SIZE,
++    memory_region_init_ram(&s->nvram, OBJECT(machine), "sun4v.nvram", NIAGARA_NVRAM_SIZE,
+                            &error_fatal);
+     memory_region_add_subregion(sysmem, NIAGARA_NVRAM_BASE, &s->nvram);
+-    memory_region_init_ram(&s->md_rom, NULL, "sun4v-md.rom",
++    memory_region_init_ram(&s->md_rom, OBJECT(machine), "sun4v-md.rom",
+                            NIAGARA_MD_ROM_SIZE, &error_fatal);
+     memory_region_add_subregion(sysmem, NIAGARA_MD_ROM_BASE, &s->md_rom);
+-    memory_region_init_ram(&s->hv_rom, NULL, "sun4v-hv.rom",
++    memory_region_init_ram(&s->hv_rom, OBJECT(machine), "sun4v-hv.rom",
+                            NIAGARA_HV_ROM_SIZE, &error_fatal);
+     memory_region_add_subregion(sysmem, NIAGARA_HV_ROM_BASE, &s->hv_rom);
+-    memory_region_init_ram(&s->prom, NULL, "sun4v.prom", PROM_SIZE_MAX,
++    memory_region_init_ram(&s->prom, OBJECT(machine), "sun4v.prom", PROM_SIZE_MAX,
+                            &error_fatal);
+     memory_region_add_subregion(sysmem, NIAGARA_PROM_BASE, &s->prom);
+ 
+@@ -140,7 +140,8 @@ static void niagara_init(MachineState *machine)
+         BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
+         int size = blk_getlength(blk);
+         if (size > 0) {
+-            memory_region_init_ram(&s->vdisk_ram, NULL, "sun4v_vdisk.ram", size,
++            memory_region_init_ram(&s->vdisk_ram, OBJECT(machine), "sun4v_vdisk.ram",
++                                   size,
+                                    &error_fatal);
+             memory_region_add_subregion(get_system_memory(),
+                                         NIAGARA_VDISK_BASE, &s->vdisk_ram);
+diff --git a/hw/vmapple/vmapple.c b/hw/vmapple/vmapple.c
+index 67e499b74a..cea7e3d2f4 100644
+--- a/hw/vmapple/vmapple.c
++++ b/hw/vmapple/vmapple.c
+@@ -357,7 +357,7 @@ static void vmapple_firmware_init(VMAppleMachineState *vms,
+         exit(1);
+     }
+ 
+-    memory_region_init_ram(&vms->fw_mr, NULL, "firmware", size, &error_fatal);
++    memory_region_init_ram(&vms->fw_mr, OBJECT(vms), "firmware", size, &error_fatal);
+     image_size = load_image_mr(fname, &vms->fw_mr);
+ 
+     g_free(fname);
+diff --git a/hw/xen/xen-pvh-common.c b/hw/xen/xen-pvh-common.c
+index dae523f723..1047aabd57 100644
+--- a/hw/xen/xen-pvh-common.c
++++ b/hw/xen/xen-pvh-common.c
+@@ -109,12 +109,12 @@ static void xen_pvh_init_ram(XenPVHMachineState *s,
+     }
+ 
+     if (s->cfg.mapcache) {
+-        memory_region_init_ram(&xen_memory, NULL, "xen.ram",
++        memory_region_init_ram(&xen_memory, OBJECT(s), "xen.ram",
+                                block_len, &error_fatal);
+-        memory_region_init_alias(&s->ram.low, NULL, "xen.ram.lo", &xen_memory,
++        memory_region_init_alias(&s->ram.low, OBJECT(s), "xen.ram.lo", &xen_memory,
+                                  s->cfg.ram_low.base, ram_size[0]);
+         if (ram_size[1] > 0) {
+-            memory_region_init_alias(&s->ram.high, NULL, "xen.ram.hi",
++            memory_region_init_alias(&s->ram.high, OBJECT(s), "xen.ram.hi",
+                                      &xen_memory,
+                                      s->cfg.ram_high.base, ram_size[1]);
+         }
+@@ -122,11 +122,11 @@ static void xen_pvh_init_ram(XenPVHMachineState *s,
+         void *p;
+ 
+         p = xen_map_guest_ram(s, s->cfg.ram_low.base, ram_size[0]);
+-        memory_region_init_ram_ptr(&s->ram.low, NULL, "xen.ram.lo",
++        memory_region_init_ram_ptr(&s->ram.low, OBJECT(s), "xen.ram.lo",
+                                    ram_size[0], p);
+         if (ram_size[1] > 0) {
+             p = xen_map_guest_ram(s, s->cfg.ram_high.base, ram_size[1]);
+-            memory_region_init_ram_ptr(&s->ram.high, NULL, "xen.ram.hi",
++            memory_region_init_ram_ptr(&s->ram.high, OBJECT(s), "xen.ram.hi",
+                                        ram_size[1], p);
+         }
+     }
+@@ -140,7 +140,7 @@ static void xen_pvh_init_ram(XenPVHMachineState *s,
+     /* Grants are only supported when the mapcache is on.  */
+     if (s->cfg.mapcache) {
+         /* Setup support for grants.  */
+-        memory_region_init_ram(&xen_grants, NULL, "xen.grants", block_len,
++        memory_region_init_ram(&xen_grants, OBJECT(s), "xen.grants", block_len,
+                 &error_fatal);
+         memory_region_add_subregion(sysmem, XEN_GRANT_ADDR_OFF, &xen_grants);
+     }
 -- 
 2.47.1
 

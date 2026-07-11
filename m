@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABEA8C44501
-	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:49:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02BFCC43458
+	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:49:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wigVo-0003Sn-Fy; Sat, 11 Jul 2026 18:49:32 -0400
+	id 1wigVn-0003NB-3e; Sat, 11 Jul 2026 18:49:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigVY-0002sQ-6j; Sat, 11 Jul 2026 18:49:18 -0400
-Received: from pdx-out-006.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.26.1.71])
+ id 1wigV9-0002Y7-13; Sat, 11 Jul 2026 18:48:55 -0400
+Received: from pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.42.203.116])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigVV-0007nK-J5; Sat, 11 Jul 2026 18:49:15 -0400
+ id 1wigV1-0007is-86; Sat, 11 Jul 2026 18:48:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1783810153; x=1815346153;
+ t=1783810123; x=1815346123;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=nsryrza8hPhJXkUM7VI0bGZh0HwRx2yl3wY+S42Hlgk=;
- b=dGUCvO5YLNENdYnvl4U3Q1UNdxuJ6i+hvcVq2WKvzaLqZMZb8CUyqcUz
- 0xYhE6utixoclcGiMsB8CcyjYqK2XxNtRbTO0AdU+If7vUpkAbWq1OpXD
- 8Hx2ytKyceu0ghUYL0tN0Rgo3jRuM2KOO/kQ8FTV7ltTsw4Hyf9pkXUd4
- PhCEDKkP+wf4JvZ2PpDH+M2uSiKMyfK/sKLfEseY3I/x5k7TLK+AV9MzS
- QRfSBNmzApeAiShHI7+Y3H67Hn3oabNQqUVe/v9e161u2jiERbRx7ricw
- lrBtrwGetV4lJagUPDgZtvLQh6siIxgmC6Q8lZlL1DHk+EXt9N1kwFOFl A==;
-X-CSE-ConnectionGUID: qp0aeglXRCOno4e0p411hQ==
-X-CSE-MsgGUID: UNOW2f/KQYCtKhSeq8X8jg==
-X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23522270"
+ bh=cjOww6QiL/hj8HgD2cr+EQ+VepUESTbjn+BqiEs27nA=;
+ b=h3wrQeE1I9ckTaifeL7/6bg0zfK6CRJTNHFGNI2DsskgMWHDb8CY/e02
+ 4dG+8hmcdHvyxpTZpJjhBaJRPs3MBBBrhKkSx6aELu6m8iMSsjlc+cd3O
+ wU+P+a7aL8eXnB1Djc15zin4phx5dutbaPFjYW8k9Ld8nagALRqMVQUqY
+ ox6vEGbuhoq9ydENGjubBpQGEliSpgz0sM7LGxuVGLqg704FCo5uA1pfA
+ WlcozaX1+3Z4z1yVdWVfn7s4c70YjSJtHW1GqQGG9tSS7OwNkOi/Osbun
+ awTay7dG/M84GRCl2BF55gJQ5fjDoM7Pw6uSZC+POzqqmJvscGro3WrZy w==;
+X-CSE-ConnectionGUID: JaqDw82jTSGnvPoGO1WnqQ==
+X-CSE-MsgGUID: WAcGKIUSQIWblKnMKEanug==
+X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23517833"
 Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
  smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
- by internal-pdx-out-006.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:49:08 +0000
-Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.48:7900]
+ by internal-pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:48:38 +0000
+Received: from EX19MTAUWC001.ant.amazon.com [205.251.233.53:26735]
  by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.26.212:2525]
  with esmtp (Farcaster)
- id b50487ec-7378-4377-a95e-1f438a473bcc; Sat, 11 Jul 2026 22:49:08 +0000 (UTC)
-X-Farcaster-Flow-ID: b50487ec-7378-4377-a95e-1f438a473bcc
+ id cddc9e8b-19e1-4c5f-bb80-c9b3b8827e07; Sat, 11 Jul 2026 22:48:38 +0000 (UTC)
+X-Farcaster-Flow-ID: cddc9e8b-19e1-4c5f-bb80-c9b3b8827e07
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
+ EX19MTAUWC001.ant.amazon.com (10.250.64.174) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:49:08 +0000
+ Sat, 11 Jul 2026 22:48:37 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:48:59 +0000
+ Sat, 11 Jul 2026 22:48:29 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -91,9 +91,9 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  <th.huth+qemu@posteo.eu>, "Ran Wang" <wangran@bosc.ac.cn>, Hao Wu
  <wuhaotsh@google.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>
-Subject: [RFC PATCH 045/134] hw/rtc: Give onboard devices a QOM parent
-Date: Sat, 11 Jul 2026 22:35:38 +0000
-Message-ID: <20260711223707.42139-46-graf@amazon.com>
+Subject: [RFC PATCH 044/134] hw/m68k: Give onboard devices a QOM parent
+Date: Sat, 11 Jul 2026 22:35:37 +0000
+Message-ID: <20260711223707.42139-45-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260711223707.42139-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -101,11 +101,11 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D039UWA003.ant.amazon.com (10.13.139.49) To
+X-ClientProxiedBy: EX19D042UWB001.ant.amazon.com (10.13.139.160) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.26.1.71;
+Received-SPF: pass client-ip=52.42.203.116;
  envelope-from=prvs=645f258d4=graf@amazon.de;
- helo=pdx-out-006.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -129,7 +129,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the *_orphan() device-creation calls in hw/rtc to the new
+Convert the *_orphan() device-creation calls in hw/m68k to the new
 parented API introduced earlier in this series, so every onboard
 device gets a stable path in the composition tree instead of landing
 in /machine/unattached with an unstable device[N] name.
@@ -140,164 +140,281 @@ composite children.  Names follow existing QOM conventions.
 
 Per-site rationale (reviewers: dispute the modeling here):
 
-hw/rtc/mc146818rtc.c:933 | isa_new | parent | "rtc" | helper called from board init; thread Object *parent through mc146818_rtc_init() and its 4 callers (microvm, pnv, jazz, dp264)
-hw/rtc/sun4v-rtc.c:60 | qdev_new | parent | "rtc" | helper called from niagara board init; thread Object *parent through sun4v_rtc_init()
+hw/m68k/an5206.c:28 | qdev_new | parent | "mbar" | mcf5206_init() helper: thread Object *parent from board init
+hw/m68k/an5206.c:49 | cpu_create | OBJECT(machine) | "cpu" | an5206_init() board init
+hw/m68k/mcf5208.c:291 | cpu_create | OBJECT(machine) | "cpu" | mcf5208evb_init() board init
+hw/m68k/mcf_intc.c:214 | qdev_new | parent | "intc" | mcf_intc_init() global helper: add Object *parent, update header + caller
+hw/m68k/next-cube.c:1263 | cpu_create | OBJECT(machine) | "cpu" | next_cube_init() board init
+hw/m68k/next-cube.c:1275 | qdev_new | OBJECT(machine) | "pc" | next_cube_init() board init; peripheral controller
+hw/m68k/next-cube.c:1283 | sysbus_create_simple | OBJECT(machine) | "fb" | next_cube_init() board init; framebuffer
+hw/m68k/next-cube.c:1322 | sysbus_create_simple | OBJECT(machine) | "kbd" | next_cube_init() board init
+hw/m68k/q800.c:358 | qdev_new | OBJECT(machine) | "adb-keyboard" | q800_machine_init() board init; drop _and_unref
+hw/m68k/q800.c:360 | qdev_new | OBJECT(machine) | "adb-mouse" | q800_machine_init() board init; drop _and_unref
+hw/m68k/virt.c:148 | cpu_create | OBJECT(machine) | "cpu" | virt_init() board init
+hw/m68k/virt.c:158 | qdev_new | OBJECT(machine) | "irqc" | virt_init() board init
+hw/m68k/virt.c:172 | qdev_new | OBJECT(machine) | "pic[*]" | virt_init() board init; loop
+hw/m68k/virt.c:186 | qdev_new | OBJECT(machine) | "rtc[*]" | virt_init() board init; loop
+hw/m68k/virt.c:197 | qdev_new | OBJECT(machine) | "tty" | virt_init() board init
+hw/m68k/virt.c:205 | sysbus_create_simple | OBJECT(machine) | "virt-ctrl" | virt_init() board init
+hw/m68k/virt.c:211 | qdev_new | OBJECT(machine) | "virtio-mmio[*]" | virt_init() board init; loop
 
 Link: https://lore.kernel.org/qemu-devel/87jyr3w9tc.fsf@pond.sub.org/
 Assisted-by: Kiro
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/alpha/dp264.c             | 2 +-
- hw/i386/microvm.c            | 3 ++-
- hw/mips/jazz.c               | 2 +-
- hw/ppc/pnv.c                 | 2 +-
- hw/rtc/mc146818rtc.c         | 6 +++---
- hw/rtc/sun4v-rtc.c           | 6 +++---
- hw/sparc64/niagara.c         | 2 +-
- include/hw/rtc/mc146818rtc.h | 2 +-
- include/hw/rtc/sun4v-rtc.h   | 2 +-
- 9 files changed, 14 insertions(+), 13 deletions(-)
+ hw/m68k/an5206.c      | 11 ++++++-----
+ hw/m68k/mcf5208.c     |  4 ++--
+ hw/m68k/mcf_intc.c    |  7 ++++---
+ hw/m68k/next-cube.c   | 10 +++++-----
+ hw/m68k/q800.c        |  8 ++++----
+ hw/m68k/virt.c        | 25 +++++++++++++------------
+ include/hw/m68k/mcf.h |  2 +-
+ 7 files changed, 35 insertions(+), 32 deletions(-)
 
-diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
-index 9cd448cff1..40dee88f2d 100644
---- a/hw/alpha/dp264.c
-+++ b/hw/alpha/dp264.c
-@@ -119,7 +119,7 @@ static void clipper_init(MachineState *machine)
-     qdev_connect_gpio_out(i82378_dev, 0, isa_irq);
+diff --git a/hw/m68k/an5206.c b/hw/m68k/an5206.c
+index b649605140..5027311cad 100644
+--- a/hw/m68k/an5206.c
++++ b/hw/m68k/an5206.c
+@@ -20,16 +20,17 @@
+ #define AN5206_MBAR_ADDR 0x10000000
+ #define AN5206_RAMBAR_ADDR 0x20000000
  
-     /* Since we have an SRM-compatible PALcode, use the SRM epoch.  */
--    mc146818_rtc_init(isa_bus, 1900, rtc_irq);
-+    mc146818_rtc_init(mo, isa_bus, 1900, rtc_irq);
- 
-     /* VGA setup.  Don't bother loading the bios.  */
-     pci_vga_init(pci_bus);
-diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-index 16bd885541..d13036bd73 100644
---- a/hw/i386/microvm.c
-+++ b/hw/i386/microvm.c
-@@ -268,7 +268,8 @@ static void microvm_devices_init(MicrovmMachineState *mms)
- 
-     if (mms->rtc == ON_OFF_AUTO_ON ||
-         (mms->rtc == ON_OFF_AUTO_AUTO && !kvm_enabled())) {
--        microvm_set_rtc(mms, mc146818_rtc_init(isa_bus, 2000, NULL));
-+        microvm_set_rtc(mms, mc146818_rtc_init(OBJECT(mms), isa_bus,
-+                                               2000, NULL));
-     }
- 
-     if (mms->isa_serial) {
-diff --git a/hw/mips/jazz.c b/hw/mips/jazz.c
-index 62f2350d36..938aaf3fe1 100644
---- a/hw/mips/jazz.c
-+++ b/hw/mips/jazz.c
-@@ -354,7 +354,7 @@ static void mips_jazz_init(MachineState *machine,
-     fdctrl_init_sysbus(qdev_get_gpio_in(rc4030, 1), 0x80003000, fds);
- 
-     /* Real time clock */
--    mc146818_rtc_init(isa_bus, 1980, NULL);
-+    mc146818_rtc_init(OBJECT(machine), isa_bus, 1980, NULL);
-     memory_region_init_io(rtc, NULL, &rtc_ops, NULL, "rtc", 0x1000);
-     memory_region_add_subregion(address_space, 0x80004000, rtc);
- 
-diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-index 0a22d854d7..1eb3c09672 100644
---- a/hw/ppc/pnv.c
-+++ b/hw/ppc/pnv.c
-@@ -1314,7 +1314,7 @@ static void pnv_init(MachineState *machine)
-     serial_hds_isa_init(pnv->isa_bus, 0, MAX_ISA_SERIAL_PORTS);
- 
-     /* Create an RTC ISA device too */
--    mc146818_rtc_init(pnv->isa_bus, 2000, NULL);
-+    mc146818_rtc_init(OBJECT(machine), pnv->isa_bus, 2000, NULL);
- 
-     /*
-      * Create the machine BMC simulator and the IPMI BT device for
-diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
-index b9e5ec6ff6..a4d6d59502 100644
---- a/hw/rtc/mc146818rtc.c
-+++ b/hw/rtc/mc146818rtc.c
-@@ -923,18 +923,18 @@ static void rtc_realizefn(DeviceState *dev, Error **errp)
-     qdev_init_gpio_out(dev, &s->irq, 1);
- }
- 
--MC146818RtcState *mc146818_rtc_init(ISABus *bus, int base_year,
-+MC146818RtcState *mc146818_rtc_init(Object *parent, ISABus *bus, int base_year,
-                                     qemu_irq intercept_irq)
- {
-     DeviceState *dev;
-     ISADevice *isadev;
-     MC146818RtcState *s;
- 
--    isadev = isa_new_orphan(TYPE_MC146818_RTC);
-+    isadev = isa_new(parent, "rtc[*]", TYPE_MC146818_RTC);
-     dev = DEVICE(isadev);
-     s = MC146818_RTC(isadev);
-     qdev_prop_set_int32(dev, "base_year", base_year);
--    isa_realize_and_unref(isadev, bus, &error_fatal);
-+    qdev_realize(dev, BUS(bus), &error_fatal);
-     if (intercept_irq) {
-         qdev_connect_gpio_out(dev, 0, intercept_irq);
-     } else {
-diff --git a/hw/rtc/sun4v-rtc.c b/hw/rtc/sun4v-rtc.c
-index 257f70885d..ee07b7a979 100644
---- a/hw/rtc/sun4v-rtc.c
-+++ b/hw/rtc/sun4v-rtc.c
-@@ -52,15 +52,15 @@ static const MemoryRegionOps sun4v_rtc_ops = {
-     .endianness = DEVICE_BIG_ENDIAN,
- };
- 
--void sun4v_rtc_init(hwaddr addr)
-+void sun4v_rtc_init(Object *parent, hwaddr addr)
+-static void mcf5206_init(M68kCPU *cpu, MemoryRegion *sysmem, uint32_t base)
++static void mcf5206_init(Object *parent, M68kCPU *cpu, MemoryRegion *sysmem,
++                         uint32_t base)
  {
      DeviceState *dev;
      SysBusDevice *s;
  
--    dev = qdev_new_orphan(TYPE_SUN4V_RTC);
-+    dev = qdev_new(parent, "rtc", TYPE_SUN4V_RTC);
+-    dev = qdev_new_orphan(TYPE_MCF5206_MBAR);
++    dev = qdev_new(parent, "mbar", TYPE_MCF5206_MBAR);
+     object_property_set_link(OBJECT(dev), "m68k-cpu",
+                              OBJECT(cpu), &error_abort);
      s = SYS_BUS_DEVICE(dev);
- 
 -    sysbus_realize_and_unref(s, &error_fatal);
 +    sysbus_realize(s, &error_fatal);
  
-     sysbus_mmio_map(s, 0, addr);
+     memory_region_add_subregion(sysmem, base, sysbus_mmio_get_region(s, 0));
  }
-diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
-index 1211ecb82d..d47d62dac7 100644
---- a/hw/sparc64/niagara.c
-+++ b/hw/sparc64/niagara.c
-@@ -154,7 +154,7 @@ static void niagara_init(MachineState *machine)
-     serial_mm_init(sysmem, NIAGARA_UART_BASE, 0, NULL,
-                    115200, serial_hd(0), DEVICE_BIG_ENDIAN);
-     create_unimplemented_device("sun4v-iob", NIAGARA_IOBBASE, NIAGARA_IOBSIZE);
--    sun4v_rtc_init(NIAGARA_RTC_BASE);
-+    sun4v_rtc_init(OBJECT(machine), NIAGARA_RTC_BASE);
- }
+@@ -46,7 +47,7 @@ static void an5206_init(MachineState *machine)
+     MemoryRegion *address_space_mem = get_system_memory();
+     MemoryRegion *sram = g_new(MemoryRegion, 1);
  
- static void niagara_class_init(ObjectClass *oc, const void *data)
-diff --git a/include/hw/rtc/mc146818rtc.h b/include/hw/rtc/mc146818rtc.h
-index 64893be151..1bdd63cf5c 100644
---- a/include/hw/rtc/mc146818rtc.h
-+++ b/include/hw/rtc/mc146818rtc.h
-@@ -51,7 +51,7 @@ struct MC146818RtcState {
+-    cpu = M68K_CPU(cpu_create_orphan(machine->cpu_type));
++    cpu = M68K_CPU(cpu_create(OBJECT(machine), "cpu", machine->cpu_type));
+     env = &cpu->env;
  
- #define RTC_ISA_IRQ 8
+     /* Initialize CPU registers.  */
+@@ -62,7 +63,7 @@ static void an5206_init(MachineState *machine)
+     memory_region_init_ram(sram, NULL, "an5206.sram", 512, &error_fatal);
+     memory_region_add_subregion(address_space_mem, AN5206_RAMBAR_ADDR, sram);
  
--MC146818RtcState *mc146818_rtc_init(ISABus *bus, int base_year,
-+MC146818RtcState *mc146818_rtc_init(Object *parent, ISABus *bus, int base_year,
-                                     qemu_irq intercept_irq);
- void mc146818rtc_set_cmos_data(MC146818RtcState *s, int addr, int val);
- int mc146818rtc_get_cmos_data(MC146818RtcState *s, int addr);
-diff --git a/include/hw/rtc/sun4v-rtc.h b/include/hw/rtc/sun4v-rtc.h
-index 26a9eb6196..9152a0082f 100644
---- a/include/hw/rtc/sun4v-rtc.h
-+++ b/include/hw/rtc/sun4v-rtc.h
-@@ -14,6 +14,6 @@
+-    mcf5206_init(cpu, address_space_mem, AN5206_MBAR_ADDR);
++    mcf5206_init(OBJECT(machine), cpu, address_space_mem, AN5206_MBAR_ADDR);
  
- #include "exec/hwaddr.h"
+     /* Load kernel.  */
+     if (!kernel_filename) {
+diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
+index d79ec173e6..0b8636daa9 100644
+--- a/hw/m68k/mcf5208.c
++++ b/hw/m68k/mcf5208.c
+@@ -288,7 +288,7 @@ static void mcf5208evb_init(MachineState *machine)
+     MemoryRegion *sram = g_new(MemoryRegion, 1);
+     DeviceState *intc;
  
--void sun4v_rtc_init(hwaddr addr);
-+void sun4v_rtc_init(Object *parent, hwaddr addr);
+-    cpu = M68K_CPU(cpu_create_orphan(machine->cpu_type));
++    cpu = M68K_CPU(cpu_create(OBJECT(machine), "cpu", machine->cpu_type));
+     env = &cpu->env;
  
- #endif
+     /* Initialize CPU registers.  */
+@@ -307,7 +307,7 @@ static void mcf5208evb_init(MachineState *machine)
+     memory_region_add_subregion(address_space_mem, 0x80000000, sram);
+ 
+     /* Internal peripherals.  */
+-    intc = mcf_intc_init(address_space_mem, 0xfc048000, cpu);
++    intc = mcf_intc_init(OBJECT(machine), address_space_mem, 0xfc048000, cpu);
+ 
+     mcf_uart_create_mmap(0xfc060000, qdev_get_gpio_in(intc, 26), serial_hd(0));
+     mcf_uart_create_mmap(0xfc064000, qdev_get_gpio_in(intc, 27), serial_hd(1));
+diff --git a/hw/m68k/mcf_intc.c b/hw/m68k/mcf_intc.c
+index 123bd7e385..5ae8fddc52 100644
+--- a/hw/m68k/mcf_intc.c
++++ b/hw/m68k/mcf_intc.c
+@@ -207,14 +207,15 @@ static void mcf_intc_register_types(void)
+ 
+ type_init(mcf_intc_register_types)
+ 
+-DeviceState *mcf_intc_init(MemoryRegion *sysmem, hwaddr base, M68kCPU *cpu)
++DeviceState *mcf_intc_init(Object *parent, MemoryRegion *sysmem, hwaddr base,
++                           M68kCPU *cpu)
+ {
+     DeviceState  *dev;
+ 
+-    dev = qdev_new_orphan(TYPE_MCF_INTC);
++    dev = qdev_new(parent, "intc", TYPE_MCF_INTC);
+     object_property_set_link(OBJECT(dev), "m68k-cpu",
+                              OBJECT(cpu), &error_abort);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     memory_region_add_subregion(sysmem, base,
+                                 sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0));
+     return dev;
+diff --git a/hw/m68k/next-cube.c b/hw/m68k/next-cube.c
+index 530dc1ab59..c80d32ef29 100644
+--- a/hw/m68k/next-cube.c
++++ b/hw/m68k/next-cube.c
+@@ -1260,7 +1260,7 @@ static void next_cube_init(MachineState *machine)
+     DeviceState *pcdev;
+ 
+     /* Initialize the cpu core */
+-    cpu = M68K_CPU(cpu_create_orphan(machine->cpu_type));
++    cpu = M68K_CPU(cpu_create(OBJECT(machine), "cpu", machine->cpu_type));
+     if (!cpu) {
+         error_report("Unable to find m68k CPU definition");
+         exit(1);
+@@ -1272,15 +1272,15 @@ static void next_cube_init(MachineState *machine)
+     env->sr  = 0x2700;
+ 
+     /* Peripheral Controller */
+-    pcdev = qdev_new_orphan(TYPE_NEXT_PC);
++    pcdev = qdev_new(OBJECT(machine), "pc", TYPE_NEXT_PC);
+     object_property_set_link(OBJECT(pcdev), "cpu", OBJECT(cpu), &error_abort);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(pcdev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(pcdev), &error_fatal);
+ 
+     /* 64MB RAM starting at 0x04000000  */
+     memory_region_add_subregion(sysmem, 0x04000000, machine->ram);
+ 
+     /* Framebuffer */
+-    sysbus_create_simple_orphan(TYPE_NEXTFB, 0x0B000000, NULL);
++    sysbus_create_simple(OBJECT(machine), "fb", TYPE_NEXTFB, 0x0B000000, NULL);
+ 
+     /* MMIO */
+     sysbus_mmio_map(SYS_BUS_DEVICE(pcdev), 0, 0x02005000);
+@@ -1319,7 +1319,7 @@ static void next_cube_init(MachineState *machine)
+     memory_region_add_subregion(sysmem, 0x820c0000, &m->bmapm2);
+ 
+     /* KBD */
+-    sysbus_create_simple_orphan(TYPE_NEXTKBD, 0x0200e000, NULL);
++    sysbus_create_simple(OBJECT(machine), "kbd", TYPE_NEXTKBD, 0x0200e000, NULL);
+ 
+     /* Load ROM here */
+     memory_region_init_rom(&m->rom, NULL, "next.rom", 0x20000, &error_fatal);
+diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
+index 688299ee2d..15b3bcab5f 100644
+--- a/hw/m68k/q800.c
++++ b/hw/m68k/q800.c
+@@ -355,10 +355,10 @@ static void q800_machine_init(MachineState *machine)
+                                                  "auxmode", 0));
+ 
+     adb_bus = qdev_get_child_bus(DEVICE(&m->via1), "adb.0");
+-    dev = qdev_new_orphan(TYPE_ADB_KEYBOARD);
+-    qdev_realize_and_unref(dev, adb_bus, &error_fatal);
+-    dev = qdev_new_orphan(TYPE_ADB_MOUSE);
+-    qdev_realize_and_unref(dev, adb_bus, &error_fatal);
++    dev = qdev_new(OBJECT(machine), "adb-keyboard", TYPE_ADB_KEYBOARD);
++    qdev_realize(dev, adb_bus, &error_fatal);
++    dev = qdev_new(OBJECT(machine), "adb-mouse", TYPE_ADB_MOUSE);
++    qdev_realize(dev, adb_bus, &error_fatal);
+ 
+     /* VIA 2 */
+     object_initialize_child(OBJECT(machine), "via2", &m->via2,
+diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+index 64ac8c8166..5d5ea72314 100644
+--- a/hw/m68k/virt.c
++++ b/hw/m68k/virt.c
+@@ -145,7 +145,7 @@ static void virt_init(MachineState *machine)
+     reset_info = g_new0(ResetInfo, 1);
+ 
+     /* init CPUs */
+-    cpu = M68K_CPU(cpu_create_orphan(machine->cpu_type));
++    cpu = M68K_CPU(cpu_create(OBJECT(machine), "cpu", machine->cpu_type));
+ 
+     reset_info->cpu = cpu;
+     qemu_register_reset(main_cpu_reset, reset_info);
+@@ -155,10 +155,10 @@ static void virt_init(MachineState *machine)
+ 
+     /* IRQ Controller */
+ 
+-    irqc_dev = qdev_new_orphan(TYPE_M68K_IRQC);
++    irqc_dev = qdev_new(OBJECT(machine), "irqc", TYPE_M68K_IRQC);
+     object_property_set_link(OBJECT(irqc_dev), "m68k-cpu",
+                              OBJECT(cpu), &error_abort);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(irqc_dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(irqc_dev), &error_fatal);
+ 
+     /*
+      * 6 goldfish-pic
+@@ -169,10 +169,10 @@ static void virt_init(MachineState *machine)
+      */
+     io_base = VIRT_GF_PIC_MMIO_BASE;
+     for (i = 0; i < VIRT_GF_PIC_NB; i++) {
+-        pic_dev[i] = qdev_new_orphan(TYPE_GOLDFISH_PIC);
++        pic_dev[i] = qdev_new(OBJECT(machine), "pic[*]", TYPE_GOLDFISH_PIC);
+         sysbus = SYS_BUS_DEVICE(pic_dev[i]);
+         qdev_prop_set_uint8(pic_dev[i], "index", i);
+-        sysbus_realize_and_unref(sysbus, &error_fatal);
++        sysbus_realize(sysbus, &error_fatal);
+ 
+         sysbus_mmio_map(sysbus, 0, io_base);
+         sysbus_connect_irq(sysbus, 0, qdev_get_gpio_in(irqc_dev, i));
+@@ -183,10 +183,10 @@ static void virt_init(MachineState *machine)
+     /* goldfish-rtc */
+     io_base = VIRT_GF_RTC_MMIO_BASE;
+     for (i = 0; i < VIRT_GF_RTC_NB; i++) {
+-        dev = qdev_new_orphan(TYPE_GOLDFISH_RTC);
++        dev = qdev_new(OBJECT(machine), "rtc[*]", TYPE_GOLDFISH_RTC);
+         qdev_prop_set_bit(dev, "big-endian", true);
+         sysbus = SYS_BUS_DEVICE(dev);
+-        sysbus_realize_and_unref(sysbus, &error_fatal);
++        sysbus_realize(sysbus, &error_fatal);
+         sysbus_mmio_map(sysbus, 0, io_base);
+         sysbus_connect_irq(sysbus, 0, PIC_GPIO(VIRT_GF_RTC_IRQ_BASE + i));
+ 
+@@ -194,24 +194,25 @@ static void virt_init(MachineState *machine)
+     }
+ 
+     /* goldfish-tty */
+-    dev = qdev_new_orphan(TYPE_GOLDFISH_TTY);
++    dev = qdev_new(OBJECT(machine), "tty", TYPE_GOLDFISH_TTY);
+     sysbus = SYS_BUS_DEVICE(dev);
+     qdev_prop_set_chr(dev, "chardev", serial_hd(0));
+-    sysbus_realize_and_unref(sysbus, &error_fatal);
++    sysbus_realize(sysbus, &error_fatal);
+     sysbus_mmio_map(sysbus, 0, VIRT_GF_TTY_MMIO_BASE);
+     sysbus_connect_irq(sysbus, 0, PIC_GPIO(VIRT_GF_TTY_IRQ_BASE));
+ 
+     /* virt controller */
+-    dev = sysbus_create_simple_orphan(TYPE_VIRT_CTRL, VIRT_CTRL_MMIO_BASE,
++    dev = sysbus_create_simple(OBJECT(machine), "virt-ctrl", TYPE_VIRT_CTRL,
++                               VIRT_CTRL_MMIO_BASE,
+                                PIC_GPIO(VIRT_CTRL_IRQ_BASE));
+ 
+     /* virtio-mmio */
+     io_base = VIRT_VIRTIO_MMIO_BASE;
+     for (i = 0; i < 128; i++) {
+-        dev = qdev_new_orphan(TYPE_VIRTIO_MMIO);
++        dev = qdev_new(OBJECT(machine), "virtio-mmio[*]", TYPE_VIRTIO_MMIO);
+         qdev_prop_set_bit(dev, "force-legacy", false);
+         sysbus = SYS_BUS_DEVICE(dev);
+-        sysbus_realize_and_unref(sysbus, &error_fatal);
++        sysbus_realize(sysbus, &error_fatal);
+         sysbus_connect_irq(sysbus, 0, PIC_GPIO(VIRT_VIRTIO_IRQ_BASE + i));
+         sysbus_mmio_map(sysbus, 0, io_base);
+         io_base += 0x200;
+diff --git a/include/hw/m68k/mcf.h b/include/hw/m68k/mcf.h
+index b2a599adaa..ff818c55d0 100644
+--- a/include/hw/m68k/mcf.h
++++ b/include/hw/m68k/mcf.h
+@@ -14,7 +14,7 @@ DeviceState *mcf_uart_create(qemu_irq irq, Chardev *chr);
+ DeviceState *mcf_uart_create_mmap(hwaddr base, qemu_irq irq, Chardev *chr);
+ 
+ /* mcf_intc.c */
+-DeviceState *mcf_intc_init(struct MemoryRegion *sysmem,
++DeviceState *mcf_intc_init(Object *parent, struct MemoryRegion *sysmem,
+                            hwaddr base, M68kCPU *cpu);
+ 
+ /* mcf5206.c */
 -- 
 2.47.1
 

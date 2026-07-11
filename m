@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43B6FC44501
-	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 23:03:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C351FC44506
+	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 23:03:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wigjC-0005Y5-HE; Sat, 11 Jul 2026 19:03:22 -0400
+	id 1wigjT-0005mY-RZ; Sat, 11 Jul 2026 19:03:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigik-0005PS-GD; Sat, 11 Jul 2026 19:02:56 -0400
-Received: from pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.34.181.151])
+ id 1wigjR-0005lZ-RD; Sat, 11 Jul 2026 19:03:37 -0400
+Received: from pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.12.53.23])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigie-0002ae-8I; Sat, 11 Jul 2026 19:02:54 -0400
+ id 1wigjP-0002hL-HW; Sat, 11 Jul 2026 19:03:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1783810968; x=1815346968;
+ t=1783811015; x=1815347015;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=kIRDMMYQoAbVbR+Yb/nq/CG8IV16g3zCWr2Me2GLW6M=;
- b=sUfzUOvrQkXfianEQf6XpKIjfw6GTnGndKfxbQuP6PAG9P8W7x3ao94L
- a+ut8WNGBUf7Jczye+n/vGYRFnd7TWecy0XZr9aB0/gx2iDK7UYFuT3F6
- 7o6zysR+mmUYqDKgvxwXiOs41NS8+wBypuVomJ+oam3Ws6AsndFzfgHXt
- MsJrXIm+NygTZxrfX1y8LOPbLidZFtlP8rVKPclFVDIkMSepmHHrTLs1b
- 09L7EeEER0EvOztkwOOmI5UDwHTWiuAWzIU726QhdD/H/d3eTyESzX0du
- o22ZFYDN1HJcCRad7iKlLyfW1xH0ReufgQiS6mzEuInq0wFEB6JfF3q60 g==;
-X-CSE-ConnectionGUID: UnS3OulPSI22PLwrbrOoMw==
-X-CSE-MsgGUID: rqh8YVmBRDC1yM2K3LZ0kg==
-X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23483611"
-Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
- by internal-pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 23:02:44 +0000
-Received: from EX19MTAUWC002.ant.amazon.com [205.251.233.111:23292]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.47.135:2525]
+ bh=CXOxm0VQ3ug8i73JP92Gty/a5Axf9FdIYmMv6MEY07k=;
+ b=bk9rXJ46IXtBVAVnBDWj1gPWPnGphi/OqnwDg8IUwNVMeIBWc2FPIksH
+ o4WzxRd/BHeBQUcxiBKXEkF90O9FyUYQHFBCX86JgXTdOoooW/V5jg6JZ
+ v424oUl0svyKU/nPRI4Yyhnuw5wqPJd9dgD2IMLaYNDIjatTCBdxYtNCw
+ cNeK6TzdCfBkopGfK/IsyDY7i95X4umCWELXU+Qgp7D2ck/6wCMkYO2V/
+ 2DMbgUocyqL2w+5Z2gVXhsRu9wTwRPG9aLbcSBZL8Xaq1/nOMvPQI9N+d
+ jFZWi/QiI+KYgjzEgfPGQBd9DyYgOhtLYYHhu6UaT4K1pdmnsc7fZBBJd Q==;
+X-CSE-ConnectionGUID: YQViRy3tQXaepJdQIfyQ3A==
+X-CSE-MsgGUID: BgXdbXLFREOiUpzQ3XJoMQ==
+X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23370040"
+Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
+ by internal-pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 23:03:32 +0000
+Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.48:13504]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.51.175:2525]
  with esmtp (Farcaster)
- id c3cb8fca-4aa2-4924-8f15-6db4f3d24a39; Sat, 11 Jul 2026 23:02:44 +0000 (UTC)
-X-Farcaster-Flow-ID: c3cb8fca-4aa2-4924-8f15-6db4f3d24a39
+ id 956b4a00-99b6-4257-9ef4-046b18028040; Sat, 11 Jul 2026 23:03:31 +0000 (UTC)
+X-Farcaster-Flow-ID: 956b4a00-99b6-4257-9ef4-046b18028040
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
+ EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 23:02:43 +0000
+ Sat, 11 Jul 2026 23:03:31 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 23:02:35 +0000
+ Sat, 11 Jul 2026 23:03:22 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -91,9 +91,9 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  <th.huth+qemu@posteo.eu>, "Ran Wang" <wangran@bosc.ac.cn>, Hao Wu
  <wuhaotsh@google.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>
-Subject: [RFC PATCH 097/134] hw/m68k: Give memory regions an explicit owner
-Date: Sat, 11 Jul 2026 22:36:30 +0000
-Message-ID: <20260711223707.42139-98-graf@amazon.com>
+Subject: [RFC PATCH 100/134] hw/xtensa: Give memory regions an explicit owner
+Date: Sat, 11 Jul 2026 22:36:33 +0000
+Message-ID: <20260711223707.42139-101-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260711223707.42139-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -101,11 +101,11 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D046UWA003.ant.amazon.com (10.13.139.18) To
+X-ClientProxiedBy: EX19D044UWB003.ant.amazon.com (10.13.139.168) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.34.181.151;
+Received-SPF: pass client-ip=52.12.53.23;
  envelope-from=prvs=645f258d4=graf@amazon.de;
- helo=pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -132,192 +132,235 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Convert memory_region_init*() calls that pass NULL owner to pass
 the enclosing machine or device instead.
 
-Thread Object *owner through the static mcf5208_sys_init() helper. mcf5206_mbar_realize() already has DeviceState *dev in scope.
+Thread Object *owner through xtensa_create_memory_regions(), xtensa_mx_pic_register_cpu() and the static xtfpga_fpga_init() helper. All callers are inside board init functions.
 
 No functional change intended.
 
 Assisted-by: Kiro
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/m68k/an5206.c    |  2 +-
- hw/m68k/mcf5206.c   |  2 +-
- hw/m68k/mcf5208.c   | 15 ++++++++-------
- hw/m68k/next-cube.c | 10 +++++-----
- hw/m68k/q800.c      | 10 +++++-----
- 5 files changed, 20 insertions(+), 19 deletions(-)
+ hw/xtensa/mx_pic.c         |  4 ++--
+ hw/xtensa/sim.c            | 15 ++++++++-------
+ hw/xtensa/xtensa_memory.c  |  5 +++--
+ hw/xtensa/xtensa_memory.h  |  3 ++-
+ hw/xtensa/xtfpga.c         | 30 ++++++++++++++++--------------
+ include/hw/xtensa/mx_pic.h |  2 +-
+ 6 files changed, 32 insertions(+), 27 deletions(-)
 
-diff --git a/hw/m68k/an5206.c b/hw/m68k/an5206.c
-index 5027311cad..6c6c7d7248 100644
---- a/hw/m68k/an5206.c
-+++ b/hw/m68k/an5206.c
-@@ -60,7 +60,7 @@ static void an5206_init(MachineState *machine)
-     memory_region_add_subregion(address_space_mem, 0, machine->ram);
- 
-     /* Internal SRAM.  */
--    memory_region_init_ram(sram, NULL, "an5206.sram", 512, &error_fatal);
-+    memory_region_init_ram(sram, OBJECT(machine), "an5206.sram", 512, &error_fatal);
-     memory_region_add_subregion(address_space_mem, AN5206_RAMBAR_ADDR, sram);
- 
-     mcf5206_init(OBJECT(machine), cpu, address_space_mem, AN5206_MBAR_ADDR);
-diff --git a/hw/m68k/mcf5206.c b/hw/m68k/mcf5206.c
-index b3c745d3f9..ee39a6ac30 100644
---- a/hw/m68k/mcf5206.c
-+++ b/hw/m68k/mcf5206.c
-@@ -589,7 +589,7 @@ static void mcf5206_mbar_realize(DeviceState *dev, Error **errp)
- {
-     m5206_mbar_state *s = MCF5206_MBAR(dev);
- 
--    memory_region_init_io(&s->iomem, NULL, &m5206_mbar_ops, s,
-+    memory_region_init_io(&s->iomem, OBJECT(dev), &m5206_mbar_ops, s,
-                           "mbar", 0x00001000);
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
- 
-diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
-index a955efebeb..93aee5ebd5 100644
---- a/hw/m68k/mcf5208.c
-+++ b/hw/m68k/mcf5208.c
-@@ -227,7 +227,8 @@ static const MemoryRegionOps m5208_rcm_ops = {
-     .endianness = DEVICE_BIG_ENDIAN,
+diff --git a/hw/xtensa/mx_pic.c b/hw/xtensa/mx_pic.c
+index 8ded3bc79b..f349fb125c 100644
+--- a/hw/xtensa/mx_pic.c
++++ b/hw/xtensa/mx_pic.c
+@@ -299,7 +299,7 @@ static const MemoryRegionOps xtensa_mx_pic_ops = {
+     },
  };
  
--static void mcf5208_sys_init(MemoryRegion *address_space, DeviceState *intc,
-+static void mcf5208_sys_init(Object *owner, MemoryRegion *address_space,
-+                             DeviceState *intc,
-                              M68kCPU *cpu)
+-MemoryRegion *xtensa_mx_pic_register_cpu(XtensaMxPic *mx,
++MemoryRegion *xtensa_mx_pic_register_cpu(Object *owner, XtensaMxPic *mx,
+                                          qemu_irq *irq,
+                                          qemu_irq runstall)
  {
-     MemoryRegion *iomem = g_new(MemoryRegion, 1);
-@@ -236,17 +237,17 @@ static void mcf5208_sys_init(MemoryRegion *address_space, DeviceState *intc,
-     int i;
+@@ -309,7 +309,7 @@ MemoryRegion *xtensa_mx_pic_register_cpu(XtensaMxPic *mx,
+     mx_cpu->irq = irq;
+     mx_cpu->runstall = runstall;
  
-     /* RCM */
--    memory_region_init_io(iomem_rcm, NULL, &m5208_rcm_ops, cpu,
-+    memory_region_init_io(iomem_rcm, owner, &m5208_rcm_ops, cpu,
-                           "m5208-rcm", 0x00000080);
-     memory_region_add_subregion(address_space, 0xfc0a0000, iomem_rcm);
-     /* SDRAMC.  */
--    memory_region_init_io(iomem, NULL, &m5208_sys_ops, NULL, "m5208-sys", 0x00004000);
-+    memory_region_init_io(iomem, owner, &m5208_sys_ops, NULL, "m5208-sys", 0x00004000);
-     memory_region_add_subregion(address_space, 0xfc0a8000, iomem);
-     /* Timers.  */
-     for (i = 0; i < 2; i++) {
-         s = g_new0(m5208_timer_state, 1);
-         s->timer = ptimer_init(m5208_timer_trigger, s, PTIMER_POLICY_LEGACY);
--        memory_region_init_io(&s->iomem, NULL, &m5208_timer_ops, s,
-+        memory_region_init_io(&s->iomem, owner, &m5208_timer_ops, s,
-                               "m5208-timer", 0x00004000);
-         memory_region_add_subregion(address_space, 0xfc080000 + 0x4000 * i,
-                                     &s->iomem);
-@@ -296,14 +297,14 @@ static void mcf5208evb_init(MachineState *machine)
-     /* TODO: Configure BARs.  */
+-    memory_region_init_io(&mx_cpu->reg, NULL, &xtensa_mx_pic_ops, mx_cpu,
++    memory_region_init_io(&mx_cpu->reg, owner, &xtensa_mx_pic_ops, mx_cpu,
+                           "mx_pic", 0x280);
  
-     /* ROM at 0x00000000 */
--    memory_region_init_rom(rom, NULL, "mcf5208.rom", ROM_SIZE, &error_fatal);
-+    memory_region_init_rom(rom, OBJECT(machine), "mcf5208.rom", ROM_SIZE, &error_fatal);
-     memory_region_add_subregion(address_space_mem, 0x00000000, rom);
+     ++mx->n_cpu;
+diff --git a/hw/xtensa/sim.c b/hw/xtensa/sim.c
+index ad1439a0b4..e3cd69ceca 100644
+--- a/hw/xtensa/sim.c
++++ b/hw/xtensa/sim.c
+@@ -60,10 +60,11 @@ XtensaCPU *xtensa_sim_common_init(MachineState *machine)
+     XtensaCPU *cpu = NULL;
+     CPUXtensaState *env = NULL;
+     ram_addr_t ram_size = machine->ram_size;
++    Object *mo = OBJECT(machine);
+     int n;
  
-     /* DRAM at 0x40000000 */
-     memory_region_add_subregion(address_space_mem, 0x40000000, machine->ram);
+     for (n = 0; n < machine->smp.cpus; n++) {
+-        cpu = XTENSA_CPU(cpu_create(OBJECT(machine), "cpu[*]", machine->cpu_type));
++        cpu = XTENSA_CPU(cpu_create(mo, "cpu[*]", machine->cpu_type));
+         env = &cpu->env;
  
-     /* Internal SRAM.  */
--    memory_region_init_ram(sram, NULL, "mcf5208.sram", 16 * KiB, &error_fatal);
-+    memory_region_init_ram(sram, OBJECT(machine), "mcf5208.sram", 16 * KiB, &error_fatal);
-     memory_region_add_subregion(address_space_mem, 0x80000000, sram);
+         env->sregs[PRID] = n;
+@@ -78,17 +79,17 @@ XtensaCPU *xtensa_sim_common_init(MachineState *machine)
+         XtensaMemory sysram = env->config->sysram;
  
-     /* Internal peripherals.  */
-@@ -316,7 +317,7 @@ static void mcf5208evb_init(MachineState *machine)
-     mcf_uart_create_mmap(OBJECT(machine), 0xfc068000,
-                          qdev_get_gpio_in(intc, 28), serial_hd(2));
+         sysram.location[0].size = ram_size;
+-        xtensa_create_memory_regions(&env->config->instrom, "xtensa.instrom",
++        xtensa_create_memory_regions(mo, &env->config->instrom, "xtensa.instrom",
+                                      get_system_memory());
+-        xtensa_create_memory_regions(&env->config->instram, "xtensa.instram",
++        xtensa_create_memory_regions(mo, &env->config->instram, "xtensa.instram",
+                                      get_system_memory());
+-        xtensa_create_memory_regions(&env->config->datarom, "xtensa.datarom",
++        xtensa_create_memory_regions(mo, &env->config->datarom, "xtensa.datarom",
+                                      get_system_memory());
+-        xtensa_create_memory_regions(&env->config->dataram, "xtensa.dataram",
++        xtensa_create_memory_regions(mo, &env->config->dataram, "xtensa.dataram",
+                                      get_system_memory());
+-        xtensa_create_memory_regions(&env->config->sysrom, "xtensa.sysrom",
++        xtensa_create_memory_regions(mo, &env->config->sysrom, "xtensa.sysrom",
+                                      get_system_memory());
+-        xtensa_create_memory_regions(&sysram, "xtensa.sysram",
++        xtensa_create_memory_regions(mo, &sysram, "xtensa.sysram",
+                                      get_system_memory());
+     }
+     if (serial_hd(0)) {
+diff --git a/hw/xtensa/xtensa_memory.c b/hw/xtensa/xtensa_memory.c
+index 13a6077d86..4477eea0ad 100644
+--- a/hw/xtensa/xtensa_memory.c
++++ b/hw/xtensa/xtensa_memory.c
+@@ -31,7 +31,8 @@
+ #include "qemu/error-report.h"
+ #include "xtensa_memory.h"
  
--    mcf5208_sys_init(address_space_mem, intc, cpu);
-+    mcf5208_sys_init(OBJECT(machine), address_space_mem, intc, cpu);
+-void xtensa_create_memory_regions(const XtensaMemory *memory,
++void xtensa_create_memory_regions(Object *owner,
++                                  const XtensaMemory *memory,
+                                   const char *name,
+                                   MemoryRegion *super)
+ {
+@@ -43,7 +44,7 @@ void xtensa_create_memory_regions(const XtensaMemory *memory,
  
-     mcf_fec_init(address_space_mem, 0xfc030000, intc);
+         g_string_printf(num_name, "%s%u", name, i);
+         m = g_new(MemoryRegion, 1);
+-        memory_region_init_ram(m, NULL, num_name->str,
++        memory_region_init_ram(m, owner, num_name->str,
+                                memory->location[i].size, &error_fatal);
+         memory_region_add_subregion(super, memory->location[i].addr, m);
+     }
+diff --git a/hw/xtensa/xtensa_memory.h b/hw/xtensa/xtensa_memory.h
+index c86ad06685..b8b2d4b8b4 100644
+--- a/hw/xtensa/xtensa_memory.h
++++ b/hw/xtensa/xtensa_memory.h
+@@ -30,7 +30,8 @@
  
-diff --git a/hw/m68k/next-cube.c b/hw/m68k/next-cube.c
-index c80d32ef29..564a10a69e 100644
---- a/hw/m68k/next-cube.c
-+++ b/hw/m68k/next-cube.c
-@@ -1310,11 +1310,11 @@ static void next_cube_init(MachineState *machine)
-     sysbus_mmio_map(SYS_BUS_DEVICE(pcdev), 5, 0x0211a000);
+ #include "target/xtensa/cpu.h"
  
-     /* BMAP memory */
--    memory_region_init_ram_flags_nomigrate(&m->bmapm1, NULL, "next.bmapmem",
-+    memory_region_init_ram_flags_nomigrate(&m->bmapm1, OBJECT(machine), "next.bmapmem",
-                                            64, RAM_SHARED, &error_fatal);
-     memory_region_add_subregion(sysmem, 0x020c0000, &m->bmapm1);
-     /* The Rev_2.5_v66.bin firmware accesses it at 0x820c0020, too */
--    memory_region_init_alias(&m->bmapm2, NULL, "next.bmapmem2", &m->bmapm1,
-+    memory_region_init_alias(&m->bmapm2, OBJECT(machine), "next.bmapmem2", &m->bmapm1,
-                              0x0, 64);
-     memory_region_add_subregion(sysmem, 0x820c0000, &m->bmapm2);
+-void xtensa_create_memory_regions(const XtensaMemory *memory,
++void xtensa_create_memory_regions(Object *owner,
++                                  const XtensaMemory *memory,
+                                   const char *name,
+                                   MemoryRegion *super);
  
-@@ -1322,9 +1322,9 @@ static void next_cube_init(MachineState *machine)
-     sysbus_create_simple(OBJECT(machine), "kbd", TYPE_NEXTKBD, 0x0200e000, NULL);
+diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
+index 1c48283f5d..f0c21180a2 100644
+--- a/hw/xtensa/xtfpga.c
++++ b/hw/xtensa/xtfpga.c
+@@ -125,12 +125,13 @@ static const MemoryRegionOps xtfpga_fpga_ops = {
+     .endianness = DEVICE_NATIVE_ENDIAN,
+ };
  
-     /* Load ROM here */
--    memory_region_init_rom(&m->rom, NULL, "next.rom", 0x20000, &error_fatal);
-+    memory_region_init_rom(&m->rom, OBJECT(machine), "next.rom", 0x20000, &error_fatal);
-     memory_region_add_subregion(sysmem, 0x01000000, &m->rom);
--    memory_region_init_alias(&m->rom2, NULL, "next.rom2", &m->rom, 0x0,
-+    memory_region_init_alias(&m->rom2, OBJECT(machine), "next.rom2", &m->rom, 0x0,
-                              0x20000);
-     memory_region_add_subregion(sysmem, 0x0, &m->rom2);
-     Error *local_err = NULL;
-@@ -1352,7 +1352,7 @@ static void next_cube_init(MachineState *machine)
+-static XtfpgaFpgaState *xtfpga_fpga_init(MemoryRegion *address_space,
++static XtfpgaFpgaState *xtfpga_fpga_init(Object *owner,
++                                         MemoryRegion *address_space,
+                                          hwaddr base, uint32_t freq)
+ {
+     XtfpgaFpgaState *s = g_new(XtfpgaFpgaState, 1);
+ 
+-    memory_region_init_io(&s->iomem, NULL, &xtfpga_fpga_ops, s,
++    memory_region_init_io(&s->iomem, owner, &xtfpga_fpga_ops, s,
+                           "xtfpga.fpga", 0x10000);
+     memory_region_add_subregion(address_space, base, &s->iomem);
+     s->freq = freq;
+@@ -243,6 +244,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
+     uint32_t freq = 10000000;
+     int n;
+     unsigned int smp_cpus = machine->smp.cpus;
++    Object *mo = OBJECT(machine);
+ 
+     if (smp_cpus > 1) {
+         mx_pic = xtensa_mx_pic_init(31);
+@@ -262,7 +264,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
+         if (mx_pic) {
+             MemoryRegion *mx_eri;
+ 
+-            mx_eri = xtensa_mx_pic_register_cpu(mx_pic,
++            mx_eri = xtensa_mx_pic_register_cpu(OBJECT(machine), mx_pic,
+                                                 xtensa_get_extints(cenv),
+                                                 xtensa_get_runstall(cenv));
+             memory_region_add_subregion(xtensa_get_er_region(cenv),
+@@ -286,30 +288,30 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
+         XtensaMemory sysram = env->config->sysram;
+ 
+         sysram.location[0].size = machine->ram_size;
+-        xtensa_create_memory_regions(&env->config->instrom, "xtensa.instrom",
++        xtensa_create_memory_regions(mo, &env->config->instrom, "xtensa.instrom",
+                                      system_memory);
+-        xtensa_create_memory_regions(&env->config->instram, "xtensa.instram",
++        xtensa_create_memory_regions(mo, &env->config->instram, "xtensa.instram",
+                                      system_memory);
+-        xtensa_create_memory_regions(&env->config->datarom, "xtensa.datarom",
++        xtensa_create_memory_regions(mo, &env->config->datarom, "xtensa.datarom",
+                                      system_memory);
+-        xtensa_create_memory_regions(&env->config->dataram, "xtensa.dataram",
++        xtensa_create_memory_regions(mo, &env->config->dataram, "xtensa.dataram",
+                                      system_memory);
+-        xtensa_create_memory_regions(&sysram, "xtensa.sysram",
++        xtensa_create_memory_regions(mo, &sysram, "xtensa.sysram",
+                                      system_memory);
      }
  
-     /* DMA */
--    memory_region_init_io(&m->dmamem, NULL, &next_dma_ops, machine,
-+    memory_region_init_io(&m->dmamem, OBJECT(machine), &next_dma_ops, machine,
-                           "next.dma", 0x5000);
-     memory_region_add_subregion(sysmem, 0x02000000, &m->dmamem);
- }
-diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
-index 15b3bcab5f..954cdf8489 100644
---- a/hw/m68k/q800.c
-+++ b/hw/m68k/q800.c
-@@ -309,7 +309,7 @@ static void q800_machine_init(MachineState *machine)
-     memory_region_add_subregion(get_system_memory(), IO_BASE + IO_SLICE,
-                                 &m->macio_alias);
+     system_io = g_malloc(sizeof(*system_io));
+-    memory_region_init_io(system_io, NULL, &xtfpga_io_ops, NULL, "xtfpga.io",
++    memory_region_init_io(system_io, OBJECT(machine), &xtfpga_io_ops, NULL, "xtfpga.io",
+                           system_io_size);
+     memory_region_add_subregion(system_memory, board->io[0], system_io);
+     if (board->io[1]) {
+         MemoryRegion *io = g_malloc(sizeof(*io));
  
--    memory_region_init_io(&m->machine_id, NULL, &machine_id_ops, NULL,
-+    memory_region_init_io(&m->machine_id, OBJECT(machine), &machine_id_ops, NULL,
-                           "Machine ID", 4);
-     memory_region_add_subregion(get_system_memory(), 0x5ffffffc,
-                                 &m->machine_id);
-@@ -407,7 +407,7 @@ static void q800_machine_init(MachineState *machine)
-     sysbus_connect_irq(sysbus, 0,
-                        qdev_get_gpio_in(DEVICE(&m->glue), GLUE_IRQ_IN_SONIC));
+-        memory_region_init_alias(io, NULL, "xtfpga.io.cached",
++        memory_region_init_alias(io, OBJECT(machine), "xtfpga.io.cached",
+                                  system_io, 0, system_io_size);
+         memory_region_add_subregion(system_memory, board->io[1], io);
+     }
+-    xtfpga_fpga_init(system_io, 0x0d020000, freq);
++    xtfpga_fpga_init(OBJECT(machine), system_io, 0x0d020000, freq);
+     xtfpga_net_init(system_io, 0x0d030000, 0x0d030400, 0x0d800000, extints[1]);
  
--    memory_region_init_rom(&m->dp8393x_prom, NULL, "dp8393x-q800.prom",
-+    memory_region_init_rom(&m->dp8393x_prom, OBJECT(machine), "dp8393x-q800.prom",
-                            SONIC_PROM_SIZE, &error_fatal);
-     memory_region_add_subregion(get_system_memory(), SONIC_PROM_BASE,
-                                 &m->dp8393x_prom);
-@@ -606,7 +606,7 @@ static void q800_machine_init(MachineState *machine)
-         BOOTINFO1(param_ptr, BI_MAC_VROW, macfb_mode->stride);
-         BOOTINFO1(param_ptr, BI_MAC_SCCBASE, SCC_BASE);
+     serial_mm_init(OBJECT(machine), system_io, 0x0d050020, 2, extints[0],
+@@ -341,7 +343,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
+         lowmem_end += env->config->sysram.location[0].addr;
+         cur_lowmem += env->config->sysram.location[0].addr;
  
--        memory_region_init_ram_ptr(&m->rom, NULL, "m68k_fake_mac.rom",
-+        memory_region_init_ram_ptr(&m->rom, OBJECT(machine), "m68k_fake_mac.rom",
-                                    sizeof(fake_mac_rom), fake_mac_rom);
-         memory_region_set_readonly(&m->rom, true);
-         memory_region_add_subregion(get_system_memory(), MACROM_ADDR, &m->rom);
-@@ -651,12 +651,12 @@ static void q800_machine_init(MachineState *machine)
-     } else {
-         uint8_t *ptr;
-         /* allocate and load BIOS */
--        memory_region_init_rom(&m->rom, NULL, "m68k_mac.rom", MACROM_SIZE,
-+        memory_region_init_rom(&m->rom, OBJECT(machine), "m68k_mac.rom", MACROM_SIZE,
-                                &error_abort);
-         filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-         memory_region_add_subregion(get_system_memory(), MACROM_ADDR, &m->rom);
+-        xtensa_create_memory_regions(&env->config->sysrom, "xtensa.sysrom",
++        xtensa_create_memory_regions(mo, &env->config->sysrom, "xtensa.sysrom",
+                                      system_memory);
  
--        memory_region_init_alias(&m->rom_alias, NULL, "m68k_mac.rom-alias",
-+        memory_region_init_alias(&m->rom_alias, OBJECT(machine), "m68k_mac.rom-alias",
-                                  &m->rom, 0, MACROM_SIZE);
-         memory_region_add_subregion(get_system_memory(), 0x40000000,
-                                     &m->rom_alias);
+         if (kernel_cmdline) {
+@@ -465,13 +467,13 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
+                 size = board->flash->size - board->flash->boot_base;
+             }
+ 
+-            memory_region_init_alias(flash_io, NULL, "xtfpga.flash",
++            memory_region_init_alias(flash_io, OBJECT(machine), "xtfpga.flash",
+                                      flash_mr, board->flash->boot_base, size);
+             memory_region_add_subregion(system_memory,
+                                         env->config->sysrom.location[0].addr,
+                                         flash_io);
+         } else {
+-            xtensa_create_memory_regions(&env->config->sysrom, "xtensa.sysrom",
++            xtensa_create_memory_regions(mo, &env->config->sysrom, "xtensa.sysrom",
+                                          system_memory);
+         }
+     }
+diff --git a/include/hw/xtensa/mx_pic.h b/include/hw/xtensa/mx_pic.h
+index cd316d86eb..01d5ea884e 100644
+--- a/include/hw/xtensa/mx_pic.h
++++ b/include/hw/xtensa/mx_pic.h
+@@ -35,7 +35,7 @@ typedef struct XtensaMxPic XtensaMxPic;
+ 
+ XtensaMxPic *xtensa_mx_pic_init(unsigned n_extint);
+ void xtensa_mx_pic_reset(void *opaque);
+-MemoryRegion *xtensa_mx_pic_register_cpu(XtensaMxPic *mx,
++MemoryRegion *xtensa_mx_pic_register_cpu(Object *owner, XtensaMxPic *mx,
+                                          qemu_irq *irq,
+                                          qemu_irq runstall);
+ qemu_irq *xtensa_mx_pic_get_extints(XtensaMxPic *mx);
 -- 
 2.47.1
 

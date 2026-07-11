@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCEC8C43458
-	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:44:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D37FC43458
+	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:44:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wigQf-0002e6-Uh; Sat, 11 Jul 2026 18:44:14 -0400
+	id 1wigR0-0003YI-2D; Sat, 11 Jul 2026 18:44:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigQT-000285-2c; Sat, 11 Jul 2026 18:44:03 -0400
-Received: from pdx-out-012.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([35.162.73.231])
+ id 1wigQw-0003WX-PP; Sat, 11 Jul 2026 18:44:30 -0400
+Received: from pdx-out-001.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([44.245.243.92])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigQR-0006c0-5s; Sat, 11 Jul 2026 18:44:00 -0400
+ id 1wigQv-0006gy-1i; Sat, 11 Jul 2026 18:44:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1783809839; x=1815345839;
+ t=1783809869; x=1815345869;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=ni+Kq3j/pIwNs07brhCKfRLZ0k5hnlL5EYwcu6HfXiM=;
- b=Kolh/V4mOeKlBsGo7s2kGjD3QOHl8H8CuuWXCzWcnKnfVh/27S3Ys7v8
- htVthr090bxZA2cV2H0p15220xBlC5PyReLUk4H3kHCLpplo+miqmWpJQ
- i4RDUyVgoZx3dpv9P/1GFzRhDA3+fiGX3Y7iu/+DuB6Umv6JtjWb40Pno
- hSNw4SMZhJ5MOzW17ugE0tzzUcnwVw8SF4Lg53DY5pv5ccfHIcvARugV8
- lf3NqvmtmlYkKXEMsb5FO+wdrwJNPMdEcaoeaLxpcgvhELrDBNJXtZG8I
- Sh50L2BWySYhgy2Xt1j9ndy7OK5ZmGHhBkM7Gk7wVFQLVr3xcvtHemj0I g==;
-X-CSE-ConnectionGUID: i+0PltNQSDKr2aEJAiq4lg==
-X-CSE-MsgGUID: bmg0UM0bRSeB6lkoVOj4gQ==
-X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23293881"
-Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
- by internal-pdx-out-012.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:43:54 +0000
-Received: from EX19MTAUWA001.ant.amazon.com [205.251.233.182:6758]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.42.69:2525]
+ bh=hK9nTMa03296PNCOz6yEjb/LLI20+7ejx8YZTeehV1g=;
+ b=OjwkP05hmriENFprcXvS0kkVZ9Ewp9xzpHTXHVzzJXHxeYkHQsd07EnQ
+ fAh+hqwslJb1pw36Qs9icWRLZzmLrk4hvlIzfpdG/AFI/B2SqudCJzqHk
+ WQFgX0qAxMf6hOWf875bnjCvqWHkeXhA2qVNucvo7HGXmac8tLFPQSR/i
+ k1ZX1NmTADzrdzk34S4KTq4TIw5UOWDxkIMi+RFmGQP71UKv07G4nVNte
+ iwhVI7RLzafTCulL2WXauvLQT5Z2er50i7o7BT11q0IO8y7az7horHnQY
+ lS8cAD59Mgrwn5x2ehFCWQ4aqzx1BkpOX0013YjdOMvND2dJzwoI4YI/G w==;
+X-CSE-ConnectionGUID: KsY1QBI1TYiURt41FuJRUA==
+X-CSE-MsgGUID: czJkX5K8SOypcJRnpy0qmg==
+X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="22997424"
+Received: from ip-10-5-9-48.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.9.48])
+ by internal-pdx-out-001.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:44:25 +0000
+Received: from EX19MTAUWC001.ant.amazon.com [205.251.233.53:2072]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.58.33:2525]
  with esmtp (Farcaster)
- id f479b5c5-8e62-41e9-aedf-32a4852f0d4a; Sat, 11 Jul 2026 22:43:54 +0000 (UTC)
-X-Farcaster-Flow-ID: f479b5c5-8e62-41e9-aedf-32a4852f0d4a
+ id 6b140c75-28c0-414a-b2fd-4b651d4b84ba; Sat, 11 Jul 2026 22:44:24 +0000 (UTC)
+X-Farcaster-Flow-ID: 6b140c75-28c0-414a-b2fd-4b651d4b84ba
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWA001.ant.amazon.com (10.250.64.217) with Microsoft SMTP Server
+ EX19MTAUWC001.ant.amazon.com (10.250.64.174) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:43:54 +0000
+ Sat, 11 Jul 2026 22:44:24 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:43:45 +0000
+ Sat, 11 Jul 2026 22:44:15 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -91,9 +91,9 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  <th.huth+qemu@posteo.eu>, "Ran Wang" <wangran@bosc.ac.cn>, Hao Wu
  <wuhaotsh@google.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>
-Subject: [RFC PATCH 026/134] hw/ufs: Give onboard devices a QOM parent
-Date: Sat, 11 Jul 2026 22:35:19 +0000
-Message-ID: <20260711223707.42139-27-graf@amazon.com>
+Subject: [RFC PATCH 027/134] hw/nvme: Give onboard devices a QOM parent
+Date: Sat, 11 Jul 2026 22:35:20 +0000
+Message-ID: <20260711223707.42139-28-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260711223707.42139-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -101,11 +101,11 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D033UWC004.ant.amazon.com (10.13.139.225) To
+X-ClientProxiedBy: EX19D046UWB004.ant.amazon.com (10.13.139.164) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=35.162.73.231;
+Received-SPF: pass client-ip=44.245.243.92;
  envelope-from=prvs=645f258d4=graf@amazon.de;
- helo=pdx-out-012.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-001.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -129,7 +129,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the *_orphan() device-creation calls in hw/ufs to the new
+Convert the *_orphan() device-creation calls in hw/nvme to the new
 parented API introduced earlier in this series, so every onboard
 device gets a stable path in the composition tree instead of landing
 in /machine/unattached with an unstable device[N] name.
@@ -140,38 +140,28 @@ composite children.  Names follow existing QOM conventions.
 
 Per-site rationale (reviewers: dispute the modeling here):
 
-hw/ufs/lu.c:475 | qdev_new | OBJECT(lu) | "ufs-scsi" | ufs-lu realize path; the LU device owns the wrapped scsi-hd (bus is not parent). Re-parent from bus to lu; drop _and_unref
+hw/nvme/ctrl.c:9559 | qdev_new | OBJECT(n) | "subsys" | Called from nvme controller realize; the auto-created subsystem is owned by the controller that creates it
 
 Link: https://lore.kernel.org/qemu-devel/87jyr3w9tc.fsf@pond.sub.org/
 Assisted-by: Kiro
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/ufs/lu.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ hw/nvme/ctrl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/ufs/lu.c b/hw/ufs/lu.c
-index 219f74e4f3..4e5621f224 100644
---- a/hw/ufs/lu.c
-+++ b/hw/ufs/lu.c
-@@ -472,8 +472,7 @@ static void ufs_init_scsi_device(UfsLu *lu, BlockBackend *blk, Error **errp)
-      * The ufs-lu is the device that is wrapping the scsi-hd. It owns a virtual
-      * SCSI bus that serves the scsi-hd.
-      */
--    scsi_dev = qdev_new_orphan("scsi-hd");
--    object_property_add_child(OBJECT(&lu->bus), "ufs-scsi", OBJECT(scsi_dev));
-+    scsi_dev = qdev_new(OBJECT(lu), "ufs-scsi", "scsi-hd");
+diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
+index 300a5aa835..82a55c4536 100644
+--- a/hw/nvme/ctrl.c
++++ b/hw/nvme/ctrl.c
+@@ -9556,7 +9556,7 @@ static int nvme_init_subsys(NvmeCtrl *n, Error **errp)
+     int cntlid;
  
-     qdev_prop_set_uint32(scsi_dev, "physical_block_size", UFS_BLOCK_SIZE);
-     qdev_prop_set_uint32(scsi_dev, "logical_block_size", UFS_BLOCK_SIZE);
-@@ -484,7 +483,7 @@ static void ufs_init_scsi_device(UfsLu *lu, BlockBackend *blk, Error **errp)
-         return;
-     }
+     if (!n->subsys) {
+-        DeviceState *dev = qdev_new_orphan(TYPE_NVME_SUBSYS);
++        DeviceState *dev = qdev_new(OBJECT(n), "subsys", TYPE_NVME_SUBSYS);
  
--    if (!qdev_realize_and_unref(scsi_dev, &lu->bus.qbus, errp)) {
-+    if (!qdev_realize(scsi_dev, &lu->bus.qbus, errp)) {
-         object_unparent(OBJECT(scsi_dev));
-         return;
-     }
+         qdev_prop_set_string(dev, "nqn", n->params.serial);
+ 
 -- 
 2.47.1
 

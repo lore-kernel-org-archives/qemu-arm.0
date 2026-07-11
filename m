@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A740C43458
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DF2FC44501
 	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:48:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wigUP-00014Y-DG; Sat, 11 Jul 2026 18:48:05 -0400
+	id 1wigUT-0001K1-5q; Sat, 11 Jul 2026 18:48:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigU1-0000Yz-Fc; Sat, 11 Jul 2026 18:47:43 -0400
-Received: from pdx-out-006.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.26.1.71])
+ id 1wigUL-0000kA-Ao; Sat, 11 Jul 2026 18:48:01 -0400
+Received: from pdx-out-011.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.35.192.45])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigTx-0007Td-IH; Sat, 11 Jul 2026 18:47:40 -0400
+ id 1wigUE-0007XR-H6; Sat, 11 Jul 2026 18:47:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1783810057; x=1815346057;
+ t=1783810074; x=1815346074;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=zLaJZbstl8kCaT47m5gOMY1Yj7cW3tZOc71HipZg02k=;
- b=BEgVXP6CUp9JzgDnM/L9BleklE+aLt9bsTIZRM3VpgOHc3H32F4qmI1B
- CQrn0KMG2xlVIraHhKaBmMPlgqEzepHkgAaqHHFsSN55wVErvx7mWv7fZ
- 00P8WiKrj/KIvYJuF7yr4SM6vvo0UlxQ6Uz3ndFHdAwkGT0fpSrWdPLxM
- q8kZthShfhKZuB7Q23S4PV747gfI9B0IuwQxMDoO0mByRhjPLzQdSkzzY
- XZveXF5CrQZ/FLxuxKNMPZxSfzB8Ex+Pvlv+uNoF0bmNVc3qXR7EuPD9J
- ASi+kkLAewLTrm3ygNWAUyUYH6DqNatfJ6HMlqLcs5VJC+kl/vG6N8opk g==;
-X-CSE-ConnectionGUID: BMLkUgHzSReyuYV8Q3q0dQ==
-X-CSE-MsgGUID: Z0LYEda1Qz2xFcxbk7MKXA==
-X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23522210"
+ bh=6/uUnSgnZmJBm5T2o5OPuJjkNENFoH1An9ZTNcC61IY=;
+ b=nUndGGtKOqQYYjaQAMLtrHuC3H9HTpkmBsMfGLdIt+gWsUNjjSR0g40K
+ 2519WNZL1SPmr+htDWe2Wm1Dw/Lpldd6Kdt0vXU4bzu1zZVPI9S4JBp/t
+ 5PIyZ+629Ti13FF/iBci/hwqeV2Yquj9pgmfizaoYGfJD32cjlCf1VOLP
+ GwFUQwFU5lJQ1lByG/3NpEBHStMpVWVcRVpVHQlIZGDD1tWhrSh2NaQx3
+ 5cYXcBoDMV+8fNEl2CtmRg8uuWNCXgCz9Zcr099BUi4q/61OK+Y35WdFf
+ 0QnihDXiLwSziMPD1dW/Lsb2W2MWQ8GMuoVOE7QdtahOkzKbS0pMCF+J3 g==;
+X-CSE-ConnectionGUID: OdDvNDRGQgew3sQ+azLArA==
+X-CSE-MsgGUID: onkKNhqZSkCSzgGziWgpkA==
+X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23269697"
 Received: from ip-10-5-9-48.us-west-2.compute.internal (HELO
  smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.9.48])
- by internal-pdx-out-006.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:47:34 +0000
-Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.48:17375]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.11.115:2525]
+ by internal-pdx-out-011.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:47:50 +0000
+Received: from EX19MTAUWB001.ant.amazon.com [205.251.233.51:13244]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.40.123:2525]
  with esmtp (Farcaster)
- id 9086ab23-efe1-4c8d-a00a-cedf7874375c; Sat, 11 Jul 2026 22:47:33 +0000 (UTC)
-X-Farcaster-Flow-ID: 9086ab23-efe1-4c8d-a00a-cedf7874375c
+ id 6a46bbc3-e7ff-48af-8a80-60bb425c2dde; Sat, 11 Jul 2026 22:47:50 +0000 (UTC)
+X-Farcaster-Flow-ID: 6a46bbc3-e7ff-48af-8a80-60bb425c2dde
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
+ EX19MTAUWB001.ant.amazon.com (10.250.64.248) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:47:33 +0000
+ Sat, 11 Jul 2026 22:47:50 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:47:25 +0000
+ Sat, 11 Jul 2026 22:47:41 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -91,9 +91,9 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  <th.huth+qemu@posteo.eu>, "Ran Wang" <wangran@bosc.ac.cn>, Hao Wu
  <wuhaotsh@google.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>
-Subject: [RFC PATCH 039/134] hw/ide: Give onboard devices a QOM parent
-Date: Sat, 11 Jul 2026 22:35:32 +0000
-Message-ID: <20260711223707.42139-40-graf@amazon.com>
+Subject: [RFC PATCH 041/134] hw/pci-bridge: Give onboard devices a QOM parent
+Date: Sat, 11 Jul 2026 22:35:34 +0000
+Message-ID: <20260711223707.42139-42-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260711223707.42139-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -103,9 +103,9 @@ Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
 X-ClientProxiedBy: EX19D040UWA002.ant.amazon.com (10.13.139.113) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.26.1.71;
+Received-SPF: pass client-ip=52.35.192.45;
  envelope-from=prvs=645f258d4=graf@amazon.de;
- helo=pdx-out-006.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-011.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -129,7 +129,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the *_orphan() device-creation calls in hw/ide to the new
+Convert the *_orphan() device-creation calls in hw/pci-bridge to the new
 parented API introduced earlier in this series, so every onboard
 device gets a stable path in the composition tree instead of landing
 in /machine/unattached with an unstable device[N] name.
@@ -140,94 +140,63 @@ composite children.  Names follow existing QOM conventions.
 
 Per-site rationale (reviewers: dispute the modeling here):
 
-hw/ide/ide-bus.c:78 | qdev_new | OBJECT(bus->qbus.parent) | "drive[*]" | drive is child of the IDE controller device that owns the bus; helper called from many controllers so use bus->qbus.parent
-hw/ide/isa.c:87 | isa_new | parent | "ide[*]" | helper called from isapc board init loop; thread Object *parent through isa_ide_init()
+hw/pci-bridge/pci_expander_bridge.c:362 | qdev_new | OBJECT(dev) | "pxb-host" | pxb_dev_realize_common() is DeviceClass.realize of PXB PCIDevice; child host bridge owned by PXB device
+hw/pci-bridge/pci_expander_bridge.c:371 | qdev_new | OBJECT(dev) | "pci-bridge" | same realize(); internal pci-bridge owned by PXB device; error path unref->unparent
 
 Link: https://lore.kernel.org/qemu-devel/87jyr3w9tc.fsf@pond.sub.org/
 Assisted-by: Kiro
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/i386/isapc.c      | 3 ++-
- hw/ide/ide-bus.c     | 5 +++--
- hw/ide/isa.c         | 7 ++++---
- include/hw/ide/isa.h | 3 ++-
- 4 files changed, 11 insertions(+), 7 deletions(-)
+ hw/pci-bridge/pci_expander_bridge.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/hw/i386/isapc.c b/hw/i386/isapc.c
-index 655ec599b5..c2a3f23f2c 100644
---- a/hw/i386/isapc.c
-+++ b/hw/i386/isapc.c
-@@ -142,7 +142,8 @@ static void pc_init_isa(MachineState *machine)
-     for (i = 0; i < MAX_IDE_BUS; i++) {
-         ISADevice *dev;
-         char busname[] = "ide.0";
--        dev = isa_ide_init(isa_bus, ide_iobase[i], ide_iobase2[i],
-+        dev = isa_ide_init(OBJECT(machine), isa_bus,
-+                            ide_iobase[i], ide_iobase2[i],
-                             ide_irq[i],
-                             hd[MAX_IDE_DEVS * i], hd[MAX_IDE_DEVS * i + 1]);
-         /*
-diff --git a/hw/ide/ide-bus.c b/hw/ide/ide-bus.c
-index 40ba94235f..4473709a04 100644
---- a/hw/ide/ide-bus.c
-+++ b/hw/ide/ide-bus.c
-@@ -75,11 +75,12 @@ IDEDevice *ide_bus_create_drive(IDEBus *bus, int unit, DriveInfo *drive)
- {
-     DeviceState *dev;
+diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expander_bridge.c
+index 11a28b5503..bf970dae76 100644
+--- a/hw/pci-bridge/pci_expander_bridge.c
++++ b/hw/pci-bridge/pci_expander_bridge.c
+@@ -359,7 +359,8 @@ static bool pxb_dev_realize_common(PCIDevice *dev, enum BusType type,
+         dev_name = dev->qdev.id;
+     }
  
--    dev = qdev_new_orphan(drive->media_cd ? "ide-cd" : "ide-hd");
-+    dev = qdev_new(OBJECT(bus->qbus.parent), "drive[*]",
-+                   drive->media_cd ? "ide-cd" : "ide-hd");
-     qdev_prop_set_uint32(dev, "unit", unit);
-     qdev_prop_set_drive_err(dev, "drive", blk_by_legacy_dinfo(drive),
-                             &error_fatal);
--    qdev_realize_and_unref(dev, &bus->qbus, &error_fatal);
-+    qdev_realize(dev, &bus->qbus, &error_fatal);
-     return DO_UPCAST(IDEDevice, qdev, dev);
+-    ds = qdev_new_orphan(type == CXL ? TYPE_PXB_CXL_HOST : TYPE_PXB_HOST);
++    ds = qdev_new(OBJECT(dev), "pxb-host",
++                  type == CXL ? TYPE_PXB_CXL_HOST : TYPE_PXB_HOST);
+     if (type == PCIE) {
+         bus = pci_root_bus_new(ds, dev_name, NULL, NULL, 0, TYPE_PXB_PCIE_BUS);
+     } else if (type == CXL) {
+@@ -368,7 +369,7 @@ static bool pxb_dev_realize_common(PCIDevice *dev, enum BusType type,
+         PXB_CXL_DEV(dev)->cxl_host_bridge = PXB_CXL_HOST(ds);
+     } else {
+         bus = pci_root_bus_new(ds, "pxb-internal", NULL, NULL, 0, TYPE_PXB_BUS);
+-        bds = qdev_new_orphan("pci-bridge");
++        bds = qdev_new(OBJECT(dev), "pci-bridge", "pci-bridge");
+         bds->id = g_strdup(dev_name);
+         qdev_prop_set_uint8(bds, PCI_BRIDGE_DEV_PROP_CHASSIS_NR, pxb->bus_nr);
+         qdev_prop_set_bit(bds, PCI_BRIDGE_DEV_PROP_SHPC, false);
+@@ -388,9 +389,9 @@ static bool pxb_dev_realize_common(PCIDevice *dev, enum BusType type,
+         goto err_register_bus;
+     }
+ 
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(ds), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(ds), &error_fatal);
+     if (bds) {
+-        qdev_realize_and_unref(bds, &bus->qbus, &error_fatal);
++        qdev_realize(bds, &bus->qbus, &error_fatal);
+     }
+ 
+     pci_word_test_and_set_mask(dev->config + PCI_STATUS,
+@@ -401,9 +402,9 @@ static bool pxb_dev_realize_common(PCIDevice *dev, enum BusType type,
+     return true;
+ 
+ err_register_bus:
+-    object_unref(OBJECT(bds));
++    object_unparent(OBJECT(bds));
+     object_unparent(OBJECT(bus));
+-    object_unref(OBJECT(ds));
++    object_unparent(OBJECT(ds));
+     return false;
  }
  
-diff --git a/hw/ide/isa.c b/hw/ide/isa.c
-index c9c997344b..37457be035 100644
---- a/hw/ide/isa.c
-+++ b/hw/ide/isa.c
-@@ -77,19 +77,20 @@ static void isa_ide_realizefn(DeviceState *dev, Error **errp)
-     ide_bus_register_restart_cb(&s->bus);
- }
- 
--ISADevice *isa_ide_init(ISABus *bus, int iobase, int iobase2, int irqnum,
-+ISADevice *isa_ide_init(Object *parent, ISABus *bus,
-+                        int iobase, int iobase2, int irqnum,
-                         DriveInfo *hd0, DriveInfo *hd1)
- {
-     DeviceState *dev;
-     ISADevice *isadev;
-     ISAIDEState *s;
- 
--    isadev = isa_new_orphan(TYPE_ISA_IDE);
-+    isadev = isa_new(parent, "ide[*]", TYPE_ISA_IDE);
-     dev = DEVICE(isadev);
-     qdev_prop_set_uint32(dev, "iobase",  iobase);
-     qdev_prop_set_uint32(dev, "iobase2", iobase2);
-     qdev_prop_set_uint32(dev, "irq",     irqnum);
--    isa_realize_and_unref(isadev, bus, &error_fatal);
-+    qdev_realize(dev, BUS(bus), &error_fatal);
- 
-     s = ISA_IDE(dev);
-     if (hd0) {
-diff --git a/include/hw/ide/isa.h b/include/hw/ide/isa.h
-index 1cd0ff1fa6..18fe363a1a 100644
---- a/include/hw/ide/isa.h
-+++ b/include/hw/ide/isa.h
-@@ -14,7 +14,8 @@
- #define TYPE_ISA_IDE "isa-ide"
- OBJECT_DECLARE_SIMPLE_TYPE(ISAIDEState, ISA_IDE)
- 
--ISADevice *isa_ide_init(ISABus *bus, int iobase, int iobase2, int irqnum,
-+ISADevice *isa_ide_init(Object *parent, ISABus *bus,
-+                        int iobase, int iobase2, int irqnum,
-                         DriveInfo *hd0, DriveInfo *hd1);
- 
- #endif
 -- 
 2.47.1
 

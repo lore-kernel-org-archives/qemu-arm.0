@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C762DC43458
-	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:39:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86FC8C44507
+	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:39:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wigLV-0007Yd-Gu; Sat, 11 Jul 2026 18:38:53 -0400
+	id 1wigLt-0000i3-6E; Sat, 11 Jul 2026 18:39:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigLE-0007Hv-Ir; Sat, 11 Jul 2026 18:38:38 -0400
-Received: from pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([44.246.68.102])
+ id 1wigLp-0000WX-Lp; Sat, 11 Jul 2026 18:39:13 -0400
+Received: from pdx-out-014.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([35.83.148.184])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigL5-0005AW-QR; Sat, 11 Jul 2026 18:38:36 -0400
+ id 1wigLj-0005FK-B7; Sat, 11 Jul 2026 18:39:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1783809507; x=1815345507;
+ t=1783809547; x=1815345547;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=SAbO8xtgufeiztqHcf6570YLxbKaQVabWzjh+fB2HvY=;
- b=nUwFpdLAmcnzZivr4wfscgu5qnOusDJerIU4vWvgfml98mzOk1QzSKuu
- x5EDx4pDeLCDcAof2gp5NsUQSnzoeQoLWJGbZQzuE0YoM4pgsxhZ88riF
- AHXLW9kGCgOdSwPPWEEjq2c0IhPPCChVT8qPS8zUIZHFkMbsjfby/TAbS
- u4fguj+R++VyVK9y9VRg17rjmgMnR+XajlZrxo/G+VEJW+gB5m9X7ge7j
- ragsWKYKYC99KAGdWgI9dl6wUpEUhabIX3+fV67BiO6kXhQ2HPLus2uw2
- rrkvxIUxoqiTbAS9iJgsT6OtjoQLKQ/iwFrXtDaJOtEhcCvxjL2ikR28f g==;
-X-CSE-ConnectionGUID: O/2dgsxqTRC/weQi37YUxQ==
-X-CSE-MsgGUID: nDNvud2SRx+U3uYU0WvduQ==
-X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23516973"
-Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
- by internal-pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:38:23 +0000
-Received: from EX19MTAUWC001.ant.amazon.com [205.251.233.53:21086]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.35.214:2525]
+ bh=YrSWDAeAFnuBSGT+qev9O1X3rBjeToZZZAZnecv6a1E=;
+ b=LBVQwt4vO8KVxv/fl6aqnOOSuXAmFiD0CnzHa3HAyFCsl2JpWBp3BucZ
+ qKZ5ycWBsRkWIbL3tIZrjEajRoX1i6WWT4p6hxA5NBQg1xc1oo4UJtXOJ
+ FpSlbpJJ3cbZ6aFQz+baXNGlS3eefA9uaeeu3itqNa1eJcqHX/g/I3GkS
+ JT5gks/ztqq0vjJlikv5Cobyq3PK834g8U/I63M0hWDAxgvX81bPO2g7q
+ +1lQrfxmUirtwZqVdPosHOQuolJXJhSVNb0fbIt00oLb1AYqtcF2Xj2Yx
+ IN64LHl92b8+NnXnRRVFIQi2tnYVz30uzXadfCFuu699+YnssaTBisrJ1 Q==;
+X-CSE-ConnectionGUID: S3t1zc/9QiCYXC4UcOpc3w==
+X-CSE-MsgGUID: JDeOZLz/QEW6jnVq+A8dTQ==
+X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23287395"
+Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
+ by internal-pdx-out-014.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:39:03 +0000
+Received: from EX19MTAUWA002.ant.amazon.com [205.251.233.178:31509]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.11.68:2525]
  with esmtp (Farcaster)
- id db881b66-8c38-4543-8527-b4d50cb00405; Sat, 11 Jul 2026 22:38:23 +0000 (UTC)
-X-Farcaster-Flow-ID: db881b66-8c38-4543-8527-b4d50cb00405
+ id 626bd74b-45bd-42dc-b5a7-64bcc33317f4; Sat, 11 Jul 2026 22:39:03 +0000 (UTC)
+X-Farcaster-Flow-ID: 626bd74b-45bd-42dc-b5a7-64bcc33317f4
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWC001.ant.amazon.com (10.250.64.174) with Microsoft SMTP Server
+ EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:38:23 +0000
+ Sat, 11 Jul 2026 22:39:02 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:38:14 +0000
+ Sat, 11 Jul 2026 22:38:53 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -91,22 +91,22 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  <th.huth+qemu@posteo.eu>, "Ran Wang" <wangran@bosc.ac.cn>, Hao Wu
  <wuhaotsh@google.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>
-Subject: [RFC PATCH 005/134] pci: Make pci_new*()/pci_create_simple*() take a
- QOM parent
-Date: Sat, 11 Jul 2026 22:34:58 +0000
-Message-ID: <20260711223707.42139-6-graf@amazon.com>
+Subject: [RFC PATCH 007/134] i2c: Make
+ i2c_slave_new()/i2c_slave_create_simple() take a QOM parent
+Date: Sat, 11 Jul 2026 22:35:00 +0000
+Message-ID: <20260711223707.42139-8-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260711223707.42139-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D040UWB003.ant.amazon.com (10.13.138.8) To
+X-ClientProxiedBy: EX19D031UWA004.ant.amazon.com (10.13.139.19) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=44.246.68.102;
+Received-SPF: pass client-ip=35.83.148.184;
  envelope-from=prvs=645f258d4=graf@amazon.de;
- helo=pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-014.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -130,940 +130,1397 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Same rename-and-reintroduce treatment as qdev_new() and
-sysbus_create_*(): mechanically rename the four PCI creation
-helpers to *_orphan() and reintroduce the short names with a
-leading (parent, id, ...) pair.
+Same rename-and-reintroduce treatment as the qdev, sysbus, PCI and
+ISA layers: mechanically rename the two I2C-slave creation helpers
+to *_orphan() and reintroduce the short names with a leading
+(parent, id, ...) pair.
 
-The parented pci_create_simple*() variants call qdev_realize() (not
-pci_realize_and_unref()) since the child<> property already holds
-the sole reference.
+The parented i2c_slave_create_simple() calls qdev_realize() (not
+i2c_slave_realize_and_unref()) since the child<> property already
+holds the sole reference.
 
 The mechanical rename part is generated by
 
-  spatch --sp-file scripts/coccinelle/qom-parent/pci-new-orphan.cocci \
-         --in-place --include-headers --dir .
+  spatch --sp-file \
+      scripts/coccinelle/qom-parent/i2c-slave-new-orphan.cocci \
+      --in-place --include-headers --dir .
 
 or equivalently
 
   git ls-files '*.[ch]' '*.[ch].inc' '*.rst' '*.py' | \
       grep -v '^subprojects/' | \
       xargs sed -i \
-        's/\bpci_create_simple_multifunction\b/&_orphan/g;
-         s/\bpci_create_simple\b/&_orphan/g;
-         s/\bpci_new_multifunction\b/&_orphan/g;
-         s/\bpci_new\b/&_orphan/g'
+          's/\bi2c_slave_create_simple\b/&_orphan/g;
+           s/\bi2c_slave_new\b/&_orphan/g'
 
 Assisted-by: Kiro
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/alpha/dp264.c                              |  4 +-
- hw/arm/realview.c                             |  4 +-
- hw/arm/sbsa-ref.c                             |  2 +-
- hw/arm/versatilepb.c                          |  4 +-
- hw/hppa/machine.c                             |  8 +--
- hw/i386/pc.c                                  |  2 +-
- hw/i386/pc_piix.c                             |  4 +-
- hw/i386/pc_q35.c                              | 10 +--
- hw/mips/boston.c                              |  2 +-
- hw/mips/fuloong2e.c                           |  4 +-
- hw/mips/loongson3_virt.c                      |  2 +-
- hw/mips/malta.c                               |  2 +-
- hw/pci-host/articia.c                         |  4 +-
- hw/pci-host/bonito.c                          |  2 +-
- hw/pci-host/grackle.c                         |  2 +-
- hw/pci-host/gt64120.c                         |  2 +-
- hw/pci-host/i440fx.c                          |  2 +-
- hw/pci-host/mv64361.c                         |  2 +-
- hw/pci-host/pnv_phb.c                         |  2 +-
- hw/pci-host/ppc4xx_pci.c                      |  2 +-
- hw/pci-host/ppce500.c                         |  2 +-
- hw/pci-host/raven.c                           |  2 +-
- hw/pci-host/sabre.c                           |  6 +-
- hw/pci-host/sh_pci.c                          |  2 +-
- hw/pci-host/uninorth.c                        |  8 +--
- hw/pci/pci.c                                  | 65 +++++++++++++++----
- hw/pci/pcie_sriov.c                           |  2 +-
- hw/ppc/amigaone.c                             |  2 +-
- hw/ppc/mac_newworld.c                         |  4 +-
- hw/ppc/mac_oldworld.c                         |  4 +-
- hw/ppc/pegasos.c                              |  2 +-
- hw/ppc/prep.c                                 |  4 +-
- hw/ppc/sam460ex.c                             |  4 +-
- hw/ppc/spapr.c                                |  2 +-
- hw/riscv/boston-aia.c                         |  2 +-
- hw/sparc64/sun4u.c                            |  8 +--
- hw/vfio/igd.c                                 |  2 +-
- hw/xen/xen_pt_graphics.c                      |  2 +-
- include/hw/pci/pci.h                          | 18 +++--
- .../qom-parent/pci-new-orphan.cocci           | 28 ++++++++
- 40 files changed, 157 insertions(+), 78 deletions(-)
- create mode 100644 scripts/coccinelle/qom-parent/pci-new-orphan.cocci
+ hw/arm/aspeed.c                               |  4 +-
+ hw/arm/aspeed_ast1040_evb.c                   |  2 +-
+ hw/arm/aspeed_ast10x0_evb.c                   |  2 +-
+ hw/arm/aspeed_ast2400_palmetto.c              |  4 +-
+ hw/arm/aspeed_ast2400_quanta-q71l.c           | 12 ++--
+ hw/arm/aspeed_ast2400_supermicrox11.c         |  4 +-
+ hw/arm/aspeed_ast2500_evb.c                   |  2 +-
+ hw/arm/aspeed_ast2500_g220a.c                 |  6 +-
+ hw/arm/aspeed_ast2500_romulus.c               |  2 +-
+ hw/arm/aspeed_ast2500_supermicro-x11spi.c     |  4 +-
+ hw/arm/aspeed_ast2500_tiogapass.c             |  6 +-
+ hw/arm/aspeed_ast2500_witherspoon.c           | 16 ++---
+ hw/arm/aspeed_ast2500_yosemitev2.c            |  6 +-
+ hw/arm/aspeed_ast2600_anacapa.c               | 26 ++++-----
+ hw/arm/aspeed_ast2600_bletchley.c             | 20 +++----
+ hw/arm/aspeed_ast2600_catalina.c              | 58 +++++++++----------
+ hw/arm/aspeed_ast2600_evb.c                   |  2 +-
+ hw/arm/aspeed_ast2600_fby35.c                 | 10 ++--
+ hw/arm/aspeed_ast2600_fuji.c                  | 40 ++++++-------
+ hw/arm/aspeed_ast2600_gb200nvl.c              | 12 ++--
+ hw/arm/aspeed_ast2600_rainier.c               | 46 +++++++--------
+ hw/arm/aspeed_ast27x0-fc.c                    |  2 +-
+ hw/arm/aspeed_ast27x0_evb.c                   |  2 +-
+ hw/arm/bananapi_m2u.c                         |  2 +-
+ hw/arm/cubieboard.c                           |  2 +-
+ hw/arm/musicpal.c                             |  2 +-
+ hw/arm/npcm7xx_boards.c                       | 42 +++++++-------
+ hw/arm/npcm8xx_boards.c                       |  2 +-
+ hw/arm/realview.c                             |  2 +-
+ hw/arm/stellaris.c                            |  2 +-
+ hw/arm/versatilepb.c                          |  2 +-
+ hw/arm/vexpress.c                             |  2 +-
+ hw/display/sii9022.c                          |  2 +-
+ hw/i2c/aspeed_i2c.c                           |  2 +-
+ hw/i2c/core.c                                 | 26 ++++++++-
+ hw/i3c/core.c                                 |  2 +-
+ hw/nvram/eeprom_at24c.c                       |  2 +-
+ hw/ppc/e500.c                                 |  2 +-
+ hw/ppc/pnv.c                                  |  4 +-
+ hw/ppc/sam460ex.c                             |  2 +-
+ hw/riscv/tt_atlantis.c                        |  4 +-
+ include/hw/arm/aspeed.h                       |  4 +-
+ include/hw/i2c/i2c.h                          | 38 ++++++++++--
+ .../qom-parent/i2c-slave-new-orphan.cocci     | 18 ++++++
+ 44 files changed, 260 insertions(+), 192 deletions(-)
+ create mode 100644 scripts/coccinelle/qom-parent/i2c-slave-new-orphan.cocci
 
-diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
-index f928e0cee8..6999168df6 100644
---- a/hw/alpha/dp264.c
-+++ b/hw/alpha/dp264.c
-@@ -110,7 +110,7 @@ static void clipper_init(MachineState *machine)
-      * Importantly, we need to provide a PCI device node for it, otherwise
-      * some operating systems won't notice there's an ISA bus to configure.
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 531e3ce276..4a4c1f1556 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -253,13 +253,13 @@ static void aspeed_machine_init(MachineState *machine)
+ 
+ void aspeed_create_pca9552(AspeedSoCState *soc, int bus_id, int addr)
+ {
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, bus_id),
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, bus_id),
+                             TYPE_PCA9552, addr);
+ }
+ 
+ I2CSlave *aspeed_create_pca9554(AspeedSoCState *soc, int bus_id, int addr)
+ {
+-    return i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, bus_id),
++    return i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, bus_id),
+                             TYPE_PCA9554, addr);
+ }
+ 
+diff --git a/hw/arm/aspeed_ast1040_evb.c b/hw/arm/aspeed_ast1040_evb.c
+index 2b93d4dfbc..d0326d39f9 100644
+--- a/hw/arm/aspeed_ast1040_evb.c
++++ b/hw/arm/aspeed_ast1040_evb.c
+@@ -55,7 +55,7 @@ static void ast1040_evb_i2c_init(AspeedMachineState *bmc)
+     uint8_t *eeprom_buf = g_malloc0(256);
+ 
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50, eeprom_buf);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4d);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4d);
+ }
+ 
+ static void aspeed_machine_ast1040_evb_class_init(ObjectClass *oc,
+diff --git a/hw/arm/aspeed_ast10x0_evb.c b/hw/arm/aspeed_ast10x0_evb.c
+index c19563d1f0..52ead37bc7 100644
+--- a/hw/arm/aspeed_ast10x0_evb.c
++++ b/hw/arm/aspeed_ast10x0_evb.c
+@@ -73,7 +73,7 @@ static void ast1030_evb_i2c_init(AspeedMachineState *bmc)
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50, eeprom_buf);
+ 
+     /* U11 LM75 connects to SDA/SCL Group 2 by default */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4d);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4d);
+ }
+ 
+ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
+diff --git a/hw/arm/aspeed_ast2400_palmetto.c b/hw/arm/aspeed_ast2400_palmetto.c
+index 776aa43a45..d89d042ce2 100644
+--- a/hw/arm/aspeed_ast2400_palmetto.c
++++ b/hw/arm/aspeed_ast2400_palmetto.c
+@@ -37,13 +37,13 @@ static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
+      * The palmetto platform expects a ds3231 RTC but a ds1338 is
+      * enough to provide basic RTC features. Alarms will be missing
       */
--    i82378_dev = DEVICE(pci_create_simple(pci_bus, PCI_DEVFN(7, 0), "i82378"));
-+    i82378_dev = DEVICE(pci_create_simple_orphan(pci_bus, PCI_DEVFN(7, 0), "i82378"));
-     isa_bus = ISA_BUS(qdev_get_child_bus(i82378_dev, "isa.0"));
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
  
-     /* Connect the ISA PIC to the Typhoon IRQ used for ISA interrupts. */
-@@ -129,7 +129,7 @@ static void clipper_init(MachineState *machine)
-     isa_create_simple(isa_bus, TYPE_SMC37C669_SUPERIO);
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
+                           eeprom_buf);
  
-     /* IDE disk setup.  */
--    pci_dev = pci_create_simple(pci_bus, -1, "cmd646-ide");
-+    pci_dev = pci_create_simple_orphan(pci_bus, -1, "cmd646-ide");
-     pci_ide_create_devs(pci_dev);
+     /* add a TMP423 temperature sensor */
+-    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
++    dev = DEVICE(i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 2),
+                                          "tmp423", 0x4c));
+     object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
+     object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
+diff --git a/hw/arm/aspeed_ast2400_quanta-q71l.c b/hw/arm/aspeed_ast2400_quanta-q71l.c
+index 42ad2a2303..802ae49604 100644
+--- a/hw/arm/aspeed_ast2400_quanta-q71l.c
++++ b/hw/arm/aspeed_ast2400_quanta-q71l.c
+@@ -33,21 +33,21 @@ static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
+      * The quanta-q71l platform expects tmp75s which are compatible with
+      * tmp105s.
+      */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4c);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4e);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4f);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4c);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4e);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4f);
  
-     /* Load PALcode.  Given that this is not "real" cpu palcode,
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index 287c092c2d..0642e35dd2 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -297,11 +297,11 @@ static void realview_init(MachineState *machine,
-         sysbus_connect_irq(busdev, 3, pic[51]);
-         pci_bus = (PCIBus *)qdev_get_child_bus(dev, "pci");
-         if (machine_usb(machine)) {
--            pci_create_simple(pci_bus, -1, "pci-ohci");
-+            pci_create_simple_orphan(pci_bus, -1, "pci-ohci");
-         }
-         n = drive_get_max_bus(IF_SCSI);
-         while (n >= 0) {
--            dev = DEVICE(pci_create_simple(pci_bus, -1, "lsi53c895a"));
-+            dev = DEVICE(pci_create_simple_orphan(pci_bus, -1, "lsi53c895a"));
-             lsi53c8xx_handle_legacy_cmdline(dev);
-             n--;
-         }
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index a821833fa7..f9fb681d31 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -695,7 +695,7 @@ static void create_pcie(SBSAMachineState *sms,
+     /* TODO: i2c-1: Add baseboard FRU eeprom@54 24c64 */
+     /* TODO: i2c-1: Add Frontpanel FRU eeprom@57 24c64 */
+     /* TODO: Add Memory Riser i2c mux and eeproms. */
  
-     pci_init_nic_devices(pci->bus, mc->default_nic);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9546", 0x74);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9548", 0x77);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9546", 0x74);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9548", 0x77);
  
--    pci_create_simple(pci->bus, -1, "bochs-display");
-+    pci_create_simple_orphan(pci->bus, -1, "bochs-display");
+     /* TODO: i2c-3: Add BIOS FRU eeprom@56 24c64 */
  
-     create_smmu(sms, pci->bus, sysmem, secure_sysmem);
- }
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index b80410db0d..81bd397b5d 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -270,11 +270,11 @@ static void versatile_init(MachineState *machine, int board_id)
-     pci_init_nic_devices(pci_bus, "rtl8139");
+     /* i2c-7 */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9546", 0x70);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9546", 0x70);
+     /*        - i2c@0: pmbus@59 */
+     /*        - i2c@1: pmbus@58 */
+     /*        - i2c@2: pmbus@58 */
+diff --git a/hw/arm/aspeed_ast2400_supermicrox11.c b/hw/arm/aspeed_ast2400_supermicrox11.c
+index 88cdb01fc7..9c90998754 100644
+--- a/hw/arm/aspeed_ast2400_supermicrox11.c
++++ b/hw/arm/aspeed_ast2400_supermicrox11.c
+@@ -37,13 +37,13 @@ static void supermicrox11_bmc_i2c_init(AspeedMachineState *bmc)
+      * The palmetto platform expects a ds3231 RTC but a ds1338 is
+      * enough to provide basic RTC features. Alarms will be missing
+      */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
  
-     if (machine_usb(machine)) {
--        pci_create_simple(pci_bus, -1, "pci-ohci");
-+        pci_create_simple_orphan(pci_bus, -1, "pci-ohci");
-     }
-     n = drive_get_max_bus(IF_SCSI);
-     while (n >= 0) {
--        dev = DEVICE(pci_create_simple(pci_bus, -1, "lsi53c895a"));
-+        dev = DEVICE(pci_create_simple_orphan(pci_bus, -1, "lsi53c895a"));
-         lsi53c8xx_handle_legacy_cmdline(dev);
-         n--;
-     }
-diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
-index 02cafbda85..91fe4845c4 100644
---- a/hw/hppa/machine.c
-+++ b/hw/hppa/machine.c
-@@ -428,7 +428,7 @@ static void machine_HP_common_init_tail(MachineState *machine, PCIBus *pci_bus,
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
+                           eeprom_buf);
  
-     if (pci_bus && hppa_is_pa20(&cpu[0]->env)) {
-         /* BMC board: HP Diva GSP PCI card */
--        pci_dev = pci_new_multifunction(PCI_DEVFN(2, 0), "diva-gsp");
-+        pci_dev = pci_new_multifunction_orphan(PCI_DEVFN(2, 0), "diva-gsp");
-         if (!lasi_dev) {
-             /* bind default keyboard/serial to Diva card */
-             qdev_prop_set_chr(DEVICE(pci_dev), "chardev1", serial_hd(0));
-@@ -443,7 +443,7 @@ static void machine_HP_common_init_tail(MachineState *machine, PCIBus *pci_bus,
-     if (!lasi_dev && machine->enable_graphics && defaults_enabled()) {
-         USBBus *usb_bus;
+     /* add a TMP423 temperature sensor */
+-    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
++    dev = DEVICE(i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 2),
+                                          "tmp423", 0x4c));
+     object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
+     object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
+diff --git a/hw/arm/aspeed_ast2500_evb.c b/hw/arm/aspeed_ast2500_evb.c
+index 8b5cb67be9..e46ce4a5aa 100644
+--- a/hw/arm/aspeed_ast2500_evb.c
++++ b/hw/arm/aspeed_ast2500_evb.c
+@@ -34,7 +34,7 @@ static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
+                           eeprom_buf);
  
--        pci_create_simple(pci_bus, -1, "pci-ohci");
-+        pci_create_simple_orphan(pci_bus, -1, "pci-ohci");
-         usb_bus = USB_BUS(object_resolve_type_unambiguous(TYPE_USB_BUS,
-                                                           &error_abort));
-         usb_create_simple(usb_bus, "usb-kbd");
-@@ -721,7 +721,7 @@ static void machine_HP_B160L_init(MachineState *machine)
- 
-     /* SCSI disk setup. */
-     if (drive_get_max_bus(IF_SCSI) >= 0) {
--        dev = DEVICE(pci_create_simple(pci_bus, -1, "lsi53c895a"));
-+        dev = DEVICE(pci_create_simple_orphan(pci_bus, -1, "lsi53c895a"));
-         lsi53c8xx_handle_legacy_cmdline(dev);
-     }
- 
-@@ -773,7 +773,7 @@ static void machine_HP_C3700_init(MachineState *machine)
- 
-     /* SCSI disk setup. */
-     if (drive_get_max_bus(IF_SCSI) >= 0) {
--        DeviceState *dev = DEVICE(pci_create_simple(pci_bus, -1, "lsi53c895a"));
-+        DeviceState *dev = DEVICE(pci_create_simple_orphan(pci_bus, -1, "lsi53c895a"));
-         lsi53c8xx_handle_legacy_cmdline(dev);
-     }
- 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index bd5ab3d854..11a9d5df97 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1104,7 +1104,7 @@ void pc_basic_device_init(struct PCMachineState *pcms,
-         xen_gnttab_create();
-         xen_xenstore_create();
-         if (pcms->pcibus) {
--            pci_create_simple(pcms->pcibus, -1, "xen-platform");
-+            pci_create_simple_orphan(pcms->pcibus, -1, "xen-platform");
-         }
-         xen_bus_init();
-     }
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index e580f9f2a6..bd4c129143 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -236,7 +236,7 @@ static void pc_init1(MachineState *machine, const char *pci_type)
- 
-     gsi_state = pc_gsi_create(&x86ms->gsi, true);
- 
--    pci_dev = pci_new_multifunction(-1, pcms->south_bridge);
-+    pci_dev = pci_new_multifunction_orphan(-1, pcms->south_bridge);
-     object_property_set_bool(OBJECT(pci_dev), "has-usb",
-                              machine_usb(machine), &error_abort);
-     object_property_set_bool(OBJECT(pci_dev), "has-acpi",
-@@ -384,7 +384,7 @@ static void pc_xen_hvm_init(MachineState *machine)
-                       : TYPE_I440FX_PCI_DEVICE);
- 
-     xen_igd_reserve_slot(pcms->pcibus);
--    pci_create_simple(pcms->pcibus, -1, "xen-platform");
-+    pci_create_simple_orphan(pcms->pcibus, -1, "xen-platform");
- }
- #endif
- 
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 0731403e55..daa75dbc26 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -114,12 +114,12 @@ static int ehci_create_ich9_with_companions(PCIBus *bus, int slot)
-         return -1;
-     }
- 
--    ehci = pci_new_multifunction(PCI_DEVFN(slot, 7), name);
-+    ehci = pci_new_multifunction_orphan(PCI_DEVFN(slot, 7), name);
-     pci_realize_and_unref(ehci, bus, &error_fatal);
-     usbbus = QLIST_FIRST(&ehci->qdev.child_bus);
- 
-     for (i = 0; i < 3; i++) {
--        uhci = pci_new_multifunction(PCI_DEVFN(slot, comp[i].func),
-+        uhci = pci_new_multifunction_orphan(PCI_DEVFN(slot, comp[i].func),
-                                      comp[i].name);
-         qdev_prop_set_string(&uhci->qdev, "masterbus", usbbus->name);
-         qdev_prop_set_uint32(&uhci->qdev, "firstport", comp[i].port);
-@@ -235,7 +235,7 @@ static void pc_q35_init(MachineState *machine)
-     gsi_state = pc_gsi_create(&x86ms->gsi, true);
- 
-     /* create ISA bus */
--    lpc = pci_new_multifunction(PCI_DEVFN(ICH9_LPC_DEV, ICH9_LPC_FUNC),
-+    lpc = pci_new_multifunction_orphan(PCI_DEVFN(ICH9_LPC_DEV, ICH9_LPC_FUNC),
-                                 TYPE_ICH9_LPC_DEVICE);
-     lpc_dev = DEVICE(lpc);
-     qdev_prop_set_bit(lpc_dev, "smm-enabled",
-@@ -290,7 +290,7 @@ static void pc_q35_init(MachineState *machine)
-         AHCIPCIState *ich9;
- 
-         /* ahci and SATA device, for q35 1 ahci controller is built-in */
--        pdev = pci_create_simple_multifunction(pcms->pcibus,
-+        pdev = pci_create_simple_multifunction_orphan(pcms->pcibus,
-                                                PCI_DEVFN(ICH9_SATA1_DEV,
-                                                          ICH9_SATA1_FUNC),
-                                                "ich9-ahci");
-@@ -311,7 +311,7 @@ static void pc_q35_init(MachineState *machine)
-         PCIDevice *smb;
- 
-         /* TODO: Populate SPD eeprom data.  */
--        smb = pci_create_simple_multifunction(pcms->pcibus,
-+        smb = pci_create_simple_multifunction_orphan(pcms->pcibus,
-                                               PCI_DEVFN(ICH9_SMB_DEV,
-                                                         ICH9_SMB_FUNC),
-                                               TYPE_ICH9_SMB_DEVICE);
-diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-index e328c578a5..18ede54ae8 100644
---- a/hw/mips/boston.c
-+++ b/hw/mips/boston.c
-@@ -769,7 +769,7 @@ static void boston_mach_init(MachineState *machine)
-     qemu_chr_fe_set_handlers(&s->lcd_display, NULL, NULL,
-                              boston_lcd_event, NULL, s, NULL, true);
- 
--    pdev = pci_create_simple_multifunction(&PCI_BRIDGE(&pcie2->root)->sec_bus,
-+    pdev = pci_create_simple_multifunction_orphan(&PCI_BRIDGE(&pcie2->root)->sec_bus,
-                                            PCI_DEVFN(0, 0), TYPE_ICH9_AHCI);
-     ich9 = ICH9_AHCI(pdev);
-     g_assert(ARRAY_SIZE(hd) == ich9->ahci.ports);
-diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
-index 9a712ee930..e0cbf4df3d 100644
---- a/hw/mips/fuloong2e.c
-+++ b/hw/mips/fuloong2e.c
-@@ -286,7 +286,7 @@ static void mips_fuloong2e_init(MachineState *machine)
-     pci_bus = bonito_init((qemu_irq *)&(env->irq[2]));
- 
-     /* South bridge -> IP5 */
--    pci_dev = pci_new_multifunction(PCI_DEVFN(FULOONG2E_VIA_SLOT, 0),
-+    pci_dev = pci_new_multifunction_orphan(PCI_DEVFN(FULOONG2E_VIA_SLOT, 0),
-                                     TYPE_VT82C686B_ISA);
- 
-     /* Set properties on individual devices before realizing the south bridge */
-@@ -312,7 +312,7 @@ static void mips_fuloong2e_init(MachineState *machine)
-     /* GPU */
-     if (vga_interface_type != VGA_NONE) {
-         vga_interface_created = true;
--        pci_dev = pci_new(-1, "ati-vga");
-+        pci_dev = pci_new_orphan(-1, "ati-vga");
-         dev = DEVICE(pci_dev);
-         qdev_prop_set_uint32(dev, "vgamem_mb", 16);
-         qdev_prop_set_uint16(dev, "x-device-id", 0x5159);
-diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
-index 854f7f6801..1729eb1c0b 100644
---- a/hw/mips/loongson3_virt.c
-+++ b/hw/mips/loongson3_virt.c
-@@ -465,7 +465,7 @@ static inline void loongson3_virt_devices_init(MachineState *machine,
-     if (defaults_enabled() && object_class_by_name("pci-ohci")) {
-         USBBus *usb_bus;
- 
--        pci_create_simple(pci_bus, -1, "pci-ohci");
-+        pci_create_simple_orphan(pci_bus, -1, "pci-ohci");
-         usb_bus = USB_BUS(object_resolve_type_unambiguous(TYPE_USB_BUS,
-                                                           &error_abort));
-         usb_create_simple(usb_bus, "usb-kbd");
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index fc5dbf262c..38edbbadd6 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -1233,7 +1233,7 @@ void mips_malta_init(MachineState *machine)
-     pci_bus_map_irqs(pci_bus, malta_pci_slot_get_pirq);
- 
-     /* Southbridge */
--    piix4 = pci_new_multifunction(PIIX4_PCI_DEVFN, TYPE_PIIX4_PCI_DEVICE);
-+    piix4 = pci_new_multifunction_orphan(PIIX4_PCI_DEVFN, TYPE_PIIX4_PCI_DEVICE);
-     qdev_prop_set_uint32(DEVICE(piix4), "smb_io_base", 0x1100);
-     pci_realize_and_unref(piix4, pci_bus, &error_fatal);
-     isa_bus = ISA_BUS(qdev_get_child_bus(DEVICE(piix4), "isa.0"));
-diff --git a/hw/pci-host/articia.c b/hw/pci-host/articia.c
-index 04623dfd84..0556c0ccff 100644
---- a/hw/pci-host/articia.c
-+++ b/hw/pci-host/articia.c
-@@ -185,10 +185,10 @@ static void articia_realize(DeviceState *dev, Error **errp)
-     h->bus = pci_register_root_bus(dev, NULL, articia_pcihost_set_irq,
-                                    amigaone_pcihost_bus0_map_irq, dev, &s->mem,
-                                    &s->io, PCI_DEVFN(8, 0), 4, TYPE_PCI_BUS);
--    pdev = pci_create_simple_multifunction(h->bus, PCI_DEVFN(0, 0),
-+    pdev = pci_create_simple_multifunction_orphan(h->bus, PCI_DEVFN(0, 0),
-                                            TYPE_ARTICIA_PCI_HOST);
-     ARTICIA_PCI_HOST(pdev)->as = s;
--    pci_create_simple(h->bus, PCI_DEVFN(0, 1), TYPE_ARTICIA_PCI_BRIDGE);
-+    pci_create_simple_orphan(h->bus, PCI_DEVFN(0, 1), TYPE_ARTICIA_PCI_BRIDGE);
- 
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->reg);
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mem);
-diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
-index cd7272c90c..40a62d62b6 100644
---- a/hw/pci-host/bonito.c
-+++ b/hw/pci-host/bonito.c
-@@ -747,7 +747,7 @@ PCIBus *bonito_init(qemu_irq *pic)
-     pcihost->pic = pic;
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
- 
--    d = pci_new(PCI_DEVFN(0, 0), TYPE_PCI_BONITO);
-+    d = pci_new_orphan(PCI_DEVFN(0, 0), TYPE_PCI_BONITO);
-     s = PCI_BONITO(d);
-     s->pcihost = pcihost;
-     pcihost->pci_dev = s;
-diff --git a/hw/pci-host/grackle.c b/hw/pci-host/grackle.c
-index b0db7870b0..c76cb61dc9 100644
---- a/hw/pci-host/grackle.c
-+++ b/hw/pci-host/grackle.c
-@@ -60,7 +60,7 @@ static void grackle_realize(DeviceState *dev, Error **errp)
-                                      &s->pci_io,
-                                      0, 4, TYPE_PCI_BUS);
- 
--    pci_create_simple(phb->bus, 0, "grackle");
-+    pci_create_simple_orphan(phb->bus, 0, "grackle");
+     /* The AST2500 EVB expects a LM75 but a TMP105 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7),
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 7),
+                      TYPE_TMP105, 0x4d);
  }
  
- static void grackle_init(Object *obj)
-diff --git a/hw/pci-host/gt64120.c b/hw/pci-host/gt64120.c
-index 566f928304..c1a94a3daa 100644
---- a/hw/pci-host/gt64120.c
-+++ b/hw/pci-host/gt64120.c
-@@ -1204,7 +1204,7 @@ static void gt64120_realize(DeviceState *dev, Error **errp)
-                                 get_system_io(),
-                                 PCI_DEVFN(18, 0), TYPE_PCI_BUS);
+diff --git a/hw/arm/aspeed_ast2500_g220a.c b/hw/arm/aspeed_ast2500_g220a.c
+index 3f979a78e5..577ee0aff4 100644
+--- a/hw/arm/aspeed_ast2500_g220a.c
++++ b/hw/arm/aspeed_ast2500_g220a.c
+@@ -32,19 +32,19 @@ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+     AspeedSoCState *soc = bmc->soc;
+     DeviceState *dev;
  
--    pci_create_simple(phb->bus, PCI_DEVFN(0, 0), "gt64120_pci");
-+    pci_create_simple_orphan(phb->bus, PCI_DEVFN(0, 0), "gt64120_pci");
-     memory_region_init_io(&phb->conf_mem, OBJECT(phb),
-                           &pci_host_conf_le_ops,
-                           s, "pci-conf-idx", 4);
-diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
-index c1982f7962..e91ddd5d07 100644
---- a/hw/pci-host/i440fx.c
-+++ b/hw/pci-host/i440fx.c
-@@ -282,7 +282,7 @@ static void i440fx_pcihost_realize(DeviceState *dev, Error **errp)
-                          s->io_memory, 0, TYPE_PCI_BUS);
-     phb->bus = b;
+-    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3),
++    dev = DEVICE(i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 3),
+                                          "emc1413", 0x4c));
+     object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
+     object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
+     object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
  
--    d = pci_create_simple(b, 0, s->pci_type);
-+    d = pci_create_simple_orphan(b, 0, s->pci_type);
-     f = I440FX_PCI_DEVICE(d);
+-    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12),
++    dev = DEVICE(i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 12),
+                                          "emc1413", 0x4c));
+     object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
+     object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
+     object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
  
-     range_set_bounds(&s->pci_hole, s->below_4g_mem_size,
-diff --git a/hw/pci-host/mv64361.c b/hw/pci-host/mv64361.c
-index 495a82befd..f75951c873 100644
---- a/hw/pci-host/mv64361.c
-+++ b/hw/pci-host/mv64361.c
-@@ -94,7 +94,7 @@ static void mv64361_pcihost_realize(DeviceState *dev, Error **errp)
-                                    pci_swizzle_map_irq_fn, dev,
-                                    &s->mem, &s->io, 0, 4, TYPE_PCI_BUS);
-     g_free(name);
--    pci_create_simple(h->bus, 0, TYPE_MV64361_PCI_BRIDGE);
-+    pci_create_simple_orphan(h->bus, 0, TYPE_MV64361_PCI_BRIDGE);
-     qdev_init_gpio_out(dev, s->irq, ARRAY_SIZE(s->irq));
+-    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 13),
++    dev = DEVICE(i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 13),
+                                          "emc1413", 0x4c));
+     object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
+     object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
+diff --git a/hw/arm/aspeed_ast2500_romulus.c b/hw/arm/aspeed_ast2500_romulus.c
+index 91b660e74b..1bbd2802f1 100644
+--- a/hw/arm/aspeed_ast2500_romulus.c
++++ b/hw/arm/aspeed_ast2500_romulus.c
+@@ -30,7 +30,7 @@ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+      * The romulus board expects Epson RX8900 I2C RTC but a ds1338 is
+      * good enough
+      */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
  }
  
-diff --git a/hw/pci-host/pnv_phb.c b/hw/pci-host/pnv_phb.c
-index 0b556d1bf5..fc0b226bef 100644
---- a/hw/pci-host/pnv_phb.c
-+++ b/hw/pci-host/pnv_phb.c
-@@ -167,7 +167,7 @@ static void pnv_phb_realize(DeviceState *dev, Error **errp)
-     }
+ static void aspeed_machine_romulus_class_init(ObjectClass *oc,
+diff --git a/hw/arm/aspeed_ast2500_supermicro-x11spi.c b/hw/arm/aspeed_ast2500_supermicro-x11spi.c
+index a2450aa962..9e95d26901 100644
+--- a/hw/arm/aspeed_ast2500_supermicro-x11spi.c
++++ b/hw/arm/aspeed_ast2500_supermicro-x11spi.c
+@@ -33,13 +33,13 @@ static void supermicro_x11spi_bmc_i2c_init(AspeedMachineState *bmc)
+      * The palmetto platform expects a ds3231 RTC but a ds1338 is
+      * enough to provide basic RTC features. Alarms will be missing
+      */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
  
-     if (defaults_enabled()) {
--        PCIDevice *root = pci_new(PCI_DEVFN(0, 0), TYPE_PNV_PHB_ROOT_PORT);
-+        PCIDevice *root = pci_new_orphan(PCI_DEVFN(0, 0), TYPE_PNV_PHB_ROOT_PORT);
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
+                           eeprom_buf);
  
-         pci_realize_and_unref(root, pci->bus, errp);
-     }
-diff --git a/hw/pci-host/ppc4xx_pci.c b/hw/pci-host/ppc4xx_pci.c
-index b9a00f5193..cd7b16aa87 100644
---- a/hw/pci-host/ppc4xx_pci.c
-+++ b/hw/pci-host/ppc4xx_pci.c
-@@ -332,7 +332,7 @@ static void ppc4xx_pcihost_realize(DeviceState *dev, Error **errp)
-                               TYPE_PCI_BUS);
-     h->bus = b;
- 
--    pci_create_simple(b, 0, TYPE_PPC4xx_HOST_BRIDGE);
-+    pci_create_simple_orphan(b, 0, TYPE_PPC4xx_HOST_BRIDGE);
- 
-     /* XXX split into 2 memory regions, one for config space, one for regs */
-     memory_region_init(&s->container, OBJECT(s), "pci-container", PCI_ALL_SIZE);
-diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
-index 67180ba5f0..838a01608c 100644
---- a/hw/pci-host/ppce500.c
-+++ b/hw/pci-host/ppce500.c
-@@ -473,7 +473,7 @@ static void e500_pcihost_realize(DeviceState *dev, Error **errp)
-     address_space_init(&s->bm_as, &s->bm, "pci-bm");
-     pci_setup_iommu(b, &ppce500_iommu_ops, s);
- 
--    pci_create_simple(b, 0, TYPE_PPC_E500_PCI_BRIDGE);
-+    pci_create_simple_orphan(b, 0, TYPE_PPC_E500_PCI_BRIDGE);
- 
-     memory_region_init(&s->container, OBJECT(h), "pci-container", PCIE500_ALL_SIZE);
-     memory_region_init_io(&h->conf_mem, OBJECT(h), &pci_host_conf_be_ops, h,
-diff --git a/hw/pci-host/raven.c b/hw/pci-host/raven.c
-index b3836dc9a2..abcf9b28e1 100644
---- a/hw/pci-host/raven.c
-+++ b/hw/pci-host/raven.c
-@@ -281,7 +281,7 @@ static void raven_pcihost_realizefn(DeviceState *d, Error **errp)
-                           "pci-intack", 1);
-     memory_region_add_subregion(address_space_mem, 0xbffffff0, &s->pci_intack);
- 
--    pci_create_simple(h->bus, PCI_DEVFN(0, 0), TYPE_RAVEN_PCI_DEVICE);
-+    pci_create_simple_orphan(h->bus, PCI_DEVFN(0, 0), TYPE_RAVEN_PCI_DEVICE);
- 
-     address_space_init(&s->bm_as, &s->bm, "raven-bm");
-     pci_setup_iommu(h->bus, &raven_iommu_ops, s);
-diff --git a/hw/pci-host/sabre.c b/hw/pci-host/sabre.c
-index cd2328ad53..d8c815d404 100644
---- a/hw/pci-host/sabre.c
-+++ b/hw/pci-host/sabre.c
-@@ -383,7 +383,7 @@ static void sabre_realize(DeviceState *dev, Error **errp)
-                                      &s->pci_ioport,
-                                      0, 0x40, TYPE_PCI_BUS);
- 
--    pci_create_simple(phb->bus, 0, TYPE_SABRE_PCI_DEVICE);
-+    pci_create_simple_orphan(phb->bus, 0, TYPE_SABRE_PCI_DEVICE);
- 
-     /* IOMMU */
-     memory_region_add_subregion_overlap(&s->sabre_config, 0x200,
-@@ -391,12 +391,12 @@ static void sabre_realize(DeviceState *dev, Error **errp)
-     pci_setup_iommu(phb->bus, &sabre_iommu_ops, s->iommu);
- 
-     /* APB secondary busses */
--    pci_dev = pci_new_multifunction(PCI_DEVFN(1, 0), TYPE_SIMBA_PCI_BRIDGE);
-+    pci_dev = pci_new_multifunction_orphan(PCI_DEVFN(1, 0), TYPE_SIMBA_PCI_BRIDGE);
-     s->bridgeB = PCI_BRIDGE(pci_dev);
-     pci_bridge_map_irq(s->bridgeB, "pciB", pci_simbaB_map_irq);
-     pci_realize_and_unref(pci_dev, phb->bus, &error_fatal);
- 
--    pci_dev = pci_new_multifunction(PCI_DEVFN(1, 1), TYPE_SIMBA_PCI_BRIDGE);
-+    pci_dev = pci_new_multifunction_orphan(PCI_DEVFN(1, 1), TYPE_SIMBA_PCI_BRIDGE);
-     s->bridgeA = PCI_BRIDGE(pci_dev);
-     pci_bridge_map_irq(s->bridgeA, "pciA", pci_simbaA_map_irq);
-     pci_realize_and_unref(pci_dev, phb->bus, &error_fatal);
-diff --git a/hw/pci-host/sh_pci.c b/hw/pci-host/sh_pci.c
-index 3ffd2cdbd7..749b9d76a1 100644
---- a/hw/pci-host/sh_pci.c
-+++ b/hw/pci-host/sh_pci.c
-@@ -142,7 +142,7 @@ static void sh_pcic_host_realize(DeviceState *dev, Error **errp)
-     sysbus_init_mmio(sbd, &s->memconfig_a7);
-     memory_region_add_subregion(get_system_memory(), 0xfe240000, &s->isa);
- 
--    s->dev = pci_create_simple(phb->bus, PCI_DEVFN(0, 0), "sh_pci_host");
-+    s->dev = pci_create_simple_orphan(phb->bus, PCI_DEVFN(0, 0), "sh_pci_host");
+     /* add a TMP423 temperature sensor */
+-    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
++    dev = DEVICE(i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 2),
+                                          "tmp423", 0x4c));
+     object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
+     object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
+diff --git a/hw/arm/aspeed_ast2500_tiogapass.c b/hw/arm/aspeed_ast2500_tiogapass.c
+index 186dbc1da3..a6b3c0d051 100644
+--- a/hw/arm/aspeed_ast2500_tiogapass.c
++++ b/hw/arm/aspeed_ast2500_tiogapass.c
+@@ -55,9 +55,9 @@ static void tiogapass_bmc_i2c_init(AspeedMachineState *bmc)
+     at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 6), 0x54, 128 * KiB,
+                           tiogapass_bmc_fruid, tiogapass_bmc_fruid_len);
+     /* TMP421 */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "tmp421", 0x1f);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp421", 0x4f);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp421", 0x4e);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 8), "tmp421", 0x1f);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp421", 0x4f);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp421", 0x4e);
  }
  
- static void sh_pcic_pci_realize(PCIDevice *d, Error **errp)
-diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
-index 10972de694..4590687bd3 100644
---- a/hw/pci-host/uninorth.c
-+++ b/hw/pci-host/uninorth.c
-@@ -126,7 +126,7 @@ static void pci_unin_main_realize(DeviceState *dev, Error **errp)
-                                    &s->pci_io,
-                                    PCI_DEVFN(11, 0), 4, TYPE_PCI_BUS);
+ static void aspeed_machine_tiogapass_class_init(ObjectClass *oc,
+diff --git a/hw/arm/aspeed_ast2500_witherspoon.c b/hw/arm/aspeed_ast2500_witherspoon.c
+index 28d437fec0..cb57cb421a 100644
+--- a/hw/arm/aspeed_ast2500_witherspoon.c
++++ b/hw/arm/aspeed_ast2500_witherspoon.c
+@@ -44,7 +44,7 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+     LEDState *led;
  
--    pci_create_simple(h->bus, PCI_DEVFN(11, 0), "uni-north-pci");
-+    pci_create_simple_orphan(h->bus, PCI_DEVFN(11, 0), "uni-north-pci");
+     /* Bus 3: TODO bmp280@77 */
+-    dev = DEVICE(i2c_slave_new(TYPE_PCA9552, 0x60));
++    dev = DEVICE(i2c_slave_new_orphan(TYPE_PCA9552, 0x60));
+     qdev_prop_set_string(dev, "description", "pca1");
+     i2c_slave_realize_and_unref(I2C_SLAVE(dev),
+                                 aspeed_i2c_get_bus(&soc->i2c, 3),
+@@ -58,24 +58,24 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+         qdev_connect_gpio_out(dev, pca1_leds[i].gpio_id,
+                               qdev_get_gpio_in(DEVICE(led), 0));
+     }
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "dps310", 0x76);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "max31785", 0x52);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "tmp423", 0x4c);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), "tmp423", 0x4c);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 3), "dps310", 0x76);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 3), "max31785", 0x52);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 4), "tmp423", 0x4c);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 5), "tmp423", 0x4c);
+ 
+     /* The Witherspoon expects a TMP275 but a TMP105 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 9), TYPE_TMP105,
+                      0x4a);
  
      /*
-      * DEC 21154 bridge was unused for many years, this comment is
-@@ -176,7 +176,7 @@ static void pci_u3_agp_realize(DeviceState *dev, Error **errp)
-                                    &s->pci_io,
-                                    PCI_DEVFN(11, 0), 4, TYPE_PCI_BUS);
+      * The witherspoon board expects Epson RX8900 I2C RTC but a ds1338 is
+      * good enough
+      */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
  
--    pci_create_simple(h->bus, PCI_DEVFN(11, 0), "u3-agp");
-+    pci_create_simple_orphan(h->bus, PCI_DEVFN(11, 0), "u3-agp");
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 11), 0x51,
+                           eeprom_buf);
+-    dev = DEVICE(i2c_slave_new(TYPE_PCA9552, 0x60));
++    dev = DEVICE(i2c_slave_new_orphan(TYPE_PCA9552, 0x60));
+     qdev_prop_set_string(dev, "description", "pca0");
+     i2c_slave_realize_and_unref(I2C_SLAVE(dev),
+                                 aspeed_i2c_get_bus(&soc->i2c, 11),
+diff --git a/hw/arm/aspeed_ast2500_yosemitev2.c b/hw/arm/aspeed_ast2500_yosemitev2.c
+index eaa75bcccb..905758c345 100644
+--- a/hw/arm/aspeed_ast2500_yosemitev2.c
++++ b/hw/arm/aspeed_ast2500_yosemitev2.c
+@@ -55,9 +55,9 @@ static void yosemitev2_bmc_i2c_init(AspeedMachineState *bmc)
+     at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 128 * KiB,
+                           yosemitev2_bmc_fruid, yosemitev2_bmc_fruid_len);
+     /* TMP421 */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "tmp421", 0x1f);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp421", 0x4e);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp421", 0x4f);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 11), "tmp421", 0x1f);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp421", 0x4e);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp421", 0x4f);
+ 
  }
  
- static void pci_u3_agp_init(Object *obj)
-@@ -220,7 +220,7 @@ static void pci_unin_agp_realize(DeviceState *dev, Error **errp)
-                                    &s->pci_io,
-                                    PCI_DEVFN(11, 0), 4, TYPE_PCI_BUS);
+diff --git a/hw/arm/aspeed_ast2600_anacapa.c b/hw/arm/aspeed_ast2600_anacapa.c
+index a1c8111a93..98395f196b 100644
+--- a/hw/arm/aspeed_ast2600_anacapa.c
++++ b/hw/arm/aspeed_ast2600_anacapa.c
+@@ -237,17 +237,17 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+     /* eeprom@50 */
+     at24c_eeprom_init(i2c[0], 0x50, 256 * KiB);
+     /* i2c-mux@70 */
+-    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x70);
++    i2c_slave_create_simple_orphan(i2c[0], TYPE_PCA9546, 0x70);
  
--    pci_create_simple(h->bus, PCI_DEVFN(11, 0), "uni-north-agp");
-+    pci_create_simple_orphan(h->bus, PCI_DEVFN(11, 0), "uni-north-agp");
- }
+     /* &i2c1 */
+     /* eeprom@50 */
+     at24c_eeprom_init(i2c[1], 0x50, 256 * KiB);
+     /* i2c-mux@70 (PCA9546) — 4 channels, empty */
+-    i2c_slave_create_simple(i2c[1], TYPE_PCA9546, 0x70);
++    i2c_slave_create_simple_orphan(i2c[1], TYPE_PCA9546, 0x70);
  
- static void pci_unin_agp_init(Object *obj)
-@@ -253,7 +253,7 @@ static void pci_unin_internal_realize(DeviceState *dev, Error **errp)
-                                    &s->pci_io,
-                                    PCI_DEVFN(14, 0), 4, TYPE_PCI_BUS);
+     /* &i2c4 */
+     /* i2c-mux@70 (PCA9548) */
+-    i2c_slave_create_simple(i2c[4], TYPE_PCA9548, 0x70);
++    i2c_slave_create_simple_orphan(i2c[4], TYPE_PCA9548, 0x70);
  
--    pci_create_simple(h->bus, PCI_DEVFN(14, 0), "uni-north-internal-pci");
-+    pci_create_simple_orphan(h->bus, PCI_DEVFN(14, 0), "uni-north-internal-pci");
- }
+     /* &i2c6 */
+     /* eeprom@50 */
+@@ -256,15 +256,15 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
  
- static void pci_unin_internal_init(Object *obj)
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index d14fc6478e..61b9f2a230 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -2118,7 +2118,7 @@ bool pci_init_nic_in_slot(PCIBus *rootbus, const char *model,
-         exit(1);
+     /* &i2c8 */
+     /* i2c-mux@72 (PCA9546) */
+-    i2c_mux = i2c_slave_create_simple(i2c[8], TYPE_PCA9546, 0x72);
++    i2c_mux = i2c_slave_create_simple_orphan(i2c[8], TYPE_PCA9546, 0x72);
+ 
+     /* i2c8mux ch0 */
+     /* adc128d818@1f — no model */
+     /* pca9555@22 */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0),
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 0),
+                             TYPE_PCA9552, 0x22);
+     /* pca9555@24 */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0),
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 0),
+                             TYPE_PCA9552, 0x24);
+     /* eeprom@50 */
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 16 * KiB,
+@@ -272,10 +272,10 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     /* i2c8mux ch1 */
+     /* pca9555@22 */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 1),
+                             TYPE_PCA9552, 0x22);
+     /* pca9555@24 */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 1),
+                             TYPE_PCA9552, 0x24);
+     /* eeprom@50 */
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 16 * KiB,
+@@ -291,11 +291,11 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     /* &i2c10 */
+     /* i2c-mux@71 (PCA9548) */
+-    i2c_mux = i2c_slave_create_simple(i2c[10], TYPE_PCA9548, 0x71);
++    i2c_mux = i2c_slave_create_simple_orphan(i2c[10], TYPE_PCA9548, 0x71);
+ 
+     /* i2c10mux ch5 */
+     /* pca9555@22*/
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5),
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 5),
+                             TYPE_PCA9552, 0x22);
+     /* eeprom@52 */
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 5), 0x52, 32 * KiB,
+@@ -303,13 +303,13 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     /* &i2c11 */
+     /* i2c-mux@71 (PCA9548) */
+-    i2c_mux = i2c_slave_create_simple(i2c[11], TYPE_PCA9548, 0x71);
++    i2c_mux = i2c_slave_create_simple_orphan(i2c[11], TYPE_PCA9548, 0x71);
+ 
+     /* i2c11mux ch0-ch4 — empty */
+ 
+     /* i2c11mux ch5 */
+     /* pca9555@22 */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5),
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 5),
+                             TYPE_PCA9552, 0x22);
+     /* eeprom@52 */
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 5), 0x52, 32 * KiB,
+@@ -317,7 +317,7 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     /* &i2c13 */
+     /* i2c-mux@70 (PCA9548) */
+-    i2c_mux = i2c_slave_create_simple(i2c[13], TYPE_PCA9548, 0x70);
++    i2c_mux = i2c_slave_create_simple_orphan(i2c[13], TYPE_PCA9548, 0x70);
+ 
+     /* i2c13mux ch3 */
+     /* adc128d818@1f - no model */
+diff --git a/hw/arm/aspeed_ast2600_bletchley.c b/hw/arm/aspeed_ast2600_bletchley.c
+index b7e84db143..4930bddb39 100644
+--- a/hw/arm/aspeed_ast2600_bletchley.c
++++ b/hw/arm/aspeed_ast2600_bletchley.c
+@@ -35,35 +35,35 @@ static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
+     for (int i = 0; i < 6; i++) {
+         /* Missing model: ti,ina230 @ 0x45 */
+         /* Missing model: mps,mp5023 @ 0x40 */
+-        i2c_slave_create_simple(i2c[i], TYPE_TMP421, 0x4f);
++        i2c_slave_create_simple_orphan(i2c[i], TYPE_TMP421, 0x4f);
+         /* Missing model: nxp,pca9539 @ 0x76, but PCA9552 works enough */
+-        i2c_slave_create_simple(i2c[i], TYPE_PCA9552, 0x76);
+-        i2c_slave_create_simple(i2c[i], TYPE_PCA9552, 0x67);
++        i2c_slave_create_simple_orphan(i2c[i], TYPE_PCA9552, 0x76);
++        i2c_slave_create_simple_orphan(i2c[i], TYPE_PCA9552, 0x67);
+         /* Missing model: fsc,fusb302 @ 0x22 */
      }
  
--    pci_dev = pci_new(devfn, model);
-+    pci_dev = pci_new_orphan(devfn, model);
-     qdev_set_nic_properties(&pci_dev->qdev, nd);
-     pci_realize_and_unref(pci_dev, bus, &error_fatal);
-     return true;
-@@ -2129,15 +2129,15 @@ PCIDevice *pci_vga_init(PCIBus *bus)
-     vga_interface_created = true;
-     switch (vga_interface_type) {
-     case VGA_CIRRUS:
--        return pci_create_simple(bus, -1, "cirrus-vga");
-+        return pci_create_simple_orphan(bus, -1, "cirrus-vga");
-     case VGA_QXL:
--        return pci_create_simple(bus, -1, "qxl-vga");
-+        return pci_create_simple_orphan(bus, -1, "qxl-vga");
-     case VGA_STD:
--        return pci_create_simple(bus, -1, "VGA");
-+        return pci_create_simple_orphan(bus, -1, "VGA");
-     case VGA_VMWARE:
--        return pci_create_simple(bus, -1, "vmware-svga");
-+        return pci_create_simple_orphan(bus, -1, "vmware-svga");
-     case VGA_VIRTIO:
--        return pci_create_simple(bus, -1, "virtio-vga");
-+        return pci_create_simple_orphan(bus, -1, "virtio-vga");
-     case VGA_NONE:
-     default: /* Other non-PCI types. Checking for unsupported types is already
-                 done in vl.c. */
-@@ -2399,12 +2399,53 @@ static PCIDevice *pci_new_internal(int devfn, bool multifunction,
-     return PCI_DEVICE(dev);
+     /* Bus 6 */
+     at24c_eeprom_init(i2c[6], 0x56, 65536);
+     /* Missing model: nxp,pcf85263 @ 0x51 , but ds1338 works enough */
+-    i2c_slave_create_simple(i2c[6], "ds1338", 0x51);
++    i2c_slave_create_simple_orphan(i2c[6], "ds1338", 0x51);
+ 
+ 
+     /* Bus 7 */
+     at24c_eeprom_init(i2c[7], 0x54, 65536);
+ 
+     /* Bus 9 */
+-    i2c_slave_create_simple(i2c[9], TYPE_TMP421, 0x4f);
++    i2c_slave_create_simple_orphan(i2c[9], TYPE_TMP421, 0x4f);
+ 
+     /* Bus 10 */
+-    i2c_slave_create_simple(i2c[10], TYPE_TMP421, 0x4f);
++    i2c_slave_create_simple_orphan(i2c[10], TYPE_TMP421, 0x4f);
+     /* Missing model: ti,hdc1080 @ 0x40 */
+-    i2c_slave_create_simple(i2c[10], TYPE_PCA9552, 0x67);
++    i2c_slave_create_simple_orphan(i2c[10], TYPE_PCA9552, 0x67);
+ 
+     /* Bus 12 */
+     /* Missing model: adi,adm1278 @ 0x11 */
+-    i2c_slave_create_simple(i2c[12], TYPE_TMP421, 0x4c);
+-    i2c_slave_create_simple(i2c[12], TYPE_TMP421, 0x4d);
+-    i2c_slave_create_simple(i2c[12], TYPE_PCA9552, 0x67);
++    i2c_slave_create_simple_orphan(i2c[12], TYPE_TMP421, 0x4c);
++    i2c_slave_create_simple_orphan(i2c[12], TYPE_TMP421, 0x4d);
++    i2c_slave_create_simple_orphan(i2c[12], TYPE_PCA9552, 0x67);
  }
  
--PCIDevice *pci_new_multifunction(int devfn, const char *name)
-+static PCIDevice *pci_new_child_internal(Object *parent, const char *id,
-+                                          int devfn, bool multifunction,
-+                                          const char *type)
+ static void aspeed_machine_bletchley_class_init(ObjectClass *oc,
+diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
+index 65495a524e..c2c949ace3 100644
+--- a/hw/arm/aspeed_ast2600_catalina.c
++++ b/hw/arm/aspeed_ast2600_catalina.c
+@@ -472,43 +472,43 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     /* &i2c0 */
+     /* i2c-mux@71 (PCA9546) on i2c0 */
+-    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x71);
++    i2c_slave_create_simple_orphan(i2c[0], TYPE_PCA9546, 0x71);
+ 
+     /* i2c-mux@72 (PCA9546) on i2c0 */
+-    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x72);
++    i2c_mux = i2c_slave_create_simple_orphan(i2c[0], TYPE_PCA9546, 0x72);
+ 
+     /* i2c0mux1ch1 */
+     /* io_expander7 - pca9535@20 */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 1),
+                             TYPE_PCA9535, 0x20);
+     /* eeprom@50 */
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB,
+                           gb200io_eeprom, gb200io_eeprom_len);
+ 
+     /* i2c-mux@73 (PCA9546) on i2c0 */
+-    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x73);
++    i2c_slave_create_simple_orphan(i2c[0], TYPE_PCA9546, 0x73);
+ 
+     /* i2c-mux@75 (PCA9546) on i2c0 */
+-    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x75);
++    i2c_slave_create_simple_orphan(i2c[0], TYPE_PCA9546, 0x75);
+ 
+     /* i2c-mux@76 (PCA9546) on i2c0 */
+-    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x76);
++    i2c_mux = i2c_slave_create_simple_orphan(i2c[0], TYPE_PCA9546, 0x76);
+ 
+     /* i2c0mux4ch1 */
+     /* io_expander8 - pca9535@21 */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 1),
+                             TYPE_PCA9535, 0x21);
+     /* eeprom@50 */
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB,
+                           gb200io_eeprom, gb200io_eeprom_len);
+ 
+     /* i2c-mux@77 (PCA9546) on i2c0 */
+-    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x77);
++    i2c_slave_create_simple_orphan(i2c[0], TYPE_PCA9546, 0x77);
+ 
+ 
+     /* &i2c1 */
+     /* i2c-mux@70 (PCA9548) on i2c1 */
+-    i2c_mux = i2c_slave_create_simple(i2c[1], TYPE_PCA9548, 0x70);
++    i2c_mux = i2c_slave_create_simple_orphan(i2c[1], TYPE_PCA9548, 0x70);
+     /* i2c1mux0ch0 */
+     /* ina238@41 - no model */
+     /* ina238@42 - no model */
+@@ -525,14 +525,14 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 5), 0x54, 8 * KiB,
+                           pdb_eeprom, pdb_eeprom_len);
+     /* tpm75@4f */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), TYPE_TMP75, 0x4f);
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 5), TYPE_TMP75, 0x4f);
+ 
+     /* i2c1mux0ch6 */
+     /* io_expander5 - pca9554@27 */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 6),
+                             TYPE_PCA9554, 0x27);
+     /* io_expander6 - pca9555@25 */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 6),
+                             TYPE_PCA9552, 0x25);
+     /* eeprom@51 */
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 6), 0x51, 8 * KiB,
+@@ -543,15 +543,15 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 7), 0x53, 8 * KiB,
+                           fio_eeprom, fio_eeprom_len);
+     /* temperature-sensor@4b - tmp75 */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 7), TYPE_TMP75, 0x4b);
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 7), TYPE_TMP75, 0x4b);
+ 
+     /* &i2c2 */
+     /* io_expander0 - pca9555@20 */
+-    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x20);
++    i2c_slave_create_simple_orphan(i2c[2], TYPE_PCA9552, 0x20);
+     /* io_expander0 - pca9555@21 */
+-    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x21);
++    i2c_slave_create_simple_orphan(i2c[2], TYPE_PCA9552, 0x21);
+     /* io_expander0 - pca9555@27 */
+-    i2c_slave_create_simple(i2c[2], TYPE_PCA9552, 0x27);
++    i2c_slave_create_simple_orphan(i2c[2], TYPE_PCA9552, 0x27);
+     /* eeprom@50 */
+     at24c_eeprom_init(i2c[2], 0x50, 8 * KiB);
+     /* eeprom@51 */
+@@ -559,7 +559,7 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     /* &i2c5 */
+     /* i2c-mux@70 (PCA9548) on i2c5 */
+-    i2c_mux = i2c_slave_create_simple(i2c[5], TYPE_PCA9548, 0x70);
++    i2c_mux = i2c_slave_create_simple_orphan(i2c[5], TYPE_PCA9548, 0x70);
+     /* i2c5mux0ch6 */
+     /* eeprom@52 */
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 6), 0x52, 8 * KiB,
+@@ -572,15 +572,15 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     /* &i2c6 */
+     /* io_expander3 - pca9555@21 */
+-    i2c_slave_create_simple(i2c[6], TYPE_PCA9552, 0x21);
++    i2c_slave_create_simple_orphan(i2c[6], TYPE_PCA9552, 0x21);
+     /* rtc@6f - nct3018y */
+-    i2c_slave_create_simple(i2c[6], TYPE_DS1338, 0x6f);
++    i2c_slave_create_simple_orphan(i2c[6], TYPE_DS1338, 0x6f);
+ 
+     /* &i2c9 */
+     /* io_expander4 - pca9555@4f */
+-    i2c_slave_create_simple(i2c[9], TYPE_PCA9552, 0x4f);
++    i2c_slave_create_simple_orphan(i2c[9], TYPE_PCA9552, 0x4f);
+     /* temperature-sensor@4b - tpm75 */
+-    i2c_slave_create_simple(i2c[9], TYPE_TMP75, 0x4b);
++    i2c_slave_create_simple_orphan(i2c[9], TYPE_TMP75, 0x4b);
+     /* eeprom@50 */
+     at24c_eeprom_init_rom(i2c[9], 0x50, 8 * KiB, scm_eeprom, scm_eeprom_len);
+     /* eeprom@56 */
+@@ -588,7 +588,7 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     /* &i2c10 */
+     /* temperature-sensor@1f - tpm421 */
+-    i2c_slave_create_simple(i2c[10], TYPE_TMP421, 0x1f);
++    i2c_slave_create_simple_orphan(i2c[10], TYPE_TMP421, 0x1f);
+     /* eeprom@50 */
+     at24c_eeprom_init_rom(i2c[10], 0x50, 8 * KiB, nic_eeprom, nic_eeprom_len);
+ 
+@@ -615,21 +615,21 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     /* &i2c14 */
+     /* io_expander9 - pca9555@10 */
+-    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x10);
++    i2c_slave_create_simple_orphan(i2c[14], TYPE_PCA9552, 0x10);
+     /* io_expander10 - pca9555@11 */
+-    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x11);
++    i2c_slave_create_simple_orphan(i2c[14], TYPE_PCA9552, 0x11);
+     /* io_expander11 - pca9555@12 */
+-    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x12);
++    i2c_slave_create_simple_orphan(i2c[14], TYPE_PCA9552, 0x12);
+     /* io_expander12 - pca9555@13 */
+-    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x13);
++    i2c_slave_create_simple_orphan(i2c[14], TYPE_PCA9552, 0x13);
+     /* io_expander13 - pca9555@14 */
+-    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x14);
++    i2c_slave_create_simple_orphan(i2c[14], TYPE_PCA9552, 0x14);
+     /* io_expander14 - pca9555@15 */
+-    i2c_slave_create_simple(i2c[14], TYPE_PCA9552, 0x15);
++    i2c_slave_create_simple_orphan(i2c[14], TYPE_PCA9552, 0x15);
+ 
+     /* &i2c15 */
+     /* temperature-sensor@1f - tmp421 */
+-    i2c_slave_create_simple(i2c[15], TYPE_TMP421, 0x1f);
++    i2c_slave_create_simple_orphan(i2c[15], TYPE_TMP421, 0x1f);
+     /* eeprom@52 */
+     at24c_eeprom_init_rom(i2c[15], 0x52, 8 * KiB, nic_eeprom, nic_eeprom_len);
+ }
+diff --git a/hw/arm/aspeed_ast2600_evb.c b/hw/arm/aspeed_ast2600_evb.c
+index c43d2687c1..cf1e2b006c 100644
+--- a/hw/arm/aspeed_ast2600_evb.c
++++ b/hw/arm/aspeed_ast2600_evb.c
+@@ -27,7 +27,7 @@ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
+                           eeprom_buf);
+ 
+     /* LM75 is compatible with TMP105 driver */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8),
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 8),
+                      TYPE_TMP105, 0x4d);
+ }
+ 
+diff --git a/hw/arm/aspeed_ast2600_fby35.c b/hw/arm/aspeed_ast2600_fby35.c
+index f624427070..fcd1acdc17 100644
+--- a/hw/arm/aspeed_ast2600_fby35.c
++++ b/hw/arm/aspeed_ast2600_fby35.c
+@@ -102,12 +102,12 @@ static void fby35_i2c_init(AspeedMachineState *bmc)
+         i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+     }
+ 
+-    i2c_slave_create_simple(i2c[2], TYPE_LM75, 0x4f);
+-    i2c_slave_create_simple(i2c[8], TYPE_TMP421, 0x1f);
++    i2c_slave_create_simple_orphan(i2c[2], TYPE_LM75, 0x4f);
++    i2c_slave_create_simple_orphan(i2c[8], TYPE_TMP421, 0x1f);
+     /* Hotswap controller is actually supposed to be mp5920 or ltc4282. */
+-    i2c_slave_create_simple(i2c[11], "adm1272", 0x44);
+-    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4e);
+-    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4f);
++    i2c_slave_create_simple_orphan(i2c[11], "adm1272", 0x44);
++    i2c_slave_create_simple_orphan(i2c[12], TYPE_LM75, 0x4e);
++    i2c_slave_create_simple_orphan(i2c[12], TYPE_LM75, 0x4f);
+ 
+     at24c_eeprom_init(i2c[4], 0x51, 128 * KiB);
+     at24c_eeprom_init(i2c[6], 0x51, 128 * KiB);
+diff --git a/hw/arm/aspeed_ast2600_fuji.c b/hw/arm/aspeed_ast2600_fuji.c
+index 37db252e27..59b2da1ccf 100644
+--- a/hw/arm/aspeed_ast2600_fuji.c
++++ b/hw/arm/aspeed_ast2600_fuji.c
+@@ -27,7 +27,7 @@
+ static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr,
+                                  I2CBus **channels)
+ {
+-    I2CSlave *mux = i2c_slave_create_simple(bus, "pca9548", mux_addr);
++    I2CSlave *mux = i2c_slave_create_simple_orphan(bus, "pca9548", mux_addr);
+     for (int i = 0; i < 8; i++) {
+         channels[i] = pca954x_i2c_get_bus(mux, i);
+     }
+@@ -57,8 +57,8 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+         get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
+     }
+ 
+-    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
+-    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4d);
++    i2c_slave_create_simple_orphan(i2c[17], TYPE_LM75, 0x4c);
++    i2c_slave_create_simple_orphan(i2c[17], TYPE_LM75, 0x4d);
+ 
+     /*
+      * EEPROM 24c64 size is 64Kbits or 8 Kbytes
+@@ -68,33 +68,33 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+     at24c_eeprom_init(i2c[20], 0x50, 256);
+     at24c_eeprom_init(i2c[22], 0x52, 256);
+ 
+-    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x48);
+-    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x49);
+-    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x4a);
+-    i2c_slave_create_simple(i2c[3], TYPE_TMP422, 0x4c);
++    i2c_slave_create_simple_orphan(i2c[3], TYPE_LM75, 0x48);
++    i2c_slave_create_simple_orphan(i2c[3], TYPE_LM75, 0x49);
++    i2c_slave_create_simple_orphan(i2c[3], TYPE_LM75, 0x4a);
++    i2c_slave_create_simple_orphan(i2c[3], TYPE_TMP422, 0x4c);
+ 
+     at24c_eeprom_init(i2c[8], 0x51, 8 * KiB);
+-    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x4a);
++    i2c_slave_create_simple_orphan(i2c[8], TYPE_LM75, 0x4a);
+ 
+-    i2c_slave_create_simple(i2c[50], TYPE_LM75, 0x4c);
++    i2c_slave_create_simple_orphan(i2c[50], TYPE_LM75, 0x4c);
+     at24c_eeprom_init(i2c[50], 0x52, 8 * KiB);
+-    i2c_slave_create_simple(i2c[51], TYPE_TMP75, 0x48);
+-    i2c_slave_create_simple(i2c[52], TYPE_TMP75, 0x49);
++    i2c_slave_create_simple_orphan(i2c[51], TYPE_TMP75, 0x48);
++    i2c_slave_create_simple_orphan(i2c[52], TYPE_TMP75, 0x49);
+ 
+-    i2c_slave_create_simple(i2c[59], TYPE_TMP75, 0x48);
+-    i2c_slave_create_simple(i2c[60], TYPE_TMP75, 0x49);
++    i2c_slave_create_simple_orphan(i2c[59], TYPE_TMP75, 0x48);
++    i2c_slave_create_simple_orphan(i2c[60], TYPE_TMP75, 0x49);
+ 
+     at24c_eeprom_init(i2c[65], 0x53, 8 * KiB);
+-    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x49);
+-    i2c_slave_create_simple(i2c[66], TYPE_TMP75, 0x48);
++    i2c_slave_create_simple_orphan(i2c[66], TYPE_TMP75, 0x49);
++    i2c_slave_create_simple_orphan(i2c[66], TYPE_TMP75, 0x48);
+     at24c_eeprom_init(i2c[68], 0x52, 8 * KiB);
+     at24c_eeprom_init(i2c[69], 0x52, 8 * KiB);
+     at24c_eeprom_init(i2c[70], 0x52, 8 * KiB);
+     at24c_eeprom_init(i2c[71], 0x52, 8 * KiB);
+ 
+     at24c_eeprom_init(i2c[73], 0x53, 8 * KiB);
+-    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x49);
+-    i2c_slave_create_simple(i2c[74], TYPE_TMP75, 0x48);
++    i2c_slave_create_simple_orphan(i2c[74], TYPE_TMP75, 0x49);
++    i2c_slave_create_simple_orphan(i2c[74], TYPE_TMP75, 0x48);
+     at24c_eeprom_init(i2c[76], 0x52, 8 * KiB);
+     at24c_eeprom_init(i2c[77], 0x52, 8 * KiB);
+     at24c_eeprom_init(i2c[78], 0x52, 8 * KiB);
+@@ -103,9 +103,9 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     for (int i = 0; i < 8; i++) {
+         at24c_eeprom_init(i2c[81 + i * 8], 0x56, 64 * KiB);
+-        i2c_slave_create_simple(i2c[82 + i * 8], TYPE_TMP75, 0x48);
+-        i2c_slave_create_simple(i2c[83 + i * 8], TYPE_TMP75, 0x4b);
+-        i2c_slave_create_simple(i2c[84 + i * 8], TYPE_TMP75, 0x4a);
++        i2c_slave_create_simple_orphan(i2c[82 + i * 8], TYPE_TMP75, 0x48);
++        i2c_slave_create_simple_orphan(i2c[83 + i * 8], TYPE_TMP75, 0x4b);
++        i2c_slave_create_simple_orphan(i2c[84 + i * 8], TYPE_TMP75, 0x4a);
+     }
+ }
+ 
+diff --git a/hw/arm/aspeed_ast2600_gb200nvl.c b/hw/arm/aspeed_ast2600_gb200nvl.c
+index ad9a10110b..2c1c513674 100644
+--- a/hw/arm/aspeed_ast2600_gb200nvl.c
++++ b/hw/arm/aspeed_ast2600_gb200nvl.c
+@@ -54,12 +54,12 @@ static void gb200nvl_bmc_i2c_init(AspeedMachineState *bmc)
+     aspeed_create_pca9554(soc, 4, 0x21);
+ 
+     /* Mux I2c Expanders */
+-    i2c_slave_create_simple(i2c[5], "pca9546", 0x71);
+-    i2c_slave_create_simple(i2c[5], "pca9546", 0x72);
+-    i2c_slave_create_simple(i2c[5], "pca9546", 0x73);
+-    i2c_slave_create_simple(i2c[5], "pca9546", 0x75);
+-    i2c_slave_create_simple(i2c[5], "pca9546", 0x76);
+-    i2c_slave_create_simple(i2c[5], "pca9546", 0x77);
++    i2c_slave_create_simple_orphan(i2c[5], "pca9546", 0x71);
++    i2c_slave_create_simple_orphan(i2c[5], "pca9546", 0x72);
++    i2c_slave_create_simple_orphan(i2c[5], "pca9546", 0x73);
++    i2c_slave_create_simple_orphan(i2c[5], "pca9546", 0x75);
++    i2c_slave_create_simple_orphan(i2c[5], "pca9546", 0x76);
++    i2c_slave_create_simple_orphan(i2c[5], "pca9546", 0x77);
+ 
+     /* Bus 10 */
+     dev = DEVICE(aspeed_create_pca9554(soc, 9, 0x20));
+diff --git a/hw/arm/aspeed_ast2600_rainier.c b/hw/arm/aspeed_ast2600_rainier.c
+index 8f0a412ddc..0495c2880c 100644
+--- a/hw/arm/aspeed_ast2600_rainier.c
++++ b/hw/arm/aspeed_ast2600_rainier.c
+@@ -73,37 +73,37 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+     aspeed_create_pca9552(soc, 3, 0x61);
+ 
+     /* The rainier expects a TMP275 but a TMP105 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
+                      0x48);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
+                      0x49);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
+                      0x4a);
+-    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4),
++    i2c_mux = i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 4),
+                                       "pca9546", 0x70);
+     at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
+     at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
+     at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x52, 64 * KiB);
+     aspeed_create_pca9552(soc, 4, 0x60);
+ 
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
+                      0x48);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
+                      0x49);
+     aspeed_create_pca9552(soc, 5, 0x60);
+     aspeed_create_pca9552(soc, 5, 0x61);
+-    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5),
++    i2c_mux = i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 5),
+                                       "pca9546", 0x70);
+     at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
+     at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
+ 
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
+                      0x48);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
+                      0x4a);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
+                      0x4b);
+-    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6),
++    i2c_mux = i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 6),
+                                       "pca9546", 0x70);
+     at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
+     at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
+@@ -116,17 +116,17 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+     aspeed_create_pca9552(soc, 7, 0x33);
+     aspeed_create_pca9552(soc, 7, 0x60);
+     aspeed_create_pca9552(soc, 7, 0x61);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "dps310", 0x76);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 7), "dps310", 0x76);
+     /* Bus 7: TODO si7021-a20@20 */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP105,
+                      0x48);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "max31785", 0x52);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 7), "max31785", 0x52);
+     at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50, 64 * KiB);
+     at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x51, 64 * KiB);
+ 
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
+                      0x48);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
+                      0x4a);
+     at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50,
+                           64 * KiB, rainier_bb_fruid, rainier_bb_fruid_len);
+@@ -138,19 +138,19 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+     /* Bus 8: ucd90320@b */
+     /* Bus 8: ucd90320@c */
+ 
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4d);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4d);
+     at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 9), 0x50, 128 * KiB);
+ 
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4c);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4d);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4c);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4d);
+     at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 10), 0x50, 128 * KiB);
+ 
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
+                      0x48);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
+                      0x49);
+-    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11),
++    i2c_mux = i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 11),
+                                       "pca9546", 0x70);
+     at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
+     at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
+diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
+index 7d9fade68d..f21c842315 100644
+--- a/hw/arm/aspeed_ast27x0-fc.c
++++ b/hw/arm/aspeed_ast27x0-fc.c
+@@ -109,7 +109,7 @@ static bool ast2700fc_ca35_init(MachineState *machine, Error **errp)
+     /*
+      * AST2700 EVB has a LM75 temperature sensor on I2C bus 0 at address 0x4d.
+      */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "tmp105", 0x4d);
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 0), "tmp105", 0x4d);
+ 
+     aspeed_board_init_flashes(&soc->fmc, AST2700FC_FMC_MODEL, 2, 0);
+     aspeed_board_init_flashes(&soc->spi[0], AST2700FC_SPI_MODEL, 1, 2);
+diff --git a/hw/arm/aspeed_ast27x0_evb.c b/hw/arm/aspeed_ast27x0_evb.c
+index 0ff1bebeb0..a59714372d 100644
+--- a/hw/arm/aspeed_ast27x0_evb.c
++++ b/hw/arm/aspeed_ast27x0_evb.c
+@@ -24,7 +24,7 @@ static void ast2700_evb_i2c_init(AspeedMachineState *bmc)
+     AspeedSoCState *soc = bmc->soc;
+ 
+     /* LM75 is compatible with TMP105 driver */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0),
++    i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 0),
+                             TYPE_TMP105, 0x4d);
+ }
+ 
+diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
+index 748db26d41..809c8bbc43 100644
+--- a/hw/arm/bananapi_m2u.c
++++ b/hw/arm/bananapi_m2u.c
+@@ -114,7 +114,7 @@ static void bpim2u_init(MachineState *machine)
+ 
+     /* Connect AXP221 */
+     i2c = I2C_BUS(qdev_get_child_bus(DEVICE(&r40->i2c0), "i2c"));
+-    i2c_slave_create_simple(i2c, "axp221_pmu", 0x34);
++    i2c_slave_create_simple_orphan(i2c, "axp221_pmu", 0x34);
+ 
+     /* SDRAM */
+     memory_region_add_subregion(get_system_memory(),
+diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
+index 215741a194..7ce5179345 100644
+--- a/hw/arm/cubieboard.c
++++ b/hw/arm/cubieboard.c
+@@ -81,7 +81,7 @@ static void cubieboard_init(MachineState *machine)
+ 
+     /* Connect AXP 209 */
+     i2c = I2C_BUS(qdev_get_child_bus(DEVICE(&a10->i2c0), "i2c"));
+-    i2c_slave_create_simple(i2c, "axp209_pmu", 0x34);
++    i2c_slave_create_simple_orphan(i2c, "axp209_pmu", 0x34);
+ 
+     /* Retrieve SD bus */
+     di = drive_get(IF_SD, 0, 0);
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index 3bcdea7db8..baab159bfd 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -1327,7 +1327,7 @@ static void musicpal_init(MachineState *machine)
+         qdev_connect_gpio_out(key_dev, i, qdev_get_gpio_in(dev, i + 15));
+     }
+ 
+-    wm8750_dev = i2c_slave_new(TYPE_WM8750, MP_WM_ADDR);
++    wm8750_dev = i2c_slave_new_orphan(TYPE_WM8750, MP_WM_ADDR);
+     if (machine->audiodev) {
+         qdev_prop_set_string(DEVICE(wm8750_dev), "audiodev", machine->audiodev);
+     }
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+index 9e5d5f08f9..7b5cdd7191 100644
+--- a/hw/arm/npcm7xx_boards.c
++++ b/hw/arm/npcm7xx_boards.c
+@@ -198,13 +198,13 @@ static void npcm7xx_connect_pwm_fan(NPCM7xxState *soc, SplitIRQ *splitter,
+ static void npcm750_evb_i2c_init(NPCM7xxState *soc)
+ {
+     /* lm75 temperature sensor on SVB, tmp105 is compatible */
+-    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 0), "tmp105", 0x48);
++    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 0), "tmp105", 0x48);
+     /* lm75 temperature sensor on EB, tmp105 is compatible */
+-    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 1), "tmp105", 0x48);
++    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 1), "tmp105", 0x48);
+     /* tmp100 temperature sensor on EB, tmp105 is compatible */
+-    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 2), "tmp105", 0x48);
++    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 2), "tmp105", 0x48);
+     /* tmp100 temperature sensor on SVB, tmp105 is compatible */
+-    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 6), "tmp105", 0x48);
++    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 6), "tmp105", 0x48);
+ }
+ 
+ static void npcm750_evb_fan_init(NPCM7xxMachine *machine, NPCM7xxState *soc)
+@@ -234,10 +234,10 @@ static void npcm750_evb_fan_init(NPCM7xxMachine *machine, NPCM7xxState *soc)
+ static void quanta_gsj_i2c_init(NPCM7xxState *soc)
+ {
+     /* GSJ machine have 4 max31725 temperature sensors, tmp105 is compatible. */
+-    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 1), "tmp105", 0x5c);
+-    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 2), "tmp105", 0x5c);
+-    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 3), "tmp105", 0x5c);
+-    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 4), "tmp105", 0x5c);
++    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 1), "tmp105", 0x5c);
++    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 2), "tmp105", 0x5c);
++    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 3), "tmp105", 0x5c);
++    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 4), "tmp105", 0x5c);
+ 
+     at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 9), 0x55, 8192);
+     at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 10), 0x55, 8192);
+@@ -253,7 +253,7 @@ static void quanta_gsj_i2c_init(NPCM7xxState *soc)
+      * - ucd90160@6b
+      */
+ 
+-    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 15), "pca9548", 0x75);
++    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 15), "pca9548", 0x75);
+ }
+ 
+ static void quanta_gsj_fan_init(NPCM7xxMachine *machine, NPCM7xxState *soc)
+@@ -333,29 +333,29 @@ static void kudo_bmc_i2c_init(NPCM7xxState *soc)
+ {
+     I2CSlave *i2c_mux;
+ 
+-    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 1),
++    i2c_mux = i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 1),
+                                       TYPE_PCA9548, 0x75);
+ 
+     /* tmp105 is compatible with the lm75 */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x5c);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), "tmp105", 0x5c);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6), "tmp105", 0x5c);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 7), "tmp105", 0x5c);
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x5c);
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 5), "tmp105", 0x5c);
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 6), "tmp105", 0x5c);
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 7), "tmp105", 0x5c);
+ 
+-    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 1), TYPE_PCA9548, 0x77);
++    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 1), TYPE_PCA9548, 0x77);
+ 
+-    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 4), TYPE_PCA9548, 0x77);
++    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 4), TYPE_PCA9548, 0x77);
+ 
+     at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 4), 0x50, 8192); /* mbfru */
+ 
+-    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 13),
++    i2c_mux = i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 13),
+                                       TYPE_PCA9548, 0x77);
+ 
+     /* tmp105 is compatible with the lm75 */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 2), "tmp105", 0x48);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 3), "tmp105", 0x49);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x48);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), "tmp105", 0x49);
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 2), "tmp105", 0x48);
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 3), "tmp105", 0x49);
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x48);
++    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 5), "tmp105", 0x49);
+ 
+     at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 14), 0x55, 8192); /* bmcfru */
+ 
+diff --git a/hw/arm/npcm8xx_boards.c b/hw/arm/npcm8xx_boards.c
+index 10df2d614c..eb0248552f 100644
+--- a/hw/arm/npcm8xx_boards.c
++++ b/hw/arm/npcm8xx_boards.c
+@@ -159,7 +159,7 @@ static void npcm8xx_connect_pwm_fan(NPCM8xxState *soc, SplitIRQ *splitter,
+ static void npcm845_evb_i2c_init(NPCM8xxState *soc)
+ {
+     /* tmp100 temperature sensor on SVB, tmp105 is compatible */
+-    i2c_slave_create_simple(npcm8xx_i2c_get_bus(soc, 6), "tmp105", 0x48);
++    i2c_slave_create_simple_orphan(npcm8xx_i2c_get_bus(soc, 6), "tmp105", 0x48);
+ }
+ 
+ static void npcm845_evb_fan_init(NPCM8xxMachine *machine, NPCM8xxState *soc)
+diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+index 0642e35dd2..f37ddf8073 100644
+--- a/hw/arm/realview.c
++++ b/hw/arm/realview.c
+@@ -321,7 +321,7 @@ static void realview_init(MachineState *machine,
+ 
+     dev = sysbus_create_simple_orphan(TYPE_ARM_SBCON_I2C, 0x10002000, NULL);
+     i2c = (I2CBus *)qdev_get_child_bus(dev, "i2c");
+-    i2c_slave_create_simple(i2c, "ds1338", 0x68);
++    i2c_slave_create_simple_orphan(i2c, "ds1338", 0x68);
+ 
+     /* Memory map for RealView Emulation Baseboard:  */
+     /* 0x10000000 System registers.  */
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index 3f72cedf2e..f9d2a61f9c 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -1209,7 +1209,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     if (board->peripherals & BP_OLED_I2C) {
+         I2CBus *bus = (I2CBus *)qdev_get_child_bus(i2c_dev[0], "i2c");
+ 
+-        i2c_slave_create_simple(bus, "ssd0303", 0x3d);
++        i2c_slave_create_simple_orphan(bus, "ssd0303", 0x3d);
+     }
+ 
+     for (i = 0; i < NUM_UART; i++) {
+diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
+index 81bd397b5d..dcc7b7debd 100644
+--- a/hw/arm/versatilepb.c
++++ b/hw/arm/versatilepb.c
+@@ -341,7 +341,7 @@ static void versatile_init(MachineState *machine, int board_id)
+ 
+     dev = sysbus_create_simple_orphan(TYPE_ARM_SBCON_I2C, 0x10002000, NULL);
+     i2c = (I2CBus *)qdev_get_child_bus(dev, "i2c");
+-    i2c_slave_create_simple(i2c, "ds1338", 0x68);
++    i2c_slave_create_simple_orphan(i2c, "ds1338", 0x68);
+ 
+     /* Add PL041 AACI Interface to the LM4549 codec */
+     pl041 = qdev_new_orphan("pl041");
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index 5a0012cb4f..ffd3c52d4f 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -653,7 +653,7 @@ static void vexpress_common_init(MachineState *machine)
+ 
+     dev = sysbus_create_simple_orphan(TYPE_ARM_SBCON_I2C, map[VE_SERIALDVI], NULL);
+     i2c = (I2CBus *)qdev_get_child_bus(dev, "i2c");
+-    i2c_slave_create_simple(i2c, "sii9022", 0x39);
++    i2c_slave_create_simple_orphan(i2c, "sii9022", 0x39);
+ 
+     sysbus_create_simple_orphan("pl031", map[VE_RTC], pic[4]); /* RTC */
+ 
+diff --git a/hw/display/sii9022.c b/hw/display/sii9022.c
+index d00d3e9fc5..0bf49195d7 100644
+--- a/hw/display/sii9022.c
++++ b/hw/display/sii9022.c
+@@ -164,7 +164,7 @@ static void sii9022_realize(DeviceState *dev, Error **errp)
+     I2CBus *bus;
+ 
+     bus = I2C_BUS(qdev_get_parent_bus(dev));
+-    i2c_slave_create_simple(bus, TYPE_I2CDDC, 0x50);
++    i2c_slave_create_simple_orphan(bus, TYPE_I2CDDC, 0x50);
+ }
+ 
+ static void sii9022_class_init(ObjectClass *klass, const void *data)
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 27afcaecee..ac09e5f706 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -1518,7 +1518,7 @@ static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
+     sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+ 
+     s->bus = i2c_init_bus(dev, s->name);
+-    s->slave = i2c_slave_create_simple(s->bus, TYPE_ASPEED_I2C_BUS_SLAVE,
++    s->slave = i2c_slave_create_simple_orphan(s->bus, TYPE_ASPEED_I2C_BUS_SLAVE,
+                                        0xff);
+ 
+     memory_region_init_io(&s->mr, OBJECT(s), &aspeed_i2c_bus_ops,
+diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+index 7803f6113c..fba21fdfad 100644
+--- a/hw/i2c/core.c
++++ b/hw/i2c/core.c
+@@ -364,7 +364,7 @@ const VMStateDescription vmstate_i2c_slave = {
+     }
+ };
+ 
+-I2CSlave *i2c_slave_new(const char *name, uint8_t addr)
++I2CSlave *i2c_slave_new_orphan(const char *name, uint8_t addr)
+ {
+     DeviceState *dev;
+ 
+@@ -373,14 +373,34 @@ I2CSlave *i2c_slave_new(const char *name, uint8_t addr)
+     return I2C_SLAVE(dev);
+ }
+ 
++I2CSlave *i2c_slave_new(Object *parent, const char *id,
++                        const char *type, uint8_t addr)
 +{
 +    DeviceState *dev;
 +
 +    dev = qdev_new(parent, id, type);
-+    qdev_prop_set_int32(dev, "addr", devfn);
-+    qdev_prop_set_bit(dev, "multifunction", multifunction);
-+    return PCI_DEVICE(dev);
++    qdev_prop_set_uint8(dev, "address", addr);
++    return I2C_SLAVE(dev);
 +}
 +
-+PCIDevice *pci_new_multifunction(Object *parent, const char *id,
-+                                 int devfn, const char *type)
++I2CSlave *i2c_slave_create_simple(Object *parent, const char *id,
++                                  I2CBus *bus, const char *type,
++                                  uint8_t addr)
 +{
-+    return pci_new_child_internal(parent, id, devfn, true, type);
-+}
++    I2CSlave *dev = i2c_slave_new(parent, id, type, addr);
 +
-+PCIDevice *pci_new(Object *parent, const char *id,
-+                   int devfn, const char *type)
-+{
-+    return pci_new_child_internal(parent, id, devfn, false, type);
-+}
-+
-+PCIDevice *pci_create_simple_multifunction(Object *parent, const char *id,
-+                                           PCIBus *bus, int devfn,
-+                                           const char *type)
-+{
-+    PCIDevice *dev = pci_new_multifunction(parent, id, devfn, type);
-+    qdev_realize(DEVICE(dev), BUS(bus), &error_fatal);
++    qdev_realize(DEVICE(dev), BUS(bus), &error_abort);
 +    return dev;
 +}
 +
-+PCIDevice *pci_create_simple(Object *parent, const char *id,
-+                             PCIBus *bus, int devfn, const char *type)
-+{
-+    PCIDevice *dev = pci_new(parent, id, devfn, type);
-+    qdev_realize(DEVICE(dev), BUS(bus), &error_fatal);
-+    return dev;
-+}
-+
-+PCIDevice *pci_new_multifunction_orphan(int devfn, const char *name)
+ bool i2c_slave_realize_and_unref(I2CSlave *dev, I2CBus *bus, Error **errp)
  {
-     return pci_new_internal(devfn, true, name);
- }
- 
--PCIDevice *pci_new(int devfn, const char *name)
-+PCIDevice *pci_new_orphan(int devfn, const char *name)
- {
-     return pci_new_internal(devfn, false, name);
- }
-@@ -2414,17 +2455,17 @@ bool pci_realize_and_unref(PCIDevice *dev, PCIBus *bus, Error **errp)
      return qdev_realize_and_unref(&dev->qdev, &bus->qbus, errp);
  }
  
--PCIDevice *pci_create_simple_multifunction(PCIBus *bus, int devfn,
-+PCIDevice *pci_create_simple_multifunction_orphan(PCIBus *bus, int devfn,
-                                            const char *name)
+-I2CSlave *i2c_slave_create_simple(I2CBus *bus, const char *name, uint8_t addr)
++I2CSlave *i2c_slave_create_simple_orphan(I2CBus *bus, const char *name, uint8_t addr)
  {
--    PCIDevice *dev = pci_new_multifunction(devfn, name);
-+    PCIDevice *dev = pci_new_multifunction_orphan(devfn, name);
-     pci_realize_and_unref(dev, bus, &error_fatal);
-     return dev;
- }
+-    I2CSlave *dev = i2c_slave_new(name, addr);
++    I2CSlave *dev = i2c_slave_new_orphan(name, addr);
  
--PCIDevice *pci_create_simple(PCIBus *bus, int devfn, const char *name)
-+PCIDevice *pci_create_simple_orphan(PCIBus *bus, int devfn, const char *name)
+     i2c_slave_realize_and_unref(dev, bus, &error_abort);
+ 
+diff --git a/hw/i3c/core.c b/hw/i3c/core.c
+index 2fb865490e..469d66f1fb 100644
+--- a/hw/i3c/core.c
++++ b/hw/i3c/core.c
+@@ -623,7 +623,7 @@ void legacy_i2c_end_transfer(I3CBus *bus)
+ I2CSlave *legacy_i2c_device_create_simple(I3CBus *bus, const char *name,
+                                           uint8_t addr)
  {
--    PCIDevice *dev = pci_new(devfn, name);
-+    PCIDevice *dev = pci_new_orphan(devfn, name);
-     pci_realize_and_unref(dev, bus, &error_fatal);
+-    I2CSlave *dev = i2c_slave_new(name, addr);
++    I2CSlave *dev = i2c_slave_new_orphan(name, addr);
+ 
+     i2c_slave_realize_and_unref(dev, bus->i2c_bus, &error_abort);
      return dev;
+diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
+index 8b7f2dc13f..b6d314447c 100644
+--- a/hw/nvram/eeprom_at24c.c
++++ b/hw/nvram/eeprom_at24c.c
+@@ -148,7 +148,7 @@ I2CSlave *at24c_eeprom_init_rom(I2CBus *bus, uint8_t address, uint32_t rom_size,
+ {
+     EEPROMState *s;
+ 
+-    s = AT24C_EE(i2c_slave_new(TYPE_AT24C_EE, address));
++    s = AT24C_EE(i2c_slave_new_orphan(TYPE_AT24C_EE, address));
+ 
+     qdev_prop_set_uint32(DEVICE(s), "rom-size", rom_size);
+ 
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index 05c305b72c..85977c8b69 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -1025,7 +1025,7 @@ void ppce500_init(MachineState *machine)
+     memory_region_add_subregion(ccsr_addr_space, MPC8544_I2C_REGS_OFFSET,
+                                 sysbus_mmio_get_region(s, 0));
+     i2c = I2C_BUS(qdev_get_child_bus(dev, "i2c"));
+-    i2c_slave_create_simple(i2c, "ds1338", RTC_REGS_OFFSET);
++    i2c_slave_create_simple_orphan(i2c, "ds1338", RTC_REGS_OFFSET);
+ 
+     /* eSDHC */
+     if (pmc->has_esdhc) {
+diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
+index 8346613a68..0a22d854d7 100644
+--- a/hw/ppc/pnv.c
++++ b/hw/ppc/pnv.c
+@@ -2825,7 +2825,7 @@ static void pnv_rainier_i2c_init(PnvMachineState *pnv)
+          * Add a PCA9552 I2C device for PCIe hotplug control
+          * to engine 2, bus 1, address 0x63
+          */
+-        I2CSlave *dev = i2c_slave_create_simple(chip10->i2c[2].busses[1],
++        I2CSlave *dev = i2c_slave_create_simple_orphan(chip10->i2c[2].busses[1],
+                                                 "pca9552", 0x63);
+ 
+         /*
+@@ -2843,7 +2843,7 @@ static void pnv_rainier_i2c_init(PnvMachineState *pnv)
+          * Add a PCA9554 I2C device for cable card presence detection
+          * to engine 2, bus 1, address 0x25
+          */
+-        i2c_slave_create_simple(chip10->i2c[2].busses[1], "pca9554", 0x25);
++        i2c_slave_create_simple_orphan(chip10->i2c[2].busses[1], "pca9554", 0x25);
+     }
  }
-diff --git a/hw/pci/pcie_sriov.c b/hw/pci/pcie_sriov.c
-index c41ac95bee..a69a41cdde 100644
---- a/hw/pci/pcie_sriov.c
-+++ b/hw/pci/pcie_sriov.c
-@@ -171,7 +171,7 @@ bool pcie_sriov_pf_init(PCIDevice *dev, uint16_t offset,
-     dev->exp.sriov_pf.vf = g_new(PCIDevice *, total_vfs);
- 
-     for (uint16_t i = 0; i < total_vfs; i++) {
--        PCIDevice *vf = pci_new(devfn, vfname);
-+        PCIDevice *vf = pci_new_orphan(devfn, vfname);
-         vf->exp.sriov_vf.pf = dev;
-         vf->exp.sriov_vf.vf_number = i;
- 
-diff --git a/hw/ppc/amigaone.c b/hw/ppc/amigaone.c
-index 528c2c656a..c6b331ff16 100644
---- a/hw/ppc/amigaone.c
-+++ b/hw/ppc/amigaone.c
-@@ -355,7 +355,7 @@ static void amigaone_init(MachineState *machine)
-     pci_bus = PCI_BUS(qdev_get_child_bus(dev, "pci.0"));
- 
-     /* VIA VT82c686B South Bridge (multifunction PCI device) */
--    via = OBJECT(pci_create_simple_multifunction(pci_bus, PCI_DEVFN(7, 0),
-+    via = OBJECT(pci_create_simple_multifunction_orphan(pci_bus, PCI_DEVFN(7, 0),
-                                                  TYPE_VT82C686B_ISA));
-     object_property_add_alias(OBJECT(machine), "rtc-time",
-                               object_resolve_path_component(via, "rtc"),
-diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-index 31dda69127..0df953b9e1 100644
---- a/hw/ppc/mac_newworld.c
-+++ b/hw/ppc/mac_newworld.c
-@@ -348,7 +348,7 @@ static void ppc_core99_init(MachineState *machine)
-     pci_bus = PCI_HOST_BRIDGE(uninorth_pci_dev)->bus;
- 
-     /* MacIO */
--    macio = OBJECT(pci_new(-1, TYPE_NEWWORLD_MACIO));
-+    macio = OBJECT(pci_new_orphan(-1, TYPE_NEWWORLD_MACIO));
-     dev = DEVICE(macio);
-     qdev_prop_set_uint64(dev, "frequency", tbfreq);
-     qdev_prop_set_bit(dev, "has-pmu", has_pmu);
-@@ -416,7 +416,7 @@ static void ppc_core99_init(MachineState *machine)
-     }
- 
-     if (machine->usb) {
--        pci_create_simple(pci_bus, -1, "pci-ohci");
-+        pci_create_simple_orphan(pci_bus, -1, "pci-ohci");
- 
-         /* U3 needs to use USB for input because Linux doesn't support via-cuda
-         on PPC64 */
-diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-index aa366ca190..e6c5830c38 100644
---- a/hw/ppc/mac_oldworld.c
-+++ b/hw/ppc/mac_oldworld.c
-@@ -229,7 +229,7 @@ static void ppc_heathrow_init(MachineState *machine)
-     pci_bus = PCI_HOST_BRIDGE(grackle_dev)->bus;
- 
-     /* MacIO */
--    macio = OBJECT(pci_new(PCI_DEVFN(16, 0), TYPE_OLDWORLD_MACIO));
-+    macio = OBJECT(pci_new_orphan(PCI_DEVFN(16, 0), TYPE_OLDWORLD_MACIO));
-     qdev_prop_set_uint64(DEVICE(macio), "frequency", tbfreq);
- 
-     dev = DEVICE(object_resolve_path_component(macio, "escc"));
-@@ -285,7 +285,7 @@ static void ppc_heathrow_init(MachineState *machine)
-     qdev_realize_and_unref(dev, adb_bus, &error_fatal);
- 
-     if (machine_usb(machine)) {
--        pci_create_simple(pci_bus, -1, "pci-ohci");
-+        pci_create_simple_orphan(pci_bus, -1, "pci-ohci");
-     }
- 
-     if (!graphic_width) {
-diff --git a/hw/ppc/pegasos.c b/hw/ppc/pegasos.c
-index 3dc02423ee..0030068ab3 100644
---- a/hw/ppc/pegasos.c
-+++ b/hw/ppc/pegasos.c
-@@ -241,7 +241,7 @@ static void pegasos_init(MachineState *machine)
- 
-     /* VIA VT8231 South Bridge (multifunction PCI device) */
-     devfn = PCI_DEVFN(pm->type == PEGASOS1 ? 7 : 12, 0);
--    pm->sb = DEVICE(pci_new_multifunction(devfn, TYPE_VT8231_ISA));
-+    pm->sb = DEVICE(pci_new_multifunction_orphan(devfn, TYPE_VT8231_ISA));
-     via = OBJECT(pm->sb);
- 
-     /* Set properties on individual devices before realizing the south bridge */
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index f53ff9c582..a716d5da6a 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -300,7 +300,7 @@ static void ibm_40p_init(MachineState *machine)
-     }
- 
-     /* PCI -> ISA bridge */
--    i82378_dev = DEVICE(pci_new(PCI_DEVFN(11, 0), "i82378"));
-+    i82378_dev = DEVICE(pci_new_orphan(PCI_DEVFN(11, 0), "i82378"));
-     qdev_realize_and_unref(i82378_dev, BUS(pci_bus), &error_fatal);
-     qdev_connect_gpio_out(i82378_dev, 0,
-                           qdev_get_gpio_in(DEVICE(cpu), PPC6xx_INPUT_INT));
-@@ -350,7 +350,7 @@ static void ibm_40p_init(MachineState *machine)
-         qdev_prop_set_uint32(dev, "config", 12);
-         isa_realize_and_unref(isa_dev, isa_bus, &error_fatal);
- 
--        dev = DEVICE(pci_create_simple(pci_bus, PCI_DEVFN(1, 0), "lsi53c810"));
-+        dev = DEVICE(pci_create_simple_orphan(pci_bus, PCI_DEVFN(1, 0), "lsi53c810"));
-         lsi53c8xx_handle_legacy_cmdline(dev);
-         qdev_connect_gpio_out(dev, 0, qdev_get_gpio_in(i82378_dev, 13));
  
 diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
-index 88c4e66b2d..0c4c6f6256 100644
+index 0c4c6f6256..767a5eb596 100644
 --- a/hw/ppc/sam460ex.c
 +++ b/hw/ppc/sam460ex.c
-@@ -422,14 +422,14 @@ static void sam460ex_init(MachineState *machine)
-     pci_bus = PCI_BUS(qdev_get_child_bus(dev, "pci.0"));
+@@ -345,7 +345,7 @@ static void sam460ex_init(MachineState *machine)
+     spd_data[20] = 4; /* SO-DIMM module */
+     smbus_eeprom_init_one(i2c, 0x50, spd_data);
+     /* RTC */
+-    i2c_slave_create_simple(i2c, "m41t80", 0x68);
++    i2c_slave_create_simple_orphan(i2c, "m41t80", 0x68);
  
-     /* PCI devices */
--    pci_create_simple(pci_bus, PCI_DEVFN(6, 0), "sm501");
-+    pci_create_simple_orphan(pci_bus, PCI_DEVFN(6, 0), "sm501");
-     /*
-      * SoC has a single SATA port but we don't emulate that
-      * However, firmware and usual clients have driver for SiI311x
-      * PCI SATA card so add one for convenience by default
-      */
-     if (defaults_enabled()) {
--        PCIIDEState *s = PCI_IDE(pci_create_simple(pci_bus, -1, "sii3112"));
-+        PCIIDEState *s = PCI_IDE(pci_create_simple_orphan(pci_bus, -1, "sii3112"));
-         DriveInfo *di;
- 
-         di = drive_get_by_index(IF_IDE, 0);
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 30bf0cd0c0..4ead6ba664 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -3075,7 +3075,7 @@ static void spapr_machine_init(MachineState *machine)
+     dev = sysbus_create_simple_orphan(TYPE_PPC4xx_I2C, 0x4ef600800,
+                                qdev_get_gpio_in(uic[0], 3));
+diff --git a/hw/riscv/tt_atlantis.c b/hw/riscv/tt_atlantis.c
+index beaf64e0c1..c3be7eb913 100644
+--- a/hw/riscv/tt_atlantis.c
++++ b/hw/riscv/tt_atlantis.c
+@@ -575,8 +575,8 @@ static void tt_atlantis_machine_init(MachineState *machine)
      }
  
-     if (machine->usb) {
--        pci_create_simple(phb->bus, -1, "nec-usb-xhci");
-+        pci_create_simple_orphan(phb->bus, -1, "nec-usb-xhci");
+     /* I2C peripherals: qemu specific */
+-    i2c_slave_create_simple(i2c_get_bus(s, 0), "ds1338", 0x6f);
+-    i2c_slave_create_simple(i2c_get_bus(s, 4), "tmp105", 0x48);
++    i2c_slave_create_simple_orphan(i2c_get_bus(s, 0), "ds1338", 0x6f);
++    i2c_slave_create_simple_orphan(i2c_get_bus(s, 4), "tmp105", 0x48);
  
-         if (has_vga) {
-             USBBus *usb_bus;
-diff --git a/hw/riscv/boston-aia.c b/hw/riscv/boston-aia.c
-index 0fbb44c5df..029cf23696 100644
---- a/hw/riscv/boston-aia.c
-+++ b/hw/riscv/boston-aia.c
-@@ -418,7 +418,7 @@ static void boston_mach_init(MachineState *machine)
-     qemu_chr_fe_set_handlers(&s->lcd_display, NULL, NULL,
-                              boston_lcd_event, NULL, s, NULL, true);
+     /* Load or create device tree */
+     if (machine->dtb) {
+diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+index a00238ed74..e1c0323cb6 100644
+--- a/include/hw/arm/aspeed.h
++++ b/include/hw/arm/aspeed.h
+@@ -83,7 +83,7 @@ void aspeed_machine_class_init_cpus_defaults(MachineClass *mc);
+  *
+  * Create and attach a PCA9552 LED controller device to the specified I2C bus
+  * of the given Aspeed SoC. The device is instantiated using
+- * i2c_slave_create_simple() with the PCA9552 device type.
++ * i2c_slave_create_simple_orphan() with the PCA9552 device type.
+  */
+ void aspeed_create_pca9552(AspeedSoCState *soc, int bus_id, int addr);
  
--    pdev = pci_create_simple_multifunction(&PCI_BRIDGE(&pcie2->root)->sec_bus,
-+    pdev = pci_create_simple_multifunction_orphan(&PCI_BRIDGE(&pcie2->root)->sec_bus,
-                                            PCI_DEVFN(0, 0), TYPE_ICH9_AHCI);
-     ich9 = ICH9_AHCI(pdev);
-     g_assert(ARRAY_SIZE(hd) == ich9->ahci.ports);
-diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-index bd73d26e2c..5de873126c 100644
---- a/hw/sparc64/sun4u.c
-+++ b/hw/sparc64/sun4u.c
-@@ -599,7 +599,7 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
-     pci_bus_set_slot_reserved_mask(pci_busA, 0xfffffff1);
-     pci_bus_set_slot_reserved_mask(pci_busB, 0xfffffff0);
- 
--    ebus = pci_new_multifunction(PCI_DEVFN(1, 0), TYPE_EBUS);
-+    ebus = pci_new_multifunction_orphan(PCI_DEVFN(1, 0), TYPE_EBUS);
-     qdev_prop_set_uint64(DEVICE(ebus), "console-serial-base",
-                          hwdef->console_serial_base);
-     pci_realize_and_unref(ebus, pci_busA, &error_fatal);
-@@ -618,7 +618,7 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
- 
-     switch (vga_interface_type) {
-     case VGA_STD:
--        pci_create_simple(pci_busA, PCI_DEVFN(2, 0), "VGA");
-+        pci_create_simple_orphan(pci_busA, PCI_DEVFN(2, 0), "VGA");
-         vga_interface_created = true;
-         break;
-     case VGA_NONE:
-@@ -632,7 +632,7 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
- 
-     nd = qemu_find_nic_info(mc->default_nic, true, NULL);
-     if (nd) {
--        pci_dev = pci_new_multifunction(PCI_DEVFN(1, 1), mc->default_nic);
-+        pci_dev = pci_new_multifunction_orphan(PCI_DEVFN(1, 1), mc->default_nic);
-         dev = &pci_dev->qdev;
-         qdev_set_nic_properties(dev, nd);
-         pci_realize_and_unref(pci_dev, pci_busA, &error_fatal);
-@@ -648,7 +648,7 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
-         qemu_macaddr_default_if_unset(&macaddr);
-     }
- 
--    pci_dev = pci_new(PCI_DEVFN(3, 0), "cmd646-ide");
-+    pci_dev = pci_new_orphan(PCI_DEVFN(3, 0), "cmd646-ide");
-     qdev_prop_set_uint32(&pci_dev->qdev, "secondary", 1);
-     pci_realize_and_unref(pci_dev, pci_busA, &error_fatal);
-     pci_ide_create_devs(pci_dev);
-diff --git a/hw/vfio/igd.c b/hw/vfio/igd.c
-index e091f21b6a..bea0d57a11 100644
---- a/hw/vfio/igd.c
-+++ b/hw/vfio/igd.c
-@@ -334,7 +334,7 @@ static int vfio_pci_igd_lpc_init(VFIOPCIDevice *vdev,
-     lpc_bridge = pci_find_device(pci_device_root_bus(pdev),
-                                  0, PCI_DEVFN(0x1f, 0));
-     if (!lpc_bridge) {
--        lpc_bridge = pci_create_simple(pci_device_root_bus(pdev),
-+        lpc_bridge = pci_create_simple_orphan(pci_device_root_bus(pdev),
-                                  PCI_DEVFN(0x1f, 0), "vfio-pci-igd-lpc-bridge");
-     }
- 
-diff --git a/hw/xen/xen_pt_graphics.c b/hw/xen/xen_pt_graphics.c
-index 7df9344500..4457209e83 100644
---- a/hw/xen/xen_pt_graphics.c
-+++ b/hw/xen/xen_pt_graphics.c
-@@ -399,7 +399,7 @@ void xen_igd_passthrough_isa_bridge_create(XenPCIPassthroughState *s,
-     }
- 
-     /* Currently IGD drivers always need to access PCH by 1f.0. */
--    bridge_dev = pci_create_simple(bus, PCI_DEVFN(0x1f, 0),
-+    bridge_dev = pci_create_simple_orphan(bus, PCI_DEVFN(0x1f, 0),
-                                    "igd-passthrough-isa-bridge");
- 
-     /*
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index f2448e941a..cbbb6a3756 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -1088,13 +1088,23 @@ pci_set_quad_by_mask(uint8_t *config, uint64_t mask, uint64_t reg)
-     pci_set_quad(config, (~mask & val) | (mask & rval));
- }
- 
--PCIDevice *pci_new_multifunction(int devfn, const char *name);
--PCIDevice *pci_new(int devfn, const char *name);
-+PCIDevice *pci_new_multifunction(Object *parent, const char *id,
-+                                 int devfn, const char *type);
-+PCIDevice *pci_new(Object *parent, const char *id,
-+                   int devfn, const char *type);
-+PCIDevice *pci_create_simple_multifunction(Object *parent, const char *id,
-+                                           PCIBus *bus, int devfn,
-+                                           const char *type);
-+PCIDevice *pci_create_simple(Object *parent, const char *id,
-+                             PCIBus *bus, int devfn, const char *type);
+@@ -95,7 +95,7 @@ void aspeed_create_pca9552(AspeedSoCState *soc, int bus_id, int addr);
+  *
+  * Create and attach a PCA9554 I/O expander to the specified I2C bus
+  * of the given Aspeed SoC. The device is created via
+- * i2c_slave_create_simple() and returned as an #I2CSlave pointer.
++ * i2c_slave_create_simple_orphan() and returned as an #I2CSlave pointer.
+  *
+  * Returns: a pointer to the newly created #I2CSlave instance.
+  */
+diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+index bcdc4f21a9..0bba1a7c20 100644
+--- a/include/hw/i2c/i2c.h
++++ b/include/hw/i2c/i2c.h
+@@ -163,7 +163,20 @@ bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
+  * properties to be set. Type @name must exist. The device still
+  * needs to be realized. See qdev-core.h.
+  */
+-I2CSlave *i2c_slave_new(const char *name, uint8_t addr);
++I2CSlave *i2c_slave_new_orphan(const char *name, uint8_t addr);
 +
-+PCIDevice *pci_new_multifunction_orphan(int devfn, const char *name);
-+PCIDevice *pci_new_orphan(int devfn, const char *name);
- bool pci_realize_and_unref(PCIDevice *dev, PCIBus *bus, Error **errp);
++/**
++ * Create a parented I2C slave device on the heap.
++ * @parent: the QOM parent
++ * @id: child<> property name
++ * @type: I2C slave device type name
++ * @addr: I2C address of the slave when put on a bus
++ *
++ * Like i2c_slave_new_orphan(), but the returned device is owned by
++ * @parent's child<> property.  Pair with qdev_realize().
++ */
++I2CSlave *i2c_slave_new(Object *parent, const char *id,
++                        const char *type, uint8_t addr);
  
--PCIDevice *pci_create_simple_multifunction(PCIBus *bus, int devfn,
-+PCIDevice *pci_create_simple_multifunction_orphan(PCIBus *bus, int devfn,
-                                            const char *name);
--PCIDevice *pci_create_simple(PCIBus *bus, int devfn, const char *name);
-+PCIDevice *pci_create_simple_orphan(PCIBus *bus, int devfn, const char *name);
+ /**
+  * Create and realize an I2C slave device on the heap.
+@@ -174,7 +187,24 @@ I2CSlave *i2c_slave_new(const char *name, uint8_t addr);
+  * Create the device state structure, initialize it, put it on the
+  * specified @bus, and drop the reference to it (the device is realized).
+  */
+-I2CSlave *i2c_slave_create_simple(I2CBus *bus, const char *name, uint8_t addr);
++I2CSlave *i2c_slave_create_simple_orphan(I2CBus *bus, const char *name,
++                                         uint8_t addr);
++
++/**
++ * Create, parent and realize an I2C slave device on the heap.
++ * @parent: the QOM parent
++ * @id: child<> property name
++ * @bus: I2C bus to put it on
++ * @type: I2C slave device type name
++ * @addr: I2C address of the slave when put on a bus
++ *
++ * Create the device state structure, add it as a child of @parent,
++ * put it on the specified @bus and realize it.  The returned device
++ * is owned by @parent.
++ */
++I2CSlave *i2c_slave_create_simple(Object *parent, const char *id,
++                                  I2CBus *bus, const char *type,
++                                  uint8_t addr);
  
- void lsi53c8xx_handle_legacy_cmdline(DeviceState *lsi_dev);
- 
-diff --git a/scripts/coccinelle/qom-parent/pci-new-orphan.cocci b/scripts/coccinelle/qom-parent/pci-new-orphan.cocci
+ /**
+  * Realize and drop a reference an I2C slave device
+@@ -189,10 +219,10 @@ I2CSlave *i2c_slave_create_simple(I2CBus *bus, const char *name, uint8_t addr);
+  * reference to it.
+  *
+  * This function is useful if you have created @dev via qdev_new_orphan(),
+- * i2c_slave_new() or i2c_slave_try_new() (which take a reference to
++ * i2c_slave_new_orphan() or i2c_slave_try_new() (which take a reference to
+  * the device it returns to you), so that you can set properties on it
+  * before realizing it. If you don't need to set properties then
+- * i2c_slave_create_simple() is probably better (as it does the create,
++ * i2c_slave_create_simple_orphan() is probably better (as it does the create,
+  * init and realize in one step).
+  *
+  * If you are embedding the I2C slave into another QOM device and
+diff --git a/scripts/coccinelle/qom-parent/i2c-slave-new-orphan.cocci b/scripts/coccinelle/qom-parent/i2c-slave-new-orphan.cocci
 new file mode 100644
-index 0000000000..e6cfd0d6c1
+index 0000000000..fdfb6a84c8
 --- /dev/null
-+++ b/scripts/coccinelle/qom-parent/pci-new-orphan.cocci
-@@ -0,0 +1,28 @@
++++ b/scripts/coccinelle/qom-parent/i2c-slave-new-orphan.cocci
+@@ -0,0 +1,18 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +//
-+// Rename pci_new*/pci_create_simple*() to *_orphan() so that the
-+// short names can be reintroduced with a mandatory (parent, id, ...)
-+// signature.
++// Rename i2c_slave_new()/i2c_slave_create_simple() to *_orphan()
++// so that the short names can be reintroduced with a mandatory
++// (parent, id, ...) signature.
 +//
-+// spatch --sp-file scripts/coccinelle/qom-parent/pci-new-orphan.cocci \
++// spatch --sp-file scripts/coccinelle/qom-parent/i2c-slave-new-orphan.cocci \
 +//        --in-place --include-headers --dir .
 +
 +@@
 +@@
-+- pci_new_multifunction
-++ pci_new_multifunction_orphan
++- i2c_slave_new
+++ i2c_slave_new_orphan
 +
 +@@
 +@@
-+- pci_new
-++ pci_new_orphan
-+
-+@@
-+@@
-+- pci_create_simple_multifunction
-++ pci_create_simple_multifunction_orphan
-+
-+@@
-+@@
-+- pci_create_simple
-++ pci_create_simple_orphan
++- i2c_slave_create_simple
+++ i2c_slave_create_simple_orphan
 -- 
 2.47.1
 

@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA714C43458
-	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 23:00:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F424C43458
+	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 23:00:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wigfo-0007ot-Gr; Sat, 11 Jul 2026 18:59:52 -0400
+	id 1wigga-00015q-3q; Sat, 11 Jul 2026 19:00:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigfk-0007ll-Az; Sat, 11 Jul 2026 18:59:49 -0400
-Received: from pdx-out-011.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.35.192.45])
+ id 1wiggW-00012M-9B; Sat, 11 Jul 2026 19:00:36 -0400
+Received: from pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([44.246.68.102])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigfi-0001k0-Ly; Sat, 11 Jul 2026 18:59:48 -0400
+ id 1wiggU-00029u-C3; Sat, 11 Jul 2026 19:00:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1783810786; x=1815346786;
+ t=1783810834; x=1815346834;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=fGAsGEmjfX3MBpOp6h3ry6kdNBxY7rLmYSvCKtAP6K8=;
- b=sNmYG+4yIGGNhrX4qdAeyBFQi1biajHUT7Mav40qPWBI3rp5bNqSj7bd
- kamYrGV3ySBoYLEiCsh/NFLjJCBdNPZf1GxFG9fNZGZBunf7U2Z7qkfXC
- 4oy0kWYt8bMb5A/nESeaHNqTewBXGJR3zODpkgO6OOqeVnoAdCPKSBV+M
- gGcgImZHA7g4jKd0/1kH7Fz0zxthJa+HKzW+q2OOLzkvPm08EXin+0Cgv
- MxONYH9bqLD77sILnPd/JSQD4OAp1f4E/ykFJgFePh1q+q69+o848sCfA
- 6xhhaGzc/gHtwbI/TX65dt6mtEG0bz9UbkGsyc5d8NYoYoTtdTLBivwh5 A==;
-X-CSE-ConnectionGUID: Ji1NepCmRmK8JLTtELBBXQ==
-X-CSE-MsgGUID: 1Wa+D6v3SvOFDfHTF6lPYg==
-X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23269909"
-Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
- by internal-pdx-out-011.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:59:43 +0000
-Received: from EX19MTAUWC001.ant.amazon.com [205.251.233.53:13464]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.47.135:2525]
+ bh=EnmzGX4xfQSuDLXUlHieHM3DsIzb9BhvR/Rb7/1Gz/8=;
+ b=Q2akdzS9wn9/WrN/+siOh5WbZ8ce0NmNe7GnMwmmuNdxcyHj1sURDEfC
+ Np4VZHsDNHM1U7Ka+JrLKaDADyOxJUltlmsW1VuPnkcJ3ZPT3ZB3xJ5Z6
+ oJuEhrthhowxG59PYXbI8DBL2TOi7bvJl8iirXxOLGTOXh5d5L1ltgWki
+ msUWvhb2bk68hWHgHAJ6cIO5SECohifBaFB+g5WfDlzECXa19UTVdpv63
+ Gs3SLwydZ872/HVwglG5k3UIrRLC77pVgpR/lElmG0rSY3ln8totmuiOU
+ JDJwNJZV2PYShU5pl/lnSU8PGNUpbi5v+FV9SiwoF0y+x552U52vLoS4t g==;
+X-CSE-ConnectionGUID: /2uyAfLnSj6Yv1mqIUYKpg==
+X-CSE-MsgGUID: 9IUUB8zhSBuNF7Y2m8K38w==
+X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23517328"
+Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
+ by internal-pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 23:00:30 +0000
+Received: from EX19MTAUWA002.ant.amazon.com [205.251.233.178:5353]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.11.68:2525]
  with esmtp (Farcaster)
- id cf93b9d5-a49c-4a91-9642-236675a40b9d; Sat, 11 Jul 2026 22:59:42 +0000 (UTC)
-X-Farcaster-Flow-ID: cf93b9d5-a49c-4a91-9642-236675a40b9d
+ id 88887342-96ae-417a-a99f-d59a19746440; Sat, 11 Jul 2026 23:00:30 +0000 (UTC)
+X-Farcaster-Flow-ID: 88887342-96ae-417a-a99f-d59a19746440
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWC001.ant.amazon.com (10.250.64.174) with Microsoft SMTP Server
+ EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:59:42 +0000
+ Sat, 11 Jul 2026 23:00:29 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:59:34 +0000
+ Sat, 11 Jul 2026 23:00:21 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -91,9 +91,10 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  <th.huth+qemu@posteo.eu>, "Ran Wang" <wangran@bosc.ac.cn>, Hao Wu
  <wuhaotsh@google.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>
-Subject: [RFC PATCH 086/134] cpu: Remove cpu_create_orphan()
-Date: Sat, 11 Jul 2026 22:36:19 +0000
-Message-ID: <20260711223707.42139-87-graf@amazon.com>
+Subject: [RFC PATCH 089/134] memory: Accept non-device owners in
+ memory_region_init_ram()
+Date: Sat, 11 Jul 2026 22:36:22 +0000
+Message-ID: <20260711223707.42139-90-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260711223707.42139-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -101,11 +102,11 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D031UWA004.ant.amazon.com (10.13.139.19) To
+X-ClientProxiedBy: EX19D037UWB004.ant.amazon.com (10.13.138.84) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.35.192.45;
+Received-SPF: pass client-ip=44.246.68.102;
  envelope-from=prvs=645f258d4=graf@amazon.de;
- helo=pdx-out-011.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -129,59 +130,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-All targets create their CPUs with an explicit parent now.
+memory_region_register_ram() casts the owner to DeviceState with an
+asserting DEVICE() check. Historically this was fine because every
+caller either passed a device or NULL, but the following patches
+give board-created RAM regions their machine as owner, which is not
+a device.
+
+vmstate_register_ram() only uses the device to prefix the RAMBlock
+idstr with the device's canonical path. Use object_dynamic_cast()
+so non-device owners degrade to the same NULL-owner idstr they had
+before, and drop the stale TODO comment.
+
+No functional change for existing callers.
 
 Assisted-by: Kiro
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/core/cpu-common.c  | 12 ------------
- include/hw/core/cpu.h | 10 ----------
- 2 files changed, 22 deletions(-)
+ system/memory.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index eef243c1ad..829a044e9e 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -68,18 +68,6 @@ CPUState *cpu_create(Object *parent, const char *id, const char *typename)
-     return cpu;
+diff --git a/system/memory.c b/system/memory.c
+index 5fc36708ec..e3ee0416cc 100644
+--- a/system/memory.c
++++ b/system/memory.c
+@@ -3631,15 +3631,15 @@ void mtree_info(bool flatview, bool dispatch_tree, bool owner, bool disabled)
+ 
+ static void memory_region_register_ram(MemoryRegion *mr, Object *owner)
+ {
+-    DeviceState *owner_dev;
+-
+-    /* This will assert if owner is neither NULL nor a DeviceState.
+-     * We only want the owner here for the purposes of defining a
+-     * unique name for migration. TODO: Ideally we should implement
+-     * a naming scheme for Objects which are not DeviceStates, in
+-     * which case we can relax this restriction.
++    /*
++     * vmstate_register_ram() prefixes the RAMBlock idstr with the
++     * canonical path of @owner when it is a DeviceState.  Board-
++     * created RAM regions are owned by the machine, which is not a
++     * device; pass NULL there so the idstr is the bare region name,
++     * matching historical behaviour for owner==NULL callers.
+      */
+-    owner_dev = DEVICE(owner);
++    DeviceState *owner_dev =
++        (DeviceState *)object_dynamic_cast(owner, TYPE_DEVICE);
+     vmstate_register_ram(mr, owner_dev);
  }
  
--CPUState *cpu_create_orphan(const char *typename)
--{
--    Error *err = NULL;
--    CPUState *cpu = CPU(object_new(typename));
--    if (!qdev_realize(DEVICE(cpu), NULL, &err)) {
--        error_report_err(err);
--        object_unref(OBJECT(cpu));
--        exit(EXIT_FAILURE);
--    }
--    return cpu;
--}
--
- void cpu_reset_interrupt(CPUState *cpu, int mask)
- {
-     qatomic_and(&cpu->interrupt_request, ~mask);
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 1b2ec1ab1e..544740a699 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -857,16 +857,6 @@ char *cpu_model_from_type(const char *typename);
-  */
- CPUState *cpu_create(Object *parent, const char *id, const char *typename);
- 
--/**
-- * cpu_create_orphan:
-- * @typename: The CPU type.
-- *
-- * Instantiates a CPU and realizes the CPU.
-- *
-- * Returns: A #CPUState or %NULL if an error occurred.
-- */
--CPUState *cpu_create_orphan(const char *typename);
--
- /**
-  * parse_cpu_option:
-  * @cpu_option: The -cpu option including optional parameters.
 -- 
 2.47.1
 

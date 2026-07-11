@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9132C44501
-	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:53:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A14C3C44507
+	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:53:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wigZi-0003XB-9R; Sat, 11 Jul 2026 18:53:34 -0400
+	id 1wigYs-0001Pg-AC; Sat, 11 Jul 2026 18:52:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigZf-0003Kj-QR; Sat, 11 Jul 2026 18:53:31 -0400
-Received: from pdx-out-009.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([35.155.198.111])
+ id 1wigYc-00017D-Gl; Sat, 11 Jul 2026 18:52:27 -0400
+Received: from pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([44.246.77.92])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigZc-0000FS-3N; Sat, 11 Jul 2026 18:53:31 -0400
+ id 1wigYY-0008Tx-V9; Sat, 11 Jul 2026 18:52:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1783810408; x=1815346408;
+ t=1783810343; x=1815346343;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=/3JTEXiUeDVrvvuMHAZVpkhePbnTFUZjX8ANi+ci0NY=;
- b=Ee4fJ3s6aQWQaYc2Ufc31436Ll8H8+TY1f5tliNUjomXPDBeRXyrk8dQ
- 9wthHM2Q4VZXJIFbRolU5p9a0RwxgYiiZV1nxpHfkHQE6hhYK9vHcW4R+
- H0ho2knKTvjvIeCPmMQuXWnvVMtL4Xk+3nrgZzvSMmYaTroD3D3DYjQHO
- G73wkyxH6ChsgrtcEeJ+oAP1cnwB8Wvnz0fTZTtu0QXMpnpIadJVfui5Z
- lpxC0XAK3MvlqMmfa5pN47/9hq/oCPdiYBEW+/pHdB6OuE66YbhdfDdnK
- oiBfM5pxsG07nMwCfUWO/OIWFYE9nahkuXwXPMcUSbSsfQmRcqTFLfnVA Q==;
-X-CSE-ConnectionGUID: k3kLIqM2RvmazG4V3O3hjQ==
-X-CSE-MsgGUID: 3Z/0OUUsQCOSpIVD8aW0jw==
-X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23390535"
-Received: from ip-10-5-9-48.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.9.48])
- by internal-pdx-out-009.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:53:23 +0000
-Received: from EX19MTAUWB001.ant.amazon.com [205.251.233.51:14526]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.58.33:2525]
+ bh=qJ9SPZd6KqKT0DByIkveEz5n2P2u8Ab+W4C2Tdl7jYU=;
+ b=RaQia3awJ9VURokJD/SJpdT5RmyuQIi9OzMik2N9DQGN/CRREhUdD/vC
+ yK7Ahl/4PcylV0VfAljIfFQ+WPbgFrruvhevlbspTkEqPNYMxwoNPo5xw
+ eobvM/v7GllIn4tLurNatE+cmZkVZU4EqQqlfaTQvqLpZKlMa6+VN77xs
+ VtQEIMulGneHMqtFJSJGCVC/6ly8XqTynghEOi4ezRiJDF1ikwX1sMvNq
+ xFN2SKArBFl2SqJN4eeFFh85/2CB3EhvSH3y1DTg/lm+ZD0Ypkp9w9CXE
+ RflYbU7HSGAbfG5xBcBA5u4eDo8/HbMawfAcGfY/gikuA3t3i1WwRqs+6 w==;
+X-CSE-ConnectionGUID: jjHQ2GzHTxyUeU25lbK3Pg==
+X-CSE-MsgGUID: 290MNva6RYilvvSdP7ceRA==
+X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23493166"
+Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
+ by internal-pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:52:18 +0000
+Received: from EX19MTAUWC002.ant.amazon.com [205.251.233.51:25417]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.31.54:2525]
  with esmtp (Farcaster)
- id 52df0f18-5257-4281-9713-2e429f90f04b; Sat, 11 Jul 2026 22:53:23 +0000 (UTC)
-X-Farcaster-Flow-ID: 52df0f18-5257-4281-9713-2e429f90f04b
+ id 1520f47c-e749-4a59-a4bb-753b46ca57be; Sat, 11 Jul 2026 22:52:18 +0000 (UTC)
+X-Farcaster-Flow-ID: 1520f47c-e749-4a59-a4bb-753b46ca57be
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWB001.ant.amazon.com (10.250.64.248) with Microsoft SMTP Server
+ EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:53:23 +0000
+ Sat, 11 Jul 2026 22:52:18 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:53:14 +0000
+ Sat, 11 Jul 2026 22:52:09 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -91,10 +91,9 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  <th.huth+qemu@posteo.eu>, "Ran Wang" <wangran@bosc.ac.cn>, Hao Wu
  <wuhaotsh@google.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>
-Subject: [RFC PATCH 062/134] hw/arm/versatile,
- vexpress: Give onboard devices a QOM parent
-Date: Sat, 11 Jul 2026 22:35:55 +0000
-Message-ID: <20260711223707.42139-63-graf@amazon.com>
+Subject: [RFC PATCH 057/134] hw/arm/sbsa-ref: Give onboard devices a QOM parent
+Date: Sat, 11 Jul 2026 22:35:50 +0000
+Message-ID: <20260711223707.42139-58-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260711223707.42139-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -102,18 +101,18 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D037UWB004.ant.amazon.com (10.13.138.84) To
+X-ClientProxiedBy: EX19D043UWA003.ant.amazon.com (10.13.139.31) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=35.155.198.111;
+Received-SPF: pass client-ip=44.246.77.92;
  envelope-from=prvs=645f258d4=graf@amazon.de;
- helo=pdx-out-009.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
+ RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
  UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -130,7 +129,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the *_orphan() device-creation calls in the hw/arm versatile, vexpress
+Convert the *_orphan() device-creation calls in the hw/arm sbsa-ref
 board files to the new parented API introduced earlier in this
 series, so every onboard device gets a stable path in the
 composition tree instead of landing in /machine/unattached with an
@@ -142,403 +141,268 @@ composite children.  Names follow existing QOM conventions.
 
 Per-site rationale (reviewers: dispute the modeling here):
 
-hw/arm/versatilepb.c:229 | qdev_new | OBJECT(machine) | "sysctl" | board init(); machine owns onboard sysctl
-hw/arm/versatilepb.c:235 | sysbus_create_varargs | OBJECT(machine) | "vic" | board init(); PL190 primary intc
-hw/arm/versatilepb.c:242 | sysbus_create_simple | OBJECT(machine) | "sic" | board init(); secondary intc
-hw/arm/versatilepb.c:248 | sysbus_create_simple | OBJECT(machine) | "keyboard" | board init(); single KMI kbd
-hw/arm/versatilepb.c:249 | sysbus_create_simple | OBJECT(machine) | "mouse" | board init(); single KMI mouse
-hw/arm/versatilepb.c:251 | qdev_new | OBJECT(machine) | "pci-host" | board init(); versatile PCI host bridge
-hw/arm/versatilepb.c:273 | pci_create_simple | OBJECT(machine) | "usb" | board init(); optional OHCI on PCI bus
-hw/arm/versatilepb.c:277 | pci_create_simple | OBJECT(machine) | "scsi[*]" | board init(); loop over IF_SCSI buses
-hw/arm/versatilepb.c:287 | qdev_new | OBJECT(machine) | "dma" | board init(); PL080 DMA
-hw/arm/versatilepb.c:295 | sysbus_create_simple | OBJECT(machine) | "timer[*]" | board init(); two SP804 blocks
-hw/arm/versatilepb.c:296 | sysbus_create_simple | OBJECT(machine) | "timer[*]" | board init(); auto-index sibling
-hw/arm/versatilepb.c:298 | sysbus_create_simple | OBJECT(machine) | "gpio[*]" | board init(); four PL061 ports
-hw/arm/versatilepb.c:299 | sysbus_create_simple | OBJECT(machine) | "gpio[*]" | board init(); auto-index sibling
-hw/arm/versatilepb.c:300 | sysbus_create_simple | OBJECT(machine) | "gpio[*]" | board init(); auto-index sibling
-hw/arm/versatilepb.c:301 | sysbus_create_simple | OBJECT(machine) | "gpio[*]" | board init(); auto-index sibling
-hw/arm/versatilepb.c:305 | qdev_new | OBJECT(machine) | "clcd" | board init(); PL110 display
-hw/arm/versatilepb.c:315 | sysbus_create_varargs | OBJECT(machine) | "mmci[*]" | board init(); two PL181 MMCI
-hw/arm/versatilepb.c:320 | qdev_new | OBJECT(machine) | "sd-card[*]" | board init(); removable card owned by machine
-hw/arm/versatilepb.c:327 | sysbus_create_varargs | OBJECT(machine) | "mmci[*]" | board init(); auto-index sibling
-hw/arm/versatilepb.c:332 | qdev_new | OBJECT(machine) | "sd-card[*]" | board init(); auto-index sibling
-hw/arm/versatilepb.c:340 | sysbus_create_simple | OBJECT(machine) | "rtc" | board init(); PL031 RTC
-hw/arm/versatilepb.c:342 | sysbus_create_simple | OBJECT(machine) | "i2c" | board init(); SBCon I2C bridge
-hw/arm/versatilepb.c:344 | i2c_slave_create_simple | OBJECT(machine) | "ds1338" | board init(); onboard I2C RTC chip
-hw/arm/versatilepb.c:347 | qdev_new | OBJECT(machine) | "aaci" | board init(); PL041 audio
-hw/arm/vexpress.c:244 | qdev_new | OBJECT(ms) | "mpcore" | init_cpus() takes MachineState *ms; A9/A15 priv block
-hw/arm/vexpress.c:304 | qdev_new | OBJECT(vms) | "db-clcd" | a9_daughterboard_init() has vms; distinct from motherboard clcd
-hw/arm/vexpress.c:316 | sysbus_create_simple | OBJECT(vms) | "timer[*]" | a9 daughterboard SP804; auto-index shared with motherboard timers
-hw/arm/vexpress.c:324 | sysbus_create_varargs | OBJECT(vms) | "l2x0" | a9 daughterboard L2 cache ctrl
-hw/arm/vexpress.c:520 | qdev_new | parent | "flash[*]" | helper: thread Object *parent as first arg; two callers pass OBJECT(machine)
-hw/arm/vexpress.c:595 | qdev_new | OBJECT(machine) | "sysctl" | vexpress_common_init(MachineState *machine)
-hw/arm/vexpress.c:617 | qdev_new | OBJECT(machine) | "aaci" | board init(); PL041 audio
-hw/arm/vexpress.c:626 | sysbus_create_varargs | OBJECT(machine) | "mmci" | board init(); single PL181
-hw/arm/vexpress.c:636 | qdev_new | OBJECT(machine) | "sd-card" | board init(); single removable SD
-hw/arm/vexpress.c:643 | sysbus_create_simple | OBJECT(machine) | "keyboard" | board init(); KMI0
-hw/arm/vexpress.c:644 | sysbus_create_simple | OBJECT(machine) | "mouse" | board init(); KMI1
-hw/arm/vexpress.c:651 | sysbus_create_simple | OBJECT(machine) | "timer[*]" | board init(); motherboard SP804
-hw/arm/vexpress.c:652 | sysbus_create_simple | OBJECT(machine) | "timer[*]" | board init(); auto-index sibling
-hw/arm/vexpress.c:654 | sysbus_create_simple | OBJECT(machine) | "i2c" | board init(); SBCon serial DVI I2C
-hw/arm/vexpress.c:656 | i2c_slave_create_simple | OBJECT(machine) | "sii9022" | board init(); HDMI transmitter chip
-hw/arm/vexpress.c:658 | sysbus_create_simple | OBJECT(machine) | "rtc" | board init(); PL031
-hw/arm/vexpress.c:662 | qdev_new | OBJECT(machine) | "clcd" | board init(); motherboard PL111
-hw/arm/vexpress.c:709 | sysbus_create_simple | OBJECT(machine) | "virtio-mmio[*]" | board init(); loop of transports
+hw/arm/sbsa-ref.c:299 | qdev_new | OBJECT(sms) | name | collapse existing object_property_add_child(OBJECT(sms), name, ...); keep existing name; sbsa_flash_map1 realize -> sysbus_realize
+hw/arm/sbsa-ref.c:424 | qdev_new | OBJECT(sms) | "its" | helper receives SBSAMachineState* board pointer
+hw/arm/sbsa-ref.c:443 | qdev_new | OBJECT(sms) | "gic" | helper receives SBSAMachineState* board pointer
+hw/arm/sbsa-ref.c:525 | qdev_new | OBJECT(sms) | "uart[*]" | helper called 3x from board init -> auto-index; drop const
+hw/arm/sbsa-ref.c:540 | sysbus_create_simple | OBJECT(sms) | "rtc" | helper receives SBSAMachineState*; drop const
+hw/arm/sbsa-ref.c:547 | qdev_new | OBJECT(sms) | "wdt" | helper receives SBSAMachineState*; drop const
+hw/arm/sbsa-ref.c:575 | sysbus_create_simple | OBJECT(sms) | "gpio" | helper receives SBSAMachineState*; drop const
+hw/arm/sbsa-ref.c:578 | sysbus_create_simple | OBJECT(sms) | "gpio-key" | helper receives SBSAMachineState*
+hw/arm/sbsa-ref.c:593 | qdev_new | OBJECT(sms) | "ahci" | helper receives SBSAMachineState*; drop const
+hw/arm/sbsa-ref.c:608 | qdev_new | OBJECT(sms) | "xhci" | helper receives SBSAMachineState*; drop const
+hw/arm/sbsa-ref.c:625 | qdev_new | OBJECT(sms) | "smmuv3" | helper receives SBSAMachineState*; drop const
+hw/arm/sbsa-ref.c:661 | qdev_new | OBJECT(sms) | "pcie" | helper receives SBSAMachineState*
+hw/arm/sbsa-ref.c:698 | pci_create_simple | OBJECT(sms) | "bochs-display" | board owns lifetime; bus is plug location not parent
+hw/arm/sbsa-ref.c:715 | qdev_new | parent | "sbsa-ec" | helper lacks parent-capable pointer -> thread Object *parent from sbsa_ref_init
 
 Link: https://lore.kernel.org/qemu-devel/87jyr3w9tc.fsf@pond.sub.org/
 Assisted-by: Kiro
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/arm/versatilepb.c | 70 +++++++++++++++++++++++---------------------
- hw/arm/vexpress.c    | 66 +++++++++++++++++++++--------------------
- 2 files changed, 72 insertions(+), 64 deletions(-)
+ hw/arm/sbsa-ref.c | 70 ++++++++++++++++++++++++-----------------------
+ 1 file changed, 36 insertions(+), 34 deletions(-)
 
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index 6fb7223265..f68c4765c6 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -226,31 +226,33 @@ static void versatile_init(MachineState *machine, int board_id)
-     /* SDRAM at address zero.  */
-     memory_region_add_subregion(sysmem, 0, machine->ram);
- 
--    sysctl = qdev_new_orphan("realview_sysctl");
-+    sysctl = qdev_new(OBJECT(machine), "sysctl", "realview_sysctl");
-     qdev_prop_set_uint32(sysctl, "sys_id", 0x41007004);
-     qdev_prop_set_uint32(sysctl, "proc_id", 0x02000000);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(sysctl), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(sysctl), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(sysctl), 0, 0x10000000);
- 
--    dev = sysbus_create_varargs_orphan("pl190", 0x10140000,
-+    dev = sysbus_create_varargs(OBJECT(machine), "vic", "pl190", 0x10140000,
-                                 qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_IRQ),
-                                 qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_FIQ),
-                                 NULL);
-     for (n = 0; n < 32; n++) {
-         pic[n] = qdev_get_gpio_in(dev, n);
-     }
--    dev = sysbus_create_simple_orphan(TYPE_VERSATILE_PB_SIC, 0x10003000, NULL);
-+    dev = sysbus_create_simple(OBJECT(machine), "sic",
-+                               TYPE_VERSATILE_PB_SIC, 0x10003000, NULL);
-     for (n = 0; n < 32; n++) {
-         sysbus_connect_irq(SYS_BUS_DEVICE(dev), n, pic[n]);
-         sic[n] = qdev_get_gpio_in(dev, n);
-     }
- 
--    sysbus_create_simple_orphan("pl050_keyboard", 0x10006000, sic[3]);
--    sysbus_create_simple_orphan("pl050_mouse", 0x10007000, sic[4]);
-+    sysbus_create_simple(OBJECT(machine), "keyboard", "pl050_keyboard",
-+                         0x10006000, sic[3]);
-+    sysbus_create_simple(OBJECT(machine), "mouse", "pl050_mouse", 0x10007000, sic[4]);
- 
--    dev = qdev_new_orphan("versatile_pci");
-+    dev = qdev_new(OBJECT(machine), "pci-host", "versatile_pci");
-     busdev = SYS_BUS_DEVICE(dev);
--    sysbus_realize_and_unref(busdev, &error_fatal);
-+    sysbus_realize(busdev, &error_fatal);
-     sysbus_mmio_map(busdev, 0, 0x10001000); /* PCI controller regs */
-     sysbus_mmio_map(busdev, 1, 0x41000000); /* PCI self-config */
-     sysbus_mmio_map(busdev, 2, 0x42000000); /* PCI config */
-@@ -270,11 +272,12 @@ static void versatile_init(MachineState *machine, int board_id)
-     pci_init_nic_devices(pci_bus, "rtl8139");
- 
-     if (machine_usb(machine)) {
--        pci_create_simple_orphan(pci_bus, -1, "pci-ohci");
-+        pci_create_simple(OBJECT(machine), "usb", pci_bus, -1, "pci-ohci");
-     }
-     n = drive_get_max_bus(IF_SCSI);
-     while (n >= 0) {
--        dev = DEVICE(pci_create_simple_orphan(pci_bus, -1, "lsi53c895a"));
-+        dev = DEVICE(pci_create_simple(OBJECT(machine), "scsi[*]",
-+                                       pci_bus, -1, "lsi53c895a"));
-         lsi53c8xx_handle_legacy_cmdline(dev);
-         n--;
-     }
-@@ -284,72 +287,73 @@ static void versatile_init(MachineState *machine, int board_id)
-     pl011_create(OBJECT(machine), 0x101f3000, pic[14], serial_hd(2));
-     pl011_create(OBJECT(machine), 0x10009000, sic[6], serial_hd(3));
- 
--    dev = qdev_new_orphan("pl080");
-+    dev = qdev_new(OBJECT(machine), "dma", "pl080");
-     object_property_set_link(OBJECT(dev), "downstream", OBJECT(sysmem),
-                              &error_fatal);
-     busdev = SYS_BUS_DEVICE(dev);
--    sysbus_realize_and_unref(busdev, &error_fatal);
-+    sysbus_realize(busdev, &error_fatal);
-     sysbus_mmio_map(busdev, 0, 0x10130000);
-     sysbus_connect_irq(busdev, 0, pic[17]);
- 
--    sysbus_create_simple_orphan("sp804", 0x101e2000, pic[4]);
--    sysbus_create_simple_orphan("sp804", 0x101e3000, pic[5]);
-+    sysbus_create_simple(OBJECT(machine), "timer[*]", "sp804", 0x101e2000, pic[4]);
-+    sysbus_create_simple(OBJECT(machine), "timer[*]", "sp804", 0x101e3000, pic[5]);
- 
--    sysbus_create_simple_orphan("pl061", 0x101e4000, pic[6]);
--    sysbus_create_simple_orphan("pl061", 0x101e5000, pic[7]);
--    sysbus_create_simple_orphan("pl061", 0x101e6000, pic[8]);
--    sysbus_create_simple_orphan("pl061", 0x101e7000, pic[9]);
-+    sysbus_create_simple(OBJECT(machine), "gpio[*]", "pl061", 0x101e4000, pic[6]);
-+    sysbus_create_simple(OBJECT(machine), "gpio[*]", "pl061", 0x101e5000, pic[7]);
-+    sysbus_create_simple(OBJECT(machine), "gpio[*]", "pl061", 0x101e6000, pic[8]);
-+    sysbus_create_simple(OBJECT(machine), "gpio[*]", "pl061", 0x101e7000, pic[9]);
- 
-     /* The versatile/PB actually has a modified Color LCD controller
-        that includes hardware cursor support from the PL111.  */
--    dev = qdev_new_orphan("pl110_versatile");
-+    dev = qdev_new(OBJECT(machine), "clcd", "pl110_versatile");
-     object_property_set_link(OBJECT(dev), "framebuffer-memory",
-                              OBJECT(sysmem), &error_fatal);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x10120000);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[16]);
- 
-     /* Wire up the mux control signals from the SYS_CLCD register */
-     qdev_connect_gpio_out(sysctl, 0, qdev_get_gpio_in(dev, 0));
- 
--    dev = sysbus_create_varargs_orphan("pl181", 0x10005000, sic[22], sic[1], NULL);
-+    dev = sysbus_create_varargs(OBJECT(machine), "mmci[*]", "pl181",
-+                                0x10005000, sic[22], sic[1], NULL);
-     dinfo = drive_get(IF_SD, 0, 0);
-     if (dinfo) {
-         DeviceState *card;
- 
--        card = qdev_new_orphan(TYPE_SD_CARD);
-+        card = qdev_new(OBJECT(machine), "sd-card[*]", TYPE_SD_CARD);
-         qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
-                                 &error_fatal);
--        qdev_realize_and_unref(card, qdev_get_child_bus(dev, "sd-bus"),
--                               &error_fatal);
-+        qdev_realize(card, qdev_get_child_bus(dev, "sd-bus"), &error_fatal);
-     }
- 
--    dev = sysbus_create_varargs_orphan("pl181", 0x1000b000, sic[23], sic[2], NULL);
-+    dev = sysbus_create_varargs(OBJECT(machine), "mmci[*]", "pl181",
-+                                0x1000b000, sic[23], sic[2], NULL);
-     dinfo = drive_get(IF_SD, 0, 1);
-     if (dinfo) {
-         DeviceState *card;
- 
--        card = qdev_new_orphan(TYPE_SD_CARD);
-+        card = qdev_new(OBJECT(machine), "sd-card[*]", TYPE_SD_CARD);
-         qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
-                                 &error_fatal);
--        qdev_realize_and_unref(card, qdev_get_child_bus(dev, "sd-bus"),
--                               &error_fatal);
-+        qdev_realize(card, qdev_get_child_bus(dev, "sd-bus"), &error_fatal);
-     }
- 
-     /* Add PL031 Real Time Clock. */
--    sysbus_create_simple_orphan("pl031", 0x101e8000, pic[10]);
-+    sysbus_create_simple(OBJECT(machine), "rtc", "pl031", 0x101e8000, pic[10]);
- 
--    dev = sysbus_create_simple_orphan(TYPE_ARM_SBCON_I2C, 0x10002000, NULL);
-+    dev = sysbus_create_simple(OBJECT(machine), "i2c",
-+                               TYPE_ARM_SBCON_I2C, 0x10002000, NULL);
-     i2c = (I2CBus *)qdev_get_child_bus(dev, "i2c");
--    i2c_slave_create_simple_orphan(i2c, "ds1338", 0x68);
-+    i2c_slave_create_simple(OBJECT(machine), "ds1338", i2c, "ds1338", 0x68);
- 
-     /* Add PL041 AACI Interface to the LM4549 codec */
--    pl041 = qdev_new_orphan("pl041");
-+    pl041 = qdev_new(OBJECT(machine), "aaci", "pl041");
-     qdev_prop_set_uint32(pl041, "nc_fifo_depth", 512);
-     if (machine->audiodev) {
-         qdev_prop_set_string(pl041, "audiodev", machine->audiodev);
-     }
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(pl041), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(pl041), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(pl041), 0, 0x10004000);
-     sysbus_connect_irq(SYS_BUS_DEVICE(pl041), 0, sic[24]);
- 
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index 7c5a69b5a9..a643c6b079 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -241,11 +241,11 @@ static void init_cpus(MachineState *ms, const char *cpu_type,
-      * this must happen after the CPUs are created because a15mpcore_priv
-      * wires itself up to the CPU's generic_timer gpio out lines.
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index f9fb681d31..f632df742b 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -296,7 +296,7 @@ static PFlashCFI01 *sbsa_flash_create1(SBSAMachineState *sms,
+      * Create a single flash device.  We use the same parameters as
+      * the flash devices on the Versatile Express board.
       */
--    dev = qdev_new_orphan(privdev);
-+    dev = qdev_new(OBJECT(ms), "mpcore", privdev);
-     qdev_prop_set_uint32(dev, "num-cpu", smp_cpus);
-     qdev_prop_set_uint32(dev, "num-irq", GIC_EXT_IRQS + GIC_INTERNAL);
-     busdev = SYS_BUS_DEVICE(dev);
--    sysbus_realize_and_unref(busdev, &error_fatal);
-+    sysbus_realize(busdev, &error_fatal);
-     sysbus_mmio_map(busdev, 0, periphbase);
- 
-     /* Interrupts [42:0] are from the motherboard;
-@@ -301,10 +301,10 @@ static void a9_daughterboard_init(VexpressMachineState *vms,
-     /* Daughterboard peripherals : 0x10020000 .. 0x20000000 */
- 
-     /* 0x10020000 PL111 CLCD (daughterboard) */
--    dev = qdev_new_orphan("pl111");
-+    dev = qdev_new(OBJECT(vms), "db-clcd", "pl111");
-     object_property_set_link(OBJECT(dev), "framebuffer-memory",
-                              OBJECT(sysmem), &error_fatal);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x10020000);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[44]);
- 
-@@ -313,7 +313,7 @@ static void a9_daughterboard_init(VexpressMachineState *vms,
-     /* 0x100e1000 PL354 Static Memory Controller */
-     /* 0x100e2000 System Configuration Controller */
- 
--    sysbus_create_simple_orphan("sp804", 0x100e4000, pic[48]);
-+    sysbus_create_simple(OBJECT(vms), "timer[*]", "sp804", 0x100e4000, pic[48]);
-     /* 0x100e5000 SP805 Watchdog module */
-     /* 0x100e6000 BP147 TrustZone Protection Controller */
-     /* 0x100e9000 PL301 'Fast' AXI matrix */
-@@ -321,7 +321,7 @@ static void a9_daughterboard_init(VexpressMachineState *vms,
-     /* 0x100ec000 TrustZone Address Space Controller */
-     /* 0x10200000 CoreSight debug APB */
-     /* 0x1e00a000 PL310 L2 Cache Controller */
--    sysbus_create_varargs_orphan("l2x0", 0x1e00a000, NULL);
-+    sysbus_create_varargs(OBJECT(vms), "l2x0", "l2x0", 0x1e00a000, NULL);
- }
- 
- /* Voltage values for SYS_CFG_VOLT daughterboard registers;
-@@ -514,10 +514,11 @@ static void vexpress_modify_dtb(const struct arm_boot_info *info, void *fdt)
- /* Open code a private version of pflash registration since we
-  * need to set non-default device width for VExpress platform.
-  */
--static PFlashCFI01 *ve_pflash_cfi01_register(hwaddr base, const char *name,
-+static PFlashCFI01 *ve_pflash_cfi01_register(Object *parent,
-+                                             hwaddr base, const char *name,
-                                              DriveInfo *di)
- {
 -    DeviceState *dev = qdev_new_orphan(TYPE_PFLASH_CFI01);
-+    DeviceState *dev = qdev_new(parent, "flash[*]", TYPE_PFLASH_CFI01);
++    DeviceState *dev = qdev_new(OBJECT(sms), name, TYPE_PFLASH_CFI01);
  
-     if (di) {
-         qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(di));
-@@ -534,7 +535,7 @@ static PFlashCFI01 *ve_pflash_cfi01_register(hwaddr base, const char *name,
+     qdev_prop_set_uint64(dev, "sector-length", SBSA_FLASH_SECTOR_SIZE);
+     qdev_prop_set_uint8(dev, "width", 4);
+@@ -307,7 +307,6 @@ static PFlashCFI01 *sbsa_flash_create1(SBSAMachineState *sms,
      qdev_prop_set_uint16(dev, "id2", 0x00);
      qdev_prop_set_uint16(dev, "id3", 0x00);
      qdev_prop_set_string(dev, "name", name);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
- 
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+-    object_property_add_child(OBJECT(sms), name, OBJECT(dev));
+     object_property_add_alias(OBJECT(sms), alias_prop_name,
+                               OBJECT(dev), "drive");
      return PFLASH_CFI01(dev);
-@@ -592,7 +593,7 @@ static void vexpress_common_init(MachineState *machine)
- 
-     sys_id = 0x1190f500;
- 
--    sysctl = qdev_new_orphan("realview_sysctl");
-+    sysctl = qdev_new(OBJECT(machine), "sysctl", "realview_sysctl");
-     qdev_prop_set_uint32(sysctl, "sys_id", sys_id);
-     qdev_prop_set_uint32(sysctl, "proc_id", daughterboard->proc_id);
- 
-@@ -608,22 +609,23 @@ static void vexpress_common_init(MachineState *machine)
-     }
-     qdev_prop_set_array(sysctl, "db-clock", db_clock);
- 
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(sysctl), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(sysctl), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(sysctl), 0, map[VE_SYSREGS]);
- 
-     /* VE_SP810: not modelled */
-     /* VE_SERIALPCI: not modelled */
- 
--    pl041 = qdev_new_orphan("pl041");
-+    pl041 = qdev_new(OBJECT(machine), "aaci", "pl041");
-     qdev_prop_set_uint32(pl041, "nc_fifo_depth", 512);
-     if (machine->audiodev) {
-         qdev_prop_set_string(pl041, "audiodev", machine->audiodev);
-     }
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(pl041), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(pl041), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(pl041), 0, map[VE_PL041]);
-     sysbus_connect_irq(SYS_BUS_DEVICE(pl041), 0, pic[11]);
- 
--    dev = sysbus_create_varargs_orphan("pl181", map[VE_MMCI], pic[9], pic[10], NULL);
-+    dev = sysbus_create_varargs(OBJECT(machine), "mmci", "pl181",
-+                                map[VE_MMCI], pic[9], pic[10], NULL);
-     /* Wire up MMC card detect and read-only signals */
-     qdev_connect_gpio_out_named(dev, "card-read-only", 0,
-                           qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_WPROT));
-@@ -633,42 +635,43 @@ static void vexpress_common_init(MachineState *machine)
-     if (dinfo) {
-         DeviceState *card;
- 
--        card = qdev_new_orphan(TYPE_SD_CARD);
-+        card = qdev_new(OBJECT(machine), "sd-card", TYPE_SD_CARD);
-         qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
-                                 &error_fatal);
--        qdev_realize_and_unref(card, qdev_get_child_bus(dev, "sd-bus"),
--                               &error_fatal);
-+        qdev_realize(card, qdev_get_child_bus(dev, "sd-bus"), &error_fatal);
-     }
- 
--    sysbus_create_simple_orphan("pl050_keyboard", map[VE_KMI0], pic[12]);
--    sysbus_create_simple_orphan("pl050_mouse", map[VE_KMI1], pic[13]);
-+    sysbus_create_simple(OBJECT(machine), "keyboard", "pl050_keyboard",
-+                         map[VE_KMI0], pic[12]);
-+    sysbus_create_simple(OBJECT(machine), "mouse", "pl050_mouse", map[VE_KMI1], pic[13]);
- 
-     pl011_create(OBJECT(machine), map[VE_UART0], pic[5], serial_hd(0));
-     pl011_create(OBJECT(machine), map[VE_UART1], pic[6], serial_hd(1));
-     pl011_create(OBJECT(machine), map[VE_UART2], pic[7], serial_hd(2));
-     pl011_create(OBJECT(machine), map[VE_UART3], pic[8], serial_hd(3));
- 
--    sysbus_create_simple_orphan("sp804", map[VE_TIMER01], pic[2]);
--    sysbus_create_simple_orphan("sp804", map[VE_TIMER23], pic[3]);
-+    sysbus_create_simple(OBJECT(machine), "timer[*]", "sp804", map[VE_TIMER01], pic[2]);
-+    sysbus_create_simple(OBJECT(machine), "timer[*]", "sp804", map[VE_TIMER23], pic[3]);
- 
--    dev = sysbus_create_simple_orphan(TYPE_ARM_SBCON_I2C, map[VE_SERIALDVI], NULL);
-+    dev = sysbus_create_simple(OBJECT(machine), "i2c",
-+                               TYPE_ARM_SBCON_I2C, map[VE_SERIALDVI], NULL);
-     i2c = (I2CBus *)qdev_get_child_bus(dev, "i2c");
--    i2c_slave_create_simple_orphan(i2c, "sii9022", 0x39);
-+    i2c_slave_create_simple(OBJECT(machine), "sii9022", i2c, "sii9022", 0x39);
- 
--    sysbus_create_simple_orphan("pl031", map[VE_RTC], pic[4]); /* RTC */
-+    sysbus_create_simple(OBJECT(machine), "rtc", "pl031", map[VE_RTC], pic[4]); /* RTC */
- 
-     /* VE_COMPACTFLASH: not modelled */
- 
--    dev = qdev_new_orphan("pl111");
-+    dev = qdev_new(OBJECT(machine), "clcd", "pl111");
-     object_property_set_link(OBJECT(dev), "framebuffer-memory",
-                              OBJECT(sysmem), &error_fatal);
+@@ -328,7 +327,7 @@ static void sbsa_flash_map1(PFlashCFI01 *flash,
+     assert(QEMU_IS_ALIGNED(size, SBSA_FLASH_SECTOR_SIZE));
+     assert(size / SBSA_FLASH_SECTOR_SIZE <= UINT32_MAX);
+     qdev_prop_set_uint32(dev, "num-blocks", size / SBSA_FLASH_SECTOR_SIZE);
 -    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
 +    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, map[VE_CLCD]);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[14]);
  
-     dinfo = drive_get(IF_PFLASH, 0, 0);
--    pflash0 = ve_pflash_cfi01_register(map[VE_NORFLASH0], "vexpress.flash0",
--                                       dinfo);
-+    pflash0 = ve_pflash_cfi01_register(OBJECT(machine), map[VE_NORFLASH0],
-+                                       "vexpress.flash0", dinfo);
+     memory_region_add_subregion(sysmem, base,
+                                 sysbus_mmio_get_region(SYS_BUS_DEVICE(dev),
+@@ -421,11 +420,11 @@ static void create_its(SBSAMachineState *sms)
+     const char *itsclass = its_class_name();
+     DeviceState *dev;
  
-     if (map[VE_NORFLASHALIAS] != -1) {
-         /* Map flash 0 as an alias into low memory */
-@@ -680,7 +683,8 @@ static void vexpress_common_init(MachineState *machine)
-     }
+-    dev = qdev_new_orphan(itsclass);
++    dev = qdev_new(OBJECT(sms), "its", itsclass);
  
-     dinfo = drive_get(IF_PFLASH, 0, 1);
--    ve_pflash_cfi01_register(map[VE_NORFLASH1], "vexpress.flash1", dinfo);
-+    ve_pflash_cfi01_register(OBJECT(machine), map[VE_NORFLASH1],
-+                             "vexpress.flash1", dinfo);
+     object_property_set_link(OBJECT(dev), "parent-gicv3", OBJECT(sms->gic),
+                              &error_abort);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, sbsa_ref_memmap[SBSA_GIC_ITS].base);
+ }
  
-     sram_size = 0x2000000;
-     memory_region_init_ram(&vms->sram, NULL, "vexpress.sram", sram_size,
-@@ -706,8 +710,8 @@ static void vexpress_common_init(MachineState *machine)
-      * no backend is created the transport will just sit harmlessly idle.
-      */
-     for (i = 0; i < NUM_VIRTIO_TRANSPORTS; i++) {
--        sysbus_create_simple_orphan("virtio-mmio", map[VE_VIRTIO] + 0x200 * i,
--                             pic[40 + i]);
-+        sysbus_create_simple(OBJECT(machine), "virtio-mmio[*]", "virtio-mmio",
-+                             map[VE_VIRTIO] + 0x200 * i, pic[40 + i]);
-     }
+@@ -440,7 +439,7 @@ static void create_gic(SBSAMachineState *sms, MemoryRegion *mem)
  
-     daughterboard->bootinfo.ram_size = machine->ram_size;
+     gictype = gicv3_class_name();
+ 
+-    sms->gic = qdev_new_orphan(gictype);
++    sms->gic = qdev_new(OBJECT(sms), "gic", gictype);
+     qdev_prop_set_uint32(sms->gic, "revision", 3);
+     qdev_prop_set_uint32(sms->gic, "num-cpu", smp_cpus);
+     /*
+@@ -463,7 +462,7 @@ static void create_gic(SBSAMachineState *sms, MemoryRegion *mem)
+     qdev_prop_set_bit(sms->gic, "has-lpi", true);
+ 
+     gicbusdev = SYS_BUS_DEVICE(sms->gic);
+-    sysbus_realize_and_unref(gicbusdev, &error_fatal);
++    sysbus_realize(gicbusdev, &error_fatal);
+     sysbus_mmio_map(gicbusdev, 0, sbsa_ref_memmap[SBSA_GIC_DIST].base);
+     sysbus_mmio_map(gicbusdev, 1, sbsa_ref_memmap[SBSA_GIC_REDIST].base);
+ 
+@@ -517,39 +516,40 @@ static void create_gic(SBSAMachineState *sms, MemoryRegion *mem)
+     create_its(sms);
+ }
+ 
+-static void create_uart(const SBSAMachineState *sms, int uart,
++static void create_uart(SBSAMachineState *sms, int uart,
+                         MemoryRegion *mem, Chardev *chr)
+ {
+     hwaddr base = sbsa_ref_memmap[uart].base;
+     int irq = sbsa_ref_irqmap[uart];
+-    DeviceState *dev = qdev_new_orphan(TYPE_PL011);
++    DeviceState *dev = qdev_new(OBJECT(sms), "uart[*]", TYPE_PL011);
+     SysBusDevice *s = SYS_BUS_DEVICE(dev);
+ 
+     qdev_prop_set_chr(dev, "chardev", chr);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     memory_region_add_subregion(mem, base,
+                                 sysbus_mmio_get_region(s, 0));
+     sysbus_connect_irq(s, 0, qdev_get_gpio_in(sms->gic, irq));
+ }
+ 
+-static void create_rtc(const SBSAMachineState *sms)
++static void create_rtc(SBSAMachineState *sms)
+ {
+     hwaddr base = sbsa_ref_memmap[SBSA_RTC].base;
+     int irq = sbsa_ref_irqmap[SBSA_RTC];
+ 
+-    sysbus_create_simple_orphan("pl031", base, qdev_get_gpio_in(sms->gic, irq));
++    sysbus_create_simple(OBJECT(sms), "rtc", "pl031", base,
++                         qdev_get_gpio_in(sms->gic, irq));
+ }
+ 
+-static void create_wdt(const SBSAMachineState *sms)
++static void create_wdt(SBSAMachineState *sms)
+ {
+     hwaddr rbase = sbsa_ref_memmap[SBSA_GWDT_REFRESH].base;
+     hwaddr cbase = sbsa_ref_memmap[SBSA_GWDT_CONTROL].base;
+-    DeviceState *dev = qdev_new_orphan(TYPE_WDT_SBSA);
++    DeviceState *dev = qdev_new(OBJECT(sms), "wdt", TYPE_WDT_SBSA);
+     SysBusDevice *s = SYS_BUS_DEVICE(dev);
+     int irq = sbsa_ref_irqmap[SBSA_GWDT_WS0];
+ 
+     qdev_prop_set_uint64(dev, "clock-frequency", SBSA_GTIMER_HZ);
+-    sysbus_realize_and_unref(s, &error_fatal);
++    sysbus_realize(s, &error_fatal);
+     sysbus_mmio_map(s, 0, rbase);
+     sysbus_mmio_map(s, 1, cbase);
+     sysbus_connect_irq(s, 0, qdev_get_gpio_in(sms->gic, irq));
+@@ -566,23 +566,23 @@ static Notifier sbsa_ref_powerdown_notifier = {
+     .notify = sbsa_ref_powerdown_req
+ };
+ 
+-static void create_gpio(const SBSAMachineState *sms)
++static void create_gpio(SBSAMachineState *sms)
+ {
+     DeviceState *pl061_dev;
+     hwaddr base = sbsa_ref_memmap[SBSA_GPIO].base;
+     int irq = sbsa_ref_irqmap[SBSA_GPIO];
+ 
+-    pl061_dev = sysbus_create_simple_orphan("pl061", base,
++    pl061_dev = sysbus_create_simple(OBJECT(sms), "gpio", "pl061", base,
+                                      qdev_get_gpio_in(sms->gic, irq));
+ 
+-    gpio_key_dev = sysbus_create_simple_orphan("gpio-key", -1,
+-                                        qdev_get_gpio_in(pl061_dev, 3));
++    gpio_key_dev = sysbus_create_simple(OBJECT(sms), "gpio-key", "gpio-key",
++                                        -1, qdev_get_gpio_in(pl061_dev, 3));
+ 
+     /* connect powerdown request */
+     qemu_register_powerdown_notifier(&sbsa_ref_powerdown_notifier);
+ }
+ 
+-static void create_ahci(const SBSAMachineState *sms)
++static void create_ahci(SBSAMachineState *sms)
+ {
+     hwaddr base = sbsa_ref_memmap[SBSA_AHCI].base;
+     int irq = sbsa_ref_irqmap[SBSA_AHCI];
+@@ -590,9 +590,9 @@ static void create_ahci(const SBSAMachineState *sms)
+     DriveInfo *hd[NUM_SATA_PORTS];
+     SysbusAHCIState *sysahci;
+ 
+-    dev = qdev_new_orphan("sysbus-ahci");
++    dev = qdev_new(OBJECT(sms), "ahci", "sysbus-ahci");
+     qdev_prop_set_uint32(dev, "num-ports", NUM_SATA_PORTS);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(sms->gic, irq));
+ 
+@@ -601,19 +601,19 @@ static void create_ahci(const SBSAMachineState *sms)
+     ahci_ide_create_devs(&sysahci->ahci, hd);
+ }
+ 
+-static void create_xhci(const SBSAMachineState *sms)
++static void create_xhci(SBSAMachineState *sms)
+ {
+     hwaddr base = sbsa_ref_memmap[SBSA_XHCI].base;
+     int irq = sbsa_ref_irqmap[SBSA_XHCI];
+-    DeviceState *dev = qdev_new_orphan(TYPE_XHCI_SYSBUS);
++    DeviceState *dev = qdev_new(OBJECT(sms), "xhci", TYPE_XHCI_SYSBUS);
+     qdev_prop_set_uint32(dev, "slots", XHCI_MAXSLOTS);
+ 
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(sms->gic, irq));
+ }
+ 
+-static void create_smmu(const SBSAMachineState *sms, PCIBus *bus,
++static void create_smmu(SBSAMachineState *sms, PCIBus *bus,
+                         MemoryRegion *sysmem,
+                         MemoryRegion *secure_sysmem)
+ {
+@@ -622,7 +622,7 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus,
+     DeviceState *dev;
+     int i;
+ 
+-    dev = qdev_new_orphan(TYPE_ARM_SMMUV3);
++    dev = qdev_new(OBJECT(sms), "smmuv3", TYPE_ARM_SMMUV3);
+ 
+     object_property_set_str(OBJECT(dev), "stage", "nested", &error_abort);
+     object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
+@@ -631,7 +631,7 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus,
+                              &error_abort);
+     object_property_set_link(OBJECT(dev), "secure-memory", OBJECT(secure_sysmem),
+                              &error_abort);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+     for (i = 0; i < NUM_SMMU_IRQS; i++) {
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+@@ -658,8 +658,8 @@ static void create_pcie(SBSAMachineState *sms,
+     PCIHostState *pci;
+     int i;
+ 
+-    dev = qdev_new_orphan(TYPE_GPEX_HOST);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    dev = qdev_new(OBJECT(sms), "pcie", TYPE_GPEX_HOST);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+     /* Map ECAM space */
+     ecam_alias = g_new0(MemoryRegion, 1);
+@@ -695,7 +695,7 @@ static void create_pcie(SBSAMachineState *sms,
+ 
+     pci_init_nic_devices(pci->bus, mc->default_nic);
+ 
+-    pci_create_simple_orphan(pci->bus, -1, "bochs-display");
++    pci_create_simple(OBJECT(sms), "bochs-display", pci->bus, -1, "bochs-display");
+ 
+     create_smmu(sms, pci->bus, sysmem, secure_sysmem);
+ }
+@@ -709,12 +709,14 @@ static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_size)
+     return board->fdt;
+ }
+ 
+-static void create_secure_ec(MemoryRegion *mem)
++static void create_secure_ec(Object *parent, MemoryRegion *mem)
+ {
+     hwaddr base = sbsa_ref_memmap[SBSA_SECURE_EC].base;
+-    DeviceState *dev = qdev_new_orphan("sbsa-ec");
++    DeviceState *dev = qdev_new(parent, "sbsa-ec", "sbsa-ec");
+     SysBusDevice *s = SYS_BUS_DEVICE(dev);
+ 
++    sysbus_realize(s, &error_fatal);
++
+     memory_region_add_subregion(mem, base,
+                                 sysbus_mmio_get_region(s, 0));
+ }
+@@ -835,7 +837,7 @@ static void sbsa_ref_init(MachineState *machine)
+ 
+     create_pcie(sms, sysmem, secure_sysmem);
+ 
+-    create_secure_ec(secure_sysmem);
++    create_secure_ec(OBJECT(sms), secure_sysmem);
+ 
+     sms->bootinfo.ram_size = machine->ram_size;
+     sms->bootinfo.board_id = -1;
 -- 
 2.47.1
 

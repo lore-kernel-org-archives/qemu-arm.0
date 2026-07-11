@@ -4,144 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99E4EC43458
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Jul 2026 22:57:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD4ABC43458
+	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 10:55:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wiK9U-0001Tv-Hm; Fri, 10 Jul 2026 18:57:00 -0400
+	id 1wiVLl-0006Me-8b; Sat, 11 Jul 2026 06:54:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wiK9T-0001Rb-83
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 18:56:59 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <harshpb@linux.ibm.com>)
+ id 1wiVLj-0006Le-5F; Sat, 11 Jul 2026 06:54:23 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wiK9R-0002WW-Nx
- for qemu-arm@nongnu.org; Fri, 10 Jul 2026 18:56:58 -0400
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66AKsnuT1948099
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 22:56:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- JUHURz+ki6l0F9geOPWw5iteATywXGk18ve1gTwIP8g=; b=OpcWwXMHSNJYP5Ju
- fOiMmd0Fr1wr7JDA9oNHWH63IPibZriv9Codz7pns9QqGSlKWUygNigYGcWRmmbO
- jN1W58yhSYue+DjZP2xZUfdMW2WswTfrOLhV7l7KZe5UMEqgsdYcqAQjpTPuTDGN
- TezcUYAXlVSBYmxkb3FsF59tVtsgPfKo/yO+HbUfikfLILEixpI312Taih79KRct
- 7LrPR0ajXtUEvH+/k3Wxjjmg9X29DZfRtZQ9YJFZ43g1zKLMicTntqJ7JCFir2Z2
- JIsF41sbqVLGIyFd4wFQUDHm6HWL9IUlsXyr7xN9TlOMU5HRBJeeCKUVrxu9T2er
- 6V7lcA==
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fb86eg9u4-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 22:56:56 +0000 (GMT)
-Received: by mail-qt1-f198.google.com with SMTP id
- d75a77b69052e-5174a23afcbso14378541cf.3
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2026 15:56:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1783724216; x=1784329016; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=JUHURz+ki6l0F9geOPWw5iteATywXGk18ve1gTwIP8g=;
- b=hnJfRQ18rU7gOapqcJPxNS/DTRTlLZwdMHBGsVXEMLyqsesmkgKTS6QQEqWBTuzGR9
- yA4cg7rd1lE4MNeg7HVWAj2nvHzIuhadVzd4MqUey2A5/PT6Cyvknn2dYn1LIfYYGQqc
- VDqTNHvab8dqQTmLjcUtpyTm1OJhPwri5k/HqFXyOdgN1cSmO08YWHOqPYeHgXNS0qyk
- Yzx8Wzb+9l6IsMNg5u+ObbvCVlBc7KnmhIUzolq2YjlfE1C3LZOXAsB/PJbQAaMZihBw
- f0gYHyjzrHU0HX68p/04+JUS5166CWZJvEON2gUhj/ozzlq8nXkcl/y2M4DzxJNvnxM8
- 580Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783724216; x=1784329016;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=JUHURz+ki6l0F9geOPWw5iteATywXGk18ve1gTwIP8g=;
- b=qdGWudNXLmgD3e8dnv2Nsru/HRJqJsU9FBqB0KdyVvkPjYOlpxwmxGaWwvXQTnOW1D
- KpihRMGinKtNDbpsV6tbIRuqs4+qql7LWjilOL8p4FhRsyBqGq9hixboXx4va7IDXrwh
- dJYPlSIZc2ZLtOP9Q3IRcMQOkY9NgRkD3Di6/yM0R5uTfx8IN0j/dGUvorYf7TyRXs00
- ltRiiouHfkusWpL8UYDZWGN7JU/pQgDJOVAPMkYUKQjOnSg7yiALiaNoLU9+Hg7N3Cd0
- z8nuor5vRYvQaOXZyflE7BvjxZOIGKBglHA/wCSEHVtV8kDUXmm5wvUY37Bhj3TUMnzh
- gCzg==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rom8sPhaJ3amiD30wIo1kK8Z1GpeNMFyMtDBGDMJDjnx+66i+EnfQ36bbOKM4dwqMhCUUCalMfImg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx6DlDx8Sp8fVcmmeG1D9A4xJutxZYJY0ya90AMnkcz/erMUnsf
- Tcxff9rEPfE4LvI6l83u+QGp4oJ4uR4R0fG0xTQuGRTstjHull7hAQFAzpJcSAFkJJLG339+C6d
- VBjtXGt8oMqA01j8SGlvUNjaJv+HNhLbfRwudGlDwOaVpBTLdk5qNmI0=
-X-Gm-Gg: AfdE7clivNWCMF5wgxaAOWSoz6s7ujRh3eJfdmwXNRNAftapC874nsnkxbs1ThcFiq1
- 2PIdjMi04+w8KG5dOFKiZDtrG3B74Fw0ciC+cxcp6lJi2b9x8xLcNcXBSRmUbCTun2gzzRvJxzG
- +DhNdxk78TIXYzOVdyqDg6NGp0h8isy2dVldaC33bsjYCmZW2Q+ScRl9m/gWitu0Kph1aaHMWEC
- X7kRxxGZquGzVTYOE5PmgTkfoWihGSk39+6PvbVp0TM0WkzQTijjO1wZKSd7wgLAFjNxS0/RGpC
- 0ONL+dJFXBx7FrBE+Yp9eFmRduhb3iCsYV8gBisxplBUXT+XBPuKD3S0TaQXTsruTtTY02BiugB
- y0bEpnS8B7v58g+b4QglPb3wmsQvwKFfDkqA33JFikYdQlG8/N65x9fllZ5+gng==
-X-Received: by 2002:a05:622a:4c7:b0:51c:f3e:7819 with SMTP id
- d75a77b69052e-51cbf142ca1mr9535951cf.39.1783724215791; 
- Fri, 10 Jul 2026 15:56:55 -0700 (PDT)
-X-Received: by 2002:a05:622a:4c7:b0:51c:f3e:7819 with SMTP id
- d75a77b69052e-51cbf142ca1mr9535751cf.39.1783724215310; 
- Fri, 10 Jul 2026 15:56:55 -0700 (PDT)
-Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47a9e4d843csm62728844f8f.14.2026.07.10.15.56.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Jul 2026 15:56:54 -0700 (PDT)
-Message-ID: <91ad4c80-adc6-4f37-8346-20230638e5f0@oss.qualcomm.com>
-Date: Sat, 11 Jul 2026 00:56:53 +0200
+ (Exim 4.90_1) (envelope-from <harshpb@linux.ibm.com>)
+ id 1wiVLg-0004n2-Nb; Sat, 11 Jul 2026 06:54:22 -0400
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 66B7C2DE338248; Sat, 11 Jul 2026 10:54:09 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=pp1; bh=1bY6K3
+ UqPRO4dAUO+HpvCp1rtWfs40kUevSQqr93Ag4=; b=H4bYNHAxW8wgK5c3hQvVR8
+ 8UMx5t34qOCVU2zXIyD0+s8jYiDMZVRc/n8KduXgSm/m6Pj2vJd+l/vsA5gHjWlX
+ Sofk0mu1OWdA0bkWYMBBbKwD0wx77BeMbUzxDD79JY86EABX/ch1JmKFnjPoPo7R
+ ckoEiNEkNLeYn2YKmry0g+UYjqasdLufrwGOdCHSH4eVBrDn1PymBvrFC9EAiASm
+ Gqwi84WqL9hwalRLIGADrnALTIaL7iOV6bUaGnjs5XMZ2zgUXlNTW7QSoX9v88/2
+ qdOD5RJFT81Auy7cV72krQXtBcIDa7XoWKepBh46jX7tjTQPu2ERhDnWFIiu3bEw
+ ==
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fber80uw3-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sat, 11 Jul 2026 10:54:08 +0000 (GMT)
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66BAo8NJ014999;
+ Sat, 11 Jul 2026 10:54:07 GMT
+Received: from smtprelay03.dal12v.mail.ibm.com ([172.16.1.5])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 4f7cgqpap8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sat, 11 Jul 2026 10:54:07 +0000 (GMT)
+Received: from smtpav04.wdc07v.mail.ibm.com (smtpav04.wdc07v.mail.ibm.com
+ [10.39.53.231])
+ by smtprelay03.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 66BAs6Rw64684502
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 11 Jul 2026 10:54:07 GMT
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id BA22E58052;
+ Sat, 11 Jul 2026 10:54:06 +0000 (GMT)
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 936AA5805E;
+ Sat, 11 Jul 2026 10:54:02 +0000 (GMT)
+Received: from [9.124.217.8] (unknown [9.124.217.8])
+ by smtpav04.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Sat, 11 Jul 2026 10:54:02 +0000 (GMT)
+Message-ID: <bf1b73da-919c-4b02-8b46-78b939077610@linux.ibm.com>
+Date: Sat, 11 Jul 2026 16:24:00 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/arm/hvf: panic the guest if an unhandled exception
- occurs
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, Leesoo Ahn <lsahn@ooseel.net>
-Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
- Markus Armbruster <armbru@redhat.com>
-References: <20260623-guest-panic-unhandle-v1-1-6adfb6d4221e@ooseel.net>
- <CAFEAcA9LCRKmU+r77zGp+4Rgd-uaZLPnoPPQDSfG8X5eeiynJA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <CAFEAcA9LCRKmU+r77zGp+4Rgd-uaZLPnoPPQDSfG8X5eeiynJA@mail.gmail.com>
+Subject: Re: [PATCH v3 33/51] target/ppc: Simplify
+ ppc_cpu_debug_check_watchpoint
+Content-Language: en-GB
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Shivaprasad G Bhat <sbhat@linux.ibm.com>
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org, jcmvbkbc@gmail.com,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+References: <20260710205401.836304-1-richard.henderson@linaro.org>
+ <20260710205401.836304-34-richard.henderson@linaro.org>
+From: Harsh Prateek Bora <harshpb@linux.ibm.com>
+In-Reply-To: <20260710205401.836304-34-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzEwMDIzMCBTYWx0ZWRfXwGA1NhBy6A0e
- 6pzfLt5DgzcwBXS7e6cQ2AWw3yTps62TMtB775IXN3Ylnpz/IK85S7v7FPKGMmzD5kewFl0uVHB
- fzY1gIxrdDxrkjA/QLL2PMDzavDqCY5xBUOYcDK1t1Z4hd3klw8BNMLkWKyTBrMHWrAM6Y35wfW
- vNDj8z+Rjq8M4NrwFRYajwabNEE+dPp9A8pOqJRaFyb5WIoGy/UA3m0YopkWq6uuRGedirSD++b
- LV2zqJ5fdwax5UIbuu1iiN7S6FI+XPbgCL8NADxkqN85yB5Af/c8+kHsuffBqYzCFxDRvZYTr/L
- 3peMoZulI1GOxFKJ2/mb8waKqLppe4zyQcsDTV9ebxt9UvJlA7zRz0sFMdj3Ij0HPwKLOxBYwxh
- ZYVhKGrbkX2rBpEFP2jA3Pl74o7Wc72cWrfbSVty0WDS2pBBZPtexjnUnC5BXLQ1rWnzfXm3GvJ
- bIDYoh4sXbnNClK/N6Q==
-X-Proofpoint-ORIG-GUID: Rt1MO_mp6OTzvcxS7UkOkps0PiO0_LgP
-X-Authority-Analysis: v=2.4 cv=IOQyzAvG c=1 sm=1 tr=0 ts=6a5178b8 cx=c_pps
- a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
- a=JdaLKi-2AAAA:8 a=4iX3uDW9G_cJQgqnWakA:9 a=QEXdDO2ut3YA:10
- a=dawVfQjAaf238kedN5IG:22 a=eajN7WahzW3wU8zyartL:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzEwMDIzMCBTYWx0ZWRfX/4pMlKJgdBJh
- DSSEsQ/9mmrmzF5vFcjNrlQL4N0cDIYBNvzWsz4lC/0IcOXsUSMrBdkcvVoFHUyTbZAIdern2KQ
- geTlBg7fglaUp7h9swM4J/SYxfQooBM=
-X-Proofpoint-GUID: Rt1MO_mp6OTzvcxS7UkOkps0PiO0_LgP
+X-TM-AS-GCONF: 00
+X-Proofpoint-Reinject: loops=2 maxloops=12
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzExMDEwMyBTYWx0ZWRfXxmWsMFLwdcsX
+ uhz3GHAULuMgWSOBO7Au8D/bFxpOSbEpJFTgnzDqTLIwUIQC4wbOI7SvphKl7Uu3egmUVc8Blzj
+ Gdugmj4t+J4cgQw4fFZSizW+0qQlGAnCAI2oln7NTEqe0zakdeEdFKcogCwXgeurh4iSqp1FsEk
+ NYrs94FLiagHFD02QH/qAJGbJ6ECkOkqOkukv2dLzjcs50ytScxaYk4MgtodMrq5V7NyLj3ATKz
+ yeTaxboijTd0s7J0M7oTvJHsWBvRYDkhJ6+OtJZlhglRG1WYru3c2rAydSSxB7KFmvU2TTUu0aM
+ Gn1xfUs8N++am9lLdCxE30riB2xLwcfVUc5w1x3qNCjuatx5Y7Vn2m1Ay0RxGhMZBspQspDHUAH
+ wBStOFnfSzogeQBMb0uAWLhV8x/l+tb35Rk4M8Qk2gZosdzAoZXA1XEQ+mfuHimA8HYD+auup0u
+ dQkHCyYRDnlSl1dDjmg==
+X-Proofpoint-ORIG-GUID: iWJg-ygSVRxyX3VOYnyDnMidPbtqxkMb
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzExMDEwMyBTYWx0ZWRfX+GeqnUHqSLse
+ 6oljsSK4ZnFCXQTzA3rZrQ8lUlI8Y7RPzLZfAEtpoUrLkLp2AMe9259thXoTE/cIfjGGaQ4sl2q
+ UW/fPUSDG3ZPSMFlcoDuXjmC4q4gCJk=
+X-Authority-Analysis: v=2.4 cv=TpzWQjXh c=1 sm=1 tr=0 ts=6a5220d0 cx=c_pps
+ a=bLidbwmWQ0KltjZqbj+ezA==:117 a=bLidbwmWQ0KltjZqbj+ezA==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=f7IdgyKtn90A:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22 a=uAbxVGIbfxUO_5tXvNgY:22
+ a=KKAkSRfTAAAA:8 a=Y4SOClW3IRnDOyVZwr4A:9 a=QEXdDO2ut3YA:10
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: devqyiRefFQzmcR5m3z8-QfZgPqT59HE
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-10_06,2026-07-10_01,2025-10-01_01
+ definitions=2026-07-11_02,2026-07-10_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 phishscore=0 suspectscore=0 spamscore=0 clxscore=1015
- bulkscore=0 priorityscore=1501 malwarescore=0 adultscore=0 impostorscore=0
+ suspectscore=0 priorityscore=1501 impostorscore=0 malwarescore=0 bulkscore=0
+ lowpriorityscore=0 adultscore=0 spamscore=0 clxscore=1011 phishscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607100230
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607110103
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=harshpb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -157,42 +129,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/7/26 17:37, Peter Maydell wrote:
-> On Tue, 23 Jun 2026 at 13:56, Leesoo Ahn <lsahn@ooseel.net> wrote:
->>
->> It's worth cleaning up all resources that the guest taking and to quit
->> if an exception in el1 could not be resolved.
->>
->> Otherwise, the guest will get in the infinite black-hole by
->> unmodified pc.
->>
->> Signed-off-by: Leesoo Ahn <lsahn@ooseel.net>
->> ---
->>   target/arm/hvf/hvf.c | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->> index 8b902c6882..4358cf90e8 100644
->> --- a/target/arm/hvf/hvf.c
->> +++ b/target/arm/hvf/hvf.c
->> @@ -2533,6 +2533,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
->>           cpu_synchronize_state(cpu);
->>           trace_hvf_exit(syndrome, ec, env->pc);
->>           error_report("0x%llx: unhandled exception ec=0x%x", env->pc, ec);
->> +        qemu_system_guest_panicked(cpu_get_crash_info(cpu));
->>       }
++ Cedric, Shiva
+
+On 11/07/26 2:23 am, Richard Henderson wrote:
+> We don't need to check either ISA bit, because that's already
+> done starting with SPR registration.  Replace target_ulong with
+> uint64_t, as we're under TARGET_PPC64.
 > 
-> We should do something here, but my question is whether
-> qemu_system_guest_panicked() is the right thing. We mostly
-> use that for "the guest OS wants to tell QEMU that it has
-> panicked, so QEMU can reflect that to the user and perhaps
-> reboot or exit", though we do in a few places use it for
-> things that are more like "we don't handle this case". I'm
-> not sure exactly what the right thing to do here is, though.
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/ppc/tcg-excp_helper.c | 30 +++++++++---------------------
+>   1 file changed, 9 insertions(+), 21 deletions(-)
+> 
+> diff --git a/target/ppc/tcg-excp_helper.c b/target/ppc/tcg-excp_helper.c
+> index 99ffe4a820..4065440949 100644
+> --- a/target/ppc/tcg-excp_helper.c
+> +++ b/target/ppc/tcg-excp_helper.c
+> @@ -353,35 +353,23 @@ bool ppc_cpu_debug_check_watchpoint(CPUState *cs, CPUBreakpoint *wp)
+>   {
+>   #if defined(TARGET_PPC64)
+>       CPUPPCState *env = cpu_env(cs);
+> -    bool wt, wti, hv, sv, pr;
+> -    uint32_t dawrx;
+> +    uint32_t dawrx = env->spr[wp->id ? SPR_DAWRX1 : SPR_DAWRX0];
+> +    bool wt = extract32(dawrx, PPC_BIT_NR(59), 1);
+> +    bool wti = extract32(dawrx, PPC_BIT_NR(60), 1);
+> +    bool hv = extract32(dawrx, PPC_BIT_NR(61), 1);
+> +    bool sv = extract32(dawrx, PPC_BIT_NR(62), 1);
+> +    bool pr = extract32(dawrx, PPC_BIT_NR(62), 1);
+>   
+> -    if ((env->insns_flags2 & PPC2_ISA207S) &&
+> -        (wp == env->dawr_watchpoint[0])) {
+> -        dawrx = env->spr[SPR_DAWRX0];
+> -    } else if ((env->insns_flags2 & PPC2_ISA310) &&
+> -               (wp == env->dawr_watchpoint[1])) {
+> -        dawrx = env->spr[SPR_DAWRX1];
+> -    } else {
 
-We usually abort() for programming errors (here unimplemented
-case) and don't let the guest mis-behave.
+Previously, there were different ISA version checks resulting in 
+different behaviour, now with this change we are allowing for both ISA 
+versions. Not sure if this would be an expected behaviour?
 
-Maybe call the mis-named hw_error() method to dump something
-before dying?
+Shiva, Could you also please check and confirm?
+
+Also, there seems to be a copy-paste mistake in existing code as 
+identified in another thread, may be we can fix along?
+
+bool pr = extract32(dawrx, PPC_BIT_NR(63), 1);
+
+regards,
+Harsh
+> +    if ((env->msr & (1ull << MSR_PR)) && !pr) {
+>           return false;
+> -    }
+> -
+> -    wt = extract32(dawrx, PPC_BIT_NR(59), 1);
+> -    wti = extract32(dawrx, PPC_BIT_NR(60), 1);
+> -    hv = extract32(dawrx, PPC_BIT_NR(61), 1);
+> -    sv = extract32(dawrx, PPC_BIT_NR(62), 1);
+> -    pr = extract32(dawrx, PPC_BIT_NR(62), 1);
+> -
+> -    if ((env->msr & ((target_ulong)1 << MSR_PR)) && !pr) {
+> -        return false;
+> -    } else if ((env->msr & ((target_ulong)1 << MSR_HV)) && !hv) {
+> +    } else if ((env->msr & (1ull << MSR_HV)) && !hv) {
+>           return false;
+>       } else if (!sv) {
+>           return false;
+>       }
+>   
+>       if (!wti) {
+> -        if (env->msr & ((target_ulong)1 << MSR_DR)) {
+> +        if (env->msr & (1ull << MSR_DR)) {
+>               return wt;
+>           } else {
+>               return !wt;
+
 

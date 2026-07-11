@@ -4,111 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 434B6C43458
-	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 19:54:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB66C43458
+	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:37:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1widmN-0000L6-Pf; Sat, 11 Jul 2026 15:54:27 -0400
+	id 1wigKF-0006kZ-1Q; Sat, 11 Jul 2026 18:37:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <harsh.prateek.bora@gmail.com>)
- id 1wiba1-00024C-0a
- for qemu-arm@nongnu.org; Sat, 11 Jul 2026 13:33:33 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <harsh.prateek.bora@gmail.com>)
- id 1wibZz-0006q9-8h
- for qemu-arm@nongnu.org; Sat, 11 Jul 2026 13:33:32 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-c15e0c3f395so227930666b.3
- for <qemu-arm@nongnu.org>; Sat, 11 Jul 2026 10:33:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783791209; cv=none;
- d=google.com; s=arc-20260327;
- b=Q3sWyrOTNWMdh5ZJngtn7tN89uQRfRgt7pH2J8Hx2Xk+RclJfdDNHNtTPIB7O7cctj
- kZ71xTOPBcQKzu1uLMgeyByqusum5tAEWuZhoynyzAqUv4g8SZwhtUUpQ2AZkLyNE4iY
- A4DzWZ8XsBQ9BiZrhK4Y65vYP7ivvxBlSuJ3uz88xYOXT9DhF1uOFQPnx200rQNRMaNq
- 1uOHPnc+nwynl539K9N/Ig1p7VoBW5r6rkanM+dJmylv5mjf0XZg0PfBhQfp8eJU6mC8
- 0d7+L6U95bj5ih5kWGDswD6rEnrB6dmrHoze4OjjAhVwRmrH9y9OEx9nBe3Vnfr37Wpy
- R68w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=JS3CKX8TG+RSRMmVQSeQiQae+JhkZskL580Opidbw14=;
- fh=72dMuQ1ZSCmzC4eTmwF8HwOyP82zFXNKFWpX7qYL0lg=;
- b=hU4OzjaGhxFhQyXIT1JnhhpGDqevchLmS+B5C1CyWtWuZ3uo5NnZnlG2IE1+b+MIJC
- I6ItpGr5ovB0njkkaDrVfNZmrPbfry0BQyGIATQ6Py1ZvBldZqlwILn2kJghSYvh/2UT
- /c6ZvimS2hMYfBCVhCsUcBR+9KhkMiIKya8aXO74ordQjMDsZTQK4rXWINe06iCoBFfK
- P6xpVez/jMgqFEKLwNBCyhYYgkINJOlRDl1P7RSqaFjqHVK3ypnfmet1CfQ61T1ZDlsp
- xvd2sTU9vE0xLlKfNZsoP0a9bvP3fwXNSDa/9EZaygtAtCpFWoju++tJiNqwv5I2lME5
- dI0w==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
+ id 1wigKC-0006ir-Kj; Sat, 11 Jul 2026 18:37:32 -0400
+Received: from pdx-out-011.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.35.192.45])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
+ id 1wigKA-00053A-O1; Sat, 11 Jul 2026 18:37:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1783791209; x=1784396009; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=JS3CKX8TG+RSRMmVQSeQiQae+JhkZskL580Opidbw14=;
- b=PfyttqIZZu4uE8H32/oQG0aGMYPw5ciICHh2CEtbNUD+jNihu80AyZ8r3Fr3ZZDU3y
- Z4Y3c3Aqp8/4AZdjadoPwHL7Xr3ZllwK1NR9ujrez+9ZQfDVbiF9FWGsHcktOiATkyss
- bvoOmydoT1uAKxiMNFYZ6vtmt6X6w5WRmZjzs+NA1LOC7v/RAnY5OcJ4yinh3c9Fogc5
- l3+xuHgEDBQadL5vSbFEVQiTKZDrpjubR58bVdiVaq6geycGq6szY2XqT2eXiRCqvaO0
- yAEccZki10A5cowQR8Sble4VEwHhSacyaxxFbwXr/k7s872G62/h+NHPj0P9+AkwwpIk
- jnVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783791209; x=1784396009;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=JS3CKX8TG+RSRMmVQSeQiQae+JhkZskL580Opidbw14=;
- b=EL1I/ImmAzmXOBxxroLw0PModxhZh97h4Yloq7bSuEqfuanVognaXbMS0QGIp43LcR
- FeKyhvnKwf0ei5JSwyiGFoVYeDCRqjpD4ByVoZoyK9xajiBcEVviNIWZJacZYCogyX+t
- /p/kcdsqVtYcNXZDxtf6eNmNrtQdV7H77n4GgkXKD8OsP7TOGo1ok+Do0spilmcZrpP5
- PpoWdKopIkqY3nWgu3kLn5GFC/NyELjDs8NlyO0n8oDeUpoBa/trsalxjWO78peWOEkx
- wUMTb7DMwsr4fHGk2e9jGjN1X3VdBUT40tXla0uLjcbHxxmT3GvtyC1ycvIgJGjhbq09
- GAww==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpHRaGGx2qGKh1hxtKFjQ9yfsTBvmD1GIQCTeBq3ES8BWFGd5wE81nSkmmIscSzoJGYdTJxx1fmsg==@nongnu.org
-X-Gm-Message-State: AOJu0YzDa4ku2yQ009TOFDi0whEIl3aWm/Yt55g55Slq3Gd72HBKkoTQ
- GkoAWR9M9hljUbVUIiiijlVKTvF1XzsTG9CSdvNfQwV+Ka7WyC6cndUFPcqbV6G9F392Dc38NiC
- G7d1toS0+9WJjbl9emafN4J+CGxnZKz0=
-X-Gm-Gg: AfdE7cnlg6LhDVwzQHFwBGVCH0AIO1GLY/npW24ktD/M2aBm1Gr965GtHQVe9clVxFO
- xAJfdkeSKVYM6g1XF7/UayJuwstBnfnso0iZGQu8aHaQI2nGCZLXuR3jJmXwbojx+0a9oQqyOFP
- YuZyDeRoNDkgnFUrwJ4UYL/0lzZJVyRVBxXhNCRYyQ3ag0TRDImXLcRIrQpWvpIINiY7nd/vXHG
- GOSHGeIrNBVQEOQCNaVqSawROlhRqBpmKWr9Ao6Wc+IZ9uqrACGEoHcGGahBr4/9u0SpcjL
-X-Received: by 2002:a17:907:9d1a:b0:c16:2d90:68d9 with SMTP id
- a640c23a62f3a-c162d9081fcmr73653366b.56.1783791209022; Sat, 11 Jul 2026
- 10:33:29 -0700 (PDT)
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
+ t=1783809450; x=1815345450;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=rb5gq6ZHZBxOqKEpOZvFqZlQVBtfnTT7/ZsZ/2gLzGg=;
+ b=Wt1kToVz+LWCPn0Rbg004ANfb1RhoqIBvVFVxRqW7K5n0Vpdg6rcMZxE
+ N6PiPdd4r4KfBkBH0ehpQnAAUoni2xTmAMgo2+EmVJh+m0bKonenjcyll
+ HOrq/kJNql3N+cljm3UAEnF0hRmU9/v20JhlWFwQPB4K57LNWf/DDrzV8
+ sXJkMxeDLSTBHqI0bGNrOTphsAEAmLfq22exor8qJKErTf33v+ro1T+bq
+ FyRqGBbgLOpkJLXXeIxk0cIQdxrcXzIiDEv9527kOchBUgztb1/sU5Omi
+ 799J3u0TA4F49F99Gi/nMFZj41IxcHvFvYkIeD4o1IEnOLtyX1SgKA0ll g==;
+X-CSE-ConnectionGUID: YXV/bHzRTb+Zoo+Uf0BTOA==
+X-CSE-MsgGUID: TGUJ1lNQTMG0RHrO4RPxHw==
+X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23269516"
+Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
+ by internal-pdx-out-011.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:37:27 +0000
+Received: from EX19MTAUWA002.ant.amazon.com [205.251.233.178:25475]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.51.175:2525]
+ with esmtp (Farcaster)
+ id bf881622-812b-48a4-bdae-9e8d4d470b98; Sat, 11 Jul 2026 22:37:26 +0000 (UTC)
+X-Farcaster-Flow-ID: bf881622-812b-48a4-bdae-9e8d4d470b98
+Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
+ EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
+ Sat, 11 Jul 2026 22:37:26 +0000
+Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
+ EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
+ Sat, 11 Jul 2026 22:37:17 +0000
+From: Alexander Graf <graf@amazon.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
+ <qemu-s390x@nongnu.org>, Song Gao <17746591750@163.com>, Aditya Gupta
+ <adityag@linux.ibm.com>, Alexey Kardashevskiy <aik@ozlabs.ru>, Farhan Ali
+ <alifm@linux.ibm.com>, Alistair Francis <alistair.francis@wdc.com>, "Alistair
+ Francis" <alistair@alistair23.me>, Antony Pavlov <antonynpavlov@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>, Artyom Tarasenko
+ <atar4qemu@gmail.com>, BALATON Zoltan <balaton@eik.bme.hu>, Felipe Balbi
+ <balbi@kernel.org>, Christian Borntraeger <borntraeger@linux.ibm.com>, "Brian
+ Cain" <brian.cain@oss.qualcomm.com>, Hendrik Brueckner
+ <brueckner@linux.ibm.com>, Chao Liu <chao.liu@processmission.com>, "Huacai
+ Chen" <chenhuacai@kernel.org>, =?UTF-8?q?Cl=C3=A9ment=20Chigot?=
+ <chigot@adacore.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Helge Deller <deller@gmx.de>, Dorjoy Chowdhury <dorjoychy111@gmail.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>, Alexandre Iooss
+ <erdnaxe@crans.org>, Eric Farman <farman@linux.ibm.com>, Francisco Iglesias
+ <francisco.iglesias@amd.com>, Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ "Gautam Gala" <ggala@linux.ibm.com>, Harsh Prateek Bora
+ <harshpb@linux.ibm.com>, =?UTF-8?q?Herv=C3=A9=20Poussineau?=
+ <hpoussin@reactos.org>, Jan Kiszka <jan.kiszka@web.de>, Max Filippov
+ <jcmvbkbc@gmail.com>, Joel Stanley <joel@jms.id.au>, Jared Rossi
+ <jrossi@linux.ibm.com>, Tyrone Ting <kfting@nuvoton.com>, Frederic Konrad
+ <konrad.frederic@yahoo.fr>, "Laurent Vivier" <laurent@vivier.eu>, Manos
+ Pitsidianakis <manos.pitsidianakis@linaro.org>, Bibo Mao
+ <maobibo@loongson.cn>, "Mark Cave-Ayland" <mark.cave-ayland@ilande.co.uk>,
+ Glenn Miles <milesg@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ "Michael Rolnik" <mrolnik@gmail.com>, "Michael S . Tsirkin" <mst@redhat.com>, 
+ "Niek Linnenbank" <nieklinnenbank@gmail.com>, Nicholas Piggin
+ <npiggin@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>, Halil Pasic
+ <pasic@linux.ibm.com>, "Paolo Bonzini" <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <philmd@mailo.com>, "Pierrick Bouvier" <pierrick.bouvier@oss.qualcomm.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Sai Pavan Boddu
+ <sai.pavan.boddu@amd.com>, Samuel Tardieu <sam@rfc1149.net>, Bernhard Beschow
+ <shentey@gmail.com>, Stafford Horne <shorne@gmail.com>, Sergio Lopez
+ <slp@redhat.com>, "Subbaraya Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth
+ <th.huth+qemu@posteo.eu>, "Ran Wang" <wangran@bosc.ac.cn>, Hao Wu
+ <wuhaotsh@google.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
+ <berrange@redhat.com>
+Subject: [RFC PATCH 001/134] qom: Introduce object_new_child()
+Date: Sat, 11 Jul 2026 22:34:54 +0000
+Message-ID: <20260711223707.42139-2-graf@amazon.com>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20260711223707.42139-1-graf@amazon.com>
+References: <20260711223707.42139-1-graf@amazon.com>
 MIME-Version: 1.0
-References: <20260710205401.836304-1-richard.henderson@linaro.org>
- <20260710205401.836304-34-richard.henderson@linaro.org>
- <bf1b73da-919c-4b02-8b46-78b939077610@linux.ibm.com>
- <8e9907db-68b6-4644-9c16-6fbbbcd52b0b@linaro.org>
-In-Reply-To: <8e9907db-68b6-4644-9c16-6fbbbcd52b0b@linaro.org>
-From: Harsh Prateek Bora <harsh.prateek.bora@gmail.com>
-Date: Sat, 11 Jul 2026 23:03:15 +0530
-X-Gm-Features: AVVi8CeoQLoGHON4QB-S6VQPELhcoguijpSA5B6ecc8ZnZl6xcpSNSKFTTO4taY
-Message-ID: <CAEuJdmptUafKhzTaRu1j07cyh5eD_vxbMrqyHO7GwWQ=ZRNT8Q@mail.gmail.com>
-Subject: Re: [PATCH v3 33/51] target/ppc: Simplify
- ppc_cpu_debug_check_watchpoint
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-devel@nongnu.org, 
- Shivaprasad G Bhat <sbhat@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, 
- qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: multipart/alternative; boundary="0000000000005e089b065659418e"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=harsh.prateek.bora@gmail.com; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [172.19.99.218]
+X-ClientProxiedBy: EX19D042UWB002.ant.amazon.com (10.13.139.175) To
+ EX19D001UWA001.ant.amazon.com (10.13.138.214)
+Received-SPF: pass client-ip=52.35.192.45;
+ envelope-from=prvs=645f258d4=graf@amazon.de;
+ helo=pdx-out-011.esa.us-west-2.outbound.mail-perimeter.amazon.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
+ UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 11 Jul 2026 15:54:27 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,165 +129,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---0000000000005e089b065659418e
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+We already have two ways of creating a QOM object with a parent set
+from birth: object_initialize_child() for objects embedded in the
+parent struct, and object_new_with_props() for heap-allocated objects
+that also want a list of string properties applied.  What we do not
+have is the plain heap-allocated dual of object_initialize_child():
+create the object, add it as a child<> of a given parent under a given
+name, and hand the reference to the parent.
 
-On Sat, 11 Jul, 2026, 10:22=E2=80=AFpm Richard Henderson, <
-richard.henderson@linaro.org> wrote:
+Board and composite-device code that heap-allocates children today
+therefore either open-codes object_new()+object_property_add_child()
++object_unref(), or skips the parenting step entirely and lets
+device_set_realized() dump the object into /machine/unattached.
 
-> On 7/11/26 03:54, Harsh Prateek Bora wrote:
-> > + Cedric, Shiva
-> >
-> > On 11/07/26 2:23 am, Richard Henderson wrote:
-> >> We don't need to check either ISA bit, because that's already
-> >> done starting with SPR registration.  Replace target_ulong with
-> >> uint64_t, as we're under TARGET_PPC64.
-> >>
-> >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> >> ---
-> >>   target/ppc/tcg-excp_helper.c | 30 +++++++++---------------------
-> >>   1 file changed, 9 insertions(+), 21 deletions(-)
-> >>
-> >> diff --git a/target/ppc/tcg-excp_helper.c b/target/ppc/tcg-excp_helper=
-.c
-> >> index 99ffe4a820..4065440949 100644
-> >> --- a/target/ppc/tcg-excp_helper.c
-> >> +++ b/target/ppc/tcg-excp_helper.c
-> >> @@ -353,35 +353,23 @@ bool ppc_cpu_debug_check_watchpoint(CPUState *cs=
-,
-> CPUBreakpoint *wp)
-> >>   {
-> >>   #if defined(TARGET_PPC64)
-> >>       CPUPPCState *env =3D cpu_env(cs);
-> >> -    bool wt, wti, hv, sv, pr;
-> >> -    uint32_t dawrx;
-> >> +    uint32_t dawrx =3D env->spr[wp->id ? SPR_DAWRX1 : SPR_DAWRX0];
-> >> +    bool wt =3D extract32(dawrx, PPC_BIT_NR(59), 1);
-> >> +    bool wti =3D extract32(dawrx, PPC_BIT_NR(60), 1);
-> >> +    bool hv =3D extract32(dawrx, PPC_BIT_NR(61), 1);
-> >> +    bool sv =3D extract32(dawrx, PPC_BIT_NR(62), 1);
-> >> +    bool pr =3D extract32(dawrx, PPC_BIT_NR(62), 1);
-> >> -    if ((env->insns_flags2 & PPC2_ISA207S) &&
-> >> -        (wp =3D=3D env->dawr_watchpoint[0])) {
-> >> -        dawrx =3D env->spr[SPR_DAWRX0];
-> >> -    } else if ((env->insns_flags2 & PPC2_ISA310) &&
-> >> -               (wp =3D=3D env->dawr_watchpoint[1])) {
-> >> -        dawrx =3D env->spr[SPR_DAWRX1];
-> >> -    } else {
-> >
-> > Previously, there were different ISA version checks resulting in
-> different behaviour, now
-> > with this change we are allowing for both ISA versions. Not sure if thi=
-s
-> would be an
-> > expected behaviour?
->
-> Per the commit comment, the ISA version checks are done when registering
-> the system
-> register.  One cannot write to DAWRX1 unless ISA310, and therefore
-> dawr_watchpoint[1] will
-> not be set nor wp->id be 1.
->
+Add object_new_child(parent, id, typename) as that missing primitive.
+The reference created by object_new() is transferred to the parent's
+child<> property, so on return the sole reference is held by @parent
+and the caller does not need to unref.  Later patches build the qdev
+and per-bus creation helpers on top of this.
 
-Thanks for confirming, Richard!
+Suggested-by: Markus Armbruster <armbru@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/87jyr3w9tc.fsf@pond.sub.org/
+Assisted-by: Kiro
+Signed-off-by: Alexander Graf <graf@amazon.com>
+---
+ include/qom/object.h | 25 +++++++++++++++++++++++++
+ qom/object.c         | 13 +++++++++++++
+ 2 files changed, 38 insertions(+)
 
-Regards
-Harsh
+diff --git a/include/qom/object.h b/include/qom/object.h
+index 11f55613fc..ce6a23b5a1 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -632,6 +632,31 @@ Object *object_new_with_class(ObjectClass *klass);
+  */
+ Object *object_new(const char *typename);
+ 
++/**
++ * object_new_child:
++ * @parent: the QOM composition-tree parent
++ * @id: the child<> property name; the object's canonical QOM path
++ *      becomes @parent's path plus "/" plus @id
++ * @typename: the name of the type of the object to instantiate
++ *
++ * Create a heap-allocated object and immediately add it to the QOM
++ * composition tree as a child of @parent.
++ *
++ * This is the heap-allocated dual of object_initialize_child(): use
++ * this when the child is a pointer member of the parent, and use
++ * object_initialize_child() when the child is embedded in the parent
++ * struct.  See also object_new_with_props() for the variant that
++ * additionally sets a list of properties.
++ *
++ * The reference returned by object_new() is transferred to the child<>
++ * property of @parent, so the object has a reference count of 1 held
++ * by @parent, and the caller does not need to unref.
++ *
++ * Returns: the newly allocated, instantiated and parented object.
++ */
++Object *object_new_child(Object *parent, const char *id,
++                         const char *typename);
++
+ /**
+  * object_new_with_props:
+  * @typename:  The name of the type of the object to instantiate.
+diff --git a/qom/object.c b/qom/object.c
+index f79b2cf361..b4d181b617 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -718,6 +718,19 @@ Object *object_new(const char *typename)
+     return object_new_with_type(ti);
+ }
+ 
++Object *object_new_child(Object *parent, const char *id,
++                          const char *typename)
++{
++    Object *obj;
++
++    g_assert(parent);
++    g_assert(id);
++
++    obj = object_new(typename);
++    object_property_add_child(parent, id, obj);
++    object_unref(obj);
++    return obj;
++}
+ 
+ Object *object_new_with_props(const char *typename,
+                               Object *parent,
+-- 
+2.47.1
 
->
->
-> r~
->
->
-
---0000000000005e089b065659418e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote gmail_quote_contai=
-ner"><div dir=3D"ltr" class=3D"gmail_attr">On Sat, 11 Jul, 2026, 10:22=E2=
-=80=AFpm Richard Henderson, &lt;<a href=3D"mailto:richard.henderson@linaro.=
-org">richard.henderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
-ing-left:1ex">On 7/11/26 03:54, Harsh Prateek Bora wrote:<br>
-&gt; + Cedric, Shiva<br>
-&gt; <br>
-&gt; On 11/07/26 2:23 am, Richard Henderson wrote:<br>
-&gt;&gt; We don&#39;t need to check either ISA bit, because that&#39;s alre=
-ady<br>
-&gt;&gt; done starting with SPR registration.=C2=A0 Replace target_ulong wi=
-th<br>
-&gt;&gt; uint64_t, as we&#39;re under TARGET_PPC64.<br>
-&gt;&gt;<br>
-&gt;&gt; Signed-off-by: Richard Henderson &lt;<a href=3D"mailto:richard.hen=
-derson@linaro.org" target=3D"_blank" rel=3D"noreferrer">richard.henderson@l=
-inaro.org</a>&gt;<br>
-&gt;&gt; ---<br>
-&gt;&gt; =C2=A0 target/ppc/tcg-excp_helper.c | 30 +++++++++----------------=
------<br>
-&gt;&gt; =C2=A0 1 file changed, 9 insertions(+), 21 deletions(-)<br>
-&gt;&gt;<br>
-&gt;&gt; diff --git a/target/ppc/tcg-excp_helper.c b/target/ppc/tcg-excp_he=
-lper.c<br>
-&gt;&gt; index 99ffe4a820..4065440949 100644<br>
-&gt;&gt; --- a/target/ppc/tcg-excp_helper.c<br>
-&gt;&gt; +++ b/target/ppc/tcg-excp_helper.c<br>
-&gt;&gt; @@ -353,35 +353,23 @@ bool ppc_cpu_debug_check_watchpoint(CPUState=
- *cs, CPUBreakpoint *wp)<br>
-&gt;&gt; =C2=A0 {<br>
-&gt;&gt; =C2=A0 #if defined(TARGET_PPC64)<br>
-&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 CPUPPCState *env =3D cpu_env(cs);<b=
-r>
-&gt;&gt; -=C2=A0=C2=A0=C2=A0 bool wt, wti, hv, sv, pr;<br>
-&gt;&gt; -=C2=A0=C2=A0=C2=A0 uint32_t dawrx;<br>
-&gt;&gt; +=C2=A0=C2=A0=C2=A0 uint32_t dawrx =3D env-&gt;spr[wp-&gt;id ? SPR=
-_DAWRX1 : SPR_DAWRX0];<br>
-&gt;&gt; +=C2=A0=C2=A0=C2=A0 bool wt =3D extract32(dawrx, PPC_BIT_NR(59), 1=
-);<br>
-&gt;&gt; +=C2=A0=C2=A0=C2=A0 bool wti =3D extract32(dawrx, PPC_BIT_NR(60), =
-1);<br>
-&gt;&gt; +=C2=A0=C2=A0=C2=A0 bool hv =3D extract32(dawrx, PPC_BIT_NR(61), 1=
-);<br>
-&gt;&gt; +=C2=A0=C2=A0=C2=A0 bool sv =3D extract32(dawrx, PPC_BIT_NR(62), 1=
-);<br>
-&gt;&gt; +=C2=A0=C2=A0=C2=A0 bool pr =3D extract32(dawrx, PPC_BIT_NR(62), 1=
-);<br>
-&gt;&gt; -=C2=A0=C2=A0=C2=A0 if ((env-&gt;insns_flags2 &amp; PPC2_ISA207S) =
-&amp;&amp;<br>
-&gt;&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (wp =3D=3D env-&gt;daw=
-r_watchpoint[0])) {<br>
-&gt;&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dawrx =3D env-&gt;spr[=
-SPR_DAWRX0];<br>
-&gt;&gt; -=C2=A0=C2=A0=C2=A0 } else if ((env-&gt;insns_flags2 &amp; PPC2_IS=
-A310) &amp;&amp;<br>
-&gt;&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 (wp =3D=3D env-&gt;dawr_watchpoint[1])) {<br>
-&gt;&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dawrx =3D env-&gt;spr[=
-SPR_DAWRX1];<br>
-&gt;&gt; -=C2=A0=C2=A0=C2=A0 } else {<br>
-&gt; <br>
-&gt; Previously, there were different ISA version checks resulting in diffe=
-rent behaviour, now <br>
-&gt; with this change we are allowing for both ISA versions. Not sure if th=
-is would be an <br>
-&gt; expected behaviour?<br>
-<br>
-Per the commit comment, the ISA version checks are done when registering th=
-e system <br>
-register.=C2=A0 One cannot write to DAWRX1 unless ISA310, and therefore daw=
-r_watchpoint[1] will <br>
-not be set nor wp-&gt;id be 1.<br></blockquote></div></div><div dir=3D"auto=
-"><br></div><div dir=3D"auto">Thanks for confirming, Richard!</div><div dir=
-=3D"auto"><br></div><div dir=3D"auto">Regards=C2=A0</div><div dir=3D"auto">=
-Harsh=C2=A0</div><div dir=3D"auto"><div class=3D"gmail_quote gmail_quote_co=
-ntainer"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;borde=
-r-left:1px #ccc solid;padding-left:1ex">
-<br>
-<br>
-r~<br>
-<br>
-</blockquote></div></div></div>
-
---0000000000005e089b065659418e--
 

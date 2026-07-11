@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A14C3C44507
-	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:53:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E483C44506
+	for <qemu-arm@archiver.kernel.org>; Sat, 11 Jul 2026 22:53:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wigYs-0001Pg-AC; Sat, 11 Jul 2026 18:52:42 -0400
+	id 1wigZe-0003CZ-5t; Sat, 11 Jul 2026 18:53:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigYc-00017D-Gl; Sat, 11 Jul 2026 18:52:27 -0400
-Received: from pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([44.246.77.92])
+ id 1wigZZ-0002cu-Ja; Sat, 11 Jul 2026 18:53:25 -0400
+Received: from pdx-out-015.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([50.112.246.219])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=645f258d4=graf@amazon.de>)
- id 1wigYY-0008Tx-V9; Sat, 11 Jul 2026 18:52:26 -0400
+ id 1wigZT-0000Ct-IH; Sat, 11 Jul 2026 18:53:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1783810343; x=1815346343;
+ t=1783810399; x=1815346399;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=qJ9SPZd6KqKT0DByIkveEz5n2P2u8Ab+W4C2Tdl7jYU=;
- b=RaQia3awJ9VURokJD/SJpdT5RmyuQIi9OzMik2N9DQGN/CRREhUdD/vC
- yK7Ahl/4PcylV0VfAljIfFQ+WPbgFrruvhevlbspTkEqPNYMxwoNPo5xw
- eobvM/v7GllIn4tLurNatE+cmZkVZU4EqQqlfaTQvqLpZKlMa6+VN77xs
- VtQEIMulGneHMqtFJSJGCVC/6ly8XqTynghEOi4ezRiJDF1ikwX1sMvNq
- xFN2SKArBFl2SqJN4eeFFh85/2CB3EhvSH3y1DTg/lm+ZD0Ypkp9w9CXE
- RflYbU7HSGAbfG5xBcBA5u4eDo8/HbMawfAcGfY/gikuA3t3i1WwRqs+6 w==;
-X-CSE-ConnectionGUID: jjHQ2GzHTxyUeU25lbK3Pg==
-X-CSE-MsgGUID: 290MNva6RYilvvSdP7ceRA==
-X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23493166"
-Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
- by internal-pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:52:18 +0000
-Received: from EX19MTAUWC002.ant.amazon.com [205.251.233.51:25417]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.31.54:2525]
+ bh=BLVZUlUyjVn/Tb1g0gLW0Uo0hio6JMI0qfWXwx/6rdI=;
+ b=f6OCRSA2pEdSW4rdH72AcEHW7XJSvl9dmxBeDxA83Nsr2OHWu/Gk7o6X
+ aMNbCuc0oaexUrEAO/b9XZ4gY2vo3569oRjMvvaWgHOcyxd7voy9fKukr
+ t0f+ciOP993LN42nWzvHhQgvavF7kLPHlMB4vYeCoo87Eoj4Z7ye5Qetx
+ pOjV41ACFgkZbq3fhVvySi6QF4TLWwafpxQyPD3E14zNu6zjzxq0VxK8Y
+ qvftf5LXNOtGakQ7maXOVt2ZsjUGVtDTCd4CCNvn0G/6FFjFtt2P51LZn
+ 8k+s5aqIeCcVpfWHWnoaUanHBnRV+9CqPhiVWftW0GGO4f8Qw2+DDXnTj g==;
+X-CSE-ConnectionGUID: k1Ut2nmORSCR8aEriYh/wA==
+X-CSE-MsgGUID: r5O9/Ja0Tcy0UYqJABHfSg==
+X-IronPort-AV: E=Sophos;i="6.25,154,1779148800"; d="scan'208";a="23300043"
+Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
+ by internal-pdx-out-015.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2026 22:53:15 +0000
+Received: from EX19MTAUWA002.ant.amazon.com [205.251.233.178:31255]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.11.115:2525]
  with esmtp (Farcaster)
- id 1520f47c-e749-4a59-a4bb-753b46ca57be; Sat, 11 Jul 2026 22:52:18 +0000 (UTC)
-X-Farcaster-Flow-ID: 1520f47c-e749-4a59-a4bb-753b46ca57be
+ id c7513fa4-3f80-48ef-b671-a55a6aa59319; Sat, 11 Jul 2026 22:53:14 +0000 (UTC)
+X-Farcaster-Flow-ID: c7513fa4-3f80-48ef-b671-a55a6aa59319
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
+ EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:52:18 +0000
+ Sat, 11 Jul 2026 22:53:14 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 11 Jul 2026 22:52:09 +0000
+ Sat, 11 Jul 2026 22:53:05 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -91,28 +91,28 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  <th.huth+qemu@posteo.eu>, "Ran Wang" <wangran@bosc.ac.cn>, Hao Wu
  <wuhaotsh@google.com>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>
-Subject: [RFC PATCH 057/134] hw/arm/sbsa-ref: Give onboard devices a QOM parent
-Date: Sat, 11 Jul 2026 22:35:50 +0000
-Message-ID: <20260711223707.42139-58-graf@amazon.com>
+Subject: [RFC PATCH 061/134] hw/arm/npcm: Give onboard devices a QOM parent
+Date: Sat, 11 Jul 2026 22:35:54 +0000
+Message-ID: <20260711223707.42139-62-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260711223707.42139-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D043UWA003.ant.amazon.com (10.13.139.31) To
+X-ClientProxiedBy: EX19D037UWB004.ant.amazon.com (10.13.138.84) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=44.246.77.92;
+Received-SPF: pass client-ip=50.112.246.219;
  envelope-from=prvs=645f258d4=graf@amazon.de;
- helo=pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-015.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
+ SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
  UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,7 +129,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the *_orphan() device-creation calls in the hw/arm sbsa-ref
+Convert the *_orphan() device-creation calls in the hw/arm npcm
 board files to the new parented API introduced earlier in this
 series, so every onboard device gets a stable path in the
 composition tree instead of landing in /machine/unattached with an
@@ -141,268 +141,339 @@ composite children.  Names follow existing QOM conventions.
 
 Per-site rationale (reviewers: dispute the modeling here):
 
-hw/arm/sbsa-ref.c:299 | qdev_new | OBJECT(sms) | name | collapse existing object_property_add_child(OBJECT(sms), name, ...); keep existing name; sbsa_flash_map1 realize -> sysbus_realize
-hw/arm/sbsa-ref.c:424 | qdev_new | OBJECT(sms) | "its" | helper receives SBSAMachineState* board pointer
-hw/arm/sbsa-ref.c:443 | qdev_new | OBJECT(sms) | "gic" | helper receives SBSAMachineState* board pointer
-hw/arm/sbsa-ref.c:525 | qdev_new | OBJECT(sms) | "uart[*]" | helper called 3x from board init -> auto-index; drop const
-hw/arm/sbsa-ref.c:540 | sysbus_create_simple | OBJECT(sms) | "rtc" | helper receives SBSAMachineState*; drop const
-hw/arm/sbsa-ref.c:547 | qdev_new | OBJECT(sms) | "wdt" | helper receives SBSAMachineState*; drop const
-hw/arm/sbsa-ref.c:575 | sysbus_create_simple | OBJECT(sms) | "gpio" | helper receives SBSAMachineState*; drop const
-hw/arm/sbsa-ref.c:578 | sysbus_create_simple | OBJECT(sms) | "gpio-key" | helper receives SBSAMachineState*
-hw/arm/sbsa-ref.c:593 | qdev_new | OBJECT(sms) | "ahci" | helper receives SBSAMachineState*; drop const
-hw/arm/sbsa-ref.c:608 | qdev_new | OBJECT(sms) | "xhci" | helper receives SBSAMachineState*; drop const
-hw/arm/sbsa-ref.c:625 | qdev_new | OBJECT(sms) | "smmuv3" | helper receives SBSAMachineState*; drop const
-hw/arm/sbsa-ref.c:661 | qdev_new | OBJECT(sms) | "pcie" | helper receives SBSAMachineState*
-hw/arm/sbsa-ref.c:698 | pci_create_simple | OBJECT(sms) | "bochs-display" | board owns lifetime; bus is plug location not parent
-hw/arm/sbsa-ref.c:715 | qdev_new | parent | "sbsa-ec" | helper lacks parent-capable pointer -> thread Object *parent from sbsa_ref_init
+hw/arm/npcm7xx_boards.c:87 | qdev_new | parent | "flash[*]" | helper: threaded Object *parent from board init; multiple callers/CS → auto-index
+hw/arm/npcm7xx_boards.c:116 | qdev_new | parent | "sd-card[*]" | helper: threaded Object *parent from board init; per-unit → auto-index
+hw/arm/npcm7xx_boards.c:201 | i2c_slave_create_simple | parent | "tmp105[*]" | helper: threaded Object *parent from board init; 4× tmp105 → auto-index
+hw/arm/npcm7xx_boards.c:203 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:205 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:207 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:237 | i2c_slave_create_simple | parent | "tmp105[*]" | helper: threaded Object *parent from board init; 4× tmp105 → auto-index
+hw/arm/npcm7xx_boards.c:238 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:239 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:240 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:256 | i2c_slave_create_simple | parent | "pca9548" | helper from board init; single mux
+hw/arm/npcm7xx_boards.c:336 | i2c_slave_create_simple | parent | "pca9548[*]" | helper: threaded Object *parent from board init; 4× pca9548 → auto-index
+hw/arm/npcm7xx_boards.c:340 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; 8× tmp105 → auto-index
+hw/arm/npcm7xx_boards.c:341 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:342 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:343 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:345 | i2c_slave_create_simple | parent | "pca9548[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:347 | i2c_slave_create_simple | parent | "pca9548[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:351 | i2c_slave_create_simple | parent | "pca9548[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:355 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:356 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:357 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; auto-index
+hw/arm/npcm7xx_boards.c:358 | i2c_slave_create_simple | parent | "tmp105[*]" | helper from board init; auto-index
+hw/arm/npcm7xx.c:524 | sysbus_create_simple | OBJECT(dev) | "l2x0" | SoC DeviceClass.realize(dev); single L2 cache ctlr
+hw/arm/npcm8xx_boards.c:64 | qdev_new | parent | "flash[*]" | helper: threaded Object *parent from board init; auto-index
+hw/arm/npcm8xx_boards.c:162 | i2c_slave_create_simple | parent | "tmp105" | helper: threaded Object *parent from board init; single tmp105
 
 Link: https://lore.kernel.org/qemu-devel/87jyr3w9tc.fsf@pond.sub.org/
 Assisted-by: Kiro
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/arm/sbsa-ref.c | 70 ++++++++++++++++++++++++-----------------------
- 1 file changed, 36 insertions(+), 34 deletions(-)
+ hw/arm/npcm7xx.c        |   2 +-
+ hw/arm/npcm7xx_boards.c | 107 ++++++++++++++++++++++++----------------
+ hw/arm/npcm8xx_boards.c |  19 ++++---
+ 3 files changed, 77 insertions(+), 51 deletions(-)
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index f9fb681d31..f632df742b 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -296,7 +296,7 @@ static PFlashCFI01 *sbsa_flash_create1(SBSAMachineState *sms,
-      * Create a single flash device.  We use the same parameters as
-      * the flash devices on the Versatile Express board.
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index 8363a04f10..a930f7843a 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -521,7 +521,7 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* L2 cache controller */
+-    sysbus_create_simple_orphan("l2x0", NPCM7XX_L2C_BA, NULL);
++    sysbus_create_simple(OBJECT(dev), "l2x0", "l2x0", NPCM7XX_L2C_BA, NULL);
+ 
+     /* System Global Control Registers (GCR). Can fail due to user input. */
+     object_property_set_int(OBJECT(&s->gcr), "disabled-modules",
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+index 7b5cdd7191..778ef0f232 100644
+--- a/hw/arm/npcm7xx_boards.c
++++ b/hw/arm/npcm7xx_boards.c
+@@ -78,17 +78,18 @@ static void npcm7xx_load_bootrom(MachineState *machine, NPCM7xxState *soc)
+     }
+ }
+ 
+-static void npcm7xx_connect_flash(NPCM7xxFIUState *fiu, int cs_no,
+-                                  const char *flash_type, DriveInfo *dinfo)
++static void npcm7xx_connect_flash(Object *parent, NPCM7xxFIUState *fiu,
++                                  int cs_no, const char *flash_type,
++                                  DriveInfo *dinfo)
+ {
+     DeviceState *flash;
+     qemu_irq flash_cs;
+ 
+-    flash = qdev_new_orphan(flash_type);
++    flash = qdev_new(parent, "flash[*]", flash_type);
+     if (dinfo) {
+         qdev_prop_set_drive(flash, "drive", blk_by_legacy_dinfo(dinfo));
+     }
+-    qdev_realize_and_unref(flash, BUS(fiu->spi), &error_fatal);
++    qdev_realize(flash, BUS(fiu->spi), &error_fatal);
+ 
+     flash_cs = qdev_get_gpio_in_named(flash, SSI_GPIO_CS, 0);
+     qdev_connect_gpio_out_named(DEVICE(fiu), "cs", cs_no, flash_cs);
+@@ -102,7 +103,7 @@ static void npcm7xx_connect_dram(NPCM7xxState *soc, MemoryRegion *dram)
+                              &error_abort);
+ }
+ 
+-static void sdhci_attach_drive(SDHCIState *sdhci, int unit)
++static void sdhci_attach_drive(Object *parent, SDHCIState *sdhci, int unit)
+ {
+         DriveInfo *di = drive_get(IF_SD, 0, unit);
+         BlockBackend *blk = di ? blk_by_legacy_dinfo(di) : NULL;
+@@ -113,9 +114,9 @@ static void sdhci_attach_drive(SDHCIState *sdhci, int unit)
+             exit(1);
+         }
+ 
+-        DeviceState *carddev = qdev_new_orphan(TYPE_SD_CARD);
++        DeviceState *carddev = qdev_new(parent, "sd-card[*]", TYPE_SD_CARD);
+         qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
+-        qdev_realize_and_unref(carddev, bus, &error_fatal);
++        qdev_realize(carddev, bus, &error_fatal);
+ }
+ 
+ static NPCM7xxState *npcm7xx_create_soc(MachineState *machine,
+@@ -195,16 +196,20 @@ static void npcm7xx_connect_pwm_fan(NPCM7xxState *soc, SplitIRQ *splitter,
+     qdev_connect_gpio_out(DEVICE(splitter), output_no, fan_duty_gpio);
+ }
+ 
+-static void npcm750_evb_i2c_init(NPCM7xxState *soc)
++static void npcm750_evb_i2c_init(Object *parent, NPCM7xxState *soc)
+ {
+     /* lm75 temperature sensor on SVB, tmp105 is compatible */
+-    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 0), "tmp105", 0x48);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            npcm7xx_i2c_get_bus(soc, 0), "tmp105", 0x48);
+     /* lm75 temperature sensor on EB, tmp105 is compatible */
+-    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 1), "tmp105", 0x48);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            npcm7xx_i2c_get_bus(soc, 1), "tmp105", 0x48);
+     /* tmp100 temperature sensor on EB, tmp105 is compatible */
+-    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 2), "tmp105", 0x48);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            npcm7xx_i2c_get_bus(soc, 2), "tmp105", 0x48);
+     /* tmp100 temperature sensor on SVB, tmp105 is compatible */
+-    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 6), "tmp105", 0x48);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            npcm7xx_i2c_get_bus(soc, 6), "tmp105", 0x48);
+ }
+ 
+ static void npcm750_evb_fan_init(NPCM7xxMachine *machine, NPCM7xxState *soc)
+@@ -231,13 +236,17 @@ static void npcm750_evb_fan_init(NPCM7xxMachine *machine, NPCM7xxState *soc)
+     npcm7xx_connect_pwm_fan(soc, &splitter[7], 0x0f, 1);
+ }
+ 
+-static void quanta_gsj_i2c_init(NPCM7xxState *soc)
++static void quanta_gsj_i2c_init(Object *parent, NPCM7xxState *soc)
+ {
+     /* GSJ machine have 4 max31725 temperature sensors, tmp105 is compatible. */
+-    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 1), "tmp105", 0x5c);
+-    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 2), "tmp105", 0x5c);
+-    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 3), "tmp105", 0x5c);
+-    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 4), "tmp105", 0x5c);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            npcm7xx_i2c_get_bus(soc, 1), "tmp105", 0x5c);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            npcm7xx_i2c_get_bus(soc, 2), "tmp105", 0x5c);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            npcm7xx_i2c_get_bus(soc, 3), "tmp105", 0x5c);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            npcm7xx_i2c_get_bus(soc, 4), "tmp105", 0x5c);
+ 
+     at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 9), 0x55, 8192);
+     at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 10), 0x55, 8192);
+@@ -253,7 +262,8 @@ static void quanta_gsj_i2c_init(NPCM7xxState *soc)
+      * - ucd90160@6b
       */
--    DeviceState *dev = qdev_new_orphan(TYPE_PFLASH_CFI01);
-+    DeviceState *dev = qdev_new(OBJECT(sms), name, TYPE_PFLASH_CFI01);
  
-     qdev_prop_set_uint64(dev, "sector-length", SBSA_FLASH_SECTOR_SIZE);
-     qdev_prop_set_uint8(dev, "width", 4);
-@@ -307,7 +307,6 @@ static PFlashCFI01 *sbsa_flash_create1(SBSAMachineState *sms,
-     qdev_prop_set_uint16(dev, "id2", 0x00);
-     qdev_prop_set_uint16(dev, "id3", 0x00);
-     qdev_prop_set_string(dev, "name", name);
--    object_property_add_child(OBJECT(sms), name, OBJECT(dev));
-     object_property_add_alias(OBJECT(sms), alias_prop_name,
-                               OBJECT(dev), "drive");
-     return PFLASH_CFI01(dev);
-@@ -328,7 +327,7 @@ static void sbsa_flash_map1(PFlashCFI01 *flash,
-     assert(QEMU_IS_ALIGNED(size, SBSA_FLASH_SECTOR_SIZE));
-     assert(size / SBSA_FLASH_SECTOR_SIZE <= UINT32_MAX);
-     qdev_prop_set_uint32(dev, "num-blocks", size / SBSA_FLASH_SECTOR_SIZE);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
- 
-     memory_region_add_subregion(sysmem, base,
-                                 sysbus_mmio_get_region(SYS_BUS_DEVICE(dev),
-@@ -421,11 +420,11 @@ static void create_its(SBSAMachineState *sms)
-     const char *itsclass = its_class_name();
-     DeviceState *dev;
- 
--    dev = qdev_new_orphan(itsclass);
-+    dev = qdev_new(OBJECT(sms), "its", itsclass);
- 
-     object_property_set_link(OBJECT(dev), "parent-gicv3", OBJECT(sms->gic),
-                              &error_abort);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, sbsa_ref_memmap[SBSA_GIC_ITS].base);
+-    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 15), "pca9548", 0x75);
++    i2c_slave_create_simple(parent, "pca9548",
++                            npcm7xx_i2c_get_bus(soc, 15), "pca9548", 0x75);
  }
  
-@@ -440,7 +439,7 @@ static void create_gic(SBSAMachineState *sms, MemoryRegion *mem)
- 
-     gictype = gicv3_class_name();
- 
--    sms->gic = qdev_new_orphan(gictype);
-+    sms->gic = qdev_new(OBJECT(sms), "gic", gictype);
-     qdev_prop_set_uint32(sms->gic, "revision", 3);
-     qdev_prop_set_uint32(sms->gic, "num-cpu", smp_cpus);
-     /*
-@@ -463,7 +462,7 @@ static void create_gic(SBSAMachineState *sms, MemoryRegion *mem)
-     qdev_prop_set_bit(sms->gic, "has-lpi", true);
- 
-     gicbusdev = SYS_BUS_DEVICE(sms->gic);
--    sysbus_realize_and_unref(gicbusdev, &error_fatal);
-+    sysbus_realize(gicbusdev, &error_fatal);
-     sysbus_mmio_map(gicbusdev, 0, sbsa_ref_memmap[SBSA_GIC_DIST].base);
-     sysbus_mmio_map(gicbusdev, 1, sbsa_ref_memmap[SBSA_GIC_REDIST].base);
- 
-@@ -517,39 +516,40 @@ static void create_gic(SBSAMachineState *sms, MemoryRegion *mem)
-     create_its(sms);
+ static void quanta_gsj_fan_init(NPCM7xxMachine *machine, NPCM7xxState *soc)
+@@ -329,33 +339,45 @@ static void quanta_gbs_i2c_init(NPCM7xxState *soc)
+      */
  }
  
--static void create_uart(const SBSAMachineState *sms, int uart,
-+static void create_uart(SBSAMachineState *sms, int uart,
-                         MemoryRegion *mem, Chardev *chr)
+-static void kudo_bmc_i2c_init(NPCM7xxState *soc)
++static void kudo_bmc_i2c_init(Object *parent, NPCM7xxState *soc)
  {
-     hwaddr base = sbsa_ref_memmap[uart].base;
-     int irq = sbsa_ref_irqmap[uart];
--    DeviceState *dev = qdev_new_orphan(TYPE_PL011);
-+    DeviceState *dev = qdev_new(OBJECT(sms), "uart[*]", TYPE_PL011);
-     SysBusDevice *s = SYS_BUS_DEVICE(dev);
+     I2CSlave *i2c_mux;
  
-     qdev_prop_set_chr(dev, "chardev", chr);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     memory_region_add_subregion(mem, base,
-                                 sysbus_mmio_get_region(s, 0));
-     sysbus_connect_irq(s, 0, qdev_get_gpio_in(sms->gic, irq));
+-    i2c_mux = i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 1),
++    i2c_mux = i2c_slave_create_simple(parent, "pca9548[*]",
++                                      npcm7xx_i2c_get_bus(soc, 1),
+                                       TYPE_PCA9548, 0x75);
+ 
+     /* tmp105 is compatible with the lm75 */
+-    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x5c);
+-    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 5), "tmp105", 0x5c);
+-    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 6), "tmp105", 0x5c);
+-    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 7), "tmp105", 0x5c);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x5c);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            pca954x_i2c_get_bus(i2c_mux, 5), "tmp105", 0x5c);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            pca954x_i2c_get_bus(i2c_mux, 6), "tmp105", 0x5c);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            pca954x_i2c_get_bus(i2c_mux, 7), "tmp105", 0x5c);
+ 
+-    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 1), TYPE_PCA9548, 0x77);
++    i2c_slave_create_simple(parent, "pca9548[*]",
++                            npcm7xx_i2c_get_bus(soc, 1), TYPE_PCA9548, 0x77);
+ 
+-    i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 4), TYPE_PCA9548, 0x77);
++    i2c_slave_create_simple(parent, "pca9548[*]",
++                            npcm7xx_i2c_get_bus(soc, 4), TYPE_PCA9548, 0x77);
+ 
+     at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 4), 0x50, 8192); /* mbfru */
+ 
+-    i2c_mux = i2c_slave_create_simple_orphan(npcm7xx_i2c_get_bus(soc, 13),
++    i2c_mux = i2c_slave_create_simple(parent, "pca9548[*]",
++                                      npcm7xx_i2c_get_bus(soc, 13),
+                                       TYPE_PCA9548, 0x77);
+ 
+     /* tmp105 is compatible with the lm75 */
+-    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 2), "tmp105", 0x48);
+-    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 3), "tmp105", 0x49);
+-    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x48);
+-    i2c_slave_create_simple_orphan(pca954x_i2c_get_bus(i2c_mux, 5), "tmp105", 0x49);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            pca954x_i2c_get_bus(i2c_mux, 2), "tmp105", 0x48);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            pca954x_i2c_get_bus(i2c_mux, 3), "tmp105", 0x49);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x48);
++    i2c_slave_create_simple(parent, "tmp105[*]",
++                            pca954x_i2c_get_bus(i2c_mux, 5), "tmp105", 0x49);
+ 
+     at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 14), 0x55, 8192); /* bmcfru */
+ 
+@@ -371,8 +393,9 @@ static void npcm750_evb_init(MachineState *machine)
+     qdev_realize(DEVICE(soc), NULL, &error_fatal);
+ 
+     npcm7xx_load_bootrom(machine, soc);
+-    npcm7xx_connect_flash(&soc->fiu[0], 0, "w25q256", drive_get(IF_MTD, 0, 0));
+-    npcm750_evb_i2c_init(soc);
++    npcm7xx_connect_flash(OBJECT(machine), &soc->fiu[0], 0, "w25q256",
++                          drive_get(IF_MTD, 0, 0));
++    npcm750_evb_i2c_init(OBJECT(machine), soc);
+     npcm750_evb_fan_init(NPCM7XX_MACHINE(machine), soc);
+     npcm7xx_load_kernel(machine, soc);
+ }
+@@ -386,9 +409,9 @@ static void quanta_gsj_init(MachineState *machine)
+     qdev_realize(DEVICE(soc), NULL, &error_fatal);
+ 
+     npcm7xx_load_bootrom(machine, soc);
+-    npcm7xx_connect_flash(&soc->fiu[0], 0, "mx25l25635e",
++    npcm7xx_connect_flash(OBJECT(machine), &soc->fiu[0], 0, "mx25l25635e",
+                           drive_get(IF_MTD, 0, 0));
+-    quanta_gsj_i2c_init(soc);
++    quanta_gsj_i2c_init(OBJECT(machine), soc);
+     quanta_gsj_fan_init(NPCM7XX_MACHINE(machine), soc);
+     npcm7xx_load_kernel(machine, soc);
+ }
+@@ -403,11 +426,11 @@ static void quanta_gbs_init(MachineState *machine)
+ 
+     npcm7xx_load_bootrom(machine, soc);
+ 
+-    npcm7xx_connect_flash(&soc->fiu[0], 0, "mx66u51235f",
++    npcm7xx_connect_flash(OBJECT(machine), &soc->fiu[0], 0, "mx66u51235f",
+                           drive_get(IF_MTD, 0, 0));
+ 
+     quanta_gbs_i2c_init(soc);
+-    sdhci_attach_drive(&soc->mmc.sdhci, 0);
++    sdhci_attach_drive(OBJECT(machine), &soc->mmc.sdhci, 0);
+     npcm7xx_load_kernel(machine, soc);
  }
  
--static void create_rtc(const SBSAMachineState *sms)
-+static void create_rtc(SBSAMachineState *sms)
+@@ -420,13 +443,13 @@ static void kudo_bmc_init(MachineState *machine)
+     qdev_realize(DEVICE(soc), NULL, &error_fatal);
+ 
+     npcm7xx_load_bootrom(machine, soc);
+-    npcm7xx_connect_flash(&soc->fiu[0], 0, "mx66u51235f",
++    npcm7xx_connect_flash(OBJECT(machine), &soc->fiu[0], 0, "mx66u51235f",
+                           drive_get(IF_MTD, 0, 0));
+-    npcm7xx_connect_flash(&soc->fiu[1], 0, "mx66u51235f",
++    npcm7xx_connect_flash(OBJECT(machine), &soc->fiu[1], 0, "mx66u51235f",
+                           drive_get(IF_MTD, 3, 0));
+ 
+-    kudo_bmc_i2c_init(soc);
+-    sdhci_attach_drive(&soc->mmc.sdhci, 0);
++    kudo_bmc_i2c_init(OBJECT(machine), soc);
++    sdhci_attach_drive(OBJECT(machine), &soc->mmc.sdhci, 0);
+     npcm7xx_load_kernel(machine, soc);
+ }
+ 
+@@ -439,7 +462,7 @@ static void mori_bmc_init(MachineState *machine)
+     qdev_realize(DEVICE(soc), NULL, &error_fatal);
+ 
+     npcm7xx_load_bootrom(machine, soc);
+-    npcm7xx_connect_flash(&soc->fiu[1], 0, "mx66u51235f",
++    npcm7xx_connect_flash(OBJECT(machine), &soc->fiu[1], 0, "mx66u51235f",
+                           drive_get(IF_MTD, 3, 0));
+ 
+     npcm7xx_load_kernel(machine, soc);
+diff --git a/hw/arm/npcm8xx_boards.c b/hw/arm/npcm8xx_boards.c
+index eb0248552f..ff2840b409 100644
+--- a/hw/arm/npcm8xx_boards.c
++++ b/hw/arm/npcm8xx_boards.c
+@@ -55,17 +55,18 @@ static void npcm8xx_load_bootrom(MachineState *machine, NPCM8xxState *soc)
+     }
+ }
+ 
+-static void npcm8xx_connect_flash(NPCM7xxFIUState *fiu, int cs_no,
+-                                  const char *flash_type, DriveInfo *dinfo)
++static void npcm8xx_connect_flash(Object *parent, NPCM7xxFIUState *fiu,
++                                  int cs_no, const char *flash_type,
++                                  DriveInfo *dinfo)
  {
-     hwaddr base = sbsa_ref_memmap[SBSA_RTC].base;
-     int irq = sbsa_ref_irqmap[SBSA_RTC];
+     DeviceState *flash;
+     qemu_irq flash_cs;
  
--    sysbus_create_simple_orphan("pl031", base, qdev_get_gpio_in(sms->gic, irq));
-+    sysbus_create_simple(OBJECT(sms), "rtc", "pl031", base,
-+                         qdev_get_gpio_in(sms->gic, irq));
+-    flash = qdev_new_orphan(flash_type);
++    flash = qdev_new(parent, "flash[*]", flash_type);
+     if (dinfo) {
+         qdev_prop_set_drive(flash, "drive", blk_by_legacy_dinfo(dinfo));
+     }
+-    qdev_realize_and_unref(flash, BUS(fiu->spi), &error_fatal);
++    qdev_realize(flash, BUS(fiu->spi), &error_fatal);
+ 
+     flash_cs = qdev_get_gpio_in_named(flash, SSI_GPIO_CS, 0);
+     qdev_connect_gpio_out_named(DEVICE(fiu), "cs", cs_no, flash_cs);
+@@ -156,10 +157,11 @@ static void npcm8xx_connect_pwm_fan(NPCM8xxState *soc, SplitIRQ *splitter,
+     qdev_connect_gpio_out(DEVICE(splitter), output_no, fan_duty_gpio);
  }
  
--static void create_wdt(const SBSAMachineState *sms)
-+static void create_wdt(SBSAMachineState *sms)
+-static void npcm845_evb_i2c_init(NPCM8xxState *soc)
++static void npcm845_evb_i2c_init(Object *parent, NPCM8xxState *soc)
  {
-     hwaddr rbase = sbsa_ref_memmap[SBSA_GWDT_REFRESH].base;
-     hwaddr cbase = sbsa_ref_memmap[SBSA_GWDT_CONTROL].base;
--    DeviceState *dev = qdev_new_orphan(TYPE_WDT_SBSA);
-+    DeviceState *dev = qdev_new(OBJECT(sms), "wdt", TYPE_WDT_SBSA);
-     SysBusDevice *s = SYS_BUS_DEVICE(dev);
-     int irq = sbsa_ref_irqmap[SBSA_GWDT_WS0];
- 
-     qdev_prop_set_uint64(dev, "clock-frequency", SBSA_GTIMER_HZ);
--    sysbus_realize_and_unref(s, &error_fatal);
-+    sysbus_realize(s, &error_fatal);
-     sysbus_mmio_map(s, 0, rbase);
-     sysbus_mmio_map(s, 1, cbase);
-     sysbus_connect_irq(s, 0, qdev_get_gpio_in(sms->gic, irq));
-@@ -566,23 +566,23 @@ static Notifier sbsa_ref_powerdown_notifier = {
-     .notify = sbsa_ref_powerdown_req
- };
- 
--static void create_gpio(const SBSAMachineState *sms)
-+static void create_gpio(SBSAMachineState *sms)
- {
-     DeviceState *pl061_dev;
-     hwaddr base = sbsa_ref_memmap[SBSA_GPIO].base;
-     int irq = sbsa_ref_irqmap[SBSA_GPIO];
- 
--    pl061_dev = sysbus_create_simple_orphan("pl061", base,
-+    pl061_dev = sysbus_create_simple(OBJECT(sms), "gpio", "pl061", base,
-                                      qdev_get_gpio_in(sms->gic, irq));
- 
--    gpio_key_dev = sysbus_create_simple_orphan("gpio-key", -1,
--                                        qdev_get_gpio_in(pl061_dev, 3));
-+    gpio_key_dev = sysbus_create_simple(OBJECT(sms), "gpio-key", "gpio-key",
-+                                        -1, qdev_get_gpio_in(pl061_dev, 3));
- 
-     /* connect powerdown request */
-     qemu_register_powerdown_notifier(&sbsa_ref_powerdown_notifier);
+     /* tmp100 temperature sensor on SVB, tmp105 is compatible */
+-    i2c_slave_create_simple_orphan(npcm8xx_i2c_get_bus(soc, 6), "tmp105", 0x48);
++    i2c_slave_create_simple(parent, "tmp105",
++                            npcm8xx_i2c_get_bus(soc, 6), "tmp105", 0x48);
  }
  
--static void create_ahci(const SBSAMachineState *sms)
-+static void create_ahci(SBSAMachineState *sms)
- {
-     hwaddr base = sbsa_ref_memmap[SBSA_AHCI].base;
-     int irq = sbsa_ref_irqmap[SBSA_AHCI];
-@@ -590,9 +590,9 @@ static void create_ahci(const SBSAMachineState *sms)
-     DriveInfo *hd[NUM_SATA_PORTS];
-     SysbusAHCIState *sysahci;
+ static void npcm845_evb_fan_init(NPCM8xxMachine *machine, NPCM8xxState *soc)
+@@ -195,8 +197,9 @@ static void npcm845_evb_init(MachineState *machine)
+     qdev_realize(DEVICE(soc), NULL, &error_fatal);
  
--    dev = qdev_new_orphan("sysbus-ahci");
-+    dev = qdev_new(OBJECT(sms), "ahci", "sysbus-ahci");
-     qdev_prop_set_uint32(dev, "num-ports", NUM_SATA_PORTS);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(sms->gic, irq));
- 
-@@ -601,19 +601,19 @@ static void create_ahci(const SBSAMachineState *sms)
-     ahci_ide_create_devs(&sysahci->ahci, hd);
+     npcm8xx_load_bootrom(machine, soc);
+-    npcm8xx_connect_flash(&soc->fiu[0], 0, "w25q256", drive_get(IF_MTD, 0, 0));
+-    npcm845_evb_i2c_init(soc);
++    npcm8xx_connect_flash(OBJECT(machine), &soc->fiu[0], 0, "w25q256",
++                          drive_get(IF_MTD, 0, 0));
++    npcm845_evb_i2c_init(OBJECT(machine), soc);
+     npcm845_evb_fan_init(NPCM8XX_MACHINE(machine), soc);
+     npcm8xx_load_kernel(machine, soc);
  }
- 
--static void create_xhci(const SBSAMachineState *sms)
-+static void create_xhci(SBSAMachineState *sms)
- {
-     hwaddr base = sbsa_ref_memmap[SBSA_XHCI].base;
-     int irq = sbsa_ref_irqmap[SBSA_XHCI];
--    DeviceState *dev = qdev_new_orphan(TYPE_XHCI_SYSBUS);
-+    DeviceState *dev = qdev_new(OBJECT(sms), "xhci", TYPE_XHCI_SYSBUS);
-     qdev_prop_set_uint32(dev, "slots", XHCI_MAXSLOTS);
- 
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(sms->gic, irq));
- }
- 
--static void create_smmu(const SBSAMachineState *sms, PCIBus *bus,
-+static void create_smmu(SBSAMachineState *sms, PCIBus *bus,
-                         MemoryRegion *sysmem,
-                         MemoryRegion *secure_sysmem)
- {
-@@ -622,7 +622,7 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus,
-     DeviceState *dev;
-     int i;
- 
--    dev = qdev_new_orphan(TYPE_ARM_SMMUV3);
-+    dev = qdev_new(OBJECT(sms), "smmuv3", TYPE_ARM_SMMUV3);
- 
-     object_property_set_str(OBJECT(dev), "stage", "nested", &error_abort);
-     object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
-@@ -631,7 +631,7 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus,
-                              &error_abort);
-     object_property_set_link(OBJECT(dev), "secure-memory", OBJECT(secure_sysmem),
-                              &error_abort);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-     for (i = 0; i < NUM_SMMU_IRQS; i++) {
-         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-@@ -658,8 +658,8 @@ static void create_pcie(SBSAMachineState *sms,
-     PCIHostState *pci;
-     int i;
- 
--    dev = qdev_new_orphan(TYPE_GPEX_HOST);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    dev = qdev_new(OBJECT(sms), "pcie", TYPE_GPEX_HOST);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
- 
-     /* Map ECAM space */
-     ecam_alias = g_new0(MemoryRegion, 1);
-@@ -695,7 +695,7 @@ static void create_pcie(SBSAMachineState *sms,
- 
-     pci_init_nic_devices(pci->bus, mc->default_nic);
- 
--    pci_create_simple_orphan(pci->bus, -1, "bochs-display");
-+    pci_create_simple(OBJECT(sms), "bochs-display", pci->bus, -1, "bochs-display");
- 
-     create_smmu(sms, pci->bus, sysmem, secure_sysmem);
- }
-@@ -709,12 +709,14 @@ static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_size)
-     return board->fdt;
- }
- 
--static void create_secure_ec(MemoryRegion *mem)
-+static void create_secure_ec(Object *parent, MemoryRegion *mem)
- {
-     hwaddr base = sbsa_ref_memmap[SBSA_SECURE_EC].base;
--    DeviceState *dev = qdev_new_orphan("sbsa-ec");
-+    DeviceState *dev = qdev_new(parent, "sbsa-ec", "sbsa-ec");
-     SysBusDevice *s = SYS_BUS_DEVICE(dev);
- 
-+    sysbus_realize(s, &error_fatal);
-+
-     memory_region_add_subregion(mem, base,
-                                 sysbus_mmio_get_region(s, 0));
- }
-@@ -835,7 +837,7 @@ static void sbsa_ref_init(MachineState *machine)
- 
-     create_pcie(sms, sysmem, secure_sysmem);
- 
--    create_secure_ec(secure_sysmem);
-+    create_secure_ec(OBJECT(sms), secure_sysmem);
- 
-     sms->bootinfo.ram_size = machine->ram_size;
-     sms->bootinfo.board_id = -1;
 -- 
 2.47.1
 

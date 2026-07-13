@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21604C43458
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Jul 2026 05:14:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD04BC43458
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Jul 2026 05:31:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wj8zp-0001HD-N6; Mon, 13 Jul 2026 01:14:26 -0400
+	id 1wj9Fo-00051h-TJ; Mon, 13 Jul 2026 01:30:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wj8zl-0001Gp-8O
- for qemu-arm@nongnu.org; Mon, 13 Jul 2026 01:14:21 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wj9Fg-00050G-M8
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2026 01:30:52 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wj8zi-0003ci-PU
- for qemu-arm@nongnu.org; Mon, 13 Jul 2026 01:14:20 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wj9Fd-0006tS-OR
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2026 01:30:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783919657;
+ s=mimecast20190719; t=1783920644;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Pd7YyxNvDAuEnjFNK+Ewr3cRxfagtzALbzN/XiFNig4=;
- b=SOZqtyxMyyqbyC546TvoIIny3UcSZf4tmNLdDNsIm6H67dR3lwsUI8pHHCoWubNH23Uzix
- DKH2r8rUBkReIpKrgDq42JZduKcXK/q2ljG98hsCqJMa5p5U/OyZtcUQRQvGZlIEjNarHZ
- qaIRj7aprBUyej6a4AgVbKQRQ24vekY=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=23/NITmBPzrv2YP7GXVDIa8jJVxWfBFqHFpVj1/RdOY=;
+ b=SUB59He/Tk9bYPHUUdBCPf8qDKcIu5aqk8MTJrDWYiBbHObpY518brUitqhcS2ex+1jFzi
+ i2R59xMYkjHcz0taUk3e2aZ+53vXAnA0dF8Jvz08S6NtH0h56zeMtzEWOc0Esu+UXBw7e4
+ QvaqryDca9emJWHnzA5L0J4lIdAaYSA=
+Received: from mail-pf1-f199.google.com (mail-pf1-f199.google.com
+ [209.85.210.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-689-v2kDeRTdOBylbCpHlkzo5A-1; Mon, 13 Jul 2026 01:14:15 -0400
-X-MC-Unique: v2kDeRTdOBylbCpHlkzo5A-1
-X-Mimecast-MFC-AGG-ID: v2kDeRTdOBylbCpHlkzo5A_1783919655
-Received: by mail-pl1-f198.google.com with SMTP id
- d9443c01a7336-2cc86a9ef97so59776525ad.3
- for <qemu-arm@nongnu.org>; Sun, 12 Jul 2026 22:14:15 -0700 (PDT)
+ us-mta-643-GrceN3FbNmen_O1v6a5wPQ-1; Mon, 13 Jul 2026 01:30:41 -0400
+X-MC-Unique: GrceN3FbNmen_O1v6a5wPQ-1
+X-Mimecast-MFC-AGG-ID: GrceN3FbNmen_O1v6a5wPQ_1783920640
+Received: by mail-pf1-f199.google.com with SMTP id
+ d2e1a72fcca58-848860def2cso2101794b3a.2
+ for <qemu-arm@nongnu.org>; Sun, 12 Jul 2026 22:30:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783919655; x=1784524455;
+ d=1e100.net; s=20251104; t=1783920640; x=1784525440;
  h=content-transfer-encoding:content-type:in-reply-to:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=Pd7YyxNvDAuEnjFNK+Ewr3cRxfagtzALbzN/XiFNig4=;
- b=VQXDPIq8BFj6aFT2q8COSxCAyKDxUK0gMC1nKERo1TYXjO8Qkd2CZpoDui2XOIBfXq
- ZvCA4OcnE56s+U4UATtHpOnrI+i2btfAkvWVSwZwYFMr38qUrb3ljnoZAzBJYu0Hj1L0
- e3JMrIvpBDYLx5H7QMp3xsD22YCOH3ZOy0+VFd8nMOv0wFXY6CAVgOfBFnhT6q97RNzS
- QfzSG1IAYFpM7nmzwnCrUQP3/QtBf95R/cSiVgi9BXtffvIJBcuO4PB1xa1rLBR3nFSw
- qG+CwYAkPLCdVz5k30sNlXlyoXuSvHumpqKt0gEEd+AeACSz7uAsNZILNg1jqMIWzPF8
- Ba7Q==
+ bh=23/NITmBPzrv2YP7GXVDIa8jJVxWfBFqHFpVj1/RdOY=;
+ b=JxE1MnlbNxnVqAipZqAGgibNknzQ37ee3cISFlNNOYAfVgFry0egykwL82vgP2GuHr
+ iR1RH7XbgbNJ+USEmquUVHxQKsVlqcz4VisOLxVTqEmm4EaiV/0iZ8Um+mqaMnpZvQ+g
+ xkiEuqoTFGDLpdPoiMIavUALM56ahQjI6kdan6zQTZmI7ybo9TwTZn5ECEGKJqtaWkSo
+ MRh83ObGtRk5VSM7AlSL9z4i63iUTYSXcx3YwtoDSqoIxP8uUVpP+uSlCIM4llnAIdRL
+ B+20RS6laBpaqN6nipLQUPd2GyR4DUVknu2pjJ3T5G/rlxoM8O6UDeeX7fPshqTFRist
+ XUaw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqHBj6LuFWm+j5TsMZS/Et4dE7DxGt8Ux6HgKKZs5U1Rnd1k0PUsAybIiXvEqwkliwuXMF2cUpRbA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz1L4D2hBy4QU+84itpAvr25d5BfKng5JQnd8fTYZMfMmyanNRw
- Dia03NYlDbo5qrldGnWRpNfdLZJxeNzRCbJs+P95tGBwaAd5PI1Do3MPG/ignyN2wHPByW8qOaM
- wKwgVdo8tjQ1FpVWPXWkPBTROJEMb9bwL4eXlcsXWSU78a8Lcqvwwbg==
-X-Gm-Gg: AfdE7cnOFweSmkHfxwyk+tPA/0e6TaliR3XCUxM1zeY7I6jZpbmd+rPgo6zG6jtAi5c
- eVJEcPkIZW0EPdjCLaPYpxAH8vxao1QeIhFqh6p8LxqncIme2xzCsa3bX0bwjTK9uemVrUSo7wn
- Bi72ilKQALnoEsXcrjlTya//aK/VsfwbxtdnZPCwTDzL59mpmkM/DXlpFLakqkX+mH8MgebHAop
- novcCH7lkZ8Dl9QSe3e3HHIyzRWdHONdIEN0MMS34V4cXy+tsKHRAcZV7V4iYNyN3TXoNu7rWZe
- Sz7WMgY+y1kiwRKN8BCfkc4BJ/yk98N50Deaf7wp7tEUZcR+h2W++ZZ2f4qjHy4FHDvAU/HpC4T
- QWMc3GJ1Ouzxl0BqSzi0PMtXif5buWDUsvUyUIAHnvHg9qTgDOnH8iQ==
-X-Received: by 2002:a17:903:2a88:b0:2c0:b5c1:8e22 with SMTP id
- d9443c01a7336-2ce9e9b9691mr77163535ad.12.1783919654713; 
- Sun, 12 Jul 2026 22:14:14 -0700 (PDT)
-X-Received: by 2002:a17:903:2a88:b0:2c0:b5c1:8e22 with SMTP id
- d9443c01a7336-2ce9e9b9691mr77163245ad.12.1783919654157; 
- Sun, 12 Jul 2026 22:14:14 -0700 (PDT)
+ AHgh+RqyU1I6IlrWaqnFjB5hd3ym+Px5sbwjCEVwaPb0QFiOfihKyeyXLlBpI6b7MmqV8CyM9UkqHCdplQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyHi7XOjItYPAR60gc0zQze1doKobbTQRJVOdw5Qw3IDBvwJh7s
+ BObGUoJUOq0csGM56sHRruSezpSKincuUkW3bbbB0yFVBYWWdiE9sMiRcfyaa9MsLpMSYs38+i4
+ NPa0jJlJj1DZYHcRPxvP1jBkZKizHjGQi8af0i8xlw2tch0xetMQQZQ==
+X-Gm-Gg: AfdE7ckjzxBQLZjhF89RE04Vjra8P/WHh1ueUJo7OCF06nawgKUZXLcpu9TgHUGxPPC
+ kalwAnYW4rzIVhHARS7yXYfq9iXhPZBl2rj4gdcam8dkGJcQPWzysnxhTyGyxdtRQDuB3dDys4p
+ T9qoBYo9gnlUw+HmAOqa2jeTdWbDwp7AEFKOxFcFESQBmxXxm7dPEwzUcNJ9NifnpjX+aytgD3J
+ Ev3x46Lao2kKrC5oljwafxEGuJgiCFOt1mva9YkUYKJF9mfNG42Q1Q6G8PNTk/4oZTtn6BH5dW+
+ eVifw8D+nlTcVPXMgTYUR0wZCnjAQPn4c6VI3+d1t0effELZg8grACEuwt+EBh9eW0hnqdcJpIi
+ 975dkAhCqaLSIA9gBdDSZoiDNrfUxbjZ7cR6/Q/ZmMilv4lVqp0oyLA==
+X-Received: by 2002:a05:6a00:1d90:b0:842:2ddb:e305 with SMTP id
+ d2e1a72fcca58-8488975aab7mr6391964b3a.43.1783920640078; 
+ Sun, 12 Jul 2026 22:30:40 -0700 (PDT)
+X-Received: by 2002:a05:6a00:1d90:b0:842:2ddb:e305 with SMTP id
+ d2e1a72fcca58-8488975aab7mr6391920b3a.43.1783920639587; 
+ Sun, 12 Jul 2026 22:30:39 -0700 (PDT)
 Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
  [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2ccc99cc5aasm93166495ad.0.2026.07.12.22.14.07
+ d2e1a72fcca58-84a30026410sm1590698b3a.19.2026.07.12.22.30.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 12 Jul 2026 22:14:13 -0700 (PDT)
-Message-ID: <618fa1ec-c986-4075-9b6f-c720b48d75ce@redhat.com>
-Date: Mon, 13 Jul 2026 15:14:05 +1000
+ Sun, 12 Jul 2026 22:30:38 -0700 (PDT)
+Message-ID: <ac26ac91-6809-4429-9750-e7d671e952bc@redhat.com>
+Date: Mon, 13 Jul 2026 15:30:31 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v1 04/25] target/arm/kvm-rme: Add mechanic to initialize
- realms
+Subject: Re: [RFC v1 07/25] target/arm/kvm: Create scratch Realm VM when
+ requested
 To: Mathieu Poirier <mathieu.poirier@linaro.org>, berrange@redhat.com,
  kchamart@redhat.com, pierrick.bouvier@oss.qualcomm.com,
  peter.maydell@linaro.org, mst@redhat.com, cohuck@redhat.com,
@@ -85,11 +85,11 @@ To: Mathieu Poirier <mathieu.poirier@linaro.org>, berrange@redhat.com,
  lorenzo.pieralisi@linaro.org
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
 References: <20260707224306.1202330-1-mathieu.poirier@linaro.org>
- <20260707224306.1202330-5-mathieu.poirier@linaro.org>
+ <20260707224306.1202330-8-mathieu.poirier@linaro.org>
 From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20260707224306.1202330-5-mathieu.poirier@linaro.org>
+In-Reply-To: <20260707224306.1202330-8-mathieu.poirier@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: SnhOCd7RkI6_6MhdtZW5PufixZJHZLZmAg50iTAO20k_1783919655
+X-Mimecast-MFC-PROC-ID: AelS1pd9YSXXSJ1ovT8VGiWb8Ms_eoPX6H-3AHzodH0_1783920640
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -122,155 +122,100 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 7/8/26 8:42 AM, Mathieu Poirier wrote:
 > From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 > 
-> Initialise an @rme_guest object and install a handler to get notified
-> when the Realm is ready to start.  That way we can finish reading the
-> Realm once we know everything is in place.
+> When a Realm is requested, create a scratch Realm VM by setting bit 8
+> of the argument given to the KVM_CREATE_VM ioctl().  Bit 7-0 are reserved
+> for the guest PA size.
 > 
 > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 > Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 > ---
->   target/arm/kvm-rme.c  | 50 +++++++++++++++++++++++++++++++++++++++++++
->   target/arm/kvm-stub.c |  5 +++++
->   target/arm/kvm.c      |  7 +++++-
->   target/arm/kvm_arm.h  |  9 ++++++++
->   4 files changed, 70 insertions(+), 1 deletion(-)
+>   target/arm/kvm-rme.c  | 8 ++++++++
+>   target/arm/kvm-stub.c | 5 +++++
+>   target/arm/kvm.c      | 4 +++-
+>   target/arm/kvm_arm.h  | 8 ++++++++
+>   4 files changed, 24 insertions(+), 1 deletion(-)
 > 
 > diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-> index 42e1d1e7b859..b86b9d6a25cb 100644
+> index 90c1d30ba24c..f763d5ed6199 100644
 > --- a/target/arm/kvm-rme.c
 > +++ b/target/arm/kvm-rme.c
-> @@ -13,6 +13,7 @@
->   #include "kvm_arm.h"
->   #include "migration/blocker.h"
->   #include "qapi/error.h"
-> +#include "qemu/error-report.h"
->   #include "qom/object_interfaces.h"
->   #include "system/confidential-guest-support.h"
->   #include "system/kvm.h"
-> @@ -29,14 +30,63 @@ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
->                                             CONFIDENTIAL_GUEST_SUPPORT,
->                                             { TYPE_USER_CREATABLE }, { })
+> @@ -99,3 +99,11 @@ void kvm_arm_rme_vcpu_init(ARMCPU *cpu)
 >   
-> +static RmeGuest *rme_guest;
-> +
-> +static void rme_vm_state_change(void *opaque, bool running, RunState state)
-> +{
-> +    if (!running) {
-> +        return;
-> +    }
-> +
-> +    kvm_mark_guest_state_protected();
-> +}
-> +
->   static void rme_guest_class_init(ObjectClass *oc, const void *data)
->   {
+>       cpu->kvm_rme = true;
 >   }
->   
->   static void rme_guest_init(Object *obj)
->   {
+> +
+> +int kvm_arm_rme_vm_type(void)
+> +{
 > +    if (rme_guest) {
-> +        error_report("a single instance of RmeGuest is supported");
-> +        exit(1);
+> +        return KVM_VM_TYPE_ARM_REALM;
 > +    }
-> +    rme_guest = RME_GUEST(obj);
->   }
->   
->   static void rme_guest_finalize(Object *obj)
->   {
->   }
-> +
-> +int kvm_arm_rme_init(MachineState *ms, KVMState *s)
-> +{
-> +    static Error *rme_mig_blocker;
-> +    ConfidentialGuestSupport *cgs = ms->cgs;
-> +
-> +    if (!rme_guest) {
-> +        return 0;
-> +    }
-> +
-> +    if (!cgs) {
-> +        error_report("missing -machine confidential-guest-support parameter");
-> +        return -EINVAL;
-> +    }
-> +
-> +    if (!kvm_vm_check_extension(s, KVM_CAP_ARM_RMI)) {
-> +        error_report("KVM doesn't support Realms");
-> +        return -ENODEV;
-> +    }
-> +
-> +    error_setg(&rme_mig_blocker, "RME: migration is not implemented");
-> +    migrate_add_blocker(&rme_mig_blocker, &error_fatal);
-> +
-> +    /*
-> +     * The realm activation is done last, when the VM starts, after all images
-> +     * have been loaded and all vcpus finalized.
-> +     */
-> +    qemu_add_vm_change_state_handler(rme_vm_state_change, NULL);
-> +
-> +    cgs->require_guest_memfd = true;
-> +    cgs->ready = true;
 > +    return 0;
 > +}
 
-I think it's more reasonable to set ConfidentialGuestSupportClass::kvm_init to
-kvm_arm_rme_init in rme_guest_class_init(). confidential_guest_kvm_init()
-gets called in target/arm/kvm.c::kvm_arch_init(). With this, the pattern matches
-with that for x86.
+We had official name for 0, which is KVM_VM_TYPE_ARM_NORMAL. Another question if
+it's worthwhile to have this helper since it's equivalent to something as below,
+which can be directly applied to the caller.
 
-More details can be found from commit 631a2ac5a4be ("i386/tdx: Implement tdx_kvm_init()
-to initialize TDX VM context").
 
-Thanks,
-Gavin
+     int vm_type = (current_machine && current_machine->cgs) ? KVM_VM_TYPE_ARM_REALM :
+                                                               KVM_VM_TYPE_ARM_NORMAL;
+
 
 > diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
-> index 88cbe8d85c41..eec1ca3dd2e5 100644
+> index 4ab6f08637d1..6d52f172c5df 100644
 > --- a/target/arm/kvm-stub.c
 > +++ b/target/arm/kvm-stub.c
-> @@ -119,3 +119,8 @@ char *kvm_print_register_name(uint64_t regidx)
+> @@ -129,3 +129,8 @@ void kvm_arm_rme_vcpu_init(ARMCPU *cpu)
 >   {
 >       g_assert_not_reached();
 >   }
 > +
-> +int kvm_arm_rme_init(MachineState *ms, KVMState *s)
+> +int kvm_arm_rme_vm_type(void)
 > +{
 > +    g_assert_not_reached();
 > +}
 > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index ed99be7fd80c..28d5643d6779 100644
+> index 4c212ed0c337..6aa1cd04e484 100644
 > --- a/target/arm/kvm.c
 > +++ b/target/arm/kvm.c
-> @@ -660,7 +660,12 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->       hw_breakpoints = g_array_sized_new(true, true,
->                                          sizeof(HWBreakpoint), max_hw_bps);
+> @@ -108,6 +108,7 @@ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+>   {
+>       int ret = 0, kvmfd = -1, vmfd = -1, cpufd = -1;
+>       int max_vm_pa_size;
+> +    int vm_type;
 >   
-> -    return 0;
-> +    ret = kvm_arm_rme_init(ms, s);
-> +    if (ret) {
-> +        error_report("Failed to enable RME: %s", strerror(-ret));
-> +    }
-> +
-> +    return ret;
->   }
->   
->   unsigned long kvm_arch_vcpu_id(CPUState *cpu)
+>       kvmfd = qemu_open_old("/dev/kvm", O_RDWR);
+>       if (kvmfd < 0) {
+> @@ -117,8 +118,9 @@ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+>       if (max_vm_pa_size < 0) {
+>           max_vm_pa_size = 0;
+>       }
+> +    vm_type = kvm_arm_rme_vm_type();
+>       do {
+> -        vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
+> +        vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size | vm_type);
+>       } while (vmfd == -1 && errno == EINTR);
+>       if (vmfd < 0) {
+>           goto err;
 > diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index e7c40fb003e4..6d058b0e08a2 100644
+> index 12ed1eee18b4..65ec1b970606 100644
 > --- a/target/arm/kvm_arm.h
 > +++ b/target/arm/kvm_arm.h
-> @@ -240,4 +240,13 @@ void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3);
+> @@ -259,4 +259,12 @@ int kvm_arm_rme_init(MachineState *ms, KVMState *s);
 >    */
->   char *kvm_print_register_name(uint64_t regidx);
+>   void kvm_arm_rme_vcpu_init(ARMCPU *cpu);
 >   
 > +/**
-> + * kvm_arm_rme_init
+> + * kvm_arm_rme_vm_type
 > + * @ms: the machine state
-> + * @s: State of KVM
 > + *
-> + * Prepare the machine to be a Realm, if the user enabled it.
+> + * Returns the Realm KVM VM type if the user requested a Realm, 0 otherwise.
 > + */
-> +int kvm_arm_rme_init(MachineState *ms, KVMState *s);
+> +int kvm_arm_rme_vm_type(void);
 > +
 >   #endif
+
+Thanks,
+Gavin
 
 

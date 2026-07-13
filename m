@@ -4,143 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D6BDC43458
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Jul 2026 11:02:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BE30C44501
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Jul 2026 11:11:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wjEQS-0007Yo-LF; Mon, 13 Jul 2026 07:02:16 -0400
+	id 1wjEZU-0004B2-0b; Mon, 13 Jul 2026 07:11:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wjEQR-0007YG-IF
- for qemu-arm@nongnu.org; Mon, 13 Jul 2026 07:02:15 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wjEQQ-0005J4-2r
- for qemu-arm@nongnu.org; Mon, 13 Jul 2026 07:02:15 -0400
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66D9e20W956127
- for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 11:02:12 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- drB+GG8NgNwugYA6Uxxh4gQQaa9y7YYwX/UZWEPF3tY=; b=o8r4aIoJmUbc+a1/
- f4OQMQFKWKaLDFtoaihHQcF7HqCisW1RMVuOe9FoCO2aFzHtIyh8eyfyxTVdmRQP
- ECjJIuBhEQCJEi+i1NLedYjqejf/UeTdR89lqd6indoTNDtaap7zmwzu8h7niFWf
- GY4WfELtibIINGsgTxpK1zxaoGqvvdxciKwF5aPCrtJ2bsQ2pQR58zRJjcidmFuZ
- pbmmux8JALzfCINgsndfRnhz+ec3hOFa84NggJCu49J3Ucu8vy1sdTH54/oCXmSW
- fhdf+8bwk3Co8cZXMS2Q8XKQl1ZzHETQbQngpD3LgqIqbkXz3NVSrj3ANP0oLhq3
- flUgqQ==
-Received: from mail-vk1-f200.google.com (mail-vk1-f200.google.com
- [209.85.221.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fcwk9r98v-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 11:02:12 +0000 (GMT)
-Received: by mail-vk1-f200.google.com with SMTP id
- 71dfb90a1353d-5bfc75c9fbfso2000108e0c.2
- for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 04:02:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wjEZS-0004Ab-8P
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2026 07:11:34 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wjEZP-0006ew-B0
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2026 07:11:33 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-47362928f65so2950825f8f.2
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 04:11:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1783940532; x=1784545332; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=drB+GG8NgNwugYA6Uxxh4gQQaa9y7YYwX/UZWEPF3tY=;
- b=Upn/THC9ndmkZX6Qw3M2QSwbVFCfl9k7uXVdgwWBCozrN1ye9RUAlM1vRNhRtTy/P9
- zt1Pwg7y/6g61R9mrOsxNzvou4Medupi/NlP6uz0qjFABxRFtgBzHSpkrEyRgfFEJICe
- FLJDLHvcOjhsLO8HuZWz+wn++o15gseYOf82TKIGQigFeU8bKOcdPykkif9DfDUgU0Y7
- M8fFvBIbmE4VLudZrj5ztF472DC5+O8Hyhp7ESaj7cdDl62PXJ47NOkwe3JOQm/v70W+
- d3cjzHYpUgTFEg3sI1Aj0nl5ku7tf7M3NZQ23ICGYIMKSVb5j6XABeEq3l6oT0FMVCLA
- 4QdA==
+ d=linaro.org; s=google; t=1783941089; x=1784545889; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=9cvW9Hj8m088+L/Cb6813m3dv+GkmPK+BWsRpFGbdKo=;
+ b=HdfjJREwPS+geZcnnRlyB+eTpuSgkO+Yh4fp2yICH052ZvcqtVUzdZvWGiGOU3YAmC
+ aJ1XHBQ07CHMR5TqvRjlm88LwTRTYsI3vKjQW1nwp2f9TmOXuYozXaZSiWofoe9LFotB
+ tzHs4HtgwyezK7Mc/1ZKEi29nIcNiDnajwhSWD8oUzIjn//MtjHnMp49AoWEQjB+75CN
+ QrUiaukPh90S1ACXZOHcs6c0YWdg6TpOdDRVYaJH01i/ckoGrCqX9qSp5I/fASwXwYxG
+ tdDCzNM6Go88ApWNUO4iBTq7WyIlDwpEp3/0ko0CpljmMi4Qdp1sxCHrny2QfVgUQCQg
+ O3BQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783940532; x=1784545332;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=drB+GG8NgNwugYA6Uxxh4gQQaa9y7YYwX/UZWEPF3tY=;
- b=H6dhSkpKUau8XOtcE0DM+2x4TwrGJPrtO4PRRroqDXIAuZ4CPrbs+6sHiVStiow67r
- RiXOPT7OhVj4+AYNQEuynBoVneyu5NrodBb/2cLnnWySkuKpRCuLfARvjrqjQBrM3m+K
- aeAjTgY4/s77m5lGz+LhTSdyg1ghV+CebLFwHiiGaw4WTsyFJ+SSpwQuxNi4Y/FdvnHZ
- WT9PykiX9r5cbKoRAvS81pbssQGmtPZtRaKDme5AI9joAA49BclVc2V1RzRJI+MYjSVp
- gCQkM18N625OvEBlfremJWyacSYKyIkJ/imIbOtuw02AQr5roA1B3yCS+E2Dxu9YFPVe
- hODQ==
+ d=1e100.net; s=20251104; t=1783941089; x=1784545889;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=9cvW9Hj8m088+L/Cb6813m3dv+GkmPK+BWsRpFGbdKo=;
+ b=oaesa0t8mcOc9czEQKzYHo7NIoYdQJqNadK1I93daWM3COU7T+SvQXsJkWtwjpkCQq
+ mDAOEV6sATJLls1k/x5/FOYhxvoUlm731C7rKw0Bh6j5AbhXaBvxM8QISG4GAobmqglQ
+ zIZy7WM3s4ZDoqKk3AhHL/8d+bAPnc1FPaxHqa9dTCqu03nNVavwZtdMKS0/HY801swc
+ 9swfNLARNoOWI2A4OcxZa2zNVJ+dKW82HWDzBd1LIyJ3mhkilU5oOolCy4lOTzhPobKx
+ 9vadS+gvVJz1j/Y5VA0ieSyILj8DpticXM4ZJ7Gi6l6w+/aqO3wO6JrftIOGXcn6mub2
+ XF5w==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoSMx3AU+xNHMyK+39NGWW224ETM8rnA7zGlIClRBPkrKYOR5AolSGfg6jyWH0RtGcazSCujd9DAA==@nongnu.org
-X-Gm-Message-State: AOJu0YwPl89TbfQanTx99YXEhPV08WDjfNuN+ffvO7jmkbGdcSTe5JLb
- KX2VYGDI8SlHVq60sMxb6iqcp9P4RCBrJj5MkQm1Gj/najxjTuK3SBtUr2oBTpdKs9zzxmp5Lr+
- l9IPYTI0DQpjdTWWCAoudEBoydyHoQ/ows1muRygQtDD6gKOr0mMtz6+t28hlWnM=
-X-Gm-Gg: AfdE7clEu61yrRbmH7w3tgq0qBgpiAJwteOUXLkDnLARTI49n+bj0hc8dCBCv15KnFF
- u2Rdb8AOiwHhqcGlpHNnldZOkfpDGw1YtrfvaW3PtrgdBAlJhITcdnRXEO8of21Za/MYxpNcmht
- JtbsqvKXf7IvcofJI1AQ7rA08wXMw1SbEgJQfAs7b/U8/EgrGyBdJ+ZZTndkmr7JFLi+VEFJhyP
- VOivTEK75C/DxRFXvX07TuZBJZ5RO+eCTbTBT7D9DiywSST3NssLJQz/EsXcYKbPk6fmsNEf/yZ
- uSLgPJi6GsxzJajUAiZz2YBxcqYGkbgmCpr7BaoZ2eFhANKCCUr192aAzPGNT/UdgeiBSAvCcbq
- zVYdbzZtkD52yIh6vs+zVE2ZpruYjKnyARTlCclvR/pFoiK7Vj6UJugICvcKblA==
-X-Received: by 2002:a05:6122:20a5:b0:5bf:5edc:9aa0 with SMTP id
- 71dfb90a1353d-5bfbf185dfcmr5206764e0c.7.1783940531949; 
- Mon, 13 Jul 2026 04:02:11 -0700 (PDT)
-X-Received: by 2002:a05:6122:20a5:b0:5bf:5edc:9aa0 with SMTP id
- 71dfb90a1353d-5bfbf185dfcmr5206727e0c.7.1783940531333; 
- Mon, 13 Jul 2026 04:02:11 -0700 (PDT)
-Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47aa039b0cesm87000517f8f.22.2026.07.13.04.02.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Jul 2026 04:02:10 -0700 (PDT)
-Message-ID: <f2f9ab6d-7ab5-4bbc-bc35-a577af4e953a@oss.qualcomm.com>
-Date: Mon, 13 Jul 2026 13:02:09 +0200
+ AHgh+Roa86SbT3P6YNJWyY3F1W7oSvmz6K88O/iQiMtOMpGPHRa4mC/P5AUJq3fXfLzFL3gM/v5iHCT6/A==@nongnu.org
+X-Gm-Message-State: AOJu0YyuuQBD7cqrgOYrg6qJlBe4wQFm8kjfj1iI/iCaBVZ7KLTBHSUE
+ O7BnbYrHnCw3M8e41BwPGszCfB1v2Ah94wYzMwadQ4o9Y4ejslNO2OQ4ZxyJoMx4hoHRAHNBIx3
+ 1qqVGsRY=
+X-Gm-Gg: AfdE7clSP140+umHx8zERbo4BFk8GDmyyC1gpNcwTyQzyISI7G2tjYntQ5MY9ir0qKt
+ jUhlca8mPqz5aCCwZkCvgzaIRhi7bNMR+C2ulRdKOkw73fpJyf+/8GoFxcjBlRsOYEgUD31uLzU
+ IYdF5KJavc9r3EptV95676wnY9RmVsSjseJUocLSLlVNrLkYA1MPXuvwVPmDXYuYSIwHWUay91d
+ aZj+x+8kuJo4xln/ZpfLf6NDflWgkSgoanzcZjvhOM8qvFdgzQuZjq0P/fK37hRACgIQjV+njhl
+ H7GPKvwYAGAVMaXbOnwEJORisLoxeKw2Wb/vpepQN4aS4u4UgeclxjC7VvpWNNsg+H7kdVWbNFj
+ LUkFzK/3krfqPVwVy7Jxx7kIq8PYVBIC0YEfVcB3xzeURhkMYTRdRdhsPZ3e9Rql2QrVFIGyx5k
+ 0QWcvwZeE5knwR
+X-Received: by 2002:a05:6000:22c7:b0:472:8343:7f5e with SMTP id
+ ffacd0b85a97d-47f2dc8ce54mr9392571f8f.5.1783941088926; 
+ Mon, 13 Jul 2026 04:11:28 -0700 (PDT)
+Received: from draig.lan ([185.124.0.114]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-47a9de1e6ccsm85132232f8f.5.2026.07.13.04.11.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 Jul 2026 04:11:28 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 0D80C5F7F1;
+ Mon, 13 Jul 2026 12:11:27 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: gilles grimaud <gilles.grimaud@univ-lille.fr>
+Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Richard Henderson
+ <richard.henderson@linaro.org>,  qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [RFC PATCH] target/arm: report M-profile BKPT to gdbstub when
+ attached
+In-Reply-To: <354DA850-F992-40A9-A143-F061C6D516F6@univ-lille.fr> (gilles
+ grimaud's message of "Sat, 11 Jul 2026 00:19:11 +0200")
+References: <20260705224407.32464-1-gilles.grimaud@univ-lille.fr>
+ <CAFEAcA9Heev=ydTzO2u3EzeF_2q7dytOF8=67qF8ZMMY6Ky2Tw@mail.gmail.com>
+ <a14481eb-9eed-43c0-a29c-187798f7f769@linaro.org>
+ <CAFEAcA9x7tjW9xuT_XwNntdvoVtLrCL_PB+50tfhiW2XDvsCiw@mail.gmail.com>
+ <F797F544-7BE3-4478-B319-0D4843095731@unpredictable.fr>
+ <354DA850-F992-40A9-A143-F061C6D516F6@univ-lille.fr>
+User-Agent: mu4e 1.14.2; emacs 30.1
+Date: Mon, 13 Jul 2026 12:11:26 +0100
+Message-ID: <87ech7cffl.fsf@draig.linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 7/9] hw/dma/soc_dma: Remove unused mem.base, paddr fields
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Jim MacArthur <jim.macarthur@linaro.org>
-References: <20260710105907.2570621-1-peter.maydell@linaro.org>
- <20260710105907.2570621-8-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260710105907.2570621-8-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzEzMDExNCBTYWx0ZWRfX7QmqEYVLlI8W
- BQ75pYmhVzJncsMygXLosB095ikSc6h5f6VzpS876Vn6iyd2Lb83Tne0Y4tudk4OTVKoEBgdXsp
- 1EbHlGs50Ct0L+pRc9YjzhIXoLEHTQseQX1HvO3jOaIghyolAxiaaScXoDYJVn2EP4icaTnvLgD
- vGj9KyzHoSabO9pA/apgJA/qfw5neDtwPrEC+7Pc+GzCb5SAdbEt+VwYxvc4r/WDOuofyf/8rLA
- MQd790ofPFsxPo3cenFrNG+6jO5lcG9IJTJXOKH8y5nKQLo8JdNuE8SBl8s4iBIm6uPq904i18L
- Pfj4a/+0Gj6CI3ItLFK4b85SDHhlaYDp7L1WC6mq1uvJZvtUCvpT2WzR/tqLLccAuq2x3XkJ9kO
- obnNTBYtFDxLTGu29yE6g3VcxavTpcKwtLpUs3rNb3wBqVoTGePpCncaVomzuEso8YteJzFNTxa
- hgpsL3an8Bb+V0PikSw==
-X-Proofpoint-ORIG-GUID: _BkXII2tqOeTvar_uEkxycNPEwGixcW0
-X-Authority-Analysis: v=2.4 cv=UMHt2ify c=1 sm=1 tr=0 ts=6a54c5b4 cx=c_pps
- a=wuOIiItHwq1biOnFUQQHKA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=XD7yVLdPMpWraOa8Un9W:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: _BkXII2tqOeTvar_uEkxycNPEwGixcW0
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzEzMDExNCBTYWx0ZWRfX6Nv9qbCKnXuQ
- zDUv2cQRlEo9RJ+PfbTnQpKFZV6UPUCf/bY8hlhrsBQRE2osDaGnkeTmeQ4CUF4cPZwPGn+Eou+
- Vw873rDH4N7Mu+8aqJ6e32hnpzmRgpk=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-13_02,2026-07-10_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 impostorscore=0 spamscore=0 clxscore=1015 adultscore=0
- malwarescore=0 lowpriorityscore=0 phishscore=0 suspectscore=0
- priorityscore=1501 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2607130114
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,19 +115,140 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/7/26 12:59, Peter Maydell wrote:
-> Now that transfer_mem2mem() uses physical_memory_map(), the
-> soc_dma_ch_s::paddr field is unused; remove it, and the code that set
-> it, and the memmap_entry_s::mem.base and the soc_dma_port_add_mem()
-> phys_base argument that were passing around host pointers to use for
-> setting paddr.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   hw/arm/omap1.c           | 6 ++----
->   hw/dma/soc_dma.c         | 9 +--------
->   include/hw/arm/soc_dma.h | 7 ++-----
->   3 files changed, 5 insertions(+), 17 deletions(-)
+gilles grimaud <gilles.grimaud@univ-lille.fr> writes:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+> Thanks everyone for the detailed comments.
+>
+> Let me try to summarize where I think the discussion stands, and then go =
+through the questions that have emerged, from the most
+> specific ones to the more general and still unresolved ones.
+>
+> My RFC originally came from reading QEMU's gdbstub as, at least conceptua=
+lly, an analogue of an external low-level debugger such as
+> a JTAG-attached debugger. From that perspective, having an attached GDB c=
+lient consume a guest BKPT used as an external
+> debugger stop point seemed natural.
+>
+<snip>
+>
+> ```
+> Should the external debugger get a first chance to consume the debug even=
+t,
+> and if it does not, should the event be reinjected into the guest?
+> ```
+>
+> For Cortex-M, a rule that simply maps every BKPT to EXCP_DEBUG whenever G=
+DB is attached could clearly steal an exception that
+> should have remained guest-visible.
+>
+> This means that any generic abstraction would need to define not only whe=
+n an external debugger may intercept a guest breakpoint
+> instruction, but also what happens when it does not consume it.
+>
+> 5. Should QEMU's gdbstub be modelled as an external debug monitor?
+>
+> This now seems to me to be the most general question behind the RFC.
+>
+> If the answer is yes, then some variant of the behaviour I proposed seems=
+ natural: a breakpoint instruction that would be consumed
+> by an external debugger on real hardware should be reportable to an attac=
+hed GDB client.
+>
+> If the answer is no, then I think we need to clarify what the intended re=
+lationship is between QEMU's gdbstub and the architecture's
+> external debug facilities.
+>
+> Alex's remark captures the current situation well:
+>
+>> "We could treat gdbstub as an external debug monitor but we don't curren=
+tly model it as such."
+>
+> So perhaps the main remaining design question is where this abstraction s=
+hould live.
+>
+> Should target-specific code directly know whether GDB is attached, as in =
+my RFC?
+>
+> Or should there be a generic QEMU debug layer representing an external de=
+bugger, with target code only reporting
+> architecture-specific debug events and deciding, from architectural state=
+, whether they are eligible for external interception?
+>
+> The latter seems cleaner to me, especially if the same issue exists for A=
+rm BKPT, RISC-V EBREAK, and breakpoint instructions on other
+> architectures.
+>
+> My current feeling is therefore that the original RFC probably puts the f=
+ix too low and too specifically in the Arm code, but that the
+> underlying problem remains real: QEMU does not appear to have a clearly d=
+efined generic model for what should happen when guest
+> code deliberately executes a breakpoint instruction while an external GDB=
+ client is attached.
+>
+> ----
+>
+> I have tried to summarize the discussion as faithfully as possible, as I =
+was beginning to lose track of the different points and positions.
+>
+> This leaves me with one final question, which may actually be the key to =
+choosing between the possible models discussed above.
+>
+> Even if you decide that QEMU's gdbstub should represent an external debug=
+ger, what exactly should that imply?
+>
+> Does attaching a GDB client itself mean that architectural external halti=
+ng debug is active, so that eligible guest breakpoint instructions
+> should naturally be consumed by the external debugger?
+>
+> Or does it only mean that an external debugger is available, while actual=
+ interception must still depend on the architectural debug
+> state, such as DHCSR.C_DEBUGEN and the relevant architecture-specific con=
+figuration?
+>
+> My original patch implicitly assumes the first model:
+>
+> GDB attached
+>     =3D> external halting debug active
+>     =3D> M-profile BKPT is reported to GDB
+>
+> But the discussion around DHCSR, DEMCR, self-hosted debugging, and the ro=
+le of the gdbstub suggests that this equivalence may be
+> exactly what needs to be decided first.
+>
+> Perhaps answering this question would also tell us where the abstraction =
+should live: either directly in target-specific exception
+> handling, or in a more generic QEMU external-debug layer with
+> architecture-specific eligibility rules.
+
+I think if the gdbstub is going to intercept what would otherwise be
+guest visible exceptions then that should be opt-in behaviour via some
+sort of flag for gdbstub. Otherwise guests will get confused when they
+miss them. For example we know Windows uses breakpoints during its
+boot-up for some sort of internal book keeping.
+
+While giving the option to intercept guest visible exceptions in gdbstub
+could be done globally if we want to properly model the external debug
+interface we probably need to come up with some new API's between
+gdbstub and the guest architecture.
+
+For example on ARM the guest can make changes to register state to limit
+what the external debugger can do. I see arm_debug_check_breakpoints
+does call arm_generate_debug_exceptions which takes into account the
+state of OSLAR_EL1. Would anyone actually want to model
+DBGAUTHSTATUS_EL1 which can limit which worlds the debugger can see?
+Generally the big benefit of using gdbstub with emulation is you do get
+full visibility of the system which is helpful when debugging low level
+code. Also most of this stuff seems to be very IMPDEF which is not
+normally something QEMU needs to worry about.
+
+
+>
+> Have I missed an important case or misunderstood the emerging consensus h=
+ere?
+>
+> Thanks again for the discussion,
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

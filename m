@@ -4,98 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B09F4C43458
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Jul 2026 05:34:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A441C43458
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Jul 2026 06:43:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wj9JL-0005dQ-Se; Mon, 13 Jul 2026 01:34:35 -0400
+	id 1wjAO0-00048e-Sy; Mon, 13 Jul 2026 02:43:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wj9JK-0005d3-SB
- for qemu-arm@nongnu.org; Mon, 13 Jul 2026 01:34:34 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wjANy-00047r-4G
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2026 02:43:26 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wj9JI-0007Qk-QJ
- for qemu-arm@nongnu.org; Mon, 13 Jul 2026 01:34:34 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wjANt-0002hd-PH
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2026 02:43:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783920872;
+ s=mimecast20190719; t=1783925000;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xFoLwDT5tqPWB8FoQy7gl6/PC8pZZ1PnKfRKXRkT/2s=;
- b=SCbU/4rhYTItxmbujV5axREtQ9cMq1giA7eDzSw71uqMAH7EemN91JRMcH6Y+Gn3SFoHRc
- 6T+twm94B4cTR/NOeQiRo24DTNpK4CxYAVSShu6LtJ0wVeUved6BHHXio1KmTsT3a1S8Fv
- P2e5WeOi5OLU7sZg5aeTzGyYpzZhWFo=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-460--oRvLj66OKq2SKJ2CF_wMA-1; Mon, 13 Jul 2026 01:34:30 -0400
-X-MC-Unique: -oRvLj66OKq2SKJ2CF_wMA-1
-X-Mimecast-MFC-AGG-ID: -oRvLj66OKq2SKJ2CF_wMA_1783920869
-Received: by mail-pl1-f198.google.com with SMTP id
- d9443c01a7336-2ccb687f82eso43832655ad.3
- for <qemu-arm@nongnu.org>; Sun, 12 Jul 2026 22:34:30 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783920869; x=1784525669;
- h=content-transfer-encoding:content-type:in-reply-to:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=xFoLwDT5tqPWB8FoQy7gl6/PC8pZZ1PnKfRKXRkT/2s=;
- b=IUwL6YqqxYtklXmvM8oGl/yZ6Qj/5XnOVv3KiHjMTjVfJKHDUI8ejTDKZnQ/SWRbUh
- RfFkrqNDKdwgUr9o6qf95mQR53iOv+L2w5ySlsy/h4fZeJh3ETEM58d6HDtdlyQwZ2sS
- JOzRBW7IooYcdhQrBJqWheMNsyitFHGrP4biKXyECCBf1MRHPCGfiVgkMF43Rjzqvtjz
- Zj/1n5IgbSp1kEPaUkZDcT5dK6ZB5Oq/nU0rh2k3TBWVSWePSQs9cEr+kXeoiKK8R4zq
- RQ5titOPFrKvVjExm7PNpQ3FUHz9Ta/x+FiIEFB7DGKFDxQVXCnEy82laFD4ya1D0FGF
- q2Pg==
-X-Forwarded-Encrypted: i=1;
- AHgh+RoDIfabGk1BQEvIhhSE7vRvhfIf+iGJsBrT1vXD2K7Xo+oY2uVGEXxt0OtIFy8yqXbs4dNrpGuJEg==@nongnu.org
-X-Gm-Message-State: AOJu0YzpHZSvDpy8LQa8ei7XNR9moDKMfER+JCpNbZiloW7OBdpUELCT
- NjEEWbF6DfU1vPs2kTew5X30lORMK7I2Doilp/H8mqdI1yCzgSG1A8qRPpv5QvbjZXrmzFlmGvn
- gLrONDFiMusvvCJ3Ywocqt+UIAGcmHZTrjGjdZPrnzAtjSRgubNw1Fg==
-X-Gm-Gg: AfdE7clwbHMsFpO9nd0+5AB1+MbYX1DJsaAcdZB3jT8LloAAiuFAlLHa1O3eT/8yWFp
- f9QBs97OIKX5rNfct9yovN8LWZJ8gxeK+bBquAmRtpqTkLv0K24/pcqdoErp18CzD1evvrXAnWw
- YyEAzQkOd60uuQZE0TqeJ+ehtlBnoVE2CKNT5wFERXyPvTK1XsKiPz77Et3Coz/GnchltjEosw/
- a8RF7+EhAJwAhgogn7YHgcsK/W6zQNqa1YUBQLLdIXuP9ycNEg8i+1Hq7Ta6rbxvSEeqdXIe11E
- kW+clPFpqjacSIU6fhnxinh2gJ6C/ii3NTnRGc+ppvRTlQBTH+bO6h3TT6TEssIRYMWSX2qoqCZ
- IPVDCnWl+RIANsgymkJriwOXy5KITuIBShZepRwApxnrA4jCanYFfoA==
-X-Received: by 2002:a17:903:2444:b0:2ca:c4a5:84bb with SMTP id
- d9443c01a7336-2ce9f27e6f1mr80488245ad.38.1783920869004; 
- Sun, 12 Jul 2026 22:34:29 -0700 (PDT)
-X-Received: by 2002:a17:903:2444:b0:2ca:c4a5:84bb with SMTP id
- d9443c01a7336-2ce9f27e6f1mr80487835ad.38.1783920868533; 
- Sun, 12 Jul 2026 22:34:28 -0700 (PDT)
-Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
- [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2ccc9bdb746sm91888925ad.7.2026.07.12.22.34.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 12 Jul 2026 22:34:27 -0700 (PDT)
-Message-ID: <4ffc3787-a53e-4889-b245-458de4463cb9@redhat.com>
-Date: Mon, 13 Jul 2026 15:34:20 +1000
+ bh=j9vYIB74rM68BpOWfIuu0QmU0qqoQaQGhMQ6kywzOWY=;
+ b=fgqRhIrB2GYGdSz+zmUX+1KGADBjOwYPFMxckOnXGwL0Q+/Bkx+BHOhmYc85m6c0LYFjfN
+ xtBd44nfbNsm5iqmxcx0b9NmNHogO4gfX32hvTP6nExv+wWNkLhyVtQHWOL1qUavRt97zm
+ waoIRKV0YzRFs0mGFHD6poq0EqQAM+w=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-382-fBD_d9cYOBC8fv5i4lp8mw-1; Mon,
+ 13 Jul 2026 02:43:18 -0400
+X-MC-Unique: fBD_d9cYOBC8fv5i4lp8mw-1
+X-Mimecast-MFC-AGG-ID: fBD_d9cYOBC8fv5i4lp8mw_1783924993
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0844118009EF; Mon, 13 Jul 2026 06:43:11 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A5BB830001A1; Mon, 13 Jul 2026 06:43:06 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 4564C21E6920; Mon, 13 Jul 2026 08:43:04 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: qemu-devel@nongnu.org,  Aditya Gupta <adityag@linux.ibm.com>,  Alexander
+ Graf <graf@amazon.com>,  Alexandre Iooss <erdnaxe@crans.org>,  Alexey
+ Kardashevskiy <aik@ozlabs.ru>,  Alistair Francis
+ <Alistair.Francis@wdc.com>,  Alistair Francis <alistair@alistair23.me>,
+ Antony Pavlov <antonynpavlov@gmail.com>,  Artyom Tarasenko
+ <atar4qemu@gmail.com>,  Bernhard Beschow <shentey@gmail.com>,  Bibo Mao
+ <maobibo@loongson.cn>,  Brian Cain <brian.cain@oss.qualcomm.com>,  Chao
+ Liu <chao.liu@processmission.com>,  Christian Borntraeger
+ <borntraeger@linux.ibm.com>,  =?utf-8?Q?Cl=C3=A9ment?= Chigot
+ <chigot@adacore.com>,  =?utf-8?Q?C=C3=A9dric?=
+ Le Goater <clg@kaod.org>,  Dorjoy Chowdhury <dorjoychy111@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,  Eric Farman
+ <farman@linux.ibm.com>,  Farhan Ali <alifm@linux.ibm.com>,  Felipe Balbi
+ <balbi@kernel.org>,  Francisco Iglesias <francisco.iglesias@amd.com>,
+ Frederic Konrad <konrad.frederic@yahoo.fr>,  Gaurav Sharma
+ <gaurav.sharma_7@nxp.com>,  Gautam Gala <ggala@linux.ibm.com>,  Glenn
+ Miles <milesg@linux.ibm.com>,  Halil Pasic <pasic@linux.ibm.com>,  Hao Wu
+ <wuhaotsh@google.com>,  Harsh Prateek Bora <harshpb@linux.ibm.com>,  Helge
+ Deller <deller@gmx.de>,  Hendrik Brueckner <brueckner@linux.ibm.com>,
+ =?utf-8?Q?Herv=C3=A9?= Poussineau <hpoussin@reactos.org>,  Huacai Chen
+ <chenhuacai@kernel.org>,  Jan Kiszka <jan.kiszka@web.de>,  Jared Rossi
+ <jrossi@linux.ibm.com>,  Joel Stanley <joel@jms.id.au>,  Laurent Vivier
+ <laurent@vivier.eu>,  Manos Pitsidianakis
+ <manos.pitsidianakis@linaro.org>,  Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>,  Matthew Rosato <mjrosato@linux.ibm.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,  Michael Rolnik <mrolnik@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,  Nicholas Piggin
+ <npiggin@gmail.com>,  Niek Linnenbank <nieklinnenbank@gmail.com>,  Palmer
+ Dabbelt <palmer@dabbelt.com>,  Paolo Bonzini <pbonzini@redhat.com>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Philippe =?utf-8?Q?Mathieu-Daud?=
+ =?utf-8?Q?=C3=A9?=
+ <philmd@mailo.com>,  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Ran Wang <wangran@bosc.ac.cn>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Sai Pavan Boddu
+ <sai.pavan.boddu@amd.com>,  Samuel Tardieu <sam@rfc1149.net>,  Sergio
+ Lopez <slp@redhat.com>,  Song Gao <17746591750@163.com>,  Stafford Horne
+ <shorne@gmail.com>,  Subbaraya Sundeep <sundeep.lkml@gmail.com>,  Thomas
+ Huth <th.huth+qemu@posteo.eu>,  Tyrone Ting <kfting@nuvoton.com>,
+ qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,  qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org
+Subject: Re: Call to clean up QOM onboard devices lacking a parent
+In-Reply-To: <69d31293-b6db-a411-141b-234c7d823bbe@eik.bme.hu> (BALATON
+ Zoltan's message of "Fri, 10 Jul 2026 14:13:13 +0200 (CEST)")
+References: <87se5scipx.fsf@pond.sub.org>
+ <17c7f91b-8935-8ebf-a982-f91df755af81@eik.bme.hu>
+ <87a4rzxr1q.fsf@pond.sub.org>
+ <69d31293-b6db-a411-141b-234c7d823bbe@eik.bme.hu>
+Date: Mon, 13 Jul 2026 08:43:04 +0200
+Message-ID: <874ii3wft3.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v1 04/25] target/arm/kvm-rme: Add mechanic to initialize
- realms
-To: Mathieu Poirier <mathieu.poirier@linaro.org>, berrange@redhat.com,
- kchamart@redhat.com, pierrick.bouvier@oss.qualcomm.com,
- peter.maydell@linaro.org, mst@redhat.com, cohuck@redhat.com,
- pbonzini@redhat.com, eblake@redhat.com, armbru@redhat.com, jpb@kernel.org,
- lorenzo.pieralisi@linaro.org
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
-References: <20260707224306.1202330-1-mathieu.poirier@linaro.org>
- <20260707224306.1202330-5-mathieu.poirier@linaro.org>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20260707224306.1202330-5-mathieu.poirier@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: K6XV7D2XospWGnwpBkQfR2yHpX8W-SjjkbKYOXVDg8Y_1783920869
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: Pqqb3KXsWoPh0QM9v7sNEDYuavsZX22JmhY3y8h443k_1783924993
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Received-SPF: permerror client-ip=170.10.133.124;
- envelope-from=gshan@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+ envelope-from=armbru@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,153 +127,153 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/8/26 8:42 AM, Mathieu Poirier wrote:
-> From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> 
-> Initialise an @rme_guest object and install a handler to get notified
-> when the Realm is ready to start.  That way we can finish reading the
-> Realm once we know everything is in place.
-> 
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
-> ---
->   target/arm/kvm-rme.c  | 50 +++++++++++++++++++++++++++++++++++++++++++
->   target/arm/kvm-stub.c |  5 +++++
->   target/arm/kvm.c      |  7 +++++-
->   target/arm/kvm_arm.h  |  9 ++++++++
->   4 files changed, 70 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-> index 42e1d1e7b859..b86b9d6a25cb 100644
-> --- a/target/arm/kvm-rme.c
-> +++ b/target/arm/kvm-rme.c
-> @@ -13,6 +13,7 @@
->   #include "kvm_arm.h"
->   #include "migration/blocker.h"
->   #include "qapi/error.h"
-> +#include "qemu/error-report.h"
->   #include "qom/object_interfaces.h"
->   #include "system/confidential-guest-support.h"
->   #include "system/kvm.h"
-> @@ -29,14 +30,63 @@ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
->                                             CONFIDENTIAL_GUEST_SUPPORT,
->                                             { TYPE_USER_CREATABLE }, { })
->   
-> +static RmeGuest *rme_guest;
-> +
-> +static void rme_vm_state_change(void *opaque, bool running, RunState state)
-> +{
-> +    if (!running) {
-> +        return;
-> +    }
-> +
-> +    kvm_mark_guest_state_protected();
+BALATON Zoltan <balaton@eik.bme.hu> writes:
 
-This would be called in kvm_arm_rme_init(), why we can't call this to mark the
-KVM state as protected in kvm_arm_rme_init() ?
+> On Fri, 10 Jul 2026, Markus Armbruster wrote:
+>> BALATON Zoltan <balaton@eik.bme.hu> writes:
+>>
+>>> On Thu, 9 Jul 2026, Markus Armbruster wrote:
+>>>> A QOM object must be the child of exactly one parent.  This defines the
+>>>> QOM composition tree.  The link from parent to child is a property of
+>>>> the parent, and therefore has a name that is unique within its parent.
+>>>> An object's canonical QOM path is these names on the path from root to
+>>>> object in the QOM composition tree separated by '/'.
+>>>>
+>>>> For devices:
+>>>>
+>>>> * If a device is plugged in with -device / device_add, and it has an ID,
+>>>>   we make it a child of /machine/peripheral/ with name ID.  If it
+>>>>   doesn't have an ID, we make it a child of /machine/peripheral-anon/
+>>>>   with name device[N], where N counts up from zero.  The canonical QOM
+>>>>   path /machine/peripheral/ID is stable.  The canonical QOM path
+>>>>   /machine/peripheral-anon/device[N] isn't: it depends on the number of
+>>>>   devices already there.
+>>>>
+>>>> * If a device is part of another device, it should be its child.  The
+>>>>   child's canonical QOM path is the parent's plus '/CHILD-NAME'.  Stable
+>>>>   as long as the parent's path and the child name are.
+>>>>
+>>>> * "Should" because we have a lot of code that fails to pick the parent.
+>>>>   When such a device gets realized, we make it a child of
+>>>>   /machine/unattached/ orphanage with name device[N], where N counts up
+>>>>   from zero.  The canonical QOM path /machine/unattached/device[N]
+>>>>   depends on the number of children already in the orphanage, which
+>>>>   makes it unstable.
+>>>>
+>>>>   Letting code get away with not picking a parent was a mistake.  I
+>>>>   guess it "saved" us some thinking about what's part of what when
+>>>>   converting existing devices to QOM.  In other words, it enabled sloppy
+>>>>   hardware modeling.  We've been "saving" thinking ever since.
+>>>>
+>>>>   I want /machine/unattached/ to be empty.  If an onboard device isn't
+>>>>   part of another device, put it into /machine/ with a sensible name.
+>>>
+>>> The last time this came up I've asked a few questions but did not get an answer:
+>>>
+>>> 1. What's the use of the QOM composition tree? I never needed it and apart from being able to admire it in info qom-tree I don't know if it's used for anything. For a long time I did not even know about info qom-tree because I only needed info qtree and info mtree and rarely if ever need to look at the qom-tree. If it has no real use I'm happy to not think about it.
+>>>
+>>> 2. What is a QOM parent? There were proposals to parent devices to their bus if they have any, that's what qtree shows anyway. If it's something else it should be better defined somewhere.
+>>>
+>>> Without getting answers for these questions I don't think I'm able to fix the machines I maintain.
+>>
+>> Unfortunately, I don't have the time to teach a class on QOM basics
+>> today.  The text you quoted explains what QOM parent and canonical QOM
+>> path are, albeit briefly.  It also explains how to pick the QOM parent
+>> properly, what happens when you neglect to pick one, and why that's
+>> undesirable.  I'm going to elaborate a bit.
+>
+> I read that text but understood it describes what is done now and missed the part where it says how to pick a parent.
+>
+>> A fully constructed QOM object is part of the QOM composition tree.
+>> This is a fundamental property of QOM's design.
+>>
+>> A QOM object can be composed of sub-objects.  Its sub-objects are its
+>> children in the composition tree.  That's why it's named *composition*
+>> tree.
+>
+> OK so this is clear for a SoC or a multifunction device where we mostly do that now, for example hw/isa/vt82c686.c has object_initialize_child for its parts (which is the only reason we need an init method and could do without it otherwise). For PPC460EX we don't model the SoC as this is old code that was cleaned up a bit but never completed to convert everything so the machine still creates the SoC parts and wires them as a lot of older machines did. I intended to improve the PCIe emulation on sam460ex and clean up that part during that but haven't got to it yet. I guess other devices like isa have the same problem that they predate even QOM so was not fully converted yet.
 
-> +}
-> +
->   static void rme_guest_class_init(ObjectClass *oc, const void *data)
->   {
->   }
->   
->   static void rme_guest_init(Object *obj)
->   {
-> +    if (rme_guest) {
-> +        error_report("a single instance of RmeGuest is supported");
-> +        exit(1);
-> +    }
-> +    rme_guest = RME_GUEST(obj);
->   }
->   
->   static void rme_guest_finalize(Object *obj)
->   {
->   }
-> +
-> +int kvm_arm_rme_init(MachineState *ms, KVMState *s)
-> +{
-> +    static Error *rme_mig_blocker;
-> +    ConfidentialGuestSupport *cgs = ms->cgs;
-> +
-> +    if (!rme_guest) {
-> +        return 0;
-> +    }
-> +
-> +    if (!cgs) {
-> +        error_report("missing -machine confidential-guest-support parameter");
-> +        return -EINVAL;
-> +    }
-> +
-> +    if (!kvm_vm_check_extension(s, KVM_CAP_ARM_RMI)) {
-> +        error_report("KVM doesn't support Realms");
-> +        return -ENODEV;
-> +    }
-> +
-> +    error_setg(&rme_mig_blocker, "RME: migration is not implemented");
-> +    migrate_add_blocker(&rme_mig_blocker, &error_fatal);
-> +
-> +    /*
-> +     * The realm activation is done last, when the VM starts, after all images
-> +     * have been loaded and all vcpus finalized.
-> +     */
-> +    qemu_add_vm_change_state_handler(rme_vm_state_change, NULL);
-> +
-> +    cgs->require_guest_memfd = true;
-> +    cgs->ready = true;
-> +    return 0;
-> +}
-> diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
-> index 88cbe8d85c41..eec1ca3dd2e5 100644
-> --- a/target/arm/kvm-stub.c
-> +++ b/target/arm/kvm-stub.c
-> @@ -119,3 +119,8 @@ char *kvm_print_register_name(uint64_t regidx)
->   {
->       g_assert_not_reached();
->   }
-> +
-> +int kvm_arm_rme_init(MachineState *ms, KVMState *s)
-> +{
-> +    g_assert_not_reached();
-> +}
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index ed99be7fd80c..28d5643d6779 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -660,7 +660,12 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->       hw_breakpoints = g_array_sized_new(true, true,
->                                          sizeof(HWBreakpoint), max_hw_bps);
->   
-> -    return 0;
-> +    ret = kvm_arm_rme_init(ms, s);
-> +    if (ret) {
-> +        error_report("Failed to enable RME: %s", strerror(-ret));
-> +    }
-> +
-> +    return ret;
->   }
->   
->   unsigned long kvm_arch_vcpu_id(CPUState *cpu)
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index e7c40fb003e4..6d058b0e08a2 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -240,4 +240,13 @@ void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3);
->    */
->   char *kvm_print_register_name(uint64_t regidx);
->   
-> +/**
-> + * kvm_arm_rme_init
-> + * @ms: the machine state
-> + * @s: State of KVM
-> + *
-> + * Prepare the machine to be a Realm, if the user enabled it.
-> + */
-> +int kvm_arm_rme_init(MachineState *ms, KVMState *s);
-> +
->   #endif
+Yes, many of the early conversions were superficial.
 
-Thanks,
-Gavin
+Once problematic code exists, it gets imitated.  We shouldn't blame the
+victims.
+
+> What should own sysbus devices? The machine? Or is it the bus which owns the devices connected to it?
+
+If the sysbus device is part of another device, it should be below it in
+the composition tree.  Whether to connect it directly or via its bus is
+arguably a matter of taste.  Would be nice if we could agree on a
+convention there.
+
+If it's not part of another device (say a chip soldered onto the
+mainboard), then put it into /machine with a sensible name.
+
+> Another problem is that machines usually use convenience functions to create devices such as sysbus_create_simple and pci_create_simple so if these devices need to be attached to the machine then these convenience functions should take care of that not the board code. It's rare that a device does object_new or object_initialize to get a device and it would be inconvenient to then cast the result to object and parent it somewhere where the functions that created the device could do this.
+
+Alex Graf just posted RFC patches "qom: Make composition-tree parenting
+mandatory".  I haven't hat a chance to examine them, but patch titles
+suggest the series takes care of that.
+
+>> Canonical QOM paths are visible at external interfaces both as input and
+>> as output.  A few quick examples:
+>>
+>> * QMP command query-cpus-fast reports a CPU's canonical QOM path.  For
+>>   some machines, we get something like "/machine/unattached/device[0]".
+>>   Fine as long as the client treats it as an opaque handle.  For other
+>>   machines, we get something like "/machine/soc/cpu", which is clearly
+>>   better.
+>
+> As you say does not matter what is it called if it's just a handle.
+
+True!  Still, nice names help humans with debugging and such.  We should
+go for them whenever practical.
+
+>> * Error messages use canonical QOM paths to identify devices.  With
+>>   properly modeled hardware, these paths are actually helpful for
+>>   humans.  Something like "/machine/unattached/device[7]" not so much.
+>
+> Never seen such error message. Usually errors also say what device it is from so usually straightforward to know where it comes from.
+
+Such error messages definitely exist.  Random pick,
+hw/net/can/flexcan.c:
+
+            error_setg(errp, "%s: flexcan_connect_to_bus failed",
+                       dev->canonical_path);
+
+Many trace points and log entries show canonical QOM paths, too.
+
+>> * QMP command device-sync-config accepts a QOM path argument.  With
+>>   properly modeled hardware, you can use a stable canonical QOM path.
+>>   But when the device is in the /machine/unattached orphanage, its
+>>   canonical QOM path is unstable.  A client has to first search the
+>>   orphanage to find today's path.
+>
+> Never needed to use device-sync-config. It's not even documented at https://www.qemu.org/docs/master/system/monitor.html#qemu-monitor so I have no idea what this command does. Found some info here:
+> https://www.qemu.org/docs/master/devel/qdev-api.html but I don't know about any device implementing that so it's probably a rare thing.
+
+To learn what a QMP command does, start with the "QEMU QMP Reference
+Manual".  All commands are documented there, or else QEMU fails to
+build.  Can't enforce the documentation to be *good*, though.  So if you
+find something that's bad, post a patch or file a bug.
+
+If my point was "device-sync-config needs this", an argument "who cares
+for device-sync-config" could perhaps be made.  It is not.  My point is
+that canonical QOM paths are part of external interfaces *by design*.
+device-sync-config is merely the first example I found for use of QOM
+paths in QMP input.
+
+>> Further questions?
+>
+> Basically the question was why should I think about this if things work now and nobody complained about it so it looked like it just bothers you that there are some unparented objects that could be put in some other category, but it's not a real issue for any common problem other than esthetics. I'm OK with solving that within QOM or qdev or somewhere where I don't have to think about it when writing board code. Imposing it on the board code looks like additional complexity and yet another thing to confuse new people trying to create a machine so unless there's a good reason to require that I'd do without it.
+>
+> Where are stable QOM paths needed?
+
+Once again: they are part of external interfaces.
+
+> If you can't predict them and still need to query it first then it likely does not matter what is the path as it's just used to query and refer to a device as a handle so in that case we may just forget the path hierarchy and make it flat and that would also solve your issue with unparented devices.
+
+That's not how QOM works.
+
+You are welcome to propose a redesign of QOM.
 
 

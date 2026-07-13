@@ -4,148 +4,181 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6796DC43458
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Jul 2026 07:20:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D190C43458
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Jul 2026 08:23:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wjAxN-0002J6-An; Mon, 13 Jul 2026 03:20:01 -0400
+	id 1wjBwc-0001Pq-3a; Mon, 13 Jul 2026 04:23:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wjAxL-0002Iq-R5
- for qemu-arm@nongnu.org; Mon, 13 Jul 2026 03:19:59 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ id 1wjBwM-0001OA-Vf
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2026 04:23:07 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wjAxH-0008S3-RP
- for qemu-arm@nongnu.org; Mon, 13 Jul 2026 03:19:58 -0400
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+ id 1wjBwK-0001Rw-KD
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2026 04:23:02 -0400
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66D6Nhge648375
- for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 07:19:53 GMT
+ 66D77T4Z810602
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 08:22:58 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 6ERFB8oxOn2Uo4ck1nsBITHX8wsLlxjU1fYVMhozEz8=; b=cuBJkwp+gYPngkq4
- tHjUtvmXnHznkPLE2HGD397SO4jfryvbm6hsruSziIRs0Q4SA5lY5saMyVLEayzW
- n3i3dg/ApOn868ftOEIajPGLVQzY3dl6ygRz/UW4yOsY593j6JOMv2GvtaEQrjWB
- b9cetJPoZG7x4EzfRRuCMBXeecYkpfWuW3FG7UN1LMjj+SJaXpCpcLtTnKZkzhpn
- e9yVKquldRTK2imljLSuKd/W3RHvdLO2xxwtVFEk6svXItJoGsTHRqe4YQzeWTYj
- rNtqSzyb+IFBJ+Cq6N+cOtj9xgJO67sbAvl+F4x6+cXjlUOYlbWz3d+p5KS6wCk6
- i5BTRQ==
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fbebr4ttk-1
+ NSoNOcu4qvWDiMgcyhXoHCcSKtxuutZE6mAwUwxZQl4=; b=Jqw+2pnPX0EIUE4t
+ Qr+8KMa7hqVLOL+pcke/lXxQCCC7xxxb2bURdjSNuWJUbF0jiJG4yA6b+pg5Aggv
+ znG7yr2xlPaGON/8YHB2iA+nqsUiZqjTVOpG6zAj/nDP35UEGmaXPoUTe2g2Y9D2
+ qF5RjfiPfZdvn5xb8Eya0gEE57AsnVuUvulmRhUdPlArQHRMMnu4Cmf9QjcZQbK3
+ VDZAm4eEb/iE8cTpLtO5MnutaFX0KCysUwl45hdG9WeloqXuErJvIgzc4P48cbpq
+ x9+8VG1FuX/RabftrhK9KGybY3HNF7ctCfPDAFV2OqDb8mxdiZWb2XjHHz6lOsvT
+ Dy477g==
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fcubsr8m4-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 07:19:52 +0000 (GMT)
-Received: by mail-qt1-f199.google.com with SMTP id
- d75a77b69052e-51c0ab07320so34804521cf.2
- for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 00:19:52 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 08:22:58 +0000 (GMT)
+Received: by mail-qt1-f198.google.com with SMTP id
+ d75a77b69052e-51c1a9764f0so48196051cf.1
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 01:22:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1783927192; x=1784531992; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1783930978; x=1784535778; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=6ERFB8oxOn2Uo4ck1nsBITHX8wsLlxjU1fYVMhozEz8=;
- b=i40paQWoCLs0DokX3sTNumak0eBgQWIvg/BBaDHDcnLyu9UUXE4iWjaKQcRhHzVJ+9
- 0hj/UVV/6yR8oDZ25ntHFqQOFqIDncjCPphlBBgiSf7gZsamuwYys2bfz6YHAgz1IFo5
- tcxiwZ5AxJ4rMbaKP/dUGiTtDkAS+2YYXvM5N0FqaXh2ilM8qo0MJyS9WTxCj9jjGHMC
- NQV284oXrZoKZH1bCh6YKQbGCmtLHlD+30yMzTumsq+RmoTpcA/LD9CdKshadcBOY6OE
- 9Ei1J426YOzScPUSAkAKuwFxH0s3U4RfdefxS8cetu/fgq2KS7Z2G0pe7rH+3FeoS5SL
- lyKg==
+ bh=NSoNOcu4qvWDiMgcyhXoHCcSKtxuutZE6mAwUwxZQl4=;
+ b=L/4oKRAvsOqeL0uqvTyjHdyeVNIhLIzuYeEByQDzlp+XH15ShlIRXR5mrT5XIunUB2
+ t4ClROLShhYQtsNhWziGxjOLvjwto113lqF7xlQHM3GAN2moC7cEJdReHNpzwKZRB1jA
+ kTmSr5WM8Y+VRoisjjiTaM+5dSd8t1AfZe33qsfZxYaZYhN4E2RtdcZYZDDJy45UN30E
+ JjqwNPLcOXLnZv3sLm49uZYZR9DtBvCQ6dN+YgY0cB4VFLaKtixV8HsguS4jNa2POhN+
+ A2kS8RRpfXBqT8ysifVqda+wBYtg9Yx22IyBtg2zdKN1tGBDua2BfDBsI4g7k++khbv0
+ 52dA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783927192; x=1784531992;
+ d=1e100.net; s=20251104; t=1783930978; x=1784535778;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=6ERFB8oxOn2Uo4ck1nsBITHX8wsLlxjU1fYVMhozEz8=;
- b=QdMbPN5O7QLbx4bs49waSeG5AxYnvXJOnxrrz8Ob9ytoL4YeUNtil2XnDR1dMbEfgt
- Hwt9LMeQuMTlaHctcZb0GMEDFC8MJBfFGGkvF3giqGc/vFUdjOsAReejBBSFfVK0viTt
- e6l2WDoztQDS/KubEBmKlfQtVueOXkk+wMdQ57CM6eV3YvCZGe5Z6sBtt8eV8TMLJMYG
- 2/P4I8eZtmiNjand8XuB5tfPVpMuOz4eWlcbnt5hpxG3ker6BfQPrc8HRUYFhLnB/FRb
- AmKklV2+WcP+PCkOTL9Mo872MbV2fDlbGaeijDmSAbfolSbd9q/rhqj1wV4PVO//bsuP
- czBg==
-X-Forwarded-Encrypted: i=1;
- AHgh+RoQUnk80SEuhA/xqjJN6z6n+sbEkZ/Ix2jhgRcanrEgeGjXg6mRqFUl1cAOIn97E/Amx2xMu7ZHfg==@nongnu.org
-X-Gm-Message-State: AOJu0Yzr/zPhZoFowBninTWfB/MoqPV6cjrv2PrTMe902E/5mtbYmana
- cI+bA8RDhdfCmtxBKZ0bFJgmybCwoPnSae3MEME0Tmki608N1DOXW6ta9+Qc3x71ompYVKllH4o
- +nvHEGcDoephqeAptDbIE2evWCkU2Gsi37u+VLnAs0XALR9y7baGXQGM=
-X-Gm-Gg: AfdE7cm/esIQR2zHhcFsi9IYhlJ6M2nKnFuPadToCnXe6QTeCTRPJZpEHQC8c31vJ5x
- 208s0mYb1HcBBQZFR39IkOQRsrEWZaVhnfJqX+QiHkXyBD+RmACtzT0yQG3PNSUUxMIfUlk6ZjT
- t0dcK5OOSbiSkkY7SNXy8l5RqTgsR5d+q5MpIbS1Xm74+xZh7vBvKwLJ7+vEQwAF4lLyJWKFHbv
- DibRS4fslXNBPn2PBTnwA2KcuWUEk9Wd3610G4vAeEFlNCteaDn+ABV4racpqEbSx/ZYi0yIryL
- XM7G219YdLWsfRQPtpWa0j71iX30JexKp3Pxy9fOGpAHinakQqCRyab8F/b4Wm2hDV7Ey1jecAk
- BFJCbMS+OR++gqVJDh+lmA6gT0PxJtfcvGhhxlv//ekhnnXGlKLlX6clu8USvqw==
-X-Received: by 2002:ac8:5f51:0:b0:51c:1cf8:ca4d with SMTP id
- d75a77b69052e-51cbf171caemr83469361cf.13.1783927191912; 
- Mon, 13 Jul 2026 00:19:51 -0700 (PDT)
-X-Received: by 2002:ac8:5f51:0:b0:51c:1cf8:ca4d with SMTP id
- d75a77b69052e-51cbf171caemr83469221cf.13.1783927191483; 
- Mon, 13 Jul 2026 00:19:51 -0700 (PDT)
+ bh=NSoNOcu4qvWDiMgcyhXoHCcSKtxuutZE6mAwUwxZQl4=;
+ b=q3ypEvLHQdmIFxLou1PL+ujPdoIPXKhJxLzMTLOfpqf275oKmFlgYYGeXSypyUSKot
+ FtwKdgVIY0mAyQFD42T6/w2V9VDxOYOectmXvssfvz3MLCMnJmhQJDWv3ovy1pjSqmeC
+ 5n+qJN55U81SMVeF4EFgdiiJRPQiJurGE+ikXfxomIe+I0jWciC3ZnKOcC0EvWKf1y6C
+ o18CpI1bVpu/J9F2kjr/c7Q/km5QDGJJmo4zstYcWtFCQT4XMZRi/HQdjKDB+02hNUrQ
+ KNUK66oajBHzEVJvLjt41ubUhd7V8miXabchsJCRwzEzW5+A/MopPctsjsi4+zbjkV4+
+ DgHQ==
+X-Gm-Message-State: AOJu0YyqOk+Ka1jajaGc1zTyx8B9yi3F1xIpdShfZAekEHNMi/rfpZBB
+ CW4cBq/CQyXiPzmYP3uHvcYXZ7Rnuv3H90oOVCpc9XNyRWpcPxHIsoeBriAD++HyO6ZTJzZv9qz
+ NO2Ke16pVyRGn8HL3zFrHyjkj5rffED3O3tJS7pmahu0+iXUbGchn1bw=
+X-Gm-Gg: AfdE7clcVAROEFhnDnyk/+vGkjJWF9g2Ns09D1YarEh/O42nDDKXcsVApDUzjwoVqZ9
+ dGyzXW00L337XfNKhSduBxvF/ehs2j3aOEhTTYySblrth001oQQUNMhTupk82M1SMihkNgY0W5W
+ Dv/v4qdKZr9oQoLWiUzGOHYx3a2N4uA5IKO6kPAsrjl0hicP1HOD1vFqgbZyFcSLlRVgJbb4lEE
+ 0DIFo97kvFMgwJjqk2ZRJLFfCyeX9jXcFN4LRJF/KbZogog0Bnc1vTWUS35FtAnMQQsrOVxUDPl
+ Q0Tw0p9WDzoi2RkLW0heaoq4x2c4eUgaJnc6Ah73K8Fz8IVjsEcMastm4F5ZMcSPWrfREdsRYDK
+ PvegcK5sXrPiGhILFmZ4KDtdBmdkHpiBMNfMm8YaQQapFyqtmgD8nTYPObXnB1g==
+X-Received: by 2002:a05:622a:1393:b0:51a:9a12:9f08 with SMTP id
+ d75a77b69052e-51cbf315c4amr80553021cf.51.1783930978222; 
+ Mon, 13 Jul 2026 01:22:58 -0700 (PDT)
+X-Received: by 2002:a05:622a:1393:b0:51a:9a12:9f08 with SMTP id
+ d75a77b69052e-51cbf315c4amr80552591cf.51.1783930977669; 
+ Mon, 13 Jul 2026 01:22:57 -0700 (PDT)
 Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-493eb6f373csm570076305e9.14.2026.07.13.00.19.49
+ ffacd0b85a97d-47a9e4d780csm83132689f8f.11.2026.07.13.01.22.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Jul 2026 00:19:50 -0700 (PDT)
-Message-ID: <fcbe651b-d7b3-4080-8f86-f3ffd40a0087@oss.qualcomm.com>
-Date: Mon, 13 Jul 2026 09:19:49 +0200
+ Mon, 13 Jul 2026 01:22:56 -0700 (PDT)
+Message-ID: <0878aca4-490a-4fa4-9fa4-d9c085ed11cb@oss.qualcomm.com>
+Date: Mon, 13 Jul 2026 10:22:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 01/10] hw/usb/hcd-ehci: Change descriptor addresses to
- 64-bit with migration compatibility
+Subject: Re: [RFC PATCH 002/134] qdev: Rename qdev_new()/qdev_try_new() to
+ *_orphan()
 Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- "peterx@redhat.com" <peterx@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,
+To: Alexander Graf <graf@amazon.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org, Song Gao <17746591750@163.com>,
+ Aditya Gupta <adityag@linux.ibm.com>,
+ Alexey Kardashevskiy <aik@ozlabs.ru>, Farhan Ali <alifm@linux.ibm.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>, Artyom Tarasenko
+ <atar4qemu@gmail.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Felipe Balbi <balbi@kernel.org>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Hendrik Brueckner <brueckner@linux.ibm.com>,
+ Chao Liu <chao.liu@processmission.com>,
+ Huacai Chen <chenhuacai@kernel.org>,
+ =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Helge Deller <deller@gmx.de>, Dorjoy Chowdhury <dorjoychy111@gmail.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, Eric Farman <farman@linux.ibm.com>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>, Gautam Gala <ggala@linux.ibm.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Jan Kiszka <jan.kiszka@web.de>, Max Filippov <jcmvbkbc@gmail.com>,
+ Joel Stanley <joel@jms.id.au>, Jared Rossi <jrossi@linux.ibm.com>,
+ Tyrone Ting <kfting@nuvoton.com>, Frederic Konrad
+ <konrad.frederic@yahoo.fr>, Laurent Vivier <laurent@vivier.eu>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Bibo Mao <maobibo@loongson.cn>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Glenn Miles <milesg@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Michael Rolnik <mrolnik@gmail.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Zhao Liu <zhao1.liu@intel.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>, "flwu@google.com" <flwu@google.com>,
- "nabihestefan@google.com" <nabihestefan@google.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-References: <20260713032704.3583103-1-jamin_lin@aspeedtech.com>
- <20260713032704.3583103-2-jamin_lin@aspeedtech.com>
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
+ Samuel Tardieu <sam@rfc1149.net>, Bernhard Beschow <shentey@gmail.com>,
+ Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Thomas Huth <th.huth+qemu@posteo.eu>, Ran Wang <wangran@bosc.ac.cn>,
+ Hao Wu <wuhaotsh@google.com>, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
+References: <20260711223707.42139-1-graf@amazon.com>
+ <20260711223707.42139-3-graf@amazon.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260713032704.3583103-2-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260711223707.42139-3-graf@amazon.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzEzMDA3NCBTYWx0ZWRfXyhauLkGthxDf
- E2pSlV6PB+V5q2lEy5b9dy8rtu8xxbFuSgxV6aar1+/c4GsIMd/6vAQqlWXGqHp/slAvxCseQaw
- lK77YO8tnC6yYABMvG4gWXfYMmuxeuU=
-X-Authority-Analysis: v=2.4 cv=OK8XGyaB c=1 sm=1 tr=0 ts=6a549198 cx=c_pps
- a=WeENfcodrlLV9YRTxbY/uA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Authority-Analysis: v=2.4 cv=Oq9/DS/t c=1 sm=1 tr=0 ts=6a54a062 cx=c_pps
+ a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
- a=V2NxCb60AAAA:8 a=20KFwNOVAAAA:8 a=EUspDBNiAAAA:8 a=GfncpqaTsXqTwz3xVyUA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=kacYvNCVWA4VmyqE58fU:22
- a=3L6qF29SlnrayQqPM2jZ:22
-X-Proofpoint-GUID: pf3WDX1nUuvXIM8TM_0gNjDvnpaquSrN
-X-Proofpoint-ORIG-GUID: pf3WDX1nUuvXIM8TM_0gNjDvnpaquSrN
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzEzMDA3NCBTYWx0ZWRfX5xtef+LI47OD
- YkY9+psBvvJehOg46eNPBLU2wgjt8hMu74vCPIvGazlZn3Kr2sccFDjZjCKY3s1+5waj3B+BTdj
- Wgr7g08MhvLZLcFaOFH8ti1zSPtfNknmrtT+c7yh1FRRlemyLm9LUmK7IXabgNhrEvJixgz2hNE
- zlxwp+/Kb2Q0LXdKCurTQntkbYpd985q87zrvKs67IiCi+c89a6V63Woz9WiNBe/LsE0dXuSAPv
- ZB3tOErpq1nU/yGEx0FsYc8+OSEST15pnIowd9V99C0CUVhgx7eg1irCcmugI+GtZ4CwlW31JwR
- kl9naLK25854HwiVw6rFZPHDz+nrvnVxKx06ol/9ySJLOHX35XEipxUsFpwzDjivOjNJADcjWgB
- GP4Jr1ghYEoVWbTlEFpvchB9ICYElRbSnGvx1XF9TtSfr4tLkzXmMY4/6WJBhrDqtpIHzWtX6Xx
- AArMST8yODtv7QpOAsg==
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
+ a=vggBfdFIAAAA:8 a=EUspDBNiAAAA:8 a=uEQV49vVqB13Y67JniYA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=dawVfQjAaf238kedN5IG:22
+X-Proofpoint-ORIG-GUID: TEZ7bcsvn2i8446wJpxHbfQcXjEZ4cPH
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzEzMDA4NiBTYWx0ZWRfX7GnHw44Sf/Fk
+ 2X0FaLsy4s6oh2UB7nA1soC4wv9gJHKJac5aN6MpGp+yxJ15xKR3qCKePU/gp30Zg782OQUneDS
+ L/i+rXNr4VJtX+DgOe4dvzmNUtkZ3V8=
+X-Proofpoint-GUID: TEZ7bcsvn2i8446wJpxHbfQcXjEZ4cPH
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzEzMDA4NiBTYWx0ZWRfX0zE+LftP7u3l
+ kFxa/9+X6ezTrg5QQKHjdPuhuobG6hWy44I43OTWzd5An68gYzY6sqPstDbLKq5UjpvPhDbHjY8
+ dx/Qr10/vjNc2yAsmu+Ek3Ff93b4UbX6iL5aVirjPt8xFco4IdRNwZOpCoPyvqhijV4Bc5dBKGC
+ Ce8vP2wXFw90Nn0Jr6Jle1XyZmUaI3wzROet0nssGo7nLdWlyncGzxZsO4qmDZ8sjPed42wIKkY
+ sWPp2QGy5i7uFiImlLV7YWQHFzlvzSd0UNYapU4i54JivLbLLu/XeDF50hFrJWa3Rdsw9p3lbG0
+ HlXP+vKrJdK5/6q0pe67e5oKs0gjpy3aCMw8fOFjvXXwGori4a1A2UboZadFoDfJAxX8OGaafw0
+ ra+TG87i/1TGVqQnndAqCfuK7GsYuvY9+uHepXv39usvp1QF4sZyqIiEFA9iZ89kbiWzS8LHEGT
+ WjeFMjSeONw+5faz0Eg==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-13_02,2026-07-10_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 malwarescore=0 phishscore=0 spamscore=0 adultscore=0
- clxscore=1015 impostorscore=0 suspectscore=0 lowpriorityscore=0 bulkscore=0
+ lowpriorityscore=0 impostorscore=0 spamscore=0 malwarescore=0 bulkscore=0
+ adultscore=0 clxscore=1015 phishscore=0 suspectscore=0 priorityscore=1501
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607130074
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607130086
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -168,63 +201,206 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 13/7/26 05:27, Jamin Lin wrote:
-> Change internal EHCI descriptor addresses from uint32_t to uint64_t.
+On 12/7/26 00:34, Alexander Graf wrote:
+> qdev_new() creates a device on the heap without a QOM parent.  If the
+> caller does not add one before realize, device_set_realized() dumps
+> the device into /machine/unattached with an unstable canonical path.
 > 
-> The following fields are updated:
-> - EHCIPacket::qtdaddr
-> - EHCIQueue::{qhaddr, qtdaddr}
-> - EHCIState::{a_fetch_addr, p_fetch_addr}
+> We want the short spelling qdev_new() to be the one that gets
+> parenting right by construction.  As a first step, rename the current
+> functions to qdev_new_orphan() and qdev_try_new_orphan() tree-wide so
+> that a subsequent commit can reintroduce qdev_new() with a mandatory
+> (parent, id, type) signature.
 > 
-> Update get_dwords() and put_dwords() to take 64-bit addresses and
-> propagate the type change through the descriptor traversal paths.
+> Purely mechanical, generated by
 > 
-> Adjust NLPTR_GET() to operate on 64-bit values:
+>    spatch --sp-file scripts/coccinelle/qom-parent/qdev-new-orphan.cocci \
+>           --in-place --include-headers --dir .
 > 
->      #define NLPTR_GET(x) ((x) & ~0x1fULL)
+> or equivalently
 > 
-> so that link pointer masking works correctly when descriptor
-> addresses exceed 32-bit space. The previous mask (0xffffffe0)
-> implicitly truncated addresses to 32 bits.
-> 
-> This patch does not change the on-wire descriptor layout yet.
-> It only removes the internal 32-bit address limit and prepares
-> for later patches that will add full 64-bit QH/qTD/iTD/siTD support.
-> 
-> Update the EHCI trace-events prototypes for QH, qTD, iTD, and siTD to
-> use uint64_t for the address argument and print it with PRIx64. This
-> ensures full 64-bit addresses are shown in trace output and improves
-> debugging of queue heads and transfer descriptors.
-> 
-> Migration compatibility:
-> 
-> To preserve backward migration compatibility, keep the legacy 32-bit
-> fetch address fields (a_fetch_addr_32, p_fetch_addr_32) alongside the
-> new 64-bit fields.
-> 
-> Migration format is selected using a machine compat property
-> "x-migrate-fetch-addr-64bit":
-> 
-> - Old machine types migrate 32-bit fetch addresses
-> - New machine types migrate full 64-bit fetch addresses
-> 
-> This is implemented using VMSTATE_UINT32_TEST() and
-> VMSTATE_UINT64_TEST() so that only the appropriate format is migrated.
-> 
-> In pre_save, the 32-bit shadow fields are populated when migrating
-> to old machine types. In post_load, the 32-bit values are restored
-> into the 64-bit fields when loading old migration streams.
+>    git ls-files '*.[ch]' '*.[ch].inc' '*.rst' '*.py' | \
+>        grep -v '^subprojects/' | \
+>        xargs sed -i 's/\bqdev_try_new\b/qdev_try_new_orphan/g;
+>                      s/\bqdev_new\b/qdev_new_orphan/g'
 > 
 > No functional change.
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Reviewed-by: Cédric Le Goater <clg@redhat.com>
+> Assisted-by: Kiro
+> Signed-off-by: Alexander Graf <graf@amazon.com>
 > ---
->   hw/usb/hcd-ehci.h   | 30 +++++++++++++-----
->   hw/core/machine.c   |  2 ++
->   hw/usb/hcd-ehci.c   | 74 +++++++++++++++++++++++++++++++--------------
->   hw/usb/trace-events | 24 +++++++--------
->   4 files changed, 89 insertions(+), 41 deletions(-)
+>   hw/alpha/typhoon.c                            |  2 +-
+>   hw/arm/aspeed.c                               |  2 +-
+>   hw/arm/aspeed_soc_common.c                    |  4 +-
+>   hw/arm/bananapi_m2u.c                         |  2 +-
+>   hw/arm/cubieboard.c                           |  2 +-
+>   hw/arm/exynos4210.c                           | 12 ++--
+>   hw/arm/imx25_pdk.c                            |  2 +-
+>   hw/arm/imx8mm-evk.c                           |  2 +-
+>   hw/arm/imx8mp-evk.c                           |  2 +-
+>   hw/arm/integratorcp.c                         |  8 +--
+>   hw/arm/max78000fthr.c                         |  2 +-
+>   hw/arm/mcimx6ul-evk.c                         |  2 +-
+>   hw/arm/mcimx7d-sabre.c                        |  2 +-
+>   hw/arm/mps2-tz.c                              |  4 +-
+>   hw/arm/mps2.c                                 |  4 +-
+>   hw/arm/msf2-som.c                             |  4 +-
+>   hw/arm/musicpal.c                             |  6 +-
+>   hw/arm/netduino2.c                            |  2 +-
+>   hw/arm/netduinoplus2.c                        |  2 +-
+>   hw/arm/npcm7xx_boards.c                       |  4 +-
+>   hw/arm/npcm8xx_boards.c                       |  2 +-
+>   hw/arm/olimex-stm32-h405.c                    |  2 +-
+>   hw/arm/omap1.c                                | 12 ++--
+>   hw/arm/orangepi.c                             |  2 +-
+>   hw/arm/raspi.c                                |  2 +-
+>   hw/arm/realview.c                             | 18 ++---
+>   hw/arm/sabrelite.c                            |  2 +-
+>   hw/arm/sbsa-ref.c                             | 20 +++---
+>   hw/arm/stellaris.c                            | 20 +++---
+>   hw/arm/stm32vldiscovery.c                     |  2 +-
+>   hw/arm/strongarm.c                            |  4 +-
+>   hw/arm/versatilepb.c                          | 14 ++--
+>   hw/arm/vexpress.c                             | 14 ++--
+>   hw/arm/virt.c                                 | 24 +++----
+>   hw/arm/xilinx_zynq.c                          | 26 +++----
+>   hw/arm/xlnx-versal-virt.c                     |  2 +-
+>   hw/arm/xlnx-versal.c                          | 70 +++++++++----------
+>   hw/arm/xlnx-zcu102.c                          |  6 +-
+>   hw/arm/xlnx-zynqmp.c                          |  2 +-
+>   hw/audio/intel-hda.c                          |  2 +-
+>   hw/audio/model.c                              |  2 +-
+>   hw/avr/atmega.c                               |  2 +-
+>   hw/block/fdc-sysbus.c                         |  4 +-
+>   hw/block/fdc.c                                |  2 +-
+>   hw/block/pflash_cfi01.c                       |  2 +-
+>   hw/block/pflash_cfi02.c                       |  2 +-
+>   hw/block/xen-block.c                          |  2 +-
+>   hw/char/exynos4210_uart.c                     |  2 +-
+>   hw/char/mcf_uart.c                            |  2 +-
+>   hw/char/mchp_pfsoc_mmuart.c                   |  2 +-
+>   hw/char/pl011.c                               |  2 +-
+>   hw/char/serial-mm.c                           |  2 +-
+>   hw/char/sifive_uart.c                         |  2 +-
+>   hw/char/spapr_vty.c                           |  2 +-
+>   hw/char/xen_console.c                         |  2 +-
+>   hw/core/qdev.c                                |  4 +-
+>   hw/core/sysbus.c                              |  2 +-
+>   hw/cxl/cxl-host.c                             |  2 +-
+>   hw/display/sm501.c                            |  2 +-
+>   hw/display/xlnx_dp.c                          |  4 +-
+>   hw/dma/rc4030.c                               |  2 +-
+>   hw/hexagon/hexagon_dsp.c                      |  4 +-
+>   hw/hexagon/virt.c                             |  6 +-
+>   hw/hppa/machine.c                             | 12 ++--
+>   hw/i2c/core.c                                 |  2 +-
+>   hw/i2c/smbus_eeprom.c                         |  2 +-
+>   hw/i386/microvm.c                             |  6 +-
+>   hw/i386/nitro_enclave.c                       |  4 +-
+>   hw/i386/pc.c                                  |  2 +-
+>   hw/i386/pc_piix.c                             |  2 +-
+>   hw/i386/pc_q35.c                              |  2 +-
+>   hw/i386/pc_sysfw.c                            |  2 +-
+>   hw/i386/sgx.c                                 |  2 +-
+>   hw/i386/x86-common.c                          |  6 +-
+>   hw/i3c/core.c                                 |  2 +-
+>   hw/ide/ide-bus.c                              |  2 +-
+>   hw/intc/exynos4210_gic.c                      |  2 +-
+>   hw/intc/riscv_aclint.c                        |  4 +-
+>   hw/intc/riscv_aplic.c                         |  2 +-
+>   hw/intc/riscv_imsic.c                         |  2 +-
+>   hw/intc/s390_flic.c                           |  4 +-
+>   hw/intc/sifive_plic.c                         |  2 +-
+>   hw/isa/isa-bus.c                              |  6 +-
+>   hw/loongarch/virt.c                           | 18 ++---
+>   hw/m68k/an5206.c                              |  2 +-
+>   hw/m68k/mcf_intc.c                            |  2 +-
+>   hw/m68k/next-cube.c                           |  2 +-
+>   hw/m68k/q800.c                                |  4 +-
+>   hw/m68k/virt.c                                | 10 +--
+>   hw/mem/sparse-mem.c                           |  2 +-
+>   hw/microblaze/petalogix_ml605_mmu.c           | 12 ++--
+>   hw/microblaze/petalogix_s3adsp1800_mmu.c      |  8 +--
+>   hw/mips/boston.c                              |  4 +-
+>   hw/mips/jazz.c                                | 12 ++--
+>   hw/mips/loongson3_virt.c                      |  6 +-
+>   hw/mips/malta.c                               |  4 +-
+>   hw/misc/empty_slot.c                          |  2 +-
+>   hw/misc/led.c                                 |  2 +-
+>   hw/misc/sifive_e_prci.c                       |  2 +-
+>   hw/misc/sifive_test.c                         |  2 +-
+>   hw/net/lan9118.c                              |  2 +-
+>   hw/net/smc91c111.c                            |  2 +-
+>   hw/net/spapr_llan.c                           |  2 +-
+>   hw/net/xen_nic.c                              |  2 +-
+>   hw/nitro/machine.c                            |  4 +-
+>   hw/nitro/nitro-vsock-bus.c                    |  2 +-
+>   hw/nvme/ctrl.c                                |  2 +-
+>   hw/nvram/fw_cfg.c                             |  4 +-
+>   hw/or1k/or1k-sim.c                            |  6 +-
+>   hw/or1k/virt.c                                |  8 +--
+>   hw/pci-bridge/pci_expander_bridge.c           |  4 +-
+>   hw/pci-host/astro.c                           |  2 +-
+>   hw/pci-host/bonito.c                          |  2 +-
+>   hw/pci-host/pnv_phb4_pec.c                    |  2 +-
+>   hw/pci/pci.c                                  |  2 +-
+>   hw/ppc/amigaone.c                             |  2 +-
+>   hw/ppc/e500.c                                 | 22 +++---
+>   hw/ppc/mac_newworld.c                         | 18 ++---
+>   hw/ppc/mac_oldworld.c                         |  8 +--
+>   hw/ppc/pnv.c                                  |  4 +-
+>   hw/ppc/pnv_bmc.c                              |  2 +-
+>   hw/ppc/ppc440_bamboo.c                        |  4 +-
+>   hw/ppc/prep.c                                 |  4 +-
+>   hw/ppc/sam460ex.c                             | 16 ++---
+>   hw/ppc/spapr.c                                |  4 +-
+>   hw/ppc/spapr_irq.c                            |  2 +-
+>   hw/ppc/spapr_vio.c                            |  2 +-
+>   hw/ppc/virtex_ml507.c                         |  6 +-
+>   hw/remote/machine.c                           |  2 +-
+>   hw/riscv/boston-aia.c                         |  4 +-
+>   hw/riscv/microblaze-v-generic.c               | 14 ++--
+>   hw/riscv/microchip_pfsoc.c                    |  2 +-
+>   hw/riscv/sifive_u.c                           |  4 +-
+>   hw/riscv/virt.c                               |  8 +--
+>   hw/rtc/sun4v-rtc.c                            |  2 +-
+>   hw/s390x/ap-bridge.c                          |  2 +-
+>   hw/s390x/css-bridge.c                         |  2 +-
+>   hw/s390x/s390-pci-bus.c                       |  2 +-
+>   hw/s390x/s390-virtio-ccw.c                    |  6 +-
+>   hw/scsi/lasi_ncr710.c                         |  2 +-
+>   hw/scsi/ncr53c710.c                           |  4 +-
+>   hw/scsi/scsi-bus.c                            |  2 +-
+>   hw/scsi/spapr_vscsi.c                         |  2 +-
+>   hw/sh4/r2d.c                                  |  6 +-
+>   hw/sh4/sh7750.c                               |  4 +-
+>   hw/sparc/leon3.c                              | 10 +--
+>   hw/sparc/sun4m.c                              | 38 +++++-----
+>   hw/sparc64/sun4u.c                            | 14 ++--
+>   hw/ssi/ssi.c                                  |  2 +-
+>   hw/tricore/tricore_testboard.c                |  2 +-
+>   hw/ufs/lu.c                                   |  2 +-
+>   hw/usb/bus.c                                  |  4 +-
+>   hw/usb/dev-serial.c                           |  2 +-
+>   hw/vmapple/vmapple.c                          | 20 +++---
+>   hw/xen/xen-bus.c                              |  2 +-
+>   hw/xen/xen-legacy-backend.c                   |  2 +-
+>   hw/xen/xen-pvh-common.c                       |  2 +-
+>   hw/xtensa/virt.c                              |  2 +-
+>   hw/xtensa/xtfpga.c                            |  2 +-
+>   include/hw/core/qdev.h                        | 14 ++--
+>   include/hw/i2c/i2c.h                          |  2 +-
+>   include/hw/misc/unimp.h                       |  2 +-
+>   include/hw/ssi/ssi.h                          |  2 +-
+>   include/hw/usb/usb.h                          |  2 +-
+>   migration/migration.c                         |  2 +-
+>   net/net.c                                     |  4 +-
+>   .../qom-parent/qdev-new-orphan.cocci          | 18 +++++
+>   system/qdev-monitor.c                         |  2 +-
+>   target/mips/cpu.c                             |  2 +-
+>   target/xtensa/cpu.c                           |  2 +-
+>   170 files changed, 459 insertions(+), 441 deletions(-)
+>   create mode 100644 scripts/coccinelle/qom-parent/qdev-new-orphan.cocci
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 

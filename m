@@ -4,111 +4,188 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D192DC44501
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Jul 2026 09:34:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0E26C43458
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Jul 2026 10:55:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wjD3e-0006tF-NN; Mon, 13 Jul 2026 05:34:38 -0400
+	id 1wjEJ7-0003dK-IH; Mon, 13 Jul 2026 06:54:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wjD3d-0006su-8V
- for qemu-arm@nongnu.org; Mon, 13 Jul 2026 05:34:37 -0400
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wjD3b-0001xS-AB
- for qemu-arm@nongnu.org; Mon, 13 Jul 2026 05:34:37 -0400
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-66628618509so3508904d50.2
- for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 02:34:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783935272; cv=none;
- d=google.com; s=arc-20260327;
- b=kirUImGTxli1fQ90SHlejO497Uk7nqU2CmzG3+pxB8wj19jXCHo9KBeUDZmGxRUWdC
- RCW8yZzKN2DY6Ye5a0BzDf1CLwOr4NedZ6gBNHlkW2aInqFNnqoSJiNMXZd9s6THj0y9
- N7NB7ADQFJ6waeGbi2twGEfHWFizShKaZjzA0fca0p6HkudWRVxxL3DX3eNI8bPHQccX
- kSMsS7H+JStm+3R7/v/IKmvR+IOfziwUn1kXbE2PTELNrwi3QaZZhJPk7p2X/kwnRYS7
- mNyQdQCcTExCG0c6j6jN6u1H+JcBK2tNzItB6eBiGc7iUlHwQ+hpWsxnPsAycVPvbMrv
- ORxQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=6B2WnhOE8NF02oIsGMsXQEgrM7im3pLdjLr6S6+erhw=;
- fh=lFxKr5rsGh2iF62mIXCZ+eRLuFqXNLxK0yZTcMvPAi8=;
- b=VIK6K6VsZgNafVeAcJE1YAhemxHHYzH68iVAp9QBVwJZYUjrJR+SLqem40dAI3RHEM
- 5H7/j7EIPB/XyGdbaTsCVlVK250Uf1oKOIxu4az32f7y/l0er74aI9TODaGt0q91boo9
- yEJBzeUBpJq2u9rOPNvtIvEn+zQClc9q6yE7KqKR4K6qy7zyEO0dVQh5YIJKXG/+PapO
- /HtGB5k5WU4iMGbYGq7Dsg+458WJGSsyZ97TXqOJA4840B1QS8NQqqgs37F6zI2WXevb
- qudY/XEg7uwKU0pI/3HPuAe33O7gcfKKY8z9+JVw1qxyYzbFvI8eYVeMhah4eh5FRQUB
- GO7Q==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wjEJ6-0003cP-92
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2026 06:54:40 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wjEJ3-0004MV-40
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2026 06:54:39 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 66DAfEd8732794
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 10:54:35 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ LW3fYohk/aaKNf9gFX7XJAGrK7Rod9ZwfEsbUEYpc0k=; b=TAs3HUWcKq3c4dR1
+ pBV3PfPnOs49dDkaDFeAiuoKfk+IfXVqQeAFNXYssHj6LesQwEWOuktlLq+8EYvf
+ j5/kNgTo5mIKFstpKNeiYnN9sm0bDDJODab1KswSIv5eH2Dh7QgVW6Hzk+ADBUm0
+ RZgFtt4q0VWMrPqzgSfFd/4YlvZ6V9D4c2L9j1MX72VhpEKnGSjj3NSlDM1Pt8eY
+ B4YnxJ/ghWHop+hZe4q99TdmRKla1iRA7Q0UeXQWZhAJTWJUtzKk1dYM730MWHi4
+ 8ahXBbRcRa8NE9WAs21U+azV0vdz7z/4LGgwgwgi2moaYpFU7iwLiqH22X4OjTV2
+ hbT1VQ==
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fcjn3a52j-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 10:54:35 +0000 (GMT)
+Received: by mail-qt1-f197.google.com with SMTP id
+ d75a77b69052e-51c26012cd0so40967751cf.0
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 03:54:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783935272; x=1784540072; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=6B2WnhOE8NF02oIsGMsXQEgrM7im3pLdjLr6S6+erhw=;
- b=hcVhShFRFG2/xeUJrJiC0fK5lD4VwlP6E0RIW8DMVcZEorFgNjQK8IylU65rTZ+RHt
- yOtGJSmoMrNxTFK2rJ3A8m5cB9PU+ho6AV69jGLP4uuo7zEp9HMsktGryetVhzw160oK
- wgtreU0IeM0wK3iavvdH++1TFOKd1Qnqfri+m+GRhSwfE3cD32gu3/vv6GMsGtlhPT/O
- ksGRZ6LhKiWlLZS7YeDexkaGWs1/lPztcmNBAhIXx5v1arOdRztoMn82N0o9x9deUrYI
- nuPFAcvlcmW2STlD7TF2/iy/FNQsn5SR8k7xcx5U3dIwPZU4whIziNUsMD0Op9XpqQ3i
- OgOw==
+ d=oss.qualcomm.com; s=google; t=1783940074; x=1784544874; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=LW3fYohk/aaKNf9gFX7XJAGrK7Rod9ZwfEsbUEYpc0k=;
+ b=bbXJ9jajDgbLOJrh5rP0iWzOaegs67Cqp7LOqQCnWNbDsyeTN/yJUL3JLNQIKE5jt+
+ OEX5/HnhMF4MFetJbQ6i1K5GakvZGHHX0E2qU4BYHWOCykTl0ifuSzcxvhpVLuSsptgl
+ 2IJJdN1uYwkTuVnU0NGhd3U5hxqlrG6nHmEqCnGOxT213ECnwgyqpbvDAFl83hE1jDqk
+ cnmasReAdIg4xS6dKJHm6n98HlShrxv8j3vBOnh01e67zEpO2eQy9X/79QY7RR/9YV+G
+ WfH7vsjXKyHFi/0Qt0rhTe9RAtoOytnyix+5UpTJ/zxTK4Ve8B1/FSeqQfYPW1xhLW0g
+ dMvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783935272; x=1784540072;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=6B2WnhOE8NF02oIsGMsXQEgrM7im3pLdjLr6S6+erhw=;
- b=T9EQUGkdXgSRM6LoboJzjcI+/wHeWbkmYxtLb+ugLJXC7getc9wJ6C82sAUNYpl17l
- JXcV9eIVC24vkgPWvzgzF+ObycOoNEvLxmd7LhA74SMIIau3Jb0w++TLSM3OhtFn6ck3
- umMcIm1v2G50Fdww30Voi11C7Uis/S6a7SMwsMgFkosN4vNeRRz0yZL6t5tTr1DnF6PP
- 1L2KOkxpOm+Amnf0W7CXY59wstn02/JJMBgvN4i6uUcgeIevMMXmI3vtdxPi1+CCqj37
- OS6n3s2a0bUkVjW95KcjpLOTh52wcyQEe5igX5+K4p4l5FDMEI1jiquOujxg06H2hXUh
- UbGg==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpuuT0aylm5NqJdr2FARJ0Pzs3NgZJGcPELnvBF+fplvuu2ixHoAy58eCpHckziKD36Py//w6Qedw==@nongnu.org
-X-Gm-Message-State: AOJu0YyK37+sJeblC24gwR9RuXMw6JTXkXfOixr6duVtuGiIbzHKXqfQ
- ++LZplMfjk4g691i2s0PlaRHV+TR0XXUzukxZpZHNpCFun23jVppSQWwOkod2qu+klORplfs7bo
- M0TMUYddUTAt3nt0w6A6QpVSufW9M9Dq6La7grF4teA==
-X-Gm-Gg: AfdE7cnbP9fVFAyRbwA38Spe6eYZjjYjvH6JCd8f3J92054Q+UZ5yTeCSqp6CcZVQhn
- zTWRER3XoGO4u8t/1V+Ag+57MSdzXlcBeb1hTdplTfSYAFymVgLc79Sa5fv9vNXJQGptSTgmNLY
- vDAKqpTU7SOoQ3I0wmU33gwZeVlkE3toV7XdnRQ6AS0NyNrg6cmVykPDp7WgL50vpVnHM/79lC7
- a8VNeqFNygAAqI1w27Ou44aXR5Tj9GaXpNx7BLJMctNymnPVl3EP9n+/e3qh+qP7el++vEySrKl
- YFGdeceB9eOdcfLJbQWHv1jH3cIsiMgxOQrB1buZHG6/GOsqfNOWPODL
-X-Received: by 2002:a05:690e:350:b0:662:d25f:daca with SMTP id
- 956f58d0204a3-667d7c3e331mr4113588d50.60.1783935271784; Mon, 13 Jul 2026
- 02:34:31 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1783940074; x=1784544874;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=LW3fYohk/aaKNf9gFX7XJAGrK7Rod9ZwfEsbUEYpc0k=;
+ b=aITkZz48CDUlW50v+N2WJ4/oRoJ7Wbg7slbY7yJafE82wP9iYP3r2ru+EtPyP+60M3
+ P7+2HCKP8ZpR2rOzShyg+HcCyI6lcNeElFcPgfcbcfhbiKfTxwrEYGcV1Mmjjiq1WnXb
+ OyQvm4AYUTBJK80xTrjX4KYHIwUcauvL+mu2jeaKTH34dcIX3px2AssBylrrN/EUAcME
+ BYhpS97Xf0QgX2pOBRMYVD6b310oPWST/xEZ8P50WHmY/eWqO56Dv/TDUdfZQVtdgB/z
+ /FsTiwMysUxoserXm7TNxWPEGeDR2p6twmTsCOWyv1Bhrg9gWjktHaImZPLx/o9G+fDH
+ xBIQ==
+X-Gm-Message-State: AOJu0YwToeKRNHQGFSQLzHoGkLpS5jUYcZsNWic6dp2otjd05uzdaB3U
+ pwEjLspT0UnPSkVEEbDETZulGzTVo54P7UofAb/aYn5BEN3cGIiE2rWDMfHHtnODcM3/pwjQZtl
+ F4m4lwV5YcTF4n2TDeyoGiqbVo+80phN+dE1VKGP0f2LuM/o5bcGrKos=
+X-Gm-Gg: AfdE7cnDdueXjMU0qkeCkQ1jQmVB4LuKGOrImWco3dzVE22nQeD+HGAMb/i8VCZzltc
+ CcHQGzMHPUnXS5NIBxosrqcy9YoD0K167JyseKaqPB++xLe1NdbCyxCmcCKqntR50BzkpDiykOd
+ 49xqLW+YlzcozEG1Bc3bS3jlWPn/Q9Jur4g9vtqjN4UG/JnAEW3Dvmj9C4vo26sZa31z6s6+iec
+ UMV+FXtOwBEAvaSebHyvjO5ukXmizLlTkL01PkoUDrc6SJcPxYFqScfcGZMSjTHwKQhOQjicJfl
+ lWzyGiVqq6Rns8IUkMA/lFZhGnNlsGNGwvRSmxWRyc+moIwVmXYIE7Mm83JDtWT9rrY/g70kuFr
+ oCrzOujSTw10G0qibPS8RkP6UxaqeN/TEJ94SoVmy7rkc45hEyRrcmbfOQOZ3iw==
+X-Received: by 2002:a05:622a:1456:b0:51c:f3:34de with SMTP id
+ d75a77b69052e-51cbf0bf820mr77332611cf.20.1783940074408; 
+ Mon, 13 Jul 2026 03:54:34 -0700 (PDT)
+X-Received: by 2002:a05:622a:1456:b0:51c:f3:34de with SMTP id
+ d75a77b69052e-51cbf0bf820mr77332081cf.20.1783940073910; 
+ Mon, 13 Jul 2026 03:54:33 -0700 (PDT)
+Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-493fbae1cdbsm178692545e9.10.2026.07.13.03.54.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 13 Jul 2026 03:54:33 -0700 (PDT)
+Message-ID: <c8081b11-b38e-4662-97a4-46734cd9d92e@oss.qualcomm.com>
+Date: Mon, 13 Jul 2026 12:54:29 +0200
 MIME-Version: 1.0
-References: <20260623-guest-panic-unhandle-v1-1-6adfb6d4221e@ooseel.net>
- <CAFEAcA9LCRKmU+r77zGp+4Rgd-uaZLPnoPPQDSfG8X5eeiynJA@mail.gmail.com>
- <91ad4c80-adc6-4f37-8346-20230638e5f0@oss.qualcomm.com>
-In-Reply-To: <91ad4c80-adc6-4f37-8346-20230638e5f0@oss.qualcomm.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Jul 2026 10:34:20 +0100
-X-Gm-Features: AVVi8CdgW8uZtfTG3CfbX0on-a2Zg1JVnLNeJcMW-0ssxWgaLotoK_8NUX27qnM
-Message-ID: <CAFEAcA-hnm17d4PR0wmaKwQmM-K50nHeRYv0a-pCk3J1qUbPsg@mail.gmail.com>
-Subject: Re: [PATCH] target/arm/hvf: panic the guest if an unhandled exception
- occurs
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: Leesoo Ahn <lsahn@ooseel.net>, qemu-devel@nongnu.org, 
- Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org, 
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 004/134] sysbus: Make
+ sysbus_create_simple()/_varargs() take a QOM parent
+Content-Language: en-US
+To: Alexander Graf <graf@amazon.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org, Song Gao <17746591750@163.com>,
+ Aditya Gupta <adityag@linux.ibm.com>,
+ Alexey Kardashevskiy <aik@ozlabs.ru>, Farhan Ali <alifm@linux.ibm.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>, Artyom Tarasenko
+ <atar4qemu@gmail.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Felipe Balbi <balbi@kernel.org>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Hendrik Brueckner <brueckner@linux.ibm.com>,
+ Chao Liu <chao.liu@processmission.com>,
+ Huacai Chen <chenhuacai@kernel.org>,
+ =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Helge Deller <deller@gmx.de>, Dorjoy Chowdhury <dorjoychy111@gmail.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, Eric Farman <farman@linux.ibm.com>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>, Gautam Gala <ggala@linux.ibm.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Jan Kiszka <jan.kiszka@web.de>, Max Filippov <jcmvbkbc@gmail.com>,
+ Joel Stanley <joel@jms.id.au>, Jared Rossi <jrossi@linux.ibm.com>,
+ Tyrone Ting <kfting@nuvoton.com>, Frederic Konrad
+ <konrad.frederic@yahoo.fr>, Laurent Vivier <laurent@vivier.eu>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Bibo Mao <maobibo@loongson.cn>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Glenn Miles <milesg@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Michael Rolnik <mrolnik@gmail.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
+ Samuel Tardieu <sam@rfc1149.net>, Bernhard Beschow <shentey@gmail.com>,
+ Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Thomas Huth <th.huth+qemu@posteo.eu>, Ran Wang <wangran@bosc.ac.cn>,
+ Hao Wu <wuhaotsh@google.com>, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
+References: <20260711223707.42139-1-graf@amazon.com>
+ <20260711223707.42139-5-graf@amazon.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260711223707.42139-5-graf@amazon.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzEzMDExMyBTYWx0ZWRfX2+wmV+KCvlL1
+ LTNm5muB6pd1TUxyEpDxqRnAvGdiumkkuCuj2U19pl+XRyRspJEuNYHR1fdKsgT9pEG6itmWfju
+ fZTeucFwjs1/i2fMDfp1h7nfkQqn2H35ppEZc31fC7jy6Cj6f7MkLtpMuD74lSfiok3nGIjL59U
+ 9v0zPnpwCfMtSX2Ku6D5cvuphJLqnlN9PW7DxUtDvCqYdN6xWfnfqNiVcMbpEIXj6kbrjyH+vMN
+ KU/QUiSgK8SAWV3Pv8oIyWCr6pjv6EU7pV8dm5rZQ942qzRem5zwTnMtwUt9ooGS7qN79PsUjKz
+ YIKp0wxhYYhZVS1viHIYEqXIEKih9kPp/YTNBRYsSELuqllNxiwNn2pGmn+BTifEeBlAm5LSME3
+ Szco4LzG+bivjjqoEyzVdrab2/lpEd+yUkuQFmhCxNxSlD+WZyRJGxMh7Kh+SzlM+5nNOgzWdUN
+ XZobz2iLyTl+e5GueWA==
+X-Proofpoint-ORIG-GUID: fc1gVViLULumVK29TkqHNfHIe6XtvpC1
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzEzMDExMyBTYWx0ZWRfXy/7j4dJPtjsP
+ zZKhuv2V4QyOaZ0Wur8aw7zn1Kt3iX2qFe20t0CgIbGqf096AsnzQpAVxYQGBvTP1NvmpiGJI2u
+ PDIrpb+rW5qUgKMY7hmnF6WuClGoPfs=
+X-Proofpoint-GUID: fc1gVViLULumVK29TkqHNfHIe6XtvpC1
+X-Authority-Analysis: v=2.4 cv=aaJRWxot c=1 sm=1 tr=0 ts=6a54c3eb cx=c_pps
+ a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=vggBfdFIAAAA:8 a=EUspDBNiAAAA:8 a=e-WwYK0FPL1hkuWrF-MA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=a_PwQJl-kcHnX1M80qC6:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-13_02,2026-07-10_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 phishscore=0 bulkscore=0 clxscore=1015 lowpriorityscore=0
+ adultscore=0 malwarescore=0 spamscore=0 suspectscore=0 impostorscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607130113
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,69 +201,121 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 10 Jul 2026 at 23:56, Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
->
-> On 10/7/26 17:37, Peter Maydell wrote:
-> > On Tue, 23 Jun 2026 at 13:56, Leesoo Ahn <lsahn@ooseel.net> wrote:
-> >>
-> >> It's worth cleaning up all resources that the guest taking and to quit
-> >> if an exception in el1 could not be resolved.
-> >>
-> >> Otherwise, the guest will get in the infinite black-hole by
-> >> unmodified pc.
-> >>
-> >> Signed-off-by: Leesoo Ahn <lsahn@ooseel.net>
-> >> ---
-> >>   target/arm/hvf/hvf.c | 1 +
-> >>   1 file changed, 1 insertion(+)
-> >>
-> >> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> >> index 8b902c6882..4358cf90e8 100644
-> >> --- a/target/arm/hvf/hvf.c
-> >> +++ b/target/arm/hvf/hvf.c
-> >> @@ -2533,6 +2533,7 @@ static int hvf_handle_exception(CPUState *cpu, h=
-v_vcpu_exit_exception_t *excp)
-> >>           cpu_synchronize_state(cpu);
-> >>           trace_hvf_exit(syndrome, ec, env->pc);
-> >>           error_report("0x%llx: unhandled exception ec=3D0x%x", env->p=
-c, ec);
-> >> +        qemu_system_guest_panicked(cpu_get_crash_info(cpu));
-> >>       }
-> >
-> > We should do something here, but my question is whether
-> > qemu_system_guest_panicked() is the right thing. We mostly
-> > use that for "the guest OS wants to tell QEMU that it has
-> > panicked, so QEMU can reflect that to the user and perhaps
-> > reboot or exit", though we do in a few places use it for
-> > things that are more like "we don't handle this case". I'm
-> > not sure exactly what the right thing to do here is, though.
->
-> We usually abort() for programming errors (here unimplemented
-> case) and don't let the guest mis-behave.
+On 12/7/26 00:34, Alexander Graf wrote:
+> Sysbus is by far the largest producer of orphaned onboard devices:
+> of the ~1180 unparented device creation sites in the tree, well over
+> half go through sysbus_create_simple(), sysbus_create_varargs(), or
+> qdev_new_orphan()+sysbus_realize_and_unref() open-coded.
+> 
+> Apply the same rename-and-reintroduce treatment as qdev_new():
+> mechanically rename the existing helpers to *_orphan() and
+> reintroduce the short names with a leading (parent, id, ...) pair
+> that plumbs down to the new qdev_new().  The parented versions call
+> sysbus_realize() (not _and_unref) since the child<> property already
+> holds the sole reference.
+> 
+> The mechanical rename part is generated by
+> 
+>    spatch --sp-file \
+>        scripts/coccinelle/qom-parent/sysbus-create-orphan.cocci \
+>        --in-place --include-headers --dir .
+> 
+> or equivalently
+> 
+>    git ls-files '*.[ch]' '*.[ch].inc' '*.rst' '*.py' | \
+>        grep -v '^subprojects/' | \
+>        xargs sed -i \
+>            's/\bsysbus_create_simple\b/sysbus_create_simple_orphan/g;
+>             s/\bsysbus_create_varargs\b/sysbus_create_varargs_orphan/g'
+> 
+> Assisted-by: Kiro
+> Signed-off-by: Alexander Graf <graf@amazon.com>
+> ---
+>   hw/arm/allwinner-h3.c                         | 16 ++++-----
+>   hw/arm/collie.c                               |  2 +-
+>   hw/arm/exynos4210.c                           | 14 ++++----
+>   hw/arm/fsl-imx6.c                             |  2 +-
+>   hw/arm/integratorcp.c                         | 18 +++++-----
+>   hw/arm/mps2.c                                 |  6 ++--
+>   hw/arm/musicpal.c                             | 18 +++++-----
+>   hw/arm/npcm7xx.c                              |  2 +-
+>   hw/arm/realview.c                             | 24 ++++++-------
+>   hw/arm/sbsa-ref.c                             |  6 ++--
+>   hw/arm/stellaris.c                            |  8 ++---
+>   hw/arm/strongarm.c                            | 10 +++---
+>   hw/arm/versatilepb.c                          | 28 +++++++--------
+>   hw/arm/vexpress.c                             | 20 +++++------
+>   hw/arm/virt.c                                 |  8 ++---
+>   hw/arm/xilinx_zynq.c                          | 10 +++---
+>   hw/core/sysbus.c                              | 35 ++++++++++++++++++-
+>   hw/i386/kvm/clock.c                           |  2 +-
+>   hw/i386/kvm/xen_evtchn.c                      |  2 +-
+>   hw/i386/kvm/xen_gnttab.c                      |  2 +-
+>   hw/i386/kvm/xen_overlay.c                     |  2 +-
+>   hw/i386/kvm/xen_primary_console.c             |  2 +-
+>   hw/i386/kvm/xen_xenstore.c                    |  2 +-
+>   hw/i386/microvm.c                             |  2 +-
+>   hw/intc/apic_common.c                         |  2 +-
+>   hw/loongarch/virt.c                           |  2 +-
+>   hw/m68k/next-cube.c                           |  4 +--
+>   hw/m68k/virt.c                                |  2 +-
+>   hw/mips/jazz.c                                |  2 +-
+>   hw/mips/loongson3_virt.c                      |  2 +-
+>   hw/or1k/virt.c                                |  2 +-
+>   hw/ppc/amigaone.c                             |  2 +-
+>   hw/ppc/e500.c                                 |  2 +-
+>   hw/ppc/pegasos.c                              |  4 +--
+>   hw/ppc/ppc440_bamboo.c                        |  2 +-
+>   hw/ppc/sam460ex.c                             |  8 ++---
+>   hw/riscv/virt.c                               |  4 +--
+>   hw/sparc/sun4m.c                              |  2 +-
+>   hw/vmapple/vmapple.c                          |  4 +--
+>   hw/xen/xen-pvh-common.c                       |  2 +-
+>   include/hw/core/sysbus.h                      | 32 ++++++++++++++---
+>   .../qom-parent/sysbus-create-orphan.cocci     | 18 ++++++++++
+>   42 files changed, 206 insertions(+), 131 deletions(-)
+>   create mode 100644 scripts/coccinelle/qom-parent/sysbus-create-orphan.cocci
 
-We've definitely used that strategy in the past (either directly,
-or indirectly via hw_abort() or cpu_abort()), but I think these
-days we'd prefer not to let the guest trigger QEMU to abort().
-Some of those cases we've been able to convert to LOG_GUEST_ERROR
-and continue in some manner, but some cases are just not
-continuable from.
 
-I think we could probably use a better mechanism for "something
-went badly wrong and we can't continue executing the guest", where
-e.g. we can suspend the VM and let the operator look at its state:
- https://lore.kernel.org/qemu-devel/alSqlDRT9L8OqAso@redhat.com/T/#m9ab2f4a=
-819e33cd5ac0f6d22ab30f98a0d599866
+> diff --git a/include/hw/core/sysbus.h b/include/hw/core/sysbus.h
+> index f3c4259d29..7737c959c5 100644
+> --- a/include/hw/core/sysbus.h
+> +++ b/include/hw/core/sysbus.h
+> @@ -91,15 +91,39 @@ bool sysbus_realize_and_unref(SysBusDevice *dev, Error **errp);
+>   /* Call func for every dynamically created sysbus device in the system */
+>   void foreach_dynamic_sysbus_device(FindSysbusDeviceFunc *func, void *opaque);
+>   
+> -/* Legacy helper function for creating devices.  */
+> -DeviceState *sysbus_create_varargs(const char *name,
+> +/**
+> + * sysbus_create_varargs: Create, parent and realize a sysbus device
+> + * @parent: the QOM parent (usually the machine or containing device)
+> + * @id: child<> property name
+> + * @type: sysbus device type to create
+> + * @addr: MMIO region 0 address, or -1 for none
+> + * @...: NULL-terminated list of qemu_irq to connect
+> + *
+> + * Create a sysbus device via qdev_new(@parent, @id, @type), realize
+> + * it, optionally map MMIO region 0 at @addr, and connect the given
+> + * IRQs.  The returned device is owned by @parent.
+> + */
+> +DeviceState *sysbus_create_varargs(Object *parent, const char *id,
+> +                                   const char *type, hwaddr addr, ...);
+> +
+> +static inline DeviceState *sysbus_create_simple(Object *parent,
 
-For this specific patch: what is the case where we get into this
-codepath (and in particular what is the EC_FOO exception subtype)?
-Maybe the fix is to handle that case. Compare an earlier thread:
-https://lore.kernel.org/qemu-devel/8D0BCB24-BB1B-40EF-A361-0F79D65600AE@unp=
-redictable.fr/
+Both are legacy. Updating the doc:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 
-If we're getting here by falling through from EC_INSNABORT,
-I think that can happen if the guest tries to execute from
-an MMIO region.
-
--- PMM
+> +                                                 const char *id,
+> +                                                 const char *type,
+> +                                                 hwaddr addr,
+> +                                                 qemu_irq irq)
+> +{
+> +    return sysbus_create_varargs(parent, id, type, addr, irq, NULL);
+> +}
+> +
+> +/* Legacy helper function for creating unparented devices.  */
+> +DeviceState *sysbus_create_varargs_orphan(const char *name,
+>                                    hwaddr addr, ...);
 

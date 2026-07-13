@@ -4,99 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B3EDC43458
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Jul 2026 08:50:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8312C43458
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Jul 2026 08:51:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wjCN4-0001MA-VZ; Mon, 13 Jul 2026 04:50:40 -0400
+	id 1wjCNf-0001ve-40; Mon, 13 Jul 2026 04:51:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wjCMq-0001K0-Mr
- for qemu-arm@nongnu.org; Mon, 13 Jul 2026 04:50:25 -0400
-Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
+ id 1wjCNe-0001uj-8x
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2026 04:51:14 -0400
+Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wjCMp-0003xF-7d
- for qemu-arm@nongnu.org; Mon, 13 Jul 2026 04:50:24 -0400
-Received: by mail-yx1-xb129.google.com with SMTP id
- 956f58d0204a3-6679d88abdcso4057417d50.2
- for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 01:50:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783932621; cv=none;
+ id 1wjCNc-00042o-Ra
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2026 04:51:13 -0400
+Received: by mail-yx1-xb130.google.com with SMTP id
+ 956f58d0204a3-664dd23829eso2475163d50.3
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2026 01:51:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783932672; cv=none;
  d=google.com; s=arc-20260327;
- b=WPNQFoMWHVQ3Bj6PiFLjUbH3KPI3gDyzU6Yve2ryi26QZp/n9gzFI+eP0i5rGsT9Dj
- W/kuSPOU2GxjSL32SiOSvO1h55JE9rqyQzyps7eZgzOm7491VeH8XTbvRLW0TP36B/i2
- 5M7XMl5iH4yxMA7ZgoclZy2CYKjo2mIrh9CSVZcciq9aJ4SrkZzsKr8qu6vVfuKBZ69K
- gN0vusnj2xjoutRSap7gx9qh0V3IRut4f+CsN9J9xUgULESQpHPQwtf+0p/eGeVAe8DV
- RyCzrLXL1Kk/yJqfB4B19+JRuR4u/TbLMzfoGX0nsYPuQy/Ya3sTpkGgon2k5Le9jd9i
- kJPQ==
+ b=aatRg9/ZSGOMU2QTgvXowSHVQm7FSie1Sp3ucx672SrIpgUfpVhT0eHk14cz+fyxqz
+ dbWRHZQR4rd3PB/R2JdNecUJUfvQugvqCOTEaWw5f8YV6u7ZvggY2v9edkl36RBPXAB7
+ SFjx20qgJqTTDGhwkl1Srhmn6lhBfZLRfBekRRxRvUpXggkyDTVyAuHvGIVSiPBVGEMQ
+ V2XINoc3KiZmgzZTiTL0QoyNVVP/M+a7MDxJfE9JBxWgykHjMjj1l7dmXt/AqDHXZOWB
+ bpK8sWq94DUIVpZeX0AjxMxdUhc6fsdcusDGyJkjpDscMS8XUMX9O8JcWM/gEad3aKkS
+ croA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=wdIe0QjZ7IhWqXYYbiQdPLRJP8InRI9h/Lt8YBcv/6E=;
- fh=XcCAsCV1BGBgayZq3XFnExBaqpMaT2ZzfSmzmU3oRkE=;
- b=F0JVKcVbLjFl82tYhIgFYXdmJs0OleLer9FAWjCpgoUnCDbMKPWcZRKVsInuKU1f6P
- pbTgBjRxp+lP5muyBriWyYGxz8/BDTvWvfTAKMBVZtJhUSjW7wymcpgPok/fP62Zan1o
- 1zyFGIqHYs5Rccsgha9J773JlTaFnagzf2tDRDKB5JKDM3jXOUahk1W0Te2HLtcKlv/r
- 7dbXUzW1Gu7KPxw2yOlnFvYhCm87u8djQ33XdeLJ/43QVccl1t2+BZcdpepQH/2YrC01
- ppfqrEiWpwljCCQVG+8kQhGj0/y5r+lA92UagAVivLR4W8pzSyaWzBNwgm0i7ajDVuef
- /wGA==; darn=nongnu.org
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=sQlT3EamjD68u+9QT9LalK+PZcnYjXGD0CPM12MbDeE=;
+ fh=Bt3143oA6COQ6nXXs7yw0H31LFMPzVqZz6nttuEh2mc=;
+ b=pueh43xKhs2QhYjucI1rnutL23Sx1v4Xxm2qVfoxSKj0Ci8Lv9ltLfTF4PhHK1egA4
+ LXeZnfxeO84CVe8kXsqGYfuJoDSQjV5Qky7dHSslkiWHqMJ3VhZAq/CoJpleYgEsqpBE
+ r+dVN2tqSjDuaq5vFIItK1RcnyqKawDcnZiSQGi7YLVY4IWPAuuE8IoZA6RVA8UfWqo6
+ TcX2xJyrGLa3OEDDMS2tbJixH4Q7YGJxWOHrvf5dfcbcEHjmyzkz08irJsPyUXVQRoiR
+ mN0S+MI4KkaszOU3LF9tZKf2rJPdaQdPMVnOBAmkGdqEIDgJUXtM1hQVANDs9WwwdeTl
+ LdgQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1783932621; x=1784537421; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=wdIe0QjZ7IhWqXYYbiQdPLRJP8InRI9h/Lt8YBcv/6E=;
- b=fHl+0Ry5aq/eKAEJY6y5ngXUvYclI4JBbd/Boaatl9DyL5tiEF2gRUrxFMnY/OUdAa
- LURHNtqSqsrjdP/gMnEe4rq28gKm3Z9d1NfUx7TPfZao8mM6WRZ3kXJP5jEhyBWJrAHx
- /opUZbtxK9jJkFTIug+juT9wNgcJ4U5/4n8HS2Yuu40ouYtxq8pSFpgSo4zZolspnKZc
- IENxLedGwB7aSArWwTbneFIhM73iPsDvL8xiJ99KTTluh6RapAIemZsCwDUCNtG9qYwn
- m7/Qsusc4fvLVBt2HpRjXox5GI6mjJvYTC+jABJXXzEgkr98h3aVWJYr/Ijb9zw3TvPq
- qACw==
+ d=linaro.org; s=google; t=1783932672; x=1784537472; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=sQlT3EamjD68u+9QT9LalK+PZcnYjXGD0CPM12MbDeE=;
+ b=jw6drx4Ut7OkHFbkMQ4tCgbJgVtmz5qh2zfrQypUlIXyFXmI3vcojs6ISYNUi97d7R
+ g1mvXMrBjBiFH3q3xWKlH+9bPcMoe1Y8iQ6GF4vIicEK/LDGA5eFU30K6R8Dh8KiskTA
+ erY1z2tu3qlBCsrvZ3Y4/PB20mapkJyKOmfDvDCUI4jK1b8i+9Y/d9Og4HcFkc2CZGsG
+ kLESIfkVkjK+GcEufOlsHTD4Bj3ss0pakzrasgFA2W4Nd5v+5v0SRQvT/SqyvMfG9zHj
+ kpe7fVr59L6aPuL+xpuI8jkBkVnb2LTBOVo0l7YW8xqmvToS+etRbutQUKA+8rdsLkQt
+ ZC0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783932621; x=1784537421;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=wdIe0QjZ7IhWqXYYbiQdPLRJP8InRI9h/Lt8YBcv/6E=;
- b=V4UI3McV8BSHWNqqxU9wThfwkY9AzEM6IZwKDsy6UWOjRxzvC3ItttxaLMvUEpZXa0
- WfDXRTFJhXaqRc4azQnbChQsbQIXZqrW+vw7K0+VQ1G7R9TzKE5KprYw2TkQqDOzJ0PR
- yAaRk+XO8YNJl+m2MWCtnWmXO/FobzCuYUprdQ6RXNNZQHs59AUKVPIYwhWBixfii6z0
- zx0tTKbfCkjjLtj6PAyQ6F8qUqBGyZKQvVYwWxUqtPtJ2x9DzHpm77SE9aZgMf8DKlTY
- 7GktUXIVu97U8KDQVGb1HMrzbwprPzI97YagCGa1zEvU2vPIhxTyMGZYrxaa+1mf+NdH
- fDTQ==
+ d=1e100.net; s=20251104; t=1783932672; x=1784537472;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=sQlT3EamjD68u+9QT9LalK+PZcnYjXGD0CPM12MbDeE=;
+ b=rHuCZpFemFK1QUXpy/CthMIAWQlxahRVVPyKLH3dRNqTLtcUVqDNu104Ke0QZ98mKD
+ 8jawo5dNnftUjkfdx8g/veAYPr2dhfoKzywNi/HY+5Ry88BgEnbRY3+1q6GJlb/aM3Te
+ RSZtcJ/kT95SCCDp4BWwJH6nkXKk6llfZd4gtdVgNgZAP6WkYh0n17Ru/tkLNCQkFrO5
+ nXMWN+jgX0MySg8Kt+59JzomPVurMuQWqpi7/gYVWzFogfsfmtMBsjPBXrvRtgaoTEfV
+ 2dCVGJkQb24Jaf693lItk2ZRttDQIDiINpCVasjnSIyCcLVXHKH8d0tT6lE/3DYReXB6
+ 9+JQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RooGxOxYwZj3+AisQj6jiRi+D5U0R/gF+xqKIL4m8I1ekb520vFZ3qAC87Q9U6LDGusJMN9/KcVWw==@nongnu.org
-X-Gm-Message-State: AOJu0YwvVbaqgpJE83JmHjxDr6fqpP63FM5easQbHao4Yzbx9tgY6AFU
- 6dv1JQpB/fmYbOSkXJzBEH0PSCmm6Q7vOGWHrjU2I36vmm2VFUiRsK7kLxdNidefNcXd0dSvoBy
- wohbdUKSaKSIhfyGN6b+wWqenjKgx5WcaNJNmNoyeLw==
-X-Gm-Gg: AfdE7clqJIC8ZFxNxVUb/NVV+XF0+YY0dDlcxwpYXpsj2RCw5KTfKYm24lWbOZnvDAy
- USca/q40H1mwhE6/RuKXatJYXdht3Lb7KQgpiaPzw3644JWOLcsDUkLN1jafx5rVwWKQtrZCz71
- i0NKPdG/TPhxIDl0rLWiUnVlbt9zbtM2HexO51HS4gAzrXkS1NH6azXPWj0odxMXrSTJ4YejmCD
- SwieV1+yWNn8jqvf490AeIUrKr1aWvvR2X6FS7ElI05/02V4/OtvFtCkbpxC5xLBfvz4eB9d0rR
- bvZUPgK34IQJ20zVD8Pgk7TB3l3K9J/xdZC/C6LgCcc/yAdEDdm6p7/J
-X-Received: by 2002:a05:690e:169d:b0:667:d8b8:9033 with SMTP id
- 956f58d0204a3-667d8b89b4dmr5313759d50.16.1783932621031; Mon, 13 Jul 2026
- 01:50:21 -0700 (PDT)
+ AHgh+Ros5rZ0jWUWSj0R1u34OTHU9gva4rpqQnjm8Gq3p1wZcnywoIq/uzW31mXS1dFtGmWjSsG0INlEgA==@nongnu.org
+X-Gm-Message-State: AOJu0YwLchUf4pNSeeLDtw2el+O2sAhbU0MNrDjZ8oecEaOKuhyvzblK
+ BjNo25W3HeCFhDJ7m8A4oCnKn3XmLKLzbVDW9foopEXOj39Ul3dzNjfjC8ROa61uBz1rIdmsuJm
+ H5UVFxMPiTt9bRj/le0/jq89tZfZiZVTUxWkW+9sM8w==
+X-Gm-Gg: AfdE7ck04PUyVz24D+7rfPppZzHP2cnhawQ1pAon/+ptOhdfsWppF+idsxEvrsq0X4Z
+ xO0F/YxN/Su4ZUr4VMaKD+pbfOMvXxf6Psjwcmt9znLA/t5ORyNKn7AY7ejIEC2tDwq4P4cuUbz
+ zKIwPIJuYHb4FFl0uB9qLnH3x/KJckhb2Hb3MXvC+mQohj0nwIRNrC+6BULk6D0vHjsxAvpqYjW
+ h1NYld8Uu5vKTs1sxyJVFEXgukRfOWByeg02br6hN0ZaAP8wvALVWCdQIOTLdqk06jt5oJb0JOc
+ 09ceWhaQON1OlaHGdx4qMReshd3cCCqvagvZxxT+xrkmRp69FgW+YTxq
+X-Received: by 2002:a05:690e:1446:b0:667:e2e1:44 with SMTP id
+ 956f58d0204a3-667e2e130c1mr4071305d50.22.1783932671687; Mon, 13 Jul 2026
+ 01:51:11 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260709111225.1106856-1-marcandre.lureau@redhat.com>
-In-Reply-To: <20260709111225.1106856-1-marcandre.lureau@redhat.com>
+References: <20260710175818.528974-1-richard.henderson@linaro.org>
+In-Reply-To: <20260710175818.528974-1-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Jul 2026 09:50:09 +0100
-X-Gm-Features: AVVi8Cf6jC1_ob4a8bkaAOwDcd24VZ37deqrImYU3De28ExSp3zvcHLtjpcnnpQ
-Message-ID: <CAFEAcA9fN1o68y1iG6O_1pWhNqrFFOZXye6unBZ=uvy0OiSgXw@mail.gmail.com>
-Subject: Re: [PATCH] arm/virt: fix smmuv3_devices leak
-To: marcandre.lureau@redhat.com
-Cc: qemu-devel@nongnu.org, skolothumtho@nvidia.com, 
- "open list:Virt" <qemu-arm@nongnu.org>
+Date: Mon, 13 Jul 2026 09:51:00 +0100
+X-Gm-Features: AVVi8CcaXN8HVh-MZrReoWelY0YIbYhcOFtn-wGy6WzjjhZqQBWYtscYwM08W8g
+Message-ID: <CAFEAcA_er-_1VAmokZWygtFAwJbiHRiJ3rrRdF94tV4hQwBB+A@mail.gmail.com>
+Subject: Re: [PATCH for-11.1] target/arm: Be more defensive for invalid
+ tlbi_aa64_get_range
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-stable@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb129.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,15 +116,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 9 Jul 2026 at 12:12, <marcandre.lureau@redhat.com> wrote:
+On Fri, 10 Jul 2026 at 18:58, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> It's possible to program TCR_ELx with an invalid granule size,
+> which could match passing an invalid granule size to TLBI RVA,
+> which would then fall through to assert in arm_granule_bits.
 >
-> Fixes: 92e340997f861 ("hw/arm/virt: Use stored SMMUv3 device list for IOR=
-T build")
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> Cc: qemu-stable@nongnu.org
+> Fixes: 3c003f7029e ("target/arm: Use ARMGranuleSize in ARMVAParameters")
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  hw/arm/virt.c | 1 +
 
 
 

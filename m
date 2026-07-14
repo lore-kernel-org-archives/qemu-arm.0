@@ -4,116 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9764BC44508
-	for <qemu-arm@archiver.kernel.org>; Tue, 14 Jul 2026 15:27:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D005CC44508
+	for <qemu-arm@archiver.kernel.org>; Tue, 14 Jul 2026 15:50:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wjf2a-00066B-H6; Tue, 14 Jul 2026 11:27:24 -0400
+	id 1wjfPD-0000YG-4x; Tue, 14 Jul 2026 11:50:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1wjf2R-00065D-PU
- for qemu-arm@nongnu.org; Tue, 14 Jul 2026 11:27:16 -0400
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wjfPB-0000Xl-BJ
+ for qemu-arm@nongnu.org; Tue, 14 Jul 2026 11:50:45 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1wjf2P-0005n3-U3
- for qemu-arm@nongnu.org; Tue, 14 Jul 2026 11:27:15 -0400
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-81e8fa1b8d6so35781167b3.1
- for <qemu-arm@nongnu.org>; Tue, 14 Jul 2026 08:27:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1784042833; cv=none;
- d=google.com; s=arc-20260327;
- b=DybPloRsJmb9bxuOEMj/od21isQUj1ZnreIy+ewdcZyU/vV0903HdW+iOejLuk7K/j
- uNa9SMlHv7MSByxGxj/VSUkBlboSTui97fLvH4044TMZaU6WgcqQNy3LPIwZ3H6BlpFs
- S2Y57vehUGiihICG7QhxrprxU+fEuw8Xnn4Siw9eqVGNGnHzGL1ml6SbGauaPP0ubFeo
- 6DlrammZPSc+b0T1or6WiPxFSRgu0u0lfKgzg2sSSy/aUv1kKIJVvs6yiSNKa2OOt3TT
- b6WBdrYAMJDhsgmBVgft1vG9idUqqjj2FMvYLbEiK+1P4Bc8Lj7ss7TLQO2QzNtDZh/a
- KV/w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=zDCrKapO5C+WvYB1C45nVy3NZ4MnNXizM5QOey8jfgA=;
- fh=y8G/l4XWdubZPSea0ZKoQzPDZB2Aj2eQ/SCc9HjwAGk=;
- b=Jykr1wr11v2CGWQYiLeEiFbZe2HZgXxf+wbWviSQMmqAmVm2GQx+Txq7qRBkdcm9ti
- 95oFORSsinfMzKHi6HhMeWK5eMc4VrcEiVhmmyDggsUzshr6l5slbW3RPvC/wZBMJf3h
- XVydEMHmb5O7xpP5jbJcZumtIlYoLGHJrU2woUvsV4i7Rz2Tbo6LmMWksL/06GGIKv35
- nH7prJLaTi0SGI+Ovu/qaXxJcHI17hpVPUkdk1T9DGVn35Qp04n1ImP1HNIUlgGB8BkS
- F9Ls3V45lGaf1FTUHPjY4wq50mY/vCERGemS0gAvuyl3GVwFk0Y5jBi+hg6GkUdVlRVd
- smrQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wjfP9-0000zf-5d
+ for qemu-arm@nongnu.org; Tue, 14 Jul 2026 11:50:45 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-47ddf7b09e5so1093376f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 14 Jul 2026 08:50:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1784042833; x=1784647633; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ d=linaro.org; s=google; t=1784044241; x=1784649041; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=zDCrKapO5C+WvYB1C45nVy3NZ4MnNXizM5QOey8jfgA=;
- b=bjso+moQCmmlljSWbhfVxYam1JrBF+r9x0FdQIJxtsekdvvJSItzCX9qNJOjP48x8u
- PIdU8/zhvXcPPJeacEcktF8bkP1XUvPJ6YfLNBazkOYKtibpJvCV4gh22t5eJ8f09RsK
- YV1/TM8y5vwpRpgTLYLbi0SinzoYrEFjgHyOIIC6nNE6CdicZnGsH10+pP3wP/FxpgFo
- sGVh+q7P0CVYV0xL8sAAr68EVQS3ZMMpRjAT0THNRSJ9dcgJbWWDYQzhCmKz0Xcwmj3U
- lGxs5ldzOYfAOY8vK+qKhSNCFnfM6lTy/IFCQ+Pi7CLNh3iC7kOvUxBaoOwiNZw3U8Ax
- LUtw==
+ bh=xU9T+E/CR6vOuPVwdM0D0NZW0cVuxQ9pv7viz+s2n30=;
+ b=wCZvpK3zhUUABPiSDl6wYhFV07dS1ixjjt6r0UuHwZKS9GFEhSE6xvIhvz4Xg8vpXf
+ o/ubT2BGr6Dyjm4z0X7XVy6oCWZRHWuxK6NTS4n9BDoAXFNxUSUFx0MEBSspSfgzSfvQ
+ lVyFxvJm9Aal3gBzZH3wSaQrfxEoxkfv0RDZmp9IbE3OzLsTIMluMInO1ZQnKXprirHE
+ C7NRESoFwOQ0PPb6kb82I9sS7hL+NehXUUGXddsH/Yql+6AJHYywJ6AOkOjf+AZYYsMs
+ f8kBSaYbp9wW5+xb6c/NwLtRc5Rl505WGisC6J3M0s24Gnex9ujofbvAX4U50GFvFwLc
+ gxvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784042833; x=1784647633;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
+ d=1e100.net; s=20251104; t=1784044241; x=1784649041;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=zDCrKapO5C+WvYB1C45nVy3NZ4MnNXizM5QOey8jfgA=;
- b=KLJ8dDhJMW0N1+koDVSwRPfRnU5VkqTA7FalgoyeEz/ofOxX9XNGC2h02T4yizdsg5
- lWxq7G/CQ8P9ckyozaRuacYrSPUkqfkmJ7oo+KAJcOasqH8a0LdXFnqIglOky/9O8NN0
- UOPUMfZf6hH5cb0gFXNtVYNqK1ar9fHkLK3d25FBZ7YuAZ0kLqXwnsa8ltCQ7k3lit+B
- tubsd/GqVsxbplcYPUkzsdZEpuEhMOdLJnCQRRF4wFRIkLKuLfjLHY3pESJgpc0LrWPW
- 4BE9Pz8j//X6uoM+azCGMukfYrXkfGX1gZNIvXhLbTI70M31qcCSQ+cH5+Pa2fgz8ySi
- IbgA==
-X-Forwarded-Encrypted: i=1;
- AHgh+RoGFIh8J9MuC2vp7UjTatsIpDkSelO/0/IhgZ0D0BOIZ1TMRWATYk1La+KxuDMen1AQ+2CKNlg1YA==@nongnu.org
-X-Gm-Message-State: AOJu0YyNTig6bm7UXEogmJ4EoPL7OAKwJevbvaRl4ORW1K7/UTBK1ntE
- wjqvVPjn/JchvDKWjJ6A8tI8ScPxcTtaLeDp3NR4Bu7FBroWlBcjpbEXgwCN5oUN+dbcrLzE5xO
- aNVMyv1IJwUiEGRIa1F85FwXainaK2yg=
-X-Gm-Gg: AfdE7cnRWHMGDVM6iK3GKJe2x3AFQsmKgyyJfsrnmA4B17VirJg1pSIMzXBB5+WN+dS
- c0f0c5akwHqpeK2dc/TWFx6/j12wNFWv/SqqmfKbw+WzhWC5Z5ISR2PfAWP17+dIIbUpqhqWpRR
- aSWbFQb2+FR7c4YPfEh44lOdY9qCc4oWR9wl5BkBWIcaU5UIyQzyT3YLQgwbEb15nZdmgM5/kTI
- fmoFlwQgIKw5TImk/GRAWDjT7zs3XAM4Ddr69po1DVcXMJN/NmueOVezDXqO46wl1A3pc56
-X-Received: by 2002:a05:690c:6005:b0:80d:e214:c2bc with SMTP id
- 00721157ae682-81ebffe4a65mr19131057b3.35.1784042832785; Tue, 14 Jul 2026
- 08:27:12 -0700 (PDT)
+ bh=xU9T+E/CR6vOuPVwdM0D0NZW0cVuxQ9pv7viz+s2n30=;
+ b=EZl4qFXPHwyGZHhvk5h06Ry+gV3gqfXaOClB2+Oofh3EFGak/jGbLmryH5oiG1s3nB
+ 9D+OPh1W5oUqtVpWPWal+sgJkY6RD3dOp8K5uR/kpRthipWDSEZqNbFoTsrOVlbMgAl8
+ 8BsuPxGKdDTUADGCj6tYlrVewHU0mSQO3eYVZIuhV4YtXro7JPF1aY+j/uUdfXSeBcQb
+ 7fSWccJzcreB08dkfT2teOWCc8IQYgExo5kxSusWh0CfwMJ2CPWBdCzU0DNCodIJyqgC
+ 7YWJzsli4uiBeG9SE3Nz3OO7PcNexlj8DBfkrj64QHHPMpnxqZ/VhKX2a9+l/IUOmbyg
+ wWqQ==
+X-Gm-Message-State: AOJu0YzlmyrYdtbbjtIkvS3RHf1C3aAOgKBwKT4/VNU6GCQc3B1cYg2B
+ qvMU4hiFM/HR9pQYnjN+5sCauDRVzKOcFVUnK0oEwcCJ63au25KGWcL0tARJoJy7fQc=
+X-Gm-Gg: AfdE7cnyNSbn/ZadBQHg5462fESaa3ubXYqfcXlJmUwqzyBcm0h/b33v7pZS2f8aR1Z
+ R4YaDoTWYv87jeePWRyEk0IhGuQSmNyFfhOiV+s3jbauytIJ4NA7692ESIqXt22oNuHNZEVAZJg
+ jcWBETq+XDhznCvbIAFQXARPgA57U7dRLvn6nUAcR1zbzb0ej6B91ufug/EYoU4nDyg5hvFX9RO
+ oHA7lxLjiomp/9tElzyRjLG7RNWZxLXklnE+6zyeOM3+LWTOBTl40X1LXmnO9zqurfFzxeBUCij
+ WsPDWE6dWQoyh3p+k0dc8P7EWJyDtww3wrxXsXEKjQH2IXBSX69d1UGHae9lmTWAEar+/U0K0ZR
+ LCWFIkIbJly8Gu4ijemulrF1o6ZEJ41Fk2+oXfcWt1hveae/jFSWkrnSVnT9a1Kq0O8WHtPz9yQ
+ +4ynDwWg/2RvIbfw==
+X-Received: by 2002:a05:6000:240a:b0:46e:483c:2262 with SMTP id
+ ffacd0b85a97d-47f2dcdecc8mr17464413f8f.14.1784044240934; 
+ Tue, 14 Jul 2026 08:50:40 -0700 (PDT)
+Received: from linaro.org ([2a10:d582:31e:0:c8e:44fa:aef8:4850])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-47f4635a63esm9581180f8f.9.2026.07.14.08.50.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 14 Jul 2026 08:50:40 -0700 (PDT)
+Date: Tue, 14 Jul 2026 16:50:39 +0100
+From: Jim MacArthur <jim.macarthur@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH 4/9] hw/dma/omap_dma: Be more careful about overflow in
+ transfer setup
+Message-ID: <alZaz6DQe4oMCvDn@linaro.org>
+References: <20260710105907.2570621-1-peter.maydell@linaro.org>
+ <20260710105907.2570621-5-peter.maydell@linaro.org>
 MIME-Version: 1.0
-References: <20260714124621.522948-1-clg@redhat.com>
- <20260714124621.522948-5-clg@redhat.com>
-In-Reply-To: <20260714124621.522948-5-clg@redhat.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Tue, 14 Jul 2026 23:26:59 +0800
-X-Gm-Features: AVVi8Cc9Dhlc8yy3a3Q7CaWihlRAYYbo1SDUC16ZVqPRfi9yUdePuYn02kkwdZQ
-Message-ID: <CAEUhbmW+LvM+2nP7uLQgEyTpfZNXp=jt=HOV_9g9F96k6PYXkg@mail.gmail.com>
-Subject: Re: [PATCH v2 4/4] tests/qtest: aspeed_smc: Add Quad Output Read
- (QOR) test coverage
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, 
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- Bin Meng <bin.meng@processmission.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yw1-x112d.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260710105907.2570621-5-peter.maydell@linaro.org>
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,22 +102,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jul 14, 2026 at 8:47=E2=80=AFPM C=C3=A9dric Le Goater <clg@redhat.c=
-om> wrote:
->
-> Add read_page_mem_qor (CTRL_FREADMODE with QOR command and quad data
-> IO mode) and write_page_qor (user-mode QOR) tests.
->
-> Link: https://lore.kernel.org/qemu-devel/20260708111544.1440761-5-clg@red=
-hat.com
-> Signed-off-by: C=C3=A9dric Le Goater <clg@redhat.com>
-> ---
->  tests/qtest/aspeed-smc-utils.h |  4 ++++
->  tests/qtest/aspeed-smc-utils.c | 43 ++++++++++++++++++++++++++++++++++
->  tests/qtest/aspeed_smc-test.c  | 16 +++++++++++++
->  tests/qtest/ast2700-smc-test.c |  4 ++++
->  4 files changed, 67 insertions(+)
->
+On Fri, Jul 10, 2026 at 11:59:02AM +0100, Peter Maydell wrote:
+> In omap_dma_transfer_setup(), the maximum number of elements we can
+> transfer is 0xffff * 0xffff == 0xfffe0001 (because the max frame
+> count and max elements per frame are both 65535).  However, we store
+> total element counts in 'int' variables, and use INT_MAX as a "bigger
+> than any valid value" sentinel, and when performing arithmetic with
+> the total count of transferred elements we are not careful about
+> avoiding overflows. Fix these:
+> 
+>  - use uint32_t rather than int for the local variables tracking
+>    various element and frame counts
+>  - use UINT_MAX as our sentinel
+>  - calculate new packet, element and frame counter values using
+>    arithmetic on a local uint32_t, rather than doing it in-place
+>    on local variables that are only 'int' because the actual
+>    counter registers are 16 bits
+>  - use 64-bit arithmetic when calculating how much to advance the
+>    source and dest pointers and the total dma->bytes transferred
+> 
+> Note that since soc_dma_ch_s::bytes is only 'int' this can still
+> overflow; we'll fix that in a subsequent patch.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Bin Meng <bin.meng@processmission.com>
+LGTM, thanks Peter.
+
+Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
+
 

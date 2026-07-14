@@ -4,82 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65142C43458
-	for <qemu-arm@archiver.kernel.org>; Tue, 14 Jul 2026 12:48:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50836C43458
+	for <qemu-arm@archiver.kernel.org>; Tue, 14 Jul 2026 13:02:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wjcYQ-00029S-4W; Tue, 14 Jul 2026 08:48:07 -0400
+	id 1wjcmL-0000E1-ML; Tue, 14 Jul 2026 09:02:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wjcYO-00028o-62
- for qemu-arm@nongnu.org; Tue, 14 Jul 2026 08:48:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
+ id 1wjcmJ-00009p-Qj; Tue, 14 Jul 2026 09:02:27 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wjcYM-0008Jb-9B
- for qemu-arm@nongnu.org; Tue, 14 Jul 2026 08:48:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784033281;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=VlLxMfM6rKMyffsbtdy/b2UOTUZdNqDhMPeauP1g/eA=;
- b=O5fdhB01O2TuItObsfg7vqv6iqFXMEQ/N64noFte0hO6RREToBzegFzKjIkhP/AaSl53KJ
- pV8mOlMUwze/DMB4GeR3sH8gH9XNbJvO3obpgLCgpH+B1VZdzFGSjc7vxywXeN1/nSt5ud
- mPAHivWHyzqVm8i7d88Mp3T5qhpmNZ0=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-690-LhXk9ovFPByQSl6Ke76YJg-1; Tue,
- 14 Jul 2026 08:46:37 -0400
-X-MC-Unique: LhXk9ovFPByQSl6Ke76YJg-1
-X-Mimecast-MFC-AGG-ID: LhXk9ovFPByQSl6Ke76YJg_1784033195
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CB65519560AA; Tue, 14 Jul 2026 12:46:34 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.44.32.74])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id AE6D430001BE; Tue, 14 Jul 2026 12:46:29 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Bin Meng <bin.meng@processmission.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v2 1/4] tests/qtest: aspeed_smc: Introduce read_page_mem_fn
- for page read helpers
-Date: Tue, 14 Jul 2026 14:46:18 +0200
-Message-ID: <20260714124621.522948-2-clg@redhat.com>
-In-Reply-To: <20260714124621.522948-1-clg@redhat.com>
-References: <20260714124621.522948-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
+ id 1wjcmI-0001yU-5F; Tue, 14 Jul 2026 09:02:27 -0400
+Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 66EBg06W1134148; Tue, 14 Jul 2026 13:02:22 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=pp1; bh=/tin1f
+ X52d7BxsrTopsCer7L+hEsTKsqW7Y/fKBOz7I=; b=tVv7a8qYCiujJr3ppmD7/L
+ /bYyJVDzAn/aSHZuNQOS3WsBo4ngBuFKflBXeT4PSDUrpmkjL0FzBrr9U286nWII
+ vqV5onTjtEjVZ2bCxNn43V7Ulod6WmFzHxESDeWvrodUa8UT56YDRwi3xdcYz3hL
+ f1ykwRqSAxIbdlAki0LeaTKduCVObxEumN+gNIYAvh5Im8cGsfnSVVcdxE3hqQsv
+ /yOQ8svgFumdT8Sq80G9JgHtn9Did4g3r/Nsoo0NS6H6ywqU/n0IuACs0BaM7Adp
+ P2MZDoHRwvkYN+VDCiD+xc6EiVWTtq4T3PFhn/wGrZCV+7TIp6cXVzo5kEPic7fA
+ ==
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fbf2a5rgw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 14 Jul 2026 13:02:21 +0000 (GMT)
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66ECni3L025707;
+ Tue, 14 Jul 2026 13:02:21 GMT
+Received: from smtprelay04.fra02v.mail.ibm.com ([9.218.2.228])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4fc0hw301x-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 14 Jul 2026 13:02:21 +0000 (GMT)
+Received: from smtpav05.fra02v.mail.ibm.com (smtpav05.fra02v.mail.ibm.com
+ [10.20.54.104])
+ by smtprelay04.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 66ED2JmC29885040
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 14 Jul 2026 13:02:19 GMT
+Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 17E3720065;
+ Tue, 14 Jul 2026 13:02:19 +0000 (GMT)
+Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id CD15B2004B;
+ Tue, 14 Jul 2026 13:02:18 +0000 (GMT)
+Received: from [0.0.0.0] (unknown [9.111.75.242])
+ by smtpav05.fra02v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 14 Jul 2026 13:02:18 +0000 (GMT)
+Message-ID: <9aed7950-405a-4414-a951-9d044a8c9d53@linux.ibm.com>
+Date: Tue, 14 Jul 2026 15:02:18 +0200
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: -M_twrwnJpStA0fWb9teau6-Al8FC8A0zii6bOju1sQ_1784033195
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: permerror client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 18/51] cpu: Use interval-tree for CPUWatchpoint
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org, jcmvbkbc@gmail.com
+References: <20260710205401.836304-1-richard.henderson@linaro.org>
+ <20260710205401.836304-19-richard.henderson@linaro.org>
+Content-Language: en-US
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+In-Reply-To: <20260710205401.836304-19-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Reinject: loops=2 maxloops=12
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE0MDEzMiBTYWx0ZWRfX0XNE8SmurRCJ
+ 3QFyS0U46N7t+miLJAFgrDY3b1r8PHslIl+zTjMT/Jxrg+AMZWvWhxtL4Y3948W4Z9xpuWqAI9x
+ 70lbEcxLscRABBDwgUt+H4Om7Hw0ecc=
+X-Proofpoint-GUID: KREEPiNY63YaSviS2yueRz62dmf5Vijf
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE0MDEzMiBTYWx0ZWRfXzuvKULw4EPhi
+ 6P0Hb+friZ04lHVpzUaJ9oQoIRvepP+AlKBCiJ0ZJV1Ybjqfh8onKr4rCBU3x0SieRvYECZu0yD
+ iKn6Ye94+8SJ/cNCgF3MkwGejd6euREYKuLi4i7BQsOrJbYiQtWMfMrKHwuPDwRzzWuRvFej0Wc
+ +hrGUbs5tJ0ECRCjaarrcYtorH428MjnT1+xS/PaowMGXDW+LazSlf6jURVhslzhDWVwQwSHsj1
+ zmBz2E9QyRL5y5WQeqQ+wNMpf4cc11gYj1FdMJDaGStk4g+FsmVXcENuVnUJH2/6jHdomAG/SQ+
+ W0Ia3EexvznZTQNIt/lyIP2pTfSpUpI7tNpKYs75mGkhEDBHNFHtHFxJJoQiTaBwEwc/HR6lczZ
+ T4LidrHyGsOfTRZYvEfbiQyxA+Qh3AdwdkhVnN36QueqTep83NK1hh+jOllw+6zwr7aracm8sqj
+ 8TataSOp5DP/k/y4oCg==
+X-Proofpoint-ORIG-GUID: jTjJjX8zOH834q8n59K2Jb9hsedM7J4g
+X-Authority-Analysis: v=2.4 cv=PvajqQM3 c=1 sm=1 tr=0 ts=6a56335e cx=c_pps
+ a=5BHTudwdYE3Te8bg5FgnPg==:117 a=5BHTudwdYE3Te8bg5FgnPg==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=RnoormkPH1_aCDwRdu11:22 a=Y2IxJ9c9Rs8Kov3niI8_:22 a=KKAkSRfTAAAA:8
+ a=VnNF1IyMAAAA:8 a=goQtPkRG2nAvUlR5sPYA:9 a=QEXdDO2ut3YA:10
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-14_03,2026-07-10_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 malwarescore=0 bulkscore=0 impostorscore=0 adultscore=0
+ clxscore=1015 lowpriorityscore=0 spamscore=0 suspectscore=0 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607140132
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=iii@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,103 +126,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This to prepare for fast-read variants. No functional change.
 
-Reviewed-by: Bin Meng <bin.meng@processmission.com>
-Link: https://lore.kernel.org/qemu-devel/20260708111544.1440761-2-clg@redhat.com
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
----
- tests/qtest/aspeed-smc-utils.c | 29 +++++++++++++++++++++--------
- 1 file changed, 21 insertions(+), 8 deletions(-)
 
-diff --git a/tests/qtest/aspeed-smc-utils.c b/tests/qtest/aspeed-smc-utils.c
-index c27d09e767e5..ed125741eb36 100644
---- a/tests/qtest/aspeed-smc-utils.c
-+++ b/tests/qtest/aspeed-smc-utils.c
-@@ -186,6 +186,9 @@ static void read_page_mem(const AspeedSMCTestData *data, uint32_t addr,
-     }
- }
- 
-+typedef void (*read_page_mem_fn)(const AspeedSMCTestData *data,
-+                                 uint32_t addr, uint32_t *page);
-+
- static void write_page_mem(const AspeedSMCTestData *data, uint32_t addr,
-                            uint32_t write_value)
- {
-@@ -327,9 +330,9 @@ void aspeed_smc_test_erase_all(const void *data)
-     flash_reset(test_data);
- }
- 
--void aspeed_smc_test_write_page(const void *data)
-+static void test_write_page(const AspeedSMCTestData *test_data,
-+                            read_page_mem_fn reader)
- {
--    const AspeedSMCTestData *test_data = (const AspeedSMCTestData *)data;
-     uint32_t my_page_addr = test_data->page_addr;
-     uint32_t some_page_addr = my_page_addr + FLASH_PAGE_SIZE;
-     uint32_t page[FLASH_PAGE_SIZE / 4];
-@@ -350,13 +353,13 @@ void aspeed_smc_test_write_page(const void *data)
-     spi_ctrl_stop_user(test_data);
- 
-     /* Check what was written */
--    read_page(test_data, my_page_addr, page);
-+    reader(test_data, my_page_addr, page);
-     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-         g_assert_cmphex(page[i], ==, my_page_addr + i * 4);
-     }
- 
-     /* Check some other page. It should be full of 0xff */
--    read_page(test_data, some_page_addr, page);
-+    reader(test_data, some_page_addr, page);
-     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-         g_assert_cmphex(page[i], ==, 0xffffffff);
-     }
-@@ -364,9 +367,14 @@ void aspeed_smc_test_write_page(const void *data)
-     flash_reset(test_data);
- }
- 
--void aspeed_smc_test_read_page_mem(const void *data)
-+void aspeed_smc_test_write_page(const void *data)
-+{
-+    test_write_page(data, read_page);
-+}
-+
-+static void test_read_page_mem(const AspeedSMCTestData *test_data,
-+                               read_page_mem_fn reader)
- {
--    const AspeedSMCTestData *test_data = (const AspeedSMCTestData *)data;
-     uint32_t my_page_addr = test_data->page_addr;
-     uint32_t some_page_addr = my_page_addr + FLASH_PAGE_SIZE;
-     uint32_t page[FLASH_PAGE_SIZE / 4];
-@@ -393,13 +401,13 @@ void aspeed_smc_test_read_page_mem(const void *data)
-     spi_conf_remove(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
- 
-     /* Check what was written */
--    read_page_mem(test_data, my_page_addr, page);
-+    reader(test_data, my_page_addr, page);
-     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-         g_assert_cmphex(page[i], ==, my_page_addr + i * 4);
-     }
- 
-     /* Check some other page. It should be full of 0xff */
--    read_page_mem(test_data, some_page_addr, page);
-+    reader(test_data, some_page_addr, page);
-     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-         g_assert_cmphex(page[i], ==, 0xffffffff);
-     }
-@@ -407,6 +415,11 @@ void aspeed_smc_test_read_page_mem(const void *data)
-     flash_reset(test_data);
- }
- 
-+void aspeed_smc_test_read_page_mem(const void *data)
-+{
-+    test_read_page_mem(data, read_page_mem);
-+}
-+
- void aspeed_smc_test_write_page_mem(const void *data)
- {
-     const AspeedSMCTestData *test_data = (const AspeedSMCTestData *)data;
--- 
-2.54.0
+On 7/10/26 22:53, Richard Henderson wrote:
+> Use a balanced binary tree rather than a simple list for watchpoints.
+> Using an interval tree makes it easy to probe for any overlapping address.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   include/exec/breakpoint.h |   7 +-
+>   include/hw/core/cpu.h     |   3 +-
+>   accel/tcg/cpu-exec.c      |   8 +-
+>   accel/tcg/watchpoint.c    | 155 +++++++++++++++++++++-----------------
+>   hw/core/cpu-common.c      |   1 -
+>   system/watchpoint.c       |  43 ++++++-----
+>   target/arm/hyp_gdbstub.c  |   3 +-
+>   7 files changed, 119 insertions(+), 101 deletions(-)
+> 
+> diff --git a/include/exec/breakpoint.h b/include/exec/breakpoint.h
+> index bb7cbc626d..e0826a1a2d 100644
+> --- a/include/exec/breakpoint.h
+> +++ b/include/exec/breakpoint.h
+> @@ -9,7 +9,6 @@
+>   #define EXEC_BREAKPOINT_H
+>   
+>   #include "qemu/interval-tree.h"
+> -#include "qemu/queue.h"
+>   #include "exec/vaddr.h"
+>   #include "exec/memattrs.h"
+>   
+> @@ -36,13 +35,11 @@ struct CPUBreakpoint {
+>   };
+>   
+>   struct CPUWatchpoint {
+> -    vaddr vaddr;
+> -    vaddr len;
+> +    IntervalTreeNode itree;
+>       vaddr hitaddr;
+>       MemTxAttrs hitattrs;
+> -    int flags; /* BP_* */
+> +    BreakpointFlags flags;
 
+Should this go into 1/51?
+
+>       unsigned id;
+> -    QTAILQ_ENTRY(CPUWatchpoint) entry;
+>   };
+>   
+>   int cpu_breakpoint_insert(CPUState *cpu, vaddr pc, BreakpointFlags flags,
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index b8a1419860..7e19ea418d 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -525,8 +525,7 @@ struct CPUState {
+>   
+>       /* ice debug support */
+>       IntervalTreeRoot breakpoints;
+> -
+> -    QTAILQ_HEAD(, CPUWatchpoint) watchpoints;
+> +    IntervalTreeRoot watchpoints;
+>       CPUWatchpoint *watchpoint_hit;
+>   
+>       void *opaque;
+> diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+> index 2762cf6705..ab299387e3 100644
+> --- a/accel/tcg/cpu-exec.c
+> +++ b/accel/tcg/cpu-exec.c
+> @@ -682,10 +682,12 @@ static inline bool cpu_handle_halt(CPUState *cpu)
+>   static inline void cpu_handle_debug_exception(CPUState *cpu)
+>   {
+>       const TCGCPUOps *tcg_ops = cpu->cc->tcg_ops;
+> -    CPUWatchpoint *wp;
+> +    IntervalTreeNode *n;
+>   
+> -    if (!cpu->watchpoint_hit) {
+
+Isn't it reasonable to continue checking for this, or can it never be
+NULL if we come here?
+
+[...]
+
+Reviewed-by: Ilya Leoskevich <iii@linux.ibm.com>
 

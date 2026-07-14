@@ -4,105 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51B51C43458
-	for <qemu-arm@archiver.kernel.org>; Tue, 14 Jul 2026 10:57:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B768C43458
+	for <qemu-arm@archiver.kernel.org>; Tue, 14 Jul 2026 12:16:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wjaov-00014h-LH; Tue, 14 Jul 2026 06:57:01 -0400
+	id 1wjc46-0006MX-Se; Tue, 14 Jul 2026 08:16:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wjaou-00014I-6H
- for qemu-arm@nongnu.org; Tue, 14 Jul 2026 06:57:00 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
+ id 1wjc45-0006LL-3i; Tue, 14 Jul 2026 08:16:45 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wjaos-00040g-DB
- for qemu-arm@nongnu.org; Tue, 14 Jul 2026 06:56:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784026616;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DGmtfTaKNjnVMCFoWirR8Pe5xgMzaRCEBNCSNOefk+U=;
- b=fu+YGLcHLq/aEJWYFdaaHc/Wc2E2qPBCo0XuD6Gi+fISC9M0g/Q1zflcsVLcePRGCCjVpT
- 47rTTaf6DufvP/yQk+DxIDQHcNLHBq7KaAdz+VeKVY5aBZW1R9gH+aV6RB/mdLokhMDrBU
- WRDLJAXdKjgnVWF654BogPKecHlRiM0=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-695-1BMXZveNN7Gxt60s3Ek-qg-1; Tue, 14 Jul 2026 06:56:55 -0400
-X-MC-Unique: 1BMXZveNN7Gxt60s3Ek-qg-1
-X-Mimecast-MFC-AGG-ID: 1BMXZveNN7Gxt60s3Ek-qg_1784026614
-Received: by mail-pl1-f198.google.com with SMTP id
- d9443c01a7336-2cefa1a2be6so1917745ad.0
- for <qemu-arm@nongnu.org>; Tue, 14 Jul 2026 03:56:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784026614; x=1784631414;
- h=content-transfer-encoding:content-type:in-reply-to:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=DGmtfTaKNjnVMCFoWirR8Pe5xgMzaRCEBNCSNOefk+U=;
- b=FZadtevXMh0vtE9rDGo9DT2JqFV7rs8oTwR6Yru3EI2jozFWB3MaOKj1CPv4rNDwNc
- Sv13TdTBoKCnu58s+NqAw5uey5HISQAaEhmAkucmiU24MuFxPAaK8oXoJ8kZiFYPfeHb
- ILPp2grbh4c6YmTnNoDCVoTqs6yK7eufzQ57a6M0jgkcudzTzCnHbs3UqhqJFk3Hi52L
- eqwGcT1gSTQGKj2ko4BIuHFW9yEamXSbfqfhmnrvrUajkMINyYAI9cQJ8TV8HxO5TN1l
- OP+TkRUEjxXrmof/8Kmp6yEwM04XpjanfKlKxu7UfJqmDVXe/PYTeh5Ci7R7FZEROIYe
- bNLA==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpV2bCUe34qzNjqDyFijeJDSlhjEfvQAGIY91wESZoin/QGyv1l1qVIgNbN5OHrvr5Hi6oGcI7mgw==@nongnu.org
-X-Gm-Message-State: AOJu0YxlFpz0wYMlU5vpD2SZtP/i40rqhAINrh94fM5s5UHLG01DOcsl
- eB0XBX0m9JJfMxMjD4sGfnNaWgLVcO0O/Jc4KexcBoH1YYDjcSGe4a3+tRIpYOHRB1qa1G0HVn9
- rptep8R941HIzkXCvzH5DDcsIPGW3wvR7rN1gAdO/aBABleflvdzHmw==
-X-Gm-Gg: AfdE7cmfIA3BloplgVhwtUFRMKKUiCfyTMVDdQjKSSSnQ98UTYzHvtwLqS4tcJgDV5H
- 6sQ3vyLMNwk1T6GR2d4cLwd7jaf3TUlnK/6YWNe2GS5rZAs/lt2KZlQINBa2tZxpBL7wMK6aO/U
- u8Ok2rkPPG5ouvHyYyZeehjJbqMPeL4mX+5vcBCbESRyMO0JPA/F0iSccwr6disgt8StjF6fT7h
- Z+o4Z9Jfgyz4PM0TKTExBhuVrMRD2zWU0B4Z4g3lOwCWyHqCIfejz338AnteFHlYFd8HRT/15SA
- NsUXPcpjZyz8+Vyec95ADOoWk1q9nEbb6I5L+KjDe5P5OmBiozHiy671i6YWlMjzYWqjhbk6q+W
- q09dT+m/jMKUFzYrBG3SCNzfZihoFtxyeKFYLRTchMCRxLv7vOQkBEA==
-X-Received: by 2002:a17:902:c946:b0:2c9:97a8:aff0 with SMTP id
- d9443c01a7336-2ce9f3d32f3mr117741705ad.41.1784026614222; 
- Tue, 14 Jul 2026 03:56:54 -0700 (PDT)
-X-Received: by 2002:a17:902:c946:b0:2c9:97a8:aff0 with SMTP id
- d9443c01a7336-2ce9f3d32f3mr117741485ad.41.1784026613721; 
- Tue, 14 Jul 2026 03:56:53 -0700 (PDT)
-Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
- [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2ccc9bdb56fsm115846435ad.15.2026.07.14.03.56.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Jul 2026 03:56:52 -0700 (PDT)
-Message-ID: <1bd09a58-a207-46ba-a470-f67cc8509f07@redhat.com>
-Date: Tue, 14 Jul 2026 20:56:44 +1000
+ (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
+ id 1wjc43-0002o3-LA; Tue, 14 Jul 2026 08:16:44 -0400
+Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 66EBgdS51196871; Tue, 14 Jul 2026 12:16:40 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=pp1; bh=/qLONk
+ PUmjl9Ki6HC3IUv6hZhgXooLUNlr6AfjCPRmc=; b=pfzSMu0Y54vxUcNQ20E71f
+ QNuF9PdJVn3TteYg2TQVKJgFKIMTZBE2B59+MunHfopVGI5xEk6i5KhiLL8wadcH
+ lWf3j9I6lNEZJ9nvBMhTJ13T9YT01wloFSS901icYgtzDpYqmceGtKB++2Xqf5j3
+ rvCk5ljU3eEh+pkeNJMPHmne7FlQxIdP977fwZWTqB6JrHg1UZEUAa0bXlEBLCIy
+ d9N+1w6G447M9ueDl7dtZ/27STEugdPzr4uyBo81+E5R9li3kItco8wMx8+uez5m
+ 5r2/J/CUmIVB85IrgZeCIgPO9XNkRwVsPhoFOmcR7ezWlFg8wOU0V6MD6X8Uhuxg
+ ==
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fbegbnk3c-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 14 Jul 2026 12:16:40 +0000 (GMT)
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66EC4ePd003061;
+ Tue, 14 Jul 2026 12:16:39 GMT
+Received: from smtprelay05.fra02v.mail.ibm.com ([9.218.2.225])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 4fc05q2ve5-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 14 Jul 2026 12:16:39 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com
+ [10.20.54.100])
+ by smtprelay05.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 66ECGbLH46793192
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 14 Jul 2026 12:16:37 GMT
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 9019D20043;
+ Tue, 14 Jul 2026 12:16:37 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4257020040;
+ Tue, 14 Jul 2026 12:16:37 +0000 (GMT)
+Received: from [0.0.0.0] (unknown [9.111.75.242])
+ by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 14 Jul 2026 12:16:37 +0000 (GMT)
+Message-ID: <57680fd9-2193-4cf8-8cf4-4c191d45f80e@linux.ibm.com>
+Date: Tue, 14 Jul 2026 14:16:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v1 12/25] target/arm/kvm-rme: Populate Realm with runtime
- images
-To: Mathieu Poirier <mathieu.poirier@linaro.org>, berrange@redhat.com,
- kchamart@redhat.com, pierrick.bouvier@oss.qualcomm.com,
- peter.maydell@linaro.org, mst@redhat.com, cohuck@redhat.com,
- pbonzini@redhat.com, eblake@redhat.com, armbru@redhat.com, jpb@kernel.org,
- lorenzo.pieralisi@linaro.org
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
-References: <20260707224306.1202330-1-mathieu.poirier@linaro.org>
- <20260707224306.1202330-13-mathieu.poirier@linaro.org>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20260707224306.1202330-13-mathieu.poirier@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: PsGHtbuTzyWHmSC2yErJVmryFX_HmpQsrCshmVx7gGc_1784026614
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v3 01/51] cpu: Define BreakpointFlags type
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org, jcmvbkbc@gmail.com,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
+References: <20260710205401.836304-1-richard.henderson@linaro.org>
+ <20260710205401.836304-2-richard.henderson@linaro.org>
 Content-Language: en-US
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+In-Reply-To: <20260710205401.836304-2-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: permerror client-ip=170.10.129.124;
- envelope-from=gshan@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Reinject: loops=2 maxloops=12
+X-Authority-Analysis: v=2.4 cv=fOcJG5ae c=1 sm=1 tr=0 ts=6a5628a8 cx=c_pps
+ a=bLidbwmWQ0KltjZqbj+ezA==:117 a=bLidbwmWQ0KltjZqbj+ezA==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=RnoormkPH1_aCDwRdu11:22 a=RzCfie-kr_QcCd8fBx8p:22 a=EUspDBNiAAAA:8
+ a=KKAkSRfTAAAA:8 a=VnNF1IyMAAAA:8 a=6XGGRaPhJGb0HrX91toA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE0MDEyNyBTYWx0ZWRfXySD8NyH0z6Fj
+ cFHGZohAp7C20HtScpvClfyN/rfgLH4fpstlXaUPy1QDqVHQ50m+g/0CBHB3YTvkKQ5FvGhoM5l
+ UfPDqlZR+fjGGh2LGU6aM7lgKYs9wWFtu7CEA8/K5SauoFRuTYGaq6sK0OeYMBVe6OrBZejA92R
+ 8QbrEkY1GlYsD+aZo1yC5YvuOZZJXTrzLMd2LhMUJ8u1zLwUVyM1XG6kOQIrHyr2bjBXU2w0hH9
+ jj2f8cUg5bH42XO8lpJw5ERD/Kc9xpqbBUtDRJCY4El7r6qEosxxGcDrmllOzhzUYDego6JUqqu
+ nNGDVIsI886h6AMhE1ywuJTnQDBFGqRREPNwphU43miSQsf7cSftUbzGwn1Tznf+84Z7d3Mp/4v
+ HqGsqtxMWpxwpUeV+9EXO5fxr5Og+Dct1gyc/Qo0X0tRbX+Ia1CdqGvkmFjI/EAeHQZ7umaApNK
+ 2qRtNQFYDzgjklS9+GA==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE0MDEyNyBTYWx0ZWRfX93L3WaUTTMzf
+ 1BKuSi/qiOyvoGejwOljE8+eibFSpzUl9V5OvurHULUZhN18D53od7lNULb70qoEDcXo9hq+VcO
+ Aw9nIIXMj9TPC9fpIHA2useQtM0Fj2E=
+X-Proofpoint-GUID: WCR0GtaBdGrn5o-mlI0gXFrpd2CoGFWG
+X-Proofpoint-ORIG-GUID: 0gt0PVvgtPpCam2Ft-Ceanm8q36w3Y9H
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-14_03,2026-07-10_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 bulkscore=0 impostorscore=0 suspectscore=0 adultscore=0
+ priorityscore=1501 malwarescore=0 clxscore=1011 phishscore=0
+ lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2607140127
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=iii@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,99 +129,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/8/26 8:42 AM, Mathieu Poirier wrote:
-> From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+
+
+On 7/10/26 22:53, Richard Henderson wrote:
+> From: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 > 
-> Once the Realm descriptor has been created, tell KVM to transfer runtime
-> images (kernel, DT, and rootfs) from guest memory to Realm memory.
+> Use the BreakpointFlags typedef to better follow when
+> we deal with breakpoint flags (BP_*).
 > 
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+> Reviewed-by: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> [rth: Don't rename mask variables to flags]
+> Message-ID: <20260630220100.1289-19-philmd@oss.qualcomm.com>
 > ---
->   target/arm/kvm-rme.c | 56 ++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 56 insertions(+)
-> 
-> diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-> index 97ec7c8934c9..58669f4a50f1 100644
-> --- a/target/arm/kvm-rme.c
-> +++ b/target/arm/kvm-rme.c
-> @@ -44,12 +44,68 @@ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
->   
->   static RmeGuest *rme_guest;
->   
-> +static int rme_populate_range(const RmeRamRegion *region, bool measure,
-> +                              Error **errp)
-> +{
-> +    int ret;
-> +    void *host_ua;
-> +    hwaddr size = region->size;
-> +    hwaddr base = region->base;
-> +    hwaddr start = QEMU_ALIGN_DOWN(base, RME_PAGE_SIZE);
-> +    hwaddr end = QEMU_ALIGN_UP(base + size, RME_PAGE_SIZE);
-> +    struct kvm_arm_rmi_populate populate_args;
-> +
-> +    host_ua = address_space_map(region->as, base, &size, false,
-> +                                MEMTXATTRS_UNSPECIFIED);
-> +
-> +    populate_args = (struct kvm_arm_rmi_populate) {
-> +        .base = start,
-> +        .size = end - start,
-> +        .source_uaddr = (uintptr_t)host_ua,
-> +        .flags = measure ? KVM_ARM_RMI_POPULATE_FLAGS_MEASURE : 0,
-> +    };
-> +
-> +    while (populate_args.size > 0) {
-> +        ret = kvm_vm_ioctl(kvm_state, KVM_ARM_RMI_POPULATE, &populate_args, 0);
-> +        if (ret) {
-> +            error_setg_errno(errp, -ret,
-> +                "failed to populate realm [0x%"HWADDR_PRIx", 0x%"HWADDR_PRIx")",
-> +                start, end);
-> +            break;
-> +        }
-> +    }
-> +
-> +    address_space_unmap(region->as, host_ua, size, false, 0);
-> +
-> +    return ret;
-> +}
-> +
+>   include/accel/tcg/cpu-ops.h |  6 ++++--
+>   include/exec/breakpoint.h   |  4 +++-
+>   include/exec/watchpoint.h   |  8 +++++---
+>   include/hw/core/cpu.h       |  8 ++++----
+>   accel/tcg/cputlb.c          | 12 +++++++-----
+>   accel/tcg/tcg-accel-ops.c   | 10 +++++-----
+>   accel/tcg/user-exec-stub.c  | 11 ++++++-----
+>   accel/tcg/watchpoint.c      |  9 +++++----
+>   cpu-common.c                |  8 ++++----
+>   system/watchpoint.c         |  6 +++---
+>   target/arm/tcg/debug.c      |  4 ++--
+>   target/arm/tcg/mte_helper.c |  3 ++-
+>   target/ppc/cpu.c            |  2 +-
+>   target/ppc/kvm.c            |  5 +++--
+>   target/riscv/cpu_helper.c   |  2 +-
+>   target/riscv/debug.c        |  6 +++---
+>   target/s390x/tcg/debug.c    |  3 ++-
+>   target/xtensa/dbg_helper.c  |  2 +-
+>   18 files changed, 61 insertions(+), 48 deletions(-)
 
-Nit: The argument @measure isn't needed as it's always true, passed
-by its only caller rme_populate_range(). I guess it's leftover for
-the earlier host series.
-
-
-> +static void rme_populate_ram_region(gpointer data, gpointer err)
-> +{
-> +    Error **errp = err;
-> +    const RmeRamRegion *region = data;
-> +
-> +    if (*errp) {
-> +        return;
-> +    }
-> +
-> +    rme_populate_range(region, /* measure */ true, errp);
-> +}
-> +
->   static void rme_vm_state_change(void *opaque, bool running, RunState state)
->   {
-> +    Error *errp = NULL;
-> +
->       if (!running) {
->           return;
->       }
->   
-> +    g_slist_foreach(rme_guest->ram_regions, rme_populate_ram_region, &errp);
-> +    g_slist_free_full(g_steal_pointer(&rme_guest->ram_regions), g_free);
-> +    if (errp) {
-> +        return;
-> +    }
-> +
->       kvm_mark_guest_state_protected();
->   }
->   
-
-Thanks,
-Gavin
+Reviewed-by: Ilya Leoskevich <iii@linux.ibm.com>
 
 

@@ -4,59 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6FAEC44501
-	for <qemu-arm@archiver.kernel.org>; Wed, 15 Jul 2026 16:37:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10E22C44507
+	for <qemu-arm@archiver.kernel.org>; Wed, 15 Jul 2026 19:24:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wk2aZ-0006ib-Ev; Wed, 15 Jul 2026 12:36:04 -0400
+	id 1wk5Cy-0000h6-Oz; Wed, 15 Jul 2026 15:23:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@ibm.com>)
- id 1wk23k-00034L-SG; Wed, 15 Jul 2026 12:02:08 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <calebs@us.ibm.com>)
+ id 1wk36v-0001Zl-JB; Wed, 15 Jul 2026 13:09:29 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@ibm.com>)
- id 1wk23h-0006YZ-Ig; Wed, 15 Jul 2026 12:02:08 -0400
-Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+ (Exim 4.90_1) (envelope-from <calebs@us.ibm.com>)
+ id 1wk36r-0007VM-N9; Wed, 15 Jul 2026 13:09:29 -0400
+Received: from pps.filterd (m0356517.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66FEBl1O313799; Wed, 15 Jul 2026 16:01:43 GMT
+ 66FEBhqo403756; Wed, 15 Jul 2026 17:09:05 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
  :content-type:date:from:in-reply-to:message-id:mime-version
- :references:subject:to; s=pp1; bh=czcIWeigZHKiVk64/ovaKRzM3ctIkB
- DAWFyh0i6COg4=; b=MqpU3dJFcHjMUc2avkbga0EN1YdcaY9+bZMQDGc3KWTBec
- XZ1g9S0didSPwkav5KOPsfQPjOLPP4JOvOBizTWSImykNBIkeiP88bE6rlHnttG3
- ssyGUVMrH9xIEMbVCf3I4AHhQinlPjZ6qvyNOm+PshmW2fyEKjefG+RxvrzTmTVz
- jDLwrioqhi2ToSpYJZwYSE7xUzBh81siN+Wi9oJ6xTylPjvXYufwubs3VPyPw1v8
- 9AaCOMZ7/IRG/6rjX3TMnE91Q6xq0VpJE86UuBnybtgT1IVCmvaq0ILImjbYnkJB
- gami5yxNRhycF1gmY+WwdbzXchtP1cVqe7/mOxhA==
-Received: from dm1pr04cu001.outbound.protection.outlook.com
- (mail-centralusazon11010047.outbound.protection.outlook.com [52.101.61.47])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fbexwusf5-1
+ :references:subject:to; s=pp1; bh=kYH50EfK63aestzeW/JfcdNkKk5JzB
+ ZGR22CeO7hRNs=; b=NWGIgQ23FaKINcCcH6IHwODUw8jSQhnNGu5Fxg3MXdQDvW
+ XZTGZzh6UgXXaxhJWTMjEnlo8smwT1ZIExJv/MI4KWinHAMNe0qI/ezBAAE0mdhw
+ eFnKGFdTXU6TQ+LPSnr44fMK2fUUXhZ/7pBpdXQxRB0udl+iYpgVs3y8PC/o8q77
+ NFc+uf1KzGhiZTKb+GD/yFGi+p+zYgiyOhOwUl/+/R5I1a1agSR5AB53ElkFdkK2
+ bz3UZNNVU7kVJ45RSX35nGRa79qImSkFV3tEck6JWjwnHsfYCiU5c2r/YNCv6ooh
+ MWb31r+Pcy3YkwAqqVX2jQkOb1oyA6TQQWunqEyg==
+Received: from sn4pr2101cu001.outbound.protection.outlook.com
+ (mail-southcentralusazon11012030.outbound.protection.outlook.com
+ [40.93.195.30])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fbegtcsha-1
  (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Wed, 15 Jul 2026 16:01:42 +0000 (GMT)
+ Wed, 15 Jul 2026 17:09:03 +0000 (GMT)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=RVDtyMH8Xa3q8Szc9xMzDERUhUB7Wu1UA4moNGdohvmUFTEeHA2wVgtcaVNLmdsf5kV343gGaxygTStSrGqlK62oHs6Z325UC+m3jnpw40c06EAM5WvTKSlUpgPRKbcN+GKz666bpNRE4GR+EnvszMPW2WxGELZL6z9uhQKyYMWRfDBO63kAiESggUnPj5Z45Rfw+sn4Y28gdtUnnsw/T5OpkW5mHap3vV/FJsIBZnt4ZuTyS07B0UMHbwNSPvo/IjJwoFuVEcPyR6A85ynM/jXMZYKgVtQ8Wy+mo/+LAXAnPhIPSN6kamg5vJieILP36D61aCdafL8gFt+Je1C12g==
+ b=gYzOxaI9MkQSu3UTjlBeiVodd0OyYBE/HSkbR5v14jNbO5ZlX73AgsM9Pt35gzr4+ugLZCyFX+JPEd0TRHZlHCrPkGBAAx/IWYq/7I+Lt54IKIv0RXv/wn+eXAPAm00LXiV9j6XCY9GG74lcu2DLlYKCgptwu6SLy6ha+gOlsMqOxkC82wBl11C4t6sXvseDXYEkmNWyrdsarfG7zF9Uyv0c2VQX63yoDLbacNaMuAx0B9qWt4sF425p95HkKzu836Maa3B5T+wYKqBpxbFwQ7drsAVq+PwRiP/MKXrmIHdVZGaJ4ouLD8ySQENJOPSnFzkMRIOrabmxy5ytJCYs7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=czcIWeigZHKiVk64/ovaKRzM3ctIkBDAWFyh0i6COg4=;
- b=yW9SwUpnBnoBnMxNFXlery+TnAtJpayvCaqOURdN5wjNOv917KZFlVDlMlIH3UWfmoHLZoK9I4oTS6/6eCaBksumYGaaHl1RU8swLopVErUEctLj26pUiArfYKfOIoTOp+n+dJv3JcNRE5cBVmuPQxLYqIVO6hMJPNHT6OtBuJrAUVRTiQXTOs7knAwiAOCt4jhPnMwPjcWfBGhFB4r0iM9qt2Wo57RW2UNP6ka4lAc0uLfaDcpt3sXSgqz/5n0tpaZVPS0bLrBNMIm4p3ATMdfJxpX4Y2NZLfAmN6lRnCpQ8eV3Bi1B29pqxoDf1/JCZa4yXaUBtBvn0w+0w9eu3w==
+ bh=kYH50EfK63aestzeW/JfcdNkKk5JzBZGR22CeO7hRNs=;
+ b=DGQ6hXJU6iPh8ImjXITqw4S8WAj8VeeEHM61OpZMnKzdirbJhR5fnnyEPtkkTWs3fwWY1GIZx+NR9bxuw18373Wwdrf3D60gj7Wt7HE3yJh89StI5T+mT2UjOdiDMp8ddP3uFuMqZ/5+H1d1eV5N+UVaqLfLZ6g2IITOxzhKbNxTRN1BrP+HpH6LGNhyeGL4VACB8Da+TN3g5EiXxgMM1iJs5hWQRNvv7i+5j/5QwabBzmLubX/nRrN90XSqzQMWwazBQOnuIZvup1KGMASJbRIZtyIzKFRMwQwy6FD9OBzYBykIsG/n6IgIbXWrNb1MMwwBVCOHI4NvW8u/oQB7kw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=ibm.com; dmarc=pass action=none header.from=ibm.com; dkim=pass
- header.d=ibm.com; arc=none
-Received: from PH7PR15MB5151.namprd15.prod.outlook.com (2603:10b6:510:13b::12)
- by IA3PR15MB6532.namprd15.prod.outlook.com (2603:10b6:208:523::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.202.18; Wed, 15 Jul
- 2026 16:01:39 +0000
-Received: from PH7PR15MB5151.namprd15.prod.outlook.com
- ([fe80::5ecd:c398:4ff1:cd86]) by PH7PR15MB5151.namprd15.prod.outlook.com
- ([fe80::5ecd:c398:4ff1:cd86%4]) with mapi id 15.21.0223.008; Wed, 15 Jul 2026
- 16:01:39 +0000
-From: Glenn Miles <milesg@ibm.com>
-To: Mikail Sadic <Mikail.Sadic@ibm.com>, "clg@kaod.org" <clg@kaod.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>
+ smtp.mailfrom=us.ibm.com; dmarc=pass action=none header.from=us.ibm.com;
+ dkim=pass header.d=us.ibm.com; arc=none
+Received: from DM4PR15MB5380.namprd15.prod.outlook.com (2603:10b6:8:63::9) by
+ SA1PR15MB5258.namprd15.prod.outlook.com (2603:10b6:806:22a::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.202.19; Wed, 15 Jul
+ 2026 17:08:57 +0000
+Received: from DM4PR15MB5380.namprd15.prod.outlook.com
+ ([fe80::a904:6080:c639:7d67]) by DM4PR15MB5380.namprd15.prod.outlook.com
+ ([fe80::a904:6080:c639:7d67%5]) with mapi id 15.21.0223.008; Wed, 15 Jul 2026
+ 17:08:57 +0000
+From: CALEB SCHLOSSIN <calebs@us.ibm.com>
+To: Glenn Miles <milesg@ibm.com>, Mikail Sadic <Mikail.Sadic@ibm.com>,
+ "clg@kaod.org" <clg@kaod.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>
 CC: Paolo Bonzini <pbonzini@redhat.com>, "ninad@linux.ibm.com"
  <ninad@linux.ibm.com>, "titusr@google.com" <titusr@google.com>,
  "jeuk20.kim@samsung.com" <jeuk20.kim@samsung.com>, "philmd@mailo.com"
@@ -65,122 +67,123 @@ CC: Paolo Bonzini <pbonzini@redhat.com>, "ninad@linux.ibm.com"
  "leetroy@gmail.com" <leetroy@gmail.com>, "jamin_lin@aspeedtech.com"
  <jamin_lin@aspeedtech.com>, "kane_chen@aspeedtech.com"
  <kane_chen@aspeedtech.com>, "andrew@codeconstruct.com.au"
- <andrew@codeconstruct.com.au>, "joel@jms.id.au" <joel@jms.id.au>, CALEB
- SCHLOSSIN <calebs@us.ibm.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+ <andrew@codeconstruct.com.au>, "joel@jms.id.au" <joel@jms.id.au>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
 Subject: Re: [PATCH v1 0/5] Add IBM Huygens BMC machine for AST2700
 Thread-Topic: [PATCH v1 0/5] Add IBM Huygens BMC machine for AST2700
-Thread-Index: AQHdFHGzk/CfXe10t0mbQbzwBCF0+rZuvS/I
-Date: Wed, 15 Jul 2026 16:01:39 +0000
-Message-ID: <PH7PR15MB515180D1B6F069668AD594DFCAF82@PH7PR15MB5151.namprd15.prod.outlook.com>
+Thread-Index: AQHdFHGzqC6AyfQSgk2XQ4/ix1e4DrZuvY2AgAASpqI=
+Date: Wed, 15 Jul 2026 17:08:57 +0000
+Message-ID: <DM4PR15MB5380653523EF2D5C11DE2254E1F82@DM4PR15MB5380.namprd15.prod.outlook.com>
 References: <20260715155037.2237011-1-mikail.sadic@ibm.com>
-In-Reply-To: <20260715155037.2237011-1-mikail.sadic@ibm.com>
+ <PH7PR15MB515180D1B6F069668AD594DFCAF82@PH7PR15MB5151.namprd15.prod.outlook.com>
+In-Reply-To: <PH7PR15MB515180D1B6F069668AD594DFCAF82@PH7PR15MB5151.namprd15.prod.outlook.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 msip_labels: 
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PH7PR15MB5151:EE_|IA3PR15MB6532:EE_
-x-ms-office365-filtering-correlation-id: 26151065-7be8-4196-2354-08dee28a5adc
+x-ms-traffictypediagnostic: DM4PR15MB5380:EE_|SA1PR15MB5258:EE_
+x-ms-office365-filtering-correlation-id: 4b04a506-6265-492e-33a2-08dee293c1cf
 x-ld-processed: fcf67057-50c9-4ad4-98f3-ffca64add9e9,ExtAddr
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|7416014|376014|366016|1800799024|38070700021|10067099003|56012099006|11063799006|22082099003|18002099003|8096899003;
-x-microsoft-antispam-message-info: VnMUF/8OIG2GYpu60VuqehAU42gQD/3AhilMggOVZiS9VOlEnAsWVf9+wbM0yC/icmshZrf3rZCb5bMn08q/kHay3zGavcPNICx1Yq13d71uNbmn2HdVopX7qYcIlbL3aR5hGxPoviSvM2KTMk9qN6Kbry7PLF+65RHF7YPoemR9xfv8Zcwh3R/k9t+UifZXUrAkPEycwPl0DPD69zw7T9uiuslHtdnG7+xxuYZvoQELptT75j9pUxg0O3zRAOsMW+sHaRRHgRR8Xp46GLs2dS5JluYkMqL6uPVbnWEt1jXcEyD8EeRAiSPJrHyZ+xUg08mjpzMWdzcoaEKMhRpQcYp5r6FHlVmAET1jaBmLIA3//c0rf6CVKUDrrUkPweykbD6vgEc6FFgpWgt9TvtsFWPWvkmkAWzCxysyKJHOblAJERnQPfqfTYiY00wyC2StnSTf2LntzjDQEeT6sRCHtVTMkplmnNqY4m0AqZ70vjKYQ99NRwyGAbkpd+Z+SsdVmkntPdH+qttjIQ/m1ff0hKpifViUWdzZP+pnWW7p16RCz0gfpBi/RNmKf+vWZWwoVHnpWepdh8GiymSPmQ/Se5n25S3LyIE6vQimllls5CtVtytpfklsf6u+JmEd+3PWuIMZ1fH3CwpADPiTmJKOQYs+xtk6t5JEtbJebik2wrodA7dl1hDS9wj5MSQhZMaaYjqAqHUR/XtjkiPmzJrDGVQv+89qWXCTmtlaVzmP9UE=
+ ARA:13230040|366016|1800799024|7416014|376014|23010399003|10067099003|38070700021|22082099003|18002099003|4143699003|8096899003|11063799006|56012099006;
+x-microsoft-antispam-message-info: DNHW3TOqoN9EnSvJH4BfSp/AEc7hlV/KySZ5Fwt9wo+3Y4nCPti/2sYG1QuGrxulK2hRtPfqGhRcOqmTn4C5VU5wZUsbHWKW+IDlvPt5kLQFYZY2QLJlaudelb26LS7B5pJ7torOsuTmIJigi4n2KgFsDehSgn37Y55QXxGApzSR9QtHG9hf2bYkRkLb06WevF/BUqnsrKrBFQn0nfAsf9Z3f2F2Q3eeGiV7xi4XbwCNcjKdEFVGnB/0NZgoFWLRuIBECW6vFQyeY78PV7JXK2PLhw94uqqK9TruHO7+0mxEaRcf+hZRJsY11WKhm5CxDHfCdqOC6fFRk9UsXMm6CEdSUKbOQAE9zqQIF5l9/RGoQLA+9SklA7Q5dYZl2qpgb/nLtiqVbcSmVXbcSLkrtyzwsabdTO8Ua5z83g7nV6k1FaLGEKarZ/z/u78vs8pJj3s31BOqrOc/kvwiiGEs8a9b/Sek4MwEvt5jqbv3pmxfBCLD/j8w8fo3K6S87FCL2AohKcmNNFEZ5ZQtocpcG3jPok8U9nHd3qZLkmjbKQc+EbVa8+E8/e4HEAbEiSu0NSaMoB+qndLt205I1SY0CDeEMD5HbDtktxGviDI4IxhmTDAirDKS6DLtRESHPY9w2QhxoZimno4XRIMhh2urgA9U3a3DdM+uu4eGiyLqhbrZjMREjYO7mgsRO2m2+SoAIrZWlDRS/sJvOsRXUAnfb2oEjnkaOpu2kEdu3SD74k0=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH7PR15MB5151.namprd15.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(7416014)(376014)(366016)(1800799024)(38070700021)(10067099003)(56012099006)(11063799006)(22082099003)(18002099003)(8096899003);
+ IPV:NLI; SFV:NSPM; H:DM4PR15MB5380.namprd15.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(7416014)(376014)(23010399003)(10067099003)(38070700021)(22082099003)(18002099003)(4143699003)(8096899003)(11063799006)(56012099006);
  DIR:OUT; SFP:1101; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?uqFBOWwT01IQQvxahy0sfA92d75TpnKnFYe44zmjlaOuiLA96sakxtlcFdBC?=
- =?us-ascii?Q?V6j4Z5N2SDBUpYoa6igXsvBBq+H6WTHARruvXHClCbIZXydCBdUB5bo6n5Yy?=
- =?us-ascii?Q?cYBdgHrqPTsfEQVMHa40XdkOVPyq1ydwFoEg9ywrrC6rEM/XVrHkf5bRhr+5?=
- =?us-ascii?Q?hYm6QX3RV+1jyCN7GN4DmEuluNkIqq/bKsYg1p0aJsPTEJxpKs3PTNW3Z8D6?=
- =?us-ascii?Q?VHveXbM8M1zda7QXy4T4CoEwM1HIdKU+7HBmxSOhJphEZNhpnd010bPsuzDP?=
- =?us-ascii?Q?cjPMWQvNDZNWYXX+bq2xoZI5bAsDHifsiZ9TZrFIU3JZebQIl5/b9D8AD/9T?=
- =?us-ascii?Q?FvwQSloBkj/UmB88QwpUGSKpDGHa9Wa2ku2HiafHY0OYnLuioUhAiK6LvG6m?=
- =?us-ascii?Q?C2qDJ5rcpWyBv21kUxgF+J2zI1Uhk/3RFRMBcRgYIzi1SzvsPkOlxDGS9PWI?=
- =?us-ascii?Q?dLOrKG9HQxYhpiRNsQYOTP7fC2xpvROFgbDi1P0nhYZjMeBHAhqrmFRzgon9?=
- =?us-ascii?Q?dzvLVCNaqjhnovRkXNZ50sGwQ0h0XYopxXiqtCZr/bxjajYnkeYSotUwnY1m?=
- =?us-ascii?Q?eb9wzg9SPwugBicFcD0/SylWtW1VCKEO07DV46j2UkjZ23cxoVZr0rY8GDM6?=
- =?us-ascii?Q?ky319Yj9fB6FKrNODunCN6jkKnTIr7RO0qry5xbEbGqjJhAXtoYS8jFyBnvn?=
- =?us-ascii?Q?S84zG119k1a4tKJesfR6CuJGZsesziBaoXUe0UFuH4IvAn744JLo1gkRKYwI?=
- =?us-ascii?Q?Qj09P47Gl4elwXxBe349+gGwCW7v10BJKJUmeYHCFVz+EXiOPzN1eFLDUKx0?=
- =?us-ascii?Q?9wlWlXRbL0eyvDgjewn8coLQ3K6iI9zPKVu8Pn8vV7dI5+3LXzE1ITfGgkdl?=
- =?us-ascii?Q?g5/18PcKnmMAHYkJAZhAt1QEqqp2ROP9GpBHq/xJ8aFTMbB35Bapld3tBXkm?=
- =?us-ascii?Q?1Sfq8FbMyx4JK5p71pabOqzajIhZrjb3S9bigfZafT8QXn2FaKiufCsE6HcU?=
- =?us-ascii?Q?IM57xwS1vf7kHUB4Mw32BbOEIOxAiGM2E1M1sYBSvhBAHGybnWl7GDti2+Uv?=
- =?us-ascii?Q?mxx3omtM5LZ3C952mQ3R2NK9suMtE86KI/kLrCoVVqAmryk4gNr8HKXaG3T4?=
- =?us-ascii?Q?nes2ZM15JVBI41g7KHm9hE95t4pol2sNZT4fOmvKmiPzq0FpIMYpI3jDjYE/?=
- =?us-ascii?Q?NYXBy15EE8Fndr8w+gNXXZx6WWAaHkh3l4pi+0S7BPUr7sST8v9TYoPMu/48?=
- =?us-ascii?Q?/VM4qBSoWnqNKgQ9NLZ+VJ9yAlWfZzNVyA197KXv8zl7C1nA8SuxN0kFp8ne?=
- =?us-ascii?Q?gqEm35bbc7uk6ZkELv/2dt6tDiVB38lbYYUMfNnrL6llKbBE/mSOcJAEHLFU?=
- =?us-ascii?Q?9SC2KGtDSOTs/K+54mREK01MjAV2SzoR/Scj76jb2DtgGrRve5Gf4KbMgf9d?=
- =?us-ascii?Q?aCVwItp8v+7Nwrafrc0iZ0xklOfBupjlSuzpfDvzVITRtGVU8WSvFm/sZzl9?=
- =?us-ascii?Q?DBl4FTNURnj9HovI7C0m87Zd2vWGAEQMCre5V8uLmL8p1qAUN9Svut2uCU1Z?=
- =?us-ascii?Q?7nb1xd/ZeNOszSYy1x+9EEntgsn5zYwrnb+05H5tkscFUrPpoYifWwZybJc3?=
- =?us-ascii?Q?oH5cXiK9Gs9QWviyE856fSZcZ7NibmX1vCiZHpwcbrN32ypoxTnecVW5awha?=
- =?us-ascii?Q?3UUydpnPcdp4aaD6f0M8eLt+wVDcPBbg/beuiYnRbB3F/mOg?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?HgfHeaLBU3DTYE3JLDsz3Z3EdCUjkJS8+TvVfqkalFAz664+Pnq/Rb+vO8EL?=
+ =?us-ascii?Q?/v6WNK/lh5epLNaVZaAJxAQGO6aeJVgHSFBw6OdyW4gd36g4MFWVqpOd/bk0?=
+ =?us-ascii?Q?HKjrtj/iAQb4jga9NEBL7qyuKZpQ2c3VLKbinDMtcYutKqC0F+QzPM2o/W/j?=
+ =?us-ascii?Q?Xz4OqW2hJNeb42UJJeAJBg3Ap1s/xDhBXw1U9Cp7iweuwKbVd+uYWsRonT8d?=
+ =?us-ascii?Q?C2uERUnCBBgs39NN7evfO4IpQBhnmQocmFc/CGoDzMrx2YvgbdhTQQvlk8YV?=
+ =?us-ascii?Q?lmn8AwbfdLS5vm7zrjXQ9kmbOx9ING3/mLYGIEzb+Z16w3gAPpXhlGCayK0l?=
+ =?us-ascii?Q?WJbSleSzCH/az3CyIQSwSJg9GmuaNBTHYUjPR53KGcvfOvUNpXEllGsgp4TX?=
+ =?us-ascii?Q?BNT4c3qTwNdY4CvPj+1K6+V5enHReRpuINpaP/yZifSifnJyxfT0mQnUmrMS?=
+ =?us-ascii?Q?dgXhba/CDu2pFuUfImUN7VYk31O4u5N4GUpIwe5Y/ymmEUUdlbEqMDrgUQF1?=
+ =?us-ascii?Q?dVe8n+59R3RiFozDPQVNDyw4+aX8eWXG1fKCXzkH5pEjRWY041DJaeVwX4wz?=
+ =?us-ascii?Q?ypzkBf/2NDTnGkx6cXqTI0ILMYLM9UG7oX6UVUjd4hgwkRYmdPwatKrvWKyD?=
+ =?us-ascii?Q?6B920LmeMnV59sFQkdJR4ksOLx9Reo0FmSYIUXjL9Ae/mB6ZlEIJWs7o7L3z?=
+ =?us-ascii?Q?okxpIqLCF3vJPwdeEpZ9AkSyRdbrkmoW3G64eGRAlVzGYv6V+M5dWRIUsHf/?=
+ =?us-ascii?Q?SCgeCvpQt1cJaUDoNq1cx2OuTljNI8b1A1N6qMxATA13lGa+cRk2MuASEkqo?=
+ =?us-ascii?Q?hDDrTJ9jdYOvWbPV/MtEjgSsoYNR6KjJlnrnDevlxmB+Cuk48NzHBIyjieUM?=
+ =?us-ascii?Q?81paM0k9NhybCW+kplY9wXYO/Dpjh5isAVJzi0LREVmAwqLhk1mkyW4hCkeq?=
+ =?us-ascii?Q?zBo0gi8jIccdtvjtgvXyjQt9FsRsFyTXc1imbUFj8OihevVCk6wJXAFxddzC?=
+ =?us-ascii?Q?DQxMJaYFgTASNg4X3VwwCyLj5zTY9kmYjsrLmnhhmSHWyF6BHoYDM8DijcIp?=
+ =?us-ascii?Q?hXs5Kycxe9KCIRKUwyvFlxwwvFLl7+hZcG49u6x6Spue7SkkXy+rmhaaAIoI?=
+ =?us-ascii?Q?xBeWCRMZkp80i/dcW934oTelGY0dGvxZ6vpeRlDWgd6SwN1jZ70oYBywJstu?=
+ =?us-ascii?Q?ZTK59xqt54QSdHEtS4KdxJuBmlm5q8OCLKuC+aYfkVUKFkt8nYYXZC13WlWO?=
+ =?us-ascii?Q?1z1eXNk3Vz0OKvLEcSElnKps4J8HhekqmSTCqlxd0ql7/rrI0k0xdVQQTi04?=
+ =?us-ascii?Q?+d4UqNFAhZaR8A8oDboN1YOsm3wq9daKR4kM6Sb17cpgnGsTbkTfq8GWmj3U?=
+ =?us-ascii?Q?EZGOh99yGiQJ+nYC8mZw4e+/pkg0iMGBjp5mB4bYEH25b81da1s9jjwbhE1o?=
+ =?us-ascii?Q?JDTq4VxRWe2EUwNLt86ZKPxw+6+53eRCbtbj3rmVwmEW/6cmzqKdjj/a04FT?=
+ =?us-ascii?Q?duTYHyb3VlNAMb0mGeCzQv5jNf8318HUy/a1UOwnJdFKfGPB5iC22mcr40nn?=
+ =?us-ascii?Q?6TjzuhNr9AdfBT1Pk3uNy5gXOYHvFP5OVuSXdPADBmTuFA7NDqM5F7BauFKj?=
+ =?us-ascii?Q?OBrwNw4T2HfgzuTjugAwxGIhsZ8udYyQyCzEurmbe4u9D1rVp7WlMM1FPPqX?=
+ =?us-ascii?Q?RtVlE8Nqk6ttD/Ktdwc/KfbNcSVjzTnhleiA0gPs1baWBgBG?=
 Content-Type: multipart/alternative;
- boundary="_000_PH7PR15MB515180D1B6F069668AD594DFCAF82PH7PR15MB5151namp_"
+ boundary="_000_DM4PR15MB5380653523EF2D5C11DE2254E1F82DM4PR15MB5380namp_"
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: apH7yzg9a9yZABAzPhFZTtLifKdIBGngjLh7m80CtQSa+SKxtBzIU7XQutoAtGm1YN8bOajRJigJ/r5aJ6TihHCcdB+wOi8fjgvTiJZPGuNQ4aSRkO3FRCkM+eJ5VX2cnS9+jgYXmpxkoBI+xufXeJFzcieII1naG5Mq63Y4DbBzDagWP1fOPKkaKO7ZhYTltzv4Vu2Qpw+lQSneGyjs5YSA66J9Vr2yZWvlyFk9WE5pKu/YwguM2WcZNXgUXQ9JH1bY2tpkHisFaFqubwTMahsXNr77K3EfqISmDMxm91XFkIcXOe7wNtJT4aO7M909tTdHnesVABobpBsebKN6+A==
-X-OriginatorOrg: ibm.com
+X-Exchange-RoutingPolicyChecked: cq4LoKeWwYZaCcKoVbOYLnfLVtLtjbSibzHdrFKedal00clIcHfz9OcdEj95B7SHlPpAvcRipQoUM93DVVn2t9XU3BJd6MILt61fEyd2NMlh4TZLILD+RpkNkXN/YKAqx35xgc8gue8USh2Kz+5dL/CYDt4CearVUX54A09/oHKUer1B8CrSe9VWDwcmfeOhh8H9svOllOJIR2B44aQvKB9mDzEII+NjyhEnSOJTp1FW4yaH0MrhYnyYZXMoKhSv7jKf/45bRMeMew28jCyrRl7S0tTSn5ncmbc41u7Bhn5JFk/EK0tdh1glwWoZYzBcIY8IjnK6mBcQz9hpkX7kZg==
+X-OriginatorOrg: us.ibm.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH7PR15MB5151.namprd15.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 26151065-7be8-4196-2354-08dee28a5adc
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jul 2026 16:01:39.0204 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR15MB5380.namprd15.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4b04a506-6265-492e-33a2-08dee293c1cf
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jul 2026 17:08:57.2266 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: fcf67057-50c9-4ad4-98f3-ffca64add9e9
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: WXWV99YVhgUVYpiIK+HCfNOOQ23ElTmAkATeWP/903jzEX2NKGYq/Lh1N1cVxceg
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA3PR15MB6532
+X-MS-Exchange-CrossTenant-userprincipalname: nF65D56aQfYSwSWAvvu9fBdx6S+ntPP7RJ0MsEN8TXq4c4RD0MtqnI5QYhFWw3KMisVvs3fZG5gvlosZ30LfPg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR15MB5258
 X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Proofpoint-GUID: unhKgWxwgvzzhF2vdEvI9DERMEjIsCNT
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE1MDE1NiBTYWx0ZWRfX7+ko/wA26epL
- PeUST+fcoTgT6ffyFTDkApygrSx2FHVb2teuNtCoE8jFeh7RYmA48ECNmyA8Fj+g5vcT7wRpkyH
- No+Fjw28xq3IhPfF7MwGe09MuK8kALssfysMPwqe+7OflhGfPKRBviJAy2fPTBABtwot8SsHVp8
- FE8PsBKTtATtDet9dtVdwesuX/espJpAL/Ky6X8gW8KWklgMYlWiNTp37ZQov3MS6FrThqGnDWf
- 85YIpqbg8VF5qf8LqfjRjDG9sjdNGH0peAFdV+ZTou3ICvfG5lO9HxqHEq2kHxJC7xMKO2Dsynw
- WbEL1OSzjwB86bTy171Ig7FHd91MbI0LEzK9df2p2vCUWo6IuXaJJ24vlOWV3dZfJ7wDj8G0xVN
- 1jelvKcYpcC6PNxmqNCaA1ivJiIjfFGSizFYs+fxpxfh5AcsPzdQ18jic9Z6XJ/mYM0/3STmWir
- KTZ+Mcui2vXdD3BNyYA==
-X-Authority-Analysis: v=2.4 cv=XJoAjwhE c=1 sm=1 tr=0 ts=6a57aee7 cx=c_pps
- a=L3hcPeoaDr12kb94poMUUQ==:117 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
+X-Proofpoint-ORIG-GUID: P4CEqEgPt8hFM4bbLpY78D4J4oSFGsc7
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE1MDE2NiBTYWx0ZWRfXxWqhstgyYzXg
+ I5uVgziSFgo0HG04q4bZxGKA0YCt0nHElchxPoZoCu4S7RMhKIgPmWktT6xHxVZhsizYuKBy5u/
+ YuOqmSymhA4OpUDR3zI1+mf0IQxwciM=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE1MDE2NiBTYWx0ZWRfX9wFmlWBrJF3V
+ K7OrKxItdCOpw/o+Xe0WoaQPRQH64Bu4RYQBbcnKKghUKCap4hFTDR09F+7dUBMNuh+hYRrkeBp
+ FZFSMmoQ2m7DfyB8jmdkpONQ+riIwU/YJQAKwTiHxiTcxNGKd8cNoYDsAIYJZ68euRbpTb9/hEV
+ MB/QJKJ7RrSx3EI7eNsC1W3qbUpCaGT1UOf4zG5mJzofEvcBv+5qzcPuqjQYpsQ+OJhlg0LgoS5
+ +FBuEawbUucpN+IFG+gQncEBX4dxtAE/P687SngXhsvG8OWA8hyqTTb17FYa3SsibJLedE+tbMZ
+ O9KoO4qcGzn9m65Ws68u1c4pHpScGLWEBc6hthsmzmjvwi6nLiTcKX/y47z9AHXxdVkHiJvjExV
+ xJ0SmVbqy2KpZF5WOprdUT2Uv7tuLZbLSOhrkOEEvPT6irI94cm69wcc6NuXgpcm6mpGOGsbyBY
+ 1VAt0mKFdPiwz4xG+dw==
+X-Authority-Analysis: v=2.4 cv=IqMutr/g c=1 sm=1 tr=0 ts=6a57beb0 cx=c_pps
+ a=3pdFJ6cSxbCDruMc3dgxYA==:117 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
  a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19 a=xqWC_Br6kY4A:10 a=RAioF0-LDSMA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22 a=V8glGbnc2Ofi9Qvn3v5h:22
+ a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22 a=U7nrCbtTmkRpXpFmAIza:22
  a=VnNF1IyMAAAA:8 a=aow-egSQAAAA:8 a=KKAkSRfTAAAA:8 a=20KFwNOVAAAA:8
  a=1XWaLZrsAAAA:8 a=hD80L64hAAAA:8 a=S56xvJB5AAAA:8 a=V2NxCb60AAAA:8
- a=pGLkceISAAAA:8 a=7KBfExy5AAAA:8 a=69wJf7TsAAAA:8 a=YnYxBVUDfpumnXdzggsA:9
- a=CjuIK1q_8ugA:10 a=zfUYtMfrBnJaN-fz7VUA:9 a=201ISDeuEE_Kwwc9:21
+ a=pGLkceISAAAA:8 a=7KBfExy5AAAA:8 a=69wJf7TsAAAA:8 a=ZyqM74AI27vIaqdW3IgA:9
+ a=CjuIK1q_8ugA:10 a=XV2iG6GQJs05N3O_JE0A:9 a=WwSFPsUCu2GDwqp3:21
  a=frz4AuCg-hUA:10 a=_W_S_7VecoQA:10 a=gFNbaldVC-z-bsjSTzMo:22
  a=cvBusfyB2V15izCimMoJ:22 a=MH9Ivq0PDQRhlrFuIVvX:22 a=3L6qF29SlnrayQqPM2jZ:22
  a=eL7OMsOqQ-6kYQPn45L1:22 a=Fg1AiH1G6rFz08G2ETeA:22
-X-Proofpoint-ORIG-GUID: dpdRMQjtzbCCbllURxw78g14ZQtr2K6l
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE1MDE1NiBTYWx0ZWRfX9D/beoXEZ6RE
- z8CP4PjZ9zE+OzrLaCDaouFSWz0G/AMPhBhXRHxIcUM5OfX0aiJFEdcisrXGUyhASVIAWNFhszM
- vuhzwSO8Tdmv+qKtxI9bjtjOQaBd6YQ=
+X-Proofpoint-GUID: cZ3p8OZjPS3Rur1P-ceShjJiTS-mEM7n
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-15_03,2026-07-15_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 adultscore=0 bulkscore=0 phishscore=0 lowpriorityscore=0
- priorityscore=1501 impostorscore=0 clxscore=1011 spamscore=0 malwarescore=0
+ spamscore=0 clxscore=1011 impostorscore=0 malwarescore=0 adultscore=0
+ phishscore=0 suspectscore=0 priorityscore=1501 bulkscore=0 lowpriorityscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607150156
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=milesg@ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607150166
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=calebs@us.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 15 Jul 2026 12:35:59 -0400
+X-Mailman-Approved-At: Wed, 15 Jul 2026 15:23:51 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -195,9 +198,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---_000_PH7PR15MB515180D1B6F069668AD594DFCAF82PH7PR15MB5151namp_
+--_000_DM4PR15MB5380653523EF2D5C11DE2254E1F82DM4PR15MB5380namp_
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
+
+Mikail,
+
+Same for me, please use calebs@linux.ibm.com.
+
+Thanks,
+Caleb Schlossin
+----------------------------------------
+Power Simulation Architect
+IBM Rochester, MN
+----------------------------------------
+________________________________
+From: Glenn Miles <milesg@ibm.com>
+Sent: Wednesday, July 15, 2026 11:01 AM
+To: Mikail Sadic <Mikail.Sadic@ibm.com>; clg@kaod.org <clg@kaod.org>; peter=
+.maydell@linaro.org <peter.maydell@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>; ninad@linux.ibm.com <ninad@linux.i=
+bm.com>; titusr@google.com <titusr@google.com>; jeuk20.kim@samsung.com <jeu=
+k20.kim@samsung.com>; philmd@mailo.com <philmd@mailo.com>; steven_lee@aspee=
+dtech.com <steven_lee@aspeedtech.com>; leetroy@gmail.com <leetroy@gmail.com=
+>; jamin_lin@aspeedtech.com <jamin_lin@aspeedtech.com>; kane_chen@aspeedtec=
+h.com <kane_chen@aspeedtech.com>; andrew@codeconstruct.com.au <andrew@codec=
+onstruct.com.au>; joel@jms.id.au <joel@jms.id.au>; CALEB SCHLOSSIN <calebs@=
+us.ibm.com>; qemu-arm@nongnu.org <qemu-arm@nongnu.org>; qemu-devel@nongnu.o=
+rg <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v1 0/5] Add IBM Huygens BMC machine for AST2700
 
 Hi Mikail,
 
@@ -299,7 +328,7 @@ Mikail Sadic (5):
 2.53.0
 
 
---_000_PH7PR15MB515180D1B6F069668AD594DFCAF82PH7PR15MB5151namp_
+--_000_DM4PR15MB5380653523EF2D5C11DE2254E1F82DM4PR15MB5380namp_
 Content-Type: text/html; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
@@ -311,43 +340,110 @@ Content-Transfer-Encoding: quoted-printable
 ttom:0;} </style>
 </head>
 <body dir=3D"ltr">
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-Hi Mikail,</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
+<div class=3D"elementToProof" style=3D"font-family: Arial, Helvetica, sans-=
+serif; font-size: 10pt; color: rgb(0, 0, 0);">
+Mikail,</div>
+<div class=3D"elementToProof" style=3D"font-family: Arial, Helvetica, sans-=
+serif; font-size: 10pt; color: rgb(0, 0, 0);">
 <br>
 </div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-Could you use my milesg@linux.ibm.com email address for patches please?</di=
-v>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
+<div class=3D"elementToProof" style=3D"font-family: Arial, Helvetica, sans-=
+serif; font-size: 10pt; color: rgb(0, 0, 0);">
+Same for me, please use calebs@linux.ibm.com.</div>
+<div id=3D"Signature" class=3D"elementToProof">
+<div class=3D"elementToProof" style=3D"font-family: Arial, Helvetica, sans-=
+serif; font-size: 10pt; color: rgb(0, 0, 0);">
 <br>
 </div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
+<div class=3D"elementToProof" style=3D"font-family: Arial, Helvetica, sans-=
+serif; font-size: 10pt; color: rgb(0, 0, 0);">
 Thanks,</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-<br>
+<div class=3D"elementToProof" style=3D"font-family: Arial, Helvetica, sans-=
+serif; font-size: 10pt; color: rgb(0, 0, 0);">
+Caleb Schlossin</div>
+<div class=3D"elementToProof" style=3D"font-family: Arial, Helvetica, sans-=
+serif; font-size: 10pt; color: rgb(0, 0, 0);">
+----------------------------------------</div>
+<div class=3D"elementToProof" style=3D"font-family: Arial, Helvetica, sans-=
+serif; font-size: 10pt; color: rgb(0, 0, 0);">
+Power Simulation Architect</div>
+<div class=3D"elementToProof" style=3D"font-family: Arial, Helvetica, sans-=
+serif; font-size: 10pt; color: rgb(0, 0, 0);">
+IBM Rochester, MN</div>
+<div class=3D"elementToProof" style=3D"font-family: Arial, Helvetica, sans-=
+serif; font-size: 10pt; color: rgb(0, 0, 0);">
+<span style=3D"background-color: rgb(255, 255, 255);">---------------------=
+-------------------</span></div>
 </div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-Glenn</div>
 <div id=3D"appendonsend"></div>
 <hr style=3D"display:inline-block;width:98%" tabindex=3D"-1">
 <div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" st=
-yle=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Mikail Sadic &lt;mika=
-il.sadic@ibm.com&gt;<br>
+yle=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Glenn Miles &lt;miles=
+g@ibm.com&gt;<br>
+<b>Sent:</b> Wednesday, July 15, 2026 11:01 AM<br>
+<b>To:</b> Mikail Sadic &lt;Mikail.Sadic@ibm.com&gt;; clg@kaod.org &lt;clg@=
+kaod.org&gt;; peter.maydell@linaro.org &lt;peter.maydell@linaro.org&gt;<br>
+<b>Cc:</b> Paolo Bonzini &lt;pbonzini@redhat.com&gt;; ninad@linux.ibm.com &=
+lt;ninad@linux.ibm.com&gt;; titusr@google.com &lt;titusr@google.com&gt;; je=
+uk20.kim@samsung.com &lt;jeuk20.kim@samsung.com&gt;; philmd@mailo.com &lt;p=
+hilmd@mailo.com&gt;; steven_lee@aspeedtech.com &lt;steven_lee@aspeedtech.co=
+m&gt;;
+ leetroy@gmail.com &lt;leetroy@gmail.com&gt;; jamin_lin@aspeedtech.com &lt;=
+jamin_lin@aspeedtech.com&gt;; kane_chen@aspeedtech.com &lt;kane_chen@aspeed=
+tech.com&gt;; andrew@codeconstruct.com.au &lt;andrew@codeconstruct.com.au&g=
+t;; joel@jms.id.au &lt;joel@jms.id.au&gt;; CALEB SCHLOSSIN &lt;calebs@us.ib=
+m.com&gt;;
+ qemu-arm@nongnu.org &lt;qemu-arm@nongnu.org&gt;; qemu-devel@nongnu.org &lt=
+;qemu-devel@nongnu.org&gt;<br>
+<b>Subject:</b> Re: [PATCH v1 0/5] Add IBM Huygens BMC machine for AST2700<=
+/font>
+<div>&nbsp;</div>
+</div>
+<style type=3D"text/css" style=3D"display:none">
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style>
+<div dir=3D"ltr">
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:11pt; color:=
+rgb(0,0,0)">
+Hi Mikail,</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:11pt; color:=
+rgb(0,0,0)">
+<br>
+</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:11pt; color:=
+rgb(0,0,0)">
+Could you use my milesg@linux.ibm.com email address for patches please?</di=
+v>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:11pt; color:=
+rgb(0,0,0)">
+<br>
+</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:11pt; color:=
+rgb(0,0,0)">
+Thanks,</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:11pt; color:=
+rgb(0,0,0)">
+<br>
+</div>
+<div class=3D"x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFo=
+nt,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:11pt; color:=
+rgb(0,0,0)">
+Glenn</div>
+<div id=3D"x_appendonsend"></div>
+<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
+<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
+color=3D"#000000" style=3D"font-size:11pt"><b>From:</b> Mikail Sadic &lt;mi=
+kail.sadic@ibm.com&gt;<br>
 <b>Sent:</b> Wednesday, July 15, 2026 10:50 AM<br>
 <b>To:</b> clg@kaod.org &lt;clg@kaod.org&gt;; peter.maydell@linaro.org &lt;=
 peter.maydell@linaro.org&gt;<br>
@@ -368,10 +464,10 @@ gt;; qemu-arm@nongnu.org &lt;qemu-arm@nongnu.org&gt;; qemu-devel@nongnu.org=
 t>
 <div>&nbsp;</div>
 </div>
-<div class=3D"BodyFragment"><font size=3D"2"><span style=3D"font-size:11pt;=
-">
-<div class=3D"PlainText">This series adds initial support for the IBM Huyge=
-ns BMC platform based<br>
+<div class=3D"x_BodyFragment"><font size=3D"2"><span style=3D"font-size:11p=
+t">
+<div class=3D"x_PlainText">This series adds initial support for the IBM Huy=
+gens BMC platform based<br>
 on the ASPEED AST2700 A2 SoC.<br>
 <br>
 The series introduces a new Huygens machine model, adds a dedicated<br>
@@ -499,8 +595,9 @@ sp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; 2 +<br>
 <br>
 </div>
 </span></font></div>
+</div>
 </body>
 </html>
 
---_000_PH7PR15MB515180D1B6F069668AD594DFCAF82PH7PR15MB5151namp_--
+--_000_DM4PR15MB5380653523EF2D5C11DE2254E1F82DM4PR15MB5380namp_--
 

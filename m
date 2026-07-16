@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2D7FC44501
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 13:06:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBDF0C4450A
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 13:35:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkLnE-0001uY-S9; Thu, 16 Jul 2026 09:06:24 -0400
+	id 1wkMF2-0000Ar-IX; Thu, 16 Jul 2026 09:35:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1wkLnD-0001u2-CN; Thu, 16 Jul 2026 09:06:23 -0400
+ id 1wkMF0-00008X-Nz; Thu, 16 Jul 2026 09:35:06 -0400
 Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1wkLnB-0002e5-Pl; Thu, 16 Jul 2026 09:06:23 -0400
+ id 1wkMEz-0006Ls-3f; Thu, 16 Jul 2026 09:35:06 -0400
 Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66GABsqW2899219; Thu, 16 Jul 2026 13:05:50 GMT
+ 66GACETw2899651; Thu, 16 Jul 2026 13:34:47 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
  :content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:reply-to:subject:to; s=pp1;
- bh=/0s3cUaEIujnBBo7EGiJgq+I7AZDGLffugwLuwROwtM=; b=QjfNNrftZfpm
- qvVSEftT7AMz6LGjRVoxL0xqJJ32CHNkV9E1SFVYvG/ur0wMQ6OfQwC46gO+F50z
- 0192O8UZFgNft0W0ZWMfj8AdvoYFng2CjDLi02mBJ/TlUKyaZsFF/lTu0rk3nrqO
- 0i5AXzvwRmNge2iDaBW122tyj8UdZB9p8xfltdBejvGkNKgjzQIL/TpPQPTy+aUi
- oHseEK+ZT+kByzDmgPkIu9eyGlmX1tFevuV4h/4JBMFsG97GhqmyrGB+0CQiJVOd
- cpP60cnwhBOkDFPLM9QHWYvj5kOw9PFP8VL237vdL/EsJyhj1xTc57+EbhiC4R/X
- 5oEQDZIBsQ==
+ bh=PWhn8kjzB6tgkFhA+CaZlszuNPUfISD3CsgkMvC2iOU=; b=mHy3I25U5ep8
+ sttL6D6t18CrXEjZlrMwXsMVl2ijkXGBdYiES0BiRvxIIcrBxFtO9KJsU7BrtWqG
+ 7CcFfFyFpyheqv6FzaMi+d1vjfa92RtG6LP4VWm7DGhNzkjp0mrSDaC77uMfYsAM
+ gJO/myJidVSSygpHCC5DjumCUUx4JwgQzuTD70WZ2NW7i8kIp8dTF5xU0+eXj5Ma
+ J9PhR6Oa1ofkdgYC0Om1XH2KvmTLa3lGZ3supfV+hkySlX4OYNACCtoFSqpkUjKW
+ EGABTe3IfYPnSxyhprN0tXiMUqvnjj5VRznss2WShffJLGVRL4VbInC1ePoUo9C/
+ LBf1cqO9SA==
 Received: from ppma12.dal12v.mail.ibm.com
  (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fbegc07x6-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fbegc0c7q-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 16 Jul 2026 13:05:50 +0000 (GMT)
+ Thu, 16 Jul 2026 13:34:46 +0000 (GMT)
 Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
- by ppma12.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66GD4d4H017378;
- Thu, 16 Jul 2026 13:05:49 GMT
-Received: from smtprelay05.wdc07v.mail.ibm.com ([172.16.1.72])
- by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 4fc05qd9pq-1
+ by ppma12.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66GDYghu017683;
+ Thu, 16 Jul 2026 13:34:45 GMT
+Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 4fc05qddbe-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 16 Jul 2026 13:05:49 +0000 (GMT)
-Received: from smtpav03.wdc07v.mail.ibm.com (smtpav03.wdc07v.mail.ibm.com
- [10.39.53.230])
- by smtprelay05.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 66GD5mqe34669208
+ Thu, 16 Jul 2026 13:34:45 +0000 (GMT)
+Received: from smtpav04.wdc07v.mail.ibm.com (smtpav04.wdc07v.mail.ibm.com
+ [10.39.53.231])
+ by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 66GDYjAe23724660
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 16 Jul 2026 13:05:48 GMT
-Received: from smtpav03.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6D1E65805D;
- Thu, 16 Jul 2026 13:05:48 +0000 (GMT)
-Received: from smtpav03.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 27FA35805F;
- Thu, 16 Jul 2026 13:05:47 +0000 (GMT)
+ Thu, 16 Jul 2026 13:34:45 GMT
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id F034D58052;
+ Thu, 16 Jul 2026 13:34:44 +0000 (GMT)
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id B271D58062;
+ Thu, 16 Jul 2026 13:34:43 +0000 (GMT)
 Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
- by smtpav03.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Thu, 16 Jul 2026 13:05:47 +0000 (GMT)
-Message-ID: <b71a45056d81dd068b0ce5100a7f007d10d0ff67.camel@linux.ibm.com>
-Subject: Re: [PATCH 05/29] hw/gpio: pca9552: declare pca9555 device as an
- alias of pca9535 device
+ by smtpav04.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Thu, 16 Jul 2026 13:34:43 +0000 (GMT)
+Message-ID: <f7c436451ade74baed3087c9c6dd4bee554d1ed2.camel@linux.ibm.com>
+Subject: Re: [PATCH 06/29] hw/gpio: pca9552: use the Resettable interface
+ instead of legacy reset
 From: Miles Glenn <milesg@linux.ibm.com>
 To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
@@ -71,10 +71,10 @@ Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
  <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew
  Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Corey
  Minyard <cminyard@mvista.com>
-Date: Thu, 16 Jul 2026 08:05:46 -0500
-In-Reply-To: <20260709-catalina-upgrade-v1-5-814575bc076b@free.fr>
+Date: Thu, 16 Jul 2026 08:34:43 -0500
+In-Reply-To: <20260709-catalina-upgrade-v1-6-814575bc076b@free.fr>
 References: <20260709-catalina-upgrade-v1-0-814575bc076b@free.fr>
- <20260709-catalina-upgrade-v1-5-814575bc076b@free.fr>
+ <20260709-catalina-upgrade-v1-6-814575bc076b@free.fr>
 Organization: IBM
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5 (3.28.5-27.el8_10) 
@@ -82,24 +82,24 @@ Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-TM-AS-GCONF: 00
 X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Authority-Analysis: v=2.4 cv=fOcJG5ae c=1 sm=1 tr=0 ts=6a58d72e cx=c_pps
+X-Authority-Analysis: v=2.4 cv=fOcJG5ae c=1 sm=1 tr=0 ts=6a58ddf7 cx=c_pps
  a=bLidbwmWQ0KltjZqbj+ezA==:117 a=bLidbwmWQ0KltjZqbj+ezA==:17
  a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=VkNPw1HP01LnGYTKEx00:22
  a=RnoormkPH1_aCDwRdu11:22 a=RzCfie-kr_QcCd8fBx8p:22 a=VnNF1IyMAAAA:8
- a=wsvIPkopN6-YJcbqhKEA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDEzMSBTYWx0ZWRfX/WUcJERELTCc
- GWkTfK/2EzUS7w61oOxHtgiJfwdBRXaao4aqDNguuXR/cjjZhZhqdqu0jmvCmk0cc0UPLbWQZ2C
- fwc44F4/f2fPgP02p2My3NWsshkSRo52M+A02pE83M14OQCvKGAgFkou+3U99MnU4jNP3Ceh/mJ
- iStA7t7XO0hEBhzXYyumg7+9LxpSZUbl6Jli+9my7Z7qbVI2I8jPsijbdgIWe2rcsxywLotlG7T
- EBAY0b3A2NK7kee0mkpQ5dEuesMftfRk9bNBy2IXo5XD561TjDPHigGd7UR2ie3JTcVCp2VAqs7
- nsCp8MV2txyUt0q2Ii5NcrP8C29mkbeHQKIPpjOTlmdj8i/5iCsBHIr/fBVPRtH9nOwuNsgsjDG
- 4dLp4Xl6HC6RLF+WiSwZ5nQJoYdKDRlXXcImN1+UktBi95pnBYClIdsT48RQlKoGNaIgE5DzPAL
- zWDK88TF856E3TtL9Fw==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDEzMSBTYWx0ZWRfX9xP56dJjLMaA
- /EcUerAOBZj9tWM1ecLHUXROM16M7OoS7TQR6Sda/0Fx3i8WU8qXani62fZ4d2m//1uyWaSCjN6
- pFtEdhCJmd4V/babXDO9CqwuhO2c4U0=
-X-Proofpoint-GUID: N6RFUG5seI__LM_1ZdNRNS9Zyw4FOHYB
-X-Proofpoint-ORIG-GUID: niGm4X6PH0NgI7xk1xBPkz0Lptnbx4C2
+ a=ayuSXJ0DrvFcvoGZ-b4A:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDEzNiBTYWx0ZWRfX6CH33atjACOE
+ HuOFoEes/mqS4xumow2muTS1oTq+nbXrIuazqDKzxKFAJzC3Tk/NUfcO+hbXNdCts+5UZ1y8tzM
+ RBJWuQaXGCEBRxijJztZ5baGltC9gW/mER9GquT8BDwf73wY8YGama0mVWMj19MVYQsQqDZA8q8
+ /VlCrYzf7uNjJwFL4wufQxmb397SlFrkWWjLtpufBWLjrMbZhfHsxj7ZRpyeUxg8zaLF+gMravG
+ JoFdP39xk0DmWRm0UcqngsLewZRKV+/QWzfxFMuqPaE1NMOt8KSXhrm94YcGQ8RkOV7p/IujyMg
+ IXYcCUOY5QcZSOFkDkhGUmpmG43D4eJUfYDYMTV+nfhQArDSdVjTdFCVt/6DvN84s82chBFgs0K
+ LyB3e34+ApnMNWGaY67HlI2JqTlLviXDVrZ2grUjtOmaIsNNPdnDCj3Yf2hluBbKhVkU4WLHP52
+ Be8dCvM3mkri9gx6A+Q==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDEzNiBTYWx0ZWRfX0O+qR8OZjrxz
+ 2ExfeVGLqcXGvrQxZhOnepS6urCp4h4d+q5GVu4Mt650YXQnYgjS2MZqwQ4B37rmd/b3JAn8qgh
+ g0bHbfN6iLDCuigOkziYZw7i3bWY3zY=
+X-Proofpoint-GUID: CwP99NTpaWgqnEUOR43pCJ5Nos7VYalF
+X-Proofpoint-ORIG-GUID: EP2twkZXyQdvM6SuE4EfN1TlJXiwlkGK
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-16_04,2026-07-15_02,2025-10-01_01
@@ -108,7 +108,7 @@ X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  priorityscore=1501 malwarescore=0 clxscore=1015 phishscore=0
  lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
  route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2607160131
+ definitions=main-2607160136
 Received-SPF: pass client-ip=148.163.158.5; envelope-from=milesg@linux.ibm.com;
  helo=mx0b-001b2d01.pphosted.com
 X-Spam_score_int: -26
@@ -141,56 +141,70 @@ Thanks,
 Glenn
 
 On Thu, 2026-07-09 at 17:23 +0200, Emmanuel Blot wrote:
-> PCA9555 HW is mostly identical to PCA9535.
-> PCA9555 HW features pull-up resistors that are not available on PCA9535.
+> Convert the PCA9552 and PCA9535/PCA9555 reset handlers from the legacy
+> device reset hook to the Resettable interface: move each reset body into
+> a ResettableHoldPhase handler and register it through the class's
+> ResettableClass::phases.hold instead of device_class_set_legacy_reset().
 > 
-> Pull-up are not handled by current PCA955x implementation and PCA9535
-> already initializes input as Hi-Z.
+> No functional change.
 > 
 > Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 > ---
->  hw/gpio/pca9552.c         | 9 +++++++--
->  include/hw/gpio/pca9552.h | 1 +
->  2 files changed, 8 insertions(+), 2 deletions(-)
+>  hw/gpio/pca9552.c | 14 ++++++++------
+>  1 file changed, 8 insertions(+), 6 deletions(-)
 > 
 > diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
-> index ffeb438d2a..3b9b63eb17 100644
+> index 3b9b63eb17..66f699bf6a 100644
 > --- a/hw/gpio/pca9552.c
 > +++ b/hw/gpio/pca9552.c
-> @@ -523,7 +523,7 @@ static void pca9552_class_init(ObjectClass *oc, const void *data)
->      pc->has_led_support = true;
->  }
->  
-> -static void pca9535_class_init(ObjectClass *oc, const void *data)
-> +static void pca95x5_class_init(ObjectClass *oc, const void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(oc);
->      PCA955xClass *pc = PCA955X_CLASS(oc);
-> @@ -553,7 +553,12 @@ static const TypeInfo pca955x_types[] = {
->      {
->          .name          = TYPE_PCA9535,
->          .parent        = TYPE_PCA955X,
-> -        .class_init    = pca9535_class_init,
-> +        .class_init    = pca95x5_class_init,
-> +    },
-> +    {
-> +        .name          = TYPE_PCA9555,
-> +        .parent        = TYPE_PCA955X,
-> +        .class_init    = pca95x5_class_init,
+> @@ -406,9 +406,9 @@ static const VMStateDescription pca9552_vmstate = {
 >      }
 >  };
 >  
-> diff --git a/include/hw/gpio/pca9552.h b/include/hw/gpio/pca9552.h
-> index 71479ea000..5299c13829 100644
-> --- a/include/hw/gpio/pca9552.h
-> +++ b/include/hw/gpio/pca9552.h
-> @@ -13,5 +13,6 @@
->  #define TYPE_PCA955X "pca955x"
->  #define TYPE_PCA9552 "pca9552"
->  #define TYPE_PCA9535 "pca9535"
-> +#define TYPE_PCA9555 "pca9555"
+> -static void pca9552_reset(DeviceState *dev)
+> +static void pca9552_reset_hold(Object *obj, ResetType type)
+>  {
+> -    PCA955xState *s = PCA955X(dev);
+> +    PCA955xState *s = PCA955X(obj);
 >  
->  #endif
+>      s->regs[PCA9552_PSC0] = 0xFF;
+>      s->regs[PCA9552_PWM0] = 0x80;
+> @@ -426,9 +426,9 @@ static void pca9552_reset(DeviceState *dev)
+>      s->len = 0;
+>  }
+>  
+> -static void pca9535_reset(DeviceState *dev)
+> +static void pca9535_reset_hold(Object *obj, ResetType type)
+>  {
+> -    PCA955xState *s = PCA955X(dev);
+> +    PCA955xState *s = PCA955X(obj);
+>  
+>      s->regs[PCA9535_INPUT0] = 0xFF;   /* All inputs high (pull-ups) */
+>      s->regs[PCA9535_INPUT1] = 0xFF;   /* All inputs high (pull-ups) */
+> @@ -514,9 +514,10 @@ static void pca955x_class_init(ObjectClass *klass, const void *data)
+>  static void pca9552_class_init(ObjectClass *oc, const void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(oc);
+> +    ResettableClass *rc = RESETTABLE_CLASS(oc);
+>      PCA955xClass *pc = PCA955X_CLASS(oc);
+>  
+> -    device_class_set_legacy_reset(dc, pca9552_reset);
+> +    rc->phases.hold = pca9552_reset_hold;
+>      dc->vmsd = &pca9552_vmstate;
+>      pc->max_reg = PCA9552_LS3;
+>      pc->pin_count = 16;
+> @@ -526,9 +527,10 @@ static void pca9552_class_init(ObjectClass *oc, const void *data)
+>  static void pca95x5_class_init(ObjectClass *oc, const void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(oc);
+> +    ResettableClass *rc = RESETTABLE_CLASS(oc);
+>      PCA955xClass *pc = PCA955X_CLASS(oc);
+>  
+> -    device_class_set_legacy_reset(dc, pca9535_reset);
+> +    rc->phases.hold = pca9535_reset_hold;
+>      dc->vmsd = &pca9552_vmstate;
+>      pc->max_reg = PCA9535_CONFIG1;
+>      pc->pin_count = 16;
 > 
 
 

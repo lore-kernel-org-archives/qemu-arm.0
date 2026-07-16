@@ -4,96 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A51EEC44515
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 17:28:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7193FC44512
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 18:07:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkPsR-0003jt-NZ; Thu, 16 Jul 2026 13:28:03 -0400
+	id 1wkQUj-0000vb-N0; Thu, 16 Jul 2026 14:07:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yisooan.dev@gmail.com>)
- id 1wkPsN-0003jV-Ho
- for qemu-arm@nongnu.org; Thu, 16 Jul 2026 13:27:59 -0400
-Received: from mail-oi1-f182.google.com ([209.85.167.182])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <yisooan.dev@gmail.com>)
- id 1wkPsL-00016i-6I
- for qemu-arm@nongnu.org; Thu, 16 Jul 2026 13:27:58 -0400
-Received: by mail-oi1-f182.google.com with SMTP id
- 5614622812f47-4a4c6081f9fso163988b6e.3
- for <qemu-arm@nongnu.org>; Thu, 16 Jul 2026 10:27:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <matheus.bernardino@oss.qualcomm.com>)
+ id 1wkQUh-0000v3-R4
+ for qemu-arm@nongnu.org; Thu, 16 Jul 2026 14:07:35 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <matheus.bernardino@oss.qualcomm.com>)
+ id 1wkQUg-0001Vh-7P
+ for qemu-arm@nongnu.org; Thu, 16 Jul 2026 14:07:35 -0400
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 66GGSjbu3002272
+ for <qemu-arm@nongnu.org>; Thu, 16 Jul 2026 18:07:32 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:date:from:in-reply-to:message-id
+ :mime-version:references:subject:to; s=qcppdkim1; bh=2OJRRCmADXE
+ 01Dx5EKXd0WPcwnmtWnKChRhNUdIjxw0=; b=hxZt87zp4H4O5tQ5uRRDhIXT2A+
+ yzj5TQuaSxky5nMeJBPqvxRdS2j1RSTk5O5gMW81HTX/IMZv0Czpyxvr+r7N4A6o
+ tFpqrSO7Q5riVNTt3ap5QkEiJh2S4V1ATInYxqZ3Rv8CD0qmLDYFW7sY/IF2d1kx
+ bwMpBu/K6OpBVKrO7s2s3qMR4n2ijDnHoepNrq3z7RI3heYm0hVE3pwD5erYFX4T
+ BYZ3cy3VqWuIO0fgwKH6PjUln38E8T/MSSGQln9qKI1WY5k4TIbnC/QFCBC3Q01V
+ Kp1iS2K2Sfeq4c9qyotA244b1ok0DM+X7DtYGOkIARaMQG3lTAaO1VZRlOA==
+Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
+ [209.85.216.70])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ff1m9gtb8-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 16 Jul 2026 18:07:32 +0000 (GMT)
+Received: by mail-pj1-f70.google.com with SMTP id
+ 98e67ed59e1d1-384419c6c74so8826789a91.1
+ for <qemu-arm@nongnu.org>; Thu, 16 Jul 2026 11:07:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1784225252; x=1784830052; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=2OJRRCmADXE01Dx5EKXd0WPcwnmtWnKChRhNUdIjxw0=;
+ b=G4Luz6kViRES3MlDa8rTTD+knFthPxyfLO39syt54rAVsZA6759A6jw+3EtCdZgjuy
+ dTuqWVHCUv+lqlFjC1a2OWNWONlPVhP5ul0k5VWARCPqt9c/tqhGRAXwgVYCcJhZhbOq
+ GZpQKwRja9QGId/w6zbWzPgR6HQfq6lQySHLOx9SSDSrgf9T92zFaW90efkZUmWWmRxy
+ avqX0JlNaZJDbEgntXwIPIYm5/soyR9/EcG5/+A4enETDRm/M8/bl140wdyvKr+XLr2j
+ VHyAvcxKUkbAETcMOnkvj2vvHvF2J/VvBQZVsDFXAOAYv6EtJIJzwI4UsB/8qF0c/trB
+ JWsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784222876; x=1784827676;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=df4xxXKfud+vHTeMMkueAvHLfaVdA07+CRchcpoXFaA=;
- b=XpaX2+we6xhlzxfoyTJDMs/bD02/gma074XCd0AtaTTx9siL7W3jQyfwrO8ijsQXt2
- 4Sc+erYdNQ1Y9t8a/ajAEyIZEkux29dZeVSQ+Wpvok0e2Wz4/3Wiu4rFVKFuOJgYcVGt
- 7lBGU+/DG21CDm9guxVmLEZe7WruICEQFwF+SyODimZKFDZdF81qMh8UCCajxmYPV7YR
- Pt9F7LSN+OZ06Bb3JJvEB1Oc5L3c8hJIpgm6kqjQUegYJi1Pv2hNxHWpJoQZUB0Xsffn
- y6PvQde6jgOoYBwyM4CxlDg0+TNe6Z5UClQaZg8BZdFtl0vWkCDt0aBaT5pqrdBIVWwG
- 6LuA==
+ d=1e100.net; s=20251104; t=1784225252; x=1784830052;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=2OJRRCmADXE01Dx5EKXd0WPcwnmtWnKChRhNUdIjxw0=;
+ b=W0lmC5swo4M/xVjLfnzt9wTp70c3u0JT8smwMYT7aZ79YdiBwLiBLm7paYLkvhgeuz
+ YGwT1nNKFWu/42MgOOX4B0GCN+dedP2pCADc7ViSg9NMHAIr/4gKXmv+/+HtB4jeBvKq
+ 4n0dAOXNL1lfZ/v/oWhWKPFAyIqgmSuczRfm3r2KPbnJOdl+CEOgOflmxr+psbdASrUZ
+ FbZvl5iL63eWMCKYge6Ep8g+D5arecxB/eB67o/+ZnvlSGbJ4xi/OehQf8nFhNFPTIKI
+ ToFvvKyQX11vFbt+Ci9rEDM4oupq6nY9/Uc/FdBbtdiYlOsMEOwbhRKQv7FkjplHzyU5
+ 7sRw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrfHVZNZ2/UEOlx2JuxblMd8/wviwDiOG3gPqEUaeLrygYjMEpIH06y9Zo30Jted6WUbO1w3txvjQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxBScQSnx/Zsz+7uwVNMgheRtrqPd4aJt4rY4WYonAfNDKYu/9n
- nwzWwFD5xEl7SUnYqnZzgPVy9BZ0I/Zc/NGEMQ7V3O7+bV64SKcjqYNr+mVAbLrH
-X-Gm-Gg: AfdE7cmMgSsYrUqGi3BGSx+oAvKqg7A2qAHdvy9S1+0mYwNeLgQfvfkvlxkE8exBEG7
- 3Ov9brwael8AODddth8+PFg9bh+k5nU50ZduTGZzj6+rSzBsexI3hcnGqvmQF865wK49JDACga2
- SNDucJe6N4HXhuPVFr52PBM5fThlnQ3zx1fCnCzu4nTSzQ8Bnhx4L1R04xbUhzgrte8Vp+Mjvp0
- JbHp6cNPCC39k1zIVHijYgYLHr4uVTNr7J+T5Mm9nIjaFNXsMLsU+bZswbXBVr2vy4efNNtBgLi
- k0pL/EzsexAE8wJDctX9WKeX7rGjueY5NRmYdohiPj4roGmKPlm36XKuyBQNdu7+HExc2BjGySe
- qbpJl1+N/5NzxnxG/jroEHUHvBEOPYQ/mN0BZP6eDmKGI3BPUxOT9Pvr7j84t7EW9wsihsJliIp
- v+2wa0ZTWiLYqW2IUaMRcK5i7trSivoaWIeh/CFQ==
-X-Received: by 2002:a05:6808:1a0b:b0:490:af61:8830 with SMTP id
- 5614622812f47-4a495e16444mr5119464b6e.3.1784222875748; 
- Thu, 16 Jul 2026 10:27:55 -0700 (PDT)
-Received: from mail-oi1-f179.google.com (mail-oi1-f179.google.com.
- [209.85.167.179]) by smtp.gmail.com with ESMTPSA id
- 5614622812f47-4a41f5b69bfsm13283875b6e.17.2026.07.16.10.27.54
- for <qemu-arm@nongnu.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Jul 2026 10:27:55 -0700 (PDT)
-Received: by mail-oi1-f179.google.com with SMTP id
- 5614622812f47-4877a7b451dso4072749b6e.0
- for <qemu-arm@nongnu.org>; Thu, 16 Jul 2026 10:27:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=1;
- AHgh+Rr2VG0M0Wgwf6rMNZ8h3tC/uB6OqNDM53yVXhGHfCKmej449ZZUSN4+j3aJSat7g/rpi884aXFCtA==@nongnu.org
-X-Received: by 2002:a05:6808:5393:b0:485:48da:133d with SMTP id
- 5614622812f47-4a495e65f8dmr5457005b6e.10.1784222874593; Thu, 16 Jul 2026
- 10:27:54 -0700 (PDT)
+ AHgh+RrHhFUdUPUpizcGU/7B/scDHn+O9TpmCe1qV5Y3q5OwL+qRJECXyGK+DIegEwU32MfGYUBp0yQ3nQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxtRZAW1ey5u6/t/z1/p4ZzxHFr67c2mGPWXdqPfxdAZLJ+aP4o
+ hacr99hBCDzBWM6qIeA2Mqx0dj72xOp6KvZkdJIGpvRJxjOYLSoXAk26/KzLK9FOETETHtOev53
+ ujHMoHsFU5r7W1NpnerK3kHlXdHQm/HxQkaIXwnxurKtvqpM34T0ngt4=
+X-Gm-Gg: AfdE7cmDk1vKY1k93zRDG1DnTjwtvWIuI1Rc9z0k0rdKHA8PflCBMIgBMxyYIEMQjdg
+ RAq/8PtYjKea2ty5xZi7UQ5F/+ZtREoNuRmgg92frzT2tStQiY8V0cdaODr5wAzT2SIEk2yDv70
+ FYiFzqCYDHswIV1LsRgZRFoCg4wxkG5hfKIi4/75aQ3rHxJsPFCtoSzth5ZolQBSOpYBG9ZV29s
+ ZqWuYIAZbiCtUe3vv0Mr8B91PGiVcCky1CxSuGPZoX4qHJbMzDPGJNxupKI81BjXTHg8YsUGsYF
+ CMY5qqs6jogFfAeBJ4XSIN1uL0VoleI+cuDpvvn2cD+T6YTG4jQ8+SBsNEiBMCOZy3lDstfpbXi
+ 3jJiVsI8wCx2cssJ3qKvr7mmdxVFytzmngRwezAJnk2aOZzFtSarf0ZMJxoHykOs=
+X-Received: by 2002:a17:90b:2808:b0:38d:e5d0:9bd with SMTP id
+ 98e67ed59e1d1-38e2a0780c5mr8148929a91.26.1784225251797; 
+ Thu, 16 Jul 2026 11:07:31 -0700 (PDT)
+X-Received: by 2002:a17:90b:2808:b0:38d:e5d0:9bd with SMTP id
+ 98e67ed59e1d1-38e2a0780c5mr8148883a91.26.1784225251323; 
+ Thu, 16 Jul 2026 11:07:31 -0700 (PDT)
+Received: from hu-mathbern-lv.qualcomm.com (Global_NAT1.qualcomm.com.
+ [129.46.96.20]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-3140e5326c0sm17131184eec.11.2026.07.16.11.07.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Jul 2026 11:07:30 -0700 (PDT)
+From: Matheus Tavares Bernardino <matheus.bernardino@oss.qualcomm.com>
+To: qemu-devel@nongnu.org
+Cc: brian.cain@oss.qualcomm.com, pierrick.bouvier@oss.qualcomm.com,
+ marco.liebel@oss.qualcomm.com, philmd@oss.qualcomm.com, ale@rev.ng,
+ anjo@rev.ng, Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Chao Liu <chao.liu@processmission.com>, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org
+Subject: [PATCH v2 07/14] semihosting: add callback to set error
+Date: Thu, 16 Jul 2026 11:06:51 -0700
+Message-Id: <a08d1e274e722c7072740838fbb596c8dfb67b10.1784225209.git.matheus.bernardino@oss.qualcomm.com>
+X-Mailer: git-send-email 2.37.2
+In-Reply-To: <cover.1784225209.git.matheus.bernardino@oss.qualcomm.com>
+References: <cover.1784225209.git.matheus.bernardino@oss.qualcomm.com>
 MIME-Version: 1.0
-References: <20260623-guest-panic-unhandle-v1-1-6adfb6d4221e@ooseel.net>
- <CAFEAcA9LCRKmU+r77zGp+4Rgd-uaZLPnoPPQDSfG8X5eeiynJA@mail.gmail.com>
- <91ad4c80-adc6-4f37-8346-20230638e5f0@oss.qualcomm.com>
- <CAFEAcA-hnm17d4PR0wmaKwQmM-K50nHeRYv0a-pCk3J1qUbPsg@mail.gmail.com>
-In-Reply-To: <CAFEAcA-hnm17d4PR0wmaKwQmM-K50nHeRYv0a-pCk3J1qUbPsg@mail.gmail.com>
-From: Leesoo Ahn <lsahn@ooseel.net>
-Date: Fri, 17 Jul 2026 02:27:42 +0900
-X-Gmail-Original-Message-ID: <CANTT7qh6X7ESRwgfM5PRkfCx9BSVUXHy8GL+n8SmX3LtusWiGw@mail.gmail.com>
-X-Gm-Features: AUfX_mwX-oH7xTIBahJbzBsn_H3IPboItZP6cQIpBWcV3Pl7WpvRiXf5alPdeZo
-Message-ID: <CANTT7qh6X7ESRwgfM5PRkfCx9BSVUXHy8GL+n8SmX3LtusWiGw@mail.gmail.com>
-Subject: Re: [PATCH] target/arm/hvf: panic the guest if an unhandled exception
- occurs
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org, 
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.167.182;
- envelope-from=yisooan.dev@gmail.com; helo=mail-oi1-f182.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Authority-Analysis: v=2.4 cv=IMIyzAvG c=1 sm=1 tr=0 ts=6a591de4 cx=c_pps
+ a=0uOsjrqzRL749jD1oC5vDA==:117 a=ouPCqIW2jiPt+lZRy3xVPw==:17
+ a=RAioF0-LDSMA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22 a=EUspDBNiAAAA:8
+ a=8ndNYmkutmpv_8xOvXsA:9 a=mQ_c8vxmzFEMiUWkPHU9:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDE4NSBTYWx0ZWRfX7nKCIv6T20X4
+ /c3aw7BGhy2my62Svf2cLpRC5eHAmJ7DZo4id9NeMpy22A2hh5epmiJfTxvcTTayAF0FQyBPjpU
+ 9YmEHjMBDxQ3iZpTODFKBPVjlvL0nUrPgDXXtKWXADwS3SHi5LvA31WQ8xH/nn/boEv6m683gZe
+ zG8xQGSVPWA6pFVsRAHWl4noF4HpN7JvaoIb0Fnv+muScG02Cpd1iwPE/BgvBvNpRQ6ptkc3fJe
+ RmMYC+sasx3B3TMe3FmuUNwvB+zB/fFTvPUK3R3QcCiNRMs2N92FopMBLJJtMA1JwtzwvQIz9tW
+ WBV2SScnPE3IY6CApGwFR4zhH4L5mDbBnIEqq1V7T+0ZBkJol7byUgLL/d6VE9BewZtdWk/gcca
+ i26l+Kp6nlJgIzyd8q61InW7Q+3wwmzpszsQZ0jgX3AnErGRmdfdzC1urxcrEwZaAUd3Gw0O3kU
+ fqsZkEvmuq98zxCVXmg==
+X-Proofpoint-GUID: 099ug47jgD6DDXIWQFcy17eKU1mN0idW
+X-Proofpoint-ORIG-GUID: 099ug47jgD6DDXIWQFcy17eKU1mN0idW
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDE4NSBTYWx0ZWRfXwAODJHnuZDjZ
+ 7ypCnBf/f8/yCoSCA948sMy1fBK1zgCnKFTCXiQ10Sm/3ZXKJJZgI48aL0RT3kNNZ/0tUBp1Ssd
+ 1uWweoTOZHUm6EdRl6rJQXxoUHR2ARc=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-16_06,2026-07-15_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 lowpriorityscore=0 suspectscore=0 priorityscore=1501
+ impostorscore=0 bulkscore=0 adultscore=0 phishscore=0 malwarescore=0
+ clxscore=1015 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2607160185
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=matheus.bernardino@oss.qualcomm.com;
+ helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,81 +159,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-2026=EB=85=84 7=EC=9B=94 13=EC=9D=BC (=EC=9B=94) =EC=98=A4=ED=9B=84 6:34, P=
-eter Maydell <peter.maydell@linaro.org>=EB=8B=98=EC=9D=B4 =EC=9E=91=EC=84=
-=B1:
->
-> On Fri, 10 Jul 2026 at 23:56, Philippe Mathieu-Daud=C3=A9
-> <philmd@oss.qualcomm.com> wrote:
-> >
-> > On 10/7/26 17:37, Peter Maydell wrote:
-> > > On Tue, 23 Jun 2026 at 13:56, Leesoo Ahn <lsahn@ooseel.net> wrote:
-> > >>
-> > >> It's worth cleaning up all resources that the guest taking and to qu=
-it
-> > >> if an exception in el1 could not be resolved.
-> > >>
-> > >> Otherwise, the guest will get in the infinite black-hole by
-> > >> unmodified pc.
-> > >>
-> > >> Signed-off-by: Leesoo Ahn <lsahn@ooseel.net>
-> > >> ---
-> > >>   target/arm/hvf/hvf.c | 1 +
-> > >>   1 file changed, 1 insertion(+)
-> > >>
-> > >> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> > >> index 8b902c6882..4358cf90e8 100644
-> > >> --- a/target/arm/hvf/hvf.c
-> > >> +++ b/target/arm/hvf/hvf.c
-> > >> @@ -2533,6 +2533,7 @@ static int hvf_handle_exception(CPUState *cpu,=
- hv_vcpu_exit_exception_t *excp)
-> > >>           cpu_synchronize_state(cpu);
-> > >>           trace_hvf_exit(syndrome, ec, env->pc);
-> > >>           error_report("0x%llx: unhandled exception ec=3D0x%x", env-=
->pc, ec);
-> > >> +        qemu_system_guest_panicked(cpu_get_crash_info(cpu));
-> > >>       }
-> > >
-> > > We should do something here, but my question is whether
-> > > qemu_system_guest_panicked() is the right thing. We mostly
-> > > use that for "the guest OS wants to tell QEMU that it has
-> > > panicked, so QEMU can reflect that to the user and perhaps
-> > > reboot or exit", though we do in a few places use it for
-> > > things that are more like "we don't handle this case". I'm
-> > > not sure exactly what the right thing to do here is, though.
-> >
-> > We usually abort() for programming errors (here unimplemented
-> > case) and don't let the guest mis-behave.
->
-> We've definitely used that strategy in the past (either directly,
-> or indirectly via hw_abort() or cpu_abort()), but I think these
-> days we'd prefer not to let the guest trigger QEMU to abort().
-> Some of those cases we've been able to convert to LOG_GUEST_ERROR
-> and continue in some manner, but some cases are just not
-> continuable from.
->
-> I think we could probably use a better mechanism for "something
-> went badly wrong and we can't continue executing the guest", where
-> e.g. we can suspend the VM and let the operator look at its state:
->  https://lore.kernel.org/qemu-devel/alSqlDRT9L8OqAso@redhat.com/T/#m9ab2f=
-4a819e33cd5ac0f6d22ab30f98a0d599866
+This is currently unused by existing semihosting targets, but it will be
+used by hexagon in the following commit.
 
-I keep my eyes on the thread and agree with your idea.
+Signed-off-by: Brian Cain <brian.cain@oss.qualcomm.com>
+Reviewed-by: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
+Signed-off-by: Matheus Tavares Bernardino <matheus.bernardino@oss.qualcomm.com>
+---
+ include/semihosting/common-semi.h | 1 +
+ semihosting/arm-compat-semi.c     | 1 +
+ target/arm/common-semi-target.c   | 4 ++++
+ target/riscv/common-semi-target.c | 4 ++++
+ 4 files changed, 10 insertions(+)
 
->
-> For this specific patch: what is the case where we get into this
-> codepath (and in particular what is the EC_FOO exception subtype)?
-> Maybe the fix is to handle that case. Compare an earlier thread:
-> https://lore.kernel.org/qemu-devel/8D0BCB24-BB1B-40EF-A361-0F79D65600AE@u=
-npredictable.fr/
->
-> If we're getting here by falling through from EC_INSNABORT,
-> I think that can happen if the guest tries to execute from
-> an MMIO region.
+diff --git a/include/semihosting/common-semi.h b/include/semihosting/common-semi.h
+index aa511a46f42..a11905ef4ef 100644
+--- a/include/semihosting/common-semi.h
++++ b/include/semihosting/common-semi.h
+@@ -37,6 +37,7 @@
+ void do_common_semihosting(CPUState *cs);
+ uint64_t common_semi_arg(CPUState *cs, int argno);
+ void common_semi_set_ret(CPUState *cs, uint64_t ret);
++void common_semi_set_err(CPUState *cs, int err);
+ bool is_64bit_semihosting(CPUArchState *env);
+ bool common_semi_sys_exit_is_extended(CPUState *cs);
+ uint64_t common_semi_stack_bottom(CPUState *cs);
+diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
+index 5e5f181b908..c54753f696f 100644
+--- a/semihosting/arm-compat-semi.c
++++ b/semihosting/arm-compat-semi.c
+@@ -237,6 +237,7 @@ static void common_semi_cb(CPUState *cs, uint64_t ret, int err)
+         ts->swi_errno = err;
+ #else
+         syscall_err = err;
++        common_semi_set_err(cs, err);
+ #endif
+     }
+     common_semi_set_ret(cs, ret);
+diff --git a/target/arm/common-semi-target.c b/target/arm/common-semi-target.c
+index 2b77ce9c17b..38d52deb3d6 100644
+--- a/target/arm/common-semi-target.c
++++ b/target/arm/common-semi-target.c
+@@ -34,6 +34,10 @@ void common_semi_set_ret(CPUState *cs, uint64_t ret)
+     }
+ }
+ 
++void common_semi_set_err(CPUState *cs, int err)
++{
++}
++
+ bool common_semi_sys_exit_is_extended(CPUState *cs)
+ {
+     return is_a64(cpu_env(cs));
+diff --git a/target/riscv/common-semi-target.c b/target/riscv/common-semi-target.c
+index aeaeb88d536..38a00e160c3 100644
+--- a/target/riscv/common-semi-target.c
++++ b/target/riscv/common-semi-target.c
+@@ -26,6 +26,10 @@ void common_semi_set_ret(CPUState *cs, uint64_t ret)
+     env->gpr[xA0] = ret;
+ }
+ 
++void common_semi_set_err(CPUState *cs, int err)
++{
++}
++
+ bool is_64bit_semihosting(CPUArchState *env)
+ {
+     return riscv_cpu_mxl(env) != MXL_RV32;
+-- 
+2.37.2
 
-EC_DATABORT already deals with traps by accessing MMIO regions.
-Yet I have no idea what kind of instruction abort could be raised in MMIO.
-
-BR,
-Leesoo
 

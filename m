@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 417E5C44501
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 00:49:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1982CC43458
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 06:22:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkAHh-00057v-BR; Wed, 15 Jul 2026 20:49:05 -0400
+	id 1wkFUW-0003TK-BS; Thu, 16 Jul 2026 02:22:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wkAHf-00057j-KU; Wed, 15 Jul 2026 20:49:04 -0400
-Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ id 1wkFUP-0003Sr-LY; Thu, 16 Jul 2026 02:22:34 -0400
+Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
+ ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wkAHZ-0000bw-UY; Wed, 15 Jul 2026 20:49:03 -0400
+ id 1wkFUL-0000qQ-DZ; Thu, 16 Jul 2026 02:22:33 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=p+hwut+QIaJRMw3mS2xQi0bLdcGE6qFrgwmDcZfObuo85DE9TP5H2qCXAYaUtS8w25fUeqve5snRnJCNKdbhxYftbLMinz8dF4GbLK5tXobjBa5kdrTPY3DfIKPxiICtWoydCcT0GRUcytpU3bRrNbnicnqH4Gdrm3BicMttFKwi+eakAWoO0RDX1db4bHdEol8m9iuQlnRzQmRvEGNawqQqWyqQFTB3f9chjF3+SexoUAKzSBnE0evsd3GemdjrnqlcvrhudzJVkCwjrNJ+okP226DcR8cQgfNY4UNPpfaOBMb7cXcyWvgVohkfG3eFn8ADkV23ZnQPUkJ61W7weg==
+ b=aHW9mNGLvowb3u0XKZe7gXzZXO2HQlGeJLnhbgFdySd0XOwxDAyXtLpecuyG07JBOfrxiwuBWKQocSWViXzvuRFKFbf+47s58LzuI2rSyP/5UqHYG2jArfFAqoXlLpy8+2in82VFfgyEQHRAQiTcYUUpUYhpz958IiEWJxJd3rSb6JZdgA9oguLj5mcujv1fs4k8cVyZvXN+C6j+v71pHSnxiaXtDMjpPzE/Bp0r3xHTYSAJmP4ti5js3GhjlgihQY65Yx40wvL19J7DIJ1bMG6HRZLm6z2yVoL5m6pq+MhXEjJSjYexgYc3mMza1D77zpTEqYKyCr6ZwmHn7C9kHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=1yYQ6c0S0Cg2Esa0ArV2SXaImZZoMIbCvpoeF2SxTdI=;
- b=ScQ7XDgjaSVdWSKV7FxtT4L2CJpx0kgm9G2FqCf4+hM0lABZqc9BLVmogagz+dACv53wEKjcQws/1AnJv5fcyXFxOoApNWZol5+tG7xf/dUuAoDrtJvTMnVJqpUzEEIb480hCo4CTVCM5paxGGr1XgztWxl3dBY0QUsNI4I9LttroGtgqDwmZ8emGDCxIXEPsDd+GlAgL+wQ+s/scSlyzOtQd44X4HYCA/MP6v1fYR9VbFbqGvxzO+BQiqC/z7u+tph8y8FQ4M1ubJiUI1guN5q73fnzGQbPR/Gi84MieCqQ0P3bSe2R61FMsgkT+VIioda3EALJstW6gc1E164YaQ==
+ bh=Z1TcVMxgmLbvjsh0Y/OOIoRuCFotTY54J2PDZj8F1tQ=;
+ b=ZMSlIpOdboTc8V2yQI+OYYY2ldXa9CVrIb4r9z5/1UZA7+004DB+UIPDpq1J2w4p9kihlh1pD5loZxdEQCk7tppgJGAczgGuKQi6me5OkESPbJ4mUno3kL7Z77VC/f9sN+SjNi3myTVPjSQmP3dkdA1twYHKdlsccDpEv6Pxt/Y8gasI5C0QwavNVfTXl/MW4eTGOHLjIYgIdXNAdNLOfjPEc0v1ZNkMTo6zDWzJcG0UHkcT0ntqGrBaYqfyeRec3UA0TOWm1OMPLb6FYdm45Sp6FHxJBLuwmJieREKF4XvvaMyIDiHzYtM9ZGEMmJm6lPOgobP8qL7scKRboHqv7g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1yYQ6c0S0Cg2Esa0ArV2SXaImZZoMIbCvpoeF2SxTdI=;
- b=GWnsdr3+1B9i+X3Yo3BCmFjMm9CW9S68P5MtssEMVB9qxpIEO/0gByvbyqU0eVji91pK3qMythZr1WBmbmRKVkyL8KlHfxpXwEtP2n8CkR5O6kcGbmewSxuJVcGEXRrnRRUFsFUvraRcPmmUyYp6rOxlBxWCS5UV1HGFs6g7b5msvoTzgTkq5LJvDLN4rzYNFkyllJ7zHF8hVPLM3lcIsHYJuAEwy9/XDVYRjrIH++PcVmSPahuH1UD8aEe/422rv9YdIWCbxo+PF84muVQOFjyNniam4yOQJLdaJAKF229aI9xqqVHpg2af4bjZx5WAl+fduOYxGr0fjYYpLWuj8Q==
+ bh=Z1TcVMxgmLbvjsh0Y/OOIoRuCFotTY54J2PDZj8F1tQ=;
+ b=DYqUaHTHCs7Ghy9SsG/MxiGCdO7JIJXqv6TfCIjtgrVs0y3lm3b1oxhv079nOHxCVLTCCAsU8B3ROcVv3HKE2gUTyxh95BdvltOfCyMkHWbIwyljAlqsRLhVGL4XVSJ/rO/VJgJ/3/Aj/h+ggwCfEwUWawqlkEMIZgklv3BrM27/2yryWn3fLdoY1AQgYXMH3ZRJCwYf0+INAtzibiLYROIV7UjIW+JvtkUDkNTOi29U74V1cJlnOOEOeV0ci79rrXQ6eVKO2uVc/dkicV7PrfLP3O598R5ptoTs/pj1S+skmfMZuyXdqQS8dKBxgGoRj1Htkbz9t6woDXUjWQzFpQ==
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
- by SEZPR06MB6958.apcprd06.prod.outlook.com (2603:1096:101:1ef::9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.202.18; Thu, 16 Jul
- 2026 00:48:49 +0000
+ by SI3PR06MB8489.apcprd06.prod.outlook.com (2603:1096:4:2a9::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.11; Thu, 16 Jul
+ 2026 06:22:19 +0000
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0223.008; Thu, 16 Jul 2026
- 00:48:48 +0000
+ 06:22:18 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: Mikail Sadic <mikail.sadic@ibm.com>, "clg@kaod.org" <clg@kaod.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>
-CC: "pbonzini@redhat.com" <pbonzini@redhat.com>, "ninad@linux.ibm.com"
- <ninad@linux.ibm.com>, "titusr@google.com" <titusr@google.com>,
- "jeuk20.kim@samsung.com" <jeuk20.kim@samsung.com>, "philmd@mailo.com"
- <philmd@mailo.com>, Steven Lee <steven_lee@aspeedtech.com>,
- "leetroy@gmail.com" <leetroy@gmail.com>, Kane Chen
- <kane_chen@aspeedtech.com>, "andrew@codeconstruct.com.au"
- <andrew@codeconstruct.com.au>, "joel@jms.id.au" <joel@jms.id.au>,
- "calebs@us.ibm.com" <calebs@us.ibm.com>, "milesg@ibm.com" <milesg@ibm.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@oss.qualcomm.com>,
+ =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Alistair
+ Francis <alistair@alistair23.me>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-Subject: RE: [PATCH v1 4/5] ufs/aspeed: Add AST2700 UFS host controller
-Thread-Topic: [PATCH v1 4/5] ufs/aspeed: Add AST2700 UFS host controller
-Thread-Index: AQHdFHG6pfjPzz4zbU25ZsqJIY6U17ZvTQKg
-Date: Thu, 16 Jul 2026 00:48:48 +0000
-Message-ID: <TYZPR06MB4980BB929029F7FD570451D8FCC72@TYZPR06MB4980.apcprd06.prod.outlook.com>
-References: <20260715155037.2237011-1-mikail.sadic@ibm.com>
- <20260715155037.2237011-5-mikail.sadic@ibm.com>
-In-Reply-To: <20260715155037.2237011-5-mikail.sadic@ibm.com>
+CC: Troy Lee <troy_lee@aspeedtech.com>
+Subject: RE: [PATCH v2 0/8] Refactor AST2700 SCU preparation for coprocessors
+Thread-Topic: [PATCH v2 0/8] Refactor AST2700 SCU preparation for coprocessors
+Thread-Index: AQHdDdcml+cou2jcSUWFO44hUF9C37Zlz7gAgAnnjHA=
+Date: Thu, 16 Jul 2026 06:22:18 +0000
+Message-ID: <TYZPR06MB49801C98E1229482B2FDDCF4FCC72@TYZPR06MB4980.apcprd06.prod.outlook.com>
+References: <20260707060919.350637-1-jamin_lin@aspeedtech.com>
+ <3a360264-4dbe-4e99-9555-9454d67de533@oss.qualcomm.com>
+In-Reply-To: <3a360264-4dbe-4e99-9555-9454d67de533@oss.qualcomm.com>
 Accept-Language: zh-TW, en-US
 Content-Language: zh-TW
 X-MS-Has-Attach: 
@@ -71,71 +68,80 @@ X-MS-TNEF-Correlator:
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|SEZPR06MB6958:EE_
-x-ms-office365-filtering-correlation-id: 826039d4-18c5-47c8-6f22-08dee2d3ff3b
+x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|SI3PR06MB8489:EE_
+x-ms-office365-filtering-correlation-id: e30f851b-93a7-4295-d2a8-08dee302966f
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|1800799024|23010399003|376014|7416014|3023799007|6133799003|18002099003|22082099003|56012099006|4143699003|38070700021|10067099003;
-x-microsoft-antispam-message-info: tfbYsoymvtRAxed1yxFF8Emjzs7+2lT0Kt18YMrvs5JeBRcLGFMoRiOJW7101zieV09AySUb0o4mXFV3o/P3oODAg3zdX65ildKUvL7ukRiLQLFLPzpNA52VoF9KrsvO7SNfE46dFvAbdg3HxyR31V7rrwH69GXRICrbTVYM0Gy41E8Q1RqsU7APoi7UePi2nnVMRvUWli0n9AveGJXbhJxc0ztNFQ8qDI4jPlmvYqSUisGZSWYTEFq5aFw+Rev6hMnzpCkkuuftNod4vRN8cXuff24NZda0bqGRluoD2SlNmASd+mOy11XtFDOUXHQ30orO8x3r2K+XNxf0f2k8emECWdR4yOoZr4ZBz308HxL8fOjMvQpWvR1jcgzSaOcNElnj2xpQ+GguJMGzzcYwmR9LWhuf3e50YlT5Tq79fEVcf9+HbPtPK7s6DTCZUjPxtLp3TZXHX7JNJQICYMHtg53FAh37IA5TiBcwTjkjVPuzkI6LYnBdpjsv4h4SJHL79dRM/tFGnCr2T85uQPMJzMirVCjlZs4hqrxKzrdlTNTglngs3VuLP6vVPu/krinsGZh37VZKl/AJACr3vvYncC5IgNjm5N2ywfEK0CzYm7nvniW1r7qSHJhfQ6mGVZVQmt80kYgE/yofUqwp0DjnOwmJWuHIypkwyVbfd5n5VLRR704Htzyo6cRykVlS4ndVe8U8lUrmgewYZqKIZUEo8uKcs5qCLFFOhJV6O3xw4uo=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(23010399003)(376014)(7416014)(3023799007)(6133799003)(18002099003)(22082099003)(56012099006)(4143699003)(38070700021)(10067099003);
+ ARA:13230040|376014|1800799024|23010399003|366016|56012099006|5023799004|38070700021|4143699003|3023799007|10067099003|921020|18002099003|22082099003;
+x-microsoft-antispam-message-info: mLyEU0bFgDE8T3KVGnVA6Ai9yioj6XM+wy6Dsv3y2rrBkO6ub1qrGe9BrhT48Hbf64nZqBe+wvh2Z9YFWPSKzY/rppFbPIIDNcY7W3uYLtdKdby3eX8SXbm+SzT94VTVY+mZLnOUJsfYZInojjOCOcShJZkPAgUVBwUJR4JrFXZNoXp8TrfmJVo5BPreMT8PwTvMc6N/oTVFQn4+lB801JBlyyI6NoAQauejaVl3vGu4y+ESelUr7IvuP0BKQhcw4W5svcHwDLJ4TRpbpBdQDGkpAwDNqbw2MOMCn4QClBBmPtDc2WUBixfigAcc8Ex/zkLTRBU9U1lg9w4e5s36X21JeEih3IlY+MAzg/J8X/wUGdNoDWQ/pl4lZjoMeCrO/CI5VRIUMd5Dy1BIc/9kzRpkHGyhCCI7VSYli1akrYMDsjW7nldKAO6EO6qcrBEpn/Uad58b+xaG9NOo8Dxy4vv8VAuH697O0rsIzVM93pmXQ5sCsEM+651IrjvrpmJFU6iMQcXkVwc26HwBweUP03cf3gVDsCwAnmZ2C/JTeHNOJzbC+ledJOR5pq8h9jYUlSyuPgUkO6/WlGB8e5BemHSVnsUgsecOzKo64BpN3AVryvGFtmEFKcffE9BfpBWTlqI7RcckFXJH84kYiIzDVR+cHjH/HI09qyl/Db4f9lGFyBVt6dEfw8tZWhoV5NtoddxRY/RiEOELSAGnZ2tO+JpZnZO9MWMaUmSTfhaey/JU+eptRyn3/3nWl41st5nQ
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(23010399003)(366016)(56012099006)(5023799004)(38070700021)(4143699003)(3023799007)(10067099003)(921020)(18002099003)(22082099003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?9//NzSP0W6NVn+DcNmR8hd98EFNENO/R4rG89Mr3yUSp0FmI8nUTZJdaQFfn?=
- =?us-ascii?Q?DJoWkmcoTyK6dK9aiQwLL18dhETvR4g0iK+gmvGaAsd/FNVlUuKeR7DT+MAD?=
- =?us-ascii?Q?nREdEZZ3V9H74jd4saOodPvE35iPc8DUftE9+ySvrurqSMklA5l5Ry++wbKH?=
- =?us-ascii?Q?JJuvConTPmXw7pq09mjaEsisAvxrz8/ieasLsEMFXtv1xsYjORDK0KeXnDPT?=
- =?us-ascii?Q?8y+LUDaxg6P8wCdgNrv7ZDd3+Ka6P6W/2vNVHJ7j0zg+TiPNabSKu7B2MmxO?=
- =?us-ascii?Q?AplLjnfGmnI7k31XqOCrPylO5Ozg/Tvra8UlNUEQvs9WyRS9VazOJt8prq7h?=
- =?us-ascii?Q?d05CBumR+mZYw1s7PJS6dRvQLBuOJMe7TsTOw31M9PFu7+yt+O101occKz2Q?=
- =?us-ascii?Q?n01zP+m8nsZ23Hk+UuLoh3Fnp13t4YapLrh+rzbCxFNaf539vnSN3foq70It?=
- =?us-ascii?Q?oPATKP+S3z8CG5cF9hPFddQDqAPkJfm+pMKzfE9LTuouUelb/aCa8yoV4V5U?=
- =?us-ascii?Q?i+JDX1yw7yZGMSm2NgZAEkF4fVT0SEELvMTEa3e2pG7NDrQqa8ozeeFNZG1S?=
- =?us-ascii?Q?A5Dui09lisAzh//llqq5U8GAWIjjOSErdgx9kU7eiYYrkXJuYmk3sPVW2X/+?=
- =?us-ascii?Q?SJ8y3OTiPVYiOMl3A02uVZtA2YSFkoCf5xpnwtB1KynCRsiTlxDV26mhtX+0?=
- =?us-ascii?Q?ecTAXYYpBRpAdF1fTg/V45P6brhljx1vckwK8Xk3oy/3pa7zj8Nlybh1GUGh?=
- =?us-ascii?Q?ytBRlxHUz0TG4RLXXyT/WhjZ1qm1dkCQZeh/oGIAButMi1fOGsMyalpAmXw0?=
- =?us-ascii?Q?WVDSZgT84OHvaqXkc0F9zfCtOEUgSgMWRCLCPbXJ6gooK0qaKOX9EvF7J91/?=
- =?us-ascii?Q?SVB514LQXSc6O471uOE2Iw9HbEHpZH8yk54XoPEfKNGm1/PXkcNmYcxs/pSL?=
- =?us-ascii?Q?oIBPqfknc+2+RkiO/eitzJx7TqF0OHSvOYtAwny+YS9TK2BHb5iaK1P8e9dG?=
- =?us-ascii?Q?Y5W6EN81Ucy2JMPB3kMR8GggO6frC91fsiEg8CzHAyR6w8vnIb5KfRLv9x1F?=
- =?us-ascii?Q?HwgZyEUEx/qhy/NaTXV4v4m7QQCEzHBNFRDH+SY/QgqfD7c8mm9lu+ypxBw9?=
- =?us-ascii?Q?xvkbo3ZoyIbAgeTRSdL2J9RvbrahVcP1Bg8kTjzCcNoJh6pywmqmAkG4waNl?=
- =?us-ascii?Q?eyL1GA/qsPQPqd2TYexxzpQRnevgcRBTjvTiYeq47w2r49lS8idJQvcWgndZ?=
- =?us-ascii?Q?RJYU4+WGLv8ZSgoUN3c3DHAwnZvBbOrFUsWyHoDKWr/sXc138JIwqLFyKmJO?=
- =?us-ascii?Q?pMUBWFnH+tVOFOzpOO7TqwL3ZfNKYzqZ4TL7Rph7AOLK3XT//vUuhImmfL4e?=
- =?us-ascii?Q?hgfYnIX+UdWSM6R2PHtFw9yxMPTEXuXVaoBNJmc1Y1HjNIvE3nVHa81TXni9?=
- =?us-ascii?Q?C4zbRUdOYYeakmqdDXSaYYasX5O9wdVMGVuXuCT88rX+O6vIi1oYdr8c8gBX?=
- =?us-ascii?Q?xNCg4z7+s+TrMK6wmkPP+zigVpUyySm0oSlh2uexvQax4I5JimXdFR9YQYbi?=
- =?us-ascii?Q?zsVhpG30sT16qmDh7AhO1+dE+dH826dppsHgBzGcljRVZVyRNukdb9Wn2KcA?=
- =?us-ascii?Q?5oZd+HhCCKQxnmjpAFxjA/0LHsl95WuOwljNv8VYJEalOokVx9plUQv6aGaE?=
- =?us-ascii?Q?H9rQ1I+xJyIxjahk0FThXq6MdlpOOB2OiQYVSi62TxS2/CreV595/w7wDD3/?=
- =?us-ascii?Q?9jGSjzazaA=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?K0E1Z2FDcUttbVlHYlNUZnAzQWZTbS96VjgwY3c5VmJ5Y0xzVU1qeGg2Wk1P?=
+ =?utf-8?B?Wm16U29JUGlSRGJONFFnM2RjNTVVL003WFRqVW9CQ0NVMEVhbzF5aGlqY1Ez?=
+ =?utf-8?B?d0VLTVMwVU10c1lGbnVCWmM1OTFYdStTT1JEWGtaeENkZHJiUE1XK29MTUNZ?=
+ =?utf-8?B?UHgzMit0Y1NqSkwyczhPZ2dXaTJJYmtudDEvdWlQZzNZS2tROXhwTXdnVFlw?=
+ =?utf-8?B?bkIvWDVEVkxNMkZSNVZUN1k1Nm1oOU04L1poZXhQQnNkZ0loT25yZlRxRUVv?=
+ =?utf-8?B?ZUgyaGs5cWtkM1NlN21TNjNDWTdmZlU5OWZscitZajdRak9zNEVyc1h1cG15?=
+ =?utf-8?B?Y21pSDdMY0lNaVF4TEgyb0NzSU4vbHhqT3pCY0pITDdNdlRmYUJ2WGg4RDBu?=
+ =?utf-8?B?M0RoRXdNcEhtOU0zbUQ3dDdtc1QrcGdicUhBRmV0NldLSUtHWjhKTFJvOUMv?=
+ =?utf-8?B?cE5GQzkwdXFhSFU3ZlRPM0Ztajd0ZFYreVQwd3pHdlpSQksvR1lqUFh6UVFR?=
+ =?utf-8?B?OFp4akUxb1doTys5NlVxcnJBWGU4bEhONVZRRkZZUERyMGNvL21hbXh5eXQ5?=
+ =?utf-8?B?b2E1UmdoVXRCQ2hsT3F2by9JTmNYK0VFMGtNQ1dmWXAxRVorWUJvcEJBaTRN?=
+ =?utf-8?B?clc5N1ErYktNOE9TaDE3QlplZkRCRjcybFlRaGk2aHo0eitMTkxXRUVMaUFZ?=
+ =?utf-8?B?TUtxbWdrd0FpdDhraHB6bFRYUXVyVUpNcVY3RmNpTXdEQ2VkUWhUVFp5ZHF4?=
+ =?utf-8?B?Ri9Qd1pZY2M5RVZDUWpuYkxnRUN5eHF5WTYxazZTTWw1bGdXRjhGZDhiNVY5?=
+ =?utf-8?B?am1zMUhKNHg3RSt5M08vZW5KTHFuVHExSncrRTRDS3pQRXpqVE1jeGhvN1JN?=
+ =?utf-8?B?YUZyZFhrczhXSDU1VE80QWd3bTNHNmhCMld0eWptUGJzaVMwNFVtbkVVazBX?=
+ =?utf-8?B?TW8vL3FFcHdiKzFKcmROOVgwaWU5ajNZalRkNWRHVm04RER6ZG9QS0VZUFNa?=
+ =?utf-8?B?UUpranhBekl4ejVHc2ZieVd2UkN4T3dSTzZHdGFWT1h0V0RiUXV1YzJhNVlU?=
+ =?utf-8?B?SzBObUtqaW1id3V4a2dKYWRoSGo2NmRQb0tsMDBxWCt2UDhDL1dDUUNKREYz?=
+ =?utf-8?B?Z0p4NkRoUHVzZDBMUjNnYmI2eE1vSzdLSUtXbWMwd21oN1J2UVgySVZZM2Fo?=
+ =?utf-8?B?QmtoNC9kT3YzUVlYMzhtR0dWcUhjbUlnaXN1aWlGQTExdE8zZ1BpT01FVDhC?=
+ =?utf-8?B?OVl4enJsaGYwM3hmM2s1NzNXd2lLYzhrWC9hRUs5dk1PVjZjT0o1UUt3VXBB?=
+ =?utf-8?B?MldTZmRrTEthSEEwbDJ3cUxZM1dWTGxRUUpGOFFIT0JFeHNUWDFmekRrSGpl?=
+ =?utf-8?B?OVlhaFN1NmtjNFUwaExWS0pyUGdGa2xLbmROTzUwRDJzTE11b01OemE2WXlL?=
+ =?utf-8?B?aFgvMzN6b2wrTTFkd1VYL2FUNWtkYkM4d2xWSGVQRmpXb0NhOEU3MmdYS3g5?=
+ =?utf-8?B?cjF4QWFsYnQzRlhNNWF5S2RyWkhSM2ZaTm5UN1BkUkNDZjRlTDllbGFlTHlu?=
+ =?utf-8?B?eWpua1E5V0l3ZzRaOTJtNmFFZU5RREJyNForczQ3Q2hocUVVTktvcUUrQUxY?=
+ =?utf-8?B?K0VEWkZqWU1lUXZ2WEVITm96OHRsQngveTlXZ2cyWW5qeGU2cUVGNk9MVUFF?=
+ =?utf-8?B?SEhFaXBEYi9QcGN5RU5JOWZwdVhwSVIxdS9CQ2dFSlhLM0kreFpTK2VmOHRl?=
+ =?utf-8?B?OEJ4L3NOY3ZoZFB4a294UWN0QVRXSzVJNFdHcXZVNjNKUm1KTzV6ZFdjNWk3?=
+ =?utf-8?B?aktHRW16ejdRcFlQS3hlVDhRbEhUeG16Vm5EbjNCMFRPUUNUM1JYR3dyamYy?=
+ =?utf-8?B?dUFsbEpBa0I1OXJCUXhpVXQybzBRYTBZNlM3MEwrc2l5dHJXOUNwbzk3R0Zo?=
+ =?utf-8?B?YVFsUGczeDFmQkIzcUV1NGowOWh6ZzN2LzREV1ZWVVlIc2xJSmtaK3p6V2NU?=
+ =?utf-8?B?Z3pVaWhvVVRCUWFnTHVUL2dUMnlQc1A4SkxWeTJrNUpqRk5qdmdUMkVxLzF4?=
+ =?utf-8?B?Z2VGWEtWZHJtZzBicU1EK0tvalVtcGhLbEZSbnN1V2pZQTlNUmZYdGQycGR3?=
+ =?utf-8?B?dUVmUXE0Y28yWXFicUZTR3NzeGJLSTRnN0F0cWJrUHVKUnAyTU9oaVBkaEM5?=
+ =?utf-8?B?V3BBM0l3UGltcks2TXJsS2FEcHBsSkd6WEJHMUZEb3g3eituZUJvdEdDUVZQ?=
+ =?utf-8?B?c2toT0Q3NjRkOWVSSDUwZDRoa25aSzlzNEMvNzhxRllXajF1dENVcVl4aFJ4?=
+ =?utf-8?B?SlhXbzVVTE1rN1hSc3lPSE4rZFBBZFZWcmNpdWRkYWIzM0NzUjhiZz09?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: K6doFq0ND/3NYYY/pGES67HrWOkCfpS6o06OfhL8IcpEumAbmqSS2c+6LIYhGWpSxbw64EGFnjPw74MrYKZt2zgm1KebDmWTTwz0WWoiNUkDfM9LwHas7nqBenVhzazAfTb2I4rEUYioJ5/HTDc0teebmC+V6mvvd1XIHRJrvm/WkUk+OKjf8DfQtCTaPBuANWCgKdcH56HuJ+0UB7bheRRoNM8qAnREfVcdIwoF5YScD6pibPWsH8JIjDfyvtF5g4viO+cxEZe6pf26cXVTkL13WgCpioVfqpZziNR5xt+4v5Ru8yzEG5eRBUMlKKsJgOY8eFcbJP1dC+i6IpHTig==
+X-Exchange-RoutingPolicyChecked: rL3RO0x6CQ70TfO/j8C5hCYSLOy3keJmCnlobmQK6HmniEycG43twYvqmA8p/WQsDZBfVhbBig9J1TPXaC9swm8KA+mL9CWgRkO5D8olOqhz+GUugkyrKHOA8sBFEw6TRPWHdQi8vP8KaFApf45zj8ebP3Qb+Gf6tmBX4DHWU32RucfhvAaGNi7zy3Jau63FBedQJA8mIeaJimUn1TNgKsq3LGTi9t6bL8z/hi9fks536pRpKRsXNnUY9+b1nSyzyzkAP9oYSKOfqw4Dtfb3NK3n1Tdgp6U+ktKDuxcCOOTkdugoCdPIdEVGEOIs1Hu4GDhe0tyO3iWVIYUKMqXQ1w==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 826039d4-18c5-47c8-6f22-08dee2d3ff3b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jul 2026 00:48:48.0946 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e30f851b-93a7-4295-d2a8-08dee302966f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jul 2026 06:22:18.6148 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: gEBMMRyzNzzB992ITg41GWwrXzOv6TbOE6q4AxwhXe88a9GHPnNw+2svvg/N6yX4f6Xsv0ivl/+pEEgv9WoFWJFOof9gOuGKksMFokceX7M=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB6958
-Received-SPF: pass client-ip=2a01:111:f403:c405::7;
+X-MS-Exchange-CrossTenant-userprincipalname: 0/jlWpeF/y5SvAmheyLoskaH9wLdLAxKiPu2RClK7KYHHKGQ7o4FwZx1+4Pi9ryqzD0WJqIYf0yXX+zFBpRktKjOocZ25UvhV4piR7eeQLc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI3PR06MB8489
+Received-SPF: pass client-ip=2a01:111:f403:c406::3;
  envelope-from=jamin_lin@aspeedtech.com;
- helo=TYDPR03CU002.outbound.protection.outlook.com
+ helo=OS8PR02CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -152,1483 +158,243 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Mikail,
-
-Just a reminder to follow the latest coding style.
-
-> Subject: [PATCH v1 4/5] ufs/aspeed: Add AST2700 UFS host controller
->=20
-> Add an emulation of the AST2700 UFS host controller
-> (aspeed,ufshc-m31-16nm) and wire it into the AST2700 SoC.
-> Implement the functionality needed by U-Boot and Linux to enumerate the
-> device and access a BlockBackend using the UFS protocol, allowing the
-> AST2700 machine to boot from a UFS image.
->=20
-> Signed-off-by: Mikail Sadic <mikail.sadic@ibm.com>
-> ---
->  MAINTAINERS                 |    1 +
->  docs/specs/aspeed-ufs.rst   |   69 +++
->  docs/specs/index.rst        |    1 +
->  include/hw/arm/aspeed_soc.h |    3 +
->  include/hw/ufs/aspeed_ufs.h |   66 +++
->  hw/arm/aspeed.c             |   12 +
->  hw/arm/aspeed_ast27x0.c     |   13 +
->  hw/ufs/aspeed_ufs.c         | 1095
-> +++++++++++++++++++++++++++++++++++
->  hw/ufs/meson.build          |    1 +
->  9 files changed, 1261 insertions(+)
->  create mode 100644 docs/specs/aspeed-ufs.rst  create mode 100644
-> include/hw/ufs/aspeed_ufs.h  create mode 100644 hw/ufs/aspeed_ufs.c
->=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index b2861dfc79..d35c29c58d 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2696,6 +2696,7 @@ M: Jeuk Kim <jeuk20.kim@samsung.com>
->  S: Supported
->  F: hw/ufs/*
->  F: include/block/ufs.h
-> +F: include/hw/ufs/aspeed_ufs.h
->  F: tests/qtest/ufs-test.c
->=20
->  megasas
-> diff --git a/docs/specs/aspeed-ufs.rst b/docs/specs/aspeed-ufs.rst new fi=
-le
-> mode 100644 index 0000000000..f4eb6f1ce6
-> --- /dev/null
-> +++ b/docs/specs/aspeed-ufs.rst
-> @@ -0,0 +1,69 @@
-> +ASPEED AST2700 UFS Host Controller
-> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> +
-> +The AST2700 SoC includes a UFS host controller identified in the device
-> +tree as ``aspeed,ufshc-m31-16nm``, mapped at ``0x12c08200`` (IRQ SPI
-> +118). QEMU models it as a sysbus device implementing the UFSHCI v2.0
-> +register interface required by U-Boot and the Linux ``aspeed-ufshcd`` dr=
-iver.
-> +
-> +The clock/reset wrapper at ``0x12c08000`` (``aspeed,ast2700-ufscnr``)
-> +is left as an ``UnimplementedDevice``.
-> +
-> +Implemented functionality
-> +--------------------------
-> +
-> +Host Controller Enable (HCE)
-> +  On a ``HCE=3D1`` write the register is cleared to 0 and a bottom-half
-> +is
-> +  scheduled to set it back to 1 with ``HCS`` ready bits. The read
-> +handler
-> +  returns 0 while in phase 1, so polling sees the 0 to 1 transition
-> +without
-> +  a timeout. If the controller is already in the ready state (phase 2),
-> +a
-> +  subsequent ``HCE=3D1`` write is a no-op; the controller stays enabled
-> +for
-> +  Linux after U-Boot has left it running.
-> +
-> +UIC commands
-> +  ``DME_LINKSTARTUP``, ``DME_GET``, ``DME_PEER_GET``, ``DME_SET``,
-> and
-> +  ``DME_PEER_SET`` all succeed immediately. ``DME_LINKSTARTUP`` sets
-> +  ``HCS.DP`` and raises ``IS.UIC_LINK_STARTUP`` (bit 8). ``DME_SET``
-> +and
-> +  ``DME_PEER_SET`` set ``HCS[10:8] =3D PWR_LOCAL`` and raise
-> +  ``IS.UIC_POWER_MODE``.
-> +
-> +NOP OUT / NOP IN
-> +  Doorbell processing is synchronous (inline) rather than deferred, as
-> +  U-Boot's ``NOP_OUT_TIMEOUT`` is shorter than a deferred bottom-half
-> +can
-> +  fire in QEMU's event loop.
-> +
-> +SCSI block I/O
-> +  READ_10, READ_16, WRITE_10, WRITE_16, INQUIRY,
-> READ_CAPACITY_10/16,
-> +and
-> +  REPORT_LUNS are forwarded to the attached ``BlockBackend``. When
-> +  ``prdtl =3D 0`` (no scatter-gather list), response data is placed in
-> +the
-> +  Response UPIU data segment; when ``prdtl > 0`` it is written into the
-> +PRDT
-> +  buffers.
-> +
-> +Query UPIU descriptors
-> +  Device, Geometry, Unit, Power (idn 8), and String (idn 5) descriptors
-> +are
-> +  returned, capped to the requested length.
-> +
-> +Well-Known LUNs
-> +  All four W-LUNs (0xD0 UFS Device, 0xC4 RPMB, 0xB0 Boot, 0x81 Report
-> +LUNs)
-> +  respond as present devices.
-> +
-> +Task management (UTMRL)
-> +  ``LOGICAL_UNIT_RESET`` commands are acknowledged immediately by
-> +writing
-> +  ``OCS_SUCCESS`` into the UTMRD slot, clearing the doorbell, and
-> +raising
-> +  ``IS.UTP_TASK_REQ_COMPL`` (bit 9).
-> +
-> +Usage
-> +-----
-> +
-> +The UFS controller picks up the first ``IF_NONE`` block device at index =
-0.
-> +Pass a UFS disk image with ``-drive if=3Dnone``:
-> +
-> +.. code-block:: console
-> +
-> +  qemu-system-aarch64 -M huygens-bmc \
-> +    -drive file=3Dimage-bmc,if=3Dmtd,format=3Draw \
-> +    -drive file=3Dufs.img,if=3Dnone,format=3Draw \
-> +    -nographic
-> +
-> +Please check :doc:`../../system/arm/aspeed` for more details on the
-> +``huygens-bmc`` machine.
-> diff --git a/docs/specs/index.rst b/docs/specs/index.rst index
-> 4de65e2fdf..dd0cdec8d4 100644
-> --- a/docs/specs/index.rst
-> +++ b/docs/specs/index.rst
-> @@ -40,4 +40,5 @@ guest hardware that is specific to QEMU.
->     riscv-aia
->     aspeed-intc
->     ucd90320
-> +   aspeed-ufs
->     iommu-testdev
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 41dc04e293..28ca97d35c 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -35,6 +35,7 @@
->  #include "hw/gpio/aspeed_gpio.h"
->  #include "hw/gpio/aspeed_sgpio.h"
->  #include "hw/sd/aspeed_sdhci.h"
-> +#include "hw/ufs/aspeed_ufs.h"
->  #include "hw/usb/hcd-ehci.h"
->  #include "qom/object.h"
->  #include "hw/misc/aspeed_lpc.h"
-> @@ -118,6 +119,7 @@ struct AspeedSoCState {
->      AspeedAPB2OPBState fsi[2];
->      AspeedLTPIState ltpi_ctrl[ASPEED_IOEXP_NUM];
->      AspeedAST1700SoCState ioexp[ASPEED_IOEXP_NUM];
-> +    AspeedUFSState ufs;
->  };
->=20
->  #define TYPE_ASPEED_SOC "aspeed-soc"
-> @@ -298,6 +300,7 @@ enum {
->      ASPEED_DEV_PRIC0,
->      ASPEED_DEV_PRIC1,
->      ASPEED_DEV_OTP,
-> +    ASPEED_DEV_UFS,
->  };
->=20
->  const char *aspeed_soc_cpu_type(const char * const *valid_cpu_types); di=
-ff
-> --git a/include/hw/ufs/aspeed_ufs.h b/include/hw/ufs/aspeed_ufs.h new fil=
-e
-> mode 100644 index 0000000000..6d0aa345e9
-> --- /dev/null
-> +++ b/include/hw/ufs/aspeed_ufs.h
-> @@ -0,0 +1,66 @@
-> +/*
-> + * ASPEED AST2700 UFS Host Controller
-> + *
-> + * Copyright 2026 IBM Corp.
-> + * SPDX-License-Identifier: GPL-2.0-or-later  */
-> +
-> +#ifndef ASPEED_UFS_H
-> +#define ASPEED_UFS_H
-> +
-> +#include "hw/core/sysbus.h"
-> +#include "block/ufs.h"
-> +#include "system/block-backend.h"
-> +
-> +#define TYPE_ASPEED_UFS "aspeed-ufs"
-> +OBJECT_DECLARE_SIMPLE_TYPE(AspeedUFSState, ASPEED_UFS)
-> +
-> +/* UFSHCI register space is 256 bytes (0x00-0xFF) */ #define
-> +ASPEED_UFS_MMIO_SIZE  0x100
-> +#define ASPEED_UFS_NUM_REGS   (ASPEED_UFS_MMIO_SIZE /
-> sizeof(uint32_t))
-> +
-> +/* Number of UTP Transfer Request slots advertised */
-> +#define ASPEED_UFS_NUTRS      32
-> +/* Number of UTP Task Management Request slots */
-> +#define ASPEED_UFS_NUTMRS     8
-> +
-> +/*
-> + * Reset / power-on values.
-> + *
-> + * CAP: NUTRS=3D31 (0x1f, 5-bit), RTT=3D2, NUTMRS=3D7, 64AS=3D1
-> + * VER: UFSHCI 2.0 (matches aspeed,ufshc-m31-16nm)
-> + * HCS: DP|UTRLRDY|UTMRLRDY|UCRDY (bits 0-3)  */ #define
-> +ASPEED_UFS_CAP_RESET  0x0702031f #define ASPEED_UFS_VER_RESET
-> +0x00000200 #define ASPEED_UFS_HCS_READY  0x0000000f
-> +
-> +struct AspeedUFSState {
-> +    SysBusDevice  parent_obj;
-> +
-> +    MemoryRegion  iomem;
-> +    qemu_irq      irq;
-> +
-> +    BlockBackend *blk;
-> +    uint64_t      num_sectors;
-> +
-> +    uint32_t      regs[ASPEED_UFS_NUM_REGS];
-> +
-> +    /*
-> +     * HCE state machine phase:
-> +     *   0 =3D idle (HCE=3D0)
-> +     *   1 =3D cleared (firmware wrote 1, we stored 0, BH pending)
-> +     *   2 =3D ready (BH fired, HCE=3D1, HCS ready bits set)
-> +     */
-> +    int           hce_phase;
-> +    QEMUBH       *hce_bh;
-> +
-> +    uint32_t      utrldbr;       /* pending doorbell bits */
-> +    uint64_t      utrl_base;     /* 64-bit physical base of UTRL */
-> +    uint64_t      utmrl_base;    /* 64-bit physical base of UTMRL */
-> +
-> +    /* Unit Descriptor; capacity filled at realize time */
-> +    uint8_t       unit_desc[0x23];
-> +};
-> +
-> +#endif /* ASPEED_UFS_H */
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c index
-> a48c442058..1f57f32ad4 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -184,6 +184,18 @@ static void aspeed_machine_init(MachineState
-> *machine)
->          object_property_set_int(OBJECT(bmc->soc), "hw-prot-key",
->                                  ASPEED_SCU_PROT_KEY,
-> &error_abort);
->      }
-> +    /*
-> +     * Attach the UFS backing drive before realizing the SoC so that
-> +     * the UFS controller can read the drive size during realization.
-> +     */
-> +    {
-> +        DriveInfo *ufs_dinfo =3D drive_get(IF_NONE, 0, 0);
-> +        if (ufs_dinfo) {
-> +            qdev_prop_set_drive_err(DEVICE(&bmc->soc->ufs), "drive",
-> +                                    blk_by_legacy_dinfo(ufs_dinfo),
-> +                                    &error_fatal);
-> +        }
-> +    }
->      aspeed_connect_serial_hds_to_uarts(bmc);
->      qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
->=20
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c index
-> b908d7d4ff..04aa4e15a5 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -39,6 +39,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] =3D {
->      [ASPEED_DEV_EHCI2]     =3D  0x12063000,
->      [ASPEED_DEV_HACE]      =3D  0x12070000,
->      [ASPEED_DEV_EMMC]      =3D  0x12090000,
-> +    [ASPEED_DEV_UFS]       =3D  0x12c08200,
-
-Please order the entries by Register address.
-
->      [ASPEED_DEV_PCIE0]     =3D  0x120E0000,
->      [ASPEED_DEV_PCIE1]     =3D  0x120F0000,
->      [ASPEED_DEV_INTC]      =3D  0x12100000,
-> @@ -116,6 +117,7 @@ static const int aspeed_soc_ast2700a1_irqmap[] =3D {
->      [ASPEED_DEV_SCU]       =3D 12,
->      [ASPEED_DEV_RTC]       =3D 13,
->      [ASPEED_DEV_EMMC]      =3D 15,
-> +    [ASPEED_DEV_UFS]       =3D 118,
-
-Please order the entries by IRQ value.
-
->      [ASPEED_DEV_TIMER1]    =3D 16,
->      [ASPEED_DEV_TIMER2]    =3D 17,
->      [ASPEED_DEV_TIMER3]    =3D 18,
-> @@ -533,6 +535,8 @@ static void aspeed_soc_ast2700_init(Object *obj)
->      object_initialize_child(obj, "emmc-controller.sdhci", &s->emmc.slots=
-[0],
->                              TYPE_SYSBUS_SDHCI);
->=20
-> +    object_initialize_child(obj, "ufs", &s->ufs, TYPE_ASPEED_UFS);
-> +
->      snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
->      object_initialize_child(obj, "timerctrl", &s->timerctrl, typename);
->=20
-> @@ -1039,6 +1043,15 @@ static void
-> aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc), 0,
->                         aspeed_soc_ast2700_get_irq(s,
-> ASPEED_DEV_EMMC));
->=20
-> +    /* UFS */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ufs), errp)) {
-> +        return;
-> +    }
-> +    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->ufs), 0,
-> +                    sc->memmap[ASPEED_DEV_UFS]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ufs), 0,
-> +                       aspeed_soc_ast2700_get_irq(s,
-> ASPEED_DEV_UFS));
-> +
->      /* Timer */
->      object_property_set_link(OBJECT(&s->timerctrl), "scu",
-> OBJECT(&s->scu),
->                               &error_abort); diff --git
-> a/hw/ufs/aspeed_ufs.c b/hw/ufs/aspeed_ufs.c new file mode 100644 index
-> 0000000000..673aced63b
-> --- /dev/null
-> +++ b/hw/ufs/aspeed_ufs.c
-> @@ -0,0 +1,1095 @@
-> +/*
-> + * ASPEED AST2700 UFS Host Controller
-> + *
-> + * Sysbus device mapped at 0x12c08200 (256 bytes).  Implements the
-> +UFSHCI
-> + * register interface required by U-Boot ufshcd_probe() and Linux
-> + * aspeed-ufshcd, including UIC command handling, NOP OUT/IN, SCSI
-> +block I/O,
-> + * Query UPIU descriptor reads, W-LUN support, and UTMRL task
-> management.
-> + *
-> + * Register offsets follow JEDEC UFSHCI spec v2.0, matching the REG_*
-> + * definitions in include/block/ufs.h.
-> + *
-> + * The ASPEED clock/reset wrapper at 0x12c08000 (aspeed,ast2700-ufscnr)
-> +is
-> + * left as an UnimplementedDevice; writes to MPHY registers there
-> +require no
-> + * readback.
-> + *
-> + * Copyright 2026 IBM Corp.
-> + * SPDX-License-Identifier: GPL-2.0-or-later  */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "qemu/error-report.h"
-> +#include "qapi/error.h"
-> +#include "hw/core/qdev-properties.h"
-> +#include "hw/core/qdev-properties-system.h"
-> +#include "hw/core/irq.h"
-> +#include "migration/vmstate.h"
-> +#include "system/block-backend.h"
-> +#include "system/block-backend-io.h"
-> +#include "system/dma.h"
-> +#include "system/address-spaces.h"
-> +#include "hw/ufs/aspeed_ufs.h"
-> +
-> +/* UFSHCI register offsets (JEDEC UFSHCI spec v2.0) */
-> +#define REG_CAP          0x00
-> +#define REG_VER          0x08
-> +#define REG_HCPID        0x10
-> +#define REG_HCMID        0x14
-> +#define REG_AHIT         0x18
-> +#define REG_IS           0x20
-> +#define REG_IE           0x24
-> +#define REG_HCS          0x30
-> +#define REG_HCE          0x34
-
-
-REG32(REG_HCE, 0x34)  ?
-    FIELD(REG_HCE, HCE_ENABLE,      0,  1) ?
-
-> +#define REG_UECPA        0x38
-> +#define REG_UECDL        0x3c
-> +#define REG_UECN         0x40
-> +#define REG_UECT         0x44
-> +#define REG_UECDME       0x48
-> +#define REG_UTRLBA       0x50
-> +#define REG_UTRLBAU      0x54
-> +#define REG_UTRLDBR      0x58
-> +#define REG_UTRLCLR      0x5c
-> +#define REG_UTRLRSR      0x60
-> +#define REG_UTMRLBA      0x70
-> +#define REG_UTMRLBAU     0x74
-> +#define REG_UTMRLDBR     0x78
-> +#define REG_UTMRLCLR     0x7c
-> +#define REG_UTMRLRSR     0x80
-> +#define REG_UICCMD       0x90
-> +#define REG_UCMDARG1     0x94
-> +#define REG_UCMDARG2     0x98
-> +#define REG_UCMDARG3     0x9c
-> +
-> +/* HCE / HCS bits */
-> +#define HCE_ENABLE       BIT(0)
-> +#define HCS_DP           BIT(0)
-> +#define HCS_UTRLRDY      BIT(1)
-> +#define HCS_UTMRLRDY     BIT(2)
-> +#define HCS_UCRDY        BIT(3)
-> +
-> +/* IS bits (UFSHCI spec sec. 5.3) */
-> +#define IS_UTRCS            BIT(0)    /* UTP Transfer Request
-> Completion */
-> +#define IS_UIC_POWER_MODE   BIT(4)    /* UIC Power Mode Status */
-> +#define IS_UIC_LINK_STARTUP BIT(8)    /* UIC Link Startup Status */
-> +#define IS_UTMRCS           BIT(9)    /* UTP Task Mgmt Request
-> Completion */
-> +#define IS_UCCS             BIT(10)   /* UIC Command Completion
-> Status */
-> +
-> +/* UIC command opcodes */
-> +#define DME_LINKSTARTUP     0x16
-> +#define DME_GET             0x01
-> +#define DME_SET             0x02
-> +#define DME_PEER_GET        0x03
-> +#define DME_PEER_SET        0x04
-> +
-> +/* UIC command result (success) in UCMDARG2[7:0] */
-> +#define UIC_CMD_RESULT_OK   0x00
-> +
-> +/* HCS power-mode state field bits [10:8]: PWR_LOCAL =3D 1 */
-> +#define HCS_PWR_LOCAL       (1 << 8)
-> +
-> +/* Register array index helper */
-> +#define R(off)  ((off) / sizeof(uint32_t))
-> +
-> +/*
-> + * UTP Transfer Request Descriptor (UFSHCI spec sec. 7.2.1).
-> + */
-> +#define UTRD_SIZE 32 /* bytes per UTRL slot */
-> +
-> +/*
-> + * UTMRL slot size (UTP Task Management Request List):
-> + *  - header   : 16 bytes
-> + *  - upiu_req : 32 bytes
-> + *  - upiu_rsp : 32 bytes
-> + */
-> +#define UTMRD_SIZE 80
-> +
-> +/* byte offset of OCS within request_desc_header */ #define
-> +UTMRD_OCS_OFFSET 8
-> +
-> +/* Command Type in UTRD DW0[29:28] */
-> +#define CT_UFS_STORAGE   0x1
-> +
-> +/* Data Direction in UTRD DW0[25:24] */
-> +#define DD_NO_DATA       0x0
-> +#define DD_HOST_TO_DEV   0x2
-> +#define DD_DEV_TO_HOST   0x4
-> +
-> +/* OCS in UTRD DW2[7:0] */
-> +#define OCS_SUCCESS      0x0
-> +
-> +/* UPIU transaction types */
-> +#define UPIU_TYPE_NOP_OUT     0x00
-> +#define UPIU_TYPE_CMD         0x01
-> +#define UPIU_TYPE_QUERY_REQ   0x16
-> +#define UPIU_TYPE_NOP_IN      0x20
-> +#define UPIU_TYPE_RESPONSE    0x21
-> +#define UPIU_TYPE_QUERY_RSP   0x36
-> +
-> +/* Query opcodes */
-> +#define QUERY_OP_READ_DESC    0x01
-> +#define QUERY_OP_WRITE_DESC   0x02
-> +#define QUERY_OP_READ_ATTR    0x03
-> +#define QUERY_OP_WRITE_ATTR   0x04
-> +#define QUERY_OP_READ_FLAG    0x05
-> +#define QUERY_OP_SET_FLAG     0x06
-> +#define QUERY_OP_CLEAR_FLAG   0x07
-> +
-> +/* Descriptor idn */
-> +#define DESC_IDN_DEVICE       0x00
-> +#define DESC_IDN_CONFIGURATION 0x01
-> +#define DESC_IDN_UNIT         0x02
-> +#define DESC_IDN_GEOMETRY     0x07
-> +#define DESC_IDN_POWER        0x08
-> +#define DESC_IDN_STRING       0x05
-> +
-> +/* SCSI commands */
-> +#define SCSI_TEST_UNIT_READY  0x00
-> +#define SCSI_INQUIRY          0x12
-> +#define SCSI_READ_CAPACITY_10 0x25
-> +#define SCSI_READ_10          0x28
-> +#define SCSI_WRITE_10         0x2a
-> +#define SCSI_READ_16          0x88
-> +#define SCSI_WRITE_16         0x8a
-> +#define SCSI_READ_CAPACITY_16 0x9e   /* service action 0x10 */
-> +#define SCSI_REPORT_LUNS      0xa0
-> +
-> +/*
-> + * Well-Known LUN addresses probed by ufshcd_scsi_add_wlus().
-> + * All four must appear as present devices or async_scan fails.
-> + */
-> +#define WLUN_REPORT_LUNS 0x81
-> +#define WLUN_UFS_DEVICE  0xd0
-> +#define WLUN_BOOT        0xb0
-> +#define WLUN_RPMB        0xc4
-> +
-> +static bool aspeed_ufs_is_wlun(uint8_t lun) {
-> +    return lun =3D=3D WLUN_UFS_DEVICE || lun =3D=3D WLUN_RPMB ||
-> +           lun =3D=3D WLUN_BOOT       || lun =3D=3D WLUN_REPORT_LUNS;
-> +}
-> +
-> +static void ufs_dma_read(hwaddr paddr, void *buf, size_t len) {
-> +    dma_memory_read(&address_space_memory, paddr, buf, len,
-> +                    MEMTXATTRS_UNSPECIFIED); }
-> +
-> +static void ufs_dma_write(hwaddr paddr, const void *buf, size_t len) {
-> +    dma_memory_write(&address_space_memory, paddr, buf, len,
-> +                     MEMTXATTRS_UNSPECIFIED); }
-> +
-> +static void aspeed_ufs_update_irq(AspeedUFSState *s) {
-> +    uint32_t is  =3D s->regs[R(REG_IS)];
-> +    uint32_t ie  =3D s->regs[R(REG_IE)];
-> +
-> +    qemu_set_irq(s->irq, !!(is & ie));
-> +}
-> +
-> +/*
-> + * HCE bottom-half: completes the 1->0->1 toggle that the host driver po=
-lls.
-> + *
-> + * On any HCE=3D1 write the write handler clears HCE to 0 and schedules
-> +this
-> + * BH.  Once it fires the controller is considered ready.
-> + */
-> +static void aspeed_ufs_hce_bh(void *opaque) {
-> +    AspeedUFSState *s =3D opaque;
-> +
-> +    s->regs[R(REG_HCE)] =3D HCE_ENABLE;
-
-
-R_ REG_HCE ?
-
-> +    s->regs[R(REG_HCS)] =3D ASPEED_UFS_HCS_READY;
-> +    s->hce_phase =3D 2;
-> +}
-> +
-> +/* 12-byte UPIU header (big-endian per UFSHCI spec) */ typedef struct {
-> +    uint8_t  trans_type;
-> +    uint8_t  flags;
-> +    uint8_t  lun;
-> +    uint8_t  task_tag;
-> +    uint8_t  iid_cmd_set;
-> +    uint8_t  query_func;
-> +    uint8_t  response;
-> +    uint8_t  status;
-> +    uint8_t  ehs_len;
-> +    uint8_t  device_info;
-> +    uint16_t data_seg_len_be;
-> +} UpiuHeader;
-> +
-> +/* 32-byte UPIU (header + TSF + reserved dword) */ typedef struct {
-> +    UpiuHeader hdr;
-> +    uint8_t    tsf[16];
-> +    uint32_t   reserved;
-> +} Upiu32;
-> +
-> +/* UTP Transfer Request Descriptor (UFSHCI spec sec. 7.2.1, 32 bytes)
-> +*/ typedef struct {
-> +    uint32_t dw0;
-> +    uint32_t dw1;
-> +    uint32_t dw2;   /* OCS[7:0] */
-> +    uint32_t dw3;
-> +    uint32_t dw4;   /* UCDBA: Command UPIU base, lower 32 bits */
-> +    uint32_t dw5;   /* UCDBAU: upper 32 bits */
-> +    uint32_t dw6;   /* RUL[31:16] | RUO[15:0] in DWORDs */
-> +    uint32_t dw7;   /* PRDTO[31:16] | PRDTL[15:0] */
-> +} Utrd;
-> +
-> +/* Physical Region Descriptor Table entry */ typedef struct {
-> +    uint32_t dba;       /* Data Buffer Address (lower) */
-> +    uint32_t dbau;      /* Data Buffer Address (upper) */
-> +    uint32_t reserved;
-> +    uint32_t size;      /* byte count - 1, bits [17:0] */
-> +} PrdtEntry;
-> +
-> +/*
-> + * Minimal UFS Device Descriptor (64 bytes).
-> + * Values follow UFS 2.1 spec defaults; only fields checked by Linux
-> +and
-> + * U-Boot ufshcd are set to non-zero.
-> + */
-> +static const uint8_t ufs_device_desc[] =3D {
-> +    0x40,                /* bLength =3D 64 */
-> +    DESC_IDN_DEVICE,     /* bDescriptorIDN */
-> +    0x00,                /* bDevice */
-> +    0x00,                /* bDeviceClass */
-> +    0x00,                /* bDeviceSubClass */
-> +    0x01,                /* bProtocol */
-> +    0x01,                /* bNumberLU */
-> +    0x00,                /* bNumberWLU */
-> +    0x00,                /* bBootEnable */
-> +    0x00,                /* bDescrAccessEn */
-> +    0x00,                /* bInitPowerMode */
-> +    0x01,                /* bHighPriorityLUN */
-> +    0x00,                /* bSecureRemovalType */
-> +    0x00,                /* bSecurityLU */
-> +    0x00,                /* bBackgroundOpsTermLat */
-> +    0x01,                /* bInitActiveICCLevel */
-> +    0x02, 0x10,          /* wSpecVersion =3D 0x0210 (UFS 2.1) */
-> +    0x00, 0x00,          /* wManufactureDate */
-> +    0x00,                /* iManufacturerName */
-> +    0x02,                /* iProductName (string index 2) */
-> +    0x00,                /* iSerialNumber */
-> +    0x00,                /* iOemID */
-> +    0x00, 0x00,          /* wManufacturerID */
-> +    0x00,                /* bUD0BaseOffset */
-> +    0x00,                /* bUDConfigPlength */
-> +    0x00,                /* bDeviceRTTCap */
-> +    0x00, 0x00,          /* wPeriodicRTCUpdate */
-> +    0x00,                /* bUFSFeaturesSupport */
-> +    0x00,                /* bFFUTimeout */
-> +    0x00,                /* bQueueDepth */
-> +    0x00, 0x00,          /* wDeviceVersion */
-> +    0x00,                /* bNumSecureWPArea */
-> +    0x00, 0x00, 0x00, 0x00, /* dPSAMaxDataSize */
-> +    0x00,                /* bPSAStateTimeout */
-> +    0x00,                /* iProductRevisionLevel */
-> +    /* pad to 0x40 */
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, };
-> +
-> +/* Minimal Geometry Descriptor (0x48 bytes) */ static const uint8_t
-> +ufs_geometry_desc[] =3D {
-> +    0x48,                /* bLength */
-> +    DESC_IDN_GEOMETRY,   /* bDescriptorIDN */
-> +    0x00,                /* bMediaTechnology */
-> +    0x00,                /* reserved */
-> +    0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, /* qTotalRawDeviceCapacity (8 bytes, big-end=
-ian)
-> */
-> +    0x00,                /* bMaxNumberLU */
-> +    0x00, 0x10, 0x00, 0x00, /* dSegmentSize =3D 4096 sectors */
-> +    0x08,                /* bAllocationUnitSize */
-> +    0x01,                /* bMinAddrBlockSize */
-> +    0x00,                /* bOptimalReadBlockSize */
-> +    0x00,                /* bOptimalWriteBlockSize */
-> +    0x00,                /* bMaxInBufferSize */
-> +    0x00,                /* bMaxOutBufferSize */
-> +    0x00,                /* bRPMB_ReadWriteSize */
-> +    0x00,                /* bDynamicCapacityResourcePolicy */
-> +    0x00,                /* bDataOrdering */
-> +    0x00,                /* bMaxContexIDNumber */
-> +    0x00,                /* bSysDataTagUnitSize */
-> +    0x00,                /* bSysDataTagResSize */
-> +    0x01,                /* bSupportedSecRTypes */
-> +    0x00, 0x03,          /* wSupportedMemoryTypes */
-> +    0x00, 0x00, 0x00, 0x00, /* dSystemCodeMaxNAllocU */
-> +    0x00, 0x00,          /* wSystemCodeCapAdjFac */
-> +    0x00, 0x00, 0x00, 0x00, /* dNonPersistMaxNAllocU */
-> +    0x00, 0x00,          /* wNonPersistCapAdjFac */
-> +    0x00, 0x00, 0x00, 0x00, /* dEnhanced1MaxNAllocU */
-> +    0x00, 0x00,          /* wEnhanced1CapAdjFac */
-> +    0x00, 0x00, 0x00, 0x00, /* dEnhanced2MaxNAllocU */
-> +    0x00, 0x00,          /* wEnhanced2CapAdjFac */
-> +    0x00, 0x00, 0x00, 0x00, /* dEnhanced3MaxNAllocU */
-> +    0x00, 0x00,          /* wEnhanced3CapAdjFac */
-> +    0x00, 0x00, 0x00, 0x00, /* dEnhanced4MaxNAllocU */
-> +    0x00, 0x00,          /* wEnhanced4CapAdjFac */
-> +    /* pad to 0x48 */
-> +    0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00,
-> +};
-> +
-> +/*
-> + * Power Descriptor (idn 8, bLength 0x62).
-> + * Linux ufshcd_probe() reads this; a zero-filled body of the right
-> +length
-> + * satisfies the length check.
-> + */
-> +static const uint8_t ufs_power_desc[0x62] =3D {
-> +    0x62,                /* bLength */
-> +    DESC_IDN_POWER,      /* bDescriptorIDN */
-> +    /* remaining bytes zero-initialized */ };
-> +
-> +/*
-> + * String Descriptor (idn 5).
-> + * iProductName points to string index 2 in the device descriptor.  A
-> + * minimal well-formed header (type + zero length) keeps ufshcd happy.
-> + */
-> +static const uint8_t ufs_string_desc[] =3D {
-> +    0x02,                /* bLength =3D 2 (header only, no string data) =
-*/
-> +    DESC_IDN_STRING,     /* bDescriptorIDN */
-> +};
-> +
-> +/* Unit Descriptor (0x23 bytes) - capacity filled at realize time */
-> +
-> +static void aspeed_ufs_init_unit_desc(AspeedUFSState *s) {
-> +    uint64_t lbc;
-> +
-> +    memset(s->unit_desc, 0, sizeof(s->unit_desc));
-> +    s->unit_desc[0x00] =3D 0x23;          /* bLength */
-> +    s->unit_desc[0x01] =3D DESC_IDN_UNIT; /* bDescriptorIDN */
-> +    s->unit_desc[0x02] =3D 0x00;          /* bUnitIndex */
-> +    s->unit_desc[0x03] =3D 0x01;          /* bLUEnable */
-> +    s->unit_desc[0x08] =3D 0x02;          /* bMemoryType */
-> +    s->unit_desc[0x0a] =3D 0x0c;          /* bLogicalBlockSize: 1 << 12 =
-=3D
-> 4096 */
-> +
-> +    lbc =3D cpu_to_be64(s->num_sectors);
-> +    memcpy(&s->unit_desc[0x0b], &lbc, 8); /* qLogicalBlockCount */ }
-> +
-> +/* Build a 36-byte SCSI INQUIRY response */ static void
-> +scsi_build_inquiry(uint8_t *buf, uint8_t lun) {
-> +    memset(buf, 0, 36);
-> +    /*
-> +     * W-LUNs use device_type 0x1e (well known LU); LUN 0 is a
-> direct-access
-> +     * block device (0x00).
-> +     */
-> +    buf[0] =3D aspeed_ufs_is_wlun(lun) ? 0x1e : 0x00;
-> +    buf[1] =3D 0x00;   /* not removable */
-> +    buf[2] =3D 0x05;   /* SPC-3 */
-> +    buf[3] =3D 0x12;   /* response data format =3D 2, HiSup */
-> +    buf[4] =3D 0x1f;   /* additional length =3D 31 */
-> +    memcpy(&buf[8],  "ASPEED  ", 8);
-> +    memcpy(&buf[16], "UFS QEMU        ", 16);
-> +    memcpy(&buf[32], "1.00", 4);
-> +}
-> +
-> +/* Build an 8-byte READ_CAPACITY(10) response */ static void
-> +scsi_build_read_cap10(uint8_t *buf, uint64_t sectors) {
-> +    uint32_t last_lba =3D (sectors > 0xffffffff) ? 0xffffffff
-> +                                               : (uint32_t)(sectors
-> - 1);
-> +    uint32_t block_size =3D cpu_to_be32(512);
-> +
-> +    last_lba =3D cpu_to_be32(last_lba);
-> +    memcpy(buf,     &last_lba,   4);
-> +    memcpy(buf + 4, &block_size, 4);
-> +}
-> +
-> +/* Build a 32-byte READ_CAPACITY(16) response */ static void
-> +scsi_build_read_cap16(uint8_t *buf, uint64_t sectors) {
-> +    uint64_t last_lba =3D cpu_to_be64(sectors - 1);
-> +    uint32_t block_size =3D cpu_to_be32(512);
-> +    memcpy(buf,     &last_lba,   8);
-> +    memcpy(buf + 8, &block_size, 4);
-> +}
-> +
-> +/* Process one UTRL slot */
-> +static void aspeed_ufs_process_slot(AspeedUFSState *s, int slot) {
-> +    uint64_t utrd_addr =3D s->utrl_base + (uint64_t)slot * UTRD_SIZE;
-> +    Utrd utrd;
-> +    uint64_t upiu_base, resp_base, prdt_base;
-> +    uint32_t dw6, dw7, ruo, prdtl, prdto;
-> +    UpiuHeader req_hdr;
-> +    uint8_t trans_type, task_tag;
-> +
-> +    ufs_dma_read(utrd_addr, &utrd, sizeof(utrd));
-> +
-> +    upiu_base =3D (uint64_t)le32_to_cpu(utrd.dw4) |
-> +                ((uint64_t)le32_to_cpu(utrd.dw5) << 32);
-> +
-> +    /*
-> +     * DW6 holds the Response UPIU offset (RUO) and length (RUL), both i=
-n
-> +     * DWORDs.  The response UPIU follows the request UPIU in the same
-> +     * guest buffer.
-> +     */
-> +    dw6  =3D le32_to_cpu(utrd.dw6);
-> +    ruo  =3D dw6 & 0xffff;
-> +    resp_base =3D upiu_base + (uint64_t)ruo * 4;
-> +
-> +    /* DW7: PRDTL (entry count) and PRDTO (offset in DWORDs) */
-> +    dw7   =3D le32_to_cpu(utrd.dw7);
-> +    prdtl =3D dw7 & 0xffff;
-> +    prdto =3D (dw7 >> 16) & 0xffff;
-> +    prdt_base =3D upiu_base + (uint64_t)prdto * 4;
-> +
-> +    ufs_dma_read(upiu_base, &req_hdr, sizeof(req_hdr));
-> +    trans_type =3D req_hdr.trans_type & 0x3f;
-> +    task_tag   =3D req_hdr.task_tag;
-> +
-> +    /* NOP OUT -> NOP IN */
-> +    if (trans_type =3D=3D UPIU_TYPE_NOP_OUT) {
-> +        uint8_t rsp[32];
-> +        memset(rsp, 0, sizeof(rsp));
-> +        rsp[0] =3D UPIU_TYPE_NOP_IN;
-> +        rsp[3] =3D task_tag;
-> +        ufs_dma_write(resp_base, rsp, 32);
-> +        goto done;
-> +    }
-> +
-> +    /* Query Request -> Query Response */
-> +    if (trans_type =3D=3D UPIU_TYPE_QUERY_REQ) {
-> +        uint8_t req_buf[32];
-> +        uint8_t rsp[32];
-> +        uint8_t opcode, idn;
-> +
-> +        ufs_dma_read(upiu_base, req_buf, 32);
-> +        opcode =3D req_buf[12];
-> +        idn    =3D req_buf[13];
-> +
-> +        memset(rsp, 0, sizeof(rsp));
-> +        rsp[0] =3D UPIU_TYPE_QUERY_RSP;
-> +        rsp[3] =3D task_tag;
-> +        memcpy(&rsp[12], &req_buf[12], 16);  /* echo TSF */
-> +
-> +        if (opcode =3D=3D QUERY_OP_READ_DESC) {
-> +            const uint8_t *desc =3D NULL;
-> +            uint16_t desc_len =3D 0;
-> +            uint16_t req_len;
-> +
-> +            switch (idn) {
-> +            case DESC_IDN_DEVICE:
-> +                desc     =3D ufs_device_desc;
-> +                desc_len =3D sizeof(ufs_device_desc);
-> +                break;
-> +            case DESC_IDN_GEOMETRY:
-> +                desc     =3D ufs_geometry_desc;
-> +                desc_len =3D sizeof(ufs_geometry_desc);
-> +                break;
-> +            case DESC_IDN_UNIT:
-> +                desc     =3D s->unit_desc;
-> +                desc_len =3D sizeof(s->unit_desc);
-> +                break;
-> +            case DESC_IDN_POWER:
-> +                desc     =3D ufs_power_desc;
-> +                desc_len =3D sizeof(ufs_power_desc);
-> +                break;
-> +            case DESC_IDN_STRING:
-> +                desc     =3D ufs_string_desc;
-> +                desc_len =3D sizeof(ufs_string_desc);
-> +                break;
-> +            default:
-> +                break;
-> +            }
-> +
-> +            /*
-> +             * Cap the returned length to what the host requested (TSF
-> +             * bytes 6-7 hold the allocation length).  Returning more th=
-an
-> +             * asked causes the driver to reject the response with -EINV=
-AL.
-> +             */
-> +            req_len =3D ((uint16_t)req_buf[18] << 8) | req_buf[19];
-> +            if (desc_len > req_len) {
-> +                desc_len =3D req_len;
-> +            }
-> +
-> +            rsp[10] =3D (desc_len >> 8) & 0xff;
-> +            rsp[11] =3D  desc_len       & 0xff;
-> +            rsp[18] =3D rsp[10];
-> +            rsp[19] =3D rsp[11];
-> +
-> +            ufs_dma_write(resp_base, rsp, 32);
-> +            if (desc && desc_len) {
-> +                ufs_dma_write(resp_base + 32, desc, desc_len);
-> +            }
-> +        } else {
-> +            /* READ_ATTR, READ_FLAG, SET_FLAG, etc. - echo TSF, success
-> */
-> +            ufs_dma_write(resp_base, rsp, 32);
-> +        }
-> +        goto done;
-> +    }
-> +
-> +    /* SCSI Command UPIU */
-> +    if (trans_type =3D=3D UPIU_TYPE_CMD) {
-> +        uint8_t req_buf[32];
-> +        uint8_t *cdb;
-> +        uint8_t scsi_cmd;
-> +        bool ok =3D true;
-> +        uint8_t sense[18];
-> +        uint8_t *xfer_buf =3D NULL;
-> +        uint32_t xfer_len =3D 0;
-> +
-> +        ufs_dma_read(upiu_base, req_buf, 32);
-> +        cdb      =3D &req_buf[16];
-> +        scsi_cmd =3D cdb[0];
-> +
-> +        memset(sense, 0, sizeof(sense));
-> +
-> +        /* Non-zero LUNs that are not W-LUNs have no device. */
-> +        if (req_hdr.lun !=3D 0 && !aspeed_ufs_is_wlun(req_hdr.lun)) {
-> +            ok =3D false;
-> +            sense[0] =3D 0x70;
-> +            sense[2] =3D 0x05;   /* ILLEGAL REQUEST */
-> +            sense[7] =3D 0x0a;
-> +            goto scsi_done;
-> +        }
-> +
-> +        if (prdtl > 0) {
-> +            uint32_t i;
-> +
-> +            for (i =3D 0; i < prdtl; i++) {
-> +                PrdtEntry pe;
-> +                ufs_dma_read(prdt_base + i * sizeof(PrdtEntry),
-> +                             &pe, sizeof(pe));
-> +                xfer_len +=3D (le32_to_cpu(pe.size) & 0x3ffff) + 1;
-> +            }
-> +            xfer_buf =3D g_malloc0(xfer_len);
-> +        }
-> +
-> +        switch (scsi_cmd) {
-> +
-> +        case SCSI_TEST_UNIT_READY:
-> +            break;
-> +
-> +        case SCSI_INQUIRY: {
-> +            uint8_t inq[36];
-> +            uint32_t alloc, send;
-> +
-> +            /*
-> +             * EVPD queries (cdb[1] & 0x01) return an empty VPD page
-> list
-> +             * for W-LUNs.  This stops the driver from iterating all 256
-> +             * possible VPD pages after it finds zero supported ones.
-> +             */
-> +            if ((cdb[1] & 0x01) && aspeed_ufs_is_wlun(req_hdr.lun)) {
-> +                uint8_t evpd[4];
-> +                memset(evpd, 0, sizeof(evpd));
-> +                evpd[0] =3D 0x1e;   /* device_type: well known LU */
-> +                /* page_length =3D 0: no VPD pages supported */
-> +                alloc =3D ((uint16_t)cdb[3] << 8) | cdb[4];
-> +                send  =3D MIN(alloc, sizeof(evpd));
-> +                if (prdtl > 0 && xfer_buf) {
-> +                    memcpy(xfer_buf, evpd, send);
-> +                } else {
-> +                    ufs_dma_write(resp_base + 32, evpd, send);
-> +                }
-> +                xfer_len =3D send;
-> +                break;
-> +            }
-> +
-> +            scsi_build_inquiry(inq, req_hdr.lun);
-> +            alloc =3D ((uint16_t)cdb[3] << 8) | cdb[4];
-> +            send  =3D MIN(alloc, 36);
-> +            if (prdtl > 0 && xfer_buf) {
-> +                memcpy(xfer_buf, inq, send);
-> +            } else {
-> +                ufs_dma_write(resp_base + 32, inq, send);
-> +            }
-> +            xfer_len =3D send;
-> +            break;
-> +        }
-> +
-> +        case SCSI_READ_CAPACITY_10: {
-> +            uint8_t cap[8];
-> +            scsi_build_read_cap10(cap, s->num_sectors);
-> +            if (prdtl > 0 && xfer_buf) {
-> +                memcpy(xfer_buf, cap, 8);
-> +            } else {
-> +                ufs_dma_write(resp_base + 32, cap, 8);
-> +            }
-> +            xfer_len =3D 8;
-> +            break;
-> +        }
-> +
-> +        case SCSI_READ_CAPACITY_16:
-> +            /* service action must be 0x10 */
-> +            if ((cdb[1] & 0x1f) =3D=3D 0x10) {
-> +                uint8_t cap[32];
-> +                memset(cap, 0, sizeof(cap));
-> +                scsi_build_read_cap16(cap, s->num_sectors);
-> +                if (prdtl > 0 && xfer_buf) {
-> +                    memcpy(xfer_buf, cap, 32);
-> +                } else {
-> +                    ufs_dma_write(resp_base + 32, cap, 32);
-> +                }
-> +                xfer_len =3D 32;
-> +            }
-> +            break;
-> +
-> +        case SCSI_READ_10:
-> +        case SCSI_READ_16: {
-> +            uint64_t lba;
-> +            uint32_t num_blocks, byte_count;
-> +
-> +            if (scsi_cmd =3D=3D SCSI_READ_10) {
-> +                lba =3D (uint64_t)cdb[2] << 24 | (uint64_t)cdb[3] << 16 =
-|
-> +                      (uint64_t)cdb[4] <<  8 | cdb[5];
-> +                num_blocks =3D (uint16_t)cdb[7] << 8 | cdb[8];
-> +            } else {
-> +                lba =3D (uint64_t)cdb[2] << 56 | (uint64_t)cdb[3] << 48 =
-|
-> +                      (uint64_t)cdb[4] << 40 | (uint64_t)cdb[5] << 32 |
-> +                      (uint64_t)cdb[6] << 24 | (uint64_t)cdb[7] << 16 |
-> +                      (uint64_t)cdb[8] <<  8 | cdb[9];
-> +                num_blocks =3D (uint32_t)cdb[10] << 24 |
-> +                             (uint32_t)cdb[11] << 16 |
-> +                             (uint32_t)cdb[12] <<  8 | cdb[13];
-> +            }
-> +            byte_count =3D num_blocks * 512;
-> +            if (s->blk && byte_count > 0) {
-> +                uint8_t *rbuf =3D g_malloc(byte_count);
-> +                if (blk_pread(s->blk, lba * 512, byte_count, rbuf, 0) < =
-0) {
-> +                    ok =3D false;
-> +                } else if (prdtl > 0 && xfer_buf) {
-> +                    memcpy(xfer_buf, rbuf,
-> +                           MIN(byte_count, xfer_len));
-> +                } else {
-> +                    ufs_dma_write(resp_base + 32, rbuf, byte_count);
-> +                }
-> +                g_free(rbuf);
-> +            }
-> +            xfer_len =3D byte_count;
-> +            break;
-> +        }
-> +
-> +        case SCSI_WRITE_10:
-> +        case SCSI_WRITE_16: {
-> +            uint64_t lba;
-> +            uint32_t num_blocks, byte_count;
-> +
-> +            if (scsi_cmd =3D=3D SCSI_WRITE_10) {
-> +                lba =3D (uint64_t)cdb[2] << 24 | (uint64_t)cdb[3] << 16 =
-|
-> +                      (uint64_t)cdb[4] <<  8 | cdb[5];
-> +                num_blocks =3D (uint16_t)cdb[7] << 8 | cdb[8];
-> +            } else {
-> +                lba =3D (uint64_t)cdb[2] << 56 | (uint64_t)cdb[3] << 48 =
-|
-> +                      (uint64_t)cdb[4] << 40 | (uint64_t)cdb[5] << 32 |
-> +                      (uint64_t)cdb[6] << 24 | (uint64_t)cdb[7] << 16 |
-> +                      (uint64_t)cdb[8] <<  8 | cdb[9];
-> +                num_blocks =3D (uint32_t)cdb[10] << 24 |
-> +                             (uint32_t)cdb[11] << 16 |
-> +                             (uint32_t)cdb[12] <<  8 | cdb[13];
-> +            }
-> +            byte_count =3D num_blocks * 512;
-> +            if (s->blk && byte_count > 0 && prdtl > 0 && xfer_buf) {
-> +                uint32_t copied =3D 0, i;
-> +                for (i =3D 0; i < prdtl && copied < byte_count; i++) {
-> +                    PrdtEntry pe;
-> +                    uint64_t dba;
-> +                    uint32_t chunk;
-> +                    ufs_dma_read(prdt_base + i * sizeof(PrdtEntry),
-> +                                 &pe, sizeof(pe));
-> +                    dba   =3D (uint64_t)le32_to_cpu(pe.dba) |
-> +                            ((uint64_t)le32_to_cpu(pe.dbau) << 32);
-> +                    chunk =3D (le32_to_cpu(pe.size) & 0x3ffff) + 1;
-> +                    chunk =3D MIN(chunk, byte_count - copied);
-> +                    ufs_dma_read(dba, xfer_buf + copied, chunk);
-> +                    copied +=3D chunk;
-> +                }
-> +                if (blk_pwrite(s->blk, lba * 512, byte_count,
-> +                               xfer_buf, 0) < 0) {
-> +                    ok =3D false;
-> +                }
-> +            }
-> +            xfer_len =3D 0;
-> +            break;
-> +        }
-> +
-> +        case SCSI_REPORT_LUNS: {
-> +            uint8_t rl[16];
-> +            memset(rl, 0, sizeof(rl));
-> +            rl[3] =3D 8;   /* list length =3D 8 (one LUN entry) */
-> +            if (prdtl > 0 && xfer_buf) {
-> +                memcpy(xfer_buf, rl, 16);
-> +            } else {
-> +                ufs_dma_write(resp_base + 32, rl, 16);
-> +            }
-> +            xfer_len =3D 16;
-> +            break;
-> +        }
-> +
-> +        default:
-> +            ok =3D false;
-> +            sense[0] =3D 0x70;
-> +            sense[2] =3D 0x05;   /* ILLEGAL REQUEST */
-> +            sense[7] =3D 0x0a;
-> +            xfer_len =3D 0;
-> +            break;
-> +        }
-> +
-> +        /* Scatter read data back into guest PRDT buffers */
-> +        if (ok && prdtl > 0 && xfer_buf && xfer_len > 0) {
-> +            uint32_t copied =3D 0, i;
-> +            for (i =3D 0; i < prdtl && copied < xfer_len; i++) {
-> +                PrdtEntry pe;
-> +                uint64_t dba;
-> +                uint32_t chunk;
-> +                ufs_dma_read(prdt_base + i * sizeof(PrdtEntry),
-> +                             &pe, sizeof(pe));
-> +                dba   =3D (uint64_t)le32_to_cpu(pe.dba) |
-> +                        ((uint64_t)le32_to_cpu(pe.dbau) << 32);
-> +                chunk =3D (le32_to_cpu(pe.size) & 0x3ffff) + 1;
-> +                chunk =3D MIN(chunk, xfer_len - copied);
-> +                ufs_dma_write(dba, xfer_buf + copied, chunk);
-> +                copied +=3D chunk;
-> +            }
-> +        }
-> +
-> +        g_free(xfer_buf);
-> +
-> +scsi_done:
-> +        /* Build SCSI Response UPIU */
-> +        {
-> +            uint8_t rsp[32];
-> +            uint16_t seg_len =3D 0;
-> +
-> +            memset(rsp, 0, sizeof(rsp));
-> +            rsp[0] =3D UPIU_TYPE_RESPONSE;
-> +            rsp[3] =3D task_tag;
-> +            rsp[7] =3D ok ? 0x00 : 0x02;   /* SCSI status */
-> +
-> +            /*
-> +             * If prdtl=3D0 (no scatter-gather list), the data was writt=
-en
-> +             * directly to the response UPIU data segment; report its
-> length
-> +             * in data_seg_len so the host driver knows where to find it=
-.
-> +             */
-> +            if (ok && prdtl =3D=3D 0 && xfer_len > 0) {
-> +                seg_len =3D (uint16_t)xfer_len;
-> +            } else if (!ok) {
-> +                seg_len =3D sizeof(sense);
-> +            }
-> +            rsp[10] =3D (seg_len >> 8) & 0xff;
-> +            rsp[11] =3D  seg_len       & 0xff;
-> +
-> +            ufs_dma_write(resp_base, rsp, 32);
-> +            if (!ok) {
-> +                ufs_dma_write(resp_base + 32, sense, sizeof(sense));
-> +            }
-> +        }
-> +        goto done;
-> +    }
-> +
-> +    qemu_log_mask(LOG_UNIMP, "aspeed-ufs: unhandled UPIU type 0x%02x
-> slot %d\n",
-> +                  trans_type, slot);
-> +
-> +done:
-> +    /* Mark OCS=3DSUCCESS in UTRD DW2 and write back */
-> +    utrd.dw2 =3D cpu_to_le32(OCS_SUCCESS);
-> +    ufs_dma_write(utrd_addr, &utrd, sizeof(utrd));
-> +
-> +    s->utrldbr &=3D ~BIT(slot);
-> +    s->regs[R(REG_UTRLDBR)] =3D s->utrldbr;
-> +
-> +    s->regs[R(REG_IS)] |=3D IS_UTRCS;
-> +    aspeed_ufs_update_irq(s);
-> +}
-> +
-> +/*
-> + * Process all pending UTRL doorbell slots.  Called synchronously from
-> +the
-> + * write handler to complete requests before the host driver's timeout f=
-ires.
-> + *
-> + * Note: despite the _bh suffix this is not a QEMU BH callback.  It is
-> + * called inline so that U-Boot's 30 ms NOP_OUT_TIMEOUT cannot expire
-> +before
-> + * a deferred callback would run.
-> + */
-> +static void aspeed_ufs_doorbell_bh(AspeedUFSState *s) {
-> +    while (s->utrldbr) {
-> +        int slot =3D ctz32(s->utrldbr);
-> +        aspeed_ufs_process_slot(s, slot);
-> +    }
-> +}
-> +
-> +static uint64_t aspeed_ufs_read(void *opaque, hwaddr addr, unsigned
-> +size) {
-> +    AspeedUFSState *s =3D opaque;
-> +
-> +    if (addr + size > ASPEED_UFS_MMIO_SIZE) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "aspeed-ufs: read out of range 0x%"
-> HWADDR_PRIx "\n",
-> +                      addr);
-> +        return 0;
-> +    }
-> +
-> +    /*
-> +     * HCE state machine: after a HCE=3D1 write the register is cleared =
-to 0
-> +     * (phase 1) so the first read returns 0; the BH then sets it back t=
-o 1
-> +     * (phase 2) and subsequent reads return 1.
-> +     */
-> +    if (addr =3D=3D REG_HCE && s->hce_phase =3D=3D 1) {
-> +        return 0;
-> +    }
-> +
-> +    return s->regs[R(addr)];
-> +}
-> +
-> +static void aspeed_ufs_write(void *opaque, hwaddr addr, uint64_t val,
-> +                             unsigned size) {
-> +    AspeedUFSState *s =3D opaque;
-> +
-> +    if (addr + size > ASPEED_UFS_MMIO_SIZE) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "aspeed-ufs: write out of range 0x%"
-> HWADDR_PRIx "\n",
-> +                      addr);
-> +        return;
-> +    }
-> +
-> +    s->regs[R(addr)] =3D (uint32_t)val;
-> +
-> +    switch (addr) {
-> +
-> +    case REG_HCE:
-> +        if (val & HCE_ENABLE) {
-> +            /*
-> +             * Restart the 1->0->1 toggle on every HCE=3D1 write, includ=
-ing
-> +             * when Linux re-enables the controller after U-Boot.
-> +             */
-> +            if (s->hce_phase !=3D 2) {
-> +                s->regs[R(REG_HCE)] =3D 0;
-> +                s->hce_phase =3D 1;
-> +                qemu_bh_schedule(s->hce_bh);
-> +            }
-> +        } else {
-> +            s->regs[R(REG_HCE)] =3D 0;
-> +            s->regs[R(REG_HCS)] =3D 0;
-> +            s->hce_phase =3D 0;
-> +        }
-> +        break;
-> +
-> +    case REG_UICCMD: {
-> +        uint8_t opcode =3D (uint8_t)(val & 0xff);
-> +
-> +        s->regs[R(REG_UCMDARG2)] =3D UIC_CMD_RESULT_OK;
-> +        s->regs[R(REG_IS)] |=3D IS_UCCS;
-> +
-> +        if (opcode =3D=3D DME_LINKSTARTUP) {
-> +            s->regs[R(REG_IS)]  |=3D IS_UIC_LINK_STARTUP;
-> +            s->regs[R(REG_HCS)]  =3D ASPEED_UFS_HCS_READY;
-> +        }
-> +
-> +        /*
-> +         * Power mode changes (DME_SET / DME_PEER_SET): set
-> HCS[10:8] to
-> +         * PWR_LOCAL and raise IS_UIC_POWER_MODE so
-> ufshcd_uic_pwr_ctrl()
-> +         * does not time out waiting for the completion interrupt.
-> +         */
-> +        if (opcode =3D=3D DME_SET || opcode =3D=3D DME_PEER_SET) {
-> +            s->regs[R(REG_HCS)] |=3D HCS_PWR_LOCAL;
-> +            s->regs[R(REG_IS)]  |=3D IS_UIC_POWER_MODE;
-> +        }
-> +
-> +        /*
-> +         * DME_GET / DME_PEER_GET: return plausible gear/lane values
-> so
-> +         * ufshcd_get_max_pwr_mode() does not fail with rx=3D0, tx=3D0.
-> +         */
-> +        if (opcode =3D=3D DME_GET || opcode =3D=3D DME_PEER_GET) {
-> +            s->regs[R(REG_UCMDARG3)] =3D 0x00000003;
-> +        }
-> +
-> +        aspeed_ufs_update_irq(s);
-> +        break;
-> +    }
-> +
-> +    case REG_IS:
-> +        /* W1C: write-1-to-clear */
-> +        s->regs[R(REG_IS)] &=3D ~(uint32_t)val;
-> +        aspeed_ufs_update_irq(s);
-> +        break;
-> +
-> +    case REG_IE:
-> +        aspeed_ufs_update_irq(s);
-> +        break;
-> +
-> +    case REG_UTRLBA:
-> +        s->utrl_base =3D (s->utrl_base & 0xffffffff00000000ULL) |
-> +                       ((uint64_t)(val & 0xfffffc00));
-> +        break;
-> +
-> +    case REG_UTRLBAU:
-> +        s->utrl_base =3D (s->utrl_base & 0x00000000ffffffffULL) |
-> +                       ((uint64_t)val << 32);
-> +        break;
-> +
-> +    case REG_UTMRLBA:
-> +        s->utmrl_base =3D (s->utmrl_base & 0xffffffff00000000ULL) |
-> +                        ((uint64_t)(val & 0xfffffc00));
-> +        break;
-> +
-> +    case REG_UTMRLBAU:
-> +        s->utmrl_base =3D (s->utmrl_base & 0x00000000ffffffffULL) |
-> +                        ((uint64_t)val << 32);
-> +        break;
-> +
-> +    case REG_UTRLRSR:
-> +    case REG_UTMRLRSR:
-> +        break;
-> +
-> +    case REG_UTRLDBR:
-> +        s->utrldbr |=3D (uint32_t)val;
-> +        s->regs[R(REG_UTRLDBR)] =3D s->utrldbr;
-> +        aspeed_ufs_doorbell_bh(s);
-> +        break;
-> +
-> +    case REG_UTRLCLR:
-> +        s->utrldbr &=3D (uint32_t)val;
-> +        s->regs[R(REG_UTRLDBR)] =3D s->utrldbr;
-> +        break;
-> +
-> +    case REG_UTMRLDBR: {
-> +        /*
-> +         * Task management doorbell.  Write OCS=3DSUCCESS into each
-> requested
-> +         * UTMRD so ufshcd_issue_tm_cmd() reads back success, clear the
-> +         * doorbell, then raise IS_UTMRCS so ufshcd_tmc_handler() fires
-> +         * complete() on the waiting thread.
-> +         *
-> +         * UTMRD slot stride is 80 bytes (request_desc_header:16 +
-> +         * upiu_req:32 + upiu_rsp:32); OCS is at byte 8 of the header.
-> +         */
-> +        uint32_t dbr =3D (uint32_t)val;
-> +        while (dbr) {
-> +            int slot =3D ctz32(dbr);
-> +            uint64_t ocs_addr =3D s->utmrl_base +
-> +                                (uint64_t)slot * UTMRD_SIZE +
-> +                                UTMRD_OCS_OFFSET;
-> +            uint8_t ocs =3D OCS_SUCCESS;
-> +            ufs_dma_write(ocs_addr, &ocs, sizeof(ocs));
-> +            dbr &=3D ~(1u << slot);
-> +        }
-> +        s->regs[R(REG_UTMRLDBR)] =3D 0;
-> +        s->regs[R(REG_IS)] |=3D IS_UTMRCS;
-> +        aspeed_ufs_update_irq(s);
-> +        break;
-> +    }
-> +
-> +    default:
-> +        break;
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps aspeed_ufs_ops =3D {
-> +    .read       =3D aspeed_ufs_read,
-> +    .write      =3D aspeed_ufs_write,
-> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
-> +    .valid =3D {
-> +        .min_access_size =3D 4,
-> +        .max_access_size =3D 4,
-> +    },
-> +};
-> +
-> +static void aspeed_ufs_reset(DeviceState *dev) {
-> +    AspeedUFSState *s =3D ASPEED_UFS(dev);
-> +
-> +    memset(s->regs, 0, sizeof(s->regs));
-> +
-> +    s->regs[R(REG_CAP)]   =3D ASPEED_UFS_CAP_RESET;
-> +    s->regs[R(REG_VER)]   =3D ASPEED_UFS_VER_RESET;
-> +    s->regs[R(REG_HCPID)] =3D 0x41535045;   /* "ASPE" in ASCII */
-> +    s->regs[R(REG_HCMID)] =3D 0x45440000;   /* "ED\0\0" in ASCII */
-> +
-> +    s->regs[R(REG_HCE)] =3D 0;
-> +    s->regs[R(REG_HCS)] =3D 0;
-> +
-> +    s->hce_phase  =3D 0;
-> +    s->utrldbr    =3D 0;
-> +    s->utrl_base  =3D 0;
-> +    s->utmrl_base =3D 0;
-> +
-> +    qemu_set_irq(s->irq, 0);
-> +}
-> +
-> +static void aspeed_ufs_realize(DeviceState *dev, Error **errp) {
-> +    AspeedUFSState *s =3D ASPEED_UFS(dev);
-> +    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-> +
-> +    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_ufs_ops, s,
-> +                          TYPE_ASPEED_UFS,
-> ASPEED_UFS_MMIO_SIZE);
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +    sysbus_init_irq(sbd, &s->irq);
-> +
-> +    s->hce_bh =3D qemu_bh_new(aspeed_ufs_hce_bh, s);
-> +
-> +    if (s->blk) {
-> +        int64_t sz =3D blk_getlength(s->blk);
-> +        if (sz <=3D 0) {
-> +            error_setg(errp, "aspeed-ufs: cannot determine drive size");
-> +            return;
-> +        }
-> +        s->num_sectors =3D (uint64_t)sz / 512;
-> +        blk_set_dev_ops(s->blk, NULL, NULL);
-> +        if (blk_set_perm(s->blk,
-> +                         BLK_PERM_CONSISTENT_READ |
-> BLK_PERM_WRITE,
-> +                         BLK_PERM_ALL, errp) < 0) {
-> +            return;
-> +        }
-> +    } else {
-> +        /* No drive attached; expose a minimal read-only stub. */
-> +        s->num_sectors =3D 2048;
-> +    }
-> +
-> +    aspeed_ufs_init_unit_desc(s);
-> +    aspeed_ufs_reset(dev);
-> +}
-> +
-> +static const VMStateDescription vmstate_aspeed_ufs =3D {
-> +    .name               =3D TYPE_ASPEED_UFS,
-> +    .version_id         =3D 1,
-> +    .minimum_version_id =3D 1,
-> +    .fields             =3D (const VMStateField[]) {
-> +        VMSTATE_UINT32_ARRAY(regs, AspeedUFSState,
-> ASPEED_UFS_NUM_REGS),
-> +        VMSTATE_INT32(hce_phase, AspeedUFSState),
-> +        VMSTATE_UINT32(utrldbr, AspeedUFSState),
-> +        VMSTATE_UINT64(utrl_base, AspeedUFSState),
-> +        VMSTATE_UINT64(utmrl_base, AspeedUFSState),
-> +        VMSTATE_UINT64(num_sectors, AspeedUFSState),
-> +        VMSTATE_UINT8_ARRAY(unit_desc, AspeedUFSState, 0x23),
-> +        VMSTATE_END_OF_LIST()
-> +    },
-> +};
-> +
-> +static const Property aspeed_ufs_properties[] =3D {
-> +    DEFINE_PROP_DRIVE("drive", AspeedUFSState, blk), };
-> +
-> +static void aspeed_ufs_class_init(ObjectClass *oc, const void *data) {
-> +    DeviceClass *dc =3D DEVICE_CLASS(oc);
-> +
-> +    dc->realize  =3D aspeed_ufs_realize;
-> +    device_class_set_legacy_reset(dc, aspeed_ufs_reset);
-
-Convert to use Resettable interface
-https://lore.kernel.org/qemu-devel/20260525044129.3133916-1-kane_chen@aspee=
-dtech.com/
-
-> +    dc->vmsd     =3D &vmstate_aspeed_ufs;
-> +    dc->desc     =3D "ASPEED AST2700 UFS Host Controller";
-> +    device_class_set_props(dc, aspeed_ufs_properties);
-> +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories); }
-> +
-> +static const TypeInfo aspeed_ufs_info =3D {
-> +    .name          =3D TYPE_ASPEED_UFS,
-> +    .parent        =3D TYPE_SYS_BUS_DEVICE,
-> +    .instance_size =3D sizeof(AspeedUFSState),
-> +    .class_init    =3D aspeed_ufs_class_init,
-> +};
-> +
-> +static void aspeed_ufs_register_types(void) {
-> +    type_register_static(&aspeed_ufs_info);
-> +}
-> +
-> +type_init(aspeed_ufs_register_types)
-
-
-Convert to DEFINE_TYPES() with inlined TypeInfo
-https://lore.kernel.org/qemu-devel/20260601024959.2347639-1-jamin_lin@aspee=
-dtech.com/=20
-
-> diff --git a/hw/ufs/meson.build b/hw/ufs/meson.build index
-> 6e68328b93..86052e6fd2 100644
-> --- a/hw/ufs/meson.build
-> +++ b/hw/ufs/meson.build
-> @@ -1 +1,2 @@
->  system_ss.add(when: 'CONFIG_UFS_PCI', if_true: files('ufs.c', 'lu.c'))
-> +system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true:
-> +files('aspeed_ufs.c'))
-> --
-> 2.53.0
-
-Thanks,
-Jamin
-
+SGkgUGhpbGlwcGUNCg0KPiBMb29raW5nIGF0IHRoaXMgbWFjaGluZSBpbiBtb3JlIGRldGFpbCwg
+SSB0aGluayBpdCB3b3VsZCBiZSBiZXR0ZXIgbW9kZWxsZWQgYXM6DQo+IA0KPiBzdHJ1Y3QgQXN0
+MjcwMEZjTWFjaGluZVN0YXRlIHsNCj4gICAgICBNYWNoaW5lU3RhdGUgcGFyZW50X29iajsNCj4g
+DQo+ICAgICAgTWVtb3J5UmVnaW9uIGRyYW07DQo+ICAgICAgQXNwZWVkMjcwMFNDVVN0YXRlIHNj
+dTsNCj4gDQo+ICAgICAgQXNwZWVkMjd4MFNvQ1N0YXRlIHBzcDsNCj4gICAgICBNZW1vcnlSZWdp
+b24gcHNwX21lbW9yeTsNCj4gICAgICBNZW1vcnlSZWdpb24gcHNwX2Jvb3Ryb207DQo+IA0KPiAg
+ICAgIEFzcGVlZDI3eDBDb3Byb2Nlc3NvclN0YXRlIHNzcDsNCj4gICAgICBDbG9jayAqc3NwX3N5
+c2NsazsNCj4gICAgICBNZW1vcnlSZWdpb24gc3NwX21lbW9yeTsNCj4gDQo+ICAgICAgQXNwZWVk
+Mjd4MENvcHJvY2Vzc29yU3RhdGUgdHNwOw0KPiAgICAgIENsb2NrICp0c3Bfc3lzY2xrOw0KPiAg
+ICAgIE1lbW9yeVJlZ2lvbiB0c3BfbWVtb3J5Ow0KPiB9Ow0KPiANCj4gLSBkcmFtIGFuZCBzY3Ug
+YXJlIHNoYXJlZCB3aXRoaW4gcHNwL3NzcC90c3ANCj4gICAgKGNhMzVfZHJhbSByZW5hbWVkIGFz
+IGdlbmVyaWMgZHJhbSkNCj4gICAgKGNhMzVfbWVtb3J5IHJlbmFtZWQgYXMgcHNwX21lbW9yeSkN
+Cj4gICAgKGNhMzVfYm9vdF9yb20gcmVuYW1lZCBhcyBwc3BfYm9vdHJvbSkNCj4gDQo+IGFuZDoN
+Cj4gDQo+IHN0cnVjdCBBc3BlZWQyN3gwU29DU3RhdGUgew0KPiAgICAgIEFzcGVlZFNvQ1N0YXRl
+IHBhcmVudDsNCj4gDQo+ICAgICAgQVJNQ1BVIGNwdVtBU1BFRURfQ1BVU19OVU1dOw0KPiAgICAg
+IEFzcGVlZElOVENTdGF0ZSBpbnRjW0FTUEVFRF9JTlRDX05VTV07DQo+ICAgICAgQXNwZWVkSU5U
+Q1N0YXRlIGludGNpb2V4cFtBU1BFRURfSU9FWFBfTlVNXTsNCj4gICAgICBHSUN2M1N0YXRlIGdp
+YzsNCj4gICAgICBNZW1vcnlSZWdpb24gZHJhbV9lbXB0eTsNCj4gICAgICBBc3BlZWQyNzAwU0NV
+U3RhdGUgKnNjdTsNCj4gfTsNCj4gDQo+IC0gc2N1IGJlY29tZXMgYSBsaW5rIHByb3BlcnR5DQo+
+IA0KPiBzdHJ1Y3QgQXN0MjcwMEZjTWFjaGluZVN0YXRlIHsNCj4gICAgICBNYWNoaW5lU3RhdGUg
+cGFyZW50X29iajsNCj4gDQo+ICAgICAgTWVtb3J5UmVnaW9uIGRyYW07DQo+ICAgICAgQXNwZWVk
+MjcwMFNDVVN0YXRlIHNjdTsNCj4gDQo+ICAgICAgQXNwZWVkMjd4MFNvQ1N0YXRlIHBzcDsNCj4g
+ICAgICBNZW1vcnlSZWdpb24gcHNwX21lbW9yeTsNCj4gICAgICBNZW1vcnlSZWdpb24gcHNwX2Jv
+b3Ryb207DQo+IA0KPiAgICAgIEFzcGVlZDI3eDBDb3Byb2Nlc3NvclN0YXRlIHNzcDsNCj4gICAg
+ICBDbG9jayAqc3NwX3N5c2NsazsNCj4gICAgICBNZW1vcnlSZWdpb24gc3NwX21lbW9yeTsNCj4g
+DQo+ICAgICAgQXNwZWVkMjd4MENvcHJvY2Vzc29yU3RhdGUgdHNwOw0KPiAgICAgIENsb2NrICp0
+c3Bfc3lzY2xrOw0KPiAgICAgIE1lbW9yeVJlZ2lvbiB0c3BfbWVtb3J5Ow0KPiB9Ow0KPiANCj4g
+TXkgcGVyc29uYWwgc3R5bGUgcHJlZmVyZW5jZSBiZWluZzoNCj4gDQo+IHN0cnVjdCBBc3QyNzAw
+RmNNYWNoaW5lU3RhdGUgew0KPiAgICAgIE1hY2hpbmVTdGF0ZSBwYXJlbnRfb2JqOw0KPiANCj4g
+ICAgICBNZW1vcnlSZWdpb24gZHJhbTsNCj4gICAgICBBc3BlZWQyNzAwU0NVU3RhdGUgc2N1Ow0K
+PiANCj4gICAgICBzdHJ1Y3Qgew0KPiAgICAgICAgICBBc3BlZWQyN3gwU29DU3RhdGUgbXBjb3Jl
+Ow0KPiAgICAgICAgICBNZW1vcnlSZWdpb24gbWVtb3J5Ow0KPiAgICAgICAgICBNZW1vcnlSZWdp
+b24gYm9vdHJvbTsNCj4gICAgICB9IHBzcDsNCj4gDQo+ICAgICAgc3RydWN0IHsNCj4gICAgICAg
+ICAgQXNwZWVkMjd4MENvcHJvY2Vzc29yU3RhdGUgbWN1Ow0KPiAgICAgICAgICBDbG9jayAqc3lz
+Y2xrOw0KPiAgICAgICAgICBNZW1vcnlSZWdpb24gbWVtb3J5Ow0KPiAgICAgIH0gc3NwOw0KPiAN
+Cj4gICAgICBzdHJ1Y3Qgew0KPiAgICAgICAgICBBc3BlZWQyN3gwQ29wcm9jZXNzb3JTdGF0ZSBt
+Y3U7DQo+ICAgICAgICAgIENsb2NrICpzeXNjbGs7DQo+ICAgICAgICAgIE1lbW9yeVJlZ2lvbiBt
+ZW1vcnk7DQo+ICAgICAgfSB0c3A7DQo+IH07DQoNClRoYW5rcyBmb3IgdGhlIHN1Z2dlc3Rpb24u
+IEkndmUgcmV3b3JrZWQgQXN0MjcwMEZDU3RhdGUgdG8gbWF0Y2ggeW91ciBwcmVmZXJyZWQgbmVz
+dGVkLXN0cnVjdCBzdHlsZSDigJQgcHNwL3NzcC90c3AgYXJlIG5vdyBncm91cGVkIHN0cnVjdHMg
+KG1wY29yZS9tZW1vcnkvYm9vdHJvbSBmb3IgcHNwLCBtY3Uvc3lzY2xrL21lbW9yeSBmb3Igc3Nw
+IGFuZCB0c3ApLCANCmFuZCBjYTM1X2RyYW0gaXMgcmVuYW1lZCB0byB0aGUgZ2VuZXJpYyBkcmFt
+IGFzIHlvdSBzdWdnZXN0ZWQuIERpZmYgYXR0YWNoZWQvaW5saW5lIGJlbG93LiBCdWlsdCBhbmQg
+Ym9vdC10ZXN0ZWQgYm90aCBhc3QyNzAwZmMgYW5kIGFzdDI3MDBhMi1ldmIgdG8gY29uZmlybSBu
+b3RoaW5nIHJlZ3Jlc3NlZC4NCg0KT25lIHBhcnQgSSBjb3VsZG4ndCBkbyB5ZXQ6IG1ha2luZyBB
+c3BlZWQyN3gwU29DU3RhdGUuc2N1IGEgbGluayBwcm9wZXJ0eS4NCg0KVGhlIGJsb2NrZXIgaXMg
+aHctc3RyYXAxL2h3LXN0cmFwMjogdGhleSdyZSBwcm9wZXJ0eSBhbGlhc2VzIGNyZWF0ZWQgaW4g
+aW5zdGFuY2VfaW5pdCgpLCBwb2ludGluZyBhdCB0aGUgZW1iZWRkZWQgc2N1LiBCb3RoIGFzdDI3
+MDBmYy5jIGFuZCBody9hcm0vYXNwZWVkLmMgc2V0IHRoZW0gcmlnaHQgYWZ0ZXIgb2JqZWN0IGNy
+ZWF0aW9uLCBiZWZvcmUgcmVhbGl6ZSDigJQgYnV0IGEgbGluayB3b3VsZG4ndCBiZSBwb3B1bGF0
+ZWQgdGhhdCBlYXJseSwgc28gdGhlIGFsaWFzIHdvdWxkIHBvaW50IGF0IE5VTEwuDQoNCmh3L2Fy
+bS9hc3BlZWQuYyBpc24ndCBBU1QyNzAwLXNwZWNpZmljIOKAlCBpdCdzIHNoYXJlZCBieSBldmVy
+eSBBc3BlZWQgQk1DIGJvYXJkLiBGaXhpbmcgdGhlIHRpbWluZyB0aGVyZSB3b3VsZCB0b3VjaCBh
+bGwgMjQgb2YgdGhlbSAoMjQwMC8yNTAwLzI2MDAvMTAzMC8xMDQwLzI3MDAgY29tYmluZWQpLiAi
+SSBkbyBub3QgcHJlZmVyIHRvIGNoYW5nZSBpdCB0byBhIGxpbmsgcHJvcGVydHkuIg0KDQpUaGFu
+a3MsDQpKYW1pbg0KDQpkaWZmIC0tZ2l0IGEvaHcvYXJtL2FzcGVlZF9hc3QyN3gwLWZjLmMgYi9o
+dy9hcm0vYXNwZWVkX2FzdDI3eDAtZmMuYw0KaW5kZXggMDU4Y2VhNDJlZC4uNDE3MTYyYmIwMiAx
+MDA2NDQNCi0tLSBhL2h3L2FybS9hc3BlZWRfYXN0Mjd4MC1mYy5jDQorKysgYi9ody9hcm0vYXNw
+ZWVkX2FzdDI3eDAtZmMuYw0KQEAgLTM0LDE4ICszNCwyNSBAQCBzdGF0aWMgc3RydWN0IGFybV9i
+b290X2luZm8gYXN0MjcwMGZjX2JvYXJkX2luZm8gPSB7DQogc3RydWN0IEFzdDI3MDBGQ1N0YXRl
+IHsNCiAgICAgTWFjaGluZVN0YXRlIHBhcmVudF9vYmo7DQogDQotICAgIE1lbW9yeVJlZ2lvbiBj
+YTM1X21lbW9yeTsNCi0gICAgTWVtb3J5UmVnaW9uIGNhMzVfZHJhbTsNCi0gICAgTWVtb3J5UmVn
+aW9uIGNhMzVfYm9vdF9yb207DQotICAgIE1lbW9yeVJlZ2lvbiBzc3BfbWVtb3J5Ow0KLSAgICBN
+ZW1vcnlSZWdpb24gdHNwX21lbW9yeTsNCi0NCi0gICAgQ2xvY2sgKnNzcF9zeXNjbGs7DQotICAg
+IENsb2NrICp0c3Bfc3lzY2xrOw0KLQ0KLSAgICBBc3BlZWQyN3gwU29DU3RhdGUgY2EzNTsNCi0g
+ICAgQXNwZWVkMjd4MENvcHJvY2Vzc29yU3RhdGUgc3NwOw0KLSAgICBBc3BlZWQyN3gwQ29wcm9j
+ZXNzb3JTdGF0ZSB0c3A7DQorICAgIE1lbW9yeVJlZ2lvbiBkcmFtOw0KKw0KKyAgICBzdHJ1Y3Qg
+ew0KKyAgICAgICAgQXNwZWVkMjd4MFNvQ1N0YXRlIG1wY29yZTsNCisgICAgICAgIE1lbW9yeVJl
+Z2lvbiBtZW1vcnk7DQorICAgICAgICBNZW1vcnlSZWdpb24gYm9vdHJvbTsNCisgICAgfSBwc3A7
+DQorDQorICAgIHN0cnVjdCB7DQorICAgICAgICBBc3BlZWQyN3gwQ29wcm9jZXNzb3JTdGF0ZSBt
+Y3U7DQorICAgICAgICBDbG9jayAqc3lzY2xrOw0KKyAgICAgICAgTWVtb3J5UmVnaW9uIG1lbW9y
+eTsNCisgICAgfSBzc3A7DQorDQorICAgIHN0cnVjdCB7DQorICAgICAgICBBc3BlZWQyN3gwQ29w
+cm9jZXNzb3JTdGF0ZSBtY3U7DQorICAgICAgICBDbG9jayAqc3lzY2xrOw0KKyAgICAgICAgTWVt
+b3J5UmVnaW9uIG1lbW9yeTsNCisgICAgfSB0c3A7DQogfTsNCiANCiAjZGVmaW5lIEFTVDI3MDBG
+Q19CTUNfUkFNX1NJWkUgKDIgKiBHaUIpDQpAQCAtNjcsMjMgKzc0LDIzIEBAIHN0YXRpYyBib29s
+IGFzdDI3MDBmY19jYTM1X2luaXQoTWFjaGluZVN0YXRlICptYWNoaW5lLCBFcnJvciAqKmVycnAp
+DQogICAgIERldmljZVN0YXRlICpkZXYgPSBOVUxMOw0KICAgICB1aW50NjRfdCByb21fc2l6ZTsN
+CiANCi0gICAgb2JqZWN0X2luaXRpYWxpemVfY2hpbGQoT0JKRUNUKHMpLCAiY2EzNSIsICZzLT5j
+YTM1LCAiYXN0MjcwMC1hMiIpOw0KLSAgICBzb2MgPSBBU1BFRURfU09DKCZzLT5jYTM1KTsNCisg
+ICAgb2JqZWN0X2luaXRpYWxpemVfY2hpbGQoT0JKRUNUKHMpLCAiY2EzNSIsICZzLT5wc3AubXBj
+b3JlLCAiYXN0MjcwMC1hMiIpOw0KKyAgICBzb2MgPSBBU1BFRURfU09DKCZzLT5wc3AubXBjb3Jl
+KTsNCiAgICAgc2MgPSBBU1BFRURfU09DX0dFVF9DTEFTUyhzb2MpOw0KIA0KLSAgICBtZW1vcnlf
+cmVnaW9uX2luaXQoJnMtPmNhMzVfbWVtb3J5LCBPQkpFQ1QoJnMtPmNhMzUpLCAiY2EzNS1tZW1v
+cnkiLA0KKyAgICBtZW1vcnlfcmVnaW9uX2luaXQoJnMtPnBzcC5tZW1vcnksIE9CSkVDVCgmcy0+
+cHNwLm1wY29yZSksICJwc3AtbWVtb3J5IiwNCiAgICAgICAgICAgICAgICAgICAgICAgIFVJTlQ2
+NF9NQVgpOw0KLSAgICBtZW1vcnlfcmVnaW9uX2FkZF9zdWJyZWdpb24oZ2V0X3N5c3RlbV9tZW1v
+cnkoKSwgMCwgJnMtPmNhMzVfbWVtb3J5KTsNCisgICAgbWVtb3J5X3JlZ2lvbl9hZGRfc3VicmVn
+aW9uKGdldF9zeXN0ZW1fbWVtb3J5KCksIDAsICZzLT5wc3AubWVtb3J5KTsNCiANCi0gICAgaWYg
+KCFtZW1vcnlfcmVnaW9uX2luaXRfcmFtKCZzLT5jYTM1X2RyYW0sIE9CSkVDVCgmcy0+Y2EzNSks
+ICJjYTM1LWRyYW0iLA0KKyAgICBpZiAoIW1lbW9yeV9yZWdpb25faW5pdF9yYW0oJnMtPmRyYW0s
+IE9CSkVDVCgmcy0+cHNwLm1wY29yZSksICJkcmFtIiwNCiAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIEFTVDI3MDBGQ19CTUNfUkFNX1NJWkUsIGVycnApKSB7DQogICAgICAgICByZXR1
+cm4gZmFsc2U7DQogICAgIH0NCi0gICAgb2JqZWN0X3Byb3BlcnR5X3NldF9saW5rKE9CSkVDVCgm
+cy0+Y2EzNSksICJtZW1vcnkiLA0KLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgT0JKRUNU
+KCZzLT5jYTM1X21lbW9yeSksICZlcnJvcl9hYm9ydCk7DQotICAgIG9iamVjdF9wcm9wZXJ0eV9z
+ZXRfbGluayhPQkpFQ1QoJnMtPmNhMzUpLCAiZHJhbSIsIE9CSkVDVCgmcy0+Y2EzNV9kcmFtKSwN
+Ci0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICZlcnJvcl9hYm9ydCk7DQotICAgIG9iamVj
+dF9wcm9wZXJ0eV9zZXRfaW50KE9CSkVDVCgmcy0+Y2EzNSksICJyYW0tc2l6ZSIsDQorICAgIG9i
+amVjdF9wcm9wZXJ0eV9zZXRfbGluayhPQkpFQ1QoJnMtPnBzcC5tcGNvcmUpLCAibWVtb3J5IiwN
+CisgICAgICAgICAgICAgICAgICAgICAgICAgICAgIE9CSkVDVCgmcy0+cHNwLm1lbW9yeSksICZl
+cnJvcl9hYm9ydCk7DQorICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfbGluayhPQkpFQ1QoJnMtPnBz
+cC5tcGNvcmUpLCAiZHJhbSIsDQorICAgICAgICAgICAgICAgICAgICAgICAgICAgICBPQkpFQ1Qo
+JnMtPmRyYW0pLCAmZXJyb3JfYWJvcnQpOw0KKyAgICBvYmplY3RfcHJvcGVydHlfc2V0X2ludChP
+QkpFQ1QoJnMtPnBzcC5tcGNvcmUpLCAicmFtLXNpemUiLA0KICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICBBU1QyNzAwRkNfQk1DX1JBTV9TSVpFLCAmZXJyb3JfYWJvcnQpOw0KIA0KICAgICBm
+b3IgKGludCBpID0gMDsgaSA8IHNjLT5tYWNzX251bTsgaSsrKSB7DQpAQCAtOTIsOSArOTksOSBA
+QCBzdGF0aWMgYm9vbCBhc3QyNzAwZmNfY2EzNV9pbml0KE1hY2hpbmVTdGF0ZSAqbWFjaGluZSwg
+RXJyb3IgKiplcnJwKQ0KICAgICAgICAgICAgIGJyZWFrOw0KICAgICAgICAgfQ0KICAgICB9DQot
+ICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfaW50KE9CSkVDVCgmcy0+Y2EzNSksICJody1zdHJhcDEi
+LA0KKyAgICBvYmplY3RfcHJvcGVydHlfc2V0X2ludChPQkpFQ1QoJnMtPnBzcC5tcGNvcmUpLCAi
+aHctc3RyYXAxIiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQVNUMjcwMEZDX0hXX1NU
+UkFQMSwgJmVycm9yX2Fib3J0KTsNCi0gICAgb2JqZWN0X3Byb3BlcnR5X3NldF9pbnQoT0JKRUNU
+KCZzLT5jYTM1KSwgImh3LXN0cmFwMiIsDQorICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfaW50KE9C
+SkVDVCgmcy0+cHNwLm1wY29yZSksICJody1zdHJhcDIiLA0KICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICBBU1QyNzAwRkNfSFdfU1RSQVAyLCAmZXJyb3JfYWJvcnQpOw0KICAgICBhc3BlZWRf
+c29jX3VhcnRfc2V0X2Nocihzb2MtPnVhcnQsIEFTUEVFRF9ERVZfVUFSVDEyLCBzYy0+dWFydHNf
+YmFzZSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2MtPnVhcnRzX251bSwgc2VyaWFs
+X2hkKDApKTsNCkBAIC0xMDIsNyArMTA5LDcgQEAgc3RhdGljIGJvb2wgYXN0MjcwMGZjX2NhMzVf
+aW5pdChNYWNoaW5lU3RhdGUgKm1hY2hpbmUsIEVycm9yICoqZXJycCkNCiAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgc2MtPnVhcnRzX251bSwgc2VyaWFsX2hkKDEpKTsNCiAgICAgYXNwZWVk
+X3NvY191YXJ0X3NldF9jaHIoc29jLT51YXJ0LCBBU1BFRURfREVWX1VBUlQ3LCBzYy0+dWFydHNf
+YmFzZSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2MtPnVhcnRzX251bSwgc2VyaWFs
+X2hkKDIpKTsNCi0gICAgaWYgKCFxZGV2X3JlYWxpemUoREVWSUNFKCZzLT5jYTM1KSwgTlVMTCwg
+ZXJycCkpIHsNCisgICAgaWYgKCFxZGV2X3JlYWxpemUoREVWSUNFKCZzLT5wc3AubXBjb3JlKSwg
+TlVMTCwgZXJycCkpIHsNCiAgICAgICAgIHJldHVybiBmYWxzZTsNCiAgICAgfQ0KIA0KQEAgLTEy
+Miw3ICsxMjksNyBAQCBzdGF0aWMgYm9vbCBhc3QyNzAwZmNfY2EzNV9pbml0KE1hY2hpbmVTdGF0
+ZSAqbWFjaGluZSwgRXJyb3IgKiplcnJwKQ0KIA0KICAgICBpZiAoZm1jMCkgew0KICAgICAgICAg
+cm9tX3NpemUgPSBtZW1vcnlfcmVnaW9uX3NpemUoJnNvYy0+c3BpX2Jvb3QpOw0KLSAgICAgICAg
+YXNwZWVkX2luc3RhbGxfYm9vdF9yb20oc29jLCBmbWMwLCAmcy0+Y2EzNV9ib290X3JvbSwgcm9t
+X3NpemUpOw0KKyAgICAgICAgYXNwZWVkX2luc3RhbGxfYm9vdF9yb20oc29jLCBmbWMwLCAmcy0+
+cHNwLmJvb3Ryb20sIHJvbV9zaXplKTsNCiAgICAgfQ0KIA0KICAgICAvKiBWQk9PVFJPTSAqLw0K
+QEAgLTEzNCw2OCArMTQxLDY4IEBAIHN0YXRpYyBib29sIGFzdDI3MDBmY19jYTM1X2luaXQoTWFj
+aGluZVN0YXRlICptYWNoaW5lLCBFcnJvciAqKmVycnApDQogICAgIHJldHVybiB0cnVlOw0KIH0N
+CiANCi1zdGF0aWMgYm9vbCBhc3QyNzAwZmNfc3NwX2luaXQoQXN0MjcwMEZDU3RhdGUgKnMsIEFz
+cGVlZFNvQ1N0YXRlICpwc3AsDQorc3RhdGljIGJvb2wgYXN0MjcwMGZjX3NzcF9pbml0KEFzdDI3
+MDBGQ1N0YXRlICpzLCBBc3BlZWRTb0NTdGF0ZSAqc29jLA0KICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICBFcnJvciAqKmVycnApDQogew0KLSAgICBzLT5zc3Bfc3lzY2xrID0gY2xvY2tf
+bmV3KE9CSkVDVChzKSwgIlNTUF9TWVNDTEsiKTsNCi0gICAgY2xvY2tfc2V0X2h6KHMtPnNzcF9z
+eXNjbGssIDIwMDAwMDAwMFVMTCk7DQorICAgIHMtPnNzcC5zeXNjbGsgPSBjbG9ja19uZXcoT0JK
+RUNUKHMpLCAiU1NQX1NZU0NMSyIpOw0KKyAgICBjbG9ja19zZXRfaHoocy0+c3NwLnN5c2Nsaywg
+MjAwMDAwMDAwVUxMKTsNCiANCi0gICAgb2JqZWN0X2luaXRpYWxpemVfY2hpbGQoT0JKRUNUKHMp
+LCAic3NwIiwgJnMtPnNzcCwNCisgICAgb2JqZWN0X2luaXRpYWxpemVfY2hpbGQoT0JKRUNUKHMp
+LCAic3NwIiwgJnMtPnNzcC5tY3UsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgIFRZUEVf
+QVNQRUVEMjdYMFNTUF9DT1BST0NFU1NPUik7DQotICAgIG1lbW9yeV9yZWdpb25faW5pdCgmcy0+
+c3NwX21lbW9yeSwgT0JKRUNUKCZzLT5zc3ApLCAic3NwLW1lbW9yeSIsDQorICAgIG1lbW9yeV9y
+ZWdpb25faW5pdCgmcy0+c3NwLm1lbW9yeSwgT0JKRUNUKCZzLT5zc3AubWN1KSwgInNzcC1tZW1v
+cnkiLA0KICAgICAgICAgICAgICAgICAgICAgICAgVUlOVDY0X01BWCk7DQogDQotICAgIHFkZXZf
+Y29ubmVjdF9jbG9ja19pbihERVZJQ0UoJnMtPnNzcCksICJzeXNjbGsiLCBzLT5zc3Bfc3lzY2xr
+KTsNCi0gICAgb2JqZWN0X3Byb3BlcnR5X3NldF9saW5rKE9CSkVDVCgmcy0+c3NwKSwgIm1lbW9y
+eSIsDQotICAgICAgICAgICAgICAgICAgICAgICAgICAgICBPQkpFQ1QoJnMtPnNzcF9tZW1vcnkp
+LCAmZXJyb3JfYWJvcnQpOw0KKyAgICBxZGV2X2Nvbm5lY3RfY2xvY2tfaW4oREVWSUNFKCZzLT5z
+c3AubWN1KSwgInN5c2NsayIsIHMtPnNzcC5zeXNjbGspOw0KKyAgICBvYmplY3RfcHJvcGVydHlf
+c2V0X2xpbmsoT0JKRUNUKCZzLT5zc3AubWN1KSwgIm1lbW9yeSIsDQorICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICBPQkpFQ1QoJnMtPnNzcC5tZW1vcnkpLCAmZXJyb3JfYWJvcnQpOw0KIA0K
+LSAgICBvYmplY3RfcHJvcGVydHlfc2V0X2xpbmsoT0JKRUNUKCZzLT5zc3ApLCAidWFydCIsDQot
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBPQkpFQ1QoJnBzcC0+dWFydFs0XSksICZlcnJv
+cl9hYm9ydCk7DQotICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfaW50KE9CSkVDVCgmcy0+c3NwKSwg
+InVhcnQtZGV2IiwgQVNQRUVEX0RFVl9VQVJUNCwNCisgICAgb2JqZWN0X3Byb3BlcnR5X3NldF9s
+aW5rKE9CSkVDVCgmcy0+c3NwLm1jdSksICJ1YXJ0IiwNCisgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIE9CSkVDVCgmc29jLT51YXJ0WzRdKSwgJmVycm9yX2Fib3J0KTsNCisgICAgb2JqZWN0
+X3Byb3BlcnR5X3NldF9pbnQoT0JKRUNUKCZzLT5zc3AubWN1KSwgInVhcnQtZGV2IiwgQVNQRUVE
+X0RFVl9VQVJUNCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJmVycm9yX2Fib3J0KTsN
+Ci0gICAgb2JqZWN0X3Byb3BlcnR5X3NldF9saW5rKE9CSkVDVCgmcy0+c3NwKSwgInNyYW0iLA0K
+LSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgT0JKRUNUKCZwc3AtPnNyYW0pLCAmZXJyb3Jf
+YWJvcnQpOw0KLSAgICBvYmplY3RfcHJvcGVydHlfc2V0X2xpbmsoT0JKRUNUKCZzLT5zc3ApLCAi
+c2N1IiwNCi0gICAgICAgICAgICAgICAgICAgICAgICAgICAgIE9CSkVDVCgmcy0+Y2EzNS5zY3Up
+LCAmZXJyb3JfYWJvcnQpOw0KLSAgICBvYmplY3RfcHJvcGVydHlfc2V0X2xpbmsoT0JKRUNUKCZz
+LT5zc3ApLCAic2N1aW8iLA0KLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgT0JKRUNUKCZw
+c3AtPnNjdWlvKSwgJmVycm9yX2Fib3J0KTsNCi0gICAgb2JqZWN0X3Byb3BlcnR5X3NldF9saW5r
+KE9CSkVDVCgmcy0+c3NwKSwgImZtYyIsDQotICAgICAgICAgICAgICAgICAgICAgICAgICAgICBP
+QkpFQ1QoJnBzcC0+Zm1jKSwgJmVycm9yX2Fib3J0KTsNCi0gICAgaWYgKCFxZGV2X3JlYWxpemUo
+REVWSUNFKCZzLT5zc3ApLCBOVUxMLCBlcnJwKSkgew0KKyAgICBvYmplY3RfcHJvcGVydHlfc2V0
+X2xpbmsoT0JKRUNUKCZzLT5zc3AubWN1KSwgInNyYW0iLA0KKyAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgT0JKRUNUKCZzb2MtPnNyYW0pLCAmZXJyb3JfYWJvcnQpOw0KKyAgICBvYmplY3Rf
+cHJvcGVydHlfc2V0X2xpbmsoT0JKRUNUKCZzLT5zc3AubWN1KSwgInNjdSIsDQorICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICBPQkpFQ1QoJnMtPnBzcC5tcGNvcmUuc2N1KSwgJmVycm9yX2Fi
+b3J0KTsNCisgICAgb2JqZWN0X3Byb3BlcnR5X3NldF9saW5rKE9CSkVDVCgmcy0+c3NwLm1jdSks
+ICJzY3VpbyIsDQorICAgICAgICAgICAgICAgICAgICAgICAgICAgICBPQkpFQ1QoJnNvYy0+c2N1
+aW8pLCAmZXJyb3JfYWJvcnQpOw0KKyAgICBvYmplY3RfcHJvcGVydHlfc2V0X2xpbmsoT0JKRUNU
+KCZzLT5zc3AubWN1KSwgImZtYyIsDQorICAgICAgICAgICAgICAgICAgICAgICAgICAgICBPQkpF
+Q1QoJnNvYy0+Zm1jKSwgJmVycm9yX2Fib3J0KTsNCisgICAgaWYgKCFxZGV2X3JlYWxpemUoREVW
+SUNFKCZzLT5zc3AubWN1KSwgTlVMTCwgZXJycCkpIHsNCiAgICAgICAgIHJldHVybiBmYWxzZTsN
+CiAgICAgfQ0KIA0KICAgICByZXR1cm4gdHJ1ZTsNCiB9DQogDQotc3RhdGljIGJvb2wgYXN0Mjcw
+MGZjX3RzcF9pbml0KEFzdDI3MDBGQ1N0YXRlICpzLCBBc3BlZWRTb0NTdGF0ZSAqcHNwLA0KK3N0
+YXRpYyBib29sIGFzdDI3MDBmY190c3BfaW5pdChBc3QyNzAwRkNTdGF0ZSAqcywgQXNwZWVkU29D
+U3RhdGUgKnNvYywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRXJyb3IgKiplcnJw
+KQ0KIHsNCi0gICAgcy0+dHNwX3N5c2NsayA9IGNsb2NrX25ldyhPQkpFQ1QocyksICJUU1BfU1lT
+Q0xLIik7DQotICAgIGNsb2NrX3NldF9oeihzLT50c3Bfc3lzY2xrLCAyMDAwMDAwMDBVTEwpOw0K
+KyAgICBzLT50c3Auc3lzY2xrID0gY2xvY2tfbmV3KE9CSkVDVChzKSwgIlRTUF9TWVNDTEsiKTsN
+CisgICAgY2xvY2tfc2V0X2h6KHMtPnRzcC5zeXNjbGssIDIwMDAwMDAwMFVMTCk7DQogDQotICAg
+IG9iamVjdF9pbml0aWFsaXplX2NoaWxkKE9CSkVDVChzKSwgInRzcCIsICZzLT50c3AsDQorICAg
+IG9iamVjdF9pbml0aWFsaXplX2NoaWxkKE9CSkVDVChzKSwgInRzcCIsICZzLT50c3AubWN1LA0K
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBUWVBFX0FTUEVFRDI3WDBUU1BfQ09QUk9DRVNT
+T1IpOw0KLSAgICBtZW1vcnlfcmVnaW9uX2luaXQoJnMtPnRzcF9tZW1vcnksIE9CSkVDVCgmcy0+
+dHNwKSwgInRzcC1tZW1vcnkiLA0KKyAgICBtZW1vcnlfcmVnaW9uX2luaXQoJnMtPnRzcC5tZW1v
+cnksIE9CSkVDVCgmcy0+dHNwLm1jdSksICJ0c3AtbWVtb3J5IiwNCiAgICAgICAgICAgICAgICAg
+ICAgICAgIFVJTlQ2NF9NQVgpOw0KIA0KLSAgICBxZGV2X2Nvbm5lY3RfY2xvY2tfaW4oREVWSUNF
+KCZzLT50c3ApLCAic3lzY2xrIiwgcy0+dHNwX3N5c2Nsayk7DQotICAgIG9iamVjdF9wcm9wZXJ0
+eV9zZXRfbGluayhPQkpFQ1QoJnMtPnRzcCksICJtZW1vcnkiLA0KLSAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgT0JKRUNUKCZzLT50c3BfbWVtb3J5KSwgJmVycm9yX2Fib3J0KTsNCisgICAg
+cWRldl9jb25uZWN0X2Nsb2NrX2luKERFVklDRSgmcy0+dHNwLm1jdSksICJzeXNjbGsiLCBzLT50
+c3Auc3lzY2xrKTsNCisgICAgb2JqZWN0X3Byb3BlcnR5X3NldF9saW5rKE9CSkVDVCgmcy0+dHNw
+Lm1jdSksICJtZW1vcnkiLA0KKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgT0JKRUNUKCZz
+LT50c3AubWVtb3J5KSwgJmVycm9yX2Fib3J0KTsNCiANCi0gICAgb2JqZWN0X3Byb3BlcnR5X3Nl
+dF9saW5rKE9CSkVDVCgmcy0+dHNwKSwgInVhcnQiLA0KLSAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgT0JKRUNUKCZwc3AtPnVhcnRbN10pLCAmZXJyb3JfYWJvcnQpOw0KLSAgICBvYmplY3Rf
+cHJvcGVydHlfc2V0X2ludChPQkpFQ1QoJnMtPnRzcCksICJ1YXJ0LWRldiIsIEFTUEVFRF9ERVZf
+VUFSVDcsDQorICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfbGluayhPQkpFQ1QoJnMtPnRzcC5tY3Up
+LCAidWFydCIsDQorICAgICAgICAgICAgICAgICAgICAgICAgICAgICBPQkpFQ1QoJnNvYy0+dWFy
+dFs3XSksICZlcnJvcl9hYm9ydCk7DQorICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfaW50KE9CSkVD
+VCgmcy0+dHNwLm1jdSksICJ1YXJ0LWRldiIsIEFTUEVFRF9ERVZfVUFSVDcsDQogICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICZlcnJvcl9hYm9ydCk7DQotICAgIG9iamVjdF9wcm9wZXJ0eV9z
+ZXRfbGluayhPQkpFQ1QoJnMtPnRzcCksICJzcmFtIiwNCi0gICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIE9CSkVDVCgmcHNwLT5zcmFtKSwgJmVycm9yX2Fib3J0KTsNCi0gICAgb2JqZWN0X3By
+b3BlcnR5X3NldF9saW5rKE9CSkVDVCgmcy0+dHNwKSwgInNjdSIsDQotICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICBPQkpFQ1QoJnMtPmNhMzUuc2N1KSwgJmVycm9yX2Fib3J0KTsNCi0gICAg
+b2JqZWN0X3Byb3BlcnR5X3NldF9saW5rKE9CSkVDVCgmcy0+dHNwKSwgInNjdWlvIiwNCi0gICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIE9CSkVDVCgmcHNwLT5zY3VpbyksICZlcnJvcl9hYm9y
+dCk7DQotICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfbGluayhPQkpFQ1QoJnMtPnRzcCksICJmbWMi
+LA0KLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgT0JKRUNUKCZwc3AtPmZtYyksICZlcnJv
+cl9hYm9ydCk7DQotICAgIGlmICghcWRldl9yZWFsaXplKERFVklDRSgmcy0+dHNwKSwgTlVMTCwg
+ZXJycCkpIHsNCisgICAgb2JqZWN0X3Byb3BlcnR5X3NldF9saW5rKE9CSkVDVCgmcy0+dHNwLm1j
+dSksICJzcmFtIiwNCisgICAgICAgICAgICAgICAgICAgICAgICAgICAgIE9CSkVDVCgmc29jLT5z
+cmFtKSwgJmVycm9yX2Fib3J0KTsNCisgICAgb2JqZWN0X3Byb3BlcnR5X3NldF9saW5rKE9CSkVD
+VCgmcy0+dHNwLm1jdSksICJzY3UiLA0KKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgT0JK
+RUNUKCZzLT5wc3AubXBjb3JlLnNjdSksICZlcnJvcl9hYm9ydCk7DQorICAgIG9iamVjdF9wcm9w
+ZXJ0eV9zZXRfbGluayhPQkpFQ1QoJnMtPnRzcC5tY3UpLCAic2N1aW8iLA0KKyAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgT0JKRUNUKCZzb2MtPnNjdWlvKSwgJmVycm9yX2Fib3J0KTsNCisg
+ICAgb2JqZWN0X3Byb3BlcnR5X3NldF9saW5rKE9CSkVDVCgmcy0+dHNwLm1jdSksICJmbWMiLA0K
+KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgT0JKRUNUKCZzb2MtPmZtYyksICZlcnJvcl9h
+Ym9ydCk7DQorICAgIGlmICghcWRldl9yZWFsaXplKERFVklDRSgmcy0+dHNwLm1jdSksIE5VTEws
+IGVycnApKSB7DQogICAgICAgICByZXR1cm4gZmFsc2U7DQogICAgIH0NCiANCkBAIC0yMTQsNyAr
+MjIxLDcgQEAgc3RhdGljIHZvaWQgYXN0MjcwMGZjX2luaXQoTWFjaGluZVN0YXRlICptYWNoaW5l
+KQ0KICAgICAgKiBTUkFNLCBTQ1UgYW5kIFNDVUlPLiAgVGhlcmVmb3JlIHRoZSBQU1AgU29DIG11
+c3QgYmUgcmVhbGl6ZWQNCiAgICAgICogYmVmb3JlIHRoZSBjb3Byb2Nlc3NvcnMgYXJlIGluaXRp
+YWxpemVkLg0KICAgICAgKi8NCi0gICAgcHNwID0gQVNQRUVEX1NPQygmcy0+Y2EzNSk7DQorICAg
+IHBzcCA9IEFTUEVFRF9TT0MoJnMtPnBzcC5tcGNvcmUpOw0KICAgICBhc3QyNzAwZmNfc3NwX2lu
+aXQocywgcHNwLCAmZXJyb3JfYWJvcnQpOw0KICAgICBhc3QyNzAwZmNfdHNwX2luaXQocywgcHNw
+LCAmZXJyb3JfYWJvcnQpOw0KIH0NCg==
 

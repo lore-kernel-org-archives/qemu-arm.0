@@ -4,98 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35EA3C44501
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 12:17:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A24E9C4450A
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 12:53:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkL1Y-0005FK-6z; Thu, 16 Jul 2026 08:17:09 -0400
+	id 1wkLas-0005HW-EW; Thu, 16 Jul 2026 08:53:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeuk20.kim@gmail.com>)
- id 1wkA1N-0003Gz-Mp
- for qemu-arm@nongnu.org; Wed, 15 Jul 2026 20:32:13 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jeuk20.kim@gmail.com>)
- id 1wkA1M-0007JV-5z
- for qemu-arm@nongnu.org; Wed, 15 Jul 2026 20:32:13 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-2ca64c3ce5fso67859375ad.3
- for <qemu-arm@nongnu.org>; Wed, 15 Jul 2026 17:32:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1784161930; x=1784766730; darn=nongnu.org;
- h=message-id:date:references:in-reply-to:cc:to:subject
- :content-transfer-encoding:content-type:mime-version:from:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=bdA3SRYmodoaJD5ICo+251OgbAq91t9IT3lQlwxmCZs=;
- b=Ad57ZHb63kWe4R9Up98P+CRYkwG+Te79YB0guzCykMEAlU7uYGScy6kiUFMuRnVZjC
- Vf4LySgHDsPX84VPlUz7a/rUcynnHrGEHFB4384BjrFY43vcvNhR8XsCPo6fzf+n4zGQ
- gEXkfUGP3RnIeuWKA2rOltwFYbZMCA3CD+rZyjz2n0uyGiheWtYwTvZ7Wjnm+m2B+aje
- N4kbmgzV8i1ZEXSrv5rhAZEdse5jHOB/oy9GicMc/GK1nYhAkl9NfdjKlZDAk3KrYx9K
- hhKZoc3Y6BNlvCYK0SvtQe/Y0KjVU+nXpA5PjO0m1fxtJDAh3gnvB/Knse5VVYPoxsbq
- j9Sg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784161930; x=1784766730;
- h=message-id:date:references:in-reply-to:cc:to:subject
- :content-transfer-encoding:content-type:mime-version:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=bdA3SRYmodoaJD5ICo+251OgbAq91t9IT3lQlwxmCZs=;
- b=UXRCZAaCsvc1cu6NKNN93gAgenySKBBy/DxjTPGhrGZ3nJG28UpSw1t/2qTPUQEwXb
- TsWton24dhzMjYEhKUnHV0/CJzUBqi8QWfPzj6MjyCdmGkfetbOlXNHRVIbr8kxGaDzX
- arQ7NWRFX+0lcwfxXvLJdPrwPh7knVZHEgeiSVqiLoOECoOu8/93FbQezrNFo9JvIJLw
- 3WAGaU+DQLPVDj24mcCu+fSjnXzVLOaPJcJVzCo9iDME2q7tyzKo+TJRPqWi1uH5tjNI
- 0dGS5NcMh9xSVO/pMw6lOTuLPGx0kbm1sKqTYGVX+59KV2HPuL3jdGttctlnr1PVRJBV
- 3ucQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rr7wjgi+UTqrJGAx8Xyp7vc+ssIoiM3JSyZ74enVPE3sHZKiC8rZM3O+amP7RYSz3BsC4JZUMhAPg==@nongnu.org
-X-Gm-Message-State: AOJu0Yw3rRgeofjbmRsy2QQqa83C6wEwx0k7qRYbUCbe8WMJGPauTagd
- 2AOE/ZWdqrrVD7EPvCdHLxA9KkTD9NTzdktLobtughXjEqHT+dPVpfYW
-X-Gm-Gg: AfdE7ckPvG7c0fbK62jq9SSemMaQQX+ye4D2gVU5SYBnDBZrRgTNZKaykwoPqRiWKXg
- H0Bx9EJbEKJntezCe6vwdVd8wMy0dx2n0bU1CjL+jxRhfPHySpUWDcer7J9ByLh+9r5p867v3v+
- b2z4A5evM3c11IqTVc567R01prLvQQse8AI6URx+nxGkh5oR5QPzxzGrF9Y0yyDn/GJefiLTY/N
- ZChvupJoxGjcLlxOIi8YgQNhjSoMCo2LJ2vcgB6TNgBwaldVJWOQ3wj+ZMnyUJ7yBBMn12Ylkso
- xllqOQYLuJJzC/K7TBEgfGvADyp9OwwbVuu9ChtLsYodc9QhQTaKyDR3c0D6mzNcJHA3lPFY7rE
- lPUupoiSWsEjMNWIPx/3DTdXx4qnVOtJ4w/WzrtzWvfB8vn8lrEuGsmXm6CfiWlO9Ej3CC7N7GX
- qokQXi3eXAeXpmVBga
-X-Received: by 2002:a17:903:4687:b0:2ca:619f:9733 with SMTP id
- d9443c01a7336-2cef11ccc1dmr80492425ad.17.1784161930163; 
- Wed, 15 Jul 2026 17:32:10 -0700 (PDT)
-Received: from [127.0.1.1] ([211.226.54.223]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2cf10120800sm10416925ad.23.2026.07.15.17.32.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Jul 2026 17:32:09 -0700 (PDT)
-From: Jeuk Kim <jeuk20.kim@gmail.com>
-X-Google-Original-From: Jeuk Kim <jeuk20.kim@samsung.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+ (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
+ id 1wkLaq-0005Gz-PQ; Thu, 16 Jul 2026 08:53:36 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
+ id 1wkLap-0001Am-6C; Thu, 16 Jul 2026 08:53:36 -0400
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 66GAC4Zh2911044; Thu, 16 Jul 2026 12:53:08 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:to; s=pp1;
+ bh=Y+qfRd8lgecJumlgCJf+iMlye7iFg4lRTbAcaZLgc64=; b=PgcsR8Rkd6rM
+ vRjJdnoKMOznFbLE3TdX8Ud9Nu7qLEfT1GLmnOYgcQyCZ0ejuTiSZMcU0XD0edO+
+ 3pDtdoga9YnM0TE7o+ZYsnxCx6GzLCaEoS3xofgZVWxxJirmarkxtGZk6uISJuUr
+ PsDcWkOgKvsgLXP0Ac+A/TyH5GYB/GsFbyg4q3ZY7iaDl+9JAMinkb/ZX8ZIIbIa
+ RrsgLz8gl1Wf6k6PtxbDGFeJj7nlQKB2gGA7YK7CQA8W9FC6EtaGGKfb2tbthlZI
+ UXmGBBqwIW0g7AruQFCFbdYBf5dwaw2RnVhpABUqxyknWXiX0C+73q8xAzK/zbh3
+ 4hjQ0AxzPg==
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fbepxrve6-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 16 Jul 2026 12:53:07 +0000 (GMT)
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66GCnevU001088;
+ Thu, 16 Jul 2026 12:53:06 GMT
+Received: from smtprelay04.dal12v.mail.ibm.com ([172.16.1.6])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 4fc05qd7sb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 16 Jul 2026 12:53:06 +0000 (GMT)
+Received: from smtpav02.wdc07v.mail.ibm.com (smtpav02.wdc07v.mail.ibm.com
+ [10.39.53.229])
+ by smtprelay04.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 66GCr59L26149542
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 16 Jul 2026 12:53:06 GMT
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id B397558061;
+ Thu, 16 Jul 2026 12:53:05 +0000 (GMT)
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6F71A58059;
+ Thu, 16 Jul 2026 12:53:04 +0000 (GMT)
+Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
+ by smtpav02.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Thu, 16 Jul 2026 12:53:04 +0000 (GMT)
+Message-ID: <9cf6674bede56d2a2874368f5ee917e34833865f.camel@linux.ibm.com>
+Subject: Re: [PATCH 01/29] hw/gpio: pca9552: register types with DEFINE_TYPES()
+From: Miles Glenn <milesg@linux.ibm.com>
+To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew
+ Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Corey
+ Minyard <cminyard@mvista.com>
+Date: Thu, 16 Jul 2026 07:53:03 -0500
+In-Reply-To: <20260709-catalina-upgrade-v1-1-814575bc076b@free.fr>
+References: <20260709-catalina-upgrade-v1-0-814575bc076b@free.fr>
+ <20260709-catalina-upgrade-v1-1-814575bc076b@free.fr>
+Organization: IBM
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5 (3.28.5-27.el8_10) 
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Subject: Re: [PATCH v1 4/5] ufs/aspeed: Add AST2700 UFS host controller
-To: clg@kaod.org, peter.maydell@linaro.org
-Cc: Mikail Sadic <mikail.sadic@ibm.com>, pbonzini@redhat.com, 
- ninad@linux.ibm.com, titusr@google.com, jeuk20.kim@samsung.com, 
- philmd@mailo.com, steven_lee@aspeedtech.com, leetroy@gmail.com, 
- jamin_lin@aspeedtech.com, kane_chen@aspeedtech.com, 
- andrew@codeconstruct.com.au, joel@jms.id.au, calebs@us.ibm.com, 
- milesg@ibm.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-In-Reply-To: <20260715155037.2237011-5-mikail.sadic@ibm.com>
-References: <20260715155037.2237011-1-mikail.sadic@ibm.com>
- <20260715155037.2237011-5-mikail.sadic@ibm.com>
-Date: Thu, 16 Jul 2026 09:31:51 +0900
-Message-Id: <178416191159.43667.4929863074645596799.b4-review@b4>
-X-Mailer: b4 0.15.2
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=jeuk20.kim@gmail.com; helo=mail-pl1-x633.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-TM-AS-GCONF: 00
+X-Proofpoint-Reinject: loops=2 maxloops=12
+X-Proofpoint-GUID: LZP33w89SQIIcB_IMjS7uWikWLTUPyms
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDEzMSBTYWx0ZWRfX40yqGnML+SWh
+ 24RwvP+D7nNeYYgHZDGe59eckcOdNY7MR/5OQQ5+fB+xfKO/lnX59unrqAjXSdY0b1AgFcBiyK4
+ pF4405lOF3PJl5pGqUdhco7md9qrhAY=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDEzMSBTYWx0ZWRfX24w+YUG/E+mV
+ qRSZQoAFC2nyaaLW3BuHJpzaGtot5XFmwWR5FaoOvtgCNeILpZrctqLQOX5rBT/43E10YQ2RFfi
+ SMHchC3TzOcIQ81CMCdegzf6Gt+5OWQV9XVf6cuTEKXIraitC/sxzilmFhEsgy6qvMPQmaeVgdw
+ pWtAdn0g/rwZ2BUAxOkuhJqJTM1+KzDgQy5VeY74ojMA18IBQSUnXq18hvc5iJ996hLx7+TGC3V
+ zLcmzz+REmpG0VN+7r4aIeDxsXdPgqYJaEtKZP18dPHGJkYXtZY0veqWdNqWhd+6Z0S2+GYda8m
+ R2UpoujaXOHM1nbn18hnwJJEmIwUFuYZRAEliiOuG2I8nXDYpGpn1/b58l9xkCmAyxgNJgPjVXP
+ LGLTsjZXIj/wxPxP+icGS4ktlHvrJsJTOxQEX8/SCIE3XOzl37XvJgel9Xxx8A3uToGM+bYLHcL
+ CibCRSYF/BuHA5WZAXA==
+X-Authority-Analysis: v=2.4 cv=XbS5Co55 c=1 sm=1 tr=0 ts=6a58d434 cx=c_pps
+ a=bLidbwmWQ0KltjZqbj+ezA==:117 a=bLidbwmWQ0KltjZqbj+ezA==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=RnoormkPH1_aCDwRdu11:22 a=iQ6ETzBq9ecOQQE5vZCe:22 a=VnNF1IyMAAAA:8
+ a=v9K0EUKEbaSusLC01C0A:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: HCx-9lPcuUz1SkbeJwOyvOaO6UdQGIy9
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-16_04,2026-07-15_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011 suspectscore=0 spamscore=0 phishscore=0 lowpriorityscore=0
+ priorityscore=1501 adultscore=0 malwarescore=0 impostorscore=0 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607160131
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=milesg@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 16 Jul 2026 08:17:06 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,49 +128,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: milesg@linux.ibm.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 15 Jul 2026 10:50:35 -0500, Mikail Sadic <mikail.sadic@ibm.com> wrote:
-> Add an emulation of the AST2700 UFS host controller
-> (aspeed,ufshc-m31-16nm) and wire it into the AST2700 SoC.
-> Implement the functionality needed by U-Boot and Linux to enumerate the
-> device and access a BlockBackend using the UFS protocol, allowing the
-> AST2700 machine to boot from a UFS image.
-> 
-
-Hi Mikail,
-
-This patch duplicates a large amount of logic that already exists in
-hw/ufs/. aspeed_ufs.c reimplements the UFSHCI register interface,
-UTRL and doorbell handling, UPIU processing, Query handling, and SCSI
-command handling, much of which is already implemented in hw/ufs/ufs.c
-and hw/ufs/lu.c. It also introduces register and UPIU/UTRD definitions
-that overlap with definitions already present in include/block/ufs.h.
-
-For these reasons, I don't think we should add a second independent UFS
-implementation under hw/ufs/. This needs to be based on a shared UFS
-core instead.
-
-If the motivation for the separate implementation is that the existing
-UFS device, TYPE_UFS, is a PCI device, the solution should be to
-refactor the existing implementation rather than reimplement it. The
-common core, including the register block, UTRL, UPIU, Query, and
-ufs-lu command handling, should be separated from the PCI-specific
-glue so that both PCI and sysbus frontends can be built on top of it.
-
-The PCI coupling in ufs.c appears to be relatively thin: DMA access,
-interrupt handling, and PCI realization and BAR setup. QEMU already has
-well-established examples of this structure, such as SDHCI, with a
-common core and PCI/sysbus frontends, and XHCI, with hcd-xhci.c shared
-by its PCI and sysbus wrappers.
-
-The ASPEED controller should then be implemented as a sysbus frontend
-on top of the shared UFS core, with only the ASPEED-specific integration
-kept in the frontend.
+Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
 
 Thanks,
 
--- 
-Jeuk Kim <jeuk20.kim@samsung.com>
+Glenn
+
+On Thu, 2026-07-09 at 17:23 +0200, Emmanuel Blot wrote:
+> Replace the separate TypeInfo definitions and pca955x_register_types()
+> registration function with a single type array registered through the
+> DEFINE_TYPES() macro, to prepare addition of new PCA955x-derived devices.
+> 
+> No functional change.
+> 
+> Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+> ---
+>  hw/gpio/pca9552.c | 49 +++++++++++++++++++++----------------------------
+>  1 file changed, 21 insertions(+), 28 deletions(-)
+> 
+> diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
+> index b13ac9fd9c..50e868a6e9 100644
+> --- a/hw/gpio/pca9552.c
+> +++ b/hw/gpio/pca9552.c
+> @@ -492,16 +492,6 @@ static void pca955x_class_init(ObjectClass *klass, const void *data)
+>      device_class_set_props(dc, pca955x_properties);
+>  }
+>  
+> -static const TypeInfo pca955x_info = {
+> -    .name          = TYPE_PCA955X,
+> -    .parent        = TYPE_I2C_SLAVE,
+> -    .instance_init = pca955x_initfn,
+> -    .instance_size = sizeof(PCA955xState),
+> -    .class_init    = pca955x_class_init,
+> -    .class_size    = sizeof(PCA955xClass),
+> -    .abstract      = true,
+> -};
+> -
+>  static void pca9552_class_init(ObjectClass *oc, const void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(oc);
+> @@ -526,23 +516,26 @@ static void pca9535_class_init(ObjectClass *oc, const void *data)
+>      pc->has_led_support = false;
+>  }
+>  
+> -static const TypeInfo pca9552_info = {
+> -    .name          = TYPE_PCA9552,
+> -    .parent        = TYPE_PCA955X,
+> -    .class_init    = pca9552_class_init,
+> +static const TypeInfo pca955x_types[] = {
+> +    {
+> +        .name          = TYPE_PCA955X,
+> +        .parent        = TYPE_I2C_SLAVE,
+> +        .instance_init = pca955x_initfn,
+> +        .instance_size = sizeof(PCA955xState),
+> +        .class_init    = pca955x_class_init,
+> +        .class_size    = sizeof(PCA955xClass),
+> +        .abstract      = true,
+> +    },
+> +    {
+> +        .name          = TYPE_PCA9552,
+> +        .parent        = TYPE_PCA955X,
+> +        .class_init    = pca9552_class_init,
+> +    },
+> +    {
+> +        .name          = TYPE_PCA9535,
+> +        .parent        = TYPE_PCA955X,
+> +        .class_init    = pca9535_class_init,
+> +    }
+>  };
+>  
+> -static const TypeInfo pca9535_info = {
+> -    .name          = TYPE_PCA9535,
+> -    .parent        = TYPE_PCA955X,
+> -    .class_init    = pca9535_class_init,
+> -};
+> -
+> -static void pca955x_register_types(void)
+> -{
+> -    type_register_static(&pca955x_info);
+> -    type_register_static(&pca9552_info);
+> -    type_register_static(&pca9535_info);
+> -}
+> -
+> -type_init(pca955x_register_types)
+> +DEFINE_TYPES(pca955x_types)
+> 
+
 

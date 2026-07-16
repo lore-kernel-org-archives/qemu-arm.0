@@ -4,119 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03216C44512
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 15:58:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51C66C44511
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 16:11:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkOTO-0002u4-3W; Thu, 16 Jul 2026 11:58:06 -0400
+	id 1wkOgK-0007if-ED; Thu, 16 Jul 2026 12:11:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1wkOTM-0002tU-SV; Thu, 16 Jul 2026 11:58:04 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wkOgI-0007iG-W8; Thu, 16 Jul 2026 12:11:27 -0400
+Received: from smtpout1.mo528.mail-out.ovh.net ([46.105.34.251])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1wkOTK-0004Jd-Gx; Thu, 16 Jul 2026 11:58:03 -0400
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66GDg7nC3348875; Thu, 16 Jul 2026 15:57:39 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:reply-to:subject:to; s=pp1;
- bh=HfpPWW/HCyd+V+dZZxuM58AnRvAtg50LGLNGQASB3xE=; b=tRtTOy3+WKDJ
- 0oodzDs6+mQyp5mQNFf8NEbra7oqd8igwQ70OhadExqLBeqtCQs3Ng9QpavKkuXm
- rpi4BAX5QXXatXkXfONbINEFaY5jpR8ZDgHGMBtfqv7MhFtQMsrv2f4+IYJ35qWz
- wDqccdymCjAuDb8XI0L3iFky8JGdH3SWSB6gYPAqHVN2fwTBb2kpvuBJA+z//H2V
- ljI0i/+ASlY8CjUx+r9ydf+awTA3cs3H/W3AnFLuJ9L86BEuNAd/mQ5cNJGywZmS
- YsO4GXHt4oLhrXNqLruTVKpIHLv89yFkDkmqa926IEfv1u0FXKXz//l0sH33ptCF
- kxAfSKMyRA==
-Received: from ppma22.wdc07v.mail.ibm.com
- (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fbegc1106-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 16 Jul 2026 15:57:38 +0000 (GMT)
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma22.wdc07v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66GFnblf016697;
- Thu, 16 Jul 2026 15:57:38 GMT
-Received: from smtprelay04.wdc07v.mail.ibm.com ([172.16.1.71])
- by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4fc0hwdue5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 16 Jul 2026 15:57:38 +0000 (GMT)
-Received: from smtpav01.wdc07v.mail.ibm.com (smtpav01.wdc07v.mail.ibm.com
- [10.39.53.228])
- by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 66GFvbKJ37093968
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 16 Jul 2026 15:57:38 GMT
-Received: from smtpav01.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id CAB3D5804B;
- Thu, 16 Jul 2026 15:57:37 +0000 (GMT)
-Received: from smtpav01.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 89A2258055;
- Thu, 16 Jul 2026 15:57:36 +0000 (GMT)
-Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
- by smtpav01.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Thu, 16 Jul 2026 15:57:36 +0000 (GMT)
-Message-ID: <db71a6365211a840caef08548eaa95e6fa49cceb.camel@linux.ibm.com>
-Subject: Re: [PATCH 23/29] tests/qtest: pca9554: test the PCA9536 4-bit variant
-From: Miles Glenn <milesg@linux.ibm.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1wkOgF-0006go-Jb; Thu, 16 Jul 2026 12:11:26 -0400
+Received: from director1.derp.mail-out.ovh.net
+ (director1.derp.mail-out.ovh.net [51.210.158.128])
+ by mo528.mail-out.ovh.net (Postfix) with ESMTPS id 4h1J1x6pRxz66Gn;
+ Thu, 16 Jul 2026 16:11:17 +0000 (UTC)
+Received: from director1.derp.mail-out.ovh.net
+ (director1.derp.mail-out.ovh.net. [127.0.0.1])
+ by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Thu, 16 Jul 2026 16:11:17 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.43.33])
+ by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4h1J1x43Qjz60Mk;
+ Thu, 16 Jul 2026 16:11:17 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.7])
+ (Authenticated sender: clg@kaod.org)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 42FDE203DD4; 
+ Thu, 16 Jul 2026 16:11:15 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G0028a6db53a-cbd8-4993-a7b1-67a65e9b6e05,
+ 816DE1EE18DD2826DFD8B9EE289546F56902E1FE) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <bbdacd53-4928-4c9a-b85b-e6c0c04a1597@kaod.org>
+Date: Thu, 16 Jul 2026 18:11:14 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 28/29] hw/arm: catalina: drive pca9554 io expander input
+ pins externally
 To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
+Cc: Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
  Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>, Steven Lee
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
- <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew
- Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Corey
- Minyard <cminyard@mvista.com>
-Date: Thu, 16 Jul 2026 10:57:36 -0500
-In-Reply-To: <20260709-catalina-upgrade-v1-23-82a63fead90c@free.fr>
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Corey Minyard <cminyard@mvista.com>
 References: <20260709-catalina-upgrade-v1-0-82a63fead90c@free.fr>
- <20260709-catalina-upgrade-v1-23-82a63fead90c@free.fr>
-Organization: IBM
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-27.el8_10) 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Authority-Analysis: v=2.4 cv=fOcJG5ae c=1 sm=1 tr=0 ts=6a58ff73 cx=c_pps
- a=5BHTudwdYE3Te8bg5FgnPg==:117 a=5BHTudwdYE3Te8bg5FgnPg==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=RzCfie-kr_QcCd8fBx8p:22 a=VnNF1IyMAAAA:8
- a=chtLON8zQLDBo5PjSsAA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDE2MSBTYWx0ZWRfX5AFie3iCAeZh
- b88ZG+JcT/FiCniGTtRzP6n0co1hpNB6LF/GXf1aoR9KZuBaE4MGG3XDvEHfJcVsdKVrjpgNeDq
- 7tlhwXL+cA1GmZf8nuS4o7GfqSGVUdlpscu7cgTCb0/XUQmYL4UK+HT4eWaj6ZRzTNN9OyplD1v
- Q1E1S00Q1j8IyEIfyfwTKrfXQTlVpJoZCwEQR0s/tVqfcxERrsHOXAcQjbpqS/TsByfR6vB7QLW
- TKGxe40eKtBIlpdth5jpqmv1l9/zU86xUuSN1HuHiOCLH2XAg27LhNc/X9xbjQhLEqujeN+SBvD
- qXufWvbIwXewBuGAbx4JVEViz04xp8MmioVILXzRNlud+c8ZV01FbTvSiJM5W2DZQsESGMJOrq2
- IPz0zx+vjLFar7bfp2D9EVWlbl0+sIlou/CfAIyG9YrbFnO2j4rvhK5Folm3gpCcuKTY20u6dCW
- +bSptGjFNDzdmqfXI2A==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDE2MSBTYWx0ZWRfX7bFEEymLoZTX
- ly2HuChUjgzLHJFV5sbn/oJ9G2IBF2zDlVhXL5V7ljDDcL5mdQKWM4RFQIt/afoxWvrd/FVoEFj
- TSnQ+2fguvTglUdPNnX8wZB3gUImVUU=
-X-Proofpoint-GUID: AfaQcU8oqXeq8aMBzKPyxoMdWbEcw4EI
-X-Proofpoint-ORIG-GUID: xmA2eImDozOVADK1geiBKAqS-Y6fcmVf
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-16_05,2026-07-15_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 bulkscore=0 impostorscore=0 suspectscore=0 adultscore=0
- priorityscore=1501 malwarescore=0 clxscore=1015 phishscore=0
- lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2607160161
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=milesg@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <20260709-catalina-upgrade-v1-28-82a63fead90c@free.fr>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260709-catalina-upgrade-v1-28-82a63fead90c@free.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+x-ovh-tracer-id: 190558563190549549
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGUKepQxFPaYNzHZJkkQWNaGVTI09Pu1UFPGKsticIZtBSSBsXidvEa0uzu0gfPYAt0TKu8D5Oeo9Qosaaq6uLzQLuAZNZ3RmOAN3UhMEXZC606rjOH/NhB/iJWMoui5a/SRplfkpec6Qd3WeC2JCcQ6rLsoLT5M318ZB2hYT6M4t3Jc31dy4KtxdT6FvwYx9uFUIxnK9008guKgXO8MQBxwweZ/lBCOwA5PPft4vTDntQulX2BIa7J3NkptDqnfarnxvzQzv7t+lz7y+8G0T2sHvocgXQSTrrSc76poNcIH15elI9BNXXrAup1WOS5YY0BOWUN/TI7CtbQ5BTu4vLvD78fQiII92TezDApZmiCiZM+ZMptWcZ33FX7umRTw4vSIu7YDTeE9Jebm6Jsnjgj2Juz+LayEo6qbxtQiffhUvx8Zlh6Q1EtCHGjoxrUN4xV3xqJ7NPEQ/UJdPX9HQni/cT3PYahtkCioEd0844xVIP7npXKKKVfS4gy6Y7uRtHXBwTYT565uNGEtS1cUC38vJGpvjtsZ7RvkS8Zb6ouC75jJHSUg9tbdBDKx2/e9yNoXjqtbgBuJnPO8UKqBPiBdlVyGFUULz5Nf678TfaMOMWRM4k4OfvA09TLLY3dkPHQIZQVpgy5z+fBOu+F1AYKTpxCE2K6Gz24PMxWdRCuBg
+DKIM-Signature: a=rsa-sha256; bh=H6Upms3s80xgYu1N8JfTDqmtccX/l3K2xuKSb/KBhAc=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1784218279; v=1;
+ b=G8m3Lt5fHb154B+RJpVp1aQzQjA81SgO2aF7JPuK0KG5arh+LmYjYeh3BSuMH+aJzhCtR0pb
+ U61zRIA1p+9kMT6BROb1NzsofMmxAU9Yxk4i2dtvkZSLNCdwDWJ9SH1zFaJb1TO4GUn6kD3unHo
+ M7KQM94zEtT/v2ndi4bwT6ONeAxsE+/fI2Q1gZjONXLSqN5nRBeUun+6djPrfjIGpr2EFh0VCEq
+ 9mLEa7B7zw52PLi/4tTO8PPQ8EgcnzoG9b/x3UDcY/FS0bIrlfeVII2iiu446jbPqzIHxlyOgG8
+ VXF7srsxJYF166Y4HPAfhNmOTxH6rjpijWfQN+MdnxpRQ==
+Received-SPF: pass client-ip=46.105.34.251; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo528.mail-out.ovh.net
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,114 +134,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: milesg@linux.ibm.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
-
-Thanks,
-
-Glenn
-
-On Thu, 2026-07-09 at 17:23 +0200, Emmanuel Blot wrote:
-> The PCA9536 shares the PCA9554 register map and code path but exposes
-> only four pins. Add a pca9536 node and check its reset defaults and
-> output-to-input reflection are masked to the low nibble.
+On 7/9/26 17:23, Emmanuel Blot wrote:
+> Create io_expander5 (pca9554@27) with hw-dir=true so its pin%d QOM
+> properties drive the external input level of each pin, matching the
+> pca9555 expanders, instead of the legacy behaviour that forces the pin
+> to an output. This lets external agents, including tests, stimulate the
+> input pins and have the guest read them back.
 > 
 > Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 > ---
->  tests/qtest/pca9554-test.c | 70 ++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 70 insertions(+)
+>   hw/arm/aspeed_ast2600_catalina.c | 13 ++++++++++---
+>   1 file changed, 10 insertions(+), 3 deletions(-)
 > 
-> diff --git a/tests/qtest/pca9554-test.c b/tests/qtest/pca9554-test.c
-> index 0da1f3304b..5366e71984 100644
-> --- a/tests/qtest/pca9554-test.c
-> +++ b/tests/qtest/pca9554-test.c
-> @@ -129,6 +129,66 @@ static void test_no_autoincrement(void *obj, void *data,
->      g_assert_cmphex(i2c_get8(dev, PCA9554_POLARITY), ==, 0x33);
->  }
->  
-> +/*
-> + * The PCA9536 shares the PCA9554 register map but only has four pins, so its
-> + * reset defaults and pin logic are masked to the low nibble.
-> + */
-> +static void test_pca9536_reset_defaults(void *obj, void *data,
-> +                                        QGuestAllocator *alloc)
-> +{
-> +    QI2CDevice *dev = (QI2CDevice *)obj;
+> diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
+> index f714c9d1b3..67b821ccb9 100644
+> --- a/hw/arm/aspeed_ast2600_catalina.c
+> +++ b/hw/arm/aspeed_ast2600_catalina.c
+> @@ -546,9 +546,16 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+>       i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), TYPE_TMP75, 0x4f);
+>   
+>       /* i2c1mux0ch6 */
+> -    /* io_expander5 - pca9554@27 */
+> -    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
+> -                            TYPE_PCA9554, 0x27);
+> +    /* io_expander5 - pca9554@27 (external agents drive its input pins) */
+> +    {
+> +        I2CBus *bus = pca954x_i2c_get_bus(i2c_mux, 6);
+> +        I2CSlave *ioexp = i2c_slave_new(TYPE_PCA9554, 0x27);
 > +
-> +    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0x0F);
-> +    g_assert_cmphex(i2c_get8(dev, PCA9554_OUTPUT), ==, 0x0F);
-> +    g_assert_cmphex(i2c_get8(dev, PCA9554_POLARITY), ==, 0x00);
-> +    g_assert_cmphex(i2c_get8(dev, PCA9554_CONFIG), ==, 0x0F);
-> +}
-> +
-> +/* Only the four low pins are driven; the upper nibble stays low. */
-> +static void test_pca9536_output_drives_input(void *obj, void *data,
-> +                                             QGuestAllocator *alloc)
-> +{
-> +    QI2CDevice *dev = (QI2CDevice *)obj;
-> +
-> +    i2c_set8(dev, PCA9554_CONFIG, 0x00);
-> +
-> +    i2c_set8(dev, PCA9554_OUTPUT, 0x0A);
-> +    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0x0A);
-> +
-> +    i2c_set8(dev, PCA9554_OUTPUT, 0x00);
-> +    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0x00);
-> +}
-> +
-> +/*
-> + * The four upper bits address pins that do not exist on the PCA9536, so writes
-> + * to the register map discard them: the writable registers read back with bits
-> + * [7:4] cleared, and driving them onto the pins never surfaces in INPUT.
-> + */
-> +static void test_pca9536_ignores_upper_bits(void *obj, void *data,
-> +                                            QGuestAllocator *alloc)
-> +{
-> +    QI2CDevice *dev = (QI2CDevice *)obj;
-> +
-> +    /* Bits [7:4] are dropped on write; bits [3:0] survive. */
-> +    i2c_set8(dev, PCA9554_OUTPUT, 0xFA);
-> +    g_assert_cmphex(i2c_get8(dev, PCA9554_OUTPUT), ==, 0x0A);
-> +
-> +    i2c_set8(dev, PCA9554_POLARITY, 0xF5);
-> +    g_assert_cmphex(i2c_get8(dev, PCA9554_POLARITY), ==, 0x05);
-> +
-> +    i2c_set8(dev, PCA9554_CONFIG, 0xF3);
-> +    g_assert_cmphex(i2c_get8(dev, PCA9554_CONFIG), ==, 0x03);
-> +
-> +    /*
-> +     * With all four pins as outputs, driving 0xFF only affects the low
-> +     * nibble.
-> +     */
-> +    i2c_set8(dev, PCA9554_POLARITY, 0x00);
-> +    i2c_set8(dev, PCA9554_CONFIG, 0x00);
-> +    i2c_set8(dev, PCA9554_OUTPUT, 0xFF);
-> +    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0x0F);
-> +}
-> +
->  static void pca9554_register_nodes(void)
->  {
->      QOSGraphEdgeOptions opts = {
-> @@ -148,6 +208,16 @@ static void pca9554_register_nodes(void)
->      qos_add_test("polarity-with-output", "pca9554", test_polarity_with_output,
->                   NULL);
->      qos_add_test("no-autoincrement", "pca9554", test_no_autoincrement, NULL);
-> +
-> +    qos_node_create_driver("pca9536", i2c_device_create);
-> +    qos_node_consumes("pca9536", "i2c-bus", &opts);
-> +
-> +    qos_add_test("reset-defaults", "pca9536", test_pca9536_reset_defaults,
-> +                 NULL);
-> +    qos_add_test("output-drives-input", "pca9536",
-> +                 test_pca9536_output_drives_input, NULL);
-> +    qos_add_test("ignores-upper-bits", "pca9536",
-> +                 test_pca9536_ignores_upper_bits, NULL);
->  }
->  
->  libqos_init(pca9554_register_nodes);
+> +        object_property_add_child(OBJECT(bus), "0x27", OBJECT(ioexp));
+> +        object_property_set_bool(OBJECT(ioexp), "hw-dir", true,
+> +                                 &error_abort);
+> +        i2c_slave_realize_and_unref(ioexp, bus, &error_abort);
+> +    }
+>       /* io_expander6 - pca9555@25 */
+>       i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
+>                               TYPE_PCA9555, 0x25);
 > 
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
 
 

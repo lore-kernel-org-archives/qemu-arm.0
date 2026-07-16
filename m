@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EA81C44512
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 21:40:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C98F0C44512
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 21:41:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkTof-00026a-FM; Thu, 16 Jul 2026 17:40:25 -0400
+	id 1wkTog-00027y-Vy; Thu, 16 Jul 2026 17:40:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
- id 1wkToe-00023y-Ez; Thu, 16 Jul 2026 17:40:24 -0400
+ id 1wkToe-000246-Go; Thu, 16 Jul 2026 17:40:24 -0400
 Received: from mx0b-002c1b01.pphosted.com ([148.163.155.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
- id 1wkToZ-0005tV-U0; Thu, 16 Jul 2026 17:40:24 -0400
-Received: from pps.filterd (m0127844.ppops.net [127.0.0.1])
+ id 1wkToa-0005tf-Gn; Thu, 16 Jul 2026 17:40:24 -0400
+Received: from pps.filterd (m0127843.ppops.net [127.0.0.1])
  by mx0b-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66GJrZhm1763910; Thu, 16 Jul 2026 14:39:33 -0700
+ 66GJrUwE1796534; Thu, 16 Jul 2026 14:39:43 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=
- proofpoint20171006; bh=qDTFLcsX4AREI942Lyums/HlLuzuyHCJiC1RLHMcQ
- cs=; b=tu87Vea8hC0oCaTWNdqhiFfUuBlPudYUYD/xufOPqxBTnGMOe1Bu+FhcH
- QPVlIXXg+NaIwGsQuDiXlJoUdsNxGPTCZ9lJLdsFZU9QmR/rK65Rl7q4UYhthFWn
- NWA6nAh3Vtjg5XvBaFn3aZl+ub7OZA7GcCysckA6EEc/RvWUAvJlQszZ4JcoaJMd
- rMLsA/7aBq5XqfwbKn8RQQVPx5HIRw1K+1ySfIqq+G4aw5sITN+5vDczrqNZsnbZ
- rnkldYEtIRLnqt1bGvSO6J7DDbfxb2A6wnWf9keGLEkOhjxu99hx7xT5NDS9ARU0
- xz00JpMFVzbJp2OfpwkrJfEQfCEMw==
-Received: from co1pr03cu002.outbound.protection.outlook.com
- (mail-westus2azon11020094.outbound.protection.outlook.com [52.101.46.94])
- by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 4fdstheva0-4
+ proofpoint20171006; bh=7ftVkMcALZp5mhdHso5xT2g8zXa7kA61pMihzXyk3
+ As=; b=fKH4a+nX+ybj+VQzutG6Hs3+3U9iVH/EfoQCUktq4gUcHqAD6se99tCvD
+ 6T2YjGmZbHYIwNtJCbsyfnv7TBnnAjH6CgYWT/B2+rkqnypaDMuD2p9ilNCqIcyT
+ GmtTNIEc5PXgQZS3/cmVud8CfqfUOfkVI2579z+TECxapjUN6LqERn/exMw5bzNF
+ mHEf3BnxqTnmp6t4V8UdXNZpdS+vFxTbmOHiLH0xb7PO1cr2UjyMrHe7oKQ5QkAL
+ VaBl/YJxTXTOH5TzlFQruJlqoCqxJC0Avi3iOJvM6zPnXZboTFQduHXcgsfktq0p
+ oUPkV0B3xUwoWPkLkYVkBRHhv9WNg==
+Received: from bl0pr03cu003.outbound.protection.outlook.com
+ (mail-eastusazon11022136.outbound.protection.outlook.com [52.101.53.136])
+ by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 4fejrfb79p-2
  (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Thu, 16 Jul 2026 14:39:33 -0700 (PDT)
+ Thu, 16 Jul 2026 14:39:43 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=YxA8zFClInmFkiCsXV60kp5LnAXYr5nOviOAS5A0t4ntBgJ1BvL0I8MwhcvS7KcW/nyhYjtRFWGMBY75gnlCepOaWK8b1yHkgscxVKB3jiYq5qvc861QWsiqgTSt5Rk4SoOH1pckZ54EyyG2voCl8S96bgrp/C9GAc8sLSL+IDfUA/nm7YrPGB+raBS+tZizE9fd/lYjE7eAkkxy+HnaNIXPJzUfgKddn3Bu7Hw8uVJUxoSPMSZIf4+pRWWozcNnYXHITBuIKVhyKBiuphO5trpHV3ixW93VGizHHqjFlDNxgd3h2AU4O50nPfHu9OdV7TxSzgMvbhBLqt+J+Ra8TA==
+ b=L7gf8YoHBInB75jv101Tgble0J6vO4CBosO9ifNawVFCwQYnsT6MnUkAsadHghlBlba1TEMN9Jmvr6WvMrqiBdkVNs4emrekJyRz25epnWCDfo1siNBDQ+n4qAXjudEPrcu/7skHOfsAbu+8rIWqU+/kcru570Ud00mUahJJL0LPUe/2wmIA+NgLxh0jnX4RWHJvVPB5ZjUkwa9hKVB2BCYqzipTsomajL7u1UM46OEMDQdkih9GPtil4gf3yLg2ZAR0pmByThfApGZVJizH/7Vpsw8yEqvGC2ZUuIiU3fywAZPVgFYc9iUHn4ohqvKG2pp+Pb+LAMS1iiBqVrHcHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qDTFLcsX4AREI942Lyums/HlLuzuyHCJiC1RLHMcQcs=;
- b=kr9FgRPMxvJqVLn9cgH9xO4ak8baDFIhe5Lit10k83lyW1JSUQzoOnMaNMWxPGdMNg3ClMt5NOENfoBm1+gRM3Tf5eiChy00lryLeS5N5GMPq3Tn1gJvaim42Zels9yalShq4Zw+E/6joemezALt7x31Kw7p05Lvjf+WX1RPpKxZ6N7zbeID7VZE2pWKlmYTj+VmterNAVTpqESuV4Vxo9HJbMeJ2wP5SUuA3kufyn8B7XDQwvbkc1bIM4MnjWQ/MUzX4wihxMsMw1go8l8wrDyGo4QyCXAQg9esy9ulE9A64/gLKARIaTmAmYU/bAn+4FY/+3QhRLt1JNEPpQUO1w==
+ bh=7ftVkMcALZp5mhdHso5xT2g8zXa7kA61pMihzXyk3As=;
+ b=n87LEzzOI4gxY24wMKf4mF2rO01VHTvdpoeipQ4TTi3MEBroUKGcH9T/iTtYM1rfUMlttNIYMxETgVWHcj/zTIzsLsA/MCE9in2qjzY+qw95SH+NQBO32f3XQschsU7bLVU54MXY35f2a/oQoLx2KwhVoyd7fDz9aPuwpXoRP9Wjnk4HrjQ+IntJNakRNGUog1iHPrmg0f4dC44KPUT0G+W9Khw+PYtx74Prt5VIHBVjd5H+H1K4qI5K4zxQRKmtPyTL9DMXOj005n1shvzkshSC4hN++F0XhZ5YyJ1BYlZkjtHokJktYmMDw7zAiBdBD4um4ho/kzIFNZLr6Qhelg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
  dkim=pass header.d=nutanix.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qDTFLcsX4AREI942Lyums/HlLuzuyHCJiC1RLHMcQcs=;
- b=OXciNae59FzGeBBGqi6uTChMZ+KTM8bxIUTJUFtJT8IOVQ5xihskJD6Eq9+EZgiLlZrib7Mp7MCheQyOwgDsLDglN+O2p6SKsFjWPeuDvylRAvPZfHyY2RC44w/h/S7LbBN/+jpOa5Lot9eyfYuE5AN3ximvDPWpMTvUICpwCzDaCCaH86OvSZAru82FP7cOkqOkgw0e7BnaKyhGvJiV1ugEZh5cibqlhv98xNsd4lCT28yK1oluVSQdjkF1KPfmU+f5GaoobJp0YQOUda8szf76JHEGV6BN+cfRczj2Jx5ZkDeoqlqN6pbHgnJ27NRs5hyQQeKBrA6i8KEoU9/M6g==
+ bh=7ftVkMcALZp5mhdHso5xT2g8zXa7kA61pMihzXyk3As=;
+ b=eZQrkuEdMb529V3mKfUGq/IWsV9E8cGvBAcTjF1wLyLAOHiejjm7i9c66LsWBTeRZOsyp2XuH5TWmYfQ3EgFSdLYeGOEO2d2S5bZE2+OaYm7jhM+FlzkeXw2YMTDz2LuPCqCNgWnBirfXTCUNmrEZooAuZyZXKCqiMJOl939mh3vrTjmad/PfC9j/LYa9Y0luAoL6vNleLnJGtZ2F/NgYqXOnrobvVpnKkMFVSKwXZEH0HZSO8OnswhrQvUYXieL2ubS00Jg//nhisP4s+tu9L/sr64Z7yROKsMKQX6PB7ttaTnrog0sqtiwMEvevdmBI+w0hIrbedO53yv5OJ9nUA==
 Received: from SA2PR02MB7564.namprd02.prod.outlook.com (2603:10b6:806:146::23)
- by SA2PR02MB7756.namprd02.prod.outlook.com (2603:10b6:806:14f::13)
+ by BN0PR02MB8255.namprd02.prod.outlook.com (2603:10b6:408:156::22)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.12; Thu, 16 Jul
- 2026 21:39:29 +0000
+ 2026 21:39:41 +0000
 Received: from SA2PR02MB7564.namprd02.prod.outlook.com
  ([fe80::1ea5:acb6:ebe1:e1c4]) by SA2PR02MB7564.namprd02.prod.outlook.com
  ([fe80::1ea5:acb6:ebe1:e1c4%5]) with mapi id 15.21.0223.011; Thu, 16 Jul 2026
- 21:39:29 +0000
+ 21:39:41 +0000
 From: Khushit Shah <khushit.shah@nutanix.com>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
  eric.auger@redhat.com
@@ -70,9 +70,10 @@ Cc: cohuck@redhat.com, peter.maydell@linaro.org, richard.henderson@linaro.org,
  philmd@linaro.org, yangjinqian1@huawei.com, shaju.abraham@nutanix.com,
  mark.caveayland@nutanix.com, khushit.shah@nutanix.com,
  prerna.saxena@nutanix.com
-Subject: [RFC PATCH v3 03/19] target/arm: regenerate cpu-idregs.h.inc
-Date: Thu, 16 Jul 2026 21:38:42 +0000
-Message-ID: <20260716213858.609699-4-khushit.shah@nutanix.com>
+Subject: [RFC PATCH v3 18/19] target/arm/qmp: hook blockers in
+ query-cpu-definitions
+Date: Thu, 16 Jul 2026 21:38:57 +0000
+Message-ID: <20260716213858.609699-19-khushit.shah@nutanix.com>
 X-Mailer: git-send-email 2.43.7
 In-Reply-To: <20260716213858.609699-1-khushit.shah@nutanix.com>
 References: <20260716213858.609699-1-khushit.shah@nutanix.com>
@@ -83,79 +84,79 @@ X-ClientProxiedBy: PH7PR17CA0071.namprd17.prod.outlook.com
  (2603:10b6:806:146::23)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SA2PR02MB7564:EE_|SA2PR02MB7756:EE_
-X-MS-Office365-Filtering-Correlation-Id: 12313622-7eb9-46cd-63e7-08dee382b728
+X-MS-TrafficTypeDiagnostic: SA2PR02MB7564:EE_|BN0PR02MB8255:EE_
+X-MS-Office365-Filtering-Correlation-Id: d7513a30-306e-4299-01da-08dee382be57
 x-proofpoint-crosstenant: true
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|376014|7416014|23010399003|1800799024|22082099003|18002099003|56012099006|10067099003;
-X-Microsoft-Antispam-Message-Info: z6o0bhClUaoRl9o+HiRtIePEU4sOQ/4KX0vik3X0DPDWtGqWWXU6WTThT1eFvRH6Qgw0t/7rDXUfjdwRZGsFaOW5t2cFSkwUCCJDXl2zbw63kpO6cipquqURqO6WEvQ+KKFVj2MneVCoj7Vfgx13/brG5G+dTuMhUdeLZ0CXR64Pho1pYGreUBOIM/rhOegwFqPsu8HNe48M8CLqqx6sr+WNw6gAh50EYxDi0zG2wUZwN2WH32B6qRx0/ANieaTiZq1J4u4D843B9hLzoNUlhMdixT0K8ggiVudPA9aHzPYoCkuyDycI+4uvCTeh2R26D+suHRRl8QWqbLhesDmwEN6zJIT5HQaFzIn7Kym6TzDyeRmDTYKchc2h44LvQKTIkciHH5e+ltI/5AoXC86HnZOU9JkI5uHA5XUjEtNbsABTGDE7tPjHvUxaiNLaiRxyZ1Qw/3WLjNTKpXVEaTlrUZR7h6yuho3zxaWKRFrxRTuw7U/r/FyidMbtEwDsX9DoK2W/kC63p6v6AN0/cRCYTbr2DzrEsyeQLANmSQt41kukAM8M1zfgx4xZmo/HOkuQO5yMAzbBpvQUsTI3WyzcRte+rVCGD0cddFEwD77pwrgPwKM6uOQlKGNjNO+6F/Y5wETHewLgx9XeT+u73Lcv1fUlpabKS9hgj09SbujfSv0=
+ ARA:13230040|7416014|376014|1800799024|366016|23010399003|56012099006|22082099003|18002099003|10067099003;
+X-Microsoft-Antispam-Message-Info: aGK7YStxUJm5ZzvpyECRnR13UPFlE2AQNBXnKSxpaP/5w2gj7Gl217Tryy/X31WEwvZDizggLFFV50akRlDbGpGlZ+KMRluyxTsgG2wSgsny2nYVy9ihERr0Ef4U9JHflcKg0pu9BCfAyfsvUL4uc8QdYOPBR+xSpM0YwAoxOTrcx/ls89+oRj6VX5YhUrlwI9BXjmUYHGhHNPo5VARlp5wTe0e1oWefT3bfsPwELb+VHRqz4/o4VTpQUleGG0eFp1YdjMKQ4lvz5QFilql3uatAkL+ChR4Smb4GTQlu5IKO+OGxAAKoiEZuMxIfufZRj1oH0ha3d/iz/8xZ58D0G5brR4POarLumXmjcKa/NnU1ekhYM2fJ3Qq3Ch20RVRXGCkFHXw2NENmTewYeRvfiQNMVycOa0HYcT5TFbeJDLYCTMIXkPay01FwpIiL8rSwJcuY+xQ9o7Cv0uc23rmzkEcnPtZdDeyTVsrurpFVcgMgz1CNXIRzQR31uCOWbDH8Y/99uj3GeVdf/sgVe1O51NSAP4CMqlwnaSnOrmblnqX+w6E8RWHj/pcwVAfZQnp18DQf/bs43/SIXNP0nWAIQPG/lK2hBk9FuPeMrIkQNh1AGHG0wwMzcs3RDa6hITJNcjKllg+QYD/EWPxx2U87BsQeXLVpSuvXsSfCJXWiUNg=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SA2PR02MB7564.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(7416014)(23010399003)(1800799024)(22082099003)(18002099003)(56012099006)(10067099003);
+ SFS:(13230040)(7416014)(376014)(1800799024)(366016)(23010399003)(56012099006)(22082099003)(18002099003)(10067099003);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?j6KVbDrvHRQB0C5TjWnyE1GXEZt8W7r9YMWj/CxRzwpsidpdZ2717FAllCQ7?=
- =?us-ascii?Q?zQPdVA+bgvukLYsadUOPjwPdgW/mkbDUckjjNqmdSzFbamgb6bRDcfPrRc3V?=
- =?us-ascii?Q?siGGZSbMfLJp7fhtKJI7tsc0lOUtwMRIpmz8XD4TLyA3HM2JrL+/tJoia7T1?=
- =?us-ascii?Q?WnZxcEzHVoAoG1uWQe2sgTxruWQV58JVU0L93oFZwNJ1rIYnUjbDYluCRUGp?=
- =?us-ascii?Q?98pmO4hyKH1b0piJVHOp4M9eE9B3heBbatkpG8plZD/kckstkTeC61wNeOQ/?=
- =?us-ascii?Q?kzct/uS0Fd4mBXOPUpg1yTHNIBe5hPIEG/n+nCfPQtAVk8jT6a2lmZZ4ZpbR?=
- =?us-ascii?Q?YRMvVWye4M7Q7mGrhbLQj0ZYeEi2YLjzVFWcXNdiCThdUkPJaCXjaPol58BO?=
- =?us-ascii?Q?iDhWoXMUbNyZLHQJR04DiIXGou5AWYenNAw6bnXK3H9IjQ/ZYVFLSqjA/FXw?=
- =?us-ascii?Q?3BKLOHVUugH7qnn7u/b/JbU6zvgbMCoKWSWUeAVk8xbE4K2EzulCvvoY3Fwm?=
- =?us-ascii?Q?95Vq6M8Hb5AEOd68314pySkTMy0VF71K9CmOeMBj+T0yUuWwoVytjW2yMcv8?=
- =?us-ascii?Q?DMCy4wT8DjBK3VP4hHaTnCJiW+XLjNYNQb2PwGoUNv1vtaftwnC1pjDJ0BWJ?=
- =?us-ascii?Q?bc4zRNu2r9f+OKQkUX2Ek/+Bv0btYpi0Dp1AbKu8PLhbwgMDYAhYRE/ANynH?=
- =?us-ascii?Q?UigoSFdua+c8qAZ6zTfDK2GBWOiiXb4y5CmEtqNlVY7cblFGwk5Z44Q7IsB8?=
- =?us-ascii?Q?+WzvHwfv5QNWdAyV1878HXzi6oEhwV99yYw7l623MEeLgCuEXXX44nFUSUPC?=
- =?us-ascii?Q?qlbTCCN/4lFhMXt2vqf2AcREs1Pos25QFa3e+LP5KMZu56h7rkvel/A1ZDgD?=
- =?us-ascii?Q?irIp+79D/bmSKbom76MfEZfFRN7J+tDADmL7ZSBI8gTQnY7zb6BJ2xntAFnU?=
- =?us-ascii?Q?Rcn3VAxNd0RmcJvbmX6KzLGkbCiJSzla5iNEeBH64kwEom0rM2Z//ocuHNEI?=
- =?us-ascii?Q?Da0lMunHdIPzp+m7WEXKu3/0r3clstblTCna1LNFiyRqlrMLn95dU4ZpjX7d?=
- =?us-ascii?Q?e1iGT6oGMNXZUeew1CyTlOqPxh3ifcZDK8lWdcQJt0fUDsAK/RQQuPy+ZIdb?=
- =?us-ascii?Q?RyEL2vyOYSNnCDlNNKApOBWP1rSn04SWDA3DGNiSWqldhU3f+JyTarzVFeXI?=
- =?us-ascii?Q?3c1/peRbOvS30zIo4D9xsUKfeUDA6x2f7decdguWlRgrt10hZNdCQzvVh0Jd?=
- =?us-ascii?Q?BxQa0pZSOlWjMTQI2uAFk1oqQ3hs2ayhS2UQtaBpdiAN5l9jKDG/39cehVB/?=
- =?us-ascii?Q?MT1E0sivUDmCtn/BLaGo3qXTrHapYWKhXP6ZbQyj5E48Kir1+TglpO5VB+EZ?=
- =?us-ascii?Q?+pO3nrYTb9ZlOtACLAMHz4UtU5sjE4yZBAwlZvr/no10idezuzayZIOg/lO5?=
- =?us-ascii?Q?4Spr9ZIL6KyTND60npwPO1YN+OWYHMAlYw0CJrW+q/lwsvQM7S6yuk2Y+0C5?=
- =?us-ascii?Q?Duj7Kdhp8h8OVOFisO29ruYNMJ40DFj2ivsxXw1Hg/EIye1FZw3xVhK2CqUf?=
- =?us-ascii?Q?WJPQFXUBr/spkWGoV/bC+/0aruJiyMEhDZ6fmYMadl0lJLO+SPr15n6iqRHx?=
- =?us-ascii?Q?zAMvjStIU9N9KSe5qLQhhbzBR5bysD1ggUEcmvM75LMqqtDlEqTIMbyfGNTM?=
- =?us-ascii?Q?vaGxx0eF2fFwk9QPBCFjjMPBCdvaIvsYrMV18O7KfgHTbZP/ZakiU1snNIf5?=
- =?us-ascii?Q?qumTdwMu9PWPGfl4dyCP9TfaPr1v5J0=3D?=
-X-Exchange-RoutingPolicyChecked: oiCGdYRwXQ912c4hTx7FCwKqw/8cLRq7UylgdAaBbgVnCeiB13zXhSCuOWJDHtdj6QaBn3pOyXUJgSX3oyOO5NY3Wo4BXw32XZuGkbg4dQNVPd1gg8qElOduQhacD8vEWihFTXJFXeQ7I7g9ESbCNnwnTFhjz07WSSADoNRqd9Un+BG2p2pcxBS/c4w0k5kuNgoyAlOBucc1ethbAIl357vdWLMUKiecyRGNwPMfUJS+zdRAWl7NVHC8C3kfNCK4zwV9F1vC4LcGo29CjX4lOgEjOBnzek5TRTYKpggPrhoFmVVm7eMV14YsNtVgOzlkwoA3rImv58Ak52X9jKCcIQ==
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?bRROr0M+WFOEjeOKPObCMea3NrPUIo0CVbA1GM77bRgdATOygc1n4oEuJ+V7?=
+ =?us-ascii?Q?keWEeWlO8MAT14cTRPcs4LtpKnijrqmpNaZnLO0Gxzps6JlWT6DvwaEfcrQ1?=
+ =?us-ascii?Q?ERUaKwfMFrkGkzLAew/P1/QxxCBhl6Dmbc+IPU8Z8mdDvKWF8yQGs5FEZN7X?=
+ =?us-ascii?Q?2hK/v+orn2R6o6BwIjWJbVmz1SFmo34DLaP2T93vCn9PVOwijMM1Vc9QapfT?=
+ =?us-ascii?Q?jdC207KvO8SAMbLldIqlWPyJ9ilMQhbRBHofatRnw1WMf+Kx/I1yb3m1lqOH?=
+ =?us-ascii?Q?welikw7j2X3aO4/Wiz+vgUZ9CurIr7cS04930QkTfQgjNolb+eC7HweKyUET?=
+ =?us-ascii?Q?QqVoJ05UfObCENnOACB4szFwKKzueN/Z8ePe042Nsm2zjfAxpmw809GGKJBB?=
+ =?us-ascii?Q?CKsqcSzVYt6beNbb8TWP1Ap+7dC527Pz+wm5EQ1NbdCEhoxdzWyxD7GtmP57?=
+ =?us-ascii?Q?QcsalW4fmGDaOEgRsuqLTOfxDYRWLhmPb0Wi0uX1Eu6bALhV0fEO2XcEkpV+?=
+ =?us-ascii?Q?ixDqYWp56F0XNjiXeMaAmvohY+2RQlmU5CmHeTwH3SicEGoGTUfSJpnXbBSf?=
+ =?us-ascii?Q?oXdOw17dsqbyQTvvFsX4OudDBDW1pEOveLFXuNjSf6oRqw9xmvAk+TAmwhrH?=
+ =?us-ascii?Q?+UHUFTpnUdlUywqqmEIKyonOyzLCe7di41USbciHCnZ87TKv/RyR9cg9SF0P?=
+ =?us-ascii?Q?hHCqToAsOqLtCxlv24e2f6yia01SBP2w3EWFW3mZ6xdt6Z+kO57vJC2da8FH?=
+ =?us-ascii?Q?nlSRtX43i8HIU1xNvniQS2VlLPhNM0zyabgUVFWgrldXUCOgEiH3HOUMUm6c?=
+ =?us-ascii?Q?GxUfVg7bUokJ92NplFADaIiJ1fDCwEOVG33Je4IFTCYAWpTBhst2lBwTdS4A?=
+ =?us-ascii?Q?utdQJCHTF4GH2Fbj6crz3yvxCjaiR1k5WMp3LIwQVb14CW7v9AQ/p6wSWOmG?=
+ =?us-ascii?Q?M9VEqmBaMDsrRcxC32/ux0wOJR5k2mPsBcyKKnFAYaeeC2GHw80P6+nHXawk?=
+ =?us-ascii?Q?V0Io/A7CkC7RtZio7myGvOhqOh5mQx8T7RYuPspCkBKf5UCrZnUhrsKzthEj?=
+ =?us-ascii?Q?woq4IodP5zRmjoz8PaR78I7/cGFUPVydEwGNDnx5dvGWPOoeS4tDn6WmEKfq?=
+ =?us-ascii?Q?Os7p4r6Zrk33YLjWHE+duM6+t4dWwVGhIgvpCOdGs9nse/U9OmQ8zpVuh8o4?=
+ =?us-ascii?Q?oMm48jAA71itz7OiDzAFwc8ig4eO4ZOglKgWbKeB/7bHz3gxwEftftHZOK2+?=
+ =?us-ascii?Q?Swn3Ef+JDFFl8NfCK8/EDUS69X+PO7R2sLYem7/4Xp1r2lFTclrXM3R0nXAc?=
+ =?us-ascii?Q?m9W560GHgd12HXk3vR87W0uwo5f0vaT6DWiszjkzqmQGhTYqnlDDOYllqjyi?=
+ =?us-ascii?Q?B6RDYT0yMcFgn+BuAHI/JFmGI3XuswJokPQ2UFzR1v1N7qVamXE7zK9yepgE?=
+ =?us-ascii?Q?aJoUpKFQU4KrZaZ+9dQ/kZf+C3LJUYC2CvG8gtFf5qYaWAfUq/mhyvo3C5+I?=
+ =?us-ascii?Q?3mr+yqcXNniuIFGG4EZNdMLyI8TbmZTnnjLKnM4VZXEGYQA5FRyRtnvy2i8w?=
+ =?us-ascii?Q?Q5oCo580R6LXPjhvBhbXQ1OzRuLSUYXAFCgtfsi199AVsLPCQSRARiAOqs01?=
+ =?us-ascii?Q?q9s6ZjT8GjXJwdtA/Knuzyyh8XJAs2hyIaESa39CgEpNv94NxPs0A1H5t2t4?=
+ =?us-ascii?Q?jSoG0udCupJ39ZpzA+5TC1AyzvijUzml7cy2OLORBaTPPn7D3jZ54xmTIsqd?=
+ =?us-ascii?Q?qAHOFPOxKopm8h4mC2qZCvXyXEMkk6o=3D?=
+X-Exchange-RoutingPolicyChecked: Az3sYpFKOvUPOLTzvgF5vgfhTzTPZ1YkFHGsQ1DxES6FkU6j1dJ2+iH1DDK3X9SFDahogcWP8saXIlmvQAMOD5s/UXkgVG/N8CsySw+is86cBwG+cSkh0SE0kXVxwKldwYWu6+gnZIapbc5AXlmRmKmSpiI8axQ/ZaRYxooIY5o0kgYh28XfT2kQL96l5xu2L+s3HYF8PWJE+HFM2XuRnqFQf9m/VbN6h+WHdIDms562n0vkIqbdqHTDJuw9CFk4bzhPKf7yM3/Ki4kGaTqDQveO7h/e2lUBNMJOXJlM+GoY1fYzPBi2vZ9ftT/rvRaGOV6Xu+w7zbATmI8OxEPCjg==
 X-OriginatorOrg: nutanix.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 12313622-7eb9-46cd-63e7-08dee382b728
+X-MS-Exchange-CrossTenant-Network-Message-Id: d7513a30-306e-4299-01da-08dee382be57
 X-MS-Exchange-CrossTenant-AuthSource: SA2PR02MB7564.namprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jul 2026 21:39:29.3036 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jul 2026 21:39:41.3049 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: bb047546-786f-4de1-bd75-24e5b6f79043
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: h7TerberRJ3L+RVHKlguH8+12qCLHc8YVGsdT1WqDmJ2qfdbaR7wF7QighblfGfS0MDbkqnU17gFdJ1kpHr9UL22tU4/00WYOdptVJ7Hiho=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR02MB7756
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDIyMCBTYWx0ZWRfX15fCzG9ayq4q
- yYkLi41Osat4ml0z2T+NZaBzhSIslGJmbPgxzFURF8i/l+eAMdJDj1jKA1V04lVQhQX2ft0JeT2
- bYUE3y3LcCdsgttVbRUO9VcE08wAcZVJNAZalqZJnzyuWJ2NFd5pf6xJ1EbCGrf9H20QVM5+AwM
- R5kOjkwHmdAXDkBboNi8fkw971w1xBh6fXhrFKiW3V7nF/oauVBvrEW4+BwTGTKKWcSfAY4Jdyx
- xXEje1YhsZ7iVidTAhhsOZG7LK3uqko3dtNP4UUrYBz5jsN7Uu4UJQUFw9xGHG6u7WomnShait4
- TV8cT0Iqu94iSQdEKGewGOQzNMIvJZ6yBRQDl104Z5BIIessi+HTmOjwd7gCToEJKvESNOSkYIa
- u8HzazdG+Eqt2EJFaHxIWsEijiEp/Dnz7KoORPzsFWJcxpP3wgIqcQnHvdlRAcY3+FawOQ/fJkR
- 1/OjcyfF/2ZI9ryq2Rw==
-X-Proofpoint-GUID: njh_diHm3E-nRPolTaSltKOiu9ZJaVlg
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDIyMCBTYWx0ZWRfX2ttExctqs+FQ
- adMzc9t3vNNOxeSJplw5oWgZYsfZbxqyhOeYvWOeLDjcOpgn2QoJddag56LMFmo7Do0cWefUQw5
- XAsPG3dGTRitO570mDnXceLCX2BSmOA=
-X-Proofpoint-ORIG-GUID: njh_diHm3E-nRPolTaSltKOiu9ZJaVlg
-X-Authority-Analysis: v=2.4 cv=J8uaKgnS c=1 sm=1 tr=0 ts=6a594f95 cx=c_pps
- a=aWGlcXfvBePkFyJsMZzBEg==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+X-MS-Exchange-CrossTenant-UserPrincipalName: nIIcQ997SFoz7NO3AXGquimFihB+5tmFE6XrYkXE/kAtXojlMBNuJFNcnP5ewA/oknLrILyZpw6/p09yuLr7Q/h5VHE42EO21frn+ngalFU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN0PR02MB8255
+X-Proofpoint-GUID: y9ANUC8jdPTItldooCub8fDfFJxhKScx
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDIyMCBTYWx0ZWRfX5e1cSfJmHGUr
+ +lbfAG5Avxy/wcd0VRDPKUV4SOTADWVe8XfGGMkVzrWFBENJYn7z+ZHCc+sT/KvNLKwI3af+pRn
+ hwwYy+yJaPzGc2fEhkpeT2navrIqHSVDj1CLSqwQmwgpvvxFUkytCQyn255/OSgjde7lP41qhEe
+ pvMrTZpB1s+IkpXSqJq8TnMp8ecKswtM4IO5BqQ5Ep1g+/VOyIStmpOxX7lE3N6hghjXn3S4AMw
+ 6EB+kvll4c84ak9V9uovCGnHedhZ6pTuuR+ylGnzlK2IZV3MST2998y/a667qdYhUNv/rsrQInC
+ nh0gR5wPDjMIdFn002PMwSInOONPTP8xZPWf7yAITzWWbCzHWwvZEPP4YDK0njqilQK/yiXPW9I
+ BHP6v9kOgSgnh5Xoy5w0LnxhBuY5+0crZ9dkRMSWil7n8Iugp/eA9d6Mtjzu1YwgB+WlTMJhhaz
+ f15B3DBXX9HK3ETUW2g==
+X-Authority-Analysis: v=2.4 cv=d4HFDxjE c=1 sm=1 tr=0 ts=6a594f9f cx=c_pps
+ a=wT4O3adra3cfqKKwvhZ7sQ==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
  a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
  a=xqWC_Br6kY4A:10 a=RAioF0-LDSMA:10 a=0kUYKlekyDsA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=0LlEyIVc8U2lsR7dKhuH:22
- a=64Cc0HZtAAAA:8 a=u1GiRk8wNk4rfhKQ8NAA:9
+ a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=dEe9Ve2bX-KnNSUMM2s9:22
+ a=64Cc0HZtAAAA:8 a=oSinNBb-mIJOy2iRG7MA:9
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDIyMCBTYWx0ZWRfX98KowGRw3vCi
+ i212QmBKU7ZaLuOzkYWWSOsr26GWFPXj+EcDkfe/fLQg4zeGhFpARjKFWJ60+F1YR1ncf/4NGhB
+ k8KmzJxGRT3LF2OlSgoHT5D4NCKTEeE=
+X-Proofpoint-ORIG-GUID: y9ANUC8jdPTItldooCub8fDfFJxhKScx
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-16_07,2026-07-15_02,2025-10-01_01
@@ -167,8 +168,8 @@ X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_75_100=0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -184,597 +185,281 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Now, report blocker for named cpu models in query-cpu-definitions.
+Heavy handling is done by validating the realized ID registers values
+against the host values. sveNNNN needs special handling as those
+are not stored in any ID registers.
+
+Introduces arm_cpu_class_check_missing_features() and
+aarch64_idregs_get_blockers() to achieve this. This way we need not
+instantiate each model to check if it can be realized and we also get
+granular information on the ID reg fields blocking the realization.
+
 Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
 ---
- target/arm/cpu-idregs.h.inc | 165 +++++++++++++++++-------------------
- 1 file changed, 76 insertions(+), 89 deletions(-)
+ target/arm/arm-cpu-models-stub.c |  5 ++++
+ target/arm/arm-cpu-models.c      | 35 ++++++++++++++++++++++
+ target/arm/arm-cpu-models.h      |  2 ++
+ target/arm/arm-qmp-cmds.c        | 12 ++++++++
+ target/arm/cpu64.c               | 51 ++++++++++++++++++++++++++++++++
+ target/arm/internals.h           |  3 ++
+ target/arm/kvm-stub.c            | 10 +++++++
+ target/arm/kvm.c                 |  4 +--
+ target/arm/kvm_arm.h             | 17 +++++++++++
+ 9 files changed, 137 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/cpu-idregs.h.inc b/target/arm/cpu-idregs.h.inc
-index 5fdc84237c..1851b37937 100644
---- a/target/arm/cpu-idregs.h.inc
-+++ b/target/arm/cpu-idregs.h.inc
-@@ -12,23 +12,24 @@
- /* IDREG_END(REG) */
+diff --git a/target/arm/arm-cpu-models-stub.c b/target/arm/arm-cpu-models-stub.c
+index 0481f0f946..dadd3b7647 100644
+--- a/target/arm/arm-cpu-models-stub.c
++++ b/target/arm/arm-cpu-models-stub.c
+@@ -11,3 +11,8 @@ const ArmNamedCpuModel *arm_find_model(const char *name)
+ {
+     return NULL;
+ }
++
++void arm_cpu_class_check_missing_features(ARMCPUClass *acc, strList **blockers)
++{
++    return;
++}
+diff --git a/target/arm/arm-cpu-models.c b/target/arm/arm-cpu-models.c
+index 40e8578591..44e7d3cfa2 100644
+--- a/target/arm/arm-cpu-models.c
++++ b/target/arm/arm-cpu-models.c
+@@ -475,6 +475,41 @@ static void arm_named_cpu_initfn(Object *obj)
+     arm_realize_model_chain(obj, model, &error_abort);
+ }
  
- IDREG_START(AIDR_EL1)
-+    IDREG_FIELD(AIDR_EL1, VAL, 0, 64)
- IDREG_END(AIDR_EL1)
++void arm_cpu_class_check_missing_features(ARMCPUClass *acc, strList **blockers)
++{
++    Error *err = NULL;
++    Object *obj = object_new_with_class(OBJECT_CLASS(acc));
++    ARMCPU *cpu = ARM_CPU(obj);
++
++    if (!kvm_enabled() || !arm_find_model(acc->info->name)) {
++        goto out;
++    }
++
++    if (cpu_isar_feature(aa64_sve, cpu)) {
++        arm_cpu_sve_finalize(cpu, &err);
++        if (err) {
++            error_free(err);
++            err = NULL;
++            uint32_t host_vq_map = cpu->sve_vq.supported;
++            uint32_t model_vq_map = cpu->sve_vq.map;
++
++            if ((model_vq_map & host_vq_map) != model_vq_map) {
++                for (int vq = 1; vq <= ARM_MAX_VQ; vq++) {
++                    uint32_t vq_bit = (1 << (vq - 1));
++                    if ((model_vq_map & vq_bit) && !(host_vq_map & vq_bit)) {
++                        QAPI_LIST_PREPEND(*blockers,
++                            g_strdup_printf("sve%d", vq * 128));
++                    }
++                }
++            }
++        }
++    }
++
++    aarch64_idregs_get_blockers(cpu, kvm_arm_get_host_isar(), blockers);
++out:
++    object_unref(obj);
++}
++
+ void arm_register_named_cpu_models(void)
+ {
+     size_t i;
+diff --git a/target/arm/arm-cpu-models.h b/target/arm/arm-cpu-models.h
+index ac4e510499..6c8fba2aeb 100644
+--- a/target/arm/arm-cpu-models.h
++++ b/target/arm/arm-cpu-models.h
+@@ -7,6 +7,7 @@
  
- IDREG_START(CCSIDR2_EL1)
--    IDREG_FIELD(CCSIDR2_EL1, RES0, 24, 40)
-+    IDREG_FIELD(CCSIDR2_EL1, RES0_24, 24, 40)
-     IDREG_FIELD(CCSIDR2_EL1, NumSets, 0, 24)
- IDREG_END(CCSIDR2_EL1)
+ #include "qapi/error.h"
+ #include "qom/object.h"
++#include "cpu.h"
  
- IDREG_START(CCSIDR_EL1)
--    IDREG_FIELD(CCSIDR_EL1, RES0, 56, 8)
-+    IDREG_FIELD(CCSIDR_EL1, RES0_56, 56, 8)
-     IDREG_FIELD(CCSIDR_EL1, NumSets, 32, 24)
--    IDREG_FIELD(CCSIDR_EL1, RES0, 24, 8)
-+    IDREG_FIELD(CCSIDR_EL1, RES0_24, 24, 8)
-     IDREG_FIELD(CCSIDR_EL1, Associativity, 3, 21)
-     IDREG_FIELD(CCSIDR_EL1, LineSize, 0, 3)
- IDREG_END(CCSIDR_EL1)
+ typedef enum ArmModelPropType {
+     ARM_MODEL_PROP_BOOL,
+@@ -31,5 +32,6 @@ typedef struct ArmNamedCpuModel {
+ void arm_register_named_cpu_models(void);
  
- IDREG_START(CLIDR_EL1)
--    IDREG_FIELD(CLIDR_EL1, RES0, 47, 17)
-+    IDREG_FIELD(CLIDR_EL1, RES0_47, 47, 17)
-     IDREG_FIELD(CLIDR_EL1, Ttype7, 45, 2)
-     IDREG_FIELD(CLIDR_EL1, Ttype6, 43, 2)
-     IDREG_FIELD(CLIDR_EL1, Ttype5, 41, 2)
-@@ -59,10 +60,10 @@ IDREG_START(CLIDR_EL1)
- IDREG_END(CLIDR_EL1)
+ const ArmNamedCpuModel *arm_find_model(const char *name);
++void arm_cpu_class_check_missing_features(ARMCPUClass *acc, strList **blockers);
  
- IDREG_START(CTR_EL0)
--    IDREG_FIELD(CTR_EL0, RES0, 38, 26)
-+    IDREG_FIELD(CTR_EL0, RES0_38, 38, 26)
-     IDREG_FIELD(CTR_EL0, TminLine, 32, 6)
--    IDREG_FIELD(CTR_EL0, RES1, 31, 1)
--    IDREG_FIELD(CTR_EL0, RES0, 30, 1)
-+    IDREG_FIELD(CTR_EL0, RES1_31, 31, 1)
-+    IDREG_FIELD(CTR_EL0, RES0_30, 30, 1)
-     IDREG_FIELD_START(CTR_EL0, DIC, 29, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -80,28 +81,28 @@ IDREG_START(CTR_EL0)
-         IDREG_FIELD_ARCH_VAL(2)
-         IDREG_FIELD_ARCH_VAL(3)
-     IDREG_FIELD_END(CTR_EL0, L1Ip)
--    IDREG_FIELD(CTR_EL0, RES0, 4, 10)
-+    IDREG_FIELD(CTR_EL0, RES0_4, 4, 10)
-     IDREG_FIELD(CTR_EL0, IminLine, 0, 4)
- IDREG_END(CTR_EL0)
+ #endif /* ARM_CPU_MODELS_H */
+diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+index 457cc3edf3..6f11681c87 100644
+--- a/target/arm/arm-qmp-cmds.c
++++ b/target/arm/arm-qmp-cmds.c
+@@ -341,6 +341,18 @@ static void arm_cpu_add_definition(gpointer data, gpointer user_data)
+     info->name = cpu_model_from_type(typename);
+     info->q_typename = g_strdup(typename);
  
- IDREG_START(DCZID_EL0)
--    IDREG_FIELD(DCZID_EL0, RES0, 9, 55)
-+    IDREG_FIELD(DCZID_EL0, RES0_9, 9, 55)
-     IDREG_FIELD(DCZID_EL0, TBS, 5, 4)
-     IDREG_FIELD(DCZID_EL0, DZP, 4, 1)
-     IDREG_FIELD(DCZID_EL0, BS, 0, 4)
- IDREG_END(DCZID_EL0)
++    /* calculate blockers */
++    if (kvm_enabled()
++            && !g_str_equal(info->name, "host")
++            && !g_str_equal(info->name, "max")
++            && arm_find_model(info->name) != NULL) {
++        arm_cpu_class_check_missing_features(ARM_CPU_CLASS(oc),
++                                    &info->unavailable_features);
++        if (info->unavailable_features) {
++            info->has_unavailable_features = true;
++        }
++    }
++
+     QAPI_LIST_PREPEND(*cpu_list, info);
+ }
  
- IDREG_START(GMID_EL1)
--    IDREG_FIELD(GMID_EL1, RES0, 4, 60)
-+    IDREG_FIELD(GMID_EL1, RES0_4, 4, 60)
-     IDREG_FIELD(GMID_EL1, BS, 0, 4)
- IDREG_END(GMID_EL1)
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 44dd9acf80..f41bcf2e81 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -20,6 +20,7 @@
  
- IDREG_START(ID_AA64AFR0_EL1)
--    IDREG_FIELD(ID_AA64AFR0_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_AA64AFR0_EL1, RES0_32, 32, 32)
- IDREG_END(ID_AA64AFR0_EL1)
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
++#include "qapi/util.h"
+ #include "cpu.h"
+ #include "cpregs.h"
+ #include "qemu/module.h"
+@@ -779,6 +780,56 @@ void aarch64_add_idregs_properties(Object *obj)
+         aarch64_add_idreg_properties(obj, reg);
+     }
+ }
++
++void aarch64_idregs_get_blockers(ARMCPU *cpu,
++                             const ARMISARegisters *host_isar,
++                             strList **blockers)
++{
++    for (int i = 0; i < NUM_ID_IDX; i++) {
++        ARM64SysReg *reg = &arm64_id_regs[i];
++
++        if (!reg->name) {
++            continue;
++        }
++
++        for (uint32_t j = 0; j < reg->fields_count; j++) {
++            const ARM64SysRegField *field = &reg->fields[j];
++            ArmFieldValueSet *vs = NULL;
++            bool supported = false;
++            uint64_t model_val;
++
++            /* Not a blocker if the field is never written back to KVM. */
++            if (arm_field_skip_writeback_always(field) ||
++                (!arm_field_is_writable(field) &&
++                 arm_field_skip_writeback_if_not_writable(field))) {
++                continue;
++            }
++
++            model_val = extract64(cpu->isar.idregs[field->index],
++                                  field->shift, field->length);
++
++            /*
++             * If the field is written back, make sure a "supported" value
++             * is requested.
++             */
++            arm_field_get_supported_values(field, host_isar, &vs);
++            for (size_t k = 0; k < vs->n_ranges; k++) {
++                if (model_val >= vs->ranges[k].min &&
++                    model_val <= vs->ranges[k].max) {
++                    supported = true;
++                    break;
++                }
++            }
++            g_free(vs->ranges);
++            g_free(vs);
++
++            if (!supported) {
++                QAPI_LIST_PREPEND(*blockers,
++                    g_strdup_printf("SYSREG_%s_%s", reg->name, field->name));
++            }
++        }
++    }
++}
+ #endif
  
- IDREG_START(ID_AA64AFR1_EL1)
--    IDREG_FIELD(ID_AA64AFR1_EL1, RES0, 0, 64)
-+    IDREG_FIELD(ID_AA64AFR1_EL1, RES0_0, 0, 64)
- IDREG_END(ID_AA64AFR1_EL1)
+ void aarch64_add_pauth_properties(Object *obj)
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 7502b6db8a..d05e35ba83 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1756,6 +1756,9 @@ void aarch64_add_sve_properties(Object *obj);
+ void aarch64_add_sme_properties(Object *obj);
+ #ifndef CONFIG_USER_ONLY
+ void aarch64_add_idregs_properties(Object *obj);
++void aarch64_idregs_get_blockers(ARMCPU *cpu,
++                                 const ARMISARegisters *host_isar,
++                                 strList **blockers);
+ #endif
  
- IDREG_START(ID_AA64DFR0_EL1)
-@@ -145,18 +146,14 @@ IDREG_START(ID_AA64DFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(5)
-         IDREG_FIELD_ARCH_VAL(6)
-     IDREG_FIELD_END(ID_AA64DFR0_EL1, PMSVer)
--    IDREG_FIELD_START(ID_AA64DFR0_EL1, CTX_CMPs, 28, 4)
--        IDREG_FIELD_ARCH_VAL(15)
--    IDREG_FIELD_END(ID_AA64DFR0_EL1, CTX_CMPs)
--    IDREG_FIELD(ID_AA64DFR0_EL1, RES0, 24, 4)
-+    IDREG_FIELD(ID_AA64DFR0_EL1, CTX_CMPs, 28, 4)
-+    IDREG_FIELD(ID_AA64DFR0_EL1, RES0_24, 24, 4)
-     IDREG_FIELD(ID_AA64DFR0_EL1, WRPs, 20, 4)
-     IDREG_FIELD_START(ID_AA64DFR0_EL1, PMSS, 16, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64DFR0_EL1, PMSS)
--    IDREG_FIELD_START(ID_AA64DFR0_EL1, BRPs, 12, 4)
--        IDREG_FIELD_ARCH_VAL(15)
--    IDREG_FIELD_END(ID_AA64DFR0_EL1, BRPs)
-+    IDREG_FIELD(ID_AA64DFR0_EL1, BRPs, 12, 4)
-     IDREG_FIELD_START(ID_AA64DFR0_EL1, PMUVer, 8, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -209,20 +206,14 @@ IDREG_START(ID_AA64DFR1_EL1)
-         IDREG_FIELD_ARCH_VAL(1)
-         IDREG_FIELD_ARCH_VAL(2)
-     IDREG_FIELD_END(ID_AA64DFR1_EL1, SPMU)
--    IDREG_FIELD_START(ID_AA64DFR1_EL1, CTX_CMPs, 24, 8)
--        IDREG_FIELD_ARCH_VAL(0)
--    IDREG_FIELD_END(ID_AA64DFR1_EL1, CTX_CMPs)
--    IDREG_FIELD_START(ID_AA64DFR1_EL1, WRPs, 16, 8)
--        IDREG_FIELD_ARCH_VAL(0)
--    IDREG_FIELD_END(ID_AA64DFR1_EL1, WRPs)
--    IDREG_FIELD_START(ID_AA64DFR1_EL1, BRPs, 8, 8)
--        IDREG_FIELD_ARCH_VAL(0)
--    IDREG_FIELD_END(ID_AA64DFR1_EL1, BRPs)
-+    IDREG_FIELD(ID_AA64DFR1_EL1, CTX_CMPs, 24, 8)
-+    IDREG_FIELD(ID_AA64DFR1_EL1, WRPs, 16, 8)
-+    IDREG_FIELD(ID_AA64DFR1_EL1, BRPs, 8, 8)
-     IDREG_FIELD(ID_AA64DFR1_EL1, SYSPMUID, 0, 8)
- IDREG_END(ID_AA64DFR1_EL1)
+ /* Return true if the gdbstub is presenting an AArch64 CPU */
+diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+index d19c53927d..eb8fdda236 100644
+--- a/target/arm/kvm-stub.c
++++ b/target/arm/kvm-stub.c
+@@ -131,3 +131,13 @@ void arm_field_get_supported_values(const ARM64SysRegField *field,
+ {
+     g_assert_not_reached();
+ }
++
++bool arm_field_skip_writeback_always(const ARM64SysRegField *field)
++{
++    g_assert_not_reached();
++}
++
++bool arm_field_skip_writeback_if_not_writable(const ARM64SysRegField *field)
++{
++    g_assert_not_reached();
++}
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index ce77758c87..b909a11dfd 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1394,7 +1394,7 @@ done:
+     (*value_set)->ranges = (ArmFieldRange *)g_array_free(ranges, false);
+ }
  
- IDREG_START(ID_AA64DFR2_EL1)
--    IDREG_FIELD(ID_AA64DFR2_EL1, RES0, 28, 36)
-+    IDREG_FIELD(ID_AA64DFR2_EL1, RES0_28, 28, 36)
-     IDREG_FIELD_START(ID_AA64DFR2_EL1, TRBE_EXC, 24, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -235,7 +226,7 @@ IDREG_START(ID_AA64DFR2_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64DFR2_EL1, SPE_EXC)
--    IDREG_FIELD(ID_AA64DFR2_EL1, RES0, 8, 8)
-+    IDREG_FIELD(ID_AA64DFR2_EL1, RES0_8, 8, 8)
-     IDREG_FIELD_START(ID_AA64DFR2_EL1, BWE, 4, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -248,7 +239,7 @@ IDREG_START(ID_AA64DFR2_EL1)
- IDREG_END(ID_AA64DFR2_EL1)
+-static bool arm_field_skip_writeback_always(const ARM64SysRegField *field)
++bool arm_field_skip_writeback_always(const ARM64SysRegField *field)
+ {
+     /*
+      * GIC is controlled by the gic-version property and fabricated by KVM
+@@ -1412,7 +1412,7 @@ static bool arm_field_skip_writeback_always(const ARM64SysRegField *field)
+         || field->index == CLIDR_EL1_IDX;
+ }
  
- IDREG_START(ID_AA64FPFR0_EL1)
--    IDREG_FIELD(ID_AA64FPFR0_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_AA64FPFR0_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_AA64FPFR0_EL1, F8CVT, 31, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -273,13 +264,13 @@ IDREG_START(ID_AA64FPFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64FPFR0_EL1, F8MM4)
--    IDREG_FIELD(ID_AA64FPFR0_EL1, RES0, 16, 10)
-+    IDREG_FIELD(ID_AA64FPFR0_EL1, RES0_16, 16, 10)
-     IDREG_FIELD_START(ID_AA64FPFR0_EL1, F16MM2, 15, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64FPFR0_EL1, F16MM2)
--    IDREG_FIELD(ID_AA64FPFR0_EL1, RES0, 8, 7)
--    IDREG_FIELD(ID_AA64FPFR0_EL1, RAZ, 2, 6)
-+    IDREG_FIELD(ID_AA64FPFR0_EL1, RES0_8, 8, 7)
-+    IDREG_FIELD(ID_AA64FPFR0_EL1, RAZ_2, 2, 6)
-     IDREG_FIELD_START(ID_AA64FPFR0_EL1, F8E4M3, 1, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -331,7 +322,7 @@ IDREG_START(ID_AA64ISAR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64ISAR0_EL1, RDM)
--    IDREG_FIELD(ID_AA64ISAR0_EL1, RES0, 24, 4)
-+    IDREG_FIELD(ID_AA64ISAR0_EL1, RES0_24, 24, 4)
-     IDREG_FIELD_START(ID_AA64ISAR0_EL1, Atomic, 20, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(2)
-@@ -355,7 +346,7 @@ IDREG_START(ID_AA64ISAR0_EL1)
-         IDREG_FIELD_ARCH_VAL(1)
-         IDREG_FIELD_ARCH_VAL(2)
-     IDREG_FIELD_END(ID_AA64ISAR0_EL1, AES)
--    IDREG_FIELD(ID_AA64ISAR0_EL1, RES0, 0, 4)
-+    IDREG_FIELD(ID_AA64ISAR0_EL1, RES0_0, 0, 4)
- IDREG_END(ID_AA64ISAR0_EL1)
+-static bool arm_field_skip_writeback_if_not_writable(const ARM64SysRegField *field)
++bool arm_field_skip_writeback_if_not_writable(const ARM64SysRegField *field)
+ {
+     /*
+      * KVM populates ID_DFR0_EL1.PerfMon even for AArch64-only guests but
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 4a04d72e39..6409bec735 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -172,6 +172,23 @@ void arm_field_get_supported_values(const ARM64SysRegField *field,
+                                     const ARMISARegisters *host_isar,
+                                     ArmFieldValueSet **value_set);
  
- IDREG_START(ID_AA64ISAR1_EL1)
-@@ -519,7 +510,7 @@ IDREG_START(ID_AA64ISAR2_EL1)
- IDREG_END(ID_AA64ISAR2_EL1)
- 
- IDREG_START(ID_AA64ISAR3_EL1)
--    IDREG_FIELD(ID_AA64ISAR3_EL1, RES0, 48, 16)
-+    IDREG_FIELD(ID_AA64ISAR3_EL1, RES0_48, 48, 16)
-     IDREG_FIELD_START(ID_AA64ISAR3_EL1, LSCP, 44, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -583,7 +574,7 @@ IDREG_START(ID_AA64MMFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(1)
-         IDREG_FIELD_ARCH_VAL(2)
-     IDREG_FIELD_END(ID_AA64MMFR0_EL1, FGT)
--    IDREG_FIELD(ID_AA64MMFR0_EL1, RES0, 48, 8)
-+    IDREG_FIELD(ID_AA64MMFR0_EL1, RES0_48, 48, 8)
-     IDREG_FIELD_START(ID_AA64MMFR0_EL1, ExS, 44, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -736,7 +727,7 @@ IDREG_START(ID_AA64MMFR2_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64MMFR2_EL1, TTL)
--    IDREG_FIELD(ID_AA64MMFR2_EL1, RES0, 44, 4)
-+    IDREG_FIELD(ID_AA64MMFR2_EL1, RES0_44, 44, 4)
-     IDREG_FIELD_START(ID_AA64MMFR2_EL1, FWB, 40, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -802,7 +793,7 @@ IDREG_START(ID_AA64MMFR3_EL1)
-         IDREG_FIELD_ARCH_VAL(2)
-         IDREG_FIELD_ARCH_VAL(3)
-     IDREG_FIELD_END(ID_AA64MMFR3_EL1, SDERR)
--    IDREG_FIELD(ID_AA64MMFR3_EL1, RES0, 48, 4)
-+    IDREG_FIELD(ID_AA64MMFR3_EL1, RES0_48, 48, 4)
-     IDREG_FIELD_START(ID_AA64MMFR3_EL1, ANERR, 44, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1056,7 +1047,7 @@ IDREG_START(ID_AA64PFR1_EL1)
-         IDREG_FIELD_ARCH_VAL(1)
-         IDREG_FIELD_ARCH_VAL(2)
-     IDREG_FIELD_END(ID_AA64PFR1_EL1, SME)
--    IDREG_FIELD(ID_AA64PFR1_EL1, RES0, 20, 4)
-+    IDREG_FIELD(ID_AA64PFR1_EL1, RES0_20, 20, 4)
-     IDREG_FIELD_START(ID_AA64PFR1_EL1, MPAM_frac, 16, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1084,7 +1075,7 @@ IDREG_START(ID_AA64PFR1_EL1)
- IDREG_END(ID_AA64PFR1_EL1)
- 
- IDREG_START(ID_AA64PFR2_EL1)
--    IDREG_FIELD(ID_AA64PFR2_EL1, RES0, 48, 16)
-+    IDREG_FIELD(ID_AA64PFR2_EL1, RES0_48, 48, 16)
-     IDREG_FIELD_START(ID_AA64PFR2_EL1, VMTETCL, 44, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1144,7 +1135,7 @@ IDREG_START(ID_AA64SMFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64SMFR0_EL1, FA64)
--    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0, 62, 1)
-+    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0_62, 62, 1)
-     IDREG_FIELD_START(ID_AA64SMFR0_EL1, LUT6, 61, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1164,7 +1155,7 @@ IDREG_START(ID_AA64SMFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(15)
-     IDREG_FIELD_END(ID_AA64SMFR0_EL1, I16I64)
--    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0, 49, 3)
-+    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0_49, 49, 3)
-     IDREG_FIELD_START(ID_AA64SMFR0_EL1, F64F64, 48, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1209,7 +1200,7 @@ IDREG_START(ID_AA64SMFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64SMFR0_EL1, F32F32)
--    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0, 31, 1)
-+    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0_31, 31, 1)
-     IDREG_FIELD_START(ID_AA64SMFR0_EL1, SF8FMA, 30, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1222,7 +1213,7 @@ IDREG_START(ID_AA64SMFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64SMFR0_EL1, SF8DP2)
--    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0, 26, 2)
-+    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0_26, 26, 2)
-     IDREG_FIELD_START(ID_AA64SMFR0_EL1, SBitPerm, 25, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1235,12 +1226,12 @@ IDREG_START(ID_AA64SMFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64SMFR0_EL1, SFEXPA)
--    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0, 17, 6)
-+    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0_17, 17, 6)
-     IDREG_FIELD_START(ID_AA64SMFR0_EL1, STMOP, 16, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64SMFR0_EL1, STMOP)
--    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0, 1, 15)
-+    IDREG_FIELD(ID_AA64SMFR0_EL1, RES0_1, 1, 15)
-     IDREG_FIELD_START(ID_AA64SMFR0_EL1, SMOP4, 0, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1248,7 +1239,7 @@ IDREG_START(ID_AA64SMFR0_EL1)
- IDREG_END(ID_AA64SMFR0_EL1)
- 
- IDREG_START(ID_AA64ZFR0_EL1)
--    IDREG_FIELD(ID_AA64ZFR0_EL1, RES0, 60, 4)
-+    IDREG_FIELD(ID_AA64ZFR0_EL1, RES0_60, 60, 4)
-     IDREG_FIELD_START(ID_AA64ZFR0_EL1, F64MM, 56, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1269,12 +1260,12 @@ IDREG_START(ID_AA64ZFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64ZFR0_EL1, SM4)
--    IDREG_FIELD(ID_AA64ZFR0_EL1, RES0, 36, 4)
-+    IDREG_FIELD(ID_AA64ZFR0_EL1, RES0_36, 36, 4)
-     IDREG_FIELD_START(ID_AA64ZFR0_EL1, SHA3, 32, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64ZFR0_EL1, SHA3)
--    IDREG_FIELD(ID_AA64ZFR0_EL1, RES0, 28, 4)
-+    IDREG_FIELD(ID_AA64ZFR0_EL1, RES0_28, 28, 4)
-     IDREG_FIELD_START(ID_AA64ZFR0_EL1, B16B16, 24, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1294,7 +1285,7 @@ IDREG_START(ID_AA64ZFR0_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_AA64ZFR0_EL1, EltPerm)
--    IDREG_FIELD(ID_AA64ZFR0_EL1, RES0, 8, 4)
-+    IDREG_FIELD(ID_AA64ZFR0_EL1, RES0_8, 8, 4)
-     IDREG_FIELD_START(ID_AA64ZFR0_EL1, AES, 4, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1311,11 +1302,11 @@ IDREG_START(ID_AA64ZFR0_EL1)
- IDREG_END(ID_AA64ZFR0_EL1)
- 
- IDREG_START(ID_AFR0_EL1)
--    IDREG_FIELD(ID_AFR0_EL1, RES0, 0, 64)
-+    IDREG_FIELD(ID_AFR0_EL1, RES0_0, 0, 64)
- IDREG_END(ID_AFR0_EL1)
- 
- IDREG_START(ID_DFR0_EL1)
--    IDREG_FIELD(ID_DFR0_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_DFR0_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_DFR0_EL1, TraceFilt, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1367,7 +1358,7 @@ IDREG_START(ID_DFR0_EL1)
- IDREG_END(ID_DFR0_EL1)
- 
- IDREG_START(ID_DFR1_EL1)
--    IDREG_FIELD(ID_DFR1_EL1, RES0, 8, 56)
-+    IDREG_FIELD(ID_DFR1_EL1, RES0_8, 8, 56)
-     IDREG_FIELD_START(ID_DFR1_EL1, HPMN0, 4, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1380,7 +1371,7 @@ IDREG_START(ID_DFR1_EL1)
- IDREG_END(ID_DFR1_EL1)
- 
- IDREG_START(ID_ISAR0_EL1)
--    IDREG_FIELD(ID_ISAR0_EL1, RES0, 28, 36)
-+    IDREG_FIELD(ID_ISAR0_EL1, RES0_28, 28, 36)
-     IDREG_FIELD_START(ID_ISAR0_EL1, Divide, 24, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1416,7 +1407,7 @@ IDREG_START(ID_ISAR0_EL1)
- IDREG_END(ID_ISAR0_EL1)
- 
- IDREG_START(ID_ISAR1_EL1)
--    IDREG_FIELD(ID_ISAR1_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_ISAR1_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_ISAR1_EL1, Jazelle, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1455,7 +1446,7 @@ IDREG_START(ID_ISAR1_EL1)
- IDREG_END(ID_ISAR1_EL1)
- 
- IDREG_START(ID_ISAR2_EL1)
--    IDREG_FIELD(ID_ISAR2_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_ISAR2_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_ISAR2_EL1, Reversal, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1501,7 +1492,7 @@ IDREG_START(ID_ISAR2_EL1)
- IDREG_END(ID_ISAR2_EL1)
- 
- IDREG_START(ID_ISAR3_EL1)
--    IDREG_FIELD(ID_ISAR3_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_ISAR3_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_ISAR3_EL1, T32EE, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1539,7 +1530,7 @@ IDREG_START(ID_ISAR3_EL1)
- IDREG_END(ID_ISAR3_EL1)
- 
- IDREG_START(ID_ISAR4_EL1)
--    IDREG_FIELD(ID_ISAR4_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_ISAR4_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_ISAR4_EL1, SWP_frac, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1564,12 +1555,12 @@ IDREG_START(ID_ISAR4_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_ISAR4_EL1, Writeback)
--    IDREG_FIELD_START(ID_ISAR4_EL1, WI, 4, 4)
-+    IDREG_FIELD_START(ID_ISAR4_EL1, WI_4, 4, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-         IDREG_FIELD_ARCH_VAL(3)
-         IDREG_FIELD_ARCH_VAL(4)
--    IDREG_FIELD_END(ID_ISAR4_EL1, WI)
-+    IDREG_FIELD_END(ID_ISAR4_EL1, WI_4)
-     IDREG_FIELD_START(ID_ISAR4_EL1, Unpriv, 0, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1578,7 +1569,7 @@ IDREG_START(ID_ISAR4_EL1)
- IDREG_END(ID_ISAR4_EL1)
- 
- IDREG_START(ID_ISAR5_EL1)
--    IDREG_FIELD(ID_ISAR5_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_ISAR5_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_ISAR5_EL1, VCMA, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1587,7 +1578,7 @@ IDREG_START(ID_ISAR5_EL1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(ID_ISAR5_EL1, RDM)
--    IDREG_FIELD(ID_ISAR5_EL1, RES0, 20, 4)
-+    IDREG_FIELD(ID_ISAR5_EL1, RES0_20, 20, 4)
-     IDREG_FIELD_START(ID_ISAR5_EL1, CRC32, 16, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1612,7 +1603,7 @@ IDREG_START(ID_ISAR5_EL1)
- IDREG_END(ID_ISAR5_EL1)
- 
- IDREG_START(ID_ISAR6_EL1)
--    IDREG_FIELD(ID_ISAR6_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_ISAR6_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_ISAR6_EL1, CLRBHB, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1649,7 +1640,7 @@ IDREG_START(ID_ISAR6_EL1)
- IDREG_END(ID_ISAR6_EL1)
- 
- IDREG_START(ID_MMFR0_EL1)
--    IDREG_FIELD(ID_MMFR0_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_MMFR0_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_MMFR0_EL1, InnerShr, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1696,7 +1687,7 @@ IDREG_START(ID_MMFR0_EL1)
- IDREG_END(ID_MMFR0_EL1)
- 
- IDREG_START(ID_MMFR1_EL1)
--    IDREG_FIELD(ID_MMFR1_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_MMFR1_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_MMFR1_EL1, BPred, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1745,7 +1736,7 @@ IDREG_START(ID_MMFR1_EL1)
- IDREG_END(ID_MMFR1_EL1)
- 
- IDREG_START(ID_MMFR2_EL1)
--    IDREG_FIELD(ID_MMFR2_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_MMFR2_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_MMFR2_EL1, HWAccFlg, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1784,7 +1775,7 @@ IDREG_START(ID_MMFR2_EL1)
- IDREG_END(ID_MMFR2_EL1)
- 
- IDREG_START(ID_MMFR3_EL1)
--    IDREG_FIELD(ID_MMFR3_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_MMFR3_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_MMFR3_EL1, Supersec, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(15)
-@@ -1824,7 +1815,7 @@ IDREG_START(ID_MMFR3_EL1)
- IDREG_END(ID_MMFR3_EL1)
- 
- IDREG_START(ID_MMFR4_EL1)
--    IDREG_FIELD(ID_MMFR4_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_MMFR4_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_MMFR4_EL1, EVT, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1862,7 +1853,7 @@ IDREG_START(ID_MMFR4_EL1)
- IDREG_END(ID_MMFR4_EL1)
- 
- IDREG_START(ID_MMFR5_EL1)
--    IDREG_FIELD(ID_MMFR5_EL1, RES0, 8, 56)
-+    IDREG_FIELD(ID_MMFR5_EL1, RES0_8, 8, 56)
-     IDREG_FIELD_START(ID_MMFR5_EL1, nTLBPA, 4, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1876,7 +1867,7 @@ IDREG_START(ID_MMFR5_EL1)
- IDREG_END(ID_MMFR5_EL1)
- 
- IDREG_START(ID_PFR0_EL1)
--    IDREG_FIELD(ID_PFR0_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_PFR0_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_PFR0_EL1, RAS, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1918,7 +1909,7 @@ IDREG_START(ID_PFR0_EL1)
- IDREG_END(ID_PFR0_EL1)
- 
- IDREG_START(ID_PFR1_EL1)
--    IDREG_FIELD(ID_PFR1_EL1, RES0, 32, 32)
-+    IDREG_FIELD(ID_PFR1_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(ID_PFR1_EL1, GIC, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -1958,7 +1949,7 @@ IDREG_START(ID_PFR1_EL1)
- IDREG_END(ID_PFR1_EL1)
- 
- IDREG_START(ID_PFR2_EL1)
--    IDREG_FIELD(ID_PFR2_EL1, RES0, 12, 52)
-+    IDREG_FIELD(ID_PFR2_EL1, RES0_12, 12, 52)
-     IDREG_FIELD_START(ID_PFR2_EL1, RAS_frac, 8, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -2006,14 +1997,14 @@ IDREG_START(MIDR_EL1)
- IDREG_END(MIDR_EL1)
- 
- IDREG_START(MPIDR_EL1)
--    IDREG_FIELD(MPIDR_EL1, RES0, 40, 24)
-+    IDREG_FIELD(MPIDR_EL1, RES0_40, 40, 24)
-     IDREG_FIELD(MPIDR_EL1, Aff3, 32, 8)
--    IDREG_FIELD(MPIDR_EL1, RES1, 31, 1)
-+    IDREG_FIELD(MPIDR_EL1, RES1_31, 31, 1)
-     IDREG_FIELD_START(MPIDR_EL1, U, 30, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-     IDREG_FIELD_END(MPIDR_EL1, U)
--    IDREG_FIELD(MPIDR_EL1, RES0, 25, 5)
-+    IDREG_FIELD(MPIDR_EL1, RES0_25, 25, 5)
-     IDREG_FIELD_START(MPIDR_EL1, MT, 24, 1)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -2024,7 +2015,7 @@ IDREG_START(MPIDR_EL1)
- IDREG_END(MPIDR_EL1)
- 
- IDREG_START(MVFR0_EL1)
--    IDREG_FIELD(MVFR0_EL1, RES0, 32, 32)
-+    IDREG_FIELD(MVFR0_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(MVFR0_EL1, FPRound, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -2063,7 +2054,7 @@ IDREG_START(MVFR0_EL1)
- IDREG_END(MVFR0_EL1)
- 
- IDREG_START(MVFR1_EL1)
--    IDREG_FIELD(MVFR1_EL1, RES0, 32, 32)
-+    IDREG_FIELD(MVFR1_EL1, RES0_32, 32, 32)
-     IDREG_FIELD_START(MVFR1_EL1, SIMDFMAC, 28, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -2102,7 +2093,7 @@ IDREG_START(MVFR1_EL1)
- IDREG_END(MVFR1_EL1)
- 
- IDREG_START(MVFR2_EL1)
--    IDREG_FIELD(MVFR2_EL1, RES0, 8, 56)
-+    IDREG_FIELD(MVFR2_EL1, RES0_8, 8, 56)
-     IDREG_FIELD_START(MVFR2_EL1, FPMisc, 4, 4)
-         IDREG_FIELD_ARCH_VAL(0)
-         IDREG_FIELD_ARCH_VAL(1)
-@@ -2119,17 +2110,13 @@ IDREG_START(MVFR2_EL1)
- IDREG_END(MVFR2_EL1)
- 
- IDREG_START(REVIDR_EL1)
-+    IDREG_FIELD(REVIDR_EL1, VAL, 0, 64)
- IDREG_END(REVIDR_EL1)
- 
- IDREG_START(SMIDR_EL1)
--    IDREG_FIELD(SMIDR_EL1, RES0, 60, 4)
--    IDREG_FIELD_START(SMIDR_EL1, NSMC, 56, 4)
--        IDREG_FIELD_ARCH_VAL(0)
--        IDREG_FIELD_ARCH_VAL(15)
--    IDREG_FIELD_END(SMIDR_EL1, NSMC)
--    IDREG_FIELD_START(SMIDR_EL1, HIP, 52, 4)
--        IDREG_FIELD_ARCH_VAL(0)
--    IDREG_FIELD_END(SMIDR_EL1, HIP)
-+    IDREG_FIELD(SMIDR_EL1, RES0_60, 60, 4)
-+    IDREG_FIELD(SMIDR_EL1, NSMC, 56, 4)
-+    IDREG_FIELD(SMIDR_EL1, HIP, 52, 4)
-     IDREG_FIELD(SMIDR_EL1, Affinity2, 32, 20)
-     IDREG_FIELD_START(SMIDR_EL1, Implementer, 24, 8)
-         IDREG_FIELD_ARCH_VAL(0)
-@@ -2158,7 +2145,7 @@ IDREG_START(SMIDR_EL1)
-         IDREG_FIELD_ARCH_VAL(2)
-         IDREG_FIELD_ARCH_VAL(3)
-     IDREG_FIELD_END(SMIDR_EL1, SH)
--    IDREG_FIELD(SMIDR_EL1, RES0, 12, 1)
-+    IDREG_FIELD(SMIDR_EL1, RES0_12, 12, 1)
-     IDREG_FIELD(SMIDR_EL1, Affinity, 0, 12)
- IDREG_END(SMIDR_EL1)
- 
++/**
++ * arm_field_skip_writeback_always:
++ * @field: the ID-register field to test
++ *
++ * Returns: true if @field must never be written back to KVM (and so may
++ * legitimately differ from the host value).
++ */
++bool arm_field_skip_writeback_always(const ARM64SysRegField *field);
++
++/**
++ * arm_field_skip_writeback_if_not_writable:
++ * @field: the ID-register field to test
++ *
++ * Returns: true if @field should be skipped when it is not writable.
++ */
++bool arm_field_skip_writeback_if_not_writable(const ARM64SysRegField *field);
++
+ /**
+  * kvm_arm_steal_time_finalize:
+  * @cpu: ARMCPU for which to finalize kvm-steal-time
 -- 
 2.52.0
 

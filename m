@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C274C44501
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 06:42:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A459C44501
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 06:46:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkFnf-0001Ui-53; Thu, 16 Jul 2026 02:42:27 -0400
+	id 1wkFri-0002dQ-2e; Thu, 16 Jul 2026 02:46:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wkFnc-0001UH-H7
- for qemu-arm@nongnu.org; Thu, 16 Jul 2026 02:42:24 -0400
-Received: from smtpout4.mo538.mail-out.ovh.net ([51.210.91.33])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wkFrg-0002cU-11
+ for qemu-arm@nongnu.org; Thu, 16 Jul 2026 02:46:36 -0400
+Received: from smtpout2.mo540.mail-out.ovh.net ([51.210.91.51])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wkFna-0003kB-EH
- for qemu-arm@nongnu.org; Thu, 16 Jul 2026 02:42:24 -0400
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net [79.137.60.36])
- by mo538.mail-out.ovh.net (Postfix) with ESMTPS id 4h13PQ2C1Bz6Dd7;
- Thu, 16 Jul 2026 06:42:18 +0000 (UTC)
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net. [127.0.0.1])
- by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alistair@alistair23.me>; Thu, 16 Jul 2026 06:42:18 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.96.215])
- by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4h13PQ12Wyz1xpN; Thu, 16 Jul 2026 06:42:18 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wkFrd-00044Y-UF
+ for qemu-arm@nongnu.org; Thu, 16 Jul 2026 02:46:35 -0400
+Received: from director6.derp.mail-out.ovh.net
+ (director6.derp.mail-out.ovh.net [51.255.22.22])
+ by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4h13VH2NL8z44kN;
+ Thu, 16 Jul 2026 06:46:31 +0000 (UTC)
+Received: from director6.derp.mail-out.ovh.net
+ (director6.derp.mail-out.ovh.net. [127.0.0.1])
+ by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Thu, 16 Jul 2026 06:46:31 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.101.119])
+ by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4h13VH1HfTz7tKG; Thu, 16 Jul 2026 06:46:31 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.4])
  (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 8819C1B43D69;
- Thu, 16 Jul 2026 06:42:16 +0000 (UTC)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 3C0E41B43DCE;
+ Thu, 16 Jul 2026 06:46:29 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-102R004c46c3df8-20e6-4374-a383-705a17be844e,
+ (GARM-103G005abea7d08-9de3-4a43-8ff8-02b4d7d8a0f9,
  816DE1EE18DD2826DFD8B9EE289546F56902E1FE) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <4c37151a-edbe-4b1b-a379-c6f50c4e230c@kaod.org>
-Date: Thu, 16 Jul 2026 08:42:16 +0200
+Message-ID: <70dd891e-0701-4cec-8710-c5f1ece0d2b1@kaod.org>
+Date: Thu, 16 Jul 2026 08:46:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/8] Refactor AST2700 SCU preparation for coprocessors
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
+Subject: Re: [PATCH 00/29] hw/arm: improve Aspeed Catalina BMC emulation
+To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
+Cc: Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260707060919.350637-1-jamin_lin@aspeedtech.com>
+ Corey Minyard <cminyard@mvista.com>
+References: <20260709-catalina-upgrade-v1-0-814575bc076b@free.fr>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -96,23 +96,23 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260707060919.350637-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260709-catalina-upgrade-v1-0-814575bc076b@free.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 9028028403839446027
+x-ovh-tracer-id: 9099241575135554605
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTF2pbXOsTvMAmHuVnyBkmRUp4KEGunXxctK16wCHYRdS57kRO49V+OP799SfXGK8myC1lMIQ8xPZeu4rRBJi2F8mHA+m7tZtoCnmFxbktuPXttK0CpqNqgEQU1PaJbsCo6rNnVRcdVZCDdKWtJfavg8anDFHXlaMyMQnuIPqg+5q5kbNajIAkb5TSKA4dEO27nDlDHgnGMK208LTVqSVgHKJ3BgBKqHGARLvOtUGZlWPKOsPMjl7VKuFRwISFDqO6wHhJcSoKWOlxoJNuQXr9gVuLK+3tZeJ7Uthdg2b/B3mNfxB7g1joxOAkJ3xt6bmYvvEtu+8GuF/PlTd99ey8RQjhKtqbyC1YaRcBGecvO15sXL5D5fFD3WmWCBHnfuTuCMnBgynd2UbbirTxg25gXgzv2N1Dr8Jw2kZJ5qvPPRvUAyRp2J2AUyQ/vDHwukQj0t7b7JXJw1GM2NpQb2Rody9pP0p6mh8ZKmZMYaTq/igweICZgC+iyuM7/vu7kw/qrdk6ZEQGVWF1BhaJpR4vh4iM7adCgjK5D55iMu0AZC2k0o/KpK24COucEEy+f5XRL3c5Kiz3k612buenvBIblUIz9fjMKc/fxv71L7w/T/v83zNEh9m2zgU7jM5bRlvvuNHETrcYftuVWqGxjRBkLKTIAIsKnkOiuFVB4XLCthHg
-DKIM-Signature: a=rsa-sha256; bh=c/PVQffIpacdkdSA6wulG7/8iEtiJCjxPI5hblIXmEA=; 
+X-VR-SPAMCAUSE: dmFkZTFUSO232/WH9w2OrNVjlUP33UX4h8SCSm/+y3x8WR3xanN/Pqll+ek/o3UnBw1Jcvv8uUiEREd2N2gjF13l1ZWiU39BfGygK/PSMNB/FlgRnqA6Ri7y90DOatxxi9tvkCqZAnupELzQvn2x/ifKlbyzzqltXcx1ddXIEYMRb4t0H4y6CN6/DPsH0LvMfU/sVsfSefd4qCrWtmpeldSCFA9fzpGuNXrf0thc1sJwToWtkJo0zQre2qLe5kw3lOJIWHGIKxXEjuDfXKGQ/gTOxnXSi6IxBBm859Ayj+WLafYjdeRZtZ7ud9Ec02kVn2sEl7DWtADz4C0LbadOY9z7BVmVEgCo9BgTCLTopaQhJmKguGMgmR0a9T41zrlVvwMnw4OSOlE0S4WB/1ZjukVSG7ahIhlurNRubDcGZSwv2kfzbCTxE6TaFDxQHOIcsM08I2O4j/8JsjCvvsn74bW1UPZ/9TpvBku5/8u+pPV591B+taQ67LyBNOwNqyBl31PMWswEVxVsLZ5PGXf7Nz1F4+ZNCHSb/xpGHm1UAACek4g0jj30hThY3lsBk8Tw/n94Ywt6kfLFSyPub5XT0eE+1adbUhqoZOZo69GpLgHER8WaAjycKI2yYQ125TryTCBoQLzRQYGFWTdPWaaNGOfgKbBLN/+9rbF1WWcXXfRRJ1RVZw
+DKIM-Signature: a=rsa-sha256; bh=o8qYxlK/9HiS52/lu8XY1aRVbbwnLk/FMetVZnL/RSw=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1784184139; v=1;
- b=ckUwUeLrBeHIS7gh29Bt19dN2JTSh/hKuyxSSdmdDEjapAOwJUrivNHuUhGgNQ71UImGRpWI
- Q3fDUeVyewsjnE773+WlVuSsG20O1R9Dq1fRLABu5Fv2cq70Z/wvdvDvdP8FYrAyXk7k47B2W0n
- am3plR4+kqYpkmyTbPARjlZ3eUT/+r0aATJeE3fvBi4P8VCSx0p6FCOmQ8NNi3+/5aXEwzWpPL+
- 6cQW/JpqNu69RP9cq0wlcGOBreSBv82pstTrWhYXFpA+yQ5Y2wPA3DSRFGFk0GGc13KFyHZ4xFY
- N/DLH2zaDtlzuE2aDxRb1bwPnWg4wx3ZRIEgWaty3r4fw==
-Received-SPF: pass client-ip=51.210.91.33; envelope-from=clg@kaod.org;
- helo=smtpout4.mo538.mail-out.ovh.net
+ t=1784184391; v=1;
+ b=Yf5mE/U9wdv7lbPJqJ1vNcuH4g1VAFkzUwvo+Avs6dfqrFLzJtRkQzIKJLYld1cQJCdl/RHM
+ MGt7hDZH0I7O0l/3T0COIImyjLZRVxXpxgn8PdxqZdSLjMao5yDV10jVY4gJrXof4zLfUYbt5Mm
+ tg2BExgRk/6QVLcae7YzKtw5PB7VPiGCjOBAwO6zLBwusNTjZQ1Xwa6I1oaFCX4xAtH05CgA1E8
+ 9VQxFOC6ToN6i3Hvkxv4wTxJkw6ZxU3HKAbJoJIa7qPBA4krLjqIosP23IKpxbvwi98xvceKQy5
+ aj+CtakvbMSnjuCyk5dCpKAs9gxFQ68HC855A/Mo1GoNQ==
+Received-SPF: pass client-ip=51.210.91.51; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo540.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -135,92 +135,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/7/26 08:09, Jamin Lin wrote:
-> The original AST2700 FC support series [1] is fairly large, making it
-> difficult to review all changes together.
-> 
-> To help speed up the review process, this series extracts the SCU/FMC-related
-> refactoring into a standalone prerequisite series.
-> 
-> v1:
-> Compared with the original series, the SCU preparation patch has been
-> split into three smaller patches:
-> 
-> Introduce Aspeed2700SCUState.
-> Convert AST1700/AST27x0 users to the new SCU subclass.
-> Move the SCU link property into the AST27x0-specific coprocessor
-> implementation.
-> 
-> In addition, the SCUIO reset handling has been separated into an
-> independent patch.
-> 
-> This series contains no functional changes. It is purely a refactoring
-> to isolate AST2700-specific SCU support from the generic implementation
-> and prepare for the subsequent AST2700 FC support.
-> 
-> v2:
->   1. Pass realized PSP SoC to SSP/TSP initialization
->   2. Share single SCUIO instance across PSP, SSP, and TSP
->   3. Share FMC controller with SSP and TSP
->   4. Add Data FIFO-based flash access support for
-> 
-> This series depends on:
-> 
-> https://patchwork.ozlabs.org/project/qemu-devel/cover/20260706052701.1141740-1-jamin_lin@aspeedtech.com/
-> 
-> Supersedes the following patches from the original FC support series [1]:
-> 
-> Patch 1:
-> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-2-jamin_lin@aspeedtech.com/
-> 
-> Patch 2:
-> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-3-jamin_lin@aspeedtech.com/
-> 
-> Patch 4:
-> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-12-jamin_lin@aspeedtech.com/
-> 
-> Patch 15:
-> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-16-jamin_lin@aspeedtech.com/
-> 
-> Patch 18:
-> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-19-jamin_lin@aspeedtech.com/
-> 
-> Patch
-> [1] Original AST2700 FC support series:
-> https://patchwork.kernel.org/project/qemu-devel/cover/20260417032837.2664122-1-jamin_lin@aspeedtech.com/
-> 
-> Jamin Lin (8):
->    hw/misc/aspeed_scu: Introduce Aspeed2700SCUState
->    hw/arm/aspeed: Use Aspeed2700SCUState for AST2700 users
->    hw/arm/aspeed_ast27x0: Move SCU link into AST27x0 coprocessors
->    hw/misc/aspeed_scu: Add separate reset handler for AST2700 SCUIO
->    hw/arm/aspeed_ast27x0: Pass realized PSP SoC to SSP/TSP initialization
->    hw/arm/ast27x0: Share single SCUIO instance across PSP, SSP, and TSP
->    hw/arm/ast27x0: Share FMC controller with SSP and TSP
->    hw/ssi/aspeed_smc: Add Data FIFO-based flash access support for
->      AST2700
-> 
->   include/hw/arm/aspeed_ast1700.h     |   2 +-
->   include/hw/arm/aspeed_coprocessor.h |  11 ++-
->   include/hw/arm/aspeed_soc.h         |   1 +
->   include/hw/misc/aspeed_scu.h        |   5 ++
->   include/hw/ssi/aspeed_smc.h         |   3 +-
->   hw/arm/aspeed_ast27x0-fc.c          |  38 +++++++---
->   hw/arm/aspeed_ast27x0-ssp.c         |  56 +++++++++++---
->   hw/arm/aspeed_ast27x0-tsp.c         |  56 +++++++++++---
->   hw/arm/aspeed_ast27x0.c             |  16 ++--
->   hw/arm/aspeed_coprocessor_common.c  |   2 -
->   hw/misc/aspeed_scu.c                |  20 ++++-
->   hw/ssi/aspeed_smc.c                 | 113 ++++++++++++++++++++++++++--
->   12 files changed, 267 insertions(+), 56 deletions(-)
-> 
+Hello Glenn
 
-Applied to
-
-     https://github.com/legoater/qemu aspeed-next
+Could you please help reviewing the pca changes ?
 
 Thanks,
 
 C.
+
+On 7/9/26 17:23, Emmanuel Blot wrote:
+> This series improves emulation of the Aspeed-based Catalina BMC machine,
+> mostly around its I2C buses: the GPIO expanders the board relies on and
+> the temperature sensors sitting next to them.
+> 
+> The bulk of the work is on the PCA95xx I/O expander models. The existing
+> PCA9552 and PCA9554 drivers only really covered the exact parts a couple
+> of boards happened to use, and some of their register and pin behaviour
+> did not match the datasheets. Catalina needs a few more variants and
+> expects them to act like the real chips, so:
+> 
+>   - the PCA9552 driver now provides proper PCA9555/PCA9535 types, applies
+>     input polarity inversion on reads, and handles the command register
+>     as the datasheet describes (auto-increment and wrapping);
+> 
+>   - the PCA9554 driver gains the 4-bit PCA9536 variant, reflects
+> push-pull
+>     outputs back into the input register, and grows an opt-in mode that
+>     honours the configured pin direction instead of forcing pins to
+>     outputs;
+> 
+>   - both drivers expose each line as a "pinN" QOM property, which lets an
+>     external actor drive an input pin. The property also allows reading
+>     the value driven onto an output-configured pin, which is the more
+>     useful capability, but nothing exercises it yet.
+> 
+> Along the way both models get a fair bit of cleanup (DEFINE_TYPES, the
+> Resettable interface, state moved out of the headers, default
+> descriptions derived from the instantiated type).
+> 
+> On the machine itself, Catalina now instantiates its PCA9555 expanders
+> as their own type, gains the NIC and FIO temperature sensors present on
+> real hardware, and drives the pca9554 expander input pins from outside
+> the guest.
+> 
+> Finally, the register-level behaviour of both expanders is covered by
+> new qtests, and the functional test that boots the OpenBMC image now
+> exercises the expanders end to end, both through QOM and through the
+> guest's gpio tooling.
+> 
+> Note that the "hw/i2c: parent slaves created with
+> i2c_slave_create_simple"
+> patch is only a temporary dependency here: it already belongs to the
+> separate ADC128D818 series currently under review, and will be dropped
+> from this series before it is submitted for final review.
+> 
+> Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+> ---
+> Emmanuel Blot (29):
+>        hw/gpio: pca9552: register types with DEFINE_TYPES()
+>        hw/gpio: pca9552: move PCA955xState definition out of the header
+>        hw/gpio: pca9552: rename I2CSlave member to parent_obj
+>        hw/gpio: pca9552: default description to the instantiated type name
+>        hw/gpio: pca9552: declare pca9555 device as an alias of pca9535 device
+>        hw/gpio: pca9552: use the Resettable interface instead of legacy reset
+>        hw/gpio: pca9552: apply input polarity inversion on read
+>        hw/gpio: pca9552: conform GPIO command handling to the datasheet
+>        hw/gpio: pca9552: expose GPIO pins as pin%d QOM properties
+>        tests/qtest: add PCA9555 register access tests
+>        tests/qtest: pca9555: test output-to-input reflection and pull-ups
+>        tests/qtest: pca9555: test polarity inversion
+>        tests/qtest: pca9555: test auto-increment and command wrapping
+>        tests/qtest: pca9552: test behaviour specific to the LED variant
+>        hw/gpio: pca9554: add PCA9536 support
+>        hw/gpio: pca9554: add hw-dir property honoring the configured pin direction
+>        hw/gpio: pca9554: reflect push-pull outputs in the input register
+>        hw/gpio: pca9554: expose pin%d as a string property
+>        tests/qtest: add PCA9554 register access tests
+>        tests/qtest: pca9554: test output-to-input reflection and pull-ups
+>        tests/qtest: pca9554: test polarity inversion
+>        tests/qtest: pca9554: test absence of command auto-increment
+>        tests/qtest: pca9554: test the PCA9536 4-bit variant
+>        hw/arm: catalina: model PCA9555 IO expanders with their own type
+>        hw/arm: catalina: add NIC and FIO temperature sensors
+>        hw/i2c: parent slaves created with i2c_slave_create_simple
+>        test/functional: catalina: test PCA9555 IO expander via QOM
+>        hw/arm: catalina: drive pca9554 io expander input pins externally
+>        test/functional: catalina: test PCA9554 IO expander via QOM
+> 
+>   hw/arm/aspeed_ast2600_catalina.c             |  67 ++++---
+>   hw/gpio/pca9552.c                            | 256 ++++++++++++++++++++-------
+>   hw/gpio/pca9554.c                            | 175 ++++++++++--------
+>   hw/i2c/core.c                                |   3 +
+>   include/hw/gpio/pca9552.h                    |  31 +---
+>   include/hw/gpio/pca9554.h                    |   3 +
+>   include/hw/i2c/i2c.h                         |   7 +-
+>   tests/functional/arm/test_aspeed_catalina.py |  81 +++++++++
+>   tests/qtest/meson.build                      |   2 +
+>   tests/qtest/pca9552-test.c                   |  76 ++++++++
+>   tests/qtest/pca9554-test.c                   | 223 +++++++++++++++++++++++
+>   tests/qtest/pca9555-test.c                   | 251 ++++++++++++++++++++++++++
+>   12 files changed, 994 insertions(+), 181 deletions(-)
+> ---
+> base-commit: f893c46c3931b3684d235d221bf8b7844ddbf1d7
+> change-id: 20260703-catalina-upgrade-3eae7d9d7289
+> 
+> Best regards,
+> --
+> Emmanuel Blot <emmanuel.blot@free.fr>
+> 
 
 

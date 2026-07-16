@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B25C44512
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 21:42:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 827E5C4450A
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 21:42:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkToO-0001r5-As; Thu, 16 Jul 2026 17:40:08 -0400
+	id 1wkToO-0001rq-JL; Thu, 16 Jul 2026 17:40:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
- id 1wkToL-0001lY-7m; Thu, 16 Jul 2026 17:40:05 -0400
+ id 1wkToL-0001m4-EM; Thu, 16 Jul 2026 17:40:05 -0400
 Received: from mx0b-002c1b01.pphosted.com ([148.163.155.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
- id 1wkToD-0005se-SH; Thu, 16 Jul 2026 17:40:04 -0400
-Received: from pps.filterd (m0127844.ppops.net [127.0.0.1])
+ id 1wkToD-0005sF-Sd; Thu, 16 Jul 2026 17:40:05 -0400
+Received: from pps.filterd (m0127843.ppops.net [127.0.0.1])
  by mx0b-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66GJrZht1763910; Thu, 16 Jul 2026 14:39:39 -0700
+ 66GJrUwF1796534; Thu, 16 Jul 2026 14:39:44 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=
- proofpoint20171006; bh=Fi30cKsKyJSysTxErUME0Zo4fHrFHKMrEVyh/JRVH
- FI=; b=DE88+PpBFn0HKDQDWpH4oj1NJEE7ADQ2hjKeyDVUFuCrVhi7sFzSBzFlU
- NjpAXy76t3O3uc1ppVLn+YNMea/HDOuDEyg5BZ8EWltfN0jO9kp8hJKXaUpWJnNL
- wB6Lz/SdPmK1SDPgXbzzFZYo2Kb4fXaIt81AR+5Ys/NjCyq0G1eV6I2hKw+ZfsGS
- CEVh5YHGwgTr7OdJkcnEIRE80kXXkFMKHFhqMxz+WLBr2l2M8cREyT966qZLcxyF
- JlPJbp/JVqO238pj4Y7sC3zWEyhojw4R4PSQyRivJqd6DzrywwC+t5RMhNSa0kVb
- phhGiyIiUeykTCpsfB6IdMH75Kezw==
-Received: from co1pr03cu002.outbound.protection.outlook.com
- (mail-westus2azon11020094.outbound.protection.outlook.com [52.101.46.94])
- by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 4fdstheva0-11
+ proofpoint20171006; bh=BkGJKeBPe77hOHQTMgqHf+HajHaW6zy+KttHmwZLN
+ cg=; b=sSl99AQBDw9i0QAJdAONMdFlSdwuSnQex/9k85P8a8fFcZihi3FbMnRkw
+ LQ8gtdoy0Aj1+WFHiDhfqrNNZJ8Wz1IAuUiIzSkEJG/xeJlUtyqZHEvfdOQIQwT8
+ M8OhAwIu+c+XzZ3GTCJUtVVaweXkEPNfnJRqGbn5f9zCVZFpBcX/LWv++Fuu+726
+ 4MDdPLR6Rm1rw6NWGAfl5C6PLNEoERAp9kbnNCPDREbtdCVf7XMwhKzIIWXAAfxe
+ wX4YkBq1vZtBueCsOEroRdg1og7cQqvvVFaikSdX3+/fOImG49ipHsfkuVORpT7Y
+ lEUMQjvRmkv0MohNwMt/cTZdKEqUg==
+Received: from bl0pr03cu003.outbound.protection.outlook.com
+ (mail-eastusazon11022136.outbound.protection.outlook.com [52.101.53.136])
+ by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 4fejrfb79p-3
  (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Thu, 16 Jul 2026 14:39:39 -0700 (PDT)
+ Thu, 16 Jul 2026 14:39:43 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=bQZVTOWgEm4ftTT7RaEakQ0OsslL8JVCubKsdkC4QFnKyWrVRuXy/wP/P7EF38Mlecxw6MfEvZcV451em1iZpfsrUiwnHRWMGdFvBaNXru/31RSGqlFiwy0ky86jDAY1KFDP418rHqiIedfbxSEbxgGc1RBGxmonv5mZ7hs/Qg5//56kcLZsgU2uchLePGnIZ1YnC4K2WxrC7iX/qiTD7g4F0kLcEB0zb1xmLCbsb0OFOvvYtZTx+Ctsne2YF03srh7Xp3jzEPBtiPdgC3uq3m+6Ct8WHxhKBPH6HWj4Yq6uggXT13xkOA0Rd6dpYU0j8ZMwunLnuk68IemGHLG0yA==
+ b=kwoSBkkZDXIXloN0nMXeRysyw2G3lj6RzZpvkIO3lu+rR+EzwUfvP+sU7nUnb4Dzk443Jv2d+xBWUUrlGzWsmnuDQOCwsmYeLRIT6Bnfie1TfBlCYesPxcdbbZ2PxjT2Y+qRedA/+PmopDG6HWOohDrBzGv5o2JY2+460OHwEbU8rMDo+5r62BxY6qb1WZd5KHEFAGjAF54OWRLElvQyTn87kdO84rvNCXXGK3Wh/jBNLnz7YqryqQYp6/nDk7apwlhzWm7xw8F9sAfBoVzXN0WRxKCNIReBttEUDRbUsYV1dZ9kx0N1a+PyP5/b+q/oRXUOCNCMceurj9b3bsjd5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Fi30cKsKyJSysTxErUME0Zo4fHrFHKMrEVyh/JRVHFI=;
- b=FY/BP0Y+BcgGSNR47981e/HYwAWCzLk3Brq/jn/9cKXDyv/voKZG8g3HKVtVrnNWXmiKsBcf1U2ub5wAUHf7GLK/kv9ZUAabQVUIa5hS27NJIYDq7Y9lM7OWRPBcgCt7daSwBS2D58PdZrNQ5bIMNEJDRVKIj5s6H9VAh0dtwzL4EpR/OHLd15WDLN6hL15vedT7TkP82mLuc1IVgVNEPArH4/6NqYP9t3slDsGrWw3qQOq57/jfxxKq1gJ3NP9DHMhbNv4voB3H3eM7j5O5FhPDTYJgxINAFBaN6skoAufS5StdTzxQu5GQ5Q+NNgtO0eLNBH4SYBSgFVEjKvPh0Q==
+ bh=BkGJKeBPe77hOHQTMgqHf+HajHaW6zy+KttHmwZLNcg=;
+ b=FKZJi8OOMZ7VzcRW1r8m/iUXK4gPrOzkZuJ9KY3tauR0dRsTbjlLNaHxmLgP3r4thxCfXmrhuhWad7JCOepRlvhbawLMSYrQCNJEnx3jF5I/cWq41V7E33QU/9GaXprft01JXWeObJHGG8f43FT5tJJLbaCmM6MchjeCBgQCCStyWEXxj7TXSfXcYZAxoJB1qYEkOKoEDaCSJBH2B2C1nMrSVbrfMizwntvGQX03IwVOEsepAOFlBGLLwF49JFzxQoyVd7TS/Qb6/LaqfHe9RisoqFxM+IBEWEypOJkqeDTT4P42IluuAOFPqttk9MvqUgOsdUX/nRKy8sDtvvK0vw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
  dkim=pass header.d=nutanix.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Fi30cKsKyJSysTxErUME0Zo4fHrFHKMrEVyh/JRVHFI=;
- b=GW4Zlo/Yz+r9CBbgOHMxay/jToeNsnrRyUFGGFgC/u1MRfhBbYOJ2gSsE2lqY6TujTXt8uERliILV4bI2HiQmL+Vu9+4wATvtAn/3GWwJ2R2RZjmQjJYznImM8QgNUHTX3baeeC0RnbpswTxd0G1xT0qQ1CX2OAL2zM4vBqVWEloVk1WxK+pBZo39+jRaChWkPNZzc+8TevbH0OOcv3Uj/dwih36+bTNwAY5mmJHpcfRrKrXcWNLgrOiN9+hbk+Ry7JjdIGISxIGrnHMcJo4xDUqdH6mYzsSWhykAjxvWXnqzdy9RHmez/pjzCeTh9ZnXpfvd0Kop/p9sawVcZ7yug==
+ bh=BkGJKeBPe77hOHQTMgqHf+HajHaW6zy+KttHmwZLNcg=;
+ b=HymHhXfzFFZNVjKeKwAg3c/RuyIudD6olRn8WjDwN4VTXcIy1x39RRE+pVR0w2wpbei/uv7sWaf1BQ6SUPTan+tgLUYQX75NsE1+h+tXDWRwJaCMxn6eTT0oMrKpz07f4ywoH+9/iSsdGnzjNEGZDgTE5VZnRvhDrCsQjg+/LffUIfKwE5dnQGrs27Ocm/TxYcTJF9xMiRXkKEMG8ytKVIBENKrCJkl7LeN6NZi/D2eW8iy8xq/F7Kh2TRYB/h2/PUeXEva0EjuhdEnHXAvs9Olcbt/djwrRID/aYnnJWk49YRzzQw+a4ExDb1xSPUfKHY7GczO4/QSqsnVhR+W6dA==
 Received: from SA2PR02MB7564.namprd02.prod.outlook.com (2603:10b6:806:146::23)
- by SA2PR02MB7756.namprd02.prod.outlook.com (2603:10b6:806:14f::13)
+ by BN0PR02MB8255.namprd02.prod.outlook.com (2603:10b6:408:156::22)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.12; Thu, 16 Jul
- 2026 21:39:35 +0000
+ 2026 21:39:42 +0000
 Received: from SA2PR02MB7564.namprd02.prod.outlook.com
  ([fe80::1ea5:acb6:ebe1:e1c4]) by SA2PR02MB7564.namprd02.prod.outlook.com
  ([fe80::1ea5:acb6:ebe1:e1c4%5]) with mapi id 15.21.0223.011; Thu, 16 Jul 2026
- 21:39:34 +0000
+ 21:39:42 +0000
 From: Khushit Shah <khushit.shah@nutanix.com>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
  eric.auger@redhat.com
@@ -70,9 +70,10 @@ Cc: cohuck@redhat.com, peter.maydell@linaro.org, richard.henderson@linaro.org,
  philmd@linaro.org, yangjinqian1@huawei.com, shaju.abraham@nutanix.com,
  mark.caveayland@nutanix.com, khushit.shah@nutanix.com,
  prerna.saxena@nutanix.com
-Subject: [RFC PATCH v3 10/19] target/arm: Add Nvidia Grace named model
-Date: Thu, 16 Jul 2026 21:38:49 +0000
-Message-ID: <20260716213858.609699-11-khushit.shah@nutanix.com>
+Subject: [RFC PATCH v3 19/19] target/arm/kvm: fix host model writeback when
+ kernel supports EL2
+Date: Thu, 16 Jul 2026 21:38:58 +0000
+Message-ID: <20260716213858.609699-20-khushit.shah@nutanix.com>
 X-Mailer: git-send-email 2.43.7
 In-Reply-To: <20260716213858.609699-1-khushit.shah@nutanix.com>
 References: <20260716213858.609699-1-khushit.shah@nutanix.com>
@@ -83,79 +84,79 @@ X-ClientProxiedBy: PH7PR17CA0071.namprd17.prod.outlook.com
  (2603:10b6:806:146::23)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SA2PR02MB7564:EE_|SA2PR02MB7756:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7dd4f96d-9a26-4805-e318-08dee382ba8a
+X-MS-TrafficTypeDiagnostic: SA2PR02MB7564:EE_|BN0PR02MB8255:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4da8b3f5-9c92-47c5-ed58-08dee382bed3
 x-proofpoint-crosstenant: true
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|376014|7416014|23010399003|1800799024|6133799003|22082099003|18002099003|56012099006|10067099003;
-X-Microsoft-Antispam-Message-Info: 6eAZ1ASggV4qmnNCjjceI+kvBeskw6wNIRxrooi3vOsrED2tDNiDtDh7hbW2z5v3n5BxfJFEdFD5TV4PPX9TY7X0eGcryxA2gl872DKyOraIQNh7rJZMohVi0yNPyfu+lpL9wOosgrBRJBIHIX1yMZsxeZycJvuwIBgM3l4rKN0xNeWYTJ18K+Z624+e9g0nZZWJs4tXz9ttGtQEMTSxrRH0hxZTVaSCvdB1bNu1p/AuZkkHEQzoRkjXD7Ze7mWD/kxTRFQNrQP2CRA1+ymf/egf4pHUxitB1cpWaY4yJBOg+MMPjdfJ/r2LX05fn0uEjGqcEC5Xrtg1BhY1PLOGlhmK2v0pMsoqxKtwnfsA27xtAFhx2dAYLAGdqVmKq+G+zblYG19APRmrx087HV3oLC6v/GooyxZEL3dqnP6LoDzpEPrVgpR84BioUlQakVqfykQLyomwS8W0Wznk2RdwbcENKctyKMLOwXbGy96Q+ceSqjIXWO92AOj0d8/EmSvPbK5RJSulXH0vymbsv0h8o3OjlGeUZeyNGJwitW79ev5aMh6PXGtMJKL0gfeI9N45RVKx5nER2b73m10TnxxtgYzeD2EPs9ee6NDlX8OFXh7AI2jvo+Veh5wXdWogpGBUFU8nD3BamCoTUn7Quyk/mH+fyxzKETPTOXQ/YLZwo60=
+ ARA:13230040|7416014|376014|1800799024|366016|23010399003|3023799007|56012099006|6133799003|22082099003|18002099003|10067099003;
+X-Microsoft-Antispam-Message-Info: +iV93I7HpI2BwMMvB8FPc48MTQujgm2z3Caou1G1IksKBQBiCNzZxXI2PPZjUGoSVTta276TecP3h5P4brN1jqgsk775d1YLTvm5NFYtWDawvNeOrMi4CQDmI3VnoF0uI7+KdHNfoZMvSj3Wv9+vo/NFnaoVYEIUH4pnDXsTacqPVj24obyY/Q/t19K+KGPtLgTDjRQ4JBQzpUCKIfIBPmbuso3k1Dz03BAVU5GTxpDZtyfG9gjeEau6qwS8q634mTNgn8qwXluyb/cXLw6kiR2eLfz2jqeKJddpgyspO/YWcs0SmGK5tuucEE9X0l/3mVbet6TPh7ag7YrKbFWYq/KxlApO3Qe7OhMMP3f7PTUIUpEwJAFceDHzzuqFDZnbgnfqsx7RVVOvr9QCRTbmy5JcA9HVlK3GxPHQWdEKHQ1tReMjZOm2ePRwvT72mwP+QtfTbfkqzW5v+4SdlRq///ft2xFh5dUB/7r1Qe/2OCbnnIio3yg6fARCI/Zba7DkTQAkprqHZSXqhNHkuLkJKzbiQOWuOGfS1gtIp8L7WjMWtcUSZW7etEsRTl8307pJej+x+2MUGf3+N0mFne3INq5WfpbDz/TAsDMKzfSDSnGE2hBaMOoRULQpCKaHgeGyI5mHjTIv/3j829BA+SYILRnOzAs9PVnL27cgIw3EzlI=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SA2PR02MB7564.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(7416014)(23010399003)(1800799024)(6133799003)(22082099003)(18002099003)(56012099006)(10067099003);
+ SFS:(13230040)(7416014)(376014)(1800799024)(366016)(23010399003)(3023799007)(56012099006)(6133799003)(22082099003)(18002099003)(10067099003);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Hv/hJp0BkBkVPVL1ZoZherWK5sCmdsT8PZldYZhNBtzGZAchvh8akOprRklB?=
- =?us-ascii?Q?/SopUKFSdAtkCHgtW6/E6W2RX9LfOkciRDGdpMif78xTPkBDQQC38+2YBZaj?=
- =?us-ascii?Q?4rATousGd4fZmO7LMVEufEsoNHm1zZ8qpw1suZQugKg2OPCTohmUtwpvcxdD?=
- =?us-ascii?Q?ZG1/+dI9heTOjQJ25o10ubgqemmyCXcnlfFWDvX2Bp8QA/TW+fRVmOWknFpg?=
- =?us-ascii?Q?dcgjTo3Ey4Cyr4ZcHGOtGi5Ge9NFMSjPxObUW+i1fudfl16Mj3VEECdudZhi?=
- =?us-ascii?Q?46qKMsmruW08ROqLU5Q9AiRYn/YNio2v9EH7Vm2x1/lyOtXguVGpbSV93aNJ?=
- =?us-ascii?Q?mRCScDAaUvV7RQKhZcXihf0D0NhowMODCzZM7N02C1SYFZkSQhB5x0phfabr?=
- =?us-ascii?Q?MfFMqZyuMGn0YivbNAVhVe8hqm3FDOadq+QQDAhWR7yE2ji+9jZPRlDGdtgv?=
- =?us-ascii?Q?4wK5Ld3UJB4kIFgQ1c8AXEPQ1lNH5sIGqI9l/Xmf7rDQz2DpsHrClFfcStjH?=
- =?us-ascii?Q?4mm2Pz6ox93knjwvER/o7oivn9RjSTLQBJgFkNIh8j816fLXwaJihH7QXdsh?=
- =?us-ascii?Q?dwHKnXwQ9xn/2c0ztrpcUs5iSqzLyXwNBeHMeMMMI/wDmC8jdztEZyK7I9fw?=
- =?us-ascii?Q?uQlqy3dSYvRzTKDye7+GmCSPlo958TkCYYJGLXgWs8b+5ai0V3YUZ7TanG5S?=
- =?us-ascii?Q?dvpdTQepmpojq4mLL01F3qlb5E8aXA7PBNNHVKG0RMLtzdDf4vgnlbjffYAS?=
- =?us-ascii?Q?rcnlXP+nIW7QM2mPu3w86YVtb72SgVx/vD0wMEsuUjJ2T3ync6R9etzGRD97?=
- =?us-ascii?Q?MU60xIoYW9m1oVJ4IaRhOEo+ALZ2KkkIcNk0kOQGE0our8ry1b0eBLbE4cem?=
- =?us-ascii?Q?16qSHlEHDjl+aakWODD4vxwVoI68ZeFJyflQwNGvKd4Q0BwnmHy3zHkV/+kA?=
- =?us-ascii?Q?RnfMnycq13btEahvWIV5FEXyjWtntLDY3vcCfTWbfyl/l564GVSFSvQCClyE?=
- =?us-ascii?Q?nsUN51Vjoa964uVzKeTCdhE6HOjaPOHICIonYpUUJKrNTLJulJEw9oNULwSs?=
- =?us-ascii?Q?+EtqV+st4hS8J5QykVL5+rKMvkKsFtfhT5Nr5o2CWqrNFbWWxMIxRujkGeG4?=
- =?us-ascii?Q?0YeSH9Udi4sC0zjTyCd1x0RljXb7hFGrE/fAStZMnpbwYEbAyU1GzcWHkbqU?=
- =?us-ascii?Q?bQ1wJsp/TmDMc0WpWZWcgtGSjesxlR+Xcwl89wShmfy1yqXjG35CDu4NFj8D?=
- =?us-ascii?Q?aq3jqcdh82sKMCPUpW4kr8xHolQz7H6FP3tPdJWbYcYyc40YLI8+1Ok8jTY7?=
- =?us-ascii?Q?ftR+1d0DnwSHdhLDZGrrUdxbnSxHxVv8Tvd5B/ZTVXEqQCFZp0HlRmzQepOT?=
- =?us-ascii?Q?6QtyqP2bau2FnCjfRrmhTiD9eGf3S94josC0G4lfWESA3ZksUAo79cU/UIYE?=
- =?us-ascii?Q?pCQiTBUv1dC1YsSaYEcPrWFpMaCNkB2C/TJc/yq5Cb9QEUrFKPX5vg7jT5Mh?=
- =?us-ascii?Q?N3vekmeT7V1t1N1f3sm7+KARmrMBUILrZilBYECg4D/ouBCVZqfp1d0MqgIx?=
- =?us-ascii?Q?zSgKHDg6aioVLWKJ1KdH8fA6qy/VOI58kvSsKcbtc1G3gfogwu94LeaxZONE?=
- =?us-ascii?Q?LjhnKFl6qmo2PJ4glMtOl9cWW2+hrgZph2MR+6OgLe5hT+XZVYpTb9MoPhpO?=
- =?us-ascii?Q?v64Car0Ew7nNSgXqHh6j9ORHHQE999aPiY4wLDS4C8WcJyt3xsKXhwqeYviA?=
- =?us-ascii?Q?+ilT/38bxFJJrNoLyfkJTpIIsJ7zJJQ=3D?=
-X-Exchange-RoutingPolicyChecked: lYZ/5iijMOTMr8PUK00gsOHgLiWgu77ck7uK0s8o4iqelUwvwLCRyGMpM40POTJ43osPXUv0kQ1b6HAS6aoB7FjMdYmJn1TjvIRrqPDzw45SO8FaIwldr9gZrJaQqNInFMIM4aOEuoGw6wdQ3cHQNwjHQBqHPRnltCvnuNvNpbtiuBMCpfvUqfU1LZi+HK/bFfh9OFKITrzyafP6GyX84y4lMeFYbvX2bsJW94eErC79loaZ//K0Ow4LZQjv591tuWF57IPn2u21VQPZolUinOz9psN2c99IjVCj16pSxVINNTOa6LYcOdxZ2FmMWkdQBZOtJ2oK7LyhTPOEMTvXvQ==
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?njGcGu+4ECz3FxtOMc2GQoEAjYtxFTeib5PHHXlvqtdVN3Fn8DUUJN1CaG69?=
+ =?us-ascii?Q?uPrEwCycmB6XyE8GSQnbRYva+PFwmFWD29cJtyj2vNXtuJxwd7n/Tnn1Pwrb?=
+ =?us-ascii?Q?elU/nhy0F36d2wF/JpW8T5hJJ0yGWIgTiiXyweRfh6ts09QRxuA0rNoCDqOO?=
+ =?us-ascii?Q?Rl0K/paodOeSG6r2VcXXRqyvWtTDGtg8uXgDGq3gmhQ3krZhFuNawPM1ITao?=
+ =?us-ascii?Q?U47TKyT55LZGsFQ41GZwN4QGJO7Dnq+LOTGiF7xcuuR7MU69CF5GKXcVDFm/?=
+ =?us-ascii?Q?oPmjNYtj4BAYUpqpO7B+bTjfvpxzmAGjqp3roEWcV1/xuQyHLQYj4WIeFIZs?=
+ =?us-ascii?Q?JkggId4nm4OhjE20V+YrV+rDxZTO4RK/dU37b/0PuhSDy9058tkX6lzT/mSJ?=
+ =?us-ascii?Q?t5TAu4FHWnzvRHYDWu3LnVLjBMfHZU8dz704GE31Xu3bvyp5fl9mCJ3dQZv9?=
+ =?us-ascii?Q?JYN2/1gce4TBwu/D1cv6vH+8DhT0PGFgqkwxrEvGIWGVrmmldlPAz6ls3kmy?=
+ =?us-ascii?Q?Jbj9Gfai6ykwuTQF9r6bdz4cPqL5lYBCFnLhIK3EmLRzFsh3z4KUskAWYVEE?=
+ =?us-ascii?Q?vT0LtzpR9CLHEjyvDcD1kpphESVALKsB20jyuMf8HxNuMuvrpSXlV0s8Tfle?=
+ =?us-ascii?Q?rhWJgf6WqzMNHL6BshdjU8tEwsf2LKI5qo8/J5DXxxBt/9pqH+pisspMaRCy?=
+ =?us-ascii?Q?zBw3zgPA0y9CQLDKyB+9Nd+ztNOhTrm15T7A0D/dJ8u4vrFn+Cni+w6/Dp6X?=
+ =?us-ascii?Q?o0oB4IeOY8jkMpW4roJVnHyZiH5yv54CbQxudxWQdUOGvk8pPTC6AtWIkJvj?=
+ =?us-ascii?Q?DkfcsV4pQEE+84Ys8OpOB++JIjX0yEf6+8tPtadk0KUmc1RXArhUhT+Cfvwl?=
+ =?us-ascii?Q?xYZQiRmYepdBYJ2lEgE2+7j5xT84m9sOeIabApQQH99Bj9CL7neXCC9ZwUr2?=
+ =?us-ascii?Q?n8FEe3650njM62sPi5wKX1OdNGO7IY7kzbkINJ4vefuOz81ZUACyw6IGC/9t?=
+ =?us-ascii?Q?zJlilS76/xTluZ47GZBQ5x/C0yHsI/YhIYf7j5y40f4obmpLxzL+tJrNgYjJ?=
+ =?us-ascii?Q?0WSX8OgeOajN1LSC1FOA3HcHy3dCCCSk33B7a8laoIaxQ5+qWVFOgsZmiFtL?=
+ =?us-ascii?Q?7rHb+QJ2Uy1tBcHtb8UvO2hVFFpwoq/xb5GcSrVQWwCuqpqFWcYgVjx775xK?=
+ =?us-ascii?Q?giPo+D1bRySkK/tSp7FDwCNu24b5rRIR7ignlHqr2YscjTlyx3nharMJfz6D?=
+ =?us-ascii?Q?QzgtMcNWMF7PyVgKnq6bBgz7pxvBe6qknSAUjVW+XzAUrtxw4wlVSXTKm3Jh?=
+ =?us-ascii?Q?fvoawbol1swNeWNFxaU9MWPwaYV59mDsfLqrgJLoTHZedx+mbvTCfPeU63aU?=
+ =?us-ascii?Q?gqZnNn/zxy+ZeVQvZE6CRSRHKcamlTpNP7jPJ7UE9s5CTCoM+snlTuirIOli?=
+ =?us-ascii?Q?RtoykNucjpXSB4eoSSuCIcBsSEvNO1/zg6ZTpzBsJA6Pf6Svz54NSaTQBDMQ?=
+ =?us-ascii?Q?FKYGvzhnhu/YulfnUWNdFfcX8oIzPJL6uLB618c3VuSmpuVMRx7OB3NBlIa0?=
+ =?us-ascii?Q?YQr/BYEbNCfuPsuWNVzetzH4iUbuOzKBiCdug9vBEnRfahAGOxqhm2W4zdf1?=
+ =?us-ascii?Q?L2GUmqEaDE8dkiRyFYbypuIEBuyBHVDK9+fMDfk4OGuBOb1OuB0XrblUOHHY?=
+ =?us-ascii?Q?QndiKiXRlN/GQTqlNNUahye7Ce3vCYY7K1Sbm3j5pb40MOlyUI3UiXUvmGZw?=
+ =?us-ascii?Q?OLzlVwuRG6I957o0UKBxvAApuszwKt8=3D?=
+X-Exchange-RoutingPolicyChecked: TLjRXztwETmUM1p4VReAJaFz4rY4h0F7qCLD16yJPYV4wg7pp1oPqbU2SMbl3NpUNl2t8sdaANzU0L4LoxMG9P1TeMbrXnXibaMWKeaKT4yMy7GizDIhejqEpOBOiqERyF//IKxCeKYq5OIi7cIThUMq0uI6YAzAJ3NGWT/jEyEhGgZGjb2Icjt2BYx2Bnv+QJFzJQnK5/oWriDgvjeiC6fdOmFORu6KGe9+tyWL0Qvo9EJt5rCF74+OSZgQj2pjpUWlM1yf2eGHqLeVEjHMshrTCoIptMgCthclawqA/GkIpxuWASKAIiY2esllCtjOrU8gl45zRZxkuq0RvslHvw==
 X-OriginatorOrg: nutanix.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7dd4f96d-9a26-4805-e318-08dee382ba8a
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4da8b3f5-9c92-47c5-ed58-08dee382bed3
 X-MS-Exchange-CrossTenant-AuthSource: SA2PR02MB7564.namprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jul 2026 21:39:34.9364 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jul 2026 21:39:42.1453 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: bb047546-786f-4de1-bd75-24e5b6f79043
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 3bxRcmVuHbBn25K5RXEam2VElrUVUCPvEKv9bpTBj9gsUg0SqOUKsmMn9/eFEgdMT2p9sgQYBKUJz9zODsnHsdWcRb0yqxJMGCrqcUSwiNk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR02MB7756
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDIyMCBTYWx0ZWRfX5UNi+h+YKyhY
- VjxJTWY2DcAVinth3ESLmtlKcVmEqKMWTGgg0YbK8sgNUVUiLVqGixGnnwR1a34mWhsFcv84sLf
- M1J06lAD+IBVItNjJypwRKul2hWRKvtc+UYweorfWv3w15j22EpCleZMnRrlPVStrj93UKgb0oR
- uSdHQ3D1/xXWzbgbQAsQp4Pd4cfaFOnhA4+L3f6ZUujRWeR5moRZ1XCctAAO1HreW/P/sGdAt0o
- nTslvA7Bq1gzPFi/OhvojyVxWbkYPQaWf76/wHxXzMSLsfRANHbTK/mDJMy7VbkhWa2rM0kp0fC
- ohauhCyisvhPWDMRfd0dYTF19UMXicl0HPQ07AJ4CQlyxaT7QneK+ujpV2otdNVnPGcBejQkmGZ
- flJpVchy64+VPIeDH1nimTXu0s6wtSHLD2PwYGKFe22fobcKEyQ7UvVAhU3FBKNdtVtKrJi1DRz
- fSz5Alfut8QwO5Rj3yA==
-X-Proofpoint-GUID: FK3UaOatZ0mlv1fgwaR6sC3U5gvwKLvA
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDIyMCBTYWx0ZWRfXyrya/kCZ9B6i
- 1bdeHNqDVAyFbJiuLDE/jE4pIE3BrHjZ0uSjUERsULSxTotGrbVNZVyJwybWpqsMZM14tCD8zQO
- AE1buqHzN4PJ6Wjwsy+8lMcXe25fWfk=
-X-Proofpoint-ORIG-GUID: FK3UaOatZ0mlv1fgwaR6sC3U5gvwKLvA
-X-Authority-Analysis: v=2.4 cv=J8uaKgnS c=1 sm=1 tr=0 ts=6a594f9b cx=c_pps
- a=aWGlcXfvBePkFyJsMZzBEg==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+X-MS-Exchange-CrossTenant-UserPrincipalName: 0LikXo7npPOspxFqI0GqptsYuXQs5YK6sM7rxUxr773bGSQ3R8x3vQL1aBHG/OxXIbLGYu/BumrdLnwipIYcmtbC/jKBX/cfHOd2p99GYnQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN0PR02MB8255
+X-Proofpoint-GUID: O3Yf3ZnPPrwJeepVM7Uq8VumKf7NrNWs
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDIyMCBTYWx0ZWRfX306fMzUMXYLE
+ uHWG5kavGMPjjDwXvlgQ8oplsgULNrTa4Za4fgDHO0mX4yHfaBeeqsIxyiOtRaeoekNHSFnhRgE
+ wwEY5V3dtkVhGijPyrIkdJenUHXqUa1nReWMd+yme3TJcHC+rDt8KzZM6DmsB9tEm+XpXHThOCf
+ enc7qr/5EoZqwkZp/2Fi/BjEDC6DP0OehZnTIcMENuw6QAFvKvTtMrpNNMvjXVkw6Y0UfxkMxKS
+ G6yBgbRfBQ5IzB7/m4MrVxpny6CcAaOCqy/nWZCzOvhUVHwJYa/ZzjeMp3ozfmE1rw2plPCMRxJ
+ QKEvyM+HqohAZCLNMcnzOq5GkUiMytTJ/EtvyoYWyG2Sr51kzYyrcuVIBNZuheC2mEzHyWeiBLv
+ wJTlunU8XzGRK1+7uklVBPxN89leUF2Tuw/g1ECBlQ2EOB5c4MugnaE9d/UfiAyhfmoHw2akPfu
+ r6PzCPJ3290vGzQ63gg==
+X-Authority-Analysis: v=2.4 cv=d4HFDxjE c=1 sm=1 tr=0 ts=6a594f9f cx=c_pps
+ a=wT4O3adra3cfqKKwvhZ7sQ==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
  a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
  a=xqWC_Br6kY4A:10 a=RAioF0-LDSMA:10 a=0kUYKlekyDsA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=0LlEyIVc8U2lsR7dKhuH:22
- a=64Cc0HZtAAAA:8 a=qRvJWlhRAHAo-js89rYA:9
+ a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=dEe9Ve2bX-KnNSUMM2s9:22
+ a=64Cc0HZtAAAA:8 a=SkqPq7xGtlfVTkEtxm0A:9
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDIyMCBTYWx0ZWRfX3nu+vA1jc2gt
+ gOFB0VhO0tBBb3zUOi0WYZEeQ+U5dxO1v3tKLlXZ/jmVSXFPsN4PpBPzJQY+VaTivZM/WYmQWpC
+ LbozqDmsMOR0/By7o0DaJrIqTRsjB3c=
+X-Proofpoint-ORIG-GUID: O3Yf3ZnPPrwJeepVM7Uq8VumKf7NrNWs
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-16_07,2026-07-15_02,2025-10-01_01
@@ -167,8 +168,8 @@ X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -184,211 +185,353 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add Nvidia Grace named model alongside its hierarchy (neoverse-v2,
-armv9-a)
+kvm_arm_get_host_cpu_features() probes the host by spinning up a
+scratch vCPU and reading its ID registers. When the host kernel
+advertises nested virtualization, the scratch is created with
+KVM_ARM_VCPU_HAS_EL2, which makes the kernel run limit_nv_id_reg()
+on that vCPU and force several fields (e.g. ID_AA64MMFR4_EL1.NV_frac,
+parts of ID_AA64DFR0_EL1) to values that match KVM's nested-virt
+capabilities rather than the raw host.
 
-Field values were derived from the ID register view that KVM exposes to
-QEMU with -cpu host on an Nvidia Grace system.
+If the actual vCPU is later created without EL2 (e.g. -machine
+virt,virtualization=off), the EL2-on values cached above no longer
+match what the kernel exposes for the real vCPU and ID-register
+writeback fails.
+
+Fix this by caching two host views, one probed with EL2 and one
+without, and selecting the appropriate view at every use site.
+For -cpu host (and -cpu max) without EL2 we additionally rebase
+cpu->isar.idregs[] from the EL2-on view it was initialized with
+onto the EL2-off view via kvm_arm_rebase_host_idregs(), so each
+field that the user has not explicitly touched picks up the value
+that the real vCPU will actually see.
+
+Corner case: the rebase compares the post-init field value against
+the EL2-on host value to decide whether the user set it. If the
+user directly or indirectly set field X=i and the EL2-on view also
+reports feat_X=i but the EL2-off view reports feat_X=j, the rebase
+cannot distinguish "user asked for i" from "inherited i from host" and
+will overwrite with j. This only affects -cpu host/max without EL2
+on NV enabled kernels where the user-requested value happens to match
+the EL2-on host view, so we avoid the complexity of user set values
+tracking and accept the loss here.
+
+Named models are not affected with the issue as they already start
+with default-zeroed view.
 
 Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
 ---
- hw/arm/virt.c               |   3 +
- target/arm/arm-cpu-models.c | 154 +++++++++++++++++++++++++++++++++++-
- 2 files changed, 156 insertions(+), 1 deletion(-)
+ target/arm/arm-cpu-models.c | 14 +++++-
+ target/arm/arm-qmp-cmds.c   |  2 +-
+ target/arm/cpu64.c          |  2 +-
+ target/arm/kvm-stub.c       |  4 +-
+ target/arm/kvm.c            | 93 ++++++++++++++++++++++++++++++-------
+ target/arm/kvm_arm.h        |  5 +-
+ 6 files changed, 94 insertions(+), 26 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 34e56dc1f1..3b27c7a710 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3816,6 +3816,9 @@ static GPtrArray *virt_get_valid_cpu_types(const MachineState *ms)
-         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("arm-v8_4-a-v1")));
-         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("neoverse-v1-v1")));
-         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("graviton3-v1")));
-+        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("arm-v9_0-a-v1")));
-+        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("neoverse-v2-v1")));
-+        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("grace-v1")));
-     }
-     g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("max")));
- 
 diff --git a/target/arm/arm-cpu-models.c b/target/arm/arm-cpu-models.c
-index 747e0df010..40e8578591 100644
+index 44e7d3cfa2..a41f1f1169 100644
 --- a/target/arm/arm-cpu-models.c
 +++ b/target/arm/arm-cpu-models.c
-@@ -14,7 +14,9 @@
-  *     arm-v8_4-a-v1                ARMv8.4-A architectural mandate
-  *       neoverse-v1-v1             Neoverse V1 (TRM 102649)
-  *         graviton3-v1             AWS Graviton3
-- *
-+ *       arm-v9_0-a-v1              ARMv9.0-A architectural deltas
-+ *         neoverse-v2-v1           Neoverse V2 (TRM 102375)
-+ *           grace-v1               NVIDIA Grace
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
+@@ -459,7 +459,12 @@ static void arm_named_cpu_initfn(Object *obj)
+         return;
+     }
  
-@@ -197,6 +199,141 @@ static const ArmModelPropValue graviton3_v1_props[] = {
-     MODEL_PROP_END,
- };
- 
-+static const ArmModelPropValue armv9_0_a_v1_props[] = {
-+    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_BT", NUM, 1),
-+
-+    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_CSV2", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_CSV2_frac", NUM, 0),
-+
-+    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_CSV3", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_DPB", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_E0PD", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_SB", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_SPECRES", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_SSBS", NUM, 2),
-+
-+    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_DoubleLock", NUM, 0xF),
-+    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_FP", NUM, 0),
-+    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_AdvSIMD", NUM, 0),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_TS", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_FRINTTS", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_RDM", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_DP", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_FHM", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_FCMA", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_JSCVT", NUM, 1),
-+
-+    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_SVE", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_SEL2", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_VH", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_XNX", NUM, 1),
-+
-+    MODEL_PROP_END,
-+};
-+
-+
-+static const ArmModelPropValue neoverse_v2_v1_props[] = {
-+    MODEL_PROP("SYSREG_MIDR_EL1_Implementer", NUM, 0x41),
-+    MODEL_PROP("SYSREG_MIDR_EL1_Variant", NUM, 0x0),
-+    MODEL_PROP("SYSREG_MIDR_EL1_Architecture", NUM, 0xF),
-+    MODEL_PROP("SYSREG_MIDR_EL1_PartNum", NUM, 0xD4F),
-+    MODEL_PROP("SYSREG_MIDR_EL1_Revision", NUM, 0x2),
-+
-+    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_BRPs", NUM, 0x5),
-+    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_WRPs", NUM, 0x3),
-+    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_CTX_CMPs", NUM, 0x1),
-+    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_PMUVer", NUM, 6),
-+
-+    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_TLB", NUM, 2),
-+
-+    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_BF16", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_DGH", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_I8MM", NUM, 1),
-+
-+    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_FP", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_AdvSIMD", NUM, 1),
-+
-+    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_RAS", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_RAS_frac", NUM, 0),
-+
+-    kvm_arm_set_cpu_features_from_host(cpu);
 +    /*
-+     * V2 silicon may report CSV2=2 (FEAT_CSV2_2) per TRM page 392, but
-+     * KVM clamps the guest-visible limit to 1.
++     * Start with the host view without EL2.
++     * If nested virt is needed user must provide values for all the
++     * blockers.
 +     */
-+    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_CSV2", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_CSV2_frac", NUM, 0),
-+
-+    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_PARange", NUM, 5),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_ASIDBits", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_BigEnd", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_SNSMem", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran16", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran64", NUM, 0),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran4", NUM, 0),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran16_2", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran64_2", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran4_2", NUM, 2),
-+
-+    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_HAFDBS", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_VMIDBits", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_HPDS", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_PAN", NUM, 3),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_ECBHB", NUM, 0),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_SpecSEI", NUM, 0),
-+
-+    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_FWB", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_ST", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_TTL", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_BBM", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_EVT", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64MMFR4_EL1_E2H0", NUM, 0),
-+
-+    MODEL_PROP("SYSREG_CTR_EL0_IminLine", NUM, 4),
-+    MODEL_PROP("SYSREG_CTR_EL0_L1Ip", NUM, 3),
-+    MODEL_PROP("SYSREG_CTR_EL0_DminLine", NUM, 4),
-+    MODEL_PROP("SYSREG_CTR_EL0_ERG", NUM, 4),
-+    MODEL_PROP("SYSREG_CTR_EL0_CWG", NUM, 4),
-+
-+    MODEL_PROP("SYSREG_DCZID_EL0_BS", NUM, 0x4),
-+
-+    /* pauth */
-+    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_APA", NUM, 5),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_GPA", NUM, 1),
-+
-+    /* sve */
-+    MODEL_PROP("SYSREG_ID_AA64ZFR0_EL1_SVEver", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ZFR0_EL1_BF16", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ZFR0_EL1_BitPerm", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ZFR0_EL1_I8MM", NUM, 1),
-+    MODEL_PROP("sve128", BOOL, true),
-+
-+    MODEL_PROP_END,
-+};
-+
-+
-+static const ArmModelPropValue grace_v1_props[] = {
-+    MODEL_PROP("SYSREG_MIDR_EL1_Revision", NUM, 0x0),
-+
-+    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_AES", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SHA1", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SHA2", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SHA3", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SM3", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SM4", NUM, 1),
-+
-+    MODEL_PROP("SYSREG_CTR_EL0_IDC", NUM, 1),
-+    MODEL_PROP("SYSREG_CTR_EL0_DIC", NUM, 1),
-+
-+    MODEL_PROP("SYSREG_REVIDR_EL1_VAL", NUM, 1),
-+
-+    /* sve crypto (base sve inherited from neoverse-v2) */
-+    MODEL_PROP("SYSREG_ID_AA64ZFR0_EL1_AES", NUM, 2),
-+    MODEL_PROP("SYSREG_ID_AA64ZFR0_EL1_SHA3", NUM, 1),
-+    MODEL_PROP("SYSREG_ID_AA64ZFR0_EL1_SM4", NUM, 1),
-+
-+    MODEL_PROP_END,
-+};
-+
- static const ArmNamedCpuModel arm_cpu_models[] = {
-     {
-         .name   = "non-zero-defaults-v1",
-@@ -218,6 +355,21 @@ static const ArmNamedCpuModel arm_cpu_models[] = {
-         .parent = "neoverse-v1-v1",
-         .props  = graviton3_v1_props,
-     },
-+    {
-+        .name   = "arm-v9_0-a-v1",
-+        .parent = "arm-v8_4-a-v1",
-+        .props  = armv9_0_a_v1_props,
-+    },
-+    {
-+        .name   = "neoverse-v2-v1",
-+        .parent = "arm-v9_0-a-v1",
-+        .props  = neoverse_v2_v1_props,
-+    },
-+    {
-+        .name   = "grace-v1",
-+        .parent = "neoverse-v2-v1",
-+        .props  = grace_v1_props,
-+    },
- };
++    kvm_arm_set_cpu_features_from_host(cpu, false);
+     if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+         return;
+     }
+@@ -481,10 +486,15 @@ void arm_cpu_class_check_missing_features(ARMCPUClass *acc, strList **blockers)
+     Object *obj = object_new_with_class(OBJECT_CLASS(acc));
+     ARMCPU *cpu = ARM_CPU(obj);
  
- static ARMCPUInfo arm_named_cpu_infos[ARRAY_SIZE(arm_cpu_models)];
++    const ARMISARegisters *host_isar;
++
+     if (!kvm_enabled() || !arm_find_model(acc->info->name)) {
+         goto out;
+     }
+ 
++    /* Use the host view without EL2 to calculate blockers. */
++    host_isar = kvm_arm_get_host_isar(false);
++
+     if (cpu_isar_feature(aa64_sve, cpu)) {
+         arm_cpu_sve_finalize(cpu, &err);
+         if (err) {
+@@ -505,7 +515,7 @@ void arm_cpu_class_check_missing_features(ARMCPUClass *acc, strList **blockers)
+         }
+     }
+ 
+-    aarch64_idregs_get_blockers(cpu, kvm_arm_get_host_isar(), blockers);
++    aarch64_idregs_get_blockers(cpu, host_isar, blockers);
+ out:
+     object_unref(obj);
+ }
+diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+index 6f11681c87..8dcff6c22c 100644
+--- a/target/arm/arm-qmp-cmds.c
++++ b/target/arm/arm-qmp-cmds.c
+@@ -102,7 +102,7 @@ CpuPropertyInfoList *qmp_query_cpu_props_info(Error **errp)
+         return NULL;
+     }
+ 
+-    host_isar = kvm_arm_get_host_isar();
++    host_isar = kvm_arm_get_host_isar(false);
+ 
+     /*
+      * Spin up a scratch "host" vCPU object and walk its QOM properties.
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index f41bcf2e81..c7556bfd52 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -1050,7 +1050,7 @@ static void aarch64_host_initfn(Object *obj)
+ 
+ #if defined(CONFIG_KVM)
+     kvm_arm_set_cpreg_mig_tolerances(cpu);
+-    kvm_arm_set_cpu_features_from_host(cpu);
++    kvm_arm_set_cpu_features_from_host(cpu, true);
+     aarch64_add_sve_properties(obj);
+ 
+ #ifndef CONFIG_USER_ONLY
+diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+index eb8fdda236..1a713cb904 100644
+--- a/target/arm/kvm-stub.c
++++ b/target/arm/kvm-stub.c
+@@ -45,7 +45,7 @@ bool kvm_arm_el2_supported(void)
+ /*
+  * These functions should never actually be called without KVM support.
+  */
+-void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
++void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu, bool with_el2)
+ {
+     g_assert_not_reached();
+ }
+@@ -120,7 +120,7 @@ char *kvm_print_register_name(uint64_t regidx)
+     g_assert_not_reached();
+ }
+ 
+-const ARMISARegisters *kvm_arm_get_host_isar(void)
++const ARMISARegisters *kvm_arm_get_host_isar(bool with_el2)
+ {
+     return NULL;
+ }
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index b909a11dfd..f2635980eb 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -67,7 +67,7 @@ typedef struct ARMHostCPUFeatures {
+     const char *dtb_compatible;
+ } ARMHostCPUFeatures;
+ 
+-static ARMHostCPUFeatures arm_host_cpu_features;
++static ARMHostCPUFeatures arm_host_cpu_features[2];
+ 
+ /**
+  * kvm_arm_vcpu_init:
+@@ -363,8 +363,7 @@ static int get_host_cpu_idregs(int fd, ARMHostCPUFeatures *ahcf)
+ }
+ 
+ 
+-static void
+-kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
++static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf, bool with_el2)
+ {
+     /* Identify the feature bits corresponding to the host CPU, and
+      * fill out the ARMHostCPUClass fields accordingly. To do this
+@@ -404,7 +403,7 @@ kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+      * Ask for EL2 if supported.
+      */
+     el2_supported = kvm_arm_el2_supported();
+-    if (el2_supported) {
++    if (el2_supported && with_el2) {
+         init.features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
+     }
+ 
+@@ -553,7 +552,7 @@ kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+             err |= get_host_cpu_reg(fd, ahcf, ID_AA64ZFR0_EL1_IDX);
+ 
+             /* Read the set of supported vector lengths. */
+-            arm_host_cpu_features.sve_vq_supported = kvm_arm_sve_get_vls(fd);
++            ahcf->sve_vq_supported = kvm_arm_sve_get_vls(fd);
+         }
+     }
+ 
+@@ -604,7 +603,7 @@ static int kvm_arm_get_writable_id_regs(uint64_t *idregmap)
+     return 0;
+ }
+ 
+-void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
++void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu, bool with_el2)
+ {
+     CPUARMState *env = &cpu->env;
+     uint64_t *writable_map;
+@@ -629,11 +628,11 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+     }
+     g_free(writable_map);
+ 
+-    if (!arm_host_cpu_features.dtb_compatible) {
+-        kvm_arm_get_host_cpu_features(&arm_host_cpu_features);
++    if (!arm_host_cpu_features[with_el2].dtb_compatible) {
++        kvm_arm_get_host_cpu_features(&arm_host_cpu_features[with_el2], with_el2);
+     }
+ 
+-    cpu->kvm_target = arm_host_cpu_features.target;
++    cpu->kvm_target = arm_host_cpu_features[with_el2].target;
+ 
+     if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE) {
+         /*
+@@ -644,18 +643,18 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+         return;
+     }
+ 
+-    cpu->dtb_compatible = arm_host_cpu_features.dtb_compatible;
+-    cpu->isar = arm_host_cpu_features.isar;
+-    cpu->sve_vq.supported = arm_host_cpu_features.sve_vq_supported;
+-    env->features = arm_host_cpu_features.features;
++    cpu->dtb_compatible = arm_host_cpu_features[with_el2].dtb_compatible;
++    cpu->isar = arm_host_cpu_features[with_el2].isar;
++    cpu->sve_vq.supported = arm_host_cpu_features[with_el2].sve_vq_supported;
++    env->features = arm_host_cpu_features[with_el2].features;
+ }
+ 
+-const ARMISARegisters *kvm_arm_get_host_isar(void)
++const ARMISARegisters *kvm_arm_get_host_isar(bool with_el2)
+ {
+-    if (!arm_host_cpu_features.dtb_compatible) {
+-        kvm_arm_get_host_cpu_features(&arm_host_cpu_features);
++    if (!arm_host_cpu_features[with_el2].dtb_compatible) {
++        kvm_arm_get_host_cpu_features(&arm_host_cpu_features[with_el2], with_el2);
+     }
+-    return &arm_host_cpu_features.isar;
++    return &arm_host_cpu_features[with_el2].isar;
+ }
+ 
+ static bool kvm_no_adjvtime_get(Object *obj, Error **errp)
+@@ -1438,6 +1437,7 @@ static int kvm_arm_write_idregs_to_cpreg_list(ARMCPU *cpu)
+         uint64_t writable_mask = sysregdesc->writable_mask;
+         uint64_t desired = cpu->isar.idregs[i];
+         uint64_t previous, updated;
++        bool has_el2 = cpu->has_el2;
+         uint64_t *cpreg;
+ 
+         cpreg = kvm_arm_find_cpreg_ptr(cpu, idregs_sysreg_to_kvm_reg(sysreg));
+@@ -1447,7 +1447,7 @@ static int kvm_arm_write_idregs_to_cpreg_list(ARMCPU *cpu)
+          * snapshotted at probe time as the reference to check the vCPU ID
+          * regs have the same value.
+          */
+-        previous = cpreg ? *cpreg : arm_host_cpu_features.isar.idregs[i];
++        previous = cpreg ? *cpreg : kvm_arm_get_host_isar(has_el2)->idregs[i];
+ 
+         if (previous == desired) {
+             continue;
+@@ -2332,6 +2332,50 @@ bool kvm_arm_mte_supported(void)
+     return kvm_check_extension(kvm_state, KVM_CAP_ARM_MTE);
+ }
+ 
++/*
++ * Rebase cpu->isar.idregs[] on top of new_isar given the initial_isar.
++ *
++ * For fields in cpu->isar.idregs[] that are same as initial_isar, update
++ * the field with the new_isar values.
++ */
++static void kvm_arm_rebase_host_idregs(ARMCPU *cpu,
++                                       const ARMISARegisters *new_isar,
++                                       const ARMISARegisters *initial_isar)
++{
++    for (int i = 0; i < NUM_ID_IDX; i++) {
++        ARM64SysReg *sysregdesc = &arm64_id_regs[i];
++
++        for (int j = 0; j < sysregdesc->fields_count; j++) {
++            const ARM64SysRegField *field = &sysregdesc->fields[j];
++            uint64_t idreg_val = extract64(cpu->isar.idregs[i],
++                                           field->shift, field->length);
++            uint64_t initial_val = extract64(initial_isar->idregs[i],
++                                             field->shift, field->length);
++            uint64_t new_val = extract64(new_isar->idregs[i],
++                                         field->shift, field->length);
++
++            if (idreg_val == initial_val && new_val != idreg_val) {
++                /*
++                 * The cpu->isar.idregs[]'s field val is same as
++                 * initial_isar.idregs[]'s field val, which was used to
++                 * initialise it. Hence, override it with the new_isar[]
++                 * value. User might have explicitly asked for some value
++                 * which matched the host value without EL2 in this case,
++                 * that value is lost. As rebase is needed in very specific
++                 * case, we avoid that complication.
++                 */
++                cpu->isar.idregs[i] = deposit64(cpu->isar.idregs[i],
++                                                field->shift, field->length,
++                                                new_val);
++
++                warn_report("KVM ID %s.%s value changed from 0x%016"
++                             PRIx64 " to 0x%016" PRIx64,
++                             sysregdesc->name, field->name, idreg_val, new_val);
++            }
++        }
++    }
++}
++
+ QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
+ 
+ static int kvm_arm_sve_set_vls(ARMCPU *cpu)
+@@ -2450,11 +2494,24 @@ int kvm_arch_init_vcpu(CPUState *cs)
+     if (ret) {
+         return ret;
+     }
++
++    /* For -cpu host/max, rebase the idregs[] on top of cpregs[] */
++    if ((object_dynamic_cast(OBJECT(cpu), TYPE_ARM_HOST_CPU)
++        || object_dynamic_cast(OBJECT(cpu), TYPE_ARM_MAX_CPU))
++        && !cpu->has_el2
++        && kvm_arm_el2_supported()) {
++        /* scratch vCPU is created with EL2-enabled for -cpu host */
++        kvm_arm_rebase_host_idregs(cpu,
++                          kvm_arm_get_host_isar(false),
++                      kvm_arm_get_host_isar(true));
++    }
++
+     /* overwrite ID reg fields with their updated property values */
+     ret = kvm_arm_write_idregs_to_cpreg_list(cpu);
+     if (ret) {
+         return ret;
+     }
++
+     ret = write_list_to_kvmstate(cpu, KVM_PUT_FULL_STATE);
+     if (!ret) {
+         return -1;
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 6409bec735..847efb1c8d 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -129,11 +129,12 @@ void kvm_arm_destroy_scratch_host_vcpu(int *fdarray);
+ /**
+  * kvm_arm_set_cpu_features_from_host:
+  * @cpu: ARMCPU to set the features for
++ * @with_el2: probe the host with the EL2-enabled scratch vCPU view
+  *
+  * Set up the ARMCPU struct fields up to match the information probed
+  * from the host CPU.
+  */
+-void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
++void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu, bool with_el2);
+ 
+ /**
+  * kvm_arm_add_vcpu_properties:
+@@ -276,7 +277,7 @@ void kvm_arm_enable_mte(Object *cpuobj, Error **errp);
+ 
+ void arm_cpu_kvm_set_irq(void *arm_cpu, int irq, int level);
+ 
+-const ARMISARegisters *kvm_arm_get_host_isar(void);
++const ARMISARegisters *kvm_arm_get_host_isar(bool with_el2);
+ 
+ void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3);
+ 
 -- 
 2.52.0
 

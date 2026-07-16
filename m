@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCA9DC44512
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 14:14:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 895C1C4450A
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 14:30:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkMqS-00068G-HD; Thu, 16 Jul 2026 10:13:48 -0400
+	id 1wkN6O-00013S-Uj; Thu, 16 Jul 2026 10:30:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1wkMqQ-000675-E9; Thu, 16 Jul 2026 10:13:46 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ id 1wkN6G-00010Y-KH; Thu, 16 Jul 2026 10:30:08 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1wkMqO-0002oT-QJ; Thu, 16 Jul 2026 10:13:46 -0400
-Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+ id 1wkN6C-0004ok-2a; Thu, 16 Jul 2026 10:30:06 -0400
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66GDfnBk3273886; Thu, 16 Jul 2026 14:13:28 GMT
+ 66GDgMU73361652; Thu, 16 Jul 2026 14:29:39 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
  :content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:reply-to:subject:to; s=pp1;
- bh=DkRj4IQjAAWkvQEAAUfC42BwQbmAUOw464DnzLMT8mk=; b=iP8LWQ7fqLbN
- DifwfJx7xaByqrrxHpRIU2kS1ZeGPFjUYwlDrFUWDCQ9FYnHjzPfpmr5rIXOTgOE
- he7+bVOjTkQODirggIGkobIhKnaPNQlOMgsmDzeTQt5nrAV0UTE1aAaqjOWL3+Ex
- 6OXLguv7nc3VdkJRSq/qA1sUEp/SuzyX0YXInRd3pqs4qanCaKbJ8et69fof183V
- qiR6MJXbhhsJyVfkOfNSLaGyFzpYnMwW43BCCaWAx0fL3aygTho8kvipwaO3x3HD
- bziSd8/lg+/cVs1lhsclU7yhYey9vBjVYjY8OgQ04CLBU9FktG5UXD9bE7b6bzJx
- ZDk5xQfIag==
-Received: from ppma23.wdc07v.mail.ibm.com
- (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fbexx0f2p-1
+ bh=i3N99XXUhzZ/JoqtxrSdRe/ZdGxWQ2zDc+hU/+q92aE=; b=NFzHcrXjffTP
+ t+5PcW43UUJjWTXFph3MV2e2uEdPu5iOQt+se7cNYqGuZ+8rdpGadl55VZxmAVSZ
+ kJ082GqB4OrnUGzCL2KGl+hoE/+Iq1feZtn1B0cRK1S/GfYNW/OL/QTqqQvASn1C
+ ETmWN6lrdtHQGgYuejC8TpAbvRsfPW5jXWAi27m8ZXh/+h9nciQlH0p1ad+aniuI
+ 0eW49jrXZg66G0bDlWE6kgelsDNrWk27rgfQFBt4373sYF56zofRkS6LJ6OE5b9Z
+ Ngnc00xhSkV/OPdfSKAosAKSXnPH7IGWkSnrZDDsXZbNUZf1yFwrayG86hvqNapE
+ 05jemz++OQ==
+Received: from ppma13.dal12v.mail.ibm.com
+ (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fbepxsb9k-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 16 Jul 2026 14:13:27 +0000 (GMT)
-Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma23.wdc07v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66GE4drr005219;
- Thu, 16 Jul 2026 14:13:26 GMT
-Received: from smtprelay04.dal12v.mail.ibm.com ([172.16.1.6])
- by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4fc1nhn8hf-1
+ Thu, 16 Jul 2026 14:29:39 +0000 (GMT)
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma13.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66GEJnIL023176;
+ Thu, 16 Jul 2026 14:29:38 GMT
+Received: from smtprelay05.dal12v.mail.ibm.com ([172.16.1.7])
+ by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 4fc2cgn6j9-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 16 Jul 2026 14:13:26 +0000 (GMT)
-Received: from smtpav04.dal12v.mail.ibm.com (smtpav04.dal12v.mail.ibm.com
- [10.241.53.103])
- by smtprelay04.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 66GEDQ7K30474942
+ Thu, 16 Jul 2026 14:29:38 +0000 (GMT)
+Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
+ [10.241.53.104])
+ by smtprelay05.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 66GETbHu31457926
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 16 Jul 2026 14:13:26 GMT
-Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 1B2795805E;
- Thu, 16 Jul 2026 14:13:26 +0000 (GMT)
-Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6105E58056;
- Thu, 16 Jul 2026 14:13:25 +0000 (GMT)
+ Thu, 16 Jul 2026 14:29:37 GMT
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id AE10958052;
+ Thu, 16 Jul 2026 14:29:37 +0000 (GMT)
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id E86D458065;
+ Thu, 16 Jul 2026 14:29:36 +0000 (GMT)
 Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
- by smtpav04.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Thu, 16 Jul 2026 14:13:25 +0000 (GMT)
-Message-ID: <df4d9cf39e0d09dbd0184a38f55531bef3555b14.camel@linux.ibm.com>
-Subject: Re: [PATCH 13/29] tests/qtest: pca9555: test auto-increment and
- command wrapping
+ by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Thu, 16 Jul 2026 14:29:36 +0000 (GMT)
+Message-ID: <e32a3161806c1fd056cf86fe674a0fbde21c8b00.camel@linux.ibm.com>
+Subject: Re: [PATCH 12/29] tests/qtest: pca9555: test polarity inversion
 From: Miles Glenn <milesg@linux.ibm.com>
 To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
@@ -71,10 +70,10 @@ Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
  <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew
  Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Corey
  Minyard <cminyard@mvista.com>
-Date: Thu, 16 Jul 2026 09:13:25 -0500
-In-Reply-To: <20260709-catalina-upgrade-v1-13-82a63fead90c@free.fr>
+Date: Thu, 16 Jul 2026 09:29:36 -0500
+In-Reply-To: <20260709-catalina-upgrade-v1-12-82a63fead90c@free.fr>
 References: <20260709-catalina-upgrade-v1-0-82a63fead90c@free.fr>
- <20260709-catalina-upgrade-v1-13-82a63fead90c@free.fr>
+ <20260709-catalina-upgrade-v1-12-82a63fead90c@free.fr>
 Organization: IBM
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5 (3.28.5-27.el8_10) 
@@ -82,40 +81,40 @@ Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-TM-AS-GCONF: 00
 X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Proofpoint-GUID: cJ7M7uWIWwBB7BO5TCySf7Wp2nmrgq03
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDE0NiBTYWx0ZWRfX/VHHB6vjBLMq
- s4rkla3uJIcVop0jGQgBc4s1f6rTVHub7jjIitiCiFZEkX43N7LDinFi7hcaz01ptLFtLrxLrQd
- yELJNqMGD/gOhF6CTyPzaY0ORob0W/PQiOuNnoUr6jV/drs4i9kX9Uikd8Opb5R4u6LnCuCtj8P
- 8XnYzfGVoSoJv+wB0LN5WGk7vIg9XNVwbjIwuC6mRrB2+cePlW94o+MJ/HtYPd9E9XPlqief+lF
- bhK66RuD+m6Nd7Benp7ZjnyQbbqYcYDVVh2kzcXy6dca98IIQ9mwBmseaujSC43pwkPkfvam4lc
- s3HtiYgQW8OVdTtMH7x3F0cQ6XbhWvRcgKhLx0W8G1dci+FxHqOb4OCPycReAlNMPfKrS7JuvSp
- MJt4iy32P0noP//AWDWBWdfOO9gmqZB+B+YKmlS8P6QNoEkZH1Hs6WDJyLdJZj1BIMtQXNjIU4V
- 8UX2gefn+AvGK5qKtgQ==
-X-Authority-Analysis: v=2.4 cv=XJoAjwhE c=1 sm=1 tr=0 ts=6a58e708 cx=c_pps
- a=3Bg1Hr4SwmMryq2xdFQyZA==:117 a=3Bg1Hr4SwmMryq2xdFQyZA==:17
+X-Proofpoint-GUID: 9ZbT8F4IZ4U8LWjLvh8uBF66-mtJUXA3
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDE0NiBTYWx0ZWRfX+R3PO9mFu4nB
+ igl6xsuEH8qB/JCQKs1ZurVMGpdT4xpCXnUmw5949e+y5gjISyZEsbbZu3plEdWY64M/MQA2q8G
+ aqsK1h1ggsscCA6w+VVZj1MIlyXx4SQ=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDE0NiBTYWx0ZWRfX+SbiryyNufEE
+ MELVEe4RFIJlHdEjzAKI4X/f9NCgqbge3lENf6ZEXSDBWi/sytipZRiVvWHv6+V1ZWhOkz+TplC
+ InE2TaN7kXlFgshR3vBasd/2k7tPgryQ5yUknYHi1uTwiii4q5k9SA35fCW+BUZs9nWvCbb2nxO
+ eBbI6VYeNbHyugz8BnAdRnZyp74NASN8V4v/qi9rSOYxb466oJHKww4TBE45k4ClSS8xOMBZQpf
+ nwHcEukoc1AERixoLtOLY7E7UCE3I71BN5WnsaYrbXu93QzO9foXl7dz9kIJyu81S3jXg97luu0
+ o2qRImDj79rKGukxu3QC2OmTS9eDNQjYQH/tNb5xCcRDyTYZcAzphRmNy8BE6mnSzYwQ21lL8sQ
+ uR201ntssd8KJ/5b3P/Qep1r35E98jM9LLYRGJzyHwX9eV6+afdrUoEzfYzoRfRweT+1veUWXqp
+ JaxaD5Ji/w8hWqp7rhA==
+X-Authority-Analysis: v=2.4 cv=XbS5Co55 c=1 sm=1 tr=0 ts=6a58ead3 cx=c_pps
+ a=AfN7/Ok6k8XGzOShvHwTGQ==:117 a=AfN7/Ok6k8XGzOShvHwTGQ==:17
  a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=V8glGbnc2Ofi9Qvn3v5h:22 a=VnNF1IyMAAAA:8
- a=2m9YVKBKTLHlkAwVmdwA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-ORIG-GUID: SWPOI-s0HdNhfgqen460QXkPBiAgt650
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDE0NiBTYWx0ZWRfX2LWz2h7nknx6
- SLEKSwoKRZWF09TB8HTITi1kjagGLqEpjv4SMe3E9yJkEv1aQIyU1PmdMZxLBzPefc3RzW+LsRu
- I4pBCV3Tx+LMn5kcX6+clzncnu7Gs9o=
+ a=RnoormkPH1_aCDwRdu11:22 a=iQ6ETzBq9ecOQQE5vZCe:22 a=VnNF1IyMAAAA:8
+ a=yaGZh0SbKlrZijkgEIsA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: 9H1RJs6DbarfMTKLxj1MbxLc-zu9gIaS
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-16_05,2026-07-15_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 adultscore=0 bulkscore=0 phishscore=0 lowpriorityscore=0
- priorityscore=1501 impostorscore=0 clxscore=1015 spamscore=0 malwarescore=0
+ clxscore=1015 suspectscore=0 spamscore=0 phishscore=0 lowpriorityscore=0
+ priorityscore=1501 adultscore=0 malwarescore=0 impostorscore=0 bulkscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607160146
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=milesg@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=milesg@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -26
 X-Spam_score: -2.7
 X-Spam_bar: --
 X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -140,119 +139,74 @@ Thanks,
 Glenn
 
 On Thu, 2026-07-09 at 17:23 +0200, Emmanuel Blot wrote:
-> Add tests for the I2C command protocol of the GPIO variant: the
-> auto-increment that toggles bit 0 within a register pair on reads and
-> writes, and the 3-bit command wrapping that aliases out-of-range register
-> addresses back into the register window.
+> Add tests for the polarity inversion register: the inversion is applied
+> when reading the INPUT register, both for input pins (pull-up) and for
+> output-driven pins, and it does not affect the OUTPUT register readback.
 > 
 > Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 > ---
->  tests/qtest/pca9555-test.c | 88 ++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 88 insertions(+)
+>  tests/qtest/pca9555-test.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 44 insertions(+)
 > 
 > diff --git a/tests/qtest/pca9555-test.c b/tests/qtest/pca9555-test.c
-> index 2afa061bd2..84d771bcbb 100644
+> index 6b085702c3..2afa061bd2 100644
 > --- a/tests/qtest/pca9555-test.c
 > +++ b/tests/qtest/pca9555-test.c
-> @@ -139,6 +139,87 @@ static void test_polarity_with_output(void *obj, void *data,
->      g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT0), ==, 0xA5);
+> @@ -99,6 +99,46 @@ static void test_port_independence(void *obj, void *data,
+>      g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT1), ==, 0xAA);
 >  }
 >  
 > +/*
-> + * The PCA9555 auto-increments by toggling bit 0 of the command pointer
-> + * within a register pair. Reading two bytes from INPUT0 should yield
-> + * INPUT0 then INPUT1.
+> + * Polarity inversion: reading INPUT with polarity bits set should
+> + * return the XOR of the actual input state and the polarity register.
 > + */
-> +static void test_auto_increment_read(void *obj, void *data,
-> +                                     QGuestAllocator *alloc)
+> +static void test_polarity_inversion(void *obj, void *data,
+> +                                    QGuestAllocator *alloc)
 > +{
 > +    QI2CDevice *dev = (QI2CDevice *)obj;
-> +    uint8_t buf[2];
 > +
-> +    i2c_set8(dev, PCA9535_CONFIG0, 0x00);
-> +    i2c_set8(dev, PCA9535_CONFIG1, 0x00);
-> +    i2c_set8(dev, PCA9535_OUTPUT0, 0xAA);
-> +    i2c_set8(dev, PCA9535_OUTPUT1, 0x55);
+> +    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xFF);
 > +
-> +    i2c_read_block(dev, PCA9535_INPUT0, buf, 2);
-> +    g_assert_cmphex(buf[0], ==, 0xAA);
-> +    g_assert_cmphex(buf[1], ==, 0x55);
+> +    i2c_set8(dev, PCA9535_POLARITY0, 0xFF);
+> +    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0x00);
 > +
-> +    i2c_read_block(dev, PCA9535_OUTPUT0, buf, 2);
-> +    g_assert_cmphex(buf[0], ==, 0xAA);
-> +    g_assert_cmphex(buf[1], ==, 0x55);
+> +    i2c_set8(dev, PCA9535_POLARITY0, 0x0F);
+> +    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xF0);
+> +
+> +    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT1), ==, 0xFF);
+> +
+> +    i2c_set8(dev, PCA9535_POLARITY1, 0xAA);
+> +    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT1), ==, 0x55);
 > +}
 > +
-> +/*
-> + * Auto-increment write: writing two data bytes after a command byte
-> + * should write to port 0 then port 1 of the addressed register pair.
-> + */
-> +static void test_auto_increment_write(void *obj, void *data,
+> +/* Polarity inversion combined with output-driven pins. */
+> +static void test_polarity_with_output(void *obj, void *data,
 > +                                      QGuestAllocator *alloc)
 > +{
 > +    QI2CDevice *dev = (QI2CDevice *)obj;
-> +    uint8_t buf[2];
 > +
-> +    buf[0] = 0x12;
-> +    buf[1] = 0x34;
-> +    i2c_write_block(dev, PCA9535_OUTPUT0, buf, 2);
+> +    i2c_set8(dev, PCA9535_CONFIG0, 0x00);
+> +    i2c_set8(dev, PCA9535_OUTPUT0, 0xA5);
 > +
-> +    g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT0), ==, 0x12);
-> +    g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT1), ==, 0x34);
+> +    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xA5);
 > +
-> +    buf[0] = 0x0F;
-> +    buf[1] = 0xF0;
-> +    i2c_write_block(dev, PCA9535_CONFIG0, buf, 2);
+> +    i2c_set8(dev, PCA9535_POLARITY0, 0xFF);
+> +    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0x5A);
 > +
-> +    g_assert_cmphex(i2c_get8(dev, PCA9535_CONFIG0), ==, 0x0F);
-> +    g_assert_cmphex(i2c_get8(dev, PCA9535_CONFIG1), ==, 0xF0);
-> +}
-> +
-> +/*
-> + * Auto-increment toggles within the pair: starting from port 1 should
-> + * wrap back to port 0 (toggle bit 0).
-> + */
-> +static void test_auto_increment_toggle(void *obj, void *data,
-> +                                       QGuestAllocator *alloc)
-> +{
-> +    QI2CDevice *dev = (QI2CDevice *)obj;
-> +    uint8_t buf[2];
-> +
-> +    i2c_set8(dev, PCA9535_OUTPUT0, 0xAA);
-> +    i2c_set8(dev, PCA9535_OUTPUT1, 0x55);
-> +
-> +    i2c_read_block(dev, PCA9535_OUTPUT1, buf, 2);
-> +    g_assert_cmphex(buf[0], ==, 0x55);
-> +    g_assert_cmphex(buf[1], ==, 0xAA);
-> +}
-> +
-> +/*
-> + * Verify the command byte wraps at 3 bits: register addresses
-> + * beyond 7 should alias to the same register (bits [2:0] only).
-> + */
-> +static void test_command_wrapping(void *obj, void *data, QGuestAllocator *alloc)
-> +{
-> +    QI2CDevice *dev = (QI2CDevice *)obj;
-> +
-> +    i2c_set8(dev, PCA9535_OUTPUT0, 0x42);
-> +
-> +    g_assert_cmphex(i2c_get8(dev, 0x0A), ==, 0x42);
+> +    g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT0), ==, 0xA5);
 > +}
 > +
 >  static void pca9555_register_nodes(void)
 >  {
 >      QOSGraphEdgeOptions opts = {
-> @@ -158,6 +239,13 @@ static void pca9555_register_nodes(void)
+> @@ -114,6 +154,10 @@ static void pca9555_register_nodes(void)
 >                   NULL);
->      qos_add_test("polarity-with-output", "pca9555", test_polarity_with_output,
->                   NULL);
-> +    qos_add_test("auto-increment-read", "pca9555", test_auto_increment_read,
+>      qos_add_test("input-pullup", "pca9555", test_input_pullup, NULL);
+>      qos_add_test("port-independence", "pca9555", test_port_independence, NULL);
+> +    qos_add_test("polarity-inversion", "pca9555", test_polarity_inversion,
 > +                 NULL);
-> +    qos_add_test("auto-increment-write", "pca9555", test_auto_increment_write,
+> +    qos_add_test("polarity-with-output", "pca9555", test_polarity_with_output,
 > +                 NULL);
-> +    qos_add_test("auto-increment-toggle", "pca9555", test_auto_increment_toggle,
-> +                 NULL);
-> +    qos_add_test("command-wrapping", "pca9555", test_command_wrapping, NULL);
 >  }
 >  
 >  libqos_init(pca9555_register_nodes);

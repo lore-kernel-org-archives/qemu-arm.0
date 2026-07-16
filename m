@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBDF0C4450A
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 13:35:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7912FC4450A
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 13:47:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkMF2-0000Ar-IX; Thu, 16 Jul 2026 09:35:08 -0400
+	id 1wkMQ5-0003ee-Mg; Thu, 16 Jul 2026 09:46:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1wkMF0-00008X-Nz; Thu, 16 Jul 2026 09:35:06 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ id 1wkMQ3-0003dp-J7; Thu, 16 Jul 2026 09:46:31 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1wkMEz-0006Ls-3f; Thu, 16 Jul 2026 09:35:06 -0400
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
+ id 1wkMQ1-0007fR-Qw; Thu, 16 Jul 2026 09:46:31 -0400
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66GACETw2899651; Thu, 16 Jul 2026 13:34:47 GMT
+ 66GDfdUE3359874; Thu, 16 Jul 2026 13:46:07 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
  :content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:reply-to:subject:to; s=pp1;
- bh=PWhn8kjzB6tgkFhA+CaZlszuNPUfISD3CsgkMvC2iOU=; b=mHy3I25U5ep8
- sttL6D6t18CrXEjZlrMwXsMVl2ijkXGBdYiES0BiRvxIIcrBxFtO9KJsU7BrtWqG
- 7CcFfFyFpyheqv6FzaMi+d1vjfa92RtG6LP4VWm7DGhNzkjp0mrSDaC77uMfYsAM
- gJO/myJidVSSygpHCC5DjumCUUx4JwgQzuTD70WZ2NW7i8kIp8dTF5xU0+eXj5Ma
- J9PhR6Oa1ofkdgYC0Om1XH2KvmTLa3lGZ3supfV+hkySlX4OYNACCtoFSqpkUjKW
- EGABTe3IfYPnSxyhprN0tXiMUqvnjj5VRznss2WShffJLGVRL4VbInC1ePoUo9C/
- LBf1cqO9SA==
-Received: from ppma12.dal12v.mail.ibm.com
- (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fbegc0c7q-1
+ bh=7nog3PPrgO1fh5DWkrGnLAFC1mG9iFbTgG19Ftj1qKk=; b=sTpZf8wstSRn
+ P7fJg/CJ43XwCvCxdxj3ymbUkMni3dHXnv5j8TqF0iocwEJJTkf9zIk2FGOUc2Sn
+ sk0/3UQ9gVjfcF+PXkfU0J0WvPKbctpxhqnfjDlPlQtn1PX+QwjWnSrhqC0iLE+H
+ tEvUCkBIhJpa4n+RXbZIH0FsnVU5G0Qpu1J5EBL3AQmNIMoELuIievuAgJ4ORjs6
+ 9Sh8nPrbo08f/r6LmXHo4ddG/8EIfqVZ90N2aLVLKZG2m3DvjHIpmvWtg5frCAp0
+ qnjbWhLnPlz132UP3kHw06Zn4SjNZ5osZA52dECcDsohk5WzoBbHcKU1pB9U8fGJ
+ z8zeXpGxiA==
+Received: from ppma11.dal12v.mail.ibm.com
+ (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fbepxs47s-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 16 Jul 2026 13:34:46 +0000 (GMT)
-Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
- by ppma12.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66GDYghu017683;
- Thu, 16 Jul 2026 13:34:45 GMT
-Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
- by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 4fc05qddbe-1
+ Thu, 16 Jul 2026 13:46:06 +0000 (GMT)
+Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma11.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66GDYZVC022904;
+ Thu, 16 Jul 2026 13:46:05 GMT
+Received: from smtprelay05.wdc07v.mail.ibm.com ([172.16.1.72])
+ by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 4fc2uycx6q-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 16 Jul 2026 13:34:45 +0000 (GMT)
-Received: from smtpav04.wdc07v.mail.ibm.com (smtpav04.wdc07v.mail.ibm.com
- [10.39.53.231])
- by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 66GDYjAe23724660
+ Thu, 16 Jul 2026 13:46:05 +0000 (GMT)
+Received: from smtpav06.dal12v.mail.ibm.com (smtpav06.dal12v.mail.ibm.com
+ [10.241.53.105])
+ by smtprelay05.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 66GDk4BT29688370
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 16 Jul 2026 13:34:45 GMT
-Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id F034D58052;
- Thu, 16 Jul 2026 13:34:44 +0000 (GMT)
-Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B271D58062;
- Thu, 16 Jul 2026 13:34:43 +0000 (GMT)
+ Thu, 16 Jul 2026 13:46:04 GMT
+Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 63C8058059;
+ Thu, 16 Jul 2026 13:46:04 +0000 (GMT)
+Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id A5BB358055;
+ Thu, 16 Jul 2026 13:46:03 +0000 (GMT)
 Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
- by smtpav04.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Thu, 16 Jul 2026 13:34:43 +0000 (GMT)
-Message-ID: <f7c436451ade74baed3087c9c6dd4bee554d1ed2.camel@linux.ibm.com>
-Subject: Re: [PATCH 06/29] hw/gpio: pca9552: use the Resettable interface
- instead of legacy reset
+ by smtpav06.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Thu, 16 Jul 2026 13:46:03 +0000 (GMT)
+Message-ID: <0a84637090653c4e578b2f4458379d195c5f6267.camel@linux.ibm.com>
+Subject: Re: [PATCH 07/29] hw/gpio: pca9552: apply input polarity inversion
+ on read
 From: Miles Glenn <milesg@linux.ibm.com>
 To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
@@ -71,10 +71,10 @@ Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
  <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew
  Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Corey
  Minyard <cminyard@mvista.com>
-Date: Thu, 16 Jul 2026 08:34:43 -0500
-In-Reply-To: <20260709-catalina-upgrade-v1-6-814575bc076b@free.fr>
+Date: Thu, 16 Jul 2026 08:46:03 -0500
+In-Reply-To: <20260709-catalina-upgrade-v1-7-814575bc076b@free.fr>
 References: <20260709-catalina-upgrade-v1-0-814575bc076b@free.fr>
- <20260709-catalina-upgrade-v1-6-814575bc076b@free.fr>
+ <20260709-catalina-upgrade-v1-7-814575bc076b@free.fr>
 Organization: IBM
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5 (3.28.5-27.el8_10) 
@@ -82,41 +82,40 @@ Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-TM-AS-GCONF: 00
 X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Authority-Analysis: v=2.4 cv=fOcJG5ae c=1 sm=1 tr=0 ts=6a58ddf7 cx=c_pps
- a=bLidbwmWQ0KltjZqbj+ezA==:117 a=bLidbwmWQ0KltjZqbj+ezA==:17
+X-Proofpoint-GUID: 6xGBI1y4mdXhVbd_WQbczCyMnWWoo1ZP
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDE0MSBTYWx0ZWRfXyHB2i/yCSUz3
+ dwoQxQpVTqlHDxBzNFc860vWhSYI0RwPqky4nK0lpLW+64kX7qy/mC92ck2J1w3Y3Oaxa1QrgED
+ jsUbNNwxrsuRUKMLgtysYbWLIBscY68=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDE0MSBTYWx0ZWRfX773N6rq2jwJm
+ dpOU8kCuORy2AaYDcfcJHceSJK+eEVGpBfdhf0njckpx8OnTkgzh53KKROwlQmYrdsx4TXCSYZM
+ p3FgbkA9Fuyo+DQKpPzbANwHz7+GogzBNO1l/3DoknxPCSn2sBuQSsm0IQl2pznfzohFKtnw3k4
+ bin3AZZOEz9uG69UnqOcY562q+1OdVNQf91FV/LKtx9YGQCxVlVj1pItzyo5Hd186A9Q8OZxAeV
+ mUQNJokY9HFLuLZy9eyzo2dEd8A8oo/4WJ5XAZ3gAx+3BBnzbNSYLC0Si09bQ7X8JmLR5G3HTaC
+ FkX+x0FoaxFbdCrN5nptOPdfckcRwIVqeXNH6v1D7X83S5QJWNdparipDg4qzc1Zt2XyWWfitdS
+ Jg/oOgdTPHIv3/IzsGpSMu0+b61AN98tDI+fz8quQI3NX7gaKccimPWJmT/cOrPp9gt3alJ8Ljb
+ jhgW5KpHQcl3WIh6ACQ==
+X-Authority-Analysis: v=2.4 cv=XbS5Co55 c=1 sm=1 tr=0 ts=6a58e09e cx=c_pps
+ a=aDMHemPKRhS1OARIsFnwRA==:117 a=aDMHemPKRhS1OARIsFnwRA==:17
  a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=RzCfie-kr_QcCd8fBx8p:22 a=VnNF1IyMAAAA:8
- a=ayuSXJ0DrvFcvoGZ-b4A:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDEzNiBTYWx0ZWRfX6CH33atjACOE
- HuOFoEes/mqS4xumow2muTS1oTq+nbXrIuazqDKzxKFAJzC3Tk/NUfcO+hbXNdCts+5UZ1y8tzM
- RBJWuQaXGCEBRxijJztZ5baGltC9gW/mER9GquT8BDwf73wY8YGama0mVWMj19MVYQsQqDZA8q8
- /VlCrYzf7uNjJwFL4wufQxmb397SlFrkWWjLtpufBWLjrMbZhfHsxj7ZRpyeUxg8zaLF+gMravG
- JoFdP39xk0DmWRm0UcqngsLewZRKV+/QWzfxFMuqPaE1NMOt8KSXhrm94YcGQ8RkOV7p/IujyMg
- IXYcCUOY5QcZSOFkDkhGUmpmG43D4eJUfYDYMTV+nfhQArDSdVjTdFCVt/6DvN84s82chBFgs0K
- LyB3e34+ApnMNWGaY67HlI2JqTlLviXDVrZ2grUjtOmaIsNNPdnDCj3Yf2hluBbKhVkU4WLHP52
- Be8dCvM3mkri9gx6A+Q==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDEzNiBTYWx0ZWRfX0O+qR8OZjrxz
- 2ExfeVGLqcXGvrQxZhOnepS6urCp4h4d+q5GVu4Mt650YXQnYgjS2MZqwQ4B37rmd/b3JAn8qgh
- g0bHbfN6iLDCuigOkziYZw7i3bWY3zY=
-X-Proofpoint-GUID: CwP99NTpaWgqnEUOR43pCJ5Nos7VYalF
-X-Proofpoint-ORIG-GUID: EP2twkZXyQdvM6SuE4EfN1TlJXiwlkGK
+ a=RnoormkPH1_aCDwRdu11:22 a=iQ6ETzBq9ecOQQE5vZCe:22 a=VnNF1IyMAAAA:8
+ a=AShcY7bfDNrBB48VrpIA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: fDmHf4yDCLPo-whjOKH5O8ZLr8Mseagv
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-16_04,2026-07-15_02,2025-10-01_01
+ definitions=2026-07-16_05,2026-07-15_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 bulkscore=0 impostorscore=0 suspectscore=0 adultscore=0
- priorityscore=1501 malwarescore=0 clxscore=1015 phishscore=0
- lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2607160136
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=milesg@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
+ clxscore=1015 suspectscore=0 spamscore=0 phishscore=0 lowpriorityscore=0
+ priorityscore=1501 adultscore=0 malwarescore=0 impostorscore=0 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607160141
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=milesg@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -26
 X-Spam_score: -2.7
 X-Spam_bar: --
 X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -141,70 +140,72 @@ Thanks,
 Glenn
 
 On Thu, 2026-07-09 at 17:23 +0200, Emmanuel Blot wrote:
-> Convert the PCA9552 and PCA9535/PCA9555 reset handlers from the legacy
-> device reset hook to the Resettable interface: move each reset body into
-> a ResettableHoldPhase handler and register it through the class's
-> ResettableClass::phases.hold instead of device_class_set_legacy_reset().
+> The PCA9535 polarity inversion register inverts the value read back from
+> the input port for every pin, regardless of its direction, and does not
+> affect the output drive or the physical pin level.
 > 
-> No functional change.
+> Store the raw pin level in the input register and apply the polarity
+> inversion when the input port is read, instead of XORing it into the
+> stored value of output-configured pins only. The interrupt output now
+> reflects the raw pin level, matching the datasheet.
 > 
 > Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 > ---
->  hw/gpio/pca9552.c | 14 ++++++++------
->  1 file changed, 8 insertions(+), 6 deletions(-)
+>  hw/gpio/pca9552.c | 25 ++++++++++++++++++-------
+>  1 file changed, 18 insertions(+), 7 deletions(-)
 > 
 > diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
-> index 3b9b63eb17..66f699bf6a 100644
+> index 66f699bf6a..24f6465415 100644
 > --- a/hw/gpio/pca9552.c
 > +++ b/hw/gpio/pca9552.c
-> @@ -406,9 +406,9 @@ static const VMStateDescription pca9552_vmstate = {
+> @@ -167,9 +167,12 @@ static void pca955x_update_pin_input(PCA955xState *s)
+>              /* PCA9535: Simple GPIO behavior */
+>              uint8_t config_reg = PCA9535_CONFIG0 + (i / 8);
+>              uint8_t output_reg = PCA9535_OUTPUT0 + (i / 8);
+> -            uint8_t polarity_reg = PCA9535_POLARITY0 + (i / 8);
+>  
+> -            /* Check if pin is configured as input */
+> +            /*
+> +             * The input register holds the raw pin logic level; the
+> +             * polarity inversion register is only applied when the input
+> +             * port is read (see pca955x_read()).
+> +             */
+>              if (s->regs[config_reg] & bit_mask) {
+>                  /* Input mode - reflect external state */
+>                  if (s->ext_state[i] == PCA9552_PIN_LOW) {
+> @@ -179,12 +182,8 @@ static void pca955x_update_pin_input(PCA955xState *s)
+>                  }
+>              } else {
+>                  /* Output mode - reflect output register value */
+> -                uint8_t output_bit = s->regs[output_reg] & bit_mask;
+> -                uint8_t polarity_bit = s->regs[polarity_reg] & bit_mask;
+> -
+> -                /* Apply polarity inversion if set */
+>                  s->regs[input_reg] = (s->regs[input_reg] & ~bit_mask) |
+> -                                    ((output_bit ^ polarity_bit) & bit_mask);
+> +                                     (s->regs[output_reg] & bit_mask);
+>              }
+>          }
+>  
+> @@ -206,6 +205,18 @@ static uint8_t pca955x_read(PCA955xState *s, uint8_t reg)
+>          return 0xFF;
 >      }
->  };
 >  
-> -static void pca9552_reset(DeviceState *dev)
-> +static void pca9552_reset_hold(Object *obj, ResetType type)
->  {
-> -    PCA955xState *s = PCA955X(dev);
-> +    PCA955xState *s = PCA955X(obj);
->  
->      s->regs[PCA9552_PSC0] = 0xFF;
->      s->regs[PCA9552_PWM0] = 0x80;
-> @@ -426,9 +426,9 @@ static void pca9552_reset(DeviceState *dev)
->      s->len = 0;
+> +    /*
+> +     * On the GPIO variants, reading an input port returns the raw pin
+> +     * levels XORed with the polarity inversion register, as specified by
+> +     * the datasheet.
+> +     */
+> +    if (!k->has_led_support &&
+> +        (reg == PCA9535_INPUT0 || reg == PCA9535_INPUT1)) {
+> +        uint8_t polarity_reg = PCA9535_POLARITY0 + (reg - PCA9535_INPUT0);
+> +
+> +        return s->regs[reg] ^ s->regs[polarity_reg];
+> +    }
+> +
+>      return s->regs[reg];
 >  }
 >  
-> -static void pca9535_reset(DeviceState *dev)
-> +static void pca9535_reset_hold(Object *obj, ResetType type)
->  {
-> -    PCA955xState *s = PCA955X(dev);
-> +    PCA955xState *s = PCA955X(obj);
->  
->      s->regs[PCA9535_INPUT0] = 0xFF;   /* All inputs high (pull-ups) */
->      s->regs[PCA9535_INPUT1] = 0xFF;   /* All inputs high (pull-ups) */
-> @@ -514,9 +514,10 @@ static void pca955x_class_init(ObjectClass *klass, const void *data)
->  static void pca9552_class_init(ObjectClass *oc, const void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(oc);
-> +    ResettableClass *rc = RESETTABLE_CLASS(oc);
->      PCA955xClass *pc = PCA955X_CLASS(oc);
->  
-> -    device_class_set_legacy_reset(dc, pca9552_reset);
-> +    rc->phases.hold = pca9552_reset_hold;
->      dc->vmsd = &pca9552_vmstate;
->      pc->max_reg = PCA9552_LS3;
->      pc->pin_count = 16;
-> @@ -526,9 +527,10 @@ static void pca9552_class_init(ObjectClass *oc, const void *data)
->  static void pca95x5_class_init(ObjectClass *oc, const void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(oc);
-> +    ResettableClass *rc = RESETTABLE_CLASS(oc);
->      PCA955xClass *pc = PCA955X_CLASS(oc);
->  
-> -    device_class_set_legacy_reset(dc, pca9535_reset);
-> +    rc->phases.hold = pca9535_reset_hold;
->      dc->vmsd = &pca9552_vmstate;
->      pc->max_reg = PCA9535_CONFIG1;
->      pc->pin_count = 16;
 > 
 
 

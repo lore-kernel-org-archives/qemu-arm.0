@@ -4,112 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67B56C4451B
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 13:56:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9B7DC4451B
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 14:03:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkj2s-0000p4-92; Fri, 17 Jul 2026 09:56:06 -0400
+	id 1wkjAA-0003GR-K9; Fri, 17 Jul 2026 10:03:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wkj2o-0000iR-Uj
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 09:56:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1wkjA9-0003G9-Bj; Fri, 17 Jul 2026 10:03:37 -0400
+Received: from smtp2-g21.free.fr ([212.27.42.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wkj2n-00031B-Ku
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 09:56:02 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784296561;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=gkJPRonxFAdLMfRYaeucxbkp4HT737Jnx3N5/XSgThw=;
- b=gxuwcIfQ7NQ3Y/TCQ/iaVs0WKPEkbXPag2qF8x4kY9lW/AdvmOkSUttwWfB++1d9gYdJHl
- NJslbr2xPJ124CYjN/UDHBqvvjxJlMtSZYpfOiems24hE8lS1h4gUKcTDlmMwB23CvpgrW
- yUUpHZDED7PjN14w3NsCO/oyTrqF1Ps=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-569-KyyCYVfcNcqC4bqZkEfIDg-1; Fri, 17 Jul 2026 09:55:40 -0400
-X-MC-Unique: KyyCYVfcNcqC4bqZkEfIDg-1
-X-Mimecast-MFC-AGG-ID: KyyCYVfcNcqC4bqZkEfIDg_1784296539
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-4767036f8faso4994516f8f.3
- for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 06:55:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784296539; x=1784901339;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=gkJPRonxFAdLMfRYaeucxbkp4HT737Jnx3N5/XSgThw=;
- b=LVSvjgYu2epkUn6KB9mdv+5LvbpUJEDPvLdIJ1lv35dphbcFIe5YxqXzMniKBXMUVT
- gsOYe8lAAJrP1QdA1uvMFzFm4YdT8T5wqVLrbaIVPu6uW4IMIVAMmr75bti90U76YcIL
- pWzVineiNIsX21i7QOZzzTgDPyo3UMEMHjZkZ5sCE9YweV574G3zEqSQCfo8XgFhLUwy
- aKiqhG7WchbOIz6HPHxOYOjIaqWUCzW0Z9lmfgINV2J0J8ZhuEFSW51uuJk1wtzvzyF2
- kKC0HDmNdQO+o8w7A6veOCK+WKr03kXEHYdp7p+M+bbwz6dpa3FnTQH8hYBYzrluj9KH
- diYQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+RoDm3eW/rTNKVZRxnBD/zB5Ybc2USFJfFj4H8vxTHHZSbOCYjHpTmdzrMA8hLKN4u6F+1suvmOgWQ==@nongnu.org
-X-Gm-Message-State: AOJu0YydqorHWyVwuoV1Oxc73JvnMvhupywZkRPKN7s/8DZGaijKTCKp
- ozjWnsO1SmQ9qR3f69vxuLHakoEGjK5vAooLmXw/TUDAe206PEjPDjv3NfyhvraF2rWg2usC97f
- MknnkBCcBO8PhsbZ56UYW8GsStq9u71LQS9f7QAfcUXiNvNke+VeHsg==
-X-Gm-Gg: AfdE7cm8bnnYoK0Dt14Qqx7levhIuoWiXyt9GlOpCtuJ+hF1xkqi0dJen7dEy3f0bMA
- UJiru45KmFx7nfjCjv9CYquBfz8C+93W3SkNVQbuuwKWt+oh2QfdDZJdfSuBw7E6ErDBAGt2vEX
- tgOODqshmZfRTPS1TtRxDv+gidBt54sTA1LWO1m6tbRDQlA52ASf7pmYKLsSF83hI3/UgfHnSpB
- Q73+7lVvQky7966o6CYqOjtpoPf0OW/YtpBUwu2eLQCsThmUWt1L9hwGrokyRAY8LamRMni19C9
- YCt9yFO80rRb2WxHW370lQlaIskI+pEC7srtk8+unQpOD9w2H4lulzVLKlTFR/fv3gUW69c+eVI
- RINC21YcaBaTWBCRtjcFQn79D
-X-Received: by 2002:a05:6000:41d3:b0:47d:e547:8965 with SMTP id
- ffacd0b85a97d-47f6233fbe9mr3585467f8f.58.1784296539118; 
- Fri, 17 Jul 2026 06:55:39 -0700 (PDT)
-X-Received: by 2002:a05:6000:41d3:b0:47d:e547:8965 with SMTP id
- ffacd0b85a97d-47f6233fbe9mr3585403f8f.58.1784296538470; 
- Fri, 17 Jul 2026 06:55:38 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-24-117.inter.net.il. [80.230.24.117])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47f63ed1911sm4114351f8f.22.2026.07.17.06.55.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Jul 2026 06:55:37 -0700 (PDT)
-Date: Fri, 17 Jul 2026 09:55:34 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
+ (Exim 4.90_1) (envelope-from <emmanuel.blot@free.fr>)
+ id 1wkjA7-0003q1-BX; Fri, 17 Jul 2026 10:03:37 -0400
+Received: from [192.168.25.24] (unknown [89.92.102.124])
+ (Authenticated sender: emmanuel.blot@free.fr)
+ by smtp2-g21.free.fr (Postfix) with ESMTPSA id B95EF2003CE;
+ Fri, 17 Jul 2026 16:03:11 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
+ s=smtp-20201208; t=1784297012;
+ bh=+MlYpZbkoEMrnS7q6BYfb5kvm75cbu3mrWInxqAJF4c=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=WctkdfdJ7eU0dXTcE1GyymBvY7rGHVzzAvzmJoV223e0Mqwgm910CCbSRvTnizXuJ
+ nbYsI16OoQrvbZg9xQ5rkPVa0Wp19Kbnkt6t1pMiQS4Dkbp+ul10vgiWTLh6R0LMWk
+ wSKIL6Q+wvxf2PpnNHTpo15EzG1akNc+1Tx+UuTBsBEpe7owVOuzAhl7l8CTpEQ63W
+ coLsjMZjDVQTvyFSsDbA+eLsEyGykXBSHGkhfAEbhmVSdCN7y4b3d0ScFu+/uZgikM
+ gTQvXMzfhk9sslMto5TaqrY0H+kIU5troZn0NIN4iPF4HZKUwS9DFl5fX1S0VEnwUn
+ s5K8hc0w0TRXg==
+From: emmanuel.blot@free.fr
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, peterx@redhat.com, alex@shazbot.org,
- richard.henderson@linaro.org, berrange@redhat.com,
- philmd@oss.qualcomm.com, philmd@mailo.com, david@kernel.org,
- clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com,
- jugraham@redhat.com, liugang24219@sangfor.com.cn,
- dinghui@sangfor.com.cn, shan.gavin@gmail.com
-Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
- device region accessors
-Message-ID: <20260717095407-mutt-send-email-mst@kernel.org>
-References: <20260625091334-mutt-send-email-mst@kernel.org>
- <CAFEAcA8xK+t3-prEphtkq-o9UY2mgS6cowhs880GOaxL9dKSGw@mail.gmail.com>
- <20260625101817-mutt-send-email-mst@kernel.org>
- <CAFEAcA8-Un+Q1yBDqLWCLPRwtgTA_VhJqGobgZChrFhAeVfG8A@mail.gmail.com>
- <20260625123119-mutt-send-email-mst@kernel.org>
- <CAFEAcA8UjtXgmPC27fOKMwbaWs2piwGYudtwCNWQHuu3E_7A-A@mail.gmail.com>
- <5faf04b9-d596-4a1d-9fe3-5e9ad5f0a99a@redhat.com>
- <73f79841-8cc7-4ca6-8f6b-fb97b53a6fe8@redhat.com>
- <20260717091756-mutt-send-email-mst@kernel.org>
- <CAFEAcA-O6Z4JrVV0DL_tta6khRyUta_Zz5mJt6OszaW1mu0o6Q@mail.gmail.com>
+Cc: cminyard@mvista.com, qemu-devel@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alexander Hansen <alexander.hansen@9elements.com>,
+ William de Abreu Pinho <williampinho@meta.com>,
+ Emmanuel Blot <eblot@meta.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH v5 6/8] hw/i2c: parent slaves created with
+ i2c_slave_create_simple
+Date: Fri, 17 Jul 2026 16:03:09 +0200
+X-Mailer: MailMate (2.0r6290)
+Message-ID: <F564EA86-B103-410B-B55F-9A95F3785553@free.fr>
+In-Reply-To: <CAFEAcA8dsSKrF3F53SWwyhcNR4XbvRG3N5k96Qkq4RLtpYuwWQ@mail.gmail.com>
+References: <20260701-i2c-adc128d818-anacapa-v5-0-fe8292d86b38@free.fr>
+ <20260701-i2c-adc128d818-anacapa-v5-6-fe8292d86b38@free.fr>
+ <CAFEAcA8mygA035i3VSEGzQWppCDaUz0HM5mNU9DvTsOjei1F8Q@mail.gmail.com>
+ <D5F0871C-4AC1-43D6-9BCD-C59A07236A1F@free.fr>
+ <alomsclAchz2_bWy@mail.minyard.net>
+ <CAFEAcA8dsSKrF3F53SWwyhcNR4XbvRG3N5k96Qkq4RLtpYuwWQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-O6Z4JrVV0DL_tta6khRyUta_Zz5mJt6OszaW1mu0o6Q@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Ur8LXOsxDsanuHYEDKWpa_GO5QbK0KNlTvKHvONZ_70_1784296539
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: permerror client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; markup=markdown
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=212.27.42.2; envelope-from=emmanuel.blot@free.fr;
+ helo=smtp2-g21.free.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,38 +84,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Jul 17, 2026 at 02:49:53PM +0100, Peter Maydell wrote:
-> On Fri, 17 Jul 2026 at 14:24, Michael S. Tsirkin <mst@redhat.com> wrote:
-> >
-> > On Thu, Jul 09, 2026 at 07:52:12PM +1000, Gavin Shan wrote:
-> > > Hi Michael and Peter,
-> 
-> > >
-> > > Could you help to confirm if the conclusion is to have unified qemu_ram_{copy, move}()
-> > > for all architectures? In qemu_ram_{copy, move}(), the fixed sized accesses like
-> > > 1/2/4/8 bytes are handled by __builtin_{memcpy, memmove}() and fall back to
-> > > memcpy/memmove() for other sized accesses. It's basically what was proposed by
-> > > Michael :-)
-> >
-> > No. __builtin_ and  memcpy/memmove are same on modern linuxes.
-> >
-> > I'd say as a 1st step, on x86 hosts we can do a fixed size
-> > memmove for 1/2/4/8, on other hosts
-> > *aligned* 1/2/4/8 bytes can do
-> >  __atomic_store ... __ATOMIC_RELAXED
-> > and the rest can hobble along on memmove
-> > and hope for the best.
-> 
-> I don't think we should be doing something that's x86-host specific,
-> as I've mentioned previously.
-> 
-> -- PMM
 
-Shrug. Of course we already have arch specific code in asm.
-But we can make the unaligned 1/2/4/8 for x86 host a separate
-optimization on top. They are unlikely to be common.
+> If you want the bus hierarchy, we have that; it's not the same
+> thing as the QOM ownership hierarchy.
 
--- 
-MST
+This means that the ownership of a standalone device should either be the=
+ board or the machine.
 
+We end up with a very flat and wide list of devices. It is more correct i=
+n term of ownership, but harder to pinpoint a device either from an API o=
+r even browsing it with info qom-tree, except if we can define more or le=
+ss canonical way to name it.
+
+I do not think there is an API to traverse multiple buses and devices at =
+once to reach a device though. Is there an alternative to locate a device=
+ from a (string) description on how/where it is connected, if QOM path is=
+ not the right idiom to use?
 

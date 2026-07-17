@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55039C44507
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 10:28:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70813C44514
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 10:28:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkfn7-0005mo-1J; Fri, 17 Jul 2026 06:27:37 -0400
+	id 1wkfnX-0005wU-2k; Fri, 17 Jul 2026 06:28:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wkfn5-0005mT-Vo; Fri, 17 Jul 2026 06:27:36 -0400
+ id 1wkfnU-0005vv-UW; Fri, 17 Jul 2026 06:28:01 -0400
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wkfn4-0000OT-27; Fri, 17 Jul 2026 06:27:35 -0400
+ id 1wkfnT-0000P7-8I; Fri, 17 Jul 2026 06:28:00 -0400
 Received: from localhost (unknown [131.107.159.8])
- by linux.microsoft.com (Postfix) with ESMTPSA id 96D7620B716C;
- Fri, 17 Jul 2026 03:27:22 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 96D7620B716C
+ by linux.microsoft.com (Postfix) with ESMTPSA id 3122720B7178;
+ Fri, 17 Jul 2026 03:27:28 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 3122720B7178
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1784284042;
- bh=3F9+arkC1uiSexFloo23u4mxdhDWKX7XhaEN/wwXo0w=;
+ s=default; t=1784284048;
+ bh=OGGpowXvVwpFoT6iKc2B4BLya9B2Y4TG8FXlisamEn0=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=d6iNxTfMVmpEtEfh3kM4Ly4+3d7V2Uhg33dfev3CGkk2PVcIbndpeO8zk8VDXTEEK
- yJ9c+0JF1rXxTiMJYYgWlKR6URV0lXchiMTXn+T6RywTiJw0JQejkAh2BMw3MN7psm
- rdFWajbVY1srjlCjXlXibVhVdGFPrCWTO3ubUbVU=
+ b=VupK1EmAmw/GnlsuwxHsCLLaHjJZmEKhHf1NLtotrs/ZaXsikPdT5rupRWAUg5FUm
+ lHF1kT2JDHBZcJD2vdUXMIcacPrf3SdpbX+kZy7UcSc5Mr6rGoMAxtsSt1D7MKHqNO
+ C6Qm7hJhf4TjyCMPZ5mqI459H31TTnP4dQxI8or4=
 From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Fri, 17 Jul 2026 10:27:17 +0000
-Subject: [PATCH v5 02/13] accel/mshv: add arch-specific accelerator init hook
+Date: Fri, 17 Jul 2026 10:27:25 +0000
+Subject: [PATCH v5 10/13] target/arm/mshv: add vCPU run loop
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260717-mshv_accel_arm64_supp-v5-2-ef07d4c6b337@linux.microsoft.com>
+Message-Id: <20260717-mshv_accel_arm64_supp-v5-10-ef07d4c6b337@linux.microsoft.com>
 References: <20260717-mshv_accel_arm64_supp-v5-0-ef07d4c6b337@linux.microsoft.com>
 In-Reply-To: <20260717-mshv_accel_arm64_supp-v5-0-ef07d4c6b337@linux.microsoft.com>
 To: qemu-devel@nongnu.org
@@ -78,201 +78,199 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
 
-Introduce mshv_arch_accel_init() as an arch-specific hook called early
-in mshv_init(), before VM creation. This allows each architecture to
-perform platform-specific initialization at accelerator init time.
+Add the main vCPU run loop for MSHV using the MSHV_RUN_VP_IOCTL.
 
-For x86, the hook calls mshv_init_mmio_emu() which was previously called
-directly from the common init path. Also move set_unimplemented_msr_action()
-and mshv_arch_post_init_vm() from mshv-cpu.c to the new mshv-all.c, as
-they are not vCPU-specific.
+Handle MMIO exits by emulating the instruction using the syndrome
+information from ESR_EL2.
 
 Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
 ---
- accel/mshv/mshv-all.c        |  5 ++-
- include/system/mshv_int.h    |  1 +
- target/i386/mshv/meson.build |  1 +
- target/i386/mshv/mshv-all.c  | 80 ++++++++++++++++++++++++++++++++++++++++++++
- target/i386/mshv/mshv-cpu.c  | 40 ----------------------
- 5 files changed, 86 insertions(+), 41 deletions(-)
+ include/hw/hyperv/hvgdk_mini.h |  44 +++++++++++++++++
+ target/arm/mshv/mshv-all.c     | 107 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 151 insertions(+)
 
-diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
-index 72721d0f0d..7cf99b44e0 100644
---- a/accel/mshv/mshv-all.c
-+++ b/accel/mshv/mshv-all.c
-@@ -557,7 +557,10 @@ static int mshv_init(AccelState *as, MachineState *ms)
-         return -1;
-     }
+diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
+index fc014aa5d7..63f05b01a6 100644
+--- a/include/hw/hyperv/hvgdk_mini.h
++++ b/include/hw/hyperv/hvgdk_mini.h
+@@ -892,6 +892,50 @@ struct hv_x64_memory_intercept_message {
+     uint8_t instruction_bytes[16];
+ } QEMU_PACKED;
  
--    mshv_init_mmio_emu();
-+    ret = mshv_arch_accel_init(as, ms, mshv_fd);
-+    if (ret < 0) {
-+        return -1;
-+    }
++union hv_arm64_vp_execution_state {
++    uint16_t as_uint16;
++    struct {
++        uint16_t cpl:2;
++        uint16_t debug_active:1;
++        uint16_t interruption_pending:1;
++        uint16_t vtl:4;
++        uint16_t virtualization_fault_active:1;
++        uint16_t reserved:7;
++    };
++};
++
++struct hv_arm64_intercept_message_header {
++    uint32_t vp_index;
++    uint8_t instruction_length;
++    uint8_t intercept_access_type;
++    union hv_arm64_vp_execution_state execution_state;
++    uint64_t pc;
++    uint64_t cpsr;
++};
++
++union hv_arm64_memory_access_info {
++    uint8_t as_uint8;
++    struct {
++        uint8_t gva_valid:1;
++        uint8_t gva_gpa_valid:1;
++        uint8_t hypercall_output_pending:1;
++        uint8_t reserved:5;
++    };
++};
++
++struct hv_arm64_memory_intercept_message {
++    struct hv_arm64_intercept_message_header header;
++    uint32_t cache_type; /* enum hv_cache_type */
++    uint8_t instruction_byte_count;
++    union hv_arm64_memory_access_info memory_access_info;
++    uint16_t reserved1;
++    uint8_t instruction_bytes[4];
++    uint32_t reserved2;
++    uint64_t guest_virtual_address;
++    uint64_t guest_physical_address;
++    uint64_t syndrome;
++};
++
+ union hv_message_flags {
+     uint8_t asu8;
+     struct {
+diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
+index da43333aa6..6ec9811258 100644
+--- a/target/arm/mshv/mshv-all.c
++++ b/target/arm/mshv/mshv-all.c
+@@ -20,6 +20,7 @@
+ #include "target/arm/cpu.h"
+ #include "target/arm/internals.h"
+ #include "target/arm/mshv_arm.h"
++#include "target/arm/helper.h"
  
-     ret = create_vm(mshv_fd, &vm_fd);
-     if (ret < 0) {
-diff --git a/include/system/mshv_int.h b/include/system/mshv_int.h
-index e9f4a2f9b9..81e233be5f 100644
---- a/include/system/mshv_int.h
-+++ b/include/system/mshv_int.h
-@@ -104,6 +104,7 @@ void mshv_arch_amend_proc_features(
-     union hv_partition_synthetic_processor_features *features);
- void mshv_arch_disable_partition_proc_features(
-      union hv_partition_processor_features *disabled_features);
-+int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd);
- int mshv_arch_post_init_vm(int vm_fd);
- void mshv_setup_hvcall_args(AccelCPUState *state);
- 
-diff --git a/target/i386/mshv/meson.build b/target/i386/mshv/meson.build
-index 6091c21887..ce54e134cb 100644
---- a/target/i386/mshv/meson.build
-+++ b/target/i386/mshv/meson.build
-@@ -1,6 +1,7 @@
- i386_mshv_ss = ss.source_set()
- 
- i386_mshv_ss.add(files(
-+  'mshv-all.c',
-   'mshv-cpu.c',
-   'msr.c',
- ))
-diff --git a/target/i386/mshv/mshv-all.c b/target/i386/mshv/mshv-all.c
-new file mode 100644
-index 0000000000..f0b43aa86f
---- /dev/null
-+++ b/target/i386/mshv/mshv-all.c
-@@ -0,0 +1,80 @@
-+/*
-+ * QEMU MSHV support
-+ *
-+ * Copyright Microsoft, Corp. 2026
-+ *
-+ * Authors: Ziqiao Zhou   <ziqiaozhou@microsoft.com>
-+ *          Magnus Kulke  <magnuskulke@microsoft.com>
-+ *          Jinank Jain   <jinankjain@microsoft.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/error-report.h"
-+#include "qemu/memalign.h"
-+
-+#include "system/mshv.h"
-+#include "system/mshv_int.h"
-+#include "system/address-spaces.h"
-+#include "linux/mshv.h"
-+#include "hw/hyperv/hvgdk.h"
-+#include "hw/hyperv/hvgdk_mini.h"
-+#include "hw/hyperv/hvhdk_mini.h"
-+#include "hw/i386/apic_internal.h"
-+
-+#include "cpu.h"
-+#include "emulate/x86_decode.h"
-+#include "emulate/x86_emu.h"
-+#include "emulate/x86_flags.h"
-+
-+#include "trace-accel_mshv.h"
-+#include "trace.h"
-+
-+#include <sys/ioctl.h>
-+
-+int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
-+{
-+    mshv_init_mmio_emu();
-+    return 0;
-+}
-+
-+/*
-+ * Default Microsoft Hypervisor behavior for unimplemented MSR is to send a
-+ * fault to the guest if it tries to access it. It is possible to override
-+ * this behavior with a more suitable option i.e., ignore writes from the guest
-+ * and return zero in attempt to read unimplemented.
-+ */
-+static int set_unimplemented_msr_action(int vm_fd)
-+{
-+    struct hv_input_set_partition_property in = {0};
-+    struct mshv_root_hvcall args = {0};
-+
-+    in.property_code  = HV_PARTITION_PROPERTY_UNIMPLEMENTED_MSR_ACTION;
-+    in.property_value = HV_UNIMPLEMENTED_MSR_ACTION_IGNORE_WRITE_READ_ZERO;
-+
-+    args.code   = HVCALL_SET_PARTITION_PROPERTY;
-+    args.in_sz  = sizeof(in);
-+    args.in_ptr = (uint64_t)&in;
-+
-+    trace_mshv_hvcall_args("unimplemented_msr_action", args.code, args.in_sz);
-+
-+    int ret = mshv_hvcall(vm_fd, &args);
-+    if (ret < 0) {
-+        error_report("Failed to set unimplemented MSR action");
-+        return -1;
-+    }
-+    return 0;
-+}
-+
-+int mshv_arch_post_init_vm(int vm_fd)
-+{
-+    int ret;
-+
-+    ret = set_unimplemented_msr_action(vm_fd);
-+    if (ret < 0) {
-+        error_report("Failed to set unimplemented MSR action");
-+    }
-+
-+    return ret;
-+}
-diff --git a/target/i386/mshv/mshv-cpu.c b/target/i386/mshv/mshv-cpu.c
-index a142f79801..0ae1c643a6 100644
---- a/target/i386/mshv/mshv-cpu.c
-+++ b/target/i386/mshv/mshv-cpu.c
-@@ -2037,46 +2037,6 @@ uint32_t mshv_get_supported_cpuid(uint32_t func, uint32_t idx, int reg)
-     return ret;
+ #include "system/mshv.h"
+ #include "system/mshv_int.h"
+@@ -158,8 +159,114 @@ int mshv_arch_store_vcpu_state(const CPUState *cpu)
+     return store_regs(cpu);
  }
  
--/*
-- * Default Microsoft Hypervisor behavior for unimplemented MSR is to send a
-- * fault to the guest if it tries to access it. It is possible to override
-- * this behavior with a more suitable option i.e., ignore writes from the guest
-- * and return zero in attempt to read unimplemented.
-- */
--static int set_unimplemented_msr_action(int vm_fd)
--{
--    struct hv_input_set_partition_property in = {0};
--    struct mshv_root_hvcall args = {0};
--
--    in.property_code  = HV_PARTITION_PROPERTY_UNIMPLEMENTED_MSR_ACTION;
--    in.property_value = HV_UNIMPLEMENTED_MSR_ACTION_IGNORE_WRITE_READ_ZERO;
--
--    args.code   = HVCALL_SET_PARTITION_PROPERTY;
--    args.in_sz  = sizeof(in);
--    args.in_ptr = (uint64_t)&in;
--
--    trace_mshv_hvcall_args("unimplemented_msr_action", args.code, args.in_sz);
--
--    int ret = mshv_hvcall(vm_fd, &args);
--    if (ret < 0) {
--        error_report("Failed to set unimplemented MSR action");
--        return -1;
--    }
--    return 0;
--}
--
--int mshv_arch_post_init_vm(int vm_fd)
--{
--    int ret;
--
--    ret = set_unimplemented_msr_action(vm_fd);
--    if (ret < 0) {
--        error_report("Failed to set unimplemented MSR action");
--    }
--
--    return ret;
--}
--
- static void mshv_cpu_xsave_init(void)
++static int set_memory_info(const struct hyperv_message *msg,
++                           struct hv_arm64_memory_intercept_message *info)
++{
++    if (msg->header.message_type != HVMSG_GPA_INTERCEPT
++            && msg->header.message_type != HVMSG_UNMAPPED_GPA
++            && msg->header.message_type != HVMSG_UNACCEPTED_GPA) {
++        error_report("invalid message type");
++        return -1;
++    }
++    memcpy(info, msg->payload, sizeof(*info));
++
++    return 0;
++}
++
++static uint64_t mshv_mmio_get_reg(CPUState *cpu, int reg_index)
++{
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
++    CPUARMState *env = &arm_cpu->env;
++    return reg_index < 31 ? env->xregs[reg_index] : 0ULL;
++}
++
++static void mshv_mmio_set_reg(CPUState *cpu, int reg_index, uint64_t val)
++{
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
++    CPUARMState *env = &arm_cpu->env;
++    if (reg_index < 31) {
++        env->xregs[reg_index] = val;
++    }
++}
++
++static int handle_unmapped_mem(int vm_fd, CPUState *cpu,
++                               const struct hyperv_message *msg,
++                               MshvVmExit *exit_reason)
++{
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
++    CPUARMState *env = &arm_cpu->env;
++    struct hv_arm64_memory_intercept_message info = { 0 };
++    int ret;
++    EsrEl2 syndrome;
++
++    ret = set_memory_info(msg, &info);
++    if (ret < 0) {
++        error_report("failed to convert message to memory info");
++        return -1;
++    }
++
++    syndrome.raw = info.syndrome;
++
++    ret = load_regs(cpu);
++    if (ret < 0) {
++        error_report("Failed to load registers");
++        return -1;
++    }
++
++    static const struct arm_emul_ops mshv_arm_emul_ops = {
++        .get_reg = mshv_mmio_get_reg,
++        .set_reg = mshv_mmio_set_reg,
++    };
++
++    ret = arm_emulate_mmio(cpu, syndrome, info.guest_physical_address,
++                           &mshv_arm_emul_ops);
++    if (ret < 0) {
++        error_report("Failed to emulate with syndrome");
++        return -1;
++    }
++
++    /* Advance PC past the faulting instruction */
++    env->pc += (syndrome.il == 1) ? 4 : 2;
++
++    ret = store_regs(cpu);
++    if (ret < 0) {
++        error_report("Failed to store registers");
++        return -1;
++    }
++
++    *exit_reason = MshvVmExitIgnore;
++
++    return 0;
++}
++
+ int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
  {
-     static bool first = true;
++    int ret;
++    int cpu_fd = mshv_vcpufd(cpu);
++
++    ret = ioctl(cpu_fd, MSHV_RUN_VP, msg);
++    if (ret < 0) {
++        *exit = MshvVmExitShutdown;
++        return ret;
++    }
++
++    switch (msg->header.message_type) {
++    case HVMSG_UNRECOVERABLE_EXCEPTION:
++        *exit = MshvVmExitShutdown;
++        break;
++    case HVMSG_GPA_INTERCEPT:
++    case HVMSG_UNMAPPED_GPA:
++        ret = handle_unmapped_mem(vm_fd, cpu, msg, exit);
++        if (ret < 0) {
++            error_report("failed to handle mmio");
++            return -1;
++        }
++        break;
++    default:
++        error_report("Unhandled message type: 0x%x", msg->header.message_type);
++        return -1;
++    }
++
+     return 0;
+ }
+ 
 
 -- 
 2.45.4

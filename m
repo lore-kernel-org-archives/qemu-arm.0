@@ -4,96 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1345EC4451C
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 11:28:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E679C44516
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 12:58:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkgkI-0006Vf-0w; Fri, 17 Jul 2026 07:28:46 -0400
+	id 1wki8E-0007ii-J2; Fri, 17 Jul 2026 08:57:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wkgkF-0006V4-VF
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 07:28:43 -0400
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+ (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
+ id 1wki8B-0007fK-8o
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 08:57:31 -0400
+Received: from mail-oa1-x2e.google.com ([2001:4860:4864:20::2e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wkgkD-0000CD-Fi
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 07:28:42 -0400
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-81ecf499af9so45074777b3.1
- for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 04:28:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1784287719; cv=none;
- d=google.com; s=arc-20260327;
- b=TD29tNIjAlg8YsipYB+DVs5mdxBOrvhQqihbykzQarJ5pFPjJENg+0C+4KWTlksgct
- Ilq6T28A7Kp1stCy/z5sJxkU3aWdDHEEPDilOUELhSN00Qb5fxYEnoOmxVv3YchQ0rs/
- 485oCZ5Md0IlNynCVH3GkqsexYAb2aBR7RBSI+rXz9hnwwFeGRlm8J41rwFYEmoFUNo1
- aZYQ9yZyh9QsxwuQOXqeVozHtkk9FhkYc6TcZ0mVy0RdXxV0cvePkpBofMFV+287I6it
- aqruci5x6e49IMQUxqHanMXZ+VeiVBpkFAXJp3JT8acyNWiCFAUzmR0udxsymAL+mU5x
- 0g/w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=8csP0/y1o4tNevTIFivehVlkNlmNFE5TfYnkt9pwNXE=;
- fh=vzOnVi298tpRV5SQXFA+rnb60BNU4OKqvCxMCgFdLtg=;
- b=m6vIYdXK3+PccvClP6TMPq3+AI/bkuwiN6FX+8/rzzOOqRTE0sASWcOzykUHyUNagW
- 4lWybDPW4O+PYHFeV2+tPBND0a3ELU3BzgEw6m3O/c4/sgJ5JQ5jkwQBajYUZLhzB6ES
- DHUXC2hYn1s4ouDfmE2TUwHvhFpw/8T42MiqxpnUjL8dsjH83ER9zkJM2T/3wdi1sRB5
- +PM5CnA6FnCmHewCmiYB1+uYeahIVmkfZlczhlrn0n+ZO3EzK300ZgvYtGhzqxvnG1Pf
- t3fxh3LOcOBChmgykXiTiu/k506e9Ii9KvdLnJwiN0GIpxmwGDn0IgscNQ1Zj4B468s+
- t+iw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
+ id 1wki88-0003jl-MA
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 08:57:30 -0400
+Received: by mail-oa1-x2e.google.com with SMTP id
+ 586e51a60fabf-451a49abd8aso2794224fac.3
+ for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 05:57:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784287719; x=1784892519; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=8csP0/y1o4tNevTIFivehVlkNlmNFE5TfYnkt9pwNXE=;
- b=MeaoY7KU8CUMk1ymwI4JGKMIEfa29McB0T8+p4pQHv2M1ebsSxdgZ4tXZ7Z9yzCsZz
- JvovlMuXscMn3SoVFv4aurXerpycxtx3XccQzgHNU89KPTFOE4eA64x6r50HBESAveQB
- UYoHmaqkkAD2BY22e3CS7nndjNgJSOy0saXfEZSNfZGYSb4NazLh+ouc8P/hS2+QZ4KD
- 6bFe4qDCwhrTXeAeswI8VsdVenhoo/ptvJJDcPbn9d9HsaRExH5B8wFY3pRib37f/vEa
- EcTPy0YGwcsAHpGQAF8dAjJcDxxHVs18rWDMugZoO0viXP7ImI+sKCKbYgnJkfeB8Un9
- Vv8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784287719; x=1784892519;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ d=mvista.com; s=google; t=1784293046; x=1784897846; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:reply-to:message-id:subject:cc:to:from:date:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=8csP0/y1o4tNevTIFivehVlkNlmNFE5TfYnkt9pwNXE=;
- b=QeNQLGukakyKGr1215QoAhaT4AgVcmrV8dhUStr9iJdibJQb08Mu9hxOYJF7BirKXU
- i55n3J9XORNIgTKuBzqacD7xAcytBe2fcPW/YS60wcF76UgR7kKK4Z4Q/U2/fDsY7RcQ
- JeKSs6D04kJucBKzL3Wl2R4MOJPvXKvA/gX3YCvybriv65Trdd4nBvgeELevFjMBNbBz
- KDAdiGArqgCPeHbODkHE8Q89SEdzIsTYxBleMNwv0dMJSANEm2tD1ePSVfUShU2cD7zW
- LZ2oVMdEEEwrLB0cXRMC0CJSpw4Cp8GOE2T+CxF2+aG9IElKIm6vJzaQBEKJCuXK/Hqc
- lTvA==
+ bh=9cfNw9n/3Kgiq5JYlahgXoL63uVnLgvMj9UFBwfFQFo=;
+ b=JCFYIzn+bovABRjdEGH2U2vfEXaMev6Qs2ameLVVOg00FefJ4S+9TjgtbrVkcH1PpG
+ EWGNJlZ8eLJcydRl9PneorjmKMUr6UTdj8uB5HF7AHH2pqQqMCeNC7t3v1jdAwoosGpI
+ 75t0dYi55GczyPFhc1fwAw7dyngbRMIKdO7Hs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1784293046; x=1784897846;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:reply-to:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=9cfNw9n/3Kgiq5JYlahgXoL63uVnLgvMj9UFBwfFQFo=;
+ b=gnApOoJMI5ljpEeAkA97+nNzgKGwizb7FToAnTqlDMPBRLDHLHAkeqJI0zmzxrHvsE
+ YruCVWtpwwyxrWf1CrJL4NG6iZR0fJKxtw0zHBRYkT5metINiFABAPwvilpNrpejsu3F
+ ZpJfPcWpv02JjGrIG9NRUnmoI7sCtdUtUvGxyQi9X7Zd3Gk990ak6G1TGgryU2+oeW9s
+ ItoUdDc49mDjiwG1HRnz/QtkNzP10E6bQQnyCAwKvcpBi8KY88Yybu9os+fPpYixN9iF
+ 0FQrjj+G3PFxNjjQG7b4VriTH44IXW6CAaWraetdWarwf1lHZpIA3XpTPxcSJbZNcJbk
+ BJDw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoGvQ11gZvi3venSR0wvl7iNJBHTv2ieEfupuxZ4Sx8UUdSJDc22Wkdm6cb2T4rJAGPFfp94LjnOQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yzy1sV7Tz0v5X0/A8IxjUeyKZ7PbNVqkdUc3+A2N/P87O0xKwBP
- 6kgeu4B74Is4rrKa0gIWDpNDExE++loCVqIXO75Vw3JKp1bOddmY6iJ0owhS+5O14jlUCq4fJLV
- oKgY/qDR83PaTWqcio56kOPwpGN2XT1UjxH+Z5bNEgw==
-X-Gm-Gg: AfdE7cmwYiRIoCY/UosNEOR9QhUi/F9+IdJx5lupEuvMI8pQdJ7HjOFYTNvMBPWZxzD
- OhsGjAPg/IVo/tLisyeQgRVMqwgI0Jt8YmZgwAXsS2RENxwxiA/Jkus2H8Nt3/sCLOJABIQv2dY
- MR6PvXt6hLXDIoAi7XiCB62BpeTlb7F4f2r+3OLNSbyX/yA42eRYdNoRxSrtc+gMmzovXBJPFl9
- pgMCdeZDb3Vj5hwWReoD1eh5a5f00O6BUG4i93Nb43ouAkHY321cHrKRcXWmRyphb4PaRGrTYeF
- H6v6+oJ6V9yqxokaR68vIV9qSkljmHw05fDbnKp33eNypyb1VsirzFlG
-X-Received: by 2002:a05:690c:dd2:b0:81d:6af3:b9b8 with SMTP id
- 00721157ae682-81ef26b7ed1mr5205977b3.60.1784287718737; Fri, 17 Jul 2026
- 04:28:38 -0700 (PDT)
+ AHgh+Rrma8b4ftkD//MjTB8qgzTpQCdBDbNpkkkVlCHmiop0hVY/S5oLooYWU8hmnJhPRXpVXN+9Tpt9ag==@nongnu.org
+X-Gm-Message-State: AOJu0YyljErAtTUA0FJaMirU8fk3m6T70siV+T+ydoOXwr2K6fWyr6w/
+ MrwPANtn2C+hd9rgzbygSJ8HtNhZI910pSm4rPWsN+zGfxZNeN4qdvP6gYa80cuVDDo=
+X-Gm-Gg: AfdE7ckFxVePMOVgDOYLiN4UAjb+2RiEABcROuEBdB5JBqI94j9WySaR/suSaxauU4q
+ GzCZOZoObTt1vkj13PIw+KFXoCktM/QOTQK5+9670CpvoV+HVHDc1hdwCL6Rxs7YDyTQx1om54l
+ 6fGwOEMLh20xrqlB1OZt006Tuso4I6taVMThlTSA6BXljI14FMVacAT/lDP+h1yF/Oy3jMWfVNv
+ 6fh109phWFeg3gvw9D9Yl4h53Ro7dFd3Ye4Hor2LtMxItLaydOIlB2r2V3Ipd986IEV+enSgrDw
+ xPl0cKPml0NoEXA9X06aDxRE2YOapNo2qP6xOP7DziBjVEyqYM6k/ddnbfX2Fqgl7bJGA/WoKV+
+ Tvjl8XBUP+VI8UUxEzIiKpVtkxY8fYbJmqtYxUHOTxCuxyG/pTYzLn7p5CXP4+h7qzWpjVaLpBn
+ 9zBNrxU2m4Ky4Rs9W4xfM=
+X-Received: by 2002:a05:6870:40c9:b0:439:c66d:2e5f with SMTP id
+ 586e51a60fabf-456904754ccmr1078613fac.24.1784293046411; 
+ Fri, 17 Jul 2026 05:57:26 -0700 (PDT)
+Received: from mail.minyard.net ([2001:470:b8f6:1b:4026:fe8a:98d1:9d51])
+ by smtp.gmail.com with ESMTPSA id
+ 586e51a60fabf-4568e61cee3sm1174337fac.9.2026.07.17.05.57.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 17 Jul 2026 05:57:25 -0700 (PDT)
+Date: Fri, 17 Jul 2026 07:57:21 -0500
+From: Corey Minyard <cminyard@mvista.com>
+To: Emmanuel Blot <emmanuel.blot@free.fr>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ Alexander Hansen <alexander.hansen@9elements.com>,
+ William de Abreu Pinho <williampinho@meta.com>,
+ Emmanuel Blot <eblot@meta.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH v5 6/8] hw/i2c: parent slaves created with
+ i2c_slave_create_simple
+Message-ID: <alomsclAchz2_bWy@mail.minyard.net>
+References: <20260701-i2c-adc128d818-anacapa-v5-0-fe8292d86b38@free.fr>
+ <20260701-i2c-adc128d818-anacapa-v5-6-fe8292d86b38@free.fr>
+ <CAFEAcA8mygA035i3VSEGzQWppCDaUz0HM5mNU9DvTsOjei1F8Q@mail.gmail.com>
+ <D5F0871C-4AC1-43D6-9BCD-C59A07236A1F@free.fr>
 MIME-Version: 1.0
-References: <20260715131819.14827-1-dingtao0430@163.com>
-In-Reply-To: <20260715131819.14827-1-dingtao0430@163.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Jul 2026 12:28:27 +0100
-X-Gm-Features: AUfX_mytekb_1XJdQ79DW4roY87bbelE0vkQUmnZwMfIafaiVPXObc6z0M7LXHY
-Message-ID: <CAFEAcA8AHg2Sov8rEsU1jNFYUgmBaVV7eBz0YtzExwHTLYvdEw@mail.gmail.com>
-Subject: Re: [PATCH 0/1] imx_serial: add missing migration state
-To: Tao Ding <dingtao0430@163.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, marcandre.lureau@redhat.com, 
- pbonzini@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature";
+ micalg=sha-256; boundary="hK1Lx/WMqfHEEqqg"
+Content-Disposition: inline
+In-Reply-To: <D5F0871C-4AC1-43D6-9BCD-C59A07236A1F@free.fr>
+Received-SPF: pass client-ip=2001:4860:4864:20::2e;
+ envelope-from=cminyard@mvista.com; helo=mail-oa1-x2e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,37 +113,168 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: cminyard@mvista.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 15 Jul 2026 at 14:18, Tao Ding <dingtao0430@163.com> wrote:
->
-> Hi all.
-> The imx_serial is missing a migration status,
-> resulting in no display on the terminal after migration.
-> This patch fixes this issue.
 
-Whoops. Yes, ucr2 has the rx enable and tx enable bits,
-so not migrating it will leave the UART in a completely
-broken state.
+--hK1Lx/WMqfHEEqqg
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I've applied this patch to target-arm.next for 11.1. I
-tweaked the commit message a bit to lead off with a clearer
-description of the problem and to note that it's a migration
-compat break:
+On Thu, Jul 16, 2026 at 07:08:04PM +0200, Emmanuel Blot wrote:
+>=20
+>=20
+> On 10 Jul 2026, at 18:05, Peter Maydell wrote:
+>=20
+> > On Wed, 1 Jul 2026 at 18:31, Emmanuel Blot <emmanuel.blot@free.fr> wrot=
+e:
+> >>
+> >> Slaves created with i2c_slave_create_simple() were left unparented and
+> >> showed up under /machine/unattached with no stable QOM path. Add each
+> >> slave as a QOM child of its bus, named after its I2C address, so it has
+> >> a deterministic and addressable QOM path.
+> >
+> > Should devices on a bus be QOM children of the bus, though?
+> > I would expect that they ought to be QOM children of e.g.
+> > the SoC or machine that created them.
+> >
+> > Do we do this for other bus types, e.g. PCI ?
+>=20
+> If we do not want a I2C device to be a child of its bus, an alternative p=
+arent could be the master/controller of the bus. However as a controller ma=
+y manage several buses, we need to add bus differentiator in the child name=
+, such as bus_num:address.
+>=20
+> I do not think it makes more sense to have the I2C device to be a child o=
+f the SoC rather than its dedicated controller.
+>=20
+> On machines that are statically defined rather than composed from the com=
+mand line (BMCs, complex SoC-based machines, =E2=80=A6), all the I2C device=
+s would appear as a =E2=80=9Cflat=E2=80=9D list of devices, with sometimes =
+many instances of the same I2C device type belonging to very different sub-=
+domains of the machine they instrument and/or drive.
+>=20
+> I tend to think that using a flat schema would likely make use of QOM pat=
+hs more difficult to observe and reach a device at run time: one would have=
+ to iterate the device and bus hierarchy rather than to use QOM path to acc=
+ess a device, or special care would be required for naming device instances=
+=2E I was viewing the role of the QOM paths as a way to expose the machine =
+device hierarchy as a comprehensive and non-ambiguous representation.
+>=20
+> What are the cons for using the device/bus hierarchy for simple buses suc=
+h as SPI & I2C?
+> Is there any drawback to use the device & bus hierarchy to assign a defau=
+lt/fallback QOM path to a device?
+>=20
+> Maybe it=E2=80=99s a matter of ownership? Neither the I2C. bus nor the I2=
+C controller owns the device for sure.
 
-    The imx_serial vmstate is missing the ucr2 field.  This register
-    includes important state like the transmit enable and receive enable
-    bits, so it's likely that after a migration the UART will be in a
-    completely broken state. This bug has been present ever since
-    the UART code was first added to QEMU.
+Well, "own" doesn't have much of a meaning in this context.  It's a
+matter of how it's connected.
 
-    Add ucr2 from imx_serial to vmstate, and increment the version_id.
-    This is a migration compatibility break, but this UART is only used
-    in the various imx-based boards, where we are OK with compat breaks.
+I agree with you philosophically.  From a user's point of view, a
+hierarchy is much more obvious.  Otherwise you will have to create a
+fake hierarchy with the names or you won't be able to find anything.
 
-    [etc]
+I looked at https://lore.kernel.org/qemu-devel/87se5scipx.fsf@pond.sub.org/
+but not much came of that.
 
-thanks
--- PMM
+It would be ideal if the hierarchy was a natural part of the APIs that
+register a device.  If you put a device on an I2C bus, it becomes a
+child of that I2C bus automatically.
+
+However, corner cases exist.  Multi-master I2C chips would have two
+parent I2C busses connected to a single child I2C bus, for instance.
+Anything multi-master would have this issue.  Thinking about it some
+more, a PHY might be on an MDIO bus but also connects to the main
+ethernet interface.  Lots of chips have SPI/I2C control interfaces but
+them some other interface for passing data.  A GPIO that enables a
+chip but that chip is on a CAN bus interface.
+
+So if you did something like this, you would need some sort of "multiple
+inheritance" to cover the corner cases or you would have to live with
+the inconsistency.
+
+Device tree, for instance, has a strict hierarchy, but then has ways to
+reference the other interfaces that can also control a device.  IIRC
+a PHY would sit on the MDIO bus for hierarchy and the ethernet device
+has a reference that says "This is my PHY."
+
+-corey
+
+>=20
+> Emmanuel.
+
+--hK1Lx/WMqfHEEqqg
+Content-Type: application/x-pkcs7-signature
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
+
+MIINIQYJKoZIhvcNAQcCoIINEjCCDQ4CAQExDzANBglghkgBZQMEAgEFADALBgkqhkiG9w0B
+BwGgggpVMIIFXzCCBEegAwIBAgIQD/rh8xorQzw9muFtZDtYizANBgkqhkiG9w0BAQsFADBl
+MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3d3cuZGln
+aWNlcnQuY29tMSQwIgYDVQQDExtEaWdpQ2VydCBBc3N1cmVkIElEIFJvb3QgRzIwHhcNMTkw
+OTIzMTIyNTMyWhcNMzQwOTIzMTIyNTMyWjBqMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGln
+aUNlcnQgSW5jMRkwFwYDVQQLExB3d3cuZGlnaWNlcnQuY29tMSkwJwYDVQQDEyBEaWdpQ2Vy
+dCBBc3N1cmVkIElEIENsaWVudCBDQSBHMjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC
+ggEBAOqxRa06rLwKBvrDb/qQ8RtXfeKA9o0A42oZbLF4GYr4Xdt9JE8r3PJRIOUZD1U3mEln
+4S/aZoS54Q+5Ecs3q2GGT/Z82VeAPLeGvJoT0LS5t/zXeUcbMuDFWgyj33kiesnuusnOWvpI
+SoxN+oBH4oo0+oUiHI65mMjMAlb93x6sabh9kKvHQvHC4x2u7wYv5+NXjnbOhJS/1NjGq+ug
+LMXeldFMz0O5qFIDpn3aQGU0htyJQ2SZyxEqlUrgunsrYj9wgfW7XuhAi2j0y5d9oMT0SuVe
+KFFnQhTEk5B3fq+OBOW0AU2JdW1r929UtRbAr8RpLt05WI2G2RNVVlHYaU0CAwEAAaOCAgQw
+ggIAMB0GA1UdDgQWBBSlYiBQ3LtbV5etI4814lRsqX75TjAfBgNVHSMEGDAWgBTOw0q5mVXy
+uNtgv6l+vVa1lzan1jAOBgNVHQ8BAf8EBAMCAYYwTAYDVR0lBEUwQwYIKwYBBQUHAwIGCCsG
+AQUFBwMEBgorBgEEAYI3CgMEBgorBgEEAYI3FAICBgorBgEEAYI3CgMMBgkqhkiG9y8BAQUw
+EgYDVR0TAQH/BAgwBgEB/wIBADA0BggrBgEFBQcBAQQoMCYwJAYIKwYBBQUHMAGGGGh0dHA6
+Ly9vY3NwLmRpZ2ljZXJ0LmNvbTBFBgNVHR8EPjA8MDqgOKA2hjRodHRwOi8vY3JsMy5kaWdp
+Y2VydC5jb20vRGlnaUNlcnRBc3N1cmVkSURSb290RzIuY3JsMIHOBgNVHSAEgcYwgcMwgcAG
+BFUdIAAwgbcwKAYIKwYBBQUHAgEWHGh0dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwgYoG
+CCsGAQUFBwICMH4MfEFueSB1c2Ugb2YgdGhpcyBDZXJ0aWZpY2F0ZSBjb25zdGl0dXRlcyBh
+Y2NlcHRhbmNlIG9mIHRoZSBSZWx5aW5nIFBhcnR5IEFncmVlbWVudCBsb2NhdGVkIGF0IGh0
+dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9ycGEtdWEwDQYJKoZIhvcNAQELBQADggEBAHZrbCQC
+o3MAIqR0kekGYrC70EAGRDRq11COufNEXhcpv3YH6BMhUoVinPPNgfo5HPrZAFrLK/KPXYdJ
+dgkASGsINabAfY2ljUaJwKlpIewwjS6KuGEn59MgidaAUPh6lbetIoRsLhCqCzAnX1aL99fj
+CMf4NMWLUC8TqotnnrKNuw4JSjx4fcQs+U5T1bbgnyDx+8ybONuIEDvinHdKDu2VjoECzez2
+y/1IVTPlh57zBfjHJQFqLWzHdou8M+ucdJtr2swXII6s3nkq4pfEn7KnbzMS9quFSuyOGILc
+g/3qVwaHNLM5R+8nB5gPI5+u5Uh56w1i+9Ds1pjYAiTHdeUwggTuMIID1qADAgECAhAImztE
+U4o9odkEsuVgiJc8MA0GCSqGSIb3DQEBCwUAMGoxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxE
+aWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xKTAnBgNVBAMTIERpZ2lD
+ZXJ0IEFzc3VyZWQgSUQgQ2xpZW50IENBIEcyMB4XDTI0MDUwMzAwMDAwMFoXDTI2MDUwNjIz
+NTk1OVowQjEcMBoGA1UEAwwTY21pbnlhcmRAbXZpc3RhLmNvbTEiMCAGCSqGSIb3DQEJARYT
+Y21pbnlhcmRAbXZpc3RhLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJm1
+ZE9brEiQnF7EKiV+aYzHyqPFJ+z1wwdJ4wvNiwUCgXJejBxFj04Z7A62Yx6Sp59vfjbo05eA
+IOyaLOFp3vbMBQAe8Qe4XrFv7wPcKZxwS+sgCuBvNs4NVGKYGjiKZW8WPq9ZcEl5BM8BLMrl
+rchAUHJJcMdcEJUsed6rIB//EtnGOe74/vR1Tz3sN1WzC1Wa9COvcbLgVvWC/o4WysUfC9+f
+9/5JzAiib7U7S/iRigkmEahibZgYKB7y6F1v9hxUwHxfa7GtJ8cv6LtRcPLhAO86GgXMfpgq
+k3fxzQu8uwACpINbmQNLcRzg6mHFDYRK3mFp4puUnHO5EUJ8RgUCAwEAAaOCAbYwggGyMB8G
+A1UdIwQYMBaAFKViIFDcu1tXl60jjzXiVGypfvlOMB0GA1UdDgQWBBQiHrUOKuj1vJe3OXAz
+gOP5Qbl2FTAeBgNVHREEFzAVgRNjbWlueWFyZEBtdmlzdGEuY29tMBQGA1UdIAQNMAswCQYH
+Z4EMAQUBATAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwME
+MIGLBgNVHR8EgYMwgYAwPqA8oDqGOGh0dHA6Ly9jcmwzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2Vy
+dEFzc3VyZWRJRENsaWVudENBRzIuY3JsMD6gPKA6hjhodHRwOi8vY3JsNC5kaWdpY2VydC5j
+b20vRGlnaUNlcnRBc3N1cmVkSURDbGllbnRDQUcyLmNybDB9BggrBgEFBQcBAQRxMG8wJAYI
+KwYBBQUHMAGGGGh0dHA6Ly9vY3NwLmRpZ2ljZXJ0LmNvbTBHBggrBgEFBQcwAoY7aHR0cDov
+L2NhY2VydHMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0QXNzdXJlZElEQ2xpZW50Q0FHMi5jcnQw
+DQYJKoZIhvcNAQELBQADggEBADkBdRyx41eUGmsYXBXt3WCsYeDr26rJL7lbx2PvqaZyRCJm
+J9CN2TljF0YHsXSPU+un1RfUlYz+PtcNFIqNuSf3N5fGU0bEpSzXozd/nZ32yWFLkd5CzYyN
+F1xrpbyP2a87jKM0uqEHXZFl7NPiAfEchjFCddciHTOXjN66L+kJ/ZsOoNJLG8yFN401EGew
+Nk8z/hJjWqR7DG0/YWn9h7jQ5SmqkqyhLwTO9s6KoByacWuKpKWSc/DaOuWmROlROrOA1hD8
+0sKqC6jGeLxNpiYzSwBy8qKF0weZdhcHUeO1HOm1csrvWl1UghnlR7SLir3bb5LiesTVvSuR
+Q3aDywAxggKQMIICjAIBATB+MGoxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxEaWdpQ2VydCBJ
+bmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xKTAnBgNVBAMTIERpZ2lDZXJ0IEFzc3Vy
+ZWQgSUQgQ2xpZW50IENBIEcyAhAImztEU4o9odkEsuVgiJc8MA0GCWCGSAFlAwQCAQUAoIHk
+MBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI2MDcxNzEyNTcy
+MVowLwYJKoZIhvcNAQkEMSIEIKT2m/I9mN4SCK7pBv9/F7VE+p6pp02O5OAq8wUaFVgWMHkG
+CSqGSIb3DQEJDzFsMGowCwYJYIZIAWUDBAEqMAsGCWCGSAFlAwQBFjALBglghkgBZQMEAQIw
+CgYIKoZIhvcNAwcwDgYIKoZIhvcNAwICAgCAMA0GCCqGSIb3DQMCAgFAMAcGBSsOAwIHMA0G
+CCqGSIb3DQMCAgEoMA0GCSqGSIb3DQEBAQUABIIBAGpgopbSmKVvsn0ksi//fNO4gIARONFl
+kQ1JXiNc91UpPpLtHg3x4dwL5gaOMZNRwlhqOCh/oSGZjtH7d1Ir5OA1xGEer9tflSQaVGAz
+it+ndZ2/3kZnTVIicX36t3UxRvNeoEywU98XfolPZSskwfCl67NUyEhp9BgiFXssiYGzudP8
+RY9r6+77WTMXzRBzYAeImLlQTDVYbzmg6TJwnij4LpwWEzzZeTX0orWJ7XC6aAuGFM+fVnQH
+88VPAJZVW6u5dpiAK75Xbx481B2EYwmlGljhiV0F4c6tW8z6F7DRu0A8s8wKMr/CRbdK4guZ
+VXv+ZiuYE3nLV/OkXDVCT1w=
+
+--hK1Lx/WMqfHEEqqg--
 

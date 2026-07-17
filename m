@@ -4,90 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66845C44512
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Jul 2026 22:05:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4F10C44516
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 01:47:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkUCV-0004WQ-SZ; Thu, 16 Jul 2026 18:05:03 -0400
+	id 1wkXfc-00062B-Ds; Thu, 16 Jul 2026 21:47:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wkUCU-0004W3-3A
- for qemu-arm@nongnu.org; Thu, 16 Jul 2026 18:05:02 -0400
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wkUCS-0001jO-6E
- for qemu-arm@nongnu.org; Thu, 16 Jul 2026 18:05:01 -0400
-Received: by mail-pg1-x535.google.com with SMTP id
- 41be03b00d2f7-ca00f126b7eso4729608a12.2
- for <qemu-arm@nongnu.org>; Thu, 16 Jul 2026 15:04:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784239498; x=1784844298; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=b5j0f+ollCEoqfIjlMJS818pgRqCyg9kfb00GQ3Q4P8=;
- b=dB94ViRvqQYA62fJTGeClBSSESSyCoOO26LszHULZrpHtK3nKWi0I58cgzNi40TeG1
- kTl98LS7rXtxzac9E9FPpmhBFfLuFNoNcrk5fcJb+ZtNPmxFuay9cWNOQUhNgx/GR84J
- vL5vGvaT7N8TmtZjYAtn/FYf+4urZhXdzBL/CXfNpJSR8Iy1NOaLsB4ysF0nd6HTV8XW
- QagtPDmzKgYJPuw9iKgHUkvW4LuVpXc/MieM+JbUmzlhWu8MCnTeOID8DQg4JRdt1pmd
- jSUzlrYeYv2Qym8qEd+17LgzfRXyWCN5WWgNSKcChSu/aL32mkfMXa8EtAPoZ8Chvx98
- L93g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784239498; x=1784844298;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=b5j0f+ollCEoqfIjlMJS818pgRqCyg9kfb00GQ3Q4P8=;
- b=rHEjZKkxWrkroKJUj4CM9GygLWFLNURRQVfjPGMUIFFzO3cuuGWmQ7+1tfl2+miz9P
- yxrbWdB9dhlUYIu4VFahF60TQFHj3Nb1Pl1Urm2tG7qip3rhxGn2Ymj2jetOj4832e2s
- ojPSrYC5ixWUWRoSnA1TBz0xth6Oij4rfeQcK+gVEptIQsbkrAm4x6nHxoV9NpnKwkId
- VlSeGMaoZxcyzaM31bui/UHuwd5FWWJmh5v4n4tymfVUIdfhC6Zn/bV+trj4TLgx407Y
- 3ZchcUrOenUNYVAz/aNj291fZvdc8I+J9OelMohxVpv4iJFbmkpMB9dm6P8gasHHFXRs
- h1cQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+RqIjkjBrwO5QXpP1hp7BuZF1FGW396CJ23bDVRSD5xK5Xmi+s9Sqks/i9vdkN73Qo73L3YPpefoQw==@nongnu.org
-X-Gm-Message-State: AOJu0YyAft8/2TRKhf/7OjWF1sG5r9bpCU6HstBG497/d9+6w0nivpzK
- txIfGwuYLBQlnIvk9yh4EXQwYSK4jVV72xZu5moY11xUn0ZYJ4yUyRMhKYboUYiB+kE=
-X-Gm-Gg: AfdE7ck1cMNL+4dur58+ztgMYH/4jVDS4j+BudOoEBLbIT59aalU5vx2Gru5xkNPh+e
- rCGO52da1miKi/qMId0fYBwZ2QUtm0yj15cKViHr4TxhkGexxn34nzetEs/bGPzhbIgPMFUwXHt
- h8NX42swRXKZdVLLDi1IJGuQxyg+0N3nAW6QS6MRD6qLhzRvrnWRpwEDcb7nnH1nQczZf6E9bBy
- XVpXyIg42jDLex7L8j59Wswa6Ai/Vrtl6QPd5//z9jnt4mCSErLagmHJxQ4sdJxW3+K0fg2jI0v
- qKtsrewsjy0/o5E+MtLX+eI/1yHfeUETy5NPHJohUJbjpju5Mz+OMbStLz3r6wtKHRpCJHHHrDo
- e5dHcnbhrOIfKNVRKh8dnHpiy+mdK4TDvIbwoodB02EnoFhHwk2H2HSED6J/zF8c6csR9VpofU8
- HbvlLx1A==
-X-Received: by 2002:a05:6a00:a29:b0:848:2f71:b656 with SMTP id
- d2e1a72fcca58-84a6739e5b1mr9204252b3a.65.1784239498450; 
- Thu, 16 Jul 2026 15:04:58 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:bc13:5578:20b0:9bee])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-84a4f7dc8e7sm5355094b3a.47.2026.07.16.15.04.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Jul 2026 15:04:56 -0700 (PDT)
-Date: Thu, 16 Jul 2026 16:04:53 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Gavin Shan <gshan@redhat.com>
-Cc: berrange@redhat.com, kchamart@redhat.com,
- pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
- mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
- eblake@redhat.com, armbru@redhat.com, jpb@kernel.org,
- lorenzo.pieralisi@linaro.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: Re: [RFC v1 09/25] target/arm/kvm-rme: Initialise Realm Initial
- Address space
-Message-ID: <allVhevKwehXUoqz@p14s>
-References: <20260707224306.1202330-1-mathieu.poirier@linaro.org>
- <20260707224306.1202330-10-mathieu.poirier@linaro.org>
- <2a12f7ba-1c6c-460e-bbbe-07187548a719@redhat.com>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wkXfb-00061z-RV; Thu, 16 Jul 2026 21:47:19 -0400
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wkXfa-0001j6-DS; Thu, 16 Jul 2026 21:47:19 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=BDfQrwnm5RF31i/32ypu9vbVpONNrNIroD+cTVFucnB/7VfU3NAea/1nRiO72GEwrZs7qpkqPQOQYG3gYEV6vfpaNXteHYRQIJpN59F6p0Z9AQ9VTKPet9SmY4aFCg4rfZFg5jpfuGbvH0f996Ubgr0HSsG+MzF896jP1M3fqRTw/CRoh8ShXEYretXsMGOnkzUu9AqO2svDQs34wHr0JNM5F/THBY7WRTAz71g/8LGe18R4GyCtx9V5oPaWdicu+FROKTWCvp3AbKSTnQS5dm8V9TTfwa2ULQzWhr9973++7e854Egz8xyU/50Y2glREPR0paHpRl9y2ZSRWf1u8w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=1JG8Etd7Q5/RqtTKxkWB95q5LspQcFuqJhr4/+ZuyjE=;
+ b=V5QXNCARZ2lZJiGf0hixK5guYKCBU/b6OLwaY9yQ+NQJmIXpHBlQUugkfv0wNMAR7cR1IajbO7826/R2I9iSgqKZKiIvwTuXzGYR6VozJxWWeKKmg5IFJLmlugAPtbLK8svBnTdYyiyPDLqsMfL88nzLnNpjVPlDkbpensJZMcN4llsWGkBfZPFMKPxiXIAT4auFvmaydrtFvCex2Opri1M0dl2yifA9xaw9sIhhD7dafKm2mkDuD88hA77lehjjWM8sIrl71YJe2qJNrIKFCFGXMxS3eCWtvHLz5o0qDGVVvSl5MQUOpiqrWJk2+NMYzEyYZ1Is4rxZonal4FfmgQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1JG8Etd7Q5/RqtTKxkWB95q5LspQcFuqJhr4/+ZuyjE=;
+ b=HZk2uPXOSLkeUzPJrgMWZV5OIM0PIVSNqozATF4ItVthJsyK2gpqYx3c5NP33wQQEorYh9jTjgg/Ifq2axfEiwYXocacWSjttTGfqoXn1/wRQPbfwTN35TyVTWDXbMv8i3mnqqUEFp4Ufhk1CPFmtYn5fymNo8RJj/12k+M75zjMebZfEkVXkPzovYUw2DGy04VJ90xybrKQTvBPMaVABuihGQI1yzLSnbbmN7v3TZdmj4v0AH4GiS8lup4Hkus9hOG0vAf7d/QX57ilF0pzvl7VYGxtIJqS+TJ4tKO0m4l45GYgXzy3TIMaqBEyHe1oTvXR8ATpDqsrsRzmzfOnXA==
+Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
+ by KUYPR06MB9015.apcprd06.prod.outlook.com (2603:1096:d10:74::24)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.12; Fri, 17 Jul
+ 2026 01:47:04 +0000
+Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
+ ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
+ ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0223.011; Fri, 17 Jul 2026
+ 01:47:04 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Alistair
+ Francis <alistair@alistair23.me>, Fabiano Rosas <farosas@suse.de>, Laurent
+ Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
+Subject: [PATCH v1 2/3] hw/arm/aspeed_coprocessor: Clarify SCU/SCUIO/FMC
+ fields are shared with PSP SoC to AST2700
+Thread-Topic: [PATCH v1 2/3] hw/arm/aspeed_coprocessor: Clarify SCU/SCUIO/FMC
+ fields are shared with PSP SoC to AST2700
+Thread-Index: AQHdFY4rJZ+Mzc92gkK7ngV/9xBGng==
+Date: Fri, 17 Jul 2026 01:47:04 +0000
+Message-ID: <20260717014701.1683876-3-jamin_lin@aspeedtech.com>
+References: <20260717014701.1683876-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260717014701.1683876-1-jamin_lin@aspeedtech.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|KUYPR06MB9015:EE_
+x-ms-office365-filtering-correlation-id: 772dcc05-bec0-46b7-c6da-08dee3a54da6
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|7416014|376014|366016|23010399003|1800799024|10067099003|921020|38070700021|56012099006|22082099003|18002099003;
+x-microsoft-antispam-message-info: pp4MvTBGO1Pxu2sqDapUaTj3xlg4qoNQfKtoCC0dmGr8Dru39Vv4yyjtiBhifp9GsRDhjAPnaEGzmK47xRpubHXjmMDjeUByHJP8hfwMLPMnYDXPMVJaSvMM1/te8LezYBbKqRdV8+z1x43GmzIIR5YVaDPe29bLiZtSyzKYxe2oBDT30DCJUklP5dJoBgNcR2SH9mKH8A+d8p9HdHoPsKvKPQJ0qGW09DXUe/orA4bZ7kPYMIjMQENF4nJI2YVjUyoFY4SF09hHsoE5dVwogxvPN/9YB9QF0I1L4yufAH5NX+yR7ww3pHhkY4UiyKtH5gS5yLYjkkBmRclSK/XBTJQRqVXZ0FlG5hCCTSBzDUpvz5ywAN6k8IK/aeOFJYF5YZxJr92UeVmjpxc9eD3DLkk21e3jY3mhXBztPvNU74+Cfdrxo6/SVG93x3P+IOEl62guK8dlfkSimAvypkXn7Mti8uwqsgz+W3uq1xiOXpSIOCPFXKTX3XG5rHQcIwNWnTDK0f5jyk+486yyl49TB8TfLlnN1hcQJFq3doQLjzP6ZoRsL812V7I5TYMWjGv+55WdgAFjPzbJuuB7+7ALS+cPW59cOjylgV8V4aSdGASwPlFy84joXxBMYbAT5krrBxFZJQeFPdVbvvtLe+wzmsyXqt3TyFWYqzuLTNRj1Vq9D3cTuWkJsnd8wFxhCTTX5bwc2Dxa8351WxkhRrNOLm2eEQt+zFToRO3h5+J3MW7qIw5ujIPD/ObmggaNXzHY
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(366016)(23010399003)(1800799024)(10067099003)(921020)(38070700021)(56012099006)(22082099003)(18002099003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?ZKFpV6cCa888Ph1S+e4gXhuSdkxub8YEwyPuHj0Q90ppvzvgIX+Zs+apo/?=
+ =?iso-8859-1?Q?nPSZgPZcCJ/Qtu49J979XkdQqRWmy6RTn0MH4K/pYgfCJLuH8/WUyefTJ/?=
+ =?iso-8859-1?Q?/CUncRy4pDjp1Ra6vJcb4Y/rBuCfXM+1zNzFvhGrlFsb2u1ZHDeITPTQhe?=
+ =?iso-8859-1?Q?qtrfpAngQXN4oPzeNF88pNSpCQ2C7kQKj60dzQhciKAdtktjyUOrEWaIyk?=
+ =?iso-8859-1?Q?/83BEn/HjW/9CbzWkR74WQuApe4RekIK2z2OwkqQBvAZinIl8aRCf9TP/G?=
+ =?iso-8859-1?Q?LGkIlHW9A4cpFlCCAkXYAMvZqEBcvgzPi5fuZuQTxcl1Eot/WwiEm9B8my?=
+ =?iso-8859-1?Q?gOO+3f1868M6q5QxKPWx6KlyONodY5E5LehyIiPkn09bjbz611X1igShFi?=
+ =?iso-8859-1?Q?jm8VM2hczXDZ66V13Y+MMwO7zbQ0qiD5YLr1KQWxK9POertB85Oq1LlSYc?=
+ =?iso-8859-1?Q?QRPfA+J5cWi4jt83vaFxbylTkyj0Sm5SxjKjZr+lPFF0mNR+XHbIVF+u/f?=
+ =?iso-8859-1?Q?mWCsCh9ji6bU91C5AoBSTGm6K/8+zdm1jg7iYu0Eu9XQWHY98psbkrvqYF?=
+ =?iso-8859-1?Q?pVxdx7jIsoJ0p/94TwIJlSwX34qA16ZPu9qBOV2pkAe8YisW+DwwbjIsSc?=
+ =?iso-8859-1?Q?K3syo/HPtyHAEAqEY9cdZ78ge/Wz9ANccdgyl5I8Y85soSlBX/DNd16LyE?=
+ =?iso-8859-1?Q?/Nq6TVWHFuMF0c1lHGr9/ZbblsniziHfJzvPNw5B/vjAGM9KgvgMH03IIU?=
+ =?iso-8859-1?Q?Ay9Xjvagn4Ae2js8+KN/ZQGHv6VABPGYgD0j+rBP9jNItgwkU+m0Evvcnn?=
+ =?iso-8859-1?Q?/2iSW0JWb5v/WQ+bX3ckrNGt/GowsRvJGMp/e1o2EGsfdSwXh6Czx5P2+A?=
+ =?iso-8859-1?Q?Dx/ey0W/XOs/3PV/Qnp1nbfmssqyPOGpkGyOAv9OnyNkXE1FIOu8zdWJQo?=
+ =?iso-8859-1?Q?+qEzJuvx48JqARWG+mzrM0KICVFe1t+fz66WMzM0c61StANuU26jm2RIWS?=
+ =?iso-8859-1?Q?R8Q34n/TAL3/5Lr6pvg9K2rBLvACecBbx8Yo54WNK0YvyY8qxlrqXwVl65?=
+ =?iso-8859-1?Q?NoGSGjVbSPbo0x0xmm6c3Qq06Pqfo5VNcnuaSYE+ESYdHgKbmIrZPC/0+3?=
+ =?iso-8859-1?Q?0MDYtn0Y7ofEjzMIGK4LxIFWzP3MvF7qErG0zrT3MQVqi9WDD2Y3fcAuSg?=
+ =?iso-8859-1?Q?vB+1TXQR7DkK980ZUHt65IW2oSW7zw2EHxw7p0YR/uAhmKe6ox5MVld9SD?=
+ =?iso-8859-1?Q?Teu4WCIoGVVL4IKCm/ijxeYE3f8LBbWSbjQ/olGPsmNuaJq9RE2lFraHJp?=
+ =?iso-8859-1?Q?SUUT99GecBU8mOV3IwzEyisI0nkIBSn/E67CKtB8gFJh5CUTQebe8ECq/A?=
+ =?iso-8859-1?Q?yBku6+wDrxyMD30EkFSyK1EBBFrIjWgTDWtSI2eCe7mBO9+6g6X2rk8DC1?=
+ =?iso-8859-1?Q?fLhoGdZERjJQfAxYQ8+stHu41GPIa7J8Gfq+7RJv68NgXY30PhUqYsHRBu?=
+ =?iso-8859-1?Q?mTifB10g7rgj0NCo1YgnZgHFmFdIv0BC7yYdejsZL9pxt8OjaqlVXxmCvw?=
+ =?iso-8859-1?Q?TJSwB32ggAGaZvfcwuxUZL+snhZ5sE5+hMvb5w3w/l4/UQ/DqVNkqwHRib?=
+ =?iso-8859-1?Q?SKtul3xdAfFewaGzoMEQ3j8CvKHGsJDT56NjEk+UZHoVVbwW9hxD23a5j4?=
+ =?iso-8859-1?Q?C33GAJQS0ltLaPhRZ2P94BP2CcIgLsVzmcIZl6FIv26JJ6WRs+qCz8glPN?=
+ =?iso-8859-1?Q?J+KaKu6RvjTDE6NAx6e4twgnjZwfGyOmJmfKnwUHeVrSwRVSb//AZFQPUK?=
+ =?iso-8859-1?Q?MZkl6lQUQA=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2a12f7ba-1c6c-460e-bbbe-07187548a719@redhat.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pg1-x535.google.com
+X-Exchange-RoutingPolicyChecked: Xk2sb6B4HlOakSG5Tz9iPDDQVKdMYhfKf8e3yg+Hwa4N9WWbf1I7hYelGAHIwn9mY/EllLIimS1jncR67+BRoix8N0isVHv7483A9XCz4Z3v3xxNeaUjrachPMdAKlSLzGm6k+5YsmShqFIDa2nzbxo1P4Lc7X0EpQDRwxj0eZm/QfjKL+9HlTa3Iijv/n6qJvYShooljf8ssleuoiVem3jdRRIkCd/dU/3PXVXOgMSFvyBv85rX+tWExp0gIEQs97kr955MND3GY5QuAkSvSlROkgbXj0d4pnCDhQq5nTG13gHC2LaIaubIkqiEAqwev400mBO5E416CkfeAblDSg==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 772dcc05-bec0-46b7-c6da-08dee3a54da6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jul 2026 01:47:04.4803 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ZSBOtQ21sGD3zqqVugqhuSlm6Whs4XK3PZfC0zAwR2AZTdkaMBEc6WOpwyvpCAmEA5fpyjznw8MuAg0us8FAblGPM2iHSTvrGx6j0esyjfk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUYPR06MB9015
+Received-SPF: pass client-ip=2a01:111:f403:c405::7;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYDPR03CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,125 +151,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Jul 10, 2026 at 09:44:11AM +1000, Gavin Shan wrote:
-> Hi Mathieu,
-> 
-> On 7/8/26 8:42 AM, Mathieu Poirier wrote:
-> > From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > 
-> > Initialise the Realm's initial physical address space based on
-> > the VM's configuration.
-> > 
-> > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
-> > ---
-> >   hw/arm/boot.c         |  4 ++++
-> >   target/arm/kvm-rme.c  | 18 ++++++++++++++++++
-> >   target/arm/kvm-stub.c |  4 ++++
-> >   target/arm/kvm_arm.h  | 10 ++++++++++
-> >   4 files changed, 36 insertions(+)
-> > 
-> 
-> Thanks for the posting.
-> 
-> If RmeGuest::init_ram isn't needed in the future, this patch can be dropped.
-> There is no API exposed from (v14) host series to initialize RIPAS for the
-> specified IPA range, as we did in the earlier revisions. So this patch was
-> added for the earlier host serieses, not for (v14) host series any more?
-
-I scrapped it.  There is a lot of churn in the kernel baselines and it is easy
-to overlook a patch.
-
-> 
-> Thanks,
-> Gavin
-> 
-> > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> > index 9b7553dde5e1..bcab21d349b4 100644
-> > --- a/hw/arm/boot.c
-> > +++ b/hw/arm/boot.c
-> > @@ -32,6 +32,7 @@
-> >   #include "qemu/option.h"
-> >   #include "qemu/units.h"
-> >   #include "qemu/bswap.h"
-> > +#include "kvm_arm.h"
-> >   /* Kernel boot protocol is specified in the kernel docs
-> >    * Documentation/arm/Booting and Documentation/arm64/booting.txt
-> > @@ -1210,6 +1211,9 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
-> >       /* We assume the CPU passed as argument is the primary CPU.  */
-> >       info->primary_cpu = cpu;
-> > +    /* Mark all Realm memory as RAM */
-> > +    kvm_arm_rme_init_guest_ram(info->loader_start, info->ram_size);
-> > +
-> >       /* Load the kernel.  */
-> >       if (!info->kernel_filename || info->firmware_loaded) {
-> >           arm_setup_firmware_boot(cpu, info);
-> > diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-> > index f763d5ed6199..697e7d507f0d 100644
-> > --- a/target/arm/kvm-rme.c
-> > +++ b/target/arm/kvm-rme.c
-> > @@ -22,8 +22,16 @@
-> >   #define TYPE_RME_GUEST "rme-guest"
-> >   OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
-> > +#define RME_PAGE_SIZE qemu_real_host_page_size()
-> > +
-> > +typedef struct {
-> > +    hwaddr base;
-> > +    hwaddr size;
-> > +} RmeRamRegion;
-> > +
-> >   struct RmeGuest {
-> >       ConfidentialGuestSupport parent_obj;
-> > +    RmeRamRegion init_ram;
-> >   };
-> >   OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
-> > @@ -91,6 +99,16 @@ int kvm_arm_rme_init(MachineState *ms, KVMState *s)
-> >       return 0;
-> >   }
-> > +void kvm_arm_rme_init_guest_ram(hwaddr base, size_t size)
-> > +{
-> > +    if (!rme_guest) {
-> > +        return;
-> > +    }
-> > +
-> > +    rme_guest->init_ram.base = base;
-> > +    rme_guest->init_ram.size = size;
-> > +}
-> > +
-> >   void kvm_arm_rme_vcpu_init(ARMCPU *cpu)
-> >   {
-> >       if (!rme_guest) {
-> > diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
-> > index 6d52f172c5df..790e1940fd8a 100644
-> > --- a/target/arm/kvm-stub.c
-> > +++ b/target/arm/kvm-stub.c
-> > @@ -42,6 +42,10 @@ bool kvm_arm_el2_supported(void)
-> >       return false;
-> >   }
-> > +void kvm_arm_rme_init_guest_ram(hwaddr base, size_t size)
-> > +{
-> > +}
-> > +
-> >   /*
-> >    * These functions should never actually be called without KVM support.
-> >    */
-> > diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> > index 65ec1b970606..c7dc45595159 100644
-> > --- a/target/arm/kvm_arm.h
-> > +++ b/target/arm/kvm_arm.h
-> > @@ -267,4 +267,14 @@ void kvm_arm_rme_vcpu_init(ARMCPU *cpu);
-> >    */
-> >   int kvm_arm_rme_vm_type(void);
-> > +/*
-> > + * kvm_arm_rme_init_guest_ram
-> > + * @base: base address of RAM
-> > + * @size: size of RAM
-> > + *
-> > + * If the user requested a Realm, set the base and size of guest RAM, in order
-> > + * to initialize the Realm IPA space.
-> > + */
-> > +void kvm_arm_rme_init_guest_ram(hwaddr base, size_t size);
-> > +
-> >   #endif
-> 
+Add a comment above Aspeed27x0CoprocessorState's scu_alias/scuio_alias/=0A=
+fmc_alias and scu/scuio/fmc fields noting that they are not owned by=0A=
+the coprocessor: they point at resources owned by the main PSP SoC,=0A=
+only aliased into this coprocessor's own address space.=0A=
+=0A=
+No functional change.=0A=
+=0A=
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+---=0A=
+ include/hw/arm/aspeed_coprocessor.h | 5 +++++=0A=
+ 1 file changed, 5 insertions(+)=0A=
+=0A=
+diff --git a/include/hw/arm/aspeed_coprocessor.h b/include/hw/arm/aspeed_co=
+processor.h=0A=
+index 23c3b97f06..ff359ab532 100644=0A=
+--- a/include/hw/arm/aspeed_coprocessor.h=0A=
++++ b/include/hw/arm/aspeed_coprocessor.h=0A=
+@@ -49,6 +49,11 @@ struct Aspeed27x0CoprocessorState {=0A=
+ =0A=
+     ARMv7MState armv7m;=0A=
+ =0A=
++   /*=0A=
++    * SCU, SCUIO and FMC are not owned by this coprocessor: they are=0A=
++    * shared with the main PSP SoC, and only aliased into this=0A=
++    * coprocessor's own address space here.=0A=
++    */=0A=
+     MemoryRegion scu_alias;=0A=
+     MemoryRegion scuio_alias;=0A=
+     MemoryRegion fmc_alias;=0A=
+-- =0A=
+2.43.0=0A=
 

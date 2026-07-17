@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A2B9C44515
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 23:23:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59FF3C4451B
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 23:23:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkru2-0001dX-4Y; Fri, 17 Jul 2026 19:23:34 -0400
+	id 1wkrtz-0001bQ-Vo; Fri, 17 Jul 2026 19:23:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wkru0-0001bT-4Z
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:32 -0400
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+ id 1wkrty-0001at-Al
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:30 -0400
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wkrty-00072I-20
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:31 -0400
-Received: by mail-pj1-x1029.google.com with SMTP id
- 98e67ed59e1d1-38a0c7e841fso5644628a91.2
- for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 16:23:29 -0700 (PDT)
+ id 1wkrtv-00071c-FE
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:28 -0400
+Received: by mail-pg1-x52d.google.com with SMTP id
+ 41be03b00d2f7-caf707e3a70so1291353a12.1
+ for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 16:23:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784330608; x=1784935408; darn=nongnu.org;
+ d=linaro.org; s=google; t=1784330606; x=1784935406; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=4HeBVv7zNWopmwOur9m+FBODN8PMLRBceVz2vLyib0k=;
- b=rAcE1KjUTktf0GpAyE1cGpDS4VHF/PS5mGuNAzv5ByexgYtmikJFKqPXbNJzR4RvjT
- ThPpSE8FcvWJf1o7FXZL0S7VvtFZFTrMkrr+DNDbuOOqxoRcqb1B4jWiTMOOCgxVfpDm
- Iz7Gn4RJWfG3ujyCR/3sgdXt+BosJ7gj9p0LGSUDtwsAifpIXbYshgnv8MN+7rJ8QYM5
- 18aEFe16vb+BsOBwAwDWjaLambPVfiAt3t/3y11AMamO+3+4zsPfTCJOkpoIEfWDA4/H
- 7AZL82INtJZL+EZ+TkDVqbwRX1BOrd/5ZU+hOaY4fU/8Zfgj9+Sa4nuDRghP+Yk7f7zO
- 8I5Q==
+ bh=+w4gM7iFRV4DJ/pj745QODhhizrJBFDLfIGD0SvwnhQ=;
+ b=X6QcDhXFWYtTddJfZzOMrZ1unD8DomSrXtYRSq8xbYh8dpgpx35lmeDr2NWOmimJ4J
+ qyxAsvh5dx+cECaFR3jH6rQ5vtRAP7WoH3AdZ6HcPBCMHiXk/dL+g6tTOBKqd/8Uwwhl
+ gluCTZOQywz8JKchBhwGnGMAzAs+CrEjDhPMBc4Ym0k+qkOUkx0idPme2V38OWcRK+RL
+ YuWnUBEY3FC6imgs1Fm3znX2TkMHCcZbS5dgHgVWh2j0OwL8sbFcMfwH/9wYsFK9oYK8
+ I5cRLsCrNsVJCt10RDyeia5seVuHgGwUifMFU5fHghFB2pwcmWxdRHlWFgBo4NzoZdHR
+ Oi8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784330608; x=1784935408;
+ d=1e100.net; s=20251104; t=1784330606; x=1784935406;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=4HeBVv7zNWopmwOur9m+FBODN8PMLRBceVz2vLyib0k=;
- b=NlYI9qJa5IC8qTBHmHaeNloqYoS27oQ4LEgi05Ta6IIZksZS/Ka/u9Zq5UXd1wKSqG
- K0dICpsN789DB4UlWaLACao0Cg5VPJrW7nQoXVqOEL4g356JBNu2Blv6WnJbNr7bms9y
- mHeB7LMmCcmwlbwYqhHrdfMaDfWpNIzDih2kLo6YrJlXDG9eHa597J/D9BAJOfBPqDIQ
- W0CqGBC1gt1k7R/3i/xUgA+mqKveF9Zi6P0sS40CQG99FcgVkom2fsaRCpm5GgAkHd7G
- ZIIpM4RdlDuJYlVryRcMin0Q3zrzc6imH1uDSIUJMTYT6pDnNC0nSN+LSfDxjRpQneko
- DOFQ==
-X-Gm-Message-State: AOJu0YzBU5AIXdGBqrnp2VosCSCDVG8AlfBoTA9KZChsotNmCbAwEGLI
- NAiBrus/ifwoUFblEQpU1cS58aPsDJITRt6ULQ4S3zXMOj9oj0+aqNEdHddytNt2Pqg5hLsm4zO
- LC7PX
-X-Gm-Gg: AfdE7clg+nc5sa6nK+LpkS2NHns6LyhFLL+DLo1pfIqTe19L8j9C/tGftCARHyOE01G
- L2B6+j9M+LD4Av/SejzdLmap+qKv07xmDMeLpWnXFj653eat/kdDIUR4ZWtu9unHpj4REPE7BdD
- Rj9XFvlCd7fSH5O6W4R/prg5kE+Io/cPH8mbDKcpNNYR//XNicLlC6DTuDNiDNE9byUQTreXFMw
- CsdA/1JfiJ65R+YO/KCHt6hDxCiG59pUdJGlt6g9tN94x5mA6+kBgVaSgGVGzmqMd2G8q4w+aqQ
- BnKKi3Vp2y2xgAf7cTGjG1wiCrTh14Iwr4MxG+ZNHPkyJ39waXa4ECggbJWxT9xxU8Xde716MGq
- Vlg/e6Ah5MdvXHOQX266UZulJv9yXXN9dAjImQGWsZiV7ChNiKgFzRZdx/Sz1yMOfG3HDu1IrOa
- bFTjtmGVI=
-X-Received: by 2002:a17:90b:3f85:b0:38d:dbc7:5178 with SMTP id
- 98e67ed59e1d1-38e4b54610fmr5035493a91.22.1784330607940; 
- Fri, 17 Jul 2026 16:23:27 -0700 (PDT)
+ bh=+w4gM7iFRV4DJ/pj745QODhhizrJBFDLfIGD0SvwnhQ=;
+ b=Y9buJPyRj+/Yzgq/tx5KN/MxanploAZgvkhjkhRlEn10QPtOWAO5uXGw6FxHuJHwVu
+ dbdolEQt6Ia22M+lfY+QMxtRmlCf4Rh8duhWTQLYECoJb+UniXb9DvhVF3x1pHWYF0qx
+ /c+FVTHDYnPpwaro2HR891UMIeZDYevW0DOOPnrQiGK2r4DhmT4g3We9sFj0Y2ed/aNy
+ aFW8Cb6XJNs7FcNIqu1Iv++oO7wBS20kd4xnJaV68UpbK56EZmkJw4A4h5B9bnjkQutw
+ 2vjYipchiExT1k2HluIjR+h60gG63uBWgS+VwvZWXKeeKIZZ2dw7N0qge0P2JG/OzGwi
+ dqHg==
+X-Gm-Message-State: AOJu0YxdXSZTNSwYbfXXt4Ca/3FUwceCHed61xESIlmS2iSliuB4neRT
+ L+9O6PJyUURZlunksTvxj0/+4Hmru7H4XzHJ+r0UQ4/fTThXrgvcy4WVdw8oXWouzY4=
+X-Gm-Gg: AfdE7clq/1MFDcBtO+P3JUed3ycznKxKcfT6HsKk7fp88BaE2Qu3WGqpUtuc+SGcIAN
+ 8vfRuuH5Cz4smtNBQFsIJQaXje3ElkMhFuVcpSKVmHjlD0xK1IZblGebSOTyHRwQocX62jmWKXl
+ Ok2yAqcDteVLriUjr3Sv4XhJ+pNWLgIPl3aJp2hCIJD/2Xj4vi4e2z2mo0N00rd3I0AVTLINHSc
+ R8IAxss1YyDrEEslCBKH3K8Oc9+BNHShFjUDpG6rOkIZ5KzXq39Z1ibMjEyF07RsInDnUD771M4
+ w5m8nOUWl/G1Rz9RooHv5NPGb1JX1pueMoWyDPH6+ucvZwX4Odq33W5Egj1G1et1cYODIoTJ0xT
+ l1gnsbgpVxGr+GzIgQLe8q4NhFPDUZQBnDkiCD+H9/7oHZPKw4R2xsc904pA8mJn+wc35vBwJZw
+ EqEwLcG28=
+X-Received: by 2002:a17:90b:4e85:b0:380:86d8:8162 with SMTP id
+ 98e67ed59e1d1-38e3d299be4mr9939591a91.18.1784330605511; 
+ Fri, 17 Jul 2026 16:23:25 -0700 (PDT)
 Received: from stoup.. ([32.140.233.50]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-13ce2a18a47sm8186261c88.8.2026.07.17.16.23.26
+ a92af1059eb24-13ce2a18a47sm8186261c88.8.2026.07.17.16.23.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Jul 2026 16:23:27 -0700 (PDT)
+ Fri, 17 Jul 2026 16:23:24 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 15/17] target/arm: Pass MTEDESC to helper_dc_zva
-Date: Fri, 17 Jul 2026 16:23:03 -0700
-Message-ID: <20260717232306.378988-17-richard.henderson@linaro.org>
+Subject: [PATCH 13/17] accel/tcg: Clean addreses in the user-only probe_access
+ api
+Date: Fri, 17 Jul 2026 16:23:01 -0700
+Message-ID: <20260717232306.378988-15-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260717232306.378988-1-richard.henderson@linaro.org>
 References: <20260717232306.378988-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,99 +99,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Passing the mmu_idx and dcz blocksize in the descriptor is helpful,
-as is unifying the helper interface with other DC insns.
+On the system side, tagged addresses are automatically handled
+by the target's tlb_fill callback.  Allow user-only to accept
+tagged pointers as well.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/helper-a64-defs.h |  2 +-
- target/arm/tcg/mte_helper.c      |  6 +++---
- target/arm/tcg/translate-a64.c   | 21 ++++++++++++---------
- 3 files changed, 16 insertions(+), 13 deletions(-)
+ accel/tcg/user-exec.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/tcg/helper-a64-defs.h b/target/arm/tcg/helper-a64-defs.h
-index 0e56e00f45..ac8f460ffb 100644
---- a/target/arm/tcg/helper-a64-defs.h
-+++ b/target/arm/tcg/helper-a64-defs.h
-@@ -80,7 +80,7 @@ DEF_HELPER_3(vfp_ah_maxh, f16, f16, f16, fpst)
- DEF_HELPER_3(vfp_ah_maxs, f32, f32, f32, fpst)
- DEF_HELPER_3(vfp_ah_maxd, f64, f64, f64, fpst)
- 
--DEF_HELPER_FLAGS_2(dc_zva, TCG_CALL_NO_WG, void, env, i64)
-+DEF_HELPER_FLAGS_3(dc_zva, TCG_CALL_NO_WG, void, env, i64, i32)
- 
- DEF_HELPER_FLAGS_3(pacia, TCG_CALL_NO_WG, i64, env, i64, i64)
- DEF_HELPER_FLAGS_3(pacib, TCG_CALL_NO_WG, i64, env, i64, i64)
-diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index 6e1f701c4c..4fa6066cbc 100644
---- a/target/arm/tcg/mte_helper.c
-+++ b/target/arm/tcg/mte_helper.c
-@@ -1117,11 +1117,11 @@ static void do_dczva_0(CPUARMState *env, vaddr addr, size_t len, void *mem,
-     clear_helper_retaddr();
- }
- 
--void HELPER(dc_zva)(CPUARMState *env, uint64_t addr)
-+void HELPER(dc_zva)(CPUARMState *env, uint64_t addr, uint32_t desc)
+diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+index a35aca7889..3b3ee73d4e 100644
+--- a/accel/tcg/user-exec.c
++++ b/accel/tcg/user-exec.c
+@@ -752,6 +752,7 @@ static int probe_access_internal(CPUArchState *env, vaddr addr,
+                                  int fault_size, MMUAccessType access_type,
+                                  bool nonfault, uintptr_t ra)
  {
-     uintptr_t ra = GETPC();
--    size_t len = (size_t)4 << get_dczid_bs(env_archcpu(env));
--    int mmu_idx = arm_env_mmu_index(env);
-+    size_t len = FIELD_EX32(desc, MTEDESC, SIZEM1) + 1;
-+    int mmu_idx = FIELD_EX32(desc, MTEDESC, MIDX);
-     MemTxAttrs attrs = MEMTXATTRS_UNSPECIFIED;
-     int flags;
-     void *mem;
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 24a0cd8345..c3ff46989a 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -3137,14 +3137,16 @@ static void handle_sys(DisasContext *s, bool isread,
++    vaddr clean_addr = cpu_untagged_addr_vaddr(env_cpu(env), addr);
+     int acc_flag;
+     bool maperr;
+ 
+@@ -769,8 +770,8 @@ static int probe_access_internal(CPUArchState *env, vaddr addr,
+         g_assert_not_reached();
      }
-     case ARM_CP_DC_ZVA:
-         /* Writes clear the aligned block of memory which rt points into. */
--        if (s->mte_active[0]) {
--            tcg_rt = tcg_temp_new_i64();
--            gen_helper_mte_check_zva(tcg_rt, tcg_env, gen_mtedesc_zva(s),
--                                     cpu_reg(s, rt));
--        } else {
--            tcg_rt = cpu_reg(s, rt);
-+        {
-+            TCGv_i32 desc = gen_mtedesc_zva(s);
-+            if (s->mte_active[0]) {
-+                tcg_rt = tcg_temp_new_i64();
-+                gen_helper_mte_check_zva(tcg_rt, tcg_env, desc, cpu_reg(s, rt));
-+            } else {
-+                tcg_rt = cpu_reg(s, rt);
-+            }
-+            gen_helper_dc_zva(tcg_env, tcg_rt, desc);
-         }
--        gen_helper_dc_zva(tcg_env, tcg_rt);
-         return;
-     case ARM_CP_DC_GVA:
-         {
-@@ -3170,11 +3172,12 @@ static void handle_sys(DisasContext *s, bool isread,
-     case ARM_CP_DC_GZVA:
-         {
-             TCGv_i64 clean_addr, tag;
-+            TCGv_i32 desc = gen_mtedesc_zva(s);
  
-             /* For DC_GZVA, we can rely on DC_ZVA for the proper fault. */
-             tcg_rt = cpu_reg(s, rt);
-             clean_addr = clean_data_tbi(s, tcg_rt);
--            gen_helper_dc_zva(tcg_env, clean_addr);
-+            gen_helper_dc_zva(tcg_env, clean_addr, desc);
+-    if (guest_addr_valid_untagged_vaddr(addr)) {
+-        int page_flags = page_get_flags(addr);
++    if (guest_addr_valid_untagged_vaddr(clean_addr)) {
++        int page_flags = page_get_flags(clean_addr);
+         if (page_flags & acc_flag) {
+             if (access_type != MMU_INST_FETCH
+                 && cpu_plugin_mem_cbs_enabled(env_cpu(env))) {
+@@ -823,11 +824,10 @@ void *tlb_vaddr_to_host(CPUArchState *env, vaddr addr,
+ tb_page_addr_t get_page_addr_code_hostp(CPUArchState *env, vaddr addr,
+                                         void **hostp)
+ {
+-    int flags;
+-
+-    flags = probe_access_internal(env, addr, 1, MMU_INST_FETCH, false, 0);
++    int flags = probe_access_internal(env, addr, 1, MMU_INST_FETCH, false, 0);
+     g_assert(flags == 0);
  
-             if (s->ata[0]) {
-                 /* Extract the tag from the register to match STZGM.  */
-@@ -4788,7 +4791,7 @@ static bool trans_STZGM(DisasContext *s, arg_ldst_tag *a)
-      * except the alignment happens before the access.
-      */
-     tcg_gen_andi_i64(addr, addr, -s->dcz_blocksize);
--    gen_helper_dc_zva(tcg_env, addr);
-+    gen_helper_dc_zva(tcg_env, addr, gen_mtedesc_zva(s));
-     return true;
++    addr = cpu_untagged_addr_vaddr(env_cpu(env), addr);
+     *hostp = g2h_untagged_vaddr(addr);
+     return addr;
  }
- 
 -- 
 2.43.0
 

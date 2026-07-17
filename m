@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4198C44515
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 23:26:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D030C44515
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 23:26:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkrts-0001X4-FZ; Fri, 17 Jul 2026 19:23:24 -0400
+	id 1wkrtq-0001Vm-UQ; Fri, 17 Jul 2026 19:23:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wkrtr-0001W6-EG
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:23 -0400
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ id 1wkrtl-0001SQ-DN
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:17 -0400
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wkrto-0006yo-S7
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:23 -0400
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-2cf41bab353so8709635ad.0
- for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 16:23:17 -0700 (PDT)
+ id 1wkrtj-0006y8-Fc
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:17 -0400
+Received: by mail-pj1-x1035.google.com with SMTP id
+ 98e67ed59e1d1-385ea3ce80dso8297673a91.2
+ for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 16:23:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784330596; x=1784935396; darn=nongnu.org;
+ d=linaro.org; s=google; t=1784330594; x=1784935394; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=JU4rrR299+XISy9LcAmasYIokW518EoY+ALWFUyVnMI=;
- b=wISbja5fsNzhH05Ke1YWjE3YN8lVnpAtdLMXqetUZHuVaiQMZeMh4OjsS47f31sNEg
- tEJlNZ0KlLgSHKXVyiii6r1a+MxHSQuzZGqkS05k7zbg5R2tRD9yG+C8hzh4ZfavcTrk
- +0x5M8n06P4TzR5R7Rjvuh1wkMKi7/CvQ++hqHfzoZSbgbD8nBPa8XhnNUzjLNIhiaCB
- IOU9iG/WpsEoPPGFj0cJWkx7x5qvF23bSmK+iGU7GbKRVSbmDYef2fOk5q43j26q0En5
- Zdtmw7ckIwgQnIJ+tT0e2GWYmb75FdELMsHcjgQQTTJyHEEzM2+3EOkRgUpWRVimwbgr
- t6+w==
+ bh=/PwnvtkmnND82rvGSpVtWGJUQzkpj2nFU1NpSAxz+X8=;
+ b=kqvYNqKAKpv3g2TWyWCCG4/odR94j97paC72MzC6wSBx6AXSd1kwmhrjzd2nWOaGwL
+ 6J9t1zQWjRgmshJk62h0Ph506TxgPuMV3hTJC1bwSSAayyhVa2PNM+JwK4nQ1Huu9XJQ
+ NXqyQ8wBR8PsLvrgqFxLXtQzF/fV1MOWTCV8CguSdnBclXb6jlFPHKYWsc+7v0gCah5c
+ fBREW3k3XqQ0PxpRV8kCN8lUnmYZy57NESgqMqYj2KPmmhgMxLcVsfEe4B8C8dTK3pRz
+ nbiHUauCT9Ok9++bz1mCgLbBN3TQsTBKQyyNL0Lq2xl/E7NvIryCPese/1eKFvb7MNjA
+ R3SA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784330596; x=1784935396;
+ d=1e100.net; s=20251104; t=1784330594; x=1784935394;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=JU4rrR299+XISy9LcAmasYIokW518EoY+ALWFUyVnMI=;
- b=bxJiHSyVp6gBj35pWsfck+NeCsRyMZajY4lOc01eT/uzbqT5msPwC8yK4FQw3OTcUR
- L10UauFIzt19PoX+UPNxasNDiE7FRSpVzjazpHlh/4rsIFPCrxzN6R8sBQlIalsvlKbA
- kM97aFKQlvkZuU76tdLpws5m6FdMc/qHvcp8JSGfbnP520uM3MeVphAtcNf4HIZOpv77
- 3sq9y040HbZA3dXaKG6KPUZTKI6MSf4BZxWiEu/+zFe7vlb5udTBMtH4ae3YzIkSOkSV
- O4FPaT7ULm668hOWYz4J6u3sUskQ4Hx45KCg9fRm3xTyGOXN5JPcvA8yve/sz2MK5mvw
- bLdw==
-X-Gm-Message-State: AOJu0Yzur/Ojt5Ebf1lj32BLVchCSu6LCK9Ay4ajVFRUfJjbEb2AfmwM
- RJNwRv04GoWv9Ow00dz+53UJCjaGyRIHSd7vYxP+ttDiEPqOB0dD93n6xQEV0YnQOto315zGsmF
- jFpFE
-X-Gm-Gg: AfdE7cn+flH2Q6Y2u2GzB0VcL5Ju5K4P75NFJSffYmHDp4VogWzr0TavKVEHDUFezw6
- /U+aPws+MQUG4VKt8k87FRYeuCYturcHO7fHcsWAoExprDfiQ30tA3XHyC3emsDkZ00VEDPx2rM
- o7I87wZyCBDP8BTA2D88aW+EqaVEQ7h1q6ShSvNehw92Q2ZhrJXO1YcTryljBzPz2UFyjxbO5ap
- n3u5sbqV8rWFnsSr177x5HawRQK/OUTGquom3wDZ8HcLdIyz5Ypzp1719AXGTwL+vMvYtpUM8GF
- l+JkjcVe9Vvj4bLXysn8KfSCfAXME6MtZwUC+cR+39saYBWr/vDu4rrxyVdIu/KiZZ9dZ/HDnT2
- HUymx2MXJQF5M1nf9Ko4fi93zZ7h2bV+Q/T4Og/hpr3IW4obvxOUmVeAmsx4rKq7HJuzxUwG+uC
- EUwqI201Q=
-X-Received: by 2002:a17:90b:5588:b0:38d:a150:ee04 with SMTP id
- 98e67ed59e1d1-38e4b55aabfmr4944229a91.30.1784330596237; 
- Fri, 17 Jul 2026 16:23:16 -0700 (PDT)
+ bh=/PwnvtkmnND82rvGSpVtWGJUQzkpj2nFU1NpSAxz+X8=;
+ b=sVpv6haHuh1yfSCoDmlNxh8NRVYm87jjMP7uroF10+K9P5klgEUhkxJJ+NjYbytQjI
+ WYwAwP3uH+Hb0ban5wCRXeSkHatlxXX3n+6gf5s2/5UGv6iX/W/Z1weQ0EIm0BhorbS3
+ iu+gxTeC35XKIbqRxvensWfIkznSWliXaGPl89JbCpGum47GvHpVBn/G73tT4Y2qNMp7
+ peQM2Ep7ZfSmJlOWeWQMRBYs19fWbxak/dUjbDURvvZpsuAHGW/R8Vkiv3I23CTz3ZRX
+ d+xxptupO3//bh6WtrOgTYb2igcupNpvJTgKbaAvKORXLn5dZ6bBi3YOajz/ueeIjcGh
+ Kv1g==
+X-Gm-Message-State: AOJu0YxQIdCGqhb/1Pw9Rir5+TS+iSChvdON5cJM5od87ot5XFQm1a9H
+ 7chJVCp5b+I+ZkE2YU4abDenWnu/gM/EQwDjpwXo3gco5J2hQ9mKif2NKiPsD00hb9Olnn8eAa9
+ d8xa0
+X-Gm-Gg: AfdE7clBmCH2nheUV/aFFqy5UJdvizNYyExuk1GaosJiCBxbzDGWLBDl6UGiLPgFJdf
+ CmIN2/eaWBSl4Ncqw1l75Uxs+/C2lk5mMz5TA/p0pcw6dUMaSk+p0ICEF7+OefIajwlR0vnN9FN
+ wNNJID0GfuU6Q/H/ISNuYZYfylQnT0wln+rJLzG9kLfZkCd8aSPEbisoqPLGWSk/tZOTuJxcxbC
+ gI9B4/Z2dHaDMR/7EkFvxoJKeH+JBYYMh47LnqhcS4GSmuxrJLOvGtuopeZZ8SRovQgHNg7+772
+ ftl8bJGEgIfLuzNVR9Zt2eMAy+WjiGHFFPxgMgWdv71J86N6vpGXG3Rck2rd/BHCJ03a0pjSo1r
+ 0kFVBOagVgBlPE+Pwo+kI6e67dQtWx0GKT8pVkvG+sCiliVtbEww+OpgK4q70kKdp1aRBPdjF9l
+ fvfOsOSfO1qI45PqsbpA==
+X-Received: by 2002:a17:90a:d40f:b0:38e:542:6485 with SMTP id
+ 98e67ed59e1d1-38e4b4461e1mr4744360a91.12.1784330594032; 
+ Fri, 17 Jul 2026 16:23:14 -0700 (PDT)
 Received: from stoup.. ([32.140.233.50]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-13ce2a18a47sm8186261c88.8.2026.07.17.16.23.15
+ a92af1059eb24-13ce2a18a47sm8186261c88.8.2026.07.17.16.23.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Jul 2026 16:23:15 -0700 (PDT)
+ Fri, 17 Jul 2026 16:23:13 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 06/17] target/arm: Simplify invalid page test in
- allocation_tag_mem_internal
-Date: Fri, 17 Jul 2026 16:22:54 -0700
-Message-ID: <20260717232306.378988-8-richard.henderson@linaro.org>
+Subject: [PATCH 04/17] target/arm: Raise alignment fault for DC_ZVA on Device
+ memory
+Date: Fri, 17 Jul 2026 16:22:52 -0700
+Message-ID: <20260717232306.378988-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260717232306.378988-1-richard.henderson@linaro.org>
 References: <20260717232306.378988-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,28 +100,143 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Raise alignment fault when DC_ZVA targets Device memory, as required
+by the architecture.  With MTE, an alignment exception is not always
+correctly ordered vs a tag check fail exception -- to be fixed in
+followup patches.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3005
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/mte_helper.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/arm/tcg/mte_helper.c | 104 ++++++++++++++++++++++--------------
+ 1 file changed, 65 insertions(+), 39 deletions(-)
 
 diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index 905e9d7eaf..8f7a222b9c 100644
+index 993aba5df4..dc87dc283f 100644
 --- a/target/arm/tcg/mte_helper.c
 +++ b/target/arm/tcg/mte_helper.c
-@@ -133,10 +133,10 @@ allocation_tag_mem_internal(CPUARMState *env, int ptr_mmu_idx,
-      */
-     flags = probe_access_full(env, ptr, 0, ptr_access, ptr_mmu_idx,
-                               ra == 0, &host, &full, ra);
--    if (probe && (flags & TLB_INVALID_MASK)) {
-+    if (unlikely(flags & TLB_INVALID_MASK)) {
-+        assert(probe);
-         return NULL;
-     }
--    assert(!(flags & TLB_INVALID_MASK));
+@@ -1018,56 +1018,82 @@ bool mte_probe(CPUARMState *env, uint32_t desc, uint64_t ptr)
+     return ret != 0;
+ }
  
-     switch (full->extra.arm.pte_attrs) {
-     case 0xf0: /* Tagged */
+-void HELPER(dc_zva)(CPUARMState *env, uint64_t vaddr_in)
++/* Traps for DC_ZVA, DC_GVA, and friends, after successful page lookup. */
++static int do_dcxva_traps(CPUARMState *env, vaddr addr, size_t len, int mmu_idx,
++                          int flags, MemTxAttrs attrs, uintptr_t ra)
+ {
+-    uintptr_t ra = GETPC();
+-
+-    /*
+-     * Implement DC ZVA, which zeroes a fixed-length block of memory.
+-     * Note that we do not implement the (architecturally mandated)
+-     * alignment fault for attempts to use this on Device memory
+-     * (which matches the usual QEMU behaviour of not implementing either
+-     * alignment faults or any memory attribute handling).
+-     */
+-    int blocklen = 4 << get_dczid_bs(env_archcpu(env));
+-    uint64_t vaddr = vaddr_in & ~(blocklen - 1);
+-    int mmu_idx = arm_env_mmu_index(env);
+-    void *mem;
+-
+-    /*
+-     * Trapless lookup.  In addition to actual invalid page, may
+-     * return NULL for I/O, watchpoints, clean pages, etc.
+-     */
+-    mem = tlb_vaddr_to_host(env, vaddr, MMU_DATA_STORE, mmu_idx);
+-
+ #ifndef CONFIG_USER_ONLY
+-    if (unlikely(!mem)) {
+-        /*
+-         * Trap if accessing an invalid page.  DC_ZVA requires that we supply
+-         * the original pointer for an invalid page.  But watchpoints require
+-         * that we probe the actual space.  So do both.
+-         */
+-        (void) probe_write(env, vaddr_in, 1, mmu_idx, ra);
+-        mem = probe_write(env, vaddr, blocklen, mmu_idx, ra);
++    /*
++     * DC_ZVA traps on pages without caching enabled.  This can be either
++     * pages mapped as Device, or when the mmu is disabled entirely.
++     * We have already detected such pages and have set TLB_CHECK_ALIGNED
++     * so that unaligned accesses are trapped under the same conditions.
++     */
++    if (unlikely(flags & TLB_CHECK_ALIGNED)) {
++        arm_cpu_do_unaligned_access(env_cpu(env), addr, MMU_DATA_STORE,
++                                    mmu_idx, ra);
++    }
+ 
+-        if (unlikely(!mem)) {
+-            /*
+-             * The only remaining reason for mem == NULL is I/O.
+-             * Just do a series of byte writes as the architecture demands.
+-             */
+-            for (int i = 0; i < blocklen; i++) {
+-                cpu_stb_mmuidx_ra(env, vaddr + i, 0, mmu_idx, ra);
+-            }
+-            return;
++    /* Watchpoints have lower priority than alignment faults. */
++    if (unlikely(flags & TLB_WATCHPOINT)) {
++        cpu_check_watchpoint(env_cpu(env), addr & -len, len,
++                             attrs, BP_MEM_WRITE, ra);
++        flags &= ~TLB_WATCHPOINT;
++    }
++#endif
++    return flags;
++}
++
++static void do_dczva_0(CPUARMState *env, vaddr addr, size_t len, void *mem,
++                       int mmu_idx, int flags, uintptr_t ra)
++{
++#ifndef CONFIG_USER_ONLY
++    /*
++     * There are a couple of cases where QEMU wants the slow path;
++     * just do a series of byte writes as the architecture demands.
++     */
++    if (unlikely(flags)) {
++        for (size_t i = 0; i < len; i++) {
++            cpu_stb_mmuidx_ra(env, addr + i, 0, mmu_idx, ra);
+         }
++        return;
+     }
+ #endif
+ 
+     set_helper_retaddr(ra);
+-    memset(mem, 0, blocklen);
++    memset(mem, 0, len);
+     clear_helper_retaddr();
+ }
+ 
++void HELPER(dc_zva)(CPUARMState *env, uint64_t addr)
++{
++    uintptr_t ra = GETPC();
++    size_t len = (size_t)4 << get_dczid_bs(env_archcpu(env));
++    int mmu_idx = arm_env_mmu_index(env);
++    MemTxAttrs attrs = MEMTXATTRS_UNSPECIFIED;
++    int flags;
++    void *mem;
++
++    /* DC_ZVA requires that we supply the original pointer for traps. */
++#ifdef CONFIG_USER_ONLY
++    flags = probe_access_flags(env, addr, 0, MMU_DATA_STORE, mmu_idx,
++                               false, &mem, ra);
++#else
++    CPUTLBEntryFull *full;
++    flags = probe_access_full(env, addr, 0, MMU_DATA_STORE, mmu_idx,
++                              false, &mem, &full, ra);
++    attrs = full->attrs;
++#endif
++
++    flags = do_dcxva_traps(env, addr, len, mmu_idx, flags, attrs, ra);
++
++    /* After traps, treat as aligned blocks. */
++    addr = addr & -len;
++    mem = (void *)((uintptr_t)mem & -len);
++
++    do_dczva_0(env, addr, len, mem, mmu_idx, flags, ra);
++}
++
+ /*
+  * Perform an MTE checked access for DC_ZVA.
+  */
 -- 
 2.43.0
 

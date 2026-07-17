@@ -4,121 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FDE3C44516
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 10:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11378C44514
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 10:28:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkfSd-0002HF-4l; Fri, 17 Jul 2026 06:06:27 -0400
+	id 1wkfn8-0005oT-Q8; Fri, 17 Jul 2026 06:27:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wkfSb-0002Gy-Pu
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 06:06:25 -0400
-Received: from smtpout4.mo539.mail-out.ovh.net ([51.210.91.43])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wkfSY-0006VD-NM
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 06:06:25 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo539.mail-out.ovh.net (Postfix) with ESMTPS id 4h1ltJ5sSsz3wcw;
- Fri, 17 Jul 2026 10:06:16 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alistair@alistair23.me>; Fri, 17 Jul 2026 10:06:16 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.188.54])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4h1ltJ4lQyz230R; Fri, 17 Jul 2026 10:06:16 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.4])
- (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 889921B43DDD;
- Fri, 17 Jul 2026 10:06:14 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-95G0013d3d9c8a-014c-4a97-b0a4-73f3cc8d205f,
- D28FE153D5A3AE5C5EC95691E5B856C14C2CAAE9) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <177abc72-5068-4d13-bac1-037d3b7d1922@kaod.org>
-Date: Fri, 17 Jul 2026 12:06:13 +0200
+ (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
+ id 1wkfn7-0005nA-I2; Fri, 17 Jul 2026 06:27:37 -0400
+Received: from linux.microsoft.com ([13.77.154.182])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <aastharawat@linux.microsoft.com>)
+ id 1wkfn5-0000Oi-8v; Fri, 17 Jul 2026 06:27:37 -0400
+Received: from localhost (unknown [131.107.159.8])
+ by linux.microsoft.com (Postfix) with ESMTPSA id EA90720B716E;
+ Fri, 17 Jul 2026 03:27:23 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com EA90720B716E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+ s=default; t=1784284044;
+ bh=V6+mDNRbCLh/k1VfA774KE0sZK4GfW4wbcvjPJ2UHAg=;
+ h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+ b=YJM6MB32GkSBMh4nwI1EMz4nO4Gi8urHvR1yZbhnk+md3FlmATuhxTkVUTHp/m/Ah
+ N9BLb0J4ucO5sNPk0RnlAwdg5jun38pwDl++hEG//RtWThZz0KrDz3E4YvhpUfbz3I
+ 2apIAvXUNIDxiDjBXtuvpfLO4GP3HLK6K9MocYdg=
+From: Aastha Rawat <aastharawat@linux.microsoft.com>
+Date: Fri, 17 Jul 2026 10:27:19 +0000
+Subject: [PATCH v5 04/13] target/arm/mshv: implement vcpu state operations
+ for ARM64
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/9] Refactor AST2700 SCU preparation for coprocessors
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260717084559.3477061-1-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260717084559.3477061-1-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 18345413085241125933
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFIDc5SN+F73DBaMt+G7q2A7bfI5EkTbuk6dDtmTxU+yX1L7wQDm4aLzH1rDUC6pF34cEQxL24goHhx3SNycYgYspQJ69CQFcj9xPTVJlyBOWTwHIdWhLe7xSP3+p1K6LIUkg7AnsvGZR8K93xXjWv+8IAAPqvtHD3BkwVu8i3XifbZdV+eaRPtdrPxqNMCnhqm8xMVEYFRT9/biEyhtg/FB7iy06s2vJHYCWMi7QlsHfK8/0oz3X8AqBDaNPuB1hodQidBT9ub8YrRAY+FGHiAFWd60vnzZ/5mUZIcmVi6NhJEdD3l+wadWBNJOWRs5Ik4Ar+3AElv/IUe+jT8A7YvBCciqjmByLmpwOxedFLfRJe4Yuest4LYaKNrmy3bcrSYjufyN1BSQfD2OOH5F6slE3vIFn4ibyWgmA93EZHb5UBaxJj23l9RUM0ZyioSEemyHL5V9UokwHai3bimsWFNwgsEqOGMcucp1RKQ6guBTaJs9OFfg0ypoJMykBxGAITmnET36DFQGlMh0HB4FU/nNA0dDizbgA4bapCSSa3OgVKA6WmO0p1qqf6EYDeeC/58WYVh+h7UMemdYeveJZI/IbCLheUwZnsbOojwQezeIgga/fIgPtO5DeNrJ8dbZwDNXVpqwITLft4VUN9FUPbfpZ2kbt0SNRbycu0XzpLbYg
-DKIM-Signature: a=rsa-sha256; bh=bTq3ajt42FUZHheEM7Rh/6K9LAYzA56s2uAzcMz0vwA=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1784282778; v=1;
- b=X3spGolL+Gjbw3sjrU68F98RsLrW1asliIzNyikuLr0zJGKMKIch4EShVyaICPcSZNsc1T4e
- jUFQE+ed+2mTgA+WY4luoW1kNyTb0h9OmPor6dF22f2VuNuKEd3fd0KjaAlEhL9qAjLzuVXQFyo
- d4Mez/nsGn33fGrDI8jeLpnW8IinsTOzFr7ZpuZrhFWZy1Su2YbPAAT5rPZLbzElxkB9ezgUk2U
- dTjVWsY4t8yumfLbL7SQWPukLqp8dnA1e4qIh6bfvE/VtOk3SnyP8/N8cy6YH6VKtdxRQMpGs+l
- CjPVm/pJ9ChIv1g0Nw3EfTEUnpddS1ys93W28qSNPOeVg==
-Received-SPF: pass client-ip=51.210.91.43; envelope-from=clg@kaod.org;
- helo=smtpout4.mo539.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Message-Id: <20260717-mshv_accel_arm64_supp-v5-4-ef07d4c6b337@linux.microsoft.com>
+References: <20260717-mshv_accel_arm64_supp-v5-0-ef07d4c6b337@linux.microsoft.com>
+In-Reply-To: <20260717-mshv_accel_arm64_supp-v5-0-ef07d4c6b337@linux.microsoft.com>
+To: qemu-devel@nongnu.org
+Cc: Magnus Kulke <magnuskulke@linux.microsoft.com>, 
+ Wei Liu <wei.liu@kernel.org>, 
+ =?utf-8?q?Doru_Bl=C3=A2nzeanu?= <dblanzeanu@linux.microsoft.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Anirudh Rayabharam <anirudh@anirudhrb.com>, 
+ Aastha Rawat <aastharawat@linux.microsoft.com>, qemu-arm@nongnu.org, 
+ Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>, 
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+X-Mailer: b4 0.15.1
+Received-SPF: pass client-ip=13.77.154.182;
+ envelope-from=aastharawat@linux.microsoft.com; helo=linux.microsoft.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -135,102 +77,233 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/17/26 10:46, Jamin Lin wrote:
-> The original AST2700 FC support series [1] is fairly large, making it
-> difficult to review all changes together.
-> 
-> To help speed up the review process, this series extracts the SCU/FMC-related
-> refactoring into a standalone prerequisite series.
-> 
-> This series depends on https://github.com/legoater/qemu.git at aspeed-next branch.
-> 
-> v1:
-> Compared with the original series, the SCU preparation patch has been
-> split into three smaller patches:
-> 
-> Introduce Aspeed2700SCUState.
-> Convert AST1700/AST27x0 users to the new SCU subclass.
-> Move the SCU link property into the AST27x0-specific coprocessor
-> implementation.
-> 
-> In addition, the SCUIO reset handling has been separated into an
-> independent patch.
-> 
-> This series contains no functional changes. It is purely a refactoring
-> to isolate AST2700-specific SCU support from the generic implementation
-> and prepare for the subsequent AST2700 FC support.
-> 
-> v2:
->   1. Pass realized PSP SoC to SSP/TSP initialization
->   2. Share single SCUIO instance across PSP, SSP, and TSP
->   3. Share FMC controller with SSP and TSP
->   4. Add Data FIFO-based flash access support for
-> 
-> v3:
->    1. Add Data FIFO mode test
->    2. Clarify SCU/SCUIO/FMC fields are shared with PSP SoC to AST2700
->    3. Bump vmstate version after ASPEED_SMC_R_MAX increase
-> 
-> v4:
->    1. Fix to apply patch failure
-> 
-> Supersedes the following patches from the original FC support series [1]:
-> 
-> Patch 1:
-> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-2-jamin_lin@aspeedtech.com/
-> 
-> Patch 2:
-> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-3-jamin_lin@aspeedtech.com/
-> 
-> Patch 4:
-> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-12-jamin_lin@aspeedtech.com/
-> 
-> Patch 15:
-> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-16-jamin_lin@aspeedtech.com/
-> 
-> Patch 18:
-> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-19-jamin_lin@aspeedtech.com/
-> 
-> Patch
-> [1] Original AST2700 FC support series:
-> https://patchwork.kernel.org/project/qemu-devel/cover/20260417032837.2664122-1-jamin_lin@aspeedtech.com/
-> 
-> Jamin Lin (9):
->    hw/misc/aspeed_scu: Introduce Aspeed2700SCUState
->    hw/arm/aspeed: Use Aspeed2700SCUState for AST2700 users
->    hw/arm/aspeed_ast27x0: Move SCU link into AST27x0 coprocessors
->    hw/misc/aspeed_scu: Add separate reset handler for AST2700 SCUIO
->    hw/arm/aspeed_ast27x0: Pass realized PSP SoC to SSP/TSP initialization
->    hw/arm/ast27x0: Share single SCUIO instance across PSP, SSP, and TSP
->    hw/arm/ast27x0: Share FMC controller with SSP and TSP
->    hw/ssi/aspeed_smc: Add Data FIFO-based flash access support for
->      AST2700
->    tests/qtest/ast2700-smc-test: Add Data FIFO mode test
-> 
->   include/hw/arm/aspeed_ast1700.h     |   2 +-
->   include/hw/arm/aspeed_coprocessor.h |  16 +++-
->   include/hw/arm/aspeed_soc.h         |   1 +
->   include/hw/misc/aspeed_scu.h        |   5 ++
->   include/hw/ssi/aspeed_smc.h         |   3 +-
->   tests/qtest/aspeed-smc-utils.h      |   4 +
->   hw/arm/aspeed_ast27x0-fc.c          |  38 ++++++---
->   hw/arm/aspeed_ast27x0-ssp.c         |  56 ++++++++++---
->   hw/arm/aspeed_ast27x0-tsp.c         |  56 ++++++++++---
->   hw/arm/aspeed_ast27x0.c             |  16 ++--
->   hw/arm/aspeed_coprocessor_common.c  |   2 -
->   hw/misc/aspeed_scu.c                |  20 ++++-
->   hw/ssi/aspeed_smc.c                 | 117 +++++++++++++++++++++++++---
->   tests/qtest/aspeed-smc-utils.c      | 102 ++++++++++++++++++++++++
->   tests/qtest/ast2700-smc-test.c      |   4 +
->   15 files changed, 384 insertions(+), 58 deletions(-)
-> 
+Add support for reading and writing ARM64 CPU registers in the MSHV
+accelerator. This includes functions to set and get registers,
+initialize and destroy VCPU state, and manage register state
+synchronization between QEMU and hypervisor.
 
-Applied to
+Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+---
+ include/hw/hyperv/hvgdk_mini.h |  42 +++++++++++++++
+ target/arm/mshv/mshv-all.c     | 119 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 161 insertions(+)
 
-     https://github.com/legoater/qemu aspeed-next
+diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
+index f8838a31bb..740a73c85a 100644
+--- a/include/hw/hyperv/hvgdk_mini.h
++++ b/include/hw/hyperv/hvgdk_mini.h
+@@ -29,6 +29,46 @@ typedef enum hv_register_name {
+     HV_REGISTER_PENDING_EVENT0       = 0x00010004,
+     HV_REGISTER_PENDING_EVENT1       = 0x00010005,
+ 
++#if defined(__aarch64__)
++    HV_ARM64_REGISTER_XZR   = 0x0002FFFE,
++    HV_ARM64_REGISTER_X0    = 0x00020000,
++    HV_ARM64_REGISTER_X1    = 0x00020001,
++    HV_ARM64_REGISTER_X2    = 0x00020002,
++    HV_ARM64_REGISTER_X3    = 0x00020003,
++    HV_ARM64_REGISTER_X4    = 0x00020004,
++    HV_ARM64_REGISTER_X5    = 0x00020005,
++    HV_ARM64_REGISTER_X6    = 0x00020006,
++    HV_ARM64_REGISTER_X7    = 0x00020007,
++    HV_ARM64_REGISTER_X8    = 0x00020008,
++    HV_ARM64_REGISTER_X9    = 0x00020009,
++    HV_ARM64_REGISTER_X10   = 0x0002000A,
++    HV_ARM64_REGISTER_X11   = 0x0002000B,
++    HV_ARM64_REGISTER_X12   = 0x0002000C,
++    HV_ARM64_REGISTER_X13   = 0x0002000D,
++    HV_ARM64_REGISTER_X14   = 0x0002000E,
++    HV_ARM64_REGISTER_X15   = 0x0002000F,
++    HV_ARM64_REGISTER_X16   = 0x00020010,
++    HV_ARM64_REGISTER_X17   = 0x00020011,
++    HV_ARM64_REGISTER_X18   = 0x00020012,
++    HV_ARM64_REGISTER_X19   = 0x00020013,
++    HV_ARM64_REGISTER_X20   = 0x00020014,
++    HV_ARM64_REGISTER_X21   = 0x00020015,
++    HV_ARM64_REGISTER_X22   = 0x00020016,
++    HV_ARM64_REGISTER_X23   = 0x00020017,
++    HV_ARM64_REGISTER_X24   = 0x00020018,
++    HV_ARM64_REGISTER_X25   = 0x00020019,
++    HV_ARM64_REGISTER_X26   = 0x0002001A,
++    HV_ARM64_REGISTER_X27   = 0x0002001B,
++    HV_ARM64_REGISTER_X28   = 0x0002001C,
++    HV_ARM64_REGISTER_FP    = 0x0002001D,
++    HV_ARM64_REGISTER_LR    = 0x0002001E,
++    HV_ARM64_REGISTER_PC    = 0x00020022,
++
++    /* AArch64 System Register Descriptions: General system control registers */
++    HV_ARM64_REGISTER_MIDR_EL1   = 0x00040051,
++    HV_ARM64_REGISTER_MPIDR_EL1  = 0x00040001,
++
++#elif defined(__x86_64__)
+     /* X64 User-Mode Registers */
+     HV_X64_REGISTER_RAX     = 0x00020000,
+     HV_X64_REGISTER_RCX     = 0x00020001,
+@@ -184,6 +224,8 @@ typedef enum hv_register_name {
+     /* Other MSRs */
+     HV_X64_REGISTER_MSR_IA32_MISC_ENABLE = 0x000800A0,
+ 
++#endif
++
+     /* Misc */
+     HV_X64_REGISTER_HYPERCALL       = 0x00090001,
+     HV_REGISTER_GUEST_OS_ID         = 0x00090002,
+diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
+index ac2302ff6c..a3ca60a4d5 100644
+--- a/target/arm/mshv/mshv-all.c
++++ b/target/arm/mshv/mshv-all.c
+@@ -10,17 +10,128 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include <sys/ioctl.h>
++
++#include "qemu/error-report.h"
++#include "qemu/memalign.h"
+ #include "hw/arm/virt.h"
++
++#include "system/cpus.h"
++#include "target/arm/cpu.h"
++
+ #include "system/mshv.h"
+ #include "system/mshv_int.h"
++#include "hw/hyperv/hvgdk_mini.h"
++
++static const enum hv_register_name STANDARD_REGISTER_NAMES[32] = {
++    HV_ARM64_REGISTER_X0,
++    HV_ARM64_REGISTER_X1,
++    HV_ARM64_REGISTER_X2,
++    HV_ARM64_REGISTER_X3,
++    HV_ARM64_REGISTER_X4,
++    HV_ARM64_REGISTER_X5,
++    HV_ARM64_REGISTER_X6,
++    HV_ARM64_REGISTER_X7,
++    HV_ARM64_REGISTER_X8,
++    HV_ARM64_REGISTER_X9,
++    HV_ARM64_REGISTER_X10,
++    HV_ARM64_REGISTER_X11,
++    HV_ARM64_REGISTER_X12,
++    HV_ARM64_REGISTER_X13,
++    HV_ARM64_REGISTER_X14,
++    HV_ARM64_REGISTER_X15,
++    HV_ARM64_REGISTER_X16,
++    HV_ARM64_REGISTER_X17,
++    HV_ARM64_REGISTER_X18,
++    HV_ARM64_REGISTER_X19,
++    HV_ARM64_REGISTER_X20,
++    HV_ARM64_REGISTER_X21,
++    HV_ARM64_REGISTER_X22,
++    HV_ARM64_REGISTER_X23,
++    HV_ARM64_REGISTER_X24,
++    HV_ARM64_REGISTER_X25,
++    HV_ARM64_REGISTER_X26,
++    HV_ARM64_REGISTER_X27,
++    HV_ARM64_REGISTER_X28,
++    HV_ARM64_REGISTER_FP,
++    HV_ARM64_REGISTER_LR,
++    HV_ARM64_REGISTER_PC,
++};
++
++static int set_standard_regs(const CPUState *cpu)
++{
++    size_t n_regs = ARRAY_SIZE(STANDARD_REGISTER_NAMES);
++    struct hv_register_assoc assocs[ARRAY_SIZE(STANDARD_REGISTER_NAMES)] = {};
++    int ret;
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
++    CPUARMState *env = &arm_cpu->env;
++
++    for (size_t i = 0; i < n_regs - 1; i++) {
++        assocs[i].name = STANDARD_REGISTER_NAMES[i];
++        assocs[i].value.reg64 = env->xregs[i];
++    }
++
++    /* Last register is the program counter */
++    assocs[n_regs - 1].name = STANDARD_REGISTER_NAMES[n_regs - 1];
++    assocs[n_regs - 1].value.reg64 = env->pc;
++
++    ret = mshv_set_generic_regs(cpu, assocs, n_regs);
++    if (ret < 0) {
++        error_report("failed to set standard registers");
++        return -1;
++    }
++
++    return 0;
++}
++
++static int get_standard_regs(CPUState *cpu)
++{
++    size_t n_regs = ARRAY_SIZE(STANDARD_REGISTER_NAMES);
++    struct hv_register_assoc assocs[ARRAY_SIZE(STANDARD_REGISTER_NAMES)] = {};
++    int ret;
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
++    CPUARMState *env = &arm_cpu->env;
++
++    for (size_t i = 0; i < n_regs; i++) {
++        assocs[i].name = STANDARD_REGISTER_NAMES[i];
++    }
++    ret = mshv_get_generic_regs(cpu, assocs, n_regs);
++    if (ret < 0) {
++        error_report("failed to get standard registers");
++        return -1;
++    }
++
++    for (size_t i = 0; i < n_regs - 1; i++) {
++        env->xregs[i] = assocs[i].value.reg64;
++    }
++    env->pc = assocs[n_regs - 1].value.reg64;
++
++    return 0;
++}
+ 
+ static int load_regs(CPUState *cpu)
+ {
++    int ret;
++
++    ret = get_standard_regs(cpu);
++    if (ret < 0) {
++        error_report("Failed to load standard registers");
++        return -1;
++    }
++
+     return 0;
+ }
+ 
+ static int store_regs(const CPUState *cpu)
+ {
++    int ret;
++
++    ret = set_standard_regs(cpu);
++    if (ret < 0) {
++        error_report("Failed to store standard registers");
++        return -1;
++    }
++
+     return 0;
+ }
+ 
+@@ -41,12 +152,20 @@ int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
+ 
+ void mshv_arch_init_vcpu(CPUState *cpu)
+ {
++    AccelCPUState *state = cpu->accel;
+ 
++    mshv_setup_hvcall_args(state);
+ }
+ 
+ void mshv_arch_destroy_vcpu(CPUState *cpu)
+ {
++    AccelCPUState *state = cpu->accel;
++
++    if (state->hvcall_args.base) {
++        qemu_vfree(state->hvcall_args.base);
++    }
+ 
++    state->hvcall_args = (MshvHvCallArgs){0};
+ }
+ 
+ int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
 
-Thanks,
-
-C.
+-- 
+2.45.4
 
 

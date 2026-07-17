@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC3BFC44516
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 10:28:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A573AC44514
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 10:28:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkfnY-0005xo-K3; Fri, 17 Jul 2026 06:28:04 -0400
+	id 1wkfnB-0005rK-FF; Fri, 17 Jul 2026 06:27:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wkfnW-0005wL-P4; Fri, 17 Jul 2026 06:28:02 -0400
+ id 1wkfnA-0005pY-7W; Fri, 17 Jul 2026 06:27:40 -0400
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wkfnV-0000Pn-AL; Fri, 17 Jul 2026 06:28:02 -0400
+ id 1wkfn8-0000Pn-L7; Fri, 17 Jul 2026 06:27:39 -0400
 Received: from localhost (unknown [131.107.159.8])
- by linux.microsoft.com (Postfix) with ESMTPSA id 7FA9320B717B;
- Fri, 17 Jul 2026 03:27:30 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 7FA9320B717B
+ by linux.microsoft.com (Postfix) with ESMTPSA id B5EB620B7172;
+ Fri, 17 Jul 2026 03:27:26 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com B5EB620B7172
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1784284050;
- bh=5l8DrEdAHkntUshww49dDf0wcUXhQ57J8wAn70K6C9w=;
+ s=default; t=1784284046;
+ bh=D2z6HfHW2i2BA1K8lCMT6aQQNina22ihNIdgfmM8pWs=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=pGkDAlU3+OirL/YehemJJoeLAWiFUryl0SWx29yu9sHFpJfRCFsKR19LsbafreW9F
- 3CiMHeWY3Gm1RAoVpjbdpezCmHpNIIkzzfittLgn9TWAv52UaokzRLPQ5kOTaHqNaO
- dYGzhhKhZNVttvqQgisrvL/l31+yALVqk4BYT3lY=
+ b=aKkcmuP3fMl6gXS87KW7HzayoVVHKMpZ0BhJCjPtkkKHYH1eBVJHiJkle0mBAppff
+ JGDu2IuCwktwxkQii03s04m92ZFacYfiGXRUa9dncgLnNNxfGokEynHLkCLnhHiKIu
+ FrkuLqFgQxrBtH+iRRIsTvfwUWubzfopTf2Gp3vQ=
 From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Fri, 17 Jul 2026 10:27:28 +0000
-Subject: [PATCH v5 13/13] MAINTAINERS: updates for MSHV arm64 code
+Date: Fri, 17 Jul 2026 10:27:23 +0000
+Subject: [PATCH v5 08/13] target/arm: cpu: Mark MSHV supporting PSCI 1.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20260717-mshv_accel_arm64_supp-v5-13-ef07d4c6b337@linux.microsoft.com>
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260717-mshv_accel_arm64_supp-v5-8-ef07d4c6b337@linux.microsoft.com>
 References: <20260717-mshv_accel_arm64_supp-v5-0-ef07d4c6b337@linux.microsoft.com>
 In-Reply-To: <20260717-mshv_accel_arm64_supp-v5-0-ef07d4c6b337@linux.microsoft.com>
 To: qemu-devel@nongnu.org
@@ -76,36 +76,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
+MSHV supports PSCI 1.3. Expose this version to guests.
 
-Add myself and Aastha Rawat as maintainers.
-
-Add Magnus Kulke as reviewer.
-
-Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
+Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- MAINTAINERS | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ target/arm/cpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index ecb8cfdc41..e35e3160d9 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -614,6 +614,14 @@ R: Doru Blânzeanu <dblanzeanu@linux.microsoft.com>
- S: Supported
- F: target/i386/mshv/
- 
-+ARM64 MSHV CPUs
-+M: Anirudh Rayabharam <anirudh@anirudhrb.com>
-+M: Aastha Rawat <aastharawat@linux.microsoft.com>
-+R: Magnus Kulke <magnus.kulke@linux.microsoft.com>
-+S: Supported
-+F: target/arm/mshv/
-+F: hw/intc/arm_gicv3_mshv.c
-+
- X86 Instruction Emulator
- M: Roman Bolshakov <rbolshakov@ddn.com>
- R: Phil Dennis-Jordan <phil@philjordan.eu>
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index c5037a145a..95682ef067 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1293,7 +1293,7 @@ static void arm_cpu_initfn(Object *obj)
+     if (tcg_enabled() || hvf_enabled()) {
+         /* TCG and HVF implement PSCI 1.1 */
+         cpu->psci_version = QEMU_PSCI_VERSION_1_1;
+-    } else if (whpx_enabled()) {
++    } else if (whpx_enabled() || mshv_enabled()) {
+         cpu->psci_version = QEMU_PSCI_VERSION_1_3;
+     }
+ }
 
 -- 
 2.45.4

@@ -4,102 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32396C44515
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 18:16:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85C56C44516
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 23:23:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkn6R-00062j-Qs; Fri, 17 Jul 2026 14:16:03 -0400
+	id 1wkrtn-0001Tl-U0; Fri, 17 Jul 2026 19:23:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wkn67-00060A-OE
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 14:15:45 -0400
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wkrtj-0001Re-3C
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:15 -0400
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wkn66-0007Mg-9I
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 14:15:43 -0400
-Received: by mail-yw1-x1135.google.com with SMTP id
- 00721157ae682-80a123ef90aso33463667b3.0
- for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 11:15:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1784312140; cv=none;
- d=google.com; s=arc-20260327;
- b=saE/WV9XajK2ewnbp6ZTyFLyfj6udsE4Yfzz2VCf4Yzvzb2fvyTFwgXusuCRcJrhV7
- T4Dzl55TN3b2nilXiaXJZrGFq2HmJSNb79ObuL1shd/hz78+CnJ1f9V20zIgN6EEwt+L
- d1B3jCSGw0Pl8I9b3UMihJk4ky5gRaz7R7TiOVLHYwbTaKIBuVvpw9E57cIrXvGBLfP4
- v6ditUNCQ4XjGfxatkNz5L9wGgxK+ajQeSgPMICLkjHbkmr9zJZ9rh7m01HzOkdMbbTX
- Pb03VPNKU3NtyXvLwrvJgVDLgDA91IHBF7BHa0gZRtllXvFYfGoLzgTMU3LUg91niAvK
- iU3A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=u5/REWPssNQzJgBC/rzOpgJs6qngnLwQxtd688bC4/Q=;
- fh=7F9C3pNjlt+Jhy3kxzs5QBymnfvKX2O/dOn69LFCl34=;
- b=XmfnOq7VDOu4lzYaY6l/JwGZxVJnYjFlbDqgzJj7hpkId5YVfBhB0jScYxAZh4Pym/
- 9jwuNvSTBtgVJDPzh7R4uMy64IvpkxyJxozKEowBTm3p3GPlpRV444XSHjA1optfIoOi
- K8AswPDOQ0lcnHIH2EmfMKjxg4qXHol3DykR8AE9JU1Gi4i3MJabeA7/qFwaNERh6ct6
- NL1wrKRF8T6KgtasZSQYWmvWc3/ZTATUA74C0tU4TL+EPx+7fMrUQinlekAMpMPs931L
- TbKvZStY5Wn9zPl/NA+TPOU+NpnsGjf0vxdBsF3ylTj0k5P24zDl186hmSJu7jSWRQmx
- AZpg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wkrth-0006xT-D5
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:14 -0400
+Received: by mail-pj1-x102e.google.com with SMTP id
+ 98e67ed59e1d1-38e08baf860so5941852a91.2
+ for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 16:23:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784312140; x=1784916940; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=u5/REWPssNQzJgBC/rzOpgJs6qngnLwQxtd688bC4/Q=;
- b=goAS5oilKCaVhbYcoExHaWaARJKr1IW8oWzcjqX4l4fq8N5+VFTKSIGGagzKZXNhEQ
- JdDIjflMzv9xPbp2NatAsuy/7yzV+gBgwRkXhajjcRUb0AUbEixHpxOqNDyNL9kaM+ga
- G8kdlgOEozWynV4JMdi3giCCZJBoy48T+TcE9ciSPBFo9Dh4XmPMgBBqyXe4ihSLGEsW
- fH6oQrz6ZjxzgXPCxXJJcQ/+sffF6tRtsia2axANQNMuciRR3AZNF14rHLjeCA9Gfl9m
- peuiekWncvoGbEYwUHSYe+VmjwV6gdrgK1RcSHC/2M2hoFrQk9vEIqjVIvDFWuwiV5mK
- UUMg==
+ d=linaro.org; s=google; t=1784330592; x=1784935392; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=DLlDGxtFFW3g2iYlBDYJu83t+bys0fFHlAOwYxW5TVQ=;
+ b=xD/8HEMX6QCkkdbQ7teHj7vv/S//pXo0xcSAYvvTOXD5fQTGn6y8x/Jl6AMnGrEwNb
+ HxavYc5xE3eojJ8qWDllxp5R2aNdQV5vs92vPyfihtUcUzNgh19ViyZejHcRStLMducO
+ RRIREbr00kftYGPsgLvoH3riQYk5v1FohZe0umVA0Ofc3VdDN8jqeWSElP2Kltb7KxgX
+ AVh0gqN3h9seGmeVwdP1ySfVjZMl8weo3tzQkVhDjHvvudFGzU009ERRk3RrjKMh995t
+ jz1FQLpr5LWHKeGh4MfvmSW2VU37uoByc1DOUboCmbO2jHsQgLtCNZNP5+ZTLi8y1MJh
+ GU+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784312140; x=1784916940;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=u5/REWPssNQzJgBC/rzOpgJs6qngnLwQxtd688bC4/Q=;
- b=e6XqldRcah803brP7OXaXjNhHKE+80bW+KG0fFVdJITF0jmuIgN+NVN9kN1qwFZ9IV
- djrLzvsTg1OCr7fLFpm/s6E+TsvtOM6YKx7uHVGEWmxTri37M21/hR8LpJW1tnY6X1G8
- csU5iK9UVdrheNA4Qg+uC9QUED5I2YlnnRzwAM30W2YgujJXPTQqGOvj+LMMwnILd1lw
- bIbNUEgfhEOLlaPSFOeOq10DTBoSxLX3bOWkAuK2x5U1Xnjo4MLG5I6AaJdiD/9a4Yj6
- QgJLN7/kUP4tJOLmuBfDiJFrWNFfZGmOta4Zsbv7qg6t8EBTV8d2DmSksUs3/pJF4imn
- jIqw==
-X-Forwarded-Encrypted: i=1;
- AHgh+RqrdQN/Sc4pPHJf4IIEinowAtF/2DfeHTp90OJvglRFD7FDeGQu1Q/RsjWKvlBybsIoVqjGu8oQTw==@nongnu.org
-X-Gm-Message-State: AOJu0Yzzqf+Cu3vcoaC2Y6cs2oiJVOBP2lsmFAr0inRW3BhY3dn3JQOQ
- t3pxQUq/z8OkfoucHnRgMHuwYTBVYln7SkEMNx9XCyuN6ulyL9KMfNxpMZjKnTzVfChvSdhM14y
- 1+P6HdSlIqOOBOgOrKvnRjomytTzve7M1PAkKWUNUIg==
-X-Gm-Gg: AfdE7clNeLHXZ+3ldSjhFfY9vLyTuAf3Ucj6vhDYGZhiBW0ucmTrlKeBrBlbaS76sNL
- 1VO2JnuFiEGYCDv+/TXCxjR1EGAjojx3Zhe0c8712v7gAyBPNMHzS0zXSKmzzGgHNBKUFPq7eAx
- n7HKTA0zaScE9wMQSK0KQyZoHnYXA+RD2t0HcTj2Y7Gx0KGqvLNzHWZ4likK0Bjfga6NDxDE50Z
- 1lqtlGFE1KjBELWPlCFY5DllLE9TsGA88cxwlvR85mSleqQB29xz2omM1p4y0cQirZr9NqMJZsG
- oMYVfPGCFh2DFEmmJbwZv3zwXEB8vTU71HK+UVWa9/853A==
-X-Received: by 2002:a05:690c:298:b0:81e:fdf7:bfbd with SMTP id
- 00721157ae682-81efdf7c075mr2136617b3.15.1784312140192; Fri, 17 Jul 2026
- 11:15:40 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1784330592; x=1784935392;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=DLlDGxtFFW3g2iYlBDYJu83t+bys0fFHlAOwYxW5TVQ=;
+ b=ZXooJ0WIEwUIciWK3De52Pydr9KVKmFzoOt3qnRoOS42Pk6SakjBs6yrKhDaFILB9x
+ WQYQSxmKnPuHkj705/SLpHjcp6AjBWT1iHjuEcBFOpBDmFrRZrbp2eFcE0xXc91uCplk
+ Z6nhcIiAm7znJ3jTQK4DMk6ASOdRvJ1cP+ZFaV/0YYN2KYOXJLnHiUk9BWgUz9SdPyYl
+ CCKJFyl/Bm8ttuwiX6V4FNGJSk+TYa1QTfN97Sk/UfESARPxIVM3m0dU9/I9YdnQOqYO
+ HWRPaBI+lz/WcY0hH8wpSJs6G3mWQTRKPsZkzrLOQt3Gad8XsNvQREcwXPRicpjyX7Rr
+ /lrA==
+X-Gm-Message-State: AOJu0YyYfCkMV/Mka00otFeOcVNU3ev3O6SBuKmJCHya0xe+y5Yk2TRq
+ KYkGTHiMarz/s2UKY6IrzfBYyZBD7YlaY5uzppi5I88nmefkryw+N8GcB17cG58KHoo=
+X-Gm-Gg: AfdE7cnslIKA27uvsMsFPz8KbTwtvv5aIn6+NCoK5AFP3kAD58wSvgOC3GSCH+xbnsJ
+ Ot4dNBgCQxRYx06OxOZnOAO5KpKOvVRmOIUgtcyjtZKUxrMRViR7IjNzKyGQjcbbfR3j3ShnpCP
+ xq+No+gpylUPRj4C9GzV/rypRNCbNwHlYHu8v31IEQ/Lkmo9jcJyMOkEQiYxb+2wAdmgdmFNSP5
+ NJ8dREi5+MyaOKTrfM7bsm1GvWidbEvSfsL2u+mvBnSBsbOt8ZJ04GC8CsPJu/bjoYcfxX1QFzS
+ 6d6tY8J2uVR6DG9eMQ6rHuUfFe+zl2Tr/IAA5jBowSdHSvMqZsu8hh3qMW4kU1TklbfnKDGbCRu
+ dd1Q3zZVDD/BCF828XUU/0DUHTmS3ycpHBh0UvIdWy/JEAkycNkGaiJRfeFrXXAXMcO142xt4F8
+ +Pcz6zzVA=
+X-Received: by 2002:a17:90b:1a90:b0:38d:c834:24cf with SMTP id
+ 98e67ed59e1d1-38e4b53433bmr4965963a91.23.1784330591800; 
+ Fri, 17 Jul 2026 16:23:11 -0700 (PDT)
+Received: from stoup.. ([32.140.233.50]) by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-13ce2a18a47sm8186261c88.8.2026.07.17.16.23.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 17 Jul 2026 16:23:11 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 02/17] target/arm: Fix testing of raw mtx value
+Date: Fri, 17 Jul 2026 16:22:50 -0700
+Message-ID: <20260717232306.378988-4-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260717232306.378988-1-richard.henderson@linaro.org>
+References: <20260717232306.378988-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-References: <20260717174412.88258-1-dingtao0430@163.com>
-In-Reply-To: <20260717174412.88258-1-dingtao0430@163.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Jul 2026 19:15:28 +0100
-X-Gm-Features: AUfX_mwvy6Bm57SptJAU93Z67tGAtKynfjEmcQN_hV5dGGac_QI_yKzkZwfBGVk
-Message-ID: <CAFEAcA-ZLB8+N_ud+6V=DkDrOvPznc75eoGHwQhMhYk7Cgf8MA@mail.gmail.com>
-Subject: Re: [PATCH 0/1] Aarch32 TCG CPU: secure register migration
-To: Tao Ding <dingtao0430@163.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,19 +98,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 17 Jul 2026 at 18:44, Tao Ding <dingtao0430@163.com> wrote:
->
-> Hi, all
->
-> In TCG mode, the xilinx-zynq-a9 board cannot recover normally
-> after migration during the uboot phase. Some secure registers
-> did not recover their correct values after migration, causing
-> the CPU to enter an abnormal state.
+MTX is always a pair of bits, one for each half of the address space.
+Testing it like a boolean is incorrect.
 
-Yes, this is a very long standing issue:
-https://gitlab.com/qemu-project/qemu/-/work_items/467
+Introduce raw_mte_check, a mirror of the similar mte_check function
+that applies when MTX is passed in MTEDESC.
 
-Thanks for submitting this patch -- I'll have a look at it later.
+Fixes: 8912ceced815 ("target/arm: load on canonical tag loads ext bits")
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/mte_helper.c | 25 +++++++++++++++++--------
+ 1 file changed, 17 insertions(+), 8 deletions(-)
 
--- PMM
+diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
+index dca4ef5a94..ad4ad5b4cc 100644
+--- a/target/arm/tcg/mte_helper.c
++++ b/target/arm/tcg/mte_helper.c
+@@ -317,6 +317,12 @@ int load_tag1(uint64_t ptr, uint8_t *mem)
+     return extract32(*mem, ofs, 4);
+ }
+ 
++/* Like mtx_check, but simple mtx bit pair instead of MTEDESC. */
++static bool raw_mtx_check(unsigned mtx, unsigned bit55)
++{
++    return (mtx >> bit55) & 1;
++}
++
+ uint64_t HELPER(ldg)(CPUARMState *env, uint64_t ptr, uint64_t xt, uint32_t mtx)
+ {
+     int mmu_idx = arm_env_mmu_index(env);
+@@ -330,9 +336,11 @@ uint64_t HELPER(ldg)(CPUARMState *env, uint64_t ptr, uint64_t xt, uint32_t mtx)
+     /* Load if page supports tags. */
+     if (mem) {
+         rtag = load_tag1(ptr, mem);
+-    } else if (mtx) {
+-        uint64_t bit55 = extract64(ptr, 55, 1);
+-        rtag = 0xF * bit55;
++    } else {
++        bool bit55 = extract64(ptr, 55, 1);
++        if (raw_mtx_check(mtx, bit55)) {
++            rtag = 0xF * bit55;
++        }
+     }
+ 
+     return address_with_allocation_tag(xt, rtag);
+@@ -387,7 +395,7 @@ static inline void do_stg(CPUARMState *env, uint64_t ptr, uint64_t xt,
+     /* Store if page supports tags. */
+     if (mem) {
+         store1(ptr, mem, allocation_tag_from_addr(xt));
+-    } else if (mtx) {
++    } else if (raw_mtx_check(mtx, extract64(ptr, 55, 1))) {
+         canonical_tag_write_fail(env, ptr, ra);
+     }
+ }
+@@ -420,6 +428,7 @@ static inline void do_st2g(CPUARMState *env, uint64_t ptr, uint64_t xt,
+     uint8_t *mem1, *mem2;
+ 
+     check_tag_aligned(env, ptr, ra);
++    mtx = raw_mtx_check(mtx, extract64(ptr, 55, 1));
+ 
+     /*
+      * Trap if accessing an invalid page(s).
+@@ -504,8 +513,8 @@ uint64_t HELPER(ldgm)(CPUARMState *env, uint64_t ptr, uint32_t mtx)
+     /* The tag is squashed to zero if the page does not support tags.  */
+     if (!tag_mem) {
+         /* Load canonical value if mtx is set (untagged memory region) */
+-        if (mtx) {
+-            bool bit55 = extract64(ptr, 55, 1);
++        bool bit55 = extract64(ptr, 55, 1);
++        if (raw_mtx_check(mtx, bit55)) {
+             ret = extract64(-bit55, 0, 1 << gm_bs);
+             shift = extract64(ptr, LOG2_TAG_GRANULE, 4) * 4;
+             return ret << shift;
+@@ -573,7 +582,7 @@ void HELPER(stgm)(CPUARMState *env, uint64_t ptr, uint64_t val, uint32_t mtx)
+      */
+     if (!tag_mem) {
+         /* Storing tags to canonically tagged region: fault. */
+-        if (mtx) {
++        if (raw_mtx_check(mtx, extract64(ptr, 55, 1))) {
+             canonical_tag_write_fail(env, ptr, ra);
+         }
+         return;
+@@ -630,7 +639,7 @@ void HELPER(stzgm_tags)(CPUARMState *env, uint64_t ptr, uint64_t val,
+     if (mem) {
+         int tag_pair = (val & 0xf) * 0x11;
+         memset(mem, tag_pair, tag_bytes);
+-    } else if (mtx) {
++    } else if (raw_mtx_check(mtx, extract64(ptr, 55, 1))) {
+         canonical_tag_write_fail(env, ptr, ra);
+     }
+ }
+-- 
+2.43.0
+
 

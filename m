@@ -4,45 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 140CBC44507
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 09:53:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FDE3C44516
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 10:06:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkfFG-0004JZ-BC; Fri, 17 Jul 2026 05:52:38 -0400
+	id 1wkfSd-0002HF-4l; Fri, 17 Jul 2026 06:06:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1wkfFF-0004JF-4y; Fri, 17 Jul 2026 05:52:37 -0400
-Received: from smtpout1.mo528.mail-out.ovh.net ([46.105.34.251])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wkfSb-0002Gy-Pu
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 06:06:25 -0400
+Received: from smtpout4.mo539.mail-out.ovh.net ([51.210.91.43])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1wkfFB-0004G9-MC; Fri, 17 Jul 2026 05:52:36 -0400
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net [79.137.60.36])
- by mo528.mail-out.ovh.net (Postfix) with ESMTPS id 4h1lZL6zMdz66BP;
- Fri, 17 Jul 2026 09:52:26 +0000 (UTC)
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net. [127.0.0.1])
- by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alistair@alistair23.me>; Fri, 17 Jul 2026 09:52:26 +0000 (UTC)
-Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.188.244])
- by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4h1lZL5lxJz1xp5; Fri, 17 Jul 2026 09:52:26 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wkfSY-0006VD-NM
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 06:06:25 -0400
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net [79.137.60.37])
+ by mo539.mail-out.ovh.net (Postfix) with ESMTPS id 4h1ltJ5sSsz3wcw;
+ Fri, 17 Jul 2026 10:06:16 +0000 (UTC)
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net. [127.0.0.1])
+ by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <alistair@alistair23.me>; Fri, 17 Jul 2026 10:06:16 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.188.54])
+ by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4h1ltJ4lQyz230R; Fri, 17 Jul 2026 10:06:16 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.4])
  (Authenticated sender: clg@kaod.org)
- by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 78BD39419CC; 
- Fri, 17 Jul 2026 09:52:24 +0000 (UTC)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 889921B43DDD;
+ Fri, 17 Jul 2026 10:06:14 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-108S0023e3b33ab-5aeb-43d0-aa2f-6b4e1eef9219,
+ (GARM-95G0013d3d9c8a-014c-4a97-b0a4-73f3cc8d205f,
  D28FE153D5A3AE5C5EC95691E5B856C14C2CAAE9) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <dfc7535e-0134-4dbf-a98b-136d0c1f48ba@kaod.org>
-Date: Fri, 17 Jul 2026 11:52:23 +0200
+Message-ID: <177abc72-5068-4d13-bac1-037d3b7d1922@kaod.org>
+Date: Fri, 17 Jul 2026 12:06:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 9/9] tests/qtest/ast2700-smc-test: Add Data FIFO mode
- test
+Subject: Re: [PATCH v4 0/9] Refactor AST2700 SCU preparation for coprocessors
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -54,7 +53,6 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20260717084559.3477061-1-jamin_lin@aspeedtech.com>
- <20260717084559.3477061-10-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -99,30 +97,29 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260717084559.3477061-10-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260717084559.3477061-1-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 18111788854098766893
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 18345413085241125933
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEIPGjQyOOXMyiXAD5Ankd4DsiLy3HWWdZH7PV/nfC8/ZxV+f9FUNFAJzXQV/dYM+wpxgYuPQGiIJLq/E841n3ICnTxpfwKOxFHvNkC6BpwWxx9h0c/Zt17OPyaavXQhn3h7wfW6nKKhRfnceDiFey1ITgEeIkPjzf6Hz6uIRtW0hsMFi6BwOWBsPjGChF97c0gt4DS0Yr0mv0MopCXMeeS7krVgR8F9Uh/u4PzWmflhbByS59gzsyhiC+6GUfdrm9fCxjvQHfdRUkFwTfGttUHo3QmImRAxGdsbT0acx3QabJfcanbPEb0szNa6UO/rBT3YnHwx8BlWv3Tz+YEgWypOd/e2D1cq5O08jQTO1Cly95InttpddOScv+geqkBT1wls292GUT9/Agne8SeZ8jJCSY6FDTu4lYzotFhicK8+HO4pe6UX+mYeCD4Zpo/fos4oMdh82sISVHueB72W9FIWLMAn51Ei/iMH8RAAnnQCeULIvbFga1tb4thtADk3qvJLEuwHbanwFqUdWQ5lC/4GbhimmtkIX6l13linB/uTPSMIUkKhO9zq4HoLXZzWqwIFjkDHU847pt87l2nCQmyR5lKJ73v30gvKFci3bmWOExF6y7Xmq4RpZL6ntASoRwgPres+Ua8/irgjt62EOQvaVLjNcGB1kd2p8BjoPWWGA
-DKIM-Signature: a=rsa-sha256; bh=vvBaxRhPu+eUcr8DQqvK2xxu39LbaSPQcr6iNCxHHjE=; 
+X-VR-SPAMCAUSE: dmFkZTFIDc5SN+F73DBaMt+G7q2A7bfI5EkTbuk6dDtmTxU+yX1L7wQDm4aLzH1rDUC6pF34cEQxL24goHhx3SNycYgYspQJ69CQFcj9xPTVJlyBOWTwHIdWhLe7xSP3+p1K6LIUkg7AnsvGZR8K93xXjWv+8IAAPqvtHD3BkwVu8i3XifbZdV+eaRPtdrPxqNMCnhqm8xMVEYFRT9/biEyhtg/FB7iy06s2vJHYCWMi7QlsHfK8/0oz3X8AqBDaNPuB1hodQidBT9ub8YrRAY+FGHiAFWd60vnzZ/5mUZIcmVi6NhJEdD3l+wadWBNJOWRs5Ik4Ar+3AElv/IUe+jT8A7YvBCciqjmByLmpwOxedFLfRJe4Yuest4LYaKNrmy3bcrSYjufyN1BSQfD2OOH5F6slE3vIFn4ibyWgmA93EZHb5UBaxJj23l9RUM0ZyioSEemyHL5V9UokwHai3bimsWFNwgsEqOGMcucp1RKQ6guBTaJs9OFfg0ypoJMykBxGAITmnET36DFQGlMh0HB4FU/nNA0dDizbgA4bapCSSa3OgVKA6WmO0p1qqf6EYDeeC/58WYVh+h7UMemdYeveJZI/IbCLheUwZnsbOojwQezeIgga/fIgPtO5DeNrJ8dbZwDNXVpqwITLft4VUN9FUPbfpZ2kbt0SNRbycu0XzpLbYg
+DKIM-Signature: a=rsa-sha256; bh=bTq3ajt42FUZHheEM7Rh/6K9LAYzA56s2uAzcMz0vwA=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1784281949; v=1;
- b=Zym1/FLRrcMz+cThtndFtQDOPBx2MSmxFFbyJ5hrZ2OLuqDDNX5Rnq94Rz3Qpv8evgR533UJ
- e/Vwx2lh+K0M3DP5McWQDuLiz75mn/ra/avQLaO9CnjXcMJGD2QDlzQALGfLfiMooGhXUy8fRqJ
- vpQasq8iKd04IUmJoo+SDPBmNSHi5x5GrWeUgrot9mDtNaQZ9mbKsQygGHLnVh3mg6JtJMRuuP3
- AQcpX3ZfYcF5iEa7PuY9U5T+tWQAxi5B1slnPK8fWPnGAEeYIuLjbU64sBN35prh1/m6Jy0gWLv
- OTQGNe70w/ERtH9bO251ojIoRMqknsn9l1K8woMRAiVmg==
-Received-SPF: pass client-ip=46.105.34.251; envelope-from=clg@kaod.org;
- helo=smtpout1.mo528.mail-out.ovh.net
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ t=1784282778; v=1;
+ b=X3spGolL+Gjbw3sjrU68F98RsLrW1asliIzNyikuLr0zJGKMKIch4EShVyaICPcSZNsc1T4e
+ jUFQE+ed+2mTgA+WY4luoW1kNyTb0h9OmPor6dF22f2VuNuKEd3fd0KjaAlEhL9qAjLzuVXQFyo
+ d4Mez/nsGn33fGrDI8jeLpnW8IinsTOzFr7ZpuZrhFWZy1Su2YbPAAT5rPZLbzElxkB9ezgUk2U
+ dTjVWsY4t8yumfLbL7SQWPukLqp8dnA1e4qIh6bfvE/VtOk3SnyP8/N8cy6YH6VKtdxRQMpGs+l
+ CjPVm/pJ9ChIv1g0Nw3EfTEUnpddS1ys93W28qSNPOeVg==
+Received-SPF: pass client-ip=51.210.91.43; envelope-from=clg@kaod.org;
+ helo=smtpout4.mo539.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,176 +136,98 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 7/17/26 10:46, Jamin Lin wrote:
-> Add two qtest cases exercising the new AST2700 Data FIFO-based flash
-> access path (R_DATA_FIFO at spi_base + 0x200).
+> The original AST2700 FC support series [1] is fairly large, making it
+> difficult to review all changes together.
 > 
-> Write_page_datafifo sends the page-program command and data through
-> the FIFO port, then verifies the result via the regular read path.
-> Read_page_datafifo writes a page the regular way, then reads it back
-> through the FIFO port, so both directions are checked independently.
+> To help speed up the review process, this series extracts the SCU/FMC-related
+> refactoring into a standalone prerequisite series.
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   tests/qtest/aspeed-smc-utils.h |   4 ++
->   tests/qtest/aspeed-smc-utils.c | 102 +++++++++++++++++++++++++++++++++
->   tests/qtest/ast2700-smc-test.c |   4 ++
->   3 files changed, 110 insertions(+)
+> This series depends on https://github.com/legoater/qemu.git at aspeed-next branch.
 > 
-> diff --git a/tests/qtest/aspeed-smc-utils.h b/tests/qtest/aspeed-smc-utils.h
-> index 19c557b822..e4f538e579 100644
-> --- a/tests/qtest/aspeed-smc-utils.h
-> +++ b/tests/qtest/aspeed-smc-utils.h
-> @@ -33,6 +33,8 @@
->   #define   CTRL_DUMMY_LOW_SHIFT   6
->   #define   CTRL_DUMMY_HIGH_SHIFT  14
->   #define SR_WEL BIT(1)
-> +/* Data fifo */
-> +#define R_DATA_FIFO 0x200
->   
->   /*
->    * Flash commands
-> @@ -87,5 +89,7 @@ void aspeed_smc_test_read_page_mem_dor(const void *data);
->   void aspeed_smc_test_write_page_dor(const void *data);
->   void aspeed_smc_test_read_page_mem_qor(const void *data);
->   void aspeed_smc_test_write_page_qor(const void *data);
-> +void aspeed_smc_test_write_page_datafifo(const void *data);
-> +void aspeed_smc_test_read_page_datafifo(const void *data);
->   
->   #endif /* TESTS_ASPEED_SMC_UTILS_H */
-> diff --git a/tests/qtest/aspeed-smc-utils.c b/tests/qtest/aspeed-smc-utils.c
-> index 6d75a95578..146332240d 100644
-> --- a/tests/qtest/aspeed-smc-utils.c
-> +++ b/tests/qtest/aspeed-smc-utils.c
-> @@ -57,6 +57,28 @@ static inline uint32_t flash_readl(const AspeedSMCTestData *data,
->       return qtest_readl(data->s, data->flash_base + offset);
->   }
->   
-> +/*
-> + * Data FIFO port, in spi_base's register bank (not flash_base). Accesses
-> + * through the FIFO require the complete user-mode transaction (opcode,
-> + * address, and data). Assumes CS0, whose FIFO slot is at R_DATA_FIFO.
-> + */
-> +static inline void datafifo_writeb(const AspeedSMCTestData *data,
-> +                                   uint8_t value)
-> +{
-> +    qtest_writeb(data->s, data->spi_base + R_DATA_FIFO, value);
-> +}
-> +
-> +static inline void datafifo_writel(const AspeedSMCTestData *data,
-> +                                   uint32_t value)
-> +{
-> +    spi_writel(data, R_DATA_FIFO, value);
-> +}
-> +
-> +static inline uint32_t datafifo_readl(const AspeedSMCTestData *data)
-> +{
-> +    return spi_readl(data, R_DATA_FIFO);
-> +}
-> +
->   static void spi_conf(const AspeedSMCTestData *data, uint32_t value)
->   {
->       uint32_t conf = spi_readl(data, R_CONF);
-> @@ -826,3 +848,83 @@ void aspeed_smc_test_write_page_qor(const void *data)
->   {
->       test_write_page(data, read_page_qor);
->   }
-> +
-> +void aspeed_smc_test_write_page_datafifo(const void *data)
-> +{
-> +    const AspeedSMCTestData *test_data = (const AspeedSMCTestData *)data;
-> +    uint32_t my_page_addr = test_data->page_addr;
-> +    uint32_t some_page_addr = my_page_addr + FLASH_PAGE_SIZE;
-> +    uint32_t page[FLASH_PAGE_SIZE / 4];
-> +    int i;
-> +
-> +    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
-> +
-> +    /*
-> +     * Send the complete user-mode transaction (opcode, address, data)
-> +     * through the Data FIFO port.
-> +     */
-> +    spi_ctrl_start_user(test_data);
-> +    datafifo_writeb(test_data, EN_4BYTE_ADDR);
-> +    datafifo_writeb(test_data, WREN);
-> +    datafifo_writeb(test_data, PP);
-> +    datafifo_writel(test_data, make_be32(my_page_addr));
-> +
-> +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-> +        datafifo_writel(test_data, make_be32(my_page_addr + i * 4));
-> +    }
-> +    spi_ctrl_stop_user(test_data);
-> +
-> +    /* Check what was written, using the regular read path */
-> +    read_page(test_data, my_page_addr, page);
-> +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-> +        g_assert_cmphex(page[i], ==, my_page_addr + i * 4);
-> +    }
-> +
-> +    /* Check some other page. It should be full of 0xff */
-> +    read_page(test_data, some_page_addr, page);
-> +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-> +        g_assert_cmphex(page[i], ==, 0xffffffff);
-> +    }
-> +
-> +    flash_reset(test_data);
-> +}
-> +
-> +void aspeed_smc_test_read_page_datafifo(const void *data)
-> +{
-> +    const AspeedSMCTestData *test_data = (const AspeedSMCTestData *)data;
-> +    uint32_t my_page_addr = test_data->page_addr;
-> +    uint32_t page[FLASH_PAGE_SIZE / 4];
-> +    int i;
-> +
-> +    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
-> +
-> +    /* Write the page the regular way */
-> +    spi_ctrl_start_user(test_data);
-> +    flash_writeb(test_data, 0, EN_4BYTE_ADDR);
-> +    flash_writeb(test_data, 0, WREN);
-> +    flash_writeb(test_data, 0, PP);
-> +    flash_writel(test_data, 0, make_be32(my_page_addr));
-> +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-> +        flash_writel(test_data, 0, make_be32(my_page_addr + i * 4));
-> +    }
-> +    spi_ctrl_stop_user(test_data);
-> +
-> +    /*
-> +     * Read it back through the data FIFO port, again sending the whole
-> +     * transaction (opcode, address, data) through it.
-> +     */
-> +    spi_ctrl_start_user(test_data);
-> +    datafifo_writeb(test_data, EN_4BYTE_ADDR);
-> +    datafifo_writeb(test_data, READ);
-> +    datafifo_writel(test_data, make_be32(my_page_addr));
-> +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-> +        page[i] = make_be32(datafifo_readl(test_data));
-> +    }
-> +    spi_ctrl_stop_user(test_data);
-> +
-> +    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-> +        g_assert_cmphex(page[i], ==, my_page_addr + i * 4);
-> +    }
-> +
-> +    flash_reset(test_data);
-> +}
-> diff --git a/tests/qtest/ast2700-smc-test.c b/tests/qtest/ast2700-smc-test.c
-> index f85077e04f..925dbcfaaf 100644
-> --- a/tests/qtest/ast2700-smc-test.c
-> +++ b/tests/qtest/ast2700-smc-test.c
-> @@ -64,6 +64,10 @@ static void test_ast2700_evb(AspeedSMCTestData *data)
->                           data, aspeed_smc_test_read_page_mem_qor);
->       qtest_add_data_func("/ast2700/smc/write_page_qor",
->                           data, aspeed_smc_test_write_page_qor);
-> +    qtest_add_data_func("/ast2700/smc/write_page_datafifo",
-> +                        data, aspeed_smc_test_write_page_datafifo);
-> +    qtest_add_data_func("/ast2700/smc/read_page_datafifo",
-> +                        data, aspeed_smc_test_read_page_datafifo);
->   }
->   
->   int main(int argc, char **argv)
+> v1:
+> Compared with the original series, the SCU preparation patch has been
+> split into three smaller patches:
+> 
+> Introduce Aspeed2700SCUState.
+> Convert AST1700/AST27x0 users to the new SCU subclass.
+> Move the SCU link property into the AST27x0-specific coprocessor
+> implementation.
+> 
+> In addition, the SCUIO reset handling has been separated into an
+> independent patch.
+> 
+> This series contains no functional changes. It is purely a refactoring
+> to isolate AST2700-specific SCU support from the generic implementation
+> and prepare for the subsequent AST2700 FC support.
+> 
+> v2:
+>   1. Pass realized PSP SoC to SSP/TSP initialization
+>   2. Share single SCUIO instance across PSP, SSP, and TSP
+>   3. Share FMC controller with SSP and TSP
+>   4. Add Data FIFO-based flash access support for
+> 
+> v3:
+>    1. Add Data FIFO mode test
+>    2. Clarify SCU/SCUIO/FMC fields are shared with PSP SoC to AST2700
+>    3. Bump vmstate version after ASPEED_SMC_R_MAX increase
+> 
+> v4:
+>    1. Fix to apply patch failure
+> 
+> Supersedes the following patches from the original FC support series [1]:
+> 
+> Patch 1:
+> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-2-jamin_lin@aspeedtech.com/
+> 
+> Patch 2:
+> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-3-jamin_lin@aspeedtech.com/
+> 
+> Patch 4:
+> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-12-jamin_lin@aspeedtech.com/
+> 
+> Patch 15:
+> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-16-jamin_lin@aspeedtech.com/
+> 
+> Patch 18:
+> https://patchwork.kernel.org/project/qemu-devel/patch/20260417032837.2664122-19-jamin_lin@aspeedtech.com/
+> 
+> Patch
+> [1] Original AST2700 FC support series:
+> https://patchwork.kernel.org/project/qemu-devel/cover/20260417032837.2664122-1-jamin_lin@aspeedtech.com/
+> 
+> Jamin Lin (9):
+>    hw/misc/aspeed_scu: Introduce Aspeed2700SCUState
+>    hw/arm/aspeed: Use Aspeed2700SCUState for AST2700 users
+>    hw/arm/aspeed_ast27x0: Move SCU link into AST27x0 coprocessors
+>    hw/misc/aspeed_scu: Add separate reset handler for AST2700 SCUIO
+>    hw/arm/aspeed_ast27x0: Pass realized PSP SoC to SSP/TSP initialization
+>    hw/arm/ast27x0: Share single SCUIO instance across PSP, SSP, and TSP
+>    hw/arm/ast27x0: Share FMC controller with SSP and TSP
+>    hw/ssi/aspeed_smc: Add Data FIFO-based flash access support for
+>      AST2700
+>    tests/qtest/ast2700-smc-test: Add Data FIFO mode test
+> 
+>   include/hw/arm/aspeed_ast1700.h     |   2 +-
+>   include/hw/arm/aspeed_coprocessor.h |  16 +++-
+>   include/hw/arm/aspeed_soc.h         |   1 +
+>   include/hw/misc/aspeed_scu.h        |   5 ++
+>   include/hw/ssi/aspeed_smc.h         |   3 +-
+>   tests/qtest/aspeed-smc-utils.h      |   4 +
+>   hw/arm/aspeed_ast27x0-fc.c          |  38 ++++++---
+>   hw/arm/aspeed_ast27x0-ssp.c         |  56 ++++++++++---
+>   hw/arm/aspeed_ast27x0-tsp.c         |  56 ++++++++++---
+>   hw/arm/aspeed_ast27x0.c             |  16 ++--
+>   hw/arm/aspeed_coprocessor_common.c  |   2 -
+>   hw/misc/aspeed_scu.c                |  20 ++++-
+>   hw/ssi/aspeed_smc.c                 | 117 +++++++++++++++++++++++++---
+>   tests/qtest/aspeed-smc-utils.c      | 102 ++++++++++++++++++++++++
+>   tests/qtest/ast2700-smc-test.c      |   4 +
+>   15 files changed, 384 insertions(+), 58 deletions(-)
+> 
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Applied to
+
+     https://github.com/legoater/qemu aspeed-next
 
 Thanks,
 

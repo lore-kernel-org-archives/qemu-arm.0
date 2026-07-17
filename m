@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9E53C44516
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 23:24:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38757C44515
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 23:24:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkrts-0001Wz-Bq; Fri, 17 Jul 2026 19:23:24 -0400
+	id 1wkrts-0001Wo-57; Fri, 17 Jul 2026 19:23:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wkrtq-0001Vl-Us
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:22 -0400
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+ id 1wkrtp-0001UB-3a
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:21 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wkrto-0006zA-RL
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:22 -0400
-Received: by mail-pj1-x1035.google.com with SMTP id
- 98e67ed59e1d1-38dcbade417so6434140a91.1
- for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 16:23:18 -0700 (PDT)
+ id 1wkrtk-0006yX-SI
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:18 -0400
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-2ccf2360620so45375995ad.3
+ for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 16:23:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784330597; x=1784935397; darn=nongnu.org;
+ d=linaro.org; s=google; t=1784330595; x=1784935395; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=yFRAsWMA+NNoAvoC+xKcAlWuQ4eHUr0T9NC0Mnxt+fA=;
- b=EiDZQT0u+qvFJ4HRTBiAEMANPq8iJXFTK2l7jc5g13rTyfpI3zkc8tnX3b6TF69EH0
- d7MxlJNH4jmqReXzNFpxQePmoaSykuVoqY0Jfc/bXnogRALiN+Rn4Ml8+27DU3ykv+oX
- hf52Ep0lH3fP+uEcm47Dk2+xFjjyNhpvnfHdk4mM3hwH61XNji+h4kZFiHnjZQv4MOmP
- BRP6Lwt9HYe8pACuC0Jap6TIWWmJWob9BrTBGOeEE7vgagoTa4LSyp2jz7BsEqRpTmef
- TVkrCza1hkJsYNoI/xYeT+bWOC0DO3maIIwZ9zV1Sh7LXBiBaX3ekRk0uTZw+ZfQpeD+
- rilg==
+ bh=jexTKBibLdxg3RvO/0OqJ7xCxktdejWuZt8hYEIzmj8=;
+ b=hHtKkJsFLGMH2yltT2tKWweY0mybbwvB/b540KmSuoS+Kwll8fZ2ssQGVupjlKbkJO
+ IktznEeQ1J/xyXHiIhIUA6ZkXpgL/cmES8Qavfauj4aVKum6TelTScOA488jDAi/eEup
+ fKFxWF7psv3gyG5L3cel2RGtuiMwm4+Rgbi+OWGd74o5pb+uk5MxGEAW5jFCzM3kb3Wl
+ jRi4cKbhwoezjMire0Sf+/Ok1kazOrDYeX7URBI6dYWL0wzyxVJd0CKvG92n05HTOmpt
+ jSowEAjnX4dHNbvOOE4ty3lNRll3irtS4ka1ugUnxS+Wj6Uyh7JDZs/uvO6Iw26JffjU
+ BDIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784330597; x=1784935397;
+ d=1e100.net; s=20251104; t=1784330595; x=1784935395;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=yFRAsWMA+NNoAvoC+xKcAlWuQ4eHUr0T9NC0Mnxt+fA=;
- b=YiIQ8zz2/Syxr3EoNQJrwOl5SOQhvIjTMhDyWB8/M7MC5QNfal/+pr6OMW98z3Esh9
- L4kgwpAjWmsOr985WteigtVL5lG16PKMSwqHiPNufMnlDQj43IYPgdU4maAiOqo/I1Ld
- eO5epeCmcBWReyo7zGToCnmaOcfCl7z9axr34evGWzyqAxcurf+gGhtgKqAwFRIpKEWa
- wQfK+wqZjTHgO12fCjXlBRrnCT7t22X7b6AMcDbqPNWBeEoA1PYhEU9HgutRVBNd3aY1
- cSfgXjY3Pge3aY23skPMTNBqnby7uTpBxNydcOH8Ki1S+6zZDJTbukMp8F8k7SArgrbu
- a+7w==
-X-Gm-Message-State: AOJu0YyCrjztu3sDPM6W+6Wk384rot5iDQ0y8bTtOK5aZW3LUiuGGa6q
- JHpr+V70H3EjD0raUM4k5csRPuIMYInouooEKq6uRGrWjQyCxa7tpIp78boXSXyjags=
-X-Gm-Gg: AfdE7cn56Kt2CD8PXb9chJqdzRHuZyyXUwx52fRGP9iEpMFH3B19zVFIhe/GVFknM9g
- kcpo/EuSfKCN58HYDJMDHCao2Nt5XX0zZADFtXaXqcFfWtakAvpKxLRUWt5Yhxj/VlxMbKqU3Oi
- sZOvtdSGm7ejjmkDGx+DcIqF4b6E8Vrfl4NCxLhC1pflUxpBDqAC8z21moriU7vGuhBqqxTNIH+
- eIwdz13dJGRGakSYZ5qvrzd6beb1A7iKrqEITZfH7oMfXKzE98z3ML3enMxwP5OAZBmTMvutYPu
- ukGO9LbsoWuOcQOurMaQa47NijmdMAbnpvv2Yn7Bn/JkQwfFrnOdACLFOYOgpOWX65jhg8PmgRg
- f4T74Bp1VS9csYNnFUrHxvU1SEHlhh4SlEaTBVpZaVZ0PaBHS8EoeQqHSVtmI0GsksppaoJ5koT
- qyFLbFUyU=
-X-Received: by 2002:a17:90b:5908:b0:380:71eb:4014 with SMTP id
- 98e67ed59e1d1-38e4b448c32mr5085573a91.15.1784330597467; 
- Fri, 17 Jul 2026 16:23:17 -0700 (PDT)
+ bh=jexTKBibLdxg3RvO/0OqJ7xCxktdejWuZt8hYEIzmj8=;
+ b=iY98B3hPM9u9BLaWxKtbaicsupR7hhp0h+LeWzFsG40ks9Wa+SF1U0b+4d+dzXJHmj
+ r3RdSZSlrhkMqxHfYM5SO1u9Iv6qcmNHQBHWWFl2ptXpuS0QxWx+3YRdpru6qZD9s0cx
+ FDukynNtVpqqbb9oAGWzdzoHJmfbL+CCceeR+uT+1WMoeX4SwTaLqQFBgICeAxzkGS/C
+ +YP9u8+eF5Pu5FGnpRArSkxXKZ6gwJVllzYdKzHehXPSc/o9lJD4VTkSYfs2Pnz5xEO4
+ HyDe5kOd6J/KMVG49o0H0wcf9pXlwJK6G86iJc1dhfvQzeXhpk/htZMlGcCAKOc563/b
+ WEMA==
+X-Gm-Message-State: AOJu0Yys9dq6uRa/JHyui59+31188f73mEicgYu0byze8QPnSfTCJ/Y5
+ ZfMB1MVJTI+s0S6Zw+QTKwUiJX3Sv8oVDToPbQ22cHRlxL+nt/JB7mECGIBuzMCGnCY=
+X-Gm-Gg: AfdE7cnhlMGpRiNVNe7My7tco97lOQe7MEY8NYd89WDmKBd5nL90cG5hYFPeDOEvmKc
+ tfuv7YGh/vTNnv4HPcnSagd5aDZrwz2ie6tr9lYTZhZlBDgmPitRGk6MCgmE3yyP89swIp8t4iv
+ mTcqtzxAIFiTYYGwZSxKVOq77XvVIIzYBOEjxxPua26JPUw3t7BtnRx1ZxZifxvaQq5wZzZqPBf
+ yqkwXdQuvX2/Epvl7QUikOFldgTZvM0uJjdUMZ3jPfgXVXI+8d4VMIUFdgmTlY7KlLAJAG/co+j
+ eYPefLXb4LHl1heHxzdpNy4PkPhj6W8HtQOPQKRC0owiZYEQR+B1LsOYHIWa6ruSQ7+opRKKu46
+ g/iSkqPClVhKkzlQJy8S9JcU2N2UOFNhVgD/XCcoHku0hiuSSoz+HoqzRdBPD4yaO6GqaT5+fNk
+ aLmxZQYoA=
+X-Received: by 2002:a17:90b:2151:b0:38e:59c2:cbc5 with SMTP id
+ 98e67ed59e1d1-38e59c2dc76mr1185855a91.18.1784330595170; 
+ Fri, 17 Jul 2026 16:23:15 -0700 (PDT)
 Received: from stoup.. ([32.140.233.50]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-13ce2a18a47sm8186261c88.8.2026.07.17.16.23.16
+ a92af1059eb24-13ce2a18a47sm8186261c88.8.2026.07.17.16.23.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Jul 2026 16:23:17 -0700 (PDT)
+ Fri, 17 Jul 2026 16:23:14 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 07/17] target/arm: Return struct from
- allocation_tag_mem_internal
-Date: Fri, 17 Jul 2026 16:22:55 -0700
-Message-ID: <20260717232306.378988-9-richard.henderson@linaro.org>
+Subject: [PATCH 05/17] target/arm: Imply probe from allocation_tag_mem_probe
+Date: Fri, 17 Jul 2026 16:22:53 -0700
+Message-ID: <20260717232306.378988-7-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260717232306.378988-1-richard.henderson@linaro.org>
 References: <20260717232306.378988-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,242 +98,167 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Return not just the tag memory, but the data memory, flags,
-and attributes.  Make sure probe of NoTagAccess looks like
-any other page permission failure.
+Rename current allocation_tag_mem_probe to
+allocation_tag_mem_internal, then create a new
+allocation_tag_mem_probe that lacks probe and ra arguments.
+Force those to true and 0 when passing off to _internal.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/mte_helper.c | 102 +++++++++++++++++++++---------------
- 1 file changed, 60 insertions(+), 42 deletions(-)
+ target/arm/tcg/mte_helper.h | 18 +++---------------
+ target/arm/gdbstub64.c      | 10 +++++-----
+ target/arm/tcg/mte_helper.c | 29 ++++++++++++++++++-----------
+ 3 files changed, 26 insertions(+), 31 deletions(-)
 
+diff --git a/target/arm/tcg/mte_helper.h b/target/arm/tcg/mte_helper.h
+index 1f471fb69b..b23a5de193 100644
+--- a/target/arm/tcg/mte_helper.h
++++ b/target/arm/tcg/mte_helper.h
+@@ -19,8 +19,6 @@
+  * @ptr_access: the access to use for the virtual address
+  * @ptr_size: the number of bytes in the normal memory access
+  * @tag_access: the access to use for the tag memory
+- * @probe: true to merely probe, never taking an exception
+- * @ra: the return address for exception handling
+  *
+  * Our tag memory is formatted as a sequence of little-endian nibbles.
+  * That is, the byte at (addr >> (LOG2_TAG_GRANULE + 1)) contains two
+@@ -31,22 +29,12 @@
+  * a pointer to the corresponding tag byte.
+  *
+  * If there is no tag storage corresponding to @ptr, return NULL.
+- *
+- * If the page is inaccessible for @ptr_access, or has a watchpoint, there are
+- * three options:
+- * (1) probe = true, ra = 0 : pure probe -- we return NULL if the page is not
+- *     accessible, and do not take watchpoint traps. The calling code must
+- *     handle those cases in the right priority compared to MTE traps.
+- * (2) probe = false, ra = 0 : probe, no fault expected -- the caller guarantees
+- *     that the page is going to be accessible. We will take watchpoint traps.
+- * (3) probe = false, ra != 0 : non-probe -- we will take both memory access
+- *     traps and watchpoint traps.
+- * (probe = true, ra != 0 is invalid and will assert.)
++ * If the page is inaccessible for @ptr_access, return NULL.
++ * Do not take watcnpoint traps.
+  */
+ uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
+                                   uint64_t ptr, MMUAccessType ptr_access,
+-                                  int ptr_size, MMUAccessType tag_access,
+-                                  bool probe, uintptr_t ra);
++                                  int ptr_size, MMUAccessType tag_access);
+ 
+ /**
+  * load_tag1 - Load 1 tag (nibble) from byte
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index 0c3e5b30bd..08900f6843 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -725,8 +725,8 @@ static void handle_q_memtag(GArray *params, void *user_ctx)
+     /* Find out the current translation regime for probe. */
+     mmu_index = cpu_mmu_index(env_cpu(env), false);
+     /* Note that tags are packed here (2 tags packed in one byte). */
+-    tags = allocation_tag_mem_probe(env, mmu_index, addr, MMU_DATA_LOAD, 1,
+-                                    MMU_DATA_LOAD, true, 0);
++    tags = allocation_tag_mem_probe(env, mmu_index, addr, MMU_DATA_LOAD,
++                                    1, MMU_DATA_LOAD);
+     if (!tags) {
+         /* Address is not in a tagged region. */
+         gdb_put_packet("E04");
+@@ -753,8 +753,8 @@ static void handle_q_isaddresstagged(GArray *params, void *user_ctx)
+ 
+     /* Find out the current translation regime for probe. */
+     mmu_index = cpu_mmu_index(env_cpu(env), false);
+-    tags = allocation_tag_mem_probe(env, mmu_index, addr, MMU_DATA_LOAD, 1,
+-                                    MMU_DATA_LOAD, true, 0);
++    tags = allocation_tag_mem_probe(env, mmu_index, addr, MMU_DATA_LOAD,
++                                    1, MMU_DATA_LOAD);
+     reply = tags ? "01" : "00";
+ 
+     gdb_put_packet(reply);
+@@ -800,7 +800,7 @@ static void handle_Q_memtag(GArray *params, void *user_ctx)
+     /* Find out the current translation regime for probe. */
+     mmu_index = cpu_mmu_index(env_cpu(env), false);
+     tags = allocation_tag_mem_probe(env, mmu_index, start_addr, MMU_DATA_STORE,
+-                                    1, MMU_DATA_STORE, true, 0);
++                                    1, MMU_DATA_STORE);
+     if (!tags) {
+         /* Address is not in a tagged region. */
+         gdb_put_packet("E04");
 diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index 8f7a222b9c..e6e78634b6 100644
+index dc87dc283f..905e9d7eaf 100644
 --- a/target/arm/tcg/mte_helper.c
 +++ b/target/arm/tcg/mte_helper.c
-@@ -27,6 +27,7 @@
- #ifdef CONFIG_USER_ONLY
- #include "user/cpu_loop.h"
- #include "user/page-protection.h"
-+#include "user/guest-host.h"
- #else
- #include "system/physmem.h"
- #endif
-@@ -80,46 +81,53 @@ static void mte_perm_check_fail(CPUARMState *env, uint64_t dirty_ptr,
+@@ -80,10 +80,11 @@ static void mte_perm_check_fail(CPUARMState *env, uint64_t dirty_ptr,
  }
  #endif
  
--static uint8_t *
-+typedef struct AllocationTagMem {
-+    uint8_t *tag_mem;
-+    void *ptr_mem;
-+    int flags;
-+    MemTxAttrs attrs;
-+} AllocationTagMem;
-+
-+static AllocationTagMem
- allocation_tag_mem_internal(CPUARMState *env, int ptr_mmu_idx,
--                            uint64_t ptr, MMUAccessType ptr_access,
-+                            vaddr ptr, MMUAccessType ptr_access,
-                             int ptr_size, MMUAccessType tag_access,
-                             bool probe, uintptr_t ra)
+-uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
+-                                  uint64_t ptr, MMUAccessType ptr_access,
+-                                  int ptr_size, MMUAccessType tag_access,
+-                                  bool probe, uintptr_t ra)
++static uint8_t *
++allocation_tag_mem_internal(CPUARMState *env, int ptr_mmu_idx,
++                            uint64_t ptr, MMUAccessType ptr_access,
++                            int ptr_size, MMUAccessType tag_access,
++                            bool probe, uintptr_t ra)
  {
--#ifdef CONFIG_USER_ONLY
--    const size_t page_data_size = TARGET_PAGE_SIZE >> (LOG2_TAG_GRANULE + 1);
--    uint64_t clean_ptr = useronly_clean_ptr(ptr);
--    int flags = page_get_flags(clean_ptr);
--    uint8_t *tags;
--    uintptr_t index;
-+    AllocationTagMem ret = { };
+ #ifdef CONFIG_USER_ONLY
+     const size_t page_data_size = TARGET_PAGE_SIZE >> (LOG2_TAG_GRANULE + 1);
+@@ -92,8 +93,6 @@ uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
+     uint8_t *tags;
+     uintptr_t index;
  
--    if (!(flags & (ptr_access == MMU_DATA_STORE ? PAGE_WRITE_ORG : PAGE_READ))) {
-+#ifdef CONFIG_USER_ONLY
-+    vaddr clean_ptr = useronly_clean_ptr(ptr);
-+    int flags = page_get_flags(clean_ptr);
-+    int req_flags = ptr_access == MMU_DATA_STORE ? PAGE_WRITE_ORG : PAGE_READ;
-+
-+    if (unlikely(!(flags & req_flags))) {
-         if (probe) {
--            return NULL;
-+            ret.flags = TLB_INVALID_MASK;
-+            goto fini;
-         }
-         cpu_loop_exit_sigsegv(env_cpu(env), ptr, ptr_access,
-                               !(flags & PAGE_VALID), ra);
-     }
- 
-     /* Require both MAP_ANON and PROT_MTE for the page. */
--    if (!(flags & PAGE_ANON) || !(flags & PAGE_MTE)) {
--        return NULL;
-+    if ((flags & PAGE_ANON) && (flags & PAGE_MTE)) {
-+        size_t page_data_size = TARGET_PAGE_SIZE >> (LOG2_TAG_GRANULE + 1);
-+        uint8_t *tags = page_get_target_data(clean_ptr, page_data_size);
-+        uintptr_t index = extract64(ptr, LOG2_TAG_GRANULE + 1,
-+                                    TARGET_PAGE_BITS - LOG2_TAG_GRANULE - 1);
-+        ret.tag_mem = tags + index;
-     }
- 
--    tags = page_get_target_data(clean_ptr, page_data_size);
+-    assert(!(probe && ra));
 -
--    index = extract32(ptr, LOG2_TAG_GRANULE + 1,
--                      TARGET_PAGE_BITS - LOG2_TAG_GRANULE - 1);
--    return tags + index;
-+    ret.ptr_mem = g2h_untagged_vaddr(clean_ptr);
-+    ret.attrs = MEMTXATTRS_UNSPECIFIED;
- #else
-     CPUTLBEntryFull *full;
--    MemTxAttrs attrs;
--    int in_page, flags;
-+    int in_page;
-     hwaddr ptr_paddr, tag_paddr, xlat;
-     MemoryRegion *mr;
-     ARMASIdx tag_asi;
-     AddressSpace *tag_as;
--    void *host;
- 
-     /*
-      * Probe the first byte of the virtual address.  This raises an
-@@ -131,12 +139,13 @@ allocation_tag_mem_internal(CPUARMState *env, int ptr_mmu_idx,
-      * for the pure probe, or assert that we received a valid page for the
-      * no-fault-expected probe.
-      */
--    flags = probe_access_full(env, ptr, 0, ptr_access, ptr_mmu_idx,
--                              ra == 0, &host, &full, ra);
--    if (unlikely(flags & TLB_INVALID_MASK)) {
-+    ret.flags = probe_access_full(env, ptr, 0, ptr_access, ptr_mmu_idx,
-+                                  ra == 0, &ret.ptr_mem, &full, ra);
-+    if (unlikely(ret.flags & TLB_INVALID_MASK)) {
-         assert(probe);
--        return NULL;
-+        goto fini;
-     }
-+    ret.attrs = full->attrs;
- 
-     switch (full->extra.arm.pte_attrs) {
-     case 0xf0: /* Tagged */
-@@ -145,7 +154,9 @@ allocation_tag_mem_internal(CPUARMState *env, int ptr_mmu_idx,
-     case 0xe0: /* NoTagAccess */
-         if (cpu_isar_feature(aa64_mteperm, env_archcpu(env))) {
-             if (probe) {
--                return NULL;
-+                ret.ptr_mem = NULL;
-+                ret.flags = TLB_INVALID_MASK;
-+                goto fini;
-             }
-             assert(ra);
-             mte_perm_check_fail(env, ptr, ra, tag_access == MMU_DATA_STORE);
-@@ -153,27 +164,25 @@ allocation_tag_mem_internal(CPUARMState *env, int ptr_mmu_idx,
-         /* fall through */
- 
-     default: /* Not Tagged */
--        return NULL;
-+        goto fini;
-     }
- 
-     /*
-      * If not backed by host ram, there is no tag storage: access unchecked.
-      * This is probably a guest os bug though, so log it.
-      */
--    if (unlikely(flags & TLB_MMIO)) {
-+    if (unlikely(ret.flags & TLB_MMIO)) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "Page @ 0x%" PRIx64 " indicates Tagged Normal memory "
-                       "but is not backed by host ram\n", ptr);
--        return NULL;
-+        goto fini;
-     }
- 
-     /*
--     * Remember these values across the second lookup below,
-+     * Remember this across the second lookup below,
-      * which may invalidate this pointer via tlb resize.
-      */
-     ptr_paddr = full->phys_addr | (ptr & ~TARGET_PAGE_MASK);
--    attrs = full->attrs;
--    full = NULL;
- 
-     /*
-      * The Normal memory access can extend to the next page.  E.g. a single
-@@ -183,26 +192,30 @@ allocation_tag_mem_internal(CPUARMState *env, int ptr_mmu_idx,
-      */
-     in_page = -(ptr | TARGET_PAGE_MASK);
-     if (unlikely(ptr_size > in_page)) {
--        flags |= probe_access_full(env, ptr + in_page, 0, ptr_access,
--                                   ptr_mmu_idx, ra == 0, &host, &full, ra);
--        assert(!(flags & TLB_INVALID_MASK));
-+        void *discard_mem;
-+        int flags2 = probe_access_full(env, ptr + in_page, 0, ptr_access,
-+                                       ptr_mmu_idx, ra == 0,
-+                                       &discard_mem, &full, ra);
-+
-+        assert(!(flags2 & TLB_INVALID_MASK));
-+        ret.flags |= flags2;
-     }
- 
-     /* Any debug exception has priority over a tag check exception. */
--    if (!probe && unlikely(flags & TLB_WATCHPOINT)) {
-+    if (!probe && unlikely(ret.flags & TLB_WATCHPOINT)) {
-         int wp = ptr_access == MMU_DATA_LOAD ? BP_MEM_READ : BP_MEM_WRITE;
-         assert(ra != 0);
--        cpu_check_watchpoint(env_cpu(env), ptr, ptr_size, attrs, wp, ra);
-+        cpu_check_watchpoint(env_cpu(env), ptr, ptr_size, ret.attrs, wp, ra);
-     }
- 
-     /* Convert to the physical address in tag space.  */
-     tag_paddr = ptr_paddr >> (LOG2_TAG_GRANULE + 1);
- 
-     /* Look up the address in tag space. */
--    tag_asi = attrs.secure ? ARMASIdx_TagS : ARMASIdx_TagNS;
-+    tag_asi = ret.attrs.secure ? ARMASIdx_TagS : ARMASIdx_TagNS;
-     tag_as = cpu_get_address_space(env_cpu(env), tag_asi);
-     mr = address_space_translate(tag_as, tag_paddr, &xlat, NULL,
--                                 tag_access == MMU_DATA_STORE, attrs);
-+                                 tag_access == MMU_DATA_STORE, ret.attrs);
- 
-     /*
-      * Note that @mr will never be NULL.  If there is nothing in the address
-@@ -215,7 +228,7 @@ allocation_tag_mem_internal(CPUARMState *env, int ptr_mmu_idx,
-                       "Tag Memory @ 0x%" HWADDR_PRIx " not found for "
-                       "Normal Memory @ 0x%" HWADDR_PRIx "\n",
-                       tag_paddr, ptr_paddr);
--        return NULL;
-+        goto fini;
-     }
- 
-     /*
-@@ -227,8 +240,11 @@ allocation_tag_mem_internal(CPUARMState *env, int ptr_mmu_idx,
-         physical_memory_set_dirty_flag(tag_ra, DIRTY_MEMORY_MIGRATION);
-     }
- 
--    return memory_region_get_ram_ptr(mr) + xlat;
-+    ret.tag_mem = memory_region_get_ram_ptr(mr) + xlat;
- #endif
-+
-+ fini:
-+    return ret;
- }
- 
- static G_NORETURN void canonical_tag_write_fail(CPUARMState *env,
-@@ -250,7 +266,8 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+     if (!(flags & (ptr_access == MMU_DATA_STORE ? PAGE_WRITE_ORG : PAGE_READ))) {
+         if (probe) {
+             return NULL;
+@@ -250,8 +249,16 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+                                    int ptr_size, MMUAccessType tag_access,
                                     uintptr_t ra)
  {
-     return allocation_tag_mem_internal(env, ptr_mmu_idx, ptr, ptr_access,
--                                       ptr_size, tag_access, false, ra);
-+                                       ptr_size, tag_access, false, ra)
-+           .tag_mem;
- }
- 
- uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
-@@ -258,7 +275,8 @@ uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
-                                   int ptr_size, MMUAccessType tag_access)
- {
-     return allocation_tag_mem_internal(env, ptr_mmu_idx, ptr, ptr_access,
--                                       ptr_size, tag_access, true, 0);
-+                                       ptr_size, tag_access, true, 0)
-+           .tag_mem;
+-    return allocation_tag_mem_probe(env, ptr_mmu_idx, ptr, ptr_access,
+-                                    ptr_size, tag_access, false, ra);
++    return allocation_tag_mem_internal(env, ptr_mmu_idx, ptr, ptr_access,
++                                       ptr_size, tag_access, false, ra);
++}
++
++uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
++                                  uint64_t ptr, MMUAccessType ptr_access,
++                                  int ptr_size, MMUAccessType tag_access)
++{
++    return allocation_tag_mem_internal(env, ptr_mmu_idx, ptr, ptr_access,
++                                       ptr_size, tag_access, true, 0);
  }
  
  uint64_t HELPER(irg)(CPUARMState *env, uint64_t rn, uint64_t rm)
+@@ -1221,7 +1228,7 @@ uint64_t mte_mops_probe(CPUARMState *env, uint64_t ptr, uint64_t size,
+     /* True probe; this will never fault */
+     mem = allocation_tag_mem_probe(env, mmu_idx, ptr,
+                                    w ? MMU_DATA_STORE : MMU_DATA_LOAD,
+-                                   size, MMU_DATA_LOAD, true, 0);
++                                   size, MMU_DATA_LOAD);
+     if (!mem) {
+         return size;
+     }
+@@ -1279,7 +1286,7 @@ uint64_t mte_mops_probe_rev(CPUARMState *env, uint64_t ptr, uint64_t size,
+      */
+     mem = allocation_tag_mem_probe(env, mmu_idx, ptr,
+                                    w ? MMU_DATA_STORE : MMU_DATA_LOAD,
+-                                   1, MMU_DATA_LOAD, true, 0);
++                                   1, MMU_DATA_LOAD);
+     if (!mem) {
+         return size;
+     }
+@@ -1331,7 +1338,7 @@ void mte_mops_set_tags(CPUARMState *env, uint64_t ptr, uint64_t size,
+     mmu_idx = FIELD_EX32(desc, MTEDESC, MIDX);
+     /* True probe: this will never fault */
+     mem = allocation_tag_mem_probe(env, mmu_idx, ptr, MMU_DATA_STORE, size,
+-                                   MMU_DATA_STORE, true, 0);
++                                   MMU_DATA_STORE);
+     if (!mem) {
+         return;
+     }
 -- 
 2.43.0
 

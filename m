@@ -4,139 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB8A3C44514
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 08:49:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22E67C44517
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 09:05:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkeDE-0000Xh-2w; Fri, 17 Jul 2026 04:46:28 -0400
+	id 1wkeUr-0001GT-Nw; Fri, 17 Jul 2026 05:04:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wkeD8-0000WV-OO; Fri, 17 Jul 2026 04:46:23 -0400
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wkeD5-0003vC-PE; Fri, 17 Jul 2026 04:46:21 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=psWKj7hzu8O3HgwXxEZLxdeOVKeSTlAmC4A3Sn9faysnQGIoZoYNTFPj6dwZ9UaQahENTRuBbWvYbZ2Z+CU5dWnPyVNkfKehWDZ9/mBuaoJbjaM3p8m+u4irP4XGOiytEqASysj5LAizFoeikLzFImrKdWwhc03umrxhI65XcH9jNZ9/19/jxm2CjaaREkjZcQIOks4Sqlm4sNVIh1wTJOkrVL/F/LjwQ/qykGdStq8t2EmlIoZBBe91bGSj5rRr5m6/9CiAoy8sIxtIV4PgoSpx45iAEINHejsDKdpwgKDIbF6ipCxP5+SzvGVxwuXxz08qd6hIlCG24NlBx2aK2g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=IPmBPJkX+8OKOwDgcLfQFDkJ0k+VudPL4dmg7u+qCgg=;
- b=ZJFHLt+ZxyK4HrUAaWdiJx1IuuQzPW2q0c8jbYEv/F3+S5/9p8AaFNALXXQ37uLckewMnd0DU/sWTvJc0ktPY5M/7z75X02EUm82G4DXAKHSOqUdi4PNgxhpMOapDnYN9kum9VzSx9z/Ro2RWRktx9LIhIDFI4Z7sARQbKcn3n5TqwThvHMjxhmNbcuuuccgzi95Y+fQZqEvtUmahAuwyXtb6WTzsruo0u7LGqSpQCXvrQYBKeherO+QP10jN5LpK5mZ0OLnhee3YU27XzbYx+fPgtRSdxn4zjt7iBXNalvUWZkrOnue8KRFgGYxN7I27WxDbCxqIXVzsBNSQXsLbA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=IPmBPJkX+8OKOwDgcLfQFDkJ0k+VudPL4dmg7u+qCgg=;
- b=HB8qkeeumQ/YzPWdwfloU0+AGzZaaQ9ixo7PUMEgWgO92kDFZKj+P3euYv87rLnNKVUWh8km6vlUE9+2E0bezKk/uTssOmasPy+sa4usjjxvGYuSMvU3JDPCbk8dWnas5DRnL3soDhrHHQfxCD6dKJoSHk/ZFhL6PEH5OrUflPuvApvxLgV8M54vXRtBpESXGUpPusoezaDX2ay+r8e1AfhLU7SsntRXLtAFUdaaS9tB7MPP/7/gdn5efvBfvJAmQtfJUVuzIAaTuxxBLsAKZZIXdw7NN3PS+6ir/gcwz3QLhrcYI0K0YJeKR83WdiXY1g/zhPE6FteYVSbvzwk9IA==
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
- by KUZPR06MB8267.apcprd06.prod.outlook.com (2603:1096:d10:63::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.12; Fri, 17 Jul
- 2026 08:46:04 +0000
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0223.011; Fri, 17 Jul 2026
- 08:46:04 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Alistair
- Francis <alistair@alistair23.me>, Fabiano Rosas <farosas@suse.de>, Laurent
- Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
- =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
- =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@redhat.com>
-Subject: [PATCH v4 3/9] hw/arm/aspeed_ast27x0: Move SCU link into AST27x0
- coprocessors
-Thread-Topic: [PATCH v4 3/9] hw/arm/aspeed_ast27x0: Move SCU link into AST27x0
- coprocessors
-Thread-Index: AQHdFcizTfQTfq5egkmHkyfANspk5Q==
-Date: Fri, 17 Jul 2026 08:46:04 +0000
-Message-ID: <20260717084559.3477061-4-jamin_lin@aspeedtech.com>
-References: <20260717084559.3477061-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20260717084559.3477061-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|KUZPR06MB8267:EE_
-x-ms-office365-filtering-correlation-id: f4b9253e-779a-40e9-bbfb-08dee3dfd61a
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|23010399003|1800799024|7416014|376014|921020|22082099003|18002099003|38070700021|56012099006|10067099003;
-x-microsoft-antispam-message-info: 7vftPZli1heJvAHD1fYdM7P0SAEs9ioyN8lEKy127yYq7K28xcc1mMxERLZ6wf99laf2y88vQs3usopi7NJs1G8/tRQBlOwF9Q26BtyBb5U/0d2CXyKgvHmyhleBOtSv2xi4E0molzzLyxgRJPhDwpwFlRkG606yROOxRYfuRT6zvfDShHiZpDNug36zj6jdtAQPLN0zua1MJDF6rZkkVA//DhYYXUdlI4iW3U5nEgajtegk4b9DND6+LSjjg5FPCJNNNcYIrEAbDtU021o8E+KaQszgpqm4mJqPnn5qap4lBSlBFRo422UIpRVyfD/4Ybu87hPOmRd0shzoxgEhry20wWjx1sz6PlTQld0zYV1Ce060vHmA4iEPZHIQErp5upbUAWsWpaFei7fHbD1xqg1Zj3LHDMzpAsiXUOy92oviRdDnAwpN5SAAeXZhzbU1rKl4x6Xk8iW8wQ90y7K63dufbhzjowa9sp7X/vIzop/lSrexkjQrH67nVqQlvRefuLih+1CFBKi4BSY4Nwyx95JqwxmY9E2QbP8950m5PkKp1ZkVr6AltoAC3dZFqA7a/gpkV4EcU9gAGiJT2EtowW8+SSo2oQ4bypdoRtdo7g+9ehUtAuaU6dDuttfmJh1kAON7CzVblkBlQofD99j2h/EAc+OtfvCS9KR5LRQ3Gj38i0tu25WJVaBzVBonEm3bgi0QNZGUWI3el+bvSU7ovzAxKdEDEl7awSWLwjLK3VA=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(23010399003)(1800799024)(7416014)(376014)(921020)(22082099003)(18002099003)(38070700021)(56012099006)(10067099003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?IBV60UvwOxQtw7EZbySZBSAqeCoDZxM4WpjAjWjIxSgc6/fdktGhsROFj1?=
- =?iso-8859-1?Q?Q5CAwYZOjdHhh3EwzvOK0hcOnLOZXUaIFCZDOs0HP9qJddHDiWs3QcSiC8?=
- =?iso-8859-1?Q?JPQshYiFFHObDnKBIhQCpWzqh36JJOWJaLAM6/W2RjbqIiYQElWHFHoRA9?=
- =?iso-8859-1?Q?ZCsQByPdZCvQWFZ+FsPZ+zMATkll5L9nHGNJ+b3xOm5XvnkNTdDau7YN13?=
- =?iso-8859-1?Q?T7bPdSAK3h5ym8z7hWmUS+8CUUVSWdr6ZlND7oV4230cM7UwTT8g4LqbFR?=
- =?iso-8859-1?Q?m4F//uQ5aDK+/192rjdSrCCUJI+S5YSL3ZuPrjTCl64XP3a6+wHR+JvSwd?=
- =?iso-8859-1?Q?3ZcyE8aXqZzP84J7XpJLYC1Wnogp36nBVD3rPVJuJQ+vU9YL7AvNY7VToT?=
- =?iso-8859-1?Q?AC/h9YJ5iZwhshHFNo26ETgqLCp7HHXAYjbNrj4wolpKu3w+zf25Dht5qt?=
- =?iso-8859-1?Q?hgh+zrag4FeBH1olIYPHsSuBxuYdDhHsO8d8924LtoPI8GA/l7VHATozr1?=
- =?iso-8859-1?Q?JMj9+cgPbYsdIAuqP6gLgnViITrv/QrM1OOVVGlklNGWJ6QM/xhQuXUsND?=
- =?iso-8859-1?Q?5qh4AOTw8t2ESw5ou0eTjuIr+aXiw/TAz3MLuxSYx9Bu02CiI8th9U/7gz?=
- =?iso-8859-1?Q?ER3XZJktwFEIU8uj9A/J2IKPZl5QGle1LgkasW3NNwis1SRZZylcCZh+x1?=
- =?iso-8859-1?Q?O/IGBCbUslPEt0qFt+MCs1+OdmAZZtecd+q+KiG2J4iGwY2zv+h3ITOCMe?=
- =?iso-8859-1?Q?4IDjnVf7kcLaCltA0qIrWlD+djbyS8w4LBnP7aeSLZ4DA1VBHIDRLw8MBq?=
- =?iso-8859-1?Q?HLD1CjgkNFdkJu9ys9WDKEWZTlmiyyoG3CKg8E4E7owsqr7dHWipHlRYfG?=
- =?iso-8859-1?Q?dq6qO9G5Fv6FLGD6kqodX7Bh3Xb3NXZh1VbtHVfJQ7EGe7+JmdIYusIIfh?=
- =?iso-8859-1?Q?IA8G3jmX9iXI83DsZqYkGBXQMpXisJ4XN8+QrqjgOXdnMYzAf5715zmk4i?=
- =?iso-8859-1?Q?LGdvPFDweIQlOXsWjwFe73t1/fG0xVwi5h28/op0P7xAcVQf26+nditpWQ?=
- =?iso-8859-1?Q?99RqARuwstqtKoMUgkkleFId0xE72w+U2oREmJbNmQkz78/UA5R3lbjPOT?=
- =?iso-8859-1?Q?M8ag/qaU5wJAjyMVzswoWr+J7CdFyr2K6PeStL+cvitG1GvCJGz2blxe9g?=
- =?iso-8859-1?Q?ajH96JWed+4MoGK0hEOUwsp30YeVP/VUknYWUjSRTVAvZjRGkeYaD+ek5p?=
- =?iso-8859-1?Q?+mSircspIdRstlOROtZ/imRcf7yvcs16OJ5dzOuTc8ADq2qUML1FDHOmi7?=
- =?iso-8859-1?Q?+fpjdbHMgSoJ6KhTvCeDhL/MvOBEiSbbKFzOzYNHKawETH1rfWVRUfTXsD?=
- =?iso-8859-1?Q?oCx5WXENwxV2xQ3v1ZItCUW9wS+9/Nf695N9+JvfA3F+ZTLQIpdwRE+3uR?=
- =?iso-8859-1?Q?BHkhVJ0Yds58wRB4j/HouTluAKUfp4ifizIp/3prpeylEOAAUemIV278RK?=
- =?iso-8859-1?Q?XMmXcCcQGKjA3VaBY7GjxHYOUc/Kev6Edb/VPl1Jm81X5VCiHu/jnl9voV?=
- =?iso-8859-1?Q?ZJZGGPOp/V3mDck9e6yyyhXlxopxRjqBS02ry8J8/UEPtRkNLQBXFf8ToR?=
- =?iso-8859-1?Q?L2bImjFKsvzn4x1RJZboZAu7hPR+GApy8T/s1gmoE2cSiF7SVUNYe27REr?=
- =?iso-8859-1?Q?amxTf2sAgaoNyOPQM6ITYh2B5LFlDtfCJc5UlajB4gdF2eRT39MDFmKr+0?=
- =?iso-8859-1?Q?3c8AXnStXojAB5c+oneOUAY/xflDZudKYqgipEXOCYyWcfBcnk2Rs+B0Ng?=
- =?iso-8859-1?Q?rl0WxWqAPQ=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wkeUq-0001G1-Jy
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 05:04:40 -0400
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wkeUo-0006Cm-VR
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 05:04:40 -0400
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-81ee41aaec1so19701897b3.3
+ for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 02:04:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1784279077; cv=none;
+ d=google.com; s=arc-20260327;
+ b=GMXdzbYBw5gRQ1XMs6zVnufNUOVaoHOmfIRPkXR/ErTKebPpfWRRsq6ActmVtIwRDv
+ eXj41FMRkkDY64RHbEmjBymyk+faM0Mn1nXYtU/1kCVQcX6S5+dZZ1ZIsX4yMvySOXVl
+ 8P5RT8TQqSJglCbt7OHDFzjlNfFb93i7+uzNvPTWV2mEfAmiRXehsxBAaeQN9hKKI9Sc
+ +rQwY5y8G/NTHAwQVrXpImag4W95IZFUhAs87W5AKBV/ffJ3zPT5MTsGmVTGNyDo4n1O
+ 5hb/oBtef3/ddYAq00/R2V6mGbBO5pRjq/DRfuQWqy/vn1X26hSLBvdIKuyflufZ4ciO
+ wdiA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=P8nJbFTwijDQXHnHUxqAc5yYHgnENsgRFp7K23oSfL4=;
+ fh=DK+3yFO5Gg0uOPf8Ew3mkMzrIlj+bQll9yZx8WRoRA0=;
+ b=Erbygdb/z1SoqU9nhFq+dJy9NE/2+Uj4GbWPwAOH+MG0xP+aCucRf8GhCrcnPn35qK
+ cIm+c185bcZGIpRPIPY6uVaZ0XBt3oEoI+E823pBq+L8xyHDFT7SaHhvAv2rFPLc/h0o
+ 1LpANIJoAOjMw1rbThzh1uKFl7UnrNgOvhY9ypt+01+if/S7IPuVDYRz8b7sFAaqdHtm
+ bYRJB3slVOjjVTI6lETmt/JEpdYNGDSOmCQTpV6mycvVC+owxkHTxbg1mPMIE/61/gdb
+ Bbl19gJJ4o+S3UzUvqF0Z4PCCQAylzoTp2RzMVv1JiFq3o85G4+FPo9+cZ2nsciFmM2g
+ fxuw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1784279077; x=1784883877; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=P8nJbFTwijDQXHnHUxqAc5yYHgnENsgRFp7K23oSfL4=;
+ b=VbBBsW6wesagi8OIjUqulDorC1zV8hm63883uDObCtAWvJLt9pYZoWxkVNiQZi3jDp
+ zFJK+H+aJHFT4+Ap+yDKkn741SFqv+PPDdkLnfupHQtmI9Vszx7AV93NtBPFN4G443uH
+ iLwuB/7xat/M+WVBpaY35g5eXouY4cl9jhpoziUWCrFZYs2KboAWsRGEXZZmquCHd0pe
+ EvA5SSJ8HqTuI+WlZbhIJ5GOMuybJryJ+XkDaz7V1LFT+uIqCF0/bOXBctYJWpiCo37/
+ XwI7zFcOyiseKU/eIfGjH19oKo7uo9bGMEQVUgZSZ5kP08puBDmVnYrJvJntt5Xt7V5J
+ +fvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1784279077; x=1784883877;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=P8nJbFTwijDQXHnHUxqAc5yYHgnENsgRFp7K23oSfL4=;
+ b=nWn6q0d6yhDFwptYJOmSxCjYKarWyPLPaqPOrlbqApBeOESGnPDwa2tonednGJX01X
+ lIe7AF49NGTFBOVm2ewcKyCTne/G5+anKoQD9HwxC+fBlfMK8xclorr8wUGjvXSp+ntz
+ pW+rKesh2D/0w/v/zwogg+0i5n0weMLHyPEEyRJwPRI3Y9KSw9twmfmfbv90JcagYxsO
+ 4Bdw6ImEg+2cbTF0t5QAy8StR0gDr8TDejg8cAeHTSsHeRCAeKFFu/EplYD3MY+IHu4Z
+ KGly+gfu7gqTMiC+pi5ckYc0M6kLRZ94UqvRuhCR/XYG9+GT7vsGOfP5Oz4XrgLqK8uu
+ dlOQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RqlidnKGwlH8e5klmLeP0tWYGsAWuBcouDSKwhPveW6qo2q4Ev2AVYCVjrBkc52uR9Uv5/cu/L76A==@nongnu.org
+X-Gm-Message-State: AOJu0Yx/l4tIZYOYaNqzoBec3ypG9dl+GZK4v53xEz7dakyAFJN+xuPj
+ Ua8tZGrZwhohR35OCT0SsrO0AGwnLioAP4tKIIEQJnn2MwwlTC+8xcW3wESHdrKHGNKlgXXnEs9
+ U+2TH8OAFWNFC2eF0XUj09BoE/rpzF8qRXcTMvHm5fA==
+X-Gm-Gg: AfdE7cmtAtNJm8spyXP6IfvMgfngzQbIJm+Hdv9P02NIKUKrnIj32DJXTUQGKpHdGMY
+ N0W6MUc1cGn+zg4b/577LTm2p0zUtCOBC9SfQ8SHUBE9b5SnqpzfeyGfTa0qCKYE76NY33bwB52
+ oyXnALVhOZD73VMlt8T0SpB1vHZ/0xsoK8O4o8B+8aGRh4mEra6dojO/0/zoF1si2y89yuw4bNQ
+ ewUeQuMqFi/l0wXxdMKHhx9+uRjCKwxXf19k4b0Ol4dlm0ZVuVS3wfpicOxcFVfo+GxZ9QqhdGn
+ eoz3OkZjCVNAr0myrnXCY+xL0OrotdrCGuxpy3XiLII0Pw==
+X-Received: by 2002:a05:690c:e3c6:b0:80c:85e5:872d with SMTP id
+ 00721157ae682-81ef26b97bcmr4629817b3.59.1784279077354; Fri, 17 Jul 2026
+ 02:04:37 -0700 (PDT)
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: QlqFggLfg+CZOzp76vNn2eDNtPxnpsQTZ2/C8/cW1fCTjVXVc3Yw96MNxuaUGToC/Qoaf84iB0CzbIwfJxvcY8iU5RbvYlTlJbUlB8IsLgxkNlDCxqFuEzn38slO1YVYO25IlIZKT71ttMUPz+MEXHQzSNE9MdK8iH4zPVIJlShz/fj3uuwiBFgIR9IVxhe7qq2kiZBxB2ze6ks04lJjeaT8zHkBDkcpJmDkHMdDxrn/vX4ceNph8sQz2ssDHF6/otx8yozMLpIhR/dyuvjK4Wpv5X7nqsmWx36Y1U6dOuLgKypbrIRgidjrLF4SjbD+ZIK951Gtt6gAntbDVQvpHg==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f4b9253e-779a-40e9-bbfb-08dee3dfd61a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jul 2026 08:46:04.2141 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 3YaZ9h6DpHPQrCGKW3N2A8IgGESd6eym7r7dPlk88o9+vIkaeZFNvOYmIJHq28XR54VjyV2nP24fesxcTkXOPuaYsxq1xZaUTfBg0Qxk55I=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUZPR06MB8267
-Received-SPF: pass client-ip=2a01:111:f403:c405::5;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=TYPPR03CU001.outbound.protection.outlook.com
+References: <20260623-guest-panic-unhandle-v1-1-6adfb6d4221e@ooseel.net>
+ <CAFEAcA9LCRKmU+r77zGp+4Rgd-uaZLPnoPPQDSfG8X5eeiynJA@mail.gmail.com>
+ <91ad4c80-adc6-4f37-8346-20230638e5f0@oss.qualcomm.com>
+ <CAFEAcA-hnm17d4PR0wmaKwQmM-K50nHeRYv0a-pCk3J1qUbPsg@mail.gmail.com>
+ <CANTT7qh6X7ESRwgfM5PRkfCx9BSVUXHy8GL+n8SmX3LtusWiGw@mail.gmail.com>
+In-Reply-To: <CANTT7qh6X7ESRwgfM5PRkfCx9BSVUXHy8GL+n8SmX3LtusWiGw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 17 Jul 2026 10:04:24 +0100
+X-Gm-Features: AUfX_myAcVGgxGl7E5kSTzl0FlyaoeC_z5epinFqPxAeHx2PntIyQ7ihGC8s3Dc
+Message-ID: <CAFEAcA_Q1O16RUkLk+LvMjyi7L8O2txFrUkbna911QBQjAQLFA@mail.gmail.com>
+Subject: Re: [PATCH] target/arm/hvf: panic the guest if an unhandled exception
+ occurs
+To: Leesoo Ahn <lsahn@ooseel.net>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org, 
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -153,192 +126,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The SCU link is only needed by the AST27x0 SSP/TSP coprocessors for their=
-=0A=
-AST2700-specific SCU alias window.=0A=
-=0A=
-Move the link property from the common AspeedCoprocessorState into=0A=
-Aspeed27x0CoprocessorState, so the generic coprocessor model no longer=0A=
-contains an AST2700-specific dependency.=0A=
-=0A=
-Also validate that the SCU link has been provided during device realize=0A=
-before accessing it.=0A=
-=0A=
-No functional change.=0A=
-=0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
-Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@oss.qualcomm.com>=0A=
-Reviewed-by: C=E9dric Le Goater <clg@redhat.com>=0A=
-Tested-by: Philippe Mathieu-Daud=E9 <philmd@oss.qualcomm.com>=0A=
----=0A=
- include/hw/arm/aspeed_coprocessor.h |  5 +++--=0A=
- hw/arm/aspeed_ast27x0-ssp.c         | 20 ++++++++++++++++----=0A=
- hw/arm/aspeed_ast27x0-tsp.c         | 20 ++++++++++++++++----=0A=
- hw/arm/aspeed_coprocessor_common.c  |  2 --=0A=
- 4 files changed, 35 insertions(+), 12 deletions(-)=0A=
-=0A=
-diff --git a/include/hw/arm/aspeed_coprocessor.h b/include/hw/arm/aspeed_co=
-processor.h=0A=
-index ac58a5f424..adfc3c4512 100644=0A=
---- a/include/hw/arm/aspeed_coprocessor.h=0A=
-+++ b/include/hw/arm/aspeed_coprocessor.h=0A=
-@@ -20,10 +20,8 @@ struct AspeedCoprocessorState {=0A=
-     MemoryRegion *sram;=0A=
-     MemoryRegion sram_alias;=0A=
-     MemoryRegion uart_alias;=0A=
--    MemoryRegion scu_alias;=0A=
-     Clock *sysclk;=0A=
- =0A=
--    AspeedSCUState *scu;=0A=
-     AspeedSCUState scuio;=0A=
-     AspeedTimerCtrlState timerctrl;=0A=
-     SerialMM *uart;=0A=
-@@ -52,6 +50,9 @@ struct Aspeed27x0CoprocessorState {=0A=
-     UnimplementedDeviceState otp;=0A=
- =0A=
-     ARMv7MState armv7m;=0A=
-+=0A=
-+    MemoryRegion scu_alias;=0A=
-+    Aspeed2700SCUState *scu;=0A=
- };=0A=
- =0A=
- #define TYPE_ASPEED27X0SSP_COPROCESSOR "aspeed27x0ssp-coprocessor"=0A=
-diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c=0A=
-index 68a8ab26f7..28bb59c8c5 100644=0A=
---- a/hw/arm/aspeed_ast27x0-ssp.c=0A=
-+++ b/hw/arm/aspeed_ast27x0-ssp.c=0A=
-@@ -167,6 +167,12 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState =
-*dev_soc, Error **errp)=0A=
-         return;=0A=
-     }=0A=
- =0A=
-+    if (!a->scu) {=0A=
-+        error_setg(errp, TYPE_ASPEED27X0SSP_COPROCESSOR=0A=
-+                   ": 'scu' link is not set");=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-     /* AST27X0 SSP Core */=0A=
-     armv7m =3D DEVICE(&a->armv7m);=0A=
-     qdev_prop_set_uint32(armv7m, "num-irq", 256);=0A=
-@@ -195,11 +201,11 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState=
- *dev_soc, Error **errp)=0A=
-                                 &s->sram_alias);=0A=
- =0A=
-     /* SCU */=0A=
--    memory_region_init_alias(&s->scu_alias, OBJECT(s), "scu.alias",=0A=
--                             &s->scu->iomem, 0,=0A=
--                             memory_region_size(&s->scu->iomem));=0A=
-+    memory_region_init_alias(&a->scu_alias, OBJECT(a), "scu.alias",=0A=
-+                             &a->scu->parent_obj.iomem, 0,=0A=
-+                             memory_region_size(&a->scu->parent_obj.iomem)=
-);=0A=
-     memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SCU],=0A=
--                                &s->scu_alias);=0A=
-+                                &a->scu_alias);=0A=
- =0A=
-     /* INTC */=0A=
-     if (!sysbus_realize(SYS_BUS_DEVICE(&a->intc[0]), errp)) {=0A=
-@@ -275,6 +281,11 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState =
-*dev_soc, Error **errp)=0A=
-                                   sc->memmap[ASPEED_DEV_OTP], 0x800);=0A=
- }=0A=
- =0A=
-+static const Property aspeed_27x0_coprocessor_properties[] =3D {=0A=
-+    DEFINE_PROP_LINK("scu", Aspeed27x0CoprocessorState, scu,=0A=
-+                     TYPE_ASPEED_2700_SCU, Aspeed2700SCUState *),=0A=
-+};=0A=
-+=0A=
- static void aspeed_soc_ast27x0ssp_class_init(ObjectClass *klass,=0A=
-                                              const void *data)=0A=
- {=0A=
-@@ -288,6 +299,7 @@ static void aspeed_soc_ast27x0ssp_class_init(ObjectClas=
-s *klass,=0A=
-     /* Reason: The Aspeed Coprocessor can only be instantiated from a boar=
-d */=0A=
-     dc->user_creatable =3D false;=0A=
-     dc->realize =3D aspeed_soc_ast27x0ssp_realize;=0A=
-+    device_class_set_props(dc, aspeed_27x0_coprocessor_properties);=0A=
- =0A=
-     sc->valid_cpu_types =3D valid_cpu_types;=0A=
-     sc->irqmap =3D aspeed_soc_ast27x0ssp_irqmap;=0A=
-diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c=0A=
-index b8a4f7c91d..f5c4a02161 100644=0A=
---- a/hw/arm/aspeed_ast27x0-tsp.c=0A=
-+++ b/hw/arm/aspeed_ast27x0-tsp.c=0A=
-@@ -167,6 +167,12 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState =
-*dev_soc, Error **errp)=0A=
-         return;=0A=
-     }=0A=
- =0A=
-+    if (!a->scu) {=0A=
-+        error_setg(errp, TYPE_ASPEED27X0TSP_COPROCESSOR=0A=
-+                   ": 'scu' link is not set");=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-     /* AST27X0 TSP Core */=0A=
-     armv7m =3D DEVICE(&a->armv7m);=0A=
-     qdev_prop_set_uint32(armv7m, "num-irq", 256);=0A=
-@@ -195,11 +201,11 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState=
- *dev_soc, Error **errp)=0A=
-                                 &s->sram_alias);=0A=
- =0A=
-     /* SCU */=0A=
--    memory_region_init_alias(&s->scu_alias, OBJECT(s), "scu.alias",=0A=
--                             &s->scu->iomem, 0,=0A=
--                             memory_region_size(&s->scu->iomem));=0A=
-+    memory_region_init_alias(&a->scu_alias, OBJECT(a), "scu.alias",=0A=
-+                             &a->scu->parent_obj.iomem, 0,=0A=
-+                             memory_region_size(&a->scu->parent_obj.iomem)=
-);=0A=
-     memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SCU],=0A=
--                                &s->scu_alias);=0A=
-+                                &a->scu_alias);=0A=
- =0A=
-     /* INTC */=0A=
-     if (!sysbus_realize(SYS_BUS_DEVICE(&a->intc[0]), errp)) {=0A=
-@@ -275,6 +281,11 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState =
-*dev_soc, Error **errp)=0A=
-                                   sc->memmap[ASPEED_DEV_OTP], 0x800);=0A=
- }=0A=
- =0A=
-+static const Property aspeed_27x0_coprocessor_properties[] =3D {=0A=
-+    DEFINE_PROP_LINK("scu", Aspeed27x0CoprocessorState, scu,=0A=
-+                     TYPE_ASPEED_2700_SCU, Aspeed2700SCUState *),=0A=
-+};=0A=
-+=0A=
- static void aspeed_soc_ast27x0tsp_class_init(ObjectClass *klass,=0A=
-                                              const void *data)=0A=
- {=0A=
-@@ -288,6 +299,7 @@ static void aspeed_soc_ast27x0tsp_class_init(ObjectClas=
-s *klass,=0A=
-     /* Reason: The Aspeed Coprocessor can only be instantiated from a boar=
-d */=0A=
-     dc->user_creatable =3D false;=0A=
-     dc->realize =3D aspeed_soc_ast27x0tsp_realize;=0A=
-+    device_class_set_props(dc, aspeed_27x0_coprocessor_properties);=0A=
- =0A=
-     sc->valid_cpu_types =3D valid_cpu_types;=0A=
-     sc->irqmap =3D aspeed_soc_ast27x0tsp_irqmap;=0A=
-diff --git a/hw/arm/aspeed_coprocessor_common.c b/hw/arm/aspeed_coprocessor=
-_common.c=0A=
-index a0a4c73d08..43026d2a55 100644=0A=
---- a/hw/arm/aspeed_coprocessor_common.c=0A=
-+++ b/hw/arm/aspeed_coprocessor_common.c=0A=
-@@ -27,8 +27,6 @@ static const Property aspeed_coprocessor_properties[] =3D=
- {=0A=
-                      TYPE_MEMORY_REGION, MemoryRegion *),=0A=
-     DEFINE_PROP_LINK("sram", AspeedCoprocessorState, sram, TYPE_MEMORY_REG=
-ION,=0A=
-                      MemoryRegion *),=0A=
--    DEFINE_PROP_LINK("scu", AspeedCoprocessorState, scu, TYPE_ASPEED_SCU,=
-=0A=
--                     AspeedSCUState *),=0A=
-     DEFINE_PROP_LINK("uart", AspeedCoprocessorState, uart, TYPE_SERIAL_MM,=
-=0A=
-                      SerialMM *),=0A=
-     DEFINE_PROP_INT32("uart-dev", AspeedCoprocessorState, uart_dev, 0),=0A=
--- =0A=
-2.43.0=0A=
+On Thu, 16 Jul 2026 at 18:27, Leesoo Ahn <lsahn@ooseel.net> wrote:
+>
+> 2026=EB=85=84 7=EC=9B=94 13=EC=9D=BC (=EC=9B=94) =EC=98=A4=ED=9B=84 6:34,=
+ Peter Maydell <peter.maydell@linaro.org>=EB=8B=98=EC=9D=B4 =EC=9E=91=EC=84=
+=B1:
+> >
+> > On Fri, 10 Jul 2026 at 23:56, Philippe Mathieu-Daud=C3=A9
+> > <philmd@oss.qualcomm.com> wrote:
+> > >
+> > > On 10/7/26 17:37, Peter Maydell wrote:
+> > > > On Tue, 23 Jun 2026 at 13:56, Leesoo Ahn <lsahn@ooseel.net> wrote:
+> > > >>
+> > > >> It's worth cleaning up all resources that the guest taking and to =
+quit
+> > > >> if an exception in el1 could not be resolved.
+> > > >>
+> > > >> Otherwise, the guest will get in the infinite black-hole by
+> > > >> unmodified pc.
+> > > >>
+> > > >> Signed-off-by: Leesoo Ahn <lsahn@ooseel.net>
+> > > >> ---
+> > > >>   target/arm/hvf/hvf.c | 1 +
+> > > >>   1 file changed, 1 insertion(+)
+> > > >>
+> > > >> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> > > >> index 8b902c6882..4358cf90e8 100644
+> > > >> --- a/target/arm/hvf/hvf.c
+> > > >> +++ b/target/arm/hvf/hvf.c
+> > > >> @@ -2533,6 +2533,7 @@ static int hvf_handle_exception(CPUState *cp=
+u, hv_vcpu_exit_exception_t *excp)
+> > > >>           cpu_synchronize_state(cpu);
+> > > >>           trace_hvf_exit(syndrome, ec, env->pc);
+> > > >>           error_report("0x%llx: unhandled exception ec=3D0x%x", en=
+v->pc, ec);
+> > > >> +        qemu_system_guest_panicked(cpu_get_crash_info(cpu));
+> > > >>       }
+
+> > For this specific patch: what is the case where we get into this
+> > codepath (and in particular what is the EC_FOO exception subtype)?
+> > Maybe the fix is to handle that case. Compare an earlier thread:
+> > https://lore.kernel.org/qemu-devel/8D0BCB24-BB1B-40EF-A361-0F79D65600AE=
+@unpredictable.fr/
+> >
+> > If we're getting here by falling through from EC_INSNABORT,
+> > I think that can happen if the guest tries to execute from
+> > an MMIO region.
+>
+> EC_DATABORT already deals with traps by accessing MMIO regions.
+> Yet I have no idea what kind of instruction abort could be raised in MMIO=
+.
+
+Yeah, we can't support emulating of execution from an MMIO region
+with hvf. I think it will only really happen if the guest has
+a bug and jumps to a bad address that happens to have a device.
+
+Did you submit this patch because you saw a VM get into this
+state? What did the guest do to cause it?
+
+thanks
+-- PMM
 

@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12EE4C44507
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 08:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9386C44514
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 08:21:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkdmC-0006mv-6W; Fri, 17 Jul 2026 04:18:32 -0400
+	id 1wkdmG-0006nu-S7; Fri, 17 Jul 2026 04:18:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wkdm9-0006lm-TQ; Fri, 17 Jul 2026 04:18:29 -0400
+ id 1wkdmE-0006nD-EK; Fri, 17 Jul 2026 04:18:34 -0400
 Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
  ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wkdm6-0000Cy-I6; Fri, 17 Jul 2026 04:18:28 -0400
+ id 1wkdmA-0000Cy-S6; Fri, 17 Jul 2026 04:18:32 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=XzjMG/TKYULvzCOsjhJB7Dl2zDi084b3AqPukH3dZCzFzibLTAZM0ENxClOTmsxs6pQ3BsQka+p0hoR6UbwQ1Tye9ImgUgal2nHxKUqtAxlIBohJOFVQSfRNfhROubLjaqOcxCJqbXjMo7wz0Hl7IaG+MB+F3iMhIeBd2wMzD6cPkje+2HZevSjZSGUBbZQRbjoImWnK0Keo56x3E3aMsb9RXzLXYf5wHTEnXGgi1+MkhO4OYpeeC9Pp2s+/p/pGNCtZatITMa0UrmZ/miLuskxnd8gVrjStXUPyuIKjHIuH1F3yeSon4tcV88TVxTYkl0CMN5UqzXj+3UGZIj5nKA==
+ b=LelLSG8osT7mtJPj/PIjJWQ4WdEw/Fv+j3RAwpxrnKDeQR9NApUrpdGhyEUUWVLIcyH37VSNcEWKsxxQ0F5PH5yEGItw8oQaoyJX9riz04m2zzOrsotEgZq2Kua1HbyEGGqDyRUZicuN1cpw61+/yBxKUuWpSqFxVN20AVzZc46eVDOU4zfHQ2ddEEnOBDVyrn2p5A5zuIfA9LXhaJy87jxHiNKWFEE1a/eP7oIPBWiNwyjg2xGa7+KYq6Glou4IOrfhPF26ELrHWFJHNo0vnh5GW8aqd4gtVQ5wed3yJwrJdY5S95zxKx48HLooXT5zEiPz8cfFwVsNSIEK85J+WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=IPmBPJkX+8OKOwDgcLfQFDkJ0k+VudPL4dmg7u+qCgg=;
- b=ULY9wLis1Z5eY5x2PYwy1YZN8aTOm+ESu7Qf5jAMSsLZ6hrm59VKxLH4kLGsyByocyTd1rI5YdOp3aWRkKTjHw+bJG9fzIcj9DEXLoQOkXHUzQUU+KpzCxHIyavosatfHQdT7swPXY5e902diamJheEr1buAlV29ASWMorQ4y/ReXOxsTlvn5nOc2DMHYGjTfsUFRAcn6wTsC1RgMaxb5+2fuxQfH05004BPyLuAV8An9XfX1e3SJFurNyDe0ME9svJnGLCjVmnfjlBMvK7dVZ63fEi/8cHe2/ZtBtEQEokbushZzm6slpEVYcjVWDKXLl2d/dZRgfnK4rZSnjkeZQ==
+ bh=Bx3Iojt6We9l2KiNM6vA/h9zsim8zdynz8i4yrlpFBU=;
+ b=SEnKp00r3KGr+qfu+ugW089T2ke29Q5SOi4nxvHjxuYTb1zKsJRorlkBCCo8s0WlyP9oRsR1jEzloUb6M/154axLytEJd/42bgytSK/U1WMOKZ8IULT6CbpX4edi+y1nHmc164lOdNTQuGKdhK03SR/yDFVLhD+3pWBXgEETp086qDzDy5VeFrSw+mWw88/LNOCGaEqi9TeqGfrcQFNgAYBq6toBZUfy3imAKPh4B3NhkslJzV2eN4n52Ru5vZPMtoAdF8ZNq9Bu4wbtvgGYKuuzUrFfHbCFUz7ygWzdmei0+9kJCuB2BTtGpUClP2mZhE6DJ7PpV4DjeN4GM6YQFQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=IPmBPJkX+8OKOwDgcLfQFDkJ0k+VudPL4dmg7u+qCgg=;
- b=pyor5k1f5fCd4j7iBzYc3bnrhg7zfGKpg7eurEwwmDolBOWCb1B+OUwVoz10+VupVs4JnXjZSLxJ0m2tAu5x7MXF8dJW+Wk6RIaHfDGdPBJO4IOrKoBspJFw3Vf8WSaeRRSMTlv9ntkFQnROlTFflzN4ZkWjtAPaJqSYi+J76GnXXhD8TYKiSN8mQ7VgYGC/Kwl2LaGFqwFLhD1LC59q0U3SpZCNHEFKLCOeHcmnc9S9m4rPWQ6oYIu21sS2lAdnNwspDvVhlmsjALqu44LOTsylNY8vkKL3PNTRzcGi7UXz/URT7Pl1Jv38v7PWQ6HqviiRihdaRKPeCEQb6+cixg==
+ bh=Bx3Iojt6We9l2KiNM6vA/h9zsim8zdynz8i4yrlpFBU=;
+ b=KjleQjHsNxoXxiiKFpa1pNIEOSubWKy3vVExHqdBf4clr56wTSriwRBbi6q0wBoZmx46pm+BGvOvjTP+OoHrjCmuAUwdWmiA98/PE8PYMhMNPWBHncZfVIsCnU9Bh2MVEJC251FEA4N8UHgDpIvqECRTcQH5Y6oYhCq23+E5UbtKWoftgwz++OOHkibwsCzZf47Q2Ul8GCiBZzpAI90PdzYsYr6W/Dt4WBA0wUJ2HvU5sgfS+md3w9vVcDHAgr2AGKQH4AyJTT6Evb0NKpslYrc+NrSw+10CIOnz0PD1dgvAauecxOhekzkFeyEYnMlh777YkQcX+EkHq5GT1urAfA==
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
  by KU4PR06MB8339.apcprd06.prod.outlook.com (2603:1096:d10:7d::8) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.11; Fri, 17 Jul
- 2026 08:18:17 +0000
+ 2026 08:18:20 +0000
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0223.011; Fri, 17 Jul 2026
- 08:18:17 +0000
+ 08:18:20 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
@@ -55,13 +55,13 @@ To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
 CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
  =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
  =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@redhat.com>
-Subject: [PATCH v3 3/9] hw/arm/aspeed_ast27x0: Move SCU link into AST27x0
- coprocessors
-Thread-Topic: [PATCH v3 3/9] hw/arm/aspeed_ast27x0: Move SCU link into AST27x0
- coprocessors
-Thread-Index: AQHdFcTSLCy69bQy+Uusmo9ELoKJeQ==
-Date: Fri, 17 Jul 2026 08:18:17 +0000
-Message-ID: <20260717081813.3407862-4-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 5/9] hw/arm/aspeed_ast27x0: Pass realized PSP SoC to
+ SSP/TSP initialization
+Thread-Topic: [PATCH v3 5/9] hw/arm/aspeed_ast27x0: Pass realized PSP SoC to
+ SSP/TSP initialization
+Thread-Index: AQHdFcTT0b7FFW1VA0KE3Oc87sJrfw==
+Date: Fri, 17 Jul 2026 08:18:20 +0000
+Message-ID: <20260717081813.3407862-6-jamin_lin@aspeedtech.com>
 References: <20260717081813.3407862-1-jamin_lin@aspeedtech.com>
 In-Reply-To: <20260717081813.3407862-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
@@ -72,61 +72,61 @@ authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|KU4PR06MB8339:EE_
-x-ms-office365-filtering-correlation-id: a3b3b00f-b5b2-4918-1250-08dee3dbf4d3
+x-ms-office365-filtering-correlation-id: b61e192c-400e-4ff4-3f76-08dee3dbf657
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|376014|7416014|366016|1800799024|38070700021|921020|56012099006|10067099003|18002099003|22082099003;
-x-microsoft-antispam-message-info: qfECXFnqQXwHa4w/DH99CfJrOAffVPXyiyd/11nwVfFBd8jfojQyqkwFEMqrUTHA2e69pxgjxevm/w2gmoE1nfu6FK74TUgZssVJ1CzVmsguOSOPp6fyfLWrUSD/1YGbs/Swg/4HCBSZaPLxQuqB5dLWDoqXlteGVz3FdAFRWqa29fp+CVOCwjyKKMMIm/r22oCDUjsvcchcoj6f9TFbSbFEwMY0usyVWIJOXQ5jZzucyOd7ScErT2MvCrdcYgSysZ8/cr3TGk3QyS4wPEo3oMHYM5iHWgTh2EtliskrV0jNb/GjNmygn4z0q2yRTOW2SPWuagsE4y4xvzes0504ndDXJHcvgLpR+ue225ju/yXK9zUzYFcnSrYuHbSwGSXU5/FAe6+rCOqAAhvrB+7LuYO9k5H6J3lsu1uyktTOxPuE/YgfIPcbOsvnWT4HwOBTglbw7RpxcKB8vfdPJ9XeNb+Z1sGLgel5aoAoOvH8Q+Ft8JVmql0s0IkGcisCJPX92ZcaogoZ+ILY9FAqgqEvkHKhRgY7ZwR6dkdvmuL3TF1zFTLcOoWGMPRizahphjDKVL+pS9A6ddRawhNWz8yC/I2jJuB//odVVDJH4gv3UUx6LlJasQf3hzg/NW+vT0dp7ENtHHOtIJA2m96wAhggR9Vkm5a9X1LN0peIZtPkFobDY74kDYhR/Jke6PWayBC9pHfOfQA+xImll2d8CSRCwnNSJUVOFwDZ5BzCr6JJJHY=
+ ARA:13230040|23010399003|376014|7416014|366016|1800799024|38070700021|921020|6133799003|56012099006|10067099003|18002099003|22082099003;
+x-microsoft-antispam-message-info: kOU1Hm+DDctUIbEZv/VfhH4L1e66WR4vMyFuqmIrEHLEKGuMS6OCzOLCKODMPGS7F5ay/cIqZRsVyM0+MjikUvPR3ITOEqq3xLKSpCkLzh4X3WgI9dRwONSSGNWDZlz0j1NvREjtEhKJXd7ZhfmXmjMYb/Z9VpR3qTP//4954Yg10W8jcitudyzz0BFmcMtQu3wGhWebeYSleePDg/zZMieJyQubVQNByd6ee052vP7R43paHTOgGx07grdyLAQZEQaHK1lqe+XFQgnc+/i9dczoNyDOpy1hczpvf6fmhnLZMWqy0gSSJ5rQNWhWxQDJj0RRfghYRnqQiYngMsB/Y/ClG+8plkoUJx7oGnUHCFtCcig8qEVZLTL2rhRaMlGzmpjlWgn5V8Hi6wzBjvNTO2X4EmNijpGxo8Pe/4L6rmrbV1ANWb5k6hPAUgPkOQ7HFLTZoLRw1BSN7gHd6teV0RvRLomHs8ELCYzGmFYE6iTGxcdzXyF+HaWD1Ij2MYiddPgZ57EG4oWJXICuqyRyqsgrRxt2HmdQuyBIWT0B7JDJZUumKoovRLEdyf44Pd4uXdGuY+Y0ys2PQBtQtJSbEr8wQWi8RsGY8hw32aNMNThcuyDj/vSIq8DHsKykoAr/tVF4TEy1xrGnPCJ01UGXQTgpxc6w7y0AviSbtHnHFujUlwejWvyht0nPsYKLe70Auk/0TU9z40/DrcIzHx7RkzjXBkMVR9/YYo76E/FUSQlW3Ddm9XzpmNUINyqc6KLc
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(376014)(7416014)(366016)(1800799024)(38070700021)(921020)(56012099006)(10067099003)(18002099003)(22082099003);
+ SFS:(13230040)(23010399003)(376014)(7416014)(366016)(1800799024)(38070700021)(921020)(6133799003)(56012099006)(10067099003)(18002099003)(22082099003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?lCEFwuKwYJb7bDZSnHQeKZ6VwwxprSYDMDMRDtJ12GpVxivrOJ0d6ATIt/?=
- =?iso-8859-1?Q?6QQy7azceNGXWQpg4SujJXxj0yFHycDBM1l+BCx+YHRCbLpsjopYTbvdUt?=
- =?iso-8859-1?Q?Kb7cFg3UtlIx5NAv1MrFqZCANsMqEGt5wMVqw8oDmxpmMNigY4Qp1zTUlg?=
- =?iso-8859-1?Q?QS4Quaw566fxXrmQUBZdTwxPkJMeXMrTQFAX2EYn6uMxXUWLb8n90kCfBk?=
- =?iso-8859-1?Q?bRt1xn1fFX9vq4rPsN3ny1MUAXMRgNS5at3kSMerQyRSoVSG7FFF/uNCXz?=
- =?iso-8859-1?Q?uzQXIHQO68fKHcJnLrm49m5zpXEAZeLg0PQPHJBMwPPLNxvjvMLdPe6U1H?=
- =?iso-8859-1?Q?G54hgqNZLNVxihSV7NRbtlhAGFHT+G0ICM7SpBAWgEZqEmMgHojv9oCMBP?=
- =?iso-8859-1?Q?b5H1/XOBN5+9/u43TZN09xbk49g14dZ8e2Iahy28rpouyRI680L61Kv/JK?=
- =?iso-8859-1?Q?0EJmlC3g4KFNUVTZQaIKA6WKWwIDsovCUvLpS9w2ca7iz/QuXetqqGerWS?=
- =?iso-8859-1?Q?hX4IG0xLiWhCsUKHAlVN4DWrnj3IXvm/WyLToJeVG2VYWBZ1jXDqUZOEzC?=
- =?iso-8859-1?Q?MSFiiRFX78xIXE4D6QvGa2JJddDcZSaYXPG+9b9dzeZMhZbUThiKCopONo?=
- =?iso-8859-1?Q?hA7GsLTYHjXSpBbgYPNc5WVRmxO8WxvLeO3Hg3+CeU0aXoF0T0QUobiMdZ?=
- =?iso-8859-1?Q?Yr4fEvFnSFcrS5iPppGT5GS+gsfTJEsCVB6BWcehByvxlrEHwDYMs+hxlP?=
- =?iso-8859-1?Q?0LWceuaTZZXRyu/obykgEJtUzUWmeYTxpoMV4KpAbN1vtIctqYAD6sWgmp?=
- =?iso-8859-1?Q?qNOrWY6FHwvgOez6FL1aiC7DmZATDKhkb0wGh3K3QDHtpc5/UkcAVXd/a6?=
- =?iso-8859-1?Q?ZzGPiAkvXYYqtHY87ePtpGVVH8ixBYZndzsrnaNxzcGAxrmkDlr0+t6s9J?=
- =?iso-8859-1?Q?HUxxkAQVzTM43ltkKICzvmrgPPAWm0ilKPSOG/wGmSfYtvSA5/hwYoEsJF?=
- =?iso-8859-1?Q?yC3CatQYnxeIN+ylGdLvFjiiH5slXs73UWPZL9gZ7lrPpTi3TCIGlGmlMd?=
- =?iso-8859-1?Q?cy81jmCebtGYgRLPPhloLUlteQw2VCWkZ7K4UhEsLhzh3zpdYVvE2hcTn0?=
- =?iso-8859-1?Q?tMcmQcgxtotVF1Z3mzEwdVvkopMMjWyCNSnQPBBpoMxk2CiiQtIxkDPAk5?=
- =?iso-8859-1?Q?v00mFEwggKUOzYZUws08p1zA3SIPTUlU9gWxtfAl3++7zSDXiMsibtBjOr?=
- =?iso-8859-1?Q?YloMKDMy6TvPa5VYC+RoEkShGIjQck93Einbfou/r8autsETBah7P8S3Iu?=
- =?iso-8859-1?Q?WdBb8nLUeYb18bOKz0hWOj5zdL3rlQvsB3hhoxPFKARrFZJoTuLTl8mENk?=
- =?iso-8859-1?Q?TdxWm+Oq4D5+4M/Bi1HLPZa7uwxDtrm8KZvHXY2QhP9LEmBSmJkv0+86G0?=
- =?iso-8859-1?Q?ToFEO45GIa9ltuAWgYj3ci7Oq30wKsQ8un8GFVp795zih2CwMw38b6FBbY?=
- =?iso-8859-1?Q?NPU1OQqH7sNcWcBhCm7Y1tOlrJG4PSnVdWY3oRzoq/OJuvJcKuhic10Ooo?=
- =?iso-8859-1?Q?zCv+J6mRFO/YUFLPBxThkilVT+Eoyg+DU0GP2fA43fz9tSnmkKAxq7yk9t?=
- =?iso-8859-1?Q?lKhqo/MppTvJRq3fLlWnx6u9lmFUp8/7IpOPz5ykgyWYxKautPqi61wUqF?=
- =?iso-8859-1?Q?yV7lJG/CXkhOh49OdYDZvb8rGS/pyGTecNcjaSUuwH88ADqWmqyWi7ACIU?=
- =?iso-8859-1?Q?JHbT+5YAfVIHezyXMDmKWbKkBjrH/GRaRd896CnY71bvFfThMLXJ1JHUgN?=
- =?iso-8859-1?Q?HdtQLWiL9w=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?uwZUZbkM3lKN8C+Jw65w5lNT8cj8mUcMenoaW4lFtBDhOAp5a2Wjp1nKyk?=
+ =?iso-8859-1?Q?Fujg4+kG16i+ET48tKPnZSP9t3MxolL8fD4RxuVxJK8tPAOX58+nFOz39M?=
+ =?iso-8859-1?Q?ozMizbsDSqaZlHUn/8uFcl53CiCEZiTxOkGa4CEAeeZcAWEv3AKZRbSVwj?=
+ =?iso-8859-1?Q?QRclAtebuMmCCXpjxdWwsryLUIbD98r40b98jpfMT7eiBJGU4irpoddkob?=
+ =?iso-8859-1?Q?zt3oa7xs4T88nf9YMmaKZq2AcnLtLNEqamypNt2fh7bKA3YHqbyWYb85Gt?=
+ =?iso-8859-1?Q?Vhd1YDRYwZdGBBmmtcyTnAHvVCYIxuYGPY43DUqsaI11P6pVT4LCwQ1UxH?=
+ =?iso-8859-1?Q?yXgUBzGF+THIV9JBOoWuMkirguKHvX0Aphf4k2QSf57K5kRg09RUWf3+uQ?=
+ =?iso-8859-1?Q?tOj/K3Pzt3f493bthXTrLQa7GAP2frM4bNDjVpn7rguSf9tjW8msj99BOE?=
+ =?iso-8859-1?Q?8sOFoZGKU1WQ2HRcLOiw2W0npIVew+IHLxcv3BxGTJWmPPID5deQXLv+sG?=
+ =?iso-8859-1?Q?SEEdbBgEoB6lW8nycHeoZpwBeWUY/8ohX/IRNiw+p0CuuGEGwLpUlv4Ov2?=
+ =?iso-8859-1?Q?ZrREdg5+G/i20Q96oHbBkbhToAAkB7xaKHK5bV0Sx2G6StXP79vxknZUqA?=
+ =?iso-8859-1?Q?bsBbfA48TJXx+bS0A5hg43E+3kMPz5dZYKCFx37eHTvo0Grv/5KLO6PB1S?=
+ =?iso-8859-1?Q?gz8AiTZSojfHj331PAeW+uQjePp6Adv7w2SDU12njuTmmCfCv/RecXDcSR?=
+ =?iso-8859-1?Q?UIEIJC/2TQCVrZMs3rnGss3BHg6z7px8aIbC0wXoLjX0GPxaLSjjT5M8AT?=
+ =?iso-8859-1?Q?EODppI4tl51OU8clTWZ7nGK40dscVHoje1xtuyfkT2nzayxO7rk8zQ6//d?=
+ =?iso-8859-1?Q?LOqqiSJguOmywwWxTvbPbdFYY1YgnfbGUqUevrDKiozS8ZAIUDpXeQeVSg?=
+ =?iso-8859-1?Q?yDbjjbriW1o6ivm6vCiKuKtJ3tdLe24F/1LrfkAO6QqTqqekvBDI8aptiv?=
+ =?iso-8859-1?Q?T5hMCyGFRnWGRbYIhsm0jwrUZnyn4Zx4RSXCDQq+i922bt57hGAdmzj5HK?=
+ =?iso-8859-1?Q?BjJYXb4J8h8m4HgGIeauSY7fj0sT35AswUaVtzPdaoMgSTn9FyPa6O+w+U?=
+ =?iso-8859-1?Q?ljovYj9+Q/kMTp9NjeUojxYvUA3xn/rDC+Sv+AN7LF3vrwLkHe84E5FQE5?=
+ =?iso-8859-1?Q?WypQ6heTiiIjuhZABwB65R8JNUYyRjq9fENaoqeoacqnV32PgvzTBxRfdQ?=
+ =?iso-8859-1?Q?oN/k4ydhg0T7i5eYJGAO4bLA4TsCwciBPH6BnpGARoLMWdTr3M+vEZK+co?=
+ =?iso-8859-1?Q?Uxg/dJJoZyPQpeZHlo0uWT45YwOACTnlvVsK/Pou+T6cDm9UfLF4sccPLz?=
+ =?iso-8859-1?Q?8xkZYOUuXVSf5iF6t5TyTXobEquZJTjQQwHBfo12l4KC4e2eSUWFiXxQia?=
+ =?iso-8859-1?Q?Y6oW1lwQX8F04LHUQp2KdfYmsNz5veBEz3B2Xp8acd/q4TgKTa5nOejN2i?=
+ =?iso-8859-1?Q?7LZWfd8qpTHxDMR7GXsOWbLnjgMnnfVrOWFQYRiI8ddO92kTHOKOzJr715?=
+ =?iso-8859-1?Q?rYWv6xqdypBxacJEAAY/+rgYSrg7GYChXD/9nvEsneJTsARdwcDxcFbRjU?=
+ =?iso-8859-1?Q?1swDDM56cufqvu4j+U2ZSUCGQsAXT/3ZuU3+oJc8vAh4bhjpxXj6wnaWDr?=
+ =?iso-8859-1?Q?QnusGqAUUgBnH4UZbh8+YRQiguFejSinw6d+t75JkvwYDMN3lY95ttt1px?=
+ =?iso-8859-1?Q?0tecEvCUiFdXq9CT71XE+kLgcsk9W4UBqo7rBkfnsCLmG5Wox8BPOXYf+o?=
+ =?iso-8859-1?Q?0PMrRhLR5Q=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: RSt9HeVJrtcx72rCfhHqleWDJNad140XoetqBqkV+vpwyeA6cysJ8HKbiYXPYbwdh33Nyzwk+CIVVI5x4ANd+vKBl1j09VBuknqbCxmYZ6pM21yG9kBGE0Fhx5338ERkpKygpxVHhGzAeMVp6EBnO0RF5Ywib5JUPdx9zwnzQyPrQ2l73GURW40pNwU0+G6M3D6Vqz8xCEzVjLloK4ub28Nz9VLpmJFrTHJR6ezHeyQLn9LXMJ5GH9McwgOfHbJvtlILGVp14LtSnPDMfaDs0zlDj346ZLHgl/CuoDL7OMxD2qnahCGXa6kwOSX/nMNaVrgPxv3u3ZOrw00SmparBA==
+X-Exchange-RoutingPolicyChecked: C4kLuu6t2x0ycCn+eHrylA6Zel5g2niUONBBHaknmH/14MIt+UBiDO9QuSKDDzCBDRrH+U9WNw8YbJdiFm4K6aWWUsKxRvfWt4E3gLU2QPW7jBSegKJ2c/sVfn68AzYCe/R32+rvssUAJnvEOa+HN+mD77jvrFpRRh90Eaqlg2Up+Xca/cEVFsa/Z+IklSa+5JUtQu+jhPgDHk8+DAgNo66zFBxoDLbhVbi0WxiJMgMg1c81cbfB6a8MMWBp0aPkNzdA/dM8ZoEbewii5ZzPAmOW+b0tFYZSa+9c61XwfM0rl/lteUCyuBOrnOFSvyAr9GgIDBx/vN+NjW/euoa/qg==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a3b3b00f-b5b2-4918-1250-08dee3dbf4d3
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jul 2026 08:18:17.7462 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: b61e192c-400e-4ff4-3f76-08dee3dbf657
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jul 2026 08:18:20.2223 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: +YzL6eAYEvmFCG3LZ6wmHLC4ssAvvGSVMRpuGrx3merQY6dcDViJip54LRS4z2IhYPQdQGMfzQulyblJdjVClLyauVIoY/IRIRKyRljakdA=
+X-MS-Exchange-CrossTenant-userprincipalname: cLEHxgjRr0E2Alm9OPtpy6QT5t4PGlNwzenmu+T5v9/0q7ckxx4t0RwI6qeqVL4rL9G5sC8YmbKrLTmYkENEqucWN47cA16GvNbEWlamw/4=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: KU4PR06MB8339
 Received-SPF: pass client-ip=2a01:111:f403:c405::5;
  envelope-from=jamin_lin@aspeedtech.com;
@@ -153,16 +153,13 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The SCU link is only needed by the AST27x0 SSP/TSP coprocessors for their=
+Pass the realized PSP SoC to the SSP/TSP initialization helpers instead=0A=
+of retrieving it from the MachineState.=0A=
 =0A=
-AST2700-specific SCU alias window.=0A=
-=0A=
-Move the link property from the common AspeedCoprocessorState into=0A=
-Aspeed27x0CoprocessorState, so the generic coprocessor model no longer=0A=
-contains an AST2700-specific dependency.=0A=
-=0A=
-Also validate that the SCU link has been provided during device realize=0A=
-before accessing it.=0A=
+This makes the dependency explicit, since the SSP and TSP coprocessors=0A=
+use resources owned by the PSP SoC, including the UARTs, SRAM, SCU and=0A=
+SCUIO. The PSP SoC must therefore be realized before the coprocessors=0A=
+are initialized.=0A=
 =0A=
 No functional change.=0A=
 =0A=
@@ -171,174 +168,66 @@ Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@oss.qualcomm.com>=0A=
 Reviewed-by: C=E9dric Le Goater <clg@redhat.com>=0A=
 Tested-by: Philippe Mathieu-Daud=E9 <philmd@oss.qualcomm.com>=0A=
 ---=0A=
- include/hw/arm/aspeed_coprocessor.h |  5 +++--=0A=
- hw/arm/aspeed_ast27x0-ssp.c         | 20 ++++++++++++++++----=0A=
- hw/arm/aspeed_ast27x0-tsp.c         | 20 ++++++++++++++++----=0A=
- hw/arm/aspeed_coprocessor_common.c  |  2 --=0A=
- 4 files changed, 35 insertions(+), 12 deletions(-)=0A=
+ hw/arm/aspeed_ast27x0-fc.c | 26 ++++++++++++++++----------=0A=
+ 1 file changed, 16 insertions(+), 10 deletions(-)=0A=
 =0A=
-diff --git a/include/hw/arm/aspeed_coprocessor.h b/include/hw/arm/aspeed_co=
-processor.h=0A=
-index ac58a5f424..adfc3c4512 100644=0A=
---- a/include/hw/arm/aspeed_coprocessor.h=0A=
-+++ b/include/hw/arm/aspeed_coprocessor.h=0A=
-@@ -20,10 +20,8 @@ struct AspeedCoprocessorState {=0A=
-     MemoryRegion *sram;=0A=
-     MemoryRegion sram_alias;=0A=
-     MemoryRegion uart_alias;=0A=
--    MemoryRegion scu_alias;=0A=
-     Clock *sysclk;=0A=
- =0A=
--    AspeedSCUState *scu;=0A=
-     AspeedSCUState scuio;=0A=
-     AspeedTimerCtrlState timerctrl;=0A=
-     SerialMM *uart;=0A=
-@@ -52,6 +50,9 @@ struct Aspeed27x0CoprocessorState {=0A=
-     UnimplementedDeviceState otp;=0A=
- =0A=
-     ARMv7MState armv7m;=0A=
-+=0A=
-+    MemoryRegion scu_alias;=0A=
-+    Aspeed2700SCUState *scu;=0A=
- };=0A=
- =0A=
- #define TYPE_ASPEED27X0SSP_COPROCESSOR "aspeed27x0ssp-coprocessor"=0A=
-diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c=0A=
-index 68a8ab26f7..28bb59c8c5 100644=0A=
---- a/hw/arm/aspeed_ast27x0-ssp.c=0A=
-+++ b/hw/arm/aspeed_ast27x0-ssp.c=0A=
-@@ -167,6 +167,12 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState =
-*dev_soc, Error **errp)=0A=
-         return;=0A=
-     }=0A=
- =0A=
-+    if (!a->scu) {=0A=
-+        error_setg(errp, TYPE_ASPEED27X0SSP_COPROCESSOR=0A=
-+                   ": 'scu' link is not set");=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-     /* AST27X0 SSP Core */=0A=
-     armv7m =3D DEVICE(&a->armv7m);=0A=
-     qdev_prop_set_uint32(armv7m, "num-irq", 256);=0A=
-@@ -195,11 +201,11 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState=
- *dev_soc, Error **errp)=0A=
-                                 &s->sram_alias);=0A=
- =0A=
-     /* SCU */=0A=
--    memory_region_init_alias(&s->scu_alias, OBJECT(s), "scu.alias",=0A=
--                             &s->scu->iomem, 0,=0A=
--                             memory_region_size(&s->scu->iomem));=0A=
-+    memory_region_init_alias(&a->scu_alias, OBJECT(a), "scu.alias",=0A=
-+                             &a->scu->parent_obj.iomem, 0,=0A=
-+                             memory_region_size(&a->scu->parent_obj.iomem)=
-);=0A=
-     memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SCU],=0A=
--                                &s->scu_alias);=0A=
-+                                &a->scu_alias);=0A=
- =0A=
-     /* INTC */=0A=
-     if (!sysbus_realize(SYS_BUS_DEVICE(&a->intc[0]), errp)) {=0A=
-@@ -275,6 +281,11 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState =
-*dev_soc, Error **errp)=0A=
-                                   sc->memmap[ASPEED_DEV_OTP], 0x800);=0A=
+diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c=0A=
+index 8d49bb95d6..58d0b4d7cd 100644=0A=
+--- a/hw/arm/aspeed_ast27x0-fc.c=0A=
++++ b/hw/arm/aspeed_ast27x0-fc.c=0A=
+@@ -134,11 +134,9 @@ static bool ast2700fc_ca35_init(MachineState *machine,=
+ Error **errp)=0A=
+     return true;=0A=
  }=0A=
  =0A=
-+static const Property aspeed_27x0_coprocessor_properties[] =3D {=0A=
-+    DEFINE_PROP_LINK("scu", Aspeed27x0CoprocessorState, scu,=0A=
-+                     TYPE_ASPEED_2700_SCU, Aspeed2700SCUState *),=0A=
-+};=0A=
-+=0A=
- static void aspeed_soc_ast27x0ssp_class_init(ObjectClass *klass,=0A=
-                                              const void *data)=0A=
+-static bool ast2700fc_ssp_init(MachineState *machine, Error **errp)=0A=
++static bool ast2700fc_ssp_init(Ast2700FCState *s, AspeedSoCState *psp,=0A=
++                               Error **errp)=0A=
  {=0A=
-@@ -288,6 +299,7 @@ static void aspeed_soc_ast27x0ssp_class_init(ObjectClas=
-s *klass,=0A=
-     /* Reason: The Aspeed Coprocessor can only be instantiated from a boar=
-d */=0A=
-     dc->user_creatable =3D false;=0A=
-     dc->realize =3D aspeed_soc_ast27x0ssp_realize;=0A=
-+    device_class_set_props(dc, aspeed_27x0_coprocessor_properties);=0A=
+-    Ast2700FCState *s =3D AST2700FC(machine);=0A=
+-    AspeedSoCState *psp =3D ASPEED_SOC(&s->ca35);=0A=
+-=0A=
+     s->ssp_sysclk =3D clock_new(OBJECT(s), "SSP_SYSCLK");=0A=
+     clock_set_hz(s->ssp_sysclk, 200000000ULL);=0A=
  =0A=
-     sc->valid_cpu_types =3D valid_cpu_types;=0A=
-     sc->irqmap =3D aspeed_soc_ast27x0ssp_irqmap;=0A=
-diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c=0A=
-index b8a4f7c91d..f5c4a02161 100644=0A=
---- a/hw/arm/aspeed_ast27x0-tsp.c=0A=
-+++ b/hw/arm/aspeed_ast27x0-tsp.c=0A=
-@@ -167,6 +167,12 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState =
-*dev_soc, Error **errp)=0A=
-         return;=0A=
-     }=0A=
- =0A=
-+    if (!a->scu) {=0A=
-+        error_setg(errp, TYPE_ASPEED27X0TSP_COPROCESSOR=0A=
-+                   ": 'scu' link is not set");=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-     /* AST27X0 TSP Core */=0A=
-     armv7m =3D DEVICE(&a->armv7m);=0A=
-     qdev_prop_set_uint32(armv7m, "num-irq", 256);=0A=
-@@ -195,11 +201,11 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState=
- *dev_soc, Error **errp)=0A=
-                                 &s->sram_alias);=0A=
- =0A=
-     /* SCU */=0A=
--    memory_region_init_alias(&s->scu_alias, OBJECT(s), "scu.alias",=0A=
--                             &s->scu->iomem, 0,=0A=
--                             memory_region_size(&s->scu->iomem));=0A=
-+    memory_region_init_alias(&a->scu_alias, OBJECT(a), "scu.alias",=0A=
-+                             &a->scu->parent_obj.iomem, 0,=0A=
-+                             memory_region_size(&a->scu->parent_obj.iomem)=
-);=0A=
-     memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SCU],=0A=
--                                &s->scu_alias);=0A=
-+                                &a->scu_alias);=0A=
- =0A=
-     /* INTC */=0A=
-     if (!sysbus_realize(SYS_BUS_DEVICE(&a->intc[0]), errp)) {=0A=
-@@ -275,6 +281,11 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState =
-*dev_soc, Error **errp)=0A=
-                                   sc->memmap[ASPEED_DEV_OTP], 0x800);=0A=
+@@ -166,11 +164,9 @@ static bool ast2700fc_ssp_init(MachineState *machine, =
+Error **errp)=0A=
+     return true;=0A=
  }=0A=
  =0A=
-+static const Property aspeed_27x0_coprocessor_properties[] =3D {=0A=
-+    DEFINE_PROP_LINK("scu", Aspeed27x0CoprocessorState, scu,=0A=
-+                     TYPE_ASPEED_2700_SCU, Aspeed2700SCUState *),=0A=
-+};=0A=
-+=0A=
- static void aspeed_soc_ast27x0tsp_class_init(ObjectClass *klass,=0A=
-                                              const void *data)=0A=
+-static bool ast2700fc_tsp_init(MachineState *machine, Error **errp)=0A=
++static bool ast2700fc_tsp_init(Ast2700FCState *s, AspeedSoCState *psp,=0A=
++                               Error **errp)=0A=
  {=0A=
-@@ -288,6 +299,7 @@ static void aspeed_soc_ast27x0tsp_class_init(ObjectClas=
-s *klass,=0A=
-     /* Reason: The Aspeed Coprocessor can only be instantiated from a boar=
-d */=0A=
-     dc->user_creatable =3D false;=0A=
-     dc->realize =3D aspeed_soc_ast27x0tsp_realize;=0A=
-+    device_class_set_props(dc, aspeed_27x0_coprocessor_properties);=0A=
+-    Ast2700FCState *s =3D AST2700FC(machine);=0A=
+-    AspeedSoCState *psp =3D ASPEED_SOC(&s->ca35);=0A=
+-=0A=
+     s->tsp_sysclk =3D clock_new(OBJECT(s), "TSP_SYSCLK");=0A=
+     clock_set_hz(s->tsp_sysclk, 200000000ULL);=0A=
  =0A=
-     sc->valid_cpu_types =3D valid_cpu_types;=0A=
-     sc->irqmap =3D aspeed_soc_ast27x0tsp_irqmap;=0A=
-diff --git a/hw/arm/aspeed_coprocessor_common.c b/hw/arm/aspeed_coprocessor=
-_common.c=0A=
-index a0a4c73d08..43026d2a55 100644=0A=
---- a/hw/arm/aspeed_coprocessor_common.c=0A=
-+++ b/hw/arm/aspeed_coprocessor_common.c=0A=
-@@ -27,8 +27,6 @@ static const Property aspeed_coprocessor_properties[] =3D=
+@@ -200,9 +196,19 @@ static bool ast2700fc_tsp_init(MachineState *machine, =
+Error **errp)=0A=
+ =0A=
+ static void ast2700fc_init(MachineState *machine)=0A=
  {=0A=
-                      TYPE_MEMORY_REGION, MemoryRegion *),=0A=
-     DEFINE_PROP_LINK("sram", AspeedCoprocessorState, sram, TYPE_MEMORY_REG=
-ION,=0A=
-                      MemoryRegion *),=0A=
--    DEFINE_PROP_LINK("scu", AspeedCoprocessorState, scu, TYPE_ASPEED_SCU,=
-=0A=
--                     AspeedSCUState *),=0A=
-     DEFINE_PROP_LINK("uart", AspeedCoprocessorState, uart, TYPE_SERIAL_MM,=
-=0A=
-                      SerialMM *),=0A=
-     DEFINE_PROP_INT32("uart-dev", AspeedCoprocessorState, uart_dev, 0),=0A=
++    Ast2700FCState *s =3D AST2700FC(machine);=0A=
++    AspeedSoCState *psp;=0A=
++=0A=
+     ast2700fc_ca35_init(machine, &error_abort);=0A=
+-    ast2700fc_ssp_init(machine, &error_abort);=0A=
+-    ast2700fc_tsp_init(machine, &error_abort);=0A=
++=0A=
++    /*=0A=
++     * SSP and TSP use resources owned by the PSP SoC, such as UART,=0A=
++     * SRAM, SCU and SCUIO.  Therefore the PSP SoC must be realized=0A=
++     * before the coprocessors are initialized.=0A=
++     */=0A=
++    psp =3D ASPEED_SOC(&s->ca35);=0A=
++    ast2700fc_ssp_init(s, psp, &error_abort);=0A=
++    ast2700fc_tsp_init(s, psp, &error_abort);=0A=
+ }=0A=
+ =0A=
+ static void ast2700fc_class_init(ObjectClass *oc, const void *data)=0A=
 -- =0A=
 2.43.0=0A=
 

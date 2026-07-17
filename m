@@ -4,103 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E679C44516
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 12:58:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BED4DC4451C
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 13:24:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wki8E-0007ii-J2; Fri, 17 Jul 2026 08:57:34 -0400
+	id 1wkiY2-0007b2-8s; Fri, 17 Jul 2026 09:24:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
- id 1wki8B-0007fK-8o
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 08:57:31 -0400
-Received: from mail-oa1-x2e.google.com ([2001:4860:4864:20::2e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
- id 1wki88-0003jl-MA
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 08:57:30 -0400
-Received: by mail-oa1-x2e.google.com with SMTP id
- 586e51a60fabf-451a49abd8aso2794224fac.3
- for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 05:57:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mvista.com; s=google; t=1784293046; x=1784897846; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:reply-to:message-id:subject:cc:to:from:date:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=9cfNw9n/3Kgiq5JYlahgXoL63uVnLgvMj9UFBwfFQFo=;
- b=JCFYIzn+bovABRjdEGH2U2vfEXaMev6Qs2ameLVVOg00FefJ4S+9TjgtbrVkcH1PpG
- EWGNJlZ8eLJcydRl9PneorjmKMUr6UTdj8uB5HF7AHH2pqQqMCeNC7t3v1jdAwoosGpI
- 75t0dYi55GczyPFhc1fwAw7dyngbRMIKdO7Hs=
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wkiY0-0007YW-Lt
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 09:24:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wkiXx-0006tj-A1
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2026 09:24:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1784294647;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hc9as2/lTjPqUGG9SEfcXJm6p60BTPo8QHtJAXJ0fcI=;
+ b=NjU845fo18wUpVzvPDwA1KEk6/w9aoLOAEDCZnRvirFubvYkcYOB9l0X7P0nWYyx9d2fDJ
+ JD1ANTr5Q1gg7vnOrFxWYqEn3tQcMqRRb3Kfeldiduo/BIbLs0cMaiboq5/SAAX/zewcbM
+ a5gScR9Uj+OTKSnf95gzrypIXOikQnY=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-205-b6a4OVmaPtG6_DBVufAP0w-1; Fri, 17 Jul 2026 09:24:06 -0400
+X-MC-Unique: b6a4OVmaPtG6_DBVufAP0w-1
+X-Mimecast-MFC-AGG-ID: b6a4OVmaPtG6_DBVufAP0w_1784294645
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-476608a9fefso1659092f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 06:24:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784293046; x=1784897846;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:reply-to:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=9cfNw9n/3Kgiq5JYlahgXoL63uVnLgvMj9UFBwfFQFo=;
- b=gnApOoJMI5ljpEeAkA97+nNzgKGwizb7FToAnTqlDMPBRLDHLHAkeqJI0zmzxrHvsE
- YruCVWtpwwyxrWf1CrJL4NG6iZR0fJKxtw0zHBRYkT5metINiFABAPwvilpNrpejsu3F
- ZpJfPcWpv02JjGrIG9NRUnmoI7sCtdUtUvGxyQi9X7Zd3Gk990ak6G1TGgryU2+oeW9s
- ItoUdDc49mDjiwG1HRnz/QtkNzP10E6bQQnyCAwKvcpBi8KY88Yybu9os+fPpYixN9iF
- 0FQrjj+G3PFxNjjQG7b4VriTH44IXW6CAaWraetdWarwf1lHZpIA3XpTPxcSJbZNcJbk
- BJDw==
+ d=1e100.net; s=20251104; t=1784294645; x=1784899445;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :content-type:mime-version:references:message-id:subject:cc:to:from
+ :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=hc9as2/lTjPqUGG9SEfcXJm6p60BTPo8QHtJAXJ0fcI=;
+ b=OwrlLg81CpM/B/l6T5FL0G2HCeFciILpJ6pouMjaS48ugayRY2L8+j189znWlG74Ao
+ l2tblUkxY0mosTItRhnmElUJGfZJudQi9g92VUjEzHW1XO7PrlDRL+LJNoJ9WX7s4Ndn
+ uFz1ePvDWKJWDB1XaDYZblDdCoyUpQDYBXD2cGpthBK9/ORFdY5tK46szvWNzYctxax4
+ fOiS4wkhCc08ScECYh+H5KtvGccg5IeSmQ7VApXNNWVwn4Z2nzTKZdnuvKPl8jaK98O/
+ YW0wvFo2nZzhpWS3RhLZRMb+6uUfTuXJisG1XAb1nmwFhILpv6s0d/GR4LLUyN4bGHgj
+ n8oA==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rrma8b4ftkD//MjTB8qgzTpQCdBDbNpkkkVlCHmiop0hVY/S5oLooYWU8hmnJhPRXpVXN+9Tpt9ag==@nongnu.org
-X-Gm-Message-State: AOJu0YyljErAtTUA0FJaMirU8fk3m6T70siV+T+ydoOXwr2K6fWyr6w/
- MrwPANtn2C+hd9rgzbygSJ8HtNhZI910pSm4rPWsN+zGfxZNeN4qdvP6gYa80cuVDDo=
-X-Gm-Gg: AfdE7ckFxVePMOVgDOYLiN4UAjb+2RiEABcROuEBdB5JBqI94j9WySaR/suSaxauU4q
- GzCZOZoObTt1vkj13PIw+KFXoCktM/QOTQK5+9670CpvoV+HVHDc1hdwCL6Rxs7YDyTQx1om54l
- 6fGwOEMLh20xrqlB1OZt006Tuso4I6taVMThlTSA6BXljI14FMVacAT/lDP+h1yF/Oy3jMWfVNv
- 6fh109phWFeg3gvw9D9Yl4h53Ro7dFd3Ye4Hor2LtMxItLaydOIlB2r2V3Ipd986IEV+enSgrDw
- xPl0cKPml0NoEXA9X06aDxRE2YOapNo2qP6xOP7DziBjVEyqYM6k/ddnbfX2Fqgl7bJGA/WoKV+
- Tvjl8XBUP+VI8UUxEzIiKpVtkxY8fYbJmqtYxUHOTxCuxyG/pTYzLn7p5CXP4+h7qzWpjVaLpBn
- 9zBNrxU2m4Ky4Rs9W4xfM=
-X-Received: by 2002:a05:6870:40c9:b0:439:c66d:2e5f with SMTP id
- 586e51a60fabf-456904754ccmr1078613fac.24.1784293046411; 
- Fri, 17 Jul 2026 05:57:26 -0700 (PDT)
-Received: from mail.minyard.net ([2001:470:b8f6:1b:4026:fe8a:98d1:9d51])
+ AHgh+RruWa1dp8Pbpq0NStemAR3FenHZrB2ef5sFW4YfzAtK3mtdWZnmvBG5cxyvtS8lCmOpYOXIJdQGTA==@nongnu.org
+X-Gm-Message-State: AOJu0Yxr81Par+bktXERT2AlvlnUpVNzcdn4tx2tdd3i5bUsfjZspx7a
+ FO6f6DIXj/ie1BLf1lj73CYU4jQ/KMtASHL5I01WLMWdEHWna4+b/3u184dx+xyu2RqbaGkhF8H
+ C7gWWBd4AxKJxNwJXlZp2aek7RM9ZvAkcGUlpzklncrHa9kqE5XJWRg==
+X-Gm-Gg: AfdE7cnez2ExLVJkcjw6r2sd42cdY+j18uWg70if8BFQ33Kv3lmeaCgWJ/lxZ4m3p7B
+ u0PivBag7KyDLIOc/xIFz6+Fa34AVZQnt9+g+OcsYxDOzpSmkDMGDLWlqeulMzBCQy2XlVhWUlX
+ 6Fobjax8IS7ThE3/vbcofGwmSth7rTMBoQpC0NrwMjhJ2fVRJlVOSLcEIlAaqiRYM2IB3WgYNna
+ eqW9rKsJmDIr0H3xMDXaMTTFd/2GFVuyKaLbExZVAmxiUQyTNDYvqrRKEt+6/Q9y8YcW6tzxcH7
+ XDMoa7ABB9kdM14SP0lB7wtV6lq7Ou0kup7WbIJ/lg4fXCoDwYK1zKMsTIGrRWk4nWvh5UstDr8
+ rvqNuAkUqAVSBEGFEvz7swddG
+X-Received: by 2002:a05:6000:25f7:b0:473:6590:c42a with SMTP id
+ ffacd0b85a97d-47f623b546emr3470882f8f.9.1784294644382; 
+ Fri, 17 Jul 2026 06:24:04 -0700 (PDT)
+X-Received: by 2002:a05:6000:25f7:b0:473:6590:c42a with SMTP id
+ ffacd0b85a97d-47f623b546emr3470802f8f.9.1784294643680; 
+ Fri, 17 Jul 2026 06:24:03 -0700 (PDT)
+Received: from redhat.com (IGLD-80-230-24-117.inter.net.il. [80.230.24.117])
  by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-4568e61cee3sm1174337fac.9.2026.07.17.05.57.24
+ ffacd0b85a97d-47f63ed244asm3236702f8f.20.2026.07.17.06.24.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Jul 2026 05:57:25 -0700 (PDT)
-Date: Fri, 17 Jul 2026 07:57:21 -0500
-From: Corey Minyard <cminyard@mvista.com>
-To: Emmanuel Blot <emmanuel.blot@free.fr>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,
- Alexander Hansen <alexander.hansen@9elements.com>,
- William de Abreu Pinho <williampinho@meta.com>,
- Emmanuel Blot <eblot@meta.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v5 6/8] hw/i2c: parent slaves created with
- i2c_slave_create_simple
-Message-ID: <alomsclAchz2_bWy@mail.minyard.net>
-References: <20260701-i2c-adc128d818-anacapa-v5-0-fe8292d86b38@free.fr>
- <20260701-i2c-adc128d818-anacapa-v5-6-fe8292d86b38@free.fr>
- <CAFEAcA8mygA035i3VSEGzQWppCDaUz0HM5mNU9DvTsOjei1F8Q@mail.gmail.com>
- <D5F0871C-4AC1-43D6-9BCD-C59A07236A1F@free.fr>
+ Fri, 17 Jul 2026 06:24:03 -0700 (PDT)
+Date: Fri, 17 Jul 2026 09:23:59 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, peterx@redhat.com, alex@shazbot.org,
+ richard.henderson@linaro.org, berrange@redhat.com,
+ philmd@oss.qualcomm.com, philmd@mailo.com, david@kernel.org,
+ clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com,
+ jugraham@redhat.com, liugang24219@sangfor.com.cn,
+ dinghui@sangfor.com.cn, shan.gavin@gmail.com
+Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
+ device region accessors
+Message-ID: <20260717091756-mutt-send-email-mst@kernel.org>
+References: <20260625070551-mutt-send-email-mst@kernel.org>
+ <CAFEAcA8YJZq9TqrUd0zTnewAdVDm5y6UV7BJQZ0C60TZ=RT98Q@mail.gmail.com>
+ <20260625091334-mutt-send-email-mst@kernel.org>
+ <CAFEAcA8xK+t3-prEphtkq-o9UY2mgS6cowhs880GOaxL9dKSGw@mail.gmail.com>
+ <20260625101817-mutt-send-email-mst@kernel.org>
+ <CAFEAcA8-Un+Q1yBDqLWCLPRwtgTA_VhJqGobgZChrFhAeVfG8A@mail.gmail.com>
+ <20260625123119-mutt-send-email-mst@kernel.org>
+ <CAFEAcA8UjtXgmPC27fOKMwbaWs2piwGYudtwCNWQHuu3E_7A-A@mail.gmail.com>
+ <5faf04b9-d596-4a1d-9fe3-5e9ad5f0a99a@redhat.com>
+ <73f79841-8cc7-4ca6-8f6b-fb97b53a6fe8@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; protocol="application/x-pkcs7-signature";
- micalg=sha-256; boundary="hK1Lx/WMqfHEEqqg"
+In-Reply-To: <73f79841-8cc7-4ca6-8f6b-fb97b53a6fe8@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: _jG16mHvRA7Cv209vGo7sdFm9HK8d_YdzhN5XYqc5eI_1784294645
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <D5F0871C-4AC1-43D6-9BCD-C59A07236A1F@free.fr>
-Received-SPF: pass client-ip=2001:4860:4864:20::2e;
- envelope-from=cminyard@mvista.com; helo=mail-oa1-x2e.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: permerror client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,168 +124,237 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: cminyard@mvista.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Thu, Jul 09, 2026 at 07:52:12PM +1000, Gavin Shan wrote:
+> Hi Michael and Peter,
+> 
+> On 6/26/26 10:07 AM, Gavin Shan wrote:
+> > On 6/26/26 4:40 AM, Peter Maydell wrote:
+> > > On Thu, 25 Jun 2026 at 17:47, Michael S. Tsirkin <mst@redhat.com> wrote:
+> > > > 
+> > > > On Thu, Jun 25, 2026 at 04:23:47PM +0100, Peter Maydell wrote:
+> > > > > On Thu, 25 Jun 2026 at 15:52, Michael S. Tsirkin <mst@redhat.com> wrote:
+> > > > > > I think there is exactly 1 kinda reasonable case. A 2 byte read/write at
+> > > > > > offset 0x1 within a dword. This maps nicely to even classical PCI byte
+> > > > > > enable mechanism and so yes it works if your CPU can initiate these
+> > > > > > things, and it's atomic.
+> > > > > > 
+> > > > > > I tried reading LEDCTL on e1000e:
+> > > > > > 
+> > > > > >         byte  @ 0xe00: 0x64
+> > > > > >         byte  @ 0xe01: 0x2a
+> > > > > >         byte  @ 0xe02: 0x00
+> > > > > >         byte  @ 0xe03: 0x00
+> > > > > >         word  @ 0xe00: 0x2a64
+> > > > > >         word  @ 0xe01: 0x002a
+> > > > > > 
+> > > > > > Works fine.
+> > > > > 
+> > > > > The e1000e datasheet actually documents what it does in this
+> > > > > case (slightly surprising, since hardware engineers love to
+> > > > > leave this kind of corner case undocumented):
+> > > > > 
+> > > > > # For registers that should be accessed as 32-bit double words,
+> > > > > # partial writes (less than a 32-bit double word) does not take
+> > > > > # effect (such as, the write is ignored).
+> > > > > # Partial reads
+> > > > > # return all 32 bits of data regardless of the byte enables.
+> > > > > #
+> > > > > # Note: Partial reads to clear-by-read registers (such as, ICR)
+> > > > > # can have unexpected results since all 32 bits are actually read
+> > > > > # regardless of the byte enables. Partial reads should not be done.
+> > > > > 
+> > > > > So for this specific device that access is out-of-spec.
+> > > > 
+> > > > You mean that access to clear by read should not be done, right?
+> > > 
+> > > The datasheet is ambiguous about whether "Partial reads should
+> > > not be done" is meant to apply generally or only to clear-by-read
+> > > registers.
+> > > 
+> > 
+> > I think the document intends to say: the partial reads shouldn't be issued to
+> > the clear-by-read registers. Those partial reads on no-read-side-affect registers
+> > would be fine.
+> > 
+> > > > > I guess what I'm wondering is: can we just have code
+> > > > > that does an aligned exact-width access in the 1/2/4/8
+> > > > > byte aligned case, and the host's best approximation to
+> > > > > an unaligned exact-width access for the 2/4/8 byte
+> > > > > unaligned case?
+> > > > 
+> > > > That's my idea, too.
+> > > > 
+> > 
+> > I assume this the conclusion of our discussions? If so, we just need to have
+> > unified function where __builtin_{memcpy, memmove}() are used for 1/2/4/8 bytes
+> > access no matter if the address is aligned, and fall back to {memcpy, memmove}()
+> > for other cases?
+> > 
+> 
+> Could you help to confirm if the conclusion is to have unified qemu_ram_{copy, move}()
+> for all architectures? In qemu_ram_{copy, move}(), the fixed sized accesses like
+> 1/2/4/8 bytes are handled by __builtin_{memcpy, memmove}() and fall back to
+> memcpy/memmove() for other sized accesses. It's basically what was proposed by
+> Michael :-)
 
---hK1Lx/WMqfHEEqqg
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+No. __builtin_ and  memcpy/memmove are same on modern linuxes.
 
-On Thu, Jul 16, 2026 at 07:08:04PM +0200, Emmanuel Blot wrote:
->=20
->=20
-> On 10 Jul 2026, at 18:05, Peter Maydell wrote:
->=20
-> > On Wed, 1 Jul 2026 at 18:31, Emmanuel Blot <emmanuel.blot@free.fr> wrot=
-e:
-> >>
-> >> Slaves created with i2c_slave_create_simple() were left unparented and
-> >> showed up under /machine/unattached with no stable QOM path. Add each
-> >> slave as a QOM child of its bus, named after its I2C address, so it has
-> >> a deterministic and addressable QOM path.
-> >
-> > Should devices on a bus be QOM children of the bus, though?
-> > I would expect that they ought to be QOM children of e.g.
-> > the SoC or machine that created them.
-> >
-> > Do we do this for other bus types, e.g. PCI ?
->=20
-> If we do not want a I2C device to be a child of its bus, an alternative p=
-arent could be the master/controller of the bus. However as a controller ma=
-y manage several buses, we need to add bus differentiator in the child name=
-, such as bus_num:address.
->=20
-> I do not think it makes more sense to have the I2C device to be a child o=
-f the SoC rather than its dedicated controller.
->=20
-> On machines that are statically defined rather than composed from the com=
-mand line (BMCs, complex SoC-based machines, =E2=80=A6), all the I2C device=
-s would appear as a =E2=80=9Cflat=E2=80=9D list of devices, with sometimes =
-many instances of the same I2C device type belonging to very different sub-=
-domains of the machine they instrument and/or drive.
->=20
-> I tend to think that using a flat schema would likely make use of QOM pat=
-hs more difficult to observe and reach a device at run time: one would have=
- to iterate the device and bus hierarchy rather than to use QOM path to acc=
-ess a device, or special care would be required for naming device instances=
-=2E I was viewing the role of the QOM paths as a way to expose the machine =
-device hierarchy as a comprehensive and non-ambiguous representation.
->=20
-> What are the cons for using the device/bus hierarchy for simple buses suc=
-h as SPI & I2C?
-> Is there any drawback to use the device & bus hierarchy to assign a defau=
-lt/fallback QOM path to a device?
->=20
-> Maybe it=E2=80=99s a matter of ownership? Neither the I2C. bus nor the I2=
-C controller owns the device for sure.
+I'd say as a 1st step, on x86 hosts we can do a fixed size
+memmove for 1/2/4/8, on other hosts 
+*aligned* 1/2/4/8 bytes can do
+ __atomic_store ... __ATOMIC_RELAXED
+and the rest can hobble along on memmove
+and hope for the best.
 
-Well, "own" doesn't have much of a meaning in this context.  It's a
-matter of how it's connected.
+And memcpy is likely not the right thing, ever.
 
-I agree with you philosophically.  From a user's point of view, a
-hierarchy is much more obvious.  Otherwise you will have to create a
-fake hierarchy with the names or you won't be able to find anything.
 
-I looked at https://lore.kernel.org/qemu-devel/87se5scipx.fsf@pond.sub.org/
-but not much came of that.
+> Something like below.
+> 
+> -----> include/system/memory.h
+> 
+> +/**
+> + * qemu_ram_copy: copy data to ramblock
+> + *
+> + * @dst: destination where the data is copied to
+> + * @src: source where the data is copied from
+> + * @n: length of data to be copied
+> + *
+> + *
+> + * Copy @n bytes from @src to @dst with the assumption that @src and @dst
+> + * do not overlap. The fixed sized accesses like 1/2/4/8 bytes are handled
+> + * by __builtin_memcpy() to avoid the optimizations applied to memcpy(),
+> + * which can be unsafe to DMA/VCPU IO. Fall back to memcpy() for other
+> + * sized accesses and the safety is ensured by users.
+> + */
+> +void qemu_ram_copy(void *dest, const void *src, size_t n);
+> +
+> +/**
+> + * qemu_ram_move: move data to ramblock
+> + *
+> + * @dst: destination where the data is moved to
+> + * @src: source where the data is moved from
+> + * @n: length of data to be moved
+> + *
+> + * Move @n bytes from @src to @dst with the assumption that @src and @dst
+> + * can overlap. The fixed sized accesses like 1/2/4/8 bytes are handled
+> + * by __builtin_memmove() to avoid the optimizations applied to memmove(),
+> + * which can be unsafe to DMA/VCPU IO. Fall back to memmove() for other
+> + * sized accesses and the safety is ensured by users.
+> + */
+> +void qemu_ram_move(void *dest, const void *src, size_t n);
+> +
+> 
+> -----> system/physmem.c
+> 
+> +void qemu_ram_copy(void *dst, const void *src, size_t n)
+> +{
+> +    switch (n) {
+> +    case 1:
+> +        __builtin_memcpy(dst, src, 1);
+> +        break;
+> +    case 2:
+> +        __builtin_memcpy(dst, src, 2);
+> +        break;
+> +    case 4:
+> +        __builtin_memcpy(dst, src, 4);
+> +        break;
+> +    case 8:
+> +        __builtin_memcpy(dst, src, 8);
+> +        break;
+> +    default:
+> +        memcpy(dst, src, n);
+> +    }
+> +}
+> +
+> +void qemu_ram_move(void *dst, const void *src, size_t n)
+> +{
+> +    switch (n) {
+> +    case 1:
+> +        __builtin_memmove(dst, src, 1);
+> +        break;
+> +    case 2:
+> +        __builtin_memmove(dst, src, 2);
+> +        break;
+> +    case 4:
+> +        __builtin_memmove(dst, src, 4);
+> +        break;
+> +    case 8:
+> +        __builtin_memmove(dst, src, 8);
+> +        break;
+> +    default:
+> +        memmove(dst, src, n);
+> +    }
+> +}
+> +
+> 
+> 
+> > > > > (so on sparc you get multiple smaller
+> > > > > accesses, and on most archs including x86 and arm you
+> > > > > get an unaligned load).
+> > > > 
+> > > > I thought unaligned load from uncacheable on arm is
+> > > > also a fault?
+> > > 
+> > > For Arm the distinction is not cacheable/uncacheable
+> > > but Normal vs Device. (Device is essentially for things
+> > > which are not RAM; Normal is for RAM and RAM-like things,
+> > > and includes all of Normal Non-cacheable, Normal WT-Cacheable
+> > > and Normal WB-Cacheable.) Things mapped as Normal memory
+> > > don't generate unaligned faults (unless the guest turned them
+> > > on deliberately). For Device memory, it is IMPLEMENTATION
+> > > DEFINED whether you get an alignment fault or not if you
+> > > map something as Device that could have handled unaligned
+> > > accesses if you had mapped it as Normal.
+> > > 
+> > > > > That would mean the guest could
+> > > > > potentially provoke a fault on the load/store on an
+> > > > > access to a passthrough device, but if you give the
+> > > > > guest passthrough access it can very likely provoke
+> > > > > a fault anyway, depending on exactly what the device is.
+> > > > > 
+> > > > > I think the most likely reason for an unaligned access
+> > > > > in this codepath is "it's actually RAM, either really
+> > > > > host RAM or else something memory-like in a BAR", and
+> > > > > either way if the guest does a 4-byte unaligned access
+> > > > > then doing a 4-byte unaligned access seems better than
+> > > > > second-guessing it, even on non-x86.
+> > > 
+> > > > Right though remember: whether it's RAM doesn't matter. What matters is
+> > > > how we map it.  qemu might fault because it maps NC but guest maps
+> > > > cacheable and it's ok.
+> > > 
+> > > If QEMU and the guest disagree about the memory attributes
+> > > on Arm then we have already lost, because the architecture
+> > > says that memory attribute mismatches result in a variety of
+> > > undesirable effects including things like loss of cache coherency
+> > > (i.e. read and writes via QEMU's NC mapping disagree with ones
+> > > via the guest's cacheable mapping because the latter are hitting
+> > > in the cache and the former are bypassing it).
+> > > 
+> > > > But, all this in theory. At a high level, I personally think going with
+> > > > what you propose as a 1st approximation is entirely reasonable, except
+> > > > for one thing: we really should not crash qemu, since access can be from
+> > > > guest userspace.
+> > > 
+> > > You can't prevent faults entirely, though -- if the device
+> > > being mapped has e.g. behaviour that says "unaligned accesses
+> > > will fault" and then the x86 guest does an unaligned access,
+> > > then the device will trigger a fault, and the fault is what
+> > > you want because it's what the guest would see on real h/w.
+> > > Unfortunately we don't have a convenient way to feed the
+> > > fault back to the guest. At some level if you pass through
+> > > host hardware you're relying on the guest to not do totally
+> > > stupid things.
+> > > 
+> > > thanks
+> > > -- PMM
+> > > 
+> 
+> Thanks,
+> Gavin
 
-It would be ideal if the hierarchy was a natural part of the APIs that
-register a device.  If you put a device on an I2C bus, it becomes a
-child of that I2C bus automatically.
-
-However, corner cases exist.  Multi-master I2C chips would have two
-parent I2C busses connected to a single child I2C bus, for instance.
-Anything multi-master would have this issue.  Thinking about it some
-more, a PHY might be on an MDIO bus but also connects to the main
-ethernet interface.  Lots of chips have SPI/I2C control interfaces but
-them some other interface for passing data.  A GPIO that enables a
-chip but that chip is on a CAN bus interface.
-
-So if you did something like this, you would need some sort of "multiple
-inheritance" to cover the corner cases or you would have to live with
-the inconsistency.
-
-Device tree, for instance, has a strict hierarchy, but then has ways to
-reference the other interfaces that can also control a device.  IIRC
-a PHY would sit on the MDIO bus for hierarchy and the ethernet device
-has a reference that says "This is my PHY."
-
--corey
-
->=20
-> Emmanuel.
-
---hK1Lx/WMqfHEEqqg
-Content-Type: application/x-pkcs7-signature
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Transfer-Encoding: base64
-
-MIINIQYJKoZIhvcNAQcCoIINEjCCDQ4CAQExDzANBglghkgBZQMEAgEFADALBgkqhkiG9w0B
-BwGgggpVMIIFXzCCBEegAwIBAgIQD/rh8xorQzw9muFtZDtYizANBgkqhkiG9w0BAQsFADBl
-MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3d3cuZGln
-aWNlcnQuY29tMSQwIgYDVQQDExtEaWdpQ2VydCBBc3N1cmVkIElEIFJvb3QgRzIwHhcNMTkw
-OTIzMTIyNTMyWhcNMzQwOTIzMTIyNTMyWjBqMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGln
-aUNlcnQgSW5jMRkwFwYDVQQLExB3d3cuZGlnaWNlcnQuY29tMSkwJwYDVQQDEyBEaWdpQ2Vy
-dCBBc3N1cmVkIElEIENsaWVudCBDQSBHMjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC
-ggEBAOqxRa06rLwKBvrDb/qQ8RtXfeKA9o0A42oZbLF4GYr4Xdt9JE8r3PJRIOUZD1U3mEln
-4S/aZoS54Q+5Ecs3q2GGT/Z82VeAPLeGvJoT0LS5t/zXeUcbMuDFWgyj33kiesnuusnOWvpI
-SoxN+oBH4oo0+oUiHI65mMjMAlb93x6sabh9kKvHQvHC4x2u7wYv5+NXjnbOhJS/1NjGq+ug
-LMXeldFMz0O5qFIDpn3aQGU0htyJQ2SZyxEqlUrgunsrYj9wgfW7XuhAi2j0y5d9oMT0SuVe
-KFFnQhTEk5B3fq+OBOW0AU2JdW1r929UtRbAr8RpLt05WI2G2RNVVlHYaU0CAwEAAaOCAgQw
-ggIAMB0GA1UdDgQWBBSlYiBQ3LtbV5etI4814lRsqX75TjAfBgNVHSMEGDAWgBTOw0q5mVXy
-uNtgv6l+vVa1lzan1jAOBgNVHQ8BAf8EBAMCAYYwTAYDVR0lBEUwQwYIKwYBBQUHAwIGCCsG
-AQUFBwMEBgorBgEEAYI3CgMEBgorBgEEAYI3FAICBgorBgEEAYI3CgMMBgkqhkiG9y8BAQUw
-EgYDVR0TAQH/BAgwBgEB/wIBADA0BggrBgEFBQcBAQQoMCYwJAYIKwYBBQUHMAGGGGh0dHA6
-Ly9vY3NwLmRpZ2ljZXJ0LmNvbTBFBgNVHR8EPjA8MDqgOKA2hjRodHRwOi8vY3JsMy5kaWdp
-Y2VydC5jb20vRGlnaUNlcnRBc3N1cmVkSURSb290RzIuY3JsMIHOBgNVHSAEgcYwgcMwgcAG
-BFUdIAAwgbcwKAYIKwYBBQUHAgEWHGh0dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwgYoG
-CCsGAQUFBwICMH4MfEFueSB1c2Ugb2YgdGhpcyBDZXJ0aWZpY2F0ZSBjb25zdGl0dXRlcyBh
-Y2NlcHRhbmNlIG9mIHRoZSBSZWx5aW5nIFBhcnR5IEFncmVlbWVudCBsb2NhdGVkIGF0IGh0
-dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9ycGEtdWEwDQYJKoZIhvcNAQELBQADggEBAHZrbCQC
-o3MAIqR0kekGYrC70EAGRDRq11COufNEXhcpv3YH6BMhUoVinPPNgfo5HPrZAFrLK/KPXYdJ
-dgkASGsINabAfY2ljUaJwKlpIewwjS6KuGEn59MgidaAUPh6lbetIoRsLhCqCzAnX1aL99fj
-CMf4NMWLUC8TqotnnrKNuw4JSjx4fcQs+U5T1bbgnyDx+8ybONuIEDvinHdKDu2VjoECzez2
-y/1IVTPlh57zBfjHJQFqLWzHdou8M+ucdJtr2swXII6s3nkq4pfEn7KnbzMS9quFSuyOGILc
-g/3qVwaHNLM5R+8nB5gPI5+u5Uh56w1i+9Ds1pjYAiTHdeUwggTuMIID1qADAgECAhAImztE
-U4o9odkEsuVgiJc8MA0GCSqGSIb3DQEBCwUAMGoxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxE
-aWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xKTAnBgNVBAMTIERpZ2lD
-ZXJ0IEFzc3VyZWQgSUQgQ2xpZW50IENBIEcyMB4XDTI0MDUwMzAwMDAwMFoXDTI2MDUwNjIz
-NTk1OVowQjEcMBoGA1UEAwwTY21pbnlhcmRAbXZpc3RhLmNvbTEiMCAGCSqGSIb3DQEJARYT
-Y21pbnlhcmRAbXZpc3RhLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJm1
-ZE9brEiQnF7EKiV+aYzHyqPFJ+z1wwdJ4wvNiwUCgXJejBxFj04Z7A62Yx6Sp59vfjbo05eA
-IOyaLOFp3vbMBQAe8Qe4XrFv7wPcKZxwS+sgCuBvNs4NVGKYGjiKZW8WPq9ZcEl5BM8BLMrl
-rchAUHJJcMdcEJUsed6rIB//EtnGOe74/vR1Tz3sN1WzC1Wa9COvcbLgVvWC/o4WysUfC9+f
-9/5JzAiib7U7S/iRigkmEahibZgYKB7y6F1v9hxUwHxfa7GtJ8cv6LtRcPLhAO86GgXMfpgq
-k3fxzQu8uwACpINbmQNLcRzg6mHFDYRK3mFp4puUnHO5EUJ8RgUCAwEAAaOCAbYwggGyMB8G
-A1UdIwQYMBaAFKViIFDcu1tXl60jjzXiVGypfvlOMB0GA1UdDgQWBBQiHrUOKuj1vJe3OXAz
-gOP5Qbl2FTAeBgNVHREEFzAVgRNjbWlueWFyZEBtdmlzdGEuY29tMBQGA1UdIAQNMAswCQYH
-Z4EMAQUBATAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwME
-MIGLBgNVHR8EgYMwgYAwPqA8oDqGOGh0dHA6Ly9jcmwzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2Vy
-dEFzc3VyZWRJRENsaWVudENBRzIuY3JsMD6gPKA6hjhodHRwOi8vY3JsNC5kaWdpY2VydC5j
-b20vRGlnaUNlcnRBc3N1cmVkSURDbGllbnRDQUcyLmNybDB9BggrBgEFBQcBAQRxMG8wJAYI
-KwYBBQUHMAGGGGh0dHA6Ly9vY3NwLmRpZ2ljZXJ0LmNvbTBHBggrBgEFBQcwAoY7aHR0cDov
-L2NhY2VydHMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0QXNzdXJlZElEQ2xpZW50Q0FHMi5jcnQw
-DQYJKoZIhvcNAQELBQADggEBADkBdRyx41eUGmsYXBXt3WCsYeDr26rJL7lbx2PvqaZyRCJm
-J9CN2TljF0YHsXSPU+un1RfUlYz+PtcNFIqNuSf3N5fGU0bEpSzXozd/nZ32yWFLkd5CzYyN
-F1xrpbyP2a87jKM0uqEHXZFl7NPiAfEchjFCddciHTOXjN66L+kJ/ZsOoNJLG8yFN401EGew
-Nk8z/hJjWqR7DG0/YWn9h7jQ5SmqkqyhLwTO9s6KoByacWuKpKWSc/DaOuWmROlROrOA1hD8
-0sKqC6jGeLxNpiYzSwBy8qKF0weZdhcHUeO1HOm1csrvWl1UghnlR7SLir3bb5LiesTVvSuR
-Q3aDywAxggKQMIICjAIBATB+MGoxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxEaWdpQ2VydCBJ
-bmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xKTAnBgNVBAMTIERpZ2lDZXJ0IEFzc3Vy
-ZWQgSUQgQ2xpZW50IENBIEcyAhAImztEU4o9odkEsuVgiJc8MA0GCWCGSAFlAwQCAQUAoIHk
-MBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI2MDcxNzEyNTcy
-MVowLwYJKoZIhvcNAQkEMSIEIKT2m/I9mN4SCK7pBv9/F7VE+p6pp02O5OAq8wUaFVgWMHkG
-CSqGSIb3DQEJDzFsMGowCwYJYIZIAWUDBAEqMAsGCWCGSAFlAwQBFjALBglghkgBZQMEAQIw
-CgYIKoZIhvcNAwcwDgYIKoZIhvcNAwICAgCAMA0GCCqGSIb3DQMCAgFAMAcGBSsOAwIHMA0G
-CCqGSIb3DQMCAgEoMA0GCSqGSIb3DQEBAQUABIIBAGpgopbSmKVvsn0ksi//fNO4gIARONFl
-kQ1JXiNc91UpPpLtHg3x4dwL5gaOMZNRwlhqOCh/oSGZjtH7d1Ir5OA1xGEer9tflSQaVGAz
-it+ndZ2/3kZnTVIicX36t3UxRvNeoEywU98XfolPZSskwfCl67NUyEhp9BgiFXssiYGzudP8
-RY9r6+77WTMXzRBzYAeImLlQTDVYbzmg6TJwnij4LpwWEzzZeTX0orWJ7XC6aAuGFM+fVnQH
-88VPAJZVW6u5dpiAK75Xbx481B2EYwmlGljhiV0F4c6tW8z6F7DRu0A8s8wKMr/CRbdK4guZ
-VXv+ZiuYE3nLV/OkXDVCT1w=
-
---hK1Lx/WMqfHEEqqg--
 

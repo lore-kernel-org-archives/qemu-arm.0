@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5652AC44515
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 07:28:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39032C44514
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 08:18:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkczk-0003PE-Jz; Fri, 17 Jul 2026 03:28:29 -0400
+	id 1wkdmR-0006rr-Ri; Fri, 17 Jul 2026 04:18:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wkczh-0003Om-BI; Fri, 17 Jul 2026 03:28:25 -0400
-Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
- ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
+ id 1wkdmP-0006qh-Op; Fri, 17 Jul 2026 04:18:45 -0400
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wkczf-0002Bp-1L; Fri, 17 Jul 2026 03:28:25 -0400
+ id 1wkdmM-0000E6-7Z; Fri, 17 Jul 2026 04:18:44 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=e3SRJGYsfNMpnMc9qSYevZ8wvxqHyLscEzkrvVgoma+IhFU4yYulSYUL9iHULAmUlerfqT8tGJs0AbSj21pFfqziepsQFnfaLVZxUoXtcpMEsT6yGZ4ydSSwQoMThh0maYRlY+KIDxBL4dhV8+ekK0tpJYA9rPQumLtkC9bGziHUHBzm2CUYpSfulHLuG1IXDpdusKBhjcfyU9HH6C+wNGioQoNVKVcODS/mn8Zix1KDlxBqrH1rgwysw64oyeoOSD2s52mb7he0I5lqx2oofmj0f6hwfQQccQCX3gp4RYjnQ0yKZ4DywTtdBlM2BqKdlsOnSgXnQDhQ2+VnjF0fQw==
+ b=CrWqZDtCi2He3qMOKIbB06PMArEHOy5RpS9Akfm0gQJm2BaNQXxzJLELdEXm8EoE+q0D/Bcfefe17nmm68D5Adz78OEoU63iTY0EHj7ELu7nU7CKrfNIASe96qd2Y6KeHk4ZUB37p8Nilulz2nUs6V3EEWJrVsyXXEt+JVatUwONabgFPXduEuQKUCN8TSEpTGleS225pEhdzuKClX8aWfxWVPbCTQUVNuqMXTd4S0SEWUEgIGf9GVHRz64EIh7ruC7yjCutkH8oqfAH2bWDXJDYHTYOUKBRLnOSXLLuE4XeN6UfqzHIcHKOA4bzqK2PJ7kpUnO155x7jUB98GSZWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=f2psQdL27daeCWm+lLlga278MsKMMpVKLL/Mk8TmN1M=;
- b=CyWKy4Wl7SJRdqr1L8g0ZuleudAkzpDtpzM5cNvVYwf64GPtT5zJIbnrePdBzE3m6GgLT3vUQiT75Tdwv19n/70brm7f5ZDaX+Ol/hPlPG/nsiIaGR2sdXzO0T3cw9u8DINLhCFUW19CLli4LIo7spz1RNJro0pEYcvtWaF6h8BqlbGM5a4Q5xK0knSxnM3qtBJQYhDtEvtnKaErHYkXLMRjqsIKOIQ9hwdUhAZBDIlSX+qbDCnS+3T/Pzw5KEO9wGiRmlfZjgYIwOM+19V+iZi+tTUoyvw/Hp6OLYtNIKshHCU/WiFH559qVe27XriXYxOdTBrX2GcKYb3yQvPglg==
+ bh=KWUyU9dHlk1ToplXvL8Hf7o63dfqkyNamSZD9EQ9EXk=;
+ b=u5YJCsDTjkeAfh8KqjO0q7WSSwMfQrj4vQ+xfFH3KF2Vk7RWrIUimHwQDe0VLVfxwdxxhRtA96Ci2Z5EFgstQGVLI3Uv1jBGwVCc6jFbdrXHKAkmM6l7eDRlMwgnk6U7oO6C6YAPa+JwsfsLsEBC4fak1bdVsm/9Ojon6vk/qq+ARgNkPVFEvVqcvADWW6OvoEmIaisJW9ohEpBJN67SKVIc3nQPi5AyUuIxONOfAyKljmtzgVd/2m9kRnc43aotiCQFRsN1+reQmrZL3cXQEOv8z+5hqL9MojnwcxhWEVzIXL8xviHI9czTREhhkI2sYAw1hfpbumNVtaSvV4aqsg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=f2psQdL27daeCWm+lLlga278MsKMMpVKLL/Mk8TmN1M=;
- b=qtfpwuIeHcxgHGrgH8geBQhGrCX+giqeJVdgZy7ebZTZWMzNaKf/i6yOK5ZSfaFet5YOijFJB8lupZ3xgG+xS6h1y4Rw5JLfX/I7DrMal0n6BnM6zfCKh67AZvIQ8EpqMt2ajhvaEaNAGhKPZ2EF4k+hRVWiWv1Y3luotpreOQhlR/QUtO6cwHytiU/1qDpzHGSbE79ikZ07dQTD4NnTxxpv7TnUZ5OYui79LkAoELHRP3H/PCEePxQ0IipIyESTYtUsQUZxf7YkJAZnQmSdLk21Ak7Ew3ypKtkFstxYEiBq2K4zFyRuE/3q8sWYQzvFtw8iPUxW8WwK6vfoM4HOQw==
+ bh=KWUyU9dHlk1ToplXvL8Hf7o63dfqkyNamSZD9EQ9EXk=;
+ b=WMV0YyoPqwQwOFiuFl+8+McOgcu6ahwNNI4PNLD6QsOCqC6aq2GAtGy34T6CQHkBGEVcjCpj5FcpL+cnZgdkWXfQnhtqHyFaay4S0gM0BeP71UUeiSZ5Zq4FFS1H8dah+3cuncLtqiR8bdYIkYLtKws7/+iaAsS+cBXqEo3rkcZ0m1bwfHkE48VL/3QASH6bmfojM7ugRVLYezeC/T0bn0zJe3LaxV1tZCPHEW+yyRnl1QJTfnx6UPjWgDtuxIM8h8t+Nw5/M1ACtu7M1d3BOtocFOLp7xbSZ0YvAXLpWmJfmET2grclz6IgDTq57EMwErRiOj6MygRCROstmNqEzQ==
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
- by JH0PR06MB6320.apcprd06.prod.outlook.com (2603:1096:990:13::7) with
+ by KU4PR06MB8339.apcprd06.prod.outlook.com (2603:1096:d10:7d::8) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.12; Fri, 17 Jul
- 2026 07:28:13 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.11; Fri, 17 Jul
+ 2026 08:18:25 +0000
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0223.011; Fri, 17 Jul 2026
- 07:28:13 +0000
+ 08:18:25 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
+To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
  <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Alistair
@@ -52,98 +52,88 @@ To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
  Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open
  list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>
-Subject: RE: [PATCH v1 0/3] tests/qtest/aspeed: Add Data FIFO qtest coverage
- for AST2700 SMC
-Thread-Topic: [PATCH v1 0/3] tests/qtest/aspeed: Add Data FIFO qtest coverage
- for AST2700 SMC
-Thread-Index: AQHdFY4p4zH1qzsU5kaHZqwmbBZTIrZxT3kAgAAA4TA=
-Date: Fri, 17 Jul 2026 07:28:13 +0000
-Message-ID: <TYZPR06MB4980C3F9DE97234DC5124E37FCC62@TYZPR06MB4980.apcprd06.prod.outlook.com>
-References: <20260717014701.1683876-1-jamin_lin@aspeedtech.com>
- <05a9b014-8e8f-44c8-beab-04816a0ca246@kaod.org>
-In-Reply-To: <05a9b014-8e8f-44c8-beab-04816a0ca246@kaod.org>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
+Subject: [PATCH v3 9/9] tests/qtest/ast2700-smc-test: Add Data FIFO mode test
+Thread-Topic: [PATCH v3 9/9] tests/qtest/ast2700-smc-test: Add Data FIFO mode
+ test
+Thread-Index: AQHdFcTXpJaMuEyUxU+Po3S6sKMyaw==
+Date: Fri, 17 Jul 2026 08:18:25 +0000
+Message-ID: <20260717081813.3407862-10-jamin_lin@aspeedtech.com>
+References: <20260717081813.3407862-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260717081813.3407862-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
+Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|JH0PR06MB6320:EE_
-x-ms-office365-filtering-correlation-id: 570378f5-6b71-4dbc-112f-08dee3d4f633
+x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|KU4PR06MB8339:EE_
+x-ms-office365-filtering-correlation-id: 1dfd30ca-ed16-44d1-6b27-08dee3dbf98c
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|7416014|23010399003|366016|1800799024|22082099003|18002099003|4143699003|38070700021|10067099003|56012099006|921020;
-x-microsoft-antispam-message-info: B6WHVe0pJXJxBm/2J0A3Lwovg63HC7gyn1In+dQF0jjP6Am8UOMit6nirDy6srrjYLTLZr/1no7BOl8ZKxTd1JXVddJaQL7TDTOBAK/kXbWhONIVU7ex+JZX+CCWzVKVfMeu/rgXlVtJU0Jwa/maM1wlDgd0fpB9/OQQsAU0GwApkzguV9WjXhv6gTnklvYnMpGSXTPwTwanGLGBu9OFL41fHI3pv+UtgcvGGkTHoU5y6YWMZXZ78TJOrf2KUrEPngm6bkfLeqghadCxBAI+9Wl03vswt56u3yhlVrgQGXPslGG0zXOAXeUwGsTLGjG1ueZkoxlYZMVEDCMx4UuxKn260eBsQCS+fSSovolXjM5zSL6/CS6vCaMsgGq/ZY8oUeHORVP3k1906VdIEB/GQFuhoP3YIH7qpvxVuJrUD+N/5KbPqYbpz5yxbVpAD+NykDpzrdDvUKW11G24QsKGBx832CLkigChQ8AFrVf23isS5bnTTcs66Xx1G5P5It01BkmDCLH03PoJ+xi+QBoyB48CTm4y1BN0sjcnk8W5lYMhGKlPN8pG0t3eKzuvW7dVWvHkCIaCdWxR6ik71B+aP6UvtH1jnUZSZW5BakIe4+3ROopJNPzD2ip0F3BX/lFj/5FQezFZKVobG/RSmzY97YNSpKOEa9n1yMiNHvph7uOgbgUU/QM6wIhXSfIr6KqsFzZvNKuALbgbXdWcXYXeqCkYi/mUzG6afShd1hDhN2ko68gVhXLS0ViRjqPK0HYj
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE;
- SFS:(13230040)(376014)(7416014)(23010399003)(366016)(1800799024)(22082099003)(18002099003)(4143699003)(38070700021)(10067099003)(56012099006)(921020);
+ ARA:13230040|23010399003|376014|7416014|366016|1800799024|38070700021|921020|56012099006|5023799004|10067099003|18002099003|22082099003|3023799007;
+x-microsoft-antispam-message-info: zhIzg9SfnXGQYGyfCGZcIH52M6oFocjlBp4BhX2UT1PufKoehRihdstcCDaD3XKZL5lTZFYoEYMF09hLZ+qng6dN7BFQfaZdVAb0gDfFpKMzIEvpz+gMBp0+cQiACGv7J5jD97u8zd9U72fb9V8oWxBWzAX2H8vNcupiaHo31gJEK3uMPHNWxorRLHOeqbVdJej9E+VN+lY+bK7EUdz7dSMOI14LnuykQkzQzfs39mXXe0vG6MsaPb3js4ul5gYN9fPFeXOR2bakSjbEON51ePNkv9hWBnpN6ji2VC9A91YrRVr0lOcMESVGrTd4t1q3LvzlW7daX2jHz7uQDoG2bMdURany3YWIhupb5glcQQdX/SvnkcugggAfh5eIIg/COsNsntQ2hE1Q4T8KUEPao47P/42KWR48hL3wkF5NMiJsJ9mmaATHLJoJOIlxiJa5DhfG6UvI9OZfeHsimOQyeHbt7bUrl9oIMhDao/10eBQveBUOwh7AEab8gaLq9yTpghLZEN8vs0BWRZIg3BgklxkxNYOuXI5HvxLh0Wh6prEPN/ZjEBZeIGkQyuWAwCFLkdMCaGJxe1XUF4ovg9NPYjmpa7mctB4VuHbGtG35iMhibewAgZOHSKmHVYKBIoLN1C3hs7fGkj28fUN943FSiGqTEclCNdFhPpyPSQ6KtmFxtJ814eh1lmDBOy/M4E5AQChpqlNyqL7Oo2wKz9YWVBofCVRPWeTvOh9rsOr+OaMK6JLsV302FUzRKziq5ZQH
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(23010399003)(376014)(7416014)(366016)(1800799024)(38070700021)(921020)(56012099006)(5023799004)(10067099003)(18002099003)(22082099003)(3023799007);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?TDFKdTZac0FZNlJmQ2pwUDZDMkJBbXVSTG9ZUjRaNFZMMTNOUm85cnhSblVl?=
- =?utf-8?B?STg4dS9LSThuWTlBTE1BSE91NkZxTWJQV0pCRTNzNU1SK1JxSGh0MXNuNHoy?=
- =?utf-8?B?dE9KZVRIcWIvSGgvekttNGluSXlKZDBlZ3I0cGVTK0t3QVZobmZ6ZUYrRThQ?=
- =?utf-8?B?SG9FMjh6MzhZTUMzWmg5SmlPOENYS3crNCtDTnV5M1lSMHdLdHJNMlJkT2cr?=
- =?utf-8?B?TmlIWEtTUDNUREQzRXAxc2FkQ0hKVVJSc3BhM1FNa1NINlJnL3N4K3RiTkMy?=
- =?utf-8?B?L2R3YjlLRTBaempGYWxwWEdnamIvb0JrU2czVDljbXBEUENPb1ROK2p4Wk05?=
- =?utf-8?B?V21iL2JTSlhVY2NHQ3NmN3B3WHNEaFBndktycjZGRldlYjZGMVFEYVRGM3Ry?=
- =?utf-8?B?ZnBVN0MxcHJqaFYrSDFRTGZWSzdUM0VFSW1CU3JoMTN4cHFvQ2RoaDRkQjlh?=
- =?utf-8?B?VUk5bVl1SktzTnY1eUFVc0xJdHptWnQ2TmFORlkzOTdhMU9vcWhzLytSaTFO?=
- =?utf-8?B?YXJGZk1SSlpTUzZkbTN5dktVU2tBWmZ5cW9SMzg5dGRlMTRxd0lKcnh1elpk?=
- =?utf-8?B?VDlrNlZYczhzT1hlVzE2ZC9OcitTUzhab2Q2RlREWWkwMmRrSUF3Smx3dWdW?=
- =?utf-8?B?UnVKdUw3NXlTenUxVThqRHpxS05FeHR1cUQzZUtZVktPMHNEZFFrNDF6NGpT?=
- =?utf-8?B?VFBUR0xJbXlBcmZmdm1COVkwR2dkbjRRZ0tGMVA1ODVtMUYveUhHaGQ5a2ll?=
- =?utf-8?B?UlFBb0NTczNBUEhVWW5nTGUwZVZvQzhKdzFHVkZLeE96ZElUMkJVQ3ZzVGtW?=
- =?utf-8?B?ZVhPZGc1dXFVNVpka281Z20ycnY1c0VMdkRJM1JBRWZ3ckE5TE10SDhIejJa?=
- =?utf-8?B?MnhVWHpPN3A4bFdZMnNpcVpGc3VDaUM4Um9OaDJwVkVvSVAyMmxEQVRob3Fn?=
- =?utf-8?B?WUtZUTNkcGRpTGhSNjgySmhQcWVydW03Y2IraWVhNGJpSTJGU01OQ0dMbEtO?=
- =?utf-8?B?VEZjcVVwM2l4SWwyS3lYb01pdU5IdldSMEVocmhnYmpqZnhmZmxKdFZCWnpu?=
- =?utf-8?B?NzZyNXNDUVg3UEFHdlpQQXg4blMzeW0zaXJjVEpjYXpWNkdJdFhiaktndUl6?=
- =?utf-8?B?cVI1ak85amMzS0RObjlOMWMyS3I1b1JNKzZVTG5BTlUydHpYNWtiNi9kOEFm?=
- =?utf-8?B?UEpPbDF2dHMvUG5BbHhZVkEvcWRJVXZkRXJCRnNlWit5RUFKMmpzdkx3Q20w?=
- =?utf-8?B?dWczN1hSQXRKTnlDcDBvM3JzeWNCYkl4ejR0c2xnTHdtdHdWb1dGWDdGWGFy?=
- =?utf-8?B?cWhEVWlnOXdaZUFkR1lmWXVnNFZWc2VJdW9QV0RIN3lNOUdFRis5cXJmaVRn?=
- =?utf-8?B?Y3lzdDlFeXV2c2hKaXBaVnNjVzBGWmZMQ01oVUlXUExKbUtHclVHVC9DR2Z1?=
- =?utf-8?B?SFhYNVZHQUV4TzhJMU40amhteVhrZnlFUElScVdta0lOSW1lNlNyMlR3ZG12?=
- =?utf-8?B?K0djU0JURkJZZmZabnZ5UHZ5VWtNUk5DRlRBUDJRZzN1UGs4eTlqMHNZcUE2?=
- =?utf-8?B?d2gwUUdtcENZVWk3Y2JIWTdFSmJ3UWdlL3dhOS8ydTFpOWR1bHh2MXJSTkRp?=
- =?utf-8?B?VDJKRVpFQkl6WTBtRWZWYmhJRkkrdktXY0k1ODEzZWp3VjFxck1ONktqYllx?=
- =?utf-8?B?SDJoTE5FREdWbThHTXdMcVJoKzNrbG1DbE5WUk1zODMvaWMxb0tSRVpzeVpL?=
- =?utf-8?B?RTVUSU9WbmtTTGpOUnVpcGhuTmRLVENuV0llcGszMitYWFExWnZiSmtRUTk0?=
- =?utf-8?B?Ym9JVFBCUW5teGFQenJYOGE1TmFBNTlhdWYyTElvdHFOMUxQSW00WUJNNHQ2?=
- =?utf-8?B?YWc0NHlldGpIdWxUemhNWGMxMlVUZlovdkpST1NBYXRJR2ZYWS9VQzFuY0dB?=
- =?utf-8?B?V3ozNmc2VjhadWxGWTNFODJhV0NDTUlsTlZLeStPa245VUt4TTVHamIzRGN3?=
- =?utf-8?B?YVdpcUNleWtLWFZFcXRLTXdsbDZCVGZiN3N3YVk2VkpXU1pMTGhLV3daMFFZ?=
- =?utf-8?B?b2NpR05wQnQzc09rckpRM3FPZ0RTdGlWVjJRc0E4K3QzM2ZrWDRSVmdraDNi?=
- =?utf-8?B?NjVNYzc5Y3QraldKRnllMENrR2xPYUhXUDJ3ZzBtb0V2RUpicS9PbkdZdU5j?=
- =?utf-8?B?ODcwMmxNeVJDTDJtcC9jSjRvam1OYnBXL0xTMzhrY1lMaUdYNDF0N0dwREJC?=
- =?utf-8?B?UkZVQWR4ZXNDS1o3cEI1NE1OSEdRMC9DbTRNc0E1WXh1Y09qN0UreWs1WWJy?=
- =?utf-8?B?ak5DcFZsaWZqcjlmR3NtN0ZYdTBhS1BtYThJK1MwdnRBZUZNTlBhQT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?GYgvjLsxROBIwEkdJPrQLVvm2+4uWQIiL7MLQo6aqZ4O+BEBzmZOePJSZa?=
+ =?iso-8859-1?Q?AV5V4PNluhBpyP3FeRWdLY/7Fb3WZpYzADu8zlUaf59eML/QKnX3eRnnI5?=
+ =?iso-8859-1?Q?u2p89KPYACDrvLuwO9MfJztAWrpPxoXzXiL+FcYpYYl6TEsNLYksAY5Cl6?=
+ =?iso-8859-1?Q?aJLsF6eRtLfyq5WAZhjphzoMpEboFxSaxAhrO0skGbrjhArLAj/zrMPxht?=
+ =?iso-8859-1?Q?PtmwtI8BIR9xyIhP0RnQterC2kiQF4BFSOITdcO4AYnlVAXZKSraVhEY+9?=
+ =?iso-8859-1?Q?OeFqnPjPEo4EbFRcsef2ZZPPn+BuGco7b9ZQNHohcbnUJ68eo0kgIOTnMh?=
+ =?iso-8859-1?Q?EtFTYKnHOjzvim8JT1kavLhDs6WlJFxweLSv4JFpGbVAYx3SaRzDd4m5yL?=
+ =?iso-8859-1?Q?s7PWA6lo3YWQggyVYkRYHxaGZXky/1tBs/xf6X7v/2afeO4EjHBh5DvbQ7?=
+ =?iso-8859-1?Q?oG6UIQvgvm1ZOG1TexF3V3FL0AnA+jGMHiFkK89Y9nVhgBOBw1gwu0cumP?=
+ =?iso-8859-1?Q?e3PjOlGaMQUb214SafVn9miVpiRQd1XUQ4WSLw947FaaTzpkW4vrC14eUX?=
+ =?iso-8859-1?Q?MWd9PgTmvPOy/cnL5biLWdWTIpYoTWA351Wml1m2isakPU4HZ1l8b3lIhl?=
+ =?iso-8859-1?Q?fBK28QBTeatdjdg9fFin6eof2zvBKJEV6b9O+Uw8VTipBDY1z2jGwqOG4r?=
+ =?iso-8859-1?Q?FrPcxAohFmb3bRDrDrVlea6gt3csNcDWbnY7HgaqHJGe9eCIbRG9LUxbyA?=
+ =?iso-8859-1?Q?laxrH+3FNXIjhJF0T3A8S3p05HDa/wuBBrwPloMDjgA5ja9RGJdZgo4pE/?=
+ =?iso-8859-1?Q?oGTvr7rU718Grbj7cYOG33YmwBRI7mRbljcX7aMLSBJgay3URCaWA0GKNY?=
+ =?iso-8859-1?Q?z6gNoJLDZ6pALhLTsadJ1Y0hntM0/YStytgseZNkWUeleAAqNRXuiMswLF?=
+ =?iso-8859-1?Q?lPyWg+V6wnsy93z/5W5e812Fb3aIR8OCjvCrqXdvFUiaOdjiysgMOJKwlb?=
+ =?iso-8859-1?Q?81CgrKo5TJ7ygFiBUWALXWNIG7V32pCnsSpoN594H+7LHN4+6++M2klSbl?=
+ =?iso-8859-1?Q?efyQAtU7Dn2t1wsHthkDZQxZDsci+KMZSZeBUy6FAtwxkrbSXXu0UF36ak?=
+ =?iso-8859-1?Q?/jfqmgV9sJttxeYPO3xNf2Iw0Rh212ZM7JzdhRv9JiKgW2Rv0YRObBOf91?=
+ =?iso-8859-1?Q?Nxl60vwXO9kPw0fKjDr414SKRiyKjjOt0Q7EAjbEnqbELiK/rYjEzIBSi0?=
+ =?iso-8859-1?Q?LqvpLptxNThLzaz8a9f6Vvy2Qc2AKLugVOgaGiFbAYVs9OAbPqiooTzeP/?=
+ =?iso-8859-1?Q?+CtZC7YF2R0uQpIPADdWyf68AnmPJzH4nI+LL0dd/cz6wOmdM94tyRcyfu?=
+ =?iso-8859-1?Q?v4Tip/l5ABA8LA0i4HdL8a1cYD9ugrSHRNxsNuJrCffI+uzlqLYkdgWd3N?=
+ =?iso-8859-1?Q?XqcmDlV5UnxxSE3QX0T9QvP4OlWtOq1THLtOuUd/4NyOrAncLLZ7jfbCHR?=
+ =?iso-8859-1?Q?fKG7P09SBj0/N/moAxfbrbY122eZ8+lzPXJwauBt+wvfrt/LnJzVD1fYuG?=
+ =?iso-8859-1?Q?j8+7tXip6aGHYJgk6ePVwBRVZziLLg5O7Ws2WbcpOGFXy7NsL1h1GV8Mvv?=
+ =?iso-8859-1?Q?8nBKVu7QnhCvWcflcc5n2Pn4pkycVuJy3QXdbao6e6tnFoO/UHfE74iezf?=
+ =?iso-8859-1?Q?ibRdlv08YmodcNkkPdPPGKG336v7TohgHJ+6YXgMAhYAAqy2knnNx8AY0l?=
+ =?iso-8859-1?Q?S4uuDz+AGANnkQacoolk0A4M3RZkCbOdCnuo/NBle47SseHFhi5Kf75iVB?=
+ =?iso-8859-1?Q?LuFwQ0nN4Q=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: dDL3AJLs8vX8zR+8LDd474do3WLCNr6KhZNF+qe+0mb87DAfwgmAn9wUPdJR0gKa1J0cbFzAJLTVeV+QSGy7hvYXaLe1qmJfjflO4WkR7gWnm8R7jLaKZ8PSrIKcDgmG6SbUyJwpsWTgmoE0f0O6eDCG186Wq97SNyc/rGJgOXYK9zctnLHygh0xNxFNpxAyiVRFEAVLehUGqmVIUaE2W3BnjD8sFcmqf2PM0U4H2qX7dNpw/lXjhPRWCKh5ZqVPjupV9dh1Rgrp/8PRLED9hEPnubAmwNN9RanInEkA58BotGV/ueKftfuD1g2sSue+uRMNy84Stb2hUQF2CLgqPA==
+X-Exchange-RoutingPolicyChecked: DsxVs7YT2pFPmAhXyJBlJfZouE3EH7xLE+uTmWzRUOSwt3o90gxekbD8T+VKCUt1e588OL7BgAlsI9AuwsJ1LjHX0iVjiGzi7K1IjciZ+G95i2ifvRe6FyRFO6QvfsxPmtwcOjes//K+dCeRI1YWBjHtcBS1RKJ73C8KvTenNCvMgU4BveK5BXUypiVlhM0nf8PBadqJP/Pe1xl04smR6PnIbAxR38IdVi5+GALfyksNjfBHYqmzk2BKtiTg56cY8Fnf1nuFDei1RKppXiHj8gz9s9i88F2UwIxSWZC1WmGkJbMbuBoEMkeuAymAuYW8FeVd9gPXDqxs2Y0JvU2ZFA==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 570378f5-6b71-4dbc-112f-08dee3d4f633
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jul 2026 07:28:13.5923 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1dfd30ca-ed16-44d1-6b27-08dee3dbf98c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jul 2026 08:18:25.6614 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Cp6/zFMrldjGEFNekl4gsuxju3fzZtg3mH9MZc0mLMSryQzdIfa9uV8WgUsRl6GnzTqNBwKKoWDjLSC10y0rD4Th6Ad3688aBcxGoSwtFhs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR06MB6320
-Received-SPF: pass client-ip=2a01:111:f403:c406::3;
+X-MS-Exchange-CrossTenant-userprincipalname: PG/fM8LNlznY2/FQ2JFSjwmn0oUkBG4hOnEbXINpF6+1iY7VYkAo5Mc+6GrhFD9X5tLlhahFnd+QUixDjOF1VFTWXuqdmF8h/+oJ0p0RAOQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KU4PR06MB8339
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
  envelope-from=jamin_lin@aspeedtech.com;
- helo=OS8PR02CU002.outbound.protection.outlook.com
+ helo=TYPPR03CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -160,34 +150,184 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgQ8OpZHJpYw0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IEPDqWRy
-aWMgTGUgR29hdGVyIDxjbGdAa2FvZC5vcmc+DQo+IFNlbnQ6IEZyaWRheSwgSnVseSAxNywgMjAy
-NiAzOjI0IFBNDQo+IFRvOiBKYW1pbiBMaW4gPGphbWluX2xpbkBhc3BlZWR0ZWNoLmNvbT47IFBl
-dGVyIE1heWRlbGwNCj4gPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz47IFN0ZXZlbiBMZWUgPHN0
-ZXZlbl9sZWVAYXNwZWVkdGVjaC5jb20+OyBUcm95DQo+IExlZSA8bGVldHJveUBnbWFpbC5jb20+
-OyBLYW5lIENoZW4gPGthbmVfY2hlbkBhc3BlZWR0ZWNoLmNvbT47DQo+IEFuZHJldyBKZWZmZXJ5
-IDxhbmRyZXdAY29kZWNvbnN0cnVjdC5jb20uYXU+OyBKb2VsIFN0YW5sZXkNCj4gPGpvZWxAam1z
-LmlkLmF1PjsgQWxpc3RhaXIgRnJhbmNpcyA8YWxpc3RhaXJAYWxpc3RhaXIyMy5tZT47IEZhYmlh
-bm8gUm9zYXMNCj4gPGZhcm9zYXNAc3VzZS5kZT47IExhdXJlbnQgVml2aWVyIDxsdml2aWVyQHJl
-ZGhhdC5jb20+OyBQYW9sbyBCb256aW5pDQo+IDxwYm9uemluaUByZWRoYXQuY29tPjsgb3BlbiBs
-aXN0OkFTUEVFRCBCTUNzIDxxZW11LWFybUBub25nbnUub3JnPjsNCj4gb3BlbiBsaXN0OkFsbCBw
-YXRjaGVzIENDIGhlcmUgPHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz4NCj4gQ2M6IFRyb3kgTGVlIDx0
-cm95X2xlZUBhc3BlZWR0ZWNoLmNvbT4NCj4gU3ViamVjdDogUmU6IFtQQVRDSCB2MSAwLzNdIHRl
-c3RzL3F0ZXN0L2FzcGVlZDogQWRkIERhdGEgRklGTyBxdGVzdCBjb3ZlcmFnZQ0KPiBmb3IgQVNU
-MjcwMCBTTUMNCj4gDQo+IEphbWluLA0KPiANCj4gT24gNy8xNy8yNiAwMzo0NywgSmFtaW4gTGlu
-IHdyb3RlOg0KPiA+IFRoaXMgc2VyaWVzIGRlcGVuZHMgb24gaHR0cHM6Ly9naXRodWIuY29tL2xl
-Z29hdGVyL3FlbXUuZ2l0IGF0IGFzcGVlZC1uZXh0DQo+IGJyYW5jaC4NCj4gDQo+IFNpbmNlIHdl
-IGhhdmUgdGltZSwNCj4gDQo+IENvdWxkIHlvdSBwbGVhc2UgcmVzZW5kIGEgdjMgb2YNCj4gDQo+
-IA0KPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9xZW11LWRldmVsLzIwMjYwNzA3MDYwOTE5LjM1
-MDYzNy0xLWphbWluX2xpbkBhc3ANCj4gZWVkdGVjaC5jb20vDQo+IA0KPiA+IHYxDQo+ID4gICAx
-LiBBZGQgRGF0YSBGSUZPIG1vZGUgdGVzdA0KPiANCj4gUGxlYXNlIGFkZCB0aGlzIHBhdGNoIGF0
-IGVuZCBvZiB0aGUgcmVzcGluLCBtYWtpbmcgc3VyZSBpdCBhcHBsaWVzIG9uIHRvcCA6DQo+IA0K
-PiANCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8yMDI2MDcxNDEyNDYyMS41
-MjI5NDgtMS1jbGdAcmVkaGF0LmNvDQo+IG0vDQo+IA0KPiBUaGlzIHNlcmllcyBpcyBhbHNvIGFw
-cGxpZWQgb24gdGhlIGFzcGVlZC1uZXh0IGJyYW5jaC4NCj4gDQo+ID4gICAyLiBDbGFyaWZ5IFND
-VS9TQ1VJTy9GTUMgZmllbGRzIGFyZSBzaGFyZWQgd2l0aCBQU1AgU29DIHRvIEFTVDI3MDANCj4g
-PiAgIDMuIEJ1bXAgdm1zdGF0ZSB2ZXJzaW9uIGFmdGVyIEFTUEVFRF9TTUNfUl9NQVggaW5jcmVh
-c2UNCj4gDQo+IEFuZCBmb2xkIHRoZXNlIDIgY2hhbmdlcyB3aGVyZSB0aGV5IHNob3VsZCBiZSAh
-DQo+IA0KPiBUaGFua3MsDQo+IA0KPiBDLg0KV2lsbCByZXNlbmQgdjINClRoYW5rcywNCkphbWlu
-DQo=
+Add two qtest cases exercising the new AST2700 Data FIFO-based flash=0A=
+access path (R_DATA_FIFO at spi_base + 0x200).=0A=
+=0A=
+Write_page_datafifo sends the page-program command and data through=0A=
+the FIFO port, then verifies the result via the regular read path.=0A=
+Read_page_datafifo writes a page the regular way, then reads it back=0A=
+through the FIFO port, so both directions are checked independently.=0A=
+=0A=
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+---=0A=
+ tests/qtest/aspeed-smc-utils.h |   4 ++=0A=
+ tests/qtest/aspeed-smc-utils.c | 103 +++++++++++++++++++++++++++++++++=0A=
+ tests/qtest/ast2700-smc-test.c |   4 ++=0A=
+ 3 files changed, 111 insertions(+)=0A=
+=0A=
+diff --git a/tests/qtest/aspeed-smc-utils.h b/tests/qtest/aspeed-smc-utils.=
+h=0A=
+index 19c557b822..e4f538e579 100644=0A=
+--- a/tests/qtest/aspeed-smc-utils.h=0A=
++++ b/tests/qtest/aspeed-smc-utils.h=0A=
+@@ -33,6 +33,8 @@=0A=
+ #define   CTRL_DUMMY_LOW_SHIFT   6=0A=
+ #define   CTRL_DUMMY_HIGH_SHIFT  14=0A=
+ #define SR_WEL BIT(1)=0A=
++/* Data fifo */=0A=
++#define R_DATA_FIFO 0x200=0A=
+ =0A=
+ /*=0A=
+  * Flash commands=0A=
+@@ -87,5 +89,7 @@ void aspeed_smc_test_read_page_mem_dor(const void *data);=
+=0A=
+ void aspeed_smc_test_write_page_dor(const void *data);=0A=
+ void aspeed_smc_test_read_page_mem_qor(const void *data);=0A=
+ void aspeed_smc_test_write_page_qor(const void *data);=0A=
++void aspeed_smc_test_write_page_datafifo(const void *data);=0A=
++void aspeed_smc_test_read_page_datafifo(const void *data);=0A=
+ =0A=
+ #endif /* TESTS_ASPEED_SMC_UTILS_H */=0A=
+diff --git a/tests/qtest/aspeed-smc-utils.c b/tests/qtest/aspeed-smc-utils.=
+c=0A=
+index 6d75a95578..6f1a4b2ec7 100644=0A=
+--- a/tests/qtest/aspeed-smc-utils.c=0A=
++++ b/tests/qtest/aspeed-smc-utils.c=0A=
+@@ -57,6 +57,28 @@ static inline uint32_t flash_readl(const AspeedSMCTestDa=
+ta *data,=0A=
+     return qtest_readl(data->s, data->flash_base + offset);=0A=
+ }=0A=
+ =0A=
++/*=0A=
++ * Data FIFO port, in spi_base's register bank (not flash_base). Accesses=
+=0A=
++ * through the FIFO require the complete user-mode transaction (opcode,=0A=
++ * address, and data). Assumes CS0, whose FIFO slot is at R_DATA_FIFO.=0A=
++ */=0A=
++static inline void datafifo_writeb(const AspeedSMCTestData *data,=0A=
++                                   uint8_t value)=0A=
++{=0A=
++    qtest_writeb(data->s, data->spi_base + R_DATA_FIFO, value);=0A=
++}=0A=
++=0A=
++static inline void datafifo_writel(const AspeedSMCTestData *data,=0A=
++                                   uint32_t value)=0A=
++{=0A=
++    spi_writel(data, R_DATA_FIFO, value);=0A=
++}=0A=
++=0A=
++static inline uint32_t datafifo_readl(const AspeedSMCTestData *data)=0A=
++{=0A=
++    return spi_readl(data, R_DATA_FIFO);=0A=
++}=0A=
++=0A=
+ static void spi_conf(const AspeedSMCTestData *data, uint32_t value)=0A=
+ {=0A=
+     uint32_t conf =3D spi_readl(data, R_CONF);=0A=
+@@ -826,3 +848,84 @@ void aspeed_smc_test_write_page_qor(const void *data)=
+=0A=
+ {=0A=
+     test_write_page(data, read_page_qor);=0A=
+ }=0A=
++=0A=
++void aspeed_smc_test_write_page_datafifo(const void *data)=0A=
++{=0A=
++    const AspeedSMCTestData *test_data =3D (const AspeedSMCTestData *)data=
+;=0A=
++    uint32_t my_page_addr =3D test_data->page_addr;=0A=
++    uint32_t some_page_addr =3D my_page_addr + FLASH_PAGE_SIZE;=0A=
++    uint32_t page[FLASH_PAGE_SIZE / 4];=0A=
++    int i;=0A=
++=0A=
++    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));=0A=
++=0A=
++    /*=0A=
++     * Send the complete user-mode transaction (opcode, address, data)=0A=
++     * through the Data FIFO port.=0A=
++     */=0A=
++    spi_ctrl_start_user(test_data);=0A=
++    datafifo_writeb(test_data, EN_4BYTE_ADDR);=0A=
++    datafifo_writeb(test_data, WREN);=0A=
++    datafifo_writeb(test_data, PP);=0A=
++    datafifo_writel(test_data, make_be32(my_page_addr));=0A=
++=0A=
++    for (i =3D 0; i < FLASH_PAGE_SIZE / 4; i++) {=0A=
++        datafifo_writel(test_data, make_be32(my_page_addr + i * 4));=0A=
++    }=0A=
++    spi_ctrl_stop_user(test_data);=0A=
++=0A=
++    /* Check what was written, using the regular read path */=0A=
++    read_page(test_data, my_page_addr, page);=0A=
++    for (i =3D 0; i < FLASH_PAGE_SIZE / 4; i++) {=0A=
++        g_assert_cmphex(page[i], =3D=3D, my_page_addr + i * 4);=0A=
++    }=0A=
++=0A=
++    /* Check some other page. It should be full of 0xff */=0A=
++    read_page(test_data, some_page_addr, page);=0A=
++    for (i =3D 0; i < FLASH_PAGE_SIZE / 4; i++) {=0A=
++        g_assert_cmphex(page[i], =3D=3D, 0xffffffff);=0A=
++    }=0A=
++=0A=
++    flash_reset(test_data);=0A=
++}=0A=
++=0A=
++void aspeed_smc_test_read_page_datafifo(const void *data)=0A=
++{=0A=
++    const AspeedSMCTestData *test_data =3D (const AspeedSMCTestData *)data=
+;=0A=
++    uint32_t my_page_addr =3D test_data->page_addr;=0A=
++    uint32_t page[FLASH_PAGE_SIZE / 4];=0A=
++    int i;=0A=
++=0A=
++    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));=0A=
++=0A=
++    /* Write the page the regular way */=0A=
++    spi_ctrl_start_user(test_data);=0A=
++    flash_writeb(test_data, 0, EN_4BYTE_ADDR);=0A=
++    flash_writeb(test_data, 0, WREN);=0A=
++    flash_writeb(test_data, 0, PP);=0A=
++    flash_writel(test_data, 0, make_be32(my_page_addr));=0A=
++    for (i =3D 0; i < FLASH_PAGE_SIZE / 4; i++) {=0A=
++        flash_writel(test_data, 0, make_be32(my_page_addr + i * 4));=0A=
++    }=0A=
++    spi_ctrl_stop_user(test_data);=0A=
++=0A=
++    /*=0A=
++     * Read it back through the data FIFO port, again sending the whole=0A=
++     * transaction (opcode, address, data) through it.=0A=
++     */=0A=
++    spi_ctrl_start_user(test_data);=0A=
++    datafifo_writeb(test_data, EN_4BYTE_ADDR);=0A=
++    datafifo_writeb(test_data, READ);=0A=
++    datafifo_writel(test_data, make_be32(my_page_addr));=0A=
++    for (i =3D 0; i < FLASH_PAGE_SIZE / 4; i++) {=0A=
++        page[i] =3D make_be32(datafifo_readl(test_data));=0A=
++    }=0A=
++    spi_ctrl_stop_user(test_data);=0A=
++=0A=
++    for (i =3D 0; i < FLASH_PAGE_SIZE / 4; i++) {=0A=
++        g_assert_cmphex(page[i], =3D=3D, my_page_addr + i * 4);=0A=
++    }=0A=
++=0A=
++    flash_reset(test_data);=0A=
++}=0A=
++=0A=
+diff --git a/tests/qtest/ast2700-smc-test.c b/tests/qtest/ast2700-smc-test.=
+c=0A=
+index f85077e04f..925dbcfaaf 100644=0A=
+--- a/tests/qtest/ast2700-smc-test.c=0A=
++++ b/tests/qtest/ast2700-smc-test.c=0A=
+@@ -64,6 +64,10 @@ static void test_ast2700_evb(AspeedSMCTestData *data)=0A=
+                         data, aspeed_smc_test_read_page_mem_qor);=0A=
+     qtest_add_data_func("/ast2700/smc/write_page_qor",=0A=
+                         data, aspeed_smc_test_write_page_qor);=0A=
++    qtest_add_data_func("/ast2700/smc/write_page_datafifo",=0A=
++                        data, aspeed_smc_test_write_page_datafifo);=0A=
++    qtest_add_data_func("/ast2700/smc/read_page_datafifo",=0A=
++                        data, aspeed_smc_test_read_page_datafifo);=0A=
+ }=0A=
+ =0A=
+ int main(int argc, char **argv)=0A=
+-- =0A=
+2.43.0=0A=
 

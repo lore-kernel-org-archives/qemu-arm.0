@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD685C44521
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:06:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 659A2C4450A
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:06:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlDB5-0001z9-VP; Sat, 18 Jul 2026 18:06:36 -0400
+	id 1wlDB9-0002Jj-Ch; Sat, 18 Jul 2026 18:06:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlDAG-0001C5-4P; Sat, 18 Jul 2026 18:05:44 -0400
-Received: from pdx-out-006.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.26.1.71])
+ id 1wlDB4-0001ky-Li; Sat, 18 Jul 2026 18:06:34 -0400
+Received: from pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.13.214.179])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlDAE-0006DK-90; Sat, 18 Jul 2026 18:05:43 -0400
+ id 1wlDB2-0006Fa-QV; Sat, 18 Jul 2026 18:06:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1784412342; x=1815948342;
+ t=1784412392; x=1815948392;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=uYXfcUGTcd7vy1ZKIayA3ffKEGDWK1Kjsc1hvCY3J34=;
- b=VJx793g1WGxNGAGsJKic6KFBBY+34DMqgmRhnJ2aLe9uCy2HyHdT2Bf4
- 1FwNuBp3m4WoFrgHx8w76nVT55qoCUSk1t1AjiATCPh2e7VsmK5fXIZZe
- WBQC2hRuCsqHQYOQ62aowiBRRfQW+dLFAUyDt88n1KS0dreabEFUA1bVU
- umyUg+CQzaKscOyu/1vAymDPatw1ryD8UIhHNVMaslNFkx6JedB5KG9C1
- eVfJ78lvbDdBwOdjZu4GlnNCxSzKAHudtgXyNaAV8zGg+BEe7s+e7ogLx
- x3y7z2TdM9BdqnlvK2ld0zL35msiJh7PEI8dZTAlK3g5u/kcJ98UWG5eA g==;
-X-CSE-ConnectionGUID: oVLAanCzRteQDpF0CiVGkQ==
-X-CSE-MsgGUID: B8iD5A6PTs+zlSFaABZREw==
-X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23944849"
-Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
- by internal-pdx-out-006.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:05:38 +0000
-Received: from EX19MTAUWA002.ant.amazon.com [205.251.233.234:27628]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.30.230:2525]
+ bh=XlKYJHYIZUhyMDU2fWk1xdpYp67/NUuYdfIoCtufLrc=;
+ b=el2ijtnHRM70MsjEoboAK+CQit86ez1ETNegz9beC+y5G+0pI7BW7u1h
+ XxM9NG/6o5jsjXiJVYl7agumacdj5AQUkPNrwMKYhgbOyWzgOLOyuqfeu
+ vfWoGl6R1SM0kFvpScjUViRGTEkhNA9JWbay2n+lbfJlFduW/G3FEtiF2
+ iW/QchcSkagbpA3S6keNXQ7It9kAaFkPk+ot9pKMj6nAaAn9deFz2T2BN
+ jLkYk1fmuXNX+j81ZWH8dB0F5/iyDwz+sSCp0BT5V3EH1PZwdnJo0dnhE
+ 0B0k4ilR0shg+bF1iy2Cc7E8lXCqytEPMkCG8xN2fyT+3mwOy5kzBJMRx w==;
+X-CSE-ConnectionGUID: P2eaODHESdqpjVqeKVB4JQ==
+X-CSE-MsgGUID: BuKzLw8bQZyLmomT7EkOWA==
+X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23904486"
+Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
+ by internal-pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:06:28 +0000
+Received: from EX19MTAUWA001.ant.amazon.com [205.251.233.182:24708]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.48.250:2525]
  with esmtp (Farcaster)
- id 3290fc78-ff97-4dee-b4da-65640f42e02a; Sat, 18 Jul 2026 22:05:38 +0000 (UTC)
-X-Farcaster-Flow-ID: 3290fc78-ff97-4dee-b4da-65640f42e02a
+ id 77fc81c3-d29e-4682-887e-b70683a9c011; Sat, 18 Jul 2026 22:06:28 +0000 (UTC)
+X-Farcaster-Flow-ID: 77fc81c3-d29e-4682-887e-b70683a9c011
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
+ EX19MTAUWA001.ant.amazon.com (10.250.64.217) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:05:38 +0000
+ Sat, 18 Jul 2026 22:06:28 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:05:28 +0000
+ Sat, 18 Jul 2026 22:06:18 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -93,10 +93,10 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>, "Subbaraya
  Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth <th.huth+qemu@posteo.eu>, "Ran
  Wang" <wangran@bosc.ac.cn>, Hao Wu <wuhaotsh@google.com>
-Subject: [RFC PATCH v2 102/137] hw/display: Give memory regions an explicit
+Subject: [RFC PATCH v2 105/137] hw/remote: Give memory regions an explicit
  owner
-Date: Sat, 18 Jul 2026 21:36:17 +0000
-Message-ID: <20260718213652.37673-103-graf@amazon.com>
+Date: Sat, 18 Jul 2026 21:36:20 +0000
+Message-ID: <20260718213652.37673-106-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260718213652.37673-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -105,11 +105,11 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D040UWA001.ant.amazon.com (10.13.139.22) To
+X-ClientProxiedBy: EX19D036UWB002.ant.amazon.com (10.13.139.139) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.26.1.71;
+Received-SPF: pass client-ip=52.13.214.179;
  envelope-from=prvs=65292d44c=graf@amazon.de;
- helo=pdx-out-006.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
@@ -133,92 +133,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert memory_region_init*() calls in device realize functions
-to pass OBJECT(dev) instead of NULL. All sites (cg3, g364fb,
-virtio-gpu-gl, vmware_vga) already have the DeviceState in scope.
-
-omap_lcdc is handled separately together with the other OMAP
-peripherals.
+remote_machine_init() passes OBJECT(machine). remote_sysmem_reconfig()
+runs in the multi-process remote and creates system-memory subregions
+on behalf of the machine; use qdev_get_machine() as owner.
+dma_register() in the vfio-user server creates DMA windows for a
+VfuObject; use it as owner.
 
 No functional change intended.
 
-RAMBlock idstrs are unchanged for all conversions except
-vmware_vga.c: the vmsvga.fifo RAM is now owned by a PCI device, so the
-convenience wrapper is replaced with the _nomigrate variant plus an
-explicit vmstate_register_ram_global() to preserve the historical bare
-idstr.  All other display owners here are Machine or SysBus devices.
+RAMBlock idstrs are unchanged: the owners added here are Machine
+or SysBus devices, and memory_region_register_ram() maps both to
+dev=NULL for qemu_ram_set_idstr().
 
 AI-used-for: code (refactoring)
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/display/cg3.c           |  2 +-
- hw/display/g364fb.c        |  2 +-
- hw/display/virtio-gpu-gl.c |  2 +-
- hw/display/vmware_vga.c    | 12 ++++++++++--
- 4 files changed, 13 insertions(+), 5 deletions(-)
+ hw/remote/machine.c       | 2 +-
+ hw/remote/memory.c        | 3 ++-
+ hw/remote/vfio-user-obj.c | 2 +-
+ 3 files changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/hw/display/cg3.c b/hw/display/cg3.c
-index f9dda1549d..507b0d8189 100644
---- a/hw/display/cg3.c
-+++ b/hw/display/cg3.c
-@@ -304,7 +304,7 @@ static void cg3_realizefn(DeviceState *dev, Error **errp)
-         }
-     }
+diff --git a/hw/remote/machine.c b/hw/remote/machine.c
+index e8e9cf259f..09154fa122 100644
+--- a/hw/remote/machine.c
++++ b/hw/remote/machine.c
+@@ -37,7 +37,7 @@ static void remote_machine_init(MachineState *machine)
+     system_io = get_system_io();
  
--    memory_region_init_ram(&s->vram_mem, NULL, "cg3.vram", s->vram_size,
-+    memory_region_init_ram(&s->vram_mem, OBJECT(dev), "cg3.vram", s->vram_size,
-                            &error_fatal);
-     memory_region_set_log(&s->vram_mem, true, DIRTY_MEMORY_VGA);
-     sysbus_init_mmio(sbd, &s->vram_mem);
-diff --git a/hw/display/g364fb.c b/hw/display/g364fb.c
-index af54f1f900..0bd993b826 100644
---- a/hw/display/g364fb.c
-+++ b/hw/display/g364fb.c
-@@ -482,7 +482,7 @@ static void g364fb_init(DeviceState *dev, G364State *s)
+     pci_memory = g_new(MemoryRegion, 1);
+-    memory_region_init(pci_memory, NULL, "pci", UINT64_MAX);
++    memory_region_init(pci_memory, OBJECT(machine), "pci", UINT64_MAX);
  
-     memory_region_init_io(&s->mem_ctrl, OBJECT(dev), &g364fb_ctrl_ops, s,
-                           "ctrl", 0x180000);
--    memory_region_init_ram(&s->mem_vram, NULL, "g364fb.vram", s->vram_size,
-+    memory_region_init_ram(&s->mem_vram, OBJECT(dev), "g364fb.vram", s->vram_size,
-                            &error_fatal);
-     memory_region_set_log(&s->mem_vram, true, DIRTY_MEMORY_VGA);
- }
-diff --git a/hw/display/virtio-gpu-gl.c b/hw/display/virtio-gpu-gl.c
-index 2b7a41c466..b6f183123d 100644
---- a/hw/display/virtio-gpu-gl.c
-+++ b/hw/display/virtio-gpu-gl.c
-@@ -153,7 +153,7 @@ static void virtio_gpu_gl_device_realize(DeviceState *qdev, Error **errp)
-         }
+     rem_host = REMOTE_PCIHOST(qdev_new(OBJECT(s), "remote-pcihost",
+                                        TYPE_REMOTE_PCIHOST));
+diff --git a/hw/remote/memory.c b/hw/remote/memory.c
+index 8195aa5fb8..3f8fe54bac 100644
+--- a/hw/remote/memory.c
++++ b/hw/remote/memory.c
+@@ -12,6 +12,7 @@
  
-         gl->hostmem_mmap = map;
--        memory_region_init_ram_ptr(&gl->hostmem_background, NULL,
-+        memory_region_init_ram_ptr(&gl->hostmem_background, OBJECT(qdev),
-                                    "hostmem-background", b->conf.hostmem,
-                                    gl->hostmem_mmap);
-         memory_region_add_subregion(&b->hostmem, 0, &gl->hostmem_background);
-diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-index f6f9edfd1d..571c3184c2 100644
---- a/hw/display/vmware_vga.c
-+++ b/hw/display/vmware_vga.c
-@@ -1257,8 +1257,16 @@ static void vmsvga_init(DeviceState *dev, struct vmsvga_state_s *s,
-     s->vga.con = qemu_graphic_console_create(dev, 0, &vmsvga_ops, s);
+ #include "hw/remote/memory.h"
+ #include "qapi/error.h"
++#include "hw/core/qdev.h"
  
-     s->fifo_size = SVGA_FIFO_SIZE;
--    memory_region_init_ram(&s->fifo_ram, NULL, "vmsvga.fifo", s->fifo_size,
--                           &error_fatal);
-+    /*
-+     * The fifo RAM must keep its historical bare RAMBlock idstr
-+     * ("vmsvga.fifo") for cross-version migration.  Use _nomigrate + a
-+     * global vmstate registration so the QOM owner is the PCI device but
-+     * the migration idstr is not prefixed with the PCI dev-path.
-+     */
-+    memory_region_init_ram_flags_nomigrate(&s->fifo_ram, OBJECT(dev),
-+                                           "vmsvga.fifo", s->fifo_size, 0,
-+                                           &error_fatal);
-+    vmstate_register_ram_global(&s->fifo_ram);
-     s->fifo_ptr = memory_region_get_ram_ptr(&s->fifo_ram);
+ static void remote_sysmem_reset(void)
+ {
+@@ -42,7 +43,7 @@ void remote_sysmem_reconfig(MPQemuMsg *msg, Error **errp)
+     for (region = 0; region < msg->num_fds; region++, suffix++) {
+         g_autofree char *name = g_strdup_printf("remote-mem-%u", suffix);
+         subregion = g_new(MemoryRegion, 1);
+-        memory_region_init_ram_from_fd(subregion, NULL,
++        memory_region_init_ram_from_fd(subregion, qdev_get_machine(),
+                                        name, sysmem_info->sizes[region],
+                                        RAM_SHARED, msg->fds[region],
+                                        sysmem_info->offsets[region],
+diff --git a/hw/remote/vfio-user-obj.c b/hw/remote/vfio-user-obj.c
+index 87fa7b6572..685d4c2baf 100644
+--- a/hw/remote/vfio-user-obj.c
++++ b/hw/remote/vfio-user-obj.c
+@@ -324,7 +324,7 @@ static void dma_register(vfu_ctx_t *vfu_ctx, vfu_dma_info_t *info)
  
-     vga_common_init(&s->vga, OBJECT(dev), &error_fatal);
+     subregion = g_new0(MemoryRegion, 1);
+ 
+-    memory_region_init_ram_ptr(subregion, NULL, name,
++    memory_region_init_ram_ptr(subregion, OBJECT(o), name,
+                                iov->iov_len, info->vaddr);
+ 
+     dma_as = pci_device_iommu_address_space(o->pci_dev);
 -- 
 2.47.1
 

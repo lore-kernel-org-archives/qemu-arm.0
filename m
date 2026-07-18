@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1202C44521
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 21:58:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81A9EC4451B
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 21:59:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlD3A-0002eG-7z; Sat, 18 Jul 2026 17:58:24 -0400
+	id 1wlD3n-00044O-DR; Sat, 18 Jul 2026 17:59:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlD36-0002XO-Vu; Sat, 18 Jul 2026 17:58:21 -0400
-Received: from pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.34.181.151])
+ id 1wlD3l-00041K-0A; Sat, 18 Jul 2026 17:59:01 -0400
+Received: from pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.12.53.23])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlD34-0004lo-Nw; Sat, 18 Jul 2026 17:58:20 -0400
+ id 1wlD3j-0004nu-8a; Sat, 18 Jul 2026 17:59:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1784411898; x=1815947898;
+ t=1784411939; x=1815947939;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=cOM34gniRP3oMk0fbihyw0r83H/PRYSC/L2cazxn2B4=;
- b=Ir2oktWNGrGh8EoXfiNDwfpgQy/dKch2Y+H/zXLYcnDJhSRJDIPt5CRp
- ICxrl6lhi/yG6iLJeBTVYO2AOMs+Zb6ATtytx/cXOtfhP9DVJN19VeHsa
- ARTKZPzHNXL7EyxvWfgzpYQ/1Fw9e1lfJX/31XLAu/xd2KpjjtIoJu/rc
- 4Gn3ynH/lEQp+6eC+51MMxrEOit5yGrztAHga4LRm81A2Js+l7JtGM5wl
- MCKjbHw+oAJ4VMGoEizUDyZs1tqlnB/eKX/fsqSBN/T2r6TomwrqSoSgC
- wuhY4/gZc7Z5eWY9I4PPPnJnRr9EIdFUtzWA4+YKWj5GNTiD5IYK4s4W7 g==;
-X-CSE-ConnectionGUID: q9jHp6BjQRSsBQj23rT0kQ==
-X-CSE-MsgGUID: y8bjsUltTpmyDf5ZdeGmFQ==
-X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23910729"
-Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
- by internal-pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 21:58:14 +0000
-Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.111:24713]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.29.147:2525]
+ bh=kLJ3uYk0Qdf9Pdi9VbrYZXmMR+ixaQtcpIoGBKAZpjU=;
+ b=X/BS2cyz3zTQk649Y/EvtK9lGI2TR3bivePBNQMhqoImhWr1ToD0jily
+ 3DcxcnqN+eC+yvYdKu8dc1gYi33MvMV9yEeMUtGovwGoV7p/Oa04C7TYm
+ 4v2X9avby78tSuDtq6N1LPbC8EjjOEfLGWallHIMxBEzMsTnxeAKnQ+eL
+ Q7wIVtvyc6Xn8vmJ5M3/vmUpgfS3roQz1FQeksPierOrqteke/DWznSQe
+ B6ba7vH3h+5TV799jB1gcuBVX7agF1xch4eUsTNoDxxtSp6aYMmxbvUYO
+ ngWEMzlnWbdvxZAINKhCl9XFKAUhdm7Ke2/z+HHh3Yseh/p8j/5ug92WX g==;
+X-CSE-ConnectionGUID: vvxlNW34R7WaAsAq2n5FLA==
+X-CSE-MsgGUID: HtVRl+s1TkS8OY7dtAxLbg==
+X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23795461"
+Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
+ by internal-pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 21:58:55 +0000
+Received: from EX19MTAUWB001.ant.amazon.com [205.251.233.104:8458]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.40.177:2525]
  with esmtp (Farcaster)
- id 8238088b-50bb-4576-acf5-00b51b9259c3; Sat, 18 Jul 2026 21:58:14 +0000 (UTC)
-X-Farcaster-Flow-ID: 8238088b-50bb-4576-acf5-00b51b9259c3
+ id abb2a8ef-35db-4197-8f24-2959e508ce35; Sat, 18 Jul 2026 21:58:55 +0000 (UTC)
+X-Farcaster-Flow-ID: abb2a8ef-35db-4197-8f24-2959e508ce35
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
+ EX19MTAUWB001.ant.amazon.com (10.250.64.248) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 21:58:14 +0000
+ Sat, 18 Jul 2026 21:58:55 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 21:58:04 +0000
+ Sat, 18 Jul 2026 21:58:45 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -93,10 +93,10 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>, "Subbaraya
  Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth <th.huth+qemu@posteo.eu>, "Ran
  Wang" <wangran@bosc.ac.cn>, Hao Wu <wuhaotsh@google.com>
-Subject: [RFC PATCH v2 076/137] hw/timer,
- hw/net: Give i8254 and isa-ne2000 helpers a QOM parent
-Date: Sat, 18 Jul 2026 21:35:51 +0000
-Message-ID: <20260718213652.37673-77-graf@amazon.com>
+Subject: [RFC PATCH v2 078/137] hw/usb: Give -usbdevice and auto-hub devices a
+ QOM parent
+Date: Sat, 18 Jul 2026 21:35:53 +0000
+Message-ID: <20260718213652.37673-79-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260718213652.37673-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -105,11 +105,11 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D043UWC003.ant.amazon.com (10.13.139.240) To
+X-ClientProxiedBy: EX19D043UWA001.ant.amazon.com (10.13.139.45) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.34.181.151;
+Received-SPF: pass client-ip=52.12.53.23;
  envelope-from=prvs=65292d44c=graf@amazon.de;
- helo=pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
@@ -133,219 +133,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The i8254_pit_init(), kvm_pit_init() and isa_ne2000_init() inline
-helpers still created their ISA device as an orphan.  Thread an
-Object *parent through and switch to isa_new()/isa_try_new() with
-qdev_realize().
+The three remaining orphan-creating sites in hw/usb are all
+command-line and hotplug-adjacent code paths that always run after
+the machine is up:
 
-While at it, drop the dead vmport_init() inline: it has had no
-callers since vmmouse got a proper board-level creator, and it was
-the last user of isa_create_simple_orphan() outside the ISA layer
-itself.
+  usb_claim_port() auto-hub  -> child of the USB host controller
+                                 (bus->qbus.parent)
+  usbdevice_create()         -> /machine/peripheral-anon, same as
+                                 -device without id=
+  usb_braille_init()          -> ditto (a .usbdevice_init callback)
 
-Callers pick the composition-tree owner:
-
-  hw/i386/pc.c        pcms (board)
-  hw/i386/microvm.c   mms  (board)
-  hw/isa/piix.c       d    (south-bridge realize)
-  hw/isa/i82378.c     dev  (bridge realize)
-  hw/isa/vt82c686.c   d    (super-io realize)
-  hw/mips/jazz.c      machine (board)
+Switch to qdev_new()/qdev_try_new() with an explicit parent and use
+plain qdev_realize() since the reference is now held by the parent's
+child<> property.
 
 AI-used-for: code (refactoring)
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/i386/microvm.c           |  4 ++--
- hw/i386/pc.c                |  6 +++---
- hw/isa/i82378.c             |  2 +-
- hw/isa/piix.c               |  2 +-
- hw/isa/vt82c686.c           |  2 +-
- hw/mips/jazz.c              |  2 +-
- include/hw/i386/vmport.h    |  5 -----
- include/hw/net/ne2000-isa.h |  8 ++++----
- include/hw/timer/i8254.h    | 13 +++++++------
- 9 files changed, 20 insertions(+), 24 deletions(-)
+ hw/usb/bus.c        | 15 ++++++++++-----
+ hw/usb/dev-serial.c |  3 ++-
+ 2 files changed, 12 insertions(+), 6 deletions(-)
 
-diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-index d701672c1a..8c61106516 100644
---- a/hw/i386/microvm.c
-+++ b/hw/i386/microvm.c
-@@ -261,9 +261,9 @@ static void microvm_devices_init(MicrovmMachineState *mms)
- 
-     if (x86ms->pit == ON_OFF_AUTO_ON || x86ms->pit == ON_OFF_AUTO_AUTO) {
-         if (kvm_pit_in_kernel()) {
--            kvm_pit_init(isa_bus, 0x40);
-+            kvm_pit_init(OBJECT(mms), isa_bus, 0x40);
-         } else {
--            i8254_pit_init(isa_bus, 0x40, 0, NULL);
-+            i8254_pit_init(OBJECT(mms), isa_bus, 0x40, 0, NULL);
+diff --git a/hw/usb/bus.c b/hw/usb/bus.c
+index d45cce7666..725b0303b1 100644
+--- a/hw/usb/bus.c
++++ b/hw/usb/bus.c
+@@ -410,9 +410,10 @@ void usb_claim_port(USBDevice *dev, Error **errp)
+     } else {
+         if (bus->nfree == 1 && strcmp(object_get_typename(OBJECT(dev)), "usb-hub") != 0) {
+             /* Create a new hub and chain it on */
+-            hub = USB_DEVICE(qdev_try_new_orphan("usb-hub"));
++            hub = USB_DEVICE(qdev_try_new(OBJECT(bus->qbus.parent),
++                                          "auto-hub[*]", "usb-hub"));
+             if (hub) {
+-                usb_realize_and_unref(hub, bus, NULL);
++                qdev_realize(DEVICE(hub), &bus->qbus, NULL);
+             }
          }
+         if (bus->nfree == 0) {
+@@ -661,13 +662,17 @@ USBDevice *usbdevice_create(const char *driver)
+         return NULL;
      }
  
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index a00d53b582..e505391985 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -505,7 +505,7 @@ static gboolean pc_init_ne2k_isa(ISABus *bus, NICInfo *nd, Error **errp)
-                    "maximum number of ISA NE2000 devices exceeded");
-         return false;
+-    dev = f->usbdevice_init ? f->usbdevice_init()
+-                            : USB_DEVICE(qdev_new_orphan(f->name));
++    if (f->usbdevice_init) {
++        dev = f->usbdevice_init();
++    } else {
++        dev = USB_DEVICE(qdev_new(machine_get_container("peripheral-anon"),
++                                  "usbdevice[*]", f->name));
++    }
+     if (!dev) {
+         error_report("Failed to create USB device '%s'", f->name);
+         return NULL;
      }
--    isa_ne2000_init(bus, ne2000_io[nb_ne2k],
-+    isa_ne2000_init(qdev_get_machine(), bus, ne2000_io[nb_ne2k],
-                     ne2000_irq[nb_ne2k], nd);
-     nb_ne2k++;
-     return true;
-@@ -1118,9 +1118,9 @@ void pc_basic_device_init(struct PCMachineState *pcms,
-     if (!xen_enabled() &&
-         (x86ms->pit == ON_OFF_AUTO_AUTO || x86ms->pit == ON_OFF_AUTO_ON)) {
-         if (kvm_pit_in_kernel()) {
--            pit = kvm_pit_init(isa_bus, 0x40);
-+            pit = kvm_pit_init(OBJECT(pcms), isa_bus, 0x40);
-         } else {
--            pit = i8254_pit_init(isa_bus, 0x40, pit_isa_irq, pit_alt_irq);
-+            pit = i8254_pit_init(OBJECT(pcms), isa_bus, 0x40, pit_isa_irq, pit_alt_irq);
-         }
-         if (hpet) {
-             /* connect PIT to output control line of the HPET */
-diff --git a/hw/isa/i82378.c b/hw/isa/i82378.c
-index 1c0a6ad779..995d1eaa53 100644
---- a/hw/isa/i82378.c
-+++ b/hw/isa/i82378.c
-@@ -100,7 +100,7 @@ static void i82378_realize(PCIDevice *pci, Error **errp)
-     isa_bus_register_input_irqs(isabus, s->isa_irqs_in);
- 
-     /* 1 82C54 (pit) */
--    pit = i8254_pit_init(isabus, 0x40, 0, NULL);
-+    pit = i8254_pit_init(OBJECT(dev), isabus, 0x40, 0, NULL);
- 
-     /* speaker */
-     pcspk = isa_new(OBJECT(s), "pcspk", TYPE_PC_SPEAKER);
-diff --git a/hw/isa/piix.c b/hw/isa/piix.c
-index 6b2946d82c..d96bc3a873 100644
---- a/hw/isa/piix.c
-+++ b/hw/isa/piix.c
-@@ -334,7 +334,7 @@ static void pci_piix_realize(PCIDevice *dev, const char *uhci_type,
- 
-     /* PIT */
-     if (d->has_pit) {
--        i8254_pit_init(isa_bus, 0x40, 0, NULL);
-+        i8254_pit_init(OBJECT(d), isa_bus, 0x40, 0, NULL);
+-    if (!usb_realize_and_unref(dev, bus, &err)) {
++    if (!qdev_realize(DEVICE(dev), &bus->qbus, &err)) {
+         error_reportf_err(err, "Failed to initialize USB device '%s': ",
+                           f->name);
+         object_unparent(OBJECT(dev));
+diff --git a/hw/usb/dev-serial.c b/hw/usb/dev-serial.c
+index 81897b2d76..4ae3faf656 100644
+--- a/hw/usb/dev-serial.c
++++ b/hw/usb/dev-serial.c
+@@ -622,7 +622,8 @@ static USBDevice *usb_braille_init(void)
+         return NULL;
      }
  
-     i8257_dma_init(OBJECT(dev), isa_bus, 0);
-diff --git a/hw/isa/vt82c686.c b/hw/isa/vt82c686.c
-index de9006bd95..2337c3115b 100644
---- a/hw/isa/vt82c686.c
-+++ b/hw/isa/vt82c686.c
-@@ -732,7 +732,7 @@ static void via_isa_realize(PCIDevice *d, Error **errp)
- 
-     s->isa_irqs_in = i8259_init(OBJECT(d), isa_bus, &s->i8259_irq);
-     isa_bus_register_input_irqs(isa_bus, s->isa_irqs_in);
--    i8254_pit_init(isa_bus, 0x40, 0, NULL);
-+    i8254_pit_init(OBJECT(d), isa_bus, 0x40, 0, NULL);
-     i8257_dma_init(OBJECT(d), isa_bus, 0);
- 
-     /* RTC */
-diff --git a/hw/mips/jazz.c b/hw/mips/jazz.c
-index 208e59fbeb..23d717d96a 100644
---- a/hw/mips/jazz.c
-+++ b/hw/mips/jazz.c
-@@ -289,7 +289,7 @@ static void mips_jazz_init(MachineState *machine,
-     i8259 = i8259_init(OBJECT(machine), isa_bus, env->irq[4]);
-     isa_bus_register_input_irqs(isa_bus, i8259);
-     i8257_dma_init(OBJECT(rc4030), isa_bus, 0);
--    pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
-+    pit = i8254_pit_init(OBJECT(machine), isa_bus, 0x40, 0, NULL);
-     pcspk = isa_new(OBJECT(machine), "pcspk", TYPE_PC_SPEAKER);
-     object_property_set_link(OBJECT(pcspk), "pit", OBJECT(pit), &error_fatal);
-     qdev_realize(DEVICE(pcspk), BUS(isa_bus), &error_fatal);
-diff --git a/include/hw/i386/vmport.h b/include/hw/i386/vmport.h
-index 22dd3645d2..02e422029d 100644
---- a/include/hw/i386/vmport.h
-+++ b/include/hw/i386/vmport.h
-@@ -18,11 +18,6 @@ typedef enum {
-     VMPORT_ENTRIES
- } VMPortCommand;
- 
--static inline void vmport_init(ISABus *bus)
--{
--    isa_create_simple_orphan(bus, TYPE_VMPORT);
--}
--
- void vmport_register(VMPortCommand command, VMPortReadFunc *func, void *opaque);
- 
- #endif
-diff --git a/include/hw/net/ne2000-isa.h b/include/hw/net/ne2000-isa.h
-index ef8b3334d7..f504a03db7 100644
---- a/include/hw/net/ne2000-isa.h
-+++ b/include/hw/net/ne2000-isa.h
-@@ -17,19 +17,19 @@
- 
- #define TYPE_ISA_NE2000 "ne2k_isa"
- 
--static inline ISADevice *isa_ne2000_init(ISABus *bus, int base, int irq,
--                                         NICInfo *nd)
-+static inline ISADevice *isa_ne2000_init(Object *parent, ISABus *bus,
-+                                          int base, int irq, NICInfo *nd)
- {
-     ISADevice *d;
- 
--    d = isa_try_new_orphan(TYPE_ISA_NE2000);
-+    d = isa_try_new(parent, "ne2k[*]", TYPE_ISA_NE2000);
-     if (d) {
-         DeviceState *dev = DEVICE(d);
- 
-         qdev_prop_set_uint32(dev, "iobase", base);
-         qdev_prop_set_uint32(dev, "irq",    irq);
-         qdev_set_nic_properties(dev, nd);
--        isa_realize_and_unref(d, bus, &error_fatal);
-+        qdev_realize(dev, BUS(bus), &error_fatal);
-     }
-     return d;
- }
-diff --git a/include/hw/timer/i8254.h b/include/hw/timer/i8254.h
-index 38f896063e..b7bc98b688 100644
---- a/include/hw/timer/i8254.h
-+++ b/include/hw/timer/i8254.h
-@@ -45,16 +45,17 @@ OBJECT_DECLARE_TYPE(PITCommonState, PITCommonClass, PIT_COMMON)
- #define TYPE_I8254 "isa-pit"
- #define TYPE_KVM_I8254 "kvm-pit"
- 
--static inline ISADevice *i8254_pit_init(ISABus *bus, int base, int isa_irq,
-+static inline ISADevice *i8254_pit_init(Object *parent, ISABus *bus,
-+                                        int base, int isa_irq,
-                                         qemu_irq alt_irq)
- {
-     DeviceState *dev;
-     ISADevice *d;
- 
--    d = isa_new_orphan(TYPE_I8254);
-+    d = isa_new(parent, "pit[*]", TYPE_I8254);
-     dev = DEVICE(d);
-     qdev_prop_set_uint32(dev, "iobase", base);
--    isa_realize_and_unref(d, bus, &error_fatal);
-+    qdev_realize(dev, BUS(bus), &error_fatal);
-     qdev_connect_gpio_out(dev, 0,
-                           isa_irq >= 0 ? isa_bus_get_irq(bus, isa_irq)
-                                        : alt_irq);
-@@ -62,15 +63,15 @@ static inline ISADevice *i8254_pit_init(ISABus *bus, int base, int isa_irq,
-     return d;
- }
- 
--static inline ISADevice *kvm_pit_init(ISABus *bus, int base)
-+static inline ISADevice *kvm_pit_init(Object *parent, ISABus *bus, int base)
- {
-     DeviceState *dev;
-     ISADevice *d;
- 
--    d = isa_new_orphan(TYPE_KVM_I8254);
-+    d = isa_new(parent, "pit[*]", TYPE_KVM_I8254);
-     dev = DEVICE(d);
-     qdev_prop_set_uint32(dev, "iobase", base);
--    isa_realize_and_unref(d, bus, &error_fatal);
-+    qdev_realize(dev, BUS(bus), &error_fatal);
- 
-     return d;
+-    dev = USB_DEVICE(qdev_new_orphan("usb-braille"));
++    dev = USB_DEVICE(qdev_new(machine_get_container("peripheral-anon"),
++                              "usbdevice[*]", "usb-braille"));
+     qdev_prop_set_chr(&dev->qdev, "chardev", cdrv);
+     return dev;
  }
 -- 
 2.47.1

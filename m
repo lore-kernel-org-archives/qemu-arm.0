@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E1C9C4450A
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:02:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB8A5C4450A
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:03:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlD6O-0000gj-VT; Sat, 18 Jul 2026 18:01:45 -0400
+	id 1wlD78-0002gn-Rj; Sat, 18 Jul 2026 18:02:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlD6M-0000Yo-EK; Sat, 18 Jul 2026 18:01:42 -0400
+ id 1wlD70-0002di-DX; Sat, 18 Jul 2026 18:02:22 -0400
 Received: from pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com
  ([44.246.77.92])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlD6K-0005HA-H8; Sat, 18 Jul 2026 18:01:42 -0400
+ id 1wlD6y-0005LK-Oa; Sat, 18 Jul 2026 18:02:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1784412100; x=1815948100;
+ t=1784412140; x=1815948140;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=dcl/5z8pjfpIoarlJIEsAr0I+CKYUtttcVSgyF/k1wE=;
- b=o5e/zmWa0B17FnDiseI+jPQi2+qDzOm8A7V+0YHyzHBlKarOtnnP8L5x
- l/73NVtiaxmFWsMMHSo6qs7IGtsUGU/3gWgBY59jEgTEGJNg5VknmMcq4
- K1WbnGFU06xmT/y7fPf6dzJxFNxLQyll7Uz9a5vFbTJ8bhrmCA84QuerN
- tuQ0h5B2Y6zpEQu2OBEntByBl/0OyJ/DIemDcekdSj62gQEJJLqJE4R/H
- XtoPSjQRNaqr3A7/VkdLAOyB7n+2UPKTrGnxvoBdlqjpZj0dKypKl8sx4
- mdabQiH+olNLMTp44xusub2Q70hGAIw5cn3faJ0Pb25t/rUOijAwXQ/Hy w==;
-X-CSE-ConnectionGUID: Ch2CSGaHSGa1a8G7BAu3AQ==
-X-CSE-MsgGUID: yFxN0b0gRzWE5J5FuxgqPA==
-X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23917695"
-Received: from ip-10-5-9-48.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.9.48])
+ bh=Dn3otMTNYt42pCrVX9LAFPRVYwV4S524ppbCyB1xSIw=;
+ b=BqCi+UMl34lcO3DIOsLYYm0vovBnXR8vNHCSAm6P9rlSJUsipKh+l5xi
+ +UeMq8s0wu1x94sLIw+JdBjrPwmpPeupBAm7xOHMD3MVzla2JuZ5bdvfn
+ 6KdrV3YZb7HKk6nZ8RQBqa0aERnwPFH05eIdmkNCIVwKmfCZ7AqoUija5
+ J6YduYNNdJVX4gl4gs2TFxVJ4vb+m/0GgXIF6WPrOHDhgdVefZPjjwPRX
+ hO9ySxgbt87MvPYZnHuWHOr9llqN+yepziilz54yOKDN0NH19LBtiOEEq
+ DIZW8LnDnyAxt3WzBs033dFHynRqPPlsAA8NahfZdXRKtLet57uOEr3oh Q==;
+X-CSE-ConnectionGUID: CgFqv+b9SR61IJwDiwrTFA==
+X-CSE-MsgGUID: EOh2bZtGSMueFQ8gggRFqQ==
+X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23917749"
+Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
  by internal-pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:01:36 +0000
-Received: from EX19MTAUWB001.ant.amazon.com [205.251.233.104:30969]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.40.177:2525]
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:02:17 +0000
+Received: from EX19MTAUWA001.ant.amazon.com [205.251.233.182:19126]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.58.199:2525]
  with esmtp (Farcaster)
- id 9e308200-d96d-4ec3-802a-8272e00dbf4a; Sat, 18 Jul 2026 22:01:36 +0000 (UTC)
-X-Farcaster-Flow-ID: 9e308200-d96d-4ec3-802a-8272e00dbf4a
+ id aab7997c-e6ee-4723-94f1-2c842ee15e89; Sat, 18 Jul 2026 22:02:16 +0000 (UTC)
+X-Farcaster-Flow-ID: aab7997c-e6ee-4723-94f1-2c842ee15e89
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWB001.ant.amazon.com (10.250.64.248) with Microsoft SMTP Server
+ EX19MTAUWA001.ant.amazon.com (10.250.64.218) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:01:36 +0000
+ Sat, 18 Jul 2026 22:02:16 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:01:26 +0000
+ Sat, 18 Jul 2026 22:02:06 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -93,18 +93,19 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>, "Subbaraya
  Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth <th.huth+qemu@posteo.eu>, "Ran
  Wang" <wangran@bosc.ac.cn>, Hao Wu <wuhaotsh@google.com>
-Subject: [RFC PATCH v2 088/137] sysbus: Remove *_orphan() creator variants
-Date: Sat, 18 Jul 2026 21:36:03 +0000
-Message-ID: <20260718213652.37673-89-graf@amazon.com>
+Subject: [RFC PATCH v2 090/137] memory: Accept non-device owners in
+ memory_region_init_ram()
+Date: Sat, 18 Jul 2026 21:36:05 +0000
+Message-ID: <20260718213652.37673-91-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260718213652.37673-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
  <20260718213652.37673-1-graf@amazon.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D037UWB004.ant.amazon.com (10.13.138.84) To
+X-ClientProxiedBy: EX19D044UWA002.ant.amazon.com (10.13.139.11) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
 Received-SPF: pass client-ip=44.246.77.92;
  envelope-from=prvs=65292d44c=graf@amazon.de;
@@ -132,78 +133,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-All boards create sysbus devices with an explicit parent now.
-Drop sysbus_create_simple_orphan() and
-sysbus_create_varargs_orphan().
+memory_region_register_ram() casts the owner to DeviceState with an
+asserting DEVICE() check. Historically this was fine because every
+caller either passed a device or NULL, but the following patches
+give board-created RAM regions their machine as owner, which is not
+a device.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+vmstate_register_ram() only uses the device to prefix the RAMBlock
+idstr with the device's canonical path. Use object_dynamic_cast()
+so non-device owners degrade to the same NULL-owner idstr they had
+before, and drop the stale TODO comment.
+
+No functional change for existing callers.
+
 AI-used-for: code (refactoring)
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/core/sysbus.c         | 29 -----------------------------
- include/hw/core/sysbus.h | 11 -----------
- 2 files changed, 40 deletions(-)
+ system/memory.c | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
 
-diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
-index 85f56b68fb..1c67ea3580 100644
---- a/hw/core/sysbus.c
-+++ b/hw/core/sysbus.c
-@@ -250,35 +250,6 @@ DeviceState *sysbus_create_varargs(Object *parent, const char *id,
-     return dev;
- }
+diff --git a/system/memory.c b/system/memory.c
+index 5fc36708ec..838be57b4d 100644
+--- a/system/memory.c
++++ b/system/memory.c
+@@ -3631,15 +3631,16 @@ void mtree_info(bool flatview, bool dispatch_tree, bool owner, bool disabled)
  
--DeviceState *sysbus_create_varargs_orphan(const char *name,
--                                   hwaddr addr, ...)
--{
--    DeviceState *dev;
--    SysBusDevice *s;
--    va_list va;
--    qemu_irq irq;
--    int n;
--
--    dev = qdev_new_orphan(name);
--    s = SYS_BUS_DEVICE(dev);
--    sysbus_realize_and_unref(s, &error_fatal);
--    if (addr != (hwaddr)-1) {
--        sysbus_mmio_map(s, 0, addr);
--    }
--    va_start(va, addr);
--    n = 0;
--    while (1) {
--        irq = va_arg(va, qemu_irq);
--        if (!irq) {
--            break;
--        }
--        sysbus_connect_irq(s, n, irq);
--        n++;
--    }
--    va_end(va);
--    return dev;
--}
--
- bool sysbus_realize(SysBusDevice *dev, Error **errp)
+ static void memory_region_register_ram(MemoryRegion *mr, Object *owner)
  {
-     return qdev_realize(DEVICE(dev), sysbus_get_default(), errp);
-diff --git a/include/hw/core/sysbus.h b/include/hw/core/sysbus.h
-index 1e07b1978d..ef3d39f576 100644
---- a/include/hw/core/sysbus.h
-+++ b/include/hw/core/sysbus.h
-@@ -119,15 +119,4 @@ static inline DeviceState *sysbus_create_simple(Object *parent,
-     return sysbus_create_varargs(parent, id, type, addr, irq, NULL);
+-    DeviceState *owner_dev;
+-
+-    /* This will assert if owner is neither NULL nor a DeviceState.
+-     * We only want the owner here for the purposes of defining a
+-     * unique name for migration. TODO: Ideally we should implement
+-     * a naming scheme for Objects which are not DeviceStates, in
+-     * which case we can relax this restriction.
++    /*
++     * vmstate_register_ram() prefixes the RAMBlock idstr with the
++     * bus-class dev-path of @owner (via qdev_get_dev_path()), not
++     * the QOM canonical path, when it is a DeviceState.  Board-
++     * created RAM regions are owned by the machine, which is not a
++     * device; pass NULL there so the idstr is the bare region name,
++     * matching historical behaviour for owner==NULL callers.
+      */
+-    owner_dev = DEVICE(owner);
++    DeviceState *owner_dev =
++        (DeviceState *)object_dynamic_cast(owner, TYPE_DEVICE);
+     vmstate_register_ram(mr, owner_dev);
  }
  
--/* Legacy helper function for creating unparented devices.  */
--DeviceState *sysbus_create_varargs_orphan(const char *name,
--                                 hwaddr addr, ...);
--
--static inline DeviceState *sysbus_create_simple_orphan(const char *name,
--                                              hwaddr addr,
--                                              qemu_irq irq)
--{
--    return sysbus_create_varargs_orphan(name, addr, irq, NULL);
--}
--
- #endif /* HW_SYSBUS_H */
 -- 
 2.47.1
 

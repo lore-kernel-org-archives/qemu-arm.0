@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4EF4C4450A
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:07:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F5EC4450A
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:07:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlDBm-0005N7-V3; Sat, 18 Jul 2026 18:07:19 -0400
+	id 1wlDCH-0006VY-DZ; Sat, 18 Jul 2026 18:07:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlDBa-0004y2-Ek; Sat, 18 Jul 2026 18:07:06 -0400
-Received: from pdx-out-015.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([50.112.246.219])
+ id 1wlDCC-0006PV-Vx; Sat, 18 Jul 2026 18:07:45 -0400
+Received: from pdx-out-012.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([35.162.73.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlDBY-0006He-GX; Sat, 18 Jul 2026 18:07:06 -0400
+ id 1wlDCB-0006L3-1S; Sat, 18 Jul 2026 18:07:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1784412424; x=1815948424;
+ t=1784412463; x=1815948463;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=Bf2p0UMpWSGplqSzcxf51p2ckh1yy0+rCZ/xLdiJQho=;
- b=tZTZ+vy66yqZxEkHq5g0DW81Jn2sEKTzcu5ZUIjx1Yn1N1fXntzrJkH3
- DGejF0cd2Y1M5qy/Rwg0gxCiJLK3Iokzy+pDaIEF57YxG2VmPu+3ccX6i
- oN/9nJFmNV8JARoBEbAyIJ4SCEs5jXYaJHN+XSc2mkrzznQLKCxIj2REK
- dBeYtieUY9nnZuiE08zxOuBc6Hfa34X/svsQW04Ir5kF2mALqfq1f3/32
- 5Pe1b+Ct+S5Dmv2AW02tb0NZgFjceCluIxyXYFTBCa/dI3cGCljpHZW0y
- mr1KsDr234sNo0nPW8G7BkVU70tytZ1PsdRGmOt4sPjsIXaNJXCaOJfwe w==;
-X-CSE-ConnectionGUID: 9v2wO3KOQXamLkHy88kWMA==
-X-CSE-MsgGUID: x3d2y7ZISLueLRjDa8hQHg==
-X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23725699"
-Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
- by internal-pdx-out-015.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:06:48 +0000
-Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.48:24486]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.48.250:2525]
+ bh=oOcpxY9uuHLwNP84nyMpDB+plpJZzHNJBk6PAKAsl+w=;
+ b=mCFKoPWmXWzukKmhqeIY74sDgn+5wuFa56y5jwJbI5y5NErB2ChUWopy
+ APDirtI69ApiDvbU9qorB4gSOpaueRMJpMrogb59JfWeagKDp1H+0zgPy
+ /3CBteljC3XEkcF5+RerQjF4tD5/wNVKrfEAvROiYIeOV3bkYw/H6FCS7
+ fY70vTMypMU7QjO3k2QrYNU51g5cucvRO0gvT8tUSpgr7JzlqAXTwcx3s
+ /j8QVUT+tkoUiEvCZeWr5HQDRoVgWHjMK5pUc2ypcjuN7A88h52qlazCA
+ /rtoX1O8l/DsQPtEkxo9OMfnreMYcWlOt2oeb8asJdICjy5ZJqlun/RP1 w==;
+X-CSE-ConnectionGUID: WVnxyI9ITX6rJv6JAkODKA==
+X-CSE-MsgGUID: 29CmgQC5Qv6CdbPfzLqZFA==
+X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23716616"
+Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
+ by internal-pdx-out-012.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:07:38 +0000
+Received: from EX19MTAUWC002.ant.amazon.com [205.251.233.51:1129]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.11.151:2525]
  with esmtp (Farcaster)
- id c9f51611-2e7a-4f79-be1b-3b34475a82d4; Sat, 18 Jul 2026 22:06:48 +0000 (UTC)
-X-Farcaster-Flow-ID: c9f51611-2e7a-4f79-be1b-3b34475a82d4
+ id d03d448b-dc04-4473-a688-b37d328c93c7; Sat, 18 Jul 2026 22:07:38 +0000 (UTC)
+X-Farcaster-Flow-ID: d03d448b-dc04-4473-a688-b37d328c93c7
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
+ EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:06:47 +0000
+ Sat, 18 Jul 2026 22:07:38 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:06:38 +0000
+ Sat, 18 Jul 2026 22:07:28 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -93,10 +93,10 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>, "Subbaraya
  Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth <th.huth+qemu@posteo.eu>, "Ran
  Wang" <wangran@bosc.ac.cn>, Hao Wu <wuhaotsh@google.com>
-Subject: [RFC PATCH v2 107/137] hw/ide: Let ide_init_ioport() take an explicit
- owner
-Date: Sat, 18 Jul 2026 21:36:22 +0000
-Message-ID: <20260718213652.37673-108-graf@amazon.com>
+Subject: [RFC PATCH v2 110/137] irq: Reintroduce qemu_allocate_irq*() with a
+ mandatory owner and name
+Date: Sat, 18 Jul 2026 21:36:25 +0000
+Message-ID: <20260718213652.37673-111-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260718213652.37673-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -105,11 +105,11 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D036UWB002.ant.amazon.com (10.13.139.139) To
+X-ClientProxiedBy: EX19D040UWA004.ant.amazon.com (10.13.139.93) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=50.112.246.219;
+Received-SPF: pass client-ip=35.162.73.231;
  envelope-from=prvs=65292d44c=graf@amazon.de;
- helo=pdx-out-015.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-012.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
@@ -133,122 +133,137 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-hw/ide/piix.c calls ide_init_ioport() with a NULL ISADevice because
-the PIIX IDE function is a PCI device, not an ISA one.  That NULL
-propagates to isa_register_portio_list() and from there to
-portio_list_init() as owner==NULL, which the following commit turns
-into a hard error.
+Add parented variants of the IRQ allocation helpers under the
+well-known names, taking (Object *owner, const char *name, ...) as
+their first two arguments:
 
-Change ide_init_ioport() to take an Object *owner directly.  When the
-owner is an ISADevice, keep the existing isa_register_portio_list()
-path so isa_init_ioport() still records the base I/O port for firmware
-paths.  When it is not (the PIIX case), register the port lists with
-the given owner directly.
+  qemu_allocate_irq(owner, name, handler, opaque, n)
+  qemu_allocate_irqs(owner, name, handler, opaque, n)
+  qemu_extend_irqs(owner, name, old, n_old, handler, opaque, n)
+  qemu_irq_invert(owner, name, irq)
+
+The new IRQ object is created via object_new_child() so it lands
+under @owner with a stable path.  The array/extend variants suffix
+"[*]" so callers pass a bare name and get name[0], name[1], ...
+
+qemu_free_irq() is taught to unparent when the IRQ has a QOM parent,
+so it works for both the *_orphan() and the parented allocation
+paths during the transition.
+
+The *_orphan() variants stay for now; later commits convert every
+caller and delete them, at which point the /machine/unattached
+fallback in qdev_connect_gpio_out_named() also goes away.
 
 AI-used-for: code (refactoring)
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/ide/ide-internal.h |  2 +-
- hw/ide/ioport.c       | 37 ++++++++++++++++++++++++++-----------
- hw/ide/isa.c          |  2 +-
- hw/ide/piix.c         |  2 +-
- 4 files changed, 29 insertions(+), 14 deletions(-)
+ hw/core/irq.c         | 45 ++++++++++++++++++++++++++++++++++++++++++-
+ include/hw/core/irq.h | 15 +++++++++++++++
+ 2 files changed, 59 insertions(+), 1 deletion(-)
 
-diff --git a/hw/ide/ide-internal.h b/hw/ide/ide-internal.h
-index 281d07c9d5..3f48335cdf 100644
---- a/hw/ide/ide-internal.h
-+++ b/hw/ide/ide-internal.h
-@@ -419,7 +419,7 @@ uint32_t ide_data_readl(void *opaque, uint32_t addr);
- int ide_init_drive(IDEState *s, IDEDevice *dev, IDEDriveKind kind, Error **errp);
- void ide_exit(IDEState *s);
- void ide_bus_init_output_irq(IDEBus *bus, qemu_irq irq_out);
--int ide_init_ioport(IDEBus *bus, ISADevice *isa, int iobase, int iobase2);
-+int ide_init_ioport(IDEBus *bus, Object *owner, int iobase, int iobase2);
- void ide_bus_set_irq(IDEBus *bus);
- void ide_bus_register_restart_cb(IDEBus *bus);
- 
-diff --git a/hw/ide/ioport.c b/hw/ide/ioport.c
-index a2f457f0bd..afafe6844c 100644
---- a/hw/ide/ioport.c
-+++ b/hw/ide/ioport.c
-@@ -1,5 +1,5 @@
- /*
-- * QEMU IDE disk and CD/DVD-ROM Emulator
-+ * QEMU IDE Emulation: PIO ioport registration.
-  *
-  * Copyright (c) 2003 Fabrice Bellard
-  * Copyright (c) 2006 Openedhand Ltd.
-@@ -28,19 +28,34 @@
- #include "ide-internal.h"
- #include "trace.h"
- 
--int ide_init_ioport(IDEBus *bus, ISADevice *dev, int iobase, int iobase2)
-+int ide_init_ioport(IDEBus *bus, Object *owner, int iobase, int iobase2)
- {
-+    ISADevice *isa = ISA_DEVICE(object_dynamic_cast(owner, TYPE_ISA_DEVICE));
-     int ret;
- 
--    /* ??? Assume only ISA and PCI configurations, and that the PCI-ISA
--       bridge has been setup properly to always register with ISA.  */
--    ret = isa_register_portio_list(dev, &bus->portio_list,
--                                   iobase, ide_portio_list, bus, "ide");
--
--    if (ret == 0 && iobase2) {
--        ret = isa_register_portio_list(dev, &bus->portio2_list,
--                                       iobase2, ide_portio2_list, bus, "ide");
-+    if (isa) {
-+        ret = isa_register_portio_list(isa, &bus->portio_list,
-+                                       iobase, ide_portio_list, bus, "ide");
-+        if (ret == 0 && iobase2) {
-+            ret = isa_register_portio_list(isa, &bus->portio2_list,
-+                                           iobase2, ide_portio2_list, bus,
-+                                           "ide");
-+        }
-+        return ret;
-     }
- 
--    return ret;
-+    /* PIIX3/4: no ISADevice, but ISA I/O space is set up by the PCI-ISA */
-+    /* bridge; register the port lists directly with the given owner.   */
-+    if (!isa_address_space_io(NULL)) {
-+        return -ENODEV;
-+    }
-+    portio_list_init(&bus->portio_list, owner, ide_portio_list, bus, "ide");
-+    portio_list_add(&bus->portio_list, isa_address_space_io(NULL), iobase);
-+    if (iobase2) {
-+        portio_list_init(&bus->portio2_list, owner,
-+                         ide_portio2_list, bus, "ide");
-+        portio_list_add(&bus->portio2_list,
-+                        isa_address_space_io(NULL), iobase2);
-+    }
-+    return 0;
+diff --git a/hw/core/irq.c b/hw/core/irq.c
+index f8fdeb7e02..1ae53a74d3 100644
+--- a/hw/core/irq.c
++++ b/hw/core/irq.c
+@@ -96,6 +96,38 @@ qemu_irq qemu_allocate_irq_orphan(qemu_irq_handler handler, void *opaque, int n)
+     return irq;
  }
-diff --git a/hw/ide/isa.c b/hw/ide/isa.c
-index 37457be035..7949625e00 100644
---- a/hw/ide/isa.c
-+++ b/hw/ide/isa.c
-@@ -71,7 +71,7 @@ static void isa_ide_realizefn(DeviceState *dev, Error **errp)
-     ISAIDEState *s = ISA_IDE(dev);
  
-     ide_bus_init(&s->bus, sizeof(s->bus), dev, 0, 2);
--    ide_init_ioport(&s->bus, isadev, s->iobase, s->iobase2);
-+    ide_init_ioport(&s->bus, OBJECT(isadev), s->iobase, s->iobase2);
-     ide_bus_init_output_irq(&s->bus, isa_get_irq(isadev, s->irqnum));
-     vmstate_register_any(VMSTATE_IF(dev), &vmstate_ide_isa, s);
-     ide_bus_register_restart_cb(&s->bus);
-diff --git a/hw/ide/piix.c b/hw/ide/piix.c
-index a0f2709c69..5c5b91fa52 100644
---- a/hw/ide/piix.c
-+++ b/hw/ide/piix.c
-@@ -134,7 +134,7 @@ static bool pci_piix_init_bus(PCIIDEState *d, unsigned i, Error **errp)
-     int ret;
++qemu_irq qemu_allocate_irq(Object *owner, const char *name,
++                           qemu_irq_handler handler, void *opaque, int n)
++{
++    IRQState *irq = IRQ(object_new_child(owner, name, TYPE_IRQ));
++    init_irq_fields(irq, handler, opaque, n);
++    return irq;
++}
++
++qemu_irq *qemu_extend_irqs(Object *owner, const char *name,
++                           qemu_irq *old, int n_old,
++                           qemu_irq_handler handler, void *opaque, int n)
++{
++    qemu_irq *s;
++    int i;
++
++    if (!old) {
++        n_old = 0;
++    }
++    s = old ? g_renew(qemu_irq, old, n + n_old) : g_new(qemu_irq, n);
++    for (i = n_old; i < n + n_old; i++) {
++        g_autofree char *propname = g_strdup_printf("%s[%d]", name, i);
++        s[i] = qemu_allocate_irq(owner, propname, handler, opaque, i);
++    }
++    return s;
++}
++
++qemu_irq *qemu_allocate_irqs(Object *owner, const char *name,
++                             qemu_irq_handler handler, void *opaque, int n)
++{
++    return qemu_extend_irqs(owner, name, NULL, 0, handler, opaque, n);
++}
++
+ void qemu_free_irqs(qemu_irq *s, int n)
+ {
+     int i;
+@@ -107,7 +139,11 @@ void qemu_free_irqs(qemu_irq *s, int n)
  
-     ide_bus_init(&d->bus[i], sizeof(d->bus[i]), DEVICE(d), i, 2);
--    ret = ide_init_ioport(&d->bus[i], NULL, port_info[i].iobase,
-+    ret = ide_init_ioport(&d->bus[i], OBJECT(d), port_info[i].iobase,
-                           port_info[i].iobase2);
-     if (ret) {
-         error_setg_errno(errp, -ret, "Failed to realize %s port %u",
+ void qemu_free_irq(qemu_irq irq)
+ {
+-    object_unref(OBJECT(irq));
++    if (irq && OBJECT(irq)->parent) {
++        object_unparent(OBJECT(irq));
++    } else {
++        object_unref(OBJECT(irq));
++    }
+ }
+ 
+ static void qemu_notirq(void *opaque, int line, int level)
+@@ -124,6 +160,13 @@ qemu_irq qemu_irq_invert_orphan(qemu_irq irq)
+     return qemu_allocate_irq_orphan(qemu_notirq, irq, 0);
+ }
+ 
++qemu_irq qemu_irq_invert(Object *owner, const char *name, qemu_irq irq)
++{
++    /* The default state for IRQs is low, so raise the output now.  */
++    qemu_irq_raise(irq);
++    return qemu_allocate_irq(owner, name, qemu_notirq, irq, 0);
++}
++
+ void qemu_irq_set_observer(qemu_irq *gpio_in, qemu_irq_handler handler, int n)
+ {
+     int i;
+diff --git a/include/hw/core/irq.h b/include/hw/core/irq.h
+index f984c02c14..5ccccd2697 100644
+--- a/include/hw/core/irq.h
++++ b/include/hw/core/irq.h
+@@ -85,6 +85,20 @@ qemu_irq *qemu_allocate_irqs_orphan(qemu_irq_handler handler, void *opaque, int
+  */
+ qemu_irq qemu_allocate_irq_orphan(qemu_irq_handler handler, void *opaque, int n);
+ 
++/*
++ * Same as the *_orphan() variants above, but the new IRQ objects are
++ * parented under @owner with property name @name (or @name[*] for the
++ * array/extend variants).  The reference is held by @owner; call
++ * qemu_free_irq() to unparent and free.
++ */
++qemu_irq qemu_allocate_irq(Object *owner, const char *name,
++                           qemu_irq_handler handler, void *opaque, int n);
++qemu_irq *qemu_allocate_irqs(Object *owner, const char *name,
++                             qemu_irq_handler handler, void *opaque, int n);
++qemu_irq *qemu_extend_irqs(Object *owner, const char *name,
++                           qemu_irq *old, int n_old,
++                           qemu_irq_handler handler, void *opaque, int n);
++
+ /* Extends an Array of IRQs. Old IRQs have their handlers and opaque data
+  * preserved. New IRQs are assigned the argument handler and opaque data.
+  */
+@@ -96,6 +110,7 @@ void qemu_free_irq(qemu_irq irq);
+ 
+ /* Returns a new IRQ with opposite polarity.  */
+ qemu_irq qemu_irq_invert_orphan(qemu_irq irq);
++qemu_irq qemu_irq_invert(Object *owner, const char *name, qemu_irq irq);
+ 
+ /* For internal use in qtest. */
+ void qemu_irq_set_observer(qemu_irq *gpio_in, qemu_irq_handler handler, int n);
 -- 
 2.47.1
 

@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66D49C4450A
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:01:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87FD1C4451B
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:02:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlD5v-00071p-SF; Sat, 18 Jul 2026 18:01:15 -0400
+	id 1wlD6Z-0000zg-6G; Sat, 18 Jul 2026 18:01:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlD5h-0006PT-3t; Sat, 18 Jul 2026 18:01:05 -0400
-Received: from pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.42.203.116])
+ id 1wlD6V-0000ow-5i; Sat, 18 Jul 2026 18:01:51 -0400
+Received: from pdx-out-002.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([44.246.1.125])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlD5f-00059H-9R; Sat, 18 Jul 2026 18:01:00 -0400
+ id 1wlD6T-0005I6-AJ; Sat, 18 Jul 2026 18:01:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1784412059; x=1815948059;
+ t=1784412109; x=1815948109;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=1pkQn3/9x2L+GgRgyaJRqVz1nB5NSwMUxiFMHCcRqjw=;
- b=ehIQX96DZlXzAAT4gHS7ONRLHzkWrY0bkrx+591Wu42sJ0d+Fyt0iGe3
- c9eaBWv56WceLcWPk7zJaGw1/CCnpZy4CGaGik7mOAAYo2J2QRGCxN8aj
- zgaeYnqf58xmx4eTcInJPtnqI9117EKykjpQWXiQUk0o/auUJzaO7vijb
- Z93yMuKO55dRxpK8jMcdXWUsZ099CfTlQsw/TVQv95ORrcBXDBvVJsF5c
- 9Ay/frEMEZ/uAlxbjP0Ohkv8bHghTFqJ4PBw7+ELtCzk6hCZ8N/f5t3kg
- P7fQ4DXnDKXXFTXy/SAx0foeodSg57lTiJr2oSfPxsyiBu1+cIhAzsODN w==;
-X-CSE-ConnectionGUID: SXK0AEsGQciEcg918FNbGA==
-X-CSE-MsgGUID: 6uxgIRAjQ4S7TPehJ52yCQ==
-X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23940288"
-Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
- by internal-pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:00:56 +0000
-Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.48:9848]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.11.151:2525]
+ bh=gFz4tkd1KJwCvb3Rl1/cy5JLi/p+MBu/0U/TuIwPjWU=;
+ b=VCyxGr58HPbC1meUb8qTi/7RsgBEo7q2ReS8V185BwI5022HY91aQtUb
+ 0KGZYHMN3GQ6o2OpmSctGegE2zH61CQKW34+knAvhMMRgkLyZ9ZQQN3zG
+ xKiweb7K9kbe/t21OYrA75BF0Bw/qB0ukHvBet9KaSykZwt9fsDvwiVyo
+ xgYEqUAVVOS5DeQJZ41NHWYHD/zmqsv4iD+oiPWHUEamzL3NkrL449OXR
+ V0BChAmy/ujzr48M2iAH4h5t+TpOR2fTo3oEaRg4n5OzkDBxdH1coVyRi
+ vdPK23GwvEhGC5znGUDxCEbT/eKNoDvnoBQ3ScE+cXQUyaBKrt/QKh4tI A==;
+X-CSE-ConnectionGUID: kJNB4abfQdeXrvuWzpFnLg==
+X-CSE-MsgGUID: teDMr8DeQ6Sn4eG5OZdexA==
+X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23927606"
+Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
+ by internal-pdx-out-002.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:01:45 +0000
+Received: from EX19MTAUWC002.ant.amazon.com [205.251.233.51:9718]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.19.34:2525]
  with esmtp (Farcaster)
- id ec2b0a44-07e9-4f8c-b20b-7e10147a0876; Sat, 18 Jul 2026 22:00:56 +0000 (UTC)
-X-Farcaster-Flow-ID: ec2b0a44-07e9-4f8c-b20b-7e10147a0876
+ id abec0ef8-c6ad-457f-a6bc-46fc6b9d85df; Sat, 18 Jul 2026 22:01:45 +0000 (UTC)
+X-Farcaster-Flow-ID: abec0ef8-c6ad-457f-a6bc-46fc6b9d85df
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
+ EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:00:55 +0000
+ Sat, 18 Jul 2026 22:01:45 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:00:46 +0000
+ Sat, 18 Jul 2026 22:01:36 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -93,22 +93,23 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>, "Subbaraya
  Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth <th.huth+qemu@posteo.eu>, "Ran
  Wang" <wangran@bosc.ac.cn>, Hao Wu <wuhaotsh@google.com>
-Subject: [RFC PATCH v2 086/137] pci: Remove *_orphan() creator variants
-Date: Sat, 18 Jul 2026 21:36:01 +0000
-Message-ID: <20260718213652.37673-87-graf@amazon.com>
+Subject: [RFC PATCH v2 089/137] qdev: Remove qdev_new_orphan() and
+ qdev_try_new_orphan()
+Date: Sat, 18 Jul 2026 21:36:04 +0000
+Message-ID: <20260718213652.37673-90-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260718213652.37673-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
  <20260718213652.37673-1-graf@amazon.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D036UWC003.ant.amazon.com (10.13.139.214) To
+X-ClientProxiedBy: EX19D037UWB004.ant.amazon.com (10.13.138.84) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.42.203.116;
+Received-SPF: pass client-ip=44.246.1.125;
  envelope-from=prvs=65292d44c=graf@amazon.de;
- helo=pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-002.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
@@ -132,95 +133,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-All boards create their PCI devices with an explicit QOM parent
-now.  Drop pci_new_orphan(), pci_new_multifunction_orphan(),
-pci_create_simple_orphan(), pci_create_simple_multifunction_orphan()
-and the internal pci_new_internal() they wrapped.
+Every bus-layer *_orphan() wrapper is gone and the last direct
+caller, qdev_device_add_from_qdict(), now uses object_new() plus
+qdev_set_id() to place -device instances under
+/machine/peripheral{,-anon} as before.  There is no remaining
+legitimate way to create a device without picking its parent, so
+drop the transitional *_orphan() spellings and update the doc
+comments that still referenced them.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 AI-used-for: code (refactoring)
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/pci/pci.c         | 35 -----------------------------------
- include/hw/pci/pci.h |  5 -----
- 2 files changed, 40 deletions(-)
+ hw/core/qdev.c         | 13 -------------
+ include/hw/core/qdev.h | 30 +++---------------------------
+ system/qdev-monitor.c  |  2 +-
+ 3 files changed, 4 insertions(+), 41 deletions(-)
 
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index ca5882ba59..5ef9dfa8b7 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -2388,16 +2388,6 @@ static void pci_qdev_realize(DeviceState *qdev, Error **errp)
-     pci_dev->msi_trigger = pci_msi_trigger;
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index 947ba7db80..89bc1e30c0 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -165,19 +165,6 @@ DeviceState *qdev_try_new(Object *parent, const char *id, const char *type)
+     return DEVICE(obj);
  }
  
--static PCIDevice *pci_new_internal(int devfn, bool multifunction,
--                                   const char *name)
+-DeviceState *qdev_new_orphan(const char *name)
 -{
--    DeviceState *dev;
--
--    dev = qdev_new_orphan(name);
--    qdev_prop_set_int32(dev, "addr", devfn);
--    qdev_prop_set_bit(dev, "multifunction", multifunction);
--    return PCI_DEVICE(dev);
--}
- 
- static PCIDevice *pci_new_child_internal(Object *parent, const char *id,
-                                           int devfn, bool multifunction,
-@@ -2440,36 +2430,11 @@ PCIDevice *pci_create_simple(Object *parent, const char *id,
-     return dev;
- }
- 
--PCIDevice *pci_new_multifunction_orphan(int devfn, const char *name)
--{
--    return pci_new_internal(devfn, true, name);
+-    return DEVICE(object_new(name));
 -}
 -
--PCIDevice *pci_new_orphan(int devfn, const char *name)
+-DeviceState *qdev_try_new_orphan(const char *name)
 -{
--    return pci_new_internal(devfn, false, name);
+-    ObjectClass *oc = module_object_class_by_name(name);
+-    if (!oc) {
+-        return NULL;
+-    }
+-    return DEVICE(object_new_with_class(oc));
 -}
+ 
+ static QTAILQ_HEAD(, DeviceListener) device_listeners
+     = QTAILQ_HEAD_INITIALIZER(device_listeners);
+diff --git a/include/hw/core/qdev.h b/include/hw/core/qdev.h
+index e692a1d48e..9220e9e3b1 100644
+--- a/include/hw/core/qdev.h
++++ b/include/hw/core/qdev.h
+@@ -440,30 +440,6 @@ DeviceState *qdev_new(Object *parent, const char *id, const char *type);
+  */
+ DeviceState *qdev_try_new(Object *parent, const char *id, const char *type);
+ 
+-/**
+- * qdev_new_orphan: Create a device on the heap
+- * @name: device type to create (we assert() that this type exists)
+- *
+- * This only allocates the memory and initializes the device state
+- * structure, ready for the caller to set properties if they wish.
+- * The device still needs to be realized.
+- *
+- * Return: a derived DeviceState object with a reference count of 1.
+- */
+-DeviceState *qdev_new_orphan(const char *name);
 -
- bool pci_realize_and_unref(PCIDevice *dev, PCIBus *bus, Error **errp)
- {
-     return qdev_realize_and_unref(&dev->qdev, &bus->qbus, errp);
- }
- 
--PCIDevice *pci_create_simple_multifunction_orphan(PCIBus *bus, int devfn,
--                                           const char *name)
--{
--    PCIDevice *dev = pci_new_multifunction_orphan(devfn, name);
--    pci_realize_and_unref(dev, bus, &error_fatal);
--    return dev;
--}
+-/**
+- * qdev_try_new_orphan: Try to create a device on the heap
+- * @name: device type to create
+- *
+- * This is like qdev_new_orphan(), except it returns %NULL when type @name
+- * does not exist, rather than asserting.
+- *
+- * Return: a derived DeviceState object with a reference count of 1 or
+- * NULL if type @name does not exist.
+- */
+-DeviceState *qdev_try_new_orphan(const char *name);
 -
--PCIDevice *pci_create_simple_orphan(PCIBus *bus, int devfn, const char *name)
--{
--    PCIDevice *dev = pci_new_orphan(devfn, name);
--    pci_realize_and_unref(dev, bus, &error_fatal);
--    return dev;
--}
--
- static uint8_t pci_find_space(PCIDevice *pdev, uint8_t size)
- {
-     int offset = PCI_CONFIG_HEADER_SIZE;
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index 9c6bcc0b96..d6191fc529 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -1098,13 +1098,8 @@ PCIDevice *pci_create_simple_multifunction(Object *parent, const char *id,
- PCIDevice *pci_create_simple(Object *parent, const char *id,
-                              PCIBus *bus, int devfn, const char *type);
+ /**
+  * qdev_is_realized() - check if device is realized
+  * @dev: The device to check.
+@@ -488,8 +464,8 @@ static inline bool qdev_is_realized(DeviceState *dev)
+  * If @bus, plug @dev into @bus.  This takes a reference to @dev.
+  * If @dev has no QOM parent, make one up, taking another reference.
+  *
+- * If you created @dev using qdev_new_orphan(), you probably want to use
+- * qdev_realize_and_unref() instead.
++ * If you created @dev via object_new() directly (holding a floating
++ * reference), you probably want to use qdev_realize_and_unref() instead.
+  *
+  * Return: true on success, else false setting @errp with error
+  */
+@@ -506,7 +482,7 @@ bool qdev_realize(DeviceState *dev, BusState *bus, Error **errp);
+  * (private) reference, which is dropped on return regardless of
+  * success or failure.  Intended use::
+  *
+- *     dev = qdev_new_orphan();
++ *     dev = DEVICE(object_new(TYPE_FOO));
+  *     [...]
+  *     qdev_realize_and_unref(dev, bus, errp);
+  *
+diff --git a/system/qdev-monitor.c b/system/qdev-monitor.c
+index adc37d6a89..0e13b1540c 100644
+--- a/system/qdev-monitor.c
++++ b/system/qdev-monitor.c
+@@ -707,7 +707,7 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
+     }
  
--PCIDevice *pci_new_multifunction_orphan(int devfn, const char *name);
--PCIDevice *pci_new_orphan(int devfn, const char *name);
- bool pci_realize_and_unref(PCIDevice *dev, PCIBus *bus, Error **errp);
+     /* create device */
+-    dev = qdev_new_orphan(driver);
++    dev = DEVICE(object_new(driver));
  
--PCIDevice *pci_create_simple_multifunction_orphan(PCIBus *bus, int devfn,
--                                           const char *name);
--PCIDevice *pci_create_simple_orphan(PCIBus *bus, int devfn, const char *name);
- 
- void lsi53c8xx_handle_legacy_cmdline(DeviceState *lsi_dev);
- 
+     /* Check whether the hotplug is allowed by the machine */
+     if (phase_check(PHASE_MACHINE_READY) &&
 -- 
 2.47.1
 

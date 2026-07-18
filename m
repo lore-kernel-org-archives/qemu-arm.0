@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B33EBC44521
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 21:51:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA1C9C4451B
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 21:51:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlCvc-00015s-7G; Sat, 18 Jul 2026 17:50:36 -0400
+	id 1wlCwl-0003D3-4a; Sat, 18 Jul 2026 17:51:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlCv8-00008C-LG; Sat, 18 Jul 2026 17:50:13 -0400
-Received: from pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.34.181.151])
+ id 1wlCwe-0002bM-08; Sat, 18 Jul 2026 17:51:40 -0400
+Received: from pdx-out-009.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([35.155.198.111])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlCv3-0003XB-LT; Sat, 18 Jul 2026 17:50:04 -0400
+ id 1wlCwY-0003vT-Kj; Sat, 18 Jul 2026 17:51:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1784411401; x=1815947401;
+ t=1784411494; x=1815947494;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=2QjLH+anvZr4y1azA3Iao1EtATgkMOebEYOkqL/C7HY=;
- b=GnXgVdgVO3hNjU9GwB4BUyCXjMY5MC2q4WQs+B9aTGqdY4MzLmtMDV6C
- AWMJVZABhu0bLEGYFdYSPPnZXfJaOHOlAR5WzAa/BUpvQYYcjUXIRneGQ
- 1S0g1Is59+jra78KCC5ZuH6WqSYMU9bW0p9vUkld/WsRBwJ01DoQaH9ff
- jtzKOGgntEDG4DAFQ4M6T9Qb6CGRk3jYf1nRT3IaxCYK7ww5TcDp5mRAG
- z9XkYPeUQNsrpHHlxTyItq/+Z724cXDCxjTG5YuACvsSL3XxDrMcpIhB0
- zcsaKGoeYK5Vlg/nay4vE8OfG3fe3aOcNf+WCFRcQPOxYm4oT8rkGqosD w==;
-X-CSE-ConnectionGUID: PGjvs0ZVRYSYXkfcuacseg==
-X-CSE-MsgGUID: hkp1ictDQ/OR92cdNSnqkQ==
-X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23910489"
-Received: from ip-10-5-9-48.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.9.48])
- by internal-pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 21:49:58 +0000
-Received: from EX19MTAUWB001.ant.amazon.com [205.251.233.104:14791]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.35.17:2525]
+ bh=gQXzab3WxKtQdbHEOACFtXwWmwNHyOBMCFK2xrKvKRc=;
+ b=rOwX8u/Trpk7yYL+tUn7FEx4acniikhUvZ2YjkZN99NYN5jLK6wEcHEg
+ 8MkbzEJaKIfjKHhYQotf9htIcdfxFzPG9gfsDXvXaEUJ7JH2PooOrCijC
+ z0pKF0n5OgoF2PDaRtyFlH4acZB76/DOQQsJaiSr9exUIMOHhpFawK3nl
+ 6kb3gYLGA6DIgt1yHIu8MLCJX9gN/EFaaOBRZ5bHzXzVBzkb0YeIgxc2a
+ emYO+80U1a84VqIRNANSX4I9qnYcZOFU+mgMBZeoSUaiu28SDcg9ehaMN
+ kqXx8Ip7A14IZbJqXFNPq86F8I8ugx4PQXQD18QBMxUMyXUPGAgB9+Q4U g==;
+X-CSE-ConnectionGUID: 9laVQ4BmReypGzUL8gVHEw==
+X-CSE-MsgGUID: QWR+6E3WSwWiy/t7IrBHDQ==
+X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23816621"
+Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
+ by internal-pdx-out-009.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 21:51:30 +0000
+Received: from EX19MTAUWB001.ant.amazon.com [205.251.233.51:28085]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.0.115:2525]
  with esmtp (Farcaster)
- id 09e41968-ba38-4bda-bcac-a74b3aa10c57; Sat, 18 Jul 2026 21:49:57 +0000 (UTC)
-X-Farcaster-Flow-ID: 09e41968-ba38-4bda-bcac-a74b3aa10c57
+ id 9d786f6a-0d80-44db-b948-2a06f9686ab0; Sat, 18 Jul 2026 21:51:30 +0000 (UTC)
+X-Farcaster-Flow-ID: 9d786f6a-0d80-44db-b948-2a06f9686ab0
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
  EX19MTAUWB001.ant.amazon.com (10.250.64.248) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 21:49:57 +0000
+ Sat, 18 Jul 2026 21:51:30 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 21:49:48 +0000
+ Sat, 18 Jul 2026 21:51:20 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -93,9 +93,9 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>, "Subbaraya
  Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth <th.huth+qemu@posteo.eu>, "Ran
  Wang" <wangran@bosc.ac.cn>, Hao Wu <wuhaotsh@google.com>
-Subject: [RFC PATCH v2 047/137] hw/i2c: Give onboard devices a QOM parent
-Date: Sat, 18 Jul 2026 21:35:22 +0000
-Message-ID: <20260718213652.37673-48-graf@amazon.com>
+Subject: [RFC PATCH v2 052/137] hw/riscv: Give onboard devices a QOM parent
+Date: Sat, 18 Jul 2026 21:35:27 +0000
+Message-ID: <20260718213652.37673-53-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260718213652.37673-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -104,18 +104,18 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D040UWA003.ant.amazon.com (10.13.139.6) To
+X-ClientProxiedBy: EX19D031UWC002.ant.amazon.com (10.13.139.212) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.34.181.151;
+Received-SPF: pass client-ip=35.155.198.111;
  envelope-from=prvs=65292d44c=graf@amazon.de;
- helo=pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-009.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
 X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
+ SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
  UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -132,7 +132,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the *_orphan() device-creation calls in hw/i2c to the new
+Convert the *_orphan() device-creation calls in hw/riscv to the new
 parented API introduced earlier in this series, so every onboard
 device gets a stable path in the composition tree instead of landing
 in /machine/unattached with an unstable device[N] name.
@@ -143,319 +143,394 @@ composite children.  Names follow existing QOM conventions.
 
 Per-site rationale (reviewers: dispute the modeling here):
 
-hw/i2c/aspeed_i2c.c:1521 | i2c_slave_create_simple | OBJECT(s) | "slave" | inside AspeedI2CBus DeviceClass.realize(); slave belongs to the bus device
-hw/i2c/core.c:367 | - | ORPHAN-JUSTIFIED | - | i2c_slave_new_orphan() is the orphan-API implementation itself; parented sibling already exists at :376
-hw/i2c/core.c:371 | - | ORPHAN-JUSTIFIED | - | body of i2c_slave_new_orphan(); intentional orphan wrapper
-hw/i2c/core.c:401 | - | ORPHAN-JUSTIFIED | - | i2c_slave_create_simple_orphan() is the orphan-API implementation itself; parented sibling already exists at :386
-hw/i2c/core.c:403 | - | ORPHAN-JUSTIFIED | - | body of i2c_slave_create_simple_orphan(); intentional orphan wrapper
-hw/i2c/smbus_eeprom.c:167 | qdev_new | parent | "eeprom[*]" | helper called from many board inits; thread Object *parent through smbus_eeprom_init_one() and smbus_eeprom_init() and update all 17 callers
+hw/riscv/boston-aia.c:308 | qdev_new | OBJECT(machine) | "pcie" | static helper called from board init; thread Object *parent through
+hw/riscv/boston-aia.c:355 | qdev_new | OBJECT(machine) | "boston" | board MachineClass.init()
+hw/riscv/boston-aia.c:422 | pci_create_simple_multifunction | OBJECT(machine) | "ahci" | board MachineClass.init()
+hw/riscv/microblaze-v-generic.c:82 | qdev_new | OBJECT(machine) | "intc" | board MachineClass.init()
+hw/riscv/microblaze-v-generic.c:95 | qdev_new | OBJECT(machine) | "uartlite" | board MachineClass.init()
+hw/riscv/microblaze-v-generic.c:108 | qdev_new | OBJECT(machine) | "timer[*]" | board MachineClass.init(); two timers
+hw/riscv/microblaze-v-generic.c:117 | qdev_new | OBJECT(machine) | "timer[*]" | board MachineClass.init(); two timers
+hw/riscv/microblaze-v-generic.c:126 | qdev_new | OBJECT(machine) | "ethlite" | board MachineClass.init()
+hw/riscv/microblaze-v-generic.c:136 | qdev_new | OBJECT(machine) | "xilinx-eth" | board init; collapse existing object_property_add_child, keep name
+hw/riscv/microblaze-v-generic.c:137 | qdev_new | OBJECT(machine) | "xilinx-dma" | board init; collapse existing object_property_add_child, keep name
+hw/riscv/microchip_pfsoc.c:584 | qdev_new | OBJECT(machine) | "sd-card" | board MachineClass.init()
+hw/riscv/sifive_u.c:596 | qdev_new | OBJECT(machine) | "flash" | board MachineClass.init()
+hw/riscv/sifive_u.c:609 | ssi_create_peripheral | OBJECT(machine) | "ssi-sd" | board MachineClass.init()
+hw/riscv/sifive_u.c:616 | qdev_new | OBJECT(machine) | "sd-card" | board MachineClass.init()
+hw/riscv/tt_atlantis.c:580 | i2c_slave_create_simple | OBJECT(s) | "rtc" | board init; s is TTAtlantisState (machine)
+hw/riscv/tt_atlantis.c:581 | i2c_slave_create_simple | OBJECT(s) | "tmp105" | board init; s is TTAtlantisState (machine)
+hw/riscv/virt.c:129 | qdev_new | OBJECT(s) | name | helper receives RISCVVirtState *s; collapse existing object_property_add_child, keep name arg
+hw/riscv/virt.c:1054 | qdev_new | OBJECT(s) | "pcie" | helper receives RISCVVirtState *s (machine)
+hw/riscv/virt.c:1147 | qdev_new | OBJECT(s) | "platform-bus" | helper receives RISCVVirtState *s (machine)
+hw/riscv/virt.c:1484 | sysbus_create_simple | OBJECT(machine) | "virtio-mmio[*]" | board MachineClass.init(); loop
+hw/riscv/virt.c:1497 | sysbus_create_simple | OBJECT(machine) | "rtc" | board MachineClass.init()
+hw/riscv/virt.c:1519 | qdev_new | OBJECT(machine) | "iommu" | board MachineClass.init()
 
 Link: https://lore.kernel.org/qemu-devel/87jyr3w9tc.fsf@pond.sub.org/
 AI-used-for: code (refactoring)
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/arm/aspeed_ast1040_evb.c               |  3 ++-
- hw/arm/aspeed_ast10x0_evb.c               |  3 ++-
- hw/arm/aspeed_ast2400_palmetto.c          |  2 +-
- hw/arm/aspeed_ast2400_supermicrox11.c     |  2 +-
- hw/arm/aspeed_ast2500_evb.c               |  2 +-
- hw/arm/aspeed_ast2500_g220a.c             |  2 +-
- hw/arm/aspeed_ast2500_supermicro-x11spi.c |  2 +-
- hw/arm/aspeed_ast2500_witherspoon.c       |  2 +-
- hw/arm/aspeed_ast2600_evb.c               |  2 +-
- hw/i2c/aspeed_i2c.c                       |  4 ++--
- hw/i2c/smbus_eeprom.c                     | 11 ++++++-----
- hw/i386/pc_piix.c                         |  2 +-
- hw/i386/pc_q35.c                          |  2 +-
- hw/mips/fuloong2e.c                       |  2 +-
- hw/mips/malta.c                           |  2 +-
- hw/ppc/amigaone.c                         |  4 ++--
- hw/ppc/pegasos.c                          |  2 +-
- hw/ppc/sam460ex.c                         |  2 +-
- include/hw/i2c/smbus_eeprom.h             |  5 +++--
- 19 files changed, 30 insertions(+), 26 deletions(-)
+ hw/riscv/boston-aia.c           | 17 +++++++++--------
+ hw/riscv/microblaze-v-generic.c | 32 ++++++++++++++------------------
+ hw/riscv/microchip_pfsoc.c      |  5 +++--
+ hw/riscv/sifive_u.c             | 15 ++++++++-------
+ hw/riscv/tt_atlantis.c          |  5 +++--
+ hw/riscv/virt.c                 | 29 ++++++++++++-----------------
+ 6 files changed, 49 insertions(+), 54 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast1040_evb.c b/hw/arm/aspeed_ast1040_evb.c
-index d0326d39f9..fb83087b13 100644
---- a/hw/arm/aspeed_ast1040_evb.c
-+++ b/hw/arm/aspeed_ast1040_evb.c
-@@ -54,7 +54,8 @@ static void ast1040_evb_i2c_init(AspeedMachineState *bmc)
-     AspeedSoCState *soc = bmc->soc;
-     uint8_t *eeprom_buf = g_malloc0(256);
- 
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50, eeprom_buf);
-+    smbus_eeprom_init_one(OBJECT(bmc), aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
-+                          eeprom_buf);
-     i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4d);
+diff --git a/hw/riscv/boston-aia.c b/hw/riscv/boston-aia.c
+index 26bacf0e59..3b0eba00a7 100644
+--- a/hw/riscv/boston-aia.c
++++ b/hw/riscv/boston-aia.c
+@@ -297,7 +297,7 @@ static void gen_firmware(uint32_t *p)
  }
  
-diff --git a/hw/arm/aspeed_ast10x0_evb.c b/hw/arm/aspeed_ast10x0_evb.c
-index 52ead37bc7..dc134b555c 100644
---- a/hw/arm/aspeed_ast10x0_evb.c
-+++ b/hw/arm/aspeed_ast10x0_evb.c
-@@ -70,7 +70,8 @@ static void ast1030_evb_i2c_init(AspeedMachineState *bmc)
- 
-     /* U10 24C08 connects to SDA/SCL Group 1 by default */
-     uint8_t *eeprom_buf = g_malloc0(32 * 1024);
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50, eeprom_buf);
-+    smbus_eeprom_init_one(OBJECT(bmc), aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
-+                          eeprom_buf);
- 
-     /* U11 LM75 connects to SDA/SCL Group 2 by default */
-     i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4d);
-diff --git a/hw/arm/aspeed_ast2400_palmetto.c b/hw/arm/aspeed_ast2400_palmetto.c
-index d89d042ce2..80f9c911b8 100644
---- a/hw/arm/aspeed_ast2400_palmetto.c
-+++ b/hw/arm/aspeed_ast2400_palmetto.c
-@@ -39,7 +39,7 @@ static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
-      */
-     i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
- 
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
-+    smbus_eeprom_init_one(OBJECT(bmc), aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
-                           eeprom_buf);
- 
-     /* add a TMP423 temperature sensor */
-diff --git a/hw/arm/aspeed_ast2400_supermicrox11.c b/hw/arm/aspeed_ast2400_supermicrox11.c
-index 9c90998754..b18adf3981 100644
---- a/hw/arm/aspeed_ast2400_supermicrox11.c
-+++ b/hw/arm/aspeed_ast2400_supermicrox11.c
-@@ -39,7 +39,7 @@ static void supermicrox11_bmc_i2c_init(AspeedMachineState *bmc)
-      */
-     i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
- 
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
-+    smbus_eeprom_init_one(OBJECT(bmc), aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
-                           eeprom_buf);
- 
-     /* add a TMP423 temperature sensor */
-diff --git a/hw/arm/aspeed_ast2500_evb.c b/hw/arm/aspeed_ast2500_evb.c
-index e46ce4a5aa..ba8a56bafd 100644
---- a/hw/arm/aspeed_ast2500_evb.c
-+++ b/hw/arm/aspeed_ast2500_evb.c
-@@ -30,7 +30,7 @@ static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
-     AspeedSoCState *soc = bmc->soc;
-     uint8_t *eeprom_buf = g_malloc0(8 * 1024);
- 
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 3), 0x50,
-+    smbus_eeprom_init_one(OBJECT(bmc), aspeed_i2c_get_bus(&soc->i2c, 3), 0x50,
-                           eeprom_buf);
- 
-     /* The AST2500 EVB expects a LM75 but a TMP105 is compatible */
-diff --git a/hw/arm/aspeed_ast2500_g220a.c b/hw/arm/aspeed_ast2500_g220a.c
-index 577ee0aff4..27c9dc436a 100644
---- a/hw/arm/aspeed_ast2500_g220a.c
-+++ b/hw/arm/aspeed_ast2500_g220a.c
-@@ -59,7 +59,7 @@ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
-             0x46, 0x46, 0xc4, 0x48, 0x48, 0x47, 0x47, 0xc1,
-             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa7,
-     };
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x57,
-+    smbus_eeprom_init_one(OBJECT(bmc), aspeed_i2c_get_bus(&soc->i2c, 4), 0x57,
-                           eeprom_buf);
- }
- 
-diff --git a/hw/arm/aspeed_ast2500_supermicro-x11spi.c b/hw/arm/aspeed_ast2500_supermicro-x11spi.c
-index 9e95d26901..bea459eeaa 100644
---- a/hw/arm/aspeed_ast2500_supermicro-x11spi.c
-+++ b/hw/arm/aspeed_ast2500_supermicro-x11spi.c
-@@ -35,7 +35,7 @@ static void supermicro_x11spi_bmc_i2c_init(AspeedMachineState *bmc)
-      */
-     i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
- 
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
-+    smbus_eeprom_init_one(OBJECT(bmc), aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
-                           eeprom_buf);
- 
-     /* add a TMP423 temperature sensor */
-diff --git a/hw/arm/aspeed_ast2500_witherspoon.c b/hw/arm/aspeed_ast2500_witherspoon.c
-index cb57cb421a..dda090ab60 100644
---- a/hw/arm/aspeed_ast2500_witherspoon.c
-+++ b/hw/arm/aspeed_ast2500_witherspoon.c
-@@ -73,7 +73,7 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
-      */
-     i2c_slave_create_simple_orphan(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
- 
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 11), 0x51,
-+    smbus_eeprom_init_one(OBJECT(bmc), aspeed_i2c_get_bus(&soc->i2c, 11), 0x51,
-                           eeprom_buf);
-     dev = DEVICE(i2c_slave_new_orphan(TYPE_PCA9552, 0x60));
-     qdev_prop_set_string(dev, "description", "pca0");
-diff --git a/hw/arm/aspeed_ast2600_evb.c b/hw/arm/aspeed_ast2600_evb.c
-index cf1e2b006c..ab7667da75 100644
---- a/hw/arm/aspeed_ast2600_evb.c
-+++ b/hw/arm/aspeed_ast2600_evb.c
-@@ -23,7 +23,7 @@ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
-     AspeedSoCState *soc = bmc->soc;
-     uint8_t *eeprom_buf = g_malloc0(8 * 1024);
- 
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50,
-+    smbus_eeprom_init_one(OBJECT(bmc), aspeed_i2c_get_bus(&soc->i2c, 7), 0x50,
-                           eeprom_buf);
- 
-     /* LM75 is compatible with TMP105 driver */
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index ac09e5f706..c58ecea011 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -1518,8 +1518,8 @@ static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
-     sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
- 
-     s->bus = i2c_init_bus(dev, s->name);
--    s->slave = i2c_slave_create_simple_orphan(s->bus, TYPE_ASPEED_I2C_BUS_SLAVE,
--                                       0xff);
-+    s->slave = i2c_slave_create_simple(OBJECT(s), "slave", s->bus,
-+                                       TYPE_ASPEED_I2C_BUS_SLAVE, 0xff);
- 
-     memory_region_init_io(&s->mr, OBJECT(s), &aspeed_i2c_bus_ops,
-                           s, s->name, aic->reg_size);
-diff --git a/hw/i2c/smbus_eeprom.c b/hw/i2c/smbus_eeprom.c
-index 59fe07b16b..aaf90a10da 100644
---- a/hw/i2c/smbus_eeprom.c
-+++ b/hw/i2c/smbus_eeprom.c
-@@ -160,18 +160,19 @@ static const TypeInfo smbus_eeprom_types[] = {
- 
- DEFINE_TYPES(smbus_eeprom_types)
- 
--void smbus_eeprom_init_one(I2CBus *smbus, uint8_t address, uint8_t *eeprom_buf)
-+void smbus_eeprom_init_one(Object *parent, I2CBus *smbus, uint8_t address,
-+                           uint8_t *eeprom_buf)
- {
+ static inline XilinxPCIEHost *
+-xilinx_pcie_init(MemoryRegion *sys_mem, uint32_t bus_nr,
++xilinx_pcie_init(Object *parent, MemoryRegion *sys_mem, uint32_t bus_nr,
+                  hwaddr cfg_base, uint64_t cfg_size,
+                  hwaddr mmio_base, uint64_t mmio_size,
+                  qemu_irq irq)
+@@ -305,7 +305,7 @@ xilinx_pcie_init(MemoryRegion *sys_mem, uint32_t bus_nr,
      DeviceState *dev;
+     MemoryRegion *cfg, *mmio;
  
--    dev = qdev_new_orphan(TYPE_SMBUS_EEPROM);
-+    dev = qdev_new(parent, "eeprom[*]", TYPE_SMBUS_EEPROM);
-     qdev_prop_set_uint8(dev, "address", address);
-     /* FIXME: use an array of byte or block backend property? */
-     SMBUS_EEPROM(dev)->init_data = eeprom_buf;
--    qdev_realize_and_unref(dev, (BusState *)smbus, &error_fatal);
-+    qdev_realize(dev, (BusState *)smbus, &error_fatal);
+-    dev = qdev_new_orphan(TYPE_XILINX_PCIE_HOST);
++    dev = qdev_new(parent, "pcie", TYPE_XILINX_PCIE_HOST);
+ 
+     qdev_prop_set_uint32(dev, "bus_nr", bus_nr);
+     qdev_prop_set_uint64(dev, "cfg_base", cfg_base);
+@@ -313,7 +313,7 @@ xilinx_pcie_init(MemoryRegion *sys_mem, uint32_t bus_nr,
+     qdev_prop_set_uint64(dev, "mmio_base", mmio_base);
+     qdev_prop_set_uint64(dev, "mmio_size", mmio_size);
+ 
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+     cfg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
+     memory_region_add_subregion_overlap(sys_mem, cfg_base, cfg, 0);
+@@ -352,8 +352,8 @@ static void boston_mach_init(MachineState *machine)
+         exit(1);
+     }
+ 
+-    dev = qdev_new_orphan(TYPE_MIPS_BOSTON_AIA);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    dev = qdev_new(OBJECT(machine), "boston", TYPE_MIPS_BOSTON_AIA);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+     s = BOSTON(dev);
+     s->mach = machine;
+@@ -390,7 +390,7 @@ static void boston_mach_init(MachineState *machine)
+                              MIN(machine->ram_size, (256 * MiB)));
+     memory_region_add_subregion_overlap(sys_mem, 0, ddr_low_alias, 0);
+ 
+-    pcie2 = xilinx_pcie_init(sys_mem, 2,
++    pcie2 = xilinx_pcie_init(OBJECT(machine), sys_mem, 2,
+                              boston_memmap[BOSTON_PCIE2].base,
+                              boston_memmap[BOSTON_PCIE2].size,
+                              boston_memmap[BOSTON_PCIE2_MMIO].base,
+@@ -419,8 +419,9 @@ static void boston_mach_init(MachineState *machine)
+     qemu_chr_fe_set_handlers(&s->lcd_display, NULL, NULL,
+                              boston_lcd_event, NULL, s, NULL, true);
+ 
+-    pdev = pci_create_simple_multifunction_orphan(&PCI_BRIDGE(&pcie2->root)->sec_bus,
+-                                           PCI_DEVFN(0, 0), TYPE_ICH9_AHCI);
++    pdev = pci_create_simple_multifunction(OBJECT(machine), "ahci",
++                                &PCI_BRIDGE(&pcie2->root)->sec_bus,
++                                PCI_DEVFN(0, 0), TYPE_ICH9_AHCI);
+     ich9 = ICH9_AHCI(pdev);
+     g_assert(ARRAY_SIZE(hd) == ich9->ahci.ports);
+     ide_drive_get(hd, ich9->ahci.ports);
+diff --git a/hw/riscv/microblaze-v-generic.c b/hw/riscv/microblaze-v-generic.c
+index 063be14b19..fbfdec7ede 100644
+--- a/hw/riscv/microblaze-v-generic.c
++++ b/hw/riscv/microblaze-v-generic.c
+@@ -79,11 +79,11 @@ static void mb_v_generic_init(MachineState *machine)
+                            ram_size, &error_fatal);
+     memory_region_add_subregion(sysmem, ddr_base, phys_ram);
+ 
+-    dev = qdev_new_orphan("xlnx.xps-intc");
++    dev = qdev_new(OBJECT(machine), "intc", "xlnx.xps-intc");
+     qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
+     qdev_prop_set_uint32(dev, "kind-of-intr",
+                          1 << UARTLITE_IRQ);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, INTC_BASEADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0,
+                        qdev_get_gpio_in(DEVICE(cpu), 11));
+@@ -92,10 +92,10 @@ static void mb_v_generic_init(MachineState *machine)
+     }
+ 
+     /* Uartlite */
+-    dev = qdev_new_orphan(TYPE_XILINX_UARTLITE);
++    dev = qdev_new(OBJECT(machine), "uartlite", TYPE_XILINX_UARTLITE);
+     qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
+     qdev_prop_set_chr(dev, "chardev", serial_hd(0));
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, UARTLITE_BASEADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[UARTLITE_IRQ]);
+ 
+@@ -105,40 +105,36 @@ static void mb_v_generic_init(MachineState *machine)
+                    DEVICE_LITTLE_ENDIAN);
+ 
+     /* 2 timers at irq 0 @ 100 Mhz.  */
+-    dev = qdev_new_orphan("xlnx.xps-timer");
++    dev = qdev_new(OBJECT(machine), "timer[*]", "xlnx.xps-timer");
+     qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
+     qdev_prop_set_uint32(dev, "one-timer-only", 0);
+     qdev_prop_set_uint32(dev, "clock-frequency", 100000000);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, TIMER_BASEADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[TIMER_IRQ]);
+ 
+     /* 2 timers at irq 3 @ 100 Mhz.  */
+-    dev = qdev_new_orphan("xlnx.xps-timer");
++    dev = qdev_new(OBJECT(machine), "timer[*]", "xlnx.xps-timer");
+     qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
+     qdev_prop_set_uint32(dev, "one-timer-only", 0);
+     qdev_prop_set_uint32(dev, "clock-frequency", 100000000);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, TIMER_BASEADDR2);
+     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[TIMER_IRQ2]);
+ 
+     /* Emaclite */
+-    dev = qdev_new_orphan("xlnx.xps-ethernetlite");
++    dev = qdev_new(OBJECT(machine), "ethlite", "xlnx.xps-ethernetlite");
+     qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
+     qemu_configure_nic_device(dev, true, NULL);
+     qdev_prop_set_uint32(dev, "tx-ping-pong", 0);
+     qdev_prop_set_uint32(dev, "rx-ping-pong", 0);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, ETHLITE_BASEADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[ETHLITE_IRQ]);
+ 
+     /* axi ethernet and dma initialization. */
+-    eth0 = qdev_new_orphan("xlnx.axi-ethernet");
+-    dma = qdev_new_orphan("xlnx.axi-dma");
+-
+-    /* FIXME: attach to the sysbus instead */
+-    object_property_add_child(qdev_get_machine(), "xilinx-eth", OBJECT(eth0));
+-    object_property_add_child(qdev_get_machine(), "xilinx-dma", OBJECT(dma));
++    eth0 = qdev_new(OBJECT(machine), "xilinx-eth", "xlnx.axi-ethernet");
++    dma = qdev_new(OBJECT(machine), "xilinx-dma", "xlnx.axi-dma");
+ 
+     ds = object_property_get_link(OBJECT(dma),
+                                   "axistream-connected-target", NULL);
+@@ -151,7 +147,7 @@ static void mb_v_generic_init(MachineState *machine)
+                              &error_abort);
+     object_property_set_link(OBJECT(eth0), "axistream-control-connected", cs,
+                              &error_abort);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(eth0), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(eth0), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(eth0), 0, AXIENET_BASEADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(eth0), 0, irq[AXIENET_IRQ]);
+ 
+@@ -164,7 +160,7 @@ static void mb_v_generic_init(MachineState *machine)
+                              &error_abort);
+     object_property_set_link(OBJECT(dma), "axistream-control-connected", cs,
+                              &error_abort);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dma), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dma), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dma), 0, AXIDMA_BASEADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(dma), 0, irq[AXIDMA_IRQ0]);
+     sysbus_connect_irq(SYS_BUS_DEVICE(dma), 1, irq[AXIDMA_IRQ1]);
+diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
+index 52fb5d5970..0d298aa3fc 100644
+--- a/hw/riscv/microchip_pfsoc.c
++++ b/hw/riscv/microchip_pfsoc.c
+@@ -581,11 +581,12 @@ static void microchip_icicle_kit_machine_init(MachineState *machine)
+     /* Attach an SD card */
+     if (dinfo) {
+         CadenceSDHCIState *sdhci = &(s->soc.sdhci);
+-        DeviceState *card = qdev_new_orphan(TYPE_SD_CARD);
++        DeviceState *card = qdev_new(OBJECT(machine), "sd-card",
++                                     TYPE_SD_CARD);
+ 
+         qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
+                                 &error_fatal);
+-        qdev_realize_and_unref(card, sdhci->bus, &error_fatal);
++        qdev_realize(card, sdhci->bus, &error_fatal);
+     }
+ 
+     /*
+diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
+index 0ef0124140..3d60a501dd 100644
+--- a/hw/riscv/sifive_u.c
++++ b/hw/riscv/sifive_u.c
+@@ -593,31 +593,32 @@ static void sifive_u_machine_init(MachineState *machine)
+                                  sizeof(reset_vec), kernel_entry);
+ 
+     /* Connect an SPI flash to SPI0 */
+-    flash_dev = qdev_new_orphan("is25wp256");
++    flash_dev = qdev_new(OBJECT(machine), "flash", "is25wp256");
+     dinfo = drive_get(IF_MTD, 0, 0);
+     if (dinfo) {
+         qdev_prop_set_drive_err(flash_dev, "drive",
+                                 blk_by_legacy_dinfo(dinfo),
+                                 &error_fatal);
+     }
+-    qdev_realize_and_unref(flash_dev, BUS(s->soc.spi0.spi), &error_fatal);
++    qdev_realize(flash_dev, BUS(s->soc.spi0.spi), &error_fatal);
+ 
+     flash_cs = qdev_get_gpio_in_named(flash_dev, SSI_GPIO_CS, 0);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->soc.spi0), 1, flash_cs);
+ 
+     /* Connect an SD card to SPI2 */
+-    sd_dev = ssi_create_peripheral_orphan(s->soc.spi2.spi, "ssi-sd");
++    sd_dev = ssi_create_peripheral(OBJECT(machine), "ssi-sd",
++                                   s->soc.spi2.spi, "ssi-sd");
+ 
+     sd_cs = qdev_get_gpio_in_named(sd_dev, SSI_GPIO_CS, 0);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->soc.spi2), 1, sd_cs);
+ 
+     dinfo = drive_get(IF_SD, 0, 0);
+     blk = dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
+-    card_dev = qdev_new_orphan(TYPE_SD_CARD_SPI);
++    card_dev = qdev_new(OBJECT(machine), "sd-card", TYPE_SD_CARD_SPI);
+     qdev_prop_set_drive_err(card_dev, "drive", blk, &error_fatal);
+-    qdev_realize_and_unref(card_dev,
+-                           qdev_get_child_bus(sd_dev, "sd-bus"),
+-                           &error_fatal);
++    qdev_realize(card_dev,
++                 qdev_get_child_bus(sd_dev, "sd-bus"),
++                 &error_fatal);
  }
  
--void smbus_eeprom_init(I2CBus *smbus, int nb_eeprom,
-+void smbus_eeprom_init(Object *parent, I2CBus *smbus, int nb_eeprom,
-                        const uint8_t *eeprom_spd, int eeprom_spd_size)
- {
+ static bool sifive_u_machine_get_start_in_flash(Object *obj, Error **errp)
+diff --git a/hw/riscv/tt_atlantis.c b/hw/riscv/tt_atlantis.c
+index 4d2f5fbeda..6e0a54fe3c 100644
+--- a/hw/riscv/tt_atlantis.c
++++ b/hw/riscv/tt_atlantis.c
+@@ -576,8 +576,9 @@ static void tt_atlantis_machine_init(MachineState *machine)
+     }
+ 
+     /* I2C peripherals: qemu specific */
+-    i2c_slave_create_simple_orphan(i2c_get_bus(s, 0), "ds1338", 0x6f);
+-    i2c_slave_create_simple_orphan(i2c_get_bus(s, 4), "tmp105", 0x48);
++    i2c_slave_create_simple(OBJECT(s), "rtc", i2c_get_bus(s, 0), "ds1338", 0x6f);
++    i2c_slave_create_simple(OBJECT(s), "tmp105", i2c_get_bus(s, 4),
++                            "tmp105", 0x48);
+ 
+     /* Load or create device tree */
+     if (machine->dtb) {
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index cecb221bec..718b730a4d 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -125,7 +125,7 @@ static PFlashCFI01 *virt_flash_create1(RISCVVirtState *s,
+      * Create a single flash device.  We use the same parameters as
+      * the flash devices on the ARM virt board.
+      */
+-    DeviceState *dev = qdev_new_orphan(TYPE_PFLASH_CFI01);
++    DeviceState *dev = qdev_new(OBJECT(s), name, TYPE_PFLASH_CFI01);
+ 
+     qdev_prop_set_uint64(dev, "sector-length", VIRT_FLASH_SECTOR_SIZE);
+     qdev_prop_set_uint8(dev, "width", 4);
+@@ -137,7 +137,6 @@ static PFlashCFI01 *virt_flash_create1(RISCVVirtState *s,
+     qdev_prop_set_uint16(dev, "id3", 0x00);
+     qdev_prop_set_string(dev, "name", name);
+ 
+-    object_property_add_child(OBJECT(s), name, OBJECT(dev));
+     object_property_add_alias(OBJECT(s), alias_prop_name,
+                               OBJECT(dev), "drive");
+ 
+@@ -159,7 +158,7 @@ static void virt_flash_map1(PFlashCFI01 *flash,
+     assert(QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE));
+     assert(size / VIRT_FLASH_SECTOR_SIZE <= UINT32_MAX);
+     qdev_prop_set_uint32(dev, "num-blocks", size / VIRT_FLASH_SECTOR_SIZE);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+     memory_region_add_subregion(sysmem, base,
+                                 sysbus_mmio_get_region(SYS_BUS_DEVICE(dev),
+@@ -1050,7 +1049,7 @@ static inline DeviceState *gpex_pcie_init(MemoryRegion *sys_mem,
+     qemu_irq irq;
      int i;
-@@ -184,7 +185,7 @@ void smbus_eeprom_init(I2CBus *smbus, int nb_eeprom,
+ 
+-    dev = qdev_new_orphan(TYPE_GPEX_HOST);
++    dev = qdev_new(OBJECT(s), "pcie", TYPE_GPEX_HOST);
+ 
+     /* Set GPEX object properties for the virt machine */
+     object_property_set_uint(OBJECT(dev), PCI_HOST_ECAM_BASE,
+@@ -1070,7 +1069,7 @@ static inline DeviceState *gpex_pcie_init(MemoryRegion *sys_mem,
+     object_property_set_int(OBJECT(dev), PCI_HOST_PIO_SIZE,
+                             pio_size, NULL);
+ 
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+     ecam_alias = g_new0(MemoryRegion, 1);
+     ecam_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
+@@ -1143,11 +1142,11 @@ static void create_platform_bus(RISCVVirtState *s, DeviceState *irqchip)
+     int i;
+     MemoryRegion *sysmem = get_system_memory();
+ 
+-    dev = qdev_new_orphan(TYPE_PLATFORM_BUS_DEVICE);
++    dev = qdev_new(OBJECT(s), "platform-bus", TYPE_PLATFORM_BUS_DEVICE);
+     dev->id = g_strdup(TYPE_PLATFORM_BUS_DEVICE);
+     qdev_prop_set_uint32(dev, "num_irqs", VIRT_PLATFORM_BUS_NUM_IRQS);
+     qdev_prop_set_uint32(dev, "mmio_size", s->memmap[VIRT_PLATFORM_BUS].size);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     s->platform_bus_dev = dev;
+ 
+     sysbus = SYS_BUS_DEVICE(dev);
+@@ -1480,7 +1479,7 @@ static void virt_machine_init(MachineState *machine)
+ 
+     /* VirtIO MMIO devices */
+     for (i = 0; i < VIRTIO_COUNT; i++) {
+-        sysbus_create_simple_orphan("virtio-mmio",
++        sysbus_create_simple(OBJECT(machine), "virtio-mmio[*]", "virtio-mmio",
+             s->memmap[VIRT_VIRTIO].base + i * s->memmap[VIRT_VIRTIO].size,
+             qdev_get_gpio_in(virtio_irqchip, VIRTIO_IRQ + i));
+     }
+@@ -1493,8 +1492,8 @@ static void virt_machine_init(MachineState *machine)
+         0, qdev_get_gpio_in(mmio_irqchip, UART0_IRQ), 399193,
+         serial_hd(0), DEVICE_LITTLE_ENDIAN);
+ 
+-    sysbus_create_simple_orphan("goldfish_rtc", s->memmap[VIRT_RTC].base,
+-        qdev_get_gpio_in(mmio_irqchip, RTC_IRQ));
++    sysbus_create_simple(OBJECT(machine), "rtc", "goldfish_rtc",
++        s->memmap[VIRT_RTC].base, qdev_get_gpio_in(mmio_irqchip, RTC_IRQ));
+ 
+     for (i = 0; i < ARRAY_SIZE(s->flash); i++) {
+         /* Map legacy -drive if=pflash to machine properties */
+@@ -1515,7 +1514,8 @@ static void virt_machine_init(MachineState *machine)
      }
  
-     for (i = 0; i < nb_eeprom; i++) {
--        smbus_eeprom_init_one(smbus, 0x50 + i,
-+        smbus_eeprom_init_one(parent, smbus, 0x50 + i,
-                               eeprom_buf + (i * SMBUS_EEPROM_SIZE));
+     if (virt_is_iommu_sys_enabled(s)) {
+-        DeviceState *iommu_sys = qdev_new_orphan(TYPE_RISCV_IOMMU_SYS);
++        DeviceState *iommu_sys = qdev_new(OBJECT(machine), "iommu",
++                                          TYPE_RISCV_IOMMU_SYS);
+ 
+         object_property_set_uint(OBJECT(iommu_sys), "addr",
+                                  s->memmap[VIRT_IOMMU_SYS].base,
+@@ -1534,7 +1534,7 @@ static void virt_machine_init(MachineState *machine)
+                                  riscv_is_32bit(&s->soc[0]) ? 34 : 56,
+                                  &error_fatal);
+ 
+-        sysbus_realize_and_unref(SYS_BUS_DEVICE(iommu_sys), &error_fatal);
++        sysbus_realize(SYS_BUS_DEVICE(iommu_sys), &error_fatal);
      }
+ 
+     s->machine_done.notify = virt_machine_done;
+@@ -1545,11 +1545,6 @@ static void virt_machine_instance_finalize(Object *obj)
+ {
+     RISCVVirtState *s = RISCV_VIRT_MACHINE(obj);
+ 
+-    for (int i = 0; i < ARRAY_SIZE(s->flash); i++) {
+-        if (s->flash[i] && !qdev_is_realized(DEVICE(s->flash[i]))) {
+-            object_unref(OBJECT(s->flash[i]));
+-        }
+-    }
+     g_free(s->oem_id);
+     g_free(s->oem_table_id);
  }
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 3f361c8396..44ce592ea2 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -304,7 +304,7 @@ static void pc_init1(MachineState *machine, const char *pci_type)
-         qdev_connect_gpio_out_named(DEVICE(piix4_pm), "smi-irq", 0, smi_irq);
-         pcms->smbus = I2C_BUS(qdev_get_child_bus(DEVICE(piix4_pm), "i2c"));
-         /* TODO: Populate SPD eeprom data.  */
--        smbus_eeprom_init(pcms->smbus, 8, NULL, 0);
-+        smbus_eeprom_init(OBJECT(machine), pcms->smbus, 8, NULL, 0);
- 
-         object_property_add_link(OBJECT(machine), PC_MACHINE_ACPI_DEVICE_PROP,
-                                  TYPE_HOTPLUG_HANDLER,
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index a4a7169398..bfea390825 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -317,7 +317,7 @@ static void pc_q35_init(MachineState *machine)
-                                               TYPE_ICH9_SMB_DEVICE);
-         pcms->smbus = I2C_BUS(qdev_get_child_bus(DEVICE(smb), "i2c"));
- 
--        smbus_eeprom_init(pcms->smbus, 8, NULL, 0);
-+        smbus_eeprom_init(OBJECT(machine), pcms->smbus, 8, NULL, 0);
-     }
- 
-     /* the rest devices to which pci devfn is automatically assigned */
-diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
-index 5e5ade46f3..0046423d40 100644
---- a/hw/mips/fuloong2e.c
-+++ b/hw/mips/fuloong2e.c
-@@ -322,7 +322,7 @@ static void mips_fuloong2e_init(MachineState *machine)
- 
-     /* Populate SPD eeprom data */
-     spd_data = spd_data_generate(DDR, machine->ram_size);
--    smbus_eeprom_init_one(smbus, 0x50, spd_data);
-+    smbus_eeprom_init_one(OBJECT(machine), smbus, 0x50, spd_data);
- 
-     /* Network card: RTL8139D */
-     network_init(pci_bus);
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index da6dd15a59..52aae144da 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -1249,7 +1249,7 @@ void mips_malta_init(MachineState *machine)
-     smbus = I2C_BUS(qdev_get_child_bus(dev, "i2c"));
-     generate_eeprom_spd(&smbus_eeprom_buf[0 * 256], ram_size);
-     generate_eeprom_serial(&smbus_eeprom_buf[6 * 256]);
--    smbus_eeprom_init(smbus, 8, smbus_eeprom_buf, smbus_eeprom_size);
-+    smbus_eeprom_init(OBJECT(machine), smbus, 8, smbus_eeprom_buf, smbus_eeprom_size);
-     g_free(smbus_eeprom_buf);
- 
-     /* Super I/O: SMS FDC37M817 */
-diff --git a/hw/ppc/amigaone.c b/hw/ppc/amigaone.c
-index 80802d42c6..866e5547d6 100644
---- a/hw/ppc/amigaone.c
-+++ b/hw/ppc/amigaone.c
-@@ -338,9 +338,9 @@ static void amigaone_init(MachineState *machine)
-         spd_data = spd_data_generate(SDR, machine->ram_size);
-     }
-     fix_spd_data(spd_data);
--    smbus_eeprom_init_one(i2c_bus, 0x51, spd_data);
-+    smbus_eeprom_init_one(OBJECT(machine), i2c_bus, 0x51, spd_data);
-     if (machine->ram_size > 512 * MiB) {
--        smbus_eeprom_init_one(i2c_bus, 0x52, spd_data);
-+        smbus_eeprom_init_one(OBJECT(machine), i2c_bus, 0x52, spd_data);
-     }
- 
-     pci_mem = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 1);
-diff --git a/hw/ppc/pegasos.c b/hw/ppc/pegasos.c
-index bba73f60c8..2974625f1c 100644
---- a/hw/ppc/pegasos.c
-+++ b/hw/ppc/pegasos.c
-@@ -261,7 +261,7 @@ static void pegasos_init(MachineState *machine)
-     dev = PCI_DEVICE(object_resolve_path_component(via, "pm"));
-     i2c_bus = I2C_BUS(qdev_get_child_bus(DEVICE(dev), "i2c"));
-     spd_data = spd_data_generate(DDR, machine->ram_size);
--    smbus_eeprom_init_one(i2c_bus, 0x57, spd_data);
-+    smbus_eeprom_init_one(OBJECT(machine), i2c_bus, 0x57, spd_data);
- 
-     /* other PC hardware */
-     pci_vga_init(pci_bus);
-diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
-index d23d2c2bd8..8623848633 100644
---- a/hw/ppc/sam460ex.c
-+++ b/hw/ppc/sam460ex.c
-@@ -343,7 +343,7 @@ static void sam460ex_init(MachineState *machine)
-     spd_data = spd_data_generate(machine->ram_size < 128 * MiB ? DDR : DDR2,
-                                  machine->ram_size);
-     spd_data[20] = 4; /* SO-DIMM module */
--    smbus_eeprom_init_one(i2c, 0x50, spd_data);
-+    smbus_eeprom_init_one(OBJECT(machine), i2c, 0x50, spd_data);
-     /* RTC */
-     i2c_slave_create_simple_orphan(i2c, "m41t80", 0x68);
- 
-diff --git a/include/hw/i2c/smbus_eeprom.h b/include/hw/i2c/smbus_eeprom.h
-index 61a54cda76..f3aefada42 100644
---- a/include/hw/i2c/smbus_eeprom.h
-+++ b/include/hw/i2c/smbus_eeprom.h
-@@ -26,8 +26,9 @@
- #include "system/ram_addr.h"
- #include "hw/i2c/i2c.h"
- 
--void smbus_eeprom_init_one(I2CBus *bus, uint8_t address, uint8_t *eeprom_buf);
--void smbus_eeprom_init(I2CBus *bus, int nb_eeprom,
-+void smbus_eeprom_init_one(Object *parent, I2CBus *bus, uint8_t address,
-+                           uint8_t *eeprom_buf);
-+void smbus_eeprom_init(Object *parent, I2CBus *bus, int nb_eeprom,
-                        const uint8_t *eeprom_spd, int size);
- 
- enum sdram_type { SDR = 0x4, DDR = 0x7, DDR2 = 0x8 };
 -- 
 2.47.1
 

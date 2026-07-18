@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7935FC44521
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:01:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5538C4450A
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:01:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlD5w-00075p-JN; Sat, 18 Jul 2026 18:01:16 -0400
+	id 1wlD6F-0008Ok-Lc; Sat, 18 Jul 2026 18:01:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlD5Y-0006MH-Ua; Sat, 18 Jul 2026 18:00:55 -0400
-Received: from pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.42.203.116])
+ id 1wlD6C-0008D8-On; Sat, 18 Jul 2026 18:01:32 -0400
+Received: from pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.12.53.23])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlD5W-00059H-67; Sat, 18 Jul 2026 18:00:52 -0400
+ id 1wlD6A-0005Fx-Ty; Sat, 18 Jul 2026 18:01:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1784412050; x=1815948050;
+ t=1784412090; x=1815948090;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=qmO8d/rDXj0cALhLa0MQcV3mYO09GhDUo5aekxJsoCQ=;
- b=Hc2YYu34wLdUPKQmozlnvFOFa3I5YTfgP+yqAqCh+8h6g3G/GPRVzMFu
- 4bSNYvSmAZ75hK/G99MDcnrd08EB1IX0jEBd/ja24Z2sV0JfI+Luhz7+L
- Ta54VP7qSLKqLm7fFGAdkvunzE7o0SWUE9H+o6re/QFSwVZ0oDVllVALF
- W0Msdfe//EYn+CvuUAU55PfI0ey38kmAalwQxlCb0Ft2vCt2ZHW4D9bHr
- ELVH8AJvQi4Qi9uXEEI1mJcyvNI9zG2kHUDwt+hCYNQnINXFjqBSb1PPr
- VbUsGJ2L1p4GqobHqqbsWIY8615sDHufGS+/INWcZoyQx3jvYuHgfGwft w==;
-X-CSE-ConnectionGUID: D9Yy9egZSK+Cg3adSv38EA==
-X-CSE-MsgGUID: lCOYz2D4RcKdNnn8U3il5Q==
-X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23940282"
-Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
- by internal-pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:00:46 +0000
-Received: from EX19MTAUWC001.ant.amazon.com [205.251.233.53:12516]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.48.250:2525]
+ bh=qNvBAQnsropPFuCvMHAkpcPv/ub05GpIkFSZ2G7cECE=;
+ b=fsovACCvlIyvL5l/qV3FJAmQt0WaYLFkXfkAl1KV4eR613Jx5DvsHJSH
+ t59NoOwETVdAngDU8+uKKmpk9iSoapEtrVqSkGLgi33bEhg+Ysqr2W+Hw
+ xVCMp2+nPh7MigvbKzmfYmQZ/CThHC+wb3n8ApYXMA+o1VFunRDqz6WQm
+ 36ADgaW3Hntb4KbId7eoESujLa/fmGINFZVoQ3AJ8tDuSp6TkqLhff348
+ OQN9pdzTCSmFHa/UbBZ42RtKm9SBDd9495ua5qmMT2Az1SnHZZ6V6yFCk
+ Rm8/A5AqsrC7BiDLz8tMGJRNZ3CEVxkbVfupiTmfIY4FJLk05hmH//DKi A==;
+X-CSE-ConnectionGUID: IFy8SzVNTJ6KYUJKuSfx9w==
+X-CSE-MsgGUID: hWjvNeiBRWKuLpvT0bPDiw==
+X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23795565"
+Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
+ by internal-pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:01:27 +0000
+Received: from EX19MTAUWA002.ant.amazon.com [205.251.233.234:15836]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.11.151:2525]
  with esmtp (Farcaster)
- id 6ac860b7-bfed-4bc8-848d-9aa050ba6359; Sat, 18 Jul 2026 22:00:46 +0000 (UTC)
-X-Farcaster-Flow-ID: 6ac860b7-bfed-4bc8-848d-9aa050ba6359
+ id f004e84a-99c8-4385-9526-854b0bdd6e20; Sat, 18 Jul 2026 22:01:27 +0000 (UTC)
+X-Farcaster-Flow-ID: f004e84a-99c8-4385-9526-854b0bdd6e20
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWC001.ant.amazon.com (10.250.64.174) with Microsoft SMTP Server
+ EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:00:46 +0000
+ Sat, 18 Jul 2026 22:01:26 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:00:36 +0000
+ Sat, 18 Jul 2026 22:01:17 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -93,29 +93,29 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>, "Subbaraya
  Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth <th.huth+qemu@posteo.eu>, "Ran
  Wang" <wangran@bosc.ac.cn>, Hao Wu <wuhaotsh@google.com>
-Subject: [RFC PATCH v2 085/137] isa: Remove *_orphan() creator variants
-Date: Sat, 18 Jul 2026 21:36:00 +0000
-Message-ID: <20260718213652.37673-86-graf@amazon.com>
+Subject: [RFC PATCH v2 087/137] cpu: Remove cpu_create_orphan()
+Date: Sat, 18 Jul 2026 21:36:02 +0000
+Message-ID: <20260718213652.37673-88-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260718213652.37673-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
  <20260718213652.37673-1-graf@amazon.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D036UWC003.ant.amazon.com (10.13.139.214) To
+X-ClientProxiedBy: EX19D037UWB004.ant.amazon.com (10.13.138.84) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.42.203.116;
+Received-SPF: pass client-ip=52.12.53.23;
  envelope-from=prvs=65292d44c=graf@amazon.de;
- helo=pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
 X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
+ RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
  UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -132,63 +132,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-All boards create their ISA devices with an explicit QOM parent
-now.  Drop isa_new_orphan(), isa_try_new_orphan() and
-isa_create_simple_orphan().
+All targets create their CPUs with an explicit parent now.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 AI-used-for: code (refactoring)
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/isa/isa-bus.c     | 19 -------------------
- include/hw/isa/isa.h |  3 ---
+ hw/core/cpu-common.c  | 12 ------------
+ include/hw/core/cpu.h | 10 ----------
  2 files changed, 22 deletions(-)
 
-diff --git a/hw/isa/isa-bus.c b/hw/isa/isa-bus.c
-index 7a6a595ce7..22452e5048 100644
---- a/hw/isa/isa-bus.c
-+++ b/hw/isa/isa-bus.c
-@@ -172,25 +172,6 @@ ISADevice *isa_create_simple(Object *parent, const char *id,
-     return dev;
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index eef243c1ad..829a044e9e 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -68,18 +68,6 @@ CPUState *cpu_create(Object *parent, const char *id, const char *typename)
+     return cpu;
  }
  
--ISADevice *isa_new_orphan(const char *name)
+-CPUState *cpu_create_orphan(const char *typename)
 -{
--    return ISA_DEVICE(qdev_new_orphan(name));
+-    Error *err = NULL;
+-    CPUState *cpu = CPU(object_new(typename));
+-    if (!qdev_realize(DEVICE(cpu), NULL, &err)) {
+-        error_report_err(err);
+-        object_unref(OBJECT(cpu));
+-        exit(EXIT_FAILURE);
+-    }
+-    return cpu;
 -}
 -
--ISADevice *isa_try_new_orphan(const char *name)
--{
--    return ISA_DEVICE(qdev_try_new_orphan(name));
--}
--
--ISADevice *isa_create_simple_orphan(ISABus *bus, const char *name)
--{
--    ISADevice *dev;
--
--    dev = isa_new_orphan(name);
--    isa_realize_and_unref(dev, bus, &error_fatal);
--    return dev;
--}
--
- bool isa_realize_and_unref(ISADevice *dev, ISABus *bus, Error **errp)
+ void cpu_reset_interrupt(CPUState *cpu, int mask)
  {
-     return qdev_realize_and_unref(&dev->parent_obj, &bus->parent_obj, errp);
-diff --git a/include/hw/isa/isa.h b/include/hw/isa/isa.h
-index 79bfe16361..9bbaa3c258 100644
---- a/include/hw/isa/isa.h
-+++ b/include/hw/isa/isa.h
-@@ -86,10 +86,7 @@ ISADevice *isa_new(Object *parent, const char *id, const char *type);
- ISADevice *isa_try_new(Object *parent, const char *id, const char *type);
- ISADevice *isa_create_simple(Object *parent, const char *id,
-                              ISABus *bus, const char *type);
--ISADevice *isa_new_orphan(const char *name);
--ISADevice *isa_try_new_orphan(const char *name);
- bool isa_realize_and_unref(ISADevice *dev, ISABus *bus, Error **errp);
--ISADevice *isa_create_simple_orphan(ISABus *bus, const char *name);
+     qatomic_and(&cpu->interrupt_request, ~mask);
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 1b2ec1ab1e..544740a699 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -857,16 +857,6 @@ char *cpu_model_from_type(const char *typename);
+  */
+ CPUState *cpu_create(Object *parent, const char *id, const char *typename);
  
- ISADevice *isa_vga_init(Object *parent, ISABus *bus);
- 
+-/**
+- * cpu_create_orphan:
+- * @typename: The CPU type.
+- *
+- * Instantiates a CPU and realizes the CPU.
+- *
+- * Returns: A #CPUState or %NULL if an error occurred.
+- */
+-CPUState *cpu_create_orphan(const char *typename);
+-
+ /**
+  * parse_cpu_option:
+  * @cpu_option: The -cpu option including optional parameters.
 -- 
 2.47.1
 

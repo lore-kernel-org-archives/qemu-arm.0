@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12DEFC4450A
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 21:44:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F842C4450A
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 21:45:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlCpU-0005f2-99; Sat, 18 Jul 2026 17:44:16 -0400
+	id 1wlCqC-00079g-Da; Sat, 18 Jul 2026 17:45:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlCpQ-0005A3-Fr; Sat, 18 Jul 2026 17:44:12 -0400
-Received: from pdx-out-002.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([44.246.1.125])
+ id 1wlCq4-0006zK-Qn; Sat, 18 Jul 2026 17:44:53 -0400
+Received: from pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.13.214.179])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlCpO-0002sI-N3; Sat, 18 Jul 2026 17:44:12 -0400
+ id 1wlCq2-0002xn-2j; Sat, 18 Jul 2026 17:44:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1784411050; x=1815947050;
+ t=1784411090; x=1815947090;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=Ht3LTPaa+ybXdLfPN4XkOvp4Xczu9SwDPTQHkBjMN/Q=;
- b=mx2EtfoxILJ8gdl+pxzNf89xPYQW7hiqLbPLqFrpXFRY8EDU9Yht6DNL
- p4Rusby17SBW+6ipRam5RPnw1YGB4MCEMh5CsvRDdMqz/1oDnPnggXCbd
- WA4W0QuEEU+LJjN8RwIiodMABt6+tEQ4H9HQcEGGywbizgo7CX0eL90cF
- 6zOU0Frsmq2AHpjEZoAWzMkgguH110tq8zu1AmnETTtZjrLE6mcuuobPk
- aKV0v/DHKEqjeU5eBUx5YBXwyPfgxZ052hP6TCfVBhhiT18kFl5doJOJ9
- 0NPjxj+BmGoK8wax5gP4H2trWYiHZmlBBZoyEtJVB2YCe3KoVujCw+mzb g==;
-X-CSE-ConnectionGUID: f33hiargQKG80cSbmHxX5A==
-X-CSE-MsgGUID: fM5kHQgdQBGTr0sOAl10Cg==
-X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23927051"
+ bh=IlAfRgTZKqxlJXJg22OA6rDJEPP0BNN9PWbpHGMM0ic=;
+ b=Ek5C8vC4wloyjooQ+bbb8bjWsWcEXyraqAsrdi2UtNq0q0YyqLBOdSep
+ jhdKXphJLgLTCRx1rj8LxOnuD2c7kyhggP5DQTd2tMudClCGSKlaXDxXp
+ kdTwVd7QUzworsPIt84SdzfjsxMbYqD7F57sHLNNm/q2vxAu5WdZ3XHhz
+ ldCWGVmFPcdvAV1t22PQu2ubyOQZ4cJF6rv2Al8jzoIRh1Pc4cIplzVAA
+ O81gXV3Fy6OJyelyv4f2a1IRDaWdQ+U3VGPtzB43Na9e9lSa/+xZNeULG
+ JU27cFtwN0jC17VdAoFdLVH3pIUks77xwuRmRSPP3zYxNSsNin0DpsVC+ A==;
+X-CSE-ConnectionGUID: 72KlE3H2SLWn/GxwSbecig==
+X-CSE-MsgGUID: AZes84UNTRy5RQlJ5GuiOg==
+X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23903681"
 Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
  smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
- by internal-pdx-out-002.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 21:44:06 +0000
-Received: from EX19MTAUWA001.ant.amazon.com [205.251.233.182:11751]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.40.177:2525]
+ by internal-pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 21:44:46 +0000
+Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.48:2512]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.0.115:2525]
  with esmtp (Farcaster)
- id 08cc2779-f707-4101-8176-7a1a2596663f; Sat, 18 Jul 2026 21:44:06 +0000 (UTC)
-X-Farcaster-Flow-ID: 08cc2779-f707-4101-8176-7a1a2596663f
+ id 75caf168-7a0d-4d7d-89f9-717c82ef29a9; Sat, 18 Jul 2026 21:44:46 +0000 (UTC)
+X-Farcaster-Flow-ID: 75caf168-7a0d-4d7d-89f9-717c82ef29a9
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWA001.ant.amazon.com (10.250.64.217) with Microsoft SMTP Server
+ EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 21:44:05 +0000
+ Sat, 18 Jul 2026 21:44:46 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 21:43:56 +0000
+ Sat, 18 Jul 2026 21:44:36 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -93,9 +93,9 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>, "Subbaraya
  Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth <th.huth+qemu@posteo.eu>, "Ran
  Wang" <wangran@bosc.ac.cn>, Hao Wu <wuhaotsh@google.com>
-Subject: [RFC PATCH v2 026/137] hw/ufs: Give onboard devices a QOM parent
-Date: Sat, 18 Jul 2026 21:35:01 +0000
-Message-ID: <20260718213652.37673-27-graf@amazon.com>
+Subject: [RFC PATCH v2 028/137] hw/vfio: Give onboard devices a QOM parent
+Date: Sat, 18 Jul 2026 21:35:03 +0000
+Message-ID: <20260718213652.37673-29-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260718213652.37673-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -104,11 +104,11 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D031UWA001.ant.amazon.com (10.13.139.88) To
+X-ClientProxiedBy: EX19D035UWB002.ant.amazon.com (10.13.138.97) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=44.246.1.125;
+Received-SPF: pass client-ip=52.13.214.179;
  envelope-from=prvs=65292d44c=graf@amazon.de;
- helo=pdx-out-002.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
@@ -132,7 +132,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the *_orphan() device-creation calls in hw/ufs to the new
+Convert the *_orphan() device-creation calls in hw/vfio to the new
 parented API introduced earlier in this series, so every onboard
 device gets a stable path in the composition tree instead of landing
 in /machine/unattached with an unstable device[N] name.
@@ -143,38 +143,31 @@ composite children.  Names follow existing QOM conventions.
 
 Per-site rationale (reviewers: dispute the modeling here):
 
-hw/ufs/lu.c:475 | qdev_new | OBJECT(lu) | "ufs-scsi" | ufs-lu realize path; the LU device owns the wrapped scsi-hd (bus is not parent). Re-parent from bus to lu; drop _and_unref
+hw/vfio/igd.c:337 | pci_create_simple | OBJECT(vdev) | "igd-lpc-bridge" | Called from IGD quirk during vfio-pci realize; the LPC stub is created by and lives with the passed-through IGD device
 
 Link: https://lore.kernel.org/qemu-devel/87jyr3w9tc.fsf@pond.sub.org/
 AI-used-for: code (refactoring)
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/ufs/lu.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ hw/vfio/igd.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/hw/ufs/lu.c b/hw/ufs/lu.c
-index 219f74e4f3..4e5621f224 100644
---- a/hw/ufs/lu.c
-+++ b/hw/ufs/lu.c
-@@ -472,8 +472,7 @@ static void ufs_init_scsi_device(UfsLu *lu, BlockBackend *blk, Error **errp)
-      * The ufs-lu is the device that is wrapping the scsi-hd. It owns a virtual
-      * SCSI bus that serves the scsi-hd.
-      */
--    scsi_dev = qdev_new_orphan("scsi-hd");
--    object_property_add_child(OBJECT(&lu->bus), "ufs-scsi", OBJECT(scsi_dev));
-+    scsi_dev = qdev_new(OBJECT(lu), "ufs-scsi", "scsi-hd");
- 
-     qdev_prop_set_uint32(scsi_dev, "physical_block_size", UFS_BLOCK_SIZE);
-     qdev_prop_set_uint32(scsi_dev, "logical_block_size", UFS_BLOCK_SIZE);
-@@ -484,7 +483,7 @@ static void ufs_init_scsi_device(UfsLu *lu, BlockBackend *blk, Error **errp)
-         return;
+diff --git a/hw/vfio/igd.c b/hw/vfio/igd.c
+index bea0d57a11..aee40646ed 100644
+--- a/hw/vfio/igd.c
++++ b/hw/vfio/igd.c
+@@ -334,8 +334,9 @@ static int vfio_pci_igd_lpc_init(VFIOPCIDevice *vdev,
+     lpc_bridge = pci_find_device(pci_device_root_bus(pdev),
+                                  0, PCI_DEVFN(0x1f, 0));
+     if (!lpc_bridge) {
+-        lpc_bridge = pci_create_simple_orphan(pci_device_root_bus(pdev),
+-                                 PCI_DEVFN(0x1f, 0), "vfio-pci-igd-lpc-bridge");
++        lpc_bridge = pci_create_simple(OBJECT(vdev), "igd-lpc-bridge",
++                                       pci_device_root_bus(pdev),
++                                       PCI_DEVFN(0x1f, 0), "vfio-pci-igd-lpc-bridge");
      }
  
--    if (!qdev_realize_and_unref(scsi_dev, &lu->bus.qbus, errp)) {
-+    if (!qdev_realize(scsi_dev, &lu->bus.qbus, errp)) {
-         object_unparent(OBJECT(scsi_dev));
-         return;
-     }
+     ret = vfio_pci_igd_copy(vdev, lpc_bridge, info, igd_lpc_bridge_infos,
 -- 
 2.47.1
 

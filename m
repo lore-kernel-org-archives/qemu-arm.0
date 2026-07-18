@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D16DC4451B
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:07:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 836DEC4450A
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:07:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlDBG-0003HU-W2; Sat, 18 Jul 2026 18:06:47 -0400
+	id 1wlDBw-0005xL-Lh; Sat, 18 Jul 2026 18:07:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlDBE-0002u9-7Y; Sat, 18 Jul 2026 18:06:44 -0400
+ id 1wlDBu-0005pG-6g; Sat, 18 Jul 2026 18:07:26 -0400
 Received: from pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com
  ([44.246.68.102])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlDBC-0006GZ-CC; Sat, 18 Jul 2026 18:06:43 -0400
+ id 1wlDBs-0006Jt-Cq; Sat, 18 Jul 2026 18:07:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1784412402; x=1815948402;
+ t=1784412444; x=1815948444;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=v7Gg0RTMoE3PHga7JOaBPxL+IE5NtvtLRm4f+QKNUWQ=;
- b=r5i3S6bEnvjlMfZQcQGi3B0VqdbUZzN3+FTBBMO5Pp9VZSoam9/kkYHc
- 8hFYboHcIeA+4NHdSxMWb22AWggSc/vm1lTESaIK8+fh7baKuKCMPt2Ne
- il2uhARFPgOOGL+ANtJ4MdfG61J23rfLG2/CBqKGVeo9XTIDnoUB3YPm+
- 2M6y+/0wYIS7fUPc48KrDXEZ72HoAHYAknMSC8ekmax/XXtn1HBEqdlrB
- PcSY5zSvtmsxX8sGujqOu4zbV51q/6vwt2nMReFi/M9NMRB0Y9UEQBNiY
- OSxDwJQrF/N71C10oeFL+Y1Jve7RK9Ag8s4T+1rv0IjsZus5q5vpodeXU Q==;
-X-CSE-ConnectionGUID: U19EcyNiR4qGvGPOvW+lDA==
-X-CSE-MsgGUID: kST7DPDuTcyFgqZbsj8dig==
-X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23942435"
-Received: from ip-10-5-9-48.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.9.48])
+ bh=55SFmn7YY6K/MBM3JuF967S/TaYaKf1YhgQPTJk68Tc=;
+ b=NMb+Ij/mNxeX1CVYHwSI1HY2rFpho+V6Z49jBeWQfbX9EhLnGNNdVQXe
+ bseivs4Aj2QwxetHBDXz0HqJhx1O1WGyButNxb95FiIWQgWCsTWuTdQHR
+ LwW5GG1Y4VwU/LmuQXO4hcwbqNws6WPixI4YH0POXiEreS+ybJ/G2zkxP
+ iMCH9xOPwQtndS59Z4fj2DczXqNHn2d6IDoB92yIx1PFXWDaWd1CgqeHF
+ 00lwBFYzTmSaq8IxcLbNTOtmbowPhLgRMbAYhsMJhOHeBOdNec5vGMebM
+ mZnLgaTefB9AFWz9MrQ8vO5U/G+tR28KVWx25qTZHGsAO3m7wYWZNySfd A==;
+X-CSE-ConnectionGUID: UF+PGGPWSSCZaalGleLw1w==
+X-CSE-MsgGUID: nJ7aeXq7RZ2Yt8ALZut9Xw==
+X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23942476"
+Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
  by internal-pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:06:38 +0000
-Received: from EX19MTAUWC001.ant.amazon.com [205.251.233.105:20403]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.58.199:2525]
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:07:19 +0000
+Received: from EX19MTAUWA002.ant.amazon.com [205.251.233.234:27061]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.19.34:2525]
  with esmtp (Farcaster)
- id b648b38f-d09c-483b-bbcb-871a0b98d8b5; Sat, 18 Jul 2026 22:06:38 +0000 (UTC)
-X-Farcaster-Flow-ID: b648b38f-d09c-483b-bbcb-871a0b98d8b5
+ id a20f09b3-eb34-4ef8-b450-f12e054ddefd; Sat, 18 Jul 2026 22:07:19 +0000 (UTC)
+X-Farcaster-Flow-ID: a20f09b3-eb34-4ef8-b450-f12e054ddefd
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWC001.ant.amazon.com (10.250.64.174) with Microsoft SMTP Server
+ EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:06:38 +0000
+ Sat, 18 Jul 2026 22:07:18 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:06:28 +0000
+ Sat, 18 Jul 2026 22:07:09 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -93,10 +93,10 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>, "Subbaraya
  Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth <th.huth+qemu@posteo.eu>, "Ran
  Wang" <wangran@bosc.ac.cn>, Hao Wu <wuhaotsh@google.com>
-Subject: [RFC PATCH v2 106/137] system,
- backends: Give named memory regions an explicit owner
-Date: Sat, 18 Jul 2026 21:36:21 +0000
-Message-ID: <20260718213652.37673-107-graf@amazon.com>
+Subject: [RFC PATCH v2 108/137] memory: Require an owner for named memory
+ regions
+Date: Sat, 18 Jul 2026 21:36:23 +0000
+Message-ID: <20260718213652.37673-109-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260718213652.37673-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -105,7 +105,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D036UWB002.ant.amazon.com (10.13.139.139) To
+X-ClientProxiedBy: EX19D040UWA004.ant.amazon.com (10.13.139.93) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
 Received-SPF: pass client-ip=44.246.68.102;
  envelope-from=prvs=65292d44c=graf@amazon.de;
@@ -133,66 +133,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-memory_map_init() creates the "system" and "io" root memory regions
-after qemu_create_machine() has instantiated current_machine, so
-qdev_get_machine() is available as owner.
+Now that every named memory region in the tree passes an explicit
+owner, replace the /machine/unattached fallback in
+memory_region_do_init() and portio_list_add_1() with an assertion.
 
-The IGVM backend creates guest-memory regions on behalf of the
-confidential-guest machine it carries in ctx->machine_state; use
-that as owner.
-
-subpage_init() and io_mem_init() pass name==NULL and thus never
-QOM-parent their MemoryRegion; leave owner NULL there.
-
-No functional change intended.
+Anonymous (name==NULL) regions such as subpages and io_mem_unassigned
+are never QOM-parented and continue to accept a NULL owner.
 
 AI-used-for: code (refactoring)
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- backends/igvm.c  | 6 ++++--
- system/physmem.c | 4 ++--
- 2 files changed, 6 insertions(+), 4 deletions(-)
+ system/ioport.c | 7 ++-----
+ system/memory.c | 7 +++----
+ 2 files changed, 5 insertions(+), 9 deletions(-)
 
-diff --git a/backends/igvm.c b/backends/igvm.c
-index 80e87fe602..544a51b70e 100644
---- a/backends/igvm.c
-+++ b/backends/igvm.c
-@@ -256,13 +256,15 @@ static void *qigvm_prepare_memory(QIgvm *ctx, uint64_t addr, uint64_t size,
-         igvm_pages = g_new0(MemoryRegion, 1);
-         if (ctx->machine_state->cgs &&
-             ctx->machine_state->cgs->require_guest_memfd) {
--            if (!memory_region_init_ram_guest_memfd(igvm_pages, NULL,
-+            if (!memory_region_init_ram_guest_memfd(igvm_pages,
-+                                                     OBJECT(ctx->machine_state),
-                                                     region_name, size, errp)) {
-                 g_free(igvm_pages);
-                 return NULL;
-             }
-         } else {
--            if (!memory_region_init_ram(igvm_pages, NULL, region_name, size,
-+            if (!memory_region_init_ram(igvm_pages, OBJECT(ctx->machine_state),
-+                                        region_name, size,
-                                         errp)) {
-                 g_free(igvm_pages);
-                 return NULL;
-diff --git a/system/physmem.c b/system/physmem.c
-index c21ea92915..8466885994 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -3100,11 +3100,11 @@ static void memory_map_init(void)
- {
-     system_memory = g_malloc(sizeof(*system_memory));
+diff --git a/system/ioport.c b/system/ioport.c
+index 0a1b80f299..0415b3cd60 100644
+--- a/system/ioport.c
++++ b/system/ioport.c
+@@ -248,11 +248,8 @@ static void portio_list_add_1(PortioList *piolist,
+     /* Reparent the MemoryRegion to the piolist owner */
+     object_ref(&mrpio->mr);
+     object_unparent(OBJECT(&mrpio->mr));
+-    if (!piolist->owner) {
+-        owner = machine_get_container("unattached");
+-    } else {
+-        owner = piolist->owner;
+-    }
++    g_assert(piolist->owner);
++    owner = piolist->owner;
+     name = g_strdup_printf("%s[*]", piolist->name);
+     object_property_add_child(owner, name, OBJECT(&mrpio->mr));
+     g_free(name);
+diff --git a/system/memory.c b/system/memory.c
+index 838be57b4d..d1ac7ffa04 100644
+--- a/system/memory.c
++++ b/system/memory.c
+@@ -1230,14 +1230,13 @@ static void memory_region_do_init(MemoryRegion *mr,
+     mr->dev = (DeviceState *) object_dynamic_cast(mr->owner, TYPE_DEVICE);
+     mr->ram_block = NULL;
  
--    memory_region_init(system_memory, NULL, "system", UINT64_MAX);
-+    memory_region_init(system_memory, qdev_get_machine(), "system", UINT64_MAX);
-     address_space_init(&address_space_memory, system_memory, "memory");
++    /* A named MemoryRegion is a QOM child of @owner */
++    g_assert(!name || owner);
++
+     if (name) {
+         char *escaped_name = memory_region_escape_name(name);
+         char *name_array = g_strdup_printf("%s[*]", escaped_name);
  
-     system_io = g_malloc(sizeof(*system_io));
--    memory_region_init_io(system_io, NULL, &unassigned_io_ops, NULL, "io",
-+    memory_region_init_io(system_io, qdev_get_machine(), &unassigned_io_ops, NULL, "io",
-                           65536);
-     address_space_init(&address_space_io, system_io, "I/O");
- }
+-        if (!owner) {
+-            owner = machine_get_container("unattached");
+-        }
+-
+         object_property_add_child(owner, name_array, OBJECT(mr));
+         object_unref(OBJECT(mr));
+         g_free(name_array);
 -- 
 2.47.1
 

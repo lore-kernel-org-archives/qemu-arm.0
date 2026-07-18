@@ -4,78 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27614C44516
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Jul 2026 23:27:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A123C4451B
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 08:36:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wkru0-0001cI-S4; Fri, 17 Jul 2026 19:23:32 -0400
+	id 1wl0Wn-0004Tg-4a; Sat, 18 Jul 2026 04:36:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wkrty-0001as-Aj
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:30 -0400
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wl0Wm-0004TA-2z
+ for qemu-arm@nongnu.org; Sat, 18 Jul 2026 04:36:08 -0400
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wkrtw-00071s-62
- for qemu-arm@nongnu.org; Fri, 17 Jul 2026 19:23:29 -0400
-Received: by mail-pg1-x52d.google.com with SMTP id
- 41be03b00d2f7-ca80d708489so1593896a12.1
- for <qemu-arm@nongnu.org>; Fri, 17 Jul 2026 16:23:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wl0Wk-0000TL-Hl
+ for qemu-arm@nongnu.org; Sat, 18 Jul 2026 04:36:07 -0400
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-81ef11a0972so17050627b3.1
+ for <qemu-arm@nongnu.org>; Sat, 18 Jul 2026 01:36:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1784363765; cv=none;
+ d=google.com; s=arc-20260327;
+ b=LYHZjJ629d5B1YgcJcfgctNgclatMBBtnMj9+Waw1b4oqXyF7dK8AX8Zq/a8+SbqXV
+ Nk1H2k45UCjmiCx8xqlJ6kerjrJQtlEcQO6R0H6pMKsqnAoPA4frpP0JPJ8ULi/KaYwm
+ nCSFYU4ZrOaZGiXq4MgSMwbykpwygj8DayFSHHEPVhNIZF3oSMLaJRYuPq4c0lXUiL26
+ OThVCEo2tMZ5dv8JQDpOilUagKJhBEVBrdLhOJyuPyauCfKOKJ9OuDon5H2ABO+fBwCZ
+ QHCEqjFSXeTtrNgC1oX/91xLCuRvp8cAe9vUR+miZCBhIGg2qihHJWUwXpcj1+DBp3DQ
+ Vw9w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=1bhdRA+bAZrwL/W/YVvs3hmG2rI0cukExJuEs58QV0A=;
+ fh=+cDv2dAHmeKgXXqXOG0RFJcXPK/7PTC1MP/D9m1w8t0=;
+ b=Inqchn45fsv4c3y7tBCj/JBeiEyFt8MfjoxoSOgPlS2CPjKxbkJxQzxRKS+IblNfQt
+ kuMyE/C/Zaw9m46GErkyq5kwAx8LRQIeVox873mTzzDbUCgR3EhLnAQA4j24PJvNGuGL
+ O3v45HAkK+R1PrFaAcKYmgvtazi74Qx+34J9VrLqgj8fRyHHBSGobarKMbrMykCcygVo
+ ZllIa3ELot/+nCd2CEtNTK08ndrOsiPreDj7L1Nn6Zu94DrFcltf5Krt8x0X3+QJa0w9
+ 3TophZFUQjo0X2gFfOjZ0P5ObHRiUzA2REH0MBcWJ1ZKksWuKGNBIBVJnfWBdDpKy1Zx
+ Y5CA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784330607; x=1784935407; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=hoKL+T5ZAMVBhG4qjN+wRa38usEFNIxUeO3xCWyHIIM=;
- b=m3IRTIyUUrImJNcPSCcQ8eGPJpHyemnqZ9yDLIrsUyiGFLhLoTVZstCoC8Ox6hQKzi
- ogXtQ5LSYKPsg1d3mGKOUJsBSpu1ys6QwwChau7YdHlVI0ES3IFy9g9gfBRQrQp7QIqh
- b2T9ar5zMiWOS874HvZu9KDvfAytDXuBqgdtFtFWWV64Lap4cO9JR3NJ/UYhRjcdr7S9
- Ci/9n+G3fO/j8D4ImlJJV0pyjErDjBqmXYqSU/fLIWZBw6SCwjoNgcnm0IDtdG/mGAc/
- UnZsqTRcHINVYI1e433V5gWtqShZ59BhZWFsqIp74KpvQV7pBiK3hAQ+sxGuh3db7u/C
- I52g==
+ d=linaro.org; s=google; t=1784363765; x=1784968565; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=1bhdRA+bAZrwL/W/YVvs3hmG2rI0cukExJuEs58QV0A=;
+ b=nDGYbfpwFQNxXCRPK1/ypB85KWDNNCLcYW2279ETW+zuwMPc9p9LUwadv47GgKu5uJ
+ L4RTieDCu3A/8U4kLbV9XvAKJkRKSmy0ycet0TImmnQM+ItzKmwpp/Zffmz+u0wg9dGo
+ ORCWC0//RJwlrMXpXw3sJgq3EXbPTAXFLJXnJXq1DINOZcbYm9fVWvuShO+eB3Kjx5e/
+ 3gJFv9pzN1bdZwiHCotmtM9u9rj4VtJpc7rkuMlplFeDLFuZbyuWXiKey/fvHPePEwaz
+ nh2FgSM+MZHGrPhxDnW8XPL4x/sNK2SZ7EKYLKk9No4Wl8E7QS9+tgcNvkmO/m2F4j9V
+ Aztg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784330607; x=1784935407;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=hoKL+T5ZAMVBhG4qjN+wRa38usEFNIxUeO3xCWyHIIM=;
- b=BDEVPgAi1/0NXupL9x9rJdszoCgW+60+FOjkz39pczWDCYKyCYekDiAd3+iaLkwUHc
- CFv4TFihWRycv8lGHdhk+T0LHDu1X9xfc1/9Bg4wHWSckknigB4tuvy2UKgTDCCDONTC
- roNDY1HhUtojoESZ40qCjQfCL+aJzKTsUsT+htv310ISo3Q2P3bx0cjVFUYpZmqnxYum
- g0taZEQCYeYaaVVpPnMj/sw6rzwF5xSURDBgsqsUMWqOZdD9FdUHZ5Ca6spMkMT32Ab2
- +vNB+AyJ+S+1fKHpKAHkWJLwFwu79WvJbDBhRzxFmGsOWOYGNgvrQoKJ9iLEvnjEZ8Vo
- Aeew==
-X-Gm-Message-State: AOJu0YxzOIaRX3Q1OZdRKvWvELjyj8yfhXGsvq1itIGWXoBEsn1NjPK1
- Fh+IR+qFZPFzDXi57WTEPRco0ePK4exg/3r6wTS5LzM2GuQUj/DLvQIhcewmYn/so7s=
-X-Gm-Gg: AfdE7clKHWSVa4TjUUgZVa9mtQPYYe07E8JYDQAQTqccmtuYgFuGyoxt0Nrdy/uMral
- e9MDiWRTHWznsHZxm2oE+dqzmndvoogI3T0SM7Sud/pIrWg70MtXZtcimVzTkHIwpTE4IHY+dSt
- uj6WsSdVbVvTnv2AlybnZQgjkF6LKkfkGDAeRjFCw4xF8iru6Zn2jYguvURIUJksxjzc4ctHvdN
- tOvrMXGPvdWddCzIizGfHG9NfCNR3voQO+7juhTobhXWKZcGXonPP2Tyv+4nD8IAxjlJqvcOui6
- c2CtWAHknqiB+wtDlZYntX/bdpgAys4x90Lf2JH9AI6DZkYKNw7bUYz6MUrPNScJpiOAtzrl93y
- F6Kr2qXPmxAKhym6hkbAafaRCzqKeMgiOL70nNL7v+m+Mca/PM9KLabNUIMeguQ8c45+qvScV1i
- Qc9U1VLc8=
-X-Received: by 2002:a17:90b:1345:b0:37e:1620:dabc with SMTP id
- 98e67ed59e1d1-38e3cfd30a6mr9211116a91.0.1784330606704; 
- Fri, 17 Jul 2026 16:23:26 -0700 (PDT)
-Received: from stoup.. ([32.140.233.50]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-13ce2a18a47sm8186261c88.8.2026.07.17.16.23.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Jul 2026 16:23:26 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 14/17] target/arm: Drop clean_addr_tbi before helper_dc_zva
-Date: Fri, 17 Jul 2026 16:23:02 -0700
-Message-ID: <20260717232306.378988-16-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260717232306.378988-1-richard.henderson@linaro.org>
-References: <20260717232306.378988-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20251104; t=1784363765; x=1784968565;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=1bhdRA+bAZrwL/W/YVvs3hmG2rI0cukExJuEs58QV0A=;
+ b=GyS1tTjuBWfu5TGydqNPBLZtXH+qa3VF9w8R1WymEmtB+J4cMhewama+pT5Tn+0Xdv
+ NOYFlo1ljrYoOBuXpfux/+P6Scqy2qfwQNCKXjkdeNU5NmtxPe0RRZwZDyH1H9SIG87H
+ 48wXwL3tqtdxfyooqZ/keN4LXR4WQ5ImPgDKlS3Y3TqJO8ALHFiuklcOoyFeCZH7Esiq
+ MXK9VGLH/OaXM4oAcbR+s7SlbYvqyDAoTRb9OqkN0XZ1so+sU0vpL0YiPuRsFjL+dSYN
+ 5oDJA5fjduehcQMpIKUIWOYew/YFGayFia40m6a3hgdmEPytSdMyYuGo4979D06gZvph
+ uBhw==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RqFkOqbf1y3XNrWc+6F7Uzb2tnJjzjEE1l8Dti8coKnWhwGTa40K4Ob5hKMpjqfDDSPmaFOczT9Ug==@nongnu.org
+X-Gm-Message-State: AOJu0YxQ2N13HVZBX89jNRSs/KqWqacs9NEYxU4CjIN8op8iDIyPPi4h
+ T6jBn4SmKLMssEeEh8ty2xV+mlIPicnKOTpnkIZaMF/N/C3DVOmwq5COX6rpBsh4EIs541MSlQj
+ trQQGZgsghBmlwb/wk8PvVTu5MO8XVdGVJZ3Jx7p9/w==
+X-Gm-Gg: AfdE7ckyyNLIGjdX9CmHqD2jD6LljdjQEV3iG6LP9rr/T0P0JPfEjhOQzK12EHIBKyj
+ 5bRHr5EwJhB+0K6/jXu0ulvqLXh5xrPmj5HeXZOxj/aRo4vWva3X3My8aLBFrkXwOkny9x0QFg3
+ O4ZQKoHJMIKh9sMICXkDtbfvXc6G0br6yMBurGJ9SdgiTlRQ9woxXQa1Ym6Um4TrOx3lKyqFbyl
+ LRNDJ8v/gkr61UqAycD/3ra3qyLVCibREqnKl4q10BQrKXeOAiFfX0hkxOK3h9mpyAWyHpPP2YN
+ 40ioodluhBkZs490DubfXOB8weuHggAJ6ZYGMCaFAlmt7Q==
+X-Received: by 2002:a05:690c:6107:b0:81e:bbcd:f5c3 with SMTP id
+ 00721157ae682-81ef25e16eamr20044647b3.36.1784363765260; Sat, 18 Jul 2026
+ 01:36:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52d.google.com
+References: <20260713064617.85374-1-jay.chang@sifive.com>
+In-Reply-To: <20260713064617.85374-1-jay.chang@sifive.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 18 Jul 2026 09:35:53 +0100
+X-Gm-Features: AUfX_myELAvPEZOQ84O3IQo3tQ5Iritm3JvnM1UFUffMQLDNjrHx4iHCNzjBWr8
+Message-ID: <CAFEAcA8B6aT3oSpB86Kxxkb6sFJ3GXf306UUtWhDsK8qrRw0EQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/net/xilinx_axienet: Fix PHY register 17 link status
+ reporting
+To: Jay Chang <jay.chang@sifive.com>
+Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowangio@gmail.com>, 
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
+ Frank Chang <frank.chang@sifive.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -98,49 +119,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now that probe_write always handles tagged pointers, we
-don't need to handle this during translation.
+On Mon, 13 Jul 2026 at 07:46, Jay Chang <jay.chang@sifive.com> wrote:
+>
+> The Marvell 88E1111 PHY register 17 (PHY Specific Status Register)
+> bit 10 reports real-time link status. Previously, this register
+> returned a fixed value of 0x8800 with bit 10 always cleared,
+> causing U-Boot to always detect "No link" even when the link
+> was up.
+>
+> Signed-off-by: Jay Chang <jay.chang@sifive.com>
+> Reviewed-by: Frank Chang <frank.chang@sifive.com>
+> ---
+>  hw/net/xilinx_axienet.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+> index 970732b162..9f5f65ecfa 100644
+> --- a/hw/net/xilinx_axienet.c
+> +++ b/hw/net/xilinx_axienet.c
+> @@ -103,6 +103,9 @@ static unsigned int tdk_read(struct PHY *phy, unsigned int req)
+>          case 17:
+>              /* Marvell PHY on many xilinx boards.  */
+>              r = 0x8000; /* 1000Mb  */
+> +            if (phy->link) {
+> +                r |= 0x0400; /* Link is up */
+> +            }
+>              break;
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/translate-a64.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+This matches the Marvell PHY datasheet, so seems reasonable.
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 590c7d8064..24a0cd8345 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -3142,7 +3142,7 @@ static void handle_sys(DisasContext *s, bool isread,
-             gen_helper_mte_check_zva(tcg_rt, tcg_env, gen_mtedesc_zva(s),
-                                      cpu_reg(s, rt));
-         } else {
--            tcg_rt = clean_data_tbi(s, cpu_reg(s, rt));
-+            tcg_rt = cpu_reg(s, rt);
-         }
-         gen_helper_dc_zva(tcg_env, tcg_rt);
-         return;
-@@ -4763,7 +4763,7 @@ static bool trans_LD_single_repl(DisasContext *s, arg_LD_single_repl *a)
- 
- static bool trans_STZGM(DisasContext *s, arg_ldst_tag *a)
- {
--    TCGv_i64 addr, clean_addr, tcg_rt;
-+    TCGv_i64 addr, tcg_rt;
- 
-     if (!dc_isar_feature(aa64_mte, s)) {
-         return false;
-@@ -4787,9 +4787,8 @@ static bool trans_STZGM(DisasContext *s, arg_ldst_tag *a)
-      * The non-tags portion of STZGM is mostly like DC_ZVA,
-      * except the alignment happens before the access.
-      */
--    clean_addr = clean_data_tbi(s, addr);
--    tcg_gen_andi_i64(clean_addr, clean_addr, -s->dcz_blocksize);
--    gen_helper_dc_zva(tcg_env, clean_addr);
-+    tcg_gen_andi_i64(addr, addr, -s->dcz_blocksize);
-+    gen_helper_dc_zva(tcg_env, addr);
-     return true;
- }
- 
--- 
-2.43.0
+Applied to target-arm.next, thanks.
 
+-- PMM
 

@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D280C4451B
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:10:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44672C4451B
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 22:10:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlDEM-0001lE-IX; Sat, 18 Jul 2026 18:09:58 -0400
+	id 1wlDF9-00046D-Na; Sat, 18 Jul 2026 18:10:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlDEK-0001fJ-14; Sat, 18 Jul 2026 18:09:56 -0400
-Received: from pdx-out-006.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.26.1.71])
+ id 1wlDF8-000401-49; Sat, 18 Jul 2026 18:10:46 -0400
+Received: from pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.12.53.23])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlDEI-0006Vv-8A; Sat, 18 Jul 2026 18:09:55 -0400
+ id 1wlDF6-0006ot-AM; Sat, 18 Jul 2026 18:10:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1784412594; x=1815948594;
+ t=1784412644; x=1815948644;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=FY183wjjQlqz+5usHhcMwB4KgwWExApPxxwqiZT033s=;
- b=WsHX3QHCkKpWNTPsPP9Z710qBHXv0NofGWZOA2yPuNTU7axS7MpaPtN2
- AZ/7hXPt9mQMRgDkPkpQeYJj/DDBAaqa8tviCdGpqUiHd2F3JOiRm65qA
- 9fxrypc2OiFu+BxfuDfGuVd9n/WbOSrEBNgaOeAbB0KsjMqZ98tEytu8U
- mecTIxauPG9/hbCyX4osImWlN1SlJlbdkVIPl85j+G8PckensXnSW/etp
- Kq/Ggvso096CySe9q4XulO9oE3s5X+AWpzGs9M1Po6DD36uFCr9vcuQfL
- oGE5TnkjZG2lwS61bYXY+FMvElX2QrK0zYlcJGa74fNfq7hw35CYBazEl Q==;
-X-CSE-ConnectionGUID: G1M1ZeVnS/ueV290kyp2SQ==
-X-CSE-MsgGUID: +Zv4XqJ2TJO48HlGI7jmTQ==
-X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23945061"
-Received: from ip-10-5-9-48.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.9.48])
- by internal-pdx-out-006.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:09:50 +0000
-Received: from EX19MTAUWA001.ant.amazon.com [205.251.233.182:4642]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.0.115:2525]
+ bh=MBBs+r4D9ciSt9jJWEKbWpQa5N9YAToQOfGqPWyypko=;
+ b=mlBRBarcqJjjD6l6DpuPUfb5q7EKp8dHrDr/YioAgAnVzncFvhqWRpLe
+ oO8qxVm4Y8/UQTgxZ1+YyrQnj0ddAz2Rk6qQDjm8Tw/SGo3lEjmIYnokz
+ WPnCfLdpDTDtF0g+KPaASk/iI0gx/muTjv+lSVPYczt7NovfKPY8OXvcn
+ vec485+1nKJaYuQ1ek58xvnLoSqRxXNOCVa5/lCj6f0aOQ/AZ4XcC3VmH
+ YEJZMEgHlBMCuYMaWOacJN/bfcoOoSpFHY4GnsEfEen+1oX7v+Dxf5QpQ
+ /LYFJC3LzHe5DnPr/QUaRUqYDFb3kGeItgJhE5fgVvNJCOWbLpswxaA8p Q==;
+X-CSE-ConnectionGUID: B5fxCVjdQ72D+nla9K5uVA==
+X-CSE-MsgGUID: STLuVnsbTLeqUtl9rQQ6Ag==
+X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23795955"
+Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
+ by internal-pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 22:10:40 +0000
+Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.111:22030]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.58.199:2525]
  with esmtp (Farcaster)
- id f6c48346-945f-4e21-bf60-dc11b11f4cc5; Sat, 18 Jul 2026 22:09:50 +0000 (UTC)
-X-Farcaster-Flow-ID: f6c48346-945f-4e21-bf60-dc11b11f4cc5
+ id bd32d152-e438-4285-8d5c-6547172343b7; Sat, 18 Jul 2026 22:10:40 +0000 (UTC)
+X-Farcaster-Flow-ID: bd32d152-e438-4285-8d5c-6547172343b7
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWA001.ant.amazon.com (10.250.64.217) with Microsoft SMTP Server
+ EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:09:50 +0000
+ Sat, 18 Jul 2026 22:10:40 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 22:09:40 +0000
+ Sat, 18 Jul 2026 22:10:30 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -93,10 +93,10 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>, "Subbaraya
  Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth <th.huth+qemu@posteo.eu>, "Ran
  Wang" <wangran@bosc.ac.cn>, Hao Wu <wuhaotsh@google.com>
-Subject: [RFC PATCH v2 117/137] irq: Delete the *_orphan() IRQ allocation
- variants
-Date: Sat, 18 Jul 2026 21:36:32 +0000
-Message-ID: <20260718213652.37673-118-graf@amazon.com>
+Subject: [RFC PATCH v2 120/137] hw/intc/mips_gic: Register reset handler at
+ realize, not instance_init
+Date: Sat, 18 Jul 2026 21:36:35 +0000
+Message-ID: <20260718213652.37673-121-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260718213652.37673-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -105,18 +105,18 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D036UWC003.ant.amazon.com (10.13.139.214) To
+X-ClientProxiedBy: EX19D039UWB002.ant.amazon.com (10.13.138.79) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.26.1.71;
+Received-SPF: pass client-ip=52.12.53.23;
  envelope-from=prvs=65292d44c=graf@amazon.de;
- helo=pdx-out-006.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
 X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
+ RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
  UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -133,112 +133,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Every caller has been converted to the parented form; drop the
-transitional *_orphan() helpers.
+mips_gic_init() calls qemu_register_reset(gic_reset, s), but there is
+no matching qemu_unregister_reset() in an instance_finalize.  This
+leaks a reset handler every time the type is introspected via
+device-list-properties (object_new + object_unref).  The following
+patch makes each legacy reset handler visible in the composition tree
+under /machine/reset-container/legacy-reset[*], which turns this
+pre-existing leak into a device-introspect-test failure.
+
+Move the registration to mips_gic_realize(), matching every other
+in-tree interrupt controller.
 
 AI-used-for: code (refactoring)
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/core/irq.c         | 35 -----------------------------------
- include/hw/core/irq.h | 20 +-------------------
- 2 files changed, 1 insertion(+), 54 deletions(-)
+ hw/intc/mips_gic.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/core/irq.c b/hw/core/irq.c
-index 1ae53a74d3..459ff467ff 100644
---- a/hw/core/irq.c
-+++ b/hw/core/irq.c
-@@ -68,34 +68,6 @@ void qemu_init_irqs(IRQState irq[], size_t count,
+diff --git a/hw/intc/mips_gic.c b/hw/intc/mips_gic.c
+index 4777c70d6b..c0f1501bcc 100644
+--- a/hw/intc/mips_gic.c
++++ b/hw/intc/mips_gic.c
+@@ -394,7 +394,6 @@ static void mips_gic_init(Object *obj)
+     memory_region_init_io(&s->mr, OBJECT(s), &gic_ops, s,
+                           "mips-gic", GIC_ADDRSPACE_SZ);
+     sysbus_init_mmio(sbd, &s->mr);
+-    qemu_register_reset(gic_reset, s);
+ }
+ 
+ static void mips_gic_realize(DeviceState *dev, Error **errp)
+@@ -430,6 +429,7 @@ static void mips_gic_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < s->num_irq; i++) {
+         s->irq_state[i].irq = qdev_get_gpio_in(dev, i);
      }
++    qemu_register_reset(gic_reset, s);
  }
  
--qemu_irq *qemu_extend_irqs_orphan(qemu_irq *old, int n_old, qemu_irq_handler handler,
--                           void *opaque, int n)
--{
--    qemu_irq *s;
--    int i;
--
--    if (!old) {
--        n_old = 0;
--    }
--    s = old ? g_renew(qemu_irq, old, n + n_old) : g_new(qemu_irq, n);
--    for (i = n_old; i < n + n_old; i++) {
--        s[i] = qemu_allocate_irq_orphan(handler, opaque, i);
--    }
--    return s;
--}
--
--qemu_irq *qemu_allocate_irqs_orphan(qemu_irq_handler handler, void *opaque, int n)
--{
--    return qemu_extend_irqs_orphan(NULL, 0, handler, opaque, n);
--}
--
--qemu_irq qemu_allocate_irq_orphan(qemu_irq_handler handler, void *opaque, int n)
--{
--    IRQState *irq = IRQ(object_new(TYPE_IRQ));
--    init_irq_fields(irq, handler, opaque, n);
--    return irq;
--}
--
- qemu_irq qemu_allocate_irq(Object *owner, const char *name,
-                            qemu_irq_handler handler, void *opaque, int n)
- {
-@@ -153,13 +125,6 @@ static void qemu_notirq(void *opaque, int line, int level)
-     qemu_set_irq(irq, !level);
- }
- 
--qemu_irq qemu_irq_invert_orphan(qemu_irq irq)
--{
--    /* The default state for IRQs is low, so raise the output now.  */
--    qemu_irq_raise(irq);
--    return qemu_allocate_irq_orphan(qemu_notirq, irq, 0);
--}
--
- qemu_irq qemu_irq_invert(Object *owner, const char *name, qemu_irq irq)
- {
-     /* The default state for IRQs is low, so raise the output now.  */
-diff --git a/include/hw/core/irq.h b/include/hw/core/irq.h
-index 5ccccd2697..89923cf4a8 100644
---- a/include/hw/core/irq.h
-+++ b/include/hw/core/irq.h
-@@ -74,19 +74,8 @@ void qemu_init_irq_child(Object *parent, const char *propname,
- void qemu_init_irqs(IRQState irq[], size_t count,
-                     qemu_irq_handler handler, void *opaque);
- 
--/* Returns an array of N IRQs. Each IRQ is assigned the argument handler and
-- * opaque data.
-- */
--qemu_irq *qemu_allocate_irqs_orphan(qemu_irq_handler handler, void *opaque, int n);
--
- /*
-- * Allocates a single IRQ. The irq is assigned with a handler, an opaque
-- * data and the interrupt number.
-- */
--qemu_irq qemu_allocate_irq_orphan(qemu_irq_handler handler, void *opaque, int n);
--
--/*
-- * Same as the *_orphan() variants above, but the new IRQ objects are
-+ * Allocate IRQ objects with an explicit QOM parent.  The new objects are
-  * parented under @owner with property name @name (or @name[*] for the
-  * array/extend variants).  The reference is held by @owner; call
-  * qemu_free_irq() to unparent and free.
-@@ -99,17 +88,10 @@ qemu_irq *qemu_extend_irqs(Object *owner, const char *name,
-                            qemu_irq *old, int n_old,
-                            qemu_irq_handler handler, void *opaque, int n);
- 
--/* Extends an Array of IRQs. Old IRQs have their handlers and opaque data
-- * preserved. New IRQs are assigned the argument handler and opaque data.
-- */
--qemu_irq *qemu_extend_irqs_orphan(qemu_irq *old, int n_old, qemu_irq_handler handler,
--                                void *opaque, int n);
--
- void qemu_free_irqs(qemu_irq *s, int n);
- void qemu_free_irq(qemu_irq irq);
- 
- /* Returns a new IRQ with opposite polarity.  */
--qemu_irq qemu_irq_invert_orphan(qemu_irq irq);
- qemu_irq qemu_irq_invert(Object *owner, const char *name, qemu_irq irq);
- 
- /* For internal use in qtest. */
+ static const Property mips_gic_properties[] = {
 -- 
 2.47.1
 

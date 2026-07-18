@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3741CC4450A
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 21:43:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DFADC4450A
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 21:43:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlCn1-0007Rm-Ng; Sat, 18 Jul 2026 17:41:43 -0400
+	id 1wlCoG-0000rh-5M; Sat, 18 Jul 2026 17:43:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlCmz-0007Ll-Fr; Sat, 18 Jul 2026 17:41:41 -0400
-Received: from pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.42.203.116])
+ id 1wlCnn-00007v-W0; Sat, 18 Jul 2026 17:42:36 -0400
+Received: from pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.13.214.179])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlCmw-0002cl-Uy; Sat, 18 Jul 2026 17:41:41 -0400
+ id 1wlCnl-0002fP-Bz; Sat, 18 Jul 2026 17:42:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1784410898; x=1815946898;
+ t=1784410949; x=1815946949;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=aC76E76BUMCHktjAAmYwiTASIngvq0xbC9gJYETSLVY=;
- b=BRasMp0cWPkEoLbw9edpWGUHbk1NpEDAYZfzDv40/5+Rj1GrvOwOXxL6
- aM1ZXpAefShpNBWwlgm5kLOif0fWRsj0Ro6lgJWaKQZ2oucvZcGvQambg
- bU8oCOwORYTGmQlGFo7sZotGFT4pXbr3imcBG3FN2ecmkeObHf3voHw9X
- pPjj/iJGY9iUYkn4CwX7JuIyOXjjIgPxJYP3MI4B2c6Fh73dntUMTp4g5
- 0yXtltsd5skm+hXZkiOw3CtfdculfbZCSRfijhF2oUy3vjhJH65MjQGMK
- drbZ7PE0DGGpp06w3ydYa3KvNNavIDznuL0FDdcVlw7dWk8fJQSSUQ+AF w==;
-X-CSE-ConnectionGUID: B46q3CUBRfWmO7SVnZq9xQ==
-X-CSE-MsgGUID: GuEFUcqsQo+Vg47Z3H9CjA==
-X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23939545"
-Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
- by internal-pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 21:41:35 +0000
-Received: from EX19MTAUWA002.ant.amazon.com [205.251.233.234:10530]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.48.250:2525]
+ bh=5f3HzwuXe0MvsCBU0ME0zpexJU3MHLtq9ie+g2sflTM=;
+ b=Zypekd1FV+MDzw0VPLQJyXXEUe4pbmyNhtB+ea1A0I/TytAyz2++vBBw
+ IjSy9hSoREiaAunF5vx1DntIUtrdRI0gFR3kTABlhCl/o1rkcClL12lRV
+ Cc+CbwRd3NZKCj9bgrNww9Cn44NVqLpRk3PzgW6gSxd03FtOh+7SaIuGI
+ k9sdZ9gPm1YfiaiVrCy2V5urHKxj2CPqhr+ayr5czNB6adUHtmE2sf6C4
+ ShWQHsVT5In4Ms+ePme4RLniSppCh8bGXLdzUD2OPo7fcRXI7A8IRRsfj
+ 6ATjyNBqlDn4GhiB4OY5U+KiQ85zMIJ/G9vhfgz1OnT9OW3RxdZ2bKuae Q==;
+X-CSE-ConnectionGUID: K9+R2bHIRgaKIegRivN9sg==
+X-CSE-MsgGUID: ODEi2OHxRbqb0tBCbjOHOg==
+X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23903655"
+Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
+ by internal-pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 21:42:26 +0000
+Received: from EX19MTAUWA001.ant.amazon.com [205.251.233.182:6891]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.58.199:2525]
  with esmtp (Farcaster)
- id 45655989-78d4-452c-ba66-fdcc5d0266da; Sat, 18 Jul 2026 21:41:35 +0000 (UTC)
-X-Farcaster-Flow-ID: 45655989-78d4-452c-ba66-fdcc5d0266da
+ id f206f6b6-4a63-4ecf-9627-73aa492ccfd6; Sat, 18 Jul 2026 21:42:25 +0000 (UTC)
+X-Farcaster-Flow-ID: f206f6b6-4a63-4ecf-9627-73aa492ccfd6
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
+ EX19MTAUWA001.ant.amazon.com (10.250.64.217) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 21:41:34 +0000
+ Sat, 18 Jul 2026 21:42:25 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 21:41:25 +0000
+ Sat, 18 Jul 2026 21:42:15 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -93,10 +93,9 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>, "Subbaraya
  Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth <th.huth+qemu@posteo.eu>, "Ran
  Wang" <wangran@bosc.ac.cn>, Hao Wu <wuhaotsh@google.com>
-Subject: [RFC PATCH v2 017/137] hw/microblaze: Give onboard devices a QOM
- parent
-Date: Sat, 18 Jul 2026 21:34:52 +0000
-Message-ID: <20260718213652.37673-18-graf@amazon.com>
+Subject: [RFC PATCH v2 020/137] hw/or1k: Give onboard devices a QOM parent
+Date: Sat, 18 Jul 2026 21:34:55 +0000
+Message-ID: <20260718213652.37673-21-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260718213652.37673-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -105,11 +104,11 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D046UWB002.ant.amazon.com (10.13.139.181) To
+X-ClientProxiedBy: EX19D039UWA002.ant.amazon.com (10.13.139.32) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.42.203.116;
+Received-SPF: pass client-ip=52.13.214.179;
  envelope-from=prvs=65292d44c=graf@amazon.de;
- helo=pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
@@ -133,7 +132,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the *_orphan() device-creation calls in hw/microblaze to the new
+Convert the *_orphan() device-creation calls in hw/or1k to the new
 parented API introduced earlier in this series, so every onboard
 device gets a stable path in the composition tree instead of landing
 in /machine/unattached with an unstable device[N] name.
@@ -144,170 +143,190 @@ composite children.  Names follow existing QOM conventions.
 
 Per-site rationale (reviewers: dispute the modeling here):
 
-  hw/microblaze/petalogix_ml605_mmu.c:113 | OBJECT(machine) | "intc" | board init(); single XPS interrupt controller owned by machine
-  hw/microblaze/petalogix_ml605_mmu.c:129 | OBJECT(machine) | "timer" | board init(); single XPS timer block owned by machine
-  hw/microblaze/petalogix_ml605_mmu.c:138 | OBJECT(machine) | "xilinx-eth" | board init(); keep existing child name; drop now-redundant object_property_add_child()
-  hw/microblaze/petalogix_ml605_mmu.c:139 | OBJECT(machine) | "xilinx-dma" | board init(); keep existing child name; drop now-redundant object_property_add_child()
-  hw/microblaze/petalogix_ml605_mmu.c:177 | OBJECT(machine) | "spi" | board init(); single XPS SPI controller owned by machine
-  hw/microblaze/petalogix_ml605_mmu.c:191 | OBJECT(machine) | "spi-flash[*]" | board init(); NUM_SPI_FLASHES instances in loop, auto-index; plugged onto SPI bus but lifetime-owned by machine
-  hw/microblaze/petalogix_s3adsp1800_mmu.c:110 | OBJECT(machine) | "intc" | board init(); single XPS interrupt controller owned by machine
-  hw/microblaze/petalogix_s3adsp1800_mmu.c:122 | OBJECT(machine) | "uart" | board init(); single Xilinx uartlite owned by machine
-  hw/microblaze/petalogix_s3adsp1800_mmu.c:130 | OBJECT(machine) | "timer" | board init(); single XPS timer block owned by machine
-  hw/microblaze/petalogix_s3adsp1800_mmu.c:138 | OBJECT(machine) | "eth" | board init(); single XPS ethernetlite owned by machine
+  hw/or1k/or1k-sim.c:189 | OBJECT(state) | "irq-splitter[*]" | board-init helper receives Or1ksimState; auto-index (net + serial share the pool)
+  hw/or1k/or1k-sim.c:224 | OBJECT(state) | "ompic" | board-init helper receives Or1ksimState; single OMPIC per machine
+  hw/or1k/or1k-sim.c:257 | OBJECT(state) | "irq-splitter[*]" | board-init helper receives Or1ksimState; auto-index alongside net splitter
+  hw/or1k/or1k-sim.c:302 | OBJECT(machine) | "cpu[*]" | MachineClass.init(); auto-index over smp_cpus
+  hw/or1k/virt.c:113 | parent | "irq-splitter[*]" | static helper had no parent-capable arg; add Object *parent first arg, thread OBJECT(state) from all callers; auto-index (serial+rtc+virtio*N)
+  hw/or1k/virt.c:209 | OBJECT(state) | "ompic" | board-init helper receives OR1KVirtState; single OMPIC
+  hw/or1k/virt.c:303 | OBJECT(state) | "rtc" | board-init helper receives OR1KVirtState; single Goldfish RTC
+  hw/or1k/virt.c:382 | OBJECT(state) | "pcie" | board-init helper receives OR1KVirtState; single GPEX host
+  hw/or1k/virt.c:454 | OBJECT(state) | "virtio-mmio[*]" | board-init helper receives OR1KVirtState; called VIRTIO_COUNT times, auto-index
+  hw/or1k/virt.c:484 | OBJECT(machine) | "cpu[*]" | MachineClass.init(); auto-index over smp_cpus
 
 Link: https://lore.kernel.org/qemu-devel/87jyr3w9tc.fsf@pond.sub.org/
 AI-used-for: code (refactoring)
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/microblaze/petalogix_ml605_mmu.c      | 28 ++++++++++--------------
- hw/microblaze/petalogix_s3adsp1800_mmu.c | 16 +++++++-------
- 2 files changed, 20 insertions(+), 24 deletions(-)
+ hw/or1k/or1k-sim.c | 17 ++++++++++-------
+ hw/or1k/virt.c     | 37 ++++++++++++++++++++++---------------
+ 2 files changed, 32 insertions(+), 22 deletions(-)
 
-diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogix_ml605_mmu.c
-index 178cfd4a5e..031de37cec 100644
---- a/hw/microblaze/petalogix_ml605_mmu.c
-+++ b/hw/microblaze/petalogix_ml605_mmu.c
-@@ -110,10 +110,10 @@ petalogix_ml605_init(MachineState *machine)
-                           64 * KiB, 2, 0x89, 0x18, 0x0000, 0x0, 0);
+diff --git a/hw/or1k/or1k-sim.c b/hw/or1k/or1k-sim.c
+index 6962313315..da05d7cbe3 100644
+--- a/hw/or1k/or1k-sim.c
++++ b/hw/or1k/or1k-sim.c
+@@ -186,9 +186,10 @@ static void openrisc_sim_net_init(Or1ksimState *state, hwaddr base, hwaddr size,
+     s = SYS_BUS_DEVICE(dev);
+     sysbus_realize_and_unref(s, &error_fatal);
+     if (num_cpus > 1) {
+-        DeviceState *splitter = qdev_new_orphan(TYPE_SPLIT_IRQ);
++        DeviceState *splitter = qdev_new(OBJECT(state), "irq-splitter[*]",
++                                         TYPE_SPLIT_IRQ);
+         qdev_prop_set_uint32(splitter, "num-lines", num_cpus);
+-        qdev_realize_and_unref(splitter, NULL, &error_fatal);
++        qdev_realize(splitter, NULL, &error_fatal);
+         for (i = 0; i < num_cpus; i++) {
+             qdev_connect_gpio_out(splitter, i, get_cpu_irq(cpus, i, irq_pin));
+         }
+@@ -221,11 +222,11 @@ static void openrisc_sim_ompic_init(Or1ksimState *state, hwaddr base,
+     char *nodename;
+     int i;
  
+-    dev = qdev_new_orphan("or1k-ompic");
++    dev = qdev_new(OBJECT(state), "ompic", "or1k-ompic");
+     qdev_prop_set_uint32(dev, "num-cpus", num_cpus);
  
--    dev = qdev_new_orphan("xlnx.xps-intc");
-+    dev = qdev_new(OBJECT(machine), "intc", "xlnx.xps-intc");
-     qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
-     qdev_prop_set_uint32(dev, "kind-of-intr", 1 << TIMER_IRQ);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, INTC_BASEADDR);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0,
-                        qdev_get_gpio_in(DEVICE(cpu), MB_CPU_IRQ));
-@@ -126,21 +126,17 @@ petalogix_ml605_init(MachineState *machine)
-                    DEVICE_LITTLE_ENDIAN);
- 
-     /* 2 timers at irq 2 @ 100 Mhz.  */
--    dev = qdev_new_orphan("xlnx.xps-timer");
-+    dev = qdev_new(OBJECT(machine), "timer", "xlnx.xps-timer");
-     qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
-     qdev_prop_set_uint32(dev, "one-timer-only", 0);
-     qdev_prop_set_uint32(dev, "clock-frequency", 100 * 1000000);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, TIMER_BASEADDR);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[TIMER_IRQ]);
- 
-     /* axi ethernet and dma initialization. */
--    eth0 = qdev_new_orphan("xlnx.axi-ethernet");
--    dma = qdev_new_orphan("xlnx.axi-dma");
--
--    /* FIXME: attach to the sysbus instead */
--    object_property_add_child(qdev_get_machine(), "xilinx-eth", OBJECT(eth0));
--    object_property_add_child(qdev_get_machine(), "xilinx-dma", OBJECT(dma));
-+    eth0 = qdev_new(OBJECT(machine), "xilinx-eth", "xlnx.axi-ethernet");
-+    dma = qdev_new(OBJECT(machine), "xilinx-dma", "xlnx.axi-dma");
- 
-     ds = object_property_get_link(OBJECT(dma),
-                                   "axistream-connected-target", NULL);
-@@ -153,7 +149,7 @@ petalogix_ml605_init(MachineState *machine)
-                              &error_abort);
-     object_property_set_link(OBJECT(eth0), "axistream-control-connected", cs,
-                              &error_abort);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(eth0), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(eth0), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(eth0), 0, AXIENET_BASEADDR);
-     sysbus_connect_irq(SYS_BUS_DEVICE(eth0), 0, irq[AXIENET_IRQ]);
- 
-@@ -166,7 +162,7 @@ petalogix_ml605_init(MachineState *machine)
-                              &error_abort);
-     object_property_set_link(OBJECT(dma), "axistream-control-connected", cs,
-                              &error_abort);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dma), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dma), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dma), 0, AXIDMA_BASEADDR);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dma), 0, irq[AXIDMA_IRQ0]);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dma), 1, irq[AXIDMA_IRQ1]);
-@@ -174,11 +170,11 @@ petalogix_ml605_init(MachineState *machine)
-     {
-         SSIBus *spi;
- 
--        dev = qdev_new_orphan("xlnx.xps-spi");
-+        dev = qdev_new(OBJECT(machine), "spi", "xlnx.xps-spi");
-         qdev_prop_set_enum(dev, "endianness", ENDIAN_MODE_LITTLE);
-         qdev_prop_set_uint8(dev, "num-ss-bits", NUM_SPI_FLASHES);
-         busdev = SYS_BUS_DEVICE(dev);
--        sysbus_realize_and_unref(busdev, &error_fatal);
-+        sysbus_realize(busdev, &error_fatal);
-         sysbus_mmio_map(busdev, 0, SPI_BASEADDR);
-         sysbus_connect_irq(busdev, 0, irq[SPI_IRQ]);
- 
-@@ -188,14 +184,14 @@ petalogix_ml605_init(MachineState *machine)
-             dinfo = drive_get(IF_MTD, 0, i);
-             qemu_irq cs_line;
- 
--            dev = qdev_new_orphan("n25q128");
-+            dev = qdev_new(OBJECT(machine), "spi-flash[*]", "n25q128");
-             if (dinfo) {
-                 qdev_prop_set_drive_err(dev, "drive",
-                                         blk_by_legacy_dinfo(dinfo),
-                                         &error_fatal);
-             }
-             qdev_prop_set_uint8(dev, "cs", i);
--            qdev_realize_and_unref(dev, BUS(spi), &error_fatal);
-+            qdev_realize(dev, BUS(spi), &error_fatal);
- 
-             cs_line = qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
-             sysbus_connect_irq(busdev, i+1, cs_line);
-diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-index 91c1d64451..b4327ad493 100644
---- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
-+++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-@@ -107,11 +107,11 @@ petalogix_s3adsp1800_init(MachineState *machine)
-                           dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-                           64 * KiB, 1, 0x89, 0x18, 0x0000, 0x0, 1);
- 
--    dev = qdev_new_orphan("xlnx.xps-intc");
-+    dev = qdev_new(OBJECT(machine), "intc", "xlnx.xps-intc");
-     qdev_prop_set_enum(dev, "endianness", endianness);
-     qdev_prop_set_uint32(dev, "kind-of-intr",
-                          1 << ETHLITE_IRQ | 1 << UARTLITE_IRQ);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, INTC_BASEADDR);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0,
-                        qdev_get_gpio_in(DEVICE(cpu), MB_CPU_IRQ));
-@@ -119,28 +119,28 @@ petalogix_s3adsp1800_init(MachineState *machine)
-         irq[i] = qdev_get_gpio_in(dev, i);
+     s = SYS_BUS_DEVICE(dev);
+-    sysbus_realize_and_unref(s, &error_fatal);
++    sysbus_realize(s, &error_fatal);
+     for (i = 0; i < num_cpus; i++) {
+         sysbus_connect_irq(s, i, get_cpu_irq(cpus, i, irq_pin));
      }
+@@ -254,9 +255,10 @@ static void openrisc_sim_serial_init(Or1ksimState *state, hwaddr base,
+     int i;
  
--    dev = qdev_new_orphan(TYPE_XILINX_UARTLITE);
-+    dev = qdev_new(OBJECT(machine), "uart", TYPE_XILINX_UARTLITE);
-     qdev_prop_set_enum(dev, "endianness", endianness);
-     qdev_prop_set_chr(dev, "chardev", serial_hd(0));
+     if (num_cpus > 1) {
+-        DeviceState *splitter = qdev_new_orphan(TYPE_SPLIT_IRQ);
++        DeviceState *splitter = qdev_new(OBJECT(state), "irq-splitter[*]",
++                                         TYPE_SPLIT_IRQ);
+         qdev_prop_set_uint32(splitter, "num-lines", num_cpus);
+-        qdev_realize_and_unref(splitter, NULL, &error_fatal);
++        qdev_realize(splitter, NULL, &error_fatal);
+         for (i = 0; i < num_cpus; i++) {
+             qdev_connect_gpio_out(splitter, i, get_cpu_irq(cpus, i, irq_pin));
+         }
+@@ -299,7 +301,8 @@ static void openrisc_sim_init(MachineState *machine)
+ 
+     assert(smp_cpus >= 1 && smp_cpus <= OR1KSIM_CPUS_MAX);
+     for (n = 0; n < smp_cpus; n++) {
+-        cpus[n] = OPENRISC_CPU(cpu_create_orphan(machine->cpu_type));
++        cpus[n] = OPENRISC_CPU(cpu_create(OBJECT(machine), "cpu[*]",
++                                          machine->cpu_type));
+         if (cpus[n] == NULL) {
+             fprintf(stderr, "Unable to find CPU definition!\n");
+             exit(1);
+diff --git a/hw/or1k/virt.c b/hw/or1k/virt.c
+index f222efafde..7362433a02 100644
+--- a/hw/or1k/virt.c
++++ b/hw/or1k/virt.c
+@@ -105,14 +105,16 @@ static qemu_irq get_cpu_irq(OpenRISCCPU *cpus[], int cpunum, int irq_pin)
+     return qdev_get_gpio_in_named(DEVICE(cpus[cpunum]), "IRQ", irq_pin);
+ }
+ 
+-static qemu_irq get_per_cpu_irq(OpenRISCCPU *cpus[], int num_cpus, int irq_pin)
++static qemu_irq get_per_cpu_irq(Object *parent, OpenRISCCPU *cpus[],
++                                int num_cpus, int irq_pin)
+ {
+     int i;
+ 
+     if (num_cpus > 1) {
+-        DeviceState *splitter = qdev_new_orphan(TYPE_SPLIT_IRQ);
++        DeviceState *splitter = qdev_new(parent, "irq-splitter[*]",
++                                         TYPE_SPLIT_IRQ);
+         qdev_prop_set_uint32(splitter, "num-lines", num_cpus);
+-        qdev_realize_and_unref(splitter, NULL, &error_fatal);
++        qdev_realize(splitter, NULL, &error_fatal);
+         for (i = 0; i < num_cpus; i++) {
+             qdev_connect_gpio_out(splitter, i, get_cpu_irq(cpus, i, irq_pin));
+         }
+@@ -206,11 +208,11 @@ static void openrisc_virt_ompic_init(OR1KVirtState *state, hwaddr base,
+     char *nodename;
+     int i;
+ 
+-    dev = qdev_new_orphan("or1k-ompic");
++    dev = qdev_new(OBJECT(state), "ompic", "or1k-ompic");
+     qdev_prop_set_uint32(dev, "num-cpus", num_cpus);
+ 
+     s = SYS_BUS_DEVICE(dev);
+-    sysbus_realize_and_unref(s, &error_fatal);
++    sysbus_realize(s, &error_fatal);
+     for (i = 0; i < num_cpus; i++) {
+         sysbus_connect_irq(s, i, get_cpu_irq(cpus, i, irq_pin));
+     }
+@@ -233,7 +235,8 @@ static void openrisc_virt_serial_init(OR1KVirtState *state, hwaddr base,
+ {
+     void *fdt = state->fdt;
+     char *nodename;
+-    qemu_irq serial_irq = get_per_cpu_irq(cpus, num_cpus, irq_pin);
++    qemu_irq serial_irq = get_per_cpu_irq(OBJECT(state), cpus, num_cpus,
++                                          irq_pin);
+ 
+     serial_mm_init(get_system_memory(), base, 0, serial_irq, 115200,
+                    serial_hd(0), DEVICE_BIG_ENDIAN);
+@@ -297,10 +300,12 @@ static void openrisc_virt_rtc_init(OR1KVirtState *state, hwaddr base,
+ {
+     void *fdt = state->fdt;
+     char *nodename;
+-    qemu_irq rtc_irq = get_per_cpu_irq(cpus, num_cpus, irq_pin);
++    qemu_irq rtc_irq = get_per_cpu_irq(OBJECT(state), cpus, num_cpus,
++                                       irq_pin);
+ 
+     /* Goldfish RTC */
+-    sysbus_create_simple_orphan(TYPE_GOLDFISH_RTC, base, rtc_irq);
++    sysbus_create_simple(OBJECT(state), "rtc", TYPE_GOLDFISH_RTC, base,
++                         rtc_irq);
+ 
+     /* Goldfish RTC FDT */
+     nodename = g_strdup_printf("/soc/rtc@%" HWADDR_PRIx, base);
+@@ -379,8 +384,8 @@ static void openrisc_virt_pcie_init(OR1KVirtState *state,
+     qemu_irq pcie_irq;
+     int i;
+ 
+-    dev = qdev_new_orphan(TYPE_GPEX_HOST);
 -    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    dev = qdev_new(OBJECT(state), "pcie", TYPE_GPEX_HOST);
 +    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, UARTLITE_BASEADDR);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[UARTLITE_IRQ]);
  
-     /* 2 timers at irq 2 @ 62 Mhz.  */
--    dev = qdev_new_orphan("xlnx.xps-timer");
-+    dev = qdev_new(OBJECT(machine), "timer", "xlnx.xps-timer");
-     qdev_prop_set_enum(dev, "endianness", endianness);
-     qdev_prop_set_uint32(dev, "one-timer-only", 0);
-     qdev_prop_set_uint32(dev, "clock-frequency", 62 * 1000000);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, TIMER_BASEADDR);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[TIMER_IRQ]);
+     /* Map ECAM space. */
+     alias = g_new0(MemoryRegion, 1);
+@@ -410,7 +415,7 @@ static void openrisc_virt_pcie_init(OR1KVirtState *state,
  
--    dev = qdev_new_orphan("xlnx.xps-ethernetlite");
-+    dev = qdev_new(OBJECT(machine), "eth", "xlnx.xps-ethernetlite");
-     qdev_prop_set_enum(dev, "endianness", endianness);
-     qemu_configure_nic_device(dev, true, NULL);
-     qdev_prop_set_uint32(dev, "tx-ping-pong", 0);
-     qdev_prop_set_uint32(dev, "rx-ping-pong", 0);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, ETHLITE_BASEADDR);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[ETHLITE_IRQ]);
+     /* Connect IRQ lines. */
+     for (i = 0; i < PCI_NUM_PINS; i++) {
+-        pcie_irq = get_per_cpu_irq(cpus, num_cpus, irq_base + i);
++        pcie_irq = get_per_cpu_irq(OBJECT(state), cpus, num_cpus, irq_base + i);
  
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pcie_irq);
+         gpex_set_irq_num(GPEX_HOST(dev), i, irq_base + i);
+@@ -448,13 +453,14 @@ static void openrisc_virt_virtio_init(OR1KVirtState *state, hwaddr base,
+     char *nodename;
+     DeviceState *dev;
+     SysBusDevice *sysbus;
+-    qemu_irq virtio_irq = get_per_cpu_irq(cpus, num_cpus, irq_pin);
++    qemu_irq virtio_irq = get_per_cpu_irq(OBJECT(state), cpus, num_cpus,
++                                          irq_pin);
+ 
+     /* VirtIO MMIO devices */
+-    dev = qdev_new_orphan(TYPE_VIRTIO_MMIO);
++    dev = qdev_new(OBJECT(state), "virtio-mmio[*]", TYPE_VIRTIO_MMIO);
+     qdev_prop_set_bit(dev, "force-legacy", false);
+     sysbus = SYS_BUS_DEVICE(dev);
+-    sysbus_realize_and_unref(sysbus, &error_fatal);
++    sysbus_realize(sysbus, &error_fatal);
+     sysbus_connect_irq(sysbus, 0, virtio_irq);
+     sysbus_mmio_map(sysbus, 0, base);
+ 
+@@ -481,7 +487,8 @@ static void openrisc_virt_init(MachineState *machine)
+ 
+     assert(smp_cpus >= 1 && smp_cpus <= VIRT_CPUS_MAX);
+     for (n = 0; n < smp_cpus; n++) {
+-        cpus[n] = OPENRISC_CPU(cpu_create_orphan(machine->cpu_type));
++        cpus[n] = OPENRISC_CPU(cpu_create(OBJECT(machine), "cpu[*]",
++                                          machine->cpu_type));
+         if (cpus[n] == NULL) {
+             fprintf(stderr, "Unable to find CPU definition!\n");
+             exit(1);
 -- 
 2.47.1
 

@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58E2DC4450A
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 21:44:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B91F8C44520
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 21:44:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlCoN-0001Nx-Dm; Sat, 18 Jul 2026 17:43:07 -0400
+	id 1wlCoF-0000pN-P5; Sat, 18 Jul 2026 17:42:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlCoK-0001B5-7i; Sat, 18 Jul 2026 17:43:04 -0400
-Received: from pdx-out-011.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.35.192.45])
+ id 1wlCne-0008Pp-HA; Sat, 18 Jul 2026 17:42:26 -0400
+Received: from pdx-out-012.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([35.162.73.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlCoH-0002gH-NY; Sat, 18 Jul 2026 17:43:03 -0400
+ id 1wlCnc-0002et-7K; Sat, 18 Jul 2026 17:42:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1784410981; x=1815946981;
+ t=1784410940; x=1815946940;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=I5FWnzvUpueVbZs3g/mAe7MQaCCSMX+O6arKRJA8z10=;
- b=Ul8bqaVhXZ4XyBRWHz59e/WUjRRRoJvAv7rXS0wtiH+iwMP0h+kIIQWE
- BcyvKcbbYGxX9GzWkUjxNrTjg1/xM1h9Ero0cENBnf+cW2Bx9pTPHtqew
- JTEaLlM8FZBvdgQQQ9lclO8hfm1wm/3UHOZVPQj960/4Y5AbmlrMWiDz/
- TIGDSgtQ6kD55fZrmVIpeifEOZi+AkQ+bHSkVqfMCyNeF5KKxBNgm3swL
- 20DqnHgV4UE6ggPfqkwV36JaFsyZMOJ4ZbxpQVYSbfMZnm9srDWqesbE8
- D6RC+BdB5qxaklhVNOTb3QHeS2pn8yRuOdBXD7e7D2EwGtgC0n/3ogO1h Q==;
-X-CSE-ConnectionGUID: ruNifr1oSKO6GRacmtekCA==
-X-CSE-MsgGUID: a66UDxMhR/S9DGb7leyh0w==
-X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23694135"
+ bh=em6rgfP+iQqy87v7/SDRTbIww6oaxtM2e2YTN4pPG28=;
+ b=LCjeK+ZSwhYTX6IunkgfpOQ4W6msosJextMWBeIO9lToqb+AbFrFp/Z0
+ Z20/jwEQO7sTVXyMNxjQd3n+c8ZgbVtYDAYGyn0lQepuwTuTaP3b946By
+ U9pj9Tx+QGxH96zooNryaZ0+UOmYFyGY7ZiPYKrVTsXmtx1/Y5h8YDvz9
+ 5ysI/HhNzZvB8wCcvI4Nxch2Uoqf4Dpr1pyPuTwRXrs7x1t/Jgvap9gcg
+ XDfIpBnR3nQCHN7pNt6Icsu5okcDxZcJoB+vpFlcM1q/ULh5ciEyV28F4
+ WA3aZomtjWmyNd6OFcU0pAre4WE0KLjqwY/rPCVXo0zKicgSsQ7r7h/yk Q==;
+X-CSE-ConnectionGUID: XxjJ5GWbQGCDjC9yAxYWyQ==
+X-CSE-MsgGUID: TRur33rHR2SeQZkDUDDh+A==
+X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23715600"
 Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
  smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
- by internal-pdx-out-011.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 21:42:57 +0000
-Received: from EX19MTAUWC001.ant.amazon.com [205.251.233.53:30501]
+ by internal-pdx-out-012.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 21:42:16 +0000
+Received: from EX19MTAUWC002.ant.amazon.com [205.251.233.51:14236]
  by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.0.115:2525]
  with esmtp (Farcaster)
- id bd2d5380-70cf-44e6-b88e-316755de809e; Sat, 18 Jul 2026 21:42:57 +0000 (UTC)
-X-Farcaster-Flow-ID: bd2d5380-70cf-44e6-b88e-316755de809e
+ id fc02224a-a538-4c89-902e-222044210a8b; Sat, 18 Jul 2026 21:42:15 +0000 (UTC)
+X-Farcaster-Flow-ID: fc02224a-a538-4c89-902e-222044210a8b
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWC001.ant.amazon.com (10.250.64.174) with Microsoft SMTP Server
+ EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 21:42:56 +0000
+ Sat, 18 Jul 2026 21:42:15 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 21:42:47 +0000
+ Sat, 18 Jul 2026 21:42:06 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -93,9 +93,9 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>, "Subbaraya
  Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth <th.huth+qemu@posteo.eu>, "Ran
  Wang" <wangran@bosc.ac.cn>, Hao Wu <wuhaotsh@google.com>
-Subject: [RFC PATCH v2 021/137] hw/loongarch: Give onboard devices a QOM parent
-Date: Sat, 18 Jul 2026 21:34:56 +0000
-Message-ID: <20260718213652.37673-22-graf@amazon.com>
+Subject: [RFC PATCH v2 019/137] hw/s390x: Give onboard devices a QOM parent
+Date: Sat, 18 Jul 2026 21:34:54 +0000
+Message-ID: <20260718213652.37673-20-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260718213652.37673-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -104,11 +104,11 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D037UWC002.ant.amazon.com (10.13.139.250) To
+X-ClientProxiedBy: EX19D039UWA002.ant.amazon.com (10.13.139.32) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.35.192.45;
+Received-SPF: pass client-ip=35.162.73.231;
  envelope-from=prvs=65292d44c=graf@amazon.de;
- helo=pdx-out-011.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-012.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
@@ -132,7 +132,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the *_orphan() device-creation calls in hw/loongarch to the new
+Convert the *_orphan() device-creation calls in hw/s390x to the new
 parented API introduced earlier in this series, so every onboard
 device gets a stable path in the composition tree instead of landing
 in /machine/unattached with an unstable device[N] name.
@@ -143,181 +143,131 @@ composite children.  Names follow existing QOM conventions.
 
 Per-site rationale (reviewers: dispute the modeling here):
 
-file:line | creator | parent | name | rationale
-hw/loongarch/virt.c:153 | qdev_new | OBJECT(lvms) | name | board-init helper already receives lvms + child name; drop redundant object_property_add_child()
-hw/loongarch/virt.c:298 | qdev_new | OBJECT(lvms) | "acpi-ged" | board-init helper receives LoongArchVirtMachineState *lvms
-hw/loongarch/virt.c:325 | qdev_new | parent | "platform-bus" | static helper w/o parent ptr; add Object *parent first arg, thread OBJECT(lvms) from caller
-hw/loongarch/virt.c:403 | qdev_new | OBJECT(lvms) | "pci-host" | board-init helper receives lvms
-hw/loongarch/virt.c:488 | sysbus_create_simple | OBJECT(lvms) | "rtc" | board-init helper receives lvms
-hw/loongarch/virt.c:604 | qdev_new | OBJECT(lvms) | "ipi" | virt_irq_init() receives lvms
-hw/loongarch/virt.c:610 | qdev_new | OBJECT(lvms) | "dintc" | virt_irq_init() receives lvms
-hw/loongarch/virt.c:617 | qdev_new | OBJECT(lvms) | "extioi" | virt_irq_init() receives lvms
-hw/loongarch/virt.c:625 | qdev_new | OBJECT(lvms) | "pch-pic" | virt_irq_init() receives lvms
-hw/loongarch/virt.c:631 | qdev_new | OBJECT(lvms) | "pch-msi" | virt_irq_init() receives lvms
+  file:line              | parent              | name        | rationale
+  ap-bridge.c:52         | qdev_get_machine()  | TYPE_AP_BRIDGE | already parented via object_property_add_child(); collapse into qdev_new() and keep the same name for QOM-path stability
+  css-bridge.c:95        | qdev_get_machine()  | TYPE_VIRTUAL_CSS_BRIDGE | already parented via object_property_add_child(); collapse into qdev_new()
+  s390-pci-bus.c:970     | OBJECT(s)           | "zpci[*]"   | auto-created zPCI companion for a hot-plugged PCI device; the S390pciState host bridge owns it; auto-index name
+  s390-virtio-ccw.c:256  | OBJECT(ef)          | type        | already parented to the SCLP event facility; collapse into qdev_new() and keep the type-derived name
+  s390-virtio-ccw.c:268  | OBJECT(ef)          | "sclpcpi"   | already parented; collapse into qdev_new()
+  s390-virtio-ccw.c:312  | OBJECT(machine)     | TYPE_S390_PCI_HOST_BRIDGE | already parented to machine; collapse into qdev_new() with the same name
 
 Link: https://lore.kernel.org/qemu-devel/87jyr3w9tc.fsf@pond.sub.org/
 AI-used-for: code (refactoring)
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/loongarch/virt.c | 48 ++++++++++++++++++++-------------------------
- 1 file changed, 21 insertions(+), 27 deletions(-)
+ hw/s390x/ap-bridge.c       |  6 ++----
+ hw/s390x/css-bridge.c      |  7 +++----
+ hw/s390x/s390-pci-bus.c    |  4 ++--
+ hw/s390x/s390-virtio-ccw.c | 17 +++++++----------
+ 4 files changed, 14 insertions(+), 20 deletions(-)
 
-diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-index 45acdc3ec1..e0129b2f33 100644
---- a/hw/loongarch/virt.c
-+++ b/hw/loongarch/virt.c
-@@ -150,7 +150,7 @@ static PFlashCFI01 *virt_flash_create1(LoongArchVirtMachineState *lvms,
-                                        const char *name,
-                                        const char *alias_prop_name)
- {
--    DeviceState *dev = qdev_new_orphan(TYPE_PFLASH_CFI01);
-+    DeviceState *dev = qdev_new(OBJECT(lvms), name, TYPE_PFLASH_CFI01);
- 
-     qdev_prop_set_uint64(dev, "sector-length", VIRT_FLASH_SECTOR_SIZE);
-     qdev_prop_set_uint8(dev, "width", 4);
-@@ -161,7 +161,6 @@ static PFlashCFI01 *virt_flash_create1(LoongArchVirtMachineState *lvms,
-     qdev_prop_set_uint16(dev, "id2", 0x00);
-     qdev_prop_set_uint16(dev, "id3", 0x00);
-     qdev_prop_set_string(dev, "name", name);
--    object_property_add_child(OBJECT(lvms), name, OBJECT(dev));
-     object_property_add_alias(OBJECT(lvms), alias_prop_name,
-                               OBJECT(dev), "drive");
-     return PFLASH_CFI01(dev);
-@@ -191,7 +190,7 @@ static void virt_flash_map1(PFlashCFI01 *flash,
-     assert(real_size / VIRT_FLASH_SECTOR_SIZE <= UINT32_MAX);
- 
-     qdev_prop_set_uint32(dev, "num-blocks", real_size / VIRT_FLASH_SECTOR_SIZE);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     memory_region_add_subregion(sysmem, base,
-                                 sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0));
- }
-@@ -295,9 +294,9 @@ static DeviceState *create_acpi_ged(DeviceState *pch_pic,
-         event |= ACPI_GED_CPU_HOTPLUG_EVT;
+diff --git a/hw/s390x/ap-bridge.c b/hw/s390x/ap-bridge.c
+index ce9b09240a..d7b2c4bddc 100644
+--- a/hw/s390x/ap-bridge.c
++++ b/hw/s390x/ap-bridge.c
+@@ -49,10 +49,8 @@ void s390_init_ap(void)
      }
  
--    dev = qdev_new_orphan(TYPE_ACPI_GED);
-+    dev = qdev_new(OBJECT(lvms), "acpi-ged", TYPE_ACPI_GED);
-     qdev_prop_set_uint32(dev, "ged-event", event);
+     /* Create bridge device */
+-    dev = qdev_new_orphan(TYPE_AP_BRIDGE);
+-    object_property_add_child(qdev_get_machine(), TYPE_AP_BRIDGE,
+-                              OBJECT(dev));
 -    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    dev = qdev_new(qdev_get_machine(), TYPE_AP_BRIDGE, TYPE_AP_BRIDGE);
 +    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
  
-     /* ged event */
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, VIRT_GED_EVT_ADDR);
-@@ -315,18 +314,18 @@ static DeviceState *create_acpi_ged(DeviceState *pch_pic,
-     return dev;
- }
- 
--static DeviceState *create_platform_bus(DeviceState *pch_pic)
-+static DeviceState *create_platform_bus(Object *parent, DeviceState *pch_pic)
- {
+     /* Create bus on bridge device */
+     bus = qbus_new(TYPE_AP_BUS, dev, TYPE_AP_BUS);
+diff --git a/hw/s390x/css-bridge.c b/hw/s390x/css-bridge.c
+index c6be24e5cb..8929d47b1b 100644
+--- a/hw/s390x/css-bridge.c
++++ b/hw/s390x/css-bridge.c
+@@ -92,9 +92,8 @@ VirtualCssBus *virtual_css_bus_init(void)
      DeviceState *dev;
-     SysBusDevice *sysbus;
-     int i, irq;
-     MemoryRegion *sysmem = get_system_memory();
  
--    dev = qdev_new_orphan(TYPE_PLATFORM_BUS_DEVICE);
-+    dev = qdev_new(parent, "platform-bus", TYPE_PLATFORM_BUS_DEVICE);
-     dev->id = g_strdup(TYPE_PLATFORM_BUS_DEVICE);
-     qdev_prop_set_uint32(dev, "num_irqs", VIRT_PLATFORM_BUS_NUM_IRQS);
-     qdev_prop_set_uint32(dev, "mmio_size", VIRT_PLATFORM_BUS_SIZE);
+     /* Create bridge device */
+-    dev = qdev_new_orphan(TYPE_VIRTUAL_CSS_BRIDGE);
+-    object_property_add_child(qdev_get_machine(), TYPE_VIRTUAL_CSS_BRIDGE,
+-                              OBJECT(dev));
++    dev = qdev_new(qdev_get_machine(), TYPE_VIRTUAL_CSS_BRIDGE,
++                   TYPE_VIRTUAL_CSS_BRIDGE);
+ 
+     /* Create bus on bridge device */
+     bus = qbus_new(TYPE_VIRTUAL_CSS_BUS, dev, "virtual-css");
+@@ -102,7 +101,7 @@ VirtualCssBus *virtual_css_bus_init(void)
+     /* Enable hotplugging */
+     qbus_set_hotplug_handler(bus, OBJECT(dev));
+ 
 -    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
 +    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
  
-     sysbus = SYS_BUS_DEVICE(dev);
-     for (i = 0; i < VIRT_PLATFORM_BUS_NUM_IRQS; i++) {
-@@ -400,9 +399,9 @@ static void virt_devices_init(DeviceState *pch_pic,
-     hwaddr mmio_base, mmio_size;
-     int i, irq;
+     css_register_io_adapters(CSS_IO_ADAPTER_VIRTIO, true, false,
+                              0, &error_abort);
+diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
+index bc335ca883..4f0a8a787b 100644
+--- a/hw/s390x/s390-pci-bus.c
++++ b/hw/s390x/s390-pci-bus.c
+@@ -967,7 +967,7 @@ static S390PCIBusDevice *s390_pci_device_new(S390pciState *s,
+     Error *local_err = NULL;
+     DeviceState *dev;
  
--    gpex_dev = qdev_new_orphan(TYPE_GPEX_HOST);
-+    gpex_dev = qdev_new(OBJECT(lvms), "pci-host", TYPE_GPEX_HOST);
-     d = SYS_BUS_DEVICE(gpex_dev);
--    sysbus_realize_and_unref(d, &error_fatal);
-+    sysbus_realize(d, &error_fatal);
-     pci_bus = PCI_HOST_BRIDGE(gpex_dev)->bus;
-     lvms->gpex.pio.base = VIRT_PCI_IO_BASE;
-     lvms->gpex.pio.size = VIRT_PCI_IO_SIZE;
-@@ -485,14 +484,14 @@ static void virt_devices_init(DeviceState *pch_pic,
-      * Create some unimplemented devices to emulate this.
-      */
-     create_unimplemented_device("pci-dma-cfg", 0x1001041c, 0x4);
--    sysbus_create_simple_orphan("ls7a_rtc", VIRT_RTC_REG_BASE,
-+    sysbus_create_simple(OBJECT(lvms), "rtc", "ls7a_rtc", VIRT_RTC_REG_BASE,
-                          qdev_get_gpio_in(pch_pic,
-                          VIRT_RTC_IRQ - VIRT_GSI_BASE));
+-    dev = qdev_try_new_orphan(TYPE_S390_PCI_DEVICE);
++    dev = qdev_try_new(OBJECT(s), "zpci[*]", TYPE_S390_PCI_DEVICE);
+     if (!dev) {
+         error_setg(errp, "zPCI device could not be created");
+         return NULL;
+@@ -979,7 +979,7 @@ static S390PCIBusDevice *s390_pci_device_new(S390pciState *s,
+                                 "zPCI device could not be created: ");
+         return NULL;
+     }
+-    if (!qdev_realize_and_unref(dev, BUS(s->bus), &local_err)) {
++    if (!qdev_realize(dev, BUS(s->bus), &local_err)) {
+         object_unparent(OBJECT(dev));
+         error_propagate_prepend(errp, local_err,
+                                 "zPCI device could not be created: ");
+diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+index f9eb6cb411..1848cde0c4 100644
+--- a/hw/s390x/s390-virtio-ccw.c
++++ b/hw/s390x/s390-virtio-ccw.c
+@@ -253,10 +253,9 @@ static void s390_create_sclpconsole(SCLPDevice *sclp,
+     BusState *ev_fac_bus = sclp_get_event_facility_bus(ef);
+     DeviceState *dev;
  
-     /* acpi ged */
-     lvms->acpi_ged = create_acpi_ged(pch_pic, lvms);
-     /* platform bus */
--    lvms->platform_bus_dev = create_platform_bus(pch_pic);
-+    lvms->platform_bus_dev = create_platform_bus(OBJECT(lvms), pch_pic);
+-    dev = qdev_new_orphan(type);
+-    object_property_add_child(OBJECT(ef), type, OBJECT(dev));
++    dev = qdev_new(OBJECT(ef), type, type);
+     qdev_prop_set_chr(dev, "chardev", chardev);
+-    qdev_realize_and_unref(dev, ev_fac_bus, &error_fatal);
++    qdev_realize(dev, ev_fac_bus, &error_fatal);
  }
  
- static void virt_cpu_irq_init(LoongArchVirtMachineState *lvms)
-@@ -601,40 +600,40 @@ static void virt_irq_init(LoongArchVirtMachineState *lvms)
-      */
+ static void s390_create_sclpcpi(SCLPDevice *sclp)
+@@ -265,9 +264,8 @@ static void s390_create_sclpcpi(SCLPDevice *sclp)
+     BusState *ev_fac_bus = sclp_get_event_facility_bus(ef);
+     DeviceState *dev;
  
-     /* Create IPI device */
--    ipi = qdev_new_orphan(TYPE_LOONGARCH_IPI);
-+    ipi = qdev_new(OBJECT(lvms), "ipi", TYPE_LOONGARCH_IPI);
-     lvms->ipi = ipi;
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(ipi), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(ipi), &error_fatal);
- 
-     /* Create DINTC device*/
-     if (virt_has_dmsi(lvms)) {
--        dintc = qdev_new_orphan(TYPE_LOONGARCH_DINTC);
-+        dintc = qdev_new(OBJECT(lvms), "dintc", TYPE_LOONGARCH_DINTC);
-         lvms->dintc = dintc;
--        sysbus_realize_and_unref(SYS_BUS_DEVICE(dintc), &error_fatal);
-+        sysbus_realize(SYS_BUS_DEVICE(dintc), &error_fatal);
-         sysbus_mmio_map(SYS_BUS_DEVICE(dintc), 0, VIRT_DINTC_BASE);
-     }
- 
-     /* Create EXTIOI device */
--    extioi = qdev_new_orphan(TYPE_LOONGARCH_EXTIOI);
-+    extioi = qdev_new(OBJECT(lvms), "extioi", TYPE_LOONGARCH_EXTIOI);
-     lvms->extioi = extioi;
-     if (virt_is_veiointc_enabled(lvms)) {
-         qdev_prop_set_bit(extioi, "has-virtualization-extension", true);
-     }
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(extioi), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(extioi), &error_fatal);
- 
-     virt_cpu_irq_init(lvms);
--    pch_pic = qdev_new_orphan(TYPE_LOONGARCH_PIC);
-+    pch_pic = qdev_new(OBJECT(lvms), "pch-pic", TYPE_LOONGARCH_PIC);
-     num = VIRT_PCH_PIC_IRQ_NUM;
-     qdev_prop_set_uint32(pch_pic, "pch_pic_irq_num", num);
-     d = SYS_BUS_DEVICE(pch_pic);
--    sysbus_realize_and_unref(d, &error_fatal);
-+    sysbus_realize(d, &error_fatal);
- 
--    pch_msi = qdev_new_orphan(TYPE_LOONGARCH_PCH_MSI);
-+    pch_msi = qdev_new(OBJECT(lvms), "pch-msi", TYPE_LOONGARCH_PCH_MSI);
-     start   =  num;
-     num = EXTIOI_IRQS - start;
-     qdev_prop_set_uint32(pch_msi, "msi_irq_base", start);
-     qdev_prop_set_uint32(pch_msi, "msi_irq_num", num);
-     d = SYS_BUS_DEVICE(pch_msi);
--    sysbus_realize_and_unref(d, &error_fatal);
-+    sysbus_realize(d, &error_fatal);
-     sysbus_mmio_map(d, 0, VIRT_PCH_MSI_ADDR_LOW);
- 
-     if (kvm_irqchip_in_kernel()) {
-@@ -1570,11 +1569,6 @@ static void virt_instance_finalize(Object *obj)
- {
-     LoongArchVirtMachineState *lvms = LOONGARCH_VIRT_MACHINE(obj);
- 
--    for (int i = 0; i < ARRAY_SIZE(lvms->flash); i++) {
--        if (lvms->flash[i] && !qdev_is_realized(DEVICE(lvms->flash[i]))) {
--            object_unref(OBJECT(lvms->flash[i]));
--        }
--    }
-     g_free(lvms->oem_id);
-     g_free(lvms->oem_table_id);
+-    dev = qdev_new_orphan(TYPE_SCLP_EVENT_CPI);
+-    object_property_add_child(OBJECT(ef), "sclpcpi", OBJECT(dev));
+-    qdev_realize_and_unref(dev, ev_fac_bus, &error_fatal);
++    dev = qdev_new(OBJECT(ef), "sclpcpi", TYPE_SCLP_EVENT_CPI);
++    qdev_realize(dev, ev_fac_bus, &error_fatal);
  }
+ 
+ static void ccw_init(MachineState *machine)
+@@ -309,10 +307,9 @@ static void ccw_init(MachineState *machine)
+                       machine->firmware ?: "s390-ccw.img",
+                       true);
+ 
+-    dev = qdev_new_orphan(TYPE_S390_PCI_HOST_BRIDGE);
+-    object_property_add_child(qdev_get_machine(), TYPE_S390_PCI_HOST_BRIDGE,
+-                              OBJECT(dev));
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    dev = qdev_new(OBJECT(machine), TYPE_S390_PCI_HOST_BRIDGE,
++                   TYPE_S390_PCI_HOST_BRIDGE);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+     s390_enable_css_support(s390_cpu_addr2state(0));
+ 
 -- 
 2.47.1
 

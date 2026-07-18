@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8469C44521
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 21:52:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE7B2C44523
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Jul 2026 21:52:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlCvs-0001Vt-SN; Sat, 18 Jul 2026 17:50:52 -0400
+	id 1wlCwr-0003px-N4; Sat, 18 Jul 2026 17:51:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlCvp-0001RQ-5Q; Sat, 18 Jul 2026 17:50:49 -0400
-Received: from pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.42.203.116])
+ id 1wlCwm-0003Oa-SZ; Sat, 18 Jul 2026 17:51:48 -0400
+Received: from pdx-out-002.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([44.246.1.125])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=65292d44c=graf@amazon.de>)
- id 1wlCvj-0003qk-KX; Sat, 18 Jul 2026 17:50:48 -0400
+ id 1wlCwi-0003wJ-MZ; Sat, 18 Jul 2026 17:51:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1784411443; x=1815947443;
+ t=1784411504; x=1815947504;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=5LjASN1hs9znu0rglgqwL2J7wlBaZZQroFQNY57/utc=;
- b=HEeY6j/ItWaU0qmdianowKFvdTpQBWlK1o59R5KDXqEqM8Ct6GNA9ZcG
- j9TuCvkOzsAOQzFZ/rvQXC/bp/EBmf9WIhsb+Ow6syytKTIVLS+GEWk/k
- 0Htp1v11fYLmVH/WBNZNmt2CKP8U77cc0cDI6Re+Mdi5/POh+VTJWRT1+
- s6X8Trf7t3iTaRtgeD3bwd02rQRIdnv5pNJjQQboWXvycO20rtDgyAOyc
- Q2YtQ7b0CmSGtMOGHTvpE0sBc8Afe0doFswxkT8Qnc9/X3j83xpxpOgzW
- XDZ3jRShUau8tTRJjPB1XbmEJNdl+lUnN1yjLB4VxegOWw/BqH0cwQn8+ w==;
-X-CSE-ConnectionGUID: QuS7MO9CSZWxK+jKC0IYnw==
-X-CSE-MsgGUID: r7zneoKGSVeJvNkv7wS8OA==
-X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23939791"
-Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
- by internal-pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 21:50:39 +0000
-Received: from EX19MTAUWC001.ant.amazon.com [205.251.233.53:2616]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.35.17:2525]
+ bh=67o+dJAgMQu4a2nxLUqSwMFvCmm75QaSyZHK2B38t+w=;
+ b=BQBbI61PTl+3jfLIdEw2xePxeKWtWeA5AC9/1LF2mHCWaUelOwFrGTRK
+ OR+QLSZcFYKYblqpeZd+j+aWfb/5pFAc/vTwaTZRgVdTs8csnsrvWlY/E
+ plMklVJuFwUXqwd9zf1tfiZrWcIT4ZjjFGt8xqV9G53/MTCR47LWF5gFi
+ XrxqUz6n1tJp6rzuGQGrtgNsyK0bf/qSDGSz6t50tlMYyWgtKVHF0kyqk
+ TST4ZcGViPMPBVvY3rQPdGQA6p64JHzCfwXUQ5RmaG5vp6IUTxGDL/VA+
+ ePvrdtM/8pXsg6zWpPDzZ/3iplebQ6hpT/ZG4oNyDRnUg6cfWeusLfoPQ g==;
+X-CSE-ConnectionGUID: gV/eL2z7TiaVoogTVDcu0w==
+X-CSE-MsgGUID: Vp4X2s1AT/eZG9QH79vJ0w==
+X-IronPort-AV: E=Sophos;i="6.25,171,1779148800"; d="scan'208";a="23927224"
+Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
+ by internal-pdx-out-002.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2026 21:51:40 +0000
+Received: from EX19MTAUWC002.ant.amazon.com [205.251.233.51:25143]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.19.34:2525]
  with esmtp (Farcaster)
- id a750c74b-d457-4262-aa44-236b3d8eeb6d; Sat, 18 Jul 2026 21:50:39 +0000 (UTC)
-X-Farcaster-Flow-ID: a750c74b-d457-4262-aa44-236b3d8eeb6d
+ id 65468b4d-094d-46a7-9bfd-88bfa8e7db87; Sat, 18 Jul 2026 21:51:40 +0000 (UTC)
+X-Farcaster-Flow-ID: 65468b4d-094d-46a7-9bfd-88bfa8e7db87
 Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWC001.ant.amazon.com (10.250.64.174) with Microsoft SMTP Server
+ EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 21:50:39 +0000
+ Sat, 18 Jul 2026 21:51:40 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Sat, 18 Jul 2026 21:50:29 +0000
+ Sat, 18 Jul 2026 21:51:30 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
@@ -93,9 +93,9 @@ CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
  Stafford Horne <shorne@gmail.com>, Sergio Lopez <slp@redhat.com>, "Subbaraya
  Sundeep" <sundeep.lkml@gmail.com>, Thomas Huth <th.huth+qemu@posteo.eu>, "Ran
  Wang" <wangran@bosc.ac.cn>, Hao Wu <wuhaotsh@google.com>
-Subject: [RFC PATCH v2 049/137] hw/char: Give onboard devices a QOM parent
-Date: Sat, 18 Jul 2026 21:35:24 +0000
-Message-ID: <20260718213652.37673-50-graf@amazon.com>
+Subject: [RFC PATCH v2 053/137] hw/mips: Give onboard devices a QOM parent
+Date: Sat, 18 Jul 2026 21:35:28 +0000
+Message-ID: <20260718213652.37673-54-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260718213652.37673-1-graf@amazon.com>
 References: <20260711223707.42139-1-graf@amazon.com>
@@ -104,11 +104,11 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D039UWB001.ant.amazon.com (10.13.138.119) To
+X-ClientProxiedBy: EX19D031UWC002.ant.amazon.com (10.13.139.212) To
  EX19D001UWA001.ant.amazon.com (10.13.138.214)
-Received-SPF: pass client-ip=52.42.203.116;
+Received-SPF: pass client-ip=44.246.1.125;
  envelope-from=prvs=65292d44c=graf@amazon.de;
- helo=pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-002.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
@@ -132,1351 +132,397 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the *_orphan() device-creation calls in hw/char to the new
+Convert the *_orphan() device-creation calls in hw/mips to the new
 parented API introduced earlier in this series, so every onboard
 device gets a stable path in the composition tree instead of landing
 in /machine/unattached with an unstable device[N] name.
 
-The public serial helpers serial_mm_init(), serial_hds_isa_init(),
-parallel_hds_isa_init(), pl011_create(), sifive_uart_create(),
-xilinx_uartlite_create() and mcf_uart_create*() gain a leading
-Object *parent argument, threaded through from every board caller.
+The parent for each device is the object that owns its lifetime: the
+machine for board-created devices, the containing device for
+composite children.  Names follow existing QOM conventions.
 
 Per-site rationale (reviewers: dispute the modeling here):
 
-hw/char/exynos4210_uart.c:662 | qdev_new | parent | "uart[*]" | helper called from Exynos4210 SoC realize; thread Object *parent
-hw/char/mcf_uart.c:354 | qdev_new | parent | "uart[*]" | helper called from mcf5206 mbar realize and mcf5208 board init; thread Object *parent through mcf_uart_create() + mcf_uart_create_mmap()
-hw/char/mchp_pfsoc_mmuart.c:153 | qdev_new | parent | "uart[*]" | helper called from PolarFire SoC realize; thread Object *parent; note site already uses sysbus_realize (no _and_unref) so leave as-is
-hw/char/parallel-isa.c:25 | isa_new | parent | "parallel[*]" | static helper called from parallel_hds_isa_init(); thread Object *parent through both and update pc.c + sun4u.c callers
-hw/char/pl011.c:41 | qdev_new | parent | "uart[*]" | helper called from many ARM board inits; thread Object *parent through pl011_create()
-hw/char/serial-isa.c:168 | isa_new | parent | "serial[*]" | static helper called from serial_hds_isa_init(); thread Object *parent through both and update microvm/pc/pnv/sun4u callers
-hw/char/serial-mm.c:102 | qdev_new | parent | "serial[*]" | very widely used helper; thread Object *parent through serial_mm_init() and update all 41 callers
-hw/char/sifive_uart.c:402 | qdev_new | parent | "uart[*]" | helper called from SiFive E/U SoC realize; thread Object *parent
-hw/char/spapr_vty.c:161 | qdev_new | parent | "vty[*]" | helper called from spapr_machine_init loop; thread Object *parent
-hw/char/xen_console.c:565 | qdev_new_orphan | ORPHAN-JUSTIFIED | - | XenBackend .create() callback; hotplugged device analogous to qdev_device_add() path
+hw/mips/boston.c:435 | qdev_new | parent | "pcie[*]" | static helper called 3x from board init; thread Object *parent as first arg
+hw/mips/boston.c:691 | qdev_new | OBJECT(machine) | "boston" | board MachineClass.init()
+hw/mips/boston.c:773 | pci_create_simple_multifunction | OBJECT(machine) | "ahci" | board MachineClass.init()
+hw/mips/fuloong2e.c:289 | pci_new_multifunction | OBJECT(machine) | "via" | board MachineClass.init()
+hw/mips/fuloong2e.c:315 | pci_new | OBJECT(machine) | "vga" | board MachineClass.init()
+hw/mips/jazz.c:130 | qdev_new | parent | "dp8393x" | static helper called from board init; thread Object *parent as first arg
+hw/mips/jazz.c:292 | isa_new | OBJECT(machine) | "pcspk" | board MachineClass.init() helper receiving MachineState*
+hw/mips/jazz.c:299 | qdev_new | OBJECT(machine) | "g364" | board MachineClass.init() helper receiving MachineState*
+hw/mips/jazz.c:316 | qdev_new | OBJECT(machine) | "vga" | board MachineClass.init() helper receiving MachineState*
+hw/mips/jazz.c:332 | qdev_new | OBJECT(machine) | "esp" | board MachineClass.init() helper receiving MachineState*
+hw/mips/jazz.c:363 | qdev_new | OBJECT(machine) | "i8042" | board MachineClass.init() helper receiving MachineState*
+hw/mips/jazz.c:393 | qdev_new | OBJECT(machine) | "nvram" | board MachineClass.init() helper receiving MachineState*
+hw/mips/jazz.c:399 | sysbus_create_simple | OBJECT(machine) | "led" | board MachineClass.init() helper receiving MachineState*
+hw/mips/loongson3_virt.c:427 | qdev_new | OBJECT(machine) | "pcie" | inline helper receiving MachineState* from board init
+hw/mips/loongson3_virt.c:468 | pci_create_simple | OBJECT(machine) | "ohci" | inline helper receiving MachineState* from board init
+hw/mips/loongson3_virt.c:471 | usb_create_simple | OBJECT(machine) | "usb-kbd" | inline helper receiving MachineState* from board init
+hw/mips/loongson3_virt.c:472 | usb_create_simple | OBJECT(machine) | "usb-tablet" | inline helper receiving MachineState* from board init
+hw/mips/loongson3_virt.c:522 | qdev_new | OBJECT(machine) | "ipi" | board MachineClass.init()
+hw/mips/loongson3_virt.c:530 | qdev_new | OBJECT(machine) | "liointc" | board MachineClass.init()
+hw/mips/loongson3_virt.c:539 | sysbus_create_simple | OBJECT(machine) | "rtc" | board MachineClass.init()
+hw/mips/malta.c:1101 | qdev_new | OBJECT(machine) | "malta" | board MachineClass.init()
+hw/mips/malta.c:1230 | qdev_new | OBJECT(machine) | "gt64120" | board MachineClass.init()
+hw/mips/malta.c:1237 | pci_new_multifunction | OBJECT(machine) | "piix4" | board MachineClass.init()
+hw/mips/malta.c:1257 | isa_create_simple | OBJECT(machine) | "superio" | board MachineClass.init()
 
 Link: https://lore.kernel.org/qemu-devel/87jyr3w9tc.fsf@pond.sub.org/
 AI-used-for: code (refactoring)
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- hw/arm/allwinner-a10.c              |  2 +-
- hw/arm/allwinner-h3.c               |  8 ++++----
- hw/arm/allwinner-r40.c              |  2 +-
- hw/arm/exynos4210.c                 |  8 ++++----
- hw/arm/integratorcp.c               |  4 ++--
- hw/arm/kzm.c                        |  2 +-
- hw/arm/msf2-soc.c                   |  2 +-
- hw/arm/musicpal.c                   |  4 ++--
- hw/arm/npcm7xx.c                    |  2 +-
- hw/arm/npcm8xx.c                    |  2 +-
- hw/arm/omap1.c                      |  8 ++++----
- hw/arm/omap_sx1.c                   |  2 +-
- hw/arm/realview.c                   |  8 ++++----
- hw/arm/versatilepb.c                |  8 ++++----
- hw/arm/vexpress.c                   |  8 ++++----
- hw/char/exynos4210_uart.c           |  6 +++---
- hw/char/mcf_uart.c                  | 11 ++++++-----
- hw/char/mchp_pfsoc_mmuart.c         |  4 ++--
- hw/char/omap_uart.c                 |  4 ++--
- hw/char/parallel-isa.c              | 10 +++++-----
- hw/char/pl011.c                     |  6 +++---
- hw/char/serial-isa.c                | 11 ++++++-----
- hw/char/serial-mm.c                 |  6 +++---
- hw/char/sifive_uart.c               |  8 ++++----
- hw/char/spapr_vty.c                 |  6 +++---
- hw/hppa/machine.c                   |  9 ++++++---
- hw/i386/microvm.c                   |  2 +-
- hw/i386/pc.c                        |  8 ++++----
- hw/loongarch/virt.c                 |  2 +-
- hw/m68k/mcf5206.c                   |  4 ++--
- hw/m68k/mcf5208.c                   |  9 ++++++---
- hw/microblaze/petalogix_ml605_mmu.c |  2 +-
- hw/mips/boston.c                    |  3 ++-
- hw/mips/jazz.c                      |  4 ++--
- hw/mips/loongson3_virt.c            |  2 +-
- hw/mips/malta.c                     |  7 ++++---
- hw/or1k/or1k-sim.c                  |  2 +-
- hw/or1k/virt.c                      |  2 +-
- hw/ppc/e500.c                       |  4 ++--
- hw/ppc/pnv.c                        |  2 +-
- hw/ppc/ppc440_bamboo.c              |  4 ++--
- hw/ppc/sam460ex.c                   |  4 ++--
- hw/ppc/spapr.c                      |  2 +-
- hw/ppc/virtex_ml507.c               |  3 ++-
- hw/riscv/boston-aia.c               |  3 ++-
- hw/riscv/k230.c                     |  8 ++++----
- hw/riscv/microblaze-v-generic.c     |  2 +-
- hw/riscv/microchip_pfsoc.c          | 10 +++++-----
- hw/riscv/sifive_e.c                 |  4 ++--
- hw/riscv/sifive_u.c                 |  4 ++--
- hw/riscv/tt_atlantis.c              |  2 +-
- hw/riscv/virt.c                     |  2 +-
- hw/riscv/xiangshan_kmh.c            |  2 +-
- hw/sparc64/niagara.c                |  2 +-
- hw/sparc64/sun4u.c                  |  6 +++---
- hw/xtensa/xtfpga.c                  |  2 +-
- include/hw/arm/exynos4210.h         |  2 +-
- include/hw/arm/omap.h               |  4 ++--
- include/hw/char/mchp_pfsoc_mmuart.h |  2 +-
- include/hw/char/parallel.h          |  2 +-
- include/hw/char/pl011.h             |  2 +-
- include/hw/char/serial-isa.h        |  2 +-
- include/hw/char/serial-mm.h         |  2 +-
- include/hw/char/sifive_uart.h       |  4 ++--
- include/hw/m68k/mcf.h               |  5 +++--
- include/hw/ppc/spapr_vio.h          |  2 +-
- 66 files changed, 152 insertions(+), 139 deletions(-)
+ hw/mips/boston.c         | 21 +++++++++++----------
+ hw/mips/fuloong2e.c      |  9 +++++----
+ hw/mips/jazz.c           | 36 +++++++++++++++++++-----------------
+ hw/mips/loongson3_virt.c | 22 ++++++++++++----------
+ hw/mips/malta.c          | 16 +++++++++-------
+ 5 files changed, 56 insertions(+), 48 deletions(-)
 
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index 66f30757dd..cbc0b38986 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -156,7 +156,7 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->sata), 0, qdev_get_gpio_in(dev, 56));
- 
-     /* FIXME use a qdev chardev prop instead of serial_hd() */
--    serial_mm_init(get_system_memory(), AW_A10_UART0_REG_BASE, 2,
-+    serial_mm_init(OBJECT(s), get_system_memory(), AW_A10_UART0_REG_BASE, 2,
-                    qdev_get_gpio_in(dev, 1),
-                    115200, serial_hd(0), DEVICE_LITTLE_ENDIAN);
- 
-diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index 427dbad7c3..ce716d1687 100644
---- a/hw/arm/allwinner-h3.c
-+++ b/hw/arm/allwinner-h3.c
-@@ -406,19 +406,19 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-                                           AW_H3_GIC_SPI_OHCI3));
- 
-     /* UART0. For future clocktree API: All UARTS are connected to APB2_CLK. */
--    serial_mm_init(get_system_memory(), s->memmap[AW_H3_DEV_UART0], 2,
-+    serial_mm_init(OBJECT(s), get_system_memory(), s->memmap[AW_H3_DEV_UART0], 2,
-                    qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART0),
-                    115200, serial_hd(0), DEVICE_LITTLE_ENDIAN);
-     /* UART1 */
--    serial_mm_init(get_system_memory(), s->memmap[AW_H3_DEV_UART1], 2,
-+    serial_mm_init(OBJECT(s), get_system_memory(), s->memmap[AW_H3_DEV_UART1], 2,
-                    qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART1),
-                    115200, serial_hd(1), DEVICE_LITTLE_ENDIAN);
-     /* UART2 */
--    serial_mm_init(get_system_memory(), s->memmap[AW_H3_DEV_UART2], 2,
-+    serial_mm_init(OBJECT(s), get_system_memory(), s->memmap[AW_H3_DEV_UART2], 2,
-                    qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART2),
-                    115200, serial_hd(2), DEVICE_LITTLE_ENDIAN);
-     /* UART3 */
--    serial_mm_init(get_system_memory(), s->memmap[AW_H3_DEV_UART3], 2,
-+    serial_mm_init(OBJECT(s), get_system_memory(), s->memmap[AW_H3_DEV_UART3], 2,
-                    qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART3),
-                    115200, serial_hd(3), DEVICE_LITTLE_ENDIAN);
- 
-diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
-index a1ae75deb6..4f9d8a606e 100644
---- a/hw/arm/allwinner-r40.c
-+++ b/hw/arm/allwinner-r40.c
-@@ -489,7 +489,7 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-         };
-         const hwaddr addr = s->memmap[AW_R40_DEV_UART0 + i];
- 
--        serial_mm_init(get_system_memory(), addr, 2,
-+        serial_mm_init(OBJECT(s), get_system_memory(), addr, 2,
-                        qdev_get_gpio_in(DEVICE(&s->gic), uart_irqs[i]),
-                        115200, serial_hd(i), DEVICE_LITTLE_ENDIAN);
-     }
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 3199ea9cb7..7d9d87d7ba 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -723,19 +723,19 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
- 
- 
-     /*** UARTs ***/
--    uart[0] = exynos4210_uart_create(EXYNOS4210_UART0_BASE_ADDR,
-+    uart[0] = exynos4210_uart_create(OBJECT(s), EXYNOS4210_UART0_BASE_ADDR,
-                            EXYNOS4210_UART0_FIFO_SIZE, 0, serial_hd(0),
-                   s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_GRP, 0)]);
- 
--    uart[1] = exynos4210_uart_create(EXYNOS4210_UART1_BASE_ADDR,
-+    uart[1] = exynos4210_uart_create(OBJECT(s), EXYNOS4210_UART1_BASE_ADDR,
-                            EXYNOS4210_UART1_FIFO_SIZE, 1, serial_hd(1),
-                   s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_GRP, 1)]);
- 
--    uart[2] = exynos4210_uart_create(EXYNOS4210_UART2_BASE_ADDR,
-+    uart[2] = exynos4210_uart_create(OBJECT(s), EXYNOS4210_UART2_BASE_ADDR,
-                            EXYNOS4210_UART2_FIFO_SIZE, 2, serial_hd(2),
-                   s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_GRP, 2)]);
- 
--    uart[3] = exynos4210_uart_create(EXYNOS4210_UART3_BASE_ADDR,
-+    uart[3] = exynos4210_uart_create(OBJECT(s), EXYNOS4210_UART3_BASE_ADDR,
-                            EXYNOS4210_UART3_FIFO_SIZE, 3, serial_hd(3),
-                   s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_GRP, 3)]);
- 
-diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
-index 163012a7bf..7560ad5983 100644
---- a/hw/arm/integratorcp.c
-+++ b/hw/arm/integratorcp.c
-@@ -637,8 +637,8 @@ static void integratorcp_init(MachineState *machine)
-     sysbus_create_varargs_orphan("integrator_pit", 0x13000000,
-                           pic[5], pic[6], pic[7], NULL);
-     sysbus_create_simple_orphan("pl031", 0x15000000, pic[8]);
--    pl011_create(0x16000000, pic[1], serial_hd(0));
--    pl011_create(0x17000000, pic[2], serial_hd(1));
-+    pl011_create(OBJECT(machine), 0x16000000, pic[1], serial_hd(0));
-+    pl011_create(OBJECT(machine), 0x17000000, pic[2], serial_hd(1));
-     icp = sysbus_create_simple_orphan(TYPE_ICP_CONTROL_REGS, 0xcb000000,
-                                qdev_get_gpio_in(sic, 3));
-     sysbus_create_simple_orphan("pl050_keyboard", 0x18000000, pic[3]);
-diff --git a/hw/arm/kzm.c b/hw/arm/kzm.c
-index de9919c8cb..36e12bb362 100644
---- a/hw/arm/kzm.c
-+++ b/hw/arm/kzm.c
-@@ -120,7 +120,7 @@ static void kzm_init(MachineState *machine)
-     }
- 
-     if (serial_hd(2)) { /* touchscreen */
--        serial_mm_init(get_system_memory(), KZM_FPGA_ADDR+0x10, 0,
-+        serial_mm_init(OBJECT(machine), get_system_memory(), KZM_FPGA_ADDR+0x10, 0,
-                        qdev_get_gpio_in(DEVICE(&s->soc.avic), 52),
-                        14745600, serial_hd(2), DEVICE_NATIVE_ENDIAN);
-     }
-diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-index 27d77af9dc..76eba752bd 100644
---- a/hw/arm/msf2-soc.c
-+++ b/hw/arm/msf2-soc.c
-@@ -146,7 +146,7 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
- 
-     for (i = 0; i < MSF2_NUM_UARTS; i++) {
-         if (serial_hd(i)) {
--            serial_mm_init(get_system_memory(), uart_addr[i], 2,
-+            serial_mm_init(OBJECT(s), get_system_memory(), uart_addr[i], 2,
-                            qdev_get_gpio_in(armv7m, uart_irq[i]),
-                            115200, serial_hd(i), DEVICE_NATIVE_ENDIAN);
-         }
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index 43e15a4e48..d9fe08d57b 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -1255,10 +1255,10 @@ static void musicpal_init(MachineState *machine)
-     qdev_connect_gpio_out(uart_orgate, 0,
-                           qdev_get_gpio_in(pic, MP_UART_SHARED_IRQ));
- 
--    serial_mm_init(address_space_mem, MP_UART1_BASE, 2,
-+    serial_mm_init(OBJECT(machine), address_space_mem, MP_UART1_BASE, 2,
-                    qdev_get_gpio_in(uart_orgate, 0),
-                    1825000, serial_hd(0), DEVICE_NATIVE_ENDIAN);
--    serial_mm_init(address_space_mem, MP_UART2_BASE, 2,
-+    serial_mm_init(OBJECT(machine), address_space_mem, MP_UART2_BASE, 2,
-                    qdev_get_gpio_in(uart_orgate, 1),
-                    1825000, serial_hd(1), DEVICE_NATIVE_ENDIAN);
- 
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index 87734c1cfb..8363a04f10 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -588,7 +588,7 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
- 
-     /* UART0..3 (16550 compatible) */
-     for (i = 0; i < ARRAY_SIZE(npcm7xx_uart_addr); i++) {
--        serial_mm_init(get_system_memory(), npcm7xx_uart_addr[i], 2,
-+        serial_mm_init(OBJECT(s), get_system_memory(), npcm7xx_uart_addr[i], 2,
-                        npcm7xx_irq(s, NPCM7XX_UART0_IRQ + i), 115200,
-                        serial_hd(i), DEVICE_LITTLE_ENDIAN);
-     }
-diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c
-index 9ce6ea52d9..48fcc65a98 100644
---- a/hw/arm/npcm8xx.c
-+++ b/hw/arm/npcm8xx.c
-@@ -602,7 +602,7 @@ static void npcm8xx_realize(DeviceState *dev, Error **errp)
- 
-     /* UART0..6 (16550 compatible) */
-     for (i = 0; i < ARRAY_SIZE(npcm8xx_uart_addr); i++) {
--        serial_mm_init(get_system_memory(), npcm8xx_uart_addr[i], 2,
-+        serial_mm_init(OBJECT(s), get_system_memory(), npcm8xx_uart_addr[i], 2,
-                        npcm8xx_irq(s, NPCM8XX_UART0_IRQ + i), 115200,
-                        serial_hd(i), DEVICE_LITTLE_ENDIAN);
-     }
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index eefa2e441a..c86914a464 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -3738,7 +3738,7 @@ static int omap_validate_tipb_mpui_addr(struct omap_mpu_state_s *s,
-     return range_covers_byte(0xe1010000, 0xe1020004 - 0xe1010000, addr);
- }
- 
--struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *dram,
-+struct omap_mpu_state_s *omap310_mpu_init(Object *parent, MemoryRegion *dram,
-                 const char *cpu_type)
- {
-     int i;
-@@ -3842,21 +3842,21 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *dram,
- 
-     omap_tcmi_init(system_memory, 0xfffecc00, s);
- 
--    s->uart[0] = omap_uart_init(0xfffb0000,
-+    s->uart[0] = omap_uart_init(parent, 0xfffb0000,
-                                 qdev_get_gpio_in(s->ih[1], OMAP_INT_UART1),
-                     omap_findclk(s, "uart1_ck"),
-                     omap_findclk(s, "uart1_ck"),
-                     s->drq[OMAP_DMA_UART1_TX], s->drq[OMAP_DMA_UART1_RX],
-                     "uart1",
-                     serial_hd(0));
--    s->uart[1] = omap_uart_init(0xfffb0800,
-+    s->uart[1] = omap_uart_init(parent, 0xfffb0800,
-                                 qdev_get_gpio_in(s->ih[1], OMAP_INT_UART2),
-                     omap_findclk(s, "uart2_ck"),
-                     omap_findclk(s, "uart2_ck"),
-                     s->drq[OMAP_DMA_UART2_TX], s->drq[OMAP_DMA_UART2_RX],
-                     "uart2",
-                     serial_hd(0) ? serial_hd(1) : NULL);
--    s->uart[2] = omap_uart_init(0xfffb9800,
-+    s->uart[2] = omap_uart_init(parent, 0xfffb9800,
-                                 qdev_get_gpio_in(s->ih[0], OMAP_INT_UART3),
-                     omap_findclk(s, "uart3_ck"),
-                     omap_findclk(s, "uart3_ck"),
-diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
-index a468b045d4..1bd6c6d4bc 100644
---- a/hw/arm/omap_sx1.c
-+++ b/hw/arm/omap_sx1.c
-@@ -125,7 +125,7 @@ static void sx1_init(MachineState *machine, const int version)
- 
-     memory_region_add_subregion(address_space, OMAP_EMIFF_BASE, machine->ram);
- 
--    mpu = omap310_mpu_init(machine->ram, machine->cpu_type);
-+    mpu = omap310_mpu_init(OBJECT(machine), machine->ram, machine->cpu_type);
- 
-     /* External Flash (EMIFS) */
-     memory_region_init_rom(flash, NULL, "omap_sx1.flash0-0", flash_size,
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index f51730c487..965fef4fcf 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -224,10 +224,10 @@ static void realview_init(MachineState *machine,
-     sysbus_create_simple_orphan("pl050_keyboard", 0x10006000, pic[20]);
-     sysbus_create_simple_orphan("pl050_mouse", 0x10007000, pic[21]);
- 
--    pl011_create(0x10009000, pic[12], serial_hd(0));
--    pl011_create(0x1000a000, pic[13], serial_hd(1));
--    pl011_create(0x1000b000, pic[14], serial_hd(2));
--    pl011_create(0x1000c000, pic[15], serial_hd(3));
-+    pl011_create(OBJECT(machine), 0x10009000, pic[12], serial_hd(0));
-+    pl011_create(OBJECT(machine), 0x1000a000, pic[13], serial_hd(1));
-+    pl011_create(OBJECT(machine), 0x1000b000, pic[14], serial_hd(2));
-+    pl011_create(OBJECT(machine), 0x1000c000, pic[15], serial_hd(3));
- 
-     /* DMA controller is optional, apparently.  */
-     dev = qdev_new_orphan("pl081");
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index 59bb2d1346..6fb7223265 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -279,10 +279,10 @@ static void versatile_init(MachineState *machine, int board_id)
-         n--;
-     }
- 
--    pl011_create(0x101f1000, pic[12], serial_hd(0));
--    pl011_create(0x101f2000, pic[13], serial_hd(1));
--    pl011_create(0x101f3000, pic[14], serial_hd(2));
--    pl011_create(0x10009000, sic[6], serial_hd(3));
-+    pl011_create(OBJECT(machine), 0x101f1000, pic[12], serial_hd(0));
-+    pl011_create(OBJECT(machine), 0x101f2000, pic[13], serial_hd(1));
-+    pl011_create(OBJECT(machine), 0x101f3000, pic[14], serial_hd(2));
-+    pl011_create(OBJECT(machine), 0x10009000, sic[6], serial_hd(3));
- 
-     dev = qdev_new_orphan("pl080");
-     object_property_set_link(OBJECT(dev), "downstream", OBJECT(sysmem),
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index 5cbb2c44cb..7c5a69b5a9 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -643,10 +643,10 @@ static void vexpress_common_init(MachineState *machine)
-     sysbus_create_simple_orphan("pl050_keyboard", map[VE_KMI0], pic[12]);
-     sysbus_create_simple_orphan("pl050_mouse", map[VE_KMI1], pic[13]);
- 
--    pl011_create(map[VE_UART0], pic[5], serial_hd(0));
--    pl011_create(map[VE_UART1], pic[6], serial_hd(1));
--    pl011_create(map[VE_UART2], pic[7], serial_hd(2));
--    pl011_create(map[VE_UART3], pic[8], serial_hd(3));
-+    pl011_create(OBJECT(machine), map[VE_UART0], pic[5], serial_hd(0));
-+    pl011_create(OBJECT(machine), map[VE_UART1], pic[6], serial_hd(1));
-+    pl011_create(OBJECT(machine), map[VE_UART2], pic[7], serial_hd(2));
-+    pl011_create(OBJECT(machine), map[VE_UART3], pic[8], serial_hd(3));
- 
-     sysbus_create_simple_orphan("sp804", map[VE_TIMER01], pic[2]);
-     sysbus_create_simple_orphan("sp804", map[VE_TIMER23], pic[3]);
-diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
-index 6bc18851d9..dee0ecb4d7 100644
---- a/hw/char/exynos4210_uart.c
-+++ b/hw/char/exynos4210_uart.c
-@@ -650,7 +650,7 @@ static const VMStateDescription vmstate_exynos4210_uart = {
-     }
- };
- 
--DeviceState *exynos4210_uart_create(hwaddr addr,
-+DeviceState *exynos4210_uart_create(Object *parent, hwaddr addr,
-                                     int fifo_size,
-                                     int channel,
-                                     Chardev *chr,
-@@ -659,7 +659,7 @@ DeviceState *exynos4210_uart_create(hwaddr addr,
-     DeviceState  *dev;
-     SysBusDevice *bus;
- 
--    dev = qdev_new_orphan(TYPE_EXYNOS4210_UART);
-+    dev = qdev_new(parent, "uart[*]", TYPE_EXYNOS4210_UART);
- 
-     qdev_prop_set_chr(dev, "chardev", chr);
-     qdev_prop_set_uint32(dev, "channel", channel);
-@@ -667,7 +667,7 @@ DeviceState *exynos4210_uart_create(hwaddr addr,
-     qdev_prop_set_uint32(dev, "tx-size", fifo_size);
- 
-     bus = SYS_BUS_DEVICE(dev);
--    sysbus_realize_and_unref(bus, &error_fatal);
-+    sysbus_realize(bus, &error_fatal);
-     if (addr != (hwaddr)-1) {
-         sysbus_mmio_map(bus, 0, addr);
-     }
-diff --git a/hw/char/mcf_uart.c b/hw/char/mcf_uart.c
-index f4fc47364e..2c5bfa6b67 100644
---- a/hw/char/mcf_uart.c
-+++ b/hw/char/mcf_uart.c
-@@ -347,25 +347,26 @@ static void mcf_uart_register(void)
- 
- type_init(mcf_uart_register)
- 
--DeviceState *mcf_uart_create(qemu_irq irq, Chardev *chrdrv)
-+DeviceState *mcf_uart_create(Object *parent, qemu_irq irq, Chardev *chrdrv)
- {
-     DeviceState *dev;
- 
--    dev = qdev_new_orphan(TYPE_MCF_UART);
-+    dev = qdev_new(parent, "uart[*]", TYPE_MCF_UART);
-     if (chrdrv) {
-         qdev_prop_set_chr(dev, "chardev", chrdrv);
-     }
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq);
- 
-     return dev;
- }
- 
--DeviceState *mcf_uart_create_mmap(hwaddr base, qemu_irq irq, Chardev *chrdrv)
-+DeviceState *mcf_uart_create_mmap(Object *parent, hwaddr base, qemu_irq irq,
-+                                  Chardev *chrdrv)
- {
-     DeviceState *dev;
- 
--    dev = mcf_uart_create(irq, chrdrv);
-+    dev = mcf_uart_create(parent, irq, chrdrv);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
- 
-     return dev;
-diff --git a/hw/char/mchp_pfsoc_mmuart.c b/hw/char/mchp_pfsoc_mmuart.c
-index 1a6d736f56..fb8ee96b1f 100644
---- a/hw/char/mchp_pfsoc_mmuart.c
-+++ b/hw/char/mchp_pfsoc_mmuart.c
-@@ -146,11 +146,11 @@ static void mchp_pfsoc_mmuart_register_types(void)
- 
- type_init(mchp_pfsoc_mmuart_register_types)
- 
--MchpPfSoCMMUartState *mchp_pfsoc_mmuart_create(MemoryRegion *sysmem,
-+MchpPfSoCMMUartState *mchp_pfsoc_mmuart_create(Object *parent, MemoryRegion *sysmem,
-                                                hwaddr base,
-                                                qemu_irq irq, Chardev *chr)
- {
--    DeviceState *dev = qdev_new_orphan(TYPE_MCHP_PFSOC_UART);
-+    DeviceState *dev = qdev_new(parent, "uart[*]", TYPE_MCHP_PFSOC_UART);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
- 
-     qdev_prop_set_chr(dev, "chardev", chr);
-diff --git a/hw/char/omap_uart.c b/hw/char/omap_uart.c
-index 8cbf6ce803..4c7922a435 100644
---- a/hw/char/omap_uart.c
-+++ b/hw/char/omap_uart.c
-@@ -47,7 +47,7 @@ void omap_uart_reset(struct omap_uart_s *s)
-     s->clksel = 0;
- }
- 
--struct omap_uart_s *omap_uart_init(hwaddr base,
-+struct omap_uart_s *omap_uart_init(Object *parent, hwaddr base,
-                 qemu_irq irq, omap_clk fclk, omap_clk iclk,
-                 qemu_irq txdma, qemu_irq rxdma,
-                 const char *label, Chardev *chr)
-@@ -57,7 +57,7 @@ struct omap_uart_s *omap_uart_init(hwaddr base,
-     s->base = base;
-     s->fclk = fclk;
-     s->irq = irq;
--    s->serial = serial_mm_init(get_system_memory(), base, 2, irq,
-+    s->serial = serial_mm_init(parent, get_system_memory(), base, 2, irq,
-                                omap_clk_getrate(fclk) / 16,
-                                chr ?: qemu_chr_new(label, "null", NULL),
-                                DEVICE_NATIVE_ENDIAN);
-diff --git a/hw/char/parallel-isa.c b/hw/char/parallel-isa.c
-index 19583c0f23..758aa58017 100644
---- a/hw/char/parallel-isa.c
-+++ b/hw/char/parallel-isa.c
-@@ -17,19 +17,19 @@
- #include "hw/char/parallel.h"
- #include "qapi/error.h"
- 
--static void parallel_init(ISABus *bus, int index, Chardev *chr)
-+static void parallel_init(Object *parent, ISABus *bus, int index, Chardev *chr)
- {
-     DeviceState *dev;
-     ISADevice *isadev;
- 
--    isadev = isa_new_orphan(TYPE_ISA_PARALLEL);
-+    isadev = isa_new(parent, "parallel[*]", TYPE_ISA_PARALLEL);
-     dev = DEVICE(isadev);
-     qdev_prop_set_uint32(dev, "index", index);
-     qdev_prop_set_chr(dev, "chardev", chr);
--    isa_realize_and_unref(isadev, bus, &error_fatal);
-+    qdev_realize(dev, BUS(bus), &error_fatal);
- }
- 
--void parallel_hds_isa_init(ISABus *bus, int n)
-+void parallel_hds_isa_init(Object *parent, ISABus *bus, int n)
- {
-     int i;
- 
-@@ -37,7 +37,7 @@ void parallel_hds_isa_init(ISABus *bus, int n)
- 
-     for (i = 0; i < n; i++) {
-         if (parallel_hds[i]) {
--            parallel_init(bus, i, parallel_hds[i]);
-+            parallel_init(parent, bus, i, parallel_hds[i]);
-         }
-     }
- }
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index c8adf964ca..d3227f1df8 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -33,15 +33,15 @@
- #include "qemu/module.h"
- #include "trace.h"
- 
--DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr)
-+DeviceState *pl011_create(Object *parent, hwaddr addr, qemu_irq irq, Chardev *chr)
- {
-     DeviceState *dev;
-     SysBusDevice *s;
- 
--    dev = qdev_new_orphan("pl011");
-+    dev = qdev_new(parent, "uart[*]", "pl011");
-     s = SYS_BUS_DEVICE(dev);
-     qdev_prop_set_chr(dev, "chardev", chr);
--    sysbus_realize_and_unref(s, &error_fatal);
-+    sysbus_realize(s, &error_fatal);
-     sysbus_mmio_map(s, 0, addr);
-     sysbus_connect_irq(s, 0, irq);
- 
-diff --git a/hw/char/serial-isa.c b/hw/char/serial-isa.c
-index 4dbdc0df91..4fae200e70 100644
---- a/hw/char/serial-isa.c
-+++ b/hw/char/serial-isa.c
-@@ -160,19 +160,20 @@ static void serial_register_types(void)
- 
- type_init(serial_register_types)
- 
--static void serial_isa_init(ISABus *bus, int index, Chardev *chr)
-+static void serial_isa_init(Object *parent, ISABus *bus, int index,
-+                            Chardev *chr)
- {
-     DeviceState *dev;
-     ISADevice *isadev;
- 
--    isadev = isa_new_orphan(TYPE_ISA_SERIAL);
-+    isadev = isa_new(parent, "serial[*]", TYPE_ISA_SERIAL);
-     dev = DEVICE(isadev);
-     qdev_prop_set_uint32(dev, "index", index);
-     qdev_prop_set_chr(dev, "chardev", chr);
--    isa_realize_and_unref(isadev, bus, &error_fatal);
-+    qdev_realize(dev, BUS(bus), &error_fatal);
- }
- 
--void serial_hds_isa_init(ISABus *bus, int from, int to)
-+void serial_hds_isa_init(Object *parent, ISABus *bus, int from, int to)
- {
-     int i;
- 
-@@ -181,7 +182,7 @@ void serial_hds_isa_init(ISABus *bus, int from, int to)
- 
-     for (i = from; i < to; ++i) {
-         if (serial_hd(i)) {
--            serial_isa_init(bus, i, serial_hd(i));
-+            serial_isa_init(parent, bus, i, serial_hd(i));
-         }
-     }
- }
-diff --git a/hw/char/serial-mm.c b/hw/char/serial-mm.c
-index cd0844c450..bf853bb762 100644
---- a/hw/char/serial-mm.c
-+++ b/hw/char/serial-mm.c
-@@ -94,12 +94,12 @@ static const VMStateDescription vmstate_serial_mm = {
-     }
- };
- 
--SerialMM *serial_mm_init(MemoryRegion *address_space,
-+SerialMM *serial_mm_init(Object *parent, MemoryRegion *address_space,
-                          hwaddr base, int regshift,
-                          qemu_irq irq, int baudbase,
-                          Chardev *chr, enum device_endian end)
- {
--    SerialMM *smm = SERIAL_MM(qdev_new_orphan(TYPE_SERIAL_MM));
-+    SerialMM *smm = SERIAL_MM(qdev_new(parent, "serial[*]", TYPE_SERIAL_MM));
-     MemoryRegion *mr;
- 
-     qdev_prop_set_uint8(DEVICE(smm), "regshift", regshift);
-@@ -107,7 +107,7 @@ SerialMM *serial_mm_init(MemoryRegion *address_space,
-     qdev_prop_set_chr(DEVICE(smm), "chardev", chr);
-     qdev_set_legacy_instance_id(DEVICE(smm), base, 2);
-     qdev_prop_set_uint8(DEVICE(smm), "endianness", end);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(smm), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(smm), &error_fatal);
- 
-     sysbus_connect_irq(SYS_BUS_DEVICE(smm), 0, irq);
-     mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(smm), 0);
-diff --git a/hw/char/sifive_uart.c b/hw/char/sifive_uart.c
-index 1613a975e0..7a35990c33 100644
---- a/hw/char/sifive_uart.c
-+++ b/hw/char/sifive_uart.c
-@@ -393,16 +393,16 @@ type_init(sifive_uart_register_types)
- /*
-  * Create UART device.
-  */
--SiFiveUARTState *sifive_uart_create(MemoryRegion *address_space, hwaddr base,
--    Chardev *chr, qemu_irq irq)
-+SiFiveUARTState *sifive_uart_create(Object *parent, MemoryRegion *address_space,
-+    hwaddr base, Chardev *chr, qemu_irq irq)
- {
-     DeviceState *dev;
-     SysBusDevice *s;
- 
--    dev = qdev_new_orphan("riscv.sifive.uart");
-+    dev = qdev_new(parent, "uart[*]", "riscv.sifive.uart");
-     s = SYS_BUS_DEVICE(dev);
-     qdev_prop_set_chr(dev, "chardev", chr);
--    sysbus_realize_and_unref(s, &error_fatal);
-+    sysbus_realize(s, &error_fatal);
-     memory_region_add_subregion(address_space, base,
-                                 sysbus_mmio_get_region(s, 0));
-     sysbus_connect_irq(s, 0, irq);
-diff --git a/hw/char/spapr_vty.c b/hw/char/spapr_vty.c
-index a331d4be3b..a5bf6aa851 100644
---- a/hw/char/spapr_vty.c
-+++ b/hw/char/spapr_vty.c
-@@ -154,13 +154,13 @@ static target_ulong h_get_term_char(PowerPCCPU *cpu, SpaprMachineState *spapr,
-     return H_SUCCESS;
- }
- 
--void spapr_vty_create(SpaprVioBus *bus, Chardev *chardev)
-+void spapr_vty_create(Object *parent, SpaprVioBus *bus, Chardev *chardev)
- {
-     DeviceState *dev;
- 
--    dev = qdev_new_orphan("spapr-vty");
-+    dev = qdev_new(parent, "vty[*]", "spapr-vty");
-     qdev_prop_set_chr(dev, "chardev", chardev);
--    qdev_realize_and_unref(dev, &bus->bus, &error_fatal);
-+    qdev_realize(dev, &bus->bus, &error_fatal);
- }
- 
- static const Property spapr_vty_properties[] = {
-diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
-index e3c9053bf2..002f4299cc 100644
---- a/hw/hppa/machine.c
-+++ b/hw/hppa/machine.c
-@@ -607,7 +607,8 @@ static void machine_HP_715_init(MachineState *machine)
-                                     SYS_BUS_DEVICE(lasi_dev), 0));
- 
-     /* Serial ports: Lasi use a 7.272727 MHz clock. */
--    serial_mm_init(addr_space, translate(NULL, LASI_HPA_715 + LASI_UART + 0x800), 0,
-+    serial_mm_init(OBJECT(machine), addr_space,
-+        translate(NULL, LASI_HPA_715 + LASI_UART + 0x800), 0,
-         qdev_get_gpio_in(lasi_dev, LASI_IRQ_UART_HPA), 7272727 / 16,
-         serial_hd(0), DEVICE_BIG_ENDIAN);
- 
-@@ -694,11 +695,13 @@ static void machine_HP_B160L_init(MachineState *machine)
-     assert(isa_bus);
- 
-     /* Serial ports: Lasi and Dino use a 7.272727 MHz clock. */
--    serial_mm_init(addr_space, translate(NULL, LASI_HPA + LASI_UART + 0x800), 0,
-+    serial_mm_init(OBJECT(machine), addr_space,
-+        translate(NULL, LASI_HPA + LASI_UART + 0x800), 0,
-         qdev_get_gpio_in(lasi_dev, LASI_IRQ_UART_HPA), 7272727 / 16,
-         serial_hd(0), DEVICE_BIG_ENDIAN);
- 
--    serial_mm_init(addr_space, translate(NULL, DINO_UART_HPA + 0x800), 0,
-+    serial_mm_init(OBJECT(machine), addr_space,
-+        translate(NULL, DINO_UART_HPA + 0x800), 0,
-         qdev_get_gpio_in(dino_dev, DINO_IRQ_RS232INT), 7272727 / 16,
-         serial_hd(1), DEVICE_BIG_ENDIAN);
- 
-diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-index d13036bd73..8e52cdd0db 100644
---- a/hw/i386/microvm.c
-+++ b/hw/i386/microvm.c
-@@ -273,7 +273,7 @@ static void microvm_devices_init(MicrovmMachineState *mms)
-     }
- 
-     if (mms->isa_serial) {
--        serial_hds_isa_init(isa_bus, 0, 1);
-+        serial_hds_isa_init(OBJECT(mms), isa_bus, 0, 1);
-     }
- 
-     if (!x86ms->igvm) {
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 24ba1189d7..3d405cb33c 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -981,7 +981,7 @@ static const MemoryRegionOps ioportF0_io_ops = {
-     },
- };
- 
--static void pc_superio_init(ISABus *isa_bus, bool create_fdctrl,
-+static void pc_superio_init(Object *parent, ISABus *isa_bus, bool create_fdctrl,
-                             bool create_i8042, bool no_vmport, Error **errp)
- {
-     int i;
-@@ -989,8 +989,8 @@ static void pc_superio_init(ISABus *isa_bus, bool create_fdctrl,
-     qemu_irq *a20_line;
-     ISADevice *i8042, *port92, *vmmouse;
- 
--    serial_hds_isa_init(isa_bus, 0, MAX_ISA_SERIAL_PORTS);
--    parallel_hds_isa_init(isa_bus, MAX_PARALLEL_PORTS);
-+    serial_hds_isa_init(parent, isa_bus, 0, MAX_ISA_SERIAL_PORTS);
-+    parallel_hds_isa_init(parent, isa_bus, MAX_PARALLEL_PORTS);
- 
-     for (i = 0; i < MAX_FD; i++) {
-         fd[i] = drive_get(IF_FLOPPY, 0, i);
-@@ -1136,7 +1136,7 @@ void pc_basic_device_init(struct PCMachineState *pcms,
-     }
- 
-     /* Super I/O */
--    pc_superio_init(isa_bus, create_fdctrl, pcms->i8042_enabled,
-+    pc_superio_init(OBJECT(pcms), isa_bus, create_fdctrl, pcms->i8042_enabled,
-                     pcms->vmport != ON_OFF_AUTO_ON, &error_fatal);
- 
-     pcms->machine_done.notify = pc_machine_done;
-diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-index e0129b2f33..20a68ebd44 100644
---- a/hw/loongarch/virt.c
-+++ b/hw/loongarch/virt.c
-@@ -471,7 +471,7 @@ static void virt_devices_init(DeviceState *pch_pic,
-     for (i = VIRT_UART_COUNT; i-- > 0;) {
-         hwaddr base = VIRT_UART_BASE + i * VIRT_UART_SIZE;
-         irq = VIRT_UART_IRQ + i - VIRT_GSI_BASE;
--        serial_mm_init(get_system_memory(), base, 0,
-+        serial_mm_init(OBJECT(lvms), get_system_memory(), base, 0,
-                        qdev_get_gpio_in(pch_pic, irq),
-                        115200, serial_hd(i), DEVICE_LITTLE_ENDIAN);
-     }
-diff --git a/hw/m68k/mcf5206.c b/hw/m68k/mcf5206.c
-index 9f373b99b1..b3c745d3f9 100644
---- a/hw/m68k/mcf5206.c
-+++ b/hw/m68k/mcf5206.c
-@@ -596,8 +596,8 @@ static void mcf5206_mbar_realize(DeviceState *dev, Error **errp)
-     s->pic = qemu_allocate_irqs(m5206_mbar_set_irq, s, 14);
-     m5206_timer_init(&s->timer[0], s->pic[9]);
-     m5206_timer_init(&s->timer[1], s->pic[10]);
--    s->uart[0] = mcf_uart_create(s->pic[12], serial_hd(0));
--    s->uart[1] = mcf_uart_create(s->pic[13], serial_hd(1));
-+    s->uart[0] = mcf_uart_create(OBJECT(s), s->pic[12], serial_hd(0));
-+    s->uart[1] = mcf_uart_create(OBJECT(s), s->pic[13], serial_hd(1));
- }
- 
- static const Property mcf5206_mbar_properties[] = {
-diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
-index 0b8636daa9..f305478b8d 100644
---- a/hw/m68k/mcf5208.c
-+++ b/hw/m68k/mcf5208.c
-@@ -309,9 +309,12 @@ static void mcf5208evb_init(MachineState *machine)
-     /* Internal peripherals.  */
-     intc = mcf_intc_init(OBJECT(machine), address_space_mem, 0xfc048000, cpu);
- 
--    mcf_uart_create_mmap(0xfc060000, qdev_get_gpio_in(intc, 26), serial_hd(0));
--    mcf_uart_create_mmap(0xfc064000, qdev_get_gpio_in(intc, 27), serial_hd(1));
--    mcf_uart_create_mmap(0xfc068000, qdev_get_gpio_in(intc, 28), serial_hd(2));
-+    mcf_uart_create_mmap(OBJECT(machine), 0xfc060000,
-+                         qdev_get_gpio_in(intc, 26), serial_hd(0));
-+    mcf_uart_create_mmap(OBJECT(machine), 0xfc064000,
-+                         qdev_get_gpio_in(intc, 27), serial_hd(1));
-+    mcf_uart_create_mmap(OBJECT(machine), 0xfc068000,
-+                         qdev_get_gpio_in(intc, 28), serial_hd(2));
- 
-     mcf5208_sys_init(address_space_mem, intc, cpu);
- 
-diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogix_ml605_mmu.c
-index b77df1132b..1dc34dc247 100644
---- a/hw/microblaze/petalogix_ml605_mmu.c
-+++ b/hw/microblaze/petalogix_ml605_mmu.c
-@@ -122,7 +122,7 @@ petalogix_ml605_init(MachineState *machine)
-         irq[i] = qdev_get_gpio_in(dev, i);
-     }
- 
--    serial_mm_init(address_space_mem, UART16550_BASEADDR + 0x1000, 2,
-+    serial_mm_init(OBJECT(machine), address_space_mem, UART16550_BASEADDR + 0x1000, 2,
-                    irq[UART16550_IRQ], 115200, serial_hd(0),
-                    DEVICE_LITTLE_ENDIAN);
- 
 diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-index 18ede54ae8..770160c4e5 100644
+index 770160c4e5..a156b218fb 100644
 --- a/hw/mips/boston.c
 +++ b/hw/mips/boston.c
-@@ -755,7 +755,8 @@ static void boston_mach_init(MachineState *machine)
-     memory_region_add_subregion_overlap(sys_mem,
-                           boston_memmap[BOSTON_PLATREG].base, platreg, 0);
+@@ -424,7 +424,7 @@ static const struct fit_loader boston_fit_loader = {
+ };
  
--    s->uart = serial_mm_init(sys_mem, boston_memmap[BOSTON_UART].base, 2,
-+    s->uart = serial_mm_init(OBJECT(machine), sys_mem,
-+                             boston_memmap[BOSTON_UART].base, 2,
-                              get_cps_irq(&s->cps, 3), 10000000,
-                              serial_hd(0), DEVICE_LITTLE_ENDIAN);
+ static inline XilinxPCIEHost *
+-xilinx_pcie_init(MemoryRegion *sys_mem, uint32_t bus_nr,
++xilinx_pcie_init(Object *parent, MemoryRegion *sys_mem, uint32_t bus_nr,
+                  hwaddr cfg_base, uint64_t cfg_size,
+                  hwaddr mmio_base, uint64_t mmio_size,
+                  qemu_irq irq)
+@@ -432,7 +432,7 @@ xilinx_pcie_init(MemoryRegion *sys_mem, uint32_t bus_nr,
+     DeviceState *dev;
+     MemoryRegion *cfg, *mmio;
  
+-    dev = qdev_new_orphan(TYPE_XILINX_PCIE_HOST);
++    dev = qdev_new(parent, "pcie[*]", TYPE_XILINX_PCIE_HOST);
+ 
+     qdev_prop_set_uint32(dev, "bus_nr", bus_nr);
+     qdev_prop_set_uint64(dev, "cfg_base", cfg_base);
+@@ -440,7 +440,7 @@ xilinx_pcie_init(MemoryRegion *sys_mem, uint32_t bus_nr,
+     qdev_prop_set_uint64(dev, "mmio_base", mmio_base);
+     qdev_prop_set_uint64(dev, "mmio_size", mmio_size);
+ 
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+     cfg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
+     memory_region_add_subregion_overlap(sys_mem, cfg_base, cfg, 0);
+@@ -688,8 +688,8 @@ static void boston_mach_init(MachineState *machine)
+         exit(1);
+     }
+ 
+-    dev = qdev_new_orphan(TYPE_BOSTON);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    dev = qdev_new(OBJECT(machine), "boston", TYPE_BOSTON);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+     s = BOSTON(dev);
+     s->mach = machine;
+@@ -727,21 +727,21 @@ static void boston_mach_init(MachineState *machine)
+                              MIN(machine->ram_size, (256 * MiB)));
+     memory_region_add_subregion_overlap(sys_mem, 0, ddr_low_alias, 0);
+ 
+-    xilinx_pcie_init(sys_mem, 0,
++    xilinx_pcie_init(OBJECT(machine), sys_mem, 0,
+                      boston_memmap[BOSTON_PCIE0].base,
+                      boston_memmap[BOSTON_PCIE0].size,
+                      boston_memmap[BOSTON_PCIE0_MMIO].base,
+                      boston_memmap[BOSTON_PCIE0_MMIO].size,
+                      get_cps_irq(&s->cps, 2));
+ 
+-    xilinx_pcie_init(sys_mem, 1,
++    xilinx_pcie_init(OBJECT(machine), sys_mem, 1,
+                      boston_memmap[BOSTON_PCIE1].base,
+                      boston_memmap[BOSTON_PCIE1].size,
+                      boston_memmap[BOSTON_PCIE1_MMIO].base,
+                      boston_memmap[BOSTON_PCIE1_MMIO].size,
+                      get_cps_irq(&s->cps, 1));
+ 
+-    pcie2 = xilinx_pcie_init(sys_mem, 2,
++    pcie2 = xilinx_pcie_init(OBJECT(machine), sys_mem, 2,
+                              boston_memmap[BOSTON_PCIE2].base,
+                              boston_memmap[BOSTON_PCIE2].size,
+                              boston_memmap[BOSTON_PCIE2_MMIO].base,
+@@ -770,8 +770,9 @@ static void boston_mach_init(MachineState *machine)
+     qemu_chr_fe_set_handlers(&s->lcd_display, NULL, NULL,
+                              boston_lcd_event, NULL, s, NULL, true);
+ 
+-    pdev = pci_create_simple_multifunction_orphan(&PCI_BRIDGE(&pcie2->root)->sec_bus,
+-                                           PCI_DEVFN(0, 0), TYPE_ICH9_AHCI);
++    pdev = pci_create_simple_multifunction(OBJECT(machine), "ahci",
++                                    &PCI_BRIDGE(&pcie2->root)->sec_bus,
++                                    PCI_DEVFN(0, 0), TYPE_ICH9_AHCI);
+     ich9 = ICH9_AHCI(pdev);
+     g_assert(ARRAY_SIZE(hd) == ich9->ahci.ports);
+     ide_drive_get(hd, ich9->ahci.ports);
+diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
+index 0046423d40..88d2901829 100644
+--- a/hw/mips/fuloong2e.c
++++ b/hw/mips/fuloong2e.c
+@@ -286,7 +286,8 @@ static void mips_fuloong2e_init(MachineState *machine)
+     pci_bus = bonito_init(OBJECT(machine), (qemu_irq *)&(env->irq[2]));
+ 
+     /* South bridge -> IP5 */
+-    pci_dev = pci_new_multifunction_orphan(PCI_DEVFN(FULOONG2E_VIA_SLOT, 0),
++    pci_dev = pci_new_multifunction(OBJECT(machine), "via",
++                                    PCI_DEVFN(FULOONG2E_VIA_SLOT, 0),
+                                     TYPE_VT82C686B_ISA);
+ 
+     /* Set properties on individual devices before realizing the south bridge */
+@@ -295,7 +296,7 @@ static void mips_fuloong2e_init(MachineState *machine)
+         qdev_prop_set_string(dev, "audiodev", machine->audiodev);
+     }
+ 
+-    pci_realize_and_unref(pci_dev, pci_bus, &error_abort);
++    qdev_realize(DEVICE(pci_dev), BUS(pci_bus), &error_abort);
+ 
+     object_property_add_alias(OBJECT(machine), "rtc-time",
+                               object_resolve_path_component(OBJECT(pci_dev),
+@@ -312,12 +313,12 @@ static void mips_fuloong2e_init(MachineState *machine)
+     /* GPU */
+     if (vga_interface_type != VGA_NONE) {
+         vga_interface_created = true;
+-        pci_dev = pci_new_orphan(-1, "ati-vga");
++        pci_dev = pci_new(OBJECT(machine), "vga", -1, "ati-vga");
+         dev = DEVICE(pci_dev);
+         qdev_prop_set_uint32(dev, "vgamem_mb", 16);
+         qdev_prop_set_uint16(dev, "x-device-id", 0x5159);
+         qdev_prop_set_uint64(dev, "x-linear-aper-size", 16 * MiB);
+-        pci_realize_and_unref(pci_dev, pci_bus, &error_fatal);
++        qdev_realize(DEVICE(pci_dev), BUS(pci_bus), &error_fatal);
+     }
+ 
+     /* Populate SPD eeprom data */
 diff --git a/hw/mips/jazz.c b/hw/mips/jazz.c
-index 13eaa2d2ec..31ef357554 100644
+index 31ef357554..208e59fbeb 100644
 --- a/hw/mips/jazz.c
 +++ b/hw/mips/jazz.c
-@@ -375,10 +375,10 @@ static void mips_jazz_init(MachineState *machine,
-                                                        0));
+@@ -113,7 +113,8 @@ static const MemoryRegionOps dma_dummy_ops = {
+     .endianness = DEVICE_NATIVE_ENDIAN,
+ };
  
-     /* Serial ports */
--    serial_mm_init(address_space, 0x80006000, 0,
-+    serial_mm_init(OBJECT(machine), address_space, 0x80006000, 0,
-                    qdev_get_gpio_in(rc4030, 8), 8000000 / 16,
-                    serial_hd(0), DEVICE_NATIVE_ENDIAN);
--    serial_mm_init(address_space, 0x80007000, 0,
-+    serial_mm_init(OBJECT(machine), address_space, 0x80007000, 0,
-                    qdev_get_gpio_in(rc4030, 9), 8000000 / 16,
-                    serial_hd(1), DEVICE_NATIVE_ENDIAN);
+-static void mips_jazz_init_net(IOMMUMemoryRegion *rc4030_dma_mr,
++static void mips_jazz_init_net(Object *parent,
++                               IOMMUMemoryRegion *rc4030_dma_mr,
+                                DeviceState *rc4030, MemoryRegion *dp8393x_prom)
+ {
+     DeviceState *dev;
+@@ -127,14 +128,14 @@ static void mips_jazz_init_net(IOMMUMemoryRegion *rc4030_dma_mr,
+         return;
+     }
  
+-    dev = qdev_new_orphan("dp8393x");
++    dev = qdev_new(parent, "dp8393x", "dp8393x");
+     qdev_set_nic_properties(dev, nd);
+     qdev_prop_set_uint8(dev, "it_shift", 2);
+     qdev_prop_set_bit(dev, "big_endian", TARGET_BIG_ENDIAN);
+     object_property_set_link(OBJECT(dev), "dma_mr",
+                              OBJECT(rc4030_dma_mr), &error_abort);
+     sysbus = SYS_BUS_DEVICE(dev);
+-    sysbus_realize_and_unref(sysbus, &error_fatal);
++    sysbus_realize(sysbus, &error_fatal);
+     sysbus_mmio_map(sysbus, 0, 0x80001000);
+     sysbus_connect_irq(sysbus, 0, qdev_get_gpio_in(rc4030, 4));
+ 
+@@ -289,16 +290,16 @@ static void mips_jazz_init(MachineState *machine,
+     isa_bus_register_input_irqs(isa_bus, i8259);
+     i8257_dma_init(OBJECT(rc4030), isa_bus, 0);
+     pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
+-    pcspk = isa_new_orphan(TYPE_PC_SPEAKER);
++    pcspk = isa_new(OBJECT(machine), "pcspk", TYPE_PC_SPEAKER);
+     object_property_set_link(OBJECT(pcspk), "pit", OBJECT(pit), &error_fatal);
+-    isa_realize_and_unref(pcspk, isa_bus, &error_fatal);
++    qdev_realize(DEVICE(pcspk), BUS(isa_bus), &error_fatal);
+ 
+     /* Video card */
+     switch (jazz_model) {
+     case JAZZ_MAGNUM:
+-        dev = qdev_new_orphan("sysbus-g364");
++        dev = qdev_new(OBJECT(machine), "g364", "sysbus-g364");
+         sysbus = SYS_BUS_DEVICE(dev);
+-        sysbus_realize_and_unref(sysbus, &error_fatal);
++        sysbus_realize(sysbus, &error_fatal);
+         sysbus_mmio_map(sysbus, 0, 0x60080000);
+         sysbus_mmio_map(sysbus, 1, 0x40000000);
+         sysbus_connect_irq(sysbus, 0, qdev_get_gpio_in(rc4030, 3));
+@@ -313,10 +314,10 @@ static void mips_jazz_init(MachineState *machine,
+         }
+         break;
+     case JAZZ_PICA61:
+-        dev = qdev_new_orphan(TYPE_VGA_MMIO);
++        dev = qdev_new(OBJECT(machine), "vga", TYPE_VGA_MMIO);
+         qdev_prop_set_uint8(dev, "it_shift", 0);
+         sysbus = SYS_BUS_DEVICE(dev);
+-        sysbus_realize_and_unref(sysbus, &error_fatal);
++        sysbus_realize(sysbus, &error_fatal);
+         sysbus_mmio_map(sysbus, 0, 0x60000000);
+         sysbus_mmio_map(sysbus, 1, 0x400a0000);
+         sysbus_mmio_map(sysbus, 2, VBE_DISPI_LFB_PHYSICAL_ADDRESS);
+@@ -326,10 +327,10 @@ static void mips_jazz_init(MachineState *machine,
+     }
+ 
+     /* Network controller */
+-    mips_jazz_init_net(rc4030_dma_mr, rc4030, dp8393x_prom);
++    mips_jazz_init_net(OBJECT(machine), rc4030_dma_mr, rc4030, dp8393x_prom);
+ 
+     /* SCSI adapter */
+-    dev = qdev_new_orphan(TYPE_SYSBUS_ESP);
++    dev = qdev_new(OBJECT(machine), "esp", TYPE_SYSBUS_ESP);
+     sysbus_esp = SYSBUS_ESP(dev);
+     esp = &sysbus_esp->esp;
+     esp->dma_memory_read = rc4030_dma_read;
+@@ -340,7 +341,7 @@ static void mips_jazz_init(MachineState *machine,
+     esp->dma_enabled = 1;
+ 
+     sysbus = SYS_BUS_DEVICE(dev);
+-    sysbus_realize_and_unref(sysbus, &error_fatal);
++    sysbus_realize(sysbus, &error_fatal);
+     sysbus_connect_irq(sysbus, 0, qdev_get_gpio_in(rc4030, 5));
+     sysbus_mmio_map(sysbus, 0, 0x80002000);
+ 
+@@ -360,10 +361,10 @@ static void mips_jazz_init(MachineState *machine,
+     memory_region_add_subregion(address_space, 0x80004000, rtc);
+ 
+     /* Keyboard (i8042) */
+-    i8042 = I8042_MMIO(qdev_new_orphan(TYPE_I8042_MMIO));
++    i8042 = I8042_MMIO(qdev_new(OBJECT(machine), "i8042", TYPE_I8042_MMIO));
+     qdev_prop_set_uint64(DEVICE(i8042), "mask", 1);
+     qdev_prop_set_uint32(DEVICE(i8042), "size", 0x1000);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(i8042), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(i8042), &error_fatal);
+ 
+     qdev_connect_gpio_out(DEVICE(i8042), I8042_KBD_IRQ,
+                           qdev_get_gpio_in(rc4030, 6));
+@@ -390,13 +391,14 @@ static void mips_jazz_init(MachineState *machine,
+     /* FIXME: missing Jazz sound at 0x8000c000, rc4030[2] */
+ 
+     /* NVRAM */
+-    dev = qdev_new_orphan("ds1225y");
++    dev = qdev_new(OBJECT(machine), "nvram", "ds1225y");
+     sysbus = SYS_BUS_DEVICE(dev);
+-    sysbus_realize_and_unref(sysbus, &error_fatal);
++    sysbus_realize(sysbus, &error_fatal);
+     sysbus_mmio_map(sysbus, 0, 0x80009000);
+ 
+     /* LED indicator */
+-    sysbus_create_simple_orphan("jazz-led", 0x8000f000, NULL);
++    sysbus_create_simple(OBJECT(machine), "led", "jazz-led",
++                         0x8000f000, NULL);
+ 
+     g_free(dmas);
+ }
 diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
-index f43c231004..6f2ac8ba90 100644
+index 6f2ac8ba90..9ab1edceb2 100644
 --- a/hw/mips/loongson3_virt.c
 +++ b/hw/mips/loongson3_virt.c
-@@ -532,7 +532,7 @@ static void mips_loongson3_virt_init(MachineState *machine)
+@@ -424,8 +424,8 @@ static inline void loongson3_virt_devices_init(MachineState *machine,
+     MachineClass *mc = MACHINE_GET_CLASS(machine);
+     LoongsonMachineState *s = LOONGSON_MACHINE(machine);
+ 
+-    dev = qdev_new_orphan(TYPE_GPEX_HOST);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    dev = qdev_new(OBJECT(machine), "pcie", TYPE_GPEX_HOST);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     pci_bus = PCI_HOST_BRIDGE(dev)->bus;
+ 
+     s->ecam_alias = g_new0(MemoryRegion, 1);
+@@ -465,11 +465,12 @@ static inline void loongson3_virt_devices_init(MachineState *machine,
+     if (defaults_enabled() && object_class_by_name("pci-ohci")) {
+         USBBus *usb_bus;
+ 
+-        pci_create_simple_orphan(pci_bus, -1, "pci-ohci");
++        pci_create_simple(OBJECT(machine), "ohci", pci_bus, -1, "pci-ohci");
+         usb_bus = USB_BUS(object_resolve_type_unambiguous(TYPE_USB_BUS,
+                                                           &error_abort));
+-        usb_create_simple_orphan(usb_bus, "usb-kbd");
+-        usb_create_simple_orphan(usb_bus, "usb-tablet");
++        usb_create_simple(OBJECT(machine), "usb-kbd", usb_bus, "usb-kbd");
++        usb_create_simple(OBJECT(machine), "usb-tablet", usb_bus,
++                          "usb-tablet");
+     }
+ 
+     pci_init_nic_devices(pci_bus, mc->default_nic);
+@@ -519,16 +520,16 @@ static void mips_loongson3_virt_init(MachineState *machine)
+ 
+     memory_region_init(iocsr, OBJECT(machine), "loongson3.iocsr", UINT32_MAX);
+ 
+-    ipi = qdev_new_orphan(TYPE_LOONGSON_IPI);
++    ipi = qdev_new(OBJECT(machine), "ipi", TYPE_LOONGSON_IPI);
+     qdev_prop_set_uint32(ipi, "num-cpu", machine->smp.cpus);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(ipi), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(ipi), &error_fatal);
+     memory_region_add_subregion(iocsr, SMP_IPI_MAILBOX,
+                             sysbus_mmio_get_region(SYS_BUS_DEVICE(ipi), 0));
+     memory_region_add_subregion(iocsr, MAIL_SEND_ADDR,
+                             sysbus_mmio_get_region(SYS_BUS_DEVICE(ipi), 1));
+ 
+-    liointc = qdev_new_orphan("loongson.liointc");
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(liointc), &error_fatal);
++    liointc = qdev_new(OBJECT(machine), "liointc", "loongson.liointc");
++    sysbus_realize(SYS_BUS_DEVICE(liointc), &error_fatal);
  
      sysbus_mmio_map(SYS_BUS_DEVICE(liointc), 0, virt_memmap[VIRT_LIOINTC].base);
  
--    serial_mm_init(address_space_mem, virt_memmap[VIRT_UART].base, 0,
-+    serial_mm_init(OBJECT(machine), address_space_mem, virt_memmap[VIRT_UART].base, 0,
+@@ -536,7 +537,8 @@ static void mips_loongson3_virt_init(MachineState *machine)
                     qdev_get_gpio_in(liointc, UART_IRQ), 115200, serial_hd(0),
                     DEVICE_LITTLE_ENDIAN);
  
+-    sysbus_create_simple_orphan("goldfish_rtc", virt_memmap[VIRT_RTC].base,
++    sysbus_create_simple(OBJECT(machine), "rtc", "goldfish_rtc",
++                         virt_memmap[VIRT_RTC].base,
+                          qdev_get_gpio_in(liointc, RTC_IRQ));
+ 
+     cpuclk = clock_new(OBJECT(machine), "cpu-refclk");
 diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index 8dc7429ac9..ea11299af8 100644
+index ea11299af8..ebd1456657 100644
 --- a/hw/mips/malta.c
 +++ b/hw/mips/malta.c
-@@ -569,7 +569,7 @@ static void malta_fgpa_display_event(void *opaque, QEMUChrEvent event)
-     }
- }
+@@ -1098,8 +1098,8 @@ void mips_malta_init(MachineState *machine)
+     PCIDevice *piix4;
+     DeviceState *dev;
  
--static MaltaFPGAState *malta_fpga_init(MemoryRegion *address_space,
-+static MaltaFPGAState *malta_fpga_init(Object *parent, MemoryRegion *address_space,
-          hwaddr base, qemu_irq uart_irq, Chardev *uart_chr)
- {
-     MaltaFPGAState *s;
-@@ -592,7 +592,7 @@ static MaltaFPGAState *malta_fpga_init(MemoryRegion *address_space,
-     qemu_chr_fe_set_handlers(&s->display, NULL, NULL,
-                              malta_fgpa_display_event, NULL, s, NULL, true);
+-    s = MIPS_MALTA(qdev_new_orphan(TYPE_MIPS_MALTA));
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
++    s = MIPS_MALTA(qdev_new(OBJECT(machine), "malta", TYPE_MIPS_MALTA));
++    sysbus_realize(SYS_BUS_DEVICE(s), &error_fatal);
  
--    s->uart = serial_mm_init(address_space, base + 0x900, 3, uart_irq,
-+    s->uart = serial_mm_init(parent, address_space, base + 0x900, 3, uart_irq,
-                              230400, uart_chr, DEVICE_NATIVE_ENDIAN);
+     /* create CPU */
+     mips_create_cpu(machine, s, &cbus_irq, &i8259_irq);
+@@ -1227,16 +1227,17 @@ void mips_malta_init(MachineState *machine)
+     stl_p(memory_region_get_ram_ptr(bios_copy) + 0x10, 0x00000420);
  
-     malta_fpga_reset(s);
-@@ -1133,7 +1133,8 @@ void mips_malta_init(MachineState *machine)
-     /* FPGA */
+     /* Northbridge */
+-    dev = qdev_new_orphan("gt64120");
++    dev = qdev_new(OBJECT(machine), "gt64120", "gt64120");
+     qdev_prop_set_bit(dev, "cpu-little-endian", !TARGET_BIG_ENDIAN);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
+     pci_bus = PCI_BUS(qdev_get_child_bus(dev, "pci"));
+     pci_bus_map_irqs(pci_bus, malta_pci_slot_get_pirq);
  
-     /* The CBUS UART is attached to the MIPS CPU INT2 pin, ie interrupt 4 */
--    malta_fpga_init(system_memory, FPGA_ADDRESS, cbus_irq, serial_hd(2));
-+    malta_fpga_init(OBJECT(machine), system_memory, FPGA_ADDRESS, cbus_irq,
-+                    serial_hd(2));
+     /* Southbridge */
+-    piix4 = pci_new_multifunction_orphan(PIIX4_PCI_DEVFN, TYPE_PIIX4_PCI_DEVICE);
++    piix4 = pci_new_multifunction(OBJECT(machine), "piix4",
++                                  PIIX4_PCI_DEVFN, TYPE_PIIX4_PCI_DEVICE);
+     qdev_prop_set_uint32(DEVICE(piix4), "smb_io_base", 0x1100);
+-    pci_realize_and_unref(piix4, pci_bus, &error_fatal);
++    qdev_realize(DEVICE(piix4), BUS(pci_bus), &error_fatal);
+     isa_bus = ISA_BUS(qdev_get_child_bus(DEVICE(piix4), "isa.0"));
  
-     /* Load firmware in flash / BIOS. */
-     dinfo = drive_get(IF_PFLASH, 0, fl_idx);
-diff --git a/hw/or1k/or1k-sim.c b/hw/or1k/or1k-sim.c
-index da05d7cbe3..7ea61327c3 100644
---- a/hw/or1k/or1k-sim.c
-+++ b/hw/or1k/or1k-sim.c
-@@ -266,7 +266,7 @@ static void openrisc_sim_serial_init(Or1ksimState *state, hwaddr base,
-     } else {
-         serial_irq = get_cpu_irq(cpus, 0, irq_pin);
-     }
--    serial_mm_init(get_system_memory(), base, 0, serial_irq, 115200,
-+    serial_mm_init(OBJECT(state), get_system_memory(), base, 0, serial_irq, 115200,
-                    serial_hd(uart_idx),
-                    DEVICE_BIG_ENDIAN);
+     dev = DEVICE(object_resolve_path_component(OBJECT(piix4), "ide"));
+@@ -1254,7 +1255,8 @@ void mips_malta_init(MachineState *machine)
+     g_free(smbus_eeprom_buf);
  
-diff --git a/hw/or1k/virt.c b/hw/or1k/virt.c
-index 276be32648..c0e0e3c48b 100644
---- a/hw/or1k/virt.c
-+++ b/hw/or1k/virt.c
-@@ -238,7 +238,7 @@ static void openrisc_virt_serial_init(OR1KVirtState *state, hwaddr base,
-     qemu_irq serial_irq = get_per_cpu_irq(OBJECT(state), cpus, num_cpus,
-                                           irq_pin);
+     /* Super I/O: SMS FDC37M817 */
+-    isa_create_simple_orphan(isa_bus, TYPE_FDC37M81X_SUPERIO);
++    isa_create_simple(OBJECT(machine), "superio", isa_bus,
++                      TYPE_FDC37M81X_SUPERIO);
  
--    serial_mm_init(get_system_memory(), base, 0, serial_irq, 115200,
-+    serial_mm_init(OBJECT(state), get_system_memory(), base, 0, serial_irq, 115200,
-                    serial_hd(0), DEVICE_BIG_ENDIAN);
- 
-     /* Add device tree node for serial. */
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 85977c8b69..f7a7c136da 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -1006,13 +1006,13 @@ void ppce500_init(MachineState *machine)
- 
-     /* Serial */
-     if (serial_hd(0)) {
--        serial_mm_init(ccsr_addr_space, MPC8544_SERIAL0_REGS_OFFSET,
-+        serial_mm_init(OBJECT(machine), ccsr_addr_space, MPC8544_SERIAL0_REGS_OFFSET,
-                        0, qdev_get_gpio_in(mpicdev, 42), 399193,
-                        serial_hd(0), DEVICE_BIG_ENDIAN);
-     }
- 
-     if (serial_hd(1)) {
--        serial_mm_init(ccsr_addr_space, MPC8544_SERIAL1_REGS_OFFSET,
-+        serial_mm_init(OBJECT(machine), ccsr_addr_space, MPC8544_SERIAL1_REGS_OFFSET,
-                        0, qdev_get_gpio_in(mpicdev, 42), 399193,
-                        serial_hd(1), DEVICE_BIG_ENDIAN);
-     }
-diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-index 1eb3c09672..40a7559528 100644
---- a/hw/ppc/pnv.c
-+++ b/hw/ppc/pnv.c
-@@ -1311,7 +1311,7 @@ static void pnv_init(MachineState *machine)
-     pnv->isa_bus = pnv_isa_create(pnv->chips[0], &error_fatal);
- 
-     /* Create serial port */
--    serial_hds_isa_init(pnv->isa_bus, 0, MAX_ISA_SERIAL_PORTS);
-+    serial_hds_isa_init(OBJECT(machine), pnv->isa_bus, 0, MAX_ISA_SERIAL_PORTS);
- 
-     /* Create an RTC ISA device too */
-     mc146818_rtc_init(OBJECT(machine), pnv->isa_bus, 2000, NULL);
-diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
-index 68c7328129..499949bfdf 100644
---- a/hw/ppc/ppc440_bamboo.c
-+++ b/hw/ppc/ppc440_bamboo.c
-@@ -200,13 +200,13 @@ static void bamboo_init(MachineState *machine)
-     memory_region_add_subregion(get_system_memory(), PPC440EP_PCI_IO, isa);
- 
-     if (serial_hd(0) != NULL) {
--        serial_mm_init(address_space_mem, 0xef600300, 0,
-+        serial_mm_init(OBJECT(machine), address_space_mem, 0xef600300, 0,
-                        qdev_get_gpio_in(uicdev, 0),
-                        PPC_SERIAL_MM_BAUDBASE, serial_hd(0),
-                        DEVICE_BIG_ENDIAN);
-     }
-     if (serial_hd(1) != NULL) {
--        serial_mm_init(address_space_mem, 0xef600400, 0,
-+        serial_mm_init(OBJECT(machine), address_space_mem, 0xef600400, 0,
-                        qdev_get_gpio_in(uicdev, 1),
-                        PPC_SERIAL_MM_BAUDBASE, serial_hd(1),
-                        DEVICE_BIG_ENDIAN);
-diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
-index 41d4670fa8..be506b02f2 100644
---- a/hw/ppc/sam460ex.c
-+++ b/hw/ppc/sam460ex.c
-@@ -446,13 +446,13 @@ static void sam460ex_init(MachineState *machine)
- 
-     /* SoC has 4 UARTs but board has only one wired and two described in fdt */
-     if (serial_hd(0) != NULL) {
--        serial_mm_init(get_system_memory(), 0x4ef600300, 0,
-+        serial_mm_init(OBJECT(machine), get_system_memory(), 0x4ef600300, 0,
-                        qdev_get_gpio_in(uic[1], 1),
-                        PPC_SERIAL_MM_BAUDBASE, serial_hd(0),
-                        DEVICE_BIG_ENDIAN);
-     }
-     if (serial_hd(1) != NULL) {
--        serial_mm_init(get_system_memory(), 0x4ef600400, 0,
-+        serial_mm_init(OBJECT(machine), get_system_memory(), 0x4ef600400, 0,
-                        qdev_get_gpio_in(uic[0], 1),
-                        PPC_SERIAL_MM_BAUDBASE, serial_hd(1),
-                        DEVICE_BIG_ENDIAN);
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index b81db9e8f3..969f821aca 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -3033,7 +3033,7 @@ static void spapr_machine_init(MachineState *machine)
-     spapr->vio_bus = spapr_vio_bus_init();
- 
-     for (i = 0; serial_hd(i); i++) {
--        spapr_vty_create(spapr->vio_bus, serial_hd(i));
-+        spapr_vty_create(OBJECT(machine), spapr->vio_bus, serial_hd(i));
-     }
- 
-     /* We always have at least the nvram device on VIO */
-diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
-index 1379c168d3..8f4b8965a9 100644
---- a/hw/ppc/virtex_ml507.c
-+++ b/hw/ppc/virtex_ml507.c
-@@ -228,7 +228,8 @@ static void virtex_init(MachineState *machine)
-         irq[i] = qdev_get_gpio_in(dev, i);
-     }
- 
--    serial_mm_init(address_space_mem, UART16550_BASEADDR, 2, irq[UART16550_IRQ],
-+    serial_mm_init(OBJECT(machine), address_space_mem, UART16550_BASEADDR, 2,
-+                   irq[UART16550_IRQ],
-                    115200, serial_hd(0), DEVICE_LITTLE_ENDIAN);
- 
-     /* 2 timers at irq 2 @ 62 Mhz.  */
-diff --git a/hw/riscv/boston-aia.c b/hw/riscv/boston-aia.c
-index 029cf23696..26bacf0e59 100644
---- a/hw/riscv/boston-aia.c
-+++ b/hw/riscv/boston-aia.c
-@@ -404,7 +404,8 @@ static void boston_mach_init(MachineState *machine)
-     memory_region_add_subregion_overlap(sys_mem,
-                           boston_memmap[BOSTON_PLATREG].base, platreg, 0);
- 
--    s->uart = serial_mm_init(sys_mem, boston_memmap[BOSTON_UART].base, 2,
-+    s->uart = serial_mm_init(OBJECT(machine), sys_mem,
-+                             boston_memmap[BOSTON_UART].base, 2,
-                              qdev_get_gpio_in(s->cps.aplic, UART_INT), 10000000,
-                              serial_hd(0), DEVICE_LITTLE_ENDIAN);
- 
-diff --git a/hw/riscv/k230.c b/hw/riscv/k230.c
-index 9c67dfb895..d51ad08d87 100644
---- a/hw/riscv/k230.c
-+++ b/hw/riscv/k230.c
-@@ -137,8 +137,8 @@ static DeviceState *k230_create_plic(Object *parent, int base_hartid,
-                               memmap[K230_DEV_PLIC].size);
- }
- 
--static void k230_create_uart(MemoryRegion *sys_mem, DeviceState *plic,
--                             int index)
-+static void k230_create_uart(Object *parent, MemoryRegion *sys_mem,
-+                             DeviceState *plic, int index)
- {
-     int uart_dev = K230_DEV_UART0 + index;
-     g_autofree char *name = g_strdup_printf("uart%d", index);
-@@ -147,7 +147,7 @@ static void k230_create_uart(MemoryRegion *sys_mem, DeviceState *plic,
-     create_unimplemented_device(name, memmap[uart_dev].base,
-                                 memmap[uart_dev].size);
- 
--    serial_mm_init(sys_mem, memmap[uart_dev].base, 2,
-+    serial_mm_init(parent, sys_mem, memmap[uart_dev].base, 2,
-                    qdev_get_gpio_in(plic, K230_UART0_IRQ + index),
-                    399193, serial_hd(index), DEVICE_LITTLE_ENDIAN);
- }
-@@ -190,7 +190,7 @@ static void k230_soc_realize(DeviceState *dev, Error **errp)
- 
-     /* UART */
-     for (int i = 0; i < K230_UART_COUNT; i++) {
--        k230_create_uart(sys_mem, DEVICE(s->c908_plic), i);
-+        k230_create_uart(OBJECT(s), sys_mem, DEVICE(s->c908_plic), i);
-     }
- 
-     /* Watchdog */
-diff --git a/hw/riscv/microblaze-v-generic.c b/hw/riscv/microblaze-v-generic.c
-index 5864007f01..063be14b19 100644
---- a/hw/riscv/microblaze-v-generic.c
-+++ b/hw/riscv/microblaze-v-generic.c
-@@ -100,7 +100,7 @@ static void mb_v_generic_init(MachineState *machine)
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[UARTLITE_IRQ]);
- 
-     /* Full uart */
--    serial_mm_init(sysmem, UART16550_BASEADDR + 0x1000, 2,
-+    serial_mm_init(OBJECT(machine), sysmem, UART16550_BASEADDR + 0x1000, 2,
-                    irq[UART16550_IRQ], 115200, serial_hd(1),
-                    DEVICE_LITTLE_ENDIAN);
- 
-diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
-index 18ce57fba4..52fb5d5970 100644
---- a/hw/riscv/microchip_pfsoc.c
-+++ b/hw/riscv/microchip_pfsoc.c
-@@ -346,23 +346,23 @@ static void microchip_pfsoc_soc_realize(DeviceState *dev, Error **errp)
-         qdev_get_gpio_in(DEVICE(s->plic), MICROCHIP_PFSOC_EMMC_SD_IRQ));
- 
-     /* MMUARTs */
--    s->serial0 = mchp_pfsoc_mmuart_create(system_memory,
-+    s->serial0 = mchp_pfsoc_mmuart_create(OBJECT(s), system_memory,
-         memmap[MICROCHIP_PFSOC_MMUART0].base,
-         qdev_get_gpio_in(DEVICE(s->plic), MICROCHIP_PFSOC_MMUART0_IRQ),
-         serial_hd(0));
--    s->serial1 = mchp_pfsoc_mmuart_create(system_memory,
-+    s->serial1 = mchp_pfsoc_mmuart_create(OBJECT(s), system_memory,
-         memmap[MICROCHIP_PFSOC_MMUART1].base,
-         qdev_get_gpio_in(DEVICE(s->plic), MICROCHIP_PFSOC_MMUART1_IRQ),
-         serial_hd(1));
--    s->serial2 = mchp_pfsoc_mmuart_create(system_memory,
-+    s->serial2 = mchp_pfsoc_mmuart_create(OBJECT(s), system_memory,
-         memmap[MICROCHIP_PFSOC_MMUART2].base,
-         qdev_get_gpio_in(DEVICE(s->plic), MICROCHIP_PFSOC_MMUART2_IRQ),
-         serial_hd(2));
--    s->serial3 = mchp_pfsoc_mmuart_create(system_memory,
-+    s->serial3 = mchp_pfsoc_mmuart_create(OBJECT(s), system_memory,
-         memmap[MICROCHIP_PFSOC_MMUART3].base,
-         qdev_get_gpio_in(DEVICE(s->plic), MICROCHIP_PFSOC_MMUART3_IRQ),
-         serial_hd(3));
--    s->serial4 = mchp_pfsoc_mmuart_create(system_memory,
-+    s->serial4 = mchp_pfsoc_mmuart_create(OBJECT(s), system_memory,
-         memmap[MICROCHIP_PFSOC_MMUART4].base,
-         qdev_get_gpio_in(DEVICE(s->plic), MICROCHIP_PFSOC_MMUART4_IRQ),
-         serial_hd(4));
-diff --git a/hw/riscv/sifive_e.c b/hw/riscv/sifive_e.c
-index d07edde237..fb62bc9aca 100644
---- a/hw/riscv/sifive_e.c
-+++ b/hw/riscv/sifive_e.c
-@@ -266,13 +266,13 @@ static void sifive_e_soc_realize(DeviceState *dev, Error **errp)
-                        qdev_get_gpio_in(DEVICE(s->plic),
-                                         SIFIVE_E_AON_WDT_IRQ));
- 
--    sifive_uart_create(sys_mem, memmap[SIFIVE_E_DEV_UART0].base,
-+    sifive_uart_create(OBJECT(s), sys_mem, memmap[SIFIVE_E_DEV_UART0].base,
-         serial_hd(0), qdev_get_gpio_in(DEVICE(s->plic), SIFIVE_E_UART0_IRQ));
-     create_unimplemented_device("riscv.sifive.e.qspi0",
-         memmap[SIFIVE_E_DEV_QSPI0].base, memmap[SIFIVE_E_DEV_QSPI0].size);
-     create_unimplemented_device("riscv.sifive.e.pwm0",
-         memmap[SIFIVE_E_DEV_PWM0].base, memmap[SIFIVE_E_DEV_PWM0].size);
--    sifive_uart_create(sys_mem, memmap[SIFIVE_E_DEV_UART1].base,
-+    sifive_uart_create(OBJECT(s), sys_mem, memmap[SIFIVE_E_DEV_UART1].base,
-         serial_hd(1), qdev_get_gpio_in(DEVICE(s->plic), SIFIVE_E_UART1_IRQ));
-     create_unimplemented_device("riscv.sifive.e.qspi1",
-         memmap[SIFIVE_E_DEV_QSPI1].base, memmap[SIFIVE_E_DEV_QSPI1].size);
-diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-index 41eb22dc02..0ef0124140 100644
---- a/hw/riscv/sifive_u.c
-+++ b/hw/riscv/sifive_u.c
-@@ -783,9 +783,9 @@ static void sifive_u_soc_realize(DeviceState *dev, Error **errp)
-         SIFIVE_U_PLIC_CONTEXT_STRIDE,
-         memmap[SIFIVE_U_DEV_PLIC].size);
-     g_free(plic_hart_config);
--    sifive_uart_create(system_memory, memmap[SIFIVE_U_DEV_UART0].base,
-+    sifive_uart_create(OBJECT(s), system_memory, memmap[SIFIVE_U_DEV_UART0].base,
-         serial_hd(0), qdev_get_gpio_in(DEVICE(s->plic), SIFIVE_U_UART0_IRQ));
--    sifive_uart_create(system_memory, memmap[SIFIVE_U_DEV_UART1].base,
-+    sifive_uart_create(OBJECT(s), system_memory, memmap[SIFIVE_U_DEV_UART1].base,
-         serial_hd(1), qdev_get_gpio_in(DEVICE(s->plic), SIFIVE_U_UART1_IRQ));
-     riscv_aclint_swi_create(OBJECT(dev), memmap[SIFIVE_U_DEV_CLINT].base, 0,
-         ms->smp.cpus, false);
-diff --git a/hw/riscv/tt_atlantis.c b/hw/riscv/tt_atlantis.c
-index 1e9bbc0f0b..4d2f5fbeda 100644
---- a/hw/riscv/tt_atlantis.c
-+++ b/hw/riscv/tt_atlantis.c
-@@ -544,7 +544,7 @@ static void tt_atlantis_machine_init(MachineState *machine)
-                                 bootrom);
- 
-     /* UART1, the soc console (UART0 is for the boot microcontroller) */
--    serial_mm_init(system_memory, s->memmap[TT_ATL_UART1].base, 2,
-+    serial_mm_init(OBJECT(machine), system_memory, s->memmap[TT_ATL_UART1].base, 2,
-                    qdev_get_gpio_in(s->irqchip, TT_ATL_UART1_IRQ),
-                    115200, serial_hd(0), DEVICE_LITTLE_ENDIAN);
-     /*
-diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-index 70e31f6327..cecb221bec 100644
---- a/hw/riscv/virt.c
-+++ b/hw/riscv/virt.c
-@@ -1489,7 +1489,7 @@ static void virt_machine_init(MachineState *machine)
- 
-     create_platform_bus(s, mmio_irqchip);
- 
--    serial_mm_init(system_memory, s->memmap[VIRT_UART0].base,
-+    serial_mm_init(OBJECT(machine), system_memory, s->memmap[VIRT_UART0].base,
-         0, qdev_get_gpio_in(mmio_irqchip, UART0_IRQ), 399193,
-         serial_hd(0), DEVICE_LITTLE_ENDIAN);
- 
-diff --git a/hw/riscv/xiangshan_kmh.c b/hw/riscv/xiangshan_kmh.c
-index c1c10e9456..5f44e36400 100644
---- a/hw/riscv/xiangshan_kmh.c
-+++ b/hw/riscv/xiangshan_kmh.c
-@@ -112,7 +112,7 @@ static void xiangshan_kmh_soc_realize(DeviceState *dev, Error **errp)
-     s->irqchip = xiangshan_kmh_create_aia(OBJECT(dev), num_harts);
- 
-     /* UART */
--    serial_mm_init(system_memory, memmap[XIANGSHAN_KMH_UART0].base, 2,
-+    serial_mm_init(OBJECT(s), system_memory, memmap[XIANGSHAN_KMH_UART0].base, 2,
-                    qdev_get_gpio_in(s->irqchip, XIANGSHAN_KMH_UART0_IRQ),
-                    115200, serial_hd(0), DEVICE_LITTLE_ENDIAN);
- 
-diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
-index d47d62dac7..bceda70f2e 100644
---- a/hw/sparc64/niagara.c
-+++ b/hw/sparc64/niagara.c
-@@ -151,7 +151,7 @@ static void niagara_init(MachineState *machine)
-             exit(1);
-         }
-     }
--    serial_mm_init(sysmem, NIAGARA_UART_BASE, 0, NULL,
-+    serial_mm_init(OBJECT(machine), sysmem, NIAGARA_UART_BASE, 0, NULL,
-                    115200, serial_hd(0), DEVICE_BIG_ENDIAN);
-     create_unimplemented_device("sun4v-iob", NIAGARA_IOBBASE, NIAGARA_IOBSIZE);
-     sun4v_rtc_init(OBJECT(machine), NIAGARA_RTC_BASE);
-diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-index 19a54b1f8a..dbf49ef43d 100644
---- a/hw/sparc64/sun4u.c
-+++ b/hw/sparc64/sun4u.c
-@@ -319,14 +319,14 @@ static void ebus_realize(PCIDevice *pci_dev, Error **errp)
-     /* Serial ports */
-     i = 0;
-     if (s->console_serial_base) {
--        serial_mm_init(pci_address_space(pci_dev), s->console_serial_base,
-+        serial_mm_init(OBJECT(s), pci_address_space(pci_dev), s->console_serial_base,
-                        0, NULL, 115200, serial_hd(i), DEVICE_BIG_ENDIAN);
-         i++;
-     }
--    serial_hds_isa_init(s->isa_bus, i, MAX_ISA_SERIAL_PORTS);
-+    serial_hds_isa_init(OBJECT(s), s->isa_bus, i, MAX_ISA_SERIAL_PORTS);
- 
-     /* Parallel ports */
--    parallel_hds_isa_init(s->isa_bus, MAX_PARALLEL_PORTS);
-+    parallel_hds_isa_init(OBJECT(s), s->isa_bus, MAX_PARALLEL_PORTS);
- 
-     /* Keyboard */
-     isa_create_simple(OBJECT(s), "i8042", s->isa_bus, TYPE_I8042);
-diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
-index 07b791b9bf..10bbc34399 100644
---- a/hw/xtensa/xtfpga.c
-+++ b/hw/xtensa/xtfpga.c
-@@ -312,7 +312,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
-     xtfpga_fpga_init(system_io, 0x0d020000, freq);
-     xtfpga_net_init(system_io, 0x0d030000, 0x0d030400, 0x0d800000, extints[1]);
- 
--    serial_mm_init(system_io, 0x0d050020, 2, extints[0],
-+    serial_mm_init(OBJECT(machine), system_io, 0x0d050020, 2, extints[0],
-                    115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
- 
-     dinfo = drive_get(IF_PFLASH, 0, 0);
-diff --git a/include/hw/arm/exynos4210.h b/include/hw/arm/exynos4210.h
-index b29e7243c7..2770267b4a 100644
---- a/include/hw/arm/exynos4210.h
-+++ b/include/hw/arm/exynos4210.h
-@@ -120,7 +120,7 @@ uint32_t exynos4210_get_irq(uint32_t grp, uint32_t bit);
- /*
-  * exynos4210 UART
-  */
--DeviceState *exynos4210_uart_create(hwaddr addr,
-+DeviceState *exynos4210_uart_create(Object *parent, hwaddr addr,
-                                     int fifo_size,
-                                     int channel,
-                                     Chardev *chr,
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index 2675d064f2..e000dffe13 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -256,7 +256,7 @@ struct omap_dma_lcd_channel_s {
- #define OMAP_DMA_USB_W2FC_TX2      31
- 
- struct omap_uart_s;
--struct omap_uart_s *omap_uart_init(hwaddr base,
-+struct omap_uart_s *omap_uart_init(Object *parent, hwaddr base,
-                 qemu_irq irq, omap_clk fclk, omap_clk iclk,
-                 qemu_irq txdma, qemu_irq rxdma,
-                 const char *label, Chardev *chr);
-@@ -426,7 +426,7 @@ struct omap_mpu_state_s {
- };
- 
- /* omap1.c */
--struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *sdram,
-+struct omap_mpu_state_s *omap310_mpu_init(Object *parent, MemoryRegion *sdram,
-                 const char *core);
- 
- #define OMAP_BAD_REG(paddr)        \
-diff --git a/include/hw/char/mchp_pfsoc_mmuart.h b/include/hw/char/mchp_pfsoc_mmuart.h
-index 1e27732df1..af6ab2f2a9 100644
---- a/include/hw/char/mchp_pfsoc_mmuart.h
-+++ b/include/hw/char/mchp_pfsoc_mmuart.h
-@@ -62,7 +62,7 @@ typedef struct MchpPfSoCMMUartState {
-  *
-  * @return: a pointer to the device specific control structure
-  */
--MchpPfSoCMMUartState *mchp_pfsoc_mmuart_create(MemoryRegion *sysmem,
-+MchpPfSoCMMUartState *mchp_pfsoc_mmuart_create(Object *parent, MemoryRegion *sysmem,
-     hwaddr base, qemu_irq irq, Chardev *chr);
- 
- #endif /* HW_MCHP_PFSOC_MMUART_H */
-diff --git a/include/hw/char/parallel.h b/include/hw/char/parallel.h
-index f2c92eb5bc..782cc12602 100644
---- a/include/hw/char/parallel.h
-+++ b/include/hw/char/parallel.h
-@@ -23,7 +23,7 @@ typedef struct ParallelState {
-     int it_shift;
- } ParallelState;
- 
--void parallel_hds_isa_init(ISABus *bus, int n);
-+void parallel_hds_isa_init(Object *parent, ISABus *bus, int n);
- 
- bool parallel_mm_init(MemoryRegion *address_space,
-                       hwaddr base, int it_shift, qemu_irq irq,
-diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
-index 5695787650..474cbaa5df 100644
---- a/include/hw/char/pl011.h
-+++ b/include/hw/char/pl011.h
-@@ -60,6 +60,6 @@ struct PL011State {
-     uint8_t padding_for_rust[16];
- };
- 
--DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr);
-+DeviceState *pl011_create(Object *parent, hwaddr addr, qemu_irq irq, Chardev *chr);
- 
- #endif
-diff --git a/include/hw/char/serial-isa.h b/include/hw/char/serial-isa.h
-index 8517afa128..2653f9c12d 100644
---- a/include/hw/char/serial-isa.h
-+++ b/include/hw/char/serial-isa.h
-@@ -31,7 +31,7 @@
- #define MAX_ISA_SERIAL_PORTS 4
- 
- #define TYPE_ISA_SERIAL "isa-serial"
--void serial_hds_isa_init(ISABus *bus, int from, int to);
-+void serial_hds_isa_init(Object *parent, ISABus *bus, int from, int to);
- void isa_serial_set_iobase(ISADevice *serial, hwaddr iobase);
- void isa_serial_set_enabled(ISADevice *serial, bool enabled);
- 
-diff --git a/include/hw/char/serial-mm.h b/include/hw/char/serial-mm.h
-index 0076bdc061..7b99a1db71 100644
---- a/include/hw/char/serial-mm.h
-+++ b/include/hw/char/serial-mm.h
-@@ -44,7 +44,7 @@ struct SerialMM {
-     uint8_t endianness;
- };
- 
--SerialMM *serial_mm_init(MemoryRegion *address_space,
-+SerialMM *serial_mm_init(Object *parent, MemoryRegion *address_space,
-                          hwaddr base, int regshift,
-                          qemu_irq irq, int baudbase,
-                          Chardev *chr, enum device_endian end);
-diff --git a/include/hw/char/sifive_uart.h b/include/hw/char/sifive_uart.h
-index 5f3b1327de..fca1c6fdb9 100644
---- a/include/hw/char/sifive_uart.h
-+++ b/include/hw/char/sifive_uart.h
-@@ -85,7 +85,7 @@ struct SiFiveUARTState {
-     QEMUTimer *fifo_trigger_handle;
- };
- 
--SiFiveUARTState *sifive_uart_create(MemoryRegion *address_space, hwaddr base,
--    Chardev *chr, qemu_irq irq);
-+SiFiveUARTState *sifive_uart_create(Object *parent, MemoryRegion *address_space,
-+    hwaddr base, Chardev *chr, qemu_irq irq);
- 
- #endif
-diff --git a/include/hw/m68k/mcf.h b/include/hw/m68k/mcf.h
-index ff818c55d0..af501ee459 100644
---- a/include/hw/m68k/mcf.h
-+++ b/include/hw/m68k/mcf.h
-@@ -10,8 +10,9 @@ uint64_t mcf_uart_read(void *opaque, hwaddr addr,
-                        unsigned size);
- void mcf_uart_write(void *opaque, hwaddr addr,
-                     uint64_t val, unsigned size);
--DeviceState *mcf_uart_create(qemu_irq irq, Chardev *chr);
--DeviceState *mcf_uart_create_mmap(hwaddr base, qemu_irq irq, Chardev *chr);
-+DeviceState *mcf_uart_create(Object *parent, qemu_irq irq, Chardev *chr);
-+DeviceState *mcf_uart_create_mmap(Object *parent, hwaddr base, qemu_irq irq,
-+                                  Chardev *chr);
- 
- /* mcf_intc.c */
- DeviceState *mcf_intc_init(Object *parent, struct MemoryRegion *sysmem,
-diff --git a/include/hw/ppc/spapr_vio.h b/include/hw/ppc/spapr_vio.h
-index fcb29aebff..3ca0c9d261 100644
---- a/include/hw/ppc/spapr_vio.h
-+++ b/include/hw/ppc/spapr_vio.h
-@@ -137,7 +137,7 @@ int spapr_vio_send_crq(SpaprVioDevice *dev, uint8_t *crq);
- 
- SpaprVioDevice *vty_lookup(SpaprMachineState *spapr, target_ulong reg);
- void vty_putchars(SpaprVioDevice *sdev, uint8_t *buf, int len);
--void spapr_vty_create(SpaprVioBus *bus, Chardev *chardev);
-+void spapr_vty_create(Object *parent, SpaprVioBus *bus, Chardev *chardev);
- void spapr_vlan_create(Object *parent, SpaprVioBus *bus, NICInfo *nd);
- void spapr_vscsi_create(Object *parent, SpaprVioBus *bus);
- 
+     /* Network card */
+     network_init(pci_bus);
 -- 
 2.47.1
 

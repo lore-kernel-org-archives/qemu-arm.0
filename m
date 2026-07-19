@@ -4,124 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14173C44512
-	for <qemu-arm@archiver.kernel.org>; Sun, 19 Jul 2026 09:31:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA9F3C4451B
+	for <qemu-arm@archiver.kernel.org>; Sun, 19 Jul 2026 17:49:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlNs9-0006fo-1P; Sun, 19 Jul 2026 05:31:48 -0400
+	id 1wlVdc-0000eI-WC; Sun, 19 Jul 2026 13:49:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wlNs3-0006eQ-1t
- for qemu-arm@nongnu.org; Sun, 19 Jul 2026 05:31:39 -0400
-Received: from smtpout6.mo537.mail-out.ovh.net ([51.210.91.25])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wlNs1-0005Ox-6m
- for qemu-arm@nongnu.org; Sun, 19 Jul 2026 05:31:38 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo537.mail-out.ovh.net (Postfix) with ESMTPS id 4h2z195GmGz3wkV;
- Sun, 19 Jul 2026 09:31:25 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Sun, 19 Jul 2026 09:31:25 +0000 (UTC)
-Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.138])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4h2z190SWfz1xsK; Sun, 19 Jul 2026 09:31:25 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.1])
- (Authenticated sender: clg@kaod.org)
- by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id EACDC203DE4; 
- Sun, 19 Jul 2026 09:31:23 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-102R0049aaf6c82-2b91-4d11-bc70-c27e64f9018f,
- 927533437C4EB51202FF6C72770557251D494D3D) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 90.14.253.154
-Message-ID: <72e0ec9e-23b0-4312-bb53-e11d9bcd79ed@kaod.org>
-Date: Sun, 19 Jul 2026 11:31:23 +0200
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wlVdZ-0000dC-Hy
+ for qemu-arm@nongnu.org; Sun, 19 Jul 2026 13:49:13 -0400
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wlVdX-0003BP-Ky
+ for qemu-arm@nongnu.org; Sun, 19 Jul 2026 13:49:13 -0400
+Received: by mail-pg1-x531.google.com with SMTP id
+ 41be03b00d2f7-ca12086c06eso7783860a12.0
+ for <qemu-arm@nongnu.org>; Sun, 19 Jul 2026 10:49:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1784483349; x=1785088149; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=jvhwrz3QUtBdJbahnB86ovvH4HEqE5WZvjP++ZS8f1c=;
+ b=ELRL1CScQA5YOnLJAVs8AkByw6L7c/6ySWSzhbr2OJDQ7KXOWytZWxKPbU35FjSlVD
+ k6LnKmfThErcZJqEjIudukP8vZxKbJ5qh/dmGzx7qSHRev4v3q0CGgbpTP1xrHrH9nW3
+ HczD2mJ6ar7omMdYGk6/GTckuRvbz70zuYNrrDFNaRhVkVMdVCp8Im+2TfwImw5GawlS
+ qC9OwzRF7H/m6g/gXs/XPY/tzmFJRfkbiHoCHM6dyNQMkMssmFy2NQlMhGi1drFPiRb+
+ mxZo7cPxt6sEdv70gKwhH5f6zho8lZBxx9f3FUL7xiDprkpepr6e+bPHLcc8NirR4ytc
+ 4PJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1784483349; x=1785088149;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=jvhwrz3QUtBdJbahnB86ovvH4HEqE5WZvjP++ZS8f1c=;
+ b=l2SsczIq29KUI3ZCp7U7hMatMXQO8mRIPPQe6XPpgma43NgJog40FWLCBzgzA0KKJl
+ SVjUemGpklasTVRWONgLG36LUj/sMvB9XHq0JESzDAibUnExsrTInNDxICC8DKR+OS2x
+ 4VWXl4sdLquKVAVkXd+9Hb/MW16spblC/y/OJy6/HaTlfbb4c/XUr1bDQewSxAzN3ZHI
+ /GrpjrT4JV2gbgyO6dBkKfn6gc0UPxD+Nt1tTfft1Mat8pXbBIILNdr5z5pwMU94kTi4
+ GZXmmK/eiGWwfcnV5AAdCAbmFpv+h+efmn7ONXR9ftoP16gPjpolvUAxcMAIBcBtwTf4
+ yTHA==
+X-Gm-Message-State: AOJu0YxJ0eIkagu6v9sxUFc8vZt9EGJ8PsabhZkuOs0y1uMBDPbsjycN
+ lt9B0ZNMDYmD4zWtdAVYPf0UPZ3xzXRISKqCrWc1ksyEuXQgTcSyba8EtOLKrzj+NoANB5//Sek
+ RI3nq
+X-Gm-Gg: AfdE7cnjgiRXmT1AaLzU9Y9Jvk5uu+lEBjD17c5tzJPke7/Qz1iNWG0labZko8347kv
+ M8v3shlNIKIS6sNW/IxW+xGiLNTrvMOKsJejbxJwUm/Eg9b5Ox2i9/kp8CVhwdCG7H6/sPK7CB3
+ OwJo6AECRuNoAzXzSxfFbNiqKuLC1QMIvblqomcx3+Y6Vp5cJUQIyCf69kNR9PPmKRlsBlD/AvF
+ C7rwgqlsJUg9shTe8gGQtelrsCVglEdI/GDXQOrsFcOqhEmWmRxXfjJ0QhIIm7iznXKf3N08V4+
+ /O26qF4y4Mv9V3HQxprbAVjWKjCJvr5iOp6AaEbx0bdvHHQmugKfgzJWC0PCAQqPC+Xsf+2YpnG
+ kcocPAyK8y/dNOBzJaNYDwXoulem7Tc1eHcRG9hhiYtiEHkrgvBisdxpJr3ie4O5k5AbJ5x3PhH
+ hMsoLYrV2Ort14fa0kVw==
+X-Received: by 2002:a05:6a21:7d06:b0:3c0:e552:f2d with SMTP id
+ adf61e73a8af0-3c3ad859f3cmr12101775637.34.1784483349353; 
+ Sun, 19 Jul 2026 10:49:09 -0700 (PDT)
+Received: from stoup.. ([32.140.233.50]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-3142a20c158sm30471881eec.29.2026.07.19.10.49.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 19 Jul 2026 10:49:08 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH for-11.2 0/6] target/arm: Implement FEAT_SME2p2
+Date: Sun, 19 Jul 2026 10:48:59 -0700
+Message-ID: <20260719174905.420725-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 02/10] hw/arm/ast27x0: Start TSP in powered-off state
- to match hardware behavior
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260708092023.3826159-1-jamin_lin@aspeedtech.com>
- <20260708092023.3826159-3-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260708092023.3826159-3-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 11055492661839768691
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEMd9SrojuL7+IuUtXuT/daw3Ra0LFx4zy+b7UAG5Cb7sGs+QYffKY6retFRmqNg1yTmvQRUh09z6SmAZQfmyVgmzE0L312S3UzzMSf1PFzOJorzLHa+eNaQqZWHNJl8QAl48pu7iMKyHu0T53jxewm2rlEBMlJQ3Gg2oX/g4Qzu4MHFYJNVdzzVnQHjxc5yxr5mApp+j6KZOaWfbqWpFb4HaLNkbFDZh57Jc72+HFAsufd10+hriwwIHouTJh79q89n/qsNY1pYAWVVD6ZU1YgoT/wZ3MlWlkqwQW+LqxknI6SgXOeODNNj0G4tlF6Ifxpv4a+nY9NEmbu9IMKPMY7A6tdfdbfy8Adm149af221nCvdcf1oCvYaZaKZrXnxbe9LWpiOGmk/3ixAiIvvdV5GuJQxKUUdwIMO+81oTLiy1Q+X/w1SNAYrxu5MGN7Gq4+WF5gHcsnbunIG21LlJu2KKlBFHwJhtfem7FuxXDjOKV6chGSR64mWfCELtYDzPu16iGBoW/y1uqLaSLSbUBs+vthse1psmndFxHGDm7gGGgwBUJKst5R/z+Zv+3KO4mzC9FiwcG8LYa8qsaP8EhgDKFTCkLD6UhTf0bitM7JtuYKbIslfl84vBdxJRtHy9qvjYwBVhcOSGbBiyyWkiBZ4ZhFtiaPaedU1vFENYp81w
-DKIM-Signature: a=rsa-sha256; bh=XWsgPTkoNYJcLWT2Kzoo7+hQgV3eYNR6kr0hFprPTE8=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1784453487; v=1;
- b=f5ScJajZW1c0L2CRt+nx1rQpVVsZE1K8oZEE9jCBcq645yo6XPATFj30FYA9g9UaPZzK2qvt
- m+S8+pGxdNdEPNU6rUbadfVLQvCWxehrqU7JdTxIqj379aaR5uFT0HeSjSGNEaHmHp1u04jUxeW
- 1iGoV59k3lcOD6qqfmGFXnisfGM/xQrwELAUt1JYoa93Q8pn2v06dMnYK2ofSMP3e8x7N6mjk41
- Nop1R2+YtIq7MGunaL7TqW6S3q3Plw+d47QdIpj4GF0L666q7oX7xqiX863zCtCzsKvwUnZFq+8
- 3vf5//fxWaot3f5zifDJRUIgbfDxOm5feMC2odF/nO75w==
-Received-SPF: pass client-ip=51.210.91.25; envelope-from=clg@kaod.org;
- helo=smtpout6.mo537.mail-out.ovh.net
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,46 +96,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/8/26 11:20, Jamin Lin wrote:
-> In the previous design, both the PSP and TSP were started together during
-> SoC initialization. However, on real hardware, the TSP begins in a powered-off
-> state. The typical boot sequence involves the PSP powering up first, loading
-> the TSP firmware binary into shared memory via DRAM remap, and then releasing
-> the TSP reset and enabling it through SCU control registers.
-> 
-> To more accurately model this behavior in QEMU, this commit sets the
-> "start-powered-off" property for the TSP's ARMv7M core. This change ensures
-> the TSP remains off until explicitly enabled via the SCU, simulating the
-> real-world flow where the PSP controls TSP boot through SCU interaction.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/arm/aspeed_ast27x0-tsp.c | 7 +++++++
->   1 file changed, 7 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c
-> index 39ba062a20..4212e7bd4c 100644
-> --- a/hw/arm/aspeed_ast27x0-tsp.c
-> +++ b/hw/arm/aspeed_ast27x0-tsp.c
-> @@ -192,6 +192,13 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
->       qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
->       object_property_set_link(OBJECT(&a->armv7m), "memory",
->                                OBJECT(s->memory), &error_abort);
-> +    /*
-> +     * The TSP starts in a powered-down state and can be powered up
-> +     * by setting the TSP Control Register through the SCU
-> +     * (System Control Unit)
-> +     */
-> +    object_property_set_bool(OBJECT(&a->armv7m), "start-powered-off", true,
-> +                             &error_abort);
->       sysbus_realize(SYS_BUS_DEVICE(&a->armv7m), &error_abort);
->   
->       /* SDRAM */
+Based-on: 20260713230244.70174-1-richard.henderson@linaro.org
+("[PATCH for-11.2 00/10] target/arm: Implement FEAT_SME_TMOP")
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+One final pair of insns, FMUL (multiple and single vectors) and
+FMUL (multiple vectors), which are not covered by a sub-feature.
 
-Thanks,
+Finishing SME2p2 allows us to finally enable SVE2p2 in -cpu max.
 
-C.
+
+r~
+
+
+Richard Henderson (6):
+  target/arm: Split zdn in do_z2z_n1 and do_z2z_n1_fpst
+  target/arm: Split zdn in do_z2z_nn and do_z2z_nn_fpst
+  target/arm: Fix b16b16 feature test for SME2 BFCLAMP, BFMAX, BFMIN
+  target/arm: Split decode of BFloat SME FMAX/FMIN
+  target/arm: Implement FMUL (multiple/multiple and single vectors)
+  target/arm: Enable FEAT_SVE2p2 and FEAT_SME2p2 for -cpu max
+
+ target/arm/cpu-features.h      |   5 +
+ linux-user/aarch64/elfload.c   |   2 +
+ target/arm/tcg/cpu64.c         |   5 +-
+ target/arm/tcg/translate-sme.c | 180 ++++++++++++++++++---------------
+ docs/system/arm/emulation.rst  |   2 +
+ target/arm/tcg/sme.decode      | 118 ++++++++++++++++-----
+ 6 files changed, 201 insertions(+), 111 deletions(-)
+
+-- 
+2.43.0
 
 

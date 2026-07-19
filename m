@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D154CC44512
-	for <qemu-arm@archiver.kernel.org>; Sun, 19 Jul 2026 17:50:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4DC3C44512
+	for <qemu-arm@archiver.kernel.org>; Sun, 19 Jul 2026 17:51:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlVds-0000jY-T7; Sun, 19 Jul 2026 13:49:32 -0400
+	id 1wlVdd-0000ee-JV; Sun, 19 Jul 2026 13:49:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wlVdg-0000f9-LW
- for qemu-arm@nongnu.org; Sun, 19 Jul 2026 13:49:21 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ id 1wlVdb-0000dU-8o
+ for qemu-arm@nongnu.org; Sun, 19 Jul 2026 13:49:15 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wlVde-0003Cs-E2
- for qemu-arm@nongnu.org; Sun, 19 Jul 2026 13:49:20 -0400
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-2cc73e322dbso111097465ad.1
- for <qemu-arm@nongnu.org>; Sun, 19 Jul 2026 10:49:17 -0700 (PDT)
+ id 1wlVdZ-0003Be-98
+ for qemu-arm@nongnu.org; Sun, 19 Jul 2026 13:49:14 -0400
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-2ceae1ed204so70848145ad.0
+ for <qemu-arm@nongnu.org>; Sun, 19 Jul 2026 10:49:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784483357; x=1785088157; darn=nongnu.org;
+ d=linaro.org; s=google; t=1784483352; x=1785088152; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=DvW7Iez6tG/67Zny7+UcsdudFSnXZ/jiURiYfWzXAXY=;
- b=VOZo9Op10ml/id2BLiVcz2akjkEAip5L2x/O7QTal9m6tv17/jOb6azyUVlinjjzGZ
- 39NqohSZTz6GpKFvpPhGMWGSBFSWRPAoXEWWB7eb/oJ4j4VhPA5QeDdQ3oq04cghSgoF
- GlQwotuH6tgj8SIT+Ni6lHXoCWCFNHxv+6M2Oq29yFesP5rRjzOOKcdKY2/TTy0Q2ERA
- F17ju/5pscAeyjvOxymkghCGg2YYebv287i/i6OAqBAOc6BkUNwk3VlOy/tGQdMp8Ou+
- ZLPWQe9OwJK8fDGFI/MdUKEzrT7pdn2yvp5/8ZyPUOA5Z1nYxzXYihD5BJwgRVD4Z5c9
- baSg==
+ bh=LdFQn/wRhipZIaSYzoAsurGex/nWNiOc/pNKvI17GKE=;
+ b=tBeM4+IBGy1KtCdt2wOYdPCVwEBe0D5kJmp0txAByPz6pPY5pBcxdAMhUc6Nle3oUL
+ Io3V1zhXpnyeceBGsv6d7LtbGVN/qPmgV0nc5qEWQoldpWzRQfm8ylKIzkaoJDkN0TCJ
+ rSM29/TUeMHBs21fYtM2+mSiaaeFareNYyLk/7UQ0bQEDH73kibIFN/D29MbAJVh5O65
+ reAh0QNaP1oZfZc+5IFMIf5vB46Uil1WvEi5RCMo3RQk8Vl3fY+eeCfkqnDS44FAzbiv
+ 2Qn3s4vrIQ8ucKB0znx8bxRuD7HtfvbcrY+Niuje0D8gfRMQ7W7m9RC7rT5aBuohR32L
+ hkTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784483357; x=1785088157;
+ d=1e100.net; s=20251104; t=1784483352; x=1785088152;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=DvW7Iez6tG/67Zny7+UcsdudFSnXZ/jiURiYfWzXAXY=;
- b=RkoWPHu4fg0csHCkEnpl0RH44546pTMkzqQ07TugErxSxnaVlvpnFJvzfAzL8BtZM3
- vfDJXGTnAj5oBTl6NdMlIt0OFYmBssriRVDk7FYnUCJVO3zII9Wqo8QY4t1bXtoCrJhu
- 9zNvuf/lNtI3heLYuR6Vjj/wHjMVjzPWSdslNMSqApqLLSzUIEDkEkjR52NdZDqQ2vep
- FtDV9IkEl/nk+M7G7Gi4ulv1fHqFKB5jFn20zpoPsM7Jjnme3LA6A2XLAo9qI9AK+SAQ
- dwmpu6FSTRuS16jI1dA4wTsnUUAGRJYwE5l3FUPwl4YJgvn90sbes+gnR+++UZrBh1az
- a3HA==
-X-Gm-Message-State: AOJu0Yy0s5Y0z70yek4bWQ6cJOPmebxVCGhmTJaQFTDyu76DiFnOZMkQ
- D0fcqltgqk4/qjr+ThtNDG+Y8gJG67PJOOnII9Tdm+TezUzT9LGqZ501Q6ZzHB2wJEJsnCQUsOw
- K88m5
-X-Gm-Gg: AfdE7ckpoG8R3Z/ugDg5rP5bu83Z+WkHthUA+Np/zmnDDN7IoiJk0yotPHSStEPNd3b
- gk4QjwyoBrgYguaUtViJ9e4rqRRksxphd6uqg4A8dqI52DBdxBr40GPkROak7WQEwFYQsKo/I0s
- JxknOHHj9mYdDNb7p5EiyLDhZQk/2BuRqWgbwqwmTNTme9Mli3sGQVJsyppqT6/SRBVuvfPT+Cq
- 0q0QIEXwcjdoaNasGtdS5N2JTQHLineVy3ytvlyo5Ih4ALLSgqdP1eTILdy+aMAhmKomxCPe1vc
- 4fwlugP7alGGqItI76CNgz9A4nZ/Eh/PH8V6Gg5mgWBS2HBLmoZrmOdls/lCuMgvuJbdr8srGHe
- Lz0dYFnk6ZknKi5ZnWXBf6Cb+/SJXCbRE7BC4FSfS9ZpXgKi0MQQQBGxq7ZtCprwh6VAptjaab0
- 9RnkKZrv0=
-X-Received: by 2002:a05:6a21:4a81:b0:3c3:8298:da0c with SMTP id
- adf61e73a8af0-3c3ad972c12mr12418044637.41.1784483356748; 
- Sun, 19 Jul 2026 10:49:16 -0700 (PDT)
+ bh=LdFQn/wRhipZIaSYzoAsurGex/nWNiOc/pNKvI17GKE=;
+ b=n6hkjhiAR6wKKSARhNH9j/dfJgOExxkocUmJwYGAQuZX4F/o2vMOTVMa+aHASy7hxZ
+ g2QhhsM4Mtq1A1C5TovKwqKcHkmzqizTGZORlos3mN0cXsyJqTjK7xEEx3PFnH5KuH2j
+ R7TXgt/X8e71sLF5J8UTVDJ2gKXhD1iIAbZdWZuMt2pp+ojtbQNz4FaN52AKHEGdro/S
+ QTSU5QAqvxGBgPenBG55AZVnlHmUCV/Usoar0NFIDeYKlWEI5eSvweTlzEA6L4iiAELP
+ G8CWYJdNKF9df3pt+C4BAJBRron11GSL8CMtSvSj/ZEtiLCmjD+4CPJUnAH2hH1iUPH/
+ W6Pg==
+X-Gm-Message-State: AOJu0Yy4CsJRjAVdtct+zgYweREt4jKm5KoVXps83abNhXeA6E8+IKUq
+ V9HwFLZ0tGJK42ZttluzMxfIWsMPC7rRNkes2JCjksfsZvL2pTClE8k/BapRVIqftiA=
+X-Gm-Gg: AfdE7ckp8KyMMKEVld1vJNBDStjd3MeToY5DKLKDPMHywohNK4ULJbXaRwCIss0ea9c
+ RaFbBQv+bLhBZSMY1QlFDoql1Jwl2SWqA2oWov4EMijZLfyDlUaWY9BmAjg81KuQvB2QjTZmanw
+ e8wVQ8s6e/YUmbdLrurVIhY7wavZxtmsrLniueb1xhMfd4Z3kkuTMafM5GbZ6rr11pnjC/K1LoM
+ l6lPburJ4NcOKNMpNPD1UV8D+Sp+doGdar4cR5A/pzx025BIrZ4f2/ac94YPD0ghUyNxMfQ3B6T
+ McPEqTS5m+jeU+tBAlJivqz2pIVPJCwIg8C7n2yaH51+mqzTG3sd5Sjrpr7D4aV4UlrO4CAlCgE
+ UHQ6F1xOIVZpuEoYPwfU0gvBYWx+e1hP2s75kQDag7agiCQ839SfIFUQmeiLMfUL1Rj1LihHJfv
+ X8G2bRKMrGv9Fj7xbib2uYq4GX/ori
+X-Received: by 2002:a05:6a20:734b:b0:3bf:6c08:2b2d with SMTP id
+ adf61e73a8af0-3c3ada90558mr10857540637.53.1784483351447; 
+ Sun, 19 Jul 2026 10:49:11 -0700 (PDT)
 Received: from stoup.. ([32.140.233.50]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-3142a20c158sm30471881eec.29.2026.07.19.10.49.15
+ 5a478bee46e88-3142a20c158sm30471881eec.29.2026.07.19.10.49.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 19 Jul 2026 10:49:16 -0700 (PDT)
+ Sun, 19 Jul 2026 10:49:11 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 4/6] target/arm: Split decode of BFloat SME FMAX/FMIN
-Date: Sun, 19 Jul 2026 10:49:03 -0700
-Message-ID: <20260719174905.420725-5-richard.henderson@linaro.org>
+Subject: [PATCH 1/6] target/arm: Split zdn in do_z2z_n1 and do_z2z_n1_fpst
+Date: Sun, 19 Jul 2026 10:49:00 -0700
+Message-ID: <20260719174905.420725-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260719174905.420725-1-richard.henderson@linaro.org>
 References: <20260719174905.420725-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,295 +98,205 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Split decode so that feature detection can be handled
-external to do_zzz_{n1,nn}_fpst.
+Rename from z2z to zzz to indicate zd and zn may not overlap.
+During decode, retain z2z name and duplicate the same field
+into zd and zn.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu-features.h      |  5 ++
- target/arm/tcg/translate-sme.c | 61 +++++++++++++----------
- target/arm/tcg/sme.decode      | 90 ++++++++++++++++++++++++++++------
- 3 files changed, 115 insertions(+), 41 deletions(-)
+ target/arm/tcg/translate-sme.c | 71 +++++++++++++++++-----------------
+ target/arm/tcg/sme.decode      |  8 ++--
+ 2 files changed, 39 insertions(+), 40 deletions(-)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 280ead6f9c..e444397a47 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1743,6 +1743,11 @@ static inline bool isar_feature_aa64_sme2p2_or_sve2p2(const ARMISARegisters *id)
-     return isar_feature_aa64_sme2p2(id) || isar_feature_aa64_sve2p2(id);
- }
- 
-+static inline bool isar_feature_aa64_sme2_sve_b16b16(const ARMISARegisters *id)
-+{
-+    return isar_feature_aa64_sme2(id) && isar_feature_aa64_sve_b16b16(id);
-+}
-+
- static inline bool isar_feature_aa64_sme2_i16i64(const ARMISARegisters *id)
- {
-     return isar_feature_aa64_sme2(id) && isar_feature_aa64_sme_i16i64(id);
 diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
-index ca88b3cdcc..379764da24 100644
+index fb296ae02f..cee609cc07 100644
 --- a/target/arm/tcg/translate-sme.c
 +++ b/target/arm/tcg/translate-sme.c
-@@ -747,20 +747,15 @@ TRANS_FEAT(URSHL_nn, aa64_sme2, do_zzz_nn, a, gen_sme2_urshl)
- TRANS_FEAT(SQDMULH_nn, aa64_sme2, do_zzz_nn, a, gen_gvec_sve2_sqdmulh)
+@@ -659,31 +659,30 @@ TRANS_FEAT(BMOPA, aa64_sme2, do_outprod, a, MO_32, gen_helper_sme2_bmopa_s)
+ TRANS_FEAT(SMOPA2_s, aa64_sme2, do_outprod, a, MO_32, gen_helper_sme2_smopa2_s)
+ TRANS_FEAT(UMOPA2_s, aa64_sme2, do_outprod, a, MO_32, gen_helper_sme2_umopa2_s)
  
- static bool do_zzz_n1_fpst(DisasContext *s, arg_zzz_en *a,
--                           gen_helper_gvec_3_ptr * const fns[4])
-+                           gen_helper_gvec_3_ptr *fn)
+-static bool do_z2z_n1(DisasContext *s, arg_z2z_en *a, GVecGen3Fn *fn)
++static bool do_zzz_n1(DisasContext *s, arg_zzz_en *a, GVecGen3Fn *fn)
  {
-     int esz = a->esz, vsz, mofs;
-     int overlap = -1;
--    gen_helper_gvec_3_ptr *fn = fns[esz];
-     TCGv_ptr fpst;
+-    int esz, dn, vsz, mofs, n;
+-    bool overlap = false;
++    int esz = a->esz, vsz, mofs;
++    int overlap = -1;
  
-     if (fn == NULL) {
-         return false;
-     }
--    /* These insns use MO_8 to encode BFloat16. */
--    if (esz == MO_8 && !dc_isar_feature(aa64_sve_b16b16, s)) {
--        return false;
--    }
      if (!sme_sm_enabled_check(s)) {
          return true;
      }
-@@ -786,18 +781,14 @@ static bool do_zzz_n1_fpst(DisasContext *s, arg_zzz_en *a,
+ 
+-    esz = a->esz;
+-    n = a->n;
+-    dn = a->zdn;
+     mofs = vec_full_reg_offset(s, a->zm);
+     vsz = streaming_vec_reg_size(s);
+ 
+-    for (int i = 0; i < n; i++) {
+-        int dofs = vec_full_reg_offset(s, dn + i);
++    for (int i = 0, n = a->n; i < n; i++) {
++        int dofs = vec_full_reg_offset(s, a->zd + i);
++        int nofs = vec_full_reg_offset(s, a->zn + i);
+         if (dofs == mofs) {
+-            overlap = true;
++            overlap = i;
+         } else {
+-            fn(esz, dofs, dofs, mofs, vsz, vsz);
++            fn(esz, dofs, nofs, mofs, vsz, vsz);
+         }
+     }
+-    if (overlap) {
+-        fn(esz, mofs, mofs, mofs, vsz, vsz);
++    if (overlap >= 0) {
++        int nofs = vec_full_reg_offset(s, a->zn + overlap);
++        fn(esz, mofs, nofs, mofs, vsz, vsz);
+     }
+     return true;
+ }
+@@ -710,14 +709,14 @@ static void gen_sme2_urshl(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
+     tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz, 0, fns[vece]);
  }
  
- static bool do_zzz_nn_fpst(DisasContext *s, arg_zzz_en *a,
--                           gen_helper_gvec_3_ptr * const fns[4])
-+                           gen_helper_gvec_3_ptr *fn)
+-TRANS_FEAT(ADD_n1, aa64_sme2, do_z2z_n1, a, tcg_gen_gvec_add)
+-TRANS_FEAT(SMAX_n1, aa64_sme2, do_z2z_n1, a, tcg_gen_gvec_smax)
+-TRANS_FEAT(SMIN_n1, aa64_sme2, do_z2z_n1, a, tcg_gen_gvec_smin)
+-TRANS_FEAT(UMAX_n1, aa64_sme2, do_z2z_n1, a, tcg_gen_gvec_umax)
+-TRANS_FEAT(UMIN_n1, aa64_sme2, do_z2z_n1, a, tcg_gen_gvec_umin)
+-TRANS_FEAT(SRSHL_n1, aa64_sme2, do_z2z_n1, a, gen_sme2_srshl)
+-TRANS_FEAT(URSHL_n1, aa64_sme2, do_z2z_n1, a, gen_sme2_urshl)
+-TRANS_FEAT(SQDMULH_n1, aa64_sme2, do_z2z_n1, a, gen_gvec_sve2_sqdmulh)
++TRANS_FEAT(ADD_n1, aa64_sme2, do_zzz_n1, a, tcg_gen_gvec_add)
++TRANS_FEAT(SMAX_n1, aa64_sme2, do_zzz_n1, a, tcg_gen_gvec_smax)
++TRANS_FEAT(SMIN_n1, aa64_sme2, do_zzz_n1, a, tcg_gen_gvec_smin)
++TRANS_FEAT(UMAX_n1, aa64_sme2, do_zzz_n1, a, tcg_gen_gvec_umax)
++TRANS_FEAT(UMIN_n1, aa64_sme2, do_zzz_n1, a, tcg_gen_gvec_umin)
++TRANS_FEAT(SRSHL_n1, aa64_sme2, do_zzz_n1, a, gen_sme2_srshl)
++TRANS_FEAT(URSHL_n1, aa64_sme2, do_zzz_n1, a, gen_sme2_urshl)
++TRANS_FEAT(SQDMULH_n1, aa64_sme2, do_zzz_n1, a, gen_gvec_sve2_sqdmulh)
+ 
+ static bool do_z2z_nn(DisasContext *s, arg_z2z_en *a, GVecGen3Fn *fn)
  {
-     int esz = a->esz, vsz;
--    gen_helper_gvec_3_ptr *fn = fns[esz];
+@@ -750,11 +749,11 @@ TRANS_FEAT(SRSHL_nn, aa64_sme2, do_z2z_nn, a, gen_sme2_srshl)
+ TRANS_FEAT(URSHL_nn, aa64_sme2, do_z2z_nn, a, gen_sme2_urshl)
+ TRANS_FEAT(SQDMULH_nn, aa64_sme2, do_z2z_nn, a, gen_gvec_sve2_sqdmulh)
+ 
+-static bool do_z2z_n1_fpst(DisasContext *s, arg_z2z_en *a,
++static bool do_zzz_n1_fpst(DisasContext *s, arg_zzz_en *a,
+                            gen_helper_gvec_3_ptr * const fns[4])
+ {
+-    int esz = a->esz, n, dn, vsz, mofs;
+-    bool overlap = false;
++    int esz = a->esz, vsz, mofs;
++    int overlap = -1;
+     gen_helper_gvec_3_ptr *fn = fns[esz];
      TCGv_ptr fpst;
  
-     if (fn == NULL) {
-         return false;
+@@ -770,21 +769,21 @@ static bool do_z2z_n1_fpst(DisasContext *s, arg_z2z_en *a,
      }
--    if (esz == MO_8 && !dc_isar_feature(aa64_sve_b16b16, s)) {
--        return false;
--    }
-     if (!sme_sm_enabled_check(s)) {
-         return true;
+ 
+     fpst = fpstatus_ptr(esz == MO_16 ? FPST_A64_F16 : FPST_A64);
+-    n = a->n;
+-    dn = a->zdn;
+     mofs = vec_full_reg_offset(s, a->zm);
+     vsz = streaming_vec_reg_size(s);
+ 
+-    for (int i = 0; i < n; i++) {
+-        int dofs = vec_full_reg_offset(s, dn + i);
++    for (int i = 0, n = a->n; i < n; i++) {
++        int dofs = vec_full_reg_offset(s, a->zd + i);
++        int nofs = vec_full_reg_offset(s, a->zn + i);
+         if (dofs == mofs) {
+-            overlap = true;
++            overlap = i;
+         } else {
+-            tcg_gen_gvec_3_ptr(dofs, dofs, mofs, fpst, vsz, vsz, 0, fn);
++            tcg_gen_gvec_3_ptr(dofs, nofs, mofs, fpst, vsz, vsz, 0, fn);
+         }
      }
-@@ -825,8 +816,14 @@ static gen_helper_gvec_3_ptr * const f_vector_fmax[2][4] = {
+-    if (overlap) {
+-        tcg_gen_gvec_3_ptr(mofs, mofs, mofs, fpst, vsz, vsz, 0, fn);
++    if (overlap >= 0) {
++        int nofs = vec_full_reg_offset(s, a->zn + overlap);
++        tcg_gen_gvec_3_ptr(mofs, nofs, mofs, fpst, vsz, vsz, 0, fn);
+     }
+     return true;
+ }
+@@ -831,7 +830,7 @@ static gen_helper_gvec_3_ptr * const f_vector_fmax[2][4] = {
        gen_helper_gvec_ah_fmax_s,
        gen_helper_gvec_ah_fmax_d },
  };
--TRANS_FEAT(FMAX_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fmax[s->fpcr_ah])
--TRANS_FEAT(FMAX_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fmax[s->fpcr_ah])
-+TRANS_FEAT(BFMAX_n1, aa64_sme2_sve_b16b16, do_zzz_n1_fpst, a,
-+           f_vector_fmax[s->fpcr_ah][0])
-+TRANS_FEAT(FMAX_n1, aa64_sme2, do_zzz_n1_fpst, a,
-+           f_vector_fmax[s->fpcr_ah][a->esz])
-+TRANS_FEAT(BFMAX_nn, aa64_sme2_sve_b16b16, do_zzz_nn_fpst, a,
-+           f_vector_fmax[s->fpcr_ah][0])
-+TRANS_FEAT(FMAX_nn, aa64_sme2, do_zzz_nn_fpst, a,
-+           f_vector_fmax[s->fpcr_ah][a->esz])
+-TRANS_FEAT(FMAX_n1, aa64_sme2, do_z2z_n1_fpst, a, f_vector_fmax[s->fpcr_ah])
++TRANS_FEAT(FMAX_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fmax[s->fpcr_ah])
+ TRANS_FEAT(FMAX_nn, aa64_sme2, do_z2z_nn_fpst, a, f_vector_fmax[s->fpcr_ah])
  
  static gen_helper_gvec_3_ptr * const f_vector_fmin[2][4] = {
-     { gen_helper_gvec_fmin_b16,
-@@ -838,26 +835,40 @@ static gen_helper_gvec_3_ptr * const f_vector_fmin[2][4] = {
+@@ -844,7 +843,7 @@ static gen_helper_gvec_3_ptr * const f_vector_fmin[2][4] = {
        gen_helper_gvec_ah_fmin_s,
        gen_helper_gvec_ah_fmin_d },
  };
--TRANS_FEAT(FMIN_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fmin[s->fpcr_ah])
--TRANS_FEAT(FMIN_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fmin[s->fpcr_ah])
-+TRANS_FEAT(BFMIN_n1, aa64_sme2_sve_b16b16, do_zzz_n1_fpst, a,
-+           f_vector_fmin[s->fpcr_ah][0])
-+TRANS_FEAT(FMIN_n1, aa64_sme2, do_zzz_n1_fpst, a,
-+           f_vector_fmin[s->fpcr_ah][a->esz])
-+TRANS_FEAT(BFMIN_nn, aa64_sme2_sve_b16b16, do_zzz_nn_fpst, a,
-+           f_vector_fmin[s->fpcr_ah][0])
-+TRANS_FEAT(FMIN_nn, aa64_sme2, do_zzz_nn_fpst, a,
-+           f_vector_fmin[s->fpcr_ah][a->esz])
+-TRANS_FEAT(FMIN_n1, aa64_sme2, do_z2z_n1_fpst, a, f_vector_fmin[s->fpcr_ah])
++TRANS_FEAT(FMIN_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fmin[s->fpcr_ah])
+ TRANS_FEAT(FMIN_nn, aa64_sme2, do_z2z_nn_fpst, a, f_vector_fmin[s->fpcr_ah])
  
  static gen_helper_gvec_3_ptr * const f_vector_fmaxnm[4] = {
--    gen_helper_gvec_fmaxnum_b16,
-+    NULL,
-     gen_helper_gvec_fmaxnum_h,
+@@ -853,7 +852,7 @@ static gen_helper_gvec_3_ptr * const f_vector_fmaxnm[4] = {
      gen_helper_gvec_fmaxnum_s,
      gen_helper_gvec_fmaxnum_d,
  };
--TRANS_FEAT(FMAXNM_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fmaxnm)
--TRANS_FEAT(FMAXNM_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fmaxnm)
-+TRANS_FEAT(BFMAXNM_n1, aa64_sme2_sve_b16b16, do_zzz_n1_fpst, a,
-+           gen_helper_gvec_fmaxnum_b16)
-+TRANS_FEAT(FMAXNM_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fmaxnm[a->esz])
-+TRANS_FEAT(BFMAXNM_nn, aa64_sme2_sve_b16b16, do_zzz_nn_fpst, a,
-+           gen_helper_gvec_fmaxnum_b16)
-+TRANS_FEAT(FMAXNM_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fmaxnm[a->esz])
+-TRANS_FEAT(FMAXNM_n1, aa64_sme2, do_z2z_n1_fpst, a, f_vector_fmaxnm)
++TRANS_FEAT(FMAXNM_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fmaxnm)
+ TRANS_FEAT(FMAXNM_nn, aa64_sme2, do_z2z_nn_fpst, a, f_vector_fmaxnm)
  
  static gen_helper_gvec_3_ptr * const f_vector_fminnm[4] = {
--    gen_helper_gvec_fminnum_b16,
-+    NULL,
-     gen_helper_gvec_fminnum_h,
+@@ -862,7 +861,7 @@ static gen_helper_gvec_3_ptr * const f_vector_fminnm[4] = {
      gen_helper_gvec_fminnum_s,
      gen_helper_gvec_fminnum_d,
  };
--TRANS_FEAT(FMINNM_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fminnm)
--TRANS_FEAT(FMINNM_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fminnm)
-+TRANS_FEAT(BFMINNM_n1, aa64_sme2_sve_b16b16, do_zzz_n1_fpst, a,
-+           gen_helper_gvec_fminnum_b16)
-+TRANS_FEAT(FMINNM_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fminnm[a->esz])
-+TRANS_FEAT(BFMINNM_nn, aa64_sme2_sve_b16b16, do_zzz_nn_fpst, a,
-+           gen_helper_gvec_fminnum_b16)
-+TRANS_FEAT(FMINNM_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fminnm[a->esz])
+-TRANS_FEAT(FMINNM_n1, aa64_sme2, do_z2z_n1_fpst, a, f_vector_fminnm)
++TRANS_FEAT(FMINNM_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fminnm)
+ TRANS_FEAT(FMINNM_nn, aa64_sme2, do_z2z_nn_fpst, a, f_vector_fminnm)
  
  static gen_helper_gvec_3_ptr * const f_vector_famax[4] = {
-     NULL,
-@@ -865,7 +876,7 @@ static gen_helper_gvec_3_ptr * const f_vector_famax[4] = {
-     gen_helper_gvec_famax_s,
-     gen_helper_gvec_famax_d,
- };
--TRANS_FEAT(FAMAX_nn, aa64_sme2_faminmax, do_zzz_nn_fpst, a, f_vector_famax)
-+TRANS_FEAT(FAMAX_nn, aa64_sme2_faminmax, do_zzz_nn_fpst, a, f_vector_famax[a->esz])
- 
- static gen_helper_gvec_3_ptr * const f_vector_famin[4] = {
-     NULL,
-@@ -873,7 +884,7 @@ static gen_helper_gvec_3_ptr * const f_vector_famin[4] = {
-     gen_helper_gvec_famin_s,
-     gen_helper_gvec_famin_d,
- };
--TRANS_FEAT(FAMIN_nn, aa64_sme2_faminmax, do_zzz_nn_fpst, a, f_vector_famin)
-+TRANS_FEAT(FAMIN_nn, aa64_sme2_faminmax, do_zzz_nn_fpst, a, f_vector_famin[a->esz])
- 
- static gen_helper_gvec_3_ptr * const f_vector_fscale[4] = {
-     NULL,
-@@ -881,8 +892,8 @@ static gen_helper_gvec_3_ptr * const f_vector_fscale[4] = {
+@@ -887,7 +886,7 @@ static gen_helper_gvec_3_ptr * const f_vector_fscale[4] = {
      gen_helper_gvec_fscale_s,
      gen_helper_gvec_fscale_d,
  };
--TRANS_FEAT(FSCALE_n1, aa64_sme2_f8cvt, do_zzz_n1_fpst, a, f_vector_fscale)
--TRANS_FEAT(FSCALE_nn, aa64_sme2_f8cvt, do_zzz_nn_fpst, a, f_vector_fscale)
-+TRANS_FEAT(FSCALE_n1, aa64_sme2_f8cvt, do_zzz_n1_fpst, a, f_vector_fscale[a->esz])
-+TRANS_FEAT(FSCALE_nn, aa64_sme2_f8cvt, do_zzz_nn_fpst, a, f_vector_fscale[a->esz])
+-TRANS_FEAT(FSCALE_n1, aa64_sme2_f8cvt, do_z2z_n1_fpst, a, f_vector_fscale)
++TRANS_FEAT(FSCALE_n1, aa64_sme2_f8cvt, do_zzz_n1_fpst, a, f_vector_fscale)
+ TRANS_FEAT(FSCALE_nn, aa64_sme2_f8cvt, do_z2z_nn_fpst, a, f_vector_fscale)
  
  /* Add/Sub vector Z[m] to each Z[n*N] with result in ZA[d*N]. */
- static bool do_azz_n1(DisasContext *s, arg_azz_n *a, int esz,
 diff --git a/target/arm/tcg/sme.decode b/target/arm/tcg/sme.decode
-index 36fbe24faf..e1bef9987b 100644
+index e8176fffdb..30946330ff 100644
 --- a/target/arm/tcg/sme.decode
 +++ b/target/arm/tcg/sme.decode
-@@ -227,6 +227,11 @@ UMOPA2_s        1010000 1 10 0 ..... ... ... ..... . 10 ..      @op_32
- @z2z_4x1        ....... . esz:2 .. zm:4 ....1. ..... ...0 . \
-                 &zzz_en n=4 zd=%zd_ax4 zn=%zd_ax4
+@@ -220,11 +220,13 @@ UMOPA2_s        1010000 1 10 0 ..... ... ... ..... . 10 ..      @op_32
+ %zd_ax2         1:4 !function=times_2
+ %zd_ax4         2:3 !function=times_4
  
-+@z2z_2x1_e0     ....... . .. .. zm:4 ....0. ..... .... . \
-+                &zzz_en esz=0 n=2 zd=%zd_ax2 zn=%zd_ax2
-+@z2z_4x1_e0     ....... . .. .. zm:4 ....1. ..... ...0 . \
-+                &zzz_en esz=0 n=4 zd=%zd_ax4 zn=%zd_ax4
++&zzz_en         zd zn zm esz n
+ &z2z_en         zdn zm esz n
 +
+ @z2z_2x1        ....... . esz:2 .. zm:4 ....0. ..... .... . \
+-                &z2z_en n=2 zdn=%zd_ax2
++                &zzz_en n=2 zd=%zd_ax2 zn=%zd_ax2
+ @z2z_4x1        ....... . esz:2 .. zm:4 ....1. ..... ...0 . \
+-                &z2z_en n=4 zdn=%zd_ax4
++                &zzz_en n=4 zd=%zd_ax4 zn=%zd_ax4
+ 
  SMAX_n1        1100000 1 .. 10 .... 1010.0 00000 .... 0    @z2z_2x1
  SMAX_n1        1100000 1 .. 10 .... 1010.0 00000 .... 0    @z2z_4x1
- UMAX_n1        1100000 1 .. 10 .... 1010.0 00000 .... 1    @z2z_2x1
-@@ -236,14 +241,38 @@ SMIN_n1        1100000 1 .. 10 .... 1010.0 00001 .... 0    @z2z_4x1
- UMIN_n1        1100000 1 .. 10 .... 1010.0 00001 .... 1    @z2z_2x1
- UMIN_n1        1100000 1 .. 10 .... 1010.0 00001 .... 1    @z2z_4x1
+@@ -990,8 +992,6 @@ UZP_2           11000001 esz:2 1 zm:5 110100 zn:5 .... 1    \
+ UZP_2           11000001 00    1 zm:5 110101 zn:5 .... 1    \
+                 &zzz_e zd=%zd_ax2 esz=4
  
--FMAX_n1        1100000 1 .. 10 .... 1010.0 01000 .... 0    @z2z_2x1
--FMAX_n1        1100000 1 .. 10 .... 1010.0 01000 .... 0    @z2z_4x1
--FMIN_n1        1100000 1 .. 10 .... 1010.0 01000 .... 1    @z2z_2x1
--FMIN_n1        1100000 1 .. 10 .... 1010.0 01000 .... 1    @z2z_4x1
--FMAXNM_n1      1100000 1 .. 10 .... 1010.0 01001 .... 0    @z2z_2x1
--FMAXNM_n1      1100000 1 .. 10 .... 1010.0 01001 .... 0    @z2z_4x1
--FMINNM_n1      1100000 1 .. 10 .... 1010.0 01001 .... 1    @z2z_2x1
--FMINNM_n1      1100000 1 .. 10 .... 1010.0 01001 .... 1    @z2z_4x1
-+{
-+  BFMAX_n1     1100000 1 00 10 .... 1010.0 01000 .... 0    @z2z_2x1_e0
-+  FMAX_n1      1100000 1 .. 10 .... 1010.0 01000 .... 0    @z2z_2x1
-+}
-+{
-+  BFMAX_n1     1100000 1 00 10 .... 1010.0 01000 .... 0    @z2z_4x1_e0
-+  FMAX_n1      1100000 1 .. 10 .... 1010.0 01000 .... 0    @z2z_4x1
-+}
-+{
-+  BFMIN_n1     1100000 1 00 10 .... 1010.0 01000 .... 1    @z2z_2x1_e0
-+  FMIN_n1      1100000 1 .. 10 .... 1010.0 01000 .... 1    @z2z_2x1
-+}
-+{
-+  BFMIN_n1     1100000 1 00 10 .... 1010.0 01000 .... 1    @z2z_4x1_e0
-+  FMIN_n1      1100000 1 .. 10 .... 1010.0 01000 .... 1    @z2z_4x1
-+}
-+{
-+  BFMAXNM_n1   1100000 1 00 10 .... 1010.0 01001 .... 0    @z2z_2x1_e0
-+  FMAXNM_n1    1100000 1 .. 10 .... 1010.0 01001 .... 0    @z2z_2x1
-+}
-+{
-+  BFMAXNM_n1   1100000 1 00 10 .... 1010.0 01001 .... 0    @z2z_4x1_e0
-+  FMAXNM_n1    1100000 1 .. 10 .... 1010.0 01001 .... 0    @z2z_4x1
-+}
-+{
-+  BFMINNM_n1   1100000 1 00 10 .... 1010.0 01001 .... 1    @z2z_2x1_e0
-+  FMINNM_n1    1100000 1 .. 10 .... 1010.0 01001 .... 1    @z2z_2x1
-+}
-+{
-+  BFMINNM_n1   1100000 1 00 10 .... 1010.0 01001 .... 1    @z2z_4x1_e0
-+  FMINNM_n1    1100000 1 .. 10 .... 1010.0 01001 .... 1    @z2z_4x1
-+}
- 
- SRSHL_n1       1100000 1 .. 10 .... 1010.0 10001 .... 0    @z2z_2x1
- SRSHL_n1       1100000 1 .. 10 .... 1010.0 10001 .... 0    @z2z_4x1
-@@ -269,6 +298,11 @@ FSCALE_n1      1100000 1 .. 10 .... 1010.0 01100 .... 0    @z2z_4x1
- @z2z_4x4        ....... . esz:2 . ...00 ....1. ..... ...0 . \
-                 &zzz_en n=4 zd=%zd_ax4 zn=%zd_ax4 zm=%zm_ax4
- 
-+@z2z_2x2_e0     ....... . .. . ....0 ....0. ..... .... . \
-+                &zzz_en esz=0 n=2 zd=%zd_ax2 zn=%zd_ax2 zm=%zm_ax2
-+@z2z_4x4_e0     ....... . .. . ...00 ....1. ..... ...0 . \
-+                &zzz_en esz=0 n=4 zd=%zd_ax4 zn=%zd_ax4 zm=%zm_ax4
-+
- SMAX_nn        1100000 1 .. 1 ..... 1011.0 00000 .... 0    @z2z_2x2
- SMAX_nn        1100000 1 .. 1 ..... 1011.0 00000 .... 0    @z2z_4x4
- UMAX_nn        1100000 1 .. 1 ..... 1011.0 00000 .... 1    @z2z_2x2
-@@ -278,14 +312,38 @@ SMIN_nn        1100000 1 .. 1 ..... 1011.0 00001 .... 0    @z2z_4x4
- UMIN_nn        1100000 1 .. 1 ..... 1011.0 00001 .... 1    @z2z_2x2
- UMIN_nn        1100000 1 .. 1 ..... 1011.0 00001 .... 1    @z2z_4x4
- 
--FMAX_nn        1100000 1 .. 1 ..... 1011.0 01000 .... 0    @z2z_2x2
--FMAX_nn        1100000 1 .. 1 ..... 1011.0 01000 .... 0    @z2z_4x4
--FMIN_nn        1100000 1 .. 1 ..... 1011.0 01000 .... 1    @z2z_2x2
--FMIN_nn        1100000 1 .. 1 ..... 1011.0 01000 .... 1    @z2z_4x4
--FMAXNM_nn      1100000 1 .. 1 ..... 1011.0 01001 .... 0    @z2z_2x2
--FMAXNM_nn      1100000 1 .. 1 ..... 1011.0 01001 .... 0    @z2z_4x4
--FMINNM_nn      1100000 1 .. 1 ..... 1011.0 01001 .... 1    @z2z_2x2
--FMINNM_nn      1100000 1 .. 1 ..... 1011.0 01001 .... 1    @z2z_4x4
-+{
-+  BFMAX_nn     1100000 1 00 1 ..... 1011.0 01000 .... 0    @z2z_2x2_e0
-+  FMAX_nn      1100000 1 .. 1 ..... 1011.0 01000 .... 0    @z2z_2x2
-+}
-+{
-+  BFMAX_nn     1100000 1 00 1 ..... 1011.0 01000 .... 0    @z2z_4x4_e0
-+  FMAX_nn      1100000 1 .. 1 ..... 1011.0 01000 .... 0    @z2z_4x4
-+}
-+{
-+  BFMIN_nn     1100000 1 00 1 ..... 1011.0 01000 .... 1    @z2z_2x2_e0
-+  FMIN_nn      1100000 1 .. 1 ..... 1011.0 01000 .... 1    @z2z_2x2
-+}
-+{
-+  BFMIN_nn     1100000 1 00 1 ..... 1011.0 01000 .... 1    @z2z_4x4_e0
-+  FMIN_nn      1100000 1 .. 1 ..... 1011.0 01000 .... 1    @z2z_4x4
-+}
-+{
-+  BFMAXNM_nn   1100000 1 00 1 ..... 1011.0 01001 .... 0    @z2z_2x2_e0
-+  FMAXNM_nn    1100000 1 .. 1 ..... 1011.0 01001 .... 0    @z2z_2x2
-+}
-+{
-+  BFMAXNM_nn   1100000 1 00 1 ..... 1011.0 01001 .... 0    @z2z_4x4_e0
-+  FMAXNM_nn    1100000 1 .. 1 ..... 1011.0 01001 .... 0    @z2z_4x4
-+}
-+{
-+  BFMINNM_nn   1100000 1 00 1 ..... 1011.0 01001 .... 1    @z2z_2x2_e0
-+  FMINNM_nn    1100000 1 .. 1 ..... 1011.0 01001 .... 1    @z2z_2x2
-+}
-+{
-+  BFMINNM_nn   1100000 1 00 1 ..... 1011.0 01001 .... 1    @z2z_4x4_e0
-+  FMINNM_nn    1100000 1 .. 1 ..... 1011.0 01001 .... 1    @z2z_4x4
-+}
- 
- SRSHL_nn       1100000 1 .. 1 ..... 1011.0 10001 .... 0    @z2z_2x2
- SRSHL_nn       1100000 1 .. 1 ..... 1011.0 10001 .... 0    @z2z_4x4
+-&zzz_en         zd zn zm esz n
+-
+ FCLAMP          11000001 esz:2 1 zm:5 110000 zn:5 .... 0    \
+                 &zzz_en zd=%zd_ax2 n=2
+ FCLAMP          11000001 esz:2 1 zm:5 110010 zn:5 ...0 0    \
 -- 
 2.43.0
 

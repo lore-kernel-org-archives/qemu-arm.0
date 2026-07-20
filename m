@@ -4,143 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6BF0C44520
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Jul 2026 11:20:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 410D2C4452B
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Jul 2026 11:21:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlm2k-0004Hd-Lt; Mon, 20 Jul 2026 07:20:18 -0400
+	id 1wlm3u-0005LV-Gs; Mon, 20 Jul 2026 07:21:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wlm2j-0004Fs-Mn
- for qemu-arm@nongnu.org; Mon, 20 Jul 2026 07:20:17 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wlm3s-0005JJ-RZ
+ for qemu-arm@nongnu.org; Mon, 20 Jul 2026 07:21:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wlm2h-0006BQ-Vu
- for qemu-arm@nongnu.org; Mon, 20 Jul 2026 07:20:17 -0400
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66KAvTAx2542033
- for <qemu-arm@nongnu.org>; Mon, 20 Jul 2026 11:20:14 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- O9OhPEnLKTGqWvWkUTBP98bVB6cW26RkxD6Wsctd9PA=; b=CRe0i4KLes8zKpcW
- hbLK/+PQ/xcjZbcrVuD1lo6BWo7EHlGS85S4gYH1JpPkOKKRJsFxFdESDrzD8HOU
- XN4wp9vv6MXf9MXb+qxYphHLYFEu7CBxlbNqQC2qVzxuq23+7ZXXkdsvK8wvMHE4
- iPfqDUqP1C+mLRceR7y2cge5kfOmLG4PpHAIJaavg2ymrAWerLWvTPFQWatShk5A
- M1+0ZmmNLXKLUvHKcdlMtluM/hEL6cCnnr/aeiaA7o1ZvwTzxy2EZgdHKiFZI/xT
- xgGHGOD5iRle38gnnLmNSVRg4tfni9LKFA7onvIADL9DTSHoaGbsPNhrWLKsrWXs
- /cqHdw==
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fhfdch1dm-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 20 Jul 2026 11:20:13 +0000 (GMT)
-Received: by mail-qt1-f197.google.com with SMTP id
- d75a77b69052e-51a8b0a08d2so146449901cf.0
- for <qemu-arm@nongnu.org>; Mon, 20 Jul 2026 04:20:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1784546413; x=1785151213; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=O9OhPEnLKTGqWvWkUTBP98bVB6cW26RkxD6Wsctd9PA=;
- b=DGU2NvsN7TI6VwFuhCI3wFE21Z3i8u0ESnFsV3zUge3+0UzLOWuhw5z44kO13kPtKb
- uitWVCQaFmQ/f2YxrPXrKFbiH2CHDhidtJV2RuD4RKfwELvDKJQ1K4s1gvVaTSHUo9Uy
- GFv7EzCiR2q69VDYiDoGwHcuG6h1txG7hS/PyusvOUcVcTJ/bGmb3gBG6TY19CJwfuj1
- pjLOM+E3nBzOJ/CjHBVfSMBP+iopZ78eYbjvQ6icnXQfxyenwnhOjEPkErOfle4MMTVB
- zOmo4SBm8r070Q3c+Dt8fXvnDrV10pda9uRWZ+3qR7aKQrLGXBufikRJyqIqGcwukYF6
- S6YQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784546413; x=1785151213;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=O9OhPEnLKTGqWvWkUTBP98bVB6cW26RkxD6Wsctd9PA=;
- b=X8t3T8ZuVAneSmOuo5ymd0pDx/7mM1Aaw39GwlgIWVIHpScKj9lR2RryZb2m1/ow8v
- AYuEvd7oQR0F2Edn5AQMaxSMM/PUXTuoXqQaDiTqNJOl6IPg1j81QFkS6DO9IJzZ/V8x
- +ZHbEjGXnrW/YfJSnaf9sP2SSVPHueNX7OFcIfZIZo4E5gQ2DKvmTAE1Tee4mxXD/68U
- Api2muaC54xDohFQYCy2YMe5pcsoiqLqhVMq01qOizfBfRMICHAAz/JfMSnpG19h+FEL
- qn25C+YFy6luOkPJD3Ecsvg2cRkKjooGtpj865FKpBDqKW+UW7WQQh4i6FkqpLVe/R89
- X5kg==
-X-Forwarded-Encrypted: i=1;
- AHgh+RonUYzhqfe+poxkcOxJ663F/v7fxLM/E5KjOGIBTnaE6hY8onAi/H5OpXyCREI/ifSNurU9cu86UQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yw6VtP+h2G68wKkfks3PgKjV/M8USyKyQG3Xk6BUeWqgKj/Rjnt
- 3U2Z9mweqHhRMi/4oawpHXdR8oEOLYalKqZC2oCskvWDc3wMKDpnsUHOsdtkxxW5VLMTP1vtK+P
- VE7JPEi7J2oBJYx3rgHgKRqCDvxNgFPgm8i92Xh3DDZ6oR+VilC5d+q0=
-X-Gm-Gg: AfdE7cl3fVSjPwlZbi4h6rZeHYbGf1kS/DkKSeuDGWOkrk6Y8c6SW6PvoG0zTrThIV/
- /sMm9gUG1v3C8yGklBQ/M6ST5GPdJTfTo+hzTQaEZhroSSOCOsb9cPgXiH/GGUbGJirDxKTuXrL
- wnMCntx+9RTQHcCtmqXf5Jb/wq8CLV8gWWOZf32iYGyWfyLBxScmbZp/7leI09InWD1YmiGSCf5
- z83WgvbstcNAiByC4UukZJFoF6Se0N9rr/xg4URATgZKiaJ8g9NKBZmvvYgdJsIaXxpKY7+R5ZV
- E83giQN3ITTn77Y+4NHl1jK9mDh0t5u88flvar7q/dceZbA+pVPRN4kI6XRJ+esrWnEzT/PmVVJ
- nYxqh9usae9yYDCEs0nLF79CYDnPlaibOOsR3AJ4ezpj5USPS4qk=
-X-Received: by 2002:a05:622a:351:b0:517:6b31:8058 with SMTP id
- d75a77b69052e-5213e0821f6mr117116021cf.40.1784546412872; 
- Mon, 20 Jul 2026 04:20:12 -0700 (PDT)
-X-Received: by 2002:a05:622a:351:b0:517:6b31:8058 with SMTP id
- d75a77b69052e-5213e0821f6mr117115811cf.40.1784546412333; 
- Mon, 20 Jul 2026 04:20:12 -0700 (PDT)
-Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49563e60fd9sm7244245e9.0.2026.07.20.04.20.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Jul 2026 04:20:10 -0700 (PDT)
-Message-ID: <9eb83658-c811-4e5c-b382-7423e511710b@oss.qualcomm.com>
-Date: Mon, 20 Jul 2026 13:20:09 +0200
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wlm3r-0006JS-77
+ for qemu-arm@nongnu.org; Mon, 20 Jul 2026 07:21:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1784546486;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=CbY95mxV5ei+0P0HY54yC9Kcg5bRwKf3usDUHzvfs1A=;
+ b=PsTXJtYdOyaekLpBJUdZCGxQrHO+1kmZV3wegZni0uQgJTxOdX2f3UXkau04NDcA6rNUXi
+ 5GVXLiTWnoxwLJ3CGIWdf/VvjDKToTKOkcQ9jzIvtbv0T+4Qn334PVLLCtGhK/5VJxkms1
+ DJDzh/3UIMiT+NOQodMs5ofmioF/OFE=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-509-Nxxdt3x0OXexPndfcfk_jQ-1; Mon,
+ 20 Jul 2026 07:21:22 -0400
+X-MC-Unique: Nxxdt3x0OXexPndfcfk_jQ-1
+X-Mimecast-MFC-AGG-ID: Nxxdt3x0OXexPndfcfk_jQ_1784546480
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A0B871800662; Mon, 20 Jul 2026 11:21:19 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6D6D330001BE; Mon, 20 Jul 2026 11:21:18 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id E2EA421E6920; Mon, 20 Jul 2026 13:21:15 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
+Cc: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,  Peter
+ Maydell <peter.maydell@linaro.org>,  qemu-devel@nongnu.org,  Jan Kiszka
+ <jan.kiszka@siemens.com>,  qemu-arm@nongnu.org,  BALATON Zoltan
+ <balaton@eik.bme.hu>,  qemu-ppc@nongnu.org,  Huacai Chen
+ <chenhuacai@kernel.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@mailo.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,  Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: A few Machines crash when "no default audio driver available"
+In-Reply-To: <ak_FOBO0sPYrM4XR@redhat.com> ("Daniel P. =?utf-8?Q?Berrang?=
+ =?utf-8?Q?=C3=A9=22's?= message of
+ "Thu, 9 Jul 2026 16:58:48 +0100")
+References: <87o6gge6b0.fsf@pond.sub.org>
+ <CAFEAcA9goRQuxw3VD7AqUOHHTdOXu8MSfCxdQMBviE3QgGD58w@mail.gmail.com>
+ <87zf00cn7m.fsf@pond.sub.org> <ak-i1dNY_RrGNHAM@redhat.com>
+ <CAFEAcA_=rz22ZqPr77REQa5BJRZVuEkriq-gJ9xGg4E46JPUxQ@mail.gmail.com>
+ <CAJ+F1C+BiqriKhDO-vY15z5iQECVarJN-NoemiaW3w93c3EpNg@mail.gmail.com>
+ <ak-p56pwFPq9omMz@redhat.com>
+ <CAMxuvaz=7RxVDjDsR8LeMxAgk-u46ZsKGshsAGKXxMykj7M=FA@mail.gmail.com>
+ <ak_FOBO0sPYrM4XR@redhat.com>
+Date: Mon, 20 Jul 2026 13:21:15 +0200
+Message-ID: <87wlupvrdg.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] Revert "target/arm: Build cpu32-system.o as common object"
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-References: <20260720100312.119894-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260720100312.119894-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: mTvEi8BMJOx1BOCDZAnwRI4mrooAxz3D
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzIwMDEyNiBTYWx0ZWRfX0EpC7zasRIOM
- RrPFEoV/Fq8uBIs2+AvkjFhHgcUm25XHbKSOsCI4eTBgkK0EhRi36C93HYNwRZVqaDWVCFkNs8k
- hU35cbqDT5MFwyGQwN/dyi8il0JM5K3TZkZoA9CypJ5rI2nMwyFLrwmrM88M5xV2jG9rnM+qipp
- oZudbuB+vtctcSvtBeC3DU4nnFP5BCYYvdznt2IR2RnwhuYdAoX9ZCZtx0vRjNEH0VOIv6of1cT
- DQcZhMJoHmEQHX/QG38V9VRxXKLUUettNIRQLagArTrLR76BEyK+hczb9t53Q9lD1FCs1GV+zdr
- Sm2ZzQwUcbyuyRnBB88ncjEm8Yjr7LiWoWT9felvrgR278xeL4wQ73TagEl/ZnoQHbyot9r0rln
- ncQqklC2aKoiLZ7XPIwQncwI9Q0T4OZD4bPCcU25jkrRSLYR97aqEl7D1XK8troskbqvMNQ9IAr
- zRygYX0rgngewWPP+LA==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzIwMDEyNiBTYWx0ZWRfX5szzkrgYj0Wg
- ypd1zOTmDoqHgzrJlAkyDcTzLWGnHBo7fRUjBArSIYvof4Q8j1zXb5UWuNYonlm0jSI8oxGLgDB
- sNcLEEE44DSUwiaifuNlFje5FBGaVeM=
-X-Proofpoint-GUID: mTvEi8BMJOx1BOCDZAnwRI4mrooAxz3D
-X-Authority-Analysis: v=2.4 cv=bv58wkai c=1 sm=1 tr=0 ts=6a5e046d cx=c_pps
- a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=p0WdMEafAAAA:8 a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=5ksWg3-Fzs99CpwBcB0A:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=a_PwQJl-kcHnX1M80qC6:22
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-20_02,2026-07-20_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 bulkscore=0 priorityscore=1501 spamscore=0 malwarescore=0
- phishscore=0 lowpriorityscore=0 clxscore=1015 suspectscore=0 adultscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607200126
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: elMjniBbqrT3BbnxGOrNff-dsA7sthgm4SOHrku2ltw_1784546480
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: permerror client-ip=170.10.129.124;
+ envelope-from=armbru@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,34 +101,146 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 20/7/26 12:03, Peter Maydell wrote:
-> In c8bea1276c we moved cpu32.c and built it as a common object.  The
-> commit message says "cpu32.c only contains CPU types used in 32-bit
-> system emulation".  However, this is incorrect -- it contains 32-bit
-> CPU types used in both system and usermode emulation.  (The case
-> where we don't need these CPUs and which we were using ifdefs to
-> avoid is specifically the AArch64 usermode qemu-aarch64 binary.)
-> 
-> The effect is that qemu-arm lost all the named CPU types except
-> the M-profile ones (which are in cpu-v7m.c).
-> 
-> This reverts commit c8bea1276c85855b2e088b740737d043c8556d58.
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3962
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> The commit reverts cleanly, and looking at the git history
-> I don't think we have anything that depends on it, so a simple
-> revert seems best to me, especially given that cpu32-system.c
-> doesn't reflect the fact that we do need these CPUs in
-> usermode too.
-> ---
->   target/arm/tcg/{cpu32-system.c => cpu32.c} | 10 +++++++++-
->   target/arm/tcg/meson.build                 |  5 ++++-
->   2 files changed, 13 insertions(+), 2 deletions(-)
->   rename target/arm/tcg/{cpu32-system.c => cpu32.c} (99%)
+Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+> On Thu, Jul 09, 2026 at 07:31:31PM +0400, Marc-Andr=C3=A9 Lureau wrote:
+>> Hi
+>>=20
+>> On Thu, Jul 9, 2026 at 6:02=E2=80=AFPM Daniel P. Berrang=C3=A9 <berrange=
+@redhat.com> wrote:
+>> >
+>> > On Thu, Jul 09, 2026 at 05:54:30PM +0400, Marc-Andr=C3=A9 Lureau wrote=
+:
+>> > > Hi
+>> > >
+>> > > On Thu, Jul 9, 2026 at 5:44=E2=80=AFPM Peter Maydell <peter.maydell@=
+linaro.org> wrote:
+>> > > >
+>> > > > On Thu, 9 Jul 2026 at 14:32, Daniel P. Berrang=C3=A9 <berrange@red=
+hat.com> wrote:
+>> > > > >
+>> > > > > On Thu, Jul 09, 2026 at 03:22:05PM +0200, Markus Armbruster wrot=
+e:
+>> > > > > > Cc: mainainters for "Overall Audio backends"
+>> > > > > > Peter Maydell <peter.maydell@linaro.org> writes:
+>> > > > > >
+>> > > > > > > On Thu, 9 Jul 2026 at 12:44, Markus Armbruster <armbru@redha=
+t.com> wrote:
+>> > > > > > >>
+>> > > > > > >> I stumbled over ARM machine musicpal, PPC machines pegasos1=
+, pegasos2,
+>> > > > > > >> and MIPS machine fuloong2e crashes.
+>> > > > > > >>
+>> > > > > > >> I run them like this:
+>> > > > > > >>
+>> > > > > > >> $ qemu-system-aarch64 -M musicpal -nodefaults -S -display n=
+one -monitor stdio
+>> > > > > > >
+>> > > > > > >> Died when device_set_realized() tried to propagate a "no de=
+fault audio
+>> > > > > > >> driver available" error to &error_abort.
+>> > > > > > >
+>> > > > > > > Is this something we want to have be a possibility the devic=
+es
+>> > > > > > > have to cope with? Can we have the "ignores all audio data"
+>> > > > > > > backend be always available instead?
+>> > > > > >
+>> > > > > > There's plenty of precedence for /dev/null-like backends.
+>> > > > > >
+>> > > > > > > Otherwise every audio device needs to cope with "there is no
+>> > > > > > > audio backend available" and implement "do nothing with the
+>> > > > > > > audio data" itself.
+>> > > > > >
+>> > > > > > Yes.
+>> > > > >
+>> > > > > We've got a bit of tension between "no defaults" and "builtin au=
+dio
+>> > > > > devices" here.
+>> > > > >
+>> > > > > Cnosider if I had instead done
+>> > > > >
+>> > > > >   qemu-system-x86_64 -M pc -device ac97 -nodefaults
+>> > > > >
+>> > > > > It is not unreasonable to expect to see an error because you ask=
+ed
+>> > > > > explicitly for 'ac97'  and forgot to wire up the required audio
+>> > > > > backend, and asked to NOT have any defaults.
 
-Thanks.
+Even then, a crash is unequivocally wrong.  Fatal error would be
+defensible.
+
+>> > > > > But with your 'musicpal' machine example, you never asked for th=
+e
+>> > > > > frontend device, so you should be forgiven for also not asking
+>> > > > > for a audio backend.
+
+Indeed.
+
+>> > > > Ah, so this is because of -nodefaults, not because QEMU was
+>> > > > somehow built with no audio backends in it.
+
+Yes.
+
+There are more ways to end up with no audio backend.
+
+>> > > > > If we guarantee a /dev/null audio backend always exists, we help
+>> > > > > the second case but degrade the first case
+>> > > >
+>> > > > As a possible analogy, for network devices we just warn in
+>> > > > the analogous "device created but no backend wired up":
+>> > > >
+>> > > >  ./build/x86/qemu-system-x86_64 -nodefaults -device e1000 -display=
+ none
+>> > > > qemu-system-x86_64: warning: nic e1000.0 has no peer
+>> > > >
+>> > > > and the effective behaviour is that output packets are dropped.
+
+When a network device lacks a backend, we make it behave as if it's not
+connected to anything, and also tell the user that this is the case.
+Makes sense, especially for onboard devices: the user may not care for
+such an onboard device, and can't remove it.
+
+When an audio device lacks a backend, could we make it behave as if it's
+not connected to anything?
+
+Longwinded way to say ...
+
+>> > > > We could make audio devices do that (which would be basically
+>> > > > equivalent to "if we need an audio backend and we don't have
+>> > > > one, warn and create the null backend").
+
+... yes, please.
+
+>> > > Note that we don't have a real "null" backend. The "none" backend do=
+es
+>> > > mixing/resampling/volume before dropping the audio (its parent is
+>> > > MIXENG_BACKEND). I think it would be worth to add (so one day we can
+>> > > compile qemu without the whole audio/ engine)
+>> >
+>> > Rather than adding "null" backend, IMHO, we should make "none" do
+>> > what its name suggests, by removing the MIGENG_BACKEND from it.
+>> >
+>>=20
+>> It's a bit more complicated, the "none" backend can be used by vnc
+>> (not spice or dbus), and we have the now-deprecated HMP wavcapture
+>> command.
+>
+> Oh right because VNC used the capture APIs to receive the audio.
+> It should probably have had an explicit "vnc" audio backend like
+> spice did :-(
+
+Is this fixable?
+
+"Certain audio commands only work when you actually have an audio
+backend" would be perfectly reasonable, wouldn'it ?
+
+>> Note, the new "qemu-vnc" server does not mix/resample audio at this
+>> point, it takes the first audio stream instead.
+>
+>>=20
+>> Fwiw, a "null" audio backend would still need to process audio data at
+>> a correct pace.
+
+I'm dense today: why?
+
 

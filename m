@@ -4,119 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C1D9C44515
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Jul 2026 11:55:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB0CAC44520
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Jul 2026 12:08:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlmas-0001Lf-IH; Mon, 20 Jul 2026 07:55:34 -0400
+	id 1wlmnA-00008P-Ak; Mon, 20 Jul 2026 08:08:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1wlmar-0001Il-DF
- for qemu-arm@nongnu.org; Mon, 20 Jul 2026 07:55:33 -0400
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1wlmao-0003r7-3A
- for qemu-arm@nongnu.org; Mon, 20 Jul 2026 07:55:33 -0400
-Received: by mail-pl1-x632.google.com with SMTP id
- d9443c01a7336-2cace91f112so101488725ad.0
- for <qemu-arm@nongnu.org>; Mon, 20 Jul 2026 04:55:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1784548528; cv=none;
- d=google.com; s=arc-20260327;
- b=brfn3yhgCWo/COkUgxt8CmFZbjFX8qaksyIaW31EAd2AE0oz09Oo4T/BSqSHuwRbbG
- tGx3JbBEpHsHQj/UibQsawsPFuz+f37+XAmKSOLRZ2+cC5SKaZPs0ula8N+ciHKaJ5Jy
- uUd3pUpROCqtOJxTtDdJXI/7AcFCdhqOl2m7bZdf8hgDJGvYtsDLP6M6Io2b2MbK47zj
- kzKi3r9bXEhUuuIpdjC7xqZ9GY9rkBPujimRPjLz827o8MFuYiMvpnEohp7pfR/VmdBO
- 2JY5keDqNrghvrELdNs23J+KcvjelB5jbtr8HabuXVGXuvy4t9K8m2jPq0ue+BSM6/2c
- 21fA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=/HOMO/kRAjHNYQuR0NBKH7El7Z3ZlEBLqN9W6owBWLQ=;
- fh=2/cpcQMVmUvuaBxWj7QcTqcRiTX1JTbQ7IQXtvwWnHQ=;
- b=A/TxDOD0Z/UUhGKdtq9VEvQg+yp2iab/lJR3Slh4ujfKTrXZMgmfuLFV88yxp9DGjH
- vOHvW0a1Jf7cmbGBoFpEZ+PNVvbf5O/gw0tLNOaG9CL2XU0nMDjvH5RYU6bvlK91tQ0y
- ZV5FCS1zhM7TJkwB8q/xxsm/d0sGHU5GgtQpom+iL5jc9pwZ0peF5VoxG8Pkes3dPqxK
- ua4CAqZdfubsgDu6mXutbfSaXjYJ1iWQyl6JtKxUBy7t10R+aB1oRxqlpFVCfqujbwP2
- WjtDHNw5HgZ0Tm61mH7UK48yc8KwJVXcTszt+S4U7tRm/nz/ELWBBe9gSV4ijmxVrRsj
- PAFQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; s=google; t=1784548528; x=1785153328; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=/HOMO/kRAjHNYQuR0NBKH7El7Z3ZlEBLqN9W6owBWLQ=;
- b=c4UqFBkQ+O715lxriRvQi0kgP2CrriV5FnX27oeGX4EmN5xBY3niqfhu0TkGRXez6P
- yOMZSkF3zui0AVq1vOEpC6B0yUGSx8ecjTKlk2dZp8NTajKVvpdRPDzeMhRfPJN8VYku
- eS1M3KCaXWAwii2fLxZt6m3u4a71fWhoRYBIaMZZUOhiztPx6btfJWXpy+mBNWeHLUfD
- /IK71KSm2hetwKPovUZsRdcMhkMp4zAjnw+zKgwOg021rU4hU5H5Ldfc5STBz9o/4CS+
- rTV5PvE9OU1LwCnIJX3ZmEIgQiZi/bq3iiYkmrAJsCSjFDMnJW1WZB/+6oBYUUniGkMi
- ESpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784548528; x=1785153328;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=/HOMO/kRAjHNYQuR0NBKH7El7Z3ZlEBLqN9W6owBWLQ=;
- b=jhdHDLLlPsV52gOZHCz4pijCNl4cf++kTuieW7Yz0rtRXAcdcPrIguXJFU9+cSTk75
- rVwuFTTNrsKYV4/WCw0BqmRvL6a4zH1o3Xxpp28wJuDZ8mjTGTz5RW0VjlHTr3FNTftH
- giLJMfeFhc5zEdKU9ZCfKPXGUCyrh7rW7WFcTF/ITjKvibNwDXHI2d3RMIsVVqbZ2TSF
- hSudIP9s+WdQIeWYldsyhDKy8nSoD78zQgOCWBLHpWGqJ3ntyJHfCdz+D55wAbOYKtWy
- ueVIpPruj8s7V1IPE+qZog1crRaHNGkA2Hv3mnSL7GXh2TJmmcv1sVoZ6Dol1ygPdxRr
- w96g==
-X-Forwarded-Encrypted: i=1;
- AHgh+RrDJIIEeaOl6GblRPSpS6lwLbZMcHwN1wQkfyQgwyHuCpyQZoaO/5JaVDvaj/cpHGWcQ9pzubcqSA==@nongnu.org
-X-Gm-Message-State: AOJu0YwrRGYxYrxarB7hvtWkqjb5QWFELQ7sDK7hdRCVFfFV461PIY3W
- QG0/6SG/HGNDfv1tktZtRDs/UAqHhc6Zj80IgicS0Bd5RjUlMCT8zVWR9Z2QHGyXA6f/VtTQuuD
- sg62HHHK40GZ5RUkdBuF4FIySszQ2E2I=
-X-Gm-Gg: AfdE7cmLu6O8VG3pDCtUVzQnjyAyx2GI/0cAn6kjNkuXYNrSo00dJ1Z/VqzUGXS9NlB
- ZTfHM0Obfa6H4bpZu39G6QkysM8NwDnmdK0AuVfh/vRtNfH17aec4QCwNqXptxkQMqNBNZlmND3
- F/vomMi9xf2iK/oUJs3mUPgrFLAzRKH7jmGFMLyD2swfYJLZENbUrVFHhfN9ZpLr9cKW05Yu1AM
- opYryv1jbS5j4yjJmc+8pNcohlONKSh9mxB11HhEzW7xvfPxXTzqIGOJEqXNO2/DpKumGPqLGa+
- 1xazt8jfMy4JaZt72VmuZ9BFrtGs
-X-Received: by 2002:a05:6a21:a44:b0:3c3:a9ad:a755 with SMTP id
- adf61e73a8af0-3c3ad677c2emr14389357637.7.1784548528389; Mon, 20 Jul 2026
- 04:55:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1wlmmv-0008St-PO; Mon, 20 Jul 2026 08:08:02 -0400
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1wlmmt-0005tM-Sq; Mon, 20 Jul 2026 08:08:01 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=KKsZHufBgsIl4p3X+WSIb18H+uDXOclBTVkMzcMxQqVR3Bhxy80/RG3mZEk3bmPlTJZm941j4psRJBjM4H7Bkahew/Gq/XoeYXLnt4IubFMCRnmyLALzFD0V5onnMi2CwG3CjBKG35fsN65O4lspMKJfplFRTf3ej0oWOgZgtudNu1nFKXvmxlmgEzdOFgxIshJwLBhHpT1SmHC4/spTJBVxnFV2Y/F2W7Xmxs4vEYfTugS+nDNhzfRPvQJTsRQzjZvtN+G/QTKBwtQsk+bMb7WuPyY0Ddi8VPcLcxGF4fStSsQ5Waw35PF/T/brZka13bqFIBGJBnVDZhNNxvQOfQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=RMLZ2EZn0m0FbMOCKFQs9isP8wTYVnMP9AGXbyGS+kg=;
+ b=HfgUSktGNun8NAYpE/gpE/ca8Q32g/d/18lFp/qEEQC0PzfrWA3j88dZYy5svzhXD6Zu7PzNf/CoaL7oqhugtyr/FOYq16RsDFeAUMSCJTRbvRsU1b+1JDJVu8+oS3iVD7XE316+WRVCP8F1XEzkZ3uwridkRIpdjZMNd9fCxdbO/XG3Ykxf+As28E3Uqq+KeSuT9u/mlWELGBq3jvTT1O046xSiBxI/pBs4osmxNl8/VHbyNWSaAKu00Uf7SpHdgl+QqLbbgCi5xI/ph8MHas0xeGEZ/bMN1pigYJiqRQ6ogN0AC+iK/W9Du2QNY17Xf/jRdSzCwUIo+1mKR14oEQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=processmission.com; dmarc=pass action=none
+ header.from=processmission.com; dkim=pass header.d=processmission.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=RMLZ2EZn0m0FbMOCKFQs9isP8wTYVnMP9AGXbyGS+kg=;
+ b=BKysS/+pE0hdKaMesmyklC9mMTWLXQBknyLlIEpeNovWNtzR7flk+Kqeb8MEo/zOuIOdyLrIHTGkkSn0w1NQoqheArWY4aBVO4bNjQyCHfjQBQfcjQ6TTdUvtQg5Bu5KG1Un9zb0mlgzXp2N0Nh3HP4IPlZPKwPIAFDzm6447TEnCDoYGKe3qYK9GqzfqyIYgmmlnKXfczavem1W90QtFd1YYwgEPIAetf58ACNvgvPF8ZD62coBjDTYkq9K6E4QPTGZzVcAsQshYVVRZfQZg55cbM2L0GAi/kxtOk7JVu+8i9oS5XpilewGOtIB5RzS/xjjhIzq1byEpOuArzKuCA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=processmission.com;
+Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
+ by SEZPR02MB5519.apcprd02.prod.outlook.com (2603:1096:101:48::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.18; Mon, 20 Jul
+ 2026 12:07:49 +0000
+Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
+ ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
+ ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0223.015; Mon, 20 Jul 2026
+ 12:07:48 +0000
+From: Bin Meng <bin.meng@processmission.com>
+To: QEMU <qemu-devel@nongnu.org>
+Cc: qemu-stable@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Jason Wang <jasowangio@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH] hw/net: cadence: Return current Cadence GEM queue pointers
+Date: Mon, 20 Jul 2026 20:07:31 +0800
+Message-Id: <20260720120731.2022475-1-bin.meng@processmission.com>
+X-Mailer: git-send-email 2.34.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: TYCP286CA0197.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:400:385::11) To KL1PR02MB4977.apcprd02.prod.outlook.com
+ (2603:1096:820:71::8)
 MIME-Version: 1.0
-References: <87o6gge6b0.fsf@pond.sub.org>
- <CAFEAcA9goRQuxw3VD7AqUOHHTdOXu8MSfCxdQMBviE3QgGD58w@mail.gmail.com>
- <87zf00cn7m.fsf@pond.sub.org> <ak-i1dNY_RrGNHAM@redhat.com>
- <CAFEAcA_=rz22ZqPr77REQa5BJRZVuEkriq-gJ9xGg4E46JPUxQ@mail.gmail.com>
- <CAJ+F1C+BiqriKhDO-vY15z5iQECVarJN-NoemiaW3w93c3EpNg@mail.gmail.com>
- <ak-p56pwFPq9omMz@redhat.com>
- <CAMxuvaz=7RxVDjDsR8LeMxAgk-u46ZsKGshsAGKXxMykj7M=FA@mail.gmail.com>
- <ak_FOBO0sPYrM4XR@redhat.com> <87wlupvrdg.fsf@pond.sub.org>
-In-Reply-To: <87wlupvrdg.fsf@pond.sub.org>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Mon, 20 Jul 2026 15:55:16 +0400
-X-Gm-Features: AUfX_myX0XHeeViMOIiNp6DJrPPpCYjeUpW4Y9ZK2CbF_9Y8xxc1VQSPQSEM4vE
-Message-ID: <CAJ+F1C+Xsf4zbFfQJ23ANMR8MsVhdFmvDcnu5_MbFpvME3nCwg@mail.gmail.com>
-Subject: Re: A few Machines crash when "no default audio driver available"
-To: Markus Armbruster <armbru@redhat.com>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org, 
- Jan Kiszka <jan.kiszka@siemens.com>, qemu-arm@nongnu.org, 
- BALATON Zoltan <balaton@eik.bme.hu>, qemu-ppc@nongnu.org, 
- Huacai Chen <chenhuacai@kernel.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@mailo.com>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-pl1-x632.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|SEZPR02MB5519:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7cf062f3-fbce-42d4-6c7e-08dee65783a2
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|23010399003|366016|376014|34096008|1800799024|10067099003|56012099006|5023799004|18002099003;
+X-Microsoft-Antispam-Message-Info: G67pe2C1G7Yodd5a2t/UO1QRnNvW4USwkvGYb/Asl3Zt6kkvhYcOco+iPr1b6NK240Z+ErxMB/2+/DGI9UYGr0Hq+k3IjlRYHV904ZwFOEt6ZH3a9K2CKLdk3y8FbxmTKmeb27ueiNqJzmu2cDcM2GrebIyHck9pIzkmM5pyQzp8/+5D72YyKklz4paYl8s5es3SnVCvaPjvPq2g3O8IoX3G9kM5F31DXJoWQEwxeRLaFe1lr0HynVMoz61bdlIAriCBIyfvoZZakwhdxXi+7XI68+Xt0lKv1n/4CKOoHMh5rjQynt21nTKgUjxby1b0ZKIqJ3hEJzd33IqjxwI5vJ7Ghkl1HjL/bJ2kwYkLRzn6B7uWrIL10rUXyeWPf0Lc8q3Hie/9s4b7q1NPDgmbvD4Zp2z/cf817hWH1UksiUrjFXk6W9KM7dmrxI3lDbAzVCi/+QwN/9FR4Oq7upwzPCcZER27wpWFXIc8vEvSWtqQzlQQWB/6k5osI296QT1BboL7Sc6aGtRiqMuf4GkaiHNfpa0kZ3b7dwIiR/K7fXT7BoUTLVszPbrq+XhEuCvv28VYrg8M81g1sdyNsZiJhmAE+bF/jEqxX2rgI1POKwjkQwx2UFTjdJ4USV8+cZ6gW4hC/KXWN/WzTRR9i2x9RBTj93wcXr736Um3R+YMGgY=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(23010399003)(366016)(376014)(34096008)(1800799024)(10067099003)(56012099006)(5023799004)(18002099003);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?H2pbUW4TJIwNBZC1W42aYdMaYTheT7rei/ekqKyBLPYuID9h+cleIf4v7Y8i?=
+ =?us-ascii?Q?aHfV4dBoQ0JLzAthg8xbx7yZCn6lEbVob9J2hqKVplQO7wz9Og8qpnmuOPrX?=
+ =?us-ascii?Q?+t4tX1FPF07MtdJKo4MxkRJeyWZ2omGWkwbawKd6gyQVOWqOzEdPrTKPKY0D?=
+ =?us-ascii?Q?TD8p8t/0apMzjAW+PcGLnaRTjmb2N62u3FMdmYNzTYMLJfkXSZwe3Gs05mHj?=
+ =?us-ascii?Q?gyhwCMkQppalebRAOX+7/CVHq4EhEpH3T6OqNN31/wmimncLxjksxTBp1v46?=
+ =?us-ascii?Q?jhRehfnyuannyrOi5U1HYmZxx0Q/WYsnTrDnUDgprnr7zUbVHUpteF7zO19z?=
+ =?us-ascii?Q?vo2QRVVAwwEaYSz8gV4Mb8wueH0xuy/SD5WqiXLMFeO3vojlOFCA4fd6Svmu?=
+ =?us-ascii?Q?fQMi027J91NMFUjqlC3ATG1qNciIkQlaX3QRkfYhzCJBavrVyxMxQLOlHA8e?=
+ =?us-ascii?Q?h0qAIqVWrJF/e2QtW0pIGVuhYs7AY7NSZ+lwegCRYzKTkXphVRdKCFsoqoKP?=
+ =?us-ascii?Q?9Ze1btBjm9F7Qgv+J4GaIvF2FgD+UTR0+RpGTyNTEgtrqRm0bRpw2NZmo6+h?=
+ =?us-ascii?Q?N7Paj6+NPpM9L6wJtammRDv0TxC0+BI6X2UY28retT7Smxw+38lmxouQmEoo?=
+ =?us-ascii?Q?Mlm7gN4aNZBV+WNK64AxWrBBlY6vfqN1xTQ/5aByPDR4+ogfPzw/TkX1+vy5?=
+ =?us-ascii?Q?Du38JqA7ueju3lpWUhUpxp6/ZPv5eI1HWReq+nm1ybJSWyXAvBXQ8M+Xytm6?=
+ =?us-ascii?Q?hTXhmfn0IgFcYoByzu6GePqsE87su46jTc1ofVXwc0B5l3J7rslhSWQ8Vjit?=
+ =?us-ascii?Q?r2rlukwXF7XlegCnZc3l/YSIHgbe12xv1o7BEDGN3Duj/WPIz2+x0hixoeAP?=
+ =?us-ascii?Q?zK0DPYTBg1MN4ek9lNX9m04peW3ISbcZCBVxzveot/SlvQAT0zypBxveVwT7?=
+ =?us-ascii?Q?mVoXVzIhBFrwrfWKgfwTCNbI8adb02sqhobz1yHSDlBpki6tVmTkxoLCFNyK?=
+ =?us-ascii?Q?EZVPcTVUP7U4xOjZ8WI4jNpaGz1skzF928huvPpOQCSM3ZHE7JqJ+xhCa9BW?=
+ =?us-ascii?Q?xY0W5o5qH2hk5MuVtmeWCEk6+xEunnmkPffKxLUvfbcI8X4SYEzLzFD2B54X?=
+ =?us-ascii?Q?/OTTForNIK6tL5G05mUSYJXeAvLmcsgGGXosPV1V366G39TK2pMSznguE/bN?=
+ =?us-ascii?Q?lx7F6ieNFYR3ZVUpv0+SJQNo1K7GwXZcq4u9lm5mnWu+2beOMKofYPlG3y+j?=
+ =?us-ascii?Q?y4nnOjToT4V1xT0CWKpw8x176O6cuR7cpIeCjaW3axfwaq9DekPyVNSqnoSL?=
+ =?us-ascii?Q?5o77nS7zTC/NV9QT2shD4FYTmXrzHIkCzmsU6ae23pVReRD0bu7bTy7OOpZq?=
+ =?us-ascii?Q?AuN1WDkP735O8RMlzr0mLY0ZBYC9ou7gd/+OuDU9Cqv+m5xi1YvBLzvw7hPX?=
+ =?us-ascii?Q?DyJcP7atVtLhwCH4aV0HuH0AWnsv2T9fkYTaFviuvV+p4zGnHOIinAg34BmH?=
+ =?us-ascii?Q?JqqqZVnj2QWzByLhAz3OH6EIMJrEIldw8ccIkQix39GnemwQsATzeOXXsAim?=
+ =?us-ascii?Q?EODX5/RzOSDThzf1D//xJ2CZWxbXaHrxYxpoyjbwb+58ogCOot5ueHkjBYSg?=
+ =?us-ascii?Q?2loo2pS5Sw2nBYlAgARHvGHIrUXI6KRqInQ91KJRpP8PRko4omyLs5DhZzoC?=
+ =?us-ascii?Q?0akBB5HwO/x1IrR+9L1J6lwzFmVD+3khzrAXT1JwHdPnCYxPe3lpN4bW6pI0?=
+ =?us-ascii?Q?sbe83yc4NMBvzMR5jE5X2PdMDaOaEto=3D?=
+X-OriginatorOrg: processmission.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7cf062f3-fbce-42d4-6c7e-08dee65783a2
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jul 2026 12:07:48.6710 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: X4Bph/lIGX3BkWOSKOpwnfObt8j31ZaixHFjiigFsE+7+5eq/1npifjiHVm+7xuTUuUiKgSSV1dtgo31LstiiQhvfFtGYo6bq0SxoAMK8Wo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR02MB5519
+Received-SPF: pass client-ip=2a01:111:f403:c405::7;
+ envelope-from=bin.meng@processmission.com;
+ helo=TYDPR03CU002.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,166 +140,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi
+Cadence GEM queue pointer registers are programmed with the descriptor
+ring base, but reads return the descriptor currently being accessed.
+The model tracked the current positions separately while continuing to
+return the configured base.
 
-On Mon, Jul 20, 2026 at 3:21=E2=80=AFPM Markus Armbruster <armbru@redhat.co=
-m> wrote:
->
-> Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
->
-> > On Thu, Jul 09, 2026 at 07:31:31PM +0400, Marc-Andr=C3=A9 Lureau wrote:
-> >> Hi
-> >>
-> >> On Thu, Jul 9, 2026 at 6:02=E2=80=AFPM Daniel P. Berrang=C3=A9 <berran=
-ge@redhat.com> wrote:
-> >> >
-> >> > On Thu, Jul 09, 2026 at 05:54:30PM +0400, Marc-Andr=C3=A9 Lureau wro=
-te:
-> >> > > Hi
-> >> > >
-> >> > > On Thu, Jul 9, 2026 at 5:44=E2=80=AFPM Peter Maydell <peter.maydel=
-l@linaro.org> wrote:
-> >> > > >
-> >> > > > On Thu, 9 Jul 2026 at 14:32, Daniel P. Berrang=C3=A9 <berrange@r=
-edhat.com> wrote:
-> >> > > > >
-> >> > > > > On Thu, Jul 09, 2026 at 03:22:05PM +0200, Markus Armbruster wr=
-ote:
-> >> > > > > > Cc: mainainters for "Overall Audio backends"
-> >> > > > > > Peter Maydell <peter.maydell@linaro.org> writes:
-> >> > > > > >
-> >> > > > > > > On Thu, 9 Jul 2026 at 12:44, Markus Armbruster <armbru@red=
-hat.com> wrote:
-> >> > > > > > >>
-> >> > > > > > >> I stumbled over ARM machine musicpal, PPC machines pegaso=
-s1, pegasos2,
-> >> > > > > > >> and MIPS machine fuloong2e crashes.
-> >> > > > > > >>
-> >> > > > > > >> I run them like this:
-> >> > > > > > >>
-> >> > > > > > >> $ qemu-system-aarch64 -M musicpal -nodefaults -S -display=
- none -monitor stdio
-> >> > > > > > >
-> >> > > > > > >> Died when device_set_realized() tried to propagate a "no =
-default audio
-> >> > > > > > >> driver available" error to &error_abort.
-> >> > > > > > >
-> >> > > > > > > Is this something we want to have be a possibility the dev=
-ices
-> >> > > > > > > have to cope with? Can we have the "ignores all audio data=
-"
-> >> > > > > > > backend be always available instead?
-> >> > > > > >
-> >> > > > > > There's plenty of precedence for /dev/null-like backends.
-> >> > > > > >
-> >> > > > > > > Otherwise every audio device needs to cope with "there is =
-no
-> >> > > > > > > audio backend available" and implement "do nothing with th=
-e
-> >> > > > > > > audio data" itself.
-> >> > > > > >
-> >> > > > > > Yes.
-> >> > > > >
-> >> > > > > We've got a bit of tension between "no defaults" and "builtin =
-audio
-> >> > > > > devices" here.
-> >> > > > >
-> >> > > > > Cnosider if I had instead done
-> >> > > > >
-> >> > > > >   qemu-system-x86_64 -M pc -device ac97 -nodefaults
-> >> > > > >
-> >> > > > > It is not unreasonable to expect to see an error because you a=
-sked
-> >> > > > > explicitly for 'ac97'  and forgot to wire up the required audi=
-o
-> >> > > > > backend, and asked to NOT have any defaults.
->
-> Even then, a crash is unequivocally wrong.  Fatal error would be
-> defensible.
->
-> >> > > > > But with your 'musicpal' machine example, you never asked for =
-the
-> >> > > > > frontend device, so you should be forgiven for also not asking
-> >> > > > > for a audio backend.
->
-> Indeed.
->
-> >> > > > Ah, so this is because of -nodefaults, not because QEMU was
-> >> > > > somehow built with no audio backends in it.
->
-> Yes.
->
-> There are more ways to end up with no audio backend.
->
-> >> > > > > If we guarantee a /dev/null audio backend always exists, we he=
-lp
-> >> > > > > the second case but degrade the first case
-> >> > > >
-> >> > > > As a possible analogy, for network devices we just warn in
-> >> > > > the analogous "device created but no backend wired up":
-> >> > > >
-> >> > > >  ./build/x86/qemu-system-x86_64 -nodefaults -device e1000 -displ=
-ay none
-> >> > > > qemu-system-x86_64: warning: nic e1000.0 has no peer
-> >> > > >
-> >> > > > and the effective behaviour is that output packets are dropped.
->
-> When a network device lacks a backend, we make it behave as if it's not
-> connected to anything, and also tell the user that this is the case.
-> Makes sense, especially for onboard devices: the user may not care for
-> such an onboard device, and can't remove it.
->
-> When an audio device lacks a backend, could we make it behave as if it's
-> not connected to anything?
->
-> Longwinded way to say ...
->
-> >> > > > We could make audio devices do that (which would be basically
-> >> > > > equivalent to "if we need an audio backend and we don't have
-> >> > > > one, warn and create the null backend").
->
-> ... yes, please.
->
-> >> > > Note that we don't have a real "null" backend. The "none" backend =
-does
-> >> > > mixing/resampling/volume before dropping the audio (its parent is
-> >> > > MIXENG_BACKEND). I think it would be worth to add (so one day we c=
-an
-> >> > > compile qemu without the whole audio/ engine)
-> >> >
-> >> > Rather than adding "null" backend, IMHO, we should make "none" do
-> >> > what its name suggests, by removing the MIGENG_BACKEND from it.
-> >> >
-> >>
-> >> It's a bit more complicated, the "none" backend can be used by vnc
-> >> (not spice or dbus), and we have the now-deprecated HMP wavcapture
-> >> command.
-> >
-> > Oh right because VNC used the capture APIs to receive the audio.
-> > It should probably have had an explicit "vnc" audio backend like
-> > spice did :-(
->
-> Is this fixable?
->
+The Linux macb driver uses the transmit queue pointer when recovering
+from a used-buffer interrupt. A stale priority-queue pointer can make
+the driver restart DMA before that queue handles its completion
+interrupt, causing queue 0 to repeatedly raise TX_USED.
 
-Yes, that's not so trivial though.. (mostly because compatibility with
-existing behaviour/cli etc)
+The primary queue has had this mismatch since the initial model.
+Priority queue support later copied the same register-read behavior.
 
-> "Certain audio commands only work when you actually have an audio
-> backend" would be perfectly reasonable, wouldn'it ?
->
-> >> Note, the new "qemu-vnc" server does not mix/resample audio at this
-> >> point, it takes the first audio stream instead.
-> >
-> >>
-> >> Fwiw, a "null" audio backend would still need to process audio data at
-> >> a correct pace.
->
-> I'm dense today: why?
+A single-queue machine usually handles TX_COMPLETE before TX_USED and
+empties the software queue before the restart check, which kept the
+issue hidden there.
 
--audio is emulating a real DAC/ADC that consumes bytes in real-time.
-If you just do >/dev/null, the audio clock will be too fast, and most
-apps playing video will likely just play as quickly as they can...
-This is just the small part we need to keep emulating right depending
-on the audio stream format
+Return the current RX and TX descriptor positions on queue-pointer reads
+and clear those positions on reset.
+
+Fixes: e9f186e514a7 ("cadence_gem: initial version of device model")
+Fixes: 6710172501be ("cadence_gem: Add queue support")
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Bin Meng <bin.meng@processmission.com>
+
+---
+
+ hw/net/cadence_gem.c | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index b568fa3392..39e3620ef5 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -1469,6 +1469,8 @@ static void gem_reset(DeviceState *d)
+ 
+     /* Set post reset register values */
+     memset(&s->regs[0], 0, sizeof(s->regs));
++    memset(&s->rx_desc_addr[0], 0, sizeof(s->rx_desc_addr));
++    memset(&s->tx_desc_addr[0], 0, sizeof(s->tx_desc_addr));
+     s->regs[R_NWCFG] = 0x00080000;
+     s->regs[R_NWSTATUS] = 0x00000006;
+     s->regs[R_DMACFG] = 0x00020784;
+@@ -1593,9 +1595,22 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
+     offset >>= 2;
+     retval = s->regs[offset];
+ 
+-    DB_PRINT("offset: 0x%04x read: 0x%08x\n", (unsigned)offset*4, retval);
++    DB_PRINT("offset: 0x%04x read: 0x%08x\n", (unsigned)offset * 4,
++             retval);
+ 
+     switch (offset) {
++    case R_RXQBASE:
++        retval = s->rx_desc_addr[0];
++        break;
++    case R_TXQBASE:
++        retval = s->tx_desc_addr[0];
++        break;
++    case R_TRANSMIT_Q1_PTR ... R_TRANSMIT_Q7_PTR:
++        retval = s->tx_desc_addr[offset - R_TRANSMIT_Q1_PTR + 1];
++        break;
++    case R_RECEIVE_Q1_PTR ... R_RECEIVE_Q7_PTR:
++        retval = s->rx_desc_addr[offset - R_RECEIVE_Q1_PTR + 1];
++        break;
+     case R_ISR:
+         DB_PRINT("lowering irqs on ISR read\n");
+         /* The interrupts get updated at the end of the function. */
+-- 
+2.34.1
+
 

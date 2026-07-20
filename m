@@ -4,102 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0833C4451B
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Jul 2026 09:18:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2573C44525
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Jul 2026 10:03:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlk9B-00050s-Di; Mon, 20 Jul 2026 05:18:49 -0400
+	id 1wlkqF-0005mP-MR; Mon, 20 Jul 2026 06:03:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wlk9A-000505-HL
- for qemu-arm@nongnu.org; Mon, 20 Jul 2026 05:18:48 -0400
-Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
+ id 1wlkqE-0005lp-Cf
+ for qemu-arm@nongnu.org; Mon, 20 Jul 2026 06:03:18 -0400
+Received: from mail-wr2-x02.google.com ([2a00:1450:4864:30::2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wlk99-0007UD-9J
- for qemu-arm@nongnu.org; Mon, 20 Jul 2026 05:18:48 -0400
-Received: by mail-yx1-xb12b.google.com with SMTP id
- 956f58d0204a3-664db84f074so13041260d50.0
- for <qemu-arm@nongnu.org>; Mon, 20 Jul 2026 02:18:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1784539125; cv=none;
- d=google.com; s=arc-20260327;
- b=hZZqf2Pfed7fD7DnijMF8KqhEmVfoTvcM1SsccmRGn5m4m9LT9kNNU8xymaegyRsC0
- 0QTp2f73sHhyqR6yZ1O6lufKB1eeLVIwdIUhnUqNAlgC+4a5r0Q5Zqzl972jANx/32sp
- b8eMllT8EA9CXLqm5Cj361uO6k0pymUOAahy++uCgSc4IPB5elJMTqMeZg/RV1LcfbmR
- h4NwIp5laBJSC2/tdSqo04X21T7aCHxdMEK4B5O5aQEV+QHY3JZ4F3o+z59UL8RIN96z
- KnyaBJz6D8rxwl/+Vq4qsXblPXPVwuGAq/iDyhaHw/Oydyg/vIzpS6tZWRlIrmIxTGhT
- EoMw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=hFV1MBgS1ENnbxAOD1Dw8oIeg/DLN9gXGUzu8Crw3gY=;
- fh=16xZWZ4iy0msoqOr3r2U0A4OjzFp/VZ89ASYk54+Vw4=;
- b=MA5A/BZQlw8POoVv+Z541nTC/kXTouiUVn9TlSc4xgavBsiP146j2jcz164T4KiKQP
- qWnbR8094wpKwfaPOjtDz2GjcFmfixUJoAk8M44nil/xPgE21dQmJaHvW2f3Crzx9IKs
- M/jbo1Q5rxnYAwSx51h9NPUBxulie9wvIrJs6IaIFiE6okMmDrm2LxKz5w/zVBzGIUvG
- rcIZeOyXGe1BrS0cvnjGpaQ2kErxsOg7FSbZJcThgooZWhHa/jkX+yGAigWkcHzGXmLm
- LPvyP1j8bguGaygxRlHKT/oZ1Zm7seGiPyDPkntQ7tdwMLGDg0rnyRAXWXcF/eo9oRQ3
- KhTg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ id 1wlkqC-0004XJ-HA
+ for qemu-arm@nongnu.org; Mon, 20 Jul 2026 06:03:18 -0400
+Received: by mail-wr2-x02.google.com with SMTP id
+ ffacd0b85a97d-47f6c54e841so636814f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 20 Jul 2026 03:03:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784539125; x=1785143925; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=hFV1MBgS1ENnbxAOD1Dw8oIeg/DLN9gXGUzu8Crw3gY=;
- b=lTeL67AB5lG1zDywe6N3OKVMedQcBAGG0cYqJ7zhGn8OSBBfIzqUWKfvMI0KjpAgoM
- ZTJpDqCZpY2GaIos8GWMM+RwlIy2fart1PZxqnzucik44GLJ25tEMMhZT7GLT2bj76ws
- KpIO+wdY1jSUbWL2wRYbyJfEHU4lK20Q7v2WhjxE+CcbxMcgQ81jZoNbzgB7thF6F33M
- u+TPj/AK32/kJgi+CIUukB7wtAQ35Z71YcgtAjWV5aP4CDHFAtW9aBbdrT18BYgeyes1
- 8O7f8S1LHSBVs57pPTNktbRkYN7fIgJ7TLwrh+H/+8D+wHHWEhUevj3SS7zIWFlxZXth
- 98JQ==
+ d=linaro.org; s=google; t=1784541794; x=1785146594; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=UCzsbxOA1DD/yR4hu7ljFp5A6eMHwLpWpqbtz4UzRC8=;
+ b=z8DMlnQw1C7azClelLEgrD5WFE42AKaVtxHD9YVnmvArzkBIQsyA2ABN8NT3IbvB92
+ xvUR++okPPGCf1lZypIsEqv4uLFVVWeqJxvmvLqESA21trMZUpnoRm4vzKKoI3q0Cwir
+ 9SHxefru3plCzXig3cPeeNbLy1qpbXM0lfc4AoqptxNAvWktNEJz9zzcimNWk//00VE6
+ /gWgWbe1Fyixcj2ciT+gJ3g3DdwhHw1F17yBLfOmXIdMtUOH3yttzbKS1Wm96l5CIwOZ
+ fLVqMx/UcJMSwBVQGZIXaE27sFALYmPtCbhfJG7J5yogshfBggBoBTycw5Rf+6ubmrpg
+ Z9QQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784539125; x=1785143925;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=hFV1MBgS1ENnbxAOD1Dw8oIeg/DLN9gXGUzu8Crw3gY=;
- b=O/NWtM4vR1PUr/kX4bH9gLu0dgPOT4LrSR5bkhmMu4NtWNxsMV7xk9IGeOm5NQuOaI
- 4SJJdBCxPAZgJllVfjAzbl26Uc+wqSCphwkp6/bvUylHzlI/XPtWTU1lbG7wcP8JNtAw
- t1pJ1eBGu+20NqG+m6Wm7GxRkpznW3+qKuG1wWj06WlEd3qliyiQjJWAwwztGvYmvi8E
- /r2bxFWsmW1rwoZ2PVg+0H+ITiwRPzgYWB61D5smi2uWAxjIvujxm4vZdIkUf7664qBA
- JiJq+b9GttNW87zLVf7O9N9EN7yBWDg9JeYwFlBzS3vDXdEFkgHcNdWhwGv03afCrbNr
- Lz/A==
-X-Forwarded-Encrypted: i=1;
- AHgh+RolAr9iWZPd51FHfk8+PL6Xj2jYs0mzO0mB4gbgMCJDRlFxUXhSFQg3j2s97VLDK7Sd8jyH6Fflhg==@nongnu.org
-X-Gm-Message-State: AOJu0YxqsVXNbQB23ISO70MhxlHfq9QMbspYefx1cBD4xZjHUGxrHHRF
- iYBEdk5PmDjYZ1OvUhObFJWz3A2x5Zu43PUOOgQpLGogXA7dMiCayoCdkzxvBcteBk5S8QHch2v
- ySdzKSqGwkfY3N5oeW8o7mZif1wkhgydEXmmVX4xeTw==
-X-Gm-Gg: AR+sD13K0ylZXRANOqmsMV4QgUPUzxGxOatRMy2DyTFzKrnHjDnDUOtj1dkReU6e8kU
- cIoLt6ZUxQpKPXYy44xVffeRrWbTbA30XTjRs4wPajLJGZDUPIjJFOrN2RorziE9ZmLZIXOn9t0
- HSw2Fpr3oai1aVUOcncah8uE/D6ceidyXpDiki4E0TbQNWxN5E1OUyETnGi0mpj8vkNgXQstbxp
- RiEFX4rYUC3QVxZ0WhrMrwNKCD+DotyIcjbZ5dwJ1cIe7q3UDxmoFgUu+pg2dX1xP67eY29uK27
- R/2vNeGB3Vcn0HfDE2dj3WBxPtk5nBZWFpU3qNDjeVkQ6A0Hm50ktXeH
-X-Received: by 2002:a05:690c:67c4:b0:809:6b62:2f7a with SMTP id
- 00721157ae682-81ef25a527fmr37856887b3.21.1784539125623; Mon, 20 Jul 2026
- 02:18:45 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260717161430.37264-1-richard.henderson@linaro.org>
-In-Reply-To: <20260717161430.37264-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20251104; t=1784541794; x=1785146594;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=UCzsbxOA1DD/yR4hu7ljFp5A6eMHwLpWpqbtz4UzRC8=;
+ b=FBB5DLnFrn7w1m+Lk2fPWcSKt3q3nl/U2/O1OWQ4qMhxErBYeHGOXOXhOq18vYMg7r
+ xGdXfEOaYFc5B9Y/deiMeSsH3OXHxcCMuHE0RCBRs8ud/gr3VqyKgqQNW77O4TdShBVQ
+ sApv5917H3V25HJmKa9ICIOJrHR1Gmuejz7LJHMqiJ91VWAo5JtsuolX8iDf+f2hRHEg
+ GrO4VXGRUQ50P0y04mzveTyMvtDCLL2ztHBk34PhJy6WQNxXF2rKRYGFf/ICLHB7hrqU
+ hG5JzZ2ABIipKXGFR25rE55S0UzFo3Z4QocxJy0yAOMe8MBLkEd/ncFE1dzHYvFbdit1
+ XFjQ==
+X-Gm-Message-State: AOJu0Yzdbrhhs49PYY5Wfax9B1ulfjDqMWunZBt8xb2owG1i4EYzHBE3
+ BgScOomcL9iHqwx4mJ+wxYiRQPLbZfCzhzl+b5f6ka10OCefWgZ8i87n7sk0lzFa8QH+PCJn/bO
+ YobrjDTS1fW8V
+X-Gm-Gg: AfdE7ckNVxTb+Uk78IyYP0Lqvbm8RyMggEFMZfOv0gzrqXgE4UUiujuVKVO/Mi1o9OD
+ 6YAlzL1PLTDk+/PH5gDj74QDd8q+XBqpBxpOoH1GuI06jlNGvbZthDGkxTWkEn+LnpTmXDa0rV2
+ bbGylMzRwlIx5cT4nrwpunxl5/8F2lOHQ9zhLHvv6CXLVKoeazazbQxvctUeeBmE+w1rkjhRU7f
+ g7f0Qz0fCE04rIDcUg1MHUzqTBQqfNSnupRs4/svZZxEmoqFJ3g9EzIzs5KWDjY5PFUFoTU6sNB
+ Dq9aX6J3Uo6ZLckUKxz87AVotG4/AsOR6RiQNuGUgNQC4dgHywDL9hazJi+uVn79azF3Scd1KCy
+ erYGedqsb+ITucUJo8pM6YxDpcScs5JwItGFLwaBED8sfjsokJi0NxZVU+xiL/F7QlESJDEF+o1
+ dO2syPPYbOh304Ro4GtYzfhefoKivLrHokz40qonmbC0bdD+9wLJM7u+3f4TgmO3/4i3NifXSj9
+ 4Yo8aHzeaU=
+X-Received: by 2002:a05:600c:4515:b0:495:4689:7147 with SMTP id
+ 5b1f17b1804b1-4954a3f4a34mr175948505e9.12.1784541794352; 
+ Mon, 20 Jul 2026 03:03:14 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49549a3f07esm260421945e9.6.2026.07.20.03.03.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Jul 2026 03:03:13 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Jul 2026 10:18:33 +0100
-X-Gm-Features: AUfX_my6J6urq9aADMyjzfzXn0My3fx1hOazYLKZlNUvDPupMrrQQSKq1cLTPmc
-Message-ID: <CAFEAcA8DYgLnV8YGPDsnQWR6wyVepbR=qJfJ5b4yFKJZD5mfuA@mail.gmail.com>
-Subject: Re: [PATCH for-11.1] target/arm: Fix testing of raw mtx value
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, brookmangabriel@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: [PATCH] Revert "target/arm: Build cpu32-system.o as common object"
+Date: Mon, 20 Jul 2026 11:03:12 +0100
+Message-ID: <20260720100312.119894-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:30::2;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr2-x02.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,24 +100,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 17 Jul 2026 at 17:15, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> MTX is always a pair of bits, one for each half of the address space.
-> Testing it like a boolean is incorrect.
->
-> Introduce raw_mte_check, a mirror of the similar mte_check function
-> that applies when MTX is passed in MTEDESC.
->
-> Fixes: 8912ceced815 ("target/arm: load on canonical tag loads ext bits")
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/tcg/mte_helper.c | 25 +++++++++++++++++--------
->  1 file changed, 17 insertions(+), 8 deletions(-)
+In c8bea1276c we moved cpu32.c and built it as a common object.  The
+commit message says "cpu32.c only contains CPU types used in 32-bit
+system emulation".  However, this is incorrect -- it contains 32-bit
+CPU types used in both system and usermode emulation.  (The case
+where we don't need these CPUs and which we were using ifdefs to
+avoid is specifically the AArch64 usermode qemu-aarch64 binary.)
 
+The effect is that qemu-arm lost all the named CPU types except
+the M-profile ones (which are in cpu-v7m.c).
 
+This reverts commit c8bea1276c85855b2e088b740737d043c8556d58.
 
-Applied to target-arm.next, thanks.
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3962
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+The commit reverts cleanly, and looking at the git history
+I don't think we have anything that depends on it, so a simple
+revert seems best to me, especially given that cpu32-system.c
+doesn't reflect the fact that we do need these CPUs in
+usermode too.
+---
+ target/arm/tcg/{cpu32-system.c => cpu32.c} | 10 +++++++++-
+ target/arm/tcg/meson.build                 |  5 ++++-
+ 2 files changed, 13 insertions(+), 2 deletions(-)
+ rename target/arm/tcg/{cpu32-system.c => cpu32.c} (99%)
 
--- PMM
+diff --git a/target/arm/tcg/cpu32-system.c b/target/arm/tcg/cpu32.c
+similarity index 99%
+rename from target/arm/tcg/cpu32-system.c
+rename to target/arm/tcg/cpu32.c
+index 6e983900899..8220d785f5b 100644
+--- a/target/arm/tcg/cpu32-system.c
++++ b/target/arm/tcg/cpu32.c
+@@ -1,5 +1,5 @@
+ /*
+- * QEMU ARM TCG-only CPUs (not needed for the AArch64 linux-user build)
++ * QEMU ARM TCG-only CPUs.
+  *
+  * Copyright (c) 2012 SUSE LINUX Products GmbH
+  *
+@@ -13,9 +13,15 @@
+ #include "cpu.h"
+ #include "accel/tcg/cpu-ops.h"
+ #include "internals.h"
++#if !defined(CONFIG_USER_ONLY)
+ #include "hw/core/boards.h"
++#endif
+ #include "cpregs.h"
+ 
++
++/* CPU models. These are not needed for the AArch64 linux-user build. */
++#if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
++
+ static void arm926_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+@@ -740,3 +746,5 @@ static void arm_tcg_cpu_register_types(void)
+ }
+ 
+ type_init(arm_tcg_cpu_register_types)
++
++#endif /* !CONFIG_USER_ONLY || !TARGET_AARCH64 */
+diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+index 573e8b5af48..227e674ae2f 100644
+--- a/target/arm/tcg/meson.build
++++ b/target/arm/tcg/meson.build
+@@ -30,6 +30,10 @@ translate32_d = [
+ arm_ss.add(when: 'TARGET_AARCH64', if_true: gen_a64)
+ arm_stubs_ss.add(files('stubs32.c'))
+ 
++arm_ss.add(files(
++  'cpu32.c',
++))
++
+ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'gengvec64.c',
+   'translate-a64.c',
+@@ -82,7 +86,6 @@ arm_common_user_system_ss.add(when: 'TARGET_AARCH64', if_true: files(
+ 
+ arm_common_system_ss.add(files(
+   'cpregs-at.c',
+-  'cpu32-system.c',
+   'gicv5-cpuif.c',
+   'psci.c',
+   'tlb_helper.c',
+-- 
+2.43.0
+
 

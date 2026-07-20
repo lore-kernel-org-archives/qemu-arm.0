@@ -4,112 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EFB4C44515
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Jul 2026 12:12:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75A32C44515
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Jul 2026 12:39:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wlmqr-0001VN-VJ; Mon, 20 Jul 2026 08:12:06 -0400
+	id 1wlnH9-0003B2-MA; Mon, 20 Jul 2026 08:39:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wlmqq-0001Ue-8R
- for qemu-arm@nongnu.org; Mon, 20 Jul 2026 08:12:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wlnH8-0003AS-AB
+ for qemu-arm@nongnu.org; Mon, 20 Jul 2026 08:39:14 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wlmqn-0006Xp-UH
- for qemu-arm@nongnu.org; Mon, 20 Jul 2026 08:12:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784549520;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xd9y3mATfQIKtcIXvAkA2ABfdkCApbp+cQtC4H0DoTY=;
- b=OdGtAFLscFhcIRwcVh7Q9SnMh0jD1M7jK3I+GTZI906TbbmrLJGkjIRmyiBJ4qafD4Hmo9
- 5LOccPtxhl7m1zqw+JlDRwsfgDnEa6hVxgw1xhv7o230gn7HsWxpjeq2Uk011DeMOR+ELF
- +YLUweCmzFCzsrVLXXWSSrlo5LbxI+w=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-457-ufgSl_IeMmu3U5pE9ipBkQ-1; Mon, 20 Jul 2026 08:11:57 -0400
-X-MC-Unique: ufgSl_IeMmu3U5pE9ipBkQ-1
-X-Mimecast-MFC-AGG-ID: ufgSl_IeMmu3U5pE9ipBkQ_1784549516
-Received: by mail-ej1-f71.google.com with SMTP id
- a640c23a62f3a-c15ff68c858so1155083166b.0
- for <qemu-arm@nongnu.org>; Mon, 20 Jul 2026 05:11:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784549516; x=1785154316;
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wlnH6-0002wO-4j
+ for qemu-arm@nongnu.org; Mon, 20 Jul 2026 08:39:13 -0400
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 66KAve8b2430762
+ for <qemu-arm@nongnu.org>; Mon, 20 Jul 2026 12:39:10 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ isKXoyThalDIpLFeWvybr4SmKYxGhm72TTcUR7ykzIU=; b=brhmLTFNJ9/j0YOv
+ LiZUd4WC1gwddwfB+uO8nrghX9Zffvr09uXjUwsJDh4y3AmqaeqoLwrxoETvrIL4
+ EFHl1RKsgHWjZrQ0tiLyMbMdYUqnB6bqMBRciG+5vsnywX6hok7h7oW5RRkkfPt6
+ uhrEl/NMETDCiCxzeTH6FhL1kDgE1ZUYSaqlE200VOOFllgaD1ZpUXNG+/mpu+z0
+ FjjCoCcf+612p58aV0vIqoqpfGKDRRFt+5bTEawX/gLmTVAqG+UavspR2deWoAah
+ wvY7b7CFCigYmepIFe6ktckDjSKI/QeMuVuZmY1CaXGuJmTQ9uL5K3WxmdCuypbs
+ v5N9uw==
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fhhgyrmgu-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 20 Jul 2026 12:39:10 +0000 (GMT)
+Received: by mail-qt1-f199.google.com with SMTP id
+ d75a77b69052e-51c0e702df8so142950161cf.2
+ for <qemu-arm@nongnu.org>; Mon, 20 Jul 2026 05:39:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1784551149; x=1785155949; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=isKXoyThalDIpLFeWvybr4SmKYxGhm72TTcUR7ykzIU=;
+ b=Nn2Ld20M+ow85jBDIXNmt2Rkeyfzh277vxaIHhHn+cLmSEYqWrKSPGC58tmvG/gM2k
+ 1gfsxKdnXDz6IC+2/JTiEMgrPe6V+n0bROz6FBigQLxhNo19nIwPWrokgc6PiLe8GzA5
+ 2TJeYwo09xW+ojG081wXgfgelxdxP2vAqnUcjn1EXCecEKKPn+MXJuuRl20hhsadjl38
+ A/T5yrBdujRrzx5U21Rdd+Ny8gIeKyoW6nDMJk/gEY4KN2yzMdbKw2i7dG2fuX+juFq9
+ gEHWP3sJ/mAWEPFGSm3YliPR0w1/WgzgDNoAr/8bT5aVafghp2ejnt8iQ81mPqldIG6k
+ WjQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1784551149; x=1785155949;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=xd9y3mATfQIKtcIXvAkA2ABfdkCApbp+cQtC4H0DoTY=;
- b=YSL/J5WwG51kn/Wq0Zy4En/wwLWdHL1N+5xhuCYh/2PKREuQUAujqZQIDMAYGX70uk
- d/wx/ZURpVG77ewIuT2evAH43PG9BFtcsEIfT0KvIu2QVMDbod5u7AOXcP89glhHtdnR
- bamZ2e7Ls+1A8KBjlvtieOA0+LYZyAJlRZCIZ6UnSlpedxhWIL5gs4hp/Xukv2acb916
- 1q/cDXzGeiceLd+7rQ6ntV71aydQkCqjRaC8vdfPe5tA4lXiCYfDkylEVx9EbZE7Jrda
- fYcrVUa06OQoKAjjvXkfY6Mz5AnAPAJczKartwgByKAzNZB+WQdvx0bWGu7SmooyLQys
- S1Xg==
+ bh=isKXoyThalDIpLFeWvybr4SmKYxGhm72TTcUR7ykzIU=;
+ b=KCqC/whIJ2OCHvN/n6yzUbGq55a4SbTl+OMLKaknBayLASByjd9BD1kDGDSnxK7T5M
+ GHjtkOKIhcZzyYyLtioMulztvOYq281nb8czmp2o+sg7SU5h8MClrxg92OZtE+4yswP+
+ dddHCv4R+fVfqvQ4phpGpXdAPMxB/vg4lnfXee2Rc8IOrUE5CO1n+2feNJfDoTzheMy/
+ NBokG03GfW6DaznAw8j5H03HKlbxyCXCqI8nC8WocMRmpblfBTlgJyEkuG9taAnT0teS
+ XN5qLjGQnOAJz6LGt0nehyWCVK6KyOjmJoTkKfRiFRrEB1GbjnIUzxYHYfb/vKjyqd7O
+ 6SSA==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoSUMe9ErMkCvJ6JzgVeJItytIU+oLBL3ZXSSvIQv1FSjLPe+xhj6fNajULq1FGYIWvdMn7aVOmgQ==@nongnu.org
-X-Gm-Message-State: AOJu0Ywaqhij6NXP2n1tetO4MtFW0stj+xwOU9rUolaYecNW3AdqzLL7
- gM+/TmRwChnOmqsSy8nKaWfWPOipIpfp1v9xwCiFdHALDedM3424k13tl6q8jg6mK8NQyCqjYV6
- riKEdAIVmoD3qzRCGIYcuWIY21BT698a+en5izpk4WgJPm3UszzyJNA==
-X-Gm-Gg: AfdE7cmIZnc4edphaNZFq0ZrBuR+lcbfgi+0N6VFP+ulrjTbKqDkiorvn25JV7KUrIz
- Sl8F+3zoKkvnoRBUZ4gkALGQ5xEDTcXbDA1I7W5uEqmPk2J5VkPH9kZQsuYucn9piFWPiH/NnZB
- cNtiCTALaX4ioeK7T1KSQqhkRYXHCz2sW5fd+/o3O2d+8msXIEUq8ERR3A2AYWeSZAyaCVCPEhr
- n/R101HC/b2OAPxr9O1/5172xiwvDcuflOSFB++ozZbBR+mw+N5BRL1qB0M7GuztJ51lh/iVnrd
- oEFD3KBJpmPPVoNdagPfYCBnp0nafNalKyrrjPS3Qobi98XAazs1CLaUr0SFWPepKUCbOBNafeU
- X7nL3bh82ClqqNk6RgbeMdSbwuGYjkiyjFDlvn0EXcjgV7dS2
-X-Received: by 2002:a17:907:9720:b0:bf0:2253:ad67 with SMTP id
- a640c23a62f3a-c16b482612amr577605666b.46.1784549516367; 
- Mon, 20 Jul 2026 05:11:56 -0700 (PDT)
-X-Received: by 2002:a17:907:9720:b0:bf0:2253:ad67 with SMTP id
- a640c23a62f3a-c16b482612amr577602266b.46.1784549515869; 
- Mon, 20 Jul 2026 05:11:55 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c17009ae00asm447960566b.7.2026.07.20.05.11.54
+ AHgh+RpHp7Ht62tZKEL+l88h2CZAvYfwIyz5KvXRn/YUKPH9GnG3rHPek1OL38kI8372ZcuoVb+pW8Wfjw==@nongnu.org
+X-Gm-Message-State: AOJu0YyX1dRSujbW67vl8HMO6zw7zxmf6QjgQzLWRrhAHXUN4gYNdTbX
+ kPb0BWkgLD/HP+v6oW4zI5MayENKm3Vy2JsR89XDKJH++88IKQ1U4iBKLbCRGjy9Z6D86q0ALvL
+ fgjvFDsbJRFE7BE2MXN71tZfENphmyVLIVrs8PQXC4UvVD1l8P+qvkeQ=
+X-Gm-Gg: AfdE7clCG60fjm5CLpOd14YVLdg4yK9Esa15jJYDhReCvbEvyfJ9xhbII7qqUJBkwvc
+ YnX5M/G/fNmEI6qPzcXlQyw+rAVYUG2R9t3PvAXscvGKqxvGrqNmt6x52XSOBIFdE+lxuc1Ijzn
+ pi1Rgka8OtmxtKfb1IAW1HKyqDbKJ6JT/dtwKZXhaAyBcupPXBjUHx51N4mfLJqeDfOtywLM20u
+ JJvIkM38YMM+f0EfOAvC2d++89xgiFEBuymnUYEaVlLxlIvZsd0V6J2FOnKl6BP436uwHQwmQkb
+ yIkzCvvffe9/MnVS/rMqoSw+kqIoKr32AXjDTy5C7uhfxrpG1XwNBC5oJbCy/OWmNsRn+aIJ2TU
+ KVQwV8pTrZXFKFllT7xNqkQl9aJL2FMvMp36nEKKTa8N0NvN+2eM=
+X-Received: by 2002:a05:622a:5a17:b0:51a:8696:cb38 with SMTP id
+ d75a77b69052e-5213bf10ef4mr125761561cf.7.1784551149256; 
+ Mon, 20 Jul 2026 05:39:09 -0700 (PDT)
+X-Received: by 2002:a05:622a:5a17:b0:51a:8696:cb38 with SMTP id
+ d75a77b69052e-5213bf10ef4mr125761351cf.7.1784551148790; 
+ Mon, 20 Jul 2026 05:39:08 -0700 (PDT)
+Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-47f63ec7f55sm26586120f8f.18.2026.07.20.05.39.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Jul 2026 05:11:55 -0700 (PDT)
-Message-ID: <c09c55df-a79d-4ea9-a5b4-3eb4c489370f@redhat.com>
-Date: Mon, 20 Jul 2026 14:11:53 +0200
+ Mon, 20 Jul 2026 05:39:07 -0700 (PDT)
+Message-ID: <1bcf5fd5-b2ee-4adf-ad16-bac12050baa3@oss.qualcomm.com>
+Date: Mon, 20 Jul 2026 14:39:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 01/19] target/arm/sysreg: regenerate
- cpu-sysregs.h.inc
-To: Khushit Shah <khushit.shah@nutanix.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev
-Cc: cohuck@redhat.com, peter.maydell@linaro.org,
- richard.henderson@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- gshan@redhat.com, skolothumtho@nvidia.com, sebott@redhat.com,
- armbru@redhat.com, philmd@linaro.org, yangjinqian1@huawei.com,
- shaju.abraham@nutanix.com, mark.caveayland@nutanix.com,
- prerna.saxena@nutanix.com
-References: <20260716213858.609699-1-khushit.shah@nutanix.com>
- <20260716213858.609699-2-khushit.shah@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260716213858.609699-2-khushit.shah@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: vcWS3VTAOlcTHXbe7f1UN0gPcCQeAfigyAH1BH6OKKs_1784549516
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH 1/6] hw/remote/machine.c: Mark x-remote machine as OK for
+ AArch64 and AArch32
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ Gustavo Romero <gustavo.romero@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>
+References: <20260507194728.2034696-1-peter.maydell@linaro.org>
+ <20260507194728.2034696-2-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260507194728.2034696-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: permerror client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzIwMDE0MSBTYWx0ZWRfX0DqIC5SsZFyw
+ 4kXr6uGYNNpZUTHV6I/JnbxfFp9UlJk5EhFPyKQkKJ/A4ZYiHT74YVU2tJYQXt3E7uVYaivvE9z
+ jbakv9AZOyRvWT29ETlh5ysEQVZtwqw=
+X-Authority-Analysis: v=2.4 cv=LK9WhpW9 c=1 sm=1 tr=0 ts=6a5e16ee cx=c_pps
+ a=WeENfcodrlLV9YRTxbY/uA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
+ a=69wJf7TsAAAA:8 a=KKAkSRfTAAAA:8 a=aIVl5Xy6heg3LO1m9ysA:9 a=QEXdDO2ut3YA:10
+ a=kacYvNCVWA4VmyqE58fU:22 a=Fg1AiH1G6rFz08G2ETeA:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: eFpXP5kGK_flWo9FYOsVVQ2jvX5Cy8rt
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzIwMDE0MSBTYWx0ZWRfXyYOPj2bptegK
+ TCc5l2ZMvmTbRQeNZPJzWUcRiRoPjByg6iHt6t+rtoOZU23K48/Y327ZXmGXcpBfwJEYTcZLRBo
+ mkd2IPH9i7S/Q3YP7+bD0FJh0w7IC8jzNGMH6CPZbnYmyMxcpnetUtUVJmBWGJcfnETt3Ruj1FK
+ X+QafYQoYHtQW2jNf/eKn/6xWXqrMNWrKhv7zpfqpNDWPy5qXOiQbhAex4d8LkZUXkex5bpZASV
+ cDUHw75ik9jnPvoRpR0Ld/Cf2dg8NyYCX1GWwxHFvHh9ymw8a5fPK0amZZQqEBgR6EAEB6IGz7P
+ Y1Kum+a0XHy/xu5ZrDJ4yE3SSq+H6pHiB/FgjfY7yiNGxrVRt8717NPR/Cao7641DVPc+/blNn2
+ EzgjqsdIEP+TyZzI6y8YII24SaC4YKa4eAH6vmX9mesS91gYwL6cWcnDM5sldGL3oDWReP1MI0G
+ X6E8uXdHngU8cPEe+sg==
+X-Proofpoint-GUID: eFpXP5kGK_flWo9FYOsVVQ2jvX5Cy8rt
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-20_02,2026-07-20_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 bulkscore=0 phishscore=0 clxscore=1015 malwarescore=0
+ suspectscore=0 impostorscore=0 lowpriorityscore=0 spamscore=0 adultscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607200141
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,36 +158,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Khushit,
++Stefan
 
-On 7/16/26 11:38 PM, Khushit Shah wrote:
-> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
+On 7/5/26 21:47, Peter Maydell wrote:
+> When we updated Arm and AArch64 board types to mark them for the
+> target_machine_typename() filter, we forgot about the "x-remote"
+> machine type, which meant that it disappeared from the set of board
+> types exposed on the qemu-system-arm and qemu-system-aarch64
+> binaries.  We didn't notice this, because although we have a
+> functional test for it, it requires the KVM accelerator and we don't
+
+I don't remember why it requires KVM.
+
+$ git grep -i kvm hw/remote/
+hw/remote/Kconfig:3:    depends on PCI && PCI_EXPRESS && KVM
+hw/remote/proxy.c:36: 
+kvm_irqchip_remove_irqfd_notifier_gsi(kvm_state, &dev->intr, dev->virq);
+hw/remote/proxy.c:45: 
+kvm_irqchip_add_irqfd_notifier_gsi(kvm_state, &dev->intr,
+
+I suppose these 2 calls should be replaced by generic equivalents:
+- accel_irqchip_remove_irqfd_notifier_gsi()
+- accel_irqchip_add_irqfd_notifier_gsi()
+
+> run the functional tests on an AArch64 host in CI.
+> 
+> Mark the machine as being OK to expose in qemu-system-arm and
+
+Otherwise if it is tied to KVM, we removed support for 32-bit ARM
+KVM in commit 82bf7ae84ce; ...
+
+> qemu-system-aarch64, in the same way we do for the "none" machine
+> type. This fixes a check-functional failure on aarch64 host, where
+> it would otherwise fail with:
+>     qemu-system-aarch64: unsupported machine type: "x-remote"
+> 
+> Cc: qemu-stable@nongnu.org
+> Fixes: eb796c55513d9d39 ("hw/core: Allow ARM/Aarch64 binaries to use the 'none' machine")
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target/arm/cpu-sysregs.h.inc | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
-> index 05f558610b..2188cd7be0 100644
-> --- a/target/arm/cpu-sysregs.h.inc
-> +++ b/target/arm/cpu-sysregs.h.inc
-> @@ -19,6 +19,7 @@ DEF(ID_AA64FPFR0_EL1, 3, 0, 0, 4, 7)
->  DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
->  DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
->  DEF(ID_AA64ISAR2_EL1, 3, 0, 0, 6, 2)
-> +DEF(ID_AA64ISAR3_EL1, 3, 0, 0, 6, 3)
-Please could you send a branch. It is difficult to understand on which
-code base you applied thise series as
-ID_AA64ISAR3_EL1 definition is already upstream
+> I couldn't figure out which git commit started enforcing the
+> filtering of machine types based on the TARGET_FOO_MACHINE
+> interface markings, so I picked the Fixes: commit hash for when
+> we added them to the "none" machine, on the basis that that's
+> the point at which we logically ought to have also done x-remote.
+> ---
+>   hw/remote/machine.c | 3 +++
+>   1 file changed, 3 insertions(+)
+> 
+> diff --git a/hw/remote/machine.c b/hw/remote/machine.c
+> index ced782f6a9..df08f64019 100644
+> --- a/hw/remote/machine.c
+> +++ b/hw/remote/machine.c
+> @@ -24,6 +24,7 @@
+>   #include "hw/core/qdev.h"
+>   #include "hw/remote/vfio-user-obj.h"
+>   #include "hw/pci/msi.h"
+> +#include "hw/arm/machines-qom.h"
+>   
+>   static void remote_machine_init(MachineState *machine)
+>   {
+> @@ -148,6 +149,8 @@ static const TypeInfo remote_machine = {
+>       .class_init = remote_machine_class_init,
+>       .interfaces = (const InterfaceInfo[]) {
+>           { TYPE_HOTPLUG_HANDLER },
+> +        { TYPE_TARGET_AARCH64_MACHINE },
+> +        { TYPE_TARGET_ARM_MACHINE },
 
-Thanks
+... so exposing this machine on 32-bit host binary doesn't
+look right.
 
-Eric
->  DEF(ID_AA64MMFR0_EL1, 3, 0, 0, 7, 0)
->  DEF(ID_AA64MMFR1_EL1, 3, 0, 0, 7, 1)
->  DEF(ID_AA64MMFR2_EL1, 3, 0, 0, 7, 2)
+>           { }
+>       }
+>   };
 
 

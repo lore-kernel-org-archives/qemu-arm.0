@@ -4,134 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B51CC4451C
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 12:23:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44B45C4452F
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 12:23:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wm9Ty-00034W-Nb; Tue, 21 Jul 2026 08:21:59 -0400
+	id 1wm9Uz-0004PY-47; Tue, 21 Jul 2026 08:23:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wm9Tr-0002ks-1X
- for qemu-arm@nongnu.org; Tue, 21 Jul 2026 08:21:51 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ id 1wm9UB-0003TZ-DF
+ for qemu-arm@nongnu.org; Tue, 21 Jul 2026 08:22:12 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wm9To-0003ty-1C
- for qemu-arm@nongnu.org; Tue, 21 Jul 2026 08:21:50 -0400
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+ id 1wm9U9-0003x9-PJ
+ for qemu-arm@nongnu.org; Tue, 21 Jul 2026 08:22:11 -0400
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66LARvCk1252143
- for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 12:21:46 GMT
+ 66LAR8P21134534
+ for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 12:22:08 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- CCs6xzzmYXlvnPqjtMYRNkoTvkbP9Kw7t9pq1Mn1d5g=; b=P9J6/4jc/bbOYzbr
- LoWP4YVYGc5OuqCXzj/lyAoQ+bObpPOPAuOmyzZK0IowCViaPdxJboGu1nFZBrB6
- ateFtVon/ovH/tYfvqiIBezUJ4akc+sDFYISf7JRAdYSfu+GLAyBfsYobNqo9X48
- zFOv/fRl1UKSLhyVoK6zwve8g4vWiPnWpQL8gUomeOgSYF7a/H9pF/3W0krQNp7P
- i4vFElifHAZpJS8oTRJ7/AoRDt7It/OSzauEuQ6iPkNdJN2pg0WVcm+1k+poERLE
- HHcm2ySLah2+jD/OXFmOg0mG5Fn7TdxIaaRwaMspI48iMxk+OrV6UK9sHKK7EGi7
- VAniow==
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fhqvccevd-1
+ sW0H4vPzhW2N5b8QWJcMqMYu6iN7HTkZwHNpnDBN3VY=; b=TgbVVe/W1AhaBuJz
+ jKO5zXm0GiI+PwpHbYAifkCk5MsU0/+/l1IV81x2NuZYoHrjdG5mBAkSNNCfNg9v
+ YBw+hTz5oY0ZCrGRKEM1s8EUcXvXiJ2wwGA9eMD0aaIeWJQ51uKNv7ZQ8Lkf7gHH
+ HKB/mIMnmUyCbTUDDS17TjOj104zkI6ZsjptaMcZlPDML2aV4r9q/4oiG+F7k4zP
+ UVFuiMv7P9vdCaYEgr5AS/6ZUQD5RnpTb51yzv8DsuNiWIsS8ApFTf9beHF1uEiK
+ RfIIv7bLf+UIq3z/H+y4E7foGZQxfUCui0NBnqNyg4fZtgjyc7pEDCySb+bXhrMf
+ tBthRQ==
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fj0as2n4v-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 12:21:46 +0000 (GMT)
-Received: by mail-qt1-f197.google.com with SMTP id
- d75a77b69052e-51a8db414c7so193018111cf.0
- for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 05:21:46 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 12:22:08 +0000 (GMT)
+Received: by mail-qv1-f71.google.com with SMTP id
+ 6a1803df08f44-8ef8249f871so214597186d6.0
+ for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 05:22:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1784636506; x=1785241306; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1784636527; x=1785241327; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=CCs6xzzmYXlvnPqjtMYRNkoTvkbP9Kw7t9pq1Mn1d5g=;
- b=A5M93Aw52BkAEJqGD8VkWi+jXdncj7mkM/GkxFPcsP873XPxjIrGG26X4yrQwcv9c/
- Vn58qa0mLdVxFY536U+wIELfmpjztEFO5/4Ug3cJ4kDLBGpUJp6OqviL9z/WkrtB6Vub
- 19iTb4ynMN6UEBSZaisa0vuGajDlRUcrW/Cv8AKcXJ78AviptL5yxhmQ02Z26AUcACkD
- vaVUczV3VBDsl9Mhvpmyl2LN4tOPtxhaKcrJqW6yoqqrbD+n8NoctLkBuKa8qonMWhFr
- yihfKkj42NX78CJkkXBITHDfaJCOlsSjJwI+yhRUggGqKWum5TNTefC+SXqI5aN2z+lZ
- F1DQ==
+ bh=sW0H4vPzhW2N5b8QWJcMqMYu6iN7HTkZwHNpnDBN3VY=;
+ b=cn8lYKDJ8jbx1JyR66r8bWLT9dqUHG97C7aOt3kxK12Z368V7VrKVoj8kYO+Ip82cP
+ 9W1LnaWsqhbQnN6DopvE6A/QIBSgQ7IRKGsK9Gz9w0dJHBfUcxzYJc9emN8lE76iCQt5
+ 7FU2OhoiKgiujcCYXv/xhMTQahrRQTtfpqpj8G3zhoFKPOTe/3n8WY4XR71CIfdMROAZ
+ aKAidhAqjFIBjOrftyXQlv6VJ7sgFwuArOMRPtry0wuA7iIC/Wacou+k56//if0pyi1G
+ 9Q2OHONa9kTzcwWgkYmFTCx4mstbLL1+C3pk7vLecrJFLU+XHxPy1LDrDGqqe5bJ9v88
+ tytQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784636506; x=1785241306;
+ d=1e100.net; s=20251104; t=1784636527; x=1785241327;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=CCs6xzzmYXlvnPqjtMYRNkoTvkbP9Kw7t9pq1Mn1d5g=;
- b=DRmSSm8rCRSEEQTaLOGVCYp5OZyAeZ+UWDKRT1aEIFv3Zu5lu8j+CXkKrvq6I+u/+c
- 84GMb4Hff9fKNZhD+8J3QT4vG5lPILj2ThbOsBdilEqDzyG/b4r/T6bQrhiXqqp7a3ZC
- nhbq+6Ez6B8sIyele64cYAJEBmJo9IoLwPqfW0LhFZ9MpV5D4ripBDhfYlWKVSAZo7w4
- jNAL5T/9COayUH2dwqJKdDDvgArA0h8gFvXSzWCAYUkPFVquMy4LsOGOFkmkBfTe1cY1
- EsFqDQWHVKsFB/8h5MR8y5X9M7/vVzPg7koRwwHhjknSfo/jxO7H/xCrrNdBerY3daRs
- X7+A==
+ bh=sW0H4vPzhW2N5b8QWJcMqMYu6iN7HTkZwHNpnDBN3VY=;
+ b=K09pWyYrOYCRQ6VRawJncwoc/lK/SK99FrYVhnpyK+ir97QF4FOSBPyq71y09xpaHZ
+ Ad5rvnAumkinr599btEevcQ3lTle4jdtnSz7ENok37TA3Yf/i8wd7q7JvLRncCDyB7QQ
+ WnVwOl/b6k53LNDpy6A6+sHhq54yAG8dR4ClDCmImQL41MKLj9sn3JEpXQG74sQMLr7R
+ YbPWoLnXdgEHGepWkshamTD8XR4lASFAMOKPCPNQ/sSMOsFSOmlNjlIwFG0GqJWT6X8W
+ 2ENJ1tYOF5nfjupf8dAh7CAdDECh7MBFcz6zu8yh8CY+KS7xCxOHrf83RBkBVLx4tpyi
+ cbMQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoNCm6AHe4oP7iv0Pn/Z1oUTKeVcwH8Ze46JFFXQomDJcTvLCR5Lz8pCJJn8//pifsZK5ok5/E0Xg==@nongnu.org
-X-Gm-Message-State: AOJu0YwU/WnGOSdu8Qxtsu2MwV8nuAmu0Vh0jIlchDfGoh+uiF/GTPCq
- 8DF42JF49fC6ntefsziL6jH3RJN6CAnC0jCsU+pQAXngsOxCPCaCHgBLUSVL9lAFwIugU6H593f
- VnXRq4hn3uMPVi5Bvm1wN4zCKQwCIYtyTkrkLyoXBczPnef+VNCAY/9o=
-X-Gm-Gg: AfdE7cngRg21VDm/s+wAop/waXP6qeRaPrt0zl5TtryrJNpGRdvfrg/jlNpD8bDRTrO
- TH7A0oKJBZRDkXDiz/2G8ELHh1i4jypLU9yIH9elebqX4SZp1PChQfrFSsse/3dG+PK4BQy+R6O
- /V5O9fxdCpVpw0iMLTXne79ofa/2So5cMOVhEBbOpAPQwJRDXDFQXOMMLRFnWgJF/9KPTW6Zx3p
- C3lN7uQUN4mrpQJWoH4N6zZGTHEtxpw3GuJxYaLA/eJepuLKc4qFxJE7A0zQJSfXOreuBbxDacI
- XEJP58dq5AdUK5lOrctn9EQmh1+N0jLILwXkslCCZknc5rYWniVwer9avJmIJpRkF5kiCdvxhQI
- udNUxSFRo26NK5lVy9iAsjmHdrUO7TBWe3woXYRLBKv9Sx6mtnKkoJSr0qw==
-X-Received: by 2002:a05:622a:60a:b0:516:db5d:ebf9 with SMTP id
- d75a77b69052e-5213e8769f5mr180500011cf.48.1784636505709; 
- Tue, 21 Jul 2026 05:21:45 -0700 (PDT)
-X-Received: by 2002:a05:622a:60a:b0:516:db5d:ebf9 with SMTP id
- d75a77b69052e-5213e8769f5mr180499481cf.48.1784636505044; 
- Tue, 21 Jul 2026 05:21:45 -0700 (PDT)
+ AHgh+RokfHsIFdV6WRuXB2NYhSNFYjZpHxCGH3rDqr3jcCQv02mWy4OGvP7v9obBPjv7nDVb4nzUOkwxEw==@nongnu.org
+X-Gm-Message-State: AOJu0YyzYg6X8xF+bN8sCrmtD2v/k82xo7/TBtNwAZbq4X3avTZ2MDxu
+ 56w12BrRzLnHYtns/rFM3oGh03QAOc/yYXBo7Amzp/8kpYHKob4Q8lHN67ElIIPLAXD/+7DNWWa
+ jtQfpDixPwZyq59zQ8/Y7PYgi6U2w/dc2d2rBL8+dh1THqqGO6NlfqOo=
+X-Gm-Gg: AfdE7cnb8DAy+jjoBSAeHaRRp2IzIma/z+PsYy8c51w36ve8TZcKMkKsqL23UYQLaR5
+ CeBY0RsK+8MScidUrdrwz/as5PY7m/DMTBUykiQMJJics87D7NdjM3VjdNIqjkQS4jTz4Q8+40N
+ LGLFonfnCbUlqA8c7xe3pAlDM6zooxYOJUmTQuEia8OEMFiZjXP1OSkNtJX1eug2nPxmF52BHvF
+ P5n5xqFmmaqI5i27B8qlaOMgGqxgpjhLGBMnQG1ff8lurElnSKggYbE8Xt7R228cBvf9TH4NlVt
+ 45asI0Qcl5l9LdgOvfeiMCW/L8EvqyC9LpevY9aoRXu/nRa7/62/FvnVjRD59R0aQXlVSWHILCV
+ NKNxvViriFpzSOVDg+XbLy2aX5GlfaV8kyJcYzC9OJQ8UkaCQQwHR6z/hNw==
+X-Received: by 2002:ac8:7dcb:0:b0:51a:8c97:938e with SMTP id
+ d75a77b69052e-5213e188626mr163570451cf.69.1784636527175; 
+ Tue, 21 Jul 2026 05:22:07 -0700 (PDT)
+X-Received: by 2002:ac8:7dcb:0:b0:51a:8c97:938e with SMTP id
+ d75a77b69052e-5213e188626mr163570081cf.69.1784636526685; 
+ Tue, 21 Jul 2026 05:22:06 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47f63ee0086sm41657086f8f.30.2026.07.21.05.21.43
+ 5b1f17b1804b1-4956537c7desm86665805e9.7.2026.07.21.05.22.05
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 21 Jul 2026 05:21:44 -0700 (PDT)
+ Tue, 21 Jul 2026 05:22:05 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH 1/4] hw/intc/arm_gicv3: Fix ARM_GICV3 dependency for KVM / WHPX
-Date: Tue, 21 Jul 2026 14:21:31 +0200
-Message-ID: <20260721122135.6288-2-philmd@oss.qualcomm.com>
+Subject: [PATCH 4/4] target/arm: Build TCG stubs as stub library
+Date: Tue, 21 Jul 2026 14:21:34 +0200
+Message-ID: <20260721122135.6288-5-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260721122135.6288-1-philmd@oss.qualcomm.com>
 References: <20260721122135.6288-1-philmd@oss.qualcomm.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzIxMDEzMSBTYWx0ZWRfX7THTeD0p2p88
- CLJ6gUmzijUU4bt9NNDkix9M4H8TASfv9m6IYQnrjAcsiaHRAupMFIKhCivbqn19zmvU6c0XGpr
- I81K294VPGHzFUpzmiWoxVIiUwN4YUY=
-X-Proofpoint-GUID: 9t1qifcAIqJ7Oq2wEQDEhbijLOkJyVUu
-X-Authority-Analysis: v=2.4 cv=OMYXGyaB c=1 sm=1 tr=0 ts=6a5f645a cx=c_pps
- a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzIxMDEzMSBTYWx0ZWRfXzg46yGbBUhWA
+ XWJfGhbIXGawrpBCEiEvHBkW7mTcVickZrPO8GhCHdL50LK7lr944LnVzHfpM4oNWdBALFNIu2l
+ y2l31nUDpj4PJlTb6OT+B6MlpZqYTCEs8SfbPEtLObICvFIlSOju6rObyzRPoaCpfnI8+ty4m5C
+ 4vxcDZBz9W7AHGNyomgmCPu1NVYulByFxl3jLzhzE/g717nOemf4zGR9ml8BqvR1U8P7UAYxBSG
+ AfqIXrUXGpx2kmGzOh6SQ5KqguDfQum9K0LyU2TGaOSS5zgUKKitwkTV/8nMgEZP6SCLe3bgFB0
+ s5L5TjK+2m8tm4LjQu/bwxryUBzzxacYHbbsGoghGuzmWKO1A6sn3Yy+kwZAvFmeBSSh9MHf4UF
+ vp5jBzdiPqvvoOvbXTKoxa4p+ZpOZfU3lf04CYoMGcYd41nfa3DuIBGOSSlSqlgdOf56HRQh6Qn
+ iBeKBxi43DS+OU2M+2Q==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzIxMDEzMSBTYWx0ZWRfXzbNemk7+5MgV
+ fbsmWDo57cynt9kKXNIw7un/c4kSgfiFVqQjMrIzV0G45gUMsQpBjPprj+ND9O9QRn1enLUIk7l
+ OOLr+HnHdIYbcpjeuiSQ861L81agSZE=
+X-Authority-Analysis: v=2.4 cv=DoFmPm/+ c=1 sm=1 tr=0 ts=6a5f6470 cx=c_pps
+ a=UgVkIMxJMSkC9lv97toC5g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
- a=EUspDBNiAAAA:8 a=PZoDgyjJWSAZIzKEYywA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=a_PwQJl-kcHnX1M80qC6:22
-X-Proofpoint-ORIG-GUID: 9t1qifcAIqJ7Oq2wEQDEhbijLOkJyVUu
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzIxMDEzMSBTYWx0ZWRfXy3uJCH3Pi1Kr
- 0S5gZCJgxqf8But1F+UZ/Npou8uYaZHaiDOTPeulJSO2ldyoeWVt+2KLZpDaK1xZmdeB48n9qOW
- 3173V/u/rGVbI6VHf46wL2sHTb86g/ekwYUEQXOsWa1y3tp16XeCODc3N0j33juP2MxfdSGQ+rn
- uaxJHqjKzmbx4O4BIWgtBoabqnIGiq0WHeRa5leEXK2vxuPhTwEU08TfIvzBqQTZR/+TzLG6x7D
- 2aUD3zwMJuo+BFyG08yUCG6n/eq8Lwp+FWpwJgY/sZ7nwZkOMMmrJxCiIGino3fvDtwuI7apuwR
- 113F6aW7SRyraADA2UeUyUrPQAFNi6sKyJm8hV1Fz8my16z2WP8aHEE3VdFX1SNB/BLcnHYCjmR
- N0Ir1BtcOT0hGK9Nz3rmq2pKKL3r9jxgLt4w+OLf4Z+Hh1oVSNRNEJmRhg3z96jVpCp7wk9QrPo
- e1N2SRSIVjRituW7qmw==
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
+ a=EUspDBNiAAAA:8 a=dYXcIrvnCqDwK9geEd8A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=0lgtpPvCYYIA:10 a=1HOtulTD9v-eNWfpl4qZ:22
+X-Proofpoint-GUID: fDHyAvj-ImqbMx6rerkKeR_dgxSm_BUA
+X-Proofpoint-ORIG-GUID: fDHyAvj-ImqbMx6rerkKeR_dgxSm_BUA
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-21_01,2026-07-20_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 adultscore=0 priorityscore=1501 suspectscore=0 lowpriorityscore=0
- bulkscore=0 malwarescore=0 clxscore=1015 impostorscore=0 phishscore=0
+ adultscore=0 malwarescore=0 lowpriorityscore=0 clxscore=1015 phishscore=0
+ suspectscore=0 impostorscore=0 bulkscore=0 priorityscore=1501 spamscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607210131
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -154,43 +154,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-KVM and WHPX GICv3 implementations call gicv3_init_irqs_and_mmio()
-which is defined in arm_gicv3_common.c, itself build when ARM_GIC
-is selected. Both KVM and WHPX are conditional on ARM_GICV3,
-itself selecting ARM_GIC. Only build the ARM_GICV3 accelerator
-variants when ARM_GICV3 is selected.
+Use the stub library introduced in commit 0da978cdbc6 ("target/arm:
+define stub library") to prevent symbol conflicts.
 
- $ git grep -w gicv3_init_irqs_and_mmio
- hw/intc/arm_gicv3_common.c:314:void gicv3_init_irqs_and_mmio(GICv3State *s,
- hw/intc/arm_gicv3.c:450:    gicv3_init_irqs_and_mmio(s, gicv3_set_irq, gic_ops);
- hw/intc/arm_gicv3_hvf.c:710:    gicv3_init_irqs_and_mmio(s, hvf_gicv3_set_irq, NULL);
- hw/intc/arm_gicv3_kvm.c:822:    gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL);
- hw/intc/arm_gicv3_whpx.c:186:    gicv3_init_irqs_and_mmio(s, whpx_gicv3_set_irq, NULL);
-
-Fixes: a7bf30342e6 ("hw/intc: Initial implementation of vGICv3")
-Fixes: e4c95f78a47 ("hw, target, accel: whpx: change apic_in_platform to kernel_irqchip")
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- hw/intc/meson.build | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/arm/meson.build | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/hw/intc/meson.build b/hw/intc/meson.build
-index fac2d228f9b..377de78bb41 100644
---- a/hw/intc/meson.build
-+++ b/hw/intc/meson.build
-@@ -45,10 +45,10 @@ specific_ss.add(when: 'CONFIG_APIC', if_true: files('apic.c', 'apic_common.c'))
- arm_common_ss.add(when: 'CONFIG_ARM_GIC', if_true: files('arm_gicv3_cpuif_common.c'))
- arm_common_ss.add(when: 'CONFIG_ARM_GICV3', if_true: files('arm_gicv3_cpuif.c'))
- specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gic_kvm.c'))
--specific_ss.add(when: ['CONFIG_WHPX', 'TARGET_AARCH64'], if_true: files('arm_gicv3_whpx.c'))
-+specific_ss.add(when: ['CONFIG_WHPX', 'CONFIG_ARM_GICV3'], if_true: files('arm_gicv3_whpx.c'))
- specific_ss.add(when: ['CONFIG_HVF', 'CONFIG_ARM_GICV3'], if_true: files('arm_gicv3_hvf.c'))
- stub_ss.add(files('arm_gicv3_hvf_stub.c'))
--specific_ss.add(when: ['CONFIG_ARM_GIC_KVM', 'TARGET_AARCH64'], if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
-+specific_ss.add(when: ['CONFIG_ARM_GIC_KVM', 'CONFIG_ARM_GICV3'], if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
- arm_common_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_nvic.c'))
- specific_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_irqmp.c'))
- specific_ss.add(when: 'CONFIG_IOAPIC', if_true: files('ioapic.c'))
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index f6ae8934d1b..0369f96b4cc 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -38,7 +38,8 @@ arm_user_ss.add(files('cpu.c'))
+ arm_stubs_ss.add(files(
+   'cpu32-stubs.c',
+   'gicv5-stubs.c',
+-  'kvm-stub.c'
++  'kvm-stub.c',
++  'tcg-stubs.c',
+ ))
+ arm_user_ss.add(files(
+   'el2-stubs.c',
+@@ -65,8 +66,6 @@ subdir('whpx')
+ 
+ if 'CONFIG_TCG' in config_all_accel
+    subdir('tcg')
+-else
+-    arm_common_system_ss.add(files('tcg-stubs.c'))
+ endif
+ 
+ arm_user_ss.add_all(arm_common_user_system_ss)
 -- 
 2.53.0
 

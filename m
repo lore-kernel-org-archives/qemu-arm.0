@@ -4,86 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F74AC4452B
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 18:53:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F28CFC4451C
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 19:01:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wmFWm-00020I-0M; Tue, 21 Jul 2026 14:49:16 -0400
+	id 1wmFif-0005Fa-GX; Tue, 21 Jul 2026 15:01:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wmFUw-00016L-Jx
- for qemu-arm@nongnu.org; Tue, 21 Jul 2026 14:47:23 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wmFUu-0006gZ-Qc
- for qemu-arm@nongnu.org; Tue, 21 Jul 2026 14:47:22 -0400
-Received: by mail-pf1-x436.google.com with SMTP id
- d2e1a72fcca58-84e0688b7e8so992877b3a.1
- for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 11:47:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784659639; x=1785264439; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=eGbMR0aSKnypH9C761cx/29efStMBRI8uI8HtMSi64I=;
- b=Fn5/r9Y/mJBpTr6058Z+zK3mDNZP74hwTba44P5xjAWUv1bapFiADQAEfAaV/yf4xB
- iAyAzKM8BubRTbYSEKzo3aevHQxGtFgTuJcBHZ6hNuLf6IhzC3t+hPIA47ZCrk7T+zWw
- /V2loj0L9fdr10USQeP5pvSOHb266MSe8DE+Z5qO9tA2sREfaoAINyHkc4spPfq5o7dI
- Veru6zvI93AiqVTcEDxIYFEn84KTlCN9kVMQxHKs7AOP/EyfKQrN+m/82mDsXM8p3jkg
- PjZqR4vDFLmAA1kUnqMD6RXlchiEwQww/jKKPGFyzF6/XCeoIe4QE1It3WxI/x8bCd5y
- OB1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784659639; x=1785264439;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=eGbMR0aSKnypH9C761cx/29efStMBRI8uI8HtMSi64I=;
- b=aTM3vl1ZLwDhgF/C6R7JJXt0eoaWz5CyUnc+wSQc4BWReK1p5TcsILaziWfEnAsrkG
- wnPskh9gNl2kMyQeHvNxCA+sK1wFc7pSWfshLvJE5w1ic30vbHIgK1OC5JFY1ZVK7ZmM
- CZKqqcm8pn7xsPGImIrwmiOjnolV+/m3JUB82Ma2ut3lpD/In4YdroQkmn20ods0DGod
- EDYqsW+PMWfXRXzbfXpsxLupCLcpTvMANXVJ1pHjseeb38QJ3TIUE4r54x3FIsEHdUco
- zDnD9mzByuADYSGeBksT6t9DP6pOZEHOiwqcDPxiqO4mPjEYn/DNA8mLtA6S5OVO1nIG
- h8Gg==
-X-Gm-Message-State: AOJu0YxTnkGpbnDY4K2/oh5Vs7R32aPc9OpfGS0CFhpzgtVoom2efMhz
- AB8RFBHzEPLTsbW27AhK7KyEe5PlMe0ZRemD5cKW7o3hKBiTqNSKg+fkZRnrjC7uT+wFqbw/qEC
- Jj53Q
-X-Gm-Gg: AfdE7cnY5SYl0uSQdVLGCpXz+WcKcJlAonv5HG38QLZ1dDOE/PyVFTF7JlO1n+9csJR
- MbSB4AOmeqPLXdK8IVNyxFj/9QY39hzRYTZ/yOcBidmHCC2HwF96Cu7B8eIFEBdVsR3z4SRW5/P
- sKlLPB0p4MpFBI6DZNRyQ4HI9sifp4Gr/iLUVQNkKE8EOAv7JUzC0KtMk8WFZU460OMa8nHoDpt
- rJrEK8BsnyhG97ShzbUNsNDauWLxSfqhJuIC4jrGoEZBjggJcVnpJ+Z5DLPD19KZxOflJLKQARa
- KSThuTfn6ti6CabqIZ9Vgmri4TD87V8OkLuFSSE1ftLg6vuPAmYlQYRmROkmraEOnA3hds96QZ+
- mmx4UXsUie8JnChapsSW0ub0oJgWdmoHkmsHaOXFDMl04LOPg2JPtMHSOAVev75c1fGVnH6Ninr
- 7342nlQtlplwZo78WpYw==
-X-Received: by 2002:a05:6a21:c14e:10b0:3c3:bf10:419a with SMTP id
- adf61e73a8af0-3c3bf1044efmr17259965637.71.1784659639203; 
- Tue, 21 Jul 2026 11:47:19 -0700 (PDT)
-Received: from stoup.. ([32.140.233.50]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-13ce29e340esm41108094c88.5.2026.07.21.11.47.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Jul 2026 11:47:18 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 16/20] target/arm: Implement AESD (indexed)
-Date: Tue, 21 Jul 2026 11:46:52 -0700
-Message-ID: <20260721184656.530230-17-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260721184656.530230-1-richard.henderson@linaro.org>
-References: <20260721184656.530230-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1wmFiZ-0005Ez-RM; Tue, 21 Jul 2026 15:01:29 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1wmFiX-0000W2-77; Tue, 21 Jul 2026 15:01:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
+ t=1784660463; bh=0KoN2Ti55u0GeS+Ipzctxr+zyfEVtZ0IHutiqKQtnt0=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To;
+ b=L6B1jA6P8ml02O7LdkpjAsA4xo6B1p8EdRInG7J3GvUdMaX/OFVhU+WCs3dVsAkPu
+ ozweeelV8nbT158ZmhU0xfbYKY9eIJu+4MLOY9be5p34gDihnsmdfwuwVQ+sYAmYR9
+ Ad7/rODn25MaY7HXqccNx1eKgq7URhKpkywGBkqMgkF/pLZeyePqT33g4I4AemerOX
+ vusIOFhXjx8CU1HTm+Ez7r0QcR3uqg7hb94Ij/kZ5GbwV/5mFcT/+k95jtnBJvgoF3
+ 8H6i335Bvwkv1eMgQPZLRMJnebwVnR4UCR6vT/YiqVmAwCZcNLvpT6vxiCTs6HaMJo
+ IeARY7FIVJxSw==
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id E82411C37B5;
+ Tue, 21 Jul 2026 22:01:03 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 96A8E3F2B92;
+ Tue, 21 Jul 2026 22:01:19 +0300 (MSK)
+Message-ID: <63046247-5e3a-4943-852a-985ffdc1f087@tls.msk.ru>
+Date: Tue, 21 Jul 2026 22:01:10 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/1] hw/char: imx_serial: add missing migration state
+To: Tao Ding <dingtao0430@163.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ marcandre.lureau@redhat.com, pbonzini@redhat.com,
+ QEMU Stable <qemu-stable@nongnu.org>
+References: <20260715131819.14827-1-dingtao0430@163.com>
+ <20260715131819.14827-2-dingtao0430@163.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20260715131819.14827-2-dingtao0430@163.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,124 +115,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/helper-defs.h   |  1 +
- target/arm/tcg/crypto_helper.c | 47 +++++++++++++++++++++++++---------
- target/arm/tcg/translate-sve.c |  2 ++
- target/arm/tcg/sve.decode      |  3 +++
- 4 files changed, 41 insertions(+), 12 deletions(-)
+On 7/15/26 16:18, Tao Ding wrote:
+> Add ucr2 from imx_serial to vmstate, and increment the version_id.
+> 
+> Migrating on sabrelite can reproduce this issue:
+> 1. Prepare the U-Boot required for sabrelite. (according to sabrelite.rst)
+> 2. Compile qemu
+>      $ mkdir build && cd build && ../configure --target-list="arm-softmmu" && make -j4
+> 3. Start sabrelite and prepare for migration
+>      $ ./build/qemu-system-arm -M sabrelite \
+>      -smp 1 -m 1G -display none -serial null -serial mon:stdio \
+>      -kernel ~/u-boot
+> 4. Enter qemu monitor after uboot. (ctrl + a + c)
+>      (qemu) stop
+>      (qemu) xp /4wx 0x021e8084
+>      021e8084: 0x00004027 0x00000784 0x00008000 0x00000a01
+>      (qemu) migrate -d file:vmstate
+>      (qemu) q
+> 
+> Load the migrated vmstate, before repairing:
+> 
+> $ ./build/qemu-system-arm -M sabrelite \
+>      -smp 1 -m 1G -display none -serial null -serial mon:stdio \
+>      -kernel ~/u-boot -incoming file:vmstate
+> 
+> (ctrl + a + c)
+>      QEMU 11.0.50 monitor - type 'help' for more information
+>      (qemu) xp /4wx 0x021e8084
+>      021e8084: 0x00000004 0x00000784 0x00008000 0x00000a01
+>      (qemu) q
+> 
+> It can be found that the data for address 0x021e8084 (register of usr2 in imx_serial of sabrelite)
+> is not the data before the migration.
+> 
+> After being repaired:
+> $ ./build/qemu-system-arm -M sabrelite \
+>      -smp 1 -m 1G -display none -serial null -serial mon:stdio \
+>      -kernel ~/u-boot -incoming file:vmstate
+> (ctrl + a + c)
+>      QEMU 11.0.50 monitor - type 'help' for more information
+>      (qemu) xp /4wx 0x021e8084
+>      021e8084: 0x00004027 0x00000784 0x00008000 0x00000a01
+> 
+> Signed-off-by: Tao Ding <dingtao0430@163.com>
 
-diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
-index 9d71277b47..3719487754 100644
---- a/target/arm/tcg/helper-defs.h
-+++ b/target/arm/tcg/helper-defs.h
-@@ -463,6 +463,7 @@ DEF_HELPER_FLAGS_3(crypto_aesmc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
- DEF_HELPER_FLAGS_3(crypto_aesimc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
- 
- DEF_HELPER_FLAGS_4(crypto_aese_idx, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(crypto_aesd_idx, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- 
- DEF_HELPER_FLAGS_4(crypto_sha1su0, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(crypto_sha1c, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-diff --git a/target/arm/tcg/crypto_helper.c b/target/arm/tcg/crypto_helper.c
-index 27b5813b6d..05f193b3d1 100644
---- a/target/arm/tcg/crypto_helper.c
-+++ b/target/arm/tcg/crypto_helper.c
-@@ -99,6 +99,23 @@ void HELPER(crypto_aese_idx)(void *vd, void *vn, void *vm, uint32_t desc)
-     } while (s > 0);
- }
- 
-+static void aesd_kernel(AESState *ad, const AESState *st, const AESState *rk)
-+{
-+    AESState t;
-+
-+    /* Our uint64_t are in the wrong order for big-endian. */
-+    if (HOST_BIG_ENDIAN) {
-+        t.d[0] = st->d[1] ^ rk->d[1];
-+        t.d[1] = st->d[0] ^ rk->d[0];
-+        aesdec_ISB_ISR_AK(&t, &t, &aes_zero, false);
-+        ad->d[0] = t.d[1];
-+        ad->d[1] = t.d[0];
-+    } else {
-+        t.v = st->v ^ rk->v;
-+        aesdec_ISB_ISR_AK(ad, &t, &aes_zero, false);
-+    }
-+}
-+
- void HELPER(crypto_aesd)(void *vd, void *vn, void *vm, uint32_t desc)
- {
-     intptr_t i, opr_sz = simd_oprsz(desc);
-@@ -107,23 +124,29 @@ void HELPER(crypto_aesd)(void *vd, void *vn, void *vm, uint32_t desc)
-         AESState *ad = (AESState *)(vd + i);
-         AESState *st = (AESState *)(vn + i);
-         AESState *rk = (AESState *)(vm + i);
--        AESState t;
- 
--        /* Our uint64_t are in the wrong order for big-endian. */
--        if (HOST_BIG_ENDIAN) {
--            t.d[0] = st->d[1] ^ rk->d[1];
--            t.d[1] = st->d[0] ^ rk->d[0];
--            aesdec_ISB_ISR_AK(&t, &t, &aes_zero, false);
--            ad->d[0] = t.d[1];
--            ad->d[1] = t.d[0];
--        } else {
--            t.v = st->v ^ rk->v;
--            aesdec_ISB_ISR_AK(ad, &t, &aes_zero, false);
--        }
-+        aesd_kernel(ad, st, rk);
-     }
-     clear_tail(vd, opr_sz, simd_maxsz(desc));
- }
- 
-+void HELPER(crypto_aesd_idx)(void *vd, void *vn, void *vm, uint32_t desc)
-+{
-+    intptr_t opr_sz = simd_oprsz(desc);
-+    intptr_t idx = simd_data(desc);
-+    void *vm_idx = vm + idx * 16;
-+    intptr_t s = opr_sz - 16;
-+
-+    do {
-+        intptr_t base = ROUND_DOWN(s, 4 * 16);
-+        AESState rk = *(AESState *)(vm_idx + base);
-+        do {
-+            aesd_kernel(vd + s, vn + s, &rk);
-+            s -= 16;
-+        } while (s >= base);
-+    } while (s > 0);
-+}
-+
- void HELPER(crypto_aesmc)(void *vd, void *vm, uint32_t desc)
- {
-     intptr_t i, opr_sz = simd_oprsz(desc);
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index 5b6b66aaef..340ed7d975 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -8334,6 +8334,8 @@ static bool do_aes2_idx(DisasContext *s, arg_rx_n *a, gen_helper_gvec_3 *fn)
- 
- TRANS_FEAT_STREAMING_IF(AESE_idx, aa64_sve_aes2, aa64_ssve_aes,
-                         do_aes2_idx, a, gen_helper_crypto_aese_idx)
-+TRANS_FEAT_STREAMING_IF(AESD_idx, aa64_sve_aes2, aa64_ssve_aes,
-+                        do_aes2_idx, a, gen_helper_crypto_aesd_idx)
- 
- TRANS_FEAT(FCVTNT_sh_m, aa64_sme_or_sve2, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve2_fcvtnt_sh, a, 0, FPST_A64)
-diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
-index 64e0dd0eae..1ab1b4042b 100644
---- a/target/arm/tcg/sve.decode
-+++ b/target/arm/tcg/sve.decode
-@@ -1985,6 +1985,9 @@ SM4E            01000101 00 10001 1 11100 0 ..... .....  @rdn_rm_e0
- AESE_idx        01000101 00 1 .. .10111010 ..... ....0   @aes2_2
- AESE_idx        01000101 00 1 .. .10111010 ..... ...00   @aes2_4
- 
-+AESD_idx        01000101 00 1 .. .10111011 ..... ....0   @aes2_2
-+AESD_idx        01000101 00 1 .. .10111011 ..... ...00   @aes2_4
-+
- # SVE2 crypto constructive binary operations
- SM4EKEY         01000101 00 1 ..... 11110 0 ..... .....  @rd_rn_rm_e0
- RAX1            01000101 00 1 ..... 11110 1 ..... .....  @rd_rn_rm_e0
--- 
-2.43.0
+
+Somehow, this grow Cc: qemu-stable@ in the final version which was
+applied as v11.1.0-rc0-68-g8833ff95eaf.  I don't think this is a
+good candidate for the stable series, since this fix changes the
+migration stream format, which is very difficult to do in the stable
+series.
+
+FWIW.
+
+Thanks,
+
+/mjt
+
+>   hw/char/imx_serial.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
+> index 080b7f6331..fb41ee2ac5 100644
+> --- a/hw/char/imx_serial.c
+> +++ b/hw/char/imx_serial.c
+> @@ -43,14 +43,15 @@
+>   
+>   static const VMStateDescription vmstate_imx_serial = {
+>       .name = TYPE_IMX_SERIAL,
+> -    .version_id = 3,
+> -    .minimum_version_id = 3,
+> +    .version_id = 4,
+> +    .minimum_version_id = 4,
+>       .fields = (const VMStateField[]) {
+>           VMSTATE_FIFO32(rx_fifo, IMXSerialState),
+>           VMSTATE_TIMER(ageing_timer, IMXSerialState),
+>           VMSTATE_UINT32(usr1, IMXSerialState),
+>           VMSTATE_UINT32(usr2, IMXSerialState),
+>           VMSTATE_UINT32(ucr1, IMXSerialState),
+> +        VMSTATE_UINT32(ucr2, IMXSerialState),
+>           VMSTATE_UINT32(uts1, IMXSerialState),
+>           VMSTATE_UINT32(onems, IMXSerialState),
+>           VMSTATE_UINT32(ufcr, IMXSerialState),
 
 

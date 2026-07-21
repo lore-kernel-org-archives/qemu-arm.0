@@ -4,45 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D7F9C4451C
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 08:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5158DC4451C
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 08:21:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wm5h8-0001Ev-9p; Tue, 21 Jul 2026 04:19:18 -0400
+	id 1wm5hB-0001M5-7j; Tue, 21 Jul 2026 04:19:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wm5h7-0001Cd-HF; Tue, 21 Jul 2026 04:19:17 -0400
+ id 1wm5h9-0001FX-7Y; Tue, 21 Jul 2026 04:19:19 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wm5h5-0001Zh-N2; Tue, 21 Jul 2026 04:19:17 -0400
+ id 1wm5h5-0001Zg-Nz; Tue, 21 Jul 2026 04:19:18 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 66L8GsBu050170
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 66L8GsBj050170
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Tue, 21 Jul 2026 17:17:35 +0900 (JST)
+ Tue, 21 Jul 2026 17:17:30 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=qr12/M6lbYDf+7AnVDzZbYSym2sDNfQQ9a1KvRY5EX4=; 
+DKIM-Signature: a=rsa-sha256; bh=QUBJRRaBwI6YuxGcgOV5El7ScpP8jVakZ+A2xhA0+Mk=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1784621856; v=1;
- b=WuDYTUBKGes7+Pa7UDLXDI4DwSdPAvSMZW3OfIvVis+LGzmOAKpfZwEGx1ztf3Ji
- wprIjVvzCgJ8DrtcZqes5+Dj/ktI86FGlVKpsO7VegfAEnzeJxkpSghlYq4uLa8p
- e5BlwXL+axCanDQM7/EWUcbZpOXtyeDWAKRmsUeEwOMukMknyT9ljXUoq8Pa8CyN
- beY5rCABc0tChRuaChGFqHA/wM5ep3dtKDttmO1WKtOplrnXNxZqH8jN5leF4+XR
- vUlbp+8ttsWNn7lzLzs+jfJqtIq18zJNG2fAlhK59nfyB6fDbhYhYgSMAYXbueBO
- qUay5gUVPoFUptwLA86OlA==
+ s=rs20250326; t=1784621851; v=1;
+ b=Glq243S84ANSirhEeOPefno4HFiAfL14/oucGZHmdrdOp7Vb/5fO4NQck7xe3paV
+ liGqdEYNzME6RbJ7jC9BFtZ5Ef8GAZfwjFEwFC3PpNIrUsjOeAxBBmPsRu6K8z1q
+ BokCQDV+oT+lqS1pPmTiBqOq7tLvsYw0v+y43OTvMdgROsUwIvSHjbC7pzGBjWFT
+ Cqmrm71czxz8nVv0gD8qHN4atsvWpketN6OTbK6oT2VRpEpIJBiuetnHzY83xZ83
+ dNxqnfVBm7Y4bQvl8QviwjUWXCDiaG49YdO7kydY/zG1FIXIHvP30Gshm9Fgphg7
+ ZXQ3/YlvrXpN17LytzLmaA==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Tue, 21 Jul 2026 17:17:01 +0900
-Subject: [PATCH for-11.2 v3 11/15] hw/virtio/virtio-qmp: Use qdev_is_realized()
+Subject: [PATCH for-11.2 v3 00/15] qdev: Clarify and enforce the device
+ realization lifecycle
+Date: Tue, 21 Jul 2026 17:16:50 +0900
+Message-Id: <20260721-qdev-v3-0-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260721-qdev-v3-11-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
-References: <20260721-qdev-v3-0-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20260721-qdev-v3-0-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3XMQQ6DIBRF0a2YPy4EMKJ21H00HSh8lDYRC5bUG
+ PdeQu2ww5f7cjYI6C0GOBcbeIw2WDelUZ4KUGM3DUisThsEExVrmSRPjZG0WKm+Vkwa00G6zh6
+ NfWfmCsZ5wjkVcEtltGFxfs1+5LkfVPOlIiecaCNKaWqFVa8vPgxUWWrpiyzusTraKXqfsxbFT
+ 5BMivYQRBIapblue2S6+S/s+/4BcGm8t/EAAAA=
+X-Change-ID: 20250906-qdev-9e5cb7c06ffa
 To: qemu-devel@nongnu.org
 Cc: BALATON Zoltan <balaton@eik.bme.hu>, Paolo Bonzini <pbonzini@redhat.com>, 
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
@@ -69,13 +73,13 @@ Cc: BALATON Zoltan <balaton@eik.bme.hu>, Paolo Bonzini <pbonzini@redhat.com>,
  Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-925f5
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1327;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4820;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=ldAgNopv4I6FfobXrVBsQQc7NuHhNYI0ZZ22r2DBTpQ=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ1a8tkRGntfeB0uPsn+Ydsrr+cr4OtUHEx8st3qmmrgoo
- s3kM9vEjlIWBjEuBlkxRZaUot3cGtG1nwoT4ltg5rAygQxh4OIUgIkc+8LwP/stw4Ut3H3Texeb
- r9BVrngx83t98q6VHqkvtiZl/ZideJDhf/D6JYmiXBLcW5vSq0W6CvYWzvJ0mH34ft+Jutm7uPe
- 5MAIA
+ bh=BN/eXHnD1VZPxPM3nwjmCEIhG7t4WXjySTU6vcs5GgU=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ1a8NkuO2sSMNex5htuVtp2Peq21XEtvTtXL285FEu/NA
+ 3O+NFd2lLIwiHExyIopsqQU7ebWiK79VJgQ3wIzh5UJZAgDF6cATOTka0aGnwc2l++++GW1AePB
+ S4eWRrX2xW2o5z14/8B5YcXTtXNSJjD8Uws7llTM9u5XbM0KvosbAneW5auvzf0WrcjuV7c5Wns
+ pHwA=
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -101,39 +105,109 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-DeviceState fields should be accessed through qdev helpers rather than
-directly. Use qdev_is_realized() instead of reading
-DeviceState::realized directly.
+qdev currently represents a device's realization state with a single
+boolean. This cannot distinguish a device that has never been realized
+from one whose realization has failed or that has been unrealized, nor
+can it represent realization in progress. Consequently, the same device
+can enter DeviceClass::realize() reentrantly or more than once.
+Supporting that complicates device implementations, and the behavior is
+untested and likely broken.
+
+This series first clarifies the division of work between
+TypeInfo.instance_init, pre-realize property setting, and
+DeviceClass::realize, including the implications of device introspection
+and property-dependent child creation.
+
+The remaining direct reads of DeviceState::realized are then converted
+to qdev_is_realized(). Keeping users behind this accessor allows the
+underlying lifecycle representation to change without exposing it; the
+accessor is also made const so callers with a const DeviceState can use
+it.
+
+Before changing that representation, the series fixes an existing
+qdev invariant. qdev_realize() can attach an unparented device to a
+bus before giving it a QOM parent. A failure between those operations
+leaves a bus child that object_unparent() cannot remove, causing
+bus_unparent() to loop indefinitely. qdev_realize() now establishes
+the QOM parent before attaching the device to its bus and rolls the
+parent back on failure.
+
+Finally, DeviceState::realized and the QOM realized property are
+replaced with four explicit phases: initialized, realizing, realized,
+and retired.
+Entering the realizing phase before invoking callbacks prevents
+reentrant realization. A failure after realization starts, or the start
+of unrealization, moves the device to the terminal retired phase, so a
+device's realize method is invoked at most once.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/virtio/virtio-qmp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Changes in v3:
+- Ensured devices are QOM-parented before attaching them to a bus,
+  avoiding unparentable bus children when realization fails.
+- Clarified property-dependent child creation.
+- Removed documentation references to the QOM realized property.
+- Replaced DeviceState::realized and the QOM realized property with
+  device phases. The realizing phase prevents reentrant realization, and
+  the terminal retired phase prevents another attempt after realization
+  fails or unrealization begins.
+- Link to v2: https://lore.kernel.org/qemu-devel/20260629-qdev-v2-1-8cd1d9be0d8d@rsg.ci.i.u-tokyo.ac.jp
 
-diff --git a/hw/virtio/virtio-qmp.c b/hw/virtio/virtio-qmp.c
-index 57cc03828c2b..5aaeebdd96af 100644
---- a/hw/virtio/virtio-qmp.c
-+++ b/hw/virtio/virtio-qmp.c
-@@ -659,7 +659,7 @@ static int query_dev_child(Object *child, void *opaque)
- {
-     VirtioInfoList **vdevs = opaque;
-     Object *dev = object_dynamic_cast(child, TYPE_VIRTIO_DEVICE);
--    if (dev != NULL && DEVICE(dev)->realized) {
-+    if (dev != NULL && qdev_is_realized(DEVICE(dev))) {
-         VirtIODevice *vdev = VIRTIO_DEVICE(dev);
-         VirtioInfo *info = g_new(VirtioInfo, 1);
- 
-@@ -688,7 +688,7 @@ VirtIODevice *qmp_find_virtio_device(const char *path)
-     /* Verify the canonical path is a realized virtio device */
-     Object *dev = object_dynamic_cast(object_resolve_path(path, NULL),
-                                       TYPE_VIRTIO_DEVICE);
--    if (!dev || !DEVICE(dev)->realized) {
-+    if (!dev || !qdev_is_realized(DEVICE(dev))) {
-         return NULL;
-     }
-     return VIRTIO_DEVICE(dev);
+Changes in v2:
+- Clarified the ordering of #TypeInfo.instance_init, pre-realize
+  property setting, and realization.
+- Clarified that #TypeInfo.instance_init is for per-instance properties,
+  not class properties.
+- Link to v1: https://lore.kernel.org/qemu-devel/20250908-qdev-v1-1-df236f7ce5bd@rsg.ci.i.u-tokyo.ac.jp
 
--- 
-2.55.0
+---
+Akihiko Odaki (15):
+      qdev: Clarify instantiation and realization
+      qdev: Make qdev_is_realized() take a const DeviceState *
+      hw/hyperv/balloon: Use qdev_is_realized()
+      hw/intc/apic: Use qdev_is_realized()
+      hw/mem/memory-device: Use qdev_is_realized()
+      hw/mem/pc-dimm: Use qdev_is_realized()
+      hw/nvram: Use qdev_is_realized()
+      hw/ppc/pnv_xscom: Use qdev_is_realized()
+      hw/vfio: Use qdev_is_realized()
+      hw/virtio/virtio-mem: Use qdev_is_realized()
+      hw/virtio/virtio-qmp: Use qdev_is_realized()
+      target/i386/cpu: Use qdev_is_realized()
+      target/s390x: Use qdev_is_realized()
+      hw/qdev: Parent device before setting parent bus
+      hw/qdev: Prevent devices from being realized more than once
+
+ qapi/common.json           |  19 ++++++
+ include/hw/core/qdev.h     |  62 ++++++++++---------
+ hw/core/qdev-clock.c       |   4 +-
+ hw/core/qdev-properties.c  |   4 +-
+ hw/core/qdev.c             | 147 ++++++++++++++++++++++++++++-----------------
+ hw/hyperv/hv-balloon.c     |   2 +-
+ hw/intc/apic_common.c      |   2 +-
+ hw/mem/memory-device.c     |   4 +-
+ hw/mem/pc-dimm.c           |   2 +-
+ hw/nvram/xlnx-bbram.c      |   2 +-
+ hw/nvram/xlnx-efuse.c      |   2 +-
+ hw/ppc/pnv_xscom.c         |   2 +-
+ hw/scsi/scsi-bus.c         |   4 +-
+ hw/vfio/container-legacy.c |   4 +-
+ hw/vfio/device.c           |   4 +-
+ hw/vfio/iommufd.c          |   2 +-
+ hw/virtio/virtio-mem.c     |   4 +-
+ hw/virtio/virtio-qmp.c     |   4 +-
+ qom/qom-qmp-cmds.c         |   2 +-
+ system/qdev-monitor.c      |   5 +-
+ target/i386/cpu.c          |   2 +-
+ target/s390x/cpu_models.c  |   4 +-
+ tests/unit/test-qdev.c     | 125 +++++++++++++++++++++++++++++++++++++-
+ 23 files changed, 301 insertions(+), 111 deletions(-)
+---
+base-commit: 499039798cdad7d86b787fec0eaf1da4151c0f05
+change-id: 20250906-qdev-9e5cb7c06ffa
+
+Best regards,
+--  
+Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 
 

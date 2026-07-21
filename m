@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22682C44529
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80CDCC4452B
 	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 08:22:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wm5ga-0000la-1X; Tue, 21 Jul 2026 04:18:44 -0400
+	id 1wm5hD-0001Vt-83; Tue, 21 Jul 2026 04:19:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wm5gX-0000aq-46; Tue, 21 Jul 2026 04:18:41 -0400
+ id 1wm5h7-0001CP-BJ; Tue, 21 Jul 2026 04:19:17 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wm5gU-0001Zd-Fd; Tue, 21 Jul 2026 04:18:40 -0400
+ id 1wm5h5-0001Zk-L3; Tue, 21 Jul 2026 04:19:17 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 66L8GsBw050170
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 66L8GsBn050170
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Tue, 21 Jul 2026 17:17:36 +0900 (JST)
+ Tue, 21 Jul 2026 17:17:32 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=5NvR3Q8D8NrfTHlBvLFX8Ufpot1HwlDYDMtRmK8x6FA=; 
+DKIM-Signature: a=rsa-sha256; bh=Qm0KCgdjNWN3/4rY6uOZMm1bBvH4T7mmByt4GK9FWds=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1784621857; v=1;
- b=TTGJm8D80zFXzC8pg9x6G+Z8KP4l9RBebOpFP5TKklvpLUB2CbMH3FRku4x4AJSG
- /Pl04XMT6hC7bs/RHDuG3T3FDo8s+iI+YKw2c8WHR+WbNvbJq9nQJZhG3OPN97KF
- 5QDhl92kZ+GtsQmE4siHz8XBRGplf9IvjyFbc4o8ij17Ss0AKOatCpLYwt+2EOFL
- GgMuhLCICgDeQjtrl33M2UGz8zC6clVdZ/UBM/NGLmuHiFLgoYDd8vmI65cvnIaA
- VjX6LQcyzWSzkfcshChvIUQ8W+4i8GrOPul4wgjitRxmPYCKDUynvYPUGlj8IpoM
- vMOnl00beMQnUbZCQoxNtA==
+ s=rs20250326; t=1784621853; v=1;
+ b=jFxPqGX+wJIPGM9EppX10L5OEIcJ+RdUCf9a9b1WyCJuPihwygYUpaIUA2gWhE8I
+ M7Q8t4V5/oIpkhmAo0EMnmlSHqny5x4fLvlf1hAsnTxYI+hgSY2qf+rb8Tm02KOo
+ Kfp5JmKbPvfsR+uCLBYpuAta6GXxm/bMxlxwzjBXvoA6gYOsSjqv5o/jxYN2WRUo
+ BK4B8STURUUOfFPVRqLVkeox4q+6lCYta7vGtcDf0LRkMGuS/VmGbegUVjcop/fY
+ +ePfTE25wthu6WflSLosfgpPikAx3qhN3QKcvA7h902fXviY8uqaf1+4/EAGOnMK
+ KKQQDQXqAm0veEVI32OOpg==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Tue, 21 Jul 2026 17:17:03 +0900
-Subject: [PATCH for-11.2 v3 13/15] target/s390x: Use qdev_is_realized()
+Date: Tue, 21 Jul 2026 17:16:54 +0900
+Subject: [PATCH for-11.2 v3 04/15] hw/intc/apic: Use qdev_is_realized()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260721-qdev-v3-13-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260721-qdev-v3-4-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260721-qdev-v3-0-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260721-qdev-v3-0-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -69,13 +69,13 @@ Cc: BALATON Zoltan <balaton@eik.bme.hu>, Paolo Bonzini <pbonzini@redhat.com>,
  Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-925f5
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1253;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=783;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=OoCnJ8l56oi15ay9xCs5zNFtiLrLO0igmJFyUjSr1dA=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ1a8tqRK4PWle9h/qb3X6gv73MI7X2mv4z7bmj29jvJFi
- aH2P+92lLIwiHExyIopsqQU7ebWiK79VJgQ3wIzh5UJZAgDF6cATGSrDiPDNqXrAl84Njzf/Nw7
- ZAGb09PrkzjL099LffNnvLi778u/nQx/5c6Y96s0XE/Z3Hntw8VtqcIHlfouPm/pWe144DGDoYM
- fIwA=
+ bh=6xaEst1ifxTPryAZRYkFzDZDZuy7Ge03ST3gODOsoM8=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ1a8toie7M6w1ZcfM0x8JPQhteM1t2bjuy2hHXJrC40nv
+ L7983BrRykLgxgXg6yYIktK0W5ujejaT4UJ8S0wc1iZQIYwcHEKwEQ2TmD4K3/k+cu4K4mWf049
+ Vt/+eglni9bCpqTD0R/WnImSqttwLYyRYeLSQNWpjxUXm+o/7NrXYOGUVHW1bHLWtCeGf/5d82P
+ bxgIA
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -107,31 +107,22 @@ DeviceState::realized directly.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- target/s390x/cpu_models.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/intc/apic_common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
-index 2dd9aac8078c..f292af7ad01c 100644
---- a/target/s390x/cpu_models.c
-+++ b/target/s390x/cpu_models.c
-@@ -714,7 +714,7 @@ static void set_feature(Object *obj, Visitor *v, const char *name,
-     S390CPU *cpu = S390_CPU(obj);
-     bool value;
+diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
+index 49c03a5bceef..0f0f37d45734 100644
+--- a/hw/intc/apic_common.c
++++ b/hw/intc/apic_common.c
+@@ -424,7 +424,7 @@ static void apic_common_set_id(Object *obj, Visitor *v, const char *name,
+     DeviceState *dev = DEVICE(obj);
+     uint32_t value;
  
 -    if (dev->realized) {
 +    if (qdev_is_realized(dev)) {
-         error_setg(errp, "Attempt to set property '%s' on '%s' after "
-                    "it was realized", name, object_get_typename(obj));
+         qdev_prop_set_after_realize(dev, name, errp);
          return;
-@@ -770,7 +770,7 @@ static void set_feature_group(Object *obj, Visitor *v, const char *name,
-     S390CPU *cpu = S390_CPU(obj);
-     bool value;
- 
--    if (dev->realized) {
-+    if (qdev_is_realized(dev)) {
-         error_setg(errp, "Attempt to set property '%s' on '%s' after "
-                    "it was realized", name, object_get_typename(obj));
-         return;
+     }
 
 -- 
 2.55.0

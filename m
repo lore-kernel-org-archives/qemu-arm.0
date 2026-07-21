@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45C47C44529
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 08:22:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E623BC44529
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 08:22:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wm5hD-0001ZH-Tg; Tue, 21 Jul 2026 04:19:23 -0400
+	id 1wm5hA-0001Jr-MP; Tue, 21 Jul 2026 04:19:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wm5h8-0001F2-Je; Tue, 21 Jul 2026 04:19:19 -0400
+ id 1wm5h9-0001FW-7R; Tue, 21 Jul 2026 04:19:19 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wm5h5-0001Ze-Ns; Tue, 21 Jul 2026 04:19:18 -0400
+ id 1wm5h5-0001Zc-OZ; Tue, 21 Jul 2026 04:19:18 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 66L8GsBv050170
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 66L8GsBo050170
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Tue, 21 Jul 2026 17:17:36 +0900 (JST)
+ Tue, 21 Jul 2026 17:17:33 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=LFFC+0JsdcYcEqh6Xk6nm4iRRSP9OjDVyJmRqU0t/a8=; 
+DKIM-Signature: a=rsa-sha256; bh=KCkvLBJ8aCkGl3UnV8nuvJrHcJ4tFIcRZ/oODyRyGkA=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1784621856; v=1;
- b=L+oOOVnGo3YNnvvnBSUYU7wgUONnW7/KrHO0qfnlP0E1tKpdSFaIu8T/s2ISUy9u
- 8qJoa8UjWLz/jgxPyQiFfS1X9yZO6TbYCGFnir2JEsuKrdMtYaaK6m/lp7u9GlK2
- DD/kjAKb8iB0+TKi4RICa8OT4SnCmwZ0O6SEozTrl844IMZaM3flBYlCg0vKHleo
- glHH55P/lUiLOVZq5wnPf8Ih4G41L2AqYOO4gJHLOH4Ogoj9vAJgFXtvNZxJ6sbM
- pNfG3cHH2071goh0nCxbpLBHKWeh81qGxrrlOoiXBkdyjhYfbFgdvOQw3fbl6mAh
- joKlzh5/vyFplMRG36yPgg==
+ s=rs20250326; t=1784621853; v=1;
+ b=DlhQ9n3r2fBtwhHK5SVRatUR7zcz1i0OyPi1SyVWtAj0C1kzFUjc3HBBuCZPXzD1
+ BvtbK/nucm1L6ocrvMFwnZ2P3dzmirG/90z4OtUQUt7qewnmnjRgRPWaEUChK96u
+ vwp2siMoDR7xfrSVJAEi9WJoa1FKj3pEbxlK0+/NDjTyqVC7O0cdlzqMM7u3Mw/o
+ Ha1I+pEFJWidTZQ7wvTxQuFGjYjPJd4xcLI05cZZsEbmVx6TmOiEsd8TpE49ttNc
+ mDqWSjzKqrx+UqUdr1aUCNTElJdmmB35QP2M0gQMq0HeptxBIqGtznH5vKSlYv5Q
+ bfFRhGCCrV+C6VCXUBhXQg==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Tue, 21 Jul 2026 17:17:02 +0900
-Subject: [PATCH for-11.2 v3 12/15] target/i386/cpu: Use qdev_is_realized()
+Date: Tue, 21 Jul 2026 17:16:55 +0900
+Subject: [PATCH for-11.2 v3 05/15] hw/mem/memory-device: Use qdev_is_realized()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260721-qdev-v3-12-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260721-qdev-v3-5-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260721-qdev-v3-0-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260721-qdev-v3-0-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -69,13 +69,13 @@ Cc: BALATON Zoltan <balaton@eik.bme.hu>, Paolo Bonzini <pbonzini@redhat.com>,
  Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-925f5
-X-Developer-Signature: v=1; a=openpgp-sha256; l=759;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1325;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=Q2S5H8jS+4kWUgVvqeR+WvnwxdLZafl0U/7KpflvRws=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ1a8tkTxL5erJ0vSGJZnHuYw+XNn54mtnSus8+9Mbzn2Y
- f1D5vbNHaUsDGJcDLJiiiwpRbu5NaJrPxUmxLfAzGFlAhnCwMUpABOpPMDwP8Ziba23xDaVZT8n
- veH4/u/xjL/f2/5dO7I1il1+qeT+p1EM/wuUNPo3GXwsZ6vSMAmQ3KGq98otJnBW27xD7uKWtes
- 5GAA=
+ bh=80CkMV8WZ5hqRVetX6Z0kr6XzMUsXkxBMrdyWT951R8=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ1a8tsj9sIPxynKSfizrnWb/dpO6wSFw20C3aj3PNs+lT
+ Q8+tS3qKGVhEONikBVTZEkp2s2tEV37qTAhvgVmDisTyBAGLk4BmEikN8N/D6kf1SeMv/yIZdob
+ Wlpbpav7v9N/2Z9QI033pdMktx37wPDPRO6JcIVPuUrsKi7D/f92W/eIWGpb2Yle/RhtwHg6V5s
+ bAA==
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -107,21 +107,30 @@ DeviceState::realized directly.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- target/i386/cpu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/mem/memory-device.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 5805d33ab92d..7a2c3cf358d3 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -10387,7 +10387,7 @@ static void x86_cpu_set_bit_prop(Object *obj, Visitor *v, const char *name,
-     BitProperty *fp = opaque;
-     bool value;
+diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
+index 9cf82b84cf44..24bebfb6b31e 100644
+--- a/hw/mem/memory-device.c
++++ b/hw/mem/memory-device.c
+@@ -59,7 +59,7 @@ static int memory_device_build_list(Object *obj, void *opaque)
  
--    if (dev->realized) {
-+    if (qdev_is_realized(dev)) {
-         qdev_prop_set_after_realize(dev, name, errp);
-         return;
+     if (object_dynamic_cast(obj, TYPE_MEMORY_DEVICE)) {
+         DeviceState *dev = DEVICE(obj);
+-        if (dev->realized) { /* only realized memory devices matter */
++        if (qdev_is_realized(dev)) {
+             *list = g_slist_insert_sorted(*list, dev, memory_device_addr_sort);
+         }
+     }
+@@ -326,7 +326,7 @@ static int memory_device_plugged_size(Object *obj, void *opaque)
+         const MemoryDeviceState *md = MEMORY_DEVICE(obj);
+         const MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(obj);
+ 
+-        if (dev->realized && !memory_device_is_empty(md)) {
++        if (qdev_is_realized(dev) && !memory_device_is_empty(md)) {
+             *size += mdc->get_plugged_size(md, &error_abort);
+         }
      }
 
 -- 

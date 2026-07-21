@@ -4,144 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD4C0C4451C
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 10:17:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA3F2C44529
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 11:14:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wm7Wx-0003ux-Ni; Tue, 21 Jul 2026 06:16:55 -0400
+	id 1wm8Qf-0003DI-8X; Tue, 21 Jul 2026 07:14:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wm7Ww-0003uA-Cz
- for qemu-arm@nongnu.org; Tue, 21 Jul 2026 06:16:54 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1wm8Qd-0003Ci-Gf; Tue, 21 Jul 2026 07:14:27 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wm7Wu-0008MC-V7
- for qemu-arm@nongnu.org; Tue, 21 Jul 2026 06:16:54 -0400
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66L8f12Z568565
- for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 10:16:51 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- /ZXHq4MF7lH3EMSRkoGZWLXhin8D0GRMqMiGdC9iHfQ=; b=RphHM2PhB2n5JwRC
- I7kHsAFnbV/yL8Q8WKLlP5H/XhIEadSdLl1ahJAfLQ0XGEgM0rfU2qFbtz4GDisv
- OGvgQbSHvDq1Ch3pxKYEmGNnj35jm1ZwXy8Jo3EOOEQ2zRpjvSTF9P7zVq0ouu0B
- dTpKQkINTRLzSIcDMlH7I7RGddkM3CAepOjTlwg4aubzZJuWfG2wCo4y3UvVym3o
- qSwegUpuLTG6iXG1R7BI7VF3eZjQxY56iDYXqm811dSIEbE5esveYLvtT6xyjhpn
- KQhaX46pmQ05gZiQAP6kX8F9CSGAMzDhBoQxopK+wJ4mwBbrkkBo/OBos4u1TNKL
- UlOE5Q==
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fj1bvsq14-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 10:16:51 +0000 (GMT)
-Received: by mail-qt1-f198.google.com with SMTP id
- d75a77b69052e-51bfe3fa93bso228273371cf.2
- for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 03:16:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1784629011; x=1785233811; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=/ZXHq4MF7lH3EMSRkoGZWLXhin8D0GRMqMiGdC9iHfQ=;
- b=ej38AfWj2DIo0s5OZpCHxCKkAUUT3nNgzB5bq5oQLXm/Q5FAlNhLXc9UqndfTYitBU
- +eej5LkLdmV3GoJ86I26zHe+I1WLnzefK8Mh2rqiPE3GFY6EzOpcExZUYA3Z9BJLCTuG
- 10pX5rSu4/S0rmCxIPULzkHHikad2hPx0j5+yBtJdyJgAfGfbQH261fwyfgFKmofhYaF
- d/zUjZRXYEJiTZtICKfINJcdxza2rfa2YNQ5lbLYKrKjV4XFb66IXZ1Dw75Xl3ViNv8f
- Y+Leq1yhZ1vi+elM/M7+iOfXy5hEz3N3KwN0s/aCG8uQrh8Yyv9Hw3vjoo7ZjctirP7g
- JKKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784629011; x=1785233811;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=/ZXHq4MF7lH3EMSRkoGZWLXhin8D0GRMqMiGdC9iHfQ=;
- b=rdk5+Hgam+aFIeJnYRxVYUULBuZSJvRr2hKkoX5Whgk46brdFgS2D7vbS16S+ik2eC
- dWnCh/onvO8Vy67uWpQwgdqH/5EC10Gv2xY/i55t2tTfvulpEY4PgjCj882VETDJOIS0
- wfcShadH5jjDe+N4iNXJCuvqP26efHohqCESr7XJJkxV7WZ8Ka8M5gEUEVcdXTFsPSFH
- kwBWON1bxxW9NdaxogrIyCDAd9xL8sqDoSNYvfLyDByYyTrEngnUuAObN+fWSiD1lZSO
- yZfUZmpcdt8G2BQWylLceJheR7r1Oxa1ERYjNTNCLBAB7HCOHfLN16DOraemy1PiXd7M
- StZQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rr3g70ACJp9U83Ita+0V/wOjCi5hyixkniIwjYgu1Fo/gCItu0+oFkKvYMa+A/EfQy1+0K+tl0tXw==@nongnu.org
-X-Gm-Message-State: AOJu0YzdiDppQ/Sewy2udQ09TSI7EbLSaeFn6cplXwtvRt8tgYNcgWaY
- 8z9wPyMNnUX+ayvFey95KKpxp0pn8U+cgXmvP7dVezBN4YvUMP/lDOO6pcD/FmtIYIyl/XdHcAk
- TTwkkNhEJlvXPcRxtSmeQhpPuqMMkDgRZ1X2b8uPA9KPmpHWlP1CGfbo=
-X-Gm-Gg: AfdE7ck0k6NepHB8+vuchwCV9ZJGoeFHl93nlYDZS6kBNfSQU6CDX9DSNIjJc3aia3w
- 8dmHnhP/7Sd1LjXRby8jOo83t6WHGY2Hc9sIMWYAXsd/MY2TX2hxpuvMYNFI1L+Im6yGeM/xOi7
- MZgWNfpWvJW6iBI+oMxl04iT2piyf8hsSgG/+1X0dSdqZDFpTjJASpw8vkHL6vbmkiZZYWTKUL2
- 64TIU8nG3swMIsB7DEFFCGjeT6qUqHfc+NweIkgtP2IDmuF0y/y5WxTwjiZwhbk99JIoWjOpQfg
- K7LKky+FkP1XYf0492FzmwKbGfp9MKWbXkaqyhDYXL3Mms2UDwPIoIqHtIqFGlsaEC2zg+akx7Z
- sJcnLpMVlm7/bXQE9mExLeGhHJJknkfkIlVyy+jKviG5iue7xllo=
-X-Received: by 2002:a05:622a:2295:b0:51c:ba4:d837 with SMTP id
- d75a77b69052e-5213c012055mr159253591cf.18.1784629011021; 
- Tue, 21 Jul 2026 03:16:51 -0700 (PDT)
-X-Received: by 2002:a05:622a:2295:b0:51c:ba4:d837 with SMTP id
- d75a77b69052e-5213c012055mr159253311cf.18.1784629010460; 
- Tue, 21 Jul 2026 03:16:50 -0700 (PDT)
-Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4956536870esm60491435e9.3.2026.07.21.03.16.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Jul 2026 03:16:49 -0700 (PDT)
-Message-ID: <be300233-ab2e-4da0-ae8e-f3afdfa27de1@oss.qualcomm.com>
-Date: Tue, 21 Jul 2026 12:16:49 +0200
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1wm8Qa-0000Gb-V3; Tue, 21 Jul 2026 07:14:27 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 45013584307;
+ Tue, 21 Jul 2026 13:14:20 +0200 (CEST)
+X-Virus-Scanned: amavis at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
+ id g06RALH47R4W; Tue, 21 Jul 2026 13:14:18 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 2F5A6584306; Tue, 21 Jul 2026 13:14:18 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 2AE5E584305;
+ Tue, 21 Jul 2026 13:14:18 +0200 (CEST)
+Date: Tue, 21 Jul 2026 13:14:18 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, 
+ "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ David Hildenbrand <david@kernel.org>, Igor Mammedov <imammedo@redhat.com>, 
+ FangSheng Huang <FangSheng.Huang@amd.com>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Nicholas Piggin <npiggin@gmail.com>, Aditya Gupta <adityag@linux.ibm.com>, 
+ Glenn Miles <milesg@linux.ibm.com>, 
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-ppc@nongnu.org, 
+ Alex Williamson <alex@shazbot.org>, 
+ =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@redhat.com>, 
+ Zhao Liu <zhao1.liu@intel.com>, 
+ Hendrik Brueckner <brueckner@linux.ibm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Ilya Leoshkevich <iii@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>, 
+ Eric Farman <farman@linux.ibm.com>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>, qemu-s390x@nongnu.org, 
+ Luc Michel <luc@lmichel.fr>, Fam Zheng <fam@euphon.net>, 
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Subject: Re: [PATCH for-11.2 v3 01/15] qdev: Clarify instantiation and
+ realization
+In-Reply-To: <20260721-qdev-v3-1-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
+Message-ID: <f4f4630f-525a-185a-83eb-1a24e6426cca@eik.bme.hu>
+References: <20260721-qdev-v3-0-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
+ <20260721-qdev-v3-1-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/net: cadence: Return current Cadence GEM queue pointers
-Content-Language: en-US
-To: Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>
-Cc: qemu-stable@nongnu.org, Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Jason Wang <jasowangio@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20260720120731.2022475-1-bin.meng@processmission.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260720120731.2022475-1-bin.meng@processmission.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: AfbFB88ljXTUKOyC7FLOBiNG1vX3YkTH
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzIxMDEwOSBTYWx0ZWRfXxh8s/oYZtbAc
- JxeYqwzEBU8O54SIqLPuGCAl+9DQ04EX9Mn8qZCQRv2YwaWO5vQrKAeahYQxjH9TH4a+It8CC2A
- 3+bCVbqabxRLkafi6tiyJ8tBawLIFss=
-X-Proofpoint-GUID: AfbFB88ljXTUKOyC7FLOBiNG1vX3YkTH
-X-Authority-Analysis: v=2.4 cv=Sb7HsPRu c=1 sm=1 tr=0 ts=6a5f4713 cx=c_pps
- a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
- a=69wJf7TsAAAA:8 a=FRSEYCzRAAAA:8 a=EUspDBNiAAAA:8 a=7Ce04qy9-wfap1NzfZcA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=dawVfQjAaf238kedN5IG:22
- a=Fg1AiH1G6rFz08G2ETeA:22 a=H4N_Y-AU75W7NKDNhZlT:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzIxMDEwOSBTYWx0ZWRfX3Y4+aOyVfhNQ
- W5545M4nJUW7ZrDwHWqL5/i3lzplwCrNZO0RXRdpQT/z0dJ/UTFMZ4m2s/cWZcPuUbLDEAzlXFF
- 2lnLWdXoT+XOG7HS+sCBV6IKER84TDHg3C2KRdIxXVgYmZ+QTb7nqSOOwDYYCcY4sT68d8Yd21v
- 99OcDN7cr2U2/vkKqmNvlu0td+XeryCMUSXM0cB36/I/IG9h6SQOSLfhjg5p01NaM29b51QTzg8
- zkMAN7LvwVi6nQZl4aOP2dRRhwaja5zO2kAUFrAODVd0SdoWqROjjeX+Qtnkr1taLc2rCva4d8g
- xnfCxB+9UaOkdsDmRrEgeHoU+x4MGC9E8L31gkOTyoQbJPgLro9b/EtLwF6Tmb22pRfWtmKYhly
- kCLxabHUe8w2csQnMCLVaOjVKQDKmxNnAK2QZ9LF6kLzoHS04KyXwoQnRy2UK701m6SkXjGrUN7
- A7vdA2bBFSzxCogddgQ==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-20_06,2026-07-20_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 malwarescore=0 spamscore=0 suspectscore=0 clxscore=1015
- lowpriorityscore=0 impostorscore=0 adultscore=0 phishscore=0
- priorityscore=1501 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2607210109
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -158,38 +86,142 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 20/7/26 14:07, Bin Meng wrote:
-> Cadence GEM queue pointer registers are programmed with the descriptor
-> ring base, but reads return the descriptor currently being accessed.
-> The model tracked the current positions separately while continuing to
-> return the configured base.
-> 
-> The Linux macb driver uses the transmit queue pointer when recovering
-> from a used-buffer interrupt. A stale priority-queue pointer can make
-> the driver restart DMA before that queue handles its completion
-> interrupt, causing queue 0 to repeatedly raise TX_USED.
-> 
-> The primary queue has had this mismatch since the initial model.
-> Priority queue support later copied the same register-read behavior.
-> 
-> A single-queue machine usually handles TX_COMPLETE before TX_USED and
-> empties the software queue before the restart check, which kept the
-> issue hidden there.
-> 
-> Return the current RX and TX descriptor positions on queue-pointer reads
-> and clear those positions on reset.
-> 
-> Fixes: e9f186e514a7 ("cadence_gem: initial version of device model")
-> Fixes: 6710172501be ("cadence_gem: Add queue support")
-> Cc: qemu-stable@nongnu.org
-> Signed-off-by: Bin Meng <bin.meng@processmission.com>
-> 
+On Tue, 21 Jul 2026, Akihiko Odaki wrote:
+> The distinction of instantiation and realization was vague in the old
+> documentation so this change clarifies it.
+>
+> The old documentation said:
+>> The former may not fail (and must not abort or exit, since it is
+>> called during device introspection already), and the latter may return
+>> error information to the caller and must be re-entrant.
+>> Trivial field initializations should go into #TypeInfo.instance_init.
+>> Operations depending on @props static properties should go into
+>> @realize.
+>
+> The first problem with the old documentation is that it is unclear what
+> "trivial field initializations" means and why triviality makes
+> initialization appropriate for #TypeInfo.instance_init. Another problem
+> is that the documentation is not comprehensive enough; for example, it
+> mentions @props static properties, but it does not say anything about
+> the other properties.
+>
+> The keys to distinguish instantiation and realization are property
+> setting and device introspection. The fact that property setting happens
+> after #TypeInfo.instance_init and before realization implies that
+> operations depending on properties should go into @realize.
+>
+> The fact that instantiation happens during device introspection but
+> realization does not implies:
+> - Instance properties should be added in #TypeInfo.instance_init.
+> - Instantiation must not have any side effect not contained in the
+>  instance.
+> - Any operations without special requirements should go into @realize so
+>  that they can be skipped during device introspection.
+>
+> Note these two facts to guide appropriate instantiation and realization.
+>
+> We also omit mention of the realized property because it is a QOM
+> interface detail, not part of the device API.
+>
+> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 > ---
-> 
->   hw/net/cadence_gem.c | 17 ++++++++++++++++-
->   1 file changed, 16 insertions(+), 1 deletion(-)
+> include/hw/core/qdev.h | 52 ++++++++++++++++++++++++++++----------------------
+> 1 file changed, 29 insertions(+), 23 deletions(-)
+>
+> diff --git a/include/hw/core/qdev.h b/include/hw/core/qdev.h
+> index e14762234115..aba7072131c4 100644
+> --- a/include/hw/core/qdev.h
+> +++ b/include/hw/core/qdev.h
+> @@ -22,27 +22,35 @@
+>  * Realization
+>  * -----------
+>  *
+> - * Devices are constructed in two stages:
+> - *
+> - * 1) object instantiation via object_initialize() and
+> - * 2) device realization via the #DeviceState.realized property
+> - *
+> - * The former may not fail (and must not abort or exit, since it is called
+> - * during device introspection already), and the latter may return error
+> - * information to the caller and must be re-entrant.
+> - * Trivial field initializations should go into #TypeInfo.instance_init.
+> - * Operations depending on @props static properties should go into @realize.
+> + * Devices are constructed in the following order:
+> + *
+> + * 1) #TypeInfo.instance_init
+> + * 2) pre-realize property value setting
+> + * 3) device realization
+> + *
+> + * #TypeInfo.instance_init may not fail. #DeviceClass.realize can
+> + * fail, returning error information to the caller. A device realize
+> + * method should handle being called again after it has failed once.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Doesn't the last patch in this series contradict this sentence? Maybe it 
+should be removed and say instead that after failed realize the object can 
+only be destroyed, no other methods can be called.
 
-and queued, thanks.
+> + * #TypeInfo.instance_init should add instance properties but must not
+> + * have any side effect not contained in the instance, since it happens
+> + * during device introspection already. Any operations without special
+> + * requirements should go @realize so that they can be skipped during
+
+You need something between go and @realize such as to or into?
+
+> + * device introspection.
+>  * After successful realization, setting static properties will fail.
+>  *
+> - * As an interim step, the #DeviceState.realized property can also be
+> - * set with qdev_realize(). In the future, devices will propagate this
+> - * state change to their children and along busses they expose. The
+> - * point in time will be deferred to machine creation, so that values
+> - * set in @realize will not be introspectable beforehand. Therefore
+> - * devices must not create children during @realize; they should
+> - * initialize them via object_initialize() in their own
+> - * #TypeInfo.instance_init and forward the realization events
+> - * appropriately.
+> + * In the future, devices will propagate this state change to their
+> + * children and along busses they expose. The point in time will be
+> + * deferred to machine creation, so that values set in @realize will not
+> + * be introspectable beforehand. Therefore devices should not create
+> + * children during @realize; they should initialize them (e.g. by
+> + * calling object_initialize_child()) in their own
+> + * #TypeInfo.instance_init method, and then realize them (e.g. by
+> + * calling qdev_realize()) in their own #DeviceClass.realize method.
+
+This complicates devices...
+
+> + * Occasionally a device may need to decide whether or not to create
+> + * a child object based on the value of a property. In this case it
+> + * will need to both create and realize the child in its realize method,
+> + * because the property value is not known until that point.
+
+...and not always possible. So can we relax this so that only children 
+that add properties that need to be introspectable and settable has to be 
+created in init and otherwise it can be deferred to realize? That way most 
+simple devices don't need an init method at all. I'd really say by default 
+do everyting in realize unless it needs to be available before realize 
+such as properties that change what realize does and avoid splitting 
+creating objects between init and realize when not absolutely needed.
+
+Regards,
+BALATON Zoltan
+
+>  *
+>  * Any type may override the @realize and/or @unrealize callbacks but needs
+>  * to call the parent type's implementation if keeping their functionality
+> @@ -101,10 +109,8 @@ typedef int (*DeviceSyncConfig)(DeviceState *dev, Error **errp);
+> /**
+>  * struct DeviceClass - The base class for all devices.
+>  * @props: Properties accessing state fields.
+> - * @realize: Callback function invoked when the #DeviceState:realized
+> - * property is changed to %true.
+> - * @unrealize: Callback function invoked when the #DeviceState:realized
+> - * property is changed to %false.
+> + * @realize: Callback function to realize the device.
+> + * @unrealize: Callback function to unrealize the device.
+>  * @sync_config: Callback function invoked when QMP command device-sync-config
+>  * is called. Should synchronize device configuration from host to guest part
+>  * and notify the guest about the change.
+>
+>
 

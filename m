@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E623BC44529
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 08:22:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22682C44529
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 08:22:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wm5hA-0001Jr-MP; Tue, 21 Jul 2026 04:19:20 -0400
+	id 1wm5ga-0000la-1X; Tue, 21 Jul 2026 04:18:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wm5h9-0001FW-7R; Tue, 21 Jul 2026 04:19:19 -0400
+ id 1wm5gX-0000aq-46; Tue, 21 Jul 2026 04:18:41 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wm5h5-0001Zc-OZ; Tue, 21 Jul 2026 04:19:18 -0400
+ id 1wm5gU-0001Zd-Fd; Tue, 21 Jul 2026 04:18:40 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 66L8GsBo050170
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 66L8GsBw050170
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Tue, 21 Jul 2026 17:17:33 +0900 (JST)
+ Tue, 21 Jul 2026 17:17:36 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=KCkvLBJ8aCkGl3UnV8nuvJrHcJ4tFIcRZ/oODyRyGkA=; 
+DKIM-Signature: a=rsa-sha256; bh=5NvR3Q8D8NrfTHlBvLFX8Ufpot1HwlDYDMtRmK8x6FA=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1784621853; v=1;
- b=DlhQ9n3r2fBtwhHK5SVRatUR7zcz1i0OyPi1SyVWtAj0C1kzFUjc3HBBuCZPXzD1
- BvtbK/nucm1L6ocrvMFwnZ2P3dzmirG/90z4OtUQUt7qewnmnjRgRPWaEUChK96u
- vwp2siMoDR7xfrSVJAEi9WJoa1FKj3pEbxlK0+/NDjTyqVC7O0cdlzqMM7u3Mw/o
- Ha1I+pEFJWidTZQ7wvTxQuFGjYjPJd4xcLI05cZZsEbmVx6TmOiEsd8TpE49ttNc
- mDqWSjzKqrx+UqUdr1aUCNTElJdmmB35QP2M0gQMq0HeptxBIqGtznH5vKSlYv5Q
- bfFRhGCCrV+C6VCXUBhXQg==
+ s=rs20250326; t=1784621857; v=1;
+ b=TTGJm8D80zFXzC8pg9x6G+Z8KP4l9RBebOpFP5TKklvpLUB2CbMH3FRku4x4AJSG
+ /Pl04XMT6hC7bs/RHDuG3T3FDo8s+iI+YKw2c8WHR+WbNvbJq9nQJZhG3OPN97KF
+ 5QDhl92kZ+GtsQmE4siHz8XBRGplf9IvjyFbc4o8ij17Ss0AKOatCpLYwt+2EOFL
+ GgMuhLCICgDeQjtrl33M2UGz8zC6clVdZ/UBM/NGLmuHiFLgoYDd8vmI65cvnIaA
+ VjX6LQcyzWSzkfcshChvIUQ8W+4i8GrOPul4wgjitRxmPYCKDUynvYPUGlj8IpoM
+ vMOnl00beMQnUbZCQoxNtA==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Tue, 21 Jul 2026 17:16:55 +0900
-Subject: [PATCH for-11.2 v3 05/15] hw/mem/memory-device: Use qdev_is_realized()
+Date: Tue, 21 Jul 2026 17:17:03 +0900
+Subject: [PATCH for-11.2 v3 13/15] target/s390x: Use qdev_is_realized()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260721-qdev-v3-5-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260721-qdev-v3-13-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260721-qdev-v3-0-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260721-qdev-v3-0-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -69,13 +69,13 @@ Cc: BALATON Zoltan <balaton@eik.bme.hu>, Paolo Bonzini <pbonzini@redhat.com>,
  Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-925f5
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1325;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1253;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=80CkMV8WZ5hqRVetX6Z0kr6XzMUsXkxBMrdyWT951R8=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ1a8tsj9sIPxynKSfizrnWb/dpO6wSFw20C3aj3PNs+lT
- Q8+tS3qKGVhEONikBVTZEkp2s2tEV37qTAhvgVmDisTyBAGLk4BmEikN8N/D6kf1SeMv/yIZdob
- Wlpbpav7v9N/2Z9QI033pdMktx37wPDPRO6JcIVPuUrsKi7D/f92W/eIWGpb2Yle/RhtwHg6V5s
- bAA==
+ bh=OoCnJ8l56oi15ay9xCs5zNFtiLrLO0igmJFyUjSr1dA=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ1a8tqRK4PWle9h/qb3X6gv73MI7X2mv4z7bmj29jvJFi
+ aH2P+92lLIwiHExyIopsqQU7ebWiK79VJgQ3wIzh5UJZAgDF6cATGSrDiPDNqXrAl84Njzf/Nw7
+ ZAGb09PrkzjL099LffNnvLi778u/nQx/5c6Y96s0XE/Z3Hntw8VtqcIHlfouPm/pWe144DGDoYM
+ fIwA=
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -107,31 +107,31 @@ DeviceState::realized directly.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/mem/memory-device.c | 4 ++--
+ target/s390x/cpu_models.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
-index 9cf82b84cf44..24bebfb6b31e 100644
---- a/hw/mem/memory-device.c
-+++ b/hw/mem/memory-device.c
-@@ -59,7 +59,7 @@ static int memory_device_build_list(Object *obj, void *opaque)
+diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
+index 2dd9aac8078c..f292af7ad01c 100644
+--- a/target/s390x/cpu_models.c
++++ b/target/s390x/cpu_models.c
+@@ -714,7 +714,7 @@ static void set_feature(Object *obj, Visitor *v, const char *name,
+     S390CPU *cpu = S390_CPU(obj);
+     bool value;
  
-     if (object_dynamic_cast(obj, TYPE_MEMORY_DEVICE)) {
-         DeviceState *dev = DEVICE(obj);
--        if (dev->realized) { /* only realized memory devices matter */
-+        if (qdev_is_realized(dev)) {
-             *list = g_slist_insert_sorted(*list, dev, memory_device_addr_sort);
-         }
-     }
-@@ -326,7 +326,7 @@ static int memory_device_plugged_size(Object *obj, void *opaque)
-         const MemoryDeviceState *md = MEMORY_DEVICE(obj);
-         const MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(obj);
+-    if (dev->realized) {
++    if (qdev_is_realized(dev)) {
+         error_setg(errp, "Attempt to set property '%s' on '%s' after "
+                    "it was realized", name, object_get_typename(obj));
+         return;
+@@ -770,7 +770,7 @@ static void set_feature_group(Object *obj, Visitor *v, const char *name,
+     S390CPU *cpu = S390_CPU(obj);
+     bool value;
  
--        if (dev->realized && !memory_device_is_empty(md)) {
-+        if (qdev_is_realized(dev) && !memory_device_is_empty(md)) {
-             *size += mdc->get_plugged_size(md, &error_abort);
-         }
-     }
+-    if (dev->realized) {
++    if (qdev_is_realized(dev)) {
+         error_setg(errp, "Attempt to set property '%s' on '%s' after "
+                    "it was realized", name, object_get_typename(obj));
+         return;
 
 -- 
 2.55.0

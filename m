@@ -4,106 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2F09C4452D
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Jul 2026 08:27:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53E59C44533
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Jul 2026 08:28:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wmSIM-000494-Hp; Wed, 22 Jul 2026 04:27:14 -0400
+	id 1wmSJV-0006A1-PH; Wed, 22 Jul 2026 04:28:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wmSIK-000456-T8
- for qemu-arm@nongnu.org; Wed, 22 Jul 2026 04:27:12 -0400
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+ id 1wmSJU-00065J-LV
+ for qemu-arm@nongnu.org; Wed, 22 Jul 2026 04:28:24 -0400
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wmSIJ-000695-3p
- for qemu-arm@nongnu.org; Wed, 22 Jul 2026 04:27:12 -0400
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-81e6f0b4610so123358667b3.2
- for <qemu-arm@nongnu.org>; Wed, 22 Jul 2026 01:27:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1784708830; cv=none;
+ id 1wmSJT-0006Ci-6k
+ for qemu-arm@nongnu.org; Wed, 22 Jul 2026 04:28:24 -0400
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-81eff3ddba4so48771117b3.3
+ for <qemu-arm@nongnu.org>; Wed, 22 Jul 2026 01:28:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1784708902; cv=none;
  d=google.com; s=arc-20260327;
- b=s32aER9kd4Rl94D5RKwKLp75Gzlze8Q+PXNUYaHRXs2Kzk5zMYaiJ6pMVIrrxk5C5i
- YPqk6Z2lNAUB/rHtA4tXO5oD45IVvHmSBo+LAy5jrg79kLQEYIOao+lbsxTXCRQjhJAn
- CJMSiM0jxUAN8ab5MBh99eqKsSkQp7JcfSHlzWWjkpLf/osnLL5xlaw3RmmxtaAiwq/B
- drSDMBiZi7kHfIzUWCBVhcg3/SOrSAl6AN1Gi8BYYSMurfSSNS2lOfWiPT0kqNW5jm3+
- gUpt0FtfyQxMzwXr74DMyRdzW7lGv2TydK7EeuJGoJSi7xD3NIIuGpK5txEMcVKxafpx
- yjlg==
+ b=dTHRJlpzBWWXwCwBnBhtfxq8plGlDKB+Pe0dqqgIOIvIsq52F3rXcj1uepyXpEC52F
+ 8smJvIlZQ/jyoBBmZpFDX5awJR59qg/zu3u2yjmEpDOL1KxQSfBpU7U5ErnC4SBLWORD
+ VXw2KOmPE8Arr1QySfcAJ5L7M6bVBsg9Wv2gXeVAgS9zRWDFXnrm9WKwNil/Ts3fOgDP
+ p2QT8WkLjJI9iMUyBLs7LZWtuVjwuxHUbLjodLSdyEi4GJpOZej3gVFhv+b8Vad90L/l
+ 8uSaHvrLd4QIIrj+hczKnTnu/M+2XA/Bx/gkyggvNmlk+lnwEbKFCC2KCOV/62i2MlH8
+ Niig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=tM7fJAJed/jW69c9wYglwSGLmt5mew2td6nHsMchr5M=;
- fh=hG1C+w6ZkFt8yP5cr9Jrgd9wjJTTOGK1bBOIimb6JW0=;
- b=eaW4mvNUo0Z9CwDRjnB6cizzEdEQfvRAqJwWjXIlAwISLBeVNWLIvUCGn+iDdEFsHr
- 04Lf64V0jokdiSTuMbwtuC27huEOWs99n76ccaQ47beyGCc3d3xTE0iVepKP/MdDKdCH
- JVDykItPMpmKxj8Fxb1c4NkIaQVLY8P9HAcTW6gyoe1d/zvVRQHCAiKViCXWWLuQm866
- +YDQjolomAagAlRtcmh6hzesKj6iAf9XUxJ8Fe5ClWKIwjAiUSat6oSWUSvLibcjG9Ep
- tOBSabblD7jR2NIt6DBEcpCzdf+qoJtKbAY3HmWEdVZP89jGbO4poD/6+EHobYdkvvRQ
- lNjw==; darn=nongnu.org
+ bh=IX4/AlWewffAWGWySoMQmvTyHnottXjg/RjxkYgUjK0=;
+ fh=/NPQ4xS2Byy/FbyLCIcpM2jEqJs2YXIyydGpSeL6ouI=;
+ b=o0xwLztSBQvfVeogItaMYRzo1mubXM7dgULuGgA71cJt9nCAgeAkVdNqeyNv9Khu20
+ k8WE9aK8Q7+hg8vpGFXSRVtslJ1MPKdBBo1O33uAgx/G83L4DzTY/1H4lJIcGXytWGPK
+ qXETV3eg2Z732aLQ8kwzHruDcfjNNB6B3VHqxJ581XGY+u0DOBvaWWwz/BqCmzLnvnEZ
+ /sy3WSG6h4+WyPvC3BMmieU+O7Ho5K+vyy47gu9Vq4pcu1mH14EPWkYtJxldRya7K1hL
+ 0Yj3DJt1ut1ZPHcMh7OuK8EckwqGispNtnAaBMirczR6hZKtd6uODR51GOgTA6MjaRDQ
+ oz6g==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784708830; x=1785313630; darn=nongnu.org;
+ d=linaro.org; s=google; t=1784708902; x=1785313702; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=tM7fJAJed/jW69c9wYglwSGLmt5mew2td6nHsMchr5M=;
- b=BaJJXP9X7V6yEM+65od9dcrShsf/z8Ju8dAooR+009nkAWGHnj/8prulmtxlQMdpjM
- pRR/lZu+7gWaIbGeNolb8+TCED778ydSqbA9KvpVP0kQDZRZrZT7hRuTVlUHYOb6xO3X
- HxWvhIDiuhH8akR5vEfXJL7xDr1cRpDnsNcTV0YEfcXNFkD5UyFSpL8alr1H1Id6PsUo
- snIELOmAjZ4RJ3yIcNegbF01IIyELJ8x9PHkz7dw7G51sJ92DyCdm0Y5dzBOjNiDz4av
- AvPNmdOg0D81dyugsIqrsU4YjmiKwXZSJIQkANZbRjKul+WLGXaF7v6VZ0I6SCTxT/zd
- HKFQ==
+ :content-type; bh=IX4/AlWewffAWGWySoMQmvTyHnottXjg/RjxkYgUjK0=;
+ b=BRUeQaAk25nXgirzDOq7pDbbMcUZe9fNGsby8TbHeaeOnioNeKf2cxBXQtGZR/wXlY
+ H1mfre4rFeqvGVA6Vk1KCOoW7yhaaz0MtJ+Ng4ckNaLH36tHkqRG89UvoC3U+Llh85Lw
+ IXCE2D1N10bsMoTlIXbj1Sni2Nyp+IvKbvDM4L0jPVDsAZN1cSC3ZbMasg2Cjk6HJChH
+ /Lpgc4PfwONg2rcP15QHh5jJEJFvkmxoXufACYcwAP2preDh9lDhsoEfthLBfFTdtcMK
+ oVgabmLCyuzRiB7iOMCsRcO/stNxqRmubnvPC4Q+St8Xp4HB57YatyPluHAYmX4xpYnC
+ 7r4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784708830; x=1785313630;
+ d=1e100.net; s=20251104; t=1784708902; x=1785313702;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=tM7fJAJed/jW69c9wYglwSGLmt5mew2td6nHsMchr5M=;
- b=Q6U5P0wLVKTjNtGYKRFXtPNyj5ZYQGnEp86FTcJQZ12ahFyJz40OIsvAQs0xKryM1r
- Jc53dzWimmmRbar9quAgX/kdsUx9v3t2JjYkup+krlyeyljyyJcO1akiI59g9SgSfVe2
- 2b3DfUE+GvcHTOfUQH+D1S46VSPnr93M/vRgovhX6gPUPy59EQgCUuZ1/lLaQZFZRtb7
- cDVzsbv+BVVWIt/qNd4MsJGYLRERDqQwVsoge4UHhriVdX/O/Qw17RPkoTHJOid4LLAv
- m5s9rFCC54Umrwp95nm6C135ULJ1EMrD1VteJJBRIAwwMWAxp6ebraSx0EDt0cmbUR39
- ekxQ==
+ bh=IX4/AlWewffAWGWySoMQmvTyHnottXjg/RjxkYgUjK0=;
+ b=PMwMmchRcRXEoksAKK3/UBhFRZdnbwT5n7p3cAoyoCWi8aAQEaf8AwfZCGCPmQZ2c0
+ yQ1SNjIhUMSZZ3lMvAPrkmFHtvpVe/s8TyxZwDtjz6MIoXXsMxbJnhHlDRKOfTs+ii2u
+ 55cV2rlPGIuN78UzhPcxfURLtoUZ5ijaDNWjyCtJPYtrJqW0Hvsy/8dQJbI5GOCKMmPs
+ XQD4CBrn+ls/oJVuIeSK8/QQ5L+NOpIRDsdQuxuvnXJ0qSFvOMvgaDrWJznILcv/mxBo
+ cL2hPugBxvZUS76R9DoK/mapBFsoLwVNsvhnpZzWQlG7meehNmMNdAHMWMaYnF0RjJTm
+ hzpw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoHN6HvZzDm7W8OtksgfvREI1pD7sq1U7maRPSV4fKz62tY1WMl35XxcjcEOfQtC4hBO43UhvB9fg==@nongnu.org
-X-Gm-Message-State: AOJu0YzenyMMOIHPp79UNxx/Gbzd6mBYSkzD/csS+wFyAQgzF5GtfjWZ
- ZpIpqOPTOzlxLDeeuxgCgowO0CR7m9u+3YVmTKrQzVMrpDUUJAXWIsJmeuRR7QJCC0PvLiwhy7k
- dF4RJRhke3RqgJTcLUfXifdU89FU3cno0LHHHb7XM8w==
-X-Gm-Gg: AR+sD13lal+N4vapQC2Vs4f0C/9TszeSkqu1AjPCdoEXv84cUs8Np9CzqE+X7CYXHYo
- yVOaBU62nQwn9ICacDVPGkZnNphjX7+PkhI3ohz5Nvsookgdl431i1FQ1M76+/DJmrN1ju/mG2x
- iRzs4jYHpujiwrAGWso/cxywXWM9Na66AzPMZUvQ6SDggha8Ny5jKYUM8ik/S8OaXwXonlVhruq
- 51DzGZUMHkNG4gVF/JqIGippeaBF+Tkjr3nSTWw7UAOjvSj1/3McnFMpalDlIJV8GYUwtvxCSLd
- xRKvLK2vSWQ8jJ4InrifRAW9QNZk72szvrkJFA/NQzho3w==
-X-Received: by 2002:a05:690c:6988:b0:81e:2b86:d75f with SMTP id
- 00721157ae682-81ef2704c4dmr65442217b3.68.1784708829654; Wed, 22 Jul 2026
- 01:27:09 -0700 (PDT)
+ AHgh+RqCJTQCOxkabIFHkKBgYtyoLe5mqvuVRfdpXt6lRDtdXXOKWrNMTLz6aJuW/odmQEp/efTcb2myAQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzrtZmom21ggmpxesUYW7f1vqGjOhsgBOwAmvAcvGpTzbZbvyhd
+ +yXI5jSbnckhs0vAdxTXvY1Fm04TIF5hm/8KAmJ0CLrNd12sv9HNMR6dLzJL9JNCfDsDMVUJg+R
+ sB/1tw+y5126P1GiWjSEpJ72WIHs1J3PFBBQlq2g2Rw==
+X-Gm-Gg: AR+sD11cj7aAdK11ZZJ0qVMFYnKFoka+bW0gDglRFVJaXdZEpaL/T/WeTQMRXbr9fYt
+ aItBzKv2wo/NUSMEsZwvR0XOMQWKXmzXqW3yjzd3amRkPeYo1Sf+9+n3GXQzDDZCS80cMhnwlHC
+ qvYtuefBeELhwtSL1Ab4ymfS5CaVzIMf0bMNqWa+8FbIHG1eT/eJTwUItc8zEJCAxogwYsvXG30
+ mDuKeJ3bYyKrH5GkTIhJzS6yn6viYU5qf5p+Jettx/2NAcpnzZ1ncVP554auFk1qgcIUr2Y4nde
+ V618KDn5F8MTQLdRELNNeOxxlSzGDpnGXMQkuTYDeS0KRw==
+X-Received: by 2002:a05:690c:e19c:20b0:81e:fb1a:f222 with SMTP id
+ 00721157ae682-81efb1af3b8mr37828467b3.23.1784708901775; Wed, 22 Jul 2026
+ 01:28:21 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260715131819.14827-1-dingtao0430@163.com>
- <20260715131819.14827-2-dingtao0430@163.com>
- <63046247-5e3a-4943-852a-985ffdc1f087@tls.msk.ru>
-In-Reply-To: <63046247-5e3a-4943-852a-985ffdc1f087@tls.msk.ru>
+References: <20260713064617.85374-1-jay.chang@sifive.com>
+ <47fb7730-adba-419b-9c85-298ff245cce9@tls.msk.ru>
+In-Reply-To: <47fb7730-adba-419b-9c85-298ff245cce9@tls.msk.ru>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 22 Jul 2026 09:26:58 +0100
-X-Gm-Features: AUfX_mzzNm8zY6cS5eh0E3xtWBb_G8hwMppOvWwKTLpkXUE-jQ3hxrRDjbQaUWA
-Message-ID: <CAFEAcA-k5U_AnQXTOEeshYSpZcQyOMrFEJgnqOqpO4EMQBGNZg@mail.gmail.com>
-Subject: Re: [PATCH 1/1] hw/char: imx_serial: add missing migration state
+Date: Wed, 22 Jul 2026 09:28:10 +0100
+X-Gm-Features: AUfX_mxX0T5xPhbUX8OXwfAH3EgEtU7IQmnX98kAPMyM6sNvU75SeoXodvukYtU
+Message-ID: <CAFEAcA985uQEASh4=YSvjYw_EBte+TxUfziFe4hsRvaREB70cw@mail.gmail.com>
+Subject: Re: [PATCH] hw/net/xilinx_axienet: Fix PHY register 17 link status
+ reporting
 To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Tao Ding <dingtao0430@163.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- marcandre.lureau@redhat.com, pbonzini@redhat.com, 
- QEMU Stable <qemu-stable@nongnu.org>
+Cc: Jay Chang <jay.chang@sifive.com>, qemu-devel@nongnu.org, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, 
+ Jason Wang <jasowangio@gmail.com>,
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>, 
+ Frank Chang <frank.chang@sifive.com>, QEMU Stable <qemu-stable@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,63 +122,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 21 Jul 2026 at 20:01, Michael Tokarev <mjt@tls.msk.ru> wrote:
+On Tue, 21 Jul 2026 at 20:03, Michael Tokarev <mjt@tls.msk.ru> wrote:
 >
-> On 7/15/26 16:18, Tao Ding wrote:
-> > Add ucr2 from imx_serial to vmstate, and increment the version_id.
+> On 7/13/26 09:46, Jay Chang wrote:
+> > The Marvell 88E1111 PHY register 17 (PHY Specific Status Register)
+> > bit 10 reports real-time link status. Previously, this register
+> > returned a fixed value of 0x8800 with bit 10 always cleared,
+> > causing U-Boot to always detect "No link" even when the link
+> > was up.
 > >
-> > Migrating on sabrelite can reproduce this issue:
-> > 1. Prepare the U-Boot required for sabrelite. (according to sabrelite.rst)
-> > 2. Compile qemu
-> >      $ mkdir build && cd build && ../configure --target-list="arm-softmmu" && make -j4
-> > 3. Start sabrelite and prepare for migration
-> >      $ ./build/qemu-system-arm -M sabrelite \
-> >      -smp 1 -m 1G -display none -serial null -serial mon:stdio \
-> >      -kernel ~/u-boot
-> > 4. Enter qemu monitor after uboot. (ctrl + a + c)
-> >      (qemu) stop
-> >      (qemu) xp /4wx 0x021e8084
-> >      021e8084: 0x00004027 0x00000784 0x00008000 0x00000a01
-> >      (qemu) migrate -d file:vmstate
-> >      (qemu) q
-> >
-> > Load the migrated vmstate, before repairing:
-> >
-> > $ ./build/qemu-system-arm -M sabrelite \
-> >      -smp 1 -m 1G -display none -serial null -serial mon:stdio \
-> >      -kernel ~/u-boot -incoming file:vmstate
-> >
-> > (ctrl + a + c)
-> >      QEMU 11.0.50 monitor - type 'help' for more information
-> >      (qemu) xp /4wx 0x021e8084
-> >      021e8084: 0x00000004 0x00000784 0x00008000 0x00000a01
-> >      (qemu) q
-> >
-> > It can be found that the data for address 0x021e8084 (register of usr2 in imx_serial of sabrelite)
-> > is not the data before the migration.
-> >
-> > After being repaired:
-> > $ ./build/qemu-system-arm -M sabrelite \
-> >      -smp 1 -m 1G -display none -serial null -serial mon:stdio \
-> >      -kernel ~/u-boot -incoming file:vmstate
-> > (ctrl + a + c)
-> >      QEMU 11.0.50 monitor - type 'help' for more information
-> >      (qemu) xp /4wx 0x021e8084
-> >      021e8084: 0x00004027 0x00000784 0x00008000 0x00000a01
-> >
-> > Signed-off-by: Tao Ding <dingtao0430@163.com>
+> > Signed-off-by: Jay Chang <jay.chang@sifive.com>
+> > Reviewed-by: Frank Chang <frank.chang@sifive.com>
 >
+> I'm picking this up for qemu-stable.
+> Please let me know if I should not.
 >
-> Somehow, this grow Cc: qemu-stable@ in the final version which was
-> applied as v11.1.0-rc0-68-g8833ff95eaf.  I don't think this is a
-> good candidate for the stable series, since this fix changes the
-> migration stream format, which is very difficult to do in the stable
-> series.
+> > ---
+> >   hw/net/xilinx_axienet.c | 3 +++
+> >   1 file changed, 3 insertions(+)
+> >
+> > diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+> > index 970732b162..9f5f65ecfa 100644
+> > --- a/hw/net/xilinx_axienet.c
+> > +++ b/hw/net/xilinx_axienet.c
+> > @@ -103,6 +103,9 @@ static unsigned int tdk_read(struct PHY *phy, unsigned int req)
+> >           case 17:
+> >               /* Marvell PHY on many xilinx boards.  */
+> >               r = 0x8000; /* 1000Mb  */
+> > +            if (phy->link) {
+> > +                r |= 0x0400; /* Link is up */
+> > +            }
+>
+> Shouldn't we clear this bit somewhere?
 
-On the other hand it goes from "migration doesn't work" to
-"migration works" for a typical guest :-)  But I agree it's
-probably better to avoid migration breaks in stable branches
-unless they're fixing something really critical.
+You mean phy->link ? Probably that should be controlled by the
+network backend. But that's a pre-existing thing (we already
+report phy->link in a different PHY register).
 
 -- PMM
 

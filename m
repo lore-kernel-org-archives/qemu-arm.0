@@ -4,112 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07D84C4451C
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Jul 2026 06:55:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61E7FC44512
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Jul 2026 07:14:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wmQqw-0004VT-OT; Wed, 22 Jul 2026 02:54:51 -0400
+	id 1wmR9e-0002p6-0l; Wed, 22 Jul 2026 03:14:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wmQqr-0004Ub-E1
- for qemu-arm@nongnu.org; Wed, 22 Jul 2026 02:54:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wmR9b-0002o3-7d
+ for qemu-arm@nongnu.org; Wed, 22 Jul 2026 03:14:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wmQqo-0003Bp-VC
- for qemu-arm@nongnu.org; Wed, 22 Jul 2026 02:54:45 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wmR9U-0005Zh-Em
+ for qemu-arm@nongnu.org; Wed, 22 Jul 2026 03:14:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784703281;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1784704438;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=F9qS3+jlyeK15KPAYimukyJlTAprsGF+GK/BODQqMPw=;
- b=cvI50oxOGKLSd+IFZ967QMImELr42FD7D5PoY/rW6NG78dlUJB61UyW6q11txx9TsiuK+N
- YK4tuur4c0pgstRyyzREduC4fxTbYjXXlOqBatJVIRd0+HM4mRcsVYirnMJJ5dmGaNnwfI
- 4JX4CFeGSV1YAd7sEwvhnifoyH2Hgmk=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=7rw6w9ogoPhqjNbcM3z322xDGoJiejIRBqWFWI2tGvQ=;
+ b=IwqfsfgDrczTXQjoUM8ei4ctymqeYUmJOeDyqTpbR7/saOtsIqKxRm43YRc82uJjcp92wB
+ mCFAhI3FwLwfreyHO1nK5DkdU64g0TVsyUPqz9eyYG5ZwF8YnZdK724zf6wlQ3QZvwNTJe
+ 2jIOXhwU089eQygvuahLH4wgjcnN1m8=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-434-No3TiqNXMxeBNM0LYtVxnw-1; Wed, 22 Jul 2026 02:54:39 -0400
-X-MC-Unique: No3TiqNXMxeBNM0LYtVxnw-1
-X-Mimecast-MFC-AGG-ID: No3TiqNXMxeBNM0LYtVxnw_1784703278
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-47d81cf0c4cso8791123f8f.2
- for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 23:54:39 -0700 (PDT)
+ us-mta-47-YcY6eCSFOQ21Ccxh9LADQQ-1; Wed, 22 Jul 2026 03:13:57 -0400
+X-MC-Unique: YcY6eCSFOQ21Ccxh9LADQQ-1
+X-Mimecast-MFC-AGG-ID: YcY6eCSFOQ21Ccxh9LADQQ_1784704436
+Received: by mail-pl1-f197.google.com with SMTP id
+ d9443c01a7336-2ccbb61893fso257758845ad.0
+ for <qemu-arm@nongnu.org>; Wed, 22 Jul 2026 00:13:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784703278; x=1785308078;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ d=1e100.net; s=20251104; t=1784704436; x=1785309236;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=F9qS3+jlyeK15KPAYimukyJlTAprsGF+GK/BODQqMPw=;
- b=iAeSPiSpgrH1AsBLM7ovOlsbmNb0lJd35LDdvnwqOiwDPEsRYJFscS/Fp5LABDhx1H
- dTNLJG5wp0ybK1kZccA4vAP91S6geG2GIREYxMA9jBBIDPtBLUxdab6l8F3NAA7VoVEO
- CUugf3R8pSUTMEtAFeb1BCeqTgUIAY3XyS7Bu91T/dDFP0XZOGdaFgRXAuB9d/fB4hoe
- +6f9nZMEE14+FcRMEDaD04zoDfSqZuEji7y/nvFzzXUY1JtanCYZOJyZwMVbeOfK3CZW
- JODdSAEsj2U7veJYo71FNWN8D67XmASEbRyaTIB4YqkOZ+dafobCyVT9SmOlgPNajn16
- zxRA==
+ bh=7rw6w9ogoPhqjNbcM3z322xDGoJiejIRBqWFWI2tGvQ=;
+ b=seqo44SOnHhJ4XFigo5CgVAHwbjbaFdnqRghjsL5Nx0o64lte5inCZMNd3b2b0agYU
+ /+ypkJ7alv445WulcGiCS9gNd8FhzsGHlfKh4H6wsxfMvevnAUCdyp2un2IJ3KknkMpn
+ v3YXjgzpRjjrjx01Iy7bYqYp44bOYcLM6UkSSrVox5usZCThaHBcCWl0hRloV/xi8PQC
+ i+Ulpuh6Oa1gCfWnhX+5X2VIeJ5ny5Xdi8SGucPQGNxmtzpi361TDfk0u9jHlZnD1Ocg
+ 1kartSbTO8cw30L6Bn8frDOiBWGqQjCFMlA07Q5qLWujjcNi8ZfFRS+7afkUON7cb8X9
+ ECGQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpW//B48opgRNz9FRlbV7lRmYwvCuDGPWIw/e8CGiz2MBERxddCkiz1zYQLMpYD70DhO8/6RNl0fw==@nongnu.org
-X-Gm-Message-State: AOJu0YweJwg36zDTuQ7SubouNDoT+QFR3kWoUZZg9n4t2xPuOQVPqLgs
- PjbiBTbA9CXLr5zBd72Sh7O4Uo2MbrueQHxzfzIcZjydkSRKugAO61JCZMUIEAFROiFVhWO+skh
- QknBdEr4l8IW/Hn4BysPLZ8rs6b2yObdOUzoMvdhqAEF6zeDM0UVw7Q==
-X-Gm-Gg: AR+sD11bR0GvnSqQiQe1yUH6CSzOi2UikuBZ+wg/SuxsKhV7gf59To/FtQg8eNxVMbh
- x+LdPkQb3k/qOEsFhv8+ATA2fk4h4bn1PN4cDbfKGVpPvz9mSg3Nh7Ir3hmC14P1VzFUlIuSuTC
- lR1Xnv6a1eDGcLwemvYxL+VKjUW0bf6wMf0tnr4FklvS32uPmjjTAhahHrXIbcF4oLisBrnk3cM
- SjJi3/wR0/XAz+m1sdIuemzRjPsbh3lU+XICeSvedFn5bhCvU+T91Mc7a3Arzs/VeQtjS0JX1O2
- 8WN/Wfih95dDAEKVxXGBSc9J7y444PXJuAh0uCYPODDS+KO9PGpQ9a2I4gpIBYxS5NfirupK0Oi
- F+eputx6pfKHiQJes6/Px6ZCoK8ixbKY0RTgR6mh1jvC7ffid
-X-Received: by 2002:a5d:5d82:0:b0:47e:9f16:c0bf with SMTP id
- ffacd0b85a97d-47f62326f0bmr26201950f8f.30.1784703278347; 
- Tue, 21 Jul 2026 23:54:38 -0700 (PDT)
-X-Received: by 2002:a5d:5d82:0:b0:47e:9f16:c0bf with SMTP id
- ffacd0b85a97d-47f62326f0bmr26201912f8f.30.1784703277935; 
- Tue, 21 Jul 2026 23:54:37 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47f85c6e9a2sm3227267f8f.35.2026.07.21.23.54.36
+ AHgh+RqHNUQIEo9FUh/JQDOxQ18JMn+axg/PDITSaG0tzSGEy0zXeCLKpdf2eErTUtFehlfiTP6GvdlX7w==@nongnu.org
+X-Gm-Message-State: AOJu0YyHnYyTL3rPp55IHNo+U827lbd1O89Qnt2E1WkgacBIlvcVz5GL
+ mO/qfmTMIhtQ/yJ8BWqQ/bDsXU5rKfmyEaVblmykrieYNJbMTLcnrg7Ndqmm313xextw7YjHn/N
+ CNYWF9YBSWOQqN/XT900wZR4Xcjs8qc/UH55A39fScy9pHhj67lvP5A==
+X-Gm-Gg: AR+sD119mHUb3oOQSMhAybehgmnDIwI8zFoW0xwmXCea2cZlfsQa6Zkeuh2MS0J3t+x
+ QuS0Z9oIyUxB9oKCKZ6G7e+h8/VmV0RxJbH8xdta4ff9rEx0LIm9LOLEWFdjbtTQ7y2ZoQBFGum
+ UEgxwRLMuRh2Hk3FB7NEsIxR9Y8rOsn/Eyxck0hpSM11Jdfr/k0j+e19f6mH5PHK9JV8dQ0iF/u
+ C5r3z22nhQQ5WP8l7RU+DGbogHHo2o0aUcOe5cTq6M1nuwxrjhZh8uctWyZyLdzPn8LSQaZJtqR
+ flU+1oHBFWTJF4WAn6bgzHEmkni+xF1BLkavrl5cm7ETAUuZOuNW+zXGm8ial4Y5iJBtyyRQjdo
+ /ELhgwJJ2UabU/dM0mhH6W/lrPJhU5Q8Mu6T831Pbu4E=
+X-Received: by 2002:a17:903:2986:b0:2ce:b7b7:30e3 with SMTP id
+ d9443c01a7336-2cf348575cbmr251669605ad.17.1784704435785; 
+ Wed, 22 Jul 2026 00:13:55 -0700 (PDT)
+X-Received: by 2002:a17:903:2986:b0:2ce:b7b7:30e3 with SMTP id
+ d9443c01a7336-2cf348575cbmr251669305ad.17.1784704435251; 
+ Wed, 22 Jul 2026 00:13:55 -0700 (PDT)
+Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
+ [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2cf8f3b7c9dsm9207365ad.83.2026.07.22.00.13.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Jul 2026 23:54:37 -0700 (PDT)
-Message-ID: <980b8a5e-2c9f-4a7b-8014-15cc96831cf0@redhat.com>
-Date: Wed, 22 Jul 2026 08:54:35 +0200
+ Wed, 22 Jul 2026 00:13:54 -0700 (PDT)
+Message-ID: <97a0e92e-ddc7-4eb3-9fcc-7b05bea8b220@redhat.com>
+Date: Wed, 22 Jul 2026 17:13:46 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 06/19] target/arm/kvm: Read all ID registers from
- KVM
-To: Khushit Shah <khushit.shah@nutanix.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev
-Cc: cohuck@redhat.com, peter.maydell@linaro.org,
- richard.henderson@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- gshan@redhat.com, skolothumtho@nvidia.com, sebott@redhat.com,
- armbru@redhat.com, philmd@linaro.org, yangjinqian1@huawei.com,
- shaju.abraham@nutanix.com, mark.caveayland@nutanix.com,
- prerna.saxena@nutanix.com
-References: <20260716213858.609699-1-khushit.shah@nutanix.com>
- <20260716213858.609699-7-khushit.shah@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260716213858.609699-7-khushit.shah@nutanix.com>
+Subject: Re: [RFC v1 00/25] Add Realm support to QEMU-VMM
+To: Mathieu Poirier <mathieu.poirier@linaro.org>, berrange@redhat.com,
+ kchamart@redhat.com, pierrick.bouvier@oss.qualcomm.com,
+ peter.maydell@linaro.org, mst@redhat.com, cohuck@redhat.com,
+ pbonzini@redhat.com, eblake@redhat.com, armbru@redhat.com, jpb@kernel.org,
+ lorenzo.pieralisi@linaro.org
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
+References: <20260707224306.1202330-1-mathieu.poirier@linaro.org>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20260707224306.1202330-1-mathieu.poirier@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: sWUqFgpyJGZqzAN7zYW9DCrWj1QtwLt3P_TNCadUslg_1784703278
+X-Mimecast-MFC-PROC-ID: 62t-9PKGnAok8bfBQgxqNOubpk9T3LgCHcb9YUmNF4s_1784704436
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: permerror client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: permerror client-ip=170.10.129.124;
+ envelope-from=gshan@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001, T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,116 +113,135 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Mathieu,
 
+On 7/8/26 8:42 AM, Mathieu Poirier wrote:
+> This patchset provides minimal functionality to start a Realm VM
+> from an Arm RME cabable host using the following command line:
+> 
+> qemu-system-aarch64 -M confidential-guest-support=rme0 -object rme-guest,id=rme0 \
+>          -cpu host -M virt -enable-kvm -M gic-version=3,its=on -nodefaults ..
+> 
+> This set is a refactoring of Jean-Philippe Brucker's initial work dating from
+> a while back.  It is compatible with Steven Price's v14 revision [1] of his work
+> adding CCA support to KVM.
+> 
+> The RME capable host it was tested on is the QEMU SBSA machine.  For convenicence
+> a repository is hosted here [2], along with the TF-A [3], RMM [4] and Linux
+> kernel [5] for the SBSA machine (all compatible with Steven's v14 patchset).
+> 
+> Device Assignment is not included.
+> 
+>  From hereon I will keep this set up to date with new releases from Steven.
+> 
+> Thanks,
+> Mathieu
+> 
+> [1]. https://lore.kernel.org/kvm/20260513131757.116630-1-steven.price@arm.com/T/#m06dd14216aaf76acab65b0a76fb84653141ea64f
+> [2]. https://gitlab.com/Linaro/cca-public/qemu/-/tree/upstream-v1?ref_type=heads
+> [3]. https://gitlab.com/Linaro/cca-public/tf-a/trusted-firmware-a/-/tree/cca/v13?ref_type=heads
+> [4]. https://gitlab.com/Linaro/cca-public/rmm/-/tree/cca/v14?ref_type=heads
+> [5]. https://gitlab.com/Linaro/cca-public/linux/-/tree/cca/v14?ref_type=heads
+> 
+[...]
 
-On 7/16/26 11:38 PM, Khushit Shah wrote:
-> Try to read all the ID registers from KVM. KVM may return ENOENT, for
-> ID registers it does not support reading from userspace. Ignore those
-> registers. As this list is small, in future we may anyway want to
-> handle those register specially.
->
-> We want to do this so that we can expose more or less complete
-> host feature view to management stack, as for migration, we want both
-> writable and non-writable ID registers to match.
->
-> Also remove the unused 'cpu' args throughout the call-chain.
-I will integrate this fix in the parent series
->
-> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
-> ---
->  target/arm/kvm.c | 38 +++++++++++++++++++-------------------
->  1 file changed, 19 insertions(+), 19 deletions(-)
->
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 63b3727e05..42ff731f6e 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -292,14 +292,14 @@ static int kvm_feature_idx_to_idregs_idx(int kidx)
->  }
->  
->  /*
-> - * get_host_cpu_idregs: Read all the writable ID reg host values
-> + * get_host_cpu_idregs: Read all the ID reg host values
->   *
-> - * Need to be called once the writable mask has been populated
-> - * Note we may want to read all the known id regs but some of them are not
-> - * writable and return an error, hence the choice of reading only those which
-> - * are writable. Those are also readable!
-> + * We currently try to read all the registers. If the read fails with
-> + * ENOENT (KVM does not identify the ID register) ignore it.
-> + * Some of the registers that errored with ENOENT will anyway need special
-> + * handling.
->   */
-> -static int get_host_cpu_idregs(ARMCPU *cpu, int fd, ARMHostCPUFeatures *ahcf)
-> +static int get_host_cpu_idregs(int fd, ARMHostCPUFeatures *ahcf)
->  {
->      int err = 0;
->      int i;
-> @@ -310,26 +310,26 @@ static int get_host_cpu_idregs(ARMCPU *cpu, int fd, ARMHostCPUFeatures *ahcf)
->          uint64_t *reg;
->          int ret;
->  
-> -        if (!sysregdesc->writable_mask) {
-> -            continue;
-> -        }
-> -
->          reg = &ahcf->isar.idregs[i];
->          ret = read_sys_reg64(fd, reg, idregs_sysreg_to_kvm_reg(sysreg));
-> -        trace_get_host_cpu_idregs(sysregdesc->name, *reg);
->          if (ret) {
-> -            error_report("%s error reading value of host %s register (%m)",
-> -                         __func__, sysregdesc->name);
-> -
-> -            err = ret;
-> +            if (errno == ENOENT) {
-> +                warn_report("%s error reading value of host %s register "
-> +                                "(ENOENT)", __func__, sysregdesc->name);
-if there are expected cases where the read is failing I don't think we
-want to warn. Add a trace point instead.
-> +            } else {
-> +                error_report("%s error reading value of host %s register"
-> +                            " (%m)", __func__, sysregdesc->name);
-> +                err = ret;
-> +            }
->          }
-> +        trace_get_host_cpu_idregs(sysregdesc->name, *reg);
->      }
->      return err;
->  }
->  
->  
->  static void
-> -kvm_arm_get_host_cpu_features(ARMCPU *cpu, ARMHostCPUFeatures *ahcf)
-> +kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->  {
->      /* Identify the feature bits corresponding to the host CPU, and
->       * fill out the ARMHostCPUClass fields accordingly. To do this
-> @@ -415,8 +415,8 @@ kvm_arm_get_host_cpu_features(ARMCPU *cpu, ARMHostCPUFeatures *ahcf)
->          SET_IDREG(&ahcf->isar, ID_AA64PFR0, 0x00000011); /* EL1&0, AArch64 only */
->          err = 0;
->      } else {
-> -        /* Make sure all writable ID reg values are initialized */
-> -        err |= get_host_cpu_idregs(cpu, fd, ahcf);
-> +        /* Try to read all the ID registers */
-> +        err |= get_host_cpu_idregs(fd, ahcf);
->  
->          /*
->           * temporarily override the CLIDR_EL1 value since some host values
-> @@ -595,7 +595,7 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
->      g_free(writable_map);
->  
->      if (!arm_host_cpu_features.dtb_compatible) {
-> -        kvm_arm_get_host_cpu_features(cpu, &arm_host_cpu_features);
-> +        kvm_arm_get_host_cpu_features(&arm_host_cpu_features);
->      }
->  
->      cpu->kvm_target = arm_host_cpu_features.target;
-Thanks
+Gave this series + (v14) series a try and found the following issues so far. Note
+some of the HMP commands like those relevant to migration have been skipped since
+we know the migration isn't supported. I list the issues for record and we eventually
+need to figure them out one by one.
 
-Eric
+(1) qemu is terminiated on exeute qmp command 'dump-guest-memory'
+
+(qemu) dump-guest-memory -p "/tmp/mem" 0x40000000 0x10000000
+**
+ERROR:../system/memory_mapping.c:215:guest_phys_block_add_section: assertion failed: (predecessor->target_end <= target_start)
+Bail out! ERROR:../system/memory_mapping.c:215:guest_phys_block_add_section: assertion failed: (predecessor->target_end <= target_start)
+Aborted
+
+(2) qemu emulation can't be stopped and resumed
+
+(qemu) stop
+(qemu) cont
+Failed to set KVM_REG_ARM_TIMER_CNT
+
+(3) qemu is terminiated on qmp command 'system_reset'
+
+(qemu) system_reset
+cpus are not resettable, terminating
+
+(4) Incompatible to virtio-iommu-pci. The realm guest doesn't boot up with
+     a virtio-iommu-pci device
+
+host$ qemu-system-aarch64 -enable-kvm -object rme-guest,id=rme0                \
+-machine virt,gic-version=3,confidential-guest-support=rme0                    \
+-m 2G -cpu host -smp maxcpus=4,cpus=4,sockets=1,clusters=1,cores=2,threads=2   \
+-object memory-backend-ram,id=mem0,size=2G,share=yes                           \
+-numa node,nodeid=0,cpus=0-3,memdev=mem0                                       \
+-serial mon:stdio -monitor none -nographic -nodefaults                         \
+-bios /mnt/edk2/Build/ArmVirtQemu-AARCH64/RELEASE_GCC5/FV/QEMU_EFI.fd          \
+-kernel /mnt/linux/arch/arm64/boot/Image                                       \
+-initrd /mnt/buildroot/output/images/rootfs.cpio.xz                            \
+-append earlycon=pl011,mmio,0x10009000000                                      \
+-device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1                          \
+-device pcie-root-port,bus=pcie.0,chassis=2,id=pcie.2                          \
+-device virtio-iommu-pci,bus=pcie.0                                            \
+-netdev tap,id=tap1,vhost=on,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown \
+-device virtio-net-pci,bus=pcie.2,netdev=tap1,mac=b8:3f:d2:1d:3e:c0
+         :
+UEFI firmware (version  built at 00:09:11 on Jun 30 2026)
+         :
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x000f0510]
+[    0.000000] Linux version 7.2.0-rc4-gavin-g1590cf032971 (gshan@nvidia-grace-hopper-01.khw.eng.bos2.dc.redhat.com) (gcc (GCC) 14.3.1 20251022 (Red Hat 14.3.1-4), GNU ld version 2.41-65.el10) #46 SMP PREEMPT Mon Jul 20 06:56:20 EDT 2026
+[    0.000000] KASLR enabled
+[    0.000000] earlycon: pl11 at MMIO 0x0000010009000000 (options '')
+[    0.000000] printk: legacy bootconsole [pl11] enabled
+[    0.000000] efi: EFI v2.7 by EDK II
+[    0.000000] efi: SMBIOS 3.0=0xbff60000 ACPI 2.0=0xbdee2018 INITRD=0xbdd94f18 RNG=0xbdee2a18 MEMRESERVE=0xbdd94f98
+         :
+[   18.374507] virtio-pci 0000:00:03.0: enabling device (0000 -> 0002)
+[   18.594890] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[   18.651840] Serial: AMBA driver
+[   19.669576] software IO TLB: Memory encryption is active and system is using DMA bounce buffers
+[   35.021315] Freeing initrd memory: 5772K
+[   40.984997] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+[   41.076752] rcu: 	3-...0: (77 ticks this GP) idle=aed4/1/0x4000000000000000 softirq=83/97 fqs=2365
+[   41.210687] rcu: 	(detected by 2, t=5307 jiffies, g=-1079, q=352 ncpus=4)
+[   41.311646] Sending NMI from CPU 2 to CPUs 3:
+[   51.631564] After 10 seconds, these CPUS still haven't responded to the NMI: 3
+[   51.739789] rcu: rcu_preempt kthread timer wakeup didn't happen for 2685 jiffies! g-1079 f0x0 RCU_GP_WAIT_FQS(5) ->state=0x402
+[   51.910690] rcu: 	Possible timer handling issue on cpu=2 timer-softirq=2168
+[   52.014654] rcu: rcu_preempt kthread starved for 2756 jiffies! g-1079 f0x0 RCU_GP_WAIT_FQS(5) ->state=0x402 ->cpu=2
+[   52.169468] rcu: 	Unless rcu_preempt kthread gets sufficient CPU time, OOM is now expected behavior.
+[   52.304725] rcu: RCU grace-period kthread stack dump:
+[   52.379337] task:rcu_preempt     state:I stack:0     pid:15    tgid:15    ppid:2      task_flags:0x208040 flags:0x00000010
+[   52.542813] Call trace:
+[   52.578516]  __switch_to+0xfc/0x248 (T)
+[   52.636293]  __schedule+0x3a4/0xe68
+[   52.686511]  schedule+0x3c/0xe8
+[   52.731765]  schedule_timeout+0x80/0x120
+[   52.788489]  rcu_gp_fqs_loop+0x110/0x440
+[   52.846921]  rcu_gp_kthread+0x10c/0x120
+[   52.906472]  kthread+0x138/0x150
+[   52.955082]  ret_from_fork+0x10/0x20
+
+(5) As reported previously, 'reboot' on the realm guest causes the termination of qemu process.
+
+root@guest:~# reboot
+     :
+The system is going down NOW!
+Sent SIGTERM to all processes
+Sent SIGKILL to all processes
+Requesting system reboot
+[   61.874435] reboot: Restarting system
+qemu-system-aarch64: cpus are not resettable, terminating
+qemu-system-aarch64: cpus are not resettable, terminating
+qemu-system-aarch64: cpus are not resettable, terminating
+qemu-system-aarch64: cpus are not resettable, terminating
+
+Thanks,
+Gavin
 
 

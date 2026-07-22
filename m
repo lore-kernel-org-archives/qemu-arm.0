@@ -4,111 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12CEAC4453A
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Jul 2026 17:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C6D9C4453C
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Jul 2026 18:42:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wmb1Z-0000tM-JQ; Wed, 22 Jul 2026 13:46:30 -0400
+	id 1wmbsy-0004Sh-NV; Wed, 22 Jul 2026 14:41:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1wmb1L-0000q1-Dz; Wed, 22 Jul 2026 13:46:17 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1wmb1H-0007PW-GK; Wed, 22 Jul 2026 13:46:15 -0400
-Received: from pps.filterd (m0356517.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66MFfkiJ382852; Wed, 22 Jul 2026 17:45:41 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:date:from:in-reply-to:message-id
- :mime-version:references:subject:to; s=pp1; bh=be85gjFwCsMTrz7Me
- omeKNbOekvWwonTQSCMeW3EbbU=; b=BZ7ys28KMeoPL50+DsZFsA1omxD1k96+m
- VM+4O6n4be7Plro1QIG/G14zZzkpTYDF6wdoVU40+QS5gHGCS/CTO011iZYPmO24
- WMu0w1VvgIcdpCCF8oxpqogGxiFiJZXxx5T2kZEipoY8xjBPtpPM8C2awNXbQYMh
- yBeGidPp3RwqOjJ5yIsskJ8Nr7vuiDGyXRU1dDlPhMY7KkF1rG5HBdeaD/r7OgpD
- ROeB+gVQJ6IwHInVIo1M7K2yBkAED6WsP5Qfjh1VwCuo3dOXUV+y6sPxIK3BA+4a
- pFnTa3vqWG7huB4VyR70ZclRiNTxSJRWhLIGGVjgtv4uq+QFLAqrQ==
-Received: from ppma21.wdc07v.mail.ibm.com
- (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fg7913jn8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 22 Jul 2026 17:45:40 +0000 (GMT)
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma21.wdc07v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66MHYgOI031053;
- Wed, 22 Jul 2026 17:45:39 GMT
-Received: from smtprelay06.dal12v.mail.ibm.com ([172.16.1.8])
- by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4fgmtk0fb8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 22 Jul 2026 17:45:39 +0000 (GMT)
-Received: from smtpav04.wdc07v.mail.ibm.com (smtpav04.wdc07v.mail.ibm.com
- [10.39.53.231])
- by smtprelay06.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 66MHjZdG21496382
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 22 Jul 2026 17:45:36 GMT
-Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id CFF8958054;
- Wed, 22 Jul 2026 17:45:35 +0000 (GMT)
-Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 2CAB658052;
- Wed, 22 Jul 2026 17:45:34 +0000 (GMT)
-Received: from pfw153.pfw.tadn.ibm.com (unknown [9.5.7.52])
- by smtpav04.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Wed, 22 Jul 2026 17:45:34 +0000 (GMT)
-From: Ninad Palsule <ninad@linux.ibm.com>
-To: mikail.sadic@ibm.com
-Cc: andrew@codeconstruct.com.au, calebs@us.ibm.com, clg@kaod.org,
- jamin_lin@aspeedtech.com, jeuk20.kim@samsung.com, joel@jms.id.au,
- kane_chen@aspeedtech.com, leetroy@gmail.com, milesg@ibm.com,
- ninad@linux.ibm.com, pbonzini@redhat.com, peter.maydell@linaro.org,
- philmd@mailo.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- steven_lee@aspeedtech.com, titusr@google.com
-Subject: Re: [PATCH v1 2/5] fsi/cfam: Add CFAM-S model for AST2700
-Date: Wed, 22 Jul 2026 12:45:33 -0500
-Message-ID: <20260722174533.287667-1-ninad@linux.ibm.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260715155037.2237011-3-mikail.sadic@ibm.com>
-References: <20260715155037.2237011-3-mikail.sadic@ibm.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wmbsj-0004Mj-07
+ for qemu-arm@nongnu.org; Wed, 22 Jul 2026 14:41:28 -0400
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wmbsg-0006Mz-L8
+ for qemu-arm@nongnu.org; Wed, 22 Jul 2026 14:41:24 -0400
+Received: by mail-pj1-x1036.google.com with SMTP id
+ 98e67ed59e1d1-381c51fde6bso13290471a91.2
+ for <qemu-arm@nongnu.org>; Wed, 22 Jul 2026 11:41:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1784745681; x=1785350481; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=hoczlY2y26Dl/5Nu2k5E9x3RU2NVrWsSXJQ8sVstzR8=;
+ b=OOEizBbljfg3OmxjGGoYwsEydHasOsJp+ehrRvqTqTn9+ddde7SnRNH0swLW30mSux
+ edkw0IteEg+m2FoYz96wuniLEiYJ34MIyZLhM6TVDtE4HAUFfiTQRME1vIyh8KyhvONw
+ SqAlLKblZ6J0v05z5nE+DhVti+SQnZRCmaTGARhVvjXd73dxLrQWmw9M73yeIP82FYXv
+ GkqpdVflikIiOp9rXSxBv4pqN6ckjlRDDr3I9LzgohpwsOL6lecWQ+RiQ01rdm6MDInD
+ wi/Z/4gQWw1n5W0ucPk0LNubQ8oTSmrjeq6xJFF+nn/pUW4uzggkpxZchQrZBPurTH/m
+ qtew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1784745681; x=1785350481;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=hoczlY2y26Dl/5Nu2k5E9x3RU2NVrWsSXJQ8sVstzR8=;
+ b=shh8AIDg08j4BddrPVhbVgfme8c2L483OlIFe25ZXnVu9cUwAOnCodnpkCDEwpgO5b
+ 7k+879/7M7mJUrw1R1TZ+4AsiHvLdzSwSK5Lg4uSLMjLvSRc0Uxki1Fcb1cZfdgmOdgd
+ KXdZ9v4SC8f4S9FgMwWn/BvxJCXicufz4YgO8/cqDBP5GAauYqBYdZtb0ZEmmzrYu0BL
+ +1qrCy0Cq9gvNbdjOtEMpTziO/Zb0OC/tW2AQXN0wozsCthiI8Y9jeRHQfqCLum8CQt7
+ MmqOm0BtJ0L6cBZhoyXUw3WPia2jMG9MhUngbXb89QEO2jw3QRwzBpCEKcXkAFnN5Zt9
+ v+Xg==
+X-Gm-Message-State: AOJu0YwCa/KBodDfR/siswFCtmQDrkw4PEF4rACoDxJ0WvQbceyF+yVO
+ GOJ2LPwgS1nzW5V4x/Jx5ykGdOZBY9D+vZuw5CXh1v8v4qnudZbvgXr5HWhQUBUqGDU=
+X-Gm-Gg: AR+sD119NvF9ApDIHSAEry63KIQouOjx+FfZ70gLiWhAw/YZKYHGWb9JTXD8wu/y74Z
+ idKy4ysi3MxVyaskeyGIFljFUz7ZgreuMnzbuTR6C03KXJIfa317+iBiOmegPmGELVWbzSAtdtj
+ DQfc+FdFT3mx579kI8skQo6Yct81/Jo6PaeB+SVc4eCJJtslWM35PBXiRSoN9nM4Vg0sdSbR5yH
+ y75B6FW7BpI9yD5dzu1atRy/Cfw/tojEOe8b1Ln7KNLvIMhARH0jnSSmjHdvjjSUMPmfj9uIyDs
+ nPJM1LMjjmn/H9OBptSJFEy/LLKlwhHv6NsrXClMPH6NP6I0C4RlZL4/96TlGiZYqa3BfUETE+b
+ p9rw/Ki1O/PBpgOBqkvs/s1V6dsiHl5H4jrmcUT0yt5hvOU/x/LxctnMt0j7C7tOP+XvD6LCBp8
+ uDFsfi5nYcsiv7FhRqsk4vsUCARs5SF6qm9b7prW4Ngw3ESfc+JYtlAXC5THA5og==
+X-Received: by 2002:a17:90b:5405:b0:38e:9045:bac0 with SMTP id
+ 98e67ed59e1d1-38e9045bb77mr9335260a91.5.1784745680451; 
+ Wed, 22 Jul 2026 11:41:20 -0700 (PDT)
+Received: from stoup.. (162-198-231-97.lightspeed.wlfrct.sbcglobal.net.
+ [162.198.231.97]) by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-13d13015052sm8559298c88.5.2026.07.22.11.41.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 22 Jul 2026 11:41:20 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 1/3] accel/tcg: Add infrastructure for atomic 64-byte
+ load/store
+Date: Wed, 22 Jul 2026 11:41:15 -0700
+Message-ID: <20260722184117.11937-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260722184117.11937-1-richard.henderson@linaro.org>
+References: <20260722184117.11937-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Proofpoint-ORIG-GUID: uiKBI064FYnJwqB3kYY-qmtoyGDLmt8M
-X-Authority-Analysis: v=2.4 cv=V6RNF+ni c=1 sm=1 tr=0 ts=6a6101c4 cx=c_pps
- a=GFwsV6G8L6GxiO2Y/PsHdQ==:117 a=GFwsV6G8L6GxiO2Y/PsHdQ==:17
- a=RAioF0-LDSMA:10 a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22
- a=U7nrCbtTmkRpXpFmAIza:22 a=NEAV23lmAAAA:8 a=VnNF1IyMAAAA:8
- a=j8KmPS0pmCVLtVu95UYA:9
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzIyMDE3NCBTYWx0ZWRfXwausNnX3Kkbv
- NR+x+3kloZyGUpUENqNRMfmwAvCNMsUQQeGOZ1z0I8BGWWYcz2udr14xp3lJCPB4QDgbYCojek/
- VfhkiznivOGVXJUjGQ6id2jO9Nekk4o=
-X-Proofpoint-GUID: PZJnpbI2xHIT7e1DVjSjBtEQlWqy4QWM
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzIyMDE3NCBTYWx0ZWRfX1YSzraYx8Vzo
- 51kyGrH/i6AugUKezEE48iTXmpA6L+4fD+4UYzC3ctr9IpXLyx9eWOXJX4IC2WIEzBOlek8G2FZ
- CwNfiMq1k5SlHhGgMUtl6ZHpacb315zC1geojaft6n1tGXFCCiJaaynKYnfN3fzi2FK6CJ7eyHt
- ZuzFOHbCbbPg3c6xL0NANOwN4u0Xhw8vm5dqJRMIsXQ12tgv/9Zf5ktABZJjCny4caXC4oYZvGU
- vxebG4T1/NDxDA4o6X/EOkRKFilP+uqzQjnAhDSrux9887OnYCQiJ81HYA0gQZIFvU6iLl6e9bm
- oZzbUy2ALgyfcvs/I9srdGl5anjTfCCcORGkHkAMUM24ug+2sEAHHNMkRiKFCa+IoiKbRe2n9Zd
- VI+cpIygoJOzFUIGtYNk5tZlUoCTvUl7UwRkvPi6dJ+NiwPgbphUj3d3ylIGepD+lPwkwOnbljq
- Elw+2T24hDOr9/8g5/Q==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-22_04,2026-07-22_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 adultscore=0 bulkscore=0 lowpriorityscore=0 clxscore=1011
- spamscore=0 impostorscore=0 phishscore=0 priorityscore=1501 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607220174
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -125,403 +100,262 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Mikail,
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/accel/tcg/cpu-ldst-common.h           |  6 ++++
+ include/qemu/atomic512.h                      | 12 +++++++
+ include/qemu/value64.h                        | 14 ++++++++
+ accel/tcg/cputlb.c                            | 30 +++++++++++++++++
+ accel/tcg/user-exec.c                         | 33 +++++++++++++++++++
+ accel/tcg/ldst_common.c.inc                   | 31 +++++++++++++++++
+ .../include/generic/host/atomic512-ldst.h.inc | 16 +++++++++
+ 7 files changed, 142 insertions(+)
+ create mode 100644 include/qemu/atomic512.h
+ create mode 100644 include/qemu/value64.h
+ create mode 100644 host/include/generic/host/atomic512-ldst.h.inc
 
-Thanks for the work. Please see my comments inline.
+diff --git a/include/accel/tcg/cpu-ldst-common.h b/include/accel/tcg/cpu-ldst-common.h
+index f12be8cfb7..d8fae3384e 100644
+--- a/include/accel/tcg/cpu-ldst-common.h
++++ b/include/accel/tcg/cpu-ldst-common.h
+@@ -15,6 +15,7 @@
+ #include "exec/vaddr.h"
+ #include "exec/mmu-access-type.h"
+ #include "qemu/int128.h"
++#include "qemu/value64.h"
+ 
+ uint8_t cpu_ldb_mmu(CPUArchState *env, vaddr ptr, MemOpIdx oi, uintptr_t ra);
+ uint16_t cpu_ldw_mmu(CPUArchState *env, vaddr ptr, MemOpIdx oi, uintptr_t ra);
+@@ -117,4 +118,9 @@ uint32_t cpu_ldl_code_mmu(CPUArchState *env, vaddr addr,
+ uint64_t cpu_ldq_code_mmu(CPUArchState *env, vaddr addr,
+                           MemOpIdx oi, uintptr_t ra);
+ 
++Value64 cpu_atomic_ld64_mmu(CPUArchState *env, vaddr ptr,
++                            MemOpIdx oi, uintptr_t ra);
++void cpu_atomic_st64_mmu(CPUArchState *env, vaddr ptr, const Value64 *val,
++                         MemOpIdx oi, uintptr_t ra);
++
+ #endif /* ACCEL_TCG_CPU_LDST_COMMON_H */
+diff --git a/include/qemu/atomic512.h b/include/qemu/atomic512.h
+new file mode 100644
+index 0000000000..8553a0feba
+--- /dev/null
++++ b/include/qemu/atomic512.h
+@@ -0,0 +1,12 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Load/store for 512-bit atomic operations.
++ */
++
++#ifndef QEMU_ATOMIC512_H
++#define QEMU_ATOMIC512_H
++
++#include "qemu/value64.h"
++#include "host/atomic512-ldst.h.inc"
++
++#endif /* QEMU_ATOMIC512_H */
+diff --git a/include/qemu/value64.h b/include/qemu/value64.h
+new file mode 100644
+index 0000000000..7de287a13d
+--- /dev/null
++++ b/include/qemu/value64.h
+@@ -0,0 +1,14 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++
++#ifndef QEMU_VALUE64_H
++#define QEMU_VALUE64_H
++
++/*
++ * An stream of 64 bytes; no endianness implied.
++ * The members are perforce host byte ordering.
++ */
++typedef union {
++    uint64_t l[8];
++} Value64;
++
++#endif /* QEMU_VALUE64_H */
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 7f7c208ba1..1f192f1837 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -42,6 +42,7 @@
+ #include "exec/tlb-flags.h"
+ #include "qemu/atomic.h"
+ #include "qemu/atomic128.h"
++#include "qemu/atomic512.h"
+ #include "tb-internal.h"
+ #include "trace.h"
+ #include "tb-hash.h"
+@@ -2429,6 +2430,20 @@ static Int128 do_ld16_mmu(CPUState *cpu, vaddr addr,
+     return ret;
+ }
+ 
++static Value64 do_atomic_ld64_mmu(CPUState *cpu, vaddr addr,
++                                  MemOpIdx oi, uintptr_t ra)
++{
++    MMULookupLocals l;
++
++    cpu_req_mo(cpu, TCG_MO_LD_LD | TCG_MO_ST_LD);
++    mmu_lookup(cpu, addr, oi, ra, MMU_DATA_LOAD, &l);
++
++    if (likely(HAVE_ATOMIC512_LD && !(l.page[0].flags & TLB_MMIO))) {
++        return atomic64_read(l.page[0].haddr);
++    }
++    cpu_loop_exit_atomic(cpu, ra);
++}
++
+ /*
+  * Store Helpers
+  */
+@@ -2825,6 +2840,21 @@ static void do_st16_mmu(CPUState *cpu, vaddr addr, Int128 val,
+     }
+ }
+ 
++static void do_atomic_st64_mmu(CPUState *cpu, vaddr addr, const Value64 *val,
++                               MemOpIdx oi, uintptr_t ra)
++{
++    MMULookupLocals l;
++
++    cpu_req_mo(cpu, TCG_MO_LD_ST | TCG_MO_ST_ST);
++    mmu_lookup(cpu, addr, oi, ra, MMU_DATA_LOAD, &l);
++
++    if (likely(HAVE_ATOMIC512_ST && !(l.page[0].flags & TLB_MMIO))) {
++        atomic64_set(l.page[0].haddr, val);
++    } else {
++        cpu_loop_exit_atomic(cpu, ra);
++    }
++}
++
+ #include "ldst_common.c.inc"
+ 
+ /*
+diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+index a35aca7889..d6d2eec2e1 100644
+--- a/accel/tcg/user-exec.c
++++ b/accel/tcg/user-exec.c
+@@ -35,6 +35,7 @@
+ #include "exec/page-protection.h"
+ #include "exec/helper-proto-common.h"
+ #include "qemu/atomic128.h"
++#include "qemu/atomic512.h"
+ #include "qemu/bswap.h"
+ #include "qemu/int128.h"
+ #include "trace.h"
+@@ -1116,6 +1117,22 @@ static Int128 do_ld16_mmu(CPUState *cpu, vaddr addr,
+     return ret;
+ }
+ 
++static Value64 do_atomic_ld64_mmu(CPUState *cpu, vaddr addr,
++                                  MemOpIdx oi, uintptr_t ra)
++{
++    void *haddr;
++
++    cpu_req_mo(cpu, TCG_MO_LD_LD | TCG_MO_ST_LD);
++    haddr = cpu_mmu_lookup(cpu, addr, get_memop(oi), ra, MMU_DATA_LOAD);
++
++    if (HAVE_ATOMIC512_LD) {
++        Value64 ret = atomic64_read(haddr);
++        clear_helper_retaddr();
++        return ret;
++    }
++    cpu_loop_exit_atomic(cpu, ra);
++}
++
+ static void do_st1_mmu(CPUState *cpu, vaddr addr, uint8_t val,
+                        MemOpIdx oi, uintptr_t ra)
+ {
+@@ -1191,6 +1208,22 @@ static void do_st16_mmu(CPUState *cpu, vaddr addr, Int128 val,
+     clear_helper_retaddr();
+ }
+ 
++static void do_atomic_st64_mmu(CPUState *cpu, vaddr addr, const Value64 *val,
++                               MemOpIdx oi, uintptr_t ra)
++{
++    void *haddr;
++
++    cpu_req_mo(cpu, TCG_MO_LD_ST | TCG_MO_ST_ST);
++    haddr = cpu_mmu_lookup(cpu, addr, get_memop(oi), ra, MMU_DATA_LOAD);
++
++    if (HAVE_ATOMIC512_ST) {
++        atomic64_set(haddr, val);
++        clear_helper_retaddr();
++    } else {
++        cpu_loop_exit_atomic(cpu, ra);
++    }
++}
++
+ uint8_t cpu_ldb_code_mmu(CPUArchState *env, vaddr addr,
+                          MemOpIdx oi, uintptr_t ra)
+ {
+diff --git a/accel/tcg/ldst_common.c.inc b/accel/tcg/ldst_common.c.inc
+index 57f3e06192..3ce560a1f2 100644
+--- a/accel/tcg/ldst_common.c.inc
++++ b/accel/tcg/ldst_common.c.inc
+@@ -189,6 +189,23 @@ Int128 cpu_ld16_mmu(CPUArchState *env, vaddr addr,
+     return ret;
+ }
+ 
++Value64 cpu_atomic_ld64_mmu(CPUArchState *env, vaddr addr,
++                            MemOpIdx oi, uintptr_t ra)
++{
++    MemOp mop = get_memop(oi);
++
++    tcg_debug_assert((mop & MO_SIZE) == MO_512);
++    tcg_debug_assert(memop_alignment_bits(mop) == MO_512);
++    tcg_debug_assert((mop & MO_BSWAP) == 0);
++
++    {
++        Value64 ret = do_atomic_ld64_mmu(env_cpu(env), addr, oi, ra);
++        /* TODO: 48 other bytes unreported to plugins. */
++        plugin_load_cb(env, addr, ret.l[0], ret.l[1], oi);
++        return ret;
++    }
++}
++
+ /*
+  * Store helpers for cpu_ldst.h
+  */
+@@ -243,3 +260,17 @@ void cpu_st16_mmu(CPUArchState *env, vaddr addr, Int128 val,
+     do_st16_mmu(env_cpu(env), addr, val, oi, retaddr);
+     plugin_store_cb(env, addr, int128_getlo(val), int128_gethi(val), oi);
+ }
++
++void cpu_atomic_st64_mmu(CPUArchState *env, vaddr addr, const Value64 *val,
++                         MemOpIdx oi, uintptr_t retaddr)
++{
++    MemOp mop = get_memop(oi);
++
++    tcg_debug_assert((mop & MO_SIZE) == MO_512);
++    tcg_debug_assert(memop_alignment_bits(mop) == MO_512);
++    tcg_debug_assert((mop & MO_BSWAP) == 0);
++
++    do_atomic_st64_mmu(env_cpu(env), addr, val, oi, retaddr);
++    /* TODO: 48 other bytes unreported to plugins. */
++    plugin_store_cb(env, addr, val->l[0], val->l[1], oi);
++}
+diff --git a/host/include/generic/host/atomic512-ldst.h.inc b/host/include/generic/host/atomic512-ldst.h.inc
+new file mode 100644
+index 0000000000..8b79fcd13d
+--- /dev/null
++++ b/host/include/generic/host/atomic512-ldst.h.inc
+@@ -0,0 +1,16 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Load/store for 512-bit atomic operations, generic version.
++ */
++
++#ifndef HOST_ATOMIC512_LDST_H
++#define HOST_ATOMIC512_LDST_H
++
++#define HAVE_ATOMIC512_LD 0
++#define HAVE_ATOMIC512_ST 0
++
++/* Fallback definitions that must be optimized away, or error.  */
++Value64 QEMU_ERROR("unsupported atomic") atomic64_read(const void *s);
++void QEMU_ERROR("unsupported atomic") atomic64_set(void *d, const Value64 *v);
++
++#endif /* HOST_ATOMIC512_LDST_H */
+-- 
+2.43.0
 
-cfam-s has nothing to do with ast2700. It is a derivative of the cfam. So please remove all references of ast2700.
-
-cfam/cfam-s is the device sits near the host processor for the FRU service.
-
-FYI... Aspeed chip (ast2700) has 2 FSI master controller. Each has two links. 1 link can be connected to cfam and second link can be connected to cfam-s.
-
-
-On 7/15/26 10:50 AM, Mikail Sadic wrote:
-> Introduce TYPE_FSI_CFAM_S as a dedicated QOM type that presents the
-> config table and mailbox scratch registers expected by the new Linux
-> FSI responder framework. FSIMasterState gains a cfam_s field.
-> fsi_master_realize() instantiates both cfam (at offset 0) and cfam-s
-> (at offset 2 MiB) into the OPB-to-FSI aperture. aspeed_ast27x0.c wires
-> up both fsi[0] and fsi[1] APB-to-OPB bridges for the AST2700 SoC.
-We don't need references to aspeed or ast2700.
->
->
-> Signed-off-by: Mikail Sadic <mikail.sadic@ibm.com>
-> ---
->  docs/specs/fsi.rst          |  58 +++++++++++++++
->  include/hw/fsi/cfam-s.h     |  26 +++++++
->  include/hw/fsi/fsi-master.h |   2 +
->  hw/arm/aspeed_ast27x0.c     |  18 +++++
->  hw/fsi/cfam-s.c             | 145 ++++++++++++++++++++++++++++++++++++
->  hw/fsi/fsi-master.c         |  10 ++-
->  hw/fsi/meson.build          |   2 +-
->  7 files changed, 258 insertions(+), 3 deletions(-)
->  create mode 100644 include/hw/fsi/cfam-s.h
->  create mode 100644 hw/fsi/cfam-s.c
->
-> diff --git a/docs/specs/fsi.rst b/docs/specs/fsi.rst
-> index f7d86d3e37..a8896b67ef 100644
-> --- a/docs/specs/fsi.rst
-> +++ b/docs/specs/fsi.rst
-> @@ -120,3 +120,61 @@ from the BMC. (see the `pdbg source repository`_ for more details)
->  
->  .. _pdbg source repository:
->     https://github.com/open-power/pdbg
-> +
-> +CFAM-S model (AST2700)
-> +----------------------
-> +
-> +The AST2700 uses a CFAM variant known as the CFAM-S, required by the new
-> +Linux FSI responder framework. A dedicated QOM type, ``TYPE_FSI_CFAM_S``
-> +(``"cfam-s"``), implements this alongside the existing ``TYPE_FSI_CFAM``
-> +(``"cfam"``) used by the AST2600 machines.
-> +
-Remove references to ast2700/ast2600 and aspeed. You can say that cfam-s is derived from cfam and it has IO units and limited engines supported.
->
-> +``FSIMasterState`` realizes both ``cfam`` and ``cfam-s``. The regular
-> +``cfam`` is mapped at offset 0 into the OPB-to-FSI aperture; ``cfam-s`` is
-> +mapped at offset 2 MiB. The DTS overrides ``fsim0`` with
-> +``compatible = "aspeed,ast2600-fsi-master"`` and ``reg = <0x21800000>``,
-> +pointing the kernel FSI driver at the QEMU APB-to-OPB bridge, which routes
-> +through the FSI master's OPB-to-FSI window to reach the CFAM-S.
-
-This is a hardware so we don't want to talk about dts and fsi driver.
->
-> +
-> +The CFAM-S model presents an 8 MiB region and folds the SID bits ``[22:21]``
-> +so both the SID_BREAK enumeration view (``0x600000``) and the runtime view
-> +(``0x000000``) address the same register space. The config table at folded
-> +offset ``0x000`` contains three CRC4-valid words: a chip_id word with
-> +``MAJOR=9`` (selecting the ``cfam_s`` kernel driver), a responder engine
-> +entry (``TYPE=0x3``), and a mailbox v1 engine entry (``TYPE=0x14``) at
-> +engine address ``0x800``.
-> +
-> +The responder registers at folded offset ``0x400`` implement ``SMODE``,
-> +``SSTAT``, ``SRES``, ``SSISM``, and ``SLBUS`` with store-on-write semantics.
-> +The mailbox scratch registers at folded offset ``0x8e0`` are five stateful
-> +32-bit registers served to the ``ibm,mbox-cfam-s`` kernel driver, which
-> +creates ``/dev/fsi/mbox0``.
-We don't want to provide linux device path etc and we should reduce the details.
->
-> +
-> +The following commands start the ``huygens-bmc`` machine with the built-in
-> +CFAM-S model. There are no model specific arguments. Please check this
-> +document to learn more about Aspeed ``huygens-bmc`` machine:
-> +(:doc:`../../system/arm/aspeed`)
-> +
-> +.. code-block:: console
-> +
-> +  qemu-system-aarch64 -M huygens-bmc \
-> +    -drive file=image-bmc,if=mtd,format=raw \
-> +    -drive file=ufs.img,if=none,format=raw \
-> +    -nographic
-> +
-> +The CFAM-S appears as follows in the QEMU device tree:
-> +
-> +.. code-block:: console
-> +
-> +  (qemu) info qtree
-> +  bus: main-system-bus
-> +    type System
-> +    ...
-> +    dev: aspeed.apb2opb, id ""
-> +      mmio 0000000021800000/0000000000001000
-> +      bus: opb.0
-> +        type opb
-> +        dev: fsi.master, id ""
-> +          bus: fsi.bus.0
-> +            type fsi.bus
-> +            dev: cfam-s, id ""
-> diff --git a/include/hw/fsi/cfam-s.h b/include/hw/fsi/cfam-s.h
-> new file mode 100644
-> index 0000000000..3793b01471
-> --- /dev/null
-> +++ b/include/hw/fsi/cfam-s.h
-> @@ -0,0 +1,26 @@
-> +/*
-> + * IBM Common FRU Access Macro - S variant (CFAM-S)
-> + *
-> + * Copyright (C) 2026 IBM Corp.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +#ifndef FSI_CFAM_S_H
-> +#define FSI_CFAM_S_H
-> +
-> +#include "system/memory.h"
-> +#include "hw/fsi/fsi.h"
-> +
-> +#define TYPE_FSI_CFAM_S "cfam-s"
-> +#define FSI_CFAM_S(obj) OBJECT_CHECK(FSICFAMSState, (obj), TYPE_FSI_CFAM_S)
-> +
-> +#define CFAM_S_MBOX_SCRATCH_NUM 5
-> +
-> +typedef struct FSICFAMSState {
-> +    FSISlaveState parent;
-> +
-> +    MemoryRegion mr;
-> +    uint32_t mbox_scratch[CFAM_S_MBOX_SCRATCH_NUM];
-similar to cfam, cfam-s also has local bus and engines are connected to that bus. So we need to model similar to the cfam.c. See if we can make things common to avoid duplicates. 
->
-> +} FSICFAMSState;
-> +
-> +#endif /* FSI_CFAM_S_H */
-> diff --git a/include/hw/fsi/fsi-master.h b/include/hw/fsi/fsi-master.h
-> index 60ddaa994f..6a2782fdf2 100644
-> --- a/include/hw/fsi/fsi-master.h
-> +++ b/include/hw/fsi/fsi-master.h
-> @@ -11,6 +11,7 @@
->  #include "hw/core/qdev.h"
->  #include "hw/fsi/fsi.h"
->  #include "hw/fsi/cfam.h"
-> +#include "hw/fsi/cfam-s.h"
->  
->  #define TYPE_FSI_MASTER "fsi.master"
->  OBJECT_DECLARE_SIMPLE_TYPE(FSIMasterState, FSI_MASTER)
-> @@ -26,6 +27,7 @@ typedef struct FSIMasterState {
->  
->      uint32_t regs[FSI_MASTER_NR_REGS];
->      FSICFAMState cfam;
-> +    FSICFAMSState cfam_s;
->  } FSIMasterState;
->  
->  
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index dddd7d2106..b908d7d4ff 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -17,6 +17,7 @@
->  #include "qemu/module.h"
->  #include "qemu/error-report.h"
->  #include "hw/i2c/aspeed_i2c.h"
-> +#include "hw/fsi/aspeed_apb2opb.h"
->  #include "net/net.h"
->  #include "system/qtest.h"
->  #include "system/system.h"
-> @@ -98,6 +99,8 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
->      [ASPEED_DEV_PCIE_MMIO0] = 0x60000000,
->      [ASPEED_DEV_PCIE_MMIO1] = 0x80000000,
->      [ASPEED_DEV_PCIE_MMIO2] = 0xA0000000,
-> +    [ASPEED_DEV_FSI1]      =  0x21800000,
-> +    [ASPEED_DEV_FSI2]      =  0x23800000,
->      [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
->      [ASPEED_DEV_SDRAM]     =  0x400000000,
->  };
-> @@ -559,6 +562,11 @@ static void aspeed_soc_ast2700_init(Object *obj)
->                               sc->silicon_rev);
->      }
->  
-> +    for (i = 0; i < ARRAY_SIZE(s->fsi); i++) {
-> +        object_initialize_child(obj, "fsi[*]", &s->fsi[i],
-> +                                TYPE_ASPEED_APB2OPB);
-> +    }
-> +
->      object_initialize_child(obj, "dpmcu", &s->dpmcu,
->                              TYPE_UNIMPLEMENTED_DEVICE);
->      object_initialize_child(obj, "iomem", &s->iomem,
-> @@ -1132,6 +1140,16 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->          }
->      }
->  
-> +    /* FSI / OPB */
-> +    for (i = 0; i < ARRAY_SIZE(s->fsi); i++) {
-> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->fsi[i]), errp)) {
-> +            return;
-> +        }
-> +        aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->fsi[i]), 0,
-> +                        sc->memmap[ASPEED_DEV_FSI1 + i]);
-> +    }
-> +
-> +
->      aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->dpmcu),
->                                    "aspeed.dpmcu",
->                                    sc->memmap[ASPEED_DEV_DPMCU],
-Above aspeed (aspeed_ast27x0.c) changes should be in different patch
->
-> diff --git a/hw/fsi/cfam-s.c b/hw/fsi/cfam-s.c
-> new file mode 100644
-> index 0000000000..bf000d1879
-> --- /dev/null
-> +++ b/hw/fsi/cfam-s.c
-> @@ -0,0 +1,145 @@
-> +/*
-> + * IBM Common FRU Access Macro - S variant (CFAM-S)
-> + *
-> + * Copyright (C) 2026 IBM Corp.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "trace.h"
-> +#include "hw/fsi/cfam-s.h"
-> +#include "hw/fsi/fsi.h"
-> +
-> +/* bits [22:21] are the slave ID, low 21 bits address registers within it */
-> +#define CFAM_SID_MASK       0x1fffff
-> +#define CFAM_WINDOW_SIZE    0x800000 /* 8 MiB per slave, covers SID 0..3 */
-> +
-> +#define CFAM_RESPONDER_BASE 0x400 /* == FSI_RESPONDER_PAGE_SIZE */
-> +
-> +/* Config-table word fields (see Linux fsi-master.h) */
-> +#define CFAM_CONF_NEXT          (1u << 31)
-> +#define CFAM_CONF_SLOTS(n)      (((n) & 0xff) << 16)
-> +#define CFAM_CONF_VERSION(v)    (((v) & 0xf) << 12)
-> +#define CFAM_CONF_TYPE(t)       (((t) & 0xff) << 4)
-> +#define CFAM_CHIP_ID_MAJOR(m)   (((m) & 0xf) << 8)
-> +
-> +/* Engine IDs (include/linux/fsi.h) */
-> +#define FSI_ENGINE_ID_RESPONDER     0x3
-> +#define FSI_ENGINE_ID_MBOXV1        0x14
-> +#define FSI_CHIP_ID_MAJOR_CFAM_S    0x9 /* major == 9 -> CFAM-S */
-> +
-> +/* Engine layout: 0x000 config table, 0x400 responder, 0x800 mbox */
-> +#define CFAM_MBOX_BASE          0x800
-> +#define CFAM_MBOX_SCRATCH_OFF   0xe0
-> +#define CFAM_MBOX_SCRATCH_BASE  (CFAM_MBOX_BASE + CFAM_MBOX_SCRATCH_OFF)
-> +
-> +static uint8_t cfam_s_crc4(uint8_t c, uint64_t x, int bits)
-> +{
-> +    static const uint8_t tab[16] = {
-> +        0x0, 0x7, 0xe, 0x9, 0xb, 0xc, 0x5, 0x2,
-> +        0x1, 0x6, 0xf, 0x8, 0xa, 0xd, 0x4, 0x3,
-> +    };
-> +    int i;
-> +
-> +    x &= (1ull << bits) - 1;
-> +    bits = (bits + 3) & ~0x3;
-> +    for (i = bits - 4; i >= 0; i -= 4) {
-> +        c = tab[c ^ ((x >> i) & 0xf)];
-> +    }
-> +    return c;
-> +}
-> +
-> +static uint32_t cfam_s_cfg_word(uint32_t fields)
-> +{
-> +    return fields | cfam_s_crc4(0, fields >> 4, 28);
-> +}
-> +
-> +static uint64_t fsi_cfam_s_read(void *opaque, hwaddr addr, unsigned size)
-> +{
-> +    FSICFAMSState *cfam = FSI_CFAM_S(opaque);
-> +    uint32_t off = (uint32_t)addr & CFAM_SID_MASK;
-> +    uint32_t val = 0;
-> +
-> +    if (off < CFAM_RESPONDER_BASE) {
-> +        switch (off) {
-> +        case 0x00:
-> +            /* chip-id: NEXT set, MAJOR=9 (CFAM-S) */
-> +            val = cfam_s_cfg_word(CFAM_CONF_NEXT |
-> +                                  CFAM_CHIP_ID_MAJOR(FSI_CHIP_ID_MAJOR_CFAM_S));
-> +            break;
-> +        case 0x04:
-> +            /* responder engine entry */
-> +            val = cfam_s_cfg_word(CFAM_CONF_NEXT | CFAM_CONF_SLOTS(1) |
-> +                                  CFAM_CONF_VERSION(1) |
-> +                                  CFAM_CONF_TYPE(FSI_ENGINE_ID_RESPONDER));
-> +            break;
-> +        case 0x08:
-> +            /* mailbox engine entry, last (NEXT clear) */
-> +            val = cfam_s_cfg_word(CFAM_CONF_SLOTS(1) | CFAM_CONF_VERSION(1) |
-> +                                  CFAM_CONF_TYPE(FSI_ENGINE_ID_MBOXV1));
-> +            break;
-> +        default:
-> +            break;
-> +        }
-> +    } else if (off >= CFAM_MBOX_SCRATCH_BASE &&
-> +               off < CFAM_MBOX_SCRATCH_BASE + CFAM_S_MBOX_SCRATCH_NUM * 4) {
-> +        val = cfam->mbox_scratch[(off - CFAM_MBOX_SCRATCH_BASE) / 4];
-> +    }
-> +
-> +    trace_fsi_cfam_config_read(addr, size);
-> +    return val;
-> +}
-> +
-> +static void fsi_cfam_s_write(void *opaque, hwaddr addr, uint64_t data,
-> +                             unsigned size)
-> +{
-> +    FSICFAMSState *cfam = FSI_CFAM_S(opaque);
-> +    uint32_t off = (uint32_t)addr & CFAM_SID_MASK;
-> +
-> +    if (off >= CFAM_MBOX_SCRATCH_BASE &&
-> +        off < CFAM_MBOX_SCRATCH_BASE + CFAM_S_MBOX_SCRATCH_NUM * 4) {
-> +        cfam->mbox_scratch[(off - CFAM_MBOX_SCRATCH_BASE) / 4] = (uint32_t)data;
-> +    }
-> +    trace_fsi_cfam_config_write(addr, size, data);
-> +}
-> +
-> +static const MemoryRegionOps cfam_s_ops = {
-> +    .read = fsi_cfam_s_read,
-> +    .write = fsi_cfam_s_write,
-> +    .endianness = DEVICE_BIG_ENDIAN,
-> +    .valid.min_access_size = 1,
-> +    .valid.max_access_size = 4,
-> +    .impl.min_access_size = 1,
-> +    .impl.max_access_size = 4,
-> +};
-> +
-> +static void fsi_cfam_s_realize(DeviceState *dev, Error **errp)
-> +{
-> +    FSICFAMSState *cfam = FSI_CFAM_S(dev);
-> +
-> +    memory_region_init_io(&cfam->mr, OBJECT(cfam), &cfam_s_ops, cfam,
-> +                          TYPE_FSI_CFAM_S, CFAM_WINDOW_SIZE);
-> +}
-> +
-> +static void fsi_cfam_s_class_init(ObjectClass *klass, const void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    dc->bus_type = TYPE_FSI_BUS;
-> +    dc->realize = fsi_cfam_s_realize;
-> +}
-> +
-> +static const TypeInfo fsi_cfam_s_info = {
-> +    .name = TYPE_FSI_CFAM_S,
-> +    .parent = TYPE_FSI_SLAVE,
-> +    .instance_size = sizeof(FSICFAMSState),
-> +    .class_init = fsi_cfam_s_class_init,
-> +};
-> +
-> +static void fsi_cfam_s_register_types(void)
-> +{
-> +    type_register_static(&fsi_cfam_s_info);
-> +}
-Above changes should look similar to cfam.c with lbus.
->
-> +
-> +type_init(fsi_cfam_s_register_types);
-> diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
-> index 083a5507ab..f7c19e24b0 100644
-> --- a/hw/fsi/fsi-master.c
-> +++ b/hw/fsi/fsi-master.c
-> @@ -8,6 +8,7 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "qemu/log.h"
-> +#include "qemu/units.h"
->  #include "trace.h"
->  
->  #include "hw/fsi/fsi-master.h"
-> @@ -112,8 +113,6 @@ static void fsi_master_init(Object *o)
->  {
->      FSIMasterState *s = FSI_MASTER(o);
->  
-> -    object_initialize_child(o, "cfam", &s->cfam, TYPE_FSI_CFAM);
-> -
->      qbus_init(&s->bus, sizeof(s->bus), TYPE_FSI_BUS, DEVICE(s), NULL);
->  
->      memory_region_init_io(&s->iomem, OBJECT(s), &fsi_master_ops, s,
-> @@ -125,12 +124,19 @@ static void fsi_master_realize(DeviceState *dev, Error **errp)
->  {
->      FSIMasterState *s = FSI_MASTER(dev);
->  
-> +    object_initialize_child(OBJECT(dev), "cfam", &s->cfam, TYPE_FSI_CFAM);
-
-why did we move from master_init to master_realize?
-
-
-Thanks & Regards,
-
-Ninad Palsule
 

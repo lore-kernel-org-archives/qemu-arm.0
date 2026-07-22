@@ -4,163 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 848CBC4451C
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Jul 2026 20:16:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E7FBC4452B
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Jul 2026 00:54:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wmGsH-0004yw-SU; Tue, 21 Jul 2026 16:15:33 -0400
+	id 1wmLDY-0003qM-AN; Tue, 21 Jul 2026 20:53:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wmGsC-0004si-Cs
- for qemu-arm@nongnu.org; Tue, 21 Jul 2026 16:15:29 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wmLDX-0003pr-6l
+ for qemu-arm@nongnu.org; Tue, 21 Jul 2026 20:53:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wmGs9-0003Do-Jq
- for qemu-arm@nongnu.org; Tue, 21 Jul 2026 16:15:28 -0400
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66LH2hXo2418329
- for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 20:15:23 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- We5DuZ6V6TnuJjY9VdsMK+w/90vNGZmBBsZZPL1T8KY=; b=nXHEoM8dqsmgZg2h
- Ma3bpw3so/u715lsp97yHbZWIWjMXjPbOmY933kVUsN0f+FqP5duv0U2tyIuJUdj
- nEMqCcRJz7ozCemeE42pWBkMDHhxt2icX9M9QA3Lr8NJrdiCqZFtjRZDQBYYfGlD
- gaYNzknAF9tjxxmkBuKp9exZpSPrItxrPDPExNYcTGa3nPMPH2dfdpVQYU6BvQvS
- +RiotY8Gs4wig57aKtnSC7LJWT0uCQ6j9dNHmcPGIBYcug+gC/+A1Nfh5aIu/qno
- 86D1sWM3LnYdEAJm16ZjtzwonCrVxS6uIXNN9j2wLBUKw0Fnyk0AhIl93EjA2ylQ
- fCjLyg==
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fj9bsa0kd-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 20:15:23 +0000 (GMT)
-Received: by mail-qt1-f200.google.com with SMTP id
- d75a77b69052e-51bec738909so137753091cf.1
- for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 13:15:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1784664922; x=1785269722; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=We5DuZ6V6TnuJjY9VdsMK+w/90vNGZmBBsZZPL1T8KY=;
- b=XZ0mXjUgLOwtLV4JQoZiiAoMpzsNZXapvJEwm1yVKiwRSu+u171dF9r8uWFbdCaxwz
- qYRsaGKeacYgM/763OH8BVs9bat5iWVJDMobDxDsLZjJXBM3qPAbPYtcqRx6xnrSlpA4
- aL1LMA81DTYeqyGBP1h2HHJOsOubuXJ8c2xu9jFkhlD8azpDy2WOUCE8uYkcPfHvWl/r
- GzPX4x7RtB22E9zmu+AhC6uyA5mcDAw9FFeXPysxSy8gL6BRL6JRyVIkhQUQdK5l26Fw
- uOH9C6+16Hj2KSbt3pQJ+ibKMCX0qAeU2I2zkJ1WipuTvYtf38lOgFtpHIDvlVMn/rfS
- 25kQ==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wmLDU-0001OX-Cq
+ for qemu-arm@nongnu.org; Tue, 21 Jul 2026 20:53:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1784681621;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ms+PcctC3n342gRzN0mT9Eceor/2hR0BO6Lviff0Eg4=;
+ b=XlkwFJGX7teHFslokEbuRVuQu2PuDUW/3Z8Nj8ZdIMpsaXFETa00tpeQHkE4whSfKA2C+M
+ Azlf942uO/Mx3Cespu8EuYIjAnL5QSbPasN+xrGwZ1nl1leBAs0uc3Eoxm//TVRSAhvtRe
+ olwZuBnsG8/J5GBhUBCj2+FEqJVxzOI=
+Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
+ [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-615-HkP117Y8M6y33ibwliczhQ-1; Tue, 21 Jul 2026 20:53:39 -0400
+X-MC-Unique: HkP117Y8M6y33ibwliczhQ-1
+X-Mimecast-MFC-AGG-ID: HkP117Y8M6y33ibwliczhQ_1784681618
+Received: by mail-pl1-f199.google.com with SMTP id
+ d9443c01a7336-2cc8bde6318so212243855ad.3
+ for <qemu-arm@nongnu.org>; Tue, 21 Jul 2026 17:53:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784664922; x=1785269722;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1784681618; x=1785286418;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=We5DuZ6V6TnuJjY9VdsMK+w/90vNGZmBBsZZPL1T8KY=;
- b=esndZIAaAhSLHAs+RTX3sAp1UMNiiGl//AhsgQzvuayEbxv1n09Sm6iK37FjhSMBQj
- POxau5xH2lmotcODzQIdJ6jaXSnBIT7fUfcvSVVs/MYKSoNlYMChHVS7A8UvnPSCAKaU
- KvAzZyopt4vvFjPfDuKkU6iUEMYlTjGMelOvp2+35uxOBf+xifedqIKJJL3YdANF7TKB
- q53wuzGq3oMH/8Yot0eC1/Ch1BrOdsJaInNHlq15DqlZBzKfO/hMFCTu28EzDI2dqEZF
- hbCaCJvOWfDF+uVZ3UOUMWUeic+wJypzK1zHVmKHs/ihIGq1LH+fs4dNSNnOvwNVhB61
- c/Mg==
+ bh=ms+PcctC3n342gRzN0mT9Eceor/2hR0BO6Lviff0Eg4=;
+ b=U5vhuDcuTBr0CjjKNL8N6QVTIIcQe3bJOopJiEDn6YfmsVv8DP384S55itC3dgXZRo
+ hvdpamEYA5c/mDEWIPv4rH/LTsmxjyclcQxcVD1MjK54XA+P8qMuJQ4tkQDPo75tuM9y
+ /4WGBk3p1oizJXRQfVzk86aED2NAPMtuI5EsQ7XDHiBEa/1a9lAWZHPEBQ03UdmetP/k
+ u58OaBbzjgQoUI1zxMw63kLnIrBt50wukK+zItD1dyWFlw62iUXT/aXYWia2G6l/oPW1
+ abOgoHWHsiBKkU+CITYoB35lO+EmF9nsW/by43iDH6dRi7hP55RL07omK0yYYDzvhsFC
+ benA==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rrr9PhL5EC0kLECA10FVD19HsbKgYdQJnX0S1qGCCAQ8mIjamVtlYviVDg7NvZTjGxwSSxHU15G6w==@nongnu.org
-X-Gm-Message-State: AOJu0Yxeq0+WJ/IjKO8B96lBAQipxZhgaocul/3njEfCAVslBIgPgh+c
- UV8jyY5fmvFVmIGa+Bh2FANT3E8UT5meAQM/NXDxvbhh4KebDiVyY2khaTduGjWYJKijoMuihh6
- r2dynQBzD5mTXTJy7TtSm8/xcATmaOl2Wq/CslVJBEUcAaKiauPXnLgs=
-X-Gm-Gg: AfdE7cm2c+ypdl3GCrSk4vdZ8chFlebvFcgcp6UN3MhWzKZSXjdz+VwuWke1cuC+3iC
- zRHETT/HJk7/JHmCpPeu/RtdECePOuDeIjMBahqfhBfKFw+6sNPBtgb3Unzw4ChyKE6tjmDPxx/
- 0CVJEEGEU80V3pHlNmkAXPyAhScSgetTvLPeL3cpfHNeGIT0LcL5CAbROeSUhhfJEyMBu9Nqu2W
- /mrbpUwHiS5rnFMkTnUNxUeqC65XVSjgeBHB/D6QxIdimq/x77kNF71enxxia5rDZE5jZacbAyl
- AiJjoUSI6fc3Kdw3OELp9ocXTxQXSUL3lPxcOkTbqTazuguQpim8aQMhSjUtHE+QJ+NuM1PVYGE
- fZ5phMqP/YepUDJOe5Inq8oBTiB4flwGLs+3Mi8jDiy1hTKMpJrI=
-X-Received: by 2002:a05:622a:4106:b0:51b:efe9:27c0 with SMTP id
- d75a77b69052e-5213ed6fef6mr173135491cf.71.1784664921793; 
- Tue, 21 Jul 2026 13:15:21 -0700 (PDT)
-X-Received: by 2002:a05:622a:4106:b0:51b:efe9:27c0 with SMTP id
- d75a77b69052e-5213ed6fef6mr173135151cf.71.1784664921354; 
- Tue, 21 Jul 2026 13:15:21 -0700 (PDT)
-Received: from [192.168.69.212] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47f63e51986sm47076475f8f.11.2026.07.21.13.15.19
+ AHgh+RpbGILBqJADlPfkcigowvdC8wH4E42TdfrJN1byfdYHcba0RsSjiZ9J/oasO/d0rgKlYCfnpyfL9w==@nongnu.org
+X-Gm-Message-State: AOJu0Yz6O7UNpkJhq/pQljpN51HRU89WuIFpxtqeILDKrGErSxhI1v2x
+ xxUxQDz+9LkLMYIidnIGfrbLfDZJhUPJcesNW87q2WP/KI4lJ25+09ub/97SrHC1CXoIfmPj1fm
+ iHL3UfX9vWQTOMKLPbgfo8PZ/V4/YaQO7bexBCIIgQUt7r3HwUIXSUg==
+X-Gm-Gg: AR+sD10C6c02BLgpCmGAl6Mq2tk5oaRKJnKvaPhkM8Y9m6ed9k92Kjq5elF4b3MPd2Y
+ mzSLpWlvQKwDHmdLvA9t+IE6F4aHsOswSJENShDZb1lj52KGZ3/miCPdQimm/jo46rz4WC/TnoZ
+ z2TkTl0Y4ZHm0CoDvlgF77Vovle5rzZyGTnxjg2+7A0hYktfVQtAh9bLr2G/cs+w5cY69qIlZlB
+ Y3NRWxagVDM43a9b+914gzUlKOPFu8DdNHGpUGgLhjETnXZXm1JuciekaliAXHXMziWVvzO1ql7
+ eE9yjq/B6ZZeXLeUGprlFMnrtMKahCSvvUVhojuTVgmpup3cxE+cZPsk0X86FOVqIiCQ2ygu3uN
+ DDlRUHF+ReZuh9sxzo3J0JsP7eLVqNw1au7PXWoL2LU0=
+X-Received: by 2002:a17:903:8d0:b0:2ca:d658:d874 with SMTP id
+ d9443c01a7336-2cf34a0a6aamr227057855ad.23.1784681618368; 
+ Tue, 21 Jul 2026 17:53:38 -0700 (PDT)
+X-Received: by 2002:a17:903:8d0:b0:2ca:d658:d874 with SMTP id
+ d9443c01a7336-2cf34a0a6aamr227057485ad.23.1784681617889; 
+ Tue, 21 Jul 2026 17:53:37 -0700 (PDT)
+Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
+ [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2cf8efdbfd0sm5074695ad.21.2026.07.21.17.53.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Jul 2026 13:15:20 -0700 (PDT)
-Message-ID: <cc93fa59-deeb-4c97-972e-b47fc5da5c8c@oss.qualcomm.com>
-Date: Tue, 21 Jul 2026 22:15:18 +0200
+ Tue, 21 Jul 2026 17:53:37 -0700 (PDT)
+Message-ID: <6210e178-a93f-4411-810a-41edb1fb656e@redhat.com>
+Date: Wed, 22 Jul 2026 10:53:27 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-11.2 v3 14/15] hw/qdev: Parent device before setting
- parent bus
-Content-Language: en-US
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, qemu-devel@nongnu.org
-Cc: BALATON Zoltan <balaton@eik.bme.hu>, Paolo Bonzini <pbonzini@redhat.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
+Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
+ device region accessors
+To: Peter Xu <peterx@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  "Michael S. Tsirkin" <mst@redhat.com>,
- David Hildenbrand <david@kernel.org>, Igor Mammedov <imammedo@redhat.com>,
- FangSheng Huang <FangSheng.Huang@amd.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Nicholas Piggin <npiggin@gmail.com>, Aditya Gupta <adityag@linux.ibm.com>,
- Glenn Miles <milesg@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-ppc@nongnu.org,
- Alex Williamson <alex@shazbot.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- Hendrik Brueckner <brueckner@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, qemu-s390x@nongnu.org,
- Luc Michel <luc@lmichel.fr>, Fam Zheng <fam@euphon.net>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>
-References: <20260721-qdev-v3-0-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
- <20260721-qdev-v3-14-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260721-qdev-v3-14-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
+ qemu-devel@nongnu.org, alex@shazbot.org, richard.henderson@linaro.org,
+ berrange@redhat.com, philmd@mailo.com, david@kernel.org, clg@redhat.com,
+ pbonzini@redhat.com, phrdina@redhat.com, jugraham@redhat.com,
+ liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, shan.gavin@gmail.com,
+ qemu-s390x <qemu-s390x@nongnu.org>
+References: <CAFEAcA8-Un+Q1yBDqLWCLPRwtgTA_VhJqGobgZChrFhAeVfG8A@mail.gmail.com>
+ <20260625123119-mutt-send-email-mst@kernel.org>
+ <CAFEAcA8UjtXgmPC27fOKMwbaWs2piwGYudtwCNWQHuu3E_7A-A@mail.gmail.com>
+ <5faf04b9-d596-4a1d-9fe3-5e9ad5f0a99a@redhat.com>
+ <73f79841-8cc7-4ca6-8f6b-fb97b53a6fe8@redhat.com>
+ <20260717091756-mutt-send-email-mst@kernel.org>
+ <CAFEAcA-O6Z4JrVV0DL_tta6khRyUta_Zz5mJt6OszaW1mu0o6Q@mail.gmail.com>
+ <20260717095407-mutt-send-email-mst@kernel.org>
+ <9c2ad22a-e768-4a07-85a2-01ce1fc14368@oss.qualcomm.com>
+ <59882c5b-545d-4768-8bf4-723fed97a801@redhat.com> <al-eCtxGjG4HHEbl@x1.local>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <al-eCtxGjG4HHEbl@x1.local>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: OkqnwrzLWW5WNIDI2IloQ-MqiAvs9Eqieiq9Xs23nnE_1784681618
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: Hkgeln05jBLWY1WzrB3a4JJ0YW5Ji7ga
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzIxMDIxMCBTYWx0ZWRfX6zUbxuHL0Ltl
- A+n1EmD4zD/9xAfX+V+q71ccdhKwBD4lUPYrjQQgfuXMy8hfC4X8bKYBNCKFGiP5IpclQPWIhNW
- kuDsr8eGT5IpM1ctkmhO4APT223W+KO/zcR9oLq7MdUvtpqfzjWgutQYTmvnGHjUZIv9tX8lLA1
- Az3q9jHdcaqHQEBH1R44/TB6epSt8auA4AMSheKKjx08wBMIaJJFuvE+YrQMPLAGsseAW3BAKgC
- AeK12DhW3t91rbyti0whlEcpHGmVIyzYwSvUGoBcooMkQirOIQG/ygeZWThQd1gBP2FQCEljRh/
- yUMHrrx/tQIujPy7GPt9KzFxAhqy83BaL4oJSfE2OZQXyxvpzn1A5v081SBpiwRwi1h0dDLIH8M
- /Ny1JujfU6JcU6NkPWcu6oVWjOERr0yIfj6xbb+gnL4/oEGlWlMNmgrOZbVQZt21TUeza0oTol0
- NO46f/XTfiZJ0vGKPBw==
-X-Proofpoint-GUID: Hkgeln05jBLWY1WzrB3a4JJ0YW5Ji7ga
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzIxMDIxMCBTYWx0ZWRfX/DAfytcE8/MQ
- JDziCB6lhhX1IK6N/+U8Pdtv6IuzGznX5OFb69+dR12/xK2PKuFZsRwVKUpk9oyIVB8eQNvydzn
- 2RN+0euorLMzCH48Qm+3UG6YDsOpsZ0=
-X-Authority-Analysis: v=2.4 cv=QK1YgALL c=1 sm=1 tr=0 ts=6a5fd35b cx=c_pps
- a=JbAStetqSzwMeJznSMzCyw==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
- a=EUspDBNiAAAA:8 a=fgZSBK4kzu8o4Ek6pjwA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=uxP6HrT_eTzRwkO_Te1X:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-21_03,2026-07-21_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 spamscore=0 phishscore=0 impostorscore=0 bulkscore=0
- suspectscore=0 clxscore=1015 adultscore=0 lowpriorityscore=0 malwarescore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607210210
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Transfer-Encoding: 7bit
+Received-SPF: permerror client-ip=170.10.129.124;
+ envelope-from=gshan@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -176,44 +129,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 21/7/26 10:17, Akihiko Odaki wrote:
-> Commit 9940b2cfbc05 ("qdev: New qdev_new(), qdev_realize(), etc.") says
-> "device state 'no QOM parent, but plugged into bus' is dangerous". In
-> such a case, unrealizing the bus will hang in bus_unparent():
+On 7/22/26 2:27 AM, Peter Xu wrote:
+> On Tue, Jul 21, 2026 at 03:37:53PM +1000, Gavin Shan wrote:
+>> If Peter is fine with two variants for x86 and non-x86 architectures.
+>> I can post (v4) for further review. That will be something like below
+>> and let me know if there are any other improvements are needed.
 > 
->      while ((kid = QTAILQ_FIRST(&bus->children)) != NULL) {
->          DeviceState *dev = kid->child;
->          object_unparent(OBJECT(dev));
->      }
+> I have a generic question on the "unaligned access for x86": I think the
+> question is about the one Michael raised here on unaligned access may break
+> x86 here:
 > 
-> object_unparent() does nothing when its argument has no QOM parent,
-> and the loop spins forever.
+>    https://lore.kernel.org/qemu-devel/20260617022330-mutt-send-email-mst@kernel.org/
 > 
-> However, that commit did not completely eliminate such a situation.
-> When the device is not parented, device_set_realized() lets
-> /machine/unattached parent it, but it happens after setting parent bus.
-> Therefore, any failure between the two operations can leave the device
-> in a dangerous state.
+>    3. (theoretical concern) also on x86, unaligned accesses are
+>    possible on guest and host, so converting an unaligned access to a
+>    series of aligned ones can in theory break devices.
 > 
-> qdev_realize() at least asserts that the device is not already realized
-> and prevents one realization failure pattern, but it is not
-> comprehensive. Besides, it will trip with a command line like the
-> following:
+> Is that a real problem we need to consider, or can we start with unified
+> approach and leave it for later?
 > 
->      qemu-system-x86_64 -M none -nodefaults -nographic \
->          -device ipmi-bmc-sim,realized=on
-> 
-> Eliminate the dangerous state by ensuring that the device is parented
-> before calling qdev_set_parent_bus(). Also, stop asserting that the
-> device is not already realized in qdev_realize(); it is broken and
-> no longer serves any purpose.
-> 
-> Fixes: 9940b2cfbc05 ("qdev: New qdev_new(), qdev_realize(), etc.")
-> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-> ---
->   hw/core/qdev.c         | 51 ++++++++++++++++++++++++++++----------------------
->   tests/unit/test-qdev.c | 13 +++++++++++++
->   2 files changed, 42 insertions(+), 22 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+I'm leaving this question to Michael.
+
+> PS: I apologize if I missed important piece of info along the way; I didn't
+> follow closely on the discussion on this topic in the past few weeks.
+> 
+> One thing to mention is, what we change should only need to affect
+> ram_device, AFAIU.. so most memcpy()/memmove() shouldn't be changed for any
+> arch when it's pure RAM.
+> 
+
+It depends. This patch intends to fix issue [1] in the lower layer by using
+the newly added accessors (qemu_ram_{copy, move}) on all directly accessible
+regions including the regular (pure) RAM region. Otherwise, the newly added
+accessors should be limited to ram_device regions only as you said.
+
+[1] https://lore.kernel.org/qemu-devel/20260527091711.3901-1-liugang24219@sangfor.com.cn/
+
+Thanks,
+Gavin
+
 

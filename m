@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33BC8C4453D
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Jul 2026 02:23:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D58FCC4453D
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Jul 2026 02:23:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wmj5i-000567-Sg; Wed, 22 Jul 2026 22:23:19 -0400
+	id 1wmj6D-0005MX-MT; Wed, 22 Jul 2026 22:23:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wmj5d-00055I-S4; Wed, 22 Jul 2026 22:23:14 -0400
+ id 1wmj5m-00056d-6Y; Wed, 22 Jul 2026 22:23:22 -0400
 Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
  ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wmj5b-0002ZN-F4; Wed, 22 Jul 2026 22:23:13 -0400
+ id 1wmj5k-0002ZN-8o; Wed, 22 Jul 2026 22:23:21 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Gzre/lpDM++L132hqKrVHplzkncq002tE1woMVol1z1LJNm/Cnw2yKM6K2znL8nAlO4KTQaHct8wb7WJBhapFdgZi8te9DwMOCmciW0FhjrAASj0S4rLvcowhpssTj8zeJIrrc2bA3Cducq0d7CQBKxytG2i9Pb5sfODYIiNR+ubSZLLIpA4l5SdCudiyMhiw8rcUs625lqE72nm5pXFWSM00TFU7fKamRj7FArk7mutvuHv/8Lq/qHEKlVZwku3eFCk1vv1wTIIc/kMgzghcnV+bcv7YuzMia7icEdTUYiXi2pFi5wd+Ku5OI2V+XVQRR2nFjzKCU0xr2K+2XiVBQ==
+ b=uRCbAgTWPgZbK8ykWYrL5BL05LNagPIGO+W1zYGRIJd1wqRvt5YseS+RGD2QYw5FYf6B4Ku4c7rTHh8ZwrYUOrZp77VCXeswR84tv+Zv5GaeIwhEGbKjod7on7KfMnVJIZH1x7sYq9kSJBOaoWr5a9uFoTEB9WAHMGGZDDFFR+N11y6pk8oYeyBoZqA90kGq/82DOF+g6diGcCyIDc45YXoBeU6tYO0XUv257ZNx6Dlpz//ALY2Rwq/zT2WylGpbO7AjOmMD2jXC3eVnvRx9DHqu7cshPhW7A4ElEGkevN+roJnMlVrF6rZAG/kTn0HfDUFCBndYVyREloxQmySPCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=u5ymyBlr+bzBJ78pBuJxTYdY+seMPv1XtBxTK59C/UQ=;
- b=Epddt5kuqBcPrJa5Pl6ugv47Lz7GQ5mGJ1N5IdHmJwKPW9YRuwE8Y93ZRElSUYOGi+HcCRNr28pzA0cAwuEj0SsJdU4x7dWiJdWUcPvTixhuWthFMcC9Sru6neKDTOPkYFj5aFSGpYuWWIi+66qX8BpbZB2RwpMAOqQgSS2RH5GnxCLsZZqa5rGzXyinGrh3RYN3s0C7mxNOnSScsrpZJwTMxQrzCHLt/t3Bg0B6YJJOXAyqOGImToCLLUBg1R67x6cK90AztnHLwzsSiE2Xhny/MYTY6YgJgKFV4+cesG3I/gpYlD9JDxJTO+2Ax6mVMGVhDjI3US0UTHZwbb4PvQ==
+ bh=LnzGrQpmRWSgNGiCoejUhS1iLag125E+i+IgTBUSPqs=;
+ b=Mce05pCglRgW/v2e67vGmdEJO8pjEqGClTxyCD0qlYr/w3I3yMdhai+74bUfwoYIniUYV4a/MHlV/doRJYwKZAtJy65tuHP4hKcpL0PKmVHHuGcEkke+H/VyHMM+SMa/SB74aCdMy0XvBnpAGfc7SjoRalQgQfHGV+Sj9rNHvyd9cxbyyY2DpcUFgtT0pNj+bywt6RIbTDxh+kzfZF92e5GoMZi2mZHrIQsAICjg7iUBTeVh7uVQRca0ziDwI8vpaYF5xDvcZ6UnZCyf7bN2usjn96wrrV0CjwWW1QU2eUJvXVXfSKFHIPqvq2edsOokXh274SZM26sk2YYjQV3Fcg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=u5ymyBlr+bzBJ78pBuJxTYdY+seMPv1XtBxTK59C/UQ=;
- b=mGOC8FlyxsBX6drf1klobiq7GADjNAEy71zL1+b/OTeuXanTAEtP4T2PSDkwSvToZgQwBQrrqF6CUgQVg2FDfA1k84t5UMUIyzFN4Of75TdAI+ykxccbTjGKEE8jebMNy0D6DLeVktMg+4zQ9LNmKPfWR6zkK2BFOlfxWaPHynRT/q0FdQfrlx/AHjyuvc/gcLUkgWJu0xzTNB0DTy6k3Rs03Ga/2+bExE4SCTf1Lo4dENMHUzM6wIwEQDqHXD+XJLys+4YgcuZ/idCVq1N/ItCtPVMsQpI8pzJ0f7FxfNdUrEnMn1JXqkCilPH4J1v/WGbqOcDjxQr3lkcIoHQ8aQ==
+ bh=LnzGrQpmRWSgNGiCoejUhS1iLag125E+i+IgTBUSPqs=;
+ b=kMC5/MwTqiPFFZ9CGsEvMUt3Uemp+zkzeMyyZneyStFf68ab0j9YI63s0WQCNLwgj+a6H6uEMOBVGRg8s5EAyRPY5n3DZusoBu8TlNDCJJrEtTkJFrVbfMMDBGDx1MAnd2/oMx0kYXOYyNBlk5ZFKLOAv4AnZiUISlRrJ+rA4WnkIUXSU7GRggs2JWwo6xEdm87ArASbtZ184tTWzpoNw1smVGyV2bkD8nnwT2YpONLUX0DIQoMO8V11HMCCc2jEjlNusmUZWbBnFKECMkNIfO7qMk7MqDFhEtOPGs0VP240A2s5yHZJLPdqaDJutda9v49Xse9Z63Zi/A8O2z6X7w==
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
  by KL1PR06MB7034.apcprd06.prod.outlook.com (2603:1096:820:11e::14)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.245.10; Thu, 23 Jul
- 2026 02:23:01 +0000
+ 2026 02:23:09 +0000
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0245.009; Thu, 23 Jul 2026
- 02:23:01 +0000
+ 02:23:08 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
@@ -51,14 +51,17 @@ To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  Bouvier <pierrick.bouvier@oss.qualcomm.com>, "open list:ASPEED BMCs"
  <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v6 00/11] Add SSP/TSP power control and DRAM remap support for
- AST2700
-Thread-Topic: [PATCH v6 00/11] Add SSP/TSP power control and DRAM remap
- support for AST2700
-Thread-Index: AQHdGkovqvcI1ghO+kie2du+p0VjDQ==
-Date: Thu, 23 Jul 2026 02:23:00 +0000
-Message-ID: <20260723022300.4174471-1-jamin_lin@aspeedtech.com>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
+ =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
+Subject: [PATCH v6 06/11] hw/misc/aspeed_scu: Implement SSP reset and power-on
+ control via SCU registers
+Thread-Topic: [PATCH v6 06/11] hw/misc/aspeed_scu: Implement SSP reset and
+ power-on control via SCU registers
+Thread-Index: AQHdGkozq6jCVKCLWEWAq82GlUPI7g==
+Date: Thu, 23 Jul 2026 02:23:08 +0000
+Message-ID: <20260723022300.4174471-7-jamin_lin@aspeedtech.com>
+References: <20260723022300.4174471-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260723022300.4174471-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -67,61 +70,61 @@ authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|KL1PR06MB7034:EE_
-x-ms-office365-filtering-correlation-id: b488a9b0-8ec3-4763-f90e-08dee8615198
+x-ms-office365-filtering-correlation-id: c5d93554-5dd9-4061-eb19-08dee8615626
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|366016|1800799024|376014|921020|38070700021|6133799003|56012099006|10067099003|18002099003;
-x-microsoft-antispam-message-info: 2JR70P1YiBjKecQGKuKM1HqzD3p6WYhCbrAFsUAWZnIiOByl6aD19OPJ57chNj3N8bLwv3jPsjn6b5J4oVal6PGhS4l74mGAoTN0PeBo3oIfqp3sd5nuEzudYxNZ6gcxmxYptCYDJcV0PSj7fqnXWWhrkXFAFcg2ioDPDdEsQTQz5UKlvSGFSqvTOtSmS/fOwhKBaxZDFFHL4Jx6HKirxyL6/EGPmDLmw47aFu2qaLnGhcz5fM9hO8c30L5Fud/aBqHXyeBxXuwopgT6U6vk+vVSPwTe+VXMvQtPfDj1IdW64bdxz9AvgiH50hdib7dEtc4LJeWW0qLKrXBkybBzOkIPWkoJWSQmiFbWC3bMnFO0facxAF/7q7c7IbZPeTekr4Gs2w5Md1xfj4DcJfWnacnjSM/Dapdy/9L20ia5/RurfADaTaIkm2P2ncATgB+y3jB5Z68EcdqhuPMhUKnjyS13YL58RWO+XRRftErby+T0wY73+f1autlhHTMmIUYazD9MJwiMFoPMwtkCY86z+oxF5uJyEO/5BDYqW/xOpfbH0jj1X2MY7O6sb5FI+tLLodQBGiApLbFzkcTai1iBjKQANUU8WPgo/4hT/J0R761pAWZPUF8uJLVGh1uDSz/I8Tc053Bo5IQOlhsWTLotJUZiNqEJpmcafLeHoLvxkJhc0yy04svLibmKfHO+Z+G7BMbQZXETsKN6wrjOqEMGlXTclP80EnffTQz7PQWDOWCBQcGrR4Yrotr6PCsIRmds
+ ARA:13230040|23010399003|366016|1800799024|376014|921020|38070700021|6133799003|56012099006|5023799004|10067099003|22082099003|18002099003;
+x-microsoft-antispam-message-info: HxjBqZZfICSLzSTVH0FRboR1sz2Qxw45gfGtIWAjTgsMxYf/L1umTWLbhBiHRPY6INdY+qvR8UPrdEuBS/zU3u60P90DnG2TuxyqdYI5tuHSBwgysPZkwxuKjU7pW6v0tshyBgC6/RN6Xb+wqhHfwXPoKvjdMjXKvA8deIV6/Bsp1AKdRLBuuYJr84OAgQ1xS5oy/bmMR2lynI3BtVvzQxjirl6NFjm+6l6kTJp7VdWsz2fJLViTvOdvhYl9wAfBZNiF9938gpeSHw/CKZIxjdbUzV3icXYSNwJ6hZMTYdlgNXLsKNSxx7zqin/UqibXrlizoBJK4jcPdNhCPpkWrdKr53/pHDFlk3v3p4vYMlNBXgaHdfAJgZNJtdQdftX8+jWgdxuQs1Rra5SxvRwXSGvgfFxHT/pQPad2JJZkoLtcQUkNkWVUwjY0TiKETCYGLNAhG8Tti947wdNPLN8EiPGqyw4WdXuJk69j5tRMzNnIPGvtXzD18N7FdSLsaVoyZ9fkm4QWgiXkrFanTs96qPHNnOtPEVYaRq+/L//BInBIZPe1VFL18SRnE+cHcIoCXFyge0s9SMKZqV/Sxy1C80zEZIOwf/RkExqWimv5peBNwUwnYUjLtS2qyeAE2Hbkq5hWX6JqEQux69luWpsVxj8r5dVGCXZkS+1+M/OI4+ahtwRjAwr355blQJJcK0auWYCFbwhO8K+gAr/MnY2ASfWMrb9nn0/9fPD5IPDeZ+4=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(366016)(1800799024)(376014)(921020)(38070700021)(6133799003)(56012099006)(10067099003)(18002099003);
+ SFS:(13230040)(23010399003)(366016)(1800799024)(376014)(921020)(38070700021)(6133799003)(56012099006)(5023799004)(10067099003)(22082099003)(18002099003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?AKSW2s1huZfQeh4D1/0AMtT84ouWQjG+kA71XRpmjUvoYlIqoI2liC3GEj?=
- =?iso-8859-1?Q?q5RUs+yMp5v5a+5J6gZL/pUim5Ynp+jPzWwO4OQ31VnVnEiH51UFiEYd2a?=
- =?iso-8859-1?Q?w3u+mkRnIlW1NpESs1Vyk536nIR5JDthH2jvba3D9P3lxVoWDSuJzGslfJ?=
- =?iso-8859-1?Q?ptm/sZZz44nTgkL34FcUvc2VN7d7WIrIJpQ9uYksltfhfETCmF3EGnnshn?=
- =?iso-8859-1?Q?3/ZPUpiSRPU1rUVl9XAQoWl8VqmPez/T+SYM9x1CVD5tJdtjUzjWIOwNJS?=
- =?iso-8859-1?Q?8KDuHT2E8hPjlluSUtPx9mbqJ8yJpyCzd0UIysTZEN27dKHOrNW+26Ezv/?=
- =?iso-8859-1?Q?YYsvdlwOcWDYRqvay6CzE55a5gZHFEhZx6lLzG1XVPnfkl4x2spZ3Yr6A8?=
- =?iso-8859-1?Q?P9XGpZIcEpbrDvojM8ciptqDTD6soHHJlc7SdSeXztQSei5zMhYiobrHm+?=
- =?iso-8859-1?Q?rB4yaGhqHebCfl/XfhY4HaEUeCTnnSH+mRWPaH1Zp0ywJWDAQxbyTMS40w?=
- =?iso-8859-1?Q?P+tUPychuJIq4wnTOlcsCjxFjATk0ixqYbd+eRJd8agrBuWAFS0SI9Kmth?=
- =?iso-8859-1?Q?e9Xk7cNqOKXRSFdSpFdPLKI5SjAtU29X5FqHblYJ8xT1RC6PS8/BJNLqBl?=
- =?iso-8859-1?Q?HOfD5/5Ttv38uqBc5GouTRXd5oQoGQFFRQsYb6t9HESA/RgbNT+iB1dEbY?=
- =?iso-8859-1?Q?8FwxJoJ+SeCrhu+/J9BVdf15P9vN8w8UDkMsCykez3FzUO8PItiSvM8Isp?=
- =?iso-8859-1?Q?ZtRtJ2hv2o99x5B9MXiHFNSSGANHAWKD1stVzR0S/LWwyc3xTh21Llmyl4?=
- =?iso-8859-1?Q?NuaRkLYO37jT7ETBl5Us5aSEhCSLIWklFta4oW9q8NeevervbTftil00Xq?=
- =?iso-8859-1?Q?YNW0fWDBD8yDrS1/6uOp3+iy6ll0nBfKAI9O+8yhyYsz85L9qF8VLdE/QY?=
- =?iso-8859-1?Q?WFZNOWQKt74wbSJPchKixL1kM10pKwBjcQd4HSOEK7ffO8FxYlyVQIDn2v?=
- =?iso-8859-1?Q?HwnCWN7N19UBCZl895daYWLQsjEsjrkNlA5Mu3NiQdzO3l/kMU9dU2kQWT?=
- =?iso-8859-1?Q?0Tl4VWeirp/tFaH0Sv9sDWYEFDciYsscmvMpmhXurIyn5MqDUvWl1pJAjT?=
- =?iso-8859-1?Q?hw9wvmopVudfsljg6JIC5cgnwGnId6W4gdcyR6HZLEMgwP2jGmohml0uda?=
- =?iso-8859-1?Q?ig9z/mSn1iG+VymDLQeHJ181HvhfSKdnQFOkvt5/a2fM7z+K90imGjX3Y9?=
- =?iso-8859-1?Q?DdN7LCNfG868vrUp2KiFetCCakcoR+orIIW0siYAvrScrEqZuOtxdGOrlU?=
- =?iso-8859-1?Q?cllBryZxf5JfZnjpkaaXNUfQW9t/h2KGHO2i8RpNJN5CG7xKwfwcdSYspr?=
- =?iso-8859-1?Q?x+n/LS2dMfmOgsu8oC2QPcje8qrGuYAc0BGk2y/Uz2yZ5fyAoYKF/O9bbB?=
- =?iso-8859-1?Q?/+6QRsx5OUNCOQ9CLU4GK9iFanLfLOpJVSxZmZ/n3hYaAuW9Sb08Q+R8v0?=
- =?iso-8859-1?Q?ifFCUSCFcVNBAqytQgQyaYURTQMFDuwhLXEh0dsJ0HVbf9/9lsRr9T9ZHs?=
- =?iso-8859-1?Q?DmASkZACovU8tTtjK66/KWrUfBJ/HFHAS+Qq/ZRNt9yvwdBjhQyGpPRTFB?=
- =?iso-8859-1?Q?PYWl5gvgmOah+rXAXC8yMOZ15TGjjObmNKt+rv0rf01HxLk1u7FH4XTE7x?=
- =?iso-8859-1?Q?43g3xttbkr7q+X6g6n19s29GI6Fd9e/A5yEIDqB5zP6VcbVui6r7lhl/So?=
- =?iso-8859-1?Q?AgYSXpeCIYsIdpBs43zRex7p29RC9MOEUzXoqVdmlkdG8ycUyXd8DneyZ6?=
- =?iso-8859-1?Q?VxXcDizBmw=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?VxDwVlID92z5X+gu9aQqveICDxO+uiyiE/Cl0K97gFJ46d+yBNFzNs47sr?=
+ =?iso-8859-1?Q?3IMKY5zZyP72ZBL/GNlrf3nYncblSeXLx+JnXBJYhOk2ORsJO4NBwk26UX?=
+ =?iso-8859-1?Q?gBvyT+CqR0u+V82fWIlkCPGcnjYeOdfjWodoA3sQ7bBcPZNz5VscVjXgK8?=
+ =?iso-8859-1?Q?K8mReKiE0CAM07VAOGWPs4Uu9fkE1X7IlsqHmpyvv5qndOcyq1VegheksR?=
+ =?iso-8859-1?Q?1/jc+OqSoomXe7BXRFiza/bCTciEBx77Vd5nwcLstPY/ANi3svOe5RhRj9?=
+ =?iso-8859-1?Q?TvNHP1fI27mxcnzd+BpX91WGmPcOZy20zvNjesBe+Gz3KHUKghUh8b7eZI?=
+ =?iso-8859-1?Q?rSI4jJGV4cyCsOtxwLjlhSVuY/TfGvWAKIDq17iuKPo3YO5HoJsPxBTUsI?=
+ =?iso-8859-1?Q?QbB/f6kuBqVFP6MkTyVjRH7UM14777mdVO/USnSCIah5bHvBjakHGXPDOe?=
+ =?iso-8859-1?Q?obYRt2zh+lPNpgTJWxQ8HZUEeMF/q5ZcLmRgN9rWuZJOxYSxt4hMoI1Omk?=
+ =?iso-8859-1?Q?V+o6Wp/5YtwDCSeyNT/DfdQYpzCzcVGUhDbQ0MMBXaAKrnJwPTPyw2vhWV?=
+ =?iso-8859-1?Q?te5IDt7VaU63vK3FUe3ghasQQKRfws5a7BGPf5p/eKn+FNKNRpOXXQ6HHW?=
+ =?iso-8859-1?Q?WdB77Zoi6jeYVu/MhyQbenRbKueqEDDdKWFTDocgFmWSkHA8LUXCBNLGDo?=
+ =?iso-8859-1?Q?enyQzE0Zdqlbe++Ckv6DBwLo8Xe2417IrBIsnbr/thKy1yeIu4pFI9KcGg?=
+ =?iso-8859-1?Q?XmojxOGquU+y2iQvc1911DR49iGsX2eeKsuv/kfWS4EQ4UceNjxxE2F+3e?=
+ =?iso-8859-1?Q?XDXLGaeWkXtFn0CRRFMSGEl784+e2CbPUTHJQ4mLk09uaaJGOMaerC20Nl?=
+ =?iso-8859-1?Q?Py8dJStrU4/EyLqbkPAUr01IYJTtgydg8n1mpVyZra64BkcDogZzdxWr0W?=
+ =?iso-8859-1?Q?fCkUyE6t3pKzHTruoQVAUtQ6W4dAJVJ+054/P9yNdmPASSOlmFyZYvO3o/?=
+ =?iso-8859-1?Q?zGldmgXP8dMK8fzAAoCJ6zX0GiOA1GfvFsWkerhjUYaHCcd6a7GNBymHbS?=
+ =?iso-8859-1?Q?w24DRAPl2E2qAahYbrYbB4O+geAQZXlzqVYbM4jstB/4VOymBK/CINSmP0?=
+ =?iso-8859-1?Q?1EqHz1bmOj2uPUV23TrLRZmZ3ZN8eVMz3qLMNZSdsBUbJhKTH+NSpRj8ZW?=
+ =?iso-8859-1?Q?oComkt8TdOr++J5thmUfPqyklnuNN6nxUvYfbToAuWhN+/Cr25T8EJn36f?=
+ =?iso-8859-1?Q?bcWYl+xDdwV4+djbeMJlTUlTr8zWAgwzj0FP9baGP+1BjuaYKHFl4/JMej?=
+ =?iso-8859-1?Q?w/n1V8rzK/8S1p/X/gKbu+yDris1eLHV30S7D9cMh68W7aUskRLn0nnNq/?=
+ =?iso-8859-1?Q?XhIphBqnuhmmZL0P/RNoaHVJoFdjaw/mxLfyNzerOYy5Hs4fPLRqfcbaM0?=
+ =?iso-8859-1?Q?1aOMHRe2NmOmEWQ1VSi8P4qXMDLIPMWuu7I6Ko88U5aBj0JoJP1WYt+b52?=
+ =?iso-8859-1?Q?tFrfUG9m3xsN5+r7JqFrPu7JsIS3/fINOAzTmm3xHxjK8EuxP/Y2Q31pii?=
+ =?iso-8859-1?Q?0Gpgpll0czML6re2fvJ1NdFgdrGsqQoVAmWddVis0bqR7HLb8VQ3Vdo0t8?=
+ =?iso-8859-1?Q?ZVpdzgHvaKRQXu/PkghavctxHtFA4cbBWIlcnbkW4AtiMCLLSvUuqeIw16?=
+ =?iso-8859-1?Q?MXj1ptmuDrLigXKL0BaQD/wJldFArvqrL1r/gYkivmx8nKCIFBzm7x9VxM?=
+ =?iso-8859-1?Q?hjs22az35Mdv6pkHraYRK7SvJgzWyxn86VH1WFLzlksmusEdHlP5M1Mnke?=
+ =?iso-8859-1?Q?DG4dCw963w=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: K584uDBl2AVbEqqq7BuQfuVKVjSC3thbbTmcvXb5L5iBMIKFG7b2Ia3wp6zOArKLlpYauHSmnqgTxCbCAtZohAwUpFJ5gPnwekZQXds/UrOJ5jdgnW+kToQClJ0CsQ93bOFEe2uen6Yz9bReIED80Wsv560lAYVveKPy2sZqQyH2kSNuy0jZU7URq3nZL2iOb2sN6QwIg2+8gN5tZUHybwaLgb+LVxC84NoK02XG7VwTPZyXSc25TLTzAsIEf24bin+nkE9tjhby+EVWvW7nV4s2ODnA9Jk0yvz6ynOL7K0ctNgGKsTjLRTu7ehBn0IXT16p3VXD1E6tC2H7HXCUbQ==
+X-Exchange-RoutingPolicyChecked: AKs4nh2hYQsG8iLPXtVi4A9iEcQCcs2dqbfGDpiLttvJSmpQ7IXgEoZnsvxRrvvC5WZS8YcZACzFwnvSG024s3Bl8kQE8xIt2eJ8jagvtHwNWAhrtZ6jAiCGMdyFvX18bW0f7ejUcmbehN2C117JZ6MvtZufLy0T/e9q7oUHdSZsJL/0vztHFUaLPq6P/k2cod66CwSEAb/0H2xaL2Zqb4JOTx+Tm6CkmJjrIwDz5oojXIM01xCkXpwAE7UXIWETlCWiOjkWJk/Zrkihzywlg+ZeZpQZ+gmCXsQ7lyNIotLGrmWUuzy3Oi0RKIzkmzCwSKnhSxvyuRmP8zwPoKgLcQ==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b488a9b0-8ec3-4763-f90e-08dee8615198
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jul 2026 02:23:01.1024 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: c5d93554-5dd9-4061-eb19-08dee8615626
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jul 2026 02:23:08.7848 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 70WknWkmeIE7i3CmqRGYDBpMDdADTKPwqjESB4GcYo/bqsE99t6ZcqhU/PD+nV39PB0YOmDYLL4U2aaEwT5vfKmuKj9hgcm7vbCw9LvYork=
+X-MS-Exchange-CrossTenant-userprincipalname: j210CMf4iEipm3bxMiEqmKnorhgXZ4/tIphaFUQ/E5iDNE9PTCh2vWrUn0Di/IK0FYIV/udUV1w9ATgDhpyYqMl5rVh2yKUL+Fr7siwn+Fs=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR06MB7034
 Received-SPF: pass client-ip=2a01:111:f403:c406::3;
  envelope-from=jamin_lin@aspeedtech.com;
@@ -147,112 +150,251 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series improves AST2700 platform support by aligning SSP/TSP=0A=
-power and reset behavior with hardware, and enabling DRAM remapping=0A=
-required for proper firmware boot flow.=0A=
+This patch implements SSP reset and power control logic in the SCU for AST2=
+700.=0A=
+It introduces support for the following behavior:=0A=
 =0A=
-This series depends on:=0A=
-[v4,0/9] Refactor AST2700 SCU preparation for coprocessors=0A=
-https://patchwork.kernel.org/project/qemu-devel/cover/20260717084559.347706=
-1-1-jamin_lin@aspeedtech.com/=0A=
+1. SSP Reset Trigger (via SCU 0x200):=0A=
+   - SSP reset is triggered by writing 1 to bit 30 (RW1S) of SYS_RESET_CTRL=
+_1.=0A=
 =0A=
-v1:=0A=
-  1. The changes move DRAM/SDMC initialization earlier to support memory=0A=
-aliasing, add DRAM aliases for SSP/TSP SDRAM remap, and implement=0A=
-SSP/TSP reset, power-on, and remap controls via SCU registers.=0A=
-  2. With these updates, SSP and TSP can be booted via PSP and load their=
+2. SSP Reset State and Source Hold (via SCU 0x120):=0A=
+   - Upon reset, bit 8 (RST_RB) is set to indicate the SSP is in reset.=0A=
+   - Bit 10 (RST_SRC_RB) is set to indicate the reset was triggered by an e=
+xternal source.=0A=
+   - Bit 1 (RST) is a software-controlled bit used to request holding SSP i=
+n reset.=0A=
+   - If an external reset source is present and bit 1 is set, bit 9 (RST_HO=
+LD_RB)=0A=
+     will also be asserted to indicate the SSP is being held in reset.=0A=
+   - If bit 1 is cleared, RST_HOLD_RB will be deasserted accordingly.=0A=
 =0A=
-binaries from DRAM. Functional tests and documentation are updated=0A=
-accordingly.=0A=
+3. Hold Release and Power-on:=0A=
+   - If RST_HOLD_RB is clear (0), SSP is powered on immediately after reset=
+ is deasserted.=0A=
+   - If RST_HOLD_RB is set (1), the user must write ENABLE (bit 0) to SSP_C=
+TRL_0 to release=0A=
+     the hold and power on SSP explicitly.=0A=
+   - Writing ENABLE (bit 0) is a one-shot operation and will auto-clear aft=
+er execution.=0A=
 =0A=
-v2:=0A=
-  Fix "make check" failure caused by both AST2700 and AST1700 realizing the=
- same=0A=
-  TYPE_AST2700_SCU model.=0A=
-  =0A=
-v3:=0A=
- 1. Drop "Move DRAM and SDMC initialization earlier to support memory alias=
-ing"=0A=
- 2. Support SPI/FMC FIFO Mode=0A=
- 3. Add unimplemented devices=0A=
+4. Reset Status Clear (via SCU 0x204):=0A=
+   - The reset status can be cleared by writing 1 to bit 30 (RW1C) of SYS_R=
+ST_CLR_1,=0A=
+     which will deassert RST_SRC_RB and potentially trigger power-on if no =
+hold is active.=0A=
 =0A=
-v4:=0A=
- 1. Introduce Aspeed2700SCU subclass and separate from generic SCU.=0A=
- 2. Add separate reset handler for AST2700 SCUIO=0A=
- 3. Add AST2700 SCUIO RNG control and data registers=0A=
- 4. Share single SCUIO instance across PSP, SSP, and TSP=0A=
- 5. Fix AST2700 FC hardware strap settings=0A=
+5. SSP Power Control Logic:=0A=
+   - `handle_ssp_tsp_on()` clears RST_SRC_RB and RST_RB (if not held), and =
+invokes=0A=
+     `arm_set_cpu_on_and_reset(cpuid)` to power on the SSP core (CPUID 4).=
 =0A=
-v5:=0A=
- 1. To speed up the review process, move the following patches into a separ=
-ate =0A=
-    patch series, as they are not directly related to the main topic of thi=
-s series:=0A=
+   - `handle_ssp_tsp_off()` sets RST_RB and RST_SRC_RB; if RST is active, a=
+lso asserts=0A=
+     RST_HOLD_RB and invokes `arm_set_cpu_off(cpuid)`.=0A=
+=0A=
+6. Register Initialization and Definitions:=0A=
+   - Adds SCU register definitions for SSP_CTRL_0 (0x120), SYS_RST_CTRL_1 (=
+0x200),=0A=
+     and SYS_RST_CLR_1 (0x204).=0A=
+   - Updates the reset values for these registers during SCU initialization=
+.=0A=
+=0A=
+The default values are based on EVB (evaluation board) register dump observ=
+ations.=0A=
+This patch enables proper modeling of SSP lifecycle management across reset=
+,=0A=
+hold, and power-on states for the AST2700 SoC.=0A=
+=0A=
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+Tested-by: Philippe Mathieu-Daud=E9 <philmd@oss.qualcomm.com>=0A=
+---=0A=
+ hw/misc/aspeed_scu.c | 109 +++++++++++++++++++++++++++++++++++++++++++=0A=
+ 1 file changed, 109 insertions(+)=0A=
+=0A=
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c=0A=
+index 5d34dbea5e..0fdeaf5648 100644=0A=
+--- a/hw/misc/aspeed_scu.c=0A=
++++ b/hw/misc/aspeed_scu.c=0A=
+@@ -20,6 +20,7 @@=0A=
+ #include "qemu/guest-random.h"=0A=
+ #include "qemu/module.h"=0A=
+ #include "trace.h"=0A=
++#include "target/arm/arm-powerctl.h"=0A=
  =0A=
-    [v4,01/21] hw/misc/aspeed_scu: Introduce Aspeed2700SCU subclass and sep=
-arate from generic SCU=0A=
-    [v4,02/21] hw/misc/aspeed_scu: Add separate reset handler for AST2700 S=
-CUIO=0A=
-    [v4,11/21] hw/arm/ast27x0: Share FMC controller with SSP and TSP=0A=
-    [v4,12/21] hw/arm/aspeed_ast27x0: Add unimplemented Privilege Controlle=
-r MMIO regions for SSP/TSP (Merged)=0A=
-    [v4,13/21] hw/arm/aspeed_ast27x0: Add unimplemented OTP controller MMIO=
- regions for SSP/TSP (Merged)=0A=
-    [v4,14/21] hw/block/m25p80: Implement volatile status register write en=
-able for Winbond=0A=
-    [v4,15/21] hw/ssi/aspeed_smc: Add Data FIFO-based flash access support =
-for AST2700=0A=
-    [v4,16/21] hw/misc/aspeed_scu: Drop noisy unhandled read logs for AST27=
-00 SCU/SCUIO (Merged)=0A=
-    [v4,17/21] hw/misc/aspeed_scu: Add AST2700 SCUIO RNG control and data r=
-egisters (Merged)=0A=
-    [v4,18/21] hw/arm/ast27x0: Share single SCUIO instance across PSP, SSP,=
- and TSP=0A=
-    [v4,19/21] hw/arm/aspeed_ast27x0-fc: Fix hardware strap settings (Merge=
-d)=0A=
-    =0A=
-  2. Add memory_region_transaction_begin() and memory_region_transaction_co=
-mmit()=0A=
-     to protect the transaction.=0A=
+ #define TO_REG(offset) ((offset) >> 2)=0A=
+ =0A=
+@@ -143,6 +144,17 @@=0A=
+ #define AST2700_HW_STRAP1_SEC2    TO_REG(0x28)=0A=
+ #define AST2700_HW_STRAP1_SEC3    TO_REG(0x2C)=0A=
+ =0A=
++/* SSP TSP */=0A=
++#define AST2700_SCU_SSP_CTRL_0          TO_REG(0x120)=0A=
++#define AST2700_SSP_TSP_ENABLE          BIT(0)=0A=
++#define AST2700_SSP_TSP_RST             BIT(1)=0A=
++#define AST2700_SSP_TSP_RST_RB          BIT(8)=0A=
++#define AST2700_SSP_TSP_RST_HOLD_RB     BIT(9)=0A=
++#define AST2700_SSP_TSP_RST_SRC_RB      BIT(10)=0A=
++#define AST2700_SCU_SYS_RST_CTRL_1      TO_REG(0x200)=0A=
++#define AST2700_SCU_SYS_RST_CLR_1       TO_REG(0x204)=0A=
++#define AST2700_SCU_SYS_RST_SSP         BIT(30)=0A=
++=0A=
+ #define AST2700_SCU_CLK_SEL_1       TO_REG(0x280)=0A=
+ #define AST2700_SCU_HPLL_PARAM      TO_REG(0x300)=0A=
+ #define AST2700_SCU_HPLL_EXT_PARAM  TO_REG(0x304)=0A=
+@@ -841,6 +853,35 @@ static void aspeed_2600_scu_class_init(ObjectClass *kl=
+ass, const void *data)=0A=
+     asc->ops =3D &aspeed_ast2600_scu_ops;=0A=
+ }=0A=
+ =0A=
++static void handle_2700_ssp_tsp_on(struct AspeedSCUState *s, int cpuid,=0A=
++                                   int reg)=0A=
++{=0A=
++    uint32_t val =3D s->regs[reg];=0A=
++=0A=
++    val &=3D ~AST2700_SSP_TSP_RST_SRC_RB;=0A=
++    if (!(val & AST2700_SSP_TSP_RST_HOLD_RB)) {=0A=
++        val &=3D ~AST2700_SSP_TSP_RST_RB;=0A=
++        arm_set_cpu_on_and_reset(cpuid);=0A=
++    }=0A=
++=0A=
++    s->regs[reg] =3D val;=0A=
++}=0A=
++=0A=
++static void handle_2700_ssp_tsp_off(struct AspeedSCUState *s, int cpuid,=
 =0A=
-v6:=0A=
-  1. Move the DRAM remap MemoryRegions from the SCU to the SSP/TSP=0A=
-     coprocessor state itself.=0A=
-  2. Set ssp_cpuid/tsp_cpuid directly once the SSP/TSP's armv7m core is=0A=
-     realized, instead of pre-guessing them from board code via a QOM=0A=
-     property.=0A=
-  3. Correct AST2700 SCU to SCUIO to AST1700=0A=
-=0A=
-Jamin Lin (11):=0A=
-  hw/arm/aspeed_ast1700: Correct AST2700 SCU to SCUIO=0A=
-  hw/arm/ast27x0: Start SSP in powered-off state to match hardware=0A=
-    behavior=0A=
-  hw/arm/ast27x0: Start TSP in powered-off state to match hardware=0A=
-    behavior=0A=
-  hw/arm/ast27x0: Add DRAM alias for SSP SDRAM remap=0A=
-  hw/arm/ast27x0: Add DRAM alias for TSP SDRAM remap=0A=
-  hw/misc/aspeed_scu: Implement SSP reset and power-on control via SCU=0A=
-    registers=0A=
-  hw/misc/aspeed_scu: Implement TSP reset and power-on control via SCU=0A=
-    registers=0A=
-  hw/misc/aspeed_scu: Add SCU support for SSP SDRAM remap=0A=
-  hw/misc/aspeed_scu: Add SCU support for TSP SDRAM remap=0A=
-  tests/functional/aarch64/test_aspeed_ast2700fc: Boot SSP/TSP via PSP=0A=
-    and load binaries from DRAM=0A=
-  docs: Add support vbootrom and update Manual boot for ast2700fc=0A=
-=0A=
- docs/system/arm/aspeed.rst                    |  42 ++-=0A=
- include/hw/arm/aspeed_ast1700.h               |   2 +-=0A=
- include/hw/arm/aspeed_coprocessor.h           |   2 +=0A=
- include/hw/misc/aspeed_scu.h                  |   5 +=0A=
- hw/arm/aspeed_ast1700.c                       |  22 +-=0A=
- hw/arm/aspeed_ast27x0-fc.c                    |   4 +=0A=
- hw/arm/aspeed_ast27x0-ssp.c                   |  45 ++++=0A=
- hw/arm/aspeed_ast27x0-tsp.c                   |  37 +++=0A=
- hw/misc/aspeed_scu.c                          | 240 ++++++++++++++++++=0A=
- .../aarch64/test_aspeed_ast2700fc.py          |  29 ++-=0A=
- 10 files changed, 396 insertions(+), 32 deletions(-)=0A=
-=0A=
++                                    int reg)=0A=
++{=0A=
++    uint32_t val =3D s->regs[reg];=0A=
++=0A=
++    val |=3D AST2700_SSP_TSP_RST_RB;=0A=
++    val |=3D AST2700_SSP_TSP_RST_SRC_RB;=0A=
++    if (val & AST2700_SSP_TSP_RST) {=0A=
++        val |=3D AST2700_SSP_TSP_RST_HOLD_RB;=0A=
++    }=0A=
++    arm_set_cpu_off(cpuid);=0A=
++=0A=
++    s->regs[reg] =3D val;=0A=
++}=0A=
++=0A=
+ static uint64_t aspeed_ast2700_scu_read(void *opaque, hwaddr offset,=0A=
+                                         unsigned size)=0A=
+ {=0A=
+@@ -861,10 +902,14 @@ static uint64_t aspeed_ast2700_scu_read(void *opaque,=
+ hwaddr offset,=0A=
+ static void aspeed_ast2700_scu_write(void *opaque, hwaddr offset,=0A=
+                                      uint64_t data64, unsigned size)=0A=
+ {=0A=
++    Aspeed2700SCUState *a =3D ASPEED_2700_SCU(opaque);=0A=
+     AspeedSCUState *s =3D ASPEED_SCU(opaque);=0A=
+     int reg =3D TO_REG(offset);=0A=
+     /* Truncate here so bitwise operations below behave as expected */=0A=
+     uint32_t data =3D data64;=0A=
++    uint32_t active;=0A=
++    uint32_t oldval;=0A=
++    int cpuid;=0A=
+ =0A=
+     if (reg >=3D ASPEED_AST2700_SCU_NR_REGS) {=0A=
+         qemu_log_mask(LOG_GUEST_ERROR,=0A=
+@@ -876,6 +921,63 @@ static void aspeed_ast2700_scu_write(void *opaque, hwa=
+ddr offset,=0A=
+     trace_aspeed_ast2700_scu_write(offset, size, data);=0A=
+ =0A=
+     switch (reg) {=0A=
++    case AST2700_SCU_SSP_CTRL_0:=0A=
++        cpuid =3D a->ssp_cpuid;=0A=
++        if (cpuid < 0) {=0A=
++            return;=0A=
++        }=0A=
++        oldval =3D s->regs[reg];=0A=
++        data &=3D 0xff;=0A=
++        active =3D oldval ^ data;=0A=
++=0A=
++        /*=0A=
++         * If reset bit is being released (1 -> 0) and no other reset sour=
+ce=0A=
++         * is active, clear HOLD_RB and power on the corresponding CPU.=0A=
++         */=0A=
++        if ((active & AST2700_SSP_TSP_RST) && !(data & AST2700_SSP_TSP_RST=
+)) {=0A=
++            s->regs[reg] &=3D ~AST2700_SSP_TSP_RST_HOLD_RB;=0A=
++            if ((oldval & AST2700_SSP_TSP_RST_RB) &&=0A=
++                !(oldval & AST2700_SSP_TSP_RST_SRC_RB)) {=0A=
++                handle_2700_ssp_tsp_on(s, cpuid, reg);=0A=
++            }=0A=
++        }=0A=
++=0A=
++        /*=0A=
++         * If ENABLE bit is newly set and reset state is ready,=0A=
++         * clear HOLD_RB and power on the corresponding CPU.=0A=
++         */=0A=
++        if ((active & AST2700_SSP_TSP_ENABLE) &&=0A=
++            (oldval & AST2700_SSP_TSP_RST_RB) &&=0A=
++            (oldval & AST2700_SSP_TSP_RST_HOLD_RB) &&=0A=
++            !(oldval & AST2700_SSP_TSP_RST_SRC_RB)) {=0A=
++                s->regs[reg] &=3D ~AST2700_SSP_TSP_RST_HOLD_RB;=0A=
++                handle_2700_ssp_tsp_on(s, cpuid, reg);=0A=
++        }=0A=
++=0A=
++        /* Auto-clear the ENABLE bit (one-shot behavior) */=0A=
++        data &=3D ~AST2700_SSP_TSP_ENABLE;=0A=
++        s->regs[reg] =3D (s->regs[reg] & ~0xff) | (data & 0xff);=0A=
++        return;=0A=
++    case AST2700_SCU_SYS_RST_CTRL_1:=0A=
++        if (a->ssp_cpuid < 0) {=0A=
++            return;=0A=
++        }=0A=
++        if (data & AST2700_SCU_SYS_RST_SSP) {=0A=
++            handle_2700_ssp_tsp_off(s, a->ssp_cpuid, AST2700_SCU_SSP_CTRL_=
+0);=0A=
++        }=0A=
++        s->regs[reg] |=3D data;=0A=
++        return;=0A=
++    case AST2700_SCU_SYS_RST_CLR_1:=0A=
++        if (a->ssp_cpuid < 0) {=0A=
++            return;=0A=
++        }=0A=
++        oldval =3D s->regs[AST2700_SCU_SYS_RST_CTRL_1];=0A=
++        active =3D data & oldval;=0A=
++        if (active & AST2700_SCU_SYS_RST_SSP) {=0A=
++            handle_2700_ssp_tsp_on(s, a->ssp_cpuid, AST2700_SCU_SSP_CTRL_0=
+);=0A=
++        }=0A=
++        s->regs[AST2700_SCU_SYS_RST_CTRL_1] &=3D ~active;=0A=
++        return;=0A=
+     default:=0A=
+         qemu_log_mask(LOG_GUEST_ERROR,=0A=
+                       "%s: Unhandled write at offset 0x%" HWADDR_PRIx "\n"=
+,=0A=
+@@ -903,6 +1005,8 @@ static const uint32_t ast2700_a0_resets[ASPEED_AST2700=
+_SCU_NR_REGS] =3D {=0A=
+     [AST2700_HW_STRAP1_SEC1]        =3D 0x000000FF,=0A=
+     [AST2700_HW_STRAP1_SEC2]        =3D 0x00000000,=0A=
+     [AST2700_HW_STRAP1_SEC3]        =3D 0x1000408F,=0A=
++    [AST2700_SCU_SSP_CTRL_0]        =3D 0x000007FE,=0A=
++    [AST2700_SCU_SYS_RST_CTRL_1]    =3D 0xFFC37FDC,=0A=
+     [AST2700_SCU_HPLL_PARAM]        =3D 0x0000009f,=0A=
+     [AST2700_SCU_HPLL_EXT_PARAM]    =3D 0x8000004f,=0A=
+     [AST2700_SCU_DPLL_PARAM]        =3D 0x0080009f,=0A=
+@@ -922,12 +1026,17 @@ static const uint32_t ast2700_a0_resets[ASPEED_AST27=
+00_SCU_NR_REGS] =3D {=0A=
+ =0A=
+ static void aspeed_ast2700_scu_reset_hold(Object *obj, ResetType type)=0A=
+ {=0A=
++    Aspeed2700SCUState *a =3D ASPEED_2700_SCU(obj);=0A=
+     AspeedSCUState *s =3D ASPEED_SCU(obj);=0A=
+     AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(obj);=0A=
+ =0A=
+     memcpy(s->regs, asc->resets, asc->nr_regs * 4);=0A=
+     s->regs[AST2700_SILICON_REV] =3D s->silicon_rev;=0A=
+     s->regs[AST2700_HW_STRAP1] =3D s->hw_strap1;=0A=
++=0A=
++    if (a->ssp_cpuid > 0) {=0A=
++        arm_set_cpu_off(a->ssp_cpuid);=0A=
++    }=0A=
+ }=0A=
+ =0A=
+ static void aspeed_2700_scu_realize(DeviceState *dev, Error **errp)=0A=
 -- =0A=
 2.43.0=0A=
 

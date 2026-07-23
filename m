@@ -4,138 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E90EC531C7
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Jul 2026 02:25:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C44EC4453E
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Jul 2026 06:04:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wmj6D-0005MI-Da; Wed, 22 Jul 2026 22:23:49 -0400
+	id 1wmmXu-0006Bq-DB; Thu, 23 Jul 2026 02:04:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wmj5t-0005C1-5s; Wed, 22 Jul 2026 22:23:32 -0400
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wmmXs-0006B8-Lb
+ for qemu-arm@nongnu.org; Thu, 23 Jul 2026 02:04:36 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wmj5r-0002ZT-75; Wed, 22 Jul 2026 22:23:28 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Q4ZhW5IdyShy5t/G8SHm9o/b5du0Ph14pn/Jz7tQokWMFBZqpt2+nxaDK65XqoM3Jf1/dWmzEjQm8t9ijzMc0F+buvEvnguwN5LbgKNXkcscjouE9hjut2drGO7beW54Y2dUN+VfJD77mGr4BsfO2L7XPlTtrIRIAQX22bE5vKWf6mE21BJ6uchXoWtg0AhRZUahRPcL0eTNH0tPuFYP1+/zYEs4J9qGCudWgHtjuN01grxHoPitQ45c/y6/TissCmIV6HusLRzI/pLTkY8o8lJNjWnzx+R5fcDrFfCxmfSVrTPvx336TkXoPYPBu9b58YVJ7Gt3OpKxVGBeg13Wcg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ue8cRlCmEIubx6A63gTI5KnhP321qga/u4Os9lllgOM=;
- b=ffnxX5L1YW8ETx0GT1+fZubjN3VxtkKNsxHU+kodWkhdEPeCjhYv25p09KSU3RyVxgyClLDIE5MOFfi76gnFrGV1hBca6+2JW/Xb6PRlxptmwYtJSXj16ikTPih30Q3pWapXkNrcZGzzLyRF4BiOIo59yz162pPbuBqDb2HpJcFAEn3LFaKlmdujTfWNykhBFl1toiTbScmnYuHOXr0NaH6FszDAUzv6YhnMaeqnXHwlfZSVvtGR0QAr6ULWdgc5JdNUR4LprHlrLAlUGuiEJeaR+vTIcZfqsit6QCSfPFZ2f1iyjaa1vO7GQpVubaKdfnIIZX18uq80UzjvLoVYTw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ue8cRlCmEIubx6A63gTI5KnhP321qga/u4Os9lllgOM=;
- b=lmYqL2ScdnoKo93K4KFVHx2+02a25EZCNQ8KNdcEPQyzPGf/3HDqQMQN3xqo8MCJa5gP+je1dxD9yocT2RTZdEfz5+o8rTVWPRbpHwkyCfSgXk97dQiRWTXl19ENCxW72Yg1mEkyuxRnhqUAGkP+c1RFIlAx2lelYV3W4wQ7ewBqoskBi1jCcpGjQaK93sb9UfVSPRDHyTqeSZK0hCpa79iiTXX3B3P0aOg/X3xQhSm6HDh7hQussQip2QyFR8ZwhjJ7yazbfwrtEhc2H/xYJrW91HSvjWGil9QW0RTJYvBpYFwuJnHZEJjUNKhZJYGnCAafNhJGkBuRf633zj7Wzw==
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
- by KL1PR06MB7034.apcprd06.prod.outlook.com (2603:1096:820:11e::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.245.10; Thu, 23 Jul
- 2026 02:23:14 +0000
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0245.009; Thu, 23 Jul 2026
- 02:23:14 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Pierrick
- Bouvier <pierrick.bouvier@oss.qualcomm.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
- =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH v6 11/11] docs: Add support vbootrom and update Manual boot
- for ast2700fc
-Thread-Topic: [PATCH v6 11/11] docs: Add support vbootrom and update Manual
- boot for ast2700fc
-Thread-Index: AQHdGko3HQEl0NK78UaxGmKQp9BrIw==
-Date: Thu, 23 Jul 2026 02:23:14 +0000
-Message-ID: <20260723022300.4174471-12-jamin_lin@aspeedtech.com>
-References: <20260723022300.4174471-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20260723022300.4174471-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|KL1PR06MB7034:EE_
-x-ms-office365-filtering-correlation-id: 4aa87517-9c2b-4e9c-97f8-08dee86159b6
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|366016|1800799024|376014|921020|38070700021|6133799003|56012099006|10067099003|22082099003|18002099003|3023799007;
-x-microsoft-antispam-message-info: ePmnxUr/dBk17h3MwkUFQqwZT62VJDAvE6QhJ916se+p4hE0+Qacd3pU8pUVJQajAlj7NRWJsogvgn8VSzSChPcE7NFV6+sNg7oV5buW5X+p2r2Zbyspw1miTDrpgkeyzGhwlGRxXQzfPNV9kv1xtTFJgTpSWu22QOZPAVPd17wHUupZ2Zf0nMdi6gUN10AJ6CQiVNjp1nk7zfClmZvNCwm1vov/GzFwL68Fb1kjRiIM4r+LVEnrupaUOphzH2cgaNFYq2VCi5VuAtH7Tf9iu92XzLNASk+nIFhFwYKmTD3rEXMwjmBruPRZnVe9CziCrXn7VvqzssNolkeP60vJzRz3zId/SJf9T2XyubxC4y2KLCf3F6bQQNiVUchEPtnard19y/4WDLdqjHqd6I5iROgmnv63zax8m6MVmwLC1Rx08/l0VdxpYIcKOKn3cz4xiVgRIYD3Ymv+TIWxbNPMCUFVnaglQomvS5Bx3VywM6vzbY8hFh/kTRBkqVQUYBrOvdLLeyZ7ua9m6+1klb2+ByjMon9OvGrHWi6YDT/JZ1CRzdFpZgTCr8rSgLxorpNPHII67BKYM2+b+B7BjSO0dc8z5KqrkICn/Fo2hMLqmL7/jKSEKKmNS33jXERnYFDOyv5PY4qhOY592eCorzdWjFbMW/bJiLjhOkqcHT5Uu1iqJGCBrroaXt7fmS3LxkYpGPpjAZqXBQf4XMzmKAsQHtGfoQ4HhdYgv5ELkJDZqL3XZq1i2pfycFGMP8eMar9Q
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(366016)(1800799024)(376014)(921020)(38070700021)(6133799003)(56012099006)(10067099003)(22082099003)(18002099003)(3023799007);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?0JIt/y8yEE8QKS0Cu4+C8LusV2Y4k8FU7H/aC1kJmGq0jvQhyyppL4mSZh?=
- =?iso-8859-1?Q?Uh2jjgnr5ZihImRuIloE5Nxcmbt55ChA0Ey9/5AaMGNw40nw9+Wvhtrq08?=
- =?iso-8859-1?Q?ksNDdLIa+t33in7Gp2KAK6MVeFXMXLZ2qaVHEuDcklpMm6xYFWoGe864Mj?=
- =?iso-8859-1?Q?rOLtNWovFtikMQ+rFx4bLOF86LsA/JKEN7YtRq37WcTwQrUQCPXEfJ927Z?=
- =?iso-8859-1?Q?NPXg6PyacwgW5KjmNJrcItwt/Y8vXt0gk/FumofG691zt+RIfPFcB5wh+V?=
- =?iso-8859-1?Q?9pF6GS5hmG/TheXRCyfEuGEJbqj4JEYFk6HFHavrNE662/qJnenY338x93?=
- =?iso-8859-1?Q?QSkP9iDkG7yxnaOlVreBwc2eA7AfWmw7cYCfdiWVhqb89hCcw1/wBrtRbw?=
- =?iso-8859-1?Q?si+hoeQgi907NlcQOLLELhpapi5fC373b1H9T8rbiH8WXjkNrEPFwf8mmK?=
- =?iso-8859-1?Q?HKvqc0Zp+EAwMOUrp6LWlpRyi82TiJgV0UTigdXcN+qMwgTHKGGi4GJr8G?=
- =?iso-8859-1?Q?LU+hKYXU7O2hfOAoYogea6KreI4WDQyDQ+knLW86/3/F3OQyC2yBhu8KQa?=
- =?iso-8859-1?Q?xdrF0LYfrg0mD6HbIY1oQNli/nJUMVurzlU6pA3FA85Sdoo0/Me2OMuF/R?=
- =?iso-8859-1?Q?IiwdkgiYCDuINSfQUyOYxTf1A5/XFOCv06abmaE4BcnX7zoCfBnFSJ3ywN?=
- =?iso-8859-1?Q?4z5VptAQVoxiWmwk7x8ZOX9ZAEv2pIpxOLIYswJZKoCGS42haLqJr96o+2?=
- =?iso-8859-1?Q?0/deIWXMrsdgdoU56YuKtQr25Drf/QVN6eazUX3XygIXLeJl1C0YZwQ6N4?=
- =?iso-8859-1?Q?W6YAiwUqEvkMZngDQivbGJ1N6TftF1taWeAHYicqlEPw8/inp7mjhrCtAb?=
- =?iso-8859-1?Q?pDtFipTJpzr3lt5mNeApb5GtsWuCobM/ZbMQ4uw6FT+/7gFNvij/yiua5m?=
- =?iso-8859-1?Q?u+YULEEO+jMryG81iYYC8rWgNijK1WWrlhzYPuDCDXSJAuvhzpqdaP5Iqp?=
- =?iso-8859-1?Q?77VbFTL9cExs38obtDkb94iA8kTAjPSJb4jGrgKdmzRujuPgHt1UW1g/oI?=
- =?iso-8859-1?Q?mRkw9rhvojqOJkY/JwNL/eJtKkZ82d2Ux6YO7yHQUruKqZLaXHQeeMQ1lN?=
- =?iso-8859-1?Q?v1jmeMy7zBRijeC24KhTxSBJJNn8jPVHlhEBe2l0ioFUTE6Qfdap+Durya?=
- =?iso-8859-1?Q?tlGpyrhTiTdWy3crdLmTkoJ2MjGca8o7ruWr6SZb7av38Wc8asy1NdKeWr?=
- =?iso-8859-1?Q?nTG5i1bfEbUwWo9HwWn9MUtgrA+Mb6OoV5Lzz4H4YIF2TYLrZwTbkYF43v?=
- =?iso-8859-1?Q?g7LO6YZWBydBGAx5YAUm4TzFR6sLF0KN1WRXbuY7nzMnZWRaBW+zFT+Htr?=
- =?iso-8859-1?Q?yPr4ebyCc1TYY6En7xTsmFZdHFn6pFGiIieF29VpZui2Nc64NjoHBxhzwj?=
- =?iso-8859-1?Q?ihAtw9U9x7zqsRl4PqnPjQZIpKMPXPnKWeTn5rzQHqhbHvAkPVv14vwtob?=
- =?iso-8859-1?Q?eXDfre6gzjSdY0EmyoCKMdwnrzO7N19M0/S9TxJ+D3amlpQbe1iCK0iqXs?=
- =?iso-8859-1?Q?ymrC/AZcO6kLz8JhHaXqO18xl3feb6sAUn9ZTmHxqZjGnhvv/nrspcxbBB?=
- =?iso-8859-1?Q?36Ws5sv9CO3ZsHX1uKv2Xpft1awzpPl26TFsuyd6Uy8dTNup1NDhzH7U/J?=
- =?iso-8859-1?Q?spB7VA/jI7KNoam2Wha8bs6IOv9ThSLlkG3Bg2eD98vPtEUc7ozJjBtoij?=
- =?iso-8859-1?Q?lyL4BR50CMeenm/LvSegkVd05qNxV1hQrXnNmzS/2MFTT8/dQUfQWEzYOg?=
- =?iso-8859-1?Q?qBad75qCoQ=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wmmXq-0005gj-7p
+ for qemu-arm@nongnu.org; Thu, 23 Jul 2026 02:04:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1784786672;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=niyOg9VzPAiSo40vNvHu9tZil6B9O1QeQyKulBHn0B8=;
+ b=Q7wXgyAC54OVmaTftbd+JfHJ8pUwswU0M2XbDZMVpHncjQguCElWafsptMUSA+N8zK8qQW
+ pVSqw2qHjQVTr38yLaP+zhY5rEyJ0vAM6xGUHGhYoKONjb9wxM40HfU1Xyg3ZTX58LJYqv
+ Agf6/1gl9Q1+cdP8BGIRUcMmc76gfIQ=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-137-VO3-X0JLOzqAled8-aRWkQ-1; Thu, 23 Jul 2026 02:04:31 -0400
+X-MC-Unique: VO3-X0JLOzqAled8-aRWkQ-1
+X-Mimecast-MFC-AGG-ID: VO3-X0JLOzqAled8-aRWkQ_1784786670
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-47f5a972b0eso222750f8f.2
+ for <qemu-arm@nongnu.org>; Wed, 22 Jul 2026 23:04:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1784786670; x=1785391470;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=niyOg9VzPAiSo40vNvHu9tZil6B9O1QeQyKulBHn0B8=;
+ b=QrhzwVCRmLnYgQ6smzhyUu2Q5AQfxEBVNeW2fuXpVjJgcoEgKPzFwDSZMQyIyZq0DW
+ XDSM/md/ttcsmuI/SdElJ6bSSMnh7WhKR9n67lMB2eag/AU7SV/ehjOugiaoR79AIbGt
+ N80ewOcBoEi2SrVZS1x6Dlin/q0h2dQRR3Xn7VqVaBkv7qFNap8lnbe23OkP/79aqnhC
+ ZhRbiMPodiPMLTxnzDpat7qFep9tbj8FLwXZWcqkyoSldS3v0sOlRTyEZF71A2LRmfyN
+ YvszktLLD8YcGfGbiy9aXcV3sJg/ZzH1hWE5DBxnxi8pyfzLViBJ810y7BSldefxUGh0
+ lAww==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RpzHvOJ6XlggaTExY9DuCGPvLlIwBUObZcJzpfRPmWJfTyES49R52Luyxkrr/1UmY9m6D8dKVYLAA==@nongnu.org
+X-Gm-Message-State: AOJu0Yxn/zFfpsryoqMB+E99xdrnjszHH2S1kp9/3H4MU71XGKnsq9CO
+ qk2qIlGc3HmURcw4ri08yEb2sockY3KGMwpEhLNP/jUPKiKTqWdAXUNm3ZqyF7fZ+swXHUXn5FY
+ TQ+yADR6Slw6uLd1NjHVoRI3ieV62UTtuo3cUE0bkuCBqhWcpTsIe0A==
+X-Gm-Gg: AR+sD12gSX4reg+A5v3sKT53tpLA+4Sypw3fD07PLFw6dTlOr7z0SSuMUnqHuuN1TdJ
+ pVw79RDfNvU3OvriDVBs3LA+FXRi0SxjRBSoxd4OFo4kyrs7Js6CbNP4XxnrmrFij2fbkJtU58V
+ rwbNxVqU1KmoZw6ngT2FJeZ2s75G50P1AJek4w/9msy/EfDTLNd6hYGIFAHI701OSrDLCQK5iR4
+ 2c+33goJWnI/6NoLisChp3+QEg7C+VytIWorVk5OI+rqlu6IeKm2aT46E4rQGr5NIAby6rZAhcx
+ iq17uwYmEQUMgAjXnuqewXDRxi/5Peij3z/t8q0SCZYH8qOPTHy+bcNVbk8KR8Qo9Palf1U2zmb
+ bciWN6vfL579Ir4SSX0oc2A==
+X-Received: by 2002:a5d:5f07:0:b0:47f:6f9e:1e82 with SMTP id
+ ffacd0b85a97d-47f8d710b11mr1792037f8f.9.1784786669471; 
+ Wed, 22 Jul 2026 23:04:29 -0700 (PDT)
+X-Received: by 2002:a5d:5f07:0:b0:47f:6f9e:1e82 with SMTP id
+ ffacd0b85a97d-47f8d710b11mr1791974f8f.9.1784786668866; 
+ Wed, 22 Jul 2026 23:04:28 -0700 (PDT)
+Received: from redhat.com (IGLD-80-230-37-66.inter.net.il. [80.230.37.66])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-47f85c52fa9sm13412227f8f.20.2026.07.22.23.04.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 22 Jul 2026 23:04:28 -0700 (PDT)
+Date: Thu, 23 Jul 2026 02:04:24 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Peter Xu <peterx@redhat.com>
+Cc: Gavin Shan <gshan@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, alex@shazbot.org,
+ richard.henderson@linaro.org, berrange@redhat.com, philmd@mailo.com,
+ david@kernel.org, clg@redhat.com, pbonzini@redhat.com,
+ phrdina@redhat.com, jugraham@redhat.com,
+ liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn,
+ shan.gavin@gmail.com, qemu-s390x <qemu-s390x@nongnu.org>
+Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
+ device region accessors
+Message-ID: <20260723015708-mutt-send-email-mst@kernel.org>
+References: <73f79841-8cc7-4ca6-8f6b-fb97b53a6fe8@redhat.com>
+ <20260717091756-mutt-send-email-mst@kernel.org>
+ <CAFEAcA-O6Z4JrVV0DL_tta6khRyUta_Zz5mJt6OszaW1mu0o6Q@mail.gmail.com>
+ <20260717095407-mutt-send-email-mst@kernel.org>
+ <9c2ad22a-e768-4a07-85a2-01ce1fc14368@oss.qualcomm.com>
+ <59882c5b-545d-4768-8bf4-723fed97a801@redhat.com>
+ <al-eCtxGjG4HHEbl@x1.local>
+ <6210e178-a93f-4411-810a-41edb1fb656e@redhat.com>
+ <20260722015422-mutt-send-email-mst@kernel.org>
+ <amDyvgR09OJssENX@x1.local>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: Az1KphGSTLn+NR22U4RnZWlT396zet4F8VQZHEWxNeAiNg6d1SAdGglLsIiXQnjvmsS6Llty+95Z9GdSt6jRTVtrVI+5n63/4OHCUqZiuNRh0ruFJaFfvvtxvn5X/+DAwU0PSimD03rIX5EqTOcQ1WwcBg/1Gp5oiKVFZTG0y6lvFLXO0gw4gNOtjd1pY9gCJmAvQJ14PfsHqavxRnYRX/EzH2SXJ9fiYrS8oRZai0vL8v4wglHAsH3Rd6wXsBEFEq88HVQuejRYR5n+uspkEfTIPwfEbvDjBxIwNwyJrpJnd1KkN6iRj1DFl/2EA+GnWOQzqimVm47VMDCXyaNwWg==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4aa87517-9c2b-4e9c-97f8-08dee86159b6
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jul 2026 02:23:14.7701 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: P7iF6xCsh8giK3j33G1Fo3FgOQiOeW6yvNxnDkOMtHRoCPI/ax4YklLlMZOQ7UzuE0v31Hnv0dJZoHps5Il3ADHYbRI8rPad+sTbTjJfVUg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR06MB7034
-Received-SPF: pass client-ip=2a01:111:f403:c405::5;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=TYPPR03CU001.outbound.protection.outlook.com
+In-Reply-To: <amDyvgR09OJssENX@x1.local>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 4UWz84ore4utYGjxN5N-fgJViMCsg2TIrPzL2otqZXk_1784786670
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: permerror client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -151,107 +127,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
-Tested-by: Philippe Mathieu-Daud=E9 <philmd@oss.qualcomm.com>=0A=
----=0A=
- docs/system/arm/aspeed.rst | 42 +++++++++++++++++++++++++++++++-------=0A=
- 1 file changed, 35 insertions(+), 7 deletions(-)=0A=
-=0A=
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst=0A=
-index 2d51ceeb84..b6dd757f6e 100644=0A=
---- a/docs/system/arm/aspeed.rst=0A=
-+++ b/docs/system/arm/aspeed.rst=0A=
-@@ -386,18 +386,25 @@ Booting the ast2700fc machine=0A=
- AST2700 features four Cortex-A35 primary processors and two Cortex-M4 copr=
-ocessors.=0A=
- **ast2700-evb** machine focuses on emulating the four Cortex-A35 primary p=
-rocessors,=0A=
- **ast2700fc** machine extends **ast2700-evb** by adding support for the tw=
-o Cortex-M4 coprocessors.=0A=
-+There are two methods to boot the ast2700fc machine.=0A=
-+=0A=
-+Manual boot using ``-device loader``:=0A=
-+=0A=
-+In this approach, users manually load firmware and assign entry points via=
- QEMU loader devices.=0A=
-+By default, the PSP begins execution at address ``0x430000000``, the load =
-address of the bl31=0A=
-+firmware. The SSP and TSP start in the powered-off state and must be expli=
-citly enabled by the=0A=
-+PSP through writes to SCU registers.=0A=
- =0A=
- Steps to boot the AST2700fc machine:=0A=
- =0A=
--1. Ensure you have the following AST2700A1 binaries available in a directo=
-ry=0A=
-+1. Ensure you have the following AST2700 binaries available in a directory=
-=0A=
- =0A=
-- * u-boot-nodtb.bin=0A=
-- * u-boot.dtb=0A=
-+ * u-boot.bin=0A=
-  * bl31.bin=0A=
-  * optee/tee-raw.bin=0A=
-  * image-bmc=0A=
-- * zephyr-aspeed-ssp.elf (for SSP firmware, CPU 5)=0A=
-- * zephyr-aspeed-tsp.elf (for TSP firmware, CPU 6)=0A=
-+ * zephyr-aspeed-ssp.bin (for SSP firmware, CPU 5)=0A=
-+ * zephyr-aspeed-tsp.bin (for TSP firmware, CPU 6)=0A=
- =0A=
- 2. Execute the following command to start ``ast2700fc`` machine:=0A=
- =0A=
-@@ -407,6 +414,8 @@ Steps to boot the AST2700fc machine:=0A=
- =0A=
-   $ qemu-system-aarch64 -M ast2700fc \=0A=
-        -device loader,force-raw=3Don,addr=3D0x400000000,file=3D${IMGDIR}/u=
--boot.bin \=0A=
-+       -device loader,force-raw=3Don,addr=3D0x42C000000,file=3D${IMGDIR}/z=
-ephyr-aspeed-ssp.bin \=0A=
-+       -device loader,force-raw=3Don,addr=3D0x42E000000,file=3D${IMGDIR}/z=
-ephyr-aspeed-tsp.bin \=0A=
-        -device loader,force-raw=3Don,addr=3D0x430000000,file=3D${IMGDIR}/b=
-l31.bin \=0A=
-        -device loader,force-raw=3Don,addr=3D0x430080000,file=3D${IMGDIR}/o=
-ptee/tee-raw.bin \=0A=
-        -device loader,cpu-num=3D0,addr=3D0x430000000 \=0A=
-@@ -414,12 +423,31 @@ Steps to boot the AST2700fc machine:=0A=
-        -device loader,cpu-num=3D2,addr=3D0x430000000 \=0A=
-        -device loader,cpu-num=3D3,addr=3D0x430000000 \=0A=
-        -drive file=3D${IMGDIR}/image-bmc,if=3Dmtd,format=3Draw \=0A=
--       -device loader,file=3D${IMGDIR}/zephyr-aspeed-ssp.elf,cpu-num=3D4 \=
-=0A=
--       -device loader,file=3D${IMGDIR}/zephyr-aspeed-tsp.elf,cpu-num=3D5 \=
-=0A=
-        -serial pty -serial pty -serial pty \=0A=
-        -snapshot \=0A=
-        -S -nographic=0A=
- =0A=
-+Boot using a virtual boot ROM (-bios):=0A=
-+=0A=
-+In this method, the virtual boot ROM (vbootrom) handles the full initializ=
-ation sequence.=0A=
-+It starts the PSP, which then enables the SSP and TSP by programming the a=
-ppropriate SCU=0A=
-+registers, following the hardware behavior.=0A=
-+=0A=
-+Execute the following command to start ``ast2700fc`` machine:=0A=
-+=0A=
-+.. code-block:: bash=0A=
-+=0A=
-+  IMGDIR=3Dast2700-default=0A=
-+=0A=
-+  $ qemu-system-aarch64 -M ast2700fc \=0A=
-+      -bios ast27x0_bootrom.bin \=0A=
-+      -drive file=3D${IMGDIR}/image-bmc,if=3Dmtd,format=3Draw \=0A=
-+      -serial pty -serial pty -serial pty \=0A=
-+      -snapshot \=0A=
-+      -S -nographic=0A=
-+=0A=
-+Serial Console Redirection:=0A=
-+=0A=
- After launching QEMU, serial devices will be automatically redirected.=0A=
- Example output:=0A=
- =0A=
--- =0A=
-2.43.0=0A=
+On Wed, Jul 22, 2026 at 12:41:34PM -0400, Peter Xu wrote:
+> On Wed, Jul 22, 2026 at 01:58:18AM -0400, Michael S. Tsirkin wrote:
+> > On Wed, Jul 22, 2026 at 10:53:27AM +1000, Gavin Shan wrote:
+> > > On 7/22/26 2:27 AM, Peter Xu wrote:
+> > > > On Tue, Jul 21, 2026 at 03:37:53PM +1000, Gavin Shan wrote:
+> > > > > If Peter is fine with two variants for x86 and non-x86 architectures.
+> > > > > I can post (v4) for further review. That will be something like below
+> > > > > and let me know if there are any other improvements are needed.
+> > > > 
+> > > > I have a generic question on the "unaligned access for x86": I think the
+> > > > question is about the one Michael raised here on unaligned access may break
+> > > > x86 here:
+> > > > 
+> > > >    https://lore.kernel.org/qemu-devel/20260617022330-mutt-send-email-mst@kernel.org/
+> > > > 
+> > > >    3. (theoretical concern) also on x86, unaligned accesses are
+> > > >    possible on guest and host, so converting an unaligned access to a
+> > > >    series of aligned ones can in theory break devices.
+> > > > 
+> > > > Is that a real problem we need to consider, or can we start with unified
+> > > > approach and leave it for later?
+> > > > 
+> > > 
+> > > I'm leaving this question to Michael.
+> > 
+> > Knowing what I know about hardware designers, it's something someone
+> > somewhere does)
+> > It can be made a separate patch, just to show - it should be all of
+> > ~10LOC.
+> 
+> It's only about removal of anything that might be controversial for now,
+> thanks.  I also wonder if anything would break, then it's more solid proof
+> that per-arch change is required.
+
+Repeating:
+	I think there is exactly 1 kinda reasonable case. A 2 byte read/write at
+	offset 0x1 within a dword. This maps nicely to even classical PCI byte
+	enable mechanism and so yes it works if your CPU can initiate these
+	things, and it's atomic.
+
+It's easy to find more examples of such hardware if one looks. For example,
+LEDCTL on e1000e:
+
+20260625101817-mutt-send-email-mst@kernel.org
+
+
+A claim that no software uses this hardware capability is the strong
+claim that needs proof, not the other way around.
+
+
+What to do on non-x86? reading a dword might work, or reading
+byte by byte might work. Both can cause issues, just different ones,
+but given we did byte by byte previously i guess let's keep
+doing that.
+
+
+> > 
+> > > > PS: I apologize if I missed important piece of info along the way; I didn't
+> > > > follow closely on the discussion on this topic in the past few weeks.
+> > > > 
+> > > > One thing to mention is, what we change should only need to affect
+> > > > ram_device, AFAIU.. so most memcpy()/memmove() shouldn't be changed for any
+> > > > arch when it's pure RAM.
+> > > > 
+> > > 
+> > > It depends. This patch intends to fix issue [1] in the lower layer by using
+> > > the newly added accessors (qemu_ram_{copy, move}) on all directly accessible
+> > > regions including the regular (pure) RAM region. Otherwise, the newly added
+> > > accessors should be limited to ram_device regions only as you said.
+> > > 
+> > > [1] https://lore.kernel.org/qemu-devel/20260527091711.3901-1-liugang24219@sangfor.com.cn/
+> > > 
+> > > Thanks,
+> > > Gavin
+> > 
+> > using memcpy()/memmove() to emulate guest's atomics is generally
+> > kinda broken.
+> > but yes there are architectures where doing it to device ram is
+> > more broken than doing it to regular ram.
+> 
+> If we keep memcpy()/memmove() for len>8 (aligned or not), I am thinking no
+> perf issue will happen, then looks like we can indeed change this even for
+> pure RAM operations, which we can't identify in case of e1000e driver use
+> case.
+> 
+> Then does it mean we should not use __builtin_memcpy()/memmove()?  Even if
+> we know constants 1/2/4/8 would work there, why not we go ahead and use
+> qatomics, which is even more future proof?  I also stumbled on top of
+> commit 77b1757090 ("include/qemu/bswap.h: Use __builtin_memcpy() in
+> accessor functions"), which seems to say the same thing "for the long
+> term".
+> 
+> For "should we still do unaligned access if the guest did it, so as to keep
+> the original behavior of a bare metal" question, are we on the same page
+> that we should just break it into aligned accesses for all archs?  I think
+> it means, we will not be able to emulate guest faults correctly as what
+> will happen on bare metal, but we're missing the fault injection logics
+> anyway, so whenever it's implemented we _could_ switch it back to unaligned
+> accesses.  Before that, breaking unaligned seems like a better way to go to
+> (1) satisfy all legit users, and (2) don't make QEMU crash by guest
+> operations.
+> 
+> Last, one silly question: why do we need any helper named with *memcpy*, if
+> memmove is always superior (to consider range overlap)?  Can we stick with
+> memmove all over the places?
+> 
+> Thanks,
+> 
+> -- 
+> Peter Xu
+
 

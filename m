@@ -4,87 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD1DFC531CA
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Jul 2026 12:54:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7EC4C531CA
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Jul 2026 13:47:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wmswZ-0004uc-I7; Thu, 23 Jul 2026 08:54:33 -0400
+	id 1wmtld-0003iI-8M; Thu, 23 Jul 2026 09:47:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wmswS-0004hB-7b
- for qemu-arm@nongnu.org; Thu, 23 Jul 2026 08:54:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wmtlZ-0003g8-6b
+ for qemu-arm@nongnu.org; Thu, 23 Jul 2026 09:47:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wmswN-0002EE-GF
- for qemu-arm@nongnu.org; Thu, 23 Jul 2026 08:54:21 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wmtlV-0002B8-LU
+ for qemu-arm@nongnu.org; Thu, 23 Jul 2026 09:47:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784811257;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1784814428;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=OhnukckyjUTtZRplsRD3KUYOcApispTBtT9cuXI06RQ=;
- b=PatkVhOYAZBCUy2ldyywIfz1jalw9I/anBG8B42carCFRRr2cvFxKzX+AzeK+Rk0s1D2PA
- TyhSBroPmiYzHVQeq/38NlSQp4ip7LSarfIYckY4kFqwlcTtyDaONP5XVSHNLe5nE1PURH
- lPYawZAfOx8rWVShITtzOo7bCEcxv1g=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-652-6vTOhhfGMJyN4DXmtOgCwQ-1; Thu,
- 23 Jul 2026 08:54:13 -0400
-X-MC-Unique: 6vTOhhfGMJyN4DXmtOgCwQ-1
-X-Mimecast-MFC-AGG-ID: 6vTOhhfGMJyN4DXmtOgCwQ_1784811252
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A3D5D1945CAA; Thu, 23 Jul 2026 12:54:11 +0000 (UTC)
-Received: from redhat.com (unknown [10.44.32.196])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A26C7180034C; Thu, 23 Jul 2026 12:54:06 +0000 (UTC)
-Date: Thu, 23 Jul 2026 13:54:02 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Jamin Lin <jamin_lin@aspeedtech.com>
-Cc: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Troy Lee <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- Troy Lee <troy_lee@aspeedtech.com>
-Subject: Re: [PATCH v2 12/17] tests/unit/test-crypto-cipher: Test AES-GCM mode
-Message-ID: <amIO6npcvmD4rGCn@redhat.com>
-References: <20260715033311.1648424-1-jamin_lin@aspeedtech.com>
- <20260715033311.1648424-13-jamin_lin@aspeedtech.com>
+ bh=xZu67FW3xTs3nqnJrhKrgjeo2rgGgFL3o3EmVubG598=;
+ b=AzudBxZByVbwoD4fTtU0vxg+0u7ydN6yyh8ZVkT47FVPQRnD3sKER3j6/9a3Ia99NzCH9D
+ 3mdaNSdwORRbGG2dOBLb3FTmZL1dQ43grTSx7qecXVLRafCpJrhXXieMyFwnM3RwZjgU3D
+ 4Jq9lXDjxBbfPVnZ51H4Ro1YRxPgM2g=
+Received: from mail-ua1-f69.google.com (mail-ua1-f69.google.com
+ [209.85.222.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-689-dWgNguIPM6W3aDwCXROjsg-1; Thu, 23 Jul 2026 09:47:04 -0400
+X-MC-Unique: dWgNguIPM6W3aDwCXROjsg-1
+X-Mimecast-MFC-AGG-ID: dWgNguIPM6W3aDwCXROjsg_1784814424
+Received: by mail-ua1-f69.google.com with SMTP id
+ a1e0cc1a2514c-976cd199486so21061241.3
+ for <qemu-arm@nongnu.org>; Thu, 23 Jul 2026 06:47:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1784814424; x=1785419224;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :content-type:mime-version:references:message-id:subject:cc:to:from
+ :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=xZu67FW3xTs3nqnJrhKrgjeo2rgGgFL3o3EmVubG598=;
+ b=JVWzVc2pvBQQEDe1GEyCyYbn09x3cu43EDA2oG/9zmluKg8AJWXay9B0tynQ2hJ32a
+ oXdAV2UL7Oz8HP23XVRNRWr7Bc3Lbss0psGfQBDs4C40wCxrF+drraGZTC24GpNW7XMw
+ qCmQM1hYDgsBQjFsRSxqh2Hckc5lrHxsNEFVU+gioSCjbgPvvqKB3wpnbX9JnFlLClF+
+ t8TaNKeI+zlJdEZE76hZyvQYaYxXEv+5cxWsm63RWefTjSAggRoqFt+q+ZUZnLxpefDe
+ L6QPANyxEYUqB+2pNdtvLovOBrHmoo4PeA3eyZgfh5bOT7G0kH1a0nfzVqbln5NO6G32
+ TArw==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RrHhqfaArM4Me/hZUBUGVhLQGQIz5WUP/ebpMAs2PNW8W/qrGH0+Cd8Nk2f9l6bI+2wgSvPJ89wyA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz0DK7Rd3SzRtVqiebesLXuxNH3CMh4aMsVrhGUUzGNXy/Id/sy
+ orpwNWNPAW7CpQd6S+w+tqOH3DkGySRr7zzWm1DOLEPXY3/4Zy10fu5TF0s5vGaTcJ01U+Ia0iV
+ PkcMx99mnfcX/MYSq7OEdmBytcv3ptHaA4QFTfOoc2cMnMCj9LoT/Xg==
+X-Gm-Gg: AR+sD13kCud815bz7ApLjcOkGbD5bmRaP4yj/EkfoGi77F0L5zqdxBHRPlN6n3p9aAq
+ ZaVv6sEK62hnyw0/EzHl4EQ6VxD3sm4zjVfxw5UQkiAs2pntmRWHxLJnm+zBLXb9wI5Etl0lLX+
+ HOY4ecRE+/myV7p3YhoiQOCpX2X6+ef6MzVEe3YW/HmsRU6uo6stpnQ4l5qFSWThnvraOVM1EN5
+ I6/IXZ1SJFdAQl3xa49fwx05K/ZSr0+jVZdd6Yc3/2ncmQSwbczd4ZvyEFVEm8oNCqq0RxFr99T
+ shFPqRfF67dKLnsHZTqOXRoYw+f3Oy3M2SXxDEupOsZOvIAEY/vUopzGyB+MWM0mM7U2FDn/
+X-Received: by 2002:a05:6122:6991:b0:5bf:bb66:414f with SMTP id
+ 71dfb90a1353d-5c2da1ad401mr1158511e0c.11.1784814423006; 
+ Thu, 23 Jul 2026 06:47:03 -0700 (PDT)
+X-Received: by 2002:a05:6122:6991:b0:5bf:bb66:414f with SMTP id
+ 71dfb90a1353d-5c2da1ad401mr1158446e0c.11.1784814421630; 
+ Thu, 23 Jul 2026 06:47:01 -0700 (PDT)
+Received: from x1.local ([2605:8d80:6c29:c98e:204b:552e:32b9:cf20])
+ by smtp.gmail.com with ESMTPSA id
+ 71dfb90a1353d-5c2c64f6d8esm5819671e0c.15.2026.07.23.06.46.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 23 Jul 2026 06:47:01 -0700 (PDT)
+Date: Thu, 23 Jul 2026 09:46:57 -0400
+From: Peter Xu <peterx@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Gavin Shan <gshan@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, alex@shazbot.org,
+ richard.henderson@linaro.org, berrange@redhat.com, philmd@mailo.com,
+ david@kernel.org, clg@redhat.com, pbonzini@redhat.com,
+ phrdina@redhat.com, jugraham@redhat.com,
+ liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn,
+ shan.gavin@gmail.com, qemu-s390x <qemu-s390x@nongnu.org>
+Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
+ device region accessors
+Message-ID: <amIbUYN3teCLXTh-@x1.local>
+References: <20260717095407-mutt-send-email-mst@kernel.org>
+ <9c2ad22a-e768-4a07-85a2-01ce1fc14368@oss.qualcomm.com>
+ <59882c5b-545d-4768-8bf4-723fed97a801@redhat.com>
+ <al-eCtxGjG4HHEbl@x1.local>
+ <6210e178-a93f-4411-810a-41edb1fb656e@redhat.com>
+ <20260722015422-mutt-send-email-mst@kernel.org>
+ <amDyvgR09OJssENX@x1.local>
+ <20260723015708-mutt-send-email-mst@kernel.org>
+ <71d88d00-5b41-49d2-b649-8a6ea47abc4d@oss.qualcomm.com>
+ <20260723045428-mutt-send-email-mst@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20260715033311.1648424-13-jamin_lin@aspeedtech.com>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: ljF0npWM627Z7jUD_-DTERTycPI1kiyk-nnwOJLi9AI_1784811252
+In-Reply-To: <20260723045428-mutt-send-email-mst@kernel.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: WRnvm8q5k7gG4vpebFZ75FmwhQeOye3yTzoQQRgWBsM_1784814424
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: permerror client-ip=170.10.133.124;
- envelope-from=berrange@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 3
-X-Spam_score: 0.3
-X-Spam_bar: /
-X-Spam_report: (0.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.951,
+Received-SPF: permerror client-ip=170.10.129.124;
+ envelope-from=peterx@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.951,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,31 +125,200 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Jul 15, 2026 at 03:33:32AM +0000, Jamin Lin wrote:
-> Exercise the new GCM mode and the setaad/gettag helpers with the
-> canonical AES-GCM test vectors from the GCM specification (McGrew &
-> Viega, also NIST SP 800-38D): AES-128 and AES-256, with and without
-> associated data. Each vector is run through encrypt (checking the
-> ciphertext and the generated tag) and decrypt (checking the recovered
-> plaintext and the recomputed tag).
+On Thu, Jul 23, 2026 at 05:05:08AM -0400, Michael S. Tsirkin wrote:
+> On Thu, Jul 23, 2026 at 10:52:11AM +0200, Philippe Mathieu-Daudé wrote:
+> > On 23/7/26 08:04, Michael S. Tsirkin wrote:
+> > > On Wed, Jul 22, 2026 at 12:41:34PM -0400, Peter Xu wrote:
+> > > > On Wed, Jul 22, 2026 at 01:58:18AM -0400, Michael S. Tsirkin wrote:
+> > > > > On Wed, Jul 22, 2026 at 10:53:27AM +1000, Gavin Shan wrote:
+> > > > > > On 7/22/26 2:27 AM, Peter Xu wrote:
+> > > > > > > On Tue, Jul 21, 2026 at 03:37:53PM +1000, Gavin Shan wrote:
+> > > > > > > > If Peter is fine with two variants for x86 and non-x86 architectures.
+> > > > > > > > I can post (v4) for further review. That will be something like below
+> > > > > > > > and let me know if there are any other improvements are needed.
+> > > > > > > 
+> > > > > > > I have a generic question on the "unaligned access for x86": I think the
+> > > > > > > question is about the one Michael raised here on unaligned access may break
+> > > > > > > x86 here:
+> > > > > > > 
+> > > > > > >     https://lore.kernel.org/qemu-devel/20260617022330-mutt-send-email-mst@kernel.org/
+> > > > > > > 
+> > > > > > >     3. (theoretical concern) also on x86, unaligned accesses are
+> > > > > > >     possible on guest and host, so converting an unaligned access to a
+> > > > > > >     series of aligned ones can in theory break devices.
+> > > > > > > 
+> > > > > > > Is that a real problem we need to consider, or can we start with unified
+> > > > > > > approach and leave it for later?
+> > > > > > > 
+> > > > > > 
+> > > > > > I'm leaving this question to Michael.
+> > > > > 
+> > > > > Knowing what I know about hardware designers, it's something someone
+> > > > > somewhere does)
+> > > > > It can be made a separate patch, just to show - it should be all of
+> > > > > ~10LOC.
+> > > > 
+> > > > It's only about removal of anything that might be controversial for now,
+> > > > thanks.  I also wonder if anything would break, then it's more solid proof
+> > > > that per-arch change is required.
+> > > 
+> > > Repeating:
+> > > 	I think there is exactly 1 kinda reasonable case. A 2 byte read/write at
+> > > 	offset 0x1 within a dword. This maps nicely to even classical PCI byte
+> > > 	enable mechanism and so yes it works if your CPU can initiate these
+> > > 	things, and it's atomic.
+> > 
+> > Isn't this out of the CPU arch, dealt with at the bus level?
+> > 
+> > It looks we try to be clever with modern PCI code by optimizing this
+> > access -- not saying we can change that, I know it is too late after
+> > 20+ years -- relying on hw behavior that was done that way to support
+> > legacy hw, in particular broken I/O accesses.
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->  tests/unit/test-crypto-cipher.c | 240 ++++++++++++++++++++++++++++++++
->  1 file changed, 240 insertions(+)
+> Not sure what the question is.  We were dicussing how to emulate unaligned
+> accesses from x86 guests if they happen.
+> On an x86 host we can do that easily, and it's just a couple of LOC.
+> Though Peter Maydell dislikes host arch specific code. But I hope
+> if it's a separate patch on top and it is visible how small it is,
+> he will reconsider)
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Yes, if we still want x86 specific change, it would be better to be put
+separately.
 
+Said so, I don't think the e1000e LEDCTL test illustrated what might
+break..  Isn't that only an exmaple showing unaligned access is
+"supported", however nothing breaks even if we use 1B*2?
 
-With regards,
-Daniel
+My question was more about a real breakage, hence whenever it happened
+"it's more solid proof that per-arch change is required".
+
+> On other hosts we can't emulate them 100%, we either need to split
+> to byte accesses or over-access and mask. Byte accesses feel safer.
+> What qemu currently does with memmove is clearly not safe in the
+> general case.
+
+We should have another option that is not arch-dependent but keep the
+unaligned behavior.
+
+For current master, AFAIU we do unaligned access for both ram_device and
+rest. Say, even with ram_device_mem_ops, it has both .unaligned=true for
+both .valid & .impl.  I think it means indeed we have unaligned behavior
+even for ram_device.  It also means what matters in regards to the Realtek
+bug was only about aligned access (with subpage presence).
+
+I think it means we can always keep unaligned to stick with
+memcpy()/memmove(), but only use atomic ops for the aligned cases of
+1/2/4/8.  With that, I think we can also remove ram_device_mem_ops and fix
+the bounce buffer issue.
+
+I think it means we'll stick with memcpy()/memmove() for all archs for
+unaligned, which is again not safe... but that can be an existing but
+separate problem to solve too.
+
+One more thing to mention below...
+
+> 
+> 
+> 
+> As for optimizing - there is space for optimization e.g. vfio could
+> report the properties of a BAR to userspace for optimization
+> purposes. On x86 you can then get good speed with just memmove.
+> Other arches you will likely need to write arch specific code.
+> But this has to do with e.g. DMA into device BAR not CPU accesses.
+> As an aside, it is a pity qemu uses same thing for DMA and CPU access,
+> we know how virtio accesses work and this might allow optimization.
+> 
+> > 
+> > For Alpha / HPPA / MIPS there were ASIC in the PCI I/O path to handle
+> > these odd unaligned accesses inherited from x86 world.
+> 
+> Right.
+> 
+> > > It's easy to find more examples of such hardware if one looks. For example,
+> > > LEDCTL on e1000e:
+> > > 
+> > > 20260625101817-mutt-send-email-mst@kernel.org
+> > > 
+> > > 
+> > > A claim that no software uses this hardware capability is the strong
+> > > claim that needs proof, not the other way around.
+> > > 
+> > > 
+> > > What to do on non-x86? reading a dword might work, or reading
+> > > byte by byte might work. Both can cause issues, just different ones,
+> > > but given we did byte by byte previously i guess let's keep
+> > > doing that.
+> > > 
+> > > 
+> > > > > 
+> > > > > > > PS: I apologize if I missed important piece of info along the way; I didn't
+> > > > > > > follow closely on the discussion on this topic in the past few weeks.
+> > > > > > > 
+> > > > > > > One thing to mention is, what we change should only need to affect
+> > > > > > > ram_device, AFAIU.. so most memcpy()/memmove() shouldn't be changed for any
+> > > > > > > arch when it's pure RAM.
+> > > > > > > 
+> > > > > > 
+> > > > > > It depends. This patch intends to fix issue [1] in the lower layer by using
+> > > > > > the newly added accessors (qemu_ram_{copy, move}) on all directly accessible
+> > > > > > regions including the regular (pure) RAM region. Otherwise, the newly added
+> > > > > > accessors should be limited to ram_device regions only as you said.
+> > > > > > 
+> > > > > > [1] https://lore.kernel.org/qemu-devel/20260527091711.3901-1-liugang24219@sangfor.com.cn/
+> > > > > > 
+> > > > > > Thanks,
+> > > > > > Gavin
+> > > > > 
+> > > > > using memcpy()/memmove() to emulate guest's atomics is generally
+> > > > > kinda broken.
+> > > > > but yes there are architectures where doing it to device ram is
+> > > > > more broken than doing it to regular ram.
+
+.. please someone (at least.. Gavin?) still have a look at below.  It could
+matter how the next version looks, especially I want to make sure if we
+should get rid of __builtin_*() in the new helpers.
+
+Thanks,
+
+> > > > 
+> > > > If we keep memcpy()/memmove() for len>8 (aligned or not), I am thinking no
+> > > > perf issue will happen, then looks like we can indeed change this even for
+> > > > pure RAM operations, which we can't identify in case of e1000e driver use
+> > > > case.
+> > > > 
+> > > > Then does it mean we should not use __builtin_memcpy()/memmove()?  Even if
+> > > > we know constants 1/2/4/8 would work there, why not we go ahead and use
+> > > > qatomics, which is even more future proof?  I also stumbled on top of
+> > > > commit 77b1757090 ("include/qemu/bswap.h: Use __builtin_memcpy() in
+> > > > accessor functions"), which seems to say the same thing "for the long
+> > > > term".
+> > > > 
+> > > > For "should we still do unaligned access if the guest did it, so as to keep
+> > > > the original behavior of a bare metal" question, are we on the same page
+> > > > that we should just break it into aligned accesses for all archs?  I think
+> > > > it means, we will not be able to emulate guest faults correctly as what
+> > > > will happen on bare metal, but we're missing the fault injection logics
+> > > > anyway, so whenever it's implemented we _could_ switch it back to unaligned
+> > > > accesses.  Before that, breaking unaligned seems like a better way to go to
+> > > > (1) satisfy all legit users, and (2) don't make QEMU crash by guest
+> > > > operations.
+> > > > 
+> > > > Last, one silly question: why do we need any helper named with *memcpy*, if
+> > > > memmove is always superior (to consider range overlap)?  Can we stick with
+> > > > memmove all over the places?
+> > > > 
+> > > > Thanks,
+> > > > 
+> > > > -- 
+> > > > Peter Xu
+> > > 
+> > > 
+> 
+
 -- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+Peter Xu
 
 

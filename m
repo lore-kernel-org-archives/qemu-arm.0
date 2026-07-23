@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B89A1C531D0
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Jul 2026 20:09:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1488C531CC
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Jul 2026 20:10:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wmzjI-00063j-Ur; Thu, 23 Jul 2026 16:09:16 -0400
+	id 1wmzjK-00064l-1h; Thu, 23 Jul 2026 16:09:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wmzjG-00061n-Ux
+ id 1wmzjG-00061m-Uo
  for qemu-arm@nongnu.org; Thu, 23 Jul 2026 16:09:15 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wmzjD-0006eV-AP
+ id 1wmzjD-0006eK-1K
  for qemu-arm@nongnu.org; Thu, 23 Jul 2026 16:09:13 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-47f84023916so990251f8f.3
- for <qemu-arm@nongnu.org>; Thu, 23 Jul 2026 13:09:09 -0700 (PDT)
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4955484387cso8341945e9.1
+ for <qemu-arm@nongnu.org>; Thu, 23 Jul 2026 13:09:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784837348; x=1785442148; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=nv8G7uF/vXKYkD7VAxJ3puA+WTb9xEykj6EMLdleuWo=;
- b=TQxGmei4Qa6uWwXLnBDjqzsgDTG1PAsqJf5SLEdfRmDnr2gNvcBB6M/etGqk5MW3LO
- P1LsUXRXma2oPNQQiKYcdLjYQ/6XKDMMSJdon54avmGggmukuvCZNiDrMD+c/YreNPpi
- fT93UGfoLtYwj/PjL/1rSdSz76MNYYN0Rj0wsrA5J/m7LwamqmmMxl5Dp4EhlaF43RNf
- b+6FHWqL567E2Fyo9iu26Rog+HcFUhPYZdVC+vKee47P2syAgjUMT+sVj0htWRjz1K9x
- H2Qn5A8V3td8RAPY+tHc1iRLjTnD1Z4O2vlG7z69MNHzerB0ckUlM1HlaHcTMiK8dqIw
- HNzA==
+ d=linaro.org; s=google; t=1784837347; x=1785442147; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=RKyIBqN3S0X+T5YwXipes02FFm/ApvlBFwhhjh4hxUM=;
+ b=IrxX3ZpAwEUA/5u0dKDSbG6tx8RrayIh9/1ZEhXDqcxWf32HsR5+PUA2Jf3AKRT+aZ
+ JDmzWg5fsXgiu8X8lADv6FVOsAdUNS826O4aAakIxewCftuV3KzEdTvOQLcXvZYyXdb/
+ xlTNdzdrRwySh+9d1EYbeorOdTXwCa1jZRLBg7LXEuic6VU6oTdjBeVbd+pUBw+VSifN
+ SZyQ6Tl/1Nr/NIuKNJ0V8puDwgPh+Mc4q+EXZRhYkPx2bZnLINli1u/OHZQHGLXCldWV
+ LwVWDOWRSuFF2Rez5lOSy4AS65LECvfqLr8oJz3VNwhf4AtRhn4J97CpV5Dj9ANJjV3r
+ GeSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784837348; x=1785442148;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=nv8G7uF/vXKYkD7VAxJ3puA+WTb9xEykj6EMLdleuWo=;
- b=THVJaYer/vhoRjmrk4SUUt6S9Ju8/61Eo5YSu9lxksBgtanEI+h9KtvxfstHOF7AXj
- Hd00soyH5VuHz8km6eYmr4PZQCTHcx4LMmqMnrZAhJp2KvdkWLPEPw/29MK46wmeo+4j
- yo0bE03TWBxxJ+3escuy6couXiYTkNgvFoDhp6CriBzv2NRvUTUqh3fISLoCN0cb7IDX
- P9+HG2PBey2wX26/fGXDJ5StCNuVlP6d/dFlRHnG3T7BpyQFLgk3ZPf992ty1TJU9aUS
- v9MFKxx//Wq1FKJfndrLpLVPznZZCLouwMIYQVbffbsj3WDpEJ7ItPr8ad1089ByBL3F
- Jt8A==
+ d=1e100.net; s=20251104; t=1784837347; x=1785442147;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=RKyIBqN3S0X+T5YwXipes02FFm/ApvlBFwhhjh4hxUM=;
+ b=mxGBRf59he6zxD6mGN+XCciPIqvj64Y4VRXml51YfUR173JLu9WndjoEujNqpcRO9u
+ 03srIBTUywqK3WbjNEwL5UdVIDvaWTknPDq6maoTrEujRZ471RyoPe63FbhUAndGCZ8z
+ 702cfiHJbxXdJdjSROCBOjJt7ebFK0fPhaOqDjBuYg1RtMo5vo4MqmPp6L63sHd6J1Dd
+ kBCLIS3IF7yd4D1berhJZUex2LTzj4Y8L9q+57h26zxI63KwwPGH0daDVEv/wqHXvP6Y
+ G4z5qCmBeLYzuczJS/6NvHqDIwQQhvR4brQ+epiZDIvtQnG4k3G6WVYEXV/Pip+uXxbz
+ bizQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rq+w9401WXU7feXf02JXAzqxXBaacm8A1H2CK0KsaX2NhDfJdxpTZtN55Tp4neSOLitHDj+7ZT6kA==@nongnu.org
-X-Gm-Message-State: AOJu0YzckU6lhZQsNAk7AG7oJno2WMWXtnfVVEW82YMFHB6wW9O2LKj0
- zVgyTVgs6+ZvLuFwz88A4DFcPKXq59gDgWl3nS+XDeuDY0Y6JI/7p6lIzxvos+aKXwM=
-X-Gm-Gg: AR+sD1001L1mZeUUEElKReU93ZqaEjXF+gKGUqblEIIsBFt+YBbecLSERqxkFnlEf+3
- V/O2HPy7WYhHxqFMrK5epky8+rCn4WEmLsqJaTGLX1aOuLMWM92BPJoqcROkLGLUUrZlawVZgIx
- fbkrfSxGrLub7sQPy8yKgzr07K41WRyq9n1fYJpcdeZKyrTGEbFXfhUQeuI7Ex7SMJR2wNgA6dp
- JraufTnrV9hqFAwBCTvM5Zd3wuuRPYSuGVLOTlRDqRZ087yDc9VvttrA2udGSnhchnKRTrIHaDn
- 8VF6PIfxrzx/vowjV9DcRQrIUPmvzh8Ji3XcYOiluiHqkLhRRPE7BxCWRJUxt10oXWRgBfhQcBe
- h1/MEzE3RuvLNhPUVR2D5ItirQht4aiXgEmjzmJ+Ho9DJBrHtyncM0VGKkIBtR8hNRDpx1vpcbG
- tRMg==
-X-Received: by 2002:a05:6000:2c07:b0:47f:7129:6e2d with SMTP id
- ffacd0b85a97d-47f8d71e0f7mr5775603f8f.17.1784837347483; 
- Thu, 23 Jul 2026 13:09:07 -0700 (PDT)
+ AHgh+Rob47KSFE/KiMAoNlJANUZ1Nw1E3T7a5jdOYKtvEsMgvjsElobYF3COOe6/kWQbDkT7ygcdQFcI9g==@nongnu.org
+X-Gm-Message-State: AOJu0YyjSfCpbjSGyUYCoziNmXkVeBPrdjZ6hSCxkVeDLhGeZDFrvNKI
+ zu6vqqY+93s7rN5hspZOfUTF0bAiisSsGMRft3M0ZILrXjxlGhCvwjZ8cI/184KPENk=
+X-Gm-Gg: AR+sD13enpqidGCwohJcdhgiV7vmCOucgRKff/f4kVkpXlXQ8qS5XLALTwGYl1Yc3q4
+ 6C8/HJZpNLVpZxpExH3q1AkxclvjqdRLrsiFmlSfzWsM3ypjEZew9P/mtBJ3c6MBNOagZGvnvDp
+ /dd6xcWb2IkAYM7HnB0Us+hzj65/y9AdtRDQhA1TYiTCneTWsf6wuPcinriT8QvqSp7c8UJXPYI
+ AOYmCaRNa65Nt/l+gTMq3QIEpGee9WKySGcUrHXvd2A2cB4t6m0mn2QrHVDqNYt9/wThtYucaVw
+ IQqUMbQVmPpB0+rOttl0B/E60YcTVqZMD071ZthQkA6huHAT2YFLPGh3uGnGVjRCAoLsbssafem
+ UhX816JfvShFvLWy0ly9Aigpvv2mid0JQs7xAg6Y4fKWN+GDzZBaetI4r9qa6nPgkl4EUiu0o0d
+ cc0w==
+X-Received: by 2002:a05:600c:4f44:b0:493:bd2a:93bb with SMTP id
+ 5b1f17b1804b1-49573c8d564mr51653435e9.3.1784837346986; 
+ Thu, 23 Jul 2026 13:09:06 -0700 (PDT)
 Received: from draig.lan ([185.124.0.114]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47f85c531afsm17740155f8f.24.2026.07.23.13.09.05
+ 5b1f17b1804b1-4957b5f2918sm13923425e9.2.2026.07.23.13.09.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Thu, 23 Jul 2026 13:09:05 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id E99075F8BE;
+ by draig.lan (Postfix) with ESMTP id A2B965F7C2;
  Thu, 23 Jul 2026 21:09:04 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -85,17 +83,16 @@ Cc: Cornelia Huck <cohuck@redhat.com>,
  Cleber Rosa <crosa@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Kyle Evans <kevans@freebsd.org>
-Subject: [PATCH 3/3] gitlab: add arm-softmmu tests to the macOS build
-Date: Thu, 23 Jul 2026 21:09:04 +0100
-Message-ID: <20260723200904.224413-4-alex.bennee@linaro.org>
+Subject: [PATCH 0/3] testing/next: random fixes in case useful (gitlab, arm tcg,
+ macos)
+Date: Thu, 23 Jul 2026 21:09:01 +0100
+Message-ID: <20260723200904.224413-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260723200904.224413-1-alex.bennee@linaro.org>
-References: <20260723200904.224413-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,37 +115,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now we have fixed the compiler issues lets have at it.
+I'm off for the next two weeks but I thought it would be worth posting
+these in case they were useful. Feel free to cherry pick what is
+needed and I'll deal with the rest when I'm back.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- .gitlab-ci.d/macos.yml | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+Alex.
 
-diff --git a/.gitlab-ci.d/macos.yml b/.gitlab-ci.d/macos.yml
-index bdb3eae18f0..40b9b637b3b 100644
---- a/.gitlab-ci.d/macos.yml
-+++ b/.gitlab-ci.d/macos.yml
-@@ -22,7 +22,7 @@
-     - export PKG_CONFIG_PATH="$PKG_CONFIG_PATH"
-     - brew update
-     - brew install $PKGS
--    - brew install aarch64-elf-gcc i686-elf-gcc x86_64-elf-gcc
-+    - brew install arm-none-eabi-gcc aarch64-elf-gcc i686-elf-gcc x86_64-elf-gcc
-     - if test -n "$PYPI_PKGS" ; then PYLIB=$($PYTHON -c 'import sysconfig; print(sysconfig.get_path("stdlib"))'); rm -f $PYLIB/EXTERNALLY-MANAGED; $PIP3 install --break-system-packages $PYPI_PKGS ; fi
-   script:
-     - mkdir build
-@@ -40,8 +40,9 @@ aarch64-macos-15-build:
-     PATH_EXTRA: /opt/homebrew/gettext/bin
-     PKG_CONFIG_PATH: /opt/homebrew/curl/lib/pkgconfig:/opt/homebrew/ncurses/lib/pkgconfig:/opt/homebrew/readline/lib/pkgconfig
-     CONFIGURE_ARGS:
--        --target-list=aarch64-softmmu,i386-softmmu,x86_64-softmmu
-+        --target-list=aarch64-softmmu,arm-softmmu,i386-softmmu,x86_64-softmmu
-         --cross-prefix-aarch64=aarch64-elf-
-+        --cross-prefix-arm=arm-none-eabi-
-         --cross-prefix-i386=i686-elf-
-         --cross-prefix-x86_64=x86_64-elf-
-         --disable-plugins
+Alex Bennée (3):
+  gitlab: use .base_meson_job_template for macOS jobs
+  tests/arm: add explicit CFLAGS for system build
+  gitlab: add arm-softmmu tests to the macOS build
+
+ .gitlab-ci.d/macos.yml                | 7 ++++---
+ tests/tcg/arm/Makefile.softmmu-target | 2 +-
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
 -- 
 2.47.3
 

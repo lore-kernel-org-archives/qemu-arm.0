@@ -4,115 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7EC4C531CA
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Jul 2026 13:47:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C597BC531F7
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Jul 2026 15:19:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wmtld-0003iI-8M; Thu, 23 Jul 2026 09:47:18 -0400
+	id 1wmvCp-0003pm-CC; Thu, 23 Jul 2026 11:19:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wmtlZ-0003g8-6b
- for qemu-arm@nongnu.org; Thu, 23 Jul 2026 09:47:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1wmvCn-0003jK-OH; Thu, 23 Jul 2026 11:19:25 -0400
+Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
+ ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wmtlV-0002B8-LU
- for qemu-arm@nongnu.org; Thu, 23 Jul 2026 09:47:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784814428;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xZu67FW3xTs3nqnJrhKrgjeo2rgGgFL3o3EmVubG598=;
- b=AzudBxZByVbwoD4fTtU0vxg+0u7ydN6yyh8ZVkT47FVPQRnD3sKER3j6/9a3Ia99NzCH9D
- 3mdaNSdwORRbGG2dOBLb3FTmZL1dQ43grTSx7qecXVLRafCpJrhXXieMyFwnM3RwZjgU3D
- 4Jq9lXDjxBbfPVnZ51H4Ro1YRxPgM2g=
-Received: from mail-ua1-f69.google.com (mail-ua1-f69.google.com
- [209.85.222.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-689-dWgNguIPM6W3aDwCXROjsg-1; Thu, 23 Jul 2026 09:47:04 -0400
-X-MC-Unique: dWgNguIPM6W3aDwCXROjsg-1
-X-Mimecast-MFC-AGG-ID: dWgNguIPM6W3aDwCXROjsg_1784814424
-Received: by mail-ua1-f69.google.com with SMTP id
- a1e0cc1a2514c-976cd199486so21061241.3
- for <qemu-arm@nongnu.org>; Thu, 23 Jul 2026 06:47:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784814424; x=1785419224;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :content-type:mime-version:references:message-id:subject:cc:to:from
- :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=xZu67FW3xTs3nqnJrhKrgjeo2rgGgFL3o3EmVubG598=;
- b=JVWzVc2pvBQQEDe1GEyCyYbn09x3cu43EDA2oG/9zmluKg8AJWXay9B0tynQ2hJ32a
- oXdAV2UL7Oz8HP23XVRNRWr7Bc3Lbss0psGfQBDs4C40wCxrF+drraGZTC24GpNW7XMw
- qCmQM1hYDgsBQjFsRSxqh2Hckc5lrHxsNEFVU+gioSCjbgPvvqKB3wpnbX9JnFlLClF+
- t8TaNKeI+zlJdEZE76hZyvQYaYxXEv+5cxWsm63RWefTjSAggRoqFt+q+ZUZnLxpefDe
- L6QPANyxEYUqB+2pNdtvLovOBrHmoo4PeA3eyZgfh5bOT7G0kH1a0nfzVqbln5NO6G32
- TArw==
-X-Forwarded-Encrypted: i=1;
- AHgh+RrHhqfaArM4Me/hZUBUGVhLQGQIz5WUP/ebpMAs2PNW8W/qrGH0+Cd8Nk2f9l6bI+2wgSvPJ89wyA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz0DK7Rd3SzRtVqiebesLXuxNH3CMh4aMsVrhGUUzGNXy/Id/sy
- orpwNWNPAW7CpQd6S+w+tqOH3DkGySRr7zzWm1DOLEPXY3/4Zy10fu5TF0s5vGaTcJ01U+Ia0iV
- PkcMx99mnfcX/MYSq7OEdmBytcv3ptHaA4QFTfOoc2cMnMCj9LoT/Xg==
-X-Gm-Gg: AR+sD13kCud815bz7ApLjcOkGbD5bmRaP4yj/EkfoGi77F0L5zqdxBHRPlN6n3p9aAq
- ZaVv6sEK62hnyw0/EzHl4EQ6VxD3sm4zjVfxw5UQkiAs2pntmRWHxLJnm+zBLXb9wI5Etl0lLX+
- HOY4ecRE+/myV7p3YhoiQOCpX2X6+ef6MzVEe3YW/HmsRU6uo6stpnQ4l5qFSWThnvraOVM1EN5
- I6/IXZ1SJFdAQl3xa49fwx05K/ZSr0+jVZdd6Yc3/2ncmQSwbczd4ZvyEFVEm8oNCqq0RxFr99T
- shFPqRfF67dKLnsHZTqOXRoYw+f3Oy3M2SXxDEupOsZOvIAEY/vUopzGyB+MWM0mM7U2FDn/
-X-Received: by 2002:a05:6122:6991:b0:5bf:bb66:414f with SMTP id
- 71dfb90a1353d-5c2da1ad401mr1158511e0c.11.1784814423006; 
- Thu, 23 Jul 2026 06:47:03 -0700 (PDT)
-X-Received: by 2002:a05:6122:6991:b0:5bf:bb66:414f with SMTP id
- 71dfb90a1353d-5c2da1ad401mr1158446e0c.11.1784814421630; 
- Thu, 23 Jul 2026 06:47:01 -0700 (PDT)
-Received: from x1.local ([2605:8d80:6c29:c98e:204b:552e:32b9:cf20])
- by smtp.gmail.com with ESMTPSA id
- 71dfb90a1353d-5c2c64f6d8esm5819671e0c.15.2026.07.23.06.46.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Jul 2026 06:47:01 -0700 (PDT)
-Date: Thu, 23 Jul 2026 09:46:57 -0400
-From: Peter Xu <peterx@redhat.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Gavin Shan <gshan@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, alex@shazbot.org,
- richard.henderson@linaro.org, berrange@redhat.com, philmd@mailo.com,
- david@kernel.org, clg@redhat.com, pbonzini@redhat.com,
- phrdina@redhat.com, jugraham@redhat.com,
- liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn,
- shan.gavin@gmail.com, qemu-s390x <qemu-s390x@nongnu.org>
-Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
- device region accessors
-Message-ID: <amIbUYN3teCLXTh-@x1.local>
-References: <20260717095407-mutt-send-email-mst@kernel.org>
- <9c2ad22a-e768-4a07-85a2-01ce1fc14368@oss.qualcomm.com>
- <59882c5b-545d-4768-8bf4-723fed97a801@redhat.com>
- <al-eCtxGjG4HHEbl@x1.local>
- <6210e178-a93f-4411-810a-41edb1fb656e@redhat.com>
- <20260722015422-mutt-send-email-mst@kernel.org>
- <amDyvgR09OJssENX@x1.local>
- <20260723015708-mutt-send-email-mst@kernel.org>
- <71d88d00-5b41-49d2-b649-8a6ea47abc4d@oss.qualcomm.com>
- <20260723045428-mutt-send-email-mst@kernel.org>
-MIME-Version: 1.0
-In-Reply-To: <20260723045428-mutt-send-email-mst@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: WRnvm8q5k7gG4vpebFZ75FmwhQeOye3yTzoQQRgWBsM_1784814424
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1wmvCk-0007zZ-Sq; Thu, 23 Jul 2026 11:19:25 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=mb0+ZqBetBSZ5mJIFuKv/8p4A1tJoiYto9N859KgPPnKHm/aJPSOSRWZ0kA6B4UYBxjhKNVGQpsXsQizTR3v/VjVFs5W7IEAfcFnhWOPd1Km3tWfmww+0rUOk9XqOsz/BFHS237zPXWKrUpuSGFpMaSGPJXc9OWrW2AoLQbRLirf7HJXVrSrcko08RHV5cIlgCBC7AZuJBi6ITw7A0YFBovLvSq9CzR23cR6KKuYvpHZtidYQz71PeWOVfhTPE1HSW2yHr+zcdxUnEhjYcjyM7rqS1EZawLJIjkQ1FTAxKPN43Of63sfojd48UXEEAfPB/MoexrcpvN2Hec9LPcvPg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=6qNIH9mLc2pe0uoiEDKzwDAGDooZ17WEv6CCFaipGiY=;
+ b=P6w3+7NjeAX89Op1Hjyp2U7hh8XwGdHBPEi0tspyoCxz7qu4SKgrAxVP+ooeqUXT6KSdE3R3Y1/CmDgtSuBXWFuI+4c0CRwACjLz20NVWeqzhDXfhwFn51AZ85KC34KBIxpNEwSZZHr+BwHHmSBzHFCZQ+z40wIe+k67F7p0yyHrBR9ZD9E+5CVSTBZ3cOk2GoBH+w3YH9UJS0IVnC83o75ObvqTPvpZ67U1nk+h8oVYzBr5sm2iayhrR1/HJB7i7V31cqdXmOSqs4lHDwF1yquHuSHhii7W6GqMnc8dfboT+pxRhXQvKGGB4xrLgD6CAvUhY3brjnfwie7WyGJC4w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=processmission.com; dmarc=pass action=none
+ header.from=processmission.com; dkim=pass header.d=processmission.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=6qNIH9mLc2pe0uoiEDKzwDAGDooZ17WEv6CCFaipGiY=;
+ b=gCjUkHUHcADlS2Oay6EVEGxVWuJKJ9wEMXC9Ue4GYYuPe8V0b8pqFwAEgTE88lrIhBMyY7+Dg5RmkNo4N7HZeq3sX3ceEXrhCwlfwg7Qbx0Ocq/o8aNECuysnT/1y24DWsGU6Dw44Lree3rb7pbuH8RXd8HlB0zD4pBoFddDpfH9Thj8YkCnoqQWoS+b6Gnp1PMX99/gnoFAbP0rM4tO7CLhGD1EoCMYPmmC7VhXpH5HWudePY4TPASyHQ3i1hqLMKB7ezfVMzxy2QWDEyWjF4hqn+9NPf+8w+rSmVkDg9irc1JXKDMMbjGFzNVzlI6HAXwMBWyZr09XVHRaP/nElQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=processmission.com;
+Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
+ by KL1PR02MB6215.apcprd02.prod.outlook.com (2603:1096:820:9f::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.245.11; Thu, 23 Jul
+ 2026 15:19:12 +0000
+Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
+ ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
+ ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0245.010; Thu, 23 Jul 2026
+ 15:19:11 +0000
+From: Bin Meng <bin.meng@processmission.com>
+To: QEMU <qemu-devel@nongnu.org>
+Cc: Alistair Francis <alistair.francis@wdc.com>,
+ Alistair Francis <alistair@alistair23.me>, Bin Meng <bmeng.cn@gmail.com>,
+ Chao Liu <chao.liu@processmission.com>, Conor Dooley <conor@kernel.org>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Markus Armbruster <armbru@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Sebastian Huber <sebastian.huber@embedded-brains.de>,
+ Thomas Huth <th.huth@posteo.eu>, Weiwei Li <liwei1518@gmail.com>,
+ qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org
+Subject: [PATCH 00/26] hw/riscv: Restore Microchip PolarFire SoC Icicle Kit
+ firmware boot
+Date: Thu, 23 Jul 2026 23:18:27 +0800
+Message-Id: <20260723151853.2143177-1-bin.meng@processmission.com>
+X-Mailer: git-send-email 2.34.1
 Content-Transfer-Encoding: 8bit
-Received-SPF: permerror client-ip=170.10.129.124;
- envelope-from=peterx@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.951,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+X-ClientProxiedBy: KU0P306CA0037.MYSP306.PROD.OUTLOOK.COM
+ (2603:1096:d10:29::8) To KL1PR02MB4977.apcprd02.prod.outlook.com
+ (2603:1096:820:71::8)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|KL1PR02MB6215:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6301196d-1782-4566-195e-08dee8cdbf89
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|34096008|23010399003|1800799024|376014|7416014|366016|56012099006|10067099003|18002099003|6133799003|5023799004;
+X-Microsoft-Antispam-Message-Info: 5T8Ki9pNcKDVB7EJXnNHnsqTJ4FzbQzXps4R2pkc2JY2WjSmsSksMCFAinaoxAdRs4qkRm1KzlFvDQWtu/af2Yl3/zHgtL2yiNwYknyDVQ//A96AlX+0aLDS/VoyGVJwA8ISBiDJnzqiO8yGV7sDPX7jFROYsIO6PDn19DYG81FaQh7onMw0KIn4qzBceuTPJR9yWwWhUso5RFOuQz9QR0dZebFLQqNHUGXolBPxTdoKXy4qRVqbRnEtoAUZLFxOOoryaI7AC2RBVoAavALrWkY9DFHNZJ1lMGKCibeCCpuX8+v25bap6LKGCVZzk5UbEBpux/bbdPDI7qhxD+lPgx9LsW5XfRd5sxCFFWxnbXtN6yDlRYOJckp+Ga0EFV0zh+fhLlv8ksKfZoaoVAenaq9jroGufRSMV7w5E8+yYP3cMwDCfLdP7uewmhvYfv4QsHxLOQhJ8fMkuf0yGe8Qkc2KTFctezCmL/CWrYRfz8caUbl+NCzIUqL9Dz1nGIZmT3Oqc7xC5JD0XRTueerQN1rwhd2nqQ2QztzovBQOT/4tL0hJCx+78vIqSOxtqhpspGfQORQg4KlEx3Oll3IHIk/lHvUzmUPwT2OfxMB/VOOmUYk3IJ0KLqhV/6fFxsApQzvJsO6m1kdyyjTXkFFA6Ip1yzlgahHkKjmRY/Gz7es=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(34096008)(23010399003)(1800799024)(376014)(7416014)(366016)(56012099006)(10067099003)(18002099003)(6133799003)(5023799004);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?f18cH0JzREiGoANgXxMBMmbTQpumJ4NGArJE2liKG7GcqAZNFxA/gvG4Fbmo?=
+ =?us-ascii?Q?bjbUzOTloAPIRFU1Vbxv0WBjYA8Vusdbam/et1cAMB1rkdT6JNzPZjLJ980b?=
+ =?us-ascii?Q?BDDjD2r2zNpb/UxPenTup+dcUf9aHd+SAYjIBe6NGJNrMh1EsrLygcSFmRj6?=
+ =?us-ascii?Q?lQPXe/MkQnCWmyKQ6DSb6wZtkgJOswqIdBd/CU7Zu1cDnlzjSQ4NsBX885+z?=
+ =?us-ascii?Q?mRfH6m9ilqKdztg3q5eZ/5ZUX/APBwg4XUyS43qB5g83GOTbKzNuxs7Y8LoE?=
+ =?us-ascii?Q?3nbuLg5tPTQVJSSkLaZ1vtF2e1dgJ5tN8YaZSo+rMULLtevMTCp5QJc6T0Nb?=
+ =?us-ascii?Q?qT8ROtpYzJt1USPsTB56xlYn1DHfI5YwD5DV+CclcLcHYKZTXl1J0hU6WpHh?=
+ =?us-ascii?Q?TuwfhEWXnqhly/3Ui3Pkv86FQR6HWIsh3YFDQc2pmbNYwWj48JW1evHFmHTd?=
+ =?us-ascii?Q?6t0iPA9MuRH6YBreQlfkFTFbS4oINuBPz4PXVbIC3xanilEI+MKk6Dxm81fX?=
+ =?us-ascii?Q?ABfOJSyd52HNQWIgKjPrUQUtI0ybu5w8eflO7WCBGzszmL9zUMqvIiLeTQ8n?=
+ =?us-ascii?Q?ATfUCu6Nlg5s1SUBwBIB/gS9sJO1VULnXmTekkyJ2XM1ye6pcQQzrQsd9lJ3?=
+ =?us-ascii?Q?XY3cXWvC70fu9wOcIUMWlcF23xyuiof/TLmferLx53OzXG8gTjwo9PRLbHd4?=
+ =?us-ascii?Q?F7yKttdANgZFNooIVGPEjRjS7yKKkjVSb/OONmLTOjrG6hX1mqdiDs/QFqrF?=
+ =?us-ascii?Q?qIUyadlqpwRHyYHcgpeqQT6lo65YRIGn3mUlHnwN52AacVkzwhsVG83787UF?=
+ =?us-ascii?Q?YGee6QGicnPTc1UXUzAehd+cx1rm01QA5gmVvZWe7BrUt59PqpsZJ8gt0d/k?=
+ =?us-ascii?Q?p6fkrQ+i/KHQp+OHO8S9eRj/8x335d9MsXve0qaFaVt6L/HV9vq5ryiDhVKe?=
+ =?us-ascii?Q?8HuIyqGFZLWBjoHh89t4DEPsfs0/JFu+RLYzhnXiINvzGmoPN8Jcwm5JSMd2?=
+ =?us-ascii?Q?2+Dfoej0DRDnYBf4mKaUTBOH/fzgcclHIwJZyIygFZ9EPKXlZSrlsL4MFbxg?=
+ =?us-ascii?Q?IiI8tYRMsoLKLpcB83fyQLrHtzmnRkHhrrbp04y1Ipin6h08cFg6uOa55trM?=
+ =?us-ascii?Q?fTSnuS4OK4t4N8NNgVxsLtBW2rM/tjXbZPOiR3zCW0seb2b0tZhUiVvvMnJW?=
+ =?us-ascii?Q?q2IycT0U3R+PHq2lopbDrX/1l1wkhU13lJg9i4Rb/ImLQkPaQ7h204jBilut?=
+ =?us-ascii?Q?YHRom9IUZ4J6ojWsWUXX6qn5sTu+eUxJRQy1/s0mX6rZaHJLTbpjrw6EUG+n?=
+ =?us-ascii?Q?ISRW2r6U0yaZtPed+QesP4KlkqSk12SWC1B1jqgsGB9D4Fkb2HBdV0X8Z2qJ?=
+ =?us-ascii?Q?3XHiG48LP3/gKWZToun+gNjtG1uMXOBkykA3oO18jCqVcto4iolCjKNs1Gpw?=
+ =?us-ascii?Q?X15hNH/XA5n9TPihC8sdbLAXnFfWwoTLeEG0Mrw0Xq7OZmSzh3pGrWnjXW4o?=
+ =?us-ascii?Q?FOK4iWVFldpwGYdIq/d9vMEWQ9itI6THUIRlKDSYwjGGj/Q+3AhnoCdWVWaW?=
+ =?us-ascii?Q?fMp2mcZFzkcvVccWeBV50I52QQj5N6waO/tmk2aE7PGSM8yNgTsFAqahWDCT?=
+ =?us-ascii?Q?51urV/aYmTSww97dq4FtXTDLous0d7tYjShpNpU2qd3oqx9Qe1mEFOr5IC1c?=
+ =?us-ascii?Q?wSeTYlNFsaPshF2xmvYnr/whgRrJDUb3GyvLlIk0FLnLHPS+ZUGbGVvgXOSO?=
+ =?us-ascii?Q?yrRjiS0Q6BJzikopOdWIVqLyuKB4OP8=3D?=
+X-OriginatorOrg: processmission.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6301196d-1782-4566-195e-08dee8cdbf89
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jul 2026 15:19:11.6067 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zKPyQXequF+Ht5L0oVTuT7+fGgDDPoIoCPmXUtnNwUxZ9PYkGSA6/QmNjtkKsybvjZSC5OSjAUIz/gGl4ajZul+9xgPUVow91SJw5HmfEYs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR02MB6215
+Received-SPF: pass client-ip=2a01:111:f403:c406::3;
+ envelope-from=bin.meng@processmission.com;
+ helo=OS8PR02CU002.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,197 +152,139 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Jul 23, 2026 at 05:05:08AM -0400, Michael S. Tsirkin wrote:
-> On Thu, Jul 23, 2026 at 10:52:11AM +0200, Philippe Mathieu-Daudé wrote:
-> > On 23/7/26 08:04, Michael S. Tsirkin wrote:
-> > > On Wed, Jul 22, 2026 at 12:41:34PM -0400, Peter Xu wrote:
-> > > > On Wed, Jul 22, 2026 at 01:58:18AM -0400, Michael S. Tsirkin wrote:
-> > > > > On Wed, Jul 22, 2026 at 10:53:27AM +1000, Gavin Shan wrote:
-> > > > > > On 7/22/26 2:27 AM, Peter Xu wrote:
-> > > > > > > On Tue, Jul 21, 2026 at 03:37:53PM +1000, Gavin Shan wrote:
-> > > > > > > > If Peter is fine with two variants for x86 and non-x86 architectures.
-> > > > > > > > I can post (v4) for further review. That will be something like below
-> > > > > > > > and let me know if there are any other improvements are needed.
-> > > > > > > 
-> > > > > > > I have a generic question on the "unaligned access for x86": I think the
-> > > > > > > question is about the one Michael raised here on unaligned access may break
-> > > > > > > x86 here:
-> > > > > > > 
-> > > > > > >     https://lore.kernel.org/qemu-devel/20260617022330-mutt-send-email-mst@kernel.org/
-> > > > > > > 
-> > > > > > >     3. (theoretical concern) also on x86, unaligned accesses are
-> > > > > > >     possible on guest and host, so converting an unaligned access to a
-> > > > > > >     series of aligned ones can in theory break devices.
-> > > > > > > 
-> > > > > > > Is that a real problem we need to consider, or can we start with unified
-> > > > > > > approach and leave it for later?
-> > > > > > > 
-> > > > > > 
-> > > > > > I'm leaving this question to Michael.
-> > > > > 
-> > > > > Knowing what I know about hardware designers, it's something someone
-> > > > > somewhere does)
-> > > > > It can be made a separate patch, just to show - it should be all of
-> > > > > ~10LOC.
-> > > > 
-> > > > It's only about removal of anything that might be controversial for now,
-> > > > thanks.  I also wonder if anything would break, then it's more solid proof
-> > > > that per-arch change is required.
-> > > 
-> > > Repeating:
-> > > 	I think there is exactly 1 kinda reasonable case. A 2 byte read/write at
-> > > 	offset 0x1 within a dword. This maps nicely to even classical PCI byte
-> > > 	enable mechanism and so yes it works if your CPU can initiate these
-> > > 	things, and it's atomic.
-> > 
-> > Isn't this out of the CPU arch, dealt with at the bus level?
-> > 
-> > It looks we try to be clever with modern PCI code by optimizing this
-> > access -- not saying we can change that, I know it is too late after
-> > 20+ years -- relying on hw behavior that was done that way to support
-> > legacy hw, in particular broken I/O accesses.
-> 
-> Not sure what the question is.  We were dicussing how to emulate unaligned
-> accesses from x86 guests if they happen.
-> On an x86 host we can do that easily, and it's just a couple of LOC.
-> Though Peter Maydell dislikes host arch specific code. But I hope
-> if it's a separate patch on top and it is visible how small it is,
-> he will reconsider)
 
-Yes, if we still want x86 specific change, it would be better to be put
-separately.
+The microchip-icicle-kit machine was originally validated with an older
+Hart Software Services (HSS) firmware stack. HSS v2024.06 cannot boot
+through U-Boot to Linux because several firmware-visible parts of the
+PolarFire SoC are missing or incomplete.
 
-Said so, I don't think the e1000e LEDCTL test illustrated what might
-break..  Isn't that only an exmaple showing unaligned access is
-"supported", however nothing breaks even if we use 1B*2?
+The first failure occurs before the UART is initialized because the L2
+zero window is not mapped. HSS then needs additional L2 cache controller
+and DDR training behavior. Later boot stages exercise system services,
+the RTC, SDHC version 4 DMA, and high-capacity SD card block sizing,
+along with the complete DDR aliases. The existing models ither reject
+these accesses or expose behavior that does not match the hardware
+specifications.
 
-My question was more about a real breakage, hence whenever it happened
-"it's more solid proof that per-arch change is required".
+This series restores the complete firmware boot flow. With these changes,
+QEMU boots the HSS v2024.06 eNVM image, loads its U-Boot payload from an
+SD card, and reaches the Buildroot 2026.05 Linux login prompt.
 
-> On other hosts we can't emulate them 100%, we either need to split
-> to byte accesses or over-access and mask. Byte accesses feel safer.
-> What qemu currently does with memmove is clearly not safe in the
-> general case.
+The changes are organized around the firmware boot sequence:
 
-We should have another option that is not arch-dependent but keep the
-unaligned behavior.
+* Correct the L2-LIM size, map the L2 zero window, and provide the DMC
+  status transitions required by HSS DDR initialization.
+* Model the documented L2CC Config, WayEnable, and WayMask registers,
+  and resize L2-LIM as cache ways are enabled.
+* Complete SDHCI version 4 support used by the Cadence controller,
+  including Host Control 2, SDMA system addressing, 64-bit ADMA2
+  descriptors, and SDMA boundary continuation.
+* Run ADMA from a bounded timer-driven engine instead of performing work
+  from command or unrelated MMIO accesses.  This keeps DMA progress
+  independent of guest register traffic and avoids consuming a polling
+  deadline inside the command write.
+* Keep SDHC and SDXC memory transfers at their fixed 512-byte block
+  size, and advertise the Cadence controller's 64-bit system bus
+  support.
+* Add the PolarFire SoC serial-number system service and RTC, and honor
+  the system-service notification control bit.
+* Correct the DDR aliases and fix the board topology at its physical
+  configuration of 2 GiB of RAM and five harts.
+* Document direct and HSS boot, add focused qtests and a full firmware
+  functional test, and restore the machine's Supported maintainer
+  status.
 
-For current master, AFAIU we do unaligned access for both ram_device and
-rest. Say, even with ram_device_mem_ops, it has both .unaligned=true for
-both .valid & .impl.  I think it means indeed we have unaligned behavior
-even for ram_device.  It also means what matters in regards to the Realtek
-bug was only about aligned access (with subpage presence).
+This series assumes that the following generic SDHCI prerequisite series
+has already been applied:
 
-I think it means we can always keep unaligned to stick with
-memcpy()/memmove(), but only use atomic ops for the aligned cases of
-1/2/4/8.  With that, I think we can also remove ram_device_mem_ops and fix
-the bounce buffer issue.
+- Message ID <20260715160731.29969-2-dingtao0430@163.com>
 
-I think it means we'll stick with memcpy()/memmove() for all archs for
-unaligned, which is again not safe... but that can be an existing but
-separate problem to solve too.
+Testing performed:
 
-One more thing to mention below...
+* Built qemu-system-riscv64 and the documentation.
+* Passed various newly added qtests.
+* Booted HSS v2024.06, U-Boot, and Buildroot 2026.05 Linux to the login
+  prompt using the functional-test image.
 
-> 
-> 
-> 
-> As for optimizing - there is space for optimization e.g. vfio could
-> report the properties of a BAR to userspace for optimization
-> purposes. On x86 you can then get good speed with just memmove.
-> Other arches you will likely need to write arch specific code.
-> But this has to do with e.g. DMA into device BAR not CPU accesses.
-> As an aside, it is a pity qemu uses same thing for DMA and CPU access,
-> we know how virtio accesses work and this might allow optimization.
-> 
-> > 
-> > For Alpha / HPPA / MIPS there were ASIC in the PCI I/O path to handle
-> > these odd unaligned accesses inherited from x86 world.
-> 
-> Right.
-> 
-> > > It's easy to find more examples of such hardware if one looks. For example,
-> > > LEDCTL on e1000e:
-> > > 
-> > > 20260625101817-mutt-send-email-mst@kernel.org
-> > > 
-> > > 
-> > > A claim that no software uses this hardware capability is the strong
-> > > claim that needs proof, not the other way around.
-> > > 
-> > > 
-> > > What to do on non-x86? reading a dword might work, or reading
-> > > byte by byte might work. Both can cause issues, just different ones,
-> > > but given we did byte by byte previously i guess let's keep
-> > > doing that.
-> > > 
-> > > 
-> > > > > 
-> > > > > > > PS: I apologize if I missed important piece of info along the way; I didn't
-> > > > > > > follow closely on the discussion on this topic in the past few weeks.
-> > > > > > > 
-> > > > > > > One thing to mention is, what we change should only need to affect
-> > > > > > > ram_device, AFAIU.. so most memcpy()/memmove() shouldn't be changed for any
-> > > > > > > arch when it's pure RAM.
-> > > > > > > 
-> > > > > > 
-> > > > > > It depends. This patch intends to fix issue [1] in the lower layer by using
-> > > > > > the newly added accessors (qemu_ram_{copy, move}) on all directly accessible
-> > > > > > regions including the regular (pure) RAM region. Otherwise, the newly added
-> > > > > > accessors should be limited to ram_device regions only as you said.
-> > > > > > 
-> > > > > > [1] https://lore.kernel.org/qemu-devel/20260527091711.3901-1-liugang24219@sangfor.com.cn/
-> > > > > > 
-> > > > > > Thanks,
-> > > > > > Gavin
-> > > > > 
-> > > > > using memcpy()/memmove() to emulate guest's atomics is generally
-> > > > > kinda broken.
-> > > > > but yes there are architectures where doing it to device ram is
-> > > > > more broken than doing it to regular ram.
+The functional test downloads this versioned image archive:
 
-.. please someone (at least.. Gavin?) still have a look at below.  It could
-matter how the next version looks, especially I want to make sure if we
-should get rid of __builtin_*() in the new helpers.
+https://github.com/processmission/qemu-machine-images/releases/download/
+v1.0.0/riscv64-microchip-icicle-kit-v1.0.0.tar.zst
 
-Thanks,
+When restoring the HSS boot support, 3 potential bugs were identified in
+the upstream HSS source codes that either blocks the DDR training from
+succeed or traps in a multi-core race at the very beginning or after
+a succesfully DDR training but stuck at OpenSBI/U-Boot hand-off. There
+are already bug reports filed aginst various upstream projects.
 
-> > > > 
-> > > > If we keep memcpy()/memmove() for len>8 (aligned or not), I am thinking no
-> > > > perf issue will happen, then looks like we can indeed change this even for
-> > > > pure RAM operations, which we can't identify in case of e1000e driver use
-> > > > case.
-> > > > 
-> > > > Then does it mean we should not use __builtin_memcpy()/memmove()?  Even if
-> > > > we know constants 1/2/4/8 would work there, why not we go ahead and use
-> > > > qatomics, which is even more future proof?  I also stumbled on top of
-> > > > commit 77b1757090 ("include/qemu/bswap.h: Use __builtin_memcpy() in
-> > > > accessor functions"), which seems to say the same thing "for the long
-> > > > term".
-> > > > 
-> > > > For "should we still do unaligned access if the guest did it, so as to keep
-> > > > the original behavior of a bare metal" question, are we on the same page
-> > > > that we should just break it into aligned accesses for all archs?  I think
-> > > > it means, we will not be able to emulate guest faults correctly as what
-> > > > will happen on bare metal, but we're missing the fault injection logics
-> > > > anyway, so whenever it's implemented we _could_ switch it back to unaligned
-> > > > accesses.  Before that, breaking unaligned seems like a better way to go to
-> > > > (1) satisfy all legit users, and (2) don't make QEMU crash by guest
-> > > > operations.
-> > > > 
-> > > > Last, one silly question: why do we need any helper named with *memcpy*, if
-> > > > memmove is always superior (to consider range overlap)?  Can we stick with
-> > > > memmove all over the places?
-> > > > 
-> > > > Thanks,
-> > > > 
-> > > > -- 
-> > > > Peter Xu
-> > > 
-> > > 
-> 
+
+Bin Meng (26):
+  hw/riscv: pfsoc: Correct the L2LIM maximum mapped size
+  hw/riscv: pfsoc: Map the L2 zero device window
+  hw/misc: pfsoc: Support PolarFire SoC DDR training with newer version
+    HSS
+  hw/misc: pfsoc: Model L2 cache controller registers
+  hw/riscv: pfsoc: Couple L2CC to L2-LIM
+  tests/qtest: Add PolarFire SoC L2CC coverage
+  hw/sd: sdhci: Migrate the Host Control 2 register
+  hw/sd: sdhci: Accept version 4 enable without UHS-I
+  hw/sd: sdhci: Use version 4 system address for SDMA
+  hw/sd: sdhci: Support version 4 ADMA 64-bit addressing
+  hw/sd: sdhci: Resume version 4 SDMA at buffer boundaries
+  hw/sd: sdhci: Run ADMA independently of MMIO
+  hw/sd: sd: Keep high-capacity memory blocks at 512 bytes
+  hw/sd: cadence: Advertise 64-bit system bus support
+  hw/misc: pfsoc: Model PolarFire SoC serial number service
+  hw/rtc: Add PolarFire SoC RTC model
+  hw/riscv: pfsoc: Add PolarFire SoC RTC to Icicle Kit
+  tests/qtest: Add PolarFire SoC RTC coverage
+  hw/misc: pfsoc: Honor PolarFire service notification requests
+  hw/riscv: pfsoc: Correct PolarFire SoC DDR aliases
+  hw/riscv: pfsoc: Fix Icicle Kit RAM size at 2 GiB
+  hw/riscv: pfsoc: Fix Icicle Kit hart count at five
+  docs/system/riscv: Document Icicle Kit HSS boot
+  docs/system/riscv: pfsoc: Document CLINT topology for direct Linux
+    boot
+  tests/functional/riscv64: Add Icicle Kit firmware boot test
+  MAINTAINERS: Add PolarFire SoC Icicle Kit maintainer
+
+ MAINTAINERS                                   |  10 +-
+ docs/system/riscv/microchip-icicle-kit.rst    | 129 ++++-
+ hw/sd/sdhci-internal.h                        |   1 +
+ include/hw/misc/mchp_pfsoc_dmc.h              |   6 +
+ include/hw/misc/mchp_pfsoc_ioscb.h            |   8 +
+ include/hw/misc/mchp_pfsoc_l2cc.h             |  31 ++
+ include/hw/riscv/microchip_pfsoc.h            |   7 +
+ include/hw/rtc/mchp_pfsoc_rtc.h               |  46 ++
+ hw/misc/mchp_pfsoc_dmc.c                      | 272 +++++++++-
+ hw/misc/mchp_pfsoc_ioscb.c                    | 174 ++++++-
+ hw/misc/mchp_pfsoc_l2cc.c                     | 230 +++++++++
+ hw/misc/mchp_pfsoc_sysreg.c                   |   9 +-
+ hw/riscv/microchip_pfsoc.c                    |  92 ++--
+ hw/rtc/mchp_pfsoc_rtc.c                       | 479 ++++++++++++++++++
+ hw/sd/cadence_sdhci.c                         |   3 +
+ hw/sd/sd.c                                    |  43 +-
+ hw/sd/sdhci.c                                 | 292 ++++++++---
+ tests/qtest/mchp_pfsoc_l2cc_test.c            | 221 ++++++++
+ tests/qtest/mchp_pfsoc_rtc_test.c             | 317 ++++++++++++
+ hw/misc/Kconfig                               |   3 +
+ hw/misc/meson.build                           |   1 +
+ hw/riscv/Kconfig                              |   2 +
+ hw/rtc/Kconfig                                |   3 +
+ hw/rtc/meson.build                            |   1 +
+ tests/functional/riscv64/meson.build          |   2 +
+ .../riscv64/test_microchip_icicle_kit.py      |  52 ++
+ tests/qtest/meson.build                       |   5 +
+ 27 files changed, 2264 insertions(+), 175 deletions(-)
+ create mode 100644 include/hw/misc/mchp_pfsoc_l2cc.h
+ create mode 100644 include/hw/rtc/mchp_pfsoc_rtc.h
+ create mode 100644 hw/misc/mchp_pfsoc_l2cc.c
+ create mode 100644 hw/rtc/mchp_pfsoc_rtc.c
+ create mode 100644 tests/qtest/mchp_pfsoc_l2cc_test.c
+ create mode 100644 tests/qtest/mchp_pfsoc_rtc_test.c
+ create mode 100644 tests/functional/riscv64/test_microchip_icicle_kit.py
 
 -- 
-Peter Xu
+2.34.1
 
 

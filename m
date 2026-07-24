@@ -4,86 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E9ABC531CC
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Jul 2026 03:07:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8B26C531D0
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Jul 2026 03:08:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wn6F1-0003m6-HJ; Thu, 23 Jul 2026 23:06:27 -0400
+	id 1wn6Ey-0003k4-F3; Thu, 23 Jul 2026 23:06:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wn6Ez-0003kU-Ds
- for qemu-arm@nongnu.org; Thu, 23 Jul 2026 23:06:25 -0400
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+ id 1wn6Ew-0003im-6N
+ for qemu-arm@nongnu.org; Thu, 23 Jul 2026 23:06:22 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wn6Ey-00085W-0V
- for qemu-arm@nongnu.org; Thu, 23 Jul 2026 23:06:25 -0400
-Received: by mail-pj1-x1031.google.com with SMTP id
- 98e67ed59e1d1-382ef647e20so1385992a91.1
- for <qemu-arm@nongnu.org>; Thu, 23 Jul 2026 20:06:23 -0700 (PDT)
+ id 1wn6Eu-00084I-IU
+ for qemu-arm@nongnu.org; Thu, 23 Jul 2026 23:06:21 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id
+ 98e67ed59e1d1-38a0c7e841fso1612626a91.2
+ for <qemu-arm@nongnu.org>; Thu, 23 Jul 2026 20:06:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784862382; x=1785467182; darn=nongnu.org;
+ d=linaro.org; s=google; t=1784862379; x=1785467179; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=vZ3wJDJYBL3Ih5BppqGHeGHu7Wqrcj0x1UTiHapnNLU=;
- b=CIZoLbS+7WnxJkQ5tEOLmRvCDEbceyn1YyuG+OGlH79ZaGeWlKMo+aO7diXvQFJr+W
- g7ALZ/EpfIgrBo2hr59NFYCs9YAoIWu1cmr6syCRcPE8mVHNkq8pIlpdGy+2kgqp5oAJ
- vZPXXm2sbjXjVg2qrQpja/noqii/MdcjOdc9jPTPacBPAWvt1Tn043BpXUMuKiFzfLME
- uoCfNkndrV6DvGfC2uG+agK0LarXcKiAerNnnKvJ3HnYLBNSgvXjTsH/PX1jTNzePlQp
- AF0S9Bhq/9MGGOgdI9vjsiJTUsWIhye2YnvNzcbn/uRKd1WTB18hHKu8Z0io3xJ695BE
- g0YA==
+ bh=3WcfI2C0vXZJuLurguA9t32KpNa1EGPqApO8Jkm91qs=;
+ b=ILtOwBNFjYntx7mCY7aT5dkYim+lA0eNB6lHGkDwIOPcpnUSoHZmWOeCAUKYyQfVLz
+ aqQtihhDHARoT04vGPMbkvqyeKL4V9+q5++PrDo93S4E9eqnn3GaT038s6w4jeduZip3
+ Ma7x8TwNTb+PRLtmjQeF18ns4emJcgaDF/qkCZMp6pnFfq2GHcHy3JsN++2pLe8+KhhT
+ WOo6TLXPK5JzuWPsWTklKyfzwTFzA1fjiqnokCN1kjmXKeI2r4M8YfV6ZSC9ZoEHEWvm
+ y2n1IZuMkllfk3stm2y28+G33YLbCiy7i3NN3HCiNORwurwjNY11yn7VKln6mV1IZ5iB
+ W2AA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784862382; x=1785467182;
+ d=1e100.net; s=20251104; t=1784862379; x=1785467179;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=vZ3wJDJYBL3Ih5BppqGHeGHu7Wqrcj0x1UTiHapnNLU=;
- b=LUqAG4768zi1Pbwl+WrTPXhqOUr/uhHIKUWRsElbJHgJQrwQad/F0X+e8HKYPeSGFj
- V7EJHo+XoB7HP5Wv8ijvIVoE5BVtGJykeo+8YZbAFlNwSQWVdKaN16X+KBzJElFgaNkG
- 1M8r4px6yJEODnTDyEhhTZHNodRWlmyDVb7zjC8fcG6yJbjuTYU43oAj8L4QtGpaS8MF
- 6Uy3hUueFhWmzU8/48sV2SgVZlx90u9jkx9TH8sYJJC6Fv3LCQLi7PEdba1OhNoQjFSd
- msWLiuuH9U331lS1cf2+6DMIOKNAUQT50AXnHQJz41bN4XcdNLMpjiYJj9xK8bhTWPLJ
- CGUQ==
-X-Gm-Message-State: AOJu0Yzn5Q/bHQvcBzZ6id1VjUzXShjuDXUsYaKbJned2rZE9ZGTQd9m
- VzEXN4MARNjX5RXkEcqm0rIvccs/q39d/jgTLxaGK/fMdRbeL3kzDhPWBDRaYFswmOQ=
-X-Gm-Gg: AR+sD13IOs3dG94FkF33P+WZA5hNw3ZoXau5IjzPqtDfDsxSuHxlG/rT6ZrSE5G0qhB
- zJmSTLznd4fQcsN8wXJaCMvnkjoY5HnadvM5Gim0WT/zyjQbvOtZrYIJa0pQOBzjjpsrljlagDu
- haV5miQd8UDz4/zfQIaUzs0q1GS3OChDuk3w/5jf1E2mu6LEf8Cp263xZQt3GwImH8cund4t5KF
- OFQaQCnvagjALjzXyW0a1GfimKvJzmZPVUAM/rltkc7TMZxmsZYY/lhMuQm/MhkDrFL7EWwqDhJ
- Qog4Xzf4LLN+vMqmTh66oT084/WIlpXtDVAvGIry9oGcgc926I3kIOnTicBX8RNrbhwMJh/NHz/
- 0KFgm9l15oQXXJIUYukYhnX037Q9QL5YQAOC1qdoZqaEbH1o9Z0754+XKzydx3jdP0iIEjYc8+6
- /pMAUj+WDckMMgUvuHLxOXwKx5VEG6tO7aIQ==
-X-Received: by 2002:a17:90b:4ad1:b0:38e:11ba:992e with SMTP id
- 98e67ed59e1d1-38ec663d91emr5507518a91.35.1784862382578; 
- Thu, 23 Jul 2026 20:06:22 -0700 (PDT)
+ bh=3WcfI2C0vXZJuLurguA9t32KpNa1EGPqApO8Jkm91qs=;
+ b=ktRAgAYvfCRf5lDTkgIiyZYqQH69ewfJUMJaS4cIu9Gl+YC5SzAVyMFSUqJ4f4Jh38
+ tFdqHGi0OUuv/vSWtFGKm4XxTl03Z8U+IHCg64BOeiMf/NZR5hh9oVEhfutWf7gk2dRr
+ G0r+PZoSuxHPSxizhYcaWyIJROLV0AGQ39m3pJcSVcdoN8V7dsyW1m022nWkzUSlExvU
+ 0ZsXHr+HNNNlMf/1lTmLI9m6bBTZDF/l80Q7FjmeeoRsaIHxSd+FBMj6SeuYNBVFsiUj
+ J27ED62oDj7ihMyjKGA1u3rGHiwj2BQ0le/TFgQ12az2Fmo01Et1zbKxXSUG4DKp5gk5
+ 4R2g==
+X-Gm-Message-State: AOJu0YxWPsbSFAH6vtk7FYAjzmDoqRdrVGtrNMJvMOQUbpvtXQjpZ8XY
+ siwgQuql6eegWnJiBbpUIGxHj2utlQibQekrH1m6OSGqNTFIn6Opi3YQhISBtyKgG8C/zHhxgbT
+ FKrzB
+X-Gm-Gg: AR+sD13KFkzP/29DL7vImn/HHPQARia3Yrsjyp/QhDdqrPz0xeuSqHHSSPCvrmlHj4l
+ XV9pAcy2MY06Bt+EQzEwet5H8kWNmyf7JHgC0Fcb7zhehw85sBS4CNTo1dCmGofCbVVuWkts2Gk
+ fnU0UUVXQP4zp/Pdepy6jHF5DQJJMeo6hZ2X0kItUuH6BiaoZhg8qzV6WEoJAjvab7OZPWBQTdp
+ ogUGb+r2cPOHTz7jaRISRc7ZjkUQo3qujF+5iPWIsDE4u+l6xGiroS3KozI+wkjn3WLmTRVLAIu
+ C1zXaXgVa5WZP7++83jd3yeIRtpTb5kn7Rn9/ZkzOeEuZJg5IvBKUN//TPNhv5UJtv4InCKzNfM
+ CSpKaL1tJlzFjMgOvc+1Xu4ewWjmV3Xhn13ZODPX77JwE4s7Yz2Lb7/7pWtNlhG5u6ZoAKfg8tg
+ XQEYtBt+pNxlACtTlVVJ0XlgZt1wzkzgdntA==
+X-Received: by 2002:a17:90b:3cc4:b0:381:e74f:8a6a with SMTP id
+ 98e67ed59e1d1-38ec65793a6mr5539371a91.16.1784862379178; 
+ Thu, 23 Jul 2026 20:06:19 -0700 (PDT)
 Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-38f03ad0e0csm750777a91.7.2026.07.23.20.06.21
+ 98e67ed59e1d1-38f03ad0e0csm750777a91.7.2026.07.23.20.06.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Jul 2026 20:06:22 -0700 (PDT)
+ Thu, 23 Jul 2026 20:06:18 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 6/6] target/arm: Enable FEAT_FGWTE3 for -cpu max
-Date: Thu, 23 Jul 2026 20:06:16 -0700
-Message-ID: <20260724030616.76180-7-richard.henderson@linaro.org>
+Subject: [PATCH 2/6] target/arm: Add FGWTE3_EL3 bit definitions
+Date: Thu, 23 Jul 2026 20:06:12 -0700
+Message-ID: <20260724030616.76180-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260724030616.76180-1-richard.henderson@linaro.org>
 References: <20260724030616.76180-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,34 +102,44 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/cpu64.c        | 1 +
- docs/system/arm/emulation.rst | 1 +
- 2 files changed, 2 insertions(+)
+ target/arm/cpregs.h | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 8a3ebf6321..a0d8d0bac8 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1362,6 +1362,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index 34592679e4..2c9927b1d9 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -689,6 +689,30 @@ FIELD(HDFGWTR_EL2, NBRBCTL, 60, 1)
+ FIELD(HDFGWTR_EL2, NBRBDATA, 61, 1)
+ FIELD(HDFGWTR_EL2, NPMSNEVFR_EL1, 62, 1)
  
-     t = GET_IDREG(isar, ID_AA64MMFR4);
-     t = FIELD_DP64(t, ID_AA64MMFR4, ASID2, 1);    /* FEAT_ASID2 */
-+    t = FIELD_DP64(t, ID_AA64MMFR4, FGWTE3, 1);   /* FEAT_FGWTE3 */
-     SET_IDREG(isar, ID_AA64MMFR4, t);
- 
-     t = GET_IDREG(isar, ID_AA64ZFR0);
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 9930974a50..9528afbb18 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -78,6 +78,7 @@ the following architecture extensions:
- - FEAT_FAMINMAX (Floating-point maximum and minimum absolute value instructions)
- - FEAT_FCMA (Floating-point complex number instructions)
- - FEAT_FGT (Fine-Grained Traps)
-+- FEAT_FGWTE3 (Fine-Grained Write Trap EL3)
- - FEAT_FHM (Floating-point half-precision multiplication instructions)
- - FEAT_FP (Floating Point extensions)
- - FEAT_FP16 (Half-precision floating-point data processing)
++FIELD(FGWTE3_EL3, ACTLR_EL3, 0, 1)
++FIELD(FGWTE3_EL3, AFSR0_EL3, 1, 1)
++FIELD(FGWTE3_EL3, AFSR1_EL3, 2, 1)
++FIELD(FGWTE3_EL3, AMAIR_EL3, 3, 1)
++FIELD(FGWTE3_EL3, AMAIR2_EL3, 4, 1)
++FIELD(FGWTE3_EL3, GCSCR_EL3, 5, 1)
++FIELD(FGWTE3_EL3, GCSPR_EL3, 6, 1)
++FIELD(FGWTE3_EL3, GPCCR_EL3, 7, 1)
++FIELD(FGWTE3_EL3, GPTBR_EL3, 8, 1)
++FIELD(FGWTE3_EL3, MAIR_EL3, 9, 1)
++FIELD(FGWTE3_EL3, MAIR2_EL3, 10, 1)
++FIELD(FGWTE3_EL3, MDCR_EL3, 11, 1)
++FIELD(FGWTE3_EL3, MECID_RL_A_EL3, 12, 1)
++FIELD(FGWTE3_EL3, MPAM3_EL3, 13, 1)
++FIELD(FGWTE3_EL3, PIR_EL3, 14, 1)
++FIELD(FGWTE3_EL3, SCTLR_EL3, 15, 1)
++FIELD(FGWTE3_EL3, SCTLR2_EL3, 16, 1)
++FIELD(FGWTE3_EL3, SPMROOTCR_EL3, 17, 1)
++FIELD(FGWTE3_EL3, TCR_EL3, 18, 1)
++FIELD(FGWTE3_EL3, TPIDR_EL3, 19, 1)
++FIELD(FGWTE3_EL3, TTBR0_EL3, 20, 1)
++FIELD(FGWTE3_EL3, VBAR_EL3, 21, 1)
++FIELD(FGWTE3_EL3, GPCBW_EL3, 22, 1)
++
+ FIELD(FGT, NXS, 13, 1) /* Honour HCR_EL2.FGTnXS to suppress FGT */
+ /* Which fine-grained trap bit register to check, if any */
+ FIELD(FGT, TYPE, 10, 3)
 -- 
 2.43.0
 

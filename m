@@ -4,100 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C80FC531FA
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Jul 2026 09:05:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46CF9C531F9
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Jul 2026 09:17:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wnBqV-0001mJ-Rd; Fri, 24 Jul 2026 05:05:31 -0400
+	id 1wnC1y-000868-9a; Fri, 24 Jul 2026 05:17:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wnBqR-0001lG-7d
- for qemu-arm@nongnu.org; Fri, 24 Jul 2026 05:05:27 -0400
-Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
+ id 1wnC1x-00085r-6A
+ for qemu-arm@nongnu.org; Fri, 24 Jul 2026 05:17:21 -0400
+Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wnBqP-0007s5-Oh
- for qemu-arm@nongnu.org; Fri, 24 Jul 2026 05:05:26 -0400
-Received: by mail-yx1-xb12b.google.com with SMTP id
- 956f58d0204a3-66771ded50aso132487d50.1
- for <qemu-arm@nongnu.org>; Fri, 24 Jul 2026 02:05:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1784883922; cv=none;
+ id 1wnC1v-0000Or-CS
+ for qemu-arm@nongnu.org; Fri, 24 Jul 2026 05:17:20 -0400
+Received: by mail-yx1-xb130.google.com with SMTP id
+ 956f58d0204a3-66807ba2f0fso128128d50.3
+ for <qemu-arm@nongnu.org>; Fri, 24 Jul 2026 02:17:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1784884638; cv=none;
  d=google.com; s=arc-20260327;
- b=W19DiGGc+NFsNMQDht9nXQ/f9uVcQe8j0X72HgAYVPZadcDafAq0dcYjB5wz4qp63q
- f79DPvpTI0Es6zl9DIVey/vvjSGo+wVJVmRyh4nv0wwRPigf7AwevFk/XgeJoUnHjRmm
- va582gET++OoH5k6JJeGdtGqsgQHZpg4hHgeUwijiS24JS+Vi86mF66IeS4BlsfTxu6P
- sSgRqG+cafAe1hmbpxCuzkZYn2UIYpWTIel7C2pZKnvWXDvu+gcVQPq/y0dvBfsmoBK1
- mMPKGVvE8vxy9KrEZi53BVsyD51Rv1mdC3H+ss36FBGp007lodnBWmeJiPKA1j7zl0Rs
- Kdvw==
+ b=UWgp7Of05LR0Kw8bK07sBwQGbhoA2xusyo2zpr51PPpoaoK2UJV2yqmNTnnt4PH10S
+ OrkXy6uSmZNXG2wubymOqgX7wTKivGqCgG40lEgGkhB2P+HgWnV2lNUcLSKIDpcMkG0C
+ 00fpIxBQS+tKYR8Yn6GaoU/qmIbHZTqKIaxEl+5ZU7rlWIfF2cUgTO4pdho8wqbGF0gA
+ DTqxNysOMUQgkQyo7U3+hTRqMldN7HdxIRctu6Zysx3Yi8558djg3VWqhYfBHu9/nXXD
+ zn6Icrbym0uxhF7yxsKjFMvZVvuYIQATiYIEN/x40XHynedqSyEL4d6045dQpxxkxkJL
+ S2hA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=wB2BU+1Vc1TG15tTSEPTTjNW5RsQoKo5eo/pDr5JZkI=;
- fh=X1Cs51Mp3btRewFwg4eXM4sPZg8EtqbbeWGp/7kmHh4=;
- b=Y1x+hOIk4Y3JtZSs4f18X67uaO0rWSWirvpcMIJYknPY1kdtnaO9+/+EF2PbLdO5fm
- 6Cmvj7NOZX+fXIiOSaf2e/ffyq4AOK/lXUBooIFyP/P/aUMP/8u+TuGnw+wGERMGp5LZ
- I9b8/VsoTYR+30EX05oJWuMb0hC0HTHp8nppMdaViNaC5FCbnIVtiSdwqVbfAhdZ+ZTB
- k3nwL7NpzoN7PAQ1RMZaHTwU6p2hC5SzR4STjnBWZaW0aOSzW0aI4twT61+5tJHFAww2
- ULhND48Ml5a6okge5VtGRtkQkZpskR8IjViumUamm+U+i9YpztsISVQPUo7sqey0Y3rJ
- 5GZw==; darn=nongnu.org
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=irN58mUqxkQZ40ty49DFSyyF3AS4XGCjBJ+Y6EbUU4w=;
+ fh=ATIlGTAKRs60+Xh4snqA+VsN9USD1pGo8+zUH04LdSM=;
+ b=W3OBklMEBrbvUwRsaM4XhegkADFfwPQOLqmJjD56UXXXmZovWOxXjbXDPh/tClHNv0
+ ZKGxIjrVPju7nd/BJC0iF3XZXPXprZEvYrMWbSn3iTrj69vMFgIDnqp03DhSV2BskRas
+ hWDymd9Jx5+s6Z+ABGAbyEPxq7TDy/mDfqppQX7iLz00VhBn/4jgOrAWcDcrHt+iGRvC
+ +cOuVpmYvtHX8TVjGwYteEtPrebvyWRajp4kvY+AkT61Km3YwMgqZZ0CTQOJhju8o28L
+ ChcgvVOkoaLD4Ol4/VrNxWOYVx3xEQa0aD1ueZNnnAgr4kTAFtogu8UOLHJYdfuKhDzH
+ TS5A==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784883922; x=1785488722; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=wB2BU+1Vc1TG15tTSEPTTjNW5RsQoKo5eo/pDr5JZkI=;
- b=KMATxNakjl8F/HCMaywH1FRniJ5wehSRGEttzyhD87vWl7ZkkYHjyhrf6VvZY2BPen
- j5VaAnz8Xj7CNvFdqtk4d0Kx35zLL4Fam4fcZo9X6KZ02GIzgM+RPwZ1NBpHKvh5F3eK
- BpGhCM/bEFCAvgh8LPpt73nw5ObMdRkF76kezm27BsdSuAQwmVJcxfn2iToFKxj8FsUK
- wSLxsbYAtLgcgfYLjyxbBaXhRFixN5DNl9Uo9EOjfHrp96s3Y+1pcyBwcbIw8exoAYRs
- cr2OQXO8+qYjHgj9I5X7LP2mqWG+0FK61o9WLT2e3xGtHpGA9DbAoMGrHCMoembYiMGo
- OS5w==
+ d=linaro.org; s=google; t=1784884638; x=1785489438; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=irN58mUqxkQZ40ty49DFSyyF3AS4XGCjBJ+Y6EbUU4w=;
+ b=Gl369mtw7cO0iTdAZe6oF/YZATpFIWk8y1I9J5J2c/BJrLAKVuEKxSXz6GZbazwEo4
+ Vdelawi1HTSy5xRHcB77CkH/Ear1IUhS2YINnlLbjsSZ1AwfdAHCWiNRAMZZYKH2btBq
+ yrw8H0HKuOatWi55CUe7oN4swabb7+nxA8AG+CNpXFrnnK2NNcb3w0CkKmdRPFn+W7ni
+ MS06PJSdFMsjmpX0JGa2HsUze3/R1tnZo6FtVryr4kfgBvQ0XR1F7kDTvGAIpEc0dMEK
+ UNgRN96PM8c6RaZFlJGWFPMaKuf8PRm1sanYKoG2jBMuJex3+D73TVfTYUZIpa3z8H8A
+ G+yQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784883922; x=1785488722;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=wB2BU+1Vc1TG15tTSEPTTjNW5RsQoKo5eo/pDr5JZkI=;
- b=AxOzjPBTe4TebRGmPtnfoCDDkJ4LjeHm/+CJabACDCZUutVLiOMgDQbwHDL/Yt5GR+
- 6iAcjGXbLiio4IOvKFX6np7zLm4tg/pq5aT4Gyy1Vmv+pFmcD/dXTtGN/foT1hOtryF9
- iAr7QC2INuVAlaO1iGMqgoMszz457tNU52RgCyrifU+ay94Q5VZCWh7reUnwJwTh3+2+
- V/J8qldy/7ApC5/dmQoJoiOJZACTIkIzRjTAmu6cxN/PpzSZePzMHZq8gLnsg0ZHnBAV
- OntiqqDOROTFLIdDcQFggxzaDiJFS5EhD/5bJ6cwu94ItsqzprPd85jB5QGQCd92wB6t
- ++9A==
+ d=1e100.net; s=20251104; t=1784884638; x=1785489438;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=irN58mUqxkQZ40ty49DFSyyF3AS4XGCjBJ+Y6EbUU4w=;
+ b=iUcZYPcdOuN5SsRm11L2LYNFfCAB/pxPMe8SWAf0vzc4tR9YoWkA/88VZfTqFlGN68
+ q6AxLs5XhgYMJfmpfm8Lyv0LbPefZkfEvcTrPB6VFciIEvA/it4vuKelfGfDMZVO8O55
+ 9bAnylv3r2eYHnk9Xn8SvYDAtLslJ5qorfuzsP6TFqfhUnjMvmSLazY+sOv4lO2i64/B
+ KY5q4Q+2DheONOzUW0HiGNCjmvsFjj+GUpzgSWB4wZ9GSXsEpEvK2tEI6Zvm2LyETKbZ
+ cQa8FrdmRWSNeyPtuR+yOhGUwyJK13mgW3I/JC//DTzf0tEnOgVnRBGmch4gadXSUHVD
+ jo1Q==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqQIiF11X5teBssaKoMk2NQSPbFFKKFhpHZhFWJV2kqWfsZlSgyEndP+VBMyS8kXT71eE3wquxjFg==@nongnu.org
-X-Gm-Message-State: AOJu0YyKQxrA6BQ8K6ItYKi0aF7Zw8jxKaZLl0ZTxnWHFdHgBAtzLNRd
- BrxHg2WZS8sxsoRa23iNA5hUqJ3L3OfdYuoaHqhZGewspfgvAmvZvqhqfYz8bE47aKxoOgAMMSo
- 51ZDI7IiwKQ9Be6MnHXziZfAAPHQ9ufF0nsSD3i523Q==
-X-Gm-Gg: AR+sD10LHi26WYPdSIfGhiFDOi14iatgkeyy7I0DlfFcSx1X1JhJfO2J32cq4Bb/j9W
- WkkTCflO48mhrtQ4zX3W96Ji5iKDbYX2l6m3d68kJ2e/kHykVzC4/sDmIGVtzNBziv2VXAH3nRr
- NytGe7s8mE3IvRqbnJ/2g/hHrtOn9oV3VfY+cboRmIC+jmKfE2o0523aiwA1JmfGACGvfJxnJVy
- /8j3TSGGO9AtiLHxnEUZNay0tHzUxmjjJUEwMemZDR/7s3MkDHMPXnzLM7pIU1nkhQCUChVSPec
- LLiZGYw7yT1K1AFllURmMr4JFT0zBCaYTZOPiK4W8ktvwVftqyvHEQfM
-X-Received: by 2002:a53:b3ca:0:b0:667:8a13:c3f with SMTP id
- 956f58d0204a3-668a4ca8e4amr1459639d50.42.1784883921570; Fri, 24 Jul 2026
- 02:05:21 -0700 (PDT)
+ AHgh+RoKERrAMGClAKZ11hgMih40OEuIHkkDhhVah54LzmvghGUTYNWviabuKp6xePU5fzccYf6P7rCrUA==@nongnu.org
+X-Gm-Message-State: AOJu0YztbSX5cw+wi+nxWicqQCRiJXwlJ3czgPCxYaR6jY+X5dYn0wBm
+ oP0hHeRVYGx1PltGz2hyA2nrTxf85FJflXxFvfo/5W2/VowA161FDofK0uIpuLYP66I958uOgu5
+ 2BIHFfAogjcJfK+ANtn2+yr2GOkib36DYSogMooy7ff5gJPJ/HsHR
+X-Gm-Gg: AR+sD13lQadF8+keMsgaD8QD9g1m9itTEsZwAE89bAgZxHw2lPVVlK0BdoJaioBKAtd
+ CJpWXvDywuPfv6Qw+LCsCXODb8glYnqMqeAuFzHbYhTgBKaWsxEhHx+63H1g4VG3k9tAcjf6hsq
+ kiYp8gIGnfzaTx0idRPig6l5oORmezMsy1/6sVrSVkO174Cxg0OaIzMl13LV34SwtOEXRx/qN17
+ sGRsEIO2Oea4Liiw7Zq/HjwIDLP5FmFsyjKRoio1GHMxev99Ndb6LwFOaxAAuNrfIDb18J/9xIo
+ PAlQQuh0OhPrbUpiQbie2DbOq3HOc+Snw6fWrpvQHi+m1eXv5JnVhR4O
+X-Received: by 2002:a53:b19f:0:b0:667:8014:c3f6 with SMTP id
+ 956f58d0204a3-668a4f8a3f7mr1232487d50.83.1784884637889; Fri, 24 Jul 2026
+ 02:17:17 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260721122135.6288-1-philmd@oss.qualcomm.com>
-In-Reply-To: <20260721122135.6288-1-philmd@oss.qualcomm.com>
+References: <20260717174412.88258-1-dingtao0430@163.com>
+ <20260717174412.88258-2-dingtao0430@163.com>
+In-Reply-To: <20260717174412.88258-2-dingtao0430@163.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Jul 2026 10:05:10 +0100
-X-Gm-Features: AUfX_mwaGCJT00JZd7RJaLMRTv0VuNAvviznYWPT_k44VupjCN1PJ8QRgka4u80
-Message-ID: <CAFEAcA82mU4y_qbHOSacXEutgR3FALUuzk2kEKmXbV2YDD_tqw@mail.gmail.com>
-Subject: Re: [PATCH 0/4] target/arm: Build fixes related to GICv3/v5 and hw
- accelerators
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Date: Fri, 24 Jul 2026 10:17:05 +0100
+X-Gm-Features: AUfX_mx7rKkngbGD_RKEtXKHtpJU0t3FlMxkbdrdQQDn7le9W9hxh0DE4PJePKA
+Message-ID: <CAFEAcA84shjJhXraFvULN1nODCBmk7GB4UTnBtTVoEBFdnrxtA@mail.gmail.com>
+Subject: Re: [PATCH 1/1] aarch32 cpu secure register tcg migration
+To: Tao Ding <dingtao0430@163.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,25 +116,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 21 Jul 2026 at 13:21, Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
+On Fri, 17 Jul 2026 at 18:44, Tao Ding <dingtao0430@163.com> wrote:
 >
-> Build fixes for when QEMU is configured using --disable-tcg
-> or --without-default-devices. First 3 patches might be
-> candidate for the next release, but still these configs are
-> not covered on our CI, I can't complain.
+> In TCG mode, cpu_pre_save is called when saving state and cpu_post_load
+> is called when restore state. There are two key functions write_cpustate_to_list
+> and write_list_to_cpustate that use kvm_to_cpreg_id to obtain the regidx.
 >
-> Philippe Mathieu-Daud=C3=A9 (4):
->   hw/intc/arm_gicv3: Fix ARM_GICV3 dependency for KVM / WHPX
->   target/arm: Add stub for define_gicv5_cpuif_regs()
->   target/arm: Only compile gicv5-cpuif.c when GICv5 is selected
->   target/arm: Build TCG stubs as stub library
+> However, during the processing of kvm_to_cpreg_id, secure state information will
+> be lost in aarch32 cpu.
+> The code in kvm_to_cpreg_id always add the NS flag.
+>      "cpregid |= CP_REG_AA32_NS_MASK;"
 >
+> The final result is that after migration, some secure registers were not restored,
+> such as DACR_S. And this register will affect the CPU's access to the address.
+>
+> To fix this issue, a new function kvm_to_cpreg_id_with_secure is added to
+> restore secure bit information. Call different functions according to
+> different modes to keep KVM unaffected.
 
+This is definitely a bug, but I don't think this patch is the
+right fix for it. The problem is that the 64-bit kvmid doesn't
+currently have the S-vs-NS information in it, and so any time that
+we round-trip between a 32-bit QEMU hashtable index and the kvmid
+we lose that information. The fix then is to define a way to keep
+the S/NS information in the KVM ID format and have the existing
+kvm_to_cpreg_id() and cpreg_to_kvm_id() functions do the appropriate
+thing to convert.
 
+I have a patch which I think ought to do this, but I also noticed
+some other problems in our handling of secure/non-secure banked
+aarch32 cpregs which I'm investigating. I'll try to send out a
+patchset next week.
 
+Thanks for the clear repro instructions -- those are very helpful.
 
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM
 

@@ -4,90 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C167FC531FF
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Jul 2026 23:38:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 391DEC531CC
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Jul 2026 01:17:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wn2xa-0004uB-Du; Thu, 23 Jul 2026 19:36:14 -0400
+	id 1wn4Wu-0000sn-UT; Thu, 23 Jul 2026 21:16:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <simonxhy0404@gmail.com>)
- id 1wn2xY-0004rV-DW
- for qemu-arm@nongnu.org; Thu, 23 Jul 2026 19:36:12 -0400
-Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <simonxhy0404@gmail.com>)
- id 1wn2xW-0001cG-MC
- for qemu-arm@nongnu.org; Thu, 23 Jul 2026 19:36:12 -0400
-Received: by mail-oa1-x30.google.com with SMTP id
- 586e51a60fabf-4560d6f82edso686392fac.3
- for <qemu-arm@nongnu.org>; Thu, 23 Jul 2026 16:36:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1784849769; x=1785454569; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=PRIi6XtfgqYlUx793rNESywQHULiK6u+HEEbogPG23Q=;
- b=YX+weK1kZ6qpuv6z/1auEN053Xss9KwuMZhSS0VY/Qm6jXaZj4uKolxBc5bm1W3BDw
- drduNUwvEDO2D+Kc4P+NouAFj9QzYjfmfHJaC77WZrfqE0PsxrQ+BbsmN6ZGqcZI8jJw
- AZoeGCBOFq5QwRDapbV++zOyUfdsSssC0fwKU9tO/vwtoxEl7CHg/uCdsbvmanxhYM/2
- jAR7Qtci0SDyroHEsOp1azWGRh9ZO7nMu7wvzQVhPSrZqB8gx62T4+lmEYCLTdOEbNjC
- jWZxsotERYbQNINjzxbLsfiOjjU0+cH5+9QErUgWursGhid/m7TxQXGBBpO61GserTpZ
- Zi6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784849769; x=1785454569;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=PRIi6XtfgqYlUx793rNESywQHULiK6u+HEEbogPG23Q=;
- b=LrpMx/kj309U5FBl4dwVc3hQgmY2VB4AGgSEFa+2LQtcNMLbxcg8vPj3R3ua2omfRy
- m9t5Ueo9ZjJUaNymhdcWz98u66qK3PvqrXPdLilKBJ5fYYdEu9+KN6BDyo78nZh1UNH2
- Mr6/YWMiMkEe15mLXfZhmZkUePjXIkGPyrA4QsLEeQjKTHp8XVSPajkl8F9vynUX6Fdb
- koo5d9Y/1IpUZs9RAVxF3epx6ra577GH2Cy1Vn4QxtEzAn9X8WbFwuIwblYjxB6kaVkM
- i0m1jBUfpmJAiegIEK06+pCobDCF44Lb2wqcacw8MGKz3wjMw0A3ILTJYsOMxKDjAuaa
- csBg==
-X-Gm-Message-State: AOJu0YxxgOOJkNsm7n7cY0UMV9vGYWxW9D/XyIG6SmGRzfVDzshaYmQ5
- kOrkS+fYM6is5guDasP8fDRmfSBWAT2dE09xLhC0o0zH2w+lhOl0UPN1
-X-Gm-Gg: AR+sD12AEOpt8UyZEsFjYPMkV1x8517WQS+vSyFmAWmIp85F+zSTBKKRDANfJTeu2ke
- 5tsD1e1GKjcBxZn7ZD+ZSqPuCt3RTcezYLIGP//4pJMqOKcRfPAFrzzfPlU0r2py/lCT1w6EDGC
- MR3eQH+NVhZyKS0c71cAh+hesFhQMIALHmLBs4mFGz4TOBsSZAP+ULs2KWZ7GnsvR0JxdrsFdxN
- u4vqywExywnojNbKcHtdv5gwkgbjycF+0FII5ddIi6QSvzcbcaFbkdTKY45SQLU57zW3oTDVIdG
- 7z/UQ/oBrTu+4CE7fnOGen23txiUIZiKtan2kBQXd1vMF7W56qR2WLgHvQNP6LH6L4/pgVBwz/m
- CekCuGvJ60ZLmMobAmj1KHcKzRzTaXvryCOQouSzwh16Uwlt9KFzXIY5VGt+kKcID4XwVcFRQZt
- xmUPCpMj7QxJzs93uYHzHSLMk=
-X-Received: by 2002:a05:6808:f07:b0:4a1:296:adec with SMTP id
- 5614622812f47-4ab352904famr3191656b6e.15.1784849769077; 
- Thu, 23 Jul 2026 16:36:09 -0700 (PDT)
-Received: from HPE-2MQ6131DV6.home.local ([23.124.244.239])
- by smtp.gmail.com with ESMTPSA id
- 5614622812f47-4ab248c6667sm3631997b6e.0.2026.07.23.16.36.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Jul 2026 16:36:08 -0700 (PDT)
-From: Simon Xu <simonxhy0404@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Owen Giles <owen.giles@hpe.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Robert Elliott <elliott@hpe.com>, Simon Xu <simonxhy0404@gmail.com>
-Subject: [PATCH 1/4] target/arm/tcg/cpu-v7m.c: add cortex-m85 model
-Date: Thu, 23 Jul 2026 18:36:02 -0500
-Message-Id: <20260723233605.805-2-simonxhy0404@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260723233605.805-1-simonxhy0404@gmail.com>
-References: <20260723233605.805-1-simonxhy0404@gmail.com>
+ (Exim 4.90_1) (envelope-from <maobibo@loongson.cn>)
+ id 1wn4Ws-0000rd-MJ; Thu, 23 Jul 2026 21:16:46 -0400
+Received: from mail.loongson.cn ([114.242.206.163])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <maobibo@loongson.cn>)
+ id 1wn4Wp-0000Sg-BA; Thu, 23 Jul 2026 21:16:46 -0400
+Received: from loongson.cn (unknown [10.20.42.62])
+ by gateway (Coremail) with SMTP id _____8CxaevwvGJqWsQGAA--.25357S3;
+ Fri, 24 Jul 2026 09:16:32 +0800 (CST)
+Received: from [10.20.42.62] (unknown [10.20.42.62])
+ by front1 (Coremail) with SMTP id qMiowJCxPsftvGJqpPIWAA--.58623S2;
+ Fri, 24 Jul 2026 09:16:30 +0800 (CST)
+Subject: Re: [PATCH for-11.2] hw: add compat machines for 11.2
+To: Cornelia Huck <cohuck@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@mailo.com>,
+ Zhao Liu <zhao1.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Song Gao <17746591750@163.com>, Xianglai Li <lixianglai@loongson.cn>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org
+References: <20260723163806.368127-1-cohuck@redhat.com>
+From: Bibo Mao <maobibo@loongson.cn>
+Message-ID: <48fafd42-816a-337d-d5dd-96c382549a23@loongson.cn>
+Date: Fri, 24 Jul 2026 09:16:18 +0800
+User-Agent: Mozilla/5.0 (X11; Linux loongarch64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
+In-Reply-To: <20260723163806.368127-1-cohuck@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::30;
- envelope-from=simonxhy0404@gmail.com; helo=mail-oa1-x30.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-CM-TRANSID: qMiowJCxPsftvGJqpPIWAA--.58623S2
+X-CM-SenderInfo: xpdruxter6z05rqj20fqof0/
+X-Coremail-Antispam: 1Uk129KBj93XoW3Ww1DWFyxGr1fKF17uw45Jwc_yoWftr13pF
+ 1DAFWktF43XF1xXrZIy3Wxu3W5Cw4kKayj9r4xZw4IyF4DKFnrG340y3WFyFWj9rs7JF4U
+ XFn5uFW7G3WUX3gCm3ZEXasCq-sJn29KB7ZKAUJUUUUf529EdanIXcx71UUUUU7KY7ZEXa
+ sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
+ 0xBIdaVrnRJUUUPFb4IE77IF4wAFF20E14v26r1j6r4UM7CY07I20VC2zVCF04k26cxKx2
+ IYs7xG6rWj6s0DM7CIcVAFz4kK6r1Y6r17M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
+ e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
+ 0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW8JVWxJwA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_
+ Gr0_Gr1UM2kKe7AKxVWUAVWUtwAS0I0E0xvYzxvE52x082IY62kv0487Mc804VCY07AIYI
+ kI8VC2zVCFFI0UMc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUAVWU
+ twAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcVAKI48JMx
+ k0xIA0c2IEe2xFo4CEbIxvr21lc7CjxVAaw2AFwI0_Jw0_GFyl42xK82IYc2Ij64vIr41l
+ 4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1l4IxYO2xFxVAFwI0_JF0_Jw1lx2IqxVAqx4xG67AKxV
+ WUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r4a6rW5MIIYrxkI
+ 7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_JFI_Gr1lIxAIcVC0I7IYx2IY6xkF7I0E14v26r
+ 4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJVW8JwCI
+ 42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjxU2-VyUUUUU
+Received-SPF: pass client-ip=114.242.206.163; envelope-from=maobibo@loongson.cn;
+ helo=mail.loongson.cn
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.557,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,80 +93,291 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add Arm Cortex-M85 CPU, modeld after the existing M55 CPU.
-The new M85 feature PACBTI is not implemented in QEMU and the midr value
-is based off the r1p1 product revision identifier.
 
-Arm Cortex-M85 TRM:
-https://developer.arm.com/documentation/101924/0101/
 
-Reviewed-by: Owen Giles <owen.giles@hpe.com>
-Reviewed-by: Robert Elliott <elliott@hpe.com>
-Signed-off-by: Simon Xu <simonxhy0404@gmail.com>
----
- target/arm/tcg/cpu-v7m.c | 41 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
+On 2026/7/24 上午12:38, Cornelia Huck wrote:
+> Add 11.2 machine types for arm/i440fx/loongarch/m68k/q35/s390x/spapr.
+> 
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>   hw/arm/virt.c              |  9 ++++++++-
+>   hw/core/machine.c          |  3 +++
+>   hw/i386/pc.c               |  3 +++
+>   hw/i386/pc_piix.c          | 13 +++++++++++--
+>   hw/i386/pc_q35.c           | 13 +++++++++++--
+>   hw/loongarch/virt.c        | 11 +++++++++--
+>   hw/m68k/virt.c             |  9 ++++++++-
+>   hw/ppc/spapr.c             | 15 +++++++++++++--
+>   hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>   include/hw/core/boards.h   |  3 +++
+>   include/hw/i386/pc.h       |  3 +++
+>   11 files changed, 85 insertions(+), 11 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 219597cabd0b..e7a56e37f731 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -4441,10 +4441,17 @@ static void machvirt_machine_init(void)
+>   }
+>   type_init(machvirt_machine_init);
+>   
+> +static void virt_machine_11_2_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE_AS_LATEST(11, 2)
+> +
+>   static void virt_machine_11_1_options(MachineClass *mc)
+>   {
+> +    virt_machine_11_2_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_11_1, hw_compat_11_1_len);
+>   }
+> -DEFINE_VIRT_MACHINE_AS_LATEST(11, 1)
+> +DEFINE_VIRT_MACHINE(11, 1)
+>   
+>   static void virt_machine_11_0_options(MachineClass *mc)
+>   {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 805148678d57..354b93c62037 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -40,6 +40,9 @@
+>   #include "qemu/audio.h"
+>   #include "hw/arm/smmuv3.h"
+>   
+> +GlobalProperty hw_compat_11_1[] = {};
+> +const size_t hw_compat_11_1_len = G_N_ELEMENTS(hw_compat_11_1);
+> +
+>   GlobalProperty hw_compat_11_0[] = {
+>       { "chardev-vc", "encoding", "cp437" },
+>       { "tpm-crb", "cap-chunk", "off" },
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index f064aa2b3e32..e9e4fc262b83 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -74,6 +74,9 @@
+>   #include "hw/xen/xen-bus.h"
+>   #endif
+>   
+> +GlobalProperty pc_compat_11_1[] = {};
+> +const size_t pc_compat_11_1_len = G_N_ELEMENTS(pc_compat_11_1);
+> +
+>   GlobalProperty pc_compat_11_0[] = {};
+>   const size_t pc_compat_11_0_len = G_N_ELEMENTS(pc_compat_11_0);
+>   
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index 82457bdb167a..223a19cc4bbc 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -428,12 +428,21 @@ static void pc_i440fx_machine_options(MachineClass *m)
+>                        pc_piix_compat_defaults, pc_piix_compat_defaults_len);
+>   }
+>   
+> -static void pc_i440fx_machine_11_1_options(MachineClass *m)
+> +static void pc_i440fx_machine_11_2_options(MachineClass *m)
+>   {
+>       pc_i440fx_machine_options(m);
+>   }
+>   
+> -DEFINE_I440FX_MACHINE_AS_LATEST(11, 1);
+> +DEFINE_I440FX_MACHINE_AS_LATEST(11, 2);
+> +
+> +static void pc_i440fx_machine_11_1_options(MachineClass *m)
+> +{
+> +    pc_i440fx_machine_11_2_options(m);
+> +    compat_props_add(m->compat_props, hw_compat_11_1, hw_compat_11_1_len);
+> +    compat_props_add(m->compat_props, pc_compat_11_1, pc_compat_11_1_len);
+> +}
+> +
+> +DEFINE_I440FX_MACHINE(11, 1);
+>   
+>   static void pc_i440fx_machine_11_0_options(MachineClass *m)
+>   {
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index 6c1e4eff5f1d..94cd71124b18 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -383,12 +383,21 @@ static void pc_q35_machine_options(MachineClass *m)
+>                        pc_q35_compat_defaults, pc_q35_compat_defaults_len);
+>   }
+>   
+> -static void pc_q35_machine_11_1_options(MachineClass *m)
+> +static void pc_q35_machine_11_2_options(MachineClass *m)
+>   {
+>       pc_q35_machine_options(m);
+>   }
+>   
+> -DEFINE_Q35_MACHINE_AS_LATEST(11, 1);
+> +DEFINE_Q35_MACHINE_AS_LATEST(11, 2);
+> +
+> +static void pc_q35_machine_11_1_options(MachineClass *m)
+> +{
+> +    pc_q35_machine_11_2_options(m);
+> +    compat_props_add(m->compat_props, hw_compat_11_1, hw_compat_11_1_len);
+> +    compat_props_add(m->compat_props, pc_compat_11_1, pc_compat_11_1_len);
+> +}
+> +
+> +DEFINE_Q35_MACHINE(11, 1);
+>   
+>   static void pc_q35_machine_11_0_options(MachineClass *m)
+>   {
+> diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+> index 6693dea647be..9cc79929a8ab 100644
+> --- a/hw/loongarch/virt.c
+> +++ b/hw/loongarch/virt.c
+> @@ -1465,7 +1465,6 @@ static void virt_class_init(ObjectClass *oc, const void *data)
+>       mc->default_ram_id = "loongarch.ram";
+>       mc->desc = "QEMU LoongArch Virtual Machine";
+>       mc->max_cpus = LOONGARCH_MAX_CPUS;
+> -    mc->is_default = 1;
+>       mc->default_kernel_irqchip_split = false;
+>       mc->block_default_type = IF_VIRTIO;
+>       mc->default_boot_order = "c";
+> @@ -1546,6 +1545,7 @@ static void virt_class_init(ObjectClass *oc, const void *data)
+>           MACHINE_VER_DEPRECATION(__VA_ARGS__); \
+>           if (latest) { \
+>               mc->alias = "virt"; \
+> +            mc->is_default = true; \
+>           } \
+>       } \
+>       static const TypeInfo MACHINE_VER_SYM(info, virt, __VA_ARGS__) = \
+> @@ -1600,7 +1600,14 @@ static void machvirt_machine_init(void)
+>   
+>   type_init(machvirt_machine_init);
+>   
+> +static void virt_machine_11_2_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE_AS_LATEST(11, 2)
+> +
+>   static void virt_machine_11_1_options(MachineClass *mc)
+>   {
+> +    virt_machine_11_2_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_11_1, hw_compat_11_1_len);
+>   }
+> -DEFINE_VIRT_MACHINE_AS_LATEST(11, 1)
+> +DEFINE_VIRT_MACHINE(11, 1)
 
-diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
-index dc249ce1f1..a1e62a20f8 100644
---- a/target/arm/tcg/cpu-v7m.c
-+++ b/target/arm/tcg/cpu-v7m.c
-@@ -237,6 +237,45 @@ static void cortex_m55_initfn(Object *obj)
-     cpu->ctr = 0x8303c003;
- }
- 
-+static void cortex_m85_initfn(Object *obj)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    ARMISARegisters *isar = &cpu->isar;
-+
-+    /* QEMU currently does not support the PACBTI feature */
-+    set_feature(&cpu->env, ARM_FEATURE_V8);
-+    set_feature(&cpu->env, ARM_FEATURE_V8_1M);
-+    set_feature(&cpu->env, ARM_FEATURE_M);
-+    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-+    set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
-+    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
-+    cpu->midr = 0x411fd231; /* r1p1 */
-+    cpu->revidr = 0;
-+    cpu->pmsav7_dregion = 16;
-+    cpu->sau_sregion = 8;
-+    /* These are the MVFR* values for the FPU + full MVE configuration */
-+    cpu->isar.mvfr0 = 0x10110221;
-+    cpu->isar.mvfr1 = 0x12100211;
-+    cpu->isar.mvfr2 = 0x00000040;
-+    SET_IDREG(isar, ID_PFR0, 0x20000030);
-+    SET_IDREG(isar, ID_PFR1, 0x00000230);
-+    SET_IDREG(isar, ID_DFR0, 0x10200000);
-+    SET_IDREG(isar, ID_AFR0, 0x00000000);
-+    SET_IDREG(isar, ID_MMFR0, 0x00111040);
-+    SET_IDREG(isar, ID_MMFR1, 0x00000000);
-+    SET_IDREG(isar, ID_MMFR2, 0x01000000);
-+    SET_IDREG(isar, ID_MMFR3, 0x00000011);
-+    SET_IDREG(isar, ID_ISAR0, 0x01103110);
-+    SET_IDREG(isar, ID_ISAR1, 0x02212000);
-+    SET_IDREG(isar, ID_ISAR2, 0x20232232);
-+    SET_IDREG(isar, ID_ISAR3, 0x01111131);
-+    SET_IDREG(isar, ID_ISAR4, 0x01310132);
-+    SET_IDREG(isar, ID_ISAR5, 0x00000000);
-+    SET_IDREG(isar, ID_ISAR6, 0x00000000);
-+    SET_IDREG(isar, CLIDR, 0x00000000); /* caches not implemented */
-+    cpu->ctr = 0x8303c003;
-+}
-+
- static const TCGCPUOps arm_v7m_tcg_ops = {
-     /* ARM processors have a weak memory model */
-     .guest_default_memory_order = 0,
-@@ -290,6 +329,8 @@ static const ARMCPUInfo arm_v7m_cpus[] = {
-                              .class_init = arm_v7m_class_init },
-     { .name = "cortex-m55",  .initfn = cortex_m55_initfn,
-                              .class_init = arm_v7m_class_init },
-+    { .name = "cortex-m85",  .initfn = cortex_m85_initfn,
-+                             .class_init = arm_v7m_class_init },
- };
- 
- static void arm_v7m_cpu_register_types(void)
--- 
-2.34.1
+With LoongArch part
+Reviewed-by: Bibo Mao <maobibo@loongson.cn>
+
+Regards
+Bibo Mao
+> diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+> index 51158ce1c08c..274970978ffb 100644
+> --- a/hw/m68k/virt.c
+> +++ b/hw/m68k/virt.c
+> @@ -367,10 +367,17 @@ type_init(virt_machine_register_types)
+>   #define DEFINE_VIRT_MACHINE(major, minor) \
+>       DEFINE_VIRT_MACHINE_IMPL(false, major, minor)
+>   
+> +static void virt_machine_11_2_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE_AS_LATEST(11, 2)
+> +
+>   static void virt_machine_11_1_options(MachineClass *mc)
+>   {
+> +    virt_machine_11_2_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_11_1, hw_compat_11_1_len);
+>   }
+> -DEFINE_VIRT_MACHINE_AS_LATEST(11, 1)
+> +DEFINE_VIRT_MACHINE(11, 1)
+>   
+>   static void virt_machine_11_0_options(MachineClass *mc)
+>   {
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index b79828b4e90c..7e284edd7d0b 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -4763,15 +4763,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
+>   #define DEFINE_SPAPR_MACHINE(major, minor) \
+>       DEFINE_SPAPR_MACHINE_IMPL(false, major, minor)
+>   
+> +/*
+> + * pseries-11.2
+> + */
+> +static void spapr_machine_11_2_class_options(MachineClass *mc)
+> +{
+> +    /* Defaults for the latest behaviour inherited from the base class */
+> +}
+> +
+> +DEFINE_SPAPR_MACHINE_AS_LATEST(11, 2);
+> +
+>   /*
+>    * pseries-11.1
+>    */
+>   static void spapr_machine_11_1_class_options(MachineClass *mc)
+>   {
+> -    /* Defaults for the latest behaviour inherited from the base class */
+> +    spapr_machine_11_2_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_11_1, hw_compat_11_1_len);
+>   }
+>   
+> -DEFINE_SPAPR_MACHINE_AS_LATEST(11, 1);
+> +DEFINE_SPAPR_MACHINE(11, 1);
+>   
+>   /*
+>    * pseries-11.0
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index 25a9fa495540..55131c1a4445 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -925,14 +925,26 @@ static const TypeInfo ccw_machine_info = {
+>       DEFINE_CCW_MACHINE_IMPL(false, major, minor)
+>   
+>   
+> +static void ccw_machine_11_2_instance_options(MachineState *machine)
+> +{
+> +}
+> +
+> +static void ccw_machine_11_2_class_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_CCW_MACHINE_AS_LATEST(11, 2);
+> +
+>   static void ccw_machine_11_1_instance_options(MachineState *machine)
+>   {
+> +    ccw_machine_11_2_instance_options(machine);
+>   }
+>   
+>   static void ccw_machine_11_1_class_options(MachineClass *mc)
+>   {
+> +    ccw_machine_11_2_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_11_1, hw_compat_11_1_len);
+>   }
+> -DEFINE_CCW_MACHINE_AS_LATEST(11, 1);
+> +DEFINE_CCW_MACHINE(11, 1);
+>   
+>   static void ccw_machine_11_0_instance_options(MachineState *machine)
+>   {
+> diff --git a/include/hw/core/boards.h b/include/hw/core/boards.h
+> index 29c68931d8a7..a436d48c8e52 100644
+> --- a/include/hw/core/boards.h
+> +++ b/include/hw/core/boards.h
+> @@ -815,6 +815,9 @@ compat_props_add(GPtrArray *arr,
+>       }
+>   }
+>   
+> +extern GlobalProperty hw_compat_11_1[];
+> +extern const size_t hw_compat_11_1_len;
+> +
+>   extern GlobalProperty hw_compat_11_0[];
+>   extern const size_t hw_compat_11_0_len;
+>   
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index d4b6d3ed57fa..ac03da97b645 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -209,6 +209,9 @@ void pc_system_parse_ovmf_flash(uint8_t *flash_ptr, size_t flash_size);
+>   /* sgx.c */
+>   void pc_machine_init_sgx_epc(PCMachineState *pcms);
+>   
+> +extern GlobalProperty pc_compat_11_1[];
+> +extern const size_t pc_compat_11_1_len;
+> +
+>   extern GlobalProperty pc_compat_11_0[];
+>   extern const size_t pc_compat_11_0_len;
+>   
+> 
 
 

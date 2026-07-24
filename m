@@ -4,86 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 946E9C531D0
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Jul 2026 03:08:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEEE1C531CC
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Jul 2026 03:08:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wn6F1-0003m1-91; Thu, 23 Jul 2026 23:06:27 -0400
+	id 1wn6Ex-0003jl-LS; Thu, 23 Jul 2026 23:06:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wn6Ex-0003jn-VU
- for qemu-arm@nongnu.org; Thu, 23 Jul 2026 23:06:24 -0400
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+ id 1wn6Ew-0003in-AJ
+ for qemu-arm@nongnu.org; Thu, 23 Jul 2026 23:06:22 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wn6Ew-00084i-ES
- for qemu-arm@nongnu.org; Thu, 23 Jul 2026 23:06:23 -0400
-Received: by mail-pj1-x102e.google.com with SMTP id
- 98e67ed59e1d1-38deea72eebso1400517a91.1
- for <qemu-arm@nongnu.org>; Thu, 23 Jul 2026 20:06:22 -0700 (PDT)
+ id 1wn6Eu-000847-Fw
+ for qemu-arm@nongnu.org; Thu, 23 Jul 2026 23:06:22 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id
+ 98e67ed59e1d1-382ef647e20so1385949a91.1
+ for <qemu-arm@nongnu.org>; Thu, 23 Jul 2026 20:06:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784862381; x=1785467181; darn=nongnu.org;
+ d=linaro.org; s=google; t=1784862378; x=1785467178; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=eE/TYHY9UFAVK4bqbm1zYcnmwH8+c78TUwQIpXcgR04=;
- b=Z3SZah0HgA9AR9kVIZHJtNEUTFuED0tqMTi9vq9xtVRwuTWP6RDYjurfmp5FjedSqo
- 1jj867leqeaqe2lvU0+GhqZqx9WBR5u1HT0CsUgha3MfJyjnucfqgaUhTioZnzDLCLL3
- aap8vylc2fisLGiIkbj2a0jryvXaWy63nEUbQgL9RQua4ZJ9F6M6rY1X9MO3YLCFyKb+
- qHg5H/sg81GmyRmtMMB/F7HRz+v+7M0Lq/Cu9Qnbx/KGTj59y+UaeHmMMVr4/0iCY77v
- ISYSNaheNZRoYiJPjou3t/wAsgorxfIA4Utc4n4mjJAqYai+bLQnCGChAUtzEga5TNar
- S8LA==
+ bh=XTEJryM2mS5sdwgtms25LDwrZ2fdC0GJ9Y4cXSQ9TQg=;
+ b=ewTnCndQ5Dwy/X9IFOtsuI2e8L9y7BGIIT1ZpkrEiyr9HM5ZT7a0bAQWGoEAqN/N8K
+ uVaoETCmlVgziKp/bCByyf3hngFlfr4H1yge9S9xwjLrLKzhxxgkHU+HwfOzUs0hIXmX
+ 4S42Af0naTVVUuAMwz/0IQUCkt91UemgzZH9MLIMBqupAFLJBi5f/9tJ6mbojb3YGXFV
+ 230EELxGZIS+U7cmEpmkjWx9YKMd0OV7qbn2A+tRIwseSJw72vKQkeStmC2YRhkJRWgq
+ X97DZbTqhHJXZnZEffL5HopriIoBLBySpR6SbDYuoGKW5AQCUQJ1Bm98hzEmFKlpyDQm
+ LHPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784862381; x=1785467181;
+ d=1e100.net; s=20251104; t=1784862378; x=1785467178;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=eE/TYHY9UFAVK4bqbm1zYcnmwH8+c78TUwQIpXcgR04=;
- b=QVb6fA62+zMuqvDokSUC0T8tJ7uLkcVBwcYmGpqJ/MSTfOM4qilzRoQJkZedM5gstB
- HcswvhF3FAlq7boEofMPeehEgte9d9AaEbK1BmR1roRwaQVmP6GiDy/M+fF0WO8OwXGp
- HBibSUKyXeFz6MoFNeDIiNi4G58AlA4BBXJRkHNmeWV+yu35pmlOAAvfLpwUjQJ/k9Rf
- RdHXlPRtfh8Mes5Gaf0yrEi0Bx69YL7ky0oyRYxuNOH8W1Qfw86WK3035q4th48aSMT5
- h7f4kss4Qx9ZGmeqYL43SW17Pfa0kcT/xs9wUQUpAgbEwMYMlQG7Zq96xXY5w8Ra/BxM
- 2HyQ==
-X-Gm-Message-State: AOJu0YzGKgS9eIt4edry5qM7A3c1QBCyrbyGC3CiQTOLrLsM3JAhwmm+
- Qkb+VCzUVORKDUJo7T3AfSfUg1DtK2xlNx3DOdQNEEUF00RxOfbOV6/MCebveYtxRks=
-X-Gm-Gg: AR+sD11uAQD9Ikmav8Yzsk9XW5YxxADplOx1NnWc0cmNc4qmC5/TEC7TvHBji1ZPXEP
- kc+HIkiwpJCmsNEuQh2yUVsupk4zXfg3QjesyNjE5kAa9JMPaNW9P6lp6ziIywJiXnV24945+YO
- hDcNsLXPf2N5spct+91CIPuhQ0v/u8K5OGnmeYWVVTcdnZE2567NJJ8y7tMFNk9PFVGm3drgbPl
- ykok3icEVxMBroywh1/ppi1eGuACN72fAkax7XmEjzsl+fqb4FtizwNssWD/oIC+U+EGkMTCKSg
- ckiTiJins2GdXLgqrRRXJSb2+IaGOa1RbG1JDy9Jq4nhrH4ANMfH7A4bc0i9urjhZyFJox5aYMM
- h47Xjub0dsWjKzYIaFPV+AJBmqcLAYpnpoxhzMUrcmJXodswFj0opzjDzLVs3IGZVx8dTe/szsG
- Ru3b2Ckch3NuMf/nrmEuDvCXf10q+h2aHupQ==
-X-Received: by 2002:a17:90b:1d44:b0:38d:dfd1:7a8 with SMTP id
- 98e67ed59e1d1-38ec63e1ed7mr5496543a91.2.1784862380866; 
- Thu, 23 Jul 2026 20:06:20 -0700 (PDT)
+ bh=XTEJryM2mS5sdwgtms25LDwrZ2fdC0GJ9Y4cXSQ9TQg=;
+ b=HiC2b65JHlivuyAAg6F5e8A7J6cfkdjK8QSqsp4fvffSviTrwyjOnCURWPwGqP0/aJ
+ cpN6+/h3cziIbpRgsgXpx7JmsfYRHRVyPjcwOoFGxH8fdGhj2uKiJKQdwCTgwatINnXa
+ GgKNskKqEET93ojIhEkDP9gUNMozFW56bmxFUZK8LJTFlIRdAk5ts6Lx/KgxaSF+2TnA
+ 3lCm+2Xg7MAVW7vPo76AFAzhphLDtbuYFqoCCG2wgGpCqZ87p5z+jGiuNdv7j/1OoM5r
+ B/NmwoFDDAq5N0qrDRufUFDvdT3W+T50rLq9jrYJdpf6xrY8ZMu1nWlSW6CMhIWK4LAL
+ G7Fw==
+X-Gm-Message-State: AOJu0Ywg5ksFkyO/ZUdzeLeoT8PC6MwYDXGQm6L8aBFAv26JrrOQLOl/
+ HR6eCHRACD+GDgDOrEc1vkWeULG52x+Fh+aAonCFuvjLsxVVbTQ+oQe7p3cgvXCrZquD9ejFrTm
+ 6KhRK
+X-Gm-Gg: AR+sD11e310Nz1V4yBUXcIUjPdM5vI28P5xBbQdFcHMI10f9vT+phujkfJo2iAhNlsc
+ JxRnw6cWliZ4YqZt/jFyfM0Aaox58OmjJE1qQVipYAq+uKQKGyw0AE/6Cv8RzODMzDNHSf3m2JQ
+ 5uCbhCgBkCmEGkukIuQDaukamrA4yYnhTWY7X6RGn5cX+mJ4X5jaF25OFelnB/FwAneY1L3LyIN
+ ZvV7jl+41JTlG/oPMhdaJtYilnhJNTWvtBFulQgAvP1iqw78TomvbTS5mHCMzlsiVrKvrIPC8B9
+ LvBAUTR5y0zuOXpTOHNv9ANK5JLZj8HLMifxF9D0DVH2fygdyp5grPRbxNmSxq0n6v69xbiXcdY
+ pFf83D2yMICPU0KSNucfdGn/ONKMmRaTin7CV+7vPGfIgSD1EiMQq7XLWwl2ux7B+agPQysjujF
+ jKeLNeyh0R9kFD+gARnkMZwdsv0BTVoQFPGw==
+X-Received: by 2002:a17:90b:5241:b0:38d:858c:834d with SMTP id
+ 98e67ed59e1d1-38ec650c9d7mr5939554a91.17.1784862378516; 
+ Thu, 23 Jul 2026 20:06:18 -0700 (PDT)
 Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-38f03ad0e0csm750777a91.7.2026.07.23.20.06.20
+ 98e67ed59e1d1-38f03ad0e0csm750777a91.7.2026.07.23.20.06.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Jul 2026 20:06:20 -0700 (PDT)
+ Thu, 23 Jul 2026 20:06:18 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 4/6] target/arm: Implement FGWTE3 traps
-Date: Thu, 23 Jul 2026 20:06:14 -0700
-Message-ID: <20260724030616.76180-5-richard.henderson@linaro.org>
+Subject: [PATCH 1/6] target/arm: Add FGWTE3_EL3
+Date: Thu, 23 Jul 2026 20:06:11 -0700
+Message-ID: <20260724030616.76180-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260724030616.76180-1-richard.henderson@linaro.org>
 References: <20260724030616.76180-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,101 +102,90 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/op_helper.c     | 36 ++++++++++++++++++++++------------
- target/arm/tcg/translate-a64.c | 13 +++++++++++-
- 2 files changed, 35 insertions(+), 14 deletions(-)
+ target/arm/cpregs.h       |  1 +
+ target/arm/cpu-features.h |  5 +++++
+ target/arm/cpu.h          |  2 +-
+ target/arm/helper.c       | 19 +++++++++++++++++++
+ 4 files changed, 26 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index c4433be2ed..f040a3fc87 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -1067,12 +1067,10 @@ const void *HELPER(access_check_cp_reg)(CPUARMState *env, uint32_t key,
-      * higher priority than trap-to-EL3, and we don't care about priority
-      * order with other EL2 traps because the syndrome value is the same.
-      */
--    if (arm_fgt_active(env, arm_current_el(env))) {
-+    if (ri->fgt) {
-         uint64_t trapword = 0;
-         unsigned int idx = FIELD_EX32(ri->fgt, FGT, IDX);
-         unsigned int bitpos = FIELD_EX32(ri->fgt, FGT, BITPOS);
--        bool rev = FIELD_EX32(ri->fgt, FGT, REV);
--        bool nxs = FIELD_EX32(ri->fgt, FGT, NXS);
-         bool trapbit;
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index 391c0e322b..34592679e4 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -385,6 +385,7 @@ typedef enum CPAccessResult {
+ /* Indexes into fgt_write[] */
+ #define FGTREG_HFGWTR 0
+ #define FGTREG_HDFGWTR 1
++#define FGTREG_FGWTE3 2
+ /* Indexes into fgt_exec[] */
+ #define FGTREG_HFGITR 0
  
-         if (ri->fgt & FGT_EXEC) {
-@@ -1085,19 +1083,31 @@ const void *HELPER(access_check_cp_reg)(CPUARMState *env, uint32_t key,
-             assert(idx < ARRAY_SIZE(env->cp15.fgt_write));
-             trapword = env->cp15.fgt_write[idx];
-         }
-+        trapbit = extract64(trapword, bitpos, 1);
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index fb5ed25ad0..75f0fc4169 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -1467,6 +1467,11 @@ static inline bool isar_feature_aa64_asid2(const ARMISARegisters *id)
+     return FIELD_EX64_IDREG(id, ID_AA64MMFR4, ASID2) != 0;
+ }
  
--        if (nxs && (arm_hcrx_el2_eff(env) & HCRX_FGTNXS)) {
-+        if ((ri->access & ~PL3_RW) == 0) {
-             /*
--             * If HCRX_EL2.FGTnXS is 1 then the fine-grained trap for
--             * TLBI maintenance insns does *not* apply to the nXS variant.
-+             * EL3 cpreg -- must be FGWTE3, and FGWTE3_EL3 can only be
-+             * set from AArch64, and if the feature is enabled.
-              */
--            trapbit = 0;
--        } else {
--            trapbit = extract64(trapword, bitpos, 1);
--        }
--        if (trapbit != rev) {
--            res = CP_ACCESS_TRAP_EL2;
--            goto fail;
-+            if (trapbit) {
-+                res = CP_ACCESS_TRAP_EL3;
-+                goto fail;
-+            }
-+        } else if (arm_fgt_active(env, arm_current_el(env))) {
-+            bool nxs = FIELD_EX32(ri->fgt, FGT, NXS);
-+            bool rev = FIELD_EX32(ri->fgt, FGT, REV);
-+            if (nxs && (arm_hcrx_el2_eff(env) & HCRX_FGTNXS)) {
-+                /*
-+                 * If HCRX_EL2.FGTnXS is 1 then the fine-grained trap for
-+                 * TLBI maintenance insns does *not* apply to the nXS variant.
-+                 */
-+                trapbit = 0;
-+            }
-+            if (trapbit != rev) {
-+                res = CP_ACCESS_TRAP_EL2;
-+                goto fail;
-+            }
-         }
-     }
- 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 1780490065..ff880eab8d 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2886,6 +2886,7 @@ static void handle_sys(DisasContext *s, bool isread,
- {
-     uint32_t key = ENCODE_AA64_CP_REG(op0, op1, crn, crm, op2);
-     const ARMCPRegInfo *ri = get_arm_cp_reginfo(s->cp_regs, key);
-+    bool need_helper = false;
-     bool need_exit_tb = false;
-     bool nv_trap_to_el2 = false;
-     bool nv_redirect_reg = false;
-@@ -2999,7 +3000,17 @@ static void handle_sys(DisasContext *s, bool isread,
-         ri = redirect_cpreg(s, key, isread);
-     }
- 
--    if (ri->accessfn || (ri->fgt && s->fgt_active)) {
-+    if (ri->accessfn) {
-+        need_helper = true;
-+    } else if (ri->fgt) {
-+        if ((ri->access & ~PL3_RW) == 0) {
-+            need_helper = (arm_dc_feature(s, ARM_FEATURE_EL3) &&
-+                           dc_isar_feature(aa64_fgwte3, s));
-+        } else {
-+            need_helper = s->fgt_active;
-+        }
-+    }
-+    if (need_helper) {
-         /* Emit code to perform further access permissions checks at
-          * runtime; this may result in an exception.
++static inline bool isar_feature_aa64_fgwte3(const ARMISARegisters *id)
++{
++    return FIELD_EX64_IDREG(id, ID_AA64MMFR4, FGWTE3) != 0;
++}
++
+ /*
+  * Note the E2H0 ID fields is signed, increasingly negative as more
+  * isn't implemented.
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 03a30afcbe..ca75e379eb 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -553,7 +553,7 @@ typedef struct CPUArchState {
+          * FEAT_FGT2 will add more elements to these arrays.
           */
+         uint64_t fgt_read[2]; /* HFGRTR, HDFGRTR */
+-        uint64_t fgt_write[2]; /* HFGWTR, HDFGWTR */
++        uint64_t fgt_write[3]; /* HFGWTR, HDFGWTR, FGWTE3 */
+         uint64_t fgt_exec[1]; /* HFGITR */
+ 
+         /* RME registers */
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index af45234ad2..d410a9a1ec 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6331,6 +6331,21 @@ static const ARMCPRegInfo fpmr_reginfo[] = {
+     }
+ };
+ 
++static void fgwte3_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                         uint64_t value)
++{
++    env->cp15.fgt_write[FGTREG_FGWTE3] |= value;
++}
++
++static const ARMCPRegInfo fgwte3_reginfo[] = {
++    { .name = "FGWTE3_EL3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 1, .opc2 = 5,
++      .access = PL3_RW, .resetvalue = 0,
++      .writefn = fgwte3_write, .raw_writefn = raw_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.fgt_write[FGTREG_FGWTE3])
++    },
++};
++
+ void register_cp_regs_for_features(ARMCPU *cpu)
+ {
+     /* Register all the coprocessor registers based on feature bits */
+@@ -7642,6 +7657,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         define_arm_cp_regs(cpu, ccsidr2_reginfo);
+     }
+ 
++    if (cpu_isar_feature(aa64_fgwte3, cpu)) {
++        define_arm_cp_regs(cpu, fgwte3_reginfo);
++    }
++
+     define_pm_cpregs(cpu);
+     define_gcs_cpregs(cpu);
+ }
 -- 
 2.43.0
 

@@ -4,84 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04C2EC531C9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9642DC531FC
 	for <qemu-arm@archiver.kernel.org>; Sat, 25 Jul 2026 01:01:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wnQlU-0000tM-FP; Fri, 24 Jul 2026 21:01:20 -0400
+	id 1wnQlR-0000kU-G6; Fri, 24 Jul 2026 21:01:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wnQTQ-00071O-Ih
- for qemu-arm@nongnu.org; Fri, 24 Jul 2026 20:42:40 -0400
-Received: from mail-vk1-xa30.google.com ([2607:f8b0:4864:20::a30])
+ id 1wnQTJ-0006xq-NM
+ for qemu-arm@nongnu.org; Fri, 24 Jul 2026 20:42:33 -0400
+Received: from mail-vk1-xa2b.google.com ([2607:f8b0:4864:20::a2b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wnQTO-0000rT-SV
- for qemu-arm@nongnu.org; Fri, 24 Jul 2026 20:42:40 -0400
-Received: by mail-vk1-xa30.google.com with SMTP id
- 71dfb90a1353d-5bfb3347ce0so324819e0c.2
- for <qemu-arm@nongnu.org>; Fri, 24 Jul 2026 17:42:38 -0700 (PDT)
+ id 1wnQTI-0000oX-5B
+ for qemu-arm@nongnu.org; Fri, 24 Jul 2026 20:42:33 -0400
+Received: by mail-vk1-xa2b.google.com with SMTP id
+ 71dfb90a1353d-5c2dbaf828eso384246e0c.0
+ for <qemu-arm@nongnu.org>; Fri, 24 Jul 2026 17:42:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1784940158; x=1785544958; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1784940151; x=1785544951; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=5QfvYo5UsCuRurXk863Eme2dB9OKCaPHtZCuOSVqbkQ=;
- b=QYdWYdWMYPLxaHb+sLnvwVTeo92+QBQa5389acBYcd5T2KQWJp+9K4LfKrceqBg3mZ
- WJm0A4sY9tDvKbsHtd/TwwG5rbeJRw2D7c0FOEZdxb14DoXX7580NbM8sDCVm/lzFWdh
- IMGheC+hITos3ku1K6P5s/oBhmCMqsYDupaFNxY6BB0LRgWnrv7kVO0RRAUr/yhv7Gkl
- P8/sp99gb+Dg65WaY6kNPmOOMpIGHEmfg7VCkQRAcTZ4IYZTD7UNp1rrkxbzpd7CFukz
- P2061YKwO2rRIlhWakwQRAhEI043iOQear0IRng0XBRITyw2R1ERnCNDnj0ZgXMRJtrd
- nVvg==
+ bh=PLnP2ltcRm+AptlSTX1goJ6Q09KA8SX8AKgQZ5A2kxo=;
+ b=AD1WK393FayqzIYtXiDsaX/c++2puuKXekmju+0NXV1EuGv4RM4YGjFP5Vh1YAh+Yk
+ vGclL4/W0BmqdTmMMjAUxsEGGpBHRfGE/vXJVv7NdVAel470MpMc5GlwQxeMsomvcRuY
+ Kjdz5SxZm/1/K1nGoqQ7tj9D785Xp2N/w9SR6meu+fLp64fIOg1w0zwqzgrj+HSm6ArT
+ Jeq407ZCOXXjL/YJlvRrL1m6aleem5VzUOkO2Pa6d9mY+Gh8gG/R6EFGl73kdPFmdmYa
+ IZ1DpnerG5cL0BZVYaa9oOLMAhW8qIDZv9QQtwpZo8KwFtWKf0pWyFPAq6UoIFRrr+4W
+ VIYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784940158; x=1785544958;
+ d=1e100.net; s=20251104; t=1784940151; x=1785544951;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=5QfvYo5UsCuRurXk863Eme2dB9OKCaPHtZCuOSVqbkQ=;
- b=moSAaY+akqWSjO+XNEBbiyiLdWWBI6P6E8rPUyA2RvPpRvDsm3ptOCirxz0ZiaXJ3K
- 5rtJPQ24g32Gcj+r5NyuBl44E+9+Z6VIpDv+YE2wQmMQ5o/JJWk4HUBd/Qf5ZJolnnpl
- /mO/2y/l0EHs0OtXhMgr1CRqaZ23dZYy3IrALBJNO1naD78ENMztLNJF2lP9LmYmpBcC
- EEprGH/bzuBIuPpbIMuf+02N62xhik2c+wbTzz7JtQZHmzmn0PEnSMJyTU7O5FH6eMrL
- SxuezkahwPahfibkOnHQeFhvvmpdPTd5lGn27kTnuXQRH6g+iaJ/cSzj0/mL62vFRvxU
- cXPA==
-X-Gm-Message-State: AOJu0YyjZF9LRrwFmUAuDwV8FoK/IUTixjyzDRhmsJQ+ZUjlu+worcGF
- 3sVQEWIheFE8zAIwe7PCSMRuuaxp1lxfaSadYA4eZTMjedrY8MGfpYsz
-X-Gm-Gg: AR+sD13epRvZojvER04aTmnu2Pydv2i3VGChncqoj9/NXIxSh51AMaDeyrVFzNNJrYt
- jQbsdfL2Kntr5uPOLbXB2Ax11vVHoni12gRwMOGix/X7xdatocSEHE6d8/m5V8lskmgDSwZfs41
- BicK632Q5RFqBzQNMHY4Y5a/D1nFkGuwJlIyxeFW8fMWlxP8UHDXe8Gnb9OHEZ17Vw4YhuPI7YO
- AGWZAF15vIo78jbeBK0F73JMgaid/SF0IqiiFXvR0rwjVq8KM+TeA3MQ9YzkjsneIxyq9ZVaKDZ
- 6O2sUEG8aOHYI56tCmSq/5ggnlL1t96yE0nQ/xpggoq7ZifHWgUyCnFv8Qc+6QDpEypsuP+l9cj
- bY/Op07iz4YowBUYHtMJI4HzM3X3x0p0fTi2DdbhblD5ckg5q7kC9oJ4kMwaUroyF5nWbX315VK
- 9IhVckmSnWEPU5KAnPaZ22wCNoD2KWIpu6
-X-Received: by 2002:a05:6102:6441:b0:738:9dd5:9b03 with SMTP id
- ada2fe7eead31-750400a8bdamr601594137.20.1784940157831; 
- Fri, 24 Jul 2026 17:42:37 -0700 (PDT)
+ bh=PLnP2ltcRm+AptlSTX1goJ6Q09KA8SX8AKgQZ5A2kxo=;
+ b=r9BbwqCYdMKOhvLOFRt9eA93GQKaKGsUMjDeyDGp3ncm9DnsvwljTVBLXChU10QZtz
+ sghEafxw+9GFJukMu18Iv3r34WK2ZFEoQcq33SVld2PR4lfg/Cql5QIxNwiMQaXKHpRt
+ Xz7zQOm7YbVdbECNBdiU2QBXQDIH+i0o7nQ8Ib4VxMWmBe1KWbVyx0x//L5q6aRgkAZt
+ rMuNGIUSs2hjXy8xqa54ofussdSLB1F3Uu4wk7YAVg/PlTK8Bwngsz5sBAEgAY/DLygR
+ tdNWQfnIqGv/K2uaFXXVqVu5yfryvIuQehwQITTytjKXyJM4zMKB7gZBwX2F4jmYQh5i
+ Driw==
+X-Gm-Message-State: AOJu0YzSi8u5EL2/ti/OEEYj1xOVXU0P2RvHZd+Oe9YjrsiMNfOp/j2p
+ BxiRDaN8BoAEYBvPDI2wPSgDOE+FgexiOT+rEu1tcQ+ClXQgM1PZ7TYk
+X-Gm-Gg: AR+sD124sc4pkyena2RDyt9oXboFt69NNTyS2Y1TjYV3J8vKIL/WuH4mVU25LPVfZkf
+ 4ped/qizRmSXE67hZxoXqFQMoiGCVyGqukS8jwMnKhmpVtRFW5HgTuw845xxCsm1VPGCUnd82iE
+ oOowyA+HwV7psL4MVTm8VQL01cs7B7E0pvVRkJ3s56cDo/ogK7B2O65glKkT72RCrydietlmNx1
+ zATarErmqZYYG8UUyL7ap4+epczAU8Ub4qX68X9boqKYL5ueEKacVnJ5eQURoE/j5Kszgdvmam9
+ LsLdTchjEWd1ort+Ys6VFwJSkLiP+oIxirTzj8HvwmT3ro3RRHJWuoXHujlqA5mOhaTGFwX9LKZ
+ ltjOiS7YRq/ebeFfWjo9R0ozB2hg8BwtpuyW2ZoaNVUfMMv1TTNCRkmXm/Dl4sGiCERuOiFmlt0
+ GKNsvzceLDuWjJr247bGeZsERHYRdX+cuY
+X-Received: by 2002:a05:6122:8b10:b0:5bf:6cfa:7743 with SMTP id
+ 71dfb90a1353d-5c306db29d3mr379064e0c.13.1784940150891; 
+ Fri, 24 Jul 2026 17:42:30 -0700 (PDT)
 Received: from localhost.localdomain ([146.71.8.128])
  by smtp.gmail.com with ESMTPSA id
- a1e0cc1a2514c-97774f12690sm930591241.12.2026.07.24.17.42.37
+ a1e0cc1a2514c-97774f12690sm930591241.12.2026.07.24.17.42.29
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 24 Jul 2026 17:42:37 -0700 (PDT)
+ Fri, 24 Jul 2026 17:42:30 -0700 (PDT)
 From: Marcelo Manzo <marcelomanzo@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Jason Wang <jasowangio@gmail.com>,
  Sergey Kambalin <sergey.kambalin@auriga.com>,
+ Sergey Kambalin <serg.oker@gmail.com>,
  Marcelo Manzo <marcelomanzo@gmail.com>
-Subject: [PATCH 15/19] hw/net/bcm2838_genet: fix PHY autonegotiation-restart
- deadlock
-Date: Fri, 24 Jul 2026 20:42:14 -0400
-Message-ID: <20260725004219.66222-16-marcelomanzo@gmail.com>
+Subject: [PATCH 08/19] hw/net/bcm2838_genet: add GENET register structs,
+ part 4/4
+Date: Fri, 24 Jul 2026 20:42:07 -0400
+Message-ID: <20260725004219.66222-9-marcelomanzo@gmail.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260725004219.66222-1-marcelomanzo@gmail.com>
 References: <20260725004219.66222-1-marcelomanzo@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a30;
- envelope-from=marcelomanzo@gmail.com; helo=mail-vk1-xa30.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a2b;
+ envelope-from=marcelomanzo@gmail.com; helo=mail-vk1-xa2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -90,7 +91,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 24 Jul 2026 21:00:29 -0400
+X-Mailman-Approved-At: Fri, 24 Jul 2026 21:00:27 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,62 +106,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The guest PHY driver requests an autonegotiation restart by setting
-BMCR.ANRESTART, then polls BMCR waiting for the hardware to clear
-that bit as an acknowledgment. bcm2838_genet_mdio_cmd() called
-FIELD_DP16() to clear ANRESTART in phy_reg_data but discarded its
-return value -- FIELD_DP16() does not modify its argument in place,
-it returns a new value -- so the bit was never actually cleared in
-the register the guest reads back. The guest driver then spun
-forever waiting for an acknowledgment that would never come,
-appearing to hang the whole boot.
+From: Sergey Kambalin <serg.oker@gmail.com>
 
-Assign the FIELD_DP16() result back to phy_reg_data, and also call
-bcm2838_genet_phy_update_link() once the restart is handled so link
-status actually gets refreshed, matching the surrounding code's own
-comment ("Initiate auto-negotiation once it has been restarted").
+Add the PHY "shadow" register structs (BCM54213PE PHY-specific
+clock control, RGMII mode, LED, and expansion-block registers
+accessed via the AUX_CTL/EXP_SHD indirection scheme) used by the
+MDIO emulation added in a later patch.
 
-Found by booting a real guest against this series and tracing the
-MDIO command register with targeted debug prints: the guest was
-observed polling BMCR indefinitely, always reading back the
-ANRESTART bit still set. Confirmed fixed across repeated boots: link
-comes up and autonegotiation completes every time.
+Part of Sergey Kambalin's original Raspberry Pi 4B PCIe/GENET
+networking series (patchwork series 829638, posted to qemu-devel in
+2024, never merged). Carried forward and completed by Marcelo Manzo.
 
+Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
 ---
- hw/net/bcm2838_genet.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ include/hw/net/bcm2838_genet.h | 37 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
-diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
-index 59393d89..e34c1810 100644
---- a/hw/net/bcm2838_genet.c
-+++ b/hw/net/bcm2838_genet.c
-@@ -20,6 +20,8 @@
- #include "hw/net/bcm2838_genet.h"
- #include "trace.h"
+diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
+index fedfbde0..12439b58 100644
+--- a/include/hw/net/bcm2838_genet.h
++++ b/include/hw/net/bcm2838_genet.h
+@@ -25,6 +25,12 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
+ #define BCM2838_GENET_HFB_FILTER_CNT      48
+ #define BCM2838_GENET_HFB_FILTER_SIZE     128
  
-+static void bcm2838_genet_phy_update_link(BCM2838GenetState *s);
++#define BCM2838_GENET_PHY_AUX_CTL_MISC  0x7
++#define BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE 8
 +
- /* GENET layouts */
- REG32(GENET_SYS_REV_CTRL,              0)
- FIELD(GENET_SYS_REV_CTRL, GPHY_REV,    0, 16)
-@@ -390,10 +392,15 @@ static uint64_t bcm2838_genet_mdio_cmd(BCM2838GenetState *s, uint64_t cmd)
-                 if (phy_reg_id == BCM2838_GENET_PHY_BMCR) {
-                     /* Initiate auto-negotiation once it has been restarted */
-                     if (anrestart == 1) {
--                        FIELD_DP16(phy_reg_data, GENET_PHY_BMCR, ANRESTART, 0);
-+                        phy_reg_data = FIELD_DP16(phy_reg_data,
-+                                                  GENET_PHY_BMCR,
-+                                                  ANRESTART, 0);
-                     }
-                 }
-                 *phy_reg = phy_reg_data;
-+                if (phy_reg_id == BCM2838_GENET_PHY_BMCR && anrestart == 1) {
-+                    bcm2838_genet_phy_update_link(s);
-+                }
-             }
-         }
-     }
++#define BCM2838_GENET_PHY_EXP_SHD_BLOCKS_CNT 256
++#define BCM2838_GENET_PHY_EXP_SHD_REGS_CNT   256
++
+ typedef struct {
+     uint32_t rev_ctrl;
+     uint32_t port_ctrl;
+@@ -273,6 +279,34 @@ typedef struct {
+     uint16_t rdb_data;
+ } BCM2838GenetPhyRegs;
+ 
++typedef struct {
++    uint16_t reserved_0_2[3];
++    uint16_t clk_ctl;
++    uint16_t scr2;
++    uint16_t scr3;
++    uint16_t reserved_6_9[4];
++    uint16_t apd;
++    uint16_t rgmii_mode;
++    uint16_t reserved_12;
++    uint16_t leds1;
++    uint16_t reserved_14_18[5];
++    uint16_t _100fx_ctrl;
++    uint16_t ssd;
++    uint16_t reserved_21_30[10];
++    uint16_t mode;
++} BCM2838GenetPhyShdRegs;
++
++typedef struct {
++    uint16_t auxctl;
++    uint16_t reserved_1_6[BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE - 2];
++    uint16_t misc;
++} BCM2838GenetPhyAuxShdRegs;
++
++typedef struct {
++    uint16_t regs[BCM2838_GENET_PHY_EXP_SHD_BLOCKS_CNT]
++                 [BCM2838_GENET_PHY_EXP_SHD_REGS_CNT];
++} BCM2838GenetPhyExpShdRegs;
++
+ struct BCM2838GenetState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+@@ -284,6 +318,9 @@ struct BCM2838GenetState {
+ 
+     BCM2838GenetRegs regs;
+     BCM2838GenetPhyRegs phy_regs;
++    BCM2838GenetPhyShdRegs phy_shd_regs;
++    BCM2838GenetPhyAuxShdRegs phy_aux_ctl_shd_regs;
++    BCM2838GenetPhyExpShdRegs phy_exp_shd_regs;
+ 
+     qemu_irq irq_default;
+     qemu_irq irq_prio;
 -- 
 2.47.1
 

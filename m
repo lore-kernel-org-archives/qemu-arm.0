@@ -4,86 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7F89C531C9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8673CC531D0
 	for <qemu-arm@archiver.kernel.org>; Sat, 25 Jul 2026 23:12:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wnlXF-0003jy-7L; Sat, 25 Jul 2026 19:12:02 -0400
+	id 1wnlX9-0003ib-Bb; Sat, 25 Jul 2026 19:11:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wnlX2-0003h1-Vy
+ id 1wnlX3-0003h4-0R
  for qemu-arm@nongnu.org; Sat, 25 Jul 2026 19:11:49 -0400
-Received: from mail-vk1-xa35.google.com ([2607:f8b0:4864:20::a35])
+Received: from mail-vk1-xa2e.google.com ([2607:f8b0:4864:20::a2e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wnlWz-0005iy-Hv
- for qemu-arm@nongnu.org; Sat, 25 Jul 2026 19:11:47 -0400
-Received: by mail-vk1-xa35.google.com with SMTP id
- 71dfb90a1353d-5bfb3347dc4so915388e0c.0
- for <qemu-arm@nongnu.org>; Sat, 25 Jul 2026 16:11:45 -0700 (PDT)
+ id 1wnlX0-0005j7-QT
+ for qemu-arm@nongnu.org; Sat, 25 Jul 2026 19:11:48 -0400
+Received: by mail-vk1-xa2e.google.com with SMTP id
+ 71dfb90a1353d-5c3163a88a1so45540e0c.3
+ for <qemu-arm@nongnu.org>; Sat, 25 Jul 2026 16:11:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1785021104; x=1785625904; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=w2ZMmkRhdQd7wygfGjNjQl2Q7y//RixNLAYn7fQ+oYA=;
- b=E0fJjLz6U+o/JR2RFnxakw1uZEHuA1ErBz78X7NJ9oI1mnjPvNr18M5VsNevXwduKF
- rdXgPbU7UMlkg8CKQCzacF1lIKVDZe1IzKtYa7kyLj2nkT4pj9Dr2dE80gBbB3LCN16V
- txZmRAUErbkMx1I5IX1e+TwMEVHintHSMHeBryyjc1YtUwBaFV9vdK19rWks2ilSQmhF
- jRsLVm2s2uVhgFftp28+9nE5yaKlOQzycM4iSUZeZfu+WfFwpHONOOOvUxCYD8MgZV89
- LrRPlDqjDBcuC0n6bn1huZpu5WUBzhQ/+3v57mY2AYEjkWsdNdacg7pHoccAMUA8yJQ/
- FBOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785021104; x=1785625904;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20251104; t=1785021105; x=1785625905; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=w2ZMmkRhdQd7wygfGjNjQl2Q7y//RixNLAYn7fQ+oYA=;
- b=tOL3xVi4/ljPFzMHTr3YZ1LcyPT9gUBuAnNLLYBCbVO5zp2eh6aoR6lPzoQzSbcO8r
- K1BlD9gBbaaf0k1HT/PbqrZoXNVuWcAnA1uTpwWzF9S+WYn9kKk2UedjWrJw86P/hRMc
- EVSSkz8/VRLdSpdJzITDbSJzkjGL7JLptyNo4wNPGv4nVrlYOnATvSQR3RYkh5//tteJ
- k7ldLUFh8pQ3Yolv/120WC4RF5RFm//2/VR0HMdJYyNOlYykyEVZYlXDVcWjOuYOiEpc
- q7ElSn4sDzCcl9RUqFeV0OUfZmXHITOzD0Rbp5BpJ61D8MI3+AIoazTOjg859PXFMvKC
- vufQ==
-X-Gm-Message-State: AOJu0YyJ8l1x5lWVloM8CkjAQCt6xhUgQ9cvPDJefX75s2g6BN68WXe5
- qs/EtD7Pp+PQ6kGcxt7vGQ+cViwHGOMH8qZbfG6EFE9Dhafbx5aXSuqZ
-X-Gm-Gg: AR+sD12jgj+OLNB8/ka5P7EzSun81gz/NsS7cUFlnoVE6Qsc9XR93JY9kJ2jVakaS1H
- kj9s4tnfK9YBJfoFXkEJBI8ysmSthJ2B9hSS5yyK1PsxV++dktCZhl8bHL0DGoyDchCUr74q/Us
- R1oRbQSEcSkkKiaphlnZsmVr9UdGBbxDWoF0HvF3FxIVCxJEbpkV1XKGF3zgWeU5ANNGcbWKL5C
- Kej0gEmksWUm0N/P+AAdJUVXfjRDQ2ued8RFhG6hxJGoIACWszKBSlp1yDaHkV5XlBk6mNuPSeM
- 6MY6ek+WTulJ8/HfHq/Hm1iUD7uYc3DdUG1caVE0xPRKOHX+9Rl8cJdlM3MUvn09LJsAF2428+6
- cV/vQ7GOCK3Ww7Po5pxq5ZxL/F9IuxCyutLDQpT0hUN/eCSYH5I6yj2Aq780DlT4puGPHS9UpIA
- UxU4hPtXyGoSjlqZnhmjcwy0YA53k5YNAy
-X-Received: by 2002:a05:6122:3a12:b0:567:4e8a:fb13 with SMTP id
- 71dfb90a1353d-5c306c8f990mr1749847e0c.8.1785021104312; 
- Sat, 25 Jul 2026 16:11:44 -0700 (PDT)
+ bh=Rww7YfQ1WxkCJQmecJPYaSnIoUwIyure2gI4fgprYWc=;
+ b=segqUeNxQXJYi0Yn7UEznANjGF31pdDQ0bwAQU99Cp3ZrSOdeVdE/hQ5OynesqJMLj
+ znWw1EtlD51Wp4mVIO3ZTpm3OwsCw3VEqBgk8eMH6Y0Hq177ClStl/pU3jovgJOJIyTg
+ lRGNtC2ceBJhvcXCDVHj0r9UT2tID6qErdnl9CyebvzxYzF74b+mlQExyuAtC0sGmeb/
+ je9cyvKL3pXIqLsrcFy1KRkpvl/ZSbUihwtIphkAtSKrffkf6vYilPYxsjyFf1sjet6h
+ 1Ycc58wimnumqC970KjhG5I7U2j9wXDzzCR/KzBC4oKDC5hdbvIKQRrtiTexE5UViDRj
+ 3JLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1785021105; x=1785625905;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=Rww7YfQ1WxkCJQmecJPYaSnIoUwIyure2gI4fgprYWc=;
+ b=Zt/IBZvSMmEHc6/AAH4dNA3Uir8IYhWj19paf88WcMnwYDVgZoqF266YuIH6WR/5Y3
+ iE3xc9+tUjJDG8v8VsPcces0KnX4WxYpYQzucVSKnI+wOmwzMIlHJt84YY86DFwCjXs6
+ eJfRB+B2BAejWjneg8Wx0KZC4I30DHfGAI02VB+rb2NZQHpZZ1MSo2+aBBYG5eXGvqvv
+ nG4CRZGzMPRQPMcR3NV2P7MSExt6y/7PM98llO0Sk1+HrECadZOeNVmsMUpeLhLmGDEp
+ MVD4HswzDm90BPd9mzfpjGP1ALUBuXMyPavc8hp/8+Q1YwDh8TTrODepcefFzop9XBjA
+ fGCQ==
+X-Gm-Message-State: AOJu0YwDktDoaV9Ar+zYzmdCm0rzgb8exza///+bzslVomRWuPjllnOT
+ y6TrGJQ+F6jZlzbNDedyOEvjDKUnpWTHXFFOPnFM6p0e9SYeXnCgtYgLbqYBrg==
+X-Gm-Gg: AR+sD11HqbRxSTMlM+zRhaH9fLYNSJwxTHEyB9t6074KlLe942ZcfHC+6XvvjN1x2AV
+ izG+7zAn35n5KnYvPkGCpJWAcSg+3c3vJ8C7TgM2ppeI/uUMJ+zpL/q0WuYjz/MjsGTTCZbNKIP
+ d6KLJF285RWw5LR2ScxP2llIdDXlmsUcst15UTPcpGI8gNKP+iRTAdcIyTr6rl9da9isT9AHi7+
+ Nqagnl/gH/9BY0YknekY3JTqBrWFvySKl72LnGDE1WwJEClSGynMd0J1mApkvzRKnhMgpzuZv07
+ fj+MWe1fOvR4FPwiL03QT2IbLo+Prgth2jVzTlX1o8lSVLo45oYRE8ESYrI/rjPJ0V4v/bqaFa3
+ klYXIQGu54Xpuoc5AWFPt4WsX6KY6OFl8cFwNGnncfCOB+YRwIJNSIJwwFnRorxmGCF1CvbDwnK
+ pNQemO3wIHfrp1atIfbjV2rmIf7ezji6eG
+X-Received: by 2002:a05:6122:65a4:b0:5bf:b500:c4f4 with SMTP id
+ 71dfb90a1353d-5c306bb3b3amr1528561e0c.2.1785021105607; 
+ Sat, 25 Jul 2026 16:11:45 -0700 (PDT)
 Received: from localhost.localdomain ([146.71.8.128])
  by smtp.gmail.com with ESMTPSA id
- 71dfb90a1353d-5c30549516csm2907015e0c.6.2026.07.25.16.11.43
+ 71dfb90a1353d-5c30549516csm2907015e0c.6.2026.07.25.16.11.44
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 25 Jul 2026 16:11:43 -0700 (PDT)
+ Sat, 25 Jul 2026 16:11:44 -0700 (PDT)
 From: Marcelo Manzo <marcelomanzo@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Jason Wang <jasowangio@gmail.com>, Marcelo Manzo <marcelomanzo@gmail.com>
-Subject: [PATCH 0/2] hw/arm/raspi4b: fix watchdog and GENET bugs hit by modern
- distro kernels
-Date: Sat, 25 Jul 2026 19:11:40 -0400
-Message-ID: <20260725231142.61663-1-marcelomanzo@gmail.com>
+Subject: [PATCH 1/2] hw/misc/bcm2835_powermgt: implement a real watchdog timer
+Date: Sat, 25 Jul 2026 19:11:41 -0400
+Message-ID: <20260725231142.61663-2-marcelomanzo@gmail.com>
 X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20260725231142.61663-1-marcelomanzo@gmail.com>
+References: <20260725231142.61663-1-marcelomanzo@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a35;
- envelope-from=marcelomanzo@gmail.com; helo=mail-vk1-xa35.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a2e;
+ envelope-from=marcelomanzo@gmail.com; helo=mail-vk1-xa2e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,82 +101,158 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Follow-up to "hw/arm/bcm2838_pcie: make PCI device enumeration actually
-work" [1]. That series (plus the GENET/RNG200/thermal work before it)
-got a real Raspberry Pi 4 SoC far enough to boot official, unmodified
-Raspberry Pi OS releases end to end under raspi4b -- not just the
-functional-test suite's minimal 2019-era kernel+initrd. Doing that
-surfaced two further bugs that only show up with a modern distro's
-systemd actually driving the hardware, both on paths the existing
-tests don't exercise:
+The RSTC register's write-config bits (0x30) being set to the
+"full reset" value (0x20) does not mean "reset now" -- it arms the
+hardware watchdog so that a reset happens if the WDOG countdown
+register is not refreshed before it expires. The previous
+implementation treated any such RSTC write as an immediate reset,
+regardless of the WDOG value.
 
-1. hw/misc/bcm2835_powermgt: the RSTC register's write-config bits
-   (0x30) being set to the "full reset" value (0x20) does not mean
-   "reset now" on real hardware -- it arms the watchdog so a reset
-   happens only if the WDOG countdown register is not refreshed
-   before it expires. QEMU's model treated any such RSTC write as an
-   immediate reset. This is dormant on lighter userspace, but
-   Debian 13/Trixie's systemd (257) writes to RSTC during routine
-   early-boot watchdog probing, causing an immediate spurious reset a
-   few seconds into boot. Combined with -no-reboot this looks exactly
-   like a QEMU crash from the outside: clean exit, no panic, no guest
-   reboot message, the last log line being the RSTC/WDOG write itself.
-   Fixed by actually implementing the watchdog as a QEMUTimer that
-   only fires -- and only then requests a reset/shutdown -- after the
-   real timeout computed from the WDOG register.
+This is dormant on older/lighter userspace (nothing in Bullseye's
+default boot touches these registers this way), but modern systemd
+(observed with Debian 13/Trixie's systemd 257) writes to RSTC as part
+of routine early-boot watchdog probing. With the old code, this fires
+an immediate reset a few seconds into boot; combined with -no-reboot
+this looks exactly like a QEMU crash (clean exit, no panic, no guest
+reboot message) with the last log line being the RSTC/WDOG write.
 
-2. hw/net/bcm2838_genet: three related per-ring DMA bugs. RDMA_CTRL
-   writes never updated any per-ring status at all (only TDMA_CTRL
-   updated a single overall DISABLED bit); enabling a ring didn't
-   flush packets queued while it was disabled; and the RX fallback
-   path hardcoded the last/default ring with no check that it was
-   actually active. Bullseye and Bookworm's kernels default to that
-   last ring, so this was invisible with them, but Trixie's 6.18
-   kernel actively uses rings 0-4 and never enables the default ring,
-   so every unfiltered packet was silently dropped -- no DHCP lease,
-   no usable networking. Fixed by tracking a real per-ring enable
-   bitmask for both directions, flushing queued packets when a ring
-   is enabled, and falling back to scanning for the first actually-
-   active ring instead of assuming the last one.
+Fix this by actually implementing the watchdog as a QEMUTimer: writes
+to RSTC/WDOG (re)compute the timeout from the WDOG register (in units
+of 1/65536 s, per the real hardware) and arm a timer for that many
+nanoseconds out; only when the timer actually fires do we request a
+system reset or shutdown, matching real hardware behavior. Clearing
+the write-config bits or the WDOG value disarms the timer, and reset
+disarms it too.
 
-Testing: rather than only the functional-test kernel, I booted three
-official Raspberry Pi OS Lite arm64 releases end to end against the
-patched raspi4b machine -- Bullseye (5.15.61-v8+), Bookworm
-(6.12.25+rpt-rpi-v8), and Trixie (6.18.34+rpt-rpi-v8) -- each with a
-clean boot (no crash/reboot loop), a DHCP lease obtained over GENET,
-working SSH login, and an error log containing nothing beyond the
-expected "hardware QEMU doesn't emulate" noise (VideoCore/VCHI,
-camera/codec/audio probes, GPIO regulators, Bluetooth UART, EEPROM
-check) on all three. Before patch 1, Trixie reset within seconds of
-boot; before patch 2, Trixie booted but never got a network address.
-Bullseye and Bookworm were unaffected either way, which is exactly
-why these bugs went unnoticed until a newer kernel exercised these
-specific paths.
+Verified against real Raspberry Pi OS images under the patched
+raspi4b machine: Bullseye (5.15) and Bookworm (6.12) never exercised
+this path either way; Trixie (6.18, systemd 257) no longer crashes at
+boot and reaches a working login/SSH state.
 
-I did not add a functional test for either fix: reliably triggering
-them needs a real systemd doing real early-boot watchdog/network
-setup, which the existing test kernel/initrd (a minimal 2019 busybox
-environment) doesn't exercise, and downloading a full modern distro
-image isn't practical for the functional-test asset infrastructure.
-Happy to take suggestions on a lighter-weight way to cover this if
-one exists.
-
-checkpatch.pl is clean (0 errors, 0 warnings) on both patches, and the
-series builds standalone from a clean worktree
-(--target-list=aarch64-softmmu).
-
-[1] https://patchwork.kernel.org/project/qemu-devel/cover/20260725124231.86233-1-marcelomanzo@gmail.com/
-
-Marcelo Manzo (2):
-  hw/misc/bcm2835_powermgt: implement a real watchdog timer
-  hw/net/bcm2838_genet: fix per-ring DMA status and RX ring selection
-
+Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
+---
  hw/misc/bcm2835_powermgt.c         | 49 +++++++++++++++++++++++-------
- hw/net/bcm2838_genet.c             | 24 +++++++++++++--
  include/hw/misc/bcm2835_powermgt.h |  2 ++
- include/hw/net/bcm2838_genet.h     |  2 ++
- 4 files changed, 63 insertions(+), 14 deletions(-)
+ 2 files changed, 40 insertions(+), 11 deletions(-)
 
+diff --git a/hw/misc/bcm2835_powermgt.c b/hw/misc/bcm2835_powermgt.c
+index 3ec7abad0e..d90b9a0c3e 100644
+--- a/hw/misc/bcm2835_powermgt.c
++++ b/hw/misc/bcm2835_powermgt.c
+@@ -19,10 +19,40 @@
+ #define PASSWORD_MASK 0xff000000
+ 
+ #define R_RSTC 0x1c
+-#define V_RSTC_RESET 0x20
++#define V_RSTC_WRCFG_MASK 0x30
++#define V_RSTC_FULL_RESET 0x20
+ #define R_RSTS 0x20
+ #define V_RSTS_POWEROFF 0x555 /* Linux uses partition 63 to indicate halt. */
+ #define R_WDOG 0x24
++#define V_WDOG_TIME_MASK 0xfffff
++#define WDOG_TICKS_PER_SECOND 65536
++
++static void bcm2835_powermgt_expire(void *opaque)
++{
++    BCM2835PowerMgtState *s = opaque;
++
++    if ((s->rsts & 0xfff) == V_RSTS_POWEROFF) {
++        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
++    } else {
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
++    }
++}
++
++static void bcm2835_powermgt_update_wdog(BCM2835PowerMgtState *s)
++{
++    uint64_t timeout_ns;
++
++    if ((s->rstc & V_RSTC_WRCFG_MASK) != V_RSTC_FULL_RESET ||
++        s->wdog == 0) {
++        timer_del(s->wdog_timer);
++        return;
++    }
++
++    timeout_ns = muldiv64(s->wdog, NANOSECONDS_PER_SECOND,
++                          WDOG_TICKS_PER_SECOND);
++    timer_mod(s->wdog_timer,
++              qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + timeout_ns);
++}
+ 
+ static uint64_t bcm2835_powermgt_read(void *opaque, hwaddr offset,
+                                       unsigned size)
+@@ -70,13 +100,7 @@ static void bcm2835_powermgt_write(void *opaque, hwaddr offset,
+     switch (offset) {
+     case R_RSTC:
+         s->rstc = value;
+-        if (value & V_RSTC_RESET) {
+-            if ((s->rsts & 0xfff) == V_RSTS_POWEROFF) {
+-                qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+-            } else {
+-                qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+-            }
+-        }
++        bcm2835_powermgt_update_wdog(s);
+         break;
+     case R_RSTS:
+         qemu_log_mask(LOG_UNIMP,
+@@ -84,9 +108,8 @@ static void bcm2835_powermgt_write(void *opaque, hwaddr offset,
+         s->rsts = value;
+         break;
+     case R_WDOG:
+-        qemu_log_mask(LOG_UNIMP,
+-                      "bcm2835_powermgt_write: WDOG\n");
+-        s->wdog = value;
++        s->wdog = value & V_WDOG_TIME_MASK;
++        bcm2835_powermgt_update_wdog(s);
+         break;
+ 
+     default:
+@@ -113,6 +136,7 @@ static const VMStateDescription vmstate_bcm2835_powermgt = {
+         VMSTATE_UINT32(rstc, BCM2835PowerMgtState),
+         VMSTATE_UINT32(rsts, BCM2835PowerMgtState),
+         VMSTATE_UINT32(wdog, BCM2835PowerMgtState),
++        VMSTATE_TIMER_PTR(wdog_timer, BCM2835PowerMgtState),
+         VMSTATE_END_OF_LIST()
+     }
+ };
+@@ -124,6 +148,8 @@ static void bcm2835_powermgt_init(Object *obj)
+     memory_region_init_io(&s->iomem, obj, &bcm2835_powermgt_ops, s,
+                           TYPE_BCM2835_POWERMGT, 0x200);
+     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
++    s->wdog_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
++                                 bcm2835_powermgt_expire, s);
+ }
+ 
+ static void bcm2835_powermgt_reset(DeviceState *dev)
+@@ -134,6 +160,7 @@ static void bcm2835_powermgt_reset(DeviceState *dev)
+     s->rstc = 0x00000102;
+     s->rsts = 0x00001000;
+     s->wdog = 0x00000000;
++    timer_del(s->wdog_timer);
+ }
+ 
+ static void bcm2835_powermgt_class_init(ObjectClass *klass, const void *data)
+diff --git a/include/hw/misc/bcm2835_powermgt.h b/include/hw/misc/bcm2835_powermgt.h
+index fb0740c01e..d1903a9cce 100644
+--- a/include/hw/misc/bcm2835_powermgt.h
++++ b/include/hw/misc/bcm2835_powermgt.h
+@@ -12,6 +12,7 @@
+ #define BCM2835_POWERMGT_H
+ 
+ #include "hw/core/sysbus.h"
++#include "qemu/timer.h"
+ #include "qom/object.h"
+ 
+ #define TYPE_BCM2835_POWERMGT "bcm2835-powermgt"
+@@ -24,6 +25,7 @@ struct BCM2835PowerMgtState {
+     uint32_t rstc;
+     uint32_t rsts;
+     uint32_t wdog;
++    QEMUTimer *wdog_timer;
+ };
+ 
+ #endif
 -- 
 2.47.1
 

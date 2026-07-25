@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F49FC531FC
-	for <qemu-arm@archiver.kernel.org>; Sat, 25 Jul 2026 01:02:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42126C531FC
+	for <qemu-arm@archiver.kernel.org>; Sat, 25 Jul 2026 01:02:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wnQlT-0000sm-Vt; Fri, 24 Jul 2026 21:01:20 -0400
+	id 1wnQlV-0000vI-Um; Fri, 24 Jul 2026 21:01:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wnQTP-00070v-NN
- for qemu-arm@nongnu.org; Fri, 24 Jul 2026 20:42:39 -0400
-Received: from mail-vs1-xe30.google.com ([2607:f8b0:4864:20::e30])
+ id 1wnQTD-0006uy-PU
+ for qemu-arm@nongnu.org; Fri, 24 Jul 2026 20:42:27 -0400
+Received: from mail-vs1-xe2b.google.com ([2607:f8b0:4864:20::e2b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wnQTO-0000r4-1p
- for qemu-arm@nongnu.org; Fri, 24 Jul 2026 20:42:39 -0400
-Received: by mail-vs1-xe30.google.com with SMTP id
- ada2fe7eead31-736eea06c3eso384528137.0
- for <qemu-arm@nongnu.org>; Fri, 24 Jul 2026 17:42:37 -0700 (PDT)
+ id 1wnQTC-0000mL-2S
+ for qemu-arm@nongnu.org; Fri, 24 Jul 2026 20:42:27 -0400
+Received: by mail-vs1-xe2b.google.com with SMTP id
+ ada2fe7eead31-74ae4c75b20so514706137.1
+ for <qemu-arm@nongnu.org>; Fri, 24 Jul 2026 17:42:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1784940157; x=1785544957; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1784940145; x=1785544945; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=1U3fZj9dgRgALDfDMiL9lvcCJHyc0ghvPvHqdJct8fQ=;
- b=Bw5Fn5Rh22FyRjT++bjqUHZVLfazzf0yytVolvYz0lJN2yXKbIre6yFVlJjgcx8uMv
- 0ZZYwZAZ8eQXp8AcABkGqNPa8p3IRPpvDJ8WSW1N+Tle8P7QJATpmyMcs3YWIyrhVqfd
- TOVVH3rp8I6YGh8fcJmGmo6giaySdV41/3enVzO2yEVpl5JbRAH34GBCROvLU+jJtIZn
- nAa4Pe6H6+sG0cLnHYOBdGtcKOvUHoIe/44Y/GBi8emS9XRsln5clT3QZypyBjji8Yyh
- VFYqoyaJPHmbSr2CYs0/beJBHEoddiWkZbhJp9ASxRovD0VRF7S0nOb8ZMuuhGy1KRr3
- iiZQ==
+ bh=/ZpwvqzsmTV5HSzyBuGagGo6j+vN1oaZHeXOF2t6KiU=;
+ b=Sy1ylTWz+6JLLKoTksZsmX2xN9eEiyhRetoSY0o0aH2+BCEQ10k7gtOfXif0hdThRH
+ YUlkQYAC3hDNXiMZcPvBjyObik62acPoMeIaak9qkfPa4/QN6Ea67OBfMjwNF1WFKAGz
+ IogCqLrHrgPRA0zxHfLoz/fnqtPNkdmJuQnVciUo+UKORIUJ2lNvw6YlxNcqzzOy8nSt
+ bAcLAhUFb1MChHNKXWp3dMxeDFJIKoUWG3Z5podhl6fNbBhFGsKQtiDtv4g0Oz3yfI2l
+ N/EE+uf+rb9goppOWGJ9QUaABFvHJybRhaBLCo5sG7W+hwGn/pBkEEUB6gSEMv2pjY08
+ rK3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784940157; x=1785544957;
+ d=1e100.net; s=20251104; t=1784940145; x=1785544945;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=1U3fZj9dgRgALDfDMiL9lvcCJHyc0ghvPvHqdJct8fQ=;
- b=k0sE3NNXXIM5M3WG1+8kOvGekLSq9mwikIzUlGVQoYpbFL58+T0/doTbymccmVNvGo
- p/BRnlUz02scPiaGc/gEEIuj3iLsSH6mdyuD63sc8/GVurcA+NE0AfafQztusj98NVDa
- pJ480cVBswtXOXn5FbfEiUXrALWQfSMjcHjjMYatnUmamWJrLyG05U+I06cyiCeeWfKR
- enOvPTwiTMVUDuEy+yaO8qE2SrSNHU40QhUSqPhVwnD5qfp05nMweegTeVstzJFBXnF9
- xR1jri+26kkBdMzJszkqF13UZHDYHszr/igkmPmJwCYuiLab0AXp++JACZoY7C9sbA1H
- YjTA==
-X-Gm-Message-State: AOJu0YzelpchFjKYrsktF5ycrtTbqJ7quBedbtQCfS+D3aVZ8j1+s2/h
- MAnEjtAO8N4yiB3llC15be3dAVw87WVcJCjkgVQWcGextz5gGX3LireE
-X-Gm-Gg: AR+sD13/Tc3CLxCOujNzIDF34zQfXtgckTaoWYShBdRf+5YX9UqNf16ejzaoPlYpNH0
- 3fjIPZVdqJzGBzJhxa7XUp7eEJpbnjSvZCCDua2CHhLH5h34w/77IlxM4o9ttMHEdUVTAbEp6Rg
- 6ekxlM5zpGkvfs/U9dGA2di8VhQCRJOd3g0lMTyZcMDf2oTqMTvX3FSU3bMwbHgZkKeBeYA/owX
- eD9F1EnlbM+XiPYI398CJoaN566O3yD3zWyLr54VRrH/JhX5e5jTEbs7j6DmRmmJta146WRtATu
- 0xhcFpl3FXzpo1UVPuwN2d50XN8ZOgwX7nYycWTbgI7DOUENm57JGF4Uuv+dHr9kQlvbk/mChHk
- pOdGg8mfZDcW9dYITKQCYADf7jVq3q9w4t5+goCBgCl21+SmP6QsKTDca7sYZwyfibWLncVW085
- kMgeNAJClwvOWWz0dWFTx3wFW8fvXZ2hmS
-X-Received: by 2002:a05:6102:149a:b0:745:6721:8c2e with SMTP id
- ada2fe7eead31-7503df5cc2dmr710793137.2.1784940156893; 
- Fri, 24 Jul 2026 17:42:36 -0700 (PDT)
+ bh=/ZpwvqzsmTV5HSzyBuGagGo6j+vN1oaZHeXOF2t6KiU=;
+ b=FPLltKNDcqeQSAjkkxhdDrEfovHDniKtk6y957l0spoAhAU0HoqrRK7dsj5gISRoB0
+ mXGfcPbiUbOIDhKJ1jTQUXN5Y2/vUcHnxT2BrVbq3jTnzOwrN+s8Fh+2T3FSCmFgGSZ6
+ 6ZcXy9OlkP/YPQR2jhVFChVgsUl3PBpaLdRmC61fZq9Ju2dPZJIPut0Ax42qK65NUgLL
+ KcSqmhPDygzEduHj8I5+5FQNAFfhtwE8rST79DLwnIT+z+npxJbUgGqbgY3DXU9+pbm7
+ ty69Q0RZ9sOA702EPs+6S2RGto942QcXbRCsJnb4MRXtmDfbCvfHiURx0HzdTvZ3yMXK
+ HaYQ==
+X-Gm-Message-State: AOJu0Yzh9e7z8XsigC2lYa7wstQhiRe5iBleOUHV/LDZxmGlTQdNy0w8
+ bfDNLyAKk0E803sDHCPpWH1Rw0olE3rb3JJKriNLuPOD2IRqQnew3fnN
+X-Gm-Gg: AR+sD13DZWSjGqkthY2LqRqftXIHWa67ndm6F9TnYaPxtxHDty1p956i1xfxvLlFBFZ
+ DEt5b6gsGs+u1sRHV7eyCJXwpPlBqWaJyIHCEAVN2olwlNTDqkjAt6WxJ2/Qk8OhhQ2QT8ayaVZ
+ mHoQRua3Uif9EVQCEK5yj+ekn3ThLqhyoqtcEAofJXjmi/IQ9fec+gGdShccUWN1J68KtxrNRWd
+ /sr7YODggNkC8hFIi7brfjopu0HDaV6dCNHsZK0fLHmL1StFZyh+XnO3vLEAEYGcKlG2V9hHYt+
+ KCgM2iVbn5BJ9+m25i7X/N4ytAMV7lNqyg1TIVUVHxJORHjWyQwnVSL7krfaStI4qldFuFfyVCU
+ y4or8ZETwrBA2KdS86qffgSsnDUnV9j75UFBzg2knCwn8kK3w6mdPTVGRPPpG1UogGGuJmNjUIX
+ IIf/qIPzx5BsFZHhbpqgA2vTDup4Luu1HV
+X-Received: by 2002:a05:6102:1629:b0:73e:e4ab:1c84 with SMTP id
+ ada2fe7eead31-75049b36993mr562527137.5.1784940144846; 
+ Fri, 24 Jul 2026 17:42:24 -0700 (PDT)
 Received: from localhost.localdomain ([146.71.8.128])
  by smtp.gmail.com with ESMTPSA id
- a1e0cc1a2514c-97774f12690sm930591241.12.2026.07.24.17.42.36
+ a1e0cc1a2514c-97774f12690sm930591241.12.2026.07.24.17.42.23
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 24 Jul 2026 17:42:36 -0700 (PDT)
+ Fri, 24 Jul 2026 17:42:24 -0700 (PDT)
 From: Marcelo Manzo <marcelomanzo@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -71,25 +71,25 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Jason Wang <jasowangio@gmail.com>,
  Sergey Kambalin <sergey.kambalin@auriga.com>,
  Marcelo Manzo <marcelomanzo@gmail.com>
-Subject: [PATCH 14/19] hw/arm/bcm2838: enable BCM2838 GENET controller
-Date: Fri, 24 Jul 2026 20:42:13 -0400
-Message-ID: <20260725004219.66222-15-marcelomanzo@gmail.com>
+Subject: [PATCH 03/19] hw/arm/bcm2838: enable BCM2838 PCIe host bridge
+Date: Fri, 24 Jul 2026 20:42:02 -0400
+Message-ID: <20260725004219.66222-4-marcelomanzo@gmail.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260725004219.66222-1-marcelomanzo@gmail.com>
 References: <20260725004219.66222-1-marcelomanzo@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e30;
- envelope-from=marcelomanzo@gmail.com; helo=mail-vs1-xe30.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e2b;
+ envelope-from=marcelomanzo@gmail.com; helo=mail-vs1-xe2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 24 Jul 2026 21:00:28 -0400
+X-Mailman-Approved-At: Fri, 24 Jul 2026 21:00:27 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,100 +104,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Wire the BCM2838 GENET device (added in the previous patches) into
-the SoC: instantiate it in the peripherals block with
-qemu_configure_nic_device() so it picks up a -nic/-netdev from the
-command line, map its register region at the real BCM2711 physical
-offset, and route its two interrupt lines through the GIC. Also stop
-raspi4b from masking out the "brcm,bcm2711-genet-v5" device-tree
-node, now that the controller it describes is actually implemented.
+Wire the BCM2838 PCIe host bridge (added in the previous two
+patches) into the SoC: instantiate it in the peripherals block, map
+its register and MMIO regions at the real BCM2711 physical
+addresses, and route its interrupts through the GIC. Also stop
+raspi4b from masking out the "brcm,bcm2711-pcie" device-tree node,
+now that the controller it describes is actually implemented.
 
-Adapted from patches 19-29/41 of Sergey Kambalin's Raspberry Pi 4B
+Adapted from patches 14-15/41 of Sergey Kambalin's Raspberry Pi 4B
 series (patchwork series 829638) against current QEMU master.
 
 Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
 ---
- hw/arm/bcm2838.c                     |  6 ++++++
- hw/arm/bcm2838_peripherals.c         | 11 +++++++++++
+ hw/arm/bcm2838.c                     |  9 +++++++++
+ hw/arm/bcm2838_peripherals.c         | 23 +++++++++++++++++++++++
  hw/arm/raspi4b.c                     |  1 -
  include/hw/arm/bcm2838_peripherals.h |  2 ++
- 4 files changed, 19 insertions(+), 1 deletion(-)
+ 4 files changed, 34 insertions(+), 1 deletion(-)
 
 diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
-index fc56f879..f47b96c3 100644
+index 089af412..fc56f879 100644
 --- a/hw/arm/bcm2838.c
 +++ b/hw/arm/bcm2838.c
-@@ -239,6 +239,12 @@ static void bcm2838_realize(DeviceState *dev, Error **errp)
-                                       int_n);
-     }
+@@ -230,6 +230,15 @@ static void bcm2838_realize(DeviceState *dev, Error **errp)
+     qdev_connect_gpio_out(dma_9_10_irq_orgate, 0,
+                           qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_DMA_9_10));
  
-+    /* Connect Gigabit Ethernet controller to the interrupt controller */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&ps->genet), 0,
-+                       qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_GENET_A));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&ps->genet), 1,
-+                       qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_GENET_B));
++    /* Connect PCIe host bridge to the interrupt controller */
++    for (int n = 0; n < BCM2838_PCIE_NUM_IRQS; n++) {
++        int int_n = GIC_SPI_INTERRUPT_PCI_INT_A + n;
++        sysbus_connect_irq(SYS_BUS_DEVICE(&ps->pcie_host), n,
++                           qdev_get_gpio_in(gicdev, int_n));
++        bcm2838_pcie_host_set_irq_num(BCM2838_PCIE_HOST(&ps->pcie_host), n,
++                                      int_n);
++    }
 +
      /* Pass through inbound GPIO lines to the GIC */
      qdev_init_gpio_in(dev, bcm2838_gic_set_irq, GIC_NUM_IRQS);
  
 diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
-index f71937ae..de49f48b 100644
+index 812b5b84..f71937ae 100644
 --- a/hw/arm/bcm2838_peripherals.c
 +++ b/hw/arm/bcm2838_peripherals.c
-@@ -44,6 +44,10 @@ static void bcm2838_peripherals_init(Object *obj)
-     object_initialize_child(obj, "pcie-host", &s->pcie_host,
-                             TYPE_BCM2838_PCIE_HOST);
+@@ -15,6 +15,11 @@
+ #define CLOCK_ISP_OFFSET        0xc11000
+ #define CLOCK_ISP_SIZE          0x100
  
-+    /* Gigabit Ethernet */
-+    object_initialize_child(obj, "genet", &s->genet, TYPE_BCM2838_GENET);
-+    qemu_configure_nic_device(DEVICE(&s->genet), true, NULL);
++#define PCIE_RC_OFFSET          0x1500000
++#define PCIE_MMIO_OFFSET        0xc0000000
++#define PCIE_MMIO_ARM_OFFSET    0x600000000
++#define PCIE_MMIO_SIZE          0x40000000
++
+ /* Lower peripheral base address on the VC (GPU) system bus */
+ #define BCM2838_VC_PERI_LOW_BASE 0x7c000000
+ 
+@@ -35,6 +40,10 @@ static void bcm2838_peripherals_init(Object *obj)
+     /* Extended Mass Media Controller 2 */
+     object_initialize_child(obj, "emmc2", &s->emmc2, TYPE_SYSBUS_SDHCI);
+ 
++    /* PCIe Host Bridge */
++    object_initialize_child(obj, "pcie-host", &s->pcie_host,
++                            TYPE_BCM2838_PCIE_HOST);
 +
      /* GPIO */
      object_initialize_child(obj, "gpio", &s->gpio, TYPE_BCM2838_GPIO);
  
-@@ -205,6 +209,13 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
-     memory_region_add_subregion(get_system_memory(), PCIE_MMIO_ARM_OFFSET,
-                                 mmio_mr);
+@@ -67,6 +76,8 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
+     MemoryRegion *mphi_mr;
+     BCM2838PeripheralState *s = BCM2838_PERIPHERALS(dev);
+     BCMSocPeripheralBaseState *s_base = BCM_SOC_PERIPHERALS_BASE(dev);
++    MemoryRegion *regs_mr;
++    MemoryRegion *mmio_mr;
+     int n;
  
-+    /* Gigabit Ethernet */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->genet), errp)) {
+     bcm_soc_peripherals_common_realize(dev, errp);
+@@ -182,6 +193,18 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
+     create_unimp(s_base, &s->clkisp, "bcm2835-clkisp", CLOCK_ISP_OFFSET,
+                  CLOCK_ISP_SIZE);
+ 
++    /* PCIe Root Complex */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie_host), errp)) {
 +        return;
 +    }
-+    regs_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->genet), 0);
-+    memory_region_add_subregion(&s->peri_low_mr, GENET_OFFSET, regs_mr);
++    /* RC registers region */
++    regs_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pcie_host), 0);
++    memory_region_add_subregion(&s->peri_low_mr, PCIE_RC_OFFSET, regs_mr);
++    /* MMIO region */
++    mmio_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pcie_host), 1);
++    memory_region_add_subregion(get_system_memory(), PCIE_MMIO_ARM_OFFSET,
++                                mmio_mr);
 +
      /* GPIO */
      if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
          return;
 diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-index 038eefb2..79f60932 100644
+index 06aeb8db..038eefb2 100644
 --- a/hw/arm/raspi4b.c
 +++ b/hw/arm/raspi4b.c
-@@ -66,7 +66,6 @@ static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
+@@ -64,7 +64,6 @@ static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
+ 
+     /* Temporarily disable following devices until they are implemented */
      const char *nodes_to_remove[] = {
+-        "brcm,bcm2711-pcie",
          "brcm,bcm2711-rng200",
          "brcm,bcm2711-thermal",
--        "brcm,bcm2711-genet-v5",
-     };
- 
-     for (int i = 0; i < ARRAY_SIZE(nodes_to_remove); i++) {
+         "brcm,bcm2711-genet-v5",
 diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index 903970a3..5da340f2 100644
+index 0be97e67..56c0c209 100644
 --- a/include/hw/arm/bcm2838_peripherals.h
 +++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -11,6 +11,7 @@
+@@ -10,6 +10,7 @@
+ #define BCM2838_PERIPHERALS_H
  
  #include "hw/arm/bcm2835_peripherals.h"
- #include "hw/arm/bcm2838_pcie.h"
-+#include "hw/net/bcm2838_genet.h"
++#include "hw/arm/bcm2838_pcie.h"
  #include "hw/sd/sdhci.h"
  #include "hw/gpio/bcm2838_gpio.h"
  
-@@ -69,6 +70,7 @@ struct BCM2838PeripheralState {
+@@ -65,6 +66,7 @@ struct BCM2838PeripheralState {
+     MemoryRegion mphi_mr_alias;
  
      SDHCIState emmc2;
-     BCM2838PcieHostState pcie_host;
-+    BCM2838GenetState genet;
++    BCM2838PcieHostState pcie_host;
      BCM2838GpioState gpio;
  
      OrIRQState mmc_irq_orgate;

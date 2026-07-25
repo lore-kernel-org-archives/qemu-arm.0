@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3A92C531FC
-	for <qemu-arm@archiver.kernel.org>; Sat, 25 Jul 2026 01:01:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04C2EC531C9
+	for <qemu-arm@archiver.kernel.org>; Sat, 25 Jul 2026 01:01:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wnQlR-0000jw-Bh; Fri, 24 Jul 2026 21:01:17 -0400
+	id 1wnQlU-0000tM-FP; Fri, 24 Jul 2026 21:01:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wnQTA-0006u9-Lt
- for qemu-arm@nongnu.org; Fri, 24 Jul 2026 20:42:24 -0400
-Received: from mail-vk1-xa2d.google.com ([2607:f8b0:4864:20::a2d])
+ id 1wnQTQ-00071O-Ih
+ for qemu-arm@nongnu.org; Fri, 24 Jul 2026 20:42:40 -0400
+Received: from mail-vk1-xa30.google.com ([2607:f8b0:4864:20::a30])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wnQT8-0000li-Rc
- for qemu-arm@nongnu.org; Fri, 24 Jul 2026 20:42:24 -0400
-Received: by mail-vk1-xa2d.google.com with SMTP id
- 71dfb90a1353d-5bf9466867cso313566e0c.2
- for <qemu-arm@nongnu.org>; Fri, 24 Jul 2026 17:42:22 -0700 (PDT)
+ id 1wnQTO-0000rT-SV
+ for qemu-arm@nongnu.org; Fri, 24 Jul 2026 20:42:40 -0400
+Received: by mail-vk1-xa30.google.com with SMTP id
+ 71dfb90a1353d-5bfb3347ce0so324819e0c.2
+ for <qemu-arm@nongnu.org>; Fri, 24 Jul 2026 17:42:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1784940141; x=1785544941; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=GpP6K6XOW9VZewhGJQUbvmeL3eS+Fysiy0kTg3a2AfI=;
- b=T/wPmECOhg7WNtKjZ/Ep60U7M5AKTILtsPxmLHVKyyObTO93C+x38/eekIJVdd3w2N
- bA8MCTcuS4gfNIPKYerzueLh8g9sSzyCkYdUyCBN9YTGwjYep/WESMCEZY+B9ZnzwiUo
- I70W3ySjrXfkMQwnPbCWn3u4fyqgPeXov5NvAF1GpDWdE+6uF0Z2PA2a7o9r0irBIlbl
- P2vfJDl5fbPJLh22QswZjAKG5vMoRwvtVckRw/JuZugazNQhg5u34tdSK6YInd0Nss3L
- kIjj0lUVrwJBKI4plSeaEGW4IXG1JtWDo5sqXk3zuGX83SHW7o7T+Eg9L63eBSvFFi5F
- Ar/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784940141; x=1785544941;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20251104; t=1784940158; x=1785544958; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=GpP6K6XOW9VZewhGJQUbvmeL3eS+Fysiy0kTg3a2AfI=;
- b=UUTK0fF0/hJnVVTnhESrUmPe4l+09DlVPeEUTvph6oYUShZF2+++GFXPWDc5UUFnsA
- fuzprOAGOocwtbb3UVK45O1qZh7VWpZJiKEDFSya0Wb+SQSgD5/ViBSpPxiPvvydh42+
- klzHlDT382wuhID92j5MCIrJNvgu+Bovr0WrESARovH66mFoJsvj/9Ly9Oqr/WEys13z
- DXZWGMG0sSi24aL2RRXd0Dmb+g/fjR7nWuje7FTa+WgiWWWi+fYP8eGhxm117zIQsOEO
- t3o+/Algb066E08r4iamnbMflDMfr+en2rgsadFa1hvniqjtkLDD3lEMu9xgKHW7gjll
- IuAw==
-X-Gm-Message-State: AOJu0YyS2o3AWFTbBp/MJ+ZWk2EQi57n3HBCDoIMnYgzJlZ5poEZJmy9
- 7tcqcPN4z7NID0zBXXVX5AYkxlQPPIMbPQluPVlhOtiBvZaHJlBjpy5y
-X-Gm-Gg: AR+sD136dmQ9IwXDsFTddHHDRDTG6hHX+hf0PSN4bpi8Ot74xVYtbCWyKY6j9FhK49/
- ae8MEI8qO7LlAbpgBOpHViYZIi57IB5tmY+cog7zg/Knq7jcK9QDXGfcqon3gyjw0q18OseLAOh
- gcVFHff1aPGZ5Wpt2jl1b4ku+H0tdW2MFdrLBx0UfAXaraVjafqxoFPerrLpPe91k7NYHRGy6PH
- dyBvEVkbgjFO5ViB9FQfOtquOXFlMp+S5Xl8mnm1M+cTvH/phtYfILUaMhyQvQpFmLKKrrRC2xz
- NXz/yU7GMUT1B9VyP/MfdwzFA/e/IbmR/e6Z7Sg8Xk5KqI0bnES6W02/nDmplGUc7AtjapynAua
- 1xyhkU9r4q6VVBaD2nCLiSZdZUL3ICIbOm9oAFUu0aINLXh7MhmnU7Vrn5KoZDmni/RcVl/RCsd
- 9TQceLCESGQVN/wJSfefg4yESPxJ7wFg2W
-X-Received: by 2002:a05:6102:15a1:b0:720:7e04:b306 with SMTP id
- ada2fe7eead31-7503e06a7d6mr791658137.5.1784940141061; 
- Fri, 24 Jul 2026 17:42:21 -0700 (PDT)
+ bh=5QfvYo5UsCuRurXk863Eme2dB9OKCaPHtZCuOSVqbkQ=;
+ b=QYdWYdWMYPLxaHb+sLnvwVTeo92+QBQa5389acBYcd5T2KQWJp+9K4LfKrceqBg3mZ
+ WJm0A4sY9tDvKbsHtd/TwwG5rbeJRw2D7c0FOEZdxb14DoXX7580NbM8sDCVm/lzFWdh
+ IMGheC+hITos3ku1K6P5s/oBhmCMqsYDupaFNxY6BB0LRgWnrv7kVO0RRAUr/yhv7Gkl
+ P8/sp99gb+Dg65WaY6kNPmOOMpIGHEmfg7VCkQRAcTZ4IYZTD7UNp1rrkxbzpd7CFukz
+ P2061YKwO2rRIlhWakwQRAhEI043iOQear0IRng0XBRITyw2R1ERnCNDnj0ZgXMRJtrd
+ nVvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1784940158; x=1785544958;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=5QfvYo5UsCuRurXk863Eme2dB9OKCaPHtZCuOSVqbkQ=;
+ b=moSAaY+akqWSjO+XNEBbiyiLdWWBI6P6E8rPUyA2RvPpRvDsm3ptOCirxz0ZiaXJ3K
+ 5rtJPQ24g32Gcj+r5NyuBl44E+9+Z6VIpDv+YE2wQmMQ5o/JJWk4HUBd/Qf5ZJolnnpl
+ /mO/2y/l0EHs0OtXhMgr1CRqaZ23dZYy3IrALBJNO1naD78ENMztLNJF2lP9LmYmpBcC
+ EEprGH/bzuBIuPpbIMuf+02N62xhik2c+wbTzz7JtQZHmzmn0PEnSMJyTU7O5FH6eMrL
+ SxuezkahwPahfibkOnHQeFhvvmpdPTd5lGn27kTnuXQRH6g+iaJ/cSzj0/mL62vFRvxU
+ cXPA==
+X-Gm-Message-State: AOJu0YyjZF9LRrwFmUAuDwV8FoK/IUTixjyzDRhmsJQ+ZUjlu+worcGF
+ 3sVQEWIheFE8zAIwe7PCSMRuuaxp1lxfaSadYA4eZTMjedrY8MGfpYsz
+X-Gm-Gg: AR+sD13epRvZojvER04aTmnu2Pydv2i3VGChncqoj9/NXIxSh51AMaDeyrVFzNNJrYt
+ jQbsdfL2Kntr5uPOLbXB2Ax11vVHoni12gRwMOGix/X7xdatocSEHE6d8/m5V8lskmgDSwZfs41
+ BicK632Q5RFqBzQNMHY4Y5a/D1nFkGuwJlIyxeFW8fMWlxP8UHDXe8Gnb9OHEZ17Vw4YhuPI7YO
+ AGWZAF15vIo78jbeBK0F73JMgaid/SF0IqiiFXvR0rwjVq8KM+TeA3MQ9YzkjsneIxyq9ZVaKDZ
+ 6O2sUEG8aOHYI56tCmSq/5ggnlL1t96yE0nQ/xpggoq7ZifHWgUyCnFv8Qc+6QDpEypsuP+l9cj
+ bY/Op07iz4YowBUYHtMJI4HzM3X3x0p0fTi2DdbhblD5ckg5q7kC9oJ4kMwaUroyF5nWbX315VK
+ 9IhVckmSnWEPU5KAnPaZ22wCNoD2KWIpu6
+X-Received: by 2002:a05:6102:6441:b0:738:9dd5:9b03 with SMTP id
+ ada2fe7eead31-750400a8bdamr601594137.20.1784940157831; 
+ Fri, 24 Jul 2026 17:42:37 -0700 (PDT)
 Received: from localhost.localdomain ([146.71.8.128])
  by smtp.gmail.com with ESMTPSA id
- a1e0cc1a2514c-97774f12690sm930591241.12.2026.07.24.17.42.20
+ a1e0cc1a2514c-97774f12690sm930591241.12.2026.07.24.17.42.37
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 24 Jul 2026 17:42:20 -0700 (PDT)
+ Fri, 24 Jul 2026 17:42:37 -0700 (PDT)
 From: Marcelo Manzo <marcelomanzo@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -70,14 +71,17 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Jason Wang <jasowangio@gmail.com>,
  Sergey Kambalin <sergey.kambalin@auriga.com>,
  Marcelo Manzo <marcelomanzo@gmail.com>
-Subject: [PATCH 00/19] hw/arm/raspi4b: working PCIe and GENET (real networking)
-Date: Fri, 24 Jul 2026 20:41:59 -0400
-Message-ID: <20260725004219.66222-1-marcelomanzo@gmail.com>
+Subject: [PATCH 15/19] hw/net/bcm2838_genet: fix PHY autonegotiation-restart
+ deadlock
+Date: Fri, 24 Jul 2026 20:42:14 -0400
+Message-ID: <20260725004219.66222-16-marcelomanzo@gmail.com>
 X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20260725004219.66222-1-marcelomanzo@gmail.com>
+References: <20260725004219.66222-1-marcelomanzo@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a2d;
- envelope-from=marcelomanzo@gmail.com; helo=mail-vk1-xa2d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a30;
+ envelope-from=marcelomanzo@gmail.com; helo=mail-vk1-xa30.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -86,7 +90,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 24 Jul 2026 21:00:26 -0400
+X-Mailman-Approved-At: Fri, 24 Jul 2026 21:00:29 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,117 +105,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series finishes and fixes up Sergey Kambalin's "Raspberry Pi 4B
-machine" series from 2024 (patchwork series 829638, [1]), giving
-raspi4b a working PCIe Root Complex and GENET Ethernet controller.
-Right now raspi4b has no working networking at all: it has no genet
-and no PCIe, and while the guest's dwc_otg USB driver loads, it
-never actually enumerates a device, so usb-net -- the path that
-works on raspi3b -- doesn't work here either. raspi4b guests are
-stuck without a network device out of the box.
+The guest PHY driver requests an autonegotiation restart by setting
+BMCR.ANRESTART, then polls BMCR waiting for the hardware to clear
+that bit as an acknowledgment. bcm2838_genet_mdio_cmd() called
+FIELD_DP16() to clear ANRESTART in phy_reg_data but discarded its
+return value -- FIELD_DP16() does not modify its argument in place,
+it returns a new value -- so the bit was never actually cleared in
+the register the guest reads back. The guest driver then spun
+forever waiting for an acknowledgment that would never come,
+appearing to hang the whole boot.
 
-Kambalin's series added the missing PCIe/GENET scaffolding (patches
-13-15 and 19-29 of 41), but only the earlier base-SoC patches ever
-landed; the PCIe/GENET/RNG/thermal patches were never merged and the
-series went quiet after v6. This series carries forward just the
-PCIe and GENET parts (RNG/thermal are out of scope here).
+Assign the FIELD_DP16() result back to phy_reg_data, and also call
+bcm2838_genet_phy_update_link() once the restart is handled so link
+status actually gets refreshed, matching the surrounding code's own
+comment ("Initiate auto-negotiation once it has been restarted").
 
-This series:
+Found by booting a real guest against this series and tracing the
+MDIO command register with targeted debug prints: the guest was
+observed polling BMCR indefinitely, always reading back the
+ANRESTART bit still set. Confirmed fixed across repeated boots: link
+comes up and autonegotiation completes every time.
 
- - Rebases patches 13-15 (PCIe Root Complex + host) and 19-29
-   (GENET stub through RX/TX/MDIO) against current master, adapting
-   them to API changes since 2024: header paths moved under
-   hw/core/, class_init()'s void *data became const void *data, the
-   Resettable phases API replaced the plain DeviceClass::reset hook,
-   and Property[] lost its DEFINE_PROP_END_OF_LIST() sentinel. This
-   adaptation is confined to the patches that needed it (the "add"/
-   "enable"/"stub"/"register ops" patches below) -- no functional
-   change, just API updates to make the existing logic build again.
+Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
+---
+ hw/net/bcm2838_genet.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
- - Fixes three real bugs found while getting an actual guest to
-   boot and get a DHCP lease end to end (patches 15-17):
-
-    1. A PHY autonegotiation-restart deadlock: the guest driver
-       requests a restart and polls forever for an acknowledgment
-       that a discarded FIELD_DP16() return value meant it would
-       never get. This alone was enough to make the link never come
-       up.
-
-    2. RX checksum reporting stored the wrong value in the wrong
-       byte order, making the guest reject valid inbound packets
-       ("hw csum failure").
-
-    3. TX ring activation checked the wrong register field
-       (1-bit-wide GENET_DMA_CTRL.EN instead of the 17-bit-wide
-       per-ring GENET_DMA_RING_CFG.EN), so only ring 0 could ever be
-       seen as active; traffic hashed onto any other ring silently
-       dropped, eventually tripping the guest's TX watchdog.
-
- - Updates docs/system/arm/raspi.rst (PCIe/GENET move from "missing"
-   to "implemented") and adds a functional test
-   (test_arm_raspi4_genet) that boots with the GENET NIC, confirms
-   the driver probes it, and confirms the link actually comes up --
-   which serves as a regression test for bug #1 above.
-
-Testing: built and boot-tested repeatedly against both a vanilla
-Raspberry Pi OS (Bullseye) image and a third-party product image
-(SimRacingStudio's magicbox-os), and against the exact kernel/initrd
-assets tests/functional/aarch64/test_raspi4.py already pins.
-`scripts/checkpatch.pl` is clean (0 errors) across the whole series;
-`tests/functional/aarch64/test_raspi3.py` and `test_raspi4.py`
-(all three tests, including the new one) pass.
-
-Sergey, I've CC'd you as the original author -- happy to fold in any
-feedback you have on how the PCIe/GENET adaptation or the bug fixes
-were done, and to give you a spot in this series' history however
-you'd prefer if you'd like to be more actively involved in getting
-it landed.
-
-[1] https://patchwork.kernel.org/project/qemu-devel/cover/20240226000259.2752893-1-sergey.kambalin@auriga.com/
-
-Marcelo Manzo (9):
-  hw/arm/bcm2838_pcie: add BCM2838 PCIe Root Complex
-  hw/arm/bcm2838: enable BCM2838 PCIe host bridge
-  hw/net/bcm2838_genet: add GENET stub device
-  hw/arm/bcm2838: enable BCM2838 GENET controller
-  hw/net/bcm2838_genet: fix PHY autonegotiation-restart deadlock
-  hw/net/bcm2838_genet: fix bogus RX checksum reporting
-  hw/net/bcm2838_genet: fix TX ring activation check
-  docs/system/arm/raspi: move PCIe/GENET from missing to implemented
-  tests/functional/aarch64: add raspi4b GENET networking test
-
-Sergey Kambalin (10):
-  hw/arm/bcm2838_pcie: add BCM2838 PCIe host
-  hw/net/bcm2838_genet: add GENET register structs, part 1/4
-  hw/net/bcm2838_genet: add GENET register structs, part 2/4
-  hw/net/bcm2838_genet: add GENET register structs, part 3/4
-  hw/net/bcm2838_genet: add GENET register structs, part 4/4
-  hw/net/bcm2838_genet: add GENET register access macros
-  hw/net/bcm2838_genet: implement GENET register ops
-  hw/net/bcm2838_genet: implement GENET MDIO
-  hw/net/bcm2838_genet: implement GENET TX path
-  hw/net/bcm2838_genet: implement GENET RX path
-
- docs/system/arm/raspi.rst               |    4 +-
- hw/arm/bcm2838.c                        |   15 +
- hw/arm/bcm2838_pcie.c                   |  297 ++++++
- hw/arm/bcm2838_peripherals.c            |   34 +
- hw/arm/meson.build                      |    4 +-
- hw/arm/raspi4b.c                        |    2 -
- hw/arm/trace-events                     |    4 +
- hw/net/bcm2838_genet.c                  | 1101 +++++++++++++++++++++++
- hw/net/meson.build                      |    2 +
- hw/net/trace-events                     |   16 +
- include/hw/arm/bcm2838_pcie.h           |   75 ++
- include/hw/arm/bcm2838_peripherals.h    |    6 +
- include/hw/net/bcm2838_genet.h          |  426 +++++++++
- tests/functional/aarch64/test_raspi4.py |   30 +
- 14 files changed, 2011 insertions(+), 5 deletions(-)
- create mode 100644 hw/arm/bcm2838_pcie.c
- create mode 100644 hw/net/bcm2838_genet.c
- create mode 100644 include/hw/arm/bcm2838_pcie.h
- create mode 100644 include/hw/net/bcm2838_genet.h
-
+diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
+index 59393d89..e34c1810 100644
+--- a/hw/net/bcm2838_genet.c
++++ b/hw/net/bcm2838_genet.c
+@@ -20,6 +20,8 @@
+ #include "hw/net/bcm2838_genet.h"
+ #include "trace.h"
+ 
++static void bcm2838_genet_phy_update_link(BCM2838GenetState *s);
++
+ /* GENET layouts */
+ REG32(GENET_SYS_REV_CTRL,              0)
+ FIELD(GENET_SYS_REV_CTRL, GPHY_REV,    0, 16)
+@@ -390,10 +392,15 @@ static uint64_t bcm2838_genet_mdio_cmd(BCM2838GenetState *s, uint64_t cmd)
+                 if (phy_reg_id == BCM2838_GENET_PHY_BMCR) {
+                     /* Initiate auto-negotiation once it has been restarted */
+                     if (anrestart == 1) {
+-                        FIELD_DP16(phy_reg_data, GENET_PHY_BMCR, ANRESTART, 0);
++                        phy_reg_data = FIELD_DP16(phy_reg_data,
++                                                  GENET_PHY_BMCR,
++                                                  ANRESTART, 0);
+                     }
+                 }
+                 *phy_reg = phy_reg_data;
++                if (phy_reg_id == BCM2838_GENET_PHY_BMCR && anrestart == 1) {
++                    bcm2838_genet_phy_update_link(s);
++                }
+             }
+         }
+     }
 -- 
 2.47.1
 

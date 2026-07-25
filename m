@@ -4,88 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45009C531C9
-	for <qemu-arm@archiver.kernel.org>; Sat, 25 Jul 2026 01:28:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 077D2C531C9
+	for <qemu-arm@archiver.kernel.org>; Sat, 25 Jul 2026 08:22:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wnRAA-00051n-69; Fri, 24 Jul 2026 21:26:50 -0400
+	id 1wnXdi-0007x8-Gx; Sat, 25 Jul 2026 04:21:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wnRA8-00050L-74
- for qemu-arm@nongnu.org; Fri, 24 Jul 2026 21:26:48 -0400
-Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wnRA6-0006GM-LL
- for qemu-arm@nongnu.org; Fri, 24 Jul 2026 21:26:47 -0400
-Received: by mail-vs1-xe2e.google.com with SMTP id
- ada2fe7eead31-737de525d2eso744363137.2
- for <qemu-arm@nongnu.org>; Fri, 24 Jul 2026 18:26:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1784942806; x=1785547606; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=Sv4Do54efz6CSaj7wJa92SFTaZ0J6tHEWKHA9fHHKzQ=;
- b=DWnarfuaoebzeDcj/v1UPHmpoKg77FxRx2c/6tv9ieTubF3cF8yy88gir9o6KYX3Tg
- IEciQGJ+cdqcDtG9dUg0U2tuwTs4cpXV/sa+EHPlLJNftTSKfUC30iHFMlX7JhwtwkTT
- NREvb4dHcSexx1NbJaecCvnBnC5JKh5YHMaf4fVUqc5X8Md6vC5ezdcX7SH7EgxJzwSZ
- 45dbVybIyAuu6RYP8qtLVuNNabOhOpzjkF1EMgXi7oQpks/J6dfvOeKyCcF+ziyMYAaj
- rM8kfa6gCRu4Zy2BbSi/oY9tfOrCZ88aYS3Ad8gWVAFM4DX0A1JS+zJ8ero1sH9A4zeW
- X+Qg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784942806; x=1785547606;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=Sv4Do54efz6CSaj7wJa92SFTaZ0J6tHEWKHA9fHHKzQ=;
- b=gm94PwjxYcFe+eQyt8OYLkQfa4rroLqPyP2jLG2ZKjQSYQ9fdXrwQvSYXVxBZJZP32
- ybQ11h4c+LO5+H6PaGXwK+b5TJEAzlB7smPUqdoFVkcAh7Lkjhxd5G/oVsdVGxFL7Jgn
- Y3Cjq7SqxQav1KiGVs4JiN8L3MJpGEGaluYhW7fpasAJ46oj8BumYH29oKqRlvmC63sF
- E3+9yXby5wDq9OYpa5FP5HBR91ibeagewOZI2md/tA7zMs7Gvp5m4bp1YUKOmutcVa5l
- izaQQm/wEodRbH/dZTYyS5+d23KsO6zuonKQ4YCe8BZMrlK5zOJ+ZO8WaqTTfz6fY7fR
- 4vMQ==
-X-Gm-Message-State: AOJu0Yw/PpNf7zkL0eq2fNJYhqMUB4hBh4wmva6wz+hQVJYH0KPiOWQ4
- e37qSzEGWIAg7d5R25qupiZ+BIMVA9vqt936zo5xbr/kVasafjqn+Zp9GjQvOgqL
-X-Gm-Gg: AR+sD13oDcJV5+zf8VGVkA3paGP/z0KUUnMC7f2KeWa+sRJDHFfeVrwYqxn0Xi2zibi
- h/YQfr4KpKjEengokMdI8x9NidXzt17deLZ4b+llwdfwtD9VcviuAM13lUO1Fq6kIWgUDc/VLUk
- 8lEpnNjmKvHK4eGCRrzLCADzbee4rDw8SafIrzO+ZbjZCjq2+SXg0pLLeKvjCeOdjux+Mnc+G9V
- IoPjtCgJ1ogMvWSJ075dfXWN43meYAt+Ou+ScK9Cy/QzAtMLtiPtPnSC8unIF3GLoIQZDTRC3NF
- YX0QymCsbpVbwULIB7iP3W2VUh0tmq/Zj+3ehIP+DUWuJgIIGqLS2zPNUOaDv6TRlV+XAunCSYx
- LljKrwER7DAJDaPKdo++Hfh6wsnxnRy+/IRt9HqN1nCoHVRHQNR3bGbS8VUCswgdb//kwrjbGkG
- 2ny545SbBNZZYGSHbZMV9fK+WpM6fEe7Hh
-X-Received: by 2002:a05:6102:94f:b0:726:cd42:d039 with SMTP id
- ada2fe7eead31-750409bda93mr694912137.24.1784942805732; 
- Fri, 24 Jul 2026 18:26:45 -0700 (PDT)
-Received: from localhost.localdomain ([146.71.8.128])
- by smtp.gmail.com with ESMTPSA id
- a1e0cc1a2514c-97774c388d7sm1092856241.1.2026.07.24.18.26.44
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 24 Jul 2026 18:26:44 -0700 (PDT)
-From: Marcelo Manzo <marcelomanzo@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Sergey Kambalin <sergey.kambalin@auriga.com>,
- Marcelo Manzo <marcelomanzo@gmail.com>
-Subject: [PATCH 4/5] hw/arm/bcm2838: enable BCM2838 thermal sensor
-Date: Fri, 24 Jul 2026 21:26:34 -0400
-Message-ID: <20260725012635.4925-5-marcelomanzo@gmail.com>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20260725012635.4925-1-marcelomanzo@gmail.com>
-References: <20260725012635.4925-1-marcelomanzo@gmail.com>
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1wnXdg-0007vg-99; Sat, 25 Jul 2026 04:21:44 -0400
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1wnXdd-0002EK-30; Sat, 25 Jul 2026 04:21:44 -0400
+Received: from [133.11.54.183] (h183.csg.ci.i.u-tokyo.ac.jp [133.11.54.183])
+ (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 66P8KYKv094736
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Sat, 25 Jul 2026 17:20:34 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=WQYS/xI8RrPJl491thw/TlxkgIKItmOqVyaGKFsbaa0=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=From:Message-ID:To:Subject:Date;
+ s=rs20250326; t=1784967634; v=1;
+ b=Ge7+55X62ajyD1RiTmHCAWDd2BuLMVIpT2zhbl40EjLObKaUQk0m/XubkkY2emDs
+ liPW9MLfy19VooMOiGwtZ1/gIpYYzzkKBKkxcRj4nTm3aIVzzvuyJVuHnwITnie9
+ 36ymyyoRIoadCRUaKwy4uxoVJJB1UI0DikJFowu3hIKz0LFdYiEHHFRwKLUSj5wu
+ lY5Mt6wpDpEy3lfBbvHeEqij3N79o2fd+1b/jz9yK5Doc0L66Cdn4L56Yl2t3w7R
+ QW4yG3dlAnaoxcT6j5+u7hYQy9+/K7P9SZBuaGYaejzvdQ1n1OzYit4EjveVt/cP
+ qgoEojKdLXt0VXYoLIDSGA==
+Message-ID: <ae547323-1df0-436c-80a8-4681ecbbf2ea@rsg.ci.i.u-tokyo.ac.jp>
+Date: Sat, 25 Jul 2026 17:20:34 +0900
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e2e;
- envelope-from=marcelomanzo@gmail.com; helo=mail-vs1-xe2e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH for-11.2 v3 00/15] qdev: Clarify and enforce the device
+ realization lifecycle
+To: Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ David Hildenbrand <david@kernel.org>,
+ FangSheng Huang <FangSheng.Huang@amd.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Nicholas Piggin <npiggin@gmail.com>, Aditya Gupta <adityag@linux.ibm.com>,
+ Glenn Miles <milesg@linux.ibm.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-ppc@nongnu.org,
+ Alex Williamson <alex@shazbot.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Hendrik Brueckner <brueckner@linux.ibm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, qemu-s390x@nongnu.org,
+ Luc Michel <luc@lmichel.fr>, Fam Zheng <fam@euphon.net>,
+ Eric Blake <eblake@redhat.com>
+References: <20260721-qdev-v3-0-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
+ <874ihoa9z3.fsf@pond.sub.org>
+Content-Language: en-US
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <874ihoa9z3.fsf@pond.sub.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -102,112 +95,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Wire the BCM2838 thermal sensor (added in the previous patch) into
-the SoC: instantiate it in the peripherals block and map its
-register region at the real BCM2711 physical address.
+On 2026/07/24 20:44, Markus Armbruster wrote:
+> Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp> writes:
+> 
+>> qdev currently represents a device's realization state with a single
+>> boolean. This cannot distinguish a device that has never been realized
+>> from one whose realization has failed or that has been unrealized, nor
+>> can it represent realization in progress. Consequently, the same device
+>> can enter DeviceClass::realize() reentrantly or more than once.
+> 
+> .realized is initially false.  It is only ever modified in
+> device_set_realized(), which is the setter of QOM property "realized" of
+> "device" and its subtypes.  device_set_realized() is only called when
+> the property is set.  It does nothing when the new value is the same as
+> the old value.
+> 
+> Code changes property "realized" only in qdev_realize() and
+> qdev_unrealize().
+> 
+> Implementations of .realize may call qdev_realize() for their
+> components.  Having this loop back would be a bug.
+> 
+> If your claim "can enter reentrantly" is correct, we have bugs to fix.
+> I believe it is incorrect.
+> 
+> There are two kinds of devices, onboard and user-created.
+> 
+> User-created devices go through qdev_device_add_from_qdict().  If
+> qdev_realize() fails, the device is immediately destroyed.
+> 
+> Onboard devices get created and realized by board code.  It commonly
+> treats qdev_realize() failure as fatal error.  Trying again instead
+> would be a bug.
+> 
+> If your claim "can enter more than once" is correct, we have bugs to
+> fix.  I believe it is incorrect.
+> 
+> Exception, sort of: users can manipulate properties with QMP command
+> qom-set.  This is generally unsupported and a Very Bad Idea[*].  There
+> might be supported exceptions (I don't know), but "realized" is
+> definitely not among them.  Unsurprisingly, it's a fast path to grief:
+> 
+>      $ qemu-system-x86_64 -S -display none -monitor stdio -nodefaults
+>      QEMU 11.0.90 monitor - type 'help' for more information
+>      (qemu) qom-set /machine/i440fx realized false
+>      (qemu) qom-set /machine/i440fx realized true
+>      qemu-system-x86_64: ../system/memory.c:2585: memory_region_add_subregion_common: Assertion `!subregion->container' failed.
+> 
+> I figure your series rejects the second qom-set.  I'm pretty sure the
+> first qom-set already wounds the VM fatally[**].  Same as for a
+> multitude of other properties that aren't prepared to be qom-set at
+> arbitrary times.
+> 
+> Mind, I'm not objecting to adding additional guards against .realize()
+> getting called more than exactly once.  I'm only challenging your cover
+> letter, and probably your commit messages (which I haven't read).
+> 
+> [...]
+> 
+> 
+> [*] One could argue that having command qom-set is a Very Bad Idea.
+> 
+> [**] It just doesn't crash a stopped VM right away for me.
+> 
 
-This is also the last device masked out of the raspi4b DTB, so drop
-the "brcm,bcm2711-thermal" node-removal entry -- and with it the
-whole nodes_to_remove[] mechanism in raspi4_modify_dtb(), which is
-now empty (GENET, PCIe, RNG200, and this thermal sensor were the
-only four devices it ever masked, and all four are now implemented).
+You are right. The change assumes that the same device enters realize() 
+twice in no supported scenario; otherwise it will break a real use case, 
+so Philippe has requested confirmation from Igor [1].
 
-Adapted from patch 17/41 of Sergey Kambalin's Raspberry Pi 4B series
-(patchwork series 829638) against current QEMU master.
+The primary point the cover letter meant to convey is that the current 
+QOM property itself does not actively prevent the "realized" state from 
+being incorrectly toggled, as your qom-set example clearly demonstrates. 
+This change is meant to align the setter's explicit checks with our 
+actual assumption.
 
-Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
----
- hw/arm/bcm2838_peripherals.c         | 11 +++++++++++
- hw/arm/raspi4b.c                     | 18 ------------------
- include/hw/arm/bcm2838_peripherals.h |  2 ++
- 3 files changed, 13 insertions(+), 18 deletions(-)
+Since the cover letter omitted this explicit assumption, it 
+inadvertently sounded like I was challenging it. Commit messages have 
+the same issue. I will fix the wording in both the cover letter and the 
+commit messages for the next version.
 
-diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
-index 7c202b00..c268fffd 100644
---- a/hw/arm/bcm2838_peripherals.c
-+++ b/hw/arm/bcm2838_peripherals.c
-@@ -43,6 +43,9 @@ static void bcm2838_peripherals_init(Object *obj)
-     /* Random Number Generator */
-     object_initialize_child(obj, "rng200", &s->rng200, TYPE_BCM2838_RNG200);
- 
-+    /* Thermal */
-+    object_initialize_child(obj, "thermal", &s->thermal, TYPE_BCM2838_THERMAL);
-+
-     /* PCIe Host Bridge */
-     object_initialize_child(obj, "pcie-host", &s->pcie_host,
-                             TYPE_BCM2838_PCIE_HOST);
-@@ -87,6 +90,7 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
-     MemoryRegion *mmio_mr;
-     MemoryRegion *rng200_mr;
-     qemu_irq rng_200_irq;
-+    MemoryRegion *thermal_mr;
-     int n;
- 
-     bcm_soc_peripherals_common_realize(dev, errp);
-@@ -111,6 +115,13 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
-                                          BCM2835_IC_GPU_IRQ, INTERRUPT_RNG);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->rng200), 0, rng_200_irq);
- 
-+    /* THERMAL */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->thermal), errp)) {
-+        return;
-+    }
-+    thermal_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->thermal), 0);
-+    memory_region_add_subregion(&s->peri_low_mr, 0x15D2000, thermal_mr);
-+
-     /* Extended Mass Media Controller 2 */
-     object_property_set_uint(OBJECT(&s->emmc2), "sd-spec-version", 3,
-                              &error_abort);
-diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-index 1c063a1c..b92840e1 100644
---- a/hw/arm/raspi4b.c
-+++ b/hw/arm/raspi4b.c
-@@ -62,24 +62,6 @@ static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
- {
-     uint64_t ram_size;
- 
--    /* Temporarily disable following devices until they are implemented */
--    const char *nodes_to_remove[] = {
--        "brcm,bcm2711-thermal",
--    };
--
--    for (int i = 0; i < ARRAY_SIZE(nodes_to_remove); i++) {
--        const char *dev_str = nodes_to_remove[i];
--        int offset;
--
--        offset = fdt_node_offset_by_compatible(fdt, -1, dev_str);
--        while (offset >= 0) {
--            if (fdt_nop_node(fdt, offset) == 0) {
--                warn_report("bcm2711 dtb: %s has been disabled!", dev_str);
--            }
--            offset = fdt_node_offset_by_compatible(fdt, offset, dev_str);
--        }
--    }
--
-     ram_size = board_ram_size(info->board_id);
- 
-     if (info->ram_size > UPPER_RAM_BASE) {
-diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index 52eabf67..49ca780b 100644
---- a/include/hw/arm/bcm2838_peripherals.h
-+++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -11,6 +11,7 @@
- 
- #include "hw/arm/bcm2835_peripherals.h"
- #include "hw/misc/bcm2838_rng200.h"
-+#include "hw/misc/bcm2838_thermal.h"
- #include "hw/arm/bcm2838_pcie.h"
- #include "hw/net/bcm2838_genet.h"
- #include "hw/sd/sdhci.h"
-@@ -70,6 +71,7 @@ struct BCM2838PeripheralState {
-     MemoryRegion mphi_mr_alias;
- 
-     BCM2838Rng200State rng200;
-+    Bcm2838ThermalState thermal;
-     SDHCIState emmc2;
-     BCM2838PcieHostState pcie_host;
-     BCM2838GenetState genet;
--- 
-2.47.1
+[1] 
+https://lore.kernel.org/qemu-devel/a79f2ad8-d1ad-4536-85d1-0a01ad2f9513@oss.qualcomm.com/
 
+Regards,
+Akihiko Odaki
 

@@ -4,83 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B7E1C531C9
-	for <qemu-arm@archiver.kernel.org>; Sat, 25 Jul 2026 12:43:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7F89C531C9
+	for <qemu-arm@archiver.kernel.org>; Sat, 25 Jul 2026 23:12:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wnbiC-0001iq-F9; Sat, 25 Jul 2026 08:42:40 -0400
+	id 1wnlXF-0003jy-7L; Sat, 25 Jul 2026 19:12:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wnbi9-0001gl-JD
- for qemu-arm@nongnu.org; Sat, 25 Jul 2026 08:42:37 -0400
-Received: from mail-vk1-xa33.google.com ([2607:f8b0:4864:20::a33])
+ id 1wnlX2-0003h1-Vy
+ for qemu-arm@nongnu.org; Sat, 25 Jul 2026 19:11:49 -0400
+Received: from mail-vk1-xa35.google.com ([2607:f8b0:4864:20::a35])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wnbi7-0003g7-4H
- for qemu-arm@nongnu.org; Sat, 25 Jul 2026 08:42:37 -0400
-Received: by mail-vk1-xa33.google.com with SMTP id
- 71dfb90a1353d-5c2c46a428eso679595e0c.2
- for <qemu-arm@nongnu.org>; Sat, 25 Jul 2026 05:42:34 -0700 (PDT)
+ id 1wnlWz-0005iy-Hv
+ for qemu-arm@nongnu.org; Sat, 25 Jul 2026 19:11:47 -0400
+Received: by mail-vk1-xa35.google.com with SMTP id
+ 71dfb90a1353d-5bfb3347dc4so915388e0c.0
+ for <qemu-arm@nongnu.org>; Sat, 25 Jul 2026 16:11:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1784983354; x=1785588154; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=xzTrwt+CYtUDeTugoSkgG6+9Bi2XZhlh3ec515Ut764=;
- b=MSAhZU4EOpGg6VWybptKoJu0BamkQEUjUUFzexQN71B2Lalhib10CZw7hwA1PxKcLK
- 2UTXoQHalz5FjZ9E/ANUFeRRpyIT+wfBjEKljthAS8KCmdwS90cA8D+avKzBDqDR8MML
- HrAFWjjWjLn97RId77bHwGUMsW5gDsvoh+UCj4pnErZ+cggL7FMCoia6zNgLMZgwzA6P
- JrT2zPegMyDEZ7eG/IHcxH6umc63QKySY7snrXH30rZ7u0oJBv0n1JbiUHTwGtJkbSs+
- 1ZXNM+fmPMNskeJrxvsPGaVeYunw6VAtTKOCP/JBgGIhitfZfDO3itsvf+mMY39uEKs/
- r8Lw==
+ d=gmail.com; s=20251104; t=1785021104; x=1785625904; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=w2ZMmkRhdQd7wygfGjNjQl2Q7y//RixNLAYn7fQ+oYA=;
+ b=E0fJjLz6U+o/JR2RFnxakw1uZEHuA1ErBz78X7NJ9oI1mnjPvNr18M5VsNevXwduKF
+ rdXgPbU7UMlkg8CKQCzacF1lIKVDZe1IzKtYa7kyLj2nkT4pj9Dr2dE80gBbB3LCN16V
+ txZmRAUErbkMx1I5IX1e+TwMEVHintHSMHeBryyjc1YtUwBaFV9vdK19rWks2ilSQmhF
+ jRsLVm2s2uVhgFftp28+9nE5yaKlOQzycM4iSUZeZfu+WfFwpHONOOOvUxCYD8MgZV89
+ LrRPlDqjDBcuC0n6bn1huZpu5WUBzhQ/+3v57mY2AYEjkWsdNdacg7pHoccAMUA8yJQ/
+ FBOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784983354; x=1785588154;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=xzTrwt+CYtUDeTugoSkgG6+9Bi2XZhlh3ec515Ut764=;
- b=ouMMD5Iw9snKOxwe8C66esJ0v5ot/lxB3dEooDTx6DCDaSv65ADJlqcPRZhLHn84Qx
- ZLtcN5d+jv+tqrCRLfAB5mE1qDpBu1fOFMjd7fv03kA4oS+atZyILGrJKBpAOANPRhGC
- Drxx5l4ddCZN3bFFb3yKPCPQ0SZz3Fba9PfVkyaQQ1ctMUfZoReC7pVqcRoUxYIq55D6
- IOmG9WDBN4gM9TWD4ABNTZsFlPf7QhETfvP0bMPiR1UQ4JdFMNFe87g0ecNjelCOccCz
- to9/TyjrMNS580AR+rTPjtRC3uFtPtgK4syD3Nl5oRltNaMA89RSCZi3OLTPgUT7RgKf
- IZ/g==
-X-Gm-Message-State: AOJu0Yxlig+HnTOquYdy7sF/SSJ3gmmHxgCTR67ogmAL6seM2/sy0SoH
- ySP5A3NhqUVBkdNClc3E+ZXy00YKH7WGm3VpRraFm+FI1T1lyWJVxM484N8My9y2
-X-Gm-Gg: AR+sD11HScXfAOkWT+wRVbFPHH4rv7dl0rV2nqGjHnxB45p58QMPl4tsRf5nmLYuM82
- zY8Vj9A3YznQT/cqP87oUKnmSHgNvNP1yw8qhRQsnlIMevI4+YmAiG1SdQau9HBM9rnbA0ZKnFA
- 0JXMKcH/D3fZ1IUUWxXFycG5DG+/AcegBoD3cwIRm4WIBE67tRDfFXrq5OON3BJLug+RJNmtpSn
- StBPPrzuzw4lrRwyNaxkWVL47SXWF8g0dYB5Hu/9zoWxOlExPV78WhtoPGU+LWAWTRZd+BLnPg+
- 7A6oRxbClsfwB5LoWEvx6XqVgTabDc47neF/HSuPTO8GdGsBkyW4rqtcg8jSrOFblzY33NlEOXn
- PjObP9Nl/DSsw2UPY1npy9B8nlhyy5YGQZP5g7QKDqWegB8LggJGxYrTVcppD1zkPj0CZ9Z1Qsz
- RzDyPRn/zYuiCqhqF1Hz+M7lNzWAcforvZfXKcLTjho/U=
-X-Received: by 2002:a05:6122:4889:b0:59b:396b:cea7 with SMTP id
- 71dfb90a1353d-5c306d21176mr1170596e0c.9.1784983353880; 
- Sat, 25 Jul 2026 05:42:33 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1785021104; x=1785625904;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=w2ZMmkRhdQd7wygfGjNjQl2Q7y//RixNLAYn7fQ+oYA=;
+ b=tOL3xVi4/ljPFzMHTr3YZ1LcyPT9gUBuAnNLLYBCbVO5zp2eh6aoR6lPzoQzSbcO8r
+ K1BlD9gBbaaf0k1HT/PbqrZoXNVuWcAnA1uTpwWzF9S+WYn9kKk2UedjWrJw86P/hRMc
+ EVSSkz8/VRLdSpdJzITDbSJzkjGL7JLptyNo4wNPGv4nVrlYOnATvSQR3RYkh5//tteJ
+ k7ldLUFh8pQ3Yolv/120WC4RF5RFm//2/VR0HMdJYyNOlYykyEVZYlXDVcWjOuYOiEpc
+ q7ElSn4sDzCcl9RUqFeV0OUfZmXHITOzD0Rbp5BpJ61D8MI3+AIoazTOjg859PXFMvKC
+ vufQ==
+X-Gm-Message-State: AOJu0YyJ8l1x5lWVloM8CkjAQCt6xhUgQ9cvPDJefX75s2g6BN68WXe5
+ qs/EtD7Pp+PQ6kGcxt7vGQ+cViwHGOMH8qZbfG6EFE9Dhafbx5aXSuqZ
+X-Gm-Gg: AR+sD12jgj+OLNB8/ka5P7EzSun81gz/NsS7cUFlnoVE6Qsc9XR93JY9kJ2jVakaS1H
+ kj9s4tnfK9YBJfoFXkEJBI8ysmSthJ2B9hSS5yyK1PsxV++dktCZhl8bHL0DGoyDchCUr74q/Us
+ R1oRbQSEcSkkKiaphlnZsmVr9UdGBbxDWoF0HvF3FxIVCxJEbpkV1XKGF3zgWeU5ANNGcbWKL5C
+ Kej0gEmksWUm0N/P+AAdJUVXfjRDQ2ued8RFhG6hxJGoIACWszKBSlp1yDaHkV5XlBk6mNuPSeM
+ 6MY6ek+WTulJ8/HfHq/Hm1iUD7uYc3DdUG1caVE0xPRKOHX+9Rl8cJdlM3MUvn09LJsAF2428+6
+ cV/vQ7GOCK3Ww7Po5pxq5ZxL/F9IuxCyutLDQpT0hUN/eCSYH5I6yj2Aq780DlT4puGPHS9UpIA
+ UxU4hPtXyGoSjlqZnhmjcwy0YA53k5YNAy
+X-Received: by 2002:a05:6122:3a12:b0:567:4e8a:fb13 with SMTP id
+ 71dfb90a1353d-5c306c8f990mr1749847e0c.8.1785021104312; 
+ Sat, 25 Jul 2026 16:11:44 -0700 (PDT)
 Received: from localhost.localdomain ([146.71.8.128])
  by smtp.gmail.com with ESMTPSA id
- 71dfb90a1353d-5c305734410sm1457106e0c.16.2026.07.25.05.42.33
+ 71dfb90a1353d-5c30549516csm2907015e0c.6.2026.07.25.16.11.43
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 25 Jul 2026 05:42:33 -0700 (PDT)
+ Sat, 25 Jul 2026 16:11:43 -0700 (PDT)
 From: Marcelo Manzo <marcelomanzo@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Marcelo Manzo <marcelomanzo@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH 1/2] hw/arm/bcm2838_pcie: make PCI device enumeration actually
- work
-Date: Sat, 25 Jul 2026 08:42:30 -0400
-Message-ID: <20260725124231.86233-2-marcelomanzo@gmail.com>
+ Jason Wang <jasowangio@gmail.com>, Marcelo Manzo <marcelomanzo@gmail.com>
+Subject: [PATCH 0/2] hw/arm/raspi4b: fix watchdog and GENET bugs hit by modern
+ distro kernels
+Date: Sat, 25 Jul 2026 19:11:40 -0400
+Message-ID: <20260725231142.61663-1-marcelomanzo@gmail.com>
 X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20260725124231.86233-1-marcelomanzo@gmail.com>
-References: <20260725124231.86233-1-marcelomanzo@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a33;
- envelope-from=marcelomanzo@gmail.com; helo=mail-vk1-xa33.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a35;
+ envelope-from=marcelomanzo@gmail.com; helo=mail-vk1-xa35.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,202 +99,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-raspi4b's PCIe root complex brought the link up but no device was ever
-enumerated: "lspci" was empty and /sys/bus/pci/devices/ had no entries.
-Nothing exercised this before, since GENET is a sysbus device rather
-than a PCI one.
+Follow-up to "hw/arm/bcm2838_pcie: make PCI device enumeration actually
+work" [1]. That series (plus the GENET/RNG200/thermal work before it)
+got a real Raspberry Pi 4 SoC far enough to boot official, unmodified
+Raspberry Pi OS releases end to end under raspi4b -- not just the
+functional-test suite's minimal 2019-era kernel+initrd. Doing that
+surfaced two further bugs that only show up with a modern distro's
+systemd actually driving the hardware, both on paths the existing
+tests don't exercise:
 
-Four separate defects, all on the same path:
+1. hw/misc/bcm2835_powermgt: the RSTC register's write-config bits
+   (0x30) being set to the "full reset" value (0x20) does not mean
+   "reset now" on real hardware -- it arms the watchdog so a reset
+   happens only if the WDOG countdown register is not refreshed
+   before it expires. QEMU's model treated any such RSTC write as an
+   immediate reset. This is dormant on lighter userspace, but
+   Debian 13/Trixie's systemd (257) writes to RSTC during routine
+   early-boot watchdog probing, causing an immediate spurious reset a
+   few seconds into boot. Combined with -no-reboot this looks exactly
+   like a QEMU crash from the outside: clean exit, no panic, no guest
+   reboot message, the last log line being the RSTC/WDOG write itself.
+   Fixed by actually implementing the watchdog as a QEMUTimer that
+   only fires -- and only then requests a reset/shutdown -- after the
+   real timeout computed from the WDOG register.
 
-1. bcm2838_pcie_host_read/write computed
-   "offset - PCIE_CONFIG_SPACE_SIZE" on an unsigned hwaddr, which
-   underflows for every offset below 4KB. The root port's own config
-   space -- including vendor/device ID at offset 0 -- therefore always
-   fell into the out-of-range branch and read back as all-ones, i.e.
-   "no device present", so the guest stopped scanning immediately.
+2. hw/net/bcm2838_genet: three related per-ring DMA bugs. RDMA_CTRL
+   writes never updated any per-ring status at all (only TDMA_CTRL
+   updated a single overall DISABLED bit); enabling a ring didn't
+   flush packets queued while it was disabled; and the RX fallback
+   path hardcoded the last/default ring with no check that it was
+   actually active. Bullseye and Bookworm's kernels default to that
+   last ring, so this was invisible with them, but Trixie's 6.18
+   kernel actively uses rings 0-4 and never enables the default ring,
+   so every unfiltered packet was silently dropped -- no DHCP lease,
+   no usable networking. Fixed by tracking a real per-ring enable
+   bitmask for both directions, flushing queued packets when a ring
+   is enabled, and falling back to scanning for the first actually-
+   active ring instead of assuming the last one.
 
-2. pcie_host_mmcfg_init() was never called, yet both accessors
-   dereference pcie_hb->mmio.ops to service EXT_CFG_DATA. Once (1) was
-   fixed and the guest actually reached that path, it touched an
-   uninitialised MemoryRegion.
+Testing: rather than only the functional-test kernel, I booted three
+official Raspberry Pi OS Lite arm64 releases end to end against the
+patched raspi4b machine -- Bullseye (5.15.61-v8+), Bookworm
+(6.12.25+rpt-rpi-v8), and Trixie (6.18.34+rpt-rpi-v8) -- each with a
+clean boot (no crash/reboot loop), a DHCP lease obtained over GENET,
+working SSH login, and an error log containing nothing beyond the
+expected "hardware QEMU doesn't emulate" noise (VideoCore/VCHI,
+camera/codec/audio probes, GPIO regulators, Bluetooth UART, EEPROM
+check) on all three. Before patch 1, Trixie reset within seconds of
+boot; before patch 2, Trixie booted but never got a network address.
+Bullseye and Bookworm were unaffected either way, which is exactly
+why these bugs went unnoticed until a newer kernel exercised these
+specific paths.
 
-3. The root port overrode PCIDeviceClass::config_read/config_write with
-   plain pci_default_*_config(). That bypasses rp_write_config() ->
-   pci_bridge_write_config(), so programming the bridge's memory window
-   never updated the bridge's address space and BARs behind the root
-   port stayed unreachable. Drop the overrides and dispatch through
-   pci_host_config_{read,write}_common() so the device's real handlers
-   run.
+I did not add a functional test for either fix: reliably triggering
+them needs a real systemd doing real early-boot watchdog/network
+setup, which the existing test kernel/initrd (a minimal 2019 busybox
+environment) doesn't exercise, and downloading a full modern distro
+image isn't practical for the functional-test asset infrastructure.
+Happy to take suggestions on a lighter-weight way to cover this if
+one exists.
 
-4. The PCI MMIO window was mapped at the ARM base address with no
-   address translation, even though PCIE_MMIO_OFFSET was defined for
-   exactly that purpose (and otherwise unused). The DTB declares CPU
-   0x600000000 as mapping to PCI 0xc0000000, so the guest was reading
-   PCI address 0 where it expected a device BAR. Map an alias at the
-   correct PCI offset instead.
+checkpatch.pl is clean (0 errors, 0 warnings) on both patches, and the
+series builds standalone from a clean worktree
+(--target-list=aarch64-softmmu).
 
-With these, a PCIe device is enumerated and its driver binds:
+[1] https://patchwork.kernel.org/project/qemu-devel/cover/20260725124231.86233-1-marcelomanzo@gmail.com/
 
-  xhci_hcd 0000:01:00.0: xHCI Host Controller
-  xhci_hcd 0000:01:00.0: new USB bus registered, assigned bus number 1
-  xhci_hcd 0000:01:00.0: Host supports USB 3.0 SuperSpeed
+Marcelo Manzo (2):
+  hw/misc/bcm2835_powermgt: implement a real watchdog timer
+  hw/net/bcm2838_genet: fix per-ring DMA status and RX ring selection
 
-Note this is not yet complete: devices attached behind the xHCI are
-still not enumerated by the guest, which looks like a separate
-interrupt-delivery problem rather than an enumeration one.
+ hw/misc/bcm2835_powermgt.c         | 49 +++++++++++++++++++++++-------
+ hw/net/bcm2838_genet.c             | 24 +++++++++++++--
+ include/hw/misc/bcm2835_powermgt.h |  2 ++
+ include/hw/net/bcm2838_genet.h     |  2 ++
+ 4 files changed, 63 insertions(+), 14 deletions(-)
 
-Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
----
- docs/system/arm/raspi.rst            |  2 ++
- hw/arm/bcm2838_pcie.c                | 45 +++++++++++++++++-----------
- hw/arm/bcm2838_peripherals.c         | 16 ++++++++--
- include/hw/arm/bcm2838_peripherals.h |  1 +
- 4 files changed, 45 insertions(+), 19 deletions(-)
-
-diff --git a/docs/system/arm/raspi.rst b/docs/system/arm/raspi.rst
-index a4f83d0a..a8fc37e9 100644
---- a/docs/system/arm/raspi.rst
-+++ b/docs/system/arm/raspi.rst
-@@ -43,3 +43,5 @@ Missing devices
- ---------------
- 
-  * Pulse Width Modulation (PWM)
-+ * PCIe MSI/MSI-X interrupt delivery (raspi4b) -- INTx works; a PCIe
-+   device that only signals via MSI/MSI-X needs ``msi=off,msix=off``
-diff --git a/hw/arm/bcm2838_pcie.c b/hw/arm/bcm2838_pcie.c
-index 1596145b..88166d1f 100644
---- a/hw/arm/bcm2838_pcie.c
-+++ b/hw/arm/bcm2838_pcie.c
-@@ -11,24 +11,13 @@
- #include "qapi/error.h"
- #include "hw/core/irq.h"
- #include "hw/pci-host/gpex.h"
-+#include "hw/pci/pci_host.h"
- #include "hw/core/qdev-properties.h"
- #include "migration/vmstate.h"
- #include "qemu/module.h"
- #include "hw/arm/bcm2838_pcie.h"
- #include "trace.h"
- 
--static uint32_t bcm2838_pcie_config_read(PCIDevice *d,
--                                         uint32_t address, int len)
--{
--    return pci_default_read_config(d, address, len);
--}
--
--static void bcm2838_pcie_config_write(PCIDevice *d, uint32_t addr, uint32_t val,
--                                      int len)
--{
--    return pci_default_write_config(d, addr, val, len);
--}
--
- static uint64_t bcm2838_pcie_host_read(void *opaque, hwaddr offset,
-                                        unsigned size) {
-     hwaddr mmcfg_addr;
-@@ -39,7 +28,18 @@ static uint64_t bcm2838_pcie_host_read(void *opaque, hwaddr offset,
-     uint32_t *cfg_idx = (uint32_t *)(root_regs + BCM2838_PCIE_EXT_CFG_INDEX
-                                      - PCIE_CONFIG_SPACE_SIZE);
- 
--    if (offset - PCIE_CONFIG_SPACE_SIZE + size <= sizeof(s->root_port.regs)) {
-+    if (offset < PCIE_CONFIG_SPACE_SIZE) {
-+        /*
-+         * The first 4KB of the window is the root port's own PCI config
-+         * space (vendor/device ID, BARs, capabilities). Serve it from the
-+         * real PCIDevice, not from the raw regs[] shadow buffer, which is
-+         * only backing store for the controller registers above 4KB.
-+         */
-+        value = pci_host_config_read_common(PCI_DEVICE(&s->root_port),
-+                                            offset, PCIE_CONFIG_SPACE_SIZE,
-+                                            size);
-+    } else if (offset - PCIE_CONFIG_SPACE_SIZE + size
-+               <= sizeof(s->root_port.regs)) {
-         switch (offset) {
-         case BCM2838_PCIE_EXT_CFG_DATA
-             ... BCM2838_PCIE_EXT_CFG_DATA + PCIE_CONFIG_SPACE_SIZE - 1:
-@@ -72,7 +72,12 @@ static void bcm2838_pcie_host_write(void *opaque, hwaddr offset,
- 
-     trace_bcm2838_pcie_host_write(size, offset, value);
- 
--    if (offset - PCIE_CONFIG_SPACE_SIZE + size <= sizeof(s->root_port.regs)) {
-+    if (offset < PCIE_CONFIG_SPACE_SIZE) {
-+        /* Root port's own PCI config space -- see read path above */
-+        pci_host_config_write_common(PCI_DEVICE(&s->root_port), offset,
-+                                     PCIE_CONFIG_SPACE_SIZE, value, size);
-+    } else if (offset - PCIE_CONFIG_SPACE_SIZE + size
-+               <= sizeof(s->root_port.regs)) {
-         switch (offset) {
-         case BCM2838_PCIE_EXT_CFG_DATA
-             ... BCM2838_PCIE_EXT_CFG_DATA + PCIE_CONFIG_SPACE_SIZE - 1:
-@@ -137,9 +142,18 @@ static void bcm2838_pcie_host_realize(DeviceState *dev, Error **errp)
-     PCIHostState *pci = PCI_HOST_BRIDGE(dev);
-     BCM2838PcieHostState *s = BCM2838_PCIE_HOST(dev);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    PCIExpressHost *pex = PCIE_HOST_BRIDGE(dev);
- 
-     int i;
- 
-+    /*
-+     * Initialise the ECAM config-space window. The BCM2838 does not expose
-+     * it to the guest directly; config accesses are made indirectly through
-+     * the EXT_CFG_INDEX/EXT_CFG_DATA register pair, which dispatch into
-+     * pex->mmio. Without this the ops pointer is never set up.
-+     */
-+    pcie_host_mmcfg_init(pex, PCIE_MMCFG_SIZE_MAX);
-+
-     memory_region_init_io(&s->cfg_regs, OBJECT(s), &bcm2838_pcie_host_ops, s,
-                           "bcm2838_pcie_cfg_regs", BCM2838_PCIE_REGS_SIZE);
-     sysbus_init_mmio(sbd, &s->cfg_regs);
-@@ -273,9 +287,6 @@ static void bcm2838_pcie_root_class_init(ObjectClass *class, const void *data)
-     k->device_id = BCM2838_PCIE_DEVICE_ID;
-     k->revision = BCM2838_PCIE_REVISION;
- 
--    k->config_read = bcm2838_pcie_config_read;
--    k->config_write = bcm2838_pcie_config_write;
--
-     rpc->exp_offset = BCM2838_PCIE_EXP_CAP_OFFSET;
-     rpc->aer_offset = BCM2838_PCIE_AER_CAP_OFFSET;
- }
-diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
-index de49f48b..012a4567 100644
---- a/hw/arm/bcm2838_peripherals.c
-+++ b/hw/arm/bcm2838_peripherals.c
-@@ -204,10 +204,22 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
-     /* RC registers region */
-     regs_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pcie_host), 0);
-     memory_region_add_subregion(&s->peri_low_mr, PCIE_RC_OFFSET, regs_mr);
--    /* MMIO region */
-+    /*
-+     * MMIO region.
-+     *
-+     * The BCM2711 PCIe controller translates addresses between the ARM and
-+     * PCI address spaces: the DTB declares CPU 0x600000000 as mapping to PCI
-+     * 0xc0000000. Map an alias of the PCI window starting at that PCI offset
-+     * so accesses land on the right addresses; mapping the window directly
-+     * would expose PCI address 0 at the ARM base instead, and every BAR
-+     * behind the root port would be read at the wrong address.
-+     */
-     mmio_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pcie_host), 1);
-+    memory_region_init_alias(&s->pcie_mmio_alias, OBJECT(s),
-+                             "bcm2838_pcie_mmio_alias", mmio_mr,
-+                             PCIE_MMIO_OFFSET, PCIE_MMIO_SIZE);
-     memory_region_add_subregion(get_system_memory(), PCIE_MMIO_ARM_OFFSET,
--                                mmio_mr);
-+                                &s->pcie_mmio_alias);
- 
-     /* Gigabit Ethernet */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->genet), errp)) {
-diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index 5da340f2..c05709f4 100644
---- a/include/hw/arm/bcm2838_peripherals.h
-+++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -70,6 +70,7 @@ struct BCM2838PeripheralState {
- 
-     SDHCIState emmc2;
-     BCM2838PcieHostState pcie_host;
-+    MemoryRegion pcie_mmio_alias;
-     BCM2838GenetState genet;
-     BCM2838GpioState gpio;
- 
 -- 
 2.47.1
 

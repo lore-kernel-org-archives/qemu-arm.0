@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6BC1C531C9
-	for <qemu-arm@archiver.kernel.org>; Sun, 26 Jul 2026 14:52:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40CD0C531C9
+	for <qemu-arm@archiver.kernel.org>; Sun, 26 Jul 2026 14:52:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wo0Cj-0005sj-7i; Sun, 26 Jul 2026 10:51:50 -0400
+	id 1wo0Ct-0005vS-Dx; Sun, 26 Jul 2026 10:51:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wo0Cf-0005s1-6b
- for qemu-arm@nongnu.org; Sun, 26 Jul 2026 10:51:45 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ id 1wo0Co-0005tg-La
+ for qemu-arm@nongnu.org; Sun, 26 Jul 2026 10:51:55 -0400
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wo0Cc-0005zN-1g
- for qemu-arm@nongnu.org; Sun, 26 Jul 2026 10:51:44 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2cc7ef7ec27so23927405ad.1
- for <qemu-arm@nongnu.org>; Sun, 26 Jul 2026 07:51:39 -0700 (PDT)
+ id 1wo0Cl-00060K-4q
+ for qemu-arm@nongnu.org; Sun, 26 Jul 2026 10:51:54 -0400
+Received: by mail-pl1-x634.google.com with SMTP id
+ d9443c01a7336-2cad8076b01so21788025ad.2
+ for <qemu-arm@nongnu.org>; Sun, 26 Jul 2026 07:51:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1785077498; x=1785682298; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=gMvRGC+W81P7nB/Cv+wkkm/hmnFBdzMzFGZ00e08Edw=;
- b=FmPWmU1OLVqpxqSXIG0uRwusPzkhle8901WOdYCE3Hmdm0rSsT+SWE1MXqB5AhfYjT
- jA9+6EzXmqHrOLi3ZRYQiGYyJkICzemUm9jZK2bscDU3YG7+a20X2saUFsMEx50V+Af5
- t4jPajp+vpbwqpHajgUoiWYjhAg4X7JrgRcT5ZgcWgMFZ9BIeEURU86gV/nDo2NxandH
- gYWWvCmqIWGdPn6L9vYYrVnopSZ+pEAfO+EnFhHYpWSNs+h7XgRalfjA0d4FadtIFmg4
- SObczchLGdfvb0rXPm8tZj8/iLeliCzgh8OUfjBSB3MFroyyq2rLdFL2JdrZFwsDSnwc
- j+IQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785077498; x=1785682298;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20251104; t=1785077510; x=1785682310; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=gMvRGC+W81P7nB/Cv+wkkm/hmnFBdzMzFGZ00e08Edw=;
- b=rhHI8ukwlwG7hH7s0icrMC9s0Qmbf3PVzU5dCVlrtnR0m30Ew4dHPP0EzE2Nc9tW1n
- lprv+mtT7oP4ENyfCPcHpr2iDWJV7V8zZHvP/ARTtQT+abDRhV2LLshulBZHRkWxmcia
- QEt+IHTO1M3SnXWtOjY45G5Fw24AyT2Nek6kqlmFHh4EK8bY0HyKzjU1uxJ7OGP+QC9o
- W29KFp6TKD6Esvsrps8JnWgTQgWdtorCLWbNXeTJWJIdbiOFdBVMPlkiV8EWn0gC4E+P
- 70K+taLxZ7YN/vsZQNkR27mDxTTX0Ca0u537qNryX5biZL6URz0pVb/bgrJdYVynw7VH
- UaFg==
+ bh=FCW4PvYCh0nfjidNnYDFUOliq890MpmlX0B+4xSIUTs=;
+ b=K+kjkcvyA495BUndzLI0vlEwUq9yLIDzRq/ELzy+35wVYXeXaAM4lYYIAsU9Yb4ngJ
+ Ryd6JKwwAh2sA9iBBBOqwtSUbBM3Wj0ifotw+a4lChaync7Wka6/bIDlMTSJEZxeDfSI
+ PYJcVjwEh1cMdxL4ColYotQ2L+X7+x4KPArSG8Llv9AMekuZHhYV5EUbYyHS3LtmlgWw
+ s/fWT3hkfWw2UeRV8aFtwDZ3KPY+rclt/ggcckw7CPIh8xYZkZnIhMEvxnlidq3I0wuy
+ AijolQWdoKyljFMh6f8xMTH6vYdg7N4RJQUXoGJ5hffIIi8PzusOLai9yKbFb0+i5J3o
+ hqig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1785077510; x=1785682310;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=FCW4PvYCh0nfjidNnYDFUOliq890MpmlX0B+4xSIUTs=;
+ b=c1PFlcIVsRfAnpxy3cuZ51nImZlUTUv5t6aaQU4YtsvPBbzoem1vkNL1AeTYmdf2Yh
+ +2A0TT8+Jifpv1jgITIS47IKdZnFqFftIGUhyvyuyDEWPSVb3JgLDxzc0Eo5W7QQ0cyY
+ wYtGe0OIBNI9tQpxcRldFaOAR3T5cefx+IU4Wlx5Ety+PGSbleEhczi+NbHZlpaN928s
+ 7RD6sp6gNjegXdBh92/ftBpyAFRnEt/F81y+knOXtT8XUBWVoV4/brWT1Fnb6X2uOBon
+ dAkikbnbnccWpl7WGM4xujeg7wpc8SAyHbgpBzsvtZRPQc+49VAEMcQXrhq08dLNYXm/
+ ibFQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RogKmMPy3PjicI3I9L+zK5uzGNE+/LTVOTEUIed+ax6FaN1pQhtMCNBhrjJ88BcYkN0Rz2a8YM7hg==@nongnu.org
-X-Gm-Message-State: AOJu0YxVw9mydYvQ/q6xRmvpL4N8X0zYbl+90ubR91D5xL0Iczbjk1oU
- TLRshC3UfevtdyAcI3F45Y6uMqt+X0Utf5SO/eBgplkkGzm8u11mjbXQ
-X-Gm-Gg: AR+sD10oXSisuUZOiOPI0l9kArI02KiH3ODmaRoKmQLYLWfHwSlR2uYc7SVwrMf+39A
- kyynayXbZyJBidF/VEXg55pO1dd0I+eWvPxrJu6pXFnjY1h1j5zaaPCywtYfBVizMNqWrYYobN1
- bLMLEaEcJ7sgc7XaWulICb5wlOwjnly/d+209k04zdZtZiQsxFDNmEf8HbLwVe2gLTf/2xyN0eo
- OjjAMbzmeRtUApZml4/dFIGcXwFUkjHL43guITEy3hmIkrL9ft212IiYmRr+N+JKPa/340trwBa
- t6TNz2F0zBk9/lYmXRyWRDyZplm0KXLzMD5h8Q2j/pPHjmm1qDXyAMVocMcvvaUIcKFugxx9FS+
- FxOmU6hPQ8hRXwKQBqiM8PYUO4LQxAI5Vs/apqYLTbESO3odyn+xQhQ94lYBdZzjRuDfLzaQha5
- nvTP4SzDuHU8JWKQ==
-X-Received: by 2002:a17:903:32d0:b0:2cf:4504:feb5 with SMTP id
- d9443c01a7336-2cfde85f6acmr57490745ad.31.1785077498488; 
- Sun, 26 Jul 2026 07:51:38 -0700 (PDT)
+ AHgh+Rrz4woBeO2UulHAteDh+Zko+CTg3u4W4Rk01Kc0JUDXq0K+xoKiRTVT4j2eSUHSvWDnUHEC52oSTA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz0Sm4Ow79OVq5c0MbPmKfgzVG0fwDLd4wFk0i26gH3YqpGB/rJ
+ tHLqhFq68iSrf4Cm+qpS+ZpJzOzygMMT692cqKg2koslHQQPCxeoHEyx
+X-Gm-Gg: AR+sD13zbzH5TzfUWqZpuTdgSKERJ63ixDnX6Dv76j6f7nqeg/Bfe0+t7DAAPy77AAc
+ m7QVWramtYI21zUclUXmr8HWxp4ttINZinjuQ42+unTqaOmotZe10Ld8Hg91kXm17k8Et55RwYL
+ v3h5U7bN5FvL6i91F0cWpOh5Fp8iTrRDMrgczhhFMo7SfOzVqeIWURK0l257HAGQHMTiIUXOAfc
+ VWQcc6DfDM64MqWuhz5SBrLzNA2lS09+gpfhPAAQdLG4qYYho/m/PJucwhNnPbkfvjjmiAz49W2
+ NP6ylE5S/HUS00b3xnVHiWfCLhIn9sDCDbw5zXlWRjVCANBCuVBuLwXLSdexPrRoRSLlnfk0cZ6
+ aL0CP9MzGHlRj6rw1N9ttIhJl4C5N07WO7Q+45/nYhEZoI5DtDyZFM6mrakwwu9XPmY+x1zmmV0
+ 3DpLHvTahosGEjld8/MLtmP/DL
+X-Received: by 2002:a17:902:cec3:b0:2cf:4339:aaa with SMTP id
+ d9443c01a7336-2cfde7aa806mr51642055ad.12.1785077509760; 
+ Sun, 26 Jul 2026 07:51:49 -0700 (PDT)
 Received: from localhost.localdomain ([82.40.42.115])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2cfde81d7f5sm20934195ad.83.2026.07.26.07.51.31
+ d9443c01a7336-2cfde81d7f5sm20934195ad.83.2026.07.26.07.51.44
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 26 Jul 2026 07:51:36 -0700 (PDT)
+ Sun, 26 Jul 2026 07:51:48 -0700 (PDT)
 From: Jack Wang <163wangjack@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -73,14 +74,16 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
  qemu-rust@nongnu.org, caojunze424@gmail.com,
  Jack Wang <163wangjack@gmail.com>
-Subject: [RFC PATCH v1 0/5] hw/gpio: STM32F1xx GPIO controller in Rust
-Date: Sun, 26 Jul 2026 22:51:14 +0800
-Message-ID: <20260726145119.19881-1-163wangjack@gmail.com>
+Subject: [RFC PATCH v1 2/5] rust: add hw/gpio crate to the workspace
+Date: Sun, 26 Jul 2026 22:51:16 +0800
+Message-ID: <20260726145119.19881-3-163wangjack@gmail.com>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260726145119.19881-1-163wangjack@gmail.com>
+References: <20260726145119.19881-1-163wangjack@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=163wangjack@gmail.com; helo=mail-pl1-x62f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
+ envelope-from=163wangjack@gmail.com; helo=mail-pl1-x634.google.com
 X-Spam_score_int: -13
 X-Spam_score: -1.4
 X-Spam_bar: -
@@ -103,72 +106,207 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi all,
+Register the new stm32f1xx_gpio crate in the Rust workspace and hook its
+meson build and Kconfig into rust/hw so it is compiled into the softmmu
+build when Rust is enabled.
 
-This RFC adds an STM32F1xx GPIO controller modelled in Rust, following the
-existing rust/hw/char/pl011 device as a template. The register logic (CRL/CRH
-mode+config decode and the IDR update algorithm) is a direct port of the C
-model in hw/gpio/stm32l4x5_gpio.c; the STM32F1xx GPIO block (RM0008) is the
-same IP used by the upstream stm32f100_soc.
-
-This series is currently stacked on an out-of-tree STM32F103 SoC and board
-that are not yet upstream which is https://github.com/shandianchengzi/qemu
-But the commit(the initialize logic and gpio architecture) is both capable 
-for stm32f100.This is the reason that struct name is  stm32f1xx. Patch 3 
-("hw/arm/stm32f103: instantiate and mapGPIO ports") therefore touches files 
-that do not exist in mainline and willnot apply cleanly on its own. 
-I am sending this as an RFC to get feedback onthe Rust device model and 
-its integration now, before the SoC lands, rather than as an apply-ready series
-. Once the SoC is upstream (or if you I
-can retarget the device at the existing stm32f100_soc), I will resend a
-non-RFC series.
-
-checkpatch reports SPDX warnings on Kconfig/trace-events/Cargo.toml/
-meson.build and "MAINTAINERS need updating" on the new files. These are
-false positives: matching rust/hw/char/pl011, these file types carry no SPDX
-header in-tree, and MAINTAINERS already gains an entry covering rust/hw/gpio/
-and the qtest in this series.
-
-Anyway this is my first time to generate rust model build so sorry for some
-mistakes. And any help or tip are welcomed
-
-Jack Wang (5):
-  hw/gpio: add stm32f1xx GPIO device model (Rust)
-  rust: add hw/gpio crate to the workspace
-  hw/arm/stm32f103: instantiate and map GPIO ports
-  tests/qtest: add stm32f103 GPIO test
-  rust/hw/gpio: add native unit tests
-
- MAINTAINERS                       |   7 +
- hw/arm/Kconfig                    |   1 +
- hw/arm/stm32f103_board.c          |   2 +-
- hw/arm/stm32f103_soc.c            |  54 ++-
- hw/gpio/Kconfig                   |   5 +
- hw/gpio/trace-events              |   7 +
- include/hw/arm/stm32f103_soc.h    |   9 +
- rust/Cargo.lock                   |  17 +-
- rust/Cargo.toml                   |  18 +
- rust/hw/Kconfig                   |   1 +
- rust/hw/gpio/Cargo.toml           |  28 ++
- rust/hw/gpio/Kconfig              |   2 +
- rust/hw/gpio/meson.build          |  54 +++
- rust/hw/gpio/src/bindings.rs      |  19 ++
- rust/hw/gpio/src/gpio.rs          | 539 ++++++++++++++++++++++++++++++
- rust/hw/gpio/src/lib.rs           |   3 +
- rust/hw/gpio/tests/tests.rs       | 191 +++++++++++
- rust/hw/meson.build               |   1 +
- tests/qtest/meson.build           |   4 +
- tests/qtest/stm32f103_gpio-test.c | 328 ++++++++++++++++++
- 20 files changed, 1281 insertions(+), 9 deletions(-)
+Signed-off-by: Jack Wang <163wangjack@gmail.com>
+---
+ rust/Cargo.lock          | 17 ++++++++++++-
+ rust/Cargo.toml          | 18 ++++++++++++++
+ rust/hw/Kconfig          |  1 +
+ rust/hw/gpio/Cargo.toml  | 28 +++++++++++++++++++++
+ rust/hw/gpio/meson.build | 54 ++++++++++++++++++++++++++++++++++++++++
+ rust/hw/meson.build      |  1 +
+ 6 files changed, 118 insertions(+), 1 deletion(-)
  create mode 100644 rust/hw/gpio/Cargo.toml
- create mode 100644 rust/hw/gpio/Kconfig
  create mode 100644 rust/hw/gpio/meson.build
- create mode 100644 rust/hw/gpio/src/bindings.rs
- create mode 100644 rust/hw/gpio/src/gpio.rs
- create mode 100644 rust/hw/gpio/src/lib.rs
- create mode 100644 rust/hw/gpio/tests/tests.rs
- create mode 100644 tests/qtest/stm32f103_gpio-test.c
 
+diff --git a/rust/Cargo.lock b/rust/Cargo.lock
+index cbb3ca15f7..2daadaaf15 100644
+--- a/rust/Cargo.lock
++++ b/rust/Cargo.lock
+@@ -184,7 +184,6 @@ dependencies = [
+  "glib-sys",
+  "migration-sys",
+  "qom-sys",
+- "system-sys",
+  "util-sys",
+ ]
+ 
+@@ -387,6 +386,21 @@ version = "1.15.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03"
+ 
++[[package]]
++name = "stm32f1xx_gpio"
++version = "0.1.0"
++dependencies = [
++ "bql",
++ "common",
++ "glib-sys",
++ "hwcore",
++ "migration",
++ "qom",
++ "system",
++ "trace",
++ "util",
++]
++
+ [[package]]
+ name = "syn"
+ version = "2.0.104"
+@@ -431,6 +445,7 @@ version = "0.1.0"
+ dependencies = [
+  "common",
+  "glib-sys",
++ "hwcore-sys",
+  "migration-sys",
+  "qom-sys",
+  "util-sys",
+diff --git a/rust/Cargo.toml b/rust/Cargo.toml
+index 0d24eb84e1..7661205d3c 100644
+--- a/rust/Cargo.toml
++++ b/rust/Cargo.toml
+@@ -1,9 +1,27 @@
+ [workspace]
+ resolver = "2"
+ members = [
++    "bindings/chardev-sys",
++    "bindings/hwcore-sys",
++    "bindings/migration-sys",
++    "bindings/qom-sys",
++    "bindings/system-sys",
++    "bindings/util-sys",
++    "bits",
++    "bql",
++    "chardev",
++    "common",
+     "hw/char/pl011",
++    "hw/core",
++    "hw/gpio",
+     "hw/timer/hpet",
++    "migration",
++    "qemu-macros",
++    "qom",
++    "system",
+     "tests",
++    "trace",
++    "util",
+ ]
+ 
+ [workspace.package]
+diff --git a/rust/hw/Kconfig b/rust/hw/Kconfig
+index 36f92ec028..ba1297ca2d 100644
+--- a/rust/hw/Kconfig
++++ b/rust/hw/Kconfig
+@@ -1,3 +1,4 @@
+ # devices Kconfig
+ source char/Kconfig
++source gpio/Kconfig
+ source timer/Kconfig
+diff --git a/rust/hw/gpio/Cargo.toml b/rust/hw/gpio/Cargo.toml
+new file mode 100644
+index 0000000000..5c6eade306
+--- /dev/null
++++ b/rust/hw/gpio/Cargo.toml
+@@ -0,0 +1,28 @@
++[package]
++name = "stm32f1xx_gpio"
++version = "0.1.0"
++description = "STM32F1xx GPIO device model for QEMU"
++resolver = "2"
++publish = false
++
++edition.workspace = true
++homepage.workspace = true
++license.workspace = true
++repository.workspace = true
++rust-version.workspace = true
++
++[dependencies]
++glib-sys.workspace = true
++
++# QEMU Rust foundations crate
++common = { path = "../../common" }
++util = { path = "../../util" }
++bql = { path = "../../bql" }
++migration = { path = "../../migration" }
++qom = { path = "../../qom" }
++system = { path = "../../system" }
++hwcore = { path = "../../hw/core" }
++trace = { path = "../../trace" }
++
++[lints]
++workspace = true
+diff --git a/rust/hw/gpio/meson.build b/rust/hw/gpio/meson.build
+new file mode 100644
+index 0000000000..35da59991f
+--- /dev/null
++++ b/rust/hw/gpio/meson.build
+@@ -0,0 +1,54 @@
++_libstm32f1xx_gpio_rs = static_library(
++  'stm32f1xx_gpio',
++  files(
++    'src/lib.rs',
++    'src/gpio.rs',
++    'src/bindings.rs',
++  ),
++  override_options: ['rust_std=2021', 'build.rust_std=2021'],
++  rust_abi: 'rust',
++  link_with: [
++    _util_rs,
++    _migration_rs,
++    _bql_rs,
++    _qom_rs,
++    _system_rs,
++    _hwcore_rs,
++    _trace_rs,
++  ],
++  dependencies: [
++    common_rs,
++    glib_sys_rs,
++  ],
++)
++
++rust_devices_ss.add(when: 'CONFIG_X_STM32F1XX_GPIO_RUST', if_true: [declare_dependency(
++  link_whole: [_libstm32f1xx_gpio_rs],
++  variables: {'crate': 'stm32f1xx_gpio'},
++)])
++
++# Dependency usable by the in-crate integration test below.
++stm32f1xx_gpio_rs = declare_dependency(link_with: [_libstm32f1xx_gpio_rs],
++  dependencies: [common_rs, qom_rs, hwcore_rs, bql_rs, migration_rs,
++                 system_rs, util_rs])
++
++# Native Rust unit tests for the pure register logic (GpioRegisters). These
++# need no qtest and no machine boot: they construct GpioRegisters directly and
++# only require the BQL mock (bql::start_test). Run with:
++#   meson test --suite rust rust-stm32f1xx-gpio-integration
++test('rust-stm32f1xx-gpio-integration',
++    executable(
++        'rust-stm32f1xx-gpio-integration',
++        files('tests/tests.rs'),
++        override_options: ['rust_std=2021', 'build.rust_std=2021'],
++        rust_args: ['--test'],
++        install: false,
++        dependencies: [stm32f1xx_gpio_rs, common_rs, qom_rs, hwcore_rs,
++                       bql_rs, migration_rs, system_rs, util_rs]),
++    args: [
++        '--test', '--test-threads', '1',
++        '--format', 'pretty',
++    ],
++    protocol: 'rust',
++    suite: ['unit', 'rust'])
++
+diff --git a/rust/hw/meson.build b/rust/hw/meson.build
+index 9749d4adfc..d6b273170e 100644
+--- a/rust/hw/meson.build
++++ b/rust/hw/meson.build
+@@ -1,2 +1,3 @@
+ subdir('char')
++subdir('gpio')
+ subdir('timer')
 -- 
 2.53.0
 

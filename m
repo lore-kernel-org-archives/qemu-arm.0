@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10535C53200
-	for <qemu-arm@archiver.kernel.org>; Sun, 26 Jul 2026 13:15:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFC13C531C9
+	for <qemu-arm@archiver.kernel.org>; Sun, 26 Jul 2026 13:35:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wnygy-0006Pu-Bm; Sun, 26 Jul 2026 09:14:56 -0400
+	id 1wnz09-0002hK-88; Sun, 26 Jul 2026 09:34:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wnygx-0006Pl-Qf
- for qemu-arm@nongnu.org; Sun, 26 Jul 2026 09:14:55 -0400
+ id 1wnz07-0002gp-8c
+ for qemu-arm@nongnu.org; Sun, 26 Jul 2026 09:34:43 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wnygv-0001wx-4S
- for qemu-arm@nongnu.org; Sun, 26 Jul 2026 09:14:55 -0400
+ id 1wnz03-00058L-Bg
+ for qemu-arm@nongnu.org; Sun, 26 Jul 2026 09:34:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1785071689;
+ s=mimecast20190719; t=1785072878;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=57Is4TmUMhYuHlpgAA6pDIwAzMvVbSCfWT1HeltVyws=;
- b=MyCvPPYaEcAungDeiziiWq1MpckMpHjC3c+7yECX9WG7Vyc0HP4Dnu+iR4i4GTdwS2Nj3y
- u2XRMZ/V7cBYKaASOyoz0ja/+nuTb8jm1+lKpklbHTSzxeQI7uaaP5BJPuEYA7Nam3Hb+O
- ZDlYZa0oAcJ0P+4KKriv4P8ischJ0Sg=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=+ndIDNx/XWo57F2qOFIBY/S7J+ZAldG16dMk/9EFoRc=;
+ b=GaNeBeR4KUG4+BRvLatYJ4/dqq9rQ71m2Jv5ptbMFtp1Io/YvbFJxLbxN11tZUuMQcirUn
+ BNizdmHMGSlWKQzVKUpwzgD+5LEdxGGBttOnWeQtEQUvoj6ElHo7CxPMR438NJkvi8Qfu+
+ Bwpf8bOE8k0Ae8enV8xAuXj3rV9NyyY=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-90-A5kieHGfOBCQQyjJsFx7yA-1; Sun, 26 Jul 2026 09:14:48 -0400
-X-MC-Unique: A5kieHGfOBCQQyjJsFx7yA-1
-X-Mimecast-MFC-AGG-ID: A5kieHGfOBCQQyjJsFx7yA_1785071687
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-490a767c7dcso16215525e9.2
- for <qemu-arm@nongnu.org>; Sun, 26 Jul 2026 06:14:47 -0700 (PDT)
+ us-mta-478-uBlsDg74N3eIreRe7VjTmw-1; Sun, 26 Jul 2026 09:34:35 -0400
+X-MC-Unique: uBlsDg74N3eIreRe7VjTmw-1
+X-Mimecast-MFC-AGG-ID: uBlsDg74N3eIreRe7VjTmw_1785072874
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-492488f8583so17454495e9.2
+ for <qemu-arm@nongnu.org>; Sun, 26 Jul 2026 06:34:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785071687; x=1785676487;
- h=content-transfer-encoding:content-type:in-reply-to:fcc
- :content-language:references:cc:to:reply-to:subject:from:user-agent
- :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=57Is4TmUMhYuHlpgAA6pDIwAzMvVbSCfWT1HeltVyws=;
- b=djC4ejj3bPiKPDq8nNErkaXJy9seklOYiDlpKPoclfuSRA+0+6FTj4xa024lnMC4vJ
- kk6N4aF3AgMz/uQgCHCyBW4c6fRbAe91SdwQWVoTpy6iZgIKXZJvztDL1hPZV0IdXqJF
- SatHvEkGAwWlCH7ME2IuJkiP+Z76Uo5IrdmC1h++dHzXZjtZbQE38Q/11xyTMmWLU7MN
- /h4MBpWK7SDOEmXqs7Df0TXyb9wgcPmQvgdw0cEWq7eKMH44k2jrmnxA9BYWUCrdxVo4
- 3ZlDKKj3jjIjq0rDP5KLJXJe3QuAAEXJPSGHJPxByyYjz31QQcc9fTgoJN+P0/TU3D0a
- /kFg==
+ d=1e100.net; s=20251104; t=1785072874; x=1785677674;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :references:cc:to:reply-to:subject:from:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=+ndIDNx/XWo57F2qOFIBY/S7J+ZAldG16dMk/9EFoRc=;
+ b=BYGnjJaVaD+o0H7ZY+lPM5MxXvuk7o6RyluGdewUuhwm60fjF6GJRZiwZw1jUH9Hvm
+ hwjT39s4+XaX10uAJuPAJoSJiLRBnT13NlhIkXr7eMPVKaRGc4JtCC6BfyPeUAwICWVY
+ QqhLZZVZYAZNDEalup+k2X28JQ5rVHIYEVNz7GkFO/EDZ1EfzLX5eljOI10J34UtY0pe
+ kZfOG4ygYtG24zsFUS45+7qrou0OxiEjqlGCst8FkO7R9jwfkwvamSBq8UmRr4a6xVQZ
+ 9wKX88aq0cta7AzpHpcpNvc+tSI8SPj7dyiGrzwDzKUm+YtbaDpMEHFNFfG5QKxds2gj
+ Zynw==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rqnqvg2bLsBpfZk6Ss5DcxDI7LkhPSl3aTuvKRG3hVd7I52aCa26F5R2ezvLSuPeDy6gCugapo5+A==@nongnu.org
-X-Gm-Message-State: AOJu0YzmxJxeaxT7X+0jCQgk9S+A+RDKHQXML0ccWY3dLGD+a2UNkYH1
- 3hHb8t5ZDWRUk0TKnWd8kOF5xSCWalvrBzMiApJk0yxtFrdyW/Aoulq2PlnZUAj88OHpusKwb/0
- LTo0oBpP/T+ciB2WSDWdGN7CD149I3gZMWjfKBMJWFCvnLwr5SlqJPQ==
-X-Gm-Gg: AR+sD10nQN3brMAZU9hV+ut6MiFRF1eyMsHbb/Q9vBPCsYaSD06PUuEC/9dxk+n/VaU
- I2m03UQX3lohZz/IfEIn/FDUZOlkJndvCCEbTBI6LcRJ5wmL6dHmjAE9UWMXVW9bDLum2tPBG16
- s/aCecKrMUYecHe/DxAp1fPSEAw3jYXiCrgjdkBhs4+C8ifSO9VewVOEa8NveEur4Klnn/z0wNw
- B+mhcUsl8+7CwQg+UT7mEqGAAIRGDwJbZ3iUNWMglI9jCdCskF/IM4U1CAf3trXwIrr97nU9Rqv
- EdrPG89cQ7f+u+8eSmhmiMlLhtKjMWTiSinXI30LXexvdjAl3qTmL0uSMEZBK/yp/Nsg6K33y15
- liFonQaVCYlnIhOna1BS3dPpRKhQAgcX7cmk=
-X-Received: by 2002:a05:600c:5487:b0:495:503f:cf9a with SMTP id
- 5b1f17b1804b1-496b57170aamr59060125e9.9.1785071686626; 
- Sun, 26 Jul 2026 06:14:46 -0700 (PDT)
-X-Received: by 2002:a05:600c:5487:b0:495:503f:cf9a with SMTP id
- 5b1f17b1804b1-496b57170aamr59059735e9.9.1785071686163; 
- Sun, 26 Jul 2026 06:14:46 -0700 (PDT)
+ AHgh+RqxS/VYQ27jvwEpT8dIinaR+/I6KTkoIYC1cYLEYS9GuDwFPbrpCGQ5n1XtuLspyPU2PKTGalzvtA==@nongnu.org
+X-Gm-Message-State: AOJu0YwUkoAsbZbVN0OoAGrF2FQq9roXxPvl7IdxBG3Mpa5f1LfYNT01
+ OjMOI8s5U219V9tr4upjHnTPhXNlOkW4kezyCdY31tDuVdjSE8sDTYJiafUSjWoJDYBTtI4sQ75
+ 01Nd2gbbAcDgHJe03dgSz/LLUv5mOkOw8F7PQhr4MMnJ/bnYVumuctA==
+X-Gm-Gg: AR+sD13VHLiynK63NLg/L4+0ilspiCvFhGzuTLkWJgmgbkjYlXDZS7nmTY+gzGM93rE
+ 9S0lW4ex0epzhlXUbq3hCkiL7AoMhtcj8mn4as9yM7GiAIybQYbRcAY14MHwAycUpPVSUSsYInN
+ gQBPm9722tyK2pxdd2Z7xHhiJghT0RU7do4g5eCGr2o3Ur0vjKMmfTAndQKN14ySVN3vU2DdFnV
+ fCLNJh6p4zjfS4i8RHDDPOH5dEdIVGkDUoXoKc8We2iDlRst243a1rRNQBfcJ+viTliZMTkdPfA
+ HLZysuc7C3Ualr9TiF3QTtim9Oim++aySzwXSu06QpgzC0/QDMA1+fKDyIDbLFKsYZ04EckIlhY
+ Rt8QxF5S7OlztLAW5PyD18qP//x+cwk/2ZBY=
+X-Received: by 2002:a05:600c:3b17:b0:495:5b02:23a8 with SMTP id
+ 5b1f17b1804b1-496b570f00dmr76726325e9.34.1785072873574; 
+ Sun, 26 Jul 2026 06:34:33 -0700 (PDT)
+X-Received: by 2002:a05:600c:3b17:b0:495:5b02:23a8 with SMTP id
+ 5b1f17b1804b1-496b570f00dmr76725605e9.34.1785072872971; 
+ Sun, 26 Jul 2026 06:34:32 -0700 (PDT)
 Received: from [192.168.3.191] (228.246.150.77.rev.sfr.net. [77.150.246.228])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-496b388d5b4sm111903755e9.3.2026.07.26.06.14.42
+ ffacd0b85a97d-47f85c531basm43542454f8f.19.2026.07.26.06.34.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 26 Jul 2026 06:14:45 -0700 (PDT)
-Message-ID: <4de4ae81-d71e-4d23-b855-9b3360cf4eac@redhat.com>
-Date: Sun, 26 Jul 2026 15:14:41 +0200
+ Sun, 26 Jul 2026 06:34:32 -0700 (PDT)
+Message-ID: <4f07607b-b21a-4a5c-8daa-6aec5e288353@redhat.com>
+Date: Sun, 26 Jul 2026 15:34:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Eric Auger <eric.auger@redhat.com>
@@ -93,13 +93,9 @@ Cc: cohuck@redhat.com, peter.maydell@linaro.org,
  prerna.saxena@nutanix.com
 References: <20260716213858.609699-1-khushit.shah@nutanix.com>
  <20260716213858.609699-10-khushit.shah@nutanix.com>
-X-Mozilla-Draft-Info: internal/draft; vcard=0; receipt=0; DSN=0; uuencode=0;
- attachmentreminder=0; deliveryformat=1
-X-Identity-Key: id2
-Fcc: imap://eauger%40redhat.com@imap.gmail.com/[Gmail]/Sent Mail
 In-Reply-To: <20260716213858.609699-10-khushit.shah@nutanix.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 9-4ITNpToeP1R9sJNqYKprq1oxrmcKfUAfmOJ-SIYMU_1785071687
+X-Mimecast-MFC-PROC-ID: b4wrnefaStxCLivhAZWYpQ43JV9Ox1_sdZtw8SsoCv8_1785072874
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -112,7 +108,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -148,6 +144,8 @@ On 7/16/26 11:38 PM, Khushit Shah wrote:
 >
 > non-zero-defaults-v1:
 >    Field that should be populated with some non zero value by default.
+following which specification? This is not clear to me. Is that layer
+really meaningful? Shouldn't we start with the next one?
 >
 > arm-v8_4-a-v1:
 >   Only features mandated by the ARM ARM.
@@ -224,6 +222,14 @@ On 7/16/26 11:38 PM, Khushit Shah wrote:
 > +      .u.MODEL_PROP_FIELD_##_type = (_value) }
 > +
 > +#define MODEL_PROP_END  { .name = NULL }
+
+Regarding settings somehow we end up with something that is quite
+similar to TCG CPU
+definitions like in
+aarch64_neoverse_n1_initfn(). To me this is in general more readable
+because we use name fields instead of putting the full reg value.
+This does not prevent us from adding comments along settings to make
+this more readable and explicit.
 > +
 > +/*
 > + * These fields should be populated with some non-zero default values.
@@ -234,12 +240,6 @@ On 7/16/26 11:38 PM, Khushit Shah wrote:
 > +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_EL1", NUM, 0b0001),
 > +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_FP", NUM, 0b1111),
 > +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_AdvSIMD", NUM, 0b1111),
-somehow we end up with something that is quite similar to TCG CPU
-definitions like in
-aarch64_neoverse_n1_initfn(). To me this is in general more readable
-because we use name fields instead of putting the full reg value.
-This does not prevent us from adding comments along settings to make
-this more readable and explicit.
 > +
 > +    /* ID_AA64PFR1_EL1 */
 > +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_MTE_frac", NUM, 0b1111),
@@ -269,9 +269,13 @@ against the host if the prop is not available.
 > +};
 
 To ease the review I would suggest to put a dump of all id regs of a
-leaf modelin the commit description. It is less error prone that
+leaf model in the commit description. It is less error prone that
 understanding the various overrides.
 I would suggest to have separate patches for each model too.
+
+So you said a leaf model shall have explicit values for each field,
+including non writable ones. The code does not check that. How do we
+make sure we are not missing settings?
 
 > +
 > +static const ArmModelPropValue armv8_4_a_v1_props[] = {

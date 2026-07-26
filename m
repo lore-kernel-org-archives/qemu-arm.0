@@ -4,93 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B240C531C9
-	for <qemu-arm@archiver.kernel.org>; Sun, 26 Jul 2026 14:53:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D202C531C9
+	for <qemu-arm@archiver.kernel.org>; Sun, 26 Jul 2026 15:34:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wo0DH-00063b-MV; Sun, 26 Jul 2026 10:52:23 -0400
+	id 1wo0rD-0001SA-QX; Sun, 26 Jul 2026 11:33:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wo0D1-0005yR-Le
- for qemu-arm@nongnu.org; Sun, 26 Jul 2026 10:52:09 -0400
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wo0Cz-00062H-3j
- for qemu-arm@nongnu.org; Sun, 26 Jul 2026 10:52:07 -0400
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-2cf452def93so23365295ad.1
- for <qemu-arm@nongnu.org>; Sun, 26 Jul 2026 07:52:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1785077524; x=1785682324; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=ZnuUzF0dJIBznvvjx9kVt4TXwDvHfe0DU2pEHtYFjzE=;
- b=jTp8PVG01HB7mgsj2TPgmWmjM/01brADE1qkizvUjZDqrbUsas50aRZfZObsYxFlJQ
- G5oLZLyBaHKHWfYU/QeCxJC7o+3rQQzSHFdAGmt8q1eJ079WhQAEGmqfCFq9tXI7MmBj
- 2TC8QWOlBT6Q+HbxD9cQgCAcfKvycYqPplzLN9VWmhGzilcBaxrrC1ys2cOjfuord2iV
- LAiRHNY434pbLJ2vQUyFPjY7tw9VtJeD9+lv8JEyk+5xmaLPZQ0LGECEBdkfANt7/46M
- EpD3kCN/CMyv7+iSoqTV3n5y07OCtjSkPJHYpm5RkiNXNbFGrab72Q4Cxg/A0TKY82ec
- MJ4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785077524; x=1785682324;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=ZnuUzF0dJIBznvvjx9kVt4TXwDvHfe0DU2pEHtYFjzE=;
- b=qF7cqRNTyxfgMgJPraS3PQTqoZ8ME6rFM24tdNXu0B6OpAUgQiF5A14/7TybjF7vZI
- CO06tyYWwMY3qCdvg7Ovl8skmNAf555S/Oiw95wdjFmFx+yHluRnc27+pifnn379Tyee
- VbA6s4CDP5p97aIgyvDV9I2xTYL+K8axox97ohReGHzuFMLJQaOW30TSrlpEQJUWFWh3
- 4zgxPjNqq1MOebEqf5g8JE+I5Pt2Yy8Cp37jHkG0NVOofx/UpCYP9mR7Owik90zTiD4c
- ZqcAUdvkVNfb23h5xkHqm3t3n7uIh2/cgnyOWCdieV03LFi2vRGHXwW80S0OoNzLejbE
- UTWQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpdJGICVpgtivLSo8k3y3QACSZUwYVgwZ3q89IegBxjXe5pLUDX95YAtbjZy50QjQ/fbMKhb2QEAQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxS9ibzznAiSmtAAUU0kYY06rUfKFYWJBDClMlpTr0zvtfy+3QG
- re1/h5HQYjWbthaZOafnM7CEb3l22xylMJbyJ1yx4BZyU8WEqgWNecRp
-X-Gm-Gg: AR+sD1277QqhBEBqVw5s7kkhrRoNmog+icnysMq85SJUpj6UKOt8Dt0GjBLoVYjWkJC
- SxiWCBWDD7NTN8zni41tLb1HmJO6s0AIgnHw2xiLvQZLNvC1lal8QeiPlrauljtlOEevrZkwCAa
- utVhpvekITCqL1/9cC3BHeBNuuSMQ6E3lJZDfPYsBK+U15vLBQ0FeY0AsLoJV1ur+mxuwgh4dLP
- 64O8y7eyUzaHHcGG3v1FaQMC8YCP56jJvJyAWaulw40cAL93sLqpE2yNYXulHBBDUr8O1HYF1rK
- NA0YFcRZRIy3bBAWubZ1aNd39nQctO1+l4hte9S0kvOtsVo7Ai8Lh1GbRq7DWEm2a6kZojLiwQQ
- 1wfpsw5WKaqoJ+DpFAVFlYPUw2/y8KpGOcTgvvol2359vtpI9syVwROoXAS8rsaERPduBymzKoU
- LK6XMAM9XiJ/gk3U9z1pJA0EE/
-X-Received: by 2002:a17:902:d2c6:b0:2cf:7de1:4a00 with SMTP id
- d9443c01a7336-2cfd70c0f61mr70085545ad.1.1785077523444; 
- Sun, 26 Jul 2026 07:52:03 -0700 (PDT)
-Received: from localhost.localdomain ([82.40.42.115])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2cfde81d7f5sm20934195ad.83.2026.07.26.07.51.54
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 26 Jul 2026 07:52:01 -0700 (PDT)
-From: Jack Wang <163wangjack@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
- qemu-rust@nongnu.org, caojunze424@gmail.com,
- Jack Wang <163wangjack@gmail.com>
-Subject: [RFC PATCH v1 4/5] tests/qtest: add stm32f103 GPIO test
-Date: Sun, 26 Jul 2026 22:51:18 +0800
-Message-ID: <20260726145119.19881-5-163wangjack@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260726145119.19881-1-163wangjack@gmail.com>
-References: <20260726145119.19881-1-163wangjack@gmail.com>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wo0qN-0001Cb-7a
+ for qemu-arm@nongnu.org; Sun, 26 Jul 2026 11:32:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wo0qL-0003Kn-BW
+ for qemu-arm@nongnu.org; Sun, 26 Jul 2026 11:32:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1785079963;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=bUa+KlaTfiQ1mtDkVunLTy4iw4Y052UsGG/QGwdtTvg=;
+ b=aWLpSowgZu93mHNnc+C691uLnjcODGS9UAs6j3uiVpNUYcT4eQCq7T5QphwmFL5q3iFJVN
+ Okhhs0xrZiCb8NlHtkBvJYs70v6nTDtu4hOpz3VgrF+tWCeZXE4sywYlgUo+plgmylG2NX
+ NKh8j/rW5z0i9+GzEIlGYMmvePpvQ4U=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-459-I3LoRl84PKCtbgKcm_1oQQ-1; Sun,
+ 26 Jul 2026 11:32:40 -0400
+X-MC-Unique: I3LoRl84PKCtbgKcm_1oQQ-1
+X-Mimecast-MFC-AGG-ID: I3LoRl84PKCtbgKcm_1oQQ_1785079958
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BFF52195605B; Sun, 26 Jul 2026 15:32:37 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.44.32.63])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id A6521180044F; Sun, 26 Jul 2026 15:32:26 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ shaju.abraham@nutanix.com, khushit.shah@nutanix.com,
+ yangjinqian1@huawei.com, cohuck@redhat.com, richard.henderson@linaro.org,
+ sebott@redhat.com, skolothumtho@nvidia.com, philmd@oss.qualcomm.com
+Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
+ armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
+ jdenemar@redhat.com
+Subject: [RFC PATCH v7 00/18] kvm/arm: Introduce a customizable aarch64 KVM
+ host model
+Date: Sun, 26 Jul 2026 17:29:38 +0200
+Message-ID: <20260726153221.24773-1-eric.auger@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: N50yFuwShs4vuUcU2O1Fw5oHAbYCDH9VF-KLCVTmMDs_1785079958
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=163wangjack@gmail.com; helo=mail-pl1-x62a.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FROM_STARTS_WITH_NUMS=0.738, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -2
+X-Spam_score: -0.3
+X-Spam_bar: /
+X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,373 +89,157 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a qtest that drives the STM32F103 GPIO ports over the qtest socket,
-covering the RM0008 reset state, BSRR/BRR set/reset semantics and the
-output-line behaviour for push-pull and open-drain configurations.
+This series enhances the current host KVM model with capability to
+set writable ID reg fields. 
 
-Signed-off-by: Jack Wang <163wangjack@gmail.com>
----
- tests/qtest/meson.build           |   4 +
- tests/qtest/stm32f103_gpio-test.c | 328 ++++++++++++++++++++++++++++++
- 2 files changed, 332 insertions(+)
- create mode 100644 tests/qtest/stm32f103_gpio-test.c
+Since v6.7 kernel, KVM/arm allows the userspace to overwrite the values
+of a subset of ID regs. The list of writable fields continues to grow.
+The feature ID range is defined as the AArch64 System register space
+with op0==3, op1=={0, 1, 3}, CRn==0, CRm=={0-7}, op2=={0-7}.
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index e154abb05d..4f407b68fe 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -235,6 +235,9 @@ qtests_stm32l4x5 = \
-    'stm32l4x5_gpio-test',
-    'stm32l4x5_usart-test']
- 
-+qtests_stm32f103 = \
-+  ['stm32f103_gpio-test']
-+
- qtests_arm = \
-   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-apb-dualtimer-test'] : []) + \
-@@ -250,6 +253,7 @@ qtests_arm = \
-   (config_all_devices.has_key('CONFIG_VEXPRESS') ? ['test-arm-mptimer'] : []) + \
-   (config_all_devices.has_key('CONFIG_MICROBIT') ? ['microbit-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') ? qtests_stm32l4x5 : []) + \
-+  (config_all_devices.has_key('CONFIG_STM32F103_SOC') ? qtests_stm32f103 : []) + \
-   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fsi-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
-    config_all_devices.has_key('CONFIG_DM163')? ['dm163-test'] : []) + \
-diff --git a/tests/qtest/stm32f103_gpio-test.c b/tests/qtest/stm32f103_gpio-test.c
-new file mode 100644
-index 0000000000..97ef7dd3e8
---- /dev/null
-+++ b/tests/qtest/stm32f103_gpio-test.c
-@@ -0,0 +1,328 @@
-+/*
-+ * QTest testcase for STM32F103 GPIO (Rust device "stm32f1xx-gpio-rust")
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Copyright (c) 2026 QEMU contributors
-+ *
-+ * The STM32F1 GPIO differs from the L4 family: each pin is configured by a
-+ * 4-bit field MODE[1:0]+CNF[1:0] packed into CRL (pins 0-7) and CRH (pins
-+ * 8-15), instead of the separate MODER/OTYPER/PUPDR registers of the L4.
-+ * See ST RM0008 for the register map and reset values.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest-single.h"
-+
-+#define GPIO_BASE_ADDR 0x40010800
-+#define GPIO_SIZE      0x400
-+#define NUM_GPIOS      7
-+#define NUM_GPIO_PINS  16
-+
-+#define GPIO_A 0x40010800
-+#define GPIO_B 0x40010C00
-+#define GPIO_C 0x40011000
-+#define GPIO_D 0x40011400
-+#define GPIO_E 0x40011800
-+#define GPIO_F 0x40011C00
-+#define GPIO_G 0x40012000
-+
-+/* Register offsets (RM0008). */
-+#define CRL  0x00
-+#define CRH  0x04
-+#define IDR  0x08
-+#define ODR  0x0C
-+#define BSRR 0x10
-+#define BRR  0x14
-+#define LCKR 0x18
-+
-+/* 4-bit MODE[1:0]+CNF[1:0] pin configurations. */
-+#define CFG_INPUT_FLOATING   0x4  /* MODE=00 CNF=01 (reset default) */
-+#define CFG_INPUT_PULL       0x8  /* MODE=00 CNF=10, ODR selects up/down */
-+#define CFG_OUTPUT_PP        0x1  /* MODE=01 CNF=00, general push-pull */
-+#define CFG_OUTPUT_OD        0x5  /* MODE=01 CNF=01, general open-drain */
-+
-+/* CRL/CRH reset value: every pin floating input. */
-+#define CR_RESET 0x44444444
-+
-+static uint32_t gpio_readl(unsigned int gpio, unsigned int offset)
-+{
-+    return readl(gpio + offset);
-+}
-+
-+static void gpio_writel(unsigned int gpio, unsigned int offset, uint32_t value)
-+{
-+    writel(gpio + offset, value);
-+}
-+
-+/* Set the 4-bit config nibble for `pin` in CRL/CRH. */
-+static void gpio_set_config(unsigned int gpio, unsigned int pin, uint8_t cfg)
-+{
-+    unsigned int reg = (pin < 8) ? CRL : CRH;
-+    unsigned int shift = (pin % 8) * 4;
-+    uint32_t mask = ~(0xFu << shift);
-+    uint32_t val = (gpio_readl(gpio, reg) & mask) | ((uint32_t)cfg << shift);
-+    gpio_writel(gpio, reg, val);
-+}
-+
-+static void gpio_set_odr_bit(unsigned int gpio, unsigned int pin,
-+                             uint32_t value)
-+{
-+    uint32_t mask = ~(0x1u << pin);
-+    gpio_writel(gpio, ODR, (gpio_readl(gpio, ODR) & mask) | (value << pin));
-+}
-+
-+static unsigned int get_gpio_id(uint32_t gpio_addr)
-+{
-+    return (gpio_addr - GPIO_BASE_ADDR) / GPIO_SIZE;
-+}
-+
-+static const char *gpio_path(uint32_t gpio)
-+{
-+    static char buf[32];
-+    snprintf(buf, sizeof(buf), "/machine/soc/gpio%c", 'a' + get_gpio_id(gpio));
-+    return buf;
-+}
-+
-+/* Drive pin `num` of `gpio` to `level` from an external source. */
-+static void gpio_set_irq(unsigned int gpio, int num, int level)
-+{
-+    qtest_set_irq_in(global_qtest, gpio_path(gpio), NULL, num, level);
-+}
-+
-+/*
-+ * Intercept this port's own gpio-out lines so get_irq(pin) observes them.
-+ *
-+ * qtest only supports intercepting one device's out-GPIOs per session (the
-+ * interception device is global), so every test that observes gpio-out via
-+ * get_irq() must target the SAME port. We use GPIO_A for all of them. Tests
-+ * that only read IDR/ODR over MMIO can use any port and skip interception.
-+ */
-+static void intercept_out(unsigned int gpio)
-+{
-+    qtest_irq_intercept_out(global_qtest, gpio_path(gpio));
-+}
-+
-+static void reset_gpio(unsigned int gpio)
-+{
-+    gpio_writel(gpio, CRL, CR_RESET);
-+    gpio_writel(gpio, CRH, CR_RESET);
-+    gpio_writel(gpio, ODR, 0);
-+}
-+
-+static void test_reset_values(void)
-+{
-+    /*
-+     * Scribble over the config/data registers, issue a system reset, and
-+     * check the RM0008 documented reset state is restored: CRL/CRH back to
-+     * 0x44444444 (floating input) and IDR/ODR back to 0.
-+     */
-+    gpio_writel(GPIO_A, CRL, 0xDEADBEEF);
-+    gpio_writel(GPIO_A, CRH, 0xDEADBEEF);
-+    gpio_writel(GPIO_A, ODR, 0xDEADBEEF);
-+
-+    gpio_writel(GPIO_C, CRL, 0x12345678);
-+    gpio_writel(GPIO_C, ODR, 0x0000FFFF);
-+
-+    qtest_system_reset(global_qtest);
-+
-+    g_assert_cmphex(gpio_readl(GPIO_A, CRL), ==, CR_RESET);
-+    g_assert_cmphex(gpio_readl(GPIO_A, CRH), ==, CR_RESET);
-+    g_assert_cmphex(gpio_readl(GPIO_A, IDR), ==, 0);
-+    g_assert_cmphex(gpio_readl(GPIO_A, ODR), ==, 0);
-+
-+    g_assert_cmphex(gpio_readl(GPIO_C, CRL), ==, CR_RESET);
-+    g_assert_cmphex(gpio_readl(GPIO_C, IDR), ==, 0);
-+    g_assert_cmphex(gpio_readl(GPIO_C, ODR), ==, 0);
-+}
-+
-+static void test_output_mode(const void *data)
-+{
-+    /*
-+     * Configure a pin as push-pull output and check ODR drives IDR and the
-+     * gpio-out line. Also check ODR writes made while the pin is still an
-+     * input are latched (not discarded), taking effect once switched.
-+     */
-+    unsigned int pin = (uintptr_t)data & 0xF;
-+    uint32_t gpio = (uintptr_t)data & ~(GPIO_SIZE - 1);
-+    bool observe = (gpio == GPIO_A);
-+
-+    reset_gpio(gpio);
-+    if (observe) {
-+        intercept_out(gpio);
-+    }
-+
-+    /* Set ODR while floating input: IDR unaffected, no output edge. */
-+    gpio_set_odr_bit(gpio, pin, 1);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), ==, 0);
-+    if (observe) {
-+        g_assert_false(get_irq(pin));
-+    }
-+
-+    /* Switch to push-pull output: pin now follows ODR (high). */
-+    gpio_set_config(gpio, pin, CFG_OUTPUT_PP);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), ==, (1u << pin));
-+    if (observe) {
-+        g_assert_true(get_irq(pin));
-+    }
-+
-+    /* Clear ODR bit: pin goes low. */
-+    gpio_set_odr_bit(gpio, pin, 0);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), ==, 0);
-+    if (observe) {
-+        g_assert_false(get_irq(pin));
-+    }
-+
-+    reset_gpio(gpio);
-+}
-+
-+static void test_input_mode(const void *data)
-+{
-+    /*
-+     * Configure a pin as floating input and check that an external drive
-+     * (via the gpio-in line) is reflected in IDR and on the gpio-out line.
-+     */
-+    unsigned int pin = (uintptr_t)data & 0xF;
-+    uint32_t gpio = (uintptr_t)data & ~(GPIO_SIZE - 1);
-+    bool observe = (gpio == GPIO_A);
-+
-+    reset_gpio(gpio);
-+    if (observe) {
-+        intercept_out(gpio);
-+    }
-+
-+    gpio_set_config(gpio, pin, CFG_INPUT_FLOATING);
-+
-+    gpio_set_irq(gpio, pin, 1);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), ==, (1u << pin));
-+    if (observe) {
-+        g_assert_true(get_irq(pin));
-+    }
-+
-+    gpio_set_irq(gpio, pin, 0);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), ==, 0);
-+    if (observe) {
-+        g_assert_false(get_irq(pin));
-+    }
-+
-+    reset_gpio(gpio);
-+}
-+
-+static void test_pull_up_down(const void *data)
-+{
-+    /*
-+     * In input pull mode (CNF=10), ODR selects the resistor: ODR=1 pulls the
-+     * pin up (IDR=1) and ODR=0 pulls it down (IDR=0), even with no external
-+     * driver connected.
-+     */
-+    unsigned int pin = (uintptr_t)data & 0xF;
-+    uint32_t gpio = (uintptr_t)data & ~(GPIO_SIZE - 1);
-+
-+    reset_gpio(gpio);
-+    intercept_out(gpio);
-+
-+    /* Pull-up. */
-+    gpio_set_odr_bit(gpio, pin, 1);
-+    gpio_set_config(gpio, pin, CFG_INPUT_PULL);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), ==, (1u << pin));
-+    g_assert_true(get_irq(pin));
-+
-+    /* Pull-down. */
-+    gpio_set_odr_bit(gpio, pin, 0);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), ==, 0);
-+    g_assert_false(get_irq(pin));
-+
-+    reset_gpio(gpio);
-+}
-+
-+static void test_bsrr_brr(const void *data)
-+{
-+    /*
-+     * BSRR: low 16 bits set ODR bits, high 16 bits reset them, with set
-+     * taking priority. BRR resets ODR bits.
-+     */
-+    unsigned int pin = (uintptr_t)data & 0xF;
-+    uint32_t gpio = (uintptr_t)data & ~(GPIO_SIZE - 1);
-+
-+    reset_gpio(gpio);
-+
-+    gpio_writel(gpio, BSRR, (1u << pin));
-+    g_assert_cmphex(gpio_readl(gpio, ODR), ==, (1u << pin));
-+
-+    gpio_writel(gpio, BSRR, (1u << (pin + 16)));
-+    g_assert_cmphex(gpio_readl(gpio, ODR), ==, 0);
-+
-+    gpio_writel(gpio, BSRR, (1u << pin));
-+    g_assert_cmphex(gpio_readl(gpio, ODR), ==, (1u << pin));
-+
-+    gpio_writel(gpio, BRR, (1u << pin));
-+    g_assert_cmphex(gpio_readl(gpio, ODR), ==, 0);
-+
-+    /* Set has priority over reset in BSRR. */
-+    gpio_writel(gpio, BSRR, (1u << pin) | (1u << (pin + 16)));
-+    g_assert_cmphex(gpio_readl(gpio, ODR), ==, (1u << pin));
-+
-+    reset_gpio(gpio);
-+}
-+
-+static void test_push_pull_disconnect(const void *data)
-+{
-+    /*
-+     * A pin driven externally, then reconfigured as push-pull output, must be
-+     * disconnected from the external driver: its IDR follows ODR, not the
-+     * stale external level.
-+     */
-+    unsigned int pin = (uintptr_t)data & 0xF;
-+    uint32_t gpio = (uintptr_t)data & ~(GPIO_SIZE - 1);
-+
-+    reset_gpio(gpio);
-+
-+    /* Drive high externally as input. */
-+    gpio_set_config(gpio, pin, CFG_INPUT_FLOATING);
-+    gpio_set_irq(gpio, pin, 1);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), ==, (1u << pin));
-+
-+    /* Reconfigure as push-pull output with ODR=0: pin must drop to 0. */
-+    gpio_set_odr_bit(gpio, pin, 0);
-+    gpio_set_config(gpio, pin, CFG_OUTPUT_PP);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), ==, 0);
-+
-+    /* Further external drives are ignored while output push-pull. */
-+    gpio_set_irq(gpio, pin, 1);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), ==, 0);
-+
-+    reset_gpio(gpio);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    int ret;
-+
-+    g_test_init(&argc, &argv, NULL);
-+    g_test_set_nonfatal_assertions();
-+
-+    qtest_add_func("stm32f103/gpio/reset_values", test_reset_values);
-+    qtest_add_data_func("stm32f103/gpio/output_mode_a5",
-+                        (void *)(uintptr_t)(GPIO_A | 5), test_output_mode);
-+    qtest_add_data_func("stm32f103/gpio/output_mode_c13",
-+                        (void *)(uintptr_t)(GPIO_C | 13), test_output_mode);
-+    qtest_add_data_func("stm32f103/gpio/input_mode_b6",
-+                        (void *)(uintptr_t)(GPIO_B | 6), test_input_mode);
-+    qtest_add_data_func("stm32f103/gpio/input_mode_d10",
-+                        (void *)(uintptr_t)(GPIO_D | 10), test_input_mode);
-+    qtest_add_data_func("stm32f103/gpio/pull_up_down_a0",
-+                        (void *)(uintptr_t)(GPIO_A | 0), test_pull_up_down);
-+    qtest_add_data_func("stm32f103/gpio/bsrr_brr_a1",
-+                        (void *)(uintptr_t)(GPIO_A | 1), test_bsrr_brr);
-+    qtest_add_data_func("stm32f103/gpio/bsrr_brr_e12",
-+                        (void *)(uintptr_t)(GPIO_E | 12), test_bsrr_brr);
-+    qtest_add_data_func("stm32f103/gpio/push_pull_disconnect_g7",
-+                        (void *)(uintptr_t)(GPIO_G | 7),
-+                        test_push_pull_disconnect);
-+
-+    qtest_start("-machine stm32f103");
-+    ret = g_test_run();
-+    qtest_end();
-+
-+    return ret;
-+}
+The end goal is to get more flexibility when migrating guests
+between different host hardware.
+
+QEMU retrieves the writable ID fields from KVM UAPI [1] and
+match them against a generated description of ID regs and their
+named fields that stem from AARCHMRS Registers.json file.
+Current description is based on latest 2026-03 edition.
+The content of the generated files was compared against kernel
+linux/arch/arm64/tools/sysreg file. It is not straightforward
+to have unit tests for python scripts as there are many cases for
+field extraction. 
+
+For each writable named field a uint64 property is created
+following the "SYSREG_<REG>_<FIELD>" naming convention. REG and
+FIELD names are those described in ARM ARM Reference manual.
+
+The list of SYSREG_ID properties can be retrieved through the qmp
+monitor using query-cpu-model-expansion [2].
+
+For the record, Jinqian was able to migrate between Hisilicon KunPeng
+HIP09 and HIP12 chips with this series using this kind of command:
+
+-cpu host,pauth=off,pmu=off,sve=off,\
+SYSREG_ID_AA64PFR1_EL1_NMI=0x0,\
+SYSREG_ID_AA64ISAR1_EL1_LS64=0x0,\
+SYSREG_ID_AA64ISAR1_EL1_XS=0x0,\
+SYSREG_ID_AA64ISAR1_EL1_LRCPC=0x2,\
+SYSREG_ID_AA64ISAR2_EL1_RPRFM=0x0,\
+SYSREG_ID_AA64ISAR2_EL1_CLRBHB=0x0,\
+SYSREG_ID_AA64ISAR2_EL1_PAC_frac=0x0,\
+SYSREG_ID_AA64ISAR2_EL1_BC=0x0,\
+SYSREG_ID_AA64ISAR2_EL1_RPRES=0x0,\
+SYSREG_ID_AA64ISAR2_EL1_WFxT=0x0,\
+SYSREG_ID_AA64MMFR0_EL1_FGT=0x0,\
+SYSREG_ID_AA64MMFR0_EL1_BigEnd=0x0,\
+SYSREG_ID_AA64MMFR1_EL1_ECBHB=0x0,\
+SYSREG_ID_AA64MMFR1_EL1_CMOW=0x0,\
+SYSREG_ID_AA64MMFR1_EL1_TIDCP1=0x0,\
+SYSREG_ID_AA64MMFR1_EL1_nTLBPA=0x0,\
+SYSREG_ID_AA64MMFR1_EL1_AFP=0x0,\
+SYSREG_ID_AA64MMFR1_EL1_HCX=0x0,\
+SYSREG_ID_AA64MMFR1_EL1_ETS=0x0,\
+SYSREG_ID_AA64MMFR1_EL1_PAN=0x2,\
+SYSREG_ID_AA64MMFR1_EL1_HAFDBS=0x2,\
+SYSREG_ID_AA64MMFR2_EL1_CnP=0x0,\
+SYSREG_ID_AA64MMFR3_EL1_TCRX=0x0,\
+SYSREG_ID_AA64DFR0_EL1_PMUVer=0x6,\
+SYSREG_ID_AA64DFR0_EL1_DebugVer=0x9,\
+SYSREG_ID_AA64DFR0_EL1_DoubleLock=0xf,\
+SYSREG_ID_AA64ZFR0_EL1_F64MM=0x0,\
+SYSREG_ID_AA64ZFR0_EL1_F32MM=0x0,\
+SYSREG_ID_AA64ZFR0_EL1_SM4=0x0,\
+SYSREG_ID_AA64ZFR0_EL1_SHA3=0x0,\
+SYSREG_ID_AA64ZFR0_EL1_BitPerm=0x0,\
+SYSREG_ID_AA64ZFR0_EL1_AES=0x0,\
+SYSREG_ID_AA64ZFR0_EL1_SVEver=0x0,\
+SYSREG_CTR_EL0_L1Ip=0x2 \
+
+Connie & Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/arm-cpu-model-v7
+
+History:
+--------
+v6 -> v7:
+- query-cpu-model-expansion now applies the sysreg props
+  onto a scratch vcpu (POC) allowing a finer validation of settings
+  (not perfect though as init may be revisited depending on
+  settings)
+- Properly handle ValueRange (Khushit)
+- Remove cpu parameter in get_host_cpu_idregs call chain
+  (Khushit)
+
+v5 -> v6:
+v6 is mostly for Khushit to see how he may work on top
+of this series. It fulfills some of his requirements:
+- Upon Khushit request I added description for enum values
+  and reserved fields
+- set_sysreg_prop checks the input value against enum values
+  if any
+- writable_bitmap is now dispatched into the sysreg descripton
+  and not stored in vcpu state anymore (besides it is VM wide)
+- implemented write for qmp inspection. However this is not
+  yet checked against KVM. That's the next step I think, ie.
+  instantiate a scratch vcpu to test if the field value can be
+  applied?
+- if some inconsistencies between writable mask and idreg
+  field, reserved fields only produce traces
+- this version does not yet fix some reported issues about host
+  supporting nested virt. I will further sync with Khushit.
+  so this is definitively not candidate to be applied, hence the
+  RFC tag.
+
+Cornelia Huck (3):
+  target/arm/kvm: Retrieve writable ID reg map
+  arm/cpu-features: document ID reg properties
+  arm-qmp-cmds: introspection for ID register props
+
+Eric Auger (14):
+  scripts: introduce scripts/update-aarch64-cpu-sysregs-header.py
+  target/arm/cpu-sysregs.h.inc: Sort by name alphabetical order
+  target/arm/cpu-sysregs.h.inc: Update with automatic generation
+  arm/cpu: Add infra to handle generated ID register definitions
+  scripts: Introduce scripts/aarch64_sysreg_helpers module
+  scripts: Introduce scripts/update-aarch64-cpu-sysreg-properties.py
+  target/arm/cpu-idregs.h.inc: generate with script
+  target/arm/cpu-idregs.h.inc: Generate enum values
+  arm/kvm: Initialize all writable ID registers from host
+  target/arm/kvm: Introduce kvm_arm_expose_idreg_properties
+  target/arm/cpu: Expose writable ID reg field properties on the kvm
+    host vcpu model
+  target/arm/cpu-idregs.h.inc: Generate reserved fields
+  target/arm/kvm: Ignore and trace unexpected writable reserved fields
+  target/arm/kvm: add utility to write idregs in scratch vcpu
+
+Shaju Abraham (1):
+  target/arm/cpu_idregs: generate tables for Arm64 ID registers and
+    fields
+
+ docs/system/arm/cpu-features.rst              |  106 +-
+ target/arm/cpu-idregs.h                       |   41 +
+ target/arm/kvm_arm.h                          |   13 +
+ target/arm/cpu-idregs.h.inc                   | 2164 +++++++++++++++++
+ target/arm/cpu-sysregs.h.inc                  |   57 +-
+ target/arm/arm-qmp-cmds.c                     |   98 +
+ target/arm/cpu-idregs.c                       |   96 +
+ target/arm/cpu64.c                            |    5 +
+ target/arm/kvm-stub.c                         |    6 +
+ target/arm/kvm.c                              |  360 ++-
+ scripts/aarch64_sysreg_helpers.py             |  109 +
+ .../update-aarch64-cpu-sysreg-properties.py   |  290 +++
+ scripts/update-aarch64-cpu-sysregs-header.py  |   51 +
+ target/arm/meson.build                        |    1 +
+ target/arm/trace-events                       |    8 +
+ 15 files changed, 3373 insertions(+), 32 deletions(-)
+ create mode 100644 target/arm/cpu-idregs.h
+ create mode 100644 target/arm/cpu-idregs.h.inc
+ create mode 100644 target/arm/cpu-idregs.c
+ create mode 100644 scripts/aarch64_sysreg_helpers.py
+ create mode 100644 scripts/update-aarch64-cpu-sysreg-properties.py
+ create mode 100755 scripts/update-aarch64-cpu-sysregs-header.py
+
 -- 
 2.53.0
 

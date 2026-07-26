@@ -4,89 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FDCEC531FA
-	for <qemu-arm@archiver.kernel.org>; Sun, 26 Jul 2026 14:42:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6BC1C531C9
+	for <qemu-arm@archiver.kernel.org>; Sun, 26 Jul 2026 14:52:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wo02Z-00035z-DL; Sun, 26 Jul 2026 10:41:19 -0400
+	id 1wo0Cj-0005sj-7i; Sun, 26 Jul 2026 10:51:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wo02X-00035Z-SZ
- for qemu-arm@nongnu.org; Sun, 26 Jul 2026 10:41:17 -0400
-Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932])
+ (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
+ id 1wo0Cf-0005s1-6b
+ for qemu-arm@nongnu.org; Sun, 26 Jul 2026 10:51:45 -0400
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wo02W-00050l-BB
- for qemu-arm@nongnu.org; Sun, 26 Jul 2026 10:41:17 -0400
-Received: by mail-ua1-x932.google.com with SMTP id
- a1e0cc1a2514c-977242349e3so467919241.0
- for <qemu-arm@nongnu.org>; Sun, 26 Jul 2026 07:41:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
+ id 1wo0Cc-0005zN-1g
+ for qemu-arm@nongnu.org; Sun, 26 Jul 2026 10:51:44 -0400
+Received: by mail-pl1-x62f.google.com with SMTP id
+ d9443c01a7336-2cc7ef7ec27so23927405ad.1
+ for <qemu-arm@nongnu.org>; Sun, 26 Jul 2026 07:51:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1785076874; x=1785681674; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1785077498; x=1785682298; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=G4V9XY94ovym+5Cnyt49gIvgAQYwYCxslJfMeTimWUY=;
- b=Ofa7WY+tAeXvmQYmUswicnGeml6NcPSl+cMVJe/4tN4o3XEu05+z7aX9kwHAXBFZpP
- FrOgyIJewbcjGWNhfPvOr8uLc1reXTrzbQQveeFmK8o4qcIdNd6BY/yvTIvKde20rOoG
- 0WMVY+/J3wf8YFHF1iZ4bOQqcWhVfiI7JDdKqxvLBjNcGWWS+eSjtTYrXm0a0ze/bcTd
- jlvKxBhgtL3SoI81iBnBVq4+L6nnNfKGpCG5QvMbSJ2vaVRuoP6JcUqVTXSQSWRZvuGE
- XW5ZvD6XRH8CSTEzvCYPdlaBwJiQefm0jpxNRaZFd2gfTIvopATcJe0K1d4LxI86S29X
- Rslw==
+ bh=gMvRGC+W81P7nB/Cv+wkkm/hmnFBdzMzFGZ00e08Edw=;
+ b=FmPWmU1OLVqpxqSXIG0uRwusPzkhle8901WOdYCE3Hmdm0rSsT+SWE1MXqB5AhfYjT
+ jA9+6EzXmqHrOLi3ZRYQiGYyJkICzemUm9jZK2bscDU3YG7+a20X2saUFsMEx50V+Af5
+ t4jPajp+vpbwqpHajgUoiWYjhAg4X7JrgRcT5ZgcWgMFZ9BIeEURU86gV/nDo2NxandH
+ gYWWvCmqIWGdPn6L9vYYrVnopSZ+pEAfO+EnFhHYpWSNs+h7XgRalfjA0d4FadtIFmg4
+ SObczchLGdfvb0rXPm8tZj8/iLeliCzgh8OUfjBSB3MFroyyq2rLdFL2JdrZFwsDSnwc
+ j+IQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785076874; x=1785681674;
+ d=1e100.net; s=20251104; t=1785077498; x=1785682298;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=G4V9XY94ovym+5Cnyt49gIvgAQYwYCxslJfMeTimWUY=;
- b=iyyr6l7LcxXBf3TGosCMrbHqtjxbIkfLcNIWM+dLOBMPzZYLdFdZK0QrjJPhq/J/a9
- vYy/ejZ6q/LmsavKNfpuJxJKaPOWruHdPg1Mr7JfzAxIsyUyNu3jsAXLCtt6O9Q3I7Yr
- v2Z1G6pQQqeU3TIVd16VmI1tEfD5hM+KeBrVi4X3ZniKAAnJ8Pt1Z37SFMQ7r5JBzB5b
- Puj01ARbuUm/Eh9wgzPB0+yzgGrUKcwhpnWSceo2olACkbzgDjSAQXuYnNmZh0qHzptu
- whtfJ3wKwGwKWfup4F+P76UZUfsPQhLThXMOHhxEgfHwZjK/CGN4IoD/fkULQzzjqbqS
- Hvsw==
+ bh=gMvRGC+W81P7nB/Cv+wkkm/hmnFBdzMzFGZ00e08Edw=;
+ b=rhHI8ukwlwG7hH7s0icrMC9s0Qmbf3PVzU5dCVlrtnR0m30Ew4dHPP0EzE2Nc9tW1n
+ lprv+mtT7oP4ENyfCPcHpr2iDWJV7V8zZHvP/ARTtQT+abDRhV2LLshulBZHRkWxmcia
+ QEt+IHTO1M3SnXWtOjY45G5Fw24AyT2Nek6kqlmFHh4EK8bY0HyKzjU1uxJ7OGP+QC9o
+ W29KFp6TKD6Esvsrps8JnWgTQgWdtorCLWbNXeTJWJIdbiOFdBVMPlkiV8EWn0gC4E+P
+ 70K+taLxZ7YN/vsZQNkR27mDxTTX0Ca0u537qNryX5biZL6URz0pVb/bgrJdYVynw7VH
+ UaFg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqksIsp2h7AtLReaaVDEu0zMP5mYslPU4Z92hGnHMbDWRdhCkxsKdpoochzNyIHUflkX+C+BvPqJw==@nongnu.org
-X-Gm-Message-State: AOJu0Yw0qHDOdmuA3AOzvZ9ATzNFlDrwMqjQt0ldvhprnRiEYjAryRqw
- QvkaG44XiuJk1HgJ5JFhJ+CGeHZgSylR0rwjph+M6iebO9lh8PDnLeDA
-X-Gm-Gg: AR+sD13m29hnJ5ZLDBN1MuFU/0OrYNyF0Kv099Lb+g7WCYPq6wLRFLbASOpMgT+kA2q
- VtZkAFRyTQp/VIeSTR7g31CD1SjA3JMbDKd3iUw567KQBX7pDgt+pqhw7jT9Rut7VEUDFrhr0XP
- /s9JTxPM3x4RIJK1ZtzT4VlPSSSE8coHfTN3qiBms2URkiyH4ATZhWQcPHKZdcs2vzsTf9lKVzw
- IIqjiC6QBNgtNgSyHrnRkM8eMCV71gNHHchp3y19ZcVMFZCzeWTDBBtQSeObVDGNI0KGJ5qZ5KT
- WKH0jtm7OIB58tKqGixycTHAB3KHrg3gXR+2YVAOpmio5C2/qI/Jo4/lRURr6qp0PNwCp+9f5eG
- zx4XKoKvLK+0CBB9OssvPXsbgUS9Qy+kjVI+0ydKV6penNJEXWmwoklR2gZOx59Czx0Emqfx5hH
- mIe2qYzexcLVVE+qmzAUYNehYXX7pSBjAj
-X-Received: by 2002:a05:6102:54ac:b0:73e:605c:405c with SMTP id
- ada2fe7eead31-7503e874670mr2844892137.12.1785076874400; 
- Sun, 26 Jul 2026 07:41:14 -0700 (PDT)
-Received: from localhost.localdomain ([146.71.8.128])
+ AHgh+RogKmMPy3PjicI3I9L+zK5uzGNE+/LTVOTEUIed+ax6FaN1pQhtMCNBhrjJ88BcYkN0Rz2a8YM7hg==@nongnu.org
+X-Gm-Message-State: AOJu0YxVw9mydYvQ/q6xRmvpL4N8X0zYbl+90ubR91D5xL0Iczbjk1oU
+ TLRshC3UfevtdyAcI3F45Y6uMqt+X0Utf5SO/eBgplkkGzm8u11mjbXQ
+X-Gm-Gg: AR+sD10oXSisuUZOiOPI0l9kArI02KiH3ODmaRoKmQLYLWfHwSlR2uYc7SVwrMf+39A
+ kyynayXbZyJBidF/VEXg55pO1dd0I+eWvPxrJu6pXFnjY1h1j5zaaPCywtYfBVizMNqWrYYobN1
+ bLMLEaEcJ7sgc7XaWulICb5wlOwjnly/d+209k04zdZtZiQsxFDNmEf8HbLwVe2gLTf/2xyN0eo
+ OjjAMbzmeRtUApZml4/dFIGcXwFUkjHL43guITEy3hmIkrL9ft212IiYmRr+N+JKPa/340trwBa
+ t6TNz2F0zBk9/lYmXRyWRDyZplm0KXLzMD5h8Q2j/pPHjmm1qDXyAMVocMcvvaUIcKFugxx9FS+
+ FxOmU6hPQ8hRXwKQBqiM8PYUO4LQxAI5Vs/apqYLTbESO3odyn+xQhQ94lYBdZzjRuDfLzaQha5
+ nvTP4SzDuHU8JWKQ==
+X-Received: by 2002:a17:903:32d0:b0:2cf:4504:feb5 with SMTP id
+ d9443c01a7336-2cfde85f6acmr57490745ad.31.1785077498488; 
+ Sun, 26 Jul 2026 07:51:38 -0700 (PDT)
+Received: from localhost.localdomain ([82.40.42.115])
  by smtp.gmail.com with ESMTPSA id
- ada2fe7eead31-7503436f542sm3682735137.4.2026.07.26.07.41.13
+ d9443c01a7336-2cfde81d7f5sm20934195ad.83.2026.07.26.07.51.31
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 26 Jul 2026 07:41:13 -0700 (PDT)
-From: Marcelo Manzo <marcelomanzo@gmail.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Marcelo Manzo <marcelomanzo@gmail.com>
-Subject: [PATCH 0/2] hw/arm/raspi4b: fix guest RAM capped at ~1 GiB regardless
- of machine size
-Date: Sun, 26 Jul 2026 10:41:10 -0400
-Message-ID: <20260726144112.56321-1-marcelomanzo@gmail.com>
-X-Mailer: git-send-email 2.47.1
+ Sun, 26 Jul 2026 07:51:36 -0700 (PDT)
+From: Jack Wang <163wangjack@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
+ qemu-rust@nongnu.org, caojunze424@gmail.com,
+ Jack Wang <163wangjack@gmail.com>
+Subject: [RFC PATCH v1 0/5] hw/gpio: STM32F1xx GPIO controller in Rust
+Date: Sun, 26 Jul 2026 22:51:14 +0800
+Message-ID: <20260726145119.19881-1-163wangjack@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::932;
- envelope-from=marcelomanzo@gmail.com; helo=mail-ua1-x932.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=163wangjack@gmail.com; helo=mail-pl1-x62f.google.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ FROM_STARTS_WITH_NUMS=0.738, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,61 +103,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-While working on unrelated raspi4b issues, I noticed the guest never
-seemed to have as much RAM as I'd given it and tracked it down to
-hw/arm/raspi4b.c's raspi4_modify_dtb(): it decides whether to add a
-second memory node above the 1 GiB peripheral hole by checking
-info->ram_size, but that field is the boot loader's RAM budget for
-where it's allowed to place the kernel/initrd/dtb image, itself always
-capped to at most UPPER_RAM_BASE - vcram_size by
-raspi_base_machine_init(). Since that capped value can never exceed
-UPPER_RAM_BASE by construction, the condition was never true for any
-raspi4b configuration -- the second node was never added, and the
-guest never saw more than ~1 GiB of RAM regardless of the machine's
-nominal size. board_ram_size(info->board_id), computed one line above
-in the same function, is the value that was actually needed.
+Hi all,
 
-Patch 1 fixes it (one line); patch 2 adds a regression test.
+This RFC adds an STM32F1xx GPIO controller modelled in Rust, following the
+existing rust/hw/char/pl011 device as a template. The register logic (CRL/CRH
+mode+config decode and the IDR update algorithm) is a direct port of the C
+model in hw/gpio/stm32l4x5_gpio.c; the STM32F1xx GPIO block (RM0008) is the
+same IP used by the upstream stm32f100_soc.
 
-Confirmed via direct measurement inside the guest ("free -h" /
-/proc/meminfo) on raspi4b's default 2 GiB configuration:
+This series is currently stacked on an out-of-tree STM32F103 SoC and board
+that are not yet upstream which is https://github.com/shandianchengzi/qemu
+But the commit(the initialize logic and gpio architecture) is both capable 
+for stm32f100.This is the reason that struct name is  stm32f1xx. Patch 3 
+("hw/arm/stm32f103: instantiate and mapGPIO ports") therefore touches files 
+that do not exist in mainline and willnot apply cleanly on its own. 
+I am sending this as an RFC to get feedback onthe Rust device model and 
+its integration now, before the SoC lands, rather than as an apply-ready series
+. Once the SoC is upstream (or if you I
+can retarget the device at the existing stm32f100_soc), I will resend a
+non-RFC series.
 
-    before: MemTotal:  943524 kB (~921 MiB)
-    after:  MemTotal: 1905824 kB (~1861 MiB)
+checkpatch reports SPDX warnings on Kconfig/trace-events/Cargo.toml/
+meson.build and "MAINTAINERS need updating" on the new files. These are
+false positives: matching rust/hw/char/pl011, these file types carry no SPDX
+header in-tree, and MAINTAINERS already gains an entry covering rust/hw/gpio/
+and the qtest in this series.
 
-Also verified against two real, unmodified Raspberry Pi OS releases
-(Debian 11/Bullseye and Debian 13/Trixie): both now report ~1.8 GiB of
-usable RAM instead of ~900 MiB, with clean boots, working SSH, and no
-kernel errors on either.
+Anyway this is my first time to generate rust model build so sorry for some
+mistakes. And any help or tip are welcomed
 
-I also looked into extending this to raspi4b's real 4 GiB and 8 GiB
-hardware variants (real boards exist in 1/2/4/8 GiB configurations),
-since board_ram_size()'s encoding already supports arbitrary sizes and
-this same bug meant the necessary split-memory-node path had never
-actually been exercised at any size, ever. 2 GiB now works cleanly
-with this fix (tested above); 4 GiB hits a real kernel panic
-(`kernel BUG at arch/arm64/mm/mmu.c:192!` in early page-table setup,
-addresses landing in the BCM2711 peripheral region around 0xfc000000)
-that looks like it needs the "high peripheral alias" real BCM2711
-firmware sets up for boards with enough RAM to otherwise collide with
-that region -- out of scope for this series, so I'm leaving 4/8 GiB
-support for later and keeping this fix minimal.
+Jack Wang (5):
+  hw/gpio: add stm32f1xx GPIO device model (Rust)
+  rust: add hw/gpio crate to the workspace
+  hw/arm/stm32f103: instantiate and map GPIO ports
+  tests/qtest: add stm32f103 GPIO test
+  rust/hw/gpio: add native unit tests
 
-checkpatch.pl is clean (0 errors, 0 warnings) on both patches, and the
-series builds standalone from a clean worktree
-(--target-list=aarch64-softmmu). All 6 tests in
-tests/functional/aarch64/test_raspi4.py pass, including the 5
-pre-existing ones (no regression) and the new one added here.
-
-Marcelo Manzo (2):
-  hw/arm/raspi4b: fix guest never seeing more than ~1 GiB of RAM
-  tests/functional/aarch64: add raspi4b full-RAM regression test
-
- hw/arm/raspi4b.c                        | 14 ++++++-
- tests/functional/aarch64/test_raspi4.py | 51 +++++++++++++++++++++++++
- 2 files changed, 64 insertions(+), 1 deletion(-)
+ MAINTAINERS                       |   7 +
+ hw/arm/Kconfig                    |   1 +
+ hw/arm/stm32f103_board.c          |   2 +-
+ hw/arm/stm32f103_soc.c            |  54 ++-
+ hw/gpio/Kconfig                   |   5 +
+ hw/gpio/trace-events              |   7 +
+ include/hw/arm/stm32f103_soc.h    |   9 +
+ rust/Cargo.lock                   |  17 +-
+ rust/Cargo.toml                   |  18 +
+ rust/hw/Kconfig                   |   1 +
+ rust/hw/gpio/Cargo.toml           |  28 ++
+ rust/hw/gpio/Kconfig              |   2 +
+ rust/hw/gpio/meson.build          |  54 +++
+ rust/hw/gpio/src/bindings.rs      |  19 ++
+ rust/hw/gpio/src/gpio.rs          | 539 ++++++++++++++++++++++++++++++
+ rust/hw/gpio/src/lib.rs           |   3 +
+ rust/hw/gpio/tests/tests.rs       | 191 +++++++++++
+ rust/hw/meson.build               |   1 +
+ tests/qtest/meson.build           |   4 +
+ tests/qtest/stm32f103_gpio-test.c | 328 ++++++++++++++++++
+ 20 files changed, 1281 insertions(+), 9 deletions(-)
+ create mode 100644 rust/hw/gpio/Cargo.toml
+ create mode 100644 rust/hw/gpio/Kconfig
+ create mode 100644 rust/hw/gpio/meson.build
+ create mode 100644 rust/hw/gpio/src/bindings.rs
+ create mode 100644 rust/hw/gpio/src/gpio.rs
+ create mode 100644 rust/hw/gpio/src/lib.rs
+ create mode 100644 rust/hw/gpio/tests/tests.rs
+ create mode 100644 tests/qtest/stm32f103_gpio-test.c
 
 -- 
-2.47.1
+2.53.0
 
 

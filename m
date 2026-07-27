@@ -4,146 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 232F4C53219
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Jul 2026 07:49:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 717A7C53219
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Jul 2026 09:41:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1woG5B-00070F-Lh; Mon, 27 Jul 2026 03:49:05 -0400
+	id 1woHpE-0004Wo-6c; Mon, 27 Jul 2026 05:40:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1woG59-0006zF-4T
- for qemu-arm@nongnu.org; Mon, 27 Jul 2026 03:49:03 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1woG55-0000Kt-Ey
- for qemu-arm@nongnu.org; Mon, 27 Jul 2026 03:49:02 -0400
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66R7Rdrs3180898
- for <qemu-arm@nongnu.org>; Mon, 27 Jul 2026 07:48:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- HBPVLbu6yw/BFwf738uPlDbTI4TCnEhtsxFEawoQNjc=; b=U7tOKx6mnR/rmtNX
- Q2Meqt2TNd5AqHWbNbbI9j0B3KXQDvx6fBJP4SlPhrR/J1TozJqRp2vQuNN7D+8N
- 1Mnb7jsU2Rz7/SCruZ+m6RvQP26+O9v/GnXUOidKu3jsaUu7JOQh2D/AdHBEBMV5
- MLsw53/jJnRG8ETG6JkgN/XwP86mNundBv1Fqykv55Xhp/EuuLynvUorpDiZNEvg
- 9OlYyJDjOozk1HwcRnkbCuFtXHfql3yqTAxp5pLdi2eAp20qo8g0SYYH5b3HxuNq
- tt7Bn1iawyjqoaJ3AW2OXEQGAxC0OdV3ze5k/7uUa+F+rGwZrkpEWorV3SaBs+DS
- OnIvRg==
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fngyst9nb-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 27 Jul 2026 07:48:55 +0000 (GMT)
-Received: by mail-qt1-f198.google.com with SMTP id
- d75a77b69052e-51c083f1818so29716471cf.0
- for <qemu-arm@nongnu.org>; Mon, 27 Jul 2026 00:48:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1woHp7-0004W3-ON
+ for qemu-arm@nongnu.org; Mon, 27 Jul 2026 05:40:38 -0400
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1woHp6-00041K-5c
+ for qemu-arm@nongnu.org; Mon, 27 Jul 2026 05:40:37 -0400
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-81ea0b7d137so11222507b3.2
+ for <qemu-arm@nongnu.org>; Mon, 27 Jul 2026 02:40:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785145234; cv=none;
+ d=google.com; s=arc-20260327;
+ b=D+jE5DfAyM3ruELdZxJT1g87QGQUg3AekLf9nAYljPzzzZK3TfCA60IClvmcmiVW6v
+ 8l6DdXShvUI+2Ak0xGbY5AtIAmXR/N/ZJbB6T261+yJiUI2Gr1c0q6nycF8b77D7acBu
+ 3oqyNgLwHgCGG8FuUi9radVHHRgSi/h7UT8ght2zd2uxdfSVClbcdXjIkRzgdUlLdxkO
+ RlYfiJh9kHbcEhEoEclL2JnSPrlQM7dAB+v8mGD3TAzidhyXCQ9zI3Aq8cb8A1VGPY/b
+ TXGKPNO1oL/yrTrriFGim30TyZaHB1kkFs8xOPsIR6SUVtw0cHTzcRlV7Gzd5TAYNXT4
+ /Tkw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=PBjTSeUZsflLVbw7xBkJvO6XZnbCoCdD8ANczblZNo8=;
+ fh=Q5oOZIDCBFfhyxGxvqWt2I/iNa6GTqIfi+9XUz5PmJo=;
+ b=WTFS36snwDMQ9MD3AvVAOnCtTsTrCYs18DMyXr2juyShN/YP1NDknm6G/fXLEPCtc9
+ L/iYdidu19iwkW9WgbSTljaLoFslxB/1tucJr/5wAxsY2cX++6QtAMDGEcpkvDL+aFRw
+ PpXPdtizjY2vm2kdp7OU/adzOAQKhAKnu9swNCWNXXVeaJA10UIGnpM4t4fJyRdwxpoc
+ hcckii3BjyCbFbGj9Vye7IGgbpUi1T25TS34E+vjr1lvNoOcRv6sgYMqbCgx6qyyGHTP
+ +OKCBLi7swcMe3jcjyZKwR8l1xiExYu1jHigpRoKYND0Yonu2A4NUKciCS477ojIcQ5n
+ 1TNg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1785138535; x=1785743335; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=HBPVLbu6yw/BFwf738uPlDbTI4TCnEhtsxFEawoQNjc=;
- b=ecqsStXmp1oTchJtBQnnIuq3rbeZjN60QfW8BybdMtSmfYL+jcvum122LKJUsbN3Tb
- o2uMGOY15ZYDQIGshok18C5CfZ5HxCuf1iSZ5tvBJAGCHXHSCOCXVFoKF6r11bvQXJGF
- qT5vlYomr4L9e2u7//E+AqYzZIj0XuUMHEVGmuQBgZLBBWM9YnjLOTF2FeD2SVaZEPr6
- p67xV1Qr1HVNfLrcb1rqAEiYwRbUGHsMU97pK1Ab7ZUuVOSFwq0U/a/0ICGOEFglpLVD
- bo8dLNDJD3Y8wqTf4aT88jBCaHzdX37eyRSnJIUeVk/WNmVmn/TOh8fXuG9spEqZfG/L
- WrxA==
+ d=linaro.org; s=google; t=1785145234; x=1785750034; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=PBjTSeUZsflLVbw7xBkJvO6XZnbCoCdD8ANczblZNo8=;
+ b=auhL/E6baoMO/Arp+3G8jUsM0b6Gp72n/RVQcvycajzAlZ3rDBvdbThaSEbga0GfRt
+ 5kHaXvfHOuaL2WkF5OdgzZMopSHb9g9n1JS4h9E4DsAnYLR/YKu6JWdqlUGe9uY+JTqb
+ hW4lgqcFRcGxyfusa9/Nri1gEqaqcvKZtrxzx7vSkAXpH403NMomHxRNIF1NWIw6SwKD
+ Rr42tIIkXVo3IOkDMjGQREbYqFnSbygaGWrain8/sDXAG7CXwKN9VniHee45agEiL8kV
+ 4Yrca/EItXJuQ7ak1aASsd7vuV++3wJ+2B2IWApHExPbFmLgKViYD05DyFpZNMq1mcdB
+ UDnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785138535; x=1785743335;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=HBPVLbu6yw/BFwf738uPlDbTI4TCnEhtsxFEawoQNjc=;
- b=bHTBdNw2DM+/15Bcm+/CPVtF6tAcnUGeD3IaN06PsAK9t4BPwba/oaQ5pY3slMyYOp
- 0TBudmUHu2tflScUsIFsSRuQOPAWl70gEkHrzbafD/erKSvDIAPkgVfPm5FmP4ky2iAD
- xNdXBNAiMxH79SOMmK7RI5jCjHpOoWpHIoxX/BpSgfnptPAQOzuBlISXaTFSwux+rWpd
- jvcK25T3WiES3VKEKEoIrDGZipw5VIOLXc7jUnb0WyBvvnNR72+JAgwi/8VPDrObBOyo
- L1oTNsuuTmZDWZBUMJyCdMBvoVf+Ko4OwlZoB/hihUo4G/3b8aCnYJYUqqhfwXxrFmXR
- yJKg==
+ d=1e100.net; s=20251104; t=1785145234; x=1785750034;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=PBjTSeUZsflLVbw7xBkJvO6XZnbCoCdD8ANczblZNo8=;
+ b=CSjS8WjUMAcLfuU0UTXctmjM4D5baHqsFrETlBvqiT+u/Dp05mAwbv4RXNQtN1TXdK
+ GRUVplht6F1JDS+XaTv1sEV0cK0EiOZWBY8ijS/6gNb6qWipPsuhQBYl5ln8+S15c+zu
+ dOcrzCLvZMMyOyPxw1lBPa8gdnnwzxOqzXtOYPgz9d1bmmvMkQrZw6u+/leP6udvMzjB
+ xv5ATDw5luDR6l+dCnvf17liyffBkWJL0h0xNwipnOW96S77H4waz6LJEeY8ca3Y2oQr
+ NmHWdNOqLiGyrzmy6GfxPV0oHFiFxxsCIDajToRG20/H6TtSLaccPiUNkou8lY3M3Aw4
+ 3wxA==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpWRBxNYa4o1gxySodCAwR/ai8zDnBPiJmcvX2I/CSJOvsM0j451a8SklDloVm2fbah2baLTLSP0g==@nongnu.org
-X-Gm-Message-State: AOJu0YyiHrHqcKx/yJYqwlc9jRdEQ2A9XE97Dq+J2S4FJNKbcMsnEU/w
- KkoXTwZt+I88+av+1IUlCyxterTGnuPV6X9qxH9WmPxnBqA7DJEHW5VKtAtFGQlBRTMx3ip+Zv7
- ZP2cCD8OVchbVrH5Vpiltebo1wdmAtOQRm1xHDfkWmAJzbXDxhyFU/ag=
-X-Gm-Gg: AR+sD11yoLWSDpWr33vOjIJHeKZ3ou+ckGkNd0lnDrqghVCoo4ln4M+AJHRydDkVPr1
- mpSdkZGWasXxDbLJsJ7td3/KO1K92bD+ZtID0OGQpSS7XZT0uMscCv0aRhRJR7xM9XW5totA3Jy
- ZvJaXNXv2pl5ExWeUoT9HLOyus7D5PEs8SB6PnAFCRmsOxIbaBt2J+V4doGKIyOLi+WtTCUdSIC
- vdhf4lkVzSmVVBBpa9TJgDjokq612yHx16zCwTjc5Jnc+7iv6BuOq9dSS8b40Ro6mUd9xniQafW
- 9G+miz24sLpl9HMQwRaiXJRkTcdxB9jQC75JCQOdV5OrSXyOQE9BHyj5Me4NYjLcCbmJL1LIngw
- Ztcjr7NHKgPnG0nkODIrfCVhTNJq7ZkBWGDDq/ttLm6xdXWqNKcQ=
-X-Received: by 2002:a05:622a:2448:b0:51a:8aec:9bbd with SMTP id
- d75a77b69052e-529a8353f25mr77844021cf.19.1785138534923; 
- Mon, 27 Jul 2026 00:48:54 -0700 (PDT)
-X-Received: by 2002:a05:622a:2448:b0:51a:8aec:9bbd with SMTP id
- d75a77b69052e-529a8353f25mr77843841cf.19.1785138534500; 
- Mon, 27 Jul 2026 00:48:54 -0700 (PDT)
-Received: from [192.168.69.212] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4957f9928fdsm229914945e9.1.2026.07.27.00.48.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Jul 2026 00:48:53 -0700 (PDT)
-Message-ID: <895cc21e-db27-438a-884c-d041eb9abeed@oss.qualcomm.com>
-Date: Mon, 27 Jul 2026 09:48:52 +0200
+ AHgh+Rqh+u70AEIHjooGKsZl5ThB3xISCdCKdE+h+Al0aSXy+fplpj0QREFJmMBjUrNh/8pFamiDe1IxJA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz6qWok2yb0QR/0s6zwXFlJdhsag+Uh60Ps0h+tW5ih7AqT+nf2
+ tS7O/W0HO0ji4fjjd4YmbNIV7h65v8ZkAtnRnH80KPPL5yCE25IPj7xtTHeYd7bjbX/0B7ZfeFJ
+ OF/niStLK9ULtym7JxKjjZdSDO/kT+Nfo9ljWzDdYVg==
+X-Gm-Gg: AR+sD10n6/6cbBy6AdE31KwuUDbUtd0i0iFYkwHc503t/pMAe0kZEZudkZ5mS4x5p3p
+ 3kYx7UjgLF7ZYyCjnhodlJfoapeff592n+4gR60qTffbojZmcz/lqggz2FxXMNwYGk/rImsVtuX
+ 6AM5ia9QaXgf2XVWo+BO+E6P6pt0ONSrpty+SJbH8W7uB6bCFY5uxtwSfuXDzA9WvtcLl/Sr1Zl
+ 8sfE/M0XTA2lMJ1IfbusBFHAcHU8NUvaucSCsRL74/vEYNHD0vCCV3dwPPsm4mXrVbAkBUzqKeR
+ WkgkbU5tubRWRqrXarc1I2+kv9SWsgn8nRNDT7EJ+bnEHQ==
+X-Received: by 2002:a05:690c:23c3:b0:81d:6eec:fe22 with SMTP id
+ 00721157ae682-81f69e3c454mr25026727b3.44.1785145233740; Mon, 27 Jul 2026
+ 02:40:33 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v1 3/5] hw/arm/stm32f103: instantiate and map GPIO
- ports
-Content-Language: en-US
-To: Jack Wang <163wangjack@gmail.com>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- qemu-arm@nongnu.org, qemu-rust@nongnu.org, caojunze424@gmail.com
-References: <20260726145119.19881-1-163wangjack@gmail.com>
- <20260726145119.19881-4-163wangjack@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260726145119.19881-4-163wangjack@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzI3MDA3NiBTYWx0ZWRfX9iBDndTRPOS5
- bqKRBF18qyjdfof7kKt2n2V7L2CyGiUwheUaGnTV51BxFO/gSa4D8mUNE4QVvMVnz3ML9h7yzVW
- WrakqhsIF58rEVGt0fWu1J7OaJk0uOroPfNVjsHi8GWFcVQsxbf4KFMm8pePk6LRYtFCGOX57du
- d1vvglvSdI56IhmITVLm6f9t5mNxYmzTUHEaCdS1OIZh6nRHH8UoJcdM557b8HemoO3rRSElKhF
- FnZT105RwSHhoC/Asu22ZVQ5wSqoc14JwANY0pCEfpJdq9rrIVVWPiCJNV79nF26I9wCT/ww7eB
- sbnZTFS4YFymSb+iMl8WJ3Pa/qe97ptM+Euycv4CHeNwSJ/m3w+7wHVLzkulEtABruht9g99hKy
- XcM77YPak3pOq8zAYMTva70k8+PFi3fVd2CMO82tjdhwwWxhCgdybBdQbeeOp6oYu3Ddm87YmLt
- yxsJjUINPHGFwxbpkYA==
-X-Proofpoint-GUID: 0tCTUSQfQSKhMp5Mixyyp6m5W16KLOxG
-X-Authority-Analysis: v=2.4 cv=DNG/JSNb c=1 sm=1 tr=0 ts=6a670d67 cx=c_pps
- a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
- a=pGLkceISAAAA:8 a=qXP6Gehid05EP52y37IA:9 a=QEXdDO2ut3YA:10
- a=dawVfQjAaf238kedN5IG:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzI3MDA3NiBTYWx0ZWRfX7oCQ+tZwKx5R
- LSZWilRPyzk0u78tjqBtrW4CzP1sqaQ4Ocy77U8qKA7zu8F6D+I94uhijlPA7+PNhpofNk4u/1C
- Wq9Y2sgJkqB8Az0Qm8epPA7GJGTI4zI=
-X-Proofpoint-ORIG-GUID: 0tCTUSQfQSKhMp5Mixyyp6m5W16KLOxG
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-27_02,2026-07-24_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 clxscore=1015 malwarescore=0 bulkscore=0 adultscore=0
- suspectscore=0 impostorscore=0 lowpriorityscore=0 phishscore=0 spamscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607270076
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <20260627063208.33642-1-bin.meng@processmission.com>
+ <CAEUhbmV_BfLT9_F9OPH8VvwCZ_8Th+swHu833E0sjYCkj-k_=w@mail.gmail.com>
+ <CAFEAcA_or9830t85sHAq-PJegJ4OQ1ef=1wGpfcmiHFmVO0Jkw@mail.gmail.com>
+In-Reply-To: <CAFEAcA_or9830t85sHAq-PJegJ4OQ1ef=1wGpfcmiHFmVO0Jkw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 27 Jul 2026 10:40:21 +0100
+X-Gm-Features: AUfX_mzuI-g41sAHPNQBRaHlejpBAA267EXL6C-ySZodXaLZvwLAC9wcaeE1o7g
+Message-ID: <CAFEAcA-JDuWrmNcEhwT+MwKqVmhW+BWW8+CMAz4muBA9W61jSQ@mail.gmail.com>
+Subject: Re: [PATCH] docs/system/arm: Update Nuvoton OpenBMC image guidance
+To: Bin Meng <bmeng.cn@gmail.com>
+Cc: Bin Meng <bin.meng@processmission.com>, qemu-devel@nongnu.org, 
+ Hao Wu <wuhaotsh@google.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -159,111 +123,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 26/7/26 16:51, Jack Wang wrote:
-> Create the seven GPIO ports GPIOA..GPIOG by name via qdev_new() and map
-> them at their APB2 base addresses, removing the corresponding
-> unimplemented-device stubs so the real devices back that range.
-> 
-> The Rust GPIO type is only present in a Rust-enabled build, so the ports
-> are created behind an object_class_by_name() check; with --disable-rust
-> the type is absent and the range is simply left unbacked.
-> 
-> Signed-off-by: Jack Wang <163wangjack@gmail.com>
-> ---
->   hw/arm/Kconfig                 |  1 +
->   hw/arm/stm32f103_board.c       |  2 +-
->   hw/arm/stm32f103_soc.c         | 54 +++++++++++++++++++++++++++++-----
->   include/hw/arm/stm32f103_soc.h |  9 ++++++
->   4 files changed, 58 insertions(+), 8 deletions(-)
+On Mon, 13 Jul 2026 at 10:20, Peter Maydell <peter.maydell@linaro.org> wrot=
+e:
+>
+> On Wed, 8 Jul 2026 at 16:50, Bin Meng <bmeng.cn@gmail.com> wrote:
+> >
+> > On Sat, Jun 27, 2026 at 8:12=E2=80=AFPM Bin Meng <bin.meng@processmissi=
+on.com> wrote:
+> > >
+> > > Describe the current OpenBMC target naming and release status for
+> > > Nuvoton machines. The latest 2.18.0 release no longer includes GSJ,
+> > > so point users at older 2.14.0 sources and explain how to find
+> > > Jenkins MTD artifacts.
+> > >
+> > > Signed-off-by: Bin Meng <bin.meng@processmission.com>
+> > >
+> > > ---
+> > >
+> > >  docs/system/arm/nuvoton.rst | 54 +++++++++++++++++++++++++++++++++--=
+--
+> > >  1 file changed, 49 insertions(+), 5 deletions(-)
+> > >
+> >
+> > Ping?
+>
+> The docs change looks OK to me as far as formatting goes, but
+> could a Nuvoton maintainer review it, please?
 
+In the absence of any response from the Nuvoton maintainers,
+I'm going to take this into target-arm.next.
 
-> +/* GPIO addresses: GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, GPIOF, GPIOG */
-> +static const uint32_t gpio_addr[] = {
+> PS: if quanta-gsj is no longer supported by OpenBMC should we
+> consider deprecating (and eventually dropping) it in QEMU ?
 
-   static const uint32_t gpio_addr[STM32F103_NUM_GPIOS] = {
+I think this is still an interesting question to think about
+for 11.2.
 
-> +    0x40010800, 0x40010C00, 0x40011000, 0x40011400, 0x40011800, 0x40011C00,
-> +    0x40012000
-> +};
-> +
->   static const int usart_irq[] = { 37, 38, 39, 52, 53 };
->   static const int spi_irq[]   = { 35, 36, 51 };
->   #define ADC_IRQ 18
-> @@ -199,6 +209,37 @@ static void stm32f103_soc_realize(DeviceState *dev_soc, Error **errp)
->                              qdev_get_gpio_in(DEVICE(&s->adc_irqs), i));
->       }
->   
-> +    /*
-> +     * GPIO ports GPIOA..GPIOG.
-> +     *
-> +     * These are implemented by the Rust device "stm32f1xx-gpio-rust", created
-> +     * by name with qdev_new() and mapped at its APB2 base address.  On STM32F1
-> +     * a GPIO port has no dedicated NVIC line of its own: pin-change interrupts
-> +     * are delivered through the EXTI controller (not yet modelled), so no
-> +     * sysbus_connect_irq() to the NVIC is done here.
-> +     *
-> +     * The GPIO port is only provided by the Rust build; when QEMU is built
-> +     * with --disable-rust the type is not registered, so skip creating the
-> +     * ports and leave the address range unbacked.
-> +     */
-> +    if (object_class_by_name(TYPE_STM32F1XX_GPIO_RUST)) {
-> +        for (i = 0; i < STM32F103_NUM_GPIOS; i++) {
-> +            g_autofree char *name = g_strdup_printf("gpio%c", 'a' + i);
-> +            s->gpio[i] = qdev_new(TYPE_STM32F1XX_GPIO_RUST);
-> +            /*
-> +             * Give each port a stable QOM name ("/machine/soc/gpioa"..) so
-> +             * tests and the monitor can reach it and its gpio-out lines by
-> +             * path.
-> +             */
-> +            object_property_add_child(OBJECT(s), name, OBJECT(s->gpio[i]));
-> +            busdev = SYS_BUS_DEVICE(s->gpio[i]);
-> +            if (!sysbus_realize_and_unref(busdev, errp)) {
-> +                return;
-> +            }
-> +            sysbus_mmio_map(busdev, 0, gpio_addr[i]);
-> +        }
-> +    }
-
-Please keep the UNIMP regions:
-
-       else {
-          create_unimplemented_device("GPIOA",       0x40010800, 0x400);
-          ...
-          create_unimplemented_device("GPIOG",       0x40012000, 0x400);
-       }
-
-> +
->       /*
->        * Unimplemented peripherals -- STM32F103 devices that do not yet
->        * have QEMU models.
-> @@ -231,13 +272,12 @@ static void stm32f103_soc_realize(DeviceState *dev_soc, Error **errp)
->       /* APB2 peripherals */
->       create_unimplemented_device("AFIO",        0x40010000, 0x400);
->       create_unimplemented_device("EXTI",        0x40010400, 0x400);
-> -    create_unimplemented_device("GPIOA",       0x40010800, 0x400);
-> -    create_unimplemented_device("GPIOB",       0x40010C00, 0x400);
-> -    create_unimplemented_device("GPIOC",       0x40011000, 0x400);
-> -    create_unimplemented_device("GPIOD",       0x40011400, 0x400);
-> -    create_unimplemented_device("GPIOE",       0x40011800, 0x400);
-> -    create_unimplemented_device("GPIOF",       0x40011C00, 0x400);
-> -    create_unimplemented_device("GPIOG",       0x40012000, 0x400);
-> +    /*
-> +     * GPIOA..GPIOG (0x40010800..0x40012000) are real devices mapped in the
-> +     * GPIO loop above when the Rust build is used, so they must NOT be
-> +     * registered as unimplemented devices here: overlapping MemoryRegions at
-> +     * the same address abort at runtime.
-> +     */
->       create_unimplemented_device("timer[1]",    0x40012C00, 0x400);
->       create_unimplemented_device("timer[8]",    0x40013400, 0x400);
->       create_unimplemented_device("timer[9]",    0x40014C00, 0x400);
-> diff --git a/include/hw/arm/stm32f103_soc.h b/include/hw/arm/stm32f103_soc.h
-> index 260f3695c0..8d78360ce0 100644
-> --- a/include/hw/arm/stm32f103_soc.h
-> +++ b/include/hw/arm/stm32f103_soc.h
-> @@ -40,6 +40,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(STM32F103State, STM32F103_SOC)
->   #define STM32F103_NUM_USARTS 5
->   #define STM32F103_NUM_SPIS 3
->   #define STM32F103_NUM_ADCS 3
-> +#define STM32F103_NUM_GPIOS 7
-
+thanks
+-- PMM
 

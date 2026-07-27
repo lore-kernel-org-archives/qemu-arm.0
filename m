@@ -4,100 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44A46C531FC
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Jul 2026 14:04:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19AEDC531D0
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Jul 2026 15:13:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1woLvs-0007Bf-KD; Mon, 27 Jul 2026 10:03:52 -0400
+	id 1woN1R-0000eK-5F; Mon, 27 Jul 2026 11:13:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1woLvr-0007A9-4l
- for qemu-arm@nongnu.org; Mon, 27 Jul 2026 10:03:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1woLvp-0007AG-SD
- for qemu-arm@nongnu.org; Mon, 27 Jul 2026 10:03:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1785161028;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/uedi/+XUPUkKbp4YXNJFI9jLAVF08Vs22jhPQ6R5tQ=;
- b=djMjgkJR87kvnTwcUblsZKlhzjrijUMD/wL+Y2nZFDBBMbULGeZcr3s9ZRSW0fRuNfCAHw
- rWMG/mihbSwblajLOm3XrW1V7+wvf4OyLAjbK5sJW499FufDcr7JJ035zvJSKcHVH/bJ1V
- AZZyl/MzrWMmlQ0go05u6agzpbQulVA=
-Received: from mail-vs1-f72.google.com (mail-vs1-f72.google.com
- [209.85.217.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-335-M9gEefS7MrOLjiV09GVqWA-1; Mon, 27 Jul 2026 10:03:46 -0400
-X-MC-Unique: M9gEefS7MrOLjiV09GVqWA-1
-X-Mimecast-MFC-AGG-ID: M9gEefS7MrOLjiV09GVqWA_1785161026
-Received: by mail-vs1-f72.google.com with SMTP id
- ada2fe7eead31-744e806f474so826438137.3
- for <qemu-arm@nongnu.org>; Mon, 27 Jul 2026 07:03:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1woN1L-0000Zz-Ka
+ for qemu-arm@nongnu.org; Mon, 27 Jul 2026 11:13:37 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1woN1I-0008UR-FF
+ for qemu-arm@nongnu.org; Mon, 27 Jul 2026 11:13:34 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-49548aebcd8so21368635e9.3
+ for <qemu-arm@nongnu.org>; Mon, 27 Jul 2026 08:13:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1785165210; x=1785770010; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=nh/HgkqH3oSn+5/+1F0xv/JFKbtFg6HbcUBGw27b8+k=;
+ b=KYCP0mFWtVCzdiqatZuVSIYlA3Mccx0Avf35TA+LHNdGjCpNjWOQT7Wyg+JqWlvajU
+ cojqaAjiK5w8fZpqKWE+Ws4yvb2rFfuSraODasq4y15QMxBgHPibXw6Hhztb0Ir8f/oh
+ 0HvDKUFpyafVa9Pa8G2QqtIXWB5TAokGKjkRlTnIcP64gSB8JmScGxJJniV+niQWA4b5
+ qTiyIiNQ5+GCGgXQvys4nSM0Gu6aaPDKvVvaSr3ACytuuRrDeS6nOAvlzGXyxXwwLEuw
+ YzXxSf2ChDb1wk565c+Rr5snpz58sYg2Uy0XhhhQKxtMKsIJVwwHqD5j9T/vBVpxCOa6
+ OK9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785161026; x=1785765826;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=/uedi/+XUPUkKbp4YXNJFI9jLAVF08Vs22jhPQ6R5tQ=;
- b=l46kHAIfB7IeLOoMGiUehazRbOu9qXOy/h6BBwQrFp+zTnVi8dttsXorDkV2AQwNgT
- GFCGweIH98zRBd9t5gAlwC6vbV8XxBN0gwFYpIoIkDxwe7epJe6OXbwdd+8RcBPbeZlV
- fh5qGG1K/bCtIPWG8zEEYjw82wLqQ0uDStf4ZhWlUTsv2AtGx3zPdxWzHOGF4ZKVxmwk
- vdcNRdM9+YRHkCdwGqSFwrWD0bErjBFdsbL4/0H6yc1erPmH+Amf/J23TA6iIq/PuqAB
- pHAA197OMSlHHCcO4s6jucyH/lj4VfotJb8GFoqnMlyC37wpU4fkVzk7usED9xRaqf4Y
- zgUA==
-X-Gm-Message-State: AOJu0YycO0CdpkMgJ4kypIgnce2DCTSaRs2GDlxhoulPrrxmH7wJW7Rt
- F3X+KqFmMcUQ8/HmDAyJaOW6dihbBoqeBuegctRxL10GJKifCAXFxo7udWwUJTUCN40yzQr4Ldt
- P2YmkcAPME+zN/D7RZgkGXew31s6rOG+9IpZYAYcu+bqxR734Dv9nXA==
-X-Gm-Gg: AR+sD11qACqXEF+9XAyQC6UYyar3X1yywhHjAwIQ6Gxa3MMl1LR8IyxssHrppwQzEy+
- eCFH87AwdPf/ng6kkwc+YJxZ+8v2oVOpfA7lvSdt6mQD+kz7S1e6f1C9rIjelExWjEoJ7wMoy13
- 9kvCdg8zfhsiR3PfSyqBnASNmYZ6NAHKkhflJ7342zgFCzwf3WgQmUII5FopnEF/ITcpEKoKvVL
- 68r3jwrLC+h9EcXT+kI0NRTNZlVhR2nCXc7PJ04UFmKfBylV8uuK5S4MdbdkmPo3eyoJ6oFeJ2+
- f0HYIi5xHxqjtStkHCOOesJ+UgwTglVclUTrzj2t8WWOy4q63TppXOzNuovJG4KEIUJEBrHx
-X-Received: by 2002:a05:6102:5248:b0:635:1bc8:3563 with SMTP id
- ada2fe7eead31-750408b97b7mr3823328137.20.1785161026197; 
- Mon, 27 Jul 2026 07:03:46 -0700 (PDT)
-X-Received: by 2002:a05:6102:5248:b0:635:1bc8:3563 with SMTP id
- ada2fe7eead31-750408b97b7mr3823259137.20.1785161025552; 
- Mon, 27 Jul 2026 07:03:45 -0700 (PDT)
-Received: from x1.local ([2605:8d80:6c21:6818:c87e:c65f:8297:5636])
+ d=1e100.net; s=20251104; t=1785165210; x=1785770010;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=nh/HgkqH3oSn+5/+1F0xv/JFKbtFg6HbcUBGw27b8+k=;
+ b=njIEgxtGetFUUzgzbyX+SP28YRCFtqHcHd0mNP6xe6kqW2b+JxeKf2rPpbc+Ke+XdZ
+ 6gY8nbauSdYtNQHPQJusTqq2YiUSxw8VKoM7ty4cRh3CkAxXpMrhcOuH5RlDwsMYGbmB
+ v4bxl7eyJA2QvXNbYU/NW4MmLaJQpSgTvWMtOwy0B0WGyVI+c5XlfIRvBqNd/Tc6oOYe
+ nDv/ll2K6nEDPZtq7NH9WLh/6eozeAn7ssZriyZVhyjGTgmNQCl7jKF5PPVZ2QIu4wSR
+ GRm4n8p9o+r0jJ88hP64tEwCnidPSoQ06tVmMhywyRszytPqTzJ+AbXYOSbRptvHCGHG
+ /mmw==
+X-Gm-Message-State: AOJu0Yz4zIfLVOa0K+A9vnidF5YJxnV8e/uuPjzpvZi8Oca5hjU39+wd
+ Crk3yfZwO4RdgI29uEJeD/tkd/0si8TED0e22zt5wocoC3iQfuiTdEmy4QsLOFgVszYKI51r6Kc
+ JL6d8
+X-Gm-Gg: AR+sD12gU9h2qKV1VtGYYwsBGynzZcIbifD45syoso6cPgmjZc1/TLc4ooxpYx/TvTU
+ 3nEMw+SOualIMTK2ndJkbThwYtZQsm1zGjvc7tkfDtGzZek3Q3niiLEgZGfy6OJdWE/m8Z9IYJe
+ r4OM95lteZ4JwVul8LZPK/0K8Ll+NMPbWlrOcVVyuaNBwYtyK+bXJ+Dkry4hgQ4/Umy6Z6R+QVr
+ TREKis2hKCICnWo3z8ZM1xBAkm/3rHx1zRQuw8uIgsdjOd3dTurozmNJFIeeHXUqr8CPBiCfMt/
+ m3ziuwRChnHRrSYPo6U8+0Qqrpc8u5+3IkuuAWjTQBkynafoLWuhSqicjSMvXTSuDZ7f+E8dF8B
+ H/ajNwBqGSwLALF2e33OdCHFt90mmHdXKZLHBtjAeulP9Pg0ws3AEqiyw0kQEmhPGkDpii82tLI
+ YtEr98vceqZk9R6eQn8aKw+vJGsE36IaOLAOgGkyPM6Gz7PIkIZj//p0//i70W2rQuWxdyAga55
+ LEQCLzw/VShwTd3lt2hfg==
+X-Received: by 2002:a05:600c:64c7:b0:495:5172:6620 with SMTP id
+ 5b1f17b1804b1-496b5723f69mr109561065e9.31.1785165209516; 
+ Mon, 27 Jul 2026 08:13:29 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ada2fe7eead31-750362ea1c5sm5486039137.7.2026.07.27.07.03.42
+ 5b1f17b1804b1-496b49a8547sm223713095e9.14.2026.07.27.08.13.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Jul 2026 07:03:44 -0700 (PDT)
-Date: Mon, 27 Jul 2026 10:03:41 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
- philmd@oss.qualcomm.com, peter.maydell@linaro.org,
- richard.henderson@linaro.org, alex@shazbot.org, berrange@redhat.com,
- philmd@mailo.com, david@kernel.org, clg@redhat.com,
- pbonzini@redhat.com, phrdina@redhat.com, jugraham@redhat.com,
- liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, shan.gavin@gmail.com
-Subject: Re: [PATCH v4 1/3] system/memory: Use memmove() for directly
- accessible regions
-Message-ID: <amdlPQtJNoJV3e_o@x1.local>
-References: <20260727032649.145381-1-gshan@redhat.com>
- <20260727032649.145381-2-gshan@redhat.com>
+ Mon, 27 Jul 2026 08:13:27 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH] target/arm: Don't NOP the SEV insn on v6K CPUs
+Date: Mon, 27 Jul 2026 16:13:25 +0100
+Message-ID: <20260727151325.1428686-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <20260727032649.145381-2-gshan@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: oGJK1WPpQ5Ke-ufPGaPKamPJl2QWX4__Nuf_KIJ6fMA_1785161026
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -36
-X-Spam_score: -3.7
-X-Spam_bar: ---
-X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,21 +99,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Jul 27, 2026 at 01:26:47PM +1000, Gavin Shan wrote:
-> Similar to what's done in commit 4a73aee88140 ("softmmu: Use memmove in
-> flatview_write_continue"), there are more sites where the overlapping
-> source and destination buffer are allowed for the directly accessible
-> regions. Use memmove() in those sites, listed as below.
-> 
->   hw/remote/vfio-user-obj.c::vfu_object_mr_rw
->   include/system/memory.h::address_space_read
->   system/physmem.c::flatview_read_continue_step
-> 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
+When we implememented SEV to do something on A-profile rather than
+being a nop, we got the condition slightly wrong, and made it only
+effective from v7.  In fact the instruction's Arm encoding has
+non-NOP behaviour from ARMv6K.
 
-Reviewed-by: Peter Xu <peterx@redhat.com>
+The effect is that a kernel boot may hang on a v6K CPU like the
+ARM11MPCore.
 
+(This wouldn't have been so noticeable if we feature checked the WFE
+instruction, and had made the same mistake for the condition on both
+instructions.  But we never have done the feature checks that we
+ought on WFE, so the mistake on SEV meant that we showed the 11mpcore
+guest a WFE that did something and a SEV that was a NOP.)
+
+The v7A Arm ARM is not entirely clear about whether v6K has the Thumb
+SEV encoding or not: it says "ARMv7 (executes as NOP in ARMv6T2)",
+leaving v6K not stated.  The 11MPCore TRM says it has at least WFI in
+both Arm and Thumb, and the v7A Arm ARM uses the same condition text
+for WFI, so I make the assumption that WFI, WFE, and SEV all get
+their functionality for both Thumb and Arm in v6K.  It's possible
+that this differed between v6K CPUs -- the 1176 TRM says it has the
+v6K STREXD/STREXH/STREXB etc, but the WFI is the old-style cp15 one.
+
+Keeping the condition check the same for both Thumb and Arm encodings
+is the conservative choice: if guests try to execute the Thumb SEV
+insn it will be because they want SEV, not because they want a NOP.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4044
+Fixes: 60e7ee5bb7cd ("target/arm: implements SEV/SEVL for all modes")
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Picking this one up because I think we should fix it for 11.1
+and Alex is on holiday. The "WFI and WFE should have a feature
+check" part we can leave for 11.2.
+---
+ target/arm/tcg/translate.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index a1fc0506188..6e52ad082e5 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -3246,12 +3246,19 @@ static bool trans_YIELD(DisasContext *s, arg_YIELD *a)
+ static bool trans_SEV(DisasContext *s, arg_SEV *a)
+ {
+     /*
+-     * SEV is a NOP for user-mode emulation. For v6T2 and earlier
+-     * non-M-profile cores this encoding is a NOP hint.
++     * SEV is a NOP for user-mode emulation. The instruction is
++     * also a NOP hint on cores that pre-date the architectural
++     * feature that adds it:
++     * - M-profile always has SEV
++     * - for A/R profile, it exists from v6K onward
++     * The v7A Arm ARM is not entirely clear about whether v6K has the
++     * Thumb SEV or not; we make the condition the same, to be
++     * conservative. (If guests try to execute the Thumb SEV insn it
++     * will be because they want SEV, not because they want a NOP.)
+      */
+ #ifndef CONFIG_USER_ONLY
+     if (arm_dc_feature(s, ARM_FEATURE_M) ||
+-        arm_dc_feature(s, ARM_FEATURE_V7)) {
++        arm_dc_feature(s, ARM_FEATURE_V6K)) {
+         gen_helper_sev(tcg_env);
+     }
+ #endif
 -- 
-Peter Xu
+2.43.0
 
 

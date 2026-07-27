@@ -4,94 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 055CFC531D0
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Jul 2026 13:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B1BEC531D0
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Jul 2026 14:03:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1woLm7-0001pL-6H; Mon, 27 Jul 2026 09:53:47 -0400
+	id 1woLvA-00071N-F6; Mon, 27 Jul 2026 10:03:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1woLm0-0001f4-Vm
- for qemu-arm@nongnu.org; Mon, 27 Jul 2026 09:53:43 -0400
-Received: from mail-ua1-x92f.google.com ([2607:f8b0:4864:20::92f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1woLlu-0005pB-U5
- for qemu-arm@nongnu.org; Mon, 27 Jul 2026 09:53:38 -0400
-Received: by mail-ua1-x92f.google.com with SMTP id
- a1e0cc1a2514c-977258a75d9so1410170241.3
- for <qemu-arm@nongnu.org>; Mon, 27 Jul 2026 06:53:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1785160412; x=1785765212; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=nUDoFYam/Cs4djr+4VD+W1090TdsQ0zW6Cv5SU9lt7c=;
- b=PT9IDqqI9HA04Ng73/fZINk8rPMab1Pa7PKGFtbWkHHON1aSagI3tNI9Tdw7NBkyOn
- 9GS3vFmU3zSIDNWprw4DAU1eCG2FwsU43/nySu/Slur4CxbDQ0It7MEfbCgwcAYfHvHx
- ng9DQjPWmj2oa4cbH63yJOd9htAfgzOjqPYvP9AwDPI0CXDA1IyiO+HzgA8+4NtHeFJh
- GB3dBGLDZsGzsuaSeMoFD4pPYuc8wnHOJn3U6/Ql/aNJiHkMhS0taMFL+IS6az8Ff/DO
- fdvBBq6cRCpyaStSUVCPcPfttUy8938FBj10uPWhOrYD4i7PRDUYsKHDopHoC/v1QWZf
- EQFg==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1woLv8-00070M-7Y
+ for qemu-arm@nongnu.org; Mon, 27 Jul 2026 10:03:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1woLv6-00074K-Rj
+ for qemu-arm@nongnu.org; Mon, 27 Jul 2026 10:03:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1785160983;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=KGyk8CRhVzlr+ku+3OiAImhDiNhAIav+Px3QBkWJoKc=;
+ b=Rw0rXjrV1eTYYeObFkaQZHraekbQvUgoTA9vfFlgiHUyqI5GgFQCgEroUuCr5LQu11M6e2
+ q6K3l+q1yVgRQXtzZ4IfWRrxLZzZnA4KkMCM4FmzN1gBxqh3d/HMgoiK+Rq6rxV+zv3EDr
+ H4CKv3G+14ZrTI3jXMtIA48+LX+dqr4=
+Received: from mail-vk1-f197.google.com (mail-vk1-f197.google.com
+ [209.85.221.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-219-7dwdCm2ONkCpwSUi5qWV6A-1; Mon, 27 Jul 2026 10:03:01 -0400
+X-MC-Unique: 7dwdCm2ONkCpwSUi5qWV6A-1
+X-Mimecast-MFC-AGG-ID: 7dwdCm2ONkCpwSUi5qWV6A_1785160981
+Received: by mail-vk1-f197.google.com with SMTP id
+ 71dfb90a1353d-5c0f8eedc0cso280180e0c.1
+ for <qemu-arm@nongnu.org>; Mon, 27 Jul 2026 07:03:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785160412; x=1785765212;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ d=1e100.net; s=20251104; t=1785160981; x=1785765781;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=nUDoFYam/Cs4djr+4VD+W1090TdsQ0zW6Cv5SU9lt7c=;
- b=Ia7N585wdVpOHXUOYZO2BkQP9iCiAtbyclEGTRYh3UeGGQEiyVgbRiF+9ySG0JJeXD
- Wc5FghQFq+Go2QhOT5CKVlBFKzGUrpD9qL7GTzQwn/zGrrSLkeNpIH0/VulqHRYKXtiY
- UrG8JiR+8/KcHscGTCGsi5/gDK2YSWupvl48uwj0GJTrUeQ+pdr6fXrW0GCV9bTN7qkL
- I2/dba0m2pzH4v+YGCwzlVFxJGZRLtiAInrF8BouMmmpyv1tIrnQDDLegIB4aaDOCA7C
- V1vIQyA6D8NWCp9arDSD7HxRr+TdyxnHerCCWGIoZTFRQmFqE4nfft66GEFCXLmcLHM1
- 7rZA==
+ bh=KGyk8CRhVzlr+ku+3OiAImhDiNhAIav+Px3QBkWJoKc=;
+ b=i8JPGiGmpzqpMkrt24YL7+E8ENo6cjwOC1u3Bx3ohVHjkqr4fhL7olcsYysfHZAjb5
+ Xc68KnNl73RQoQUZEPDOPxOLcShF38vXKr6UE1kaNusgR4WwTCYf12iL+EXZRsGU4bCC
+ A3+ord14dM+LvV0/8edfmkQLAejfvAeVKnWm/Nvd0WwXgepi/rlRZQwnsC92D/g+2POv
+ I1VgibY0PdsywEy8uCAVum1tDxaegKlzaBg0z3kdaVISJElJVB/ZSLjP81yIDUYQoUUu
+ 9RcFtnZj8Wua/T4fGTzmMOvQEDF0i0qdMAWjQYE0Jfw3Mfp33ghec6b85CxuSzMRj38R
+ QyWw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoUSjJnGJ21EnbmJtwF/GtI7clL3dvp2gHi869VxCgp0Wzf0Zckkxh3QpuxhOtXOPVzmIXkErYceQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzUBXS7yfDhCMOWQ49tvcII2dopsxcsyxyWKkVG48r9Pmud965U
- mX78SQG3MEzo9VJYMBUlqZ0nU/gXNEdsz+Pn1K/VkYUPUmh91/skHdz0
-X-Gm-Gg: AR+sD13BeDwEpHPvT5Lr1ffoQYSGFhRoKZjRpR2inG9ICzdvV3NPvhbU/dHF7mJvPt+
- 6BpNdSrTd91D6tg6QqKI28KwTm1EM54fuFg2CKPRXggbvLiGeB8DPutL+BPbKqBv5wnj20eqqSv
- DEPkAXRseKzKwsG7ZqXYD7zZdpASLzREaF8bBRDOEcEnZ4WFjObzUkKX4xwjucjzyrch2aCSZFT
- mlOyg4YVoT3r5O92+iqtJUrHnhCFFldvYcT+wtSaQ951TyrO5b+ngAU478gNkWSYMomVLcfDAgN
- vp0adD19gz+01z2ySINSd/q96Xclttf/c4/raqXU6gdn/aVyU86laQT6MtFEoCLyO4+UR7K5uqO
- RSsxYv3Pk72cFrXbqC/OPrZ9TudUxWNHiA3yEKtc+5nB2MHGkeJYtqtGEz9Uo6FmpZdZvvr2VwW
- jMbbEo6EhmqnVy6pQ66ruwdGrHJoX3CED/
-X-Received: by 2002:a05:6102:508c:b0:738:1ef6:51b9 with SMTP id
- ada2fe7eead31-7503dd5664emr4844947137.5.1785160411860; 
- Mon, 27 Jul 2026 06:53:31 -0700 (PDT)
-Received: from localhost.localdomain ([146.71.8.128])
+ AHgh+RokuK16G+UverDbn+J6Y1hm2f0G55hl9Qx2364tpK9q5PrWjqfC4t6psJqa/wFLc/QMgFvUKwRP1A==@nongnu.org
+X-Gm-Message-State: AOJu0YwNzSVsILgn1d+zX1gkXOvvezDCBo6H3PCmCkES8oBtvduERrRi
+ qzbx2hOONqZPPzxasiunzp68GCBmXmsvbcNe/t1cEF6WvbDFO3J03kyCwSc8Geycz6DpDcl6Sje
+ RdhK23oAa3gxCX4BmTWZBy14l79DZS9OGXe/OjopKCmxMs/9jOK8gsA==
+X-Gm-Gg: AR+sD12wUBfmC+GRpzjsAT1fXueMU0gzKc9c425nQCL9W7MxGElqZUExUcZiw0tRMS0
+ M3P2Z56PDzsskSsgMSZHDPoqZ8ingFltAPlUMmhnFEh6MfRmJp2VM7wHPvhyX8HTerdex4CTYq3
+ PX6y+/UFc+8zzOE7jH5G4m4+4hJ5eXPtb2eKxvWEPuLwqEMPhq6oGTVceuHFYqB/PhbmX1VF1Th
+ MOZMcxMMWSxuWHBAWHwxJTZTR+nR+aQlxEgbXI8TpVziuCSXJIq/iHiMBzknbnp1sXGK2ro+1dQ
+ iSFzaiQT3jUNNkh/87iYZFYSnNSuJITdTSMtj0sZO/qVvjs/+6dtn8e5CI5PKhfgWVBr8Otk
+X-Received: by 2002:a05:6122:3d11:b0:5c0:fb8d:9993 with SMTP id
+ 71dfb90a1353d-5c3349f9d8dmr364901e0c.0.1785160980633; 
+ Mon, 27 Jul 2026 07:03:00 -0700 (PDT)
+X-Received: by 2002:a05:6122:3d11:b0:5c0:fb8d:9993 with SMTP id
+ 71dfb90a1353d-5c3349f9d8dmr364827e0c.0.1785160979880; 
+ Mon, 27 Jul 2026 07:02:59 -0700 (PDT)
+Received: from x1.local ([2605:8d80:6c21:6818:c87e:c65f:8297:5636])
  by smtp.gmail.com with ESMTPSA id
- a1e0cc1a2514c-97774ce146csm5199734241.7.2026.07.27.06.53.31
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 27 Jul 2026 06:53:31 -0700 (PDT)
-From: Marcelo Manzo <marcelomanzo@gmail.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Marcelo Manzo <marcelomanzo@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>
-Subject: [PATCH v2 1/2] hw/arm/raspi4b: fix guest never seeing more than ~1
- GiB of RAM
-Date: Mon, 27 Jul 2026 09:53:28 -0400
-Message-ID: <20260727135329.97190-2-marcelomanzo@gmail.com>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20260727135329.97190-1-marcelomanzo@gmail.com>
-References: <20260727135329.97190-1-marcelomanzo@gmail.com>
+ 71dfb90a1353d-5c305745fcesm6313816e0c.17.2026.07.27.07.02.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Jul 2026 07:02:59 -0700 (PDT)
+Date: Mon, 27 Jul 2026 10:02:55 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, mst@redhat.com, philmd@oss.qualcomm.com,
+ richard.henderson@linaro.org, alex@shazbot.org, berrange@redhat.com,
+ philmd@mailo.com, david@kernel.org, clg@redhat.com,
+ pbonzini@redhat.com, phrdina@redhat.com, jugraham@redhat.com,
+ liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, shan.gavin@gmail.com
+Subject: Re: [PATCH v4 2/3] system/memory: Use qemu_ram_move() for directly
+ accessible regions
+Message-ID: <amdlD1kjhPPMLic3@x1.local>
+References: <20260727032649.145381-1-gshan@redhat.com>
+ <20260727032649.145381-3-gshan@redhat.com>
+ <CAFEAcA9_tDRAd97z4UtNhFPK+fMbq37LJhWTSmD5cueo61hvvg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::92f;
- envelope-from=marcelomanzo@gmail.com; helo=mail-ua1-x92f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <CAFEAcA9_tDRAd97z4UtNhFPK+fMbq37LJhWTSmD5cueo61hvvg@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Es962zNQvMX_gUUcC3dhB5O4WY8CvJHOHBweowp4X1M_1785160981
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -108,53 +116,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-raspi4_modify_dtb() decides whether to add a second memory node above
-the 1 GiB peripheral hole by checking info->ram_size -- but that field
-is the boot loader's RAM budget for loading the kernel/initrd/dtb
-image, itself always capped to at most UPPER_RAM_BASE - vcram_size by
-raspi_base_machine_init(). Since that capped value can never exceed
-UPPER_RAM_BASE by construction, the condition was never true for any
-raspi4b configuration, and the second node was never added: the guest
-never saw more than ~1 GiB of its nominal RAM, regardless of the
-machine's actual size.
+On Mon, Jul 27, 2026 at 01:51:45PM +0100, Peter Maydell wrote:
+> I think we could usefully expand this comment, because the reasons
+> we need it are not immediately obvious. How about:
+> 
+> ===begin===
+> Move @n bytes from @src to @dst; the memory areas may overlap.
+> This provides the same semantics as memmove(), plus an additional
+> stronger guarantee: if @n is 1, 2 or 4 or 8 bytes, and @src
+> and @dst are both naturally aligned for that access size, and
+> the memory areas do not overlap, then both the load and the store
+> will be done as a single atomic access (with the semantics of
+> qatomic_read() and qatomic_set()).
+> 
+> This is the underlying function that we use to implement accesses
+> by a guest vCPU or a device DMA operation to a ram block. The
+> atomic guarantee is needed for two major cases:
+>  - when the ram block is backed by a PCI BAR passed through
+>    from a host device (and so it might be hardware registers
+>    that must be accessed exactly once at the right width)
+>  - when an emulated device updates a data structure shared in
+>    guest memory with guest software (e.g. a network device's
+>    set of tx and rx descriptor blocks), if a write to memory
+>    is accidentally performed multiple times then it can break
+>    the guest code.
 
-board_ram_size(info->board_id), computed one line above in the same
-function, is the value that was actually needed -- the board's real
-total RAM, not the boot loader's own budget for where it's allowed to
-place the kernel image.
+Maybe also append it with "the guest code when it busy polls the guest
+memory"; I just found that the polling model isn't something obvious too
+when reading it first.
 
-Confirmed via direct measurement inside the guest ("free -h" /
-/proc/meminfo) on raspi4b's default 2 GiB configuration, before and
-after:
+> 
+> We don't attempt to perform the exact access when it would
+> be unaligned, because this can't necessarily be done on
+> all host architectures; although this is strictly speaking
+> not doing what would happen on real hardware, we don't think
+> there are going to be situations where that matters in practice.
 
-    before: MemTotal:  943524 kB (~921 MiB)
-    after:  MemTotal: 1905824 kB (~1861 MiB)
+Oh yes, mentioning the unaligned part of discussion would also be nice, I
+forgot it when replying.
 
-Also verified against two real, unmodified Raspberry Pi OS releases
-(Debian 11/Bullseye and Debian 13/Trixie): both now report ~1.8 GiB of
-usable RAM instead of ~900 MiB, with clean boots, working SSH, and no
-kernel errors on either.
+Thanks,
 
-Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
----
- hw/arm/raspi4b.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> ===endit===
 
-diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-index b92840e1b6..821ddb42ed 100644
---- a/hw/arm/raspi4b.c
-+++ b/hw/arm/raspi4b.c
-@@ -64,7 +64,7 @@ static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
- 
-     ram_size = board_ram_size(info->board_id);
- 
--    if (info->ram_size > UPPER_RAM_BASE) {
-+    if (ram_size > UPPER_RAM_BASE) {
-         raspi_add_memory_node(fdt, UPPER_RAM_BASE, ram_size - UPPER_RAM_BASE);
-     }
- }
 -- 
-2.47.1
+Peter Xu
 
 

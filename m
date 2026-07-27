@@ -4,106 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D158C531C9
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Jul 2026 16:11:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C22E9C53209
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Jul 2026 17:49:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1woNul-0006mm-O3; Mon, 27 Jul 2026 12:10:53 -0400
+	id 1woPRD-000426-Fw; Mon, 27 Jul 2026 13:48:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1woNuN-0006PN-Hb
- for qemu-arm@nongnu.org; Mon, 27 Jul 2026 12:10:28 -0400
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1woPQy-0003zG-HD
+ for qemu-arm@nongnu.org; Mon, 27 Jul 2026 13:48:16 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1woNuL-0008MG-Ft
- for qemu-arm@nongnu.org; Mon, 27 Jul 2026 12:10:26 -0400
-Received: by mail-yx1-xb12e.google.com with SMTP id
- 956f58d0204a3-66771ded50aso3637171d50.1
- for <qemu-arm@nongnu.org>; Mon, 27 Jul 2026 09:10:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785168624; cv=none;
- d=google.com; s=arc-20260327;
- b=rIHqPK5PUymnoo5GwVJSheDvtYvgqfJHNcnbHCefKJ7CV9Oec+GXzymEQFlMvyRtlO
- 7PulYaeASrkinjmJFAFRqb/nDkw21smTT9jGx0LQC+8TtRmqQwkhOVloQhL6z6zO+vjQ
- VrMhzDkMjcEVohwNaB3Iua2W5csoDGNvWEF1eqdCh6CZSZhYp9lKDluqbDNtO8hUrpcG
- XaZYQ5H9SzYhjwXW0fgbcF/qtUViNcf5JLmJs+BpZRaCSsefAbPakD+N7vigcvyUjdcy
- kL7QjQ3heuD615MgyqDP1hQ1NwcbfFuWCmWzWCjuFKLsjjWIvpOueUMELdt+RqEuF4UB
- BnVA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=OOsxF6EKGXLBykC9ScLiUIhGyadMeqkWsBstlwVytuc=;
- fh=xDAZstnxU+paHo6U5hnOYNOWJtJwqysS2sZfvLcVIMs=;
- b=riX7rEj7rexrq2kn7OLEOmmp2VmyFirRc6+N5EFdGMnr6why3ettcXTtLEKYLlEtfm
- ROPohU/MdWQaf3zd/WaWmiWpV73L/W4mxSM6lORZlsF6hKZQRWdgYAlwvatK9cBIsK7t
- yG2wB3SqPaFFoobdnZnEGv685hkmD/4YewPL4Cupdj6F2ETi4tvIj3tJx5V1HUU3S4D2
- DOhrYDa7GkTwLwYnYLoGaKlK61GNmbTmsGQ+I37FRYh/hhkzBQCFw4fUmGDNJaH8VzZ+
- 0CGf6n4e6znRL52ipjYEMu+EvkD0xW2QiFmvaqudTeimqEJGdS7hVmoFm9B+1O/L1Gwz
- RFNw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1woPQw-0005KH-UG
+ for qemu-arm@nongnu.org; Mon, 27 Jul 2026 13:48:12 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-2caed617615so30941675ad.3
+ for <qemu-arm@nongnu.org>; Mon, 27 Jul 2026 10:48:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785168624; x=1785773424; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=OOsxF6EKGXLBykC9ScLiUIhGyadMeqkWsBstlwVytuc=;
- b=ptlPXRXAiKvuvJeBUG0NiS4Ordkdc1fguUGcRPukmBO1QsLULciRNzlL/0V+hcHiJE
- 1NME+VOCOitKPU+Nw0lkyFk4EBYoXFsiPe8F0wJceH227HlLLRg2arKV8MiwaPny6Ymq
- s7CzmbZliUnl04PIdzYK7DqYNqAJJoFwOGY1Z5gdQ4L3eoyl9nVkxdjX8IZcG3qodb6w
- JZO8AFi6JG2Bv/KMiZRVTqv+2LiGRyPm0zL6kfgeITMLnD4ue5RrsNDo9XBld1RUi0cT
- 2gfLsNCYMEWkQK7JDPTvb2XjEsHGRuUCszlCiDePuy0rEp1kuyAAhQCKlMWQ67c2VrSV
- oz4w==
+ d=linaro.org; s=google; t=1785174488; x=1785779288; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=D6AaTX4Uqd9bA6yMQ+v73NbLFYn5C2iFqghzbvxGqqM=;
+ b=u0wzke3R3xU4xohkh0mq8D/4qpjV/EYHiYLYsQ6IrD3ROBMP1RaxKMKYuaIbNMptC8
+ 8kmZqE/By6fuONNIw05yXXAlL2xnvXuMvBsL4GKgDPh32vM6Pl+BCDbjZA5PJClNXcy/
+ u5fgRC5LU0BT0xNZ1+CjaNbIaXmkHLGMM1zGRleVFBmq6mjXTbiLZ0b6giK4oyO+mR4R
+ lGiY/bmKTmhCm0c6+X7KzCjUC4d96xFQsIdHs8IZ9yJDyMgcXZbFtarCUknuQASHRbSQ
+ RCHH3Lni7yP4uk+79B5mr71aPzPkPKuZIBjQe9GmIHwrohSo76uOOrZ2bsmOxoIJlAON
+ Xs3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785168624; x=1785773424;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=OOsxF6EKGXLBykC9ScLiUIhGyadMeqkWsBstlwVytuc=;
- b=DO1Ps06gJT407C1rMQFzQCl8wJCoPZeJ9PJGw5oWkv+vJgdLUJ/O/RupeuYTudgaEW
- FpmF2t0OwCHFrzRFIA/jDtw/KPLJ+yEpf6w5tAB+Saj974NXbbJEmaaUDJduHMhmM0JV
- 5p667m/2WuJkEXXBcqVXpsoUx9rAHgCjgVkQqUTrFr/b+F6/068lrAiP+farLMVbYead
- c6g4MNARTNPvPSyT2/xqv/2UFtjb5CZDVs0emyTajPvKs9P0BAD4nSkUTaIjDHZWrqQQ
- 0Z5WzttEi+Cx+2vV1DHNBAVrMBaBAxgtJmbyy0QExuqj5fMJ/nffPADipPA98NxK/1qC
- y0jw==
+ d=1e100.net; s=20251104; t=1785174488; x=1785779288;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=D6AaTX4Uqd9bA6yMQ+v73NbLFYn5C2iFqghzbvxGqqM=;
+ b=L39MKUHiFvNSEMMYYhasGmnPyF1tpbt7L7jz5pYr2UQTqgM46/HRjZlgaGbZQL+3hl
+ xKrUQqraBvf5k+9cvCcWDOTbUpBzGhriZmQ4LerecF7WEg9SLNHzZMM1OczqSMJqf1Nd
+ HXOHstNZbzP30TamcxgW2s5c88ip/gsjFJFRU9O1wu2oVj2SyiBt+fyTdlmfcvEkNERs
+ L/Ma3oq20uZ6s91U7oCGA7evjGSNCz+VmDi1KdqTeiAs0nty9xpWrMVMslMqRJn8/Gxs
+ vvcf3ZBWkPK2CiwICBFbhBlU4BJCO04vioHe7b+BaemNSw1RxE/eIB0zbdnRj36w/dGY
+ N70w==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rps2j8YR+X6JCFq8KbkAYHVCFAXR3NyUE65p8IBKE24b0banAwnhALJA/Iep+y1w9J6S5GDOyEoJA==@nongnu.org
-X-Gm-Message-State: AOJu0YzUQjLq9jcqRQOXeecJL2B60/v6zE8e+3oSHjFOnt8YTv+i2PC5
- bOR6PDbIWprUnwcZOSieha6PsRLdUmcMDifIaqdDBGIGV6bsOjGBMUA/ba9hHmvmy595Qt4gGn7
- ZQrFcYaFPD+Uc+9LPiRtXVw9W8mLquwGfNaR1HVTLqw==
-X-Gm-Gg: AR+sD10qdLdievvOMeXFlFIzUwNE1nKPBvSlXzgS8efON0VlSu6KoKLREsM9zYjjMLb
- psWE5h6SEp9L78Cd/bzODbiWUkOD9nriR5h1FfsA+Qfr6RRxJNibnAyccGgfRQSAdXoxQQDqm5v
- DGmZuZ+6uJou1vEO4pG3LA54FdT7CmWUvnPZysheH65wheoWlRISinW23/PTmIwBXYPXgcEp/bR
- ZL/6z8jdD76izsz+2W2VrxKnO0ZyM3JPWLnvcy0UQh08qMEUbzBSUtSMkcP8ovRsae8tB5HUkZe
- N+LqBXWsFVkBxW2SfGFCaKw9AnLSWXK6fU7ulYBmQayzekI+28SWRame72uOArDl0udv72ZJ35Z
- Kcuw5sgiAxn+2xSor2YeKKEyXefDf
-X-Received: by 2002:a05:690e:58e:b0:668:482b:af78 with SMTP id
- 956f58d0204a3-668c7a76831mr2025073d50.28.1785168623684; Mon, 27 Jul 2026
- 09:10:23 -0700 (PDT)
+ AHgh+RoHmqNPvhEPXNDNgQEGrkp5f9RWK0fpKGybIGpQn9+7sRnYIuSHuc3nOJbUNP1bnzp58mHLhwCChQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzppPWreY1hZuwvTfSNBepyRVM8S+F15cVnriCNwcz0qwpOYnoQ
+ 93z1zv6DFHp+d8uc4nwtfFCgPlL79nNGtdb7+1A024BWjKkq8X4i/iyZXlV/26hblwc=
+X-Gm-Gg: AR+sD13GZlUXrb5hjTDJw5H8YbjjZIQV2EVXGSrR9NAq9iIXzw7kNW2LhCmHHyUkFFL
+ 57avQQvlFzqBtrziAQPl3MT9zHIGWxnhsn3XuYayKHXNK7f28pL6vD6r/xOCNbjph8fTgXva/3b
+ AuaUBqMPX2gq+D5ctAJtKbqTyGLRtbVce/xGVKzF+ba0zp9+cbQXKkLXMnSLO5vT437INf+gxjH
+ CUDh0V85j0zwqOyNevhTn+Gl0E0WjXvnwQeLeCXe+ogCnfwnDgnttjNZCuMiW8eYEF7o03QCblC
+ Kh/TGywdyhg6zb58v98JMcVVzWx2YMtRScGGyXWhsDhzS56L29UcRSYKgVijDjdxXA23yTYJZSs
+ oWwIOnEJni8AqzicV5oiceyLMv7Ev1yUTZI7q/BKfzCsbcLkr12lV25VPAsgGIwoB72bw24Uh8g
+ Nb8OIgk8P0GMumMb/iRcMnSEQgnQ98fGaEyb5SfklbOk59ncUhz8k/
+X-Received: by 2002:a17:903:acb:b0:2ce:d34a:5959 with SMTP id
+ d9443c01a7336-2d00f48d041mr2220245ad.44.1785174488306; 
+ Mon, 27 Jul 2026 10:48:08 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-93-59.tukw.qwest.net. [174.21.93.59])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2cfde7d978esm38836485ad.59.2026.07.27.10.48.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Jul 2026 10:48:07 -0700 (PDT)
+Message-ID: <ad7b0a31-5bca-420c-9c75-6e90a930d15c@linaro.org>
+Date: Mon, 27 Jul 2026 10:48:06 -0700
 MIME-Version: 1.0
-References: <20260629-pmu-v7-1-939518c349be@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20260629-pmu-v7-1-939518c349be@rsg.ci.i.u-tokyo.ac.jp>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Jul 2026 17:10:11 +0100
-X-Gm-Features: AUfX_mymxx0UeI3zaYN-XNOKfFhNqx9ca_fv4qPFNtyAB8qHCBXWywBAQqhTdMs
-Message-ID: <CAFEAcA-=u3ZgiAXRNWM1VCMv7FYG2YP=oirf40yGo--p0BSfbg@mail.gmail.com>
-Subject: Re: [PATCH v7] target/arm: Always add pmu property for host and max
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org, kvm@vger.kernel.org, devel@daynix.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm: Don't NOP the SEV insn on v6K CPUs
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+References: <20260727151325.1428686-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260727151325.1428686-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,27 +105,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 29 Jun 2026 at 09:10, Akihiko Odaki
-<odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
->
-> kvm-steal-time and sve properties are added for KVM even if the
-> corresponding features are not available. Always add pmu property for
-> "host" and "max".
->
-> Note that we still don't add the property for other CPUs that lack PMU.
-> This is because we do not know what a PMU version should be enabled
-> when the user sets the property to true while it is defined as an error
-> for the "host" or "max" CPU when the hardware accelerator is enabled and
-> the host doesn't have a PMU.
->
-> This fixes qtest-aarch64/arm-cpu-features on the hosts that supports
-> KVM but doesn't support PMU emulation.
+On 7/27/26 08:13, Peter Maydell wrote:
+> When we implememented SEV to do something on A-profile rather than
+> being a nop, we got the condition slightly wrong, and made it only
+> effective from v7.  In fact the instruction's Arm encoding has
+> non-NOP behaviour from ARMv6K.
+> 
+> The effect is that a kernel boot may hang on a v6K CPU like the
+> ARM11MPCore.
+> 
+> (This wouldn't have been so noticeable if we feature checked the WFE
+> instruction, and had made the same mistake for the condition on both
+> instructions.  But we never have done the feature checks that we
+> ought on WFE, so the mistake on SEV meant that we showed the 11mpcore
+> guest a WFE that did something and a SEV that was a NOP.)
+> 
+> The v7A Arm ARM is not entirely clear about whether v6K has the Thumb
+> SEV encoding or not: it says "ARMv7 (executes as NOP in ARMv6T2)",
+> leaving v6K not stated.  The 11MPCore TRM says it has at least WFI in
+> both Arm and Thumb, and the v7A Arm ARM uses the same condition text
+> for WFI, so I make the assumption that WFI, WFE, and SEV all get
+> their functionality for both Thumb and Arm in v6K.  It's possible
+> that this differed between v6K CPUs -- the 1176 TRM says it has the
+> v6K STREXD/STREXH/STREXB etc, but the WFI is the old-style cp15 one.
+> 
+> Keeping the condition check the same for both Thumb and Arm encodings
+> is the conservative choice: if guests try to execute the Thumb SEV
+> insn it will be because they want SEV, not because they want a NOP.
+> 
+> Resolves:https://gitlab.com/qemu-project/qemu/-/work_items/4044
+> Fixes: 60e7ee5bb7cd ("target/arm: implements SEV/SEVL for all modes")
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 
-No, we should not special case "host" and "max" like this.
-The "pmu" property exists only if the CPU has a PMU and it can
-be turned off. If The arm-cpu-features test assumes that the
-host CPU always has a PMU and so always has the property, then
-that's a bug in the test, not in the code handling the property.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
--- PMM
+> Picking this one up because I think we should fix it for 11.1
+> and Alex is on holiday. The "WFI and WFE should have a feature
+> check" part we can leave for 11.2.
+
+Really?  I'm tempted to call the mismatch between wait and signal to be the "real" bug.
+
+
+r~
 

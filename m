@@ -4,76 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71088C53200
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Jul 2026 03:28:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CA69C531F9
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Jul 2026 03:35:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1woBzy-0000mA-1M; Sun, 26 Jul 2026 23:27:26 -0400
+	id 1woC7j-0003Cj-FU; Sun, 26 Jul 2026 23:35:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1woBzw-0000ln-TW
- for qemu-arm@nongnu.org; Sun, 26 Jul 2026 23:27:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1woC7i-0003B9-Fx
+ for qemu-arm@nongnu.org; Sun, 26 Jul 2026 23:35:26 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1woBzv-0006SX-GH
- for qemu-arm@nongnu.org; Sun, 26 Jul 2026 23:27:24 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1woC7g-0007PX-CS
+ for qemu-arm@nongnu.org; Sun, 26 Jul 2026 23:35:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1785122842;
+ s=mimecast20190719; t=1785123323;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kUysYKELcyQDyuwioTbwALuu6bAbpI5/lrhjbxGVtf8=;
- b=e17VljrcQaQKdsz4Pb8bQnfYmXysG+GlAJKWCAxeCBLX4xnOoD/PcGsLHLrfPY5CrViAqx
- awxDPhPdfo2stUE73WQP1yVZLR/VPQuX7hE00pZz3SC1Sgd3Kj3HGtN1IzapuEaamiNcn3
- 0VCHCRN7S81xxX1pyGGymroMCKz3ojs=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-581-mlGF05yNOeiF_sX_ntyZ8w-1; Sun,
- 26 Jul 2026 23:27:19 -0400
-X-MC-Unique: mlGF05yNOeiF_sX_ntyZ8w-1
-X-Mimecast-MFC-AGG-ID: mlGF05yNOeiF_sX_ntyZ8w_1785122837
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 87963180067E; Mon, 27 Jul 2026 03:27:16 +0000 (UTC)
-Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.50])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9C97C1955F74; Mon, 27 Jul 2026 03:27:08 +0000 (UTC)
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, peterx@redhat.com, mst@redhat.com,
- philmd@oss.qualcomm.com, peter.maydell@linaro.org,
- richard.henderson@linaro.org, alex@shazbot.org, berrange@redhat.com,
- philmd@mailo.com, david@kernel.org, clg@redhat.com, pbonzini@redhat.com,
- phrdina@redhat.com, jugraham@redhat.com, liugang24219@sangfor.com.cn,
- dinghui@sangfor.com.cn, shan.gavin@gmail.com
-Subject: [PATCH v4 1/3] system/memory: Use memmove() for directly accessible
- regions
-Date: Mon, 27 Jul 2026 13:26:47 +1000
-Message-ID: <20260727032649.145381-2-gshan@redhat.com>
-In-Reply-To: <20260727032649.145381-1-gshan@redhat.com>
-References: <20260727032649.145381-1-gshan@redhat.com>
+ bh=ZEvy0F8mKE31vGwd549dxWXgDdMTMZNJwTROsvaq6D0=;
+ b=hXYPeKTsso6CXwthLo/Mra4CDtixKQO+KPtp+91cdd26nTotaWGPU1x4Ep7GAzq7lh/4BX
+ idCs+vr14E2FFe2KEOa9ZP6855+f+/kKdgUhPFyfoswgqul3scy0EH6i+QpSB121E0FQ06
+ QahZSSd/qC+ucowk6chfCZ8Rd8hxjqM=
+Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
+ [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-58-M0eIXuXUM9eLBJhBgjqEpg-1; Sun, 26 Jul 2026 23:35:21 -0400
+X-MC-Unique: M0eIXuXUM9eLBJhBgjqEpg-1
+X-Mimecast-MFC-AGG-ID: M0eIXuXUM9eLBJhBgjqEpg_1785123321
+Received: by mail-pl1-f198.google.com with SMTP id
+ d9443c01a7336-2cacd6d37edso34331735ad.0
+ for <qemu-arm@nongnu.org>; Sun, 26 Jul 2026 20:35:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1785123320; x=1785728120;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=ZEvy0F8mKE31vGwd549dxWXgDdMTMZNJwTROsvaq6D0=;
+ b=cxmov7wui2ZFwPhoae6Ky/jbjn3ErsdEpP0Z3q5CjhrhYGinZEYt1//lGtP4QUUbs2
+ IUVjYRGNPIt5XpuUsSygQ2NQUey9jvG5uw9IC/FkeoKjVYlL/oi5EBQ8Fj6C8w8Xn0Wm
+ ORlHGFVj/9+eUR+t58AulUy8GVH5hiA18TkFKBSU8OTYaOwIMXVb/wyTS3yH7dujoclw
+ zRHM6jtF1vXnY6ru1cuCcIvufeHrHI0t6RzyvK5ahx3jqtp4sntlWG3Dg3vi6eUJw7Rz
+ KTAHLVTV2z5VeSoR0/U+I2y6KKlMFTtKK1DQJFkJw7vabPNwib6J5Z+I5b2lNKpAvzmE
+ cITQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RpKk2zXuN164qU0G5jBxa1bU+As/iAQiJ1FMqt2Dj6HkDQdLXjD47lCiIXFGFtUpigXH3Tm6cQUzA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy1APX5rrVv/GSxlj/7QzFLgRPNG0h9BuloAxOu15v0N4rJfYi6
+ evvggfEdl9/E3L6CUzUqqf05KHBC1VQmeQPJkBASQhz165PBx0anrFkkSxPlfaEbvfwT22Vo17t
+ hnZSSZHW5Y/+PkOkHQTi4BZkR9rzpW0LysGNXBI4TznMkcm0WfwYzdA==
+X-Gm-Gg: AR+sD12o9/whwZybyyyarhO2KyoGqkDTGDjCzTgBRqeBmsHWLfgwQn1SLp51Dkcayqi
+ 3dh1EGsUOsE65z/ZhoP0sF4xOPq7eA6Hzx2VxaHkDyatA53CGxe6lM7xSf7OPxPhb6XkcchhaEM
+ EwcbtG0zAXssncf9Eo+EyaAeSWgPiYtaYPczCHs7vM8mEOUVJ6RhgGB8QQNr4MfTpMwmasFF62k
+ V4n8FGDnXpF6sTslYv8SLTpTER1AyfyeWFpqOH1DKQlspYMm0P2fG5QqoK/srD6MLw0ucIL3Tat
+ 9NzBpmOguDBVLhunGd5EKLjTxBAZ8vaKucjIFnoBRe8/9YpZOXwHTF5uVsg1VBPqYbAN9G7BI9C
+ FxMastujmzzgIq+nFuPUVvwBmcagKarM156Niw4dFr5A=
+X-Received: by 2002:a17:902:d485:b0:2c9:cf5d:d9bc with SMTP id
+ d9443c01a7336-2cfde88614emr66278045ad.35.1785123320472; 
+ Sun, 26 Jul 2026 20:35:20 -0700 (PDT)
+X-Received: by 2002:a17:902:d485:b0:2c9:cf5d:d9bc with SMTP id
+ d9443c01a7336-2cfde88614emr66277695ad.35.1785123319911; 
+ Sun, 26 Jul 2026 20:35:19 -0700 (PDT)
+Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
+ [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2cfde59bb5asm27000415ad.8.2026.07.26.20.35.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 26 Jul 2026 20:35:18 -0700 (PDT)
+Message-ID: <a529c8bf-ca79-43d9-8987-1d6d39d517b4@redhat.com>
+Date: Mon, 27 Jul 2026 13:35:09 +1000
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: HUJiyJPD-3FS8DbG9wJ4mIKAE5a0LUOVa2HQsLvBhG8_1785122837
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] system/memory: Use qemu_ram_{copy, move}() in ram
+ device region accessors
+To: Peter Xu <peterx@redhat.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, alex@shazbot.org, richard.henderson@linaro.org,
+ berrange@redhat.com, philmd@mailo.com, david@kernel.org, clg@redhat.com,
+ pbonzini@redhat.com, phrdina@redhat.com, jugraham@redhat.com,
+ liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, shan.gavin@gmail.com,
+ qemu-s390x <qemu-s390x@nongnu.org>
+References: <59882c5b-545d-4768-8bf4-723fed97a801@redhat.com>
+ <al-eCtxGjG4HHEbl@x1.local> <6210e178-a93f-4411-810a-41edb1fb656e@redhat.com>
+ <20260722015422-mutt-send-email-mst@kernel.org> <amDyvgR09OJssENX@x1.local>
+ <20260723015708-mutt-send-email-mst@kernel.org>
+ <71d88d00-5b41-49d2-b649-8a6ea47abc4d@oss.qualcomm.com>
+ <20260723045428-mutt-send-email-mst@kernel.org> <amIbUYN3teCLXTh-@x1.local>
+ <b05b40b1-fffd-4be5-9289-b5bc92c16cd2@redhat.com> <amNvIMizFp7Au2c3@x1.local>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <amNvIMizFp7Au2c3@x1.local>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: xqGkHgNr8p1GZYYKZIntBqcVoU8JCBOSSPnuS7u7X70_1785123321
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -36
 X-Spam_score: -3.7
 X-Spam_bar: ---
 X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,67 +126,219 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Similar to what's done in commit 4a73aee88140 ("softmmu: Use memmove in
-flatview_write_continue"), there are more sites where the overlapping
-source and destination buffer are allowed for the directly accessible
-regions. Use memmove() in those sites, listed as below.
+On 7/24/26 11:56 PM, Peter Xu wrote:
+> On Fri, Jul 24, 2026 at 11:42:09AM +1000, Gavin Shan wrote:
+>> On 7/23/26 11:46 PM, Peter Xu wrote:
+>>> On Thu, Jul 23, 2026 at 05:05:08AM -0400, Michael S. Tsirkin wrote:
+>>>> On Thu, Jul 23, 2026 at 10:52:11AM +0200, Philippe Mathieu-Daudé wrote:
+>>>>> On 23/7/26 08:04, Michael S. Tsirkin wrote:
+>>>>>> On Wed, Jul 22, 2026 at 12:41:34PM -0400, Peter Xu wrote:
+>>>>>>> On Wed, Jul 22, 2026 at 01:58:18AM -0400, Michael S. Tsirkin wrote:
+>>>>>>>> On Wed, Jul 22, 2026 at 10:53:27AM +1000, Gavin Shan wrote:
+>>>>>>>>> On 7/22/26 2:27 AM, Peter Xu wrote:
+>>>>>>>>>> On Tue, Jul 21, 2026 at 03:37:53PM +1000, Gavin Shan wrote:
+>>>>>>>>>>> If Peter is fine with two variants for x86 and non-x86 architectures.
+>>>>>>>>>>> I can post (v4) for further review. That will be something like below
+>>>>>>>>>>> and let me know if there are any other improvements are needed.
+>>>>>>>>>>
+>>>>>>>>>> I have a generic question on the "unaligned access for x86": I think the
+>>>>>>>>>> question is about the one Michael raised here on unaligned access may break
+>>>>>>>>>> x86 here:
+>>>>>>>>>>
+>>>>>>>>>>       https://lore.kernel.org/qemu-devel/20260617022330-mutt-send-email-mst@kernel.org/
+>>>>>>>>>>
+>>>>>>>>>>       3. (theoretical concern) also on x86, unaligned accesses are
+>>>>>>>>>>       possible on guest and host, so converting an unaligned access to a
+>>>>>>>>>>       series of aligned ones can in theory break devices.
+>>>>>>>>>>
+>>>>>>>>>> Is that a real problem we need to consider, or can we start with unified
+>>>>>>>>>> approach and leave it for later?
+>>>>>>>>>>
+>>>>>>>>>
+>>>>>>>>> I'm leaving this question to Michael.
+>>>>>>>>
+>>>>>>>> Knowing what I know about hardware designers, it's something someone
+>>>>>>>> somewhere does)
+>>>>>>>> It can be made a separate patch, just to show - it should be all of
+>>>>>>>> ~10LOC.
+>>>>>>>
+>>>>>>> It's only about removal of anything that might be controversial for now,
+>>>>>>> thanks.  I also wonder if anything would break, then it's more solid proof
+>>>>>>> that per-arch change is required.
+>>>>>>
+>>>>>> Repeating:
+>>>>>> 	I think there is exactly 1 kinda reasonable case. A 2 byte read/write at
+>>>>>> 	offset 0x1 within a dword. This maps nicely to even classical PCI byte
+>>>>>> 	enable mechanism and so yes it works if your CPU can initiate these
+>>>>>> 	things, and it's atomic.
+>>>>>
+>>>>> Isn't this out of the CPU arch, dealt with at the bus level?
+>>>>>
+>>>>> It looks we try to be clever with modern PCI code by optimizing this
+>>>>> access -- not saying we can change that, I know it is too late after
+>>>>> 20+ years -- relying on hw behavior that was done that way to support
+>>>>> legacy hw, in particular broken I/O accesses.
+>>>>
+>>>> Not sure what the question is.  We were dicussing how to emulate unaligned
+>>>> accesses from x86 guests if they happen.
+>>>> On an x86 host we can do that easily, and it's just a couple of LOC.
+>>>> Though Peter Maydell dislikes host arch specific code. But I hope
+>>>> if it's a separate patch on top and it is visible how small it is,
+>>>> he will reconsider)
+>>>
+>>> Yes, if we still want x86 specific change, it would be better to be put
+>>> separately.
+>>>
+>>> Said so, I don't think the e1000e LEDCTL test illustrated what might
+>>> break..  Isn't that only an exmaple showing unaligned access is
+>>> "supported", however nothing breaks even if we use 1B*2?
+>>>
+>>> My question was more about a real breakage, hence whenever it happened
+>>> "it's more solid proof that per-arch change is required".
+>>>
+>>>> On other hosts we can't emulate them 100%, we either need to split
+>>>> to byte accesses or over-access and mask. Byte accesses feel safer.
+>>>> What qemu currently does with memmove is clearly not safe in the
+>>>> general case.
+>>>
+>>> We should have another option that is not arch-dependent but keep the
+>>> unaligned behavior.
+>>>
+>>> For current master, AFAIU we do unaligned access for both ram_device and
+>>> rest. Say, even with ram_device_mem_ops, it has both .unaligned=true for
+>>> both .valid & .impl.  I think it means indeed we have unaligned behavior
+>>> even for ram_device.  It also means what matters in regards to the Realtek
+>>> bug was only about aligned access (with subpage presence).
+>>>
+>>> I think it means we can always keep unaligned to stick with
+>>> memcpy()/memmove(), but only use atomic ops for the aligned cases of
+>>> 1/2/4/8.  With that, I think we can also remove ram_device_mem_ops and fix
+>>> the bounce buffer issue.
+>>>
+>>> I think it means we'll stick with memcpy()/memmove() for all archs for
+>>> unaligned, which is again not safe... but that can be an existing but
+>>> separate problem to solve too.
+>>>
+>>
+>> Lets see if Peter Maydell and Michael are happy with this option. At least,
+>> we will have unified qemu_ram_move() for all architectures with this option.
+>> Note that qemu_ram_copy() won't be needed.
+>>
+>> I'm putting note on what's to be done in (v4) if this option is to be picked
+>> up. Let me know if there are missed points. It's basically combing what's done
+>> by ram_device_mem_ops to upper layer (e.g. in qemu_ram_move()).
+>>
+>>    address_space_write
+>>      address_space_to_flatview
+>>      flatview_write
+>>        flatview_translate
+>>        flatview_write_continue
+>>          flatview_write_continue_step
+>>            memmove                     // (A) to replace it with qemu_ram_move()
+>>
+>> /**
+>>   * qemu_ram_move: move data to ramblock
+>>   *
+>>   * @dst: destination where the data is moved to
+>>   * @src: source where the data is moved from
+>>   * @n: length of data to be moved
+>>   *
+>>   * Move @n bytes from @src to @dst with the assumption that @src and @dst
+>>   * can overlap. The access is atomic if the source and destination buffer
+>>   * aren't overlapped for a well aligned and small-sized access. Otherwise,
+>>   * fall back to the standard memmove().
+>>   */
+>> static void qemu_ram_move(void *dst, const void *src, size_t n)
+>> {
+>>      uintptr_t test, len;
+>>
+>>      if (src == dst || n == 0) {
+>>          return;
+>>      }
+>>
+>>      /* Overlapped buffers */
+>>      if (src < (dst + n) && dst < (src + n)) {
+> 
+> s/&&/||/?
+> 
+> It's a bit weird to request memmove() for overlapped, e.g. I don't know if
+> P2P can overlap too when some fuzzer fills in some MMIO address shifted for
+> src/dst.. but I think I get what you want to simplify and it looks fine.
+> 
+> Otherwise it looks good.
+> 
 
-  hw/remote/vfio-user-obj.c::vfu_object_mr_rw
-  include/system/memory.h::address_space_read
-  system/physmem.c::flatview_read_continue_step
+The condition is correct to check if src/dst are overlapped. As Michael
+pointed out the overlapping case can be well handled by "if (n > 8 || len != n)",
+so this check has been dropped in v4.
 
-Signed-off-by: Gavin Shan <gshan@redhat.com>
----
-v4: New patch
----
- hw/remote/vfio-user-obj.c | 4 ++--
- include/system/memory.h   | 2 +-
- system/physmem.c          | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+     https://lore.kernel.org/qemu-arm/20260727032649.145381-1-gshan@redhat.com/
 
-diff --git a/hw/remote/vfio-user-obj.c b/hw/remote/vfio-user-obj.c
-index 87fa7b6572..ea50270628 100644
---- a/hw/remote/vfio-user-obj.c
-+++ b/hw/remote/vfio-user-obj.c
-@@ -375,9 +375,9 @@ static int vfu_object_mr_rw(MemoryRegion *mr, uint8_t *buf, hwaddr offset,
-         ram_ptr = memory_region_get_ram_ptr(mr);
- 
-         if (is_write) {
--            memcpy((ram_ptr + offset), buf, size);
-+            memmove((ram_ptr + offset), buf, size);
-         } else {
--            memcpy(buf, (ram_ptr + offset), size);
-+            memmove(buf, (ram_ptr + offset), size);
-         }
- 
-         return 0;
-diff --git a/include/system/memory.h b/include/system/memory.h
-index 47a0e06fbf..d6ca431b6d 100644
---- a/include/system/memory.h
-+++ b/include/system/memory.h
-@@ -2739,7 +2739,7 @@ MemTxResult address_space_read(const AddressSpace *as, hwaddr addr,
-             mr = flatview_translate(fv, addr, &addr1, &l, false, attrs);
-             if (len == l && memory_access_is_direct(mr, false, attrs)) {
-                 ptr = qemu_map_ram_ptr(mr->ram_block, addr1);
--                memcpy(buf, ptr, len);
-+                memmove(buf, ptr, len);
-             } else {
-                 result = flatview_read_continue(fv, addr, attrs, buf, len,
-                                                 addr1, l, mr);
-diff --git a/system/physmem.c b/system/physmem.c
-index c21ea92915..2c42e365cb 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -3363,7 +3363,7 @@ static MemTxResult flatview_read_continue_step(MemTxAttrs attrs, uint8_t *buf,
-         uint8_t *ram_ptr = qemu_ram_ptr_length(mr->ram_block, mr_addr, l,
-                                                false, false);
- 
--        memcpy(buf, ram_ptr, *l);
-+        memmove(buf, ram_ptr, *l);
- 
-         return MEMTX_OK;
-     }
--- 
-2.55.0
+I don't think src/dst can be overlapped since p2p happens on two separate
+devices. My idea to ignore the overlapping case is that would happen very
+rarely, maybe only valid in the fuzzer case.
+
+>>          memmove(dst, src, n);
+>>          return;
+>>      }
+>>
+>>      test = (uintptr_t)src | (uintptr_t)dst | n;
+>>      len = test & -test;
+>>
+>>      /* Unaligned or oversized access */
+>>      if (n > 8 || len != n) {
+>>          memmove(dst, src, n);
+>>          return;
+>>      }
+>>
+>>      switch (len) {
+>>      case 1:
+>>          qatomic_set((uint8_t *)dst, qatomic_read((uint8_t *)src));
+>>          break;
+>>      case 2:
+>>          qatomic_set((uint16_t *)dst, qatomic_read((uint16_t *)src));
+>>          break;
+>>      case 4:
+>>          qatomic_set((uint32_t *)dst, qatomic_read((uint32_t *)src));
+>>          break;
+>>      case 8:
+>>          qatomic_set((uint64_t *)dst, qatomic_read((uint64_t *)src));
+>>          break;
+>>      default:
+>>          g_assert_not_reached();
+>>      }
+>> }
+> 
+> [...]
+> 
+>> Yes, I think one preparatory patch can added in (v4) to replace memcpy() with
+>> memmove() in the following paths, extending commit 4a73aee8814 ("softmmu: Use
+>> memmove in flatview_write_continue"). With this replacement, qemu_ram_copy()
+>> won't be needed in (v4).
+>>
+>>      hw/remote/vfio-user-obj.c::vfu_object_mr_rw
+>>      include/system/memory.h::address_space_read
+>>      system/physmem.c::flatview_read_continue_step
+>>      system/physmem.c::address_space_write_rom
+> 
+> Now after a second look, I think it's safe to drop
+> address_space_write_rom() in the change list because it always directly
+> manipulates the real RAM (that plays the ROM role).  I recall it was used
+> to be used in debugging path, but at least now when I look at master branch
+> it's not.  So we can drop.
+> 
+
+Ack, address_space_write_rom() is dropped in v4.
+
+> I see you already ruled out address_space_read(), I'm not sure if it's
+> about having that __builtin_constant_p() early check: I think it's still
+> better to switch that to the new API too, then we get rid of implicit
+> assumptions of memcpy() over builtin constants.
+> 
+
+Yes, qemu_ram_move() is also used for __builtin_constant_p() case in v4.
+
+Thanks,
+Gavin
 
 

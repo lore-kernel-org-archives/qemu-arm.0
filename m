@@ -4,79 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8551DC531F9
-	for <qemu-arm@archiver.kernel.org>; Sun, 26 Jul 2026 15:37:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26682C531F9
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Jul 2026 03:28:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wo0sp-0002zD-PP; Sun, 26 Jul 2026 11:35:19 -0400
+	id 1woC0N-0000oy-0w; Sun, 26 Jul 2026 23:27:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wo0sn-0002vp-9L
- for qemu-arm@nongnu.org; Sun, 26 Jul 2026 11:35:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1woC0L-0000oe-I0
+ for qemu-arm@nongnu.org; Sun, 26 Jul 2026 23:27:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wo0sl-0003tY-O8
- for qemu-arm@nongnu.org; Sun, 26 Jul 2026 11:35:16 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1woC0H-0006Tg-GF
+ for qemu-arm@nongnu.org; Sun, 26 Jul 2026 23:27:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1785080115;
+ s=mimecast20190719; t=1785122858;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JxxlxorpYZytrBVrMewiRqi3C0JU4N4AWnQGksnrZUQ=;
- b=Pkll5F0jkn+41HfmzFxuWfKQ5e2vWEEJJsIIJNOxKt4y57VIUe0sW8VcZA7pMidsfWlGV3
- 5zLsdPGmK3SRiDymSGR+BkekIiZHUM49T5Lj8c1kpZ6Q15R9a+Hp4LEn/nCgkT89Y+ibAi
- KELgvvud+9BdGTd9VtaEfnDzQRIooCE=
+ bh=v/SIY/jjmBD3N+GyrWArcpLs7DOqK2sN3p72T+s1uk8=;
+ b=KPJfejcJ3AmEWkzNhmamCacgoTaS12+8MOrwVqRAAVo4HRPkYcnuwNZ4I/FzG2HNJd8dRu
+ 0wKHbVYorTi5FTu2G8UJch3XCzxjh7RDd6THdC3lfAhYYK6/MK2wPRYUwyKYxMcaqM2ZFO
+ dqkHRBf/suSAPCdircRsFfjlOiURaek=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-556-7AUyfskuOcm5mwgd1J5iuA-1; Sun,
- 26 Jul 2026 11:35:11 -0400
-X-MC-Unique: 7AUyfskuOcm5mwgd1J5iuA-1
-X-Mimecast-MFC-AGG-ID: 7AUyfskuOcm5mwgd1J5iuA_1785080109
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-693-Y-snHG3WN4KspOnobDa3yA-1; Sun,
+ 26 Jul 2026 23:27:36 -0400
+X-MC-Unique: Y-snHG3WN4KspOnobDa3yA-1
+X-Mimecast-MFC-AGG-ID: Y-snHG3WN4KspOnobDa3yA_1785122855
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B3E751800676; Sun, 26 Jul 2026 15:35:09 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.44.32.63])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 502ED1800613; Sun, 26 Jul 2026 15:35:01 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
- shaju.abraham@nutanix.com, khushit.shah@nutanix.com,
- yangjinqian1@huawei.com, cohuck@redhat.com, richard.henderson@linaro.org,
- sebott@redhat.com, skolothumtho@nvidia.com, philmd@oss.qualcomm.com
-Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
- armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
- jdenemar@redhat.com
-Subject: [RFC PATCH v7 15/18] target/arm/kvm: Ignore and trace unexpected
- writable reserved fields
-Date: Sun, 26 Jul 2026 17:29:53 +0200
-Message-ID: <20260726153221.24773-16-eric.auger@redhat.com>
-In-Reply-To: <20260726153221.24773-1-eric.auger@redhat.com>
-References: <20260726153221.24773-1-eric.auger@redhat.com>
+ id 7B91B1801349; Mon, 27 Jul 2026 03:27:34 +0000 (UTC)
+Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.50])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4311C1955F74; Mon, 27 Jul 2026 03:27:25 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, peterx@redhat.com, mst@redhat.com,
+ philmd@oss.qualcomm.com, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, alex@shazbot.org, berrange@redhat.com,
+ philmd@mailo.com, david@kernel.org, clg@redhat.com, pbonzini@redhat.com,
+ phrdina@redhat.com, jugraham@redhat.com, liugang24219@sangfor.com.cn,
+ dinghui@sangfor.com.cn, shan.gavin@gmail.com
+Subject: [PATCH v4 3/3] system/memory: Make ram device region directly
+ accessible
+Date: Mon, 27 Jul 2026 13:26:49 +1000
+Message-ID: <20260727032649.145381-4-gshan@redhat.com>
+In-Reply-To: <20260727032649.145381-1-gshan@redhat.com>
+References: <20260727032649.145381-1-gshan@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: IPkNwZdgWvKUvEj3m95B2sCYnbKHkikUza35xist0WQ_1785080109
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: pvWWNirbT2X51faqAUMXzuGOJ6ql-0qCcHsJecAbAmo_1785122855
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -36
 X-Spam_score: -3.7
 X-Spam_bar: ---
 X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,49 +89,120 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-KVM currently reports some bits as writable whereas they are
-RES0 or RAZ. The code easily allows to do some sanity checking
-for such inconsistencies. Let's add a trace event when this is
-encountered and skip the field
+This basically reverts 4a2e242bbb30 ("memory: Don't use memcpy for
+ram_device regions") to make ram device region directly accessible
+again. With this, the bounce buffer is bypassed in address_space_map()
+when a ram device region is involved, potentially avoid to overrun
+the (small) bounce buffer.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reported-by: Julia Graham <jugraham@redhat.com>
+Suggested-by: Michael S. Tsirkin <mst@redhat.com>
+Suggested-by: Peter Xu <peterx@redhat.com>
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- target/arm/kvm.c        | 8 ++++++++
- target/arm/trace-events | 1 +
- 2 files changed, 9 insertions(+)
+ include/system/memory.h | 11 ++---------
+ system/memory.c         | 41 +----------------------------------------
+ system/trace-events     |  2 --
+ 3 files changed, 3 insertions(+), 51 deletions(-)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 1a78893f87..fceffee262 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -434,6 +434,14 @@ decode_idreg_writemap(Object *obj, ARM64SysReg *reg)
-         }
-         lower = field->shift;
-         upper = field->shift + field->length - 1;
+diff --git a/include/system/memory.h b/include/system/memory.h
+index 1a28f9b873..8cfba10691 100644
+--- a/include/system/memory.h
++++ b/include/system/memory.h
+@@ -2698,15 +2698,8 @@ static inline bool memory_region_supports_direct_access(const MemoryRegion *mr)
+     if (memory_region_is_romd(mr)) {
+         return true;
+     }
+-    if (!memory_region_is_ram(mr)) {
+-        return false;
+-    }
+-    /*
+-     * RAM DEVICE regions can be accessed directly using memcpy, but it might
+-     * be MMIO and access using mempy can be wrong (e.g., using instructions not
+-     * intended for MMIO access). So we treat this as IO.
+-     */
+-    return !memory_region_is_ram_device(mr);
 +
-+        /* Sanity check the field is not a reserved field */
-+        if (strstr(field->name, "RES0") || strstr(field->name, "RES1") ||
-+            strstr(field->name, "RAZ")) {
-+            trace_unexpected_writable_reserved_field(reg->name, field->name,
-+                                                     lower, upper);
-+            continue;
-+        }
-         prop_name = g_strdup_printf("SYSREG_%s_%s", reg->name, field->name);
-         trace_decode_idreg_writemap(field->name, lower, upper, prop_name);
-         object_property_add(obj, prop_name, "uint64",
-diff --git a/target/arm/trace-events b/target/arm/trace-events
-index d72ad6b671..e67730de6b 100644
---- a/target/arm/trace-events
-+++ b/target/arm/trace-events
-@@ -19,6 +19,7 @@ decode_idreg_writemap(const char* name, int lower, int upper, char *prop_name) "
- get_sysreg_prop(const char *name, uint64_t value) "%s 0x%"PRIx64
- set_sysreg_prop(const char *name, uint64_t old, uint64_t mask, uint64_t field_value, uint64_t new) "%s old reg value=0x%"PRIx64" mask=0x%"PRIx64" new field value=0x%"PRIx64" new reg value=0x%"PRIx64
- nb_sysreg_props(const char *name, int count) "%s: %d SYSREG properties"
-+unexpected_writable_reserved_field(const char *reg_name, const char *field_name, int lower, int upper) "Unexpected writable reserved field: %s.%s [%d,%d], skip it ..."
++    return memory_region_is_ram(mr);
+ }
  
- # cpu.c
- arm_cpu_reset(uint64_t mp_aff) "cpu %" PRIu64
+ static inline bool memory_access_is_direct(const MemoryRegion *mr,
+diff --git a/system/memory.c b/system/memory.c
+index 5fc36708ec..da710bbade 100644
+--- a/system/memory.c
++++ b/system/memory.c
+@@ -1364,43 +1364,6 @@ const MemoryRegionOps unassigned_mem_ops = {
+     .endianness = DEVICE_NATIVE_ENDIAN,
+ };
+ 
+-static uint64_t memory_region_ram_device_read(void *opaque,
+-                                              hwaddr addr, unsigned size)
+-{
+-    MemoryRegion *mr = opaque;
+-    uint64_t data = ldn_he_p(mr->ram_block->host + addr, size);
+-
+-    trace_memory_region_ram_device_read(get_cpu_index(), mr, addr, data, size);
+-
+-    return data;
+-}
+-
+-static void memory_region_ram_device_write(void *opaque, hwaddr addr,
+-                                           uint64_t data, unsigned size)
+-{
+-    MemoryRegion *mr = opaque;
+-
+-    trace_memory_region_ram_device_write(get_cpu_index(), mr, addr, data, size);
+-
+-    stn_he_p(mr->ram_block->host + addr, size, data);
+-}
+-
+-static const MemoryRegionOps ram_device_mem_ops = {
+-    .read = memory_region_ram_device_read,
+-    .write = memory_region_ram_device_write,
+-    .endianness = HOST_BIG_ENDIAN ? DEVICE_BIG_ENDIAN : DEVICE_LITTLE_ENDIAN,
+-    .valid = {
+-        .min_access_size = 1,
+-        .max_access_size = 8,
+-        .unaligned = true,
+-    },
+-    .impl = {
+-        .min_access_size = 1,
+-        .max_access_size = 8,
+-        .unaligned = true,
+-    },
+-};
+-
+ bool memory_region_access_valid(MemoryRegion *mr,
+                                 hwaddr addr,
+                                 unsigned size,
+@@ -1692,10 +1655,8 @@ void memory_region_init_ram_device_ptr(MemoryRegion *mr, Object *owner,
+                                        const char *name, uint64_t size,
+                                        void *ptr)
+ {
+-    memory_region_init_io(mr, owner, &ram_device_mem_ops, mr, name, size);
+-    mr->ram = true;
++    memory_region_init_ram_ptr(mr, owner, name, size, ptr);
+     mr->ram_device = true;
+-    memory_region_set_ram_ptr(mr, size, ptr);
+ }
+ 
+ void memory_region_init_alias(MemoryRegion *mr, Object *owner,
+diff --git a/system/trace-events b/system/trace-events
+index 51b4a4679a..d483b31419 100644
+--- a/system/trace-events
++++ b/system/trace-events
+@@ -20,8 +20,6 @@ memory_region_ops_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, u
+ memory_region_ops_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
+ memory_region_subpage_read(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
+ memory_region_subpage_write(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
+-memory_region_ram_device_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
+-memory_region_ram_device_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
+ memory_region_sync_dirty(const char *mr, const char *listener, int global) "mr '%s' listener '%s' synced (global=%d)"
+ flatview_new(void *view, void *root) "%p (root %p)"
+ flatview_destroy(void *view, void *root) "%p (root %p)"
 -- 
-2.53.0
+2.55.0
 
 

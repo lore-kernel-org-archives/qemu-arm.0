@@ -4,98 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C392C54F4C
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 15:27:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF750C54F4C
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 15:29:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wojiO-0004x1-0R; Tue, 28 Jul 2026 11:27:32 -0400
+	id 1wojjv-0005Sx-Gz; Tue, 28 Jul 2026 11:29:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wojiM-0004wG-A4
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 11:27:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wojiK-0000uL-EP
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 11:27:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1785252447;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=buhYI0R3oVtLJLP0f6X47Zi7oAniHBGW4yWK95xa23U=;
- b=Zaur37qDbS00PfRyOfxlCA8/NSU855xIhL6i3OWFPLz35TqrvoiusfnzvxY1hPpQUvP67U
- Lf7zm38SJ1QsVB3o3YSAAsnSdNwZYoFMr5DoEbn/YoAwsCRuzdWExzUZb7DFq1VqjGilTe
- fLTbqiU6M7HGvKqnfZGyrC8O1FzsJBE=
-Received: from mail-oo1-f72.google.com (mail-oo1-f72.google.com
- [209.85.161.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-642--Qr5D4t-NxmZbp3AaNAiuA-1; Tue, 28 Jul 2026 11:27:24 -0400
-X-MC-Unique: -Qr5D4t-NxmZbp3AaNAiuA-1
-X-Mimecast-MFC-AGG-ID: -Qr5D4t-NxmZbp3AaNAiuA_1785252444
-Received: by mail-oo1-f72.google.com with SMTP id
- 006d021491bc7-6ab4aec4a14so2066699eaf.2
- for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 08:27:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wojjt-0005Rj-DD
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 11:29:05 -0400
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wojjs-00010t-1M
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 11:29:05 -0400
+Received: by mail-ej1-x62c.google.com with SMTP id
+ a640c23a62f3a-c1c26d7e951so570568166b.0
+ for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 08:29:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785252542; cv=none;
+ d=google.com; s=arc-20260327;
+ b=rF2u2s2U6K8WJgXUkaKn1WO9uChXDUvM0jfe8auzse0rxmi3v0dcfMiwSEw25CtW/4
+ SMX+f3D/oqpodPnsHJnYL86b8wSJgPnCkmOTmd+ZBpy+rXUDlg3Tl9WrBhQGYZ5O87js
+ 9u6fvSC8QQpNi7Td5VYBIw3s4uBNyv185tUBkk9Oe3UTH7cKIBe/2rH8IoKtC/FgBBWT
+ xblaf1kXVy7qG9Iuri5VI/bs0/jVf3ZX8lV+8xPXgtbsrk5j7IqKxpfofuwIRMoz3rwt
+ HaxqdvMEYukRikvmjF8vmJGcaKnGnzNTNcg/aUHy+xR7/R8zYJddCiBjLKyKmFtzhMHK
+ mr5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=44BEQ7ipJxjHOGbfQY/OqdTpMqmmzEr1C3BK7hck/io=;
+ fh=nsXkQCGuEehhgiA+Qgn6fK9CMlw/BqEilYoUp5w2+88=;
+ b=IGFEqfzI35PPN5xvZfGiE8S+JPj77HP8AiNiTbnh2/E5MaT0FUz5ydUwoy4f8Eg2c8
+ r1j2ROGIUMC4jbDXZwAr0+qaG2ohViZYKPwBQuQTQBWHwe30ZK/EIA/6lSvFY+imMkw0
+ 9M9T6YzHqVJvYYrit+3vCM0MOxhN1g5tDFgDTtwukSUgEr2Tdr8atuunldaalfERqcBy
+ /bccerfSnpCyfn+U1PlOTUJyaREnEGf3ztInke4lXHhcfwo4T36EEuXmeSoi29Qq2b9h
+ xayhAQlp3jOTw663bPFNUWKwqJxn2imvtTqcGsJjarvue+oTSZVCBiUSb92G/Jxa+poZ
+ W6rQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1785252542; x=1785857342; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=44BEQ7ipJxjHOGbfQY/OqdTpMqmmzEr1C3BK7hck/io=;
+ b=e/31b9Xs3OW8rclszzCCYG+cR8OxNelhpcpnLoHC771+OPaZ5erHD5ZfFMni0ZsyiD
+ IXwm/RKHfjW57oxiqc5SrZr0ncZ8DJMDtiZyITlDL+y76/5jpR4cDHszqRdjJF65R7J9
+ rEcWR0BPY9xcfCgXMkHzVpbC5eW5ar+CtKovqviLuXVEjZ/yv9Nw8e1QoreagnIpb1ag
+ rnjKN6N3ZJP702zyxg2IlG9uSWmk/GFl5PeX+6g4N/ZQvvaQsDGecf50caysy4TG+3bz
+ MK3Knw/VeQKDLba+ML4IGwRynFprqLupWgnnzEKSbSHETHGu4cDRc4LcNuCQNsoQfi+2
+ +Lfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785252444; x=1785857244;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=buhYI0R3oVtLJLP0f6X47Zi7oAniHBGW4yWK95xa23U=;
- b=L3XXLuG5er8YJjh13FcJUHXpZ8H4/NTqi9HaNJm21JVOg/t3IbfazBrDkQFluO5OET
- PnrzHDhXQ0lD3x1j/H7BAgxUfhM6FhfYjG7a9a9j02tZv+Bsac7WfdhQIDFw9jmpZyAj
- VwMa5CZomIA3HhvFGALEBchZ4USP2cs2KUxdmz4fvdCSUFVcl54VZMUtwWOK9j5Kum8u
- TeA6F9d8zIU34qxcNkGc2RpCXBRt0kGBp2UEzvVoRA4fjHnIZ6dPnsVTJNbWfWx9K6Ec
- iAuuIzPEgYiSTB+vz1kuEnO2Yg9sfy7VF1wa3IcrQGvjcgxWCe/p0W6OhRhrCgZtimpJ
- 2gSg==
-X-Gm-Message-State: AOJu0YwoRJXiGiORS4IBm1VLHkMTxJXM4c91wmDnP9d5dZnNAI6uIAdH
- HqzYjnUGvrnj0MMPajPNHa5PaKScaS25MnotY1nlSiCpaesLDPRnBTpDLiEDWpmfNPCx7PZw6xb
- HqCqAAgCGo6rezG+NHIK6IVU/dr31HQQnZMHVJY7u3DzFZ1eCqOHQyholQ2oiJQ==
-X-Gm-Gg: AR+sD10ntaGttZIUSHIm8Lxvii0tiW4Ay2+nz8wTCEXNtWRIfcPcEmpTh7/41VYoS6i
- UD7/d04P2xoJuu/bwdKX8w6HG2ECpOriBDvz+4BFkSmbsi+D0mUDBQvZ1A9SsoEa4VnT3ISNnYX
- OD08nGQdc32/12n/hH3FMFbp4a2ZhkbSZE7MW3wjjHYtmx9qOun7DmGZmmch9CT7kiEF6XBkK3W
- RuXz8wR3LNjkcNwcDPGAOYJfqadjASnkhHpXu1h4vbWGo/sKzzg2VVRMriozRgaGJ/Ww4/2TrBp
- 1bSBvbbQwiZv54xFhnVxYy4RiTWSax36NSCtjfzsu+M+47GVjoMHHCsXjK+Tgg36Y3rx
-X-Received: by 2002:a05:6820:811a:b0:6a3:8667:dc7f with SMTP id
- 006d021491bc7-6ac96ce086bmr1457641eaf.60.1785252444071; 
- Tue, 28 Jul 2026 08:27:24 -0700 (PDT)
-X-Received: by 2002:a05:622a:6097:b0:516:d83c:edb6 with SMTP id
- d75a77b69052e-529d70557ebmr23726611cf.12.1785251976617; 
- Tue, 28 Jul 2026 08:19:36 -0700 (PDT)
-Received: from x1.local ([174.91.117.74]) by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-9081dd3a7b9sm1233436d6.27.2026.07.28.08.19.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Jul 2026 08:19:35 -0700 (PDT)
-Date: Tue, 28 Jul 2026 11:19:24 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
- philmd@oss.qualcomm.com, peter.maydell@linaro.org,
- richard.henderson@linaro.org, alex@shazbot.org, berrange@redhat.com,
- philmd@mailo.com, david@kernel.org, clg@redhat.com,
- pbonzini@redhat.com, phrdina@redhat.com, jugraham@redhat.com,
- liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, shan.gavin@gmail.com
-Subject: Re: [PATCH v5 0/3] system/memory: Make ram device region directly
- accessible
-Message-ID: <amjIfGLjRpYACr6M@x1.local>
-References: <20260728031731.286666-1-gshan@redhat.com>
+ d=1e100.net; s=20251104; t=1785252542; x=1785857342;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=44BEQ7ipJxjHOGbfQY/OqdTpMqmmzEr1C3BK7hck/io=;
+ b=q8Dn4nuZcl9p/zApy7zOxvrtIu9AsAG2alT+Y7tBx9hl8x5q91LqDV8jIyxzOgT3Km
+ S42TRfGW3Si9HdP39zF9W3lV4D3glLlMcYJE4vS+zi2ScH/zgliZh5OxiuP3vJB+rz0V
+ dDmfLM8CDKDdsvoB23BIRjEKfXNdBdSz7KsWfCAurTaUZusiE6obazIf385ub/YethuA
+ R/khIM1RlXQ32xoSu8UpA1e4dk1yMTAOc0bdtaKm8f5nIDJPRx30H5ZC4qFOPG8Jj8R1
+ W7p/4dD/ndjfy5D1eEgQdSBOR5RymHc8+PPzhkKRiY30OfJ7iRUmo4k72Pa+TdYfkiJU
+ awWw==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RrBaRCwBgIbZaqRk4TlwU1Y41Gj0JurOQ+2MmbcWtCf2NGhQFcyvx0RqgkGIZnNpxXn+27UrX6VzA==@nongnu.org
+X-Gm-Message-State: AOJu0Yxju8SJ1u4+iS2kRnQsN+qZ+MiP2S7rvh0eOwn639AIqtWN+NS6
+ 4xQx4Mjn219lhzwByoJh9yG5b1ERvpkyXy9/WWr4Iqe48KcNai6xFfzfgzr1/+X585O0YCTQXC/
+ 4fMvusgYF2BcTsqD0su4IgSz5DvSLEDJ4yU5Kwt5/cg==
+X-Gm-Gg: AR+sD10H5mmihhZyzhtLnP6hw5E+59SNHJGXfdXxJIpzkkj3i9hfrlcf9efBDzbU6li
+ GKMi7WRk39dbsCyLW35OHWQPrXxHvUR7mk39weGoO0bOIK35E1gSvcVPseyr2g9VSee3kS4/fW4
+ 928YXS6m9OAQwQ1JI9RkIxCsEoURxraomyvSgYEPqQgisR5rTrjz60XTmn0IiazLlDdzz2VkWPQ
+ lz6EnLoD6Yfht4KgAFcS/Zd/qHM2W2lLtvnz9VILEO6GuN5XNDUKlt1P3v6EzDf4oArmj2Tmt34
+ L3O3Vrh4zOIvb9qkscevYLtm7a2TgvGN2zl7gcd4kOMRhw==
+X-Received: by 2002:a17:907:fd18:b0:c1c:2c92:fd60 with SMTP id
+ a640c23a62f3a-c1f71e94502mr179646866b.13.1785252542179; Tue, 28 Jul 2026
+ 08:29:02 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20260728031731.286666-1-gshan@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: p6O92DyAlBo4FPVmRqT1qmX5zWZEDBbFX2lLAYHfzyk_1785252444
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -36
-X-Spam_score: -3.7
-X-Spam_bar: ---
-X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20260721184656.530230-1-richard.henderson@linaro.org>
+ <20260721184656.530230-8-richard.henderson@linaro.org>
+In-Reply-To: <20260721184656.530230-8-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 Jul 2026 16:28:49 +0100
+X-Gm-Features: AUfX_mwqegspqfC0MnZ8C_mgl9t3rCadnNzjnr-kdN0k6wzK0kD88cpAPcy_-Mg
+Message-ID: <CAFEAcA9VWXPC11P3qKHstXOwKXEZf-hvPu7nyxyY78Z5AAyCag@mail.gmail.com>
+Subject: Re: [PATCH 07/20] target/arm: Implement SME BFSCALE
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,79 +116,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jul 28, 2026 at 01:17:28PM +1000, Gavin Shan wrote:
-> All ram device regions was turned to be indirectly accessible by commit
-> 4a2e242bbb ("memory: Don't use memcpy for ram_device regions"). This leads
-> to a frozen guest where a NVidia GH100 GPU is passed from host. The memory
-> in its PCI BAR#4 can be allocated as DMA target buffer. qemu has to take
-> DMA bounce buffer in address_space_map() to cover the DMA request. However,
-> the bounce buffer size is 4096 bytes only and it's exhaused very quickly
-> when the guest has significant disk activities on compiling 'cuda-samples'.
-> The full log and problem description can be found from PATCH[2/3]'s commit
-> log.
-> 
-> Fix the issue handled in commit 4a2e242bbb by replacing memmove() with newly
-> added qemu_ram_move() where the aligned and small-sized accesses are handled
-> by qatomics, and fall back to memmove() otherwise, for the directly accessible
-> regions. With this, we can revert 4a2e242bbb to make ram device region directly
-> accessible again and bypass the bounce buffer in address_space_map() where the
-> guest hang happens.
-> 
-> PATCH[1] replaces memcpy() with memomve() for directly accessible regions
-> PATCH[2] uses qemu_ram_move() for directly accessible regions
-> PATCH[3] makes ram device region directly accessible again
+On Tue, 21 Jul 2026 at 19:52, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu-features.h        |  5 +++++
+>  target/arm/tcg/helper-a64-defs.h |  1 +
+>  target/arm/tcg/translate-sme.c   |  4 ++++
+>  target/arm/tcg/vec_helper64.c    |  1 +
+>  target/arm/tcg/sme.decode        | 20 ++++++++++++++++----
+>  5 files changed, 27 insertions(+), 4 deletions(-)
 
-Queued for 11.2, with fixups suggested by PeterM in v4 discussions:
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-https://lore.kernel.org/qemu-devel/CAFEAcA-y+vNK2u-rSq+SVjNZrhO2=BsUysEw2PtCdCZ=qYx2bw@mail.gmail.com/
-
-Fixup:
-
-diff --git a/include/system/memory.h b/include/system/memory.h
-index d5fca96cea..16bf04ef07 100644
---- a/include/system/memory.h
-+++ b/include/system/memory.h
-@@ -2677,9 +2677,9 @@ void address_space_unregister_map_client(AddressSpace *as, QEMUBH *bh);
-  * Move @n bytes from @src to @dst, the memory areas may overlap. This
-  * provides the same semantics as memmove(), plus an additional stronger
-  * guarantee: if @n is 1, 2 or 4 or 8 bytes, and @src and @dst are both
-- * naturally aligned for that access size, and the memory areas do not
-- * overlap, then both the load and the store will be done as a single
-- * atomic access (with the semantics of qatomic_read() and qatomic_set()).
-+ * naturally aligned for that access size, then both the load and the store
-+ * will be done as a single atomic access (with the semantics of
-+ * qatomic_read() and qatomic_set()).
-  *
-  * This is the underlying function that we use to implement accesses by
-  * a guest vCPU or a device DMA operation to a ram block. The atomic
-diff --git a/system/physmem.c b/system/physmem.c
-index fbe7df2391..2f37cbeb07 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -3162,13 +3162,18 @@ void qemu_ram_move(void *dst, const void *src, size_t n)
- {
-     uintptr_t test, len;
- 
--    if (src == dst || n == 0) {
-+    if (n == 0) {
-         return;
-     }
- 
-     /*
--     * Maximal length of aligned access that are determined by @src,
--     * @dst and @n
-+     * Calculate "the lowest set bit" over @src, @dst and @n, result put
-+     * into @len (which guarantees a power-of-two).  With that and the
-+     * later check (len!=n), it makes sure that we will only do the atomic
-+     * ops when:
-+     *
-+     * (1) @n is a power-of-two
-+     * (2) @src and @dst addresses are both aligned to @n
-      */
-     test = (uintptr_t)src | (uintptr_t)dst | n;
-     len = test & -test;
-
--- 
-Peter Xu
-
+thanks
+-- PMM
 

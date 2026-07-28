@@ -4,97 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3953EC531F9
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 10:40:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB800C53219
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 11:16:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wofDl-0007De-Ef; Tue, 28 Jul 2026 06:39:37 -0400
+	id 1wofng-0001UD-8J; Tue, 28 Jul 2026 07:16:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wofDk-0007BF-Ez
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 06:39:36 -0400
-Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ id 1wofnb-0001Rz-5v
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 07:16:41 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wofDi-0007sJ-6w
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 06:39:36 -0400
-Received: by mail-yx1-xb12d.google.com with SMTP id
- 956f58d0204a3-66771ded50aso4808715d50.1
- for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 03:39:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785235173; cv=none;
- d=google.com; s=arc-20260327;
- b=cU8r7YLO7NRSf70SEj/Ixt+W5csUs4ANDEXhGscxJmBADHVERZzOCn8kmzZ41Mt3x/
- qypVrHrn1QXci/NfuqE7wuPNgcCXy9IfbSzJ+Cjw7RK1+FkjL+L7O2doBOe20vJtxbjn
- hpuv5zG5eVOVg7dYK/H7kpmoXJRep28+8zqadBPPBDlQUEjFAHUQOiYrqX7pFvMpm0ex
- 8luWmrBqzCyr2BpL5nBBRWVo8E+wB24knD60sGEHkxIgFY+RHP2ehjFO+D/C9VVnGpSH
- /BswB0frIAqONQatFEKO/lpddavisPpulJoCRELGIUb1h3D+ThsCVorFqrbvpOUJ1oQC
- R8+Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=cHjcYC/KMaXgYVOEQmUvus/3EYXd8abzz0f+0gpH9Kk=;
- fh=+y0aDIhlPNOPiXj7kGmrajbaE263LvhVn+a9aMATYpY=;
- b=pPxig4jWLywrosi9Cp8YQlgFUtBi/m+RGi89l1SXCbtMg0sEkbr7cPj1FzHQN7Id8s
- +kO0z6zZQDsXOKWbmDLvTs2GH7tyygAg4oldreqC1XvKM0ccQE0cIK3ybczQVkQjsDlV
- KsyZqDL2rglYB4OdDdn/ua2uyzmXrTEg5KapT2K4ZhJWOBY+K1BezQ61+E41mD66pdgD
- 9YOplCXVM23AERVGGnEDWiNd4WTTagv3HEhOb9yBrqot/KzfQ2KgINW5m3G/p3bFJku6
- Hl+j4wewPs/B3mlYZ8bGyDWgfgQJ6tQ0vd5ZU2uPfBIsUhRaHK3h8JG5PZPKNUizzX1i
- F4wg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ id 1wofnY-0005dR-1T
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 07:16:38 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-4956242332dso32666525e9.2
+ for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 04:16:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785235173; x=1785839973; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=cHjcYC/KMaXgYVOEQmUvus/3EYXd8abzz0f+0gpH9Kk=;
- b=lypNCsIWmrOKhLJxI+uTv9SwB34SLmMIhQCqnKYMDiE6zNHz/LtgmJKuIbYNOog98I
- JK1KVcBZ6FTjFRVITjG1xaoCSB6fIB0rFijg+i6dyeMWwBTwoK6N7sJWPEVhRZFZ/C8G
- DCVt5Snb5r4cJIUgpbpfyyw0Qt98Kpar4yXdov0nJHcJ5uPMvQOcm7+oRM53A8Ws7Usp
- KuXIzeTGH0YvUQDkPYgKO9RoXG4v4lGmG9AuOxCYgG+0RqSKoTftehnhuPlqeIKkY0PK
- HfBhc1eu/i1u1miLgq3aS4zHtLSBI1MeXRGGfWtsv4nF9669nsyNF9r70uDPAUpc4HwV
- 3JCw==
+ d=linaro.org; s=google; t=1785237394; x=1785842194; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=zHPb7VuAgcCWs/t++2jn3b0chMOiJkrQ0SLa31OCmCQ=;
+ b=tiPWBj/GzcwROEkC2l/pzzFNOH1OmpaEIS4Tu4jNUS/sh8fnRXMCL/9s83fvptMPiG
+ jwvIq4iPtrvJEp0tVrxYxVKLtbOiSWCBTyNOpLSlR1MD0OO3lnF7e050Iew1G8h8gOaJ
+ WowN4AUnqafbwy264bHcogxskP6f0x9pVuQYmkxCN+so2vtip4CsYhgXxPE4flA9rz82
+ QG3Gc42Rua6VfTH/dM0iFQDjkCRR0zQmVusxWKpD1oE8VRuSYP18vFFRrI7/zINQJgY6
+ y4y84tZPjDv5bNp7Qt/DYBSWD4A5aLXwosFhRmmNwbD+mfRzxvmd5cd8NSVtkzwvH85W
+ qCdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785235173; x=1785839973;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=cHjcYC/KMaXgYVOEQmUvus/3EYXd8abzz0f+0gpH9Kk=;
- b=gcHRtyoo/5vlUqC46w0DUmwvu3vZ0G3nEhtufT5PMAPmxOWt6/yfelUvq+sg+mQuXB
- N2izKn1o7ElOrSfYzSVsvnCrJatSL0jCtwJA59g/j35FNCy5DQ5JvXyVTN+9YrwcMloD
- utSXm/OW+2qiINm5PKVQcAZkC4IUeUs4ISfPeFsx838ZhZigB4jbhnkKgC4peRVk6PYK
- wBZ816MkaC8YTFzidCBfnMKLTRNG7EnpMTnXmuUCboCLp1TyhZfsaCXNn9W2YUP1/kBa
- g/9fGXAtRV0L+RtupJNUM42E6R/bCdhJy6qImFplYxgP64pbs9HH/ZCkmzO1qW80Kpgs
- PsdA==
-X-Gm-Message-State: AOJu0YwNdOglETUZjNv9GO94euNd7Is6NumHKv/ZTcAlmZMuzx5+l+Xk
- dTeTRG6ooke3lC8D5BmSuZbsuJQlH+dB15/hLRWmahJGzeBBpWTltDyRMWHvghaQVJBcZQPmKqi
- Cw5i7QWrVyTkwPKSKMJ4pNT+75ep7tBpPaofzPlH1+w==
-X-Gm-Gg: AR+sD111p2jYNhue3WOqWIuMCUJcxzMyci71x7JaVUwWQGMMksTrhq9WCyzuyJ9i380
- kkWCB6/aAx7ljgS2iQV3ptDIpR/J2G8eiG0nnup/as8jUXLBAvxSs+hLnRvpu+JFN806WEqEceG
- 65RpQnDz3Zv8Kd5glbT4ZioQHfkZIOj36HHHcSTuL5CubB92GUBjCXSF4oNrAcS1AEpj4OGY8Vh
- sWhhv06sDbM7Hl2BT3dCLGpwFcbebIVFD4zWNroEqsM8PraO6xObjLL8ta9cXyMsIhjCgYF3fwF
- hoB70dn2nVsjMwRShOSoBiKRWzBPwyXa+0msCXzYrzwVnQ==
-X-Received: by 2002:a53:c742:0:b0:667:bd13:2f63 with SMTP id
- 956f58d0204a3-669057fe562mr495189d50.59.1785235172649; Tue, 28 Jul 2026
- 03:39:32 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260706173324.804340-1-peter.maydell@linaro.org>
- <CAJ+F1C+TO_-ktDqJnbeXuaCdAsomQMTvWZ8aAFndn=JPF1+2sw@mail.gmail.com>
-In-Reply-To: <CAJ+F1C+TO_-ktDqJnbeXuaCdAsomQMTvWZ8aAFndn=JPF1+2sw@mail.gmail.com>
+ d=1e100.net; s=20251104; t=1785237394; x=1785842194;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=zHPb7VuAgcCWs/t++2jn3b0chMOiJkrQ0SLa31OCmCQ=;
+ b=JbSvqWXae68kjdhJSWq0r9mhq2CdazeFXWOzufDzec3i6QUe/bkfVeq9bvuvU1e4Wu
+ UCWH7DfUNXfvJooFSEYszM0wU/VI2yQ9eMCUSa7uQ9KFqm9gv3aZ//i+viuv6UEesqfr
+ UN42c/QdbESIfRPKuW15elqq5w1IOuYyNORc8yKiwmq1BttRPHdarZZSaWFN8MKLSMXx
+ GQgamwBwltG82rRcqUi7XaBh/j+OoTRgqvwI4MxXPVnj5HqH4+9eJ3PXFC9dam2o742h
+ +r7FaoHh9XC9wBZhqbQtMQU/BTNcxuddzL3gHiJo3kfO8EnfDqi7wcKcyyJj4woX+m3B
+ Ovfw==
+X-Gm-Message-State: AOJu0YzQJKheWE4VibHlaQzYWc848dvWPavAM1PtYTLxIjluuQ8bo9bK
+ znPV1dpTwVV2dHqg6ZePRBLuixTiD44eoQ+DhAs4Ezss90grGEnQTVpA0oDZAUAUfQFoXB1YFaP
+ i63Dw
+X-Gm-Gg: AR+sD104psMTLsxtr8u9dxSNU/TWOVBXn6fzYy85hHol/LUyRucXpyYEv7m4aXVhr5x
+ YRIqcb+qPyIwD6v+vR+8oJV+pLfKWONVwpPvwp7uBfuIz2FiJWqmYy3EDvf8W2LKQF2q9H74j0H
+ NQW5nwc1YAc19Dp1G4G/JLxFGB+EmDxUREsu04vfgLt5GIUSb0z4JXgcyv9gZIBWThr/xKnGxwU
+ r96FZ2wObT0bFQKjYclKr/rCrjUPFnNeUIuVrHmbQRq2ZwZInIkTmyXjAlruCzmh94wzy50vMpy
+ xd7sgatNPVt/MCFgpD9wWtA200erGmxaMWnes0tLy7Nz2apDmjwCoaAa28HzjXPgBgOsGw0GzuS
+ K9VletVKGPLct2hvY/DKKtTAyfgx3W0+0i1ulLQY1pveU8jbyaUsaoMBWZhOFQOS4U31vqEhAQ9
+ X89+rXQJW7ZpPRaLOoUyzb9mb2/N9yq7EPz50qGRuatqK04QVVfEbPX/muG6aReFFjS1qqiBngr
+ WGNYSl7Q6a0seMbbh13LQ==
+X-Received: by 2002:a05:600c:4452:b0:493:c453:6002 with SMTP id
+ 5b1f17b1804b1-496c65c8abemr18671625e9.35.1785237394572; 
+ Tue, 28 Jul 2026 04:16:34 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4957b5ed646sm284546255e9.0.2026.07.28.04.16.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 28 Jul 2026 04:16:33 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Jul 2026 11:39:21 +0100
-X-Gm-Features: AUfX_myDmz51gbMcofEJm5InBMjAOqEF5SuOnjW3GQVWoLXjHuRazBs2K-6MfwQ
-Message-ID: <CAFEAcA8krc1OoZOxfhjcBVW-pY8MVX1e0gQGa=YGRVAtOLU_GA@mail.gmail.com>
-Subject: Re: [PATCH 0/3] hw/display/exynos4210_find: Clamp windows to screen
-To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH for-11.1 2/3] target/arm: Make YIELD,
+ WFI and WFE be NOPs on pre-v6K
+Date: Tue, 28 Jul 2026 12:16:28 +0100
+Message-ID: <20260728111629.1705308-3-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260728111629.1705308-1-peter.maydell@linaro.org>
+References: <20260728111629.1705308-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,30 +104,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 28 Jul 2026 at 11:08, Marc-Andr=C3=A9 Lureau
-<marcandre.lureau@gmail.com> wrote:
->
-> On Mon, Jul 6, 2026 at 9:33=E2=80=AFPM Peter Maydell <peter.maydell@linar=
-o.org> wrote:
-> >
-> > The exynos4210_fimd device has a setup where the guest can program
-> > both the overall size of the LCD screen and also the corners of
-> > "windows" that define where the guest memory should appear on that
-> > screen. The current code assumes that the guest is sensible and
-> > puts the corners of windows inside the overall screen. If it doesn't
-> > then we will try to copy data to an address that is outside the
-> > interfal framebuffer memory that we allocate to be the size of the
-> > screen.
-> >
-> > This patchset clamps the window coordinates to be within the screen
-> > size. Patches 1 and 2 are simple refactorings to make the third
-> > patch easier to read.
-> >
-> > This fixes https://gitlab.com/qemu-project/qemu/-/work_items/3795
->
-> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+The YIELD, WFI and WFE instructions are in the NOP hint space, and
+were only defined to actual non-NOP instructions starting in the v6K
+architecture; they are also present for all M-profile architecture
+versions.
 
-Thanks for the review; I've applied this series to target-arm.next.
+We never did check the architecture version before making these
+instructions have their special behaviour.  Mostly this has not been
+a problem because a guest won't execute one of these insns unless it
+is prepared for it to have its usual effect, and because we
+implemented SEV and WFE as NOPs anyway.
 
--- PMM
+Now we have implemented SEV and WFE to be more than just NOPs, it's
+important that we have the same condition on the SEV as the WFE, so
+that we either NOP both or else implement both.  A guest probably
+won't try to use SEV/WFE on CPUs that don't implement them, but it is
+valid for it to do that and rely on them both being NOPs (and so a
+WFE-loop falls back to a pure busy-wait loop).
+
+Add the "only if M profile or v6K or better" check to YIELD, WFE and
+WFI.  This means that all the insns in the NOP-hint space for A32,
+T32 and T16 have a correct feature check.
+
+Fixes: 60e7ee5bb7cd ("target/arm: implements SEV/SEVL for all modes")
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/tcg/translate.c | 35 ++++++++++++++++++++++++++---------
+ 1 file changed, 26 insertions(+), 9 deletions(-)
+
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 6e52ad082e5..055f3c5b403 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -3235,10 +3235,14 @@ static bool trans_YIELD(DisasContext *s, arg_YIELD *a)
+      * the next round-robin scheduled vCPU gets a crack.  When running in
+      * MTTCG we don't generate jumps to the helper as it won't affect the
+      * scheduling of other vCPUs.
++     * This is a NOP hint on older architectures.
+      */
+-    if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
+-        gen_update_pc(s, curr_insn_len(s));
+-        s->base.is_jmp = DISAS_YIELD;
++    if (arm_dc_feature(s, ARM_FEATURE_M) ||
++        arm_dc_feature(s, ARM_FEATURE_V6K)) {
++        if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
++            gen_update_pc(s, curr_insn_len(s));
++            s->base.is_jmp = DISAS_YIELD;
++        }
+     }
+     return true;
+ }
+@@ -3280,17 +3284,30 @@ static bool trans_SEVL(DisasContext *s, arg_SEV *a)
+ 
+ static bool trans_WFE(DisasContext *s, arg_WFE *a)
+ {
+-    /* For WFE, halt the vCPU until an event. */
+-    gen_update_pc(s, curr_insn_len(s));
+-    s->base.is_jmp = DISAS_WFE;
++    /*
++     * For WFE, halt the vCPU until an event. This is a NOP
++     * hint on older architectures, with the same conditions
++     * as SEV.
++     */
++    if (arm_dc_feature(s, ARM_FEATURE_M) ||
++        arm_dc_feature(s, ARM_FEATURE_V6K)) {
++        gen_update_pc(s, curr_insn_len(s));
++        s->base.is_jmp = DISAS_WFE;
++    }
+     return true;
+ }
+ 
+ static bool trans_WFI(DisasContext *s, arg_WFI *a)
+ {
+-    /* For WFI, halt the vCPU until an IRQ. */
+-    gen_update_pc(s, curr_insn_len(s));
+-    s->base.is_jmp = DISAS_WFI;
++    /*
++     * For WFI, halt the vCPU until an IRQ. This is a NOP
++     * hint on older architectures.
++     */
++    if (arm_dc_feature(s, ARM_FEATURE_M) ||
++        arm_dc_feature(s, ARM_FEATURE_V6K)) {
++        gen_update_pc(s, curr_insn_len(s));
++        s->base.is_jmp = DISAS_WFI;
++    }
+     return true;
+ }
+ 
+-- 
+2.43.0
+
 

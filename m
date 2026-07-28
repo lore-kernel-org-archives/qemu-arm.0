@@ -4,102 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08B4CC53219
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 13:51:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 211B8C53219
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 13:53:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1woiDI-0006rp-W2; Tue, 28 Jul 2026 09:51:21 -0400
+	id 1woiF5-0007jB-G3; Tue, 28 Jul 2026 09:53:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1woiDE-0006pr-QF
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 09:51:17 -0400
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1woiDD-0000yK-Eh
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 09:51:16 -0400
-Received: by mail-yx1-xb12e.google.com with SMTP id
- 956f58d0204a3-6685483aad2so4837191d50.0
- for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 06:51:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785246674; cv=none;
- d=google.com; s=arc-20260327;
- b=ZkMMdPf6qUJXPStSdRHjFf+ABo9n18/24C4yn70OdsktAhAOKXF/1j3gWKIEJQf7jZ
- YWKt+m18mtisjATzNs9J3+utrf1MxjyUq9Bb7xWwS2Ch2k62D5tbUedC+CTu9Xf57Q5s
- 9g2ecfu1CqfHc3KeQg79mrRwKoSqdlWcaXDCCchr2qRrkTiquVroJcJFbMF5DhyN8HLT
- 7hyMQXKzt7sf3qiXMetKR43x5XonIU9MwEe5er5IczVNGJVh2Cs84GseuSxwuk+TLra2
- XZZ/nGSGTTYgyjExTSdsaTlDQ6D0wvLslRFmNWIn5WF8E8QdarJcN1C5c9h4RftsQOXw
- nBRw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=VUF6gdhJPTyY3KgZ1fqwT3T8avqTRIo/g3y1DdJllsg=;
- fh=6am3nbR1iRH92NzZqtKHTO9+NE96MZYYTMJ2YwNXkXc=;
- b=ZwMsew4YZteIx0KAWn3PKZcWOOSgMd/NXu77IPr0NP2v7Vi38N97RA5rzqQCpJ321b
- 1b9V/IwF48IgZx7Ds6l0FTLx9pu7FplYeycAm7NVpHDtNf8kWOFQY/Gai4oPG1i/tXiD
- optkB2KVT/jdp24Lef7RC45zmaetTACFB0v7IHg0whqlENF09P+PuTZSsfhTp5AD+Gn+
- tCeJLgZMiAjMarQkpM2zcXb19+u/HKvikJk9aX8VVKtbUh7zwpDwQtMmvk/Uo1zWEs6T
- OIVSirckvQhKhGslzbgq5W1Mgof4owtgGA+u3xAO4leP9k0WTKM5io8NLoJ1Rr1S4kaX
- TI7Q==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785246674; x=1785851474; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=VUF6gdhJPTyY3KgZ1fqwT3T8avqTRIo/g3y1DdJllsg=;
- b=pFBJsq0XxzZqosCdnoZh4KCBPTFk+UQuARlv1f3hYwnQDDPheTZtiNjjw5QbjCdRHF
- KIqOY9LAcywEj5wv/9VFJnhLfufLWgFfWQSXQPvFQlArYgsjvFN0rFXsdboCXrgU2zWL
- o5oSLK/hgtVbK+Ya0tsbdxQsrAnDOFX+2EhAPBhcI1/qH426P0/jUdrkIkc3hEk0h21A
- xLTu2sH+94FI+/dJGSSUR6PRJ5CJhUMW/nIgEr0y8Scm1/RHqx242hGzdgflmkBnmzAv
- kR5HaOCANF121BjyTHxrGr5NMpYwXjSr/LtHcmAo6zTumIHhaxTLZo/Ii7aoDMxF8sj0
- F+gQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785246674; x=1785851474;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=VUF6gdhJPTyY3KgZ1fqwT3T8avqTRIo/g3y1DdJllsg=;
- b=LAdr6NPq4WrGsS2ZKvNWODzRapBGSW3AG3SxQhZeYXZkYj8G6GRdIwgbeCPLPXtWx2
- 5LT4DsXWfmRw85RuZbxzfKOsgkjQqjawHJU0HBpeFkrYGM1/xR3qx6wDXhJ/P8up/EfS
- qmWz20XSPdVT2ka7DDKbpTNhsaFfxrjj5jJ339KHIqQiIIkIaWHVSPFOGMlAvbDDFn5g
- uS1XQ9fCr3wvdMQnGGma2bELhzTooLTGRNemrGtzoRa5/C2tyTFQD73PXADoBV75WJVA
- HT760hEOy+VAvLJP8Br70WNxVCKSoELdYsFh4pycmb1a8+a9G1m1Gs8gDiXwqeoyUkNX
- 29iQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpwfOdX06s8Qpdn5B/J/9bUzizUd8CG8n8ABfqC/4XUx+lUGGYDp6kSqc+NJLXIs+TowPkh+ca7EA==@nongnu.org
-X-Gm-Message-State: AOJu0Yw3OxP8JIoWwgaLuzDUKf3XRhTKa1+v5xK8nTs+5skRWG48GH8q
- nFvajTEgl5Ak8TDv70rDQfFIHd+vjBR4xX7uIZ8rX+JAbBYQtNsgc0VWjwaylxoZzFg2y52+4is
- qnniMnlDJ3Fs6pRtxCGowPiA4GQR+XxbPYzT9ZdYsLw==
-X-Gm-Gg: AR+sD108/jITdAVld6wmkeui9zPqES5OUQagW8FN5I4NscmHrBsIC78ZfbDxnStoHAK
- uBGz9t/xdw2H20oFa3SC8L/T0w07nw5xNXEbomd96qMNGrfs0xrxxsPRDzcwrbOasD1fmsD7GnK
- z3gcUWemNCGvhWrk/a1J/JlqmIRqo6hyG6oE2ifx/P6OGPg6tM2ed14lCsxgAq7spy77qEJGq44
- uE98auci8Nae1etl6xUPCv6Fv741zed4W4KwKwVIUv+u7/5ivkaVQGd1MtmUgsIp8bUaGSYJjAu
- b745BVAM5DYlprxNmm9mUU8KDzPZ4sC7yqjwzjgf8fNBfA==
-X-Received: by 2002:a05:690e:4504:10b0:668:434d:a2f5 with SMTP id
- 956f58d0204a3-669054c1f61mr688018d50.1.1785246673854; Tue, 28 Jul 2026
- 06:51:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1woiF3-0007if-JZ; Tue, 28 Jul 2026 09:53:09 -0400
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1woiF0-0001F4-A4; Tue, 28 Jul 2026 09:53:09 -0400
+Received: from [192.168.10.145] (p865013-ipoe.ipoe.ocn.ne.jp [153.242.222.12])
+ (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 66SDqp8l070066
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Tue, 28 Jul 2026 22:52:51 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=nQHW/sr4AZIMKp0yFNZIgwtSy/2mIDNrqiKgqm/oifQ=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=From:Message-ID:To:Subject:Date;
+ s=rs20250326; t=1785246771; v=1;
+ b=JV5usYJ+cIS9xfS3Uopr7sJZgwcv3jmYmmKR1eDqQCMB6U9jBR8xpAPnS4x3UU07
+ J8Le8smdus3mn6VFycUCEOa6mkG5dswIfPRkre1P7/PO09FG30JR1ktNsdBncOib
+ Nb5ICY/nbg4X+7Muoy7dM9UktteNBAumBptiXpNNr0/KuBgSMQ44GjS45mLaRrHR
+ UDdiXEjVuKPSBWhYeDyTGE9N++fk6lWnFQ8a4onja3HIVUhS9d8S+1OLAOvf551x
+ vdMMZ/n1VtMgCp48ldlVOmzLf2TMExAuFjiF+AjXlWEoTMG+WQmIFLQvl/wQ9ybN
+ VKxKedYY3+t9UUXupGnvrQ==
+Message-ID: <78b94211-72ee-481f-8809-ee786e3389c1@rsg.ci.i.u-tokyo.ac.jp>
+Date: Tue, 28 Jul 2026 22:52:51 +0900
 MIME-Version: 1.0
-References: <20260717232306.378988-1-richard.henderson@linaro.org>
- <20260717232306.378988-5-richard.henderson@linaro.org>
-In-Reply-To: <20260717232306.378988-5-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Jul 2026 14:51:02 +0100
-X-Gm-Features: AUfX_mwjuassID0lfgcRUMuDaM1vYr8AKSAUTOYmTAfK7ifcHMjrmmzONJo1PKo
-Message-ID: <CAFEAcA-BLQ00aC9tDpVGWoPhngC2UgXtVeBx9fepcGiQ8bRX+w@mail.gmail.com>
-Subject: Re: [PATCH 03/17] target/arm: Move helper_dc_zva to mte_helper.c
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Subject: Re: [PATCH v7] target/arm: Always add pmu property for host and max
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
+ devel@daynix.com
+References: <20260629-pmu-v7-1-939518c349be@rsg.ci.i.u-tokyo.ac.jp>
+ <CAFEAcA-=u3ZgiAXRNWM1VCMv7FYG2YP=oirf40yGo--p0BSfbg@mail.gmail.com>
+ <39e270ed-1667-4bbf-8732-913e8b1f87e8@rsg.ci.i.u-tokyo.ac.jp>
+ <CAFEAcA-_mSr0e8yePxoxW2wS7xAHtTzd8S5MfLWwr_BPkAD+Rg@mail.gmail.com>
+Content-Language: en-US
+In-Reply-To: <CAFEAcA-_mSr0e8yePxoxW2wS7xAHtTzd8S5MfLWwr_BPkAD+Rg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -116,23 +76,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, 18 Jul 2026 at 00:26, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Slightly odd, perhaps, but there are 3 MTE variations of DC_ZVA
-> and this is the easiest way to share code.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/tcg/helper-a64.c | 50 ------------------------------------
->  target/arm/tcg/mte_helper.c | 51 +++++++++++++++++++++++++++++++++++++
->  2 files changed, 51 insertions(+), 50 deletions(-)
+On 2026/07/28 18:40, Peter Maydell wrote:
+> On Tue, 28 Jul 2026 at 10:33, Akihiko Odaki
+> <odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
+>>
+>> On 2026/07/28 1:10, Peter Maydell wrote:
+>>> On Mon, 29 Jun 2026 at 09:10, Akihiko Odaki
+>>> <odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
+>>>>
+>>>> kvm-steal-time and sve properties are added for KVM even if the
+>>>> corresponding features are not available. Always add pmu property for
+>>>> "host" and "max".
+>>>>
+>>>> Note that we still don't add the property for other CPUs that lack PMU.
+>>>> This is because we do not know what a PMU version should be enabled
+>>>> when the user sets the property to true while it is defined as an error
+>>>> for the "host" or "max" CPU when the hardware accelerator is enabled and
+>>>> the host doesn't have a PMU.
+>>>>
+>>>> This fixes qtest-aarch64/arm-cpu-features on the hosts that supports
+>>>> KVM but doesn't support PMU emulation.
+>>>
+>>> No, we should not special case "host" and "max" like this.
+>>> The "pmu" property exists only if the CPU has a PMU and it can
+>>> be turned off. If The arm-cpu-features test assumes that the
+>>> host CPU always has a PMU and so always has the property, then
+>>> that's a bug in the test, not in the code handling the property.
+>>
+>> The test correctly avoids assuming that the host always has a PMU. It
+>> expects that the run-time-derived "host" CPU has a stable "pmu"
+>> property, with its value reporting whether PMU is available.
+> 
+> That is not a valid expectation currently, because that's not
+> how the property behaves (and is not how many of the Arm CPU
+> properties behave). If we (as has been proposed) refactor Arm CPU
+> properties so that they're class properties rather than object
+> properties then we will have a property that is present always.
+> I don't inherently object to doing that.
+> 
+>> That is already how Arm handles SVE. Commit d25293068b03 ("target/arm:
+>> Move kvm test out of cpu_arm_set_sve") added a false SVE property when
+>> KVM lacks SVE. PAuth and kvm-steal-time use the same general model.
+>> Other architectures do the similar; for example LoongArch KVM does
+>> exactly this for "pmu". So we are avoiding special-casing the Arm pmu
+>> property here.
+>>
+>> The comment in aarch64_add_sve_properties() gives the rationale
+>> explicitly: "to allow -cpu max,sve=off to always be valid." sve=on still
+>> fails in that case. Keeping the property stable prevents -cpu
+>> host,pmu=off from becoming invalid on hosts where the PMU cannot be
+>> enabled. This also matters outside the test: libvirt emits pmu=off when
+>> the PMU is explicitly disabled. This design is intended to follow the
+>> alternative you described previously [1].
+>>
+>> "host" and "max" are special-cased for a different reason. For fixed Arm
+>> CPU models, the property is omitted because its semantics is not defined
+>> when they don't have PMUs. "host" and "max" are different: "host" and
+>> "max" enable whatever PMU available, and fail otherwise.
+> 
+> We should not special case "host" and "max". If we want an "always present"
+> property then its semantics should be:
+>   - always exists for all CPUs
+>   - if the CPU can't support a PMU then you can't set it to "on"
 
-Both files are in the same arm_ss sourceset, so no danger of
-accidentally breaking in some obscure build config.
+This patch follows the behavior of the sve property. Although sve is 
+registered with object_property_add_bool(), the presence of the property 
+is determined per class basis: the arm-cpu-host and arm-cpu-max classes 
+always expose it, while the other arm-cpu subclasses expose it only when 
+they support SVE.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+As I quoted earlier, the SVE code explicitly documents why the property 
+should be always present for the host and max CPUs, and 
+qtest-aarch64/arm-cpu-features tests that along with the pmu property, 
+so I would prefer to maintain consistency here unless there is a reason 
+to do otherwise.
 
-thanks
--- PMM
+That said, the SVE code does not explain why the property must be 
+*absent* for fixed CPU models that lack the feature, so there is 
+certainly room to refine that design uniformly. Please note that the 
+current test case contains dead code asserting that the property is 
+absent on AArch32 CPUs when running KVM, which might need to be updated.
+
+Regards,
+Akihiko Odaki
 

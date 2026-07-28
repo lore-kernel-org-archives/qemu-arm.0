@@ -4,76 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 722FBC53219
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 03:19:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40064C54F55
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 04:32:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1woYKu-0003L9-1L; Mon, 27 Jul 2026 23:18:32 -0400
+	id 1woZUD-00074H-2W; Tue, 28 Jul 2026 00:32:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1woYKt-0003Ko-9Q
- for qemu-arm@nongnu.org; Mon, 27 Jul 2026 23:18:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1woZU7-00073q-FA
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 00:32:09 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1woYKr-0005XX-N1
- for qemu-arm@nongnu.org; Mon, 27 Jul 2026 23:18:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1785208709;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8sCFvVSDQ3//CPWi+9BWF+8046Ug5/Bej/Dzg+yFmRY=;
- b=H8WNOkd2gOpUBBZ4ZkAlOhjY5JvGSC04Y3ckqYoI/3UHG1gi8kqXhzdHN9d+9zj43EoR4K
- AIw5htLLifKe7A/g/dUL0fDGG+sUYxPdyx1vHCNz0jQGGXW/eBO6MLpJJltKNDTSczDX5N
- x1eKmqeSKb7lCEaapXKFfFvOxq345jU=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-169-YUNT_ExDNgGMtjONsMzlIQ-1; Mon,
- 27 Jul 2026 23:18:25 -0400
-X-MC-Unique: YUNT_ExDNgGMtjONsMzlIQ-1
-X-Mimecast-MFC-AGG-ID: YUNT_ExDNgGMtjONsMzlIQ_1785208703
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 621B91956079; Tue, 28 Jul 2026 03:18:23 +0000 (UTC)
-Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.50])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4059E5B2; Tue, 28 Jul 2026 03:18:13 +0000 (UTC)
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, peterx@redhat.com, mst@redhat.com,
- philmd@oss.qualcomm.com, peter.maydell@linaro.org,
- richard.henderson@linaro.org, alex@shazbot.org, berrange@redhat.com,
- philmd@mailo.com, david@kernel.org, clg@redhat.com, pbonzini@redhat.com,
- phrdina@redhat.com, jugraham@redhat.com, liugang24219@sangfor.com.cn,
- dinghui@sangfor.com.cn, shan.gavin@gmail.com
-Subject: [PATCH v5 3/3] system/memory: Make ram device region directly
- accessible
-Date: Tue, 28 Jul 2026 13:17:31 +1000
-Message-ID: <20260728031731.286666-4-gshan@redhat.com>
-In-Reply-To: <20260728031731.286666-1-gshan@redhat.com>
-References: <20260728031731.286666-1-gshan@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1woZU5-0005pH-O4
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 00:32:07 -0400
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 66S46RVM1821155
+ for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 04:32:04 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ Ub/0ZePdk4Y90jbtQ+uEBBUliBz8MAqA12F2Xm3YUoc=; b=k3Tmj+qlCqTc7La4
+ hyBKFpImSP7ae8m1ODc5DhkSb9liJvSL7IAdL44nSn7v1D6nDYjxAU3wUZETvldX
+ dcH0ELh5cbmHAS290KcHyZ+CPi1IXa1p9XMRh2eIzpCyV0NvAI9PHWx74KvAr+vI
+ +91SUgJ+y0omwGYlZ3SvAi4XQqpUzyJdfibe0fL55/tHCXX40yY/ObFWTd3oHsmv
+ 4zJMyLb2oFLKs+uCh/fhEL8/16FukxkllbZwuoKFz6maotfbmAozxq+oAuRFdSdv
+ h2MYKDK16de6nCYWgu0xgQRdvvCN5tPLsW5qNAKOAFXUfdHaMCKvYQfTW+hpiZMV
+ uhEFvw==
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fpn3y02e4-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 04:32:04 +0000 (GMT)
+Received: by mail-qt1-f197.google.com with SMTP id
+ d75a77b69052e-51a8b0a08d2so31842121cf.0
+ for <qemu-arm@nongnu.org>; Mon, 27 Jul 2026 21:32:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1785213123; x=1785817923; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:cc:from
+ :references:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=Ub/0ZePdk4Y90jbtQ+uEBBUliBz8MAqA12F2Xm3YUoc=;
+ b=jN3J5yQ/gnIqDiv0NOrd7yN4uNo8bKGJWU2sngLwixqz7kHUBt4yIqBY25xSabHBVl
+ 813lSvhihGApT0UY+nn5ruL5xGsMbLyQ+zcBN38ZzxXNqj6zghL2MFuQz4TXbpPFVZP+
+ HG+GWtwFfMW0sUULBXMXWJKgsN2q2BlZYhSDNms0R6fCpdUajyQMN8lhzyJwgKv0bynw
+ hOOCG4HIRa9+pLhxw4eJ72JUO/qAzYhFYW0JNM3WufJvyTGVqbjVWFTj/bJWmLoQ2xk5
+ G6DtHYzSnVJyM+sXENcuwlBFIWxKTnHPl7DmjouTU/PSdj1VRe0g0eJ3fkwT+pwAfY+2
+ Pnjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1785213123; x=1785817923;
+ h=content-transfer-encoding:content-type:in-reply-to:cc:from
+ :references:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=Ub/0ZePdk4Y90jbtQ+uEBBUliBz8MAqA12F2Xm3YUoc=;
+ b=sYu/Ljjs6+KucX+P80bQ7k7grxHw/17EXgy/wrO7Spk0s/OtIgVnvPFyEorkkipsTK
+ tnsCwa2WmOQqnwqSf9czOy1vNZhXR5SuOMKG5ncdHVAiL5gX/ikrrWWIsv5zTtnXQBSw
+ wzemRvHcQG/DYxkF3IAa7ggzYbghwji+inBrrjNyQF47/3Ldy5u7A3IsV8hZtD450ZYG
+ sstfTpnKbQ19hy0/eqnjRbHhc1QeT3RwsnWCOPh5Bddr+lu6I7up8hry+ICPVylaRXPT
+ pNTD81To1WMIulMl/3jYEDpqf3NeVH5VIoCUiLRl2ZKkagKRRAJYN6qRteHfWTql+PLN
+ rXGA==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RobGGScxRxXtHLGka0+E2vqqMaTJW4TJNZSa3u25Jt3/GBUuWsjPdWiBcRXMOxRtuIQbNFkU5u2Qg==@nongnu.org
+X-Gm-Message-State: AOJu0YwGPPDIJchphTkIFyyFxtCqAwDC2jVqMk6VQVPQrHtBV8u+kfCO
+ cEvKIaUgBgRU9ih+E7Wp1f1XlUc1uEU4SAxAPLZ/rVYRlm73v/snlo+XVFHfBkRRhe1PFXv4EWC
+ hJurosA5+njVl9lOf2ddUhH7yNETVUFYs4VjP0x8puKbU3BNeuSVmuitzCJ1uGwI=
+X-Gm-Gg: AR+sD10/mgjGIWHS0oQgaYapv2s+6SgipFNd+uUy4LoqI5ZY45ABUa/ZO/RixMh5bkU
+ dzOj9rqsFcA92TUnCMh+thBDZWbbZ3g3epN80DWxSOXEOBx7fn+uxyD+LghU2EJOTtHco1CXdPN
+ H1JCCezo64AN4L5esRgLJaqTjZ727wYdiSJsQgC+tVBTFN0tnmgXFahLsDq0jfow0jdtyA8nhma
+ m+qsCSNbEm8WwN9S3AtD+WQdoWE/lw8Tw18PjI4qqkLQNCwTB8K99qNusXhbwo4chV0Wdrq9i+R
+ jsXqEwtz6lewuxazpNqBJSG7+CksjWGHXpH9qKMNtzw/Fo2kiJjFD6ez52+CDkuIHtLMDtCFDe7
+ wkZRm9lem9q8fvvU6V2hcH9s62kQTZ7WfYHz+NDxRb2/4GK2Ek7Q=
+X-Received: by 2002:a05:622a:5292:b0:527:8300:3d78 with SMTP id
+ d75a77b69052e-529d7147430mr5596761cf.70.1785213123501; 
+ Mon, 27 Jul 2026 21:32:03 -0700 (PDT)
+X-Received: by 2002:a05:622a:5292:b0:527:8300:3d78 with SMTP id
+ d75a77b69052e-529d7147430mr5596561cf.70.1785213123095; 
+ Mon, 27 Jul 2026 21:32:03 -0700 (PDT)
+Received: from [192.168.69.212] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-47f85a2573csm54974574f8f.0.2026.07.27.21.32.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Jul 2026 21:32:02 -0700 (PDT)
+Message-ID: <80f8b49a-2f1f-4070-984a-a0543b6214a9@oss.qualcomm.com>
+Date: Tue, 28 Jul 2026 06:32:01 +0200
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: QaZW2LkiVms2vUp_q0r4pDprVU5ko57EauEWnu0Tb_g_1785208703
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/3] hw/display/exynos4210_find: Clamp windows to screen
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20260706173324.804340-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Cc: BALATON Zoltan <balaton@eik.bme.hu>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+In-Reply-To: <20260706173324.804340-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -2
-X-Spam_score: -0.3
-X-Spam_bar: /
-X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Authority-Analysis: v=2.4 cv=fbidDUQF c=1 sm=1 tr=0 ts=6a6830c4 cx=c_pps
+ a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
+ a=p0WdMEafAAAA:8 a=DdBaGUreeh0kHB85sUsA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=a_PwQJl-kcHnX1M80qC6:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzI4MDAzOCBTYWx0ZWRfXzpU4V/7UIsBG
+ HGzRV7GdWiV6HRFNeWgs0HGhuahcLpnIz50eyv4JdkBufKAMfsgf79dq4X0gRW2SXStsA3iv90H
+ Yx3Ksr0AbE2RquiW4/aw/Hm8qz2pmq0=
+X-Proofpoint-ORIG-GUID: pzQf0fJ5_0aEbK9GzrxEYNZzXql7gvuy
+X-Proofpoint-GUID: pzQf0fJ5_0aEbK9GzrxEYNZzXql7gvuy
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzI4MDAzOCBTYWx0ZWRfXwv/oWVB68NMD
+ oiyKBlFNpNIX9ZodKpcSRgFjJYszUDxLv5k3Qv4ylPSlrpn6YdxFR6dv9hjBd4z9rShpcJevyeb
+ XTkQqAVGrZJB0sqmtBocAijEhluf8PBXwqj0SWnDwiCe2FmbssM86od3hymT8VElXJOqy243b7j
+ UyV5gga4emcOnZfzHm7UC/u8hH2hCoOFilNWP7p+36wR+r55vj1wwF7VNHs77sCUBHCB57PXW6g
+ nQ+eswhDeqXmtM4tZtsnSml9o93Fq5rhHQLbpRILKLgq6pnUhFAQv0jbzYl7bXW61QtgCOtn+R/
+ dCdRc+sIJSAaxHsMoQLYf1/XlSJshJREqiMQltQ9cjGHkbTjzTqUiQ7l8pcNZVa2OprapvwUb4h
+ a1iqiAN9E5D5thxVa91TzTo9IofOmrngDBTo0I0D1wDnptG9BPbb/AXoRo/BzkIfbDu997e2BUF
+ o+oh7V7J6+S+FGYSVYQ==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-28_01,2026-07-27_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 bulkscore=0 suspectscore=0 clxscore=1015 impostorscore=0
+ phishscore=0 lowpriorityscore=0 malwarescore=0 adultscore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607280038
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,121 +155,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This basically reverts 4a2e242bbb30 ("memory: Don't use memcpy for
-ram_device regions") to make ram device region directly accessible
-again. With this, the bounce buffer is bypassed in address_space_map()
-when a ram device region is involved, potentially avoid to overrun
-the (small) bounce buffer.
+Cc'ing Zoltan & Marc-André.
 
-Reported-by: Julia Graham <jugraham@redhat.com>
-Suggested-by: Michael S. Tsirkin <mst@redhat.com>
-Suggested-by: Peter Xu <peterx@redhat.com>
-Suggested-by: Richard Henderson <richard.henderson@linaro.org>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/system/memory.h | 11 ++---------
- system/memory.c         | 41 +----------------------------------------
- system/trace-events     |  2 --
- 3 files changed, 3 insertions(+), 51 deletions(-)
-
-diff --git a/include/system/memory.h b/include/system/memory.h
-index 2965d922de..dbc17741ac 100644
---- a/include/system/memory.h
-+++ b/include/system/memory.h
-@@ -2718,15 +2718,8 @@ static inline bool memory_region_supports_direct_access(const MemoryRegion *mr)
-     if (memory_region_is_romd(mr)) {
-         return true;
-     }
--    if (!memory_region_is_ram(mr)) {
--        return false;
--    }
--    /*
--     * RAM DEVICE regions can be accessed directly using memcpy, but it might
--     * be MMIO and access using mempy can be wrong (e.g., using instructions not
--     * intended for MMIO access). So we treat this as IO.
--     */
--    return !memory_region_is_ram_device(mr);
-+
-+    return memory_region_is_ram(mr);
- }
- 
- static inline bool memory_access_is_direct(const MemoryRegion *mr,
-diff --git a/system/memory.c b/system/memory.c
-index 5fc36708ec..da710bbade 100644
---- a/system/memory.c
-+++ b/system/memory.c
-@@ -1364,43 +1364,6 @@ const MemoryRegionOps unassigned_mem_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
--static uint64_t memory_region_ram_device_read(void *opaque,
--                                              hwaddr addr, unsigned size)
--{
--    MemoryRegion *mr = opaque;
--    uint64_t data = ldn_he_p(mr->ram_block->host + addr, size);
--
--    trace_memory_region_ram_device_read(get_cpu_index(), mr, addr, data, size);
--
--    return data;
--}
--
--static void memory_region_ram_device_write(void *opaque, hwaddr addr,
--                                           uint64_t data, unsigned size)
--{
--    MemoryRegion *mr = opaque;
--
--    trace_memory_region_ram_device_write(get_cpu_index(), mr, addr, data, size);
--
--    stn_he_p(mr->ram_block->host + addr, size, data);
--}
--
--static const MemoryRegionOps ram_device_mem_ops = {
--    .read = memory_region_ram_device_read,
--    .write = memory_region_ram_device_write,
--    .endianness = HOST_BIG_ENDIAN ? DEVICE_BIG_ENDIAN : DEVICE_LITTLE_ENDIAN,
--    .valid = {
--        .min_access_size = 1,
--        .max_access_size = 8,
--        .unaligned = true,
--    },
--    .impl = {
--        .min_access_size = 1,
--        .max_access_size = 8,
--        .unaligned = true,
--    },
--};
--
- bool memory_region_access_valid(MemoryRegion *mr,
-                                 hwaddr addr,
-                                 unsigned size,
-@@ -1692,10 +1655,8 @@ void memory_region_init_ram_device_ptr(MemoryRegion *mr, Object *owner,
-                                        const char *name, uint64_t size,
-                                        void *ptr)
- {
--    memory_region_init_io(mr, owner, &ram_device_mem_ops, mr, name, size);
--    mr->ram = true;
-+    memory_region_init_ram_ptr(mr, owner, name, size, ptr);
-     mr->ram_device = true;
--    memory_region_set_ram_ptr(mr, size, ptr);
- }
- 
- void memory_region_init_alias(MemoryRegion *mr, Object *owner,
-diff --git a/system/trace-events b/system/trace-events
-index 51b4a4679a..d483b31419 100644
---- a/system/trace-events
-+++ b/system/trace-events
-@@ -20,8 +20,6 @@ memory_region_ops_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, u
- memory_region_ops_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
- memory_region_subpage_read(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
- memory_region_subpage_write(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
--memory_region_ram_device_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
--memory_region_ram_device_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
- memory_region_sync_dirty(const char *mr, const char *listener, int global) "mr '%s' listener '%s' synced (global=%d)"
- flatview_new(void *view, void *root) "%p (root %p)"
- flatview_destroy(void *view, void *root) "%p (root %p)"
--- 
-2.55.0
+On 6/7/26 19:33, Peter Maydell wrote:
+> The exynos4210_fimd device has a setup where the guest can program
+> both the overall size of the LCD screen and also the corners of
+> "windows" that define where the guest memory should appear on that
+> screen. The current code assumes that the guest is sensible and
+> puts the corners of windows inside the overall screen. If it doesn't
+> then we will try to copy data to an address that is outside the
+> interfal framebuffer memory that we allocate to be the size of the
+> screen.
+> 
+> This patchset clamps the window coordinates to be within the screen
+> size. Patches 1 and 2 are simple refactorings to make the third
+> patch easier to read.
+> 
+> This fixes https://gitlab.com/qemu-project/qemu/-/work_items/3795
+> 
+> thanks
+> -- PMM
+> 
+> Peter Maydell (3):
+>    hw/display/exynos4210_fimd: Factor out finding screen width/height
+>    hw/display/exynos4210_fimd: Pass width to draw_line functions
+>    hw/display/exynos4210_fimd: Clamp windows to screen size
+> 
+>   hw/display/exynos4210_fimd.c | 54 ++++++++++++++++++++++++++----------
+>   1 file changed, 39 insertions(+), 15 deletions(-)
+> 
 
 

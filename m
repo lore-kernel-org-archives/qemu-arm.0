@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFADDC54F54
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 19:29:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D742DC53219
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 19:29:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wonSF-0003Nx-Pc; Tue, 28 Jul 2026 15:27:08 -0400
+	id 1wonSt-0003jS-UC; Tue, 28 Jul 2026 15:27:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wonSD-0003Ij-CX
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:27:05 -0400
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+ id 1wonSK-0003Si-UJ
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:27:13 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wonSB-0001WX-L6
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:27:05 -0400
-Received: by mail-pj1-x102b.google.com with SMTP id
- 98e67ed59e1d1-38a0c7e841fso221548a91.2
- for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 12:27:03 -0700 (PDT)
+ id 1wonSI-0001ZW-If
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:27:12 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id
+ 98e67ed59e1d1-38e69bdb0fcso169736a91.1
+ for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 12:27:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785266822; x=1785871622; darn=nongnu.org;
+ d=linaro.org; s=google; t=1785266829; x=1785871629; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=/8GltLr+b3V/6euRVKmuC1vGLuoDnwfsRwYpfR+HJng=;
- b=poC9XprdJujlDxxQSu2zTWWVKXRl/Jwdn6N00xKQGgNHjli9NoUg+mis6TgeIAt2oY
- 7hk0aOlOumDYIZ6qnb9tUuocphBHu/7/gdHheWHdZSaWtsWfGc+fyxaK4hg4mmda1Zll
- Rqnj5SqdQISrSkn7iTDvUaVQ/o/B8FIQZg7jBJrdfaNYB6V29xplMR2cYKMzdFIW2mBA
- aO3kUbPVYGew764ZBjIFcAvl8qfZ41vXS4pvuFds+74fmz7k/vDmoVzrEU8tvydgFyL5
- G96xh7s/ExivqkykeDNtjqOrtkwVFppHFtqfe9uAizTs+IXIoK/dd0GBWdjtrfbqFWgl
- AsRw==
+ bh=O97834IMZHMJj8CNpJQMqMEGxl2bcDXLGwhFx5nEj0E=;
+ b=JGvp3EC9S3QKc2++uBAqH4Q5I0O+DaoAUSg4jSpE8loaJH6Nf9sKjLNRHK6zhbnkHD
+ eCFEAK0snC/ZtSIvQrYUw4Y/X74nBXKkaeugCfMyHKTMPBTb3TBLj/8Iv5oBcydeHE7j
+ NIIOFEX9+PAdZEfqPzHjcwbDGJ6fm6LAxDzr9F53mPrXLZfz0QBfqLgqphoSTfEXl6Xl
+ xptfsRrNBaxnsgnfgclph0vjgZjIDESeOkFaGZv/U1+wpvUrOjnFJtqNz0jCk+iWMoEf
+ uHD5Dd83F5H+ImOwQlBkrhGOqbMDhW2hXUVpQIhBHV4os9xNX1zynudAy78OymxweBhP
+ zBfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785266822; x=1785871622;
+ d=1e100.net; s=20251104; t=1785266829; x=1785871629;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=/8GltLr+b3V/6euRVKmuC1vGLuoDnwfsRwYpfR+HJng=;
- b=FdC/zl4CQdYqpC6k6fBUZPTZholLa4YoZb6svWNbYZinC4DwIg+Rf28kV1I4Wuuxnd
- FOpKRTI7f73rlXKli/w9xv4ZnqcIupqSPFq/KEferdhNLC5lG/8D3yXU//SeLWMqyq7h
- ttGWRSB/ALqpINA9VCMqP+S4DMaSUVDsnhuXOsb/o6IWPCrzBk1JgvI3JIlwrk+Ntcou
- 4ZndcvCcH1QgipBl3DHV1yMJOgoSv/3eu9jglkDTb6ngu4upnG4m618oH799V1xlaWXg
- thDbUkPTN050lhRq6qGOsIpofnchZb0Bs8VW28/1QqNpZLiIlhzy4m93Xp2ZLMcE7bOF
- RS2g==
+ bh=O97834IMZHMJj8CNpJQMqMEGxl2bcDXLGwhFx5nEj0E=;
+ b=lOhXE/bMKcNyNQvmS4w379pVqkKA9Y2evYvIBG9ot/MaK/K2IevmPQCHxEXZYCZ/z/
+ CYs+wyqKovM+tkPcvkVQlLVOEuJS2Yb+e8UYx+rcW7dvUk24rW1vUoeUaURMZREiGhEF
+ r3A0dzIdI09H0h8xKiLzAGmbDvexvYUAp9n0OBr/P/KG/oUVVt+rDIHjTEhUiIXgDPNw
+ 3FYveBMOg7Ijtuyq2+hzNRvFTo2Y5V8yMi+qHvpmpEZ/yazjyWPUPRAOLnXo63glKydk
+ cc3zS8A8+/hJd0w5mvdEta4GVsx0D9UWxlkr6fGahlGYMoanBSuDhhSlj+q3Dk9j7UGe
+ Beow==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqoKLpmTrWn2swb0RdJ9cuVCV1/V/E3v3+Fo0pZknXx73NVqU/qR9VKiM4VPqM1V6qMggY+IXhQXw==@nongnu.org
-X-Gm-Message-State: AOJu0YwJGjC6byadaOKe9Vco9qJjsZWreb+sEkyzj0hbu1pMGVJHGMPm
- +aCTHamTkWc6SRZAZ2FCPLfqgCHYVUmVYmajkpsht07sIAwUfK/7SzIj5RtXHKfHnDQ=
-X-Gm-Gg: AR+sD10yrfYoH2Euztodz9A7xK56DBDopdID6U3cBcLRxwzOe9dp2ixSUIUmIANLtN1
- FwW5CDE/DHARxhOKyHn6Mik/QvkGWDawQ+ogGUIDK0XKGg7tlpicnzGiYrMk22MrasSlwCFH5Dy
- BKlgWQAAbZp6XL+XzPZZSU0xftPaPCSyGINkujW5Ob8J86+/u9PipDYmF6OrAHBQFrcF9Cv7E3q
- 7hV7NoBZqoFq2qqB6G2IjSYC9bEeb2ywA1MEQCjwIl2ekud01P0F/oqgQxb1tFpwBT4u3zgvoLC
- olZZGmnQ0YOQa/rrGxFwNLaeraWeaTtXt2Eq4kUg3/uRP4+CyzZvcVZtU4yuz4SJdPIrZwwtcte
- 4t7dht6zoeT1uGSCULuNUvlWUc8gggRbw2Ddu/2/IOa9iqBorqdsCIyb47lTXvbsSwRxlo+iZaF
- pUXAa5o4ErkZpYXRwUpPjLJZWV3PaXo63c8hTIq+mhJwbmwQ8Kk5BzURjhIcpaJwkFqOI81LUU3
- ddrYC0ysaZX86/Fvp28agRroA==
-X-Received: by 2002:a17:90b:4423:b0:381:e74f:8a6a with SMTP id
- 98e67ed59e1d1-38f6a40f23dmr2808925a91.16.1785266822134; 
- Tue, 28 Jul 2026 12:27:02 -0700 (PDT)
+ AHgh+Rrm5lKCYt/czXdayAJGGCj3S0sMsOD+UsD/AbDs+XdxkMVdvh62W4WMb4KQTmPYt1Q2vu/Doz3yLg==@nongnu.org
+X-Gm-Message-State: AOJu0YywFRmXr4pzNo3aSB8vFJwmw1iPQnQ4MlqI3vxrc5z1NqCF18eK
+ CF9ROJBRMNdKZF/DT0gOh/vn3+pul6sKw4vvnez2LkOhboQkwsT4yBhFdDsPX0VxLr8=
+X-Gm-Gg: AR+sD12QCie+tyrTh36LR58CO8wVPjlAzS7tzjH7tSRiMHwxjayDKRFIzCHHx3amUCE
+ G+ugk1n1GSH/qkfZHQvrlURWGlyFNfW76iuHfWC013G2NfPQNTWqVjPb60287wxh+OsyrWUHGQG
+ N8c1pWCkmPyoQdwKWLFrqpZlipn2/QQ3+LoZKyJrTbX5baS2POOq6xUbOxsgoh1CgiXkmuJ9VDs
+ 8d1rXPw5D54QzuMHPx3fTof/falDriNjJXu+S9xE8eGpNo/CUFeJNl9uN7UV0+Z4R9DXfE3NddN
+ k5Q2YrDxJyGorzsIdn9s1bVsoqgzE0/1VQ3R0ZicvAkktGtbmGPniEa3TFyC+mX0s/sjASjWkXC
+ Z9bqfVIQ8wR1tKKVoybtXohBSWKu/aeCTO33xnzVKPqX6dePWS2dyltGUY3XuGYqUU7sJl0Tu3B
+ iUWq92JEgcLze+La9vWEUhsOyzbEMb
+X-Received: by 2002:a17:90b:4483:b0:38e:584f:2515 with SMTP id
+ 98e67ed59e1d1-38f6a465c40mr3652686a91.37.1785266829178; 
+ Tue, 28 Jul 2026 12:27:09 -0700 (PDT)
 Received: from p14s.cg.shawcable.net
  ([2604:3d09:148c:c800:b9d1:87c9:a085:86c9])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-38f7f1353fdsm372650a91.8.2026.07.28.12.27.00
+ 98e67ed59e1d1-38f7f1353fdsm372650a91.8.2026.07.28.12.27.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Jul 2026 12:27:01 -0700 (PDT)
+ Tue, 28 Jul 2026 12:27:08 -0700 (PDT)
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
 To: berrange@redhat.com, kchamart@redhat.com,
  pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
@@ -76,16 +75,16 @@ To: berrange@redhat.com, kchamart@redhat.com,
 Cc: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	kvm@vger.kernel.org
-Subject: [RFC v2 13/24] target/arm/cpu: Set number of PMU counters in KVM
-Date: Tue, 28 Jul 2026 13:26:19 -0600
-Message-ID: <20260728192630.240375-14-mathieu.poirier@linaro.org>
+Subject: [RFC v2 16/24] hw/arm/virt: Embed Realm VM type with IPA address space
+Date: Tue, 28 Jul 2026 13:26:22 -0600
+Message-ID: <20260728192630.240375-17-mathieu.poirier@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260728192630.240375-1-mathieu.poirier@linaro.org>
 References: <20260728192630.240375-1-mathieu.poirier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pj1-x102b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,160 +109,53 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-Add a "num-pmu-counters" CPU parameter to configure the number of
-counters that KVM presents to the guest. This is needed for Realm VMs,
-whose parameters include the number of PMU counters and influence the
-Realm Initial Measurement.
+Set the Ream VM bit in the IPA address space size when needed.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 ---
- target/arm/arm-qmp-cmds.c |  2 +-
- target/arm/cpu.h          |  3 +++
- target/arm/cpu64.c        | 41 +++++++++++++++++++++++++++++++++++++++
- target/arm/kvm.c          | 34 ++++++++++++++++++++++++++++++++
- 4 files changed, 79 insertions(+), 1 deletion(-)
+ hw/arm/virt.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
-index 9ed65eb090d7..9350dc30d12f 100644
---- a/target/arm/arm-qmp-cmds.c
-+++ b/target/arm/arm-qmp-cmds.c
-@@ -76,7 +76,7 @@ static const char *cpu_model_advertised_features[] = {
-     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
-     "kvm-no-adjvtime", "kvm-steal-time",
-     "pauth", "pauth-impdef", "pauth-qarma3", "pauth-qarma5",
--    "num-breakpoints", "num-watchpoints",
-+    "num-breakpoints", "num-watchpoints", "num-pmu-counters",
-     NULL
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 27bed9755320..9123f46fae4a 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -97,6 +97,8 @@
+ #include "qemu/guest-random.h"
+ #include "hw/watchdog/sbsa_gwdt.h"
+ 
++#include <linux/kvm.h>
++
+ static GlobalProperty arm_virt_compat_defaults[] = {
+     { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
  };
+@@ -4053,9 +4055,12 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
+     VirtMachineState *vms = VIRT_MACHINE(ms);
+     int max_vm_pa_size, requested_pa_size;
+     bool fixed_ipa;
++    int vm_type;
  
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index d6f64daec2a3..50d482b09b0d 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1178,6 +1178,7 @@ struct ArchCPU {
-     /* Allows to override the default configuration */
-     uint8_t num_bps;
-     uint8_t num_wps;
-+    int8_t num_pmu_ctrs;
- };
+     max_vm_pa_size = kvm_arm_get_max_vm_ipa_size(ms, &fixed_ipa);
  
- typedef struct ARMCPUInfo {
-@@ -2134,6 +2135,8 @@ FIELD(MFAR, FPA, 12, 40)
- FIELD(MFAR, NSE, 62, 1)
- FIELD(MFAR, NS, 63, 1)
- 
-+FIELD(PMCR, N, 11, 5)
++    vm_type = (ms->cgs ? KVM_VM_TYPE_ARM_REALM : KVM_VM_TYPE_ARM_NORMAL);
 +
- QEMU_BUILD_BUG_ON(ARRAY_SIZE(((ARMCPU *)0)->ccsidr) <= R_V7M_CSSELR_INDEX_MASK);
+     /* we freeze the memory map to compute the highest gpa */
+     virt_set_memmap(vms, max_vm_pa_size);
  
- /* If adding a feature bit which corresponds to a Linux ELF
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 3f12009befa8..00b3511dcbc3 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -737,12 +737,53 @@ static void arm_cpu_set_num_bps(Object *obj, Visitor *v, const char *name,
-     cpu->num_bps = val;
+@@ -4080,7 +4085,11 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
+      * the implicit legacy 40b IPA setting, in which case the kvm_type
+      * must be 0.
+      */
+-    return fixed_ipa ? 0 : requested_pa_size;
++    if (fixed_ipa) {
++        return 0;
++    }
++
++    return requested_pa_size | vm_type;
  }
  
-+static void arm_cpu_get_num_pmu_ctrs(Object *obj, Visitor *v, const char *name,
-+                                     void *opaque, Error **errp)
-+{
-+    uint8_t val;
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    if (cpu->num_pmu_ctrs == -1) {
-+        val = FIELD_EX64(cpu->isar.reset_pmcr_el0, PMCR, N);
-+    } else {
-+        val = cpu->num_pmu_ctrs;
-+    }
-+
-+    visit_type_uint8(v, name, &val, errp);
-+}
-+
-+static void arm_cpu_set_num_pmu_ctrs(Object *obj, Visitor *v, const char *name,
-+                                     void *opaque, Error **errp)
-+{
-+    uint8_t val;
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    uint8_t max_ctrs = FIELD_EX64(cpu->isar.reset_pmcr_el0, PMCR, N);
-+
-+    if (!visit_type_uint8(v, name, &val, errp)) {
-+        return;
-+    }
-+
-+    if (val > max_ctrs) {
-+        error_setg(errp, "invalid number of PMU counters");
-+        return;
-+    }
-+
-+    cpu->num_pmu_ctrs = val;
-+}
-+
- static void aarch64_add_kvm_writable_properties(Object *obj)
- {
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-     object_property_add(obj, "num-breakpoints", "uint8", arm_cpu_get_num_bps,
-                         arm_cpu_set_num_bps, NULL, NULL);
-     object_property_add(obj, "num-watchpoints", "uint8", arm_cpu_get_num_wps,
-                         arm_cpu_set_num_wps, NULL, NULL);
-+
-+    cpu->num_pmu_ctrs = -1;
-+    object_property_add(obj, "num-pmu-counters", "uint8",
-+                        arm_cpu_get_num_pmu_ctrs, arm_cpu_set_num_pmu_ctrs,
-+                        NULL, NULL);
- }
- #endif /* CONFIG_KVM */
- 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 93686b038263..b8cb04f7eeb1 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -957,9 +957,43 @@ static void kvm_arm_configure_aa64dfr0(ARMCPU *cpu)
-     }
- }
- 
-+#define KVM_REG_ARM_PMCR_EL0            ARM64_SYS_REG(3, 3, 9, 12, 0)
-+
-+static void kvm_arm_configure_pmcr(ARMCPU *cpu)
-+{
-+    int ret;
-+    uint64_t val, newval;
-+    CPUState *cs = CPU(cpu);
-+
-+    if (cpu->num_pmu_ctrs == -1) {
-+        return;
-+    }
-+
-+    newval = FIELD_DP64(cpu->isar.reset_pmcr_el0, PMCR, N, cpu->num_pmu_ctrs);
-+    ret = kvm_set_one_reg(cs, KVM_REG_ARM_PMCR_EL0, &newval);
-+    if (ret) {
-+        error_report("Failed to set KVM_REG_ARM_PMCR_EL0");
-+        return;
-+    }
-+
-+    /*
-+     * Check if the write succeeded, since older versions of KVM ignore it.
-+     */
-+    ret = kvm_get_one_reg(cs, KVM_REG_ARM_PMCR_EL0, &val);
-+    if (ret) {
-+        error_report("Failed to get KVM_REG_ARM_PMCR_EL0");
-+        return;
-+    }
-+
-+    if (val != newval) {
-+        error_report("Failed to update KVM_REG_ARM_PMCR_EL0");
-+    }
-+}
-+
- static void kvm_arm_configure_vcpu_regs(ARMCPU *cpu)
- {
-     kvm_arm_configure_aa64dfr0(cpu);
-+    kvm_arm_configure_pmcr(cpu);
- }
- 
- /**
+ static int virt_get_physical_address_range(MachineState *ms,
 -- 
 2.43.0
 

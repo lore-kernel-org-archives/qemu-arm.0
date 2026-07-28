@@ -4,86 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1928FC54F4C
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 14:50:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1CABC54F4C
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 14:56:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1woj89-0007EH-Tp; Tue, 28 Jul 2026 10:50:06 -0400
+	id 1wojDq-0007NA-W0; Tue, 28 Jul 2026 10:55:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1woj88-0007Dg-PB
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 10:50:04 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wojDo-0007MS-Io
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 10:55:56 -0400
+Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1woj87-0002WZ-3F
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 10:50:04 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-845c92bc464so3320787b3a.2
- for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 07:50:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wojDi-0003o0-MO
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 10:55:52 -0400
+Received: by mail-yx1-xb12a.google.com with SMTP id
+ 956f58d0204a3-6688dfaed31so5179215d50.3
+ for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 07:55:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785250549; cv=none;
+ d=google.com; s=arc-20260327;
+ b=HAPwbYp8Rqb3fJ45e96Om6apGznU5Q6UHsRKlPcZQ9dgzVI04duswVRoiaSH88ynV9
+ 1BAG4eY3rqiqZCplLTjr+9L+1KQYSNBx+QjNxgJpRwy8/3jadiGbCY51pDt8+YNz6OOp
+ J8gJfPETy2lFV5dtAGwWaLG1estCjAxDSuMLhRSPJxeOLNYTyUB8x1BV49YuX0ZRgLSU
+ Om2a4G2oZWBIylON6UwZAIhAJrr15JzUPexs5TzOfrijmuch/yyGkPz1sJmU5kyUTpz7
+ b0aqEjHvcPj4arBfw4e+U4cOnYrHcUHLgtayynz9anhHd8Y2qNnOiydb6umRw7cVQsIj
+ gLQw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=GJQ1TGNrc26Y6TRupENn91JffWnGjrQT1m5IFKf5YG8=;
+ fh=6TXRtjlf7L9OAMAA6gsjuKTOorxMF4PZLQp6jvujxtI=;
+ b=V/CfS7qkzGjOjc+9RErosX0TbJL42a+IYWDJuUHDdofDQ/kL4351dQ7srZmYPSXQK1
+ c8TGk6Zojp6O88LFOzyUPYdtDe/6uBj0yLQY+rw/V6x5u3ppMzM3HGSIU1TXfAE5E/Q9
+ QOW0NLKXBOlrUq7WC2xEdecAM5dDUbgj8MyQLZK4lhmsh4KuTusPkCWSZU3s9a2mQvj6
+ SCCizrBItA08qTQ0JYtcJL3cQPvpYTXDV8Ups+XMIjVTFjozmFSl/8F9YyiYVBRRyM6h
+ amXQF2LSRF0XbIvk5qNJRccAi9RpA5FU2Gksf0TF+AfGSeJlCMnZ1lubKnsB1LdVvanX
+ E51w==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785250201; x=1785855001; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=qXeyqD6qBKRU6fqapNM8AI24tkEcceS5f8qDV8l9Xgw=;
- b=W3+grCBQn5gdbFr9ZL1w7z2KY43pvIIIBpwevXVzF5fuT1MZT9DcApYIYXInkU5VfN
- sGE221eEQO6tpWrtjgMMzE5SkW6Psmzq+sMq2+z8SNEKXl4DR2EFdwr0bA0kkv3HE7+j
- 7EUSMtKJez+5vdW2/TVmHnmL5W++c4jtPbOVqXtpqo1M5+dnWDzm+/XYN10r3BB2CpTQ
- pKS0iO/IBapYElC+q44iduunzi3HaF/vH+4tYA451ZuRAsm6qb0MdmJoFsBB/uHnKYsq
- dEG6eJE263Akknvo+2adt7WIdeE/BbLn5MC46lNc4hKHalOnYW8Fy2X8NIrh0o1HT86L
- KjNg==
+ d=linaro.org; s=google; t=1785250549; x=1785855349; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=GJQ1TGNrc26Y6TRupENn91JffWnGjrQT1m5IFKf5YG8=;
+ b=Kxwb7j1Mb5bHKkXhx4Mrzy7lkrCUj0yFaH5W77DUobmlGnQsPtADDqTvnHUyLtvTPO
+ gEwZeplRaS9d7oem1SBQxscwQ2oXUVQ+fAO19+mUJEdypV74ZWcaNGz9feVG4uugE/7z
+ 0FhVirA34z+4O7hT3krInnJ3QnV9EYa9tJRePGOFIPWl66wYkidciSg4kRsZ2ezlG5Wp
+ dI/KQhSs82V/s2LsJ5dEYpjSI48WDML29n8T4+YhhFcDN7iswKHdodvaeseHNYAClw2a
+ wNhqhmfcUmSuh5iZKMmZnDwr/tOWbfuCFGwrxDERNMb+tVxSEmI1as4E74d6O2+eUQnu
+ Nscg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785250201; x=1785855001;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=qXeyqD6qBKRU6fqapNM8AI24tkEcceS5f8qDV8l9Xgw=;
- b=qiiVrufLH9xA+R52aybiacw6R5W4Yrqr5ZWM5g1dWMw4l8znVgOntJeStxrgs9XWgq
- /sXDLXMF6Tw+dK5OG7YFLFkoKBQ0W8Lgyqbn2SkYSDrD/YYZN9Fp1p720+7MFWaraw9a
- HNZLyLpz6TmVrViY3WqkYJ1bBYEKWZ8He8GTEo3AdZwaUthHsP74RTXMPB/bdazCbmd8
- NKq+LIWpNvkotoabccwB2XkTs3Mqb1/V4eFNr0wHUVHvwigc3+k5HTIbUOeRZZtdufo1
- LjcYcSJAkDipcW+ET/V2onuGzb+fSVJO/MB7aOmGlRayI8PtBW7c138gH29kFMSG2Eu5
- 1cnw==
+ d=1e100.net; s=20251104; t=1785250549; x=1785855349;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=GJQ1TGNrc26Y6TRupENn91JffWnGjrQT1m5IFKf5YG8=;
+ b=hwSTYatxsVZ6+KuOOEriB4ToXzTiBjhb1vGx+xVbmapzP/WprejUYxi4aOWs8LXY4h
+ sNR2xtBNSbBtIUO4yAODZLv7Jjzcz1ZeKm4CVdpsv9GBp1xcNnAkVZt/67+rPmaY5wAz
+ 6UTs1s1q7qki7EV82hYJXBXsAzB1JCEp80LybgxdYkTbQUFIKJjpppdWMr/vtwN/o8GO
+ HtSt52nujsfqcE4kO9kzpcMg3PyZ8pvFs6hI2pcL19wpBGCK8Av2j3X+9xpYdimZrCUf
+ 4Ak3kqqjtnOFLWmpQ2w1hucSNo5Z9QNFQOAdgwpu119v018Dac2N/W7MAD3jBwVYeNUp
+ 17SQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrGF7i0ltDi7+EDX0jMiAptzx+RKRsb0ydUk5+SDy+7i3cE7gT5Pp9X07ZQCxx+PmINn1SM9Qp+Sg==@nongnu.org
-X-Gm-Message-State: AOJu0YxalJC5D9Y3031Gqdw8JYP6t+QFzs7KsDQ1jakRawVz+dW2ruG4
- i+mijQNbKgm7gmBseDO6PvGNHjT9/ptNcy+feo8PsP8NMXa7ieGUWIjmu0we2Bqs1NA=
-X-Gm-Gg: AR+sD12BCcRET54yzKmatdEFj5FVqTKJfb6HbGa1TNebZAbojAjKQDM+LhK/muj5gXl
- 2JiMxq73trMGDakc6RQ9WqoczAF8jS4Fs06vIZe1RsY15fXzqaAlZXarHDIJ+7M3wTABPfDrLzU
- VubvuGr7tFAVAHv+166OhyJ4hVZ/6+PUDTeTBvYIWkb260VN0jZrhhXxFLsnSODShmEzU+3gFHP
- neZOD6XHkY55GB/fSgGF5S7PjP1a8TJXL87hXCqUzhcCTxlprZ0u/FD1o0a41ewxzd2DTntIwPY
- ssGffKAv0eFsi5f8MgApbg3ZssL9agQf48E8xGJRv2WOjwJXiZfr9RAMb+tsHCH02L+xFDruof4
- 2dVhz0U1uNnqm4IICnXhIx26nUZXvb1Y5m0xeBtpySgtZGA6hoqVBg0vKpuZPEa7pvlqI7DT9UG
- 5qQIojAaj/eluOups89FIXgv3qcIxLb+C8BQ/7LV6SkX6XicbtnDst
-X-Received: by 2002:a05:6a00:c8c:b0:84c:1cd2:142e with SMTP id
- d2e1a72fcca58-84e9314556fmr2923107b3a.23.1785250201159; 
- Tue, 28 Jul 2026 07:50:01 -0700 (PDT)
-Received: from [192.168.0.4] (174-21-93-59.tukw.qwest.net. [174.21.93.59])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-84ea0373cd3sm41763b3a.42.2026.07.28.07.50.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Jul 2026 07:50:00 -0700 (PDT)
-Message-ID: <151be7b4-3a86-44c6-83c3-31c01dd47654@linaro.org>
-Date: Tue, 28 Jul 2026 07:49:59 -0700
+ AHgh+Ro/lMqI63C36+hfpV8m+6iUh4UneBpFuMXP8QOyrrLWkB9ryQQZ/2+mxr9pMURSmDFtAILhLm7XSQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyJhvH/DO1F7nCoIDlgGp9OLRNMUPZ45sPOJ6wdWxc0nkANdQeq
+ /lkuquBwuJmPiZwrCnj8jvQhpToZ4dixnGOE/OYNddM2FHMKzAF5zfNx/Pi8DG4xtgIsjOcfC4j
+ X66g1hXY3VgQexKF4n0oh97G1NR3USWBnEPt5BEYaew==
+X-Gm-Gg: AR+sD13+Q/3cbMTYCc8cQ6PdUmYMdu+esqZabHyA44Rgo6wPuPlOZsdTToITm6Trc5b
+ AQAuh1gIPy0/wEwV0aXkHJr3RUHLhdMOWhq9mp02J3g5FgTsnvlYpK8bRez/7sFgcq3D1RPzZEI
+ RrgTYyIzjBOrZO0hvvhyBv0xDA+RNFgVjYIfac0vuLMCicvr1P1hDYmgCAznMFpnsdN5Is76oe6
+ cSs8vierMKZg2EhapD4pt2gMTAJJizzRxGoToAGF2Xtz/O+q+b8zFsaD49seD6m3lAHNYywpRDo
+ 9MpZO/AJVHhOCl53lD6gapqYB0Z+uBVN7VBkx2/Uku2NBg==
+X-Received: by 2002:a05:690e:4005:b0:667:91ba:9bdc with SMTP id
+ 956f58d0204a3-6690545d1b7mr1186972d50.11.1785250548823; Tue, 28 Jul 2026
+ 07:55:48 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/10] target/arm: Implement FTMOPA (non-widening, FP32)
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <20260713230244.70174-1-richard.henderson@linaro.org>
  <20260713230244.70174-2-richard.henderson@linaro.org>
  <CAFEAcA9DCByPPCL6fSnuMYmpBALNJaktyEB8ywAU2BU39GnaNA@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <CAFEAcA9DCByPPCL6fSnuMYmpBALNJaktyEB8ywAU2BU39GnaNA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+ <151be7b4-3a86-44c6-83c3-31c01dd47654@linaro.org>
+In-Reply-To: <151be7b4-3a86-44c6-83c3-31c01dd47654@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 Jul 2026 15:55:37 +0100
+X-Gm-Features: AUfX_mwhNThjJW91I13_jOgsShRbYMaOORCAwpS01-NW_WNv4LmH-7a9e-2-Dp8
+Message-ID: <CAFEAcA-NonwGRDc7CpQyz9HwOn-1ZVyqDra3wg7ODRvfavUotA@mail.gmail.com>
+Subject: Re: [PATCH 01/10] target/arm: Implement FTMOPA (non-widening, FP32)
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,42 +118,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/28/26 06:10, Peter Maydell wrote:
-> On Tue, 14 Jul 2026 at 00:04, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
-> 
-> 
->> +static void sme_tmop(void *vza, void *vzn, void *vzm, uint64_t *zk,
->> +                     void *fn_opaque, uint32_t desc, MemOp esz,
->> +                     void (*fn)(void *, void *, void *, void *))
->> +{
->> +    intptr_t oprsz = simd_maxsz(desc);
->> +    intptr_t index = simd_data(desc);
->> +    intptr_t esize = 1 << esz;
->> +    intptr_t host_adj = HOST_BIG_ENDIAN ? 8 - esize : 0;
->> +    /* Base in bits for op3[index*:csize], csize = (VL * 2) / esize. */
->> +    intptr_t ctrl_base = index * oprsz * 2;
->> +    /* Create a zero for use with the largest esz. */
->> +    uint32_t zero = 0;
->> +
->> +    for (intptr_t row = 0; row < oprsz; row += esize) {
->> +        void *vza_row = vza + tile_vslice_offset(row);
->> +
->> +        for (intptr_t col = 0; col < oprsz; col += esize) {
->> +            void *e2 = vzm + (col ^ host_adj);
->> +            void *e3 = vza_row + (col ^ host_adj);
-> 
-> Having just read patch 4, is it possible to do this with the H
-> macros rather than a manual host_adj, as we do in
-> sme_tmop_2way_sh() there ?
+On Tue, 28 Jul 2026 at 15:50, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 7/28/26 06:10, Peter Maydell wrote:
+> > On Tue, 14 Jul 2026 at 00:04, Richard Henderson
+> > <richard.henderson@linaro.org> wrote:
+> >>
+> >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> >> ---
+> >
+> >
+> >> +static void sme_tmop(void *vza, void *vzn, void *vzm, uint64_t *zk,
+> >> +                     void *fn_opaque, uint32_t desc, MemOp esz,
+> >> +                     void (*fn)(void *, void *, void *, void *))
+> >> +{
+> >> +    intptr_t oprsz = simd_maxsz(desc);
+> >> +    intptr_t index = simd_data(desc);
+> >> +    intptr_t esize = 1 << esz;
+> >> +    intptr_t host_adj = HOST_BIG_ENDIAN ? 8 - esize : 0;
+> >> +    /* Base in bits for op3[index*:csize], csize = (VL * 2) / esize. */
+> >> +    intptr_t ctrl_base = index * oprsz * 2;
+> >> +    /* Create a zero for use with the largest esz. */
+> >> +    uint32_t zero = 0;
+> >> +
+> >> +    for (intptr_t row = 0; row < oprsz; row += esize) {
+> >> +        void *vza_row = vza + tile_vslice_offset(row);
+> >> +
+> >> +        for (intptr_t col = 0; col < oprsz; col += esize) {
+> >> +            void *e2 = vzm + (col ^ host_adj);
+> >> +            void *e3 = vza_row + (col ^ host_adj);
+> >
+> > Having just read patch 4, is it possible to do this with the H
+> > macros rather than a manual host_adj, as we do in
+> > sme_tmop_2way_sh() there ?
+>
+> Not without making copies of the function specializing on esz.  Of course, it turns out
+> after the fact that only two esz are used, so perhaps it's not that bad.  But the element
+> selection logic was confusing enough to suggest just one function.
 
-Not without making copies of the function specializing on esz.  Of course, it turns out 
-after the fact that only two esz are used, so perhaps it's not that bad.  But the element 
-selection logic was confusing enough to suggest just one function.
+Ah, yes, we have a variable esz here.
 
+Since this was my only query on this series, I've added it to my
+list to apply once 11.1 is out.
 
-r~
+thanks
+-- PMM
 

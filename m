@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CDA7C54F54
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 19:29:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FCE9C54F5C
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 19:29:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wonS2-00037w-88; Tue, 28 Jul 2026 15:26:54 -0400
+	id 1wonUG-0005dS-Mi; Tue, 28 Jul 2026 15:29:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wonRy-00031Q-0h
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:26:50 -0400
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+ id 1wonSa-0003cp-0K
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:27:31 -0400
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wonRv-0001PT-HX
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:26:49 -0400
-Received: by mail-pj1-x1029.google.com with SMTP id
- 98e67ed59e1d1-38dfe910e9dso160667a91.3
- for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 12:26:47 -0700 (PDT)
+ id 1wonSX-0001eH-SM
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:27:27 -0400
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-2cf50c6f235so3166745ad.0
+ for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 12:27:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785266806; x=1785871606; darn=nongnu.org;
+ d=linaro.org; s=google; t=1785266844; x=1785871644; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=P0YSgKbTi94FPXUFvygJmUQ5Zpn1OBxkC+C5ko65QCo=;
- b=Hoe8gUDs+9DHxkt75XvhowLJeWnXaCldHYGh713I8fk+OByYrjvgSg1YBAcL6IDV8b
- l8tazjBayBUB+vHbz/MHq8KNfCt7ngBS7iksRQazaxS5YpI668EAzAPALVBJEPmubRJc
- Mb0U9kGOphq7UYljtZfct+NtY49KeOa64JRk09qQ7EzzU+kT9+1mzkSqIh6kppLi8VK2
- owjghndnXTwsYGIy+8H9C3cYYhi6rdWYgkQ87zkOuVQIdutmFDFz6pa7s2kvzNv9YX4B
- 3yxIzVo2cMJrLTOQvlp5sUxRlolc2E1Fwox5SFOTUe9/MV126FnSNuZS8e7Z7IMj8c+L
- 1r6A==
+ bh=LpASq3jOBF00q1EZdBLVp0S8hhXgpRTHfBnK0kI8ssk=;
+ b=D8omu9Du/0UkorCtGyhr73TtjY98gEmaL/qXwyorjycBqE/D8xs+aguGR6po/XCZkt
+ GMYHvK7LOMWaezsf7tcWoq2J199u7rz4foCJBJDYLS3Gqv46UyO2SLJV0UlW88J/b3CO
+ Y7hcL7SKBQOgv7FbP/AyO5PMyHHPkjqdGm+sa9DuCaIf8IK1+cdUzlwjC+8HXwck51YN
+ Y1M1BvlHwAxbOEQZAXycyoQcTfIAwL1tIpXEjgkiHiY28yC81z3PayEJs94hYpIxbZnM
+ r+Nswyrlr91NyDtSTqWgI0mztzL4bI8FmDpnOarWhE962t/c4iha1wOqCGhoVxr8BoVq
+ afkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785266806; x=1785871606;
+ d=1e100.net; s=20251104; t=1785266844; x=1785871644;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=P0YSgKbTi94FPXUFvygJmUQ5Zpn1OBxkC+C5ko65QCo=;
- b=E/cl+eWXTkgTVd/UYuu/5gIvirorErKGMyUlihKOIGX4YjSwt9QUGxpwF3iRsMZJD5
- QdKT/hk8JI9RPByFeLUwuNzuRYneNy5+pvwwdNfU7H6mNHrPQGnTHcyUvgOjOayxBFGI
- h/ZIlQxksZebJzS/PsXUvkgSJvctekOnmVxLsTw+iyd5PTZ7cyQbmz1jGFqylg05WPU4
- /5zR7+/mmqooLvyYu0H/B9NSccn2fvGeVzQtHl56J/DvEOQKTyCztV6CQaza26MfQze9
- Gm9cZugF/jFG1DsXrD3naUwaL6LZe/KLBXe9oJcaxoWSS9Q8CFo6112FgYmEgcuTtVqy
- hcLg==
+ bh=LpASq3jOBF00q1EZdBLVp0S8hhXgpRTHfBnK0kI8ssk=;
+ b=Ek92WtPEch3x3o89y8kjny9YxFRyzhkCmxjTkzwuM0GB+NwiqxpIrOSGtQ7kkpITc6
+ Rsj2rrr2MEagVMIaNIi7DGhKn9Wq38ljE8gflg1IkO9ePMW518t7LURAMA0cDPAuYeVz
+ fX6ZWacEOvNXM15OVLdQ0uHzLP4jIKMn5grC1ZzKChisQod92whowRNy+LjuNFHlmBAG
+ V+AAztNkqtPqGHyuwBiORqz2kgYjMlkP0DjTSV3GLGDrzowAGuLlP9m1cumdLCrfA+YZ
+ P3x1Z5F/Ty5U8oZewOhBiZ/PgdNeMu9XK3RkQW90qXo/GVNRsqffSijAnjRFv+tvm7j8
+ sOUw==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rq/gUkV7yec+sbs3s1nD49lqgM4lPpnxrFSBSJ3UCZABpsG20kYczUXq++sBpsbUr/ynyaXVExC4g==@nongnu.org
-X-Gm-Message-State: AOJu0Yx3kKXukSd/FHQAw2DuyRg9cSz79piOtMaHbbUUHt0MVLqtjgqI
- PG2luKeHvinNdyNlHtha6EFLNv3OtNTqJMsEPNS1eFltMswfGn+kcL9J4W4SWrz2gy8=
-X-Gm-Gg: AR+sD11m+yyVaGiW8Y3AUz/srepLsxB+hvk2NEjdioHlaZvdzp2fIPmNfsg/8r5+Bhd
- 5eQohyuQGXyVIqwPwVBIeLm8wLBLM9po1cIvfpboc11UBy8cIA4xHho0/Yk9L06haAiQMh2C0/C
- JcMXn5DJpoSZ7hEFsiiNO/66UZjbKDcHkcB6h2rT0ZTafcqy8UEQwqDo6T9fPXDIv+C+pfbsRYQ
- uVLFCRBtjKoeOr6JqWu3/sbyFmiPm1PMdrE90i0s9R723jS0LTwiWDmdPfRLYCMfQpBuf1wAy8I
- C2eVIoY9LCEp02eu5pCjfm57gesMeLd3epnQ+woZgaT439zc5hv1GTXUjYA2qwgSSkLIWBi2twv
- GrB/mktSL6Qflm5Ew2yS/+JjZGbbUK7S+Ce192MJN4XkHh3TnxGZLTCJSSgf6xSLMNDZXvvJ+gK
- IKDDNjzeDFOlFwIZQmbz4IrUgLeH0U
-X-Received: by 2002:a17:90b:50c3:b0:37d:ee77:78ac with SMTP id
- 98e67ed59e1d1-38f6a3aba5emr4059612a91.19.1785266805956; 
- Tue, 28 Jul 2026 12:26:45 -0700 (PDT)
+ AHgh+RrShffX/1dGhjIN8OjtCLR2f84D4/+aw+O7Z5pOFWdOcF+w5ZTweaqFeif/TKd87AHRNGxajwJd4Q==@nongnu.org
+X-Gm-Message-State: AOJu0YwS/4sOmlcgJmlwTWdFcCeIjWFEHAg1C5nrbckzD9IJS+Q2qoAe
+ xIyioC7O04/LLki65hN5LGPtgDuVsSIRMS4tU9EDhwaIyOdSmaGExTcCnNrORCHQQPo=
+X-Gm-Gg: AR+sD122SZSKzdd4VganGRlUDlWIXeDO0h1LZcqDbRM+wOnq6hDYE2cucP4faeRLP0Y
+ gUYEcB2hdn3eUxKZxZ0YoF37rdPSXEcJ3KhbY3BAIjMl8nnk8VFDQZV0J8UbaUFNmjco7FR2mcE
+ bI+hFqNtoPie+7jM1zXai+YHKZQnm0FCJkyC2SBechFCORh0pUwVcY8bdn4EskP1TfMh1I7U1QY
+ l/NVH1DQk/0pjvkD4Sx+KfcWryE/kPOAXHFl8dprEK63svfFBP9vFSC7KTMvuDlS9Ipxh3XKxR5
+ ySD3W1vU9xu4GQumdv08TuL8iHjkZ3iMehGnDJU//v3hF84uPcSnAT8Qu1adV61CO/m62riF3kY
+ 6NFNQsxhJFZ0l+b0Z3yYyQzM2V4Mezt3iWj3I9hwzlEm7KedaMxEjFMyKAq4JO3b7fppumgzemF
+ WKp3puApl40h66fE6CnPil5fHgF5Pq5LRZM96pT1l3t+aTcaVZ6nWD5MOl3HdMVjZNDLpjcEarI
+ w86tq9ZjTgw7OU=
+X-Received: by 2002:a17:90b:5864:b0:38e:c7b0:84ad with SMTP id
+ 98e67ed59e1d1-38f6a1becc7mr3877953a91.0.1785266844304; 
+ Tue, 28 Jul 2026 12:27:24 -0700 (PDT)
 Received: from p14s.cg.shawcable.net
  ([2604:3d09:148c:c800:b9d1:87c9:a085:86c9])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-38f7f1353fdsm372650a91.8.2026.07.28.12.26.43
+ 98e67ed59e1d1-38f7f1353fdsm372650a91.8.2026.07.28.12.27.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Jul 2026 12:26:44 -0700 (PDT)
+ Tue, 28 Jul 2026 12:27:23 -0700 (PDT)
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
 To: berrange@redhat.com, kchamart@redhat.com,
  pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
@@ -75,23 +76,23 @@ To: berrange@redhat.com, kchamart@redhat.com,
 Cc: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	kvm@vger.kernel.org
-Subject: [RFC v2 06/24] target/arm/kvm-rme: Initialize vCPU
-Date: Tue, 28 Jul 2026 13:26:12 -0600
-Message-ID: <20260728192630.240375-7-mathieu.poirier@linaro.org>
+Subject: [RFC v2 23/24] hw/arm/boot: Load DTB as is for confidential VMs
+Date: Tue, 28 Jul 2026 13:26:29 -0600
+Message-ID: <20260728192630.240375-24-mathieu.poirier@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260728192630.240375-1-mathieu.poirier@linaro.org>
 References: <20260728192630.240375-1-mathieu.poirier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pj1-x1029.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,181 +110,35 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-The target code calls kvm_arm_vcpu_init() to mark the vCPU as part of a
-Realm. For a Realm vCPU, only x0-x7 can be set at runtime. Before boot,
-the PC can also be set, and is ignored at runtime. KVM also accepts a
-few system register changes during initial configuration, as returned by
-KVM_GET_REG_LIST.
+Load DTB without modifications when provided.  That way it is possible
+for a verification entity to reconstruct the Realm's initial measurement.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 ---
- target/arm/cpu.h      |  3 +++
- target/arm/kvm-rme.c  |  9 ++++++++
- target/arm/kvm-stub.c |  5 ++++
- target/arm/kvm.c      | 54 +++++++++++++++++++++++++++++++++++++++++--
- target/arm/kvm_arm.h  | 10 ++++++++
- 5 files changed, 79 insertions(+), 2 deletions(-)
+ hw/arm/boot.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 03a30afcbed1..c7927036360c 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1055,6 +1055,9 @@ struct ArchCPU {
-     /* KVM steal time */
-     OnOffAuto kvm_steal_time;
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 1e8efada209f..9b3d3558bcbc 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -477,7 +477,14 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+     g_autoptr(MemoryDeviceInfoList) md_list = NULL;
+     Error *err = NULL;
  
-+    /* Realm Management Extension */
-+    bool kvm_rme;
-+
-     /* Uniprocessor system with MP extensions */
-     bool mp_is_up;
- 
-diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-index eb8e65ba438f..5d6814fcf9e5 100644
---- a/target/arm/kvm-rme.c
-+++ b/target/arm/kvm-rme.c
-@@ -69,6 +69,15 @@ static int kvm_arm_rme_init(ConfidentialGuestSupport *cgs, Error **errp)
-     return 0;
- }
- 
-+void kvm_arm_rme_vcpu_init(ARMCPU *cpu)
-+{
-+    if (!rme_guest) {
-+        return;
-+    }
-+
-+    cpu->kvm_rme = true;
-+}
-+
- static void rme_guest_class_init(ObjectClass *oc, const void *data)
- {
-     ConfidentialGuestSupportClass *klass = CONFIDENTIAL_GUEST_SUPPORT_CLASS(oc);
-diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
-index 88cbe8d85c41..5fde96f9b281 100644
---- a/target/arm/kvm-stub.c
-+++ b/target/arm/kvm-stub.c
-@@ -119,3 +119,8 @@ char *kvm_print_register_name(uint64_t regidx)
- {
-     g_assert_not_reached();
- }
-+
-+void kvm_arm_rme_vcpu_init(ARMCPU *cpu)
-+{
-+    g_assert_not_reached();
-+}
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 33c3763aebfa..b4c6da1fb9f3 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -2015,6 +2015,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
-     }
- 
-+    kvm_arm_rme_vcpu_init(cpu);
-+
-     /* Do KVM_ARM_VCPU_INIT ioctl */
-     ret = kvm_arm_vcpu_init(cpu);
-     if (ret) {
-@@ -2169,6 +2171,29 @@ static int kvm_arch_put_sve(CPUState *cs, uint32_t vq, bool have_ffr)
-     return 0;
- }
- 
-+static int kvm_arm_rme_put_core_regs(CPUState *cs, Error **errp)
-+{
-+    int i, ret;
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    /* The RME ABI only allows us to set 8 GPRs and the PC */
-+    for (i = 0; i < 8; i++) {
-+        ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.regs[i]),
-+                              &env->xregs[i]);
-+        if (ret) {
-+            return ret;
-+        }
-+    }
-+
-+    ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.pc), &env->pc);
-+    if (ret) {
-+        return ret;
-+    }
-+
-+    return 0;
-+}
-+
- static int kvm_arm_put_core_regs(CPUState *cs, Error **errp)
- {
-     uint64_t val;
-@@ -2280,7 +2305,11 @@ int kvm_arch_put_registers(CPUState *cs, KvmPutState level, Error **errp)
-     int ret;
-     ARMCPU *cpu = ARM_CPU(cs);
- 
--    ret = kvm_arm_put_core_regs(cs, errp);
-+    if (cpu->kvm_rme) {
-+        ret = kvm_arm_rme_put_core_regs(cs, errp);
-+    } else {
-+        ret = kvm_arm_put_core_regs(cs, errp);
-+    }
-     if (ret) {
-         return ret;
-     }
-@@ -2367,6 +2396,23 @@ static int kvm_arch_get_sve(CPUState *cs, uint32_t vq, bool have_ffr)
-     return 0;
- }
- 
-+static int kvm_arm_rme_get_core_regs(CPUState *cs, Error **errp)
-+{
-+    int i, ret;
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    for (i = 0; i < 8; i++) {
-+        ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(regs.regs[i]),
-+                              &env->xregs[i]);
-+        if (ret) {
-+            return ret;
-+        }
-+    }
-+
-+    return 0;
-+}
-+
- static int kvm_arm_get_core_regs(CPUState *cs, Error **errp)
- {
-     uint64_t val;
-@@ -2478,7 +2524,11 @@ int kvm_arch_get_registers(CPUState *cs, Error **errp)
-     int ret;
-     ARMCPU *cpu = ARM_CPU(cs);
- 
--    ret = kvm_arm_get_core_regs(cs, errp);
-+    if (cpu->kvm_rme) {
-+        ret = kvm_arm_rme_get_core_regs(cs, errp);
-+    } else {
-+        ret = kvm_arm_get_core_regs(cs, errp);
-+    }
-     if (ret) {
-         return ret;
-     }
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index e7c40fb003e4..d95381c13afa 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -240,4 +240,14 @@ void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3);
-  */
- char *kvm_print_register_name(uint64_t regidx);
- 
-+/**
-+ * kvm_arm_rme_vcpu_init
-+ * @cs: the CPU
-+ *
-+ * If the user requested a Realm, setup the given vCPU accordingly. Realm vCPUs
-+ * behave a little differently, for example most of their register state is
-+ * hidden from the host.
-+ */
-+void kvm_arm_rme_vcpu_init(ARMCPU *cpu);
-+
- #endif
+-    if (binfo->dtb_filename) {
++    if (binfo->dtb_filename && binfo->confidential) {
++        /*
++         * If the user is providing a DTB for a confidential VM, it is already
++         * tailored to this configuration and measured. Load it as is, without
++         * any modification.
++         */
++        return rom_add_file_fixed_as(binfo->dtb_filename, addr, -1, as);
++    } else if (binfo->dtb_filename) {
+         char *filename;
+         filename = qemu_find_file(QEMU_FILE_TYPE_DTB, binfo->dtb_filename);
+         if (!filename) {
 -- 
 2.43.0
 

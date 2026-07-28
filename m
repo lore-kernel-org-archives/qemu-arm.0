@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDCDDC53219
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F179C54F55
 	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 19:29:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wonS4-0003A8-49; Tue, 28 Jul 2026 15:26:56 -0400
+	id 1wonTt-0004sS-5c; Tue, 28 Jul 2026 15:28:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wonS2-00038X-KA
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:26:54 -0400
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+ id 1wonSW-0003XV-9D
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:27:28 -0400
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wonS1-0001S4-3J
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:26:54 -0400
-Received: by mail-pj1-x1031.google.com with SMTP id
- 98e67ed59e1d1-38f0f132f56so981533a91.0
- for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 12:26:52 -0700 (PDT)
+ id 1wonST-0001d2-TM
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:27:23 -0400
+Received: by mail-pj1-x1036.google.com with SMTP id
+ 98e67ed59e1d1-38e3efab7e0so210908a91.0
+ for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 12:27:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785266811; x=1785871611; darn=nongnu.org;
+ d=linaro.org; s=google; t=1785266840; x=1785871640; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=mFQLzsllffyN31O2DXNS30O6LLhjzrmI1+U27crjJrU=;
- b=UHvSYU7BGMdkvjItJpb/WE6VMxA9x79L4smxoMWRqWRdS7gGWcY1+isut44Is6hf/2
- vex/+1GNGHltvT2SdSR52AC8tUcVjY0HCow7F7pyOnrXYeetZ6Rke5/8H1qcP9n59rW9
- TTGlyJWjKyNUSxFiNOO9m/Fr4585ah+LaUTS+A/+SgKAHZp1eElBy0TXJhA3/ebN2FQ4
- 8CmNWfe+XEh0XSTu12g8j6nhR4Lpr227ZnCsGtfIZ0u3GckvAMCGzGjmlJJzO0CMTm06
- qE+q9w10tGbCREpGd9HYgEj08Tz5EBDiRVwwE6yCaGMdSlQNp77/B6fT9oQ3eEnb68sb
- Jj0g==
+ bh=HYPotfW6kht+UmRZFPn5+m79E9+yzPHwQhZ3Fc3kQx8=;
+ b=bn0js5jYIMA1UpYISZDPy+4RkrnAhaggCFXdY9ZtgMFuNmVVvfo50szKkfNF7KvJ9/
+ sQ5ODwkN71IGKN4dAtRMz2TEwPcXOBcqGObD65+lnj/gCSAtHDmpKUgcnXKxEnJkfIfw
+ tseOe98+gSaNSvUxZcKe+hynpxbVQARDxd1sZ8ZYLTfsaRSqprr6akhnHTx/xBhRoaWl
+ /5hnJ3KKZ4t68PzgbcIuNvnM4sek/LYHbp0akVLybrbnfh+ekZO+NxHeSUYil/vpGMr7
+ IrBjvEf9u7FhGKG/oHDfgz7Xe602SeqXv8p8goJJzd5Vf72xc8gt57sL+WxdyTo5nzkU
+ U8Uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785266811; x=1785871611;
+ d=1e100.net; s=20251104; t=1785266840; x=1785871640;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=mFQLzsllffyN31O2DXNS30O6LLhjzrmI1+U27crjJrU=;
- b=On1un57G5X2i7HiAZ8QshhseYJexgoAht6vcvFwsYKonQcQIcFEcy5wYGJ0HtdAYr4
- U5AazQZ8xU/OJHcedTMawwiqQK9lpjFhU3qwusm/g+O2jgn4UhSXFIJxJA54SQysnZ9A
- b75dMYJFD+ittvLa/qz0m5bZ/q6ARH9HA+RdjE6L3yhzUWGgRMHcurbRpoT5XCMj1Jfr
- 4L17UlMlFdZnRolq+cJw29ge2TLnDhYpyiX7QNhufNeor2Ppp2feXPgjC2oFTxp+HXJH
- /ACv+f2p7Ifs60yMNocVWI9IKd8FxLVwlmeP48z9sh0qLAgvaouKZP+hGEkPs/V378qS
- Y9EQ==
+ bh=HYPotfW6kht+UmRZFPn5+m79E9+yzPHwQhZ3Fc3kQx8=;
+ b=eYEn444URWSFw72k7dSVXif/YflH00sbu2jCWCCmtCVyc/jnwJ6pMcTTspbfiXQijp
+ NDn9QVVACWBrR1oXJWMPp4MMNtg6JIqTkg2xCuCgeeaCItMUEPpNQfluqjkO9NGTgmXA
+ bLD5/fwyccpPWZ2fgcHjQMze0S/qd4T6ideslJ3mBFeQ2aXCM55WRR4S/Ss0gfK55ZS8
+ XMkh2svCJLX8cxCsXEJVMG9Q0n3UsQllbyuMQF7gCwh1X7abmbiNDNRPzvnSCFbRgvU6
+ tqBpzx1g0VpYzn3pdYhV3LzD87cA1hDkdHf/S84584Vc5iqbhDvCi9M8fUuKcWBjQeoX
+ giXg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpqMjxcPAvhUhZ+roOm03tAO7vwm7MG1uM33LlUlFS+pvhFwkSgfC77yf4b+SAiRkkjtvELSH0XGA==@nongnu.org
-X-Gm-Message-State: AOJu0YzphZcss3Gq5Yr66KTInU2QQj6VtkJKH+8DTibYjwKb0Potr7gR
- KCXM1ZjM5w79P7p9L28rLHjCjEI9nSgGMqBBr4/CKZCwy+ZlI2SrBClKPcThncK/XKk=
-X-Gm-Gg: AR+sD13Os0jSgbNWY4yGKOJLtfvh9lJ90TvRNfBeWthFKRFk2vb9dV6zSMG256BzApS
- roZVI2bJIvuV7KSYrQXuUhuujkU5H45c3F8bibOUHhYr2p1BxeTpJjb8MC67f2mvB+Ct5lES28v
- pnLxc60l2qr7kV9J9BcwHC7qG9QvXcOQiUswr7isGXmEluFEgSLm/5S/uH8/5bAjvgElmrIACVg
- SkWzONpRiEZm9179QkqnkZgKJ+KBmdZpo/9HNR7aRHsV9WUZ3bn1A+A3w+GXK0pq/mrVlQki/+D
- LR89NAezsRoaXl6QpZ+AkWSvZMEVaEW/HNCocV2Es9c0O4gdc98ly8T3zQkm2jkr/h9YGiOWBW2
- cxId90XUtJuNKcBFF9ldyJ63q4s2VjhjpEJ7Y2TEkdEuwWh5K9XgSr65aVhgIPQRr1gQh5ExnMJ
- Zj0oX89PEFWZFhQG5jUELHcb1+m8v5
-X-Received: by 2002:a17:90b:582d:b0:37d:a52a:ff12 with SMTP id
- 98e67ed59e1d1-38f6a30c7ddmr3585247a91.10.1785266811540; 
- Tue, 28 Jul 2026 12:26:51 -0700 (PDT)
+ AHgh+RoM9Hw2sYWJAu+LGYDDvBRj0/xM6L7Lp9UbJ0KwifhKAf4StL/UbgbL0kUigcDV1oFUfbB17L//rA==@nongnu.org
+X-Gm-Message-State: AOJu0YyZnTdkN23s43CGBr0VqX1m5PqrS5/PQvlahxxOCVGEH08yMCH8
+ 5lq4zB7lXeM2MzEJfy52PtJXSxtKCUCeF+on7Y75jnEfr0lK5z8GmJbWvMUL2b76q7c=
+X-Gm-Gg: AR+sD13UwpGGwn5D4Ulk4vok/BP/QipqteTYDsrmWXK9QbBjkpAQANpPzy4+rOFqbzf
+ lrx2PyNxJenKZLb/LsEultSm3V1XDYrnOuwAw7RkCNrtpI7ispISXlgiZqFds9rRBp6FQeT7I/J
+ S+I3jwAixKHbMfBI76sFQhGwUDEmCLWz2bBWVrWnjOuP+vEPKr0sF/3EKLUzqX0w4Xwxoajv+n9
+ iQO4DdDPShZmvhy4dStwnlX8fAe1ToT4bDjADW/VBt6HVJhqIrK88HBcM9EluYPDTmKUXwzuQwX
+ DbWevjjRSjQ7EW5ygi1JHQc4mMcKszKXW3nL8A29AaSurQ/E5POT3yfo4tBm5Xyg/iAn7KRrqa9
+ DEMuz+3xRIYLzuOfODkp/S7r2ESEllxCdldT3FnwNkbN7Azt2ACb+5/uwkDVXam0vdOEKkvJ6b/
+ VAwzYVI+hwavuhom5Dj9HV2hqVXNWT
+X-Received: by 2002:a17:90b:584f:b0:38e:7297:a92e with SMTP id
+ 98e67ed59e1d1-38f6a26e75dmr3724141a91.9.1785266840446; 
+ Tue, 28 Jul 2026 12:27:20 -0700 (PDT)
 Received: from p14s.cg.shawcable.net
  ([2604:3d09:148c:c800:b9d1:87c9:a085:86c9])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-38f7f1353fdsm372650a91.8.2026.07.28.12.26.48
+ 98e67ed59e1d1-38f7f1353fdsm372650a91.8.2026.07.28.12.27.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Jul 2026 12:26:49 -0700 (PDT)
+ Tue, 28 Jul 2026 12:27:19 -0700 (PDT)
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
 To: berrange@redhat.com, kchamart@redhat.com,
  pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
@@ -75,24 +75,24 @@ To: berrange@redhat.com, kchamart@redhat.com,
 Cc: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	kvm@vger.kernel.org
-Subject: [RFC v2 08/24] target/arm/kvm: Use kvm_vm_check_extension() where
- necessary
-Date: Tue, 28 Jul 2026 13:26:14 -0600
-Message-ID: <20260728192630.240375-9-mathieu.poirier@linaro.org>
+Subject: [RFC v2 21/24] target/arm/kvm-rme: Add DMA remapping for the shared
+ memory region
+Date: Tue, 28 Jul 2026 13:26:27 -0600
+Message-ID: <20260728192630.240375-22-mathieu.poirier@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260728192630.240375-1-mathieu.poirier@linaro.org>
 References: <20260728192630.240375-1-mathieu.poirier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pj1-x1031.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pj1-x1036.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,61 +110,217 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-The Arm KVM code can return different values from KVM_CHECK_EXTENSION
-depending on the VM type. Use kvm_vm_check_extension() where necessary
-to ensure we get the right response from KVM.
+In Arm CCA, the guest-physical address space is split in half. The top
+half represents memory shared between guest and host, and the bottom
+half is private to the guest. From QEMU's point of view, the two halves
+are merged into a single region, and pages within this region are either
+shared or private.
+
+Virtual devices implemented by the host are only allowed to access the
+top half. For emulated MMIO, KVM strips the GPA before returning to
+QEMU, so the GPA already belongs to QEMU's merged view of guest memory.
+However DMA addresses cannot be stripped this way and need special
+handling by the VMM.
+
+When emulating DMA the VMM needs to translate the addresses into its
+merged view. Add an IOMMU memory region on the top half, that
+retargets DMA accesses to the merged sysmem.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 ---
- target/arm/kvm.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ hw/arm/virt.c         |   2 +
+ target/arm/kvm-rme.c  | 106 ++++++++++++++++++++++++++++++++++++++++++
+ target/arm/kvm-stub.c |   4 ++
+ target/arm/kvm_arm.h  |  10 ++++
+ 4 files changed, 122 insertions(+)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index d86e66e056b9..ca25b707a0a8 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -331,7 +331,7 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-                              1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ae663d051ac3..5b1608c23462 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -3327,6 +3327,8 @@ static void machvirt_init(MachineState *machine)
+                                vms->fw_cfg, OBJECT(vms));
      }
  
--    if (kvm_check_extension(kvm_state, KVM_CAP_ARM_PMU_V3)) {
-+    if (kvm_vm_check_extension(kvm_state, KVM_CAP_ARM_PMU_V3)) {
-         init.features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
-         pmu_supported = true;
-         features |= 1ULL << ARM_FEATURE_PMU;
-@@ -636,7 +636,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
-         return -EINVAL;
-     }
++    kvm_arm_rme_init_gpa_space(vms->highest_gpa, vms->bus);
++
+     vms->bootinfo.ram_size = machine->ram_size;
+     vms->bootinfo.board_id = -1;
+     vms->bootinfo.loader_start = vms->memmap[VIRT_MEM].base;
+diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
+index 335ad60d0f3b..7b83de2f956b 100644
+--- a/target/arm/kvm-rme.c
++++ b/target/arm/kvm-rme.c
+@@ -11,10 +11,12 @@
+ #include "hw/core/boards.h"
+ #include "hw/core/cpu.h"
+ #include "hw/core/loader.h"
++#include "hw/pci/pci.h"
+ #include "kvm_arm.h"
+ #include "migration/blocker.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
++#include "qemu/units.h"
+ #include "qom/object_interfaces.h"
+ #include "system/confidential-guest-support.h"
+ #include "system/kvm.h"
+@@ -25,6 +27,23 @@ OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
  
--    if (kvm_check_extension(s, KVM_CAP_ARM_NISV_TO_USER)) {
-+    if (kvm_vm_check_extension(s, KVM_CAP_ARM_NISV_TO_USER)) {
-         if (kvm_vm_enable_cap(s, KVM_CAP_ARM_NISV_TO_USER, 0)) {
-             error_report("Failed to enable KVM_CAP_ARM_NISV_TO_USER cap");
-         } else {
-@@ -667,11 +667,11 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
-         }
-     }
+ #define RME_PAGE_SIZE qemu_real_host_page_size()
  
--    max_hw_wps = kvm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_WPS);
-+    max_hw_wps = kvm_vm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_WPS);
-     hw_watchpoints = g_array_sized_new(true, true,
-                                        sizeof(HWWatchpoint), max_hw_wps);
++/*
++ * Realms have a split guest-physical address space: the bottom half is private
++ * to the realm, and the top half is shared with the host. Within QEMU, we use a
++ * merged view of both halves. Most of RAM is private to the guest and not
++ * accessible to us, but the guest shares some pages with us.
++ *
++ * RealmDmaRegion performs remapping of top-half accesses to system memory.
++ */
++struct RealmDmaRegion {
++    IOMMUMemoryRegion parent_obj;
++};
++
++#define TYPE_REALM_DMA_REGION "realm-dma-region"
++OBJECT_DECLARE_SIMPLE_TYPE(RealmDmaRegion, REALM_DMA_REGION)
++OBJECT_DEFINE_SIMPLE_TYPE(RealmDmaRegion, realm_dma_region,
++                          REALM_DMA_REGION, IOMMU_MEMORY_REGION);
++
+ typedef struct {
+     hwaddr base;
+     hwaddr size;
+@@ -35,6 +54,10 @@ struct RmeGuest {
+     ConfidentialGuestSupport parent_obj;
+     Notifier rom_load_notifier;
+     GSList *ram_regions;
++    uint8_t ipa_bits;
++
++    RealmDmaRegion *dma_region;
++    AddressSpace dma_as;
+ };
  
--    max_hw_bps = kvm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_BPS);
-+    max_hw_bps = kvm_vm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_BPS);
-     hw_breakpoints = g_array_sized_new(true, true,
-                                        sizeof(HWBreakpoint), max_hw_bps);
- 
-@@ -1913,7 +1913,7 @@ void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa)
- 
- void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp)
+ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
+@@ -205,3 +228,86 @@ static void rme_guest_init(Object *obj)
+ static void rme_guest_finalize(Object *obj)
  {
--    bool has_steal_time = kvm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
-+    bool has_steal_time = kvm_vm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
+ }
++
++static AddressSpace *rme_dma_get_address_space(PCIBus *bus, void *opaque,
++                                               int devfn)
++{
++    return &rme_guest->dma_as;
++}
++
++static const PCIIOMMUOps rme_dma_ops = {
++    .get_address_space = rme_dma_get_address_space,
++};
++
++void kvm_arm_rme_init_gpa_space(hwaddr highest_gpa, PCIBus *pci_bus)
++{
++    RealmDmaRegion *dma_region;
++    const unsigned int ipa_bits = 64 - clz64(highest_gpa) + 1;
++
++    if (!rme_guest) {
++        return;
++    }
++
++    assert(ipa_bits < 64);
++
++    /*
++     * Setup a DMA translation from the shared top half of the guest-physical
++     * address space to our merged view of RAM.
++     */
++    dma_region = g_new0(RealmDmaRegion, 1);
++
++    memory_region_init_iommu(dma_region, sizeof(*dma_region),
++                             TYPE_REALM_DMA_REGION, OBJECT(rme_guest),
++                             "realm-dma-region", 1ULL << ipa_bits);
++    address_space_init(&rme_guest->dma_as, MEMORY_REGION(dma_region),
++                       TYPE_REALM_DMA_REGION);
++    rme_guest->dma_region = dma_region;
++    rme_guest->ipa_bits = ipa_bits;
++
++    pci_setup_iommu(pci_bus, &rme_dma_ops, NULL);
++}
++
++static void realm_dma_region_init(Object *obj)
++{
++}
++
++static IOMMUTLBEntry realm_dma_region_translate(IOMMUMemoryRegion *mr,
++                                                hwaddr addr,
++                                                IOMMUAccessFlags flag,
++                                                int iommu_idx)
++{
++    const hwaddr address_mask = MAKE_64BIT_MASK(0, rme_guest->ipa_bits - 1);
++    IOMMUTLBEntry entry = {
++        .target_as = &address_space_memory,
++        .iova = addr,
++        .translated_addr = addr & address_mask,
++        /*
++         * Somewhat arbitrary granule for users that need one, such as
++         * address_space_get_iotlb_entry(). Should be relatively large to
++         * avoid frequent TLB misses. It can't be larger than memory region
++         * alignment (eg. address_mask) because that would mask the whole
++         * address, preventing vhost from finding the correct memory region.
++         */
++        .addr_mask = 4 * KiB - 1,
++        .perm = IOMMU_RW,
++    };
++
++    return entry;
++}
++
++static void realm_dma_region_replay(IOMMUMemoryRegion *mr, IOMMUNotifier *n)
++{
++    /* Nothing is shared at boot */
++}
++
++static void realm_dma_region_finalize(Object *obj)
++{
++}
++
++static void realm_dma_region_class_init(ObjectClass *oc, const void *data)
++{
++    IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_CLASS(oc);
++
++    imrc->translate = realm_dma_region_translate;
++    imrc->replay = realm_dma_region_replay;
++}
+diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+index 5fde96f9b281..e5af5d20367f 100644
+--- a/target/arm/kvm-stub.c
++++ b/target/arm/kvm-stub.c
+@@ -42,6 +42,10 @@ bool kvm_arm_el2_supported(void)
+     return false;
+ }
  
-     if (cpu->kvm_steal_time == ON_OFF_AUTO_AUTO) {
-         if (!has_steal_time || !arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
++void kvm_arm_rme_init_gpa_space(hwaddr highest_gpa, PCIBus *pci_bus)
++{
++}
++
+ /*
+  * These functions should never actually be called without KVM support.
+  */
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index d95381c13afa..b4a293911f71 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -250,4 +250,14 @@ char *kvm_print_register_name(uint64_t regidx);
+  */
+ void kvm_arm_rme_vcpu_init(ARMCPU *cpu);
+ 
++/**
++ * kvm_arm_rme_setup_gpa
++ * @highest_gpa: highest address of the lower half of the guest address space
++ * @pci_bus: The main PCI bus, for which PCI queries DMA address spaces
++ *
++ * Setup the guest-physical address space for a Realm. Install a memory region
++ * and notifier to manage the shared upper half of the address space.
++ */
++void kvm_arm_rme_init_gpa_space(hwaddr highest_gpa, PCIBus *pci_bus);
++
+ #endif
 -- 
 2.43.0
 

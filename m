@@ -4,103 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 353A7C531F9
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 10:08:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCAB6C53219
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 10:24:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1woejW-00062e-Tv; Tue, 28 Jul 2026 06:08:22 -0400
+	id 1woeyk-0004EO-5M; Tue, 28 Jul 2026 06:24:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1woejU-000615-Sp
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 06:08:20 -0400
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1woejT-0002tx-0B
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 06:08:20 -0400
-Received: by mail-pg1-x52c.google.com with SMTP id
- 41be03b00d2f7-c966b9ee9cbso1871831a12.1
- for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 03:08:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785233297; cv=none;
- d=google.com; s=arc-20260327;
- b=fDMwkEI0YNXO6rRx0Wflw9k1I8uFIWJROiEsh0Tb7WDNaMufYK4W0DOSAUNDlQeSJs
- QRJDNS2qxcYqaeGvGDlpGaCejByDDib/lSQ3bjHDEgkaHTm3fF52SKo+P64QpcNSErPA
- mCnjOWAFAmijbBgLPVgHjS41bd89yuN7koVVJkw3vzi/t7bHf/nbJiZ9cG18YGY1FhvY
- /CPhSRJF9Rhyzj5VeUhOOWO/nJdqi6aJy9ZZ3SvdjnHxP46pAdKu++LiLVA13wuGnFSE
- wLAdhpxXcNIKnUIWS93q32dnzKQeIZPFVEa7e1pq7++axAbqG5SKltrOFFugwFmtCepu
- VI4g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=JIgVzNEEgAxZnCC/6kCbzkUK93pDVNFQiloOlOUEUK4=;
- fh=PpZ1CCXoZMh/DRvZh+FxXhmYvb7cgaexUeWdx5nsuRU=;
- b=lTepXs4RsU3nmf45IgoGpmDToEEgXfSmjMYlesZoRRwwpy3DO2lSv9/uZgmXKXhwyl
- XRZqZmee5SGrXdsYtTa6rIgOzyrYpC31p82rHCGYZKXBNm96PM0YCnqSgAZU/v6DnATj
- yEKw04FFpkIx7HUSwrXBrwTVyMpNt7Bv7wPH5CaYvI33qLK8PwcpLuxkmxQUkZPUD4M7
- /1kGGufJLC8YjdrBYk7p8Cpik5o77iU/6XOBwYkuho8lyg1ghx2fwZo0ct7GdyL58jlj
- WN9uqhA7MQmB90r3LJnrtzw+e5SSB3Dy3/KGT7wlUAnEeVCrG6SJmkwrsdW7rLkjwkH5
- 1KtA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1785233297; x=1785838097; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=JIgVzNEEgAxZnCC/6kCbzkUK93pDVNFQiloOlOUEUK4=;
- b=CCdBrwGUocPztSKaNj+d/AjgOiYWLNkGqoq7B+i5sWuF8n+w/p63HDFspUdYluEdgF
- JyWfginpiEjbZ2+pGMJvQMHwN+pRpycO3m/B4oo9kSB1ZcYtNgmRMSONexZxbdt4LOKW
- lR9QKFUFP2DUKzUz36RrcPSgDatOrJ8vh4y62dMSnQky9DwcnD54vrCLOWlqwbPUSS3x
- jHQHoB8NxrEqeQyZA7fBdP1Yq3x+ZYrhCw6xfA8efvEERyF9GgvdeUEEJ4N5DuRDGE8r
- VNXR8CXmCpGs+/PGT6ULdO3GQF24W6+gnixRAqKMCUeHRHw0cTrcB+bB3hUowCy0ZeJN
- Wdkg==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1woeyi-0004Dp-LJ
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 06:24:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1woeyh-0005Bw-56
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2026 06:24:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1785234241;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=eb0F9fPTNxjGu53kmweUHKC7A+M3Yj3h+ht+6OfGSx4=;
+ b=TBsrkK4m7xok3QgbI2MK0VFLcqSZ+SZw0QasD0Mmyc5pRBRXnFDNgeJWZd2cy845+pLOrv
+ GwvV1y+k5TMKo9J8nQI5j8DTntWECLjwtyBxYeRW+oJPqB0POWhxYqf7DTmw7Ah4iU4vpu
+ gGpBbWlCqGupcYdIJYR7FICCNIME4bs=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-182-4tdh1XNNPoeJbSRy3ImE3w-1; Tue, 28 Jul 2026 06:24:00 -0400
+X-MC-Unique: 4tdh1XNNPoeJbSRy3ImE3w-1
+X-Mimecast-MFC-AGG-ID: 4tdh1XNNPoeJbSRy3ImE3w_1785234239
+Received: by mail-pl1-f197.google.com with SMTP id
+ d9443c01a7336-2cc88e22f92so84579795ad.1
+ for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 03:24:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785233297; x=1785838097;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=JIgVzNEEgAxZnCC/6kCbzkUK93pDVNFQiloOlOUEUK4=;
- b=nHKCoNGPxIbCZ6FbY+7KKHubKm7RejFAiFxRrXrzhKS1/9QCZoMKLITikzc1rdLDQF
- HK9WxNGfw3NY/CW6lEzIKZcPW85+egAwrE5+p5GSmAhH/C8MXIY3CN+5MvtzwALD1qdA
- cFsIW7MRVuRlmPd3SYMQaG8pRWFzynEfG0WsWtdJ9L3lnrdXzcVjWqT2GHYptfh0L/AU
- /55UwMa5KQTRXEWGnlv5gJY02Sg/US0IlSBedh4Ry1FTszy0Evm4xk2WdNMjKE/HD4SP
- ZB5HO/kaZblJ1MPWI1XddRlWSp58l3ZVl3glmkHMhBD4A008TC4b0eGSmqPznNxtVBwg
- hbOA==
-X-Gm-Message-State: AOJu0YwFfRupgJUFtsWDTOS2YV5OBYd3nPTB9hdoA3oXlH064Uwt/2D3
- vYLAn+GrDFzpPIQ0Ig5iM6ZMKONdVVsmx6WzrpTFq2mffbCSJEk0dQb9f/yIVIjfz+4tKvjZyHz
- txvTnw1N8abFxgZOdk2oLk00dMfZtNME=
-X-Gm-Gg: AR+sD13tLrVJg7i5PxYRjSiu8IKKe0eyzr0BoxhbMs2oW4jNuvBpPXh0qD3eeoRV5v7
- Ot0v0VoLkwEwLoa80yPXPl2SBRCnQS0N/j+lUXX9F5hpeIs7hFQqo6x0UDsO2MtIE3i73YcvepK
- AlX8/qRpfJ5oJyOGO3Hgc4tZtkV6GU3QHASaf/YSFdhksRCKsgJq7knvXaCLFSNoDFMccV8FtOA
- 4KuPtOdsBOUL1raTLMmehVo/2jaWV1WBnQpJFnqzRiqYWFehB8eJlJNrAru5FAgCCrTIOuN7zrn
- kZFTHKfzfgE1cNSXgw==
-X-Received: by 2002:a05:6300:4046:b0:3c0:b766:751b with SMTP id
- adf61e73a8af0-3c8aafa05famr2253524637.14.1785233297451; Tue, 28 Jul 2026
- 03:08:17 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1785234239; x=1785839039;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=eb0F9fPTNxjGu53kmweUHKC7A+M3Yj3h+ht+6OfGSx4=;
+ b=qN01sOoRbzQqt4Q9eOxH3cTAScgEfLZO5sRCGd30J8CgJPNqg/MTjLgApWRC62n8U3
+ k/cXTO2mbVEmPXtE1ef7HoqwHCruCr8qZ11mFnQw3xi1JlKASyeuw1+o7Bnl91b9AT6M
+ npGIdihpTCswaXjNt2mphcGY+/WgonqlctQMd5UA+Sd3+RoGOvA0VDrl6XQW33HUVbE/
+ KXXMPjOxYAG3h1Myd6fWjZz3N2khmgXK/e5FYhfqjQBfj0Qc2kBDPVZigg3P+i0IS82X
+ NyRwbDXuVy/MuKLj00xd8ztZrFLdWIgPSmSvdDsATAke1+UstMDkAzGT65dqWAHPWpkh
+ 9kAA==
+X-Gm-Message-State: AOJu0YwI07Pld/lhFszsKHz3+tyDFqqOLGy+6aejChHDxbgxRiaHMoSA
+ 7KzES5+hLdAx4U1zoJPtWznzcJvIDUbmBqZSTgpRHKESEmOQAI2NHMLdYvWWOxERry5Dsy/cm47
+ +oPLPbjlm/UpaQb3f5dS2hkCWwJJ27u+in05dHBH3Sh1EulBWNc+IFQ==
+X-Gm-Gg: AR+sD13I74zX98Rlrshte6HeO7EcglI5b99QtAtcE1kHcmk/G/WL0oGUxrQBPacaJRL
+ RrlKFNzy5WgKQo7pRgPK1UVn5UquvVGtiHRDiRbiAZ7KkKXZbltAPtH6dUpwrr+hMWaVKll/qtd
+ K2zmSj3Sc6MfmeFBHF/tZgIsy3o4jbqZTxP+XCXq/UNQnTWcEcY6fkDN9xGHOGinLPcHQ/GfgG2
+ r+ITlKi17XgPc52pWC9q+HpRDfthcWFvmMCMt1+Rk8R+1+/Ofi9jLyrJGWOX8zDub9owiLUIPfx
+ EsrN6mP0mOUFDzg7C9kuuZWmMkWUvPllnp3ZlulDwma6OhVNBltklecSAQMhDH2KddF6E1BFCB1
+ Jm5d9B1+tSSHHHUdwD5ZU6LX4Nu4K5Cb+sTlVxWv039g=
+X-Received: by 2002:a17:902:f645:b0:2ca:ecf6:910e with SMTP id
+ d9443c01a7336-2d0159aff48mr22419685ad.0.1785234239215; 
+ Tue, 28 Jul 2026 03:23:59 -0700 (PDT)
+X-Received: by 2002:a17:902:f645:b0:2ca:ecf6:910e with SMTP id
+ d9443c01a7336-2d0159aff48mr22419255ad.0.1785234238691; 
+ Tue, 28 Jul 2026 03:23:58 -0700 (PDT)
+Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
+ [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2cfde5e2a78sm50739545ad.26.2026.07.28.03.23.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 28 Jul 2026 03:23:57 -0700 (PDT)
+Message-ID: <2322668a-20a3-4a6b-8d7f-c04ddfef84f1@redhat.com>
+Date: Tue, 28 Jul 2026 20:23:48 +1000
 MIME-Version: 1.0
-References: <20260706173324.804340-1-peter.maydell@linaro.org>
-In-Reply-To: <20260706173324.804340-1-peter.maydell@linaro.org>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Tue, 28 Jul 2026 14:08:04 +0400
-X-Gm-Features: AUfX_mxvftl6QLAhz1gMtiJlX23nbPjTYQIYnLQwNdW1378YWXTbNuI4jb4Sj00
-Message-ID: <CAJ+F1C+TO_-ktDqJnbeXuaCdAsomQMTvWZ8aAFndn=JPF1+2sw@mail.gmail.com>
-Subject: Re: [PATCH 0/3] hw/display/exynos4210_find: Clamp windows to screen
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-pg1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 2/3] system/memory: Use qemu_ram_move() for directly
+ accessible regions
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peterx@redhat.com,
+ mst@redhat.com, richard.henderson@linaro.org, alex@shazbot.org,
+ berrange@redhat.com, philmd@mailo.com, david@kernel.org, clg@redhat.com,
+ pbonzini@redhat.com, phrdina@redhat.com, jugraham@redhat.com,
+ liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, shan.gavin@gmail.com
+References: <20260727032649.145381-1-gshan@redhat.com>
+ <20260727032649.145381-3-gshan@redhat.com>
+ <CAFEAcA9_tDRAd97z4UtNhFPK+fMbq37LJhWTSmD5cueo61hvvg@mail.gmail.com>
+ <0a384d67-fc56-4a21-9d0e-25f218a45228@redhat.com>
+ <CAFEAcA9HbTSj9cJfv8o=jYSuPhScr-RVKWCos4kpUJ+T1S6g5Q@mail.gmail.com>
+ <13333e56-3725-4550-849c-9035f6925213@oss.qualcomm.com>
+ <CAFEAcA9X7SNUvQpwXA2_xReUERB-eBETty3g32-PD=MVk536sg@mail.gmail.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <CAFEAcA9X7SNUvQpwXA2_xReUERB-eBETty3g32-PD=MVk536sg@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: u7Y976f0oYwjzyhUKB991ofpgnyPo3LNcQRGQiLcUYo_1785234239
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,44 +122,101 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Jul 6, 2026 at 9:33=E2=80=AFPM Peter Maydell <peter.maydell@linaro.=
-org> wrote:
->
-> The exynos4210_fimd device has a setup where the guest can program
-> both the overall size of the LCD screen and also the corners of
-> "windows" that define where the guest memory should appear on that
-> screen. The current code assumes that the guest is sensible and
-> puts the corners of windows inside the overall screen. If it doesn't
-> then we will try to copy data to an address that is outside the
-> interfal framebuffer memory that we allocate to be the size of the
-> screen.
->
-> This patchset clamps the window coordinates to be within the screen
-> size. Patches 1 and 2 are simple refactorings to make the third
-> patch easier to read.
->
-> This fixes https://gitlab.com/qemu-project/qemu/-/work_items/3795
+On 7/28/26 7:35 PM, Peter Maydell wrote:
+> On Tue, 28 Jul 2026 at 10:22, Philippe Mathieu-Daudé
+> <philmd@oss.qualcomm.com> wrote:
+>>
+>> On 28/7/26 11:01, Peter Maydell wrote:
+>>> On Tue, 28 Jul 2026 at 04:01, Gavin Shan <gshan@redhat.com> wrote:
+>>>>
+>>>> On 7/27/26 10:51 PM, Peter Maydell wrote:
+> 
+> 
+>>>>>> +    test = (uintptr_t)src | (uintptr_t)dst | n;
+>>>>>> +    len = test & -test;
+>>>>>
+>>>>> What is this doing? I am not a fan of clever bit twiddling
+>>>>> that isn't commented to explain itself. Readers of the code
+>>>>> shouldn't have to go off and search for an explanation of what
+>>>>> is going on.
+>>>>>
+>>>>
+>>>> The following comments will be added for (v5).
+>>>>
+>>>>        /*
+>>>>         * Maximal length of aligned access that are determined by @src,
+>>>>         * @dst and @n
+>>>>         */
+>>>
+>>> What I mean is more that it ought to say why "x & -x"
+>>> achieves that goal.
+>>
+>> Hmm isn't "x & -x" restricted to power of 2? Here we have no garanty
+>> @test is, because we have no garanty @n is. Ah, this is catched by
+>> the 'len != n' check and returns after calling memmove(). Indeed not
+>> very clear notation. Again:
+>>
+>>     ...
+>>
+>>     /* Overlapping buffers, unaligned or oversized access */
+>>     if (!QEMU_IS_ALIGNED((uintptr_t)src | (uintptr_t)dst, n)) {
+>>         memmove(dst, src, n);
+>>         return;
+>>     }
+>>
+>>     switch (n) {
+>>     ...
+> 
+> I'm not inherently against the bit twiddling (QEMU_IS_ALIGNED
+> on a variable length will do a division, maybe we care?);
+> I just want that if we do use a bit-twiddling trick that we
+> explain why it does the thing we want it to do.
+> 
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Ok, PeterM and Philippe, Could you please help to check if below code looks
+good to you? Thanks a lot :-)
 
->
-> thanks
-> -- PMM
->
-> Peter Maydell (3):
->   hw/display/exynos4210_fimd: Factor out finding screen width/height
->   hw/display/exynos4210_fimd: Pass width to draw_line functions
->   hw/display/exynos4210_fimd: Clamp windows to screen size
->
->  hw/display/exynos4210_fimd.c | 54 ++++++++++++++++++++++++++----------
->  1 file changed, 39 insertions(+), 15 deletions(-)
->
-> --
-> 2.43.0
->
->
+void qemu_ram_move(void *dst, const void *src, size_t n)
+{
+     if (n == 0) {
+         return;
+     }
 
+     /* Overlapping areas, unaligned or oversized access */
+     if (!is_power_of_2(n) || n > 8 ||
+         !QEMU_IS_ALIGNED((uintptr_t)src | (uintptr_t)dst, n)) {
+         memmove(dst, src, n);
+         return;
+     }
 
---=20
-Marc-Andr=C3=A9 Lureau
+      switch (n) {
+      case 1:
+          qatomic_set((uint8_t *)dst, qatomic_read((uint8_t *)src));
+          break;
+      case 2:
+          qatomic_set((uint16_t *)dst, qatomic_read((uint16_t *)src));
+          break;
+      case 4:
+          qatomic_set((uint32_t *)dst, qatomic_read((uint32_t *)src));
+          break;
+      case 8:
+          qatomic_set((uint64_t *)dst, qatomic_read((uint64_t *)src));
+          break;
+      default:
+          g_assert_not_reached();
+      }
+}
+
+QEMU_IS_ALIGNED() doesn't require the arguments are power-of-two values.
+
+#define QEMU_IS_ALIGNED(n, m) (((n) % (m)) == 0)   /* QEMU_IS_ALIGNED(3, 3) => true */
+
+I also need to drop "and the memory areas do not overlap" in (v6) from the
+comments for include/system/memory.h::qemu_ram_move() as the check 'src == dst'
+check has been dropped. Sorry that I sent (v5) too quick because our downstream
+need a stabilized version to integrate.
+
+Thanks,
+Gavin
+
 

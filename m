@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 158B1C53219
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 15:28:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B89EC53219
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 15:28:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wp6CP-0000rv-W4; Wed, 29 Jul 2026 11:28:02 -0400
+	id 1wp6Ct-0001TL-67; Wed, 29 Jul 2026 11:28:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wp6CO-0000rY-Si
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:28:00 -0400
-Received: from mail-wm1-f42.google.com ([209.85.128.42])
+ id 1wp6Cr-0001T3-Nc
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:28:29 -0400
+Received: from mail-wr1-f46.google.com ([209.85.221.46])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wp6CN-00080A-CY
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:28:00 -0400
-Received: by mail-wm1-f42.google.com with SMTP id
- 5b1f17b1804b1-4954d29264cso5165105e9.2
- for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 08:27:59 -0700 (PDT)
+ id 1wp6Cq-00082K-5r
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:28:29 -0400
+Received: by mail-wr1-f46.google.com with SMTP id
+ ffacd0b85a97d-47362928f65so966670f8f.2
+ for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 08:28:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785338878; x=1785943678;
+ d=1e100.net; s=20251104; t=1785338907; x=1785943707;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=9Rx1so6O2DvHoxNj8RGDiYjwjmDl40dAURIIyBXbKtg=;
- b=ikcIP3fcCtbBrK/VyQFDnUOGzqHCaq/vlLDYIPpkn3eCLO8MAWRMdQOFDkkkcXk2ri
- onSp2BDoMwVrObhcZSwwb/Hh+hSKSbmWrvkHcxHxgSskFTc+twBHAl6aq+rxmbZK9CfH
- R/9mrVrHbkOaxDMnU5JLK/6BfKU+AmLfWd9DPO/Ts7wt4mb8pbyGKHL7uh0H+Rb5IKg0
- VI0gMQyaIjzIRUDtpZJQgJX0dWrMoiAB6sQVwSKelf7kPHlKDF3SqmXQr34k650+pojD
- jQ83e60UJHl5Ok7tG0u1+5nTWNwxZqj59H2xb8XEdCqYQrTX0TfHFIM8GfYLvNiy69kr
- Nglw==
+ bh=3wENbpzNy+/7ZpZ2nV5lBBRvhyhYJ6tzgYJmt0GLaJo=;
+ b=ZA408nYlbOeh8JWoZjS/R6oY0fyNk72TYPJ9JF4t41+ZnlL0muvkQegVomGVmeOMnu
+ XRRagIsCIGRwna9RLoPm7rjyhOoCUhFxh378nM/di7rLIFr2d3gCa2LDBw5j2qyFicPP
+ Th8ys0k5a/ANJS5JzRiAx8R6IvETM953QKD/2GQYYRUExCpqZyU/cVAOO/6JwgrVrkdm
+ JzuzdhpTSgByf5wYZMVmvWeLhhwuU8eTlEaB3dsMUTcalRsjlNeUWxEQDU1eW2chx/2d
+ vyUVWCYoHMMOOYYaTu1jlz8zbJw/JzaNRaLt1vEROPjISLu71FBsLAhDFk4VeLLlE1nh
+ Yidw==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rp9CfzW8BD90Xt4ORI5sr+ZsZPU8wAjArmOkUG4jepFSYZTND2+3fRpw7d6Ojm8ugNStJBFRBSIuQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yx1wAd+drCqm2nz/Nq4Nh1JHC0kaSFQt+uaUgUn2x8CAVBVpSNS
- pOFUssdxyJboanBnxTNWqmSRDZkrg+3V6H18c3y1jYqA8JQhe3ggmh8q
-X-Gm-Gg: AR+sD10i0DVmfvc2S/ZDcwve1dI3ygzN9YKCgMD3ayLJQyPhOZY/9Rih34BThiTdbyj
- AYAc1/ETQy1tkK9GhuML6tQlkf8faKwwN/K0awkujaRavXirum2olQOCK14XM0cXKAOoQCApNxD
- QjtVatrlCDrK8v1mHogstZoQg1LmQLlHyttFIRjq9whWpD0ZNmvh03aenGBuEeSJXFvHLz2pYf5
- gx2hWS8Il690LNYpZnFrcSL0Xsr9fhLtYbMSD0gwzpG5ff6agkbHfEYIPv5wzG9loSRNLUCSePK
- RHRNBJT7j+z9vCZhTTo4W/VigONsYNaFUNYiq+1GQ3nXPNemdHKvJH+xBfJPotW9abg9bgNNYZa
- +sQbBEuDPCEq2cLYs+TPTN1zFAMIHm+/19+m1JBof+DaRU9Pvybufo2mxoI/0WAL6CL8DRNhUmo
- StAqqybkahvyJXhRZuo27+asglD9vZykTr21VDNDM+ula/pmPwdiiktaR54H/WiTz+7BhNnZGF1
- +Tbdnke+Sx9q80HDga/Zib2SBmwWVol/BZpNnQ0lZwMpLk=
-X-Received: by 2002:a05:600c:e549:20b0:495:71f8:7325 with SMTP id
- 5b1f17b1804b1-496c6586a5amr55084735e9.32.1785338877905; 
- Wed, 29 Jul 2026 08:27:57 -0700 (PDT)
+ AHgh+RoG3T4MtnKfIbHjB+QM9xVcP1IatauVrK4dn9WuiRox9IoEquJTeIoGkv2FchN3/Hzdod8c0dm0bw==@nongnu.org
+X-Gm-Message-State: AOJu0Ywaxk/HYpgn91MQ+oDWtfeS63enEPQ8E7jfDYWSIZvKtP/O/sTn
+ BtH+jBJqHzh9/TMhJjhIDF/l4eOzU7deeRwWkIZiGIOFItdcwXsPTrEA
+X-Gm-Gg: AR+sD10FZyF6cjqna0IvzfwG5dJHm6im4wB1HtkHHad7R8+nTdYHJVIRKNi+2vG0XoG
+ COTUZuyeC45FmyOBU5NqkIB6G20Yl4lFot8bH3KstmxFHRlTOZ4ozTgZ1LMPdeSfqPc8hu8FI2R
+ TEAp1zJ8ShnORdtHTa272qWWtuVRuL36+GQBhUJjn2NdNZ8agFw2aP9NxMx/nPkKPaD+ju2Ez1S
+ NYtyQSGJbvahZrhMuQN5uWJFme4pXaCPb/hsEdC45heRFvR6whtXpvs/1UqZVeGufvNp8waC6K4
+ ztXeqtq1js0bq0I40HHsOnM+n0qRBN2z4Ia9rzsSTGOb3aau1r0vhPZy42KIZQwi9Je50/XvnYR
+ lhHvH20jJ/Il9pFLi9cvn67/d0Qx9wegfFLqQtdrp+spuMWZP4FgICJm49sSLmj4n8AuhK6CIEZ
+ lKAA3KOFTXjpEO5iwXZHWOsc2R+AFlaC0n7+uqkRgD0jltg5kQATRbQdKKzocLoZMw/5e6HkExh
+ ZXCrtlfrE486sRPQV+a8quPC2MnHCnTzNGAb5S4gqxSseU=
+X-Received: by 2002:a05:600c:4714:b0:496:bbce:fc with SMTP id
+ 5b1f17b1804b1-496c642c8d1mr89151645e9.12.1785338906579; 
+ Wed, 29 Jul 2026 08:28:26 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-496c44af19bsm158956295e9.3.2026.07.29.08.27.57
+ 5b1f17b1804b1-496fa88552bsm47835435e9.3.2026.07.29.08.28.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jul 2026 08:27:57 -0700 (PDT)
-Date: Wed, 29 Jul 2026 17:12:38 +0200
-Subject: [PATCH 02/25] hw/sensor: tmp105: name the parent object field
- parent_obj
+ Wed, 29 Jul 2026 08:28:26 -0700 (PDT)
+Date: Wed, 29 Jul 2026 17:12:39 +0200
+Subject: [PATCH 03/25] hw/sensor: tmp105: implement Resettable reset
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260729-sanmiguel-bmc-locator-v1-2-c8f9a8d101f6@free.fr>
+Message-Id: <20260729-sanmiguel-bmc-locator-v1-3-c8f9a8d101f6@free.fr>
 References: <20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr>
 In-Reply-To: <20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr>
 To: qemu-devel@nongnu.org
@@ -78,15 +77,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Emmanuel Blot <eblot@meta.com>, Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785337963; l=2294;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785337963; l=1784;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=IPpKdB4GNfibCBuZaz5CjB0TPUppqW5ZDDXX0F0+Glo=;
- b=2yuXF/Z06uJl/0lRd/rMbrEiHrFDmhgqS9xMBmzKyL2dtweSS8cV3iJZzR4xsMbmavJMFfiPU
- zAMSLLlcVOPDdOX/0TyFKZ1Jim2iZ5spqgsCBFdcHFH2bs4NefMOnd2
+ bh=lLLQDRXOnOUwL5qjxtcvmlFJBgBQ1Ly1Z6iI78mZFws=;
+ b=wmpAoOb1vlCAo4gw1g3e1nycH1UDUEQCPa2rN2iZNatrvc/BYEHslfL0nBj9iv5JnlHiHWGDy
+ WD2Vz50Xe17Bd7GIAeg/wy1qWSviyhqm0WICs7CQRIf9UFPtrywVeD4
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.42; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f42.google.com
+Received-SPF: pass client-ip=209.85.221.46; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f46.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -112,70 +111,58 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-QEMU coding conventions expect the embedded parent object of a QOM type
-to be named parent_obj. Rename the TMP105State I2CSlave member
-accordingly and update its references; the change is purely cosmetic.
+Previously the device reset routine was invoked once from realize() and
+never registered with the reset subsystem, so a system or bus reset left
+the TMP105 registers untouched. Convert tmp105_reset() into a proper
+Resettable hold phase (tmp105_reset_hold) registered through
+ResettableClass::phases.hold, and drop the manual call from realize() as
+the reset framework now drives it. This matches the scheme used by the
+other hw/sensor I2C devices.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- hw/sensor/tmp105.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ hw/sensor/tmp105.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c
-index 6069c0905d..aabeb34f08 100644
+index aabeb34f08..f7d0c738ca 100644
 --- a/hw/sensor/tmp105.c
 +++ b/hw/sensor/tmp105.c
-@@ -42,7 +42,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(TMP105State, TMP105)
-  */
- struct TMP105State {
-     /*< private >*/
--    I2CSlave i2c;
-+    I2CSlave parent_obj;
-     /*< public >*/
- 
-     uint8_t len;
-@@ -187,12 +187,12 @@ static void tmp105_read(TMP105State *s)
-         break;
+@@ -314,9 +314,9 @@ static const VMStateDescription vmstate_tmp105 = {
      }
+ };
  
--    trace_tmp105_read(s->i2c.address, s->pointer);
-+    trace_tmp105_read(s->parent_obj.address, s->pointer);
- }
- 
- static void tmp105_write(TMP105State *s)
+-static void tmp105_reset(I2CSlave *i2c)
++static void tmp105_reset_hold(Object *obj, ResetType type)
  {
--    trace_tmp105_write(s->i2c.address, s->pointer);
-+    trace_tmp105_write(s->parent_obj.address, s->pointer);
+-    TMP105State *s = TMP105(i2c);
++    TMP105State *s = TMP105(obj);
  
-     switch (s->pointer & 3) {
-     case TMP105_REG_TEMPERATURE:
-@@ -200,7 +200,7 @@ static void tmp105_write(TMP105State *s)
- 
-     case TMP105_REG_CONFIG:
-         if (FIELD_EX8(s->buf[0] & ~s->config, CONFIG, SHUTDOWN_MODE)) {
--            trace_tmp105_write_shutdown(s->i2c.address);
-+            trace_tmp105_write_shutdown(s->parent_obj.address);
-         }
-         s->config = FIELD_DP8(s->buf[0], CONFIG, ONE_SHOT, 0);
-         s->faults = tmp105_faultq[FIELD_EX8(s->config, CONFIG, FAULT_QUEUE)];
-@@ -305,7 +305,7 @@ static const VMStateDescription vmstate_tmp105 = {
-         VMSTATE_INT16(temperature, TMP105State),
-         VMSTATE_INT16_ARRAY(limit, TMP105State, 2),
-         VMSTATE_UINT8(alarm, TMP105State),
--        VMSTATE_I2C_SLAVE(i2c, TMP105State),
-+        VMSTATE_I2C_SLAVE(parent_obj, TMP105State),
-         VMSTATE_END_OF_LIST()
-     },
-     .subsections = (const VMStateDescription * const []) {
-@@ -338,7 +338,7 @@ static void tmp105_realize(DeviceState *dev, Error **errp)
+     s->temperature = 0;
+     s->pointer = 0;
+@@ -337,8 +337,6 @@ static void tmp105_realize(DeviceState *dev, Error **errp)
+     TMP105State *s = TMP105(i2c);
  
      qdev_init_gpio_out(&i2c->qdev, &s->pin, 1);
- 
--    tmp105_reset(&s->i2c);
-+    tmp105_reset(&s->parent_obj);
+-
+-    tmp105_reset(&s->parent_obj);
  }
  
  static void tmp105_initfn(Object *obj)
+@@ -352,11 +350,13 @@ static void tmp105_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
+ 
+     dc->realize = tmp105_realize;
+     k->event = tmp105_event;
+     k->recv = tmp105_rx;
+     k->send = tmp105_tx;
++    rc->phases.hold = tmp105_reset_hold;
+     dc->vmsd = &vmstate_tmp105;
+ }
+ 
 
 -- 
 2.50.1

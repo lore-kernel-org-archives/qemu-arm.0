@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50762C53200
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 15:39:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B63D8C53200
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 15:40:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wp6ND-000598-4R; Wed, 29 Jul 2026 11:39:11 -0400
+	id 1wp6Oh-0006Ba-8U; Wed, 29 Jul 2026 11:40:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wp6NC-00058j-4L
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:39:10 -0400
-Received: from mail-wm1-f51.google.com ([209.85.128.51])
+ id 1wp6Of-0006B2-N9
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:40:41 -0400
+Received: from mail-wr1-f48.google.com ([209.85.221.48])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wp6NA-0001dJ-Lo
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:39:09 -0400
-Received: by mail-wm1-f51.google.com with SMTP id
- 5b1f17b1804b1-495437bb891so9276675e9.1
- for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 08:39:08 -0700 (PDT)
+ id 1wp6Oe-0001wR-8W
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:40:41 -0400
+Received: by mail-wr1-f48.google.com with SMTP id
+ ffacd0b85a97d-47640541585so868908f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 08:40:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785339547; x=1785944347;
+ d=1e100.net; s=20251104; t=1785339639; x=1785944439;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=yyemhKIbNDI0dfV54rPviOfcsJPqmPO4g32wuNZQnWs=;
- b=f0yD7rX6dJ5WaO++IYx5PizjoobB7zwGagbxrzySCX6t6x46Ax1QmvovoylJjSISnJ
- 3jBA4MOV97N6/j1knirJZJV3LOW0PEHK/BEya0CEuRtDpZ2hhg3UjpwAgWMLS94MhDKv
- 0KaUAT2OpghErGXgTANDzN9TpR03N1EHuUwNzIfiLLxCy7Dpmr/WjZplgBS5Pjk/YO4j
- xGkXzhqCwsU3kk2SZQk3hjdIVsZv77m+5KPMxF5i+a+msQyflULm2/u1w27aQ6FKLNQ+
- vntMG1VOOFQ9Cu/TNrvUxJHhjHw/hjs7XvJ3tz2ceXNfkZ8z4JUpGjWUbz5EpTiwXOSi
- 8IPw==
+ bh=T3QJvSJZGpsccP9EvkOCqQcE/jNtNeeQY/Ifg8+pe0I=;
+ b=Ivt3mlF3WiL896OAyHwiPltN1jwAi0wBfNzicU4u83R1A+4MCMIUlwFJR+v/IH0hEz
+ Xct+WMmpBvaaSzGRbqXxURmqTTzjY26KCyBE9bc/K7pzW5iZ5v+sc2adsUK9mmz/BPcI
+ nUP0M7Rk+LJLEbJjbvJZ0oYkjh7uqI/LSnlBCzsDl7E99GyMk5E2pzt2dgYSmdTTRcX8
+ ZEfR2JOkZsKlhm0AUg6wOKU8tIKJgzf/Hp2bMbMaX3dRSfMoKBTfAEn4XedE2JZbhj/l
+ 4aaNt/+B4l/PN3Mg6fDPt0/a8Clqm9LnTOxWZi9kdKui4sEeOIMRi8bFdm4P68ZkDWQk
+ Fv/g==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rp41EvMXEjxhzhNtyXnHoAOfflYw3UieC3O2zycWtgrm8b7azJNsV02rTgy89LjBPQaopRAZ6VVMg==@nongnu.org
-X-Gm-Message-State: AOJu0Yxv3nq98SpRWPd5/bEx1XERB8mc0CK+hHU388+DFw55V4OVz8M4
- k8uVv05rh0ylQUv32DCcRoyGwbWtufA0jwsmyhwErj3Sp3lcjrAF7/2b
-X-Gm-Gg: AR+sD12F0GQin4BH+s8PI4vL/dE63t9+v0CHIu5Npkhzccaj4MgrDTZaptfaIUjprIG
- 8DgOTNXd5e5wenJScBNjDlA4ZG3AhgJZq2SAEH0IOe/Fn4W3cbfhtl55nbfHW7lEEccRaV9905b
- azBDF0+bHM9GS9U6pfDzPOR0yWq3EwVGx9n/wRkOmmYjIgtAySHzpdXRZI8mcipskDXyyUkt5qy
- qFqKyLgqe+THWu6WtgFLYJOXxfQnc1A+1BfWScyQmAEzSZWgb1Qdj2vyEqqA7hkwiOYOFQWBPKz
- oAyHJwA10rDha57ZClY2qGeVDW3FC89V2oepSr7moAovVJdq8O8HXFmKfQ+BoScOAZZEiaJuElq
- 5Q3mxTDnRXGh8ridvZmzh7QXhFFU9pXDPRKco75YWdBJlYXbG9/arRPErfp7/gI5yMHZR7xB0Sh
- UNM2hIhbdevdDvCs16lgXTxiKF1aEZApdgduN2y60q5XRbItAF5ivZl6TW2Q9NFxCJe8X7KZ3tJ
- QiaTWqFqx9grnuUjkPnoSWmCJ1/ivO27qQS
-X-Received: by 2002:a05:600c:8710:b0:492:6f5c:fd8c with SMTP id
- 5b1f17b1804b1-497fd311860mr30695555e9.15.1785339547088; 
- Wed, 29 Jul 2026 08:39:07 -0700 (PDT)
+ AHgh+Ro/PcQsm9UKKl3KS8d+nUI+2G3wpVbSTxm3AuOruQUUGwqSyqBHVmNqmCjMlWy+JfuZmvgjJGG5ig==@nongnu.org
+X-Gm-Message-State: AOJu0YxsWJGT4Or4hQ07eNMEtNS2L9fG/FwN57p/1BfuY2E8TSW/Yqb/
+ MQr5/DVB9AGRfZy7KBbeIbt3nupQ0xHaDC0knMOds80HTvnVKI7XdJ92
+X-Gm-Gg: AR+sD11oS3AEpgVdhZIEZbZ1qRUvYb7WLi1dHX3XuR5MXaJZFwoJ40ZIZd6cUAFpvO9
+ H4c5PYFXIYzvUUPJ6YlDoG+Qy7DzGTwmjUTy2x1Rc+ZUJxUtmSTZLwiIhkCyLlH38uXClod79Pk
+ 4LXJri+qwxxYubDbxyaXPGPa6LTJq+QPD4cfYelUTcdnZHBKHGtVFOCyNZebFjbclW5dNuoVgn0
+ YdlSTjB8iZpNlCtCwePo8cZGEqeyu1fMiYnLC8aIj2GY0O5xvz7AxeTLQmP28k13DKY30U8Hp3/
+ Y5XB0kvcYYFNMh+BFTmcdMRna0YQbiOc7R49Oo8WPE234wwfetANE3QqbT1rVNn9ScMmwqDgjvN
+ TVUyto10kTH6Cu0y8yEZ6+rShy8OPOYYZwvEnnlR3YVyaOIq1fYaESOh6tJoeevQW02Pqr1PLri
+ pbP9SfHES2rPtZ1xe1F4EV58tFfei1kZmbI1czL396wvEfBUcz52M1wRu2UijFSD340yP/Mr7D+
+ XNLxd4TRT2IQzbS/MKv+Sp25k54JxwiKJlp
+X-Received: by 2002:a05:6000:1787:b0:47f:5371:1b15 with SMTP id
+ ffacd0b85a97d-47fb1ee2366mr8768400f8f.26.1785339638711; 
+ Wed, 29 Jul 2026 08:40:38 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-496c462512dsm154633125e9.13.2026.07.29.08.39.05
+ ffacd0b85a97d-47fb647a8d4sm9038598f8f.0.2026.07.29.08.40.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jul 2026 08:39:06 -0700 (PDT)
-Date: Wed, 29 Jul 2026 17:12:51 +0200
-Subject: [PATCH 15/25] hw/arm: fuji: use the real TMP75 and LM75B
- temperature sensors
+ Wed, 29 Jul 2026 08:40:38 -0700 (PDT)
+Date: Wed, 29 Jul 2026 17:12:52 +0200
+Subject: [PATCH 16/25] tests/functional: aspeed: optionally check the
+ device tree model on boot
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260729-sanmiguel-bmc-locator-v1-15-c8f9a8d101f6@free.fr>
+Message-Id: <20260729-sanmiguel-bmc-locator-v1-16-c8f9a8d101f6@free.fr>
 References: <20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr>
 In-Reply-To: <20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr>
 To: qemu-devel@nongnu.org
@@ -78,15 +78,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Emmanuel Blot <eblot@meta.com>, Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785337964; l=2648;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785337964; l=1664;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=3Z2LgNf5NONtKdqbZ6IR/+v7877ewZwsl3F8BgLX3xg=;
- b=c4/xi9dVdrmq4Gb6hhrV7h2lN96P0ySNSmm3xHFsWb4HZHVBk9iSs4KSPx7QikBqfLxbvUfdI
- Dte8Sm01v2EADnUZ/CbogUMI0hmLbSEgk3tPZwmDb4LR3aBzhazf8Mb
+ bh=cY6O6mrVrai7NMYpMfMfQOtbJnyb/EZq8fgGv1TgVEA=;
+ b=AQ838ecWOWwFlpkOwwRhntcyWOI8dzW7kvtPnC3tGjFbVBZtLn17rgPtFJ1xHgzM538PwMyl6
+ BrrNfBaCySPCA6QAwmenQtUOHlmRsrLclEX5O3GhdNCEWK22+y8Xssl
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.51; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f51.google.com
+Received-SPF: pass client-ip=209.85.221.48; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f48.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -112,71 +112,42 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The Fuji BMC instantiates many ti,tmp75 sensors and several NXP LM75B
-sensors; the original board code approximated both with a plain TMP105
-via local TYPE_TMP75 and TYPE_LM75 aliases (the latter mislabelling the
-LM75B parts as LM75).
-
-Now that hw/sensor/tmp105.h provides proper TMP75 and LM75B models, drop
-the local aliases (and their guards) and instantiate the accurate
-devices.
+Add an optional 'dt_model' argument to do_test_arm_aspeed_openbmc().
+When
+provided, the helper also waits for the kernel's "Machine model: ..."
+line,
+letting a test confirm the booted image actually matches the expected
+board
+device tree rather than only the SoC revision.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- hw/arm/aspeed_ast2600_fuji.c | 22 +++++++---------------
- 1 file changed, 7 insertions(+), 15 deletions(-)
+ tests/functional/aspeed.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/aspeed_ast2600_fuji.c b/hw/arm/aspeed_ast2600_fuji.c
-index 6dc3535f0c..fe0c294e14 100644
---- a/hw/arm/aspeed_ast2600_fuji.c
-+++ b/hw/arm/aspeed_ast2600_fuji.c
-@@ -15,14 +15,6 @@
- #include "hw/sensor/tmp105.h"
- #include "hw/nvram/eeprom_at24c.h"
+diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
+index 076da1036c..08af6b4839 100644
+--- a/tests/functional/aspeed.py
++++ b/tests/functional/aspeed.py
+@@ -8,7 +8,8 @@
+ class AspeedTest(LinuxKernelTest):
  
--/*
-- * Guard the aliases against the TYPE_TMP75 that hw/sensor/tmp105.h now defines;
-- * TYPE_LM75 is guarded too for consistency (no LM75 model exists yet).
-- */
--#undef TYPE_LM75
--#define TYPE_LM75 TYPE_TMP105
--#undef TYPE_TMP75
--#define TYPE_TMP75 TYPE_TMP105
- #define TYPE_TMP422 "tmp422"
- 
- /* Fuji hardware value */
-@@ -63,8 +55,8 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
-         get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
-     }
- 
--    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
--    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4d);
-+    i2c_slave_create_simple(i2c[17], TYPE_LM75B, 0x4c);
-+    i2c_slave_create_simple(i2c[17], TYPE_LM75B, 0x4d);
- 
-     /*
-      * EEPROM 24c64 size is 64Kbits or 8 Kbytes
-@@ -74,15 +66,15 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
-     at24c_eeprom_init(i2c[20], 0x50, 256);
-     at24c_eeprom_init(i2c[22], 0x52, 256);
- 
--    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x48);
--    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x49);
--    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x4a);
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75B, 0x48);
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75B, 0x49);
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75B, 0x4a);
-     i2c_slave_create_simple(i2c[3], TYPE_TMP422, 0x4c);
- 
-     at24c_eeprom_init(i2c[8], 0x51, 8 * KiB);
--    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x4a);
-+    i2c_slave_create_simple(i2c[8], TYPE_LM75B, 0x4a);
- 
--    i2c_slave_create_simple(i2c[50], TYPE_LM75, 0x4c);
-+    i2c_slave_create_simple(i2c[50], TYPE_LM75B, 0x4c);
-     at24c_eeprom_init(i2c[50], 0x52, 8 * KiB);
-     i2c_slave_create_simple(i2c[51], TYPE_TMP75, 0x48);
-     i2c_slave_create_simple(i2c[52], TYPE_TMP75, 0x49);
+     def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
+-                                   cpu_id='0x0', soc='AST2500 rev A1'):
++                                   cpu_id='0x0', soc='AST2500 rev A1',
++                                   dt_model=None):
+         self.set_machine(machine)
+         self.vm.set_console()
+         self.vm.add_args('-drive', f'file={image},if=mtd,format=raw',
+@@ -19,6 +20,8 @@ def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
+         self.wait_for_console_pattern('## Loading kernel from FIT Image')
+         self.wait_for_console_pattern('Starting kernel ...')
+         self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
++        if dt_model:
++            self.wait_for_console_pattern(f'Machine model: {dt_model}')
+         self.wait_for_console_pattern(f'ASPEED {soc}')
+         self.wait_for_console_pattern('/init as init process')
+         self.wait_for_boot_complete()
 
 -- 
 2.50.1

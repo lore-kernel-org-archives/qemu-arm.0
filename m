@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B218C53219
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 15:38:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50762C53200
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 15:39:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wp6M1-0004c6-2f; Wed, 29 Jul 2026 11:37:57 -0400
+	id 1wp6ND-000598-4R; Wed, 29 Jul 2026 11:39:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wp6Lz-0004bN-Mu
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:37:55 -0400
-Received: from mail-wm1-f46.google.com ([209.85.128.46])
+ id 1wp6NC-00058j-4L
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:39:10 -0400
+Received: from mail-wm1-f51.google.com ([209.85.128.51])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wp6Ly-0001YH-B5
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:37:55 -0400
-Received: by mail-wm1-f46.google.com with SMTP id
- 5b1f17b1804b1-4955de8797cso7618755e9.3
- for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 08:37:53 -0700 (PDT)
+ id 1wp6NA-0001dJ-Lo
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:39:09 -0400
+Received: by mail-wm1-f51.google.com with SMTP id
+ 5b1f17b1804b1-495437bb891so9276675e9.1
+ for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 08:39:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785339473; x=1785944273;
+ d=1e100.net; s=20251104; t=1785339547; x=1785944347;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=H0i9wFR+0jszuSIzriUDQZoOMEXHplug+y13hr3wwAQ=;
- b=KNCAcPKvE5RdNpy4ueeINtI0oIZEQYOxcAbCA8bZh3QgT+JspNduITZvALNMT4jGF+
- Ci5h/Ja0YNtRYSjuOEphyu7ditMyaPMK7T5R8iOelwl9ESJ8jvPwcAbS0jME7DnKlH8v
- O6J6u+CPjgXeeSsEiap7DsLC16io0A0Nb56AuDj2jgxYrVdxGd2MazB/Hjvy80vtK0ZP
- YR6keu5kIUtj15/gMk4jXg9XJO6h89XVlDk0QVwGJxenejZ0GqytFWiWH+5FEOCNxx1R
- TlR+3eU01HGI/5d8jdgam6JqyRWq88tjQ/K3R17Osz0lrXQ+MRmYDcyN6UHf2uOwS0JW
- FFsw==
+ bh=yyemhKIbNDI0dfV54rPviOfcsJPqmPO4g32wuNZQnWs=;
+ b=f0yD7rX6dJ5WaO++IYx5PizjoobB7zwGagbxrzySCX6t6x46Ax1QmvovoylJjSISnJ
+ 3jBA4MOV97N6/j1knirJZJV3LOW0PEHK/BEya0CEuRtDpZ2hhg3UjpwAgWMLS94MhDKv
+ 0KaUAT2OpghErGXgTANDzN9TpR03N1EHuUwNzIfiLLxCy7Dpmr/WjZplgBS5Pjk/YO4j
+ xGkXzhqCwsU3kk2SZQk3hjdIVsZv77m+5KPMxF5i+a+msQyflULm2/u1w27aQ6FKLNQ+
+ vntMG1VOOFQ9Cu/TNrvUxJHhjHw/hjs7XvJ3tz2ceXNfkZ8z4JUpGjWUbz5EpTiwXOSi
+ 8IPw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoIFhDrcUpxk9iDlFPZo0SaHbcyoAdCwOqAjd3bpFpmnSqiHm5rGvq3oWqtvOC8UFX+0RAO1g15ZA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz5Im6IFWV/LDPEs3YuHuihHU5jF6mMSgz2yLMNNizWDfPhfckV
- 8N1Tr5n5JQ4bdWux7HztvnXZwyjM0xTLV1NfK0PHtMu+/xEN5zPBSHQ0
-X-Gm-Gg: AR+sD13rKnvavE7602iPRA/2vJ9y69TO6NJvIEHHn3opg9XNr4YqtJ6EY3E08YZkBnM
- o0GMalj0AKapCnDLAd4jwPMqvSZJBRUUuXXXwer5kBWtUyeQn6Muu+dBFmTCqYlE6MUmvzrJPU/
- UQHPJFnZfV5ILiUMmzf7F1mZjjOyE7ylnBaIb+prn3ArLVNMwOE8LtAFsNAUcW+gKqjDc6ir1AQ
- hldrpBuvxE6OrqaaglOcxGQqHri6lFTAIG8cE2rfmnbBRzA80vX4TTW8c2+6BgxOByQsAUr55vx
- +VSwEecWwVPcXf+ipyx3D7G+SlD7W9/wULZDPzkZY57MJzQwtTjC4Ll3J7DXHFdeID6TLDfdbbv
- e+cq52370UdNjASauZIwWLdYExYEa7QhavJZNSfA3KFF+qSe7x7rNZfcTf7IhZQjyL2SdrywCOE
- zj9hr8MKV+LMJMb9WyhTk3Rv4tQH0D5XFivKXB1enFMPjFaDBCd9ysqdSEc7AOYg4QZUnOGoIr3
- LkmSR/1ZxZewPRPWwgXReTQzlmMrvBJ63a0XHhlay4ViRc=
-X-Received: by 2002:a05:600c:350e:b0:495:4811:7998 with SMTP id
- 5b1f17b1804b1-496c655e6e1mr84036055e9.17.1785339472591; 
- Wed, 29 Jul 2026 08:37:52 -0700 (PDT)
+ AHgh+Rp41EvMXEjxhzhNtyXnHoAOfflYw3UieC3O2zycWtgrm8b7azJNsV02rTgy89LjBPQaopRAZ6VVMg==@nongnu.org
+X-Gm-Message-State: AOJu0Yxv3nq98SpRWPd5/bEx1XERB8mc0CK+hHU388+DFw55V4OVz8M4
+ k8uVv05rh0ylQUv32DCcRoyGwbWtufA0jwsmyhwErj3Sp3lcjrAF7/2b
+X-Gm-Gg: AR+sD12F0GQin4BH+s8PI4vL/dE63t9+v0CHIu5Npkhzccaj4MgrDTZaptfaIUjprIG
+ 8DgOTNXd5e5wenJScBNjDlA4ZG3AhgJZq2SAEH0IOe/Fn4W3cbfhtl55nbfHW7lEEccRaV9905b
+ azBDF0+bHM9GS9U6pfDzPOR0yWq3EwVGx9n/wRkOmmYjIgtAySHzpdXRZI8mcipskDXyyUkt5qy
+ qFqKyLgqe+THWu6WtgFLYJOXxfQnc1A+1BfWScyQmAEzSZWgb1Qdj2vyEqqA7hkwiOYOFQWBPKz
+ oAyHJwA10rDha57ZClY2qGeVDW3FC89V2oepSr7moAovVJdq8O8HXFmKfQ+BoScOAZZEiaJuElq
+ 5Q3mxTDnRXGh8ridvZmzh7QXhFFU9pXDPRKco75YWdBJlYXbG9/arRPErfp7/gI5yMHZR7xB0Sh
+ UNM2hIhbdevdDvCs16lgXTxiKF1aEZApdgduN2y60q5XRbItAF5ivZl6TW2Q9NFxCJe8X7KZ3tJ
+ QiaTWqFqx9grnuUjkPnoSWmCJ1/ivO27qQS
+X-Received: by 2002:a05:600c:8710:b0:492:6f5c:fd8c with SMTP id
+ 5b1f17b1804b1-497fd311860mr30695555e9.15.1785339547088; 
+ Wed, 29 Jul 2026 08:39:07 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4957bfc2ff2sm335559385e9.4.2026.07.29.08.37.51
+ 5b1f17b1804b1-496c462512dsm154633125e9.13.2026.07.29.08.39.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jul 2026 08:37:52 -0700 (PDT)
-Date: Wed, 29 Jul 2026 17:12:50 +0200
-Subject: [PATCH 14/25] hw/arm: catalina: use the real TMP75 model
+ Wed, 29 Jul 2026 08:39:06 -0700 (PDT)
+Date: Wed, 29 Jul 2026 17:12:51 +0200
+Subject: [PATCH 15/25] hw/arm: fuji: use the real TMP75 and LM75B
+ temperature sensors
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260729-sanmiguel-bmc-locator-v1-14-c8f9a8d101f6@free.fr>
+Message-Id: <20260729-sanmiguel-bmc-locator-v1-15-c8f9a8d101f6@free.fr>
 References: <20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr>
 In-Reply-To: <20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr>
 To: qemu-devel@nongnu.org
@@ -77,15 +78,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Emmanuel Blot <eblot@meta.com>, Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785337964; l=948;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785337964; l=2648;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=yr6ARhHsRJdWelmON/tAwpVgyc94u96MVCdEOI7hMno=;
- b=6Lig/q7xj+IHJLXLGZFw1HA8W3BPThEM/YZac7dWZPjeFwCwzVHetNboH65BktroYWxO/s3Ev
- aN9SI7Ga8AiBfvW3WxJj86RZhkDw+G8Ek/b+IHgJmD5ZBlXgz4QpyRv
+ bh=3Z2LgNf5NONtKdqbZ6IR/+v7877ewZwsl3F8BgLX3xg=;
+ b=c4/xi9dVdrmq4Gb6hhrV7h2lN96P0ySNSmm3xHFsWb4HZHVBk9iSs4KSPx7QikBqfLxbvUfdI
+ Dte8Sm01v2EADnUZ/CbogUMI0hmLbSEgk3tPZwmDb4LR3aBzhazf8Mb
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.46; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f46.google.com
+Received-SPF: pass client-ip=209.85.128.51; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wm1-f51.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -111,33 +112,71 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The Catalina BMC instantiates several ti,tmp75 temperature sensors. Now
-that hw/sensor/tmp105.h provides a proper TMP75 model, drop the local
-TYPE_TMP75 alias (and its guard) so the board instantiates the accurate
-device rather than a plain TMP105.
+The Fuji BMC instantiates many ti,tmp75 sensors and several NXP LM75B
+sensors; the original board code approximated both with a plain TMP105
+via local TYPE_TMP75 and TYPE_LM75 aliases (the latter mislabelling the
+LM75B parts as LM75).
+
+Now that hw/sensor/tmp105.h provides proper TMP75 and LM75B models, drop
+the local aliases (and their guards) and instantiate the accurate
+devices.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- hw/arm/aspeed_ast2600_catalina.c | 6 ------
- 1 file changed, 6 deletions(-)
+ hw/arm/aspeed_ast2600_fuji.c | 22 +++++++---------------
+ 1 file changed, 7 insertions(+), 15 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
-index 33e75338ef..928e140b21 100644
---- a/hw/arm/aspeed_ast2600_catalina.c
-+++ b/hw/arm/aspeed_ast2600_catalina.c
-@@ -22,12 +22,6 @@
- #define CATALINA_BMC_HW_STRAP2 0x00000800
- #define CATALINA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+diff --git a/hw/arm/aspeed_ast2600_fuji.c b/hw/arm/aspeed_ast2600_fuji.c
+index 6dc3535f0c..fe0c294e14 100644
+--- a/hw/arm/aspeed_ast2600_fuji.c
++++ b/hw/arm/aspeed_ast2600_fuji.c
+@@ -15,14 +15,6 @@
+ #include "hw/sensor/tmp105.h"
+ #include "hw/nvram/eeprom_at24c.h"
  
 -/*
-- * Guard the alias against the TYPE_TMP75 that hw/sensor/tmp105.h now
-- * defines.
+- * Guard the aliases against the TYPE_TMP75 that hw/sensor/tmp105.h now defines;
+- * TYPE_LM75 is guarded too for consistency (no LM75 model exists yet).
 - */
+-#undef TYPE_LM75
+-#define TYPE_LM75 TYPE_TMP105
 -#undef TYPE_TMP75
 -#define TYPE_TMP75 TYPE_TMP105
- #define TYPE_TMP421 "tmp421"
- #define TYPE_DS1338 "ds1338"
+ #define TYPE_TMP422 "tmp422"
  
+ /* Fuji hardware value */
+@@ -63,8 +55,8 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+         get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
+     }
+ 
+-    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
+-    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4d);
++    i2c_slave_create_simple(i2c[17], TYPE_LM75B, 0x4c);
++    i2c_slave_create_simple(i2c[17], TYPE_LM75B, 0x4d);
+ 
+     /*
+      * EEPROM 24c64 size is 64Kbits or 8 Kbytes
+@@ -74,15 +66,15 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+     at24c_eeprom_init(i2c[20], 0x50, 256);
+     at24c_eeprom_init(i2c[22], 0x52, 256);
+ 
+-    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x48);
+-    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x49);
+-    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x4a);
++    i2c_slave_create_simple(i2c[3], TYPE_LM75B, 0x48);
++    i2c_slave_create_simple(i2c[3], TYPE_LM75B, 0x49);
++    i2c_slave_create_simple(i2c[3], TYPE_LM75B, 0x4a);
+     i2c_slave_create_simple(i2c[3], TYPE_TMP422, 0x4c);
+ 
+     at24c_eeprom_init(i2c[8], 0x51, 8 * KiB);
+-    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x4a);
++    i2c_slave_create_simple(i2c[8], TYPE_LM75B, 0x4a);
+ 
+-    i2c_slave_create_simple(i2c[50], TYPE_LM75, 0x4c);
++    i2c_slave_create_simple(i2c[50], TYPE_LM75B, 0x4c);
+     at24c_eeprom_init(i2c[50], 0x52, 8 * KiB);
+     i2c_slave_create_simple(i2c[51], TYPE_TMP75, 0x48);
+     i2c_slave_create_simple(i2c[52], TYPE_TMP75, 0x49);
 
 -- 
 2.50.1

@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 953EFC53219
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 15:32:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE2AFC54F51
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 15:33:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wp6GG-00051c-3e; Wed, 29 Jul 2026 11:32:00 -0400
+	id 1wp6Gx-0005Yv-Ve; Wed, 29 Jul 2026 11:32:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wp6GE-0004zb-Is
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:31:58 -0400
+ id 1wp6Gx-0005XN-0U
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:32:43 -0400
 Received: from mail-wm1-f53.google.com ([209.85.128.53])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wp6GC-0000tM-OW
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:31:58 -0400
+ id 1wp6Gv-0000wJ-Bd
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:32:42 -0400
 Received: by mail-wm1-f53.google.com with SMTP id
- 5b1f17b1804b1-495635a85d2so8612825e9.0
- for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 08:31:56 -0700 (PDT)
+ 5b1f17b1804b1-490cf322ed0so7352475e9.1
+ for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 08:32:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785339115; x=1785943915;
+ d=1e100.net; s=20251104; t=1785339160; x=1785943960;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=9ybIPSWx99Q7+Eklnb4vS/+BIhbklG+PwBUudNNw6Z0=;
- b=CsJUlucnVLFZQczgSllgDDLeV0tbDWcknMMqyQeYRRB+vg2iXwnTDgLBd0pE7dStb8
- HQhEYO3RSltlS5QufIjsb8dD7CXsy/9GbfcsNBzjshzMjscvXwG9eLrF8jl4KjhRmyJT
- 4rBT97O8xEOrkMoooBMj0weMg5tw9pWsnyxmbyHURkPvxeF/PTzG0xGnPuFGAVfioTAL
- CJ73wjofWxWkHauGBUbNFOjIMNoKpxPLJ3TTI+5ivUzcFFXkdnP3sc9Pi9ECu8QwKJl1
- VL8CF5nSN3QdMhZajAF9PvN4wpz1m+joy0badP6mzKkW5BHNIWgV+PVX/KmunZWJR6CM
- NDUQ==
+ bh=ifMbamIfJSoLu7/f73249giIpMXwm2cmTQROI/W8L9A=;
+ b=I19J6M1NxPoOYqBRz4W+yIJwzLVUjnb7bdWNXBzqAaAOLKIg4goBacxQATFTVrYY+i
+ LMAtIuVyTpyn/l/PITs97JcY2yJtBOdrPmxvr2ypbJUFZGF3dbUM2b/6QSVfQR+kZ94i
+ qFZIc5PH7nrEI4z2BcSEIO495Iad9wQMWk2Nlu/Om0ss6yybz1PUEpuh5+s7Ssp/oY4t
+ cJTZ8tou0XdhURm81WPjcOBIG3HYEVOnjHFGnrgn5K1UOuqL8YTl4OhrjQLJ372nXP8U
+ M0kBTVBjntOfq2ZXCbQ8h25R/YoP0SlANiGP99XNSnS3foKKCMfhoYHeNUnT1T1mpy1p
+ pYmw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrWnc6fxWqsoKds5XUT0iBMh6QqeMk8ecaaZHU20/eb6+0zjKqxehTe6MGjRcrJENXVM7yjQl2V1g==@nongnu.org
-X-Gm-Message-State: AOJu0Yw0PWaruKh0eme6NDmMfHxUZ4jjzwyu3DGJUTbDjpR1Xzfsu8xt
- meKmKimKa/h38H5xwL+1gZsng/AbTsi1tsLGdnqnYr5mTcRpiilXJi3O
-X-Gm-Gg: AR+sD13KRObPWb1c885VdhLtUym39lizzBSBHhbn7QoGAiuAotKoCx4x3lQSS9Qdms5
- QZTlhacP1/GD/h5cK59y6nmbXzfNtuMf3u8Lhg1+VbzKTvce7n8jPXWr+orhsm8tLxQ1zV4s4Pp
- hPS9IsuASiNx0LIfi7sOO7PpXHNlsZoPz7vXZf1jbIadzpOylSDKixpX4hjQ0jwDdZ+mlhm4QPq
- mJ+GZLoHcRCALBgFkGAjcxwbCeYmutVbxVU+Dj2U1vhmzoMXHUHOqxaCr3zuIzDWuuKuiZPZBwk
- IH79rOBuztQe5eFiQa0yO5RHx21fxJZxCNAn0voMTgkY0zD2X/hl1RMFU6jf+Xcqx3Vhg0UO3CD
- 2YqqcmkQg/ieHcJi6PoVErbdBgnwlz3ecXfxXw09CHLpZ752cDvuRpFbmHpLsWhgxGQ5DV73QiX
- BfeoIrUlbPR/BDdorrVVb91uffmM+uC5xS3dGGnYzCkj3jjMF1pFMahYkipXzPek2B2nOQRZxbR
- JU5RNMfer99nX1xn2Xb1XGHp6H2Y2MfJx0fBlfCVKIAJkqo
-X-Received: by 2002:a05:600c:3485:b0:493:b243:8ffc with SMTP id
- 5b1f17b1804b1-496c6586bbcmr75755845e9.35.1785339114505; 
- Wed, 29 Jul 2026 08:31:54 -0700 (PDT)
+ AHgh+RqraSythSqJeqdKBDW2iCpO+S8Nmgiu7AZCcQvRIiWcu/nC3+lAXJqaSdiTWHXom2jhTC95KjQ6XQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yw3fZTM3vqpcBu9NT8SXTxl45BWRNBRK6sQyg+Z3VaZ3JsZOXXO
+ XvfiOSTSJgEUZ8S8IE2Lv8p0P3Op+HDRzjUJoyZUJCrlZsweQ386Lnxh
+X-Gm-Gg: AR+sD12CdwkQAtglO67yeWYNTlRs/EYhZwhdj92ddSuYWK5lHCOGRgGGRm7ZkQwkNTP
+ iVsO5QVRjZMTyOBOUw8eMhFHZ4yWyXXg+H3Uwibp9pI6NtvOtVBvgFdyeRsQFzG6LgQCAUCzu7+
+ hwJXTqJzVtZjsW6j4VuitSmIJZ3FzFjBTzCNCFseX1njOr7tbQe0TWSIaX1e4ds/uGGefodfcqd
+ D2qJOr9er4ccUX4FU8XmvVY/VP/mB2G2sRblInItH0z76pcCFZmKBiuCFxQcH0HJrhp5KyeNanV
+ 0ELHrmeAlQxvoyRNgbd0kiCGZDKudqYoPswCzG3YeBYX5zF2EL7QV75B7LbpaGtgcOW2xG38q3O
+ +CMx+5XwmtZRi1U/IHzZCFfd1/VgipIhblQK7PzglkLiqfQfcQF+bguktYBoKYyp9VGqq+RJ+2c
+ 8jKOIgW6Z7BKo44RF6vnBc7NhlVFc6egK4XNaq4pbnC0jMeVGRxpcoyaVRI5IjQtpUegZXKuI5p
+ qxHmANQNquZdLNvhqVkBf/KaeWa07PRBUsE
+X-Received: by 2002:a05:600c:3b25:b0:495:39aa:1359 with SMTP id
+ 5b1f17b1804b1-496c641309bmr84499585e9.3.1785339159476; 
+ Wed, 29 Jul 2026 08:32:39 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-496c462512dsm154212875e9.13.2026.07.29.08.31.53
+ 5b1f17b1804b1-496c44af19bsm159261115e9.3.2026.07.29.08.32.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jul 2026 08:31:54 -0700 (PDT)
-Date: Wed, 29 Jul 2026 17:12:45 +0200
-Subject: [PATCH 09/25] tests/qtest: tmp105: cover the TMP75, TMP175 and
- LM75B variants
+ Wed, 29 Jul 2026 08:32:38 -0700 (PDT)
+Date: Wed, 29 Jul 2026 17:12:46 +0200
+Subject: [PATCH 10/25] tests/qtest: tmp105: cover one-shot and fault-queue
+ write immunity
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260729-sanmiguel-bmc-locator-v1-9-c8f9a8d101f6@free.fr>
+Content-Transfer-Encoding: 8bit
+Message-Id: <20260729-sanmiguel-bmc-locator-v1-10-c8f9a8d101f6@free.fr>
 References: <20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr>
 In-Reply-To: <20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr>
 To: qemu-devel@nongnu.org
@@ -78,11 +78,11 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Emmanuel Blot <eblot@meta.com>, Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785337964; l=6772;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785337964; l=5455;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=q1iz7++LpszDUzhYyAvlbngfO8Xpf8a9SAQco0QYEVY=;
- b=k+TNF2J9GPHuZ0C4ZRaXa+OHNSQHSoASjrM5dS/XqQ65Zx/AHuhFauzyLslx3EAfUGDlIUlch
- oJ5mnbbM0osDHuSy3NZNSvi2wuPsoBDfD6MPpWiR0nvTk4IY1t+nDHy
+ bh=bmmLFTJHN8a4jRPifYNuZA58n5LYCH8vK49esOFrf4o=;
+ b=gzXZno2rMJ0Bb7mSKOBu0MMioeykpTqvAF+/sxsiODGbvUWfDtPmjEFYkp7hDFJZ8gmEqeTMV
+ 3iLn4vm1KxFDg4nRvvlDK24yKD/xNlNYLR+daza7VrOLQ6a2HivNDW1
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
 Received-SPF: pass client-ip=209.85.128.53; envelope-from=eblot.ml@gmail.com;
@@ -112,181 +112,143 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Exercise the per-variant differences added to the model: the TMP75 and
-TMP175 fault-queue depths, the TMP75 alert-clear on thermostat-mode
-change, and the LM75B's reserved config bits and fixed set-point and
-temperature resolutions.
+Verify that the one-shot (OS) bit triggers a conversion only in shutdown
+mode and is ignored in continuous mode, and that
+configuration/limit-register writes never advance the fault queue — only
+real conversions do.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/tmp105-test.c | 138 ++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 138 insertions(+)
+ tests/qtest/tmp105-test.c | 102 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 102 insertions(+)
 
 diff --git a/tests/qtest/tmp105-test.c b/tests/qtest/tmp105-test.c
-index 29a031fb7b..ea6803715a 100644
+index ea6803715a..e586a634d8 100644
 --- a/tests/qtest/tmp105-test.c
 +++ b/tests/qtest/tmp105-test.c
-@@ -19,9 +19,20 @@
- #define TMP105_TEST_ADDR 0x49
- #define TMP105_TEST_PATH "/machine/peripheral/" TMP105_TEST_ID
- 
-+#define TMP75_TEST_ID    "tmp75-test"
-+#define TMP75_TEST_PATH  "/machine/peripheral/" TMP75_TEST_ID
-+
-+#define TMP175_TEST_ID   "tmp175-test"
-+#define TMP175_TEST_PATH "/machine/peripheral/" TMP175_TEST_ID
-+
-+#define LM75B_TEST_ID    "lm75b-test"
-+#define LM75B_TEST_PATH  "/machine/peripheral/" LM75B_TEST_ID
-+
- #define TMP105_CONFIG_POL   (1 << 2)   /* ALERT active-high when set */
-+#define TMP105_CONFIG_TM    (1 << 1)   /* interrupt (thermostat) mode */
+@@ -33,6 +33,8 @@
  #define TMP105_CONFIG_FQ_1  (0 << 3)   /* fault queue: 1 consecutive fault */
  #define TMP105_CONFIG_FQ_4  (2 << 3)   /* fault queue: 4 consecutive faults */
-+#define TMP105_CONFIG_FQ(f) ((f) << 3) /* raw F1:F0 fault-queue field value */
+ #define TMP105_CONFIG_FQ(f) ((f) << 3) /* raw F1:F0 fault-queue field value */
++#define TMP105_CONFIG_SD    (1 << 0)   /* shutdown mode */
++#define TMP105_CONFIG_OS    (1 << 7)   /* one-shot conversion */
  
  static int qmp_tmp105_get_temperature(const char *id)
  {
-@@ -166,6 +177,98 @@ static void test_fault_queue(void *obj, void *data, QGuestAllocator *alloc)
-     g_assert_false(get_irq(0));
+@@ -200,6 +202,102 @@ static void check_fault_queue(QI2CDevice *i2cdev, const char *id,
+     g_assert_true(get_irq(0));
  }
  
 +/*
-+ * Drive @need consecutive over-limit conversions and check that the ALERT pin
-+ * only asserts on the last one. This exercises the fault-queue length.
++ * The one-shot (OS) bit starts a conversion only in shutdown mode. In
++ * continuous mode it is ignored, so writing it must not advance the fault
++ * queue; in shutdown each OS write performs one conversion that does.
 + */
-+static void check_fault_queue(QI2CDevice *i2cdev, const char *id,
-+                              const char *path, uint8_t fq_field, int need)
++static void test_one_shot(void *obj, void *data, QGuestAllocator *alloc)
 +{
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
 +    int i;
 +
-+    qtest_irq_intercept_out(global_qtest, path);
++    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
 +
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+             TMP105_CONFIG_POL | TMP105_CONFIG_FQ(fq_field));
++    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
++    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
 +    g_assert_false(get_irq(0));
 +
-+    for (i = 0; i < need - 1; i++) {
-+        qmp_tmp105_set_temperature(id, 85000);
++    for (i = 0; i < 8; i++) {
++        i2c_set8(i2cdev, TMP105_REG_CONFIG,
++                 TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4 | TMP105_CONFIG_OS);
 +        g_assert_false(get_irq(0));
 +    }
-+    qmp_tmp105_set_temperature(id, 85000);
++
++    i2c_set8(i2cdev, TMP105_REG_CONFIG,
++             TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD);
++    for (i = 0; i < 2; i++) {
++        i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL |
++                 TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD | TMP105_CONFIG_OS);
++        g_assert_false(get_irq(0));
++    }
++    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL |
++             TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD | TMP105_CONFIG_OS);
 +    g_assert_true(get_irq(0));
 +}
 +
-+/* The TMP75 maps F1:F0 = 10b to 3 consecutive faults. */
-+static void test_tmp75_fault_queue(void *obj, void *data,
-+                                   QGuestAllocator *alloc)
-+{
-+    check_fault_queue(obj, TMP75_TEST_ID, TMP75_TEST_PATH, 2, 3);
-+}
-+
-+/* The TMP175 keeps the TMP105 mapping: F1:F0 = 10b means 4 faults. */
-+static void test_tmp175_fault_queue(void *obj, void *data,
-+                                    QGuestAllocator *alloc)
-+{
-+    check_fault_queue(obj, TMP175_TEST_ID, TMP175_TEST_PATH, 2, 4);
-+}
-+
 +/*
-+ * Toggling the thermostat mode (TM) bit clears any active alert on the TMP75.
++ * Configuration and limit-register writes are not conversions and must not
++ * advance the fault queue.
 + */
-+static void test_tmp75_tm_clears_alert(void *obj, void *data,
-+                                       QGuestAllocator *alloc)
++static void test_fault_queue_ignores_writes(void *obj, void *data,
++                                            QGuestAllocator *alloc)
 +{
 +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
 +    int i;
 +
-+    qtest_irq_intercept_out(global_qtest, TMP75_TEST_PATH);
++    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
 +
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+             TMP105_CONFIG_POL | TMP105_CONFIG_FQ(3));
-+    for (i = 0; i < 4; i++) {
-+        qmp_tmp105_set_temperature(TMP75_TEST_ID, 85000);
-+    }
-+    g_assert_true(get_irq(0));
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+             TMP105_CONFIG_POL | TMP105_CONFIG_FQ(3) | TMP105_CONFIG_TM);
++    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
 +    g_assert_false(get_irq(0));
++
++    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
++    g_assert_false(get_irq(0));
++
++    for (i = 0; i < 8; i++) {
++        i2c_set8(i2cdev, TMP105_REG_CONFIG,
++                 TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
++        i2c_set16(i2cdev, TMP105_REG_T_HIGH, 0x5000);
++        i2c_set16(i2cdev, TMP105_REG_T_LOW, 0x4b00);
++        g_assert_false(get_irq(0));
++    }
++
++    for (i = 0; i < 2; i++) {
++        qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
++        g_assert_false(get_irq(0));
++    }
++    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
++    g_assert_true(get_irq(0));
 +}
 +
 +/*
-+ * The LM75B has a fixed 11-bit (0.125 C) converter: the resolution and one-shot
-+ * Config bits are reserved (read/write as zero) and the temperature register is
-+ * always masked to 11 bits regardless of what is written to Config.
++ * Leaving shutdown (SD 1->0) resumes continuous conversion, which must
++ * re-evaluate the current temperature against the limits.
 + */
-+static void test_lm75b_resolution(void *obj, void *data,
-+                                  QGuestAllocator *alloc)
-+{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    uint16_t value;
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG, 0x60);
-+    g_assert_cmphex(i2c_get8(i2cdev, TMP105_REG_CONFIG), ==, 0x00);
-+
-+    qmp_tmp105_set_temperature(LM75B_TEST_ID, 20938);
-+    value = i2c_get16(i2cdev, TMP105_REG_TEMPERATURE);
-+    g_assert_cmphex(value, ==, 0x14e0);
-+}
-+
-+/* The LM75B set-point registers store only 9 bits. */
-+static void test_lm75b_limits(void *obj, void *data,
-+                              QGuestAllocator *alloc)
++static void test_wake_from_shutdown(void *obj, void *data,
++                                    QGuestAllocator *alloc)
 +{
 +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
 +
-+    i2c_set16(i2cdev, TMP105_REG_T_HIGH, 0x4231);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP105_REG_T_HIGH), ==, 0x4200);
++    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
 +
-+    i2c_set16(i2cdev, TMP105_REG_T_LOW, 0x12b4);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP105_REG_T_LOW), ==, 0x1280);
++    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1);
++    g_assert_false(get_irq(0));
++
++    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
++    g_assert_true(get_irq(0));
++
++    i2c_set8(i2cdev, TMP105_REG_CONFIG,
++             TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1 | TMP105_CONFIG_SD);
++    g_assert_true(get_irq(0));
++
++    qmp_tmp105_set_temperature(TMP105_TEST_ID, 70000);
++    g_assert_true(get_irq(0));
++
++    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1);
++    g_assert_false(get_irq(0));
 +}
 +
- static void tmp105_register_nodes(void)
- {
-     QOSGraphEdgeOptions opts = {
-@@ -179,5 +282,40 @@ static void tmp105_register_nodes(void)
+ /* The TMP75 maps F1:F0 = 10b to 3 consecutive faults. */
+ static void test_tmp75_fault_queue(void *obj, void *data,
+                                    QGuestAllocator *alloc)
+@@ -282,6 +380,10 @@ static void tmp105_register_nodes(void)
      qos_add_test("tx-rx", "tmp105", send_and_receive, NULL);
      qos_add_test("alert-single-fault", "tmp105", test_alert_single_fault, NULL);
      qos_add_test("fault-queue", "tmp105", test_fault_queue, NULL);
-+
-+    /* TMP75: register-compatible, but with a 1/2/3/4 fault queue. */
-+    QOSGraphEdgeOptions tmp75_opts = {
-+        .extra_device_opts = "id=" TMP75_TEST_ID ",address=0x48"
-+    };
-+    add_qi2c_address(&tmp75_opts, &(QI2CAddress) { 0x48 });
-+
-+    qos_node_create_driver("tmp75", i2c_device_create);
-+    qos_node_consumes("tmp75", "i2c-bus", &tmp75_opts);
-+
-+    qos_add_test("fault-queue", "tmp75", test_tmp75_fault_queue, NULL);
-+    qos_add_test("tm-clears-alert", "tmp75", test_tmp75_tm_clears_alert, NULL);
-+
-+    /* TMP175: like the TMP105, with a 1/2/4/6 fault queue. */
-+    QOSGraphEdgeOptions tmp175_opts = {
-+        .extra_device_opts = "id=" TMP175_TEST_ID ",address=0x4a"
-+    };
-+    add_qi2c_address(&tmp175_opts, &(QI2CAddress) { 0x4a });
-+
-+    qos_node_create_driver("tmp175", i2c_device_create);
-+    qos_node_consumes("tmp175", "i2c-bus", &tmp175_opts);
-+
-+    qos_add_test("fault-queue", "tmp175", test_tmp175_fault_queue, NULL);
-+
-+    /* LM75B: fixed 11-bit conversion and 9-bit set-point registers. */
-+    QOSGraphEdgeOptions lm75b_opts = {
-+        .extra_device_opts = "id=" LM75B_TEST_ID ",address=0x4c"
-+    };
-+    add_qi2c_address(&lm75b_opts, &(QI2CAddress) { 0x4c });
-+
-+    qos_node_create_driver("lm75b", i2c_device_create);
-+    qos_node_consumes("lm75b", "i2c-bus", &lm75b_opts);
-+
-+    qos_add_test("resolution", "lm75b", test_lm75b_resolution, NULL);
-+    qos_add_test("limits", "lm75b", test_lm75b_limits, NULL);
- }
- libqos_init(tmp105_register_nodes);
++    qos_add_test("fault-queue-ignores-writes", "tmp105",
++                 test_fault_queue_ignores_writes, NULL);
++    qos_add_test("one-shot", "tmp105", test_one_shot, NULL);
++    qos_add_test("wake-from-shutdown", "tmp105", test_wake_from_shutdown, NULL);
+ 
+     /* TMP75: register-compatible, but with a 1/2/3/4 fault queue. */
+     QOSGraphEdgeOptions tmp75_opts = {
 
 -- 
 2.50.1
